@@ -363,6 +363,7 @@ create_mfsroot() {
 	echo "Generating the MFSROOT filesystem"
 	cd $WORKINGDIR
 	[ -f mfsroot.gz ] && rm -f mfsroot.gz
+	[ -d svn ] && use_svn ;
 	
 	# Setting Version type and date
 	date > $FREENAS/etc/version.buildtime
@@ -521,6 +522,20 @@ update_sources() {
 	
 	cd $WORKINGDIR
 	svn co https://svn.sourceforge.net/svnroot/freenas/trunk svn
+	return 0
+
+}
+
+use_svn() {
+	
+	echo "Replacing old code with SVN code"
+	cp -p $SVNDIR/etc/*.* $FREENAS/etc
+	cp -p $SVNDIR/etc/* $FREENAS/etc
+	cp -p $SVNDIR/etc/inc/*.* $FREENAS/etc
+	cp -p $SVNDIR/www/*.* $FREENAS/usr/local/www
+	cp -p $SVNDIR/conf/*.* $FREENAS/conf.default
+	svn co https://svn.sourceforge.net/svnroot/freenas/trunk svn
+	
 	return 0
 
 }
