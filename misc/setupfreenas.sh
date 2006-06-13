@@ -503,9 +503,15 @@ create_iso () {
 download_rootfs() {
 	mkdir $WORKINGDIR
 	cd $WORKINGDIR
+	echo "Deleting old archives"
 	[ -f freenas-rootfs.tgz ] && rm -f freenas-rootfs.tgz
+	[ -f freenas-boot.tgz ] && rm -f freenas-boot.tgz
+	echo "Downloading new archives"
 	fetch http://www.freenas.org/downloads/freenas-rootfs.tgz
-	tar -xzf freenas-rootfs.tgz -C $FREENAS/
+	fetch http://www.freenas.org/downloads/freenas-boot.tgz
+	echo "De-taring new archives"
+	tar -xzf freenas-rootfs.tgz -C $WORKINGDIR/
+	tar -xzf freenas-boot.tgz -C $WORKINGDIR/
 	
 	return 0
 
