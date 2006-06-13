@@ -2,39 +2,73 @@ FreeNAS (http://www.freenas.org)
 Olivier Cochard-Labbe (olivier@freenas.org)
 Licence: BSD
 
-Release: 0.67
+Release: 0.67 (WORKING)
+
+============== SUMMARY =========
 
 1. Files and directories listing
-- dir: bootloader (contain boot and kernel file, use by the generator script)
-- dir: rootfs (contain all the freenas binary and scripts, use by the generator script)
-- file: freenas-cdreate-mfsroot.sh (create the unique mfs file, used by freenas-create-cdimage.sh)
-- file: freenas-create-cdimage.sh (main script that create the iso file of freenas: need cdrtools)
-- readme.txt (this file)
+2. How to generate an FreeNAS ISO or IMG  file
+3. Building FreeNAS with the latest sources
+4. History changes log
 
-2. How to generate an ISO file
+================================
+1. Files and directories listing
+- /freenas/bootloader : contain FreeBSD boot loader files
+- /freenas/rootfs: Minimum FreeBSD root filesystem and FreeNAS script/WebGUI
+- /freenas/svn: contain all the up-to-date (working) release and scripts
+
+================================
+2. How to generate an FreeNAS ISO or IMG  file
 
 Edit the scripts:
-- freenas-create-mfsroot.sh
-- freenas-create-cdimage.sh
-for modify the directory variable.
+- /freenas/svn/misc/setupfreeenas.sh
+for modify the directory variable with yours.
 
-start freenas-create-cdimage.sh
+start /freenas/svn/misc/setupfreeenas.sh
+And select your need
 
 burn the freenas.iso file created.
 
-3. How to create and IMG file
+=================================
+3. Building FreeNAS with the latest sources
 
-Edit the scripts:
-- freenas-create-mfsroot.sh
-- freenas-create-image.sh
-for modify the directory variable.
+(normally possible with setupfreenas.sh)
 
-start freenas-create-image.sh
+Here is how to build a FreeNAS from the latest source file:
 
-dd the IMG file on a CF or USB key
+- Use the root user account on your FreeBSD system
+
+3.1. Download the FreeNAS tgz file (new bootdir, new binary, new symlinks, old FreeNAS scripts)
+cd /usr/local
+fetch http://www.freenas.org/donwloads/freenas.tgz
+tgz freenas.tgz
+
+This action Create two directories:
+freenas/rootfs
+freenas/bootloader
+
+cd /usr/local/freenas
+
+3.2 Update your freenas scripts/WebGUI code with SVN:
+(this create the svn directory)
+
+svn co https://svn.sourceforge.net/svnroot/freenas/trunk svn
+
+You should now have this directories now:
+/usr/local/freenas
+/usr/local/freenas/rootfs
+/usr/local/freenas/bootloader
+/usr/local/freenas/svn
+
+
+3.3 Use the building script:
+(this script overwrite the etc, conf and www files with the new one, and rebuild and ISO and IMG image).
+svn/misc/setupfreenas.sh
 
 
 ################ History Change logs ##############
+
+
 FreeNAS 0.66:
 
 News features:

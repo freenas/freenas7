@@ -4,13 +4,13 @@
 # Created: 2/12/2006 by Scott Zahn
 
 # Global Variables:
-FREENAS_VERSION=0.67
-FREENAS_PLATFORM_CD="generic-pc-cdrom"
-FREENAS_PLATFORM="generic-pc"
+VERSION=0.67
 
 WORKINGDIR="/usr/local/freenas"
 FREENAS="/usr/local/freenas/rootfs"
 BOOTDIR="/usr/local/freenas/bootloader"
+SVNDIR="/usr/local/freenas/svn"
+TMPDIR="/tmp/freenastmp"
 
 # Functions:
 create_fs() {
@@ -111,7 +111,7 @@ prep_etc() {
 
 	pwd_mkdb -p -d $FREENAS/etc $FREENAS/etc/master.passwd
 	
-	echo $FREENAS_VERSION > $FREENAS/etc/version
+	echo $VERSION > $FREENAS/etc/version
 	date > $FREENAS/etc/version.buildtime
 
 	echo $FREENAS_PLATFORM > $FREENAS/etc/platform
@@ -360,7 +360,8 @@ add_web_gui(){
 }
 
 create_mfsroot() {
-	cd /usr/local/freenas
+	echo "Generating the MFSROOT filesystem"
+	cd $WORKINGDIR
 	[ -f mfsroot.gz ] && rm -f mfsroot.gz
 	
 	# Setting Version type and date
@@ -368,74 +369,160 @@ create_mfsroot() {
 	
 	# Make mfsroot to be 32M
 	dd if=/dev/zero of=mfsroot bs=1M count=32
-	# Configure this file as a virtual disk
+	# Configure this file as a memory disk
 	mdconfig -a -t vnode -f mfsroot -u 0
 	# Create Label on this disk
 	bsdlabel -w md0 auto
 	# format it as UFS
 	newfs -b 8192 -f 1024 -o space -m 0 /dev/md0c
-	mount /dev/md0c /mnt
+	# umount the /mnt directory if allready used
+	umount $TMPDIR
+	mount /dev/md0c $TMPDIR
 	cd /mnt
 	tar -cf - -C $FREENAS ./ | tar -xvpf -
 	cd $WORKINGDIR
-	umount /mnt
+	umount $TMPDIR
 	mdconfig -d -u 0
 	gzip -9 mfsroot
 	return 0
 }
 
 create_image() {
+	echo "IMG: Generating FreeNAS IMG File (to be rawrite on CF/USB/HD)"
 	[ -f image.bin ] && rm -f image.bin
-	echo "Generating MFSROOT"
-	set FREENAS_PLATFORM="generic-pc"
-	create_mfsroot;;
-	echo "Creating a 16M disk image"
-	dd if=/dev/zero of=image.bin bs=1M count=16
-	mdconfig -a -t vnode -f image.bin -u 0
-	bsdlabel -w md0
-#	fdisk -BI -b $BOOTDIR/mbr md0 # apparently, this doesn't work
-	bsdlabel -w -B -b $BOOTDIR/mbr md0 auto
-	bsdlabel md0 > /tmp/label.freenas
-	bsdlabel md0 | grep -E "unused" | sed -e "s/c:/a:/" -e "s/unused/4.2BSD/" >> /tmp/label.freenas
-	bsdlabel -R -B md0 /tmp/label.freenas
-	rm /tmp/label.freenas
-
-	echo "Creating filesystem"
+	PLATFORM="generic-pc"
+	echo $PLATFORM > $FREENAS/etc/platform
+	IMGFILENAME="FreeNAS-$PLATFORM-$VERSION.img"
+	
+	echo "IMG: Generating tempory $TMPDIR folder"
+	mkdir $TMPDIR
+	create_mfsroot;
+	
+	echo "IMG: Creating a 16Mb empty destination IMG file"
+	dd if=/dev/zero of=$WORKINGDIR/image.bin bs=1k count=18432
+	echo "IMG: using this file as a memory disk"
+	mdconfig -a -t vnode -f $WORKINGDIR/image.bin -u 0
+	echo "IMG: Creating partition on this memory disk"
+	fdisk -BI -b $BOOTDIR/mbr /dev/md0
+	echo "IMG: Configuring FreeBSD label on this memory disk"
+	bsdlabel -B -w -b $BOOTDIR/boot /dev/md0 auto
+	bsdlabel md0 >/tmp/label.$$
+	bsdlabel md0 |
+		 egrep unused |
+		 sed "s/c:/a:/" |
+		 sed "s/unused/4.2BSD/" >>/tmp/label.$$
+	bsdlabel -R -B md0 /tmp/label.$$
+	rm -f /tmp/label.$$
+	echo "IMG: Formatting this memory disk on UFS"
 	newfs -b 8192 -f 1024 -o space -m 0 /dev/md0a
-	mount /dev/md0a /mnt
-	mkdir -p /mnt/boot/kernel
-	mkdir /mnt/boot/defaults
-	
-	echo "Copying boot and mfsroot files"
-	cp -p $BOOTDIR/kernel/kernel.gz /mnt/boot/kernel
-	cp mfsroot.gz /mnt
-	cp -p $BOOTDIR/boot /mnt/boot
-	cp -p $BOOTDIR/loader /mnt/boot
-	cp -p $BOOTDIR/loader.conf /mnt/boot
-	cp -p $BOOTDIR/loader.rc /mnt/boot
-	cp -p $BOOTDIR/device.hints /mnt/boot/
-	cp -p $BOOTDIR/support.4th /mnt/boot/
-	cp -p $BOOTDIR/loader.4th /mnt/boot/
-	cp -p $BOOTDIR/defaults/loader.conf /mnt/boot/defaults/
-	
-	echo "Copying default config file"
-	mkdir /mnt/conf
-	cp -p $FREENAS/conf.default/config.xml /mnt/conf
-
-	umount /mnt
+	echo "IMG: Mount this virtual disk on $TMPDIR"
+	mount /dev/md0a $TMPDIR
+	echo "IMG: Copying previously generated MFSROOT file on memory disk"
+	cp $WORKINGDIR/mfsroot.gz $TMPDIR
+	echo "Copying bootloader file on memory disk"
+	mkdir $TMPDIR/boot
+	mkdir $TMPDIR/boot/kernel $TMPDIR/boot/defaults
+	mkdir $TMPDIR/conf
+	cp $FREENAS/conf.default/config.xml $TMPDIR/conf
+	cp $BOOTDIR/kernel/kernel.gz $TMPDIR/boot/kernel
+	cp $BOOTDIR/boot $TMPDIR/boot
+	cp $BOOTDIR/loader $TMPDIR/boot
+	cp $BOOTDIR/loader.conf $TMPDIR/boot
+	cp $BOOTDIR/loader.rc $TMPDIR/boot
+	cp $BOOTDIR/loader.4th $TMPDIR/boot
+	cp $BOOTDIR/support.4th $TMPDIR/boot
+	cp $BOOTDIR/defaults/loader.conf $TMPDIR/boot/defaults/
+	cp $BOOTDIR/device.hints $TMPDIR/boot
+	echo "IMG: unmount memory disk"
+	umount $TMPDIR
+	echo "IMG: Deconfigure memory disk"
 	mdconfig -d -u 0
-#	gzip -9 image.bin
+	echo "IMG: Compress the IMG file"
+	gzip -9 $WORKINGDIR/image.bin
+	mv $WORKINGDIR/image.bin.gz $IMGFILENAME
+	
+	echo "Cleaning tempo file"
+	[ -d $TMPDIR ] && rm -rf $TMPDIR
+	[ -f $WORKINGDIR/mfsroot.gz ] && rm -f $WORKINGDIR/mfsroot.gz
+	[ -f $WORKINGDIR/image.bin ] && rm -f $WORKINGDIR/image.bin
+
+	return 0
+}
+
+create_iso () {
+
+	echo "ISO: remove old directory and file if exist"
+	[ -d $TMPDIR ] && rm -rf $TMPDIR
+	[ -f $WORKINGDIR/mfsroot.gz ] && rm -f $WORKINGDIR/mfsroot.gz
+	
+	ISOFILENAME="FreeNAS-$VERSION.iso"
+	
+	echo "ISO: Generating the FreeNAS Image file:"
+	create_image;
+	
+	#Setting the variable for ISO image:
+	PLATFORM="generic-pc-cdrom"
+	echo "$PLATFORM" > $FREENAS/etc/platform
+	date > $FREENAS/etc/version.buildtime
+	
+	echo "ISO: Generating tempory $TMPDIR folder"
+	mkdir $TMPDIR
+	create_mfsroot;
+	
+	echo "ISO: Copying previously generated MFSROOT file on $TMPDIR folder"
+	cp $WORKINGDIR/mfsroot.gz $TMPDIR
+	
+	echo "ISO: Copying bootloader file on $TMPDIR folder"
+	mkdir $TMPDIR/boot
+	mkdir $TMPDIR/boot/kernel $TMPDIR/boot/defaults
+	cp $BOOTDIR/kernel/kernel.gz $TMPDIR/boot/kernel
+	cp $BOOTDIR/cdboot $TMPDIR/boot
+	cp $BOOTDIR/loader $TMPDIR/boot
+	cp $BOOTDIR/loader.conf $TMPDIR/boot
+	cp $BOOTDIR/loader.rc $TMPDIR/boot
+	cp $BOOTDIR/loader.4th $TMPDIR/boot
+	cp $BOOTDIR/support.4th $TMPDIR/boot
+	cp $BOOTDIR/defaults/loader.conf $TMPDIR/boot/defaults/
+	cp $BOOTDIR/device.hints $TMPDIR/boot
+	
+	echo "ISO: Copying IMG file on $TMPDIR folder"
+	
+	cp $WORKINGDIR/FreeNAS-generic-pc-$VERSION.img $TMPDIR/FreeNAS-generic-pc.gz
+	
+	
+	echo "ISO: Generating the ISO file"
+	mkisofs -b "boot/cdboot" -no-emul-boot -A "FreeNAS CD-ROM image" -c "boot/boot.catalog" -d -r -publisher "freenas.org" -p "Olivier Cochard-Labbe" -V "freenas_cd" -o "$ISOFILENAME" $TMPDIR
+	
+	echo "ISO: Cleaning tempo file"
+	[ -d $TMPDIR ] && rm -rf $TMPDIR
+	[ -f $WORKINGDIR/mfsroot.gz ] && rm -f $WORKINGDIR/mfsroot.gz
 	
 	return 0
 }
 
-
-main() {
-	# Ensure we are in $WORKINGDIR
-	[ ! -d "$WORKINGDIR" ] && mkdir $WORKINGDIR
+download_rootfs() {
+	mkdir $WORKINGDIR
 	cd $WORKINGDIR
+	[ -f freenas-rootfs.tgz ] && rm -f freenas-rootfs.tgz
+	fetch http://www.freenas.org/downloads/freenas-rootfs.tgz
+	tar -xzf freenas-rootfs.tgz -C $FREENAS/
+	
+	return 0
 
-	echo -n '
+}
+
+update_sources() {
+	
+	cd $WORKINGDIR
+	svn co https://svn.sourceforge.net/svnroot/freenas/trunk svn
+	return 0
+
+}
+
+fromscratch() {
+
+echo -n '
+Rebulding FreeNAS from Scratch
 Menu:
 1  - Create FreeNAS directory structure 
 2  - Copy FreeBSD binaries to FreeNAS filesystem
@@ -455,9 +542,7 @@ Menu:
 30 - Build bootloader
 31 - Add necessary libraries
 32 - Add web GUI
-41 - Create disk image
-42 - Create ISO file
-43 - Create light ISO (without disk image)
+
 *  - Quit
 
 > '
@@ -481,9 +566,41 @@ Menu:
 		30) build_bootldr;;
 		31) add_libs;;
 		32) add_web_gui;;
-		41) create_image;;
-		42) Create ISO file;;
-		43) Create light ISO (without disk image);;
+		*)  main;;
+	esac
+	[ $? ] && echo "Success" || echo "Failure"
+	sleep 1
+
+	return 0
+
+}
+
+
+
+main() {
+	# Ensure we are in $WORKINGDIR
+	[ ! -d "$WORKINGDIR" ] && mkdir $WORKINGDIR
+	cd $WORKINGDIR
+
+	echo -n '
+Menu:
+1  - Download and decompres FreeNAS root filesystem 
+2  - Update the source to latest (need SVN)
+10 - Create FreeNAS IMG file (rawrite to CF/USB/DD)
+11 - Create FreeNAS ISO file (need cdrtool installed)
+12 - Create FreeNAS ISO file without IMG image (need cdrtool installed)
+20 - Build FreeNAS from scratch advanced menu
+*  - Quit
+
+> '
+	read choice
+	case $choice in
+		1)  download_rootfs;;
+		2)  update_sources;;
+		10) create_image;;
+		11) create_iso;;
+		12) create_iso_light;;
+		20) fromscratch;;
 		*)  exit 0;;
 	esac
 	[ $? ] && echo "Success" || echo "Failure"
