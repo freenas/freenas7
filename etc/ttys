@@ -1,0 +1,18 @@
+#
+# name	getty				type	status		comments
+#
+console	"/bin/sh /etc/rc.initial"	cons25	on secure
+# Do not configure serial terminals, input strange problem if uncomment
+#ttyd0   "/bin/sh /etc/rc.initial"   vt100  on secure
+# Pseudo terminals
+ttyp0   none                    network
+ttyp1   none                    network
+ttyp2   none                    network
+ttyp3   none                    network
+ttyp4   none                    network
+ttyp5   none                    network
+ttyp6   none                    network
+ttyp7   none                    network
+ttyp8   none                    network
+
+

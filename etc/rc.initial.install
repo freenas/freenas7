@@ -1,0 +1,37 @@
+#!/bin/sh
+
+# /etc/rc.initial
+# part of FreeNAS (http://www.freenas.org)
+# Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>
+# All rights reserved.
+
+# endless loop
+while : ; do
+
+# display a cheap menu
+echo
+echo "FreeNAS Install"
+echo "*********************"
+echo "1) Install on HD, CF or USB key: Create 1 UFS partition"
+echo "2) Install on HD: Create 2 UFS partitions (FreeNAS and DATA)"
+echo "3) Return to main menu"
+echo
+
+read -p "Enter a number: " opmode
+
+# see what the user has chosen
+case ${opmode} in
+1)
+	/etc/rc.initial.install1
+ 	;;
+2)
+	/etc/rc.initial.install2
+ 	;;
+3)
+	/etc/rc.initial
+	;;
+esac
+
+done
+
+fi

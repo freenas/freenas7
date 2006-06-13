@@ -1,0 +1,119 @@
+#!/usr/local/bin/php -f
+<?php
+/*
+	rc.initial.install
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	All rights reserved.
+	
+	Based on m0n0wall (http://m0n0.ch/wall)
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	All rights reserved.
+	
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+	
+	1. Redistributions of source code must retain the above copyright notice,
+	   this list of conditions and the following disclaimer.
+	
+	2. Redistributions in binary form must reproduce the above copyright
+	   notice, this list of conditions and the following disclaimer in the
+	   documentation and/or other materials provided with the distribution.
+	
+	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+	OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+	POSSIBILITY OF SUCH DAMAGE.
+*/
+
+	/* parse the configuration and include all functions used below */
+	require_once("config.inc");
+	require_once("functions.inc");
+	
+	$fp = fopen('php://stdin', 'r');
+	
+	$cdlist = get_cdrom_list();
+	$disklist = get_physical_disks_list();
+	
+	echo "Install FreeNAS on small partition 1 and create partition 2 for DATA\n";
+	echo "\nWARNING: It will erase ALL your partitions and data on the destination hard drive!\n";
+	echo "\nWARNING: You can't install FreeNAS if it's allready installed (Use upgrade from Web GUI)\n";
+	echo "\nHere is the list of detected CDROM:\n";
+	
+	foreach ($cdlist as $cdromk =>$cdromv) 	{
+		echo "$cdromk (desc: {$cdromv['desc']})\n";
+	}
+	
+	do {
+		echo "\nEnter the name of the CD-ROM drive: ";
+		$cdrom = chop(fgets($fp));
+		if ($cdrom === "") {
+			exit(0);
+		}
+	} while (!is_validaliasname($cdrom));
+
+	echo "Here is the list of detected disk:\n";
+
+	foreach ($disklist as $diskk => $diskv) 	{
+		echo "$diskk (desc: {$diskv['desc']})\n";
+	}
+	
+	do {
+		echo "\nEnter the name of the Hard Drive: ";
+		$harddrive = chop(fgets($fp));
+		if ($harddrive === "") {
+			exit(0);
+		}
+	} while (!is_validaliasname($harddrive));
+	
+	/* check if destination drive is mounted */
+
+	if (disks_check_mount($harddrive)) 	{
+		echo "\nYour destination drive is allready used!\n";
+		fgets($fp);
+		exit(0);
+	}
+
+	if(system_install_mount_cd($cdrom)) 	{
+		echo "\nMeet a problem for mounting the CDROM.\n";
+		fgets($fp);
+		exit(0);
+	}
+	
+	if(system_install_init_halfdisk($harddrive)) 	{
+		echo "\nMeet a problem for initializing the destination disk.\n";
+		system_install_unmount();
+		exit(0);
+	}
+	
+	$harddrive="$harddrive" . "s1";
+	if(system_install_installation($harddrive)) 	{
+		echo "\nMeet a problem during file copying.\n";
+		system_install_unmount();
+		exit(0);
+	}
+	
+	system_install_unmount();
+	
+	echo <<<EOD
+	
+FreeNAS has been installed on $harddrive.
+You can now remove the CD-ROM and reboot the PC.
+
+For using the DATA partition:
+1. Add the disk $harddrive on the Disks:Management page
+2. Add the mount point on the disks:Mount point page
+(disk: $harddrive, partition 2, Filesystem: UFS)
+
+Press ENTER to continue.
+
+EOD;
+
+	fgets($fp);
+?>

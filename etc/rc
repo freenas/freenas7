@@ -1,0 +1,67 @@
+#!/bin/sh
+#
+# /etc/rc 
+#part of FreeNAS (http://www.freenas.org)
+#Copyright (C) 2005-2006 Olivier Cochard <cochard@gmail.com>.
+#All rights reserved.
+#
+#Based on m0n0wall (http://m0n0.ch/wall)
+#Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+#All rights reserved.
+	
+
+stty status '^T'
+
+# Set shell to ignore SIGINT (2), but not children;
+# shell catches SIGQUIT (3) and returns to single user.
+#
+trap : 2
+trap "echo 'Boot interrupted'; exit 1" 3
+
+HOME=/
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin
+
+export HOME PATH
+
+#Mount the ramdisk / in Read-Write
+mount -u -o rw /
+
+set -T
+trap "echo 'Reboot interrupted'; exit 1" 3
+
+# make some directories in /var
+mkdir /var/run /var/log /var/etc /var/etc/ssh /var/db /var/log/samba /var/mount /var/etc/private /var/empty
+# Special for afpd
+mkdir /var/spool
+mkdir /var/spool/lock
+
+# generate circular logfiles
+clog -i -s 262144 /var/log/system.log
+clog -i -s 32768 /var/log/ftp.log
+clog -i -s 32768 /var/log/rsyncd.log
+clog -i -s 32768 /var/log/sshd.log
+clog -i -s 32768 /var/log/lastlog
+clog -i -s 32768 /var/log/smartd.log
+clog -i -s 32768 /var/log/daemon.log
+#touch /var/log/system.log
+#touch /var/log/ftp.log
+#touch /var/log/rsyncd.log
+#touch /var/log/sshd.log
+#touch /var/log/lastlog
+chmod 0600 /var/log/*.log
+
+adjkerntz -i
+
+# Create an initial utmp file
+cd /var/run && cp /dev/null utmp && chmod 644 utmp
+
+# Run ldconfig
+/sbin/ldconfig -elf /usr/lib /usr/local/lib /lib
+
+# let the PHP-based configuration subsystem set up the system now
+/etc/rc.bootup
+
+/etc/rc.banner
+
+exit 0
+
