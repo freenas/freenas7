@@ -379,7 +379,7 @@ create_mfsroot() {
 	# umount the /mnt directory if allready used
 	umount $TMPDIR
 	mount /dev/md0c $TMPDIR
-	cd /mnt
+	cd $TMPDIR
 	tar -cf - -C $FREENAS ./ | tar -xvpf -
 	cd $WORKINGDIR
 	umount $TMPDIR
