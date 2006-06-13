@@ -1,0 +1,1919 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.3//EN"
+"http://www.oasis-open.org/docbook/xml/4.3/docbookx.dtd">
+<book>
+  <title>FreeNAS Developers' Handbook - NetBSD release</title>
+
+  <bookinfo>
+    <date>April 24, 2006</date>
+
+    <author>
+      <firstname>Olivier</firstname>
+
+      <surname>Cochard-Labbé</surname>
+    </author>
+
+    <copyright>
+      <year>2006</year>
+
+      <holder>FreeNAS Documentation Project.</holder>
+    </copyright>
+
+    <legalnotice>
+      <para>This document is based on the <ulink
+      url="http://doc.m0n0.ch/dev/">m0n0wall Developers'
+      Handbook</ulink></para>
+
+      <para>All rights reserved. Redistribution and use in any form, with or
+      without modification, are permitted provided that the following
+      conditions are met:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Redistributions must retain the above copyright notice, this
+          list of conditions and the following disclaimer.</para>
+        </listitem>
+      </itemizedlist>
+
+      <itemizedlist>
+        <listitem>
+          <para>Neither the name of the FreeNAS Documentation Project nor the
+          names of its contributors may be used to endorse or promote products
+          derived from this documentation without specific prior written
+          permission.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>THIS DOCUMENTATION IS PROVIDED BY THE COPYRIGHT HOLDERS AND
+      CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+      BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+      FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+      COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+      INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+      NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF
+      USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+      ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+      (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+      THIS DOCUMENTATION OR THE ASSOCIATED SOFTWARE, EVEN IF ADVISED OF THE
+      POSSIBILITY OF SUCH DAMAGE.</para>
+
+      <para>October 2005</para>
+    </legalnotice>
+  </bookinfo>
+
+  <chapter>
+    <title>Using the sources</title>
+
+    <para>This is the easiest way for studing/modify FreeNAS.</para>
+
+    <sect1>
+      <title>Installation of the developpement environement</title>
+
+      <para>Install FreeBSD on your PC, following the standard
+      procedure.</para>
+    </sect1>
+
+    <sect1>
+      <title>Downloading the source</title>
+
+      <para>Download the FreeNAS sources on sourceforge, untar it, Edit the
+      file, modifying it, created the modified ISO.</para>
+    </sect1>
+  </chapter>
+
+  <chapter>
+    <title>Building FreeNAS from Scratch</title>
+
+    <para>This is the longest way for studing/modify FreeNAS, but with this
+    can be usefull if you want to add lot's of binary file or others...</para>
+
+    <sect1>
+      <title>Resources</title>
+
+      <para>Here is where I found some information about FreeBSD:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><ulink url="http://www.netbsd.org">Official NetBSD
+          Website</ulink></para>
+        </listitem>
+
+        <listitem>
+          <para><ulink url="http://www.netbsd.org/guide/en/index.html">The
+          NetBSD Guide</ulink></para>
+        </listitem>
+
+        <listitem>
+          <para><ulink url="https://neon1.net/misc/minibsd.html">miniBSD -
+          reducing FreeBSD</ulink></para>
+        </listitem>
+
+        <listitem>
+          <para><ulink
+          url="ftp://iso.fr.netbsd.org/pub/NetBSD/NetBSD-3.0/">Download the
+          NetBSD 3 CD</ulink></para>
+        </listitem>
+      </itemizedlist>
+    </sect1>
+
+    <sect1>
+      <title>Install NetBSD for developers</title>
+
+      <sect2>
+        <title>Base Installation</title>
+
+        <para>Install NetBSD 3.0 without games and X11.</para>
+
+        <para>In the beginning of the install process:</para>
+
+        <para>Create only 2 partition the root ("/") and the SWAP.</para>
+
+        <para>In the last configuration step of the installation
+        process:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Create a new user at the end and put it in the “wheel” group
+            (Mandatory for using the “su root” command).</para>
+          </listitem>
+
+          <listitem>
+            <para>Enable the SSHD daemon</para>
+          </listitem>
+        </itemizedlist>
+      </sect2>
+
+      <sect2>
+        <title>Configuring Package</title>
+
+        <para>Set the PKG_PATH variable:</para>
+
+        <para><command>export
+        PKG_PATH=ftp://ftp.fr.netbsd.org/pub/NetBSD/packages/3.0/i386/All</command></para>
+
+        <para>And install these additionnal package:</para>
+
+        <para>If your are using NetBSD 3.0:</para>
+
+        <para><command>pkg_add wget</command></para>
+
+        <para>Or if your are using NetBSD 3-current:</para>
+
+        <para><command>cd /usr/pkgsrc/net/wget</command></para>
+
+        <para><command>make</command></para>
+
+        <para><command>make install</command></para>
+
+        <para><command></command></para>
+      </sect2>
+
+      <sect2>
+        <title>User and Shell customization</title>
+
+        <para>Install Bash Shell</para>
+
+        <para>Personally I prefer working with the Bash Sell.</para>
+
+        <para>Download and Install the Bash shell:</para>
+
+        <para><command>pkg_add bash</command></para>
+
+        <para>(“-r“ option is for remote downloading: FTP). Then, using this
+        command:</para>
+
+        <para><command>vipw</command></para>
+
+        <para>and modify the shell with the Bash :
+        <code>/usr/pkg/bin/bash</code></para>
+
+        <para>Customizing the bash profile for displaying the actual directory
+        in the prompt:</para>
+
+        <para><command>cd</command></para>
+
+        <para><command>cp .profile .bash_profile</command></para>
+
+        <para>And put these lines at the end of this file:</para>
+
+        <para><code># set prompt: ``username@hostname:/directory $ ''
+        </code></para>
+
+        <para><code>PS1="[\u@\h:\w] " </code></para>
+
+        <para><code>case `id -u` in 0) </code></para>
+
+        <para><code>PS1="${PS1}# ";; *) </code></para>
+
+        <para><code>PS1="${PS1}$ ";; </code></para>
+
+        <para><code>esac</code></para>
+      </sect2>
+
+      <sect2>
+        <title>Updating sources</title>
+
+        <sect3>
+          <title>Install CVS</title>
+
+          <para>Download &amp; Install CVS with this command:</para>
+
+          <para><command>pkg_add cvs</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Configuring CVS</title>
+
+          <para>Configuring the CVS variable:</para>
+
+          <para><command>export CVS_RSH=ssh</command></para>
+
+          <para><command>export
+          CVSROOT=:ext:anoncvs@anoncvs.fr.NetBSD.org:/cvsroot</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Update the sources</title>
+
+          <para>Put the system on time with ntp:</para>
+
+          <para><command>ntpdate fr.pool.ntp.org</command></para>
+
+          <para>And download the pkgsrc:</para>
+
+          <para><command>cd /usr</command></para>
+
+          <para><command>ftp
+          ftp://ftp2.fr.netbsd.org/pub/NetBSD/NetBSD-current/tar_files/pkgsrc.tar.gz</command></para>
+
+          <para><command>tar zxvf pkgsrc.tar.gz</command></para>
+
+          <para><command>cd /usr/pkgsrc</command></para>
+
+          <para><command>#cvs -d $CVSROOT update -dPA</command></para>
+
+          <para><command>cvs -q -d $CVSROOT update -dP</command></para>
+
+          <para><command># cvs option explanation:</command></para>
+
+          <para><command># -q : for quiet</command></para>
+
+          <para><command># -P : removing empty directory</command></para>
+
+          <para><command># -d : create new directory</command></para>
+
+          <para><command>cd /usr</command></para>
+
+          <para><command>ftp
+          ftp://ftp2.fr.netbsd.org/pub/NetBSD/NetBSD-current/tar_files/src/</command></para>
+
+          <para><command>prompt</command></para>
+
+          <para><command>mget *.gz</command></para>
+
+          <para><command>bye</command></para>
+
+          <para><command>tar zxvf *.gz (don't works, must be enter for each
+          file)</command></para>
+
+          <para><command></command></para>
+
+          <para><command>cd /usr/src</command></para>
+
+          <para><command>cvs -d $CVSROOT update -dPA</command></para>
+        </sect3>
+      </sect2>
+
+      <sect2>
+        <title>Re-Building World</title>
+
+        <para>Then use this commands for re-build all the source: (take some
+        long time).</para>
+
+        <para>I've followed instructions from <ulink
+        url="http://www.netbsd.org/Documentation/current/#updating">Tracking
+        NetBSD current</ulink>.</para>
+
+        <para>Create the destination directory:</para>
+
+        <para><command>cd /usr/src</command></para>
+
+        <para><command>mkdir ../obj</command></para>
+
+        <para><command>mkdir ../tools</command></para>
+
+        <para>Build the toolschain:</para>
+
+        <para><command>./build.sh -O ../obj -T ../tools -U -u
+        tools</command></para>
+
+        <para>Build the distribution:</para>
+
+        <para><command>./build.sh -O ../obj -T ../tools -U -u
+        distribution</command></para>
+
+        <para>Build the kernel (I'm using GENERIC.MP):</para>
+
+        <para><command>./build.sh -O ../obj -T ../tools -U -u
+        kernel=GENERIC.MP</command></para>
+
+        <para>Install the kernel:</para>
+
+        <para><command>cd
+        /usr/src/sys/arch/i386/compile/obj/GENERIC.MP/</command></para>
+
+        <para><command>make install</command></para>
+
+        <para>Reboot for testing this new kernel:</para>
+
+        <para><command>reboot</command></para>
+
+        <para>Install the new userland:</para>
+
+        <para><command>cd /usr/src</command></para>
+
+        <para><command>./build.sh -O ../obj -T ../tools -U
+        install=/</command></para>
+
+        <para>Follow the instruction in the output for fixing obsolete files,
+        for example:</para>
+
+        <para><command>/usr/src/usr.sbin/postinstall -s /usr/src -d // fix
+        defaults mtree obsolete</command></para>
+
+        <para>Update /etc:</para>
+
+        <para><command>/usr/sbin/etcupdate -s /usr/src/etc</command></para>
+
+        <para>Final reboot:</para>
+
+        <para><command>reboot</command></para>
+      </sect2>
+
+      <sect2>
+        <title>For information only: Build a NetBSD-current CDROM</title>
+
+        <para>For information only, here is how to build a NetBSD-current
+        CDROM:</para>
+
+        <para>Recreate all the:</para>
+
+        <para>ftp://ftp.netbsd.org/pub/NetBSD-daily/HEAD/200605010000Z/i386/</para>
+
+        <para>ftp://ftp.netbsd.org/pub/NetBSD-daily/HEAD/200605010000Z/shared/</para>
+
+        <para>Put it in the /root/netbsd-current for example</para>
+
+        <para>And create the CDROM:</para>
+
+        <para>mkisofs -v -b i386/installation/floppy/boot-big.fs \ -c
+        boot.catalog -r -J -V NetBSD -o NetBSD-install.iso
+        /root/netbsd-current</para>
+      </sect2>
+    </sect1>
+
+    <sect1>
+      <title>FreeNAS under NetBSD</title>
+
+      <para>Here is I will explain how to install the tools and PHP script use
+      for FreeNAS...</para>
+
+      <sect2>
+        <title>Define the system variables</title>
+
+        <sect3>
+          <title>Working dirs</title>
+
+          <para>First step, create the path variable:</para>
+
+          <para><command>export
+          WORKINGDIR="/usr/local/freenas"</command></para>
+
+          <para><command>export
+          FREENAS="/usr/local/freenas/rootfs"</command></para>
+
+          <para><command>export
+          BOOTDIR="/usr/local/freenas/bootloader"</command></para>
+
+          <para><command>export
+          CDROOT="/usr/local/freenas/cdroot"</command></para>
+        </sect3>
+      </sect2>
+
+      <sect2>
+        <title>Building the root file system</title>
+
+        <sect3>
+          <title>Create the working dir</title>
+
+          <para>Second step, create the working directory:</para>
+
+          <para><command>mkdir $WORKINGDIR</command></para>
+
+          <para><command>mkdir $FREENAS</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Long way</title>
+
+          <para>Then, create the minimum root structure:</para>
+
+          <para><command>cd $FREENAS</command></para>
+
+          <para><command>mkdir bin cf conf.default dev etc ftmp mnt root sbin
+          tmp usr var libexec lib</command></para>
+
+          <para><command>chmod 777 mnt/</command></para>
+
+          <para><command>mkdir etc/inc etc/defaults etc/pam.d
+          etc/ssh</command></para>
+
+          <para><command>ln -s /var/etc/master.passwd
+          etc/master.passwd</command></para>
+
+          <para><command>ln -s /var/etc/passwd etc/passwd</command></para>
+
+          <para><command>ln -s /var/etc/pwd.db etc/pwd.db</command></para>
+
+          <para><command>ln -s /var/etc/spwd.db etc/spwd.db</command></para>
+
+          <para><command>ln -s /var/etc/resolv.conf etc/resolv.conf
+          </command></para>
+
+          <para><command>##ln -s cf/conf conf</command></para>
+
+          <para><command>##ln -s /var/etc/crontab etc/crontab</command></para>
+
+          <para><command>ln -s /var/etc/ssh/sshd_config
+          etc/ssh/sshd_config</command></para>
+
+          <para><command>ln -s /var/etc/ssh/ssh_host_dsa_key
+          etc/ssh/ssh_host_dsa_key</command></para>
+
+          <para><command>ln -s /var/etc/pam.d/ftp
+          etc/pam.d/ftp</command></para>
+
+          <para><command>ln -s /var/etc/pam.d/sshd
+          etc/pam.d/sshd</command></para>
+
+          <para><command>ln -s /var/etc/pam.d/login
+          etc/pam.d/login</command></para>
+
+          <para><command>ln -s /var/etc/nsswitch.conf
+          etc/nsswitch.conf</command></para>
+
+          <para><command>cp /dev/MAKEDEV dev/</command></para>
+
+          <para><command>cd usr</command></para>
+
+          <para><command>mkdir bin lib libexec local sbin
+          share</command></para>
+
+          <para><command>mkdir share/empty (for vsftpd)</command></para>
+
+          <para><command>##mkdir lib/aout</command></para>
+
+          <para><command>cd local</command></para>
+
+          <para><command>mkdir bin lib sbin www</command></para>
+
+          <para><command>ln -s /var/run/htpasswd
+          www/.htpasswd</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Short way</title>
+
+          <para>Use the script <ulink
+          url="http://freenas.org/downloads/freenas-create-dirs.sh">freenas-create-dirs.sh</ulink>
+          (don't forget to edit it before for setting the directory):</para>
+
+          <para><command>fetch
+          http://freenas.org/downloads/freenas-create-dirs.sh</command></para>
+
+          <para><command>./freenas-create-dirs.sh</command> it will create the
+          root dir for you...</para>
+        </sect3>
+
+        <sect3>
+          <title>Directory explanation</title>
+
+          <para>Here is the explanation of this directories:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>/cf is where the Compact Flash card (or the hard disk, or
+              the floppy disk) is mounted later on</para>
+            </listitem>
+
+            <listitem>
+              <para>/conf.default contains the factory default
+              config.xml</para>
+            </listitem>
+
+            <listitem>
+              <para>/conf (or /cf/conf effectively due to the symlink)
+              contains the current config.xml</para>
+            </listitem>
+
+            <listitem>
+              <para>/ftmp is used to mount a temporary memory file system
+              during a firmware upgrade through the webGUI</para>
+            </listitem>
+
+            <listitem>
+              <para>/etc/inc contains PHP include files that are used by both
+              the boot scripts and the webGUI</para>
+            </listitem>
+
+            <listitem>
+              <para>/usr/local/www contains the webGUI pages</para>
+            </listitem>
+
+            <listitem>
+              <para>the symbolic link for .htpasswd is required as the boot
+              scripts will write the webGUI user/password to
+              /var/run/htpasswd</para>
+            </listitem>
+
+            <listitem>
+              <para>/boot are used by fdisk ans bsdlabel</para>
+            </listitem>
+
+            <listitem>
+              <para>/boot/kernel will contain the kernel modules</para>
+            </listitem>
+          </itemizedlist>
+        </sect3>
+      </sect2>
+
+      <sect2>
+        <title>Copying required binaries</title>
+
+        <para>Download the file <ulink
+        url="http://www.freenas.org/downloads/freenas.files">freenas.files</ulink>
+        that will be use with the <ulink
+        url="http://www.freenas.org/downloads/mkmini.pl">mkmini.pl</ulink>:</para>
+
+        <para><command>wget
+        http://www.freenas.org/downloads/freenas-netbsd.files</command></para>
+
+        <para><command>wget
+        http://www.freenas.org/downloads/mkmini.pl</command></para>
+
+        <para>This file contain the list of all the binary files used for this
+        distribution.</para>
+
+        <para>Install Perl with this command:</para>
+
+        <para><command>pkg_add
+        ftp://ftp.fr.netbsd.org/pub/NetBSD/packages/3.0/i386/All/perl-5.8.7nb8.tgz</command></para>
+
+        <para><command></command></para>
+
+        <para><command>cd /usr/pkgsrc/lang/perl5/</command></para>
+
+        <para><command>make fetch-list | sh</command></para>
+
+        <para><command>make</command></para>
+
+        <para><command>make install</command></para>
+
+        <para>Use the mkmini Perl script with this command (it will copy the
+        file listed in freenas.files in the root directory:</para>
+
+        <para><command>perl mkmini.pl freenas.files /
+        $FREENAS</command></para>
+      </sect2>
+
+      <sect2>
+        <title>Preparing /etc</title>
+
+        <sect3>
+          <title>Installing the etc archive and PHP configuration
+          scripts</title>
+
+          <para>Download the <ulink
+          url="http//www.freenas.org/downloads/freenas-etc.tgz">freenas-etc.tgz</ulink>
+          and decompress it in the $FREENAS/ directory:</para>
+
+          <para><command>fetch
+          http//www.freenas.org/downloads/freenas-etc.tgz</command></para>
+
+          <para><command>tar -xzf freenas-etc.tgz -C
+          $FREENAS/</command></para>
+
+          <para>Make sure that the rc.* files int etc/rc have the execute
+          permission bits set (chmod 755).</para>
+        </sect3>
+
+        <sect3>
+          <title>Additional Notes</title>
+
+          <para>For saving the file in a tgz, use this command:</para>
+
+          <para><command>tar cfvz freenas-etc.tgz
+          $FREENAS/etc/*</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Configuring platform variable</title>
+
+          <para>Adding the version:</para>
+
+          <para><command>echo "0.642b" &gt;
+          $FREENAS/etc/version</command></para>
+
+          <para>Adding the version build time:</para>
+
+          <para><command>date &gt;
+          $FREENAS/etc/version.buildtime</command></para>
+
+          <para>Adding the platform:</para>
+
+          <para>/etc/platform identifies the platform for which the image is
+          built and is very important, as the PHP scripts use it to determine
+          e.g. how the configuration is to be stored or which options should
+          be available in the webGUI. Possible values are:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>generic-pc</para>
+            </listitem>
+
+            <listitem>
+              <para>generic-pc-cdrom</para>
+            </listitem>
+          </itemizedlist>
+
+          <para><command>echo "generic-pc-cdrom" &gt;
+          $FREENAS/etc/platform</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Config file: config.xml</title>
+
+          <para>Download the latest default config.xml from <ulink
+          url="http://freenas.org/downloads/config.xml">http://freenas.org/downloads/config.xml</ulink>
+          and put it in $FREENAS/conf.default/config.xml:</para>
+
+          <para><command>cd $FREENAS/conf.default/</command></para>
+
+          <para><command>fetch http://freenas.org/downloads/config.xml
+          </command></para>
+        </sect3>
+
+        <sect3>
+          <title>Zone Info</title>
+
+          <para>FreeBSD keeps time zone information files in
+          /usr/share/zoneinfo. In order to save space, m0n0wall uses a
+          stripped down version of the contents of that directory and keeps
+          them in a tarball....Then FreeNAS do the same! Download zoneinfo.tgz
+          from <ulink
+          url="http://freenas/org/downloads/zoneinfo.tgz">http://freenas/org/downloads/zoneinfo.tgz</ulink>
+          and place it in $FREENAS/usr/share/zoneinfo.tgz.</para>
+
+          <para><command>cd $FREENAS/usr/share/</command></para>
+
+          <para><command>fetch
+          http://freenas/org/downloads/zoneinfo.tgz</command></para>
+
+          <para><command></command></para>
+
+          <para><command>For NetBSD:</command></para>
+
+          <para><command>cd /usr/share/zoneinfo/</command></para>
+
+          <para><command>tar cvfz zoneinfo.tgz *</command></para>
+
+          <para><command>cp zoneinfo.tgz $FREENAS/usr/share/</command></para>
+
+          <para><command></command></para>
+
+          <para><command>Termcap:</command></para>
+
+          <para><command>cp /usr/src/distrib/i386/floppies/common/termcap.mini
+          $FREENAS/usr/share/misc/termcap</command></para>
+        </sect3>
+      </sect2>
+
+      <sect2>
+        <title>Building the kernel</title>
+
+        <sect3>
+          <title>Compiling and compressing the kernel</title>
+
+          <para>Download the kernel configuration file for the platform that
+          you want to build for from <ulink
+          url="http://freenas.org/downloads/FREENAS_GENERIC">http://freenas.org/downloads/FREENAS_GENERIC</ulink>
+          and copy it to /sys/i386/conf:</para>
+
+          <para><command>cd /usr/src/sys/arch/i386/conf</command></para>
+
+          <para><command>fetch
+          http://freenas.org/downloads/FREENAS_NETBSD</command></para>
+
+          <para>Then execute the following commands to compile the kernel and
+          modules:</para>
+
+          <para><command>config FREENAS_GENERIC</command></para>
+
+          <para><command>cd ../compile/FREENAS_GENERIC/</command></para>
+
+          <para><command>make depend</command></para>
+
+          <para><command>make</command></para>
+
+          <para>The kernel will be installed later, as it doesn't go directly
+          into the root file system.</para>
+
+          <para>These line must be present in your customized Kernel
+          file:</para>
+
+          <para><code>#FREENAS MEMORY DISK OPTIONS</code></para>
+
+          <para><code>options MEMORY_DISK_HOOKS</code></para>
+
+          <para><code>options MEMORY_DISK_IS_ROOT</code></para>
+
+          <para><code>options MEMORY_DISK_SERVER=1</code></para>
+
+          <para><code>options MEMORY_DISK_ROOT_SIZE=65536</code></para>
+
+          <para><code>options MEMORY_RBFLAGS=0</code></para>
+
+          <para></para>
+
+          <para>Remove the MULTIBOOT option (if not Grub can't start the
+          image)</para>
+
+          <remark>If you want to modify the config file (for including modules
+          for example), don't forget to delete the
+          /sys/i386/compile/FREENAS_GENERIC directory, and re-start the config
+          command.</remark>
+        </sect3>
+      </sect2>
+
+      <sect2>
+        <title>Building the software package</title>
+
+        <para>Here the list of software compiled and added to FreeNAS. For
+        some packages, the standard "./configure &amp;&amp; make &amp;&amp;
+        make install" procedure can be used; others need a few extra configure
+        options to produce a small binary.</para>
+
+        <sect3>
+          <title>PHP</title>
+
+          <para>PHP Download the latest version of PHP 4.4 from <ulink
+          url="http://www.php.net">http://www.php.net</ulink> and decompress
+          as usual. Build/install as follows:</para>
+
+          <para><command>wget
+          http://www.php.net/get/php-4.4.2.tar.gz/from/fr.php.net/mirror</command></para>
+
+          <para><command>tar zxvf php-4.4.2.tar.gz</command></para>
+
+          <para><command>cd php-4.4.2</command></para>
+
+          <para><command>./configure --without-mysql --without-pear
+          --with-openssl --enable-discard-path</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp sapi/cgi/php
+          $FREENAS/usr/local/bin/</command></para>
+
+          <para>Put the following in $FREENAS/usr/local/lib/php.ini:</para>
+
+          <para><code>magic_quotes_gpc = Off </code></para>
+
+          <para><code>magic_quotes_runtime = Off </code></para>
+
+          <para><code>max_execution_time = 0 </code></para>
+
+          <para><code>max_input_time = 180 </code></para>
+
+          <para><code>register_argc_argv = Off </code></para>
+
+          <para><code>file_uploads = On </code></para>
+
+          <para><code>upload_tmp_dir = /ftmp </code></para>
+
+          <para><code>upload_max_filesize = 32M </code></para>
+
+          <para><code>post_max_size = 48M </code></para>
+
+          <para><code>html_errors = Off </code></para>
+
+          <para><code>include_path = ".:/etc/inc:/usr/local/www"</code></para>
+        </sect3>
+
+        <sect3>
+          <title>mini_httpd</title>
+
+          <para>Download mini_httpd 1.19 from <ulink
+          url="http://www.acme.com/software/mini_httpd/mini_httpd-1.19.tar.gz">http://www.acme.com/software/mini_httpd/mini_httpd-1.19.tar.gz</ulink>
+          and extract:</para>
+
+          <para><command>wget
+          http://www.acme.com/software/mini_httpd/mini_httpd-1.19.tar.gz</command></para>
+
+          <para><command>tar zxvf mini_httpd-1.19.tar.gz</command></para>
+
+          <para><command>cd mini_httpd-1.19</command></para>
+
+          <para>A custom patch needs to be applied that:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>adds a limit to the number of concurrent connections to
+              prevent DoS attacks (since mini_httpd is a forking web
+              server)</para>
+            </listitem>
+
+            <listitem>
+              <para>adds captive portal mode support</para>
+            </listitem>
+
+            <listitem>
+              <para>sets SCRIPT_FILENAME (for php)</para>
+            </listitem>
+
+            <listitem>
+              <para>fixes a bug where mini_httpd would exit if a TCP
+              connection was closed before mini_httpd had a chance to handle
+              it (ECONNABORTED)</para>
+            </listitem>
+
+            <listitem>
+              <para>adds "index.php" to the list of index file names</para>
+            </listitem>
+
+            <listitem>
+              <para>makes the error pages much more plain</para>
+            </listitem>
+
+            <listitem>
+              <para>doesn't add a Server: header</para>
+            </listitem>
+
+            <listitem>
+              <para>patches the Makefile to build mini_httpd with SSL
+              support</para>
+            </listitem>
+          </itemizedlist>
+
+          <para>Download the patch:</para>
+
+          <para><command>wget
+          http://freenas.org/downloads/patchs/mini_httpd.c.patch</command></para>
+
+          <para>Apply the patch, compile and install as follows:</para>
+
+          <para><command>patch &lt; mini_httpd.c.patch</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp mini_httpd
+          $FREENAS/usr/local/sbin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Lighthttpd</title>
+
+          <para>Download, compile and install Lighthttpd:</para>
+
+          <para><command>fetch
+          http://www.lighttpd.net/download/lighttpd-1.4.11.tar.gz</command></para>
+
+          <para><command>tar zxvf lighttpd-1.4.11.tar.gz</command></para>
+
+          <para><command>cd lighttpd-1.4.11</command></para>
+
+          <para><command>./configure --sysconfdir=/var/etc/ --enable-lfs
+          --without-mysql --without-ldap --with-openssl
+          --without-lua</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>make</command> <command>install -s mini_httpd
+          $FREENAS/usr/local/sbin</command></para>
+        </sect3>
+
+        <sect3>
+          <title>clog</title>
+
+          <para>Get the clog patch and the syslog patched file (from the
+          Pfsense project):</para>
+
+          <para><command>wget
+          http://freenas.org/downloads/clog-1.0.1.tar.gz</command></para>
+
+          <para><command>wget
+          http://freenas.org/downloads/syslogd_clog-current.tgz</command></para>
+
+          <para><command>cd /usr/src/usr.bin/</command></para>
+
+          <para><command>tar zxvf clog-1.0.1.tar.gz</command></para>
+
+          <para><command>tar zxvf syslogd_clog-current.tgz</command></para>
+
+          <para><command>cd syslogd</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>install -s syslogd
+          $FREENAS/usr/sbin/</command></para>
+
+          <para><command>cd ../clog</command></para>
+
+          <para><command>gcc clog.c -o clog</command></para>
+
+          <para><command>install -s clog $FREENAS/usr/sbin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>MSNTP</title>
+
+          <para>Compile and install the MSNTP ports:</para>
+
+          <para><command>wget
+          ftp://ftp.openpkg.org/sources/DST/msntp/msntp-1.6.tar.gz</command></para>
+
+          <para><command>tar zxvf msntp-1.6.tar.gz</command></para>
+
+          <para><command>cd msntp-1.6</command></para>
+
+          <para><command>vi Makefile</command></para>
+
+          <para>Uncomment these lines:</para>
+
+          <para><code># These options will work on most modern systems. Start
+          with them, and add</code></para>
+
+          <para><code># any necessary options.</code></para>
+
+          <para><code>CC = cc </code></para>
+
+          <para><code>CFLAGS = -O </code></para>
+
+          <para><code>LDFLAGS = </code></para>
+
+          <para><code>LIBS = -lm</code></para>
+
+          <para>And launch the make:</para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp msntp $FREENAS/usr/local/bin/</command></para>
+
+          <para>Then create this script:</para>
+
+          <para><command>vi
+          $FREENAS/usr/local/bin/runmsntp.sh</command></para>
+
+          <para>And put this command in:</para>
+
+          <para><code>#!/bin/sh</code></para>
+
+          <para><code># write our PID to file</code></para>
+
+          <para><code>echo $$ &gt; $1</code></para>
+
+          <para><code># execute msntp in endless loop; restart if
+          it</code></para>
+
+          <para><code># exits (wait 1 second to avoid restarting too fast in
+          case</code></para>
+
+          <para><code># the network is not yet setup)while true;
+          do</code></para>
+
+          <para><code>/usr/local/bin/msntp -r -P no -l $2 -x $3
+          $4</code></para>
+
+          <para><code>sleep 1</code></para>
+
+          <para><code>done</code></para>
+
+          <para>And change this permission:</para>
+
+          <para><command>chmod +x
+          $FREENAS/usr/local/bin/runmsntp.sh</command></para>
+        </sect3>
+
+        <sect3>
+          <title>ataidle</title>
+
+          <para>Compile and install the ataidle ports:</para>
+
+          <para><command>cd /usr/ports/sysutils/ataidle</command></para>
+
+          <para><command>wget
+          http://www.cran.org.uk/bruce/software/ataidle-0.9.tar.gz</command></para>
+
+          <para><command>tar zxvf ataidle-0.9.tar.gz</command></para>
+
+          <para><command>cd ataidle-0.9</command></para>
+
+          <para><command></command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>install -s work/ataidle-0.9/ataidle
+          $FREENAS/usr/local/sbin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>iscsi initiator</title>
+
+          <para>Download, compile and install the iscsi initaor:</para>
+
+          <para><command>fetch
+          ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-16.tar.bz2</command></para>
+
+          <para><command>tar zxvf iscsi-16.tar.bz2</command></para>
+
+          <para><command>cd sys</command></para>
+
+          <para><command>ln -s /sys/kern .</command></para>
+
+          <para><command>ln -s /sys/tools .</command></para>
+
+          <para><command>cd modules/iscsi_initiator</command></para>
+
+          <para><command>make clean</command></para>
+
+          <para><command>ln -s ../.. @</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp iscsi_initiator.ko
+          $FREENAS/boot/kernel/</command></para>
+
+          <para><command>cd ../../../iscontrol/</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>install -s iscontrol
+          $FREENAS/usr/local/sbin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Vsftp</title>
+
+          <para>Download and compile it:</para>
+
+          <para><command>wget
+          ftp://vsftpd.beasts.org/users/cevans/vsftpd-2.0.4.tar.gz</command></para>
+
+          <para><command>tar zxvfvsftpd-2.0.4.tar.gz</command></para>
+
+          <para><command>cd vsftpd-2.0.4</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp vsftpd $FREENAS/usr/local/sbin/</command></para>
+
+          <para><command></command></para>
+
+          <para><command>Test:</command></para>
+
+          <para><command>wget
+          http://www.teatime.com.tw/~tommy/linux/vsftpd_iconv.patch</command></para>
+
+          <para><command></command></para>
+        </sect3>
+
+        <sect3>
+          <title>Samba (CIFS server)</title>
+
+          <para>Get the last Samba source:</para>
+
+          <para><command>wget
+          http://us1.samba.org/samba/ftp/stable/samba-3.0.22.tar.gz</command></para>
+
+          <para><command>tar zxvf samba-3.0.22.tar.gz</command></para>
+
+          <para><command>cd samba-3.0.22/source/</command></para>
+
+          <para>Then configure and make the source (ERROR WITH PAM
+          WINBIND):</para>
+
+          <para>Edit nsswitch/pam_windbind.c and change the 4 lines reference
+          to 'PAM_AUTHTOK_RECOVER_ERR' by 'PAM_AUTHTOK_RECOVERY_ERR'.</para>
+
+          <para></para>
+
+          <para><command>./configure --without-cups --with-ads --disable-cups
+          --without-ads --with-pam --with-ldapsam --with-acl-support
+          --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba
+          --with-piddir=/var/run --with-privatedir=/var/etc/private
+          --with-configdir=/var/etc --with-lockdir=/var/run
+          --with-piddir=/var/run</command></para>
+
+          <para><command>(TEST FOR BUG)
+          --with-shared-modules=idmap_rid</command></para>
+
+          <para><command></command></para>
+
+          <para><command>Under NetBSD:</command></para>
+
+          <para><command>./configure --without-cups --disable-cups
+          --without-ads --with-pam --with-ldapsam --with-acl-support
+          --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba
+          --with-piddir=/var/run --with-privatedir=/var/etc/private
+          --with-configdir=/var/etc --with-lockdir=/var/run
+          --with-piddir=/var/run
+          --with-hared-modules=idmap_rid</command></para>
+
+          <para><command></command></para>
+
+          <para><command>Edit file: configure.in</command></para>
+
+          <para><command></command></para>
+
+          <para><command>AC_CHECK_LIB(iconv, libiconv_open)</command></para>
+
+          <para><command></command></para>
+
+          <para><command>Using PKGSRC :</command></para>
+
+          <para><command>cd /usr/pkgsrc/net/samba</command></para>
+
+          <para><command>make show-options</command></para>
+
+          <para><command>///echo "PKG_OPTIONS.samba+=ads ldap pam winbind"
+          &gt;&gt; /etc/mk.conf</command></para>
+
+          <para><command>make PKG_OPTIONS.samba+="ads ldap pam winbind""
+          </command></para>
+
+          <para><command></command></para>
+
+          <para><command></command></para>
+
+          <para><command></command></para>
+
+          <para><command>make</command></para>
+
+          <para>install samba:</para>
+
+          <para><command>cp bin/smbd $FREENAS/usr/local/sbin/</command></para>
+
+          <para><command>cp bin/nmbd $FREENAS/usr/local/sbin/</command></para>
+
+          <para><command>cp bin/winbindd
+          $FREENAS/usr/local/sbin/</command></para>
+
+          <para><command>cp bin/smbpasswd
+          $FREENAS/usr/local/bin/</command></para>
+
+          <para><command>cp bin/net $FREENAS/usr/local/bin/</command></para>
+
+          <para><command>cp bin/wbinfo
+          $FREENAS/usr/local/bin/</command></para>
+
+          <para><command>cp nsswitch/libnss_winbind.so
+          $FREENAS/usr/local/lib/</command></para>
+
+          <para><command>cp nsswitch/libnss_wins.so
+          $FREENAS/usr/local/lib/</command></para>
+
+          <para><command>#cp nsswitch/pam_winbind.so
+          $FREENAS/usr/local/lib/</command></para>
+
+          <para><command>cp nsswitch/pam_winbind.so
+          $FREENAS/usr/lib/security</command></para>
+
+          <para><command>ln -s $FREENAS/usr/local/lib/nss_winbind.so
+          $FREENAS/usr/local/lib/nss_winbind.so.1</command></para>
+
+          <para><command>mkdir $FREENAS/usr/local/samba</command></para>
+
+          <para><command>mkdir $FREENAS/usr/local/samba/lib</command></para>
+
+          <para><command>mkdir
+          $FREENAS/usr/local/samba/lib/idmap</command></para>
+
+          <para><command>cp bin/rid.so
+          $FREENAS/usr/local/samba/lib/idmap</command></para>
+
+          <para><command>mkdir $FREENAS/usr/local/lib/samba</command></para>
+
+          <para><command>mkdir
+          $FREENAS/usr/local/lib/samba/vfs</command></para>
+
+          <para><command>mkdir
+          $FREENAS/usr/local/lib/samba/charset</command></para>
+
+          <para><command>mkdir
+          $FREENAS/usr/local/lib/samba/rpc</command></para>
+
+          <para><command>mkdir
+          $FREENAS/usr/local/lib/samba/pdb</command></para>
+
+          <para><command>cp bin/CP*.so
+          $FREENAS/usr/local/lib/samba/charset</command></para>
+
+          <para><command>cp codepages/*.dat
+          $FREENAS/usr/local/lib/samba/</command></para>
+
+          <para><command>cp po/*.*
+          $FREENAS/usr/local/lib/samba/</command></para>
+
+          <para><command></command></para>
+        </sect3>
+
+        <sect3>
+          <title>NFS</title>
+
+          <para>Install the NFS server with this commands:</para>
+
+          <para><command>cp /usr/sbin/nfsd $FREENAS/usr/sbin</command></para>
+
+          <para><command>cp /usr/sbin/mountd
+          $FREENAS/usr/sbin</command></para>
+
+          <para><command>cp /usr/sbin/rpcbind
+          $FREENAS/usr/sbin</command></para>
+
+          <para>that's all...</para>
+        </sect3>
+
+        <sect3>
+          <title>Netatalk</title>
+
+          <para>First step: insalling Berkeley DB:</para>
+
+          <para><command>cd /usr/pkgsrc/databases/db4/</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command></command></para>
+
+          <para><command>Bug in NetAtalk configure script,
+          then:</command></para>
+
+          <para><command>cp /usr/pkg/include/db4/db*.*
+          /usr/pkg/include</command></para>
+
+          <para>STILL DON'T WANT TO COMPILE!!</para>
+
+          <para>Download, compile and install netatalk:</para>
+
+          <para><command>wget
+          http://ovh.dl.sourceforge.net/sourceforge/netatalk/netatalk-2.0.3.tar.gz
+          </command></para>
+
+          <para><command>tar zxvf netatalk-2.0.3.tar.gz</command></para>
+
+          <para><command>cd netatalk-2.0.3</command></para>
+
+          <para><command>./configure --bindir=/usr/local/bin
+          --sbindir=/usr/local/sbin --sysconfdir=/var/etc --localstatedir=/var
+          --enable-largefile --disable-tcp-wrappers --disable-cups --with-pam
+          --with-uams-path=/etc/uams/ --with-bdb=/usr/pkg</command></para>
+
+          <para><command></command></para>
+
+          <para><command></command></para>
+
+          <para><command>install -s etc/afpd/afpd
+          $FREENAS/usr/local/sbin/</command></para>
+
+          <para><command>mkdir $FREENAS/etc/uams</command></para>
+
+          <para><command>cp etc/uams/.libs/uams_passwd.so
+          $FREENAS/etc/uams</command></para>
+
+          <para><command>cp etc/uams/.libs/uams_dhx_passwd.so
+          $FREENAS/etc/uams</command></para>
+
+          <para><command>cp etc/uams/.libs/uams_guest.so
+          $FREENAS/etc/uams</command></para>
+
+          <para><command>cp etc/uams/.libs/uams_randnum.s
+          $FREENAS/etc/uams</command></para>
+
+          <para><command>cd $FREENAS/etc/uams</command></para>
+
+          <para><command>ln -s uams_passwd.so uams_clrtxt.so</command></para>
+
+          <para><command>ln -s uams_dhx_passwd.so uams_dhx.so</command></para>
+
+          <para><command>cd $FREENAS/usr/local/lib/</command></para>
+
+          <para><command>cp /usr/local/lib/libdb-4.2.so.2 .</command></para>
+
+          <para><command>cd $FREENAS/usr/lib/</command></para>
+
+          <para><command>cp /usr/lib/librpcsvc.so.3 .</command></para>
+
+          <para><command></command></para>
+
+          <para><command>NetBSD release:</command></para>
+
+          <para><command></command></para>
+
+          <para><command>cd /usr/pkgsrc/net/netatalk</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cd work/netatalk-2.0.3</command></para>
+
+          <para><command>cp etc/afpd/afpd
+          /usr/local/freenas/rootfs/usr/local/sbin/</command></para>
+
+          <para><command>mkdir
+          /usr/local/freenas/rootfs/usr/libexec/netatalk</command></para>
+
+          <para><command>mkdir
+          /usr/local/freenas/rootfs/usr/libexec/netatalk/uams</command></para>
+
+          <para><command>cp etc/uams/.libs/uams_passwd.so
+          /usr/local/freenas/rootfs/usr/libexec/netatalk/uams/</command></para>
+
+          <para><command>cp etc/uams/.libs/uams_dhx_passwd.so
+          /usr/local/freenas/rootfs/usr/libexec/netatalk/uams/</command></para>
+
+          <para><command>cp etc/uams/.libs/uams_guest.so
+          /usr/local/freenas/rootfs/usr/libexec/netatalk/uams/</command></para>
+
+          <para><command>cp etc/uams/.libs/uams_randnum.so
+          /usr/local/freenas/rootfs/usr/libexec/netatalk/uams/</command></para>
+
+          <para><command>cd
+          $FREENAS/usr/libexec/netatalk/uams</command></para>
+
+          <para><command>ln -s uams_passwd.so uams_clrtxt.so</command></para>
+
+          <para><command>ln -s uams_dhx_passwd.so uams_dhx.so</command></para>
+
+          <para><command>cp /usr/pkg/lib/libdb4-4.4.so.4
+          $FREENAS/usr/local/lib</command></para>
+
+          <para><command></command></para>
+
+          <para><command></command></para>
+        </sect3>
+
+        <sect3>
+          <title>RSYNC</title>
+
+          <para>Download, compile and install RSYNC:</para>
+
+          <para><command>wget
+          http://www.samba.org/ftp/rsync/rsync-2.6.7.tar.gz</command></para>
+
+          <para><command>tar zxvf rsync-2.6.7.tar.gz</command></para>
+
+          <para><command>cd rsync-2.6.7</command></para>
+
+          <para><command>./configure
+          --with-rsyncd-conf=/var/etc</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp rsync $FREENAS/usr/local/bin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>scponly</title>
+
+          <para>Compile and install the scponly ports:</para>
+
+          <para><command>wget
+          http://www.sublimation.org/scponly/scponly-4.6.tgz</command></para>
+
+          <para><command>tar zxvf scponly-4.6.tgz</command></para>
+
+          <para><command>cd scponly-4.6</command></para>
+
+          <para><command>./configure --enable-scp-compat
+          --enable-winscp-compat --enable-rsync-compat</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp scponly $FREENAS/usr/local/bin/</command></para>
+
+          <para><command></command></para>
+
+          <para>Add the 2 binary for WinSCP don't display error:</para>
+
+          <para><command>cp /bin/pwd $FREENAS/bin/</command></para>
+
+          <para><command>cp /usr/bin/groups $FREENAS/usr/bin</command></para>
+
+          <para>Notes:</para>
+
+          <para>RSYNC must be installed for the '--enable-rsync-compact'
+          option works</para>
+        </sect3>
+
+        <sect3>
+          <title>e2fsck</title>
+
+          <para>Compile and install the UPnP SDK ports:</para>
+
+          <para><command>cd /usr/ports/sysutils/e2fsprogs/</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>install -s /work/e2fsprogs-1.38/e2fsck/e2fsck
+          $FREENAS/usr/local/sbin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>SMART tools</title>
+
+          <para>Compile the SMART tools ports:</para>
+
+          <para><command>wget
+          http://ovh.dl.sourceforge.net/sourceforge/smartmontools/smartmontools-5.36.tar.gz</command></para>
+
+          <para><command>tar zxvf smartmontools-5.36.tar.gz</command></para>
+
+          <para><command>cd smartmontools-5.36</command></para>
+
+          <para><command>./configure</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp smartctl $FREENAS/usr/local/sbin/</command></para>
+
+          <para><command>cp smartd $FREENAS/usr/local/sbin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>aacli</title>
+
+          <para>Compile the aacli ports:</para>
+
+          <para><command>cd /usr/ports/sysutils/aaccli/</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>tar zxvf work/aaccli-1.0_0.tgz</command></para>
+
+          <para><command>cp work/bin/aaccli
+          $FREENAS/usr/local/bin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Beep</title>
+
+          <para>Compile the beep ports:</para>
+
+          <para><command>cd /usr/ports/audio/beep</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>install -s work/beep/beep
+          $FREENAS/usr/local/bin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Nano</title>
+
+          <para>Install nano pkg:</para>
+
+          <para><command>pkg_add nano</command></para>
+
+          <para>And install it:</para>
+
+          <para><command>cp /usr/pkg/bin/nano
+          $FREENAS/usr/local/bin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Howl (Zeroconf)</title>
+
+          <para>Download Howl source, compile and install it:</para>
+
+          <para><command>wget
+          http://www.porchdogsoft.com/download/howl-1.0.0.tar.gz</command></para>
+
+          <para><command>tar zxvf howl-1.0.0.tar.gz</command></para>
+
+          <para><command>cd howl-1.0.0</command></para>
+
+          <para><command>./configure --sysconfdir=/var/etc</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp src/mDNSResponder/.libs/mDNSResponder
+          $FREENAS/usr/local/sbin/</command></para>
+
+          <para><command>cp src/lib/mDNSResponder/.libs/libmDNSResponder.so.0
+          $FREENAS/usr/local/lib/</command></para>
+
+          <para><command>cp src/lib/howl/.libs/libhowl.so.0
+          $FREENAS/usr/local/lib/</command></para>
+        </sect3>
+      </sect2>
+
+      <sect2>
+        <title>Building the boot loader</title>
+
+        <sect3>
+          <title>Script</title>
+
+          <para>Make a new directory:</para>
+
+          <para><command>mkdir $BOOTDIR</command></para>
+
+          <para>And copy the CD-ROM bootloader into this directory:</para>
+
+          <para><command>cp /usr/pkg/lib/grub/i386-/iso9660_stage1_5
+          $BOOTDIR</command></para>
+
+          <para><command>cp /usr/pkg/lib/grub/i386-/stage2_eltorito
+          $BOOTDIR</command></para>
+
+          <para>Coping the kernel in this directory:</para>
+
+          <para><command>cp /usr/src/sys/arch/i386/compile/FREENAS/netbsd
+          $BOOTDIR</command></para>
+        </sect3>
+      </sect2>
+
+      <sect2>
+        <title>Adding the libraries</title>
+
+        <para>None of the dynamically linked libraries that are needed have
+        been added yet. This is because a Perl script, <ulink
+        url="http://freenas.org/downloads/mklibs.pl">mklibs.pl</ulink>, can be
+        run on the root file system to create a list of libraries that are
+        actually needed (mklibs.pl does this by running ldd on each
+        binary).</para>
+
+        <para><command>wget http://www.freenas.org/downloads/mklibs.pl
+        </command></para>
+
+        <para><command>perl mklibs.pl $FREENAS &gt;
+        freenas.libs</command></para>
+
+        <para><command>perl mkmini.pl freenas.libs / $FREENAS</command></para>
+
+        <para>Don't forget the libexec too:</para>
+
+        <para><command>cp /libexec/ld.elf_so .
+        $FREENAS/libexec</command></para>
+
+        <para><command>ln -s /libexec/ld.elf_so
+        $FREENAS/usr/libexec</command></para>
+
+        <para>Adding the PAM library:</para>
+
+        <para><command>mkdir $FREENAS/usr/lib/security</command></para>
+
+        <para><command>cp -p /usr/lib/security/*.*
+        $FREENAS/usr/lib/security</command></para>
+
+        <para>The LDAP PAM are not bulding by default:</para>
+
+        <para><command>cd /usr/ports/security/pam_ldap/</command></para>
+
+        <para><command>make install</command></para>
+
+        <para><command>cp -p /usr/local/lib/pam_ldap.so
+        $FREENAS/usr/local/lib</command></para>
+      </sect2>
+
+      <sect2>
+        <title>Adding Web GUI</title>
+
+        <para>Download the <ulink
+        url="http://freenas.org/downloads/freenas-gui.tgz">FreeNAS GUI
+        files</ulink> and copy them to $FREENAS/usr/local/www</para>
+
+        <para>Make sure that all *.php files have the execute permission bits
+        set (chmod 755).</para>
+
+        <para><command>fetch
+        http://freenas.org/downloads/freenas-gui.tgz</command></para>
+
+        <para><command>tar -xzf freenas-gui.tgz -C
+        $FREENAS/usr/local</command></para>
+      </sect2>
+
+      <sect2>
+        <title>Creating the image (for hard drive or CF)</title>
+
+        <para>Use the script <ulink
+        url="http://freenas.org/downloads/freenas-netbsd-create-image.sh">freenas-netbsd-create-image.sh</ulink>
+        (don't forget to edit it before for setting the directory):</para>
+
+        <para>This is very similar to creating the mfsroot:</para>
+
+        <programlisting>#!/bin/sh
+# FreeNAS script for generating .img
+# setting variables
+
+FREENAS="/usr/freenas/rootfs"
+WORKINGDIR="/usr/freenas"
+CDROOT="/usr/freenas/imgroot"
+BOOTDIR="/usr/freenas/bootloader"
+PLATFORM="generic-pc"
+VERSION=`cat $FREENAS/etc/version`
+ISOFILENAME="FreeNAS-$PLATFORM-$VERSION.img"
+
+# Remove old directory
+if [ -d $CDROOT ] ; then
+        echo ;
+        echo "$CDROOT already exists.  Removing this directory" ;
+        echo ;
+        echo ;
+    rm -rf $CDROOT;
+    #exit ;
+fi ;
+
+if [ $WORKINGDIR/$ISOFILENAME ] ; then
+        echo ;
+        echo "$ISOFILENAME already exists.  Removing this directory" ;
+        echo ;
+        echo ;
+    rm $WORKINGDIR/$ISOFILENAME;
+    #exit ;
+fi ;
+#Setting the variable for CF image:
+echo $PLATFORM &gt; $FREENAS/etc/platform
+date &gt; $FREENAS/etc/version.buildtime
+
+#Generating the mfsroot file:
+makefs $WORKINGDIR/mfsroot $FREENAS
+
+#Moving the kernel
+cp $BOOTDIR/netbsd $WORKINGDIR/
+
+#Insering the mfsroot into the kernel:
+mdsetimage -v -s $WORKINGDIR/netbsd $WORKINGDIR/mfsroot
+
+#Compressing the kernel/image:
+gzip -f -9 $WORKINGDIR/netbsd
+
+#Setting the permission of this image:
+chmod a+x $WORKINGDIR/netbsd.gz
+
+#echo Generating $CDROOT folder:
+mkdir $CDROOT
+
+#Creating a 16Mb empty file
+dd if=/dev/zero of=image.bin bs=1k count=18432
+
+#Remove the existing virtual disk:
+vnconfig -u vnd1
+
+#use this file as a virtual RAM disk
+vnconfig -v -c vnd1 image.bin
+
+#Create label on this disk:
+disklabel vnd1 | sed "s/label: fictitious/label:/" | sed "s/d:/#d:/" &gt; disklabel.proto
+disklabel -R -r vnd1 disklabel.proto
+rm disklabel.proto
+
+#Create filesystem on this disk
+newfs -m 0 vnd1a
+
+# Install the bootloader:
+installboot -v -m i386 -o timeout=3,console=com0 -t ffs /dev/rvnd1a /usr/mdec/bootxx_ffsv1
+
+#Mount this disk:
+mount /dev/vnd1a $CDROOT
+
+#Copying the kernel/mfs on this image:
+cp $WORKINGDIR/netbsd.gz $CDROOT
+
+#Copying the second stage bootloader on this image:
+cp /usr/mdec/boot $CDROOT
+
+#Copy the default config file on this image:
+
+mkdir $CDROOT/conf
+cp $FREENAS/conf.default/config.xml $CDROOT/conf
+
+#Unmount the image:
+umount $CDROOT
+
+#close the memory image:
+vnconfig -u vnd1
+
+#Compress the image
+gzip -9 image.bin
+
+#Rename the image file:
+mv image.bin.gz $ISOFILENAME
+
+# Cleaning directory and temp file
+if [ $WORKINGDIR/mfsroot ] ; then
+echo ;
+        echo "cleaning mfsroot" ;
+        echo ;
+rm $WORKINGDIR/mfsroot 
+fi;
+
+if [ -d $CDROOT ] ; then
+        echo ;
+        echo "cleaning $CDROOT by Removing this directory" ;
+        echo ;
+        echo ;
+    rm -rf $CDROOT;
+fi ;</programlisting>
+
+        <para></para>
+      </sect2>
+
+      <sect2>
+        <title>Creating CD-ROM</title>
+
+        <sect3>
+          <title>Installing CDRTools and Grub</title>
+
+          <para>Before to create a Bootable CD, we must install CRDTools and
+          Grub:</para>
+
+          <para>If you use the NetBSD 3 release:</para>
+
+          <para><command>pkg_add cdrtools</command></para>
+
+          <para><command>pkg_add grub</command></para>
+
+          <para>Or if you use the NetBSD-Release version:</para>
+
+          <para><command>cd /usr/pkgsrc/sysutils/cdrtools</command></para>
+
+          <para><command>make fetch-list | sh</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>make install</command></para>
+
+          <para><command>cd /usr/pkgsrc/sysutils/grub</command></para>
+
+          <para><command>make fetch-list | sh</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>make install</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Script</title>
+
+          <para>The script <ulink
+          url="http://freenas.org/downloads/freenas-create-msfroot.sh">freenas-netbsd-create-cd.sh</ulink>
+          (don't forget to edit it before for setting the directory):</para>
+
+          <para>Create a new directory to hold the contents of the CD-ROM in
+          $CDROOT:</para>
+
+          <programlisting>#!/bin/sh
+# FreeNAS script for generating iso file
+FREENAS="/usr/freenas/rootfs"
+WORKINGDIR="/usr/freenas"
+CDROOT="/usr/freenas/cdroot"
+BOOTDIR="/usr/freenas/bootloader"
+PLATFORM="generic-pc-cdrom"
+VERSION=`cat $FREENAS/etc/version`
+ISOFILENAME="FreeNAS-$VERSION.iso"
+#remove old directory
+if [ -d $CDROOT ] ; then
+        echo ;
+        echo "$CDROOT already exists.  Removing this directory" ;
+        echo "before running this script." ;
+        echo ;
+        #echo "Exiting..." ;
+        echo ;
+    rm -rf $CDROOT;
+    #exit ;
+fi ;
+#Setting the variable for CF image:
+echo "$PLATFORM" &gt; $FREENAS/etc/platform
+date &gt; $FREENAS/etc/version.buildtime
+
+#Generating the mfsroot file
+# -s 20m : Size 20 MB
+# -f 100 : Permit to create 100 files on
+makefs -s 20m -f 100 $WORKINGDIR/mfsroot $FREENAS
+
+#Copying the kernel
+cp $BOOTDIR/netbsd $WORKINGDIR/freenascd
+
+#Insering the mfsroot into the kernel:
+mdsetimage -v -s $WORKINGDIR/freenascd $WORKINGDIR/mfsroot
+
+#Compressing the kernel/image:
+gzip -f -9 $WORKINGDIR/freenascd
+
+#Setting the permission of this image:
+chmod a+x $WORKINGDIR/freenascd.gz
+
+echo Generating $CDROOT folder:
+mkdir $CDROOT
+mkdir $CDROOT/boot
+mkdir $CDROOT/boot/grub
+
+#Moving the CF-Image on the CD:
+mv $WORKINGDIR/freenascd.gz $CDROOT/boot/freenascd.gz
+
+#Copying the Grub boot file on this folder:
+cp /usr/pkg/lib/grub/i386-/iso9660_stage1_5 $CDROOT/boot/grub
+cp /usr/pkg/lib/grub/i386-/stage2_eltorito $CDROOT/boot/grub
+
+#Generating the Grub menu configuration file:
+echo "# /boot/grub/menu.lst" &gt; $CDROOT/boot/grub/menu.lst
+echo "default 0" &gt;&gt; $CDROOT/boot/grub/menu.lst
+echo "timeout 1" &gt;&gt; $CDROOT/boot/grub/menu.lst
+echo "title FreeNAS-NetBSD Release $VERSION" &gt;&gt; $CDROOT/boot/grub/menu.lst
+echo "kernel --type=netbsd /boot/freenascd.gz" &gt;&gt; $CDROOT/boot/grub/menu.lst
+echo "boot" &gt;&gt; $CDROOT/boot/grub/menu.lst
+
+#Generating the CF-image:
+$WORKINGDIR/freenas-create-image.sh
+
+#Copy th CF-Image on the CD:
+cp $WORKINGDIR/FreeNAS-generic-pc-$VERSION.img $CDROOT/FreeNAS-generic-pc.gz
+
+#Generating the CDROM
+mkisofs -b boot/grub/stage2_eltorito -no-emul-boot -boot-load-size 4 -boot-info-table -A "FreeNAS CD-ROM image" -c "boot.catalog" -l -J -d -R -L -publisher "www.freenas.org" -p "Olivier Cochard-Labbe" -V "freenas_cd" -o "$ISOFILENAME" $CDROOT
+
+if [ -d $CDROOT ] ; then
+        echo ;
+        echo "Cleaning directory" ;
+        echo ;
+        echo ;
+            rm -rf $CDROOT;
+rm mfsroot;
+           #exit ;
+fi ;
+
+
+</programlisting>
+
+          <para></para>
+        </sect3>
+      </sect2>
+
+      <sect2>
+        <title>PXE Boot</title>
+
+        <sect3>
+          <title>Long way</title>
+
+          <para>Create the tftpboot folder:</para>
+
+          <para><command>mkdir /tftpboot</command></para>
+
+          <para><command>$TFTPBOOT=/tftpboot</command></para>
+
+          <para><command>export TFTBOOT</command></para>
+
+          <para><command></command></para>
+
+          <para>Recompile the PXE boot loader for booting from TFTP in the
+          place of NFS:</para>
+
+          <para><command>cd /sys/boot</command></para>
+
+          <para><command>make clean</command></para>
+
+          <para><command>make LOADER_TFTP_SUPPORT=yes</command></para>
+
+          <para><command>cp /usr/obj/usr/src/sys/boot/i386/pxeldr/pxeboot
+          $TFTPBOOT</command></para>
+
+          <para><command>cp mfsroot.gz $TFTPBOOT</command></para>
+
+          <para>Create a new directory to hold the contents of the CD-ROM in
+          $CDROOT.</para>
+
+          <para>Then copying the file on the /tftpboot folder:</para>
+
+          <para>cp $BOOTDIR/kernel/kernel.gz $TFTPBOOT/boot/kernel</para>
+
+          <para>cp $BOOTDIR/kernel/acpi.ko $TFTPBOOT/boot/kernel</para>
+
+          <para></para>
+        </sect3>
+
+        <sect3>
+          <title>Short way</title>
+
+          <para>Use the script <ulink
+          url="http://freenas.org/downloads/freenas-create-msfroot.sh">freenas-create-cd.sh</ulink>
+          (don't forget to edit it before for setting the directory):</para>
+
+          <para><command>fetch
+          http://freenas.org/downloads/freenas-create-cd.sh</command></para>
+
+          <para><command>./freenas-create-cd.sh</command></para>
+
+          <para>it will create the bootable CD ISO file for you...</para>
+        </sect3>
+      </sect2>
+    </sect1>
+  </chapter>
+</book>
