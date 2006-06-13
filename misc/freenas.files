@@ -1,0 +1,363 @@
+# freenas.files
+# List of files required for a the FreeNAS,
+# intended to be parsed by mkmini.pl (script created by Manuel Kasper <mk@neon1.net>)
+#
+# Lines with colons (':') in them list files that should be hard-linked
+# to each other, e.g.
+#     bin/link:bin/ln
+# instructs mkmini.pl to copy over bin/link, then hard link ln to it.
+
+####### contents of /bin
+
+## Test: condition evaluation utility
+bin/[:bin/test
+
+##  cat -- concatenate and print files
+bin/cat
+
+## chio -- medium changer control utility
+#bin/chio
+
+## chmod -- change file modes
+bin/chmod
+
+## cp -- copy files
+bin/cp
+
+## tcsh - C shell with file name completion and command line editing
+bin/csh:bin/tcsh
+
+## date -- display or set date and time
+bin/date
+
+## dd -- convert and copy a file
+bin/dd
+
+##  df -- display free disk space
+bin/df
+
+## domainname -- set or print name of current YP/NIS domain
+# bin/domainname
+
+## echo -- write arguments to the standard output
+bin/echo
+
+## ed, red -- text editor
+#bin/ed:bin/red
+
+##  expr -- evaluate expression
+bin/expr
+
+##  hostname -- set or print name of current host system
+bin/hostname
+
+## kill -- terminate or signal a process
+bin/kill
+
+## ln, link -- make links
+#bin/link:bin/ln
+
+## ls -- list directory contents
+bin/ls
+
+##  mkdir -- make directories
+bin/mkdir
+
+##  mv -- move files
+bin/mv
+
+## pax -- read and write file archives and copy directory hierarchies
+#bin/pax
+
+##ps -- process status
+bin/ps
+
+##pwd -- return working directory name
+#Prevent WinSCP to Generate Error message
+bin/pwd:bin/realpath
+
+## rm, unlink -- remove directory entries
+bin/rm:bin/unlink
+
+## rmdir -- remove directories
+#bin/rmdir
+
+##sh -- command interpreter (shell)
+bin/sh
+
+## sleep -- suspend execution for an interval of time
+bin/sleep
+
+## stty -- set the options for a terminal device interface
+bin/stty
+
+## sync -- force completion of pending disk writes (flush cache)
+bin/sync
+
+
+###### contents of /sbin
+# adjkerntz -- adjust local time CMOS clock to reflect time zone changes and keep current timezone offset for the kernel
+sbin/adjkerntz
+
+## comcontrol -- control a special tty device
+# sbin/comcontrol
+
+## bsdlabel -- read and write disk pack label
+sbin/bsdlabel
+
+##devfs -- DEVFS control (NEW from FreeBSD 5.2, replace the )
+sbin/devfs
+
+## dhclient -- Dynamic Host Configuration Protocol (DHCP) client
+sbin/dhclient
+
+## dhclient-script -- DHCP client network configuration script
+sbin/dhclient-script
+
+## bsdlabel -- read and write disk pack label
+#sbin/disklabel
+
+## dmesg -- display the system message buffer
+sbin/dmesg
+
+## reboot, halt, fastboot, fasthalt -- stopping and restarting the system
+sbin/fastboot:sbin/fasthalt:sbin/halt:sbin/reboot
+
+##  fdisk -- PC slice table maintenance utility
+sbin/fdisk
+
+## fsck -- file system consistency check and interactive repair
+sbin/fsck
+
+## fsck -- UFS file system consistency check and interactive repair
+sbin/fsck_ufs
+
+## fsck -- DOS/WINDOWS file system consistency check and interactive repair
+sbin/fsck_msdosfs
+
+## Gconcat -- Geom concat
+sbin/gconcat
+
+## gstripe -- Geom stripe
+sbin/gstripe
+
+## gmirror -- Geom mirror
+sbin/gmirror
+
+## gvinum -- Volume manager (RAID0,1,5)
+/sbin/gvinum
+
+## ifconfig -- configure network interface parameters
+sbin/ifconfig
+
+## init -- process control initialization
+sbin/init
+
+##ipfw -- IP firewall and traffic shaper control program
+#sbin/ipfw
+
+## kldconfig -- display or modify the kernel module search path
+# sbin/kldconfig
+
+## kldload -- load a file into the kernel
+sbin/kldload
+
+## kldstat -- display status of dynamic kernel linker
+#sbin/kldstat
+
+## kldunload -- unload a file from the kernel
+sbin/kldunload
+
+## ldconfig -- configure the shared library cache
+sbin/ldconfig
+
+## md5, sha1, sha256, rmd160 -- calculate a message-digest fingerprint (checksum) for a file
+# sbin/md5
+
+# mdconfig -- configure and enable memory disks
+sbin/mdconfig
+
+## mknod -- build special file
+sbin/mknod
+
+## mount -- mount file systems
+sbin/mount
+
+## mount_std, mount_devfs, mount_fdescfs, mount_linprocfs, mount_procfs -- mount ``standard'' file systems
+sbin/mount_devfs:sbin/mount_fdescfs:sbin/mount_linprocfs:sbin/mount_procfs:sbin/mount_std:
+
+## mdmfs, mount_mfs -- configure and mount an in-memory file system using the md(4) driver
+#sbin/mount_mfs
+sbin/mdmfs
+
+## mount_nullfs -- mount a loopback file system sub-tree; demonstrate the use of a null file system layer
+sbin/mount_nullfs
+
+## mount_umapfs -- sample file system layer
+sbin/mount_umapfs
+
+## mount_unionfs -- mount union file systems
+sbin/mount_unionfs
+
+##  mount_msdosfs -- mount an MS-DOS file system
+sbin/mount_msdosfs
+
+## mount_ntfs -- mount an NTFS file system
+sbin/mount_ntfs
+
+## mount_ext2fs -- mount an ext2fs file system
+sbin/mount_ext2fs
+
+## mount_cd9660 -- mount an CDROM file system
+sbin/mount_cd9660
+
+## natd -- Network Address Translation daemon
+#sbin/natd
+
+## newsfs -- construct a new UFS1/UFS2 file system
+sbin/newfs
+
+## newsfs -- construct a FAT (16/32) file system
+sbin/newfs_msdos
+
+##nologin -- politely refuse a login
+sbin/nologin
+
+## ping -- send ICMP ECHO_REQUEST packets to network hosts
+sbin/ping
+
+## route -- manually manipulate the routing tables
+sbin/route
+
+##  shutdown -- close down the system at a given time
+sbin/shutdown
+
+## slattach -- attach serial lines as network interfaces
+#sbin/slattach
+
+## swapon, swapoff, swapctl -- specify devices for paging and swapping
+#sbin/swapon
+
+##sysctl -- get or set kernel state
+sbin/sysctl
+
+##tunefs -- tune up an existing file system
+sbin/tunefs
+
+## umount -- unmount file systems
+sbin/umount
+
+# atacontrol: manage IDE disk
+sbin/atacontrol
+
+# camcontrol: manage SCSI disk
+sbin/camcontrol
+
+####### contents of /usr/bin
+
+## FTP/HTTP download tools
+/usr/bin/fetch
+
+## This utility prevent WinSCP to display error message
+usr/bin/group
+
+## gzip, gunzip, zcat - compress or expand files
+usr/bin/gzip:usr/bin/gunzip
+
+## killall -- kill processes by name
+usr/bin/killall
+
+## logger -- make entries in the system log
+usr/bin/logger
+
+##  netstat -- show network status
+usr/bin/netstat
+
+## nohup -- invoke a utility immune to hangups
+usr/bin/nohup
+
+## passwd -- Change user passwd
+/usr/bin/passwd
+
+## su -- substitute user identity
+usr/bin/su
+
+## tail -- display the last part of a file
+usr/bin/tail
+
+## tar -- manipulate tape archives
+usr/bin/tar
+
+## top - display and update information about the top cpu processes
+usr/bin/top
+
+## touch -- create/change file access and modification times
+usr/bin/touch
+
+## uptime -- show how long system has been running
+usr/bin/uptime:usr/bin/w
+
+##scp -- secure copy (remote file copy program)
+/usr/bin/scp
+
+
+###### contents of usr/sbin
+##  ancontrol -- configure Aironet 4500/4800 devices
+usr/sbin/ancontrol
+
+## arp -- address resolution display and control
+usr/sbin/arp
+
+#boot0cfg -- boot manager installation/configuration utility
+#usr/sbin/boot0cfg
+
+## chown -- change file owner and group
+usr/sbin/chown
+
+##chroot -- change root directory
+usr/sbin/chroot
+
+## cron - The scheduler
+/usr/sbin/cron
+
+## the dev_mkdb is not present since FreeBSD 5.2 reaplced by devfs
+#usr/sbin/dev_mkdb
+
+## nsupdate - Dynamic DNS update utility
+#usr/sbin/nsupdate
+
+## pccarrd doesn't exist on freeBSD 6
+#usr/sbin/pccardd
+
+## pwd_mkdb -- generate the password databases
+usr/sbin/pwd_mkdb
+
+## setkey -- manually manipulate the IPsec SA/SP database
+#usr/sbin/setkey
+
+##  traceroute - print the route packets take to network host
+usr/sbin/traceroute
+
+# wicontrol -- configure Lucent, Intersil, and Atheros wireless devices
+usr/sbin/wicontrol
+
+###### contents of /usr/libexec
+# ld-elf.so.1, ld.so, rtld -- run-time link-editor
+libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
+
+## atrun -- run jobs queued for later execution
+#usr/libexec/atrun
+
+## ftpd -- Internet File Transfer Protocol server (need PAM)
+# usr/libexec/ftpd
+
+## getty -- set terminal mode
+#usr/libexec/getty
+
+#usr/libexec/named-xfer
+#usr/libexec/sftp-server
+#usr/libexec/telnetd
+#usr/libexec/tftpd
+
+# contents of /usr/share
+usr/share/misc/termcap
