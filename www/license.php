@@ -1,0 +1,104 @@
+#!/usr/local/bin/php
+<?php 
+$pgtitle = array("License");
+require("guiconfig.inc"); 
+?>
+<?php include("fbegin.inc"); ?>
+            <p><strong>FreeNAS is Copyright &copy; 2005-2006 by Olivier Cochard-Labbe 
+              (<a href="mailto:olivier@freenas.org">olivier@freenas.org</a>).<br>
+              All rights reserved.</strong></p>
+		<p>FreeNAS is based on m0n0wall which is Copyright &copy; 2002-2006 by Manuel Kasper (mk@neon1.net).</p>
+            <p> Redistribution and use in source and binary forms, with or without<br>
+              modification, are permitted provided that the following conditions 
+              are met:<br>
+              <br>
+              1. Redistributions of source code must retain the above copyright 
+              notice,<br>
+              this list of conditions and the following disclaimer.<br>
+              <br>
+              2. Redistributions in binary form must reproduce the above copyright<br>
+              notice, this list of conditions and the following disclaimer in 
+              the<br>
+              documentation and/or other materials provided with the distribution.<br>
+              <br>
+              <strong>THIS SOFTWARE IS PROVIDED &quot;AS IS'' AND ANY EXPRESS 
+              OR IMPLIED WARRANTIES,<br>
+              INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY<br>
+              AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT 
+              SHALL THE<br>
+              AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, 
+              EXEMPLARY,<br>
+              OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT 
+              OF<br>
+              SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR 
+              BUSINESS<br>
+              INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER 
+              IN<br>
+              CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)<br>
+              ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED 
+              OF THE<br>
+              POSSIBILITY OF SUCH DAMAGE</strong>.</p>
+            <hr size="1">
+            <p>The following persons have contributed to FreeNAS code:</p>
+             <p>Stefan Hendricks (<a href="mailto:info@henmedia.de">info@henmedia.de</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added some system information and processes page</font></em><br>
+             <p>Mat Murdock (<a href="mailto:mmurdock@kimballequipment.com">mmurdock@kimballequipment.com</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Improved the Rsync client page and code</font></em><br> 
+             <p>Vyatcheslav Tyulyukov<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Found and fixed some bugs: Software RAID display and beep</font></em><br> 
+            <p>The following persons have contributed to FreeNAS documentation project:</p>
+            <p>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Beta tester and user manual contributor</font></em><br>
+            <p>Regis Caubet (<a href="mailto:caubet.r@gmail.com">caubet.r@gmail.com</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">French translator of the user manual</font></em><br>
+            <p>The following persons have contributed to FreeNAS Website:</p>
+            <p>Youri Trioreau (<a href="mailto:youri.trioreau@no-log.org">youri.trioreau@no-log.org</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Webmaster</font></em><br>
+             	  <hr size="1">
+      <p>FreeNAS is based upon/includes various free software packages, listed 
+        below.<br>
+        The author of FreeNAS would like to thank the authors of these software 
+        packages for their efforts.</p>
+      <p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br>
+        Copyright &copy; 1995-2006 The FreeBSD Project. All rights reserved.</p>
+
+      <p> This product includes PHP, freely available from <a href="http://www.php.net/" target="_blank">http://www.php.net</a>.<br>
+        Copyright &copy; 2001-2006 The PHP Group. All rights reserved.</p>
+      <p> mini_httpd (<a href="http://www.acme.com/software/mini_httpd" target="_blank">http://www.acme.com/software/mini_httpd</a>)<br>
+
+        Copyright &copy; 1999, 2000 by Jef Poskanzer &lt;jef@acme.com&gt;. All rights reserved.</p>
+      
+      <p> OpenSSH (<a href="http://www.openssh.com/" target="_blank">http://www.openssh.com/</a>)<br>
+        Copyright &copy; 1999-2006 OpenBSD</p>
+        
+      <p> Samba (<a href="http://www.samba.org" target="_blank">http://www.samba.org</a>)<br>
+       </p>
+       
+      <p> Rsync (<a href="http://www.samba.org/rsync/" target="_blank">http://www.samba.org/rsync/</a>)<br>
+       </p>
+      
+      <p> vsftpd (<a href="http://vsftpd.beasts.org/" target="_blank">http://vsftpd.beasts.org/</a>)<br>
+        Chris Evans (chris@scary.beasts.org)</p>
+        
+      <p> Netatalk (<a href="http://netatalk.sourceforge.net/" target="_blank">http://netatalk.sourceforge.net/</a>)<br>
+        Copyright &copy; 1990,1996 Regents of The University of Michigan</p>
+        
+       <p> Howl (<a href="http://www.porchdogsoft.com/products/howl/" target="_blank">http://www.porchdogsoft.com/products/howl/</a>)<br>
+        Copyright &copy; 2003 - 2005 Porchdog Software, Inc. All rights reserved.</p>
+     
+      <p> Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd/" target="_blank">http://software.wwwi.com/syslogd</a>)<br>
+        Copyright &copy; 2001 Jeff Wheelhouse (jdw@wwwi.com)</p>
+     
+      <p>msntp (<a href="http://www.hpcf.cam.ac.uk/export" target="_blank">http://www.hpcf.cam.ac.uk/export</a>)<br>
+
+        Copyright &copy; 1996, 1997, 2000 N.M. Maclaren, University of Cambridge. 
+        All rights reserved.</p>
+      
+	  <p>ataidle (<a href="http://www.cran.org.uk/bruce/software/ataidle.php" target="_blank">http://www.cran.org.uk/bruce/software/ataidle.php</a>)<br>
+Copyright  &copy; 2004-2005 Bruce Cran &lt;bruce@cran.org.uk&gt;. All rights reserved.</p>
+
+	  <p>smartmontools (<a href="http://smartmontools.sourceforge.net" target="_blank">http://smartmontools.sourceforge.net</a>)<br>
+Copyright  &copy; 2002-2005 Bruce Allen.</p>
+           
+              
+<?php include("fend.inc"); ?>
