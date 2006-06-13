@@ -362,16 +362,16 @@ add_web_gui(){
 create_mfsroot() {
 	echo "Generating the MFSROOT filesystem"
 	cd $WORKINGDIR
-	[ -f mfsroot.gz ] && rm -f mfsroot.gz
-	[ -d svn ] && use_svn ;
+	[ -f $WORKINGDIR/mfsroot.gz ] && rm -f $WORKINGDIR/mfsroot.gz
+	[ -d $WORKINGDIR/svn ] && use_svn ;
 	
 	# Setting Version type and date
 	date > $FREENAS/etc/version.buildtime
 	
 	# Make mfsroot to be 32M
-	dd if=/dev/zero of=mfsroot bs=1M count=32
+	dd if=/dev/zero of=$WORKINGDIR/mfsroot bs=1M count=32
 	# Configure this file as a memory disk
-	mdconfig -a -t vnode -f mfsroot -u 0
+	mdconfig -a -t vnode -f $WORKINGDIR/mfsroot -u 0
 	# Create Label on this disk
 	bsdlabel -w md0 auto
 	# format it as UFS
@@ -384,7 +384,7 @@ create_mfsroot() {
 	cd $WORKINGDIR
 	umount $TMPDIR
 	mdconfig -d -u 0
-	gzip -9 mfsroot
+	gzip -9 $WORKINGDIR/mfsroot
 	return 0
 }
 
@@ -522,6 +522,7 @@ update_sources() {
 	
 	cd $WORKINGDIR
 	svn co https://svn.sourceforge.net/svnroot/freenas/trunk svn
+	
 	return 0
 
 }
@@ -534,7 +535,6 @@ use_svn() {
 	cp -p $SVNDIR/etc/inc/*.* $FREENAS/etc
 	cp -p $SVNDIR/www/*.* $FREENAS/usr/local/www
 	cp -p $SVNDIR/conf/*.* $FREENAS/conf.default
-	svn co https://svn.sourceforge.net/svnroot/freenas/trunk svn
 	
 	return 0
 
