@@ -2,7 +2,7 @@ FreeNAS (http://www.freenas.org)
 Olivier Cochard-Labbe (olivier@freenas.org)
 Licence: BSD
 
-Release: 0.67 (WORKING)
+Release: 0.67 (WORKING RELEASE)
 
 ============== SUMMARY =========
 
@@ -68,6 +68,35 @@ svn/misc/setupfreenas.sh
 
 ################ History Change logs ##############
 
+FreeNAS 0.67 (WORKING RELEASE):
+
+- Multilanguage WebGUI (thanks to Aliet Santiesteban Sifontes), French and spanich translation are work in progress.
+If you want translate the WebGUI, You can use the english file as reference file (this file is a work in progress and can change).
+and send me your translated file by email.
+
+- Upgrade to FreeBSD 6.1-STABLE
+- Update RSYNC to 2.6.8
+- Update Smartmon tools to 5.36
+- Replace Howl (maintenance stoped) by Apple Bonjour
+- CIFS: added dos charset 852, option for hidding share, hide folder ".snap" (thanks to Jorge Valdes)
+- Adding CLI tools: fetch (FTP/HTTP download client)
+- Support large FAT32 parition (need to be tested).
+
+FreeBSD Kernel change:
+- Drivers added: a100u2w
+- Replacing 4BSD scheduler with ULE scheduler
+- ACPI included in the kernel (no more module)
+
+Bug Fixed:
+- clear log: rsync, smartd, dameon
+- Permit to configure with the WebGUI this wireless card: awi,ral,iwi,ipw,ural
+- no need to reboot for applying tuning settings.
+
+Vyatcheslav Tyulyukov patchs:
+- Simplify adding existing disk
+- improve RAID script
+
+- FreeNAS generating script 'setupfreenas.sh' by Scott Zahn
 
 FreeNAS 0.66:
 
@@ -92,8 +121,10 @@ bugs fixed:
 - Fixed: AAC and APM desc inversed
 - Fixed: Permit to use '-' and '_' character in sharename
 - Fixed: The bad umount script for shutdown and reboot (still a problem for the shared data partition)
-- Fixed: The disable beep feature (Thanks to Slavon)
-- Fixed: Wrong display of RAID disk (Thanks to Slavon)
+
+Vyatcheslav Tyulyukov patches:
+- Fixed: The disable beep feature
+- Fixed: Wrong display of RAID disk
 
 
 FreeNAS 0.65:

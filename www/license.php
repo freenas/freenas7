@@ -45,7 +45,9 @@ require("guiconfig.inc");
              <p>Mat Murdock (<a href="mailto:mmurdock@kimballequipment.com">mmurdock@kimballequipment.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Improved the Rsync client page and code</font></em><br> 
              <p>Vyatcheslav Tyulyukov<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Found and fixed some bugs: Software RAID display and beep</font></em><br> 
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Found and fixed some bugs: Software RAID display and beep</font></em><br>
+              <p>Scott Zahn (<a href="mailto:scott@zahna.com">scott@zahna.com</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Create the buildingscript setupfreenas.sh</font></em><br> 
             <p>The following persons have contributed to FreeNAS documentation project:</p>
             <p>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Beta tester and user manual contributor</font></em><br>
@@ -83,8 +85,8 @@ require("guiconfig.inc");
       <p> Netatalk (<a href="http://netatalk.sourceforge.net/" target="_blank">http://netatalk.sourceforge.net/</a>)<br>
         Copyright &copy; 1990,1996 Regents of The University of Michigan</p>
         
-       <p> Howl (<a href="http://www.porchdogsoft.com/products/howl/" target="_blank">http://www.porchdogsoft.com/products/howl/</a>)<br>
-        Copyright &copy; 2003 - 2005 Porchdog Software, Inc. All rights reserved.</p>
+       <p> Apple Bonjour (<a href="http://developer.apple.com/networking/bonjour/" target="_blank">http://developer.apple.com/networking/bonjour/</a>)<br>
+        Apple Public Source License.</p>
      
       <p> Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd/" target="_blank">http://software.wwwi.com/syslogd</a>)<br>
         Copyright &copy; 2001 Jeff Wheelhouse (jdw@wwwi.com)</p>
