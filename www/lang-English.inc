@@ -521,6 +521,7 @@ define('_SRVCIFS_WORKGROUP','Workgroup');
 define('_SRVCIFS_WORKGROUPTEXT','Workgroup to be member of.');
 define('_SRVCIFS_DESCTEXT','Server description. This can usually be left blank.');
 define('_SRVCIFS_DOSCHARSET','Dos charset');
+define('_SRVCIFS_UNIXCHARSET','Unix charset');
 define('_SRVCIFS_LOGLEVEL','Log Level');
 define('_SRVCIFS_LOCALMASTER','Local Master Browser');
 define('_SRVCIFS_LOCALMASTERTEXT','Allows FreeNAS to try and become a local master browser.');

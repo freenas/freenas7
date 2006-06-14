@@ -2,7 +2,7 @@
 /*
 	services.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -114,34 +114,29 @@ dns proxy = no
 socket options = IPTOS_LOWDELAY TCP_NODELAY
 EOD;
 
-		if ($config['samba']['sndbuf'])
-		{
+		if ($config['samba']['sndbuf']) 	{
 			$sambaconf .= <<<EOD
  SO_SNDBUF={$config['samba']['sndbuf']}
 EOD;
 		}
-		else
-		{
+		else 	{
 			$sambaconf .= <<<EOD
  SO_SNDBUF=8192
 EOD;
 		}
 		
-		if ($config['samba']['rcvbuf'])
-		{
+		if ($config['samba']['rcvbuf']) 	{
 			$sambaconf .= <<<EOD
  SO_RCVBUF={$config['samba']['rcvbuf']}
 EOD;
 		}
-		else
-		{
+		else 	{
 			$sambaconf .= <<<EOD
  SO_RCVBUF=8192
 EOD;
 		}
 		
-		if ($config['samba']['winssrv'])
-		{
+		if ($config['samba']['winssrv']) 	{
 			$sambaconf .= <<<EOD
 
 wins server = {$config['samba']['winssrv']}
@@ -149,13 +144,29 @@ wins server = {$config['samba']['winssrv']}
 EOD;
 		}
 		
+		if (isset ($config['samba']['unixcharset'])) 		{
+			$sambaconf .= <<<EOD
+
+unix charset = {$config['samba']['unixcharset']}
+
+EOD;
+		}
+		else {
+			$sambaconf .= <<<EOD
+
+unix charset = UTF-8
+
+EOD;
+		
+		}
+		
+		
 		
 		$sambaconf .= <<<EOD
 
 local master = {$config['samba']['localmaster']}
 time server = {$config['samba']['timesrv']}
 guest account = ftp
-unix charset = UTF-8 
 display charset = UTF-8
 max log size = 100
 #syslog only = yes
@@ -171,8 +182,7 @@ private dir = {$g['varetc_path']}/private
 
 EOD;
 
-	switch ($config['samba']['security'])
-	{
+	switch ($config['samba']['security']) 	{
 	case "share":
 		$sambaconf .= <<<EOD
 create mask = 0666
@@ -241,15 +251,13 @@ EOD;
 
 		/* run nmbd and nmbd */
 		
-		if (isset($config['ad']['enable']))
-		{
+		if (isset($config['ad']['enable'])) 	{
 			mwexec("/usr/local/bin/net rpc join -S {$config['ad']['ad_srv_name']} -U {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
 		}
 
 		mwexec("/usr/local/sbin/nmbd -D -s {$g['varetc_path']}/smb.conf");
 		
-		if (isset($config['ad']['enable']))
-		{
+		if (isset($config['ad']['enable'])) 	{
 			mwexec("/usr/local/sbin/winbindd -s {$g['varetc_path']}/smb.conf");
 			//mwexec("/usr/local/sbin/wbinfo --set-auth-user {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
 		}
@@ -278,8 +286,7 @@ function services_rsyncd_configure()
 
 	sigkillbypid("{$g['varrun_path']}/rsyncd.pid", "TERM");
 
-	if (isset($config['rsyncd']['enable']))
-	{
+	if (isset($config['rsyncd']['enable'])) {
 	
 		if ($g['booting'])
 			echo "Starting RSYNC daemon... ";
@@ -290,8 +297,7 @@ function services_rsyncd_configure()
 
 		/* generate rsyncd.conf */
 		$fd = fopen("{$g['varetc_path']}/rsyncd.conf", "w");
-		if (!$fd)
-		{
+		if (!$fd) 	{
 			printf("Error: cannot open rsyncd.conf in services_rsyncd_configure().\n");
 			return 1;
 		}
@@ -305,16 +311,14 @@ pid file = {$g['varrun_path']}/rsyncd.pid
 
 EOD;
 
-		if (isset($config['rsyncd']['rsyncd_user']))
-		{
+		if (isset($config['rsyncd']['rsyncd_user'])) 	{
 			$rsyncdconf .= <<<EOD
 uid = {$config['rsyncd']['rsyncd_user']}
 
 EOD;
 
 		}
-		else
-		{
+		else 	{
 			$rsyncdconf .= <<<EOD
 uid = ftp
 gid = ftp
@@ -324,8 +328,7 @@ EOD;
 
 
 	
-		foreach ($config['mounts']['mount'] as $mountent)
-		{
+		foreach ($config['mounts']['mount'] as $mountent) 	{
 			/* Unmount filesystem if not booting mode*/
 				
 			$rsyncdconf .= <<<EOD

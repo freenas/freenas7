@@ -57,6 +57,7 @@ $pconfig['localmaster'] = $config['samba']['localmaster'];
 $pconfig['winssrv'] = $config['samba']['winssrv'];
 $pconfig['hidemount'] = $config['samba']['hidemount'];
 $pconfig['timesrv'] = $config['samba']['timesrv'];
+$pconfig['unixcharset'] = $config['samba']['unixcharset'];
 $pconfig['doscharset'] = $config['samba']['doscharset'];
 $pconfig['loglevel'] = $config['samba']['loglevel'];
 $pconfig['sndbuf'] = $config['samba']['sndbuf'];
@@ -109,6 +110,7 @@ if ($_POST)
 		$config['samba']['hidemount'] = $_POST['hidemount'];
 		$config['samba']['timesrv'] = $_POST['timesrv'];
 		$config['samba']['doscharset'] = $_POST['doscharset'];
+		$config['samba']['unixcharset'] = $_POST['unixcharset'];
 		$config['samba']['loglevel'] = $_POST['loglevel'];
 		$config['samba']['sndbuf'] = $_POST['sndbuf'];
 		$config['samba']['rcvbuf'] = $_POST['rcvbuf'];
@@ -142,6 +144,7 @@ function enable_change(enable_change) {
 	document.iform.timesrv.disabled = endis;
 	document.iform.serverdesc.disabled = endis;
 	document.iform.doscharset.disabled = endis;
+	document.iform.unixcharset.disabled = endis;
 	document.iform.loglevel.disabled = endis;
 	document.iform.sndbuf.disabled = endis;
 	document.iform.rcvbuf.disabled = endis;
@@ -197,10 +200,23 @@ function enable_change(enable_change) {
                   <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_DOSCHARSET ; ?></td>
                   <td width="78%" class="vtable">
 					<select name="doscharset" class="formfld" id="doscharset">
-                      <?php $types = explode(",", "CP850,CP852,CP437,ASCII");
+						<?php $types = explode(",", "CP850,CP852,CP437,ASCII");
 					        $vals = explode(" ", "CP850 CP852 CP437 ASCII");
 					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                       <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['doscharset']) echo "selected";?>> 
+                      <?=htmlspecialchars($types[$j]);?>
+                      </option>
+                      <?php endfor; ?>
+                    </select></td>
+				</tr>
+				 <tr> 
+                  <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_UNIXCHARSET ; ?></td>
+                  <td width="78%" class="vtable">
+					<select name="unixcharset" class="formfld" id="unixcharset">     
+					  <?php $types = explode(",", "UTF-8,iso-8859-15,ASCII");
+					        $vals = explode(" ", "UTF-8 iso-8859-15 ASCII");      
+					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['unixcharset']) echo "selected";?>> 
                       <?=htmlspecialchars($types[$j]);?>
                       </option>
                       <?php endfor; ?>

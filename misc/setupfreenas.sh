@@ -458,8 +458,11 @@ create_iso () {
 	
 	ISOFILENAME="FreeNAS-$VERSION.iso"
 	
-	echo "ISO: Generating the FreeNAS Image file:"
-	create_image;
+	if [ ! $LIGHT_ISO ]; then
+		echo "ISO: Generating the FreeNAS Image file:"
+		create_image;
+   
+	fi
 	
 	#Setting the variable for ISO image:
 	PLATFORM="generic-pc-cdrom"
@@ -486,9 +489,10 @@ create_iso () {
 	cp $BOOTDIR/defaults/loader.conf $TMPDIR/boot/defaults/
 	cp $BOOTDIR/device.hints $TMPDIR/boot
 	
-	echo "ISO: Copying IMG file on $TMPDIR folder"
-	
-	cp $WORKINGDIR/FreeNAS-generic-pc-$VERSION.img $TMPDIR/FreeNAS-generic-pc.gz
+	if [ ! $LIGHT_ISO ]; then
+		echo "ISO: Copying IMG file on $TMPDIR folder"
+		cp $WORKINGDIR/FreeNAS-generic-pc-$VERSION.img $TMPDIR/FreeNAS-generic-pc.gz
+	fi
 	
 	
 	echo "ISO: Generating the ISO file"
@@ -499,6 +503,13 @@ create_iso () {
 	[ -f $WORKINGDIR/mfsroot.gz ] && rm -f $WORKINGDIR/mfsroot.gz
 	
 	return 0
+}
+
+create_iso_light() {
+	LIGHT_ISO=1
+	create_iso;
+	return 0
+
 }
 
 download_rootfs() {
