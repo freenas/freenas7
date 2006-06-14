@@ -236,7 +236,7 @@ endforeach;
 								</tr>
 								<tr>
                 <td width="22%" valign="top" class="vncell"><strong><?=_SRVRYNCC_OPTIONS; ?><strong></td>
-                		<td width="78%" class="vtable"><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>"> <?=_SRVRYNCC_OPTDEL; ?><br>
+                		<td width="78%" class="vtable"><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=_SRVRYNCC_OPTDEL; ?><br>
 												<br>
 										</td>
 								</tr>
