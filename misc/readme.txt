@@ -79,6 +79,7 @@ and send me your translated file by email.
 - Update Smartmon tools to 5.36
 - Replace Howl (maintenance stoped) by Apple Bonjour
 - CIFS: added dos charset 852, added unix charset, option for hidding share, hide folder ".snap" (thanks to Jorge Valdes)
+- FTP: Added FTP banner option, hide foler '.snap'
 - Adding CLI tools: fetch (FTP/HTTP download client)
 - Support large FAT32 parition (need to be tested).
 

@@ -53,6 +53,7 @@ $pconfig['anonymous'] = $config['ftp']['anonymous'];
 $pconfig['pasv_max_port'] = $config['ftp']['pasv_max_port'];
 $pconfig['pasv_min_port'] = $config['ftp']['pasv_min_port'];
 $pconfig['pasv_address'] = $config['ftp']['pasv_address'];
+$pconfig['banner'] = $config['ftp']['banner'];
 $pconfig['localuser'] = $config['ftp']['localuser'];
 
 
@@ -116,6 +117,7 @@ if ($_POST) {
 		$config['ftp']['pasv_max_port'] = $_POST['pasv_max_port'];
 		$config['ftp']['pasv_min_port'] = $_POST['pasv_min_port'];
 		$config['ftp']['pasv_address'] = $_POST['pasv_address'];
+		$config['ftp']['banner'] = $_POST['banner'];
 		$config['ftp']['enable'] = $_POST['enable'] ? true : false;
 		
 		write_config();
@@ -127,7 +129,7 @@ if ($_POST) {
 			config_lock();
 			/* services_ftpd_configure(); */
 			services_vsftpd_configure();
-			services_howl_configure();
+			services_mdnsresponder_configure();
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
@@ -148,6 +150,7 @@ function enable_change(enable_change) {
 	document.iform.maxconperip.disabled = endis;
 	document.iform.anonymous.disabled = endis;
 	document.iform.localuser.disabled = endis;
+	document.iform.banner.disabled = endis;
 	document.iform.pasv_max_port.disabled = endis;
 	document.iform.pasv_min_port.disabled = endis;
 	document.iform.pasv_address.disabled = endis;
@@ -161,7 +164,7 @@ function enable_change(enable_change) {
                 <tr> 
                   <td colspan="2" valign="top" class="optsect_t">
 				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong>_SRVFTP_FTPSERVER</strong></td>
+				  <tr><td class="optsect_s"><strong><?=_SRVFTP_FTPSERVER;?></strong></td>
 				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE; ?></strong></td></tr>
 				  </table></td>
                 </tr>
@@ -214,12 +217,14 @@ function enable_change(enable_change) {
                       <?php endfor; ?>
                     </select>
                     <br><?=_SRVFTP_AUTHTEXT; ?></td>
-                 <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVFTP_PASVIP; ?></td>
+                    </tr>
+                    <tr> 
+                  <td width="22%" valign="top" class="vncell"><?=_SRVFTP_BANNER;?></td>
                   <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="pasv_address" type="text" class="formfld" id="pasv_address" size="20" value="<?=htmlspecialchars($pconfig['pasv_address']);?>"> 
-                   <br><?=_SRVFTP_PASVIPTEXT; ?></td></td>
-				</tr>
+                    <textarea name="banner" cols="65" rows="7" id="banner" class="formpre"><?=htmlspecialchars($pconfig['banner']);?></textarea>
+                    <br> 
+                    <?=_SRVFTP_BANNERTEXT;?></td>
+                </tr>
 				<tr> 
                   <td width="22%" valign="top" class="vncell"><?=_SRVFTP_PASVMIN; ?></td>
                   <td width="78%" class="vtable"> 

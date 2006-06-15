@@ -59,6 +59,7 @@ if ($_POST) {
     <td class="tabcont">
 <?php if ($rebootmsg): echo print_info_box($rebootmsg); else: ?>
       <form action="shutdown.php" method="post">
+      <table width="100%" border="0" cellpadding="6" cellspacing="0">
         <p><strong><?=_SHUT_CONF;?></strong></p>
         <p> 
           <input name="Submit" type="submit" class="formbtn" value=" <?=_YES;?> ">

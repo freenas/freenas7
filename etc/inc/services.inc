@@ -460,6 +460,7 @@ syslog_enable=YES
 anonymous_enable={$config['ftp']['anonymous']}
 local_enable={$config['ftp']['localuser']}
 write_enable=YES
+hide_file=.snap
 anon_other_write_enable=YES
 anon_upload_enable=YES
 anon_mkdir_write_enable=YES
@@ -469,14 +470,25 @@ anon_umask=066
 chmod_enable=YES
 pasv_address={$config['ftp']['pasv_address']}
 # Features
-ftpd_banner=Welcome to FreeNAS FTP service
 ls_recurse_enable=YES
 # Performance
 idle_session_timeout={$config['ftp']['timeout']}
 
 EOD;
-		if ($config['ftp']['pasv_max_port'] && $config['ftp']['pasv_max_port'])
-		{
+		if (isset($config['ftp']['banner'])) 	{
+			$ftpconf .= <<<EOD
+ftpd_banner={$config['ftp']['banner']}
+
+EOD;
+		}
+		else {
+		$ftpconf .= <<<EOD
+ftpd_banner=Welcome to FreeNAS FTP service
+
+EOD;
+		}
+		
+		if ($config['ftp']['pasv_max_port'] && $config['ftp']['pasv_max_port']) {
 			$ftpconf .= <<<EOD
 pasv_max_port={$config['ftp']['pasv_max_port']}
 pasv_min_port={$config['ftp']['pasv_min_port']}
@@ -484,8 +496,7 @@ pasv_min_port={$config['ftp']['pasv_min_port']}
 EOD;
 		}
 		
-		if ($config['ftp']['pasv_address'])
-		{
+		if ($config['ftp']['pasv_address']) {
 			$ftpconf .= <<<EOD
 pasv_address={$config['ftp']['pasv_address']}
 
