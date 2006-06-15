@@ -35,7 +35,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DIAG_NAME,_DIAGSHUT_NAME);
+$pgtitle = array(_DIAG_NAME,_SHUTSCHED_NAME);
 
 if (!is_array($config['shutdown'])){
 	$config['shutdown'] = array();
@@ -79,21 +79,17 @@ if ($_POST){
 	}
 }
 
-$pconfig['opt_delete'] = isset($config['rsyncclient']['opt_delete']);
-$pconfig['enable'] = isset($config['rsyncclient']['enable']);
-$pconfig['rsyncserverip'] = $config['rsyncclient']['rsyncserverip'];
-$pconfig['rsyncshare'] = $config['rsyncclient']['rsyncshare'];
-$pconfig['minute'] = $config['rsyncclient']['minute'];
-$pconfig['hour'] = $config['rsyncclient']['hour'];
-$pconfig['day'] = $config['rsyncclient']['day'];
-$pconfig['month'] = $config['rsyncclient']['month'];
-$pconfig['weekday'] = $config['rsyncclient']['weekday'];
-$pconfig['sharetosync'] = $config['rsyncclient']['sharetosync'];
-$pconfig['all_mins'] = $config['rsyncclient']['all_mins'];
-$pconfig['all_hours'] = $config['rsyncclient']['all_hours'];
-$pconfig['all_days'] = $config['rsyncclient']['all_days'];
-$pconfig['all_months'] = $config['rsyncclient']['all_months'];
-$pconfig['all_weekdays'] = $config['rsyncclient']['all_weekdays'];
+$pconfig['enable'] = isset($config['shutdown']['enable']);
+$pconfig['minute'] = $config['shutdown']['minute'];
+$pconfig['hour'] = $config['shutdown']['hour'];
+$pconfig['day'] = $config['shutdown']['day'];
+$pconfig['month'] = $config['shutdown']['month'];
+$pconfig['weekday'] = $config['shutdown']['weekday'];
+$pconfig['all_mins'] = $config['shutdown']['all_mins'];
+$pconfig['all_hours'] = $config['shutdown']['all_hours'];
+$pconfig['all_days'] = $config['shutdown']['all_days'];
+$pconfig['all_months'] = $config['shutdown']['all_months'];
+$pconfig['all_weekdays'] = $config['shutdown']['all_weekdays'];
 	
 $a_months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 $a_weekdays = array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
@@ -164,12 +160,11 @@ function enable_change(enable_change) {
 //-->
 </script>
 
-?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
   
-  <li class="tabinact"><a href="shutdown.php"<?=_SHUT_NAME ;?></a></li>
+  <li class="tabinact"><a href="shutdown.php"><?=_SHUT_NAME ;?></a></li>
   <li class="tabact"><a href="shutdown_sched.php" style="color:black" title="reload page"><?=_SHUTSCHED_NAME ;?></a></li>
     
   </ul>

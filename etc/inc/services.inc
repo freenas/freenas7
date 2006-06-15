@@ -73,8 +73,7 @@ EOD;
 	return 0;
 }
 
-function services_samba_configure()
-{
+function services_samba_configure() {
 	global $config, $g;
 
 	/* kill any running samba */
@@ -278,8 +277,7 @@ EOD;
 	return 0;
 }
 
-function services_rsyncd_configure()
-{
+function services_rsyncd_configure() {
 	global $config, $g;
 
 	/* kill any running rsync daemon */
@@ -354,8 +352,7 @@ EOD;
 	return 0;
 }
 
-function services_nfs_configure()
-{
+function services_nfs_configure() {
 	global $config, $g;
 	
 	global $config, $g;
@@ -517,8 +514,7 @@ EOD;
 	return 0;
 }
 
-function services_smart_configure()
-{
+function services_smart_configure() {
 	global $config, $g;
 	
 	/* kill any running smartd */
@@ -564,8 +560,7 @@ UseDNS no
 
 EOD;
 
-	if (isset($config['sshd']['port']))
-	{
+	if (isset($config['sshd']['port'])) {
 	
 		$sshconf .= <<<EOD
 Port {$config['sshd']['port']}
@@ -631,8 +626,7 @@ EOD;
 	return 0;
 }
 
-function services_cron_configure()
-{
+function services_cron_configure() {
 	global $config, $g;
 	
 	/* kill any running cron */
@@ -640,23 +634,29 @@ function services_cron_configure()
 			
 	/* generate crontab */
 	$fd = fopen("{$g['varetc_path']}/crontab", "w");
+	
+	$crontabconf = <<<EOD
+SHELL=/bin/sh
+PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin
+HOME=/var/log
+#
+#minute hour    mday    month   wday    who     command
+#
 
-	if (!$fd)
-	{
+EOD;
+
+	if (!$fd) 	{
 		printf("Error: cannot open crontab in services_cron_configure().\n");
 		return 1;
 	}
 
-	if (isset($config['rsyncclient']['enable']))
-	{
+	if (isset($config['rsyncclient']['enable'])) {
 		
 		if ($g['booting'])
-		echo "Starting cron (for rsync)... ";
+			echo "Configuring cron for rsync client... ";
 		
-		if ($config['rsyncclient']['all_mins'] == "0")
-		{ 
-			foreach ($config['rsyncclient']['minute'] as $minutev)
-			{
+		if ($config['rsyncclient']['all_mins'] == "0") 	{ 
+			foreach ($config['rsyncclient']['minute'] as $minutev) 	{
 				if (strlen($cron_min) > 0)
 					$cron_min = $cron_min . "," . $minutev;
 				else
@@ -667,10 +667,8 @@ function services_cron_configure()
 			$cron_min = "*";
 	
 	
-		if ($config['rsyncclient']['all_hours'] == "0")
-		{ 
-			foreach ($config['rsyncclient']['hour'] as $hourv)
-			{
+		if ($config['rsyncclient']['all_hours'] == "0") { 
+			foreach ($config['rsyncclient']['hour'] as $hourv) 	{
 				if (strlen($cron_hour) > 0)
 					 $cron_hour = $cron_hour . "," . $hourv;
 				else
@@ -680,10 +678,8 @@ function services_cron_configure()
 		else
 			$cron_hour = "*";
 		
-		if ($config['rsyncclient']['all_days'] == "0")
-		{ 
-			foreach ($config['rsyncclient']['day'] as $dayv)
-			{
+		if ($config['rsyncclient']['all_days'] == "0") 	{ 
+			foreach ($config['rsyncclient']['day'] as $dayv) 	{
 				if (strlen($cron_day) > 0)
 					$cron_day = $cron_day . "," . $dayv;
 				else
@@ -693,10 +689,8 @@ function services_cron_configure()
 		else
 			$cron_day = "*";
 		
-		if ($config['rsyncclient']['all_months'] == "0")
-		{
-		  foreach ($config['rsyncclient']['month'] as $monthv)
-		  {
+		if ($config['rsyncclient']['all_months'] == "0") 	{
+		  foreach ($config['rsyncclient']['month'] as $monthv) 	  {
 			if (strlen($cron_month) > 0)
 				$cron_month = $cron_month . "," . $monthv;
 			else
@@ -707,10 +701,8 @@ function services_cron_configure()
 			$cron_month = "*";
 		
 		
-		if ($config['rsyncclient']['all_weekday'] == "0")
-		{
-			foreach ($config['rsyncclient']['weekday'] as $weekdayv)
-			{
+		if ($config['rsyncclient']['all_weekday'] == "0") 	{
+			foreach ($config['rsyncclient']['weekday'] as $weekdayv) 	{
 				if (strlen($cron_weekday) > 0)
 					 $cron_weekday = $cron_weekday . "," . $weekdayv;
 				else
@@ -720,44 +712,96 @@ function services_cron_configure()
 		else
 			$cron_weekday = "*";		
 		
-		$crontabconf = <<<EOD
-SHELL=/bin/sh
-PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin
-HOME=/var/log
-#
-#minute hour    mday    month   wday    who     command
-#
+		$crontabconf .= <<<EOD
 {$cron_min}    {$cron_hour}        {$cron_day}        {$cron_month}        {$cron_weekday}       root    {$g['varrun_path']}/sync.sh
 
-
 EOD;
 
-			if ($g['booting'])
+		if ($g['booting'])
 			echo "done\n";
-		}
-		
-		else
-		{ 
+	}
 	
-			$crontabconf = <<<EOD
-SHELL=/bin/sh
-PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin
-HOME=/var/log
-#
-#minute hour    mday    month   wday    who     command
-#
+	// Erase all variable used previously
+	unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
+		
+	if (isset($config['shutdown']['enable'])) {
+		
+		if ($g['booting'])
+			echo "Configuring cron for shutdown... ";
+		
+		if ($config['shutdown']['all_mins'] == "0") { 
+			foreach ($config['shutdown']['minute'] as $minutev) 	{
+				if (strlen($cron_min) > 0)
+					$cron_min = $cron_min . "," . $minutev;
+				else
+					$cron_min = $minutev;
+			}
+		}
+		else
+			$cron_min = "*";
+	
+	
+		if ($config['shutdown']['all_hours'] == "0") 	{ 
+			foreach ($config['shutdown']['hour'] as $hourv) 	{
+				if (strlen($cron_hour) > 0)
+					 $cron_hour = $cron_hour . "," . $hourv;
+				else
+					 $cron_hour = $hourv;
+			}
+		}
+		else
+			$cron_hour = "*";
+		
+		if ($config['shutdown']['all_days'] == "0") { 
+			foreach ($config['shutdown']['day'] as $dayv) 	{
+				if (strlen($cron_day) > 0)
+					$cron_day = $cron_day . "," . $dayv;
+				else
+					$cron_day = $dayv;
+			}
+		}
+		else
+			$cron_day = "*";
+		
+		if ($config['shutdown']['all_months'] == "0") 	{
+			foreach ($config['shutdown']['month'] as $monthv)   {
+				if (strlen($cron_month) > 0)
+					$cron_month = $cron_month . "," . $monthv;
+				else
+					$cron_month = $monthv;
+			}
+		}
+		else
+			$cron_month = "*";
+		
+		
+		if ($config['shutdown']['all_weekday'] == "0") 	{
+			foreach ($config['shutdown']['weekday'] as $weekdayv) 		{
+				if (strlen($cron_weekday) > 0)
+					 $cron_weekday = $cron_weekday . "," . $weekdayv;
+				else
+					 $cron_weekday = $weekdayv;
+			}
+		}
+		else
+			$cron_weekday = "*";		
+		
+		$crontabconf .= <<<EOD
+{$cron_min}    {$cron_hour}        {$cron_day}        {$cron_month}        {$cron_weekday}       root    /etc/rc.shutdown
 
 EOD;
-	
-		}
-		
-		fwrite($fd, $crontabconf);
-		fclose($fd);
 
-		/* run cron */
-		mwexec("/usr/sbin/cron -s");
+		if ($g['booting'])
+			echo "done\n";
+	}
+				
+	fwrite($fd, $crontabconf);
+	fclose($fd);
+
+	/* run cron */
+	mwexec("/usr/sbin/cron -s");
 	
-		return 0;
+	return 0;
 	
 }
 

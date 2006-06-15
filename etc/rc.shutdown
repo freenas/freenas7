@@ -1,0 +1,13 @@
+#!/usr/local/bin/php -f
+<?php
+
+// include all functions
+
+require_once("globals.inc");
+require_once("functions.inc");
+require_once("util.inc");
+
+// Start the shutdown
+system_halt();
+
+?>
