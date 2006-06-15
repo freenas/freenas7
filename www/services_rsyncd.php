@@ -93,7 +93,7 @@ if ($_POST)
 			/* nuke the cache file */
 			config_lock();
 			services_rsyncd_configure();
-			services_howl_configure();
+			services_mdnsresponder_configure();
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
