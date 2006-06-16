@@ -77,6 +77,7 @@ and send me your translated file by email.
 - Upgrade to FreeBSD 6.1-STABLE
 - Update RSYNC to 2.6.8
 - Update Smartmon tools to 5.36
+- Update e2fsprogs to 1.39
 - Replace Howl (maintenance stoped) by Apple Bonjour
 - CIFS: added dos charset 852, added unix charset, option for hidding share, hide folder ".snap" (thanks to Jorge Valdes)
 - FTP: Added FTP banner option, hide foler '.snap'
