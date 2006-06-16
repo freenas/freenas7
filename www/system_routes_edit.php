@@ -2,9 +2,12 @@
 <?php 
 /*
 	system_routes_edit.php
-	part of m0n0wall (http://m0n0.ch/wall)
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	All rights reserved.
 	
-	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
+	Based on m0n0wall (http://m0n0.ch/wall)
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -113,7 +116,7 @@ if ($_POST) {
                   <td width="22%" valign="top" class="vncellreq"><?=_SYSTEMROUTESPHP_INT;?></td>
                   <td width="78%" class="vtable">
 					<select name="interface" class="formfld">
-                      <?php $interfaces = array('lan' => 'LAN', 'wan' => 'WAN', 'pptp' => 'PPTP');
+                      <?php $interfaces = array('lan' => 'LAN');
 					  for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 					  	$interfaces['opt' . $i] = $config['interfaces']['opt' . $i]['descr'];
 					  }
