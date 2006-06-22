@@ -101,6 +101,9 @@ Copyright  &copy; 2004-2005 Bruce Cran &lt;bruce@cran.org.uk&gt;. All rights res
 
 	  <p>smartmontools (<a href="http://smartmontools.sourceforge.net" target="_blank">http://smartmontools.sourceforge.net</a>)<br>
 Copyright  &copy; 2002-2005 Bruce Allen.</p>
+
+	  <p>iSCSI target (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd/" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd/</a>)<br>
+Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
            
               
 <?php include("fend.inc"); ?>

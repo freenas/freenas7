@@ -163,7 +163,7 @@ sbin/init
 sbin/kldload
 
 ## kldstat -- display status of dynamic kernel linker
-#sbin/kldstat
+sbin/kldstat
 
 ## kldunload -- unload a file from the kernel
 sbin/kldunload
