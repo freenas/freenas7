@@ -2,10 +2,10 @@
 <?php 
 /*
 	interfaces_opt.php
-	part of FreeNAS (http://freenas.org)
+	part of FreeNAS (http://www.freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
 	
-	Copyright (C) 2005 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -49,7 +49,7 @@ $pconfig['mtu'] = $optcfg['mtu'];
 $pconfig['enable'] = isset($optcfg['enable']);
 $pconfig['polling'] = isset($optcfg['polling']);
 $pconfig['media'] = $optcfg['media'];
-$pconfig['mediaopt'] = $optcfg[['mediaopt'];
+$pconfig['mediaopt'] = $optcfg['mediaopt'];
 
 
 /* Wireless interface? */
