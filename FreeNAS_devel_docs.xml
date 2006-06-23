@@ -5,7 +5,7 @@
   <title>FreeNAS Developers' Handbook</title>
 
   <bookinfo>
-    <date>June 16, 2006</date>
+    <date>June 23, 2006</date>
 
     <author>
       <firstname>Olivier</firstname>
@@ -67,7 +67,7 @@
     <para>This is the easiest way for studing/modify FreeNAS.</para>
 
     <sect1>
-      <title>Installation of the developpement environement</title>
+      <title>Installation of the FreeBSD developpement environement</title>
 
       <para>Install FreeBSD 6.1 on your dedicaced PC (or under a VMware/Qemu),
       selecting he developers set (without X), then install this ports:</para>
@@ -107,7 +107,7 @@
 
       <para><command>svn/misc/setupfreenas.sh</command></para>
 
-      <para>And select option: </para>
+      <para>And select option:</para>
 
       <itemizedlist>
         <listitem>
@@ -137,10 +137,50 @@
     </sect1>
 
     <sect1>
-      <title>Downloading the source</title>
+      <title>Download the source code from SVN</title>
 
-      <para>Download the FreeNAS sources on sourceforge, untar it, Edit the
-      file, modifying it, created the modified ISO.</para>
+      <para>Then, as root create FreeNAS directory, and download the latest
+      (under developement) sources:</para>
+
+      <para><command>mkdir /usr/local/freenas</command></para>
+
+      <para><command>cd /usr/local/freenas</command></para>
+
+      <para><command>svn co https://svn.sourceforge.net/svnroot/freenas/trunk
+      svn</command></para>
+
+      <para>Then, you can run the generating script for downloading the latest
+      FreeNAS binary file set and compile an ISO/IMG file:</para>
+
+      <para><command>svn/misc/setupfreenas.sh</command></para>
+
+      <para>And select option:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>1 : Download latest freenas root file system TGZ file (that
+          include all FreeBSD binaries used by FreeNAS)</para>
+        </listitem>
+
+        <listitem>
+          <para>10: Generate a IMG file (to be write directly on a CF/USB
+          card)</para>
+        </listitem>
+
+        <listitem>
+          <para>11: Generate an ISO file (that include a IMG file for install
+          from ISO)</para>
+        </listitem>
+
+        <listitem>
+          <para>12: Generate an ISO file (without the IMG file)</para>
+        </listitem>
+
+        <listitem>
+          <para>20: Experimental sub-menu, that permit to step-by-step, create
+          a FreeNAS from scratch</para>
+        </listitem>
+      </itemizedlist>
     </sect1>
   </chapter>
 
@@ -1468,10 +1508,18 @@ cp /sys/i386/compile/FREENAS/kernel.gz $MINIBSD_DIR/kernel</programlisting>
         <para><command>cp -p /usr/local/lib/pam_ldap.so
         $FREENAS/usr/local/lib</command></para>
 
-        <para>This script forget to copy this mandatory library :</para>
+        <para>Don't forget to copy this mandatory library :</para>
 
         <para><command>cp /libexec/ld-elf.so.1
         $FREENAS/libexec</command></para>
+
+        <para>For GEOM tools, there is other library to copy too:</para>
+
+        <para><command>mkdir $FREENAS/lib/geom</command></para>
+
+        <para><command>cp /lib/geom/geom</command></para>
+
+        <para>cp /lib/geom</para>
       </sect2>
 
       <sect2>
