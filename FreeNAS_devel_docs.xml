@@ -5,12 +5,12 @@
   <title>FreeNAS Developers' Handbook</title>
 
   <bookinfo>
-    <date>June 23, 2006</date>
+    <date>June 25, 2006</date>
 
     <author>
       <firstname>Olivier</firstname>
 
-      <surname>Cochard</surname>
+      <surname>Cochard-Labbé</surname>
     </author>
 
     <copyright>
@@ -999,7 +999,8 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
           url="http://www.freenas.org/downloads/clog-1.0.1.tar.gz">clog
           patch</ulink> and the <ulink
           url="http://www.freenas.org/downloads/syslogd_clog-current.tgz">syslog
-          patched file</ulink> (from the Pfsense project):</para>
+          patched file</ulink> (from the <ulink
+          url="http://www.pfsense.com/">Pfsense project</ulink>):</para>
 
           <para><command>cd /usr/src/usr.bin/</command></para>
 
@@ -1084,9 +1085,9 @@ done</programlisting>
           <para>Download, compile and install the iscsi initaor:</para>
 
           <para><command>fetch
-          ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-16.tar.bz2</command></para>
+          ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-17.tar.bz2</command></para>
 
-          <para><command>tar zxvf iscsi-16.tar.bz2</command></para>
+          <para><command>tar zxvf iscsi-17.tar.bz2</command></para>
 
           <para><command>cd sys</command></para>
 
@@ -1114,19 +1115,25 @@ done</programlisting>
         </sect3>
 
         <sect3>
-          <title>Vsftp (Must be replaced by FTP server that support
-          UTF-8)</title>
+          <title>Pure-FTPd</title>
 
-          <para>Compile and install the port::</para>
+          <para>Download the latest source code:</para>
 
-          <para><command>cd /usr/ports/ftp/vsftpd</command></para>
+          <para><command>cd /root</command></para>
+
+          <para><command>fetch
+          http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.21.tar.gz</command></para>
+
+          <para><command>tar zxvf pure-ftpd-1.0.21.tar.gz</command></para>
+
+          <para><command>cd pure-ftpd-1.0.21</command></para>
+
+          <para><command>./configure --with-rfc2640 --with-largefile
+          --with-pam</command></para>
 
           <para><command>make</command></para>
 
-          <para><command>Don't select the two options
-          proposed</command></para>
-
-          <para><command>install -s work/vsftpd-2.0.4/vsftpd
+          <para><command>install -s src/pure-ftpd
           $FREENAS/usr/local/sbin/</command></para>
         </sect3>
 
