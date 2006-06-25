@@ -2,7 +2,7 @@
 /*
 	disks.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -82,8 +82,10 @@ function disks_mount($mount)
 	
 	/* Must use a special dev name for software RAID volume */
 	
-	if ($mount['partition'] == "sraid")
+	if ($mount['partition'] == "gvinum")
 		$devname="/dev/gvinum/{$mount['mdisk']}";
+	else if ($mount['partition'] == "gmirror")
+		$devname="/dev/mirror/{$mount['mdisk']}";
 	else
 		$devname="/dev/{$mount['mdisk']}{$mount['partition']}";
 
@@ -209,7 +211,7 @@ function disks_umount_adv($mount)
 	
 	$mountpart="{$mount['partition']}";
 	
-	if (strcmp($mountpart,"sraid") == 0)
+	if ((strcmp($mountpart,"sraid") == 0) || (strcmp($mountpart,"gmirror") == 0))
 		$complete = "{$mount['mdisk']}";
 	else
 		$complete = "{$mount['mdisk']}{$mount['partition']}";
@@ -251,7 +253,7 @@ function disks_mount_status($mount)
 	
 	$mountpart="{$mount['partition']}";
 	
-	if (strcmp($mountpart,"sraid") == 0)
+	if ((strcmp($mountpart,"sraid") == 0) || (strcmp($mountpart,"gmirror") == 0))
 		$complete = "{$mount['mdisk']}";
 	else
 		$complete = "{$mount['mdisk']}{$mount['partition']}";
@@ -507,22 +509,63 @@ EOD;
 	return 0;
 }
 
+function disks_raid_gmirror_configure()
+{
+	global $config, $g;
+	
+	/* Create the gmirror device */
+
+	if ($config['gmirror']['vdisk']) {
+		
+		// Load gmirror
+		
+		mwexec("/sbin/gmirror load");
+				
+		foreach ($config['gmirror']['vdisk'] as $a_raid_conf) 	{
+	
+			/* Create each volume */
+			
+			$cmd = "/sbin/gmirror label -b {$a_raid_conf['balance']} {$a_raid_conf['name']} ";
+			
+			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
+				$cmd .= "{$diskrv} ";
+			}			
+		
+			mwexec($cmd);
+		
+		}	
+	}
+
+	return 0;
+}
+
 function disks_raid_start()
+{
+	global $config, $g;
+	
+	/* Start software RAID */
+	disks_raid_gvinum_start();
+	disks_raid_gmirror_start();
+	
+	return 0;
+	
+}	
+
+
+function disks_raid_gvinum_start()
 {
 	global $config, $g;
 	
 	/* Generate the raid.conf file */
 
-	if ($config['raid']['vdisk'])
-	{
+	if ($config['raid']['vdisk']) {
 	
 		if ($g['booting'])
-			echo "Configuring raid... ";
+			echo "Start gvinum raid... ";
 
 		/* start each volume */
 		
-		foreach ($config['raid']['vdisk'] as $a_raid_conf)
-		{
+		foreach ($config['raid']['vdisk'] as $a_raid_conf) 	{
 			mwexec("/sbin/gvinum start {$a_raid_conf['name']}");
 		}
 		
@@ -534,24 +577,20 @@ function disks_raid_start()
 	return 0;
 }
 
-function disks_raid_stop()
+function disks_raid_gmirror_start()
 {
 	global $config, $g;
 	
-	/* Generate the raid.conf file */
+	/* Start Geom mirror */
 
-	if ($config['raid']['vdisk'])
-	{
+	if ($config['gmirror']['vdisk']) {
 	
 		if ($g['booting'])
-			echo "Configuring raid... ";
+			echo "Start gmirror raid... ";
 
-		/* start each volume */
+		// Load geom mirror module
 		
-		foreach ($config['raid']['vdisk'] as $a_raid_conf)
-		{
-			mwexec("/sbin/gvinum stop {$a_raid_conf['name']}");
-		}
+		mwexec("/sbin/gmirror load");
 		
 		if ($g['booting'])
 		echo "done\n";
@@ -561,7 +600,57 @@ function disks_raid_stop()
 	return 0;
 }
 
-function disks_raid_delete($raidname)
+function disks_raid_stop()
+{
+	/* Stop software RAID */
+
+	disks_raid_gvinum_stop();
+	disks_raid_gmirror_stop();
+	
+	return 0;
+	
+}
+
+function disks_raid_gvinum_stop()
+{
+	global $config, $g;
+	
+	/* Generate the raid.conf file */
+
+	if ($config['raid']['vdisk']) {
+		
+		/* stop each volume */
+		
+		foreach ($config['raid']['vdisk'] as $a_raid_conf) 	{
+			mwexec("/sbin/gvinum stop {$a_raid_conf['name']}");
+		}
+
+	}
+	
+	return 0;
+}
+
+function disks_raid_gmirror_stop()
+{
+	global $config, $g;
+	
+	/* Generate the raid.conf file */
+
+	if ($config['gmirror']['vdisk']) {
+	
+		/* start each volume */
+		
+		foreach ($config['gmirror']['vdisk'] as $a_raid_conf) 	{
+			mwexec("/sbin/gmirror stop {$a_raid_conf['name']}");
+		}
+		
+		
+	}
+	
+	return 0;
+}
+
+function disks_raid_gvinum_delete($raidname)
 {
 	global $config, $g;
 	
@@ -576,13 +665,33 @@ function disks_raid_delete($raidname)
 	
 	mwexec("/sbin/gvinum rm -r $raidname");
 	
-	foreach ($config['raid']['vdisk'] as $a_raid)
-	{
-			if ($a_raid['name'] == $raidname)
-			{
-				foreach ($a_raid['diskr'] as $disk)
-				{				
+	foreach ($config['raid']['vdisk'] as $a_raid) 	{
+			if ($a_raid['name'] == $raidname) 	{
+				foreach ($a_raid['diskr'] as $disk) 	{				
 					mwexec("/sbin/gvinum rm -r disk_{$disk}");
+				}
+			}
+	}
+	
+	return 0;
+}
+
+function disks_raid_gmirror_delete($raidname)
+{
+	global $config, $g;
+	
+	/* Delete a gmirror volume */
+	
+	// Stop the volume
+	
+	mwexec("/sbin/gmirror stop $raidname");
+	
+	// Clear the gmirror information on the hard drive
+	
+	foreach ($config['gmirror']['vdisk'] as $a_raid) {
+			if ($a_raid['name'] == $raidname) 	{
+				foreach ($a_raid['diskr'] as $disk) 	{				
+					mwexec("/sbin/gmirror clear {$disk}");
 				}
 			}
 	}

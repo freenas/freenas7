@@ -485,7 +485,7 @@ ftpd_banner=Welcome to FreeNAS FTP service
 EOD;
 		}
 		
-		if ($config['ftp']['pasv_max_port'] && $config['ftp']['pasv_max_port']) {
+		if ($config['ftp']['pasv_min_port'] && $config['ftp']['pasv_max_port']) {
 			$ftpconf .= <<<EOD
 pasv_max_port={$config['ftp']['pasv_max_port']}
 pasv_min_port={$config['ftp']['pasv_min_port']}
@@ -511,6 +511,68 @@ EOD;
 			echo "done\n";
 	}
 
+	return 0;
+}
+
+function services_pureftpd_configure() {
+
+	// Stop the pure-ftpd process and re-start it
+	
+	global $config, $g;
+
+	/* kill any Pure-FTPD */
+	killbyname("pure-ftpd");
+
+	if (isset($config['ftp']['enable'])) {
+	
+		if ($g['booting'])
+			echo "Starting FTP server... ";
+			
+		/* Generate the banner file */
+			
+		$fd = fopen("/mnt/.banner", "w");
+		if (!$fd) {
+			printf("Error: cannot open .banner in services_pureftpd_configure().\n");
+			return 1;
+		}
+		
+		if (empty($config['ftp']['banner'])) {
+			$banner = <<<EOD
+Welcome to FreeNAS FTP service
+	
+EOD;
+		} else {
+			$banner = <<<EOD
+{$config['ftp']['banner']}
+	
+EOD;
+		}
+			
+		fwrite($fd, $banner);
+		fclose($fd);
+			
+			
+		/* run pure-ftpd */
+		
+		$cmd = "/usr/local/sbin/pure-ftpd -S {$config['ftp']['port']} -c {$config['ftp']['numberclients']} -C {$config['ftp']['maxconperip']} -I {$config['ftp']['timeout']} -M U 077:077 -B -b ";
+		
+		if ($config['ftp']['anonymous'] == "NO")
+			$cmd .= "-E ";
+		
+		if ($config['ftp']['pasv_min_port'] && $config['ftp']['pasv_max_port'])
+			$cmd .= "-p {$config['ftp']['pasv_min_port']}:{$config['ftp']['pasv_max_port']} ";
+			
+		if ($config['ftp']['pasv_address'])
+			$cmd .= "-P {$config['ftp']['pasv_address']} ";
+		
+		mwexec($cmd);
+
+
+		if ($g['booting'])
+			echo "done\n";
+	}
+			
+		
 	return 0;
 }
 
@@ -557,6 +619,7 @@ function services_sshd_configure() {
 		$sshconf = <<<EOD
 SyslogFacility LOCAL3
 UseDNS no
+Subsystem       sftp    /usr/libexec/sftp-server
 
 EOD;
 

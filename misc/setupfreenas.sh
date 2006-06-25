@@ -543,7 +543,7 @@ use_svn() {
 	echo "Replacing old code with SVN code"
 	cp -p $SVNDIR/etc/*.* $FREENAS/etc
 	cp -p $SVNDIR/etc/* $FREENAS/etc
-	cp -p $SVNDIR/etc/inc/*.* $FREENAS/etc
+	cp -p $SVNDIR/etc/inc/*.* $FREENAS/etc/inc
 	cp -p $SVNDIR/www/*.* $FREENAS/usr/local/www
 	cp -p $SVNDIR/conf/*.* $FREENAS/conf.default
 	

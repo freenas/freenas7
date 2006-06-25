@@ -42,6 +42,9 @@
 	require_once("config.inc");
 	require_once("functions.inc");
 	
+	/* Launched if first boot */
+	system_firstboot();
+	
 	/* convert configuration, if necessary */
 	convert_config();
 	
@@ -131,7 +134,8 @@
 	services_rsyncd_configure();
 	
 	/* start FTP service */
-	services_vsftpd_configure();
+	// services_vsftpd_configure();
+	services_pureftpd_configure();
 	
 	/* start NFS service */
 	services_nfs_configure();
@@ -149,7 +153,6 @@
 	services_cron_configure();
 	
 	/* Start mdnsresponder (Zeroconf/Bonjour) */
-	//services_howl_configure();
 	services_mdnsresponder_configure();
 	
 	/* set up termcap (for the firewall states page) */

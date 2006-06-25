@@ -1436,6 +1436,29 @@ function system_language_load()
 	}
 }
 
+function system_firstboot()
+{
+	/*  This function is start at first boot */
+	// Set the LAN interface to the first interface found
+	
+	global $config;
+	
+	// If no firstboot set, exit:
+	if (!isset($config['firstboot']))
+		return 0;
+		
+	$iflist = get_interface_list();
+	
+	foreach ($iflist as $iface => $ifa) {
+		$config['interfaces']['lan']['if'] = $iface;
+		break ;
+	}
+	
+	unset($config['firstboot']);
+		
+	return 0;
+}
+
 
 
 ?>

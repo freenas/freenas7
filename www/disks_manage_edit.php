@@ -3,7 +3,7 @@
 /*
 	disks_manage_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -193,7 +193,8 @@ if ($_POST)
 "ufsgpt"=>"UFS (EFI/GPT) with Soft Updates (use 8% space disk)",
 "ufsgpt_no_su"=>"UFS (EFI/GPT)",
 "msdos"=>"FAT32",
-"raid"=>"Software RAID"); ?>
+"ntfs"=>"NTFS",
+"raid"=>"Geom Vinum Soft RAID"); ?>
 					<?php foreach ($fstvals as $fstval => $fstname): ?>
                       <option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
 					<?php endforeach; ?>

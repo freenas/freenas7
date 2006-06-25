@@ -1,10 +1,10 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_raid_tools.php
+	disks_raid_gvinum_tools.php
 	
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -36,7 +36,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDEDITPHP_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME, "Geom vinum",_DISKSRAIDEDITPHP_NAMEDESC);
 
 if ($_POST) {
 	unset($input_errors);
@@ -65,18 +65,24 @@ if (!isset($do_action))
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr><td class="tabnavtbl">
+  <ul id="tabnav">
+	<li class="tabinact"><a href="disks_raid_gmirror.php">Geom Mirror</a></li>
+	<li class="tabact">Geom Vinum (unstable)</li>
+  </ul>
+  </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gvinum_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
 	<li class="tabact"><?=_DISKSRAIDPHP_TOOLS; ?></li>
-	<li class="tabinact"><a href="disks_raid_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gvinum_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
   </ul>
   </td></tr>
   <tr> 
     <td class="tabcont">
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-			<form action="disks_raid_tools.php" method="post" name="iform" id="iform">
+			<form action="disks_raid_gvinum_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr>
 				  <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDTOOLSPHP_OBJNAME;?></td>

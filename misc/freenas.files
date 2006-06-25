@@ -354,10 +354,7 @@ libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
 ## getty -- set terminal mode
 #usr/libexec/getty
 
-#usr/libexec/named-xfer
-#usr/libexec/sftp-server
-#usr/libexec/telnetd
-#usr/libexec/tftpd
+usr/libexec/sftp-server
 
 # contents of /usr/share
 usr/share/misc/termcap

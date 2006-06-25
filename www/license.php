@@ -79,8 +79,8 @@ require("guiconfig.inc");
       <p> Rsync (<a href="http://www.samba.org/rsync/" target="_blank">http://www.samba.org/rsync/</a>)<br>
        </p>
       
-      <p> vsftpd (<a href="http://vsftpd.beasts.org/" target="_blank">http://vsftpd.beasts.org/</a>)<br>
-        Chris Evans (chris@scary.beasts.org)</p>
+      <p> Pure-FTPd (<a href="http://www.pureftpd.org" target="_blank">http://www.pureftpd.org</a>)<br>
+      </p>
         
       <p> Netatalk (<a href="http://netatalk.sourceforge.net/" target="_blank">http://netatalk.sourceforge.net/</a>)<br>
         Copyright &copy; 1990,1996 Regents of The University of Michigan</p>

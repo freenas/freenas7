@@ -565,7 +565,7 @@ define('_SRVFTP_PASVMIN','pasv_min_port');
 define('_SRVFTP_PASVMINTEXT','The minimum port to allocate for PASV style data connections.');
 define('_SRVFTP_PASVMAX','pasv_max_port');
 define('_SRVFTP_PASVMAXTEXT','The maximum port to allocate for PASV style data connections.');
-define('_SRVFTP_BANNER','banner');
+define('_SRVFTP_BANNER','Banner');
 define('_SRVFTP_BANNERTEXT','Greeting banner displayed by FTP when a connection first comes in.');
 
 // Service: NFS

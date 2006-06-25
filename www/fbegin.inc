@@ -84,7 +84,7 @@ function showhide(tspan, tri) {
 			  <?php endfor; ?>
               <strong>Disks</strong><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_manage.php" class="navlnk"><?=_MENULEFT_DISKMANAG;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_raid.php" class="navlnk"><?=_MENULEFT_DISKMNGSOFTRAID;?></a> <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_raid_gmirror.php" class="navlnk"><?=_MENULEFT_DISKMNGSOFTRAID;?></a> <br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_mount.php" class="navlnk"><?=_MENULEFT_DISKMNGMOUNTPOINT;?></a><br>
  
               <strong>Services</strong><br>

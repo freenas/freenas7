@@ -124,7 +124,8 @@ if (!isset($do_format))
                       <option value="ufsgpt" <?php if ($type == "ufsgpt") echo "selected"; ?>>UFS (EFI/GPT) with Soft Updates (use 8% space disk)</option>
                       <option value="ufsgpt_no_su" <?php if ($type == "ufsgpt_no_su") echo "selected"; ?>>UFS (EFI/GPT)</option>
                       <option value="msdos" <?php if ($type == "msdos") echo "selected"; ?>>FAT32</option>
-                      <option value="raid" <?php if ($type == "raid") echo "selected"; ?>>Software RAID</option>
+                      <option value="gmirror" <?php if ($type == "gmirror") echo "selected"; ?>>Software RAID: Geom mirror</option>
+                      <option value="raid" <?php if ($type == "raid") echo "selected"; ?>>Software RAID: Geom Vinum</option>
                      </select>
                   </td>
                 </tr>
@@ -183,6 +184,17 @@ if (!isset($do_format))
 						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
 						// Create filesystem
 						system("/sbin/newfs -m 0 /dev/" . escapeshellarg($disk) . "p1");
+						break;
+					case "gmirror":
+						/* Initialize disk */
+						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+						echo "\"fdisk: Geom not found\"is not an error message!\n";
+						/* Initialise the partition (optional) */
+						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
+						/* Create s1 label */
+						//system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
+						/* Delete old gmirror information */
+						system("/sbin/gmirror clear /dev/" . escapeshellarg($disk));
 						break;
 					case "raid":
 						/* Initialize disk */

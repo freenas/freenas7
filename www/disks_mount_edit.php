@@ -49,11 +49,16 @@ disks_sort();
 if (!is_array($config['raid']['vdisk']))
 	$config['raid']['vdisk'] = array();
 
-raid_sort();
+gvinum_sort();
+
+if (!is_array($config['gmirror']['vdisk']))
+	$config['gmirror']['vdisk'] = array();
+
+gmirror_sort();
 
 $a_mount = &$config['mounts']['mount'];
 
-$a_disk = array_merge($config['disks']['disk'],$config['raid']['vdisk']);
+$a_disk = array_merge($config['disks']['disk'],$config['raid']['vdisk'],$config['gmirror']['vdisk']);
 
 /* Load the cfdevice file*/
 $filename=$g['varetc_path']."/cfdevice";
@@ -157,7 +162,7 @@ if ($_POST) {
                 
 		<select name="mdisk" class="formfld" id="mdisk">
 		  <?php foreach ($a_disk as $disk): ?>
-			<?php if (strcmp($disk['fstype'],"raid")!=0): ?> 	  
+			<?php if ((strcmp($disk['fstype'],"raid")!=0) | (strcmp($disk['fstype'],"gmirror")!=0)): ?> 	  
 				<option value="<?=$disk['name'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 
 				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
 
@@ -176,7 +181,8 @@ if ($_POST) {
                       <option value="s2" <?php if ($pconfig['partition'] == "s2") echo "selected"; ?>>2</option>
                       <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
                       <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
-                      <option value="sraid" <?php if ($pconfig['partition'] == "sraid") echo "selected"; ?>><?=_SOFTRAID ;?></option>
+                      <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>><?=_SOFTRAID ;?> - gmirror</option>
+                       <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>><?=_SOFTRAID ;?> - gvinum</option>
                       <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>GPT</option>
     
                     </select>

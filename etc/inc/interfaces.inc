@@ -88,6 +88,10 @@ function interfaces_lan_configure()
 	mwexec("/sbin/route delete default");
 	mwexec("/sbin/route add default " . escapeshellarg($lancfg['gateway']));
 	
+	/* install multicast route */
+	
+	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lancfg['if']));
+	
 	if (!$g['booting'])
 	{
 		/* make new hosts file */
@@ -197,6 +201,10 @@ function interfaces_optional_configure_if($opti)
 				
 		mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " " . 
 		escapeshellarg($optcfg['ipaddr'] . "/" . $optcfg['subnet']) . $addflags);
+		
+		/* install multicast route */
+	
+		mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($optcfg['if']));
 		
 	}
 	else

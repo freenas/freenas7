@@ -2,7 +2,7 @@
 /*
 	util.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -350,8 +350,8 @@ function get_mounts_list()
 		
 		$devname=$complete[2];
 		
-		// Test if it's a gvinum device
-		if (strcmp($devname,"gvinum") == 0)
+		// Test if it's a gvinum or gmirror device
+		if ((strcmp($devname,"gvinum") == 0) || (strcmp($devname,"gmirror") == 0))
 			$devname=$complete[3];
 		
 		$mountlist[$i]['mdisk']=$devname;
@@ -361,17 +361,24 @@ function get_mounts_list()
 	return $mountlist;
 }
 
-
 function get_sraid_disks_list()
 {
-	/* Recupere la liste des disques RAID Software*/
+	/* Return list of ALL software volume: gvinum, gmirror */
+	$disklist = array_merge(get_gvinum_disks_list(),get_gmirror_disks_list());
+	return $disklist;
+
+}
+
+function get_gvinum_disks_list()
+{
+	/* Get information about gvinum volume */
 	global $g;
 	
 	/* Return list of Software RAID disk */
 	
     //[volumename] => Array
     //    (
-    //        [type] => Software RAID
+    //        [type] => Software RAID - gvinum
     //        [desc] => UP
     //        [size] => 6149 MB
     //    )
@@ -397,7 +404,7 @@ function get_sraid_disks_list()
 		
 		$disklist[$diskname]=array();
 					
-		$disklist[$diskname]['type'] = "Software RAID";
+		$disklist[$diskname]['type'] = "Software RAID - gvinum";
 		
 		$disklist[$diskname]['size'] = "$aline[7] $aline[8]" ;
 		
@@ -408,6 +415,73 @@ function get_sraid_disks_list()
 	
 		return $disklist;
 }
+
+function get_gmirror_disks_list()
+{
+	/* Get information about gmirror volume */
+	global $g;
+	
+	
+    //[volumename] => Array
+    //    (
+    //        [type] => Software RAID - gmirror
+    //        [desc] => COMPLETE
+    //        [size] => 6149 MB
+    //    )
+    
+
+	/* Display all configured gmirror volume*/
+	exec("/sbin/gmirror list",$rawdata);
+	
+	$foundname = 0 ;
+	
+	foreach ($rawdata as $line) {
+
+				
+		/* Use space for break the line */
+		$aline = preg_split("/\s+/", $line);
+		
+		// look for this output:
+		// State: COMPLETE
+		// 1. Name: mirror/tutu
+		// Mediasize: 107373568 (102M)
+	
+		/* If the first word isn't the word "State:" neither second word "Name:", or the first word isn't "Mediasize", continue  */
+		if ( ($aline[0] != "State:") || ($aline[1] != "Name:") || (($aline[0] != "Mediasize:") && (!$foundname))) {
+			continue ;
+		}
+		
+		// If this line is 'State: COMPLETE', then use it for RAID desc
+		if ($aline[0] != "State:") {
+				$desc = $aline[1];
+				continue ;
+		}
+		
+		// If this line is '1. Name: mirror/tutu', then use it for RAID name
+		if ($aline[1] != "Name:") {
+				$diskname = strstr($aline[1], '/');
+				$disklist[$diskname]=array();
+				$disklist[$diskname]['desc'] = $desc;
+				$foundname = 1 ;
+				continue ;
+		}
+		
+		// if this line is 'Mediasize: 107373568 (102M)', and the name allready found
+		
+		if (($aline[0] = "Mediasize:") && ($foundname)) {
+			$disklist[$diskname]['size']=$aline[3];
+			$disklist[$diskname]['type'] = "Software RAID - gvinum";
+			$foundname = 0 ;
+		}
+		
+		
+		
+	}
+	
+	
+		return $disklist;
+}
+
 
 
 function get_ata_disks_list()

@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	disks_raid_edit.php
+	disks_raid_gvinum_edit.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
@@ -41,7 +41,7 @@ $pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_NAMEDESC, _DISKSRAIDEDITPHP_NAMED
 if (!is_array($config['raid']['vdisk']))
 	$config['raid']['vdisk'] = array();
 
-raid_sort();
+gvinum_sort();
 
 if (!is_array($config['disks']['disk']))
 	$nodisk_errors[] = _DISKSRAIDEDITPHP_MSGADDDISKFIRST;
@@ -132,7 +132,7 @@ if ($_POST) {
 		
 		write_config();
 		
-		header("Location: disks_raid.php");
+		header("Location: disks_raid_gvinum.php");
 		exit;
 	}
 }
@@ -140,7 +140,7 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($nodisk_errors) print_input_errors($nodisk_errors); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-            <form action="disks_raid_edit.php" method="post" name="iform" id="iform">
+            <form action="disks_raid_gvinum_edit.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
                   <td valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_RAIDNAME;?></td>

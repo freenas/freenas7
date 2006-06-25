@@ -75,15 +75,18 @@ If you want translate the WebGUI, You can use the english file as reference file
 and send me your translated file by email.
 
 - Upgrade to FreeBSD 6.1-STABLE
+- Add software RAID: geom mirror (NEED TO BE TESTED)
+- Replace vstpd 2.0.4 by pure-ftpd 1.0.21 (support UTF-8)
 - Update RSYNC to 2.6.8
 - Update Smartmon tools to 5.36
 - Update e2fsprogs to 1.39
 - Update iSCSI initiator to 0.17
 - Replace Howl (maintenance stoped) by Apple Bonjour
-- CIFS: added dos charset 852, added unix charset, option for hidding share, hide folder ".snap" (thanks to Jorge Valdes)
+- SSH: Adding the sftp subsystem
+- CIFS: added dos charset 852, added unix charset, option for hidding some share, hide folder ".snap" (thanks to Jorge Valdes)
 - FTP: Added FTP banner option, hide foler '.snap'
 - Adding CLI tools: fetch (FTP/HTTP download client)
-- Support large FAT32 parition (need to be tested).
+- Support large FAT32 parition.
 
 FreeBSD Kernel change:
 - Drivers added: a100u2w

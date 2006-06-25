@@ -1,9 +1,9 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_raid.php
+	disks_raid_gvinum.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -34,12 +34,12 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME,_DISKSRAIDPHP_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME,"Geom vinum",_DISKSRAIDPHP_NAMEDESC);
 
 if (!is_array($config['raid']['vdisk']))
 	$config['raid']['vdisk'] = array();
 
-raid_sort();
+gvinum_sort();
 
 $raidstatus=get_sraid_disks_list();
 
@@ -73,24 +73,30 @@ if ($_GET['act'] == "del") {
 		disks_raid_delete($raidname);
 		unset($a_raid[$_GET['id']]);
 		write_config();
-		header("Location: disks_raid.php");
+		header("Location: disks_raid_gvinum.php");
 		exit;
 	}
 }
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+ <tr><td class="tabnavtbl">
+  <ul id="tabnav">
+	<li class="tabinact"><a href="disks_raid_gmirror.php">Geom Mirror</a></li>
+	<li class="tabact">Geom Vinum (unstable)</li>
+  </ul>
+  </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabact"><?=_DISKSRAIDPHP_MANAGE; ?></li>
-	<li class="tabinact"><a href="disks_raid_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gvinum_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gvinum_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gvinum_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
   </ul>
   </td></tr>
   <tr> 
     <td class="tabcont">
-<form action="disks_raid.php" method="post">
+<form action="disks_raid_gvinum.php" method="post">
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if (file_exists($d_raidconfdirty_path)): ?><p>
 <?php print_info_box_np("_DISKSRAIDPHP_MSGCHANGED");?><br>
@@ -98,10 +104,10 @@ if ($_GET['act'] == "del") {
 <?php endif; ?>
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="25%" class="listhdrr"><?_DISKSRAIDPHP_VOLUME; ?></td>
-                  <td width="25%" class="listhdrr"><?_TYPE; ?></td>
-                  <td width="20%" class="listhdrr"><?_SIZE; ?></td>
-                  <td width="20%" class="listhdrr"><?_STATUS; ?></td>
+                  <td width="25%" class="listhdrr"><?=_DISKSRAIDPHP_VOLUME; ?></td>
+                  <td width="25%" class="listhdrr"><?=_TYPE; ?></td>
+                  <td width="20%" class="listhdrr"><?=_SIZE; ?></td>
+                  <td width="20%" class="listhdrr"><?=_STATUS; ?></td>
                   <td width="10%" class="list"></td>
 				</tr>
 			  <?php $i = 0; foreach ($a_raid as $raid): ?>
@@ -134,13 +140,13 @@ if ($_GET['act'] == "del") {
 						}
 						?>&nbsp;
                   </td>
-                  <td valign="middle" nowrap class="list"> <a href="disks_raid_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_DISKSRAIDPHP_EDITRAID; ?>" width="17" height="17" border="0"></a>
-                     &nbsp;<a href="disks_raid.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSRAIDPHP_DELCONF ;?>')"><img src="x.gif" title="<?=_DISKSRAIDPHP_DELRAID ;?>" width="17" height="17" border="0"></a></td>
+                  <td valign="middle" nowrap class="list"> <a href="disks_raid_gvinum_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_DISKSRAIDPHP_EDITRAID; ?>" width="17" height="17" border="0"></a>
+                     &nbsp;<a href="disks_raid_gvinum.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSRAIDPHP_DELCONF ;?>')"><img src="x.gif" title="<?=_DISKSRAIDPHP_DELRAID ;?>" width="17" height="17" border="0"></a></td>
 				</tr>
 			  <?php $i++; endforeach; ?>
                 <tr> 
                   <td class="list" colspan="4"></td>
-                  <td class="list"> <a href="disks_raid_edit.php"><img src="plus.gif" title="<?=_DISKSRAIDPHP_EDITRAID ;?>" width="17" height="17" border="0"></a></td>
+                  <td class="list"> <a href="disks_raid_gvinum_edit.php"><img src="plus.gif" title="<?=_DISKSRAIDPHP_EDITRAID ;?>" width="17" height="17" border="0"></a></td>
 				</tr>
               </table>
             </form>

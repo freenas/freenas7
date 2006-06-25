@@ -290,14 +290,26 @@ function disks_sort() {
 	usort($config['disks']['disk'], "diskcmp");
 }
 
-function raid_sort() {
+function gvinum_sort() {
 	global $g, $config;
 
-	function raidcmp($a, $b) {
+	function gvinumcmp($a, $b) {
 		return strcmp($a['name'], $b['name']);
 	}
 
-	usort($config['raid']['vdisk'], "raidcmp");
+	usort($config['raid']['vdisk'], "gvinumcmp");
+	
+}
+
+function gmirror_sort() {
+	global $g, $config;
+
+	function gmirrorcmp($a, $b) {
+		return strcmp($a['name'], $b['name']);
+	}
+
+	usort($config['gmirror']['vdisk'], "gmirrorcmp");
+	
 }
 
 function users_sort() {

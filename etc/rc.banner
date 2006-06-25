@@ -44,7 +44,7 @@
 
 *** This is FreeNAS, version {$version}
     built on {$buildtime} for {$g['fullplatform']}
-    Copyright (C) 2005-2006 by Olivier Cochard-Labbé. All rights reserved.
+    Copyright (C) 2005-2006 by Olivier Cochard-Labbe. All rights reserved.
     Visit http://www.freenas.org for updates.
     
     LAN IP address: {$config['interfaces']['lan']['ipaddr']}

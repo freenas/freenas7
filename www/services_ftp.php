@@ -123,12 +123,11 @@ if ($_POST) {
 		write_config();
 		
 		$retval = 0;
-		if (!file_exists($d_sysrebootreqd_path))
-		{
+		if (!file_exists($d_sysrebootreqd_path)) {
 			/* nuke the cache file */
 			config_lock();
-			/* services_ftpd_configure(); */
-			services_vsftpd_configure();
+			//services_vsftpd_configure();
+			services_pureftpd_configure();
 			services_mdnsresponder_configure();
 			config_unlock();
 		}
