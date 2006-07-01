@@ -45,6 +45,7 @@ if (!is_array($config['afp']))
 
 
 $pconfig['enable'] = isset($config['afp']['enable']);
+$pconfig['afpname'] = isset($config['afp']['afpname']);
 $pconfig['guest'] = isset($config['afp']['guest']);
 $pconfig['local'] = isset($config['afp']['local']);
 
@@ -57,17 +58,6 @@ if ($_POST) {
 	/* input validation */
 	$reqdfields = array();
 	$reqdfieldsn = array();
-	
-	/*
-	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "numberclients maxconperip timeout port"));
-		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Numberclients,Maxconperip,Timeout,Port"));
-	}
-	
-	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
-	*/
 	
 	if ($_POST['enable'] && !$_POST['guest'])
 	{
@@ -87,6 +77,7 @@ if ($_POST) {
 		$config['afp']['enable'] = $_POST['enable'] ? true : false;
 		$config['afp']['guest'] = $_POST['guest'] ? true : false;
 		$config['afp']['local'] = $_POST['local'] ? true : false;
+		$config['afp']['afpname'] = $_POST['afpname'];
 		
 		write_config();
 		
@@ -128,6 +119,12 @@ function enable_change(enable_change) {
 				  </table></td>
                 </tr>
 				<tr>
+				 <tr> 
+                  <td width="22%" valign="top" class="vncellreq"><?=_SRVAFP_AFPNAME ;?></td>
+                  <td width="78%" class="vtable"> 
+                    <?=$mandfldhtml;?><input name="afpname" type="text" class="formfld" id="afpname" size="20" value="<?=htmlspecialchars($pconfig['afpname']);?>"> 
+                  </td>
+				</tr>
            
                   <tr>
                 <td width="22%" valign="top" class="vncell"><strong><?=_SRVAFP_AUTH;?><strong></td>

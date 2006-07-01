@@ -194,7 +194,8 @@ if ($_POST)
 "ufsgpt_no_su"=>"UFS (EFI/GPT)",
 "msdos"=>"FAT32",
 "ntfs"=>"NTFS",
-"raid"=>"Geom Vinum Soft RAID"); ?>
+"raid"=>"Software RAID: gmirror",
+"raid"=>"Software RAID: gvinum"); ?>
 					<?php foreach ($fstvals as $fstval => $fstname): ?>
                       <option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
 					<?php endforeach; ?>

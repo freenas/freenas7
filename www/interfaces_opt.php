@@ -237,7 +237,7 @@ function ipaddr_change() {
                   <td width="78%" class="vtable">
 					<select name="media" class="formfld" id="media">
                       <?php $types = explode(",", "autoselect,10baseT/UTP,100baseTX,1000baseTX,1000baseSX");
-					        $vals = explode(" ", "autoselect,10baseT/UTP 100baseTX 1000baseTX 1000baseSX");
+					        $vals = explode(" ", "autoselect 10baseT/UTP 100baseTX 1000baseTX 1000baseSX");
 					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                       <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['media']) echo "selected";?>> 
                       <?=htmlspecialchars($types[$j]);?>

@@ -300,7 +300,6 @@ usr/bin/uptime:usr/bin/w
 ##scp -- secure copy (remote file copy program)
 /usr/bin/scp
 
-
 ###### contents of usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
@@ -320,9 +319,6 @@ usr/sbin/chroot
 ## cron - The scheduler
 /usr/sbin/cron
 
-## the dev_mkdb is not present since FreeBSD 5.2 reaplced by devfs
-#usr/sbin/dev_mkdb
-
 ## nsupdate - Dynamic DNS update utility
 #usr/sbin/nsupdate
 
@@ -340,6 +336,14 @@ usr/sbin/traceroute
 
 # wicontrol -- configure Lucent, Intersil, and Atheros wireless devices
 usr/sbin/wicontrol
+
+# NFS server tools
+usr/sbin/mountd
+usr/sbin/nfsd
+usr/sbin/rpcbind
+usr/sbin/rpc.lockd
+usr/sbin/rpc.statd
+
 
 ###### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor

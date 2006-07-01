@@ -359,9 +359,12 @@ function services_nfs_configure() {
 
 	/* kill any running nfsd */
 	
+	killbyname("rpc.statd");
+	killbyname("rpc.lockd");
 	killbypid("{$g['varrun_path']}/mountd.pid");
 	forcekillbyname("nfsd");
 	killbyname("rpcbind");
+
 	
 	if (isset($config['nfs']['enable']))
 	{
@@ -415,6 +418,8 @@ EOD;
 		mwexec("/usr/sbin/rpcbind");
 		mwexec("/usr/sbin/nfsd -u -t -n 4");
 		mwexec("/usr/sbin/mountd -r {$g['varetc_path']}/exports");
+		mwexec("/usr/sbin/rpc.lockd");
+		mwexec("/usr/sbin/rpc.statd");
 
 
 		if ($g['booting'])
@@ -963,8 +968,7 @@ function services_afpd_configure()
 	/* kill any VSFTPD */
 	killbyname("afpd");
 
-	if (isset($config['afp']['enable']))
-	{
+	if (isset($config['afp']['enable'])) 	{
 	
 		/* If no share configured, exit */
 		if (!is_array($config['mounts']['mount']))
@@ -973,16 +977,20 @@ function services_afpd_configure()
 		if ($g['booting'])
 			echo "Starting AFP server... ";
 			
+		if (empty($config['afp']['afpname']))
+			$afpname="-";
+		else
+			$afpname=$config['afp']['afpname'];
+			
 		/* generate afpd.conf */
 		$fd = fopen("{$g['varetc_path']}/afpd.conf", "w");
-		if (!$fd)
-		{
+		if (!$fd) 		{
 			printf("Error: cannot open afpd.conf in services_afpd_configure().\n");
 			return 1;
 		}
 			
 		$afpconf = <<<EOD
-- -transall -uamlist
+{$afpname} -transall -uamlist
 EOD;
 
 		if (isset($config['afp']['guest']) && isset($config['afp']['local']) )

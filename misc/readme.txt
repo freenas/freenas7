@@ -85,6 +85,8 @@ and send me your translated file by email.
 - SSH: Adding the sftp subsystem
 - CIFS: added dos charset 852, added unix charset, option for hidding some share, hide folder ".snap" (thanks to Jorge Valdes)
 - FTP: Added FTP banner option, hide foler '.snap'
+- NFSd: Added rpc.statd and rpc.lockd tools
+- AFP: Add server name configuration
 - Adding CLI tools: fetch (FTP/HTTP download client)
 - Support large FAT32 parition.
 

@@ -628,6 +628,7 @@ define('_SRVSSHD_PRIVATEKEYTEXT','Paste a DSA PRIVATE KEY in PEM format here.');
 define('_SRVAFP_NAMEDESC','AFP');
 define('_SRVAFP_MSGVALIDAUTH','You must select at least one authentication method.');
 define('_SRVAFP_AFPSRV','AFP Server');
+define('_SRVAFP_AFPNAME','Server Name');
 define('_SRVAFP_AUTH','Authentication');
 define('_SRVAFP_ENABLEGUEST','Enable guest access.');
 define('_SRVAFP_ENABLELOCAL','Enable local user authentication.');

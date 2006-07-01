@@ -351,7 +351,7 @@ function get_mounts_list()
 		$devname=$complete[2];
 		
 		// Test if it's a gvinum or gmirror device
-		if ((strcmp($devname,"gvinum") == 0) || (strcmp($devname,"gmirror") == 0))
+		if ((strcmp($devname,"gvinum") == 0) || (strcmp($devname,"mirror") == 0))
 			$devname=$complete[3];
 		
 		$mountlist[$i]['mdisk']=$devname;
