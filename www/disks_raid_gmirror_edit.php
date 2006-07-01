@@ -140,12 +140,12 @@ if ($_POST) {
 				</tr>
 	                
                  <tr> 
-                  <td valign="top" class="vncellreq">Type</td>
+                  <td valign="top" class="vncellreq"><?=_DISKSRAIDPHP_TYPE; ?></td>
                   <td class="vtable">
                   RAID 1 (<?=_DISKSRAIDEDITPHP_RAID1; ?>)
                   </td>
                   <tr> 
-                  <td width="22%" valign="top" class="vncell">Balance algorithm</td>
+                  <td width="22%" valign="top" class="vncell"><?=_DISKSRAIDEDITPHP_GVBALANCEALGO; ?></td>
                   <td width="78%" class="vtable"> 
                     <select name="balance" class="formfld">
 					<?php $balvals = array(
@@ -157,7 +157,7 @@ if ($_POST) {
 					<?php endforeach; ?>
                     </select>
                     <br>
-                    Select your read balance algorithm.</td>
+                    <?=_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT;?></td>
                 </tr>
               
               <tr> 

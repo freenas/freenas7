@@ -150,7 +150,7 @@ if ($_POST) {
 				</tr>
 	                
                  <tr> 
-                  <td valign="top" class="vncellreq">Type</td>
+                  <td valign="top" class="vncellreq"><?=_DISKSRAIDPHP_TYPE; ?></td>
                   <td class="vtable"> 
                     <select name="type" class="formfld" id="type">
                       <option value="0" <?php if ($pconfig['type'] == 0) echo "selected"; ?>>RAID 0 (<?=_DISKSRAIDEDITPHP_RAID0;?>)</option>

@@ -426,7 +426,7 @@ function get_gmirror_disks_list()
     //    (
     //        [type] => Software RAID - gmirror
     //        [desc] => COMPLETE
-    //        [size] => 6149 MB
+    //        [size] => 6149M
     //    )
     
 
@@ -434,6 +434,8 @@ function get_gmirror_disks_list()
 	exec("/sbin/gmirror list",$rawdata);
 	
 	$foundname = 0 ;
+	$founddesc = 0 ;
+	$goodname = 0 ;
 	
 	foreach ($rawdata as $line) {
 
@@ -441,45 +443,61 @@ function get_gmirror_disks_list()
 		/* Use space for break the line */
 		$aline = preg_split("/\s+/", $line);
 		
+		// First Step: Getting the array name
 		// look for this output:
-		// State: COMPLETE
-		// 1. Name: mirror/tutu
-		// Mediasize: 107373568 (102M)
-	
-		/* If the first word isn't the word "State:" neither second word "Name:", or the first word isn't "Mediasize", continue  */
-		if ( ($aline[0] != "State:") || ($aline[1] != "Name:") || (($aline[0] != "Mediasize:") && (!$foundname))) {
+		// Geom name: pouet
+		
+		if ( (strcmp($aline[0],"Geom") == 0) && (strcmp($aline[1],"name:") == 0) ) {
+			$diskname = $aline[2];
+			$disklist[$diskname]=array();
+			$foundname = 1 ;
 			continue ;
 		}
 		
-		// If this line is 'State: COMPLETE', then use it for RAID desc
-		if ($aline[0] != "State:") {
-				$desc = $aline[1];
-				continue ;
+		// Second Step: Getting the array status
+		// look for this output:
+		// State: COMPLETE
+		
+		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
+		
+			$desc = $aline[1];
+			$disklist[$diskname]['desc'] = $desc;
+			$founddesc=1;
+			continue ;
 		}
 		
-		// If this line is '1. Name: mirror/tutu', then use it for RAID name
-		if ($aline[1] != "Name:") {
-				$diskname = strstr($aline[1], '/');
-				$disklist[$diskname]=array();
-				$disklist[$diskname]['desc'] = $desc;
-				$foundname = 1 ;
+		// Third Step: Getting the array Size
+		// look for this output:
+		// Name: mirror/pouet
+		// Mediasize: 107373568 (102M)
+		
+		if (preg_match("/Name: mirror\/(.*)$/", $line, $matches)) {
+			if ($matches[1]=$diskname) {
+				$goodname=1;
 				continue ;
+			}
+		
 		}
 		
-		// if this line is 'Mediasize: 107373568 (102M)', and the name allready found
-		
-		if (($aline[0] = "Mediasize:") && ($foundname)) {
-			$disklist[$diskname]['size']=$aline[3];
-			$disklist[$diskname]['type'] = "Software RAID - gvinum";
+		if (($aline[0] = "Mediasize:") && $goodname) {
+			// extract the size between the ( )
+			preg_match("/.*\\(([^\)]*)\).*/",$aline[3],$match);
+			$disklist[$diskname]['size'] = $match[1];
+			$disklist[$diskname]['type'] = "Software RAID - gmirror";
+			
+			// init the check variable for the next RAID volume
 			$foundname = 0 ;
-		}
-		
-		
+			$founddesc = 0 ;
+			$goodname = 0 ;
+			
+			continue ;
+			
+		}				
 		
 	}
 	
-	
-		return $disklist;
+	return $disklist;
+		
 }
 
 

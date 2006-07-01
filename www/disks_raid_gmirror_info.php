@@ -42,8 +42,8 @@ $pgtitle = array(_DISKSPHP_NAME,"Geom mirror",_DISKSRAIDPHP_NAMEDESC);
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact">Geom Mirror</li>
-	<li class="tabinact"><a href="disks_raid_gvinum.php">Geom Vinum (unstable)</a></li>
+	<li class="tabact"><?=_DISKSRAIDPHP_GMIRROR; ?></li>
+	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?> 
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">

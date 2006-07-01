@@ -67,8 +67,8 @@ if (!isset($do_action))
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gmirror.php">Geom Mirror</a></li>
-	<li class="tabact">Geom Vinum (unstable)</li>
+	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_GMIRROR; ?></a></li>
+	<li class="tabact"><?=_DISKSRAIDPHP_GVINUM; ?> <?=_DISKSRAIDPHP_UNSTABLE ;?></li>
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">

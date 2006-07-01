@@ -436,6 +436,13 @@ define('_DISKSRAIDPHP_TOOLS','Tools');
 define('_DISKSRAIDPHP_INFO','Information');
 define('_DISKSRAIDPHP_VOLUME','Volume Name');
 
+// Software RAID common word
+
+define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
+define('_DISKSRAIDPHP_GMIRROR','Geom Mirror');
+define('_DISKSRAIDPHP_UNSTABLE','(unstable)');
+
+
 //file: disks_raid.php
 
 define('_DISKSRAIDPHP_NAMEDESC','RAID');
@@ -459,6 +466,8 @@ define('_DISKSRAIDEDITPHP_MSGVALIDRAID1','There must be 2 disks in a RAID 1 volu
 define('_DISKSRAIDEDITPHP_MSGVALIDRAID5','There must be a minimum of 3 disks in a RAID 5 volume.');
 define('_DISKSRAIDEDITPHP_MSGERROR','ERR Could not save RAID configuration.\n');
 define('_DISKSRAIDEDITPHP_RAIDNAME','Raid name');
+define('_DISKSRAIDEDITPHP_GVBALANCEALGO','Balance algorithm');
+define('_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT','Select your read balance algorithm.');
 define('_DISKSRAIDEDITPHP_RAID0','striping');
 define('_DISKSRAIDEDITPHP_RAID1','mirroring');
 define('_DISKSRAIDEDITPHP_RAID5','rotated block-interleaved parity');
