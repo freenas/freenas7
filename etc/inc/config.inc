@@ -380,8 +380,7 @@ function convert_config()
 			}
 		}
 		
-		if (is_array($config['nfs']['network']))
-		{
+		if (is_array($config['nfs']['network'])) 	{
 			$config['nfs']['nfsnetwork'] = $config['nfs']['network'];
 			unset($config['nfs']['network']);
 		}
@@ -394,6 +393,22 @@ function convert_config()
 		
 						
 		$config['version'] = "1.1";
+	}
+	
+	/* convert 1.1 -> 1.2 */
+	/* change the gvnium mount point type 'sraid' to 'gvinum' */
+	
+	if ($config['version'] == "1.1") {
+			
+		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) 	{
+			if (isset($config['mounts']['mount'][$i]['partition'])) 	{
+			
+				if (strcmp($config['mounts']['mount'][$i]['partition'],"sraid") == 0)
+					$config['mounts']['mount'][$i]['partition'] = "gvinum";
+			}
+		}
+									
+		$config['version'] = "1.2";
 	}
 	
 	write_config();

@@ -82,9 +82,9 @@ function disks_mount($mount)
 	
 	/* Must use a special dev name for software RAID volume */
 	
-	if ($mount['partition'] == "gvinum")
+	if (strcmp($mount['partition'],"gvinum") == 0)
 		$devname="/dev/gvinum/{$mount['mdisk']}";
-	else if ($mount['partition'] == "gmirror")
+	else if (strcmp($mount['partition'],"gmirror") == 0)
 		$devname="/dev/mirror/{$mount['mdisk']}";
 	else
 		$devname="/dev/{$mount['mdisk']}{$mount['partition']}";
@@ -211,7 +211,7 @@ function disks_umount_adv($mount)
 	
 	$mountpart="{$mount['partition']}";
 	
-	if ((strcmp($mountpart,"sraid") == 0) || (strcmp($mountpart,"gmirror") == 0))
+	if ((strcmp($mountpart,"gvinum") == 0) || (strcmp($mountpart,"gmirror") == 0))
 		$complete = "{$mount['mdisk']}";
 	else
 		$complete = "{$mount['mdisk']}{$mount['partition']}";
@@ -253,7 +253,7 @@ function disks_mount_status($mount)
 	
 	$mountpart="{$mount['partition']}";
 	
-	if ((strcmp($mountpart,"sraid") == 0) || (strcmp($mountpart,"gmirror") == 0))
+	if ((strcmp($mountpart,"gvinum") == 0) || (strcmp($mountpart,"gmirror") == 0))
 		$complete = "{$mount['mdisk']}";
 	else
 		$complete = "{$mount['mdisk']}{$mount['partition']}";

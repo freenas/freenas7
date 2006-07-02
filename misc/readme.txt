@@ -2,7 +2,7 @@ FreeNAS (http://www.freenas.org)
 Olivier Cochard-Labbe (olivier@freenas.org)
 Licence: BSD
 
-Release: 0.67 (WORKING RELEASE)
+Release: 0.671 (WORKING RELEASE)
 
 ============== SUMMARY =========
 
@@ -68,7 +68,10 @@ svn/misc/setupfreenas.sh
 
 ################ History Change logs ##############
 
-FreeNAS 0.67 (WORKING RELEASE):
+FreeNAS 0.671:
+- gvinum bug fix: fix raid deletion , add config file conversion
+
+FreeNAS 0.67:
 
 - Multilanguage WebGUI (thanks to Aliet Santiesteban Sifontes), French and spanich translation are work in progress.
 If you want translate the WebGUI, You can use the english file as reference file (this file is a work in progress and can change).

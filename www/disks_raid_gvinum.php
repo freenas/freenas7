@@ -70,7 +70,7 @@ if ($_POST) {
 if ($_GET['act'] == "del") {
 	if ($a_raid[$_GET['id']]) {
 		$raidname=$a_raid[$_GET['id']]['name'];
-		disks_raid_delete($raidname);
+		disks_raid_gvinum_delete($raidname);
 		unset($a_raid[$_GET['id']]);
 		write_config();
 		header("Location: disks_raid_gvinum.php");
