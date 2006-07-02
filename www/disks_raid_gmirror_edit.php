@@ -145,7 +145,7 @@ if ($_POST) {
                   RAID 1 (<?=_DISKSRAIDEDITPHP_RAID1; ?>)
                   </td>
                   <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_DISKSRAIDEDITPHP_GVBALANCEALGO; ?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_GVBALANCEALGO; ?></td>
                   <td width="78%" class="vtable"> 
                     <select name="balance" class="formfld">
 					<?php $balvals = array(
