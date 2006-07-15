@@ -4,7 +4,7 @@
 # Created: 2/12/2006 by Scott Zahn
 
 # Global Variables:
-VERSION=0.671
+VERSION=0.672
 
 WORKINGDIR="/usr/local/freenas"
 FREENAS="/usr/local/freenas/rootfs"
@@ -100,6 +100,10 @@ copy_bins() {
 			done
 		fi
 	done
+	
+	#Setting right permission to su binary
+	chmod 4755 $FREENAS/usr/bin/su
+	
 	return 0
 }
 
@@ -546,7 +550,7 @@ use_svn() {
 	cp -p $SVNDIR/etc/inc/*.* $FREENAS/etc/inc
 	cp -p $SVNDIR/www/*.* $FREENAS/usr/local/www
 	cp -p $SVNDIR/conf/*.* $FREENAS/conf.default
-	
+		
 	return 0
 
 }

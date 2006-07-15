@@ -372,6 +372,11 @@ define('_INTPHP_ENOPT','Enable Optional ');
 define('_INTPHP_ENOPTINT',' interface');
 define('_INTPHP_DESC',_DESC);
 define('_INTPHP_DESCTEXT','Enter a description (name) for the interface here.');
+define('_INTPHP_STATIC','Static IP configuration');
+define('_INTPHP_DHCP','DHCP client configuration');
+define('_INTPHP_GENERAL','General configuration');
+define('_INTPHP_DHCPHOSTNAME','Hostname');
+define('_INTPHP_DHCPHOSTNAMETEXT','The value in this field is sent as the DHCP hostname when requesting a DHCP lease.');
 
 // Disks: Manage
 // Common text
@@ -541,9 +546,9 @@ define('_SRVCIFS_WINSTEXT','WINS Server IP address.');
 define('_SRVCIFS_HIDE','Share to hide.');
 define('_SRVCIFS_HIDETEXT','Select the CIFS share to hide from browsing.');
 define('_SRVCIFS_SNBBUFF','Send Buffer Size');
-define('_SRVCIFS_SNBBUFFTEXT','Size of send buffer (8192 by default).');
+define('_SRVCIFS_SNBBUFFTEXT','Size of send buffer (16384 by default).');
 define('_SRVCIFS_RCVBUFF','Receive Buffer Size');
-define('_SRVCIFS_RCVBUFFTEXT','Size of receive buffer (8192 by default).');
+define('_SRVCIFS_RCVBUFFTEXT','Size of receive buffer (16384 by default).');
 
 // Service: FTP
 // file: services_ftp.php

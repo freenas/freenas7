@@ -33,6 +33,8 @@
 
 /* include all configuration functions */
 require_once("functions.inc");
+/* include utilities */
+require_once("util.inc");
 
 function interfaces_loopback_configure()
 {
@@ -75,14 +77,21 @@ function interfaces_lan_configure()
 			$cmd .= " mtu ". escapeshellarg($lancfg['mtu']);
 		mwexec($cmd);
 	}
-	
-	$addflags = "";
-	/* Remove the link0 options that create some problem */
-	/* if (strpos($lancfg['if'], "fxp") !== false)
-		$addflags .= " link0"; */
-	
-	mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " . 
-		escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
+
+  switch ($lancfg['ipaddr']) {
+		case 'dhcp':
+			interfaces_lan_dhcp_configure( $lancfg['if']);
+			break;
+			
+		default:
+      $addflags = "";
+      /* Remove the link0 options that create some problem */
+      /* if (strpos($lancfg['if'], "fxp") !== false)
+        $addflags .= " link0"; */
+      
+      mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " . 
+      escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
+	}
 	
 	/* install default route */
 	mwexec("/sbin/route delete default");
@@ -290,4 +299,37 @@ function interfaces_wireless_configure($if, $wlcfg)
 	return 0;
 }
 
+function interfaces_lan_dhcp_configure($if)
+{
+    global $config, $g;
+
+    /* generate dhclient.conf */
+    $fd = fopen("{$g['varetc_path']}/dhclient.conf", "w");
+    if (!$fd) {
+        printf("Error: cannot open dhclient.conf in interfaces_lan_dhcp_configure().\n");
+        return 1;
+    }
+
+     unset($dhclientconf);
+     $macaddr = get_macaddr($if);
+
+     if ($config['system']['hostname']) {
+        $dhclientconf .= <<<EOD
+send dhcp-client-identifier "{$macaddr}";
+interface "{$if}" {
+    send host-name "{$config['system']['hostname']}.{$config['system']['domain']}";
+}
+
+EOD;
+    }
+
+    fwrite($fd, $dhclientconf);
+    fclose($fd);
+
+    /* fire up dhclient */
+    mwexec("/sbin/dhclient -c {$g['varetc_path']}/dhclient.conf " .
+        escapeshellarg($if));
+
+    return 0;
+}
 ?>

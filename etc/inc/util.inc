@@ -1107,4 +1107,47 @@ function freenas_install($src,$dst)
 
 }
 
+/* get local IP address */
+function get_ipaddr($if)
+{
+  unset($ipaddr);
+  exec("/usr/bin/netstat -inW -f inet -I {$if}", $inetinfo);
+  array_shift($inetinfo);
+
+  foreach($inetinfo as $inet)
+  {
+    $ainet = preg_split("/\s+/", $inet);
+    $ifname = chop($ainet[0]);
+    
+    if (strcmp($ifname,$if) == 0)
+    {
+      $ipaddr = chop($ainet[3]);
+      break;
+    }
+  }
+
+  return $ipaddr;
+}
+
+/* get local MAC address */
+function get_macaddr($if)
+{
+  unset($macaddr);
+  exec("/usr/bin/netstat -inW -f link -I {$if}", $linkinfo);
+  array_shift($linkinfo);
+
+  foreach($linkinfo as $link)
+  {
+    $alink = preg_split("/\s+/", $link);
+    $ifname = chop($alink[0]);
+    
+    if (strcmp($ifname,$if) == 0)
+    {
+      $macaddr = chop($alink[3]);
+      break;
+    }
+  }
+
+  return $macaddr;
+}
 ?>

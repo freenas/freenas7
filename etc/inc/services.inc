@@ -120,7 +120,7 @@ EOD;
 		}
 		else 	{
 			$sambaconf .= <<<EOD
- SO_SNDBUF=8192
+ SO_SNDBUF=16384
 EOD;
 		}
 		
@@ -131,7 +131,7 @@ EOD;
 		}
 		else 	{
 			$sambaconf .= <<<EOD
- SO_RCVBUF=8192
+ SO_RCVBUF=16384
 EOD;
 		}
 		
@@ -561,7 +561,7 @@ EOD;
 		
 		$cmd = "/usr/local/sbin/pure-ftpd -S {$config['ftp']['port']} -c {$config['ftp']['numberclients']} -C {$config['ftp']['maxconperip']} -I {$config['ftp']['timeout']} -M U 077:077 -B -b ";
 		
-		if ($config['ftp']['anonymous'] == "NO")
+		if ($config['ftp']['anonymous'] == "no")
 			$cmd .= "-E ";
 		
 		if ($config['ftp']['pasv_min_port'] && $config['ftp']['pasv_max_port'])

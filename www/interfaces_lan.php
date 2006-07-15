@@ -36,9 +36,17 @@ $pgtitle = array(_INTLANPHP_NAME, _INTLANPHP_NAMEDESC);
 
 $lancfg = &$config['interfaces']['lan'];
 $optcfg = &$config['interfaces']['lan'];
-$pconfig['ipaddr'] = $config['interfaces']['lan']['ipaddr'];
-$pconfig['subnet'] = $config['interfaces']['lan']['subnet'];
-$pconfig['gateway'] = $config['interfaces']['lan']['gateway'];
+
+if ($config['interfaces']['lan']['ipaddr'] == "dhcp") {
+	$pconfig['type'] = "DHCP";
+	$pconfig['dhcphostname'] = $config['system']['hostname'] . "." . $config['system']['domain'];
+} else {
+	$pconfig['type'] = "Static";
+	$pconfig['ipaddr'] = $config['interfaces']['lan']['ipaddr'];
+	$pconfig['subnet'] = $config['interfaces']['lan']['subnet'];
+  $pconfig['gateway'] = $config['interfaces']['lan']['gateway'];
+}
+
 $pconfig['mtu'] = $config['interfaces']['lan']['mtu'];
 $pconfig['media'] = $config['interfaces']['lan']['media'];
 $pconfig['mediaopt'] = $config['interfaces']['lan']['mediaopt'];
@@ -55,11 +63,14 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
-	$reqdfields = explode(" ", "ipaddr subnet");
-	$reqdfieldsn = explode(",", "IP address,Subnet bit count");
+  /* input validation */
+	if ($_POST['type'] == "Static")
+  {
+    $reqdfields = explode(" ", "ipaddr subnet");
+    $reqdfieldsn = explode(",", "IP address,Subnet bit count");
 	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+    do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	}
 	
 	if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr']))) {
 		$input_errors[] = _INTPHP_MSGVALIDIP;
@@ -84,9 +95,14 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$config['interfaces']['lan']['ipaddr'] = $_POST['ipaddr'];
-		$config['interfaces']['lan']['subnet'] = $_POST['subnet'];
-		$config['interfaces']['lan']['gateway'] = $_POST['gateway'];
+		if($_POST['type'] == "Static") {
+      $config['interfaces']['lan']['ipaddr'] = $_POST['ipaddr'];
+			$config['interfaces']['lan']['subnet'] = $_POST['subnet'];
+			$config['interfaces']['lan']['gateway'] = $_POST['gateway'];
+		} else if ($_POST['type'] == "DHCP") {
+			$config['interfaces']['lan']['ipaddr'] = "dhcp";
+		}
+
 		$config['interfaces']['lan']['mtu'] = $_POST['mtu'];
 		$config['interfaces']['lan']['media'] = $_POST['media'];
 		$config['interfaces']['lan']['mediaopt'] = $_POST['mediaopt'];
@@ -131,12 +147,46 @@ function gen_bits(ipaddr) {
 function ipaddr_change() {
 	document.iform.subnet.value = gen_bits(document.iform.ipaddr.value);
 }
+
+function type_change() {
+  switch(document.iform.type.selectedIndex)
+  {
+		case 0:
+		  /* use current ip address as default */
+      document.iform.ipaddr.value = "<?=htmlspecialchars(get_ipaddr($lancfg['if']))?>";
+      document.iform.ipaddr.disabled = 0;
+    	document.iform.subnet.disabled = 0;
+      document.iform.gateway.disabled = 0;
+      /* calculate subnet mask */
+      ipaddr_change();
+      break;
+    case 1:
+      document.iform.ipaddr.disabled = 1;
+    	document.iform.subnet.disabled = 1;
+      document.iform.gateway.disabled = 1;
+      break;
+  }
+}
 // -->
 </script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
             <form action="interfaces_lan.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
+                <tr> 
+                  <td valign="middle"><strong><?=_TYPE; ?></strong></td>
+                  <td><select name="type" class="formfld" id="type" onchange="type_change()">
+                      <?php $opts = split(" ", "Static DHCP"); foreach ($opts as $opt): ?>
+                      <option <?php if ($opt == $pconfig['type']) echo "selected";?>> 
+                        <?=htmlspecialchars($opt);?>
+                      </option>
+                      <?php endforeach; ?>
+                    </select>
+                  </td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_STATIC; ?></td>
+                </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_IP; ?></td>
                   <td width="78%" class="vtable"> 
@@ -148,12 +198,32 @@ function ipaddr_change() {
                       <?=$i;?>
                       </option>
                       <?php endfor; ?>
-                    </select></td>
+                    </select>
+                  </td>
                 </tr>
                  <tr> 
                   <td valign="top" class="vncellreq"><?=_INTPHP_GW; ?></td>
                   <td class="vtable"><?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>">
                   </td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" height="16"></td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_DHCP; ?></td>
+                </tr>
+                <tr> 
+                  <td valign="top" class="vncell"><?=_INTPHP_DHCPHOSTNAME; ?></td>
+                  <td class="vtable"><input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled>
+                    <br>
+                     <?=_INTPHP_DHCPHOSTNAMETEXT; ?>
+                  </td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" height="4"></td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_GENERAL; ?></td>
                 </tr>
                 <tr> 
                   <td valign="top" class="vncell"><?=_INTPHP_MTU; ?></td>
@@ -214,4 +284,9 @@ function ipaddr_change() {
                 </tr>
               </table>
 </form>
+<script language="JavaScript">
+<!--
+type_change();
+//-->
+</script>
 <?php include("fend.inc"); ?>

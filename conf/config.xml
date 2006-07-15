@@ -118,6 +118,8 @@
 		<serverdesc>FreeNAS Server</serverdesc>
 		<security>share</security>
 		<localmaster>yes</localmaster>
+		<rcvbuf>16384</rcvbuf>
+		<sndbuf>16384</sndbuf>
 	</samba>
 	<ftp>
 	<!-- <enable/> -->

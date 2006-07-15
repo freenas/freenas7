@@ -255,6 +255,9 @@ sbin/camcontrol
 
 ####### contents of /usr/bin
 
+## awk - string manipulation language - Needed for dhclient-script
+/usr/bin/awk
+
 ## FTP/HTTP download tools
 /usr/bin/fetch
 

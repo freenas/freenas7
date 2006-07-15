@@ -2,7 +2,7 @@ FreeNAS (http://www.freenas.org)
 Olivier Cochard-Labbe (olivier@freenas.org)
 Licence: BSD
 
-Release: 0.671 (WORKING RELEASE)
+Release: 0.672 (WORKING RELEASE)
 
 ============== SUMMARY =========
 
@@ -67,6 +67,12 @@ svn/misc/setupfreenas.sh
 
 
 ################ History Change logs ##############
+
+FreeNAS 0.672:
+- Fixed su permisson
+- Fixed FTP anonymous login not disabled
+- Added DHCP client option for LAN interface (WebgUI only). Thanks to Volker Theile
+- Changed samba buffer size to 16384
 
 FreeNAS 0.671:
 - gvinum bug fix: fix raid deletion , add config file conversion

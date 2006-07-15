@@ -35,10 +35,14 @@
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
+	require_once("util.inc");
 
 	$version = chop(file_get_contents("{$g['etc_path']}/version"));
 	$buildtime = chop(file_get_contents("{$g['etc_path']}/version.buildtime"));
-	
+
+  $if = $config['interfaces']['lan']['if'];
+  $ipaddr = get_ipaddr($if);
+
 	echo <<<EOD
 
 
@@ -47,11 +51,11 @@
     Copyright (C) 2005-2006 by Olivier Cochard-Labbe. All rights reserved.
     Visit http://www.freenas.org for updates.
     
-    LAN IP address: {$config['interfaces']['lan']['ipaddr']}
+    LAN IP address: {$ipaddr}
     
     Port configuration:
     
-    LAN   -> {$config['interfaces']['lan']['if']}
+    LAN   -> {$if}
 
 EOD;
 
