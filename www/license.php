@@ -49,7 +49,7 @@ require("guiconfig.inc");
               <p>Scott Zahn (<a href="mailto:scott@zahna.com">scott@zahna.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Create the buildingscript setupfreenas.sh</font></em><br> 
               <p>Volker Theile (<a href="mailto:vtheile@gmx.de ">vtheile@gmx.de</a>)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added DHCP client feature (from m0n0wall)</font></em><br> 
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">, added DHCP client feature (adapted from m0n0wall)</font></em><br> 
               
             <p>The following persons have contributed to FreeNAS documentation project:</p>
             <p>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br>

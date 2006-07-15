@@ -393,7 +393,7 @@ function services_nfs_configure() {
 		foreach ($a_mount as $mount)
 		{
 			$nfsconf .= <<<EOD
-/mnt/{$mount['sharename']} -alldirs 
+/mnt/{$mount['sharename']} -alldirs -maproot=root 
 EOD;
 
 			if ($config['nfs']['mapall'] == "yes")

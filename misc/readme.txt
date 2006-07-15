@@ -73,6 +73,7 @@ FreeNAS 0.672:
 - Fixed FTP anonymous login not disabled
 - Added DHCP client option for LAN interface (WebgUI only). Thanks to Volker Theile
 - Changed samba buffer size to 16384
+- Added "-maproot=root" to NFS configuration file
 
 FreeNAS 0.671:
 - gvinum bug fix: fix raid deletion , add config file conversion
