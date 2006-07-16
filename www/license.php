@@ -48,9 +48,10 @@ require("guiconfig.inc");
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Found and fixed some bugs: Software RAID display and beep</font></em><br>
               <p>Scott Zahn (<a href="mailto:scott@zahna.com">scott@zahna.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Create the buildingscript setupfreenas.sh</font></em><br> 
-              <p>Volker Theile (<a href="mailto:vtheile@gmx.de ">vtheile@gmx.de</a>)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">, added DHCP client feature (adapted from m0n0wall)</font></em><br> 
-              
+              <p>Aliet Santiesteban Sifontes (<a href="mailto:aliet@tesla.cujae.edu.cu">aliet@tesla.cujae.edu.cu</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Add Multilanguage support on the WebGUI</font></em><br>
+              <p>Volker Theile (<a href="mailto:vtheile@gmx.de">vtheile@gmx.de</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added DHCP client feature (adapted from m0n0wall)</font></em><br>
             <p>The following persons have contributed to FreeNAS documentation project:</p>
             <p>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Beta tester and user manual contributor</font></em><br>

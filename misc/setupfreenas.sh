@@ -4,7 +4,7 @@
 # Created: 2/12/2006 by Scott Zahn
 
 # Global Variables:
-VERSION=0.672
+VERSION=0.68
 
 WORKINGDIR="/usr/local/freenas"
 FREENAS="/usr/local/freenas/rootfs"

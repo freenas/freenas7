@@ -256,8 +256,8 @@ function type_change() {
                   <td width="22%" valign="top" class="vncell"><?=_INTPHP_DUPLEX; ?></td>
                   <td width="78%" class="vtable">
 					<select name="mediaopt" class="formfld" id="mediaopt">
-                      <?php $types = explode(",", "autoselect,half-duplex,full-duplex");
-					        $vals = explode(" ", "autoselect half-duplex full-duplex");
+                      <?php $types = explode(",", "half-duplex,full-duplex");
+					        $vals = explode(" ", "half-duplex full-duplex");
 					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                       <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mediaopt']) echo "selected";?>> 
                       <?=htmlspecialchars($types[$j]);?>

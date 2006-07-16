@@ -60,6 +60,7 @@ if ($_POST) {
 		$disk = $_POST['disk'];
 		$type = $_POST['type'];
 		$diskid = $_POST['id'];
+		$notinitmbr= $_POST['notinitmbr'];
 		
 		/* found the name in the config: Must be a better way for did that */
 
@@ -128,6 +129,14 @@ if (!isset($do_format))
                       <option value="raid" <?php if ($type == "raid") echo "selected"; ?>>Software RAID: Geom Vinum</option>
                      </select>
                   </td>
+                  
+                  <tr>
+                <td width="22%" valign="top" class="vncell"><strong>Don't Erase MBR<strong></td>
+                		<td width="78%" class="vtable">
+                		<input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes" >
+                		don't erase the MBR (usefull for some RAID controllercard)<br>
+						</td>
+				</tr>
                 </tr>
 				<tr>
 				  <td width="22%" valign="top">&nbsp;</td>
@@ -142,9 +151,16 @@ if (!isset($do_format))
 					echo(_DISKSMANAGEINITPHP_INITTEXT);
 					echo('<pre>');
 					ob_end_flush();
-					/* Erase disk */
-					system("dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . " bs=32k count=640");
 					
+					/* Erase MBR if not checked*/
+					
+					if (!$notinitmbr) {
+						echo "Erasing MBR\n";
+						system("dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . " bs=32k count=640");
+						
+					}
+					else
+						echo "Keeping the MBR\n";
 					
 					switch ($type)
 					{

@@ -2,7 +2,7 @@ FreeNAS (http://www.freenas.org)
 Olivier Cochard-Labbe (olivier@freenas.org)
 Licence: BSD
 
-Release: 0.672 (WORKING RELEASE)
+Release: 0.68 (WORKING RELEASE)
 
 ============== SUMMARY =========
 
@@ -68,12 +68,13 @@ svn/misc/setupfreenas.sh
 
 ################ History Change logs ##############
 
-FreeNAS 0.672:
+FreeNAS 0.68:
 - Fixed su permisson
 - Fixed FTP anonymous login not disabled
 - Added DHCP client option for LAN interface (WebgUI only). Thanks to Volker Theile
 - Changed samba buffer size to 16384
 - Added "-maproot=root" to NFS configuration file
+- Added option for not erasing the MBR when initializing a disk: Some RAID controller store information in the MBR.
 
 FreeNAS 0.671:
 - gvinum bug fix: fix raid deletion , add config file conversion
