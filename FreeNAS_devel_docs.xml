@@ -5,7 +5,7 @@
   <title>FreeNAS Developers' Handbook</title>
 
   <bookinfo>
-    <date>June 25, 2006</date>
+    <date>Jully 16, 2006</date>
 
     <author>
       <firstname>Olivier</firstname>
@@ -178,7 +178,7 @@
 
         <listitem>
           <para>20: Experimental sub-menu, that permit to step-by-step, create
-          a FreeNAS from scratch</para>
+          a FreeNAS from scratch (chapter 2 scripts)</para>
         </listitem>
       </itemizedlist>
     </sect1>
@@ -869,14 +869,16 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
         options to produce a small binary.</para>
 
         <sect3>
-          <title>PHP</title>
+          <title>PHP 5</title>
 
-          <para>PHP Download the latest version of PHP 4.4 from <ulink
+          <para>PHP Download the latest version of PHP 5.1 from <ulink
           url="http://www.php.net">http://www.php.net</ulink> and decompress
           as usual. Build/install as follows:</para>
 
           <para><command>./configure --without-mysql --without-pear
-          --with-openssl --enable-discard-path</command></para>
+          --with-openssl --without-sqlite --with-pcre-regex
+          --enable-discard-path --enable-force-cgi-redirect
+          --enable-embed=shared</command></para>
 
           <para><command>make</command></para>
 
@@ -909,71 +911,9 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
         </sect3>
 
         <sect3>
-          <title>mini_httpd</title>
+          <title>Lighthttpd</title>
 
-          <para>Download mini_httpd 1.19 from <ulink
-          url="http://www.acme.com/software/mini_httpd/mini_httpd-1.19.tar.gz">http://www.acme.com/software/mini_httpd/mini_httpd-1.19.tar.gz</ulink>
-          and extract.</para>
-
-          <para>A custom patch needs to be applied that:</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>adds a limit to the number of concurrent connections to
-              prevent DoS attacks (since mini_httpd is a forking web
-              server)</para>
-            </listitem>
-
-            <listitem>
-              <para>adds captive portal mode support</para>
-            </listitem>
-
-            <listitem>
-              <para>sets SCRIPT_FILENAME (for php)</para>
-            </listitem>
-
-            <listitem>
-              <para>fixes a bug where mini_httpd would exit if a TCP
-              connection was closed before mini_httpd had a chance to handle
-              it (ECONNABORTED)</para>
-            </listitem>
-
-            <listitem>
-              <para>adds "index.php" to the list of index file names</para>
-            </listitem>
-
-            <listitem>
-              <para>makes the error pages much more plain</para>
-            </listitem>
-
-            <listitem>
-              <para>doesn't add a Server: header</para>
-            </listitem>
-
-            <listitem>
-              <para>patches the Makefile to build mini_httpd with SSL
-              support</para>
-            </listitem>
-          </itemizedlist>
-
-          <para>Download the patch:</para>
-
-          <para><command>fetch
-          http://www.freenas.org/downloads/mini_httpd.c.patch</command></para>
-
-          <para>Apply the patch, compile and install as follows:</para>
-
-          <para><command>patch &lt; mini_httpd.c.patch</command></para>
-
-          <para><command>make</command> <command>install -s mini_httpd
-          $FREENAS/usr/local/sbin</command></para>
-        </sect3>
-
-        <sect3>
-          <title>Lighthttpd (NOT USED IN FreeNAS: Personnal Notes)</title>
-
-          <para>Download, compile and install Lighthttpd (that support
-          WebDAV):</para>
+          <para>Download, compile and install Lighthttpd:</para>
 
           <para><command>fetch
           http://www.lighttpd.net/download/lighttpd-1.4.11.tar.gz</command></para>
@@ -983,13 +923,42 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
           <para><command>cd lighttpd-1.4.11</command></para>
 
           <para><command>./configure --sysconfdir=/var/etc/ --enable-lfs
-          --without-mysql --without-ldap --with-openssl
-          --without-lua</command></para>
+          --without-mysql --without-ldap --with-openssl --without-lua
+          --with-bzip2</command></para>
 
           <para><command>make</command></para>
 
-          <para><command>make</command> <command>install -s mini_httpd
+          <para><command>install -s src/lighttpd
           $FREENAS/usr/local/sbin</command></para>
+
+          <para><command>mkdir
+          $FREENAS/usr/local/bin/lighttpd</command></para>
+
+          <para><command>cp src/.libs/mod_indexfile.so
+          $FREENAS/usr/local/bin/lighttpd</command></para>
+
+          <para><command>cp src/.libs/mod_access.so
+          $FREENAS/usr/local/bin/lighttpd</command></para>
+
+          <para><command>cp src/.libs/mod_accesslog.so
+          $FREENAS/usr/local/bin/lighttpd</command></para>
+
+          <para><command>cp src/.libs/mod_dirlisting.so
+          $FREENAS/usr/local/bin/lighttpd</command></para>
+
+          <para><command>cp src/.libs/mod_staticfile.so
+          $FREENAS/usr/local/bin/lighttpd</command></para>
+
+          <para><command>cp src/.libs/mod_cgi.so
+          $FREENAS/usr/local/bin/lighttpd</command></para>
+
+          <para><command>cp src/.libs/mod_auth.so
+          $FREENAS/usr/local/bin/lighttpd</command></para>
+
+          <para><command>cp src/.libs/mod_webdav.so
+          $FREENAS/usr/local/bin/lighttpd</command></para>
+
+          <para><command></command></para>
         </sect3>
 
         <sect3>
@@ -1082,7 +1051,7 @@ done</programlisting>
         <sect3>
           <title>iscsi initiator</title>
 
-          <para>Download, compile and install the iscsi initaor:</para>
+          <para>Download, compile and install the iscsi initiator:</para>
 
           <para><command>fetch
           ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-17.tar.bz2</command></para>
@@ -1147,7 +1116,7 @@ done</programlisting>
 
           <para><command>tar zxvf samba-latest.tar.gz</command></para>
 
-          <para><command>cd samba-3.0.22/source/</command></para>
+          <para><command>cd samba-3.0.23/source/</command></para>
 
           <para>Then configure and make the source:</para>
 
@@ -1156,10 +1125,8 @@ done</programlisting>
           --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba
           --with-piddir=/var/run --with-privatedir=/var/etc/private
           --with-configdir=/var/etc --with-lockdir=/var/run
-          --with-piddir=/var/run</command></para>
-
-          <para><command>(Fix samba bug: add this option too)
-          --with-shared-modules=idmap_rid</command></para>
+          --with-piddir=/var/run --with-shared-modules=idmap_rid
+          </command></para>
 
           <para><command>make</command></para>
 
@@ -1340,7 +1307,7 @@ done</programlisting>
         <sect3>
           <title>e2fsck</title>
 
-          <para>Compile and install the UPnP SDK ports:</para>
+          <para>Compile and install the e2fsck ports:</para>
 
           <para><command>cd /usr/ports/sysutils/e2fsprogs/</command></para>
 
@@ -1396,7 +1363,7 @@ done</programlisting>
         </sect3>
 
         <sect3>
-          <title>mDNSReponder (bonjour)</title>
+          <title>mDNSReponder (Apple bonjour)</title>
 
           <para>Use the mDNSResponder port:</para>
 
