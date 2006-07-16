@@ -287,20 +287,104 @@ function system_webgui_start() {
 	if ($g['booting'])
 		echo "Starting webGUI... ";
 	
-	/* kill any running mini_httpd */
-	killbypid("{$g['varrun_path']}/mini_httpd.pid");
+	/* kill any running lighttpd */
+	killbypid("{$g['varrun_path']}/lighttpd.pid");
 	
 	/* generate password file */
 	system_password_configure();
 	
 	chdir($g['www_path']);
 	
-	/* non-standard port? */
-	if ($config['system']['webgui']['port'])
-		$portarg = "-p {$config['system']['webgui']['port']}";
-	else
-		$portarg = "";
+	/* generate lightppd.conf */
+	$fd = fopen("{$g['varetc_path']}/lighttpd.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open lightppd.conf in system_webgui_start().\n");
+		return 1;
+	}
 	
+	$lighttpdconf = <<<EOD
+server.modules              = (
+                                "mod_access",
+                                "mod_auth",
+                                "mod_cgi",
+                                "mod_accesslog" )
+server.document-root        = "{$g['www_path']}"
+server.errorlog             = "{$g['varlog_path']}/lighttpd.error.log" 
+index-file.names            = ( "index.php", "index.html",
+                                "index.htm", "default.htm" )
+mimetype.assign             = (
+  ".pdf"          =>      "application/pdf",
+  ".sig"          =>      "application/pgp-signature",
+  ".spl"          =>      "application/futuresplash",
+  ".class"        =>      "application/octet-stream",
+  ".ps"           =>      "application/postscript",
+  ".torrent"      =>      "application/x-bittorrent",
+  ".dvi"          =>      "application/x-dvi",
+  ".gz"           =>      "application/x-gzip",
+  ".pac"          =>      "application/x-ns-proxy-autoconfig",
+  ".swf"          =>      "application/x-shockwave-flash",
+  ".tar.gz"       =>      "application/x-tgz",
+  ".tgz"          =>      "application/x-tgz",
+  ".tar"          =>      "application/x-tar",
+  ".zip"          =>      "application/zip",
+  ".mp3"          =>      "audio/mpeg",
+  ".m3u"          =>      "audio/x-mpegurl",
+  ".wma"          =>      "audio/x-ms-wma",
+  ".wax"          =>      "audio/x-ms-wax",
+  ".ogg"          =>      "application/ogg",
+  ".wav"          =>      "audio/x-wav",
+  ".gif"          =>      "image/gif",
+  ".jpg"          =>      "image/jpeg",
+  ".jpeg"         =>      "image/jpeg",
+  ".png"          =>      "image/png",
+  ".xbm"          =>      "image/x-xbitmap",
+  ".xpm"          =>      "image/x-xpixmap",
+  ".xwd"          =>      "image/x-xwindowdump",
+  ".css"          =>      "text/css",
+  ".html"         =>      "text/html",
+  ".htm"          =>      "text/html",
+  ".js"           =>      "text/javascript",
+  ".asc"          =>      "text/plain",
+  ".c"            =>      "text/plain",
+  ".cpp"          =>      "text/plain",
+  ".log"          =>      "text/plain",
+  ".conf"         =>      "text/plain",
+  ".text"         =>      "text/plain",
+  ".txt"          =>      "text/plain",
+  ".dtd"          =>      "text/xml",
+  ".xml"          =>      "text/xml",
+  ".mpeg"         =>      "video/mpeg",
+  ".mpg"          =>      "video/mpeg",
+  ".mov"          =>      "video/quicktime",
+  ".qt"           =>      "video/quicktime",
+  ".avi"          =>      "video/x-msvideo",
+  ".asf"          =>      "video/x-ms-asf",
+  ".asx"          =>      "video/x-ms-asf",
+  ".wmv"          =>      "video/x-ms-wmv",
+  ".bz2"          =>      "application/x-bzip",
+  ".tbz"          =>      "application/x-bzip-compressed-tar",
+  ".tar.bz2"      =>      "application/x-bzip-compressed-tar"
+ )
+accesslog.filename          = "{$g['varlog_path']}/access.log"
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+server.pid-file            = "{$g['varrun_path']}/lighttpd.pid"
+auth.backend               = "htpasswd"
+auth.backend.htpasswd.userfile = "/usr/local/www/.htpasswd"
+cgi.assign = (".php" => "/usr/local/bin/php")
+
+EOD;
+
+	/* non-standard port? */
+	if ($config['system']['webgui']['port']) {
+	$lighttpdconf .= <<<EOD
+server.port                = {$config['system']['webgui']['port']}
+
+EOD;
+		
+	}
+
+
 	if ($config['system']['webgui']['protocol'] == "https") {
 	
 		if ($config['system']['webgui']['certificate'] && $config['system']['webgui']['private-key']) {
@@ -343,24 +427,31 @@ CsF1s0TdJLi/wzNQRAL37A8vqCeVFR/ng3Xpg96Yg+8Z
 EOD;
 		}
 		
-		$fd = fopen("{$g['varetc_path']}/cert.pem", "w");
-		if (!$fd) {
+		$fdcert = fopen("{$g['varetc_path']}/cert.pem", "w");
+		if (!$fdcert) {
 			printf("Error: cannot open cert.pem in system_webgui_start().\n");
 			return 1;
 		}
 		chmod("{$g['varetc_path']}/cert.pem", 0600);
-		fwrite($fd, $cert);
-		fwrite($fd, "\n");
-		fwrite($fd, $key);
-		fclose($fd);
+		fwrite($fdcert, $cert);
+		fwrite($fdcert, "\n");
+		fwrite($fdcert, $key);
+		fclose($fdcert);
 	
-		$res = mwexec("/usr/local/sbin/mini_httpd -S -E {$g['varetc_path']}/cert.pem" .
-			" -c \"**.php|**.cgi\" -u root -maxproc 16 $portarg" .
-			" -i {$g['varrun_path']}/mini_httpd.pid");
-	} else {
-		$res = mwexec("/usr/local/sbin/mini_httpd -c \"**.php|**.cgi\" -u root" .
-			" -maxproc 16 $portarg -i {$g['varrun_path']}/mini_httpd.pid");
-	}
+		$lighttpdconf .= <<<EOD
+ssl.engine = "enable"
+ssl.pemfile = "{$g['varetc_path']}/cert.pem"
+
+EOD;
+	
+		}
+
+	fwrite($fd, $lighttpdconf);
+	fclose($fd);
+
+	/* run lighttpd */
+		
+	$res = mwexec("/usr/local/sbin/lighttpd -f  {$g['varetc_path']}/lighttpd.conf -m /usr/local/lib/lighttpd");
 	
 	if ($g['booting']) {
 		if ($res == 0)

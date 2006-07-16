@@ -43,6 +43,8 @@
 	require_once("functions.inc");
 	
 	/* Launched if first boot */
+	// Will be used for configure the first NIC found to be assigned to LAN interface with DHCP configuration
+	// Actually no implemented
 	system_firstboot();
 	
 	/* convert configuration, if necessary */

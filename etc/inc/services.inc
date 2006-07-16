@@ -97,9 +97,8 @@ function services_samba_configure() {
 		
 		/* If no share configured, exit */
 		if (!is_array($config['mounts']['mount']))
-		{
-		return 0;
-		}
+			return 0;
+
 			
 		$sambaconf = <<<EOD
 [global]
