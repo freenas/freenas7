@@ -364,7 +364,7 @@ function get_mounts_list()
 function get_sraid_disks_list()
 {
 	/* Return list of ALL software volume: gvinum, gmirror */
-	$disklist = array_merge(get_gvinum_disks_list(),get_gmirror_disks_list());
+	$disklist = array_merge((array)get_gvinum_disks_list(),(array)get_gmirror_disks_list());
 	return $disklist;
 
 }
@@ -525,23 +525,19 @@ function get_ata_disks_list()
 	
 	exec("/sbin/atacontrol list",$rawdata);
 	
-	foreach ($rawdata as $line)
-	{
+	foreach ($rawdata as $line) {
 					
 		/* Separe la ligne par les espace */
 		$aline = preg_split("/\s+/", $line);
 	
 		/* Si ATA alors NEXT */
 		if ($aline[0] == "ATA")
-		{
 			continue ;
-		}
 	
 		$diskname = chop($aline[2]);
 		
 		/* Exlude CDROM (acdX) and Empty (no) */
-		if (!preg_match("/^(acd)/", $diskname ) & $diskname != "no")
-		{
+		if (!preg_match("/^(acd)/", $diskname ) & $diskname != "no") {
 			
 			$disklist[$diskname]=array();
 					
@@ -554,12 +550,10 @@ function get_ata_disks_list()
 			$disklist[$diskname]['desc'] = $match[1];
 			
 			/* Looking for the disk size */
-			foreach ($rawdmesg as $dmesgline)
-			{
+			foreach ($rawdmesg as $dmesgline) 	{
 				
 				/* Take only the first dmesg line */
-				if (!$disklist[$diskname]['size'])
-				{	
+				if (!$disklist[$diskname]['size']) 		{	
 				
 					/* Separe la ligne par les espace */
 					$dmesgtab = explode(" ", $dmesgline);
@@ -589,15 +583,14 @@ function get_scsi_disks_list()
 
 
 	global $g;
-	
+		
 	/* Recupere le dmesg */
 	exec("/sbin/dmesg",$rawdmesg);
 
 	/* on envoie la commande d'affichage de la liste des disques*/
 	exec("/sbin/camcontrol devlist",$rawdata);
 		
-	foreach ($rawdata as $line)
-	{
+	foreach ($rawdata as $line) {
 	
 		/* Get information include between parenthese: (pass0,da0) or (da0,pass0)*/
 		
@@ -612,8 +605,7 @@ function get_scsi_disks_list()
 			$diskname = $temp[0];
 		
 		/* On exlus les lecteurs cd */
-		if (!preg_match("/^(cd)/", $diskname  ))
-		{
+		if (!preg_match("/^(cd)/", $diskname  )) 	{
 			$disklist[$diskname]=array();
 			$disklist[$diskname]['type'] = "SCSI";
 			/* Recupère la description: ce qu'il y a entre < et > */
@@ -623,8 +615,7 @@ function get_scsi_disks_list()
 			$disklist[$diskname]['desc'] = $match[1];
 			
 			/* Looking for the disk size */
-			foreach ($rawdmesg as $dmesgline)
-			{			
+			foreach ($rawdmesg as $dmesgline) 	{			
 					/* Separe la ligne par les espace */
 					$dmesgtab = explode(" ", $dmesgline);
 					$dmesgtab[0] = rtrim($dmesgtab[0],":");
@@ -636,6 +627,7 @@ function get_scsi_disks_list()
 		}
 	}
 	return $disklist;
+
 }
 
 function get_hraid_disks_list()
@@ -645,26 +637,24 @@ function get_hraid_disks_list()
 	$kerneldisks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 	
 	/* Recupere la liste des disques ATA et SCSI */
-	$diskdetected = array_merge(get_ata_disks_list(),get_scsi_disks_list());
+	
+	$diskdetected = array_merge((array)get_ata_disks_list(),(array)get_scsi_disks_list());
 	
 	/* Recupere le dmesg */
 	exec("/sbin/dmesg",$rawdmesg);
 	
 	
-	foreach ($kerneldisks as $diskname)
-	{
+	foreach ($kerneldisks as $diskname) {
 		$allready=1;
 		
 		// Check of this entry is IDE or SCSI (allready detected)
-		foreach ($diskdetected as $diskfoundk => $diskfoundv)
-		{
+		foreach ($diskdetected as $diskfoundk => $diskfoundv) 	{
 			
 			if (strcasecmp($diskfoundk,$diskname) == 0)
 				$allready=0;
 		}
 		
-		if ($allready)
-		{
+		if ($allready) 	{
 
 			/* If not an IDE and SCSI disk */
 			$disklist[$diskname]=array();
@@ -672,24 +662,20 @@ function get_hraid_disks_list()
 			$disklist[$diskname]['type'] = "RAID";
 			
 			/* Looking for the disk size in the dmesg */
-			foreach ($rawdmesg as $dmesgline)
-			{
+			foreach ($rawdmesg as $dmesgline) 		{
 				/* Separe la ligne par les espace */
 				$dmesgtab = explode(" ", $dmesgline);
 				$dmesgtab[0] = rtrim($dmesgtab[0],":");
 				// si la ligne commence par le nom du disque: attention il y a 2 lignes
-				if ($dmesgtab[0]!="" &&(strcasecmp($dmesgtab[0],$diskname) == 0))
-				{
+				if ($dmesgtab[0]!="" &&(strcasecmp($dmesgtab[0],$diskname) == 0)) 	{
 					// the first line as this example "aacd0: <RAID 5> on aac0"
 					
-					if (strcasecmp(substr($dmesgtab[1], 0, 1),"<") == 0)
-					{
+					if (strcasecmp(substr($dmesgtab[1], 0, 1),"<") == 0) 	{
 						/* Match the description witch is include between < and > */
 						preg_match("/.*\<([^>]*)>.*/",$dmesgline,$match);
 						$disklist[$diskname]['desc'] = $match[1];
 					}
-					else		
-					{
+					else	{
 						// si c'est la deuxieme ligne, elle ressemble a "aacd0: 138850MB (284365824 sectors)"
 						$disklist[$diskname]['size'] = $dmesgtab[1];
 					}
@@ -706,7 +692,7 @@ function get_hraid_disks_list()
 function get_physical_disks_list()
 {
 	/* Return list of ALL disk: physical, hardware RAID and Software RAID disk */
-	$disklist = array_merge(get_ata_disks_list(),get_scsi_disks_list(),get_hraid_disks_list());
+	$disklist = array_merge((array)get_ata_disks_list(),(array)get_scsi_disks_list(),(array)get_hraid_disks_list());
 	return $disklist;
 
 }
@@ -714,7 +700,7 @@ function get_physical_disks_list()
 function get_all_disks_list()
 {
 	/* Return list of ALL disk: physical, hardware RAID and Software RAID disk */
-	$disklist = array_merge(get_ata_disks_list(),get_scsi_disks_list(),get_hraid_disks_list(), get_sraid_disks_list());
+	$disklist = array_merge((array)get_ata_disks_list(),(array)get_scsi_disks_list(),(array)get_hraid_disks_list(), (array)get_sraid_disks_list());
 	return $disklist;
 
 }
@@ -726,13 +712,9 @@ function get_disks_size($diskname)
 	
 	$disksize=0;
 	
-	foreach ($disklist as $diskk => $diskv)
-	{
+	foreach ($disklist as $diskk => $diskv) 	{
 		if (strcmp($diskk,$diskname)==0)
-		{
-			$disksize=$diskv['size'];
-			
-		}
+			$disksize=$diskv['size'];	
 	}
 	return $disksize;
 	
@@ -762,8 +744,7 @@ function get_cdrom_list()
 	
 	/* Variable $i utilisé pour l'index du tableau */
 	$i=0;
-	foreach ($rawdata as $line)
-	{
+	foreach ($rawdata as $line) 	{
 		
 				
 		/* Separe la ligne par les espace */
@@ -771,15 +752,12 @@ function get_cdrom_list()
 	
 		/* Si ATA alors NEXT */
 		if ($aline[0] == "ATA")
-		{
 			continue ;
-		}
 	
 		$diskname = chop($aline[2]);
 		
 		/* Exlude disk (adX) and Empty (no) */
-		if (!preg_match("/^(ad)/", $diskname ) & $diskname != "no")
-		{
+		if (!preg_match("/^(ad)/", $diskname ) & $diskname != "no") 	{
 			
 			$disklist[$diskname]=array();
 			
@@ -801,18 +779,17 @@ function get_cdrom_list()
 		
 	}
 	
-	/* Recupere la liste des disques SCSI */
+	/* Get the SCSI disk list */
 	
-	/* Attention: on efface les variables precedement utilisees et initalise les tableaux */
+	/* Cleaning used variable and initialize array */
 	unset($rawdata);
 	unset($dmesgtab);
 	reset($rawdmesg);
 	
-	/* on envoie la commande d'affichage de la liste des disques*/
+	/* Get the result of the command camcontrol*/
 	exec("/sbin/camcontrol devlist",$rawdata);
 		
-	foreach ($rawdata as $line)
-	{
+	foreach ($rawdata as $line) 	{
 	
 		/* Get information include between parenthese: (pass0,da0) or (da0,pass0)*/
 		
@@ -827,8 +804,7 @@ function get_cdrom_list()
 			$diskname = $temp[0];
 		
 		/* On exlus les lecteurs disque dur da */
-		if (!preg_match("/^(da)/", $diskname  ))
-		{
+		if (!preg_match("/^(da)/", $diskname  )) 	{
 			$disklist[$diskname]=array();
 			$disklist[$diskname]['type'] = "SCSI";
 			/* Recupère la description: ce qu'il y a entre < et > */

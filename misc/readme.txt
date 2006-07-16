@@ -69,12 +69,16 @@ svn/misc/setupfreenas.sh
 ################ History Change logs ##############
 
 FreeNAS 0.68:
+- Need a 32MB of minimal disk space for installing now
 - Fixed su permisson
-- Fixed FTP anonymous login not disabled
+- Fixed FTP anonymous login that was not disabled
 - Added DHCP client option for LAN interface (WebgUI only). Thanks to Volker Theile
-- Changed samba buffer size to 16384
+- Changed default samba buffer size to 16384
 - Added "-maproot=root" to NFS configuration file
-- Added option for not erasing the MBR when initializing a disk: Some RAID controller store information in the MBR.
+- Added option for not erasing the MBR when initializing a disk because some RAID controller store information in the MBR.
+- Replace PHP 4 by PHP 5 (preparing rewriting the code object oriented)
+
+KNOW BUG TO BE FIXED: Giga ethernet NIC problem after a reboot (need to find a Gbiga NIC for reproduce the problem)
 
 FreeNAS 0.671:
 - gvinum bug fix: fix raid deletion , add config file conversion

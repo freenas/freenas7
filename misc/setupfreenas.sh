@@ -4,13 +4,14 @@
 # Created: 2/12/2006 by Scott Zahn
 
 # Global Variables:
-VERSION=0.68
 
 WORKINGDIR="/usr/local/freenas"
 FREENAS="/usr/local/freenas/rootfs"
 BOOTDIR="/usr/local/freenas/bootloader"
 SVNDIR="/usr/local/freenas/svn"
 TMPDIR="/tmp/freenastmp"
+
+VERSION=`cat $SVNDIR/etc/version`
 
 # Functions:
 create_fs() {
@@ -372,8 +373,8 @@ create_mfsroot() {
 	# Setting Version type and date
 	date > $FREENAS/etc/version.buildtime
 	
-	# Make mfsroot to be 32M
-	dd if=/dev/zero of=$WORKINGDIR/mfsroot bs=1M count=32
+	# Make mfsroot to be 40M
+	dd if=/dev/zero of=$WORKINGDIR/mfsroot bs=1M count=40
 	# Configure this file as a memory disk
 	mdconfig -a -t vnode -f $WORKINGDIR/mfsroot -u 0
 	# Create Label on this disk
@@ -403,8 +404,8 @@ create_image() {
 	mkdir $TMPDIR
 	create_mfsroot;
 	
-	echo "IMG: Creating a 16Mb empty destination IMG file"
-	dd if=/dev/zero of=$WORKINGDIR/image.bin bs=1k count=18432
+	echo "IMG: Creating a 20Mb empty destination IMG file"
+	dd if=/dev/zero of=$WORKINGDIR/image.bin bs=1M count=20
 	echo "IMG: using this file as a memory disk"
 	mdconfig -a -t vnode -f $WORKINGDIR/image.bin -u 0
 	echo "IMG: Creating partition on this memory disk"
