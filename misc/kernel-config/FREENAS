@@ -252,6 +252,7 @@ device		wi		# WaveLAN/Intersil/Symbol 802.11 wireless NICs.
 #device		wl		# Older non 802.11 Wavelan wireless NIC.
 
 #FREENAS ADD special Wifi 
+device 		firmware
 device          wlan_acl
 device          wlan_tkip
 device          wlan_xauth
