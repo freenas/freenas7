@@ -242,7 +242,16 @@ browseable = no
 EOD;
 
 			}
+			
+			if (isset($config['samba']['recyclebin'])) {
+				$sambaconf .= <<<EOD
+vfs object = recycle
+recycle:repository = Recycle Bin
+recycle:keeptree = Yes
+recycle:versions = Yes
 
+EOD;
+			}
 
 		fwrite($fd, $sambaconf);
 		fclose($fd);
@@ -308,6 +317,20 @@ pid file = {$g['varrun_path']}/rsyncd.pid
 
 EOD;
 
+		if (!empty($config['rsyncd']['maxcon'])) {
+		$rsyncdconf .= <<<EOD
+max connections = {$config['rsyncd']['maxcon']}
+
+EOD;
+		}
+		
+		if (!empty($config['rsyncd']['motd'])) {
+		$rsyncdconf .= <<<EOD
+motd file = {$g['varetc_path']}/rsyncd.motd
+
+EOD;
+		}
+		
 		if (isset($config['rsyncd']['rsyncd_user'])) 	{
 			$rsyncdconf .= <<<EOD
 uid = {$config['rsyncd']['rsyncd_user']}
@@ -339,6 +362,24 @@ EOD;
 
 		fwrite($fd, $rsyncdconf);
 		fclose($fd);
+		
+		// Generate MOTD file if configured
+		
+		if (!empty($config['rsyncd']['motd'])) {
+			$fd = fopen("{$g['varetc_path']}/rsyncd.motd", "w");
+			if (!$fd) 	{
+				printf("Error: cannot open rsyncd.motd in services_rsyncd_configure().\n");
+				return 1;
+			}
+			
+			$motd  = <<<EOD
+{$config['rsyncd']['motd']}
+
+EOD;
+				
+			fwrite($fd, $motd);
+			fclose($fd);				
+		}
 
 		/* run rsync Daemon */
 		mwexec("/usr/local/bin/rsync --daemon --config={$g['varetc_path']}/rsyncd.conf");

@@ -63,6 +63,7 @@ $pconfig['loglevel'] = $config['samba']['loglevel'];
 $pconfig['sndbuf'] = $config['samba']['sndbuf'];
 $pconfig['rcvbuf'] = $config['samba']['rcvbuf'];
 $pconfig['enable'] = isset($config['samba']['enable']);
+$pconfig['recyclebin'] = isset($config['samba']['recyclebin']);
 
 
 
@@ -114,6 +115,7 @@ if ($_POST)
 		$config['samba']['loglevel'] = $_POST['loglevel'];
 		$config['samba']['sndbuf'] = $_POST['sndbuf'];
 		$config['samba']['rcvbuf'] = $_POST['rcvbuf'];
+		$config['samba']['recyclebin'] = $_POST['recyclebin'] ? true : false;
 		$config['samba']['enable'] = $_POST['enable'] ? true : false;
 		
 		write_config();
@@ -148,6 +150,7 @@ function enable_change(enable_change) {
 	document.iform.loglevel.disabled = endis;
 	document.iform.sndbuf.disabled = endis;
 	document.iform.rcvbuf.disabled = endis;
+	document.iform.recyclebin.disabled = endis;
 	document.iform.security.disabled = endis;
 	
 }
@@ -213,8 +216,8 @@ function enable_change(enable_change) {
                   <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_UNIXCHARSET ; ?></td>
                   <td width="78%" class="vtable">
 					<select name="unixcharset" class="formfld" id="unixcharset">     
-					  <?php $types = explode(",", "UTF-8,iso-8859-15,ASCII");
-					        $vals = explode(" ", "UTF-8 iso-8859-15 ASCII");      
+					  <?php $types = explode(",", "UTF-8,iso-8859-1,iso-8859-15,ASCII");
+					        $vals = explode(" ", "UTF-8 iso-8859-1 iso-8859-15 ASCII");      
 					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                       <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['unixcharset']) echo "selected";?>> 
                       <?=htmlspecialchars($types[$j]);?>
@@ -269,6 +272,13 @@ function enable_change(enable_change) {
                     <input name="winssrv" type="text" class="formfld" id="winssrv" size="30" value="<?=htmlspecialchars($pconfig['winssrv']);?>">
                     <br><?=_SRVCIFS_WINSTEXT; ?></td>
 				</tr>
+				<tr> 
+                  <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_RECYCLE;?></td>
+                  <td width="78%" class="vtable"> 
+                    <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked"; ?>>
+                    <?=_SRVCIFS_ENRECYCLE;?><span class="vexpl"><br>
+                    <?=_SRVCIFS_ENRECYCLETEXT;?></span></td>
+                </tr>
 				
 				<tr> 
                         <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_HIDE;?></td>

@@ -543,6 +543,9 @@ define('_SRVCIFS_TIMESRV','Time server');
 define('_SRVCIFS_TIMESRVTEXT','FreeNAS advertises itself as a time server to Windows clients.');
 define('_SRVCIFS_WINS','WINS server');
 define('_SRVCIFS_WINSTEXT','WINS Server IP address.');
+define('_SRVCIFS_RECYCLE','Recycle Bin');
+define('_SRVCIFS_ENRECYCLE','Enable Recycle bin');
+define('_SRVCIFS_ENRECYCLETEXT','This will create a recycle bin on the CIFS shares');
 define('_SRVCIFS_HIDE','Share to hide.');
 define('_SRVCIFS_HIDETEXT','Select the CIFS share to hide from browsing.');
 define('_SRVCIFS_SNBBUFF','Send Buffer Size');
@@ -607,6 +610,10 @@ define('_SRVRYNCD_RSYNCD','Rsync Daemon');
 define('_SRVRYNCD_READONLY','Read only');
 define('_SRVRYNCD_MAPUSER','Map to user');
 define('_SRVRYNCD_TCPORT',_TCPPORT);
+define('_SRVRYNCD_MAXCON','Maximum connections');
+define('_SRVRYNCD_MAXCONTEXT','Maximum number of simultaneous connections. Default is 0 (unlimited)');
+define('_SRVRYNCD_MOTD','MOTD');
+define('_SRVFTP_MOTDTEXT','message of the day');
 define('_SRVRYNCD_TCPORTTEXT','Alternate TCP port.');
 
 // file: services_rsyncd_client.php

@@ -61,7 +61,7 @@ require("guiconfig.inc");
             <p>Regis Caubet (<a href="mailto:caubet.r@gmail.com">caubet.r@gmail.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">French translator of the user manual</font></em><br>
             <p>yang vfor (<a href="mailto:vforyang@gmail.com">vforyang@gmail.com</a>)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Chinese translator of the user manual and Webmaster of <a href="http://wwww.freenas.cn">http://wwww.freenas.cn</a></font></em><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Chinese translator of the user manual and Webmaster of <a href="http://www.freenas.cn">http://www.freenas.cn</a></font></em><br>
             <p>The following persons have contributed to FreeNAS Website:</p>
             <p>Youri Trioreau (<a href="mailto:youri.trioreau@no-log.org">youri.trioreau@no-log.org</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Webmaster</font></em><br>
@@ -75,9 +75,9 @@ require("guiconfig.inc");
 
       <p> This product includes PHP, freely available from <a href="http://www.php.net/" target="_blank">http://www.php.net</a>.<br>
         Copyright &copy; 2001-2006 The PHP Group. All rights reserved.</p>
-      <p> mini_httpd (<a href="http://www.acme.com/software/mini_httpd" target="_blank">http://www.acme.com/software/mini_httpd</a>)<br>
+      <p> Lighttpd (<a href="http://http://www.lighttpd.net/" target="_blank">http://http://www.lighttpd.net/</a>)<br>
 
-        Copyright &copy; 1999, 2000 by Jef Poskanzer &lt;jef@acme.com&gt;. All rights reserved.</p>
+        Copyright &copy; 2004 by Jan Kneschke &lt;jan@kneschke.de&gt;. All rights reserved.</p>
       
       <p> OpenSSH (<a href="http://www.openssh.com/" target="_blank">http://www.openssh.com/</a>)<br>
         Copyright &copy; 1999-2006 OpenBSD</p>

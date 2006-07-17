@@ -52,6 +52,8 @@ if (!is_array($config['rsync']))
 
 $pconfig['readonly'] = $config['rsyncd']['readonly'];
 $pconfig['port'] = $config['rsyncd']['port'];
+$pconfig['motd'] = $config['rsyncd']['motd'];
+$pconfig['maxcon'] = $config['rsyncd']['maxcon'];
 $pconfig['rsyncd_user'] = $config['rsyncd']['rsyncd_user'];
 $pconfig['enable'] = isset($config['rsyncd']['enable']);
 
@@ -73,15 +75,20 @@ if ($_POST)
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
-	if ($_POST['enable'] && !is_port($_POST['port']))
-	{
-		$input_errors[] = _SRVRYNCD_MSGVALIDTCPPORT;
+	if ($_POST['enable']) {
+		if (!is_port($_POST['port']))
+			$input_errors[] = _SRVRYNCD_MSGVALIDTCPPORT;
+		else if (!is_numericint($_POST['maxcon']))
+			$input_errors[] = _SRVRYNCD_MSGVALIDMAXCON;
 	}
+	
 	
 	if (!$input_errors)
 	{
 		$config['rsyncd']['readonly'] = $_POST['readonly'];	
 		$config['rsyncd']['port'] = $_POST['port'];
+		$config['rsyncd']['motd'] = $_POST['motd'];
+		$config['rsyncd']['maxcon'] = $_POST['maxcon'];
 		$config['rsyncd']['enable'] = $_POST['enable'] ? true : false;
 		$config['rsyncd']['rsyncd_user'] = $_POST['rsyncd_user'];
 		
@@ -109,6 +116,8 @@ function enable_change(enable_change) {
 	endis = !(document.iform.enable.checked || enable_change);
 	document.iform.readonly.disabled = endis;
 	document.iform.port.disabled = endis;
+	document.iform.motd.disabled = endis;
+	document.iform.maxcon.disabled = endis;
 	document.iform.rsyncd_user.disabled = endis;
 	
 }
@@ -170,6 +179,18 @@ function enable_change(enable_change) {
                      <br><?=_SRVRYNCD_TCPORTTEXT; ?></td>
                   </td>
 				</tr>
+				<tr> 
+                  <td width="22%" valign="top" class="vncellreq"><?=_SRVRYNCD_MAXCON; ?></td>
+                  <td width="78%" class="vtable"> 
+                    <?=$mandfldhtml;?><input name="maxcon" type="text" class="formfld" id="maxcon" size="20" value="<?=htmlspecialchars($pconfig['maxcon']);?>"> 
+                  <br><?=_SRVRYNCD_MAXCONTEXT; ?></td>
+				</tr>
+				<td width="22%" valign="top" class="vncell"><?=_SRVRYNCD_MOTD;?></td>
+                  <td width="78%" class="vtable"> 
+                    <textarea name="motd" cols="65" rows="7" id="motd" class="formpre"><?=htmlspecialchars($pconfig['motd']);?></textarea>
+                    <br> 
+                    <?=_SRVFTP_MOTDTEXT;?></td>
+                </tr>
 				<tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
