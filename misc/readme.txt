@@ -79,6 +79,9 @@ FreeNAS 0.68 (WORKING RELEASE!!!):
 - Replace PHP 4 by PHP 5 (preparing rewriting the code with objects)
 - Replace mini_httpd by lighttpd (preparing adding WebDAV)
 - Upgrade samba 3.0.22 to samba 3.0.23 (ERROR to fix: WHERE is pam_winbind.so ??)
+Niel Endres Patchs:
+- Added capability to use a config file stored on FAT partition
+- Added NIC name be configured with "auto" for using the first NIC found
 
 KNOW BUG TO BE FIXED: Giga ethernet NIC problem after a reboot (need to find a Gbiga NIC for reproduce the problem)
 

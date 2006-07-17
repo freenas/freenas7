@@ -52,11 +52,16 @@ require("guiconfig.inc");
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Add Multilanguage support on the WebGUI</font></em><br>
               <p>Volker Theile (<a href="mailto:vtheile@gmx.de">vtheile@gmx.de</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added DHCP client feature (adapted from m0n0wall)</font></em><br>
+              <p>Niels Endres (<a href="mailto:niels@weaklogic.com">niels@weaklogic.com</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added FAT support for config file and auto detection of NIC name</font></em><br>
+               
             <p>The following persons have contributed to FreeNAS documentation project:</p>
             <p>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Beta tester and user manual contributor</font></em><br>
             <p>Regis Caubet (<a href="mailto:caubet.r@gmail.com">caubet.r@gmail.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">French translator of the user manual</font></em><br>
+            <p>yang vfor (<a href="mailto:vforyang@gmail.com">vforyang@gmail.com</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Chinese translator of the user manual and Webmaster of <a href="http://wwww.freenas.cn">http://wwww.freenas.cn</a></font></em><br>
             <p>The following persons have contributed to FreeNAS Website:</p>
             <p>Youri Trioreau (<a href="mailto:youri.trioreau@no-log.org">youri.trioreau@no-log.org</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Webmaster</font></em><br>

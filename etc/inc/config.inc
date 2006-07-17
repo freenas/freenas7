@@ -106,6 +106,33 @@ if ($g['booting']) {
 		}
 		
 		if (!$cfgdevice) {
+			/* no config found on ufs partitions, now search msdos partitions */
+			$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
+			foreach ($disks as $mountdisk) {
+				/* skip mfs mounted filesystems */
+				if (strstr($mountdisk, "md"))
+					continue;
+				/* Search on slice 1 for msdos FreeNAS */
+				if (mwexec("/sbin/mount -r -t msdos /dev/{$mountdisk}s1 {$g['cf_path']}") == 0)
+				{
+					if (file_exists("{$g['cf_conf_path']}/config.xml"))
+					{
+						/* found it */
+						$cfgdevice = $mountdisk;
+						$cfgpartition = $cfgdevice . "s1";
+						$cfgfstype = "msdos";
+						echo "Found configuration on $cfgpartition.\n";
+					}
+					
+					mwexec("/sbin/umount -f {$g['cf_path']}");
+					
+					if ($cfgdevice)
+						break;
+				}
+			}
+		}
+		
+		if (!$cfgdevice) {
 			/* no device found, print an error and die */
 			echo <<<EOD
 

@@ -53,20 +53,27 @@ function interfaces_lan_configure()
 		echo "Configuring LAN interface... ";
 	
 	$lancfg = $config['interfaces']['lan'];
+	
+	$lanif = $config['interfaces']['lan']['if'];
+	if ($lanif == "auto") {
+		$interfaces = explode(" ", exec("/sbin/ifconfig -l"));
+		$lanif = $interfaces[0];
+		echo "Using interface $lanif... ";
+	}
 		
 	/* wireless configuration? */
 	if (is_array($lancfg['wireless']))
-		interfaces_wireless_configure($lancfg['if'], $lancfg['wireless']);
+		interfaces_wireless_configure($lanif, $lancfg['wireless']);
 	
 	/* MAC spoofing? */
 	if ($lancfg['spoofmac'])
-		mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . 
+		mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . 
 			" link " . escapeshellarg($lancfg['spoofmac']));
 	
 	/* media */
 	if ($lancfg['media'] || $lancfg['mediaopt'] || $lancfg['polling'] || $lancfg['mtu'] )
 	{
-		$cmd = "/sbin/ifconfig " . escapeshellarg($lancfg['if']);
+		$cmd = "/sbin/ifconfig " . escapeshellarg($lanif);
 		if ($lancfg['media'])
 			$cmd .= " media " . escapeshellarg($lancfg['media']);
 		if ($lancfg['mediaopt'])
@@ -86,10 +93,10 @@ function interfaces_lan_configure()
 		default:
       $addflags = "";
       /* Remove the link0 options that create some problem */
-      /* if (strpos($lancfg['if'], "fxp") !== false)
+      /* if (strpos($lanif, "fxp") !== false)
         $addflags .= " link0"; */
       
-      mwexec("/sbin/ifconfig " . escapeshellarg($lancfg['if']) . " " . 
+      mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " " . 
       escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
 	}
 	
@@ -99,7 +106,7 @@ function interfaces_lan_configure()
 	
 	/* install multicast route */
 	
-	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lancfg['if']));
+	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lanif));
 	
 	if (!$g['booting'])
 	{
