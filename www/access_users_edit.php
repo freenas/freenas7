@@ -115,13 +115,11 @@ if ($_POST)
 	}
 	
 	/* Check for a password mismatch */
-	if ($_POST['password']!=$_POST['passwordconf'])
-		{
+	if ($_POST['password']!=$_POST['passwordconf']) 	{
 			$input_errors[] = _ACCESSUSERSEDIT_MSGVALIDPASSERROR;
-		}
+	}
 
-	if (!$input_errors)
-	{
+	if (!$input_errors) 	{
 		$users = array();
 		
 		$users['login'] = $_POST['login'];
@@ -131,24 +129,20 @@ if ($_POST)
 		$users['fullshell'] = $_POST['fullshell'] ? true : false;
 		
 		/* add the groupid for generate the password file */
-		foreach ($a_group as $group)
-		{
-			if ($users['usergroup']==$group['name'])
-			{
+		foreach ($a_group as $group) 		{
+			if ($users['usergroup']==$group['name']) 		{
 				$users['usergroupid']=$group['id'];
 				break;
 			}
 		}
 		
 			
-		if (isset($id) && $a_user[$id])
-		{
+		if (isset($id) && $a_user[$id]) 		{
 			$users['id'] = $_POST['userid'];
 			$users['usergroupid'] = $_POST['usergroupid'];
 			$a_user[$id] = $users;
 		}
-		else
-		{
+		else 		{
 			$users['id'] = $config['access']['userid'];
 			$config['access']['userid'] ++;
 			$a_user[] = $users;
@@ -157,8 +151,6 @@ if ($_POST)
 		
 		touch($d_userconfdirty_path);
 		
-		//echo "Debug, a_disk:<br>";
-		//print_r($a_disk);
 		write_config();
 		
 		header("Location: access_users.php");
