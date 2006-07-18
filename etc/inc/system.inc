@@ -1289,6 +1289,7 @@ function system_tuning()
 		mwexec('/sbin/sysctl kern.ipc.nmbclusters=60000');
 		mwexec('/sbin/sysctl kern.maxfiles=65536');
 		mwexec('/sbin/sysctl kern.maxfilesperproc=32768');
+		mwexec('/sbin/sysctl net.inet.tcp.inflight.enable=0');
 		
 		if ($g['booting'])
 			echo "done\n";
