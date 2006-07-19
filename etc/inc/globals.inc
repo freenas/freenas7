@@ -46,7 +46,7 @@ $g = array(
     "www_path" => "/usr/local/www",
     "xml_rootobj" => "freenas",
     "debug" => false,
-    "latest_config" => "1.2",
+    "latest_config" => "1.3",
     "nopccard_platforms" => array("wrap", "net48xx"),
     "wireless_regex" => "/^(wi|ath|an|awi|ral|iwi|ipw|ural)/"
 );

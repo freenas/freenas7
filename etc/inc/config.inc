@@ -438,6 +438,25 @@ function convert_config()
 		$config['version'] = "1.2";
 	}
 	
+	/* convert 1.2 -> 1.3 */
+	/* change the FTP anonymous and local user authentication YES/NO value to right/flase type */
+	
+	if ($config['version'] == "1.2") {
+			
+		if ($config['ftp']['anonymous'] == "YES")
+			$config['ftp']['anonymous'] = true;
+		else
+			$config['ftp']['anonymous'] = false;
+		
+		if ($config['ftp']['localuser'] == "YES")
+			$config['ftp']['localuser'] = true;
+		else
+			$config['ftp']['localuser'] = false;
+			
+									
+		$config['version'] = "1.3";
+	}
+	
 	write_config();
 	
 	if ($g['booting'])

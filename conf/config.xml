@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>1.2</version>
+	<version>1.3</version>
 	<lastchange></lastchange>
 	<firstboot/>
 	<system>
@@ -127,8 +127,8 @@
 		<maxconperip>2</maxconperip>
 		<timeout>300</timeout>
 		<port>21</port>
-		<anonymous>yes</anonymous>
-		<localuser>yes</localuser>
+		<anonymous/>
+		<localuser/>
 		<pasv_max_port>0</pasv_max_port>
 		<pasv_min_port>0</pasv_min_port>
 	</ftp>

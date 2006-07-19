@@ -601,7 +601,10 @@ EOD;
 		
 		$cmd = "/usr/local/sbin/pure-ftpd -S {$config['ftp']['port']} -c {$config['ftp']['numberclients']} -C {$config['ftp']['maxconperip']} -I {$config['ftp']['timeout']} -M U 077:077 -B -b ";
 		
-		if ($config['ftp']['anonymous'] == "no")
+		if ( (isset($config['ftp']['anonymous'])) && (!isset($config['ftp']['localuser'])))
+			$cmd .= "-e ";
+			
+		if ( (!isset($config['ftp']['anonymous'])) && (isset($config['ftp']['localuser'])))
 			$cmd .= "-E ";
 		
 		if ($config['ftp']['pasv_min_port'] && $config['ftp']['pasv_max_port'])
@@ -609,6 +612,16 @@ EOD;
 			
 		if ($config['ftp']['pasv_address'])
 			$cmd .= "-P {$config['ftp']['pasv_address']} ";
+			
+		if ($config['ftp']['natmode'])
+			$cmd .= "-N ";
+			
+		if ($config['ftp']['passiveip'])
+			$cmd .= "-P {$config['ftp']['passiveip']} ";
+			
+		if ($config['ftp']['fxp'])
+			$cmd .= "-W ";
+		
 		
 		mwexec($cmd);
 

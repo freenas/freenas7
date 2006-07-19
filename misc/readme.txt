@@ -81,6 +81,7 @@ FreeNAS 0.68 (UNRELEASE!):
 - Upgrade samba 3.0.22 to samba 3.0.23 (ERROR to fix: WHERE is pam_winbind.so ??)
 - CIFS: added recycle bin capabilities
 - RSYNCD: added motd and maximum connexions options
+- FTP : re-added passive ip adress and nat mode, permit to enable FXP
 Niel Endres Patchs:
 - Added capability to use a config file stored on FAT partition
 - Added NIC name be configured with "auto" for using the first NIC found
