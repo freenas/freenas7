@@ -201,12 +201,12 @@ define('_SYSTEMPHP_WEBGUIPROTOCOL','Protocole de l\'interface WEB');
 define('_SYSTEMPHP_WEBGUIPROTOCOLTEXT','');
 define('_SYSTEMPHP_WEBGUIPORT','port TCP de l\'interface WEB');
 define('_SYSTEMPHP_WEBGUIPORTTEXT','Entrez le num&eacute;ro d\'un port si vous d&eacute;sirez changer celui par d&eacute;faut (80 pour HTTP, 443 pour HTTPS).');
-define('_SYSTEMPHP_LANGUAGE','Langage');
+define('_SYSTEMPHP_LANGUAGE','Langue');
 define('_SYSTEMPHP_LANGUAGETEXT','Choisissez la langue utilis&eacute;e par le syst&egrave;me');
 define('_SYSTEMPHP_TIMEZONE','Fuseau horaire');
-define('_SYSTEMPHP_TIMEZONETEXT','S&eacute;lectionner un lieu proche de la votre');
-define('_SYSTEMPHP_TIMEUPDATEINT','Intervalle de mise &agrave; jour horaire');
-define('_SYSTEMPHP_TIMEUPDATEINTTEXT','Minutes entre les synchronisations de temps; 300	recommand&eacute;, ou 0 pour d&eacute;sactiver');
+define('_SYSTEMPHP_TIMEZONETEXT','S&eacute;lectionnez votre fuseau horaire');
+define('_SYSTEMPHP_TIMEUPDATEINT','Intervalle de mise &agrave; jour');
+define('_SYSTEMPHP_TIMEUPDATEINTTEXT','Minutes entre les synchronisations de temps<br>300	recommand&eacute;, ou 0 pour d&eacute;sactiver');
 define('_SYSTEMPHP_NTPSERVER','Serveur de temps NTP');
 define('_SYSTEMPHP_NTPSERVERTEXT','Utilisez un espace pour s&eacute;parer plusieurs entr&eacute;es (une seule obligatoire). V&eacute;rifiez d\'avoir configur&eacute; un serveur DNS avant d\'utiliser un nom ici!');
 
@@ -283,7 +283,7 @@ define('_SYSTEMFIRMWAREPHP_UPFIRM','Mettre &agrave; jour');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','Vous devez red&eacute;marrer le systeme avant de pouvoir faire une mise a jour.');
 define('_SYSTEMFIRMWAREPHP_DONOTABORT','N\'ANNULEZ PAS la mise a jour une fois 
                     commenc&eacute;e. FreeNAS red&eacute;marrera automatiquement apr&egrave;s 
-                    installation de la mise a jour. La configuration sera maintenue.<br>
+                    installation de la mise a jour.<br>La configuration sera maintenue.<br>
                     80 Mo de RAM sont n&eacute;cessaires pour la mise a jour.');
 
 
@@ -312,9 +312,9 @@ define('_SYSTEMADVANCEDPHP_TCPIDLE','Timeout inactivit&eacute; TCP');
 define('_SYSTEMADVANCEDPHP_TCPIDLETEXT','Les connexions TCP inactives seront supprim&eacute;es de la table d\'&eacute;tat si aucun paquet n\'est recu durant le nombre de secondes sp&eacute;cifi&eacute;. N\'indiquez pas une valeur trop haute ou la table d\'&eacute;tat pourrait se remplir de connexions improprement termin&eacute;es. R&eacute;glage par defaut : 2.5 heures.');
 define('_SYSTEMADVANCEDPHP_NAV','Navigation');
 define('_SYSTEMADVANCEDPHP_NAVTEXT','Garder le menu diagnostics ouvert');
-define('_SYSTEMADVANCEDPHP_BEEP','Bip Systeme');
+define('_SYSTEMADVANCEDPHP_BEEP','Bip Syst&egrave;me');
 define('_SYSTEMADVANCEDPHP_DISBEEP','D&eacute;sactiver le bip du haut-parleur au d&eacute;marrage et &agrave; l\'arr&ecirc;t');
-define('_SYSTEMADVANCEDPHP_SMART','Demon S.M.A.R.T');
+define('_SYSTEMADVANCEDPHP_SMART','D&eacute;mon S.M.A.R.T');
 define('_SYSTEMADVANCEDPHP_ENSMART','Activer le demon S.M.A.R.T');
 define('_SYSTEMADVANCEDPHP_SMARTTEXT','Surveiller les p&eacute;riph&eacute;riques S.M.A.R.T en enregistrant leur &eacute;tat dans le journal.');
 define('_SYSTEMADVANCEDPHP_TUNING','Personnalisation');
@@ -352,12 +352,9 @@ define('_INTPHP_IP','Addresse IP');
 define('_INTPHP_GW','Passerelle');
 define('_INTPHP_MTU','MTU');
 define('_INTPHP_MTUTEXT','Le MTU standard est de 1500, utilisez 9000 pour les jumbo frames.');
-define('_INTPHP_POLLING','Device polling');
-define('_INTPHP_ENPOLLING','Enable device polling');
-define('_INTPHP_POLLINGTEXT','Device polling is a technique that lets the system periodically poll network devices for new
-					data instead of relying on interrupts. This can reduce CPU load and therefore increase
-					throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times
-					per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards.');
+define('_INTPHP_POLLING','Sondage de p&eacute;riph&eacute;rique');
+define('_INTPHP_ENPOLLING','Activer le Sondage de p&eacute;riph&eacute;rique');
+define('_INTPHP_POLLINGTEXT','Le sondage de p&eacute;riph&eacute;rique est une technique permettant au syst&egrave;me d\'interroger p&eacute;riodiquement les p&eacute;riph&eacute;riques r&eacute;seau pour v&eacute;rifier la pr&eacute;sence de nouvelles donn&eacute;es plutot que de se baser sur les interruptions. Ceci peut r&eacute;duire la charge CPU et donc augmenter le d&eacute;bit, au d&eacute;triment d\'un d&eacute;lai de transfert plus &eacute;lev&eacute; (les p&eacute;riph&eacute;riques sont sond&eacute;s 1000 fois par seconde). Toutes les cartes r&eacute;seau ne supportent pas cette technique; voyez le site de <a href=http://m0n0.ch/wall>m0n0wall</a> pour trouver la liste des cartes support&eacute;es.');
 define('_INTPHP_SPEED','Vitesse');
 define('_INTPHP_DUPLEX','Duplex');
 define('_INTPHP_TEXT','Apr&egrave;s avoir cliqu&eacute; sur &quot;Enregistrer&quot;, Vous pourriez &eacute;galement avoir besoin de v&eacute;rifier les points suivants avant de pouvoir vous reconnecter sur votre NAS: 
@@ -365,15 +362,15 @@ define('_INTPHP_TEXT','Apr&egrave;s avoir cliqu&eacute; sur &quot;Enregistrer&qu
                       <li>changez l\'adresse IP de votre ordinateur</li>
                       <li>acc&eacute;dez &agrave; l\'interface avec la nouvelle adresse IP</li>
                     </ul>');
-define('_INTPHP_ENOPT','Activer Optional ');
-define('_INTPHP_ENOPTINT',' interface');
+define('_INTPHP_ENOPT','Activer l\'interface OPT ');
+define('_INTPHP_ENOPTINT',' ');
 define('_INTPHP_DESC',_DESC);
 define('_INTPHP_DESCTEXT','Entrez une description pour l\'interface ici.');
 
 // Disks: Manage
 // Common text
 define('_DISKSPHP_NAME',_DISKS);
-define('_DISKSPHP_MANAGE','Gerer');
+define('_DISKSPHP_MANAGE','G&eacuterer');
 define('_DISKSPHP_FORMAT','Formater');
 define('_DISKSPHP_ISCSIINIT','initiateur iSCSI');
 define('_DISKSPHP_DISK',_DISK);
@@ -391,7 +388,7 @@ define('_DISKSMANAGEPHP_DEL','supprimer le  disque');
 define('_DISKSMANAGEPHP_DELCONF','Voulez-vous vraiment supprimer ce disque? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s (par ex. share)!');
 define('_DISKSMANAGEPHP_ADD','ajouter un disque');
 define('_DISKSMANAGEPHP_NOTE','<strong>Note:<br>
-                </strong>Premiere etape: Ajoutez votre disque dur &agrave; la liste des disques.');
+                </strong>Premi&egrave;re &eacute;tape: Ajoutez votre disque dur &agrave; la liste des disques.');
 
 // file: disks_manage_edit.php
 define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Ce disque existe d&eacute;j&agrave; dans la liste des disques.');
@@ -402,7 +399,7 @@ define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Mets le disque en veille lorsque la du
 define('_DISKSMANAGEEDITPHP_APM','Gestion d\'&eacute;nergie avanc&eacute;e');
 define('_DISKSMANAGEEDITPHP_APMTEXT','Ceci vous permet de baisser la consommation d\'&eacute;nergie du disque, au d&eacute;triment de ses performances.<em>N\'activez PAS cette option pour les cartes Compact Flash.</em>');
 define('_DISKSMANAGEEDITPHP_ACLEVEL','Niveau acoustique');
-define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','Ceci vous permet de contrôler le niveau sonore du disque en fonctionnement.<em>N\'activez PAS cette option pour les cartes Compact Flash.</em>');
+define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','Ceci vous permet de contr&ocirc;ler le niveau sonore du disque en fonctionnement.<em>N\'activez PAS cette option pour les cartes Compact Flash.</em>');
 define('_DISKSMANAGEEDITPHP_PREFS','Syst&egrave;me de fichier pr&eacute;existant');
 define('_DISKSMANAGEEDITPHP_PREFSTEXT','Ceci vous permet d\'indiquer le type de syst&egrave;me de fichier d\'un disque contenant des donn&eacute;es.<br>
                      <em>Laissez "unformated" pour des disques non format&eacute;s puis utilisez le menu Formater.</em>');
@@ -412,14 +409,14 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','Ceci vous permet d\'indiquer le type de 
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialiser');
 define('_DISKSMANAGEINITPHP_INITTEXT','D&eacute;tails de l\'initialisation:');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"n\'est pas un message d\'erreur!\n');
-define('_DISKSMANAGEINITPHP_TEXT','Ceci efface toutes les partitions, cr&eacute;&eacute; la partition num&eacute;ro 1 et formate le disque avec le systeme de fichier sp&eacute;cifi&eacute;.');
+define('_DISKSMANAGEINITPHP_TEXT','Ceci efface toutes les partitions, cr&eacute;&eacute; la partition num&eacute;ro 1 et formate le disque avec le syst&egrave;me de fichier sp&eacute;cifi&eacute;.');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Gestion');
 define('_DISKSMANAGEISCSIPHP_NAMEDESC','iSCSI');
 define('_DISKSMANAGEISCSIPHP_MSGVALIDIP',_MSGVALIDIP);
 define('_DISKSMANAGEISCSIPHP_INITIATOR','Initiateur iSCSI');
-define('_DISKSMANAGEISCSIPHP_TARGETIP','Address IP cible');
+define('_DISKSMANAGEISCSIPHP_TARGETIP','Adresse IP cible');
 define('_DISKSMANAGEISCSIPHP_TARGETIPTEXT','Addresse IP de la cible iSCSI.');
 define('_DISKSMANAGEISCSIPHP_TARGETNAME','Nom de la cible');
 define('_DISKSMANAGEISCSIPHP_TARGETNAMETEXT','Nom de la cible.');
@@ -493,7 +490,7 @@ define('_DISKSMOUNTPHP_SHARENAME','Nom du partage');
 
 define('_DISKSMOUNTPHP_MSGCHANGED','La liste des points de montage a &eacute;t&eacute; modifi&eacute;e.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
 define('_DISKSMOUNTPHP_NOTE','Note:<br>
-                </strong></span>Deuxieme &eacute;tape de la configuration: Declarer le syst&egrave;me de fichiers utilis&eacute; par votre<br>
+                </strong></span>Deuxi&egrave;me &eacute;tape de la configuration: D&eacute;clarer le syst&egrave;me de fichiers utilis&eacute; par votre<br>
                 <a href="disks_manage.php">disque configur&eacute; pr&eacute;c&eacute;demment');
 define('_DISKSMOUNTPHP_DELCONF','Voulez-vous vraiment supprimer ce point de montage? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s (par ex. share)!');
 define('_DISKSMOUNTPHP_DEL','Supprimer le point de montage');
@@ -505,7 +502,7 @@ define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','Le nom de partage doit contenir unique
 define('_DISKSMOUNTEDITPHP_MSGVALIDDESC','La description contient des caract&egrave;res invalides.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Impossible de monter la partition syst&egrave;me 1, la partition de donn&eacute;es est la deuxi&egrave;me.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','Nom de partage dupliqu&eacute;.');
-define('_DISKSMOUNTEDITPHP_TEXT','1. Vous ne pouvez pas monter la partition \'<?php echo htmlspecialchars($cfdevice);?>\' où le fichier de configuration est stock&eacute;<br>2. Le support NTFS de FreeBSD est bugg&eacute;.');
+define('_DISKSMOUNTEDITPHP_TEXT','1. Vous ne pouvez pas monter la partition \'<?php echo htmlspecialchars($cfdevice);?>\' car elle contient le fichier de configuration<br>2. Le support NTFS de FreeBSD est bogu&eacute;.');
 
 // Service: CIFS/SAMBA
 // file: services_samba.php
@@ -525,8 +522,8 @@ define('_SRVCIFS_DESCTEXT','Description du serveur. Ce champ peut rester vide.')
 define('_SRVCIFS_DOSCHARSET','Jeu de caract&egrave;res Dos');
 define('_SRVCIFS_UNIXCHARSET','Jeu de caract&egrave;res Unix');
 define('_SRVCIFS_LOGLEVEL','Niveau de journalisation');
-define('_SRVCIFS_LOCALMASTER','Maître explorateur local');
-define('_SRVCIFS_LOCALMASTERTEXT','Permet &agrave; FreeNAS d\'essayer de s\'enregistrer comme maître explorateur local.');
+define('_SRVCIFS_LOCALMASTER','Ma&Icirc;tre explorateur local');
+define('_SRVCIFS_LOCALMASTERTEXT','Permet &agrave; FreeNAS d\'essayer de s\'enregistrer comme ma&Icirc;tre explorateur local.');
 define('_SRVCIFS_TIMESRV','Serveur de temps');
 define('_SRVCIFS_TIMESRVTEXT','FreeNAS s\'annonce commme un serveur de temps pour les clients Windows.');
 define('_SRVCIFS_WINS','Serveur WINS');
@@ -552,7 +549,7 @@ define('_SRVFTP_MSGVALIDIDLE','La dur&eacute;e maximum d\'inactivit&eacute; doit
 define('_SRVFTP_MSGVALIDPASVIP','L\'adresse pasv doit &ecirc;tre une adresse IP publique.');
 define('_SRVFTP_MSGVALIDPASVMAX','La valeur pasv_max_port doit &ecirc;tre un num&eacute;ro de port valide.');
 define('_SRVFTP_MSGVALIDPASVMIN','La valeur pasv_min_port doit &ecirc;tre un num&eacute;ro de port valide.');
-define('_SRVFTP_MSGVALIDAUTH','Vous devez selectionner au minimum une authentification anonyme et/ou locale.');
+define('_SRVFTP_MSGVALIDAUTH','Vous devez s&eacute;lectionner au minimum une authentification anonyme et/ou locale.');
 define('_SRVFTP_FTPSERVER','Serveur FTP');
 define('_SRVFTP_TCP',_TCPPORT);
 define('_SRVFTP_MAXCLIENT','Nombre de clients');
@@ -562,21 +559,21 @@ define('_SRVFTP_MAXIPTEXT','Nombre maximum de connexions par IP.');
 define('_SRVFTP_TIMEOUT','Timeout');
 define('_SRVFTP_TIMEOUTTEXT','Dur&eacute;e maximum d\'inactivit&eacute; en secondes.');
 define('_SRVFTP_ANONYMOUS','Login anonyme');
-define('_SRVFTP_ENANONYMOUS','Accepter les connexions anonymes');
+define('_SRVFTP_ANONYMOUSTEXT','Accepter les connexions anonymes');
 define('_SRVFTP_AUTH','Login local');
-define('_SRVFTP_ENAUTH','Accepter les connexions des utilisateurs authentifi&eacute;s.');
+define('_SRVFTP_AUTHTEXT','Accepter les connexions des utilisateurs authentifi&eacute;s.');
 define('_SRVFTP_FXP','FXP');
 define('_SRVFTP_ENFXP','Active le protocole FXP.');
-define('_SRVFTP_FXPTEXT','FXP authorise les transferts entre serveurs sans passer par un client (non s&eacute;curis&eacute;).');
+define('_SRVFTP_FXPTEXT','FXP permet les transferts entre serveurs sans passer par un client (non s&eacute;curis&eacute;).');
 define('_SRVFTP_NATMODE','mode NAT');
 define('_SRVFTP_ENNATMODE','Force le mode NAT');
-define('_SRVFTP_NATMODETEXT','Enable it if your FTP server is behind a NAT box that doesn\'t support applicative FTP proxying');
+define('_SRVFTP_NATMODETEXT','Activez ce mode si votre serveur FTP se trouve derriere un routeur NAT ne faisant pas office de proxy FTP applicatif');
 define('_SRVFTP_PASIVEIP','Addresse IP passive');
 define('_SRVFTP_PASIVEIPTEXT','Utilisez cette option pour outrepasser l\'adresse IP que le d&eacute;mon FTP envoie en r&eacute;ponse aux commandes PASV.');
 define('_SRVFTP_PASVMIN','pasv_min_port');
-define('_SRVFTP_PASVMINTEXT','N° de port minimum &agrave; allouer pour les connexions passives.');
+define('_SRVFTP_PASVMINTEXT','No de port minimum &agrave; allouer pour les connexions passives.');
 define('_SRVFTP_PASVMAX','pasv_max_port');
-define('_SRVFTP_PASVMAXTEXT','N° de port maximum &agrave; allouer pour les connexions passives.');
+define('_SRVFTP_PASVMAXTEXT','No de port maximum &agrave; allouer pour les connexions passives.');
 define('_SRVFTP_BANNER','Banni&egrave;re');
 define('_SRVFTP_BANNERTEXT','Banni&egrave;re d\'accueil affich&eacute;e par le serveur FTP au d&eacute;but d\'une connexion.');
 
@@ -587,7 +584,7 @@ define('_SRVNFS_NAMEDESC','NFS');
 define('_SRVNFS_MSGVALIDNET','Un r&eacute;seau valide doit &ecirc;tre sp&eacute;cifi&eacute;.');
 define('_SRVNFS_MSGVALIDNETBIT',_MSGVALIDNETBIT);
 define('_SRVNFS_NFSERVER','Serveur NFS');
-define('_SRVNFS_MAPALLROOT','Associer tous les utilisateurs &agrave; root');
+define('_SRVNFS_MAPALLROOT','Associer les utilisateurs &agrave; root');
 define('_SRVNFS_MAPALLROOTTEXT','Tous les utilisateurs auront les privil&egrave;ges root.');
 define('_SRVNFS_AUTHNET','R&eacute;seau autoris&eacute;');
 define('_SRVNFS_AUTHNETTEXT','R&eacute;seau autoris&eacute; &agrave; acc&eacute;der au partage NFS');
@@ -642,7 +639,8 @@ define('_SRVSSHD_PRIVATEKEYTEXT','Collez une clef priv&eacute;e DSA au format PE
 // file: services_afp.php
 
 define('_SRVAFP_NAMEDESC','AFP');
-define('_SRVAFP_MSGVALIDAUTH','Vous devez s&eacute;lectionner au moins un m&eacute;thode d\'authentification.');
+define('_SRVAFP_AFPNAME','Nom du serveur AFP');
+define('_SRVAFP_MSGVALIDAUTH','Vous devez s&eacute;lectionner au moins une m&eacute;thode d\'authentification.');
 define('_SRVAFP_AFPSRV','Serveur AFP');
 define('_SRVAFP_AUTH','Authentification');
 define('_SRVAFP_ENABLEGUEST','Activer l\'acc&egrave;s invit&eacute;.');
@@ -662,7 +660,7 @@ define('_ACCESS_FULLNAME','Nom complet');
 
 define('_ACCESSUSERS_MSGCHANGED','La liste des utilisateurs a &eacute;t&eacute; modifi&eacute;e.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
 define('_ACCESSUSERS_EDITUSER','modifier l\'utilisateur');
-define('_ACCESSUSERS_DELUSER','Supprimer l\'utilisateur');
+define('_ACCESSUSERS_DELUSER','supprimer l\'utilisateur');
 define('_ACCESSUSERS_CONFDEL','Voulez-vous vraiment supprimer cet utilisateur?!');
 define('_ACCESSUSERS_ADDUSER','ajouter un utilisateur');
 
@@ -690,7 +688,7 @@ define('_ACCESSUSERSEDIT_FULLSHELLTEXT','Donne l\'acc&egrave;s complet au shell'
 
 define('_ACCESSGROUPS_MSGCHANGED','La liste des groupes a &eacute;t&eacute; modifi&eacute;e.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
 define('_ACCESSGROUPS_DESC',_DESC);
-define('_ACCESSGROUPS_GROUPEDIT','modifer le groupe');
+define('_ACCESSGROUPS_GROUPEDIT','modifier le groupe');
 define('_ACCESSGROUPS_GROUPDEL','supprimer le groupe');
 define('_ACCESSGROUPS_GROUPDELCONF','Voulez-vous vraiment supprimer ce groupe?!');
 define('_ACCESSGROUPS_GROUPADD','ajouter un groupe');
@@ -729,7 +727,7 @@ define('_DIAG_NAME','Diagnostics');
 
 define('_SHUT_NAME','Arr&ecirc;t du NAS');
 define('_SHUT_MSGSHUT','Le syst&egrave;me est en cours d\'arr&ecirc;t. Ceci peut prendre jusqu\'&agrave;  une minute.');
-define('_SHUT_CONF','Etes-vous sûr de vouloir arr&ecirc;ter le NAS?');
+define('_SHUT_CONF','Etes-vous s&ucirc;r de vouloir arr&ecirc;ter le NAS?');
 
 // file: shutdown_sched.php
 
