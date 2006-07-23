@@ -82,11 +82,10 @@ FreeNAS 0.68 (UNRELEASE!):
 - CIFS: added recycle bin capabilities
 - RSYNCD: added motd and maximum connexions options
 - FTP : re-added passive ip adress and nat mode, permit to enable FXP
+- Rewrite the NIC speed/duplex script configuration (Trying to resolve the bug number 1519939)
 Niel Endres Patchs:
 - Added capability to use a config file stored on FAT partition
 - Added NIC name be configured with "auto" for using the first NIC found
-
-KNOW BUG TO BE FIXED: Giga ethernet NIC problem after a reboot (need to find a Gbiga NIC for reproduce the problem)
 
 FreeNAS 0.671:
 - gvinum bug fix: fix raid deletion , add config file conversion
