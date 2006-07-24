@@ -1116,7 +1116,7 @@ done</programlisting>
 
           <para><command>tar zxvf samba-latest.tar.gz</command></para>
 
-          <para><command>cd samba-3.0.23/source/</command></para>
+          <para><command>cd samba-3.0.23a/source/</command></para>
 
           <para>Then configure and make the source:</para>
 
@@ -1126,7 +1126,7 @@ done</programlisting>
           --with-piddir=/var/run --with-privatedir=/var/etc/private
           --with-configdir=/var/etc --with-lockdir=/var/run
           --with-piddir=/var/run --with-shared-modules=idmap_rid
-          </command></para>
+          --with-pammodulesdir=/usr/local/lib </command></para>
 
           <para><command>make</command></para>
 
@@ -1153,7 +1153,7 @@ done</programlisting>
           <para><command>install -s nsswitch/nss_wins.so
           $FREENAS/usr/local/lib/</command></para>
 
-          <para><command>install -s nsswitch/pam_winbind.so
+          <para><command>install -s bin/pam_winbind.so
           $FREENAS/usr/local/lib/</command></para>
 
           <para><command>ln -s $FREENAS/usr/local/lib/nss_winbind.so
@@ -1162,13 +1162,13 @@ done</programlisting>
           <para><command>mkdir
           $FREENAS/usr/local/samba/lib/idmap</command></para>
 
+          <para><command>mkdir
+          $FREENAS/usr/local/samba/lib/vfs</command></para>
+
           <para><command>install -s bin/rid.so
           $FREENAS/usr/local/samba/lib/idmap</command></para>
 
           <para><command>mkdir $FREENAS/usr/local/lib/samba</command></para>
-
-          <para><command>mkdir
-          $FREENAS/usr/local/lib/samba/vfs</command></para>
 
           <para><command>mkdir
           $FREENAS/usr/local/lib/samba/charset</command></para>
@@ -1187,6 +1187,9 @@ done</programlisting>
 
           <para><command>cp po/*.*
           $FREENAS/usr/local/lib/samba/</command></para>
+
+          <para><command>cp bin/recycle.so
+          $FREENAS/usr/local/samba/lib/vfs</command></para>
         </sect3>
 
         <sect3>
@@ -1286,7 +1289,7 @@ done</programlisting>
         <sect3>
           <title>scponly</title>
 
-          <para>Compile and install the scponly ports:</para>
+          <para>Compile and install the scponly 4.6 ports:</para>
 
           <para><command>cd /usr/ports/shells/scponly/</command></para>
 
@@ -1297,6 +1300,8 @@ done</programlisting>
           <para>WITH_SCPONLY_SCP=YES</para>
 
           <para>WITH_SCPONLY_WINSCP=YES</para>
+
+          <para>WITH_SCPONLY_UNISON=YES</para>
 
           <para><command>make</command></para>
 
