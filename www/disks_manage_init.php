@@ -131,10 +131,10 @@ if (!isset($do_format))
                   </td>
                   
                   <tr>
-                <td width="22%" valign="top" class="vncell"><strong>Don't Erase MBR<strong></td>
+                <td width="22%" valign="top" class="vncell"><strong><?=_DISKSPHP_NOMBR; ?><strong></td>
                 		<td width="78%" class="vtable">
                 		<input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes" >
-                		don't erase the MBR (usefull for some RAID controllercard)<br>
+                		<?=_DISKSPHP_NOMBRTEXT; ?><br>
 						</td>
 				</tr>
                 </tr>

@@ -393,7 +393,7 @@ define('_DISKSMANAGEPHP_NAMEDESC','Management');
 define('_DISKSMANAGEPHP_MSGCHANGED','The disk list has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
 define('_DISKSMANAGEPHP_STANDBY','Standby time');
-define('_DISKSMANAGEPHP_FSUNKNOWN','unknown or unformated');
+define('_DISKSMANAGEPHP_FSUNKNOWN','unknown or unformatted');
 define('_DISKSMANAGEPHP_EDIT','edit disk');
 define('_DISKSMANAGEPHP_DEL','delete disk');
 define('_DISKSMANAGEPHP_DELCONF','Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!');
@@ -422,6 +422,8 @@ define('_DISKSMANAGEINITPHP_NAMEDESC','Initialize');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Disk initialization details:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"is not an error message!\n');
 define('_DISKSMANAGEINITPHP_TEXT','This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified.');
+define('_DISKSPHP_NOMBR','Don\'t Erase MBR');
+define('_DISKSPHP_NOMBRTEXT','don\'t erase the MBR (useful for some RAID controller cards)');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Management');

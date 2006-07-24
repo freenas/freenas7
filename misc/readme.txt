@@ -78,7 +78,7 @@ FreeNAS 0.68 (UNRELEASE!):
 - Added option for not erasing the MBR when initializing disk: Some RAID controllers store important data in the MBR.
 - Replace PHP 4 by PHP 5 (preparing rewriting the code with objects)
 - Replace mini_httpd by lighttpd (preparing adding WebDAV)
-- Upgrade samba 3.0.22 to samba 3.0.23 (ERROR to fix: WHERE is pam_winbind.so ??)
+- Upgrade samba 3.0.22 to samba 3.0.23a
 - CIFS: added recycle bin capabilities, force guest mode
 - RSYNCD: added motd and maximum connexions options
 - FTP : re-added passive ip adress and NAT mode, permit to enable FXP
