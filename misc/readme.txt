@@ -69,7 +69,7 @@ svn/misc/setupfreenas.sh
 ################ History Change logs ##############
 
 FreeNAS 0.68 (UNRELEASE!):
-- Need a 32MB of minimal disk space for installing now
+- Need a 32MB of minimal disk space for installing (since 0.67, but forget to mention it)
 - Fixed su permisson
 - Fixed FTP anonymous login that was not disabled (thanks 
 - Added DHCP client option for LAN interface (WebgUI only). Thanks to Volker Theile
@@ -79,13 +79,12 @@ FreeNAS 0.68 (UNRELEASE!):
 - Replace PHP 4 by PHP 5 (preparing rewriting the code with objects)
 - Replace mini_httpd by lighttpd (preparing adding WebDAV)
 - Upgrade samba 3.0.22 to samba 3.0.23 (ERROR to fix: WHERE is pam_winbind.so ??)
-- CIFS: added recycle bin capabilities
+- CIFS: added recycle bin capabilities, force guest mode
 - RSYNCD: added motd and maximum connexions options
-- FTP : re-added passive ip adress and nat mode, permit to enable FXP
+- FTP : re-added passive ip adress and NAT mode, permit to enable FXP
 - Rewrite the NIC speed/duplex script configuration (Trying to resolve the bug number 1519939)
-Niel Endres Patchs:
-- Added capability to use a config file stored on FAT partition
-- Added NIC name be configured with "auto" for using the first NIC found
+- Added capability to use a config file stored on FAT partition. Thanks to Niel Endres.
+- Added NIC name be configured with "auto" for using the first NIC found. Thanks to Niel Endres.
 
 FreeNAS 0.671:
 - gvinum bug fix: fix raid deletion , add config file conversion

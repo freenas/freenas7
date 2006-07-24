@@ -188,6 +188,11 @@ directory mask = 0777
 passdb backend = smbpasswd
 
 EOD;
+	
+		$guestmode = <<<EOD
+guest ok = yes
+
+EOD;
 		
 		break;
 	case "domain":
@@ -207,13 +212,20 @@ template shell = /bin/sh
 
 EOD;
 	
+		$guestmode = <<<EOD
+guest ok = no
+
+EOD;
 		break;
 	case "user":
 		$sambaconf .= <<<EOD
 passdb backend = smbpasswd
 
 EOD;
-		
+		$guestmode = <<<EOD
+guest ok = no
+
+EOD;
 		break;
 	}
 	
@@ -231,6 +243,7 @@ public = yes
 writeable = yes
 printable = no
 veto files = /.snap/
+{$guestmode}
 
 EOD;
 
