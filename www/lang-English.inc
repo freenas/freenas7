@@ -283,7 +283,7 @@ define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','You must reboot the system before you c
 define('_SYSTEMFIRMWAREPHP_DONOTABORT','DO NOT abort the firmware upgrade once it 
                     has started. FreeNAS will reboot automatically after 
                     storing the new firmware. The configuration will be maintained.<br>
-                    You need a minium of 80 Mb RAM for firmware update.');
+                    You need a minium of 128 Mb RAM for firmware update.');
 
 
 // System Advanced Module

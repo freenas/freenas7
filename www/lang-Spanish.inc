@@ -244,7 +244,7 @@ define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','Usted debe reiniciar el sistema antes d
 define('_SYSTEMFIRMWAREPHP_DONOTABORT','No aborte el proceso una vez que comience. 
                     FreeNAS reiniciará automáticamente después de salvar el nuevo Sistema Base. La configuración
                     se mantendrá.<br>
-                    Necesita un mínimo de 80 Mb RAM para actualizar el Sistema Base.');
+                    Necesita un mínimo de 128 Mb RAM para actualizar el Sistema Base.');
 // System Advanced Module
 // file: system_advanced.php
 define('_SYSTEMADVANCEDPHP_NAME','Sistema');

@@ -62,6 +62,8 @@ require("guiconfig.inc");
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">French translator of the user manual and WebGUI</font></em><br>
             <p>yang vfor (<a href="mailto:vforyang@gmail.com">vforyang@gmail.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Chinese translator of the user manual and Webmaster of <a href="http://www.freenas.cn">http://www.freenas.cn</a></font></em><br>
+            <p>Pietro Defaccio (<a href="mailto:defaccio.pietro@tiscali.it">defaccio.pietro@tiscali.it</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Italian translator of the WebGUI</font></em><br>      
             <p>The following persons have contributed to FreeNAS Website:</p>
             <p>Youri Trioreau (<a href="mailto:youri.trioreau@no-log.org">youri.trioreau@no-log.org</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Webmaster</font></em><br>

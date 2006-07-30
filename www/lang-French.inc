@@ -196,7 +196,7 @@ define('_SYSTEMPHP_DNSTEXT','Adresse IP des serveurs DNS<br>');
 define('_SYSTEMPHP_USERNAME','Nom utilisateur');
 define('_SYSTEMPHP_USERNAMETEXT','Nom utilisateur pour acc&eacute;der &agrave; l\'interface WEB.');
 define('_SYSTEMPHP_PASSWORD','Mot de passe');
-define('_SYSTEMPHP_PASSWORDTEXT','Mot de passe d\'acc&egrave;s &agrave; l\'interface WEB.<br>N\'utilisez pas le caract&egrave;re :');
+define('_SYSTEMPHP_PASSWORDTEXT','Mot de passe d\'acc&egrave;s &agrave; l\'interface WEB.<br>N\'utilisez pas le caract&egrave;re ":"');
 define('_SYSTEMPHP_WEBGUIPROTOCOL','Protocole de l\'interface WEB');
 define('_SYSTEMPHP_WEBGUIPROTOCOLTEXT','');
 define('_SYSTEMPHP_WEBGUIPORT','port TCP de l\'interface WEB');
@@ -284,7 +284,7 @@ define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','Vous devez red&eacute;marrer le systeme
 define('_SYSTEMFIRMWAREPHP_DONOTABORT','N\'ANNULEZ PAS la mise a jour une fois 
                     commenc&eacute;e. FreeNAS red&eacute;marrera automatiquement apr&egrave;s 
                     installation de la mise a jour.<br>La configuration sera maintenue.<br>
-                    80 Mo de RAM sont n&eacute;cessaires pour la mise a jour.');
+                    128 Mo de RAM sont n&eacute;cessaires pour la mise a jour.');
 
 
 // System Advanced Module
@@ -335,7 +335,7 @@ define('_INTASSIGNPHP_DELINT','supprimer interface');
 define('_INTASSIGNPHP_ADDINT','ajouter interface');
 define('_INTASSIGNPHP_INTTEXT','Apr&egrave;s avoir cliqu&eacute; sur &quot;Enregistrer&quot;, vous devez red&eacute;marrer FreeNAS pour prendre en compte les changements. Vous devriez &eacute;galement v&eacute;rifier les points suivants avant de pouvoir vous reconnecter sur votre NAS: </span></p>
 <ul>
-  <li><span class=\"vexpl\">changez l\'adresse IP de votre ordinateur</span></li>
+  <li><span class=\"vexpl\">V&eacute;rifiez que l\'adresse IP de votre ordinateur soit dans le meme r&eacute;seau que la nouvelle adresse du NAS</span></li>
   <li><span class=\"vexpl\">acc&eacute;dez &agrave; l\'interface avec la nouvelle adresse IP</span></li>
 </ul>');
 
@@ -366,11 +366,16 @@ define('_INTPHP_ENOPT','Activer l\'interface OPT ');
 define('_INTPHP_ENOPTINT',' ');
 define('_INTPHP_DESC',_DESC);
 define('_INTPHP_DESCTEXT','Entrez une description pour l\'interface ici.');
+define('_INTPHP_STATIC','Configuration avec IP statique');
+define('_INTPHP_DHCP','Configuration avec client DHCP');
+define('_INTPHP_GENERAL','Configuration g&eacute;n&eacute;rale');
+define('_INTPHP_DHCPHOSTNAME','Nom d\'hote');
+define('_INTPHP_DHCPHOSTNAMETEXT','Le contenu de ce champ est envoy&eacute; en tant que nom d\'hote DHCP lors de la demande de bail DHCP.');
 
 // Disks: Manage
 // Common text
 define('_DISKSPHP_NAME',_DISKS);
-define('_DISKSPHP_MANAGE','G&eacuterer');
+define('_DISKSPHP_MANAGE','G&eacute;rer');
 define('_DISKSPHP_FORMAT','Formater');
 define('_DISKSPHP_ISCSIINIT','initiateur iSCSI');
 define('_DISKSPHP_DISK',_DISK);
@@ -410,6 +415,8 @@ define('_DISKSMANAGEINITPHP_NAMEDESC','Initialiser');
 define('_DISKSMANAGEINITPHP_INITTEXT','D&eacute;tails de l\'initialisation:');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"n\'est pas un message d\'erreur!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Ceci efface toutes les partitions, cr&eacute;&eacute; la partition num&eacute;ro 1 et formate le disque avec le syst&egrave;me de fichier sp&eacute;cifi&eacute;.');
+define('_DISKSPHP_NOMBR','Ne pas effacer le MBR');
+define('_DISKSPHP_NOMBRTEXT','Conserve le MBR intact (utile avec certains controleurs RAID)');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Gestion');
@@ -483,7 +490,7 @@ define('_DISKSRAIDTOOLSPHP_TEXT','1. N\'utilisez ces actions sp&eacute;ciales qu
 
 //Disk Mount Point
 // Comon value
-define('_DISKSMOUNTPHP_NAME','Point de montage');
+define('_DISKSMOUNTPHP_NAME','Points de montage');
 define('_DISKSMOUNTPHP_SHARENAME','Nom du partage');
 
 // disks_mount.php
@@ -522,8 +529,8 @@ define('_SRVCIFS_DESCTEXT','Description du serveur. Ce champ peut rester vide.')
 define('_SRVCIFS_DOSCHARSET','Jeu de caract&egrave;res Dos');
 define('_SRVCIFS_UNIXCHARSET','Jeu de caract&egrave;res Unix');
 define('_SRVCIFS_LOGLEVEL','Niveau de journalisation');
-define('_SRVCIFS_LOCALMASTER','Ma&Icirc;tre explorateur local');
-define('_SRVCIFS_LOCALMASTERTEXT','Permet &agrave; FreeNAS d\'essayer de s\'enregistrer comme ma&Icirc;tre explorateur local.');
+define('_SRVCIFS_LOCALMASTER','Ma&icirc;tre explorateur local');
+define('_SRVCIFS_LOCALMASTERTEXT','Permet &agrave; FreeNAS d\'essayer de s\'enregistrer comme ma&icirc;tre explorateur local.');
 define('_SRVCIFS_TIMESRV','Serveur de temps');
 define('_SRVCIFS_TIMESRVTEXT','FreeNAS s\'annonce commme un serveur de temps pour les clients Windows.');
 define('_SRVCIFS_WINS','Serveur WINS');
@@ -531,12 +538,12 @@ define('_SRVCIFS_WINSTEXT','Adresse IP du serveur WINS.');
 define('_SRVCIFS_RECYCLE','Corbeille');
 define('_SRVCIFS_ENRECYCLE','Activer la corbeille');
 define('_SRVCIFS_ENRECYCLETEXT','Ceci cr&eacute;&eacute;ra une corbeille pour les partages CIFS');
-define('_SRVCIFS_HIDE','Partage &agrave; cacher.');
+define('_SRVCIFS_HIDE','Partage &agrave; cacher');
 define('_SRVCIFS_HIDETEXT','S&eacute;lectionnez le partage CIFS &agrave; cacher dans l\'explorateur du client.');
 define('_SRVCIFS_SNBBUFF','Taille du tampon d\'envoi');
-define('_SRVCIFS_SNBBUFFTEXT','Taille du tampon d\'envoi (8192 par d&eacute;faut).');
+define('_SRVCIFS_SNBBUFFTEXT','Taille du tampon d\'envoi (16384 par d&eacute;faut).');
 define('_SRVCIFS_RCVBUFF','Taille du tampon de r&eacute;ception');
-define('_SRVCIFS_RCVBUFFTEXT','Taille du tampon de r&eacute;ception (8192 par d&eacute;faut).');
+define('_SRVCIFS_RCVBUFFTEXT','Taille du tampon de r&eacute;ception (16384 par d&eacute;faut).');
 
 // Service: FTP
 // file: services_ftp.php
@@ -559,17 +566,17 @@ define('_SRVFTP_MAXIPTEXT','Nombre maximum de connexions par IP.');
 define('_SRVFTP_TIMEOUT','Timeout');
 define('_SRVFTP_TIMEOUTTEXT','Dur&eacute;e maximum d\'inactivit&eacute; en secondes.');
 define('_SRVFTP_ANONYMOUS','Login anonyme');
-define('_SRVFTP_ANONYMOUSTEXT','Accepter les connexions anonymes');
+define('_SRVFTP_ENANONYMOUS','Accepter les connexions anonymes');
 define('_SRVFTP_AUTH','Login local');
-define('_SRVFTP_AUTHTEXT','Accepter les connexions des utilisateurs authentifi&eacute;s.');
+define('_SRVFTP_ENAUTH','Accepter les connexions des utilisateurs authentifi&eacute;s.');
 define('_SRVFTP_FXP','FXP');
 define('_SRVFTP_ENFXP','Active le protocole FXP.');
 define('_SRVFTP_FXPTEXT','FXP permet les transferts entre serveurs sans passer par un client (non s&eacute;curis&eacute;).');
 define('_SRVFTP_NATMODE','mode NAT');
 define('_SRVFTP_ENNATMODE','Force le mode NAT');
 define('_SRVFTP_NATMODETEXT','Activez ce mode si votre serveur FTP se trouve derriere un routeur NAT ne faisant pas office de proxy FTP applicatif');
-define('_SRVFTP_PASIVEIP','Addresse IP passive');
-define('_SRVFTP_PASIVEIPTEXT','Utilisez cette option pour outrepasser l\'adresse IP que le d&eacute;mon FTP envoie en r&eacute;ponse aux commandes PASV.');
+define('_SRVFTP_PASSIVEIP','Addresse IP passive');
+define('_SRVFTP_PASSIVEIPTEXT','Utilisez cette option pour outrepasser l\'adresse IP que le serveur FTP envoie en r&eacute;ponse aux commandes PASV.');
 define('_SRVFTP_PASVMIN','pasv_min_port');
 define('_SRVFTP_PASVMINTEXT','No de port minimum &agrave; allouer pour les connexions passives.');
 define('_SRVFTP_PASVMAX','pasv_max_port');
@@ -603,7 +610,7 @@ define('_SRVRYNCD_READONLY','Lecture seule');
 define('_SRVRYNCD_MAPUSER','Associer &agrave; l\'utilisateur');
 define('_SRVRYNCD_TCPORT',_TCPPORT);
 define('_SRVRYNCD_MAXCON','Maximum de connexions');
-define('_SRVRYNCD_MAXCONTEXT','Nombre maximum number de connexions simultan&eacute;es. 0 par d&eacute;faut (illimit&eacute;)');
+define('_SRVRYNCD_MAXCONTEXT','Nombre maximum de connexions simultan&eacute;es. 0 par d&eacute;faut (illimit&eacute;)');
 define('_SRVRYNCD_MOTD','MOTD');
 define('_SRVFTP_MOTDTEXT','Message du jour');
 define('_SRVRYNCD_TCPORTTEXT','Port TCP alternatif.');

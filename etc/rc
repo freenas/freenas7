@@ -43,17 +43,15 @@ clog -i -s 32768 /var/log/sshd.log
 clog -i -s 32768 /var/log/lastlog
 clog -i -s 32768 /var/log/smartd.log
 clog -i -s 32768 /var/log/daemon.log
-#touch /var/log/system.log
-#touch /var/log/ftp.log
-#touch /var/log/rsyncd.log
-#touch /var/log/sshd.log
-#touch /var/log/lastlog
 chmod 0600 /var/log/*.log
 
 adjkerntz -i
 
 # Create an initial utmp file
 cd /var/run && cp /dev/null utmp && chmod 644 utmp
+
+# Create symlink for lighhtpd file upload
+ln -s /ftmp /var/tmp
 
 # Run ldconfig
 /sbin/ldconfig -elf /usr/lib /usr/local/lib /lib

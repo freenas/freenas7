@@ -69,7 +69,8 @@ svn/misc/setupfreenas.sh
 ################ History Change logs ##############
 
 FreeNAS 0.68 (UNRELEASE!):
-- Need a 32MB of minimal disk space for installing (since 0.67, but forget to mention it)
+- Need 32MB of minimal disk space for installing (since 0.67, but forget to mention it)
+- Need 128MB of RAM for using the webgui upgrade function
 - Fixed su permisson
 - Fixed FTP anonymous login that was not disabled (thanks 
 - Added DHCP client option for LAN interface (WebgUI only). Thanks to Volker Theile
@@ -85,6 +86,7 @@ FreeNAS 0.68 (UNRELEASE!):
 - Rewrite the NIC speed/duplex script configuration (Trying to resolve the bug number 1519939)
 - Added capability to use a config file stored on FAT partition. Thanks to Niel Endres.
 - Added NIC name be configured with "auto" for using the first NIC found. Thanks to Niel Endres.
+- New language: Italian (thanks to Pietro Defaccio)
 
 FreeNAS 0.671:
 - gvinum bug fix: fix raid deletion , add config file conversion

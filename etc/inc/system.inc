@@ -2,7 +2,7 @@
 /*
 	system.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -306,12 +306,11 @@ function system_webgui_start() {
 server.modules              = (
                                 "mod_access",
                                 "mod_auth",
-                                "mod_cgi",
-                                "mod_accesslog" )
+                                "mod_cgi" )
+#                               "mod_accesslog" )
 server.document-root        = "{$g['www_path']}"
 server.errorlog             = "{$g['varlog_path']}/lighttpd.error.log" 
-index-file.names            = ( "index.php", "index.html",
-                                "index.htm", "default.htm" )
+index-file.names            = ( "index.php" )
 mimetype.assign             = (
   ".pdf"          =>      "application/pdf",
   ".sig"          =>      "application/pgp-signature",
@@ -365,7 +364,7 @@ mimetype.assign             = (
   ".tbz"          =>      "application/x-bzip-compressed-tar",
   ".tar.bz2"      =>      "application/x-bzip-compressed-tar"
  )
-accesslog.filename          = "{$g['varlog_path']}/access.log"
+#accesslog.filename          = "{$g['varlog_path']}/access.log"
 url.access-deny             = ( "~", ".inc" )
 static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
 server.pid-file            = "{$g['varrun_path']}/lighttpd.pid"

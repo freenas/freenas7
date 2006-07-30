@@ -17,7 +17,7 @@ fi
 
 case $1 in
 enable)
-	/sbin/mdmfs  -s 20m -b 8192 -f 1024 md1 /ftmp \
+	/sbin/mdmfs  -s 30m -b 8192 -f 1024 md1 /ftmp \
 		> /dev/null 2>&1
 	;;
 upgrade)
@@ -25,6 +25,12 @@ upgrade)
 	sleep 5
 
 	exec </dev/console >/dev/console 2>/dev/console
+	
+	# Check if firmware file exist
+	if [ ! -r $2 ]; then
+		echo "File does not exist. Exiting."
+		exit
+	fi
 
 	echo
 	echo "Firmware upgrade in progress..."
