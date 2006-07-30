@@ -84,6 +84,7 @@ FreeNAS 0.68 (UNRELEASE!):
 - RSYNCD: added motd and maximum connexions options
 - FTP : re-added passive ip adress and NAT mode, permit to enable FXP
 - Rewrite the NIC speed/duplex script configuration (Trying to resolve the bug number 1519939)
+- Fix bug with generating the mDNS responder config file
 - Added capability to use a config file stored on FAT partition. Thanks to Niel Endres.
 - Added NIC name be configured with "auto" for using the first NIC found. Thanks to Niel Endres.
 - New language: Italian (thanks to Pietro Defaccio)

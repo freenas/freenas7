@@ -1282,6 +1282,7 @@ EOD;
 	
 	if (isset($config['afp']['enable'])) 	{				
 		$mDNSResponder .= <<<EOD
+
 "{$config['system']['hostname']} AFP Server"
 _afpovertcp._tcp local.
 548
@@ -1291,6 +1292,7 @@ EOD;
 	
 	if (isset($config['rsyncd']['enable'])) 	{				
 		$mDNSResponder .= <<<EOD
+
 "{$config['system']['hostname']} RSYNC Server"
 _rsync._tcp. local.
 {$config['rsyncd']['port']}
@@ -1300,6 +1302,7 @@ EOD;
 	
 	if (isset($config['sshd']['enable'])) 	{				
 		$mDNSResponder .= <<<EOD
+
 "{$config['system']['hostname']} SSH Server"
 _ssh._tcp local.
 {$config['sshd']['port']}
@@ -1309,6 +1312,7 @@ EOD;
 	
 	if (isset($config['ftp']['enable'])) 	{				
 		$mDNSResponder .= <<<EOD
+
 "{$config['system']['hostname']} FTP Server"
 _ftp._tcp local.
 {$config['ftp']['port']}
@@ -1318,6 +1322,7 @@ EOD;
 	
 	if (isset($config['samba']['enable'])) 	{				
 		$mDNSResponder .= <<<EOD
+
 "{$config['system']['hostname']} Samba Server"
 _smb._tcp local.	
 139
@@ -1335,6 +1340,7 @@ EOD;
 		
 		foreach ($a_mount as $mount) 		{
 		$mDNSResponder .= <<<EOD
+
 "{$config['system']['hostname']} NFS: {$mount['sharename']}"
 _nfs._tcp local.
 2049 path=/mnt/{$mount['sharename']}
