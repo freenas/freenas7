@@ -4,7 +4,7 @@
 # part of m0n0wall (http://neon1.net/m0n0wall)
 # Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
 # All rights reserved.
-# Modified for FreeNAS (http://www.freenas.org) by Olivier Cochard <olivier@freenas.org>
+# Modified for FreeNAS (http://www.freenas.org) by Olivier Cochard-Labbe <olivier@freenas.org>
 
 # make sure the user can't kill us by pressing Ctrl-C
 trap : 2

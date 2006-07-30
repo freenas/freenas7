@@ -141,8 +141,7 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			/* nuke the cache file */
 			config_lock();
-			//services_vsftpd_configure();
-			services_pureftpd_configure();
+			services_ftpd_configure();
 			services_mdnsresponder_configure();
 			config_unlock();
 		}

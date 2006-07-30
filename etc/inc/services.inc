@@ -483,6 +483,12 @@ EOD;
 	
 }
 
+function services_ftpd_configure() {
+	global $config, $g;
+	// function services_vsftpd_configure();
+	services_pureftpd_configure();
+}
+
 function services_vsftpd_configure() {
 	global $config, $g;
 

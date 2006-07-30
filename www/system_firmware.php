@@ -170,13 +170,13 @@ print_info_box($sig_warning);
                   <td width="78%"> 
                     <?php if (!file_exists($d_sysrebootreqd_path)): ?>
                     <?php if (!file_exists($d_fwupenabled_path)): ?>
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_ENFIRMUP;?>">
+                    <input name="Submit" type="submit" class="formbtn" value="Enable firmware upload">
 				  <?php else: ?>
-				   <input name="Submit" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_DESFIRMUP;?>">
+				   <input name="Submit" type="submit" class="formbtn" value="Disable firmware upload">
                     <br><br>
 					<strong><?=_SYSTEMFIRMWAREPHP_FIRMFILE;?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld">
                     <br><br>
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_UPFIRM;?>">
+                    <input name="Submit" type="submit" class="formbtn" value="Upgrade firmware">
 				  <?php endif; else: ?>
 				    <strong><?=_SYSTEMFIRMWAREPHP_MSGREBOOTUP;?></strong>
 				  <?php endif; ?>

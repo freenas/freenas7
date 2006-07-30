@@ -90,7 +90,9 @@ function interfaces_lan_configure()
 
   switch ($lancfg['ipaddr']) {
 		case 'dhcp':
-			interfaces_lan_dhcp_configure( $lancfg['if']);
+			// Try to fix the 'auto' interface name and IP address configuration
+			// interfaces_lan_dhcp_configure( $lancfg['if']);
+			interfaces_lan_dhcp_configure($lanif);
 			break;
 			
 		default:
@@ -123,7 +125,7 @@ function interfaces_lan_configure()
 		services_samba_configure();
 		
 		/* reload FTP */
-		services_vsftpd_configure();
+		services_ftpd_configure();
 		
 		/* reload NFS */
 		services_nfs_configure();

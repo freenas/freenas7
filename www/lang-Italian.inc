@@ -79,7 +79,7 @@ define('_OK','OK');
 define('_ON','on');
 define('_TO','A');
 define('_THE', 'Il');
-define('_UP','Up';
+define('_UP','Up');
 define('_URL', 'URL');
 define('_YES','Sì');
 
@@ -285,7 +285,7 @@ define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Disabilita upload firmware');
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','File immagine del firmware');	
 define('_SYSTEMFIRMWAREPHP_UPFIRM','Aggiorna firmware');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','E\'necessario riavviare il sistema prima di aggiornare il firmware.');
-define('_SYSTEMFIRMWAREPHP_DONOTABORT','Non interrompere l'aggiornamento del firmware
+define('_SYSTEMFIRMWAREPHP_DONOTABORT','Non interrompere l\'aggiornamento del firmware
 			una volta iniziato. FreeNAS riavvierà automaticamente il sistema
 			dopo aver installato il firmware. La configurazione sarà mantenuta.<br>
 			Sono necessari almeno 128 Mb di RAM per l\'aggiornamento del firmware.');
@@ -301,7 +301,7 @@ define('_SYSTEMADVANCEDPHP_MSGVALIDCERT','Questo certificato non sembra essere v
 define('_SYSTEMADVANCEDPHP_MSGVALIDKEY','Questa chiave non sembra essere valida.');
 define('_SYSTEMADVANCEDPHP_NOTE','<strong>Nota: </strong></span>le 
               opzioni su questa pagina sono esclusivamente ad uso degli utenti esperti
-              e per esse <strong>NON</strong> c\'è supporto.
+              e per esse <strong>NON</strong> c\'è supporto.');
 define('_SYSTEMADVANCEDPHP_WEBGUISSLKEY','webGUI SSL certificato\/chiave');
 define('_SYSTEMADVANCEDPHP_WEBCERT','Certificate');
 define('_SYSTEMADVANCEDPHP_WEBCERTTEXT','Incolla qui un certificato firmato in formato X.509 PEM.');

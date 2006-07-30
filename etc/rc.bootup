@@ -136,8 +136,7 @@
 	services_rsyncd_configure();
 	
 	/* start FTP service */
-	// services_vsftpd_configure();
-	services_pureftpd_configure();
+	services_ftpd_configure();
 	
 	/* start NFS service */
 	services_nfs_configure();
