@@ -96,7 +96,7 @@ if (!isset($do_format))
 				<td valign="top" colspan="2">
 				<? if ($do_format)
 				{
-					echo("<strong>_DISKSRAIDINITPHP_INFO</strong><br>");
+					echo("<strong>" . _DISKSRAIDINITPHP_INFO . "</strong><br>");
 					echo('<pre>');
 					ob_end_flush();
 					

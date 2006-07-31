@@ -100,7 +100,7 @@ if ($_GET['act'] == "del") {
 <form action="disks_raid_gmirror.php" method="post">
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if (file_exists($d_raidconfdirty_path)): ?><p>
-<?php print_info_box_np("_DISKSRAIDPHP_MSGCHANGED");?><br>
+<?php print_info_box_np(_DISKSRAIDPHP_MSGCHANGED);?><br>
 <input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY; ?>"></p>
 <?php endif; ?>
               <table width="100%" border="0" cellpadding="0" cellspacing="0">

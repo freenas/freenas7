@@ -163,14 +163,14 @@ function is_hostname($hostname) {
 		return false;
 }
 
-/* returns true if $desc is a valid description (alphanum and space)*/
+/* returns true if $desc is a valid description (alphanum and space, _ , - , .)*/
 function is_validdesc($desc)
 {
 	
 	if (!is_string($desc))
 		return false;
 		
-	if (preg_match("/^[A-Za-z0-9]([A-Za-z0-9\s]*[A-Za-z0-9])*$/", $desc))
+	if (preg_match("/^[A-Za-z0-9]([A-Za-z0-9_\-\.\s]*[A-Za-z0-9])*$/", $desc))
 		return true;
 	else
 		return false;

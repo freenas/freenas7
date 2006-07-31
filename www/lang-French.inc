@@ -742,7 +742,5 @@ define('_SHUTSCHED_NAME','Arr&ecirc;t programm&eacute;');
 define('_SHUTSCHED_TIME','Heure d\'arr&ecirc;t');
 define('_SHUTSCHED_TEXT',_MSGSCHED_TEXT);
 
-
-
 ?>
 
