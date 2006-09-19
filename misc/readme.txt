@@ -93,12 +93,11 @@ FreeNAS 0.68 (UNRELEASE!):
 - Begin to customize the hidden status.php page
 - New language: Italian (thanks to Pietro Defaccio)
 
-BUG TO FIX:
+BUG TO FIX (before release the 0.68) :
 - WebGUI Authentifcation
 - Multilanguage web interface error
-- The output of some command on Exec are redirected to the error log of ligghtpd
+- The output of some command on exec.php are redirected to the error log of ligghtpd in the place of the output screen.
 - Adding pccaardd
-- WebGUI don't support the 'auto' NIC name (Must test the new way of forcing the LAN interface the autodetected NIC name: This can create problem with CDROM version without floppy disk because there is a saveconfig in the start script).
 
 
 FreeNAS 0.671:
