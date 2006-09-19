@@ -135,6 +135,7 @@ endif;
 				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_ping.php" class="navlnk"><?=_MENULEFT_DIAGPINGTRACE;?></a><br>
 				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_arp.php" class="navlnk"><?=_MENULEFT_DIAGARPTAB;?></a><br>
 				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/exec.php" class="navlnk"><?=_MENULEFT_DIAGEXEC;?></a><br>
+				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_edit.php" class="navlnk"><?=_MENULEFT_DIAGEDITFILE;?></a><br>
 				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_backup.php" class="navlnk"><?=_MENULEFT_CMDBACKUPRESTORE;?></a><br>
 				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_defaults.php" class="navlnk"><?=_MENULEFT_CMDFACTORYDEF;?></a><br>
 				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/reboot.php" class="navlnk"><?=_MENULEFT_CMDREBOOTSYS;?></a>

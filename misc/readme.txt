@@ -89,6 +89,8 @@ FreeNAS 0.68 (UNRELEASE!):
 - Added capability to use a config file stored on FAT partition (preparing the support of installing FreeNAS on FAT partition). Thanks to Niel Endres.
 - Added NIC name be configured with "auto" for using the first NIC found. Thanks to Niel Endres.
 - Added disk usage information on the main page
+- Added embedded text file editor (from Pfsense project) by Volker Theile 
+- Begin to customize the hidden status.php page
 - New language: Italian (thanks to Pietro Defaccio)
 
 BUG TO FIX:

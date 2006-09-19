@@ -173,6 +173,7 @@ define('_MENULEFT_DIAGINF','Information');
 define('_MENULEFT_DIAGPINGTRACE','Ping/Traceroute');
 define('_MENULEFT_DIAGARPTAB','ARP table');
 define('_MENULEFT_DIAGEXEC','Command');
+define('_MENULEFT_DIAGEDITFILE','Edit File');
 define('_MENULEFT_CMDBACKUPRESTORE','Backup/Restore');
 define('_MENULEFT_CMDFACTORYDEF','Factory defaults');
 define('_MENULEFT_CMDREBOOTSYS','Reboot system');
@@ -752,5 +753,17 @@ define('_SHUT_CONF','Are you sure you want to shutdown the system?');
 define('_SHUTSCHED_NAME','Scheduled shutdown');
 define('_SHUTSCHED_TIME','Shutdown Time');
 define('_SHUTSCHED_TEXT',_MSGSCHED_TEXT);
+
+// file: diag_edit.php
+
+define('_DIAGEDITPHP_NAMEDESC','Edit File');
+define('_DIAGEDITPHP_FILEPATH','File path');
+define('_DIAGEDITPHP_SAVEMSG','Saved file to');
+define('_DIAGEDITPHP_FILENOTFOUND','File not found');
+define('_DIAGEDITPHP_ROWS','Rows');
+define('_DIAGEDITPHP_COLS','Cols');
+define('_DIAGEDITPHP_HIGHLIGHTING','Highlighting');
+define('_DIAGEDITPHP_HIGHLIGHTINGENABLED','Enabled');
+define('_DIAGEDITPHP_HIGHLIGHTINGDISABLED','Disabled');
 
 ?>

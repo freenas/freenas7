@@ -1033,9 +1033,23 @@ function arp_get_mac_by_ip($ip) {
 	return false;
 }
 
+
+/* get the interface name */
+function get_ifname($if)
+{
+  // Check if 'auto' mode is activated.
+  if ($if == "auto")   {
+    $interfaces = explode(" ", exec("/sbin/ifconfig -l"));
+    $if = $interfaces[0];
+  }
+
+  return $if;
+}
+
 /* get local IP address */
 function get_ipaddr($if)
 {
+  $if = get_ifname($if);
   unset($ipaddr);
   exec("/usr/bin/netstat -inW -f inet -I {$if}", $inetinfo);
   array_shift($inetinfo);
@@ -1058,6 +1072,9 @@ function get_ipaddr($if)
 /* get local MAC address */
 function get_macaddr($if)
 {
+  
+  $if = get_ifname($if);
+  
   unset($macaddr);
   exec("/usr/bin/netstat -inW -f link -I {$if}", $linkinfo);
   array_shift($linkinfo);
