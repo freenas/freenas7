@@ -4,6 +4,7 @@
  * Jim McBeath <jimmc@macrovision.com> Nov 2003
  *
  * (modified for m0n0wall by Manuel Kasper <mk@neon1.net>)
+ * and re-used on FreeNAS by Olivier Cochard-Labbé <olivier@freenas.org>)
  */
 
 require("guiconfig.inc");
@@ -100,35 +101,28 @@ defCmdT("Interfaces","/sbin/ifconfig -a");
 
 defCmdT("Routing tables","netstat -nr");
 
-defCmdT("ipfw show", "/sbin/ipfw show");
-defCmdT("ipnat -lv", "/sbin/ipnat -lv");
-defCmdT("ipfstat -v", "/sbin/ipfstat -v");
-defCmdT("ipfstat -nio", "/sbin/ipfstat -nio");
-
-defStrT("unparsed ipnat rules", filter_nat_rules_generate());
-defStrT("unparsed ipfilter rules", filter_rules_generate());
-defStrT("unparsed ipfw rules", shaper_rules_generate());
-
 defCmdT("resolv.conf","cat /etc/resolv.conf");
 
 defCmdT("Processes","ps xauww");
 defCmdT("dhcpd.conf","cat /var/etc/dhcpd.conf");
 defCmdT("ez-ipupdate.cache","cat /conf/ez-ipupdate.cache");
 
-defCmdT("df","/bin/df");
+defCmdT("ATA disk","/sbin/atacontrol list");
+defCmdT("SCSI disk","/sbin/camcontrol devlist");
+defCmdT("Mount point","/sbin/mount");
+defCmdT("Free Disk Space","/bin/df -h");
 
 defCmdT("racoon.conf","cat /var/etc/racoon.conf");
 defCmdT("SPD","/usr/sbin/setkey -DP");
 defCmdT("SAD","/usr/sbin/setkey -D");
 
 defCmdT("last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail -n 200");
-defCmdT("last 50 filter log entries","/usr/sbin/clog /var/log/filter.log 2>&1 | tail -n 50");
 
 defCmd("ls /conf");
 defCmd("ls /var/run");
 defCmdT("config.xml","dumpconfigxml");
 
-$pageTitle = "m0n0wall: status";
+$pageTitle = "FreeNAS: status";
 
 exec("/bin/date", $dateOutput, $dateStatus);
 $currentDate = $dateOutput[0];

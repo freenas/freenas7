@@ -3,7 +3,7 @@
 /*
 	rc.bootup
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2006 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -41,11 +41,6 @@
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
-	
-	/* Launched if first boot */
-	// Will be used for configure the first NIC found to be assigned to LAN interface with DHCP configuration
-	// Actually no implemented
-	system_firstboot();
 	
 	/* convert configuration, if necessary */
 	convert_config();

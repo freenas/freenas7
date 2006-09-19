@@ -3,7 +3,7 @@
 /*
   index.php
   part of FreeNAS (http://www.freenas.org)
-  Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+  Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
   All rights reserved.
   Improved by Stefan Hendricks (info@henmedia.de)
 
@@ -147,5 +147,27 @@ require("guiconfig.inc");
      ?>
     </td>
   </tr>
+    <tr>
+    <td width="25%" class="vncellt"><?=_INDEXPHP_DISKS_USE;?></td>
+    <td width="75%" class="listr">
+      <?php
+      $diskuse = get_mount_use();
+      if ($diskuse !=0) {
+		foreach ($diskuse as $diskusek => $diskusev) {
+			echo htmlspecialchars($diskusek);
+			echo " : ";
+			$percent_used = rtrim($diskusev['capacity'],"%");
+			echo " <img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
+			echo "<img src='bar_blue.gif' height='15' width='" . $percent_used . "' border='0' align='absmiddle'>";
+			echo "<img src='bar_gray.gif' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle'>";
+			echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
+			echo $percent_used . "%";
+			echo "<br>";
+		}
+	   }
+      ?>
+    </td>
+  </tr>
+
 </table>
 <?php include("fend.inc"); ?>

@@ -439,6 +439,10 @@ create_image() {
 	cp $BOOTDIR/support.4th $TMPDIR/boot
 	cp $BOOTDIR/defaults/loader.conf $TMPDIR/boot/defaults/
 	cp $BOOTDIR/device.hints $TMPDIR/boot
+	
+	#Special for enabling serial port if no keyboard
+	cp $BOOTDIR/boot.config $TMPDIR/
+	
 	echo "IMG: unmount memory disk"
 	umount $TMPDIR
 	echo "IMG: Deconfigure memory disk"
@@ -493,6 +497,9 @@ create_iso () {
 	cp $BOOTDIR/support.4th $TMPDIR/boot
 	cp $BOOTDIR/defaults/loader.conf $TMPDIR/boot/defaults/
 	cp $BOOTDIR/device.hints $TMPDIR/boot
+	
+	#Special for enabling serial port if no keyboard
+	cp $BOOTDIR/boot.config $TMPDIR/
 	
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file on $TMPDIR folder"

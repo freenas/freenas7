@@ -69,25 +69,35 @@ svn/misc/setupfreenas.sh
 ################ History Change logs ##############
 
 FreeNAS 0.68 (UNRELEASE!):
-- Need 32MB of minimal disk space for installing (since 0.67, but forget to mention it)
-- Need 128MB of RAM for using the webgui upgrade function
+- Need 32MB of minimal disk space for installing (since release 0.67, but forget to mention it)
+- Need 128MB of RAM for using the webgui upgrade function (92MB of RAM should be enough for enabled all services)
 - Fixed su permisson
-- Fixed FTP anonymous login that was not disabled (thanks 
+- Fixed FTP anonymous login that was not disabled
+- Fixed the e2fsck bug, now EXT2 filesystem should be correctly repair when detected error on it
 - Added DHCP client option for LAN interface (WebgUI only). Thanks to Volker Theile
 - Changed default samba buffer size to 16384
 - Added "-maproot=root" to NFS configuration file
 - Added option for not erasing the MBR when initializing disk: Some RAID controllers store important data in the MBR.
-- Replace PHP 4 by PHP 5 (preparing rewriting the code with objects)
-- Replace mini_httpd by lighttpd (preparing adding WebDAV)
+- Replace PHP 4 by PHP 5 (preparing rewriting the FreeNAS PHP code using objects)
+- Replace mini_httpd by lighttpd (preparing the support of adding WebDAV feature)
 - Upgrade samba 3.0.22 to samba 3.0.23a
 - CIFS: added recycle bin capabilities, force guest mode
 - RSYNCD: added motd and maximum connexions options
-- FTP : re-added passive ip adress and NAT mode, permit to enable FXP
+- FTP : re-added passive ip adress and NAT mode; permit to enable FXP
 - Rewrite the NIC speed/duplex script configuration (Trying to resolve the bug number 1519939)
 - Fix bug with generating the mDNS responder config file
-- Added capability to use a config file stored on FAT partition. Thanks to Niel Endres.
+- Added capability to use a config file stored on FAT partition (preparing the support of installing FreeNAS on FAT partition). Thanks to Niel Endres.
 - Added NIC name be configured with "auto" for using the first NIC found. Thanks to Niel Endres.
+- Added disk usage information on the main page
 - New language: Italian (thanks to Pietro Defaccio)
+
+BUG TO FIX:
+- WebGUI Authentifcation
+- Multilanguage web interface error
+- The output of some command on Exec are redirected to the error log of ligghtpd
+- Adding pccaardd
+- WebGUI don't support the 'auto' NIC name (Must test the new way of forcing the LAN interface the autodetected NIC name: This can create problem with CDROM version without floppy disk because there is a saveconfig in the start script).
+
 
 FreeNAS 0.671:
 - gvinum bug fix: fix raid deletion , add config file conversion

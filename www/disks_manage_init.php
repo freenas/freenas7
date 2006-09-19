@@ -167,7 +167,7 @@ if (!isset($do_format))
 					case "ufs":
 						/* Initialize disk */
 						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						echo "\"fdisk: Geom not found\"is not an error message!\n";
+						// echo "\"fdisk: Geom not found\"is not an error message!\n";
 						/* Initialise the partition (optional) */
 						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
 						/* Create s1 label */
@@ -214,7 +214,7 @@ if (!isset($do_format))
 					case "raid":
 						/* Initialize disk */
 						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						echo "\"fdisk: Geom not found\"is not an error message!\n";
+						// echo "\"fdisk: Geom not found\"is not an error message!\n";
 						/* Initialise the partition (optional) */
 						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
 						/* Create s1 label */
@@ -223,7 +223,7 @@ if (!isset($do_format))
 					case "msdos":
 						/* Initialize disk */
 						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						echo "\"fdisk: Geom not found\"is not an error message!\n";
+						// echo "\"fdisk: Geom not found\"is not an error message!\n";
 						/* Initialise the partition (optional) */
 						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
 						/* Create s1 label */

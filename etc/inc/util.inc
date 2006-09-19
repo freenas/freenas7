@@ -361,6 +361,57 @@ function get_mounts_list()
 	return $mountlist;
 }
 
+function get_mount_use()
+{
+	// Return list of mounted use
+	//example: Array
+	//	[mount_point_name] => Array
+    //	    (
+    //        [capacity] => 48%
+    //        [used] => 2.4G
+    //        [avail] => 2.6G
+    //        [size] => 5.4G
+    //      )
+
+	
+	global $config, $g;
+	
+	exec("/bin/df -h",$rawdata);
+	
+	$result=array();
+	
+	foreach ($rawdata as $line) {
+		/* separe the line by space*/
+		
+		$aline = preg_split("/[\s,]+/", $line);
+		
+		$tmp=explode("/",chop($aline[5]));
+		$mounted_on=$tmp[2];
+		$capacity = chop($aline[4]);
+		$avail = chop($aline[3]);
+		$used = chop($aline[2]);
+		$size = chop($aline[1]);
+		
+		if (is_array($config['mounts']['mount'])) 	{
+			foreach ($config['mounts']['mount'] as $mountcfg) {
+				if (strcmp($mounted_on,$mountcfg['sharename']) == 0) {
+					$result[$mounted_on] = array();
+					$result[$mounted_on]['capacity']=$capacity;
+					$result[$mounted_on]['avail']=$avail;
+					$result[$mounted_on]['used']=$used;
+					$result[$mounted_on]['size']=$size;
+				}
+			}
+		}
+		else
+			return 0;
+		
+	}
+	//print_r($result);
+	
+	return $result;
+}
+
 function get_sraid_disks_list()
 {
 	/* Return list of ALL software volume: gvinum, gmirror */
@@ -384,21 +435,18 @@ function get_gvinum_disks_list()
     //    )
     
 
-	/* on envoie la commande d'affichage de la liste des volumes*/
+	/* Send the shell cmd and get the result*/
 	exec("/sbin/gvinum list",$rawdata);
 	
-	foreach ($rawdata as $line)
-	{
+	foreach ($rawdata as $line) {
 		
 				
-		/* Separe la ligne par les espace */
+		/* Split the line using the space as separator */
 		$aline = preg_split("/\s+/", $line);
 	
-		/* Récupère la ligne commencant par 'V' */
+		/* Get the line that begin with the letter  'V' */
 		if ($aline[0] != "V")
-		{
 			continue ;
-		}
 		
 		$diskname = chop($aline[1]);
 		
@@ -983,104 +1031,6 @@ function arp_get_mac_by_ip($ip) {
 	}
 	
 	return false;
-}
-
-/* Freenas Installation */
-
-function freenas_install($src,$dst)
-{
-	
-	// Creating source directory
-	passthru("/bin/mkdir /mnt/src");
-	
-	// Mount the source function is_cdrom must BE CREATED!!!!
-	
-	if (is_cdrom($src))
-	{
-		echo "Mount CDROM:\n";
-		passthru("/sbin/mount_cd9660 /dev/$src /mnt/src");
-	}
-	else
-	{
-		echo "Mount disk:\n";
-		passthru("/sbin/mount -t ufs /dev/$src /mnt/src");
-	}
-	
-	
-	echo "Erasing primary partitions:\n";
-	passthru("/bin/dd if=/dev/zero of=/dev/$dst bs=1k count=20");
-	
-	echo "Creation 1 booting primary parition:\n";
-	passthru("/sbin/fdisk -BI -b /boot/boot0 $dst");
-	
-	/* echo "Installing bootloader:\n";
-	passthru("/usr/sbin/boot0cfg -B -b /boot/boot0 $dst"); */
-	
-	echo "Erasing FreeBSD partition on the primary:\n";
-	passthru("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($dst) . "s1 bs=32k count=16");
-	
-	echo "Creating FreeBSD partition:\n";
-	passthru("/sbin/bsdlabel -B -w -b /boot/boot " . escapeshellarg($dst) ."s1 auto");
-	
-	echo "Modify partition information:\n";
-	
-	/* Generation de la table des partitions dans un fichier temp */
-
-	passthru("/sbin/bsdlabel " . escapeshellarg($dst) ."s1 > label.tmp");
-
-	/* copie de ce fichier  dans un tableau*/
-	$tableau = file("label.tmp");
-
-	// Ouverture du fichier en mode ajout
-	$handle = fopen("label.tmp", 'a');
-	
-	while(list(,$val) = each($tableau))
-	{
-		// Si la ligne contient le mot "unused"
-		
-		if (ereg ("unused",$val))
-		{
-			// On remplace c: par a:
-			$val = ereg_replace ("c:","a:", $val);
-			// On remplace unused par 4.2BSD
-			$val = ereg_replace ("unused","4.2BSD", $val);
-			// On ajoute cette ligne à la fin du fichier
-			fwrite($handle, $val);
-		}
-	}
-	// Fermeture du fichier
-	fclose($handle);
-	
-	// On injecte la nouvelle table des paritions 
-	passthru("/sbin/bsdlabel -R -B " . escapeshellarg($dst) ."s1 label.tmp");
-	
-	echo "Creating filesystem:\n";
-	passthru("/sbin/newfs /dev/" . escapeshellarg($dst) . "s1");
-	
-	echo "Creation temp mouting point:\n";
-	passthru("/bin/mkdir /mnt/src");
-	
-	echo "Mount disk:\n";
-	passthru("/sbin/mount /dev/" . escapeshellarg($dst) . "s1 /mnt/dst");
-	
-	echo "Installation:\n";
-	
-	passthru("/bin/cp -pr /mnt/src/boot /mnt/dst");
-	passthru("/bin/cp /mnt/src/cf.gz /mnt/dst/mfsroot.gz");
-	
-	if ($src == CDROM)
-		passthru("/bin/rm -f /mnt/dst/boot/cdloader");
-	
-	passthru("mkdir /mnt/dst/conf");
-	passthru("/bin/cp /conf/config.xml /mnt/dst/conf/");
-	
-	
-	/* demontage des disques */
-	passthru("/sbin/umount /mnt/dst"); 
-	passthru("/sbin/umount /mnt/src");
-	passthru("/bin/rm -rf /mnt/src");
-	passthru("/bin/rm -rf /mnt/dst");
-
 }
 
 /* get local IP address */

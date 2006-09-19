@@ -3,7 +3,6 @@
 <freenas>
 	<version>1.3</version>
 	<lastchange></lastchange>
-	<firstboot/>
 	<system>
 		<hostname>freenas</hostname>
 		<domain>local</domain>

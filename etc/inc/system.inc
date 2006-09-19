@@ -443,7 +443,7 @@ ssl.pemfile = "{$g['varetc_path']}/cert.pem"
 
 EOD;
 	
-		}
+	}
 
 	fwrite($fd, $lighttpdconf);
 	fclose($fd);
@@ -564,6 +564,7 @@ function system_reboot_sync() {
 	
 	/* Unmount all disk */
 	disks_umount_all();
+	disks_raid_stop();
 	system_beep_down();
 
 	exec("/etc/rc.reboot > /dev/null 2>&1");
@@ -789,15 +790,22 @@ function system_users_create()
 	if ($g['booting'])
 		echo "Generating user database... ";
 	
-	system_user_masterpasswd();
-	system_user_group();
-	system_user_pwdmkdb();
+	if (system_user_masterpasswd() )
+		$res == 1;
+	if (system_user_group() )
+		$res == 1;
+	if (system_user_pwdmkdb() )
+		$res == 1;
 	
-	if ($g['booting'])
-		echo "done\n";
-		
-	return 0;
-
+	if ($g['booting']) {
+		if ($res == 0)
+			echo "done\n";
+		else
+			echo "failed\n";
+	}
+	
+	return $res;
+	
 }
 
 function system_user_masterpasswd()
@@ -902,10 +910,8 @@ nobody:*:65534:
 admin:*:1000:
 
 EOD;
-	if (is_array($config['access']['group']))
-	{
-		foreach ($config['access']['group'] as $group)
-		{
+	if (is_array($config['access']['group'])) 	{
+		foreach ($config['access']['group'] as $group) 	{
 			$groupfile .= <<<EOD
 {$group['name']}:*:{$group['id']}:
 
@@ -915,8 +921,7 @@ EOD;
 	}
 
 	$fd = fopen("{$g['varetc_path']}/group", "w");
-	if (!$fd)
-	{
+	if (!$fd) 	{
 		printf("Error: cannot open group in system_user_group().\n");
 		return 1;
 	}
@@ -934,25 +939,25 @@ function system_user_pwdmkdb()
 	/* Generate the db of password */
 	global $config, $g;
 		
-	mwexec("/usr/sbin/pwd_mkdb -p -d {$g['varetc_path']} {$g['varetc_path']}/master.passwd");
-	
-	return 0;
+	return (mwexec("/usr/sbin/pwd_mkdb -p -d {$g['varetc_path']} {$g['varetc_path']}/master.passwd"));
 
 }
 
 function system_user_samba()
 {
 	/* Generate the db of password */
+	
+	// MUST FIND A WAY OF USING UNIX CRYPTED PASSWORD IN THE PLACE OF CLEAR TEXT PASSWORD FOR GENERATING SAMBA DB!!!
+	
 	global $config, $g;
 	
-	if (is_array($config['access']['user']))
-	{
+	if (is_array($config['access']['user'])) 	{
 		
-		foreach ($config['access']['user'] as $user)
-		{		
+		foreach ($config['access']['user'] as $user) 		{		
 			$password = escapeshellcmd($user['password']);
 			$login = escapeshellcmd($user['login']);
 			mwexec("(/bin/echo {$password}; /bin/echo {$password}) | /usr/local/bin/smbpasswd -s -a {$login}");
+			
 			//mwexec("(/bin/echo {$password}; /bin/echo {$password}) | /usr/local/bin/pdbedit -tau {$login}");
 		}
 	}
@@ -977,8 +982,7 @@ auth            requisite       pam_opieaccess.so       no_warn allow_local
 
 EOD;
 	
-	if (isset($config['ad']['enable']))
-	{
+	if (isset($config['ad']['enable'])) 	{
 	$system .= <<<EOD
 #auth	sufficient		/usr/local/lib/pam_winbind.so	debug try_first_pass
 
@@ -992,8 +996,7 @@ auth    required		pam_unix.so             no_warn try_first_pass nullok
 
 EOD;
 
-	if (isset($config['ad']['enable']))
-	{
+	if (isset($config['ad']['enable'])) 	{
 	$system .= <<<EOD
 #account sufficient /usr/local/lib/pam_winbind.so
 
@@ -1011,8 +1014,7 @@ session         required        pam_lastlog.so          no_fail
 
 EOD;
 	
-	if (isset($config['ad']['enable']))
-	{
+	if (isset($config['ad']['enable'])) 	{
 	$system .= <<<EOD
 #password 	sufficient /usr/local/lib/pam_winbind.so	debug try_first_pass
 
@@ -1045,8 +1047,7 @@ auth            requisite       pam_opieaccess.so       no_warn allow_local
 
 EOD;
 
-	if (isset($config['ad']['enable']))
-	{
+	if (isset($config['ad']['enable'])) {
 	$sshd .= <<<EOD
 auth sufficient /usr/local/lib/pam_winbind.so	debug try_first_pass
 
@@ -1060,8 +1061,7 @@ auth            required        pam_unix.so             no_warn try_first_pass
 
 EOD;
 
-	if (isset($config['ad']['enable']))
-	{
+	if (isset($config['ad']['enable'])) 	{
 	$sshd .= <<<EOD
 account			sufficient		/usr/local/lib/pam_winbind.so
 
@@ -1078,8 +1078,7 @@ session         required        pam_permit.so
 
 EOD;
 
-if (isset($config['ad']['enable']))
-	{
+if (isset($config['ad']['enable']))	{
 	$sshd .= <<<EOD
 password	sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass
 
@@ -1094,8 +1093,7 @@ EOD;
 	
 	unset($fd);
 	$fd = fopen("{$g['varetc_path']}/pam.d/sshd", "w");
-	if (!$fd)
-	{
+	if (!$fd) 	{
 		printf("Error: cannot open /pam.d/sshd in system_pam_configure().\n");
 		return 1;
 	}
@@ -1113,8 +1111,7 @@ auth            requisite       pam_opieaccess.so       no_warn allow_local
 
 EOD;
 
-	if (isset($config['ad']['enable']))
-	{
+	if (isset($config['ad']['enable'])) 	{
 	$ftp .= <<<EOD
 auth	sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass
 
@@ -1128,8 +1125,7 @@ auth            required        pam_unix.so             no_warn try_first_pass
 
 EOD;
 
-if (isset($config['ad']['enable']))
-	{
+if (isset($config['ad']['enable'])) 	{
 	$ftp .= <<<EOD
 account		sufficient	/usr/local/lib/pam_winbind.so
 
@@ -1148,8 +1144,7 @@ EOD;
 	unset($fd);
 	
 	$fd = fopen("{$g['varetc_path']}/pam.d/ftp", "w");
-	if (!$fd)
-	{
+	if (!$fd) 	{
 		printf("Error: cannot open /pam.d/ftp in system_pam_configure().\n");
 		return 1;
 	}
@@ -1167,8 +1162,7 @@ auth            required        pam_nologin.so          no_warn
 
 EOD;
 
-	if (isset($config['ad']['enable']))
-	{
+	if (isset($config['ad']['enable'])) 	{
 	$login .= <<<EOD
 auth	sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass
 
@@ -1183,8 +1177,7 @@ auth            include         system
 
 EOD;
 
-if (isset($config['ad']['enable']))
-	{
+if (isset($config['ad']['enable'])) 	{
 	$login .= <<<EOD
 account		sufficient	/usr/local/lib/pam_winbind.so
 
@@ -1206,8 +1199,7 @@ EOD;
 	unset($fd);
 	
 	$fd = fopen("{$g['varetc_path']}/pam.d/login", "w");
-	if (!$fd)
-	{
+	if (!$fd) 	{
 		printf("Error: cannot open /pam.d/login in system_pam_configure().\n");
 		return 1;
 	}
@@ -1220,8 +1212,7 @@ EOD;
 	/* Create the nsswitch.conf file*/
 	
 	
-	if (isset($config['ad']['enable']))
-	{
+	if (isset($config['ad']['enable'])) 	{
 	$nsswitch = <<<EOD
 group: files winbind
 group_compat: nis
@@ -1234,8 +1225,7 @@ shells: files
 EOD;
 
 	}
-	else
-	{
+	else 	{
 	$nsswitch = <<<EOD
 group: compat
 group_compat: nis
@@ -1250,8 +1240,7 @@ EOD;
 	
 	
 	$fd = fopen("{$g['varetc_path']}/nsswitch.conf", "w");
-	if (!$fd)
-	{
+	if (!$fd) 	{
 		printf("Error: cannot open /var/etc/nsswitch.conf in system_pam_configure().\n");
 		return 1;
 	}
@@ -1284,7 +1273,8 @@ function system_tuning()
 		mwexec('/sbin/sysctl net.local.stream.sendspace=65535');
 		mwexec('/sbin/sysctl kern.ipc.maxsockbuf=2097152');	
 		mwexec('/sbin/sysctl kern.ipc.somaxconn=8192');
-		/* mwexec('/sbin/sysctl kern.ipc.maxsockets=16424'); */
+		// This variable can be set on the boot conf file only:
+		// mwexec('/sbin/sysctl kern.ipc.maxsockets=16424');
 		mwexec('/sbin/sysctl kern.ipc.nmbclusters=60000');
 		mwexec('/sbin/sysctl kern.maxfiles=65536');
 		mwexec('/sbin/sysctl kern.maxfilesperproc=32768');
@@ -1307,7 +1297,6 @@ function system_tuning()
 			mwexec('/sbin/sysctl net.local.stream.sendspace=8192');
 			mwexec('/sbin/sysctl kern.ipc.maxsockbuf=262144');	
 			mwexec('/sbin/sysctl kern.ipc.somaxconn=128');
-			/* mwexec('/sbin/sysctl kern.ipc.maxsockets=16424'); */
 			mwexec('/sbin/sysctl kern.ipc.nmbclusters=3072');
 			mwexec('/sbin/sysctl kern.maxfiles=1064');
 			mwexec('/sbin/sysctl kern.maxfilesperproc=957');
@@ -1352,7 +1341,9 @@ function system_install_init_fulldisk($harddrive)
 	if (mwexec("/sbin/fdisk -BI -b /boot/mbr $harddrive"))
 		return 1;
 	
-	/* Must wait that the /dev is upatded with the new information */
+	/* Wait that the /dev is upatded with the new information */
+	// There should be a more intelligent code here than this stupid timer...
+	
 	echo "Waiting for system update..";
 	$devtotest="/dev/$harddrive". "s1";
 	$i=0;
@@ -1457,7 +1448,7 @@ function system_install_mount_destdisk($harddrive)
 function system_install_unmount()
 {
 	
-	/* Part of install process: Unmounting the disk */
+	/* Part of install process: Unmounting the disks: CDROM and destination drive */
 	
 	global $config, $g;
 	
@@ -1466,10 +1457,23 @@ function system_install_unmount()
 		return 1;
 	if (mwexec("/sbin/umount /mnt/cdrom_fr_0507"))
 		return 1;
+		
+	// using 'rm -rf' for deleting the temp directory is too dangerous here... 
+	/*
+	
 	if (mwexec("/bin/rm -rf /mnt/cdrom_fr_0507"))
 		return 1;
 	if (mwexec("/bin/rm -rf /mnt/install_fr_0507"))
 		return 1;
+	
+	*/
+	
+	// Test: replace with PHP function rmdir
+	
+	@rmdir ("/mnt/cdrom_fr_0507");
+	@rmdir ("/mnt/install_fr_0507");
+	
+	
 	
 	return 0;
 }
@@ -1477,6 +1481,8 @@ function system_install_unmount()
 function system_install_installation($harddrive)
 {
 	/* Part of install process: dd image file on the destination disk */
+	
+	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
 	
 	global $config, $g;
 	
@@ -1526,30 +1532,6 @@ function system_language_load()
 		return 1;
 	}
 }
-
-function system_firstboot()
-{
-	/*  This function is start at first boot */
-	// Set the LAN interface to the first interface found
-	
-	global $config;
-	
-	// If no firstboot set, exit:
-	if (!isset($config['firstboot']))
-		return 0;
-		
-	$iflist = get_interface_list();
-	
-	foreach ($iflist as $iface => $ifa) {
-		$config['interfaces']['lan']['if'] = $iface;
-		break ;
-	}
-	
-	unset($config['firstboot']);
-		
-	return 0;
-}
-
 
 
 ?>

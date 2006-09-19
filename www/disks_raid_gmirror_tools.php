@@ -115,7 +115,7 @@ if (!isset($do_action))
 				<td valign="top" colspan="2">
 				<? if ($do_action)
 				{
-					echo("<strong>_DISKSRAIDTOOLSPHP_INFO</strong><br>");
+					echo("<strong>" . _DISKSRAIDTOOLSPHP_INFO . "</strong><br>");
 					echo('<pre>');
 					ob_end_flush();
 					

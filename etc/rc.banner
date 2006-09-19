@@ -40,13 +40,14 @@
 	$version = chop(file_get_contents("{$g['etc_path']}/version"));
 	$buildtime = chop(file_get_contents("{$g['etc_path']}/version.buildtime"));
 
-  $if = $config['interfaces']['lan']['if'];
+    $if = $config['interfaces']['lan']['if'];
   
   // Permit to display IP address for "auto" NIC
   if ($if == "auto") {
 		$interfaces = explode(" ", exec("/sbin/ifconfig -l"));
 		$if = $interfaces[0];
 	}
+	
   $ipaddr = get_ipaddr($if);
 
 	echo <<<EOD

@@ -44,10 +44,8 @@ function disks_mount_all()
 	
 	/* For each device configured:*/
 	
-	if (is_array($config['mounts']['mount']))
-	{
-		foreach ($config['mounts']['mount'] as $mountent)
-		{
+	if (is_array($config['mounts']['mount'])) 	{
+		foreach ($config['mounts']['mount'] as $mountent) 		{
 			/* Advanced Umount filesystem if not booting mode (mount edition)*/
 			if (!$g['booting'])
 				disks_umount_adv($mountent);
@@ -91,30 +89,27 @@ function disks_mount($mount)
 
 	/* check the fileystem only if there is a problem*/
 	
-	switch ($mount['fstype'])
-	{
+	// This part is too stupid: I must read the FreBSD start script for use the same intelligent method for checking hard drive
+	
+	switch ($mount['fstype']) 	{
 		case "ufs":
 			
-			if (mwexec("/sbin/mount -t ufs  -o acls {$devname} /mnt/$mountname") == 0)
-			{
+			if (mwexec("/sbin/mount -t ufs  -o acls {$devname} /mnt/$mountname") == 0) 			{
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 /mnt/$mountname");
 				return 0;
 			}
-			else
-			{
+			else 			{
 				/* If it's NOK, Check  filesystem and do a fsck, answer Yes to all question*/
 				mwexec("/sbin/fsck -y -t ufs {$devname}");
 				/* Re-try to mount the partition */
-				if (mwexec("/sbin/mount -t ufs -o acls {$devname} /mnt/$mountname") == 0)
-				{
+				if (mwexec("/sbin/mount -t ufs -o acls {$devname} /mnt/$mountname") == 0) 				{
 					/* Change this directory into 777 mode */
 					mwexec("/bin/chmod 777 /mnt/$mountname");
 					return 0;
 				}
-				else
-				{
-					/* Not OK, remove the directory, prevent writing on RAM */
+				else 				{
+					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/$mountname");
 					return 1;
 				}
@@ -125,14 +120,12 @@ function disks_mount($mount)
 		case "msdosfs":
 			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} /mnt/$mountname") == 0)
 				return 0;
-			else
-			{
-				exec("/sbin/fsck_msdosfs -y {$devname}");
+			else 			{
+				exec("/sbin/fsck -y -t msdosfs {$devname}");
 				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} /mnt/$mountname") == 0)
 					return 0;
-				else
-				{
-					/* Not OK, remove the directory, prevent writing on RAM */
+				else 				{
+					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/$mountname");
 					return 1;
 				}
@@ -143,32 +136,27 @@ function disks_mount($mount)
 		case "ntfs":
 			if (mwexec("/sbin/mount_ntfs -u ftp -g ftp -m 777 {$devname} /mnt/$mountname") == 0)
 				return 0;
-			else
-			{
-				/* Not OK, remove the directory, prevent writing on RAM */
+			else 			{
+				/* Not OK, remove the directory, prevent writing on RAM disk */
 				@rmdir ("/mnt/$mountname");
 				return 1;
 			}
 			break;		   
 		   
 		case "ext2fs":
-			if (mwexec("/sbin/mount_ext2fs {$devname} /mnt/$mountname") == 0)
-			{
+			if (mwexec("/sbin/mount_ext2fs {$devname} /mnt/$mountname") == 0) 			{
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 /mnt/$mountname");
 				return 0;
 			}
-			else
-			{
-				exec("/usr/local/sbin/e2fsck -f -p -y {$devname}");
-				if (mwexec("/sbin/mount_ext2fs {$devname} /mnt/$mountname") == 0)
-				{
+			else 			{
+				exec("/usr/local/sbin/e2fsck -f -p {$devname}");
+				if (mwexec("/sbin/mount_ext2fs {$devname} /mnt/$mountname") == 0) 				{
 					/* Change this directory into 777 mode */
 					mwexec("/bin/chmod 777 /mnt/$mountname");
 					return 0;
 				}
-				else
-				{
+				else 				{
 					/* Not OK, remove the directory, prevent writing on RAM */
 					@rmdir ("/mnt/$mountname");
 					return 1;
@@ -188,8 +176,7 @@ function disks_umount($mount)
 	
 	$mountname=escapeshellcmd($mount['sharename']);
 	
-	if (mwexec("/sbin/umount $mountname") == 0)
-	{
+	if (mwexec("/sbin/umount $mountname") == 0) 	{
 		if (@rmdir ("/mnt/$mountname"))
 			return 0;
 		else
@@ -219,20 +206,17 @@ function disks_umount_adv($mount)
 	// get the mount list
 	$detmount = get_mounts_list();
 	
-	foreach ($detmount as $detmountk => $detmountv)
-	{
+	foreach ($detmount as $detmountk => $detmountv) 	{
 
 		// If we found the mount point on the device
 		
-		if (strcmp($detmountv['mdisk'],$complete) == 0)
-		{
+		if (strcmp($detmountv['mdisk'],$complete) == 0) 		{
 			$mountname="{$detmountv['mp']}";
 		}		
 		
 	}
 	
-	if ($mountname)
-	{
+	if ($mountname) 	{
 		exec("/sbin/umount $mountname");
 		@rmdir ("$mountname");
 		return 0;
@@ -260,13 +244,11 @@ function disks_mount_status($mount)
 	
 	//echo "debug, display complete: $complete <br>";
 
-	foreach ($detmount as $detmountk => $detmountv)
-	{
+	foreach ($detmount as $detmountk => $detmountv) 	{
 
 		//echo "debug, display detmountv[mdisk]: {$detmountv['mdisk']} <br>";
 		
-		if (strcmp($detmountv['mdisk'],$complete) == 0)
-		{
+		if (strcmp($detmountv['mdisk'],$complete) == 0) 		{
 			$status="OK";
 			return $status;
 		}		
@@ -284,8 +266,7 @@ function disks_check_mount($disk)
 	$status=0;
 	
 	// Recreate the full system name device+s+partition number
-	/* mount the filesystems */
-	
+		
 	$complete = "{$disk}" . "s1";
 
 	foreach ($detmount as $detmountk => $detmountv)
@@ -293,8 +274,7 @@ function disks_check_mount($disk)
 
 		//echo "debug, display detmountv[mdisk]: {$detmountv['mdisk']} <br>";
 		
-		if (strcmp($detmountv['mdisk'],$complete) == 0)
-		{
+		if (strcmp($detmountv['mdisk'],$complete) == 0) 		{
 			$status="1";
 			return $status;
 		}		
@@ -307,12 +287,12 @@ function disks_check_mount($disk)
 
 function disks_status($diskname)
 {
-	// This option check if the configured disk is online
+	// This option check if the configured disk is online (detected by the system)
+	
 	global $config, $g;
 	$detectedlist = get_physical_disks_list();
 	$status="MISSING";
-	foreach ($detectedlist as $detecteddisk => $detecteddiskv)
-	{
+	foreach ($detectedlist as $detecteddisk => $detecteddiskv) 	{
 		
 		if ($detecteddisk == $diskname['name'])
 		{
@@ -326,14 +306,18 @@ function disks_status($diskname)
 }
 
 
-function disks_addfstab($cfgdev,$cfgtype) {
+function disks_addfstab($cfgdev,$cfgtype)
+{
+	
+	// Where this function is called ? I don't remember ;-)
+	// Must add feature for replacing old entry with new...
+	
 	global $config, $g;
 	
 	/* Open or create fstab in RW */
 	$fd = fopen("{$g['etc_path']}/fstab", "w");
 	
-	if ( $fd )
-	{
+	if ( $fd ) 	{
 		/* check for the precence of dev */
 		/* ADD (check if it's ADD line or replace) the line for the dev */
 		$fstab = "/dev/$cfgdev /mnt/$cfgdev $cfgtype rw 1 1\n";
@@ -344,14 +328,16 @@ function disks_addfstab($cfgdev,$cfgtype) {
 		/* close file */
 		fclose($fd);
 	}
-	else
-	{
+	else 	{
 		die( "fopen failed for {$g['etc_path']}/fstab" ) ;
 	}
 	
 }
 
-function disks_umount_all() {
+function disks_umount_all()
+{
+	// Unmount all mount point
+	
 	global $config, $g;
 	
 	/* Sync disks*/
@@ -374,30 +360,28 @@ function disks_umount_all() {
 
 function disks_raid_configure()
 {
+	// Configure and sart all gvinum RAID volume
+		
 	global $config, $g;
 	
 	/* Generate the raid.conf file */
 
-	if ($config['raid']['vdisk'])
-	{
+	if ($config['raid']['vdisk']) 	{
 		
-		foreach ($config['raid']['vdisk'] as $a_raid_conf)
-		{
+		foreach ($config['raid']['vdisk'] as $a_raid_conf) 		{
 
 			if (file_exists($g['varrun_path'] . "/raid.conf.dirty") && 
 	                    !in_array("{$a_raid_conf['name']}\n",file($g['varrun_path'] . "/raid.conf.dirty"))) continue;
 		
 			/* generate raid.conf */
 			$fd = fopen("{$g['varetc_path']}/raid-{$a_raid_conf['name']}.conf", "w");
-			if (!$fd)
-			{
+			if (!$fd) 			{
 				printf("Error: cannot open raid.conf in services_raid_configure().\n");
 				return 1;
 			}
 
 			$raidconf="";
-			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv)
-			{
+			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
 		$raidconf .= <<<EOD
 drive disk_{$diskrv} device /dev/{$diskrv}s1a
 
@@ -410,15 +394,13 @@ volume {$a_raid_conf['name']}
 
 EOD;
 
-			switch ($a_raid_conf['type'])
-			{
+			switch ($a_raid_conf['type']) 	{
 					case "0":
 						$raidconf .= <<<EOD
 plex org striped 256k
 
 EOD;
-						foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv)
-						{
+						foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
 							/* Get the disksize */
 							$disksize=get_disks_size($diskrv);
 							/* Remove the ending 'B' in 'MB' */
@@ -435,8 +417,7 @@ EOD;
 						}
 						break;
 					case "1":
-						foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv)
-						{
+						foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
 							$raidconf .= <<<EOD
 plex org concat
 
@@ -464,8 +445,7 @@ EOD;
 plex org raid5 256k
 
 EOD;
-						foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv)
-						{
+						foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv)	{
 							/* Get the disksize */
 							$disksize=get_disks_size($diskrv);
 							/* Remove the ending 'B' in 'MB' */
@@ -496,8 +476,7 @@ EOD;
 		
 		/* start each volume */
 		
-		foreach ($config['raid']['vdisk'] as $a_raid_conf)
-		{
+		foreach ($config['raid']['vdisk'] as $a_raid_conf)	{
 			exec("/sbin/gvinum lv $raidname",$rawdata);
 			if (strpos($rawdata[0],"State: up")>=0) continue;
 
@@ -541,6 +520,8 @@ function disks_raid_gmirror_configure()
 
 function disks_raid_start()
 {
+	// Start ALL software RADI volume
+	
 	global $config, $g;
 	
 	/* Start software RAID */
@@ -602,7 +583,7 @@ function disks_raid_gmirror_start()
 
 function disks_raid_stop()
 {
-	/* Stop software RAID */
+	// Stop ALL software RAID volume
 
 	disks_raid_gvinum_stop();
 	disks_raid_gmirror_stop();
@@ -704,6 +685,8 @@ function fdisk_hd_install($harddrive)
 	global $config, $g;
 	
 	/* Initialise HARD DRIVE for installing FreeNAS (creating 2 partition) */
+	
+	// OLD NOT USED FUNCTION !!!
 	
 	/* getting disk information */
 	$fdisk_info=fdisk_get_info($harddrive);
@@ -818,6 +801,8 @@ function disks_bsdlabel($harddrive,$partition,$type)
 	{
 		// If the line contain the word "unused"
 		
+		// Why did I replace 'a' with 'c' ? Must found the URL where I found this information
+		
 		if (ereg ("unused",$val))
 		{
 			// Replacing c: by a:
@@ -840,13 +825,10 @@ function disks_set_ataidle()
 {
 	global $g, $config;
 
-	if (is_array($config['disks']['disk']))
-	{
-		foreach ($config['disks']['disk'] as $disk)
-		{
+	if (is_array($config['disks']['disk'])) 	{
+		foreach ($config['disks']['disk'] as $disk) {
 		
-			if ($disk['type']=="IDE")
-			{		
+			if ($disk['type']=="IDE") 		{		
 					/* If UDMA mode forced, launch atacontrol */
 					if (isset($disk['udma']) && ($disk['udma'] != "auto"))
 						mwexec("/sbin/atacontrol mode {$disk['name']}  {$disk['udma']}");

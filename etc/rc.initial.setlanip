@@ -3,7 +3,7 @@
 /*
 	rc.initial.setlanip
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2006 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -35,33 +35,43 @@
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
-	
-	$fp = fopen('php://stdin', 'r');
-	
-	do {
-		echo "\nEnter the new LAN IP address: ";
-		$lanip = chop(fgets($fp));
-		if ($lanip === "") {
-			exit(0);
-		}
-	} while (!is_ipaddr($lanip));
+	require_once("util.inc");
 
-	echo "\nSubnet masks are entered as bit counts (as in CIDR notation) in FreeNAS.\n";
-	echo "e.g. 255.255.255.0 = 24\n";
-	echo "     255.255.0.0   = 16\n";
-	echo "     255.0.0.0     = 8\n\n";
-	
-	do {
-		echo "Enter the new LAN subnet bit count: ";
-		$lanbits = chop(fgets($fp));
-		if ($lanbits === "") {
-			exit(0);
-		}
-	} while (!is_numeric($lanbits) || ($lanbits < 1) || ($lanbits > 31));
-	
-	$config['interfaces']['lan']['ipaddr'] = $lanip;
-	$config['interfaces']['lan']['subnet'] = $lanbits;
-	
+	$fp = fopen('php://stdin', 'r');
+
+  echo "\nDo you want to use DHCP? (y/n)";
+
+  if (strcasecmp(chop(fgets($fp)), "y") == 0)
+	{
+    $config['interfaces']['lan']['ipaddr'] = "dhcp";
+	}
+	else
+	{
+  	do {
+  		echo "\nEnter the new LAN IP address: ";
+  		$lanip = chop(fgets($fp));
+  		if ($lanip === "") {
+  			exit(0);
+  		}
+  	} while (!is_ipaddr($lanip));
+  
+  	echo "\nSubnet masks are entered as bit counts (as in CIDR notation) in FreeNAS.\n";
+  	echo "e.g. 255.255.255.0 = 24\n";
+  	echo "     255.255.0.0   = 16\n";
+  	echo "     255.0.0.0     = 8\n\n";
+  	
+  	do {
+  		echo "Enter the new LAN subnet bit count: ";
+  		$lanbits = chop(fgets($fp));
+  		if ($lanbits === "") {
+  			exit(0);
+  		}
+  	} while (!is_numeric($lanbits) || ($lanbits < 1) || ($lanbits > 31));
+  	
+  	$config['interfaces']['lan']['ipaddr'] = $lanip;
+  	$config['interfaces']['lan']['subnet'] = $lanbits;
+	}
+
 	$proto = "http";
 	if ($config['system']['webgui']['protocol'] == "https") {
 	
@@ -73,17 +83,23 @@
 			$proto = "https";
 	}
 	
-	if (isset($config['system']['webgui']['noantilockout'])) {
-		echo "\nNote: the anti-lockout rule on LAN has been re-enabled.\n";
-		unset($config['system']['webgui']['noantilockout']);
-	}
-	
 	write_config();
-	interfaces_lan_configure();
 	
+	interfaces_lan_configure();
+
+  /* Get current IP */
+  $if = $config['interfaces']['lan']['if'];
+  $lanip = get_ipaddr($if);
+
+  unset($laninfo);
+  if ($config['interfaces']['lan']['ipaddr'] == "dhcp")
+    $laninfo = "$lanip";
+  else
+    $laninfo = "$lanip/$lanbits";
+
 	echo <<<EOD
 	
-The LAN IP address has been set to $lanip/$lanbits.
+The LAN IP address has been set to $laninfo.
 You can now access the webGUI by opening the following URL
 in your browser:
 

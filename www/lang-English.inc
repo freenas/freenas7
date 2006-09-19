@@ -221,6 +221,7 @@ define('_INDEXPHP_LASTCHANGE','Last config change');
 define('_INDEXPHP_MEMUSE','Memory usage');
 define('_INDEXPHP_LOADAVERAGE','Load averages');
 define('_INDEXPHP_SHOWPROCESSING','show process information');
+define('_INDEXPHP_DISKS_USE','Disk space usage');
 
 // Status Processes Module
 // file: status_processes.php

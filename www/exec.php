@@ -26,7 +26,7 @@ if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	Created by technologEase (http://www.technologEase.com).
 	
 	(modified for m0n0wall by Manuel Kasper <mk@neon1.net>)
-	(re-modified for FreeNAS by Olivier Cochard <olivier@freenas.org>)
+	(re-modified for FreeNAS by Olivier Cochard-Labbe <olivier@freenas.org>)
 */
 
 // Function: is Blank

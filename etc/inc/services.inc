@@ -1145,115 +1145,9 @@ function services_iscsi_configure()
 	return 0;
 }
 
-function services_howl_configure()
-{
-	global $config, $g;
-	
-	
-	/* kill any mDNSResponder */
-	killbyname("mDNSResponder");
-	
-	if (isset($config['system']['howl_disable']))
-		return 0;
-	
-	$fd = fopen("{$g['varetc_path']}/mDNSResponder.conf", "w");
-	if (!$fd)
-	{
-		printf("Error: cannot open mDNSResponder.conf in services_howl_configure().\n");
-		return 1;
-	}
-	
-	if ($config['system']['webgui']['port'])
-	{
-	$mDNSResponder = <<<EOD
-"{$config['system']['hostname']} Web Admin"	_http._tcp	local.	{$config['system']['webgui']['port']}
-
-EOD;
-	}
-	else
-	{
-	$mDNSResponder = <<<EOD
-"{$config['system']['hostname']} Web Admin"	_http._tcp	local.	80
-
-EOD;
-	}
-	
-	
-	if (isset($config['afp']['enable']))
-	{				
-		$mDNSResponder .= <<<EOD
-"{$config['system']['hostname']} AFP Server"	_afpovertcp._tcp	local.	548
-
-EOD;
-	}
-	
-	if (isset($config['rsyncd']['enable']))
-	{				
-		$mDNSResponder .= <<<EOD
-"{$config['system']['hostname']} RSYNC Server"	_rsync._tcp.	local.	{$config['rsyncd']['port']}
-
-EOD;
-	}
-	
-	if (isset($config['sshd']['enable']))
-	{				
-		$mDNSResponder .= <<<EOD
-"{$config['system']['hostname']} SSH Server"	_ssh._tcp	local.	{$config['sshd']['port']}
-
-EOD;
-	}
-	
-	if (isset($config['ftp']['enable']))
-	{				
-		$mDNSResponder .= <<<EOD
-"{$config['system']['hostname']} FTP Server"	_ftp._tcp	local.	{$config['ftp']['port']}
-
-EOD;
-	}
-	
-	if (isset($config['samba']['enable']))
-	{				
-		$mDNSResponder .= <<<EOD
-"{$config['system']['hostname']} Samba Server"	_smb._tcp	local.	139
-
-EOD;
-	}
-	
-	if (isset($config['nfs']['enable']))
-	{				
-		
-		/* If no share configured, exit */
-		if (!is_array($config['mounts']['mount']))
-			break;
-		
-		$a_mount = &$config['mounts']['mount'];
-		
-		foreach ($a_mount as $mount)
-		{
-		$mDNSResponder .= <<<EOD
-"{$config['system']['hostname']} NFS: {$mount['sharename']}"	_nfs._tcp	local.	2049 path=/mnt/{$mount['sharename']}
-
-EOD;
-		}
-	}
-	
-	fwrite($fd, $mDNSResponder);
-	fclose($fd);
-
-
-	/* run mDNSResponder */
-	mwexec("/usr/local/sbin/mDNSResponder -f {$g['varetc_path']}/mDNSResponder.conf");
-
-	if ($g['booting'])
-		echo "done\n";
-	
-	return 0;
-}
-
 function services_mdnsresponder_configure()
 {
 	global $config, $g;
-	
 	
 	/* kill any running snmpd */
 	sigkillbypid("{$g['varrun_path']}/mDNSResponder.pid", "TERM");
@@ -1261,6 +1155,10 @@ function services_mdnsresponder_configure()
 	
 	if (isset($config['system']['howl_disable']))
 		return 0;
+	else {
+		if ($g['booting'])
+			echo "Starting Bonjour Zeroconf service... ";
+	}
 	
 	$fd = fopen("{$g['varetc_path']}/mDNSResponder.conf", "w");
 	if (!$fd) 	{

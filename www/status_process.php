@@ -2,13 +2,12 @@
 <?php 
 /*
   status_processes.php
-  part of m0n0wall (http://m0n0.ch/wall)
+  part of FreeNAS  (http://freenas.org) by Olivier Cochard-Labbe <olivier@freenas.org>
   
-  Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
+  Based on m0n0wall (http://m0n0.ch/wall)
+    Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
   All rights reserved.
-  
-  Modified for FreeNAS (http://freenas.org) by Olivier Cochard <olivier@freenas.org>
-  
+   
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions are met:
   
