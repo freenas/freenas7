@@ -342,18 +342,16 @@ function interfaces_lan_dhcp_configure($if)
         return 1;
     }
 
-     unset($dhclientconf);
-     $macaddr = get_macaddr($if);
+    $macaddr = get_macaddr($if);
+    $hostname = "{$config['system']['hostname']}.{$config['system']['domain']}";
 
-     if ($config['system']['hostname']) {
-        $dhclientconf .= <<<EOD
+    $dhclientconf = <<<EOD
 send dhcp-client-identifier "{$macaddr}";
 interface "{$if}" {
-    send host-name "{$config['system']['hostname']}.{$config['system']['domain']}";
+    send host-name "{$hostname}";
 }
 
 EOD;
-    }
 
     fwrite($fd, $dhclientconf);
     fclose($fd);
