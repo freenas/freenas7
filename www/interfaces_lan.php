@@ -154,16 +154,16 @@ function type_change() {
 		case 0:
 		  /* use current ip address as default */
       document.iform.ipaddr.value = "<?=htmlspecialchars(get_ipaddr($lancfg['if']))?>";
-      document.iform.ipaddr.readOnly = 0;
+      document.iform.ipaddr.disabled = 0;
     	document.iform.subnet.disabled = 0;
-      document.iform.gateway.readOnly = 0;
+      document.iform.gateway.disabled = 0;
       /* calculate subnet mask */
       ipaddr_change();
       break;
     case 1:
-      document.iform.ipaddr.readOnly = 1;
+      document.iform.ipaddr.disabled = 1;
     	document.iform.subnet.disabled = 1;
-      document.iform.gateway.readOnly = 1;
+      document.iform.gateway.disabled = 1;
       break;
   }
 }
@@ -214,7 +214,7 @@ function type_change() {
                 </tr>
                 <tr> 
                   <td valign="top" class="vncell"><?=_INTPHP_DHCPHOSTNAME; ?></td>
-                  <td class="vtable"><input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" readOnly>
+                  <td class="vtable"><input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled>
                     <br>
                      <?=_INTPHP_DHCPHOSTNAMETEXT; ?>
                   </td>
