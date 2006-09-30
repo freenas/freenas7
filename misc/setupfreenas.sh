@@ -54,6 +54,7 @@ create_fs() {
 	mkdir usr/local/lib ;
 	mkdir usr/local/sbin ;
 	mkdir usr/local/www ;
+	mkdir usr/local/www/syntaxhighlighter ;
 	mkdir usr/sbin ;
 	mkdir usr/share ;
 	mkdir tmp ;
