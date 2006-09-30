@@ -557,6 +557,7 @@ use_svn() {
 	cp -p $SVNDIR/etc/* $FREENAS/etc
 	cp -p $SVNDIR/etc/inc/*.* $FREENAS/etc/inc
 	cp -p $SVNDIR/www/*.* $FREENAS/usr/local/www
+	cp -p $SVNDIR/www/syntaxhighlighter/*.* $FREENAS/usr/local/www/syntaxhighlighter
 	cp -p $SVNDIR/conf/*.* $FREENAS/conf.default
 		
 	return 0
