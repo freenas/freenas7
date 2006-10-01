@@ -7,7 +7,7 @@ dp.sh.Brushes.CSS = function()
 					'border-bottom-width border-left-width border-width border bottom cap-height caption-side centerline clear clip color ' +
 					'content counter-increment counter-reset cue-after cue-before cue cursor definition-src descent direction display ' +
 					'elevation empty-cells float font-size-adjust font-family font-size font-stretch font-style font-variant font-weight font ' +
-					'height left letter-spacing line-height list-style-image list-style-position list-style-type list-style margin-top ' +
+					'height letter-spacing line-height list-style-image list-style-position list-style-type list-style margin-top ' +
 					'margin-right margin-bottom margin-left margin marker-offset marks mathline max-height max-width min-height min-width orphans ' +
 					'outline-color outline-style outline-width outline overflow padding-top padding-right padding-bottom padding-left padding page ' +
 					'page-break-after page-break-before page-break-inside pause pause-after pause-before pitch pitch-range play-during position ' +

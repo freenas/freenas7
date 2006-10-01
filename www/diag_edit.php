@@ -6,10 +6,11 @@
     All rights reserved.
 
     Adapted for FreeNAS by Volker Theile (votdev@gmx.de)
-    Copyright (C) 2006 Volker Theile
+    Copyright © 2006 Volker Theile
 
-    Using SyntaxHighlighter for syntax highlighting
+    Using dp.SyntaxHighlighter for syntax highlighting
     http://www.dreamprojections.com/SyntaxHighlighter 
+    Copyright © 2004-2006 Alex Gorbatchev. All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are met:
@@ -159,10 +160,12 @@ else
   linkObj.setAttribute("href","syntaxhighlighter/SyntaxHighlighter.css");
   head.appendChild(linkObj);
 
-  // Highligh code?
+  // Activate dp.SyntaxHighlighter?
   <?php
   if($_POST['highlight'] == "yes") {
     echo "dp.SyntaxHighlighter.HighlightAll('code', true, true);\n";
+    // Disable 'Save' button.
+    echo "document.forms[0].Save.disabled = 1;\n";
   }
 ?>
 //-->

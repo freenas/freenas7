@@ -8,7 +8,6 @@
 	background-color: #fff;
 	width: 99%;
 	overflow: auto;
-	line-height: 100% !important;
 	margin: 18px 0px 18px 0px;
 }
 
@@ -17,11 +16,22 @@
 	padding-left: 45px;
 }
 
+.dp-highlighter.collapsed .bar, .dp-highlighter.nogutter .bar
+{
+	padding-left: 0px;
+}
+
 .dp-highlighter ol
 {
-	margin: 0px 0px 0px 45px;
+	margin: 0px 0px 1px 45px; /* 1px bottom margin seems to fix occasional Firefox scrolling */
 	padding: 0px;
 	color: #2B91AF;
+}
+
+.dp-highlighter.nogutter ol
+{
+	list-style-type: none;
+	margin-left: 0px;
 }
 
 .dp-highlighter ol li, .dp-highlighter .columns div
@@ -30,6 +40,11 @@
 	background-color: #fff;
 	padding-left: 10px;
 	line-height: 14px;
+}
+
+.dp-highlighter.nogutter ol li, .dp-highlighter.nogutter .columns div
+{
+	border: 0;
 }
 
 .dp-highlighter .columns
@@ -54,7 +69,7 @@
 	color: Black;
 }
 
-/* Adjust some properties when wollapsed */
+/* Adjust some properties when collapsed */
 
 .dp-highlighter.collapsed ol
 {
@@ -64,11 +79,6 @@
 .dp-highlighter.collapsed ol li
 {
 	display: none;
-}
-
-.dp-highlighter.collapsed .tools
-{
-	border-bottom: none;
 }
 
 /* Additional modifications when in print-view */
@@ -81,7 +91,6 @@
 .dp-highlighter.printing .tools
 {
 	display: none !important;
-	border: 5px solid black;
 }
 
 .dp-highlighter.printing li
@@ -97,6 +106,11 @@
 	border-bottom: 1px solid #2B91AF;
 	font: 9px Verdana, Geneva, Arial, Helvetica, sans-serif;
 	color: silver;
+}
+
+.dp-highlighter.collapsed .tools
+{
+	border-bottom: 0;
 }
 
 .dp-highlighter .tools a
@@ -115,58 +129,14 @@
 
 /* About dialog styles */
 
-.dp-about
-{
-	background-color: #fff;
-	margin: 0px;
-}
-
-.dp-about table
-{
-	width: 100%;
-	height: 100%;
-	font-size: 11px;
-	font-family: Tahoma, Verdana, Arial, sans-serif !important;
-}
-
-.dp-about td
-{
-	padding: 10px;
-	vertical-align: top;
-}
-
-.dp-about .copy
-{
-	border-bottom: 1px solid #ACA899;
-	height: 95%;
-}
-
-.dp-about .title
-{
-	color: red;
-	font-weight: bold;
-}
-
-.dp-about .para
-{
-	margin-bottom: 4px;
-}
-
-.dp-about .footer
-{
-	background-color: #ECEADB;
-	border-top: 1px solid #fff;
-	text-align: right;
-}
-
-.dp-about .close
-{
-	font-size: 11px;
-	font-family: Tahoma, Verdana, Arial, sans-serif !important;
-	background-color: #ECEADB;
-	width: 60px;
-	height: 22px;
-}
+.dp-about { background-color: #fff; margin: 0px; padding: 0px; }
+.dp-about table { width: 100%; height: 100%; font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; }
+.dp-about td { padding: 10px; vertical-align: top; }
+.dp-about .copy { border-bottom: 1px solid #ACA899; height: 95%; }
+.dp-about .title { color: red; font-weight: bold; }
+.dp-about .para { margin: 0 0 4px 0; }
+.dp-about .footer { background-color: #ECEADB; border-top: 1px solid #fff; text-align: right; }
+.dp-about .close { font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; background-color: #ECEADB; width: 60px; height: 22px; }
 
 /* Language specific styles */
 
@@ -237,3 +207,10 @@
 .dp-j .keyword { color: rgb(127,0,85); font-weight: bold }
 .dp-j .annotation { color: #646464; }
 .dp-j .number { color: #C00000; }
+
+.dp-cpp {}
+.dp-cpp .comment { color: #e00; }
+.dp-cpp .string { color: red; }
+.dp-cpp .preprocessor { color: #CD00CD; font-weight: bold; }
+.dp-cpp .keyword { color: #5697D9; font-weight: bold; }
+.dp-cpp .datatypes { color: #2E8B57; font-weight: bold; }

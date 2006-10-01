@@ -34,8 +34,8 @@ dp.sh.Brushes.Xml.prototype.ProcessRegexList = function()
 	this.GetMatches(new RegExp('<!--\\s*.*\\s*?-->', 'gm'), 'comments');
 
 	// Match attributes and their values
-	// (\w+)\s*=\s*(".*?"|\'.*?\'|\w+)*
-	regex = new RegExp('([\\w-\.]+)\\s*=\\s*(".*?"|\'.*?\'|\\w+)*', 'gm');
+	// (:|\w+)\s*=\s*(".*?"|\'.*?\'|\w+)*
+	regex = new RegExp('([:\\w-\.]+)\\s*=\\s*(".*?"|\'.*?\'|\\w+)*', 'gm'); // Thanks to Tomi Blinnikka of Yahoo! for fixing namespaces in attributes
 	while((match = regex.exec(this.code)) != null)
 	{
 		push(this.matches, new dp.sh.Match(match[1], match.index, 'attribute'));
@@ -53,7 +53,7 @@ dp.sh.Brushes.Xml.prototype.ProcessRegexList = function()
 
 	// Match tag names
 	// </*\?*\s*(\w+)
-	regex = new RegExp('</*\\?*\\s*([\\w-\.]+)', 'gm');
+	regex = new RegExp('</*\\?*\\s*([:\\w-\.]+)', 'gm');
 	while((match = regex.exec(this.code)) != null)
 	{
 		push(this.matches, new dp.sh.Match(match[1], match.index + match[0].indexOf(match[1]), 'tag-name'));
