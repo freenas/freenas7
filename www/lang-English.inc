@@ -739,23 +739,19 @@ define('_ACCESSAD_ADMINPASS','Administration password');
 define('_ACCESSAD_ADMINPASSTEXT','Password of domain administrator account, enter it here twice.');
 
 // Diagnostics
-
 define('_DIAG_NAME','Diagnostics');
 
 // file: shutdown.php
-
 define('_SHUT_NAME','Shutdown');
 define('_SHUT_MSGSHUT','The system is halting now. This may take one minute.');
 define('_SHUT_CONF','Are you sure you want to shutdown the system?');
 
 // file: shutdown_sched.php
-
 define('_SHUTSCHED_NAME','Scheduled shutdown');
 define('_SHUTSCHED_TIME','Shutdown Time');
 define('_SHUTSCHED_TEXT',_MSGSCHED_TEXT);
 
 // file: diag_edit.php
-
 define('_DIAGEDITPHP_NAMEDESC','Edit File');
 define('_DIAGEDITPHP_FILEPATH','File path');
 define('_DIAGEDITPHP_SAVEMSG','Saved file to');
@@ -766,4 +762,6 @@ define('_DIAGEDITPHP_HIGHLIGHTING','Highlighting');
 define('_DIAGEDITPHP_HIGHLIGHTINGENABLED','Enabled');
 define('_DIAGEDITPHP_HIGHLIGHTINGDISABLED','Disabled');
 
+// file: exec.php
+define('_DIAGEXECPHP_NAMEDESC','Execute command');
 ?>

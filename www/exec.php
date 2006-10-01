@@ -1,5 +1,18 @@
 #!/usr/local/bin/php
 <?php
+/*
+	Exec+ v1.02-000 - Copyright 2001-2003, All rights reserved
+	Created by technologEase (http://www.technologEase.com).
+	
+	(modified for m0n0wall by Manuel Kasper <mk@neon1.net>)
+	(re-modified for FreeNAS by Olivier Cochard-Labbe <olivier@freenas.org>)
+	(adapted to FreeNAS GUI by Volker Theile <votdev@gmx.de>)
+*/
+
+require("guiconfig.inc");
+
+$pgtitle = array(_DIAG_NAME, _DIAGEXECPHP_NAMEDESC);
+
 if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	session_cache_limiter('public');
 	$fd = fopen($_POST['dlPath'], "rb");
@@ -16,45 +29,20 @@ if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	unset($_POST['txtCommand']);
 }
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<head>
+<?php include("fbegin.inc"); ?>
 <?php
-
-/*
-	Exec+ v1.02-000 - Copyright 2001-2003, All rights reserved
-	Created by technologEase (http://www.technologEase.com).
-	
-	(modified for m0n0wall by Manuel Kasper <mk@neon1.net>)
-	(re-modified for FreeNAS by Olivier Cochard-Labbe <olivier@freenas.org>)
-*/
 
 // Function: is Blank
 // Returns true or false depending on blankness of argument.
 
 function isBlank( $arg ) { return ereg( "^\s*$", $arg ); }
 
-
 // Function: Puts
 // Put string, Ruby-style.
 
 function puts( $arg ) { echo "$arg\n"; }
 
-
-// "Constants".
-
-$Version    = '';
-$ScriptName = $HTTP_SERVER_VARS['SCRIPT_NAME'];
-$Title      = 'FreeNAS: execute command';
-
-// Get year.
-
-$arrDT   = localtime();
-$intYear = $arrDT[5] + 1900;
-
 ?>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title><?=$Title ?></title>
 <script language="javascript">
 <!--
 
@@ -73,7 +61,6 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
 }
 
 ?>
-
    // Set pointer to end of recall buffer.
    var intRecallPtr = arrRecallBuffer.length;
 
@@ -104,7 +91,7 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
 			 form.txtRecallBuffer.value += '&' + form.txtCommand.value.encode();
 	  }
 
-      return true;
+    return true;
    }
 
    // Function: btnRecall onClick (event handler)
@@ -162,8 +149,7 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
    }
 //-->
 </script>
-<link href="gui.css" rel="stylesheet" type="text/css">
-<style>
+<style type="text/css">
 <!--
 
 input {
@@ -196,12 +182,6 @@ pre {
 
 -->
 </style>
-</head>
-<body<?php
-if(!isBlank($_POST['txtCommand'])) {
-    echo ' onload="document.forms[\'frmExecPlus\'].txtCommand.focus();"';
-}
-?>>
 <p><span class="pgtitle"><?=$Title ?></span>
 <?php if (isBlank($_POST['txtCommand'])): ?>
 <p class="red"><strong>Note: this function is unsupported. Use it
@@ -220,9 +200,7 @@ if (!isBlank($_POST['txtCommand'])) {
    pclose($ph);
    puts("</pre>");
 }
-
 ?>
-
 <form action="<?=$ScriptName ?>" method="POST" enctype="multipart/form-data" name="frmExecPlus" onSubmit="return frmExecPlus_onSubmit( this );">
   <table>
     <tr>
@@ -258,5 +236,9 @@ if (!isBlank($_POST['txtCommand'])) {
     </tr>
   </table>
 </form>
-</body>
-</html>
+<script language="JavaScript">
+<!--
+  document.forms[0].txtCommand.focus();
+//-->
+</script>
+<?php include("fend.inc"); ?>
