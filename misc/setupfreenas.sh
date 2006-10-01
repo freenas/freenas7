@@ -532,7 +532,7 @@ download_rootfs() {
 	cd $WORKINGDIR
 	
 	update=y
-	if [ -e freenas-rootfs.tgz ]; then
+	if [ -e freenas-rootfs.tgz -a -e freenas-boot.tgz ]; then
     echo -n "Update existing files [y/n]?"
     read update
 	fi
