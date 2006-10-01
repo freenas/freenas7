@@ -526,15 +526,28 @@ create_iso_light() {
 }
 
 download_rootfs() {
-	mkdir $WORKINGDIR
+
+  # Ensure we are in $WORKINGDIR
+	[ ! -d "$WORKINGDIR" ] && mkdir $WORKINGDIR
 	cd $WORKINGDIR
-	echo "Deleting old archives"
-	[ -f freenas-rootfs.tgz ] && rm -f freenas-rootfs.tgz
-	[ -f freenas-boot.tgz ] && rm -f freenas-boot.tgz
-	echo "Downloading new archives"
-	fetch http://www.freenas.org/downloads/freenas-rootfs.tgz
-	fetch http://www.freenas.org/downloads/freenas-boot.tgz
-	echo "De-taring new archives"
+	
+	update=y
+	if [ -e freenas-rootfs.tgz ]; then
+    echo -n "Update existing files [y/n]?"
+    read update
+	fi
+
+  if [ $update = 'y' ]; then
+	 echo "Deleting old archives"
+	 [ -f freenas-rootfs.tgz ] && rm -f freenas-rootfs.tgz
+	 [ -f freenas-boot.tgz ] && rm -f freenas-boot.tgz
+
+	 echo "Downloading new archives"
+	 fetch http://www.freenas.org/downloads/freenas-rootfs.tgz
+	 fetch http://www.freenas.org/downloads/freenas-boot.tgz
+	fi
+
+	echo "De-taring archives"
 	tar -xzf freenas-rootfs.tgz -C $WORKINGDIR/
 	tar -xzf freenas-boot.tgz -C $WORKINGDIR/
 	
@@ -630,7 +643,7 @@ main() {
 
 	echo -n '
 Menu:
-1  - Download and decompres FreeNAS root filesystem 
+1  - Download and decompress FreeNAS root filesystem 
 2  - Update the source to latest (need SVN)
 10 - Create FreeNAS IMG file (rawrite to CF/USB/DD)
 11 - Create FreeNAS ISO file (need cdrtool installed)
