@@ -74,7 +74,7 @@ FreeNAS 0.68 (UNRELEASE!):
 - Fixed su permisson
 - Fixed FTP anonymous login that was not disabled
 - Fixed the e2fsck bug, now EXT2 filesystem should be correctly repair when detected error on it
-- Added DHCP client option for LAN interface (WebgUI only). Thanks to Volker Theile
+- Added DHCP client option for LAN interface (WebgUI & console). Thanks to Volker Theile
 - Changed default samba buffer size to 16384
 - Added "-maproot=root" to NFS configuration file
 - Added option for not erasing the MBR when initializing disk: Some RAID controllers store important data in the MBR.
