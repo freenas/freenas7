@@ -165,6 +165,8 @@ require("guiconfig.inc");
 			echo "<br>";
 		}
 	   }
+	  else 
+		echo _INDEXPHP_NODISK ;
       ?>
     </td>
   </tr>

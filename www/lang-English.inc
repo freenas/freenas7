@@ -223,6 +223,7 @@ define('_INDEXPHP_MEMUSE','Memory usage');
 define('_INDEXPHP_LOADAVERAGE','Load averages');
 define('_INDEXPHP_SHOWPROCESSING','show process information');
 define('_INDEXPHP_DISKS_USE','Disk space usage');
+define('_INDEXPHP_NODISK','No disk configured');
 
 // Status Processes Module
 // file: status_processes.php

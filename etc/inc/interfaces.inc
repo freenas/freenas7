@@ -62,8 +62,8 @@ function interfaces_lan_configure()
 		$interfaces = explode(" ", exec("/sbin/ifconfig -l"));
 		$lanif = $interfaces[0];
 		if ($g['booting'])
-			//echo "Using interface $lanif... ";
-			echo "Auto-detected LAN interface $lanif and saving config file...\n";
+			echo "Using interface $lanif... ";
+			//echo "Auto-detected LAN interface $lanif and saving config file...\n";
 		
 		// TEMPO FIX: Try to replace the 'auto' value with the interface detected 
 		// It's more easy to code with a real name that using the 'auto' feature)
