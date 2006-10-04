@@ -1059,8 +1059,8 @@ function get_ipaddr($if)
   {
     $ainet = preg_split("/\s+/", $inet);
     $ifname = chop($ainet[0]);
-    
-    if (strcmp($ifname,$if) == 0)
+
+    if (strncmp($ifname,$if,strlen($if)) == 0)
     {
       $ipaddr = chop($ainet[3]);
       break;
@@ -1068,7 +1068,7 @@ function get_ipaddr($if)
   }
 
   if (strcmp($ipaddr,"") == 0)
-    echo "Failed to get IP address for interface $if.\n";
+    echo "Failed to get IP address for interface $if.";
 
   return $ipaddr;
 }
@@ -1087,7 +1087,7 @@ function get_macaddr($if)
     $alink = preg_split("/\s+/", $link);
     $ifname = chop($alink[0]);
     
-    if (strcmp($ifname,$if) == 0)
+    if (strncmp($ifname,$if,strlen($if)) == 0)
     {
       $macaddr = chop($alink[3]);
       break;
@@ -1095,7 +1095,7 @@ function get_macaddr($if)
   }
 
   if (strcmp($macaddr,"") == 0)
-    echo "Failed to get MAC address for interface $if.\n";
+    echo "Failed to get MAC address for interface $if.";
 
   return $macaddr;
 }
