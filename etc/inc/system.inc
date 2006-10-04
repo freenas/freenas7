@@ -814,7 +814,7 @@ function system_user_masterpasswd()
 	global $config, $g;
 	
 	$masterpasswd = <<<EOD
-root:{$config['system']['password']}:0:0::0:0:Charlie &:/root:/bin/sh
+root:{$config['system']['password']}:0:0::0:0:Charlie &:/root:/bin/tcsh
 toor:*:0:0::0:0:Bourne-again Superuser:/root:
 daemon:*:1:1::0:0:Owner of many system processes:/root:/usr/sbin/nologin
 operator:*:2:5::0:0:System &:/:/usr/sbin/nologin
@@ -837,7 +837,7 @@ EOD;
 			if (isset($user['fullshell']))
 			{
 				$masterpasswd .= <<<EOD
-{$user['login']}:{$password}:{$user['id']}:{$user['usergroupid']}::0:0:{$user['fullname']}:/mnt:/bin/sh
+{$user['login']}:{$password}:{$user['id']}:{$user['usergroupid']}::0:0:{$user['fullname']}:/mnt:/bin/tcsh
 
 EOD;
 			}
