@@ -57,26 +57,13 @@ function interfaces_lan_configure()
 	$lanif = $config['interfaces']['lan']['if'];
 	
 	// $config['interfaces']['lan'] is allready set to the first detected NIC... Where ?
-	
+
 	if (strcmp($lanif,"auto") == 0) {
-		$interfaces = explode(" ", exec("/sbin/ifconfig -l"));
-		$lanif = $interfaces[0];
+		$lanif = get_ifname($lanif);
 		if ($g['booting'])
 			echo "Using interface $lanif... ";
-			//echo "Auto-detected LAN interface $lanif and saving config file...\n";
-		
-		// TEMPO FIX: Try to replace the 'auto' value with the interface detected 
-		// It's more easy to code with a real name that using the 'auto' feature)
-		
-		// $config['interfaces']['lan']['if'] = $lanif;
-		// $lancfg['if'] = $lanif;
-		
-		// Warning: Must test with CDROM if not create problem
-		
-		// write_config();
-		
 	}
-	
+
 	/* wireless configuration? */
 	if (is_array($lancfg['wireless']))
 		interfaces_wireless_configure($lanif, $lancfg['wireless']);
@@ -106,8 +93,6 @@ function interfaces_lan_configure()
 
   switch ($lancfg['ipaddr']) {
 		case 'dhcp':
-			// Try to fix the 'auto' interface name and IP address configuration
-			// interfaces_lan_dhcp_configure( $lancfg['if']);
 			interfaces_lan_dhcp_configure($lanif);
 			break;
 			

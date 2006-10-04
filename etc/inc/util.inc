@@ -1050,6 +1050,7 @@ function get_ifname($if)
 function get_ipaddr($if)
 {
   $if = get_ifname($if);
+
   unset($ipaddr);
   exec("/usr/bin/netstat -inW -f inet -I {$if}", $inetinfo);
   array_shift($inetinfo);
@@ -1066,15 +1067,17 @@ function get_ipaddr($if)
     }
   }
 
+  if (strcmp($ipaddr,"") == 0)
+    echo "Failed to get IP address for interface $if.\n";
+
   return $ipaddr;
 }
 
 /* get local MAC address */
 function get_macaddr($if)
 {
-  
   $if = get_ifname($if);
-  
+
   unset($macaddr);
   exec("/usr/bin/netstat -inW -f link -I {$if}", $linkinfo);
   array_shift($linkinfo);
@@ -1090,6 +1093,9 @@ function get_macaddr($if)
       break;
     }
   }
+
+  if (strcmp($macaddr,"") == 0)
+    echo "Failed to get MAC address for interface $if.\n";
 
   return $macaddr;
 }
