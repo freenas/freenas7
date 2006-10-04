@@ -40,6 +40,7 @@ $optcfg = &$config['interfaces']['lan'];
 if ($config['interfaces']['lan']['ipaddr'] == "dhcp") {
 	$pconfig['type'] = "DHCP";
 	$pconfig['dhcphostname'] = $config['system']['hostname'] . "." . $config['system']['domain'];
+	$pconfig['dhcpclientidentifier'] = get_macaddr($lancfg['if']);
 } else {
 	$pconfig['type'] = "Static";
 	$pconfig['ipaddr'] = $config['interfaces']['lan']['ipaddr'];
@@ -211,6 +212,13 @@ function type_change() {
                 </tr>
                 <tr> 
                   <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_DHCP; ?></td>
+                </tr>
+                <tr> 
+                  <td valign="top" class="vncell"><?=_INTPHP_DHCPCLIENTIDENTIFIER; ?></td>
+                  <td class="vtable"><input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
+                    <br>
+                     <?=_INTPHP_DHCPCLIENTIDENTIFIERTEXT; ?>
+                  </td>
                 </tr>
                 <tr> 
                   <td valign="top" class="vncell"><?=_INTPHP_DHCPHOSTNAME; ?></td>
