@@ -85,7 +85,7 @@ create_fs() {
 
 copy_bins() {
 	[ -f freenas.files ] && rm -f freenas.files
-	fetch http://www.freenas.org/downloads/freenas.files
+	cp $SVNDIR/misc/freenas.files $WORKINGDIR
 
 	# Add custom binaries
 	if [ -f freenas.custfiles ]; then
