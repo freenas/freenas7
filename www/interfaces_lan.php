@@ -39,8 +39,6 @@ $optcfg = &$config['interfaces']['lan'];
 
 if ($config['interfaces']['lan']['ipaddr'] == "dhcp") {
 	$pconfig['type'] = "DHCP";
-	$pconfig['dhcphostname'] = $config['system']['hostname'] . "." . $config['system']['domain'];
-	$pconfig['dhcpclientidentifier'] = get_macaddr($lancfg['if']);
 } else {
 	$pconfig['type'] = "Static";
 	$pconfig['ipaddr'] = $config['interfaces']['lan']['ipaddr'];
@@ -48,6 +46,8 @@ if ($config['interfaces']['lan']['ipaddr'] == "dhcp") {
   $pconfig['gateway'] = $config['interfaces']['lan']['gateway'];
 }
 
+$pconfig['dhcphostname'] = $config['system']['hostname'] . "." . $config['system']['domain'];
+$pconfig['dhcpclientidentifier'] = get_macaddr($lancfg['if']);
 $pconfig['mtu'] = $config['interfaces']['lan']['mtu'];
 $pconfig['media'] = $config['interfaces']['lan']['media'];
 $pconfig['mediaopt'] = $config['interfaces']['lan']['mediaopt'];
@@ -82,7 +82,6 @@ if ($_POST) {
 	if (($_POST['gateway'] && !is_ipaddr($_POST['gateway']))) {
 		$input_errors[] = _INTPHP_MSGVALIDGW;
 	}
-	
 	if (($_POST['mtu'] && !is_mtu($_POST['mtu']))) {
 		$input_errors[] = _INTPHP_MSGVALIDMTU;
 	}
@@ -108,19 +107,9 @@ if ($_POST) {
 		$config['interfaces']['lan']['media'] = $_POST['media'];
 		$config['interfaces']['lan']['mediaopt'] = $_POST['mediaopt'];
 		$config['interfaces']['lan']['polling'] = $_POST['polling'] ? true : false;
-					
+
 		write_config();
 		interfaces_lan_configure();
-		
-		/*
-		touch($d_sysrebootreqd_path);
-
-		$savemsg = get_std_save_message(0);
-		
-		if ($dhcpd_was_enabled)
-			$savemsg .= "<br>Note that the DHCP server has been disabled.<br>Please review its configuration " .
-				"and enable it again prior to rebooting.";
-		*/
 	}
 }
 ?>
@@ -143,8 +132,9 @@ function gen_bits(ipaddr) {
 			return "24";
     }
     else
-        return "";
+      return "";
 }
+
 function ipaddr_change() {
 	document.iform.subnet.value = gen_bits(document.iform.ipaddr.value);
 }
@@ -152,7 +142,7 @@ function ipaddr_change() {
 function type_change() {
   switch(document.iform.type.selectedIndex)
   {
-		case 0:
+		case 0: /* Static */
 		  /* use current ip address as default */
       document.iform.ipaddr.value = "<?=htmlspecialchars(get_ipaddr($lancfg['if']))?>";
       document.iform.ipaddr.disabled = 0;
@@ -161,7 +151,7 @@ function type_change() {
       /* calculate subnet mask */
       ipaddr_change();
       break;
-    case 1:
+    case 1: /* DHCP */
       document.iform.ipaddr.disabled = 1;
     	document.iform.subnet.disabled = 1;
       document.iform.gateway.disabled = 1;
