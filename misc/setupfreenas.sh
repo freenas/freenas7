@@ -123,7 +123,7 @@ prep_etc() {
 	echo $FREENAS_PLATFORM > $FREENAS/etc/platform
 
 	cd $FREENAS/conf.default/
-	fetch http://www.freenas.org/downloads/config.xml
+	cp $SVNDIR/conf/config.xml .
 
 	cd $FREENAS/usr/share/
 	fetch http://www.freenas.org/downloads/zoneinfo.tgz
@@ -136,7 +136,7 @@ build_kernel() {
 	if [ -f FREENAS ]; then
 		rm -f FREENAS
 	fi
-	fetch http://freenas.org/downloads/FREENAS
+	cp $SVNDIR/misc/kernel-config/FREENAS .
 	config /sys/i386/conf/FREENAS
 	cd /sys/i386/compile/FREENAS
 	make clean
@@ -193,7 +193,7 @@ build_httpd() {
 	if [ -f mini_httpd.c.patch ]; then
 		rm -f mini_httpd.c.patch
 	fi
-	fetch http://www.freenas.org/downloads/patchs/mini_httpd.c.patch
+	fetch http://www.freenas.org/downloads/mini_httpd.c.patch
 
 	tar -xzf $httpd_tarball
 	patch < mini_httpd.c.patch
