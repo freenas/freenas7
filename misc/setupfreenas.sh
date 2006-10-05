@@ -405,8 +405,8 @@ create_image() {
 	mkdir $TMPDIR
 	create_mfsroot;
 	
-	echo "IMG: Creating a 20Mb empty destination IMG file"
-	dd if=/dev/zero of=$WORKINGDIR/image.bin bs=1M count=20
+	echo "IMG: Creating a 21Mb empty destination IMG file"
+	dd if=/dev/zero of=$WORKINGDIR/image.bin bs=1M count=21
 	echo "IMG: using this file as a memory disk"
 	mdconfig -a -t vnode -f $WORKINGDIR/image.bin -u 0
 	echo "IMG: Creating partition on this memory disk"

@@ -766,6 +766,50 @@ EOD;
 	return 0;
 }
 
+function services_unison_configure() {
+	global $config, $g;
+
+	if ($g['booting'])
+		echo "Configuring  unison... \n";
+
+	if (isset($config['unison']['enable'])) {
+
+		/* ensure unison workdir exists */
+		$workdir = "/mnt/{$config['unison']['share']}/{$config['unison']['workdir']}";
+		if (isset($config['unison']['makedir']) && !file_exists($workdir)) {
+			if (!mkdir($workdir)) {
+				printf("Error: cannot mkdir $workdir in services_unison_configure().\n");
+			}
+			exec("/bin/chmod 775 $workdir");
+		}
+		if (!file_exists($workdir)) {
+			printf("Error: cannot open $workdir in services_unison_configure().\n");
+		}
+		
+		/* add workdir to login.conf UNISON environment variable */
+		$logfile = "{$g['etc_path']}/login.conf";
+		if (!file_exists("$logfile")) {
+			printf("Error: $logfile doesn't exist, in services_unison_configure().\n");
+			return 1;
+		}
+		$tmp = file_get_contents("$logfile");
+		$search = "/UNISON=.*?(?=[,:])/";
+		if (!preg_match($search, $tmp)) {
+			printf("Error: cannot find UNISON in $logfile, in services_unison_configure().\n");
+			return 1;
+		}
+		$tmp = preg_replace($search, "UNISON=$workdir", $tmp);
+		if (!file_put_contents($logfile, $tmp)) {
+			printf("Error: couldn't write $logfile, in services_unison_configure().\n");
+			return 1;
+		}
+	}
+
+	$tmp = "";
+
+	return 0;
+}
+
 function services_cron_configure() {
 	global $config, $g;
 	

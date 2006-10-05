@@ -93,6 +93,7 @@ function showhide(tspan, tri) {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_nfs.php" class="navlnk"><?=_MENULEFT_SRVNFS;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_rsyncd.php" class="navlnk"><?=_MENULEFT_SRVRSYNCD;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_sshd.php" class="navlnk"><?=_MENULEFT_SRVSSHD;?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_unison.php" class="navlnk"><?=_MENULEFT_SRVUNSN;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_afp.php" class="navlnk"><?=_MENULEFT_SRVAFP;?></a><br>
               <strong>Access</strong><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_users.php" class="navlnk"><?=_MENULEFT_ACUSERGROUPS;?></a><br>
