@@ -75,7 +75,7 @@ case ${opmode} in
 	/etc/rc.initial.install
 	;;
 8)
-	/bin/sh
+	/bin/tcsh
 	;;
 9)
 	/etc/rc.initial.halt
