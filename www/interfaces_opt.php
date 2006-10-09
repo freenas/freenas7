@@ -266,7 +266,7 @@ function ipaddr_change() {
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
                     <input name="index" type="hidden" value="<?=$index;?>"> 
-				  <input name="Submit" type="submit" class="formbtn" value="Save" onclick="enable_change(true);bridge_change(true)"> 
+				  <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onclick="enable_change(true);bridge_change(true)"> 
                   </td>
                 </tr>      
               </table>

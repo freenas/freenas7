@@ -271,7 +271,7 @@ function type_change() {
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="Save"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>"> 
                   </td>
                 </tr>
                 <tr> 

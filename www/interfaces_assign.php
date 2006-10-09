@@ -225,7 +225,7 @@ if ($_GET['act'] == "add") {
   </tr>
   <?php endif; ?>
 </table>
-  <input name="Submit" type="submit" class="formbtn" value="Save"><br><br>
+  <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>"><br><br>
 <p><span class="vexpl"><strong><span class="red"><?=_WARNING; ?>:</span><br>
 </strong><?=_INTASSIGNPHP_INTTEXT;?></td>
 	</tr>

@@ -106,8 +106,8 @@ else
         <td>
           <?=_DIAGEDITPHP_FILEPATH; ?>:
 	        <input size="42" id="savetopath" name="savetopath" value="<?php echo $_POST['savetopath']; ?>" /> 
-	        <input name="submit" type="submit"  class="button" id="Load" value="Load" /> 
-          <input name="submit" type="submit"  class="button" id="Save" value="Save" />
+	        <input name="submit" type="submit"  class="button" id="Load" value="<?=_LOAD;?>" /> 
+          <input name="submit" type="submit"  class="button" id="Save" value="<?=_SAVE;?>" />
 	        <hr noshade="noshade" />
         	<?php if($_POST['highlight'] == "no"): ?>
           <?=_DIAGEDITPHP_ROWS; ?>: <input size="3" name="rows" value="<? echo $rows; ?>" />
