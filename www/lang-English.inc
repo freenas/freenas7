@@ -101,6 +101,7 @@ define('_UPDATE', 'Update');
 define('_VIEW', 'View');
 define('_APPLY', 'Apply changes');
 define('_WARNING', 'Warning');
+define('_LOAD', 'Load');
 
 //FreeNAS common words
 
