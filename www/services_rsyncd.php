@@ -147,7 +147,7 @@ function enable_change(enable_change) {
                   <td width="22%" valign="top" class="vncellreq"><?=_SRVRYNCD_READONLY;?></td>
                   <td width="78%" class="vtable">
 					<select name="readonly" class="formfld" id="readonly">
-                      <?php $types = explode(",", "Yes,No");
+                      <?php $types = array(_YES,_NO);
 					        $vals = explode(" ", "yes no");
 					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                       <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['readonly']) echo "selected";?>> 

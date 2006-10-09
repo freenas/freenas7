@@ -101,7 +101,9 @@ function enable_change(enable_change) {
 	var endis;
 	
 	endis = !(document.iform.enable.checked || enable_change);
-
+  document.iform.mapall.disabled = endis;
+  document.iform.network.disabled = endis;
+  document.iform.network_subnet.disabled = endis;
 }
 //-->
 </script>
@@ -120,7 +122,7 @@ function enable_change(enable_change) {
                   <td width="22%" valign="top" class="vncellreq"><?=_SRVNFS_MAPALLROOT; ?></td>
                   <td width="78%" class="vtable">
 					<select name="mapall" class="formfld" id="mapall">
-                      <?php $types = explode(",", "Yes,No");
+                      <?php $types = array(_YES,_NO);
 					        $vals = explode(" ", "yes no");
 					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                       <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mapall']) echo "selected";?>> 

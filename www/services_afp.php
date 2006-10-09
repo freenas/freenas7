@@ -102,6 +102,7 @@ function enable_change(enable_change) {
 	var endis;
 	
 	endis = !(document.iform.enable.checked || enable_change);
+  document.iform.afpname.disabled = endis;
 	document.iform.guest.disabled = endis;
 	document.iform.local.disabled = endis;
 }
