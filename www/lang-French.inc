@@ -156,6 +156,7 @@ define('_MENULEFT_SRVFTP','FTP');
 define('_MENULEFT_SRVNFS','NFS');
 define('_MENULEFT_SRVRSYNCD','RSYNCD');
 define('_MENULEFT_SRVSSHD','SSHD');
+define('_MENULEFT_SRVUNSN','Unison');
 define('_MENULEFT_SRVAFP','AFP');
 define('_MENULEFT_ACCESS','Acc&egrave;s');
 define('_MENULEFT_ACUSERGROUPS','Utilisateurs et groupes');
@@ -175,6 +176,7 @@ define('_MENULEFT_DIAGINF','Information');
 define('_MENULEFT_DIAGPINGTRACE','Ping/Traceroute');
 define('_MENULEFT_DIAGARPTAB','Table ARP');
 define('_MENULEFT_DIAGEXEC','Commandes');
+define('_MENULEFT_DIAGEDITFILE','Editer un fichier');
 define('_MENULEFT_CMDBACKUPRESTORE','Sauvegarde/Restauration');
 define('_MENULEFT_CMDFACTORYDEF','Reglages de depart');
 define('_MENULEFT_CMDREBOOTSYS','Red&eacute;marrage du NAS');
@@ -223,6 +225,9 @@ define('_INDEXPHP_LASTCHANGE','Derni&egrave;re modification de la configuration'
 define('_INDEXPHP_MEMUSE','Utilisation de la m&eacute;moire');
 define('_INDEXPHP_LOADAVERAGE','Charge moyenne');
 define('_INDEXPHP_SHOWPROCESSING','D&eacute;tail des processus');
+define('_INDEXPHP_DISKS_USE','Remplissage des disques');
+define('_INDEXPHP_NODISK','Aucun disque configur&eacute;');
+
 
 // Status Processes Module
 // file: status_processes.php
@@ -371,6 +376,10 @@ define('_INTPHP_DHCP','Configuration avec client DHCP');
 define('_INTPHP_GENERAL','Configuration g&eacute;n&eacute;rale');
 define('_INTPHP_DHCPHOSTNAME','Nom d\'hote');
 define('_INTPHP_DHCPHOSTNAMETEXT','Le contenu de ce champ est envoy&eacute; en tant que nom d\'hote DHCP lors de la demande de bail DHCP.');
+define('_INTPHP_DHCPCLIENTIDENTIFIER','Identificateur du client');
+define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','La valeur de ce champ est envoy&eacute;&eacute;e en tant qu\'identificateur du client lors de la demande de bail DHCP.');
+
+
 
 // Disks: Manage
 // Common text
@@ -642,6 +651,20 @@ define('_SRVSSHD_KEY','Clef SSH');
 define('_SRVSSHD_PRIVATEKEY','Clef priv&eacute;e');
 define('_SRVSSHD_PRIVATEKEYTEXT','Collez une clef priv&eacute;e DSA au format PEM ici.');
 
+// Service: Unison
+// file: services_unison.php
+
+define('_SRVUNSN_NAMEDESC','Unison');
+define('_SRVUNSN_MSGVALIDWRKDIR','Cette combinaison partage/r&eacute;pertoire de travail n\'existe pas.');
+define('_SRVUNSN_UNISON','Synchronisation de fichiers Unison');
+define('_SRVUNSN_SHARE','Partage');
+define('_SRVUNSN_SHAREDESC','Vous pourriez avoir besoin de suffisamment d\'espace pour dupliquer tous les fichiers devant etre synchronis&eacute;s');
+define('_SRVUNSN_WORKDIR','R&eacute;pertoire de travail');
+define('_SRVUNSN_WORKDIRDESC','L\'endroit ou seront stock&eacute;s les fichiers');
+define('_SRVUNSN_MAKEDIR','Cr&eacute;er');
+define('_SRVUNSN_MAKEDIRLABEL','Cr&eacute;er le r&eacute;pertoire de travail s\'il n\' existe pas');
+define('_SRVUNSN_NOTESSH','<strong>Note</strong>: <a href="/services_sshd.php">SSHD</a> doit etre activ&eacute; pour qu\' Unison fonctionne, et l\'<a href="/access_users.php">utilisateur</a> doit avoir un acc&egrave;s complet au shell.');
+
 // Service: AFP
 // file: services_afp.php
 
@@ -741,6 +764,20 @@ define('_SHUT_CONF','Etes-vous s&ucirc;r de vouloir arr&ecirc;ter le NAS?');
 define('_SHUTSCHED_NAME','Arr&ecirc;t programm&eacute;');
 define('_SHUTSCHED_TIME','Heure d\'arr&ecirc;t');
 define('_SHUTSCHED_TEXT',_MSGSCHED_TEXT);
+
+// file: diag_edit.php
+define('_DIAGEDITPHP_NAMEDESC','Editer un fichier');
+define('_DIAGEDITPHP_FILEPATH','Chemin du fichier');
+define('_DIAGEDITPHP_SAVEMSG','Sauvegarder le fichier dans');
+define('_DIAGEDITPHP_FILENOTFOUND','Fichier non trouv&eacute;');
+define('_DIAGEDITPHP_ROWS','Lignes');
+define('_DIAGEDITPHP_COLS','Colonnes');
+define('_DIAGEDITPHP_HIGHLIGHTING','Surlignage');
+define('_DIAGEDITPHP_HIGHLIGHTINGENABLED','Activ&eacute;');
+define('_DIAGEDITPHP_HIGHLIGHTINGDISABLED','D&eacute;sactiv&eacute;');
+
+// file: exec.php
+define('_DIAGEXECPHP_NAMEDESC','Ex&eacute;cuter une commande');
 
 ?>
 
