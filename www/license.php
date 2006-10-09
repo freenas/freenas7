@@ -54,7 +54,7 @@ require("guiconfig.inc");
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added DHCP client feature (adapted from m0n0wall), bug fixes and other enhancements</font></em><br>
               <p>Niels Endres (<a href="mailto:niels@weaklogic.com">niels@weaklogic.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added FAT support for config file and auto detection of NIC name</font></em><br>
-               
+            <br><br>
             <p>The following persons have contributed to FreeNAS documentation project:</p>
             <p>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Beta tester and user manual contributor</font></em><br>
@@ -63,7 +63,12 @@ require("guiconfig.inc");
             <p>yang vfor (<a href="mailto:vforyang@gmail.com">vforyang@gmail.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Chinese translator of the user manual and Webmaster of <a href="http://www.freenas.cn">http://www.freenas.cn</a></font></em><br>
             <p>Pietro De Faccio (<a href="mailto:defaccio.pietro@tiscali.it">defaccio.pietro@tiscali.it</a>)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Italian translator of the WebGUI</font></em><br>      
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Italian translator of the WebGUI</font></em><br>
+            <p>Dominik Plaszewski (<a href="mailto:domme555@gmx.net">domme555@gmx.net</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">German translator of the WebGUI</font></em><br>
+            <p>Falk Menzel (<a href="mailto:fmenzel@htwm.de">fmenzel@htwm.de</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">German translator of the WebGUI</font></em><br>
+            <br><br>      
             <p>The following persons have contributed to FreeNAS Website:</p>
             <p>Youri Trioreau (<a href="mailto:youri.trioreau@no-log.org">youri.trioreau@no-log.org</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Webmaster</font></em><br>

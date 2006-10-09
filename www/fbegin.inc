@@ -82,12 +82,12 @@ function showhide(tspan, tri) {
               <?php for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++): ?>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_opt.php?index=<?=$i;?>" class="navlnk"><?=htmlspecialchars($config['interfaces']['opt' . $i]['descr']);?></a><br>
 			  <?php endfor; ?>
-              <strong>Disks</strong><br>
+              <strong><?=_MENULEFT_DISKS;?></strong><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_manage.php" class="navlnk"><?=_MENULEFT_DISKMANAG;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_raid_gmirror.php" class="navlnk"><?=_MENULEFT_DISKMNGSOFTRAID;?></a> <br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_mount.php" class="navlnk"><?=_MENULEFT_DISKMNGMOUNTPOINT;?></a><br>
  
-              <strong>Services</strong><br>
+              <strong><?=_MENULEFT_SERVICES;?></strong><br>
 			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_samba.php" class="navlnk"><?=_MENULEFT_SRVCIFS;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_ftp.php" class="navlnk"><?=_MENULEFT_SRVFTP;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_nfs.php" class="navlnk"><?=_MENULEFT_SRVNFS;?></a><br>
@@ -95,12 +95,12 @@ function showhide(tspan, tri) {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_sshd.php" class="navlnk"><?=_MENULEFT_SRVSSHD;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_unison.php" class="navlnk"><?=_MENULEFT_SRVUNSN;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_afp.php" class="navlnk"><?=_MENULEFT_SRVAFP;?></a><br>
-              <strong>Access</strong><br>
+              <strong><?=_MENULEFT_ACCESS;?></strong><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_users.php" class="navlnk"><?=_MENULEFT_ACUSERGROUPS;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_ad.php" class="navlnk"><?=_MENULEFT_ACMSAD;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/notavailable.php" class="navlnk"><?=_MENULEFT_ACNIS;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/notavailable.php" class="navlnk"><?=_MENULEFT_ACRADIUS;?></a><br>
-              <strong>Status</strong><br>
+              <strong><?=_MENULEFT_STATUS;?></strong><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/index.php" class="navlnk"><?=_MENULEFT_STSYSTEM;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_process.php" class="navlnk"><?=_MENULEFT_STPROCESS;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_interfaces.php" class="navlnk"><?=_MENULEFT_STINTERFACES;?></a><br>
