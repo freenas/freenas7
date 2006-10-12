@@ -68,7 +68,7 @@ if (($_POST['submit'] == "Load") && file_exists($_POST['savetopath']) && is_file
 	if($_POST['savetopath'] == "{$g['cf_conf_path']}/config.xml")
 		unlink_if_exists("/tmp/config.cache");
 	conf_mount_ro();
-} else if (($_POST['submit'] == "Load") && (!file_exists($_POST['savetopath'])) || !is_file($_POST['savetopath'])) {
+} else if (($_POST['submit'] == "Load") && (!file_exists($_POST['savetopath']) || !is_file($_POST['savetopath']))) {
 	$savemsg = _DIAGEDITPHP_FILENOTFOUND . " " . $_POST['savetopath'];
 	$content = "";
 	$_POST['savetopath'] = "";
@@ -105,9 +105,10 @@ else
       <tr>
         <td>
           <?=_DIAGEDITPHP_FILEPATH; ?>:
-	        <input size="42" id="savetopath" name="savetopath" value="<?php echo $_POST['savetopath']; ?>" /> 
-	        <input name="submit" type="submit"  class="button" id="Load" value="<?=_LOAD;?>" /> 
-          <input name="submit" type="submit"  class="button" id="Save" value="<?=_SAVE;?>" />
+	        <input size="42" id="savetopath" name="savetopath" value="<?php echo $_POST['savetopath']; ?>" />
+          <input name="browse" type="button" class="button" id="Browse" onClick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \> 
+	        <input name="submit" type="submit" class="button" id="Load" value="<?=_LOAD;?>" /> 
+          <input name="submit" type="submit" class="button" id="Save" value="<?=_SAVE;?>" />
 	        <hr noshade="noshade" />
         	<?php if($_POST['highlight'] == "no"): ?>
           <?=_DIAGEDITPHP_ROWS; ?>: <input size="3" name="rows" value="<? echo $rows; ?>" />

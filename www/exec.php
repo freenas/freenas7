@@ -225,13 +225,14 @@ if (!isBlank($_POST['txtCommand'])) {
       <td align="right">Download:</td>
       <td>
         <input name="dlPath" type="text" id="dlPath" size="50">
-        <input name="submit" type="submit"  class="button" id="download" value="Download">
+        <input name="browse" type="button" class="button" id="Browse" onClick='ifield = form.dlPath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+        <input name="submit" type="submit" class="button" id="download" value="Download">
         </td>
     </tr>
     <tr>
       <td align="right">Upload:</td>
       <td valign="top" class="label">
-<input name="ulfile" type="file" class="button" id="ulfile">
+        <input name="ulfile" type="file" class="button" id="ulfile">
         <input name="submit" type="submit"  class="button" id="upload" value="Upload"></td>
     </tr>
   </table>
