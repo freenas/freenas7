@@ -228,6 +228,7 @@ define('_INDEXPHP_MEMUSE','Speicher Belegung');
 define('_INDEXPHP_LOADAVERAGE','Lade Durchschnitte');
 define('_INDEXPHP_SHOWPROCESSING','Zeige Prozess Informationen');
 define('_INDEXPHP_DISKS_USE','Festplattenauslastung');
+define('_INDEXPHP_NODISK','Keine Festplatte konfiguriert');
 
 // Status Processes Module
 // file: status_processes.php
