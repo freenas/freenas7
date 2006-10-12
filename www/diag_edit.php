@@ -40,7 +40,7 @@ global $g;
 
 $pgtitle = array(_DIAG_NAME, _DIAGEDITPHP_NAMEDESC);
 
-if (($_POST['submit'] == "Load") && file_exists($_POST['savetopath'])) {
+if (($_POST['submit'] == "Load") && file_exists($_POST['savetopath']) && is_file($_POST['savetopath'])) {
 	$fd = fopen($_POST['savetopath'], "r");
 	$content = fread($fd, filesize($_POST['savetopath']));
 	fclose($fd);
@@ -68,7 +68,7 @@ if (($_POST['submit'] == "Load") && file_exists($_POST['savetopath'])) {
 	if($_POST['savetopath'] == "{$g['cf_conf_path']}/config.xml")
 		unlink_if_exists("/tmp/config.cache");
 	conf_mount_ro();
-} else if (($_POST['submit'] == "Load") && !file_exists($_POST['savetopath'])) {
+} else if (($_POST['submit'] == "Load") && (!file_exists($_POST['savetopath'])) || !is_file($_POST['savetopath'])) {
 	$savemsg = _DIAGEDITPHP_FILENOTFOUND . " " . $_POST['savetopath'];
 	$content = "";
 	$_POST['savetopath'] = "";
