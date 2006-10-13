@@ -54,15 +54,15 @@ class FileChooser
 		// Get path if browsing a tree.
 		$path = (isset($_GET['p'])) ? $_GET['p'] : FALSE;
 
-    // Check if file exists.
-    if(!file_exists($path)) {
-      print_info_box("File not found <{$path}>");
-      $path = $this->get_parent_dir($path);
-    }
-
     // If no path is available, set it to root.
     if(!$path) {
       $path = "/";
+    }
+
+    // Check if file exists.
+    if(!file_exists($path)) {
+      print_info_box("File not found $path");
+      $path = $this->get_valid_parent_dir($path);
     }
 
     $dir = $path;
@@ -215,11 +215,19 @@ class FileChooser
 			return '?';
 		}
 	}
+  
+  function get_valid_parent_dir($path)
+  {
+    if(strcmp($path,"/") == 0) // Is it already root of filesystem?
+      return false;
+      
+  	$expl = explode("/", substr($path, 0, -1));
+  	$path = substr($path, 0, -strlen($expl[(sizeof($expl)-1)].'/'));
 
-  function get_parent_dir($dir)
-	{
-  	$expl = explode("/", substr($dir, 0, -1));
-  	return  substr($dir, 0, -strlen($expl[(sizeof($expl)-1)].'/'));
+  	if(!(file_exists($path) && is_dir($path)))
+      $path = $this->get_valid_parent_dir($path);
+
+    return $path;
   }
 
 	function format_size($bytes)
@@ -342,7 +350,7 @@ class FileChooser
     $ret  = '<div id="'.$this->cfg['id'].'">';
     $ret .= '<table class="filelist" cellspacing="0" border="0">';
 		$ret .= ($this->cfg['sort']) ? $this->row('sort', $dir) : '';
-		$ret .= ($this->get_parent_dir($dir)) ? $this->row('parent', $dir) : '';
+		$ret .= ($this->get_valid_parent_dir($dir)) ? $this->row('parent', $dir) : '';
 
 		// total number of files
 		$rowcount  = 1;
@@ -442,7 +450,7 @@ class FileChooser
 				$row .= $this->cfg['lineNumbers'] ?
 				        '<td class="ln">&laquo;</td>' : '';
 				$row .= '<td class="nm">
-				         <a href="?p='.$this->get_parent_dir($dir).'">';
+				         <a href="?p='.$this->get_valid_parent_dir($dir).'">';
 				$row .= 'Parent Directory';
 				$row .= '</a></td>';
 				$row .= $this->cfg['showFileSize'] ?
@@ -535,6 +543,8 @@ EOD;
 #fileBrowser table tr.footer td { border:0; font-weight:bold; }
 /* sort row */
 #fileBrowser table tr.sort td { border:0; border-bottom:1px solid #eee; }
+#fileBrowser table tr.sort a { text-decoration:none; color:#9d9d9d; }
+#fileBrowser table tr.sort a:hover { text-decoration:underline; }
 /* alternating Row Colors */
 /* folders */
 tr.fr.r1 { background-color:#eee; }
