@@ -517,6 +517,9 @@ EOD;
 <html>
   <head>
 <style type="text/css">
+/* global */
+#body,td,th,input,select { font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif; font-size: 11px; }
+/* local */
 #fileBrowser { }
 /* File Browser Table */
 #fileBrowser table { width:100%; }

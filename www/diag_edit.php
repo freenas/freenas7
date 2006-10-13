@@ -106,7 +106,7 @@ else
         <td>
           <?=_DIAGEDITPHP_FILEPATH; ?>:
 	        <input size="42" id="savetopath" name="savetopath" value="<?php echo $_POST['savetopath']; ?>" />
-          <input name="browse" type="button" class="button" id="Browse" onClick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \> 
+          <input name="browse" type="button" class="button" id="Browse" onClick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \> 
 	        <input name="submit" type="submit" class="button" id="Load" value="<?=_LOAD;?>" /> 
           <input name="submit" type="submit" class="button" id="Save" value="<?=_SAVE;?>" />
 	        <hr noshade="noshade" />

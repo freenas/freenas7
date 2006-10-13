@@ -151,13 +151,6 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
 </script>
 <style type="text/css">
 <!--
-
-input {
-   font-family: courier new, courier;
-   font-weight: normal;
-   font-size: 9pt;
-}
-
 pre {
    border: 2px solid #435370;
    background: #F0F0F0;
@@ -167,19 +160,11 @@ pre {
    line-height: 10pt;
    font-size: 10pt;
 }
-
 .label {
    font-family: tahoma, verdana, arial, helvetica;
    font-size: 11px;
    font-weight: bold;
 }
-
-.button {
-   font-family: tahoma, verdana, arial, helvetica;
-   font-weight: bold;
-   font-size: 11px;
-}
-
 -->
 </style>
 <p><span class="pgtitle"><?=$Title ?></span>
@@ -211,10 +196,10 @@ if (!isBlank($_POST['txtCommand'])) {
       <td valign="top">&nbsp;</td>
       <td valign="top" class="label">
          <input type="hidden" name="txtRecallBuffer" value="<?=$_POST['txtRecallBuffer'] ?>">
-         <input type="button" class="button" name="btnRecallPrev" value="<" onClick="btnRecall_onClick( this.form, -1 );">
-         <input type="submit" class="button" value="Execute">
-         <input type="button" class="button" name="btnRecallNext" value=">" onClick="btnRecall_onClick( this.form,  1 );">
-         <input type="button"  class="button" value="Clear" onClick="return Reset_onClick( this.form );">
+         <input type="button" class="formbtn" name="btnRecallPrev" value="<" onClick="btnRecall_onClick( this.form, -1 );">
+         <input type="submit" class="formbtn" value="Execute">
+         <input type="button" class="formbtn" name="btnRecallNext" value=">" onClick="btnRecall_onClick( this.form,  1 );">
+         <input type="button"  class="formbtn" value="Clear" onClick="return Reset_onClick( this.form );">
       </td>
     </tr>
     <tr>
@@ -225,15 +210,15 @@ if (!isBlank($_POST['txtCommand'])) {
       <td align="right">Download:</td>
       <td>
         <input name="dlPath" type="text" id="dlPath" size="50">
-        <input name="browse" type="button" class="button" id="Browse" onClick='ifield = form.dlPath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
-        <input name="submit" type="submit" class="button" id="download" value="Download">
+        <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.dlPath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+        <input name="submit" type="submit" class="formbtn" id="download" value="Download">
         </td>
     </tr>
     <tr>
       <td align="right">Upload:</td>
       <td valign="top" class="label">
-        <input name="ulfile" type="file" class="button" id="ulfile">
-        <input name="submit" type="submit"  class="button" id="upload" value="Upload"></td>
+        <input name="ulfile" type="file" class="formbtn" id="ulfile">
+        <input name="submit" type="submit"  class="formbtn" id="upload" value="Upload"></td>
     </tr>
   </table>
 </form>
