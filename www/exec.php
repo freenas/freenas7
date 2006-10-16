@@ -162,7 +162,6 @@ pre {
 }
 -->
 </style>
-<p><span class="pgtitle"><?=$Title ?></span>
 <?php if (isBlank($_POST['txtCommand'])): ?>
 <p class="red"><strong>Note: this function is unsupported. Use it
 on your own risk!</strong></p>
@@ -181,7 +180,7 @@ if (!isBlank($_POST['txtCommand'])) {
    puts("</pre>");
 }
 ?>
-<form action="<?=$ScriptName ?>" method="POST" enctype="multipart/form-data" name="frmExecPlus" onSubmit="return frmExecPlus_onSubmit( this );">
+<form action="<?=$HTTP_SERVER_VARS['SCRIPT_NAME'];?>" method="POST" enctype="multipart/form-data" name="frmExecPlus" onSubmit="return frmExecPlus_onSubmit( this );">
   <table>
     <tr>
       <td class="label" align="right">Command:</td>
