@@ -204,14 +204,14 @@ function type_change() {
                   <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_DHCP; ?></td>
                 </tr>
                 <tr> 
-                  <td valign="top" class="vncell"><?=_INTPHP_DHCPCLIENTIDENTIFIER; ?></td>
+                  <td valign="top" class="vncellreq"><?=_INTPHP_DHCPCLIENTIDENTIFIER; ?></td>
                   <td class="vtable"><input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
                     <br>
                      <?=_INTPHP_DHCPCLIENTIDENTIFIERTEXT; ?>
                   </td>
                 </tr>
                 <tr> 
-                  <td valign="top" class="vncell"><?=_INTPHP_DHCPHOSTNAME; ?></td>
+                  <td valign="top" class="vncellreq"><?=_INTPHP_DHCPHOSTNAME; ?></td>
                   <td class="vtable"><input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled>
                     <br>
                      <?=_INTPHP_DHCPHOSTNAMETEXT; ?>
