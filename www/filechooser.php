@@ -4,6 +4,10 @@
     Copyright © 2006 Volker Theile (votdev@gmx.de)
     All rights reserved.
 
+    Parts of code are take from 'File Browser Class'
+    Copyright @ 2005 Gabriel Dunne
+    gdunne@quilime.com
+
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are met:
 
@@ -34,7 +38,6 @@ class FileChooser
 	function FileChooser()
 	{
     // Settings.
-		$this->cfg['id'] = 'FileBrowser'; // html DOM id
 		$this->cfg['footer'] = true; // show footer
 		$this->cfg['sort'] = true; // show sorting header
 		$this->cfg['lineNumbers'] = true; // show/hide column
@@ -347,7 +350,7 @@ class FileChooser
 
 	function file_list($dir, $files)
 	{
-    $ret  = '<div id="'.$this->cfg['id'].'">';
+    $ret  = '<div id="fileBrowser">';
     $ret .= '<table class="filelist" cellspacing="0" border="0">';
 		$ret .= ($this->cfg['sort']) ? $this->row('sort', $dir) : '';
 		$ret .= ($this->get_valid_parent_dir($dir)) ? $this->row('parent', $dir) : '';
