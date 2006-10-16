@@ -3,7 +3,7 @@
 /*
 	Exec+ v1.02-000 - Copyright 2001-2003, All rights reserved
 	Created by technologEase (http://www.technologEase.com).
-	
+
 	(modified for m0n0wall by Manuel Kasper <mk@neon1.net>)
 	(re-modified for FreeNAS by Olivier Cochard-Labbe <olivier@freenas.org>)
 	(adapted to FreeNAS GUI by Volker Theile <votdev@gmx.de>)
@@ -18,9 +18,9 @@ if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	$fd = fopen($_POST['dlPath'], "rb");
 	header("Content-Type: application/octet-stream");
 	header("Content-Length: " . filesize($_POST['dlPath']));
-	header("Content-Disposition: attachment; filename=\"" . 
+	header("Content-Disposition: attachment; filename=\"" .
 		trim(htmlentities(basename($_POST['dlPath']))) . "\"");
-	
+
 	fpassthru($fd);
 	exit;
 } else if (($_POST['submit'] == "Upload") && is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
@@ -67,7 +67,7 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
    // Functions to extend String class.
    function str_encode() { return escape( this ) }
    function str_decode() { return unescape( this ) }
-      
+
    // Extend string class to include encode() and decode() functions.
    String.prototype.encode = str_encode
    String.prototype.decode = str_decode
@@ -83,7 +83,7 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
       if (!isBlank(form.txtCommand.value)) {
 		  // If this command is repeat of last command, then do not store command.
 		  if (form.txtCommand.value.encode() == arrRecallBuffer[arrRecallBuffer.length-1]) { return true }
-	
+
 		  // Stuff encoded command string into the recall buffer.
 		  if (isBlank(form.txtRecallBuffer.value))
 			 form.txtRecallBuffer.value = form.txtCommand.value.encode();
@@ -159,11 +159,6 @@ pre {
    white-space: pre;
    line-height: 10pt;
    font-size: 10pt;
-}
-.label {
-   font-family: tahoma, verdana, arial, helvetica;
-   font-size: 11px;
-   font-weight: bold;
 }
 -->
 </style>
