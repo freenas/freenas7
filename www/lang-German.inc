@@ -129,7 +129,7 @@ define('_MESSAGES_ERROR', 'ERROR: die &Auml;nderungen konnten nicht &uuml;bernom
 
 define('_MSGVALIDIP','Eine g&uuml;ltige IP Adresse muss eingegeben werden.');
 define('_MSGVALIDNETBIT','Eine g&uuml;ltige Subnet Adressierung muﬂ eingegeben werden.');
-define('_MSGVALIDTCPPORT','Der TCP/IP Port muﬂ eingetragen werden.');
+define('_MSGVALIDTCPPORT','Der TCP/IP Port muss eingetragen werden.');
 define('_MSGVALIDPASSWORD','Passwort FALSCH.');
 
 define('_MSGSCHED_TEXT','Hinweis: Ctrl-click (oder command-click auf dem Mac) um Stunden, Tage und Monate zu zu w&auml;hlen.');
@@ -252,9 +252,9 @@ define('_SYSTEMROUTESPHP_ADDROUTE','F&uuml;ge Route hinzu');
 
 // Static Routes Edit Module
 // file: system_routes_edit.php
-define('_SYSTEMROUTESPHP_MSGVALID','Ein g&uuml;ltiges Zielnetzwerk muﬂ angegeben werden.'); //Netzwerk
+define('_SYSTEMROUTESPHP_MSGVALID','Ein g&uuml;ltiges Zielnetzwerk muss angegeben werden.'); //Netzwerk
 define('_SYSTEMROUTESPHP_MSGVALIDNETBIT',_MSGVALIDNETBIT);
-define('_SYSTEMROUTESPHP_MSGVALIDGW','Eine g&uuml;ltige Gateway IP Adresse muﬂ angegeben werden.');
+define('_SYSTEMROUTESPHP_MSGVALIDGW','Eine g&uuml;ltige Gateway IP Adresse muss angegeben werden.');
 define('_SYSTEMROUTESPHP_MSGROUTEEXIST','Eine Route zu diesem Netzwerk besteht bereits.');
 define('_SYSTEMROUTESPHP_CHOOSEINT','W&auml;hlen Sie eine Netzwerkschnittstelle zu dieser Route.');
 define('_SYSTEMROUTESPHP_DESTNET','Zielnetzwerk');
@@ -296,7 +296,7 @@ define('_SYSTEMFIRMWAREPHP_DONOTABORT','Unterbrechen Sie das Firmware Upgrade NI
 // file: system_advanced.php
 define('_SYSTEMADVANCEDPHP_NAME',_MENULEFT_SYSTEM);
 define('_SYSTEMADVANCEDPHP_NAMEDESC',_MENULEFT_SYSADVANCED);
-define('_SYSTEMADVANCEDPHP_MSGVALIDTCP','Der TCP idle Timeout muﬂ ein Integerwert sein.');
+define('_SYSTEMADVANCEDPHP_MSGVALIDTCP','Der TCP idle Timeout muss ein Integerwert sein.');
 define('_SYSTEMADVANCEDPHP_MSGVALIDCERTKEY','Zertifikate und Schl&uuml;sse m&uuml;ssen immer zusammen eingegeben werden.');
 define('_SYSTEMADVANCEDPHP_MSGVALIDCERT','Dieses Zertifikat scheint nicht g&uuml;ltig zu sein.');
 define('_SYSTEMADVANCEDPHP_MSGVALIDKEY','Dieser Schl&uuml;ssel scheint nicht g&uuml;ltig zu sein .');
@@ -340,7 +340,7 @@ define('_INTASSIGNPHP_INT','Schnittstellen');
 define('_INTASSIGNPHP_PORT','Netzwerkport');
 define('_INTASSIGNPHP_DELINT','l&ouml;sche Schnittstelle');
 define('_INTASSIGNPHP_ADDINT','F&uuml;ge Schnittstelle hinzu');
-define('_INTASSIGNPHP_INTTEXT','Nach dem Anw&auml;hlen von &quot;Save&quot;, muﬂ FreeNAS zur &Uuml;bernahme der &Auml;nderungen neu gestartet werden. Sie k&ouml;nnten auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen: </span></p>
+define('_INTASSIGNPHP_INTTEXT','Nach dem Anw&auml;hlen von &quot;Save&quot;, muss FreeNAS zur &Uuml;bernahme der &Auml;nderungen neu gestartet werden. Sie k&ouml;nnten auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen: </span></p>
 <ul>
   <li><span class=\"vexpl\">&Auml;ndern Sie die IP-Adresse ihres Computers </span></li>
   <li><span class=\"vexpl\">Greifen Sie auf die webGUI mit der neuen IP-Addresse zu</span></li>
@@ -503,7 +503,7 @@ define('_DISKSRAIDTOOLSPHP_OBJNAME','Objektname');
 define('_DISKSRAIDTOOLSPHP_COMMAND','Befehl');
 define('_DISKSRAIDTOOLSPHP_INFO','GVINUM command output:');
 define('_DISKSRAIDTOOLSPHP_SENDCMD','Sende Befehl!');
-define('_DISKSRAIDTOOLSPHP_TEXT','1. Diese Maﬂnahmen nur zur Fehlerbehebung benutzen!<br>2. Es ist nicht zum Start eines RAIDvolume notwendig (startet automatisch).');
+define('_DISKSRAIDTOOLSPHP_TEXT','1. Diese Massnahmen nur zur Fehlerbehebung benutzen!<br>2. Es ist nicht zum Start eines RAIDvolume notwendig (startet automatisch).');
 
 //Disk Mount Point
 // Comon value
@@ -534,9 +534,9 @@ define('_DISKSMOUNTEDITPHP_TEXT','1. Die Partition \'<?php echo htmlspecialchars
 define('_SRVCIFS_NAMEDESC','CIFS - Common Internet File System');
 define('_SRVCIFS_MSGVALIDNETBIOSNAME','Der Netbios-Name enth&auml;lt ung&uuml;ltige Zeichen.');
 define('_SRVCIFS_MSGVALIDWORKGOUP','Der Arbeitsgruppen-Name enth&auml;lt ung&uuml;ltige Zeichen..');
-define('_SRVCIFS_MSGVALIDWINS','Der WINS-Server muﬂ eine IP address haben.');
-define('_SRVCIFS_MSGVALIDSNDBUFF','Der "SND Buffer"-Wert muﬂ eine Nummer sein.');
-define('_SRVCIFS_MSGVALIDRCVBUFF','Der "RCV Buffer"-Wert muﬂ eine Nummer sein.');
+define('_SRVCIFS_MSGVALIDWINS','Der WINS-Server muss eine IP address haben.');
+define('_SRVCIFS_MSGVALIDSNDBUFF','Der "SND Buffer"-Wert muss eine Nummer sein.');
+define('_SRVCIFS_MSGVALIDRCVBUFF','Der "RCV Buffer"-Wert muss eine Nummer sein.');
 define('_SRVCIFS_SHARE','CIFS Freigabe');
 define('_SRVCIFS_AUTH','Authentifizierung');
 define('_SRVCIFS_NETBIOSNAME','NetBiosName');
@@ -558,21 +558,21 @@ define('_SRVCIFS_ENRECYCLETEXT','Richtet einen Abfalleimer auf den CIFS-Freigabe
 define('_SRVCIFS_HIDE','Zu verbergende Freigaben.');
 define('_SRVCIFS_HIDETEXT','Zu verbergende CIFS-Freigabe ausw&auml;hlen.');
 define('_SRVCIFS_SNBBUFF','Send Buffer Size');
-define('_SRVCIFS_SNBBUFFTEXT','Gr&ouml;ﬂe des "send buffer" (16384 Voreinstellung).');
+define('_SRVCIFS_SNBBUFFTEXT','Gr&ouml;sse des "send buffer" (16384 Voreinstellung).');
 define('_SRVCIFS_RCVBUFF','Receive Buffer Size');
-define('_SRVCIFS_RCVBUFFTEXT','Gr&ouml;ﬂe des "receive buffer" (16384 Voreinstellung).');
+define('_SRVCIFS_RCVBUFFTEXT','Gr&ouml;sse des "receive buffer" (16384 Voreinstellung).');
 
 // Service: FTP
 // file: services_ftp.php
 
 define('_SRVFTP_NAMEDESC','FTP');
 define('_SRVFTP_MSGVALIDPORT',_MSGVALIDTCPPORT);
-define('_SRVFTP_MSGVALIDMAXCLIENT','Die h&ouml;chste Anzahl an Clients muﬂ eine Zahl sein.');
-define('_SRVFTP_MSGVALIDMAXIP','Die h&ouml;chste Anzahl an Verbindungen von einer IP-Adresse muﬂ eine Zahl sein.');
-define('_SRVFTP_MSGVALIDIDLE','Die maximale Leerlaufzeit muﬂ eine Zahl sein.');
-define('_SRVFTP_MSGVALIDPASVIP','Die "pasv address" muﬂ eine  "public IP address" sein.');
-define('_SRVFTP_MSGVALIDPASVMAX','Der "pasv_max_port-Port" muﬂ eine g&uuml;ltige Portnummer sein.');
-define('_SRVFTP_MSGVALIDPASVMIN','Der "pasv_min_port-Port" muﬂ eine g&uuml;ltige Portnummer sein.');
+define('_SRVFTP_MSGVALIDMAXCLIENT','Die h&ouml;chste Anzahl an Clients muss eine Zahl sein.');
+define('_SRVFTP_MSGVALIDMAXIP','Die h&ouml;chste Anzahl an Verbindungen von einer IP-Adresse muss eine Zahl sein.');
+define('_SRVFTP_MSGVALIDIDLE','Die maximale Leerlaufzeit muss eine Zahl sein.');
+define('_SRVFTP_MSGVALIDPASVIP','Die "pasv address" muss eine  "public IP address" sein.');
+define('_SRVFTP_MSGVALIDPASVMAX','Der "pasv_max_port-Port" muss eine g&uuml;ltige Portnummer sein.');
+define('_SRVFTP_MSGVALIDPASVMIN','Der "pasv_min_port-Port" muss eine g&uuml;ltige Portnummer sein.');
 define('_SRVFTP_MSGVALIDAUTH','Mindestens einen Nutzer "anonymous" und/oder einen lokalen Benutzer angeben.');
 define('_SRVFTP_FTPSERVER','FTP Server');
 define('_SRVFTP_TCP',_TCPPORT);
@@ -599,7 +599,7 @@ define('_SRVFTP_PASVMINTEXT','Der kleinstm&ouml;gliche zuweisbare Port, der "PAS
 define('_SRVFTP_PASVMAX','pasv_max_port');
 define('_SRVFTP_PASVMAXTEXT','Der h&ouml;chstm&ouml;gliche zuweisbare Port, der "PASV style" Datenverbindungen erm&ouml;glicht.');
 define('_SRVFTP_BANNER','Banner');
-define('_SRVFTP_BANNERTEXT','Gruﬂbotschaft - angezeigt bei der ersten Verbindung via FTP.');
+define('_SRVFTP_BANNERTEXT','Grussbotschaft - angezeigt bei der ersten Verbindung via FTP.');
 
 // Service: NFS
 // file: services_nfs.php
@@ -634,7 +634,7 @@ define('_SRVRYNCD_TCPORTTEXT','Alternativer TCP Port.');
 
 // file: services_rsyncd_client.php
 
-define('_SRVRYNCC_MSGMPFIRST','Erst den "mount point" angeben.');
+define('_SRVRYNCC_MSGMPFIRST','Es muss zuerst ein "Mount Point" konfiguriert werden.');
 define('_SRVRYNCC_MSGVALIDIP',_MSGVALIDIP);
 define('_SRVRYNCC_RSYNCC','Rsync Client Synchronisation');
 define('_SRVRYNCC_REMOTESERVER','Remote RSYNC Server');
@@ -700,10 +700,10 @@ define('_ACCESSUSERSEDIT_LOGIN',_LOGIN);
 define('_ACCESSUSERSEDIT_LOGINTEXT','Eindeutiger Loginname des Benutzers.');
 define('_ACCESSUSERSEDIT_FULLNAME',_ACCESS_FULLNAME);
 define('_ACCESSUSERSEDIT_FULLNAMETEXT','vollst&auml;ndiger Name.');
-define('_ACCESSUSERSEDIT_PASSWORD','Paﬂwort');
-define('_ACCESSUSERSEDIT_PASSWORDTEXT','Benutzerpaﬂwort.');
-define('_ACCESSUSERSEDIT_PASSWORDCONF','Best&auml;tige Paﬂwort');
-define('_ACCESSUSERSEDIT_PASSWORDCONFTEXT','Das Paﬂwort bitte best&auml;tigen.');
+define('_ACCESSUSERSEDIT_PASSWORD','Passwort');
+define('_ACCESSUSERSEDIT_PASSWORDTEXT','Benutzerpasswort.');
+define('_ACCESSUSERSEDIT_PASSWORDCONF','Best&auml;tige Passwort');
+define('_ACCESSUSERSEDIT_PASSWORDCONFTEXT','Das Passwort bitte best&auml;tigen.');
 define('_ACCESSUSERSEDIT_GROUPMEMBER','Gruppenzugeh&ouml;rigkeit');
 define('_ACCESSUSERSEDIT_FULLSHELL','Komplettes Terminal');
 define('_ACCESSUSERSEDIT_FULLSHELLTEXT','vollst&auml;ndigen Zugriff zur "Shell" f&uuml;r Benutzer erlauben');
@@ -740,8 +740,8 @@ define('_ACCESSAD_DOMAIN','Domain Name');
 define('_ACCESSAD_DOMAINTEXT','Domain Name in old format.');
 define('_ACCESSAD_ADMINAME','Administrator Name');
 define('_ACCESSAD_ADMINNAMETEXT','Benutzername eines "Domain Administrator Account".');
-define('_ACCESSAD_ADMINPASS','Administration Paﬂwort');
-define('_ACCESSAD_ADMINPASSTEXT','Paﬂwort eines "Domain Administrator Account", hier zweifach eingeben.');
+define('_ACCESSAD_ADMINPASS','Administration Passwort');
+define('_ACCESSAD_ADMINPASSTEXT','Passwort eines "Domain Administrator Account", hier zweifach eingeben.');
 
 // Diagnostics
 define('_DIAG_NAME','Diagnose');
