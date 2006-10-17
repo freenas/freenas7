@@ -93,6 +93,7 @@ FreeNAS 0.68 (UNRELEASE!):
 - Added embedded text file editor (from Pfsense project) by Volker Theile 
 - Begin to customize the hidden status.php page
 - New language: Italian (thanks to Pietro Defaccio)
+- New language: German (thanks to Falk Menzel and Dominik Plaszewski)
 
 BUG TO FIX (before release the 0.68) :
 - WebGUI Authentifcation
