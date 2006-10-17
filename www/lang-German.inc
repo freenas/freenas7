@@ -108,7 +108,7 @@ define('_WARNING', 'Warnung');
 
 //FreeNAS common words
 
-define('_SIZE', 'Gr&ouml;ße');
+define('_SIZE', 'Gr&ouml;sse');
 define('_STATUS', 'Status');
 define('_TYPE', 'Typ');
 define('_CONFIGURING', 'konfiguriere');
@@ -124,11 +124,11 @@ define('_TCPPORT','TCP Port');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Die &Auml;nderungen wurden &uuml;bernommen.');
-define('_MESSAGES_SUCCESSWITHREBOOT', 'Die &Auml;nderungen wurden gespeichert. Sie m&uuml;ssen <a href=\"/reboot.php\">neu starten</a> damit Ihr NAS die &Auml;nderungen &uuml;bernimmt.');
+define('_MESSAGES_SUCCESSWITHREBOOT', 'Die &Auml;nderungen wurden gespeichert. Sie m&uuml;ssen <a href="/reboot.php">neu starten</a> damit Ihr NAS die &Auml;nderungen &uuml;bernimmt.');
 define('_MESSAGES_ERROR', 'ERROR: die &Auml;nderungen konnten nicht &uuml;bernommen werden (error code '.$ok.').');
 
 define('_MSGVALIDIP','Eine g&uuml;ltige IP Adresse muss eingegeben werden.');
-define('_MSGVALIDNETBIT','Eine g&uuml;ltige Subnet Adressierung muß eingegeben werden.');
+define('_MSGVALIDNETBIT','Eine g&uuml;ltige Subnet Adressierung muss eingegeben werden.');
 define('_MSGVALIDTCPPORT','Der TCP/IP Port muss eingetragen werden.');
 define('_MSGVALIDPASSWORD','Passwort FALSCH.');
 
@@ -141,7 +141,7 @@ define('_INACTIVE','Inaktiv');
 
 // Webgui layout
 define('_MENULEFT_SYSTEM','System');
-define('_MENULEFT_SYSGENSETUP','Hauptsetup');
+define('_MENULEFT_SYSGENSETUP','Allgemeine Einstellungen');
 define('_MENULEFT_SYSSTATROUTES','Statische Route');
 define('_MENULEFT_SYSFIRMWARE','Firmware');
 define('_MENULEFT_SYSADVANCED','Erweitert');
@@ -162,7 +162,7 @@ define('_MENULEFT_SRVUNSN','Unison');
 define('_MENULEFT_SRVAFP','AFP');
 define('_MENULEFT_ACCESS','Zugriff');
 define('_MENULEFT_ACUSERGROUPS','Benutzer & Gruppen');
-define('_MENULEFT_ACMSAD','Aktives Verzeichnis');
+define('_MENULEFT_ACMSAD','Active Directory'); // Nicht übersetzen, technischer Begriff
 define('_MENULEFT_ACNIS','NIS');
 define('_MENULEFT_ACRADIUS','Radius');
 define('_MENULEFT_STATUS',_STATUS);
@@ -275,21 +275,21 @@ define('_SYSTEMFIRMWAREPHP_CORRUPTIMG','Dieses Image ist defekt');
 define('_SYSTEMFIRMWAREPHP_INSTREBOOTLAT','Diese Firmware wird nun installiert. FreeNAS wird danach automatisch neu starten.');
 define('_SYSTEMFIRMWAREPHP_NOTSUP','Firmware Upload wird auf dieser Plattform nicht unterst&uuml;tzt.');
 define('_SYSTEMFIRMWAREPHP_BIGWARN','Das bedeutet, dass das Image, das Sie geladen haben ' .
-             'kein offiziell unterst&uuml;tztes Image ist und eventuell die Sicherheit des Systems gef&auml;hrdet ' .
-            'Installieren Sie nur Images, die nur von vertrauten Quellen stammen, und &uuml;berpr&uuml;fen '.
-            'Sie, dass das Image nicht manipuliert wurde.<br><br>'.  //abgegeben ?
-            'M&ouml;chten Sie das Image trotzdem installieren (auf eigene Gefahr)?');
-define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Klick &quot;Firmware freigeben
-          hochladen&quot; unten, dann w&auml;hlen Sie das Image '.$g['fullplatform'].'-*.img)
-             zum uploaden.<br>Click &quot;Upgrade firmware&quot;
-          zum Starten des Upgrade Prozess.');
-define('_SYSTEMFIRMWAREPHP_ENFIRMUP','Firmware Upload starten');
-define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Firmware Upload abbrechen');
+      'kein offiziell unterst&uuml;tztes Image ist und eventuell die Sicherheit des Systems gef&auml;hrdet ' .
+      'Installieren Sie nur Images, die nur von vertrauten Quellen stammen, und &uuml;berpr&uuml;fen '.
+      'Sie, dass das Image nicht manipuliert wurde.<br><br>'.  //abgegeben ?
+      'M&ouml;chten Sie das Image trotzdem installieren (auf eigene Gefahr)?');
+define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Dr&uuml;cken Sie unten &quot;Firmware Upload 
+      zulassen&quot;, dann w&auml;hlen Sie das Image '.$g['fullplatform'].'-*.img
+      zum hochladen.<br>Dr&uuml;cken Sie &quot;Upgrade Firmware&quot;
+      zum Starten des Upgrade Prozesses.');
+define('_SYSTEMFIRMWAREPHP_ENFIRMUP','Firmware Upload zulassen');
+define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Firmware Upload verbieten');
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','Firmware Image');
 define('_SYSTEMFIRMWAREPHP_UPFIRM','Upgrade Firmware');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','Sie m&uuml;ssen das System neu starten, bevor Sie diese Firmware upgraden k&ouml;nnen.');
 define('_SYSTEMFIRMWAREPHP_DONOTABORT','Unterbrechen Sie das Firmware Upgrade NICHT, wenn es bereits gestartet wurde. FreeNAS wird automatisch neu gestartet, nachdem die neue Firmware geladen wurde. Ihre Konfiguration bleibt erhalten.<br>
-                    F&uuml;r das Upgrade werden mindestens 128 Mb RAM ben&ouml;tigt.'); //neu sind 128 statt 80; diese Zeile koennte Probleme bereiten; im Original ist das mit Textumbruch geschrieben
+      F&uuml;r das Upgrade werden mindestens 128 Mb RAM ben&ouml;tigt.');
 
 
 // System Advanced Module
@@ -314,7 +314,7 @@ define('_SYSTEMADVANCEDPHP_DISCON','Konsolen Men&uuml; abschalten.');
 define('_SYSTEMADVANCEDPHP_CONTEXT','&Auml;nderungen in diesen Optionen werden erst nach einem Neustart wirksam.');
 define('_SYSTEMADVANCEDPHP_FIRM','Firmware Version &Uuml;berpr&uuml;fung');
 define('_SYSTEMADVANCEDPHP_DISFIRM','Firmware Version &Uuml;berpr&uuml;fung abschalten');
-define('_SYSTEMADVANCEDPHP_FIRMTEXT','Dies bewirkt, dass FreeNAS keine &Uuml;berpr&uuml;fung auf neue Firmware bei Anzeige der <a href=\"system_firmware.php\">System: Firmware</a> durchf&uuml;hrt.'); //falsch &uuml;bersetzt
+define('_SYSTEMADVANCEDPHP_FIRMTEXT','Dies bewirkt, dass FreeNAS keine &Uuml;berpr&uuml;fung auf neue Firmware bei Anzeige der <a href="system_firmware.php">System: Firmware</a> durchf&uuml;hrt.');
 define('_SYSTEMADVANCEDPHP_TCPIDLE','TCP idle Timeout');
 define('_SYSTEMADVANCEDPHP_TCPIDLETEXT','Leerlauf TCP Verbindungen werden von der Statusanzeige nach Ablauf der angegebenen Sekunden entfernt, wenn nach dieser Zeit keine Pakete mehr empfangen werden. Diesen Wert nicht zu hoch ansetzen, oder die Statusanzeige wird von falsch beendeten Verbindungen &uuml;berflutet. Voreinstellung sind 2,5 Stunden.');
 define('_SYSTEMADVANCEDPHP_NAV','Navigation');
@@ -342,8 +342,8 @@ define('_INTASSIGNPHP_DELINT','l&ouml;sche Schnittstelle');
 define('_INTASSIGNPHP_ADDINT','F&uuml;ge Schnittstelle hinzu');
 define('_INTASSIGNPHP_INTTEXT','Nach dem Anw&auml;hlen von &quot;Save&quot;, muss FreeNAS zur &Uuml;bernahme der &Auml;nderungen neu gestartet werden. Sie k&ouml;nnten auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen: </span></p>
 <ul>
-  <li><span class=\"vexpl\">&Auml;ndern Sie die IP-Adresse ihres Computers </span></li>
-  <li><span class=\"vexpl\">Greifen Sie auf die webGUI mit der neuen IP-Addresse zu</span></li>
+  <li><span class="vexpl">&Auml;ndern Sie die IP-Adresse ihres Computers </span></li>
+  <li><span class="vexpl">Greifen Sie auf die webGUI mit der neuen IP-Addresse zu</span></li>
 </ul>');
 
 // Interface LAN/OPT:
@@ -411,7 +411,7 @@ define('_DISKSMANAGEPHP_NOTE','<strong>Bemerkung:<br>
 // file: disks_manage_edit.php
 define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Diese Festplatte ist bereits in der Festplatteliste enthalten.');
 define('_DISKSMANAGEEDITPHP_UDMA','UDMA Modus');
-define('_DISKSMANAGEEDITPHP_UDMATEXT','Sie k&ouml;nnen den UDMA Modus erzwingen falls Sie einen  \"UDMA_ERROR.... LBA\" Meldung zu ihrer Festplatte erhalten.');
+define('_DISKSMANAGEEDITPHP_UDMATEXT','Sie k&ouml;nnen den UDMA Modus erzwingen falls Sie einen "UDMA_ERROR.... LBA" Meldung zu ihrer Festplatte erhalten.');
 define('_DISKSMANAGEEDITPHP_STANDBY','Festplatten Standbyzeit');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Festplatte nach dem letzten Zugriff nach der angegebenen Zeit
                     in Standby versetzen. <em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>');
@@ -427,7 +427,7 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','Dateisystem von bereits mit Dateisystem 
 
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialisierung');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Festplatteninitialisierungseigenschaften:</strong>');
-define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\" ist keine Fehlermeldung!\n');
+define('_DISKSMANAGEINITPHP_INITINFO','"fdisk: Geom not found" ist keine Fehlermeldung!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Dieser Vorgang wird alle bestehenden Partitionen l&ouml;schen, Partition #1 anlegen und diese mit dem gew&auml;hlten Dateisystem formatieren.');
 define('_DISKSPHP_NOMBR','MBR (MasterBootRecord) nicht l&ouml;schen'); //neu hinzugekommen
 define('_DISKSPHP_NOMBRTEXT','Nicht den MBR l&ouml;schen (bei einigen Hardware RAID Kontrollerkarten empfehlenswert)'); //neu hinzugekommen
@@ -467,7 +467,7 @@ define('_DISKSRAIDPHP_DELRAID','L&ouml;sche RAID');
 define('_DISKSRAIDPHP_DELCONF','Soll dieses RAIDLaufwerk wirklich gel&ouml;scht werden? Alle Elemente, die gerade darauf zugreifen, werden ung&uuml;ltig werden (z.B. Freigaben)!');
 define('_DISKSRAIDPHP_NOTE','Hinweis:<br>
                 </strong></span>Optionaler Konfigurationsschritt: Konfiguration einer "virtual RAID disk" unter Verwendung<br>
-                <a href=\"disks_manage.php\">einer vorher eingestellten Festplatte/Partition</a>.<br>Den \"up\" Status vor Formatieren und Einbinden (Mounten) abwarten!.');
+                <a href="disks_manage.php">einer vorher eingestellten Festplatte/Partition</a>.<br>Den "up" Status vor Formatieren und Einbinden (Mounten) abwarten!.');
 
 //file: disks_raid_edit.php
 
@@ -699,14 +699,14 @@ define('_ACCESSUSERSEDIT_MSGVALIDPASSERROR',_MSGVALIDPASSWORD);
 define('_ACCESSUSERSEDIT_LOGIN',_LOGIN);
 define('_ACCESSUSERSEDIT_LOGINTEXT','Eindeutiger Loginname des Benutzers.');
 define('_ACCESSUSERSEDIT_FULLNAME',_ACCESS_FULLNAME);
-define('_ACCESSUSERSEDIT_FULLNAMETEXT','vollst&auml;ndiger Name.');
+define('_ACCESSUSERSEDIT_FULLNAMETEXT','Vollst&auml;ndiger Name.');
 define('_ACCESSUSERSEDIT_PASSWORD','Passwort');
 define('_ACCESSUSERSEDIT_PASSWORDTEXT','Benutzerpasswort.');
 define('_ACCESSUSERSEDIT_PASSWORDCONF','Best&auml;tige Passwort');
 define('_ACCESSUSERSEDIT_PASSWORDCONFTEXT','Das Passwort bitte best&auml;tigen.');
 define('_ACCESSUSERSEDIT_GROUPMEMBER','Gruppenzugeh&ouml;rigkeit');
 define('_ACCESSUSERSEDIT_FULLSHELL','Komplettes Terminal');
-define('_ACCESSUSERSEDIT_FULLSHELLTEXT','vollst&auml;ndigen Zugriff zur "Shell" f&uuml;r Benutzer erlauben');
+define('_ACCESSUSERSEDIT_FULLSHELLTEXT','Vollst&auml;ndigen Zugriff zur "Shell" f&uuml;r Benutzer erlauben');
 
 // file: access_users_groups.php
 
@@ -737,7 +737,7 @@ define('_ACCESSAD_ADNAMETEXT','AD oder PDC-Name.');
 define('_ACCESSAD_IP','AD server IP');
 define('_ACCESSAD_IPTEXT','IP-Adresse des MS Active Directory Server.');
 define('_ACCESSAD_DOMAIN','Domain Name');
-define('_ACCESSAD_DOMAINTEXT','Domain Name in old format.');
+define('_ACCESSAD_DOMAINTEXT','Domain Name im alten Format.');
 define('_ACCESSAD_ADMINAME','Administrator Name');
 define('_ACCESSAD_ADMINNAMETEXT','Benutzername eines "Domain Administrator Account".');
 define('_ACCESSAD_ADMINPASS','Administration Passwort');

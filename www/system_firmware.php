@@ -81,11 +81,11 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 	unset($input_errors);
 	unset($sig_warning);
 	
-	if (stristr($_POST['Submit'], "Enable"))
+	if (stristr($_POST['Submit'], _SYSTEMFIRMWAREPHP_ENFIRMUP))
 		$mode = "enable";
-	else if (stristr($_POST['Submit'], "Disable"))
+	else if (stristr($_POST['Submit'], _SYSTEMFIRMWAREPHP_DESFIRMUP))
 		$mode = "disable";
-	else if (stristr($_POST['Submit'], "Upgrade") || $_POST['sig_override'])
+	else if (stristr($_POST['Submit'], _SYSTEMFIRMWAREPHP_UPFIRM) || $_POST['sig_override'])
 		$mode = "upgrade";
 	else if ($_POST['sig_no'])
 		unlink("{$g['ftmp_path']}/firmware.img");
@@ -170,13 +170,13 @@ print_info_box($sig_warning);
                   <td width="78%"> 
                     <?php if (!file_exists($d_sysrebootreqd_path)): ?>
                     <?php if (!file_exists($d_fwupenabled_path)): ?>
-                    <input name="Submit" type="submit" class="formbtn" value="Enable firmware upload">
+                    <input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_ENFIRMUP;?>">
 				  <?php else: ?>
-				   <input name="Submit" type="submit" class="formbtn" value="Disable firmware upload">
+				   <input name="Submit" id="Disable" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_DESFIRMUP;?>">
                     <br><br>
 					<strong><?=_SYSTEMFIRMWAREPHP_FIRMFILE;?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld">
                     <br><br>
-                    <input name="Submit" type="submit" class="formbtn" value="Upgrade firmware">
+                    <input name="Submit" id="Upgrade" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_UPFIRM;?>">
 				  <?php endif; else: ?>
 				    <strong><?=_SYSTEMFIRMWAREPHP_MSGREBOOTUP;?></strong>
 				  <?php endif; ?>
