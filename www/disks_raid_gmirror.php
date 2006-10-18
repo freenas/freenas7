@@ -123,7 +123,7 @@ if ($_GET['act'] == "del") {
                   <?php
 		    $raidconfiguring=file_exists($d_raidconfdirty_path) && in_array($raid['name']."\n",file($d_raidconfdirty_path));
                     if ($raidconfiguring)
-						echo "_CONFIGURING";
+						echo _CONFIGURING;
 					else
 						{
 						$tempo=$raid['name'];						
@@ -134,7 +134,7 @@ if ($_GET['act'] == "del") {
                    <td class="listbg">
                    <?php
                     if ($raidconfiguring)
-						echo "_CONFIGURING";
+						echo _CONFIGURING;
 					else
 						{
 						echo "{$raidstatus[$tempo]['desc']}";

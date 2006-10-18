@@ -105,6 +105,7 @@ define('_UPDATE', 'Update');
 define('_VIEW', 'Ansicht');
 define('_APPLY', '&Auml;nderung &uuml;bernehmen');
 define('_WARNING', 'Warnung');
+define('_LOAD', 'Laden');
 
 //FreeNAS common words
 
@@ -497,8 +498,8 @@ define('_DISKSRAIDINFOPHP_TEXT','Software RAID Information und Status');
 //file: disks_raid_init.php
 
 define('_DISKSRAIDINITPHP_INFO','Disk format UFS output:');
-define('_DISKSRAIDINITPHP_TEXT','Dies wird das RAID volume mit dem Unix FileSystem (UFS) formatieren.');
-define('_DISKSRAIDINITPHP_FORMAT','Formatiere UFS disk!');
+define('_DISKSRAIDINITPHP_TEXT','Dies wird das RAID Volume mit dem Unix FileSystem (UFS) formatieren.');
+define('_DISKSRAIDINITPHP_FORMAT','Formatiere UFS Festplatte!');
 
 //file: disks_raid_tools.php
 define('_DISKSRAIDTOOLSPHP_OBJNAME','Objektname');

@@ -99,7 +99,7 @@ if ($_GET['act'] == "del") {
 <form action="disks_raid_gvinum.php" method="post">
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if (file_exists($d_raidconfdirty_path)): ?><p>
-<?php print_info_box_np("_DISKSRAIDPHP_MSGCHANGED");?><br>
+<?php print_info_box_np(_DISKSRAIDPHP_MSGCHANGED);?><br>
 <input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY; ?>"></p>
 <?php endif; ?>
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -122,7 +122,7 @@ if ($_GET['act'] == "del") {
                   <?php
 		    $raidconfiguring=file_exists($d_raidconfdirty_path) && in_array($raid['name']."\n",file($d_raidconfdirty_path));
                     if ($raidconfiguring)
-						echo "_CONFIGURING";
+						echo _CONFIGURING;
 					else
 						{
 						$tempo=$raid['name'];						
@@ -133,7 +133,7 @@ if ($_GET['act'] == "del") {
                    <td class="listbg">
                    <?php
                     if ($raidconfiguring)
-						echo "_CONFIGURING";
+						echo _CONFIGURING;
 					else
 						{
 						echo "{$raidstatus[$tempo]['desc']}";

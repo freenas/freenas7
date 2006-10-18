@@ -35,7 +35,14 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME,"Geom mirror", _DISKSRAIDEDITPHP_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME,_DISKSRAIDPHP_GMIRROR,_DISKSRAIDEDITPHP_NAMEDESC);
+
+if (!is_array($config['gmirror']['vdisk']))
+	$config['gmirror']['vdisk'] = array();
+
+gmirror_sort();
+
+$a_raid = &$config['gmirror']['vdisk'];
 
 if ($_POST) {
 	unset($input_errors);
@@ -46,7 +53,6 @@ if ($_POST) {
 	$reqdfieldsn = explode(",", "Disk");
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	
 	if (!$input_errors)
 	{
 		$do_format = true;
@@ -83,8 +89,13 @@ if (!isset($do_format))
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr>
 				  <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDPHP_VOLUME;?></td>
-				  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="disk" type="text" class="formfld" id="disk" size="20" value="<?=htmlspecialchars($disk);?>"></td>
+          <td width="78%" class="vtable">
+            <?=$mandfldhtml;?><select name="disk" id="disk">
+  		      <?php foreach ($a_raid as $raid): ?>
+              <option value="<?=htmlspecialchars($raid['name']);?>"<?php if ($raid['name'] == $disk) echo "selected"; ?>><?=htmlspecialchars($raid['name']);?></option>
+            <?php endforeach; ?>
+            </select>
+          </td>
 				</tr>
 				<tr>
 				  <td width="22%" valign="top">&nbsp;</td>

@@ -40,7 +40,7 @@ global $g;
 
 $pgtitle = array(_DIAG_NAME, _DIAGEDITPHP_NAMEDESC);
 
-if (($_POST['submit'] == "Load") && file_exists($_POST['savetopath']) && is_file($_POST['savetopath'])) {
+if (($_POST['submit'] == _LOAD) && file_exists($_POST['savetopath']) && is_file($_POST['savetopath'])) {
 	$fd = fopen($_POST['savetopath'], "r");
 	$content = fread($fd, filesize($_POST['savetopath']));
 	fclose($fd);
@@ -57,7 +57,7 @@ if (($_POST['submit'] == "Load") && file_exists($_POST['savetopath']) && is_file
 		$language = "js";
 	else if(stristr($_POST['savetopath'], ".css") == true)
 		$language = "css";
-} else if (($_POST['submit'] == "Save")) {
+} else if (($_POST['submit'] == _SAVE)) {
 	conf_mount_rw();
 	$content = ereg_replace("\r","",$_POST['code']) ;
 	$fd = fopen($_POST['savetopath'], "w");
@@ -68,7 +68,7 @@ if (($_POST['submit'] == "Load") && file_exists($_POST['savetopath']) && is_file
 	if($_POST['savetopath'] == "{$g['cf_conf_path']}/config.xml")
 		unlink_if_exists("/tmp/config.cache");
 	conf_mount_ro();
-} else if (($_POST['submit'] == "Load") && (!file_exists($_POST['savetopath']) || !is_file($_POST['savetopath']))) {
+} else if (($_POST['submit'] == _LOAD) && (!file_exists($_POST['savetopath']) || !is_file($_POST['savetopath']))) {
 	$savemsg = _DIAGEDITPHP_FILENOTFOUND . " " . $_POST['savetopath'];
 	$content = "";
 	$_POST['savetopath'] = "";
