@@ -34,11 +34,11 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_ACCESS_NAME,_ACCESS_USERS,_ACCESS_GROUPS,_EDIT);
-
 $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
+
+$pgtitle = array(_ACCESS_NAME,_ACCESS_USERS,_ACCESS_GROUPS,isset($id)?_EDIT:_ADD);
 	
 if (!is_array($config['access']['group']))
 	$config['access']['group'] = array();
@@ -139,7 +139,7 @@ if ($_POST)
               
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="Add"> 
+                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?_SAVE:_ADD;?>"> 
                     <?php if (isset($id) && $a_group[$id]): ?>
                     <input name="id" type="hidden" value="<?=$id;?>"> 
                     <?php endif; ?>

@@ -141,7 +141,7 @@ if (!isset($do_format))
 				<tr>
 				  <td width="22%" valign="top">&nbsp;</td>
 				  <td width="78%">
-                    <input name="Submit" type="submit" class="formbtn" value="Format disk!">
+                    <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMANAGEINITPHP_FORMATDISC;?>">
 				</td>
 				</tr>
 				<tr>

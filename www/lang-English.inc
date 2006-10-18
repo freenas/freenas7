@@ -118,6 +118,7 @@ define('_SOFTRAID', 'Software RAID');
 define('_SERVICE','Service');
 define('_SERVICES','Services');
 define('_TCPPORT','TCP port');
+define('_CONFIRMATION','Confirmation');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'The changes have been applied successfully.');
@@ -429,6 +430,7 @@ define('_DISKSMANAGEINITPHP_NAMEDESC','Initialize');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Disk initialization details:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"is not an error message!\n');
 define('_DISKSMANAGEINITPHP_TEXT','This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified.');
+define('_DISKSMANAGEINITPHP_FORMATDISC','Format disk');
 define('_DISKSPHP_NOMBR','Don\'t Erase MBR');
 define('_DISKSPHP_NOMBRTEXT','don\'t erase the MBR (useful for some RAID controller cards)');
 

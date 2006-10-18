@@ -31,10 +31,13 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKS, _DISKSMOUNTPHP_NAME, _EDIT);
+$id = $_GET['id'];
+if (isset($_POST['id']))
+	$id = $_POST['id'];
+
+$pgtitle = array(_DISKS,_DISKSMOUNTPHP_NAME,isset($id)?_EDIT:_ADD);
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -63,11 +66,6 @@ $a_disk = array_merge($config['disks']['disk'],$config['raid']['vdisk'],$config[
 /* Load the cfdevice file*/
 $filename=$g['varetc_path']."/cfdevice";
 $cfdevice = trim(file_get_contents("$filename"));
-
-
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
 
 if (isset($id) && $a_mount[$id]) {
 	$pconfig['mdisk'] = $a_mount[$id]['mdisk'];
@@ -214,7 +212,7 @@ if ($_POST) {
 				</tr>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>"> 
+                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?_SAVE:_ADD?>"> 
                     <?php if (isset($id) && $a_mount[$id]): ?>
                     <input name="id" type="hidden" value="<?=$id;?>"> 
                     <?php endif; ?>

@@ -122,6 +122,7 @@ define('_SOFTRAID', 'Software RAID');
 define('_SERVICE','Servizio');
 define('_SERVICES','Servizi');
 define('_TCPPORT','porta TCP');
+define('_CONFIRMATION','Confirmation');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'I cambiamenti sono stati applicati con successo.');
@@ -427,6 +428,7 @@ define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Dettagli dell\'inizializzazione d
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"non è un messaggio di errore!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Questo passo cancellerà tutte le partizioni, creerà la partizione numero 1 e
                     formatterà l\'hard drive con il file system specificato.');
+define('_DISKSMANAGEINITPHP_FORMATDISC','Format disk');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Amministrazione');

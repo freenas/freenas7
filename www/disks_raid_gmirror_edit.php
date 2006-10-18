@@ -32,11 +32,13 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_NAMEDESC, _DISKSRAIDEDITPHP_NAMEDESC);
+$id = $_GET['id'];
+if (isset($_POST['id']))
+	$id = $_POST['id'];
 
+$pgtitle = array(_DISKSPHP_NAME,_DISKSRAIDPHP_NAMEDESC,isset($id)?_EDIT:_ADD);
 
 if (!is_array($config['gmirror']['vdisk']))
 	$config['gmirror']['vdisk'] = array();
@@ -51,10 +53,6 @@ else
 $a_raid = &$config['gmirror']['vdisk'];
 
 $a_disk = &$config['disks']['disk'];
-
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
 
 if (isset($id) && $a_raid[$id]) {
 	$pconfig['name'] = $a_raid[$id]['name'];
@@ -187,7 +185,7 @@ if ($_POST) {
                       </tr>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>"> 
+                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?_SAVE:_ADD;?>"> 
                     <?php if (isset($id) && $a_raid[$id]): ?>
                     <input name="id" type="hidden" value="<?=$id;?>"> 
                     <?php endif; ?>

@@ -34,13 +34,11 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_ACCESS_NAME,_ACCESS_USERS,_EDIT);
-
-
 $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
-	
+
+$pgtitle = array(_ACCESS_NAME,_ACCESS_USERS,isset($id)?_EDIT:_ADD);	
 
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();
@@ -168,27 +166,21 @@ if ($_POST)
                   <td width="78%" class="vtable"> 
                     <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>">
                     <br><?=_ACCESSUSERSEDIT_LOGINTEXT ;?></td>
-				</tr>
-				
-				<tr> 
+				        </tr>
+				        <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_ACCESSUSERSEDIT_FULLNAME ;?></td>
                   <td width="78%" class="vtable"> 
                     <input name="fullname" type="text" class="formfld" id="fullname" size="20" value="<?=htmlspecialchars($pconfig['fullname']);?>">
                     <br><?=_ACCESSUSERSEDIT_FULLNAMETEXT ;?></td>
-				</tr>
+				      </tr>
               <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_ACCESSUSERSEDIT_PASSWORD ;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
-                    <br><?=_ACCESSUSERSEDIT_PASSWORDTEXT ;?></td>
-			 </tr>
-              <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSUSERSEDIT_PASSWORDCONF ;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">
-                    <br><?=_ACCESSUSERSEDIT_PASSWORDCONFTEXT ;?></td>
-			 </tr>
-              
+                  <td width="78%" class="vtable">
+                    <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
+                    <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=_CONFIRMATION;?>)<br>
+                    <?=_ACCESSUSERSEDIT_PASSWORDTEXT ;?>
+                  </td>
+                </tr>
                 <tr> 
                   <td valign="top" class="vncellreq"><?=_ACCESSUSERSEDIT_GROUPMEMBER ;?></td>
                    
@@ -214,7 +206,7 @@ if ($_POST)
                <?php endif; ?>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="Add"> 
+                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?_SAVE:_ADD;?>"> 
                     <?php if (isset($id) && $a_user[$id]): ?>
                     <input name="id" type="hidden" value="<?=$id;?>"> 
                     <?php endif; ?>

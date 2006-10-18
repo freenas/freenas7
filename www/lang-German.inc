@@ -121,6 +121,7 @@ define('_SOFTRAID', 'Software RAID');
 define('_SERVICE','Service');
 define('_SERVICES','Services');
 define('_TCPPORT','TCP Port');
+define('_CONFIRMATION','Best&auml;tigung');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Die &Auml;nderungen wurden &uuml;bernommen.');
@@ -303,7 +304,7 @@ define('_SYSTEMADVANCEDPHP_MSGVALIDKEY','Dieser Schl&uuml;ssel scheint nicht g&u
 define('_SYSTEMADVANCEDPHP_NOTE','<strong>Beachten: </strong></span>die
               Optionen auf dieser Seite sind nur f&uuml;r erfahrene Benutzer(!),
               und es besteht <strong>KEIN</strong> Support.');
-define('_SYSTEMADVANCEDPHP_WEBGUISSLKEY','Web GUI SSL Zertifikat \/Schl&uuml;ssel');
+define('_SYSTEMADVANCEDPHP_WEBGUISSLKEY','Web GUI SSL Zertifikat/Schl&uuml;ssel');
 define('_SYSTEMADVANCEDPHP_WEBCERT','Zertifikate');
 define('_SYSTEMADVANCEDPHP_WEBCERTTEXT','F&uuml;gen Sie ein Zertifikat in X.509 PEM Format ein.');
 define('_SYSTEMADVANCEDPHP_WEBKEY','Schl&uuml;ssel');
@@ -429,6 +430,7 @@ define('_DISKSMANAGEINITPHP_NAMEDESC','Initialisierung');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Festplatteninitialisierungseigenschaften:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','"fdisk: Geom not found" ist keine Fehlermeldung!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Dieser Vorgang wird alle bestehenden Partitionen l&ouml;schen, Partition #1 anlegen und diese mit dem gew&auml;hlten Dateisystem formatieren.');
+define('_DISKSMANAGEINITPHP_FORMATDISC','Festplatte formatieren!');
 define('_DISKSPHP_NOMBR','MBR (MasterBootRecord) nicht l&ouml;schen'); //neu hinzugekommen
 define('_DISKSPHP_NOMBRTEXT','Nicht den MBR l&ouml;schen (bei einigen Hardware RAID Kontrollerkarten empfehlenswert)'); //neu hinzugekommen
 

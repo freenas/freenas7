@@ -120,6 +120,7 @@ define('_SOFTRAID', 'RAID logiciel');
 define('_SERVICE','Service');
 define('_SERVICES','Services');
 define('_TCPPORT','Port TCP');
+define('_CONFIRMATION','Confirmation');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Les modifications ont &eacute;t&eacute; appliqu&eacute;es avec succ&egrave;s.');
@@ -424,6 +425,7 @@ define('_DISKSMANAGEINITPHP_NAMEDESC','Initialiser');
 define('_DISKSMANAGEINITPHP_INITTEXT','D&eacute;tails de l\'initialisation:');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"n\'est pas un message d\'erreur!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Ceci efface toutes les partitions, cr&eacute;&eacute; la partition num&eacute;ro 1 et formate le disque avec le syst&egrave;me de fichier sp&eacute;cifi&eacute;.');
+define('_DISKSMANAGEINITPHP_FORMATDISC','Format disk');
 define('_DISKSPHP_NOMBR','Ne pas effacer le MBR');
 define('_DISKSPHP_NOMBRTEXT','Conserve le MBR intact (utile avec certains controleurs RAID)');
 

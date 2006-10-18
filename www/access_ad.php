@@ -175,7 +175,7 @@ function enable_change(enable_change) {
                   <td width="78%" class="vtable">
                   <?=$mandfldhtml;?><input name="admin_pass" type="password" class="formfld" id="admin_pass" size="20" value="<?=htmlspecialchars($pconfig['admin_pass']);?>"> 
                     <br> <input name="admin_pass2" type="password" class="formfld" id="admin_pass2" size="20" value="<?=htmlspecialchars($pconfig['admin_pass2']);?>"> 
-                    &nbsp;(confirmation) <br>
+                    &nbsp;(<?=_CONFIRMATION;?>)<br>
                     <span class="vexpl"><?=_ACCESSAD_ADMINPASSTEXT;?></span></td>
                 </tr>
 				

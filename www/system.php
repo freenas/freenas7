@@ -196,7 +196,7 @@ if ($_POST) {
                   <td width="22%" valign="top" class="vncell"><?=_SYSTEMPHP_PASSWORD;?></td>
                   <td width="78%" class="vtable"> <input name="password" type="password" class="formfld" id="password" size="20"> 
                     <br> <input name="password2" type="password" class="formfld" id="password2" size="20"> 
-                    &nbsp;(confirmation) <br> <span class="vexpl"><?=_SYSTEMPHP_PASSWORDTEXT;?></span></td>
+                    &nbsp;(<?=_CONFIRMATION;?>) <br> <span class="vexpl"><?=_SYSTEMPHP_PASSWORDTEXT;?></span></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncell"><?=_SYSTEMPHP_WEBGUIPROTOCOL;?></td>

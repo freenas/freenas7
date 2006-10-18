@@ -31,13 +31,13 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+require("guiconfig.inc");
 
 $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array("Disks", "Disk", isset($id)?"Edit":"Add");
-require("guiconfig.inc");
+$pgtitle = array(_DISKSPHP_NAME,_DISK,isset($id)?_EDIT:_ADD);
 
 /* get disk list (without CDROM) */
 $disklist = get_physical_disks_list();
@@ -205,7 +205,7 @@ if ($_POST)
 				</tr>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?"Save":"Add"?>"> 
+                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?_SAVE:_ADD?>"> 
                     <?php if (isset($id) && $a_disk[$id]): ?>
                     <input name="id" type="hidden" value="<?=$id;?>"> 
                     <?php endif; ?>
