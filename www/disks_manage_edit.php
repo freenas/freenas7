@@ -54,15 +54,13 @@ if (isset($id) && $a_disk[$id])
 	$pconfig['name'] = $a_disk[$id]['name'];
 	$pconfig['harddiskstandby'] = $a_disk[$id]['harddiskstandby'];
 	$pconfig['acoustic'] = $a_disk[$id]['acoustic'];
-        $pconfig['fstype'] = $a_disk[$id]['fstype'];
+  $pconfig['fstype'] = $a_disk[$id]['fstype'];
 	$pconfig['apm'] = $a_disk[$id]['apm'];
 	$pconfig['udma'] = $a_disk[$id]['udma'];
-	
 }
 
 if ($_POST)
 {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 		
@@ -194,7 +192,7 @@ if ($_POST)
 "ufsgpt_no_su"=>"UFS (EFI/GPT)",
 "msdos"=>"FAT32",
 "ntfs"=>"NTFS",
-"raid"=>"Software RAID: gmirror",
+"gmirror"=>"Software RAID: gmirror",
 "raid"=>"Software RAID: gvinum"); ?>
 					<?php foreach ($fstvals as $fstval => $fstname): ?>
                       <option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>

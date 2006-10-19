@@ -44,15 +44,14 @@ if (!is_array($config['gmirror']['vdisk']))
 	$config['gmirror']['vdisk'] = array();
 
 gmirror_sort();
-
-if (!is_array($config['disks']['disk']))
-	$nodisk_errors[] = _DISKSRAIDEDITPHP_MSGADDDISKFIRST;
-else
-	disks_sort();
+disks_sort();
 
 $a_raid = &$config['gmirror']['vdisk'];
+$a_disk = get_fstype_disks_list("gmirror");
 
-$a_disk = &$config['disks']['disk'];
+if (!sizeof($a_disk)) {
+	$nodisk_errors[] = _DISKSRAIDEDITPHP_MSGADDDISKFIRST;
+}
 
 if (isset($id) && $a_raid[$id]) {
 	$pconfig['name'] = $a_raid[$id]['name'];
@@ -166,18 +165,16 @@ if ($_POST) {
   $disable_script="";
   foreach ($a_disk as $diskv) {
     $r_name="";
-    if (strcmp($diskv['fstype'],"gmirror")==0) {
-      foreach($a_raid as $raid) {
-        if (in_array($diskv['name'],$raid['diskr'])) {
-          $r_name=$raid['name'];
-          if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
-          break;
-        }
+    foreach($a_raid as $raid) {
+      if (in_array($diskv['name'],$raid['diskr'])) {
+        $r_name=$raid['name'];
+        if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
+        break;
       }
-      echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[name]'".
-           ((is_array($pconfig['diskr']) && in_array($diskv['name'],$pconfig['diskr']))?" checked":"").
-           ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
     }
+    echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[name]'".
+         ((is_array($pconfig['diskr']) && in_array($diskv['name'],$pconfig['diskr']))?" checked":"").
+         ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
     $i++;
   }
   if ($disable_script) echo "<script language='javascript'><!--\n$disable_script--></script>\n";

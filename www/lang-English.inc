@@ -469,7 +469,7 @@ define('_DISKSRAIDPHP_DELRAID','delete raid');
 define('_DISKSRAIDPHP_DELCONF','Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!');
 define('_DISKSRAIDPHP_NOTE','Note:<br>
                 </strong></span>Optional configuration step: Configuring a virtual RAID disk using your<br>
-                <a href=\"disks_manage.php\">previsously configured disk</a>.<br>Wait for the \"up\" status before format it and mount it!.');
+                <a href="disks_manage.php">previsously configured disk</a>.<br>Wait for the "up" status before format it and mount it!.');
 
 //file: disks_raid_edit.php
 
