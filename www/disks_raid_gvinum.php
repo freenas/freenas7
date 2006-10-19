@@ -40,9 +40,6 @@ if (!is_array($config['raid']['vdisk']))
 	$config['raid']['vdisk'] = array();
 
 gvinum_sort();
-
-$raidstatus=get_sraid_disks_list();
-
 $a_raid = &$config['raid']['vdisk'];
 
 if ($_POST) {
@@ -66,6 +63,8 @@ if ($_POST) {
 		}
 	}
 }
+
+$raidstatus=get_sraid_disks_list();
 
 if ($_GET['act'] == "del") {
 	if ($a_raid[$_GET['id']]) {
