@@ -184,19 +184,10 @@ if ($_POST)
                   <td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_PREFS; ?></td>
                   <td width="78%" class="vtable"> 
                     <select name="fstype" class="formfld">
-					<?php $fstvals = array(
-""=>"unformated",
-"ufs"=>"UFS with Soft Updates (use 8% space disk)",
-"ufs_no_su"=>"UFS",
-"ufsgpt"=>"UFS (EFI/GPT) with Soft Updates (use 8% space disk)",
-"ufsgpt_no_su"=>"UFS (EFI/GPT)",
-"msdos"=>"FAT32",
-"ntfs"=>"NTFS",
-"gmirror"=>"Software RAID: gmirror",
-"raid"=>"Software RAID: gvinum"); ?>
-					<?php foreach ($fstvals as $fstval => $fstname): ?>
+                      <?php $fstlist = get_fstype_list(); ?>
+                      <?php foreach ($fstlist as $fstval => $fstname): ?>
                       <option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
-					<?php endforeach; ?>
+                      <?php endforeach; ?>
                     </select>
                     <br>
                     <?=_DISKSMANAGEEDITPHP_PREFSTEXT; ?></td>

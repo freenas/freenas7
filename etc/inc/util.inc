@@ -1099,4 +1099,37 @@ function get_macaddr($if)
 
   return $macaddr;
 }
+
+/* Get list of disks from given type of filesystem. */
+function get_fstype_disks_list($fstype) {
+  global $config;
+
+  $result = array();
+
+  if (is_array($config['disks']['disk'])) {
+		foreach ($config['disks']['disk'] as $disk) {
+      if (0==strcmp($disk['fstype'],$fstype)) {
+        $result[] = $disk;
+      }
+    }
+  }
+
+  return $result;
+}
+
+/* Get list of supported filesystem types */
+function get_fstype_list()
+{
+  $fstlist = array(
+    ""=>"Unformated",
+    "ufs"=>"UFS with Soft Updates (use 8% space disk)",
+    "ufs_no_su"=>"UFS",
+    "ufsgpt"=>"UFS (EFI/GPT) with Soft Updates (use 8% space disk)",
+    "ufsgpt_no_su"=>"UFS (EFI/GPT)",
+    "msdos"=>"FAT32",
+    "ntfs"=>"NTFS",
+    "gmirror"=>"Software RAID: gmirror",
+    "gvinum"=>"Software RAID: gvinum");
+  return $fstlist;
+}
 ?>

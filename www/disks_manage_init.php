@@ -32,7 +32,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(_DISKSPHP_NAME,_DISKSMANAGEINITPHP_NAMEDESC);
@@ -53,7 +52,6 @@ if ($_POST) {
 	$reqdfieldsn = explode(",", "Disk,Type");
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	
 	if (!$input_errors)
 	{
 		$do_format = true;
@@ -87,7 +85,6 @@ if (!isset($do_format))
 	$disk = '';
 	$type = '';
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -116,20 +113,15 @@ if (!isset($do_format))
 		  </option>
 		  <?php endforeach; ?>
 			</tr> 		
-				
                   <td valign="top" class="vncellreq"><?=_DISKSPHP_FILESYSTEM; ?></td>
                   <td class="vtable"> 
                     <select name="type" class="formfld" id="type">
-                      <option value="ufs" <?php if ($type == "ufs") echo "selected"; ?>>UFS with Soft Updates (use 8% space disk)</option>
-                      <option value="ufs_no_su" <?php if ($type == "ufs_no_su") echo "selected"; ?>>UFS</option>
-                      <option value="ufsgpt" <?php if ($type == "ufsgpt") echo "selected"; ?>>UFS (EFI/GPT) with Soft Updates (use 8% space disk)</option>
-                      <option value="ufsgpt_no_su" <?php if ($type == "ufsgpt_no_su") echo "selected"; ?>>UFS (EFI/GPT)</option>
-                      <option value="msdos" <?php if ($type == "msdos") echo "selected"; ?>>FAT32</option>
-                      <option value="gmirror" <?php if ($type == "gmirror") echo "selected"; ?>>Software RAID: Geom mirror</option>
-                      <option value="raid" <?php if ($type == "raid") echo "selected"; ?>>Software RAID: Geom Vinum</option>
+                      <?php $fstlist = get_fstype_list(); ?>
+                      <?php foreach ($fstlist as $fstval => $fstname): ?>
+                      <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
+                      <?php endforeach; ?>
                      </select>
-                  </td>
-                  
+                  </td>  
                   <tr>
                 <td width="22%" valign="top" class="vncell"><strong><?=_DISKSPHP_NOMBR; ?><strong></td>
                 		<td width="78%" class="vtable">
@@ -211,7 +203,7 @@ if (!isset($do_format))
 						/* Delete old gmirror information */
 						system("/sbin/gmirror clear /dev/" . escapeshellarg($disk));
 						break;
-					case "raid":
+					case "gvinum":
 						/* Initialize disk */
 						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
 						// echo "\"fdisk: Geom not found\"is not an error message!\n";
@@ -232,7 +224,6 @@ if (!isset($do_format))
 						system("/sbin/newfs_msdos -F 32 /dev/" . escapeshellarg($disk) . "s1");
 						break;		
 					}
-					
 					echo('</pre>');
 				}
 				?>

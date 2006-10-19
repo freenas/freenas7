@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>1.3</version>
+	<version>1.4</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>

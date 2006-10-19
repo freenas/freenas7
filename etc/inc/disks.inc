@@ -873,23 +873,5 @@ function disks_set_ataidle()
 	}
 			
 	return 0;
-
-}
-
-/* Get list of disks from given type of filesystem. */
-function get_fstype_disks_list($fstype) {
-  global $config;
-
-  $result = array();
-
-  if (is_array($config['disks']['disk'])) {
-		foreach ($config['disks']['disk'] as $disk) {
-      if (strcmp($disk['fstype'],$fstype)==0) {
-        $result[] = $disk;
-      }
-    }
-  }
-
-  return $result;
 }
 ?>

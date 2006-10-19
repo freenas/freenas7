@@ -160,7 +160,7 @@ if ($_POST) {
                 
 		<select name="mdisk" class="formfld" id="mdisk">
 		  <?php foreach ($a_disk as $disk): ?>
-			<?php if ((strcmp($disk['fstype'],"raid")!=0) | (strcmp($disk['fstype'],"gmirror")!=0)): ?> 	  
+			<?php if ((strcmp($disk['fstype'],"gvinum")!=0) | (strcmp($disk['fstype'],"gmirror")!=0)): ?> 	  
 				<option value="<?=$disk['name'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 
 				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
 

@@ -412,19 +412,16 @@ function convert_config()
 			unset($config['nfs']['network']);
 		}
 
-		
 		$config['access']['groupid']=1002;
 		$config['access']['userid']=1002;	
 		unset($config['access']['group']);
 		unset($config['access']['user']);	
-		
-						
+
 		$config['version'] = "1.1";
 	}
 	
 	/* convert 1.1 -> 1.2 */
 	/* change the gvnium mount point type 'sraid' to 'gvinum' */
-	
 	if ($config['version'] == "1.1") {
 			
 		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) 	{
@@ -440,7 +437,6 @@ function convert_config()
 	
 	/* convert 1.2 -> 1.3 */
 	/* change the FTP anonymous and local user authentication YES/NO value to right/flase type */
-	
 	if ($config['version'] == "1.2") {
 			
 		if ($config['ftp']['anonymous'] == "YES")
@@ -452,11 +448,22 @@ function convert_config()
 			$config['ftp']['localuser'] = true;
 		else
 			$config['ftp']['localuser'] = false;
-			
-									
+
 		$config['version'] = "1.3";
 	}
-	
+
+  /* convert 1.3 -> 1.4 */
+	/* change the gvnium disk fstype attribute 'raid' to 'gvinum' */
+	if ($config['version'] == "1.3") {
+		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
+				if (0==strcmp($config['disks']['disk'][$i]['fstype'],"raid")) {
+					$config['disks']['disk'][$i]['fstype'] = "gvinum";
+      }
+    }
+
+		$config['version'] = "1.4";
+	}
+
 	write_config();
 	
 	if ($g['booting'])

@@ -47,7 +47,7 @@ gvinum_sort();
 disks_sort();
 
 $a_raid = &$config['raid']['vdisk'];
-$a_disk = get_fstype_disks_list("raid");
+$a_disk = get_fstype_disks_list("gvinum");
 
 if (!sizeof($a_disk)) {
 	$nodisk_errors[] = _DISKSRAIDEDITPHP_MSGADDDISKFIRST;
