@@ -1132,4 +1132,15 @@ function get_fstype_list()
     "gvinum"=>"Software RAID: gvinum");
   return $fstlist;
 }
+
+/* Search in a multidimensional array */		
+function array_search_ex($needle, $haystack, $key)
+{
+  foreach($haystack as $haystackval => $value) {
+    if($value[$key] == $needle) {
+      return $haystackval;
+    }
+  }
+  return false;
+}
 ?>

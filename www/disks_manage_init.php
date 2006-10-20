@@ -41,6 +41,7 @@ if (!is_array($config['disks']['disk']))
 	
 disks_sort();
 
+$a_fst = get_fstype_list();
 $a_disk = &$config['disks']['disk'];
 
 if ($_POST) {
@@ -60,18 +61,9 @@ if ($_POST) {
 		$diskid = $_POST['id'];
 		$notinitmbr= $_POST['notinitmbr'];
 		
-		/* found the name in the config: Must be a better way for did that */
+		/* Get the id of the disk */
+		$id=array_search_ex($disk, $a_disk, "name");
 
-		$id=0;
-		$i=0;
-		foreach ($a_disk as $disks)
-		{
-			$diskname=$disks['name'];
-			if (strcmp($diskname,$disk)==0)
-				$id=$i;
-			$i++;
-		}
-		
 		if ($type == "ufs" || $type == "ufsgpt" || $type == "ufs_no_su" || $type == "ufsgpt_no_su")
 			$a_disk[$id]['fstype'] = "ufs";
 		else
@@ -87,6 +79,23 @@ if (!isset($do_format))
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script language="JavaScript">
+<!--
+function disk_change() {
+  switch(document.iform.disk.value)
+  {
+    <?php foreach ($a_disk as $diskn): ?>
+		case "<?=$diskn['name'];?>":
+		  <?php $i = 0;?>
+      <?php foreach ($a_fst as $fstval => $fstname): ?>
+        document.iform.type.options[<?=$i++;?>].selected = <?php if($diskn['fstype'] == $fstval){echo "true";}else{echo "false";};?>; 
+      <?php endforeach; ?>
+      break;
+    <?php endforeach; ?>
+  }
+}
+// -->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
@@ -101,11 +110,9 @@ if (!isset($do_format))
 			<form action="disks_manage_init.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr>			  		
-			
 			<td valign="top" class="vncellreq"><?=_DISKSPHP_DISK; ?></td>
-                   
 	<td class="vtable"> 
-		<select name="disk" class="formfld" id="disk">
+		<select name="disk" class="formfld" id="disk" onchange="disk_change()">
 		  <?php foreach ($a_disk as $diskn): ?>
 		  <option value="<?=$diskn['name'];?>"<?php if ($diskn['name'] == $disk) echo "selected";?>> 
 		  <?php echo htmlspecialchars($diskn['name'] . ": " .$diskn['size'] . " (" . $diskn['desc'] . ")");				  
@@ -116,8 +123,7 @@ if (!isset($do_format))
                   <td valign="top" class="vncellreq"><?=_DISKSPHP_FILESYSTEM; ?></td>
                   <td class="vtable"> 
                     <select name="type" class="formfld" id="type">
-                      <?php $fstlist = get_fstype_list(); ?>
-                      <?php foreach ($fstlist as $fstval => $fstname): ?>
+                      <?php foreach ($a_fst as $fstval => $fstname): ?>
                       <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
                       <?php endforeach; ?>
                      </select>
@@ -235,4 +241,9 @@ if (!isset($do_format))
                 </strong></span><?=_DISKSMANAGEINITPHP_TEXT; ?>
                 </span></p>
 </td></tr></table>
+<script language="JavaScript">
+<!--
+disk_change();
+//-->
+</script>
 <?php include("fend.inc"); ?>
