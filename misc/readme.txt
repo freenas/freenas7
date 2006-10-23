@@ -94,6 +94,7 @@ FreeNAS 0.68 (UNRELEASE!):
 - Begin to customize the hidden status.php page
 - New language: Italian (thanks to Pietro Defaccio)
 - New language: German (thanks to Falk Menzel and Dominik Plaszewski)
+- Added option on SSHD page to permit/deny root login.
 
 BUG TO FIX (before release the 0.68) :
 - WebGUI Authentifcation
