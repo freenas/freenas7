@@ -194,7 +194,7 @@ if (!$noparseconfig) {
 					echo "file is inserted. If it isn't, your configuration changes will be lost\n";
 					echo "on reboot.\n";
 				} else {
-					echo "XML configuration file not found. m0n0wall cannot continue booting.\n"; 
+					echo "XML configuration file not found. FreeNAS cannot continue booting.\n"; 
 					mwexec("/sbin/halt");
 					exit;
 				}

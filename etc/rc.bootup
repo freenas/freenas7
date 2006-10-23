@@ -148,6 +148,9 @@
 	/* start RSYNC client/slave mode service */
 	services_rsyncclient_configure();
 	
+	/* start RSYNC local service */
+	services_rsync_local_configure();
+	
 	/* Start cron */
 	services_cron_configure();
 	

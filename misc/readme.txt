@@ -83,7 +83,7 @@ FreeNAS 0.68 (UNRELEASE!):
 - Replace sh shell with tcsh
 - Upgrade samba 3.0.22 to samba 3.0.23a
 - CIFS: added recycle bin capabilities, force guest mode
-- RSYNCD: added motd and maximum connexions options
+- RSYNCD: added motd and maximum connexions options, added local rsync (share to share)
 - FTP : re-added passive ip adress and NAT mode; permit to enable FXP
 - Rewrite the NIC speed/duplex script configuration (Trying to resolve the bug number 1519939)
 - Fix bug with generating the mDNS responder config file

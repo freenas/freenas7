@@ -130,6 +130,7 @@ function enable_change(enable_change) {
   <ul id="tabnav">
 	<li class="tabact"><a href="services_rsyncd.php" style="color:black" title="reload page"><?=_SRVRYNC_SERVER ;?></a></li>
     <li class="tabinact"><a href="services_rsyncd_client.php"><?=_SRVRYNC_CLIENT ;?></a></li>
+    <li class="tabinact"><a href="services_rsyncd_local.php"><?=_SRVRYNC_LOCAL ;?></a></li>
   </ul>
   </td></tr>
   <tr> 

@@ -648,6 +648,13 @@ define('_SRVRYNCC_SHARESTEXT','This same local share must be present on the Remo
 define('_SRVRYNCC_TIME','Synchronization Time');
 define('_SRVRYNCC_TEXT',_MSGSCHED_TEXT);
 
+// file: services_rsyncd_local.php
+
+define('_SRVRYNCC_MSGVALID','You can have the same mount point for source and destination!');
+define('_SRVRYNC_LOCAL','Rsync Local Synchronization');
+define('_SRVRYNC_LOCAL_SOURCE','Source Mount Point');
+define('_SRVRYNC_LOCAL_DESTINATION','Destination Mount Point (backup drive)');
+
 // Service: SSHD
 // file: services_sshd.php
 
