@@ -156,15 +156,12 @@ if (!is_array($config['mounts']['mount'])){
    $all_weekdays_selected = " checked";
   }
 }
-
-include("fbegin.inc"); ?>
-
+?>
+<?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
-	var endis;
-	
-	endis = !(document.iform.enable.checked || enable_change);
+	var endis = !(document.iform.enable.checked || enable_change);
 
 	document.iform.source.disabled = endis;
 	document.iform.destination.disabled = endis;
@@ -190,9 +187,7 @@ function enable_change(enable_change) {
 	document.iform.all_months2.disabled = endis;
 	document.iform.all_weekdays1.disabled = endis;
 	document.iform.all_weekdays2.disabled = endis;
-	document.iform.opt_delete.disabled = endis;
-	
-	
+	document.iform.opt_delete.disabled = endis;	
 }
 //-->
 </script>
@@ -551,7 +546,7 @@ function enable_change(enable_change) {
 				<tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="Save" onClick="enable_change(true)"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)"> 
                   </td>
                 </tr>
                 </table>
