@@ -184,7 +184,7 @@ define('_MENULEFT_DIAGEDITFILE','Datei bearbeiten');
 define('_MENULEFT_CMDBACKUPRESTORE','Sichern/Wiederherstellen');
 define('_MENULEFT_CMDFACTORYDEF','Werkseinstellungen');
 define('_MENULEFT_CMDREBOOTSYS','System Neustarten');
-define('_MENULEFT_CMDSHUTDOWNSYS','System herunterfahren');
+define('_MENULEFT_CMDSHUTDOWNSYS','System Herunterfahren');
 
 
 // Module specific stuff
@@ -658,6 +658,9 @@ define('_SRVSSHD_MSGVALIDKEY','Dieser Schl&uuml;ssel scheint nicht g&uuml;ltig z
 define('_SRVSSHD_SSHD','SSH Daemon');
 define('_SRVSSHD_READONLY','Nur-lesen');
 define('_SRVSSHD_TCPORT',_TCPPORT);
+define('_SRVSSHD_TCPORTTEXT',_SRVRYNCD_TCPORTTEXT);
+define('_SRVSSHD_PERMITROOTLOGIN','Root Einloggen zulassen');
+define('_SRVSSHD_PERMITROOTLOGINTEXT','Spezifiziert ob es dem Superuser (root) erlaubt ist, sich direkt einzuloggen.');
 define('_SRVSSHD_KEY','SSH Schl&uuml;ssel');
 define('_SRVSSHD_PRIVATEKEY','Private Key');
 define('_SRVSSHD_PRIVATEKEYTEXT','F&uuml;gen Sie einen "RSA private key" im PEM Format hier ein.');

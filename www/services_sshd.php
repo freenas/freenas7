@@ -36,20 +36,18 @@ require("guiconfig.inc");
 
 $pgtitle = array(_SERVICES,_SRVSSHD_NAMEDESC);
 
-if (!is_array($config['sshd']))
-{
+if (!is_array($config['sshd'])) {
 	$config['sshd'] = array();
-	
 }
 
 $pconfig['readonly'] = $config['sshd']['readonly'];
 $pconfig['port'] = $config['sshd']['port'];
+$pconfig['permitrootlogin'] = isset($config['sshd']['permitrootlogin']);
 $pconfig['enable'] = isset($config['sshd']['enable']);
 $pconfig['key'] = base64_decode($config['sshd']['private-key']);
 
 if ($_POST)
 {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
@@ -78,6 +76,7 @@ if ($_POST)
 	{
 		$config['sshd']['readonly'] = $_POST['readonly'];	
 		$config['sshd']['port'] = $_POST['port'];
+		$config['sshd']['permitrootlogin'] = $_POST['permitrootlogin'] ? true : false;
 		$config['sshd']['enable'] = $_POST['enable'] ? true : false;
 		$config['sshd']['private-key'] = base64_encode($_POST['key']);
 		
@@ -132,14 +131,20 @@ function enable_change(enable_change) {
                       </option>
                       <?php endfor; ?>
                     </select></td>
-				</tr>
+				        </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_SRVSSHD_TCPORT;?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
-                     <br>Alternate TCP port.</td>
+                     <br><?=_SRVSSHD_TCPORTTEXT;?></td>
                   </td>
-				</tr>
+				        </tr>
+				        <tr> 
+                  <td width="22%" valign="top" class="vncell"><?=_SRVSSHD_PERMITROOTLOGIN;?></td>
+                  <td width="78%" class="vtable"> 
+                    <input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
+                    <?=_SRVSSHD_PERMITROOTLOGINTEXT;?>
+                </tr>
                 <tr> 
                   <td colspan="2" valign="top" class="listtopic"><?=_SRVSSHD_KEY;?></td>
                 </tr>
@@ -150,7 +155,7 @@ function enable_change(enable_change) {
                     <br> 
                     <?=_SRVSSHD_PRIVATEKEYTEXT;?></td>
                 </tr>
-				<tr> 
+				        <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
                     <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)"> 

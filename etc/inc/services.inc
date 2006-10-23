@@ -701,12 +701,17 @@ Subsystem       sftp    /usr/libexec/sftp-server
 EOD;
 
 	if (isset($config['sshd']['port'])) {
-	
 		$sshconf .= <<<EOD
 Port {$config['sshd']['port']}
 
 EOD;
-	
+	}
+
+  if (isset($config['sshd']['permitrootlogin'])) {
+		$sshconf .= <<<EOD
+PermitRootLogin yes
+
+EOD;
 	}
 
 		fwrite($fd, $sshconf);
