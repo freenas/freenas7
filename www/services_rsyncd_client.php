@@ -484,7 +484,7 @@ else
                           <tr>
                             <td valign=top>
     														<select multiple size="12" name="months[]" id="months">
-																<?php $i=0; foreach ($a_months as $month):?>
+																<?php $i=1; foreach ($a_months as $month):?>
                                 <option value="<?=$i++;?>" <?php if (isset($pconfig['month']) && in_array($i, $pconfig['month'])) echo "selected";?>><?=$month;?></option>
                                 <?php endforeach;?>
                               </select>

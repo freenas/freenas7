@@ -37,6 +37,10 @@ require("guiconfig.inc");
 
 $pgtitle = array(_SERVICES,_SRVRYNCD_NAMEDESC);
 
+/* Global arrays. */
+$a_months = explode(" ",_MONTH_LONG);
+$a_weekdays = explode(" ",_DAY_OF_WEEK_LONG);
+
 if (!is_array($config['rsync_local'])){
 	$config['rsync_local'] = array();
 }
@@ -122,11 +126,6 @@ if (!is_array($config['mounts']['mount'])){
 	$pconfig['all_months'] = $config['rsync_local']['all_months'];
 	$pconfig['all_weekdays'] = $config['rsync_local']['all_weekdays'];
 
-	
-	$a_months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
-	$a_weekdays = array("Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday");
-                                  
-	
   if ($pconfig['all_mins'] == 1){
    $all_mins_all = " checked";
   } else {
@@ -518,23 +517,9 @@ function enable_change(enable_change) {
                           <tr>
                             <td valign=top>
     														<select multiple size="12" name="months[]" id="months">
-																
-																<?php
-																		 $i=1;
-
-																		 foreach ($a_months as $monthv){
-																		 		
-																				if (isset($pconfig['month'])){
-  																		 		if (in_array($i, $pconfig['month'])){
-                                    	 			 $is_selected = " selected";
-      																		} else {
-      																			$is_selected = "";
-      																		}
-																				}
-																		 		echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $monthv . "\n";
-                                  			$i++;
-																			}
-																?>
+    														<?php $i=1; foreach ($a_months as $month):?>
+                                <option value="<?=$i++;?>" <?php if (isset($pconfig['month']) && in_array($i, $pconfig['month'])) echo "selected";?>><?=$month;?></option>
+                                <?php endforeach;?>
                               </select>
 													  </td>
                           </tr>
@@ -547,22 +532,9 @@ function enable_change(enable_change) {
                           <tr>
                             <td valign=top>
     														<select multiple size="7" name="weekdays[]" id="weekdays">
-                                  <?php
-																		 $i=0;
-
-																		 foreach ($a_weekdays as $weekdayv){
-																		 
-																		 if (isset($pconfig['weekday'])){
-																		 		if (in_array($i, $pconfig['weekday'])){
-                                  	 			 $is_selected = " selected";
-    																		} else {
-    																			$is_selected = "";
-    																		}
-																			}
-																		 		echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $weekdayv . "\n";
-                                  			$i++;
-																			}
-																?>
+    														<?php $i=0; foreach ($a_weekdays as $day):?>
+                                <option value="<?=$i++;?>" <?php if (isset($pconfig['weekday']) && in_array($i, $pconfig['weekday'])) echo "selected";?>><?=$day;?></option>
+                                <?php endforeach;?>
                               </select>
 													  </td>
                           </tr>
