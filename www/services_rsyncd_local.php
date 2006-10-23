@@ -208,7 +208,7 @@ function enable_change(enable_change) {
                 <tr> 
                   <td colspan="2" valign="top" class="optsect_t">
 				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong><?=_SRVRYNC_LOCAL; ?></strong></td>
+				  <tr><td class="optsect_s"><strong><?=_SRVRYNC_LOCALTEXT; ?></strong></td>
 				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE; ?></strong></td></tr>
 				  </table></td>
                 </tr>

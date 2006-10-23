@@ -159,7 +159,7 @@ if (!is_array($config['mounts']['mount'])) {
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 <?php $i=0; foreach ($a_mount as $mount):?>
-  document.iform.share_{$i++}.disabled = endis;
+  document.iform.share_<?=$i++;?>.disabled = endis;
 <?php endforeach;?>
 	document.iform.rsyncserverip.disabled = endis;
 	document.iform.minutes1.disabled = endis;

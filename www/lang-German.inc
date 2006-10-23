@@ -621,6 +621,7 @@ define('_SRVNFS_TEXT','Die Namenskonvention f&uuml;r exportierte Verzeichnisse: 
 // Common
 define('_SRVRYNC_SERVER','Server');
 define('_SRVRYNC_CLIENT','Client');
+define('_SRVRYNC_LOCAL','Local');
 
 // file: services_rsyncd.php
 define('_SRVRYNCD_NAMEDESC','RSYNCD');
@@ -652,7 +653,7 @@ define('_SRVRYNCC_TEXT',_MSGSCHED_TEXT);
 // file: services_rsyncd_local.php
 
 define('_SRVRYNCC_MSGVALID','You can have the same mount point for source and destination!');
-define('_SRVRYNC_LOCAL','Rsync Local Synchronization');
+define('_SRVRYNC_LOCALTEXT','Rsync Local Synchronization');
 define('_SRVRYNC_LOCAL_SOURCE','Source Mount Point');
 define('_SRVRYNC_LOCAL_DESTINATION','Destination Mount Point (backup drive)');
 
