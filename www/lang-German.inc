@@ -673,6 +673,20 @@ define('_SRVSSHD_KEY','SSH Schl&uuml;ssel');
 define('_SRVSSHD_PRIVATEKEY','Private Key');
 define('_SRVSSHD_PRIVATEKEYTEXT','F&uuml;gen Sie einen "RSA private key" im PEM Format hier ein.');
 
+// Service: Unison
+// file: services_unison.php
+
+define('_SRVUNSN_NAMEDESC','Unison');
+define('_SRVUNSN_MSGVALIDWRKDIR','The combination of share and working directory does not exist.');
+define('_SRVUNSN_UNISON','Unison File Synchronisation');
+define('_SRVUNSN_SHARE','Share');
+define('_SRVUNSN_SHAREDESC','You may need enough space to duplicate all files being synced');
+define('_SRVUNSN_WORKDIR','Working Directory');
+define('_SRVUNSN_WORKDIRDESC','Where the working files will be stored');
+define('_SRVUNSN_MAKEDIR','Create');
+define('_SRVUNSN_MAKEDIRLABEL','Create work directory if it doesn\'t exist');
+define('_SRVUNSN_NOTESSH','<strong>Note</strong>: <a href="/services_sshd.php">SSHD</a> must be enabled for Unison to work, and the <a href="/access_users.php">user</a> must have Full Shell enabled.');
+
 // Service: AFP
 // file: services_afp.php
 
