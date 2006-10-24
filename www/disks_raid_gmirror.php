@@ -72,6 +72,7 @@ if ($_GET['act'] == "del") {
 		disks_raid_gmirror_delete($raidname);
 		unset($a_raid[$_GET['id']]);
 		write_config();
+		touch($d_raidconfdirty_path);
 		header("Location: disks_raid_gmirror.php");
 		exit;
 	}
