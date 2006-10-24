@@ -64,10 +64,12 @@ if ($_POST) {
 		/* Get the id of the disk */
 		$id=array_search_ex($disk, $a_disk, "name");
 
-		if ($type == "ufs" || $type == "ufsgpt" || $type == "ufs_no_su" || $type == "ufsgpt_no_su")
-			$a_disk[$id]['fstype'] = "ufs";
-		else
+//  This code seems to be useless. The only reason may be to simplify display in disks_manage.php for UFS filesystems.
+//	if ($type == "ufs" || $type == "ufsgpt" || $type == "ufs_no_su" || $type == "ufsgpt_no_su")
+//		$a_disk[$id]['fstype'] = "ufs";
+//	else
 			$a_disk[$id]['fstype'] = $type;
+
 		write_config();
 	}
 }

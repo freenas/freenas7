@@ -1133,6 +1133,30 @@ function get_fstype_list()
   return $fstlist;
 }
 
+function get_fstype_shortdesc($fstype)
+{
+  $shortdesc = "";
+
+  switch($fstype)
+  {
+    case "ufs":
+    case "ufs_no_su":
+    case "ufsgpt":
+    case "ufsgpt_no_su":  $shortdesc = "UFS";
+                          break;
+    case "msdos":         $shortdesc = "FAT32";
+                          break;
+    case "ntfs":          $shortdesc = "NTFS";
+                          break;
+    case "gmirror":       $shortdesc = "gmirror";
+                          break;
+    case "gvinum":        $shortdesc = "gvinum";
+                          break;
+  }
+  
+  return $shortdesc;
+}
+
 /* Search in a multidimensional array */		
 function array_search_ex($needle, $haystack, $key)
 {

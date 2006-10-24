@@ -131,11 +131,9 @@ if ($_GET['act'] == "del") {
 						echo "Always on";
 						}
 						?>&nbsp;
-                   
                   </td>
-                  
                    <td class="listbg">
-                    <?=($disk['fstype'])?$disk['fstype']:_DISKSMANAGEPHP_FSUNKNOWN ?>&nbsp;
+                    <?=($disk['fstype'])?get_fstype_shortdesc($disk['fstype']):_DISKSMANAGEPHP_FSUNKNOWN ?>&nbsp;
                   </td>           
                    <td class="listbg">
                     <?php
@@ -145,7 +143,6 @@ if ($_GET['act'] == "del") {
                    <td valign="middle" nowrap class="list"> <a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_DISKSMANAGEPHP_EDIT; ?>" width="17" height="17" border="0"></a>
                      &nbsp;<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSMANAGEPHP_DELCONF; ?>')"><img src="x.gif" title="<?=_DISKSMANAGEPHP_DEL; ?>" width="17" height="17" border="0"></a></td>
 				</tr>
-
 			  <?php $i++; endforeach; ?>
                 <tr> 
                   <td class="list" colspan="6"></td>
