@@ -432,6 +432,7 @@ define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Festplatteninitialisierungseigens
 define('_DISKSMANAGEINITPHP_INITINFO','"fdisk: Geom not found" ist keine Fehlermeldung!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Dieser Vorgang wird alle bestehenden Partitionen l&ouml;schen, Partition #1 anlegen und diese mit dem gew&auml;hlten Dateisystem formatieren.');
 define('_DISKSMANAGEINITPHP_FORMATDISC','Festplatte formatieren!');
+define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Wollen Sie wirklich diese Festplatte formatieren? Alle Daten gehen dabei verloren!');
 define('_DISKSPHP_NOMBR','MBR (MasterBootRecord) nicht l&ouml;schen'); //neu hinzugekommen
 define('_DISKSPHP_NOMBRTEXT','Nicht den MBR l&ouml;schen (bei einigen Hardware RAID Kontrollerkarten empfehlenswert)'); //neu hinzugekommen
 
@@ -519,7 +520,7 @@ define('_DISKSMOUNTPHP_MSGCHANGED','Die Liste der Einbindungen (mount points) wu
 define('_DISKSMOUNTPHP_NOTE','Hinweis:<br>
                 </strong></span>Erster Bearbeitungsschritt: Das Dateisystem der gerade eingerichteten Partition<br>
                 <a href="disks_manage.php">angeben.');
-define('_DISKSMOUNTPHP_DELCONF','Wirklich diesen MountPoint l&ouml;schen? Alle Elemente, die gerade darauf zugreifen, werden ung&uuml;ltig werden (z.B. Freigaben)');
+define('_DISKSMOUNTPHP_DELCONF','Wollen Sie wirklich diesen MountPoint l&ouml;schen? Alle Elemente, die gerade darauf zugreifen, werden ung&uuml;ltig werden (z.B. Freigaben)');
 define('_DISKSMOUNTPHP_DEL','MountPoint l&ouml;schen');
 define('_DISKSMOUNTPHP_ADD','MountPoint hinzuf&uuml;gen');
 
@@ -757,12 +758,12 @@ define('_ACCESSGROUPSEDIT_DESCTEXT','Gruppenbeschreibung.');
 
 // file: access_ad.php
 
-define('_ACCESSAD_NAME','Active Directory');
+define('_ACCESSAD_NAME','Active Directory'); // Nicht übersetzen.
 define('_ACCESSAD_MSGVALIDIP',_MSGVALIDIP);
 define('_ACCESSAD_MSGVALIDPASSERROR',_MSGVALIDPASSWORD);
 define('_ACCESSAD_ADNAME','AD Servername');
 define('_ACCESSAD_ADNAMETEXT','AD oder PDC-Name.');
-define('_ACCESSAD_IP','AD server IP');
+define('_ACCESSAD_IP','AD Server IP');
 define('_ACCESSAD_IPTEXT','IP-Adresse des MS Active Directory Server.');
 define('_ACCESSAD_DOMAIN','Domain Name');
 define('_ACCESSAD_DOMAINTEXT','Domain Name im alten Format.');
@@ -788,7 +789,7 @@ define('_SHUTSCHED_TEXT',_MSGSCHED_TEXT);
 define('_DIAGEDITPHP_NAMEDESC','Bearbeite Datei');
 define('_DIAGEDITPHP_FILEPATH','Dateipfad');
 define('_DIAGEDITPHP_SAVEMSG','Habe Datei gespeichert nach');
-define('_DIAGEDITPHP_FILENOTFOUND','File not found');
+define('_DIAGEDITPHP_FILENOTFOUND','Datei nicht gefunden');
 define('_DIAGEDITPHP_ROWS','Zeilen');
 define('_DIAGEDITPHP_COLS','Spalten');
 define('_DIAGEDITPHP_HIGHLIGHTING','Hervorheben');

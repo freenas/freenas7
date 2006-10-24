@@ -141,8 +141,8 @@ function disk_change() {
 				<tr>
 				  <td width="22%" valign="top">&nbsp;</td>
 				  <td width="78%">
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMANAGEINITPHP_FORMATDISC;?>">
-				</td>
+            <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMANAGEINITPHP_FORMATDISC;?>" onclick="return confirm('<?=_DISKSMANAGEINITPHP_FORMATDISCCONF;?>')">
+				  </td>
 				</tr>
 				<tr>
 				<td valign="top" colspan="2">

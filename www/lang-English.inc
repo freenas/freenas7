@@ -431,6 +431,7 @@ define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Disk initialization details:</str
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"is not an error message!\n');
 define('_DISKSMANAGEINITPHP_TEXT','This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified.');
 define('_DISKSMANAGEINITPHP_FORMATDISC','Format disk');
+define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Do you really want to format this disk? All data will be lost!');
 define('_DISKSPHP_NOMBR','Don\'t Erase MBR');
 define('_DISKSPHP_NOMBRTEXT','don\'t erase the MBR (useful for some RAID controller cards)');
 
