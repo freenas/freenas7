@@ -452,14 +452,18 @@ function convert_config()
 		$config['version'] = "1.3";
 	}
 
-  /* convert 1.3 -> 1.4 */
+	/* convert 1.3 -> 1.4 */
 	/* change the gvnium disk fstype attribute 'raid' to 'gvinum' */
+	/* change <raid> to <gvinum> */
 	if ($config['version'] == "1.3") {
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
-				if (0==strcmp($config['disks']['disk'][$i]['fstype'],"raid")) {
-					$config['disks']['disk'][$i]['fstype'] = "gvinum";
-      }
-    }
+			if (0==strcmp($config['disks']['disk'][$i]['fstype'],"raid")) {
+				$config['disks']['disk'][$i]['fstype'] = "gvinum";
+			}
+		}
+
+		$config['gvinum'] = $config['raid'];
+		unset($config['raid']);
 
 		$config['version'] = "1.4";
 	}

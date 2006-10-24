@@ -37,12 +37,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(_DISKSPHP_NAME, "Geom vinum",_DISKSRAIDEDITPHP_NAMEDESC);
 
-if (!is_array($config['raid']['vdisk']))
-	$config['raid']['vdisk'] = array();
+if (!is_array($config['gvinum']['vdisk']))
+	$config['gvinum']['vdisk'] = array();
 
 gvinum_sort();
 
-$a_raid = &$config['raid']['vdisk'];
+$a_raid = &$config['gvinum']['vdisk'];
 
 if ($_POST) {
 	unset($input_errors);

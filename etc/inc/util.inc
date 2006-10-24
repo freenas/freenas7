@@ -1139,6 +1139,8 @@ function get_fstype_shortdesc($fstype)
 
   switch($fstype)
   {
+    case "":              $shortdesc = "Unformated";
+                          break;
     case "ufs":
     case "ufs_no_su":
     case "ufsgpt":

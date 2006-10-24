@@ -358,7 +358,7 @@ function disks_umount_all()
 
 }
 
-function disks_raid_configure()
+function disks_raid_gvinum_configure()
 {
 	// Configure and sart all gvinum RAID volume
 		
@@ -366,9 +366,9 @@ function disks_raid_configure()
 	
 	/* Generate the raid.conf file */
 
-	if ($config['raid']['vdisk']) 	{
+	if ($config['gvinum']['vdisk']) 	{
 		
-		foreach ($config['raid']['vdisk'] as $a_raid_conf) 		{
+		foreach ($config['gvinum']['vdisk'] as $a_raid_conf) 		{
 
 			if (file_exists($g['varrun_path'] . "/raid.conf.dirty") && 
 	                    !in_array("{$a_raid_conf['name']}\n",file($g['varrun_path'] . "/raid.conf.dirty"))) continue;
@@ -476,7 +476,7 @@ EOD;
 		
 		/* start each volume */
 		
-		foreach ($config['raid']['vdisk'] as $a_raid_conf)	{
+		foreach ($config['gvinum']['vdisk'] as $a_raid_conf)	{
 			exec("/sbin/gvinum lv $raidname",$rawdata);
 			if (strpos($rawdata[0],"State: up")>=0) continue;
 
@@ -539,14 +539,14 @@ function disks_raid_gvinum_start()
 	
 	/* Generate the raid.conf file */
 
-	if ($config['raid']['vdisk']) {
+	if ($config['gvinum']['vdisk']) {
 	
 		if ($g['booting'])
 			echo "Start gvinum raid... ";
 
 		/* start each volume */
 		
-		foreach ($config['raid']['vdisk'] as $a_raid_conf) 	{
+		foreach ($config['gvinum']['vdisk'] as $a_raid_conf) 	{
 			mwexec("/sbin/gvinum start {$a_raid_conf['name']}");
 		}
 		
@@ -598,11 +598,11 @@ function disks_raid_gvinum_stop()
 	
 	/* Generate the raid.conf file */
 
-	if ($config['raid']['vdisk']) {
+	if ($config['gvinum']['vdisk']) {
 		
 		/* stop each volume */
 		
-		foreach ($config['raid']['vdisk'] as $a_raid_conf) 	{
+		foreach ($config['gvinum']['vdisk'] as $a_raid_conf) 	{
 			mwexec("/sbin/gvinum stop {$a_raid_conf['name']}");
 		}
 
@@ -646,7 +646,7 @@ function disks_raid_gvinum_delete($raidname)
 	
 	mwexec("/sbin/gvinum rm -r $raidname");
 	
-	foreach ($config['raid']['vdisk'] as $a_raid) 	{
+	foreach ($config['gvinum']['vdisk'] as $a_raid) 	{
 			if ($a_raid['name'] == $raidname) 	{
 				foreach ($a_raid['diskr'] as $disk) 	{				
 					mwexec("/sbin/gvinum rm -r disk_{$disk}");

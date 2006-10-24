@@ -36,11 +36,11 @@ require("guiconfig.inc");
 
 $pgtitle = array(_DISKSPHP_NAME,_DISKSRAIDPHP_GVINUM,_DISKSRAIDPHP_NAMEDESC);
 
-if (!is_array($config['raid']['vdisk']))
-	$config['raid']['vdisk'] = array();
+if (!is_array($config['gvinum']['vdisk']))
+	$config['gvinum']['vdisk'] = array();
 
 gvinum_sort();
-$a_raid = &$config['raid']['vdisk'];
+$a_raid = &$config['gvinum']['vdisk'];
 
 if ($_POST) {
 
@@ -52,7 +52,7 @@ if ($_POST) {
 		{
 			config_lock();
 			/* reload all components that create raid device */
-			disks_raid_configure();					
+			disks_raid_gvinum_configure();
 			config_unlock();
 			write_config();
 		}

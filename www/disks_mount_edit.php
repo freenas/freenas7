@@ -49,8 +49,8 @@ if (!is_array($config['disks']['disk']))
 	
 disks_sort();
 
-if (!is_array($config['raid']['vdisk']))
-	$config['raid']['vdisk'] = array();
+if (!is_array($config['gvinum']['vdisk']))
+	$config['gvinum']['vdisk'] = array();
 
 gvinum_sort();
 
@@ -61,7 +61,7 @@ gmirror_sort();
 
 $a_mount = &$config['mounts']['mount'];
 
-$a_disk = array_merge($config['disks']['disk'],$config['raid']['vdisk'],$config['gmirror']['vdisk']);
+$a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$config['gmirror']['vdisk']);
 
 /* Load the cfdevice file*/
 $filename=$g['varetc_path']."/cfdevice";

@@ -40,13 +40,13 @@ if (isset($_POST['id']))
 
 $pgtitle = array(_DISKSPHP_NAME,_DISKSRAIDPHP_NAMEDESC,isset($id)?_EDIT:_ADD);
 
-if (!is_array($config['raid']['vdisk']))
-	$config['raid']['vdisk'] = array();
+if (!is_array($config['gvinum']['vdisk']))
+	$config['gvinum']['vdisk'] = array();
 
 gvinum_sort();
 disks_sort();
 
-$a_raid = &$config['raid']['vdisk'];
+$a_raid = &$config['gvinum']['vdisk'];
 $a_disk = get_fstype_disks_list("gvinum");
 
 if (!sizeof($a_disk)) {

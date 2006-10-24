@@ -297,7 +297,7 @@ function gvinum_sort() {
 		return strcmp($a['name'], $b['name']);
 	}
 
-	usort($config['raid']['vdisk'], "gvinumcmp");
+	usort($config['gvinum']['vdisk'], "gvinumcmp");
 	
 }
 
