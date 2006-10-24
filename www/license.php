@@ -40,6 +40,8 @@ require("guiconfig.inc");
               POSSIBILITY OF SUCH DAMAGE</strong>.</p>
             <hr size="1">
             <p>The following persons have contributed to FreeNAS code:</p>
+             <p>Volker Theile (<a href="mailto:votdev@gmx.de">votdev@gmx.de</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">FreeNAS developer team member: Added DHCP client feature (adapted from m0n0wall), bug fixes and Lot's of other enhancements</font></em><br>
              <p>Stefan Hendricks (<a href="mailto:info@henmedia.de">info@henmedia.de</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added some system information and processes page</font></em><br>
              <p>Mat Murdock (<a href="mailto:mmurdock@kimballequipment.com">mmurdock@kimballequipment.com</a>)<br>
@@ -50,8 +52,8 @@ require("guiconfig.inc");
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Create the buildingscript setupfreenas.sh</font></em><br> 
               <p>Aliet Santiesteban Sifontes (<a href="mailto:aliet@tesla.cujae.edu.cu">aliet@tesla.cujae.edu.cu</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Add Multilanguage support on the WebGUI</font></em><br>
-              <p>Volker Theile (<a href="mailto:votdev@gmx.de">votdev@gmx.de</a>)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added DHCP client feature (adapted from m0n0wall), bug fixes and other enhancements</font></em><br>
+              <p>Michael Mee (<a href="mailto:mm2001@pobox.com">mm2001@pobox.com</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Add Unison support</font></em><br>  
               <p>Niels Endres (<a href="mailto:niels@weaklogic.com">niels@weaklogic.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added FAT support for config file and auto detection of NIC name</font></em><br>
             <br><br>

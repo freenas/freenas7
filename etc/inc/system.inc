@@ -371,6 +371,13 @@ server.pid-file            = "{$g['varrun_path']}/lighttpd.pid"
 auth.backend               = "htpasswd"
 auth.backend.htpasswd.userfile = "/usr/local/www/.htpasswd"
 cgi.assign = (".php" => "/usr/local/bin/php")
+auth.require = ( "/" =>
+					(	
+						"method"  => "basic",
+						"realm"   => "FreeNAS",
+						"require" => "valid-user"
+					),
+				) 
 
 EOD;
 
