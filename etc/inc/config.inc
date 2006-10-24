@@ -462,8 +462,10 @@ function convert_config()
 			}
 		}
 
-		$config['gvinum'] = $config['raid'];
-		unset($config['raid']);
+    if(is_array($config['raid'])) {
+      $config['gvinum'] = $config['raid'];
+    }
+    unset($config['raid']);
 
 		$config['version'] = "1.4";
 	}
