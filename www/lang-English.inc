@@ -338,8 +338,8 @@ define('_INTASSIGNPHP_MSGVALIDPORTWASASSIG',' was assigned to ');
 define('_INTASSIGNPHP_MSGVALIDINT',' interfaces:');
 define('_INTASSIGNPHP_INT','Interface');
 define('_INTASSIGNPHP_PORT','Network port');
-define('_INTASSIGNPHP_DELINT','delete interface');
-define('_INTASSIGNPHP_ADDINT','add interface');
+define('_INTASSIGNPHP_DELINT','Delete interface');
+define('_INTASSIGNPHP_ADDINT','Add interface');
 define('_INTASSIGNPHP_INTTEXT','After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p>
 <ul>
   <li><span class=\"vexpl\">change the IP address of your computer</span></li>
@@ -401,7 +401,7 @@ define('_DISKSMANAGEPHP_NAMEDESC','Management');
 define('_DISKSMANAGEPHP_MSGCHANGED','The disk list has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
 define('_DISKSMANAGEPHP_STANDBY','Standby time');
-define('_DISKSMANAGEPHP_FSUNKNOWN','unknown or unformatted');
+define('_DISKSMANAGEPHP_FSUNKNOWN','Unknown or unformatted');
 define('_DISKSMANAGEPHP_EDIT','edit disk');
 define('_DISKSMANAGEPHP_DEL','delete disk');
 define('_DISKSMANAGEPHP_DELCONF','Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!');
@@ -418,9 +418,9 @@ define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Puts the hard disk into standby mode w
                     access has elapsed. <em>Do not set this for CF cards.</em>');
 define('_DISKSMANAGEEDITPHP_APM','Advanced Power Management');
 define('_DISKSMANAGEEDITPHP_APMTEXT','This allows  you  to lower the power consumption of the drive, at the expense of performance.<em>Do not set this for CF cards.</em>');
-define('_DISKSMANAGEEDITPHP_ACLEVEL','acoustic level');
+define('_DISKSMANAGEEDITPHP_ACLEVEL','Acoustic level');
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','This allows you to set how loud the drive is while it\'s  operating.<em>Do not set this for CF cards.</em>');
-define('_DISKSMANAGEEDITPHP_PREFS','preformated FS');
+define('_DISKSMANAGEEDITPHP_PREFS','Preformated FS');
 define('_DISKSMANAGEEDITPHP_PREFSTEXT','This allows you to set FS type for preformated disk with data.<br>
                      <em>Leave "unformated" for unformated disk and then use Format menu.</em>');
 
@@ -442,8 +442,8 @@ define('_DISKSMANAGEISCSIPHP_MSGVALIDIP',_MSGVALIDIP);
 define('_DISKSMANAGEISCSIPHP_INITIATOR','iSCSI Initiator');
 define('_DISKSMANAGEISCSIPHP_TARGETIP','Target IP address');
 define('_DISKSMANAGEISCSIPHP_TARGETIPTEXT','IP address of the iSCSI target.');
-define('_DISKSMANAGEISCSIPHP_TARGETNAME','targetname');
-define('_DISKSMANAGEISCSIPHP_TARGETNAMETEXT','targetname.');
+define('_DISKSMANAGEISCSIPHP_TARGETNAME','Targetname');
+define('_DISKSMANAGEISCSIPHP_TARGETNAMETEXT','Targetname.');
 
 //Software RAID
 // Comon value
@@ -611,7 +611,7 @@ define('_SRVNFS_NAMEDESC','NFS');
 define('_SRVNFS_MSGVALIDNET','A valid network must be specified.');
 define('_SRVNFS_MSGVALIDNETBIT',_MSGVALIDNETBIT);
 define('_SRVNFS_NFSERVER','NFS Server');
-define('_SRVNFS_MAPALLROOT','map all user to root');
+define('_SRVNFS_MAPALLROOT','Map all user to root');
 define('_SRVNFS_MAPALLROOTTEXT','All users will have the root privilege.');
 define('_SRVNFS_AUTHNET','Authorised network');
 define('_SRVNFS_AUTHNETTEXT','Network that is authorised to access to NFS share');
@@ -633,7 +633,7 @@ define('_SRVRYNCD_TCPORT',_TCPPORT);
 define('_SRVRYNCD_MAXCON','Maximum connections');
 define('_SRVRYNCD_MAXCONTEXT','Maximum number of simultaneous connections. Default is 0 (unlimited)');
 define('_SRVRYNCD_MOTD','MOTD');
-define('_SRVFTP_MOTDTEXT','message of the day');
+define('_SRVFTP_MOTDTEXT','Message of the day');
 define('_SRVRYNCD_TCPORTTEXT','Alternate TCP port.');
 
 // file: services_rsyncd_client.php

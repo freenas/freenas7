@@ -130,7 +130,7 @@ function enable_change(enable_change) {
                   <td width="22%" valign="top" class="vncellreq"><?=_DISKSMANAGEISCSIPHP_TARGETIP; ?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="targetaddress" type="text" class="formfld" id="targetaddress" size="20" value="<?=htmlspecialchars($pconfig['targetaddress']);?>"> 
-                  <br><?=_DISKSMANAGEISCSIPHP_TARGETIP; ?></td>
+                  <br><?=_DISKSMANAGEISCSIPHP_TARGETIPTEXT; ?></td>
 				</tr>
 			<tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_DISKSMANAGEISCSIPHP_TARGETNAME; ?></td>

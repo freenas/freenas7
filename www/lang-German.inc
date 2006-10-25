@@ -340,7 +340,7 @@ define('_INTASSIGNPHP_MSGVALIDPORTWASASSIG',' wurde zugewiesen an ');
 define('_INTASSIGNPHP_MSGVALIDINT',' Schnittstellen:');
 define('_INTASSIGNPHP_INT','Schnittstellen');
 define('_INTASSIGNPHP_PORT','Netzwerkport');
-define('_INTASSIGNPHP_DELINT','l&ouml;sche Schnittstelle');
+define('_INTASSIGNPHP_DELINT','L&ouml;sche Schnittstelle');
 define('_INTASSIGNPHP_ADDINT','F&uuml;ge Schnittstelle hinzu');
 define('_INTASSIGNPHP_INTTEXT','Nach dem Anw&auml;hlen von &quot;Save&quot;, muss FreeNAS zur &Uuml;bernahme der &Auml;nderungen neu gestartet werden. Sie k&ouml;nnten auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen: </span></p>
 <ul>
@@ -402,10 +402,10 @@ define('_DISKSMANAGEPHP_NAMEDESC','Management');
 define('_DISKSMANAGEPHP_MSGCHANGED','Der Festplattenstatus hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
 define('_DISKSMANAGEPHP_STANDBY','Standbyzeit');
-define('_DISKSMANAGEPHP_FSUNKNOWN','unbekannt oder nicht formatiert');
+define('_DISKSMANAGEPHP_FSUNKNOWN','Unbekannt oder nicht formatiert');
 define('_DISKSMANAGEPHP_EDIT','Bearbeite Festplatte');
 define('_DISKSMANAGEPHP_DEL','L&ouml;sche Festplatte');
-define('_DISKSMANAGEPHP_DELCONF','Wollen Sie wirklich diese Festplatte l&ouml;schen? Alle Elemente in derzeitiger Benutzung werden ung&uuml;ltig werden (z.B. Freigaben)!');
+define('_DISKSMANAGEPHP_DELCONF','Wollen Sie diese Festplatte wirklich l&ouml;schen? Alle Elemente in derzeitiger Benutzung werden ung&uuml;ltig werden (z.B. Freigaben)!');
 define('_DISKSMANAGEPHP_ADD','Festplatte hinzuf&uuml;gen');
 define('_DISKSMANAGEPHP_NOTE','<strong>Bemerkung:<br>
                 </strong>Erster Bearbeitungsschritt: F&uuml;gen Sie ihre Festplatte zur Festplatteliste hinzu.');
@@ -421,9 +421,9 @@ define('_DISKSMANAGEEDITPHP_APM','Advanced Power Management');
 define('_DISKSMANAGEEDITPHP_APMTEXT','Verringert den Stromverbrauch der Festplatte auf Kosten der Geschwindigkeit.<em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>');
 define('_DISKSMANAGEEDITPHP_ACLEVEL','Acoustic Level');
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','Lautst&auml;rke des Laufwerks w&auml;hrend des Betriebs einstellen.<em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>');
-define('_DISKSMANAGEEDITPHP_PREFS','preformated FS');
+define('_DISKSMANAGEEDITPHP_PREFS','Preformated FS');
 define('_DISKSMANAGEEDITPHP_PREFSTEXT','Dateisystem von bereits mit Dateisystem und Daten versehenen Festplatten/Partitionen einstellen.<br>
-                     <em>Voreinstellung "unformated" f&uuml;r unformatierte Festplatte &uuml;bernehmen, dann das "Format menu" benutzen.</em>');
+                     <em>Voreinstellung "Unformated" f&uuml;r unformatierte Festplatte &uuml;bernehmen, dann das "Format menu" benutzen.</em>');
 
 //file: disks_manage_init.php
 
@@ -432,8 +432,8 @@ define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Festplatteninitialisierungseigens
 define('_DISKSMANAGEINITPHP_INITINFO','"fdisk: Geom not found" ist keine Fehlermeldung!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Dieser Vorgang wird alle bestehenden Partitionen l&ouml;schen, Partition #1 anlegen und diese mit dem gew&auml;hlten Dateisystem formatieren.');
 define('_DISKSMANAGEINITPHP_FORMATDISC','Festplatte formatieren!');
-define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Wollen Sie wirklich diese Festplatte formatieren? Alle Daten gehen dabei verloren!');
-define('_DISKSPHP_NOMBR','MBR (MasterBootRecord) nicht l&ouml;schen'); //neu hinzugekommen
+define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Wollen Sie diese Festplatte wirklich formatieren? Alle Daten gehen dabei verloren!');
+define('_DISKSPHP_NOMBR','MBR (MasterBootRecord) nicht l&ouml;schen');
 define('_DISKSPHP_NOMBRTEXT','Nicht den MBR l&ouml;schen (bei einigen Hardware RAID Kontrollerkarten empfehlenswert)'); //neu hinzugekommen
 
 //file: disks_manage_iscsi.php
@@ -441,10 +441,10 @@ define('_DISKSMANAGEPHP_NAMEDESC','Management');
 define('_DISKSMANAGEISCSIPHP_NAMEDESC','iSCSI');
 define('_DISKSMANAGEISCSIPHP_MSGVALIDIP',_MSGVALIDIP);
 define('_DISKSMANAGEISCSIPHP_INITIATOR','iSCSI Initiator');
-define('_DISKSMANAGEISCSIPHP_TARGETIP','Target IP Adresse');
+define('_DISKSMANAGEISCSIPHP_TARGETIP','Ziel IP Adresse');
 define('_DISKSMANAGEISCSIPHP_TARGETIPTEXT','IP Adresse des iSCSI target.');
-define('_DISKSMANAGEISCSIPHP_TARGETNAME','targetname');
-define('_DISKSMANAGEISCSIPHP_TARGETNAMETEXT','targetname.');
+define('_DISKSMANAGEISCSIPHP_TARGETNAME','Targetname');
+define('_DISKSMANAGEISCSIPHP_TARGETNAMETEXT','Targetname.');
 
 //Software RAID
 // Comon value
@@ -471,7 +471,7 @@ define('_DISKSRAIDPHP_DELRAID','L&ouml;sche RAID');
 define('_DISKSRAIDPHP_DELCONF','Soll dieses RAIDLaufwerk wirklich gel&ouml;scht werden? Alle Elemente, die gerade darauf zugreifen, werden ung&uuml;ltig werden (z.B. Freigaben)!');
 define('_DISKSRAIDPHP_NOTE','Hinweis:<br>
                 </strong></span>Optionaler Konfigurationsschritt: Konfiguration einer "virtual RAID disk" unter Verwendung<br>
-                <a href="disks_manage.php">einer vorher eingestellten Festplatte/Partition</a>.<br>Den "up" Status vor Formatieren und Einbinden (Mounten) abwarten!.');
+                <a href="disks_manage.php">einer vorher eingestellten Festplatte/Partition</a>.<br>Den "up" Status vor Formatieren und Einbinden (Mounten) abwarten!');
 
 //file: disks_raid_edit.php
 
@@ -484,8 +484,8 @@ define('_DISKSRAIDEDITPHP_MSGVALIDRAID1','Zwei Festplatten sind f&uuml;r ein RAI
 define('_DISKSRAIDEDITPHP_MSGVALIDRAID5','Mindestens drei Festplatten sind f&uuml;r ein RAID 5 notwendig.');
 define('_DISKSRAIDEDITPHP_MSGERROR','Fehler: RAID-Konfiguration konnte nicht gespeichert werden.\n');
 define('_DISKSRAIDEDITPHP_RAIDNAME','Raid Name');
-define('_DISKSRAIDEDITPHP_GVBALANCEALGO','Balance algorithm');
-define('_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT','Auswahl des "read balance algorithm".');
+define('_DISKSRAIDEDITPHP_GVBALANCEALGO','Balance Algorithmus');
+define('_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT','Auswahl des "Read Balance Algorithmus".');
 define('_DISKSRAIDEDITPHP_RAID0','striping');
 define('_DISKSRAIDEDITPHP_RAID1','mirroring');
 define('_DISKSRAIDEDITPHP_RAID5','rotated block-interleaved parity');
@@ -520,7 +520,7 @@ define('_DISKSMOUNTPHP_MSGCHANGED','Die Liste der Einbindungen (mount points) wu
 define('_DISKSMOUNTPHP_NOTE','Hinweis:<br>
                 </strong></span>Erster Bearbeitungsschritt: Das Dateisystem der gerade eingerichteten Partition<br>
                 <a href="disks_manage.php">angeben.');
-define('_DISKSMOUNTPHP_DELCONF','Wollen Sie wirklich diesen MountPoint l&ouml;schen? Alle Elemente, die gerade darauf zugreifen, werden ung&uuml;ltig werden (z.B. Freigaben)');
+define('_DISKSMOUNTPHP_DELCONF','Wollen Sie diesen MountPoint wirklich l&ouml;schen? Alle Elemente, die gerade darauf zugreifen, werden ung&uuml;ltig werden (z.B. Freigaben)');
 define('_DISKSMOUNTPHP_DEL','MountPoint l&ouml;schen');
 define('_DISKSMOUNTPHP_ADD','MountPoint hinzuf&uuml;gen');
 
@@ -593,8 +593,8 @@ define('_SRVFTP_ENAUTH','Aktiviere local User login');
 define('_SRVFTP_FXP','FXP');
 define('_SRVFTP_ENFXP','Aktiviere FXP Protokoll.');
 define('_SRVFTP_FXPTEXT','FXP erm&ouml;glicht &Uuml;bertragungen zwischen zwei Servern ohne Zwischen&uuml;bertragung von Daten &uuml;ber den anfragenden Rechner (unsicher!).');
-define('_SRVFTP_NATMODE','NAT mode');
-define('_SRVFTP_ENNATMODE','Erzwinge NAT mode');
+define('_SRVFTP_NATMODE','NAT Mode');
+define('_SRVFTP_ENNATMODE','Erzwinge NAT Mode');
 define('_SRVFTP_NATMODETEXT','Einschalten, falls der FTP Server hinter einer NAT (Network Address Translation) betrieben wird, die kein "applicative FTP proxying" unterst&uuml;tzt');
 define('_SRVFTP_PASSIVEIP','Passive IP-Adresse');
 define('_SRVFTP_PASSIVEIPTEXT','Diese Einstellung benutzen, um die IP-Adresse zu ersetzen, die der FTP Dienst normalerweise auf die PASV-Anfrage senden wird.');
@@ -603,7 +603,7 @@ define('_SRVFTP_PASVMINTEXT','Der kleinstm&ouml;gliche zuweisbare Port, der "PAS
 define('_SRVFTP_PASVMAX','pasv_max_port');
 define('_SRVFTP_PASVMAXTEXT','Der h&ouml;chstm&ouml;gliche zuweisbare Port, der "PASV style" Datenverbindungen erm&ouml;glicht.');
 define('_SRVFTP_BANNER','Banner');
-define('_SRVFTP_BANNERTEXT','Grussbotschaft - angezeigt bei der ersten Verbindung via FTP.');
+define('_SRVFTP_BANNERTEXT','Grussbotschaft - Angezeigt bei der ersten Verbindung via FTP.');
 
 // Service: NFS
 // file: services_nfs.php
@@ -612,7 +612,7 @@ define('_SRVNFS_NAMEDESC','NFS');
 define('_SRVNFS_MSGVALIDNET','Ein g&uuml;ltiges Netzwerk muss angegeben werden.');
 define('_SRVNFS_MSGVALIDNETBIT',_MSGVALIDNETBIT);
 define('_SRVNFS_NFSERVER','NFS Server');
-define('_SRVNFS_MAPALLROOT','map all user to root');
+define('_SRVNFS_MAPALLROOT','Map all user to root');
 define('_SRVNFS_MAPALLROOTTEXT','Alle Benutzer erhalten Administratorrechte.');
 define('_SRVNFS_AUTHNET','Zugelassenes Netzwerk');
 define('_SRVNFS_AUTHNETTEXT','Zugriffsberechtigtes Netzwerk auf die NFS-freigabe');
@@ -634,7 +634,7 @@ define('_SRVRYNCD_TCPORT',_TCPPORT);
 define('_SRVRYNCD_MAXCON','Max. Verbindungen');
 define('_SRVRYNCD_MAXCONTEXT','Max. Anzahl gleichzeitiger Verbindungen. Voreinstellung ist 0 (unbegrenzt)');
 define('_SRVRYNCD_MOTD','MOTD');
-define('_SRVFTP_MOTDTEXT','message of the day');
+define('_SRVFTP_MOTDTEXT','Nachricht des Tages');
 define('_SRVRYNCD_TCPORTTEXT','Alternativer TCP Port.');
 
 // file: services_rsyncd_client.php
