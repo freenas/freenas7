@@ -28,10 +28,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Diagnostics", "Ping/Traceroute");
 require("guiconfig.inc");
 
+$pgtitle = array(_DIAGTRACEROUTE_NAME, _DIAGTRACEROUTE_NAMEDESC);
 
 define('MAX_TTL', 64);
 define('DEFAULT_TTL', 18);

@@ -30,9 +30,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Status", "Interfaces");
 require("guiconfig.inc");
+
+$pgtitle = array(_STATSINTERFACES_NAME, _STATSINTERFACES_NAMEDESC);
 
 function get_interface_info($ifdescr) {
 	

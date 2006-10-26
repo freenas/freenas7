@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
-$pgtitle = array("License");
-require("guiconfig.inc"); 
+require("guiconfig.inc");
+$pgtitle = array(_LICENSE_NAME); 
 ?>
 <?php include("fbegin.inc"); ?>
             <p><strong>FreeNAS is Copyright &copy; 2005-2006 by Olivier Cochard-Labbe 

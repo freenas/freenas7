@@ -31,9 +31,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Diagnostics", "Logs");
 require("guiconfig.inc");
+
+$pgtitle = array(_DIAGLOGS_NAME, _DIAGLOGS_NAMEDESC);
 
 $nentries = $config['syslog']['nentries'];
 if (!$nentries)

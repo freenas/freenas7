@@ -29,15 +29,15 @@
   ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
   POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Status", "Processes");
 require("guiconfig.inc");
-include("fbegin.inc"); 
 
+$pgtitle = array(_STATSPROCPHP_NAME, _STATSPROCPHP_NAME_DESCRIPTION);
+
+include("fbegin.inc");
 ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td class="listtopic">Processes information</td>
+    <td class="listtopic"><?=_STATSPROCPHP_PROC_INF;?></td>
   </tr>
   <tr>
    <td class="listr">

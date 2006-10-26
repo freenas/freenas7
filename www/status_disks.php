@@ -31,9 +31,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Status", "Disks");
 require("guiconfig.inc");
+
+$pgtitle = array(_STATSDISKS_NAME, _STATSDISKS_NAMEDESC);
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
@@ -47,10 +47,10 @@ $a_disk_conf = &$config['disks']['disk'];
 <?php include("fbegin.inc"); ?>
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="5%" class="listhdrr">Disk</td>
-                  <td width="5%" class="listhdrr">Size</td>
-                  <td width="60%" class="listhdrr">Description</td>
-                  <td width="10%" class="listhdr">Status</td>
+                  <td width="5%" class="listhdrr"><?=_STATSDISKS_DISK;?></td>
+                  <td width="5%" class="listhdrr"><?=_STATSDISKS_SIZE;?></td>
+                  <td width="60%" class="listhdrr"><?=_STATSDISKS_DESC;?></td>
+                  <td width="10%" class="listhdr"><?=_STATSDISKS_STATUS;?></td>
 				</tr>
 			  <?php foreach ($a_disk_conf as $disk): ?>
                 <tr>

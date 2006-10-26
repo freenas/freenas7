@@ -28,9 +28,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Diagnostics", "Reboot system");
 require("guiconfig.inc");
+
+$pgtitle = array(_DIAGREBOOT_NAME, _DIAGREBOOT_NAMEDESC);
 
 if ($_POST) {
 	if ($_POST['Submit'] != " No ") {

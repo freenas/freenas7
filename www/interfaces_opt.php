@@ -121,7 +121,7 @@ if ($_POST) {
 	}
 }
 
-$pgtitle = array("Interfaces", "Optional $index (" . htmlspecialchars($optcfg['descr']) . ")");
+$pgtitle = array(_INTLANPHP_NAME, "Optional $index (" . htmlspecialchars($optcfg['descr']) . ")");
 ?>
 
 <?php include("fbegin.inc"); ?>

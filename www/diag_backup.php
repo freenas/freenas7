@@ -32,12 +32,12 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+require("guiconfig.inc");
 
-$pgtitle = array("Diagnostics", "Backup/restore");
+$pgtitle = array(_DIAGBACKUP_NAME, _DIAGBACKUP_NAMEDESC);
 
 /* omit no-cache headers because it confuses IE with file downloads */
 $omit_nocacheheaders = true;
-require("guiconfig.inc"); 
 
 if ($_POST) {
 

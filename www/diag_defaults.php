@@ -31,10 +31,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Diagnostics", "Factory defaults");
-
 require("guiconfig.inc");
+
+$pgtitle = array(_DIAGDEFAULTS_NAME, _DIAGDEFAULTS_NAMEDESC);
 
 if ($_POST) {
 	if ($_POST['Submit'] != " No ") {

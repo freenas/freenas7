@@ -28,9 +28,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Interfaces", "Assign network ports", "Edit VLAN");
 require("guiconfig.inc");
+
+$pgtitle = array(_INTVLANEDIT_NAME, _INTVLANEDIT_NAMEDESC, _INTVLANEDIT_EDITVLAN);
 
 if (!is_array($config['vlans']['vlan']))
 	$config['vlans']['vlan'] = array();

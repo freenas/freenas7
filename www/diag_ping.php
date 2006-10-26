@@ -32,7 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Diagnostics", "Ping/Traceroute");
+$pgtitle = array(_DIAGPING_NAME, _DIAGPING_NAMEDESC);
 require("guiconfig.inc");
 
 define('MAX_COUNT', 10);

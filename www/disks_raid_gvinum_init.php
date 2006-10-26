@@ -35,7 +35,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME, "Geom vinum",_DISKSRAIDEDITPHP_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GVINUM, _DISKSRAIDEDITPHP_NAMEDESC);
 
 if (!is_array($config['gvinum']['vdisk']))
 	$config['gvinum']['vdisk'] = array();

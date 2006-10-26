@@ -28,9 +28,10 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Status", "CPU load");
 require("guiconfig.inc");
+
+$pgtitle = array(_STATSGRAPHCPU_NAME, _STATSGRAPHCPU_NAMEDESC);
+
 ?>
 <?php include("fbegin.inc"); ?>
 <div align="center">

@@ -28,9 +28,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Status", "Wireless");
 require("guiconfig.inc");
+
+$pgtitle = array(_STATSWIRELESS_NAME, _STATSWIRELESS_NAMEDESC);
 
 function get_wireless_info($ifdescr) {
 	

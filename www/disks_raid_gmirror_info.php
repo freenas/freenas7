@@ -35,7 +35,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME,"Geom mirror",_DISKSRAIDPHP_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GMIRROR, _DISKSRAIDPHP_NAMEDESC);
 
 ?>
 <?php include("fbegin.inc"); ?>

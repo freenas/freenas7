@@ -6,8 +6,9 @@
  * (modified for m0n0wall by Manuel Kasper <mk@neon1.net>)
  * and re-used on FreeNAS by Olivier Cochard-Labbé <olivier@freenas.org>)
  */
-
 require("guiconfig.inc");
+
+$pageTitle = "FreeNAS: status";
 
 /* Execute a command, with a title, and generate an HTML table
  * showing the results.
@@ -104,7 +105,7 @@ defCmdT("Routing tables","netstat -nr");
 defCmdT("resolv.conf","cat /etc/resolv.conf");
 
 defCmdT("Processes","ps xauww");
-defCmdT("dhcpd.conf","cat /var/etc/dhcpd.conf");
+defCmdT("dhclient.conf","cat /var/etc/dhclient.conf");
 defCmdT("ez-ipupdate.cache","cat /conf/ez-ipupdate.cache");
 
 defCmdT("ATA disk","/sbin/atacontrol list");
@@ -121,8 +122,6 @@ defCmdT("last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 |
 defCmd("ls /conf");
 defCmd("ls /var/run");
 defCmdT("config.xml","dumpconfigxml");
-
-$pageTitle = "FreeNAS: status";
 
 exec("/bin/date", $dateOutput, $dateStatus);
 $currentDate = $dateOutput[0];

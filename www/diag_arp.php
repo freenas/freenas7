@@ -28,9 +28,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Diagnostics", "ARP table");
 require("guiconfig.inc");
+
+$pgtitle = array(_DIAGARP_NAME, _DIAGARP_NAMEDESC);
 
 $id = $_GET['id'];
 if (isset($_POST['id']))

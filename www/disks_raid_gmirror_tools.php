@@ -36,7 +36,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME,"Geom mirror", _DISKSRAIDEDITPHP_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GMIRROR, _DISKSRAIDEDITPHP_NAMEDESC);
 
 if ($_POST) {
 	unset($input_errors);

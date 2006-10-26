@@ -32,7 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array("Diagnostics", "Logs");
+$pgtitle = array(_DIAGLOGS_NAME, _DIAGLOGS_NAMEDESC);
 require("guiconfig.inc");
 
 $nentries = $config['syslog']['nentries'];

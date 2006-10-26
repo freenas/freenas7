@@ -229,7 +229,7 @@ define('_INDEXPHP_DISKS_USE','Disk space usage');
 define('_INDEXPHP_NODISK','No disk configured');
 
 // Status Processes Module
-// file: status_processes.php
+// file: status_process.php
 define('_STATSPROCPHP_NAME',_STATUS);
 define('_STATSPROCPHP_NAME_DESCRIPTION','Processes');
 define('_STATSPROCPHP_PROC_INF','Processes information');
@@ -402,10 +402,10 @@ define('_DISKSMANAGEPHP_MSGCHANGED','The disk list has been changed.<br>You must
 define('_DISKSMANAGEPHP_DESC',_DESC);
 define('_DISKSMANAGEPHP_STANDBY','Standby time');
 define('_DISKSMANAGEPHP_FSUNKNOWN','Unknown or unformatted');
-define('_DISKSMANAGEPHP_EDIT','edit disk');
-define('_DISKSMANAGEPHP_DEL','delete disk');
+define('_DISKSMANAGEPHP_EDIT','Edit disk');
+define('_DISKSMANAGEPHP_DEL','Delete disk');
 define('_DISKSMANAGEPHP_DELCONF','Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!');
-define('_DISKSMANAGEPHP_ADD','add disk');
+define('_DISKSMANAGEPHP_ADD','Add disk');
 define('_DISKSMANAGEPHP_NOTE','<strong>Note:<br>
                 </strong>First configuration step: Add your hardrive to the disk list.');
 
@@ -465,8 +465,8 @@ define('_DISKSRAIDPHP_UNSTABLE','(unstable)');
 define('_DISKSRAIDPHP_NAMEDESC','RAID');
 define('_DISKSRAIDPHP_MSGCHANGED','The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_DISKSRAIDPHP_TYPE','Type');
-define('_DISKSRAIDPHP_EDITRAID','edit raid');
-define('_DISKSRAIDPHP_DELRAID','delete raid');
+define('_DISKSRAIDPHP_EDITRAID','Edit raid');
+define('_DISKSRAIDPHP_DELRAID','Delete raid');
 define('_DISKSRAIDPHP_DELCONF','Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!');
 define('_DISKSRAIDPHP_NOTE','Note:<br>
                 </strong></span>Optional configuration step: Configuring a virtual RAID disk using your<br>
@@ -711,10 +711,10 @@ define('_ACCESS_FULLNAME','Full Name');
 // file: access_users.php
 
 define('_ACCESSUSERS_MSGCHANGED','The User list has been changed.<br>You must apply the changes in order for them to take effect.');
-define('_ACCESSUSERS_EDITUSER','edit user');
-define('_ACCESSUSERS_DELUSER','delete user');
+define('_ACCESSUSERS_EDITUSER','Edit user');
+define('_ACCESSUSERS_DELUSER','Eelete user');
 define('_ACCESSUSERS_CONFDEL','Do you really want to delete this user?!');
-define('_ACCESSUSERS_ADDUSER','add user');
+define('_ACCESSUSERS_ADDUSER','Add user');
 
 // file: access_users_edit.php
 
@@ -740,10 +740,10 @@ define('_ACCESSUSERSEDIT_FULLSHELLTEXT','Give full shell to user');
 
 define('_ACCESSGROUPS_MSGCHANGED','The group list has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_ACCESSGROUPS_DESC',_DESC);
-define('_ACCESSGROUPS_GROUPEDIT','edit group');
-define('_ACCESSGROUPS_GROUPDEL','delete group');
+define('_ACCESSGROUPS_GROUPEDIT','Edit group');
+define('_ACCESSGROUPS_GROUPDEL','Delete group');
 define('_ACCESSGROUPS_GROUPDELCONF','Do you really want to delete this group?!');
-define('_ACCESSGROUPS_GROUPADD','add group');
+define('_ACCESSGROUPS_GROUPADD','Add group');
 
 // file: access_users_groups_edit.php
 
@@ -775,7 +775,7 @@ define('_ACCESSAD_ADMINPASSTEXT','Password of domain administrator account, ente
 define('_DIAG_NAME','Diagnostics');
 
 // file: shutdown.php
-define('_SHUT_NAME','Shutdown');
+define('_SHUT_NAME',_MENULEFT_CMDSHUTDOWNSYS);
 define('_SHUT_MSGSHUT','The system is halting now. This may take one minute.');
 define('_SHUT_CONF','Are you sure you want to shutdown the system?');
 
@@ -797,4 +797,86 @@ define('_DIAGEDITPHP_HIGHLIGHTINGDISABLED','Disabled');
 
 // file: exec.php
 define('_DIAGEXECPHP_NAMEDESC','Execute command');
+
+// file: reboot.php
+define('_DIAGREBOOT_NAME',_MENULEFT_DIAGNOSTICS);
+define('_DIAGREBOOT_NAMEDESC','Reboot system');
+
+// file: license.php
+define('_LICENSE_NAME','License');
+
+// file: status_wireless.php
+define('_STATSWIRELESS_NAME',_MENULEFT_STATUS);
+define('_STATSWIRELESS_NAMEDESC','Wireless');
+
+// file: status_interfaces.php
+define('_STATSINTERFACES_NAME',_MENULEFT_STATUS);
+define('_STATSINTERFACES_NAMEDESC',_INTERFACES);
+
+// file: status_graph_cpu.php
+define('_STATSGRAPHCPU_NAME',_MENULEFT_STATUS);
+define('_STATSGRAPHCPU_NAMEDESC','CPU load');
+
+// file: status_disks.php
+define('_STATSDISKS_NAME',_MENULEFT_STATUS);
+define('_STATSDISKS_NAMEDESC',_DISKS);
+define('_STATSDISKS_DISK',_DISK);
+define('_STATSDISKS_SIZE',_SIZE);
+define('_STATSDISKS_DESC',_DESC);
+define('_STATSDISKS_STATUS',_STATUS);
+
+// file: interfaces_vlan.php
+define('_INTVLAN_NAME',_MENULEFT_INTERFACES);
+define('_INTVLAN_NAMEDESC',_INTASSIGNPHP_NAMEDESC);
+define('_INTVLAN_INTERFACE','Interface');
+define('_INTVLAN_VLANTAG','VLAN tag');
+define('_INTVLAN_DESC',_DESC);
+
+// file: interfaces_vlan_edit.php
+define('_INTVLANEDIT_NAME',_MENULEFT_INTERFACES);
+define('_INTVLANEDIT_NAMEDESC',_INTASSIGNPHP_NAMEDESC);
+define('_INTVLANEDIT_EDITVLAN','Edit VLAN');
+
+// file: diag_ping.php
+define('_DIAGPING_NAME',_MENULEFT_DIAGNOSTICS);
+define('_DIAGPING_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
+
+// file: diag_traceroute.php
+define('_DIAGTRACEROUTE_NAME',_MENULEFT_DIAGNOSTICS);
+define('_DIAGTRACEROUTE_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
+
+// file: diag_logs.php
+// file: diag_logs_daemon.php
+// file: diag_logs_ftp.php
+// file: diag_logs_rsyncd.php
+// file: diag_logs_samba.php
+// file: diag_logs_settings.php
+// file: diag_logs_smartd.php
+// file: diag_logs_sshd.php
+define('_DIAGLOGS_NAME',_MENULEFT_DIAGNOSTICS);
+define('_DIAGLOGS_NAMEDESC',_MENULEFT_DIAGLOGS);
+
+// file: diag_infos.php
+// file: diag_infos_ad.php
+// file: diag_infos_ataidle.php
+// file: diag_infos_iscsi.php
+// file: diag_infos_mount.php
+// file: diag_infos_part.php
+// file: diag_infos_raid.php
+// file: diag_infos_smart.php
+// file: diag_infos_space.php
+define('_DIAGINFOS_NAME',_MENULEFT_DIAGNOSTICS);
+define('_DIAGINFOS_NAMEDESC',_MENULEFT_DIAGINF);
+
+// file: diag_defaults.php
+define('_DIAGDEFAULTS_NAME',_MENULEFT_DIAGNOSTICS);
+define('_DIAGDEFAULTS_NAMEDESC',_MENULEFT_CMDFACTORYDEF);
+
+// file: diag_backup.php
+define('_DIAGBACKUP_NAME',_MENULEFT_DIAGNOSTICS);
+define('_DIAGBACKUP_NAMEDESC',_MENULEFT_CMDBACKUPRESTORE);
+
+// file: diag_arp.php
+define('_DIAGARP_NAME',_MENULEFT_DIAGNOSTICS);
+define('_DIAGARP_NAMEDESC',_MENULEFT_DIAGARPTAB);
 ?>
