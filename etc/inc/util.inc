@@ -1177,7 +1177,7 @@ function get_interface_info($ifdescr)
 	$ifinfo = array();
 
 	/* find out interface name */
-	$ifinfo['hwif'] = $config['interfaces'][$ifdescr]['if'];
+	$ifinfo['hwif'] = get_ifname($config['interfaces'][$ifdescr]['if']);
 	$ifinfo['if'] = $ifinfo['hwif'];
 
 	/* run netstat to determine link info */
