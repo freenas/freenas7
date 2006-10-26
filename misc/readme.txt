@@ -97,7 +97,6 @@ FreeNAS 0.68 (UNRELEASE!):
 - Added option on SSHD page to permit/deny root login.
 
 BUG TO FIX (before release the 0.68) :
-- Multilanguage web interface error
 - The output of some command on exec.php are redirected to the error log of ligghtpd in the place of the output screen.
 - Adding pccaardd
 
