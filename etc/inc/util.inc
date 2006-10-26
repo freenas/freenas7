@@ -1170,14 +1170,15 @@ function array_search_ex($needle, $haystack, $key)
   return false;
 }
 
-function get_interface_info($ifdescr)
+/* $iftype - interface type (e.g. lan, wan, ...) */
+function get_interface_info($iftype)
 {
 	global $config, $g;
 
 	$ifinfo = array();
 
 	/* find out interface name */
-	$ifinfo['hwif'] = get_ifname($config['interfaces'][$ifdescr]['if']);
+	$ifinfo['hwif'] = get_ifname($config['interfaces'][$iftype]['if']);
 	$ifinfo['if'] = $ifinfo['hwif'];
 
 	/* run netstat to determine link info */
@@ -1212,7 +1213,7 @@ function get_interface_info($ifdescr)
 		exec("/sbin/ifconfig " . $ifinfo['hwif'], $ifconfiginfo);
 
 		foreach ($ifconfiginfo as $ici) {
-			if (!isset($config['interfaces'][$ifdescr]['wireless'])) {
+			if (!isset($config['interfaces'][$iftype]['wireless'])) {
 				/* don't list media/speed for wireless cards, as it always
 				   displays 2 Mbps even though clients can connect at 11 Mbps */
 				if (preg_match("/media: .*? \((.*?)\)/", $ici, $matches)) {
@@ -1251,7 +1252,7 @@ function get_interface_info($ifdescr)
 				}
 			}
 
-			if ($ifdescr == "lan") {
+			if ($iftype == "lan") {
 				/* run netstat to determine the default gateway */
 				unset($netstatrninfo);
 				exec("/usr/bin/netstat -rnf inet", $netstatrninfo);
