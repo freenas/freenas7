@@ -5,7 +5,7 @@
   <title>FreeNAS Developers' Handbook</title>
 
   <bookinfo>
-    <date>Jully 16, 2006</date>
+    <date>October 27, 2006</date>
 
     <author>
       <firstname>Olivier</firstname>
@@ -1283,6 +1283,19 @@ done</programlisting>
           <para><command>make</command></para>
 
           <para><command>install -s rsync
+          $FREENAS/usr/local/bin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Unison</title>
+
+          <para>Use the port for compiling Unison:</para>
+
+          <para><command>cd /usr/ports/net/unison/</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp work/unison-2.13.16/unison
           $FREENAS/usr/local/bin/</command></para>
         </sect3>
 
