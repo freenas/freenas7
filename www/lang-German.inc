@@ -185,7 +185,7 @@ define('_MENULEFT_CMDBACKUPRESTORE','Sichern/Wiederherstellen');
 define('_MENULEFT_CMDFACTORYDEF','Werkseinstellungen');
 define('_MENULEFT_CMDREBOOTSYS','System Neustarten');
 define('_MENULEFT_CMDSHUTDOWNSYS','System Herunterfahren');
-
+define('_MENULEFT_TRAFFICGRAPH','Traffic graph');
 
 // Module specific stuff
 
@@ -880,4 +880,17 @@ define('_DIAGBACKUP_NAMEDESC',_MENULEFT_CMDBACKUPRESTORE);
 // file: diag_arp.php
 define('_DIAGARP_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGARP_NAMEDESC',_MENULEFT_DIAGARPTAB);
+
+// file: status_graph.php
+define('_STATSGRAPH_NAME',_MENULEFT_STATUS);
+define('_STATSGRAPH_NAMEDESC',_MENULEFT_TRAFFICGRAPH);
+
+// file: graph.php
+define('_GRAPH_ERRORGETIFDATA','Kann keine Daten erfassen von Schnittstelle');
+define('_GRAPH_IN','In');
+define('_GRAPH_OUT','Out');
+define('_GRAPH_SWITCHTOBYTES','Switch to bytes/s');
+define('_GRAPH_AUTOSCALE','AutoScale');
+define('_GRAPH_SHOWLAST','Graph shows last');
+define('_GRAPH_COLLECTDATA','Erfasse Daten, bitte warten...');
 ?>

@@ -1170,15 +1170,17 @@ function array_search_ex($needle, $haystack, $key)
   return false;
 }
 
-/* $iftype - interface type (e.g. lan, wan, ...) */
-function get_interface_info($iftype)
+/*
+  Get interface informations. 
+  $iftype - interface name (e.g. de0, ...)
+*/
+function get_interface_info($if)
 {
 	global $config, $g;
 
 	$ifinfo = array();
 
-	/* find out interface name */
-	$ifinfo['hwif'] = get_ifname($config['interfaces'][$iftype]['if']);
+	$ifinfo['hwif'] = get_ifname($if);
 	$ifinfo['if'] = $ifinfo['hwif'];
 
 	/* run netstat to determine link info */
@@ -1267,5 +1269,18 @@ function get_interface_info($iftype)
 	}
 
 	return $ifinfo;
+}
+
+/*
+  Get interface informations. 
+  $iftype - interface type (e.g. lan, opt[n], ...)
+*/
+function get_interface_info_ex($iftype)
+{
+  global $config;
+  
+  /* find out interface name */
+	$if = $config['interfaces'][$iftype]['if'];
+	return get_interface_info($if);
 }
 ?>

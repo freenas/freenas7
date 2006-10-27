@@ -152,6 +152,7 @@ define('_MENULEFT_CMDBACKUPRESTORE','Salvar/Restaurar');
 define('_MENULEFT_CMDFACTORYDEF','Valores de Frábica');
 define('_MENULEFT_CMDREBOOTSYS','Reiniciar Sistema');
 define('_MENULEFT_CMDSHUTDOWNSYS','Apagar Sistema');
+define('_MENULEFT_TRAFFICGRAPH','Traffic graph');
 
 // Module specific stuff
 
@@ -331,4 +332,17 @@ define('_DIAGBACKUP_NAMEDESC',_MENULEFT_CMDBACKUPRESTORE);
 // file: diag_arp.php
 define('_DIAGARP_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGARP_NAMEDESC',_MENULEFT_DIAGARPTAB);
+
+// file: status_graph.php
+define('_STATSGRAPH_NAME',_MENULEFT_STATUS);
+define('_STATSGRAPH_NAMEDESC',_MENULEFT_TRAFFICGRAPH);
+
+// file: graph.php
+define('_GRAPH_ERRORGETIFDATA','Cannot get data about interface');
+define('_GRAPH_IN','In');
+define('_GRAPH_OUT','Out');
+define('_GRAPH_SWITCHTOBYTES','Switch to bytes/s');
+define('_GRAPH_AUTOSCALE','AutoScale');
+define('_GRAPH_SHOWLAST','Graph shows last');
+define('_GRAPH_COLLECTDATA','Collecting initial data, please wait...');
 ?>

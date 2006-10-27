@@ -31,23 +31,18 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Status", "Traffic graph");
 require("guiconfig.inc");
 
-$curif = "wan";
+$pgtitle = array(_STATSGRAPH_NAME, _STATSGRAPH_NAMEDESC);
+
+$curif = "lan";
 if ($_GET['if'])
 	$curif = $_GET['if'];
-	
-if ($curif == "wan")
-	$ifnum = get_real_wan_interface();
-else
-	$ifnum = $config['interfaces'][$curif]['if'];
+$ifnum = get_ifname($config['interfaces'][$curif]['if']);
 ?>
 <?php include("fbegin.inc"); ?>
 <?php
-$ifdescrs = array('wan' => 'WAN', 'lan' => 'LAN');
-	
+$ifdescrs = array('lan' => 'LAN');
 for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
 	$ifdescrs['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
 }
@@ -64,9 +59,14 @@ foreach ($ifdescrs as $ifn => $ifd) {
 ?>
 </select>
 </form>
-<div align="center">
-<embed src="graph.php?ifnum=<?=$ifnum;?>&ifname=<?=rawurlencode($ifdescrs[$curif]);?>" type="image/svg+xml"
-		width="550" height="275" pluginspage="http://www.adobe.com/svg/viewer/install/auto" />
+<div style="center">
+<object id="graph"
+        data="graph.php?ifnum=<?=$ifnum;?>&amp;ifname=<?=rawurlencode($ifdescrs[$curif]);?>"
+        type="image/svg+xml"
+        width="550"
+        height="275">
+  <param name="src" value="graph.php?ifnum=<?=$ifnum;?>&amp;ifname=<?=rawurlencode($ifdescrs[$curif]);?>">
+  Your browser does not support this object type!<br><span class="red"><strong>Note:</strong></span> The <a href="http://www.adobe.com/svg/viewer/install/" target="_blank">Adobe SVG viewer</a> is required to view the graph.
+</object>
 </div>
-<br><span class="red"><strong>Note:</strong></span> the <a href="http://www.adobe.com/svg/viewer/install/" target="_blank">Adobe SVG viewer</a> is required to view the graph.
 <?php include("fend.inc"); ?>

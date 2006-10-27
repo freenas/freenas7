@@ -181,7 +181,7 @@ define('_MENULEFT_CMDBACKUPRESTORE','Backup/Restore');
 define('_MENULEFT_CMDFACTORYDEF','Factory defaults');
 define('_MENULEFT_CMDREBOOTSYS','Reboot system');
 define('_MENULEFT_CMDSHUTDOWNSYS','Shutdown system');
-
+define('_MENULEFT_TRAFFICGRAPH','Traffic graph');
 
 // Module specific stuff
 
@@ -811,7 +811,7 @@ define('_STATSWIRELESS_NAMEDESC','Wireless');
 
 // file: status_interfaces.php
 define('_STATSINTERFACES_NAME',_MENULEFT_STATUS);
-define('_STATSINTERFACES_NAMEDESC',_INTERFACES);
+define('_STATSINTERFACES_NAMEDESC',_MENULEFT_INTERFACES);
 
 // file: status_graph_cpu.php
 define('_STATSGRAPHCPU_NAME',_MENULEFT_STATUS);
@@ -879,4 +879,17 @@ define('_DIAGBACKUP_NAMEDESC',_MENULEFT_CMDBACKUPRESTORE);
 // file: diag_arp.php
 define('_DIAGARP_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGARP_NAMEDESC',_MENULEFT_DIAGARPTAB);
+
+// file: status_graph.php
+define('_STATSGRAPH_NAME',_MENULEFT_STATUS);
+define('_STATSGRAPH_NAMEDESC',_MENULEFT_TRAFFICGRAPH);
+
+// file: graph.php
+define('_GRAPH_ERRORGETIFDATA','Cannot get data about interface');
+define('_GRAPH_IN','In');
+define('_GRAPH_OUT','Out');
+define('_GRAPH_SWITCHTOBYTES','Switch to bytes/s');
+define('_GRAPH_AUTOSCALE','AutoScale');
+define('_GRAPH_SHOWLAST','Graph shows last');
+define('_GRAPH_COLLECTDATA','Collecting initial data, please wait...');
 ?>

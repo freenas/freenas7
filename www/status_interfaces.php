@@ -43,7 +43,7 @@ $pgtitle = array(_STATSINTERFACES_NAME, _STATSINTERFACES_NAMEDESC);
 					}
 					
 			      foreach ($ifdescrs as $ifdescr => $ifname): 
-				  $ifinfo = get_interface_info($ifdescr);
+				  $ifinfo = get_interface_info_ex($ifdescr);
 				  ?>
               <?php if ($i): ?>
               <tr>
