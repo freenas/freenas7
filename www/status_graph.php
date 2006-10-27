@@ -59,7 +59,7 @@ foreach ($ifdescrs as $ifn => $ifd) {
 ?>
 </select>
 </form>
-<div style="center">
+<div align="center">
 <object id="graph"
         data="graph.php?ifnum=<?=$ifnum;?>&amp;ifname=<?=rawurlencode($ifdescrs[$curif]);?>"
         type="image/svg+xml"
