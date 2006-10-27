@@ -95,6 +95,7 @@ FreeNAS 0.68 (UNRELEASE!):
 - New language: Italian (thanks to Pietro Defaccio)
 - New language: German (thanks to Falk Menzel and Dominik Plaszewski)
 - Added option on SSHD page to permit/deny root login.
+- Make traffic graph available to webGUI.
 
 BUG TO FIX (before release the 0.68) :
 - The output of some command on exec.php are redirected to the error log of ligghtpd in the place of the output screen.

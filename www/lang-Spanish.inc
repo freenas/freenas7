@@ -341,8 +341,10 @@ define('_STATSGRAPH_NAMEDESC',_MENULEFT_TRAFFICGRAPH);
 define('_GRAPH_ERRORGETIFDATA','Cannot get data about interface');
 define('_GRAPH_IN','In');
 define('_GRAPH_OUT','Out');
-define('_GRAPH_SWITCHTOBYTES','Switch to bytes/s');
+define('_GRAPH_SWITCHTO','Switch to');
 define('_GRAPH_AUTOSCALE','AutoScale');
+define('_GRAPH_AUTOSCALE_FOLLOW','Follow');
+define('_GRAPH_AUTOSCALE_UP','Up');
 define('_GRAPH_SHOWLAST','Graph shows last');
 define('_GRAPH_COLLECTDATA','Collecting initial data, please wait...');
 ?>

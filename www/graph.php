@@ -45,6 +45,7 @@ $ifname=@$_GET["ifname"]?$_GET["ifname"]:"Interface $ifnum";  //Interface name t
 $scale_type="follow"; //Autoscale default setup : "up" = only increase scale; "follow" = increase and decrease scale according to current graphed datas
 $nb_plot=120;         //NB plot in graph
 $time_interval=1;		  //Refresh time Interval
+$unit="bits";         //Initial unit type: "bits" or "bytes"
 $fetch_link = "ifstats.php?if=$ifnum";
 
 //SVG attributes
@@ -87,8 +88,8 @@ print('<?xml version="1.0" encoding="iso-8859-1"?>' . "\n");?>
     <text id="graph_in_txt" x="20" y="8" <?=$attribs['in']?>> </text>
     <text id="graph_out_txt" x="20" y="16" <?=$attribs['out']?>> </text>
     <text id="ifname" x="<?=$width?>" y="8" <?=$attribs['graphname']?> text-anchor="end"><?=$ifname?></text>
-    <text id="switch_unit" x="<?=$width*0.55?>" y="5" <?=$attribs['switch_unit']?>><?=_GRAPH_SWITCHTOBYTES;?></text>
-    <text id="switch_scale" x="<?=$width*0.55?>" y="11" <?=$attribs['switch_scale']?>><?=_GRAPH_AUTOSCALE;?> (<?=$scale_type?>)</text>
+    <text id="switch_unit" x="<?=$width*0.55?>" y="5" <?=$attribs['switch_unit']?>><?=_GRAPH_SWITCHTO . " " . $unit . "/s";?></text>
+    <text id="switch_scale" x="<?=$width*0.55?>" y="11" <?=$attribs['switch_scale']?>><?=_GRAPH_AUTOSCALE;?> (<?=($scale_type == 'up') ? _GRAPH_AUTOSCALE_UP : _GRAPH_AUTOSCALE_FOLLOW;?>)</text>
     <text id="datetime" x="<?=$width*0.33?>" y="5" <?=$attribs['legend']?>> </text>
     <text id="graphlast" x="<?=$width*0.55?>" y="17" <?=$attribs['legend']?>><?=_GRAPH_SHOWLAST;?> <?=$time_interval*$nb_plot?> <?=_SECONDS;?></text>
     <polygon id="axis_arrow_x" <?=$attribs['axis']?> points="<?=($width) . "," . ($height)?> <?=($width-2) . "," . ($height-2)?> <?=($width-2) . "," . $height?>"/>
@@ -152,7 +153,7 @@ var plot_out = new Array();
 
 var max_num_points = <?=$nb_plot?>;  // maximum number of plot data points
 var step = <?=$width?> / max_num_points ;
-var unit = 'bits';
+var unit = '<?=$unit;?>';
 var scale_type = '<?=$scale_type?>';
 
 function init(evt) {
@@ -165,14 +166,15 @@ function init(evt) {
 
 function switch_unit(event)
 {
-  SVGDoc.getElementById('switch_unit').firstChild.data = 'Switch to ' + unit + '/s';
+  SVGDoc.getElementById('switch_unit').firstChild.data = '<?=_GRAPH_SWITCHTO;?> ' + unit + '/s';
   unit = (unit == 'bits') ? 'bytes' : 'bits';
 }
 
 function switch_scale(event)
 {
   scale_type = (scale_type == 'up') ? 'follow' : 'up';
-  SVGDoc.getElementById('switch_scale').firstChild.data = 'AutoScale (' + scale_type + ')';
+  scale_type_text = (scale_type == 'up') ? '<?=_GRAPH_AUTOSCALE_UP;?>' : '<?=_GRAPH_AUTOSCALE_FOLLOW;?>';
+  SVGDoc.getElementById('switch_scale').firstChild.data = '<?=_GRAPH_AUTOSCALE;?> (' + scale_type_text + ')';
 }
 
 function fetch_data() {
