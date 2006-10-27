@@ -79,14 +79,14 @@ print('<?xml version="1.0" encoding="iso-8859-1"?>' . "\n");?>
     <path id="graph_out" d="M0 <?=$height?> L 0 <?=$height?>" <?=$attribs['graph_out']?>/>
     <path id="graph_in"  d="M0 <?=$height?> L 0 <?=$height?>" <?=$attribs['graph_in']?>/>
     <path id="grid"  d="M0 <?=$height/4*1?> L <?=$width?> <?=$height/4*1?> M0 <?=$height/4*2?> L <?=$width?> <?=$height/4*2?> M0 <?=$height/4*3?> L <?=$width?> <?=$height/4*3?>" <?=$attribs['grid']?>/>
-    <text id="grid_txt1" x="<?=$width-1?>" y="<?=$height/4*1?>" <?=$attribs['grid_txt']?> text-anchor="end">75%</text>
-    <text id="grid_txt2" x="<?=$width-1?>" y="<?=$height/4*2?>" <?=$attribs['grid_txt']?> text-anchor="end">50%</text>
-    <text id="grid_txt3" x="<?=$width-1?>" y="<?=$height/4*3?>" <?=$attribs['grid_txt']?> text-anchor="end">25%</text>
+    <text id="grid_txt1" x="<?=$width?>" y="<?=$height/4*1?>" <?=$attribs['grid_txt']?> text-anchor="end">75%</text>
+    <text id="grid_txt2" x="<?=$width?>" y="<?=$height/4*2?>" <?=$attribs['grid_txt']?> text-anchor="end">50%</text>
+    <text id="grid_txt3" x="<?=$width?>" y="<?=$height/4*3?>" <?=$attribs['grid_txt']?> text-anchor="end">25%</text>
     <text id="graph_in_lbl" x="5" y="8" <?=$attribs['in']?>><?=_GRAPH_IN;?></text>
     <text id="graph_out_lbl" x="5" y="16" <?=$attribs['out']?>><?=_GRAPH_OUT;?></text>
     <text id="graph_in_txt" x="20" y="8" <?=$attribs['in']?>> </text>
     <text id="graph_out_txt" x="20" y="16" <?=$attribs['out']?>> </text>
-    <text id="ifname" x="<?=$width-1?>" y="8" <?=$attribs['graphname']?> text-anchor="end"><?=$ifname?></text>
+    <text id="ifname" x="<?=$width?>" y="8" <?=$attribs['graphname']?> text-anchor="end"><?=$ifname?></text>
     <text id="switch_unit" x="<?=$width*0.55?>" y="5" <?=$attribs['switch_unit']?>><?=_GRAPH_SWITCHTOBYTES;?></text>
     <text id="switch_scale" x="<?=$width*0.55?>" y="11" <?=$attribs['switch_scale']?>><?=_GRAPH_AUTOSCALE;?> (<?=$scale_type?>)</text>
     <text id="datetime" x="<?=$width*0.33?>" y="5" <?=$attribs['legend']?>> </text>
