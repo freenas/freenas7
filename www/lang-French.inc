@@ -379,8 +379,7 @@ define('_INTPHP_DHCPHOSTNAME','Nom d\'hote');
 define('_INTPHP_DHCPHOSTNAMETEXT','Le contenu de ce champ est envoy&eacute; en tant que nom d\'hote DHCP lors de la demande de bail DHCP.');
 define('_INTPHP_DHCPCLIENTIDENTIFIER','Identificateur du client');
 define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','La valeur de ce champ est envoy&eacute;&eacute;e en tant qu\'identificateur du client lors de la demande de bail DHCP.');
-
-
+define('_INTPHP_CALCNETMASKBITS','Calculate netmask bits');
 
 // Disks: Manage
 // Common text

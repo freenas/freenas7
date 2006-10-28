@@ -116,8 +116,8 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
-/* Generate default netmask bits for network's class. */
-function gen_bits(ipaddr) {
+/* Calculate default netmask bits for network's class. */
+function calc_netmask_bits(ipaddr) {
     if (ipaddr.search(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) != -1) {
         var adr = ipaddr.split(/\./);
         if (adr[0] > 255 || adr[1] > 255 || adr[2] > 255 || adr[3] > 255)
@@ -136,8 +136,8 @@ function gen_bits(ipaddr) {
       return "";
 }
 
-function ipaddr_change() {
-	document.iform.subnet.value = gen_bits(document.iform.ipaddr.value);
+function change_netmask_bits() {
+	document.iform.subnet.value = calc_netmask_bits(document.iform.ipaddr.value);
 }
 
 function type_change() {
@@ -189,6 +189,7 @@ function type_change() {
                       </option>
                       <?php endfor; ?>
                     </select>
+                    <img name="calcnetmaskbits" src="calc.gif" title="<?=_INTPHP_CALCNETMASKBITS;?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
                   </td>
                 </tr>
                  <tr> 

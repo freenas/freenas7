@@ -386,6 +386,7 @@ define('_INTPHP_DHCPHOSTNAME','Hostname');
 define('_INTPHP_DHCPHOSTNAMETEXT','The value in this field is sent as the DHCP hostname when requesting a DHCP lease.');
 define('_INTPHP_DHCPCLIENTIDENTIFIER','Client Identifier');
 define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.');
+define('_INTPHP_CALCNETMASKBITS','Berechne Netmask Bits');
 
 // Disks: Manage
 // Common text

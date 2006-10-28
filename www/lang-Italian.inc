@@ -379,6 +379,14 @@ define('_INTPHP_ENOPT','Abilita Opzionale ');
 define('_INTPHP_ENOPTINT',' interfaccia');
 define('_INTPHP_DESC',_DESC);
 define('_INTPHP_DESCTEXT','Inserire qui una descrizione (nome) per l\'interfaccia.');
+define('_INTPHP_STATIC','Static IP configuration');
+define('_INTPHP_DHCP','DHCP client configuration');
+define('_INTPHP_GENERAL','General configuration');
+define('_INTPHP_DHCPHOSTNAME','Hostname');
+define('_INTPHP_DHCPHOSTNAMETEXT','The value in this field is sent as the DHCP hostname when requesting a DHCP lease.');
+define('_INTPHP_DHCPCLIENTIDENTIFIER','Client Identifier');
+define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.');
+define('_INTPHP_CALCNETMASKBITS','Calculate netmask bits');
 
 // Disks: Manage
 // Common text
