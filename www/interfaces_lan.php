@@ -116,6 +116,7 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
+/* Generate default netmask bits for network's class. */
 function gen_bits(ipaddr) {
     if (ipaddr.search(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) != -1) {
         var adr = ipaddr.split(/\./);
@@ -148,8 +149,6 @@ function type_change() {
       document.iform.ipaddr.disabled = 0;
     	document.iform.subnet.disabled = 0;
       document.iform.gateway.disabled = 0;
-      /* calculate subnet mask */
-      ipaddr_change();
       break;
     case 1: /* DHCP */
       document.iform.ipaddr.disabled = 1;
@@ -181,7 +180,7 @@ function type_change() {
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_IP; ?></td>
                   <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>" onchange="ipaddr_change()">
+                    <?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
                     / 
                     <select name="subnet" class="formfld" id="subnet">
                       <?php for ($i = 31; $i > 0; $i--): ?>
