@@ -51,7 +51,6 @@ $pconfig['polling'] = isset($optcfg['polling']);
 $pconfig['media'] = $optcfg['media'];
 $pconfig['mediaopt'] = $optcfg['mediaopt'];
 
-
 /* Wireless interface? */
 if (isset($optcfg['wireless'])) {
 	require("interfaces_wlan.inc");
@@ -123,7 +122,6 @@ if ($_POST) {
 
 $pgtitle = array(_INTLANPHP_NAME, "Optional $index (" . htmlspecialchars($optcfg['descr']) . ")");
 ?>
-
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
@@ -158,7 +156,7 @@ function bridge_change(enable_over) {
 	document.iform.ipaddr.disabled = endis;
 	document.iform.subnet.disabled = endis;
 }
-function gen_bits(ipaddr) {
+function calc_netmask_bits(ipaddr) {
     if (ipaddr.search(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) != -1) {
         var adr = ipaddr.split(/\./);
         if (adr[0] > 255 || adr[1] > 255 || adr[2] > 255 || adr[3] > 255)
@@ -176,8 +174,8 @@ function gen_bits(ipaddr) {
     else
         return 0;
 }
-function ipaddr_change() {
-	document.iform.subnet.selectedIndex = gen_bits(document.iform.ipaddr.value);
+function change_netmask_bits() {
+	document.iform.subnet.selectedIndex = calc_netmask_bits(document.iform.ipaddr.value);
 }
 //-->
 </script>
@@ -187,11 +185,15 @@ function ipaddr_change() {
             <form action="interfaces_opt.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
-                  <td width="22%" valign="top" class="vtable">&nbsp;</td>
-                  <td width="78%" class="vtable">
-<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false);bridge_change(false)">
-                    <strong><?=_INTPHP_ENOPT;?><?=$index;?><?=_INTPHP_ENOPTINT;?></strong></td>
-				</tr>
+                  <td colspan="2" valign="top" class="optsect_t">
+                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                      <tr>
+                        <td class="optsect_s"></td>
+                        <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false);bridge_change(false)"><strong><?=_ACTIVATE;?></strong></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncell"><?=_INTPHP_DESC;?></td>
                   <td width="78%" class="vtable"> 
@@ -208,13 +210,14 @@ function ipaddr_change() {
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_IP; ?></td>
                   <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>" onchange="ipaddr_change()">
+                    <?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
                     /
                 	<select name="subnet" class="formfld" id="subnet">
 					<?php for ($i = 31; $i > 0; $i--): ?>
 					<option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected"; ?>><?=$i;?></option>
 					<?php endfor; ?>
                     </select>
+                    <img name="calcnetmaskbits" src="calc.gif" title="<?=_INTPHP_CALCNETMASKBITS;?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
 				 </td>
 				</tr>
 				<tr> 
