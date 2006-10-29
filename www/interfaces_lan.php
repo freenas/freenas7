@@ -29,13 +29,11 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(_INTLANPHP_NAME, _INTLANPHP_NAMEDESC);
 
 $lancfg = &$config['interfaces']['lan'];
-$optcfg = &$config['interfaces']['lan'];
 
 if ($config['interfaces']['lan']['ipaddr'] == "dhcp") {
 	$pconfig['type'] = "DHCP";
@@ -54,7 +52,7 @@ $pconfig['mediaopt'] = $config['interfaces']['lan']['mediaopt'];
 $pconfig['polling'] = isset($config['interfaces']['lan']['polling']);
 
 /* Wireless interface? */
-if (isset($optcfg['wireless'])) {
+if (isset($lancfg['wireless'])) {
 	require("interfaces_wlan.inc");
 	wireless_config_init();
 }
@@ -87,7 +85,7 @@ if ($_POST) {
 	}
 	
 	/* Wireless interface? */
-	if (isset($optcfg['wireless'])) {
+	if (isset($lancfg['wireless'])) {
 		$wi_input_errors = wireless_config_post();
 		if ($wi_input_errors) {
 			$input_errors = array_merge($input_errors, $wi_input_errors);
@@ -204,17 +202,17 @@ function type_change() {
                   <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_DHCP; ?></td>
                 </tr>
                 <tr> 
-                  <td valign="top" class="vncellreq"><?=_INTPHP_DHCPCLIENTIDENTIFIER; ?></td>
-                  <td class="vtable"><input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
-                    <br>
-                     <?=_INTPHP_DHCPCLIENTIDENTIFIERTEXT; ?>
+                  <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPCLIENTIDENTIFIER;?></td>
+                  <td width="78%" class="vtable">
+                    <input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
+                    <br><span class="vexpl"><?=_INTPHP_DHCPCLIENTIDENTIFIERTEXT;?></span>
                   </td>
                 </tr>
                 <tr> 
-                  <td valign="top" class="vncellreq"><?=_INTPHP_DHCPHOSTNAME; ?></td>
-                  <td class="vtable"><input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled>
-                    <br>
-                     <?=_INTPHP_DHCPHOSTNAMETEXT; ?>
+                  <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPHOSTNAME;?></td>
+                  <td width="78%" class="vtable">
+                    <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled>
+                    <br><span class="vexpl"><?=_INTPHP_DHCPHOSTNAMETEXT;?></span>
                   </td>
                 </tr>
                 <tr> 
@@ -265,7 +263,7 @@ function type_change() {
 				</tr>
                 </tr>
 				<?php /* Wireless interface? */
-				if (isset($optcfg['wireless']))
+				if (isset($lancfg['wireless']))
 					wireless_config_print();
 				?>
                 <tr> 

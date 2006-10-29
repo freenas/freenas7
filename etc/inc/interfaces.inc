@@ -93,7 +93,7 @@ function interfaces_lan_configure()
 
   switch ($lancfg['ipaddr']) {
 		case 'dhcp':
-			interfaces_lan_dhcp_configure($lanif);
+			interfaces_dhcp_configure($lanif);
 			break;
 			
 		default:
@@ -104,6 +104,7 @@ function interfaces_lan_configure()
       
       mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " " . 
       escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
+      break;
 	}
 	
 	/* install default route */
@@ -205,8 +206,7 @@ function interfaces_optional_configure_if($opti)
 		if ($optcfg['media'] || $optcfg['mediaopt'] || $optcfg['polling'] || $optcfg['mtu'])
 		{
 			$cmd = "/sbin/ifconfig " . escapeshellarg($optcfg['if']);
-							
-			
+
 			// If not in autoselect mode, force it:
 			if (strcmp($optcfg['media'],"autoselect") != 0) {
 				$cmd .= " media " . escapeshellarg($optcfg['media']);
@@ -220,18 +220,23 @@ function interfaces_optional_configure_if($opti)
 			mwexec($cmd);
 		}
 	
-		$addflags = "";
-		if (strpos($optcfg['if'], "fxp") !== false)
-			$addflags .= " link0";
-		
-				
-		mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " " . 
-		escapeshellarg($optcfg['ipaddr'] . "/" . $optcfg['subnet']) . $addflags);
+		switch ($optcfg['ipaddr']) {
+      case 'dhcp':
+        interfaces_dhcp_configure($optcfg['if']);
+        break;
+			
+      default:
+        $addflags = "";
+		    if (strpos($optcfg['if'], "fxp") !== false)
+          $addflags .= " link0";
+      
+        mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " " . 
+        escapeshellarg($optcfg['ipaddr'] . "/" . $optcfg['subnet']) . $addflags);
+        break;
+    }
 		
 		/* install multicast route */
-	
 		mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($optcfg['if']));
-		
 	}
 	else
 	{
@@ -316,14 +321,14 @@ function interfaces_wireless_configure($if, $wlcfg)
 	return 0;
 }
 
-function interfaces_lan_dhcp_configure($if)
+function interfaces_dhcp_configure($if)
 {
     global $config, $g;
 
     /* generate dhclient.conf */
-    $fd = fopen("{$g['varetc_path']}/dhclient.conf", "w");
+    $fd = fopen("{$g['varetc_path']}/dhclient_{$if}.conf", "w");
     if (!$fd) {
-        printf("Error: cannot open dhclient.conf in interfaces_lan_dhcp_configure().\n");
+        printf("Error: Cannot open dhclient_{$if}.conf in interfaces_dhcp_configure().\n");
         return 1;
     }
 
@@ -342,7 +347,7 @@ EOD;
     fclose($fd);
 
     /* fire up dhclient */
-    mwexec("/sbin/dhclient -c {$g['varetc_path']}/dhclient.conf " .
+    mwexec("/sbin/dhclient -c {$g['varetc_path']}/dhclient_{$if}.conf " .
         escapeshellarg($if));
 
     return 0;

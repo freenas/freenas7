@@ -29,7 +29,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 unset($index);
@@ -42,9 +41,16 @@ if (!$index)
 	exit;
 
 $optcfg = &$config['interfaces']['opt' . $index];
+
+if ($config['interfaces']['opt' . $index]['ipaddr'] == "dhcp") {
+	$pconfig['type'] = "DHCP";
+} else {
+	$pconfig['type'] = "Static";
+	$pconfig['ipaddr'] = $optcfg['ipaddr'];
+  $pconfig['subnet'] = $optcfg['subnet'];
+}
+
 $pconfig['descr'] = $optcfg['descr'];
-$pconfig['ipaddr'] = $optcfg['ipaddr'];
-$pconfig['subnet'] = $optcfg['subnet'];
 $pconfig['mtu'] = $optcfg['mtu'];
 $pconfig['enable'] = isset($optcfg['enable']);
 $pconfig['polling'] = isset($optcfg['polling']);
@@ -65,7 +71,6 @@ if ($_POST) {
 	/* input validation */
 	if ($_POST['enable'])
 	{
-	
 		/* description unique? */
 		for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 			if ($i != $index) {
@@ -74,11 +79,13 @@ if ($_POST) {
 				}
 			}
 		}
+	
+    if ($_POST['type'] == "Static") {
+		  $reqdfields = explode(" ", "descr ipaddr subnet");
+		  $reqdfieldsn = explode(",", "Description,IP address,Subnet bit count");
 		
-		$reqdfields = explode(" ", "descr ipaddr subnet");
-		$reqdfieldsn = explode(",", "Description,IP address,Subnet bit count");
-		
-		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		}
 		
 		if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr'])))
 			$input_errors[] = _INTPHP_MSGVALIDIP;
@@ -98,9 +105,14 @@ if ($_POST) {
 	}
 	
 	if (!$input_errors) {
+    if($_POST['type'] == "Static") {
+      $optcfg['ipaddr'] = $_POST['ipaddr'];
+			$optcfg['subnet'] = $_POST['subnet'];
+		} else if ($_POST['type'] == "DHCP") {
+			$optcfg['ipaddr'] = "dhcp";
+		}
+
 		$optcfg['descr'] = $_POST['descr'];
-		$optcfg['ipaddr'] = $_POST['ipaddr'];
-		$optcfg['subnet'] = $_POST['subnet'];
 		$optcfg['mtu'] = $_POST['mtu'];
 		$optcfg['enable'] = $_POST['enable'] ? true : false;
 		$optcfg['polling'] = $_POST['polling'] ? true : false;
@@ -128,6 +140,7 @@ $pgtitle = array(_INTLANPHP_NAME, "Optional $index (" . htmlspecialchars($optcfg
 function enable_change(enable_over) {
 	var endis;
 	endis = !(document.iform.enable.checked || enable_over);
+	document.iform.type.disabled = endis;
 	document.iform.descr.disabled = endis;
 	document.iform.ipaddr.disabled = endis;
 	document.iform.subnet.disabled = endis;
@@ -177,7 +190,22 @@ function calc_netmask_bits(ipaddr) {
 function change_netmask_bits() {
 	document.iform.subnet.selectedIndex = calc_netmask_bits(document.iform.ipaddr.value);
 }
-//-->
+function type_change() {
+  if (document.iform.enable.checked) {
+    switch(document.iform.type.selectedIndex)
+    {
+  		case 0: /* Static */
+        document.iform.ipaddr.disabled = 0;
+      	document.iform.subnet.disabled = 0;
+        break;
+      case 1: /* DHCP */
+        document.iform.ipaddr.disabled = 1;
+      	document.iform.subnet.disabled = 1;
+        break;
+    }
+  }
+}
+// -->
 </script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
@@ -195,18 +223,30 @@ function change_netmask_bits() {
                   </td>
                 </tr>
                 <tr> 
+                  <td width="22%" valign="top" class="vncell"><?=_TYPE;?></td>
+                  <td width="78%" class="vtable">
+                    <select name="type" class="formfld" id="type" onchange="type_change()">
+                      <?php $opts = split(" ", "Static DHCP"); foreach ($opts as $opt): ?>
+                      <option <?php if ($opt == $pconfig['type']) echo "selected";?>> 
+                        <?=htmlspecialchars($opt);?>
+                      </option>
+                      <?php endforeach; ?>
+                    </select>
+                  </td>
+                </tr>
+                <tr> 
                   <td width="22%" valign="top" class="vncell"><?=_INTPHP_DESC;?></td>
                   <td width="78%" class="vtable"> 
-                    <input name="descr" type="text" class="formfld" id="descr" size="30" value="<?=htmlspecialchars($pconfig['descr']);?>">
-					<br> <span class="vexpl"><?=_INTPHP_DESCTEXT;?></span>
-				 </td>
-				</tr>
+                    <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
+                    <br><span class="vexpl"><?=_INTPHP_DESCTEXT;?></span>
+                  </td>
+                </tr>
                 <tr> 
                   <td colspan="2" valign="top" height="16"></td>
-				</tr>
-				<tr> 
-                  <td colspan="2" valign="top" class="listtopic">IP configuration</td>
-				</tr>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_STATIC;?></td>
+                </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_IP; ?></td>
                   <td width="78%" class="vtable"> 
@@ -218,9 +258,35 @@ function change_netmask_bits() {
 					<?php endfor; ?>
                     </select>
                     <img name="calcnetmaskbits" src="calc.gif" title="<?=_INTPHP_CALCNETMASKBITS;?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
-				 </td>
-				</tr>
-				<tr> 
+                  </td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" height="16"></td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_DHCP; ?></td>
+                </tr>
+                <tr> 
+                  <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPCLIENTIDENTIFIER;?></td>
+                  <td width="78%" class="vtable">
+                    <input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars(get_macaddr($optcfg['if']));?>" disabled>
+                    <br><span class="vexpl"><?=_INTPHP_DHCPCLIENTIDENTIFIERTEXT;?></span>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPHOSTNAME;?></td>
+                  <td width="78%" class="vtable">
+                    <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($config['system']['hostname'] . "." . $config['system']['domain']);?>" disabled>
+                    <br><span class="vexpl"><?=_INTPHP_DHCPHOSTNAMETEXT;?></span>
+                  </td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" height="4"></td>
+                </tr>
+                <tr> 
+                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_GENERAL; ?></td>
+                </tr>
+                <tr>
                   <td valign="top" class="vncell"><?=_INTPHP_MTU; ?></td>
                   <td class="vtable"><?=$mandfldhtml;?><input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>"> 
                   <br>
@@ -277,6 +343,7 @@ function change_netmask_bits() {
 <script language="JavaScript">
 <!--
 enable_change(false);
+type_change();
 //-->
 </script>
 <?php else: ?>
