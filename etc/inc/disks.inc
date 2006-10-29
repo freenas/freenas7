@@ -337,25 +337,21 @@ function disks_addfstab($cfgdev,$cfgtype)
 function disks_umount_all()
 {
 	// Unmount all mount point
-	
 	global $config, $g;
 	
 	/* Sync disks*/
-	mwexec("/usr/bin/sync");
+	mwexec("/bin/sync");
 					
 	if (is_array($config['mounts']['mount']))
 	{
 		foreach ($config['mounts']['mount'] as $mountent)
 		{
-						
-		/* Umount filesystem */
-		disks_umount($mountent);
-	
+      /* Umount filesystem */
+      disks_umount($mountent);
 		}
 	}
-			
-	return 0;
 
+	return 0;
 }
 
 function disks_raid_gvinum_configure()
