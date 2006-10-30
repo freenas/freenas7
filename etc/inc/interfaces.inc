@@ -346,6 +346,9 @@ EOD;
     fwrite($fd, $dhclientconf);
     fclose($fd);
 
+    /* bring interface up before starting dhclient */
+    mwexec("/sbin/ifconfig {$if} up");
+
     /* fire up dhclient */
     mwexec("/sbin/dhclient -c {$g['varetc_path']}/dhclient_{$if}.conf " .
         escapeshellarg($if));
