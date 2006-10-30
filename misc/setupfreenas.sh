@@ -374,8 +374,8 @@ create_mfsroot() {
 	# Setting Version type and date
 	date > $FREENAS/etc/version.buildtime
 	
-	# Make mfsroot to be 40M
-	dd if=/dev/zero of=$WORKINGDIR/mfsroot bs=1M count=40
+	# Make mfsroot to be 42M
+	dd if=/dev/zero of=$WORKINGDIR/mfsroot bs=1M count=42
 	# Configure this file as a memory disk
 	mdconfig -a -t vnode -f $WORKINGDIR/mfsroot -u 0
 	# Create Label on this disk
