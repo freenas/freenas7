@@ -104,6 +104,7 @@ define('_UPDATE', 'Mise &agrave; jour');
 define('_VIEW', 'Visualiser');
 define('_APPLY', 'Appliquer les changements');
 define('_WARNING', 'Attention');
+define('_LOAD', 'Charger');
 
 //FreeNAS common words
 
@@ -179,10 +180,10 @@ define('_MENULEFT_DIAGARPTAB','Table ARP');
 define('_MENULEFT_DIAGEXEC','Commandes');
 define('_MENULEFT_DIAGEDITFILE','Editer un fichier');
 define('_MENULEFT_CMDBACKUPRESTORE','Sauvegarde/Restauration');
-define('_MENULEFT_CMDFACTORYDEF','Reglages de depart');
+define('_MENULEFT_CMDFACTORYDEF','R&eacute;glages d\'origine');
 define('_MENULEFT_CMDREBOOTSYS','Red&eacute;marrage du NAS');
 define('_MENULEFT_CMDSHUTDOWNSYS','Arr&ecirc;t du NAS');
-define('_MENULEFT_TRAFFICGRAPH','Traffic graph');
+define('_MENULEFT_TRAFFICGRAPH','Graphe de trafic');
 
 // Module specific stuff
 
@@ -231,7 +232,7 @@ define('_INDEXPHP_NODISK','Aucun disque configur&eacute;');
 
 
 // Status Processes Module
-// file: status_processes.php
+// file: status_process.php
 define('_STATSPROCPHP_NAME',_STATUS);
 define('_STATSPROCPHP_NAME_DESCRIPTION','Processus');
 define('_STATSPROCPHP_PROC_INF','D&eacute;tail des processus');
@@ -337,8 +338,8 @@ define('_INTASSIGNPHP_MSGVALIDPORTWASASSIG',' a &eacute;t&eacute; assign&eacute;
 define('_INTASSIGNPHP_MSGVALIDINT',' interfaces:');
 define('_INTASSIGNPHP_INT','Interface');
 define('_INTASSIGNPHP_PORT','Carte r&eacute;seau');
-define('_INTASSIGNPHP_DELINT','supprimer interface');
-define('_INTASSIGNPHP_ADDINT','ajouter interface');
+define('_INTASSIGNPHP_DELINT','Supprimer interface');
+define('_INTASSIGNPHP_ADDINT','Ajouter interface');
 define('_INTASSIGNPHP_INTTEXT','Apr&egrave;s avoir cliqu&eacute; sur &quot;Enregistrer&quot;, vous devez red&eacute;marrer FreeNAS pour prendre en compte les changements. Vous devriez &eacute;galement v&eacute;rifier les points suivants avant de pouvoir vous reconnecter sur votre NAS: </span></p>
 <ul>
   <li><span class=\"vexpl\">V&eacute;rifiez que l\'adresse IP de votre ordinateur soit dans le meme r&eacute;seau que la nouvelle adresse du NAS</span></li>
@@ -379,7 +380,8 @@ define('_INTPHP_DHCPHOSTNAME','Nom d\'hote');
 define('_INTPHP_DHCPHOSTNAMETEXT','Le contenu de ce champ est envoy&eacute; en tant que nom d\'hote DHCP lors de la demande de bail DHCP.');
 define('_INTPHP_DHCPCLIENTIDENTIFIER','Identificateur du client');
 define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','La valeur de ce champ est envoy&eacute;&eacute;e en tant qu\'identificateur du client lors de la demande de bail DHCP.');
-define('_INTPHP_CALCNETMASKBITS','Calculate netmask bits');
+define('_INTPHP_CALCNETMASKBITS','Calculer le nombre de bits du masque de sous r&eacute;seau');
+
 
 // Disks: Manage
 // Common text
@@ -396,11 +398,11 @@ define('_DISKSMANAGEPHP_NAMEDESC','Gestion');
 define('_DISKSMANAGEPHP_MSGCHANGED','La liste des disques a chang&eacute;.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
 define('_DISKSMANAGEPHP_STANDBY','D&eacute;lai de mise en veille');
-define('_DISKSMANAGEPHP_FSUNKNOWN','inconnu ou non format&eacute;');
-define('_DISKSMANAGEPHP_EDIT','modifier le disque');
-define('_DISKSMANAGEPHP_DEL','supprimer le  disque');
+define('_DISKSMANAGEPHP_FSUNKNOWN','Inconnu ou non format&eacute;');
+define('_DISKSMANAGEPHP_EDIT','Modifier le disque');
+define('_DISKSMANAGEPHP_DEL','Supprimer le  disque');
 define('_DISKSMANAGEPHP_DELCONF','Voulez-vous vraiment supprimer ce disque? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s (par ex. share)!');
-define('_DISKSMANAGEPHP_ADD','ajouter un disque');
+define('_DISKSMANAGEPHP_ADD','Ajouter un disque');
 define('_DISKSMANAGEPHP_NOTE','<strong>Note:<br>
                 </strong>Premi&egrave;re &eacute;tape: Ajoutez votre disque dur &agrave; la liste des disques.');
 
@@ -424,7 +426,8 @@ define('_DISKSMANAGEINITPHP_NAMEDESC','Initialiser');
 define('_DISKSMANAGEINITPHP_INITTEXT','D&eacute;tails de l\'initialisation:');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"n\'est pas un message d\'erreur!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Ceci efface toutes les partitions, cr&eacute;&eacute; la partition num&eacute;ro 1 et formate le disque avec le syst&egrave;me de fichier sp&eacute;cifi&eacute;.');
-define('_DISKSMANAGEINITPHP_FORMATDISC','Format disk');
+define('_DISKSMANAGEINITPHP_FORMATDISC','Formater le disque');
+define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Voulez-vous vraiment formater ce disque? Toutes les donn&eacute;es seront perdues!');
 define('_DISKSPHP_NOMBR','Ne pas effacer le MBR');
 define('_DISKSPHP_NOMBRTEXT','Conserve le MBR intact (utile avec certains controleurs RAID)');
 
@@ -601,7 +604,7 @@ define('_SRVNFS_NAMEDESC','NFS');
 define('_SRVNFS_MSGVALIDNET','Un r&eacute;seau valide doit &ecirc;tre sp&eacute;cifi&eacute;.');
 define('_SRVNFS_MSGVALIDNETBIT',_MSGVALIDNETBIT);
 define('_SRVNFS_NFSERVER','Serveur NFS');
-define('_SRVNFS_MAPALLROOT','Associer les utilisateurs &agrave; root');
+define('_SRVNFS_MAPALLROOT','Associer tous les utilisateurs &agrave; root');
 define('_SRVNFS_MAPALLROOTTEXT','Tous les utilisateurs auront les privil&egrave;ges root.');
 define('_SRVNFS_AUTHNET','R&eacute;seau autoris&eacute;');
 define('_SRVNFS_AUTHNETTEXT','R&eacute;seau autoris&eacute; &agrave; acc&eacute;der au partage NFS');
@@ -611,6 +614,7 @@ define('_SRVNFS_TEXT','Le nom de partage export&eacute; est du type : /mnt/parta
 // Common
 define('_SRVRYNC_SERVER','Serveur');
 define('_SRVRYNC_CLIENT','Client');
+define('_SRVRYNC_LOCAL','Local');
 
 // file: services_rsyncd.php
 define('_SRVRYNCD_NAMEDESC','RSYNCD');
@@ -639,6 +643,14 @@ define('_SRVRYNCC_SHARESTEXT','Un partage du m&ecirc;me nom doit exister sur le 
 define('_SRVRYNCC_TIME','Heure de Synchronisation');
 define('_SRVRYNCC_TEXT',_MSGSCHED_TEXT);
 
+// file: services_rsyncd_local.php
+
+define('_SRVRYNCC_MSGVALID','Vous pouvez avoir le m&ecirc;me point de montage comme source et destination!');
+define('_SRVRYNC_LOCALTEXT','Synchronisation Rsync locale');
+define('_SRVRYNC_LOCAL_SOURCE','Point de montage source');
+define('_SRVRYNC_LOCAL_DESTINATION','Point de montage destination (disque de sauvegarde)');
+
+
 // Service: SSHD
 // file: services_sshd.php
 
@@ -648,6 +660,9 @@ define('_SRVSSHD_MSGVALIDKEY','Cette clef semble invalide.');
 define('_SRVSSHD_SSHD','D&eacute;mon SSH');
 define('_SRVSSHD_READONLY','Lecture seule');
 define('_SRVSSHD_TCPORT',_TCPPORT);
+define('_SRVSSHD_TCPORTTEXT',_SRVRYNCD_TCPORTTEXT);
+define('_SRVSSHD_PERMITROOTLOGIN','Autoriser le login root');
+define('_SRVSSHD_PERMITROOTLOGINTEXT','Indique s\'il est permis de se connecter directement en superutilisateur (root).');
 define('_SRVSSHD_KEY','Clef SSH');
 define('_SRVSSHD_PRIVATEKEY','Clef priv&eacute;e');
 define('_SRVSSHD_PRIVATEKEYTEXT','Collez une clef priv&eacute;e DSA au format PEM ici.');
@@ -782,14 +797,14 @@ define('_DIAGEXECPHP_NAMEDESC','Ex&eacute;cuter une commande');
 
 // file: reboot.php
 define('_DIAGREBOOT_NAME',_MENULEFT_DIAGNOSTICS);
-define('_DIAGREBOOT_NAMEDESC','Reboot system');
+define('_DIAGREBOOT_NAMEDESC','Red&eacute;marrer le syst&egrave;me');
 
 // file: license.php
-define('_LICENSE_NAME','License');
+define('_LICENSE_NAME','Licence');
 
 // file: status_wireless.php
 define('_STATSWIRELESS_NAME',_MENULEFT_STATUS);
-define('_STATSWIRELESS_NAMEDESC','Wireless');
+define('_STATSWIRELESS_NAMEDESC','Sans-fil');
 
 // file: status_interfaces.php
 define('_STATSINTERFACES_NAME',_MENULEFT_STATUS);
@@ -797,7 +812,7 @@ define('_STATSINTERFACES_NAMEDESC',_INTERFACES);
 
 // file: status_graph_cpu.php
 define('_STATSGRAPHCPU_NAME',_MENULEFT_STATUS);
-define('_STATSGRAPHCPU_NAMEDESC','CPU load');
+define('_STATSGRAPHCPU_NAMEDESC','Charge CPU');
 
 // file: status_disks.php
 define('_STATSDISKS_NAME',_MENULEFT_STATUS);
@@ -817,7 +832,7 @@ define('_INTVLAN_DESC',_DESC);
 // file: interfaces_vlan_edit.php
 define('_INTVLANEDIT_NAME',_MENULEFT_INTERFACES);
 define('_INTVLANEDIT_NAMEDESC',_INTASSIGNPHP_NAMEDESC);
-define('_INTVLANEDIT_EDITVLAN','Edit VLAN');
+define('_INTVLANEDIT_EDITVLAN','Modifier le VLAN');
 
 // file: diag_ping.php
 define('_DIAGPING_NAME',_MENULEFT_DIAGNOSTICS);
@@ -867,13 +882,13 @@ define('_STATSGRAPH_NAME',_MENULEFT_STATUS);
 define('_STATSGRAPH_NAMEDESC',_MENULEFT_TRAFFICGRAPH);
 
 // file: graph.php
-define('_GRAPH_ERRORGETIFDATA','Cannot get data about interface');
-define('_GRAPH_IN','In');
-define('_GRAPH_OUT','Out');
-define('_GRAPH_SWITCHTO','Switch to');
-define('_GRAPH_AUTOSCALE','AutoScale');
-define('_GRAPH_AUTOSCALE_FOLLOW','Follow');
-define('_GRAPH_AUTOSCALE_UP','Up');
-define('_GRAPH_SHOWLAST','Graph shows last');
-define('_GRAPH_COLLECTDATA','Collecting initial data, please wait...');
+define('_GRAPH_ERRORGETIFDATA','Impossible de collecter des donn&eacute;es sur cette interface');
+define('_GRAPH_IN','Entr&eacute;e');
+define('_GRAPH_OUT','Sortie');
+define('_GRAPH_SWITCHTO','Basculer vers');
+define('_GRAPH_AUTOSCALE','Echelle auto');
+define('_GRAPH_AUTOSCALE_FOLLOW','Suivre');
+define('_GRAPH_AUTOSCALE_UP','Remonter');
+define('_GRAPH_SHOWLAST','Graphe en dernier');
+define('_GRAPH_COLLECTDATA','Collecte des premi&egrave;res donn&eacute;es, veuillez patienter...');
 ?>
