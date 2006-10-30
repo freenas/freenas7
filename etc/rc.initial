@@ -33,6 +33,9 @@ else
 # endless loop
 while : ; do
 
+# Change permission to the / directory
+chmod 711 root /
+
 # display a cheap menu
 echo
 echo
