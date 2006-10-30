@@ -32,8 +32,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(_DIAGPING_NAME, _DIAGPING_NAMEDESC);
 require("guiconfig.inc");
+
+$pgtitle = array(_DIAGPING_NAME, _DIAGPING_NAMEDESC);
 
 define('MAX_COUNT', 10);
 define('DEFAULT_COUNT', 3);

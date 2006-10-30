@@ -32,8 +32,9 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(_DIAGLOGS_NAME, _DIAGLOGS_NAMEDESC);
 require("guiconfig.inc");
+
+$pgtitle = array(_DIAGLOGS_NAME, _DIAGLOGS_NAMEDESC);
 
 $pconfig['reverse'] = isset($config['syslog']['reverse']);
 $pconfig['nentries'] = $config['syslog']['nentries'];
