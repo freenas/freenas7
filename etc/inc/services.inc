@@ -1355,23 +1355,49 @@ function services_mdnsresponder_configure()
 		return 1;
 	}
 	
-	if ($config['system']['webgui']['port']) 	{
-	$mDNSResponder = <<<EOD
+	// Check if WebGUI use HTTPS
+	
+	if ($config['system']['webgui']['protocol'] == "https") {
+		if ($config['system']['webgui']['port']) 	{
+			$mDNSResponder = <<<EOD
+"{$config['system']['hostname']} Web Admin"
+_https._tcp local.
+{$config['system']['webgui']['port']}
+
+EOD;
+		}
+		else 	{
+			$mDNSResponder = <<<EOD
+"{$config['system']['hostname']} Web Admin"
+_https._tcp local.
+443
+	
+EOD;
+		}
+	}
+	
+	// if WebGUI don't use HTTPS then:
+	
+	else {
+		if ($config['system']['webgui']['port'])	{
+			$mDNSResponder = <<<EOD
 "{$config['system']['hostname']} Web Admin"
 _http._tcp local.
 {$config['system']['webgui']['port']}
 
 EOD;
-	}
-	else 	{
-	$mDNSResponder = <<<EOD
+		}
+		else 	{
+			$mDNSResponder = <<<EOD
 "{$config['system']['hostname']} Web Admin"
 _http._tcp local.
 80
 
 EOD;
+		}
 	}
 	
+	// Check if AFP Enabled
 	
 	if (isset($config['afp']['enable'])) 	{				
 		$mDNSResponder .= <<<EOD
@@ -1383,6 +1409,8 @@ _afpovertcp._tcp local.
 EOD;
 	}
 	
+	// Check if RSYNC Server Enabled
+	
 	if (isset($config['rsyncd']['enable'])) 	{				
 		$mDNSResponder .= <<<EOD
 
@@ -1392,6 +1420,8 @@ _rsync._tcp. local.
 
 EOD;
 	}
+	
+	// Check if SSH Server Enabled
 	
 	if (isset($config['sshd']['enable'])) 	{				
 		$mDNSResponder .= <<<EOD

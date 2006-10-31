@@ -122,7 +122,7 @@ define('_CONFIRMATION','Confirmation');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'The changes have been applied successfully.');
-define('_MESSAGES_SUCCESSWITHREBOOT', 'The changes have been saved. You must <a href=\"/reboot.php\">reboot</a> your NAS for changes to take effect.');
+define('_MESSAGES_SUCCESSWITHREBOOT', 'The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS for changes to take effect.');
 define('_MESSAGES_ERROR', 'ERROR: the changes could not be applied (error code '.$ok.').');
 
 define('_MSGVALIDIP','A valid IP address must be specified.');
