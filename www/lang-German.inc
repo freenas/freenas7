@@ -342,7 +342,7 @@ define('_INTASSIGNPHP_INT','Schnittstellen');
 define('_INTASSIGNPHP_PORT','Netzwerkport');
 define('_INTASSIGNPHP_DELINT','L&ouml;sche Schnittstelle');
 define('_INTASSIGNPHP_ADDINT','F&uuml;ge Schnittstelle hinzu');
-define('_INTASSIGNPHP_INTTEXT','Nach dem Anw&auml;hlen von &quot;Save&quot;, muss FreeNAS zur &Uuml;bernahme der &Auml;nderungen neu gestartet werden. Sie k&ouml;nnten auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen: </span></p>
+define('_INTASSIGNPHP_INTTEXT','Nach dem Anw&auml;hlen von &quot;Sichern&quot;, muss FreeNAS zur &Uuml;bernahme der &Auml;nderungen neu gestartet werden. Sie k&ouml;nnten auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen: </span></p>
 <ul>
   <li><span class="vexpl">&Auml;ndern Sie die IP-Adresse ihres Computers </span></li>
   <li><span class="vexpl">Greifen Sie auf die webGUI mit der neuen IP-Addresse zu</span></li>
@@ -369,7 +369,7 @@ define('_INTPHP_POLLINGTEXT','"Device polling" ist eine Technik, welche das Syst
                     je Sekunde abgefragt). Nicht alle Netzwerkkarten unterst&uuml;tzen "polling"; sehen Sie auf der m0n0wall Homepage in die Liste der unterst&uuml;tzen Netzwerkkarten.');
 define('_INTPHP_SPEED','Geschwindigkeit');
 define('_INTPHP_DUPLEX','Duplex');
-define('_INTPHP_TEXT','Nach Klick auf &quot;Save&quot;, k&ouml;nnten Sie auch einige der folgenden Dinge
+define('_INTPHP_TEXT','Nach Klick auf &quot;Sichern&quot;, k&ouml;nnten Sie auch einige der folgenden Dinge
                     vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen:
                     <ul>
                       <li>&Auml;ndern Sie die IP-Adresse ihres Computers</li>
