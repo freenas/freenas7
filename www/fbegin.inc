@@ -106,7 +106,7 @@ function showhide(tspan, tri) {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_interfaces.php" class="navlnk"><?=_MENULEFT_STINTERFACES;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_disks.php" class="navlnk"><?=_MENULEFT_STDISKS;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_wireless.php" class="navlnk"><?=_MENULEFT_STWIRELESS;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_graph.php" class="navlnk"><?=_MENULEFT_TRAFFICGRAPH;?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_graph.php" class="navlnk"><?=_MENULEFT_GRAPH;?></a><br>
 <?php
 /* extensions section */
 if (is_dir("{$g['www_path']}/ext")):

@@ -183,7 +183,7 @@ define('_MENULEFT_CMDBACKUPRESTORE','Sauvegarde/Restauration');
 define('_MENULEFT_CMDFACTORYDEF','R&eacute;glages d\'origine');
 define('_MENULEFT_CMDREBOOTSYS','Red&eacute;marrage du NAS');
 define('_MENULEFT_CMDSHUTDOWNSYS','Arr&ecirc;t du NAS');
-define('_MENULEFT_TRAFFICGRAPH','Graphe de trafic');
+define('_MENULEFT_GRAPH','Graphe');
 
 // Module specific stuff
 
@@ -879,7 +879,7 @@ define('_DIAGARP_NAMEDESC',_MENULEFT_DIAGARPTAB);
 
 // file: status_graph.php
 define('_STATSGRAPH_NAME',_MENULEFT_STATUS);
-define('_STATSGRAPH_NAMEDESC',_MENULEFT_TRAFFICGRAPH);
+define('_STATSGRAPH_NAMEDESC','Graphe de trafic');
 
 // file: graph.php
 define('_GRAPH_ERRORGETIFDATA','Impossible de collecter des donn&eacute;es sur cette interface');

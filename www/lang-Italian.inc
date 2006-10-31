@@ -183,7 +183,7 @@ define('_MENULEFT_CMDBACKUPRESTORE','Backup/Restore');
 define('_MENULEFT_CMDFACTORYDEF','Defaults originali');
 define('_MENULEFT_CMDREBOOTSYS','Riavvio sistema');
 define('_MENULEFT_CMDSHUTDOWNSYS','Spegnimento sistema');
-define('_MENULEFT_TRAFFICGRAPH','Traffic graph');
+define('_MENULEFT_GRAPH','Graph');
 
 // Module specific stuff
 
@@ -836,7 +836,7 @@ define('_DIAGARP_NAMEDESC',_MENULEFT_DIAGARPTAB);
 
 // file: status_graph.php
 define('_STATSGRAPH_NAME',_MENULEFT_STATUS);
-define('_STATSGRAPH_NAMEDESC',_MENULEFT_TRAFFICGRAPH);
+define('_STATSGRAPH_NAMEDESC','Traffic graph');
 
 // file: graph.php
 define('_GRAPH_ERRORGETIFDATA','Cannot get data about interface');

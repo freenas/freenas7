@@ -185,7 +185,7 @@ define('_MENULEFT_CMDBACKUPRESTORE','Sichern/Wiederherstellen');
 define('_MENULEFT_CMDFACTORYDEF','Werkseinstellungen');
 define('_MENULEFT_CMDREBOOTSYS','System Neustarten');
 define('_MENULEFT_CMDSHUTDOWNSYS','System Herunterfahren');
-define('_MENULEFT_TRAFFICGRAPH','Traffic graph');
+define('_MENULEFT_GRAPH','Graph');
 
 // Module specific stuff
 
@@ -884,7 +884,7 @@ define('_DIAGARP_NAMEDESC',_MENULEFT_DIAGARPTAB);
 
 // file: status_graph.php
 define('_STATSGRAPH_NAME',_MENULEFT_STATUS);
-define('_STATSGRAPH_NAMEDESC',_MENULEFT_TRAFFICGRAPH);
+define('_STATSGRAPH_NAMEDESC','Traffic Graph');
 
 // file: graph.php
 define('_GRAPH_ERRORGETIFDATA','Kann keine Daten erfassen von Schnittstelle');

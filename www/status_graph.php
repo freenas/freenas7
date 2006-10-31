@@ -41,6 +41,15 @@ if ($_GET['if'])
 $ifnum = get_ifname($config['interfaces'][$curif]['if']);
 ?>
 <?php include("fbegin.inc"); ?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr><td class="tabnavtbl">
+  <ul id="tabnav">
+	<li class="tabact"><?=_STATSGRAPH_NAMEDESC;?></li>
+	<li class="tabinact"><a href="status_graph_cpu.php"><?=_STATSGRAPHCPU_NAMEDESC;?></a></li>
+  </ul>
+  </td></tr>
+  <tr> 
+    <td class="tabcont">
 <?php
 $ifdescrs = array('lan' => 'LAN');
 for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
@@ -69,4 +78,5 @@ foreach ($ifdescrs as $ifn => $ifd) {
   Your browser does not support this object type!<br><span class="red"><strong>Note:</strong></span> The <a href="http://www.adobe.com/svg/viewer/install/" target="_blank">Adobe SVG viewer</a> is required to view the graph.
 </object>
 </div>
+</td></tr></table>
 <?php include("fend.inc"); ?>
