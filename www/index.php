@@ -150,24 +150,26 @@ require("guiconfig.inc");
     <tr>
     <td width="25%" class="vncellt"><?=_INDEXPHP_DISKS_USE;?></td>
     <td width="75%" class="listr">
+    <table>
       <?php
       $diskuse = get_mount_use();
       if ($diskuse !=0) {
 		foreach ($diskuse as $diskusek => $diskusev) {
+			echo "<tr><td>";
 			echo htmlspecialchars($diskusek);
-			echo " : ";
+			echo "</td><td>";
 			$percent_used = rtrim($diskusev['capacity'],"%");
 			echo " <img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
 			echo "<img src='bar_blue.gif' height='15' width='" . $percent_used . "' border='0' align='absmiddle'>";
 			echo "<img src='bar_gray.gif' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle'>";
 			echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
 			echo $percent_used . "%";
-			echo "<br>";
+			echo "<br></td></tr>";
 		}
 	   }
 	  else 
 		echo _INDEXPHP_NODISK ;
-      ?>
+      ?></table>
     </td>
   </tr>
 
