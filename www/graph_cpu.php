@@ -37,7 +37,7 @@ $fetch_link = "stats.php?cpu";
 
 //Style
 //SVG attributes
-$attribs['bg']='fill="white" stroke="none" stroke-width="0" opacity="1"';
+$attribs['bg']='fill="#EEEEEE" stroke="none" stroke-width="0" opacity="1"';
 $attribs['axis']='fill="black" stroke="black"';
 $attribs['cpu']='fill="#435370" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="7"';
 $attribs['graph_cpu']='fill="none" stroke="#435370" stroke-opacity="0.8"';
@@ -45,7 +45,7 @@ $attribs['legend']='fill="black" font-family="Tahoma, Verdana, Arial, Helvetica,
 $attribs['graphname']='fill="#435370" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="8"';
 $attribs['grid_txt']='fill="gray" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="6"';
 $attribs['grid']='stroke="gray" stroke-opacity="0.5"';
-$attribs['error']='fill="blue" font-family="Arial" font-size="4"';
+$attribs['error']='fill="red" font-family="Arial" font-size="4"';
 $attribs['collect_initial']='fill="gray" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4"';
 
 $error_text = "Cannot get CPU load";
@@ -62,16 +62,17 @@ print('<?xml version="1.0" encoding="iso-8859-1"?>' . "\n");?>
     <line id="axis_x" x1="0" y1="0" x2="0" y2="100%" <?=$attribs['axis']?>/>
     <line id="axis_y" x1="0" y1="100%" x2="100%" y2="100%" <?=$attribs['axis']?>/>
     <path id="graph_cpu"  d="M0 <?=$height?> L 0 <?=$height?>" <?=$attribs['graph_cpu']?>/>
+    <text id="graph_in_lbl" x="5" y="8" <?=$attribs['cpu']?>>CPU</text>
+    <text id="graph_cpu_txt" x="20" y="8" <?=$attribs['cpu']?>> </text>
     <path id="grid"  d="M0 <?=$height/4*1?> L <?=$width?> <?=$height/4*1?> M0 <?=$height/4*2?> L <?=$width?> <?=$height/4*2?> M0 <?=$height/4*3?> L <?=$width?> <?=$height/4*3?>" <?=$attribs['grid']?>/>
     <text id="grid_txt1" x="<?=$width?>" y="<?=$height/4*1?>" <?=$attribs['grid_txt']?> text-anchor="end">75%</text>
     <text id="grid_txt2" x="<?=$width?>" y="<?=$height/4*2?>" <?=$attribs['grid_txt']?> text-anchor="end">50%</text>
     <text id="grid_txt3" x="<?=$width?>" y="<?=$height/4*3?>" <?=$attribs['grid_txt']?> text-anchor="end">25%</text>
-    <text id="graph_cpu_txt" x="20" y="8" <?=$attribs['cpu']?>> </text>
     <text id="datetime" x="<?=$width*0.55?>" y="5" <?=$attribs['legend']?>> </text>
     <text id="graphlast" x="<?=$width*0.55?>" y="11" <?=$attribs['legend']?>><?=_GRAPH_SHOWLAST;?> <?=$time_interval*$nb_plot?> <?=_SECONDS;?></text>
     <polygon id="axis_arrow_x" <?=$attribs['axis']?> points="<?=($width) . "," . ($height)?> <?=($width-2) . "," . ($height-2)?> <?=($width-2) . "," . $height?>"/>
-    <text id="error" x="<?=$width*0.5?>" y="<?=$height*0.5?>"  visibility="hidden" <?=$attribs['error']?> text-anchor="middle"><?=$error_text?></text>
-    <text id="collect_initial" x="<?=$width*0.5?>" y="<?=$height*0.5?>"  visibility="hidden" <?=$attribs['collect_initial']?> text-anchor="middle"><?=_GRAPH_COLLECTDATA;?></text>
+    <text id="error" x="<?=$width*0.5?>" y="<?=$height*0.4?>"  visibility="hidden" <?=$attribs['error']?> text-anchor="middle"><?=$error_text?></text>
+    <text id="collect_initial" x="<?=$width*0.5?>" y="<?=$height*0.4?>" visibility="hidden" <?=$attribs['collect_initial']?> text-anchor="middle"><?=_GRAPH_COLLECTDATA;?></text>
   </g>
   <script type="text/ecmascript">
     <![CDATA[

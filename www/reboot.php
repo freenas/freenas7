@@ -33,9 +33,9 @@ require("guiconfig.inc");
 $pgtitle = array(_DIAGREBOOT_NAME, _DIAGREBOOT_NAMEDESC);
 
 if ($_POST) {
-	if ($_POST['Submit'] != " No ") {
+	if ($_POST['Submit'] != " " . _NO . " ") {
 		system_reboot();
-		$rebootmsg = "The system is rebooting now. This may take one minute.";
+		$rebootmsg = _DIAGREBOOT_REBOOTMSG;
 	} else {
 		header("Location: index.php");
 		exit;
@@ -45,10 +45,10 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($rebootmsg): echo print_info_box($rebootmsg); else: ?>
       <form action="reboot.php" method="post">
-        <p><strong>Are you sure you want to reboot the system?</strong></p>
+        <p><strong><?=_DIAGREBOOT_REBOOTCONF;?></strong></p>
         <p> 
-          <input name="Submit" type="submit" class="formbtn" value=" Yes ">
-          <input name="Submit" type="submit" class="formbtn" value=" No ">
+          <input name="Submit" type="submit" class="formbtn" value=" <?=_YES;?> ">
+          <input name="Submit" type="submit" class="formbtn" value=" <?=_NO;?> ">
         </p>
       </form>
 <?php endif; ?>

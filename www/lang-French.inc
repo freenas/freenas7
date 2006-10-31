@@ -797,7 +797,9 @@ define('_DIAGEXECPHP_NAMEDESC','Ex&eacute;cuter une commande');
 
 // file: reboot.php
 define('_DIAGREBOOT_NAME',_MENULEFT_DIAGNOSTICS);
-define('_DIAGREBOOT_NAMEDESC','Red&eacute;marrer le syst&egrave;me');
+define('_DIAGREBOOT_NAMEDESC',_MENULEFT_CMDREBOOTSYS);
+define('_DIAGREBOOT_REBOOTMSG','The system is rebooting now. This may take one minute.');
+define('_DIAGREBOOT_REBOOTCONF','Are you sure you want to reboot the system?');
 
 // file: license.php
 define('_LICENSE_NAME','Licence');

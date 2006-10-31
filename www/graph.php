@@ -49,7 +49,7 @@ $unit="bits";         //Initial unit type: "bits" or "bytes"
 $fetch_link = "stats.php?if=$ifnum";
 
 //SVG attributes
-$attribs['bg']='fill="white" stroke="none" stroke-width="0" opacity="1"';
+$attribs['bg']='fill="#EEEEEE" stroke="none" stroke-width="0" opacity="1"';
 $attribs['axis']='fill="black" stroke="black"';
 $attribs['in']='fill="#435370" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="7"';
 $attribs['out']='fill="#8092B3" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="7"';
@@ -61,7 +61,7 @@ $attribs['grid_txt']='fill="gray" font-family="Tahoma, Verdana, Arial, Helvetica
 $attribs['grid']='stroke="gray" stroke-opacity="0.5"';
 $attribs['switch_unit']='fill="#435370" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4" text-decoration="underline"';
 $attribs['switch_scale']='fill="#435370" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4" text-decoration="underline"';
-$attribs['error']='fill="blue" font-family="Arial" font-size="4"';
+$attribs['error']='fill="red" font-family="Arial" font-size="4"';
 $attribs['collect_initial']='fill="gray" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4"';
 
 //Error text if we cannot fetch data : depends on which method is used
@@ -93,8 +93,8 @@ print('<?xml version="1.0" encoding="iso-8859-1"?>' . "\n");?>
     <text id="datetime" x="<?=$width*0.33?>" y="5" <?=$attribs['legend']?>> </text>
     <text id="graphlast" x="<?=$width*0.55?>" y="17" <?=$attribs['legend']?>><?=_GRAPH_SHOWLAST;?> <?=$time_interval*$nb_plot?> <?=_SECONDS;?></text>
     <polygon id="axis_arrow_x" <?=$attribs['axis']?> points="<?=($width) . "," . ($height)?> <?=($width-2) . "," . ($height-2)?> <?=($width-2) . "," . $height?>"/>
-    <text id="error" x="<?=$width*0.5?>" y="<?=$height*0.5?>"  visibility="hidden" <?=$attribs['error']?> text-anchor="middle"><?=$error_text?></text>
-    <text id="collect_initial" x="<?=$width*0.5?>" y="<?=$height*0.5?>"  visibility="hidden" <?=$attribs['collect_initial']?> text-anchor="middle"><?=_GRAPH_COLLECTDATA;?></text>
+    <text id="error" x="<?=$width*0.5?>" y="<?=$height*0.4?>" visibility="hidden" <?=$attribs['error']?> text-anchor="middle"><?=$error_text?></text>
+    <text id="collect_initial" x="<?=$width*0.5?>" y="<?=$height*0.4?>" visibility="hidden" <?=$attribs['collect_initial']?> text-anchor="middle"><?=_GRAPH_COLLECTDATA;?></text>
   </g>
   <script type="text/ecmascript">
     <![CDATA[

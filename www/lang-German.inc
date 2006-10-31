@@ -169,7 +169,7 @@ define('_MENULEFT_ACNIS','NIS');
 define('_MENULEFT_ACRADIUS','Radius');
 define('_MENULEFT_STATUS',_STATUS);
 define('_MENULEFT_STSYSTEM','System');
-define('_MENULEFT_STPROCESS','Prozess');
+define('_MENULEFT_STPROCESS','Prozesse');
 define('_MENULEFT_STINTERFACES','Schnittstellen');
 define('_MENULEFT_STDISKS',_DISKS);
 define('_MENULEFT_STWIRELESS','Drahtlos');
@@ -235,7 +235,7 @@ define('_INDEXPHP_NODISK','Keine Festplatte konfiguriert');
 // Status Processes Module
 // file: status_process.php
 define('_STATSPROCPHP_NAME',_STATUS);
-define('_STATSPROCPHP_NAME_DESCRIPTION','Prozesse');
+define('_STATSPROCPHP_NAME_DESCRIPTION',_MENULEFT_STPROCESS);
 define('_STATSPROCPHP_PROC_INF','Prozessinformationen'); //Plural
 
 // Static Routes Module
@@ -802,7 +802,9 @@ define('_DIAGEXECPHP_NAMEDESC','Befehl ausf&uuml;hren');
 
 // file: reboot.php
 define('_DIAGREBOOT_NAME',_MENULEFT_DIAGNOSTICS);
-define('_DIAGREBOOT_NAMEDESC','System Neustarten');
+define('_DIAGREBOOT_NAMEDESC',_MENULEFT_CMDREBOOTSYS);
+define('_DIAGREBOOT_REBOOTMSG','Das System wird jetzt neu gestartet. Dies kann einige Minuten dauern.');
+define('_DIAGREBOOT_REBOOTCONF','Wollen Sie das System wirklich neu starten?');
 
 // file: license.php
 define('_LICENSE_NAME','Lizenz');

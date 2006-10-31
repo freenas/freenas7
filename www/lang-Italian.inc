@@ -754,7 +754,9 @@ define('_SHUTSCHED_TEXT',_MSGSCHED_TEXT);
 
 // file: reboot.php
 define('_DIAGREBOOT_NAME',_MENULEFT_DIAGNOSTICS);
-define('_DIAGREBOOT_NAMEDESC','Reboot system');
+define('_DIAGREBOOT_NAMEDESC',_MENULEFT_CMDREBOOTSYS);
+define('_DIAGREBOOT_REBOOTMSG','The system is rebooting now. This may take one minute.');
+define('_DIAGREBOOT_REBOOTCONF','Are you sure you want to reboot the system?');
 
 // file: license.php
 define('_LICENSE_NAME','License');
