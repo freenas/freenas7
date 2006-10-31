@@ -35,8 +35,13 @@ $pgtitle = array(_STATSGRAPHCPU_NAME, _STATSGRAPHCPU_NAMEDESC);
 ?>
 <?php include("fbegin.inc"); ?>
 <div align="center">
-<embed src="graph_cpu.php" type="image/svg+xml"
-		width="550" height="275" pluginspage="http://www.adobe.com/svg/viewer/install/auto" />
+<object id="graph"
+        data="graph_cpu.php"
+        type="image/svg+xml"
+        width="550"
+        height="275">
+  <param name="src" value="graph_cpu.php">
+  Your browser does not support this object type!<br><span class="red"><strong>Note:</strong></span> The <a href="http://www.adobe.com/svg/viewer/install/" target="_blank">Adobe SVG viewer</a> is required to view the graph.
+</object>
 </div>
-<br><span class="red"><strong>Note:</strong></span> the <a href="http://www.adobe.com/svg/viewer/install/" target="_blank">Adobe SVG viewer</a> is required to view the graph.
 <?php include("fend.inc"); ?>

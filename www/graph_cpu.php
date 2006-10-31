@@ -3,10 +3,10 @@
 /*
 	graph_cpu.php
 	part of m0n0wall (http://m0n0.ch/wall)
-	
+
 	Copyright (C) 2004-2005 T. Lechat <dev@lechat.org> and Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
 	
@@ -28,22 +28,25 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+require("guiconfig.inc");
 
 /********* Other conf *******/
 $nb_plot=120;			//NB plot in graph
-
-$fetch_link = "stats.cgi?cpu";
+$time_interval=1; //Refresh time Interval
+$fetch_link = "stats.php?cpu";
 
 //Style
-$style['bg']="fill:white;stroke:none;stroke-width:0;opacity:1;";
-$style['axis']="fill:black;stroke:black;stroke-width:1;";
-$style['cpu']="fill:#435370; font-family:Tahoma, Verdana, Arial, Helvetica, sans-serif; font-size:7;";
-$style['graph_cpu']="fill:none;stroke:#435370;stroke-width:1;opacity:0.8;";
-$style['legend']="fill:black; font-family:Tahoma, Verdana, Arial, Helvetica, sans-serif; font-size:4;";
-$style['grid_txt']="fill:gray; font-family:Tahoma, Verdana, Arial, Helvetica, sans-serif; font-size:6;";
-$style['grid']="stroke:gray;stroke-width:1;opacity:0.5;";
-$style['error']="fill:blue; font-family:Arial; font-size:4;";
-$style['collect_initial']="fill:gray; font-family:Tahoma, Verdana, Arial, Helvetica, sans-serif; font-size:4;";
+//SVG attributes
+$attribs['bg']='fill="white" stroke="none" stroke-width="0" opacity="1"';
+$attribs['axis']='fill="black" stroke="black"';
+$attribs['cpu']='fill="#435370" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="7"';
+$attribs['graph_cpu']='fill="none" stroke="#435370" stroke-opacity="0.8"';
+$attribs['legend']='fill="black" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4"';
+$attribs['graphname']='fill="#435370" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="8"';
+$attribs['grid_txt']='fill="gray" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="6"';
+$attribs['grid']='stroke="gray" stroke-opacity="0.5"';
+$attribs['error']='fill="blue" font-family="Arial" font-size="4"';
+$attribs['collect_initial']='fill="gray" font-family="Tahoma, Verdana, Arial, Helvetica, sans-serif" font-size="4"';
 
 $error_text = "Cannot get CPU load";
 
@@ -52,123 +55,154 @@ $width=200;		//SVG internal width : do not modify
 
 /********* Graph DATA **************/
 header("Content-type: image/svg+xml");
-print('<?xml version="1.0" encoding="iso-8859-1"?>' . "\n");?><svg width="100%" height="100%" viewBox="0 0 <?=$width?> <?=$height?>" preserveAspectRatio="none" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" onload="init(evt)">
-<g id="graph" style="visibility:visible">
-	<rect id="bg" x1="0" y1="0" x2="<?=$width?>" y2="<?=$height?>" style="<?=$style['bg']?>"/>
-	<line id="axis_x" x1="0" y1="0" x2="0" y2="<?=$height?>" style="<?=$style['axis']?>"/>
-	<line id="axis_y" x1="0" y1="<?=$height?>" x2="<?=$width?>" y2="<?=$height?>" style="<?=$style['axis']?>"/>
-	<path id="graph_cpu"  d="M0 <?=$height?> L 0 <?=$height?>" style="<?=$style['graph_cpu']?>"/>
-	<path id="grid"  d="M0 <?=$height/4*1?> L <?=$width?> <?=$height/4*1?> M0 <?=$height/4*2?> L <?=$width?> <?=$height/4*2?> M0 <?=$height/4*3?> L <?=$width?> <?=$height/4*3?>" style="<?=$style[grid]?>"/>
-	<text id="grid_txt1" x="<?=$width?>" y="<?=$height/4*1?>" style="<?=$style['grid_txt']?> text-anchor:end">75%</text>
-	<text id="grid_txt2" x="<?=$width?>" y="<?=$height/4*2?>" style="<?=$style['grid_txt']?> text-anchor:end">50%</text>
-	<text id="grid_txt3" x="<?=$width?>" y="<?=$height/4*3?>" style="<?=$style['grid_txt']?> text-anchor:end">25%</text>
-	<text id="graph_cpu_txt" x="4" y="8" style="<?=$style['cpu']?>"> </text>
-	<polygon id="axis_arrow_x" style="<?=$style['axis']?>" points="<?=($width) . "," . ($height)?> <?=($width-2) . "," . ($height-2)?> <?=($width-2) . "," . $height?>"/>
-	<text id="error" x="<?=$width*0.5?>" y="<?=$height*0.5?>"  style="visibility:hidden;<?=$style['error']?> text-anchor:middle"><?=$error_text?></text>
-	<text id="collect_initial" x="<?=$width*0.5?>" y="<?=$height*0.5?>"  style="visibility:hidden;<?=$style['collect_initial']?> text-anchor:middle">Collecting initial data, please wait...</text>
-</g>
+print('<?xml version="1.0" encoding="iso-8859-1"?>' . "\n");?>
+<svg width="100%" height="100%" viewBox="0 0 <?=$width?> <?=$height?>" preserveAspectRatio="none" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" onload="init(evt)">
+  <g id="graph">
+    <rect id="bg" x1="0" y1="0" width="100%" height="100%" <?=$attribs['bg']?>/>
+    <line id="axis_x" x1="0" y1="0" x2="0" y2="100%" <?=$attribs['axis']?>/>
+    <line id="axis_y" x1="0" y1="100%" x2="100%" y2="100%" <?=$attribs['axis']?>/>
+    <path id="graph_cpu"  d="M0 <?=$height?> L 0 <?=$height?>" <?=$attribs['graph_cpu']?>/>
+    <path id="grid"  d="M0 <?=$height/4*1?> L <?=$width?> <?=$height/4*1?> M0 <?=$height/4*2?> L <?=$width?> <?=$height/4*2?> M0 <?=$height/4*3?> L <?=$width?> <?=$height/4*3?>" <?=$attribs['grid']?>/>
+    <text id="grid_txt1" x="<?=$width?>" y="<?=$height/4*1?>" <?=$attribs['grid_txt']?> text-anchor="end">75%</text>
+    <text id="grid_txt2" x="<?=$width?>" y="<?=$height/4*2?>" <?=$attribs['grid_txt']?> text-anchor="end">50%</text>
+    <text id="grid_txt3" x="<?=$width?>" y="<?=$height/4*3?>" <?=$attribs['grid_txt']?> text-anchor="end">25%</text>
+    <text id="graph_cpu_txt" x="20" y="8" <?=$attribs['cpu']?>> </text>
+    <text id="datetime" x="<?=$width*0.55?>" y="5" <?=$attribs['legend']?>> </text>
+    <text id="graphlast" x="<?=$width*0.55?>" y="11" <?=$attribs['legend']?>><?=_GRAPH_SHOWLAST;?> <?=$time_interval*$nb_plot?> <?=_SECONDS;?></text>
+    <polygon id="axis_arrow_x" <?=$attribs['axis']?> points="<?=($width) . "," . ($height)?> <?=($width-2) . "," . ($height-2)?> <?=($width-2) . "," . $height?>"/>
+    <text id="error" x="<?=$width*0.5?>" y="<?=$height*0.5?>"  visibility="hidden" <?=$attribs['error']?> text-anchor="middle"><?=$error_text?></text>
+    <text id="collect_initial" x="<?=$width*0.5?>" y="<?=$height*0.5?>"  visibility="hidden" <?=$attribs['collect_initial']?> text-anchor="middle"><?=_GRAPH_COLLECTDATA;?></text>
+  </g>
+  <script type="text/ecmascript">
+    <![CDATA[
 
-<script type="text/ecmascript"><![CDATA[
-var SVGDoc;
-var last_cpu_total=0;
-var last_cpu_idle=0;
-var diff_cpu_total=0;
-var diff_cpu_idle=0;
-plot_cpu = new Array();
+/**
+ * getURL is a proprietary Adobe function, but it's simplicity has made it very
+ * popular. If getURL is undefined we spin our own by wrapping XMLHttpRequest.
+ */
+if (typeof getURL == 'undefined') {
+  getURL = function(url, callback) {
+    if (!url)
+      throw 'No URL for getURL';
 
-var isfirst=1;
-var index_plot=0;
-var step = <?=$width?> / <?=$nb_plot?> ;
+    try {
+      if (typeof callback.operationComplete == 'function')
+        callback = callback.operationComplete;
+    } catch (e) {}
+    if (typeof callback != 'function')
+      throw 'No callback function for getURL';
+
+    var http_request = null;
+    if (typeof XMLHttpRequest != 'undefined') {
+      http_request = new XMLHttpRequest();
+    }
+    else if (typeof ActiveXObject != 'undefined') {
+      try {
+        http_request = new ActiveXObject('Msxml2.XMLHTTP');
+      } catch (e) {
+        try {
+          http_request = new ActiveXObject('Microsoft.XMLHTTP');
+        } catch (e) {}
+      }
+    }
+    if (!http_request)
+      throw 'Both getURL and XMLHttpRequest are undefined';
+
+    http_request.onreadystatechange = function() {
+      if (http_request.readyState == 4) {
+        callback( { success : true,
+                    content : http_request.responseText,
+                    contentType : http_request.getResponseHeader("Content-Type") } );
+      }
+    }
+    http_request.open('GET', url, true);
+    http_request.send(null);
+  }
+}
+
+var SVGDoc = null;
+var plot_cpu = new Array();
+
+var max_num_points = <?=$nb_plot?>;  // maximum number of plot data points
+var step = <?=$width?> / max_num_points ;
 
 function init(evt) {
-	SVGDoc = evt.getTarget().getOwnerDocument();
-	go();
+  SVGDoc = evt.target.ownerDocument;
+  fetch_data();
 }
 
-function go() {
-	getURL('<?=$fetch_link?>',urlcallback);
+function fetch_data() {
+  getURL('<?=$fetch_link?>', plot_data);
 }
 
-function urlcallback(obj) {
-	var error = 0;
+function plot_data(obj) {
+  // Show datetimelegend
+  var now = new Date();
+  var datetime = (now.getMonth()+1) + "/" + now.getDate() + "/" + now.getFullYear() + ' ' + 
+    formatString(now.getHours()) + ":" + formatString(now.getMinutes()) + ":" + formatString(now.getSeconds());
+  SVGDoc.getElementById('datetime').firstChild.data = datetime;
 
-	//shift plot to left if nb_plot is already completed
-	var i=0;
-	if(index_plot > <?=$nb_plot?>)
-	{
-		while (i <= <?=$nb_plot?>)
-		{
-			var a=i+1;
-			plot_cpu[i]=plot_cpu[a];
-			i=i+1;
+	if (!obj.success)
+    return handle_error();  // getURL failed to get data
+
+  var t = obj.content;
+	var cpu = parseInt(t);
+	var scale;
+
+	if (!isNumber(cpu))
+    return handle_error();
+
+  switch (plot_cpu.length) {
+  	case 0:
+  		SVGDoc.getElementById("collect_initial").setAttributeNS(null, 'visibility', 'visible');
+      plot_cpu[0] = cpu;
+      setTimeout('fetch_data()',<?=1000*$time_interval?>);
+      return;
+	case 1:
+    	SVGDoc.getElementById("collect_initial").setAttributeNS(null, 'visibility', 'hidden');
+    	break;
+  case max_num_points:
+		// shift plot to left if the maximum number of plot points has been reached
+		var i = 0;
+		while (i < max_num_points) {
+		  plot_cpu[i] = plot_cpu[i+1];
 		}
-		index_plot = <?=$nb_plot?>;
-		plot_cpu[index_plot]=0;
-	}
+		plot_cpu.length--;
+  }
 
-	//if Geturl returns something
-	if (obj.success){
-		var cpu = parseInt(obj.content);
-		var scale;
+	plot_cpu[plot_cpu.length] = cpu;
+	var index_plot = plot_cpu.length - 1;
 
-		if(!isNumber(cpu)) {
-			goerror();
-			return;
-		} else {
-			SVGDoc.getElementById("error").getStyle().setProperty ('visibility', 'hidden');
-		}
+	SVGDoc.getElementById('graph_cpu_txt').firstChild.data = plot_cpu[index_plot] + '%';
 
-		if(isfirst) {
-			SVGDoc.getElementById("collect_initial").getStyle().setProperty ('visibility', 'visible');
-			go();
-			isfirst=0;
-			return;
-		} else SVGDoc.getElementById("collect_initial").getStyle().setProperty ('visibility', 'hidden');
+	scale = <?=$height?> / 100;
 
-		plot_cpu[index_plot] = cpu;
+  var path_cpu = "M 0 " + (<?=$height?> - (plot_cpu[0] * scale));
+  for (i = 1; i < plot_cpu.length; i++)
+  {
+    var x = step * i;
+    var y_cpu = <?=$height?> - (plot_cpu[i] * scale);
+    path_cpu += " L" + x + " " + y_cpu;
+  }
 
-		SVGDoc.getElementById('graph_cpu_txt').getFirstChild().setData(plot_cpu[index_plot] + '%');
-		
-		scale = <?=$height?> / 100;
-		
-		i = 0;
-		
-		while (i <= index_plot)
-		{
-			var x = step * i;
-			var y_cpu= <?=$height?> - (plot_cpu[i] * scale);
-			if(i==0) {
-				var path_cpu = "M" + x + " " + y_cpu;
-			}
-			else
-			{
-				var path_cpu = path_cpu + " L" + x + " " + y_cpu;
-			}
-			i = i + 1;
-		}
+  SVGDoc.getElementById('error').setAttributeNS(null, 'visibility', 'hidden');
+  SVGDoc.getElementById('graph_cpu').setAttributeNS(null, 'd', path_cpu);
 
-		index_plot = index_plot+1;
-		SVGDoc.getElementById('graph_cpu').setAttribute("d", path_cpu);
-
-		go();
-	}
-	else
-	{ //In case of Geturl fails
-		goerror();
-	}
+	setTimeout('fetch_data()',<?=1000*$time_interval?>);
 }
 
-function goerror() {
-	SVGDoc.getElementById("error").getStyle().setProperty ('visibility', 'visible');
-	go();
+function handle_error() {
+  SVGDoc.getElementById("error").setAttributeNS(null, 'visibility', 'visible');
+  setTimeout('fetch_data()',<?=1000*$time_interval?>);
 }
 
 function isNumber(a) {
     return typeof a == 'number' && isFinite(a);
 }
 
-function LZ(x) {
-	return (x < 0 || x > 9 ? "" : "0") + x
+function formatString(x) {
+  return (x < 0 || x > 9 ? "" : "0") + x;
 }
-]]></script>
+    ]]>
+  </script>
 </svg>

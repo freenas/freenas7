@@ -46,7 +46,7 @@ $scale_type="follow"; //Autoscale default setup : "up" = only increase scale; "f
 $nb_plot=120;         //NB plot in graph
 $time_interval=1;		  //Refresh time Interval
 $unit="bits";         //Initial unit type: "bits" or "bytes"
-$fetch_link = "ifstats.php?if=$ifnum";
+$fetch_link = "stats.php?if=$ifnum";
 
 //SVG attributes
 $attribs['bg']='fill="white" stroke="none" stroke-width="0" opacity="1"';
