@@ -144,7 +144,11 @@ function enable_change(enable_over) {
 	document.iform.descr.disabled = endis;
 	document.iform.ipaddr.disabled = endis;
 	document.iform.subnet.disabled = endis;
-	
+	document.iform.mtu.disabled = endis;
+  document.iform.polling.disabled = endis;
+  document.iform.media.disabled = endis;
+  document.iform.mediaopt.disabled = endis;
+
 	if (document.iform.mode) {
 		 document.iform.mode.disabled = endis;
 		 document.iform.ssid.disabled = endis;
