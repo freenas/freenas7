@@ -291,7 +291,6 @@ define('_SYSTEMFIRMWAREPHP_DONOTABORT','DO NOT abort the firmware upgrade once i
                     storing the new firmware. The configuration will be maintained.<br>
                     You need a minium of 128 Mb RAM for firmware update.');
 
-
 // System Advanced Module
 // file: system_advanced.php
 define('_SYSTEMADVANCEDPHP_NAME',_MENULEFT_SYSTEM);
@@ -392,12 +391,12 @@ define('_INTPHP_CALCNETMASKBITS','Calculate netmask bits');
 define('_DISKSPHP_NAME',_DISKS);
 define('_DISKSPHP_MANAGE','Manage');
 define('_DISKSPHP_FORMAT','Format');
+define('_DISKSPHP_TOOLS','Tools');
 define('_DISKSPHP_ISCSIINIT','iSCSI initiator');
 define('_DISKSPHP_DISK',_DISK);
 define('_DISKSPHP_FILESYSTEM',_FILESYSTEM);
 
 // file: disks_manage.php
-
 define('_DISKSMANAGEPHP_NAMEDESC','Management');
 define('_DISKSMANAGEPHP_MSGCHANGED','The disk list has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
@@ -426,7 +425,6 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','This allows you to set FS type for prefo
                      <em>Leave "unformated" for unformated disk and then use Format menu.</em>');
 
 //file: disks_manage_init.php
-
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialize');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Disk initialization details:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"is not an error message!\n');
@@ -435,6 +433,13 @@ define('_DISKSMANAGEINITPHP_FORMATDISC','Format disk');
 define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Do you really want to format this disk? All data will be lost!');
 define('_DISKSPHP_NOMBR','Don\'t Erase MBR');
 define('_DISKSPHP_NOMBRTEXT','don\'t erase the MBR (useful for some RAID controller cards)');
+
+//file: disks_manage_tools.php
+define('_DISKSMANAGETOOLS_NAMEDESC','Tools');
+define('_DISKSMANAGETOOLS_COMMAND','Command');
+define('_DISKSMANAGETOOLS_SENDCMD','Send Command!');
+define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Use <a href="disks_raid_gmirror.php">RAID tools</a> for this disk!');
+define('_DISKSMANAGETOOLS_CMDINFO','Command output:');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Management');

@@ -40,7 +40,7 @@ $pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GMIRROR, _DISKSRAIDEDITPHP_NAMEDE
 
 if ($_POST) {
 	unset($input_errors);
-	unset($do_format);
+	unset($do_action);
 
 	/* input validation */
 	$reqdfields = explode(" ", "action object");

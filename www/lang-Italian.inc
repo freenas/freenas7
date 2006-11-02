@@ -393,12 +393,12 @@ define('_INTPHP_CALCNETMASKBITS','Calculate netmask bits');
 define('_DISKSPHP_NAME',_DISKS);
 define('_DISKSPHP_MANAGE','Gestione');
 define('_DISKSPHP_FORMAT','Formatta');
+define('_DISKSPHP_TOOLS','Tools');
 define('_DISKSPHP_ISCSIINIT','iSCSI initiator');
 define('_DISKSPHP_DISK',_DISK);
 define('_DISKSPHP_FILESYSTEM',_FILESYSTEM);
 
 // file: disks_manage.php
-
 define('_DISKSMANAGEPHP_NAMEDESC','Amministrazione');
 define('_DISKSMANAGEPHP_MSGCHANGED','La lista dei dischi è stata cambiata.<br>E\' necessario applicare i cambiamenti affinché abbiano effetto.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
@@ -430,13 +430,22 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','Questo consente di settare il tipo di FS
                     <em>Lasciare "non formattato" per dischi non formattati e poi utilizzare il menù Formatta.</em>');
 
 //file: disks_manage_init.php
-
 define('_DISKSMANAGEINITPHP_NAMEDESC','Inizializza');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Dettagli dell\'inizializzazione del disco:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"non è un messaggio di errore!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Questo passo cancellerà tutte le partizioni, creerà la partizione numero 1 e
                     formatterà l\'hard drive con il file system specificato.');
 define('_DISKSMANAGEINITPHP_FORMATDISC','Format disk');
+define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Do you really want to format this disk? All data will be lost!');
+define('_DISKSPHP_NOMBR','Don\'t Erase MBR');
+define('_DISKSPHP_NOMBRTEXT','don\'t erase the MBR (useful for some RAID controller cards)');
+
+//file: disks_manage_tools.php
+define('_DISKSMANAGETOOLS_NAMEDESC','Tools');
+define('_DISKSMANAGETOOLS_COMMAND','Command');
+define('_DISKSMANAGETOOLS_SENDCMD','Send Command!');
+define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Use <a href="disks_raid_gmirror.php">RAID tools</a> for this disk!');
+define('_DISKSMANAGETOOLS_CMDINFO','Command output:');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Amministrazione');

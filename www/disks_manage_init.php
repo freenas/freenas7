@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_manage_init.php
-	
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
@@ -38,7 +38,7 @@ $pgtitle = array(_DISKSPHP_NAME,_DISKSMANAGEINITPHP_NAMEDESC);
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
-	
+
 disks_sort();
 
 $a_fst = get_fstype_list();
@@ -60,7 +60,7 @@ if ($_POST) {
 		$type = $_POST['type'];
 		$diskid = $_POST['id'];
 		$notinitmbr= $_POST['notinitmbr'];
-		
+
 		/* Get the id of the disk */
 		$id=array_search_ex($disk, $a_disk, "name");
 
@@ -90,7 +90,7 @@ function disk_change() {
 		case "<?=$diskn['name'];?>":
 		  <?php $i = 0;?>
       <?php foreach ($a_fst as $fstval => $fstname): ?>
-        document.iform.type.options[<?=$i++;?>].selected = <?php if($diskn['fstype'] == $fstval){echo "true";}else{echo "false";};?>; 
+        document.iform.type.options[<?=$i++;?>].selected = <?php if($diskn['fstype'] == $fstval){echo "true";}else{echo "false";};?>;
       <?php endforeach; ?>
       break;
     <?php endforeach; ?>
@@ -103,146 +103,144 @@ function disk_change() {
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_manage.php"><?=_DISKSPHP_MANAGE; ?></a></li>
 	<li class="tabact"><?=_DISKSPHP_FORMAT; ?></li>
+	<li class="tabinact"><a href="disks_manage_tools.php"><?=_DISKSPHP_TOOLS; ?></a></li>
 	<li class="tabinact"><a href="disks_manage_iscsi.php"><?=_DISKSPHP_ISCSIINIT; ?></a></li>
   </ul>
   </td></tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+      <?php if ($input_errors) print_input_errors($input_errors); ?>
 			<form action="disks_manage_init.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr>			  		
-			<td valign="top" class="vncellreq"><?=_DISKSPHP_DISK; ?></td>
-	<td class="vtable"> 
-		<select name="disk" class="formfld" id="disk" onchange="disk_change()">
-		  <?php foreach ($a_disk as $diskn): ?>
-		  <option value="<?=$diskn['name'];?>"<?php if ($diskn['name'] == $disk) echo "selected";?>> 
-		  <?php echo htmlspecialchars($diskn['name'] . ": " .$diskn['size'] . " (" . $diskn['desc'] . ")");				  
-		  ?>
-		  </option>
-		  <?php endforeach; ?>
-			</tr> 		
-                  <td valign="top" class="vncellreq"><?=_DISKSPHP_FILESYSTEM; ?></td>
-                  <td class="vtable"> 
-                    <select name="type" class="formfld" id="type">
-                      <?php foreach ($a_fst as $fstval => $fstname): ?>
-                      <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
-                      <?php endforeach; ?>
-                     </select>
-                  </td>  
-                  <tr>
-                <td width="22%" valign="top" class="vncell"><strong><?=_DISKSPHP_NOMBR; ?><strong></td>
-                		<td width="78%" class="vtable">
-                		<input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes" >
-                		<?=_DISKSPHP_NOMBRTEXT; ?><br>
+          <tr>
+            <td valign="top" class="vncellreq"><?=_DISK; ?></td>
+            <td class="vtable">
+              <select name="disk" class="formfld" id="disk" onchange="disk_change()">
+                <?php foreach ($a_disk as $diskn): ?>
+                <option value="<?=$diskn['name'];?>"<?php if ($diskn['name'] == $disk) echo "selected";?>>
+                <?php echo htmlspecialchars($diskn['name'] . ": " .$diskn['size'] . " (" . $diskn['desc'] . ")");?>
+                <?php endforeach; ?>
+                </option>
+              </select>
+            </td>
+      		</tr>
+          <td valign="top" class="vncellreq"><?=_DISKSPHP_FILESYSTEM; ?></td>
+          <td class="vtable">
+            <select name="type" class="formfld" id="type">
+              <?php foreach ($a_fst as $fstval => $fstname): ?>
+              <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
+              <?php endforeach; ?>
+             </select>
+          </td>
+          <tr>
+            <td width="22%" valign="top" class="vncell"><strong><?=_DISKSPHP_NOMBR; ?><strong></td>
+            <td width="78%" class="vtable">
+              <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes" >
+              <?=_DISKSPHP_NOMBRTEXT; ?><br>
 						</td>
-				</tr>
-                </tr>
-				<tr>
-				  <td width="22%" valign="top">&nbsp;</td>
-				  <td width="78%">
-            <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMANAGEINITPHP_FORMATDISC;?>" onclick="return confirm('<?=_DISKSMANAGEINITPHP_FORMATDISCCONF;?>')">
-				  </td>
-				</tr>
-				<tr>
-				<td valign="top" colspan="2">
-				<? if ($do_format)
-				{
-					echo(_DISKSMANAGEINITPHP_INITTEXT);
-					echo('<pre>');
-					ob_end_flush();
-					
-					/* Erase MBR if not checked*/
-					
-					if (!$notinitmbr) {
-						echo "Erasing MBR\n";
-						system("dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . " bs=32k count=640");
-						
-					}
-					else
-						echo "Keeping the MBR\n";
-					
-					switch ($type)
-					{
-					case "ufs":
-						/* Initialize disk */
-						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						// echo "\"fdisk: Geom not found\"is not an error message!\n";
-						/* Initialise the partition (optional) */
-						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-						/* Create s1 label */
-						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");			
-						// Create filesystem	
-						system("/sbin/newfs -U /dev/" . escapeshellarg($disk) . "s1");
-						break;
-					case "ufs_no_su":
-						/* Initialize disk */
-						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						/* Initialise the partition (optional) */
-						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-						/* Create s1 label */
-						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");			
-						// Create filesystem	
-						system("/sbin/newfs -m 0 /dev/" . escapeshellarg($disk) . "s1");
-						break;
-					case "ufsgpt":
-						/* Create GPT partition table */
-						system("/sbin/gpt destroy " . escapeshellarg($disk));
-						system("/sbin/gpt create -f " . escapeshellarg($disk));
-						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
-						// Create filesystem
-						system("/sbin/newfs -U /dev/" . escapeshellarg($disk) . "p1");
-						break;
-					case "ufsgpt_no_su":
-						/* Create GPT partition table */
-						system("/sbin/gpt destroy " . escapeshellarg($disk));
-						system("/sbin/gpt create -f " . escapeshellarg($disk));
-						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
-						// Create filesystem
-						system("/sbin/newfs -m 0 /dev/" . escapeshellarg($disk) . "p1");
-						break;
-					case "gmirror":
-						/* Initialize disk */
-						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						/* Initialise the partition (optional) */
-						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-						/* Create s1 label */
-						//system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-						/* Delete old gmirror information */
-						system("/sbin/gmirror clear /dev/" . escapeshellarg($disk));
-						break;
-					case "gvinum":
-						/* Initialize disk */
-						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						// echo "\"fdisk: Geom not found\"is not an error message!\n";
-						/* Initialise the partition (optional) */
-						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-						/* Create s1 label */
-						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-						break;
-					case "msdos":
-						/* Initialize disk */
-						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						// echo "\"fdisk: Geom not found\"is not an error message!\n";
-						/* Initialise the partition (optional) */
-						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-						/* Create s1 label */
-						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-						// Create filesystem
-						system("/sbin/newfs_msdos -F 32 /dev/" . escapeshellarg($disk) . "s1");
-						break;		
-					}
-					echo('</pre>');
-				}
-				?>
-				</td>
-				</tr>
-			</table>
-</form>
-<p><span class="vexpl"><span class="red"><strong>WARNING:<br>
-                </strong></span><?=_DISKSMANAGEINITPHP_TEXT; ?>
-                </span></p>
-</td></tr></table>
+				  </tr>
+  				<tr>
+  				  <td width="22%" valign="top">&nbsp;</td>
+  				  <td width="78%">
+              <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMANAGEINITPHP_FORMATDISC;?>" onclick="return confirm('<?=_DISKSMANAGEINITPHP_FORMATDISCCONF;?>')">
+  				  </td>
+  				</tr>
+  				<tr>
+    				<td valign="top" colspan="2">
+    				<? if ($do_format)
+    				{
+    					echo(_DISKSMANAGEINITPHP_INITTEXT);
+    					echo('<pre>');
+    					ob_end_flush();
+
+    					/* Erase MBR if not checked*/
+    					if (!$notinitmbr) {
+    						echo "Erasing MBR\n";
+    						system("dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . " bs=32k count=640");
+    					}
+    					else
+    						echo "Keeping the MBR\n";
+
+    					switch ($type)
+    					{
+    					case "ufs":
+    						/* Initialize disk */
+    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+    						// echo "\"fdisk: Geom not found\"is not an error message!\n";
+    						/* Initialise the partition (optional) */
+    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						/* Create s1 label */
+    						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
+    						// Create filesystem
+    						system("/sbin/newfs -U /dev/" . escapeshellarg($disk) . "s1");
+    						break;
+    					case "ufs_no_su":
+    						/* Initialize disk */
+    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+    						/* Initialise the partition (optional) */
+    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						/* Create s1 label */
+    						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
+    						// Create filesystem
+    						system("/sbin/newfs -m 0 /dev/" . escapeshellarg($disk) . "s1");
+    						break;
+    					case "ufsgpt":
+    						/* Create GPT partition table */
+    						system("/sbin/gpt destroy " . escapeshellarg($disk));
+    						system("/sbin/gpt create -f " . escapeshellarg($disk));
+    						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
+    						// Create filesystem
+    						system("/sbin/newfs -U /dev/" . escapeshellarg($disk) . "p1");
+    						break;
+    					case "ufsgpt_no_su":
+    						/* Create GPT partition table */
+    						system("/sbin/gpt destroy " . escapeshellarg($disk));
+    						system("/sbin/gpt create -f " . escapeshellarg($disk));
+    						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
+    						// Create filesystem
+    						system("/sbin/newfs -m 0 /dev/" . escapeshellarg($disk) . "p1");
+    						break;
+    					case "gmirror":
+    						/* Initialize disk */
+    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+    						/* Initialise the partition (optional) */
+    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						/* Create s1 label */
+    						//system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
+    						/* Delete old gmirror information */
+    						system("/sbin/gmirror clear /dev/" . escapeshellarg($disk));
+    						break;
+    					case "gvinum":
+    						/* Initialize disk */
+    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+    						// echo "\"fdisk: Geom not found\"is not an error message!\n";
+    						/* Initialise the partition (optional) */
+    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						/* Create s1 label */
+    						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
+    						break;
+    					case "msdos":
+    						/* Initialize disk */
+    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+    						// echo "\"fdisk: Geom not found\"is not an error message!\n";
+    						/* Initialise the partition (optional) */
+    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						/* Create s1 label */
+    						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
+    						// Create filesystem
+    						system("/sbin/newfs_msdos -F 32 /dev/" . escapeshellarg($disk) . "s1");
+    						break;
+    					}
+    					echo('</pre>');
+    				}
+    				?>
+    				</td>
+  				</tr>
+			 </table>
+    </form>
+    <p><span class="vexpl"><span class="red"><strong>WARNING:<br></strong></span><?=_DISKSMANAGEINITPHP_TEXT; ?></span></p>
+  </td></tr>
+</table>
 <script language="JavaScript">
 <!--
 disk_change();

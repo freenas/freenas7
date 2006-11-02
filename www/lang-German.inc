@@ -393,12 +393,12 @@ define('_INTPHP_CALCNETMASKBITS','Berechne Netmask Bits');
 define('_DISKSPHP_NAME',_DISKS);
 define('_DISKSPHP_MANAGE','Managen');
 define('_DISKSPHP_FORMAT','Formatieren');
+define('_DISKSPHP_TOOLS','Tools');
 define('_DISKSPHP_ISCSIINIT','iSCSI initiator');
 define('_DISKSPHP_DISK',_DISK);
 define('_DISKSPHP_FILESYSTEM',_FILESYSTEM);
 
 // file: disks_manage.php
-
 define('_DISKSMANAGEPHP_NAMEDESC','Management');
 define('_DISKSMANAGEPHP_MSGCHANGED','Der Festplattenstatus hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
@@ -427,7 +427,6 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','Dateisystem von bereits mit Dateisystem 
                      <em>Voreinstellung "Unformated" f&uuml;r unformatierte Festplatte &uuml;bernehmen, dann das "Format menu" benutzen.</em>');
 
 //file: disks_manage_init.php
-
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialisierung');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Festplatteninitialisierungseigenschaften:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','"fdisk: Geom not found" ist keine Fehlermeldung!\n');
@@ -436,6 +435,13 @@ define('_DISKSMANAGEINITPHP_FORMATDISC','Festplatte formatieren!');
 define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Wollen Sie diese Festplatte wirklich formatieren? Alle Daten gehen dabei verloren!');
 define('_DISKSPHP_NOMBR','MBR (MasterBootRecord) nicht l&ouml;schen');
 define('_DISKSPHP_NOMBRTEXT','Nicht den MBR l&ouml;schen (bei einigen Hardware RAID Kontrollerkarten empfehlenswert)'); //neu hinzugekommen
+
+//file: disks_manage_tools.php
+define('_DISKSMANAGETOOLS_NAMEDESC','Tools');
+define('_DISKSMANAGETOOLS_COMMAND','Befehl');
+define('_DISKSMANAGETOOLS_SENDCMD','Sende Befehl!');
+define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Use <a href="disks_raid_gmirror.php">RAID tools</a> for this disk!');
+define('_DISKSMANAGETOOLS_CMDINFO','Befehlsausgabe:');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Management');

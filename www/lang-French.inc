@@ -382,18 +382,17 @@ define('_INTPHP_DHCPCLIENTIDENTIFIER','Identificateur du client');
 define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','La valeur de ce champ est envoy&eacute;&eacute;e en tant qu\'identificateur du client lors de la demande de bail DHCP.');
 define('_INTPHP_CALCNETMASKBITS','Calculer le nombre de bits du masque de sous r&eacute;seau');
 
-
 // Disks: Manage
 // Common text
 define('_DISKSPHP_NAME',_DISKS);
 define('_DISKSPHP_MANAGE','G&eacute;rer');
 define('_DISKSPHP_FORMAT','Formater');
+define('_DISKSPHP_TOOLS','Tools');
 define('_DISKSPHP_ISCSIINIT','initiateur iSCSI');
 define('_DISKSPHP_DISK',_DISK);
 define('_DISKSPHP_FILESYSTEM',_FILESYSTEM);
 
 // file: disks_manage.php
-
 define('_DISKSMANAGEPHP_NAMEDESC','Gestion');
 define('_DISKSMANAGEPHP_MSGCHANGED','La liste des disques a chang&eacute;.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
@@ -421,7 +420,6 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','Ceci vous permet d\'indiquer le type de 
                      <em>Laissez "unformated" pour des disques non format&eacute;s puis utilisez le menu Formater.</em>');
 
 //file: disks_manage_init.php
-
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialiser');
 define('_DISKSMANAGEINITPHP_INITTEXT','D&eacute;tails de l\'initialisation:');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"n\'est pas un message d\'erreur!\n');
@@ -430,6 +428,13 @@ define('_DISKSMANAGEINITPHP_FORMATDISC','Formater le disque');
 define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Voulez-vous vraiment formater ce disque? Toutes les donn&eacute;es seront perdues!');
 define('_DISKSPHP_NOMBR','Ne pas effacer le MBR');
 define('_DISKSPHP_NOMBRTEXT','Conserve le MBR intact (utile avec certains controleurs RAID)');
+
+//file: disks_manage_tools.php
+define('_DISKSMANAGETOOLS_NAMEDESC','Tools');
+define('_DISKSMANAGETOOLS_COMMAND','Commande');
+define('_DISKSMANAGETOOLS_SENDCMD','Valider la commande!');
+define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Use <a href="disks_raid_gmirror.php">RAID tools</a> for this disk!');
+define('_DISKSMANAGETOOLS_CMDINFO','Command output:');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Gestion');

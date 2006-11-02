@@ -97,7 +97,8 @@ FreeNAS 0.68 (UNRELEASE!):
 - New language: German (thanks to Falk Menzel and Dominik Plaszewski)
 - Added option on SSHD page to permit/deny root login.
 - Make traffic graph available to webGUI.
-- Do a "chmod 711" on the "/" directory for limiting user SSH acces
+- Do a "chmod 711" on the "/" directory for limiting user SSH acces.
+- Added disk management tools page (e.g filesystem check).
 
 BUG TO FIX (before release the 0.68) :
 - The output of some command on exec.php are redirected to the error log of ligghtpd in the place of the output screen.

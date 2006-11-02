@@ -98,6 +98,7 @@ if ($_POST) {
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_manage.php"><?=_DISKSPHP_MANAGE; ?></a></li>
 	<li class="tabinact"><a href="disks_manage_init.php"><?=_DISKSPHP_FORMAT; ?></a></li>
+	<li class="tabinact"><a href="disks_manage_tools.php"><?=_DISKSPHP_TOOLS; ?></a></li>
 	<li class="tabact"><?=_DISKSPHP_ISCSIINIT; ?></li>
   </ul>
   </td></tr>

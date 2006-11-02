@@ -196,6 +196,71 @@ define('_INDEXPHP_MEMUSE','Uso de memoria');
 define('_INDEXPHP_LOADAVERAGE','Promedio de carga');
 define('_INDEXPHP_SHOWPROCESSING','mostrar información de procesos');
 
+// Disks: Manage
+// Common text
+define('_DISKSPHP_NAME',_DISKS);
+define('_DISKSPHP_MANAGE','Manage');
+define('_DISKSPHP_FORMAT','Format');
+define('_DISKSPHP_TOOLS','Tools');
+define('_DISKSPHP_ISCSIINIT','iSCSI initiator');
+define('_DISKSPHP_DISK',_DISK);
+define('_DISKSPHP_FILESYSTEM',_FILESYSTEM);
+
+// file: disks_manage.php
+define('_DISKSMANAGEPHP_NAMEDESC','Management');
+define('_DISKSMANAGEPHP_MSGCHANGED','The disk list has been changed.<br>You must apply the changes in order for them to take effect.');
+define('_DISKSMANAGEPHP_DESC',_DESC);
+define('_DISKSMANAGEPHP_STANDBY','Standby time');
+define('_DISKSMANAGEPHP_FSUNKNOWN','Unknown or unformatted');
+define('_DISKSMANAGEPHP_EDIT','Edit disk');
+define('_DISKSMANAGEPHP_DEL','Delete disk');
+define('_DISKSMANAGEPHP_DELCONF','Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!');
+define('_DISKSMANAGEPHP_ADD','Add disk');
+define('_DISKSMANAGEPHP_NOTE','<strong>Note:<br>
+                </strong>First configuration step: Add your hardrive to the disk list.');
+
+// file: disks_manage_edit.php
+define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','This disk already exists in the disk list.');
+define('_DISKSMANAGEEDITPHP_UDMA','UDMA mode');
+define('_DISKSMANAGEEDITPHP_UDMATEXT','You can force UDMA mode if you have \"UDMA_ERROR.... LBA\" message with your hard drive.');
+define('_DISKSMANAGEEDITPHP_STANDBY','Hard disk standby time');
+define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Puts the hard disk into standby mode when the selected amount of time after the last
+                    access has elapsed. <em>Do not set this for CF cards.</em>');
+define('_DISKSMANAGEEDITPHP_APM','Advanced Power Management');
+define('_DISKSMANAGEEDITPHP_APMTEXT','This allows  you  to lower the power consumption of the drive, at the expense of performance.<em>Do not set this for CF cards.</em>');
+define('_DISKSMANAGEEDITPHP_ACLEVEL','Acoustic level');
+define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','This allows you to set how loud the drive is while it\'s  operating.<em>Do not set this for CF cards.</em>');
+define('_DISKSMANAGEEDITPHP_PREFS','Preformated FS');
+define('_DISKSMANAGEEDITPHP_PREFSTEXT','This allows you to set FS type for preformated disk with data.<br>
+                     <em>Leave "unformated" for unformated disk and then use Format menu.</em>');
+
+//file: disks_manage_init.php
+define('_DISKSMANAGEINITPHP_NAMEDESC','Initialize');
+define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Disk initialization details:</strong>');
+define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"is not an error message!\n');
+define('_DISKSMANAGEINITPHP_TEXT','This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified.');
+define('_DISKSMANAGEINITPHP_FORMATDISC','Format disk');
+define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Do you really want to format this disk? All data will be lost!');
+define('_DISKSPHP_NOMBR','Don\'t Erase MBR');
+define('_DISKSPHP_NOMBRTEXT','don\'t erase the MBR (useful for some RAID controller cards)');
+
+//file: disks_manage_tools.php
+define('_DISKSMANAGETOOLS_NAMEDESC','Tools');
+define('_DISKSMANAGETOOLS_COMMAND','Command');
+define('_DISKSMANAGETOOLS_SENDCMD','Send Command!');
+define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Use <a href="disks_raid_gmirror.php">RAID tools</a> for this disk!');
+define('_DISKSMANAGETOOLS_CMDINFO','Command output:');
+
+//file: disks_manage_iscsi.php
+define('_DISKSMANAGEPHP_NAMEDESC','Management');
+define('_DISKSMANAGEISCSIPHP_NAMEDESC','iSCSI');
+define('_DISKSMANAGEISCSIPHP_MSGVALIDIP',_MSGVALIDIP);
+define('_DISKSMANAGEISCSIPHP_INITIATOR','iSCSI Initiator');
+define('_DISKSMANAGEISCSIPHP_TARGETIP','Target IP address');
+define('_DISKSMANAGEISCSIPHP_TARGETIPTEXT','IP address of the iSCSI target.');
+define('_DISKSMANAGEISCSIPHP_TARGETNAME','Targetname');
+define('_DISKSMANAGEISCSIPHP_TARGETNAMETEXT','Targetname.');
+
 // Status Processes Module
 // file: status_processes.php
 define('_STATSPROCPHP_NAME','Estado');
