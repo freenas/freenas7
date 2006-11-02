@@ -105,8 +105,9 @@ if ($_POST) {
                     Open a FreeNAS configuration XML file and click the button 
                       below to restore the configuration.<br>
                       <br>
-                      <strong><span class="red">Note:</span></strong><br>
-                      FreeNAS will reboot after restoring the configuration.<br>
+                      <strong><span class="red"><?=_NOTE;?>:</span></strong><br>
+                      <?=_DIAGBACKUP_RESTORENOTE;?>
+                      <br>
                       <br>
                       <input name="conffile" type="file" class="formfld" id="conffile" size="40">
                       <br>

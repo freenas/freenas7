@@ -103,7 +103,7 @@ if (!isset($do_traceroute)) {
 				</tr>
 				<tr>
 				<td valign="top" colspan="2">
-				<p><span class="vexpl"><span class="red"><strong>Note: </strong></span> Traceroute may take a while to complete.  You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.<p>
+				<p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_DIAGTRACEROUTE_NOTE;?></p>
 				<? if ($do_traceroute) {
 					echo("<br><strong>Traceroute output:</strong><br>");
 					echo('<pre>');

@@ -150,6 +150,5 @@ if ($_GET['act'] == "ret")
 				</tr>
               </table>
             </form>
-<p><span class="vexpl"><span class="red"><strong><?=_DISKSMOUNTPHP_NOTE; ?>
-           </span></p>
+<p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_DISKSMOUNTPHP_NOTE;?></p>
 <?php include("fend.inc"); ?>

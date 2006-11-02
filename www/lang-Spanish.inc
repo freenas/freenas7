@@ -99,6 +99,24 @@ define('_UPDATE', 'Actualizar');
 define('_VIEW', 'Mostrar');
 define('_APPLY', 'Aplicar Cambios');
 define('_WARNING', 'Precaución');
+define('_LOAD', 'Load');
+
+//FreeNAS common words
+define('_SIZE', 'Size');
+define('_STATUS', 'Status');
+define('_TYPE', 'Type');
+define('_CONFIGURING', 'configuring');
+define('_DISK', 'Disk');
+define('_DISKS', 'Disks');
+define('_PARTITION', 'Partition');
+define('_FILESYSTEM', 'File system');
+define('_DESC', 'Description');
+define('_SOFTRAID', 'Software RAID');
+define('_SERVICE','Service');
+define('_SERVICES','Services');
+define('_TCPPORT','TCP port');
+define('_CONFIRMATION','Confirmation');
+define('_NOTE','Note');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Los cambios han sido aplicados satisfactoriamente.');
@@ -216,8 +234,7 @@ define('_DISKSMANAGEPHP_EDIT','Edit disk');
 define('_DISKSMANAGEPHP_DEL','Delete disk');
 define('_DISKSMANAGEPHP_DELCONF','Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!');
 define('_DISKSMANAGEPHP_ADD','Add disk');
-define('_DISKSMANAGEPHP_NOTE','<strong>Note:<br>
-                </strong>First configuration step: Add your hardrive to the disk list.');
+define('_DISKSMANAGEPHP_NOTE','First configuration step: Add your hardrive to the disk list.');
 
 // file: disks_manage_edit.php
 define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','This disk already exists in the disk list.');
@@ -364,6 +381,7 @@ define('_DIAGPING_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
 // file: diag_traceroute.php
 define('_DIAGTRACEROUTE_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGTRACEROUTE_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
+define('_DIAGTRACEROUTE_NOTE','Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.');
 
 // file: diag_logs.php
 // file: diag_logs_daemon.php
@@ -395,6 +413,7 @@ define('_DIAGDEFAULTS_NAMEDESC',_MENULEFT_CMDFACTORYDEF);
 // file: diag_backup.php
 define('_DIAGBACKUP_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGBACKUP_NAMEDESC',_MENULEFT_CMDBACKUPRESTORE);
+define('_DIAGBACKUP_RESTORENOTE','FreeNAS will reboot after restoring the configuration.');
 
 // file: diag_arp.php
 define('_DIAGARP_NAME',_MENULEFT_DIAGNOSTICS);

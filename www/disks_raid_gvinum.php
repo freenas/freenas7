@@ -150,7 +150,6 @@ if ($_GET['act'] == "del") {
 				</tr>
               </table>
             </form>
-<p><span class="vexpl"><span class="red"><strong><?=_DISKSRAIDPHP_NOTE; ?>
-           </span></p>
+<p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_DISKSRAIDPHP_NOTE;?></p>
 </td></tr></table>
 <?php include("fend.inc"); ?>

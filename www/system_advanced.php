@@ -136,7 +136,7 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
             <?php if ($input_errors) print_input_errors($input_errors); ?>
             <?php if ($savemsg) print_info_box($savemsg); ?>
-            <p><span class="vexpl"><span class="red"><?=_SYSTEMADVANCEDPHP_NOTE;?></span></p>
+            <p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span> <?=_SYSTEMADVANCEDPHP_NOTE;?></p>
             <form action="system_advanced.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 

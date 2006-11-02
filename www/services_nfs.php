@@ -155,9 +155,7 @@ function enable_change(enable_change) {
                 </tr>
                  <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"><span class="vexpl"><span class="red"><strong><?=_WARNING ; ?><br>
-                    </strong></span><?=_SRVNFS_TEXT ; ?>
-                    </span></td>
+                  <td width="78%"><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:</strong></span><br><?=_SRVNFS_TEXT;?></span></td>
                 </tr>
                 </table>
 </form>

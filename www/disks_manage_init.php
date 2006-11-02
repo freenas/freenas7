@@ -238,7 +238,7 @@ function disk_change() {
   				</tr>
 			 </table>
     </form>
-    <p><span class="vexpl"><span class="red"><strong>WARNING:<br></strong></span><?=_DISKSMANAGEINITPHP_TEXT; ?></span></p>
+    <p><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:<br></strong></span><?=_DISKSMANAGEINITPHP_TEXT;?></span></p>
   </td></tr>
 </table>
 <script language="JavaScript">

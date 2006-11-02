@@ -104,7 +104,6 @@ define('_WARNING', 'Warning');
 define('_LOAD', 'Load');
 
 //FreeNAS common words
-
 define('_SIZE', 'Size');
 define('_STATUS', 'Status');
 define('_TYPE', 'Type');
@@ -119,6 +118,7 @@ define('_SERVICE','Service');
 define('_SERVICES','Services');
 define('_TCPPORT','TCP port');
 define('_CONFIRMATION','Confirmation');
+define('_NOTE','Note');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'The changes have been applied successfully.');
@@ -299,9 +299,7 @@ define('_SYSTEMADVANCEDPHP_MSGVALIDTCP','The TCP idle timeout must be an integer
 define('_SYSTEMADVANCEDPHP_MSGVALIDCERTKEY','Certificate and key must always be specified together.');
 define('_SYSTEMADVANCEDPHP_MSGVALIDCERT','This certificate does not appear to be valid.');
 define('_SYSTEMADVANCEDPHP_MSGVALIDKEY','This key does not appear to be valid.');
-define('_SYSTEMADVANCEDPHP_NOTE','<strong>Note: </strong></span>the 
-              options on this page are intended for use by advanced users only, 
-              and there\'s <strong>NO</strong> support for them.');
+define('_SYSTEMADVANCEDPHP_NOTE','The options on this page are intended for use by advanced users only, and there\'s <strong>NO</strong> support for them.');
 define('_SYSTEMADVANCEDPHP_WEBGUISSLKEY','webGUI SSL certificate\/key');
 define('_SYSTEMADVANCEDPHP_WEBCERT','Certificate');
 define('_SYSTEMADVANCEDPHP_WEBCERTTEXT','Paste a signed certificate in X.509 PEM format here.');
@@ -406,8 +404,7 @@ define('_DISKSMANAGEPHP_EDIT','Edit disk');
 define('_DISKSMANAGEPHP_DEL','Delete disk');
 define('_DISKSMANAGEPHP_DELCONF','Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!');
 define('_DISKSMANAGEPHP_ADD','Add disk');
-define('_DISKSMANAGEPHP_NOTE','<strong>Note:<br>
-                </strong>First configuration step: Add your hardrive to the disk list.');
+define('_DISKSMANAGEPHP_NOTE','First configuration step: Add your hardrive to the disk list.');
 
 // file: disks_manage_edit.php
 define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','This disk already exists in the disk list.');
@@ -460,26 +457,20 @@ define('_DISKSRAIDPHP_INFO','Information');
 define('_DISKSRAIDPHP_VOLUME','Volume Name');
 
 // Software RAID common word
-
 define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
 define('_DISKSRAIDPHP_GMIRROR','Geom Mirror');
 define('_DISKSRAIDPHP_UNSTABLE','(unstable)');
 
-
 //file: disks_raid.php
-
 define('_DISKSRAIDPHP_NAMEDESC','RAID');
 define('_DISKSRAIDPHP_MSGCHANGED','The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_DISKSRAIDPHP_TYPE','Type');
 define('_DISKSRAIDPHP_EDITRAID','Edit raid');
 define('_DISKSRAIDPHP_DELRAID','Delete raid');
 define('_DISKSRAIDPHP_DELCONF','Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!');
-define('_DISKSRAIDPHP_NOTE','Note:<br>
-                </strong></span>Optional configuration step: Configuring a virtual RAID disk using your<br>
-                <a href="disks_manage.php">previsously configured disk</a>.<br>Wait for the "up" status before format it and mount it!.');
+define('_DISKSRAIDPHP_NOTE','Optional configuration step: Configuring a virtual RAID disk using your<br><a href="disks_manage.php">previsously configured disk</a>.<br>Wait for the "up" status before format it and mount it!.');
 
 //file: disks_raid_edit.php
-
 define('_DISKSRAIDEDITPHP_NAMEDESC',_EDIT);
 define('_DISKSRAIDEDITPHP_MSGADDDISKFIRST','You must add disks first.');
 define('_DISKSRAIDEDITPHP_MSGVALIDNAME','The device name may only consist of the characters a-z, A-Z, 0-9.');
@@ -496,13 +487,10 @@ define('_DISKSRAIDEDITPHP_RAID1','mirroring');
 define('_DISKSRAIDEDITPHP_RAID5','rotated block-interleaved parity');
 define('_DISKSRAIDEDITPHP_MEMBERS','Members of this volume');
 
-
 //file: disks_raid_info.php
-
 define('_DISKSRAIDINFOPHP_TEXT','Software RAID information and status');
 
 //file: disks_raid_init.php
-
 define('_DISKSRAIDINITPHP_INFO','Disk format UFS output:');
 define('_DISKSRAIDINITPHP_TEXT','This step will format the RAID volume in Unix FileSystem (UFS).');
 define('_DISKSRAIDINITPHP_FORMAT','Format UFS disk!');
@@ -520,17 +508,13 @@ define('_DISKSMOUNTPHP_NAME','Mount Point');
 define('_DISKSMOUNTPHP_SHARENAME','Share Name');
 
 // disks_mount.php
-
 define('_DISKSMOUNTPHP_MSGCHANGED','The mount point list has been changed.<br>You must apply the changes in order for them to take effect.');
-define('_DISKSMOUNTPHP_NOTE','Note:<br>
-                </strong></span>Second configuration step: Declaring the filesystem used by your<br>
-                <a href="disks_manage.php">previously configured disk');
+define('_DISKSMOUNTPHP_NOTE','Second configuration step: Declaring the filesystem used by your <a href="disks_manage.php">previously configured disk');
 define('_DISKSMOUNTPHP_DELCONF','Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!');
 define('_DISKSMOUNTPHP_DEL','delete mount');
 define('_DISKSMOUNTPHP_ADD','add mount');
 
 // disks_mount_edit.php
-
 define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','The share name may only consist of the characters a-z, A-Z, 0-9, _ , -.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDESC','The description name contain invalid characters.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Can\'t mount the system partition 1, the DATA partition is the 2.');
@@ -539,7 +523,6 @@ define('_DISKSMOUNTEDITPHP_TEXT','1. You can\'t mount the partition \'<?php echo
 
 // Service: CIFS/SAMBA
 // file: services_samba.php
-
 define('_SRVCIFS_NAMEDESC','CIFS');
 define('_SRVCIFS_MSGVALIDNETBIOSNAME','The Netbios name contains invalid characters.');
 define('_SRVCIFS_MSGVALIDWORKGOUP','The Workgroup name contains invalid characters.');
@@ -681,7 +664,6 @@ define('_SRVSSHD_PRIVATEKEYTEXT','Paste a DSA PRIVATE KEY in PEM format here.');
 
 // Service: Unison
 // file: services_unison.php
-
 define('_SRVUNSN_NAMEDESC','Unison');
 define('_SRVUNSN_MSGVALIDWRKDIR','The combination of share and working directory does not exist.');
 define('_SRVUNSN_UNISON','Unison File Synchronisation');
@@ -691,11 +673,10 @@ define('_SRVUNSN_WORKDIR','Working Directory');
 define('_SRVUNSN_WORKDIRDESC','Where the working files will be stored');
 define('_SRVUNSN_MAKEDIR','Create');
 define('_SRVUNSN_MAKEDIRLABEL','Create work directory if it doesn\'t exist');
-define('_SRVUNSN_NOTESSH','<strong>Note</strong>: <a href="/services_sshd.php">SSHD</a> must be enabled for Unison to work, and the <a href="/access_users.php">user</a> must have Full Shell enabled.');
+define('_SRVUNSN_NOTESSH','<a href="/services_sshd.php">SSHD</a> must be enabled for Unison to work, and the <a href="/access_users.php">user</a> must have Full Shell enabled.');
 
 // Service: AFP
 // file: services_afp.php
-
 define('_SRVAFP_NAMEDESC','AFP');
 define('_SRVAFP_MSGVALIDAUTH','You must select at least one authentication method.');
 define('_SRVAFP_AFPSRV','AFP Server');
@@ -706,7 +687,6 @@ define('_SRVAFP_ENABLELOCAL','Enable local user authentication.');
 
 // Access
 // common words
-
 define('_ACCESS_NAME','Access');
 define('_ACCESS_USER','User');
 define('_ACCESS_USERS','Users');
@@ -715,7 +695,6 @@ define('_ACCESS_GROUPS','Groups');
 define('_ACCESS_FULLNAME','Full Name');
 
 // file: access_users.php
-
 define('_ACCESSUSERS_MSGCHANGED','The User list has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_ACCESSUSERS_EDITUSER','Edit user');
 define('_ACCESSUSERS_DELUSER','Eelete user');
@@ -723,7 +702,6 @@ define('_ACCESSUSERS_CONFDEL','Do you really want to delete this user?!');
 define('_ACCESSUSERS_ADDUSER','Add user');
 
 // file: access_users_edit.php
-
 define('_ACCESSUSERSEDIT_MSGGROUPFIRST','you must create a group first.');
 define('_ACCESSUSERSEDIT_MSGVALIDLOGIN','The login name contains invalid characters.');
 define('_ACCESSUSERSEDIT_MSGVALIDLOGINRESERVED','The login name is a reserved login name.');
@@ -743,7 +721,6 @@ define('_ACCESSUSERSEDIT_FULLSHELL','Full Shell');
 define('_ACCESSUSERSEDIT_FULLSHELLTEXT','Give full shell to user');
 
 // file: access_users_groups.php
-
 define('_ACCESSGROUPS_MSGCHANGED','The group list has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_ACCESSGROUPS_DESC',_DESC);
 define('_ACCESSGROUPS_GROUPEDIT','Edit group');
@@ -752,7 +729,6 @@ define('_ACCESSGROUPS_GROUPDELCONF','Do you really want to delete this group?!')
 define('_ACCESSGROUPS_GROUPADD','Add group');
 
 // file: access_users_groups_edit.php
-
 define('_ACCESSGROUPSEDIT_MSGVALIDNAME','The Group name contains invalid characters.');
 define('_ACCESSGROUPSEDIT_MSGVALIDDESC','The Group desc contains invalid characters.');
 define('_ACCESSGROUPSEDIT_MSGVALIDDUPLICATE','This group already exists in the group list.');
@@ -762,7 +738,6 @@ define('_ACCESSGROUPSEDIT_DESC',_DESC);
 define('_ACCESSGROUPSEDIT_DESCTEXT','Group description.');
 
 // file: access_ad.php
-
 define('_ACCESSAD_NAME','Active Directory');
 define('_ACCESSAD_MSGVALIDIP',_MSGVALIDIP);
 define('_ACCESSAD_MSGVALIDPASSERROR',_MSGVALIDPASSWORD);
@@ -852,6 +827,7 @@ define('_DIAGPING_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
 // file: diag_traceroute.php
 define('_DIAGTRACEROUTE_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGTRACEROUTE_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
+define('_DIAGTRACEROUTE_NOTE','Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.');
 
 // file: diag_logs.php
 // file: diag_logs_daemon.php
@@ -883,6 +859,7 @@ define('_DIAGDEFAULTS_NAMEDESC',_MENULEFT_CMDFACTORYDEF);
 // file: diag_backup.php
 define('_DIAGBACKUP_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGBACKUP_NAMEDESC',_MENULEFT_CMDBACKUPRESTORE);
+define('_DIAGBACKUP_RESTORENOTE','FreeNAS will reboot after restoring the configuration.');
 
 // file: diag_arp.php
 define('_DIAGARP_NAME',_MENULEFT_DIAGNOSTICS);

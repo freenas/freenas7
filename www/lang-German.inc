@@ -108,7 +108,6 @@ define('_WARNING', 'Warnung');
 define('_LOAD', 'Laden');
 
 //FreeNAS common words
-
 define('_SIZE', 'Gr&ouml;sse');
 define('_STATUS', 'Status');
 define('_TYPE', 'Typ');
@@ -123,6 +122,7 @@ define('_SERVICE','Service');
 define('_SERVICES','Services');
 define('_TCPPORT','TCP Port');
 define('_CONFIRMATION','Best&auml;tigung');
+define('_NOTE','Hinweis');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Die &Auml;nderungen wurden &uuml;bernommen.');
@@ -302,9 +302,7 @@ define('_SYSTEMADVANCEDPHP_MSGVALIDTCP','Der TCP idle Timeout muss ein Integerwe
 define('_SYSTEMADVANCEDPHP_MSGVALIDCERTKEY','Zertifikate und Schl&uuml;sse m&uuml;ssen immer zusammen eingegeben werden.');
 define('_SYSTEMADVANCEDPHP_MSGVALIDCERT','Dieses Zertifikat scheint nicht g&uuml;ltig zu sein.');
 define('_SYSTEMADVANCEDPHP_MSGVALIDKEY','Dieser Schl&uuml;ssel scheint nicht g&uuml;ltig zu sein .');
-define('_SYSTEMADVANCEDPHP_NOTE','<strong>Beachten: </strong></span>die
-              Optionen auf dieser Seite sind nur f&uuml;r erfahrene Benutzer(!),
-              und es besteht <strong>KEIN</strong> Support.');
+define('_SYSTEMADVANCEDPHP_NOTE','Die Optionen auf dieser Seite sind nur f&uuml;r erfahrene Benutzer(!), und es besteht <strong>KEIN</strong> Support.');
 define('_SYSTEMADVANCEDPHP_WEBGUISSLKEY','Web GUI SSL Zertifikat/Schl&uuml;ssel');
 define('_SYSTEMADVANCEDPHP_WEBCERT','Zertifikate');
 define('_SYSTEMADVANCEDPHP_WEBCERTTEXT','F&uuml;gen Sie ein Zertifikat in X.509 PEM Format ein.');
@@ -408,8 +406,7 @@ define('_DISKSMANAGEPHP_EDIT','Bearbeite Festplatte');
 define('_DISKSMANAGEPHP_DEL','L&ouml;sche Festplatte');
 define('_DISKSMANAGEPHP_DELCONF','Wollen Sie diese Festplatte wirklich l&ouml;schen? Alle Elemente in derzeitiger Benutzung werden ung&uuml;ltig werden (z.B. Freigaben)!');
 define('_DISKSMANAGEPHP_ADD','Festplatte hinzuf&uuml;gen');
-define('_DISKSMANAGEPHP_NOTE','<strong>Bemerkung:<br>
-                </strong>Erster Bearbeitungsschritt: F&uuml;gen Sie ihre Festplatte zur Festplatteliste hinzu.');
+define('_DISKSMANAGEPHP_NOTE','Erster Bearbeitungsschritt: F&uuml;gen Sie ihre Festplatte zur Festplatteliste hinzu.');
 
 // file: disks_manage_edit.php
 define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Diese Festplatte ist bereits in der Festplatteliste enthalten.');
@@ -462,26 +459,20 @@ define('_DISKSRAIDPHP_INFO','Informationen');
 define('_DISKSRAIDPHP_VOLUME','Volume Name');
 
 // Software RAID common word
-
 define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
 define('_DISKSRAIDPHP_GMIRROR','Geom Mirror');
 define('_DISKSRAIDPHP_UNSTABLE','(unstable)');
 
-
 //file: disks_raid.php
-
 define('_DISKSRAIDPHP_NAMEDESC','RAID');
 define('_DISKSRAIDPHP_MSGCHANGED','Die RAID-Einstellung wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden.');
 define('_DISKSRAIDPHP_TYPE','Type');
 define('_DISKSRAIDPHP_EDITRAID','Bearbeite RAID');
 define('_DISKSRAIDPHP_DELRAID','L&ouml;sche RAID');
 define('_DISKSRAIDPHP_DELCONF','Soll dieses RAIDLaufwerk wirklich gel&ouml;scht werden? Alle Elemente, die gerade darauf zugreifen, werden ung&uuml;ltig werden (z.B. Freigaben)!');
-define('_DISKSRAIDPHP_NOTE','Hinweis:<br>
-                </strong></span>Optionaler Konfigurationsschritt: Konfiguration einer "virtual RAID disk" unter Verwendung<br>
-                <a href="disks_manage.php">einer vorher eingestellten Festplatte/Partition</a>.<br>Den "up" Status vor Formatieren und Einbinden (Mounten) abwarten!');
+define('_DISKSRAIDPHP_NOTE','Optionaler Konfigurationsschritt: Konfiguration einer "virtual RAID disk" unter Verwendung<br><a href="disks_manage.php">einer vorher eingestellten Festplatte/Partition</a>.<br>Den "up" Status vor Formatieren und Einbinden (Mounten) abwarten!');
 
 //file: disks_raid_edit.php
-
 define('_DISKSRAIDEDITPHP_NAMEDESC',_EDIT);
 define('_DISKSRAIDEDITPHP_MSGADDDISKFIRST','Die Festplatten m&uuml;ssen zuerst hinzugef&uuml;gt werden.');
 define('_DISKSRAIDEDITPHP_MSGVALIDNAME','Der Ger&auml;tename darf nur folgende Zeichen enthalten: a-z, A-Z, 0-9.');
@@ -498,13 +489,10 @@ define('_DISKSRAIDEDITPHP_RAID1','mirroring');
 define('_DISKSRAIDEDITPHP_RAID5','rotated block-interleaved parity');
 define('_DISKSRAIDEDITPHP_MEMBERS','Verwendete Ger&auml;te f&uuml;r dieses RAID');
 
-
 //file: disks_raid_info.php
-
 define('_DISKSRAIDINFOPHP_TEXT','Software RAID Information und Status');
 
 //file: disks_raid_init.php
-
 define('_DISKSRAIDINITPHP_INFO','Disk format UFS output:');
 define('_DISKSRAIDINITPHP_TEXT','Dies wird das RAID Volume mit dem Unix FileSystem (UFS) formatieren.');
 define('_DISKSRAIDINITPHP_FORMAT','Formatiere UFS Festplatte!');
@@ -522,17 +510,13 @@ define('_DISKSMOUNTPHP_NAME','Mount Point');
 define('_DISKSMOUNTPHP_SHARENAME','Share Name');
 
 // disks_mount.php
-
 define('_DISKSMOUNTPHP_MSGCHANGED','Die Liste der Einbindungen (mount points) wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden.');
-define('_DISKSMOUNTPHP_NOTE','Hinweis:<br>
-                </strong></span>Erster Bearbeitungsschritt: Das Dateisystem der gerade eingerichteten Partition<br>
-                <a href="disks_manage.php">angeben.');
+define('_DISKSMOUNTPHP_NOTE','Erster Bearbeitungsschritt: Das Dateisystem der gerade eingerichteten Partition <a href="disks_manage.php">angeben</a>.');
 define('_DISKSMOUNTPHP_DELCONF','Wollen Sie diesen MountPoint wirklich l&ouml;schen? Alle Elemente, die gerade darauf zugreifen, werden ung&uuml;ltig werden (z.B. Freigaben)');
 define('_DISKSMOUNTPHP_DEL','MountPoint l&ouml;schen');
 define('_DISKSMOUNTPHP_ADD','MountPoint hinzuf&uuml;gen');
 
 // disks_mount_edit.php
-
 define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','Der Freigabenname darf nur folgende Zeichen enthalten: a-z, A-Z, 0-9, _ , -.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDESC','Die Beschreibung enth&auml;lt ung&uuml;ltige Zeichen.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Die Systempartition (1. Partition) kann nicht eingebunden werden, die notwendige Datenpartition ist die 2. Partition auf dem Datentr&auml;ger.');
@@ -541,7 +525,6 @@ define('_DISKSMOUNTEDITPHP_TEXT','1. Die Partition \'<?php echo htmlspecialchars
 
 // Service: CIFS/SAMBA
 // file: services_samba.php
-
 define('_SRVCIFS_NAMEDESC','CIFS - Common Internet File System');
 define('_SRVCIFS_MSGVALIDNETBIOSNAME','Der Netbios-Name enth&auml;lt ung&uuml;ltige Zeichen.');
 define('_SRVCIFS_MSGVALIDWORKGOUP','Der Arbeitsgruppen-Name enth&auml;lt ung&uuml;ltige Zeichen..');
@@ -645,7 +628,6 @@ define('_SRVFTP_MOTDTEXT','Nachricht des Tages');
 define('_SRVRYNCD_TCPORTTEXT','Alternativer TCP Port.');
 
 // file: services_rsyncd_client.php
-
 define('_SRVRYNCC_MSGMPFIRST','Es muss zuerst ein "Mount Point" konfiguriert werden.');
 define('_SRVRYNCC_MSGVALIDIP',_MSGVALIDIP);
 define('_SRVRYNCC_RSYNCC','Rsync Client Synchronisation');
@@ -659,7 +641,6 @@ define('_SRVRYNCC_TIME','Synchronisationzeit');
 define('_SRVRYNCC_TEXT',_MSGSCHED_TEXT);
 
 // file: services_rsyncd_local.php
-
 define('_SRVRYNCC_MSGVALID','You can have the same mount point for source and destination!');
 define('_SRVRYNC_LOCALTEXT','Rsync Local Synchronization');
 define('_SRVRYNC_LOCAL_SOURCE','Source Mount Point');
@@ -667,7 +648,6 @@ define('_SRVRYNC_LOCAL_DESTINATION','Destination Mount Point (backup drive)');
 
 // Service: SSHD
 // file: services_sshd.php
-
 define('_SRVSSHD_NAMEDESC','SSHD');
 define('_SRVSSHD_MSGVALIDTCPPORT',_MSGVALIDTCPPORT);
 define('_SRVSSHD_MSGVALIDKEY','Dieser Schl&uuml;ssel scheint nicht g&uuml;ltig zu sein.');
@@ -683,7 +663,6 @@ define('_SRVSSHD_PRIVATEKEYTEXT','F&uuml;gen Sie einen "RSA private key" im PEM 
 
 // Service: Unison
 // file: services_unison.php
-
 define('_SRVUNSN_NAMEDESC','Unison');
 define('_SRVUNSN_MSGVALIDWRKDIR','The combination of share and working directory does not exist.');
 define('_SRVUNSN_UNISON','Unison File Synchronisation');
@@ -693,11 +672,10 @@ define('_SRVUNSN_WORKDIR','Working Directory');
 define('_SRVUNSN_WORKDIRDESC','Where the working files will be stored');
 define('_SRVUNSN_MAKEDIR','Create');
 define('_SRVUNSN_MAKEDIRLABEL','Create work directory if it doesn\'t exist');
-define('_SRVUNSN_NOTESSH','<strong>Note</strong>: <a href="/services_sshd.php">SSHD</a> must be enabled for Unison to work, and the <a href="/access_users.php">user</a> must have Full Shell enabled.');
+define('_SRVUNSN_NOTESSH','<a href="/services_sshd.php">SSHD</a> must be enabled for Unison to work, and the <a href="/access_users.php">user</a> must have Full Shell enabled.');
 
 // Service: AFP
 // file: services_afp.php
-
 define('_SRVAFP_NAMEDESC','AFP');
 define('_SRVAFP_MSGVALIDAUTH','Sie m&uuml;ssen mind. eine Authentifizierungsmethode ausw&auml;hlen.');
 define('_SRVAFP_AFPSRV','AFP Server');
@@ -708,7 +686,6 @@ define('_SRVAFP_ENABLELOCAL','Aktiviere Lokaler Benutzer-zugriff.');
 
 // Access
 // common words
-
 define('_ACCESS_NAME','Zugriff');
 define('_ACCESS_USER','Benutzer');
 define('_ACCESS_USERS','Benutzer');
@@ -717,7 +694,6 @@ define('_ACCESS_GROUPS','Gruppen');
 define('_ACCESS_FULLNAME','Vollst&auml;ndiger Name');
 
 // file: access_users.php
-
 define('_ACCESSUSERS_MSGCHANGED','Die Benutzerliste wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen.');
 define('_ACCESSUSERS_EDITUSER','Bearbeite Benutzer');
 define('_ACCESSUSERS_DELUSER','L&ouml;sche Benutzer');
@@ -725,7 +701,6 @@ define('_ACCESSUSERS_CONFDEL','Benutzer wirklich l&ouml;schen?');
 define('_ACCESSUSERS_ADDUSER','Lege Benutzer an');
 
 // file: access_users_edit.php
-
 define('_ACCESSUSERSEDIT_MSGGROUPFIRST','Zun&auml;chst eine Gruppe einrichten.');
 define('_ACCESSUSERSEDIT_MSGVALIDLOGIN','Der Login-Name enth&auml;lt ung&uuml;ltige Zeichen.');
 define('_ACCESSUSERSEDIT_MSGVALIDLOGINRESERVED','Der Login-Name ist reserviert.');
@@ -854,6 +829,7 @@ define('_DIAGPING_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
 // file: diag_traceroute.php
 define('_DIAGTRACEROUTE_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGTRACEROUTE_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
+define('_DIAGTRACEROUTE_NOTE','Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.');
 
 // file: diag_logs.php
 // file: diag_logs_daemon.php
@@ -885,6 +861,7 @@ define('_DIAGDEFAULTS_NAMEDESC',_MENULEFT_CMDFACTORYDEF);
 // file: diag_backup.php
 define('_DIAGBACKUP_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGBACKUP_NAMEDESC',_MENULEFT_CMDBACKUPRESTORE);
+define('_DIAGBACKUP_RESTORENOTE','FreeNAS wird nach dem wiederherstellen der Konfiguration neu gestartet.');
 
 // file: diag_arp.php
 define('_DIAGARP_NAME',_MENULEFT_DIAGNOSTICS);
