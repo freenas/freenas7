@@ -499,8 +499,9 @@ create_iso () {
 	cp $BOOTDIR/defaults/loader.conf $TMPDIR/boot/defaults/
 	cp $BOOTDIR/device.hints $TMPDIR/boot
 	
-	#Special for enabling serial port if no keyboard
-	cp $BOOTDIR/boot.config $TMPDIR/
+	#Special test for enabling serial port if no keyboard
+	#Removed because meet some problem with some hardware (no keyboard detected)
+	#cp $BOOTDIR/boot.config $TMPDIR/
 	
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file on $TMPDIR folder"
