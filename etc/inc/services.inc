@@ -247,23 +247,24 @@ veto files = /.snap/
 
 EOD;
 
-			if ( (is_array($config['samba']['hidemount']) && in_array($mountent['sharename'],$config['samba']['hidemount'])))
+				if ( (is_array($config['samba']['hidemount']) && in_array($mountent['sharename'],$config['samba']['hidemount']))) {
 			
-			$sambaconf .= <<<EOD
+				$sambaconf .= <<<EOD
 browseable = no
 
 EOD;
 
-			}
+				}
 			
-			if (isset($config['samba']['recyclebin'])) {
-				$sambaconf .= <<<EOD
+				if (isset($config['samba']['recyclebin'])) {
+					$sambaconf .= <<<EOD
 vfs object = recycle
 recycle:repository = Recycle Bin
 recycle:keeptree = Yes
 recycle:versions = Yes
 
 EOD;
+				}
 			}
 
 		fwrite($fd, $sambaconf);
