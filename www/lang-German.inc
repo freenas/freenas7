@@ -68,7 +68,7 @@ define('_YEAR', 'Jahr');
 define('_YEARS', 'Jahre');
 
 // common words
-define('_ALL','alle');
+define('_ALL','Alle');
 define('_AND','und');
 define('_BY','mit');
 define('_DOWN','Ab');
@@ -134,12 +134,13 @@ define('_MSGVALIDNETBIT','Eine g&uuml;ltige Subnet Adressierung muss eingegeben 
 define('_MSGVALIDTCPPORT','Der TCP/IP Port muss eingetragen werden.');
 define('_MSGVALIDPASSWORD','Passwort FALSCH.');
 
-define('_MSGSCHED_TEXT','Hinweis: Ctrl-click (oder command-click auf dem Mac) um Stunden, Tage und Monate zu zu w&auml;hlen.');
+define('_MSGSCHED_TEXT','Hinweis: Strg-Klick (oder Kommando-Klick auf dem Mac) um Stunden, Tage und Monate zu w&auml;hlen bzw. abzuw&auml;hlen.');
 
 
 // states
 define('_ACTIVE','Aktiv');
 define('_INACTIVE','Inaktiv');
+define('_SELECTED','Ausgew&auml;hlt');
 
 // Webgui layout
 define('_MENULEFT_SYSTEM','System');
@@ -621,11 +622,11 @@ define('_SRVRYNCD_RSYNCD','Rsync Daemon');
 define('_SRVRYNCD_READONLY','Nur lesen');
 define('_SRVRYNCD_MAPUSER','Map to user');
 define('_SRVRYNCD_TCPORT',_TCPPORT);
-define('_SRVRYNCD_MAXCON','Max. Verbindungen');
-define('_SRVRYNCD_MAXCONTEXT','Max. Anzahl gleichzeitiger Verbindungen. Voreinstellung ist 0 (unbegrenzt)');
-define('_SRVRYNCD_MOTD','MOTD');
-define('_SRVFTP_MOTDTEXT','Nachricht des Tages');
 define('_SRVRYNCD_TCPORTTEXT','Alternativer TCP Port.');
+define('_SRVRYNCD_MAXCON','Max. Verbindungen');
+define('_SRVRYNCD_MAXCONTEXT','Max. Anzahl gleichzeitiger Verbindungen. Voreinstellung ist 0 (unbegrenzt).');
+define('_SRVRYNCD_MOTD','MOTD');
+define('_SRVRYNCD_MOTDTEXT','Nachricht des Tages.');
 
 // file: services_rsyncd_client.php
 define('_SRVRYNCC_MSGMPFIRST','Es muss zuerst ein "Mount Point" konfiguriert werden.');
@@ -641,10 +642,13 @@ define('_SRVRYNCC_TIME','Synchronisationzeit');
 define('_SRVRYNCC_TEXT',_MSGSCHED_TEXT);
 
 // file: services_rsyncd_local.php
-define('_SRVRYNCC_MSGVALID','You can have the same mount point for source and destination!');
-define('_SRVRYNC_LOCALTEXT','Rsync Local Synchronization');
-define('_SRVRYNC_LOCAL_SOURCE','Source Mount Point');
-define('_SRVRYNC_LOCAL_DESTINATION','Destination Mount Point (backup drive)');
+define('_SRVRYNCL_MSGVALID','Sie k&ouml;nnen nicht den selben Mount Point f&uuml;r Quelle und Ziel verwenden!');
+define('_SRVRYNCC_RSYNCL','Rsync Local Synchronization');
+define('_SRVRYNCL_SOURCE','Quelle');
+define('_SRVRYNCL_SOURCETEXT','Quell Mount Point.');
+define('_SRVRYNCL_DESTINATION','Ziel');
+define('_SRVRYNCL_DESTINATIONTEXT','Ziel Mount Point (Backup Laufwerk).');
+
 
 // Service: SSHD
 // file: services_sshd.php

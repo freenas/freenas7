@@ -126,6 +126,7 @@ define('_MESSAGES_ERROR', 'ERROR: los cambios no pudieron ser aplicados(código 
 // states
 define('_ACTIVE','Active');
 define('_INACTIVE','Inactive');
+define('_SELECTED','Selected');
 
 // Webgui layout
 // Webgui layout
@@ -328,10 +329,52 @@ define('_SYSTEMFIRMWAREPHP_DONOTABORT','No aborte el proceso una vez que comienc
                     FreeNAS reiniciará automáticamente después de salvar el nuevo Sistema Base. La configuración
                     se mantendrá.<br>
                     Necesita un mínimo de 128 Mb RAM para actualizar el Sistema Base.');
+
 // System Advanced Module
 // file: system_advanced.php
 define('_SYSTEMADVANCEDPHP_NAME','Sistema');
 define('_SYSTEMADVANCEDPHP_NAMEDESC','Configuración Avanzada');
+
+// Service: RSYNC
+// Common
+define('_SRVRYNC_SERVER','Server');
+define('_SRVRYNC_CLIENT','Client');
+define('_SRVRYNC_LOCAL','Local');
+
+// file: services_rsyncd.php
+define('_SRVRYNCD_NAMEDESC','RSYNCD');
+define('_SRVRYNCD_MSGVALIDTCPPORT',_MSGVALIDTCPPORT);
+define('_SRVRYNCD_RSYNCD','Rsync Daemon');
+define('_SRVRYNCD_READONLY','Read only');
+define('_SRVRYNCD_MAPUSER','Map to user');
+define('_SRVRYNCD_TCPORT',_TCPPORT);
+define('_SRVRYNCD_TCPORTTEXT','Alternate TCP port.');
+define('_SRVRYNCD_MAXCON','Maximum connections');
+define('_SRVRYNCD_MAXCONTEXT','Maximum number of simultaneous connections. Default is 0 (unlimited).');
+define('_SRVRYNCD_MOTD','MOTD');
+define('_SRVRYNCD_MOTDTEXT','Message of the day.');
+
+// file: services_rsyncd_client.php
+define('_SRVRYNCC_MSGMPFIRST','You must configure mount point first.');
+define('_SRVRYNCC_MSGVALIDIP',_MSGVALIDIP);
+define('_SRVRYNCC_RSYNCC','Rsync Client Synchronization');
+define('_SRVRYNCC_REMOTESERVER','Remote RSYNC Server');
+define('_SRVRYNCC_REMOTEID','IP address of remote RSYNC server');
+define('_SRVRYNCC_OPTIONS','RSYNC Options');
+define('_SRVRYNCC_OPTDEL','Delete files that don\'t exist on sender.');
+define('_SRVRYNCC_SHARES','Shares to be synchronized');
+define('_SRVRYNCC_SHARESTEXT','This same local share must be present on the Remote Server.');
+define('_SRVRYNCC_TIME','Synchronization Time');
+define('_SRVRYNCC_TEXT',_MSGSCHED_TEXT);
+
+// file: services_rsyncd_local.php
+define('_SRVRYNCL_MSGVALID','You can\'t have the same mount point for source and destination!');
+define('_SRVRYNCC_RSYNCL','Rsync Local Synchronization');
+define('_SRVRYNCL_SOURCE','Source');
+define('_SRVRYNCL_SOURCETEXT','Source Mount Point.');
+define('_SRVRYNCL_DESTINATION','Destination');
+define('_SRVRYNCL_DESTINATIONTEXT','Destination Mount Point (backup drive).');
+
 
 // file: reboot.php
 define('_DIAGREBOOT_NAME',_MENULEFT_DIAGNOSTICS);

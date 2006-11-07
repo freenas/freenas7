@@ -141,6 +141,7 @@ define('_MSGSCHED_TEXT','Nota: Ctrl-click (o command-click per i Mac) per selezi
 // states
 define('_ACTIVE','Attivo');
 define('_INACTIVE','Inattivo');
+define('_SELECTED','Selected');
 
 // Webgui layout
 define('_MENULEFT_SYSTEM','Sistema');
@@ -563,7 +564,6 @@ define('_SRVCIFS_RCVBUFFTEXT','Dimensione del buffer di ricezione (8192 di defau
 
 // Service: FTP
 // file: services_ftp.php
-
 define('_SRVFTP_NAMEDESC','FTP');
 define('_SRVFTP_MSGVALIDPORT',_MSGVALIDTCPPORT);
 define('_SRVFTP_MSGVALIDMAXCLIENT','Il massimo numero di client deve essere numerico.');
@@ -596,7 +596,6 @@ define('_SRVFTP_BANNERTEXT','Banner di benvenuto mostrato da FTP quando si insta
 
 // Service: NFS
 // file: services_nfs.php
-
 define('_SRVNFS_NAMEDESC','NFS');
 define('_SRVNFS_MSGVALIDNET','Deve essere specificata una rete valida.');
 define('_SRVNFS_MSGVALIDNETBIT',_MSGVALIDNETBIT);
@@ -620,9 +619,12 @@ define('_SRVRYNCD_READONLY','Sola lettura');
 define('_SRVRYNCD_MAPUSER','Mappa come utente');
 define('_SRVRYNCD_TCPORT',_TCPPORT);
 define('_SRVRYNCD_TCPORTTEXT','Porta TCP alternativa.');
+define('_SRVRYNCD_MAXCON','Maximum connections');
+define('_SRVRYNCD_MAXCONTEXT','Maximum number of simultaneous connections. Default is 0 (unlimited).');
+define('_SRVRYNCD_MOTD','MOTD');
+define('_SRVRYNCD_MOTDTEXT','Message of the day.');
 
 // file: services_rsyncd_client.php
-
 define('_SRVRYNCC_MSGMPFIRST','E\'necessario prima configurare un punto di mount.');
 define('_SRVRYNCC_MSGVALIDIP',_MSGVALIDIP);
 define('_SRVRYNCC_RSYNCC','Sincronizzazione client Rsync');
@@ -634,6 +636,15 @@ define('_SRVRYNCC_SHARES','Shares da sincronizzare');
 define('_SRVRYNCC_SHARESTEXT','Questa stessa share locale deve essere presente sul Server Remoto.');
 define('_SRVRYNCC_TIME','Tempo di Sincronizzazione');
 define('_SRVRYNCC_TEXT',_MSGSCHED_TEXT);
+
+// file: services_rsyncd_local.php
+define('_SRVRYNCL_MSGVALID','You can\'t have the same mount point for source and destination!');
+define('_SRVRYNCC_RSYNCL','Rsync Local Synchronization');
+define('_SRVRYNCL_SOURCE','Source');
+define('_SRVRYNCL_SOURCETEXT','Source Mount Point.');
+define('_SRVRYNCL_DESTINATION','Destination');
+define('_SRVRYNCL_DESTINATIONTEXT','Destination Mount Point (backup drive).');
+
 
 // Service: SSHD
 // file: services_sshd.php

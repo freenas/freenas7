@@ -190,7 +190,7 @@ function enable_change(enable_change) {
                   <td width="78%" class="vtable"> 
                     <textarea name="motd" cols="65" rows="7" id="motd" class="formpre"><?=htmlspecialchars($pconfig['motd']);?></textarea>
                     <br> 
-                    <?=_SRVFTP_MOTDTEXT;?></td>
+                    <?=_SRVRYNCD_MOTDTEXT;?></td>
                 </tr>
 				<tr> 
                   <td width="22%" valign="top">&nbsp;</td>

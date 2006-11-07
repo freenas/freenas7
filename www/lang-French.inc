@@ -138,6 +138,7 @@ define('_MSGSCHED_TEXT','Note: Ctrl-clic (ou command-clic sur Mac) pour s&eacute
 // states
 define('_ACTIVE','Actif');
 define('_INACTIVE','Inactif');
+define('_SELECTED','Selected');
 
 // Webgui layout
 define('_MENULEFT_SYSTEM','Syst&egrave;me');
@@ -615,14 +616,13 @@ define('_SRVRYNCD_RSYNCD','D&eacute;mon Rsync');
 define('_SRVRYNCD_READONLY','Lecture seule');
 define('_SRVRYNCD_MAPUSER','Associer &agrave; l\'utilisateur');
 define('_SRVRYNCD_TCPORT',_TCPPORT);
-define('_SRVRYNCD_MAXCON','Maximum de connexions');
-define('_SRVRYNCD_MAXCONTEXT','Nombre maximum de connexions simultan&eacute;es. 0 par d&eacute;faut (illimit&eacute;)');
-define('_SRVRYNCD_MOTD','MOTD');
-define('_SRVFTP_MOTDTEXT','Message du jour');
 define('_SRVRYNCD_TCPORTTEXT','Port TCP alternatif.');
+define('_SRVRYNCD_MAXCON','Maximum de connexions');
+define('_SRVRYNCD_MAXCONTEXT','Nombre maximum de connexions simultan&eacute;es. 0 par d&eacute;faut (illimit&eacute;).');
+define('_SRVRYNCD_MOTD','MOTD');
+define('_SRVRYNCD_MOTDTEXT','Message du jour.');
 
 // file: services_rsyncd_client.php
-
 define('_SRVRYNCC_MSGMPFIRST','Vous devez d\'abord choisir un point de montage.');
 define('_SRVRYNCC_MSGVALIDIP',_MSGVALIDIP);
 define('_SRVRYNCC_RSYNCC','Synchronisation client Rsync');
@@ -636,11 +636,12 @@ define('_SRVRYNCC_TIME','Heure de Synchronisation');
 define('_SRVRYNCC_TEXT',_MSGSCHED_TEXT);
 
 // file: services_rsyncd_local.php
-
-define('_SRVRYNCC_MSGVALID','Vous pouvez avoir le m&ecirc;me point de montage comme source et destination!');
-define('_SRVRYNC_LOCALTEXT','Synchronisation Rsync locale');
-define('_SRVRYNC_LOCAL_SOURCE','Point de montage source');
-define('_SRVRYNC_LOCAL_DESTINATION','Point de montage destination (disque de sauvegarde)');
+define('_SRVRYNCL_MSGVALID','Vous pouvez avoir le m&ecirc;me point de montage comme source et destination!');
+define('_SRVRYNCC_RSYNCL','Synchronisation Rsync locale');
+define('_SRVRYNCL_SOURCE','Source');
+define('_SRVRYNCL_SOURCETEXT','Point de montage source.');
+define('_SRVRYNCL_DESTINATION','Destination');
+define('_SRVRYNCL_DESTINATIONTEXT','Point de montage destination (disque de sauvegarde).');
 
 
 // Service: SSHD

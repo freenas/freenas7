@@ -67,7 +67,7 @@ if (!is_array($config['mounts']['mount'])){
   	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
   	
   	if ($_POST['enable'] && (strcmp($_POST['source'],$_POST['destination'])==0) ){
-  		$input_errors[] = _SRVRYNC_LOCAL_MSGVALID;
+  		$input_errors[] = _SRVRYNCL_MSGVALID;
   	}
   	
   	if (!$input_errors)
@@ -203,81 +203,69 @@ function enable_change(enable_change) {
   </td></tr>
   <tr> 
     <td class="tabcont">
-            <form action="services_rsyncd_local.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td colspan="2" valign="top" class="optsect_t">
-				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong><?=_SRVRYNC_LOCALTEXT; ?></strong></td>
-				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE; ?></strong></td></tr>
-				  </table></td>
-                </tr>
-                
-                
-                 <tr>			  		
-			
-			<td valign="top" class="vncellreq"><?=_SRVRYNC_LOCAL_SOURCE;?></td>
-                   
-	<td class="vtable"> 
-		<select name="source" class="formfld" id="source">
-		  	  
-<?php 		  
-			if (is_array($config['mounts']['mount'])) {
-				foreach ($a_mount as $mountv) 	{ 
-					echo "<option value=\"{$mountv['sharename']}\"";
-						if (strcmp($mountv['sharename'],$pconfig['source']) == 0)
-							echo " selected";
-					echo">";
-					echo htmlspecialchars($mountv['sharename']);
-					echo "</option>";
-				}
-			}
-			else
-				echo "You must configure mount point before!";
-?>
-			
-			<br><?=_SRVRYNC_LOCAL_SOURCETEXT;?></td>
-			</tr>
-
-                 <tr>			  		
-			
-			<td valign="top" class="vncellreq"><?=_SRVRYNC_LOCAL_DESTINATION;?></td>
-                   
-	<td class="vtable"> 
-		<select name="destination" class="formfld" id="destination">
-		  	  
-<?php 		  
-			if (is_array($config['mounts']['mount'])) {
-				foreach ($a_mount as $mountv) 	{ 
-					echo "<option value=\"{$mountv['sharename']}\"";
-						if (strcmp($mountv['sharename'],$pconfig['destination']) == 0)
-							echo " selected";
-					echo">";
-					echo htmlspecialchars($mountv['sharename']);
-					echo "</option>";
-				}
-			}
-			else
-				echo "You must configure mount point before!";
-?>
-			
-			<br><?=_SRVRYNC_LOCAL_DESTINATIONTEXT;?></td>
-			</tr>
-
-<tr>
-                <td width="22%" valign="top" class="vncell"><strong><?=_SRVRYNCC_OPTIONS; ?><strong></td>
-                		<td width="78%" class="vtable"><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=_SRVRYNCC_OPTDEL; ?><br>
-												<br>
-										</td>
-								</tr>
-	
-							
-     
-                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?_SRVRYNCC_TIME;?></td>
-                  <td width="78%" class="vtable"> 
-                     
-                     <table width=100% border cellpadding="6" cellspacing="0">
+      <form action="services_rsyncd_local.php" method="post" name="iform" id="iform">
+        <table width="100%" border="0" cellpadding="6" cellspacing="0">
+          <tr> 
+            <td colspan="2" valign="top" class="optsect_t">
+              <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tr><td class="optsect_s"><strong><?=_SRVRYNCC_RSYNCL; ?></strong></td>
+                <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE; ?></strong></td></tr>
+				      </table>
+            </td>
+          </tr>
+          <tr>			  		
+            <td valign="top" class="vncellreq"><?=_SRVRYNCL_SOURCE;?></td>
+            <td class="vtable"> 
+              <select name="source" class="formfld" id="source">
+                <?php 		  
+                if (is_array($config['mounts']['mount'])) {
+                	foreach ($a_mount as $mountv) 	{ 
+                		echo "<option value=\"{$mountv['sharename']}\"";
+                			if (strcmp($mountv['sharename'],$pconfig['source']) == 0)
+                				echo " selected";
+                		echo">";
+                		echo htmlspecialchars($mountv['sharename']);
+                		echo "</option>";
+                	}
+                }
+                else
+                	echo _SRVRYNCC_MSGMPFIRST;
+                ?>
+              </select>
+              <br><?=_SRVRYNCL_SOURCETEXT;?>
+            </td>
+          </tr>
+          <tr>			  		
+            <td valign="top" class="vncellreq"><?=_SRVRYNCL_DESTINATION;?></td>
+            <td class="vtable"> 
+              <select name="destination" class="formfld" id="destination">
+                <?php 		  
+                if (is_array($config['mounts']['mount'])) {
+                	foreach ($a_mount as $mountv) 	{ 
+                		echo "<option value=\"{$mountv['sharename']}\"";
+                			if (strcmp($mountv['sharename'],$pconfig['destination']) == 0)
+                				echo " selected";
+                		echo">";
+                		echo htmlspecialchars($mountv['sharename']);
+                		echo "</option>";
+                	}
+                }
+                else
+                	echo _SRVRYNCC_MSGMPFIRST;
+                ?>
+              </select>
+              <br><?=_SRVRYNCL_DESTINATIONTEXT;?>
+            </td>
+          </tr>
+          <tr>
+            <td width="22%" valign="top" class="vncell"><strong><?=_SRVRYNCC_OPTIONS; ?><strong></td>
+            <td width="78%" class="vtable"><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=_SRVRYNCC_OPTDEL; ?><br>
+            </td>
+          </tr>
+          <tr> 
+            <td width="22%" valign="top" class="vncellreq"><?_SRVRYNCC_TIME;?></td>
+            <td width="78%" class="vtable"> 
+              <table width=100% border cellpadding="6" cellspacing="0">
                     <tr>
                       <td class="optsect_t"><b class="optsect_s"><?=_MINUTES;?></b></td>
                       <td class="optsect_t"><b class="optsect_s"><?=_HOURS;?></b></td>
@@ -289,9 +277,9 @@ function enable_change(enable_change) {
                       <td valign=top>
 
 						<input type="radio" name="all_mins" id="all_mins1" value="1"<?php echo $all_mins_all;?>>
-                        All<br>
+                        <?=_ALL;?><br>
                         	<input type="radio" name="all_mins" id="all_mins2" value="0"<?php echo $all_mins_selected;?>>
-                        Selected ..<br>
+                        <?=_SELECTED;?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
@@ -397,9 +385,9 @@ function enable_change(enable_change) {
                         <br></td>
                       <td valign=top>
 											<input type="radio" name="all_hours" id="all_hours1" value="1"<?php echo $all_hours_all;?>>
-                        All<br>
+                        <?=_ALL;?><br>
                         <input type="radio" name="all_hours" id="all_hours2" value="0"<?php echo $all_hours_selected;?>>
-                        Selected ..<br>
+                        <?=_SELECTED;?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
@@ -442,9 +430,9 @@ function enable_change(enable_change) {
                           </tr>
                         </table></td>
                       <td valign=top><input type="radio" name="all_days" id="all_days1" value="1" <?php echo $all_days_all;?>>
-                        All<br>
+                        <?=_ALL;?><br>
                         <input type="radio" name="all_days" id="all_days2" value="0"<?php echo $all_days_selected;?>>
-                        Selected ..<br>
+                        <?=_SELECTED;?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
@@ -505,30 +493,32 @@ function enable_change(enable_change) {
                           </tr>
                         </table></td>
                       <td valign=top><input type="radio" name="all_months" id="all_months1" value="1"<?php echo $all_months_all;?>>
-                        All<br>
+                        <?=_ALL;?><br>
                         <input type="radio" name="all_months" id="all_months2" value="0"<?php echo $all_months_selected;?>>
-                        Selected ..<br>
+                        <?=_SELECTED;?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
     														<select multiple size="12" name="months[]" id="months">
     														<?php $i=1; foreach ($a_months as $month):?>
-                                <option value="<?=$i++;?>" <?php if (isset($pconfig['month']) && in_array($i, $pconfig['month'])) echo "selected";?>><?=$month;?></option>
+                                <option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array($i, $pconfig['month'])) echo "selected";?>><?=$month;?></option>
+                                <?php $i++;?>
                                 <?php endforeach;?>
                               </select>
 													  </td>
                           </tr>
                         </table></td>
                       <td valign=top><input type="radio" name="all_weekdays" id="all_weekdays1" value="1"<?php echo $all_weekdays_all;?>>
-                        All<br>
+                        <?=_ALL;?><br>
                         <input type="radio" name="all_weekdays" id="all_weekdays2" value="0"<?php echo $all_weekdays_selected;?>>
-                        Selected ..<br>
+                        <?=_SELECTED;?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
     														<select multiple size="7" name="weekdays[]" id="weekdays">
     														<?php $i=0; foreach ($a_weekdays as $day):?>
-                                <option value="<?=$i++;?>" <?php if (isset($pconfig['weekday']) && in_array($i, $pconfig['weekday'])) echo "selected";?>><?=$day;?></option>
+                                <option value="<?=$i;?>" <?php if (isset($pconfig['weekday']) && in_array($i, $pconfig['weekday'])) echo "selected";?>><?=$day;?></option>
+                                <?php $i++;?>
                                 <?php endforeach;?>
                               </select>
 													  </td>
