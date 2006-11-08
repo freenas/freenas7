@@ -101,11 +101,6 @@ FreeNAS 0.68 (UNRELEASE!):
 - Do a "chmod 711" on the "/" directory for limiting user SSH acces.
 - Added disk management tools page (e.g filesystem check).
 
-BUG TO FIX (before release the 0.68) :
-- The output of some command on exec.php are redirected to the error log of ligghtpd in the place of the output screen.
-- Adding pccaardd
-
-
 FreeNAS 0.671:
 - gvinum bug fix: fix raid deletion , add config file conversion
 
