@@ -102,10 +102,9 @@ if (!isset($do_action))
             <td valign="top" class="vncellreq"><?=_PARTITION;?></td>
             <td class="vtable"> 
             <select name="partition" class="formfld" id="partition">
-              <option value="s1">1</option>
-              <option value="s2">2</option>
-              <option value="s3">3</option>
-              <option value="s4">4</option>
+              <?php for($i = 1; $i <= 4; $i++):?>
+              <option value="s<?=$i;?>" <?php if ("s$i" == $partition) echo "selected";?>><?=$i;?></option>
+    					<?php endfor;?>
             </select>
             </td>
           </tr>
