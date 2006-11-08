@@ -197,7 +197,7 @@ define('_SYSTEMPHP_HOSTNAMETEXT','Nom du serveur NAS, sans pr&eacute;ciser le no
 define('_SYSTEMPHP_DOMAIN','Domaine');
 define('_SYSTEMPHP_DOMAINTEXT','ex: <em>macompagnie.fr</em>');
 define('_SYSTEMPHP_DNS','Serveurs DNS');
-define('_SYSTEMPHP_DNSTEXT','Adresse IP des serveurs DNS<br>');
+define('_SYSTEMPHP_DNSTEXT','Adresse IP des serveurs DNS');
 define('_SYSTEMPHP_USERNAME','Nom utilisateur');
 define('_SYSTEMPHP_USERNAMETEXT','Nom utilisateur pour acc&eacute;der &agrave; l\'interface WEB.');
 define('_SYSTEMPHP_PASSWORD','Mot de passe');

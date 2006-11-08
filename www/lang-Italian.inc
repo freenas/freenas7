@@ -198,7 +198,7 @@ define('_SYSTEMPHP_HOSTNAMETEXT','nome dell\'host NAS, senza la parte del domini
 define('_SYSTEMPHP_DOMAIN','Dominio');
 define('_SYSTEMPHP_DOMAINTEXT','es. <em>mycorp.com</em>');
 define('_SYSTEMPHP_DNS','Servers DNS');
-define('_SYSTEMPHP_DNSTEXT','indirizzi IP<br>');
+define('_SYSTEMPHP_DNSTEXT','indirizzi IP');
 define('_SYSTEMPHP_USERNAME','Username');
 define('_SYSTEMPHP_USERNAMETEXT','Se si desidera cambiare lo username per l\'accesso tramite la webGUI, inserirlo qui.');
 define('_SYSTEMPHP_PASSWORD','Password');

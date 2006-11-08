@@ -184,7 +184,7 @@ define('_SYSTEMPHP_HOSTNAMETEXT','nombre del host, sin la parte del dominio<br>e
 define('_SYSTEMPHP_DOMAIN','Dominio');
 define('_SYSTEMPHP_DOMAINTEXT','e.j. <em>micorp.com</em>');
 define('_SYSTEMPHP_DNS','Servidores DNS');
-define('_SYSTEMPHP_DNSTEXT','Direcciones IP<br>');
+define('_SYSTEMPHP_DNSTEXT','Direcciones IP');
 define('_SYSTEMPHP_USERNAME','Usuario');
 define('_SYSTEMPHP_USERNAMETEXT','Si desa cambiar el usuario para acceder la WebGUI, introdúscalo aquí.');
 define('_SYSTEMPHP_PASSWORD','Contraseña');

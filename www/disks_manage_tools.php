@@ -59,6 +59,7 @@ if ($_POST) {
 		$do_action = true;
 		$disk = $_POST['disk'];
 		$action = $_POST['action'];
+		$partition = $_POST['partition'];
 	}
 }
 
@@ -67,6 +68,7 @@ if (!isset($do_action))
 	$do_action = false;
 	$disk = '';
 	$action = '';
+	$partition = '';
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -96,12 +98,25 @@ if (!isset($do_action))
               </select>
             </td>
       		</tr>
-          <td valign="top" class="vncellreq"><?=_DISKSMANAGETOOLS_COMMAND;?></td>
-          <td class="vtable"> 
-            <select name="action" class="formfld" id="action">
-              <option value="fsck" <?php if ($action == "fsck") echo "selected"; ?>>fsck</option>
-             </select>
-          </td>
+      		<tr> 
+            <td valign="top" class="vncellreq"><?=_PARTITION;?></td>
+            <td class="vtable"> 
+            <select name="partition" class="formfld" id="partition">
+              <option value="s1">1</option>
+              <option value="s2">2</option>
+              <option value="s3">3</option>
+              <option value="s4">4</option>
+            </select>
+            </td>
+          </tr>
+          <tr>
+            <td valign="top" class="vncellreq"><?=_DISKSMANAGETOOLS_COMMAND;?></td>
+            <td class="vtable"> 
+              <select name="action" class="formfld" id="action">
+                <option value="fsck" <?php if ($action == "fsck") echo "selected"; ?>>fsck</option>
+               </select>
+            </td>
+          </tr>
   				<tr>
   				  <td width="22%" valign="top">&nbsp;</td>
   				  <td width="78%">
@@ -120,7 +135,7 @@ if (!isset($do_action))
               {
                 case "fsck":
                   /* Get the id of the disk */
-		              $id=array_search_ex($disk, $a_disk, "name");
+		              $id = array_search_ex($disk, $a_disk, "name");
 		              /* Get the filesystem type of the disk */ 
 		              $type = $a_disk[$id]['fstype'];
 
@@ -130,14 +145,14 @@ if (!isset($do_action))
           					case "ufs_no_su":
           					case "ufsgpt":
           					case "ufsgpt_no_su":
-                      system("/sbin/fsck_ufs -y -f /dev/" . escapeshellarg($disk) . "s1");
+                      system("/sbin/fsck_ufs -y -f /dev/" . escapeshellarg($disk . $partition));
           						break;
           					case "gmirror":
           					case "gvinum":
                       print_info_box_np(_DISKSMANAGETOOLS_RAIDDISKNOTE);
           						break;
           					case "msdos":
-                      system("/sbin/fsck_msdosfs -y -f /dev/" . escapeshellarg($disk) . "s1");
+                      system("/sbin/fsck_msdosfs -y -f /dev/" . escapeshellarg($disk . $partition));
           						break;
         					}
                   break;

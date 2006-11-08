@@ -156,37 +156,32 @@ if ($_POST) {
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
                   <td valign="top" class="vncellreq"><?=_DISK; ?></td>
-              <td class="vtable">
-                
-		<select name="mdisk" class="formfld" id="mdisk">
-		  <?php foreach ($a_disk as $disk): ?>
-			<?php if ((strcmp($disk['fstype'],"gvinum")!=0) | (strcmp($disk['fstype'],"gmirror")!=0)): ?> 	  
-				<option value="<?=$disk['name'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 
-				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
-
-				</option>
-			<?php endif; ?>
-		  <?php endforeach; ?>
-			</td>
+                  <td class="vtable">            
+                	 <select name="mdisk" class="formfld" id="mdisk">
+                		  <?php foreach ($a_disk as $disk): ?>
+                			<?php if ((strcmp($disk['fstype'],"gvinum")!=0) | (strcmp($disk['fstype'],"gmirror")!=0)): ?> 	  
+                				<option value="<?=$disk['name'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 
+                				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
+                				</option>
+                			<?php endif; ?>
+                		  <?php endforeach; ?>
+                		</select>
+                  </td>
 	              </tr>   
-	         
-                
                  <tr> 
                   <td valign="top" class="vncellreq"><?=_PARTITION ; ?></td>
                   <td class="vtable"> 
-                    <select name="partition" class="formfld" id="partition number">
+                    <select name="partition" class="formfld" id="partition">
                       <option value="s1" <?php if ($pconfig['partition'] == "s1") echo "selected"; ?>>1</option>
                       <option value="s2" <?php if ($pconfig['partition'] == "s2") echo "selected"; ?>>2</option>
                       <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
                       <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
                       <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>><?=_SOFTRAID ;?> - gmirror</option>
-                       <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>><?=_SOFTRAID ;?> - gvinum</option>
+                      <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>><?=_SOFTRAID ;?> - gvinum</option>
                       <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>GPT</option>
-    
                     </select>
                   </td>
                 </tr>
-              
                 <tr> 
                   <td valign="top" class="vncellreq"><?=_FILESYSTEM ;?></td>
                   <td class="vtable"> 

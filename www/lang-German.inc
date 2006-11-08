@@ -199,7 +199,7 @@ define('_SYSTEMPHP_HOSTNAMETEXT','Name des NAS Host, ohne Domain<br>z.B. <em>nas
 define('_SYSTEMPHP_DOMAIN','Domain');
 define('_SYSTEMPHP_DOMAINTEXT','z.B. <em>mycorp.com</em>');
 define('_SYSTEMPHP_DNS','DNS Server');
-define('_SYSTEMPHP_DNSTEXT','IP Addresse<br>');
+define('_SYSTEMPHP_DNSTEXT','IP Addresse');
 define('_SYSTEMPHP_USERNAME','Benutzername');
 define('_SYSTEMPHP_USERNAMETEXT','Wenn Sie den Benutzernamen f&uuml;r die Web-Gui &auml;ndern m&ouml;chten, tragen Sie ihn hier ein.');
 define('_SYSTEMPHP_PASSWORD','Passwort');
@@ -511,7 +511,7 @@ define('_DISKSMOUNTPHP_NAME','Mount Point');
 define('_DISKSMOUNTPHP_SHARENAME','Share Name');
 
 // disks_mount.php
-define('_DISKSMOUNTPHP_MSGCHANGED','Die Liste der Einbindungen (mount points) wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden.');
+define('_DISKSMOUNTPHP_MSGCHANGED','Die Liste der Einbindungen (Mount Points) wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden.');
 define('_DISKSMOUNTPHP_NOTE','Erster Bearbeitungsschritt: Das Dateisystem der gerade eingerichteten Partition <a href="disks_manage.php">angeben</a>.');
 define('_DISKSMOUNTPHP_DELCONF','Wollen Sie diesen MountPoint wirklich l&ouml;schen? Alle Elemente, die gerade darauf zugreifen, werden ung&uuml;ltig werden (z.B. Freigaben)');
 define('_DISKSMOUNTPHP_DEL','MountPoint l&ouml;schen');
