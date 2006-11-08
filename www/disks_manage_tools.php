@@ -139,6 +139,11 @@ if (!isset($do_action))
 		              /* Get the filesystem type of the disk */ 
 		              $type = $a_disk[$id]['fstype'];
 
+                  /* Display warning if disk is mounted. */
+		              if(disks_check_mount($disk,$partition)) {
+		                echo("<strong class='red'>" . _NOTE . ":</strong> " . _DISKSMANAGETOOLS_MOUNTNOTE . "<br><br>");
+                  }
+
                   switch($type)
         					{
           					case "ufs":

@@ -438,6 +438,7 @@ define('_DISKSMANAGETOOLS_COMMAND','Command');
 define('_DISKSMANAGETOOLS_SENDCMD','Send Command!');
 define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Use <a href="disks_raid_gmirror.php">RAID tools</a> for this disk!');
 define('_DISKSMANAGETOOLS_CMDINFO','Command output:');
+define('_DISKSMANAGETOOLS_MOUNTNOTE','The disk is currently mounted.');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Management');

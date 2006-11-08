@@ -257,33 +257,25 @@ function disks_mount_status($mount)
 	return $status;
 }
 
-function disks_check_mount($disk)
+/* This option check if the given partition (s1 by default)) of the disk is mounted. */
+/* Return 0 if not, 1 if yes */
+function disks_check_mount($disk,$partition = "s1")
 {
-	// This option check if the partition 1 of the disk is mounted
-	// Return 0 if not, 1 if yes
 	global $config, $g;
 	$detmount = get_mounts_list();
 	$status=0;
 	
 	// Recreate the full system name device+s+partition number
-		
-	$complete = "{$disk}" . "s1";
+	$complete = "{$disk}" . "{$partition}";
 
-	foreach ($detmount as $detmountk => $detmountv)
-	{
-
-		//echo "debug, display detmountv[mdisk]: {$detmountv['mdisk']} <br>";
-		
-		if (strcmp($detmountv['mdisk'],$complete) == 0) 		{
+	foreach ($detmount as $detmountk => $detmountv) {
+		if (strcmp($detmountv['mdisk'],$complete) == 0) {
 			$status="1";
 			return $status;
-		}		
-		
+		}
 	}
 	return $status;
 }
-
-
 
 function disks_status($diskname)
 {
