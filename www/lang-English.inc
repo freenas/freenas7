@@ -312,7 +312,7 @@ define('_SYSTEMADVANCEDPHP_DISCON','Disable console menu');
 define('_SYSTEMADVANCEDPHP_CONTEXT','Changes to this option will take effect after a reboot.');
 define('_SYSTEMADVANCEDPHP_FIRM','Firmware version check');
 define('_SYSTEMADVANCEDPHP_DISFIRM','Disable firmware version check');
-define('_SYSTEMADVANCEDPHP_FIRMTEXT','This will cause FreeNAS not to check for newer firmware versions when the <a href=\"system_firmware.php\">System: Firmware</a> page is viewed.');
+define('_SYSTEMADVANCEDPHP_FIRMTEXT','This will cause FreeNAS not to check for newer firmware versions when the <a href=system_firmware.php>System: Firmware</a> page is viewed.');
 define('_SYSTEMADVANCEDPHP_TCPIDLE','TCP idle timeout');
 define('_SYSTEMADVANCEDPHP_TCPIDLETEXT','Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don\'t set this too high or your state table could become full of connections that have been improperly shut down. The default is 2.5 hours.');
 define('_SYSTEMADVANCEDPHP_NAV','Navigation');
