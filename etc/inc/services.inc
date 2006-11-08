@@ -444,20 +444,25 @@ function services_nfs_configure() {
 		
 		$a_mount = &$config['mounts']['mount'];
 		
-		foreach ($a_mount as $mount)
-		{
+		foreach ($a_mount as $mount) {
 			$nfsconf .= <<<EOD
-/mnt/{$mount['sharename']} -alldirs -maproot=root 
+/mnt/{$mount['sharename']} -alldirs  
 EOD;
 
-			if ($config['nfs']['mapall'] == "yes")
-			{
+			if ($config['nfs']['mapall'] == "yes") 		{
 			
 			$nfsconf .= <<<EOD
 -mapall=root 
 EOD;
 			
 			}
+			else {
+			$nfsconf .= <<<EOD
+-maproot=root 
+EOD;
+			
+			}
+			
 			
 			$nfsconf .= <<<EOD
 -network {$network} -mask $subnet
