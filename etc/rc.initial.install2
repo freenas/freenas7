@@ -92,8 +92,8 @@
 		exit(0);
 	}
 	
-	$harddrive="$harddrive" . "s1";
-	if(system_install_installation($harddrive)) 	{
+	$installharddrive = "$harddrive" . "s1";
+	if(system_install_installation($installharddrive)) {
 		echo "\nMeet a problem during file copying.\n";
 		system_install_unmount();
 		exit(0);
@@ -103,7 +103,7 @@
 	
 	echo <<<EOD
 	
-FreeNAS has been installed on $harddrive.
+FreeNAS has been installed on $installharddrive.
 You can now remove the CD-ROM and reboot the PC.
 
 For using the DATA partition:
