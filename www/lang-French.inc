@@ -138,7 +138,7 @@ define('_MSGSCHED_TEXT','Note: Ctrl-clic (ou command-clic sur Mac) pour s&eacute
 // states
 define('_ACTIVE','Actif');
 define('_INACTIVE','Inactif');
-define('_SELECTED','Selected');
+define('_SELECTED','S&eacute;lectionn&eacute;');
 
 // Webgui layout
 define('_MENULEFT_SYSTEM','Syst&egrave;me');
@@ -380,7 +380,7 @@ define('_INTPHP_GENERAL','Configuration g&eacute;n&eacute;rale');
 define('_INTPHP_DHCPHOSTNAME','Nom d\'hote');
 define('_INTPHP_DHCPHOSTNAMETEXT','Le contenu de ce champ est envoy&eacute; en tant que nom d\'hote DHCP lors de la demande de bail DHCP.');
 define('_INTPHP_DHCPCLIENTIDENTIFIER','Identificateur du client');
-define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','La valeur de ce champ est envoy&eacute;&eacute;e en tant qu\'identificateur du client lors de la demande de bail DHCP.');
+define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','La valeur de ce champ est envoy&eacute;e en tant qu\'identificateur du client lors de la demande de bail DHCP.');
 define('_INTPHP_CALCNETMASKBITS','Calculer le nombre de bits du masque de sous r&eacute;seau');
 
 // Disks: Manage
@@ -430,12 +430,12 @@ define('_DISKSPHP_NOMBR','Ne pas effacer le MBR');
 define('_DISKSPHP_NOMBRTEXT','Conserve le MBR intact (utile avec certains controleurs RAID)');
 
 //file: disks_manage_tools.php
-define('_DISKSMANAGETOOLS_NAMEDESC','Tools');
+define('_DISKSMANAGETOOLS_NAMEDESC','Outils');
 define('_DISKSMANAGETOOLS_COMMAND','Commande');
 define('_DISKSMANAGETOOLS_SENDCMD','Valider la commande!');
-define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Use <a href="disks_raid_gmirror.php">RAID tools</a> for this disk!');
-define('_DISKSMANAGETOOLS_CMDINFO','Command output:');
-define('_DISKSMANAGETOOLS_MOUNTNOTE','The disk is currently mounted! The mount will be removed temporary to perform selected command.');
+define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Utilisez <a href="disks_raid_gmirror.php">les outils RAID</a> pour ce disque!');
+define('_DISKSMANAGETOOLS_CMDINFO','Message renvoy&eacute;;:');
+define('_DISKSMANAGETOOLS_MOUNTNOTE','Ce disque est mont&eacute;!<br>Veuillez le d&eacute;monter avant d\'utiliser les outils');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Gestion');
@@ -788,8 +788,8 @@ define('_DIAGEXECPHP_NAMEDESC','Ex&eacute;cuter une commande');
 // file: reboot.php
 define('_DIAGREBOOT_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGREBOOT_NAMEDESC',_MENULEFT_CMDREBOOTSYS);
-define('_DIAGREBOOT_REBOOTMSG','The system is rebooting now. This may take one minute.');
-define('_DIAGREBOOT_REBOOTCONF','Are you sure you want to reboot the system?');
+define('_DIAGREBOOT_REBOOTMSG','Le syst&egrave;me est en cours de red&eacute;marrage. Ceci peut prendre jusqu\' &agrave; une minute.');
+define('_DIAGREBOOT_REBOOTCONF','Etes-vous s&ucirc;r de vouloir red&eacute;marrer le syst&egrave;me?');
 
 // file: license.php
 define('_LICENSE_NAME','Licence');
@@ -833,7 +833,7 @@ define('_DIAGPING_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
 // file: diag_traceroute.php
 define('_DIAGTRACEROUTE_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGTRACEROUTE_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
-define('_DIAGTRACEROUTE_NOTE','Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.');
+define('_DIAGTRACEROUTE_NOTE','Traceroute peut etre long a s\'ex&eacute;cuter. Vous pouvez cliquer sur le bouton Stop de votre navigateur a tout moment pour voir l\'avancement du tracage.');
 
 // file: diag_logs.php
 // file: diag_logs_daemon.php
@@ -865,7 +865,7 @@ define('_DIAGDEFAULTS_NAMEDESC',_MENULEFT_CMDFACTORYDEF);
 // file: diag_backup.php
 define('_DIAGBACKUP_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGBACKUP_NAMEDESC',_MENULEFT_CMDBACKUPRESTORE);
-define('_DIAGBACKUP_RESTORENOTE','FreeNAS will reboot after restoring the configuration.');
+define('_DIAGBACKUP_RESTORENOTE','FreeNAS red&eacute;marrera apr&egrave;s  avoir restor&eacute; la configuration.');
 
 // file: diag_arp.php
 define('_DIAGARP_NAME',_MENULEFT_DIAGNOSTICS);
@@ -879,10 +879,10 @@ define('_STATSGRAPH_NAMEDESC','Graphe de trafic');
 define('_GRAPH_ERRORGETIFDATA','Impossible de collecter des donn&eacute;es sur cette interface');
 define('_GRAPH_IN','Entr&eacute;e');
 define('_GRAPH_OUT','Sortie');
-define('_GRAPH_SWITCHTO','Basculer vers');
+define('_GRAPH_SWITCHTO','Basculer en');
 define('_GRAPH_AUTOSCALE','Echelle auto');
 define('_GRAPH_AUTOSCALE_FOLLOW','Suivre');
 define('_GRAPH_AUTOSCALE_UP','Remonter');
-define('_GRAPH_SHOWLAST','Graphe en dernier');
+define('_GRAPH_SHOWLAST','Afficher les derni&egrave;res');
 define('_GRAPH_COLLECTDATA','Collecte des premi&egrave;res donn&eacute;es, veuillez patienter...');
 ?>
