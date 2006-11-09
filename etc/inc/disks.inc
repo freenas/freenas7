@@ -884,4 +884,36 @@ function disks_set_ataidle()
 			
 	return 0;
 }
+
+/* Get list of partition information from disk. */
+function disks_get_partition_info($disk)
+{
+  // [1] => Array
+  //    (
+  //        [start] => 31
+  //        [size]  => 409169
+  //        [type]  => 0xa5
+  //        [flags] => 0x80
+  //    )
+  
+  exec("/sbin/fdisk -s /dev/{$disk}", $rawdata);
+  array_shift($rawdata);
+  array_shift($rawdata);
+
+  $result = array();
+
+  foreach($rawdata as $partinfo)
+  {
+    $apartinfo = preg_split("/\s+/", $partinfo);
+    $partid = chop($apartinfo[1],":");
+
+    $result[$partid] = array();
+		$result[$partid]['start'] = chop($apartinfo[2]);
+		$result[$partid]['size']  = chop($apartinfo[3]);
+		$result[$partid]['type']  = chop($apartinfo[4]);
+		$result[$partid]['flags'] = chop($apartinfo[5]);
+  }
+
+  return $result;
+}
 ?>

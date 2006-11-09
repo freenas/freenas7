@@ -72,15 +72,38 @@ if (!isset($do_action))
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script language="JavaScript">
+<!--
+function disk_change() {
+  document.iform.partition.length = 0;
+  switch(document.iform.disk.value)
+  {
+    <?php foreach ($a_disk as $diskv): ?>
+		case "<?=$diskv['name'];?>":
+		  <?php $partinfo = disks_get_partition_info($diskv['name']);?>
+		  var next = null;
+      <?php foreach($partinfo as $partinfon => $partinfov): ?>
+        if(document.all) // IE workaround.
+          next = document.iform.partition.length;
+        document.iform.partition.add(new Option("<?=$partinfon;?>","s<?=$partinfon;?>",false,<?php if("s{$partinfon}"==$partition){echo "true";}else{echo "false";};?>), next);
+      <?php endforeach; ?>
+      break;
+    <?php endforeach; ?>
+  }
+}
+// -->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-	<li class="tabinact"><a href="disks_manage.php"><?=_DISKSPHP_MANAGE;?></a></li>
-	<li class="tabinact"><a href="disks_manage_init.php"><?=_DISKSPHP_FORMAT;?></li>
-	<li class="tabact"><?=_DISKSPHP_TOOLS;?></li>
-	<li class="tabinact"><a href="disks_manage_iscsi.php"><?=_DISKSPHP_ISCSIINIT;?></a></li>
-  </ul>
-  </td></tr>
+  <tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+      	<li class="tabinact"><a href="disks_manage.php"><?=_DISKSPHP_MANAGE;?></a></li>
+      	<li class="tabinact"><a href="disks_manage_init.php"><?=_DISKSPHP_FORMAT;?></a></li>
+      	<li class="tabact"><?=_DISKSPHP_TOOLS;?></li>
+      	<li class="tabinact"><a href="disks_manage_iscsi.php"><?=_DISKSPHP_ISCSIINIT;?></a></li>
+      </ul>
+    </td>
+  </tr>
   <tr>
     <td class="tabcont">
       <?php if ($input_errors) print_input_errors($input_errors); ?>
@@ -89,7 +112,7 @@ if (!isset($do_action))
           <tr>
             <td valign="top" class="vncellreq"><?=_DISK;?></td>
             <td class="vtable">
-              <select name="disk" class="formfld" id="disk">
+              <select name="disk" class="formfld" id="disk" onchange="disk_change()">
                 <?php foreach ($a_disk as $diskn): ?>
                 <option value="<?=$diskn['name'];?>"<?php if ($diskn['name'] == $disk) echo "selected";?>>
                 <?php echo htmlspecialchars($diskn['name'] . ": " .$diskn['size'] . " (" . $diskn['desc'] . ")");?>
@@ -101,11 +124,7 @@ if (!isset($do_action))
       		<tr> 
             <td valign="top" class="vncellreq"><?=_PARTITION;?></td>
             <td class="vtable"> 
-            <select name="partition" class="formfld" id="partition">
-              <?php for($i = 1; $i <= 4; $i++):?>
-              <option value="s<?=$i;?>" <?php if ("s$i" == $partition) echo "selected";?>><?=$i;?></option>
-    					<?php endfor;?>
-            </select>
+            <select name="partition" class="formfld" id="partition"></select>
             </td>
           </tr>
           <tr>
@@ -148,6 +167,7 @@ if (!isset($do_action))
 
                   switch($type)
         					{
+                    case "":
           					case "ufs":
           					case "ufs_no_su":
           					case "ufsgpt":
@@ -179,4 +199,9 @@ if (!isset($do_action))
     </form>
   </td></tr>
 </table>
+<script language="JavaScript">
+<!--
+disk_change();
+//-->
+</script>
 <?php include("fend.inc"); ?>
