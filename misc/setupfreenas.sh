@@ -442,7 +442,7 @@ create_image() {
 	cp $BOOTDIR/device.hints $TMPDIR/boot
 	
 	#Special for enabling serial port if no keyboard
-	cp $BOOTDIR/boot.config $TMPDIR/
+	#cp $BOOTDIR/boot.config $TMPDIR/
 	
 	echo "IMG: unmount memory disk"
 	umount $TMPDIR
