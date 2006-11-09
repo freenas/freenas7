@@ -438,9 +438,9 @@ define('_DISKSPHP_NOMBRTEXT','Nicht den MBR l&ouml;schen (bei einigen Hardware R
 define('_DISKSMANAGETOOLS_NAMEDESC','Tools');
 define('_DISKSMANAGETOOLS_COMMAND','Befehl');
 define('_DISKSMANAGETOOLS_SENDCMD','Sende Befehl!');
-define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Use <a href="disks_raid_gmirror.php">RAID tools</a> for this disk!');
+define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Ben&uuml;tzen Sie <a href="disks_raid_gmirror.php">RAID tools</a> für diese Festplatte!');
 define('_DISKSMANAGETOOLS_CMDINFO','Befehlsausgabe:');
-define('_DISKSMANAGETOOLS_MOUNTNOTE','Die Festplatte is momentan gemountet.');
+define('_DISKSMANAGETOOLS_MOUNTNOTE','Die Festplatte is momentan gemountet. Der Mount wird kurzzeitig entfernt um den ausgew&auml;hlten Befehl auszuf&uuml;hren.');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Management');

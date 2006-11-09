@@ -167,35 +167,60 @@ function disks_mount($mount)
 	
 }
 
+/* Advanced mount using disk and partition. */
+function disks_mount_ex($disk,$partition)
+{
+  global $config;
+
+  /* Search the mount list for given disk and partition. */
+  foreach($config['mounts']['mount'] as $mountk => $mountv) {
+    if($mountv['mdisk'] == $disk && $mountv['partition'] == $partition)
+      $mount = $mountv;
+  }
+
+  if($mount)
+    return disks_mount($mount);
+  else
+    return 1;
+}
+
+/* Umount the specified mount point. */
 function disks_umount($mount)
 {
-	global $config, $g;
-	
-	/* Umout the specified mount point */
-	/* The $mount variable is the all config table for the mount point*/
-	
-	$mountname=escapeshellcmd($mount['sharename']);
-	
-	if (mwexec("/sbin/umount $mountname") == 0) 	{
-		if (@rmdir ("/mnt/$mountname"))
+	/* The $mount variable is the all config table for the mount point */
+	$mountname = "/mnt/{$mount['sharename']}";
+
+	if (mwexec("/sbin/umount $mountname") == 0) {
+		if(@rmdir("$mountname"))
 			return 0;
 		else
 			return 1;
-	
 	}
-	
 	else
 		return 1;
-
 }
 
+/* Advanced umount using disk and partition. */
+function disks_umount_ex($disk,$partition)
+{
+  global $config;
+
+  /* Search the mount list for given disk and partition. */
+  foreach($config['mounts']['mount'] as $mountk => $mountv) {
+    if($mountv['mdisk'] == $disk && $mountv['partition'] == $partition)
+      $mount = $mountv;
+  }
+
+  if($mount)
+    return disks_umount_adv($mount);
+  else
+    return 1;
+}
+
+/* Advanced unmount the specified mount point without using the sharename (changing it). */
 function disks_umount_adv($mount)
 {
-	global $config, $g;
-	
-	/* Advanced unmout the specified mount point without using the sharename (changing it)*/
-	/* The $mount variable is the all config table for the mount point*/
-	
+	/* The $mount variable is the all config table for the mount point */
 	$mountpart="{$mount['partition']}";
 	
 	if ((strcmp($mountpart,"gvinum") == 0) || (strcmp($mountpart,"gmirror") == 0))
@@ -206,17 +231,14 @@ function disks_umount_adv($mount)
 	// get the mount list
 	$detmount = get_mounts_list();
 	
-	foreach ($detmount as $detmountk => $detmountv) 	{
-
+	foreach ($detmount as $detmountk => $detmountv) {
 		// If we found the mount point on the device
-		
-		if (strcmp($detmountv['mdisk'],$complete) == 0) 		{
+		if (strcmp($detmountv['mdisk'],$complete) == 0) {
 			$mountname="{$detmountv['mp']}";
-		}		
-		
+		}
 	}
 	
-	if ($mountname) 	{
+	if ($mountname) {
 		exec("/sbin/umount $mountname");
 		@rmdir ("$mountname");
 		return 0;

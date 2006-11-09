@@ -133,14 +133,17 @@ if (!isset($do_action))
               switch($action)
               {
                 case "fsck":
-                  /* Get the id of the disk */
+                  /* Get the id of the disk. */
 		              $id = array_search_ex($disk, $a_disk, "name");
-		              /* Get the filesystem type of the disk */ 
+		              /* Get the filesystem type of the disk. */ 
 		              $type = $a_disk[$id]['fstype'];
+                  /* Check if disk is mounted. */
+                  $umount = disks_check_mount($disk,$partition);
 
-                  /* Display warning if disk is mounted. */
-		              if(disks_check_mount($disk,$partition)) {
+                  /* Umount disk if necessary. */
+		              if($umount) {
 		                echo("<strong class='red'>" . _NOTE . ":</strong> " . _DISKSMANAGETOOLS_MOUNTNOTE . "<br><br>");
+		                disks_umount_ex($disk,$partition);
                   }
 
                   switch($type)
@@ -159,6 +162,12 @@ if (!isset($do_action))
                       system("/sbin/fsck_msdosfs -y -f /dev/" . escapeshellarg($disk . $partition));
           						break;
         					}
+
+                  /* Mount disk if necessary. */
+        					if($umount) {
+		                disks_mount_ex($disk,$partition);
+                  }
+
                   break;
               }
     					echo('</pre>');
