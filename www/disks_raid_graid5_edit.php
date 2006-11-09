@@ -137,7 +137,7 @@ if ($_POST) {
                  <tr> 
                   <td valign="top" class="vncellreq"><?=_DISKSRAIDPHP_TYPE; ?></td>
                   <td class="vtable">
-                  RAID 1 (<?=_DISKSRAIDEDITPHP_RAID1; ?>)
+                  RAID 5 (<?=_DISKSRAIDEDITPHP_RAID5; ?>)
                   </td>
               <tr> 
                         <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_MEMBERS;?></td>
