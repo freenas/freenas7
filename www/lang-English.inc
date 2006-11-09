@@ -461,6 +461,7 @@ define('_DISKSRAIDPHP_VOLUME','Volume Name');
 // Software RAID common word
 define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
 define('_DISKSRAIDPHP_GMIRROR','Geom Mirror');
+define('_DISKSRAIDPHP_GRAID5','Geom Raid5');
 define('_DISKSRAIDPHP_UNSTABLE','(unstable)');
 
 //file: disks_raid.php

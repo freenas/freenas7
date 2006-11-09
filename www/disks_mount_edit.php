@@ -59,9 +59,14 @@ if (!is_array($config['gmirror']['vdisk']))
 
 gmirror_sort();
 
+if (!is_array($config['graid5']['vdisk']))
+	$config['graid5']['vdisk'] = array();
+
+graid5_sort();
+
 $a_mount = &$config['mounts']['mount'];
 
-$a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$config['gmirror']['vdisk']);
+$a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$config['gmirror']['vdisk'],$config['graid5']['vdisk']);
 
 /* Load the cfdevice file*/
 $filename=$g['varetc_path']."/cfdevice";
@@ -177,7 +182,9 @@ if ($_POST) {
                       <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
                       <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
                       <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>><?=_SOFTRAID ;?> - gmirror</option>
+                       <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>><?=_SOFTRAID ;?> - graid5</option>
                       <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>><?=_SOFTRAID ;?> - gvinum</option>
+                     
                       <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>GPT</option>
                     </select>
                   </td>

@@ -84,6 +84,8 @@ function disks_mount($mount)
 		$devname="/dev/gvinum/{$mount['mdisk']}";
 	else if (strcmp($mount['partition'],"gmirror") == 0)
 		$devname="/dev/mirror/{$mount['mdisk']}";
+	else if (strcmp($mount['partition'],"graid5") == 0)
+		$devname="/dev/raid5/{$mount['mdisk']}";
 	else
 		$devname="/dev/{$mount['mdisk']}{$mount['partition']}";
 
@@ -223,7 +225,7 @@ function disks_umount_adv($mount)
 	/* The $mount variable is the all config table for the mount point */
 	$mountpart="{$mount['partition']}";
 	
-	if ((strcmp($mountpart,"gvinum") == 0) || (strcmp($mountpart,"gmirror") == 0))
+	if ((strcmp($mountpart,"gvinum") == 0) || (strcmp($mountpart,"gmirror") == 0) || (strcmp($mountpart,"graid5") == 0))
 		$complete = "{$mount['mdisk']}";
 	else
 		$complete = "{$mount['mdisk']}{$mount['partition']}";
@@ -259,7 +261,7 @@ function disks_mount_status($mount)
 	
 	$mountpart="{$mount['partition']}";
 	
-	if ((strcmp($mountpart,"gvinum") == 0) || (strcmp($mountpart,"gmirror") == 0))
+	if ((strcmp($mountpart,"gvinum") == 0) || (strcmp($mountpart,"gmirror") == 0) || (strcmp($mountpart,"graid5") == 0))
 		$complete = "{$mount['mdisk']}";
 	else
 		$complete = "{$mount['mdisk']}{$mount['partition']}";
@@ -528,6 +530,36 @@ function disks_raid_gmirror_configure()
 	return 0;
 }
 
+function disks_raid_graid5_configure()
+{
+	global $config, $g;
+	
+	/* Create the graid5 device */
+
+	if ($config['graid5']['vdisk']) {
+		
+		// Load gmirror
+		
+		mwexec("/sbin/graid5 load");
+		
+		foreach ($config['graid5']['vdisk'] as $a_raid_conf) 	{
+	
+			/* Create each volume */
+			
+			$cmd = "/sbin/graid5 label -s 131072 {$a_raid_conf['name']} ";
+			
+			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
+				$cmd .= "{$diskrv} ";
+			}			
+		
+			mwexec($cmd);
+		
+		}	
+	}
+
+	return 0;
+}
+
 function disks_raid_start()
 {
 	// Start ALL software RADI volume
@@ -537,6 +569,7 @@ function disks_raid_start()
 	/* Start software RAID */
 	disks_raid_gvinum_start();
 	disks_raid_gmirror_start();
+	disks_raid_graid5_start();
 	
 	return 0;
 	
@@ -591,12 +624,36 @@ function disks_raid_gmirror_start()
 	return 0;
 }
 
+function disks_raid_graid5_start()
+{
+	global $config, $g;
+	
+	/* Start Geom RAID5 */
+
+	if ($config['graid5']['vdisk']) {
+	
+		if ($g['booting'])
+			echo "Start graid5 raid... ";
+
+		// Load geom raid5 module
+		
+		mwexec("/sbin/graid5 load");
+		
+		if ($g['booting'])
+		echo "done\n";
+		
+	}
+	
+	return 0;
+}
+
 function disks_raid_stop()
 {
 	// Stop ALL software RAID volume
 
 	disks_raid_gvinum_stop();
 	disks_raid_gmirror_stop();
+	disks_raid_graid5_stop();
 	
 	return 0;
 	
@@ -633,6 +690,26 @@ function disks_raid_gmirror_stop()
 		
 		foreach ($config['gmirror']['vdisk'] as $a_raid_conf) 	{
 			mwexec("/sbin/gmirror stop {$a_raid_conf['name']}");
+		}
+		
+		
+	}
+	
+	return 0;
+}
+
+function disks_raid_graid5_stop()
+{
+	global $config, $g;
+	
+	/* Generate the raid.conf file */
+
+	if ($config['graid5']['vdisk']) {
+	
+		/* start each volume */
+		
+		foreach ($config['graid5']['vdisk'] as $a_raid_conf) 	{
+			mwexec("/sbin/graid5 stop {$a_raid_conf['name']}");
 		}
 		
 		
@@ -683,6 +760,29 @@ function disks_raid_gmirror_delete($raidname)
 			if ($a_raid['name'] == $raidname) 	{
 				foreach ($a_raid['diskr'] as $disk) 	{				
 					mwexec("/sbin/gmirror clear {$disk}");
+				}
+			}
+	}
+	
+	return 0;
+}
+
+function disks_raid_graid5_delete($raidname)
+{
+	global $config, $g;
+	
+	/* Delete a graid5 volume */
+	
+	// Stop the volume
+	
+	mwexec("/sbin/graid5 stop $raidname");
+	
+	// Clear the graid5 information on the hard drive
+	
+	foreach ($config['graid5']['vdisk'] as $a_raid) {
+			if ($a_raid['name'] == $raidname) 	{
+				foreach ($a_raid['diskr'] as $disk) 	{				
+					mwexec("/sbin/graid5 clear {$disk}");
 				}
 			}
 	}

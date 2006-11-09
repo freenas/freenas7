@@ -351,7 +351,7 @@ function get_mounts_list()
 		$devname=$complete[2];
 		
 		// Test if it's a gvinum or gmirror device
-		if ((strcmp($devname,"gvinum") == 0) || (strcmp($devname,"mirror") == 0))
+		if ((strcmp($devname,"gvinum") == 0) || (strcmp($devname,"mirror") == 0)|| (strcmp($devname,"graid5") == 0))
 			$devname=$complete[3];
 		
 		$mountlist[$i]['mdisk']=$devname;
@@ -415,7 +415,7 @@ function get_mount_use()
 function get_sraid_disks_list()
 {
 	/* Return list of ALL software volume: gvinum, gmirror */
-	$disklist = array_merge((array)get_gvinum_disks_list(),(array)get_gmirror_disks_list());
+	$disklist = array_merge((array)get_gvinum_disks_list(),(array)get_gmirror_disks_list(),(array)get_graid5_disks_list());
 	return $disklist;
 
 }
@@ -532,6 +532,90 @@ function get_gmirror_disks_list()
 			preg_match("/.*\\(([^\)]*)\).*/",$aline[3],$match);
 			$disklist[$diskname]['size'] = $match[1];
 			$disklist[$diskname]['type'] = "Software RAID - gmirror";
+			
+			// init the check variable for the next RAID volume
+			$foundname = 0 ;
+			$founddesc = 0 ;
+			$goodname = 0 ;
+			
+			continue ;
+			
+		}				
+		
+	}
+	
+	return $disklist;
+		
+}
+
+function get_graid5_disks_list()
+{
+	/* Get information about graid5 volume */
+	global $g;
+	
+	
+    //[volumename] => Array
+    //    (
+    //        [type] => Software RAID - gmirror
+    //        [desc] => COMPLETE
+    //        [size] => 6149M
+    //    )
+    
+
+	/* Display all configured gmirror volume*/
+	exec("/sbin/graid5 list",$rawdata);
+	
+	$foundname = 0 ;
+	$founddesc = 0 ;
+	$goodname = 0 ;
+	
+	foreach ($rawdata as $line) {
+
+				
+		/* Use space for break the line */
+		$aline = preg_split("/\s+/", $line);
+		
+		// First Step: Getting the array name
+		// look for this output:
+		// Geom name: pouet
+		
+		if ( (strcmp($aline[0],"Geom") == 0) && (strcmp($aline[1],"name:") == 0) ) {
+			$diskname = $aline[2];
+			$disklist[$diskname]=array();
+			$foundname = 1 ;
+			continue ;
+		}
+		
+		// Second Step: Getting the array status
+		// look for this output:
+		// State: COMPLETE
+		
+		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
+		
+			$desc = $aline[1];
+			$disklist[$diskname]['desc'] = $desc;
+			$founddesc=1;
+			continue ;
+		}
+		
+		// Third Step: Getting the array Size
+		// look for this output:
+		// Name: raid5/pouet
+		// Mediasize: 107373568 (102M)
+		
+		if (preg_match("/Name: raid5\/(.*)$/", $line, $matches)) {
+			if ($matches[1]=$diskname) {
+				$goodname=1;
+				continue ;
+			}
+		
+		}
+		
+		if (($aline[0] = "Mediasize:") && $goodname) {
+			// extract the size between the ( )
+			preg_match("/.*\\(([^\)]*)\).*/",$aline[3],$match);
+			$disklist[$diskname]['size'] = $match[1];
+			$disklist[$diskname]['type'] = "Software RAID - graid5";
 			
 			// init the check variable for the next RAID volume
 			$foundname = 0 ;
@@ -1129,6 +1213,7 @@ function get_fstype_list()
     "msdos"=>"FAT32",
     "ntfs"=>"NTFS",
     "gmirror"=>"Software RAID: gmirror",
+    "graid5"=>"Software RAID: graid5",
     "gvinum"=>"Software RAID: gvinum");
   return $fstlist;
 }
@@ -1151,6 +1236,8 @@ function get_fstype_shortdesc($fstype)
     case "ntfs":          $shortdesc = "NTFS";
                           break;
     case "gmirror":       $shortdesc = "gmirror";
+                          break;
+    case "graid5":       $shortdesc = "graid5";
                           break;
     case "gvinum":        $shortdesc = "gvinum";
                           break;

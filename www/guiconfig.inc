@@ -312,6 +312,17 @@ function gmirror_sort() {
 	
 }
 
+function graid5_sort() {
+	global $g, $config;
+
+	function graid5cmp($a, $b) {
+		return strcmp($a['name'], $b['name']);
+	}
+
+	usort($config['graid5']['vdisk'], "graid5cmp");
+	
+}
+
 function users_sort() {
 	global $g, $config;
 
