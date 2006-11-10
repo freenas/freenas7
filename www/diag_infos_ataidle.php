@@ -38,49 +38,44 @@ $pgtitle = array(_DIAGINFOS_NAME, _DIAGINFOS_NAMEDESC);
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="diag_infos.php">Disks</a></li>
-    <li class="tabinact"><a href="diag_infos_part.php">Partitions</a></li>
-    <li class="tabinact"><a href="diag_infos_smart.php">SMART</a></li>
-    <li class="tabact"><a href="diag_infos_ataidle.php" title="reload page" style="color:black">ataidle</a></li>
-    <li class="tabinact"><a href="diag_infos_space.php">Space Used</a></li>
-    <li class="tabinact"><a href="diag_infos_mount.php">Mounts</a></li>
-    <li class="tabinact"><a href="diag_infos_raid.php">Software RAID</a></li>
-    <li class="tabinact"><a href="diag_infos_iscsi.php">iSCSI</a></li>
-    <li class="tabinact"><a href="diag_infos_ad.php">MS Domain</a></li>
+    <li class="tabinact"><a href="diag_infos.php"><?=_DIAGINFOS_DISKS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_part.php"><?=_DIAGINFOS_PARTITIONS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_smart.php"><?=_DIAGINFOS_SMART;?></a></li>
+    <li class="tabact"><a href="diag_infos_ataidle.php" title="reload page" style="color:black"><?=_DIAGINFOS_ATAIDLE;?></a></li>
+    <li class="tabinact"><a href="diag_infos_space.php"><?=_DIAGINFOS_SPACEUSED;?></a></li>
+    <li class="tabinact"><a href="diag_infos_mount.php"><?=_DIAGINFOS_MOUNTS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_raid.php"><?=_DIAGINFOS_SOFTWARERAID;?></a></li>
+    <li class="tabinact"><a href="diag_infos_iscsi.php"><?=_DIAGINFOS_ISCSI;?></a></li>
+    <li class="tabinact"><a href="diag_infos_ad.php"><?=_DIAGINFOS_MSDOMAIN;?></a></li>
   </ul>
   </td></tr>
-</table>
-<?php
-
-echo "<pre>";
-
-$disklist=get_ata_disks_list();
-
-echo "<strong>List of Advanced ATA capabilities on all ATA disk:</strong><br>";
-foreach ($disklist as $disknamek => $disknamev)
-{
-	
-	/* Found the channel and device number from the /dev name */
-	/* Divise the number by 2, the interger is the channel number, the rest is the device */
-	
-	echo htmlspecialchars("Results for $disknamek:") . "<br>";
-	$value=trim($disknamek,'ad');		
-				
-	$value=intval($value);
-	$channel = $value/2;
-	$device=$value % 2;
-	$channel=intval($channel);
-	
-	exec("/usr/local/sbin/ataidle $channel $device",$rawdata);
-	foreach ($rawdata as $line)
-	{
+  <tr>
+    <td class="tabcont">
+      <?php
+      echo "<pre>";
+      $disklist=get_ata_disks_list();
+      echo "<strong>List of Advanced ATA capabilities on all ATA disk:</strong><br><br>";
+      foreach ($disklist as $disknamek => $disknamev)
+      {
+      	/* Found the channel and device number from the /dev name */
+      	/* Divise the number by 2, the interger is the channel number, the rest is the device */
+      	echo htmlspecialchars("Results for $disknamek:") . "<br>";
+      	$value=trim($disknamek,'ad');		
+      				
+      	$value=intval($value);
+      	$channel = $value/2;
+      	$device=$value % 2;
+      	$channel=intval($channel);
+      	
+      	exec("/usr/local/sbin/ataidle $channel $device",$rawdata);
+      	foreach ($rawdata as $line) {
           echo htmlspecialchars($line) . "<br>";
-	}
-	unset ($rawdata);
-}	
-	
-
-echo "</pre>";
-?>
-
+      	}
+      	unset ($rawdata);
+      }	
+      echo "</pre>";
+      ?>
+    </td>
+  </tr>
+</table>
 <?php include("fend.inc"); ?>

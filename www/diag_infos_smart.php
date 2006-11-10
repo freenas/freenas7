@@ -38,37 +38,33 @@ $pgtitle = array(_DIAGINFOS_NAME, _DIAGINFOS_NAMEDESC);
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="diag_infos.php">Disks</a></li>
-    <li class="tabinact"><a href="diag_infos_part.php">Partitions</a></li>
-    <li class="tabact"><a href="diag_infos_smart.php" title="reload page" style="color:black">SMART</a></li>
-    <li class="tabinact"><a href="diag_infos_ataidle.php">ATAidle</a></li>
-    <li class="tabinact"><a href="diag_infos_space.php">Space Used</a></li>
-    <li class="tabinact"><a href="diag_infos_mount.php">Mounts</a></li>
-    <li class="tabinact"><a href="diag_infos_raid.php">Software RAID</a></li>
-    <li class="tabinact"><a href="diag_infos_iscsi.php">iSCSI</a></li>
-    <li class="tabinact"><a href="diag_infos_ad.php">MS Domain</a></li>
+    <li class="tabinact"><a href="diag_infos.php"><?=_DIAGINFOS_DISKS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_part.php"><?=_DIAGINFOS_PARTITIONS;?></a></li>
+    <li class="tabact"><a href="diag_infos_smart.php" title="reload page" style="color:black"><?=_DIAGINFOS_SMART;?></a></li>
+    <li class="tabinact"><a href="diag_infos_ataidle.php"><?=_DIAGINFOS_ATAIDLE;?></a></li>
+    <li class="tabinact"><a href="diag_infos_space.php"><?=_DIAGINFOS_SPACEUSED;?></a></li>
+    <li class="tabinact"><a href="diag_infos_mount.php"><?=_DIAGINFOS_MOUNTS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_raid.php"><?=_DIAGINFOS_SOFTWARERAID;?></a></li>
+    <li class="tabinact"><a href="diag_infos_iscsi.php"><?=_DIAGINFOS_ISCSI;?></a></li>
+    <li class="tabinact"><a href="diag_infos_ad.php"><?=_DIAGINFOS_MSDOMAIN;?></a></li>
   </ul>
   </td></tr>
-</table>
-<?php
-
-echo "<pre>";
-
-$disklist=get_physical_disks_list();
-
-echo "<strong>List of SMART capabilities on all detected disk:</strong><br>";
-foreach ($disklist as $disknamek => $disknamev)
-{
-	exec("/usr/local/sbin/smartctl -a /dev/$disknamek",$fdiskrawdata);
-	foreach ($fdiskrawdata as $line)
-	{
+  <tr>
+    <td class="tabcont">
+      <?php
+      echo "<pre>";
+      $disklist=get_physical_disks_list();
+      echo "<strong>List of SMART capabilities on all detected disk:</strong><br><br>";
+      foreach ($disklist as $disknamek => $disknamev) {
+      	exec("/usr/local/sbin/smartctl -a /dev/$disknamek",$fdiskrawdata);
+      	foreach ($fdiskrawdata as $line) {
           echo htmlspecialchars($line) . "<br>";
-	}
-	unset ($fdiskrawdata);
-
-}
-
-echo "</pre>";
-?>
-
+      	}
+      	unset ($fdiskrawdata);
+      }
+      echo "</pre>";
+      ?>
+    </td>
+  </tr>
+</table>
 <?php include("fend.inc"); ?>

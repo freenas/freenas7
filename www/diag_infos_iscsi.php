@@ -37,49 +37,40 @@ $pgtitle = array(_DIAGINFOS_NAME, _DIAGINFOS_NAMEDESC);
 if (!is_array($config['iscsi']))
 {
 	$config['iscsi'] = array();
-	
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="diag_infos.php">Disks</a></li>
-    <li class="tabinact"><a href="diag_infos_part.php">Partitions</a></li>
-    <li class="tabinact"><a href="diag_infos_smart.php">SMART</a></li>
-    <li class="tabinact"><a href="diag_infos_ataidle.php">ataidle</a></li>
-    <li class="tabinact"><a href="diag_infos_space.php">Space Used</a></li>
-    <li class="tabinact"><a href="diag_infos_mount.php">Mounts</a></li>
-    <li class="tabinact"><a href="diag_infos_raid.php">Software RAID</a></li>
-    <li class="tabact"><a href="diag_infos_iscsi.php" title="reload page" style="color:black">iSCSI</a></li>
-    <li class="tabinact"><a href="diag_infos_ad.php">MS Domain</a></li>
+    <li class="tabinact"><a href="diag_infos.php"><?=_DIAGINFOS_DISKS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_part.php"><?=_DIAGINFOS_PARTITIONS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_smart.php"><?=_DIAGINFOS_SMART;?></a></li>
+    <li class="tabinact"><a href="diag_infos_ataidle.php"><?=_DIAGINFOS_ATAIDLE;?></a></li>
+    <li class="tabinact"><a href="diag_infos_space.php"><?=_DIAGINFOS_SPACEUSED;?></a></li>
+    <li class="tabinact"><a href="diag_infos_mount.php"><?=_DIAGINFOS_MOUNTS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_raid.php"><?=_DIAGINFOS_SOFTWARERAID;?></a></li>
+    <li class="tabact"><a href="diag_infos_iscsi.php" title="reload page" style="color:black"><?=_DIAGINFOS_ISCSI;?></a></li>
+    <li class="tabinact"><a href="diag_infos_ad.php"><?=_DIAGINFOS_MSDOMAIN;?></a></li>
   </ul>
   </td></tr>
+  <tr>
+    <td class="tabcont">
+      <?php
+      if (!isset($config['iscsi']['enable'])) {
+      	echo  "<strong>iSCSI initiator disabled</strong><br><br>";
+      } else {
+      	echo "<pre>";
+      	echo "<strong>Show the list of available target Name on the iSCSI target</strong><br><br>";
+      	exec("/usr/local/sbin/iscontrol -d targetaddress={$config['iscsi']['targetaddress']}",$rawdata);
+      	foreach ($rawdata as $line) {
+      		echo htmlspecialchars($line) . "<br>";
+      	}
+      	unset ($rawdata);
+      	echo "</pre>";
+      }
+      ?>
+    </td>
+  </tr>
 </table>
-<?php
-
-
-if (!isset($config['iscsi']['enable']))
-{
-	echo  "<strong>iSCSI initiator disabled</strong><br>";
-}
-else
-{
-
-	echo "<pre>";
-	
-	echo "<strong>Show the list of available target Name on the iSCSI target</strong><br>";
-		
-	exec("/usr/local/sbin/iscontrol -d targetaddress={$config['iscsi']['targetaddress']}",$rawdata);
-	foreach ($rawdata as $line)
-	{
-		echo htmlspecialchars($line) . "<br>";
-	}
-	unset ($rawdata);
-	
-	echo "</pre>";
-}
-?>
-
 <?php include("fend.inc"); ?>

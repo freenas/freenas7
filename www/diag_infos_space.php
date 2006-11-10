@@ -38,32 +38,29 @@ $pgtitle = array(_DIAGINFOS_NAME, _DIAGINFOS_NAMEDESC);
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="diag_infos.php">Disks</a></li>
-    <li class="tabinact"><a href="diag_infos_part.php">Partitions</a></li>
-    <li class="tabinact"><a href="diag_infos_smart.php">SMART</a></li>
-    <li class="tabinact"><a href="diag_infos_ataidle.php">ATAidle</a></li>
-    <li class="tabact"><a href="diag_infos_space.php" title="reload page" style="color:black">Space Used</a></li>
-    <li class="tabinact"><a href="diag_infos_mount.php">Mounts</a></li>
-    <li class="tabinact"><a href="diag_infos_raid.php">Software RAID</a></li>
-    <li class="tabinact"><a href="diag_infos_iscsi.php">iSCSI</a></li>
-    <li class="tabinact"><a href="diag_infos_ad.php">MS Domain</a></li>
+	<li class="tabinact"><a href="diag_infos.php"><?=_DIAGINFOS_DISKS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_part.php"><?=_DIAGINFOS_PARTITIONS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_smart.php"><?=_DIAGINFOS_SMART;?></a></li>
+    <li class="tabinact"><a href="diag_infos_ataidle.php"><?=_DIAGINFOS_ATAIDLE;?></a></li>
+    <li class="tabact"><a href="diag_infos_space.php" title="reload page" style="color:black"><?=_DIAGINFOS_SPACEUSED;?></a></li>
+    <li class="tabinact"><a href="diag_infos_mount.php"><?=_DIAGINFOS_MOUNTS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_raid.php"><?=_DIAGINFOS_SOFTWARERAID;?></a></li>
+    <li class="tabinact"><a href="diag_infos_iscsi.php"><?=_DIAGINFOS_ISCSI;?></a></li>
+    <li class="tabinact"><a href="diag_infos_ad.php"><?=_DIAGINFOS_MSDOMAIN;?></a></li>
   </ul>
   </td></tr>
+  <tr>
+    <td class="tabcont">
+      <?php
+      echo "<pre>";
+      exec("/bin/df -h",$rawdata);
+      echo "<strong>" . _DIAGINFOSSPACE_INFO . ":</strong><br><br>";
+      foreach ($rawdata as $line) {
+      	echo htmlspecialchars($line) . "<br>";
+      }
+      echo "</pre>";
+      ?>
+    </td>
+  </tr>
 </table>
-<?php
-
-echo "<pre>";
-
-exec("/bin/df -h",$rawdata);
-
-echo "<strong>Free Space:</strong><br>";
-foreach ($rawdata as $line)
-{
-	echo htmlspecialchars($line) . "<br>";
-
-}
-
-echo "</pre>";
-?>
-
 <?php include("fend.inc"); ?>

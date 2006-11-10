@@ -38,42 +38,35 @@ $pgtitle = array(_DIAGINFOS_NAME, _DIAGINFOS_NAMEDESC);
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact"><a href="diag_infos.php" style="color:black" title="reload page">Disks</a></li>
-    <li class="tabinact"><a href="diag_infos_part.php">Partitions</a></li>
-    <li class="tabinact"><a href="diag_infos_smart.php">SMART</a></li>
-    <li class="tabinact"><a href="diag_infos_ataidle.php">ATAidle</a></li>
-    <li class="tabinact"><a href="diag_infos_space.php">Space Used</a></li>
-    <li class="tabinact"><a href="diag_infos_mount.php">Mounts</a></li>
-    <li class="tabinact"><a href="diag_infos_raid.php">Software RAID</a></li>
-    <li class="tabinact"><a href="diag_infos_iscsi.php">iSCSI</a></li>
-    <li class="tabinact"><a href="diag_infos_ad.php">MS Domain</a></li> 
+    <li class="tabact"><a href="diag_infos.php" style="color:black" title="reload page"><?=_DIAGINFOS_DISKS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_part.php"><?=_DIAGINFOS_PARTITIONS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_smart.php"><?=_DIAGINFOS_SMART;?></a></li>
+    <li class="tabinact"><a href="diag_infos_ataidle.php"><?=_DIAGINFOS_ATAIDLE;?></a></li>
+    <li class="tabinact"><a href="diag_infos_space.php"><?=_DIAGINFOS_SPACEUSED;?></a></li>
+    <li class="tabinact"><a href="diag_infos_mount.php"><?=_DIAGINFOS_MOUNTS;?></a></li>
+    <li class="tabinact"><a href="diag_infos_raid.php"><?=_DIAGINFOS_SOFTWARERAID;?></a></li>
+    <li class="tabinact"><a href="diag_infos_iscsi.php"><?=_DIAGINFOS_ISCSI;?></a></li>
+    <li class="tabinact"><a href="diag_infos_ad.php"><?=_DIAGINFOS_MSDOMAIN;?></a></li> 
   </ul>
   </td></tr>
+  <tr>
+    <td class="tabcont">
+      <?php
+      exec("/sbin/atacontrol list",$iderawdata);
+      echo "<pre>";
+      echo "<strong>" . _DIAGINFOSDISKS_ATA_INFO . ":</strong><br><br>";
+      foreach ($iderawdata as $line) {
+        echo htmlspecialchars($line) . "<br>";
+      }
+      unset ($line);
+      exec("/sbin/camcontrol devlist",$scsirawdata);
+      echo "<br><strong>" . _DIAGINFOSDISKS_SCSI_INFO . ":</strong><br><br>";
+      foreach ($scsirawdata as $line) {
+      	echo htmlspecialchars($line) . "<br>";
+      }
+      echo "</pre>";
+      ?>
+    </td>
+  </tr>
 </table>
-<?php
-
-exec("/sbin/atacontrol list",$iderawdata);
-
-echo "<pre>";
-
-echo "<strong>List of detected ATA disks:</strong><br>";
-foreach ($iderawdata as $line)
-{
-       echo htmlspecialchars($line) . "<br>";
-}
-
-unset ($line);
-
-exec("/sbin/camcontrol devlist",$scsirawdata);
-
-echo "<strong>List of detected SCSI disks:</strong><br>";
-foreach ($scsirawdata as $line)
-{
-	echo htmlspecialchars($line) . "<br>";
-
-}
-
-echo "</pre>";
-?>
-
 <?php include("fend.inc"); ?>

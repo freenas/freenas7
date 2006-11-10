@@ -858,6 +858,25 @@ define('_DIAGLOGS_NAMEDESC',_MENULEFT_DIAGLOGS);
 // file: diag_infos_space.php
 define('_DIAGINFOS_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGINFOS_NAMEDESC',_MENULEFT_DIAGINF);
+define('_DIAGINFOS_DISKS',_DISKS);
+define('_DIAGINFOS_PARTITIONS','Partitions');
+define('_DIAGINFOS_SMART','S.M.A.R.T.');
+define('_DIAGINFOS_ATAIDLE','ATAidle');
+define('_DIAGINFOS_SPACEUSED','Space Used');
+define('_DIAGINFOS_MOUNTS','Mounts');
+define('_DIAGINFOS_SOFTWARERAID',_SOFTRAID);
+define('_DIAGINFOS_ISCSI','iSCSI');
+define('_DIAGINFOS_MSDOMAIN','MS Domain');
+
+// file: diag_infos.php
+define('_DIAGINFOSDISKS_ATA_INFO','List of detected ATA disks');
+define('_DIAGINFOSDISKS_SCSI_INFO','List of detected SCSI disks');
+
+// file: diag_infos_mount.php
+define('_DIAGINFOSMOUNT_INFO','List of mount points');
+
+// file: diag_infos_space.php
+define('_DIAGINFOSSPACE_INFO','Free Space');
 
 // file: diag_defaults.php
 define('_DIAGDEFAULTS_NAME',_MENULEFT_DIAGNOSTICS);
