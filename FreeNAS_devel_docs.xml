@@ -5,7 +5,7 @@
   <title>FreeNAS Developers' Handbook</title>
 
   <bookinfo>
-    <date>October 27, 2006</date>
+    <date>November 10, 2006</date>
 
     <author>
       <firstname>Olivier</firstname>
@@ -848,6 +848,48 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
           <para><command>cp
           /sys/i386/compile/FREENAS_GENERIC/modules/usr/src/sys/modules/ext2fs/ext2fs.ko
           $FREENAS/boot/kernel/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>Adding experimental geom RAID 5 module</title>
+
+          <para>Download and compile the experimental geom raid5 module</para>
+
+          <para><command>cd /usr/src</command></para>
+
+          <para><command>fetch
+          http://home.tiscali.de/cmdr_faako/geom_raid5.tbz</command></para>
+
+          <para><command>tar zxvf geom_raid5.tbz</command></para>
+
+          <para><command>cd
+          /usr/src/sys/modules/geom/geom_raid5/</command></para>
+
+          <para><command>make depend</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp geom_raid5.ko
+          $FREENAS/boot/kernel/</command></para>
+
+          <para><command>cd /usr/src/sbin/geom/class/raid5/</command></para>
+
+          <para><command>mkdir /usr/include/geom/raid5</command></para>
+
+          <para><command>cp /usr/src/sys/geom/raid5/g_raid5.h
+          /usr/include/geom/raid5/</command></para>
+
+          <para><command>make depend</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>make install</command></para>
+
+          <para><command>cp -p /sbin/graid5 $FREENAS/sbin/</command></para>
+
+          <para><command>cp geom_raid5.so $FREENAS/lib/geom/</command></para>
+
+          <para><command></command></para>
         </sect3>
 
         <sect3>
