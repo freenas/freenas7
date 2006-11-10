@@ -41,8 +41,8 @@ echo
 echo
 echo "FreeNAS console setup"
 echo "*********************"
-echo "1) Interfaces: assign network ports"
-echo "2) Set up LAN IP address"
+echo "1) Assign Interfaces"
+echo "2) Set LAN IP address"
 echo "3) Reset webGUI password"
 echo "4) Reset to factory defaults"
 echo "5) Reboot system"
