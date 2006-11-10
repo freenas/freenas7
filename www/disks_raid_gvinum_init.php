@@ -124,8 +124,6 @@ if (!isset($do_format))
 				</tr>
 			</table>
 </form>
-<p><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:<br>
-                </strong></span><?=_DISKSRAIDINITPHP_TEXT;?>
-                </span></p>
+<p><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:</strong></span><br><?=_DISKSRAIDINITPHP_TEXT;?></span></p>
 </td></tr></table>
 <?php include("fend.inc"); ?>

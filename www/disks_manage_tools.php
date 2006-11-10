@@ -75,15 +75,17 @@ if (!isset($do_action))
 <script language="JavaScript">
 <!--
 function disk_change() {
+  var next = null;
+  // Remove all entries from partition combobox.
   document.iform.partition.length = 0;
+  // Insert entries for partition combobox.
   switch(document.iform.disk.value)
   {
     <?php foreach ($a_disk as $diskv): ?>
 		case "<?=$diskv['name'];?>":
 		  <?php $partinfo = disks_get_partition_info($diskv['name']);?>
-		  var next = null;
       <?php foreach($partinfo as $partinfon => $partinfov): ?>
-        if(document.all) // IE workaround.
+        if(document.all) // MS IE workaround.
           next = document.iform.partition.length;
         document.iform.partition.add(new Option("<?=$partinfon;?>","s<?=$partinfon;?>",false,<?php if("s{$partinfon}"==$partition){echo "true";}else{echo "false";};?>), next);
       <?php endforeach; ?>

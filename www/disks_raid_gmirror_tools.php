@@ -129,8 +129,6 @@ if (!isset($do_action))
 				</tr>
 			</table>
 </form>
-<p><span class="vexpl"><span class="red"><strong>WARNING:<br>
-                </strong></span><?=_DISKSRAIDTOOLSPHP_TEXT; ?>
-                </span></p>
+<p><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:</strong></span><br><?=_DISKSRAIDTOOLSPHP_TEXT;?></span></p>
 </td></tr></table>
 <?php include("fend.inc"); ?>

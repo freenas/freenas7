@@ -58,7 +58,6 @@ if ($_POST) {
 		$do_format = true;
 		$disk = $_POST['disk'];
 		$type = $_POST['type'];
-		$diskid = $_POST['id'];
 		$notinitmbr= $_POST['notinitmbr'];
 
 		/* Get the id of the disk */
