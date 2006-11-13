@@ -279,38 +279,29 @@ function enable_change(enable_change) {
                     <?=_SRVCIFS_ENRECYCLE;?><span class="vexpl"><br>
                     <?=_SRVCIFS_ENRECYCLETEXT;?></span></td>
                 </tr>
-				
-				<tr> 
-                        <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_HIDE;?></td>
-                        <td width="78%" class="vtable">
-<?
-  $i=0;
-  foreach ($a_mount as $mountv) {
-	
-	echo "<input name='hidemount[]' id='$i' type='checkbox' value='$mountv[sharename]'".
-           ((is_array($pconfig['hidemount']) && in_array($mountv['sharename'],$pconfig['hidemount']))?" checked":"").
-           ">$mountv[sharename] </option><br>\n";
-
-    $i++;
-  }
-?>
-                      <br><?=_SRVCIFS_HIDETEXT; ?></tr>
-				
-				<tr> 
+                <tr> 
+                  <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_HIDE;?></td>
+                  <td width="78%" class="vtable">
+                  <? $i=0; foreach ($a_mount as $mountv) {
+                    echo "<input name='hidemount[]' id='$i' type='checkbox' value='$mountv[sharename]'". ((is_array($pconfig['hidemount']) && in_array($mountv['sharename'],$pconfig['hidemount']))?" checked":"") . ">$mountv[sharename]</option><br>\n";
+                    $i++;
+                  }
+                  ?>
+                  <?=_SRVCIFS_HIDETEXT; ?>
+                </tr>
+				        <tr> 
                   <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_SNBBUFF; ?></td>
                   <td width="78%" class="vtable"> 
                     <input name="sndbuf" type="text" class="formfld" id="sndbuf" size="30" value="<?=htmlspecialchars($pconfig['sndbuf']);?>">
                     <br><?=_SRVCIFS_SNBBUFFTEXT; ?></td>
-				</tr>
-				
-				<tr> 
+        				</tr>
+        				<tr> 
                   <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_RCVBUFF ; ?></td>
                   <td width="78%" class="vtable"> 
                     <input name="rcvbuf" type="text" class="formfld" id="rcvbuf" size="30" value="<?=htmlspecialchars($pconfig['rcvbuf']);?>">
                     <br><?=_SRVCIFS_RCVBUFFTEXT ; ?></td>
-				</tr>   
-                
-				<tr> 
+        				</tr>   
+        				<tr>
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
                     <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)"> 

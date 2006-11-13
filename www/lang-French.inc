@@ -436,6 +436,8 @@ define('_DISKSMANAGETOOLS_SENDCMD','Valider la commande!');
 define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Utilisez <a href="disks_raid_gmirror.php">les outils RAID</a> pour ce disque!');
 define('_DISKSMANAGETOOLS_CMDINFO','Message renvoy&eacute;;:');
 define('_DISKSMANAGETOOLS_MOUNTNOTE','Ce disque est mont&eacute;!<br>Veuillez le d&eacute;monter avant d\'utiliser les outils');
+define('_DISKSMANAGETOOLS_UMOUNT','Unmount disk/partition');
+define('_DISKSMANAGETOOLS_UMOUNTTEXT','If the selected disk/partition is mounted it will be unmounted temporary to perform selected command, otherwise the commands work in read-only mode.');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Gestion');

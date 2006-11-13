@@ -440,7 +440,9 @@ define('_DISKSMANAGETOOLS_COMMAND','Befehl');
 define('_DISKSMANAGETOOLS_SENDCMD','Sende Befehl!');
 define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Ben&uuml;tzen Sie <a href="disks_raid_gmirror.php">RAID tools</a> für diese Festplatte!');
 define('_DISKSMANAGETOOLS_CMDINFO','Befehlsausgabe:');
-define('_DISKSMANAGETOOLS_MOUNTNOTE','Die Festplatte is momentan gemountet. Der Mount wird kurzzeitig entfernt um den ausgew&auml;hlten Befehl auszuf&uuml;hren.');
+define('_DISKSMANAGETOOLS_MOUNTNOTE','Die Festplatte is momentan gemountet. Der Mount Point wird kurzzeitig entfernt um den ausgew&auml;hlten Befehl auszuf&uuml;hren.');
+define('_DISKSMANAGETOOLS_UMOUNT','Unmount Festplatte/Partition');
+define('_DISKSMANAGETOOLS_UMOUNTTEXT','Wenn die ausgewählte Festplatte/Partition gemountet ist wird diese kurzzeitig ungemountet um den ausgew&auml;hlten Befehl auszuf&uuml;hren, sonst arbeiten die Befehle in nur-lesen Modus.');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Management');

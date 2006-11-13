@@ -60,6 +60,7 @@ if ($_POST) {
 		$disk = $_POST['disk'];
 		$action = $_POST['action'];
 		$partition = $_POST['partition'];
+		$umount = $_POST['umount'];
 	}
 }
 
@@ -69,6 +70,7 @@ if (!isset($do_action))
 	$disk = '';
 	$action = '';
 	$partition = '';
+	$umount = false;
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -137,6 +139,14 @@ function disk_change() {
                </select>
             </td>
           </tr>
+          <tr> 
+            <td width="22%" valign="top" class="vncell"></td>
+            <td width="78%" class="vtable"> 
+              <input name="umount" type="checkbox" id="umount" value="yes" <?php if ($umount) echo "checked"; ?>>
+              <strong><?=_DISKSMANAGETOOLS_UMOUNT;?></strong><span class="vexpl"><br>
+              <?=_DISKSMANAGETOOLS_UMOUNTTEXT;?></span>
+            </td>
+          </tr>
   				<tr>
   				  <td width="22%" valign="top">&nbsp;</td>
   				  <td width="78%">
@@ -147,7 +157,7 @@ function disk_change() {
     				<td valign="top" colspan="2">
     				<? if ($do_action)
     				{
-    				  echo("<strong>" . _DISKSMANAGETOOLS_CMDINFO . "</strong><br><br>");
+    				  echo("<strong>" . _DISKSMANAGETOOLS_CMDINFO . "</strong><br>");
     					echo('<pre>');
     					ob_end_flush();
 
@@ -159,10 +169,10 @@ function disk_change() {
 		              /* Get the filesystem type of the disk. */ 
 		              $type = $a_disk[$id]['fstype'];
                   /* Check if disk is mounted. */
-                  $umount = disks_check_mount($disk,$partition);
+                  $ismounted = disks_check_mount($disk,$partition);
 
                   /* Umount disk if necessary. */
-		              if($umount) {
+		              if($umount && $ismounted) {
 		                echo("<strong class='red'>" . _NOTE . ":</strong> " . _DISKSMANAGETOOLS_MOUNTNOTE . "<br><br>");
 		                disks_umount_ex($disk,$partition);
                   }
@@ -186,7 +196,7 @@ function disk_change() {
         					}
 
                   /* Mount disk if necessary. */
-        					if($umount) {
+        					if($umount && $ismounted) {
 		                disks_mount_ex($disk,$partition);
                   }
 
