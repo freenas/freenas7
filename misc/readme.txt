@@ -101,6 +101,7 @@ FreeNAS 0.68 (UNRELEASE!):
 - Make traffic graph available to webGUI.
 - Do a "chmod 711" on the "/" directory for limiting user SSH acces.
 - Added disk management tools page (e.g filesystem check).
+- Added mount point tools page (to mount/unmount mount points by hand).
 
 FreeNAS 0.671:
 - gvinum bug fix: fix raid deletion , add config file conversion
