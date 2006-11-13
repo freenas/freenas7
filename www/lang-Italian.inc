@@ -430,6 +430,7 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','Questo consente di settare il tipo di FS
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Inizializza');
+define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','The disk is currently mounted! <a href=disks_mount_tools.php>Unmount</a> this disk first before proceeding.');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Dettagli dell\'inizializzazione del disco:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"non è un messaggio di errore!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Questo passo cancellerà tutte le partizioni, creerà la partizione numero 1 e

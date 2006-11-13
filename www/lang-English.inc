@@ -424,6 +424,7 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','This allows you to set FS type for prefo
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialize');
+define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','The disk is currently mounted! <a href=disks_mount_tools.php>Unmount</a> this disk first before proceeding.');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Disk initialization details:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"is not an error message!\n');
 define('_DISKSMANAGEINITPHP_TEXT','This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified.');

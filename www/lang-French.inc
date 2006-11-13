@@ -421,6 +421,7 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','Ceci vous permet d\'indiquer le type de 
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialiser');
+define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','The disk is currently mounted! <a href=disks_mount_tools.php>Unmount</a> this disk first before proceeding.');
 define('_DISKSMANAGEINITPHP_INITTEXT','D&eacute;tails de l\'initialisation:');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"n\'est pas un message d\'erreur!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Ceci efface toutes les partitions, cr&eacute;&eacute; la partition num&eacute;ro 1 et formate le disque avec le syst&egrave;me de fichier sp&eacute;cifi&eacute;.');

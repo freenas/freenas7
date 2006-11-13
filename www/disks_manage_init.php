@@ -46,6 +46,7 @@ $a_disk = &$config['disks']['disk'];
 
 if ($_POST) {
 	unset($input_errors);
+	unset($errormsg);
 	unset($do_format);
 
 	/* input validation */
@@ -60,16 +61,20 @@ if ($_POST) {
 		$type = $_POST['type'];
 		$notinitmbr= $_POST['notinitmbr'];
 
-		/* Get the id of the disk */
-		$id=array_search_ex($disk, $a_disk, "name");
+    /* Check if disk is mounted. */ 
+  	if(disks_check_mount($disk,"s1")) {
+      $errormsg = _DISKSMANAGEINITPHP_DISKMOUNTERROR;
+      $do_format = false;
+    }
 
-//  This code seems to be useless. The only reason may be to simplify display in disks_manage.php for UFS filesystems.
-//	if ($type == "ufs" || $type == "ufsgpt" || $type == "ufs_no_su" || $type == "ufsgpt_no_su")
-//		$a_disk[$id]['fstype'] = "ufs";
-//	else
-			$a_disk[$id]['fstype'] = $type;
+    if($do_format) {
+  		/* Get the id of the disk array entry. */
+  		$id = array_search_ex($disk, $a_disk, "name");
+      /* Set new filesystem type. */
+ 			$a_disk[$id]['fstype'] = $type;
 
-		write_config();
+  		write_config();
+  	}
 	}
 }
 if (!isset($do_format))
@@ -108,7 +113,8 @@ function disk_change() {
   </td></tr>
   <tr>
     <td class="tabcont">
-      <?php if ($input_errors) print_input_errors($input_errors); ?>
+      <?php if($input_errors) print_input_errors($input_errors);?>
+      <?php if($errormsg) print_error_box($errormsg);?>
 			<form action="disks_manage_init.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>

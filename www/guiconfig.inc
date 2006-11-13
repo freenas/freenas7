@@ -163,6 +163,22 @@ function print_info_box($msg) {
 	echo "</p>";
 }
 
+function print_error_box_np($msg) {
+	echo "<table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
+	echo "<tr><td bgcolor=\"#A12A2A\" width=\"36\" align=\"center\" valign=\"top\"><img src=\"/err.gif\" width=\"28\" height=\"32\"></td>\n";
+	echo "<td bgcolor=\"#FFD9D1\" style=\"padding-left: 8px; padding-top: 6px\">";
+	echo "<span class=\"errmsg\">";
+	echo $msg;
+	echo "</span>";
+	echo "</td></tr></table>";
+}
+
+function print_error_box($msg) {
+	echo "<p>";
+	print_error_box_np($msg);
+	echo "</p>";
+}
+
 function format_bytes($bytes) {
 	if ($bytes >= 1073741824) {
 		return sprintf("%.2f GB", $bytes/1073741824);
