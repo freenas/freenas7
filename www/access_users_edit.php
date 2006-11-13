@@ -181,10 +181,9 @@ if ($_POST)
                     <?=_ACCESSUSERSEDIT_PASSWORDTEXT ;?>
                   </td>
                 </tr>
-                <tr> 
-                  <td valign="top" class="vncellreq"><?=_ACCESSUSERSEDIT_GROUPMEMBER ;?></td>
-                   
-	<td valign="middle" class="listr">
+                <tr>
+                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSUSERSEDIT_GROUPMEMBER ;?></td>
+                  <td width="78%" class="vtable">
 		<select name="usergroup" class="formfld" id="usergroup">
 		  <?php foreach ($a_group as $group): ?>
 		  <option value="<?=$group['name'];?>" <?php if ($group['name'] == $pconfig['usergroup']) echo "selected";?>> 

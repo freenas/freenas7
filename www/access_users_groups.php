@@ -111,7 +111,7 @@ if ($_GET['act'] == "del") {
 				</tr>
 			  <?php $i++; endforeach; ?>
                 <tr> 
-                  <td class="list" colspan="3"></td>
+                  <td class="list" colspan="2"></td>
                   <td class="list"> <a href="access_users_groups_edit.php"><img src="plus.gif" title="<?=_ACCESSGROUPS_GROUPADD;?>" width="17" height="17" border="0"></a></td>
 				</tr>
               </table>

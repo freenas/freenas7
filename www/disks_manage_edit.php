@@ -117,10 +117,9 @@ if ($_POST)
 <?php if ($input_errors) print_input_errors($input_errors); ?>
             <form action="disks_manage_edit.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td valign="top" class="vncellreq"><?=_DISKSPHP_DISK; ?></td>
-                   
-	<td valign="middle" class="listr">
+                <tr>
+                  <td width="22%" valign="top" class="vncellreq"><?=_DISKSPHP_DISK; ?></td>
+                  <td width="78%" class="vtable">
 		<select name="name" class="formfld" id="name">
 		  <?php foreach ($disklist as $diski => $diskv): ?>
 		  <option value="<?=$diski;?>" <?php if ($diski == $pconfig['name']) echo "selected";?>> 
