@@ -413,7 +413,7 @@ define('_DISKSMANAGEPHP_NOTE','Primo passo della configurazione: Aggiungere un h
 // file: disks_manage_edit.php
 define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Esiste già questo disco nella lista dei dischi.');
 define('_DISKSMANAGEEDITPHP_UDMA','UDMA mode');
-define('_DISKSMANAGEEDITPHP_UDMATEXT','E\' possibile forzare l\'UDMA mode se il vostro harddrive vi dà messeggi del tipo \"UDMA_ERROR.... LBA\".');
+define('_DISKSMANAGEEDITPHP_UDMATEXT','E\' possibile forzare l\'UDMA mode se il vostro harddrive vi dà messeggi del tipo "UDMA_ERROR.... LBA".');
 define('_DISKSMANAGEEDITPHP_STANDBY','Tempo per lo standby dell\'hard disk');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Mette l\'hard disk in standby quando è passata la quantità di tempo selezionata
                     dall\'ultimo accesso.

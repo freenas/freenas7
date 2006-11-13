@@ -408,7 +408,7 @@ define('_DISKSMANAGEPHP_NOTE','Premi&egrave;re &eacute;tape: Ajoutez votre disqu
 // file: disks_manage_edit.php
 define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Ce disque existe d&eacute;j&agrave; dans la liste des disques.');
 define('_DISKSMANAGEEDITPHP_UDMA','Mode UDMA');
-define('_DISKSMANAGEEDITPHP_UDMATEXT','Vous pouvez forcer le mode UDMA si vous avez le message \"UDMA_ERROR.... LBA\" avec votre disque dur.');
+define('_DISKSMANAGEEDITPHP_UDMATEXT','Vous pouvez forcer le mode UDMA si vous avez le message "UDMA_ERROR.... LBA" avec votre disque dur.');
 define('_DISKSMANAGEEDITPHP_STANDBY','Delai de mise en veille du disque');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Mets le disque en veille lorsque la dur&eacute;e sp&eacute;cifi&eacute;e depuis le dernier acc&egrave;s est &eacute;coul&eacute;e. <em>N\'activez PAS cette option pour les cartes Compact Flash.</em>');
 define('_DISKSMANAGEEDITPHP_APM','Gestion d\'&eacute;nergie avanc&eacute;e');

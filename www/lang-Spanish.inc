@@ -240,7 +240,7 @@ define('_DISKSMANAGEPHP_NOTE','First configuration step: Add your hardrive to th
 // file: disks_manage_edit.php
 define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','This disk already exists in the disk list.');
 define('_DISKSMANAGEEDITPHP_UDMA','UDMA mode');
-define('_DISKSMANAGEEDITPHP_UDMATEXT','You can force UDMA mode if you have \"UDMA_ERROR.... LBA\" message with your hard drive.');
+define('_DISKSMANAGEEDITPHP_UDMATEXT','You can force UDMA mode if you have "UDMA_ERROR.... LBA" message with your hard drive.');
 define('_DISKSMANAGEEDITPHP_STANDBY','Hard disk standby time');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Puts the hard disk into standby mode when the selected amount of time after the last
                     access has elapsed. <em>Do not set this for CF cards.</em>');
