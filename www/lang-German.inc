@@ -512,6 +512,8 @@ define('_DISKSRAIDTOOLSPHP_TEXT','1. Diese Massnahmen nur zur Fehlerbehebung ben
 // Comon value
 define('_DISKSMOUNTPHP_NAME','Mount Point');
 define('_DISKSMOUNTPHP_SHARENAME','Share Name');
+define('_DISKSMOUNTPHP_MANAGE','Managen');
+define('_DISKSMOUNTPHP_TOOLS','Tools');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','Die Liste der Einbindungen (Mount Points) wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden.');

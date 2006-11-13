@@ -520,6 +520,8 @@ define('_DISKSRAIDTOOLSPHP_TEXT','1. Usare queste azioni speciali solo per debug
 // Comon value
 define('_DISKSMOUNTPHP_NAME','Punto di Mount');
 define('_DISKSMOUNTPHP_SHARENAME','Nome Share');
+define('_DISKSMOUNTPHP_MANAGE','Manage');
+define('_DISKSMOUNTPHP_TOOLS','Tools');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','La lista dei punti di mount è stata cambiata.<br>E\' necessario applicare i cambiamenti affinché abbiano effetto.');

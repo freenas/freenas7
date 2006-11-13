@@ -507,6 +507,8 @@ define('_DISKSRAIDTOOLSPHP_TEXT','1. N\'utilisez ces actions sp&eacute;ciales qu
 // Comon value
 define('_DISKSMOUNTPHP_NAME','Points de montage');
 define('_DISKSMOUNTPHP_SHARENAME','Nom du partage');
+define('_DISKSMOUNTPHP_MANAGE','Manage');
+define('_DISKSMOUNTPHP_TOOLS','Tools');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','La liste des points de montage a &eacute;t&eacute; modifi&eacute;e.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');

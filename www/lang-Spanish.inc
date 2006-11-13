@@ -286,6 +286,8 @@ define('_DISKSMANAGEISCSIPHP_TARGETNAMETEXT','Targetname.');
 // Comon value
 define('_DISKSMOUNTPHP_NAME','Mount Point');
 define('_DISKSMOUNTPHP_SHARENAME','Share Name');
+define('_DISKSMOUNTPHP_MANAGE','Manage');
+define('_DISKSMOUNTPHP_TOOLS','Tools');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','The mount point list has been changed.<br>You must apply the changes in order for them to take effect.');
