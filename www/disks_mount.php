@@ -34,8 +34,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKS, _DISKSMOUNTPHP_NAME);
-
+$pgtitle = array(_DISKS,_DISKSMOUNTPHP_NAME);
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -45,7 +44,6 @@ mount_sort();
 $a_mount = &$config['mounts']['mount'];
 
 if ($_POST) {
-
 	$pconfig = $_POST;
 
 	if ($_POST['apply']) {
@@ -89,9 +87,19 @@ if ($_GET['act'] == "ret")
 		exit;
 	}
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+        <li class="tabact"><?=_DISKSMOUNTPHP_MANAGE;?></li>
+        <li class="tabinact"><a href="disks_mount_tools.php"><?=_DISKSMOUNTPHP_TOOLS;?></a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td class="tabcont">
 <form action="disks_mount.php" method="post">
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if (file_exists($d_mountdirty_path)): ?><p>
@@ -151,4 +159,5 @@ if ($_GET['act'] == "ret")
               </table>
             </form>
 <p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_DISKSMOUNTPHP_NOTE;?></p>
+</td></tr></table>
 <?php include("fend.inc"); ?>

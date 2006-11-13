@@ -522,6 +522,13 @@ define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Impossible de monter la partition 
 define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','Nom de partage dupliqu&eacute;.');
 define('_DISKSMOUNTEDITPHP_TEXT','1. Vous ne pouvez pas monter la partition \'<?php echo htmlspecialchars($cfdevice);?>\' car elle contient le fichier de configuration<br>2. Le support NTFS de FreeBSD est bogu&eacute;.');
 
+// disks_mount_tools.php
+define('_DISKSMOUNTTOOLS_COMMAND','Command');
+define('_DISKSMOUNTTOOLS_SENDCMD','Send Command!');
+define('_DISKSMOUNTTOOLS_CMDINFO','Command output:');
+define('_DISKSMOUNTTOOLS_MOUNTTEXT','Mounting...');
+define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
+
 // Service: CIFS/SAMBA
 // file: services_samba.php
 define('_SRVCIFS_NAMEDESC','CIFS');

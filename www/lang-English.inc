@@ -526,6 +526,13 @@ define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Can\'t mount the system partition 
 define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','Duplicate Share Name.');
 define('_DISKSMOUNTEDITPHP_TEXT','1. You can\'t mount the partition \'<?php echo htmlspecialchars($cfdevice);?>\' where the config file is stored<br>2. FreeBSD NTFS has lots of bugs.');
 
+// disks_mount_tools.php
+define('_DISKSMOUNTTOOLS_COMMAND','Command');
+define('_DISKSMOUNTTOOLS_SENDCMD','Send Command!');
+define('_DISKSMOUNTTOOLS_CMDINFO','Command output:');
+define('_DISKSMOUNTTOOLS_MOUNTTEXT','Mounting...');
+define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
+
 // Service: CIFS/SAMBA
 // file: services_samba.php
 define('_SRVCIFS_NAMEDESC','CIFS');

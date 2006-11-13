@@ -155,7 +155,7 @@ function disk_change() {
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">
-    				<? if ($do_action)
+    				<?php if($do_action)
     				{
     				  echo("<strong>" . _DISKSMANAGETOOLS_CMDINFO . "</strong><br>");
     					echo('<pre>');

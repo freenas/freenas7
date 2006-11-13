@@ -527,6 +527,13 @@ define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Die Systempartition (1. Partition)
 define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','Freigabenname duplizieren.');
 define('_DISKSMOUNTEDITPHP_TEXT','1. Die Partition \'<?php echo htmlspecialchars($cfdevice);?>\' kann nicht eingebunden werden - sie enth&auml;lt die Konfigurationsdatei<br>2. Die NTFS-implemtentierung von FreeBSD hat viele Fehler.');
 
+// disks_mount_tools.php
+define('_DISKSMOUNTTOOLS_COMMAND','Befehl');
+define('_DISKSMOUNTTOOLS_SENDCMD','Sende Befehl!');
+define('_DISKSMOUNTTOOLS_CMDINFO','Befehlsausgabe:');
+define('_DISKSMOUNTTOOLS_MOUNTTEXT','Mounting...');
+define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
+
 // Service: CIFS/SAMBA
 // file: services_samba.php
 define('_SRVCIFS_NAMEDESC','CIFS - Common Internet File System');
