@@ -374,7 +374,7 @@ cgi.assign = (".php" => "/usr/local/bin/php")
 auth.require = ( "/" =>
 					(	
 						"method"  => "basic",
-						"realm"   => "FreeNAS",
+						"realm"   => "{$config['system']['hostname']}",
 						"require" => "valid-user"
 					),
 				) 
