@@ -31,7 +31,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(_DISKS,_DISKSMOUNTPHP_NAME);
@@ -66,7 +65,6 @@ if ($_POST) {
 		}
 	}
 }
-
 if ($_GET['act'] == "del")
 {
 	if ($a_mount[$_GET['id']]) {
@@ -78,7 +76,6 @@ if ($_GET['act'] == "del")
 		exit;
 	}
 }
-
 if ($_GET['act'] == "ret")
 {
 	if ($a_mount[$_GET['id']]) {
@@ -100,64 +97,57 @@ if ($_GET['act'] == "ret")
   </tr>
   <tr> 
     <td class="tabcont">
-<form action="disks_mount.php" method="post">
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<?php if (file_exists($d_mountdirty_path)): ?><p>
-<?php print_info_box_np(_DISKSMOUNTPHP_MSGCHANGED);?><br>
-<input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY;?>"></p>
-<?php endif; ?>
-              <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td width="10%" class="listhdrr"><?=_DISK; ?></td>
-                  <td width="10%" class="listhdrr"><?=_PARTITION; ?></td>
-                  <td width="5%" class="listhdrr"><?=_FILESYSTEM; ?></td>
-                  <td width="20%" class="listhdrr"><?=_DISKSMOUNTPHP_SHARENAME ;?></td>
-                  <td width="25%" class="listhdrr"><?=_DESC ;?></td>
-                  <td width="20%" class="listhdr"><?=_STATUS ;?></td>
-                  <td width="10%" class="list"></td>
-				</tr>
-			  <?php $i = 0; foreach ($a_mount as $mount): ?>
-                <tr>
-                  <td class="listlr">
-                    <?=htmlspecialchars($mount['mdisk']);?> &nbsp;
-                  </td>
-                  <td class="listr">
-                    <?=htmlspecialchars($mount['partition']);?>&nbsp;
-                  </td>
-                  <td class="listr">
-                    <?=htmlspecialchars($mount['fstype']);?>&nbsp;
-                  </td>
-                   <td class="listr">
-                    <?=htmlspecialchars($mount['sharename']);?>&nbsp;
-                  </td>
-                   <td class="listr">
-                    <?=htmlspecialchars($mount['desc']);?>&nbsp;
-                  </td>
-                 </td>
-                   <td class="listbg">
-                    <?php
-                    if (file_exists($d_mountdirty_path))
-						$stat=_CONFIGURING;
-					else
-					{
-						$stat=disks_mount_status($mount);
-						if ($stat == "ERROR")
-							echo "ERROR - <a href=\"disks_mount.php?act=ret&id=$i\">retry</a>";
-						else
-							echo $stat;
-                    }
-                    ?>&nbsp;
-                  </td>
-                  <td valign="middle" nowrap class="list"> <a href="disks_mount_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit mount" width="17" height="17" border="0"></a>
-                     &nbsp;<a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSMOUNTPHP_DELCONF; ?>')"><img src="x.gif" title="<?=_DISKSMOUNTPHP_DEL; ?>" width="17" height="17" border="0"></a></td>
-				</tr>
-			  <?php $i++; endforeach; ?>
-                <tr> 
-                  <td class="list" colspan="6"></td>
-                  <td class="list"> <a href="disks_mount_edit.php"><img src="plus.gif" title="<?=_DISKSMOUNTPHP_ADD ; ?>" width="17" height="17" border="0"></a></td>
-				</tr>
-              </table>
-            </form>
-<p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_DISKSMOUNTPHP_NOTE;?></p>
-</td></tr></table>
+      <form action="disks_mount.php" method="post">
+        <?php if ($savemsg) print_info_box($savemsg); ?>
+        <?php if (file_exists($d_mountdirty_path)): ?><p>
+        <?php print_info_box_np(_DISKSMOUNTPHP_MSGCHANGED);?><br>
+        <input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY;?>"></p>
+        <?php endif; ?>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="10%" class="listhdrr"><?=_DISK; ?></td>
+            <td width="10%" class="listhdrr"><?=_PARTITION; ?></td>
+            <td width="5%" class="listhdrr"><?=_FILESYSTEM; ?></td>
+            <td width="20%" class="listhdrr"><?=_DISKSMOUNTPHP_SHARENAME ;?></td>
+            <td width="25%" class="listhdrr"><?=_DESC ;?></td>
+            <td width="20%" class="listhdr"><?=_STATUS ;?></td>
+            <td width="10%" class="list"></td>
+          </tr>
+  			  <?php $i = 0; foreach($a_mount as $mount): ?>
+          <tr>
+            <td class="listlr"><?=htmlspecialchars($mount['mdisk']);?> &nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($mount['partition']);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($mount['fstype']);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($mount['sharename']);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($mount['desc']);?>&nbsp;</td>
+            <td class="listbg">
+              <?php
+              if (file_exists($d_mountdirty_path)) {
+                $stat=_CONFIGURING;
+              } else {
+                $stat = disks_mount_status($mount);
+                if("ERROR" == $stat) {
+                  echo "ERROR - <a href=\"disks_mount.php?act=ret&id=$i\">retry</a>";
+                } else {
+                  echo $stat;
+                }
+              }
+              ?>&nbsp;
+            </td>
+            <td valign="middle" nowrap class="list">
+              <a href="disks_mount_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit mount" width="17" height="17" border="0"></a>&nbsp;
+              <a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSMOUNTPHP_DELCONF; ?>')"><img src="x.gif" title="<?=_DISKSMOUNTPHP_DEL; ?>" width="17" height="17" border="0"></a>
+            </td>
+          </tr>
+          <?php $i++; endforeach; ?>
+          <tr> 
+            <td class="list" colspan="6"></td>
+            <td class="list"> <a href="disks_mount_edit.php"><img src="plus.gif" title="<?=_DISKSMOUNTPHP_ADD ; ?>" width="17" height="17" border="0"></a></td>
+          </tr>
+        </table>
+      </form>
+      <p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_DISKSMOUNTPHP_NOTE;?></p>
+    </td>
+  </tr>
+</table>
 <?php include("fend.inc"); ?>

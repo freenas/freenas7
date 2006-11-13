@@ -90,11 +90,11 @@ if (!isset($do_format))
 function disk_change() {
   switch(document.iform.disk.value)
   {
-    <?php foreach ($a_disk as $diskn): ?>
-		case "<?=$diskn['name'];?>":
+    <?php foreach ($a_disk as $diskv): ?>
+		case "<?=$diskv['name'];?>":
 		  <?php $i = 0;?>
       <?php foreach ($a_fst as $fstval => $fstname): ?>
-        document.iform.type.options[<?=$i++;?>].selected = <?php if($diskn['fstype'] == $fstval){echo "true";}else{echo "false";};?>;
+        document.iform.type.options[<?=$i++;?>].selected = <?php if($diskv['fstype'] == $fstval){echo "true";}else{echo "false";};?>;
       <?php endforeach; ?>
       break;
     <?php endforeach; ?>
@@ -121,9 +121,9 @@ function disk_change() {
             <td valign="top" class="vncellreq"><?=_DISK; ?></td>
             <td class="vtable">
               <select name="disk" class="formfld" id="disk" onchange="disk_change()">
-                <?php foreach ($a_disk as $diskn): ?>
-                <option value="<?=$diskn['name'];?>"<?php if ($diskn['name'] == $disk) echo "selected";?>>
-                <?php echo htmlspecialchars($diskn['name'] . ": " .$diskn['size'] . " (" . $diskn['desc'] . ")");?>
+                <?php foreach ($a_disk as $diskv): ?>
+                <option value="<?=$diskv['name'];?>"<?php if ($diskv['name'] == $disk) echo "selected";?>>
+                <?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?>
                 <?php endforeach; ?>
                 </option>
               </select>
