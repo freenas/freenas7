@@ -282,8 +282,10 @@ define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Click &quot;Enable firmware
           upload&quot; below, then choose the image file '.$g['fullplatform'].'-*.img)
 			 to be uploaded.<br>Click &quot;Upgrade firmware&quot; 
           to start the upgrade process.');			
+// Note for translator: Do not use international html coding for these two variables:
 define('_SYSTEMFIRMWAREPHP_ENFIRMUP','Enable firmware upload');	
-define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Disable firmware upload');		
+define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Disable firmware upload');
+		
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','Firmware image file');	
 define('_SYSTEMFIRMWAREPHP_UPFIRM','Upgrade firmware');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','You must reboot the system before you can upgrade the firmware.');
@@ -902,6 +904,7 @@ define('_STATSGRAPH_NAME',_MENULEFT_STATUS);
 define('_STATSGRAPH_NAMEDESC','Traffic graph');
 
 // file: graph.php
+// Note for translator: Do not use international html coding here
 define('_GRAPH_ERRORGETIFDATA','Cannot get data about interface');
 define('_GRAPH_IN','In');
 define('_GRAPH_OUT','Out');

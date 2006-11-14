@@ -99,8 +99,8 @@ define('_MODIFY','Modifier');
 define('_NEW','Nouveau');
 define('_SEARCH', 'Chercher');
 define('_SAVE', 'Enregister');
-define('_SUBMIT','Submit');
-define('_UPDATE', 'Mise &agrave; jour');
+define('_SUBMIT','Envoyer');
+define('_UPDATE', 'Mise a jour');
 define('_VIEW', 'Visualiser');
 define('_APPLY', 'Appliquer les changements');
 define('_WARNING', 'Attention');
@@ -278,21 +278,20 @@ define('_SYSTEMFIRMWAREPHP_INSTREBOOTLAT','Mise &agrave; jour en cours. FreeNAS 
 define('_SYSTEMFIRMWAREPHP_NOTSUP','Mise &agrave; jour du logiciel non support&eacute;e sur cette plateforme.');
 define('_SYSTEMFIRMWAREPHP_BIGWARN','Cela signifie que l\'image que vous avez charg&eacute;e ' .
 		 	'n\'est pas une image officiellement support&eacute;e, ceci pouvant causer un comportement erratique ou provoquer' .
-			'des failles de securite. N\'installez que des images venant de sources de confiance, et assurez-vous '.
-			'que ces images n\'aient pas ete modifiees.<br><br>'.
-			'Voulez-vous installer tout de meme cette image (a votre entiere responsabilite)?');
+			'des failles de s&eacute;curit&eacute;. N\'installez que des images venant de sources de confiance, et assurez-vous '.
+			'que ces images n\'aient pas &eacute;t&eacute; modifi&eacute;es.<br><br>'.
+			'Voulez-vous installer tout de m&ecirc;me cette image (sous votre enti&egrave;re responsabilit&eacute;)?');
 define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Cliquez sur &quot;Activer le chargement de mise &agrave; jour&quot; ci-dessous, puis choisissez un fichier image '.$g['fullplatform'].'-*.img
-			 &agrave; charger.<br>Cliquez sur &quot;Mettre &agrave; jour&quot; 
-          pour lancer la mise &agrave; jour.');			
-define('_SYSTEMFIRMWAREPHP_ENFIRMUP','Activer le chargement de mise &agrave; jour');	
-define('_SYSTEMFIRMWAREPHP_DESFIRMUP','D&eacute;sactiver le chargement de mise &agrave; jour');		
+			 &agrave; charger.<br>Cliquez sur &quot;Charger&quot; pour lancer la mise &agrave; jour.');			
+define('_SYSTEMFIRMWAREPHP_ENFIRMUP','Activer le chargement de mise a jour');	
+define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Desactiver le chargement de mise a jour');		
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','Fichier image de mise &agrave; jour');	
-define('_SYSTEMFIRMWAREPHP_UPFIRM','Mettre &agrave; jour');
+define('_SYSTEMFIRMWAREPHP_UPFIRM','Charger');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','Vous devez red&eacute;marrer le systeme avant de pouvoir faire une mise a jour.');
-define('_SYSTEMFIRMWAREPHP_DONOTABORT','N\'ANNULEZ PAS la mise a jour une fois 
+define('_SYSTEMFIRMWAREPHP_DONOTABORT','N\'ANNULEZ PAS la mise &agrave; jour une fois 
                     commenc&eacute;e. FreeNAS red&eacute;marrera automatiquement apr&egrave;s 
-                    installation de la mise a jour.<br>La configuration sera maintenue.<br>
-                    128 Mo de RAM sont n&eacute;cessaires pour la mise a jour.');
+                    installation de la mise &agrave; jour.<br>La configuration sera maintenue.<br>
+                    128 Mo de RAM sont n&eacute;cessaires pour la mise &agrave; jour.');
 
 
 // System Advanced Module
@@ -315,7 +314,7 @@ define('_SYSTEMADVANCEDPHP_DISCON','D&eacute;sactiver le menu de la console');
 define('_SYSTEMADVANCEDPHP_CONTEXT','Ce changement ne prend effet qu\'au prochain red&eacute;marrage.');
 define('_SYSTEMADVANCEDPHP_FIRM','V&eacute;rification de nouvelle version logiciel');
 define('_SYSTEMADVANCEDPHP_DISFIRM','D&eacute;sactivation de la v&eacute;rification de nouvelle version');
-define('_SYSTEMADVANCEDPHP_FIRMTEXT','Ceci emp&egrave;che FreeNAS de v&eacute;rifier la disponibilit&eacute; de nouvelle version lorsque la page <a href=system_firmware.php>Syst&egrave;me: Logiciel</a> est affich&eacute;e.');
+define('_SYSTEMADVANCEDPHP_FIRMTEXT','Ceci emp&egrave;che FreeNAS de v&eacute;rifier la disponibilit&eacute; d\'une nouvelle version lorsque la page <a href=system_firmware.php>Syst&egrave;me: Logiciel</a> est affich&eacute;e.');
 define('_SYSTEMADVANCEDPHP_TCPIDLE','Timeout inactivit&eacute; TCP');
 define('_SYSTEMADVANCEDPHP_TCPIDLETEXT','Les connexions TCP inactives seront supprim&eacute;es de la table d\'&eacute;tat si aucun paquet n\'est recu durant le nombre de secondes sp&eacute;cifi&eacute;. N\'indiquez pas une valeur trop haute ou la table d\'&eacute;tat pourrait se remplir de connexions improprement termin&eacute;es. R&eacute;glage par defaut : 2.5 heures.');
 define('_SYSTEMADVANCEDPHP_NAV','Navigation');
@@ -343,7 +342,7 @@ define('_INTASSIGNPHP_DELINT','Supprimer interface');
 define('_INTASSIGNPHP_ADDINT','Ajouter interface');
 define('_INTASSIGNPHP_INTTEXT','Apr&egrave;s avoir cliqu&eacute; sur &quot;Enregistrer&quot;, vous devez red&eacute;marrer FreeNAS pour prendre en compte les changements. Vous devriez &eacute;galement v&eacute;rifier les points suivants avant de pouvoir vous reconnecter sur votre NAS: </span></p>
 <ul>
-  <li><span class=\"vexpl\">V&eacute;rifiez que l\'adresse IP de votre ordinateur soit dans le meme r&eacute;seau que la nouvelle adresse du NAS</span></li>
+  <li><span class=\"vexpl\">V&eacute;rifiez que l\'adresse IP de votre ordinateur soit dans le m&ecirc;me r&eacute;seau que la nouvelle adresse du NAS</span></li>
   <li><span class=\"vexpl\">acc&eacute;dez &agrave; l\'interface avec la nouvelle adresse IP</span></li>
 </ul>');
 
@@ -388,7 +387,7 @@ define('_INTPHP_CALCNETMASKBITS','Calculer le nombre de bits du masque de sous r
 define('_DISKSPHP_NAME',_DISKS);
 define('_DISKSPHP_MANAGE','G&eacute;rer');
 define('_DISKSPHP_FORMAT','Formater');
-define('_DISKSPHP_TOOLS','Tools');
+define('_DISKSPHP_TOOLS','Outils');
 define('_DISKSPHP_ISCSIINIT','initiateur iSCSI');
 define('_DISKSPHP_DISK',_DISK);
 define('_DISKSPHP_FILESYSTEM',_FILESYSTEM);
@@ -401,7 +400,7 @@ define('_DISKSMANAGEPHP_STANDBY','D&eacute;lai de mise en veille');
 define('_DISKSMANAGEPHP_FSUNKNOWN','Inconnu ou non format&eacute;');
 define('_DISKSMANAGEPHP_EDIT','Modifier le disque');
 define('_DISKSMANAGEPHP_DEL','Supprimer le  disque');
-define('_DISKSMANAGEPHP_DELCONF','Voulez-vous vraiment supprimer ce disque? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s (par ex. share)!');
+define('_DISKSMANAGEPHP_DELCONF','Voulez-vous vraiment supprimer ce disque? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s!');
 define('_DISKSMANAGEPHP_ADD','Ajouter un disque');
 define('_DISKSMANAGEPHP_NOTE','Premi&egrave;re &eacute;tape: Ajoutez votre disque dur &agrave; la liste des disques.');
 
@@ -421,7 +420,7 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','Ceci vous permet d\'indiquer le type de 
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialiser');
-define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding.');
+define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','Ce disque est mont&eacute;! <a href=disks_mount_tools.php>D&eacute;!montez</a>-le avant de continuer.');
 define('_DISKSMANAGEINITPHP_INITTEXT','D&eacute;tails de l\'initialisation:');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"n\'est pas un message d\'erreur!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Ceci efface toutes les partitions, cr&eacute;&eacute; la partition num&eacute;ro 1 et formate le disque avec le syst&egrave;me de fichier sp&eacute;cifi&eacute;.');
@@ -435,10 +434,10 @@ define('_DISKSMANAGETOOLS_NAMEDESC','Outils');
 define('_DISKSMANAGETOOLS_COMMAND','Commande');
 define('_DISKSMANAGETOOLS_SENDCMD','Valider la commande!');
 define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Utilisez <a href="disks_raid_gmirror.php">les outils RAID</a> pour ce disque!');
-define('_DISKSMANAGETOOLS_CMDINFO','Message renvoy&eacute;;:');
-define('_DISKSMANAGETOOLS_MOUNTNOTE','Ce disque est mont&eacute;!<br>Veuillez le d&eacute;monter avant d\'utiliser les outils');
-define('_DISKSMANAGETOOLS_UMOUNT','Unmount disk/partition');
-define('_DISKSMANAGETOOLS_UMOUNTTEXT','If the selected disk/partition is mounted it will be unmounted temporary to perform selected command, otherwise the commands work in read-only mode.');
+define('_DISKSMANAGETOOLS_CMDINFO','Message renvoy&eacute;:');
+define('_DISKSMANAGETOOLS_MOUNTNOTE','Ce disque est mont&eacute;!<br>Il va &ecirc;tre temporairement d&eacute;mont&eacute; afin d\' ex&eacute;cuter la commande');
+define('_DISKSMANAGETOOLS_UMOUNT','D&eacute;monter disque/partition');
+define('_DISKSMANAGETOOLS_UMOUNTTEXT','Si le disque ou la partition est mont&eacute;(e) il (elle) sera d&eacute;mont&eacute;(e) temporairement pour ex&eacute;cuter la commande s&eacute;lectionn&eacute;e, sinon les commandes fonctionnent en lecture seule.');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Gestion');
@@ -448,7 +447,7 @@ define('_DISKSMANAGEISCSIPHP_INITIATOR','Initiateur iSCSI');
 define('_DISKSMANAGEISCSIPHP_TARGETIP','Adresse IP cible');
 define('_DISKSMANAGEISCSIPHP_TARGETIPTEXT','Addresse IP de la cible iSCSI.');
 define('_DISKSMANAGEISCSIPHP_TARGETNAME','Nom de la cible');
-define('_DISKSMANAGEISCSIPHP_TARGETNAMETEXT','Nom de la cible.');
+define('_DISKSMANAGEISCSIPHP_TARGETNAMETEXT','Nom de la cible iSCSI.');
 
 //Software RAID
 // Comon value
@@ -471,7 +470,7 @@ define('_DISKSRAIDPHP_TYPE','Type');
 define('_DISKSRAIDPHP_EDITRAID','Modifier raid');
 define('_DISKSRAIDPHP_DELRAID','Supprimer raid');
 define('_DISKSRAIDPHP_DELCONF','Voulez-vous vraiment supprimer ce volume RAID? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s (par ex. share)!');
-define('_DISKSRAIDPHP_NOTE','Etape optionnelle: Configurer un disque RAID virtuel en utilisant votre <a href=disks_manage.php>disque configur&eacute; pr&eacute;c&eacute;demment</a>.<br>Attendez l\'apparition de l\'&eacute;tat "UP" avant de le formater et de le monter!');
+define('_DISKSRAIDPHP_NOTE','Etape optionnelle: Configurer un disque RAID virtuel en utilisant votre<br><a href=disks_manage.php>disque configur&eacute; pr&eacute;c&eacute;demment</a>.<br>Attendez l\'apparition de l\'&eacute;tat "UP" avant de le formater et de le monter!.');
 
 //file: disks_raid_edit.php
 define('_DISKSRAIDEDITPHP_NAMEDESC',_EDIT);
@@ -500,7 +499,7 @@ define('_DISKSRAIDINITPHP_FORMAT','Formatage du disque en UFS!');
 //file: disks_raid_tools.php
 define('_DISKSRAIDTOOLSPHP_OBJNAME','Nom de l\'objet');
 define('_DISKSRAIDTOOLSPHP_COMMAND','Commande');
-define('_DISKSRAIDTOOLSPHP_INFO','GVINUM command output:');
+define('_DISKSRAIDTOOLSPHP_INFO','Message GVINUM:');
 define('_DISKSRAIDTOOLSPHP_SENDCMD','Valider la commande!');
 define('_DISKSRAIDTOOLSPHP_TEXT','1. N\'utilisez ces actions sp&eacute;ciales qu\'&agrave; des fins de d&eacute;bogage!<br>2. Nul besoin d\'utiliser ce menu pour d&eacute;marrer un volume RAID (d&eacute;marrage automatique).');
 
@@ -508,13 +507,13 @@ define('_DISKSRAIDTOOLSPHP_TEXT','1. N\'utilisez ces actions sp&eacute;ciales qu
 // Comon value
 define('_DISKSMOUNTPHP_NAME','Points de montage');
 define('_DISKSMOUNTPHP_SHARENAME','Nom du partage');
-define('_DISKSMOUNTPHP_MANAGE','Manage');
-define('_DISKSMOUNTPHP_TOOLS','Tools');
+define('_DISKSMOUNTPHP_MANAGE','Gestion');
+define('_DISKSMOUNTPHP_TOOLS','Outils');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','La liste des points de montage a &eacute;t&eacute; modifi&eacute;e.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
 define('_DISKSMOUNTPHP_NOTE','Deuxi&egrave;me &eacute;tape de la configuration: D&eacute;clarer le syst&egrave;me de fichiers utilis&eacute; par votre <a href="disks_manage.php">disque configur&eacute; pr&eacute;c&eacute;demment');
-define('_DISKSMOUNTPHP_DELCONF','Voulez-vous vraiment supprimer ce point de montage? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s (par ex. share)!');
+define('_DISKSMOUNTPHP_DELCONF','Voulez-vous vraiment supprimer ce point de montage? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s!');
 define('_DISKSMOUNTPHP_DEL','Supprimer le point de montage');
 define('_DISKSMOUNTPHP_ADD','Ajouter un point de montage');
 
@@ -526,11 +525,11 @@ define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','Nom de partage dupliqu&eacute;.');
 define('_DISKSMOUNTEDITPHP_TEXT','1. Vous ne pouvez pas monter la partition \'<?php echo htmlspecialchars($cfdevice);?>\' car elle contient le fichier de configuration<br>2. Le support NTFS de FreeBSD est bogu&eacute;.');
 
 // disks_mount_tools.php
-define('_DISKSMOUNTTOOLS_COMMAND','Command');
-define('_DISKSMOUNTTOOLS_SENDCMD','Send Command!');
-define('_DISKSMOUNTTOOLS_CMDINFO','Command output:');
-define('_DISKSMOUNTTOOLS_MOUNTTEXT','Mounting...');
-define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
+define('_DISKSMOUNTTOOLS_COMMAND','Commande');
+define('_DISKSMOUNTTOOLS_SENDCMD','Lancer la commande!');
+define('_DISKSMOUNTTOOLS_CMDINFO','Message retourn&eacute;:');
+define('_DISKSMOUNTTOOLS_MOUNTTEXT','Montage...');
+define('_DISKSMOUNTTOOLS_UMOUNTTEXT','D&eacute;montage...');
 
 // Service: CIFS/SAMBA
 // file: services_samba.php
@@ -679,12 +678,12 @@ define('_SRVUNSN_NAMEDESC','Unison');
 define('_SRVUNSN_MSGVALIDWRKDIR','Cette combinaison partage/r&eacute;pertoire de travail n\'existe pas.');
 define('_SRVUNSN_UNISON','Synchronisation de fichiers Unison');
 define('_SRVUNSN_SHARE','Partage');
-define('_SRVUNSN_SHAREDESC','Vous pourriez avoir besoin de suffisamment d\'espace pour dupliquer tous les fichiers devant etre synchronis&eacute;s');
+define('_SRVUNSN_SHAREDESC','Vous pourriez avoir besoin de suffisamment d\'espace pour dupliquer tous les fichiers devant &ecirc;tre synchronis&eacute;s');
 define('_SRVUNSN_WORKDIR','R&eacute;pertoire de travail');
-define('_SRVUNSN_WORKDIRDESC','L\'endroit ou seront stock&eacute;s les fichiers');
+define('_SRVUNSN_WORKDIRDESC','L\'endroit o&ugrave; seront stock&eacute;s les fichiers');
 define('_SRVUNSN_MAKEDIR','Cr&eacute;er');
 define('_SRVUNSN_MAKEDIRLABEL','Cr&eacute;er le r&eacute;pertoire de travail s\'il n\' existe pas');
-define('_SRVUNSN_NOTESSH','<a href="/services_sshd.php">SSHD</a> doit etre activ&eacute; pour qu\' Unison fonctionne, et l\'<a href="/access_users.php">utilisateur</a> doit avoir un acc&egrave;s complet au shell.');
+define('_SRVUNSN_NOTESSH','<a href="/services_sshd.php">SSHD</a> doit &ecirc;tre activ&eacute; pour qu\' Unison fonctionne, et l\'<a href="/access_users.php">utilisateur</a> doit avoir un acc&egrave;s complet au shell.');
 
 // Service: AFP
 // file: services_afp.php
@@ -775,7 +774,7 @@ define('_DIAG_NAME','Diagnostics');
 // file: shutdown.php
 
 define('_SHUT_NAME',_MENULEFT_CMDSHUTDOWNSYS);
-define('_SHUT_MSGSHUT','Le syst&egrave;me est en cours d\'arr&ecirc;t. Ceci peut prendre jusqu\'&agrave;  une minute.');
+define('_SHUT_MSGSHUT','Le syst&egrave;me est en cours d\'arr&ecirc;t. Ceci peut prendre jusqu\'&agrave; une minute.');
 define('_SHUT_CONF','Etes-vous s&ucirc;r de vouloir arr&ecirc;ter le NAS?');
 
 // file: shutdown_sched.php
@@ -846,7 +845,7 @@ define('_DIAGPING_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
 // file: diag_traceroute.php
 define('_DIAGTRACEROUTE_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGTRACEROUTE_NAMEDESC',_MENULEFT_DIAGPINGTRACE);
-define('_DIAGTRACEROUTE_NOTE','Traceroute peut etre long a s\'ex&eacute;cuter. Vous pouvez cliquer sur le bouton Stop de votre navigateur a tout moment pour voir l\'avancement du tracage.');
+define('_DIAGTRACEROUTE_NOTE','Traceroute peut &ecirc;tre long &agrave; s\'ex&eacute;cuter. Vous pouvez cliquer sur le bouton Stop de votre navigateur &agrave; tout moment pour voir l\'avancement du tra&ccedil;age.');
 
 // file: diag_logs.php
 // file: diag_logs_daemon.php
@@ -874,21 +873,21 @@ define('_DIAGINFOS_DISKS',_DISKS);
 define('_DIAGINFOS_PARTITIONS','Partitions');
 define('_DIAGINFOS_SMART','S.M.A.R.T.');
 define('_DIAGINFOS_ATAIDLE','ATAidle');
-define('_DIAGINFOS_SPACEUSED','Space Used');
-define('_DIAGINFOS_MOUNTS','Mounts');
+define('_DIAGINFOS_SPACEUSED','Espace utilis&eacute;');
+define('_DIAGINFOS_MOUNTS','Montages');
 define('_DIAGINFOS_SOFTWARERAID',_SOFTRAID);
 define('_DIAGINFOS_ISCSI','iSCSI');
-define('_DIAGINFOS_MSDOMAIN','MS Domain');
+define('_DIAGINFOS_MSDOMAIN','Domaine MS');
 
 // file: diag_infos.php
-define('_DIAGINFOSDISKS_ATA_INFO','List of detected ATA disks');
-define('_DIAGINFOSDISKS_SCSI_INFO','List of detected SCSI disks');
+define('_DIAGINFOSDISKS_ATA_INFO','Liste des disques ATA d&eacute;tect&eacute;s');
+define('_DIAGINFOSDISKS_SCSI_INFO','Liste des disques SCSI d&eacute;tect&eacute;s');
 
 // file: diag_infos_mount.php
-define('_DIAGINFOSMOUNT_INFO','List of mount points');
+define('_DIAGINFOSMOUNT_INFO','Liste des points de montage');
 
 // file: diag_infos_space.php
-define('_DIAGINFOSSPACE_INFO','Free Space');
+define('_DIAGINFOSSPACE_INFO','Espace libre');
 
 // file: diag_defaults.php
 define('_DIAGDEFAULTS_NAME',_MENULEFT_DIAGNOSTICS);
@@ -908,13 +907,13 @@ define('_STATSGRAPH_NAME',_MENULEFT_STATUS);
 define('_STATSGRAPH_NAMEDESC','Graphe de trafic');
 
 // file: graph.php
-define('_GRAPH_ERRORGETIFDATA','Impossible de collecter des donn&eacute;es sur cette interface');
-define('_GRAPH_IN','Entr&eacute;e');
+define('_GRAPH_ERRORGETIFDATA','Impossible de collecter des donnees sur cette interface');
+define('_GRAPH_IN','Entree');
 define('_GRAPH_OUT','Sortie');
 define('_GRAPH_SWITCHTO','Basculer en');
 define('_GRAPH_AUTOSCALE','Echelle auto');
 define('_GRAPH_AUTOSCALE_FOLLOW','Suivre');
 define('_GRAPH_AUTOSCALE_UP','Remonter');
-define('_GRAPH_SHOWLAST','Afficher les derni&egrave;res');
-define('_GRAPH_COLLECTDATA','Collecte des premi&egrave;res donn&eacute;es, veuillez patienter...');
+define('_GRAPH_SHOWLAST','Afficher les dernieres');
+define('_GRAPH_COLLECTDATA','Collecte des premiees donnees, veuillez patienter...');
 ?>
