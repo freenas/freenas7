@@ -424,7 +424,7 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','This allows you to set FS type for prefo
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialize');
-define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','The disk is currently mounted! <a href=disks_mount_tools.php>Unmount</a> this disk first before proceeding.');
+define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding.');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Disk initialization details:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"is not an error message!\n');
 define('_DISKSMANAGEINITPHP_TEXT','This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified.');
@@ -474,7 +474,7 @@ define('_DISKSRAIDPHP_TYPE','Type');
 define('_DISKSRAIDPHP_EDITRAID','Edit raid');
 define('_DISKSRAIDPHP_DELRAID','Delete raid');
 define('_DISKSRAIDPHP_DELCONF','Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!');
-define('_DISKSRAIDPHP_NOTE','Optional configuration step: Configuring a virtual RAID disk using your<br><a href="disks_manage.php">previsously configured disk</a>.<br>Wait for the "up" status before format it and mount it!.');
+define('_DISKSRAIDPHP_NOTE','Optional configuration step: Configuring a virtual RAID disk using your <a href="disks_manage.php">previsously configured disk</a>.<br>Wait for the "up" status before format and mount it!');
 
 //file: disks_raid_edit.php
 define('_DISKSRAIDEDITPHP_NAMEDESC',_EDIT);

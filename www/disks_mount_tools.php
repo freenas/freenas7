@@ -61,12 +61,20 @@ if ($_POST) {
 		$action = $_POST['action'];
 	}
 }
-
 if(!isset($do_action))
 {
 	$do_action = false;
 	$sharename = '';
 	$action = '';
+}
+if(isset($_GET['mdisk']) && isset($_GET['partition'])) {
+  $mdisk = $_GET['mdisk'];
+  $partition = $_GET['partition'];
+  $id = array_search_ex(array($mdisk,$partition), $a_mount, array("mdisk","partition"));
+  $sharename = $a_mount[$id]['sharename'];
+}
+if(isset($_GET['action'])) {
+  $action = $_GET['action'];
 }
 ?>
 <?php include("fbegin.inc"); ?>

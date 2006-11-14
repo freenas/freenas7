@@ -1250,7 +1250,18 @@ function get_fstype_shortdesc($fstype)
 function array_search_ex($needle, $haystack, $key)
 {
   foreach($haystack as $haystackval => $value) {
-    if($value[$key] == $needle) {
+    $found = false;
+    if(is_array($needle) && is_array($key)) {
+      foreach($needle as $n => $needlev) {
+        $found = ($value[$key[$n]] == $needlev);        
+        if(false == $found) {
+          break;
+        }
+      }
+    } else {
+      $found = ($value[$key] == $needle);
+    }
+    if(true == $found) {
       return $haystackval;
     }
   }

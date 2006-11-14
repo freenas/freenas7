@@ -254,7 +254,7 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','This allows you to set FS type for prefo
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialize');
-define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','The disk is currently mounted! <a href=disks_mount_tools.php>Unmount</a> this disk first before proceeding.');
+define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding.');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Disk initialization details:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"is not an error message!\n');
 define('_DISKSMANAGEINITPHP_TEXT','This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified.');
@@ -282,6 +282,61 @@ define('_DISKSMANAGEISCSIPHP_TARGETIP','Target IP address');
 define('_DISKSMANAGEISCSIPHP_TARGETIPTEXT','IP address of the iSCSI target.');
 define('_DISKSMANAGEISCSIPHP_TARGETNAME','Targetname');
 define('_DISKSMANAGEISCSIPHP_TARGETNAMETEXT','Targetname.');
+
+//Software RAID
+// Comon value
+define('_DISKSRAIDPHP_MANAGE','Manage RAID');
+define('_DISKSRAIDPHP_FORMAT','Format RAID');
+define('_DISKSRAIDPHP_TOOLS','Tools');
+define('_DISKSRAIDPHP_INFO','Information');
+define('_DISKSRAIDPHP_VOLUME','Volume Name');
+
+// Software RAID common word
+define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
+define('_DISKSRAIDPHP_GMIRROR','Geom Mirror');
+define('_DISKSRAIDPHP_GRAID5','Geom Raid5');
+define('_DISKSRAIDPHP_UNSTABLE','(unstable)');
+
+//file: disks_raid.php
+define('_DISKSRAIDPHP_NAMEDESC','RAID');
+define('_DISKSRAIDPHP_MSGCHANGED','The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect.');
+define('_DISKSRAIDPHP_TYPE','Type');
+define('_DISKSRAIDPHP_EDITRAID','Edit raid');
+define('_DISKSRAIDPHP_DELRAID','Delete raid');
+define('_DISKSRAIDPHP_DELCONF','Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!');
+define('_DISKSRAIDPHP_NOTE','Optional configuration step: Configuring a virtual RAID disk using your <a href="disks_manage.php">previsously configured disk</a>.<br>Wait for the "up" status before format and mount it!');
+
+//file: disks_raid_edit.php
+define('_DISKSRAIDEDITPHP_NAMEDESC',_EDIT);
+define('_DISKSRAIDEDITPHP_MSGADDDISKFIRST','You must add disks first.');
+define('_DISKSRAIDEDITPHP_MSGVALIDNAME','The device name may only consist of the characters a-z, A-Z, 0-9.');
+define('_DISKSRAIDEDITPHP_MSGEXIST','This device already exists in the raid volume list.');
+define('_DISKSRAIDEDITPHP_MSGVALIDRAID0','There must be a minimum of 2 disks in a RAID 0 volume.');
+define('_DISKSRAIDEDITPHP_MSGVALIDRAID1','There must be 2 disks in a RAID 1 volume.');
+define('_DISKSRAIDEDITPHP_MSGVALIDRAID5','There must be a minimum of 3 disks in a RAID 5 volume.');
+define('_DISKSRAIDEDITPHP_MSGERROR','ERR Could not save RAID configuration.\n');
+define('_DISKSRAIDEDITPHP_RAIDNAME','Raid name');
+define('_DISKSRAIDEDITPHP_GVBALANCEALGO','Balance algorithm');
+define('_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT','Select your read balance algorithm.');
+define('_DISKSRAIDEDITPHP_RAID0','striping');
+define('_DISKSRAIDEDITPHP_RAID1','mirroring');
+define('_DISKSRAIDEDITPHP_RAID5','rotated block-interleaved parity');
+define('_DISKSRAIDEDITPHP_MEMBERS','Members of this volume');
+
+//file: disks_raid_info.php
+define('_DISKSRAIDINFOPHP_TEXT','Software RAID information and status');
+
+//file: disks_raid_init.php
+define('_DISKSRAIDINITPHP_INFO','Disk format UFS output:');
+define('_DISKSRAIDINITPHP_TEXT','This step will format the RAID volume in Unix FileSystem (UFS).');
+define('_DISKSRAIDINITPHP_FORMAT','Format UFS disk!');
+
+//file: disks_raid_tools.php
+define('_DISKSRAIDTOOLSPHP_OBJNAME','Object name');
+define('_DISKSRAIDTOOLSPHP_COMMAND','Command');
+define('_DISKSRAIDTOOLSPHP_INFO','GVINUM command output:');
+define('_DISKSRAIDTOOLSPHP_SENDCMD','Send Command!');
+define('_DISKSRAIDTOOLSPHP_TEXT','1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly).');
 
 //Disk Mount Point
 // Comon value

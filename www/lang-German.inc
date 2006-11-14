@@ -426,7 +426,7 @@ define('_DISKSMANAGEEDITPHP_PREFSTEXT','Dateisystem von bereits mit Dateisystem 
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialisierung');
-define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','Diese Festplatte is momentan gemountet. <a href=disks_mount_tools.php>Unmounten</a> Sie diese Festplatte zuerst bevor sie fortfahren.');
+define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','Diese Festplatte is momentan gemountet. <a href=%s>Unmounten</a> Sie diese Festplatte zuerst bevor sie fortfahren.');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Festplatteninitialisierungseigenschaften:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','"fdisk: Geom not found" ist keine Fehlermeldung!\n');
 define('_DISKSMANAGEINITPHP_TEXT','Dieser Vorgang wird alle bestehenden Partitionen l&ouml;schen, Partition #1 anlegen und diese mit dem gew&auml;hlten Dateisystem formatieren.');
@@ -475,7 +475,7 @@ define('_DISKSRAIDPHP_TYPE','Type');
 define('_DISKSRAIDPHP_EDITRAID','Bearbeite RAID');
 define('_DISKSRAIDPHP_DELRAID','L&ouml;sche RAID');
 define('_DISKSRAIDPHP_DELCONF','Soll dieses RAIDLaufwerk wirklich gel&ouml;scht werden? Alle Elemente, die gerade darauf zugreifen, werden ung&uuml;ltig werden (z.B. Freigaben)!');
-define('_DISKSRAIDPHP_NOTE','Optionaler Konfigurationsschritt: Konfiguration einer "virtual RAID disk" unter Verwendung<br><a href="disks_manage.php">einer vorher eingestellten Festplatte/Partition</a>.<br>Den "up" Status vor Formatieren und Einbinden (Mounten) abwarten!');
+define('_DISKSRAIDPHP_NOTE','Optionaler Konfigurationsschritt: Konfiguration einer "virtual RAID disk" unter Verwendung <a href="disks_manage.php">einer vorher eingestellten Festplatte/Partition</a>.<br>Den "up" Status vor Formatieren und Einbinden (Mounten) abwarten!');
 
 //file: disks_raid_edit.php
 define('_DISKSRAIDEDITPHP_NAMEDESC',_EDIT);

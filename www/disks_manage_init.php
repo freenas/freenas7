@@ -63,7 +63,7 @@ if ($_POST) {
 
     /* Check if disk is mounted. */ 
   	if(disks_check_mount($disk,"s1")) {
-      $errormsg = _DISKSMANAGEINITPHP_DISKMOUNTERROR;
+      $errormsg = sprintf( _DISKSMANAGEINITPHP_DISKMOUNTERROR, "disks_mount_tools.php?mdisk={$disk}&partition=s1&action=umount");
       $do_format = false;
     }
 
