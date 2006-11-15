@@ -756,8 +756,9 @@ function disks_raid_graid5_delete($raidname)
 	foreach ($config['graid5']['vdisk'] as $a_raid) {
 			if ($a_raid['name'] == $raidname) 	{
 				foreach ($a_raid['diskr'] as $disk) 	{				
-					mwexec("/sbin/graid5 clear {$disk}");
+					mwexec("/sbin/graid5 remove $raidname {$disk}");
 				}
+				mwexec("/sbin/graid5 destroy $raidname");
 			}
 	}
 	
