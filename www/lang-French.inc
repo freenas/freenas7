@@ -122,6 +122,8 @@ define('_SERVICES','Services');
 define('_TCPPORT','Port TCP');
 define('_CONFIRMATION','Confirmation');
 define('_NOTE','Note');
+define('_SUCCESSFUL', 'Successful');
+define('_FAILED', 'Failed');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Les modifications ont &eacute;t&eacute; appliqu&eacute;es avec succ&egrave;s.');

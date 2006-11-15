@@ -123,6 +123,8 @@ define('_SERVICES','Services');
 define('_TCPPORT','TCP Port');
 define('_CONFIRMATION','Best&auml;tigung');
 define('_NOTE','Hinweis');
+define('_SUCCESSFUL', 'Erfolgreich');
+define('_FAILED', 'Fehlgeschlagen');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Die &Auml;nderungen wurden &uuml;bernommen.');
@@ -135,7 +137,6 @@ define('_MSGVALIDTCPPORT','Der TCP/IP Port muss eingetragen werden.');
 define('_MSGVALIDPASSWORD','Passwort FALSCH.');
 
 define('_MSGSCHED_TEXT','Hinweis: Strg-Klick (oder Kommando-Klick auf dem Mac) um Stunden, Tage und Monate zu w&auml;hlen bzw. abzuw&auml;hlen.');
-
 
 // states
 define('_ACTIVE','Aktiv');

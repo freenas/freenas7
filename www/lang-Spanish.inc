@@ -117,11 +117,20 @@ define('_SERVICES','Services');
 define('_TCPPORT','TCP port');
 define('_CONFIRMATION','Confirmation');
 define('_NOTE','Note');
+define('_SUCCESSFUL', 'Successful');
+define('_FAILED', 'Failed');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Los cambios han sido aplicados satisfactoriamente.');
 define('_MESSAGES_SUCCESSWITHREBOOT', 'Los cambios han sido aplicados. Tiene que <a href=\"/reboot.php\">reiniciar</a> su NAS para que los cambios tengan efecto.');
 define('_MESSAGES_ERROR', 'ERROR: los cambios no pudieron ser aplicados(código de error '.$ok.').');
+
+define('_MSGVALIDIP','A valid IP address must be specified.');
+define('_MSGVALIDNETBIT','A valid network bit count must be specified.');
+define('_MSGVALIDTCPPORT','The TCP port must be a valid port number.');
+define('_MSGVALIDPASSWORD','Password don\'t match.');
+
+define('_MSGSCHED_TEXT','Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.');
 
 // states
 define('_ACTIVE','Active');

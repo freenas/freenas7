@@ -119,6 +119,8 @@ define('_SERVICES','Services');
 define('_TCPPORT','TCP port');
 define('_CONFIRMATION','Confirmation');
 define('_NOTE','Note');
+define('_SUCCESSFUL', 'Successful');
+define('_FAILED', 'Failed');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'The changes have been applied successfully.');
@@ -131,7 +133,6 @@ define('_MSGVALIDTCPPORT','The TCP port must be a valid port number.');
 define('_MSGVALIDPASSWORD','Password don\'t match.');
 
 define('_MSGSCHED_TEXT','Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.');
-
 
 // states
 define('_ACTIVE','Active');

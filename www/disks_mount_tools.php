@@ -136,15 +136,17 @@ if(isset($_GET['action'])) {
               {
                 case "mount":
                   echo(_DISKSMOUNTTOOLS_MOUNTTEXT . "<br>");
-                  echo("/dev/" . $mount['mdisk'] . $mount['partition'] .": mount to /mnt/" . $mount['sharename'] . "<br>");
-                  disks_mount_ex($mount['mdisk'],$mount['partition']);
+                  $result = disks_mount_ex($mount['mdisk'],$mount['partition']);
                   break;
                 case "umount":
                   echo(_DISKSMOUNTTOOLS_UMOUNTTEXT . "<br>");
-                  echo("/dev/" . $mount['mdisk'] . $mount['partition'] .": unmount from /mnt/" . $mount['sharename'] . "<br>");
-                  disks_umount_ex($mount['mdisk'],$mount['partition']);
+                  $result = disks_umount_ex($mount['mdisk'],$mount['partition']);
                   break;
               }
+
+              /* Display result */
+              echo((0 == $result) ? _SUCCESSFUL : _FAILED);
+
     					echo('</pre>');
     				}
     				?>
