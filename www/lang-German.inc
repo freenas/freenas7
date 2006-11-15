@@ -106,12 +106,13 @@ define('_VIEW', 'Ansicht');
 define('_APPLY', '&Auml;nderung &uuml;bernehmen');
 define('_WARNING', 'Warnung');
 define('_LOAD', 'Laden');
+define('_RETRY', 'Wiederholen');
 
 //FreeNAS common words
 define('_SIZE', 'Gr&ouml;sse');
 define('_STATUS', 'Status');
 define('_TYPE', 'Typ');
-define('_CONFIGURING', 'konfiguriere');
+define('_CONFIGURING', 'Konfiguriere');
 define('_DISK', 'Festplatte');
 define('_DISKS', 'Festplatten');
 define('_PARTITION', 'Partition');
@@ -125,6 +126,7 @@ define('_CONFIRMATION','Best&auml;tigung');
 define('_NOTE','Hinweis');
 define('_SUCCESSFUL', 'Erfolgreich');
 define('_FAILED', 'Fehlgeschlagen');
+define('_ERROR', 'Fehler');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Die &Auml;nderungen wurden &uuml;bernommen.');

@@ -123,26 +123,26 @@ if ($_GET['act'] == "ret")
             <td class="listbg">
               <?php
               if (file_exists($d_mountdirty_path)) {
-                $stat=_CONFIGURING;
+                echo(_CONFIGURING);
               } else {
-                $stat = disks_mount_status($mount);
-                if("ERROR" == $stat) {
-                  echo "ERROR - <a href=\"disks_mount.php?act=ret&id=$i\">retry</a>";
+                $stat = disks_check_mount_ex($mount);
+                if(0 == $stat) {
+                  echo(_ERROR . " - <a href=\"disks_mount.php?act=ret&id=$i\">" . _RETRY . "</a>");
                 } else {
-                  echo $stat;
+                  echo(_OK);
                 }
               }
               ?>&nbsp;
             </td>
             <td valign="middle" nowrap class="list">
               <a href="disks_mount_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit mount" width="17" height="17" border="0"></a>&nbsp;
-              <a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSMOUNTPHP_DELCONF; ?>')"><img src="x.gif" title="<?=_DISKSMOUNTPHP_DEL; ?>" width="17" height="17" border="0"></a>
+              <a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSMOUNTPHP_DELCONF;?>')"><img src="x.gif" title="<?=_DISKSMOUNTPHP_DEL; ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>
           <?php $i++; endforeach; ?>
           <tr> 
             <td class="list" colspan="6"></td>
-            <td class="list"> <a href="disks_mount_edit.php"><img src="plus.gif" title="<?=_DISKSMOUNTPHP_ADD ; ?>" width="17" height="17" border="0"></a></td>
+            <td class="list"><a href="disks_mount_edit.php"><img src="plus.gif" title="<?=_DISKSMOUNTPHP_ADD;?>" width="17" height="17" border="0"></a></td>
           </tr>
         </table>
       </form>

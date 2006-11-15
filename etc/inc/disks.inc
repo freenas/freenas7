@@ -8,8 +8,7 @@
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
 	
@@ -249,48 +248,18 @@ function disks_umount_adv($mount)
 		return 1;
 }
 
-function disks_mount_status($mount)
-{
-	// This option check if the mount are mounted
-	global $config, $g;
-	$detmount = get_mounts_list();
-	$status="ERROR";
-	
-	// Recreate the full system name device+s+partition number
-	/* mount the filesystems */
-	
-	$mountpart="{$mount['partition']}";
-	
-	if ((strcmp($mountpart,"gvinum") == 0) || (strcmp($mountpart,"gmirror") == 0) || (strcmp($mountpart,"graid5") == 0))
-		$complete = "{$mount['mdisk']}";
-	else
-		$complete = "{$mount['mdisk']}{$mount['partition']}";
-	
-	//echo "debug, display complete: $complete <br>";
-
-	foreach ($detmount as $detmountk => $detmountv) 	{
-
-		//echo "debug, display detmountv[mdisk]: {$detmountv['mdisk']} <br>";
-		
-		if (strcmp($detmountv['mdisk'],$complete) == 0) 		{
-			$status="OK";
-			return $status;
-		}		
-		
-	}
-	return $status;
-}
-
 /* This option check if the given partition (s1 by default)) of the disk is mounted. */
 /* Return 0 if not, 1 if yes */
 function disks_check_mount($disk,$partition = "s1")
 {
-	global $config, $g;
 	$detmount = get_mounts_list();
 	$status=0;
 	
 	// Recreate the full system name device+s+partition number
-	$complete = "{$disk}" . "{$partition}";
+	if((0 == strcmp($partition,"gvinum")) || (0 == strcmp($partition,"gmirror")) || (0 == strcmp($partition,"graid5")))
+		$complete = "{$disk}";
+	else
+    $complete = "{$disk}{$partition}";
 
 	foreach ($detmount as $detmountk => $detmountv) {
 		if (strcmp($detmountv['mdisk'],$complete) == 0) {
@@ -299,6 +268,12 @@ function disks_check_mount($disk,$partition = "s1")
 		}
 	}
 	return $status;
+}
+
+/* This option check if the mount is mounted. */
+function disks_check_mount_ex($mount)
+{
+  return disks_check_mount($mount['mdisk'], $mount['partition']);
 }
 
 function disks_status($diskname)
@@ -320,7 +295,6 @@ function disks_status($diskname)
 	}
 	return $status;
 }
-
 
 function disks_addfstab($cfgdev,$cfgtype)
 {
