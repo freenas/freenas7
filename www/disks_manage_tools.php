@@ -188,7 +188,9 @@ function disk_change() {
           						break;
           					case "gmirror":
           					case "gvinum":
-                      print_info_box_np(_DISKSMANAGETOOLS_RAIDDISKNOTE);
+          					case "graid5":
+                      $infomsg = sprintf(_DISKSMANAGETOOLS_RAIDDISKNOTE, "disks_raid_{$type}_tools.php");
+                      print_info_box_np($infomsg);
           						break;
           					case "msdos":
                       system("/sbin/fsck_msdosfs -y -f /dev/" . escapeshellarg($disk . $partition));

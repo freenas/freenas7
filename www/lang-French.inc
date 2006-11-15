@@ -435,7 +435,7 @@ define('_DISKSPHP_NOMBRTEXT','Conserve le MBR intact (utile avec certains contro
 define('_DISKSMANAGETOOLS_NAMEDESC','Outils');
 define('_DISKSMANAGETOOLS_COMMAND','Commande');
 define('_DISKSMANAGETOOLS_SENDCMD','Valider la commande!');
-define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Utilisez <a href="disks_raid_gmirror.php">les outils RAID</a> pour ce disque!');
+define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Utilisez <a href="%s">les outils RAID</a> pour ce disque!');
 define('_DISKSMANAGETOOLS_CMDINFO','Message renvoy&eacute;:');
 define('_DISKSMANAGETOOLS_MOUNTNOTE','Ce disque est mont&eacute;!<br>Il va &ecirc;tre temporairement d&eacute;mont&eacute; afin d\' ex&eacute;cuter la commande');
 define('_DISKSMANAGETOOLS_UMOUNT','D&eacute;monter disque/partition');

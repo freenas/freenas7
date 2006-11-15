@@ -440,7 +440,7 @@ define('_DISKSPHP_NOMBRTEXT','Nicht den MBR l&ouml;schen (bei einigen Hardware R
 define('_DISKSMANAGETOOLS_NAMEDESC','Tools');
 define('_DISKSMANAGETOOLS_COMMAND','Befehl');
 define('_DISKSMANAGETOOLS_SENDCMD','Sende Befehl!');
-define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Ben&uuml;tzen Sie <a href="disks_raid_gmirror.php">RAID tools</a> für diese Festplatte!');
+define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Ben&uuml;tzen Sie <a href="%s">RAID tools</a> für diese Festplatte!');
 define('_DISKSMANAGETOOLS_CMDINFO','Befehlsausgabe:');
 define('_DISKSMANAGETOOLS_MOUNTNOTE','Diese Festplatte is momentan gemountet. Der Mount Point wird kurzzeitig entfernt um den ausgew&auml;hlten Befehl auszuf&uuml;hren.');
 define('_DISKSMANAGETOOLS_UMOUNT','Unmount Festplatte/Partition');
