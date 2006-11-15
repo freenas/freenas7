@@ -377,6 +377,54 @@ define('_DISKSMOUNTTOOLS_CMDINFO','Command output:');
 define('_DISKSMOUNTTOOLS_MOUNTTEXT','Mounting...');
 define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
 
+// Service: CIFS/SAMBA
+// Common text
+define('_SRVCIFS_MANAGE','Manage');
+define('_SRVCIFS_SHARE','Share');
+define('_SRVCIFS_SHARES','Shares');
+
+// file: services_samba.php
+define('_SRVCIFS_NAMEDESC','CIFS');
+define('_SRVCIFS_MSGVALIDNETBIOSNAME','The Netbios name contains invalid characters.');
+define('_SRVCIFS_MSGVALIDWORKGOUP','The Workgroup name contains invalid characters.');
+define('_SRVCIFS_MSGVALIDWINS','The WINS server must be an IP address.');
+define('_SRVCIFS_MSGVALIDSNDBUFF','The SND Buffer value must be a number.');
+define('_SRVCIFS_MSGVALIDRCVBUFF','The RCV Buffer value must be a number.');
+define('_SRVCIFS_SHARE','CIFS share');
+define('_SRVCIFS_AUTH','Authentication');
+define('_SRVCIFS_NETBIOSNAME','NetBiosName');
+define('_SRVCIFS_WORKGROUP','Workgroup');
+define('_SRVCIFS_WORKGROUPTEXT','Workgroup to be member of.');
+define('_SRVCIFS_DESCTEXT','Server description. This can usually be left blank.');
+define('_SRVCIFS_DOSCHARSET','Dos charset');
+define('_SRVCIFS_UNIXCHARSET','Unix charset');
+define('_SRVCIFS_LOGLEVEL','Log Level');
+define('_SRVCIFS_LOCALMASTER','Local Master Browser');
+define('_SRVCIFS_LOCALMASTERTEXT','Allows FreeNAS to try and become a local master browser.');
+define('_SRVCIFS_TIMESRV','Time server');
+define('_SRVCIFS_TIMESRVTEXT','FreeNAS advertises itself as a time server to Windows clients.');
+define('_SRVCIFS_WINS','WINS server');
+define('_SRVCIFS_WINSTEXT','WINS Server IP address.');
+define('_SRVCIFS_RECYCLE','Recycle Bin');
+define('_SRVCIFS_ENRECYCLE','Enable Recycle bin');
+define('_SRVCIFS_ENRECYCLETEXT','This will create a recycle bin on the CIFS shares');
+define('_SRVCIFS_SNBBUFF','Send Buffer Size');
+define('_SRVCIFS_SNBBUFFTEXT','Size of send buffer (16384 by default).');
+define('_SRVCIFS_RCVBUFF','Receive Buffer Size');
+define('_SRVCIFS_RCVBUFFTEXT','Size of receive buffer (16384 by default).');
+
+// file: services_samba_share.php
+define('_SRVCIFSSHARE_MSGCHANGED','The shares has been modified.<br>You must apply the changes in order for them to take effect.');
+define('_SRVCIFSSHARE_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
+define('_SRVCIFSSHARE_BROWSABLE','Browsable');
+define('_SRVCIFSSHARE_DESC',_DESC);
+
+// file: services_samba_share_edit.php
+define('_SRVCIFSSHAREEDIT_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
+define('_SRVCIFSSHAREEDIT_DESC',_DESC);
+define('_SRVCIFSSHAREEDIT_BROWSABLE','Browsable');
+define('_SRVCIFSSHAREEDIT_BROWSABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
+
 // Status Processes Module
 // file: status_processes.php
 define('_STATSPROCPHP_NAME','Estado');

@@ -549,6 +549,11 @@ define('_DISKSMOUNTTOOLS_MOUNTTEXT','Mounting...');
 define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
 
 // Service: CIFS/SAMBA
+// Common text
+define('_SRVCIFS_MANAGE','Manage');
+define('_SRVCIFS_SHARE','Share');
+define('_SRVCIFS_SHARES','Shares');
+
 // file: services_samba.php
 define('_SRVCIFS_NAMEDESC','CIFS');
 define('_SRVCIFS_MSGVALIDNETBIOSNAME','Il nome Netbios contiene caratteri non validi.');
@@ -571,12 +576,22 @@ define('_SRVCIFS_TIMESRV','Time server');
 define('_SRVCIFS_TIMESRVTEXT','FreeNAS si propone come un time server ai clients Windows.');
 define('_SRVCIFS_WINS','Server WINS');
 define('_SRVCIFS_WINSTEXT','Indirizzo IP server WINS.');
-define('_SRVCIFS_HIDE','Share da nascondere.');
-define('_SRVCIFS_HIDETEXT','Selezionare la share CIFS da nascondere alla navigazione.');
 define('_SRVCIFS_SNBBUFF','Dimensione Buffer Invio');
 define('_SRVCIFS_SNBBUFFTEXT','Dimensione del buffer di invio (8192 di default).');
 define('_SRVCIFS_RCVBUFF','Dimensione Buffer Ricezione');
 define('_SRVCIFS_RCVBUFFTEXT','Dimensione del buffer di ricezione (8192 di default).');
+
+// file: services_samba_share.php
+define('_SRVCIFSSHARE_MSGCHANGED','The shares has been modified.<br>You must apply the changes in order for them to take effect.');
+define('_SRVCIFSSHARE_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
+define('_SRVCIFSSHARE_BROWSABLE','Browsable');
+define('_SRVCIFSSHARE_DESC',_DESC);
+
+// file: services_samba_share_edit.php
+define('_SRVCIFSSHAREEDIT_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
+define('_SRVCIFSSHAREEDIT_DESC',_DESC);
+define('_SRVCIFSSHAREEDIT_BROWSABLE','Browsable');
+define('_SRVCIFSSHAREEDIT_BROWSABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
 
 // Service: FTP
 // file: services_ftp.php

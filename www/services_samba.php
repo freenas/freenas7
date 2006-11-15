@@ -31,15 +31,12 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(_SERVICES,_SRVCIFS_NAMEDESC);
 
-if (!is_array($config['samba']))
-{
+if (!is_array($config['samba'])) {
 	$config['samba'] = array();
-	
 }
 
 if (!is_array($config['mounts']['mount']))
@@ -55,7 +52,6 @@ $pconfig['serverdesc'] = $config['samba']['serverdesc'];
 $pconfig['security'] = $config['samba']['security'];
 $pconfig['localmaster'] = $config['samba']['localmaster'];
 $pconfig['winssrv'] = $config['samba']['winssrv'];
-$pconfig['hidemount'] = $config['samba']['hidemount'];
 $pconfig['timesrv'] = $config['samba']['timesrv'];
 $pconfig['unixcharset'] = $config['samba']['unixcharset'];
 $pconfig['doscharset'] = $config['samba']['doscharset'];
@@ -65,11 +61,8 @@ $pconfig['rcvbuf'] = $config['samba']['rcvbuf'];
 $pconfig['enable'] = isset($config['samba']['enable']);
 $pconfig['recyclebin'] = isset($config['samba']['recyclebin']);
 
-
-
 if ($_POST)
 {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
@@ -108,7 +101,6 @@ if ($_POST)
 		$config['samba']['security'] = $_POST['security'];
 		$config['samba']['localmaster'] = $_POST['localmaster'];
 		$config['samba']['winssrv'] = $_POST['winssrv'];
-		$config['samba']['hidemount'] = $_POST['hidemount'];
 		$config['samba']['timesrv'] = $_POST['timesrv'];
 		$config['samba']['doscharset'] = $_POST['doscharset'];
 		$config['samba']['unixcharset'] = $_POST['unixcharset'];
@@ -152,12 +144,22 @@ function enable_change(enable_change) {
 	document.iform.rcvbuf.disabled = endis;
 	document.iform.recyclebin.disabled = endis;
 	document.iform.security.disabled = endis;
-	
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+        <li class="tabact"><?=_SRVCIFS_MANAGE;?></li>
+        <li class="tabinact"><a href="services_samba_share.php"><?=_SRVCIFS_SHARES;?></a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td class="tabcont">
+      <?php if ($input_errors) print_input_errors($input_errors); ?>
+      <?php if ($savemsg) print_info_box($savemsg); ?>
             <form action="services_samba.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
@@ -279,16 +281,6 @@ function enable_change(enable_change) {
                     <?=_SRVCIFS_ENRECYCLE;?><span class="vexpl"><br>
                     <?=_SRVCIFS_ENRECYCLETEXT;?></span></td>
                 </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_HIDE;?></td>
-                  <td width="78%" class="vtable">
-                  <? $i=0; foreach ($a_mount as $mountv) {
-                    echo "<input name='hidemount[]' id='$i' type='checkbox' value='$mountv[sharename]'". ((is_array($pconfig['hidemount']) && in_array($mountv['sharename'],$pconfig['hidemount']))?" checked":"") . ">$mountv[sharename]</option><br>\n";
-                    $i++;
-                  }
-                  ?>
-                  <?=_SRVCIFS_HIDETEXT; ?>
-                </tr>
 				        <tr> 
                   <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_SNBBUFF; ?></td>
                   <td width="78%" class="vtable"> 
@@ -308,7 +300,10 @@ function enable_change(enable_change) {
                   </td>
                 </tr>
                 </table>
-</form>
+      </form>
+    </td>
+  </tr>
+</table>
 <script language="JavaScript">
 <!--
 enable_change(false);

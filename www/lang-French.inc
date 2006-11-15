@@ -536,6 +536,11 @@ define('_DISKSMOUNTTOOLS_MOUNTTEXT','Montage...');
 define('_DISKSMOUNTTOOLS_UMOUNTTEXT','D&eacute;montage...');
 
 // Service: CIFS/SAMBA
+// Common text
+define('_SRVCIFS_MANAGE','Manage');
+define('_SRVCIFS_SHARE','Share');
+define('_SRVCIFS_SHARES','Shares');
+
 // file: services_samba.php
 define('_SRVCIFS_NAMEDESC','CIFS');
 define('_SRVCIFS_MSGVALIDNETBIOSNAME','Le nom Netbios contient des caract&egrave;res invalides.');
@@ -561,16 +566,25 @@ define('_SRVCIFS_WINSTEXT','Adresse IP du serveur WINS.');
 define('_SRVCIFS_RECYCLE','Corbeille');
 define('_SRVCIFS_ENRECYCLE','Activer la corbeille');
 define('_SRVCIFS_ENRECYCLETEXT','Ceci cr&eacute;&eacute;ra une corbeille pour les partages CIFS');
-define('_SRVCIFS_HIDE','Partage &agrave; cacher');
-define('_SRVCIFS_HIDETEXT','S&eacute;lectionnez le partage CIFS &agrave; cacher dans l\'explorateur du client.');
 define('_SRVCIFS_SNBBUFF','Taille du tampon d\'envoi');
 define('_SRVCIFS_SNBBUFFTEXT','Taille du tampon d\'envoi (16384 par d&eacute;faut).');
 define('_SRVCIFS_RCVBUFF','Taille du tampon de r&eacute;ception');
 define('_SRVCIFS_RCVBUFFTEXT','Taille du tampon de r&eacute;ception (16384 par d&eacute;faut).');
 
+// file: services_samba_share.php
+define('_SRVCIFSSHARE_MSGCHANGED','The shares has been modified.<br>You must apply the changes in order for them to take effect.');
+define('_SRVCIFSSHARE_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
+define('_SRVCIFSSHARE_BROWSABLE','Browsable');
+define('_SRVCIFSSHARE_DESC',_DESC);
+
+// file: services_samba_share_edit.php
+define('_SRVCIFSSHAREEDIT_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
+define('_SRVCIFSSHAREEDIT_DESC',_DESC);
+define('_SRVCIFSSHAREEDIT_BROWSABLE','Browsable');
+define('_SRVCIFSSHAREEDIT_BROWSABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
+
 // Service: FTP
 // file: services_ftp.php
-
 define('_SRVFTP_NAMEDESC','FTP');
 define('_SRVFTP_MSGVALIDPORT',_MSGVALIDTCPPORT);
 define('_SRVFTP_MSGVALIDMAXCLIENT','Le nombre maximum de clients doit &ecirc;tre un entier.');

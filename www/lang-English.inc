@@ -542,6 +542,11 @@ define('_DISKSMOUNTTOOLS_MOUNTTEXT','Mounting...');
 define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
 
 // Service: CIFS/SAMBA
+// Common text
+define('_SRVCIFS_MANAGE','Manage');
+define('_SRVCIFS_SHARE','Share');
+define('_SRVCIFS_SHARES','Shares');
+
 // file: services_samba.php
 define('_SRVCIFS_NAMEDESC','CIFS');
 define('_SRVCIFS_MSGVALIDNETBIOSNAME','The Netbios name contains invalid characters.');
@@ -567,12 +572,22 @@ define('_SRVCIFS_WINSTEXT','WINS Server IP address.');
 define('_SRVCIFS_RECYCLE','Recycle Bin');
 define('_SRVCIFS_ENRECYCLE','Enable Recycle bin');
 define('_SRVCIFS_ENRECYCLETEXT','This will create a recycle bin on the CIFS shares');
-define('_SRVCIFS_HIDE','Share to hide.');
-define('_SRVCIFS_HIDETEXT','Select the CIFS share to hide from browsing.');
 define('_SRVCIFS_SNBBUFF','Send Buffer Size');
 define('_SRVCIFS_SNBBUFFTEXT','Size of send buffer (16384 by default).');
 define('_SRVCIFS_RCVBUFF','Receive Buffer Size');
 define('_SRVCIFS_RCVBUFFTEXT','Size of receive buffer (16384 by default).');
+
+// file: services_samba_share.php
+define('_SRVCIFSSHARE_MSGCHANGED','The shares has been modified.<br>You must apply the changes in order for them to take effect.');
+define('_SRVCIFSSHARE_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
+define('_SRVCIFSSHARE_BROWSABLE','Browsable');
+define('_SRVCIFSSHARE_DESC',_DESC);
+
+// file: services_samba_share_edit.php
+define('_SRVCIFSSHAREEDIT_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
+define('_SRVCIFSSHAREEDIT_DESC',_DESC);
+define('_SRVCIFSSHAREEDIT_BROWSABLE','Browsable');
+define('_SRVCIFSSHAREEDIT_BROWSABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
 
 // Service: FTP
 // file: services_ftp.php

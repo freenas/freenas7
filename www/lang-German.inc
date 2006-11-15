@@ -541,6 +541,11 @@ define('_DISKSMOUNTTOOLS_MOUNTTEXT','Mounting...');
 define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
 
 // Service: CIFS/SAMBA
+// Common text
+define('_SRVCIFS_MANAGE','Managen');
+define('_SRVCIFS_SHARE','Freigabe');
+define('_SRVCIFS_SHARES','Freigaben');
+
 // file: services_samba.php
 define('_SRVCIFS_NAMEDESC','CIFS - Common Internet File System');
 define('_SRVCIFS_MSGVALIDNETBIOSNAME','Der Netbios-Name enth&auml;lt ung&uuml;ltige Zeichen.');
@@ -566,16 +571,25 @@ define('_SRVCIFS_WINSTEXT','WINS Server IP Adresse.');
 define('_SRVCIFS_RECYCLE','Abfalleimer');
 define('_SRVCIFS_ENRECYCLE','Abfalleimer aktivieren');
 define('_SRVCIFS_ENRECYCLETEXT','Richtet einen Abfalleimer auf den CIFS-Freigaben ein.');
-define('_SRVCIFS_HIDE','Zu verbergende Freigaben.');
-define('_SRVCIFS_HIDETEXT','Zu verbergende CIFS-Freigabe ausw&auml;hlen.');
 define('_SRVCIFS_SNBBUFF','Send Buffer Size');
-define('_SRVCIFS_SNBBUFFTEXT','Gr&ouml;sse des "send buffer" (16384 Voreinstellung).');
+define('_SRVCIFS_SNBBUFFTEXT','Gr&ouml;sse des "Send Buffer" (16384 Voreinstellung).');
 define('_SRVCIFS_RCVBUFF','Receive Buffer Size');
-define('_SRVCIFS_RCVBUFFTEXT','Gr&ouml;sse des "receive buffer" (16384 Voreinstellung).');
+define('_SRVCIFS_RCVBUFFTEXT','Gr&ouml;sse des "Receive Buffer" (16384 Voreinstellung).');
+
+// file: services_samba_share.php
+define('_SRVCIFSSHARE_MSGCHANGED','Die Freigaben wurden modifiziert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen.');
+define('_SRVCIFSSHARE_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
+define('_SRVCIFSSHARE_BROWSABLE','Browsable');
+define('_SRVCIFSSHARE_DESC',_DESC);
+
+// file: services_samba_share_edit.php
+define('_SRVCIFSSHAREEDIT_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
+define('_SRVCIFSSHAREEDIT_DESC',_DESC);
+define('_SRVCIFSSHAREEDIT_BROWSABLE','Browsable');
+define('_SRVCIFSSHAREEDIT_BROWSABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
 
 // Service: FTP
 // file: services_ftp.php
-
 define('_SRVFTP_NAMEDESC','FTP');
 define('_SRVFTP_MSGVALIDPORT',_MSGVALIDTCPPORT);
 define('_SRVFTP_MSGVALIDMAXCLIENT','Die h&ouml;chste Anzahl an Clients muss eine Zahl sein.');
