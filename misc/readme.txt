@@ -98,7 +98,7 @@ FreeNAS 0.68 (UNRELEASE!):
 - New language: Italian (thanks to Pietro Defaccio)
 - New language: German (thanks to Falk Menzel and Dominik Plaszewski)
 - Added option on SSHD page to permit/deny root login.
-- Make traffic graph available to webGUI.
+- Make traffic/cpu graph available to webGUI.
 - Do a "chmod 711" on the "/" directory for limiting user SSH acces.
 - Added disk management tools page (e.g filesystem check).
 - Added mount point tools page (to mount/unmount mount points by hand).
