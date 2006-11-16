@@ -471,8 +471,9 @@ define('_DISKSRAIDPHP_UNSTABLE','(instable)');
 define('_DISKSRAIDPHP_NAMEDESC','RAID');
 define('_DISKSRAIDPHP_MSGCHANGED','La configuration RAID a &eacute;t&eacute; chang&eacute;e.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
 define('_DISKSRAIDPHP_TYPE','Type');
-define('_DISKSRAIDPHP_EDITRAID','Modifier raid');
-define('_DISKSRAIDPHP_DELRAID','Supprimer raid');
+define('_DISKSRAIDPHP_EDITRAID','Modifier RAID');
+define('_DISKSRAIDPHP_DELRAID','Supprimer RAID');
+define('_DISKSRAIDPHP_ADDRAID','Ajouter un RAID');
 define('_DISKSRAIDPHP_DELCONF','Voulez-vous vraiment supprimer ce volume RAID? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s (par ex. share)!');
 define('_DISKSRAIDPHP_NOTE','Etape optionnelle: Configurer un disque RAID virtuel en utilisant votre<br><a href=disks_manage.php>disque configur&eacute; pr&eacute;c&eacute;demment</a>.<br>Attendez l\'apparition de l\'&eacute;tat "UP" avant de le formater et de le monter!.');
 
@@ -537,7 +538,7 @@ define('_DISKSMOUNTTOOLS_UMOUNTTEXT','D&eacute;montage...');
 
 // Service: CIFS/SAMBA
 // Common text
-define('_SRVCIFS_MANAGE','Manage');
+define('_SRVCIFS_SETTINGS','Settings');
 define('_SRVCIFS_SHARE','Share');
 define('_SRVCIFS_SHARES','Shares');
 
@@ -574,14 +575,15 @@ define('_SRVCIFS_RCVBUFFTEXT','Taille du tampon de r&eacute;ception (16384 par d
 // file: services_samba_share.php
 define('_SRVCIFSSHARE_MSGCHANGED','The shares has been modified.<br>You must apply the changes in order for them to take effect.');
 define('_SRVCIFSSHARE_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
-define('_SRVCIFSSHARE_BROWSABLE','Browsable');
+define('_SRVCIFSSHARE_BROWSEABLE','Browseable');
 define('_SRVCIFSSHARE_DESC',_DESC);
+define('_SRVCIFSSHARE_EDIT','Edit share');
 
 // file: services_samba_share_edit.php
 define('_SRVCIFSSHAREEDIT_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
 define('_SRVCIFSSHAREEDIT_DESC',_DESC);
-define('_SRVCIFSSHAREEDIT_BROWSABLE','Browsable');
-define('_SRVCIFSSHAREEDIT_BROWSABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
+define('_SRVCIFSSHAREEDIT_BROWSEABLE','Browseable');
+define('_SRVCIFSSHAREEDIT_BROWSEABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
 
 // Service: FTP
 // file: services_ftp.php
@@ -723,7 +725,6 @@ define('_ACCESS_GROUPS','Groupes');
 define('_ACCESS_FULLNAME','Nom complet');
 
 // file: access_users.php
-
 define('_ACCESSUSERS_MSGCHANGED','La liste des utilisateurs a &eacute;t&eacute; modifi&eacute;e.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
 define('_ACCESSUSERS_EDITUSER','modifier l\'utilisateur');
 define('_ACCESSUSERS_DELUSER','supprimer l\'utilisateur');
@@ -731,7 +732,6 @@ define('_ACCESSUSERS_CONFDEL','Voulez-vous vraiment supprimer cet utilisateur?!'
 define('_ACCESSUSERS_ADDUSER','ajouter un utilisateur');
 
 // file: access_users_edit.php
-
 define('_ACCESSUSERSEDIT_MSGGROUPFIRST','Vous devez d\'abord cr&eacute;er un groupe.');
 define('_ACCESSUSERSEDIT_MSGVALIDLOGIN','L\'identifiant contient un caract&egrave;re invalide.');
 define('_ACCESSUSERSEDIT_MSGVALIDLOGINRESERVED','L\'identifiant est un identifiant r&eacute;serv&eacute; du syst&egrave;me.');

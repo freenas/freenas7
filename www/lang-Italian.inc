@@ -474,14 +474,16 @@ define('_DISKSRAIDPHP_VOLUME','Nome volume');
 // Software RAID common word
 define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
 define('_DISKSRAIDPHP_GMIRROR','Geom Mirror');
+define('_DISKSRAIDPHP_GRAID5','Geom Raid5');
 define('_DISKSRAIDPHP_UNSTABLE','(instabile)');
 
 //file: disks_raid.php
 define('_DISKSRAIDPHP_NAMEDESC','RAID');
 define('_DISKSRAIDPHP_MSGCHANGED','La configurazione del Raid è stata cambiata.<br>E\' necessario applicare i cambiamenti affinché abbiano effetto.');
 define('_DISKSRAIDPHP_TYPE','Tipo');
-define('_DISKSRAIDPHP_EDITRAID','modifica raid');
-define('_DISKSRAIDPHP_DELRAID','cancella raid');
+define('_DISKSRAIDPHP_EDITRAID','Modifica RAID');
+define('_DISKSRAIDPHP_DELRAID','Aancella RAID');
+define('_DISKSRAIDPHP_ADDRAID','Aggiungi RAID');
 define('_DISKSRAIDPHP_DELCONF','Si vuole realmente cancellare questo volume raid? Tutti gli elementi che ancora lo utilizzano non saranno più validi (es. share)!');
 define('_DISKSRAIDPHP_NOTE','Passo di configurazione facoltativo: Configurare un disco RAID virtuale utilizzando <a href=\"disks_manage.php\">i dischi precedentemente configurati</a>.<br>Attendete lo stato \"up\" prima di formattarli e montarli!');
 
@@ -550,7 +552,7 @@ define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
 
 // Service: CIFS/SAMBA
 // Common text
-define('_SRVCIFS_MANAGE','Manage');
+define('_SRVCIFS_SETTINGS','Settings');
 define('_SRVCIFS_SHARE','Share');
 define('_SRVCIFS_SHARES','Shares');
 
@@ -584,14 +586,15 @@ define('_SRVCIFS_RCVBUFFTEXT','Dimensione del buffer di ricezione (8192 di defau
 // file: services_samba_share.php
 define('_SRVCIFSSHARE_MSGCHANGED','The shares has been modified.<br>You must apply the changes in order for them to take effect.');
 define('_SRVCIFSSHARE_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
-define('_SRVCIFSSHARE_BROWSABLE','Browsable');
+define('_SRVCIFSSHARE_BROWSEABLE','Browseable');
 define('_SRVCIFSSHARE_DESC',_DESC);
+define('_SRVCIFSSHARE_EDIT','Edit share');
 
 // file: services_samba_share_edit.php
 define('_SRVCIFSSHAREEDIT_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
 define('_SRVCIFSSHAREEDIT_DESC',_DESC);
-define('_SRVCIFSSHAREEDIT_BROWSABLE','Browsable');
-define('_SRVCIFSSHAREEDIT_BROWSABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
+define('_SRVCIFSSHAREEDIT_BROWSEABLE','Browseable');
+define('_SRVCIFSSHAREEDIT_BROWSEABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
 
 // Service: FTP
 // file: services_ftp.php

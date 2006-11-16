@@ -37,22 +37,21 @@
 require("guiconfig.inc");
 
 $id = $_GET['id'];
-if (isset($_POST['id']))
+if(isset($_POST['id']))
 	$id = $_POST['id'];
 
 $pgtitle = array(_SERVICES,_SRVCIFS_NAMEDESC,_SRVCIFS_SHARE,_EDIT);
 
-if (!is_array($config['mounts']['mount']))
+if(!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
 mount_sort();
 
 if($_POST) {
 	unset($input_errors);
-	$pconfig = $_POST;
 
 	if(!$input_errors) {
-    if(!$_POST['browsable']) {
+    if(!$_POST['browseable']) {
       $config['samba']['hidemount'] = array_merge($config['samba']['hidemount'],array($config['mounts']['mount'][$id]['sharename']));
     } else {
       if(is_array($config['samba']['hidemount']) && in_array($config['mounts']['mount'][$id]['sharename'],$config['samba']['hidemount'])) {
@@ -84,10 +83,17 @@ if($_POST) {
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncell"><?=_SRVCIFSSHAREEDIT_BROWSABLE;?></td>
+      <td width="22%" valign="top" class="vncell"><?=_SRVCIFSSHAREEDIT_BROWSEABLE;?></td>
       <td width="78%" class="vtable">
-        <input name="browsable" type="checkbox" value="<?=$config['mounts']['mount'][$id]['sharename'];?>" <?php echo ((is_array($config['samba']['hidemount']) && in_array($config['mounts']['mount'][$id]['sharename'],$config['samba']['hidemount']))?"":" checked");?>>
-        <?=_SRVCIFSSHAREEDIT_BROWSABLETEXT;?>
+        <select name="browseable" class="formfld" id="browseable">
+          <?php $text = array(_YES,_NO); $vals = explode(" ","1 0"); $j = 0;
+          for($j = 0; $j < count($vals); $j++): ?>
+          <option value="<?=$vals[$j];?>" <?php if(is_array($config['samba']['hidemount']) && in_array($config['mounts']['mount'][$id]['sharename'],$config['samba']['hidemount'])) echo "selected";?>> 
+            <?=htmlspecialchars($text[$j]);?>
+          </option>
+          <?php endfor;?>
+        </select>
+        <br><?=_SRVCIFSSHAREEDIT_BROWSEABLETEXT;?>
       </td>
     </tr>
     <tr> 

@@ -151,7 +151,7 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><?=_SRVCIFS_MANAGE;?></li>
+        <li class="tabact"><?=_SRVCIFS_SETTINGS;?></li>
         <li class="tabinact"><a href="services_samba_share.php"><?=_SRVCIFS_SHARES;?></a></li>
       </ul>
     </td>
@@ -164,15 +164,18 @@ function enable_change(enable_change) {
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
                   <td colspan="2" valign="top" class="optsect_t">
-				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong><?=_SRVCIFS_SHARE ;?></strong></td>
-				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE ;?></strong></td></tr>
-				  </table></td>
+          				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+          				    <tr>
+                        <td class="optsect_s"><strong>Common Internet File System</strong></td>
+          				      <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE ;?></strong></td>
+                      </tr>
+          				  </table>
+                  </td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFS_AUTH; ?></td>
                   <td width="78%" class="vtable">
-					<select name="security" class="formfld" id="security">
+                    <select name="security" class="formfld" id="security">
                       <?php $types = explode(",", "Anonymous,Local User,Domain");
 					        $vals = explode(" ", "share user domain");
 					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
@@ -181,27 +184,27 @@ function enable_change(enable_change) {
                       </option>
                       <?php endfor; ?>
                     </select></td>
-				</tr>
+                </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFS_NETBIOSNAME ;?></td>
                   <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="netbiosname" type="text" class="formfld" id="netbiosname" size="20" value="<?=htmlspecialchars($pconfig['netbiosname']);?>"> 
+                    <?=$mandfldhtml;?><input name="netbiosname" type="text" class="formfld" id="netbiosname" size="30" value="<?=htmlspecialchars($pconfig['netbiosname']);?>"> 
                   </td>
-				</tr>
-                 <tr> 
+                </tr>
+                <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFS_WORKGROUP ; ?></td>
                   <td width="78%" class="vtable"> 
-                    <input name="workgroup" type="text" class="formfld" id="workgroup" size="20" value="<?=htmlspecialchars($pconfig['workgroup']);?>">
+                    <input name="workgroup" type="text" class="formfld" id="workgroup" size="30" value="<?=htmlspecialchars($pconfig['workgroup']);?>">
                     <br><?=_SRVCIFS_WORKGROUPTEXT ;?></td>
-				</tr>
+                </tr>
                 <tr> 
                 <tr> 
                   <td width="22%" valign="top" class="vncell"><?=_DESC ;?></td>
                   <td width="78%" class="vtable"> 
                     <input name="serverdesc" type="text" class="formfld" id="serverdesc" size="30" value="<?=htmlspecialchars($pconfig['serverdesc']);?>">
                     <br><?=_SRVCIFS_DESCTEXT ;?></td>
-				</tr>
-				 <tr> 
+                </tr>
+                <tr> 
                   <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_DOSCHARSET ; ?></td>
                   <td width="78%" class="vtable">
 					<select name="doscharset" class="formfld" id="doscharset">

@@ -476,8 +476,9 @@ define('_DISKSRAIDPHP_UNSTABLE','(unstable)');
 define('_DISKSRAIDPHP_NAMEDESC','RAID');
 define('_DISKSRAIDPHP_MSGCHANGED','The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_DISKSRAIDPHP_TYPE','Type');
-define('_DISKSRAIDPHP_EDITRAID','Edit raid');
-define('_DISKSRAIDPHP_DELRAID','Delete raid');
+define('_DISKSRAIDPHP_EDITRAID','Edit RAID');
+define('_DISKSRAIDPHP_DELRAID','Delete RAID');
+define('_DISKSRAIDPHP_ADDRAID','Add RAID');
 define('_DISKSRAIDPHP_DELCONF','Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!');
 define('_DISKSRAIDPHP_NOTE','Optional configuration step: Configuring a virtual RAID disk using your <a href="disks_manage.php">previsously configured disk</a>.<br>Wait for the "up" status before format and mount it!');
 
@@ -543,7 +544,7 @@ define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
 
 // Service: CIFS/SAMBA
 // Common text
-define('_SRVCIFS_MANAGE','Manage');
+define('_SRVCIFS_SETTINGS','Settings');
 define('_SRVCIFS_SHARE','Share');
 define('_SRVCIFS_SHARES','Shares');
 
@@ -580,14 +581,15 @@ define('_SRVCIFS_RCVBUFFTEXT','Size of receive buffer (16384 by default).');
 // file: services_samba_share.php
 define('_SRVCIFSSHARE_MSGCHANGED','The shares has been modified.<br>You must apply the changes in order for them to take effect.');
 define('_SRVCIFSSHARE_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
-define('_SRVCIFSSHARE_BROWSABLE','Browsable');
+define('_SRVCIFSSHARE_BROWSEABLE','Browseable');
 define('_SRVCIFSSHARE_DESC',_DESC);
+define('_SRVCIFSSHARE_EDIT','Edit share');
 
 // file: services_samba_share_edit.php
 define('_SRVCIFSSHAREEDIT_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
 define('_SRVCIFSSHAREEDIT_DESC',_DESC);
-define('_SRVCIFSSHAREEDIT_BROWSABLE','Browsable');
-define('_SRVCIFSSHAREEDIT_BROWSABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
+define('_SRVCIFSSHAREEDIT_BROWSEABLE','Browseable');
+define('_SRVCIFSSHAREEDIT_BROWSEABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
 
 // Service: FTP
 // file: services_ftp.php

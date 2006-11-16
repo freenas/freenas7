@@ -148,7 +148,7 @@ if ($_GET['act'] == "del") {
 			  <?php $i++; endforeach; ?>
                 <tr> 
                   <td class="list" colspan="4"></td>
-                  <td class="list"> <a href="disks_raid_graid5_edit.php"><img src="plus.gif" title="<?=_DISKSRAIDPHP_EDITRAID ;?>" width="17" height="17" border="0"></a></td>
+                  <td class="list"> <a href="disks_raid_graid5_edit.php"><img src="plus.gif" title="<?=_DISKSRAIDPHP_ADDRAID;?>" width="17" height="17" border="0"></a></td>
 				</tr>
               </table>
             </form>

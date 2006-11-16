@@ -469,6 +469,7 @@ define('_DISKSRAIDPHP_VOLUME','Volume Name');
 // Software RAID common word
 define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
 define('_DISKSRAIDPHP_GMIRROR','Geom Mirror');
+define('_DISKSRAIDPHP_GRAID5','Geom Raid5');
 define('_DISKSRAIDPHP_UNSTABLE','(unstable)');
 
 //file: disks_raid.php
@@ -477,8 +478,9 @@ define('_DISKSRAIDPHP_MSGCHANGED','Die RAID-Einstellung wurde ver&auml;ndert.<br
 define('_DISKSRAIDPHP_TYPE','Type');
 define('_DISKSRAIDPHP_EDITRAID','Bearbeite RAID');
 define('_DISKSRAIDPHP_DELRAID','L&ouml;sche RAID');
+define('_DISKSRAIDPHP_ADDRAID','RAID hinzuf&uuml;gen');
 define('_DISKSRAIDPHP_DELCONF','Soll dieses RAIDLaufwerk wirklich gel&ouml;scht werden? Alle Elemente, die gerade darauf zugreifen, werden ung&uuml;ltig werden (z.B. Freigaben)!');
-define('_DISKSRAIDPHP_NOTE','Optionaler Konfigurationsschritt: Konfiguration einer "virtual RAID disk" unter Verwendung <a href="disks_manage.php">einer vorher eingestellten Festplatte/Partition</a>.<br>Den "up" Status vor Formatieren und Einbinden (Mounten) abwarten!');
+define('_DISKSRAIDPHP_NOTE','Optionaler Konfigurationsschritt: Konfiguration einer "Virtual RAID Festplatte" unter Verwendung <a href="disks_manage.php">einer zuvor konfigurierten Festplatte</a>.<br>Den "up" Status vor Formatieren und Einbinden (Mounten) abwarten!');
 
 //file: disks_raid_edit.php
 define('_DISKSRAIDEDITPHP_NAMEDESC',_EDIT);
@@ -515,7 +517,7 @@ define('_DISKSRAIDTOOLSPHP_TEXT','1. Diese Massnahmen nur zur Fehlerbehebung ben
 //Disk Mount Point
 // Comon value
 define('_DISKSMOUNTPHP_NAME','Mount Point');
-define('_DISKSMOUNTPHP_SHARENAME','Share Name');
+define('_DISKSMOUNTPHP_SHARENAME','Freigaben Name');
 define('_DISKSMOUNTPHP_MANAGE','Managen');
 define('_DISKSMOUNTPHP_TOOLS','Tools');
 
@@ -542,12 +544,12 @@ define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
 
 // Service: CIFS/SAMBA
 // Common text
-define('_SRVCIFS_MANAGE','Managen');
+define('_SRVCIFS_SETTINGS','Einstellungen');
 define('_SRVCIFS_SHARE','Freigabe');
 define('_SRVCIFS_SHARES','Freigaben');
 
 // file: services_samba.php
-define('_SRVCIFS_NAMEDESC','CIFS - Common Internet File System');
+define('_SRVCIFS_NAMEDESC','CIFS');
 define('_SRVCIFS_MSGVALIDNETBIOSNAME','Der Netbios-Name enth&auml;lt ung&uuml;ltige Zeichen.');
 define('_SRVCIFS_MSGVALIDWORKGOUP','Der Arbeitsgruppen-Name enth&auml;lt ung&uuml;ltige Zeichen..');
 define('_SRVCIFS_MSGVALIDWINS','Der WINS-Server muss eine IP address haben.');
@@ -577,16 +579,17 @@ define('_SRVCIFS_RCVBUFF','Receive Buffer Size');
 define('_SRVCIFS_RCVBUFFTEXT','Gr&ouml;sse des "Receive Buffer" (16384 Voreinstellung).');
 
 // file: services_samba_share.php
-define('_SRVCIFSSHARE_MSGCHANGED','Die Freigaben wurden modifiziert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen.');
+define('_SRVCIFSSHARE_MSGCHANGED','Die Freigaben wurden ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen.');
 define('_SRVCIFSSHARE_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
-define('_SRVCIFSSHARE_BROWSABLE','Browsable');
+define('_SRVCIFSSHARE_BROWSEABLE','Sichtbar');
 define('_SRVCIFSSHARE_DESC',_DESC);
+define('_SRVCIFSSHARE_EDIT','Bearbeite Freigabe');
 
 // file: services_samba_share_edit.php
 define('_SRVCIFSSHAREEDIT_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
 define('_SRVCIFSSHAREEDIT_DESC',_DESC);
-define('_SRVCIFSSHAREEDIT_BROWSABLE','Browsable');
-define('_SRVCIFSSHAREEDIT_BROWSABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
+define('_SRVCIFSSHAREEDIT_BROWSEABLE','Sichtbar');
+define('_SRVCIFSSHAREEDIT_BROWSEABLETEXT','Dieser Parameter dient dazu, eine Freigabe in der Liste der verf&uuml;gbaren Freigaben im Net View oder in der Browser List sichtbar zu machen.');
 
 // Service: FTP
 // file: services_ftp.php

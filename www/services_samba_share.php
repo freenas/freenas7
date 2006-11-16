@@ -38,7 +38,7 @@ require("guiconfig.inc");
 
 $pgtitle = array(_SERVICES,_SRVCIFS_NAMEDESC,_SRVCIFS_SHARES);
 
-if (!is_array($config['mounts']['mount']))
+if(!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
 mount_sort();
@@ -65,18 +65,17 @@ if($_POST) {
 		}
 	}
 }
-if($_GET['act'] == "ret")
-{
+if($_GET['act'] == "ret") {
   header("Location: services_samba_share.php");
   exit;
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="services_samba.php"><?=_SRVCIFS_MANAGE;?></li>
+        <li class="tabinact"><a href="services_samba.php"><?=_SRVCIFS_SETTINGS;?></li>
         <li class="tabact"><?=_SRVCIFS_SHARES;?></a></li>
       </ul>
     </td>
@@ -93,17 +92,17 @@ if($_GET['act'] == "ret")
           <tr>
             <td width="20%" class="listhdrr"><?=_SRVCIFSSHARE_SHARENAME;?></td>
             <td width="25%" class="listhdrr"><?=_SRVCIFSSHARE_DESC;?></td>
-            <td width="20%" class="listhdrr"><?=_SRVCIFSSHARE_BROWSABLE;?></td>
+            <td width="20%" class="listhdrr"><?=_SRVCIFSSHARE_BROWSEABLE;?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_mount as $mountv): ?>
           <tr>
-            <td class="listr"><?=htmlspecialchars($mountv['sharename']);?>&nbsp;</td>
-            <td class="listr"><?=htmlspecialchars($mountv['desc']);?>&nbsp;</td>
-            <td class="listbg"><?=htmlspecialchars((is_array($config['samba']['hidemount']) && in_array($mountv['sharename'],$config['samba']['hidemount']))?_NO:_YES);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($mountv['sharename']);?></td>
+            <td class="listr"><?=htmlspecialchars($mountv['desc']);?></td>
+            <td class="listbg"><?=htmlspecialchars((is_array($config['samba']['hidemount']) && in_array($mountv['sharename'],$config['samba']['hidemount']))?_NO:_YES);?></td>
             <td valign="middle" nowrap class="list">
               <?php if(isset($config['samba']['enable']))
-              echo "<a href='services_samba_share_edit.php?id=<?=$i;?>'><img src='e.gif' title='edit share' width='17' height='17' border='0'></a>&nbsp;";
+              echo("<a href='services_samba_share_edit.php?id={$i}'><img src='e.gif' title='" . _SRVCIFSSHARE_EDIT . "' width='17' height='17' border='0'></a>");
               ?>
             </td>
           </tr>
