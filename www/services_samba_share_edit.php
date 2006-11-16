@@ -71,13 +71,13 @@ if($_POST) {
 <form action="services_samba_share_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr> 
-      <td width="22%" valign="top" class="vncell"><?=_SRVCIFSSHAREEDIT_SHARENAME;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFSSHAREEDIT_SHARENAME;?></td>
       <td width="78%" class="vtable"> 
         <input type="text" class="formfld" size="30" value="<?=htmlspecialchars($config['mounts']['mount'][$id]['sharename']);?>" disabled>
       </td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncell"><?=_SRVCIFSSHAREEDIT_DESC;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFSSHAREEDIT_DESC;?></td>
       <td width="78%" class="vtable"> 
         <input type="text" class="formfld" size="30" value="<?=htmlspecialchars($config['mounts']['mount'][$id]['desc']);?>" disabled>
       </td>
