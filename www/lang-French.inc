@@ -517,7 +517,7 @@ define('_DISKSMOUNTPHP_TOOLS','Outils');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','La liste des points de montage a &eacute;t&eacute; modifi&eacute;e.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
-define('_DISKSMOUNTPHP_NOTE','Deuxi&egrave;me &eacute;tape de la configuration: D&eacute;clarer le syst&egrave;me de fichiers utilis&eacute; par votre <a href="disks_manage.php">disque configur&eacute; pr&eacute;c&eacute;demment');
+define('_DISKSMOUNTPHP_NOTE','Deuxi&egrave;me &eacute;tape de la configuration: D&eacute;clarer le syst&egrave;me de fichiers utilis&eacute; par votre <a href="disks_manage.php">disque configur&eacute; pr&eacute;c&eacute;demment</a>.');
 define('_DISKSMOUNTPHP_DELCONF','Voulez-vous vraiment supprimer ce point de montage? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s!');
 define('_DISKSMOUNTPHP_DEL','Supprimer le point de montage');
 define('_DISKSMOUNTPHP_ADD','Ajouter un point de montage');
@@ -527,7 +527,7 @@ define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','Le nom de partage doit contenir unique
 define('_DISKSMOUNTEDITPHP_MSGVALIDDESC','La description contient des caract&egrave;res invalides.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Impossible de monter la partition syst&egrave;me 1, la partition de donn&eacute;es est la deuxi&egrave;me.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','Nom de partage dupliqu&eacute;.');
-define('_DISKSMOUNTEDITPHP_TEXT','1. Vous ne pouvez pas monter la partition \'<?php echo htmlspecialchars($cfdevice);?>\' car elle contient le fichier de configuration<br>2. Le support NTFS de FreeBSD est bogu&eacute;.');
+define('_DISKSMOUNTEDITPHP_TEXT','1. Vous ne pouvez pas monter la partition \'%s\' car elle contient le fichier de configuration.<br>2. Le support NTFS de FreeBSD est bogu&eacute;.');
 
 // disks_mount_tools.php
 define('_DISKSMOUNTTOOLS_COMMAND','Commande');

@@ -359,7 +359,7 @@ define('_DISKSMOUNTPHP_TOOLS','Tools');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','The mount point list has been changed.<br>You must apply the changes in order for them to take effect.');
-define('_DISKSMOUNTPHP_NOTE','Second configuration step: Declaring the filesystem used by your <a href="disks_manage.php">previously configured disk');
+define('_DISKSMOUNTPHP_NOTE','Second configuration step: Declaring the filesystem used by your <a href="disks_manage.php">previously configured disk</a>.');
 define('_DISKSMOUNTPHP_DELCONF','Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!');
 define('_DISKSMOUNTPHP_DEL','delete mount');
 define('_DISKSMOUNTPHP_ADD','add mount');
@@ -369,7 +369,7 @@ define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','The share name may only consist of the
 define('_DISKSMOUNTEDITPHP_MSGVALIDDESC','The description name contain invalid characters.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Can\'t mount the system partition 1, the DATA partition is the 2.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','Duplicate Share Name.');
-define('_DISKSMOUNTEDITPHP_TEXT','1. You can\'t mount the partition \'<?php echo htmlspecialchars($cfdevice);?>\' where the config file is stored<br>2. FreeBSD NTFS has lots of bugs.');
+define('_DISKSMOUNTEDITPHP_TEXT','1. You can\'t mount the partition \'%s\' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs.');
 
 // disks_mount_tools.php
 define('_DISKSMOUNTTOOLS_COMMAND','Command');

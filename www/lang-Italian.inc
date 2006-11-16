@@ -531,7 +531,7 @@ define('_DISKSMOUNTPHP_TOOLS','Tools');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','La lista dei punti di mount è stata cambiata.<br>E\' necessario applicare i cambiamenti affinché abbiano effetto.');
-define('_DISKSMOUNTPHP_NOTE','Secondo passo di configurazione: Dichiarare il filesystem usato dal vostro <a href="disks_manage.php">disco precedentemente configurato');
+define('_DISKSMOUNTPHP_NOTE','Secondo passo di configurazione: Dichiarare il filesystem usato dal vostro <a href="disks_manage.php">disco precedentemente configurato</a>.');
 define('_DISKSMOUNTPHP_DELCONF','Si vuole realmente cancellare questo punto di mount? Tutti gli elementi che ancora lo utilizzano non saranno più validi (es. share)!');
 define('_DISKSMOUNTPHP_DEL','cancella mount');
 define('_DISKSMOUNTPHP_ADD','aggiungi mount');
@@ -541,7 +541,7 @@ define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','Il nome della share può essere formato
 define('_DISKSMOUNTEDITPHP_MSGVALIDDESC','La descrizione contiene caratteri non validi.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Non riesco a montare la partizione 1, la partizione DATA è la 2.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','Nome Share Duplicato.');
-define('_DISKSMOUNTEDITPHP_TEXT','1. Non è possibile montare la partizione \'<?php echo htmlspecialchars($cfdevice);?>\' dov\'è contenuto il file di configurazione<br>2. Il supporto NTFS di FreeBSD ha molti bachi.');
+define('_DISKSMOUNTEDITPHP_TEXT','1. Non è possibile montare la partizione \'%s\' dov\'è contenuto il file di configurazione.<br>2. Il supporto NTFS di FreeBSD ha molti bachi.');
 
 // disks_mount_tools.php
 define('_DISKSMOUNTTOOLS_COMMAND','Command');

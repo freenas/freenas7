@@ -81,34 +81,26 @@ if (isset($id) && $a_mount[$id]) {
 }
 
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
 	/* input validation */
 	
-	if (($_POST['sharename'] && !is_validsharename($_POST['sharename'])))
-	{
+	if (($_POST['sharename'] && !is_validsharename($_POST['sharename']))) {
 		$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDNAME;
 	}
-	
-	
-	if (($_POST['desc'] && !is_validdesc($_POST['desc'])))
-	{
+
+	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
 		$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDDESC;
 	}
+
 	$device=$_POST['mdisk'].$_POST['partition'];
-	
-	if ($device == $cfdevice )
-	{
+	if ($device == $cfdevice ) {
 		$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS;
 	}
-	
-	
-		
+
 	/* check for name conflicts */
-	foreach ($a_mount as $mount)
-	{
+	foreach ($a_mount as $mount) {
 		if (isset($id) && ($a_mount[$id]) && ($a_mount[$id] === $mount))
 			continue;
 
@@ -120,15 +112,11 @@ if ($_POST) {
 		}
 		*/
 		
-		if (($_POST['sharename']) && ($mount['sharename'] == $_POST['sharename']))
-		{
+		if (($_POST['sharename']) && ($mount['sharename'] == $_POST['sharename'])) {
 			$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDDUP;
 			break;
 		}
-		
-		
 	}
-	
 
 	if (!$input_errors) {
 		$mount = array();
@@ -157,78 +145,74 @@ if ($_POST) {
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-            <form action="disks_mount_edit.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td valign="top" class="vncellreq"><?=_DISK; ?></td>
-                  <td class="vtable">            
-                	 <select name="mdisk" class="formfld" id="mdisk">
-                		  <?php foreach ($a_disk as $disk): ?>
-                			<?php if ((strcmp($disk['fstype'],"gvinum")!=0) | (strcmp($disk['fstype'],"gmirror")!=0)): ?> 	  
-                				<option value="<?=$disk['name'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 
-                				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
-                				</option>
-                			<?php endif; ?>
-                		  <?php endforeach; ?>
-                		</select>
-                  </td>
-	              </tr>   
-                 <tr> 
-                  <td valign="top" class="vncellreq"><?=_PARTITION ; ?></td>
-                  <td class="vtable"> 
-                    <select name="partition" class="formfld" id="partition">
-                      <option value="s1" <?php if ($pconfig['partition'] == "s1") echo "selected"; ?>>1</option>
-                      <option value="s2" <?php if ($pconfig['partition'] == "s2") echo "selected"; ?>>2</option>
-                      <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
-                      <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
-                      <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>><?=_SOFTRAID ;?> - gmirror</option>
-                       <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>><?=_SOFTRAID ;?> - graid5</option>
-                      <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>><?=_SOFTRAID ;?> - gvinum</option>
-                     
-                      <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>GPT</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr> 
-                  <td valign="top" class="vncellreq"><?=_FILESYSTEM ;?></td>
-                  <td class="vtable"> 
-                    <select name="fstype" class="formfld" id="fstype">
-                      <option value="ufs" <?php if ($pconfig['fstype'] == "ufs") echo "selected"; ?>>UFS</option>
-                      <option value="msdosfs" <?php if ($pconfig['fstype'] == "msdosfs") echo "selected"; ?>>FAT</option>
-                      <option value="ntfs" <?php if ($pconfig['fstype'] == "ntfs") echo "selected"; ?>>NTFS (read-only)</option> 
-                      <option value="ext2fs" <?php if ($pconfig['fstype'] == "ext2fs") echo "selected"; ?>>EXT2 FS</option> 
-                    </select>
-                  </td>
-                </tr>
-                 <tr> 
-                 <td width="22%" valign="top" class="vncell"><?=_DISKSMOUNTPHP_SHARENAME ;?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>"> 
-                  </td>
-				</tr>
-				 <tr> 
-                 <td width="22%" valign="top" class="vncell"><?=_DESC ;?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"> 
-                  </td>
-				</tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?_SAVE:_ADD?>"> 
-                    <?php if (isset($id) && $a_mount[$id]): ?>
-                    <input name="id" type="hidden" value="<?=$id;?>"> 
-                    <?php endif; ?>
-                  </td>
-                </tr>
-                
-                  <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"><span class="vexpl"><span class="red"><strong><?=_WARNING; ?>:<br>
-                    </strong></span><?=_DISKSMOUNTEDITPHP_TEXT;?>
-                    </span></td>
-                </tr>
-                      
-                
-              </table>
+<form action="disks_mount_edit.php" method="post" name="iform" id="iform">
+  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+    <tr> 
+      <td valign="top" class="vncellreq"><?=_DISK; ?></td>
+      <td class="vtable">            
+    	 <select name="mdisk" class="formfld" id="mdisk">
+    		  <?php foreach ($a_disk as $disk): ?>
+    			<?php if ((strcmp($disk['fstype'],"gvinum")!=0) | (strcmp($disk['fstype'],"gmirror")!=0)): ?> 	  
+    				<option value="<?=$disk['name'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 
+    				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
+    				</option>
+    			<?php endif; ?>
+    		  <?php endforeach; ?>
+    		</select>
+      </td>
+    </tr>   
+     <tr> 
+      <td valign="top" class="vncellreq"><?=_PARTITION ; ?></td>
+      <td class="vtable"> 
+        <select name="partition" class="formfld" id="partition">
+          <option value="s1" <?php if ($pconfig['partition'] == "s1") echo "selected"; ?>>1</option>
+          <option value="s2" <?php if ($pconfig['partition'] == "s2") echo "selected"; ?>>2</option>
+          <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
+          <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
+          <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>><?=_SOFTRAID ;?> - gmirror</option>
+          <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>><?=_SOFTRAID ;?> - graid5</option>
+          <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>><?=_SOFTRAID ;?> - gvinum</option>
+          <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>GPT</option>
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td valign="top" class="vncellreq"><?=_FILESYSTEM ;?></td>
+      <td class="vtable"> 
+        <select name="fstype" class="formfld" id="fstype">
+          <option value="ufs" <?php if ($pconfig['fstype'] == "ufs") echo "selected"; ?>>UFS</option>
+          <option value="msdosfs" <?php if ($pconfig['fstype'] == "msdosfs") echo "selected"; ?>>FAT</option>
+          <option value="ntfs" <?php if ($pconfig['fstype'] == "ntfs") echo "selected"; ?>>NTFS (read-only)</option> 
+          <option value="ext2fs" <?php if ($pconfig['fstype'] == "ext2fs") echo "selected"; ?>>EXT2 FS</option> 
+        </select>
+      </td>
+    </tr>
+     <tr> 
+     <td width="22%" valign="top" class="vncell"><?=_DISKSMOUNTPHP_SHARENAME ;?></td>
+      <td width="78%" class="vtable"> 
+        <?=$mandfldhtml;?><input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>"> 
+      </td>
+    </tr>
+    <tr> 
+     <td width="22%" valign="top" class="vncell"><?=_DESC ;?></td>
+      <td width="78%" class="vtable"> 
+        <?=$mandfldhtml;?><input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top">&nbsp;</td>
+      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?_SAVE:_ADD?>"> 
+        <?php if (isset($id) && $a_mount[$id]): ?>
+        <input name="id" type="hidden" value="<?=$id;?>"> 
+        <?php endif; ?>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top">&nbsp;</td>
+      <td width="78%"><span class="vexpl"><span class="red"><strong><?=_WARNING; ?>:<br>
+        </strong></span><?=sprintf(_DISKSMOUNTEDITPHP_TEXT,htmlspecialchars($cfdevice));?></span>
+      </td>
+    </tr>
+  </table>
 </form>
 <?php include("fend.inc"); ?>

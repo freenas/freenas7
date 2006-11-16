@@ -533,7 +533,7 @@ define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','Der Freigabenname darf nur folgende Ze
 define('_DISKSMOUNTEDITPHP_MSGVALIDDESC','Die Beschreibung enth&auml;lt ung&uuml;ltige Zeichen.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Die Systempartition (1. Partition) kann nicht eingebunden werden, die notwendige Datenpartition ist die 2. Partition auf dem Datentr&auml;ger.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','Freigabenname duplizieren.');
-define('_DISKSMOUNTEDITPHP_TEXT','1. Die Partition \'<?php echo htmlspecialchars($cfdevice);?>\' kann nicht eingebunden werden - sie enth&auml;lt die Konfigurationsdatei<br>2. Die NTFS-implemtentierung von FreeBSD hat viele Fehler.');
+define('_DISKSMOUNTEDITPHP_TEXT','1. Die Partition \'%s\' kann nicht eingebunden werden - sie enth&auml;lt die Konfigurationsdatei.<br>2. Die NTFS-implemtentierung von FreeBSD hat viele Fehler.');
 
 // disks_mount_tools.php
 define('_DISKSMOUNTTOOLS_COMMAND','Befehl');

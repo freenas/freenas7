@@ -213,9 +213,9 @@ if (!$noparseconfig) {
 
 *******************************************************************************
 * WARNING!                                                                    *
-* The current configuration has been created with a newer version of m0n0wall *
+* The current configuration has been created with a newer version of FreeNAS  *
 * than this one! This can lead to serious misbehavior and even security       *
-* holes! You are urged to either upgrade to a newer version of m0n0wall or    *
+* holes! You are urged to either upgrade to a newer version of FreeNAS or     *
 * revert to the default configuration immediately!                            *
 *******************************************************************************
 
