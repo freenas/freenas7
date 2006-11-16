@@ -281,21 +281,13 @@ define('_SYSTEMFIRMWAREPHP_BIGWARN','This means that the image you uploaded ' .
 			'compromises. Only install images that come from sources that you trust, and make sure '.
 			'that the image has not been tampered with.<br><br>'.
 			'Do you want to install this image anyway (on your own risk)?');
-define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Click &quot;Enable firmware 
-          upload&quot; below, then choose the image file '.$g['fullplatform'].'-*.img)
-			 to be uploaded.<br>Click &quot;Upgrade firmware&quot; 
-          to start the upgrade process.');			
-// Note for translator: Do not use international html coding for these two variables:
+define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');			
 define('_SYSTEMFIRMWAREPHP_ENFIRMUP','Enable firmware upload');	
 define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Disable firmware upload');
-		
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','Firmware image file');	
 define('_SYSTEMFIRMWAREPHP_UPFIRM','Upgrade firmware');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','You must reboot the system before you can upgrade the firmware.');
-define('_SYSTEMFIRMWAREPHP_DONOTABORT','DO NOT abort the firmware upgrade once it 
-                    has started. FreeNAS will reboot automatically after 
-                    storing the new firmware. The configuration will be maintained.<br>
-                    You need a minium of 128 Mb RAM for firmware update.');
+define('_SYSTEMFIRMWAREPHP_DONOTABORT','DO NOT abort the firmware upgrade once it has started. FreeNAS will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of 128 Mb RAM for firmware update.');
 
 // System Advanced Module
 // file: system_advanced.php

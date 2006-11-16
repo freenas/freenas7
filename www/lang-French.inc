@@ -285,18 +285,13 @@ define('_SYSTEMFIRMWAREPHP_BIGWARN','Cela signifie que l\'image que vous avez ch
 			'des failles de s&eacute;curit&eacute;. N\'installez que des images venant de sources de confiance, et assurez-vous '.
 			'que ces images n\'aient pas &eacute;t&eacute; modifi&eacute;es.<br><br>'.
 			'Voulez-vous installer tout de m&ecirc;me cette image (sous votre enti&egrave;re responsabilit&eacute;)?');
-define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Cliquez sur &quot;Activer le chargement de mise &agrave; jour&quot; ci-dessous, puis choisissez un fichier image '.$g['fullplatform'].'-*.img
-			 &agrave; charger.<br>Cliquez sur &quot;Charger&quot; pour lancer la mise &agrave; jour.');			
+define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Cliquez sur &quot;Activer le chargement de mise &agrave; jour&quot; ci-dessous, puis choisissez un fichier image &agrave; charger.<br>Cliquez sur &quot;Charger&quot; pour lancer la mise &agrave; jour.');			
 define('_SYSTEMFIRMWAREPHP_ENFIRMUP','Activer le chargement de mise a jour');	
 define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Desactiver le chargement de mise a jour');		
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','Fichier image de mise &agrave; jour');	
 define('_SYSTEMFIRMWAREPHP_UPFIRM','Charger');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','Vous devez red&eacute;marrer le systeme avant de pouvoir faire une mise a jour.');
-define('_SYSTEMFIRMWAREPHP_DONOTABORT','N\'ANNULEZ PAS la mise &agrave; jour une fois 
-                    commenc&eacute;e. FreeNAS red&eacute;marrera automatiquement apr&egrave;s 
-                    installation de la mise &agrave; jour.<br>La configuration sera maintenue.<br>
-                    128 Mo de RAM sont n&eacute;cessaires pour la mise &agrave; jour.');
-
+define('_SYSTEMFIRMWAREPHP_DONOTABORT','N\'ANNULEZ PAS la mise &agrave; jour une fois commenc&eacute;e. FreeNAS red&eacute;marrera automatiquement apr&egrave;s installation de la mise &agrave; jour.<br>La configuration sera maintenue.<br>128 Mo de RAM sont n&eacute;cessaires pour la mise &agrave; jour.');
 
 // System Advanced Module
 // file: system_advanced.php

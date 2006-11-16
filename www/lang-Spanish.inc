@@ -464,19 +464,13 @@ define('_SYSTEMFIRMWAREPHP_BIGWARN','Esto significa que la imagen enviada ' .
 			'compromisos de seguridad. Solo instale imágenes provenientes de fuentes de confianza, y asegure '.
 			'quela imagen no ha sido falseada.<br><br>'.
 			'La desea instalar de todas formas ? (bajo su propio riesgo)?');
-define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Click &quot;Habilitar la actualización del Sistema Base 
-          &quot; a continuación, luego seleccione el fichero de la imagen '.$g['fullplatform'].'-*.img)
-			 a enviar.<br>Click &quot;Actualizar Sistema Base&quot; 
-          para comenzar el proceso de actualización.');	
+define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Click &quot;Habilitar la actualización del Sistema Base &quot; a continuación, luego seleccione el fichero de la imagen a enviar.<br>Click &quot;Actualizar Sistema Base&quot; para comenzar el proceso de actualización.');	
 define('_SYSTEMFIRMWAREPHP_ENFIRMUP','Habilitar la actualización del Sistema Base');
 define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Deshabilitar la actualización del Sistema Base');	
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','Fichero Imagen del Sistema Base');
 define('_SYSTEMFIRMWAREPHP_UPFIRM','Actualizar Sistema Base');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','Usted debe reiniciar el sistema antes de actualizar el sistema base.');
-define('_SYSTEMFIRMWAREPHP_DONOTABORT','No aborte el proceso una vez que comience. 
-                    FreeNAS reiniciará automáticamente después de salvar el nuevo Sistema Base. La configuración
-                    se mantendrá.<br>
-                    Necesita un mínimo de 128 Mb RAM para actualizar el Sistema Base.');
+define('_SYSTEMFIRMWAREPHP_DONOTABORT','No aborte el proceso una vez que comience. FreeNAS reiniciará automáticamente después de salvar el nuevo Sistema Base. La configuración se mantendrá.<br>Necesita un mínimo de 128 Mb RAM para actualizar el Sistema Base.');
 
 // System Advanced Module
 // file: system_advanced.php

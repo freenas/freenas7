@@ -285,18 +285,13 @@ define('_SYSTEMFIRMWAREPHP_BIGWARN','Das bedeutet, dass das Image, das Sie gelad
       'Installieren Sie nur Images, die nur von vertrauten Quellen stammen, und &uuml;berpr&uuml;fen '.
       'Sie, dass das Image nicht manipuliert wurde.<br><br>'.  //abgegeben ?
       'M&ouml;chten Sie das Image trotzdem installieren (auf eigene Gefahr)?');
-define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Dr&uuml;cken Sie unten &quot;Firmware Upload 
-      zulassen&quot;, dann w&auml;hlen Sie das Image '.$g['fullplatform'].'-*.img
-      zum hochladen.<br>Dr&uuml;cken Sie &quot;Upgrade Firmware&quot;
-      zum Starten des Upgrade Prozesses.');
+define('_SYSTEMFIRMWAREPHP_CLICKENFIRM','Dr&uuml;cken Sie unten &quot;Firmware Upload zulassen&quot;, dann w&auml;hlen Sie das Image zum hochladen.<br>Dr&uuml;cken Sie &quot;Upgrade Firmware&quot; zum Starten des Upgrade Prozesses.');
 define('_SYSTEMFIRMWAREPHP_ENFIRMUP','Firmware Upload zulassen');
 define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Firmware Upload verbieten');
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','Firmware Image');
 define('_SYSTEMFIRMWAREPHP_UPFIRM','Upgrade Firmware');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','Sie m&uuml;ssen das System neu starten, bevor Sie diese Firmware upgraden k&ouml;nnen.');
-define('_SYSTEMFIRMWAREPHP_DONOTABORT','Unterbrechen Sie das Firmware Upgrade NICHT, wenn es bereits gestartet wurde. FreeNAS wird automatisch neu gestartet, nachdem die neue Firmware geladen wurde. Ihre Konfiguration bleibt erhalten.<br>
-      F&uuml;r das Upgrade werden mindestens 128 Mb RAM ben&ouml;tigt.');
-
+define('_SYSTEMFIRMWAREPHP_DONOTABORT','Unterbrechen Sie das Firmware Upgrade NICHT, wenn es bereits gestartet wurde. FreeNAS wird automatisch neu gestartet, nachdem die neue Firmware geladen wurde. Ihre Konfiguration bleibt erhalten.<br>F&uuml;r das Upgrade werden mindestens 128 Mb RAM ben&ouml;tigt.');
 
 // System Advanced Module
 // file: system_advanced.php
