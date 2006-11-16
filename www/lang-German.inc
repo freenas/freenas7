@@ -124,9 +124,10 @@ define('_SERVICES','Services');
 define('_TCPPORT','TCP Port');
 define('_CONFIRMATION','Best&auml;tigung');
 define('_NOTE','Hinweis');
-define('_SUCCESSFUL', 'Erfolgreich');
-define('_FAILED', 'Fehlgeschlagen');
-define('_ERROR', 'Fehler');
+define('_SUCCESSFUL','Erfolgreich');
+define('_FAILED','Fehlgeschlagen');
+define('_ERROR','Fehler');
+define('_HINT','Hinweis');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Die &Auml;nderungen wurden &uuml;bernommen.');
@@ -917,6 +918,13 @@ define('_DIAGBACKUP_RESTORENOTE','FreeNAS wird nach dem wiederherstellen der Kon
 // file: diag_arp.php
 define('_DIAGARP_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGARP_NAMEDESC',_MENULEFT_DIAGARPTAB);
+define('_DIAGARP_IPADDRESS','IP Addresse');
+define('_DIAGARP_MACADDRESS','MAC Addresse');
+define('_DIAGARP_HOSTNAME','Hostname');
+define('_DIAGARP_INTERFACE','Schnittstelle');
+define('_DIAGARP_DEL','L&ouml;sche ARP Eintrag');
+define('_DIAGARP_DELALL','L&ouml;sch alle Eintr&auml;ge aus ARP Tabelle');
+define('_DIAGARP_NOTE','IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href="diag_logs_settings.php">Diagnostics: Logs</a> page.');
 
 // file: status_graph.php
 define('_STATSGRAPH_NAME',_MENULEFT_STATUS);

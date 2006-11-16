@@ -34,7 +34,7 @@ $pgtitle = array(_DIAGARP_NAME, _DIAGARP_NAMEDESC);
 
 $id = $_GET['id'];
 if (isset($_POST['id']))
-        $id = $_POST['id'];
+  $id = $_POST['id'];
 
 if ($_GET['act'] == "del") {
 	if (isset($id)) {
@@ -53,23 +53,17 @@ if ($_GET['act'] == "del") {
 		exit;
 	}
 }
-
 $resolve = isset($config['syslog']['resolve']);
 ?>
-
 <?php include("fbegin.inc"); ?>
-
 <?php
-
 $fp = @fopen("{$g['vardb_path']}/dhcpd.leases","r");
-
 if ($fp) {
-
 	$return = array();
 	
 	while ($line = fgets($fp)) {
 		$matches = "";
-	
+
 		// Sort out comments
 		// C-style comments not supported!
 		if (preg_match("/^\s*[\r|\n]/", $line, $matches[0]) ||
@@ -203,38 +197,33 @@ function getHostName($mac,$ip)
 }
 
 ?>
-
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="listhdrr">IP address</td>
-    <td class="listhdrr">MAC address</td>
-    <td class="listhdrr">Hostname</td>
-    <td class="listhdr">Interface</td>
+    <td class="listhdrr"><?=_DIAGARP_IPADDRESS;?></td>
+    <td class="listhdrr"><?=_DIAGARP_MACADDRESS;?></td>
+    <td class="listhdrr"><?=_DIAGARP_HOSTNAME;?></td>
+    <td class="listhdr"><?=_DIAGARP_INTERFACE;?></td>
     <td class="list"></td>
   </tr>
-<?php $i = 0; foreach ($data as $entry): ?>
+  <?php $i = 0; foreach ($data as $entry): ?>
   <tr>
     <td class="listlr"><?=$entry['ip'];?></td>
     <td class="listr"><?=$entry['mac'];?></td>
-    <td class="listr"><?=getHostName($entry['mac'], $entry['ip']);?></td>
-    <td class="listr"><?=$hwif[$entry['interface']];?></td>
-    <td valign="middle" nowrap class="list"><a href="diag_arp.php?act=del&id=<?=$entry['ip'];?>"><img src="x.gif" title="delete arp entry" width="17" height="17" border="0"></a></td>
+    <td class="listr"><?=getHostName($entry['mac'], $entry['ip']);?>&nbsp;</td>
+    <td class="listr"><?=$hwif[$entry['interface']];?>&nbsp;</td>
+    <td valign="middle" nowrap class="list"><a href="diag_arp.php?act=del&id=<?=$entry['ip'];?>"><img src="x.gif" title="<?=_DIAGARP_DEL;?>" width="17" height="17" border="0"></a></td>
   </tr>
-<?php $i++; endforeach; ?>
+  <?php $i++; endforeach; ?>
   <tr> 
     <td></td>
   </tr> 
   <tr> 
     <td class="list" colspan="4"></td>
-    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="remove all entries from arp table" width="17" height="17" border="0"></a></td>
+    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="<?=_DIAGARP_DELALL;?>" width="17" height="17" border="0"></a></td>
   </tr>
   <tr>
     <td colspan="4">
-      <span class="vexpl"><span class="red"><strong>Hint:<br>
-      </strong></span>IP addresses are resolved to hostnames if
-      &quot;Resolve IP addresses to hostnames&quot; 
-      is checked on the <a href="diag_logs_settings.php">
-      Diagnostics: Logs</a> page.</span>
+      <span class="vexpl"><span class="red"><strong><?=_HINT;?>:<br></strong></span><?=_DIAGARP_NOTE;?></span>
     </td>
   </tr>
 </table>
