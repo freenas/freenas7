@@ -2,7 +2,7 @@ FreeNAS (http://www.freenas.org)
 Olivier Cochard-Labbe (olivier@freenas.org)
 Licence: BSD
 
-Release: 0.68 (UNRELEASE!)
+Release: 0.68
 
 ============== SUMMARY =========
 
@@ -68,7 +68,7 @@ svn/misc/setupfreenas.sh
 
 ################ History Change logs ##############
 
-FreeNAS 0.68 (UNRELEASE!):
+FreeNAS 0.68:
 - Need 32MB of minimal disk space for installing (since release 0.67, but forget to mention it)
 - Need 128MB of RAM for using the webgui upgrade function (92MB of RAM should be enough for enabled all services)
 - Updated to FreeBSD 6.2 PRERELEASE
