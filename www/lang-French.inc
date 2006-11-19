@@ -105,7 +105,7 @@ define('_VIEW', 'Visualiser');
 define('_APPLY', 'Appliquer les changements');
 define('_WARNING', 'Attention');
 define('_LOAD', 'Charger');
-define('_RETRY', 'Retry');
+define('_RETRY', 'R&eacute;essayer');
 
 //FreeNAS common words
 define('_SIZE', 'Taille');
@@ -123,10 +123,10 @@ define('_SERVICES','Services');
 define('_TCPPORT','Port TCP');
 define('_CONFIRMATION','Confirmation');
 define('_NOTE','Note');
-define('_SUCCESSFUL','Successful');
-define('_FAILED','Failed');
-define('_ERROR','Error');
-define('_HINT','Hint');
+define('_SUCCESSFUL', 'Succ&egrave;s');
+define('_FAILED', 'Echec');
+define('_ERROR', 'Erreur');
+define('_HINT', 'Information');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Les modifications ont &eacute;t&eacute; appliqu&eacute;es avec succ&egrave;s.');
@@ -137,7 +137,6 @@ define('_MSGVALIDIP','Une adresse IP valide doit &ecirc;tre sp&eacute;cifi&eacut
 define('_MSGVALIDNETBIT','Un nombre de bit valide doit &ecirc;tre sp&eacute;cifi&eacute;.');
 define('_MSGVALIDTCPPORT','Le port TCP doit &ecirc;tre un nombre valide compris entre 1024 et 65564.');
 define('_MSGVALIDPASSWORD','Les mots de passe ne correspondent pas.');
-
 define('_MSGSCHED_TEXT','Note: Ctrl-clic (ou command-clic sur Mac) pour s&eacute;lectionner et d&eacute;s&eacute;lectionner minutes, heures, jours et mois.');
 
 // states
@@ -292,7 +291,7 @@ define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Desactiver le chargement de mise a jour')
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','Fichier image de mise &agrave; jour');	
 define('_SYSTEMFIRMWAREPHP_UPFIRM','Charger');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','Vous devez red&eacute;marrer le systeme avant de pouvoir faire une mise a jour.');
-define('_SYSTEMFIRMWAREPHP_DONOTABORT','N\'ANNULEZ PAS la mise &agrave; jour une fois commenc&eacute;e. FreeNAS red&eacute;marrera automatiquement apr&egrave;s installation de la mise &agrave; jour.<br>La configuration sera maintenue.<br>128 Mo de RAM sont n&eacute;cessaires pour la mise &agrave; jour.');
+define('_SYSTEMFIRMWAREPHP_DONOTABORT','N\'ANNULEZ PAS la mise &agrave; jour une fois commenc&eacute;e.<br>FreeNAS red&eacute;marrera automatiquement apr&egrave;s installation de la mise &agrave; jour.<br>La configuration sera maintenue.<br>128 Mo de RAM sont n&eacute;cessaires pour la mise &agrave; jour.');
 
 // System Advanced Module
 // file: system_advanced.php
@@ -467,8 +466,8 @@ define('_DISKSRAIDPHP_UNSTABLE','(instable)');
 define('_DISKSRAIDPHP_NAMEDESC','RAID');
 define('_DISKSRAIDPHP_MSGCHANGED','La configuration RAID a &eacute;t&eacute; chang&eacute;e.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
 define('_DISKSRAIDPHP_TYPE','Type');
-define('_DISKSRAIDPHP_EDITRAID','Modifier RAID');
-define('_DISKSRAIDPHP_DELRAID','Supprimer RAID');
+define('_DISKSRAIDPHP_EDITRAID','Modifier un RAID');
+define('_DISKSRAIDPHP_DELRAID','Supprimer un RAID');
 define('_DISKSRAIDPHP_ADDRAID','Ajouter un RAID');
 define('_DISKSRAIDPHP_DELCONF','Voulez-vous vraiment supprimer ce volume RAID? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s (par ex. share)!');
 define('_DISKSRAIDPHP_NOTE','Etape optionnelle: Configurer un disque RAID virtuel en utilisant votre<br><a href=disks_manage.php>disque configur&eacute; pr&eacute;c&eacute;demment</a>.<br>Attendez l\'apparition de l\'&eacute;tat "UP" avant de le formater et de le monter!.');
@@ -513,7 +512,7 @@ define('_DISKSMOUNTPHP_TOOLS','Outils');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','La liste des points de montage a &eacute;t&eacute; modifi&eacute;e.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
-define('_DISKSMOUNTPHP_NOTE','Deuxi&egrave;me &eacute;tape de la configuration: D&eacute;clarer le syst&egrave;me de fichiers utilis&eacute; par votre <a href="disks_manage.php">disque configur&eacute; pr&eacute;c&eacute;demment</a>.');
+define('_DISKSMOUNTPHP_NOTE','Deuxi&egrave;me &eacute;tape de la configuration: D&eacute;clarer le syst&egrave;me de fichiers utilis&eacute; par votre <a href="disks_manage.php">disque configur&eacute; pr&eacute;c&eacute;demment<\a>.');
 define('_DISKSMOUNTPHP_DELCONF','Voulez-vous vraiment supprimer ce point de montage? Tous les &eacute;l&eacute;ments l\'utilisant seront invalid&eacute;s!');
 define('_DISKSMOUNTPHP_DEL','Supprimer le point de montage');
 define('_DISKSMOUNTPHP_ADD','Ajouter un point de montage');
@@ -523,7 +522,7 @@ define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','Le nom de partage doit contenir unique
 define('_DISKSMOUNTEDITPHP_MSGVALIDDESC','La description contient des caract&egrave;res invalides.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Impossible de monter la partition syst&egrave;me 1, la partition de donn&eacute;es est la deuxi&egrave;me.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','Nom de partage dupliqu&eacute;.');
-define('_DISKSMOUNTEDITPHP_TEXT','1. Vous ne pouvez pas monter la partition \'%s\' car elle contient le fichier de configuration.<br>2. Le support NTFS de FreeBSD est bogu&eacute;.');
+define('_DISKSMOUNTEDITPHP_TEXT','1. Vous ne pouvez pas monter la partition \%s\' car elle contient le fichier de configuration.<br>2. Le support NTFS de FreeBSD est bogu&eacute;.');
 
 // disks_mount_tools.php
 define('_DISKSMOUNTTOOLS_COMMAND','Commande');
@@ -533,10 +532,10 @@ define('_DISKSMOUNTTOOLS_MOUNTTEXT','Montage...');
 define('_DISKSMOUNTTOOLS_UMOUNTTEXT','D&eacute;montage...');
 
 // Service: CIFS/SAMBA
-// Common text
-define('_SRVCIFS_SETTINGS','Settings');
-define('_SRVCIFS_SHARE','Share');
-define('_SRVCIFS_SHARES','Shares');
+//Common text
+define('SRVCIFS_SETTINGS','R&eacute;glages');
+define('SRVCIFS_SHARE','Partage');
+define('SRVCIFS_SHARES','Partages');
 
 // file: services_samba.php
 define('_SRVCIFS_NAMEDESC','CIFS');
@@ -568,18 +567,18 @@ define('_SRVCIFS_SNBBUFFTEXT','Taille du tampon d\'envoi (16384 par d&eacute;fau
 define('_SRVCIFS_RCVBUFF','Taille du tampon de r&eacute;ception');
 define('_SRVCIFS_RCVBUFFTEXT','Taille du tampon de r&eacute;ception (16384 par d&eacute;faut).');
 
-// file: services_samba_share.php
-define('_SRVCIFSSHARE_MSGCHANGED','The shares has been modified.<br>You must apply the changes in order for them to take effect.');
-define('_SRVCIFSSHARE_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
-define('_SRVCIFSSHARE_BROWSEABLE','Browseable');
+//file: services_samba_share.php
+define('_SRVCIFSSHARE_MSGCHANGED','Les partages ont &eacute;t&eacute; modifi&eacute;s.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
+define('_SRVCIFSSHARE_SHARENAME',_DISKMOUNTPHP_SHARENAME);
+define('_SRVCIFSSHARE_BROWSEABLE','Visible');
 define('_SRVCIFSSHARE_DESC',_DESC);
-define('_SRVCIFSSHARE_EDIT','Edit share');
+define('_SRVCIFSSHARE_EDIT','Modifier un partage');
 
-// file: services_samba_share_edit.php
-define('_SRVCIFSSHAREEDIT_SHARENAME',_DISKSMOUNTPHP_SHARENAME);
+//file: services_samba_share_edit.php
+define('_SRVCIFSSHAREEDIT_SHARENAME',_DISKMOUNTPHP_SHARENAME);
 define('_SRVCIFSSHAREEDIT_DESC',_DESC);
-define('_SRVCIFSSHAREEDIT_BROWSEABLE','Browseable');
-define('_SRVCIFSSHAREEDIT_BROWSEABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
+define('_SRVCIFSSHAREEDIT_BROWSEABLE','Visible');
+define('_SRVCIFSSHAREEDIT_BROWSEABLETEXT','Indique si le partage doit &ecirc;tre visible depuis la vue r&eacute;seau du client.');
 
 // Service: FTP
 // file: services_ftp.php
@@ -621,7 +620,6 @@ define('_SRVFTP_BANNERTEXT','Banni&egrave;re d\'accueil affich&eacute;e par le s
 
 // Service: NFS
 // file: services_nfs.php
-
 define('_SRVNFS_NAMEDESC','NFS');
 define('_SRVNFS_MSGVALIDNET','Un r&eacute;seau valide doit &ecirc;tre sp&eacute;cifi&eacute;.');
 define('_SRVNFS_MSGVALIDNETBIT',_MSGVALIDNETBIT);
@@ -747,7 +745,6 @@ define('_ACCESSUSERSEDIT_FULLSHELL','Shell complet');
 define('_ACCESSUSERSEDIT_FULLSHELLTEXT','Donne l\'acc&egrave;s complet au shell');
 
 // file: access_users_groups.php
-
 define('_ACCESSGROUPS_MSGCHANGED','La liste des groupes a &eacute;t&eacute; modifi&eacute;e.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
 define('_ACCESSGROUPS_DESC',_DESC);
 define('_ACCESSGROUPS_GROUPEDIT','modifier le groupe');
@@ -756,7 +753,6 @@ define('_ACCESSGROUPS_GROUPDELCONF','Voulez-vous vraiment supprimer ce groupe?!'
 define('_ACCESSGROUPS_GROUPADD','ajouter un groupe');
 
 // file: access_users_groups_edit.php
-
 define('_ACCESSGROUPSEDIT_MSGVALIDNAME','Le nom du groupe contient un caract&egrave;re invalide.');
 define('_ACCESSGROUPSEDIT_MSGVALIDDESC','La description du groupe contient un caract&egrave;re invalide.');
 define('_ACCESSGROUPSEDIT_MSGVALIDDUPLICATE','Ce groupe existe d&eacute;j&agrave;.');
@@ -766,7 +762,6 @@ define('_ACCESSGROUPSEDIT_DESC',_DESC);
 define('_ACCESSGROUPSEDIT_DESCTEXT','Description du groupe.');
 
 // file: access_ad.php
-
 define('_ACCESSAD_NAME','Active Directory');
 define('_ACCESSAD_MSGVALIDIP',_MSGVALIDIP);
 define('_ACCESSAD_MSGVALIDPASSERROR',_MSGVALIDPASSWORD);
@@ -782,17 +777,14 @@ define('_ACCESSAD_ADMINPASS','Mot de passe admin');
 define('_ACCESSAD_ADMINPASSTEXT','Mot de passe d\'un compte administrateur du domaine, &agrave; entrer 2 fois.');
 
 // Diagnostics
-
 define('_DIAG_NAME','Diagnostics');
 
 // file: shutdown.php
-
 define('_SHUT_NAME',_MENULEFT_CMDSHUTDOWNSYS);
 define('_SHUT_MSGSHUT','Le syst&egrave;me est en cours d\'arr&ecirc;t. Ceci peut prendre jusqu\'&agrave; une minute.');
 define('_SHUT_CONF','Etes-vous s&ucirc;r de vouloir arr&ecirc;ter le NAS?');
 
 // file: shutdown_sched.php
-
 define('_SHUTSCHED_NAME','Arr&ecirc;t programm&eacute;');
 define('_SHUTSCHED_TIME','Heure d\'arr&ecirc;t');
 define('_SHUTSCHED_TEXT',_MSGSCHED_TEXT);
@@ -915,13 +907,13 @@ define('_DIAGBACKUP_RESTORENOTE','FreeNAS red&eacute;marrera apr&egrave;s  avoir
 // file: diag_arp.php
 define('_DIAGARP_NAME',_MENULEFT_DIAGNOSTICS);
 define('_DIAGARP_NAMEDESC',_MENULEFT_DIAGARPTAB);
-define('_DIAGARP_IPADDRESS','IP address');
-define('_DIAGARP_MACADDRESS','MAC address');
-define('_DIAGARP_HOSTNAME','Hostname');
+define('_DIAGARP_IPADDRESS','Adresse IP');
+define('_DIAGARP_MACADDRESS','Adresse MAC');
+define('_DIAGARP_HOSTNAME','Nom d\'hote');
 define('_DIAGARP_INTERFACE','Interface');
-define('_DIAGARP_DEL','Delete ARP entry');
-define('_DIAGARP_DELALL','Remove all entries from ARP table');
-define('_DIAGARP_NOTE','IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href="diag_logs_settings.php">Diagnostics: Logs</a> page.');
+define('_DIAGARP_DEL','Supprimer l\'entr&eacute;e ARP');
+define('_DIAGARP_DELALL','Supprimer toutes les entr&eacute;es de la table ARP');
+define('_DIAGARP_NOTE','Les adresses IP sont r&eacute;solues en nom d\'h&ocirc;tes si &quot;Resolve IP addresses to hostnames&quot; est coch&eacute; sur la page <a href="diag_logs_settings.php">Diagnostics: Journaux</a>.');
 
 // file: status_graph.php
 define('_STATSGRAPH_NAME',_MENULEFT_STATUS);
@@ -936,5 +928,5 @@ define('_GRAPH_AUTOSCALE','Echelle auto');
 define('_GRAPH_AUTOSCALE_FOLLOW','Suivre');
 define('_GRAPH_AUTOSCALE_UP','Remonter');
 define('_GRAPH_SHOWLAST','Afficher les dernieres');
-define('_GRAPH_COLLECTDATA','Collecte des premiees donnees, veuillez patienter...');
+define('_GRAPH_COLLECTDATA','Collecte des premieres donnees, veuillez patienter...');
 ?>
