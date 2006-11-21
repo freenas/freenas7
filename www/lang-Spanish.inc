@@ -428,6 +428,56 @@ define('_SRVCIFSSHAREEDIT_DESC',_DESC);
 define('_SRVCIFSSHAREEDIT_BROWSEABLE','Browseable');
 define('_SRVCIFSSHAREEDIT_BROWSEABLETEXT','This controls whether this share is seen in the list of available shares in a net view and in the browse list.');
 
+// Service: FTP
+// file: services_ftp.php
+define('_SRVFTP_NAMEDESC','FTP');
+define('_SRVFTP_MSGVALIDPORT',_MSGVALIDTCPPORT);
+define('_SRVFTP_MSGVALIDMAXCLIENT','The maximum Number of client must be a number.');
+define('_SRVFTP_MSGVALIDMAXIP','The max con per ip must be a number.');
+define('_SRVFTP_MSGVALIDIDLE','The maximum idle time be a number.');
+define('_SRVFTP_MSGVALIDPASVIP','The pasv address must be a public IP address.');
+define('_SRVFTP_MSGVALIDPASVMAX','The pasv_max_port port must be a valid port number.');
+define('_SRVFTP_MSGVALIDPASVMIN','The pasv_min_port port must be a valid port number.');
+define('_SRVFTP_MSGVALIDAUTH','You must select at minium anonymous or/and local user authentication.');
+define('_SRVFTP_FTPSERVER','FTP Server');
+define('_SRVFTP_TCP',_TCPPORT);
+define('_SRVFTP_MAXCLIENT','Number of clients');
+define('_SRVFTP_MAXCLIENTTEXT','Maximum number of simultaneous clients.');
+define('_SRVFTP_MAXIP','Max. conn. per IP');
+define('_SRVFTP_MAXIPTEXT','Maximum number of connections per IP address (0 = unlimited).');
+define('_SRVFTP_TIMEOUT','Timeout');
+define('_SRVFTP_TIMEOUTTEXT','Maximum idle time in seconds.');
+define('_SRVFTP_ANONYMOUS','Anonymous login');
+define('_SRVFTP_ENANONYMOUS','Enable anonymous login.');
+define('_SRVFTP_AUTH','Local User');
+define('_SRVFTP_ENAUTH','Enable local user login.');
+define('_SRVFTP_FXP','FXP');
+define('_SRVFTP_ENFXP','Enable FXP protocol.');
+define('_SRVFTP_FXPTEXT','FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!).');
+define('_SRVFTP_NATMODE','NAT mode');
+define('_SRVFTP_ENNATMODE','Force NAT mode');
+define('_SRVFTP_NATMODETEXT','Enable it if your FTP server is behind a NAT box that doesn\'t support applicative FTP proxying.');
+define('_SRVFTP_PASSIVEIP','Passive IP address');
+define('_SRVFTP_PASSIVEIPTEXT','Use this option to override the IP address that FTP daemon will advertise in response to the PASV command.');
+define('_SRVFTP_PASVMIN','pasv_min_port');
+define('_SRVFTP_PASVMINTEXT','The minimum port to allocate for PASV style data connections (0 = use any port).');
+define('_SRVFTP_PASVMAX','pasv_max_port');
+define('_SRVFTP_PASVMAXTEXT','The maximum port to allocate for PASV style data connections (0 = use any port).');
+define('_SRVFTP_BANNER','Banner');
+define('_SRVFTP_BANNERTEXT','Greeting banner displayed by FTP when a connection first comes in.');
+
+// Service: NFS
+// file: services_nfs.php
+define('_SRVNFS_NAMEDESC','NFS');
+define('_SRVNFS_MSGVALIDNET','A valid network must be specified.');
+define('_SRVNFS_MSGVALIDNETBIT',_MSGVALIDNETBIT);
+define('_SRVNFS_NFSERVER','NFS Server');
+define('_SRVNFS_MAPALLROOT','Map all user to root');
+define('_SRVNFS_MAPALLROOTTEXT','All users will have the root privilege.');
+define('_SRVNFS_AUTHNET','Authorised network');
+define('_SRVNFS_AUTHNETTEXT','Network that is authorised to access to NFS share');
+define('_SRVNFS_TEXT','The name of the exported directories are : /mnt/sharename');
+
 // Status Processes Module
 // file: status_processes.php
 define('_STATSPROCPHP_NAME','Estado');
