@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	services_ftp.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -31,18 +31,13 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(_SERVICES, _SRVFTP_NAMEDESC);
 
-
-if (!is_array($config['ftp']))
-{
+if (!is_array($config['ftp'])) {
 	$config['ftp'] = array();
-	
 }
-
 
 $pconfig['enable'] = isset($config['ftp']['enable']);
 $pconfig['port'] = $config['ftp']['port'];
@@ -59,68 +54,54 @@ $pconfig['natmode'] = isset($config['ftp']['natmode']);
 $pconfig['passiveip'] = $config['ftp']['passiveip'];
 $pconfig['fxp'] = isset($config['ftp']['fxp']);
 
-
-
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
 	/* input validation */
 	$reqdfields = array();
 	$reqdfieldsn = array();
-	
+
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "numberclients maxconperip timeout port"));
-		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Numberclients,Maxconperip,Timeout,Port"));
+		$reqdfields = array_merge($reqdfields, explode(" ", "port numberclients maxconperip timeout"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVFTP_TCP,_SRVFTP_MAXCLIENT,_SRVFTP_MAXIP,_SRVFTP_TIMEOUT));
 	}
-	
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
-	if ($_POST['enable'] && !is_port($_POST['port']))
-	{
+
+	if ($_POST['enable'] && !is_port($_POST['port'])) {
 		$input_errors[] = _SRVFTP_MSGVALIDPORT;
 	}
 	if ($_POST['enable'] && !is_numericint($_POST['numberclients'])) {
 		$input_errors[] = _SRVFTP_MSGVALIDMAXCLIENT;
 	}
-	
 	if ($_POST['enable'] && !is_numericint($_POST['maxconperip'])) {
 		$input_errors[] = _SRVFTP_MSGVALIDMAXIP;
 	}
 	if ($_POST['enable'] && !is_numericint($_POST['timeout'])) {
 		$input_errors[] = _SRVFTP_MSGVALIDIDLE;
 	}
-	
-	if ($_POST['enable'] && ($_POST['pasv_address']))
-	{
+	if ($_POST['enable'] && ($_POST['pasv_address'])) {
 		if (!is_ipaddr($_POST['pasv_address']))
 			$input_errors[] = _SRVFTP_MSGVALIDPASVIP;
 	}
-	
-	if ($_POST['enable'] && ($_POST['pasv_max_port']))
-	{
+	if ($_POST['enable'] && ($_POST['pasv_max_port'])) {
 		if (!is_port($_POST['pasv_max_port']))
 			$input_errors[] = _SRVFTP_MSGVALIDPASVMAX;
 	}
-	
-	if ($_POST['enable'] && ($_POST['pasv_min_port']))
-	{
+	if ($_POST['enable'] && ($_POST['pasv_min_port'])) {
 		if (!is_port($_POST['pasv_min_port']))
 			$input_errors[] = _SRVFTP_MSGVALIDPASVMIN;
 	}
-	
 	if (($_POST['passiveip'] && !is_ipaddr($_POST['passiveip']))) {
 		$input_errors[] = _INTPHP_MSGVALIDIP;
 	}
-	
 	if (!($_POST['anonymous']) && !($_POST['localuser'])) {
 		$input_errors[] = _SRVFTP_MSGVALIDAUTH;
 	}
-	
-	if (!$input_errors)
-	{
-		$config['ftp']['numberclients'] = $_POST['numberclients'];	
+
+	if (!$input_errors) {
+		$config['ftp']['numberclients'] = $_POST['numberclients'];
 		$config['ftp']['maxconperip'] = $_POST['maxconperip'];
 		$config['ftp']['timeout'] = $_POST['timeout'];
 		$config['ftp']['port'] = $_POST['port'];
@@ -134,9 +115,9 @@ if ($_POST) {
 		$config['ftp']['fxp'] = $_POST['fxp'] ? true : false;
 		$config['ftp']['natmode'] = $_POST['natmode'] ? true : false;
 		$config['ftp']['enable'] = $_POST['enable'] ? true : false;
-		
+
 		write_config();
-		
+
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			/* nuke the cache file */
@@ -147,16 +128,13 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 	}
-	
 }
 ?>
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
-	var endis;
-	
-	endis = !(document.iform.enable.checked || enable_change);
+	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.port.disabled = endis;
 	document.iform.timeout.disabled = endis;
 	document.iform.numberclients.disabled = endis;
@@ -170,103 +148,105 @@ function enable_change(enable_change) {
 	document.iform.pasv_max_port.disabled = endis;
 	document.iform.pasv_min_port.disabled = endis;
 	document.iform.pasv_address.disabled = endis;
-
 }
 //-->
 </script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-            <form action="services_ftp.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td colspan="2" valign="top" class="optsect_t">
-				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong><?=_SRVFTP_FTPSERVER;?></strong></td>
-				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE; ?></strong></td></tr>
-				  </table></td>
-                </tr>
-                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_TCP; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
-                  </td>
-				</tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_MAXCLIENT; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="numberclients" type="text" class="formfld" id="numberclients" size="20" value="<?=htmlspecialchars($pconfig['numberclients']);?>"> 
-                  <br><?=_SRVFTP_MAXCLIENTTEXT; ?></td>
-				</tr>
-                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_MAXIP; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="maxconperip" type="text" class="formfld" id="maxconperip" size="20" value="<?=htmlspecialchars($pconfig['maxconperip']);?>">
-                    <br><?=_SRVFTP_MAXIPTEXT; ?></td>
-				</tr>
-                  <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_TIMEOUT ;?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="timeout" type="text" class="formfld" id="timeout" size="20" value="<?=htmlspecialchars($pconfig['timeout']);?>">
-                    <br><?=_SRVFTP_TIMEOUTTEXT ;?></td>
-				</tr>
-                  <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVFTP_ANONYMOUS;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="anonymous" type="checkbox" id="anonymous" value="yes" <?php if ($pconfig['anonymous']) echo "checked"; ?>>
-                    <?=_SRVFTP_ENANONYMOUS;?></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVFTP_AUTH;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="localuser" type="checkbox" id="localuser" value="yes" <?php if ($pconfig['localuser']) echo "checked"; ?>>
-                    <?=_SRVFTP_ENAUTH;?></td>
-                </tr>
-                    <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVFTP_BANNER;?></td>
-                  <td width="78%" class="vtable"> 
-                    <textarea name="banner" cols="65" rows="7" id="banner" class="formpre"><?=htmlspecialchars($pconfig['banner']);?></textarea>
-                    <br> 
-                    <?=_SRVFTP_BANNERTEXT;?></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVFTP_FXP;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="fxp" type="checkbox" id="fxp" value="yes" <?php if ($pconfig['fxp']) echo "checked"; ?>>
-                    <?=_SRVFTP_ENFXP;?><span class="vexpl"><br>
-                    <?=_SRVFTP_FXPTEXT;?></span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVFTP_NATMODE;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="natmode" type="checkbox" id="natmode" value="yes" <?php if ($pconfig['natmode']) echo "checked"; ?>>
-                    <?=_SRVFTP_ENNATMODE;?><span class="vexpl"><br>
-                    <?=_SRVFTP_NATMODETEXT;?></span></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVFTP_PASSIVEIP; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="passiveip" type="text" class="formfld" id="passiveip" size="30" value="<?=htmlspecialchars($pconfig['passiveip']);?>">
-                    <br><?=_SRVFTP_PASSIVEIPTEXT; ?></td>
-				</tr>
-				<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVFTP_PASVMIN; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>"> 
-                  <br><?=_SRVFTP_PASVMINTEXT; ?></td>
-				</tr>
-				<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVFTP_PASVMAX; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>"> 
-                  <br><?=_SRVFTP_PASVMAXTEXT; ?></td>
-				</tr>
-				<tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)"> 
-                  </td>
-                </tr>
-                </table>
+<form action="services_ftp.php" method="post" name="iform" id="iform">
+  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+    <tr>
+      <td colspan="2" valign="top" class="optsect_t">
+        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+				  <tr>
+            <td class="optsect_s"><strong><?=_SRVFTP_FTPSERVER;?></strong></td>
+				    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE; ?></strong></td>
+          </tr>
+				</table>
+      </td>
+    </tr>
+     <tr>
+      <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_TCP; ?></td>
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
+      </td>
+    </tr>
+    <tr>
+      <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_MAXCLIENT; ?></td>
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="numberclients" type="text" class="formfld" id="numberclients" size="20" value="<?=htmlspecialchars($pconfig['numberclients']);?>">
+      <br><?=_SRVFTP_MAXCLIENTTEXT; ?></td>
+    </tr>
+    <tr>
+      <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_MAXIP; ?></td>
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="maxconperip" type="text" class="formfld" id="maxconperip" size="20" value="<?=htmlspecialchars($pconfig['maxconperip']);?>">
+        <br><?=_SRVFTP_MAXIPTEXT; ?></td>
+    </tr>
+    <tr>
+      <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_TIMEOUT ;?></td>
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="timeout" type="text" class="formfld" id="timeout" size="20" value="<?=htmlspecialchars($pconfig['timeout']);?>">
+        <br><?=_SRVFTP_TIMEOUTTEXT ;?></td>
+    </tr>
+    <tr>
+      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_ANONYMOUS;?></td>
+      <td width="78%" class="vtable">
+        <input name="anonymous" type="checkbox" id="anonymous" value="yes" <?php if ($pconfig['anonymous']) echo "checked"; ?>>
+        <?=_SRVFTP_ENANONYMOUS;?></td>
+    </tr>
+    <tr>
+      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_AUTH;?></td>
+      <td width="78%" class="vtable">
+        <input name="localuser" type="checkbox" id="localuser" value="yes" <?php if ($pconfig['localuser']) echo "checked"; ?>>
+        <?=_SRVFTP_ENAUTH;?></td>
+    </tr>
+        <tr>
+      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_BANNER;?></td>
+      <td width="78%" class="vtable">
+        <textarea name="banner" cols="65" rows="7" id="banner" class="formpre"><?=htmlspecialchars($pconfig['banner']);?></textarea>
+        <br>
+        <?=_SRVFTP_BANNERTEXT;?></td>
+    </tr>
+    <tr>
+      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_FXP;?></td>
+      <td width="78%" class="vtable">
+        <input name="fxp" type="checkbox" id="fxp" value="yes" <?php if ($pconfig['fxp']) echo "checked"; ?>>
+        <?=_SRVFTP_ENFXP;?><span class="vexpl"><br>
+        <?=_SRVFTP_FXPTEXT;?></span></td>
+    </tr>
+    <tr>
+      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_NATMODE;?></td>
+      <td width="78%" class="vtable">
+        <input name="natmode" type="checkbox" id="natmode" value="yes" <?php if ($pconfig['natmode']) echo "checked"; ?>>
+        <?=_SRVFTP_ENNATMODE;?><span class="vexpl"><br>
+        <?=_SRVFTP_NATMODETEXT;?></span></td>
+    </tr>
+    <tr>
+      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_PASSIVEIP; ?></td>
+      <td width="78%" class="vtable">
+        <input name="passiveip" type="text" class="formfld" id="passiveip" size="20" value="<?=htmlspecialchars($pconfig['passiveip']);?>">
+        <br><?=_SRVFTP_PASSIVEIPTEXT; ?></td>
+  	</tr>
+  	<tr>
+      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_PASVMIN; ?></td>
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>">
+      <br><?=_SRVFTP_PASVMINTEXT; ?></td>
+  	</tr>
+  	<tr>
+      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_PASVMAX; ?></td>
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>">
+      <br><?=_SRVFTP_PASVMAXTEXT; ?></td>
+  	</tr>
+  	<tr>
+      <td width="22%" valign="top">&nbsp;</td>
+      <td width="78%">
+        <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)">
+      </td>
+    </tr>
+  </table>
 </form>
 <script language="JavaScript">
 <!--

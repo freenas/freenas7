@@ -506,7 +506,7 @@ function services_vsftpd_configure() {
 		if ($g['booting'])
 			echo "Starting FTP server... ";
 
-		/* generate vfstpd.conf */
+		/* generate vsftpd.conf */
 		$fd = fopen("{$g['varetc_path']}/vsftpd.conf", "w");
 		if (!$fd) {
 			printf("Error: cannot open vsftpd.conf in services_vsftpd_configure().\n");
@@ -584,78 +584,68 @@ EOD;
 	return 0;
 }
 
+/* Stop the pure-ftpd process and re-start it. */
 function services_pureftpd_configure() {
-
-	// Stop the pure-ftpd process and re-start it
-	
 	global $config, $g;
 
 	/* kill any Pure-FTPD */
 	killbyname("pure-ftpd");
 
 	if (isset($config['ftp']['enable'])) {
-	
 		if ($g['booting'])
 			echo "Starting FTP server... ";
-			
+
 		/* Generate the banner file */
-			
 		$fd = fopen("/mnt/.banner", "w");
 		if (!$fd) {
 			printf("Error: cannot open .banner in services_pureftpd_configure().\n");
 			return 1;
 		}
-		
+
 		if (empty($config['ftp']['banner'])) {
 			$banner = <<<EOD
 Welcome to FreeNAS FTP service
-	
+
 EOD;
 		} else {
 			$banner = <<<EOD
 {$config['ftp']['banner']}
-	
+
 EOD;
 		}
-			
+
 		fwrite($fd, $banner);
 		fclose($fd);
 			
-			
 		/* run pure-ftpd */
-		
 		$cmd = "/usr/local/sbin/pure-ftpd -S {$config['ftp']['port']} -c {$config['ftp']['numberclients']} -C {$config['ftp']['maxconperip']} -I {$config['ftp']['timeout']} -M U 077:077 -B -b ";
-		
+
 		if ( (isset($config['ftp']['anonymous'])) && (!isset($config['ftp']['localuser'])))
 			$cmd .= "-e ";
-			
+
 		if ( (!isset($config['ftp']['anonymous'])) && (isset($config['ftp']['localuser'])))
 			$cmd .= "-E ";
-		
+
 		if ($config['ftp']['pasv_min_port'] && $config['ftp']['pasv_max_port'])
 			$cmd .= "-p {$config['ftp']['pasv_min_port']}:{$config['ftp']['pasv_max_port']} ";
-			
+
 		if ($config['ftp']['pasv_address'])
 			$cmd .= "-P {$config['ftp']['pasv_address']} ";
-			
+
 		if ($config['ftp']['natmode'])
 			$cmd .= "-N ";
-			
+
 		if ($config['ftp']['passiveip'])
 			$cmd .= "-P {$config['ftp']['passiveip']} ";
-			
+
 		if ($config['ftp']['fxp'])
 			$cmd .= "-W ";
-		
-		
-		mwexec($cmd);
 
+		mwexec($cmd);
 
 		if ($g['booting'])
 			echo "done\n";
-	}
-			
-		
+  }
 	return 0;
 }
 
