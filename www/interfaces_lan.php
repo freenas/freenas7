@@ -93,13 +93,13 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		if($_POST['type'] == "Static") {
+    if($_POST['type'] == "Static") {
       $config['interfaces']['lan']['ipaddr'] = $_POST['ipaddr'];
-			$config['interfaces']['lan']['subnet'] = $_POST['subnet'];
-			$config['interfaces']['lan']['gateway'] = $_POST['gateway'];
-		} else if ($_POST['type'] == "DHCP") {
-			$config['interfaces']['lan']['ipaddr'] = "dhcp";
-		}
+      $config['interfaces']['lan']['subnet'] = $_POST['subnet'];
+      $config['interfaces']['lan']['gateway'] = $_POST['gateway'];
+    } else if ($_POST['type'] == "DHCP") {
+      $config['interfaces']['lan']['ipaddr'] = "dhcp";
+    }
 
 		$config['interfaces']['lan']['mtu'] = $_POST['mtu'];
 		$config['interfaces']['lan']['media'] = $_POST['media'];
@@ -107,7 +107,14 @@ if ($_POST) {
 		$config['interfaces']['lan']['polling'] = $_POST['polling'] ? true : false;
 
 		write_config();
-		interfaces_lan_configure();
+		
+		$retval = 0;
+		if(!file_exists($d_sysrebootreqd_path)) {
+			config_lock();
+			interfaces_lan_configure();
+			config_unlock();
+		}
+		$savemsg = get_std_save_message($retval);
 	}
 }
 ?>
@@ -204,14 +211,14 @@ function type_change() {
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPCLIENTIDENTIFIER;?></td>
                   <td width="78%" class="vtable">
-                    <input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
+                    <?=$mandfldhtml;?><input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
                     <br><span class="vexpl"><?=_INTPHP_DHCPCLIENTIDENTIFIERTEXT;?></span>
                   </td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPHOSTNAME;?></td>
                   <td width="78%" class="vtable">
-                    <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled>
+                    <?=$mandfldhtml;?><input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled>
                     <br><span class="vexpl"><?=_INTPHP_DHCPHOSTNAMETEXT;?></span>
                   </td>
                 </tr>
