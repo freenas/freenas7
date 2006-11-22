@@ -241,7 +241,7 @@ define('_INDEXPHP_DATE','Datum');
 define('_INDEXPHP_UPTIME','Laufzeit');
 define('_INDEXPHP_LASTCHANGE','Letzte &Auml;nderung abgespeichert');
 define('_INDEXPHP_MEMUSE','Speicher Belegung');
-define('_INDEXPHP_LOADAVERAGE','Lade Durchschnitte');
+define('_INDEXPHP_LOADAVERAGE','Durschnittliche Last');
 define('_INDEXPHP_SHOWPROCESSING','Zeige Prozess Informationen');
 define('_INDEXPHP_DISKS_USE','Festplattenauslastung');
 define('_INDEXPHP_NODISK','Keine Festplatte konfiguriert');
