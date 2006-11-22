@@ -192,7 +192,7 @@ define('_MENULEFT_GRAPH','Graph');
 define('_SYSTEMPHP_MODULE_NAME','Sistema');
 define('_SYSTEMPHP_MODULE_NAME_DESCRIPTION','Configuración General');
 define('_SYSTEMPHP_HOSTNAME','Nombre de Host');
-define('_SYSTEMPHP_HOSTNAMETEXT','nombre del host, sin la parte del dominio<br>e.j. <em>nas');
+define('_SYSTEMPHP_HOSTNAMETEXT','Nombre del host, sin la parte del dominio<br>e.j. <em>nas');
 define('_SYSTEMPHP_DOMAIN','Dominio');
 define('_SYSTEMPHP_DOMAINTEXT','e.j. <em>micorp.com</em>');
 define('_SYSTEMPHP_DNS','Servidores DNS');
@@ -208,9 +208,9 @@ define('_SYSTEMPHP_WEBGUIPORTTEXT','Introduzca un puerto personalizado si desea 
 define('_SYSTEMPHP_LANGUAGE','Idioma');
 define('_SYSTEMPHP_LANGUAGETEXT','Seleccione el idioma del sistema');
 define('_SYSTEMPHP_TIMEZONE','Zona horaria');
-define('_SYSTEMPHP_TIMEZONETEXT','Seleccione el lugar más cerca a usted');
+define('_SYSTEMPHP_TIMEZONETEXT','Seleccione el lugar más cerca a usted.');
 define('_SYSTEMPHP_TIMEUPDATEINT','Intervalo de actualización de tiempo');
-define('_SYSTEMPHP_TIMEUPDATEINTTEXT','Minutos entre la sincronización de tiempo por la red.; 300	recomendado, o 0 para deshabilitar');
+define('_SYSTEMPHP_TIMEUPDATEINTTEXT','Minutos entre la sincronización de tiempo por la red.; 300	recomendado, o 0 para deshabilitar.');
 define('_SYSTEMPHP_NTPSERVER','Servidor NTP');
 define('_SYSTEMPHP_NTPSERVERTEXT','Use espacio para separar varios servidores (solo se requiere uno). Recuerde configurar al menos un servidor DNS si introduce un nombre aquí!');
 
@@ -525,8 +525,98 @@ define('_SYSTEMFIRMWAREPHP_DONOTABORT','No aborte el proceso una vez que comienc
 
 // System Advanced Module
 // file: system_advanced.php
-define('_SYSTEMADVANCEDPHP_NAME','Sistema');
-define('_SYSTEMADVANCEDPHP_NAMEDESC','Configuración Avanzada');
+define('_SYSTEMADVANCEDPHP_NAME',_MENULEFT_SYSTEM);
+define('_SYSTEMADVANCEDPHP_NAMEDESC',_MENULEFT_SYSADVANCED);
+define('_SYSTEMADVANCEDPHP_MSGVALIDTCP','The TCP idle timeout must be an integer.');
+define('_SYSTEMADVANCEDPHP_MSGVALIDCERTKEY','Certificate and key must always be specified together.');
+define('_SYSTEMADVANCEDPHP_MSGVALIDCERT','This certificate does not appear to be valid.');
+define('_SYSTEMADVANCEDPHP_MSGVALIDKEY','This key does not appear to be valid.');
+define('_SYSTEMADVANCEDPHP_NOTE','The options on this page are intended for use by advanced users only, and there\'s <strong>NO</strong> support for them.');
+define('_SYSTEMADVANCEDPHP_WEBGUISSLKEY','webGUI SSL certificate\/key');
+define('_SYSTEMADVANCEDPHP_WEBCERT','Certificate');
+define('_SYSTEMADVANCEDPHP_WEBCERTTEXT','Paste a signed certificate in X.509 PEM format here.');
+define('_SYSTEMADVANCEDPHP_WEBKEY','Key');
+define('_SYSTEMADVANCEDPHP_WEBKEYTEXT','Paste an RSA private key in PEM format here.');
+define('_SYSTEMADVANCEDPHP_MISC','Miscellaneous');
+define('_SYSTEMADVANCEDPHP_CON','Console menu');
+define('_SYSTEMADVANCEDPHP_DISCON','Disable console menu');
+define('_SYSTEMADVANCEDPHP_CONTEXT','Changes to this option will take effect after a reboot.');
+define('_SYSTEMADVANCEDPHP_FIRM','Firmware version check');
+define('_SYSTEMADVANCEDPHP_DISFIRM','Disable firmware version check');
+define('_SYSTEMADVANCEDPHP_FIRMTEXT','This will cause FreeNAS not to check for newer firmware versions when the <a href=system_firmware.php>System: Firmware</a> page is viewed.');
+define('_SYSTEMADVANCEDPHP_TCPIDLE','TCP idle timeout');
+define('_SYSTEMADVANCEDPHP_TCPIDLETEXT','Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don\'t set this too high or your state table could become full of connections that have been improperly shut down. The default is 2.5 hours.');
+define('_SYSTEMADVANCEDPHP_NAV','Navigation');
+define('_SYSTEMADVANCEDPHP_NAVTEXT','Keep diagnostics in navigation expanded');
+define('_SYSTEMADVANCEDPHP_BEEP','System Beep');
+define('_SYSTEMADVANCEDPHP_DISBEEP','Disable speaker beep on startup and shutdown');
+define('_SYSTEMADVANCEDPHP_SMART','S.M.A.R.T Daemon');
+define('_SYSTEMADVANCEDPHP_ENSMART','Enable the S.M.A.R.T daemon');
+define('_SYSTEMADVANCEDPHP_SMARTTEXT','Monitor the S.M.A.R.T device by logging their status in the log file.');
+define('_SYSTEMADVANCEDPHP_TUNING','Tuning');
+define('_SYSTEMADVANCEDPHP_ENTUNING','Enable tuning of some kernel variable');
+define('_SYSTEMADVANCEDPHP_ZEROCONF','ZeroConf');
+define('_SYSTEMADVANCEDPHP_DISZEROCONF','Disable ZeroConf service announce');
+
+// Interface assing:
+// file: interfaces_assign.php
+define('_INTASSIGNPHP_NAME','Interfaces');
+define('_INTASSIGNPHP_NAMEDESC','Assign network ports');
+define('_INTASSIGNPHP_MSGVALIDPORT','Port ');
+define('_INTASSIGNPHP_MSGVALIDPORTWASASSIG',' was assigned to ');
+define('_INTASSIGNPHP_MSGVALIDINT',' interfaces:');
+define('_INTASSIGNPHP_INT','Interface');
+define('_INTASSIGNPHP_PORT','Network port');
+define('_INTASSIGNPHP_DELINT','Delete interface');
+define('_INTASSIGNPHP_ADDINT','Add interface');
+define('_INTASSIGNPHP_INTTEXT','After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p>
+<ul>
+  <li><span class=\"vexpl\">change the IP address of your computer</span></li>
+  <li><span class=\"vexpl\">access the webGUI with the new IP address</span></li>
+</ul>');
+
+// Interface LAN/OPT:
+// file: interfaces_lan.php
+// file: interfaces_opt.php
+define('_INTLANPHP_NAME','Interfaces');
+define('_INTLANPHP_NAMEDESC','LAN');
+define('_INTPHP_MSGVALIDIP',_MSGVALIDIP);
+define('_INTPHP_MSGVALIDMASK',_MSGVALIDNETBIT);
+define('_INTPHP_MSGVALIDGW','A valid gateway must be specified.');
+define('_INTPHP_MSGVALIDMTU','A valid mtu size must be specified.');
+define('_INTPHP_IP','IP address');
+define('_INTPHP_NETMASK','Subnet bit count');
+define('_INTPHP_SUBNET','Subnet bit count');
+define('_INTPHP_GW','Gateway');
+define('_INTPHP_MTU','MTU');
+define('_INTPHP_MTUTEXT','Standard MTU is 1500, use 9000 for jumbo frame.');
+define('_INTPHP_POLLING','Device polling');
+define('_INTPHP_ENPOLLING','Enable device polling');
+define('_INTPHP_POLLINGTEXT','Device polling is a technique that lets the system periodically poll network devices for new
+					data instead of relying on interrupts. This can reduce CPU load and therefore increase
+					throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times
+					per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards.');
+define('_INTPHP_SPEED','Speed');
+define('_INTPHP_DUPLEX','Duplex');
+define('_INTPHP_TEXT','after you click &quot;Save&quot;, you may also 
+                    have to do one or more of the following steps before you can 
+                    access FreeNAS again: 
+                    <ul>
+                      <li>change the IP address of your computer</li>
+                      <li>access the webGUI with the new IP address</li>
+                    </ul>');
+define('_INTPHP_ENOPT','Enable Optional ');
+define('_INTPHP_ENOPTINT',' interface');
+define('_INTPHP_DESC',_DESC);
+define('_INTPHP_DESCTEXT','Enter a description (name) for the interface here.');
+define('_INTPHP_STATIC','Static IP configuration');
+define('_INTPHP_DHCP','DHCP client configuration');
+define('_INTPHP_GENERAL','General configuration');
+define('_INTPHP_DHCPHOSTNAME','Hostname');
+define('_INTPHP_DHCPHOSTNAMETEXT','The value in this field is sent as the DHCP hostname when requesting a DHCP lease.');
+define('_INTPHP_DHCPCLIENTIDENTIFIER','Client Identifier');
+define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.');
+define('_INTPHP_CALCNETMASKBITS','Calculate netmask bits');
 
 // Service: RSYNC
 // Common

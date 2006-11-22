@@ -29,7 +29,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(_SYSTEMADVANCEDPHP_NAME, _SYSTEMADVANCEDPHP_NAMEDESC);
@@ -52,16 +51,13 @@ $pconfig['smart_enable'] = isset($config['system']['smart']);
 $pconfig['howl_disable'] = isset($config['system']['howl_disable']);
 
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
 	/* input validation */
-	
 	if ($_POST['tcpidletimeout'] && !is_numericint($_POST['tcpidletimeout'])) {
 		$input_errors[] = _SYSTEMADVANCEDPHP_MSGVALIDTCP;	
 	}
-	
 	if (($_POST['cert'] && !$_POST['key']) || ($_POST['key'] && !$_POST['cert'])) {
 		$input_errors[] = _SYSTEMADVANCEDPHP_MSGVALIDCERTKEY;
 	} else if ($_POST['cert'] && $_POST['key']) {
@@ -99,21 +95,14 @@ if ($_POST) {
 				
 		write_config();
 		
-		if (($config['system']['webgui']['certificate'] != $oldcert)
-				|| ($config['system']['webgui']['private-key'] != $oldkey))
-		{
+		if (($config['system']['webgui']['certificate'] != $oldcert) || ($config['system']['webgui']['private-key'] != $oldkey)) {
 			touch($d_sysrebootreqd_path);
-		}
-		else if (($g['platform'] == "generic-pc") && ($config['system']['harddiskstandby'] != $oldharddiskstandby))
-		{
-			if (!$config['system']['harddiskstandby'])
-			{
+		} else if (($g['platform'] == "generic-pc") && ($config['system']['harddiskstandby'] != $oldharddiskstandby)) {
+			if (!$config['system']['harddiskstandby']) {
 				// Reboot needed to deactivate standby due to a stupid ATA-protocol
 				touch($d_sysrebootreqd_path);
 				unset($config['system']['harddiskstandby']);
-			}
-			else
-			{
+			} else {
 				// No need to set the standby-time if a reboot is needed anyway
 				system_set_harddisk_standby();
 			}
@@ -134,104 +123,103 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-            <?php if ($input_errors) print_input_errors($input_errors); ?>
-            <?php if ($savemsg) print_info_box($savemsg); ?>
-            <p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span> <?=_SYSTEMADVANCEDPHP_NOTE;?></p>
-            <form action="system_advanced.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td colspan="2" class="list" height="12"></td>
-               </tr>
-                <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=_SYSTEMADVANCEDPHP_WEBGUISSLKEY;?></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_WEBCERT;?></td>
-                  <td width="78%" class="vtable"> 
-                    <textarea name="cert" cols="65" rows="7" id="cert" class="formpre"><?=htmlspecialchars($pconfig['cert']);?></textarea>
-                    <br> 
-                    <?=_SYSTEMADVANCEDPHP_WEBCERTTEXT;?></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_WEBKEY;?></td>
-                  <td width="78%" class="vtable"> 
-                    <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea>
-                    <br> 
-                    <?=_SYSTEMADVANCEDPHP_WEBKEYTEXT;?></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onclick="enable_change(true)"> 
-                  </td>
-                </tr>
-                <tr> 
-                  <td colspan="2" class="list" height="12"></td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=_SYSTEMADVANCEDPHP_MISC;?></td>
-                </tr>
-				<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_CON;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="disableconsolemenu" type="checkbox" id="disableconsolemenu" value="yes" <?php if ($pconfig['disableconsolemenu']) echo "checked"; ?>>
-                    <strong><?=_SYSTEMADVANCEDPHP_DISCON;?></strong><span class="vexpl"><br>
-                    <?=_SYSTEMADVANCEDPHP_CONTEXT;?></span></td>
-                </tr>
-				<tr>
-                  <td valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_FIRM;?></td>
-                  <td class="vtable">
-                    <input name="disablefirmwarecheck" type="checkbox" id="disablefirmwarecheck" value="yes" <?php if ($pconfig['disablefirmwarecheck']) echo "checked"; ?>>
-                    <strong><?=_SYSTEMADVANCEDPHP_DISFIRM;?></strong><span class="vexpl"><br>
-    <?=_SYSTEMADVANCEDPHP_FIRMTEXT;?></span></td>
-			    </tr>
-				<tr>
-                  <td valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_TCPIDLE;?></td>
-                  <td class="vtable">                    <span class="vexpl">
-                    <input name="tcpidletimeout" type="text" class="formfld" id="tcpidletimeout" size="8" value="<?=htmlspecialchars($pconfig['tcpidletimeout']);?>">
-                    <?=_SECONDS;?><br>
-    <?=_SYSTEMADVANCEDPHP_TCPIDLETEXT;?></span></td>
-			    </tr>
-				
-				<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_NAV;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="expanddiags" type="checkbox" id="expanddiags" value="yes" <?php if ($pconfig['expanddiags']) echo "checked"; ?>>
-                    <strong><?=_SYSTEMADVANCEDPHP_NAVTEXT;?></strong></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_BEEP;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="disablebeep" type="checkbox" id="disablebeep" value="yes" <?php if ($pconfig['disablebeep']) echo "checked"; ?>>
-                    <strong><?=_SYSTEMADVANCEDPHP_DISBEEP;?></strong></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_SMART;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="smart_enable" type="checkbox" id="smart_enable" value="yes" <?php if ($pconfig['smart_enable']) echo "checked"; ?>>
-                    <strong><?=_SYSTEMADVANCEDPHP_ENSMART;?></strong><br>
-					<?=_SYSTEMADVANCEDPHP_SMARTTEXT;?>
-					</td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_TUNING;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="tune_enable" type="checkbox" id="tune_enable" value="yes" <?php if ($pconfig['tune_enable']) echo "checked"; ?>>
-                    <strong><?=_SYSTEMADVANCEDPHP_ENTUNING;?></strong></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_ZEROCONF;?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="howl_disable" type="checkbox" id="howl_disable" value="yes" <?php if ($pconfig['howl_disable']) echo "checked"; ?>>
-                    <strong><?=_SYSTEMADVANCEDPHP_DISZEROCONF;?></strong></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onclick="enable_change(true)"> 
-                  </td>
-                </tr>
-              </table>
+<?php if ($input_errors) print_input_errors($input_errors); ?>
+<?php if ($savemsg) print_info_box($savemsg); ?>
+<p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_SYSTEMADVANCEDPHP_NOTE;?></p>
+<form action="system_advanced.php" method="post" name="iform" id="iform">
+  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+    <tr> 
+      <td colspan="2" class="list" height="12"></td>
+    </tr>
+    <tr> 
+      <td colspan="2" valign="top" class="listtopic"><?=_SYSTEMADVANCEDPHP_WEBGUISSLKEY;?></td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_WEBCERT;?></td>
+      <td width="78%" class="vtable"> 
+        <textarea name="cert" cols="65" rows="7" id="cert" class="formpre"><?=htmlspecialchars($pconfig['cert']);?></textarea><br> 
+        <?=_SYSTEMADVANCEDPHP_WEBCERTTEXT;?>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_WEBKEY;?></td>
+      <td width="78%" class="vtable"> 
+        <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea><br> 
+        <?=_SYSTEMADVANCEDPHP_WEBKEYTEXT;?>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2" class="list" height="12"></td>
+    </tr>
+    <tr> 
+      <td colspan="2" valign="top" class="listtopic"><?=_SYSTEMADVANCEDPHP_MISC;?></td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_CON;?></td>
+      <td width="78%" class="vtable"> 
+        <input name="disableconsolemenu" type="checkbox" id="disableconsolemenu" value="yes" <?php if ($pconfig['disableconsolemenu']) echo "checked"; ?>>
+        <strong><?=_SYSTEMADVANCEDPHP_DISCON;?></strong><span class="vexpl"><br><?=_SYSTEMADVANCEDPHP_CONTEXT;?></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_FIRM;?></td>
+      <td class="vtable">
+        <input name="disablefirmwarecheck" type="checkbox" id="disablefirmwarecheck" value="yes" <?php if ($pconfig['disablefirmwarecheck']) echo "checked"; ?>>
+        <strong><?=_SYSTEMADVANCEDPHP_DISFIRM;?></strong><span class="vexpl"><br><?=_SYSTEMADVANCEDPHP_FIRMTEXT;?></span>
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_TCPIDLE;?></td>
+      <td class="vtable">
+        <span class="vexpl">
+          <input name="tcpidletimeout" type="text" class="formfld" id="tcpidletimeout" size="8" value="<?=htmlspecialchars($pconfig['tcpidletimeout']);?>"> <?=_SECONDS;?><br>
+          <?=_SYSTEMADVANCEDPHP_TCPIDLETEXT;?>
+        </span>
+      </td>
+    </tr>
+		<tr> 
+      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_NAV;?></td>
+      <td width="78%" class="vtable"> 
+        <input name="expanddiags" type="checkbox" id="expanddiags" value="yes" <?php if ($pconfig['expanddiags']) echo "checked"; ?>>
+        <strong><?=_SYSTEMADVANCEDPHP_NAVTEXT;?></strong>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_BEEP;?></td>
+      <td width="78%" class="vtable"> 
+        <input name="disablebeep" type="checkbox" id="disablebeep" value="yes" <?php if ($pconfig['disablebeep']) echo "checked"; ?>>
+        <strong><?=_SYSTEMADVANCEDPHP_DISBEEP;?></strong>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_SMART;?></td>
+      <td width="78%" class="vtable"> 
+        <input name="smart_enable" type="checkbox" id="smart_enable" value="yes" <?php if ($pconfig['smart_enable']) echo "checked"; ?>>
+        <strong><?=_SYSTEMADVANCEDPHP_ENSMART;?></strong><br>
+        <?=_SYSTEMADVANCEDPHP_SMARTTEXT;?>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_TUNING;?></td>
+      <td width="78%" class="vtable"> 
+        <input name="tune_enable" type="checkbox" id="tune_enable" value="yes" <?php if ($pconfig['tune_enable']) echo "checked"; ?>>
+        <strong><?=_SYSTEMADVANCEDPHP_ENTUNING;?></strong>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_ZEROCONF;?></td>
+      <td width="78%" class="vtable"> 
+        <input name="howl_disable" type="checkbox" id="howl_disable" value="yes" <?php if ($pconfig['howl_disable']) echo "checked"; ?>>
+        <strong><?=_SYSTEMADVANCEDPHP_DISZEROCONF;?></strong>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top">&nbsp;</td>
+      <td width="78%"> 
+        <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onclick="enable_change(true)"> 
+      </td>
+    </tr>
+  </table>
 </form>
 <script language="JavaScript">
 <!--

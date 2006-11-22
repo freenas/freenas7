@@ -198,7 +198,7 @@ define('_MENULEFT_GRAPH','Graph');
 define('_SYSTEMPHP_MODULE_NAME',_MENULEFT_SYSTEM);
 define('_SYSTEMPHP_MODULE_NAME_DESCRIPTION',_MENULEFT_SYSGENSETUP);
 define('_SYSTEMPHP_HOSTNAME','Hostname');
-define('_SYSTEMPHP_HOSTNAMETEXT','nome dell\'host NAS, senza la parte del dominio<br>es. <em>nas');
+define('_SYSTEMPHP_HOSTNAMETEXT','Nome dell\'host NAS, senza la parte del dominio<br>es. <em>nas');
 define('_SYSTEMPHP_DOMAIN','Dominio');
 define('_SYSTEMPHP_DOMAINTEXT','es. <em>mycorp.com</em>');
 define('_SYSTEMPHP_DNS','Servers DNS');
@@ -206,7 +206,7 @@ define('_SYSTEMPHP_DNSTEXT','indirizzi IP');
 define('_SYSTEMPHP_USERNAME','Username');
 define('_SYSTEMPHP_USERNAMETEXT','Se si desidera cambiare lo username per l\'accesso tramite la webGUI, inserirlo qui.');
 define('_SYSTEMPHP_PASSWORD','Password');
-define('_SYSTEMPHP_PASSWORDTEXT','Se si desidera cambiare la password per l\'accesso tramite la webGUI, inserirla qui due volte.<br>Non utilizzare il carattere :');
+define('_SYSTEMPHP_PASSWORDTEXT','Se si desidera cambiare la password per l\'accesso tramite la webGUI, inserirla qui due volte.<br>Non utilizzare il carattere \':\'.');
 define('_SYSTEMPHP_WEBGUIPROTOCOL','Protocollo WebGUI');
 define('_SYSTEMPHP_WEBGUIPROTOCOLTEXT','');
 define('_SYSTEMPHP_WEBGUIPORT','Porta WebGUI');
@@ -214,11 +214,20 @@ define('_SYSTEMPHP_WEBGUIPORTTEXT','Inserite qui sopra un numero di porta person
 define('_SYSTEMPHP_LANGUAGE','Linguaggio');
 define('_SYSTEMPHP_LANGUAGETEXT','Selezionate il linguaggio per il sistema');
 define('_SYSTEMPHP_TIMEZONE','Fuso orario');
-define('_SYSTEMPHP_TIMEZONETEXT','Selezionate la località più vicina a voi');
+define('_SYSTEMPHP_TIMEZONETEXT','Selezionate la località più vicina a voi.');
 define('_SYSTEMPHP_TIMEUPDATEINT','Intervallo di aggiornamento dell\'ora');
-define('_SYSTEMPHP_TIMEUPDATEINTTEXT','Minuti tra le sincronizzazioni dell\'ora via rete; 300	raccomandati, o 0 per disabilitare');
+define('_SYSTEMPHP_TIMEUPDATEINTTEXT','Minuti tra le sincronizzazioni dell\'ora via rete; 300	raccomandati, o 0 per disabilitare.');
 define('_SYSTEMPHP_NTPSERVER','NTP time server');
 define('_SYSTEMPHP_NTPSERVERTEXT','Utilizzare uno spazio per separate hosts multipli (solo uno è richesto). Ricordarsi di definire almeno un server DNS se qui inserite un nome di host!');
+define('_SYSTEMPHP_MSGHOSTNAME','The hostname may only contain the characters a-z, 0-9 and \'-\'.');
+define('_SYSTEMPHP_MSGDOMAIN','The domain may only contain the characters a-z, 0-9, \'-\' and \'.\'.');
+define('_SYSTEMPHP_MSGDNS','A valid IP address must be specified for the primary/secondary DNS server.');
+define('_SYSTEMPHP_MSGUSERNAME','The username may only contain the characters a-z, A-Z and 0-9.');
+define('_SYSTEMPHP_MSGWEBGUIPORT','A valid TCP/IP port must be specified for the webGUI port.');
+define('_SYSTEMPHP_MSGPASSWORD','The passwords do not match.');
+define('_SYSTEMPHP_MSGLANGUAGE','You must select a valid language.');
+define('_SYSTEMPHP_MSGTIMEUPDATEINTERVAL','The time update interval must be either 0 (disabled) or between 6 and 1440.');
+define('_SYSTEMPHP_MSGTIMESERVERS','A NTP Time Server name may only contain the characters a-z, 0-9, \'-\' and \'.\'.');
 
 // System Information Module
 // file: index.php
@@ -353,6 +362,7 @@ define('_INTPHP_MSGVALIDMASK',_MSGVALIDNETBIT);
 define('_INTPHP_MSGVALIDGW','Deve essere specificato un gateway valido.');
 define('_INTPHP_MSGVALIDMTU','Deve essere specificata una dimensione di mtu valida.');
 define('_INTPHP_IP','IP indirizzo');
+define('_INTPHP_NETMASK','Subnet bit count');
 define('_INTPHP_GW','Gateway');
 define('_INTPHP_MTU','MTU');
 define('_INTPHP_MTUTEXT','Lo standard MTU è 1500, utilizzare 9000 per i frame jumbo.');

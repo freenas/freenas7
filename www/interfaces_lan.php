@@ -66,7 +66,7 @@ if ($_POST) {
 	if ($_POST['type'] == "Static")
   {
     $reqdfields = explode(" ", "ipaddr subnet");
-    $reqdfieldsn = explode(",", "IP address,Subnet bit count");
+    $reqdfieldsn = array(_INTPHP_IP,_INTPHP_NETMASK);
 	
     do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
