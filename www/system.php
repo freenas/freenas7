@@ -171,14 +171,14 @@ if ($_POST) {
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=_SYSTEMPHP_HOSTNAME;?></td>
       <td width="78%" class="vtable"><?=$mandfldhtml;?>
-        <input name="hostname" type="text" class="formfld" id="hostname" size="40" value="<?=htmlspecialchars($pconfig['hostname']);?>"><br>
+        <?=$mandfldhtml;?><input name="hostname" type="text" class="formfld" id="hostname" size="40" value="<?=htmlspecialchars($pconfig['hostname']);?>"><br>
         <span class="vexpl"><?=_SYSTEMPHP_HOSTNAMETEXT;?></span>
       </td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=_SYSTEMPHP_DOMAIN;?></td>
       <td width="78%" class="vtable"><?=$mandfldhtml;?>
-        <input name="domain" type="text" class="formfld" id="domain" size="40" value="<?=htmlspecialchars($pconfig['domain']);?>"><br>
+        <?=$mandfldhtml;?><input name="domain" type="text" class="formfld" id="domain" size="40" value="<?=htmlspecialchars($pconfig['domain']);?>"><br>
         <span class="vexpl"><?=_SYSTEMPHP_DOMAINTEXT;?></span>
       </td>
     </tr>

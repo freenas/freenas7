@@ -173,7 +173,7 @@ function enable_change(enable_change) {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFS_AUTH; ?></td>
             <td width="78%" class="vtable">
-              <select name="security" class="formfld" id="security">
+              <?=$mandfldhtml;?><select name="security" class="formfld" id="security">
               <?php $types = explode(",", "Anonymous,Local User,Domain"); $vals = explode(" ", "share user domain");?>
               <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                 <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>>
@@ -192,7 +192,7 @@ function enable_change(enable_change) {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFS_WORKGROUP ; ?></td>
             <td width="78%" class="vtable">
-              <input name="workgroup" type="text" class="formfld" id="workgroup" size="30" value="<?=htmlspecialchars($pconfig['workgroup']);?>">
+              <?=$mandfldhtml;?><input name="workgroup" type="text" class="formfld" id="workgroup" size="30" value="<?=htmlspecialchars($pconfig['workgroup']);?>">
               <br><?=_SRVCIFS_WORKGROUPTEXT ;?>
             </td>
           </tr>
