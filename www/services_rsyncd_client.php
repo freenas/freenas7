@@ -241,7 +241,7 @@ else
 
 
                  <tr>
-                  <td width="22%" valign="top" class="vncellreq"><?_SRVRYNCC_TIME;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=_SRVRYNCC_TIME;?></td>
                   <td width="78%" class="vtable">
 
                      <table width=100% border cellpadding="6" cellspacing="0">
