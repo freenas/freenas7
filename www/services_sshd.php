@@ -31,7 +31,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(_SERVICES,_SRVSSHD_NAMEDESC);
@@ -54,16 +53,15 @@ if ($_POST)
 	/* input validation */
 	$reqdfields = array();
 	$reqdfieldsn = array();
-	if ($_POST['enable'])
-	{
+
+	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "readonly"));
-		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Readonly"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVSSHD_READONLY));
 	}
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
-	if (($_POST['port']) && !is_port($_POST['port']))
-	{
+	if (($_POST['port']) && !is_port($_POST['port'])) {
 		$input_errors[] = _SRVSSHD_MSGVALIDTCPPORT;
 	}
 	
@@ -72,8 +70,7 @@ if ($_POST)
 			$input_errors[] = _SRVSSHD_MSGVALIDKEY;
 	}
 	
-	if (!$input_errors)
-	{
+	if (!$input_errors) {
 		$config['sshd']['readonly'] = $_POST['readonly'];	
 		$config['sshd']['port'] = $_POST['port'];
 		$config['sshd']['permitrootlogin'] = $_POST['permitrootlogin'] ? true : false;
@@ -99,9 +96,7 @@ if ($_POST)
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
-	var endis;
-	
-	endis = !(document.iform.enable.checked || enable_change);
+	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.readonly.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.key.disabled = endis;

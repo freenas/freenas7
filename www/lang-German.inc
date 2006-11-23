@@ -646,6 +646,7 @@ define('_SRVNFS_MAPALLROOT','Map all user to root');
 define('_SRVNFS_MAPALLROOTTEXT','Alle Benutzer erhalten Administratorrechte.');
 define('_SRVNFS_AUTHNET','Zugelassenes Netzwerk');
 define('_SRVNFS_AUTHNETTEXT','Zugriffsberechtigtes Netzwerk auf die NFS-freigabe');
+define('_SRVNFS_AUTHNETMASK','Subnet bit count');
 define('_SRVNFS_TEXT','Die Namenskonvention f&uuml;r exportierte Verzeichnisse: /mnt/Freigabenname');
 
 // Service: RSYNC

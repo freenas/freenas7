@@ -638,6 +638,7 @@ define('_SRVNFS_MAPALLROOT','Associer tous les utilisateurs &agrave; root');
 define('_SRVNFS_MAPALLROOTTEXT','Tous les utilisateurs auront les privil&egrave;ges root.');
 define('_SRVNFS_AUTHNET','R&eacute;seau autoris&eacute;');
 define('_SRVNFS_AUTHNETTEXT','R&eacute;seau autoris&eacute; &agrave; acc&eacute;der au partage NFS');
+define('_SRVNFS_AUTHNETMASK','Subnet bit count');
 define('_SRVNFS_TEXT','Le nom de partage export&eacute; est du type : /mnt/partage');
 
 // Service: RSYNC

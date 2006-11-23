@@ -32,7 +32,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(_SERVICES,_SRVRYNCD_NAMEDESC);
@@ -58,9 +57,9 @@ if (!is_array($config['mounts']['mount'])) {
   	$reqdfields = array();
   	$reqdfieldsn = array();
 
-  	if ($_POST['enable']){
+  	if ($_POST['enable']) {
   		$reqdfields = array_merge($reqdfields, explode(" ", "rsyncserverip sharetosync"));
-  		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", _SRVRYNCC_REMOTESERVER . "," . _SRVRYNCC_SHARES));
+  		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVRYNCC_REMOTESERVER,_SRVRYNCC_SHARES));
   	}
 
   	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -69,8 +68,7 @@ if (!is_array($config['mounts']['mount'])) {
   		$input_errors[] = _SRVRYNCC_MSGVALIDIP;
   	}
 
-  	if (!$input_errors)
-  	{
+  	if (!$input_errors) {
       $config['rsyncclient']['opt_delete'] = $_POST['opt_delete'] ? true : false;;
   		$config['rsyncclient']['rsyncserverip'] = $_POST['rsyncserverip'];
   		$config['rsyncclient']['minute'] = $_POST['minutes'];

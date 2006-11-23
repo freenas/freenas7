@@ -74,7 +74,7 @@ if ($_POST) {
 
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "share workdir"));
-		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Share,Work Directory"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVUNSN_SHARE,_SRVUNSN_WORKDIR));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);

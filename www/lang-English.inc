@@ -642,6 +642,7 @@ define('_SRVNFS_MAPALLROOT','Map all user to root');
 define('_SRVNFS_MAPALLROOTTEXT','All users will have the root privilege.');
 define('_SRVNFS_AUTHNET','Authorised network');
 define('_SRVNFS_AUTHNETTEXT','Network that is authorised to access to NFS share');
+define('_SRVNFS_AUTHNETMASK','Subnet bit count');
 define('_SRVNFS_TEXT','The name of the exported directories are : /mnt/sharename');
 
 // Service: RSYNC

@@ -31,11 +31,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-
 require("guiconfig.inc");
-$pgtitle = array(_SERVICES,_SRVRYNCD_NAMEDESC);
 
+$pgtitle = array(_SERVICES,_SRVRYNCD_NAMEDESC);
 
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();
@@ -44,10 +42,8 @@ users_sort();
 
 $a_user = &$config['access']['user'];
 
-if (!is_array($config['rsync']))
-{
+if (!is_array($config['rsync'])) {
 	$config['rsync'] = array();
-	
 }
 
 $pconfig['readonly'] = $config['rsyncd']['readonly'];
@@ -57,22 +53,19 @@ $pconfig['maxcon'] = $config['rsyncd']['maxcon'];
 $pconfig['rsyncd_user'] = $config['rsyncd']['rsyncd_user'];
 $pconfig['enable'] = isset($config['rsyncd']['enable']);
 
-
-if ($_POST)
-{
-
+if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
 	/* input validation */
 	$reqdfields = array();
 	$reqdfieldsn = array();
-	if ($_POST['enable'])
-	{
+
+	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "readonly port"));
-		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Readonly,Port"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVRYNCD_READONLY,_SRVRYNCD_TCPORT));
 	}
-	
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if ($_POST['enable']) {
@@ -81,10 +74,8 @@ if ($_POST)
 		else if (!is_numericint($_POST['maxcon']))
 			$input_errors[] = _SRVRYNCD_MSGVALIDMAXCON;
 	}
-	
-	
-	if (!$input_errors)
-	{
+
+	if (!$input_errors) {
 		$config['rsyncd']['readonly'] = $_POST['readonly'];	
 		$config['rsyncd']['port'] = $_POST['port'];
 		$config['rsyncd']['motd'] = $_POST['motd'];
@@ -111,15 +102,12 @@ if ($_POST)
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
-	var endis;
-	
-	endis = !(document.iform.enable.checked || enable_change);
+	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.readonly.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.motd.disabled = endis;
 	document.iform.maxcon.disabled = endis;
 	document.iform.rsyncd_user.disabled = endis;
-	
 }
 //-->
 </script>
@@ -157,11 +145,8 @@ function enable_change(enable_change) {
                       <?php endfor; ?>
                     </select></td>
 				</tr>
-				
 				  <tr>			  		
-			
 			<td valign="top" class="vncellreq"><?=_SRVRYNCD_MAPUSER;?></td>
-                   
 	<td class="vtable"> 
 		<select name="rsyncd_user" class="formfld" id="rsyncd_user">
 		<option value="ftp"<?php if ($pconfig['rsyncd_user'] == "ftp") echo "selected";?>> 

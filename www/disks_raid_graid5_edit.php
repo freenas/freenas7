@@ -1,26 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	disks_raid_graid5_edit.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
-	
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -60,40 +59,33 @@ if (isset($id) && $a_raid[$id]) {
 }
 
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
 	/* input validation */
 	$reqdfields = explode(" ", "name");
-	$reqdfieldsn = explode(",", "Name");
-	
+	$reqdfieldsn = array(_DISKSRAIDEDITPHP_RAIDNAME);
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
-	if (($_POST['name'] && !is_validaliasname($_POST['name'])))
-	{
+
+	if (($_POST['name'] && !is_validaliasname($_POST['name']))) {
 		$input_errors[] = _DISKSRAIDEDITPHP_MSGVALIDNAME;
 	}
-	
-		
+
 	/* check for name conflicts */
-	foreach ($a_raid as $raid)
-	{
+	foreach ($a_raid as $raid) {
 		if (isset($id) && ($a_raid[$id]) && ($a_raid[$id] === $raid))
 			continue;
 
-		if ($raid['name'] == $_POST['name'])
-		{
+		if ($raid['name'] == $_POST['name']) {
 			$input_errors[] = _DISKSRAIDEDITPHP_MSGEXIST;
 			break;
 		}
 	}
-	
+
 	/* check the number of RAID disk for volume */
-	
 	if (count($_POST['diskr']) < 3)
 		$input_errors[] = _DISKSRAIDEDITPHP_MSGVALIDRAID5;
-
 
 	if (!$input_errors) {
 		$raid = array();
@@ -101,22 +93,22 @@ if ($_POST) {
 		$raid['type'] = 5;
 		$raid['diskr'] = $_POST['diskr'];
 		$raid['desc'] = "Software RAID {$_POST['type']}";
-		
+
 		if (isset($id) && $a_raid[$id])
 			$a_raid[$id] = $raid;
 		else
 			$a_raid[] = $raid;
-		
-         	$fd = @fopen("$d_raidconfdirty_path", "a");
-         	if (!$fd) {
-         		echo "_DISKSRAIDEDITPHP_MSGERROR";
-         		exit(0);
-         	}
-         	fwrite($fd, "$raid[name]\n");
-         	fclose($fd);
-		
+
+   	$fd = @fopen("$d_raidconfdirty_path", "a");
+   	if (!$fd) {
+   		echo "_DISKSRAIDEDITPHP_MSGERROR";
+   		exit(0);
+   	}
+   	fwrite($fd, "$raid[name]\n");
+   	fclose($fd);
+
 		write_config();
-		
+
 		header("Location: disks_raid_graid5.php");
 		exit;
 	}
@@ -125,51 +117,51 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($nodisk_errors) print_input_errors($nodisk_errors); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-            <form action="disks_raid_graid5_edit.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_RAIDNAME;?></td>
-              <td class="vtable">
-                    <?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-                  </td>
-				</tr>
-	                
-                 <tr> 
-                  <td valign="top" class="vncellreq"><?=_DISKSRAIDPHP_TYPE; ?></td>
-                  <td class="vtable">
-                  RAID 5 (<?=_DISKSRAIDEDITPHP_RAID5; ?>)
-                  </td>
-              <tr> 
-                        <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_MEMBERS;?></td>
-                        <td width="78%" class="vtable">
-<?
-  $i=0;
-  $disable_script="";
-  foreach ($a_disk as $diskv) {
-    $r_name="";
-    foreach($a_raid as $raid) {
-      if (in_array($diskv['name'],$raid['diskr'])) {
-        $r_name=$raid['name'];
-        if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
-        break;
-      }
-    }
-    echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[name]'".
-         ((is_array($pconfig['diskr']) && in_array($diskv['name'],$pconfig['diskr']))?" checked":"").
-         ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
-    $i++;
-  }
-  if ($disable_script) echo "<script language='javascript'><!--\n$disable_script--></script>\n";
-?>
-                      </tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?_SAVE:_ADD;?>"> 
-                    <?php if (isset($id) && $a_raid[$id]): ?>
-                    <input name="id" type="hidden" value="<?=$id;?>"> 
-                    <?php endif; ?>
-                  </td>
-                </tr>
-              </table>
+<form action="disks_raid_graid5_edit.php" method="post" name="iform" id="iform">
+  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+    <tr>
+      <td valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_RAIDNAME;?></td>
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
+      </td>
+    </tr>
+    <tr>
+      <td valign="top" class="vncellreq"><?=_DISKSRAIDPHP_TYPE; ?></td>
+      <td width="78%" class="vtable">
+      RAID 5 (<?=_DISKSRAIDEDITPHP_RAID5; ?>)
+      </td>
+    </tr>
+    <tr>
+      <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_MEMBERS;?></td>
+      <td width="78%" class="vtable">
+      <?
+        $i=0;
+        $disable_script="";
+        foreach ($a_disk as $diskv) {
+          $r_name="";
+          foreach($a_raid as $raid) {
+            if (in_array($diskv['name'],$raid['diskr'])) {
+              $r_name=$raid['name'];
+              if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
+              break;
+            }
+          }
+          echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[name]'".
+               ((is_array($pconfig['diskr']) && in_array($diskv['name'],$pconfig['diskr']))?" checked":"").
+               ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
+          $i++;
+        }
+        if ($disable_script) echo "<script language='javascript'><!--\n$disable_script--></script>\n";
+      ?>
+    </tr>
+    <tr>
+      <td width="22%" valign="top">&nbsp;</td>
+      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?_SAVE:_ADD;?>">
+        <?php if (isset($id) && $a_raid[$id]): ?>
+        <input name="id" type="hidden" value="<?=$id;?>">
+        <?php endif; ?>
+      </td>
+    </tr>
+  </table>
 </form>
 <?php include("fend.inc"); ?>
