@@ -821,10 +821,36 @@ define('_LICENSE_NAME','License');
 // file: status_wireless.php
 define('_STATSWIRELESS_NAME',_MENULEFT_STATUS);
 define('_STATSWIRELESS_NAMEDESC','Wireless');
+define('_STATSWIRELESS_INTERFACE','%s interface (SSID \'%s\')');
+define('_STATSWIRELESS_SIGNALSTRENGTHCACHE','Signal strength cache');
+define('_STATSWIRELESS_MACADDRESS','MAC address');
+define('_STATSWIRELESS_IPADDRESS','IP address');
+define('_STATSWIRELESS_SIGNAL','Signal');
+define('_STATSWIRELESS_NOISE','Noise');
+define('_STATSWIRELESS_QUALITY','Quality');
+define('_STATSWIRELESS_ASSOCIATEDSTATIONS','Associated stations');
+define('_STATSWIRELESS_TXRATES','TX rates');
+define('_STATSWIRELESS_MSGNOWINTFOUND','No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported).');
 
 // file: status_interfaces.php
 define('_STATSINTERFACES_NAME',_MENULEFT_STATUS);
 define('_STATSINTERFACES_NAMEDESC',_INTERFACES);
+define('_STATSINTERFACES_INTERFACE','%s interface');
+define('_STATSINTERFACES_STATUS','Status');
+define('_STATSINTERFACES_DHCP','DHCP');
+define('_STATSINTERFACES_PPPOE','PPPoE');
+define('_STATSINTERFACES_PPTP','PPTP');
+define('_STATSINTERFACES_MACADDRESS','MAC address');
+define('_STATSINTERFACES_IPADDRESS','IP address');
+define('_STATSINTERFACES_SUBNETMASK','Subnet mask');
+define('_STATSINTERFACES_GATEWAY','Gateway');
+define('_STATSINTERFACES_ISPDNSSERVERS','ISP DNS servers');
+define('_STATSINTERFACES_MEDIA','Media');
+define('_STATSINTERFACES_CHANNEL','Channel');
+define('_STATSINTERFACES_SSID','SSID');
+define('_STATSINTERFACES_IOPACKETS','I/O packets');
+define('_STATSINTERFACES_IOERRORS','I/O errors');
+define('_STATSINTERFACES_COLLISIONS','Collisions');
 
 // file: status_graph_cpu.php
 define('_STATSGRAPHCPU_NAME',_MENULEFT_STATUS);
