@@ -618,6 +618,7 @@ define('_INTPHP_DHCPHOSTNAMETEXT','The value in this field is sent as the DHCP h
 define('_INTPHP_DHCPCLIENTIDENTIFIER','Client Identifier');
 define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.');
 define('_INTPHP_CALCNETMASKBITS','Calculate netmask bits');
+define('_INTPHP_MSGCHANGED','The LAN configuration has been changed.<br>You must apply the changes in order for them to take effect.');
 
 // Service: RSYNC
 // Common

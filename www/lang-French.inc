@@ -390,6 +390,7 @@ define('_INTPHP_DHCPHOSTNAMETEXT','Le contenu de ce champ est envoy&eacute; en t
 define('_INTPHP_DHCPCLIENTIDENTIFIER','Identificateur du client');
 define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','La valeur de ce champ est envoy&eacute;e en tant qu\'identificateur du client lors de la demande de bail DHCP.');
 define('_INTPHP_CALCNETMASKBITS','Calculer le nombre de bits du masque de sous r&eacute;seau');
+define('_INTPHP_MSGCHANGED','The LAN configuration has been changed.<br>You must apply the changes in order for them to take effect.');
 
 // Disks: Manage
 // Common text

@@ -58,7 +58,6 @@ if (isset($lancfg['wireless'])) {
 }
 
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
@@ -107,14 +106,22 @@ if ($_POST) {
 		$config['interfaces']['lan']['polling'] = $_POST['polling'] ? true : false;
 
 		write_config();
-		
-		$retval = 0;
-		if(!file_exists($d_sysrebootreqd_path)) {
-			config_lock();
-			interfaces_lan_configure();
-			config_unlock();
-		}
-		$savemsg = get_std_save_message($retval);
+
+		if ($_POST['apply']) {
+  		$retval = 0;
+  		if (!file_exists($d_sysrebootreqd_path)) {
+        config_lock();
+        $retval = interfaces_lan_configure();
+        config_unlock();
+      }
+      $savemsg = get_std_save_message($retval);
+  		if ($retval == 0) {
+  			if (file_exists($d_landirty_path))
+  				unlink($d_landirty_path);
+  		}
+  	} else {
+      touch($d_landirty_path);
+    }
 	}
 }
 ?>
@@ -164,128 +171,136 @@ function type_change() {
 }
 // -->
 </script>
+<form action="interfaces_lan.php" method="post" name="iform" id="iform">
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-            <form action="interfaces_lan.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td valign="middle"><strong><?=_TYPE; ?></strong></td>
-                  <td><select name="type" class="formfld" id="type" onchange="type_change()">
-                      <?php $opts = split(" ", "Static DHCP"); foreach ($opts as $opt): ?>
-                      <option <?php if ($opt == $pconfig['type']) echo "selected";?>> 
-                        <?=htmlspecialchars($opt);?>
-                      </option>
-                      <?php endforeach; ?>
-                    </select>
-                  </td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_STATIC; ?></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_IP; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
-                    / 
-                    <select name="subnet" class="formfld" id="subnet">
-                      <?php for ($i = 31; $i > 0; $i--): ?>
-                      <option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected"; ?>>
-                      <?=$i;?>
-                      </option>
-                      <?php endfor; ?>
-                    </select>
-                    <img name="calcnetmaskbits" src="calc.gif" title="<?=_INTPHP_CALCNETMASKBITS;?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
-                  </td>
-                </tr>
-                 <tr> 
-                  <td valign="top" class="vncellreq"><?=_INTPHP_GW; ?></td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>">
-                  </td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" height="16"></td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_DHCP; ?></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPCLIENTIDENTIFIER;?></td>
-                  <td width="78%" class="vtable">
-                    <?=$mandfldhtml;?><input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
-                    <br><span class="vexpl"><?=_INTPHP_DHCPCLIENTIDENTIFIERTEXT;?></span>
-                  </td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPHOSTNAME;?></td>
-                  <td width="78%" class="vtable">
-                    <?=$mandfldhtml;?><input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled>
-                    <br><span class="vexpl"><?=_INTPHP_DHCPHOSTNAMETEXT;?></span>
-                  </td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" height="4"></td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_GENERAL; ?></td>
-                </tr>
-                <tr> 
-                  <td valign="top" class="vncell"><?=_INTPHP_MTU; ?></td>
-                  <td class="vtable"><?=$mandfldhtml;?><input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>"> 
-                  <br>
-					<?=_INTPHP_MTUTEXT; ?>
-                  </td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_INTPHP_POLLING; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="polling" type="checkbox" id="polling" value="yes" <?php if ($pconfig['polling']) echo "checked"; ?>>
-                    <strong><?=_INTPHP_ENPOLLING; ?></strong><br>
-					<?=_INTPHP_POLLINGTEXT; ?>
-					</td>
-				 <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_INTPHP_SPEED; ?></td>
-                  <td width="78%" class="vtable">
-					<select name="media" class="formfld" id="media">
-                      <?php $types = explode(",", "autoselect,10baseT/UTP,100baseTX,1000baseTX,1000baseSX");
-					        $vals = explode(" ", "autoselect 10baseT/UTP 100baseTX 1000baseTX 1000baseSX");
-					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['media']) echo "selected";?>> 
-                      <?=htmlspecialchars($types[$j]);?>
-                      </option>
-                      <?php endfor; ?>
-                    </select></td>
-				</tr>
-				<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_INTPHP_DUPLEX; ?></td>
-                  <td width="78%" class="vtable">
-					<select name="mediaopt" class="formfld" id="mediaopt">
-                      <?php $types = explode(",", "half-duplex,full-duplex");
-					        $vals = explode(" ", "half-duplex full-duplex");
-					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mediaopt']) echo "selected";?>> 
-                      <?=htmlspecialchars($types[$j]);?>
-                      </option>
-                      <?php endfor; ?>
-                    </select></td>
-				</tr>
-                </tr>
-				<?php /* Wireless interface? */
-				if (isset($lancfg['wireless']))
-					wireless_config_print();
-				?>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>"> 
-                  </td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"><span class="vexpl"><span class="red"><strong><?=_WARNING; ?>:<br>
-                    </strong></span><?=_INTPHP_TEXT; ?>
-                    </span></td>
-                </tr>
-              </table>
+<?php if (file_exists($d_landirty_path)): ?><p>
+<?php print_info_box_np(_INTPHP_MSGCHANGED);?><br>
+  <input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY;?>"></p>
+<?php endif; ?>
+  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+    <tr> 
+      <td valign="middle"><strong><?=_TYPE; ?></strong></td>
+      <td><select name="type" class="formfld" id="type" onchange="type_change()">
+          <?php $opts = split(" ", "Static DHCP"); foreach ($opts as $opt): ?>
+          <option <?php if ($opt == $pconfig['type']) echo "selected";?>> 
+            <?=htmlspecialchars($opt);?>
+          </option>
+          <?php endforeach; ?>
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_STATIC; ?></td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_IP; ?></td>
+      <td width="78%" class="vtable"> 
+        <?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
+        / 
+        <select name="subnet" class="formfld" id="subnet">
+          <?php for ($i = 31; $i > 0; $i--): ?>
+          <option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected"; ?>>
+          <?=$i;?>
+          </option>
+          <?php endfor; ?>
+        </select>
+        <img name="calcnetmaskbits" src="calc.gif" title="<?=_INTPHP_CALCNETMASKBITS;?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
+      </td>
+    </tr>
+     <tr> 
+      <td valign="top" class="vncellreq"><?=_INTPHP_GW; ?></td>
+      <td class="vtable">
+        <?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>">
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2" valign="top" height="16"></td>
+    </tr>
+    <tr> 
+      <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_DHCP; ?></td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPCLIENTIDENTIFIER;?></td>
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
+        <br><span class="vexpl"><?=_INTPHP_DHCPCLIENTIDENTIFIERTEXT;?></span>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPHOSTNAME;?></td>
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled><br>
+        <span class="vexpl"><?=_INTPHP_DHCPHOSTNAMETEXT;?></span>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2" valign="top" height="4"></td>
+    </tr>
+    <tr> 
+      <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_GENERAL; ?></td>
+    </tr>
+    <tr> 
+      <td valign="top" class="vncell"><?=_INTPHP_MTU; ?></td>
+      <td class="vtable">
+        <?=$mandfldhtml;?><input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>">&nbsp;<br>
+        <?=_INTPHP_MTUTEXT; ?>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=_INTPHP_POLLING; ?></td>
+      <td width="78%" class="vtable"> 
+        <input name="polling" type="checkbox" id="polling" value="yes" <?php if ($pconfig['polling']) echo "checked"; ?>>
+        <strong><?=_INTPHP_ENPOLLING; ?></strong><br>
+        <?=_INTPHP_POLLINGTEXT; ?>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=_INTPHP_SPEED; ?></td>
+      <td width="78%" class="vtable">
+        <select name="media" class="formfld" id="media">
+          <?php $types = explode(",", "autoselect,10baseT/UTP,100baseTX,1000baseTX,1000baseSX");
+          $vals = explode(" ", "autoselect 10baseT/UTP 100baseTX 1000baseTX 1000baseSX");
+          $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['media']) echo "selected";?>> 
+          <?=htmlspecialchars($types[$j]);?>
+          </option>
+          <?php endfor; ?>
+        </select>
+      </td>
+		</tr>
+		<tr> 
+      <td width="22%" valign="top" class="vncell"><?=_INTPHP_DUPLEX; ?></td>
+      <td width="78%" class="vtable">
+        <select name="mediaopt" class="formfld" id="mediaopt">
+          <?php $types = explode(",", "half-duplex,full-duplex");
+          $vals = explode(" ", "half-duplex full-duplex");
+          $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mediaopt']) echo "selected";?>> 
+          <?=htmlspecialchars($types[$j]);?>
+          </option>
+          <?php endfor; ?>
+        </select>
+      </td>
+    </tr>
+    </tr>
+		<?php /* Wireless interface? */
+		if (isset($lancfg['wireless']))
+			wireless_config_print();
+		?>
+    <tr> 
+      <td width="22%" valign="top">&nbsp;</td>
+      <td width="78%"> 
+        <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>"> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top">&nbsp;</td>
+      <td width="78%"><span class="vexpl"><span class="red"><strong><?=_WARNING; ?>:<br>
+        </strong></span><?=_INTPHP_TEXT; ?>
+        </span></td>
+    </tr>
+  </table>
 </form>
 <script language="JavaScript">
 <!--

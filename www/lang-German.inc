@@ -395,6 +395,7 @@ define('_INTPHP_DHCPHOSTNAMETEXT','The value in this field is sent as the DHCP h
 define('_INTPHP_DHCPCLIENTIDENTIFIER','Client Identifier');
 define('_INTPHP_DHCPCLIENTIDENTIFIERTEXT','The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.');
 define('_INTPHP_CALCNETMASKBITS','Berechne Netmask Bits');
+define('_INTPHP_MSGCHANGED','Die LAN Konfiguration hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen.');
 
 // Disks: Manage
 // Common text
@@ -448,7 +449,7 @@ define('_DISKSPHP_NOMBRTEXT','Nicht den MBR l&ouml;schen (bei einigen Hardware R
 define('_DISKSMANAGETOOLS_NAMEDESC','Tools');
 define('_DISKSMANAGETOOLS_COMMAND','Befehl');
 define('_DISKSMANAGETOOLS_SENDCMD','Sende Befehl!');
-define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Ben&uuml;tzen Sie <a href="%s">RAID tools</a> für diese Festplatte!');
+define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Ben&uuml;tzen Sie <a href="%s">RAID tools</a> f&uuml;r diese Festplatte!');
 define('_DISKSMANAGETOOLS_CMDINFO','Befehlsausgabe:');
 define('_DISKSMANAGETOOLS_MOUNTNOTE','Diese Festplatte is momentan gemountet. Der Mount Point wird kurzzeitig entfernt um den ausgew&auml;hlten Befehl auszuf&uuml;hren.');
 define('_DISKSMANAGETOOLS_UMOUNT','Unmount Festplatte/Partition');
@@ -838,13 +839,13 @@ define('_LICENSE_NAME','Lizenz');
 define('_STATSWIRELESS_NAME',_MENULEFT_STATUS);
 define('_STATSWIRELESS_NAMEDESC','Drahtlos');
 define('_STATSWIRELESS_INTERFACE','%s Schnittstelle (SSID \'%s\')');
-define('_STATSWIRELESS_SIGNALSTRENGTHCACHE','Signalstärke Cache');
+define('_STATSWIRELESS_SIGNALSTRENGTHCACHE','Signalst&auml;rke Cache');
 define('_STATSWIRELESS_MACADDRESS','MAC Addresse');
 define('_STATSWIRELESS_IPADDRESS','IP Addresse');
 define('_STATSWIRELESS_SIGNAL','Signal');
 define('_STATSWIRELESS_NOISE','Noise');
-define('_STATSWIRELESS_QUALITY','Qualität');
-define('_STATSWIRELESS_ASSOCIATEDSTATIONS','Zugehörige Stationen');
+define('_STATSWIRELESS_QUALITY','Qualit&auml;t');
+define('_STATSWIRELESS_ASSOCIATEDSTATIONS','Zugeh&ouml;rige Stationen');
 define('_STATSWIRELESS_TXRATES','TX rates');
 define('_STATSWIRELESS_MSGNOWINTFOUND','No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported).');
 
