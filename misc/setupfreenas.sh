@@ -14,75 +14,8 @@ TMPDIR="/tmp/freenastmp"
 VERSION=`cat $SVNDIR/etc/version`
 
 # Functions:
-create_fs() {
-	if [ -d $FREENAS ]; then
-		echo
-		echo "$FREENAS already exists.  Remove the directory"
-		echo "before running this script."
-		echo
-		echo "Exiting..."
-		echo
-		exit
-	fi
 
-	mkdir $FREENAS
-	cd $FREENAS
-	mkdir boot ;
-	mkdir boot/kernel ;
-	mkdir bin ;
-	mkdir cf ;
-	mkdir ftmp ;
-	mkdir conf.default ;
-	mkdir dev ;
-	mkdir etc ;
-	mkdir etc/defaults ;
-	mkdir etc/inc ;
-	mkdir etc/pam.d ;
-	mkdir etc/ssh ;
-	mkdir lib ;
-	mkdir libexec ;
-	mkdir -m 0777 mnt ;
-	mkdir -m 0700 root ;
-	mkdir sbin ;
-	mkdir usr ;
-	mkdir usr/bin ;
-	mkdir usr/lib ;
-	mkdir usr/lib/aout ;
-	mkdir usr/libexec ;
-	mkdir usr/local ;
-	mkdir usr/local/bin;
-	mkdir usr/local/lib ;
-	mkdir usr/local/sbin ;
-	mkdir usr/local/www ;
-	mkdir usr/local/www/syntaxhighlighter ;
-	mkdir usr/sbin ;
-	mkdir usr/share ;
-	mkdir tmp ;
-	# share/empty mandatory for VSFTPD
-	mkdir usr/share/empty ;
-	mkdir var ;
-	# Creating symbolic links
-	#ln -s var/tmp tmp
-	ln -s cf/conf conf
-	ln -s /var/run/htpasswd usr/local/www/.htpasswd
-	ln -s /var/etc/resolv.conf etc/resolv.conf
-	ln -s /var/etc/master.passwd etc/master.passwd
-	ln -s /var/etc/passwd etc/passwd
-	ln -s /var/etc/group etc/group
-	ln -s /var/etc/pwd.db etc/pwd.db
-	ln -s /var/etc/spwd.db etc/spwd.db
-	ln -s /var/etc/crontab etc/crontab
-	ln -s /var/etc/ssh/sshd_config etc/ssh/sshd_config
-	ln -s /var/etc/ssh/ssh_host_dsa_key etc/ssh/ssh_host_dsa_key
-	ln -s /var/etc/pam.d/ftp etc/pam.d/ftp
-	ln -s /var/etc/pam.d/sshd etc/pam.d/sshd
-	ln -s /var/etc/pam.d/login etc/pam.d/login
-	ln -s /var/etc/nsswitch.conf etc/nsswitch.conf
-	ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1
-
-	return 0
-}
-
+# Copying required binaries
 copy_bins() {
 	[ -f freenas.files ] && rm -f freenas.files
 	cp $SVNDIR/misc/freenas.files $WORKINGDIR
@@ -109,28 +42,35 @@ copy_bins() {
 	return 0
 }
 
+# Preparing /etc
 prep_etc() {
 	[ -f freenas-etc.tgz ] && rm -f freenas-etc.tgz
 	fetch http://www.freenas.org/downloads/freenas-etc.tgz
-	tar -xzf freenas-etc.tgz -C $FREENAS/
-	#chmod 755 $FREENAS/etc/rc.*
 
+	# Installing the etc archive and PHP configuration scripts
+	tar -xzf freenas-etc.tgz -C $FREENAS/
+
+  # Additional Notes
 	pwd_mkdb -p -d $FREENAS/etc $FREENAS/etc/master.passwd
-	
+
+  # Configuring platform variable
 	echo $VERSION > $FREENAS/etc/version
 	date > $FREENAS/etc/version.buildtime
 
 	echo $FREENAS_PLATFORM > $FREENAS/etc/platform
 
+  # Config file: config.xml
 	cd $FREENAS/conf.default/
 	cp $SVNDIR/conf/config.xml .
 
+  # Zone Info
 	cd $FREENAS/usr/share/
 	fetch http://www.freenas.org/downloads/zoneinfo.tgz
 
 	return 0
 }
 
+# Building the kernel
 build_kernel() {
 	cd /sys/i386/conf
 	if [ -f FREENAS ]; then
@@ -155,6 +95,8 @@ build_kernel() {
 	return 0
 }
 
+# Building the software package:
+# PHP 5
 build_php() {
 	php_tarball=$(ls php*.tar.gz | tail -n1)
 	if [ -z "$php_tarball" ]; then
@@ -163,7 +105,7 @@ build_php() {
 	else
 		tar -zxf $php_tarball
 		cd $(basename $php_tarball .tar.gz)
-		./configure --without-mysql --without-pear --with-openssl  --without-sqlite --with-pcre-regex --enable-discard-path  --enable-force-cgi-redirect --enable-embed=shared
+		./configure --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex --enable-discard-path --enable-force-cgi-redirect --enable-embed=shared
 		make
 		install -s sapi/cgi/php $FREENAS/usr/local/bin
 
@@ -183,26 +125,64 @@ include_path = ".:/etc/inc:/usr/local/www"' > $FREENAS/usr/local/lib/php.ini
 	return 0
 }
 
-build_httpd() {
-	httpd_tarball=$(ls mini_httpd*.tar.gz | tail -n1)
-	if [ ! -z "$http_tarball" ]; then 
-		rm -f $http_tarball
-	fi
-	fetch http://www.acme.com/software/mini_httpd/mini_httpd-1.19.tar.gz
+# Lighttpd
+build_lighttpd() {
+  lighttpd_tarball=$(ls lighttpd*.tar.gz | tail -n1)
+	if [ -z "$lighttpd_tarball" ]; then
+		fetch http://www.lighttpd.net/download/lighttpd-1.4.11.tar.gz
+		echo "Missing file was downloaded. Run step again."
+		return 1
+	else
+		tar -zxvf $lighttpd_tarball
 
-	if [ -f mini_httpd.c.patch ]; then
-		rm -f mini_httpd.c.patch
-	fi
-	fetch http://www.freenas.org/downloads/mini_httpd.c.patch
+		cd $(basename $lighttpd_tarball .tar.gz)
 
-	tar -xzf $httpd_tarball
-	patch < mini_httpd.c.patch
-	cd $(basename $httpd_tarball .tar.gz)
-	make
-	install -s mini_httpd $FREENAS/usr/local/sbin
+		./configure --sysconfdir=/var/etc/ --enable-lfs --without-mysql --without-ldap --with-openssl --without-lua --with-bzip2
+		make
+		install -s src/lighttpd $FREENAS/usr/local/sbin
+
+		mkdir $FREENAS/usr/local/bin/lighttpd
+
+    cp src/.libs/mod_indexfile.so $FREENAS/usr/local/bin/lighttpd
+    cp src/.libs/mod_access.so $FREENAS/usr/local/bin/lighttpd
+    cp src/.libs/mod_accesslog.so $FREENAS/usr/local/bin/lighttpd
+    cp src/.libs/mod_dirlisting.so $FREENAS/usr/local/bin/lighttpd
+    cp src/.libs/mod_staticfile.so $FREENAS/usr/local/bin/lighttpd
+    cp src/.libs/mod_cgi.so $FREENAS/usr/local/bin/lighttpd
+    cp src/.libs/mod_auth.so $FREENAS/usr/local/bin/lighttpd
+    cp src/.libs/mod_webdav.so $FREENAS/usr/local/bin/lighttpd
+	fi
 	return 0
 }
 
+# clog
+build_clog() {
+  cd /usr/src/usr.bin/
+
+  clog_tarball=$(ls clog*.tar.gz | tail -n1)
+  syslogd_tarball=$(ls syslogd_clog*.tar | tail -n1)
+
+  if [ -z "$clog_tarball" -o -z "syslogd_tarball" ]; then
+    fetch http://www.freenas.org/downloads/clog-1.0.1.tar.gz
+    fetch http://www.freenas.org/downloads/syslogd_clog-current.tgz
+    echo "Missing file was downloaded. Run step again."
+    return 1
+	else
+    tar zxvf $clog_tarball
+    tar zxvf $syslogd_tarball
+
+    cd syslogd
+    make
+    install -s syslogd $FREENAS/usr/sbin/
+
+    cd ../clog
+    gcc clog.c -o clog
+    install -s clog $FREENAS/usr/sbin/
+  fi
+  return 0
+}
+
+# MSNTP
 build_msntp() {
 	cd /usr/ports/net/msntp
 	make
@@ -235,6 +215,7 @@ build_vsftp() {
 	vsftp_tarball=$(ls vsftpd*.tar.gz | tail -n1)
 	if [ -z "$vsftp_tarball" ]; then
 		fetch ftp://vsftpd.beasts.org/users/cevans/vsftpd-2.0.4.tar.gz
+		echo "Missing file was downloaded. Run step again."
 	else
 		tar -zxf $vsftp_tarball
 		cd $(basename $vsftp_tarball .tar.gz)
@@ -461,7 +442,6 @@ create_image() {
 }
 
 create_iso () {
-
 	echo "ISO: remove old directory and file if exist"
 	[ -d $TMPDIR ] && rm -rf $TMPDIR
 	[ -f $WORKINGDIR/mfsroot.gz ] && rm -f $WORKINGDIR/mfsroot.gz
@@ -471,7 +451,6 @@ create_iso () {
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Generating the FreeNAS Image file:"
 		create_image;
-   
 	fi
 	
 	#Setting the variable for ISO image:
@@ -507,8 +486,7 @@ create_iso () {
 		echo "ISO: Copying IMG file on $TMPDIR folder"
 		cp $WORKINGDIR/FreeNAS-generic-pc-$VERSION.img $TMPDIR/FreeNAS-generic-pc.gz
 	fi
-	
-	
+
 	echo "ISO: Generating the ISO file"
 	mkisofs -b "boot/cdboot" -no-emul-boot -A "FreeNAS CD-ROM image" -c "boot/boot.catalog" -d -r -publisher "freenas.org" -p "Olivier Cochard-Labbe" -V "freenas_cd" -o "$ISOFILENAME" $TMPDIR
 	
@@ -523,11 +501,9 @@ create_iso_light() {
 	LIGHT_ISO=1
 	create_iso;
 	return 0
-
 }
 
 download_rootfs() {
-
   # Ensure we are in $WORKINGDIR
 	[ ! -d "$WORKINGDIR" ] && mkdir $WORKINGDIR
 	cd $WORKINGDIR
@@ -553,20 +529,16 @@ download_rootfs() {
 	tar -xzf freenas-boot.tgz -C $WORKINGDIR/
 	
 	return 0
-
 }
 
 update_sources() {
-	
 	cd $WORKINGDIR
 	svn co https://svn.sourceforge.net/svnroot/freenas/trunk svn
 	
 	return 0
-
 }
 
 use_svn() {
-	
 	echo "Replacing old code with SVN code"
 	cp -p $SVNDIR/etc/*.* $FREENAS/etc
 	cp -p $SVNDIR/etc/* $FREENAS/etc
@@ -577,29 +549,28 @@ use_svn() {
 	cp -p $SVNDIR/conf/*.* $FREENAS/conf.default
 		
 	return 0
-
 }
 
 fromscratch() {
-
 echo -n '
 Rebulding FreeNAS from Scratch
 Menu:
-1  - Create FreeNAS directory structure 
-2  - Copy FreeBSD binaries to FreeNAS filesystem
-3  - Prepare FreeNAS /etc
-4  - Build FreeNAS kernel
+1  - Create directory structure 
+2  - Copy required binaries to FreeNAS filesystem
+3  - Prepare /etc
+4  - Build kernel
 10 - Build and install PHP
-11 - Build and install mini_httpd
-12 - Build and install msntp
-13 - Build and install ataidle
-14 - Build and install vsftp
-15 - Build and install samba
-16 - Install NFS
-17 - Build and install Netatalk
-18 - Build and install Rsync
-19 - Build and install SMART tools
-20 - Build and install beep
+11 - Build and install lighttpd
+12 - Build and install clog
+13 - Build and install msntp
+14 - Build and install ataidle
+15 - Build and install vsftp
+16 - Build and install samba
+17 - Install NFS
+18 - Build and install Netatalk
+19 - Build and install Rsync
+20 - Build and install SMART tools
+21 - Build and install beep
 30 - Build bootloader
 31 - Add necessary libraries
 32 - Add web GUI
@@ -609,21 +580,22 @@ Menu:
 > '
 	read choice
 	case $choice in
-		1)  create_fs;;
+		1)  $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;;
 		2)  copy_bins;;
 		3)  prep_etc;;
 		4)  build_kernel;;
 		10) build_php;;
-		11) build_httpd;;
-		12) build_msntp;;
-		13) build_ataidle;;
-		14) build_vsftp;;
-		15) build_samba;;
-		16) install_nfs;;
-		17) build_netatalk;;
-		18) build_rsync;;
-		19) build_smarttools;;
-		20) build_beep;;
+		11) build_lighttpd;;
+		12) build_clog;;
+		13) build_msntp;;
+		14) build_ataidle;;
+		15) build_vsftp;;
+		16) build_samba;;
+		17) install_nfs;;
+		18) build_netatalk;;
+		19) build_rsync;;
+		20) build_smarttools;;
+		21) build_beep;;
 		30) build_bootldr;;
 		31) add_libs;;
 		32) add_web_gui;;
@@ -633,10 +605,7 @@ Menu:
 	sleep 1
 
 	return 0
-
 }
-
-
 
 main() {
 	# Ensure we are in $WORKINGDIR
@@ -664,6 +633,7 @@ Menu:
 		20) fromscratch;;
 		*)  exit 0;;
 	esac
+
 	[ $? ] && echo "Success" || echo "Failure"
 	sleep 1
 
