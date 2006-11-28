@@ -127,31 +127,31 @@ include_path = ".:/etc/inc:/usr/local/www"' > $FREENAS/usr/local/lib/php.ini
 
 # Lighttpd
 build_lighttpd() {
-  lighttpd_tarball=$(ls lighttpd*.tar.gz | tail -n1)
-	if [ -z "$lighttpd_tarball" ]; then
-		fetch http://www.lighttpd.net/download/lighttpd-1.4.11.tar.gz
-		echo "Missing file was downloaded. Run step again."
-		return 1
-	else
-		tar -zxvf $lighttpd_tarball
+  lighttpd_tarball="lighttpd-1.4.11.tar.gz"
 
-		cd $(basename $lighttpd_tarball .tar.gz)
-
-		./configure --sysconfdir=/var/etc/ --enable-lfs --without-mysql --without-ldap --with-openssl --without-lua --with-bzip2
-		make
-		install -s src/lighttpd $FREENAS/usr/local/sbin
-
-		mkdir $FREENAS/usr/local/bin/lighttpd
-
-    cp src/.libs/mod_indexfile.so $FREENAS/usr/local/bin/lighttpd
-    cp src/.libs/mod_access.so $FREENAS/usr/local/bin/lighttpd
-    cp src/.libs/mod_accesslog.so $FREENAS/usr/local/bin/lighttpd
-    cp src/.libs/mod_dirlisting.so $FREENAS/usr/local/bin/lighttpd
-    cp src/.libs/mod_staticfile.so $FREENAS/usr/local/bin/lighttpd
-    cp src/.libs/mod_cgi.so $FREENAS/usr/local/bin/lighttpd
-    cp src/.libs/mod_auth.so $FREENAS/usr/local/bin/lighttpd
-    cp src/.libs/mod_webdav.so $FREENAS/usr/local/bin/lighttpd
+  if [ ! -f $lighttpd_tarball ]; then
+		fetch http://www.lighttpd.net/download/$lighttpd_tarball
 	fi
+
+	tar -zxvf $lighttpd_tarball
+
+	cd $(basename $lighttpd_tarball .tar.gz)
+
+	./configure --sysconfdir=/var/etc/ --enable-lfs --without-mysql --without-ldap --with-openssl --without-lua --with-bzip2 --without-pcre
+	make
+	install -s src/lighttpd $FREENAS/usr/local/sbin
+
+	mkdir $FREENAS/usr/local/bin/lighttpd
+
+  cp src/.libs/mod_indexfile.so $FREENAS/usr/local/bin/lighttpd
+  cp src/.libs/mod_access.so $FREENAS/usr/local/bin/lighttpd
+  cp src/.libs/mod_accesslog.so $FREENAS/usr/local/bin/lighttpd
+  cp src/.libs/mod_dirlisting.so $FREENAS/usr/local/bin/lighttpd
+  cp src/.libs/mod_staticfile.so $FREENAS/usr/local/bin/lighttpd
+  cp src/.libs/mod_cgi.so $FREENAS/usr/local/bin/lighttpd
+  cp src/.libs/mod_auth.so $FREENAS/usr/local/bin/lighttpd
+  cp src/.libs/mod_webdav.so $FREENAS/usr/local/bin/lighttpd
+
 	return 0
 }
 
@@ -159,26 +159,27 @@ build_lighttpd() {
 build_clog() {
   cd /usr/src/usr.bin/
 
-  clog_tarball=$(ls clog*.tar.gz | tail -n1)
-  syslogd_tarball=$(ls syslogd_clog*.tar | tail -n1)
+  clog_tarball="clog-1.0.1.tar.gz"
+  syslogd_tarball="syslogd_clog-current.tgz"
 
-  if [ -z "$clog_tarball" -o -z "syslogd_tarball" ]; then
-    fetch http://www.freenas.org/downloads/clog-1.0.1.tar.gz
-    fetch http://www.freenas.org/downloads/syslogd_clog-current.tgz
-    echo "Missing file was downloaded. Run step again."
-    return 1
-	else
-    tar zxvf $clog_tarball
-    tar zxvf $syslogd_tarball
+  if [ ! -f $clog_tarball ]; then
+		fetch http://www.freenas.org/downloads/$clog_tarball
+	fi
+	if [ ! -f $syslogd_tarball ]; then
+    fetch http://www.freenas.org/downloads/$syslogd_tarball
+	fi
 
-    cd syslogd
-    make
-    install -s syslogd $FREENAS/usr/sbin/
+  tar zxvf $clog_tarball
+  tar zxvf $syslogd_tarball
 
-    cd ../clog
-    gcc clog.c -o clog
-    install -s clog $FREENAS/usr/sbin/
-  fi
+  cd syslogd
+  make
+  install -s syslogd $FREENAS/usr/sbin/
+
+  cd ../clog
+  gcc clog.c -o clog
+  install -s clog $FREENAS/usr/sbin/
+
   return 0
 }
 
@@ -204,6 +205,7 @@ done' > $FREENAS/usr/local/bin/runmsntp.sh
 	return 0
 }
 
+# ataidle
 build_ataidle() {
 	cd /usr/ports/sysutils/ataidle
 	make
@@ -211,26 +213,58 @@ build_ataidle() {
 	return 0
 }
 
-build_vsftp() {
-	vsftp_tarball=$(ls vsftpd*.tar.gz | tail -n1)
-	if [ -z "$vsftp_tarball" ]; then
-		fetch ftp://vsftpd.beasts.org/users/cevans/vsftpd-2.0.4.tar.gz
-		echo "Missing file was downloaded. Run step again."
-	else
-		tar -zxf $vsftp_tarball
-		cd $(basename $vsftp_tarball .tar.gz)
-		make
-		install -s vsftpd $FREENAS/usr/local/sbin/
+# iscsi initiator
+build_iscsi() {
+  iscsi_tarball="iscsi-17.tar.bz2"
+  
+  if [ ! -f $iscsi_tarball ]; then
+		fetch ftp://ftp.cs.huji.ac.il/users/danny/freebsd/$iscsi_tarball
 	fi
+
+	tar zxvf $iscsi_tarball
+	cd sys
+  ln -s /sys/kern .
+  ln -s /sys/tools .
+  cd modules/iscsi_initiator
+  make clean
+  ln -s ../.. @
+  make
+  cp iscsi_initiator.ko $FREENAS/boot/kernel/
+  cd ../../../iscontrol/
+  make
+  install -s iscontrol $FREENAS/usr/local/sbin/
+
 	return 0
 }
 
-build_samba() {
-	if [ ! -f samba-latest.tar.gz ]; then
-		fetch http://us2.samba.org/samba/ftp/samba-latest.tar.gz
+# Pure-FTPd
+build_pureftpd() {
+  cd /root
+
+	pureftpd_tarball="pure-ftpd-1.0.21.tar.gz"
+
+	if [ ! -f $pureftpd_tarball ]; then
+		fetch http://download.pureftpd.org/pub/pure-ftpd/releases/$pureftpd_tarball
 	fi
 
-	tar -zxf samba-latest.tar.gz
+  tar zxvf $pureftpd_tarball
+  cd $(basename $pureftpd_tarball .tar.gz)
+  ./configure --with-rfc2640 --with-largefile --with-pam
+  make
+  install -s src/pure-ftpd $FREENAS/usr/local/sbin/
+
+	return 0
+}
+
+# Samba (CIFS server)
+build_samba() {
+  samba_tarball="samba-latest.tar.gz"
+
+	if [ ! -f samba-latest.tar.gz ]; then
+		fetch http://us2.samba.org/samba/ftp/$samba_tarball
+	fi
+
+	tar -zxf $samba_tarball
 	samba_dir=$(ls -d samba-3* | tail -n1)
 	cd $samba_dir/source
 
@@ -256,6 +290,7 @@ build_samba() {
 	return 0
 }
 
+# NFS
 install_nfs() {
 	cp -p /usr/sbin/nfsd $FREENAS/usr/sbin
 	cp -p /usr/sbin/mountd $FREENAS/usr/sbin
@@ -263,21 +298,85 @@ install_nfs() {
 	return 0
 }
 
+# Netatalk
 build_netatalk() {
-	cd /usr/ports/net/netatalk
-	echo "This isn't implemented yet." && sleep 2
-	#make
-	# TODO: FINISH THIS
+  netatalk_tarball="netatalk-2.0.3.tar.gz"
+
+	cd /usr/ports/databases/db42
+  make install
+
+	if [ ! -f $netatalk_tarball ]; then
+		fetch http://ovh.dl.sourceforge.net/sourceforge/netatalk/$netatalk_tarball
+	fi
+
+  tar zxvf $netatalk_tarball
+  cd $(basename $netatalk_tarball .tar.gz)
+  ./configure --bindir=/usr/local/bin --sbindir=/usr/local/sbin --sysconfdir=/var/etc --localstatedir=/var --enable-largefile --disable-tcp-wrappers --disable-cups --with-pam --with-uams-path=/etc/uams/
+  install -s etc/afpd/afpd $FREENAS/usr/local/sbin/
+  mkdir $FREENAS/etc/uams
+  cp etc/uams/.libs/uams_passwd.so $FREENAS/etc/uams
+  cp etc/uams/.libs/uams_dhx_passwd.so $FREENAS/etc/uams
+  cp etc/uams/.libs/uams_guest.so $FREENAS/etc/uams
+  cp etc/uams/.libs/uams_randnum.so $FREENAS/etc/uams
+  cd $FREENAS/etc/uams
+  ln -s uams_passwd.so uams_clrtxt.so
+  ln -s uams_dhx_passwd.so uams_dhx.so
+  cd $FREENAS/usr/local/lib/
+  cp /usr/local/lib/libdb-4.2.so.2 .
+  cd $FREENAS/usr/lib/
+  cp /usr/lib/librpcsvc.so.3 .
+
 	return 0
 }
 
+# RSYNC
 build_rsync() {
-	cd /usr/ports/net/rsync
-	make
-	install -s work/rsync-*/rsync $FREENAS/usr/local/bin
+  rsync_tarball="rsync-2.6.8.tar.gz"
+
+	if [ ! -f $rsync_tarball ]; then
+		fetch http://samba.anu.edu.au/ftp/rsync/$rsync_tarball
+	fi
+  
+  tar zxvf $rsync_tarball
+  cd $(basename $rsync_tarball .tar.gz)
+  ./configure --with-rsyncd-conf=/var/etc
+  make
+  install -s rsync $FREENAS/usr/local/bin/
+
 	return 0
 }
 
+# Unison
+build_unison() {
+  cd /usr/ports/net/unison/
+  make
+  cp work/unison-*/unison $FREENAS/usr/local/bin/
+	return 0
+}
+
+# scponly
+build_scponly() {
+  echo "Edit the Makefile, and add these lines:"
+  echo "WITH_SCPONLY_RSYNC=YES"
+  echo "WITH_SCPONLY_SCP=YES"
+  echo "WITH_SCPONLY_WINSCP=YES"
+  echo "WITH_SCPONLY_UNISON=YES"
+
+  cd /usr/ports/shells/scponly/  
+  make
+  install -s work/scponly-*/scponly $FREENAS/usr/local/bin/
+	return 0
+}
+
+# e2fsck
+build_e2fsck() {
+  cd /usr/ports/sysutils/e2fsprogs/
+  make
+  install -s work/e2fsprogs-*/e2fsck/e2fsck $FREENAS/usr/local/sbin/
+	return 0
+}
+
+# SMART tools
 build_smarttools() {
 	cd /usr/ports/sysutils/smartmontools
 	make
@@ -286,11 +385,29 @@ build_smarttools() {
 	return 0
 }
 
+# aaccli
+build_aaccli() {
+  cd /usr/ports/sysutils/aaccli/
+  make
+  tar zxvf work/aaccli-1.0_0.tgz
+  cp work/bin/aaccli $FREENAS/usr/local/bin/
+	return 0
+}
+
+# beep
 build_beep() {
 	cd /usr/ports/audio/beep
 	make
 	install -s work/beep/beep $FREENAS/usr/local/bin
 	return 0 
+}
+
+# mDNSReponder (Apple bonjour)
+build_mDNSReponder() {
+  cd /usr/ports/net/mDNSResponder
+  make
+  install -s work/mDNSResponder-*/mDNSPosix/build/prod/mDNSResponderPosix $FREENAS/usr/local/sbin/
+	return 0
 }
 
 build_bootldr() {
@@ -564,19 +681,23 @@ Menu:
 12 - Build and install clog
 13 - Build and install msntp
 14 - Build and install ataidle
-15 - Build and install vsftp
-16 - Build and install samba
-17 - Install NFS
-18 - Build and install Netatalk
-19 - Build and install Rsync
-20 - Build and install SMART tools
-21 - Build and install beep
+15 - Build and install iSCSI target
+16 - Build and install Pure-FTPd
+17 - Build and install samba
+18 - Install NFS
+19 - Build and install Netatalk
+20 - Build and install Rsync
+21 - Build and install Unison
+22 - Build and install scponly
+23 - Build and install e2fsck
+24 - Build and install SMART tools
+25 - Build and install aaccli
+26 - Build and install beep
+27 - Build and install mDNSReponder
 30 - Build bootloader
 31 - Add necessary libraries
 32 - Add web GUI
-
 *  - Quit
-
 > '
 	read choice
 	case $choice in
@@ -589,13 +710,19 @@ Menu:
 		12) build_clog;;
 		13) build_msntp;;
 		14) build_ataidle;;
-		15) build_vsftp;;
-		16) build_samba;;
-		17) install_nfs;;
-		18) build_netatalk;;
-		19) build_rsync;;
-		20) build_smarttools;;
-		21) build_beep;;
+		15) build_iscsi;;
+		16) build_pureftpd;;
+		17) build_samba;;
+		18) install_nfs;;
+		19) build_netatalk;;
+		20) build_rsync;;
+		21) build_unison;;
+		22) build_scponly;;
+		23) build_e2fsck;;
+		24) build_smarttools;;
+		25) build_aaccli;;
+		26) build_beep;;
+		27) build_mDNSReponder;;
 		30) build_bootldr;;
 		31) add_libs;;
 		32) add_web_gui;;
@@ -621,7 +748,6 @@ Menu:
 12 - Create FreeNAS ISO file without IMG image (need cdrtool installed)
 20 - Build FreeNAS from scratch advanced menu
 *  - Quit
-
 > '
 	read choice
 	case $choice in
