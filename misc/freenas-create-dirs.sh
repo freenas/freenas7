@@ -5,22 +5,25 @@
 # E-Mail Contact: minibsd@ultradesic.com
 #
 # Adapted for FreeNAS by Olivier Cochard-Labbé (http://www.freenas.org)
+# Modified by Volker Theile (votdev@gmx.de)
 
 MINIBSD_DIR=/usr/local/freenas/rootfs ;
 
+echo "Create FreeNAS directory structure..."
+
 if [ ! -z "$1" ]; then
   MINIBSD_DIR=$1;
-  echo "Using directory $1";
+  echo "Using directory $1.";
 fi
 
-if [ -d $MINIBSD_DIR ] ; then
-        echo ;
-        echo "$MINIBSD_DIR already exists.  Remove the directory" ;
-        echo "before running this script." ;
-        echo ;
-        echo "Exiting..." ;
-        echo ;
-        exit ;
+if [ -d "$MINIBSD_DIR" ] ; then
+  echo ;
+  echo "$MINIBSD_DIR already exists. Remove the directory" ;
+  echo "before running this script." ;
+  echo ;
+  echo "Exiting..." ;
+  echo ;
+  exit ;
 fi ;
 
 mkdir $MINIBSD_DIR ;
@@ -54,12 +57,12 @@ mkdir usr/local/sbin ;
 mkdir usr/local/www ;
 mkdir usr/sbin ;
 mkdir usr/share ;
-mkdir tmp ;
+mkdir tmp;
 # share/empty mandatory for VSFTPD
 mkdir usr/share/empty ;
 mkdir var ;
-# Creating symbolic links
 #ln -s var/tmp tmp
+# Creating symbolic links
 ln -s cf/conf conf
 ln -s /var/run/htpasswd usr/local/www/.htpasswd
 ln -s /var/etc/resolv.conf etc/resolv.conf

@@ -2,18 +2,37 @@
 # This is a script designed to automate the assembly of
 # a FreeNAS box.
 # Created: 2/12/2006 by Scott Zahn
+# Modified: 11/2006 by Volker Theile (votdev@gmx.de)
 
 # Global Variables:
-
 WORKINGDIR="/usr/local/freenas"
 FREENAS="/usr/local/freenas/rootfs"
 BOOTDIR="/usr/local/freenas/bootloader"
 SVNDIR="/usr/local/freenas/svn"
 TMPDIR="/tmp/freenastmp"
-
 VERSION=`cat $SVNDIR/etc/version`
 
+# URL's:
+URL_FREENASETC="http://www.freenas.org/downloads/freenas-etc.tgz"
+URL_FREENASGUI="http://www.freenas.org/downloads/freenas-gui.tgz"
+URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
+URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
+URL_ZONEINFO="http://www.freenas.org/downloads/zoneinfo.tgz"
+URL_LIGHTTPD="http://www.lighttpd.net/download/lighttpd-1.4.11.tar.gz"
+URL_CLOG="http://www.freenas.org/downloads/clog-1.0.1.tar.gz"
+URL_SYSLOGD="http://www.freenas.org/downloads/syslogd_clog-current.tgz"
+URL_ISCSI="ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-17.tar.bz2"
+URL_PUREFTP="http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.21.tar.gz"
+URL_SAMBA="http://us2.samba.org/samba/ftp/samba-latest.tar.gz"
+URL_NETATALK="http://ovh.dl.sourceforge.net/sourceforge/netatalk/netatalk-2.0.3.tar.gz"
+URL_RSYNC="http://samba.anu.edu.au/ftp/rsync/rsync-2.6.8.tar.gz"
+
 # Functions:
+
+# Return filename of URL
+urlbasename() {
+  echo $1 | awk '{n=split($0,v,"/");print v[n]}'
+}
 
 # Copying required binaries
 copy_bins() {
@@ -44,8 +63,12 @@ copy_bins() {
 
 # Preparing /etc
 prep_etc() {
-	[ -f freenas-etc.tgz ] && rm -f freenas-etc.tgz
-	fetch http://www.freenas.org/downloads/freenas-etc.tgz
+	[ -f "freenas-etc.tgz" ] && rm -f freenas-etc.tgz
+	fetch $URL_FREENASETC
+	if [ ! $? ]; then
+    echo "Failed to fetch freenas-etc.tgz."
+    return 1
+  fi
 
 	# Installing the etc archive and PHP configuration scripts
 	tar -xzf freenas-etc.tgz -C $FREENAS/
@@ -65,7 +88,11 @@ prep_etc() {
 
   # Zone Info
 	cd $FREENAS/usr/share/
-	fetch http://www.freenas.org/downloads/zoneinfo.tgz
+	fetch $URL_ZONEINFO
+	if [ ! $? ]; then
+    echo "Failed to fetch $(urlbasename $URL_ZONEINFO)."
+    return 1
+  fi
 
 	return 0
 }
@@ -127,10 +154,14 @@ include_path = ".:/etc/inc:/usr/local/www"' > $FREENAS/usr/local/lib/php.ini
 
 # Lighttpd
 build_lighttpd() {
-  lighttpd_tarball="lighttpd-1.4.11.tar.gz"
+  lighttpd_tarball=$(urlbasename $URL_LIGHTTPD)
 
-  if [ ! -f $lighttpd_tarball ]; then
-		fetch http://www.lighttpd.net/download/$lighttpd_tarball
+  if [ ! -f "$lighttpd_tarball" ]; then
+		fetch $URL_LIGHTTPD
+		if [ ! $? ]; then
+      echo "Failed to fetch $lighttpd_tarball."
+      return 1
+    fi
 	fi
 
 	tar -zxvf $lighttpd_tarball
@@ -159,14 +190,22 @@ build_lighttpd() {
 build_clog() {
   cd /usr/src/usr.bin/
 
-  clog_tarball="clog-1.0.1.tar.gz"
-  syslogd_tarball="syslogd_clog-current.tgz"
+  clog_tarball=$(urlbasename $URL_CLOG)
+  syslogd_tarball=$(urlbasename $URL_SYSLOGD)
 
-  if [ ! -f $clog_tarball ]; then
-		fetch http://www.freenas.org/downloads/$clog_tarball
+  if [ ! -f "$clog_tarball" ]; then
+		fetch $URL_CLOG
+		if [ ! $? ]; then
+      echo "Failed to fetch $clog_tarball."
+      return 1
+    fi
 	fi
-	if [ ! -f $syslogd_tarball ]; then
-    fetch http://www.freenas.org/downloads/$syslogd_tarball
+	if [ ! -f "$syslogd_tarball" ]; then
+    fetch $URL_SYSLOGD
+    if [ ! $? ]; then
+      echo "Failed to fetch $syslogd_tarball."
+      return 1
+    fi
 	fi
 
   tar zxvf $clog_tarball
@@ -215,10 +254,14 @@ build_ataidle() {
 
 # iscsi initiator
 build_iscsi() {
-  iscsi_tarball="iscsi-17.tar.bz2"
+  iscsi_tarball=$(urlbasename $URL_ISCSI)
   
-  if [ ! -f $iscsi_tarball ]; then
-		fetch ftp://ftp.cs.huji.ac.il/users/danny/freebsd/$iscsi_tarball
+  if [ ! -f "$iscsi_tarball" ]; then
+		fetch $URL_ISCSI
+		if [ ! $? ]; then
+      echo "Failed to fetch $iscsi_tarball."
+      return 1
+    fi
 	fi
 
 	tar zxvf $iscsi_tarball
@@ -241,10 +284,14 @@ build_iscsi() {
 build_pureftpd() {
   cd /root
 
-	pureftpd_tarball="pure-ftpd-1.0.21.tar.gz"
+	pureftpd_tarball=$(urlbasename $URL_PUREFTP)
 
-	if [ ! -f $pureftpd_tarball ]; then
-		fetch http://download.pureftpd.org/pub/pure-ftpd/releases/$pureftpd_tarball
+	if [ ! -f "$pureftpd_tarball" ]; then
+		fetch $URL_PUREFTP
+		if [ ! $? ]; then
+      echo "Failed to fetch $pureftpd_tarball."
+      return 1
+    fi
 	fi
 
   tar zxvf $pureftpd_tarball
@@ -258,10 +305,14 @@ build_pureftpd() {
 
 # Samba (CIFS server)
 build_samba() {
-  samba_tarball="samba-latest.tar.gz"
+  samba_tarball=$(urlbasename $URL_SAMBA)
 
-	if [ ! -f samba-latest.tar.gz ]; then
-		fetch http://us2.samba.org/samba/ftp/$samba_tarball
+	if [ ! -f "$samba_tarball" ]; then
+		fetch $URL_SAMBA
+		if [ ! $? ]; then
+      echo "Failed to fetch $samba_tarball."
+      return 1
+    fi
 	fi
 
 	tar -zxf $samba_tarball
@@ -300,13 +351,17 @@ install_nfs() {
 
 # Netatalk
 build_netatalk() {
-  netatalk_tarball="netatalk-2.0.3.tar.gz"
+  netatalk_tarball=$(urlbasename $URL_NETATALK)
 
 	cd /usr/ports/databases/db42
   make install
 
-	if [ ! -f $netatalk_tarball ]; then
-		fetch http://ovh.dl.sourceforge.net/sourceforge/netatalk/$netatalk_tarball
+	if [ ! -f "$netatalk_tarball" ]; then
+		fetch $URL_NETATALK
+		if [ ! $? ]; then
+      echo "Failed to fetch $netatalk_tarball."
+      return 1
+    fi
 	fi
 
   tar zxvf $netatalk_tarball
@@ -331,10 +386,14 @@ build_netatalk() {
 
 # RSYNC
 build_rsync() {
-  rsync_tarball="rsync-2.6.8.tar.gz"
+  rsync_tarball=$(urlbasename $URL_RSYNC)
 
-	if [ ! -f $rsync_tarball ]; then
-		fetch http://samba.anu.edu.au/ftp/rsync/$rsync_tarball
+	if [ ! -f "$rsync_tarball" ]; then
+		fetch $URL_RSYNC
+		if [ ! $? ]; then
+      echo "Failed to fetch $rsync_tarball."
+      return 1
+    fi
 	fi
   
   tar zxvf $rsync_tarball
@@ -410,28 +469,32 @@ build_mDNSReponder() {
 	return 0
 }
 
-build_bootldr() {
-	mkdir -p $BOOTDIR/defaults
-	mkdir $BOOTDIR/kernel
-	cp -p /boot/defaults/loader.conf $BOOTDIR/defaults
-	cp -p /boot/loader $BOOTDIR
-	cp -p /boot/boot $BOOTDIR
-	cp -p /boot/mbr $BOOTDIR
-	cp -p /boot/cdboot $BOOTDIR
-	cp -p /boot/loader.rc $BOOTDIR
-	cp -p /boot/loader.4th $BOOTDIR
-	cp -p /boot/support.4th $BOOTDIR
-	cp -p /boot/device.hints $BOOTDIR
-	cp -p /sys/i386/compile/FREENAS/kernel.gz $BOOTDIR/kernel
-	echo 'mfsroot_load="YES"
-mfsroot_type="mfs_root"
-mfsroot_name="/mfsroot"
-autoboot_delay="0"' > $BOOTDIR/loader.conf
-
+# Build all software packages
+build_softpkg() {
+  build_php;
+  build_lighttpd;
+  build_clog;
+  build_msntp;
+  build_ataidle;
+  build_iscsi;
+  build_pureftpd;
+  build_samba;
+  install_nfs;
+  build_netatalk;
+  build_rsync;
+  build_unison;
+  build_scponly;
+  build_e2fsck;
+  build_smarttools;
+  build_aaccli;
+  build_beep;
+  build_mDNSReponder;
 	return 0
 }
 
+# Adding the libraries
 add_libs() {
+  # Identify required libs.
 	[ -f /tmp/lib.list ] && rm -f /tmp/lib.list
 	dirs=($FREENAS/bin $FREENAS/sbin $FREENAS/usr/bin $FREENAS/usr/sbin $FREENAS/usr/local/bin $FREENAS/usr/local/sbin)
 	for i in ${dirs[@]}; do
@@ -440,22 +503,41 @@ add_libs() {
 		done
 	done
 
+  # Copy identified libs. 
 	for i in $(sort -u /tmp/lib.list); do
 		cp -vp $i ${FREENAS}$(echo $i | rev | cut -d '/' -f 2- | rev)
 	done
 	rm -f /tmp/lib.list
+
+	# Adding the PAM library.
+  cp -p /usr/lib/pam_*.so.3 $FREENAS/usr/lib
+
+  # The LDAP PAM are not bulding by default.
+  cd /usr/ports/security/pam_ldap/
+  make install
+  cp -p /usr/local/lib/pam_ldap.so $FREENAS/usr/local/lib
+
+  # Don't forget to copy this mandatory library.
+  cp /libexec/ld-elf.so.1 $FREENAS/libexec
+
+  # GEOM tools.
+  mkdir $FREENAS/lib/geom
+  cp /lib/geom/geom
+  cp /lib/geom
+
 	return 0
 }
 
+# Adding Web GUI
 add_web_gui(){
 	if [ ! -f "freenas-gui.tgz" ]; then
-		fetch http://www.freenas.org/downloads/freenas-gui.tgz
+		fetch $URL_FREENASGUI
 		if [ ! $? ]; then
-			echo "Failed to fetch freenas-gui.tgz"
+			echo "Failed to fetch freenas-gui.tgz."
 			return 1
 		fi
 	fi
-	tar -xzf freenas-gui.tgz -C $FREENAS/usr/local
+	tar -zxvf freenas-gui.tgz -C $FREENAS/usr/local
 	if [ $? ]; then
 		echo "Untarred GUI files successfully."
 		sleep 1
@@ -463,12 +545,13 @@ add_web_gui(){
 	return 0
 }
 
+# Creating msfroot
 create_mfsroot() {
 	echo "Generating the MFSROOT filesystem"
 	cd $WORKINGDIR
 	[ -f $WORKINGDIR/mfsroot.gz ] && rm -f $WORKINGDIR/mfsroot.gz
 	[ -d $WORKINGDIR/svn ] && use_svn ;
-	
+
 	# Setting Version type and date
 	date > $FREENAS/etc/version.buildtime
 	
@@ -632,26 +715,34 @@ download_rootfs() {
 	fi
 
   if [ $update = 'y' ]; then
-	 echo "Deleting old archives"
-	 [ -f freenas-rootfs.tgz ] && rm -f freenas-rootfs.tgz
-	 [ -f freenas-boot.tgz ] && rm -f freenas-boot.tgz
-
-	 echo "Downloading new archives"
-	 fetch http://www.freenas.org/downloads/freenas-rootfs.tgz
-	 fetch http://www.freenas.org/downloads/freenas-boot.tgz
+    echo "Deleting old archives"
+    [ -f "freenas-rootfs.tgz" ] && rm -f freenas-rootfs.tgz
+    [ -f "freenas-boot.tgz" ] && rm -f freenas-boot.tgz
+    
+    echo "Downloading new archives"
+    fetch $URL_FREENASROOTFS
+    if [ ! $? ]; then
+      echo "Failed to fetch freenas-rootfs.tgz."
+      return 1
+    fi
+    fetch $URL_FREENASBOOT
+    if [ ! $? ]; then
+      echo "Failed to fetch freenas-boot.tgz."
+      return 1
+    fi
 	fi
 
 	echo "De-taring archives"
 	tar -xzf freenas-rootfs.tgz -C $WORKINGDIR/
 	tar -xzf freenas-boot.tgz -C $WORKINGDIR/
-	
+
 	return 0
 }
 
 update_sources() {
 	cd $WORKINGDIR
 	svn co https://svn.sourceforge.net/svnroot/freenas/trunk svn
-	
+
 	return 0
 }
 
@@ -672,61 +763,90 @@ fromscratch() {
 echo -n '
 Rebulding FreeNAS from Scratch
 Menu:
-1  - Create directory structure 
-2  - Copy required binaries to FreeNAS filesystem
-3  - Prepare /etc
-4  - Build kernel
-10 - Build and install PHP
-11 - Build and install lighttpd
-12 - Build and install clog
-13 - Build and install msntp
-14 - Build and install ataidle
-15 - Build and install iSCSI target
-16 - Build and install Pure-FTPd
-17 - Build and install samba
-18 - Install NFS
-19 - Build and install Netatalk
-20 - Build and install Rsync
-21 - Build and install Unison
-22 - Build and install scponly
-23 - Build and install e2fsck
-24 - Build and install SMART tools
-25 - Build and install aaccli
-26 - Build and install beep
-27 - Build and install mDNSReponder
-30 - Build bootloader
-31 - Add necessary libraries
-32 - Add web GUI
+1 - Create directory structure 
+2 - Copy required binaries to FreeNAS filesystem
+3 - Prepare /etc
+4 - Build kernel
+5 - Software package
+6 - Build bootloader
+7 - Add necessary libraries
+8 - Add web GUI
+9 - All
+* - Quit
+> '
+	read choice
+	case $choice in
+		1) $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;;
+		2) copy_bins;;
+		3) prep_etc;;
+		4) build_kernel;;
+		5) fromscratch_softpkg;;
+		6) $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;;
+		7) add_libs;;
+		8) add_web_gui;;
+		9) $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;
+       copy_bins;
+       prep_etc;
+       build_kernel;
+       build_softpkg;
+       $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;
+       add_libs;
+       add_web_gui;;
+		*) main;;
+	esac
+	[ $? ] && echo "Success" || echo "Failure"
+	sleep 1
+
+	return 0
+}
+
+fromscratch_softpkg() {
+echo -n '
+Software package
+Menu:
+1  - Build and install PHP
+2  - Build and install lighttpd
+3  - Build and install clog
+4  - Build and install msntp
+5  - Build and install ataidle
+6  - Build and install iSCSI target
+7  - Build and install Pure-FTPd
+8  - Build and install samba
+9  - Install NFS
+10 - Build and install Netatalk
+11 - Build and install Rsync
+12 - Build and install Unison
+13 - Build and install scponly
+14 - Build and install e2fsck
+15 - Build and install SMART tools
+16 - Build and install aaccli
+17 - Build and install beep
+18 - Build and install mDNSReponder
+19 - Build all
 *  - Quit
 > '
 	read choice
 	case $choice in
-		1)  $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;;
-		2)  copy_bins;;
-		3)  prep_etc;;
-		4)  build_kernel;;
-		10) build_php;;
-		11) build_lighttpd;;
-		12) build_clog;;
-		13) build_msntp;;
-		14) build_ataidle;;
-		15) build_iscsi;;
-		16) build_pureftpd;;
-		17) build_samba;;
-		18) install_nfs;;
-		19) build_netatalk;;
-		20) build_rsync;;
-		21) build_unison;;
-		22) build_scponly;;
-		23) build_e2fsck;;
-		24) build_smarttools;;
-		25) build_aaccli;;
-		26) build_beep;;
-		27) build_mDNSReponder;;
-		30) build_bootldr;;
-		31) add_libs;;
-		32) add_web_gui;;
-		*)  main;;
+		1) build_php;;
+		2) build_lighttpd;;
+		3) build_clog;;
+		4) build_msntp;;
+		5) build_ataidle;;
+		6) build_iscsi;;
+		7) build_pureftpd;;
+		8) build_samba;;
+		9) install_nfs;;
+		10) build_netatalk;;
+		11) build_rsync;;
+		12) build_unison;;
+		13) build_scponly;;
+		14) build_e2fsck;;
+		15) build_smarttools;;
+		16) build_aaccli;;
+		17) build_beep;;
+		18) build_mDNSReponder;;
+		19) build_softpkg;;
+		*)  fromscratch;;
 	esac
 	[ $? ] && echo "Success" || echo "Failure"
 	sleep 1
@@ -740,6 +860,7 @@ main() {
 	cd $WORKINGDIR
 
 	echo -n '
+Welcome to the FreeNAS build environment.
 Menu:
 1  - Download and decompress FreeNAS root filesystem 
 2  - Update the source to latest (need SVN)
