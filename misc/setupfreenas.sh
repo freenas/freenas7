@@ -26,6 +26,7 @@ URL_PUREFTP="http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.2
 URL_SAMBA="http://us2.samba.org/samba/ftp/samba-latest.tar.gz"
 URL_NETATALK="http://ovh.dl.sourceforge.net/sourceforge/netatalk/netatalk-2.0.3.tar.gz"
 URL_RSYNC="http://samba.anu.edu.au/ftp/rsync/rsync-2.6.8.tar.gz"
+URL_GEOMRAID5="http://home.tiscali.de/cmdr_faako/geom_raid5.tbz"
 
 # Functions:
 
@@ -99,17 +100,27 @@ prep_etc() {
 
 # Building the kernel
 build_kernel() {
+  # Adding specials drivers:
+  # A100U2 U2W-SCSI-Controller
+  mkdir -p $TMPDIR/a100
+  cd $TMPDIR/a100
+  tar -zxvf $SVNDIR/misc/drivers/bsd4a100.zip
+  cp a100.* /usr/src/sys/pci
+  echo "pci/a100.c optional ihb device-driver" >> /usr/src/sys/conf/files
+
+  # Compiling and compressing the kernel
 	cd /sys/i386/conf
 	if [ -f FREENAS ]; then
 		rm -f FREENAS
 	fi
 	cp $SVNDIR/misc/kernel-config/FREENAS .
-	config /sys/i386/conf/FREENAS
-	cd /sys/i386/compile/FREENAS
-	make clean
-	make depend && make
+	config FREENAS
+	cd ../compile/FREENAS/
+	make cleandepend; make depend
+	make
 	gzip -9 kernel
 
+  # Installing the modules.
 	cp -p modules/usr/src/sys/modules/geom/geom_vinum/geom_vinum.ko $FREENAS/boot/kernel
 	cp -p modules/usr/src/sys/modules/geom/geom_stripe/geom_stripe.ko $FREENAS/boot/kernel
 	cp -p modules/usr/src/sys/modules/geom/geom_concat/geom_concat.ko $FREENAS/boot/kernel
@@ -117,8 +128,34 @@ build_kernel() {
 	cp -p modules/usr/src/sys/modules/geom/geom_gpt/geom_gpt.ko $FREENAS/boot/kernel
 	cp -p modules/usr/src/sys/modules/ntfs/ntfs.ko $FREENAS/boot/kernel
 	cp -p modules/usr/src/sys/modules/ext2fs/ext2fs.ko $FREENAS/boot/kernel/
-	
+
+  # Adding experimental geom RAID 5 module
+  cd /usr/src
+  geomraid5_tarball=$(urlbasename $URL_GEOMRAID5)
+  if [ ! -f "$geomraid5_tarball" ]; then
+    fetch $URL_GEOMRAID5
+    if [ ! $? ]; then
+      echo "Failed to fetch $geomraid5_tarball."
+      return 1
+    fi
+  fi
+  tar zxvf $geomraid5_tarball
+  cd /usr/src/sys/modules/geom/geom_raid5/
+  make depend
+  make
+  cp geom_raid5.ko $FREENAS/boot/kernel/
+  cd /usr/src/sbin/geom/class/raid5/
+  mkdir /usr/include/geom/raid5
+  cp /usr/src/sys/geom/raid5/g_raid5.h /usr/include/geom/raid5/
+  make depend
+  make
+  make install
+  cp -p /sbin/graid5 $FREENAS/sbin/
+  cp geom_raid5.so $FREENAS/lib/geom/
+
+  # Installing the mbr.
 	cp -p /boot/mbr $FREENAS/boot/
+
 	return 0
 }
 
