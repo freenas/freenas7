@@ -68,6 +68,9 @@ svn/misc/setupfreenas.sh
 
 ################ History Change logs ##############
 
+FreeNAS 0.68b:
+- Allow the following characters in CIFS workgroup name: ! @ # $ % ^ & ( ) _ - ; : ' " , .
+
 FreeNAS 0.68:
 - Need 32MB of minimal disk space for installing (since release 0.67, but forget to mention it)
 - Need 128MB of RAM for using the webgui upgrade function (92MB of RAM should be enough for enabled all services)

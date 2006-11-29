@@ -204,14 +204,26 @@ function is_validsharename($sharename)
 		return false;
 }
 
-
-
 /* returns true if $domain is a valid domain name */
 function is_domain($domain) {
 	if (!is_string($domain))
 		return false;
 		
 	if (preg_match("/^([a-z0-9\-]+\.?)*$/i", $domain))
+		return true;
+	else
+		return false;
+}
+
+/* Returns true if $workgroup is a valid workgroup name */
+/* A workgroup name can contain up to 15 characters, including letters, numbers, */
+/* and the following characters: ! @ # $ % ^ & ( ) _ - ; : ' " , . */
+/* It cannot contain any spaces, and must begin with a letter or number. */
+function is_workgroup($workgroup) {
+	if (!is_string($workgroup))
+		return false;
+
+	if (preg_match("/^[\w\d]+[\w\d\!\@\#\$\%\^\&\(\)\_\-\;\:\'\"\,\.]*$/", $workgroup))
 		return true;
 	else
 		return false;

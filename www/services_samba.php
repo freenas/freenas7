@@ -79,7 +79,7 @@ if ($_POST)
 	if (($_POST['netbiosname'] && !is_domain($_POST['netbiosname']))) {
 		$input_errors[] = _SRVCIFS_MSGVALIDNETBIOSNAME;
 	}
-	if (($_POST['workgroup'] && !is_domain($_POST['workgroup']))) {
+	if (($_POST['workgroup'] && !is_workgroup($_POST['workgroup']))) {
 		$input_errors[] = _SRVCIFS_MSGVALIDWORKGOUP;
 	}
 	if (($_POST['winssrv'] && !is_ipaddr($_POST['winssrv']))) {

@@ -558,7 +558,7 @@ define('_SRVCIFS_SHARES','Freigaben');
 // file: services_samba.php
 define('_SRVCIFS_NAMEDESC','CIFS');
 define('_SRVCIFS_MSGVALIDNETBIOSNAME','Der Netbios-Name enth&auml;lt ung&uuml;ltige Zeichen.');
-define('_SRVCIFS_MSGVALIDWORKGOUP','Der Arbeitsgruppen-Name enth&auml;lt ung&uuml;ltige Zeichen..');
+define('_SRVCIFS_MSGVALIDWORKGOUP','Der Arbeitsgruppen-Name enth&auml;lt ung&uuml;ltige Zeichen.');
 define('_SRVCIFS_MSGVALIDWINS','Der WINS-Server muss eine IP address haben.');
 define('_SRVCIFS_MSGVALIDSNDBUFF','Der "SND Buffer"-Wert muss eine Nummer sein.');
 define('_SRVCIFS_MSGVALIDRCVBUFF','Der "RCV Buffer"-Wert muss eine Nummer sein.');
