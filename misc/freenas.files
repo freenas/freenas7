@@ -129,8 +129,8 @@ sbin/fdisk
 ## fsck -- file system consistency check and interactive repair
 sbin/fsck
 
-## fsck -- UFS file system consistency check and interactive repair
-sbin/fsck_ufs
+## fsck -- UFS,FFS 4.2BSD file system consistency check and interactive repair
+sbin/fsck_ufs:sbin/fsck_ffs:sbin/fsck_4.2bsd
 
 ## fsck -- DOS/WINDOWS file system consistency check and interactive repair
 sbin/fsck_msdosfs
