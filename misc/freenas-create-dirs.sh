@@ -23,7 +23,7 @@ if [ -d "$MINIBSD_DIR" ] ; then
   echo ;
   echo "Exiting..." ;
   echo ;
-  exit ;
+  exit 1 ;
 fi ;
 
 mkdir $MINIBSD_DIR ;

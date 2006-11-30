@@ -42,7 +42,7 @@ if [ -d $MINIBSD_DIR ] ; then
   echo ;
   echo "Exiting..." ;
   echo ;
-  exit ;
+  exit 1 ;
 fi ;
 
 # Create the boot directory that will contain boot, and kernel

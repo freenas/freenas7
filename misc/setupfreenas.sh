@@ -37,6 +37,8 @@ urlbasename() {
 
 # Copying required binaries
 copy_bins() {
+  cd $WORKINGDIR
+
 	[ -f freenas.files ] && rm -f freenas.files
 	cp $SVNDIR/misc/freenas.files $WORKINGDIR
 
@@ -47,7 +49,7 @@ copy_bins() {
 
 	for i in $(cat freenas.files | grep -v "^#"); do
 		file=$(echo "$i" | cut -d ":" -f 1)
-		cp -p /$file $FREENAS/$(echo $file | rev | cut -d "/" -f 2- | rev)
+		cp -v -p /$file $FREENAS/$(echo $file | rev | cut -d "/" -f 2- | rev)
 		# deal with links
 		if [ $(echo "$i" | grep -c ":") -gt 0 ]; then
 			for j in $(echo $i | cut -d ":" -f 2- | sed "s/:/ /g"); do
@@ -66,7 +68,7 @@ copy_bins() {
 prep_etc() {
 	[ -f "freenas-etc.tgz" ] && rm -f freenas-etc.tgz
 	fetch $URL_FREENASETC
-	if [ ! $? ]; then
+	if [ 1 == $? ]; then
     echo "Failed to fetch freenas-etc.tgz."
     return 1
   fi
@@ -90,7 +92,7 @@ prep_etc() {
   # Zone Info
 	cd $FREENAS/usr/share/
 	fetch $URL_ZONEINFO
-	if [ ! $? ]; then
+	if [ 1 == $? ]; then
     echo "Failed to fetch $(urlbasename $URL_ZONEINFO)."
     return 1
   fi
@@ -134,7 +136,7 @@ build_kernel() {
   geomraid5_tarball=$(urlbasename $URL_GEOMRAID5)
   if [ ! -f "$geomraid5_tarball" ]; then
     fetch $URL_GEOMRAID5
-    if [ ! $? ]; then
+    if [ 1 == $? ]; then
       echo "Failed to fetch $geomraid5_tarball."
       return 1
     fi
@@ -195,7 +197,7 @@ build_lighttpd() {
 
   if [ ! -f "$lighttpd_tarball" ]; then
 		fetch $URL_LIGHTTPD
-		if [ ! $? ]; then
+		if [ 1 == $? ]; then
       echo "Failed to fetch $lighttpd_tarball."
       return 1
     fi
@@ -232,14 +234,14 @@ build_clog() {
 
   if [ ! -f "$clog_tarball" ]; then
 		fetch $URL_CLOG
-		if [ ! $? ]; then
+		if [ 1 == $? ]; then
       echo "Failed to fetch $clog_tarball."
       return 1
     fi
 	fi
 	if [ ! -f "$syslogd_tarball" ]; then
     fetch $URL_SYSLOGD
-    if [ ! $? ]; then
+    if [ 1 == $? ]; then
       echo "Failed to fetch $syslogd_tarball."
       return 1
     fi
@@ -295,7 +297,7 @@ build_iscsi() {
   
   if [ ! -f "$iscsi_tarball" ]; then
 		fetch $URL_ISCSI
-		if [ ! $? ]; then
+		if [ 1 == $? ]; then
       echo "Failed to fetch $iscsi_tarball."
       return 1
     fi
@@ -325,7 +327,7 @@ build_pureftpd() {
 
 	if [ ! -f "$pureftpd_tarball" ]; then
 		fetch $URL_PUREFTP
-		if [ ! $? ]; then
+		if [ 1 == $? ]; then
       echo "Failed to fetch $pureftpd_tarball."
       return 1
     fi
@@ -346,7 +348,7 @@ build_samba() {
 
 	if [ ! -f "$samba_tarball" ]; then
 		fetch $URL_SAMBA
-		if [ ! $? ]; then
+		if [ 1 == $? ]; then
       echo "Failed to fetch $samba_tarball."
       return 1
     fi
@@ -395,7 +397,7 @@ build_netatalk() {
 
 	if [ ! -f "$netatalk_tarball" ]; then
 		fetch $URL_NETATALK
-		if [ ! $? ]; then
+		if [ 1 == $? ]; then
       echo "Failed to fetch $netatalk_tarball."
       return 1
     fi
@@ -427,7 +429,7 @@ build_rsync() {
 
 	if [ ! -f "$rsync_tarball" ]; then
 		fetch $URL_RSYNC
-		if [ ! $? ]; then
+		if [ 1 == $? ]; then
       echo "Failed to fetch $rsync_tarball."
       return 1
     fi
@@ -569,7 +571,7 @@ add_libs() {
 add_web_gui(){
 	if [ ! -f "freenas-gui.tgz" ]; then
 		fetch $URL_FREENASGUI
-		if [ ! $? ]; then
+		if [ 1 == $? ]; then
 			echo "Failed to fetch freenas-gui.tgz."
 			return 1
 		fi
@@ -758,12 +760,12 @@ download_rootfs() {
     
     echo "Downloading new archives"
     fetch $URL_FREENASROOTFS
-    if [ ! $? ]; then
+    if [ 1 == $? ]; then
       echo "Failed to fetch freenas-rootfs.tgz."
       return 1
     fi
     fetch $URL_FREENASBOOT
-    if [ ! $? ]; then
+    if [ 1 == $? ]; then
       echo "Failed to fetch freenas-boot.tgz."
       return 1
     fi
@@ -797,6 +799,7 @@ use_svn() {
 }
 
 fromscratch() {
+  while true; do
 echo -n '
 Rebulding FreeNAS from Scratch
 Menu:
@@ -811,33 +814,33 @@ Menu:
 9 - All
 * - Quit
 > '
-	read choice
-	case $choice in
-		1) $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;;
-		2) copy_bins;;
-		3) prep_etc;;
-		4) build_kernel;;
-		5) fromscratch_softpkg;;
-		6) $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;;
-		7) add_libs;;
-		8) add_web_gui;;
-		9) $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;
-       copy_bins;
-       prep_etc;
-       build_kernel;
-       build_softpkg;
-       $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;
-       add_libs;
-       add_web_gui;;
-		*) main;;
-	esac
-	[ $? ] && echo "Success" || echo "Failure"
-	sleep 1
-
-	return 0
+  	read choice
+  	case $choice in
+  		1) $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;;
+  		2) copy_bins;;
+  		3) prep_etc;;
+  		4) build_kernel;;
+  		5) fromscratch_softpkg;;
+  		6) $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;;
+  		7) add_libs;;
+  		8) add_web_gui;;
+  		9) $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;
+         copy_bins;
+         prep_etc;
+         build_kernel;
+         build_softpkg;
+         $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;
+         add_libs;
+         add_web_gui;;
+  		*) main;;
+  	esac
+  	[ 0 == $? ] && echo "Successful" || echo "Failed"
+  	sleep 1
+  done
 }
 
 fromscratch_softpkg() {
+  while true; do
 echo -n '
 Software package
 Menu:
@@ -862,33 +865,32 @@ Menu:
 19 - Build all
 *  - Quit
 > '
-	read choice
-	case $choice in
-		1) build_php;;
-		2) build_lighttpd;;
-		3) build_clog;;
-		4) build_msntp;;
-		5) build_ataidle;;
-		6) build_iscsi;;
-		7) build_pureftpd;;
-		8) build_samba;;
-		9) install_nfs;;
-		10) build_netatalk;;
-		11) build_rsync;;
-		12) build_unison;;
-		13) build_scponly;;
-		14) build_e2fsck;;
-		15) build_smarttools;;
-		16) build_aaccli;;
-		17) build_beep;;
-		18) build_mDNSReponder;;
-		19) build_softpkg;;
-		*)  fromscratch;;
-	esac
-	[ $? ] && echo "Success" || echo "Failure"
-	sleep 1
-
-	return 0
+  	read choice
+  	case $choice in
+  		1) build_php;;
+  		2) build_lighttpd;;
+  		3) build_clog;;
+  		4) build_msntp;;
+  		5) build_ataidle;;
+  		6) build_iscsi;;
+  		7) build_pureftpd;;
+  		8) build_samba;;
+  		9) install_nfs;;
+  		10) build_netatalk;;
+  		11) build_rsync;;
+  		12) build_unison;;
+  		13) build_scponly;;
+  		14) build_e2fsck;;
+  		15) build_smarttools;;
+  		16) build_aaccli;;
+  		17) build_beep;;
+  		18) build_mDNSReponder;;
+  		19) build_softpkg;;
+  		*)  fromscratch;;
+  	esac
+  	[ 0 == $? ] && echo "Successful" || echo "Failed"
+  	sleep 1
+	done
 }
 
 main() {
@@ -918,7 +920,7 @@ Menu:
 		*)  exit 0;;
 	esac
 
-	[ $? ] && echo "Success" || echo "Failure"
+	[ 0 == $? ] && echo "Successful" || echo "Failed"
 	sleep 1
 
 	return 0
