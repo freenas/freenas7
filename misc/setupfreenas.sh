@@ -18,7 +18,8 @@ URL_FREENASGUI="http://www.freenas.org/downloads/freenas-gui.tgz"
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
 URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
 URL_ZONEINFO="http://www.freenas.org/downloads/zoneinfo.tgz"
-URL_LIGHTTPD="http://www.lighttpd.net/download/lighttpd-1.4.11.tar.gz"
+URL_PHP="http://www.php.net/distributions/php-5.1.4.tar.gz"
+URL_LIGHTTPD="http://www.lighttpd.net/download/lighttpd-1.4.13.tar.gz"
 URL_CLOG="http://www.freenas.org/downloads/clog-1.0.1.tar.gz"
 URL_SYSLOGD="http://www.freenas.org/downloads/syslogd_clog-current.tgz"
 URL_ISCSI="ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-17.tar.bz2"
@@ -164,18 +165,25 @@ build_kernel() {
 # Building the software package:
 # PHP 5
 build_php() {
-	php_tarball=$(ls php*.tar.gz | tail -n1)
-	if [ -z "$php_tarball" ]; then
-		echo "PHP tarball not found. Download PHP (tar.gz) and run step again."
-		return 1
-	else
-		tar -zxf $php_tarball
-		cd $(basename $php_tarball .tar.gz)
-		./configure --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex --enable-discard-path --enable-force-cgi-redirect --enable-embed=shared
-		make
-		install -s sapi/cgi/php $FREENAS/usr/local/bin
+  cd $WORKINGDIR
 
-		echo 'magic_quotes_gpc = off
+  php_tarball=$(urlbasename $URL_PHP)
+
+  if [ ! -f "$php_tarball" ]; then
+		fetch $URL_PHP
+		if [ 1 == $? ]; then
+      echo "==> Failed to fetch $php_tarball."
+      return 1
+    fi
+	fi
+
+	tar -zxf $php_tarball
+	cd $(basename $php_tarball .tar.gz)
+	./configure --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex --enable-discard-path --enable-force-cgi-redirect --enable-embed=shared
+	make
+	install -s sapi/cgi/php $FREENAS/usr/local/bin
+
+	echo 'magic_quotes_gpc = off
 magic_quotes_runtime = off
 max_execution_time = 0
 max_input_time = 180
@@ -187,12 +195,13 @@ post_max_size = 256M
 html_errors = off
 include_path = ".:/etc/inc:/usr/local/www"' > $FREENAS/usr/local/lib/php.ini
 
-	fi
 	return 0
 }
 
 # Lighttpd
 build_lighttpd() {
+  cd $WORKINGDIR
+
   lighttpd_tarball=$(urlbasename $URL_LIGHTTPD)
 
   if [ ! -f "$lighttpd_tarball" ]; then
