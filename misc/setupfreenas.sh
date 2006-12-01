@@ -69,7 +69,7 @@ prep_etc() {
 	[ -f "freenas-etc.tgz" ] && rm -f freenas-etc.tgz
 	fetch $URL_FREENASETC
 	if [ 1 == $? ]; then
-    echo "Failed to fetch freenas-etc.tgz."
+    echo "==> Failed to fetch freenas-etc.tgz."
     return 1
   fi
 
@@ -93,7 +93,7 @@ prep_etc() {
 	cd $FREENAS/usr/share/
 	fetch $URL_ZONEINFO
 	if [ 1 == $? ]; then
-    echo "Failed to fetch $(urlbasename $URL_ZONEINFO)."
+    echo "==> Failed to fetch $(urlbasename $URL_ZONEINFO)."
     return 1
   fi
 
@@ -137,7 +137,7 @@ build_kernel() {
   if [ ! -f "$geomraid5_tarball" ]; then
     fetch $URL_GEOMRAID5
     if [ 1 == $? ]; then
-      echo "Failed to fetch $geomraid5_tarball."
+      echo "==> Failed to fetch $geomraid5_tarball."
       return 1
     fi
   fi
@@ -198,7 +198,7 @@ build_lighttpd() {
   if [ ! -f "$lighttpd_tarball" ]; then
 		fetch $URL_LIGHTTPD
 		if [ 1 == $? ]; then
-      echo "Failed to fetch $lighttpd_tarball."
+      echo "==> Failed to fetch $lighttpd_tarball."
       return 1
     fi
 	fi
@@ -235,14 +235,14 @@ build_clog() {
   if [ ! -f "$clog_tarball" ]; then
 		fetch $URL_CLOG
 		if [ 1 == $? ]; then
-      echo "Failed to fetch $clog_tarball."
+      echo "==> Failed to fetch $clog_tarball."
       return 1
     fi
 	fi
 	if [ ! -f "$syslogd_tarball" ]; then
     fetch $URL_SYSLOGD
     if [ 1 == $? ]; then
-      echo "Failed to fetch $syslogd_tarball."
+      echo "==> Failed to fetch $syslogd_tarball."
       return 1
     fi
 	fi
@@ -298,7 +298,7 @@ build_iscsi() {
   if [ ! -f "$iscsi_tarball" ]; then
 		fetch $URL_ISCSI
 		if [ 1 == $? ]; then
-      echo "Failed to fetch $iscsi_tarball."
+      echo "==> Failed to fetch $iscsi_tarball."
       return 1
     fi
 	fi
@@ -328,7 +328,7 @@ build_pureftpd() {
 	if [ ! -f "$pureftpd_tarball" ]; then
 		fetch $URL_PUREFTP
 		if [ 1 == $? ]; then
-      echo "Failed to fetch $pureftpd_tarball."
+      echo "==> Failed to fetch $pureftpd_tarball."
       return 1
     fi
 	fi
@@ -349,7 +349,7 @@ build_samba() {
 	if [ ! -f "$samba_tarball" ]; then
 		fetch $URL_SAMBA
 		if [ 1 == $? ]; then
-      echo "Failed to fetch $samba_tarball."
+      echo "==> Failed to fetch $samba_tarball."
       return 1
     fi
 	fi
@@ -398,7 +398,7 @@ build_netatalk() {
 	if [ ! -f "$netatalk_tarball" ]; then
 		fetch $URL_NETATALK
 		if [ 1 == $? ]; then
-      echo "Failed to fetch $netatalk_tarball."
+      echo "==> Failed to fetch $netatalk_tarball."
       return 1
     fi
 	fi
@@ -430,7 +430,7 @@ build_rsync() {
 	if [ ! -f "$rsync_tarball" ]; then
 		fetch $URL_RSYNC
 		if [ 1 == $? ]; then
-      echo "Failed to fetch $rsync_tarball."
+      echo "==> Failed to fetch $rsync_tarball."
       return 1
     fi
 	fi
@@ -511,23 +511,42 @@ build_mDNSReponder() {
 # Build all software packages
 build_softpkg() {
   build_php;
+  [ 0 != $? ] && return 1
   build_lighttpd;
+  [ 0 != $? ] && return 1
   build_clog;
+  [ 0 != $? ] && return 1
   build_msntp;
+  [ 0 != $? ] && return 1
   build_ataidle;
+  [ 0 != $? ] && return 1
   build_iscsi;
+  [ 0 != $? ] && return 1
   build_pureftpd;
+  [ 0 != $? ] && return 1
   build_samba;
+  [ 0 != $? ] && return 1
   install_nfs;
+  [ 0 != $? ] && return 1
   build_netatalk;
+  [ 0 != $? ] && return 1
   build_rsync;
+  [ 0 != $? ] && return 1
   build_unison;
+  [ 0 != $? ] && return 1
   build_scponly;
+  [ 0 != $? ] && return 1
   build_e2fsck;
+  [ 0 != $? ] && return 1
   build_smarttools;
+  [ 0 != $? ] && return 1
   build_aaccli;
+  [ 0 != $? ] && return 1
   build_beep;
+  [ 0 != $? ] && return 1
   build_mDNSReponder;
+  [ 0 != $? ] && return 1
+
 	return 0
 }
 
@@ -572,7 +591,7 @@ add_web_gui(){
 	if [ ! -f "freenas-gui.tgz" ]; then
 		fetch $URL_FREENASGUI
 		if [ 1 == $? ]; then
-			echo "Failed to fetch freenas-gui.tgz."
+			echo "==> Failed to fetch freenas-gui.tgz."
 			return 1
 		fi
 	fi
@@ -761,12 +780,12 @@ download_rootfs() {
     echo "Downloading new archives"
     fetch $URL_FREENASROOTFS
     if [ 1 == $? ]; then
-      echo "Failed to fetch freenas-rootfs.tgz."
+      echo "==> Failed to fetch freenas-rootfs.tgz."
       return 1
     fi
     fetch $URL_FREENASBOOT
     if [ 1 == $? ]; then
-      echo "Failed to fetch freenas-boot.tgz."
+      echo "==> Failed to fetch freenas-boot.tgz."
       return 1
     fi
 	fi
@@ -834,7 +853,7 @@ Menu:
          add_web_gui;;
   		*) main;;
   	esac
-  	[ 0 == $? ] && echo "Successful" || echo "Failed"
+  	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
   	sleep 1
   done
 }
@@ -888,7 +907,7 @@ Menu:
   		19) build_softpkg;;
   		*)  fromscratch;;
   	esac
-  	[ 0 == $? ] && echo "Successful" || echo "Failed"
+  	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
   	sleep 1
 	done
 }
@@ -920,7 +939,7 @@ Menu:
 		*)  exit 0;;
 	esac
 
-	[ 0 == $? ] && echo "Successful" || echo "Failed"
+	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
 	sleep 1
 
 	return 0
