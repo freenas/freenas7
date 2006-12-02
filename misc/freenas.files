@@ -145,7 +145,7 @@ sbin/gstripe
 sbin/gmirror
 
 ## gvinum -- Volume manager (RAID0,1,5)
-/sbin/gvinum
+sbin/gvinum
 
 ## ifconfig -- configure network interface parameters
 sbin/ifconfig
@@ -256,10 +256,10 @@ sbin/camcontrol
 ####### contents of /usr/bin
 
 ## FTP/HTTP download tools
-/usr/bin/fetch
+usr/bin/fetch
 
 ## This utility prevent WinSCP to display error message
-usr/bin/group
+usr/bin/groups
 
 ## gzip, gunzip, zcat - compress or expand files
 usr/bin/gzip:usr/bin/gunzip
@@ -277,7 +277,7 @@ usr/bin/netstat
 usr/bin/nohup
 
 ## passwd -- Change user passwd
-/usr/bin/passwd
+usr/bin/passwd
 
 ## su -- substitute user identity
 usr/bin/su
@@ -298,7 +298,7 @@ usr/bin/touch
 usr/bin/uptime:usr/bin/w
 
 ##scp -- secure copy (remote file copy program)
-/usr/bin/scp
+usr/bin/scp
 
 ###### contents of usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
@@ -317,7 +317,7 @@ usr/sbin/chown
 usr/sbin/chroot
 
 ## cron - The scheduler
-/usr/sbin/cron
+usr/sbin/cron
 
 ## nsupdate - Dynamic DNS update utility
 #usr/sbin/nsupdate
