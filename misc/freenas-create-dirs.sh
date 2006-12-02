@@ -7,7 +7,7 @@
 # Adapted for FreeNAS by Olivier Cochard-Labbé (http://www.freenas.org)
 # Modified by Volker Theile (votdev@gmx.de)
 
-MINIBSD_DIR=/usr/local/freenas/rootfs ;
+MINIBSD_DIR=/usr/local/freenas/rootfs;
 
 echo "Create FreeNAS directory structure..."
 

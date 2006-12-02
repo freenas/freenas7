@@ -7,7 +7,7 @@
 # Adapted for m0n0wall on FreeBSD 6.1 by Olivier Cochard-Labbé (http://www.freenas.org)
 # Modified by Volker Theile (votdev@gmx.de)
 
-MINIBSD_DIR=/usr/local/freenas/bootloader ;
+MINIBSD_DIR=/usr/local/freenas/bootloader;
 
 echo "Building the boot loader..."
 
