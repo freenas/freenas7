@@ -23,13 +23,36 @@ URL_LIGHTTPD="http://www.lighttpd.net/download/lighttpd-1.4.13.tar.gz"
 URL_CLOG="http://www.freenas.org/downloads/clog-1.0.1.tar.gz"
 URL_SYSLOGD="http://www.freenas.org/downloads/syslogd_clog-current.tgz"
 URL_ISCSI="ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-17.tar.bz2"
-URL_PUREFTP="http://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.21.tar.gz"
+URL_PUREFTP="ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.21.tar.gz"
 URL_SAMBA="http://us2.samba.org/samba/ftp/samba-latest.tar.gz"
 URL_NETATALK="http://ovh.dl.sourceforge.net/sourceforge/netatalk/netatalk-2.0.3.tar.gz"
-URL_RSYNC="http://samba.anu.edu.au/ftp/rsync/rsync-2.6.8.tar.gz"
+URL_RSYNC="http://samba.anu.edu.au/ftp/rsync/rsync-2.6.9.tar.gz"
 URL_GEOMRAID5="http://home.tiscali.de/cmdr_faako/geom_raid5.tbz"
 
+# List of needed packages to compile.
+PKG_PHP="libxml2 perl pkg-config"
+PKG_SAMBA="openldap-client"
+PKG_NETATALK="db42"
+
 # Functions:
+
+# Check if needed packages are installed.
+check_packages() {
+  result=0
+  echo "Check if all needed packages are installed to compile properly:"
+	for pkg in $@; do
+		echo -n "=> Checking $pkg: "
+		installed=$(pkg_info | grep $pkg)
+		if [ -z "$installed" ]; then
+			echo "Not installed"
+			$result=1
+		else
+			echo "OK"
+		fi
+	done
+	return $result
+}
+
 
 # Return filename of URL
 urlbasename() {
@@ -88,7 +111,7 @@ prep_etc() {
 
   # Config file: config.xml
 	cd $FREENAS/conf.default/
-	cp $SVNDIR/conf/config.xml .
+	cp -v $SVNDIR/conf/config.xml .
 
   # Zone Info
 	cd $FREENAS/usr/share/
@@ -124,13 +147,13 @@ build_kernel() {
 	gzip -9 kernel
 
   # Installing the modules.
-	cp -p modules/usr/src/sys/modules/geom/geom_vinum/geom_vinum.ko $FREENAS/boot/kernel
-	cp -p modules/usr/src/sys/modules/geom/geom_stripe/geom_stripe.ko $FREENAS/boot/kernel
-	cp -p modules/usr/src/sys/modules/geom/geom_concat/geom_concat.ko $FREENAS/boot/kernel
-	cp -p modules/usr/src/sys/modules/geom/geom_mirror/geom_mirror.ko $FREENAS/boot/kernel
-	cp -p modules/usr/src/sys/modules/geom/geom_gpt/geom_gpt.ko $FREENAS/boot/kernel
-	cp -p modules/usr/src/sys/modules/ntfs/ntfs.ko $FREENAS/boot/kernel
-	cp -p modules/usr/src/sys/modules/ext2fs/ext2fs.ko $FREENAS/boot/kernel/
+	cp -v -p modules/usr/src/sys/modules/geom/geom_vinum/geom_vinum.ko $FREENAS/boot/kernel
+	cp -v -p modules/usr/src/sys/modules/geom/geom_stripe/geom_stripe.ko $FREENAS/boot/kernel
+	cp -v -p modules/usr/src/sys/modules/geom/geom_concat/geom_concat.ko $FREENAS/boot/kernel
+	cp -v -p modules/usr/src/sys/modules/geom/geom_mirror/geom_mirror.ko $FREENAS/boot/kernel
+	cp -v -p modules/usr/src/sys/modules/geom/geom_gpt/geom_gpt.ko $FREENAS/boot/kernel
+	cp -v -p modules/usr/src/sys/modules/ntfs/ntfs.ko $FREENAS/boot/kernel
+	cp -v -p modules/usr/src/sys/modules/ext2fs/ext2fs.ko $FREENAS/boot/kernel/
 
   # Adding experimental geom RAID 5 module
   cd /usr/src
@@ -146,18 +169,18 @@ build_kernel() {
   cd /usr/src/sys/modules/geom/geom_raid5/
   make depend
   make
-  cp geom_raid5.ko $FREENAS/boot/kernel/
-  cd /usr/src/sbin/geom/class/raid5/
+  cp -v geom_raid5.ko $FREENAS/boot/kernel/
+  cd -v /usr/src/sbin/geom/class/raid5/
   mkdir /usr/include/geom/raid5
-  cp /usr/src/sys/geom/raid5/g_raid5.h /usr/include/geom/raid5/
+  cp -v /usr/src/sys/geom/raid5/g_raid5.h /usr/include/geom/raid5/
   make depend
   make
   make install
-  cp -p /sbin/graid5 $FREENAS/sbin/
-  cp geom_raid5.so $FREENAS/lib/geom/
+  cp -v -p /sbin/graid5 $FREENAS/sbin/
+  cp -v geom_raid5.so $FREENAS/lib/geom/
 
   # Installing the mbr.
-	cp -p /boot/mbr $FREENAS/boot/
+	cp -v -p /boot/mbr $FREENAS/boot/
 
 	return 0
 }
@@ -166,6 +189,13 @@ build_kernel() {
 # PHP 5
 build_php() {
   cd $WORKINGDIR
+
+  # Check if needed packages are installed.
+  check_packages $PKG_PHP
+  if [ 1 == $? ]; then
+    echo "==> Install missing package(s) first."
+    return 1
+  fi
 
   php_tarball=$(urlbasename $URL_PHP)
 
@@ -222,14 +252,14 @@ build_lighttpd() {
 
 	mkdir $FREENAS/usr/local/bin/lighttpd
 
-  cp src/.libs/mod_indexfile.so $FREENAS/usr/local/bin/lighttpd
-  cp src/.libs/mod_access.so $FREENAS/usr/local/bin/lighttpd
-  cp src/.libs/mod_accesslog.so $FREENAS/usr/local/bin/lighttpd
-  cp src/.libs/mod_dirlisting.so $FREENAS/usr/local/bin/lighttpd
-  cp src/.libs/mod_staticfile.so $FREENAS/usr/local/bin/lighttpd
-  cp src/.libs/mod_cgi.so $FREENAS/usr/local/bin/lighttpd
-  cp src/.libs/mod_auth.so $FREENAS/usr/local/bin/lighttpd
-  cp src/.libs/mod_webdav.so $FREENAS/usr/local/bin/lighttpd
+  cp -v src/.libs/mod_indexfile.so $FREENAS/usr/local/bin/lighttpd
+  cp -v src/.libs/mod_access.so $FREENAS/usr/local/bin/lighttpd
+  cp -v src/.libs/mod_accesslog.so $FREENAS/usr/local/bin/lighttpd
+  cp -v src/.libs/mod_dirlisting.so $FREENAS/usr/local/bin/lighttpd
+  cp -v src/.libs/mod_staticfile.so $FREENAS/usr/local/bin/lighttpd
+  cp -v src/.libs/mod_cgi.so $FREENAS/usr/local/bin/lighttpd
+  cp -v src/.libs/mod_auth.so $FREENAS/usr/local/bin/lighttpd
+  cp -v src/.libs/mod_webdav.so $FREENAS/usr/local/bin/lighttpd
 
 	return 0
 }
@@ -320,7 +350,7 @@ build_iscsi() {
   make clean
   ln -s ../.. @
   make
-  cp iscsi_initiator.ko $FREENAS/boot/kernel/
+  cp -v iscsi_initiator.ko $FREENAS/boot/kernel/
   cd ../../../iscontrol/
   make
   install -s iscontrol $FREENAS/usr/local/sbin/
@@ -353,6 +383,15 @@ build_pureftpd() {
 
 # Samba (CIFS server)
 build_samba() {
+  cd $WORKINGDIR
+
+  # Check if needed packages are installed.
+  check_packages $PKG_SAMBA
+  if [ 1 == $? ]; then
+    echo "==> Install missing package(s) first."
+    return 1
+  fi
+
   samba_tarball=$(urlbasename $URL_SAMBA)
 
 	if [ ! -f "$samba_tarball" ]; then
@@ -363,7 +402,7 @@ build_samba() {
     fi
 	fi
 
-	tar -zxf $samba_tarball
+	tar -zxvf $samba_tarball
 	samba_dir=$(ls -d samba-3* | tail -n1)
 	cd $samba_dir/source
 
@@ -381,28 +420,34 @@ build_samba() {
 	mkdir $FREENAS/usr/local/lib/samba/rpc
 	mkdir $FREENAS/usr/local/lib/samba/pdb
 
-	cp bin/*.so $FREENAS/usr/local/lib/samba/vfs
+	cp -v bin/*.so $FREENAS/usr/local/lib/samba/vfs
 	mv $FREENAS/usr/local/lib/samba/vfs/CP*.so $FREENAS/usr/local/lib/samba/charset
-	cp codepages/*.dat $FREENAS/usr/local/lib/samba
-	cp po/*.* $FREENAS/usr/local/lib/samba
+	cp -v codepages/*.dat $FREENAS/usr/local/lib/samba
+	cp -v po/*.* $FREENAS/usr/local/lib/samba
 	
 	return 0
 }
 
 # NFS
 install_nfs() {
-	cp -p /usr/sbin/nfsd $FREENAS/usr/sbin
-	cp -p /usr/sbin/mountd $FREENAS/usr/sbin
-	cp -p /usr/sbin/rpcbind $FREENAS/usr/sbin
+	cp -v -p /usr/sbin/nfsd $FREENAS/usr/sbin
+	cp -v -p /usr/sbin/mountd $FREENAS/usr/sbin
+	cp -v -p /usr/sbin/rpcbind $FREENAS/usr/sbin
 	return 0
 }
 
 # Netatalk
 build_netatalk() {
-  netatalk_tarball=$(urlbasename $URL_NETATALK)
+  cd $WORKINGDIR
 
-	cd /usr/ports/databases/db42
-  make install
+  # Check if needed packages are installed.
+  check_packages $PKG_NETATALK
+  if [ 1 == $? ]; then
+    echo "==> Install missing package(s) first."
+    return 1
+  fi
+
+  netatalk_tarball=$(urlbasename $URL_NETATALK)
 
 	if [ ! -f "$netatalk_tarball" ]; then
 		fetch $URL_NETATALK
@@ -414,26 +459,32 @@ build_netatalk() {
 
   tar zxvf $netatalk_tarball
   cd $(basename $netatalk_tarball .tar.gz)
+
   ./configure --bindir=/usr/local/bin --sbindir=/usr/local/sbin --sysconfdir=/var/etc --localstatedir=/var --enable-largefile --disable-tcp-wrappers --disable-cups --with-pam --with-uams-path=/etc/uams/
+  make
+
   install -s etc/afpd/afpd $FREENAS/usr/local/sbin/
+
   mkdir $FREENAS/etc/uams
-  cp etc/uams/.libs/uams_passwd.so $FREENAS/etc/uams
-  cp etc/uams/.libs/uams_dhx_passwd.so $FREENAS/etc/uams
-  cp etc/uams/.libs/uams_guest.so $FREENAS/etc/uams
-  cp etc/uams/.libs/uams_randnum.so $FREENAS/etc/uams
+  cp -v etc/uams/.libs/uams_passwd.so $FREENAS/etc/uams
+  cp -v etc/uams/.libs/uams_dhx_passwd.so $FREENAS/etc/uams
+  cp -v etc/uams/.libs/uams_guest.so $FREENAS/etc/uams
+  cp -v etc/uams/.libs/uams_randnum.so $FREENAS/etc/uams
   cd $FREENAS/etc/uams
   ln -s uams_passwd.so uams_clrtxt.so
   ln -s uams_dhx_passwd.so uams_dhx.so
   cd $FREENAS/usr/local/lib/
-  cp /usr/local/lib/libdb-4.2.so.2 .
+  cp -v /usr/local/lib/libdb-4.2.so.2 .
   cd $FREENAS/usr/lib/
-  cp /usr/lib/librpcsvc.so.3 .
+  cp -v /usr/lib/librpcsvc.so.3 .
 
 	return 0
 }
 
 # RSYNC
 build_rsync() {
+  cd $WORKINGDIR
+
   rsync_tarball=$(urlbasename $URL_RSYNC)
 
 	if [ ! -f "$rsync_tarball" ]; then
@@ -446,8 +497,10 @@ build_rsync() {
   
   tar zxvf $rsync_tarball
   cd $(basename $rsync_tarball .tar.gz)
+
   ./configure --with-rsyncd-conf=/var/etc
   make
+
   install -s rsync $FREENAS/usr/local/bin/
 
 	return 0
@@ -457,19 +510,17 @@ build_rsync() {
 build_unison() {
   cd /usr/ports/net/unison/
   make
-  cp work/unison-*/unison $FREENAS/usr/local/bin/
+  cp -v work/unison-*/unison $FREENAS/usr/local/bin/
 	return 0
 }
 
 # scponly
 build_scponly() {
-  echo "Edit the Makefile, and add these lines:"
-  echo "WITH_SCPONLY_RSYNC=YES"
-  echo "WITH_SCPONLY_SCP=YES"
-  echo "WITH_SCPONLY_WINSCP=YES"
-  echo "WITH_SCPONLY_UNISON=YES"
-
-  cd /usr/ports/shells/scponly/  
+  cd /usr/ports/shells/scponly/
+  export WITH_SCPONLY_RSYNC=YES
+  export WITH_SCPONLY_SCP=YES
+  export WITH_SCPONLY_WINSCP=YES
+  export WITH_SCPONLY_UNISON=YES
   make
   install -s work/scponly-*/scponly $FREENAS/usr/local/bin/
 	return 0
@@ -497,7 +548,7 @@ build_aaccli() {
   cd /usr/ports/sysutils/aaccli/
   make
   tar zxvf work/aaccli-1.0_0.tgz
-  cp work/bin/aaccli $FREENAS/usr/local/bin/
+  cp -v bin/aaccli $FREENAS/usr/local/bin/
 	return 0
 }
 
@@ -709,7 +760,7 @@ create_image() {
 }
 
 create_iso () {
-	echo "ISO: remove old directory and file if exist"
+	echo "ISO: Remove old directory and file if exist"
 	[ -d $TMPDIR ] && rm -rf $TMPDIR
 	[ -f $WORKINGDIR/mfsroot.gz ] && rm -f $WORKINGDIR/mfsroot.gz
 	
@@ -815,13 +866,13 @@ update_sources() {
 
 use_svn() {
 	echo "Replacing old code with SVN code"
-	cp -p $SVNDIR/etc/*.* $FREENAS/etc
-	cp -p $SVNDIR/etc/* $FREENAS/etc
-	cp -p $SVNDIR/etc/inc/*.* $FREENAS/etc/inc
-	cp -p $SVNDIR/etc/defaults/*.* $FREENAS/etc/defaults
-	cp -p $SVNDIR/www/*.* $FREENAS/usr/local/www
-	cp -p $SVNDIR/www/syntaxhighlighter/*.* $FREENAS/usr/local/www/syntaxhighlighter
-	cp -p $SVNDIR/conf/*.* $FREENAS/conf.default
+	cp -v -p $SVNDIR/etc/*.* $FREENAS/etc
+	cp -v -p $SVNDIR/etc/* $FREENAS/etc
+	cp -v -p $SVNDIR/etc/inc/*.* $FREENAS/etc/inc
+	cp -v -p $SVNDIR/etc/defaults/*.* $FREENAS/etc/defaults
+	cp -v -p $SVNDIR/www/*.* $FREENAS/usr/local/www
+	cp -v -p $SVNDIR/www/syntaxhighlighter/*.* $FREENAS/usr/local/www/syntaxhighlighter
+	cp -v -p $SVNDIR/conf/*.* $FREENAS/conf.default
 		
 	return 0
 }
@@ -839,7 +890,7 @@ Menu:
 6 - Build bootloader
 7 - Add necessary libraries
 8 - Add web GUI
-9 - All
+10 - All
 * - Quit
 > '
   	read choice
@@ -852,15 +903,15 @@ Menu:
   		6) $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;;
   		7) add_libs;;
   		8) add_web_gui;;
-  		9) $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;
-         copy_bins;
-         prep_etc;
-         build_kernel;
-         build_softpkg;
-         $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;
-         add_libs;
-         add_web_gui;;
-  		*) main;;
+  		10) $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;
+          copy_bins;
+          prep_etc;
+          build_kernel;
+          build_softpkg;
+          $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;
+          add_libs;
+          add_web_gui;;
+  		*)  main;;
   	esac
   	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
   	sleep 1
@@ -890,7 +941,7 @@ Menu:
 16 - Build and install aaccli
 17 - Build and install beep
 18 - Build and install mDNSReponder
-19 - Build all
+20 - Build all
 *  - Quit
 > '
   	read choice
@@ -913,7 +964,7 @@ Menu:
   		16) build_aaccli;;
   		17) build_beep;;
   		18) build_mDNSReponder;;
-  		19) build_softpkg;;
+  		20) build_softpkg;;
   		*)  fromscratch;;
   	esac
   	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
