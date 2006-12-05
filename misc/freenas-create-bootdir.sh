@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 #
 # This script was written by David Courtney of Ultradesic
 # http://www.ultradesic.com
