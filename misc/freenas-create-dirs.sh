@@ -59,6 +59,7 @@ mkdir usr/local/www/syntaxhighlighter ;
 mkdir usr/sbin ;
 mkdir usr/share ;
 mkdir usr/share/misc ;
+mkdir usr/share/locale ;
 mkdir tmp;
 # share/empty mandatory for VSFTPD
 mkdir usr/share/empty ;
