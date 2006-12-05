@@ -33,6 +33,7 @@ URL_GEOMRAID5="http://home.tiscali.de/cmdr_faako/geom_raid5.tbz"
 PKG_PHP="libxml2 perl pkg-config"
 PKG_SAMBA="openldap-client"
 PKG_NETATALK="db42"
+PKG_LIBS="pam_ldap"
 
 # Functions:
 
@@ -614,38 +615,51 @@ build_softpkg() {
 
 # Adding the libraries
 add_libs() {
+  # Check if needed packages are installed.
+  check_packages $PKG_LIBS
+  if [ 1 == $? ]; then
+    echo "==> Install missing package(s) first."
+    return 1
+  fi
+  
   # Identify required libs.
-	[ -f /tmp/lib.list ] && rm -f /tmp/lib.list
-	dirs=($FREENAS/bin $FREENAS/sbin $FREENAS/usr/bin $FREENAS/usr/sbin $FREENAS/usr/local/bin $FREENAS/usr/local/sbin)
-	for i in ${dirs[@]}; do
-		for file in $(ls $i); do
-			ldd -f "%p\n" $i/$file 2> /dev/null >> /tmp/lib.list
-		done
-	done
-
-  # Copy identified libs. 
-	for i in $(sort -u /tmp/lib.list); do
-		cp -vp $i ${FREENAS}$(echo $i | rev | cut -d '/' -f 2- | rev)
-	done
-	rm -f /tmp/lib.list
-
-	# Adding the PAM library.
-  cp -p /usr/lib/pam_*.so.3 $FREENAS/usr/lib
-
-  # The LDAP PAM are not bulding by default.
-  cd /usr/ports/security/pam_ldap/
-  make install
-  cp -p /usr/local/lib/pam_ldap.so $FREENAS/usr/local/lib
-
+  [ -f /tmp/lib.list ] && rm -f /tmp/lib.list
+  dirs=($FREENAS/bin $FREENAS/sbin $FREENAS/usr/bin $FREENAS/usr/sbin $FREENAS/usr/local/bin $FREENAS/usr/local/sbin)
+  for i in ${dirs[@]}; do
+  	for file in $(ls $i); do
+  		ldd -f "%p\n" $i/$file 2> /dev/null >> /tmp/lib.list
+  	done
+  done
+  
+  # Copy identified libs.
+  echo "Adding required libs:"
+  for i in $(sort -u /tmp/lib.list); do
+  	cp -vp $i ${FREENAS}$(echo $i | rev | cut -d '/' -f 2- | rev)
+  done
+  rm -f /tmp/lib.list
+  
   # Don't forget to copy this mandatory library.
-  cp /libexec/ld-elf.so.1 $FREENAS/libexec
-
+  cp -vp /libexec/ld-elf.so.1 $FREENAS/libexec
+  
+  # Adding the PAM library.
+  echo
+  echo "Adding PAM library:"
+  cp -vp /usr/lib/pam_*.so.3 $FREENAS/usr/lib
+  
+  # The LDAP PAM are not bulding by default.
+  echo
+  echo "Adding LDAP PAM library:"
+  #cd /usr/ports/security/pam_ldap/
+  #make install
+  cp -vp /usr/local/lib/pam_ldap.so $FREENAS/usr/local/lib
+  
   # GEOM tools.
+  echo
+  echo "Adding GEOM tools:"
   mkdir $FREENAS/lib/geom
-  cp /lib/geom/geom
-  cp /lib/geom
-
-	return 0
+  cp -vp /lib/geom/* $FREENAS/lib/geom
+  
+  return 0
 }
 
 # Adding Web GUI
