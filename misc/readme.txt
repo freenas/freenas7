@@ -72,6 +72,7 @@ FreeNAS 0.68b:
 - Allow the following characters in CIFS workgroup name: ! @ # $ % ^ & ( ) _ - ; : ' " , .
 - Modified build scripts
 - Upgrade lighttpd to 1.4.13
+- Upgrade PHP to 5.2.0
 
 FreeNAS 0.68:
 - Need 32MB of minimal disk space for installing (since release 0.67, but forget to mention it)

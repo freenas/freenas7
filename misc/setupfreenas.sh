@@ -18,7 +18,7 @@ URL_FREENASGUI="http://www.freenas.org/downloads/freenas-gui.tgz"
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
 URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
 URL_ZONEINFO="http://www.freenas.org/downloads/zoneinfo.tgz"
-URL_PHP="http://www.php.net/distributions/php-5.1.4.tar.gz"
+URL_PHP="http://www.php.net/distributions/php-5.2.0.tar.gz"
 URL_LIGHTTPD="http://www.lighttpd.net/download/lighttpd-1.4.13.tar.gz"
 URL_CLOG="http://www.freenas.org/downloads/clog-1.0.1.tar.gz"
 URL_SYSLOGD="http://www.freenas.org/downloads/syslogd_clog-current.tgz"
@@ -41,13 +41,13 @@ check_packages() {
   result=0
   echo "Check if all needed packages are installed to compile properly:"
 	for pkg in $@; do
-		echo -n "=> Checking $pkg: "
+		echo -n "checking for $pkg... "
 		installed=$(pkg_info | grep $pkg)
 		if [ -z "$installed" ]; then
-			echo "Not installed"
-			$result=1
+			echo "no"
+			result=1
 		else
-			echo "OK"
+			echo "yes"
 		fi
 	done
 	return $result
@@ -209,7 +209,9 @@ build_php() {
 
 	tar -zxf $php_tarball
 	cd $(basename $php_tarball .tar.gz)
-	./configure --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex --enable-discard-path --enable-force-cgi-redirect --enable-embed=shared
+
+	./configure --enable-fastcgi --enable-discard-path --enable-force-cgi-redirect --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex
+	#./configure --enable-fastcgi --enable-discard-path --enable-force-cgi-redirect --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex --enable-embed=shared --disable-cli
 	make
 	install -s sapi/cgi/php $FREENAS/usr/local/bin
 
@@ -250,16 +252,16 @@ build_lighttpd() {
 	make
 	install -s src/lighttpd $FREENAS/usr/local/sbin
 
-	mkdir $FREENAS/usr/local/bin/lighttpd
+	mkdir $FREENAS/usr/local/lib/lighttpd
 
-  cp -v src/.libs/mod_indexfile.so $FREENAS/usr/local/bin/lighttpd
-  cp -v src/.libs/mod_access.so $FREENAS/usr/local/bin/lighttpd
-  cp -v src/.libs/mod_accesslog.so $FREENAS/usr/local/bin/lighttpd
-  cp -v src/.libs/mod_dirlisting.so $FREENAS/usr/local/bin/lighttpd
-  cp -v src/.libs/mod_staticfile.so $FREENAS/usr/local/bin/lighttpd
-  cp -v src/.libs/mod_cgi.so $FREENAS/usr/local/bin/lighttpd
-  cp -v src/.libs/mod_auth.so $FREENAS/usr/local/bin/lighttpd
-  cp -v src/.libs/mod_webdav.so $FREENAS/usr/local/bin/lighttpd
+  cp -v src/.libs/mod_indexfile.so $FREENAS/usr/local/lib/lighttpd
+  cp -v src/.libs/mod_access.so $FREENAS/usr/local/lib/lighttpd
+  cp -v src/.libs/mod_accesslog.so $FREENAS/usr/local/lib/lighttpd
+  cp -v src/.libs/mod_dirlisting.so $FREENAS/usr/local/lib/lighttpd
+  cp -v src/.libs/mod_staticfile.so $FREENAS/usr/local/lib/lighttpd
+  cp -v src/.libs/mod_cgi.so $FREENAS/usr/local/lib/lighttpd
+  cp -v src/.libs/mod_auth.so $FREENAS/usr/local/lib/lighttpd
+  cp -v src/.libs/mod_webdav.so $FREENAS/usr/local/lib/lighttpd
 
 	return 0
 }

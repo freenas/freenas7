@@ -360,5 +360,5 @@ libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
 
 usr/libexec/sftp-server
 
-# contents of /usr/share
+###### contents of /usr/share/misc
 usr/share/misc/termcap
