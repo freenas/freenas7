@@ -15,9 +15,6 @@ bin/[:bin/test
 ##  cat -- concatenate and print files
 bin/cat
 
-## chio -- medium changer control utility
-#bin/chio
-
 ## chmod -- change file modes
 bin/chmod
 
@@ -36,14 +33,8 @@ bin/dd
 ##  df -- display free disk space
 bin/df
 
-## domainname -- set or print name of current YP/NIS domain
-# bin/domainname
-
 ## echo -- write arguments to the standard output
 bin/echo
-
-## ed, red -- text editor
-#bin/ed:bin/red
 
 ##  expr -- evaluate expression
 bin/expr
@@ -55,7 +46,7 @@ bin/hostname
 bin/kill
 
 ## ln, link -- make links
-#bin/link:bin/ln
+bin/link:bin/ln
 
 ## ls -- list directory contents
 bin/ls
@@ -79,9 +70,6 @@ bin/pwd:bin/realpath
 ## rm, unlink -- remove directory entries
 bin/rm:bin/unlink
 
-## rmdir -- remove directories
-#bin/rmdir
-
 ##sh -- command interpreter (shell)
 bin/sh
 
@@ -99,9 +87,6 @@ bin/sync
 # adjkerntz -- adjust local time CMOS clock to reflect time zone changes and keep current timezone offset for the kernel
 sbin/adjkerntz
 
-## comcontrol -- control a special tty device
-# sbin/comcontrol
-
 ## bsdlabel -- read and write disk pack label
 sbin/bsdlabel
 
@@ -113,9 +98,6 @@ sbin/dhclient
 
 ## dhclient-script -- DHCP client network configuration script
 sbin/dhclient-script
-
-## bsdlabel -- read and write disk pack label
-#sbin/disklabel
 
 ## dmesg -- display the system message buffer
 sbin/dmesg
@@ -153,12 +135,6 @@ sbin/ifconfig
 ## init -- process control initialization
 sbin/init
 
-##ipfw -- IP firewall and traffic shaper control program
-#sbin/ipfw
-
-## kldconfig -- display or modify the kernel module search path
-# sbin/kldconfig
-
 ## kldload -- load a file into the kernel
 sbin/kldload
 
@@ -170,9 +146,6 @@ sbin/kldunload
 
 ## ldconfig -- configure the shared library cache
 sbin/ldconfig
-
-## md5, sha1, sha256, rmd160 -- calculate a message-digest fingerprint (checksum) for a file
-# sbin/md5
 
 # mdconfig -- configure and enable memory disks
 sbin/mdconfig
@@ -187,7 +160,6 @@ sbin/mount
 sbin/mount_devfs:sbin/mount_fdescfs:sbin/mount_linprocfs:sbin/mount_procfs:sbin/mount_std:
 
 ## mdmfs, mount_mfs -- configure and mount an in-memory file system using the md(4) driver
-#sbin/mount_mfs
 sbin/mdmfs
 
 ## mount_nullfs -- mount a loopback file system sub-tree; demonstrate the use of a null file system layer
@@ -232,12 +204,6 @@ sbin/route
 ##  shutdown -- close down the system at a given time
 sbin/shutdown
 
-## slattach -- attach serial lines as network interfaces
-#sbin/slattach
-
-## swapon, swapoff, swapctl -- specify devices for paging and swapping
-#sbin/swapon
-
 ##sysctl -- get or set kernel state
 sbin/sysctl
 
@@ -254,7 +220,6 @@ sbin/atacontrol
 sbin/camcontrol
 
 ####### contents of /usr/bin
-
 ## FTP/HTTP download tools
 usr/bin/fetch
 
@@ -308,7 +273,7 @@ usr/sbin/ancontrol
 usr/sbin/arp
 
 #boot0cfg -- boot manager installation/configuration utility
-#usr/sbin/boot0cfg
+usr/sbin/boot0cfg
 
 ## chown -- change file owner and group
 usr/sbin/chown
@@ -319,17 +284,8 @@ usr/sbin/chroot
 ## cron - The scheduler
 usr/sbin/cron
 
-## nsupdate - Dynamic DNS update utility
-#usr/sbin/nsupdate
-
-## pccarrd doesn't exist on freeBSD 6
-#usr/sbin/pccardd
-
 ## pwd_mkdb -- generate the password databases
 usr/sbin/pwd_mkdb
-
-## setkey -- manually manipulate the IPsec SA/SP database
-#usr/sbin/setkey
 
 ##  traceroute - print the route packets take to network host
 usr/sbin/traceroute
@@ -344,20 +300,11 @@ usr/sbin/rpcbind
 usr/sbin/rpc.lockd
 usr/sbin/rpc.statd
 
-
 ###### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
 
-## atrun -- run jobs queued for later execution
-#usr/libexec/atrun
-
-## ftpd -- Internet File Transfer Protocol server (need PAM)
-# usr/libexec/ftpd
-
-## getty -- set terminal mode
-#usr/libexec/getty
-
+# sft-server
 usr/libexec/sftp-server
 
 ###### contents of /usr/share/misc
