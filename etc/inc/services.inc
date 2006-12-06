@@ -280,7 +280,7 @@ EOD;
 		
 		if (isset($config['ad']['enable'])) 	{
 			mwexec("/usr/local/sbin/winbindd -s {$g['varetc_path']}/smb.conf");
-			//mwexec("/usr/local/sbin/wbinfo --set-auth-user {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
+			//mwexec("/usr/local/bin/wbinfo --set-auth-user {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
 		}
 		
 		mwexec("/usr/local/sbin/smbd -D -s {$g['varetc_path']}/smb.conf");

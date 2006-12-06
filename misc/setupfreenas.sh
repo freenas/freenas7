@@ -191,6 +191,8 @@ build_kernel() {
 
   # Installing the mbr.
 	cp -v -p /boot/mbr $FREENAS/boot/
+	cp -v -p /boot/boot $FREENAS/boot/
+  cp -v -p /boot/boot0 $FREENAS/boot/
 
 	return 0
 }
@@ -418,11 +420,13 @@ build_samba() {
 	samba_dir=$(ls -d samba-3* | tail -n1)
 	cd $samba_dir/source
 
-	./configure --with-ldap --with-ads --with-pam --with-ldapsam --without-utmp --without-winbind --disable-cups --with-acl-support --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run
+	./configure --with-ldap --with-ads --with-pam --with-ldapsam --without-utmp --disable-cups --with-acl-support --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run
 	make
 
 	install -s bin/smbd $FREENAS/usr/local/sbin/
 	install -s bin/nmbd $FREENAS/usr/local/sbin/
+	install -s bin/winbindd $FREENAS/usr/local/sbin/
+	install -s bin/wbinfo $FREENAS/usr/local/bin/
 	install -s bin/net $FREENAS/usr/local/bin/
 	install -s bin/smbpasswd $FREENAS/usr/local/bin/
 	install -s bin/smbstatus $FREENAS/usr/bin/
