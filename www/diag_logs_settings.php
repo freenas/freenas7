@@ -128,7 +128,6 @@ function enable_change(enable_over) {
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
     <li class="tabinact1"><a href="diag_logs.php">System</a></li>
-    <li class="tabinact"><a href="diag_logs_samba.php">Samba</a></li>
     <li class="tabinact"><a href="diag_logs_ftp.php">FTP</a></li>
     <li class="tabinact"><a href="diag_logs_rsyncd.php">RSYNCD</a></li>
     <li class="tabinact"><a href="diag_logs_sshd.php">SSHD</a></li>

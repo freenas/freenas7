@@ -748,6 +748,7 @@ define('_ACCESSUSERSEDIT_MSGVALIDLOGINRESERVED','The login name is a reserved lo
 define('_ACCESSUSERSEDIT_MSGVALIDFULLNAME','The full name contains invalid characters.');
 define('_ACCESSUSERSEDIT_MSGVALIDDUPLICATE','This user already exists in the user list.');
 define('_ACCESSUSERSEDIT_MSGVALIDPASSERROR',_MSGVALIDPASSWORD);
+define('_ACCESSUSERSEDIT_MSGVALIDPASSWDBADCHAR','The password contain the illegal : character');
 define('_ACCESSUSERSEDIT_LOGIN',_LOGIN);
 define('_ACCESSUSERSEDIT_LOGINTEXT','Unique login name of user.');
 define('_ACCESSUSERSEDIT_FULLNAME',_ACCESS_FULLNAME);

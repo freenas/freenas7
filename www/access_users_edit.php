@@ -116,6 +116,12 @@ if ($_POST)
 	if ($_POST['password']!=$_POST['passwordconf']) 	{
 			$input_errors[] = _ACCESSUSERSEDIT_MSGVALIDPASSERROR;
 	}
+	
+		/* check for valid password  */
+
+		if (($_POST['password'] && !is_validpassword($_POST['password']))) {
+		$input_errors[] = _ACCESSUSERSEDIT_MSGVALIDPASSWDBADCHAR;
+	}
 
 	if (!$input_errors) 	{
 		$users = array();

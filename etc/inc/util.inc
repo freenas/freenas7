@@ -190,6 +190,20 @@ function is_validlogin($login)
 		return false;
 }
 
+/* returns true if $password is a valid password (not used of special : character)*/
+function is_validpassword($password)
+{
+	
+	if (!is_string($password))
+		return false;
+	
+	if (strstr($password, ':'))
+			return false;
+	
+	else
+		return true;
+}
+
 /* returns true if $login is a valid share name (alphanum,dot, _ , -)*/
 function is_validsharename($sharename)
 {

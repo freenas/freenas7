@@ -68,11 +68,13 @@ svn/misc/setupfreenas.sh
 
 ################ History Change logs ##############
 
-FreeNAS 0.68b:
+FreeNAS 0.681b:
 - Allow the following characters in CIFS workgroup name: ! @ # $ % ^ & ( ) _ - ; : ' " , .
 - Modified build scripts
 - Upgrade lighttpd to 1.4.13
 - Upgrade PHP to 5.2.0
+- CIFS: Configure samba for using syslog (circular log file), log message are messed with other system log, but FreeNAS will be more stable.
+- WebGUI: add a check to password input (forbid character ':')
 
 FreeNAS 0.68:
 - Need 32MB of minimal disk space for installing (since release 0.67, but forget to mention it)
