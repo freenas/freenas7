@@ -74,8 +74,14 @@ copy_bins() {
 
 	for i in $(cat freenas.files | grep -v "^#"); do
 		file=$(echo "$i" | cut -d ":" -f 1)
+		# Deal with directories
+		dir=$(echo "$i" | cut -d "*" -f 1)	
+		if [ -d /$dir ]; then
+		  mkdir -v $FREENAS/$dir
+		fi
+		# Copy files
 		cp -v -p /$file $FREENAS/$(echo $file | rev | cut -d "/" -f 2- | rev)
-		# deal with links
+		# Deal with links
 		if [ $(echo "$i" | grep -c ":") -gt 0 ]; then
 			for j in $(echo $i | cut -d ":" -f 2- | sed "s/:/ /g"); do
 				ln $FREENAS/$file $FREENAS/$j
@@ -83,7 +89,7 @@ copy_bins() {
 		fi
 	done
 
-	#Setting right permission to su binary
+	# Setting right permission to su binary
 	chmod 4755 $FREENAS/usr/bin/su
 
 	return 0
@@ -124,13 +130,7 @@ prep_etc() {
     fi
   fi
   cp -v $zoneinfo_tarball $FREENAS/usr/share
-  
-  # Copy locale's.
-  cp -v -R "/usr/share/locale/en_US.ISO8859-1" $FREENAS/usr/share/locale
-  cp -v -R "/usr/share/locale/en_US.UTF-8" $FREENAS/usr/share/locale
-  cp -v -R "/usr/share/locale/la_LN.US-ASCII" $FREENAS/usr/share/locale
-  cp -v -R "/usr/share/locale/UTF-8" $FREENAS/usr/share/locale
-  
+
   return 0
 }
 
@@ -423,6 +423,8 @@ build_samba() {
 
 	install -s bin/smbd $FREENAS/usr/local/sbin/
 	install -s bin/nmbd $FREENAS/usr/local/sbin/
+	install -s bin/net $FREENAS/usr/local/bin/
+	install -s bin/smbpasswd $FREENAS/usr/local/bin/
 	install -s bin/smbstatus $FREENAS/usr/bin/
 	install -s bin/smbcontrol $FREENAS/usr/bin/
 	install -s bin/smbtree $FREENAS/usr/bin/

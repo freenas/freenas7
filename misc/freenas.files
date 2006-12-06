@@ -83,7 +83,7 @@ bin/stty
 bin/sync
 
 
-###### contents of /sbin
+####### contents of /sbin
 # adjkerntz -- adjust local time CMOS clock to reflect time zone changes and keep current timezone offset for the kernel
 sbin/adjkerntz
 
@@ -125,6 +125,9 @@ sbin/gstripe
 
 ## gmirror -- Geom mirror
 sbin/gmirror
+
+## gpt -- Manipulate GUID partition tables
+sbin/gpt
 
 ## gvinum -- Volume manager (RAID0,1,5)
 sbin/gvinum
@@ -171,17 +174,29 @@ sbin/mount_umapfs
 ## mount_unionfs -- mount union file systems
 sbin/mount_unionfs
 
-##  mount_msdosfs -- mount an MS-DOS file system
+## mount_msdosfs -- mount MS-DOS file system
 sbin/mount_msdosfs
 
-## mount_ntfs -- mount an NTFS file system
+## mount_nfs -- mount NFS file system
+sbin/mount_nfs
+
+## mount_nfs4 -- mount NFSv4 file system
+sbin/mount_nfs4
+
+## mount_ntfs -- mount NTFS file system
 sbin/mount_ntfs
 
-## mount_ext2fs -- mount an ext2fs file system
+## mount_ext2fs -- mount ext2fs file system
 sbin/mount_ext2fs
 
-## mount_cd9660 -- mount an CDROM file system
+## mount_cd9660 -- mount CDROM file system
 sbin/mount_cd9660
+
+## mount_reiserfs -- mount ReiserFS file system
+sbin/mount_reiserfs
+
+## mount_udf -- mount UDF file system
+sbin/mount_udf
 
 ## natd -- Network Address Translation daemon
 #sbin/natd
@@ -229,6 +244,9 @@ usr/bin/groups
 ## gzip, gunzip, zcat - compress or expand files
 usr/bin/gzip:usr/bin/gunzip
 
+## id - displays the user and group names and numeric IDs, of the calling process
+usr/bin/id
+
 ## killall -- kill processes by name
 usr/bin/killall
 
@@ -265,7 +283,7 @@ usr/bin/uptime:usr/bin/w
 ##scp -- secure copy (remote file copy program)
 usr/bin/scp
 
-###### contents of usr/sbin
+####### contents of usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
 
@@ -300,12 +318,25 @@ usr/sbin/rpcbind
 usr/sbin/rpc.lockd
 usr/sbin/rpc.statd
 
-###### contents of /usr/libexec
+# sshd - Daemon program for ssh
+usr/sbin/sshd
+
+####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
 
 # sft-server
 usr/libexec/sftp-server
 
-###### contents of /usr/share/misc
+####### contents of /usr/share/misc
 usr/share/misc/termcap
+
+####### contents of /usr/share/locale
+usr/share/locale/en_US.ISO8859-1/*
+usr/share/locale/en_US.UTF-8/*
+usr/share/locale/la_LN.US-ASCII/*
+usr/share/locale/UTF-8/*
+
+####### contents of /usr/local/bin
+# nano - a small, free and friendly editor
+usr/local/bin/nano
