@@ -11,6 +11,12 @@ BOOTDIR="/usr/local/freenas/bootloader"
 SVNDIR="/usr/local/freenas/svn"
 TMPDIR="/tmp/freenastmp"
 VERSION=`cat $SVNDIR/etc/version`
+#Size in MB of the MFS Root filesystem that will include all FreeBSD binary and FreeNAS WEbGUI/Scripts
+#Keept this file very small! This file is unzipped to a RAM disk at FreeNAS startup
+MFSROOT_SIZE="42"
+
+#Size in MB f the IMG file, that include zipped MFS Root filesystem image plus bootlaoder and kernel.
+IMG_SIZE="21"
 
 # URL's:
 URL_FREENASETC="http://www.freenas.org/downloads/freenas-etc.tgz"
@@ -704,8 +710,8 @@ create_mfsroot() {
 	# Setting Version type and date
 	date > $FREENAS/etc/version.buildtime
 	
-	# Make mfsroot to be 42M
-	dd if=/dev/zero of=$WORKINGDIR/mfsroot bs=1M count=42
+	# Make mfsroot to have the size of the MFSROOT_SIZE variable
+	dd if=/dev/zero of=$WORKINGDIR/mfsroot bs=1M count=$MFSROOT_SIZE
 	# Configure this file as a memory disk
 	mdconfig -a -t vnode -f $WORKINGDIR/mfsroot -u 0
 	# Create Label on this disk
@@ -735,8 +741,8 @@ create_image() {
 	mkdir $TMPDIR
 	create_mfsroot;
 	
-	echo "IMG: Creating a 21Mb empty destination IMG file"
-	dd if=/dev/zero of=$WORKINGDIR/image.bin bs=1M count=21
+	echo "IMG: Creating an empty destination IMG file"
+	dd if=/dev/zero of=$WORKINGDIR/image.bin bs=1M count=$IMG_SIZE
 	echo "IMG: using this file as a memory disk"
 	mdconfig -a -t vnode -f $WORKINGDIR/image.bin -u 0
 	echo "IMG: Creating partition on this memory disk"
