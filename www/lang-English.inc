@@ -737,7 +737,7 @@ define('_ACCESS_FULLNAME','Full Name');
 // file: access_users.php
 define('_ACCESSUSERS_MSGCHANGED','The User list has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_ACCESSUSERS_EDITUSER','Edit user');
-define('_ACCESSUSERS_DELUSER','Eelete user');
+define('_ACCESSUSERS_DELUSER','Delete user');
 define('_ACCESSUSERS_CONFDEL','Do you really want to delete this user?!');
 define('_ACCESSUSERS_ADDUSER','Add user');
 
