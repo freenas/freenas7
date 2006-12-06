@@ -11,16 +11,15 @@ BOOTDIR="/usr/local/freenas/bootloader"
 SVNDIR="/usr/local/freenas/svn"
 TMPDIR="/tmp/freenastmp"
 VERSION=`cat $SVNDIR/etc/version`
-#Size in MB of the MFS Root filesystem that will include all FreeBSD binary and FreeNAS WEbGUI/Scripts
-#Keept this file very small! This file is unzipped to a RAM disk at FreeNAS startup
-MFSROOT_SIZE="42"
 
+#Size in MB of the MFS Root filesystem that will include all FreeBSD binary and FreeNAS WEbGUI/Scripts
+#Keep this file very small! This file is unzipped to a RAM disk at FreeNAS startup
+MFSROOT_SIZE="42"
 #Size in MB f the IMG file, that include zipped MFS Root filesystem image plus bootlaoder and kernel.
 IMG_SIZE="21"
 
 # URL's:
 URL_FREENASETC="http://www.freenas.org/downloads/freenas-etc.tgz"
-URL_FREENASGUI="http://www.freenas.org/downloads/freenas-gui.tgz"
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
 URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
 URL_ZONEINFO="http://www.freenas.org/downloads/zoneinfo.tgz"
@@ -59,7 +58,6 @@ check_packages() {
 	done
 	return $result
 }
-
 
 # Return filename of URL
 urlbasename() {
@@ -683,23 +681,6 @@ add_libs() {
   return 0
 }
 
-# Adding Web GUI
-add_web_gui(){
-	if [ ! -f "freenas-gui.tgz" ]; then
-		fetch $URL_FREENASGUI
-		if [ 1 == $? ]; then
-			echo "==> Failed to fetch freenas-gui.tgz."
-			return 1
-		fi
-	fi
-	tar -zxvf freenas-gui.tgz -C $FREENAS/usr/local
-	if [ $? ]; then
-		echo "Untarred GUI files successfully."
-		sleep 1
-	fi
-	return 0
-}
-
 # Creating msfroot
 create_mfsroot() {
 	echo "Generating the MFSROOT filesystem"
@@ -939,7 +920,6 @@ Menu:
   		5) fromscratch_softpkg;;
   		6) $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;;
   		7) add_libs;;
-  		8) add_web_gui;;
   		10) $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;
           copy_bins;
           prep_etc;
@@ -947,7 +927,6 @@ Menu:
           build_softpkg;
           $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;
           add_libs;
-          add_web_gui;;
   		*)  main;;
   	esac
   	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
