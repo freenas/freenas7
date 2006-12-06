@@ -9,26 +9,32 @@
 
 MINIBSD_DIR=/usr/local/freenas/bootloader;
 
-echo "Building the boot loader..."
-
 # Initialize variables.
 opt_a=''
 opt_d=''
 opt_s=''
 
 # Parse the command-line options.
-while getopts 'ads' option
+while getopts 'adsh' option
 do
 	case "$option" in
     "a")  opt_a="1";;
     "d")  opt_d="1";;
     "s")  opt_s="1";;
-    ?)    echo "$0: Bad option specified. Exiting..."
+    "h")  echo "$(basename $0): Build boot loader";
+          echo "Common Options:";
+          echo "  -a    Disable ACPI"
+          echo "  -d    Enable debug"
+          echo "  -s    Enable serial console";
+          exit 1;;
+    ?)    echo "$0: Bad option specified. Exiting...";
           exit 1;;
   esac
 done
 
 shift `expr $OPTIND - 1`
+
+echo "Building the boot loader..."
 
 if [ ! -z "$1" ]; then
   MINIBSD_DIR=$1;
