@@ -92,7 +92,7 @@ function dump_clog($logfile, $tail, $withorig = true) {
 		  </tr>
 		  <?php dump_clog("/var/log/ftp.log", $nentries); ?>
 		</table>
-		<br><form action="diag_logs.php" method="post">
+		<br><form action="diag_logs_ftp.php" method="post">
 <input name="clear" type="submit" class="formbtn" value="Clear log">
 </form>
 	</td>
