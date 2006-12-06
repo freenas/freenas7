@@ -5,7 +5,7 @@
   <title>FreeNAS Developers' Handbook</title>
 
   <bookinfo>
-    <date>November 10, 2006</date>
+    <date>December 6, 2006</date>
 
     <author>
       <firstname>Olivier</firstname>
@@ -215,7 +215,7 @@
         <listitem>
           <para><ulink
           url="ftp://ftp.freebsd.org/pub/FreeBSD/releases/i386/ISO-IMAGES/6.1/">Download
-          the FreeBSD 6.1 CD N°1</ulink></para>
+          the FreeBSD 6.2 CD N°1</ulink></para>
         </listitem>
       </itemizedlist>
     </sect1>
@@ -913,14 +913,13 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
         <sect3>
           <title>PHP 5</title>
 
-          <para>PHP Download the latest version of PHP 5.1 from <ulink
+          <para>PHP Download the latest version of PHP 5.2 from <ulink
           url="http://www.php.net">http://www.php.net</ulink> and decompress
           as usual. Build/install as follows:</para>
 
-          <para><command>./configure --without-mysql --without-pear
-          --with-openssl --without-sqlite --with-pcre-regex
-          --enable-discard-path --enable-force-cgi-redirect
-          --enable-embed=shared</command></para>
+          <para><command>./configure --enable-fastcgi --enable-discard-path
+          --enable-force-cgi-redirect --without-mysql --without-pear
+          --with-openssl --without-sqlite --with-pcre-regex</command></para>
 
           <para><command>make</command></para>
 
@@ -943,9 +942,9 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
 
           <para><code>upload_tmp_dir = /ftmp </code></para>
 
-          <para><code>upload_max_filesize = 16M </code></para>
+          <para><code>upload_max_filesize = 256M </code></para>
 
-          <para><code>post_max_size = 20M </code></para>
+          <para><code>post_max_size = 256M </code></para>
 
           <para><code>html_errors = Off </code></para>
 
@@ -958,15 +957,15 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
           <para>Download, compile and install Lighthttpd:</para>
 
           <para><command>fetch
-          http://www.lighttpd.net/download/lighttpd-1.4.11.tar.gz</command></para>
+          http://www.lighttpd.net/download/lighttpd-1.4.13.tar.gz</command></para>
 
-          <para><command>tar zxvf lighttpd-1.4.11.tar.gz</command></para>
+          <para><command>tar zxvf lighttpd-1.4.13.tar.gz</command></para>
 
-          <para><command>cd lighttpd-1.4.11</command></para>
+          <para><command>cd lighttpd-1.4.13</command></para>
 
           <para><command>./configure --sysconfdir=/var/etc/ --enable-lfs
           --without-mysql --without-ldap --with-openssl --without-lua
-          --with-bzip2</command></para>
+          --with-bzip2 --without-pam</command></para>
 
           <para><command>make</command></para>
 
@@ -977,28 +976,28 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
           $FREENAS/usr/local/bin/lighttpd</command></para>
 
           <para><command>cp src/.libs/mod_indexfile.so
-          $FREENAS/usr/local/bin/lighttpd</command></para>
+          $FREENAS/usr/local/lib/lighttpd</command></para>
 
           <para><command>cp src/.libs/mod_access.so
-          $FREENAS/usr/local/bin/lighttpd</command></para>
+          $FREENAS/usr/local/lib/lighttpd</command></para>
 
           <para><command>cp src/.libs/mod_accesslog.so
-          $FREENAS/usr/local/bin/lighttpd</command></para>
+          $FREENAS/usr/local/lib/lighttpd</command></para>
 
           <para><command>cp src/.libs/mod_dirlisting.so
-          $FREENAS/usr/local/bin/lighttpd</command></para>
+          $FREENAS/usr/local/lib/lighttpd</command></para>
 
           <para><command>cp src/.libs/mod_staticfile.so
-          $FREENAS/usr/local/bin/lighttpd</command></para>
+          $FREENAS/usr/local/lib/lighttpd</command></para>
 
           <para><command>cp src/.libs/mod_cgi.so
-          $FREENAS/usr/local/bin/lighttpd</command></para>
+          $FREENAS/usr/local/lib/lighttpd</command></para>
 
           <para><command>cp src/.libs/mod_auth.so
-          $FREENAS/usr/local/bin/lighttpd</command></para>
+          $FREENAS/usr/local/lib/lighttpd</command></para>
 
           <para><command>cp src/.libs/mod_webdav.so
-          $FREENAS/usr/local/bin/lighttpd</command></para>
+          $FREENAS/usr/local/lib/lighttpd</command></para>
 
           <para><command></command></para>
         </sect3>
@@ -1158,7 +1157,7 @@ done</programlisting>
 
           <para><command>tar zxvf samba-latest.tar.gz</command></para>
 
-          <para><command>cd samba-3.0.23a/source/</command></para>
+          <para><command>cd samba-3.0.23d/source/</command></para>
 
           <para>Then configure and make the source:</para>
 
@@ -1168,7 +1167,7 @@ done</programlisting>
           --with-piddir=/var/run --with-privatedir=/var/etc/private
           --with-configdir=/var/etc --with-lockdir=/var/run
           --with-piddir=/var/run --with-shared-modules=idmap_rid
-          --with-pammodulesdir=/usr/local/lib </command></para>
+          --with-pammodulesdir=/usr/local/lib --with-syslog</command></para>
 
           <para><command>make</command></para>
 
