@@ -184,7 +184,7 @@ build_kernel() {
   make depend
   make
   cp -v geom_raid5.ko $FREENAS/boot/kernel/
-  cd -v /usr/src/sbin/geom/class/raid5/
+  cd /usr/src/sbin/geom/class/raid5/
   mkdir /usr/include/geom/raid5
   cp -v /usr/src/sys/geom/raid5/g_raid5.h /usr/include/geom/raid5/
   make depend

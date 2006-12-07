@@ -60,6 +60,7 @@ mkdir etc/inc ;
 mkdir etc/pam.d ;
 mkdir etc/ssh ;
 mkdir lib ;
+mkdir lib/geom ;
 mkdir libexec ;
 mkdir -m 0777 mnt ;
 mkdir -m 0700 root ;
