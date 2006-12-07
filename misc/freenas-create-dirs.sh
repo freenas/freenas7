@@ -9,6 +9,25 @@
 
 MINIBSD_DIR=/usr/local/freenas/rootfs;
 
+# Initialize variables.
+opt_f=0
+
+# Parse the command-line options.
+while getopts 'fh' option
+do
+	case "$option" in
+    "f")  opt_f=1;;
+    "h")  echo "$(basename $0): Create FreeNAS directory structure";
+          echo "Common Options:";
+          echo "  -f    Force executing this script";
+          exit 1;;
+    ?)    echo "$0: Bad option specified. Exiting...";
+          exit 1;;
+  esac
+done
+
+shift `expr $OPTIND - 1`
+
 echo "Create FreeNAS directory structure..."
 
 if [ ! -z "$1" ]; then
@@ -16,7 +35,7 @@ if [ ! -z "$1" ]; then
   echo "Using directory $1.";
 fi
 
-if [ -d "$MINIBSD_DIR" ] ; then
+if [ 1 != $opt_f -a -d "$MINIBSD_DIR" ]; then
   echo ;
   echo "$MINIBSD_DIR already exists. Remove the directory" ;
   echo "before running this script." ;

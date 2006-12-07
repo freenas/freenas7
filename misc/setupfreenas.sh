@@ -264,7 +264,7 @@ build_lighttpd() {
 
 	cd $(basename $lighttpd_tarball .tar.gz)
 
-	./configure --sysconfdir=/var/etc/ --enable-lfs --without-mysql --without-ldap --with-openssl --without-lua --with-bzip2 --without-pcre --without-pam
+	./configure --sysconfdir=/var/etc/ --enable-lfs --without-mysql --without-ldap --with-openssl --without-lua --with-bzip2 --without-pcre
 	make
 	install -s src/lighttpd $FREENAS/usr/local/sbin
 
@@ -919,19 +919,19 @@ Menu:
 > '
   	read choice
   	case $choice in
-  		1) $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;;
+  		1) $SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS;;
   		2) copy_bins;;
   		3) prep_etc;;
   		4) build_kernel;;
   		5) fromscratch_softpkg;;
-  		6) $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;;
+  		6) $SVNDIR/misc/freenas-create-bootdir.sh -f $BOOTDIR;;
   		7) add_libs;;
-  		10) $SVNDIR/misc/freenas-create-dirs.sh $FREENAS;
+  		10) $SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS;
           copy_bins;
           prep_etc;
           build_kernel;
           build_softpkg;
-          $SVNDIR/misc/freenas-create-bootdir.sh $BOOTDIR;
+          $SVNDIR/misc/freenas-create-bootdir.sh -f $BOOTDIR;
           add_libs;;
   		*)  main;;
   	esac
