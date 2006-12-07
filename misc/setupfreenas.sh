@@ -29,7 +29,7 @@ URL_CLOG="http://www.freenas.org/downloads/clog-1.0.1.tar.gz"
 URL_SYSLOGD="http://www.freenas.org/downloads/syslogd_clog-current.tgz"
 URL_ISCSI="ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-17.tar.bz2"
 URL_PUREFTP="ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.21.tar.gz"
-URL_SAMBA="http://us2.samba.org/samba/ftp/samba-latest.tar.gz"
+URL_SAMBA="http://us1.samba.org/samba/ftp/stable/samba-3.0.23d.tar.gz"
 URL_NETATALK="http://ovh.dl.sourceforge.net/sourceforge/netatalk/netatalk-2.0.3.tar.gz"
 URL_RSYNC="http://samba.anu.edu.au/ftp/rsync/rsync-2.6.9.tar.gz"
 URL_GEOMRAID5="http://home.tiscali.de/cmdr_faako/geom_raid5.tbz"
@@ -424,7 +424,7 @@ build_samba() {
 	samba_dir=$(ls -d samba-3* | tail -n1)
 	cd $samba_dir/source
 
-	./configure --with-ldap --with-ads --with-pam --with-ldapsam --without-utmp --disable-cups --with-acl-support --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run
+	./configure --without-cups --with-ads --disable-cups --without-ads --with-pam --with-ldapsam --with-acl-support --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run --with-piddir=/var/run --with-shared-modules=idmap_rid --with-pammodulesdir=/usr/local/lib --with-syslog
 	make
 
 	install -s bin/smbd $FREENAS/usr/local/sbin/
@@ -437,15 +437,22 @@ build_samba() {
 	install -s bin/smbcontrol $FREENAS/usr/bin/
 	install -s bin/smbtree $FREENAS/usr/bin/
 
-	mkdir -p $FREENAS/usr/local/lib/samba/vfs
-	mkdir $FREENAS/usr/local/lib/samba/charset
+	# TO BE checked: Is the directory usr/local/samba/lib can be replaced with usr/local/lib/samba ?
+	
+	#mkdir -p $FREENAS/usr/local/lib/samba/vfs
+	mkdir -p $FREENAS/usr/local/lib/samba/charset
 	mkdir $FREENAS/usr/local/lib/samba/rpc
 	mkdir $FREENAS/usr/local/lib/samba/pdb
+	mkdir -p $FREENAS/usr/local/samba/lib/idmap
+	mkdir $FREENAS/usr/local/samba/lib/vfs
 
-	cp -v bin/*.so $FREENAS/usr/local/lib/samba/vfs
-	mv $FREENAS/usr/local/lib/samba/vfs/CP*.so $FREENAS/usr/local/lib/samba/charset
+	# cp -v bin/*.so $FREENAS/usr/local/lib/samba/vfs
+	# mv $FREENAS/usr/local/lib/samba/vfs/CP*.so $FREENAS/usr/local/lib/samba/charset
+	cp -v bin/CP*.so $FREENAS/usr/local/lib/samba/charset
 	cp -v codepages/*.dat $FREENAS/usr/local/lib/samba
 	cp -v po/*.* $FREENAS/usr/local/lib/samba
+	cp -v bin/recycle.so $FREENAS/usr/local/samba/lib/vfs
+	cp -v bin/rid.so $FREENAS/usr/local/samba/lib/idmap
 	
 	return 0
 }
