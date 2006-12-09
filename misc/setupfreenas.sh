@@ -853,7 +853,7 @@ download_rootfs() {
 	
 	update=y
 	if [ -e freenas-rootfs.tgz -a -e freenas-boot.tgz ]; then
-    echo -n "Update existing files [y/n]?"
+    echo -n "Update existing archives (download latest) [y/n]? "
     read update
 	fi
 
@@ -862,7 +862,7 @@ download_rootfs() {
     [ -f "freenas-rootfs.tgz" ] && rm -f freenas-rootfs.tgz
     [ -f "freenas-boot.tgz" ] && rm -f freenas-boot.tgz
     
-    echo "Downloading new archives"
+    echo "Downloading new archives..."
     fetch $URL_FREENASROOTFS
     if [ 1 == $? ]; then
       echo "==> Failed to fetch freenas-rootfs.tgz."
@@ -875,6 +875,23 @@ download_rootfs() {
     fi
 	fi
 
+  # Remove old data.
+  delete=n
+	if [ -e "./bootloader" -o -e "./rootfs" ]; then
+    echo -n "Delete existing directory structure (./bootloader/ and ./rootfs/) [y/n]? "
+    read delete
+	fi
+
+  if [ $delete = 'y' ]; then
+    if [ -e "./bootloader" ]; then
+      rm -r ./bootloader
+    fi
+    if [ -e "./rootfs" ]; then
+      rm -r ./rootfs
+    fi
+  fi
+
+  # Extracting bootloader and rootfs data.
 	echo "De-taring archives"
 	tar -xzf freenas-rootfs.tgz -C $WORKINGDIR/
 	tar -xzf freenas-boot.tgz -C $WORKINGDIR/
