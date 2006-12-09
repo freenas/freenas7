@@ -74,7 +74,7 @@ FreeNAS 0.681b:
 - Upgrade lighttpd to 1.4.13
 - Upgrade PHP to 5.2.0
 - Upgrade Samba to 3.0.23d
-- Software RAID: Add geom concat (JBOD) and geom stripe (RAID 0)
+- Software RAID: Add geom concat (JBOD) and geom stripe (RAID 0), add confirmation box before formatting RAID
 - CIFS: Configure samba for using syslog (circular log file), log message are messed with other system log, but FreeNAS will be more stable.
 - WebGUI: add a check to password input (forbid character ':')
 

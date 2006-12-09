@@ -70,7 +70,7 @@ if (!isset($do_format)) {
     	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_GMIRROR; ?></a></li>
 		<li class="tabact"><?=_DISKSRAIDPHP_GCONCAT; ?></li>
 		<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_GSTRIPE; ?> </a></li>
-        <li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></a></li>
+        <li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?></a></li>
         <li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></a></li>
       </ul>
     </td>
@@ -103,7 +103,7 @@ if (!isset($do_format)) {
   				<tr>
   				  <td width="22%" valign="top">&nbsp;</td>
   				  <td width="78%">
-              <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSRAIDINITPHP_FORMAT;?>">
+              <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMANAGEINITPHP_FORMATDISC;?>" onclick="return confirm('<?=_DISKSMANAGEINITPHP_FORMATDISCCONF;?>')">
   				  </td>
   				</tr>
 				  <tr>

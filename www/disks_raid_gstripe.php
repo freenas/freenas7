@@ -86,7 +86,7 @@ if ($_GET['act'] == "del") {
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_GMIRROR; ?></a></li>
 	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_GCONCAT; ?></a></li>
 	<li class="tabact"><?=_DISKSRAIDPHP_GSTRIPE; ?></li>
-	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?><?=_DISKSRAIDPHP_UNSTABLE ;?> </a></li>
+	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?> </a></li>
 	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?> </a></li>
   </ul>
   </td></tr>

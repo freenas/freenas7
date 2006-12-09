@@ -46,7 +46,9 @@ gstripe_sort();
 disks_sort();
 
 $a_raid = &$config['gstripe']['vdisk'];
-$a_disk = get_fstype_disks_list("gstripe");
+//$a_disk = get_fstype_disks_list("gstripe");
+// Use all 'gstripe' configured disk, and geom mirror disk
+$a_disk = array_merge((array)get_fstype_disks_list("gstripe"),(array)get_gmirror_disks_list());
 
 if (!sizeof($a_disk)) {
 	$nodisk_errors[] = _DISKSRAIDEDITPHP_MSGADDDISKFIRST;
@@ -92,7 +94,7 @@ if ($_POST) {
 		$raid['name'] = $_POST['name'];
 		$raid['type'] = 0;
 		$raid['diskr'] = $_POST['diskr'];
-		$raid['desc'] = "Software RAID {$_POST['type']}";
+		$raid['desc'] = "Software gstripe RAID {$_POST['type']}";
 
 		if (isset($id) && $a_raid[$id])
 			$a_raid[$id] = $raid;

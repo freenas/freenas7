@@ -605,7 +605,7 @@ function disks_raid_start()
 	global $config, $g;
 	
 	/* Start software RAID */
-	// WARNING: MUST ADD more intelligent way for starting raid that include dependancy, for example RAID1+0 or 0+1 type
+	// WARNING:  Must start gmirror before gstripe for RAID1+0
 	disks_raid_gvinum_start();
 	disks_raid_gmirror_start();
 	disks_raid_gstripe_start();
@@ -738,6 +738,7 @@ function disks_raid_stop()
 {
 	// Stop ALL software RAID volume
 	// Must add a more intelligent way for stoping device using dependency
+	// WARNING:  Must stop gstripe before gmirror for RAID1+0
 	
 	disks_raid_gvinum_stop();
 	disks_raid_graid5_stop();

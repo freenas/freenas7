@@ -70,7 +70,7 @@ if (!isset($do_action))
 	<li class="tabact"><?=_DISKSRAIDPHP_GMIRROR; ?></li>
 	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_GCONCAT; ?></a></li> 
 	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_GSTRIPE; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></a></li> 
+	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?></a></li> 
 	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></a></li> 
   </ul>
   </td></tr>
