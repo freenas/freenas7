@@ -62,12 +62,10 @@ function disks_mount_all()
 	
 }
 
+// Mount using the mount table
 function disks_mount($mount)
 {
 	global $config, $g;
-	
-	/* mount the specified $mount partition */
-	/* The $mount variable is the all config table for the mount point*/
 	
 	/* Create one directory for each device under mnt */
 	
@@ -159,14 +157,14 @@ function disks_mount($mount)
 	
 }
 
-/* Advanced mount using disk and partition. */
-function disks_mount_ex($disk,$partition)
+// Mount using fullname (/dev/ad0s1)
+function disks_mount_fullname($fullname)
 {
   global $config;
 
-  /* Search the mount list for given disk and partition. */
+  // Search the mount list for given disk and partition
   foreach($config['mounts']['mount'] as $mountk => $mountv) {
-    if($mountv['mdisk'] == $disk && $mountv['partition'] == $partition)
+    if($mountv['fullname'] == $fullname)
       $mount = $mountv;
   }
 
@@ -176,7 +174,7 @@ function disks_mount_ex($disk,$partition)
     return 1;
 }
 
-/* Umount the specified mount point. */
+// Umount the specified mount point table
 function disks_umount($mount)
 {
 	/* The $mount variable is the all config table for the mount point */
@@ -192,36 +190,40 @@ function disks_umount($mount)
 		return 1;
 }
 
-/* Advanced umount using disk and partition. */
-function disks_umount_ex($disk,$partition)
+// Advanced umount using fullname (/dev/ad01s1)
+// Return 0 if successfull, 1 if error
+function disks_umount_fullname($fullname)
 {
   global $config;
 
-  /* Search the mount list for given disk and partition. */
+  /* Search the mount list for given fullname */
   foreach($config['mounts']['mount'] as $mountk => $mountv) {
-    if($mountv['mdisk'] == $disk && $mountv['partition'] == $partition)
+  
+  if (strcmp($mountv['fullname'],$fullname) == 0)
       $mount = $mountv;
   }
 
   if($mount)
-    return disks_umount_adv($mount);
+    return disks_umount($mount);
   else
     return 1;
 }
 
-/* Advanced unmount the specified mount point without using the sharename (changing it). */
+// Advanced unmount the specified mount point without using the sharename value
+// Used when changing the 'sharename': Need to umount the old unknow sharename
 function disks_umount_adv($mount)
 {
-	/* The $mount variable is the all config table for the mount point */
-	$mountpart="{$mount['partition']}";
-	$complete="{$mount['fullname']}";
+	
+	$fulname="{$mount['fullname']}";
 		
 	// get the mount list
 	$detmount = get_mounts_list();
 	
+	//Look for the mount point in all mounted point
+	
 	foreach ($detmount as $detmountk => $detmountv) {
 		// If we found the mount point on the device
-		if (strcmp($detmountv['mdisk'],$complete) == 0) {
+		if (strcmp($detmountv['fullname'],$fullname) == 0) {
 			$mountname="{$detmountv['mp']}";
 		}
 	}
@@ -235,9 +237,9 @@ function disks_umount_adv($mount)
 		return 1;
 }
 
-/* This option check if this partition is mounted. */
-/* Return 0 if not, 1 if yes */
-function disks_check_mount($fullname)
+// This option check if this fullname (/dev/ad0s1) is mounted
+// Return 0 if not, 1 if yes
+function disks_check_mount_fullname($fullname)
 {
 	$detmount = get_mounts_list();
 	$status=0;
@@ -251,10 +253,29 @@ function disks_check_mount($fullname)
 	return $status;
 }
 
-/* This option check if the mount is mounted. */
-function disks_check_mount_ex($mount)
+// This option check if the mount table is mounted
+function disks_check_mount($mount)
 {
-  return disks_check_mount($mount['fullname']);
+  return disks_check_mount_fullname($mount['fullname']);
+}
+
+// This function check if the disk is mounted
+// Return 0 if not, 1 if yes
+function disks_check_mount_disk($disk)
+{
+  
+  	$detmount = get_mounts_list();
+	$status=0;
+	
+	foreach ($detmount as $detmountk => $detmountv) {
+		// Must found the $disk (ad0) in result $mdisk (ad0s1)
+		// strpos will return 0 (found at position 0) if found, must check the 'false' value
+		if (strpos($detmountv['mdisk'], $disk) !== false ) {
+			$status="1";
+			return $status;
+		}
+	}
+	return $status;
 }
 
 function disks_status($diskname)
@@ -266,8 +287,7 @@ function disks_status($diskname)
 	$status="MISSING";
 	foreach ($detectedlist as $detecteddisk => $detecteddiskv) 	{
 		
-		if ($detecteddisk == $diskname['name'])
-		{
+		if ($detecteddisk == $diskname['name']) {
 			$status="ONLINE";
 			if (($detecteddiskv['size'] != $diskname['size']) || ($detecteddiskv['desc'] != $diskname['desc']))
 				$status="CHANGED";
@@ -275,34 +295,6 @@ function disks_status($diskname)
 		}
 	}
 	return $status;
-}
-
-function disks_addfstab($cfgdev,$cfgtype)
-{
-	
-	// Where this function is called ? I don't remember ;-)
-	// Must add feature for replacing old entry with new...
-	
-	global $config, $g;
-	
-	/* Open or create fstab in RW */
-	$fd = fopen("{$g['etc_path']}/fstab", "w");
-	
-	if ( $fd ) 	{
-		/* check for the precence of dev */
-		/* ADD (check if it's ADD line or replace) the line for the dev */
-		$fstab = "/dev/$cfgdev /mnt/$cfgdev $cfgtype rw 1 1\n";
-			
-		/* write out an fstab */
-		fwrite($fd, $fstab);
-
-		/* close file */
-		fclose($fd);
-	}
-	else 	{
-		die( "fopen failed for {$g['etc_path']}/fstab" ) ;
-	}
-	
 }
 
 function disks_umount_all()
@@ -313,12 +305,9 @@ function disks_umount_all()
 	/* Sync disks*/
 	mwexec("/bin/sync");
 					
-	if (is_array($config['mounts']['mount']))
-	{
-		foreach ($config['mounts']['mount'] as $mountent)
-		{
-      /* Umount filesystem */
-      disks_umount($mountent);
+	if (is_array($config['mounts']['mount'])) 	{
+		foreach ($config['mounts']['mount'] as $mountent) 	{
+		disks_umount($mountent);
 		}
 	}
 
@@ -349,7 +338,7 @@ function disks_raid_gvinum_configure()
 
 			$raidconf="";
 			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
-		$raidconf .= <<<EOD
+				$raidconf .= <<<EOD
 drive disk_{$diskrv} device /dev/{$diskrv}s1a
 
 EOD;

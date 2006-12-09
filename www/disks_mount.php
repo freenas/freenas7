@@ -125,7 +125,7 @@ if ($_GET['act'] == "ret")
               if (file_exists($d_mountdirty_path)) {
                 echo(_CONFIGURING);
               } else {
-                $stat = disks_check_mount_ex($mount);
+                $stat = disks_check_mount($mount);
                 if(0 == $stat) {
                   echo(_ERROR . " - <a href=\"disks_mount.php?act=ret&id=$i\">" . _RETRY . "</a>");
                 } else {

@@ -41,7 +41,13 @@ if (!is_array($config['disks']['disk']))
 
 disks_sort();
 
+// Get all fstype supported by FreeNAS
 $a_fst = get_fstype_list();
+// Remove NTFS: can't format on NTFS under FreeNAS
+unset($a_fst['ntfs']);
+// Remove the first blank line 'unknown'
+$a_fst = array_slice($a_fst, 1);
+
 $a_disk = &$config['disks']['disk'];
 
 if ($_POST) {
@@ -54,31 +60,29 @@ if ($_POST) {
 	$reqdfieldsn = explode(",", "Disk,Type");
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (!$input_errors)
-	{
-		$do_format = true;
-		$disk = $_POST['disk'];
-		$type = $_POST['type'];
-		$notinitmbr= $_POST['notinitmbr'];
+		if (!$input_errors) 	{
+			$do_format = true;
+			$disk = $_POST['disk'];
+			$type = $_POST['type'];
+			$notinitmbr= $_POST['notinitmbr'];
 
-    /* Check if disk is mounted. */ 
-  	if(disks_check_mount($disk,"s1")) {
-      $errormsg = sprintf( _DISKSMANAGEINITPHP_DISKMOUNTERROR, "disks_mount_tools.php?mdisk={$disk}&partition=s1&action=umount");
-      $do_format = false;
-    }
+		/* Check if disk is mounted. */ 
+		if(disks_check_mount_disk($disk)) {
+		$errormsg = sprintf( _DISKSMANAGEINITPHP_DISKMOUNTERROR, "disks_mount_tools.php?disk={$disk}&action=umount");
+		$do_format = false;
+		}
 
-    if($do_format) {
-  		/* Get the id of the disk array entry. */
-  		$id = array_search_ex($disk, $a_disk, "name");
-      /* Set new filesystem type. */
+		if($do_format) {
+			/* Get the id of the disk array entry. */
+			$id = array_search_ex($disk, $a_disk, "name");
+			/* Set new filesystem type. */
  			$a_disk[$id]['fstype'] = $type;
 
-  		write_config();
-  	}
+			write_config();
+		}
 	}
 }
-if (!isset($do_format))
-{
+if (!isset($do_format)) {
 	$do_format = false;
 	$disk = '';
 	$type = '';

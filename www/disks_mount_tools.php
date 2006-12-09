@@ -50,28 +50,31 @@ if ($_POST) {
 	unset($do_action);
 
 	/* input validation */
-	$reqdfields = explode(" ", "sharename action");
-	$reqdfieldsn = explode(",", "Share Name,Action");
+	$reqdfields = explode(" ", "fullname action");
+	$reqdfieldsn = explode(",", "Fullname,Action");
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if(!$input_errors)
 	{
 		$do_action = true;
-		$sharename = $_POST['sharename'];
+		$fullname = $_POST['fullname'];
 		$action = $_POST['action'];
 	}
 }
 if(!isset($do_action))
 {
 	$do_action = false;
-	$sharename = '';
+	$fullname = '';
 	$action = '';
 }
-if(isset($_GET['mdisk']) && isset($_GET['partition'])) {
-  $mdisk = $_GET['mdisk'];
-  $partition = $_GET['partition'];
-  $id = array_search_ex(array($mdisk,$partition), $a_mount, array("mdisk","partition"));
-  $sharename = $a_mount[$id]['sharename'];
+
+// URL GET from the disks_manage_init.php page:
+// we get the $disk value, must found the $fullname now
+if(isset($_GET['disk'])) {
+  $disk = $_GET['disk'];
+  $id = array_search_ex($disk, $a_mount, "mdisk");
+  
+  $fullname = $a_mount[$id]['fullname'];
 }
 if(isset($_GET['action'])) {
   $action = $_GET['action'];
@@ -95,9 +98,9 @@ if(isset($_GET['action'])) {
           <tr>
             <td valign="top" class="vncellreq"><?=_DISKSMOUNTPHP_SHARENAME;?></td>
             <td class="vtable">
-              <select name="sharename" class="formfld" id="sharename">
+              <select name="fullname" class="formfld" id="fullname">
                 <?php foreach ($a_mount as $mountv): ?>
-                <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $sharename) echo "selected";?>>
+                <option value="<?=$mountv['fullname'];?>"<?php if ($mountv['fullname'] == $fullname) echo "selected";?>>
                 <?php echo htmlspecialchars($mountv['sharename'] . " (" . _DISK . ": " . $mountv['mdisk'] . " " . _PARTITION . ": " . $mountv['partition'] . ")");?>
                 <?php endforeach; ?>
                 </option>
@@ -128,7 +131,7 @@ if(isset($_GET['action'])) {
     					ob_end_flush();
 
     					/* Get the id of the mount array entry. */
-		          $id = array_search_ex($sharename, $a_mount, "sharename");
+		          $id = array_search_ex($fullname, $a_mount, "fullname");
 		          /* Get the mount data. */
               $mount = $a_mount[$id];
 
@@ -136,11 +139,11 @@ if(isset($_GET['action'])) {
               {
                 case "mount":
                   echo(_DISKSMOUNTTOOLS_MOUNTTEXT . "<br>");
-                  $result = disks_mount_ex($mount['mdisk'],$mount['partition']);
+                  $result = disks_mount_fullname($fullname);
                   break;
                 case "umount":
                   echo(_DISKSMOUNTTOOLS_UMOUNTTEXT . "<br>");
-                  $result = disks_umount_ex($mount['mdisk'],$mount['partition']);
+                  $result = disks_umount_fullname($fullname);
                   break;
               }
 
