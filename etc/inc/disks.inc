@@ -77,20 +77,7 @@ function disks_mount($mount)
 			
 	/* mount the filesystems */
 	
-	/* Must use a special dev name for software RAID volume */
-	
-	if (strcmp($mount['partition'],"gvinum") == 0)
-		$devname="/dev/gvinum/{$mount['mdisk']}";
-	else if (strcmp($mount['partition'],"gmirror") == 0)
-		$devname="/dev/mirror/{$mount['mdisk']}";
-	else if (strcmp($mount['partition'],"gconcat") == 0)
-		$devname="/dev/concat/{$mount['mdisk']}";
-	else if (strcmp($mount['partition'],"gstripe") == 0)
-		$devname="/dev/stripe/{$mount['mdisk']}";
-	else if (strcmp($mount['partition'],"graid5") == 0)
-		$devname="/dev/raid5/{$mount['mdisk']}";
-	else
-		$devname="/dev/{$mount['mdisk']}{$mount['partition']}";
+	$devname="{$mount['fullname']}";
 
 	/* check the fileystem only if there is a problem*/
 	
@@ -227,12 +214,8 @@ function disks_umount_adv($mount)
 {
 	/* The $mount variable is the all config table for the mount point */
 	$mountpart="{$mount['partition']}";
-	
-	if ((strcmp($mountpart,"gvinum") == 0) || (strcmp($mountpart,"gmirror") == 0) || (strcmp($mountpart,"gconcat") == 0) || (strcmp($mountpart,"gstripe") == 0) || (strcmp($mountpart,"graid5") == 0))
-		$complete = "{$mount['mdisk']}";
-	else
-		$complete = "{$mount['mdisk']}{$mount['partition']}";
-	
+	$complete="{$mount['fullname']}";
+		
 	// get the mount list
 	$detmount = get_mounts_list();
 	
@@ -252,21 +235,15 @@ function disks_umount_adv($mount)
 		return 1;
 }
 
-/* This option check if the given partition (s1 by default)) of the disk is mounted. */
+/* This option check if this partition is mounted. */
 /* Return 0 if not, 1 if yes */
-function disks_check_mount($disk,$partition = "s1")
+function disks_check_mount($fullname)
 {
 	$detmount = get_mounts_list();
 	$status=0;
 	
-	// Recreate the full system name device+s+partition number
-	if((0 == strcmp($partition,"gvinum")) || (0 == strcmp($partition,"gmirror")) ||(0 == strcmp($partition,"gconcat")) ||(0 == strcmp($partition,"gstripe")) || (0 == strcmp($partition,"graid5")))
-		$complete = "{$disk}";
-	else
-    $complete = "{$disk}{$partition}";
-
 	foreach ($detmount as $detmountk => $detmountv) {
-		if (strcmp($detmountv['mdisk'],$complete) == 0) {
+		if (strcmp($detmountv['fullname'],$fullname) == 0) {
 			$status="1";
 			return $status;
 		}
@@ -277,7 +254,7 @@ function disks_check_mount($disk,$partition = "s1")
 /* This option check if the mount is mounted. */
 function disks_check_mount_ex($mount)
 {
-  return disks_check_mount($mount['mdisk'], $mount['partition']);
+  return disks_check_mount($mount['fullname']);
 }
 
 function disks_status($diskname)

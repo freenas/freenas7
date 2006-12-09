@@ -370,12 +370,12 @@ function get_mounts_list()
 		
 		if ((chop($aline[0]) == "/dev/md0") || (chop($aline[0]) == "devfs") || (chop($aline[0]) == "/dev/fd0"))
 			continue;
+		$mountlist[$i]['fullname']=chop($aline[0]);
 		$mountlist[$i]['mp']=chop($aline[2]);
 		// Get the complete name /dev/devicename
 		
 		$complete=explode("/",chop($aline[0]));
-		$mountlist[$i]['fullname']=$complete;
-		
+
 		$devname=$complete[2];
 		
 		// Test if it's a gvinum,gmirror,gconcat or gstripe device

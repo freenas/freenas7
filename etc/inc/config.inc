@@ -470,6 +470,33 @@ function convert_config()
 		$config['version'] = "1.4";
 	}
 
+	/* convert 1.4 -> 1.5 */
+	/* Add [fullname] information on mount and geom volume */
+	if ($config['version'] == "1.4") {
+		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
+			switch ($config['mounts']['mount'][$i]['partition']) {
+				case "gvinum":
+					$config['mounts']['mount'][$i]['fullname'] = "/dev/gvinum/{$config['mounts']['mount'][$i]['mdisk']}";
+					break;
+				case "gmirror":
+					$config['mounts']['mount'][$i]['fullname'] = "/dev/mirror/{$config['mounts']['mount'][$i]['mdisk']}";
+					break;
+				case "gconcat":
+					$config['mounts']['mount'][$i]['fullname'] = "/dev/concat/{$config['mounts']['mount'][$i]['mdisk']}";
+					break;
+				case "gstripe":
+					$config['mounts']['mount'][$i]['fullname'] = "/dev/stripe/{$config['mounts']['mount'][$i]['mdisk']}";
+					break;
+				case "graid5":
+					$config['mounts']['mount'][$i]['fullname'] = "/dev/raid5/{$config['mounts']['mount'][$i]['mdisk']}";
+					break;
+				default:
+					$config['mounts']['mount'][$i]['fullname'] = "/dev/{$config['mounts']['mount'][$i]['mdisk']}{$config['mounts']['mount'][$i]['partition']}";
+			}
+		}
+		
+		$config['version'] = "1.5";
+	}
 	write_config();
 	
 	if ($g['booting'])

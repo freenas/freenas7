@@ -85,6 +85,7 @@ $cfdevice = trim(file_get_contents("$filename"));
 if (isset($id) && $a_mount[$id]) {
 	$pconfig['mdisk'] = $a_mount[$id]['mdisk'];
 	$pconfig['partition'] = $a_mount[$id]['partition'];
+	$pconfig['fullname'] = $a_mount[$id]['fullname'];
 	$pconfig['fstype'] = $a_mount[$id]['fstype'];
 	$pconfig['sharename'] = $a_mount[$id]['sharename'];
 	$pconfig['desc'] = $a_mount[$id]['desc'];
@@ -139,6 +140,29 @@ if ($_POST) {
 			$mount['sharename'] = "disk_{$_POST['mdisk']}_part_{$_POST['partition']}";
 		else
 			$mount['sharename'] = $_POST['sharename'];
+		
+		// Generate fullname
+		
+		switch ($mount['partition']) {
+			case "gvinum":
+				$mount['fullname'] = "/dev/gvinum/{$mount['mdisk']}";
+				break;
+			case "gmirror":
+				$mount['fullname'] = "/dev/mirror/{$mount['mdisk']}";
+				break;
+			case "gconcat":
+				$mount['fullname'] = "/dev/concat/{$mount['mdisk']}";
+				break;
+			case "gstripe":
+				$mount['fullname'] = "/dev/stripe/{$mount['mdisk']}";
+				break;
+			case "graid5":
+				$mount['fullname'] = "/dev/raid5/{$mount['mdisk']}";
+				break;
+			default:
+				$mount['fullname'] = "/dev/{$mount['mdisk']}{$mount['partition']}";
+		}
+		
 		if (isset($id) && $a_mount[$id])
 			$a_mount[$id] = $mount;
 		else

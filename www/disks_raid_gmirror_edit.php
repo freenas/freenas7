@@ -94,7 +94,7 @@ if ($_POST) {
 		$raid['balance'] = $_POST['balance'];
 		$raid['type'] = 1;
 		$raid['diskr'] = $_POST['diskr'];
-		$raid['desc'] = "Software gmirror RAID {$_POST['type']}";
+		$raid['desc'] = "Software gmirror RAID 1";
 
 		if (isset($id) && $a_raid[$id])
 			$a_raid[$id] = $raid;

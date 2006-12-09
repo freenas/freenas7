@@ -92,7 +92,7 @@ if ($_POST) {
 		$raid['name'] = $_POST['name'];
 		$raid['type'] = "JBOD";
 		$raid['diskr'] = $_POST['diskr'];
-		$raid['desc'] = "Software gconcat {$_POST['type']}";
+		$raid['desc'] = "Software gconcat JBOD";
 
 		if (isset($id) && $a_raid[$id])
 			$a_raid[$id] = $raid;

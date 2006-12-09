@@ -94,7 +94,7 @@ if ($_POST) {
 		$raid['name'] = $_POST['name'];
 		$raid['type'] = 0;
 		$raid['diskr'] = $_POST['diskr'];
-		$raid['desc'] = "Software gstripe RAID {$_POST['type']}";
+		$raid['desc'] = "Software gstripe RAID 0";
 
 		if (isset($id) && $a_raid[$id])
 			$a_raid[$id] = $raid;
