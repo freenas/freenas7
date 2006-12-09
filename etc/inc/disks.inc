@@ -83,6 +83,10 @@ function disks_mount($mount)
 		$devname="/dev/gvinum/{$mount['mdisk']}";
 	else if (strcmp($mount['partition'],"gmirror") == 0)
 		$devname="/dev/mirror/{$mount['mdisk']}";
+	else if (strcmp($mount['partition'],"gconcat") == 0)
+		$devname="/dev/concat/{$mount['mdisk']}";
+	else if (strcmp($mount['partition'],"gstripe") == 0)
+		$devname="/dev/stripe/{$mount['mdisk']}";
 	else if (strcmp($mount['partition'],"graid5") == 0)
 		$devname="/dev/raid5/{$mount['mdisk']}";
 	else
@@ -224,7 +228,7 @@ function disks_umount_adv($mount)
 	/* The $mount variable is the all config table for the mount point */
 	$mountpart="{$mount['partition']}";
 	
-	if ((strcmp($mountpart,"gvinum") == 0) || (strcmp($mountpart,"gmirror") == 0) || (strcmp($mountpart,"graid5") == 0))
+	if ((strcmp($mountpart,"gvinum") == 0) || (strcmp($mountpart,"gmirror") == 0) || (strcmp($mountpart,"gconcat") == 0) || (strcmp($mountpart,"gstripe") == 0) || (strcmp($mountpart,"graid5") == 0))
 		$complete = "{$mount['mdisk']}";
 	else
 		$complete = "{$mount['mdisk']}{$mount['partition']}";
@@ -256,7 +260,7 @@ function disks_check_mount($disk,$partition = "s1")
 	$status=0;
 	
 	// Recreate the full system name device+s+partition number
-	if((0 == strcmp($partition,"gvinum")) || (0 == strcmp($partition,"gmirror")) || (0 == strcmp($partition,"graid5")))
+	if((0 == strcmp($partition,"gvinum")) || (0 == strcmp($partition,"gmirror")) ||(0 == strcmp($partition,"gconcat")) ||(0 == strcmp($partition,"gstripe")) || (0 == strcmp($partition,"graid5")))
 		$complete = "{$disk}";
 	else
     $complete = "{$disk}{$partition}";
@@ -504,6 +508,66 @@ function disks_raid_gmirror_configure()
 	return 0;
 }
 
+function disks_raid_gconcat_configure()
+{
+	global $config, $g;
+	
+	/* Create the gconcat device */
+
+	if ($config['gconcat']['vdisk']) {
+		
+		// Load gconcat
+		
+		mwexec("/sbin/gconcat load");
+				
+		foreach ($config['gconcat']['vdisk'] as $a_raid_conf) 	{
+	
+			/* Create each volume */
+			
+			$cmd = "/sbin/gconcat label {$a_raid_conf['name']} ";
+			
+			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
+				$cmd .= "{$diskrv} ";
+			}			
+		
+			mwexec($cmd);
+		
+		}	
+	}
+
+	return 0;
+}
+
+function disks_raid_gstripe_configure()
+{
+	global $config, $g;
+	
+	/* Create the gstripe device */
+
+	if ($config['gstripe']['vdisk']) {
+		
+		// Load gstripe
+		
+		mwexec("/sbin/gstripe load");
+				
+		foreach ($config['gstripe']['vdisk'] as $a_raid_conf) 	{
+	
+			/* Create each volume */
+			
+			$cmd = "/sbin/gstripe label {$a_raid_conf['name']} ";
+			
+			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
+				$cmd .= "{$diskrv} ";
+			}			
+		
+			mwexec($cmd);
+		
+		}	
+	}
+
+	return 0;
+}
+
 function disks_raid_graid5_configure()
 {
 	global $config, $g;
@@ -512,7 +576,7 @@ function disks_raid_graid5_configure()
 
 	if ($config['graid5']['vdisk']) {
 		
-		// Load gmirror
+		// Load graid5
 		
 		mwexec("/sbin/graid5 load");
 		
@@ -541,8 +605,11 @@ function disks_raid_start()
 	global $config, $g;
 	
 	/* Start software RAID */
+	// WARNING: MUST ADD more intelligent way for starting raid that include dependancy, for example RAID1+0 or 0+1 type
 	disks_raid_gvinum_start();
 	disks_raid_gmirror_start();
+	disks_raid_gstripe_start();
+	disks_raid_gconcat_start();
 	disks_raid_graid5_start();
 	
 	return 0;
@@ -598,6 +665,52 @@ function disks_raid_gmirror_start()
 	return 0;
 }
 
+function disks_raid_gconcat_start()
+{
+	global $config, $g;
+	
+	/* Start Geom concat */
+
+	if ($config['gconcat']['vdisk']) {
+	
+		if ($g['booting'])
+			echo "Start gconcat raid... ";
+
+		// Load geom concat module
+		
+		mwexec("/sbin/gconcat load");
+		
+		if ($g['booting'])
+		echo "done\n";
+		
+	}
+	
+	return 0;
+}
+
+function disks_raid_gstripe_start()
+{
+	global $config, $g;
+	
+	/* Start Geom stripe */
+
+	if ($config['gstripe']['vdisk']) {
+	
+		if ($g['booting'])
+			echo "Start gstripe raid... ";
+
+		// Load geom stripe module
+		
+		mwexec("/sbin/gstripe load");
+		
+		if ($g['booting'])
+		echo "done\n";
+		
+	}
+	
+	return 0;
+}
+
 function disks_raid_graid5_start()
 {
 	global $config, $g;
@@ -624,11 +737,14 @@ function disks_raid_graid5_start()
 function disks_raid_stop()
 {
 	// Stop ALL software RAID volume
-
-	disks_raid_gvinum_stop();
-	disks_raid_gmirror_stop();
-	disks_raid_graid5_stop();
+	// Must add a more intelligent way for stoping device using dependency
 	
+	disks_raid_gvinum_stop();
+	disks_raid_graid5_stop();
+	disks_raid_gstripe_stop();
+	disks_raid_gconcat_stop();
+	disks_raid_gmirror_stop();
+
 	return 0;
 	
 }
@@ -656,7 +772,7 @@ function disks_raid_gmirror_stop()
 {
 	global $config, $g;
 	
-	/* Generate the raid.conf file */
+	/* Stop geom mirror */
 
 	if ($config['gmirror']['vdisk']) {
 	
@@ -664,6 +780,46 @@ function disks_raid_gmirror_stop()
 		
 		foreach ($config['gmirror']['vdisk'] as $a_raid_conf) 	{
 			mwexec("/sbin/gmirror stop {$a_raid_conf['name']}");
+		}
+		
+		
+	}
+	
+	return 0;
+}
+
+function disks_raid_gconcat_stop()
+{
+	global $config, $g;
+	
+	/* Stop geom concat */
+
+	if ($config['gconcat']['vdisk']) {
+	
+		/* start each volume */
+		
+		foreach ($config['gconcat']['vdisk'] as $a_raid_conf) 	{
+			mwexec("/sbin/gconcat stop {$a_raid_conf['name']}");
+		}
+		
+		
+	}
+	
+	return 0;
+}
+
+function disks_raid_gstripe_stop()
+{
+	global $config, $g;
+	
+	/* Stop geom stripe */
+
+	if ($config['gstripe']['vdisk']) {
+	
+		/* start each volume */
+		
+		foreach ($config['gstripe']['vdisk'] as $a_raid_conf) 	{
+			mwexec("/sbin/gstripe stop {$a_raid_conf['name']}");
 		}
 		
 		
@@ -735,6 +891,54 @@ function disks_raid_gmirror_delete($raidname)
 				foreach ($a_raid['diskr'] as $disk) 	{				
 					mwexec("/sbin/gmirror clear {$disk}");
 				}
+			}
+	}
+	
+	return 0;
+}
+
+function disks_raid_gconcat_delete($raidname)
+{
+	global $config, $g;
+	
+	/* Delete a gconcat volume */
+	
+	// Stop the volume
+	
+	mwexec("/sbin/gconcat stop $raidname");
+	
+	// Clear the gconcat information on the hard drive
+	
+	foreach ($config['gconcat']['vdisk'] as $a_raid) {
+			if ($a_raid['name'] == $raidname) 	{
+				foreach ($a_raid['diskr'] as $disk) 	{				
+					mwexec("/sbin/gconcat clear {$disk}");
+				}
+				mwexec("/sbin/gconcat destroy $raidname");
+			}
+	}
+	
+	return 0;
+}
+
+function disks_raid_gstripe_delete($raidname)
+{
+	global $config, $g;
+	
+	/* Delete a gstripe volume */
+	
+	// Stop the volume
+	
+	mwexec("/sbin/gstripe stop $raidname");
+	
+	// Clear the gconcat information on the hard drive
+	
+	foreach ($config['gstripe']['vdisk'] as $a_raid) {
+			if ($a_raid['name'] == $raidname) 	{
+				foreach ($a_raid['diskr'] as $disk) 	{				
+					mwexec("/sbin/gstripe clear {$disk}");
+				}
+				mwexec("/sbin/gstripe destroy $raidname");
 			}
 	}
 	

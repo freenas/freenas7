@@ -376,8 +376,8 @@ function get_mounts_list()
 		
 		$devname=$complete[2];
 		
-		// Test if it's a gvinum or gmirror device
-		if ((strcmp($devname,"gvinum") == 0) || (strcmp($devname,"mirror") == 0)|| (strcmp($devname,"raid5") == 0))
+		// Test if it's a gvinum,gmirror,gconcat or gstripe device
+		if ((strcmp($devname,"gvinum") == 0) || (strcmp($devname,"mirror") == 0) || (strcmp($devname,"concat") == 0) || (strcmp($devname,"stripe") == 0) || (strcmp($devname,"raid5") == 0))
 			$devname=$complete[3];
 		
 		$mountlist[$i]['mdisk']=$devname;
@@ -441,7 +441,7 @@ function get_mount_use()
 function get_sraid_disks_list()
 {
 	/* Return list of ALL software volume: gvinum, gmirror */
-	$disklist = array_merge((array)get_gvinum_disks_list(),(array)get_gmirror_disks_list(),(array)get_graid5_disks_list());
+	$disklist = array_merge((array)get_gvinum_disks_list(),(array)get_gmirror_disks_list(),(array)get_gconcat_disks_list(),(array)get_gstripe_disks_list(),(array)get_graid5_disks_list());
 	return $disklist;
 
 }
@@ -574,6 +574,174 @@ function get_gmirror_disks_list()
 		
 }
 
+function get_gconcat_disks_list()
+{
+	/* Get information about gconcat volume */
+	global $g;
+	
+	
+    //[volumename] => Array
+    //    (
+    //        [type] => Software RAID - gconcat
+    //        [desc] => COMPLETE
+    //        [size] => 6149M
+    //    )
+    
+
+	/* Display all configured gconcat volume*/
+	exec("/sbin/gconcat list",$rawdata);
+	
+	$foundname = 0 ;
+	$founddesc = 0 ;
+	$goodname = 0 ;
+	
+	foreach ($rawdata as $line) {
+
+				
+		/* Use space for break the line */
+		$aline = preg_split("/\s+/", $line);
+		
+		// First Step: Getting the array name
+		// look for this output:
+		// Geom name: pouet
+		
+		if ( (strcmp($aline[0],"Geom") == 0) && (strcmp($aline[1],"name:") == 0) ) {
+			$diskname = $aline[2];
+			$disklist[$diskname]=array();
+			$foundname = 1 ;
+			continue ;
+		}
+		
+		// Second Step: Getting the array status
+		// look for this output:
+		// State: UP
+		
+		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
+		
+			$desc = $aline[1];
+			$disklist[$diskname]['desc'] = $desc;
+			$founddesc=1;
+			continue ;
+		}
+		
+		// Third Step: Getting the array Size
+		// look for this output:
+		// Name: concat/pouet
+		// Mediasize: 107373568 (102M)
+		
+		if (preg_match("/Name: concat\/(.*)$/", $line, $matches)) {
+			if ($matches[1]=$diskname) {
+				$goodname=1;
+				continue ;
+			}
+		
+		}
+		
+		if (($aline[0] = "Mediasize:") && $goodname) {
+			// extract the size between the ( )
+			preg_match("/.*\\(([^\)]*)\).*/",$aline[3],$match);
+			$disklist[$diskname]['size'] = $match[1];
+			$disklist[$diskname]['type'] = "Software RAID - gconcat";
+			
+			// init the check variable for the next RAID volume
+			$foundname = 0 ;
+			$founddesc = 0 ;
+			$goodname = 0 ;
+			
+			continue ;
+			
+		}				
+		
+	}
+	
+	return $disklist;
+		
+}
+
+function get_gstripe_disks_list()
+{
+	/* Get information about gstripe volume */
+	global $g;
+	
+	
+    //[volumename] => Array
+    //    (
+    //        [type] => Software RAID - gstripe
+    //        [desc] => COMPLETE
+    //        [size] => 6149M
+    //    )
+    
+
+	/* Display all configured gstripe volume*/
+	exec("/sbin/gstripe list",$rawdata);
+	
+	$foundname = 0 ;
+	$founddesc = 0 ;
+	$goodname = 0 ;
+	
+	foreach ($rawdata as $line) {
+
+				
+		/* Use space for break the line */
+		$aline = preg_split("/\s+/", $line);
+		
+		// First Step: Getting the array name
+		// look for this output:
+		// Geom name: pouet
+		
+		if ( (strcmp($aline[0],"Geom") == 0) && (strcmp($aline[1],"name:") == 0) ) {
+			$diskname = $aline[2];
+			$disklist[$diskname]=array();
+			$foundname = 1 ;
+			continue ;
+		}
+		
+		// Second Step: Getting the array status
+		// look for this output:
+		// State: UP
+		
+		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
+		
+			$desc = $aline[1];
+			$disklist[$diskname]['desc'] = $desc;
+			$founddesc=1;
+			continue ;
+		}
+		
+		// Third Step: Getting the array Size
+		// look for this output:
+		// Name: stripe/pouet
+		// Mediasize: 107373568 (102M)
+		
+		if (preg_match("/Name: stripe\/(.*)$/", $line, $matches)) {
+			if ($matches[1]=$diskname) {
+				$goodname=1;
+				continue ;
+			}
+		
+		}
+		
+		if (($aline[0] = "Mediasize:") && $goodname) {
+			// extract the size between the ( )
+			preg_match("/.*\\(([^\)]*)\).*/",$aline[3],$match);
+			$disklist[$diskname]['size'] = $match[1];
+			$disklist[$diskname]['type'] = "Software RAID - gstripe";
+			
+			// init the check variable for the next RAID volume
+			$foundname = 0 ;
+			$founddesc = 0 ;
+			$goodname = 0 ;
+			
+			continue ;
+			
+		}				
+		
+	}
+	
+	return $disklist;
+		
+}
+
 function get_graid5_disks_list()
 {
 	/* Get information about graid5 volume */
@@ -582,13 +750,13 @@ function get_graid5_disks_list()
 	
     //[volumename] => Array
     //    (
-    //        [type] => Software RAID - gmirror
+    //        [type] => Software RAID - graid5
     //        [desc] => COMPLETE
     //        [size] => 6149M
     //    )
     
 
-	/* Display all configured gmirror volume*/
+	/* Display all configured graid5 volume*/
 	exec("/sbin/graid5 list",$rawdata);
 	
 	$foundname = 0 ;
@@ -1239,6 +1407,8 @@ function get_fstype_list()
     "msdos"=>"FAT32",
     "ntfs"=>"NTFS",
     "gmirror"=>"Software RAID: gmirror",
+    "gconcat"=>"Software RAID: gconcat",
+    "gstripe"=>"Software RAID: gstripe",
     "graid5"=>"Software RAID: graid5",
     "gvinum"=>"Software RAID: gvinum");
   return $fstlist;
@@ -1262,6 +1432,10 @@ function get_fstype_shortdesc($fstype)
     case "ntfs":          $shortdesc = "NTFS";
                           break;
     case "gmirror":       $shortdesc = "gmirror";
+                          break;
+    case "gconcat":       $shortdesc = "gconcat";
+                          break;
+    case "gstripe":       $shortdesc = "gstripe";
                           break;
     case "graid5":       $shortdesc = "graid5";
                           break;

@@ -215,6 +215,26 @@ function disk_change() {
     						/* Delete old gmirror information */
     						system("/sbin/gmirror clear /dev/" . escapeshellarg($disk));
     						break;
+						case "gconcat":
+    						/* Initialize disk */
+    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+    						/* Initialise the partition (optional) */
+    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						/* Create s1 label */
+    						//system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
+    						/* Delete old gmirror information */
+    						system("/sbin/gconcat clear /dev/" . escapeshellarg($disk));
+    						break;
+						case "gstripe":
+    						/* Initialize disk */
+    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+    						/* Initialise the partition (optional) */
+    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						/* Create s1 label */
+    						//system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
+    						/* Delete old gmirror information */
+    						system("/sbin/gstripe clear /dev/" . escapeshellarg($disk));
+    						break;
     					case "graid5":
     						/* Initialize disk */
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));

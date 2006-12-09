@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_raid_gmirror_tools.php
+	disks_raid_gstripe_tools.php
 	
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
@@ -36,7 +36,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GRAID5, _DISKSRAIDEDITPHP_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GSTRIPE, _DISKSRAIDEDITPHP_NAMEDESC);
 
 if ($_POST) {
 	unset($input_errors);
@@ -68,24 +68,24 @@ if (!isset($do_action))
 <tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_GMIRROR; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_GCONCAT; ?></a></li> 
-	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_GSTRIPE; ?></a></li>
-	<li class="tabact"><?=_DISKSRAIDPHP_GRAID5; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></li>
-	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></a></li> 
+	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_GCONCAT; ?></a></li>
+	<li class="tabact"><?=_DISKSRAIDPHP_GSTRIPE; ?></li>
+	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?><?=_DISKSRAIDPHP_UNSTABLE ;?> 
+	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?> 
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_graid5_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
 	<li class="tabact"><?=_DISKSRAIDPHP_TOOLS; ?></li>
-	<li class="tabinact"><a href="disks_raid_graid5_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
   </ul>
   </td></tr>
   <tr> 
     <td class="tabcont">
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-			<form action="disks_raid_graid5_tools.php" method="post" name="iform" id="iform">
+			<form action="disks_raid_gstripe_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr>
 				  <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDTOOLSPHP_OBJNAME;?></td>
@@ -96,10 +96,13 @@ if (!isset($do_action))
                   <td valign="top" class="vncellreq"><?=_DISKSRAIDTOOLSPHP_COMMAND;?></td>
                   <td class="vtable"> 
                     <select name="action" class="formfld" id="action">
+                      <option value="rebuild" <?php if ($action == "rebuild") echo "selected"; ?>>rebuild</option>
                       <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
                       <option value="status" <?php if ($action == "status") echo "selected"; ?>>status</option>
-                      <option value="insert" <?php if ($action == "insert") echo "selected"; ?>>insert</option>
                       <option value="remove" <?php if ($action == "remove") echo "selected"; ?>>remove</option>
+                      <option value="activate" <?php if ($action == "activate") echo "selected"; ?>>activate</option>
+                      <option value="deactivate" <?php if ($action == "deactivate") echo "selected"; ?>>deactivate</option>
+                      <option value="forget" <?php if ($action == "forget") echo "selected"; ?>>forget</option>
                       <option value="clear" <?php if ($action == "clear") echo "selected"; ?>>clear</option>
                       <option value="stop" <?php if ($action == "stop") echo "selected"; ?>>stop</option>
                      </select>
@@ -119,7 +122,7 @@ if (!isset($do_action))
 					echo('<pre>');
 					ob_end_flush();
 					
-					system("/sbin/graid5 $action " . escapeshellarg($object));
+					system("/sbin/gstripe $action " . escapeshellarg($object));
 				
 					echo('</pre>');
 				}

@@ -330,6 +330,28 @@ function gmirror_sort() {
 	
 }
 
+function gconcat_sort() {
+	global $g, $config;
+
+	function gconcatcmp($a, $b) {
+		return strcmp($a['name'], $b['name']);
+	}
+
+	usort($config['gconcat']['vdisk'], "gconcatcmp");
+	
+}
+
+function gstripe_sort() {
+	global $g, $config;
+
+	function gstripecmp($a, $b) {
+		return strcmp($a['name'], $b['name']);
+	}
+
+	usort($config['gstripe']['vdisk'], "gstripecmp");
+	
+}
+
 function graid5_sort() {
 	global $g, $config;
 

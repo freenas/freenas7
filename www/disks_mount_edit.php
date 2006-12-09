@@ -59,6 +59,16 @@ if (!is_array($config['gmirror']['vdisk']))
 
 gmirror_sort();
 
+if (!is_array($config['gconcat']['vdisk']))
+	$config['gconcat']['vdisk'] = array();
+
+gconcat_sort();
+
+if (!is_array($config['gstripe']['vdisk']))
+	$config['gstripe']['vdisk'] = array();
+
+gstripe_sort();
+
 if (!is_array($config['graid5']['vdisk']))
 	$config['graid5']['vdisk'] = array();
 
@@ -66,7 +76,7 @@ graid5_sort();
 
 $a_mount = &$config['mounts']['mount'];
 
-$a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$config['gmirror']['vdisk'],$config['graid5']['vdisk']);
+$a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$config['gmirror']['vdisk'],$config['gconcat']['vdisk'],$config['gstripe']['vdisk'],$config['graid5']['vdisk']);
 
 /* Load the cfdevice file*/
 $filename=$g['varetc_path']."/cfdevice";
@@ -152,7 +162,7 @@ if ($_POST) {
       <td class="vtable">            
     	 <select name="mdisk" class="formfld" id="mdisk">
     		  <?php foreach ($a_disk as $disk): ?>
-    			<?php if ((strcmp($disk['fstype'],"gvinum")!=0) | (strcmp($disk['fstype'],"gmirror")!=0)): ?> 	  
+    			<?php if ((strcmp($disk['fstype'],"gvinum")!=0) | (strcmp($disk['fstype'],"gmirror") | (strcmp($disk['fstype'],"gstripe") | (strcmp($disk['fstype'],"gconcat")!=0)): ?> 	  
     				<option value="<?=$disk['name'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 
     				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
     				</option>
@@ -170,6 +180,8 @@ if ($_POST) {
           <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
           <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
           <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>><?=_SOFTRAID ;?> - gmirror</option>
+		  <option value="gconcat" <?php if ($pconfig['partition'] == "gconcat") echo "selected"; ?>><?=_SOFTRAID ;?> - gconcat</option>
+			<option value="gstripe" <?php if ($pconfig['partition'] == "gstripe") echo "selected"; ?>><?=_SOFTRAID ;?> - gstripe</option>
           <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>><?=_SOFTRAID ;?> - graid5</option>
           <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>><?=_SOFTRAID ;?> - gvinum</option>
           <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>GPT</option>

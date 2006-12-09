@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_raid_gmirror.php
+	disks_raid_gstripe.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
@@ -34,13 +34,13 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GMIRROR, _DISKSRAIDPHP_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GSTRIPE, _DISKSRAIDPHP_NAMEDESC);
 
-if (!is_array($config['gmirror']['vdisk']))
-	$config['gmirror']['vdisk'] = array();
+if (!is_array($config['gstripe']['vdisk']))
+	$config['gstripe']['vdisk'] = array();
 
-gmirror_sort();
-$a_raid = &$config['gmirror']['vdisk'];
+gstripe_sort();
+$a_raid = &$config['gstripe']['vdisk'];
 
 if ($_POST) {
 
@@ -52,7 +52,7 @@ if ($_POST) {
 		{
 			config_lock();
 			/* reload all components that create raid device */
-			disks_raid_gmirror_configure();
+			disks_raid_gstripe_configure();
 			config_unlock();
 			write_config();
 		}
@@ -69,11 +69,11 @@ $raidstatus=get_sraid_disks_list();
 if ($_GET['act'] == "del") {
 	if ($a_raid[$_GET['id']]) {
 		$raidname=$a_raid[$_GET['id']]['name'];
-		disks_raid_gmirror_delete($raidname);
+		disks_raid_gstripe_delete($raidname);
 		unset($a_raid[$_GET['id']]);
 		write_config();
 		touch($d_raidconfdirty_path);
-		header("Location: disks_raid_gmirror.php");
+		header("Location: disks_raid_gstripe.php");
 		exit;
 	}
 }
@@ -82,25 +82,26 @@ if ($_GET['act'] == "del") {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact"><?=_DISKSRAIDPHP_GMIRROR; ?></li>
-	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_GCONCAT; ?></a></li> 
-	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_GSTRIPE; ?> </a></li>
-	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></a></li> 
+	
+	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_GMIRROR; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_GCONCAT; ?></a></li>
+	<li class="tabact"><?=_DISKSRAIDPHP_GSTRIPE; ?></li>
+	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?><?=_DISKSRAIDPHP_UNSTABLE ;?> </a></li>
 	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?> </a></li>
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabact"><?=_DISKSRAIDPHP_MANAGE; ?></li>
-	<li class="tabinact"><a href="disks_raid_gmirror_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gmirror_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gmirror_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
   </ul>
   </td></tr>
   
   <tr>
     <td class="tabcont">
-<form action="disks_raid_gmirror.php" method="post">
+<form action="disks_raid_gstripe.php" method="post">
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if (file_exists($d_raidconfdirty_path)): ?><p>
 <?php print_info_box_np(_DISKSRAIDPHP_MSGCHANGED);?><br>
@@ -144,13 +145,13 @@ if ($_GET['act'] == "del") {
 						}
 						?>&nbsp;
                   </td>
-                  <td valign="middle" nowrap class="list"> <a href="disks_raid_gmirror_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_DISKSRAIDPHP_EDITRAID; ?>" width="17" height="17" border="0"></a>
-                     &nbsp;<a href="disks_raid_gmirror.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSRAIDPHP_DELCONF ;?>')"><img src="x.gif" title="<?=_DISKSRAIDPHP_DELRAID ;?>" width="17" height="17" border="0"></a></td>
+                  <td valign="middle" nowrap class="list"> <a href="disks_raid_gstripe_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_DISKSRAIDPHP_EDITRAID; ?>" width="17" height="17" border="0"></a>
+                     &nbsp;<a href="disks_raid_gstripe.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSRAIDPHP_DELCONF ;?>')"><img src="x.gif" title="<?=_DISKSRAIDPHP_DELRAID ;?>" width="17" height="17" border="0"></a></td>
 				</tr>
 			  <?php $i++; endforeach; ?>
                 <tr> 
                   <td class="list" colspan="4"></td>
-                  <td class="list"> <a href="disks_raid_gmirror_edit.php"><img src="plus.gif" title="<?=_DISKSRAIDPHP_ADDRAID;?>" width="17" height="17" border="0"></a></td>
+                  <td class="list"> <a href="disks_raid_gstripe_edit.php"><img src="plus.gif" title="<?=_DISKSRAIDPHP_ADDRAID;?>" width="17" height="17" border="0"></a></td>
 				</tr>
               </table>
             </form>

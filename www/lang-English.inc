@@ -473,6 +473,8 @@ define('_DISKSRAIDPHP_VOLUME','Volume Name');
 // Software RAID common word
 define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
 define('_DISKSRAIDPHP_GMIRROR','Geom Mirror');
+define('_DISKSRAIDPHP_GSTRIPE','Geom Stripe');
+define('_DISKSRAIDPHP_GCONCAT','Geom Concat');
 define('_DISKSRAIDPHP_GRAID5','Geom Raid5');
 define('_DISKSRAIDPHP_UNSTABLE','(unstable)');
 
@@ -492,6 +494,7 @@ define('_DISKSRAIDEDITPHP_MSGADDDISKFIRST','You must add disks first.');
 define('_DISKSRAIDEDITPHP_MSGVALIDNAME','The device name may only consist of the characters a-z, A-Z, 0-9.');
 define('_DISKSRAIDEDITPHP_MSGEXIST','This device already exists in the raid volume list.');
 define('_DISKSRAIDEDITPHP_MSGVALIDRAID0','There must be a minimum of 2 disks in a RAID 0 volume.');
+define('_DISKSRAIDEDITPHP_MSGVALIDJBOD','There must be a minimum of 2 disks in a JBOD.');
 define('_DISKSRAIDEDITPHP_MSGVALIDRAID1','There must be 2 disks in a RAID 1 volume.');
 define('_DISKSRAIDEDITPHP_MSGVALIDRAID5','There must be a minimum of 3 disks in a RAID 5 volume.');
 define('_DISKSRAIDEDITPHP_MSGERROR','ERR Could not save RAID configuration.\n');
@@ -499,6 +502,7 @@ define('_DISKSRAIDEDITPHP_RAIDNAME','Raid name');
 define('_DISKSRAIDEDITPHP_GVBALANCEALGO','Balance algorithm');
 define('_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT','Select your read balance algorithm.');
 define('_DISKSRAIDEDITPHP_RAID0','striping');
+define('_DISKSRAIDEDITPHP_JBOD','JBOD');
 define('_DISKSRAIDEDITPHP_RAID1','mirroring');
 define('_DISKSRAIDEDITPHP_RAID5','rotated block-interleaved parity');
 define('_DISKSRAIDEDITPHP_MEMBERS','Members of this volume');

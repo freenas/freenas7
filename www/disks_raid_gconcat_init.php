@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_raid_gmirror_init.php
+	disks_raid_gconcat_init.php
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
@@ -34,14 +34,14 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME,_DISKSRAIDPHP_GMIRROR,_DISKSRAIDEDITPHP_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME,_DISKSRAIDPHP_GCONCAT,_DISKSRAIDEDITPHP_NAMEDESC);
 
-if (!is_array($config['gmirror']['vdisk']))
-	$config['gmirror']['vdisk'] = array();
+if (!is_array($config['gconcat']['vdisk']))
+	$config['gconcat']['vdisk'] = array();
 
-gmirror_sort();
+gconcat_sort();
 
-$a_raid = &$config['gmirror']['vdisk'];
+$a_raid = &$config['gconcat']['vdisk'];
 
 if ($_POST) {
 	unset($input_errors);
@@ -67,9 +67,9 @@ if (!isset($do_format)) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><?=_DISKSRAIDPHP_GMIRROR; ?></li>
-		<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_GCONCAT; ?></a></li> 
-		<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_GSTRIPE; ?></a></li>
+    	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_GMIRROR; ?></a></li>
+		<li class="tabact"><?=_DISKSRAIDPHP_GCONCAT; ?></li>
+		<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_GSTRIPE; ?> </a></li>
         <li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></a></li>
         <li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></a></li>
       </ul>
@@ -78,17 +78,17 @@ if (!isset($do_format)) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
+        <li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
         <li class="tabact"><?=_DISKSRAIDPHP_FORMAT; ?></li>
-        <li class="tabinact"><a href="disks_raid_gmirror_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
-        <li class="tabinact"><a href="disks_raid_gmirror_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
+        <li class="tabinact"><a href="disks_raid_gconcat_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
+        <li class="tabinact"><a href="disks_raid_gconcat_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
       </ul>
     </td>
   </tr>
   <tr>
     <td class="tabcont">
       <?php if ($input_errors) print_input_errors($input_errors); ?>
-			<form action="disks_raid_gmirror_init.php" method="post" name="iform" id="iform">
+			<form action="disks_raid_gconcat_init.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
 				    <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDPHP_VOLUME;?></td>
@@ -115,7 +115,7 @@ if (!isset($do_format)) {
     					ob_end_flush();
 
     					/* Create filesystem */
-    					system("/sbin/newfs -U /dev/mirror/" . escapeshellarg($disk));
+    					system("/sbin/newfs -U /dev/concat/" . escapeshellarg($disk));
 
     					echo('</pre>');
     				}

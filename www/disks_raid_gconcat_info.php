@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_raid_graid5_info.php
+	disks_raid_gconcat_info.php
 	
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
@@ -35,7 +35,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GRAID5, _DISKSRAIDPHP_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GCONCAT, _DISKSRAIDPHP_NAMEDESC);
 
 ?>
 <?php include("fbegin.inc"); ?>
@@ -43,17 +43,17 @@ $pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GRAID5, _DISKSRAIDPHP_NAMEDESC);
 	<tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_GMIRROR; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_GCONCAT; ?></a></li> 
-	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_GSTRIPE; ?></a></li>
-	<li class="tabact"><?=_DISKSRAIDPHP_GRAID5; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></li>
-	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?> </a></li>
+	<li class="tabact"><?=_DISKSRAIDPHP_GCONCAT; ?></li>
+	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_GSTRIPE; ?> </a></li>
+	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></a></li> 
+	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></a></li> 
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_graid5_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_graid5_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gconcat_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gconcat_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
 	<li class="tabact"><?=_DISKSRAIDPHP_INFO; ?></li>
   </ul>
   </td></tr>
@@ -65,7 +65,7 @@ $pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GRAID5, _DISKSRAIDPHP_NAMEDESC);
 echo "<pre>";
 
 echo "<strong>" . _DISKSRAIDINFOPHP_TEXT . "</strong><br>";
-	exec("/sbin/graid5 list",$rawdata);
+	exec("/sbin/gconcat list",$rawdata);
 	foreach ($rawdata as $line)
 	{
           echo htmlspecialchars($line) . "<br>";
