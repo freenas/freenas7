@@ -137,6 +137,11 @@ define('_MSGVALIDPASSWORD','Password don\'t match.');
 
 define('_MSGSCHED_TEXT','Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.');
 
+// Special Filesystem Warning
+
+define('_MSGFILESYSTEM','UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS).  Attempting to use other file formats such as FAT, FAT32, EXT2,
+EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!.');
+
 // states
 define('_ACTIVE','Active');
 define('_INACTIVE','Inactive');
@@ -531,7 +536,7 @@ define('_DISKSMOUNTPHP_TOOLS','Tools');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','The mount point list has been changed.<br>You must apply the changes in order for them to take effect.');
-define('_DISKSMOUNTPHP_NOTE','Second configuration step: Declaring the filesystem used by your <a href="disks_manage.php">previously configured disk</a>.');
+define('_DISKSMOUNTPHP_NOTE','Second configuration step: Declaring the filesystem used by your <a href="disks_manage.php">previously configured disk.</a><p>');
 define('_DISKSMOUNTPHP_DELCONF','Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!');
 define('_DISKSMOUNTPHP_DEL','delete mount');
 define('_DISKSMOUNTPHP_ADD','add mount');

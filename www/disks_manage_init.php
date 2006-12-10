@@ -74,7 +74,7 @@ if ($_POST) {
 
 		if($do_format) {
 			/* Get the id of the disk array entry. */
-			$id = array_search_ex($disk, $a_disk, "name");
+			$id = array_search_ex($disk, $a_disk, "fullname");
 			/* Set new filesystem type. */
  			$a_disk[$id]['fstype'] = $type;
 
@@ -95,7 +95,7 @@ function disk_change() {
   switch(document.iform.disk.value)
   {
     <?php foreach ($a_disk as $diskv): ?>
-		case "<?=$diskv['name'];?>":
+		case "<?=$diskv['fullname'];?>":
 		  <?php $i = 0;?>
       <?php foreach ($a_fst as $fstval => $fstname): ?>
         document.iform.type.options[<?=$i++;?>].selected = <?php if($diskv['fstype'] == $fstval){echo "true";}else{echo "false";};?>;
@@ -126,7 +126,7 @@ function disk_change() {
             <td class="vtable">
               <select name="disk" class="formfld" id="disk" onchange="disk_change()">
                 <?php foreach ($a_disk as $diskv): ?>
-                <option value="<?=$diskv['name'];?>"<?php if ($diskv['name'] == $disk) echo "selected";?>>
+                <option value="<?=$diskv['fullname'];?>"<?php if ($diskv['name'] == $disk) echo "selected";?>>
                 <?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?>
                 <?php endforeach; ?>
                 </option>
@@ -162,10 +162,10 @@ function disk_change() {
     					echo('<pre>');
     					ob_end_flush();
 
-    					/* Erase MBR if not checked*/
+    					// Erase MBR if not checked
     					if (!$notinitmbr) {
     						echo "Erasing MBR\n";
-    						system("dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . " bs=32k count=640");
+    						system("dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=32k count=640");
     					}
     					else
     						echo "Keeping the MBR\n";
@@ -173,101 +173,91 @@ function disk_change() {
     					switch ($type)
     					{
     					case "ufs":
-    						/* Initialize disk */
+    						// Initialize disk
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						// echo "\"fdisk: Geom not found\"is not an error message!\n";
-    						/* Initialise the partition (optional) */
-    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						/* Create s1 label */
+    						// Initialise the partition (optional)
+    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						// Create s1 label
     						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
     						// Create filesystem
-    						system("/sbin/newfs -U /dev/" . escapeshellarg($disk) . "s1");
+    						system("/sbin/newfs -U " . escapeshellarg($disk) . "s1");
     						break;
     					case "ufs_no_su":
-    						/* Initialize disk */
+    						// Initialize disk
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						/* Initialise the partition (optional) */
-    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						/* Create s1 label */
+    						// Initialise the partition (optional)
+    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						// Create s1 label
     						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
     						// Create filesystem
-    						system("/sbin/newfs -m 0 /dev/" . escapeshellarg($disk) . "s1");
+    						system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "s1");
     						break;
     					case "ufsgpt":
-    						/* Create GPT partition table */
+    						// Create GPT partition table
     						system("/sbin/gpt destroy " . escapeshellarg($disk));
     						system("/sbin/gpt create -f " . escapeshellarg($disk));
     						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
     						// Create filesystem
-    						system("/sbin/newfs -U /dev/" . escapeshellarg($disk) . "p1");
+    						system("/sbin/newfs -U " . escapeshellarg($disk) . "p1");
     						break;
     					case "ufsgpt_no_su":
-    						/* Create GPT partition table */
+    						// Create GPT partition table
     						system("/sbin/gpt destroy " . escapeshellarg($disk));
     						system("/sbin/gpt create -f " . escapeshellarg($disk));
     						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
     						// Create filesystem
-    						system("/sbin/newfs -m 0 /dev/" . escapeshellarg($disk) . "p1");
+    						system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "p1");
     						break;
     					case "gmirror":
-    						/* Initialize disk */
+    						// Initialize disk
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						/* Initialise the partition (optional) */
-    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						/* Create s1 label */
-    						//system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-    						/* Delete old gmirror information */
-    						system("/sbin/gmirror clear /dev/" . escapeshellarg($disk));
+    						// Initialise the partition (optional)
+    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						// Delete old gmirror information */
+    						system("/sbin/gmirror clear " . escapeshellarg($disk));
     						break;
 						case "gconcat":
-    						/* Initialize disk */
+    						// Initialize disk
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						/* Initialise the partition (optional) */
-    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						/* Create s1 label */
-    						//system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-    						/* Delete old gmirror information */
-    						system("/sbin/gconcat clear /dev/" . escapeshellarg($disk));
+    						// Initialise the partition (optional)
+    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						// Delete old gmirror information
+    						system("/sbin/gconcat clear " . escapeshellarg($disk));
     						break;
 						case "gstripe":
-    						/* Initialize disk */
+    						// Initialize disk
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						/* Initialise the partition (optional) */
-    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						/* Create s1 label */
-    						//system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-    						/* Delete old gmirror information */
-    						system("/sbin/gstripe clear /dev/" . escapeshellarg($disk));
+    						// Initialise the partition (optional)
+    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						// Delete old gmirror information
+    						system("/sbin/gstripe clear " . escapeshellarg($disk));
     						break;
     					case "graid5":
-    						/* Initialize disk */
+    						// Initialize disk
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						/* Initialise the partition (optional) */
-    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						/* Create s1 label */
-    						//system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-    						/* Delete old gmirror information */
-    						system("/sbin/graid5 clear /dev/" . escapeshellarg($disk));
+    						// Initialise the partition (optional)
+    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						// Delete old gmirror information
+    						system("/sbin/graid5 clear " . escapeshellarg($disk));
     						break;
     					case "gvinum":
-    						/* Initialize disk */
+    						// Initialize disk
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
     						// echo "\"fdisk: Geom not found\"is not an error message!\n";
     						/* Initialise the partition (optional) */
-    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
     						/* Create s1 label */
     						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
     						break;
     					case "msdos":
-    						/* Initialize disk */
+    						// Initialize disk
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						// echo "\"fdisk: Geom not found\"is not an error message!\n";
-    						/* Initialise the partition (optional) */
-    						system("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						/* Create s1 label */
+    						// Initialise the partition (optional) */
+    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+    						// Create s1 label
     						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
     						// Create filesystem
-    						system("/sbin/newfs_msdos -F 32 /dev/" . escapeshellarg($disk) . "s1");
+    						system("/sbin/newfs_msdos -F 32 " . escapeshellarg($disk) . "s1");
     						break;
     					}
     					echo('</pre>');
@@ -278,6 +268,7 @@ function disk_change() {
 			 </table>
     </form>
     <p><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:<br></strong></span><?=_DISKSMANAGEINITPHP_TEXT;?></span></p>
+    <p><span class="vexpl"><?=_MSGFILESYSTEM;?></p>
   </td></tr>
 </table>
 <script language="JavaScript">

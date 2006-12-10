@@ -188,12 +188,13 @@ if ($_POST) {
       <td valign="top" class="vncellreq"><?=_DISK; ?></td>
       <td class="vtable">            
     	 <select name="mdisk" class="formfld" id="mdisk">
-    		  <?php foreach ($a_disk as $disk): ?>
-    			<?php if ((strcmp($disk['fstype'],"gvinum")!=0) | (strcmp($disk['fstype'],"gmirror")!=0) | (strcmp($disk['fstype'],"gstripe")!=0) | (strcmp($disk['fstype'],"gconcat")!=0)): ?> 	  
+    	  <?php foreach ($a_disk as $disk): ?>
+    			<?php if ((strcmp($disk['fstype'],"gvinum")==0) | (strcmp($disk['fstype'],"gmirror")==0) | (strcmp($disk['fstype'],"gstripe")==0) | (strcmp($disk['fstype'],"gconcat")==0)): ?> 	  
+    			<?php continue; ?>
+    			<?php endif; ?>
     				<option value="<?=$disk['name'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 
     				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
     				</option>
-    			<?php endif; ?>
     		  <?php endforeach; ?>
     		</select>
       </td>
