@@ -39,7 +39,7 @@
 
 	$fp = fopen('php://stdin', 'r');
 
-  echo "\nDo you want to use DHCP? (y/n)";
+  echo "\nDo you want to use DHCP? (y/n) ";
 
   if (strcasecmp(chop(fgets($fp)), "y") == 0)
 	{

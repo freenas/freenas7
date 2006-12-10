@@ -40,7 +40,7 @@ function wireless_config_init() {
 	$pconfig['channel'] = $optcfg['wireless']['channel'];
 	$pconfig['wep_enable'] = isset($optcfg['wireless']['wep']['enable']);
 	
-	if (is_array($optcfg['wireless']['wep']['key'])) {
+	if (is_array($optcfg['wireless']['wep'])) {
 		$i = 1;
 		foreach ($optcfg['wireless']['wep']['key'] as $wepkey) {
 			$pconfig['key' . $i] = $wepkey['value'];
