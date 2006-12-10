@@ -54,9 +54,10 @@ if (isset($id) && $a_disk[$id])
 	$pconfig['name'] = $a_disk[$id]['name'];
 	$pconfig['harddiskstandby'] = $a_disk[$id]['harddiskstandby'];
 	$pconfig['acoustic'] = $a_disk[$id]['acoustic'];
-  $pconfig['fstype'] = $a_disk[$id]['fstype'];
+	$pconfig['fstype'] = $a_disk[$id]['fstype'];
 	$pconfig['apm'] = $a_disk[$id]['apm'];
 	$pconfig['udma'] = $a_disk[$id]['udma'];
+	$pconfig['fullname'] = $a_disk[$id]['fullname'];
 }
 
 if ($_POST)
@@ -89,6 +90,7 @@ if ($_POST)
 		$harddiskfstype = $_POST['fstype'];
 		
 		$disks['name'] = $devname;
+		$disks['fullname'] = "/dev/$devname";
 		$disks['harddiskstandby'] = $devharddiskstandby ;
 		$disks['acoustic'] = $harddiskacoustic ;
 		if ($harddiskfstype) $disks['fstype'] = $harddiskfstype ;
@@ -195,7 +197,7 @@ if ($_POST)
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?_SAVE:_ADD?>"> 
                     <?php if (isset($id) && $a_disk[$id]): ?>
-                    <input name="id" type="hidden" value="<?=$id;?>"> 
+                    <input name="id" type="hidden" value="<?=$id;?>">
                     <?php endif; ?>
                   </td>
                 </tr>

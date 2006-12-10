@@ -471,8 +471,19 @@ function convert_config()
 	}
 
 	/* convert 1.4 -> 1.5 */
-	/* Add [fullname] information on mount and geom volume */
+	/* Add [fullname] information on mount,disk, gmirror, gvinum and graid5 */
 	if ($config['version'] == "1.4") {
+	
+	
+		/* Add fullname (/dev/ad0) under disk */	
+		
+		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
+			if (isset($config['disks']['disk'][$i]['name'])) 	{
+				$config['disks']['disk'][$i]['fullname']="/dev/{$config['disks']['disk'][$i]['name']}";
+			}
+		}
+			
+		/* Add fullname (/dev/ad0s1) under mount point */
 		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
 			switch ($config['mounts']['mount'][$i]['partition']) {
 				case "gvinum":
@@ -492,6 +503,30 @@ function convert_config()
 					break;
 				default:
 					$config['mounts']['mount'][$i]['fullname'] = "/dev/{$config['mounts']['mount'][$i]['mdisk']}{$config['mounts']['mount'][$i]['partition']}";
+			}
+		}
+		
+		// Add fullname (/dev/mirror/toto) under gmirror
+		
+		for ($i = 0; isset($config['gmirror']['vdisk'][$i]); $i++) {
+			if (isset($config['gmirror']['vdisk'][$i]['name'])) 	{
+				$config['gmirror']['vdisk'][$i]['fullname']="/dev/mirror/{$config['gmirror']['vdisk'][$i]['name']}";
+			}
+		}
+		
+		// Add fullname (/dev/gvinum/toto) under gvinum
+		
+		for ($i = 0; isset($config['gvinum']['vdisk'][$i]); $i++) {
+			if (isset($config['gvinum']['vdisk'][$i]['name'])) 	{
+				$config['gvinum']['vdisk'][$i]['fullname']="/dev/gvinum/{$config['gvinum']['vdisk'][$i]['name']}";
+			}
+		}
+			
+		// Add fullname (/dev/raid5/toto) under graid5	
+		
+		for ($i = 0; isset($config['graid5']['vdisk'][$i]); $i++) {
+			if (isset($config['graid5']['vdisk'][$i]['name'])) 	{
+				$config['graid5']['vdisk'][$i]['fullname']="/dev/raid5/{$config['graid5']['vdisk'][$i]['name']}";
 			}
 		}
 		
