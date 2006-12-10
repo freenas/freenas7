@@ -919,6 +919,10 @@ use_svn() {
 	return 0
 }
 
+chk_build_env() {
+  check_packages "$PKG_PHP $PKG_SAMBA $PKG_NETATALK $PKG_LIBS"
+}
+
 fromscratch() {
   while true; do
 echo -n '
@@ -931,7 +935,8 @@ Menu:
 5 - Software package
 6 - Build bootloader
 7 - Add necessary libraries
-10 - All
+10 - Check build environment
+11 - All
 * - Quit
 > '
   	read choice
@@ -943,7 +948,8 @@ Menu:
   		5) fromscratch_softpkg;;
   		6) $SVNDIR/misc/freenas-create-bootdir.sh -f $BOOTDIR;;
   		7) add_libs;;
-  		10) $SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS;
+  		10) chk_build_env;;
+  		11) $SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS;
           copy_bins;
           prep_etc;
           build_kernel;
