@@ -68,7 +68,7 @@ if ($_POST) {
 if ($_GET['act'] == "del")
 {
 	if ($a_mount[$_GET['id']]) {
-		disks_umount_adv($a_mount[$_GET['id']]);
+		disks_umount($a_mount[$_GET['id']]);
 		unset($a_mount[$_GET['id']]);
 		write_config();
 		touch($d_mountdirty_path);

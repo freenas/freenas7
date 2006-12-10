@@ -47,7 +47,7 @@ function disks_mount_all()
 		foreach ($config['mounts']['mount'] as $mountent) 		{
 			/* Advanced Umount filesystem if not booting mode (mount edition)*/
 			if (!$g['booting'])
-				disks_umount_adv($mountent);
+				disks_umount($mountent);
 								
 			/* mount filesystem */
 			disks_mount($mountent);	
@@ -75,7 +75,7 @@ function disks_mount($mount)
 			
 	/* mount the filesystems */
 	
-	$devname="{$mount['fullname']}";
+	$devname=escapeshellcmd($mount['fullname']);
 
 	/* check the fileystem only if there is a problem*/
 	
@@ -84,16 +84,16 @@ function disks_mount($mount)
 	switch ($mount['fstype']) 	{
 		case "ufs":
 			
-			if (mwexec("/sbin/mount -t ufs  -o acls {$devname} /mnt/$mountname") == 0) 			{
+			if (mwexec("/sbin/mount -t ufs  -o acls $devname /mnt/$mountname") == 0) 			{
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 /mnt/$mountname");
 				return 0;
 			}
 			else 			{
 				/* If it's NOK, Check  filesystem and do a fsck, answer Yes to all question*/
-				mwexec("/sbin/fsck -y -t ufs {$devname}");
+				mwexec("/sbin/fsck -y -t ufs $devname");
 				/* Re-try to mount the partition */
-				if (mwexec("/sbin/mount -t ufs -o acls {$devname} /mnt/$mountname") == 0) 				{
+				if (mwexec("/sbin/mount -t ufs -o acls $devname /mnt/$mountname") == 0) 				{
 					/* Change this directory into 777 mode */
 					mwexec("/bin/chmod 777 /mnt/$mountname");
 					return 0;
@@ -108,11 +108,11 @@ function disks_mount($mount)
 		   break;
 		   
 		case "msdosfs":
-			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} /mnt/$mountname") == 0)
+			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
 				return 0;
 			else 			{
 				exec("/sbin/fsck -y -t msdosfs {$devname}");
-				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} /mnt/$mountname") == 0)
+				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
 					return 0;
 				else 				{
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
@@ -124,7 +124,7 @@ function disks_mount($mount)
 		   break;
 		   
 		case "ntfs":
-			if (mwexec("/sbin/mount_ntfs -u ftp -g ftp -m 777 {$devname} /mnt/$mountname") == 0)
+			if (mwexec("/sbin/mount_ntfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
 				return 0;
 			else 			{
 				/* Not OK, remove the directory, prevent writing on RAM disk */
@@ -134,14 +134,14 @@ function disks_mount($mount)
 			break;		   
 		   
 		case "ext2fs":
-			if (mwexec("/sbin/mount_ext2fs {$devname} /mnt/$mountname") == 0) 			{
+			if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0) 			{
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 /mnt/$mountname");
 				return 0;
 			}
 			else 			{
 				exec("/usr/local/sbin/e2fsck -f -p {$devname}");
-				if (mwexec("/sbin/mount_ext2fs {$devname} /mnt/$mountname") == 0) 				{
+				if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0) 				{
 					/* Change this directory into 777 mode */
 					mwexec("/bin/chmod 777 /mnt/$mountname");
 					return 0;
