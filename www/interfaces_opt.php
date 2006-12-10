@@ -150,6 +150,7 @@ function enable_change(enable_over) {
   document.iform.mediaopt.disabled = endis;
 
 	if (document.iform.mode) {
+		 document.iform.standard.disabled = endis;
 		 document.iform.mode.disabled = endis;
 		 document.iform.ssid.disabled = endis;
 		 document.iform.channel.disabled = endis;
