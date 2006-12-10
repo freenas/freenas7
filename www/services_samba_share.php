@@ -97,8 +97,8 @@ if($_GET['act'] == "ret") {
           </tr>
   			  <?php $i = 0; foreach($a_mount as $mountv): ?>
           <tr>
-            <td class="listr"><?=htmlspecialchars($mountv['sharename']);?></td>
-            <td class="listr"><?=htmlspecialchars($mountv['desc']);?></td>
+            <td class="listr"><?=htmlspecialchars($mountv['sharename']);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($mountv['desc']);?>&nbsp;</td>
             <td class="listbg"><?=htmlspecialchars((is_array($config['samba']['hidemount']) && in_array($mountv['sharename'],$config['samba']['hidemount']))?_NO:_YES);?></td>
             <td valign="middle" nowrap class="list">
               <?php if(isset($config['samba']['enable']))

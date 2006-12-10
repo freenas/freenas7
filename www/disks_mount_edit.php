@@ -96,7 +96,10 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	
+  $reqdfields = explode(" ", "mdisk partition fstype");
+  $reqdfieldsn = array(_DISK,_PARTITION,_FILESYSTEM);
+  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
 	if (($_POST['sharename'] && !is_validsharename($_POST['sharename']))) {
 		$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDNAME;
 	}
