@@ -201,441 +201,8 @@ build_kernel() {
 	return 0
 }
 
-# Building the software package:
-# PHP 5
-build_php() {
-  cd $WORKINGDIR
-
-  # Check if needed packages are installed.
-  check_packages $PKG_PHP
-  if [ 1 == $? ]; then
-    echo "==> Install missing package(s) first."
-    return 1
-  fi
-
-  php_tarball=$(urlbasename $URL_PHP)
-
-  if [ ! -f "$php_tarball" ]; then
-		fetch $URL_PHP
-		if [ 1 == $? ]; then
-      echo "==> Failed to fetch $php_tarball."
-      return 1
-    fi
-	fi
-
-	tar -zxf $php_tarball
-	cd $(basename $php_tarball .tar.gz)
-
-	./configure --enable-fastcgi --enable-discard-path --enable-force-cgi-redirect --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex
-	#./configure --enable-fastcgi --enable-discard-path --enable-force-cgi-redirect --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex --enable-embed=shared --disable-cli
-	make
-	install -s sapi/cgi/php $FREENAS/usr/local/bin
-
-	echo 'magic_quotes_gpc = off
-magic_quotes_runtime = off
-max_execution_time = 0
-max_input_time = 180
-register_argc_argv = off
-file_uploads = on
-upload_tmp_dir = /ftmp
-upload_max_filesize = 128M
-post_max_size = 256M
-html_errors = off
-include_path = ".:/etc/inc:/usr/local/www"' > $FREENAS/usr/local/lib/php.ini
-
-	return 0
-}
-
-# Lighttpd
-build_lighttpd() {
-  cd $WORKINGDIR
-
-  lighttpd_tarball=$(urlbasename $URL_LIGHTTPD)
-
-  if [ ! -f "$lighttpd_tarball" ]; then
-		fetch $URL_LIGHTTPD
-		if [ 1 == $? ]; then
-      echo "==> Failed to fetch $lighttpd_tarball."
-      return 1
-    fi
-	fi
-
-	tar -zxvf $lighttpd_tarball
-
-	cd $(basename $lighttpd_tarball .tar.gz)
-
-	./configure --sysconfdir=/var/etc/ --enable-lfs --without-mysql --without-ldap --with-openssl --without-lua --with-bzip2 --without-pcre
-	make
-	install -s src/lighttpd $FREENAS/usr/local/sbin
-
-	mkdir $FREENAS/usr/local/lib/lighttpd
-
-  cp -v src/.libs/mod_indexfile.so $FREENAS/usr/local/lib/lighttpd
-  cp -v src/.libs/mod_access.so $FREENAS/usr/local/lib/lighttpd
-  cp -v src/.libs/mod_accesslog.so $FREENAS/usr/local/lib/lighttpd
-  cp -v src/.libs/mod_dirlisting.so $FREENAS/usr/local/lib/lighttpd
-  cp -v src/.libs/mod_staticfile.so $FREENAS/usr/local/lib/lighttpd
-  cp -v src/.libs/mod_cgi.so $FREENAS/usr/local/lib/lighttpd
-  cp -v src/.libs/mod_auth.so $FREENAS/usr/local/lib/lighttpd
-  cp -v src/.libs/mod_webdav.so $FREENAS/usr/local/lib/lighttpd
-
-	return 0
-}
-
-# clog
-build_clog() {
-  cd /usr/src/usr.bin/
-
-  clog_tarball=$(urlbasename $URL_CLOG)
-  syslogd_tarball=$(urlbasename $URL_SYSLOGD)
-
-  if [ ! -f "$clog_tarball" ]; then
-		fetch $URL_CLOG
-		if [ 1 == $? ]; then
-      echo "==> Failed to fetch $clog_tarball."
-      return 1
-    fi
-	fi
-	if [ ! -f "$syslogd_tarball" ]; then
-    fetch $URL_SYSLOGD
-    if [ 1 == $? ]; then
-      echo "==> Failed to fetch $syslogd_tarball."
-      return 1
-    fi
-	fi
-
-  tar zxvf $clog_tarball
-  tar zxvf $syslogd_tarball
-
-  cd syslogd
-  make
-  install -s syslogd $FREENAS/usr/sbin/
-
-  cd ../clog
-  gcc clog.c -o clog
-  install -s clog $FREENAS/usr/sbin/
-
-  return 0
-}
-
-# MSNTP
-build_msntp() {
-	cd /usr/ports/net/msntp
-	make
-	install -s work/msntp*/msntp $FREENAS/usr/local/bin
-
-	echo '#!/bin/sh
-# write our PID to file
-echo $$ > $1
-
-# execute msntp in endless loop; restart if it
-# exits (wait 1 second to avoid restarting too fast in case
-# the network is not yet setup)
-while true; do
-	/usr/local/bin/msntp -r -P no -l $2 -x $3 $4
-	sleep 1
-done' > $FREENAS/usr/local/bin/runmsntp.sh
-
-	chmod +x $FREENAS/usr/local/bin/runmsntp.sh
-	return 0
-}
-
-# ataidle
-build_ataidle() {
-	cd /usr/ports/sysutils/ataidle
-	make
-	install -s work/ataidle*/ataidle $FREENAS/usr/local/sbin
-	return 0
-}
-
-# iscsi initiator
-build_iscsi() {
-  iscsi_tarball=$(urlbasename $URL_ISCSI)
-  
-  if [ ! -f "$iscsi_tarball" ]; then
-		fetch $URL_ISCSI
-		if [ 1 == $? ]; then
-      echo "==> Failed to fetch $iscsi_tarball."
-      return 1
-    fi
-	fi
-
-	tar zxvf $iscsi_tarball
-	cd sys
-  ln -s /sys/kern .
-  ln -s /sys/tools .
-  cd modules/iscsi_initiator
-  make clean
-  ln -s ../.. @
-  make
-  cp -v iscsi_initiator.ko $FREENAS/boot/kernel/
-  cd ../../../iscontrol/
-  make
-  install -s iscontrol $FREENAS/usr/local/sbin/
-
-	return 0
-}
-
-# Pure-FTPd
-build_pureftpd() {
-  cd /root
-
-	pureftpd_tarball=$(urlbasename $URL_PUREFTP)
-
-	if [ ! -f "$pureftpd_tarball" ]; then
-		fetch $URL_PUREFTP
-		if [ 1 == $? ]; then
-      echo "==> Failed to fetch $pureftpd_tarball."
-      return 1
-    fi
-	fi
-
-  tar zxvf $pureftpd_tarball
-  cd $(basename $pureftpd_tarball .tar.gz)
-  ./configure --with-rfc2640 --with-largefile --with-pam
-  make
-  install -s src/pure-ftpd $FREENAS/usr/local/sbin/
-
-	return 0
-}
-
-# Samba (CIFS server)
-build_samba() {
-  cd $WORKINGDIR
-
-  # Check if needed packages are installed.
-  check_packages $PKG_SAMBA
-  if [ 1 == $? ]; then
-    echo "==> Install missing package(s) first."
-    return 1
-  fi
-
-  samba_tarball=$(urlbasename $URL_SAMBA)
-
-	if [ ! -f "$samba_tarball" ]; then
-		fetch $URL_SAMBA
-		if [ 1 == $? ]; then
-      echo "==> Failed to fetch $samba_tarball."
-      return 1
-    fi
-	fi
-
-	tar -zxvf $samba_tarball
-	samba_dir=$(ls -d samba-3* | tail -n1)
-	cd $samba_dir/source
-
-	./configure --without-cups --with-ads --disable-cups --with-pam --with-ldapsam --with-acl-support --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run --with-piddir=/var/run --with-shared-modules=idmap_rid --with-pammodulesdir=/usr/local/lib --with-syslog
-	make
-
-	install -s bin/smbd $FREENAS/usr/local/sbin/
-	install -s bin/nmbd $FREENAS/usr/local/sbin/
-	install -s bin/winbindd $FREENAS/usr/local/sbin/
-	install -s bin/wbinfo $FREENAS/usr/local/bin/
-	install -s bin/net $FREENAS/usr/local/bin/
-	install -s bin/smbpasswd $FREENAS/usr/local/bin/
-	install -s bin/smbstatus $FREENAS/usr/bin/
-	install -s bin/smbcontrol $FREENAS/usr/bin/
-	install -s bin/smbtree $FREENAS/usr/bin/
-
-	# TO BE checked: Is the directory usr/local/samba/lib can be replaced with usr/local/lib/samba ?
-	
-	#mkdir -p $FREENAS/usr/local/lib/samba/vfs
-	mkdir -p $FREENAS/usr/local/lib/samba/charset
-	mkdir $FREENAS/usr/local/lib/samba/rpc
-	mkdir $FREENAS/usr/local/lib/samba/pdb
-	mkdir -p $FREENAS/usr/local/samba/lib/idmap
-	mkdir $FREENAS/usr/local/samba/lib/vfs
-
-	# cp -v bin/*.so $FREENAS/usr/local/lib/samba/vfs
-	# mv $FREENAS/usr/local/lib/samba/vfs/CP*.so $FREENAS/usr/local/lib/samba/charset
-	cp -v bin/CP*.so $FREENAS/usr/local/lib/samba/charset
-	cp -v codepages/*.dat $FREENAS/usr/local/lib/samba
-	cp -v po/*.* $FREENAS/usr/local/lib/samba
-	cp -v bin/recycle.so $FREENAS/usr/local/samba/lib/vfs
-	cp -v bin/rid.so $FREENAS/usr/local/samba/lib/idmap
-	
-	return 0
-}
-
-# NFS
-install_nfs() {
-	cp -v -p /usr/sbin/nfsd $FREENAS/usr/sbin
-	cp -v -p /usr/sbin/mountd $FREENAS/usr/sbin
-	cp -v -p /usr/sbin/rpcbind $FREENAS/usr/sbin
-	return 0
-}
-
-# Netatalk
-build_netatalk() {
-  cd $WORKINGDIR
-
-  # Check if needed packages are installed.
-  check_packages $PKG_NETATALK
-  if [ 1 == $? ]; then
-    echo "==> Install missing package(s) first."
-    return 1
-  fi
-
-  netatalk_tarball=$(urlbasename $URL_NETATALK)
-
-	if [ ! -f "$netatalk_tarball" ]; then
-		fetch $URL_NETATALK
-		if [ 1 == $? ]; then
-      echo "==> Failed to fetch $netatalk_tarball."
-      return 1
-    fi
-	fi
-
-  tar zxvf $netatalk_tarball
-  cd $(basename $netatalk_tarball .tar.gz)
-
-  ./configure --bindir=/usr/local/bin --sbindir=/usr/local/sbin --sysconfdir=/var/etc --localstatedir=/var --enable-largefile --disable-tcp-wrappers --disable-cups --with-pam --with-uams-path=/etc/uams/
-  make
-
-  install -s etc/afpd/afpd $FREENAS/usr/local/sbin/
-
-  mkdir $FREENAS/etc/uams
-  cp -v etc/uams/.libs/uams_passwd.so $FREENAS/etc/uams
-  cp -v etc/uams/.libs/uams_dhx_passwd.so $FREENAS/etc/uams
-  cp -v etc/uams/.libs/uams_guest.so $FREENAS/etc/uams
-  cp -v etc/uams/.libs/uams_randnum.so $FREENAS/etc/uams
-  cd $FREENAS/etc/uams
-  ln -s uams_passwd.so uams_clrtxt.so
-  ln -s uams_dhx_passwd.so uams_dhx.so
-  cd $FREENAS/usr/local/lib/
-  cp -v /usr/local/lib/libdb-4.2.so.2 .
-  cd $FREENAS/usr/lib/
-  cp -v /usr/lib/librpcsvc.so.3 .
-
-	return 0
-}
-
-# RSYNC
-build_rsync() {
-  cd $WORKINGDIR
-
-  rsync_tarball=$(urlbasename $URL_RSYNC)
-
-	if [ ! -f "$rsync_tarball" ]; then
-		fetch $URL_RSYNC
-		if [ 1 == $? ]; then
-      echo "==> Failed to fetch $rsync_tarball."
-      return 1
-    fi
-	fi
-  
-  tar zxvf $rsync_tarball
-  cd $(basename $rsync_tarball .tar.gz)
-
-  ./configure --with-rsyncd-conf=/var/etc
-  make
-
-  install -s rsync $FREENAS/usr/local/bin/
-
-	return 0
-}
-
-# Unison
-build_unison() {
-  cd /usr/ports/net/unison/
-  make
-  cp -v work/unison-*/unison $FREENAS/usr/local/bin/
-	return 0
-}
-
-# scponly
-build_scponly() {
-  cd /usr/ports/shells/scponly/
-  export WITH_SCPONLY_RSYNC=YES
-  export WITH_SCPONLY_SCP=YES
-  export WITH_SCPONLY_WINSCP=YES
-  export WITH_SCPONLY_UNISON=YES
-  make
-  install -s work/scponly-*/scponly $FREENAS/usr/local/bin/
-	return 0
-}
-
-# e2fsck
-build_e2fsck() {
-  cd /usr/ports/sysutils/e2fsprogs/
-  make
-  install -s work/e2fsprogs-*/e2fsck/e2fsck $FREENAS/usr/local/sbin/
-	return 0
-}
-
-# SMART tools
-build_smarttools() {
-	cd /usr/ports/sysutils/smartmontools
-	make
-	install -s work/smartmontools-*/smartctl $FREENAS/usr/local/sbin
-	install -s work/smartmontools-*/smartd $FREENAS/usr/local/sbin
-	return 0
-}
-
-# aaccli
-build_aaccli() {
-  cd /usr/ports/sysutils/aaccli/
-  make
-  tar zxvf work/aaccli-1.0_0.tgz
-  cp -v bin/aaccli $FREENAS/usr/local/bin/
-	return 0
-}
-
-# beep
-build_beep() {
-	cd /usr/ports/audio/beep
-	make
-	install -s work/beep/beep $FREENAS/usr/local/bin
-	return 0 
-}
-
-# mDNSReponder (Apple bonjour)
-build_mDNSReponder() {
-  cd /usr/ports/net/mDNSResponder
-  make
-  install -s work/mDNSResponder-*/mDNSPosix/build/prod/mDNSResponderPosix $FREENAS/usr/local/sbin/
-	return 0
-}
-
 # Build all software packages
 build_softpkg() {
-  build_php;
-  [ 0 != $? ] && return 1
-  build_lighttpd;
-  [ 0 != $? ] && return 1
-  build_clog;
-  [ 0 != $? ] && return 1
-  build_msntp;
-  [ 0 != $? ] && return 1
-  build_ataidle;
-  [ 0 != $? ] && return 1
-  build_iscsi;
-  [ 0 != $? ] && return 1
-  build_pureftpd;
-  [ 0 != $? ] && return 1
-  build_samba;
-  [ 0 != $? ] && return 1
-  install_nfs;
-  [ 0 != $? ] && return 1
-  build_netatalk;
-  [ 0 != $? ] && return 1
-  build_rsync;
-  [ 0 != $? ] && return 1
-  build_unison;
-  [ 0 != $? ] && return 1
-  build_scponly;
-  [ 0 != $? ] && return 1
-  build_e2fsck;
-  [ 0 != $? ] && return 1
-  build_smarttools;
-  [ 0 != $? ] && return 1
-  build_aaccli;
-  [ 0 != $? ] && return 1
-  build_beep;
-  [ 0 != $? ] && return 1
-  build_mDNSReponder;
-  [ 0 != $? ] && return 1
-
 	return 0
 }
 
@@ -964,57 +531,59 @@ Menu:
 }
 
 fromscratch_softpkg() {
-  while true; do
-echo -n '
-Software package
-Menu:
-1  - Build and install PHP
-2  - Build and install lighttpd
-3  - Build and install clog
-4  - Build and install msntp
-5  - Build and install ataidle
-6  - Build and install iSCSI target
-7  - Build and install Pure-FTPd
-8  - Build and install samba
-9  - Install NFS
-10 - Build and install Netatalk
-11 - Build and install Rsync
-12 - Build and install Unison
-13 - Build and install scponly
-14 - Build and install e2fsck
-15 - Build and install SMART tools
-16 - Build and install aaccli
-17 - Build and install beep
-18 - Build and install mDNSReponder
-20 - Build all
-*  - Quit
-> '
-  	read choice
-  	case $choice in
-  		1) build_php;;
-  		2) build_lighttpd;;
-  		3) build_clog;;
-  		4) build_msntp;;
-  		5) build_ataidle;;
-  		6) build_iscsi;;
-  		7) build_pureftpd;;
-  		8) build_samba;;
-  		9) install_nfs;;
-  		10) build_netatalk;;
-  		11) build_rsync;;
-  		12) build_unison;;
-  		13) build_scponly;;
-  		14) build_e2fsck;;
-  		15) build_smarttools;;
-  		16) build_aaccli;;
-  		17) build_beep;;
-  		18) build_mDNSReponder;;
-  		20) build_softpkg;;
-  		*)  fromscratch;;
-  	esac
-  	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
-  	sleep 1
-	done
+  echo "Software Package"
+  echo "Menu:"
+
+  count=0
+
+  for s in $SVNDIR/misc/software/*; do
+    package=`basename $s`
+    let count=$count+1
+    echo "$count - Build   $package"
+    script[$count]="$s/build.sh"
+    function[$count]="build_$package"
+    let count=$count+1
+    echo "$count - Install $package"
+    script[$count]="$s/build.sh"
+    function[$count]="install_$package"
+  done
+
+  let buildall=$count+1
+  let installall=$count+2
+
+  echo -n "$buildall - Build all
+$installall - Install all
+* - Quit
+> "
+
+  read choice
+
+  case "$choice" in
+    [0-9]*)   
+      if [ "$choice" == "$buildall" ]; then
+        for s in $SVNDIR/misc/software/*; do
+          package=`basename $s`
+          source $s/build.sh
+          build_$package
+          [ 0 != $? ] && break
+        done
+      elif [ "$choice" == "$installall" ]; then
+        for s in $SVNDIR/misc/software/*; do
+          package=`basename $s`
+          source $s/build.sh
+          install_$package
+          [ 0 != $? ] && break
+        done           
+      elif [ "$choice" -le "$count" ]; then
+        echo "Sourcing script ${script[$choice]}"
+        source ${script[$choice]}
+        echo "Running ${function[$choice]}"
+        ${function[$choice]}
+      fi;;
+    *) fromscratch;;
+  esac
+
+  sleep 1
 }
 
 main() {
