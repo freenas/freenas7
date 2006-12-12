@@ -1,0 +1,202 @@
+# This is a shell archive.  Save it in a file, remove anything before
+# this line, and then unpack it by entering "sh file".  Note, it may
+# create directories; files and directories will be owned by you and
+# have default permissions.
+#
+# This archive contains:
+#
+#	/usr/ports/net/ushare
+#	/usr/ports/net/ushare/files
+#	/usr/ports/net/ushare/files/patch-cfgparser.c
+#	/usr/ports/net/ushare/files/patch-ushare.c
+#	/usr/ports/net/ushare/distinfo
+#	/usr/ports/net/ushare/Makefile
+#	/usr/ports/net/ushare/pkg-descr
+#
+echo c - /usr/ports/net/ushare
+mkdir -p /usr/ports/net/ushare > /dev/null 2>&1
+echo c - /usr/ports/net/ushare/files
+mkdir -p /usr/ports/net/ushare/files > /dev/null 2>&1
+echo x - /usr/ports/net/ushare/files/patch-cfgparser.c
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-cfgparser.c << 'END-of-/usr/ports/net/ushare/files/patch-cfgparser.c'
+X--- src/cfgparser_orig.c	Sun Nov 12 13:40:35 2006
+X+++ src/cfgparser.c	Mon Dec 11 09:58:17 2006
+X@@ -38,6 +38,50 @@
+X 
+X #define USHARE_DIR_DELIM ","
+X 
+X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
+X+char *strndup(const char *s, size_t n) {
+X+  size_t len;
+X+  char *sdup;
+X+  if(!s)
+X+    return NULL;
+X+  len = strlen(s);
+X+  len = (n < len ? n : len);
+X+  sdup = (char *)malloc(len + 1);
+X+  if(sdup) {
+X+    memcpy(sdup, s, len);
+X+    sdup[len] = '\0';
+X+  }
+X+  return sdup;
+X+}
+X+
+X+ssize_t getline(char **lineptr, size_t *n, FILE *stream) {
+X+  static char line[256];
+X+  char *ptr;
+X+  unsigned int len;
+X+  if(lineptr == NULL || n == NULL) {
+X+    return -1;
+X+  }
+X+  if(ferror(stream))
+X+    return -1;
+X+  if(feof(stream))
+X+    return -1;
+X+  fgets(line,256,stream);
+X+  ptr = strchr(line,'\n');   
+X+  if(ptr)
+X+    *ptr = '\0';
+X+  len = strlen(line);
+X+  if((len+1) < 256) {
+X+    ptr = realloc(*lineptr, 256);
+X+    if(ptr == NULL)
+X+      return(-1);
+X+    *lineptr = ptr;
+X+    *n = 256;
+X+  }
+X+  strcpy(*lineptr,line); 
+X+  return(len);
+X+}
+X+#endif
+X+
+X static bool
+X ignore_line (const char *line)
+X {
+END-of-/usr/ports/net/ushare/files/patch-cfgparser.c
+echo x - /usr/ports/net/ushare/files/patch-ushare.c
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare.c << 'END-of-/usr/ports/net/ushare/files/patch-ushare.c'
+X--- src/ushare_orig.c	Sun Nov 12 13:40:35 2006
+X+++ src/ushare.c	Mon Dec 11 09:59:04 2006
+X@@ -33,6 +33,11 @@
+X #include <unistd.h>
+X #include <errno.h>
+X #include <getopt.h>
+X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
+X+#include <sys/socket.h>
+X+#include <sys/sysctl.h>
+X+#include <net/if_dl.h>
+X+#endif
+X #include <net/if.h>
+X #include <sys/ioctl.h>
+X #include <sys/types.h>
+X@@ -346,6 +351,48 @@
+X static char *
+X create_udn (char *interface)
+X {
+X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
+X+  int mib[6], len;
+X+  char *buf;
+X+  unsigned char *ptr;
+X+  struct if_msghdr *ifm;
+X+  struct sockaddr_dl *sdl;
+X+  
+X+  mib[0] = CTL_NET;
+X+  mib[1] = AF_ROUTE;
+X+  mib[2] = 0;
+X+  mib[3] = AF_LINK;
+X+  mib[4] = NET_RT_IFLIST;
+X+  if((mib[5] = if_nametoindex(interface)) == 0) {
+X+    perror("if_nametoindex error");
+X+    exit(2);
+X+  }
+X+
+X+  if(sysctl(mib, 6, NULL, &len, NULL, 0) < 0) {
+X+    perror("sysctl 1 error");
+X+    exit(3);
+X+  }
+X+
+X+  if((buf = malloc(len)) == NULL) {
+X+    perror("malloc error");
+X+    exit(4);
+X+  }
+X+
+X+  if(sysctl(mib, 6, buf, &len, NULL, 0) < 0) {
+X+    perror("sysctl 2 error");
+X+    exit(5);
+X+  }
+X+
+X+  ifm = (struct if_msghdr *)buf;
+X+  sdl = (struct sockaddr_dl *)(ifm + 1);
+X+  ptr = (unsigned char *)LLADDR(sdl);
+X+
+X+  snprintf(buf, 64, "%02X%02X%02X%02X%02X%02X",
+X+    (ptr[0] & 0377), (ptr[1] & 0377), (ptr[2] & 0377),
+X+    (ptr[3] & 0377), (ptr[4] & 0377), (ptr[5] & 0377));
+X+
+X+  return buf;
+X+#else
+X   int sock;
+X   struct ifreq ifr;
+X   char *buf;
+X@@ -382,6 +429,7 @@
+X   close (sock);
+X 
+X   return buf;
+X+#endif
+X }
+X 
+X static char *
+END-of-/usr/ports/net/ushare/files/patch-ushare.c
+echo x - /usr/ports/net/ushare/distinfo
+sed 's/^X//' >/usr/ports/net/ushare/distinfo << 'END-of-/usr/ports/net/ushare/distinfo'
+XMD5 (ushare-0.9.8.tar.bz2) = dec4c12d97d476c9a3a0347621d64e27
+XSHA256 (ushare-0.9.8.tar.bz2) = 4419a3fdb894fbdbdbf19706065fb2df00528c2087e53819c28a353c5d33bde9
+XSIZE (ushare-0.9.8.tar.bz2) = 162404
+END-of-/usr/ports/net/ushare/distinfo
+echo x - /usr/ports/net/ushare/Makefile
+sed 's/^X//' >/usr/ports/net/ushare/Makefile << 'END-of-/usr/ports/net/ushare/Makefile'
+X# New ports collection makefile for:   ushare
+X# Date created:        11 December 2006
+X# Whom:                Volker Theile <votdev@gmx.de>
+X#
+X# $FreeBSD$
+X#
+X
+XPORTNAME=ushare
+XPORTVERSION=0.9.8
+XCATEGORIES=net
+XMASTER_SITES=http://ushare.geexbox.org/releases/
+XEXTRACT_SUFX=.tar.bz2
+X
+XMAINTAINER=votdev@gmx.de
+XCOMMENT=Lightweight UPnP (TM) A/V Media Server
+X
+XLIB_DEPENDS+=upnp:${PORTSDIR}/devel/upnp
+X
+XPLIST_FILES+=bin/${PORTNAME}
+XPLIST_FILES+=etc/${PORTNAME}.conf
+XMAN1+=${PORTNAME}.1
+X
+Xpre-build:
+X	cd ${WRKSRC} && CFLAGS="-Os" ./configure --prefix=/usr
+X
+X.include <bsd.port.pre.mk>
+X
+Xdo-install:
+X	${INSTALL_PROGRAM} ${WRKSRC}/src/${PORTNAME} ${PREFIX}/bin
+X	${INSTALL_MAN} ${WRKSRC}/src/${PORTNAME}.1 ${PREFIX}/man/man1
+X	${INSTALL_DATA} ${WRKSRC}/scripts/ushare.conf ${PREFIX}/etc
+X
+X.include <bsd.port.post.mk>
+END-of-/usr/ports/net/ushare/Makefile
+echo x - /usr/ports/net/ushare/pkg-descr
+sed 's/^X//' >/usr/ports/net/ushare/pkg-descr << 'END-of-/usr/ports/net/ushare/pkg-descr'
+XGeeXboX uShare is a UPnP (TM) A/V Media Server. It implements the server
+Xcomponent that provides UPnP media devices with information on available
+Xmultimedia files. uShare uses the built-in http server of libupnp to stream
+Xthe files to clients.
+X
+XWWW: http://ushare.geexbox.org/
+END-of-/usr/ports/net/ushare/pkg-descr
+exit
+
