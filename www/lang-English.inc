@@ -546,6 +546,7 @@ define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','The share name may only consist of the
 define('_DISKSMOUNTEDITPHP_MSGVALIDDESC','The description name contain invalid characters.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','Can\'t mount the system partition 1, the DATA partition is the 2.');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','Duplicate Share Name.');
+define('_DISKSMOUNTEDITPHP_MSGVALIDDISK','This disk/partition is allready configured.');
 define('_DISKSMOUNTEDITPHP_TEXT','1. You can\'t mount the partition \'%s\' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs.');
 
 // disks_mount_tools.php

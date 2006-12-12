@@ -118,13 +118,11 @@ if ($_POST) {
 		if (isset($id) && ($a_mount[$id]) && ($a_mount[$id] === $mount))
 			continue;
 
-		/* Remove the duplicate disk use
-		if ($mount['mdisk'] == $_POST['mdisk'])
-		{
-			$input_errors[] = "This device already exists in the mount point list.";
+		// Check for duplicate mount point
+		if (($mount['mdisk'] == $_POST['mdisk']) && ($mount['partition'] == $_POST['partition'])) 	{
+			$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDDSK;
 			break;
 		}
-		*/
 		
 		if (($_POST['sharename']) && ($mount['sharename'] == $_POST['sharename'])) {
 			$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDDUP;

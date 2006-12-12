@@ -78,6 +78,8 @@ FreeNAS 0.681b:
 - CIFS: Configure samba for using syslog (circular log file), log message are messed with other system log, but FreeNAS will be more stable.
 - WebGUI: add a check to password input (forbid character ':')
 - WebGUI: add warning when using FAT32 or NTFS filesystem under FreeNAS
+- WebGUI: Prevent to create 2 mountpoint with the same disk/partition couple
+- Fixed the SFTP bug
 
 FreeNAS 0.68:
 - Need 32MB of minimal disk space for installing (since release 0.67, but forget to mention it)
