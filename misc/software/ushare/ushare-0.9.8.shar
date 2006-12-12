@@ -162,32 +162,29 @@ X#
 X# $FreeBSD$
 X#
 X
-XPORTNAME=ushare
-XPORTVERSION=0.9.8
-XCATEGORIES=net
-XMASTER_SITES=http://ushare.geexbox.org/releases/
-XEXTRACT_SUFX=.tar.bz2
+XPORTNAME=		ushare
+XPORTVERSION=		0.9.8
+XCATEGORIES=		net
+XMASTER_SITES=		http://ushare.geexbox.org/releases/
 X
-XMAINTAINER=votdev@gmx.de
-XCOMMENT=Lightweight UPnP (TM) A/V Media Server
+XMAINTAINER=		votdev@gmx.de
+XCOMMENT=		A lightweight UPnP (TM) A/V Media Server
 X
-XLIB_DEPENDS+=upnp:${PORTSDIR}/devel/upnp
+XLIB_DEPENDS=		upnp.2:${PORTSDIR}/devel/upnp
+XBUILD_DEPENDS=	pkg-config:${PORTSDIR}/devel/pkg-config \
+X			iconv:${PORTSDIR}/converters/libiconv
 X
-XPLIST_FILES+=bin/${PORTNAME}
-XPLIST_FILES+=etc/${PORTNAME}.conf
-XMAN1+=${PORTNAME}.1
+XPLIST_FILES=		bin/${PORTNAME} etc/${PORTNAME}.conf
+XMAN1=			${PORTNAME}.1
 X
-Xpre-build:
-X	cd ${WRKSRC} && CFLAGS="-Os" ./configure --prefix=/usr
+XUSE_BZIP2=		yes
+XGNU_CONFIGURE=	yes
+XCONFIGURE_ENV=	CFLAGS="-Os" \
+X			LIBS="-L${LOCALBASE}/lib -lintl -liconv"
+XCONFIGURE_ARGS=	--mandir=${LOCALBASE}/man
+XWRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 X
-X.include <bsd.port.pre.mk>
-X
-Xdo-install:
-X	${INSTALL_PROGRAM} ${WRKSRC}/src/${PORTNAME} ${PREFIX}/bin
-X	${INSTALL_MAN} ${WRKSRC}/src/${PORTNAME}.1 ${PREFIX}/man/man1
-X	${INSTALL_DATA} ${WRKSRC}/scripts/ushare.conf ${PREFIX}/etc
-X
-X.include <bsd.port.post.mk>
+X.include <bsd.port.mk>
 END-of-/usr/ports/net/ushare/Makefile
 echo x - /usr/ports/net/ushare/pkg-descr
 sed 's/^X//' >/usr/ports/net/ushare/pkg-descr << 'END-of-/usr/ports/net/ushare/pkg-descr'
