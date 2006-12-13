@@ -24,8 +24,7 @@ build_samba() {
 	fi
 
 	tar -zxvf $samba_tarball
-	samba_dir=$(ls -d samba-3* | tail -n1)
-	cd $samba_dir/source
+	cd $(basename $samba_tarball .tar.gz)/source
 
 	./configure --without-cups --with-ads --disable-cups --with-pam --with-ldapsam --with-acl-support --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run --with-piddir=/var/run --with-shared-modules=idmap_rid --with-pammodulesdir=/usr/local/lib --with-syslog
 	make
@@ -59,7 +58,7 @@ install_samba() {
 	cp -v codepages/*.dat $FREENAS/usr/local/lib/samba
 	cp -v po/*.* $FREENAS/usr/local/lib/samba
 	cp -v bin/recycle.so $FREENAS/usr/local/samba/lib/vfs
-	#cp -v bin/rid.so $FREENAS/usr/local/samba/lib/idmap
+	cp -v bin/rid.so $FREENAS/usr/local/samba/lib/idmap
 	
 	return 0
 }
