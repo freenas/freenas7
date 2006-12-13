@@ -814,15 +814,21 @@ function services_unison_configure() {
 function services_upnp_configure() {
 	global $config, $g;
 
-	/* kill any running uShare */
+	/* Kill any running uShare */
 	killbyname("ushare");
+
+	/* Delete multicast route. */
+	mwexec("/sbin/route delete -net 239.0.0.0");
 
 	if(isset($config['upnp']['enable'])) {
 		if($g['booting'])
 			echo "Starting UPnP server... ";
 
-    /* Run uShare as daemon */
-    mwexec("/usr/local/bin/ushare --daemon --no-web --interface={$config['upnp']['name']} --interface={$config['upnp']['if']} --content={$config['upnp']['content']}");
+			/* Setup a multicast route for UPnP messages. */
+			mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
+
+			/* Run uShare as daemon. */
+			mwexec("/usr/local/bin/ushare --daemon --no-web --name={$config['upnp']['name']} --interface={$config['upnp']['if']} --content={$config['upnp']['content']}");
 	}
 }
 
