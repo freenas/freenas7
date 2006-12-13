@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
+BUILD_DEPENDS="db42"
 URL_NETATALK="http://ovh.dl.sourceforge.net/sourceforge/netatalk/netatalk-2.0.3.tar.gz"
-PKG_NETATALK="db42"
 
 build_netatalk() {
   cd $WORKINGDIR
 
   # Check if needed packages are installed.
-  check_packages $PKG_NETATALK
+  check_packages $BUILD_DEPENDS
   if [ 1 == $? ]; then
     echo "==> Install missing package(s) first."
     return 1

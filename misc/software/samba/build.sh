@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
+BUILD_DEPENDS="openldap-client"
 URL_SAMBA="http://us1.samba.org/samba/ftp/stable/samba-3.0.23d.tar.gz"
-PKG_SAMBA="openldap-client"
 
 build_samba() {
   cd $WORKINGDIR
 
   # Check if needed packages are installed.
-  check_packages $PKG_SAMBA
+  check_packages $BUILD_DEPENDS
   if [ 1 == $? ]; then
     echo "==> Install missing package(s) first."
     return 1

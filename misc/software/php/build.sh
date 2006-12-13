@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-PKG_PHP="libxml2 perl pkgconfig"
+BUILD_DEPENDS="libxml2 perl pkg-config"
 URL_PHP="http://www.php.net/distributions/php-5.2.0.tar.gz"
 
 build_php() {
 	cd $WORKINGDIR
 
   # Check if needed packages are installed.
-  check_packages $PKG_PHP
+  check_packages $BUILD_DEPENDS
   if [ 1 == $? ]; then
     echo "==> Install missing package(s) first."
     return 1

@@ -23,24 +23,7 @@ URL_FREENASETC="http://www.freenas.org/downloads/freenas-etc.tgz"
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
 URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
 URL_ZONEINFO="http://www.freenas.org/downloads/zoneinfo.tgz"
-URL_PHP="http://www.php.net/distributions/php-5.2.0.tar.gz"
-URL_LIGHTTPD="http://www.lighttpd.net/download/lighttpd-1.4.13.tar.gz"
-URL_CLOG="http://www.freenas.org/downloads/clog-1.0.1.tar.gz"
-URL_SYSLOGD="http://www.freenas.org/downloads/syslogd_clog-current.tgz"
-URL_ISCSI="ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-17.tar.bz2"
-URL_PUREFTP="ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.21.tar.gz"
-URL_SAMBA="http://us1.samba.org/samba/ftp/stable/samba-3.0.23d.tar.gz"
-URL_NETATALK="http://ovh.dl.sourceforge.net/sourceforge/netatalk/netatalk-2.0.3.tar.gz"
-URL_RSYNC="http://samba.anu.edu.au/ftp/rsync/rsync-2.6.9.tar.gz"
 URL_GEOMRAID5="http://home.tiscali.de/cmdr_faako/geom_raid5.tbz"
-
-# List of needed packages to compile.
-PKG_PHP="libxml2 perl pkg-config"
-PKG_SAMBA="openldap-client"
-PKG_NETATALK="db42"
-PKG_LIBS="pam_ldap"
-
-# Functions:
 
 # Check if needed packages are installed.
 check_packages() {
@@ -201,15 +184,10 @@ build_kernel() {
 	return 0
 }
 
-# Build all software packages
-build_softpkg() {
-	return 0
-}
-
 # Adding the libraries
 add_libs() {
   # Check if needed packages are installed.
-  check_packages $PKG_LIBS
+  check_packages "pam_ldap"
   if [ 1 == $? ]; then
     echo "==> Install missing package(s) first."
     return 1
@@ -486,10 +464,6 @@ use_svn() {
 	return 0
 }
 
-chk_build_env() {
-  check_packages "$PKG_PHP $PKG_SAMBA $PKG_NETATALK $PKG_LIBS"
-}
-
 fromscratch() {
   while true; do
 echo -n '
@@ -502,8 +476,7 @@ Menu:
 5 - Software package
 6 - Build bootloader
 7 - Add necessary libraries
-10 - Check build environment
-11 - All
+10 - All
 * - Quit
 > '
   	read choice
@@ -512,11 +485,10 @@ Menu:
   		2) copy_bins;;
   		3) prep_etc;;
   		4) build_kernel;;
-  		5) fromscratch_softpkg;;
+  		5) build_softpkg;;
   		6) $SVNDIR/misc/freenas-create-bootdir.sh -f $BOOTDIR;;
   		7) add_libs;;
-  		10) chk_build_env;;
-  		11) $SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS;
+  		10) $SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS;
           copy_bins;
           prep_etc;
           build_kernel;
@@ -530,29 +502,29 @@ Menu:
   done
 }
 
-fromscratch_softpkg() {
+build_softpkg() {
   echo "Software Package"
   echo "Menu:"
 
   count=0
 
-  for s in $SVNDIR/misc/software/*; do
-    package=`basename $s`
-    let count=$count+1
-    echo "$count - Build   $package"
-    script[$count]="$s/build.sh"
-    function[$count]="build_$package"
-    let count=$count+1
-    echo "$count - Install $package"
-    script[$count]="$s/build.sh"
-    function[$count]="install_$package"
-  done
+	for s in $SVNDIR/misc/software/*; do
+		package=`basename $s`
+		let count=$count+1
+		echo "$count - Build $package" | awk '{printf("%-35s",$0)}'
+		script[$count]="$s/build.sh"
+		function[$count]="build_$package"
+		let count=$count+1
+		echo "$count - Install $package"
+		script[$count]="$s/build.sh"
+		function[$count]="install_$package"
+	done
 
   let buildall=$count+1
   let installall=$count+2
 
-  echo -n "$buildall - Build all
-$installall - Install all
+  echo "$buildall - Build all" | awk '{printf("%-35s",$0)}'
+	echo -n "$installall - Install all
 * - Quit
 > "
 
