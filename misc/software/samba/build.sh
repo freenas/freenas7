@@ -59,7 +59,7 @@ install_samba() {
 	cp -v codepages/*.dat $FREENAS/usr/local/lib/samba
 	cp -v po/*.* $FREENAS/usr/local/lib/samba
 	cp -v bin/recycle.so $FREENAS/usr/local/samba/lib/vfs
-	cp -v bin/rid.so $FREENAS/usr/local/samba/lib/idmap
+	#cp -v bin/rid.so $FREENAS/usr/local/samba/lib/idmap
 	
 	return 0
 }

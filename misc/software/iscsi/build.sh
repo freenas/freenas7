@@ -15,16 +15,20 @@ build_iscsi() {
     fi
 	fi
 
-	tar zxvf $iscsi_tarball
-	cd sys
+  mkdir iscsi
+	tar -zxvf $iscsi_tarball -C ./iscsi
+
+	cd $WORKINGDIR/iscsi/sys
   ln -s /sys/kern .
   ln -s /sys/tools .
   cd modules/iscsi_initiator
   make clean
   ln -s ../.. @
   make
+
   cp -v iscsi_initiator.ko $FREENAS/boot/kernel/
-  cd ../../../iscontrol/
+
+  cd $WORKINGDIR/iscsi/iscontrol
   make
 
 	return 0
