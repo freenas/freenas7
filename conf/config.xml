@@ -141,18 +141,23 @@
 		<maxcon>0</maxcon>
 	</rsyncd>
 	<unison>
-                <!-- <enable/> -->
-                <share>share1</share>
-                <workdir>.unison</workdir>
-		<makedir/>
+    <!-- <enable/> -->
+    <share>share1</share>
+    <workdir>.unison</workdir>
+  <makedir/>
 	</unison>
-        <sshd>
-                <!-- <enable/> -->
-                <port>22</port>
-        </sshd>
-
+	<upnp>
+    <!-- <enable/> -->
+    <name/>
+    <if/>
+    <content/>
+	</upnp>
+  <sshd>
+    <!-- <enable/> -->
+    <port>22</port>
+  </sshd>
 	<nfs>
-	<!-- <enable/> -->
+    <!-- <enable/> -->
 	</nfs>
 	<snmpd>
 		<!-- <enable/> -->

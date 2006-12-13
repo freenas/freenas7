@@ -95,6 +95,7 @@ function showhide(tspan, tri) {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_sshd.php" class="navlnk"><?=_MENULEFT_SRVSSHD;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_unison.php" class="navlnk"><?=_MENULEFT_SRVUNSN;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_afp.php" class="navlnk"><?=_MENULEFT_SRVAFP;?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_upnp.php" class="navlnk"><?=_MENULEFT_SRVUPNP;?></a><br>
               <strong><?=_MENULEFT_ACCESS;?></strong><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_users.php" class="navlnk"><?=_MENULEFT_ACUSERGROUPS;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_ad.php" class="navlnk"><?=_MENULEFT_ACMSAD;?></a><br>

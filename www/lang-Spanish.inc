@@ -160,6 +160,8 @@ define('_MENULEFT_SRVFTP','FTP');
 define('_MENULEFT_SRVNFS','NFS');
 define('_MENULEFT_SRVRSYNCD','RSYNCD');
 define('_MENULEFT_SRVSSHD','SSHD');
+define('_MENULEFT_SRVUNSN','Unison');
+define('_MENULEFT_SRVUPNP','UPnP');
 define('_MENULEFT_SRVAFP','AFP');
 define('_MENULEFT_ACCESS','Acceso');
 define('_MENULEFT_ACUSERGROUPS','Usuarios y Grupos');
@@ -659,6 +661,56 @@ define('_SRVRYNCL_SOURCE','Source');
 define('_SRVRYNCL_SOURCETEXT','Source Mount Point.');
 define('_SRVRYNCL_DESTINATION','Destination');
 define('_SRVRYNCL_DESTINATIONTEXT','Destination Mount Point (backup drive).');
+
+
+// Service: SSHD
+// file: services_sshd.php
+define('_SRVSSHD_NAMEDESC','SSHD');
+define('_SRVSSHD_MSGVALIDTCPPORT',_MSGVALIDTCPPORT);
+define('_SRVSSHD_MSGVALIDKEY','This key does not appear to be valid.');
+define('_SRVSSHD_SSHD','SSH Daemon');
+define('_SRVSSHD_READONLY','Read only');
+define('_SRVSSHD_TCPORT',_TCPPORT);
+define('_SRVSSHD_TCPORTTEXT',_SRVRYNCD_TCPORTTEXT);
+define('_SRVSSHD_PERMITROOTLOGIN','Permit root login');
+define('_SRVSSHD_PERMITROOTLOGINTEXT','Specifies whether it is allowed to login as superuser (root) directly.');
+define('_SRVSSHD_KEY','SSH key');
+define('_SRVSSHD_PRIVATEKEY','Private Key');
+define('_SRVSSHD_PRIVATEKEYTEXT','Paste a DSA PRIVATE KEY in PEM format here.');
+
+// Service: Unison
+// file: services_unison.php
+define('_SRVUNSN_NAMEDESC','Unison');
+define('_SRVUNSN_MSGVALIDWRKDIR','The combination of share and working directory does not exist.');
+define('_SRVUNSN_UNISON','Unison File Synchronisation');
+define('_SRVUNSN_SHARE','Share');
+define('_SRVUNSN_SHAREDESC','You may need enough space to duplicate all files being synced');
+define('_SRVUNSN_WORKDIR','Working Directory');
+define('_SRVUNSN_WORKDIRDESC','Where the working files will be stored');
+define('_SRVUNSN_MAKEDIR','Create');
+define('_SRVUNSN_MAKEDIRLABEL','Create work directory if it doesn\'t exist');
+define('_SRVUNSN_NOTESSH','<a href="/services_sshd.php">SSHD</a> must be enabled for Unison to work, and the <a href="/access_users.php">user</a> must have Full Shell enabled.');
+
+// Service: UPnP
+// file: services_upnp.php
+define('_SRVUPNP_NAMEDESC','UPnP');
+define('_SRVUPNP_UPNP','UPnP A/V Media Server');
+define('_SRVUPNP_NAME','Name');
+define('_SRVUPNP_NAMETEXT','UPnP friendly name.');
+define('_SRVUPNP_INTERFACE','Interface');
+define('_SRVUPNP_INTERFACETEXT','Interface to listen to.');
+define('_SRVUPNP_CONTENT','Content');
+define('_SRVUPNP_CONTENTTEXT','Directories to be shared (space or CSV list).');
+
+// Service: AFP
+// file: services_afp.php
+define('_SRVAFP_NAMEDESC','AFP');
+define('_SRVAFP_MSGVALIDAUTH','You must select at least one authentication method.');
+define('_SRVAFP_AFPSRV','AFP Server');
+define('_SRVAFP_AFPNAME','Server Name');
+define('_SRVAFP_AUTH','Authentication');
+define('_SRVAFP_ENABLEGUEST','Enable guest access.');
+define('_SRVAFP_ENABLELOCAL','Enable local user authentication.');
 
 
 // file: reboot.php

@@ -166,6 +166,7 @@ define('_MENULEFT_SRVNFS','NFS');
 define('_MENULEFT_SRVRSYNCD','RSYNCD');
 define('_MENULEFT_SRVSSHD','SSHD');
 define('_MENULEFT_SRVUNSN','Unison');
+define('_MENULEFT_SRVUPNP','UPnP');
 define('_MENULEFT_SRVAFP','AFP');
 define('_MENULEFT_ACCESS','Zugriff');
 define('_MENULEFT_ACUSERGROUPS','Benutzer & Gruppen');
@@ -718,6 +719,17 @@ define('_SRVUNSN_WORKDIRDESC','Where the working files will be stored');
 define('_SRVUNSN_MAKEDIR','Create');
 define('_SRVUNSN_MAKEDIRLABEL','Create work directory if it doesn\'t exist');
 define('_SRVUNSN_NOTESSH','<a href="/services_sshd.php">SSHD</a> must be enabled for Unison to work, and the <a href="/access_users.php">user</a> must have Full Shell enabled.');
+
+// Service: UPnP
+// file: services_upnp.php
+define('_SRVUPNP_NAMEDESC','UPnP');
+define('_SRVUPNP_UPNP','UPnP A/V Media Server');
+define('_SRVUPNP_NAME','Name');
+define('_SRVUPNP_NAMETEXT','UPnP friendly name.');
+define('_SRVUPNP_INTERFACE','Interface');
+define('_SRVUPNP_INTERFACETEXT','Interface to listen to.');
+define('_SRVUPNP_CONTENT','Content');
+define('_SRVUPNP_CONTENTTEXT','Directories to be shared (space or CSV list).');
 
 // Service: AFP
 // file: services_afp.php

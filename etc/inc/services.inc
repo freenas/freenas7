@@ -811,6 +811,21 @@ function services_unison_configure() {
 	return 0;
 }
 
+function services_upnp_configure() {
+	global $config, $g;
+
+	/* kill any running uShare */
+	killbyname("ushare");
+
+	if(isset($config['upnp']['enable'])) {
+		if($g['booting'])
+			echo "Starting UPnP server... ";
+
+    /* Run uShare as daemon */
+    mwexec("/usr/local/bin/ushare --daemon --no-web --interface={$config['upnp']['name']} --interface={$config['upnp']['if']} --content={$config['upnp']['content']}");
+	}
+}
+
 function services_cron_configure() {
 	global $config, $g;
 	

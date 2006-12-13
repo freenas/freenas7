@@ -80,6 +80,7 @@ FreeNAS 0.681b:
 - WebGUI: add warning when using FAT32 or NTFS filesystem under FreeNAS
 - WebGUI: Prevent to create 2 mountpoint with the same disk/partition couple
 - Fixed the SFTP bug
+- Added uShare UPnP A/V Media Server service
 
 FreeNAS 0.68:
 - Need 32MB of minimal disk space for installing (since release 0.67, but forget to mention it)
