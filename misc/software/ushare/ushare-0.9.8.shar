@@ -8,6 +8,7 @@
 #	/usr/ports/net/ushare
 #	/usr/ports/net/ushare/files
 #	/usr/ports/net/ushare/files/patch-cfgparser.c
+#	/usr/ports/net/ushare/files/patch-ushare
 #	/usr/ports/net/ushare/files/patch-ushare.c
 #	/usr/ports/net/ushare/distinfo
 #	/usr/ports/net/ushare/Makefile
@@ -73,6 +74,25 @@ X static bool
 X ignore_line (const char *line)
 X {
 END-of-/usr/ports/net/ushare/files/patch-cfgparser.c
+echo x - /usr/ports/net/ushare/files/patch-ushare
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare << 'END-of-/usr/ports/net/ushare/files/patch-ushare'
+X--- scripts/ushare_orig	Sat Dec  9 13:55:38 2006
+X+++ scripts/ushare	Wed Dec 13 00:25:12 2006
+X@@ -9,11 +9,11 @@
+X ### END INIT INFO
+X 
+X PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+X-DAEMON=/usr/bin/ushare
+X+DAEMON=/usr/local/bin/ushare
+X NAME=ushare
+X DESC="uShare UPnP A/V Media Server"
+X PIDFILE=/var/run/ushare.pid
+X-CONFIGFILE=/etc/ushare.conf
+X+CONFIGFILE=/usr/local/etc/ushare.conf
+X 
+X # abort if no executable exists
+X [ -x $DAEMON ] || exit 0
+END-of-/usr/ports/net/ushare/files/patch-ushare
 echo x - /usr/ports/net/ushare/files/patch-ushare.c
 sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare.c << 'END-of-/usr/ports/net/ushare/files/patch-ushare.c'
 X--- src/ushare_orig.c	Sun Nov 12 13:40:35 2006
