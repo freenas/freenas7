@@ -7,9 +7,9 @@
 #
 #	/usr/ports/net/ushare
 #	/usr/ports/net/ushare/files
-#	/usr/ports/net/ushare/files/patch-cfgparser.c
 #	/usr/ports/net/ushare/files/patch-ushare
 #	/usr/ports/net/ushare/files/patch-ushare.c
+#	/usr/ports/net/ushare/files/patch-ushare.h
 #	/usr/ports/net/ushare/distinfo
 #	/usr/ports/net/ushare/Makefile
 #	/usr/ports/net/ushare/pkg-descr
@@ -18,85 +18,118 @@ echo c - /usr/ports/net/ushare
 mkdir -p /usr/ports/net/ushare > /dev/null 2>&1
 echo c - /usr/ports/net/ushare/files
 mkdir -p /usr/ports/net/ushare/files > /dev/null 2>&1
-echo x - /usr/ports/net/ushare/files/patch-cfgparser.c
-sed 's/^X//' >/usr/ports/net/ushare/files/patch-cfgparser.c << 'END-of-/usr/ports/net/ushare/files/patch-cfgparser.c'
-X--- src/cfgparser_orig.c	Sun Nov 12 13:40:35 2006
-X+++ src/cfgparser.c	Mon Dec 11 09:58:17 2006
-X@@ -38,6 +38,50 @@
-X 
-X #define USHARE_DIR_DELIM ","
-X 
-X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
-X+char *strndup(const char *s, size_t n) {
-X+  size_t len;
-X+  char *sdup;
-X+  if(!s)
-X+    return NULL;
-X+  len = strlen(s);
-X+  len = (n < len ? n : len);
-X+  sdup = (char *)malloc(len + 1);
-X+  if(sdup) {
-X+    memcpy(sdup, s, len);
-X+    sdup[len] = '\0';
-X+  }
-X+  return sdup;
-X+}
-X+
-X+ssize_t getline(char **lineptr, size_t *n, FILE *stream) {
-X+  static char line[256];
-X+  char *ptr;
-X+  unsigned int len;
-X+  if(lineptr == NULL || n == NULL) {
-X+    return -1;
-X+  }
-X+  if(ferror(stream))
-X+    return -1;
-X+  if(feof(stream))
-X+    return -1;
-X+  fgets(line,256,stream);
-X+  ptr = strchr(line,'\n');   
-X+  if(ptr)
-X+    *ptr = '\0';
-X+  len = strlen(line);
-X+  if((len+1) < 256) {
-X+    ptr = realloc(*lineptr, 256);
-X+    if(ptr == NULL)
-X+      return(-1);
-X+    *lineptr = ptr;
-X+    *n = 256;
-X+  }
-X+  strcpy(*lineptr,line); 
-X+  return(len);
-X+}
-X+#endif
-X+
-X static bool
-X ignore_line (const char *line)
-X {
-END-of-/usr/ports/net/ushare/files/patch-cfgparser.c
 echo x - /usr/ports/net/ushare/files/patch-ushare
 sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare << 'END-of-/usr/ports/net/ushare/files/patch-ushare'
-X--- scripts/ushare_orig	Sat Dec  9 13:55:38 2006
-X+++ scripts/ushare	Wed Dec 13 00:25:12 2006
-X@@ -9,11 +9,11 @@
-X ### END INIT INFO
-X 
-X PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+X--- scripts/ushare.orig	Sat Dec  9 13:55:38 2006
+X+++ scripts/ushare	Thu Dec 14 09:24:40 2006
+X@@ -1,74 +1,29 @@
+X-#!/bin/sh -e
+X-### BEGIN INIT INFO
+X-# Required-Start: $local_fs $syslog
+X-# Required-Stop:
+X-# Default-Start:  2 3 4 5
+X-# Default-Stop: 0 1 6
+X-# Short-Description: start and stop ushare
+X-# Description: 
+X-### END INIT INFO
+X-
+X-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 X-DAEMON=/usr/bin/ushare
-X+DAEMON=/usr/local/bin/ushare
-X NAME=ushare
-X DESC="uShare UPnP A/V Media Server"
-X PIDFILE=/var/run/ushare.pid
+X-NAME=ushare
+X-DESC="uShare UPnP A/V Media Server"
+X-PIDFILE=/var/run/ushare.pid
 X-CONFIGFILE=/etc/ushare.conf
-X+CONFIGFILE=/usr/local/etc/ushare.conf
+X-
+X-# abort if no executable exists
+X-[ -x $DAEMON ] || exit 0
+X-
+X-# Get lsb functions
+X-. /lib/lsb/init-functions
+X-. /etc/default/rcS
+X-
+X-[ -f /etc/default/ushare ] && . /etc/default/ushare
+X-
+X-checkpid() {
+X-  [ -e $PIDFILE ] || touch $PIDFILE
+X-}
+X-
+X-check_shares() {
+X-  if [ -r "$CONFIGFILE" ]; then
+X-    . $CONFIGFILE
+X-    [ -n "$USHARE_DIR" ] && return 0
+X-  fi
+X-  return 1
+X-}
+X-
+X-case "$1" in
+X-  start)
+X-    log_daemon_msg "Starting $DESC: $NAME"
+X-    if ! $(check_shares); then
+X-      log_warning_msg "No shares avalaible ..."
+X-      log_end_msg 0
+X-    else
+X-      checkpid
+X-      start-stop-daemon --start --quiet --background --oknodo \
+X-        --make-pidfile --pidfile $PIDFILE \
+X-        --exec $DAEMON -- $USHARE_OPTIONS
+X-      log_end_msg $?
+X-    fi
+X-  ;;
+X-  stop)
+X-    log_daemon_msg "Stopping $DESC: $NAME"
+X-    start-stop-daemon --stop --signal 2 --quiet --oknodo --pidfile $PIDFILE
+X-    log_end_msg $?
+X-  ;;
+X-  reload|force-reload)
+X-    log_daemon_msg "Reloading $DESC: $NAME"
+X-    start-stop-daemon --stop --signal 1 --quiet --oknodo --pidfile $PIDFILE --exec $DAEMON
+X-    log_end_msg $?
+X-  ;;
+X-  restart)
+X-    $0 stop
+X-    $1 start
+X-  ;;
+X-  *)
+X-    N=/etc/init.d/$NAME
+X-    log_success_msg "Usage: $N {start|stop|restart|reload|force-reload}"
+X-    exit 1
+X-  ;;
+X-esac
+X+#!/bin/sh
+X+#
+X+# ushare.sh for rc.d usage (c) 2006 Volker Theile.
+X+#
+X+
+X+# PROVIDE: ushare
+X+# REQUIRE: DAEMON
+X+# BEFORE: LOGIN
+X+# KEYWORD: shutdown
+X+
+X+# Add the following line to /etc/rc.conf to enable `ushare':
+X+#
+X+#ushare_enable="YES"
+X+
+X+. "/etc/rc.subr"
+X+
+X+name=ushare
+X+rcvar=`set_rcvar`
+X+
+X+command="/usr/local/bin/$name"
+X+command_args="--daemon"
+X+required_files="/usr/local/etc/$name.conf"
+X+
+X+# read configuration and set defaults
+X+load_rc_config "$name"
+X+: ${ushare_enable="YES"}
+X+: ${ushare_flags=""}
 X 
-X # abort if no executable exists
-X [ -x $DAEMON ] || exit 0
+X-exit 0
+X+run_rc_command "$1"
 END-of-/usr/ports/net/ushare/files/patch-ushare
 echo x - /usr/ports/net/ushare/files/patch-ushare.c
 sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare.c << 'END-of-/usr/ports/net/ushare/files/patch-ushare.c'
-X--- src/ushare_orig.c	Sun Nov 12 13:40:35 2006
-X+++ src/ushare.c	Mon Dec 11 09:59:04 2006
+X--- src/ushare.c.orig	Sun Nov 12 13:40:36 2006
+X+++ src/ushare.c	Wed Dec 13 17:14:42 2006
 X@@ -33,6 +33,11 @@
 X #include <unistd.h>
 X #include <errno.h>
@@ -166,7 +199,73 @@ X+#endif
 X }
 X 
 X static char *
+X@@ -640,3 +688,45 @@
+X   /* it should never be executed */
+X   return EXIT_SUCCESS;
+X }
+X+
+X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
+X+#ifndef HAVE_STRNDUP
+X+char *strndup(const char *s, size_t n) {
+X+	char *dup= (char *)malloc(n+1);
+X+	if(dup) {
+X+		strncpy(dup,s,n);
+X+		dup[n]= '\0';
+X+	}
+X+	return dup;
+X+}
+X+#endif
+X+
+X+#ifndef HAVE_GETLINE
+X+ssize_t getline(char **lineptr, size_t *n, FILE *stream) {
+X+  static char line[256];
+X+  char *ptr;
+X+  unsigned int len;
+X+  if(lineptr == NULL || n == NULL) {
+X+    return -1;
+X+  }
+X+  if(ferror(stream))
+X+    return -1;
+X+  if(feof(stream))
+X+    return -1;
+X+  fgets(line,256,stream);
+X+  ptr = strchr(line,'\n');   
+X+  if(ptr)
+X+    *ptr = '\0';
+X+  len = strlen(line);
+X+  if((len+1) < 256) {
+X+    ptr = realloc(*lineptr, 256);
+X+    if(ptr == NULL)
+X+      return(-1);
+X+    *lineptr = ptr;
+X+    *n = 256;
+X+  }
+X+  strcpy(*lineptr,line); 
+X+  return(len);
+X+}
+X+#endif
+X+#endif
 END-of-/usr/ports/net/ushare/files/patch-ushare.c
+echo x - /usr/ports/net/ushare/files/patch-ushare.h
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare.h << 'END-of-/usr/ports/net/ushare/files/patch-ushare.h'
+X--- src/ushare.h.orig	Sun Nov 12 13:40:36 2006
+X+++ src/ushare.h	Wed Dec 13 17:16:10 2006
+X@@ -101,4 +101,14 @@
+X 
+X inline void display_headers (void);
+X 
+X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
+X+#ifndef HAVE_STRNDUP
+X+char *strndup(const char *s, size_t n);
+X+#endif
+X+
+X+#ifndef HAVE_GETLINE
+X+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
+X+#endif
+X+#endif
+X+
+X #endif /* _USHARE_H_ */
+END-of-/usr/ports/net/ushare/files/patch-ushare.h
 echo x - /usr/ports/net/ushare/distinfo
 sed 's/^X//' >/usr/ports/net/ushare/distinfo << 'END-of-/usr/ports/net/ushare/distinfo'
 XMD5 (ushare-0.9.8.tar.bz2) = dec4c12d97d476c9a3a0347621d64e27
@@ -182,27 +281,32 @@ X#
 X# $FreeBSD$
 X#
 X
-XPORTNAME=		ushare
-XPORTVERSION=		0.9.8
-XCATEGORIES=		net
-XMASTER_SITES=		http://ushare.geexbox.org/releases/
+XPORTNAME=	ushare
+XPORTVERSION=	0.9.8
+XCATEGORIES=	net
+XMASTER_SITES=	http://ushare.geexbox.org/releases/
 X
-XMAINTAINER=		votdev@gmx.de
-XCOMMENT=		A lightweight UPnP (TM) A/V Media Server
+XMAINTAINER=	votdev@gmx.de
+XCOMMENT=	A lightweight UPnP (TM) A/V Media Server
 X
-XLIB_DEPENDS=		upnp.2:${PORTSDIR}/devel/upnp
+XLIB_DEPENDS=	upnp.2:${PORTSDIR}/devel/upnp
 XBUILD_DEPENDS=	pkg-config:${PORTSDIR}/devel/pkg-config \
-X			iconv:${PORTSDIR}/converters/libiconv
+X	iconv:${PORTSDIR}/converters/libiconv
 X
-XPLIST_FILES=		bin/${PORTNAME} etc/${PORTNAME}.conf
-XMAN1=			${PORTNAME}.1
+XPLIST_FILES=	bin/${PORTNAME} etc/${PORTNAME}.conf etc/rc.d/${PORTNAME}
+XMAN1=	${PORTNAME}.1
 X
-XUSE_BZIP2=		yes
+XUSE_BZIP2=	yes
 XGNU_CONFIGURE=	yes
-XCONFIGURE_ENV=	CFLAGS="-Os" \
-X			LIBS="-L${LOCALBASE}/lib -lintl -liconv"
+XCONFIGURE_ENV=	LIBS="-L${LOCALBASE}/lib -lintl -liconv"
 XCONFIGURE_ARGS=	--mandir=${LOCALBASE}/man
-XWRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
+XWRKSRC=	${WRKDIR}/${PORTNAME}-${PORTVERSION}
+X
+Xdo-install:
+X	${INSTALL_SCRIPT} ${WRKSRC}/src/${PORTNAME} ${PREFIX}/bin
+X	${CP} ${WRKSRC}/scripts/${PORTNAME}.conf ${PREFIX}/etc/${PORTNAME}.conf.sample
+X	${CP} ${WRKSRC}/scripts/${PORTNAME} ${PREFIX}/etc/rc.d
+X	${INSTALL_MAN} ${WRKSRC}/src/${PORTNAME}.1 ${PREFIX}/man/man1
 X
 X.include <bsd.port.mk>
 END-of-/usr/ports/net/ushare/Makefile
