@@ -120,7 +120,7 @@ if ($_POST) {
 
 		// Check for duplicate mount point
 		if (($mount['mdisk'] == $_POST['mdisk']) && ($mount['partition'] == $_POST['partition'])) 	{
-			$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDDSK;
+			$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDDISK;
 			break;
 		}
 		
