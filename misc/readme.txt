@@ -75,6 +75,8 @@ FreeNAS 0.681b:
 - Upgrade PHP to 5.2.0
 - Upgrade Samba to 3.0.23d
 - Upgrade RSYNC to 2.6.9
+- Upgrade mDNSResponder to 1.08
+- Lot's of internal code change about moint point management
 - Software RAID: Add geom concat (JBOD) and geom stripe (RAID 0), add confirmation box before formatting RAID, permit to create RAID1+0 (1 gstripe volume created using 2 gmirror volume)
 - CIFS: Configure samba for using syslog (circular log file), log message are messed with other system log, but FreeNAS will be more stable.
 - WebGUI: add a check to password input (forbid character ':')
