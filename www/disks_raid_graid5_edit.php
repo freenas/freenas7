@@ -46,7 +46,8 @@ graid5_sort();
 disks_sort();
 
 $a_raid = &$config['graid5']['vdisk'];
-$a_disk = get_fstype_disks_list("graid5");
+$all_raid = array_merge((array)$config['graid5']['vdisk'],(array)$config['gmirror']['vdisk'],(array)$config['gvinum']['vdisk'],(array)$config['gstripe']['vdisk'],(array)$config['gconcat']['vdisk']);
+$a_disk = get_fstype_disks_list("softraid");
 
 if (!sizeof($a_disk)) {
 	$nodisk_errors[] = _DISKSRAIDEDITPHP_MSGADDDISKFIRST;
@@ -54,6 +55,7 @@ if (!sizeof($a_disk)) {
 
 if (isset($id) && $a_raid[$id]) {
 	$pconfig['name'] = $a_raid[$id]['name'];
+	$pconfig['fullname'] = $a_raid[$id]['fullname'];
 	$pconfig['type'] = $a_raid[$id]['type'];
 	$pconfig['diskr'] = $a_raid[$id]['diskr'];
 }
@@ -93,6 +95,7 @@ if ($_POST) {
 		$raid['type'] = 5;
 		$raid['diskr'] = $_POST['diskr'];
 		$raid['desc'] = "Software graid5 RAID 5";
+		$raid['fullname'] = "/dev/raid5/{$raid['name']}";
 
 		if (isset($id) && $a_raid[$id])
 			$a_raid[$id] = $raid;
@@ -139,8 +142,8 @@ if ($_POST) {
         $disable_script="";
         foreach ($a_disk as $diskv) {
           $r_name="";
-          foreach($a_raid as $raid) {
-            if (in_array($diskv['name'],$raid['diskr'])) {
+          foreach($all_raid as $raid) {
+            if (in_array($diskv['fullname'],(array)$raid['diskr'])) {
               $r_name=$raid['name'];
               if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
               break;

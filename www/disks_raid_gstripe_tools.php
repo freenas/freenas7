@@ -96,13 +96,8 @@ if (!isset($do_action))
                   <td valign="top" class="vncellreq"><?=_DISKSRAIDTOOLSPHP_COMMAND;?></td>
                   <td class="vtable"> 
                     <select name="action" class="formfld" id="action">
-                      <option value="rebuild" <?php if ($action == "rebuild") echo "selected"; ?>>rebuild</option>
                       <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
                       <option value="status" <?php if ($action == "status") echo "selected"; ?>>status</option>
-                      <option value="remove" <?php if ($action == "remove") echo "selected"; ?>>remove</option>
-                      <option value="activate" <?php if ($action == "activate") echo "selected"; ?>>activate</option>
-                      <option value="deactivate" <?php if ($action == "deactivate") echo "selected"; ?>>deactivate</option>
-                      <option value="forget" <?php if ($action == "forget") echo "selected"; ?>>forget</option>
                       <option value="clear" <?php if ($action == "clear") echo "selected"; ?>>clear</option>
                       <option value="stop" <?php if ($action == "stop") echo "selected"; ?>>stop</option>
                      </select>

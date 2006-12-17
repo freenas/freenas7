@@ -41,6 +41,31 @@ if (!is_array($config['disks']['disk']))
 
 disks_sort();
 
+if (!is_array($config['gconcat']['vdisk']))
+	$config['gconcat']['vdisk'] = array();
+
+gconcat_sort();
+
+if (!is_array($config['gmirror']['vdisk']))
+	$config['gmirror']['vdisk'] = array();
+
+gmirror_sort();
+
+if (!is_array($config['graid5']['vdisk']))
+	$config['graid5']['vdisk'] = array();
+
+graid5_sort();
+
+if (!is_array($config['gstripe']['vdisk']))
+	$config['gstripe']['vdisk'] = array();
+
+gstripe_sort();
+
+if (!is_array($config['gvinum']['vdisk']))
+	$config['gvinum']['vdisk'] = array();
+
+gvinum_sort();
+
 // Get all fstype supported by FreeNAS
 $a_fst = get_fstype_list();
 // Remove NTFS: can't format on NTFS under FreeNAS
@@ -49,6 +74,12 @@ unset($a_fst['ntfs']);
 $a_fst = array_slice($a_fst, 1);
 
 $a_disk = &$config['disks']['disk'];
+$a_gconcat = &$config['gconcat']['vdisk'];
+$a_gmirror = &$config['gmirror']['vdisk'];
+$a_gstripe = &$config['gstripe']['vdisk'];
+$a_graid5 = &$config['graid5']['vdisk'];
+$a_gvinum = &$config['gvinum']['vdisk'];
+$all_disk = array_merge($a_disk,$a_gconcat,$a_gmirror,$a_gstripe,$a_graid5,$a_gvinum);
 
 if ($_POST) {
 	unset($input_errors);
@@ -67,17 +98,62 @@ if ($_POST) {
 			$notinitmbr= $_POST['notinitmbr'];
 
 		/* Check if disk is mounted. */ 
-		if(disks_check_mount_disk($disk)) {
+		if(disks_check_mount_fullname($disk)) {
 		$errormsg = sprintf( _DISKSMANAGEINITPHP_DISKMOUNTERROR, "disks_mount_tools.php?disk={$disk}&action=umount");
 		$do_format = false;
 		}
 
 		if($do_format) {
 			/* Get the id of the disk array entry. */
+			$NotFound = 1;
 			$id = array_search_ex($disk, $a_disk, "fullname");
-			/* Set new filesystem type. */
- 			$a_disk[$id]['fstype'] = $type;
 
+			if ($id) {
+				/* Set new filesystem type. */
+ 				$a_disk[$id]['fstype'] = $type;
+				$NotFound = 0;
+			}
+			else {
+				$id = array_search_ex($disk, $a_gmirror, "fullname");
+			}
+			if (($id !== false) && $NotFound) {
+				/* Set new filesystem type. */
+ 				$a_gmirror[$id]['fstype'] = $type;
+				$NotFound = 0;
+			}
+			else {
+				$id = array_search_ex($disk, $a_gstripe, "fullname");
+			}
+			if (($id !== false) && $NotFound) {
+				/* Set new filesystem type. */
+ 				$a_gstripe[$id]['fstype'] = $type;
+				$NotFound = 0;
+			}
+			else {
+				$id = array_search_ex($disk, $a_gconcat, "fullname");
+			}
+			if (($id !== false) && $NotFound) {
+				/* Set new filesystem type. */
+ 				$a_gconcat[$id]['fstype'] = $type;
+				$NotFound = 0;
+			}
+			else {
+				$id = array_search_ex($disk, $a_graid5, "fullname");
+			}
+			if (($id !== false) && $NotFound) {
+				/* Set new filesystem type. */
+ 				$a_graid5[$id]['fstype'] = $type;
+				$NotFound = 0;
+			}
+			else {
+				$id = array_search_ex($disk, $a_gvinum, "fullname");
+			}
+			if (($id !== false) && $NotFound) {
+				/* Set new filesystem type. */
+ 				$a_gvinum[$id]['fstype'] = $type;
+				$NotFound = 0;
+			}
+			
 			write_config();
 		}
 	}
@@ -125,7 +201,7 @@ function disk_change() {
             <td valign="top" class="vncellreq"><?=_DISK; ?></td>
             <td class="vtable">
               <select name="disk" class="formfld" id="disk" onchange="disk_change()">
-                <?php foreach ($a_disk as $diskv): ?>
+                <?php foreach ($all_disk as $diskv): ?>
                 <option value="<?=$diskv['fullname'];?>"<?php if ($diskv['name'] == $disk) echo "selected";?>>
                 <?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?>
                 <?php endforeach; ?>
@@ -164,91 +240,77 @@ function disk_change() {
 
     					// Erase MBR if not checked
     					if (!$notinitmbr) {
-    						echo "Erasing MBR\n";
+    						echo "Erasing MBR and all paritions:\n";
     						system("dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=32k count=640");
     					}
     					else
-    						echo "Keeping the MBR\n";
+    						echo "Keeping the MBR and all partitions\n";
 
     					switch ($type)
     					{
     					case "ufs":
     						// Initialize disk
+						echo "Creating one parition:\n";
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
     						// Initialise the partition (optional)
+						echo "Initializing parition:\n";
     						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
     						// Create s1 label
+						echo "Creating BSD label:\n";
     						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
     						// Create filesystem
+						echo "Creating Filesystem:\n";
     						system("/sbin/newfs -U " . escapeshellarg($disk) . "s1");
-    						break;
+						echo "Done!\n";
+						break;
     					case "ufs_no_su":
     						// Initialize disk
+						echo "Creating one parition:\n";
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
     						// Initialise the partition (optional)
+						echo "Initializing parition:\n";
     						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
     						// Create s1 label
+						echo "Creating BSD label:\n";
     						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
     						// Create filesystem
+						echo "Creating Filesystem:\n";
     						system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "s1");
-    						break;
+						echo "Done!\n";
+						break;
     					case "ufsgpt":
     						// Create GPT partition table
+						echo "Destroying old GTP information:\n";
     						system("/sbin/gpt destroy " . escapeshellarg($disk));
-    						system("/sbin/gpt create -f " . escapeshellarg($disk));
+						echo "Creating GPT partition:\n";
+						system("/sbin/gpt create -f " . escapeshellarg($disk));
     						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
     						// Create filesystem
-    						system("/sbin/newfs -U " . escapeshellarg($disk) . "p1");
-    						break;
+						echo "Creating Filesystem with Soft Updates:\n";
+						system("/sbin/newfs -U " . escapeshellarg($disk) . "p1");
+    						echo "Done!\n";
+						break;
     					case "ufsgpt_no_su":
     						// Create GPT partition table
+						echo "Destroying old GTP information:\n";
     						system("/sbin/gpt destroy " . escapeshellarg($disk));
-    						system("/sbin/gpt create -f " . escapeshellarg($disk));
+						echo "Creating GPT partition:\n"; 
+						system("/sbin/gpt create -f " . escapeshellarg($disk));
     						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
     						// Create filesystem
+						echo "Creating Filesystem without Soft Updates:\n";
     						system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "p1");
-    						break;
-    					case "gmirror":
+						echo "Done!\n";
+						break;
+					case "softraid":
     						// Initialize disk
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
     						// Initialise the partition (optional)
     						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
     						// Delete old gmirror information */
     						system("/sbin/gmirror clear " . escapeshellarg($disk));
-    						break;
-						case "gconcat":
-    						// Initialize disk
-    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						// Initialise the partition (optional)
-    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						// Delete old gmirror information
-    						system("/sbin/gconcat clear " . escapeshellarg($disk));
-    						break;
-						case "gstripe":
-    						// Initialize disk
-    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						// Initialise the partition (optional)
-    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						// Delete old gmirror information
-    						system("/sbin/gstripe clear " . escapeshellarg($disk));
-    						break;
-    					case "graid5":
-    						// Initialize disk
-    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						// Initialise the partition (optional)
-    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						// Delete old gmirror information
-    						system("/sbin/graid5 clear " . escapeshellarg($disk));
-    						break;
-    					case "gvinum":
-    						// Initialize disk
-    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						// echo "\"fdisk: Geom not found\"is not an error message!\n";
-    						/* Initialise the partition (optional) */
-    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						/* Create s1 label */
-    						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-    						break;
+						echo "Done!\n";
+						break;
     					case "msdos":
     						// Initialize disk
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
@@ -258,7 +320,8 @@ function disk_change() {
     						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
     						// Create filesystem
     						system("/sbin/newfs_msdos -F 32 " . escapeshellarg($disk) . "s1");
-    						break;
+						echo "Done!\n";
+						break;
     					}
     					echo('</pre>');
     				}

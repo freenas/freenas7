@@ -1419,19 +1419,64 @@ function get_macaddr($if)
 
 /* Get list of disks from given type of filesystem. */
 function get_fstype_disks_list($fstype) {
-  global $config;
+	global $config;
 
-  $result = array();
-
-  if (is_array($config['disks']['disk'])) {
+	$result = array();
+	
+	/* Scan all physical disk */
+	if (is_array($config['disks']['disk'])) {
 		foreach ($config['disks']['disk'] as $disk) {
-      if (0==strcmp($disk['fstype'],$fstype)) {
-        $result[] = $disk;
-      }
-    }
-  }
+			if (strcmp($disk['fstype'],$fstype) == 0) {
+				$result[] = $disk;
+			}
+    		}
+  	}
 
-  return $result;
+	/* Scan all gmirror volume */
+	if (is_array($config['gmirror']['vdisk'])) {
+		foreach ($config['gmirror']['vdisk'] as $disk) {
+			if (strcmp($disk['fstype'],$fstype) == 0) {
+				$result[] = $disk;
+			}
+    		}
+  	}
+
+	/* Scan all gconcat volume */
+	if (is_array($config['gconcat']['vdisk'])) {
+		foreach ($config['gconcat']['vdisk'] as $disk) {
+			if (strcmp($disk['fstype'],$fstype) == 0) {
+				$result[] = $disk;
+			}
+    		}
+  	}
+	
+	/* Scan all gstripe volume */
+	if (is_array($config['gstripe']['vdisk'])) {
+		foreach ($config['gstripe']['vdisk'] as $disk) {
+			if (strcmp($disk['fstype'],$fstype) == 0) {
+				$result[] = $disk;
+			}
+    		}
+  	}
+	
+	/* Scan all gvinum volume */
+	if (is_array($config['gvinum']['vdisk'])) {
+		foreach ($config['gvinum']['vdisk'] as $disk) {
+			if (strcmp($disk['fstype'],$fstype) == 0) {
+				$result[] = $disk;
+			}
+    		}
+  	}
+
+	/* Scan all graid5 volume */
+	if (is_array($config['graid5']['vdisk'])) {
+		foreach ($config['graid5']['vdisk'] as $disk) {
+			if (strcmp($disk['fstype'],$fstype) == 0) {
+				$result[] = $disk;
+			}
+    		}
+  	}
+	return $result;
 }
 
 /* Get list of supported filesystem types */
@@ -1445,11 +1490,14 @@ function get_fstype_list()
     "ufsgpt_no_su"=>"UFS (EFI/GPT)",
     "msdos"=>"FAT32",
     "ntfs"=>"NTFS",
+    "softraid"=>"Software RAID");
+/*
     "gmirror"=>"Software RAID: gmirror",
     "gconcat"=>"Software RAID: gconcat",
     "gstripe"=>"Software RAID: gstripe",
     "graid5"=>"Software RAID: graid5",
     "gvinum"=>"Software RAID: gvinum");
+*/
   return $fstlist;
 }
 
@@ -1479,6 +1527,8 @@ function get_fstype_shortdesc($fstype)
     case "graid5":       $shortdesc = "graid5";
                           break;
     case "gvinum":        $shortdesc = "gvinum";
+                          break;
+    case "softraid":      $shortdesc = "softraid";
                           break;
   }
   

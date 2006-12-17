@@ -309,7 +309,8 @@ server.modules              = (
                                 "mod_cgi" )
 #                               "mod_accesslog" )
 server.document-root        = "{$g['www_path']}"
-server.errorlog             = "{$g['varlog_path']}/lighttpd.error.log" 
+#server.errorlog             = "{$g['varlog_path']}/lighttpd.error.log" 
+server.event-handler        = "freebsd-kqueue"
 index-file.names            = ( "index.php" )
 mimetype.assign             = (
   ".pdf"          =>      "application/pdf",

@@ -92,7 +92,6 @@ if ($_GET['act'] == "del") {
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabact"><?=_DISKSRAIDPHP_MANAGE; ?></li>
-	<li class="tabinact"><a href="disks_raid_graid5_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
 	<li class="tabinact"><a href="disks_raid_graid5_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
 	<li class="tabinact"><a href="disks_raid_graid5_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
   </ul>

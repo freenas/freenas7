@@ -119,7 +119,7 @@ if ($_POST) {
 			continue;
 
 		// Check for duplicate mount point
-		if (($mount['mdisk'] == $_POST['mdisk']) && ($mount['partition'] == $_POST['partition'])) 	{
+		if ($mount['mdisk'] == $_POST['mdisk']) 	{
 			$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDDISK;
 			break;
 		}
@@ -143,26 +143,7 @@ if ($_POST) {
 			$mount['sharename'] = $_POST['sharename'];
 		
 		// Generate fullname
-		
-		switch ($mount['partition']) {
-			case "gvinum":
-				$mount['fullname'] = "/dev/gvinum/{$mount['mdisk']}";
-				break;
-			case "gmirror":
-				$mount['fullname'] = "/dev/mirror/{$mount['mdisk']}";
-				break;
-			case "gconcat":
-				$mount['fullname'] = "/dev/concat/{$mount['mdisk']}";
-				break;
-			case "gstripe":
-				$mount['fullname'] = "/dev/stripe/{$mount['mdisk']}";
-				break;
-			case "graid5":
-				$mount['fullname'] = "/dev/raid5/{$mount['mdisk']}";
-				break;
-			default:
-				$mount['fullname'] = "/dev/{$mount['mdisk']}{$mount['partition']}";
-		}
+		$mount['fullname'] = "{$mount['mdisk']}{$mount['partition']}";
 		
 		if (isset($id) && $a_mount[$id])
 			$a_mount[$id] = $mount;
@@ -187,10 +168,10 @@ if ($_POST) {
       <td class="vtable">            
     	 <select name="mdisk" class="formfld" id="mdisk">
     	  <?php foreach ($a_disk as $disk): ?>
-    			<?php if ((strcmp($disk['fstype'],"gvinum")==0) | (strcmp($disk['fstype'],"gmirror")==0) | (strcmp($disk['fstype'],"gstripe")==0) | (strcmp($disk['fstype'],"gconcat")==0)): ?> 	  
+    			<?php if (strcmp($disk['fstype'],"softraid")==0): ?> 	  
     			<?php continue; ?>
     			<?php endif; ?>
-    				<option value="<?=$disk['name'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 
+    				<option value="<?=$disk['fullname'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 
     				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
     				</option>
     		  <?php endforeach; ?>
@@ -201,16 +182,14 @@ if ($_POST) {
       <td valign="top" class="vncellreq"><?=_PARTITION ; ?></td>
       <td class="vtable"> 
         <select name="partition" class="formfld" id="partition">
-          <option value="s1" <?php if ($pconfig['partition'] == "s1") echo "selected"; ?>>1</option>
+          <option value="s1" <?php if ($pconfig['partition'] == "s1") echo "selected"; ?>>1 (or new software RAID method)</option>
           <option value="s2" <?php if ($pconfig['partition'] == "s2") echo "selected"; ?>>2</option>
           <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
           <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
-          <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>><?=_SOFTRAID ;?> - gmirror</option>
-		  <option value="gconcat" <?php if ($pconfig['partition'] == "gconcat") echo "selected"; ?>><?=_SOFTRAID ;?> - gconcat</option>
-			<option value="gstripe" <?php if ($pconfig['partition'] == "gstripe") echo "selected"; ?>><?=_SOFTRAID ;?> - gstripe</option>
-          <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>><?=_SOFTRAID ;?> - graid5</option>
-          <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>><?=_SOFTRAID ;?> - gvinum</option>
-          <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>GPT</option>
+          <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>>previous <?=_SOFTRAID ;?> - gmirror</option>
+          <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>>previous <?=_SOFTRAID ;?> - graid5</option>
+          <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>>previous <?=_SOFTRAID ;?> - gvinum</option>
+          <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>GPT (or new software RAID method with GPT)</option>
         </select>
       </td>
     </tr>

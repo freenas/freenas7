@@ -52,7 +52,6 @@ $pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GRAID5, _DISKSRAIDPHP_NAMEDESC);
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_graid5_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
 	<li class="tabinact"><a href="disks_raid_graid5_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
 	<li class="tabact"><?=_DISKSRAIDPHP_INFO; ?></li>
   </ul>

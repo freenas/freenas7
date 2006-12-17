@@ -113,7 +113,7 @@ defCmdT("SCSI disk","/sbin/camcontrol devlist");
 defCmdT("Mount point","/sbin/mount");
 defCmdT("Free Disk Space","/bin/df -h");
 
-defCmdT("racoon.conf","cat /var/etc/racoon.conf");
+defCmdT("smb.conf","cat /var/etc/smb.conf");
 defCmdT("SPD","/usr/sbin/setkey -DP");
 defCmdT("SAD","/usr/sbin/setkey -D");
 

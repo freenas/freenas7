@@ -33,7 +33,8 @@
 	
 /* include all configuration functions */
 require_once("functions.inc");
-	
+
+/* Mount all configured disks */
 function disks_mount_all()
 {
 	global $config, $g;
@@ -44,13 +45,13 @@ function disks_mount_all()
 	/* For each device configured:*/
 	
 	if (is_array($config['mounts']['mount'])) 	{
-		foreach ($config['mounts']['mount'] as $mountent) 		{
+		foreach ($config['mounts']['mount'] as $mount) 		{
 			/* Advanced Umount filesystem if not booting mode (mount edition)*/
 			if (!$g['booting'])
-				disks_umount($mountent);
+				disks_umount_adv($mount);
 								
 			/* mount filesystem */
-			disks_mount($mountent);	
+			disks_mount($mount);	
 		
 		}
 	}
@@ -62,7 +63,8 @@ function disks_mount_all()
 	
 }
 
-// Mount using the mount table
+/* Mount using the configured mount given in parameter
+Return 0 if sucessful, 1 if error */
 function disks_mount($mount)
 {
 	global $config, $g;
@@ -79,45 +81,47 @@ function disks_mount($mount)
 
 	/* check the fileystem only if there is a problem*/
 	
-	// This part is too stupid: I must read the FreBSD start script for use the same intelligent method for checking hard drive
+	/* This part is too stupid: I must read the FreBSD start script for use the same intelligent method for checking hard drive */
 	
 	switch ($mount['fstype']) 	{
 		case "ufs":
 			
-			if (mwexec("/sbin/mount -t ufs  -o acls $devname /mnt/$mountname") == 0) 			{
+			if (mwexec("/sbin/mount -t ufs  -o acls $devname /mnt/$mountname") == 0) {
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 /mnt/$mountname");
-				return 0;
+				$result = 0;
 			}
-			else 			{
+			else {
 				/* If it's NOK, Check  filesystem and do a fsck, answer Yes to all question*/
 				mwexec("/sbin/fsck -y -t ufs $devname");
+		
 				/* Re-try to mount the partition */
-				if (mwexec("/sbin/mount -t ufs -o acls $devname /mnt/$mountname") == 0) 				{
-					/* Change this directory into 777 mode */
+				if (mwexec("/sbin/mount -t ufs -o acls $devname /mnt/$mountname") == 0) {
+				/* Change this directory into 777 mode */
 					mwexec("/bin/chmod 777 /mnt/$mountname");
-					return 0;
+					$result = 0;
 				}
-				else 				{
+				else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/$mountname");
-					return 1;
+					$result = 1;
 				}
 				
 			}
-		   break;
+		   	break;
 		   
 		case "msdosfs":
 			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
-				return 0;
+				$result = 0;
 			else 			{
 				exec("/sbin/fsck -y -t msdosfs {$devname}");
-				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
-					return 0;
-				else 				{
+				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0) {
+					$result = 0;
+				}
+				else	{
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/$mountname");
-					return 1;
+					$result = 1;
 				}
 			}
 		
@@ -125,56 +129,66 @@ function disks_mount($mount)
 		   
 		case "ntfs":
 			if (mwexec("/sbin/mount_ntfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
-				return 0;
+				$result = 0;
 			else 			{
 				/* Not OK, remove the directory, prevent writing on RAM disk */
 				@rmdir ("/mnt/$mountname");
-				return 1;
+				$result = 1;
 			}
 			break;		   
 		   
 		case "ext2fs":
-			if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0) 			{
+			if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0)	{
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 /mnt/$mountname");
-				return 0;
+				$result = 0;
 			}
-			else 			{
+			else {
 				exec("/usr/local/sbin/e2fsck -f -p {$devname}");
-				if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0) 				{
+				if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0) {
 					/* Change this directory into 777 mode */
 					mwexec("/bin/chmod 777 /mnt/$mountname");
-					return 0;
+					$result = 0;
 				}
-				else 				{
+				else {
 					/* Not OK, remove the directory, prevent writing on RAM */
 					@rmdir ("/mnt/$mountname");
-					return 1;
+					$result= 1;
 				}
 			}
 		   break;
 		}
 	
+	return $result;
+	
 }
 
-// Mount using fullname (/dev/ad0s1)
+/* Mount using fullname (/dev/ad0s1) given in parameter*/
 function disks_mount_fullname($fullname)
 {
-  global $config;
+	global $config;
 
-  // Search the mount list for given disk and partition
-  foreach($config['mounts']['mount'] as $mountk => $mountv) {
-    if($mountv['fullname'] == $fullname)
-      $mount = $mountv;
-  }
+	
+	if (is_array($config['mounts']['mount'])) {
+		// Search the mount list for given disk and partition
+		foreach($config['mounts']['mount'] as $mountk => $mountv) {
+			if($mountv['fullname'] == $fullname) {
+				$mount = $mountv;
+			}
+		}
+	}
 
-  if($mount)
-    return disks_mount($mount);
-  else
-    return 1;
+  	if($mount) {
+    		$result= disks_mount($mount);
+	}
+  	else {
+    		$result=0;
+	}
+	return $result;
 }
 
-// Umount the specified mount point table
+/* Umount the specified configured mount point
+Return 0 is successfull, 1 if error */
 function disks_umount($mount)
 {
 	/* The $mount variable is the all config table for the mount point */
@@ -182,35 +196,42 @@ function disks_umount($mount)
 
 	if (mwexec("/sbin/umount $mountname") == 0) {
 		if(@rmdir("$mountname"))
-			return 0;
+			$result = 0;
 		else
-			return 1;
+			$result = 1;
 	}
 	else
-		return 1;
+		$result = 1;
+	return $result;
 }
 
-// Advanced umount using fullname (/dev/ad01s1)
-// Return 0 if successfull, 1 if error
+/* Advanced umount using fullname (/dev/ad01s1)
+Return 0 if successfull, 1 if error */
 function disks_umount_fullname($fullname)
 {
-  global $config;
+	global $config;
 
-  /* Search the mount list for given fullname */
-  foreach($config['mounts']['mount'] as $mountk => $mountv) {
+	/* Search the mount list for given fullname */
+	foreach($config['mounts']['mount'] as $mountk => $mountv) {
   
-  if (strcmp($mountv['fullname'],$fullname) == 0)
-      $mount = $mountv;
-  }
+		if (strcmp($mountv['fullname'],$fullname) == 0) {
+			$mount = $mountv;
+		}
+	}
 
-  if($mount)
-    return disks_umount($mount);
-  else
-    return 1;
+	if($mount) {
+		$result = disks_umount($mount);
+	}
+	else {
+		$result= 1;
+	}
+	
+	return $result;
 }
 
-// Advanced unmount the specified mount point without using the sharename value
-// Used when changing the 'sharename': Need to umount the old unknow sharename
+/* Advanced unmount the specified mount point without using the sharename value
+Used when changing the 'sharename': Need to umount the old unknow sharename
+Return 0 if successful, 1 if error */
 function disks_umount_adv($mount)
 {
 	
@@ -234,7 +255,8 @@ function disks_umount_adv($mount)
 		return 0;
 	}
 	else
-		return 1;
+		$result = 1;
+	return $result;
 }
 
 // This option check if this fullname (/dev/ad0s1) is mounted
@@ -243,24 +265,25 @@ function disks_check_mount_fullname($fullname)
 {
 	$detmount = get_mounts_list();
 	$status=0;
-	
+	//print_r($detmount);
 	foreach ($detmount as $detmountk => $detmountv) {
 		if (strcmp($detmountv['fullname'],$fullname) == 0) {
-			$status="1";
-			return $status;
+			$status=1;
+			break;
 		}
 	}
 	return $status;
 }
 
-// This option check if the mount table is mounted
+/* This option check if the configured mount is mounted */
+
 function disks_check_mount($mount)
 {
-  return disks_check_mount_fullname($mount['fullname']);
+	return disks_check_mount_fullname($mount['fullname']);
 }
 
-// This function check if the disk is mounted
-// Return 0 if not, 1 if yes
+/* This function check if the disk is mounted
+Return 0 if not, 1 if yes */
 function disks_check_mount_disk($disk)
 {
   
@@ -268,19 +291,22 @@ function disks_check_mount_disk($disk)
 	$status=0;
 	
 	foreach ($detmount as $detmountk => $detmountv) {
-		// Must found the $disk (ad0) in result $mdisk (ad0s1)
+		/* Must found the $disk (ad0) in result $mdisk (ad0s1) */
 		// strpos will return 0 (found at position 0) if found, must check the 'false' value
 		if (strpos($detmountv['mdisk'], $disk) !== false ) {
-			$status="1";
-			return $status;
+			$status=1;
+			break;
 		}
 	}
 	return $status;
 }
 
+/* This option check if the configured disk is online (detected by the system)
+Result: "MISSING", disk don't detected by OS
+Result: "ONLINE", disk is online
+Result: "CHANGED", disk have changed (be replaced ?) */
 function disks_status($diskname)
 {
-	// This option check if the configured disk is online (detected by the system)
 	
 	global $config, $g;
 	$detectedlist = get_physical_disks_list();
@@ -289,14 +315,16 @@ function disks_status($diskname)
 		
 		if ($detecteddisk == $diskname['name']) {
 			$status="ONLINE";
-			if (($detecteddiskv['size'] != $diskname['size']) || ($detecteddiskv['desc'] != $diskname['desc']))
+			if (($detecteddiskv['size'] != $diskname['size']) || ($detecteddiskv['desc'] != $diskname['desc'])) {
 				$status="CHANGED";
+			}
 			break;
 		}
 	}
 	return $status;
 }
 
+/* This function umount all configured mount */
 function disks_umount_all()
 {
 	// Unmount all mount point
@@ -314,9 +342,9 @@ function disks_umount_all()
 	return 0;
 }
 
+/* Configure, create and start gvinum volume */
 function disks_raid_gvinum_configure()
 {
-	// Configure and sart all gvinum RAID volume
 		
 	global $config, $g;
 	
@@ -339,7 +367,7 @@ function disks_raid_gvinum_configure()
 			$raidconf="";
 			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
 				$raidconf .= <<<EOD
-drive disk_{$diskrv} device /dev/{$diskrv}s1a
+drive disk_{$diskrv} device {$diskrv}
 
 EOD;
 		
@@ -444,11 +472,10 @@ EOD;
 	return 0;
 }
 
+/* Configure, create and start gmirror volume */
 function disks_raid_gmirror_configure()
 {
 	global $config, $g;
-	
-	/* Create the gmirror device */
 
 	if ($config['gmirror']['vdisk']) {
 		
@@ -474,11 +501,10 @@ function disks_raid_gmirror_configure()
 	return 0;
 }
 
+/* Configure, create and start gconcat volume */
 function disks_raid_gconcat_configure()
 {
 	global $config, $g;
-	
-	/* Create the gconcat device */
 
 	if ($config['gconcat']['vdisk']) {
 		
@@ -504,11 +530,10 @@ function disks_raid_gconcat_configure()
 	return 0;
 }
 
+/* Configure, create and start gstripe volume */
 function disks_raid_gstripe_configure()
 {
 	global $config, $g;
-	
-	/* Create the gstripe device */
 
 	if ($config['gstripe']['vdisk']) {
 		
@@ -534,11 +559,11 @@ function disks_raid_gstripe_configure()
 	return 0;
 }
 
+/* Configure, create and start graid5 volume */
+
 function disks_raid_graid5_configure()
 {
 	global $config, $g;
-	
-	/* Create the graid5 device */
 
 	if ($config['graid5']['vdisk']) {
 		
@@ -564,14 +589,16 @@ function disks_raid_graid5_configure()
 	return 0;
 }
 
+/* Start all geom RAID volumes */
+
 function disks_raid_start()
 {
-	// Start ALL software RADI volume
 	
 	global $config, $g;
 	
-	/* Start software RAID */
-	// WARNING:  Must start gmirror before gstripe for RAID1+0
+	/* WARNING:  Must change this code for advanced RAID configuration ex: RAID1+0
+	Geom RAID volume must be started in 'intelligent' sort, for RAID1+0, gmirror must
+	be started before gstripe, etc... */
 	disks_raid_gvinum_start();
 	disks_raid_gmirror_start();
 	disks_raid_gstripe_start();
@@ -582,12 +609,10 @@ function disks_raid_start()
 	
 }	
 
-
+/* Start geom vinum volumes */
 function disks_raid_gvinum_start()
 {
 	global $config, $g;
-	
-	/* Generate the raid.conf file */
 
 	if ($config['gvinum']['vdisk']) {
 	
@@ -608,6 +633,7 @@ function disks_raid_gvinum_start()
 	return 0;
 }
 
+/* Start geom mirror volumes */
 function disks_raid_gmirror_start()
 {
 	global $config, $g;
@@ -631,6 +657,7 @@ function disks_raid_gmirror_start()
 	return 0;
 }
 
+/* Start geom concat volumes */
 function disks_raid_gconcat_start()
 {
 	global $config, $g;
@@ -654,6 +681,7 @@ function disks_raid_gconcat_start()
 	return 0;
 }
 
+/* Start geom stripe volumes */
 function disks_raid_gstripe_start()
 {
 	global $config, $g;
@@ -677,6 +705,7 @@ function disks_raid_gstripe_start()
 	return 0;
 }
 
+/* Start geom raid5 volumes */
 function disks_raid_graid5_start()
 {
 	global $config, $g;
@@ -700,11 +729,13 @@ function disks_raid_graid5_start()
 	return 0;
 }
 
+/* Stop all geom RAID volumes */
 function disks_raid_stop()
 {
-	// Stop ALL software RAID volume
-	// Must add a more intelligent way for stoping device using dependency
-	// WARNING:  Must stop gstripe before gmirror for RAID1+0
+	
+	/* WARNING:  Must change this code for advanced RAID configuration ex: RAID1+0
+	Geom RAID volume must be started in 'intelligent' sort, for RAID1+0, gmirror must
+	be started before gstripe, etc... */
 	
 	disks_raid_gvinum_stop();
 	disks_raid_graid5_stop();
@@ -716,6 +747,7 @@ function disks_raid_stop()
 	
 }
 
+/* Stop all geom gvinum volumes */
 function disks_raid_gvinum_stop()
 {
 	global $config, $g;
@@ -735,6 +767,7 @@ function disks_raid_gvinum_stop()
 	return 0;
 }
 
+/* Stop all geom mirror volumes */
 function disks_raid_gmirror_stop()
 {
 	global $config, $g;
@@ -755,6 +788,7 @@ function disks_raid_gmirror_stop()
 	return 0;
 }
 
+/* Stop all geom concat volumes */
 function disks_raid_gconcat_stop()
 {
 	global $config, $g;
@@ -775,6 +809,7 @@ function disks_raid_gconcat_stop()
 	return 0;
 }
 
+/* Stop all geom stripe volumes */
 function disks_raid_gstripe_stop()
 {
 	global $config, $g;
@@ -795,6 +830,7 @@ function disks_raid_gstripe_stop()
 	return 0;
 }
 
+/* Stop all geom raid5 volumes */
 function disks_raid_graid5_stop()
 {
 	global $config, $g;
@@ -815,13 +851,10 @@ function disks_raid_graid5_stop()
 	return 0;
 }
 
+/* Delete geom gvinum volume given in parameter */
 function disks_raid_gvinum_delete($raidname)
 {
 	global $config, $g;
-	
-	/* Delete a gvinum volume */
-	
-	//echo "DEBUG: delete {$raidname}";
 
 	exec("/sbin/gvinum lv $raidname",$rawdata);
 	if (strpos($rawdata[0],"State: up") === false) {
@@ -830,9 +863,9 @@ function disks_raid_gvinum_delete($raidname)
 	
 	mwexec("/sbin/gvinum rm -r $raidname");
 	
-	foreach ($config['gvinum']['vdisk'] as $a_raid) 	{
-			if ($a_raid['name'] == $raidname) 	{
-				foreach ($a_raid['diskr'] as $disk) 	{				
+	foreach ($config['gvinum']['vdisk'] as $a_raid) {
+			if ($a_raid['name'] == $raidname) {
+				foreach ($a_raid['diskr'] as $disk){				
 					mwexec("/sbin/gvinum rm -r disk_{$disk}");
 				}
 			}
@@ -841,11 +874,10 @@ function disks_raid_gvinum_delete($raidname)
 	return 0;
 }
 
+/* Delete geom mirror volume given in parameter */
 function disks_raid_gmirror_delete($raidname)
 {
 	global $config, $g;
-	
-	/* Delete a gmirror volume */
 	
 	// Stop the volume
 	
@@ -854,8 +886,8 @@ function disks_raid_gmirror_delete($raidname)
 	// Clear the gmirror information on the hard drive
 	
 	foreach ($config['gmirror']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] == $raidname) 	{
-				foreach ($a_raid['diskr'] as $disk) 	{				
+			if ($a_raid['name'] == $raidname) {
+				foreach ($a_raid['diskr'] as $disk) {				
 					mwexec("/sbin/gmirror clear {$disk}");
 				}
 			}
@@ -864,11 +896,10 @@ function disks_raid_gmirror_delete($raidname)
 	return 0;
 }
 
+/* Delete geom concat volume given in parameter */
 function disks_raid_gconcat_delete($raidname)
 {
 	global $config, $g;
-	
-	/* Delete a gconcat volume */
 	
 	// Stop the volume
 	
@@ -877,8 +908,8 @@ function disks_raid_gconcat_delete($raidname)
 	// Clear the gconcat information on the hard drive
 	
 	foreach ($config['gconcat']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] == $raidname) 	{
-				foreach ($a_raid['diskr'] as $disk) 	{				
+			if ($a_raid['name'] == $raidname) {
+				foreach ($a_raid['diskr'] as $disk) {				
 					mwexec("/sbin/gconcat clear {$disk}");
 				}
 				mwexec("/sbin/gconcat destroy $raidname");
@@ -888,11 +919,10 @@ function disks_raid_gconcat_delete($raidname)
 	return 0;
 }
 
+/* Delete geom stripe volume given in parameter */
 function disks_raid_gstripe_delete($raidname)
 {
 	global $config, $g;
-	
-	/* Delete a gstripe volume */
 	
 	// Stop the volume
 	
@@ -902,7 +932,7 @@ function disks_raid_gstripe_delete($raidname)
 	
 	foreach ($config['gstripe']['vdisk'] as $a_raid) {
 			if ($a_raid['name'] == $raidname) 	{
-				foreach ($a_raid['diskr'] as $disk) 	{				
+				foreach ($a_raid['diskr'] as $disk) {				
 					mwexec("/sbin/gstripe clear {$disk}");
 				}
 				mwexec("/sbin/gstripe destroy $raidname");
@@ -912,11 +942,10 @@ function disks_raid_gstripe_delete($raidname)
 	return 0;
 }
 
+/* Delete geom raid5 volume given in parameter */
 function disks_raid_graid5_delete($raidname)
 {
 	global $config, $g;
-	
-	/* Delete a graid5 volume */
 	
 	// Stop the volume
 	
@@ -926,7 +955,7 @@ function disks_raid_graid5_delete($raidname)
 	
 	foreach ($config['graid5']['vdisk'] as $a_raid) {
 			if ($a_raid['name'] == $raidname) 	{
-				foreach ($a_raid['diskr'] as $disk) 	{				
+				foreach ($a_raid['diskr'] as $disk){				
 					mwexec("/sbin/graid5 remove $raidname {$disk}");
 				}
 				mwexec("/sbin/graid5 destroy $raidname");
@@ -936,63 +965,7 @@ function disks_raid_graid5_delete($raidname)
 	return 0;
 }
 
-function fdisk_hd_install($harddrive)
-{
-	global $config, $g;
-	
-	/* Initialise HARD DRIVE for installing FreeNAS (creating 2 partition) */
-	
-	// OLD NOT USED FUNCTION !!!
-	
-	/* getting disk information */
-	$fdisk_info=fdisk_get_info($harddrive);
-	
-	/* setting FreeNAS partition size to 32Mb*/	
-	
-	$part_freenas_size=32;
-	
-	/* convert Mb to b */
-	$part_freenas_size=$part_freenas_size * 1024 * 1024;
-	
-	$part1_size=$part_freenas_size / $fdisk_info['sec_size'];
-	$part2_size=$fdisk_info['total'] - $part1_size;
-	
-	/* Create fdisk config file */
-	
-	
-	/* generate fdisk.conf */
-	$fd = fopen("{$g['varetc_path']}/fdisk.conf", "w");
-	if (!$fd)
-	{
-		printf("Error: cannot open fdisk.conf in fdisk_hd_install().\n");
-		return 1;
-	}
-		
-	$fdiskconf .= <<<EOD
-g c{$fdisk_info['cyl']} h{$fdisk_info['head']} s{$fdisk_info['sect']}
-p 1 165 1 $part1_size
-p 2 165 $part1_size $part2_size
-p 3 0 0 0
-p 4 0 0 0
-a 1
-
-EOD;
-	
-	fwrite($fd, $fdiskconf);
-	fclose($fd);
-
-	/* Fdisk the disk */
-	
-	/* Warning: Ask two questions to the user */
-	mwexec("/sbin/fdisk -f {$g['varetc_path']}/fdisk.conf /dev/$harddrive");
-	
-	return 0;
-}
-
-function fdisk_get_info($harddrive)
-{
-	
-	/* Return information about an harddrive
+/* Return information about an harddrive given in parameter
 	
 	$result['total'] : size
 	$result['cyl'] : cylinders
@@ -1001,29 +974,29 @@ function fdisk_get_info($harddrive)
 	$result['sec_size'] : Media sector size
 	
 	*/
-	
+
+function fdisk_get_info($harddrive)
+{
+
 	global $config, $g;
 	
 	exec("/sbin/fdisk /dev/$harddrive",$rawdata);
 	
 	$result=array();
 	
-	foreach ($rawdata as $line)
-	{
+	foreach ($rawdata as $line) 	{
 		/* separe the line by space or egal*/
 		
 		$aline= preg_split("/[\s,]+|=/", $line);
 		
 		$first_word = chop($aline[0]);
 		
-		if ($aline[0] == "Media")
-		{
+		if ($aline[0] == "Media") {
 			$result['sec_size']=chop($aline[4]);
 			continue ;
 		}
 		
-		if ($aline[0] == "cylinders")
-		{
+		if ($aline[0] == "cylinders") 	{
 			
 			$result['cyl']=chop($aline[1]);
 			$result['head']=chop($aline[3]);
@@ -1039,6 +1012,7 @@ function fdisk_get_info($harddrive)
 	
 }
 
+/* Is this function still used ??? */
 function disks_bsdlabel($harddrive,$partition,$type)
 {
 	global $config, $g;
@@ -1076,54 +1050,58 @@ function disks_bsdlabel($harddrive,$partition,$type)
 	passthru("/sbin/bsdlabel -R -B " . escapeshellarg($harddrive) ."$partition {$g['tmp_path']}/label.tmp");
 }
 
-
+/* Set the ataidle tools parameters */
 function disks_set_ataidle()
 {
 	global $g, $config;
 
-	if (is_array($config['disks']['disk'])) 	{
+	if (is_array($config['disks']['disk'])) {
 		foreach ($config['disks']['disk'] as $disk) {
 		
-			if ($disk['type']=="IDE") 		{		
-					/* If UDMA mode forced, launch atacontrol */
-					if (isset($disk['udma']) && ($disk['udma'] != "auto"))
-						mwexec("/sbin/atacontrol mode {$disk['name']}  {$disk['udma']}");
+			if ($disk['type']=="IDE") {		
+				/* If UDMA mode forced, launch atacontrol */
+				if (isset($disk['udma']) && ($disk['udma'] != "auto")) {
+					mwexec("/sbin/atacontrol mode {$disk['name']}  {$disk['udma']}");
+				}
 					
-					/* Don't use ataidle if all is disabled */
-					if (($disk['harddiskstandby'] == 0) && ($disk['apm'] == 0) && ($disk['acoustic'] == 0))
-						continue;
+				/* Don't use ataidle if all is disabled */
+				if (($disk['harddiskstandby'] == 0) && ($disk['apm'] == 0) && ($disk['acoustic'] == 0)) {
+					continue;
+				}
 						
-					/* Found the channel and device number from the /dev name */
-					/* Divise the number by 2, the interger is the channel number, the rest is the device */
+				/* Found the channel and device number from the /dev name */
+				/* Divise the number by 2, the interger is the channel number, the rest is the device */
 				
-					$value=trim($disk['name'],'ad');		
-					
-					$value=intval($value);
-					$channel = $value/2;
-					$device=$value % 2;
-					$channel=intval($channel);
-					$time=$disk['harddiskstandby'];
-					$apm=$disk['apm'];
-					$ac=$disk['acoustic'];
-					
-					/* mwexec("/usr/local/sbin/ataidle -A $ac -P $apm -S $time $channel $device"); */
-					
-					$cmd = "/usr/local/sbin/ataidle ";
-					
-					if ($disk['acoustic'] != 0)
-						$cmd .= "-A $ac  ";
-					if ($disk['apm'] != 0)
-						$cmd .= "-P $apm ";
-					if ($disk['harddiskstandby'] !=0)
-						$cmd .= "-S $time ";
-					
-					$cmd .= "$channel $device";
-					
-					mwexec($cmd);
-					
+				$value=trim($disk['name'],'ad');		
 				
+				$value=intval($value);
+				$channel = $value/2;
+				$device=$value % 2;
+				$channel=intval($channel);
+				$time=$disk['harddiskstandby'];
+				$apm=$disk['apm'];
+				$ac=$disk['acoustic'];
+					
+				/* mwexec("/usr/local/sbin/ataidle -A $ac -P $apm -S $time $channel $device"); */
+					
+				$cmd = "/usr/local/sbin/ataidle ";
+				
+				if ($disk['acoustic'] != 0) {
+					$cmd .= "-A $ac  ";
+				}
+				if ($disk['apm'] != 0) {
+					$cmd .= "-P $apm ";
+				}
+				if ($disk['harddiskstandby'] !=0) {
+					$cmd .= "-S $time ";
+				}
+					
+				$cmd .= "$channel $device";
+				
+				mwexec($cmd);	
+			
 			}	
-	
+
 		}
 		return 1;
 	}
@@ -1131,16 +1109,19 @@ function disks_set_ataidle()
 	return 0;
 }
 
-/* Get list of partition information from disk. */
+/* Is this function still used ???
+Get list of partition information from disk.
+Result is in the form:
+[1] => Array
+(
+	[start] => 31
+	[size]  => 409169
+	[type]  => 0xa5
+	[flags] => 0x80
+)
+*/
 function disks_get_partition_info($disk)
 {
-  // [1] => Array
-  //    (
-  //        [start] => 31
-  //        [size]  => 409169
-  //        [type]  => 0xa5
-  //        [flags] => 0x80
-  //    )
   
   exec("/sbin/fdisk -s /dev/{$disk}", $rawdata);
   array_shift($rawdata);
@@ -1148,8 +1129,7 @@ function disks_get_partition_info($disk)
 
   $result = array();
 
-  foreach($rawdata as $partinfo)
-  {
+  foreach($rawdata as $partinfo)   {
     $apartinfo = preg_split("/\s+/", $partinfo);
     $partid = chop($apartinfo[1],":");
 

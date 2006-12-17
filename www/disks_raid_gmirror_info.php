@@ -52,7 +52,6 @@ $pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GMIRROR, _DISKSRAIDPHP_NAMEDESC);
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gmirror_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
 	<li class="tabinact"><a href="disks_raid_gmirror_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
 	<li class="tabact"><?=_DISKSRAIDPHP_INFO; ?></li>
   </ul>
