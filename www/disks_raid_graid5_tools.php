@@ -101,6 +101,7 @@ if (!isset($do_action))
                       <option value="remove" <?php if ($action == "remove") echo "selected"; ?>>remove</option>
                       <option value="clear" <?php if ($action == "clear") echo "selected"; ?>>clear</option>
                       <option value="stop" <?php if ($action == "stop") echo "selected"; ?>>stop</option>
+			<option value="destroy" <?php if ($action == "destroy") echo "selected"; ?>>destroy</option>
                      </select>
                   </td>
                 </tr>

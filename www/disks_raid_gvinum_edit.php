@@ -168,7 +168,7 @@ if ($_POST) {
             	}
           }
           echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[fullname]'".
-               ((is_array($pconfig['diskr']) && in_array($diskv['name'],$pconfig['diskr']))?" checked":"").
+               ((is_array($pconfig['diskr']) && in_array($diskv['fullname'],$pconfig['diskr']))?" checked":"").
                ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
           $i++;
         }
