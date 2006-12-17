@@ -235,6 +235,9 @@ sbin/atacontrol
 sbin/camcontrol
 
 ####### contents of /usr/bin
+# chgrp: change group
+usr/bin/chgrp
+
 ## FTP/HTTP download tools
 usr/bin/fetch
 
