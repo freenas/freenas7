@@ -965,19 +965,58 @@ function disks_raid_graid5_delete($raidname)
 	return 0;
 }
 
+/* Initialise HARD DRIVE for installing FreeNAS (creating 2 partition) */
+function fdisk_hd_install($harddrive)
+{
+	global $config, $g;
+
+	/* getting disk information */
+	$fdisk_info=fdisk_get_info($harddrive);
+
+	/* setting FreeNAS partition size to 32Mb*/	
+	$part_freenas_size=32;
+
+	/* convert Mb to b */
+	$part_freenas_size=$part_freenas_size * 1024 * 1024;
+	$part1_size=$part_freenas_size / $fdisk_info['sec_size'];
+	$part2_size=$fdisk_info['total'] - $part1_size;
+
+	/* Create fdisk config file (fdisk.conf) */
+	$fd = fopen("{$g['varetc_path']}/fdisk.conf", "w");
+	if (!$fd) {
+		printf("Error: cannot open fdisk.conf in fdisk_hd_install().\n");
+		return 1;
+	}
+
+	$fdiskconf .= <<<EOD
+g c{$fdisk_info['cyl']} h{$fdisk_info['head']} s{$fdisk_info['sect']}
+p 1 165 1 $part1_size
+p 2 165 $part1_size $part2_size
+p 3 0 0 0
+p 4 0 0 0
+a 1
+
+EOD;
+
+	fwrite($fd, $fdiskconf);
+	fclose($fd);
+
+	/* Fdisk the disk */
+	/* Warning: Ask two questions to the user */
+	mwexec("/sbin/fdisk -f {$g['varetc_path']}/fdisk.conf /dev/$harddrive");
+
+	return 0;
+}
+
 /* Return information about an harddrive given in parameter
-	
 	$result['total'] : size
 	$result['cyl'] : cylinders
 	$result['head'] : heads
 	$result['sect'] :  sectors/track
 	$result['sec_size'] : Media sector size
-	
-	*/
-
+*/
 function fdisk_get_info($harddrive)
 {
-
 	global $config, $g;
 	
 	exec("/sbin/fdisk /dev/$harddrive",$rawdata);
