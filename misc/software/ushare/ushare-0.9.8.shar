@@ -7,6 +7,7 @@
 #
 #	/usr/ports/net/ushare
 #	/usr/ports/net/ushare/files
+#	/usr/ports/net/ushare/files/patch-cfgparser.c
 #	/usr/ports/net/ushare/files/patch-ushare
 #	/usr/ports/net/ushare/files/patch-ushare.c
 #	/usr/ports/net/ushare/files/patch-ushare.h
@@ -18,6 +19,62 @@ echo c - /usr/ports/net/ushare
 mkdir -p /usr/ports/net/ushare > /dev/null 2>&1
 echo c - /usr/ports/net/ushare/files
 mkdir -p /usr/ports/net/ushare/files > /dev/null 2>&1
+echo x - /usr/ports/net/ushare/files/patch-cfgparser.c
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-cfgparser.c << 'END-of-/usr/ports/net/ushare/files/patch-cfgparser.c'
+X--- src/cfgparser_orig.c	Sun Nov 12 13:40:35 2006
+X+++ src/cfgparser.c	Mon Dec 11 09:58:17 2006
+X@@ -38,6 +38,50 @@
+X 
+X #define USHARE_DIR_DELIM ","
+X 
+X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
+X+char *strndup(const char *s, size_t n) {
+X+  size_t len;
+X+  char *sdup;
+X+  if(!s)
+X+    return NULL;
+X+  len = strlen(s);
+X+  len = (n < len ? n : len);
+X+  sdup = (char *)malloc(len + 1);
+X+  if(sdup) {
+X+    memcpy(sdup, s, len);
+X+    sdup[len] = '\0';
+X+  }
+X+  return sdup;
+X+}
+X+
+X+ssize_t getline(char **lineptr, size_t *n, FILE *stream) {
+X+  static char line[256];
+X+  char *ptr;
+X+  unsigned int len;
+X+  if(lineptr == NULL || n == NULL) {
+X+    return -1;
+X+  }
+X+  if(ferror(stream))
+X+    return -1;
+X+  if(feof(stream))
+X+    return -1;
+X+  fgets(line,256,stream);
+X+  ptr = strchr(line,'\n');   
+X+  if(ptr)
+X+    *ptr = '\0';
+X+  len = strlen(line);
+X+  if((len+1) < 256) {
+X+    ptr = realloc(*lineptr, 256);
+X+    if(ptr == NULL)
+X+      return(-1);
+X+    *lineptr = ptr;
+X+    *n = 256;
+X+  }
+X+  strcpy(*lineptr,line); 
+X+  return(len);
+X+}
+X+#endif
+X+
+X static bool
+X ignore_line (const char *line)
+X {
+END-of-/usr/ports/net/ushare/files/patch-cfgparser.c
 echo x - /usr/ports/net/ushare/files/patch-ushare
 sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare << 'END-of-/usr/ports/net/ushare/files/patch-ushare'
 X--- scripts/ushare.orig	Sat Dec  9 13:55:38 2006
@@ -120,7 +177,7 @@ X+required_files="/usr/local/etc/$name.conf"
 X+
 X+# read configuration and set defaults
 X+load_rc_config "$name"
-X+: ${ushare_enable="YES"}
+X+: ${ushare_enable="NO"}
 X+: ${ushare_flags=""}
 X 
 X-exit 0
@@ -128,8 +185,8 @@ X+run_rc_command "$1"
 END-of-/usr/ports/net/ushare/files/patch-ushare
 echo x - /usr/ports/net/ushare/files/patch-ushare.c
 sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare.c << 'END-of-/usr/ports/net/ushare/files/patch-ushare.c'
-X--- src/ushare.c.orig	Sun Nov 12 13:40:36 2006
-X+++ src/ushare.c	Wed Dec 13 17:14:42 2006
+X--- src/ushare_orig.c	Sun Nov 12 13:40:35 2006
+X+++ src/ushare.c	Mon Dec 11 09:59:04 2006
 X@@ -33,6 +33,11 @@
 X #include <unistd.h>
 X #include <errno.h>
@@ -199,52 +256,6 @@ X+#endif
 X }
 X 
 X static char *
-X@@ -640,3 +688,45 @@
-X   /* it should never be executed */
-X   return EXIT_SUCCESS;
-X }
-X+
-X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
-X+#ifndef HAVE_STRNDUP
-X+char *strndup(const char *s, size_t n) {
-X+	char *dup= (char *)malloc(n+1);
-X+	if(dup) {
-X+		strncpy(dup,s,n);
-X+		dup[n]= '\0';
-X+	}
-X+	return dup;
-X+}
-X+#endif
-X+
-X+#ifndef HAVE_GETLINE
-X+ssize_t getline(char **lineptr, size_t *n, FILE *stream) {
-X+  static char line[256];
-X+  char *ptr;
-X+  unsigned int len;
-X+  if(lineptr == NULL || n == NULL) {
-X+    return -1;
-X+  }
-X+  if(ferror(stream))
-X+    return -1;
-X+  if(feof(stream))
-X+    return -1;
-X+  fgets(line,256,stream);
-X+  ptr = strchr(line,'\n');   
-X+  if(ptr)
-X+    *ptr = '\0';
-X+  len = strlen(line);
-X+  if((len+1) < 256) {
-X+    ptr = realloc(*lineptr, 256);
-X+    if(ptr == NULL)
-X+      return(-1);
-X+    *lineptr = ptr;
-X+    *n = 256;
-X+  }
-X+  strcpy(*lineptr,line); 
-X+  return(len);
-X+}
-X+#endif
-X+#endif
 END-of-/usr/ports/net/ushare/files/patch-ushare.c
 echo x - /usr/ports/net/ushare/files/patch-ushare.h
 sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare.h << 'END-of-/usr/ports/net/ushare/files/patch-ushare.h'
@@ -278,7 +289,7 @@ X# New ports collection makefile for:   ushare
 X# Date created:        11 December 2006
 X# Whom:                Volker Theile <votdev@gmx.de>
 X#
-X# $FreeBSD$
+X# $FreeBSD: ports/net/ushare/Makefile,v 1.1 2006/12/14 11:58:42 miwi Exp $
 X#
 X
 XPORTNAME=	ushare
@@ -291,16 +302,14 @@ XCOMMENT=	A lightweight UPnP (TM) A/V Media Server
 X
 XLIB_DEPENDS=	upnp.2:${PORTSDIR}/devel/upnp
 XBUILD_DEPENDS=	pkg-config:${PORTSDIR}/devel/pkg-config \
-X	iconv:${PORTSDIR}/converters/libiconv
+X		iconv:${PORTSDIR}/converters/libiconv
 X
-XPLIST_FILES=	bin/${PORTNAME} etc/${PORTNAME}.conf etc/rc.d/${PORTNAME}
-XMAN1=	${PORTNAME}.1
+XPLIST_FILES=	bin/${PORTNAME} etc/${PORTNAME}.conf.sample
+XMAN1=		${PORTNAME}.1
 X
 XUSE_BZIP2=	yes
 XGNU_CONFIGURE=	yes
-XCONFIGURE_ENV=	LIBS="-L${LOCALBASE}/lib -lintl -liconv"
-XCONFIGURE_ARGS=	--mandir=${LOCALBASE}/man
-XWRKSRC=	${WRKDIR}/${PORTNAME}-${PORTVERSION}
+XCONFIGURE_ARGS=	--with-libiconv-prefix=${LOCALBASE}/lib --with-libintl-prefix=${LOCALBASE}/lib --mandir=${LOCALBASE}/man
 X
 Xdo-install:
 X	${INSTALL_SCRIPT} ${WRKSRC}/src/${PORTNAME} ${PREFIX}/bin

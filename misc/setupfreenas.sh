@@ -141,7 +141,7 @@ build_kernel() {
 	cd ../compile/FREENAS/
 	make cleandepend; make depend
 	make
-	gzip -9 kernel
+	gzip -f -9 kernel
 
   # Installing the modules.
 	cp -v -p modules/usr/src/sys/modules/geom/geom_vinum/geom_vinum.ko $FREENAS/boot/kernel
@@ -476,7 +476,6 @@ Menu:
 5 - Software package
 6 - Build bootloader
 7 - Add necessary libraries
-10 - All
 * - Quit
 > '
   	read choice
@@ -488,14 +487,7 @@ Menu:
   		5) build_softpkg;;
   		6) $SVNDIR/misc/freenas-create-bootdir.sh -f $BOOTDIR;;
   		7) add_libs;;
-  		10) $SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS;
-          copy_bins;
-          prep_etc;
-          build_kernel;
-          build_softpkg;
-          $SVNDIR/misc/freenas-create-bootdir.sh -f $BOOTDIR;
-          add_libs;;
-  		*)  main;;
+  		*) main;;
   	esac
   	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
   	sleep 1
