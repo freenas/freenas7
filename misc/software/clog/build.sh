@@ -3,8 +3,8 @@
 build_clog() {
 	cd /usr/src/usr.sbin
 
-	tar -zxvf $SVNDIR/misc/software/clog/syslogd_clog-current.tgz
-  tar -zxvf $SVNDIR/misc/software/clog/clog-1.0.1.tar.gz
+	tar -zxvf $SVNDIR/misc/software/clog/files/syslogd_clog-current.tgz
+  tar -zxvf $SVNDIR/misc/software/clog/files/clog-1.0.1.tar.gz
 
   cd /usr/src/usr.sbin/syslogd
   make
