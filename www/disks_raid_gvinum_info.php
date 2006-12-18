@@ -52,7 +52,6 @@ $pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GVINUM, _DISKSRAIDPHP_NAMEDESC);
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gvinum_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
 	<li class="tabinact"><a href="disks_raid_gvinum_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
 	<li class="tabact"><?=_DISKSRAIDPHP_INFO; ?></li>
   </ul>

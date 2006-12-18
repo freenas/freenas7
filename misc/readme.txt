@@ -68,6 +68,8 @@ svn/misc/setupfreenas.sh
 
 ################ History Change logs ##############
 
+FreeNAS 0.682b:
+- 
 FreeNAS 0.681b:
 - Allow the following characters in CIFS workgroup name: ! @ # $ % ^ & ( ) _ - ; : ' " , .
 - Modified build scripts
