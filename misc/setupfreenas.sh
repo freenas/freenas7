@@ -193,22 +193,6 @@ add_libs() {
     return 1
   fi
 
-  # Identify required libs.
-  [ -f /tmp/lib.list ] && rm -f /tmp/lib.list
-  dirs=($FREENAS/bin $FREENAS/sbin $FREENAS/usr/bin $FREENAS/usr/sbin $FREENAS/usr/local/bin $FREENAS/usr/local/sbin)
-  for i in ${dirs[@]}; do
-  	for file in $(ls $i); do
-  		ldd -f "%p\n" $i/$file 2> /dev/null >> /tmp/lib.list
-  	done
-  done
-
-  # Copy identified libs.
-  echo "Adding required libs:"
-  for i in $(sort -u /tmp/lib.list); do
-  	cp -vp $i ${FREENAS}$(echo $i | rev | cut -d '/' -f 2- | rev)
-  done
-  rm -f /tmp/lib.list
-
   # Don't forget to copy this mandatory library.
   cp -vp /libexec/ld-elf.so.1 $FREENAS/libexec
 
@@ -229,6 +213,23 @@ add_libs() {
   echo "Adding GEOM tools:"
   mkdir $FREENAS/lib/geom
   cp -vp /lib/geom/* $FREENAS/lib/geom
+
+	# Identify required libs.
+	[ -f /tmp/lib.list ] && rm -f /tmp/lib.list
+	dirs=($FREENAS/bin $FREENAS/sbin $FREENAS/usr/bin $FREENAS/usr/sbin $FREENAS/usr/local/bin $FREENAS/usr/local/sbin $FREENAS/usr/lib $FREENAS/usr/local/lib)
+	for i in ${dirs[@]}; do
+		for file in $(ls $i); do
+			ldd -f "%p\n" $i/$file 2> /dev/null >> /tmp/lib.list
+		done
+	done
+
+	# Copy identified libs.
+	echo
+	echo "Adding required libs:"
+	for i in $(sort -u /tmp/lib.list); do
+		cp -vp $i ${FREENAS}$(echo $i | rev | cut -d '/' -f 2- | rev)
+	done
+	rm -f /tmp/lib.list
 
   return 0
 }
