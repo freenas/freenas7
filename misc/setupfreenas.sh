@@ -186,13 +186,6 @@ build_kernel() {
 
 # Adding the libraries
 add_libs() {
-  # Check if needed packages are installed.
-  check_packages "pam_ldap"
-  if [ 1 == $? ]; then
-    echo "==> Install missing package(s) first."
-    return 1
-  fi
-
   # Don't forget to copy this mandatory library.
   cp -vp /libexec/ld-elf.so.1 $FREENAS/libexec
 
@@ -200,13 +193,6 @@ add_libs() {
   echo
   echo "Adding PAM library:"
   cp -vp /usr/lib/pam_*.so.3 $FREENAS/usr/lib
-
-  # The LDAP PAM are not bulding by default.
-  echo
-  echo "Adding LDAP PAM library:"
-  #cd /usr/ports/security/pam_ldap/
-  #make install
-  cp -vp /usr/local/lib/pam_ldap.so $FREENAS/usr/local/lib
 
   # GEOM tools.
   echo
