@@ -47,9 +47,12 @@ urlbasename() {
   echo $1 | awk '{n=split($0,v,"/");print v[n]}'
 }
 
-# Copying required binaries
-copy_bins() {
+# Copying required files
+copy_files() {
   cd $WORKINGDIR
+
+	echo
+	echo "Adding required files:"
 
 	[ -f freenas.files ] && rm -f freenas.files
 	cp $SVNDIR/misc/freenas.files $WORKINGDIR
@@ -186,19 +189,8 @@ build_kernel() {
 
 # Adding the libraries
 add_libs() {
-  # Don't forget to copy this mandatory library.
-  cp -vp /libexec/ld-elf.so.1 $FREENAS/libexec
-
-  # Adding the PAM library.
-  echo
-  echo "Adding PAM library:"
-  cp -vp /usr/lib/pam_*.so.3 $FREENAS/usr/lib
-
-  # GEOM tools.
-  echo
-  echo "Adding GEOM tools:"
-  mkdir $FREENAS/lib/geom
-  cp -vp /lib/geom/* $FREENAS/lib/geom
+	echo
+	echo "Adding required libs:"
 
 	# Identify required libs.
 	[ -f /tmp/lib.list ] && rm -f /tmp/lib.list
@@ -210,8 +202,6 @@ add_libs() {
 	done
 
 	# Copy identified libs.
-	echo
-	echo "Adding required libs:"
 	for i in $(sort -u /tmp/lib.list); do
 		cp -vp $i ${FREENAS}$(echo $i | rev | cut -d '/' -f 2- | rev)
 	done
@@ -457,7 +447,7 @@ echo -n '
 Rebulding FreeNAS from Scratch
 Menu:
 1 - Create directory structure 
-2 - Copy required binaries to FreeNAS filesystem
+2 - Copy required files to FreeNAS filesystem
 3 - Prepare /etc
 4 - Build kernel
 5 - Software package
@@ -468,7 +458,7 @@ Menu:
   	read choice
   	case $choice in
   		1) $SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS;;
-  		2) copy_bins;;
+  		2) copy_files;;
   		3) prep_etc;;
   		4) build_kernel;;
   		5) build_softpkg;;

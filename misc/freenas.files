@@ -343,3 +343,11 @@ usr/share/locale/UTF-8/*
 ####### contents of /usr/local/bin
 # nano - a small, free and friendly editor
 usr/local/bin/nano
+
+####### contents of /usr/lib
+# PAM libraries
+usr/lib/pam_*.so.3
+
+####### contents of /lib/geom
+# GEOM tools
+lib/geom/*
