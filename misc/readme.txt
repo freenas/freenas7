@@ -69,7 +69,9 @@ svn/misc/setupfreenas.sh
 ################ History Change logs ##############
 
 FreeNAS 0.682b:
-- 
+- Fixed missing function (fdisk)
+- CIFS: hide dot files, and hide Netatalk system files
+
 FreeNAS 0.681b:
 - Allow the following characters in CIFS workgroup name: ! @ # $ % ^ & ( ) _ - ; : ' " , .
 - Modified build scripts
