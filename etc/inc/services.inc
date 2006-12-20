@@ -173,6 +173,10 @@ load printers = no
 printing = bsd
 printcap name = /dev/null
 disable spoolss = Yes
+#Test: Try to improve samba performance under FreeBSD:
+use sendfile = yes
+strict locking = no
+#End of performance section
 log level = {$config['samba']['loglevel']}
 dos charset = {$config['samba']['doscharset']}
 smb passwd file = {$g['varetc_path']}/private/smbpasswd

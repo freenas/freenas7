@@ -1284,7 +1284,7 @@ function system_tuning()
 		mwexec('/sbin/sysctl kern.ipc.somaxconn=8192');
 		// This variable can be set on the boot conf file only:
 		// mwexec('/sbin/sysctl kern.ipc.maxsockets=16424');
-		mwexec('/sbin/sysctl kern.ipc.nmbclusters=60000');
+		mwexec('/sbin/sysctl kern.ipc.nmbclusters=32768');
 		mwexec('/sbin/sysctl kern.maxfiles=65536');
 		mwexec('/sbin/sysctl kern.maxfilesperproc=32768');
 		mwexec('/sbin/sysctl net.inet.tcp.inflight.enable=0');
