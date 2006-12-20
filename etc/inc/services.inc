@@ -242,7 +242,7 @@ path = /mnt/{$mountent['sharename']}
 public = yes
 writeable = yes
 printable = no
-veto files = /.snap/.AppleDesktop/.AppleDB/.AppleDouble/
+veto files = /Network Trash Folder/Icon?/:2e*/.AppleDesktop/.AppleDB/.AppleDouble/TheFindByContentFolder/TheVolumeSettingsFolder/Temporary Items/.snap/
 hide dot files = yes
 {$guestmode}
 
