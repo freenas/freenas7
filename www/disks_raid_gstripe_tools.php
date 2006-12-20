@@ -77,7 +77,6 @@ if (!isset($do_action))
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gstripe_init.php"><?=_DISKSRAIDPHP_FORMAT; ?></a></li>
 	<li class="tabact"><?=_DISKSRAIDPHP_TOOLS; ?></li>
 	<li class="tabinact"><a href="disks_raid_gstripe_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
   </ul>
