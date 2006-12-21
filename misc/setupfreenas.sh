@@ -19,10 +19,8 @@ MFSROOT_SIZE="42"
 IMG_SIZE="21"
 
 # URL's:
-URL_FREENASETC="http://www.freenas.org/downloads/freenas-etc.tgz"
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
 URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
-URL_ZONEINFO="http://www.freenas.org/downloads/zoneinfo.tgz"
 URL_GEOMRAID5="http://home.tiscali.de/cmdr_faako/geom_raid5.tbz"
 
 # Check if needed packages are installed.
@@ -85,41 +83,20 @@ copy_files() {
 	return 0
 }
 
-# Preparing /etc
-prep_etc() {
-	[ -f "freenas-etc.tgz" ] && rm -f freenas-etc.tgz
-	fetch $URL_FREENASETC
-	if [ 1 == $? ]; then
-    echo "==> Failed to fetch freenas-etc.tgz."
-    return 1
-  fi
-
-	# Installing the etc archive and PHP configuration scripts
-	tar -xzf freenas-etc.tgz -C $FREENAS/
-
-  # Additional Notes
-	pwd_mkdb -p -d $FREENAS/etc $FREENAS/etc/master.passwd
+# Create rootfs
+create_rootfs() {
+	$SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS
 
   # Configuring platform variable
 	echo $VERSION > $FREENAS/etc/version
 	date > $FREENAS/etc/version.buildtime
 
-	echo $FREENAS_PLATFORM > $FREENAS/etc/platform
-
   # Config file: config.xml
   cd $FREENAS/conf.default/
   cp -v $SVNDIR/conf/config.xml .
-  
+
   # Zone Info.
-  zoneinfo_tarball=$(urlbasename $URL_ZONEINFO)
-  if [ ! -f "$zoneinfo_tarball" ]; then
-    fetch $URL_ZONEINFO
-    if [ 1 == $? ]; then
-      echo "==> Failed to fetch $zoneinfo_tarball."
-      return 1
-    fi
-  fi
-  cp -v $zoneinfo_tarball $FREENAS/usr/share
+  cp -v $SVNDIR/misc/zoneinfo.tgz $FREENAS/usr/share
 
   return 0
 }
@@ -446,24 +423,22 @@ fromscratch() {
 echo -n '
 Rebulding FreeNAS from Scratch
 Menu:
-1 - Create directory structure 
+1 - Create FreeNAS filesystem structure 
 2 - Copy required files to FreeNAS filesystem
-3 - Prepare /etc
-4 - Build kernel
-5 - Software package
-6 - Build bootloader
-7 - Add necessary libraries
+3 - Build kernel
+4 - Software package
+5 - Build bootloader
+6 - Add necessary libraries
 * - Quit
 > '
   	read choice
   	case $choice in
-  		1) $SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS;;
+  		1) create_rootfs;;
   		2) copy_files;;
-  		3) prep_etc;;
-  		4) build_kernel;;
-  		5) build_softpkg;;
-  		6) $SVNDIR/misc/freenas-create-bootdir.sh -f $BOOTDIR;;
-  		7) add_libs;;
+  		3) build_kernel;;
+  		4) build_softpkg;;
+  		5) $SVNDIR/misc/freenas-create-bootdir.sh -f $BOOTDIR;;
+  		6) add_libs;;
   		*) main;;
   	esac
   	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"

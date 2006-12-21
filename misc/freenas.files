@@ -351,3 +351,7 @@ usr/lib/pam_*.so.3
 ####### contents of /lib/geom
 # GEOM tools
 lib/geom/*
+
+####### contents of /etc/ssh
+# moduli -- system moduli file
+etc/ssh/moduli

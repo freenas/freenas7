@@ -47,6 +47,8 @@ fi ;
 
 mkdir $MINIBSD_DIR ;
 cd $MINIBSD_DIR ;
+
+# Create directories
 mkdir boot ;
 mkdir boot/kernel ;
 mkdir bin ;
@@ -81,10 +83,11 @@ mkdir usr/share ;
 mkdir usr/share/misc ;
 mkdir usr/share/locale ;
 mkdir tmp;
+
 # share/empty mandatory for VSFTPD
 mkdir usr/share/empty ;
 mkdir var ;
-#ln -s var/tmp tmp
+
 # Creating symbolic links
 ln -s cf/conf conf
 ln -s /var/run/htpasswd usr/local/www/.htpasswd
@@ -101,5 +104,6 @@ ln -s /var/etc/ssh/ssh_host_dsa_key etc/ssh/ssh_host_dsa_key
 ln -s /var/etc/pam.d/ftp etc/pam.d/ftp
 ln -s /var/etc/pam.d/sshd etc/pam.d/sshd
 ln -s /var/etc/pam.d/login etc/pam.d/login
+ln -s /var/etc/pam.d/system etc/pam.d/system
 ln -s /var/etc/nsswitch.conf etc/nsswitch.conf
 ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1
