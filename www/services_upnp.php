@@ -38,9 +38,13 @@ require("guiconfig.inc");
 
 $pgtitle = array(_SERVICES,_SRVUPNP_NAMEDESC);
 
-if (!is_array($config['upnp'])) {
-  $config['upnp'] = array();
-}
+if(!is_array($config['upnp']))
+	$config['upnp'] = array();
+
+if(!is_array($config['upnp']['content']))
+	$config['upnp']['content'] = array();
+
+sort($config['upnp']['content']);
 
 $pconfig['enable'] = isset($config['upnp']['enable']);
 $pconfig['name'] = $config['upnp']['name'];
@@ -49,28 +53,32 @@ $pconfig['content'] = $config['upnp']['content'];
 
 /* Set name to configured hostname if it is not set */
 if(!$pconfig['name'])
-  $pconfig['name'] = $config['system']['hostname'];
+	$pconfig['name'] = $config['system']['hostname'];
 
-if ($_POST) {
+if($_POST) {
 	unset($input_errors);
+
 	$pconfig = $_POST;
+	$pconfig['content'] = $config['upnp']['content'];
 
 	/* input validation */
 	$reqdfields = array();
 	$reqdfieldsn = array();
 
 	if($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "name interface content"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVUPNP_NAME,_SRVUPNP_INTERFACE,_SRVUPNP_CONTENT));
+		$reqdfields = array_merge($reqdfields, explode(" ", "name interface"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVUPNP_NAME,_SRVUPNP_INTERFACE));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+	if(0 == count($pconfig['content']))
+		$input_errors[] = _SRVUPNP_CONTENTINVALIDMSG;
 
 	if(!$input_errors) {
     $config['upnp']['enable'] = $_POST['enable'] ? true : false;
 		$config['upnp']['name'] = $_POST['name'];
 		$config['upnp']['if'] = $_POST['interface'];
-		$config['upnp']['content'] = $_POST['content'];
 
 		write_config();
 
@@ -82,7 +90,21 @@ if ($_POST) {
 		}
 	
 		$savemsg = get_std_save_message($retval);
+
+		if($retval == 0) {
+			if(file_exists($d_upnpconfdirty_path))
+				unlink($d_upnpconfdirty_path);
+		}
 	}
+}
+
+if($_GET['act'] == "del") {
+	/* Remove entry from content list */
+	$config['upnp']['content'] = array_diff($config['upnp']['content'],array($config['upnp']['content'][$_GET['id']]));
+	write_config();
+	touch($d_upnpconfdirty_path);
+	header("Location: services_upnp.php");
+	exit;
 }
 
 $a_interface = get_interface_list();
@@ -100,6 +122,10 @@ function enable_change(enable_change) {
 </script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if (file_exists($$d_upnpconfdirty_path)): ?><p>
+<?php print_info_box_np(_DISKSMOUNTPHP_MSGCHANGED);?><br>
+<input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY;?>"></p>
+<?php endif; ?>
 <form action="services_upnp.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
@@ -137,8 +163,30 @@ function enable_change(enable_change) {
       <td width="22%" valign="top" class="vncellreq"><?=_SRVUPNP_CONTENT;?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
-        <input name="content" type="text" class="formfld" id="content" size="80" value="<?=htmlspecialchars($pconfig['content']);?>">
-        <br><?=_SRVUPNP_CONTENTTEXT;?>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="90%" class="listhdrr"><?=_SRVUPNP_DIRECTORY;?></td>
+            <td width="10%" class="list"></td>
+          </tr>
+  			  <?php $i = 0; foreach($pconfig['content'] as $contentv): ?>
+          <tr>
+						<td class="listlr"><?=htmlspecialchars($contentv);?> &nbsp;</td>
+						<td valign="middle" nowrap class="list">
+            	<?php if(isset($config['upnp']['enable'])): ?>
+							<a href="services_upnp_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_SRVUPNP_EDITDIR;?>" width="17" height="17" border="0"></a>&nbsp;
+              <a href="services_upnp.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_SRVUPNP_DELCONF;?>')"><img src="x.gif" title="<?=_SRVUPNP_DELDIR; ?>" width="17" height="17" border="0"></a>
+              <?php endif; ?>
+            </td>
+          </tr>
+          <?php $i++; endforeach; ?>
+          <?php if(isset($config['upnp']['enable'])): ?>
+          <tr> 
+            <td class="list" colspan="1"></td>
+            <td class="list"><a href="services_upnp_edit.php"><img src="plus.gif" title="<?=_SRVUPNP_ADDDIR;?>" width="17" height="17" border="0"></a></td>
+          </tr>
+					<?php endif; ?>
+        </table>
+        <?=_SRVUPNP_CONTENTTEXT;?>
       </td>
     </tr>
     <tr>

@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	services_samba_share_edit.php
+	services_upnp_edit.php
 	Copyright © 2006 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
@@ -37,66 +37,47 @@
 require("guiconfig.inc");
 
 $id = $_GET['id'];
-if(isset($_POST['id']))
+if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(_SERVICES,_SRVCIFS_NAMEDESC,_SRVCIFS_SHARE,_EDIT);
+$pgtitle = array(_SERVICES,_SRVUPNP_NAMEDESC,_SRVUPNP_CONTENT,isset($id)?_EDIT:_ADD);
 
-if(!is_array($config['mounts']['mount']))
-	$config['mounts']['mount'] = array();
+if(!is_array($config['upnp']['content']))
+	$config['upnp']['content'] = array();
 
-mount_sort();
-
-if(!is_array($config['samba']['hidemount']))
-	$config['samba']['hidemount'] = array();
+sort($config['upnp']['content']);
 
 if($_POST) {
 	unset($input_errors);
 
-	if(!$input_errors) {
-    if(!$_POST['browseable']) {
-      $config['samba']['hidemount'] = array_merge($config['samba']['hidemount'],array($config['mounts']['mount'][$id]['sharename']));
-    } else {
-      if(is_array($config['samba']['hidemount']) && in_array($config['mounts']['mount'][$id]['sharename'],$config['samba']['hidemount'])) {
-        $config['samba']['hidemount'] = array_diff($config['samba']['hidemount'],array($config['mounts']['mount'][$id]['sharename']));
-      }
-    }
+	/* input validation */
+	$reqdfields = explode(" ", "content");
+	$reqdfieldsn = array(_SRVUPNP_CONTENT);
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-		touch($d_smbshareconfdirty_path);
+	if(!$input_errors) {
+		/* Remove old entry from content list */
+		$config['upnp']['content'] = array_diff($config['upnp']['content'],array($config['upnp']['content'][$id]));
+		/* Add new entry */
+		$config['upnp']['content'] = array_merge($config['upnp']['content'],array($_POST['content']));
+
+		touch($d_upnpconfdirty_path);
 		write_config();
-    header("Location: services_samba_share.php");
+    header("Location: services_upnp.php");
 		exit;
 	}
 }
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-<form action="services_samba_share_edit.php" method="post" name="iform" id="iform">
+<form action="services_upnp_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFSSHAREEDIT_SHARENAME;?></td>
-      <td width="78%" class="vtable"> 
-        <input type="text" class="formfld" size="30" value="<?=htmlspecialchars($config['mounts']['mount'][$id]['sharename']);?>" disabled>
-      </td>
-    </tr>
-    <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFSSHAREEDIT_DESC;?></td>
-      <td width="78%" class="vtable"> 
-        <input type="text" class="formfld" size="30" value="<?=htmlspecialchars($config['mounts']['mount'][$id]['desc']);?>" disabled>
-      </td>
-    </tr>
     <tr>
-      <td width="22%" valign="top" class="vncell"><?=_SRVCIFSSHAREEDIT_BROWSEABLE;?></td>
+    	<td width="22%" valign="top" class="vncellreq"><?=_SRVUPNPEDIT_CONTENT;?></td>
       <td width="78%" class="vtable">
-        <select name="browseable" class="formfld" id="browseable">
-          <?php $text = array(_YES,_NO); $vals = explode(" ","1 0"); $j = 0;
-          for($j = 0; $j < count($vals); $j++): ?>
-          <option value="<?=$vals[$j];?>" <?php if(is_array($config['samba']['hidemount']) && in_array($config['mounts']['mount'][$id]['sharename'],$config['samba']['hidemount'])) echo "selected";?>> 
-            <?=htmlspecialchars($text[$j]);?>
-          </option>
-          <?php endfor;?>
-        </select>
-        <br><?=_SRVCIFSSHAREEDIT_BROWSEABLETEXT;?>
+        <?=$mandfldhtml;?>
+				<input name="content" type="text" class="formfld" id="content" size="60" value="<?=htmlspecialchars($config['upnp']['content'][$id]);?>">
+				<br><?=_SRVUPNPEDIT_CONTENTTEXT;?>
       </td>
     </tr>
     <tr> 

@@ -832,8 +832,13 @@ function services_upnp_configure() {
 			/* Setup a multicast route for UPnP messages. */
 			mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
 
+			$content = "";
+			foreach($config['upnp']['content'] as $contentv) {
+				$content .= " --content=$contentv";
+			}
+
 			/* Run uShare as daemon. */
-			mwexec("/usr/local/bin/ushare --daemon --no-web --name={$config['upnp']['name']} --interface={$config['upnp']['if']} --content={$config['upnp']['content']}");
+			mwexec("/usr/local/bin/ushare --daemon --no-web --name={$config['upnp']['name']} --interface={$config['upnp']['if']} {$content}");
 	}
 }
 

@@ -730,12 +730,23 @@ define('_SRVUNSN_NOTESSH','<a href="/services_sshd.php">SSHD</a> must be enabled
 // file: services_upnp.php
 define('_SRVUPNP_NAMEDESC','UPnP');
 define('_SRVUPNP_UPNP','UPnP A/V Media Server');
+define('_SRVUPNP_MSGCHANGED','The content directory list has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_SRVUPNP_NAME','Name');
 define('_SRVUPNP_NAMETEXT','UPnP friendly name.');
 define('_SRVUPNP_INTERFACE','Interface');
 define('_SRVUPNP_INTERFACETEXT','Interface to listen to.');
 define('_SRVUPNP_CONTENT','Content');
-define('_SRVUPNP_CONTENTTEXT','Directories to be shared (space or CSV list).');
+define('_SRVUPNP_CONTENTTEXT','Directories to be shared.');
+define('_SRVUPNP_CONTENTINVALIDMSG','No content directory to be shared.');
+define('_SRVUPNP_DIRECTORY','Directory');
+define('_SRVUPNP_ADDDIR','Add directory');
+define('_SRVUPNP_EDITDIR','Edit directory');
+define('_SRVUPNP_DELDIR','Delete directory');
+define('_SRVUPNP_DELCONF','Do you really want to delete this directory entry?');
+
+// file: services_upnp_edit.php
+define('_SRVUPNPEDIT_CONTENT','Content');
+define('_SRVUPNPEDIT_CONTENTTEXT','Directory to be shared.');
 
 // Service: AFP
 // file: services_afp.php
