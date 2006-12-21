@@ -150,7 +150,9 @@
     <!-- <enable/> -->
     <name/>
     <if/>
+    <!--
     <content/>
+    -->
 	</upnp>
   <sshd>
     <!-- <enable/> -->
