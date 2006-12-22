@@ -133,7 +133,7 @@ function enable_change(enable_change) {
   		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
   		  <tr>
           <td class="optsect_s"><strong><?=_SRVUPNP_UPNP;?></strong></td>
-  			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?_ENABLE;?></strong></td>
+  			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE;?></strong></td>
         </tr>
   		  </table>
       </td>
@@ -172,19 +172,15 @@ function enable_change(enable_change) {
           <tr>
 						<td class="listlr"><?=htmlspecialchars($contentv);?> &nbsp;</td>
 						<td valign="middle" nowrap class="list">
-            	<?php if(isset($config['upnp']['enable'])): ?>
 							<a href="services_upnp_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_SRVUPNP_EDITDIR;?>" width="17" height="17" border="0"></a>&nbsp;
               <a href="services_upnp.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_SRVUPNP_DELCONF;?>')"><img src="x.gif" title="<?=_SRVUPNP_DELDIR; ?>" width="17" height="17" border="0"></a>
-              <?php endif; ?>
             </td>
           </tr>
           <?php $i++; endforeach; ?>
-          <?php if(isset($config['upnp']['enable'])): ?>
           <tr> 
             <td class="list" colspan="1"></td>
             <td class="list"><a href="services_upnp_edit.php"><img src="plus.gif" title="<?=_SRVUPNP_ADDDIR;?>" width="17" height="17" border="0"></a></td>
           </tr>
-					<?php endif; ?>
         </table>
         <?=_SRVUPNP_CONTENTTEXT;?>
       </td>
