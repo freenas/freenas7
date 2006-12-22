@@ -72,6 +72,8 @@ FreeNAS 0.682b:
 - Fixed missing function (fdisk)
 - CIFS: hide dot files, hide Netatalk system directory and Apple autocreate directory
 - CIFS: add two parameters for trying to improve performance (samba perf suck on FreeBSD...)
+- Fixed fstab warning message while booting (Thanks to Graham Wharton)
+- Modified build scripts
 
 FreeNAS 0.681b:
 - Allow the following characters in CIFS workgroup name: ! @ # $ % ^ & ( ) _ - ; : ' " , .
