@@ -82,13 +82,10 @@ mkdir usr/sbin ;
 mkdir usr/share ;
 mkdir usr/share/misc ;
 mkdir usr/share/locale ;
-mkdir tmp;
-
-# share/empty mandatory for VSFTPD
-mkdir usr/share/empty ;
+mkdir tmp ;
 mkdir var ;
 
-# Creating symbolic links
+# Creating symbolic links. Most of the target files will be created at runtime.
 ln -s cf/conf conf
 ln -s /var/run/htpasswd usr/local/www/.htpasswd
 ln -s /var/etc/resolv.conf etc/resolv.conf
