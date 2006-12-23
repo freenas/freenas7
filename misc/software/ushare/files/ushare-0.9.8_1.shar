@@ -8,9 +8,15 @@
 #	/usr/ports/net/ushare
 #	/usr/ports/net/ushare/files
 #	/usr/ports/net/ushare/files/patch-cfgparser.c
+#	/usr/ports/net/ushare/files/patch-getline.c
+#	/usr/ports/net/ushare/files/patch-getline.h
+#	/usr/ports/net/ushare/files/patch-http.c
+#	/usr/ports/net/ushare/files/patch-Makefile.am
+#	/usr/ports/net/ushare/files/patch-Makefile.in
+#	/usr/ports/net/ushare/files/patch-strndup.c
+#	/usr/ports/net/ushare/files/patch-strndup.h
 #	/usr/ports/net/ushare/files/patch-ushare
 #	/usr/ports/net/ushare/files/patch-ushare.c
-#	/usr/ports/net/ushare/files/patch-ushare.h
 #	/usr/ports/net/ushare/distinfo
 #	/usr/ports/net/ushare/Makefile
 #	/usr/ports/net/ushare/pkg-descr
@@ -21,27 +27,31 @@ echo c - /usr/ports/net/ushare/files
 mkdir -p /usr/ports/net/ushare/files > /dev/null 2>&1
 echo x - /usr/ports/net/ushare/files/patch-cfgparser.c
 sed 's/^X//' >/usr/ports/net/ushare/files/patch-cfgparser.c << 'END-of-/usr/ports/net/ushare/files/patch-cfgparser.c'
-X--- src/cfgparser_orig.c	Sun Nov 12 13:40:35 2006
-X+++ src/cfgparser.c	Mon Dec 11 09:58:17 2006
-X@@ -38,6 +38,50 @@
+X--- src/cfgparser.c.orig	Sun Nov 12 13:40:35 2006
+X+++ src/cfgparser.c	Sat Dec 23 03:33:22 2006
+X@@ -36,6 +36,11 @@
+X #include "ushare.h"
+X #include "trace.h"
 X 
+X+#if defined(__FreeBSD__)
+X+#include "strndup.h"
+X+#include "getline.h"
+X+#endif
+X+
 X #define USHARE_DIR_DELIM ","
 X 
-X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
-X+char *strndup(const char *s, size_t n) {
-X+  size_t len;
-X+  char *sdup;
-X+  if(!s)
-X+    return NULL;
-X+  len = strlen(s);
-X+  len = (n < len ? n : len);
-X+  sdup = (char *)malloc(len + 1);
-X+  if(sdup) {
-X+    memcpy(sdup, s, len);
-X+    sdup[len] = '\0';
-X+  }
-X+  return sdup;
-X+}
+X static bool
+END-of-/usr/ports/net/ushare/files/patch-cfgparser.c
+echo x - /usr/ports/net/ushare/files/patch-getline.c
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-getline.c << 'END-of-/usr/ports/net/ushare/files/patch-getline.c'
+X--- src/getline.c.orig	Sat Dec 23 02:49:09 2006
+X+++ src/getline.c	Sat Dec 23 13:26:42 2006
+X@@ -0,0 +1,32 @@
+X+#include <sys/types.h>
+X+#include <stdio.h>
+X+#include <string.h>
+X+#include <stdlib.h>
+X+#include "getline.h"
 X+
 X+ssize_t getline(char **lineptr, size_t *n, FILE *stream) {
 X+  static char line[256];
@@ -69,12 +79,106 @@ X+  }
 X+  strcpy(*lineptr,line); 
 X+  return(len);
 X+}
+END-of-/usr/ports/net/ushare/files/patch-getline.c
+echo x - /usr/ports/net/ushare/files/patch-getline.h
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-getline.h << 'END-of-/usr/ports/net/ushare/files/patch-getline.h'
+X--- src/getline.h.orig	Sat Dec 23 02:49:13 2006
+X+++ src/getline.h	Sat Dec 23 13:24:11 2006
+X@@ -0,0 +1,8 @@
+X+#ifndef _GETLINE_H_
+X+#define _GETLINE_H_
+X+
+X+#if defined(__FreeBSD__) || defined(__OpenBSD__)
+X+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 X+#endif
 X+
-X static bool
-X ignore_line (const char *line)
-X {
-END-of-/usr/ports/net/ushare/files/patch-cfgparser.c
+X+#endif /* _GETLINE_H_ */
+END-of-/usr/ports/net/ushare/files/patch-getline.h
+echo x - /usr/ports/net/ushare/files/patch-http.c
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-http.c << 'END-of-/usr/ports/net/ushare/files/patch-http.c'
+X--- src/http.c.orig	Sun Nov 12 13:40:35 2006
+X+++ src/http.c	Sat Dec 23 02:47:10 2006
+X@@ -47,6 +47,10 @@
+X #include "trace.h"
+X #include "presentation.h"
+X 
+X+#if defined(__FreeBSD__)
+X+#include "strndup.h"
+X+#endif
+X+
+X struct web_file_t {
+X   char *fullpath;
+X   size_t pos;
+END-of-/usr/ports/net/ushare/files/patch-http.c
+echo x - /usr/ports/net/ushare/files/patch-Makefile.am
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-Makefile.am << 'END-of-/usr/ports/net/ushare/files/patch-Makefile.am'
+X--- src/Makefile.am.orig	Thu Nov  2 22:24:08 2006
+X+++ src/Makefile.am	Sat Dec 23 03:44:42 2006
+X@@ -1,5 +1,7 @@
+X bin_PROGRAMS=ushare
+X ushare_SOURCES= \
+X+	strndup.h strndup.c \
+X+	getline.h getline.c \
+X 	cds.h cds.c \
+X 	cms.h cms.c \
+X 	msr.h msr.c \
+END-of-/usr/ports/net/ushare/files/patch-Makefile.am
+echo x - /usr/ports/net/ushare/files/patch-Makefile.in
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-Makefile.in << 'END-of-/usr/ports/net/ushare/files/patch-Makefile.in'
+X--- src/Makefile.in.orig	Sun Dec 10 18:39:08 2006
+X+++ src/Makefile.in	Sat Dec 23 13:32:07 2006
+X@@ -59,7 +59,7 @@
+X 	http.$(OBJEXT) presentation.$(OBJEXT) metadata.$(OBJEXT) \
+X 	mime.$(OBJEXT) services.$(OBJEXT) buffer.$(OBJEXT) \
+X 	util_iconv.$(OBJEXT) content.$(OBJEXT) cfgparser.$(OBJEXT) \
+X-	trace.$(OBJEXT) ushare.$(OBJEXT)
+X+	trace.$(OBJEXT) ushare.$(OBJEXT) getline.$(OBJEXT) strndup.$(OBJEXT)
+X ushare_OBJECTS = $(am_ushare_OBJECTS)
+X ushare_LDADD = $(LDADD)
+X DEFAULT_INCLUDES = -I. -I$(srcdir) -I$(top_builddir)
+X@@ -182,6 +182,8 @@
+X sysconfdir = @sysconfdir@
+X target_alias = @target_alias@
+X ushare_SOURCES = \
+X+	strndup.h strndup.c \
+X+	getline.h getline.c \
+X 	cds.h cds.c \
+X 	cms.h cms.c \
+X 	msr.h msr.c \
+END-of-/usr/ports/net/ushare/files/patch-Makefile.in
+echo x - /usr/ports/net/ushare/files/patch-strndup.c
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-strndup.c << 'END-of-/usr/ports/net/ushare/files/patch-strndup.c'
+X--- src/strndup.c.orig	Sat Dec 23 02:49:09 2006
+X+++ src/strndup.c	Sat Dec 23 13:36:14 2006
+X@@ -0,0 +1,13 @@
+X+#include <sys/types.h>
+X+#include <stdlib.h>
+X+#include <string.h>
+X+#include "strndup.h"
+X+
+X+char *strndup(const char *s, size_t n) {
+X+	char *dup = (char *)malloc(n+1);
+X+	if(dup) {
+X+		strncpy(dup,s,n);
+X+		dup[n]= '\0';
+X+	}
+X+	return dup;
+X+}
+END-of-/usr/ports/net/ushare/files/patch-strndup.c
+echo x - /usr/ports/net/ushare/files/patch-strndup.h
+sed 's/^X//' >/usr/ports/net/ushare/files/patch-strndup.h << 'END-of-/usr/ports/net/ushare/files/patch-strndup.h'
+X--- src/strndup.h.orig	Sat Dec 23 02:49:13 2006
+X+++ src/strndup.h	Sat Dec 23 13:24:04 2006
+X@@ -0,0 +1,8 @@
+X+#ifndef _STRNDUP_H_
+X+#define _STRNDUP_H_
+X+
+X+#if defined(__FreeBSD__) || defined(__OpenBSD__)
+X+char *strndup(const char *s, size_t n);
+X+#endif
+X+
+X+#endif /* _STRNDUP_H_ */
+END-of-/usr/ports/net/ushare/files/patch-strndup.h
 echo x - /usr/ports/net/ushare/files/patch-ushare
 sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare << 'END-of-/usr/ports/net/ushare/files/patch-ushare'
 X--- scripts/ushare.orig	Sat Dec  9 13:55:38 2006
@@ -185,13 +289,13 @@ X+run_rc_command "$1"
 END-of-/usr/ports/net/ushare/files/patch-ushare
 echo x - /usr/ports/net/ushare/files/patch-ushare.c
 sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare.c << 'END-of-/usr/ports/net/ushare/files/patch-ushare.c'
-X--- src/ushare_orig.c	Sun Nov 12 13:40:35 2006
-X+++ src/ushare.c	Mon Dec 11 09:59:04 2006
+X--- src/ushare.c.orig	Sun Nov 12 13:40:35 2006
+X+++ src/ushare.c	Sat Dec 23 02:11:43 2006
 X@@ -33,6 +33,11 @@
 X #include <unistd.h>
 X #include <errno.h>
 X #include <getopt.h>
-X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
+X+#if defined(__FreeBSD__)
 X+#include <sys/socket.h>
 X+#include <sys/sysctl.h>
 X+#include <net/if_dl.h>
@@ -203,7 +307,7 @@ X@@ -346,6 +351,48 @@
 X static char *
 X create_udn (char *interface)
 X {
-X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
+X+#if defined(__FreeBSD__)
 X+  int mib[6], len;
 X+  char *buf;
 X+  unsigned char *ptr;
@@ -257,26 +361,6 @@ X }
 X 
 X static char *
 END-of-/usr/ports/net/ushare/files/patch-ushare.c
-echo x - /usr/ports/net/ushare/files/patch-ushare.h
-sed 's/^X//' >/usr/ports/net/ushare/files/patch-ushare.h << 'END-of-/usr/ports/net/ushare/files/patch-ushare.h'
-X--- src/ushare.h.orig	Sun Nov 12 13:40:36 2006
-X+++ src/ushare.h	Wed Dec 13 17:16:10 2006
-X@@ -101,4 +101,14 @@
-X 
-X inline void display_headers (void);
-X 
-X+#if (defined(__unix__) || defined(unix)) && !defined(USG)
-X+#ifndef HAVE_STRNDUP
-X+char *strndup(const char *s, size_t n);
-X+#endif
-X+
-X+#ifndef HAVE_GETLINE
-X+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-X+#endif
-X+#endif
-X+
-X #endif /* _USHARE_H_ */
-END-of-/usr/ports/net/ushare/files/patch-ushare.h
 echo x - /usr/ports/net/ushare/distinfo
 sed 's/^X//' >/usr/ports/net/ushare/distinfo << 'END-of-/usr/ports/net/ushare/distinfo'
 XMD5 (ushare-0.9.8.tar.bz2) = dec4c12d97d476c9a3a0347621d64e27
@@ -294,6 +378,7 @@ X#
 X
 XPORTNAME=	ushare
 XPORTVERSION=	0.9.8
+XPORTREVISION=	1
 XCATEGORIES=	net
 XMASTER_SITES=	http://ushare.geexbox.org/releases/
 X

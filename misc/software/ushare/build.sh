@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 build_ushare() {
-  sh $SVNDIR/misc/software/ushare/files/ushare-0.9.8.shar
+  sh $SVNDIR/misc/software/ushare/files/ushare-0.9.8_1.shar
 
   cd /usr/ports/net/ushare
 
