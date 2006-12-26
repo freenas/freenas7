@@ -715,24 +715,23 @@ define('_SRVUNSN_NOTESSH','<a href="/services_sshd.php">SSHD</a> doit &ecirc;tre
 // Service: UPnP
 // file: services_upnp.php
 define('_SRVUPNP_NAMEDESC','UPnP');
-define('_SRVUPNP_UPNP','UPnP A/V Media Server');
-define('_SRVUPNP_MSGCHANGED','The content directory list has been changed.<br>You must apply the changes in order for them to take effect.');
-define('_SRVUPNP_NAME','Name');
-define('_SRVUPNP_NAMETEXT','UPnP friendly name.');
+define('_SRVUPNP_UPNP','Serveur multimedia UPnP');
+define('_SRVUPNP_NAME','Nom');
+define('_SRVUPNP_NAMETEXT','Nom UPnP.');
 define('_SRVUPNP_INTERFACE','Interface');
-define('_SRVUPNP_INTERFACETEXT','Interface to listen to.');
-define('_SRVUPNP_CONTENT','Content');
-define('_SRVUPNP_CONTENTTEXT','Directories to be shared.');
-define('_SRVUPNP_CONTENTINVALIDMSG','No content directory to be shared.');
-define('_SRVUPNP_DIRECTORY','Directory');
-define('_SRVUPNP_ADDDIR','Add directory');
-define('_SRVUPNP_EDITDIR','Edit directory');
-define('_SRVUPNP_DELDIR','Delete directory');
-define('_SRVUPNP_DELCONF','Do you really want to delete this directory entry?');
+define('_SRVUPNP_INTERFACETEXT','Interface sur laquelle &eacute;couter.');
+define('_SRVUPNP_CONTENT','Contenu');
+define('_SRVUPNP_CONTENTTEXT','R&eacute;pertoires &agrave; partager.');
+define('_SRVUPNP_CONTENTINVALIDMSG','Aucun contenu &agrave; partager.');
+define('_SRVUPNP_DIRECTORY','R&eacute;pertoire');
+define('_SRVUPNP_ADDDIR','Ajouter un r&eacute;pertoire');
+define('_SRVUPNP_EDITDIR','Modifier un r&eacute;pertoire');
+define('_SRVUPNP_DELDIR','Supprimer un r&eacute;pertoire');
+define('_SRVUPNP_DELCONF','Voulez-vous vraiment supprimer cette entr&eacute;e de r&eacute;pertoire?');
 
 // file: services_upnp_edit.php
-define('_SRVUPNPEDIT_CONTENT','Content');
-define('_SRVUPNPEDIT_CONTENTTEXT','Directory to be shared.');
+define('_SRVUPNPEDIT_CONTENT','Contenu');
+define('_SRVUPNPEDIT_CONTENTTEXT','R&eacute;pertoire &agrave; partager.');
 
 // Service: AFP
 // file: services_afp.php
@@ -850,35 +849,35 @@ define('_LICENSE_NAME','Licence');
 // file: status_wireless.php
 define('_STATSWIRELESS_NAME',_MENULEFT_STATUS);
 define('_STATSWIRELESS_NAMEDESC','Sans-fil');
-define('_STATSWIRELESS_INTERFACE','%s interface (SSID \'%s\')');
+define('_STATSWIRELESS_INTERFACE','interface %s (SSID \'%s\')');
 define('_STATSWIRELESS_SIGNALSTRENGTHCACHE','Signal strength cache');
-define('_STATSWIRELESS_MACADDRESS','MAC address');
-define('_STATSWIRELESS_IPADDRESS','IP address');
+define('_STATSWIRELESS_MACADDRESS','Adresse MAC');
+define('_STATSWIRELESS_IPADDRESS','Adresse IP');
 define('_STATSWIRELESS_SIGNAL','Signal');
-define('_STATSWIRELESS_NOISE','Noise');
-define('_STATSWIRELESS_QUALITY','Quality');
-define('_STATSWIRELESS_ASSOCIATEDSTATIONS','Associated stations');
-define('_STATSWIRELESS_TXRATES','TX rates');
-define('_STATSWIRELESS_MSGNOWINTFOUND','No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported).');
+define('_STATSWIRELESS_NOISE','Bruit');
+define('_STATSWIRELESS_QUALITY','Qualit&eacute;');
+define('_STATSWIRELESS_ASSOCIATEDSTATIONS','Stations associ&eacute;es');
+define('_STATSWIRELESS_TXRATES','Taux de transmission');
+define('_STATSWIRELESS_MSGNOWINTFOUND','Aucune interface sans fil support&eacute;e n\' a &eacute;t&eacute; trouv&eacute; (seules les cartes qui utilisent le pilote wi[n] sont support&eacute;es).');
 
 // file: status_interfaces.php
 define('_STATSINTERFACES_NAME',_MENULEFT_STATUS);
 define('_STATSINTERFACES_NAMEDESC',_INTERFACES);
-define('_STATSINTERFACES_INTERFACE','%s interface');
-define('_STATSINTERFACES_STATUS','Status');
+define('_STATSINTERFACES_INTERFACE','Interface %s');
+define('_STATSINTERFACES_STATUS','Statut');
 define('_STATSINTERFACES_DHCP','DHCP');
 define('_STATSINTERFACES_PPPOE','PPPoE');
 define('_STATSINTERFACES_PPTP','PPTP');
-define('_STATSINTERFACES_MACADDRESS','MAC address');
-define('_STATSINTERFACES_IPADDRESS','IP address');
-define('_STATSINTERFACES_SUBNETMASK','Subnet mask');
-define('_STATSINTERFACES_GATEWAY','Gateway');
-define('_STATSINTERFACES_ISPDNSSERVERS','ISP DNS servers');
+define('_STATSINTERFACES_MACADDRESS','Adresse MAC');
+define('_STATSINTERFACES_IPADDRESS','Adresse IP');
+define('_STATSINTERFACES_SUBNETMASK','Masque de sous r&eacute;seau');
+define('_STATSINTERFACES_GATEWAY','Passerelle');
+define('_STATSINTERFACES_ISPDNSSERVERS','Serveurs DNS du FAI');
 define('_STATSINTERFACES_MEDIA','Media');
-define('_STATSINTERFACES_CHANNEL','Channel');
+define('_STATSINTERFACES_CHANNEL','Canal');
 define('_STATSINTERFACES_SSID','SSID');
-define('_STATSINTERFACES_IOPACKETS','I/O packets');
-define('_STATSINTERFACES_IOERRORS','I/O errors');
+define('_STATSINTERFACES_IOPACKETS','Paquets E/S');
+define('_STATSINTERFACES_IOERRORS','Erreurs E/S');
 define('_STATSINTERFACES_COLLISIONS','Collisions');
 
 // file: status_graph_cpu.php
