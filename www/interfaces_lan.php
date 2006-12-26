@@ -35,13 +35,13 @@ $pgtitle = array(_INTLANPHP_NAME, _INTLANPHP_NAMEDESC);
 
 $lancfg = &$config['interfaces']['lan'];
 
-if ($config['interfaces']['lan']['ipaddr'] == "dhcp") {
+if (strcmp($config['interfaces']['lan']['ipaddr'],"dhcp") == 0) {
 	$pconfig['type'] = "DHCP";
 } else {
 	$pconfig['type'] = "Static";
 	$pconfig['ipaddr'] = $config['interfaces']['lan']['ipaddr'];
 	$pconfig['subnet'] = $config['interfaces']['lan']['subnet'];
-  $pconfig['gateway'] = $config['interfaces']['lan']['gateway'];
+	$pconfig['gateway'] = $config['interfaces']['lan']['gateway'];
 }
 
 $pconfig['dhcphostname'] = $config['system']['hostname'] . "." . $config['system']['domain'];
@@ -91,11 +91,11 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		if($_POST['type'] == "Static") {
+		if(strcmp($_POST['type'],"Static") == 0) {
 			$config['interfaces']['lan']['ipaddr'] = $_POST['ipaddr'];
 			$config['interfaces']['lan']['subnet'] = $_POST['subnet'];
 			$config['interfaces']['lan']['gateway'] = $_POST['gateway'];
-		} else if ($_POST['type'] == "DHCP") {
+		} else if (strcmp($_POST['type'],"DHCP") == 0) {
 			$config['interfaces']['lan']['ipaddr'] = "dhcp";
 		}
 

@@ -73,8 +73,13 @@ EOD;
 	return 0;
 }
 
+/* Stop samba, Generate the samba configuration file and start samba
+Return 0 if OK, 1 or error code if error */
+
 function services_samba_configure() {
 	global $config, $g;
+	
+	$result = 0;
 
 	/* kill any running samba */
 	
@@ -92,7 +97,7 @@ function services_samba_configure() {
 		$fd = fopen("{$g['varetc_path']}/smb.conf", "w");
 		if (!$fd) {
 			printf("Error: cannot open smb.conf in services_samba_configure().\n");
-			return 1;
+			$result = 1;
 		}
 		
 		/* If no share configured, exit */
@@ -275,37 +280,47 @@ EOD;
 		fwrite($fd, $sambaconf);
 		fclose($fd);
 
-		/* run nmbd and nmbd */
+		/* run nmbd and nmbd if no previous error*/
 		
-		if (isset($config['ad']['enable'])) 	{
-			mwexec("/usr/local/bin/net rpc join -S {$config['ad']['ad_srv_name']} -U {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
+		if(!$result) {
+		
+			if (isset($config['ad']['enable'])) {
+				$result = mwexec("/usr/local/bin/net rpc join -S {$config['ad']['ad_srv_name']} -U {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
+			}
+
+			$result |= mwexec("/usr/local/sbin/nmbd -D -s {$g['varetc_path']}/smb.conf");
+		
+			if (isset($config['ad']['enable'])) {
+				mwexec("/usr/local/sbin/winbindd -s {$g['varetc_path']}/smb.conf");
+				//mwexec("/usr/local/bin/wbinfo --set-auth-user {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
+			}
+		
+			$result |= mwexec("/usr/local/sbin/smbd -D -s {$g['varetc_path']}/smb.conf");
+		
+		
+			/* TEST: Wait for samba starting */
+			sleep(2);
+
+			/* Generate the samba password file */
+			$result |= system_user_samba();
+
+			if ($g['booting']) {
+				echo "done\n";
+			}
 		}
-
-		mwexec("/usr/local/sbin/nmbd -D -s {$g['varetc_path']}/smb.conf");
-		
-		if (isset($config['ad']['enable'])) 	{
-			mwexec("/usr/local/sbin/winbindd -s {$g['varetc_path']}/smb.conf");
-			//mwexec("/usr/local/bin/wbinfo --set-auth-user {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
-		}
-		
-		mwexec("/usr/local/sbin/smbd -D -s {$g['varetc_path']}/smb.conf");
-		
-		
-		/* TEST: Wait for samba starting */
-		sleep(2);
-
-		/* Generate the samba password file */
-		system_user_samba();
-
-		if ($g['booting'])
-			echo "done\n";
+	
 	}
 
-	return 0;
+	return $result;
 }
+
+/* Stop rsync, Generate the rsync configuration file and start rsync
+Return 0 if OK, 1 or error code if error */
 
 function services_rsyncd_configure() {
 	global $config, $g;
+	
+	$result = 0;
 
 	/* kill any running rsync daemon */
 
@@ -316,15 +331,16 @@ function services_rsyncd_configure() {
 		if ($g['booting'])
 			echo "Starting RSYNC daemon... ";
 		
-		/* If no share configured, exit */
-		if (!is_array($config['mounts']['mount']))
-			return 1;
+		/* If no share configured, can't start rsync */
+		if (!is_array($config['mounts']['mount'])) {
+			$result = 1;
+		}
 
 		/* generate rsyncd.conf */
 		$fd = fopen("{$g['varetc_path']}/rsyncd.conf", "w");
 		if (!$fd) 	{
 			printf("Error: cannot open rsyncd.conf in services_rsyncd_configure().\n");
-			return 1;
+			$result = 1;
 		}
 			
 		$rsyncdconf = <<<EOD
@@ -388,7 +404,7 @@ EOD;
 			$fd = fopen("{$g['varetc_path']}/rsyncd.motd", "w");
 			if (!$fd) 	{
 				printf("Error: cannot open rsyncd.motd in services_rsyncd_configure().\n");
-				return 1;
+				$result = 1;
 			}
 			
 			$motd  = <<<EOD
@@ -400,21 +416,27 @@ EOD;
 			fclose($fd);				
 		}
 
-		/* run rsync Daemon */
-		mwexec("/usr/local/bin/rsync --daemon --config={$g['varetc_path']}/rsyncd.conf");
+		/* run rsync Daemon if no previous error*/
+		
+		if (!$result) {
+			$result = mwexec("/usr/local/bin/rsync --daemon --config={$g['varetc_path']}/rsyncd.conf");
+		}
 
 
 		if ($g['booting'])
 			echo "done\n";
 	}
 
-	return 0;
+	return $result;
 }
+
+/* Stop nfs processes, Generate the nfs configuration file and start nfsd processes
+Return 0 if OK, 1 or error code if error */
 
 function services_nfs_configure() {
 	global $config, $g;
 	
-	global $config, $g;
+	$result = 0;
 
 	/* kill any running nfsd */
 	
@@ -425,21 +447,22 @@ function services_nfs_configure() {
 	killbyname("rpcbind");
 
 	
-	if (isset($config['nfs']['enable']))
-	{
+	if (isset($config['nfs']['enable'])) {
 	
-		if ($g['booting'])
+		if ($g['booting']) {
 			echo "Starting NFS... ";
+		}
 		
 		/* If no share configured, exit */
-		if (!is_array($config['mounts']['mount']))
-			return 1;
+		if (!is_array($config['mounts']['mount'])) {
+			$result = 1;
+		}
 
 		/* generate exports */
 		$fd = fopen("{$g['varetc_path']}/exports", "w");
 		if (!$fd) {
 			printf("Error: cannot open exports in services_nfs_configure().\n");
-			return 1;
+			$result = 1;
 		}
 		
 		list($network,$subnet) = 
@@ -454,14 +477,13 @@ function services_nfs_configure() {
 /mnt/{$mount['sharename']} -alldirs  
 EOD;
 
-			if ($config['nfs']['mapall'] == "yes") 		{
+			if (strcmp($config['nfs']['mapall'],"yes") == 0 ) 	{
 			
 			$nfsconf .= <<<EOD
 -mapall=root 
 EOD;
 			
-			}
-			else {
+			} else {
 			$nfsconf .= <<<EOD
 -maproot=root 
 EOD;
@@ -478,19 +500,21 @@ EOD;
 		fwrite($fd, $nfsconf);
 		fclose($fd);
 
-		/* run rpcbind, nfsd and mountd */
-		mwexec("/usr/sbin/rpcbind");
-		mwexec("/usr/sbin/nfsd -u -t -n 4");
-		mwexec("/usr/sbin/mountd -r {$g['varetc_path']}/exports");
-		mwexec("/usr/sbin/rpc.lockd");
-		mwexec("/usr/sbin/rpc.statd");
-
-
-		if ($g['booting'])
-			echo "done\n";
+		/* run rpcbind, nfsd and mountd if no previous error*/
+		
+		if (!$result) {
+			$result = mwexec("/usr/sbin/rpcbind");
+			$result |= mwexec("/usr/sbin/nfsd -u -t -n 4");
+			$result |= mwexec("/usr/sbin/mountd -r {$g['varetc_path']}/exports");
+			$result |= mwexec("/usr/sbin/rpc.lockd");
+			$result |= mwexec("/usr/sbin/rpc.statd");
+			if ($g['booting']) {
+				echo "done\n";
+			}
+		}
 	}
 
-	return 0;
+	return $result;
 	
 }
 
@@ -500,98 +524,13 @@ function services_ftpd_configure() {
 	services_pureftpd_configure();
 }
 
-function services_vsftpd_configure() {
-	global $config, $g;
+/* stop and restart pure-ftpd proces
+Return 0 if OK, 1 or error code if error */
 
-	/* kill any VSFTPD */
-	killbyname("vsftpd");
-
-	if (isset($config['ftp']['enable'])) {
-	
-		if ($g['booting'])
-			echo "Starting FTP server... ";
-
-		/* generate vsftpd.conf */
-		$fd = fopen("{$g['varetc_path']}/vsftpd.conf", "w");
-		if (!$fd) {
-			printf("Error: cannot open vsftpd.conf in services_vsftpd_configure().\n");
-			return 1;
-		}
-			
-		$ftpconf = <<<EOD
-# Standalone mode
-listen=YES
-background=YES
-listen_port={$config['ftp']['port']}
-max_clients={$config['ftp']['numberclients']}
-max_per_ip={$config['ftp']['maxconperip']}
-xferlog_enable=YES
-#vsftpd_log_file=/var/log/ftp.log
-syslog_enable=YES
-# Access rights
-anonymous_enable={$config['ftp']['anonymous']}
-local_enable={$config['ftp']['localuser']}
-write_enable=YES
-hide_file=.snap
-anon_other_write_enable=YES
-anon_upload_enable=YES
-anon_mkdir_write_enable=YES
-chroot_local_user=YES
-local_umask=066
-anon_umask=066
-chmod_enable=YES
-pasv_address={$config['ftp']['pasv_address']}
-# Features
-ls_recurse_enable=YES
-# Performance
-idle_session_timeout={$config['ftp']['timeout']}
-
-EOD;
-		if (isset($config['ftp']['banner'])) 	{
-			$ftpconf .= <<<EOD
-ftpd_banner={$config['ftp']['banner']}
-
-EOD;
-		}
-		else {
-		$ftpconf .= <<<EOD
-ftpd_banner=Welcome to FreeNAS FTP service
-
-EOD;
-		}
-		
-		if ($config['ftp']['pasv_min_port'] && $config['ftp']['pasv_max_port']) {
-			$ftpconf .= <<<EOD
-pasv_max_port={$config['ftp']['pasv_max_port']}
-pasv_min_port={$config['ftp']['pasv_min_port']}
-
-EOD;
-		}
-		
-		if ($config['ftp']['pasv_address']) {
-			$ftpconf .= <<<EOD
-pasv_address={$config['ftp']['pasv_address']}
-
-EOD;
-		}
-		
-		fwrite($fd, $ftpconf);
-		fclose($fd);
-
-		/* run vsftpd */
-		mwexec("/usr/local/sbin/vsftpd {$g['varetc_path']}/vsftpd.conf");
-
-
-		if ($g['booting'])
-			echo "done\n";
-	}
-
-	return 0;
-}
-
-/* Stop the pure-ftpd process and re-start it. */
 function services_pureftpd_configure() {
 	global $config, $g;
+	
+	$result = 0 ;
 
 	/* kill any Pure-FTPD */
 	killbyname("pure-ftpd");
@@ -604,7 +543,7 @@ function services_pureftpd_configure() {
 		$fd = fopen("/mnt/.banner", "w");
 		if (!$fd) {
 			printf("Error: cannot open .banner in services_pureftpd_configure().\n");
-			return 1;
+			$result = 1 ;
 		}
 
 		if (empty($config['ftp']['banner'])) {
@@ -622,40 +561,56 @@ EOD;
 		fwrite($fd, $banner);
 		fclose($fd);
 			
-		/* run pure-ftpd */
-		$cmd = "/usr/local/sbin/pure-ftpd -S {$config['ftp']['port']} -c {$config['ftp']['numberclients']} -C {$config['ftp']['maxconperip']} -I {$config['ftp']['timeout']} -M U 077:077 -B -b ";
-
-		if ( (isset($config['ftp']['anonymous'])) && (!isset($config['ftp']['localuser'])))
-			$cmd .= "-e ";
-
-		if ( (!isset($config['ftp']['anonymous'])) && (isset($config['ftp']['localuser'])))
-			$cmd .= "-E ";
-
-		if ($config['ftp']['pasv_min_port'] && $config['ftp']['pasv_max_port'])
-			$cmd .= "-p {$config['ftp']['pasv_min_port']}:{$config['ftp']['pasv_max_port']} ";
-
-		if ($config['ftp']['pasv_address'])
-			$cmd .= "-P {$config['ftp']['pasv_address']} ";
-
-		if ($config['ftp']['natmode'])
-			$cmd .= "-N ";
-
-		if ($config['ftp']['passiveip'])
-			$cmd .= "-P {$config['ftp']['passiveip']} ";
-
-		if ($config['ftp']['fxp'])
-			$cmd .= "-W ";
-
-		mwexec($cmd);
-
-		if ($g['booting'])
-			echo "done\n";
+		/* run pure-ftpd if no previous error */
+		
+		if (!$result) {
+			$cmd = "/usr/local/sbin/pure-ftpd -S {$config['ftp']['port']} -c {$config['ftp']['numberclients']} -C {$config['ftp']['maxconperip']} -I {$config['ftp']['timeout']} -M U 077:077 -B -b ";
+	
+			if ( (isset($config['ftp']['anonymous'])) && (!isset($config['ftp']['localuser']))) {
+				$cmd .= "-e ";
+			}
+	
+			if ( (!isset($config['ftp']['anonymous'])) && (isset($config['ftp']['localuser']))) {
+				$cmd .= "-E ";
+			}
+	
+			if ($config['ftp']['pasv_min_port'] && $config['ftp']['pasv_max_port']) {
+				$cmd .= "-p {$config['ftp']['pasv_min_port']}:{$config['ftp']['pasv_max_port']} ";
+			}
+	
+			if ($config['ftp']['pasv_address']) {
+				$cmd .= "-P {$config['ftp']['pasv_address']} ";
+			}
+	
+			if ($config['ftp']['natmode']) {
+				$cmd .= "-N ";
+			}
+	
+			if ($config['ftp']['passiveip']) {
+				$cmd .= "-P {$config['ftp']['passiveip']} ";
+			}
+	
+			if ($config['ftp']['fxp']) {
+				$cmd .= "-W ";
+			}
+	
+			$result = mwexec($cmd);
+	
+			if ($g['booting']) {
+				echo "done\n";
+			}
+		}
   }
-	return 0;
+	return $result;
 }
+
+/* Stop smartd, Generate the configuration file and start smartd
+Return 0 if OK, 1 or error code if error */
 
 function services_smart_configure() {
 	global $config, $g;
+	
+	$result = 0 ;
 	
 	/* kill any running smartd */
 	killbyname("smartd");
@@ -666,18 +621,22 @@ function services_smart_configure() {
 			echo "Starting smartd... ";
 
 		/* run smartd */
-		mwexec("/usr/local/sbin/smartd --logfacility=local5");
+		$result = mwexec("/usr/local/sbin/smartd --logfacility=local5");
 
 		if ($g['booting'])
 			echo "done\n";
 	}
 
-	return 0;
+	return $result;
 }
 
+/* Stop sshd, Generate the configuration file and start it
+Return 0 if OK, 1 or error code if error */
 
 function services_sshd_configure() {
 	global $config, $g;
+	
+	$result = 0 ;
 
 	/* kill any SSHD */
 	sigkillbypid("{$g['varrun_path']}/sshd.pid", "TERM");
@@ -691,7 +650,7 @@ function services_sshd_configure() {
 		$fd = fopen("{$g['varetc_path']}/ssh/sshd_config", "w");
 		if (!$fd) {
 			printf("Error: cannot open /ssh/sshd_config in services_sshd_configure().\n");
-			return 1;
+			$result = 1 ;
 		}
 			
 		$sshconf = <<<EOD
@@ -761,19 +720,26 @@ EOD;
 		/* Restrict right on the SSH key */
 		exec("/bin/chmod 600 {$g['varetc_path']}/ssh/ssh_host_dsa_key");
 
-		/* run sshd */
-		mwexec("/usr/sbin/sshd");
+		/* run sshd if no previous error*/
+		if (!$result) {
+			$result = mwexec("/usr/sbin/sshd");
+		}
 
 
 		if ($g['booting'])
 			echo "done\n";
 	}
 
-	return 0;
+	return $result;
 }
+
+/* Generate the unison configuration
+Return 0 if OK, 1 or error code if error */
 
 function services_unison_configure() {
 	global $config, $g;
+	
+	$result = 0 ;
 
 	if ($g['booting'])
 		echo "Configuring  unison... \n";
@@ -790,34 +756,40 @@ function services_unison_configure() {
 		}
 		if (!file_exists($workdir)) {
 			printf("Error: cannot open $workdir in services_unison_configure().\n");
+			$result = 1 ;
 		}
 		
 		/* add workdir to login.conf UNISON environment variable */
 		$logfile = "{$g['etc_path']}/login.conf";
 		if (!file_exists("$logfile")) {
 			printf("Error: $logfile doesn't exist, in services_unison_configure().\n");
-			return 1;
+			$result = 1 ;
 		}
 		$tmp = file_get_contents("$logfile");
 		$search = "/UNISON=.*?(?=[,:])/";
 		if (!preg_match($search, $tmp)) {
 			printf("Error: cannot find UNISON in $logfile, in services_unison_configure().\n");
-			return 1;
+			$result = 1 ;
 		}
 		$tmp = preg_replace($search, "UNISON=$workdir", $tmp);
 		if (!file_put_contents($logfile, $tmp)) {
 			printf("Error: couldn't write $logfile, in services_unison_configure().\n");
-			return 1;
+			$result = 1 ;
 		}
 	}
 
 	$tmp = "";
 
-	return 0;
+	return $result;
 }
+
+/* Stop and start ushare
+Return 0 if OK, 1 or error code if error */
 
 function services_upnp_configure() {
 	global $config, $g;
+	
+	$result = 0 ;
 
 	/* Kill any running uShare */
 	killbyname("ushare");
@@ -830,7 +802,7 @@ function services_upnp_configure() {
 			echo "Starting UPnP server... ";
 
 			/* Setup a multicast route for UPnP messages. */
-			mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
+			$result = mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
 
 			$content = "";
 			foreach($config['upnp']['content'] as $contentv) {
@@ -838,8 +810,10 @@ function services_upnp_configure() {
 			}
 
 			/* Run uShare as daemon. */
-			mwexec("/usr/local/bin/ushare --daemon --no-web --name={$config['upnp']['name']} --interface={$config['upnp']['if']} {$content}");
+			$result |= mwexec("/usr/local/bin/ushare --daemon --no-web --name={$config['upnp']['name']} --interface={$config['upnp']['if']} {$content}");
 	}
+	
+	return $result;
 }
 
 function services_cron_configure() {
@@ -1249,18 +1223,23 @@ EOD;
 	return 0;
 }
 
+/* Stop, Generate the config file and start AFP
+Return 0 if OK, 1 or error code if error */
+
 function services_afpd_configure()
 {
 	global $config, $g;
+	
+	$result = 0 ;
 
 	/* kill any VSFTPD */
 	killbyname("afpd");
 
 	if (isset($config['afp']['enable'])) 	{
 	
-		/* If no share configured, exit */
+		/* If no share configured, there is a problem */
 		if (!is_array($config['mounts']['mount']))
-			return 1;
+			$result = 1 ;
 			
 		if ($g['booting'])
 			echo "Starting AFP server... ";
@@ -1274,7 +1253,7 @@ function services_afpd_configure()
 		$fd = fopen("{$g['varetc_path']}/afpd.conf", "w");
 		if (!$fd) 		{
 			printf("Error: cannot open afpd.conf in services_afpd_configure().\n");
-			return 1;
+			$result = 1 ;
 		}
 			
 		$afpconf = <<<EOD
@@ -1306,7 +1285,7 @@ EOD;
 		if (!$fd)
 		{
 			printf("Error: cannot open AppleVolumes.default in services_afpd_configure().\n");
-			return 1;
+			$result = 1 ;
 		}
 		
 		$a_mount = &$config['mounts']['mount'];
@@ -1323,15 +1302,18 @@ EOD;
 		fclose($fd);
 
 
-		/* run afpdpd */
-		mwexec("/usr/local/sbin/afpd -F {$g['varetc_path']}/afpd.conf");
+		/* run afpdpd if no previous error*/
+		
+		if (!$result) {
+			$result = mwexec("/usr/local/sbin/afpd -F {$g['varetc_path']}/afpd.conf");
+		}
 
 
 		if ($g['booting'])
 			echo "done\n";
 	}
 
-	return 0;
+	return $result;
 }
 
 function services_nis_configure()
@@ -1340,176 +1322,187 @@ function services_nis_configure()
 
 	return 0;
 }
-
+/* Start iscsi initiator
+Return 0 if Ok, 1 or error code if problem */
+// NEED TO STOP IT TOO ???
 function services_iscsi_configure()
 {
 	global $config, $g;
 	
-	if (isset($config['iscsi']['enable']))
-	{
-		if ($g['booting'])
+	$result = 0 ;
+	
+	if (isset($config['iscsi']['enable'])) 	{
+		if ($g['booting']) {
 			echo "Starting iSCSI driver... ";
+		}
 			
-		mwexec("/sbin/kldload kdload /boot/kernel/iscsi_initiator.ko");
-		mwexec("/sbin/sysctl debug.iscsi=0");
-		mwexec("/usr/local/sbin/iscontrol targetaddress={$config['iscsi']['targetaddress']} TargetName={$config['iscsi']['targetname']}");
+		$result = mwexec("/sbin/kldload kdload /boot/kernel/iscsi_initiator.ko");
+		$result |= mwexec("/sbin/sysctl debug.iscsi=0");
+		$result |= mwexec("/usr/local/sbin/iscontrol targetaddress={$config['iscsi']['targetaddress']} TargetName={$config['iscsi']['targetname']}");
 		
-		if ($g['booting'])
+		if ($g['booting']) {
 			echo "done\n";
+		}
 	}
 	
-	return 0;
+	return $result;
 }
+
+/* Stop, generate config and start mdnsresponder
+Return 0 if Ok, 1 or error code if problem */
 
 function services_mdnsresponder_configure()
 {
 	global $config, $g;
 	
+	$result = 0 ;
+	
 	/* kill any running snmpd */
 	sigkillbypid("{$g['varrun_path']}/mDNSResponder.pid", "TERM");
-
 	
-	if (isset($config['system']['howl_disable']))
-		return 0;
-	else {
-		if ($g['booting'])
+	
+	if (!isset($config['system']['howl_disable'])) {
+		if ($g['booting']) {
 			echo "Starting Bonjour Zeroconf service... ";
-	}
+		}
 	
-	$fd = fopen("{$g['varetc_path']}/mDNSResponder.conf", "w");
-	if (!$fd) 	{
-		printf("Error: cannot open mDNSResponder.conf in services_bonjour_configure().\n");
-		return 1;
-	}
+		$fd = fopen("{$g['varetc_path']}/mDNSResponder.conf", "w");
+		if (!$fd) 	{
+			printf("Error: cannot open mDNSResponder.conf in services_bonjour_configure().\n");
+			$result = 1 ;
+		}
 	
-	// Check if WebGUI use HTTPS
+		// Check if WebGUI use HTTPS
 	
-	if ($config['system']['webgui']['protocol'] == "https") {
-		if ($config['system']['webgui']['port']) 	{
-			$mDNSResponder = <<<EOD
+		if ($config['system']['webgui']['protocol'] == "https") {
+			if ($config['system']['webgui']['port']) 	{
+				$mDNSResponder = <<<EOD
 "{$config['system']['hostname']} Web Admin"
 _https._tcp local.
 {$config['system']['webgui']['port']}
 
 EOD;
-		}
-		else 	{
+			} else 	{
 			$mDNSResponder = <<<EOD
 "{$config['system']['hostname']} Web Admin"
 _https._tcp local.
 443
 	
 EOD;
-		}
-	}
+			}
+
+			// if WebGUI don't use HTTPS then:
 	
-	// if WebGUI don't use HTTPS then:
-	
-	else {
-		if ($config['system']['webgui']['port'])	{
-			$mDNSResponder = <<<EOD
+			} else {
+				if ($config['system']['webgui']['port'])	{
+					$mDNSResponder = <<<EOD
 "{$config['system']['hostname']} Web Admin"
 _http._tcp local.
 {$config['system']['webgui']['port']}
 
 EOD;
-		}
-		else 	{
-			$mDNSResponder = <<<EOD
+				} 	else 	{
+					$mDNSResponder = <<<EOD
 "{$config['system']['hostname']} Web Admin"
 _http._tcp local.
 80
 
 EOD;
-		}
-	}
+				}
+			}
 	
-	// Check if AFP Enabled
+		// Check if AFP Enabled
 	
-	if (isset($config['afp']['enable'])) 	{				
-		$mDNSResponder .= <<<EOD
+		if (isset($config['afp']['enable'])) 	{				
+			$mDNSResponder .= <<<EOD
 
 "{$config['system']['hostname']} AFP Server"
 _afpovertcp._tcp local.
 548
 
 EOD;
-	}
+		}
 	
-	// Check if RSYNC Server Enabled
+		// Check if RSYNC Server Enabled
 	
-	if (isset($config['rsyncd']['enable'])) 	{				
-		$mDNSResponder .= <<<EOD
+		if (isset($config['rsyncd']['enable'])) 	{				
+			$mDNSResponder .= <<<EOD
 
 "{$config['system']['hostname']} RSYNC Server"
 _rsync._tcp. local.
 {$config['rsyncd']['port']}
 
 EOD;
-	}
+		}
 	
-	// Check if SSH Server Enabled
+		// Check if SSH Server Enabled
 	
-	if (isset($config['sshd']['enable'])) 	{				
-		$mDNSResponder .= <<<EOD
+		if (isset($config['sshd']['enable'])) 	{				
+			$mDNSResponder .= <<<EOD
 
 "{$config['system']['hostname']} SSH Server"
 _ssh._tcp local.
 {$config['sshd']['port']}
 
 EOD;
-	}
+		}
 	
-	if (isset($config['ftp']['enable'])) 	{				
-		$mDNSResponder .= <<<EOD
+		if (isset($config['ftp']['enable'])) 	{				
+			$mDNSResponder .= <<<EOD
 
 "{$config['system']['hostname']} FTP Server"
 _ftp._tcp local.
 {$config['ftp']['port']}
 
 EOD;
-	}
+		}
 	
-	if (isset($config['samba']['enable'])) 	{				
-		$mDNSResponder .= <<<EOD
+		if (isset($config['samba']['enable'])) {				
+			$mDNSResponder .= <<<EOD
 
 "{$config['system']['hostname']} Samba Server"
 _smb._tcp local.	
 139
 
 EOD;
-	}
+		}
 	
-	if (isset($config['nfs']['enable'])) 	{				
+		if (isset($config['nfs']['enable'])) {				
 		
-		/* If no share configured, exit */
-		if (!is_array($config['mounts']['mount']))
-			break;
+			/* If no share configured, exit */
+			if (!is_array($config['mounts']['mount'])) {
+				break;
+			}
 		
-		$a_mount = &$config['mounts']['mount'];
+			$a_mount = &$config['mounts']['mount'];
 		
-		foreach ($a_mount as $mount) 		{
-		$mDNSResponder .= <<<EOD
+			foreach ($a_mount as $mount) {
+				$mDNSResponder .= <<<EOD
 
 "{$config['system']['hostname']} NFS: {$mount['sharename']}"
 _nfs._tcp local.
 2049 path=/mnt/{$mount['sharename']}
 
 EOD;
+			}
 		}
+	
+		fwrite($fd, $mDNSResponder);
+		fclose($fd);
+	
+	
+		/* run mDNSResponder if no error*/
+		if (!$result) {
+			$result = mwexec("/usr/local/sbin/mDNSResponderPosix -b -f {$g['varetc_path']}/mDNSResponder.conf");
+		}
+	
+		if ($g['booting']) {
+			echo "done\n";
+		}
+	
 	}
 	
-	fwrite($fd, $mDNSResponder);
-	fclose($fd);
-
-
-	/* run mDNSResponder */
-	mwexec("/usr/local/sbin/mDNSResponderPosix -b -f {$g['varetc_path']}/mDNSResponder.conf");
-
-	if ($g['booting'])
-		echo "done\n";
-	
-	return 0;
+	return $result;
 }
 
 

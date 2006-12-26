@@ -77,8 +77,13 @@ function system_resolvconf_generate($dynupdate = false) {
 	return 0;
 }
 
+/* Generate the /etc/hosts file
+Return 0 if OK, and 1 if error */
+
 function system_hosts_generate() {
 	global $config, $g;
+	
+	$result = 0 ;
 	
 	$syscfg = $config['system'];
 	$lancfg = $config['interfaces']['lan'];
@@ -92,7 +97,7 @@ function system_hosts_generate() {
 	$fd = fopen("{$g['varetc_path']}/hosts", "w");
 	if (!$fd) {
 		printf("Error: cannot open hosts file in system_hosts_generate().\n");
-		return 1;
+		$result = 1;
 	}
 		
 	$hosts = <<<EOD
@@ -102,15 +107,16 @@ function system_hosts_generate() {
 EOD;
 	
 	foreach ($hostscfg as $host) {
-		if ($host['host'])
+		if ($host['host']) {
 			$hosts .= "{$host['ip']}	{$host['host']}.{$host['domain']} {$host['host']}\n";
-		else
+		} else {
 			$hosts .= "{$host['ip']}	{$host['domain']}\n";
+		}
 	}
 	fwrite($fd, $hosts);
 	fclose($fd);
 	
-	return 0;
+	return $result;
 }
 
 function system_hostname_configure() {
@@ -123,15 +129,20 @@ function system_hostname_configure() {
 		escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
 }
 
+/* Generate the static routes
+Return 0 if OK, and 1 if error */
+
 function system_routing_configure() {
 	global $config, $g;
+	
+	$result = 0 ;
 	
 	/* clear out old routes, if necessary */
 	if (file_exists("{$g['vardb_path']}/routes.db")) {
 		$fd = fopen("{$g['vardb_path']}/routes.db", "r");
 		if (!$fd) {
 			printf("Error: cannot open routes DB file in system_routing_configure().\n");
-			return 1;		
+			$result = 1 ;		
 		}
 		while (!feof($fd)) {
 			$oldrt = fgets($fd);
@@ -147,7 +158,7 @@ function system_routing_configure() {
 		$fd = fopen("{$g['vardb_path']}/routes.db", "w");
 		if (!$fd) {
 			printf("Error: cannot open routes DB file in system_routing_configure().\n");
-			return 1;		
+			$result = 1 ;		
 		}
 		
 		foreach ($config['staticroutes']['route'] as $rtent) {
@@ -161,27 +172,32 @@ function system_routing_configure() {
 		fclose($fd); 
 	}
 	
-	return 0;
+	return $result;
 }
+
+/* Start the syslog daemon
+Return 0 if OK, and 1 or retval if error */
 
 function system_syslogd_start() {
 	global $config, $g;
 	
+	$retval = 0 ;
+	
 	$syslogcfg = $config['syslog'];
 
-	if ($g['booting']) 
+	if ($g['booting']) {
 		echo "Starting syslog service... ";
-	else
+	} else {
 		killbypid("{$g['varrun_path']}/syslog.pid");
+	}
 			
-	if (isset($syslogcfg['enable']))
-	{
+	if (isset($syslogcfg['enable'])) {
 
 		/* write syslog.conf */
 		$fd = fopen("{$g['varetc_path']}/syslog.conf", "w");
 		if (!$fd) {
 			printf("Error: cannot open syslog.conf in system_syslogd_start().\n");
-			return 1;
+			$retval = 1 ;
 		}
 		
 		$syslogconf = <<<EOD
@@ -281,14 +297,22 @@ function system_pccard_start() {
 	return $res;
 }
 
+/* Start the webgui
+Return 0 if OK, and 1 or retval if error */
+
 function system_webgui_start() {
 	global $config, $g;
+	
+	$result = 0 ;
 	
 	if ($g['booting'])
 		echo "Starting webGUI... ";
 	
 	/* kill any running lighttpd */
 	killbypid("{$g['varrun_path']}/lighttpd.pid");
+	
+	// Wait 1 second
+	sleep(1);
 	
 	/* generate password file */
 	system_password_configure();
@@ -299,7 +323,7 @@ function system_webgui_start() {
 	$fd = fopen("{$g['varetc_path']}/lighttpd.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open lightppd.conf in system_webgui_start().\n");
-		return 1;
+		$result = 1 ;
 	}
 	
 	$lighttpdconf = <<<EOD
@@ -309,7 +333,8 @@ server.modules              = (
                                 "mod_cgi" )
 #                               "mod_accesslog" )
 server.document-root        = "{$g['www_path']}"
-#server.errorlog             = "{$g['varlog_path']}/lighttpd.error.log" 
+#server.errorlog             = "{$g['varlog_path']}/lighttpd.error.log"
+server.errorlog-use-syslog = "enable"
 server.event-handler        = "freebsd-kqueue"
 index-file.names            = ( "index.php" )
 mimetype.assign             = (
@@ -437,7 +462,7 @@ EOD;
 		$fdcert = fopen("{$g['varetc_path']}/cert.pem", "w");
 		if (!$fdcert) {
 			printf("Error: cannot open cert.pem in system_webgui_start().\n");
-			return 1;
+			$result = 1 ;
 		}
 		chmod("{$g['varetc_path']}/cert.pem", 0600);
 		fwrite($fdcert, $cert);
@@ -457,17 +482,20 @@ EOD;
 	fclose($fd);
 
 	/* run lighttpd */
-		
-	$res = mwexec("/usr/local/sbin/lighttpd -f  {$g['varetc_path']}/lighttpd.conf -m /usr/local/lib/lighttpd");
+	
+	// check if there is a previous error
+	if (!$result) {
+		$result = mwexec("/usr/local/sbin/lighttpd -f  {$g['varetc_path']}/lighttpd.conf -m /usr/local/lib/lighttpd");
+	}
 	
 	if ($g['booting']) {
-		if ($res == 0)
+		if ($result == 0)
 			echo "done\n";
 		else
 			echo "failed\n";
 	}
 	
-	return $res;
+	return $result;
 }
 
 function system_password_configure() {

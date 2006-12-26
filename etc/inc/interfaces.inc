@@ -49,6 +49,8 @@ function interfaces_lan_configure()
 {
 	global $config, $g;
 	
+	$result = 0;
+	
 	if ($g['booting'])
 		echo "Configuring LAN interface... ";
 	
@@ -121,31 +123,31 @@ function interfaces_lan_configure()
 	
 	if (!$g['booting']) {
 		/* make new hosts file */
-		system_hosts_generate();
+		$result = system_hosts_generate();
 		
 		/* reconfigure static routes (kernel may have deleted them) */
-		system_routing_configure();
+		$result |= system_routing_configure();
 		
 		/* reload Samba */
-		services_samba_configure();
+		$result |= services_samba_configure();
 		
 		/* reload FTP */
-		services_ftpd_configure();
+		$result |= services_ftpd_configure();
 		
 		/* reload NFS */
-		services_nfs_configure();
+		$result |= services_nfs_configure();
 		
 		/* reload AFP */
-		services_afpd_configure();
+		$result |= services_afpd_configure();
 		
 		/* reload SSH */
-		services_sshd_configure();
+		$result |= services_sshd_configure();
 		
 		/* reload RSYNC */
-		services_rsyncd_configure();
+		$result |= services_rsyncd_configure();
 		
 		/* reload webgui */
-		system_webgui_start();
+		$result |= system_webgui_start();
 				
 	}
 	
@@ -153,7 +155,7 @@ function interfaces_lan_configure()
 		echo "done\n";
 	}
 	
-	return 0;
+	return $result;
 }
 
 function interfaces_optional_configure()
