@@ -61,13 +61,12 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-  /* input validation */
-	if ($_POST['type'] == "Static")
-  {
-    $reqdfields = explode(" ", "ipaddr subnet");
-    $reqdfieldsn = array(_INTPHP_IP,_INTPHP_NETMASK);
+	/* input validation */
+	if ($_POST['type'] == "Static")   {
+		$reqdfields = explode(" ", "ipaddr subnet");
+		$reqdfieldsn = array(_INTPHP_IP,_INTPHP_NETMASK);
 	
-    do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
 	
 	if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr']))) {
@@ -92,13 +91,13 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-    if($_POST['type'] == "Static") {
-      $config['interfaces']['lan']['ipaddr'] = $_POST['ipaddr'];
-      $config['interfaces']['lan']['subnet'] = $_POST['subnet'];
-      $config['interfaces']['lan']['gateway'] = $_POST['gateway'];
-    } else if ($_POST['type'] == "DHCP") {
-      $config['interfaces']['lan']['ipaddr'] = "dhcp";
-    }
+		if($_POST['type'] == "Static") {
+			$config['interfaces']['lan']['ipaddr'] = $_POST['ipaddr'];
+			$config['interfaces']['lan']['subnet'] = $_POST['subnet'];
+			$config['interfaces']['lan']['gateway'] = $_POST['gateway'];
+		} else if ($_POST['type'] == "DHCP") {
+			$config['interfaces']['lan']['ipaddr'] = "dhcp";
+		}
 
 		$config['interfaces']['lan']['mtu'] = $_POST['mtu'];
 		$config['interfaces']['lan']['media'] = $_POST['media'];
@@ -108,20 +107,21 @@ if ($_POST) {
 		write_config();
 
 		if ($_POST['apply']) {
-  		$retval = 0;
-  		if (!file_exists($d_sysrebootreqd_path)) {
-        config_lock();
-        $retval = interfaces_lan_configure();
-        config_unlock();
-      }
-      $savemsg = get_std_save_message($retval);
-  		if ($retval == 0) {
-  			if (file_exists($d_landirty_path))
-  				unlink($d_landirty_path);
-  		}
-  	} else {
-      touch($d_landirty_path);
-    }
+			$retval = 0;
+			if (!file_exists($d_sysrebootreqd_path)) {
+				config_lock();
+				$retval = interfaces_lan_configure();
+				config_unlock();
+			}
+		$savemsg = get_std_save_message($retval);
+			if ($retval == 0) {
+				if (file_exists($d_landirty_path)) {
+					unlink($d_landirty_path);
+				}
+			}
+		} else {
+			touch($d_landirty_path);
+		}
 	}
 }
 ?>
