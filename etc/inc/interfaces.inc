@@ -60,22 +60,24 @@ function interfaces_lan_configure()
 
 	if (strcmp($lanif,"auto") == 0) {
 		$lanif = get_ifname($lanif);
-		if ($g['booting'])
+		if ($g['booting']) {
 			echo "Using interface $lanif... ";
+		}
 	}
 
 	/* wireless configuration? */
-	if (is_array($lancfg['wireless']))
+	if (is_array($lancfg['wireless'])) {
 		interfaces_wireless_configure($lanif, $lancfg['wireless']);
+	}
 	
 	/* MAC spoofing? */
-	if ($lancfg['spoofmac'])
+	if ($lancfg['spoofmac']) {
 		mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . 
 			" link " . escapeshellarg($lancfg['spoofmac']));
+	}
 	
 	/* media */
-	if ($lancfg['media'] || $lancfg['mediaopt'] || $lancfg['polling'] || $lancfg['mtu'] )
-	{
+	if ($lancfg['media'] || $lancfg['mediaopt'] || $lancfg['polling'] || $lancfg['mtu'] ) 	{
 		$cmd = "/sbin/ifconfig " . escapeshellarg($lanif);
 		
 		// If not in autoselect mode, force it:
@@ -84,27 +86,29 @@ function interfaces_lan_configure()
 			$cmd .= " mediaopt " . escapeshellarg($lancfg['mediaopt']);
 		}
 		
-		if ($lancfg['polling'])
+		if ($lancfg['polling']) {
 			$cmd .= " polling";
-		if ($lancfg['mtu'])
+		}
+		if ($lancfg['mtu']) {
 			$cmd .= " mtu ". escapeshellarg($lancfg['mtu']);
+		}
 		mwexec($cmd);
 	}
 
-  switch ($lancfg['ipaddr']) {
+	switch ($lancfg['ipaddr']) {
 		case 'dhcp':
 			interfaces_dhcp_configure($lanif);
 			break;
 			
 		default:
-      $addflags = "";
-      /* Remove the link0 options that create some problem */
-      /* if (strpos($lanif, "fxp") !== false)
-        $addflags .= " link0"; */
+			$addflags = "";
+			/* Remove the link0 options that create some problem */
+			/* if (strpos($lanif, "fxp") !== false)
+			$addflags .= " link0"; */
       
-      mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " " . 
-      escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
-      break;
+			mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " " . 
+			escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
+			break;
 	}
 	
 	/* install default route */
@@ -115,8 +119,7 @@ function interfaces_lan_configure()
 	
 	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lanif));
 	
-	if (!$g['booting'])
-	{
+	if (!$g['booting']) {
 		/* make new hosts file */
 		system_hosts_generate();
 		
@@ -146,8 +149,9 @@ function interfaces_lan_configure()
 				
 	}
 	
-	if ($g['booting'])
+	if ($g['booting']) {
 		echo "done\n";
+	}
 	
 	return 0;
 }
@@ -159,13 +163,11 @@ function interfaces_optional_configure()
 	/* Reset bridge configuration.	Interfaces will add to it. */
 	$bridgeconfig = "";
 	
-	for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++)
-	{
+	for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 		interfaces_optional_configure_if($i);
 	}
 		
-	if (!$g['booting'])
-	{
+	if (!$g['booting']) {
 		/* reconfigure static routes (kernel may have deleted them) */
 		system_routing_configure();
 		
@@ -183,16 +185,14 @@ function interfaces_optional_configure_if($opti)
 	
 	$optcfg = $config['interfaces']['opt' . $opti];
 	
-	if ($g['booting'])
-	{
+	if ($g['booting']) {
 		$optdescr = "";
 		if ($optcfg['descr'])
 			$optdescr = " ({$optcfg['descr']})";
 		echo "Configuring OPT{$opti}{$optdescr} interface... ";
 	}
 	
-	if (isset($optcfg['enable']))
-	{
+	if (isset($optcfg['enable'])) {
 		/* wireless configuration? */
 		if (is_array($optcfg['wireless']))
 			interfaces_wireless_configure($optcfg['if'], $optcfg['wireless']);
@@ -203,8 +203,7 @@ function interfaces_optional_configure_if($opti)
 				" link " . escapeshellarg($optcfg['spoofmac']));
 		
 		/* media */
-		if ($optcfg['media'] || $optcfg['mediaopt'] || $optcfg['polling'] || $optcfg['mtu'])
-		{
+		if ($optcfg['media'] || $optcfg['mediaopt'] || $optcfg['polling'] || $optcfg['mtu']) {
 			$cmd = "/sbin/ifconfig " . escapeshellarg($optcfg['if']);
 
 			// If not in autoselect mode, force it:
@@ -213,39 +212,40 @@ function interfaces_optional_configure_if($opti)
 				$cmd .= " mediaopt " . escapeshellarg($optcfg['mediaopt']);
 			}
 		
-			if ($optcfg['polling'])
+			if ($optcfg['polling']) {
 				$cmd .= " polling ";
-			if ($optcfg['mtu'])
+			}
+			if ($optcfg['mtu']) {
 				$cmd .= " mtu ". escapeshellarg($optcfg['mtu']);
+			}
 			mwexec($cmd);
 		}
 	
 		switch ($optcfg['ipaddr']) {
-      case 'dhcp':
-        interfaces_dhcp_configure($optcfg['if']);
-        break;
+			case 'dhcp':
+				interfaces_dhcp_configure($optcfg['if']);
+				break;
 			
-      default:
-        $addflags = "";
-		    if (strpos($optcfg['if'], "fxp") !== false)
-          $addflags .= " link0";
-      
-        mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " " . 
-        escapeshellarg($optcfg['ipaddr'] . "/" . $optcfg['subnet']) . $addflags);
-        break;
-    }
+			default:
+				$addflags = "";
+				if (strpos($optcfg['if'], "fxp") !== false) {
+					$addflags .= " link0";
+				}
+				mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " " . 
+				escapeshellarg($optcfg['ipaddr'] . "/" . $optcfg['subnet']) . $addflags);
+				break;
+		}
 		
 		/* install multicast route */
 		mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($optcfg['if']));
-	}
-	else
-	{
+	} else 	{
 		mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . 
 			" delete down");
 	}
 	
-	if ($g['booting'])
+	if ($g['booting']) {
 		echo "done\n";
+	}
 	
 	return 0;
 }
@@ -262,55 +262,52 @@ function interfaces_wireless_configure($if, $wlcfg)
 	if ($wlcfg['stationname'])
 		$ifcargs .= "stationname " . escapeshellarg($wlcfg['stationname']) . " ";
 	
-	if (isset($wlcfg['wep']['enable']) && is_array($wlcfg['wep']['key']))
-	{
+	if (isset($wlcfg['wep']['enable']) && is_array($wlcfg['wep']['key'])) {
 		$ifcargs .= "wepmode on ";
 		
 		$i = 1;
-		foreach ($wlcfg['wep']['key'] as $wepkey)
-		{
+		foreach ($wlcfg['wep']['key'] as $wepkey) {
 			$ifcargs .= "wepkey " . escapeshellarg("{$i}:{$wepkey['value']}") . " ";
 			if (isset($wepkey['txkey']))
 				$ifcargs .= "weptxkey {$i} ";
 			$i++;
 		}
-	}
-	else
-	{
+	} else 	{
 		$ifcargs .= "wepmode off ";
 	}
 	
-	if (strstr($if, "ath"))
-	{
+	if (strstr($if, "ath")) {
 		if ($wlcfg['standard'])
 			$ifcargs .= "mode {$wlcfg['standard']} ";
 	}
 	
-	switch ($wlcfg['mode'])
-	{
+	switch ($wlcfg['mode']) {
 		case 'hostap':
-			if (strstr($if, "ath"))
+			if (strstr($if, "ath")) {
 				$ifcargs .= "-mediaopt adhoc mediaopt hostap ";
-			else if (strstr($if, "wi"))
+			} else if (strstr($if, "wi")) {
 				$ifcargs .= "-mediaopt ibss mediaopt hostap ";
+			}
 			break;
 		case 'ibss':
 		case 'IBSS':
-			if (strstr($if, "ath"))
+			if (strstr($if, "ath")) {
 				$ifcargs .= "-mediaopt hostap mediaopt adhoc ";
-			else if (strstr($if, "wi"))
+			} else if (strstr($if, "wi")) {
 				$ifcargs .= "-mediaopt hostap mediaopt ibss ";
-			else if (strstr($if, "an"))
+			} else if (strstr($if, "an")) {
 				$ifcargs .= "mediaopt adhoc ";
+			}
 			break;
 		case 'bss':
 		case 'BSS':
-			if (strstr($if, "ath"))
+			if (strstr($if, "ath")) {
 				$ifcargs .= "-mediaopt hostap -mediaopt adhoc ";
-			else if (strstr($if, "wi"))
+			} else if (strstr($if, "wi")) {
 				$ifcargs .= "-mediaopt hostap -mediaopt ibss ";
-			else if (strstr($if, "an"))
+			} else if (strstr($if, "an")) {
 				$ifcargs .= "-mediaopt adhoc ";
+			}
 			break;
 	}
 	
