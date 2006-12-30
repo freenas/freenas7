@@ -115,7 +115,7 @@ if ($_GET['act'] == "ret")
           </tr>
   			  <?php $i = 0; foreach($a_mount as $mount): ?>
           <tr>
-            <td class="listlr"><?=htmlspecialchars($mount['mdisk']);?> &nbsp;</td>
+            <td class="listlr"><?=htmlspecialchars($mount['mdisk']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount['partition']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount['fstype']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount['sharename']);?>&nbsp;</td>
@@ -148,7 +148,6 @@ if ($_GET['act'] == "ret")
       </form>
       <p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_DISKSMOUNTPHP_NOTE;?></p>
       <p><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:</strong></span><br><?=_MSGFILESYSTEM;?></p>
-      
     </td>
   </tr>
 </table>
