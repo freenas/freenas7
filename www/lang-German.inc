@@ -134,12 +134,13 @@ define('_MESSAGES_SUCCESS', 'Die &Auml;nderungen wurden &uuml;bernommen.');
 define('_MESSAGES_SUCCESSWITHREBOOT', 'Die &Auml;nderungen wurden gespeichert. Sie m&uuml;ssen <a href="/reboot.php">neu starten</a> damit Ihr NAS die &Auml;nderungen &uuml;bernimmt.');
 define('_MESSAGES_ERROR', 'ERROR: die &Auml;nderungen konnten nicht &uuml;bernommen werden (error code '.$ok.').');
 
+// Special messages
 define('_MSGVALIDIP','Eine g&uuml;ltige IP Adresse muss eingegeben werden.');
 define('_MSGVALIDNETBIT','Eine g&uuml;ltige Subnet Adressierung muss eingegeben werden.');
 define('_MSGVALIDTCPPORT','Der TCP/IP Port muss eingetragen werden.');
 define('_MSGVALIDPASSWORD','Passwort FALSCH.');
-
 define('_MSGSCHED_TEXT','Hinweis: Strg-Klick (oder Kommando-Klick auf dem Mac) um Stunden, Tage und Monate zu w&auml;hlen bzw. abzuw&auml;hlen.');
+define('_MSGFILESYSTEM','UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS).  Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!.');
 
 // states
 define('_ACTIVE','Aktiv');
@@ -401,7 +402,7 @@ define('_INTPHP_MSGCHANGED','Die LAN Konfiguration hat sich ge&auml;ndert.<br>Zu
 // Disks: Manage
 // Common text
 define('_DISKSPHP_NAME',_DISKS);
-define('_DISKSPHP_MANAGE','Managen');
+define('_DISKSPHP_MANAGE','Verwalten');
 define('_DISKSPHP_FORMAT','Formatieren');
 define('_DISKSPHP_TOOLS','Tools');
 define('_DISKSPHP_ISCSIINIT','iSCSI initiator');
@@ -443,8 +444,7 @@ define('_DISKSMANAGEEDITPHP_ACLEVEL_64','Medium acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVEL_127','Maximum performance, maximum acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','Lautst&auml;rke des Laufwerks w&auml;hrend des Betriebs einstellen.<em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>');
 define('_DISKSMANAGEEDITPHP_PREFS','Vorformatiertes FS');
-define('_DISKSMANAGEEDITPHP_PREFSTEXT','Dateisystem von bereits mit Dateisystem und Daten versehenen Festplatten/Partitionen einstellen.<br>
-                     <em>Voreinstellung "Unformated" f&uuml;r unformatierte Festplatte &uuml;bernehmen, dann das "Format menu" benutzen.</em>');
+define('_DISKSMANAGEEDITPHP_PREFSTEXT','Dateisystem von bereits mit Dateisystem und Daten versehenen Festplatten/Partitionen einstellen.<br><em>Voreinstellung "Unformated" f&uuml;r unformatierte Festplatte &uuml;bernehmen, dann das <a href="disks_manage_init.php">Format Men&uuml;</a> benutzen.</em>');
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialisierung');
@@ -537,7 +537,7 @@ define('_DISKSRAIDTOOLSPHP_TEXT','1. Diese Massnahmen nur zur Fehlerbehebung ben
 // Comon value
 define('_DISKSMOUNTPHP_NAME','Mount Point');
 define('_DISKSMOUNTPHP_SHARENAME','Freigaben Name');
-define('_DISKSMOUNTPHP_MANAGE','Managen');
+define('_DISKSMOUNTPHP_MANAGE','Verwalten');
 define('_DISKSMOUNTPHP_TOOLS','Tools');
 
 // disks_mount.php

@@ -133,11 +133,13 @@ define('_MESSAGES_SUCCESS', 'Les modifications ont &eacute;t&eacute; appliqu&eac
 define('_MESSAGES_SUCCESSWITHREBOOT', 'Les modifications ont &eacute;t&eacute; enregistr&eacute;es. Vous devez <a href=reboot.php>red&eacute;marrer</a> votre serveur NAS pour que les modifications prennent effet.');
 define('_MESSAGES_ERROR', 'Erreur: Les modifications ne peuvent &ecirc;tre appliqu&eacute;es (code d\'erreur '.$ok.').');
 
+// Special messages
 define('_MSGVALIDIP','Une adresse IP valide doit &ecirc;tre sp&eacute;cifi&eacute;e.');
 define('_MSGVALIDNETBIT','Un nombre de bit valide doit &ecirc;tre sp&eacute;cifi&eacute;.');
 define('_MSGVALIDTCPPORT','Le port TCP doit &ecirc;tre un nombre valide compris entre 1024 et 65564.');
 define('_MSGVALIDPASSWORD','Les mots de passe ne correspondent pas.');
 define('_MSGSCHED_TEXT','Note: Ctrl-clic (ou command-clic sur Mac) pour s&eacute;lectionner et d&eacute;s&eacute;lectionner minutes, heures, jours et mois.');
+define('_MSGFILESYSTEM','UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS).  Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!.');
 
 // states
 define('_ACTIVE','Actif');
@@ -437,8 +439,7 @@ define('_DISKSMANAGEEDITPHP_ACLEVEL_64','Medium acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVEL_127','Maximum performance, maximum acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','Ceci vous permet de contr&ocirc;ler le niveau sonore du disque en fonctionnement.<em>N\'activez PAS cette option pour les cartes Compact Flash.</em>');
 define('_DISKSMANAGEEDITPHP_PREFS','Syst&egrave;me de fichier pr&eacute;existant');
-define('_DISKSMANAGEEDITPHP_PREFSTEXT','Ceci vous permet d\'indiquer le type de syst&egrave;me de fichier d\'un disque contenant des donn&eacute;es.<br>
-                     <em>Laissez "unformated" pour des disques non format&eacute;s puis utilisez le menu Formater.</em>');
+define('_DISKSMANAGEEDITPHP_PREFSTEXT','Ceci vous permet d\'indiquer le type de syst&egrave;me de fichier d\'un disque contenant des donn&eacute;es.<br><em>Laissez "unformated" pour des disques non format&eacute;s puis utilisez <a href="disks_manage_init.php">le menu Formater</a>.</em>');
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialiser');

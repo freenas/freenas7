@@ -128,12 +128,13 @@ define('_MESSAGES_SUCCESS', 'Los cambios han sido aplicados satisfactoriamente.'
 define('_MESSAGES_SUCCESSWITHREBOOT', 'Los cambios han sido aplicados. Tiene que <a href=\"/reboot.php\">reiniciar</a> su NAS para que los cambios tengan efecto.');
 define('_MESSAGES_ERROR', 'ERROR: los cambios no pudieron ser aplicados(código de error '.$ok.').');
 
+// Special messages
 define('_MSGVALIDIP','A valid IP address must be specified.');
 define('_MSGVALIDNETBIT','A valid network bit count must be specified.');
 define('_MSGVALIDTCPPORT','The TCP port must be a valid port number.');
 define('_MSGVALIDPASSWORD','Password don\'t match.');
-
 define('_MSGSCHED_TEXT','Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.');
+define('_MSGFILESYSTEM','UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS).  Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!.');
 
 // states
 define('_ACTIVE','Active');
@@ -274,8 +275,7 @@ define('_DISKSMANAGEEDITPHP_ACLEVEL_64','Medium acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVEL_127','Maximum performance, maximum acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','This allows you to set how loud the drive is while it\'s  operating.<em>Do not set this for CF cards.</em>');
 define('_DISKSMANAGEEDITPHP_PREFS','Preformatted FS');
-define('_DISKSMANAGEEDITPHP_PREFSTEXT','This allows you to set FS type for preformated disk with data.<br>
-                     <em>Leave "unformated" for unformated disk and then use Format menu.</em>');
+define('_DISKSMANAGEEDITPHP_PREFSTEXT','This allows you to set FS type for preformated disk with data.<br><em>Leave "unformated" for unformated disk and then use <a href="disks_manage_init.php">format menu</a>.</em>');
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialize');

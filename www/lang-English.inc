@@ -130,17 +130,13 @@ define('_MESSAGES_SUCCESS', 'The changes have been applied successfully.');
 define('_MESSAGES_SUCCESSWITHREBOOT', 'The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS for changes to take effect.');
 define('_MESSAGES_ERROR', 'ERROR: the changes could not be applied (error code '.$ok.').');
 
+// Special messages
 define('_MSGVALIDIP','A valid IP address must be specified.');
 define('_MSGVALIDNETBIT','A valid network bit count must be specified.');
 define('_MSGVALIDTCPPORT','The TCP port must be a valid port number.');
 define('_MSGVALIDPASSWORD','Password don\'t match.');
-
 define('_MSGSCHED_TEXT','Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.');
-
-// Special Filesystem Warning
-
-define('_MSGFILESYSTEM','UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS).  Attempting to use other file formats such as FAT, FAT32, EXT2,
-EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!.');
+define('_MSGFILESYSTEM','UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS).  Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!.');
 
 // states
 define('_ACTIVE','Active');
@@ -445,8 +441,7 @@ define('_DISKSMANAGEEDITPHP_ACLEVEL_64','Medium acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVEL_127','Maximum performance, maximum acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','This allows you to set how loud the drive is while it\'s  operating.<em>Do not set this for CF cards.</em>');
 define('_DISKSMANAGEEDITPHP_PREFS','Preformatted FS');
-define('_DISKSMANAGEEDITPHP_PREFSTEXT','This allows you to set FS type for preformated disk with data.<br>
-                     <em>Leave "unformated" for unformated disk and then use Format menu.</em>');
+define('_DISKSMANAGEEDITPHP_PREFSTEXT','This allows you to set FS type for preformated disk with data.<br><em>Leave "unformated" for unformated disk and then use <a href="disks_manage_init.php">format menu</a>.</em>');
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initialize');

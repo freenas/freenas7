@@ -135,12 +135,13 @@ define('_MESSAGES_SUCCESS', 'I cambiamenti sono stati applicati con successo.');
 define('_MESSAGES_SUCCESSWITHREBOOT', 'I cambiamenti sono stati salvati. E\' necessario <a href=reboot.php>riavviare</a> il NAS affinch&eacute; i cambiamenti abbiano effetto.');
 define('_MESSAGES_ERROR', 'ERRORE: non &egrave; stato possibile applicare i cambiamenti (codice d\'errore '.$ok.').');
 
+// Special messages
 define('_MSGVALIDIP','Deve essere specificato un indirizzo IP valido.');
 define('_MSGVALIDNETBIT','Deve essere specificata una netmask valida.');
 define('_MSGVALIDTCPPORT','La porta TCP deve essere un numero valido.');
 define('_MSGVALIDPASSWORD','La password non coincide.');
-
 define('_MSGSCHED_TEXT','Nota: Ctrl-click (o command-click per i Mac) per selezionare e deselezionare minuti, ore, giorni e mesi.');
+define('_MSGFILESYSTEM','UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS).  Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!.');
 
 // states
 define('_ACTIVE','Attivo');
@@ -448,8 +449,7 @@ define('_DISKSMANAGEEDITPHP_ACLEVEL_127','Maximum performance, maximum acoustic 
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','Questo consente di settare il livello acustico dei dischi mentre sono operativi.
                     <em>Non settarlo per le schede CF.</em>');
 define('_DISKSMANAGEEDITPHP_PREFS','FS preformattato');
-define('_DISKSMANAGEEDITPHP_PREFSTEXT','Questo consente di settare il tipo di FS per dischi preformattati con dati.<br>
-                    <em>Lasciare "non formattato" per dischi non formattati e poi utilizzare il menù Formatta.</em>');
+define('_DISKSMANAGEEDITPHP_PREFSTEXT','Questo consente di settare il tipo di FS per dischi preformattati con dati.<br><em>Lasciare "non formattato" per dischi non formattati e poi utilizzare il <a href="disks_manage_init.php">menù Formatta</a>.</em>');
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Inizializza');
