@@ -126,6 +126,9 @@ sbin/gstripe
 ## gmirror -- Geom mirror
 sbin/gmirror
 
+# geli -- Control utility for cryptographic GEOM class
+sbin/geli
+
 ## gpt -- Manipulate GUID partition tables
 sbin/gpt
 

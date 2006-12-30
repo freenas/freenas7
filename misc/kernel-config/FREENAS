@@ -315,3 +315,7 @@ device		fwip		# Ethernet over FireWire (standard)
 
 #FREENAS ADD
 device          speaker
+
+# FREENAS add GELI filesystem encryption
+device		crypto
+options		GEOM_ELI

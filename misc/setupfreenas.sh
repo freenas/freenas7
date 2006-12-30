@@ -129,6 +129,7 @@ build_kernel() {
 	cp -v -p modules/usr/src/sys/modules/geom/geom_concat/geom_concat.ko $FREENAS/boot/kernel
 	cp -v -p modules/usr/src/sys/modules/geom/geom_mirror/geom_mirror.ko $FREENAS/boot/kernel
 	cp -v -p modules/usr/src/sys/modules/geom/geom_gpt/geom_gpt.ko $FREENAS/boot/kernel
+	cp -v -p modules/usr/src/sys/modules/geom/geom_eli/geom_eli.ko $FREENAS/boot/kernel
 	cp -v -p modules/usr/src/sys/modules/ntfs/ntfs.ko $FREENAS/boot/kernel
 	cp -v -p modules/usr/src/sys/modules/ext2fs/ext2fs.ko $FREENAS/boot/kernel/
 
