@@ -427,13 +427,24 @@ define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','This disk already exists in the 
 define('_DISKSMANAGEEDITPHP_UDMA','UDMA mode');
 define('_DISKSMANAGEEDITPHP_UDMATEXT','You can force UDMA mode if you have "UDMA_ERROR.... LBA" message with your hard drive.');
 define('_DISKSMANAGEEDITPHP_STANDBY','Hard disk standby time');
+define('_DISKSMANAGEEDITPHP_STANDBY_ALWAYSON','Always on');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Puts the hard disk into standby mode when the selected amount of time after the last
                     access has elapsed. <em>Do not set this for CF cards.</em>');
 define('_DISKSMANAGEEDITPHP_APM','Advanced Power Management');
+define('_DISKSMANAGEEDITPHP_APM_0','Disabled');
+define('_DISKSMANAGEEDITPHP_APM_1','Minimum power usage with Standby');
+define('_DISKSMANAGEEDITPHP_APM_64','Medium power usage with Standby');
+define('_DISKSMANAGEEDITPHP_APM_128','Minimum power usage without Standby');
+define('_DISKSMANAGEEDITPHP_APM_192','Medium power usage without Standby');
+define('_DISKSMANAGEEDITPHP_APM_254','Maximum performance, maximum power usage');
 define('_DISKSMANAGEEDITPHP_APMTEXT','This allows  you  to lower the power consumption of the drive, at the expense of performance.<em>Do not set this for CF cards.</em>');
 define('_DISKSMANAGEEDITPHP_ACLEVEL','Acoustic level');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_0','Disabled');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_1','Minimum performance, Minimum acoustic output');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_64','Medium acoustic output');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_127','Maximum performance, maximum acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','This allows you to set how loud the drive is while it\'s  operating.<em>Do not set this for CF cards.</em>');
-define('_DISKSMANAGEEDITPHP_PREFS','Preformated FS');
+define('_DISKSMANAGEEDITPHP_PREFS','Preformatted FS');
 define('_DISKSMANAGEEDITPHP_PREFSTEXT','This allows you to set FS type for preformated disk with data.<br>
                      <em>Leave "unformated" for unformated disk and then use Format menu.</em>');
 

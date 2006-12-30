@@ -49,8 +49,7 @@ disks_sort();
 
 $a_disk = &$config['disks']['disk'];
 
-if (isset($id) && $a_disk[$id])
-{
+if (isset($id) && $a_disk[$id]) {
 	$pconfig['name'] = $a_disk[$id]['name'];
 	$pconfig['harddiskstandby'] = $a_disk[$id]['harddiskstandby'];
 	$pconfig['acoustic'] = $a_disk[$id]['acoustic'];
@@ -60,26 +59,22 @@ if (isset($id) && $a_disk[$id])
 	$pconfig['fullname'] = $a_disk[$id]['fullname'];
 }
 
-if ($_POST)
-{
+if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 		
 	/* check for name conflicts */
-	foreach ($a_disk as $disk)
-	{
+	foreach ($a_disk as $disk) {
 		if (isset($id) && ($a_disk[$id]) && ($a_disk[$id] === $disk))
 			continue;
 
-		if ($disk['name'] == $_POST['name'])
-		{
+		if ($disk['name'] == $_POST['name']) {
 			$input_errors[] = _DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE;
 			break;
 		}
 	}
 
-	if (!$input_errors)
-	{
+	if (!$input_errors) {
 		$disks = array();
 		
 		$devname = $_POST['name'];
@@ -117,90 +112,91 @@ if ($_POST)
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-            <form action="disks_manage_edit.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr>
-                  <td width="22%" valign="top" class="vncellreq"><?=_DISKSPHP_DISK; ?></td>
-                  <td width="78%" class="vtable">
-		<select name="name" class="formfld" id="name">
-		  <?php foreach ($disklist as $diski => $diskv): ?>
-		  <option value="<?=$diski;?>" <?php if ($diski == $pconfig['name']) echo "selected";?>> 
-		  <?php echo htmlspecialchars($diski . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");				  
-		  ?>
-		  </option>
-		  <?php endforeach; ?>
-			</tr>
-	<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_UDMA; ?></td>
-                  <td width="78%" class="vtable">
-					<select name="udma" class="formfld" id="udma">
-                      <?php $types = explode(",", "Auto,UDMA-33,UDMA-66,UDMA-100,UDMA-133");
-					        $vals = explode(" ", "auto UDMA2 UDMA4 UDMA5 UDMA6");
-					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['udma']) echo "selected";?>> 
-                      <?=htmlspecialchars($types[$j]);?>
-                      </option>
-                      <?php endfor; ?>
-                    </select>
-                    <br>
-                    <?=_DISKSMANAGEEDITPHP_UDMATEXT; ?></td>
-				</tr>
-			<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_STANDBY; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <select name="harddiskstandby" class="formfld">
-					<?php $sbvals = array(0=>"Always on",5=>"5 minutes",10=>"10 minutes",20=>"20 minutes",30=>"30 minutes",60=>"60 minutes"); ?>
-					<?php foreach ($sbvals as $sbval => $sbname): ?>
-                      <option value="<?=$sbval;?>" <?php if($pconfig['harddiskstandby'] == $sbval) echo 'selected';?>><?=htmlspecialchars($sbname);?></option>
-					<?php endforeach; ?>
-                    </select>
-                    <br>
-                    <?=_DISKSMANAGEEDITPHP_STANDBYTEXT ;?></td>
-				</tr>
+<form action="disks_manage_edit.php" method="post" name="iform" id="iform">
+	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+		<tr>
+			<td width="22%" valign="top" class="vncellreq"><?=_DISKSPHP_DISK; ?></td>
+			<td width="78%" class="vtable">
+				<select name="name" class="formfld" id="name">
+				  <?php foreach ($disklist as $diski => $diskv): ?>
+				  <option value="<?=$diski;?>" <?php if ($diski == $pconfig['name']) echo "selected";?>><?php echo htmlspecialchars($diski . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
+		  		<?php endforeach; ?>
+		  	</select>
+		  </td>
+		</tr>
 		<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_APM; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <select name="apm" class="formfld">
-					<?php $apmvals = array(0=>"Disabled",1=>"Minimum power usage with Standby",64=>"Medium power usage with Standby",128=>"Minimum power usage without Standby",192=>"Medium power usage without Standby",254=>"Maximum performance, maximum power usage"); ?>
-					<?php foreach ($apmvals as $apmval => $apmname): ?>
-                      <option value="<?=$apmval;?>" <?php if($pconfig['apm'] == $apmval) echo 'selected';?>><?=htmlspecialchars($apmname);?></option>
-					<?php endforeach; ?>
-                    </select>
-                    <br>
-                      <?=_DISKSMANAGEEDITPHP_APMTEXT; ?></td>
-				</tr>
+			<td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_UDMA; ?></td>
+			<td width="78%" class="vtable">
+				<select name="udma" class="formfld" id="udma">
+				<?php $types = explode(",", "Auto,UDMA-33,UDMA-66,UDMA-100,UDMA-133"); $vals = explode(" ", "auto UDMA2 UDMA4 UDMA5 UDMA6");
+				$j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+					<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['udma']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
+				<?php endfor; ?>
+				</select>
+				<br>
+				<?=_DISKSMANAGEEDITPHP_UDMATEXT; ?>
+			</td>
+		</tr>
 		<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_ACLEVEL; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <select name="acoustic" class="formfld">
-					<?php $acvals = array(0=>"Disabled",1=>"Minimum performance, Minimum acoustic output",64=>"Medium acoustic output",127=>"Maximum performance, maximum acoustic output"); ?>
-					<?php foreach ($acvals as $acval => $acname): ?>
-                      <option value="<?=$acval;?>" <?php if($pconfig['acoustic'] == $acval) echo 'selected';?>><?=htmlspecialchars($acname);?></option>
-					<?php endforeach; ?>
-                    </select>
-                    <br>
-                    <?=_DISKSMANAGEEDITPHP_ACLEVELTEXT; ?></td>
-				</tr>
+			<td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_STANDBY; ?></td>
+			<td width="78%" class="vtable"> 
+				<select name="harddiskstandby" class="formfld">
+				<?php $sbvals = array(0=>_DISKSMANAGEEDITPHP_STANDBY_ALWAYSON, 5=>"5 "._MINUTES, 10=>"10 "._MINUTES, 20=>"20 "._MINUTES, 30=>"30 "._MINUTES, 60=>"60 "._MINUTES);?>
+				<?php foreach ($sbvals as $sbval => $sbname): ?>
+					<option value="<?=$sbval;?>" <?php if($pconfig['harddiskstandby'] == $sbval) echo 'selected';?>><?=htmlspecialchars($sbname);?></option>
+				<?php endforeach; ?>
+				</select>
+				<br>
+				<?=_DISKSMANAGEEDITPHP_STANDBYTEXT ;?>
+			</td>
+		</tr>
 		<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_PREFS; ?></td>
-                  <td width="78%" class="vtable"> 
-                    <select name="fstype" class="formfld">
-                      <?php $fstlist = get_fstype_list(); ?>
-                      <?php foreach ($fstlist as $fstval => $fstname): ?>
-                      <option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
-                      <?php endforeach; ?>
-                    </select>
-                    <br>
-                    <?=_DISKSMANAGEEDITPHP_PREFSTEXT; ?></td>
-				</tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?_SAVE:_ADD?>"> 
-                    <?php if (isset($id) && $a_disk[$id]): ?>
-                    <input name="id" type="hidden" value="<?=$id;?>">
-                    <?php endif; ?>
-                  </td>
-                </tr>
-              </table>
+			<td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_APM; ?></td>
+			<td width="78%" class="vtable"> 
+				<select name="apm" class="formfld">
+				<?php $apmvals = array(0=>_DISKSMANAGEEDITPHP_APM_0,1=>_DISKSMANAGEEDITPHP_APM_1,64=>_DISKSMANAGEEDITPHP_APM_64,128=>_DISKSMANAGEEDITPHP_APM_128,192=>_DISKSMANAGEEDITPHP_APM_192,254=>_DISKSMANAGEEDITPHP_APM_254);?>
+				<?php foreach ($apmvals as $apmval => $apmname): ?>
+					<option value="<?=$apmval;?>" <?php if($pconfig['apm'] == $apmval) echo 'selected';?>><?=htmlspecialchars($apmname);?></option>
+				<?php endforeach; ?>
+				</select>
+				<br>
+				<?=_DISKSMANAGEEDITPHP_APMTEXT; ?>
+			</td>
+		</tr>
+		<tr> 
+			<td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_ACLEVEL; ?></td>
+			<td width="78%" class="vtable"> 
+				<select name="acoustic" class="formfld">
+				<?php $acvals = array(0=>_DISKSMANAGEEDITPHP_ACLEVEL_0,1=>_DISKSMANAGEEDITPHP_ACLEVEL_1,64=>_DISKSMANAGEEDITPHP_ACLEVEL_64,127=>_DISKSMANAGEEDITPHP_ACLEVEL_127);?>
+				<?php foreach ($acvals as $acval => $acname): ?>
+					<option value="<?=$acval;?>" <?php if($pconfig['acoustic'] == $acval) echo 'selected';?>><?=htmlspecialchars($acname);?></option>
+				<?php endforeach; ?>
+				</select>
+				<br>
+				<?=_DISKSMANAGEEDITPHP_ACLEVELTEXT; ?>
+			</td>
+		</tr>
+		<tr> 
+			<td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_PREFS; ?></td>
+			<td width="78%" class="vtable"> 
+				<select name="fstype" class="formfld">
+				<?php $fstlist = get_fstype_list(); ?>
+				<?php foreach ($fstlist as $fstval => $fstname): ?>
+					<option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
+				<?php endforeach; ?>
+				</select>
+				<br>
+				<?=_DISKSMANAGEEDITPHP_PREFSTEXT; ?>
+			</td>
+		</tr>
+		<tr> 
+			<td width="22%" valign="top">&nbsp;</td>
+			<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?_SAVE:_ADD?>"> 
+			<?php if (isset($id) && $a_disk[$id]): ?>
+				<input name="id" type="hidden" value="<?=$id;?>">
+			<?php endif; ?>
+			</td>
+		</tr>
+	</table>
 </form>
 <?php include("fend.inc"); ?>

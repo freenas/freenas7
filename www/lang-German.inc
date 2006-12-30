@@ -425,13 +425,24 @@ define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Diese Festplatte ist bereits in 
 define('_DISKSMANAGEEDITPHP_UDMA','UDMA Modus');
 define('_DISKSMANAGEEDITPHP_UDMATEXT','Sie k&ouml;nnen den UDMA Modus erzwingen falls Sie einen "UDMA_ERROR.... LBA" Meldung zu ihrer Festplatte erhalten.');
 define('_DISKSMANAGEEDITPHP_STANDBY','Festplatten Standbyzeit');
+define('_DISKSMANAGEEDITPHP_STANDBY_ALWAYSON','Immer an');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Festplatte nach dem letzten Zugriff nach der angegebenen Zeit
                     in Standby versetzen. <em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>');
 define('_DISKSMANAGEEDITPHP_APM','Advanced Power Management');
+define('_DISKSMANAGEEDITPHP_APM_0','Deaktiviert');
+define('_DISKSMANAGEEDITPHP_APM_1','Minimum power usage with Standby');
+define('_DISKSMANAGEEDITPHP_APM_64','Medium power usage with Standby');
+define('_DISKSMANAGEEDITPHP_APM_128','Minimum power usage without Standby');
+define('_DISKSMANAGEEDITPHP_APM_192','Medium power usage without Standby');
+define('_DISKSMANAGEEDITPHP_APM_254','Maximum performance, maximum power usage');
 define('_DISKSMANAGEEDITPHP_APMTEXT','Verringert den Stromverbrauch der Festplatte auf Kosten der Geschwindigkeit.<em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>');
 define('_DISKSMANAGEEDITPHP_ACLEVEL','Acoustic Level');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_0','Deaktiviert');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_1','Minimum performance, Minimum acoustic output');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_64','Medium acoustic output');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_127','Maximum performance, maximum acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','Lautst&auml;rke des Laufwerks w&auml;hrend des Betriebs einstellen.<em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>');
-define('_DISKSMANAGEEDITPHP_PREFS','Preformated FS');
+define('_DISKSMANAGEEDITPHP_PREFS','Vorformatiertes FS');
 define('_DISKSMANAGEEDITPHP_PREFSTEXT','Dateisystem von bereits mit Dateisystem und Daten versehenen Festplatten/Partitionen einstellen.<br>
                      <em>Voreinstellung "Unformated" f&uuml;r unformatierte Festplatte &uuml;bernehmen, dann das "Format menu" benutzen.</em>');
 

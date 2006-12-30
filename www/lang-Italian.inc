@@ -427,13 +427,24 @@ define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Esiste già questo disco nella li
 define('_DISKSMANAGEEDITPHP_UDMA','UDMA mode');
 define('_DISKSMANAGEEDITPHP_UDMATEXT','E\' possibile forzare l\'UDMA mode se il vostro harddrive vi dà messeggi del tipo &quot;UDMA_ERROR.... LBA&quot;.');
 define('_DISKSMANAGEEDITPHP_STANDBY','Tempo per lo standby dell\'hard disk');
+define('_DISKSMANAGEEDITPHP_STANDBY_ALWAYSON','Always on');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Mette l\'hard disk in standby quando è passata la quantità di tempo selezionata
                     dall\'ultimo accesso.
                     <em>Non settarlo per le schede CF.</em>');
 define('_DISKSMANAGEEDITPHP_APM','Advanced Power Management');
+define('_DISKSMANAGEEDITPHP_APM_0','Disabled');
+define('_DISKSMANAGEEDITPHP_APM_1','Minimum power usage with Standby');
+define('_DISKSMANAGEEDITPHP_APM_64','Medium power usage with Standby');
+define('_DISKSMANAGEEDITPHP_APM_128','Minimum power usage without Standby');
+define('_DISKSMANAGEEDITPHP_APM_192','Medium power usage without Standby');
+define('_DISKSMANAGEEDITPHP_APM_254','Maximum performance, maximum power usage');
 define('_DISKSMANAGEEDITPHP_APMTEXT','Questo consente di diminuire il consumo dei dischi a scapito delle prestazioni.
                     <em>Non settarlo per le schede CF.</em>');
 define('_DISKSMANAGEEDITPHP_ACLEVEL','acoustic level');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_0','Disabled');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_1','Minimum performance, Minimum acoustic output');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_64','Medium acoustic output');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_127','Maximum performance, maximum acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','Questo consente di settare il livello acustico dei dischi mentre sono operativi.
                     <em>Non settarlo per le schede CF.</em>');
 define('_DISKSMANAGEEDITPHP_PREFS','FS preformattato');

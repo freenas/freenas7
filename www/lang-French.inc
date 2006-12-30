@@ -420,10 +420,21 @@ define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Ce disque existe d&eacute;j&agra
 define('_DISKSMANAGEEDITPHP_UDMA','Mode UDMA');
 define('_DISKSMANAGEEDITPHP_UDMATEXT','Vous pouvez forcer le mode UDMA si vous avez le message "UDMA_ERROR.... LBA" avec votre disque dur.');
 define('_DISKSMANAGEEDITPHP_STANDBY','Delai de mise en veille du disque');
+define('_DISKSMANAGEEDITPHP_STANDBY_ALWAYSON','Always on');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Mets le disque en veille lorsque la dur&eacute;e sp&eacute;cifi&eacute;e depuis le dernier acc&egrave;s est &eacute;coul&eacute;e. <em>N\'activez PAS cette option pour les cartes Compact Flash.</em>');
 define('_DISKSMANAGEEDITPHP_APM','Gestion d\'&eacute;nergie avanc&eacute;e');
+define('_DISKSMANAGEEDITPHP_APM_0','Disabled');
+define('_DISKSMANAGEEDITPHP_APM_1','Minimum power usage with Standby');
+define('_DISKSMANAGEEDITPHP_APM_64','Medium power usage with Standby');
+define('_DISKSMANAGEEDITPHP_APM_128','Minimum power usage without Standby');
+define('_DISKSMANAGEEDITPHP_APM_192','Medium power usage without Standby');
+define('_DISKSMANAGEEDITPHP_APM_254','Maximum performance, maximum power usage');
 define('_DISKSMANAGEEDITPHP_APMTEXT','Ceci vous permet de baisser la consommation d\'&eacute;nergie du disque, au d&eacute;triment de ses performances.<em>N\'activez PAS cette option pour les cartes Compact Flash.</em>');
 define('_DISKSMANAGEEDITPHP_ACLEVEL','Niveau acoustique');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_0','Disabled');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_1','Minimum performance, Minimum acoustic output');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_64','Medium acoustic output');
+define('_DISKSMANAGEEDITPHP_ACLEVEL_127','Maximum performance, maximum acoustic output');
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','Ceci vous permet de contr&ocirc;ler le niveau sonore du disque en fonctionnement.<em>N\'activez PAS cette option pour les cartes Compact Flash.</em>');
 define('_DISKSMANAGEEDITPHP_PREFS','Syst&egrave;me de fichier pr&eacute;existant');
 define('_DISKSMANAGEEDITPHP_PREFSTEXT','Ceci vous permet d\'indiquer le type de syst&egrave;me de fichier d\'un disque contenant des donn&eacute;es.<br>
