@@ -415,6 +415,7 @@ define('_DISKSMANAGEPHP_NAMEDESC','Management');
 define('_DISKSMANAGEPHP_MSGCHANGED','The disk list has been changed.<br>You must apply the changes in order for them to take effect.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
 define('_DISKSMANAGEPHP_STANDBY','Standby time');
+define('_DISKSMANAGEPHP_STANDBYALWAYSON','Always on');
 define('_DISKSMANAGEPHP_FSUNKNOWN','Unknown or unformatted');
 define('_DISKSMANAGEPHP_EDIT','Edit disk');
 define('_DISKSMANAGEPHP_DEL','Delete disk');
@@ -427,7 +428,6 @@ define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','This disk already exists in the 
 define('_DISKSMANAGEEDITPHP_UDMA','UDMA mode');
 define('_DISKSMANAGEEDITPHP_UDMATEXT','You can force UDMA mode if you have "UDMA_ERROR.... LBA" message with your hard drive.');
 define('_DISKSMANAGEEDITPHP_STANDBY','Hard disk standby time');
-define('_DISKSMANAGEEDITPHP_STANDBY_ALWAYSON','Always on');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Puts the hard disk into standby mode when the selected amount of time after the last
                     access has elapsed. <em>Do not set this for CF cards.</em>');
 define('_DISKSMANAGEEDITPHP_APM','Advanced Power Management');

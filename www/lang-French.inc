@@ -408,6 +408,7 @@ define('_DISKSMANAGEPHP_NAMEDESC','Gestion');
 define('_DISKSMANAGEPHP_MSGCHANGED','La liste des disques a chang&eacute;.<br>Vous devez appliquer les changements pour qu\'ils prennent effet.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
 define('_DISKSMANAGEPHP_STANDBY','D&eacute;lai de mise en veille');
+define('_DISKSMANAGEPHP_STANDBYALWAYSON','Always on');
 define('_DISKSMANAGEPHP_FSUNKNOWN','Inconnu ou non format&eacute;');
 define('_DISKSMANAGEPHP_EDIT','Modifier le disque');
 define('_DISKSMANAGEPHP_DEL','Supprimer le  disque');
@@ -420,7 +421,6 @@ define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Ce disque existe d&eacute;j&agra
 define('_DISKSMANAGEEDITPHP_UDMA','Mode UDMA');
 define('_DISKSMANAGEEDITPHP_UDMATEXT','Vous pouvez forcer le mode UDMA si vous avez le message "UDMA_ERROR.... LBA" avec votre disque dur.');
 define('_DISKSMANAGEEDITPHP_STANDBY','Delai de mise en veille du disque');
-define('_DISKSMANAGEEDITPHP_STANDBY_ALWAYSON','Always on');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Mets le disque en veille lorsque la dur&eacute;e sp&eacute;cifi&eacute;e depuis le dernier acc&egrave;s est &eacute;coul&eacute;e. <em>N\'activez PAS cette option pour les cartes Compact Flash.</em>');
 define('_DISKSMANAGEEDITPHP_APM','Gestion d\'&eacute;nergie avanc&eacute;e');
 define('_DISKSMANAGEEDITPHP_APM_0','Disabled');

@@ -415,6 +415,7 @@ define('_DISKSMANAGEPHP_NAMEDESC','Gestione');
 define('_DISKSMANAGEPHP_MSGCHANGED','La lista dei dischi &egrave; stata cambiata.<br>E\' necessario applicare i cambiamenti affinché abbiano effetto.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
 define('_DISKSMANAGEPHP_STANDBY','Tempo per lo standby');
+define('_DISKSMANAGEPHP_STANDBYALWAYSON','Always on');
 define('_DISKSMANAGEPHP_FSUNKNOWN','Sconosciuto o non formattato');
 define('_DISKSMANAGEPHP_EDIT','Edita disco');
 define('_DISKSMANAGEPHP_DEL','Cancella disco');
@@ -427,7 +428,6 @@ define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Esiste già questo disco nella li
 define('_DISKSMANAGEEDITPHP_UDMA','UDMA mode');
 define('_DISKSMANAGEEDITPHP_UDMATEXT','E\' possibile forzare l\'UDMA mode se il vostro harddrive vi dà messeggi del tipo &quot;UDMA_ERROR.... LBA&quot;.');
 define('_DISKSMANAGEEDITPHP_STANDBY','Tempo per lo standby dell\'hard disk');
-define('_DISKSMANAGEEDITPHP_STANDBY_ALWAYSON','Always on');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Mette l\'hard disk in standby quando è passata la quantità di tempo selezionata
                     dall\'ultimo accesso.
                     <em>Non settarlo per le schede CF.</em>');

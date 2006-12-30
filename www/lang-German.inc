@@ -413,6 +413,7 @@ define('_DISKSMANAGEPHP_NAMEDESC','Management');
 define('_DISKSMANAGEPHP_MSGCHANGED','Der Festplattenstatus hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
 define('_DISKSMANAGEPHP_STANDBY','Standbyzeit');
+define('_DISKSMANAGEPHP_STANDBYALWAYSON','Immer an');
 define('_DISKSMANAGEPHP_FSUNKNOWN','Unbekannt oder nicht formatiert');
 define('_DISKSMANAGEPHP_EDIT','Bearbeite Festplatte');
 define('_DISKSMANAGEPHP_DEL','L&ouml;sche Festplatte');
@@ -425,7 +426,6 @@ define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Diese Festplatte ist bereits in 
 define('_DISKSMANAGEEDITPHP_UDMA','UDMA Modus');
 define('_DISKSMANAGEEDITPHP_UDMATEXT','Sie k&ouml;nnen den UDMA Modus erzwingen falls Sie einen "UDMA_ERROR.... LBA" Meldung zu ihrer Festplatte erhalten.');
 define('_DISKSMANAGEEDITPHP_STANDBY','Festplatten Standbyzeit');
-define('_DISKSMANAGEEDITPHP_STANDBY_ALWAYSON','Immer an');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Festplatte nach dem letzten Zugriff nach der angegebenen Zeit
                     in Standby versetzen. <em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>');
 define('_DISKSMANAGEEDITPHP_APM','Advanced Power Management');

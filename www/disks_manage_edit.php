@@ -141,7 +141,7 @@ if ($_POST) {
 			<td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_STANDBY; ?></td>
 			<td width="78%" class="vtable"> 
 				<select name="harddiskstandby" class="formfld">
-				<?php $sbvals = array(0=>_DISKSMANAGEEDITPHP_STANDBY_ALWAYSON, 5=>"5 "._MINUTES, 10=>"10 "._MINUTES, 20=>"20 "._MINUTES, 30=>"30 "._MINUTES, 60=>"60 "._MINUTES);?>
+				<?php $sbvals = array(0=>_DISKSMANAGEPHP_STANDBYALWAYSON, 5=>"5 "._MINUTES, 10=>"10 "._MINUTES, 20=>"20 "._MINUTES, 30=>"30 "._MINUTES, 60=>"60 "._MINUTES);?>
 				<?php foreach ($sbvals as $sbval => $sbname): ?>
 					<option value="<?=$sbval;?>" <?php if($pconfig['harddiskstandby'] == $sbval) echo 'selected';?>><?=htmlspecialchars($sbname);?></option>
 				<?php endforeach; ?>
