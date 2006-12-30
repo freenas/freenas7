@@ -152,8 +152,9 @@ function enable_change(enable_change) {
         <?=$mandfldhtml;?>
         <select name="interface" class="formfld" id="interface">
           <?php foreach($a_interface as $if => $ifinfo): ?>
-          <option value="<?=$if;?>"
-          <?php if ($if == $pconfig['if']) echo "selected";?>><?=$if?></option>
+					<?php $ifinfo = get_interface_info($if); if($ifinfo['status'] == "up"): ?>
+					<option value="<?=$if;?>"<?php if ($if == $pconfig['if']) echo "selected";?>><?=$if?></option>
+					<?php endif; ?>
           <?php endforeach; ?>
         </select>
         <br><?=_SRVUPNP_INTERFACETEXT;?>
