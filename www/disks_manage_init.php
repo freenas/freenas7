@@ -88,72 +88,78 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "disk type");
-	$reqdfieldsn = explode(",", "Disk,Type");
+	$reqdfieldsn = array(_DISK,_TYPE);
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-		if (!$input_errors) 	{
-			$do_format = true;
-			$disk = $_POST['disk'];
-			$type = $_POST['type'];
-			$notinitmbr= $_POST['notinitmbr'];
+	if (!$input_errors) {
+		$do_format = true;
+		$disk = $_POST['disk'];
+		$type = $_POST['type'];
+		$notinitmbr= $_POST['notinitmbr'];
 
 		/* Check if disk is mounted. */ 
 		if(disks_check_mount_fullname($disk)) {
-		$errormsg = sprintf( _DISKSMANAGEINITPHP_DISKMOUNTERROR, "disks_mount_tools.php?disk={$disk}&action=umount");
-		$do_format = false;
+			$errormsg = sprintf( _DISKSMANAGEINITPHP_DISKMOUNTERROR, "disks_mount_tools.php?disk={$disk}&action=umount");
+			$do_format = false;
 		}
 
-		if($do_format) {
+		if ($do_format) {
 			/* Get the id of the disk array entry. */
 			$NotFound = 1;
 			$id = array_search_ex($disk, $a_disk, "fullname");
 
-			if ($id) {
+			/* disk */
+			if ($id !== false) {
 				/* Set new filesystem type. */
  				$a_disk[$id]['fstype'] = $type;
 				$NotFound = 0;
-			}
-			else {
+			} else {
 				$id = array_search_ex($disk, $a_gmirror, "fullname");
 			}
+
+			/* gmirror */
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_gmirror[$id]['fstype'] = $type;
 				$NotFound = 0;
-			}
-			else {
+			} else {
 				$id = array_search_ex($disk, $a_gstripe, "fullname");
 			}
+
+			/* gstripe */
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_gstripe[$id]['fstype'] = $type;
 				$NotFound = 0;
-			}
-			else {
+			} else {
 				$id = array_search_ex($disk, $a_gconcat, "fullname");
 			}
+
+			/* gconcat */
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_gconcat[$id]['fstype'] = $type;
 				$NotFound = 0;
-			}
-			else {
+			} else {
 				$id = array_search_ex($disk, $a_graid5, "fullname");
 			}
+
+			/* graid5 */
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_graid5[$id]['fstype'] = $type;
 				$NotFound = 0;
-			}
-			else {
+			} else {
 				$id = array_search_ex($disk, $a_gvinum, "fullname");
 			}
+
+			/* gvinum */
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_gvinum[$id]['fstype'] = $type;
 				$NotFound = 0;
 			}
-			
+
 			write_config();
 		}
 	}
@@ -202,10 +208,8 @@ function disk_change() {
             <td class="vtable">
               <select name="disk" class="formfld" id="disk" onchange="disk_change()">
                 <?php foreach ($all_disk as $diskv): ?>
-                <option value="<?=$diskv['fullname'];?>"<?php if ($diskv['name'] == $disk) echo "selected";?>>
-                <?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?>
+                <option value="<?=$diskv['fullname'];?>" <?php if ($diskv['name'] == $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
                 <?php endforeach; ?>
-                </option>
               </select>
             </td>
       		</tr>

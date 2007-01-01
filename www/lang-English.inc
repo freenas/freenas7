@@ -197,7 +197,7 @@ define('_MENULEFT_GRAPH','Graph');
 define('_SYSTEMPHP_MODULE_NAME',_MENULEFT_SYSTEM);
 define('_SYSTEMPHP_MODULE_NAME_DESCRIPTION',_MENULEFT_SYSGENSETUP);
 define('_SYSTEMPHP_HOSTNAME','Hostname');
-define('_SYSTEMPHP_HOSTNAMETEXT','Name of the NAS host, without domain part<br>e.g. <em>nas');
+define('_SYSTEMPHP_HOSTNAMETEXT','Name of the NAS host, without domain part<br>e.g. <em>nas</em>');
 define('_SYSTEMPHP_DOMAIN','Domain');
 define('_SYSTEMPHP_DOMAINTEXT','e.g. <em>mycorp.com</em>');
 define('_SYSTEMPHP_DNS','DNS servers');
@@ -514,9 +514,9 @@ define('_DISKSRAIDEDITPHP_RAIDNAME','Raid name');
 define('_DISKSRAIDEDITPHP_GVBALANCEALGO','Balance algorithm');
 define('_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT','Select your read balance algorithm.');
 define('_DISKSRAIDEDITPHP_RAID0','striping');
-define('_DISKSRAIDEDITPHP_JBOD','JBOD');
 define('_DISKSRAIDEDITPHP_RAID1','mirroring');
 define('_DISKSRAIDEDITPHP_RAID5','rotated block-interleaved parity');
+define('_DISKSRAIDEDITPHP_JBOD','JBOD');
 define('_DISKSRAIDEDITPHP_MEMBERS','Members of this volume');
 
 //file: disks_raid_info.php

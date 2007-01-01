@@ -201,7 +201,7 @@ define('_MENULEFT_GRAPH','Graph');
 define('_SYSTEMPHP_MODULE_NAME',_MENULEFT_SYSTEM);
 define('_SYSTEMPHP_MODULE_NAME_DESCRIPTION',_MENULEFT_SYSGENSETUP);
 define('_SYSTEMPHP_HOSTNAME','Host Name');
-define('_SYSTEMPHP_HOSTNAMETEXT','Name des NAS Host, ohne Domain<br>z.B. <em>nas');
+define('_SYSTEMPHP_HOSTNAMETEXT','Name des NAS Host, ohne Domain<br>z.B. <em>nas</em>');
 define('_SYSTEMPHP_DOMAIN','Domain');
 define('_SYSTEMPHP_DOMAINTEXT','z.B. <em>mycorp.com</em>');
 define('_SYSTEMPHP_DNS','DNS Server');
@@ -488,6 +488,8 @@ define('_DISKSRAIDPHP_VOLUME','Volume Name');
 // Software RAID common word
 define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
 define('_DISKSRAIDPHP_GMIRROR','Geom Mirror');
+define('_DISKSRAIDPHP_GSTRIPE','Geom Stripe');
+define('_DISKSRAIDPHP_GCONCAT','Geom Concat');
 define('_DISKSRAIDPHP_GRAID5','Geom Raid5');
 define('_DISKSRAIDPHP_UNSTABLE','(unstable)');
 
@@ -516,6 +518,7 @@ define('_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT','Auswahl des "Read Balance Algorith
 define('_DISKSRAIDEDITPHP_RAID0','striping');
 define('_DISKSRAIDEDITPHP_RAID1','mirroring');
 define('_DISKSRAIDEDITPHP_RAID5','rotated block-interleaved parity');
+define('_DISKSRAIDEDITPHP_JBOD','JBOD');
 define('_DISKSRAIDEDITPHP_MEMBERS','Verwendete Ger&auml;te f&uuml;r dieses RAID');
 
 //file: disks_raid_info.php

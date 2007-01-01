@@ -195,7 +195,7 @@ define('_MENULEFT_GRAPH','Graph');
 define('_SYSTEMPHP_MODULE_NAME','Sistema');
 define('_SYSTEMPHP_MODULE_NAME_DESCRIPTION','Configuración General');
 define('_SYSTEMPHP_HOSTNAME','Nombre de Host');
-define('_SYSTEMPHP_HOSTNAMETEXT','Nombre del host, sin la parte del dominio<br>e.j. <em>nas');
+define('_SYSTEMPHP_HOSTNAMETEXT','Nombre del host, sin la parte del dominio<br>e.j. <em>nas</em>');
 define('_SYSTEMPHP_DOMAIN','Dominio');
 define('_SYSTEMPHP_DOMAINTEXT','e.j. <em>micorp.com</em>');
 define('_SYSTEMPHP_DNS','Servidores DNS');
@@ -319,6 +319,8 @@ define('_DISKSRAIDPHP_VOLUME','Volume Name');
 // Software RAID common word
 define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
 define('_DISKSRAIDPHP_GMIRROR','Geom Mirror');
+define('_DISKSRAIDPHP_GSTRIPE','Geom Stripe');
+define('_DISKSRAIDPHP_GCONCAT','Geom Concat');
 define('_DISKSRAIDPHP_GRAID5','Geom Raid5');
 define('_DISKSRAIDPHP_UNSTABLE','(unstable)');
 
@@ -347,6 +349,7 @@ define('_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT','Select your read balance algorithm
 define('_DISKSRAIDEDITPHP_RAID0','striping');
 define('_DISKSRAIDEDITPHP_RAID1','mirroring');
 define('_DISKSRAIDEDITPHP_RAID5','rotated block-interleaved parity');
+define('_DISKSRAIDEDITPHP_JBOD','JBOD');
 define('_DISKSRAIDEDITPHP_MEMBERS','Members of this volume');
 
 //file: disks_raid_info.php
