@@ -4,7 +4,7 @@ require("guiconfig.inc");
 $pgtitle = array(_LICENSE_NAME); 
 ?>
 <?php include("fbegin.inc"); ?>
-            <p><strong>FreeNAS is Copyright &copy; 2005-2006 by Olivier Cochard-Labbe 
+            <p><strong>FreeNAS is Copyright &copy; 2005-2007 by Olivier Cochard-Labbe 
               (<a href="mailto:olivier@freenas.org">olivier@freenas.org</a>).<br>
               All rights reserved.</strong></p>
 		<p>FreeNAS is based on m0n0wall which is Copyright &copy; 2002-2006 by Manuel Kasper (mk@neon1.net).</p>

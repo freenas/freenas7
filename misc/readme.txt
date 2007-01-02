@@ -74,6 +74,7 @@ FreeNAS 0.682b:
 - CIFS: add two parameters for trying to improve performance (samba perf suck on FreeBSD...)
 - Fixed fstab warning message while booting (Thanks to Graham Wharton)
 - Modified build scripts
+- New language: Traditional and simplified Chinese (Thanks to Baikuan Hsu)
 
 FreeNAS 0.681b:
 - Allow the following characters in CIFS workgroup name: ! @ # $ % ^ & ( ) _ - ; : ' " , .
