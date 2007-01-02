@@ -140,7 +140,7 @@ define('_MSGVALIDNETBIT','Eine g&uuml;ltige Subnet Adressierung muss eingegeben 
 define('_MSGVALIDTCPPORT','Der TCP/IP Port muss eingetragen werden.');
 define('_MSGVALIDPASSWORD','Passwort FALSCH.');
 define('_MSGSCHED_TEXT','Hinweis: Strg-Klick (oder Kommando-Klick auf dem Mac) um Stunden, Tage und Monate zu w&auml;hlen bzw. abzuw&auml;hlen.');
-define('_MSGFILESYSTEM','UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS).  Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!.');
+define('_MSGFILESYSTEM','UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!');
 
 // states
 define('_ACTIVE','Aktiv');

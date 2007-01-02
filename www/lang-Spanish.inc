@@ -134,7 +134,7 @@ define('_MSGVALIDNETBIT','A valid network bit count must be specified.');
 define('_MSGVALIDTCPPORT','The TCP port must be a valid port number.');
 define('_MSGVALIDPASSWORD','Password don\'t match.');
 define('_MSGSCHED_TEXT','Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.');
-define('_MSGFILESYSTEM','UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS).  Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!.');
+define('_MSGFILESYSTEM','UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!');
 
 // states
 define('_ACTIVE','Active');
