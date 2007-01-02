@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>1.4</version>
+	<version>1.5</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -36,8 +36,8 @@
 			<if>auto</if>
 			<ipaddr>192.168.1.250</ipaddr>
 			<subnet>24</subnet>
-			<media></media>
-			<mediaopt></mediaopt>
+			<media/>
+			<mediaopt/>
 			<!--
 			<wireless>
 				*see below (opt[n])*
@@ -91,25 +91,72 @@
 	</staticroutes>
 	<disks>
 		<!--
-			<disk>
-                        <device>xxx</device>
-                        <type>IDE|SCSI</type>
-                        <position>master|slave|number</position>
-                        <desc>xxx</desc>
-                        <status>ok|new|missing</status>
-            </disk>
-                -->
-		
+		<disk>
+			<name>xxx</name>
+			<fullname>/dev/xxx</fullname>
+			<harddiskstandby>0</harddiskstandby>
+			<acoustic>0</acoustic>
+			<apm>0</apm>
+			<udma>auto</udma>
+			<type>IDE</type>
+			<desc>xxx</desc>
+			<size>xxxMB</size>
+			<fstype>xxx</fstype>
+		</disk>
+		-->
 	</disks>
+	<gvinum>
+		<!--
+		<vdisk>
+			<name>xxx</name>
+			<type>0</type>
+			<diskr>/dev/xxx</diskr>
+			<diskr>/dev/xxx</diskr>
+			<desc>xxx</desc>
+			<fullname>/dev/xxx</fullname>
+		</vdisk>
+		-->
+	</gvinum>
+	<gmirror>
+		<!--
+		<vdisk>
+			...
+		</vdisk>
+		-->
+	</gmirror>
+	<gconcat>
+		<!--
+		<vdisk>
+			...
+		</vdisk>
+		-->
+	</gconcat>
+	<gstripe>
+		<!--
+		<vdisk>
+			...
+		</vdisk>
+		-->
+	</gstripe>
+	<graid5>
+		<!--
+		<vdisk>
+			...
+		</vdisk>
+		-->
+	</graid5>
 	<mounts>
-	<!--
-                <mount>
-                        <device>xxx</device>
-                        <fstype>msdosfs|ufs|ntfs|etc...</fstype>
-                        <options>xxx</options>
-                </mount>
-                -->
-    </mounts>
+		<!--
+		<mount>
+			<mdisk>/dev/xxx</mdisk>
+			<partition>xxx</partition>
+			<fstype>xxx</fstype>
+			<desc>xxx</desc>
+			<sharename>xxx</sharename>
+			<fullname>/dev/xxx</fullname>
+		</mount>
+		-->
+	</mounts>
 	<samba>
 		<!-- <enable/> -->
 		<netbiosname>freenas</netbiosname>
@@ -141,16 +188,18 @@
 		<maxcon>0</maxcon>
 	</rsyncd>
 	<unison>
-    <!-- <enable/> -->
-    <share>share1</share>
+    <!--
+		<enable/>
+    <share>xxx</share>
+    -->
     <workdir>.unison</workdir>
-  <makedir/>
+  	<makedir/>
 	</unison>
 	<upnp>
-    <!-- <enable/> -->
+    <!--
+		<enable/>
     <name/>
     <if/>
-    <!--
     <content/>
     -->
 	</upnp>
@@ -188,8 +237,7 @@
 		-->
 	</syslog>
 	<access>
-	<userid>1002</userid>
-	<groupid>1002</groupid>
-    </access>
-
+		<userid>1002</userid>
+		<groupid>1002</groupid>
+	</access>
 </freenas>
