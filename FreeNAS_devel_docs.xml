@@ -5,7 +5,7 @@
   <title>FreeNAS Developers' Handbook</title>
 
   <bookinfo>
-    <date>December 6, 2006</date>
+    <date>January 4, 2007</date>
 
     <author>
       <firstname>Olivier</firstname>
@@ -1358,6 +1358,31 @@ done</programlisting>
           <para>WITH_SCPONLY_UNISON=YES</para>
 
           <para><command>make</command></para>
+
+          <para><command>install -s work/scponly-4.4/scponly
+          $FREENAS/usr/local/bin/</command></para>
+        </sect3>
+
+        <sect3>
+          <title>openssh-portable with HPN patch</title>
+
+          <para>Modify the Makefile of the openssh-portable port:</para>
+
+          <para><command>cd
+          /usr/ports/security/openssh-portable</command></para>
+
+          <para>Replace this line:</para>
+
+          <para>HPN "Enable HPN-SSH patch" off \</para>
+
+          <para>With this line:</para>
+
+          <para>HPN "Enable HPN-SSH patch" on \</para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp -p work/openssh-4.5p1/sshd
+          $FREENAS/usr/local/bin/</command></para>
 
           <para><command>install -s work/scponly-4.4/scponly
           $FREENAS/usr/local/bin/</command></para>
