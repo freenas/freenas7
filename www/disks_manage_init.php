@@ -66,20 +66,21 @@ if (!is_array($config['gvinum']['vdisk']))
 
 gvinum_sort();
 
-// Get all fstype supported by FreeNAS
+/* Get all fstype supported by FreeNAS. */
 $a_fst = get_fstype_list();
 // Remove NTFS: can't format on NTFS under FreeNAS
 unset($a_fst['ntfs']);
 // Remove the first blank line 'unknown'
 $a_fst = array_slice($a_fst, 1);
 
+/* Get disk configurations. */
 $a_disk = &$config['disks']['disk'];
 $a_gconcat = &$config['gconcat']['vdisk'];
 $a_gmirror = &$config['gmirror']['vdisk'];
 $a_gstripe = &$config['gstripe']['vdisk'];
 $a_graid5 = &$config['graid5']['vdisk'];
 $a_gvinum = &$config['gvinum']['vdisk'];
-$all_disk = array_merge($a_disk,$a_gconcat,$a_gmirror,$a_gstripe,$a_graid5,$a_gvinum);
+$a_alldisk = array_merge($a_disk,$a_gconcat,$a_gmirror,$a_gstripe,$a_graid5,$a_gvinum);
 
 if ($_POST) {
 	unset($input_errors);
@@ -176,7 +177,7 @@ if (!isset($do_format)) {
 function disk_change() {
   switch(document.iform.disk.value)
   {
-    <?php foreach ($a_disk as $diskv): ?>
+    <?php foreach ($a_alldisk as $diskv): ?>
 		case "<?=$diskv['fullname'];?>":
 		  <?php $i = 0;?>
       <?php foreach ($a_fst as $fstval => $fstname): ?>
@@ -207,7 +208,7 @@ function disk_change() {
             <td valign="top" class="vncellreq"><?=_DISK; ?></td>
             <td class="vtable">
               <select name="disk" class="formfld" id="disk" onchange="disk_change()">
-                <?php foreach ($all_disk as $diskv): ?>
+                <?php foreach ($a_alldisk as $diskv): ?>
                 <option value="<?=$diskv['fullname'];?>" <?php if ($diskv['name'] == $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
                 <?php endforeach; ?>
               </select>
