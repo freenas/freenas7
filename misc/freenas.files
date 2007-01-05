@@ -325,14 +325,16 @@ usr/sbin/rpc.lockd
 usr/sbin/rpc.statd
 
 # sshd - Daemon program for ssh
-usr/sbin/sshd
+# FreeNAS use the port openssh-portable with HPN-SSH patch enabled
+#usr/sbin/sshd
 
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
 
 # sft-server
-usr/libexec/sftp-server
+# FreeNAS use the port openssh-portable with HPN-SSH patch enabled
+#usr/libexec/sftp-server
 
 ####### contents of /usr/share/misc
 usr/share/misc/termcap

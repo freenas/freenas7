@@ -70,8 +70,9 @@ svn/misc/setupfreenas.sh
 
 FreeNAS 0.682b:
 - Fixed missing function (fdisk)
-- CIFS: hide dot files, hide Netatalk system directory and Apple autocreate directory
+- CIFS: hide dot files for prevent Netatalk system directory to be delete
 - CIFS: add two parameters for trying to improve performance (samba perf suck on FreeBSD...)
+- SSH: Add HPN-SSH patch by using openssh-portable FreeBSD port
 - Fixed fstab warning message while booting (Thanks to Graham Wharton)
 - Modified build scripts
 - New language: Traditional and simplified Chinese (Thanks to Baikuan Hsu)

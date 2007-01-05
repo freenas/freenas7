@@ -2,7 +2,7 @@
 /*
 	services.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -251,7 +251,9 @@ path = /mnt/{$mountent['sharename']}
 public = yes
 writeable = yes
 printable = no
-veto files = /Network Trash Folder/Icon?/:2e*/.AppleDesktop/.AppleDB/.AppleDouble/TheFindByContentFolder/TheVolumeSettingsFolder/Temporary Items/.snap/
+#Old veto line that create problem with 'icon' named file for example
+#veto files = /Network Trash Folder/Icon?/:2e*/.AppleDesktop/.AppleDB/.AppleDouble/TheFindByContentFolder/TheVolumeSettingsFolder/Temporary Items/.snap/
+#This next line can (hide dot file) can be enough:
 hide dot files = yes
 {$guestmode}
 
@@ -655,6 +657,7 @@ function services_sshd_configure() {
 			
 		$sshconf = <<<EOD
 SyslogFacility LOCAL3
+Protocol 2
 UseDNS no
 Subsystem       sftp    /usr/libexec/sftp-server
 
@@ -711,7 +714,7 @@ EOD;
 		$fd = fopen("{$g['varetc_path']}/ssh/ssh_host_dsa_key", "w");
 		if (!$fd) {
 			printf("Error: cannot open /ssh/ssh_host_dsa_key in service_sshd_configure().\n");
-			return 1;
+			$result = 1 ;
 		}
 		
 		fwrite($fd, $key);
@@ -722,7 +725,7 @@ EOD;
 
 		/* run sshd if no previous error*/
 		if (!$result) {
-			$result = mwexec("/usr/sbin/sshd");
+			$result = mwexec("/usr/sbin/sshd -f {$g['varetc_path']}/ssh/sshd_config -h {$g['varetc_path']}/ssh/ssh_host_dsa_key");
 		}
 
 

@@ -2,7 +2,7 @@
 /*
 	lang-English.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -530,7 +530,7 @@ define('_DISKSRAIDINITPHP_FORMAT','Format UFS disk!');
 //file: disks_raid_tools.php
 define('_DISKSRAIDTOOLSPHP_OBJNAME','Object name');
 define('_DISKSRAIDTOOLSPHP_COMMAND','Command');
-define('_DISKSRAIDTOOLSPHP_INFO','GVINUM command output:');
+define('_DISKSRAIDTOOLSPHP_INFO','command output:');
 define('_DISKSRAIDTOOLSPHP_SENDCMD','Send Command!');
 define('_DISKSRAIDTOOLSPHP_TEXT','1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly).');
 
