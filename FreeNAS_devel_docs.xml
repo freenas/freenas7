@@ -1384,6 +1384,9 @@ done</programlisting>
           <para><command>cp -p work/openssh-4.5p1/sshd
           $FREENAS/usr/local/bin/</command></para>
 
+          <para><command>cp -p work/openssh-4.5p1/sftp-server
+          $FREENAS/usr/libexec/</command></para>
+
           <para><command>install -s work/scponly-4.4/scponly
           $FREENAS/usr/local/bin/</command></para>
         </sect3>
