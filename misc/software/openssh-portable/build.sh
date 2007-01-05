@@ -2,7 +2,10 @@
 
 build_openssh-portable() {
 	cd /usr/ports/security/openssh-portable/
-	# MUST REPLACE A NO BY A YES in the Makefile !!!!!
+
+	# Copy options file
+	mkdir /var/db/ports/openssh/
+	cp -v -p $SVNDIR/misc/software/openssh-portable/files/options /var/db/ports/openssh/
 
 	make clean
 	make
