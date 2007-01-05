@@ -31,8 +31,8 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
+require("disks_raid.inc");
 
 $pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GCONCAT, _DISKSRAIDPHP_NAMEDESC);
 
@@ -43,7 +43,6 @@ gconcat_sort();
 $a_raid = &$config['gconcat']['vdisk'];
 
 if ($_POST) {
-
 	$pconfig = $_POST;
 
 	if ($_POST['apply']) {
@@ -67,14 +66,19 @@ if ($_POST) {
 $raidstatus=get_sraid_disks_list();
 
 if ($_GET['act'] == "del") {
+	unset($errormsg);
 	if ($a_raid[$_GET['id']]) {
-		$raidname=$a_raid[$_GET['id']]['name'];
-		disks_raid_gconcat_delete($raidname);
-		unset($a_raid[$_GET['id']]);
-		write_config();
-		touch($d_raidconfdirty_path);
-		header("Location: disks_raid_gconcat.php");
-		exit;
+		if(0 == disks_raid_check_mount($a_raid[$_GET['id']])) {
+			$raidname=$a_raid[$_GET['id']]['name'];
+			disks_raid_gconcat_delete($raidname);
+			unset($a_raid[$_GET['id']]);
+			write_config();
+			touch($d_raidconfdirty_path);
+			header("Location: disks_raid_gconcat.php");
+			exit;
+		} else {
+			$errormsg = sprintf( _DISKSRAIDPHP_RAIDVOLUMEMOUNTERROR, "disks_mount.php");
+		}
 	}
 }
 ?>
@@ -100,6 +104,7 @@ if ($_GET['act'] == "del") {
   <tr>
     <td class="tabcont">
 <form action="disks_raid_gconcat.php" method="post">
+<?php if ($errormsg) print_error_box($errormsg); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if (file_exists($d_raidconfdirty_path)): ?><p>
 <?php print_info_box_np(_DISKSRAIDPHP_MSGCHANGED);?><br>

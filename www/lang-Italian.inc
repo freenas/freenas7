@@ -489,6 +489,7 @@ define('_DISKSRAIDPHP_FORMAT','Formatta il RAID');
 define('_DISKSRAIDPHP_TOOLS','Strumenti');
 define('_DISKSRAIDPHP_INFO','Informazioni');
 define('_DISKSRAIDPHP_VOLUME','Nome volume');
+define('_DISKSRAIDPHP_RAIDVOLUMEMOUNTERROR','The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding.');
 
 // Software RAID common word
 define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
