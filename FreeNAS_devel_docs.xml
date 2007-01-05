@@ -14,7 +14,7 @@
     </author>
 
     <copyright>
-      <year>2005-2006</year>
+      <year>2005-2007</year>
 
       <holder>FreeNAS Documentation Project.</holder>
     </copyright>
@@ -1381,14 +1381,11 @@ done</programlisting>
 
           <para><command>make</command></para>
 
-          <para><command>cp -p work/openssh-4.5p1/sshd
-          $FREENAS/usr/local/bin/</command></para>
+          <para><command>install -vs work/openssh-4.5p1/sshd
+          $FREENAS/usr/sbin/</command></para>
 
-          <para><command>cp -p work/openssh-4.5p1/sftp-server
+          <para><command>install -vs work/openssh-4.5p1/sftp-server
           $FREENAS/usr/libexec/</command></para>
-
-          <para><command>install -s work/scponly-4.4/scponly
-          $FREENAS/usr/local/bin/</command></para>
         </sect3>
 
         <sect3>
