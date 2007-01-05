@@ -91,7 +91,7 @@ if ($_GET['act'] == "del")
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact">Users</li>
+	<li class="tabact"><?=_ACCESS_USERS;?></li>
 	<li class="tabinact"><a href="access_users_groups.php"><?=_ACCESS_GROUPS;?></a></li>
   </ul>
   </td></tr>

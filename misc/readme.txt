@@ -75,7 +75,7 @@ FreeNAS 0.682b:
 - SSH: Add HPN-SSH patch by using openssh-portable FreeBSD port
 - Fixed fstab warning message while booting (Thanks to Graham Wharton)
 - Modified build scripts
-- New language: Traditional and simplified Chinese (Thanks to Baikuan Hsu)
+- New language: Traditional and simplified Chinese (Thanks to Baikuan Hsu), Dutch (thanks to Kris Verhoeven)
 
 FreeNAS 0.681b:
 - Allow the following characters in CIFS workgroup name: ! @ # $ % ^ & ( ) _ - ; : ' " , .

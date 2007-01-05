@@ -208,7 +208,7 @@ function enable_change(enable_change) {
             <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_DOSCHARSET ; ?></td>
             <td width="78%" class="vtable">
               <select name="doscharset" class="formfld" id="doscharset">
-              <?php $types = explode(",", "CP850,CP852,CP437,ASCII"); $vals = explode(" ", "CP850 CP852 CP437 ASCII");?>
+              <?php $types = explode(",", "CP850,CP852,CP437,CP932,ASCII"); $vals = explode(" ", "CP850 CP852 CP437 CP932 ASCII");?>
               <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                 <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['doscharset']) echo "selected";?>>
                 <?=htmlspecialchars($types[$j]);?>
@@ -221,7 +221,7 @@ function enable_change(enable_change) {
             <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_UNIXCHARSET ; ?></td>
             <td width="78%" class="vtable">
               <select name="unixcharset" class="formfld" id="unixcharset">
-              <?php $types = explode(",", "UTF-8,iso-8859-1,iso-8859-15,gb2312,ASCII"); $vals = explode(" ", "UTF-8 iso-8859-1 iso-8859-15 gb2312 ASCII");?>
+              <?php $types = explode(",", "UTF-8,iso-8859-1,iso-8859-15,gb2312,EUC-JP,ASCII"); $vals = explode(" ", "UTF-8 iso-8859-1 iso-8859-15 gb2312 EUC-JP ASCII");?>
               <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                 <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['unixcharset']) echo "selected";?>>
                 <?=htmlspecialchars($types[$j]);?>
