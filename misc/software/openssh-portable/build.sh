@@ -16,8 +16,8 @@ build_openssh-portable() {
 install_openssh-portable() {
 	cd /usr/ports/security/openssh-portable/
 
-	install -vs work/openssh-4.5p1/sshd $FREENAS/usr/sbin/
-	install -vs work/openssh-4.5p1/sftp-server $FREENAS/usr/libexec/
+	install -vs work/openssh-*/sshd $FREENAS/usr/sbin/
+	install -vs work/openssh-*/sftp-server $FREENAS/usr/libexec/
 
 	return 0
 }
