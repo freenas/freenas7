@@ -3,7 +3,7 @@
 /*
 	rc.initial.install
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -109,7 +109,8 @@ You can now remove the CD-ROM and reboot the PC.
 For using the DATA partition:
 1. Add the disk $harddrive on the Disks:Management page
 2. Add the mount point on the disks:Mount point page
-(disk: $harddrive, partition 2, Filesystem: UFS)
+(disk: $harddrive, partition 2, Filesystem: UFS + Softupdates)
+DO NOT format the $harddrive drive !
 
 Press ENTER to continue.
 
