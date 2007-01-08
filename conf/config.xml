@@ -13,6 +13,7 @@
 		<timezone>Etc/UTC</timezone>
 		<time-update-interval>300</time-update-interval>
 		<timeservers>pool.ntp.org</timeservers>
+		<language>English</language>
 		<webgui>
 			<protocol>http</protocol>
 			<!--
