@@ -41,9 +41,11 @@
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
 	
-	echo "Install FreeNAS on small partition 1 and create partition 2 for DATA\n";
-	echo "\nWARNING: It will erase ALL your partitions and data on the destination hard drive!\n";
-	echo "\nWARNING: You can't install FreeNAS if it's allready installed (Use upgrade from Web GUI)\n";
+	echo "Two Partition Install\n";
+	echo "Creates two partitions on the boot disk\n:";
+	echo "Installs FreeNAS on (small) partition 1 and creates and formats partition 2 for DATA\n";
+	echo "\nWARNING: This WILL erase ALL your partitions and data on the destination hard drive!\n";
+	echo "\nWARNING: You can't install FreeNAS if it's already installed on a drive (Use upgrade from Web GUI)\n";
 	echo "\nHere is the list of detected CDROM:\n";
 	
 	foreach ($cdlist as $cdromk =>$cdromv) 	{
@@ -58,7 +60,7 @@
 		}
 	} while (!is_validaliasname($cdrom));
 
-	echo "Here is the list of detected disk:\n";
+	echo "Here is the list of detected disks:\n";
 
 	foreach ($disklist as $diskk => $diskv) 	{
 		echo "$diskk (desc: {$diskv['desc']})\n";
@@ -75,26 +77,26 @@
 	/* check if destination drive is mounted */
 
 	if (disks_check_mount($harddrive)) 	{
-		echo "\nYour destination drive is allready used!\n";
+		echo "\nYour destination drive is already used!\n";
 		fgets($fp);
 		exit(0);
 	}
 
 	if(system_install_mount_cd($cdrom)) 	{
-		echo "\nMeet a problem for mounting the CDROM.\n";
+		echo "\nThere is a problem mounting the CDROM.\n";
 		fgets($fp);
 		exit(0);
 	}
 	
 	if(system_install_init_halfdisk($harddrive)) 	{
-		echo "\nMeet a problem for initializing the destination disk.\n";
+		echo "\nThere is a problem for initializing the destination disk.\n";
 		system_install_unmount();
 		exit(0);
 	}
 	
 	$installharddrive = "$harddrive" . "s1";
 	if(system_install_installation($installharddrive)) {
-		echo "\nMeet a problem during file copying.\n";
+		echo "\nThere is a problem during file copying.\n";
 		system_install_unmount();
 		exit(0);
 	}
@@ -106,11 +108,11 @@
 FreeNAS has been installed on $installharddrive.
 You can now remove the CD-ROM and reboot the PC.
 
-For using the DATA partition:
-1. Add the disk $harddrive on the Disks:Management page
-2. Add the mount point on the disks:Mount point page
+To use the DATA partition:
+1. Add the disk $harddrive on the Disks: Management page
+2. Add the mount point on the Disks: Mount point page
 (disk: $harddrive, partition 2, Filesystem: UFS + Softupdates)
-DO NOT format the $harddrive drive !
+DO NOT format the $harddrive drive! The data partition has been formatted for you as part of the installation!
 
 Press ENTER to continue.
 
