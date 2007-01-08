@@ -2,7 +2,7 @@
 /*
 	disks.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -950,6 +950,10 @@ function disks_raid_graid5_delete($raidname)
 	// Stop the volume
 	
 	mwexec("/sbin/graid5 stop $raidname");
+
+	// The volume can disapear a few second after stop
+	
+	sleep(2);
 	
 	// Clear the graid5 information on the hard drive
 	
@@ -1066,15 +1070,14 @@ function disks_bsdlabel($harddrive,$partition,$type)
 	// Open this file in add mode 
 	$handle = fopen("{$g['tmp_path']}/label.tmp", 'a');
 	
-	while(list(,$val) = each($tableau))
-	{
+	while(list(,$val) = each($tableau)) {
 		// If the line contain the word "unused"
 		
 		// Why did I replace 'a' with 'c' ? Must found the URL where I found this information
 		
-		if (ereg ("unused",$val))
-		{
+		if (ereg ("unused",$val)) {
 			// Replacing c: by a:
+			// Why ??? Must found the web page where I see this method
 			$val = ereg_replace ("c:","a:", $val);
 			// Peplacing unused by $type
 			$val = ereg_replace ("unused",$type, $val);
@@ -1119,9 +1122,7 @@ function disks_set_ataidle()
 				$channel=intval($channel);
 				$time=$disk['harddiskstandby'];
 				$apm=$disk['apm'];
-				$ac=$disk['acoustic'];
-					
-				/* mwexec("/usr/local/sbin/ataidle -A $ac -P $apm -S $time $channel $device"); */
+				$ac=$disk['acoustic'];				
 					
 				$cmd = "/usr/local/sbin/ataidle ";
 				
@@ -1148,7 +1149,7 @@ function disks_set_ataidle()
 	return 0;
 }
 
-/* Is this function still used ???
+/* 
 Get list of partition information from disk.
 Result is in the form:
 [1] => Array
@@ -1158,11 +1159,15 @@ Result is in the form:
 	[type]  => 0xa5
 	[flags] => 0x80
 )
+
+Called in disks_manage_tools.php
+
 */
+
 function disks_get_partition_info($disk)
 {
   
-  exec("/sbin/fdisk -s /dev/{$disk}", $rawdata);
+  exec("/sbin/fdisk -s {$disk}", $rawdata);
   array_shift($rawdata);
   array_shift($rawdata);
 

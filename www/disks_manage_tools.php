@@ -6,7 +6,7 @@
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -43,7 +43,33 @@ if (!is_array($config['disks']['disk']))
 
 disks_sort();
 
-$a_disk = &$config['disks']['disk'];
+if (!is_array($config['gvinum']['vdisk']))
+	$config['gvinum']['vdisk'] = array();
+
+gvinum_sort();
+
+if (!is_array($config['gmirror']['vdisk']))
+	$config['gmirror']['vdisk'] = array();
+
+gmirror_sort();
+
+if (!is_array($config['gconcat']['vdisk']))
+	$config['gconcat']['vdisk'] = array();
+
+gconcat_sort();
+
+if (!is_array($config['gstripe']['vdisk']))
+	$config['gstripe']['vdisk'] = array();
+
+gstripe_sort();
+
+if (!is_array($config['graid5']['vdisk']))
+	$config['graid5']['vdisk'] = array();
+
+graid5_sort();
+
+$a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$config['gmirror']['vdisk'],$config['gconcat']['vdisk'],$config['gstripe']['vdisk'],$config['graid5']['vdisk']);
+
 
 if ($_POST) {
 	unset($input_errors);
@@ -84,8 +110,11 @@ function disk_change() {
   switch(document.iform.disk.value)
   {
     <?php foreach ($a_disk as $diskv): ?>
-		case "<?=$diskv['name'];?>":
-		  <?php $partinfo = disks_get_partition_info($diskv['name']);?>
+	<?php if (strcmp($diskv['fstype'],"softraid")==0): ?> 	  
+    		<?php continue; ?>
+    	<?php endif; ?>
+		case "<?=$diskv['fullname'];?>":
+		  <?php $partinfo = disks_get_partition_info($diskv['fullname']);?>
       <?php foreach($partinfo as $partinfon => $partinfov): ?>
         if(document.all) // MS IE workaround.
           next = document.iform.partition.length;
@@ -118,7 +147,10 @@ function disk_change() {
             <td class="vtable">
               <select name="disk" class="formfld" id="disk" onchange="disk_change()">
                 <?php foreach ($a_disk as $diskn): ?>
-                <option value="<?=$diskn['name'];?>"<?php if ($diskn['name'] == $disk) echo "selected";?>>
+			<?php if (strcmp($diskn['fstype'],"softraid")==0): ?> 	  
+    				<?php continue; ?>
+    			<?php endif; ?>
+                <option value="<?=$diskn['fullname'];?>"<?php if ($diskn['fullname'] == $disk) echo "selected";?>>
                 <?php echo htmlspecialchars($diskn['name'] . ": " .$diskn['size'] . " (" . $diskn['desc'] . ")");?>
                 <?php endforeach; ?>
                 </option>
@@ -184,7 +216,7 @@ function disk_change() {
           					case "ufs_no_su":
           					case "ufsgpt":
           					case "ufsgpt_no_su":
-                      system("/sbin/fsck_ufs -y -f /dev/" . escapeshellarg($disk . $partition));
+                      system("/sbin/fsck_ufs -y -f " . escapeshellarg($disk . $partition));
           						break;
           					case "gmirror":
           					case "gvinum":
@@ -193,7 +225,7 @@ function disk_change() {
                       print_info_box_np($infomsg);
           						break;
           					case "msdos":
-                      system("/sbin/fsck_msdosfs -y -f /dev/" . escapeshellarg($disk . $partition));
+                      system("/sbin/fsck_msdosfs -y -f " . escapeshellarg($disk . $partition));
           						break;
         					}
 
