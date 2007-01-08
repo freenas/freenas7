@@ -3,7 +3,7 @@
 /*
 	system.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -49,6 +49,11 @@ $pconfig['language'] = $config['system']['language'];
 $pconfig['timezone'] = $config['system']['timezone'];
 $pconfig['timeupdateinterval'] = $config['system']['time-update-interval'];
 $pconfig['timeservers'] = $config['system']['timeservers'];
+
+
+$pconfig['language'] = $config['system']['language'];
+if (!$pconfig['language'])
+	$pconfig['language'] = "English";
 
 if (!isset($pconfig['timeupdateinterval']))
 	$pconfig['timeupdateinterval'] = 300;

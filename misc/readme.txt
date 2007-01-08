@@ -69,7 +69,7 @@ svn/misc/setupfreenas.sh
 ################ History Change logs ##############
 
 FreeNAS 0.682b:
-- Fixed missing function (fdisk)
+- Fixed 0.681b bug: missing function (fdisk) and fsck tools that don't umount
 - CIFS: hide dot files for prevent Netatalk system directory to be delete
 - CIFS: add two parameters for trying to improve performance (samba perf suck on FreeBSD...)
 - SSH: Add HPN-SSH patch by using openssh-portable FreeBSD port
@@ -77,7 +77,7 @@ FreeNAS 0.682b:
 - Modified build scripts
 - Hiroyuki Seino patch : CP932 charset added, and webgui bug fix
 - New language: Traditional and simplified Chinese (Thanks to Baikuan Hsu), Dutch (thanks to Kris Verhoeven)
-- Add warning (No need to format drive when choosing install with 2 partitions)
+- Add warning when choosing install with 2 partitions : Thanks Bob
 
 FreeNAS 0.681b:
 - Allow the following characters in CIFS workgroup name: ! @ # $ % ^ & ( ) _ - ; : ' " , .
