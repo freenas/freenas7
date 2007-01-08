@@ -2,7 +2,7 @@
 <?php
 /*
 	disks_manage_tools.php
-	Copyright © 2006 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -201,12 +201,13 @@ function disk_change() {
 		              /* Get the filesystem type of the disk. */ 
 		              $type = $a_disk[$id]['fstype'];
                   /* Check if disk is mounted. */
-                  $ismounted = disks_check_mount($disk,$partition);
+
+		$ismounted = disks_check_mount_fullname($disk.$partition);
 
                   /* Umount disk if necessary. */
 		              if($umount && $ismounted) {
 		                echo("<strong class='red'>" . _NOTE . ":</strong> " . _DISKSMANAGETOOLS_MOUNTNOTE . "<br><br>");
-		                disks_umount_ex($disk,$partition);
+		                disks_umount_fullname($disk.$partition);
                   }
 
                   switch($type)
@@ -231,7 +232,7 @@ function disk_change() {
 
                   /* Mount disk if necessary. */
         					if($umount && $ismounted) {
-		                disks_mount_ex($disk,$partition);
+		                disks_mount_fullname($disk.$partition);
                   }
 
                   break;
