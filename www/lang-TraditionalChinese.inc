@@ -5,7 +5,7 @@
 	Copyright (C) 2006 Baikuan Hsu <chicworks@gmail.com>
 	All rights reserved.
 	
-	This language file matches FreeNAS Ver.0.681B.
+	This language file matches FreeNAS Ver.0.681B.(rev.336)
 	
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -130,14 +130,14 @@ define('_MESSAGES_SUCCESSWITHREBOOT', '變更已儲存，必須<a href=reboot.ph
 define('_MESSAGES_ERROR', '錯誤：變更無法套用 (error code '.$ok.').');
 define('_MSGVALIDIP','請輸入一個有效的IP位置。');
 define('_MSGVALIDNETBIT','請輸入一個有效的network bit count。');
-define('_MSGVALIDTCPPORT','請輸入一個有效的port number。');
+define('_MSGVALIDTCPPORT','請輸入一個有效的連接埠。');
 define('_MSGVALIDPASSWORD','密碼不相同');
 
-define('_MSGSCHED_TEXT','提示：Ctrl+滑鼠左鍵(Mac: command+滑鼠主鍵) 可以複選項目。');
+define('_MSGSCHED_TEXT','提示：使用Ctrl+滑鼠左鍵(Mac：command+滑鼠主鍵)就可以複選項目。');
 
 // Special Filesystem Warning
 
-define('_MSGFILESYSTEM','UFS 的檔案系統格式是 FreeBSD 原生格式 (FreeNAS的OS)。 如果使用FAT, FAT32, EXT2,
+define('_MSGFILESYSTEM','UFS檔案系統格式是 FreeBSD 原生檔案格式 (FreeNAS的OS)。 如果使用FAT, FAT32, EXT2,
 EXT3, 或是 NTFS 可能會導致不可預期的錯誤！');
 
 // states
@@ -201,34 +201,34 @@ define('_SYSTEMPHP_MODULE_NAME_DESCRIPTION',_MENULEFT_SYSGENSETUP);
 define('_SYSTEMPHP_HOSTNAME','主機名稱');
 define('_SYSTEMPHP_HOSTNAMETEXT','NAS的主機名稱，不包含網域<br>例如: <em>nas');
 define('_SYSTEMPHP_DOMAIN','網域');
-define('_SYSTEMPHP_DOMAINTEXT','例： <em>mycomany.com</em>');
+define('_SYSTEMPHP_DOMAINTEXT','例： <em>mycompany.com</em>');
 define('_SYSTEMPHP_DNS','DNS伺服器');
-define('_SYSTEMPHP_DNSTEXT','IP位置');
+define('_SYSTEMPHP_DNSTEXT','請輸入IP位置');
 define('_SYSTEMPHP_USERNAME','帳號');
 define('_SYSTEMPHP_USERNAMETEXT','變更網頁介面的帳號。');
 define('_SYSTEMPHP_PASSWORD','密碼');
-define('_SYSTEMPHP_PASSWORDTEXT','變更網頁介面的密碼（兩次）<br>不要使用以下的字元 \':\'.');
+define('_SYSTEMPHP_PASSWORDTEXT','變更網頁介面的密碼（兩次）<br>不要使用以下的字元 \':\'。');
 define('_SYSTEMPHP_WEBGUIPROTOCOL','網頁介面協定');
 define('_SYSTEMPHP_WEBGUIPROTOCOLTEXT','HTTPS是加密過的連線');
 define('_SYSTEMPHP_WEBGUIPORT','網頁介面連接埠');
 define('_SYSTEMPHP_WEBGUIPORTTEXT','輸入自行設定的網頁管理介面連接埠(80: HTTP, 443: HTTPS)。');
 define('_SYSTEMPHP_LANGUAGE','Language/語言設定');
-define('_SYSTEMPHP_LANGUAGETEXT','選擇系統語言');
+define('_SYSTEMPHP_LANGUAGETEXT','選擇網頁管理介面顯示語言');
 define('_SYSTEMPHP_TIMEZONE','時區');
 define('_SYSTEMPHP_TIMEZONETEXT','選擇最鄰近的區域。');
 define('_SYSTEMPHP_TIMEUPDATEINT','時間同步間隔');
-define('_SYSTEMPHP_TIMEUPDATEINTTEXT','多少分鐘與時間伺服器同步一次。; 建議300，輸入0可以關閉');
+define('_SYSTEMPHP_TIMEUPDATEINTTEXT','多少分鐘與時間伺服器同步一次。建議設為300分鐘，輸入0則可以關閉同步功能');
 define('_SYSTEMPHP_NTPSERVER','NTP時間伺服器');
-define('_SYSTEMPHP_NTPSERVERTEXT','使用空白字元來分隔多個主機位置(一個空白即可) 這個服務需要先設定DNS伺服器');
-define('_SYSTEMPHP_MSGHOSTNAME','Hostname只能包含以下字元 a-z, 0-9, \'-\'.');
-define('_SYSTEMPHP_MSGDOMAIN','網域只能包含以下字元 a-z, 0-9, \'-\', \'.\'.');
+define('_SYSTEMPHP_NTPSERVERTEXT','使用空白字元來分隔多個主機位置(一個空白即可)，這個服務需要先設定DNS伺服器');
+define('_SYSTEMPHP_MSGHOSTNAME','Hostname只能包含以下字元 a-z, 0-9, \'-\'。');
+define('_SYSTEMPHP_MSGDOMAIN','網域只能包含以下字元 a-z, 0-9, \'-\', \'.\'。');
 define('_SYSTEMPHP_MSGDNS','主要/次要DNS伺服器必須指定一個有效的IP。');
-define('_SYSTEMPHP_MSGUSERNAME','帳號只能包含以下字元 a-z, A-Z, 0-9.');
+define('_SYSTEMPHP_MSGUSERNAME','帳號只能包含以下字元 a-z, A-Z, 0-9。');
 define('_SYSTEMPHP_MSGWEBGUIPORT','網頁介面必須指定一個有效的TCP/IP連接埠。');
 define('_SYSTEMPHP_MSGPASSWORD','您輸入的密碼不相符。');
 define('_SYSTEMPHP_MSGLANGUAGE','必須選擇一個有效的語言。');
 define('_SYSTEMPHP_MSGTIMEUPDATEINTERVAL','將時間同步間隔設定只接受6-1440的範園，或者輸入0將其關閉。');
-define('_SYSTEMPHP_MSGTIMESERVERS','NTP時間伺服器只能包含以下字元a-z, 0-9, \'-\', \'.\'.');
+define('_SYSTEMPHP_MSGTIMESERVERS','NTP時間伺服器只能包含以下字元a-z, 0-9, \'-\', \'.\'。');
 
 // System Information Module
 // file: index.php
@@ -258,7 +258,7 @@ define('_SYSTEMROUTESPHP_NAME',_MENULEFT_SYSTEM);
 define('_SYSTEMROUTESPHP_NAME_DESCRIPTION',_MENULEFT_SYSSTATROUTES);
 define('_SYSTEMROUTESPHP_MSG_CHANGED','靜態路由已經變更。<br>套用之後才會生效。');
 define('_SYSTEMROUTESPHP_INT','網路介面卡');
-define('_SYSTEMROUTESPHP_NET','Network');
+define('_SYSTEMROUTESPHP_NET','目標網段');
 define('_SYSTEMROUTESPHP_GW','閘道');
 define('_SYSTEMROUTESPHP_DESC',_DESC);
 define('_SYSTEMROUTESPHP_EDITROUTE','編輯路由');
@@ -300,44 +300,46 @@ define('_SYSTEMFIRMWAREPHP_DESFIRMUP','關閉韌體升級功能');
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','韌體映像檔');	
 define('_SYSTEMFIRMWAREPHP_UPFIRM','韌體升級');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','系統必須重新開機才能開啟韌體升級功能。');
-define('_SYSTEMFIRMWAREPHP_DONOTABORT','一但軔體升級開始，千萬不要中止其動作。FreeNAS在新的韌體上傳完之後便會自動重新開機。所有之前所設定的組態都會被保留。<br>系統最少需要128MB的記憶體以執行此動作。');
+define('_SYSTEMFIRMWAREPHP_DONOTABORT','一但軔體升級動作已經開始，千萬不要中止其動作。FreeNAS在新的韌體上傳完之後便會自動重新開機。所有之前所設定的組態都會被保留。<br>系統最少需要128MB的記憶體以執行此動作。');
 
 // System Advanced Module // file: system_advanced.php 
 define('_SYSTEMADVANCEDPHP_NAME',_MENULEFT_SYSTEM); 
 define('_SYSTEMADVANCEDPHP_NAMEDESC',_MENULEFT_SYSADVANCED); 
-define('_SYSTEMADVANCEDPHP_MSGVALIDTCP','TCP idle timeout必須是一個整數。'); 
+define('_SYSTEMADVANCEDPHP_MSGVALIDTCP','TCP閒置切斷時間必須是一個整數。'); 
 define('_SYSTEMADVANCEDPHP_MSGVALIDCERTKEY','驗證與金鑰必須同時提供才能發揮作用。'); 
 define('_SYSTEMADVANCEDPHP_MSGVALIDCERT','這個驗證似乎是無效的。'); 
 define('_SYSTEMADVANCEDPHP_MSGVALIDKEY','這個金鑰似乎是無效的。'); 
-define('_SYSTEMADVANCEDPHP_NOTE','本頁的選項是設計給進階的使用者使用的，同時也<strong>不會</strong>
-有本頁相關的技術支援'); define('_SYSTEMADVANCEDPHP_WEBGUISSLKEY','網頁管理介面SSL驗證/金鑰'); 
+define('_SYSTEMADVANCEDPHP_NOTE','本頁的選項是設計給進階的使用者使用的，同時也<strong>不提供</strong>有本頁選項的相關技術支援'); 
+define('_SYSTEMADVANCEDPHP_WEBGUISSLKEY','網頁管理介面SSL驗證/金鑰'); 
 define('_SYSTEMADVANCEDPHP_WEBCERT','驗證碼'); 
 define('_SYSTEMADVANCEDPHP_WEBCERTTEXT','請在此貼上X.509 PEM格式的驗證碼。'); 
 define('_SYSTEMADVANCEDPHP_WEBKEY','金鑰'); 
 define('_SYSTEMADVANCEDPHP_WEBKEYTEXT','請在此貼上一個PEM格式的RSA私鑰。'); 
-define('_SYSTEMADVANCEDPHP_MISC','雜項設定'); define('_SYSTEMADVANCEDPHP_CON',
-'Console選單'); define('_SYSTEMADVANCEDPHP_DISCON','關閉console選單'); 
+define('_SYSTEMADVANCEDPHP_MISC','雜項設定'); 
+define('_SYSTEMADVANCEDPHP_CON','Console選單'); 
+define('_SYSTEMADVANCEDPHP_DISCON','關閉console選單'); 
 define('_SYSTEMADVANCEDPHP_CONTEXT','這個變更必須等到重新開機之後才會生效。'); 
-define('_SYSTEMADVANCEDPHP_FIRM','韌體版本檢查'); define('_SYSTEMADVANCEDPHP_DISFIRM',
-'關閉韌體版本檢查功能'); define('_SYSTEMADVANCEDPHP_FIRMTEXT','這會關閉FreeNAS中，<a 
-href=system_firmware.php>系統: 韌體</a>頁面的韌體版本檢查功能。'); 
+define('_SYSTEMADVANCEDPHP_FIRM','韌體版本檢查');
+define('_SYSTEMADVANCEDPHP_DISFIRM','關閉韌體版本檢查功能');
+define('_SYSTEMADVANCEDPHP_FIRMTEXT','這會關閉FreeNAS中，<a href=system_firmware.php>系統: 韌體</a>頁面的韌體版本檢查功能。'); 
 define('_SYSTEMADVANCEDPHP_TCPIDLE','TCP閒置切斷時間'); 
-define('_SYSTEMADVANCEDPHP_TCPIDLETEXT',
-'閒置太久的TCP連線將會系統切斷。不要把這個數值設定的太高，以免系統內同時存在太多的連線(例:不正常斷線的程式)。預設的數值是2.5小時。'); 
-define('_SYSTEMADVANCEDPHP_NAV','導覽'); define('_SYSTEMADVANCEDPHP_NAVTEXT',
-'將診斷的頁面連結預設為展開'); define('_SYSTEMADVANCEDPHP_BEEP','提示聲響'); 
+define('_SYSTEMADVANCEDPHP_TCPIDLETEXT','閒置太久的TCP連線將會系統切斷。不要把這個數值設定的太高，以免系統內同時存在太多的連線(例:不正常斷線的程式)。預設的數值是2.5小時。'); 
+define('_SYSTEMADVANCEDPHP_NAV','導覽');
+define('_SYSTEMADVANCEDPHP_NAVTEXT','將診斷的頁面連結預設為展開');
+define('_SYSTEMADVANCEDPHP_BEEP','提示聲響'); 
 define('_SYSTEMADVANCEDPHP_DISBEEP','關閉系統於開/關機時的提示聲響'); 
 define('_SYSTEMADVANCEDPHP_SMART','S.M.A.R.T監控程式'); 
 define('_SYSTEMADVANCEDPHP_ENSMART','開啟 S.M.A.R.T 監控程式'); 
 define('_SYSTEMADVANCEDPHP_SMARTTEXT','透過記錄檔監控S.M.A.R.T裝置。'); 
-define('_SYSTEMADVANCEDPHP_TUNING','微調'); define('_SYSTEMADVANCEDPHP_ENTUNING',
-'開啟系統核心的微調參數'); define('_SYSTEMADVANCEDPHP_ZEROCONF','ZeroConf'); 
+define('_SYSTEMADVANCEDPHP_TUNING','微調');
+define('_SYSTEMADVANCEDPHP_ENTUNING','開啟系統核心的微調參數');
+define('_SYSTEMADVANCEDPHP_ZEROCONF','ZeroConf'); 
 define('_SYSTEMADVANCEDPHP_DISZEROCONF','關閉ZeroConf的服務宣告');
 
 
 // Interface assing:
 // file: interfaces_assign.php
-define('_INTASSIGNPHP_NAME','Interfaces');
+define('_INTASSIGNPHP_NAME','網路介面');
 define('_INTASSIGNPHP_NAMEDESC','指派通訊埠');
 define('_INTASSIGNPHP_MSGVALIDPORT','通訊埠 ');
 define('_INTASSIGNPHP_MSGVALIDPORTWASASSIG',' 被指派為 ');
@@ -417,7 +419,7 @@ define('_DISKSMANAGEPHP_NOTE','規劃的第一步：新增你的硬碟到磁碟�
 // file: disks_manage_edit.php
 define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','這個磁碟已經加入過了。');
 define('_DISKSMANAGEEDITPHP_UDMA','UDMA模式');
-define('_DISKSMANAGEEDITPHP_UDMATEXT','如果顯示"UDMA_ERROR.... LBA"的訊息，你可以手動選取UDMA的模式。');
+define('_DISKSMANAGEEDITPHP_UDMATEXT','如果顯示「UDMA_ERROR.... LBA」的訊息，你可以手動選取UDMA的模式。');
 define('_DISKSMANAGEEDITPHP_STANDBY','硬碟待命時間');
 define('_DISKSMANAGEEDITPHP_STANDBYTEXT','設定在多久時間之後，如果沒有存取動作便將硬碟切換至待命模式。<em>CF卡請勿選用。</em>');
 define('_DISKSMANAGEEDITPHP_APM','進階電源管理');
@@ -426,13 +428,13 @@ define('_DISKSMANAGEEDITPHP_ACLEVEL','噪音控制');
 define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','用來控制磁碟的運轉噪音程度。<em>CF卡請勿選用。</em>');
 define('_DISKSMANAGEEDITPHP_PREFS','已存在之檔案系統');
 define('_DISKSMANAGEEDITPHP_PREFSTEXT','如果新增已經包含資料的硬碟，請選擇其原本的檔案系統格式就可以獲取其中的資料。<br>
-                     <em>還沒有規劃檔案格式的磁碟機請選擇"尚未格式化"，之後再進入格式化工具選單。</em>');
+                     <em>還沒有規劃檔案格式的磁碟機請選擇「尚未格式化」，之後再進入格式化工具選單。</em>');
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','初始化');
 define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','磁碟已經掛載！請先<a href=%s>卸載</a>之後再繼續其他動作。');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>磁碟初始化系統資訊:</strong>');
-define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"並不是一個錯誤訊息！\n');
+define('_DISKSMANAGEINITPHP_INITINFO','「fdisk: Geom not found」並不是一個錯誤訊息！\n');
 define('_DISKSMANAGEINITPHP_TEXT','這個動作會刪除所有磁區，建立並且格式化第一號磁區成為你指定的檔案系統。');
 define('_DISKSMANAGEINITPHP_FORMATDISC','格式化磁碟');
 define('_DISKSMANAGEINITPHP_FORMATDISCCONF','確定真的要格式化這個磁碟？所有內部的資料都會消失！');
@@ -466,7 +468,7 @@ define('_DISKSRAIDPHP_FORMAT','格式化RAID');
 define('_DISKSRAIDPHP_TOOLS','工具');
 define('_DISKSRAIDPHP_INFO','資訊');
 define('_DISKSRAIDPHP_VOLUME','Volume名稱');
-define('_DISKSRAIDPHP_RAIDVOLUMEMOUNTERROR','The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding.');
+define('_DISKSRAIDPHP_RAIDVOLUMEMOUNTERROR','這個RAID volume目前正被掛載中！進行任何操作之前請先將其<a href=%s>卸載</a>。');
 
 // Software RAID common word
 define('_DISKSRAIDPHP_GVINUM','Geom Vinum');
@@ -484,7 +486,7 @@ define('_DISKSRAIDPHP_EDITRAID','編輯RAID');
 define('_DISKSRAIDPHP_DELRAID','刪除RAID');
 define('_DISKSRAIDPHP_ADDRAID','新增RAID');
 define('_DISKSRAIDPHP_DELCONF','確定要刪除這個RAID嗎？所有使用此RAID的元件都會失效！(例：分享)');
-define('_DISKSRAIDPHP_NOTE','選擇性的規劃步驟：利用你<a href="disks_manage.php">剛才設定的磁碟</a>來建立一個新的RAID磁碟。<br>請等待"up"的狀態出現之後再進行格式化與掛載的動作！');
+define('_DISKSRAIDPHP_NOTE','選擇性的規劃步驟：利用你<a href="disks_manage.php">剛才設定的磁碟</a>來建立一個新的RAID磁碟。<br>請等待「up」的狀態出現之後再進行格式化與掛載的動作！');
 
 //file: disks_raid_edit.php
 define('_DISKSRAIDEDITPHP_NAMEDESC',_EDIT);
@@ -498,7 +500,7 @@ define('_DISKSRAIDEDITPHP_MSGVALIDRAID5','架構RAID 5最少要有三個磁碟�
 define('_DISKSRAIDEDITPHP_MSGERROR','錯誤！不能儲存RAID設定值。\n');
 define('_DISKSRAIDEDITPHP_RAIDNAME','Raid名稱');
 define('_DISKSRAIDEDITPHP_GVBALANCEALGO','效能均衡演算法');
-define('_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT','選擇讀取檔案之效能均衡演算法.');
+define('_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT','選擇讀取檔案時採用的效能均衡演算法。');
 define('_DISKSRAIDEDITPHP_RAID0','striping');
 define('_DISKSRAIDEDITPHP_JBOD','JBOD');
 define('_DISKSRAIDEDITPHP_RAID1','mirroring');
@@ -535,12 +537,12 @@ define('_DISKSMOUNTPHP_DEL','刪除掛載點');
 define('_DISKSMOUNTPHP_ADD','新增掛載點');
 
 // disks_mount_edit.php
-define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','分享名稱只可以包含以下字元：a-z, A-Z, 0-9, _ , -.');
+define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','分享名稱只可以包含以下字元：a-z, A-Z, 0-9, _ , -。');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDESC','描述文字包含了無效的字元。');
 define('_DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS','不能掛載系統區(第1區)，資料分割區為第2區。');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDUP','輸入了存在的分享名稱。');
 define('_DISKSMOUNTEDITPHP_MSGVALIDDISK','這個磁碟/磁區之前已經設定過了。');
-define('_DISKSMOUNTEDITPHP_TEXT','1. You can\'t mount the partition \'%s\' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs.');
+define('_DISKSMOUNTEDITPHP_TEXT','1. 你不可以掛載含有設定檔的磁區\'%s\'。<br>2. FreeBSD對NTFS格式的支援尚不完全（有BUG!）。');
 
 // disks_mount_tools.php
 define('_DISKSMOUNTTOOLS_COMMAND','指令');
@@ -581,9 +583,9 @@ define('_SRVCIFS_RECYCLE','資源回收桶');
 define('_SRVCIFS_ENRECYCLE','開啟資源回收桶');
 define('_SRVCIFS_ENRECYCLETEXT','開啟資源回收筒的功能，可救回刪除之檔案。');
 define('_SRVCIFS_SNBBUFF','傳送緩衝區');
-define('_SRVCIFS_SNBBUFFTEXT','傳送緩衝區的大小(預設16384).');
+define('_SRVCIFS_SNBBUFFTEXT','傳送緩衝區的大小(預設為16384).');
 define('_SRVCIFS_RCVBUFF','接收緩衝區');
-define('_SRVCIFS_RCVBUFFTEXT','接收緩衝區的大小(預設16384).');
+define('_SRVCIFS_RCVBUFFTEXT','接收緩衝區的大小(預設為16384).');
 
 // file: services_samba_share.php
 define('_SRVCIFSSHARE_MSGCHANGED','分享設定已經變更。<br>套用之後才會生效。');
