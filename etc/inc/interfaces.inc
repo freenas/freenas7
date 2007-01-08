@@ -2,7 +2,7 @@
 /*
 	interfaces.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -146,8 +146,9 @@ function interfaces_lan_configure()
 		/* reload RSYNC */
 		$result |= services_rsyncd_configure();
 		
-		/* reload webgui */
-		$result |= system_webgui_start();
+		/* DO NOT reload the webgui
+		Lighttpd seem smart enough for use the new IP */
+		// $result |= system_webgui_start();
 				
 	}
 	
