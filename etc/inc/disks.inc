@@ -267,7 +267,7 @@ function disks_check_mount_fullname($fullname)
 	$status=0;
 	//print_r($detmount);
 	foreach ($detmount as $detmountk => $detmountv) {
-		if (strcmp($detmountv['fullname'],$fullname) == 0) {
+		if (strpos($detmountv['fullname'],$fullname) == 0) {
 			$status=1;
 			break;
 		}
