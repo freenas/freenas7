@@ -3,7 +3,7 @@
 /*
 	rc.banner
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -55,7 +55,7 @@
 
 *** This is FreeNAS, version {$version}
     built on {$buildtime} for {$g['fullplatform']}
-    Copyright (C) 2005-2006 by Olivier Cochard-Labbe. All rights reserved.
+    Copyright (C) 2005-2007 by Olivier Cochard-Labbe. All rights reserved.
     Visit http://www.freenas.org for updates.
     
     LAN IP address: {$ipaddr}
