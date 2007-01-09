@@ -3,11 +3,11 @@
 /*
 	diag_infos.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2003-2007 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -65,7 +65,27 @@ $pgtitle = array(_DIAGINFOS_NAME, _DIAGINFOS_NAMEDESC);
       foreach ($rawdata as $line) 	{
         echo htmlspecialchars($line) . "<br>";
       }
+		unset ($line);
+      unset ($rawdata);
+      echo "<strong>" . _SOFTRAID . " - " . _DISKSRAIDPHP_GCONCAT . ":</strong><br><br>";
+      exec("/sbin/gconcat list",$rawdata);
+      foreach ($rawdata as $line) 	{
+        echo htmlspecialchars($line) . "<br>";
+      }
+       unset ($line);
+      unset ($rawdata);
+      echo "<strong>" . _SOFTRAID . " - " . _DISKSRAIDPHP_GSTRIPE . ":</strong><br><br>";
+      exec("/sbin/gstripe list",$rawdata);
+      foreach ($rawdata as $line) 	{
+        echo htmlspecialchars($line) . "<br>";
+      }
       unset ($line);
+      unset ($rawdata);
+      echo "<strong>" . _SOFTRAID . " - " . _DISKSRAIDPHP_GRAID5 . ":</strong><br><br>";
+      exec("/sbin/graid5 list",$rawdata);
+      foreach ($rawdata as $line) 	{
+        echo htmlspecialchars($line) . "<br>";
+      }
       echo "</pre>";
       ?>
     </td>
