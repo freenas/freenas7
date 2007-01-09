@@ -68,6 +68,9 @@ svn/misc/setupfreenas.sh
 
 ################ History Change logs ##############
 
+FreeNAS 0.683b:
+- Updated licence file with new translators name/emails
+
 FreeNAS 0.682b:
 - Fixed 0.681b bug: missing function (fdisk) and fsck tools that don't umount
 - CIFS: hide dot files for prevent Netatalk system directory to be delete
