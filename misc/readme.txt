@@ -70,6 +70,7 @@ svn/misc/setupfreenas.sh
 
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails
+- fixed the display of 'DMA' in the place of the size when controller found non-ATA66 cable
 
 FreeNAS 0.682b:
 - Fixed 0.681b bug: missing function (fdisk) and fsck tools that don't umount

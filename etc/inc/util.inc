@@ -2,7 +2,7 @@
 /*
 	util.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -912,8 +912,13 @@ function get_ata_disks_list()
 					/* Separe la ligne par les espace */
 					$dmesgtab = explode(" ", $dmesgline);
 					$dmesgtab[0] = rtrim($dmesgtab[0],":");
-					if ($dmesgtab[0]!="" &&(strcasecmp($dmesgtab[0],$diskname) == 0))
+					/* When there is a wrong DMA cable, the first line is:
+					ad0: DMA limited to UDMA33, controller found non-ATA66 cable
+					*/
+					if ($dmesgtab[0]!="" && (strcasecmp($dmesgtab[0],$diskname) == 0) && strcmp($dmesgtab[1],"DMA") !=0) {
 						$disklist[$diskname]['size'] = $dmesgtab[1];
+					}
+					
 				}
 			}
 			
@@ -1399,20 +1404,19 @@ function get_macaddr($if)
   exec("/usr/bin/netstat -inW -f link -I {$if}", $linkinfo);
   array_shift($linkinfo);
 
-  foreach($linkinfo as $link)
-  {
+  foreach($linkinfo as $link)  {
     $alink = preg_split("/\s+/", $link);
     $ifname = chop($alink[0]);
     
-    if (strncmp($ifname,$if,strlen($if)) == 0)
-    {
+    if (strncmp($ifname,$if,strlen($if)) == 0) {
       $macaddr = chop($alink[3]);
       break;
     }
   }
 
-  if (strcmp($macaddr,"") == 0)
+  if (strcmp($macaddr,"") == 0) {
     echo "Failed to get MAC address for interface $if.";
+  }
 
   return $macaddr;
 }
@@ -1429,7 +1433,7 @@ function get_fstype_disks_list($fstype) {
 			if (strcmp($disk['fstype'],$fstype) == 0) {
 				$result[] = $disk;
 			}
-    		}
+    	}
   	}
 
 	/* Scan all gmirror volume */
@@ -1438,7 +1442,7 @@ function get_fstype_disks_list($fstype) {
 			if (strcmp($disk['fstype'],$fstype) == 0) {
 				$result[] = $disk;
 			}
-    		}
+    	}
   	}
 
 	/* Scan all gconcat volume */
@@ -1447,7 +1451,7 @@ function get_fstype_disks_list($fstype) {
 			if (strcmp($disk['fstype'],$fstype) == 0) {
 				$result[] = $disk;
 			}
-    		}
+    	}
   	}
 	
 	/* Scan all gstripe volume */
@@ -1456,7 +1460,7 @@ function get_fstype_disks_list($fstype) {
 			if (strcmp($disk['fstype'],$fstype) == 0) {
 				$result[] = $disk;
 			}
-    		}
+    	}
   	}
 	
 	/* Scan all gvinum volume */
@@ -1465,7 +1469,7 @@ function get_fstype_disks_list($fstype) {
 			if (strcmp($disk['fstype'],$fstype) == 0) {
 				$result[] = $disk;
 			}
-    		}
+    	}
   	}
 
 	/* Scan all graid5 volume */
@@ -1474,7 +1478,7 @@ function get_fstype_disks_list($fstype) {
 			if (strcmp($disk['fstype'],$fstype) == 0) {
 				$result[] = $disk;
 			}
-    		}
+    	}
   	}
 	return $result;
 }
