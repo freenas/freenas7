@@ -299,7 +299,8 @@ define('_SYSTEMFIRMWAREPHP_DESFIRMUP','Disable firmware upload');
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','Firmware image file');	
 define('_SYSTEMFIRMWAREPHP_UPFIRM','Upgrade firmware');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','You must reboot the system before you can upgrade the firmware.');
-define('_SYSTEMFIRMWAREPHP_DONOTABORT','DO NOT abort the firmware upgrade once it has started. FreeNAS will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of 128 Mb RAM for firmware update.');
+define('_SYSTEMFIRMWAREPHP_DONOTABORT','DO NOT abort the firmware upgrade once it has started. FreeNAS will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of 128 Mb RAM to perform the firmware update.<br>
+It is strongly recommended that you <a href="diag_backup.php">Backup</a> the System Configuration before doing a Firmware upgrade.');
 
 // System Advanced Module
 // file: system_advanced.php
@@ -323,7 +324,7 @@ define('_SYSTEMADVANCEDPHP_FIRM','Firmware version check');
 define('_SYSTEMADVANCEDPHP_DISFIRM','Disable firmware version check');
 define('_SYSTEMADVANCEDPHP_FIRMTEXT','This will cause FreeNAS not to check for newer firmware versions when the <a href=system_firmware.php>System: Firmware</a> page is viewed.');
 define('_SYSTEMADVANCEDPHP_TCPIDLE','TCP idle timeout');
-define('_SYSTEMADVANCEDPHP_TCPIDLETEXT','Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don\'t set this too high or your state table could become full of connections that have been improperly shut down. The default is 2.5 hours.');
+define('_SYSTEMADVANCEDPHP_TCPIDLETEXT','Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don\'t set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours).');
 define('_SYSTEMADVANCEDPHP_NAV','Navigation');
 define('_SYSTEMADVANCEDPHP_NAVTEXT','Keep diagnostics in navigation expanded');
 define('_SYSTEMADVANCEDPHP_BEEP','System Beep');
@@ -462,7 +463,8 @@ define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Use <a href="%s">RAID tools</a> for thi
 define('_DISKSMANAGETOOLS_CMDINFO','Command output:');
 define('_DISKSMANAGETOOLS_MOUNTNOTE','The disk is currently mounted! The mount point will be removed temporary to perform selected command.');
 define('_DISKSMANAGETOOLS_UMOUNT','Unmount disk/partition');
-define('_DISKSMANAGETOOLS_UMOUNTTEXT','If the selected disk/partition is mounted it will be unmounted temporary to perform selected command, otherwise the commands work in read-only mode.');
+define('_DISKSMANAGETOOLS_UMOUNTTEXT','If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>
+Service disruption to users accessing this mount will occur during this process.');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Management');
@@ -626,6 +628,7 @@ define('_SRVFTP_MSGVALIDPASVMIN','The pasv_min_port port must be a valid port nu
 define('_SRVFTP_MSGVALIDAUTH','You must select at minium anonymous or/and local user authentication.');
 define('_SRVFTP_FTPSERVER','FTP Server');
 define('_SRVFTP_TCP',_TCPPORT);
+define('_SRVFTP_TCPTEXT','Default is 21');
 define('_SRVFTP_MAXCLIENT','Number of clients');
 define('_SRVFTP_MAXCLIENTTEXT','Maximum number of simultaneous clients.');
 define('_SRVFTP_MAXIP','Max. conn. per IP');
@@ -641,7 +644,7 @@ define('_SRVFTP_ENFXP','Enable FXP protocol.');
 define('_SRVFTP_FXPTEXT','FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!).');
 define('_SRVFTP_NATMODE','NAT mode');
 define('_SRVFTP_ENNATMODE','Force NAT mode.');
-define('_SRVFTP_NATMODETEXT','Enable it if your FTP server is behind a NAT box that doesn\'t support applicative FTP proxying.');
+define('_SRVFTP_NATMODETEXT','Enable this if your FTP server is behind a NAT box that doesn\'t support applicative FTP proxying.');
 define('_SRVFTP_PASSIVEIP','Passive IP address');
 define('_SRVFTP_PASSIVEIPTEXT','Use this option to override the IP address that FTP daemon will advertise in response to the PASV command.');
 define('_SRVFTP_PASVMIN','pasv_min_port');
@@ -657,7 +660,7 @@ define('_SRVNFS_NAMEDESC','NFS');
 define('_SRVNFS_MSGVALIDNET','A valid network must be specified.');
 define('_SRVNFS_MSGVALIDNETBIT',_MSGVALIDNETBIT);
 define('_SRVNFS_NFSERVER','NFS Server');
-define('_SRVNFS_MAPALLROOT','Map all user to root');
+define('_SRVNFS_MAPALLROOT','Map all users to root');
 define('_SRVNFS_MAPALLROOTTEXT','All users will have the root privilege.');
 define('_SRVNFS_AUTHNET','Authorised network');
 define('_SRVNFS_AUTHNETTEXT','Network that is authorised to access to NFS share');
@@ -677,7 +680,7 @@ define('_SRVRYNCD_RSYNCD','Rsync Daemon');
 define('_SRVRYNCD_READONLY','Read only');
 define('_SRVRYNCD_MAPUSER','Map to user');
 define('_SRVRYNCD_TCPORT',_TCPPORT);
-define('_SRVRYNCD_TCPORTTEXT','Alternate TCP port.');
+define('_SRVRYNCD_TCPORTTEXT','Alternate TCP port. Default is 873');
 define('_SRVRYNCD_MAXCON','Maximum connections');
 define('_SRVRYNCD_MAXCONTEXT','Maximum number of simultaneous connections. Default is 0 (unlimited).');
 define('_SRVRYNCD_MOTD','MOTD');
@@ -713,7 +716,7 @@ define('_SRVSSHD_MSGVALIDKEY','This key does not appear to be valid.');
 define('_SRVSSHD_SSHD','SSH Daemon');
 define('_SRVSSHD_READONLY','Read only');
 define('_SRVSSHD_TCPORT',_TCPPORT);
-define('_SRVSSHD_TCPORTTEXT',_SRVRYNCD_TCPORTTEXT);
+define('_SRVSSHD_TCPORTTEXT','Alternate TCP port. Default is 22');
 define('_SRVSSHD_PERMITROOTLOGIN','Permit root login');
 define('_SRVSSHD_PERMITROOTLOGINTEXT','Specifies whether it is allowed to login as superuser (root) directly.');
 define('_SRVSSHD_KEY','SSH key');

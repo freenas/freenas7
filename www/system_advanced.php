@@ -2,10 +2,12 @@
 <?php 
 /*
 	system_advanced.php
-	part of FreeNAS (http://freenas.org)
-	based on m0n0wall (http://m0n0.ch/wall)
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	All rights reserved.
 	
-	Copyright (C) 2005 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Based on m0n0wall (http://m0n0.ch/wall)
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -33,9 +35,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(_SYSTEMADVANCEDPHP_NAME, _SYSTEMADVANCEDPHP_NAMEDESC);
 
-/*$pconfig['filteringbridge_enable'] = isset($config['bridge']['filteringbridge']); */
-$pconfig['ipv6nat_enable'] = isset($config['diag']['ipv6nat']['enable']);
-$pconfig['ipv6nat_ipaddr'] = $config['diag']['ipv6nat']['ipaddr'];
 $pconfig['cert'] = base64_decode($config['system']['webgui']['certificate']);
 $pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
 $pconfig['disableconsolemenu'] = isset($config['system']['disableconsolemenu']);
@@ -43,7 +42,6 @@ $pconfig['disablefirmwarecheck'] = isset($config['system']['disablefirmwarecheck
 $pconfig['expanddiags'] = isset($config['system']['webgui']['expanddiags']);
 if ($g['platform'] == "generic-pc")
 	$pconfig['harddiskstandby'] = $config['system']['harddiskstandby'];
-$pconfig['tcpidletimeout'] = $config['filter']['tcpidletimeout'];
 $pconfig['disablebeep'] = isset($config['system']['disablebeep']);
 $pconfig['polling_enable'] = isset($config['system']['polling']);
 $pconfig['tune_enable'] = isset($config['system']['tune']);
@@ -69,8 +67,6 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$config['bridge']['filteringbridge'] = $_POST['filteringbridge_enable'] ? true : false;
-		$config['diag']['ipv6nat']['enable'] = $_POST['ipv6nat_enable'] ? true : false;
-		$config['diag']['ipv6nat']['ipaddr'] = $_POST['ipv6nat_ipaddr'];
 		$oldcert = $config['system']['webgui']['certificate'];
 		$oldkey = $config['system']['webgui']['private-key'];
 		$config['system']['webgui']['certificate'] = base64_encode($_POST['cert']);
@@ -84,9 +80,6 @@ if ($_POST) {
 		}
 		$config['system']['webgui']['noantilockout'] = $_POST['noantilockout'] ? true : false;
 		$config['filter']['bypassstaticroutes'] = $_POST['bypassstaticroutes'] ? true : false;
-		$config['filter']['tcpidletimeout'] = $_POST['tcpidletimeout'];
-		$oldpreferoldsa = $config['ipsec']['preferoldsa'];
-		$config['ipsec']['preferoldsa'] = $_POST['preferoldsa_enable'] ? true : false;
 		$config['system']['disablebeep'] = $_POST['disablebeep'] ? true : false;
 		$config['system']['polling'] = $_POST['polling_enable'] ? true : false;
 		$config['system']['tune'] = $_POST['tune_enable'] ? true : false;
@@ -166,15 +159,6 @@ if ($_POST) {
       <td class="vtable">
         <input name="disablefirmwarecheck" type="checkbox" id="disablefirmwarecheck" value="yes" <?php if ($pconfig['disablefirmwarecheck']) echo "checked"; ?>>
         <strong><?=_SYSTEMADVANCEDPHP_DISFIRM;?></strong><span class="vexpl"><br><?=_SYSTEMADVANCEDPHP_FIRMTEXT;?></span>
-      </td>
-    </tr>
-    <tr>
-      <td valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_TCPIDLE;?></td>
-      <td class="vtable">
-        <span class="vexpl">
-          <input name="tcpidletimeout" type="text" class="formfld" id="tcpidletimeout" size="8" value="<?=htmlspecialchars($pconfig['tcpidletimeout']);?>"> <?=_SECONDS;?><br>
-          <?=_SYSTEMADVANCEDPHP_TCPIDLETEXT;?>
-        </span>
       </td>
     </tr>
 		<tr> 

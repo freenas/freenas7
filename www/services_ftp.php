@@ -3,7 +3,7 @@
 /*
 	services_ftp.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -169,7 +169,7 @@ function enable_change(enable_change) {
       <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_TCP; ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
-      </td>
+       <br><?=_SRVFTP_TCPTEXT; ?></td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_MAXCLIENT; ?></td>
