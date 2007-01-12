@@ -2,12 +2,13 @@
 /*
     lang-Deutsch.php
     part of FreeNAS (http://www.freenas.org)
-    Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+    Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
     All rights reserved.
 
     German translation done by
     Dominik Plaszewski domme555@gmx.net
     Falk Menzel fmenzel@htwm.de
+    Volker Theile votdev@gmx.de
 
     Based on m0n0wall (http://m0n0.ch/wall)
     Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
@@ -465,7 +466,7 @@ define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Ben&uuml;tzen Sie <a href="%s">RAID too
 define('_DISKSMANAGETOOLS_CMDINFO','Befehlsausgabe:');
 define('_DISKSMANAGETOOLS_MOUNTNOTE','Diese Festplatte is momentan gemountet. Der Mount Point wird kurzzeitig entfernt um den ausgew&auml;hlten Befehl auszuf&uuml;hren.');
 define('_DISKSMANAGETOOLS_UMOUNT','Unmount Festplatte/Partition');
-define('_DISKSMANAGETOOLS_UMOUNTTEXT','Wenn die ausgew&auml;hlte Festplatte/Partition gemountet ist wird diese kurzzeitig ungemountet um den ausgew&auml;hlten Befehl auszuf&uuml;hren, sonst arbeiten die Befehle in nur-lesen Modus.');
+define('_DISKSMANAGETOOLS_UMOUNTTEXT','Wenn die ausgew&auml;hlte Festplatte/Partition gemountet ist wird diese kurzzeitig ungemountet um den ausgew&auml;hlten Befehl auszuf&uuml;hren, sonst arbeiten die Befehle im nur-lesen Modus.');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Management');
