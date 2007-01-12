@@ -169,19 +169,25 @@ function enable_change(enable_change) {
             <td width="90%" class="listhdrr"><?=_SRVUPNP_DIRECTORY;?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($pconfig['content'] as $contentv): ?>
-          <tr>
+					<?php $i = 0; foreach($pconfig['content'] as $contentv): ?>
+					<tr>
 						<td class="listlr"><?=htmlspecialchars($contentv);?> &nbsp;</td>
 						<td valign="middle" nowrap class="list">
+							<?php if(isset($config['upnp']['enable'])): ?>
 							<a href="services_upnp_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_SRVUPNP_EDITDIR;?>" width="17" height="17" border="0"></a>&nbsp;
-              <a href="services_upnp.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_SRVUPNP_DELCONF;?>')"><img src="x.gif" title="<?=_SRVUPNP_DELDIR; ?>" width="17" height="17" border="0"></a>
-            </td>
-          </tr>
+							<a href="services_upnp.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_SRVUPNP_DELCONF;?>')"><img src="x.gif" title="<?=_SRVUPNP_DELDIR; ?>" width="17" height="17" border="0"></a>
+							<?php endif; ?>
+						</td>
+					</tr>
           <?php $i++; endforeach; ?>
-          <tr> 
-            <td class="list" colspan="1"></td>
-            <td class="list"><a href="services_upnp_edit.php"><img src="plus.gif" title="<?=_SRVUPNP_ADDDIR;?>" width="17" height="17" border="0"></a></td>
-          </tr>
+					<tr>
+						<td class="list" colspan="1"></td>
+						<td class="list">
+							<?php if(isset($config['upnp']['enable'])): ?>
+							<a href="services_upnp_edit.php"><img src="plus.gif" title="<?=_SRVUPNP_ADDDIR;?>" width="17" height="17" border="0"></a>
+							<?php endif; ?>
+						</td>
+					</tr>
         </table>
         <?=_SRVUPNP_CONTENTTEXT;?>
       </td>
