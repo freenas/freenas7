@@ -17,6 +17,7 @@ install_openssh-portable() {
 	cd /usr/ports/security/openssh-portable/
 
 	install -vs work/openssh-*/sshd $FREENAS/usr/sbin
+	install -vs work/openssh-*/ssh $FREENAS/usr/bin
 	install -vs work/openssh-*/sftp-server $FREENAS/usr/libexec
 
 	# Create link to moduli file to prevent log entry:

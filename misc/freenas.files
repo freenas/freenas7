@@ -271,6 +271,13 @@ usr/bin/passwd
 ## su -- substitute user identity
 usr/bin/su
 
+##scp -- secure copy (remote file copy program)
+usr/bin/scp
+
+##ssh -- secure Shell Client (used for RSYNC and Unison over SSH)
+# FreeNAS use the port openssh-portable with HPN-SSH patch enabled
+# usr/bin/ssh
+
 ## tail -- display the last part of a file
 usr/bin/tail
 
@@ -286,8 +293,6 @@ usr/bin/touch
 ## uptime -- show how long system has been running
 usr/bin/uptime:usr/bin/w
 
-##scp -- secure copy (remote file copy program)
-usr/bin/scp
 
 ####### contents of usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices

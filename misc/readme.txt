@@ -71,6 +71,7 @@ svn/misc/setupfreenas.sh
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails
 - Upgrade Smartmontolls from 5.36 to 5.37
+- Add the HPN-SSH client (for preparing rsync and unison over ssh)
 - fixed the display of 'DMA' in the place of the size when controller found non-ATA66 cable
 - WebGUI: Add all RAID information on the Diagnostic information page
 - New language: Romana (thanks to Laurentiu Florin Bubuianu)
