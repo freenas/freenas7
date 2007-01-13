@@ -244,7 +244,7 @@ Return 0 if successful, 1 if error */
 function disks_umount_adv($mount)
 {
 	
-	$fulname="{$mount['fullname']}";
+	$fullname="{$mount['fullname']}";
 		
 	// get the mount list
 	$detmount = get_mounts_list();
