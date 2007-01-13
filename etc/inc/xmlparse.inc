@@ -4,7 +4,7 @@
 	functions to parse/dump configuration files in XML format
 	
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -37,7 +37,7 @@
 /* This are TAGS that can be multiple in the XML config file */
 $listtags = explode(" ", "key dnsserver winsserver disk vdisk diskr sharetosync " .
 	"encryption-algorithm-option hash-algorithm-option hosts onetoone hidemount " .
-	"staticmap route alias pipe queue shellcmd cacert earlyshellcmd user group " .
+	"staticmap route pipe queue shellcmd cacert earlyshellcmd user group " .
 	"servernat proxyarpnet passthrumac allowedip mount vlan domainoverrides " .
 	"minute hour day month weekday content");
 

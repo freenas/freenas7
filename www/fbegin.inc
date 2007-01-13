@@ -71,6 +71,7 @@ function showhide(tspan, tri) {
               <br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system.php" class="navlnk"><?=_MENULEFT_SYSGENSETUP;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_routes.php" class="navlnk"><?=_MENULEFT_SYSSTATROUTES;?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_hosts.php" class="navlnk"><?=_MENULEFT_SYSHOSTS;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_advanced.php" class="navlnk"><?=_MENULEFT_SYSADVANCED;?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_firmware.php" class="navlnk"><?=_MENULEFT_SYSFIRMWARE;?></a><br>
               <strong><?=_MENULEFT_INTERFACES;?></strong>

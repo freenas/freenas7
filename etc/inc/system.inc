@@ -2,7 +2,7 @@
 /*
 	system.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -86,31 +86,36 @@ function system_hosts_generate() {
 	$result = 0 ;
 	
 	$syscfg = $config['system'];
-	$lancfg = $config['interfaces']['lan'];
-	$dnsmasqcfg = $config['dnsmasq'];
+	$lanif = $config['interfaces']['lan']['if'];
 
-	if (!is_array($dnsmasqcfg['hosts'])) {
-		$dnsmasqcfg['hosts'] = array();
+	if (!is_array($syscfg['hosts'])) {
+		$syscfg['hosts'] = array();
 	}
-	$hostscfg = $dnsmasqcfg['hosts'];
+	$hostscfg = $syscfg['hosts'];
 	
 	$fd = fopen("{$g['varetc_path']}/hosts", "w");
 	if (!$fd) {
 		printf("Error: cannot open hosts file in system_hosts_generate().\n");
 		$result = 1;
 	}
+ 
+  	// Get the IP addres of the interface for "auto" NIC
+  	if ($lanif == "auto") {
+                $interfaces = explode(" ", exec("/sbin/ifconfig -l"));
+                $lanif = $interfaces[0];
+        }
+        
+  	$ipaddr = get_ipaddr($lanif);
 		
 	$hosts = <<<EOD
 127.0.0.1	localhost localhost.{$syscfg['domain']}
-{$lancfg['ipaddr']}	{$syscfg['hostname']}.{$syscfg['domain']} {$syscfg['hostname']}
+{$ipaddr}	{$syscfg['hostname']}.{$syscfg['domain']} {$syscfg['hostname']}
 
 EOD;
 	
 	foreach ($hostscfg as $host) {
-		if ($host['host']) {
-			$hosts .= "{$host['ip']}	{$host['host']}.{$host['domain']} {$host['host']}\n";
-		} else {
-			$hosts .= "{$host['ip']}	{$host['domain']}\n";
+		if ($host['name']) {
+			$hosts .= "{$host['address']}	{$host['name']}\n";
 		}
 	}
 	fwrite($fd, $hosts);

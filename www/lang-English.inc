@@ -147,6 +147,7 @@ define('_SELECTED','Selected');
 define('_MENULEFT_SYSTEM','System');
 define('_MENULEFT_SYSGENSETUP','General setup');
 define('_MENULEFT_SYSSTATROUTES','Static routes');
+define('_MENULEFT_SYSHOSTS','Hosts');
 define('_MENULEFT_SYSFIRMWARE','Firmware');
 define('_MENULEFT_SYSADVANCED','Advanced');
 define('_MENULEFT_INTERFACES','Interfaces');

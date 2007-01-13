@@ -1,13 +1,14 @@
 <?php
 /*
 	guiconfig.inc
-	part of m0n0wall (http://m0n0.ch/wall)
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	All rights reserved.
 	
-	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
+	Based on m0n0wall (http://m0n0.ch/wall)
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
-	Modified for FreeNAS (http://freenas.org) by Olivier Cochard <cochard@gmail.com>
-	
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
 	
@@ -48,7 +49,7 @@ system_language_load();
 
 $d_staticmapsdirty_path = $g['varrun_path'] . "/staticmaps.dirty";
 $d_staticroutesdirty_path = $g['varrun_path'] . "/staticroutes.dirty";
-$d_aliasesdirty_path = $g['varrun_path'] . "/aliases.dirty";
+$d_hostsdirty_path = $g['varrun_path'] . "/hosts.dirty";
 $d_fwupenabled_path = $g['varrun_path'] . "/fwup.enabled";
 $d_firmwarelock_path = $g['varrun_path'] . "/firmware.lock";
 $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
@@ -254,7 +255,7 @@ function staticroutes_sort() {
 
 	usort($config['staticroutes']['route'], "staticroutecmp");
 }
-
+/* Comment this because don't use domain name
 function hosts_sort() {
 	global $g, $config;
 
@@ -267,6 +268,7 @@ function hosts_sort() {
 
 	usort($config['dnsmasq']['hosts'], "hostcmp");
 }
+*/
 
 
 function staticmaps_sort($if) {
@@ -373,6 +375,17 @@ function users_sort() {
 
 	usort($config['access']['user'], "userscmp");
 }
+
+function hosts_sort() {
+	global $g, $config;
+
+	function userscmp($a, $b) {
+		return strcmp($a['name'], $b['name']);
+	}
+
+	usort($config['system']['hosts'], "userscmp");
+}
+
 
 function groups_sort() {
 	global $g, $config;
