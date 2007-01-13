@@ -3,7 +3,7 @@
 /*
 	access_users_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -61,7 +61,6 @@ if (isset($id) && $a_user[$id])
 	$pconfig['login'] = $a_user[$id]['login'];
 	$pconfig['fullname'] = $a_user[$id]['fullname'];
 	$pconfig['usergroup'] = $a_user[$id]['usergroup'];
-	$pconfig['usergroupid'] = $a_user[$id]['usergroupid'];
 	$pconfig['password'] = $a_user[$id]['password'];
 	$pconfig['passwordconf'] = $pconfig['password'];
 	$pconfig['userid'] = $a_user[$id]['id'];
@@ -134,16 +133,14 @@ if ($_POST)
 		
 		/* add the groupid for generate the password file */
 		foreach ($a_group as $group) 		{
-			if ($users['usergroup']==$group['name']) 		{
+			if (strcmp($users['usergroup'],$group['name']) == 0)	{
 				$users['usergroupid']=$group['id'];
 				break;
 			}
 		}
-		
 			
 		if (isset($id) && $a_user[$id]) 		{
 			$users['id'] = $_POST['userid'];
-			$users['usergroupid'] = $_POST['usergroupid'];
 			$a_user[$id] = $users;
 		}
 		else 		{
