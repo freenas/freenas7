@@ -74,6 +74,7 @@ FreeNAS 0.683b:
 - fixed the display of 'DMA' in the place of the size when controller found non-ATA66 cable
 - WebGUI: Add all RAID information on the Diagnostic information page
 - New language: Romana (thanks to Laurentiu Florin Bubuianu)
+- Fixe the disk check mounted bug
 
 FreeNAS 0.682b:
 - Fixed 0.681b bug: missing function (fdisk) and fsck tools that don't umount
