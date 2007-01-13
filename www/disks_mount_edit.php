@@ -96,8 +96,8 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-  $reqdfields = explode(" ", "mdisk partition fstype");
-  $reqdfieldsn = array(_DISK,_PARTITION,_FILESYSTEM);
+  $reqdfields = explode(" ", "sharename");
+  $reqdfieldsn = array(_SHARENAME);
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['sharename'] && !is_validsharename($_POST['sharename']))) {
@@ -186,6 +186,7 @@ if ($_POST) {
           <option value="s2" <?php if ($pconfig['partition'] == "s2") echo "selected"; ?>>2</option>
           <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
           <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
+          <option value="" <?php if ($pconfig['partition'] == "") echo "selected"; ?>>CD/DVD</option>
           <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>>previous <?=_SOFTRAID ;?> - gmirror</option>
           <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>>previous <?=_SOFTRAID ;?> - graid5</option>
           <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>>previous <?=_SOFTRAID ;?> - gvinum</option>
@@ -199,6 +200,7 @@ if ($_POST) {
         <select name="fstype" class="formfld" id="fstype">
           <option value="ufs" <?php if ($pconfig['fstype'] == "ufs") echo "selected"; ?>>UFS</option>
           <option value="msdosfs" <?php if ($pconfig['fstype'] == "msdosfs") echo "selected"; ?>>FAT</option>
+          <option value="cd9660" <?php if ($pconfig['fstype'] == "cd9669") echo "selected"; ?>>CD/DVD</option>
           <option value="ntfs" <?php if ($pconfig['fstype'] == "ntfs") echo "selected"; ?>>NTFS (read-only)</option> 
           <option value="ext2fs" <?php if ($pconfig['fstype'] == "ext2fs") echo "selected"; ?>>EXT2 FS</option> 
         </select>
@@ -228,6 +230,7 @@ if ($_POST) {
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%"><span class="vexpl"><span class="red"><strong><?=_WARNING; ?>:<br>
         </strong></span><?=sprintf(_DISKSMOUNTEDITPHP_TEXT,htmlspecialchars($cfdevice));?></span>
+<p><span class="vexpl"><?=_MSGFILESYSTEM;?></p>
       </td>
     </tr>
   </table>

@@ -3,7 +3,7 @@
 /*
 	disks_manage_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -40,7 +40,10 @@ if (isset($_POST['id']))
 $pgtitle = array(_DISKSPHP_NAME,_DISK,isset($id)?_EDIT:_ADD);
 
 /* get disk list (without CDROM) */
-$disklist = get_physical_disks_list();
+//$disklist = get_physical_disks_list();
+
+/* get All disk list (with CDROM) */
+$disklist = array_merge((array)get_physical_disks_list(),(array)get_cdrom_list());
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();

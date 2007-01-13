@@ -1094,6 +1094,7 @@ function get_cdrom_list()
     //        [type] => IDE
     //        [desc] => TDK CDRW241040B/57S2
     //        [name] => acd0
+    //        [size] => NA
     //        [fullname] => /dev/acd0
  
     //    )
@@ -1133,6 +1134,7 @@ function get_cdrom_list()
 			$disklist[$diskname]['fullname']= "/dev/" . $diskname;
 						
 			$disklist[$diskname]['type'] = "IDE";
+			$disklist[$diskname]['size'] = "NA";
 		
 			/* Match the description witch is include between < and > */
 		
@@ -1177,6 +1179,7 @@ function get_cdrom_list()
 			$disklist[$diskname]['name']=$diskname;
 			$disklist[$diskname]['fullname']= "/dev/" . $diskname;
 			$disklist[$diskname]['type'] = "SCSI";
+			$disklist[$diskname]['size'] = "NA";
 			/* Recupère la description: ce qu'il y a entre < et > */
 		
 			preg_match("/.*\<([^>]*)>.*/",$line,$match);
@@ -1493,6 +1496,7 @@ function get_fstype_list()
     "ufsgpt"=>"UFS (EFI/GPT) with Soft Updates (use 8% space disk)",
     "ufsgpt_no_su"=>"UFS (EFI/GPT)",
     "msdos"=>"FAT32",
+    "cd9660"=>"CD/DVD",
     "ntfs"=>"NTFS",
     "softraid"=>"Software RAID");
 /*
@@ -1519,6 +1523,8 @@ function get_fstype_shortdesc($fstype)
     case "ufsgpt_no_su":  $shortdesc = "UFS";
                           break;
     case "msdos":         $shortdesc = "FAT32";
+                          break;
+    case "cd9660":         $shortdesc = "CD/DVD";
                           break;
     case "ntfs":          $shortdesc = "NTFS";
                           break;

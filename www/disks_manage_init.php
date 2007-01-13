@@ -4,7 +4,7 @@
 	disks_manage_init.php
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -70,6 +70,8 @@ gvinum_sort();
 $a_fst = get_fstype_list();
 // Remove NTFS: can't format on NTFS under FreeNAS
 unset($a_fst['ntfs']);
+// Remove cd9660: can't format a CD/DVD !
+unset($a_fst['cd9660']);
 // Remove the first blank line 'unknown'
 $a_fst = array_slice($a_fst, 1);
 
@@ -209,6 +211,8 @@ function disk_change() {
             <td class="vtable">
               <select name="disk" class="formfld" id="disk" onchange="disk_change()">
                 <?php foreach ($a_alldisk as $diskv): ?>
+		<?php if (strcmp($diskv['size'],"NA") == 0) continue; ?>
+		
                 <option value="<?=$diskv['fullname'];?>" <?php if ($diskv['name'] == $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
                 <?php endforeach; ?>
               </select>

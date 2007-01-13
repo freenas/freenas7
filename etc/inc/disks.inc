@@ -124,6 +124,15 @@ function disks_mount($mount)
 					$result = 1;
 				}
 			}
+		case "cd9660":
+			if (mwexec("/sbin/mount_cd9660 $devname /mnt/$mountname") == 0)
+				$result = 0;
+			else {
+				
+				/* Not OK, remove the directory, prevent writing on RAM disk*/
+				@rmdir ("/mnt/$mountname");
+				$result = 1;
+			}
 		
 		   break;
 		   
@@ -309,7 +318,11 @@ function disks_status($diskname)
 {
 	
 	global $config, $g;
-	$detectedlist = get_physical_disks_list();
+	
+	//$detectedlist = get_physical_disks_list();
+	/* get All disk list (with CDROM) */
+	
+	$detectedlist = array_merge((array)get_physical_disks_list(),(array)get_cdrom_list());
 	$status="MISSING";
 	foreach ($detectedlist as $detecteddisk => $detecteddiskv) 	{
 		

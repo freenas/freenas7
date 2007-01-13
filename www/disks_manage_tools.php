@@ -147,9 +147,8 @@ function disk_change() {
             <td class="vtable">
               <select name="disk" class="formfld" id="disk" onchange="disk_change()">
                 <?php foreach ($a_disk as $diskn): ?>
-			<?php if (strcmp($diskn['fstype'],"softraid")==0): ?> 	  
-    				<?php continue; ?>
-    			<?php endif; ?>
+			<?php if (strcmp($diskn['size'],"NA") == 0) continue; ?>
+			<?php if (strcmp($diskn['fstype'],"softraid")==0) continue; ?> 	  
                 <option value="<?=$diskn['fullname'];?>"<?php if ($diskn['fullname'] == $disk) echo "selected";?>>
                 <?php echo htmlspecialchars($diskn['name'] . ": " .$diskn['size'] . " (" . $diskn['desc'] . ")");?>
                 <?php endforeach; ?>
