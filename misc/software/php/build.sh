@@ -26,7 +26,7 @@ build_php() {
 	tar -zxf $php_tarball
 	cd $(basename $php_tarball .tar.gz)
 
-	./configure --enable-fastcgi --enable-discard-path --enable-force-cgi-redirect --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex
+	./configure --enable-fastcgi --enable-discard-path --enable-force-cgi-redirect --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex --with-gettext
 	make
 
 	return 0
@@ -47,7 +47,7 @@ max_input_time = 180
 register_argc_argv = off
 file_uploads = on
 upload_tmp_dir = /ftmp
-upload_max_filesize = 128M
+upload_max_filesize = 256M
 post_max_size = 256M
 html_errors = off
 include_path = ".:/etc/inc:/usr/local/www"' > $FREENAS/usr/local/lib/php.ini
