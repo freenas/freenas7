@@ -38,100 +38,37 @@ require("guiconfig.inc");
 
 $pgtitle = array(_DISKSPHP_NAME,_DISKSMOUNTTOOLS_NAMEDESC);
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
+if (!is_array($config['mounts']['mount']))
+	$config['mounts']['mount'] = array();
 
-disks_sort();
+mount_sort();
 
-if (!is_array($config['gvinum']['vdisk']))
-	$config['gvinum']['vdisk'] = array();
-
-gvinum_sort();
-
-if (!is_array($config['gmirror']['vdisk']))
-	$config['gmirror']['vdisk'] = array();
-
-gmirror_sort();
-
-if (!is_array($config['gconcat']['vdisk']))
-	$config['gconcat']['vdisk'] = array();
-
-gconcat_sort();
-
-if (!is_array($config['gstripe']['vdisk']))
-	$config['gstripe']['vdisk'] = array();
-
-gstripe_sort();
-
-if (!is_array($config['graid5']['vdisk']))
-	$config['graid5']['vdisk'] = array();
-
-graid5_sort();
-
-$a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$config['gmirror']['vdisk'],$config['gconcat']['vdisk'],$config['gstripe']['vdisk'],$config['graid5']['vdisk']);
-
+$a_mount = &$config['mounts']['mount'];
 
 if ($_POST) {
 	unset($input_errors);
-	unset($do_action);
+	unset($errormsg);
+	unset($do_fsck);
 
-	/* input validation */
-	$reqdfields = explode(" ", "disk action");
-	$reqdfieldsn = explode(",", "Disk,Action");
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-	if (!$input_errors)
-	{
-		$do_action = true;
-		$disk = $_POST['disk'];
-		$action = $_POST['action'];
-		$partition = $_POST['partition'];
-		$umount = $_POST['umount'];
-	}
+	$do_fsck = true;
+	$disk = $_POST['disk'];
+	$umount = $_POST['umount'];
 }
 
-if (!isset($do_action))
-{
-	$do_action = false;
+if (!isset($do_fsck)) {
+	$do_fsck = false;
 	$disk = '';
-	$action = '';
-	$partition = '';
 	$umount = false;
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<script language="JavaScript">
-<!--
-function disk_change() {
-  var next = null;
-  // Remove all entries from partition combobox.
-  document.iform.partition.length = 0;
-  // Insert entries for partition combobox.
-  switch(document.iform.disk.value)
-  {
-    <?php foreach ($a_disk as $diskv): ?>
-	<?php if (strcmp($diskv['fstype'],"softraid")==0): ?> 	  
-    		<?php continue; ?>
-    	<?php endif; ?>
-		case "<?=$diskv['fullname'];?>":
-		  <?php $partinfo = disks_get_partition_info($diskv['fullname']);?>
-      <?php foreach($partinfo as $partinfon => $partinfov): ?>
-        if(document.all) // MS IE workaround.
-          next = document.iform.partition.length;
-        document.iform.partition.add(new Option("<?=$partinfon;?>","s<?=$partinfon;?>",false,<?php if("s{$partinfon}"==$partition){echo "true";}else{echo "false";};?>), next);
-      <?php endforeach; ?>
-      break;
-    <?php endforeach; ?>
-  }
-}
-// -->
-</script>
+
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
  <li class="tabinact"><a href="disks_mount.php"><?=_DISKSMOUNTPHP_MANAGE;?></a></li>
-        <li class="tabinact"><a href="disks_mount_tools.php"><?=_DISKSMOUNTPHP_FSCK;?></a></li>
+        <li class="tabinact"><a href="disks_mount_tools.php"><?=_DISKSMOUNTPHP_TOOLS;?></a></li>
  <li class="tabact"><?=_DISKSMOUNTPHP_FSCK;?></a></li>
       </ul>
     </td>
@@ -145,30 +82,15 @@ function disk_change() {
             <td valign="top" class="vncellreq"><?=_DISK;?></td>
             <td class="vtable">
               <select name="disk" class="formfld" id="disk" onchange="disk_change()">
-                <?php foreach ($a_disk as $diskn): ?>
-			<?php if (strcmp($diskn['size'],"NA") == 0) continue; ?>
-			<?php if (strcmp($diskn['fstype'],"softraid")==0) continue; ?> 	  
-                <option value="<?=$diskn['fullname'];?>"<?php if ($diskn['fullname'] == $disk) echo "selected";?>>
-                <?php echo htmlspecialchars($diskn['name'] . ": " .$diskn['size'] . " (" . $diskn['desc'] . ")");?>
+                <?php foreach ($a_mount as $mount): ?>
+			<?php if (strcmp($mount['fstype'],"cd9660") == 0) continue; ?>
+                <option value="<?=$mount['fullname'];?>"<?php if ($mount['fullname'] == $disk) echo "selected";?>>
+                <?php echo htmlspecialchars($mount['sharename'] . ": " .$mount['fullname']);?>
                 <?php endforeach; ?>
                 </option>
               </select>
             </td>
       		</tr>
-      		<tr> 
-            <td valign="top" class="vncellreq"><?=_PARTITION;?></td>
-            <td class="vtable"> 
-            <select name="partition" class="formfld" id="partition"></select>
-            </td>
-          </tr>
-          <tr>
-            <td valign="top" class="vncellreq"><?=_DISKSMOUNTTOOLS_COMMAND;?></td>
-            <td class="vtable"> 
-              <select name="action" class="formfld" id="action">
-                <option value="fsck" <?php if ($action == "fsck") echo "selected"; ?>>fsck</option>
-               </select>
-            </td>
-          </tr>
           <tr> 
             <td width="22%" valign="top" class="vncell"></td>
             <td width="78%" class="vtable"> 
@@ -180,60 +102,47 @@ function disk_change() {
   				<tr>
   				  <td width="22%" valign="top">&nbsp;</td>
   				  <td width="78%">
-              <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMOUNTTOOLS_SENDCMD;?>">
+             <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMOUNTPHP_FSCK;?>"">
   				  </td>
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">
-    				<?php if($do_action)
+    				<?php if($do_fsck)
     				{
     				  echo("<strong>" . _DISKSMOUNTTOOLS_CMDINFO . "</strong><br>");
     					echo('<pre>');
     					ob_end_flush();
 
-              switch($action)
-              {
-                case "fsck":
+              
                   /* Get the id of the disk. */
-		              $id = array_search_ex($disk, $a_disk, "name");
+		              $id = array_search_ex($disk, $a_mount, "fullname");
 		              /* Get the filesystem type of the disk. */ 
-		              $type = $a_disk[$id]['fstype'];
+		              $type = $a_mount[$id]['fstype'];
                   /* Check if disk is mounted. */
 
-		$ismounted = disks_check_mount_fullname($disk.$partition);
+		$ismounted = disks_check_mount_fullname($disk);
 
                   /* Umount disk if necessary. */
 		              if($umount && $ismounted) {
 		                echo("<strong class='red'>" . _NOTE . ":</strong> " . _DISKSMOUNTTOOLS_MOUNTNOTE . "<br><br>");
-		                disks_umount_fullname($disk.$partition);
+		                disks_umount_fullname($disk);
                   }
 
                   switch($type)
         					{
                     case "":
           					case "ufs":
-          					case "ufs_no_su":
-          					case "ufsgpt":
-          					case "ufsgpt_no_su":
-                      system("/sbin/fsck_ufs -y -f " . escapeshellarg($disk . $partition));
+                      system("/sbin/fsck_ufs -y -f " . escapeshellarg($disk));
           						break;
-          					case "gmirror":
-          					case "gvinum":
-          					case "graid5":
-                      $infomsg = sprintf(_DISKSMOUNTTOOLS_RAIDDISKNOTE, "disks_raid_{$type}_tools.php");
-                      print_info_box_np($infomsg);
-          						break;
-          					case "msdos":
-                      system("/sbin/fsck_msdosfs -y -f " . escapeshellarg($disk . $partition));
+          					case "msdosfs":
+                      system("/sbin/fsck_msdosfs -y -f " . escapeshellarg($disk));
           						break;
         					}
 
                   /* Mount disk if necessary. */
         					if($umount && $ismounted) {
-		                disks_mount_fullname($disk.$partition);
-                  }
+		                disks_mount_fullname($disk);
 
-                  break;
               }
     					echo('</pre>');
     				}
