@@ -32,9 +32,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("System", "Hosts", "Edit host");
 require("guiconfig.inc");
+
+$pgtitle = array(_SYSTEMROUTESPHP_NAME,_MENULEFT_SYSHOSTS,_MENULEFT_SYSHOSTS,_EDIT);
 
 if (!is_array($config['system']['hosts']))
 	$config['system']['hosts'] = array();
@@ -64,10 +64,10 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if (($_POST['name'] && !is_validdesc($_POST['name']))) {
-		$input_errors[] = "The host name contain invalid characters.";
+		$input_errors[] = _SYSTEMHOSTSPHP_MSGVALIDNAME;
 	}
 	if (($_POST['address'] && !is_ipaddr($_POST['address']))) {
-		$input_errors[] = "A valid address must be specified.";
+		$input_errors[] = _SYSTEMHOSTSPHP_MSGVALIDIP;
 	}
 	
 	/* check for name conflicts */
@@ -76,7 +76,7 @@ if ($_POST) {
 			continue;
 
 		if ($host['name'] == $_POST['name']) {
-			$input_errors[] = "An host with this name already exists.";
+			$input_errors[] = _SYSTEMHOSTSPHP_MSGHOSTEXIST;
 			break;
 		}
 	}
@@ -107,28 +107,25 @@ if ($_POST) {
             <form action="system_hosts_edit.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
-                  <td valign="top" class="vncellreq">Name</td>
+                  <td valign="top" class="vncellreq"><?=_INTPHP_DHCPHOSTNAME;?></td>
                   <td class="vtable"><?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-                    <br> <span class="vexpl">The host name may only consist 
-                    of the characters a-z, A-Z and 0-9, '-' , '_' and dot.</span></td>
+                    <br> <span class="vexpl"><?=_SYSTEMHOSTSPHP_HOSTTEXT;?></span></td>
                   </td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq">Address</td>
+                  <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_IP;?></td>
                   <td width="78%" class="vtable"><?=$mandfldhtml;?><input name="address" type="text" class="formfld" id="address" size="20" value="<?=htmlspecialchars($pconfig['address']);?>">
    
-                    <br> <span class="vexpl">The address that this hostname 
-                    represents.</span></td>
+                    <br> <span class="vexpl"><?=_SYSTEMHOSTSPHP_ADDRESSTEXT;?></span></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell">Description</td>
+                  <td width="22%" valign="top" class="vncell"><?=_DESC;?></td>
                   <td width="78%" class="vtable"> <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>"> 
-                    <br> <span class="vexpl">You may enter a description here 
-                    for your reference (not parsed).</span></td>
+                    <br> <span class="vexpl"><?=_SYSTEMHOSTSPHP_DESCTEXT;?></span></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="Save"> 
+                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>"> 
                     <?php if (isset($id) && $a_hosts[$id]): ?>
                     <input name="id" type="hidden" value="<?=$id;?>"> 
                     <?php endif; ?>

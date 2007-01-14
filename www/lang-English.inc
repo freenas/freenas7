@@ -266,6 +266,7 @@ define('_SYSTEMROUTESPHP_EDITROUTE','Edit Route');
 define('_SYSTEMROUTESPHP_MSGCONFIRM','Do you really want to delete this route?');
 define('_SYSTEMROUTESPHP_DELROUTE','Delete Route');
 define('_SYSTEMROUTESPHP_ADDROUTE','Add Route');
+define('_SYSTEMROUTESPHP_TEXT','Define an host name can be usefull for NFS.');
 
 // Static Routes Edit Module
 // file: system_routes_edit.php
@@ -278,6 +279,22 @@ define('_SYSTEMROUTESPHP_DESTNET','Destination network');
 define('_SYSTEMROUTESPHP_DESTNETROUTE','Destination network for this static route');
 define('_SYSTEMROUTESPHP_GWTONET','Gateway to be used to reach the destination network');
 define('_SYSTEMROUTESPHP_DESCREF','You may enter a description here for your reference (not parsed).');
+
+// Hosts
+// file: system_hosts.php
+define('_SYSTEMHOSTSPHP_MSG_CHANGED','The host list has been changed.<br>You must apply the changes in order for them to take effect.');
+define('_SYSTEMHOSTSPHP_EDITHOST','Edit Host');
+define('_SYSTEMHOSTSPHP_MSGCONFIRM','Do you really want to delete this host?');
+define('_SYSTEMHOSTSPHP_DELHOST','Delete Host');
+define('_SYSTEMHOSTSPHP_ADDHOST','Add Host');
+
+// file: system_hosts_edit.php
+define('_SYSTEMHOSTSPHP_MSGVALIDNAME','The host name contain invalid characters.');
+define('_SYSTEMHOSTSPHP_MSGVALIDIP','A valid IP address must be specified.');
+define('_SYSTEMHOSTSPHP_MSGHOSTEXIST','An host with this name already exists.');
+define('_SYSTEMHOSTSPHP_HOSTTEXT','The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and .');
+define('_SYSTEMHOSTSPHP_ADDRESSTEXT','The IP address that this hostname represents.');
+define('_SYSTEMHOSTSPHP_DESCTEXT','You may enter a description here for your reference.');
 
 // System Firmware Module
 // file: system_firmware.php
