@@ -172,7 +172,7 @@
 	<!-- <enable/> -->
 		<numberclients>5</numberclients>
 		<maxconperip>2</maxconperip>
-		<timeout>300</timeout>
+		<timeout>5</timeout>
 		<port>21</port>
 		<anonymous/>
 		<localuser/>
