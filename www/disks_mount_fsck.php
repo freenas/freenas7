@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_manage_tools.php
+	disks_mount_fsck.php
 	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME,_DISKSMANAGETOOLS_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME,_DISKSMOUNTTOOLS_NAMEDESC);
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
@@ -130,17 +130,16 @@ function disk_change() {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-      	<li class="tabinact"><a href="disks_manage.php"><?=_DISKSPHP_MANAGE;?></a></li>
-      	<li class="tabinact"><a href="disks_manage_init.php"><?=_DISKSPHP_FORMAT;?></a></li>
-      	<li class="tabact"><?=_DISKSPHP_TOOLS;?></li>
-      	<li class="tabinact"><a href="disks_manage_iscsi.php"><?=_DISKSPHP_ISCSIINIT;?></a></li>
+ <li class="tabinact"><a href="disks_mount.php"><?=_DISKSMOUNTPHP_MANAGE;?></a></li>
+        <li class="tabinact"><a href="disks_mount_tools.php"><?=_DISKSMOUNTPHP_FSCK;?></a></li>
+ <li class="tabact"><?=_DISKSMOUNTPHP_FSCK;?></a></li>
       </ul>
     </td>
   </tr>
   <tr>
     <td class="tabcont">
       <?php if ($input_errors) print_input_errors($input_errors); ?>
-			<form action="disks_manage_tools.php" method="post" name="iform" id="iform">
+			<form action="disks_mount_fsck.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
             <td valign="top" class="vncellreq"><?=_DISK;?></td>
@@ -163,7 +162,7 @@ function disk_change() {
             </td>
           </tr>
           <tr>
-            <td valign="top" class="vncellreq"><?=_DISKSMANAGETOOLS_COMMAND;?></td>
+            <td valign="top" class="vncellreq"><?=_DISKSMOUNTTOOLS_COMMAND;?></td>
             <td class="vtable"> 
               <select name="action" class="formfld" id="action">
                 <option value="fsck" <?php if ($action == "fsck") echo "selected"; ?>>fsck</option>
@@ -174,21 +173,21 @@ function disk_change() {
             <td width="22%" valign="top" class="vncell"></td>
             <td width="78%" class="vtable"> 
               <input name="umount" type="checkbox" id="umount" value="yes" <?php if ($umount) echo "checked"; ?>>
-              <strong><?=_DISKSMANAGETOOLS_UMOUNT;?></strong><span class="vexpl"><br>
-              <?=_DISKSMANAGETOOLS_UMOUNTTEXT;?></span>
+              <strong><?=_DISKSMOUNTTOOLS_UMOUNT;?></strong><span class="vexpl"><br>
+              <?=_DISKSMOUNTTOOLS_UMOUNTTEXT;?></span>
             </td>
           </tr>
   				<tr>
   				  <td width="22%" valign="top">&nbsp;</td>
   				  <td width="78%">
-              <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMANAGETOOLS_SENDCMD;?>">
+              <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMOUNTTOOLS_SENDCMD;?>">
   				  </td>
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">
     				<?php if($do_action)
     				{
-    				  echo("<strong>" . _DISKSMANAGETOOLS_CMDINFO . "</strong><br>");
+    				  echo("<strong>" . _DISKSMOUNTTOOLS_CMDINFO . "</strong><br>");
     					echo('<pre>');
     					ob_end_flush();
 
@@ -205,7 +204,7 @@ function disk_change() {
 
                   /* Umount disk if necessary. */
 		              if($umount && $ismounted) {
-		                echo("<strong class='red'>" . _NOTE . ":</strong> " . _DISKSMANAGETOOLS_MOUNTNOTE . "<br><br>");
+		                echo("<strong class='red'>" . _NOTE . ":</strong> " . _DISKSMOUNTTOOLS_MOUNTNOTE . "<br><br>");
 		                disks_umount_fullname($disk.$partition);
                   }
 
@@ -221,7 +220,7 @@ function disk_change() {
           					case "gmirror":
           					case "gvinum":
           					case "graid5":
-                      $infomsg = sprintf(_DISKSMANAGETOOLS_RAIDDISKNOTE, "disks_raid_{$type}_tools.php");
+                      $infomsg = sprintf(_DISKSMOUNTTOOLS_RAIDDISKNOTE, "disks_raid_{$type}_tools.php");
                       print_info_box_np($infomsg);
           						break;
           					case "msdos":

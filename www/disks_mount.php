@@ -92,6 +92,7 @@ if ($_GET['act'] == "ret")
       <ul id="tabnav">
         <li class="tabact"><?=_DISKSMOUNTPHP_MANAGE;?></li>
         <li class="tabinact"><a href="disks_mount_tools.php"><?=_DISKSMOUNTPHP_TOOLS;?></a></li>
+        <li class="tabinact"><a href="disks_mount_fsck.php"><?=_DISKSMOUNTPHP_FSCK;?></a></li>
       </ul>
     </td>
   </tr>

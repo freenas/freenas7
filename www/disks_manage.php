@@ -80,8 +80,6 @@ if ($_GET['act'] == "del") {
 		<td class="tabnavtbl">
   		<ul id="tabnav">
 				<li class="tabact"><?=_DISKSPHP_MANAGE; ?></li>
-				<li class="tabinact"><a href="disks_manage_init.php"><?=_DISKSPHP_FORMAT; ?></a></li>
-				<li class="tabinact"><a href="disks_manage_tools.php"><?=_DISKSPHP_TOOLS; ?></a></li>
 				<li class="tabinact"><a href="disks_manage_iscsi.php"><?=_DISKSPHP_ISCSIINIT; ?></a></li>
   		</ul>
   	</td>

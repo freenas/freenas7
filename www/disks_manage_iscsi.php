@@ -1,9 +1,9 @@
 #!/usr/local/bin/php
 <?php
 /*
-	services_afp.php
+	disks_manage_iscsi.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -86,8 +86,6 @@ if ($_POST) {
     <td class="tabnavtbl">
       <ul id="tabnav">
       	<li class="tabinact"><a href="disks_manage.php"><?=_DISKSPHP_MANAGE; ?></a></li>
-      	<li class="tabinact"><a href="disks_manage_init.php"><?=_DISKSPHP_FORMAT; ?></a></li>
-      	<li class="tabinact"><a href="disks_manage_tools.php"><?=_DISKSPHP_TOOLS; ?></a></li>
       	<li class="tabact"><?=_DISKSPHP_ISCSIINIT; ?></li>
       </ul>
     </td>

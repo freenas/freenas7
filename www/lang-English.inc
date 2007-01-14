@@ -124,6 +124,7 @@ define('_SUCCESSFUL','Successful');
 define('_FAILED','Failed');
 define('_ERROR','Error');
 define('_HINT','Hint');
+define('_FORMAT','Format');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'The changes have been applied successfully.');
@@ -156,6 +157,7 @@ define('_MENULEFT_INTLAN','LAN');
 define('_MENULEFT_DISKS',_DISKS);
 define('_MENULEFT_DISKMANAG','Management');
 define('_MENULEFT_DISKMNGSOFTRAID',_SOFTRAID);
+define('_MENULEFT_DISKMNGFORMAT',_FORMAT);
 define('_MENULEFT_DISKMNGMOUNTPOINT','Mount Point');
 define('_MENULEFT_SERVICES','Services');
 define('_MENULEFT_SRVCIFS','CIFS');
@@ -456,17 +458,6 @@ define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Do you really want to format this d
 define('_DISKSPHP_NOMBR','Don\'t Erase MBR');
 define('_DISKSPHP_NOMBRTEXT','don\'t erase the MBR (useful for some RAID controller cards)');
 
-//file: disks_manage_tools.php
-define('_DISKSMANAGETOOLS_NAMEDESC','Tools');
-define('_DISKSMANAGETOOLS_COMMAND','Command');
-define('_DISKSMANAGETOOLS_SENDCMD','Send Command!');
-define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Use <a href="%s">RAID tools</a> for this disk!');
-define('_DISKSMANAGETOOLS_CMDINFO','Command output:');
-define('_DISKSMANAGETOOLS_MOUNTNOTE','The disk is currently mounted! The mount point will be removed temporary to perform selected command.');
-define('_DISKSMANAGETOOLS_UMOUNT','Unmount disk/partition');
-define('_DISKSMANAGETOOLS_UMOUNTTEXT','If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>
-Service disruption to users accessing this mount will occur during this process.');
-
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Management');
 define('_DISKSMANAGEISCSIPHP_NAMEDESC','iSCSI');
@@ -544,6 +535,7 @@ define('_DISKSMOUNTPHP_NAME','Mount Point');
 define('_DISKSMOUNTPHP_SHARENAME','Share Name');
 define('_DISKSMOUNTPHP_MANAGE','Manage');
 define('_DISKSMOUNTPHP_TOOLS','Tools');
+define('_DISKSMOUNTPHP_FSCK','Fsck');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','The mount point list has been changed.<br>You must apply the changes in order for them to take effect.');
@@ -566,6 +558,18 @@ define('_DISKSMOUNTTOOLS_SENDCMD','Send Command!');
 define('_DISKSMOUNTTOOLS_CMDINFO','Command output:');
 define('_DISKSMOUNTTOOLS_MOUNTTEXT','Mounting...');
 define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
+
+//disk_mount_fsck.php (old disk tools)
+//file: disks_manage_tools.php
+define('_DISKSMOUNTTOOLS_NAMEDESC','Tools');
+define('_DISKSMOUNTTOOLS_COMMAND','Command');
+define('_DISKSMOUNTTOOLS_SENDCMD','Send Command!');
+define('_DISKSMOUNTTOOLS_RAIDDISKNOTE','Use <a href="%s">RAID tools</a> for this disk!');
+define('_DISKSMOUNTTOOLS_CMDINFO','Command output:');
+define('_DISKSMOUNTTOOLS_MOUNTNOTE','The disk is currently mounted! The mount point will be removed temporary to perform selected command.');
+define('_DISKSMOUNTTOOLS_UMOUNT','Unmount disk/partition');
+define('_DISKSMOUNTTOOLS_UMOUNTTEXT','If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>
+Service disruption to users accessing this mount will occur during this process.');
 
 // Service: CIFS/SAMBA
 // Common text

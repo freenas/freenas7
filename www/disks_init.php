@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_manage_init.php
+	disks_init.php
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
@@ -191,20 +191,9 @@ function disk_change() {
 }
 // -->
 </script>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-	<li class="tabinact"><a href="disks_manage.php"><?=_DISKSPHP_MANAGE; ?></a></li>
-	<li class="tabact"><?=_DISKSPHP_FORMAT; ?></li>
-	<li class="tabinact"><a href="disks_manage_tools.php"><?=_DISKSPHP_TOOLS; ?></a></li>
-	<li class="tabinact"><a href="disks_manage_iscsi.php"><?=_DISKSPHP_ISCSIINIT; ?></a></li>
-  </ul>
-  </td></tr>
-  <tr>
-    <td class="tabcont">
       <?php if($input_errors) print_input_errors($input_errors);?>
       <?php if($errormsg) print_error_box($errormsg);?>
-			<form action="disks_manage_init.php" method="post" name="iform" id="iform">
+			<form action="disks_init.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
             <td valign="top" class="vncellreq"><?=_DISK; ?></td>

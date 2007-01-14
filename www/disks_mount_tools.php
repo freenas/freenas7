@@ -6,7 +6,7 @@
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -87,6 +87,8 @@ if(isset($_GET['action'])) {
       <ul id="tabnav">
         <li class="tabinact"><a href="disks_mount.php"><?=_DISKSMOUNTPHP_MANAGE;?></a></li>
         <li class="tabact"><?=_DISKSMOUNTPHP_TOOLS;?></a></li>
+        <li class="tabinact"><a href="disks_mount_fsck.php"><?=_DISKSMOUNTPHP_FSCK;?></a></li>
+
       </ul>
     </td>
   </tr>
