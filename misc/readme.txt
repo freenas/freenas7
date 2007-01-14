@@ -75,6 +75,8 @@ FreeNAS 0.683b:
 - Permit to mount CDROM drive
 - fixed the display of 'DMA' in the place of the size when controller found non-ATA66 cable
 - WebGUI: Add all RAID information on the Diagnostic information page
+- WebGUI: More easy fsck page to use
+- WebGUI: Improve graid5 tools page
 - New language: Romana (thanks to Laurentiu Florin Bubuianu)
 - Permit to configure the hosts file
 - Fix the disk check mounted bug
