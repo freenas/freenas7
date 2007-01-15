@@ -68,6 +68,10 @@ svn/misc/setupfreenas.sh
 
 ################ History Change logs ##############
 
+FreeNAs 0.684b:
+- Fix UPnP WebGUI bug
+- Update language file
+
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails
 - Upgrade Smartmontolls from 5.36 to 5.37
