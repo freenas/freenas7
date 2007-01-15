@@ -152,6 +152,7 @@ define('_SELECTED','Ausgew&auml;hlt');
 define('_MENULEFT_SYSTEM','System');
 define('_MENULEFT_SYSGENSETUP','Allgemeine Einstellungen');
 define('_MENULEFT_SYSSTATROUTES','Statische Route');
+define('_MENULEFT_SYSHOSTS','Hosts');
 define('_MENULEFT_SYSFIRMWARE','Firmware');
 define('_MENULEFT_SYSADVANCED','Erweitert');
 define('_MENULEFT_INTERFACES','Schnittstellen');
@@ -160,6 +161,7 @@ define('_MENULEFT_INTLAN','Netzwerk');
 define('_MENULEFT_DISKS',_DISKS);
 define('_MENULEFT_DISKMANAG','Management');
 define('_MENULEFT_DISKMNGSOFTRAID',_SOFTRAID);
+define('_MENULEFT_DISKMNGFORMAT',_FORMAT);
 define('_MENULEFT_DISKMNGMOUNTPOINT','Mount Point');
 define('_MENULEFT_SERVICES','Dienste');
 define('_MENULEFT_SRVCIFS','CIFS');
@@ -268,6 +270,7 @@ define('_SYSTEMROUTESPHP_EDITROUTE','Route bearbeiten');
 define('_SYSTEMROUTESPHP_MSGCONFIRM','Wollen Sie diese Route wirklich l&ouml;schen?');
 define('_SYSTEMROUTESPHP_DELROUTE','L&ouml;sche Route');
 define('_SYSTEMROUTESPHP_ADDROUTE','F&uuml;ge Route hinzu');
+define('_SYSTEMROUTESPHP_TEXT','Das definieren eines Hostnamens kann nützlich für ein NFS sein.');
 
 // Static Routes Edit Module
 // file: system_routes_edit.php
@@ -294,7 +297,7 @@ define('_SYSTEMFIRMWAREPHP_CORRUPTIMG','Dieses Image ist defekt');
 define('_SYSTEMFIRMWAREPHP_INSTREBOOTLAT','Diese Firmware wird nun installiert. FreeNAS wird danach automatisch neu starten.');
 define('_SYSTEMFIRMWAREPHP_NOTSUP','Firmware Upload wird auf dieser Plattform nicht unterst&uuml;tzt.');
 define('_SYSTEMFIRMWAREPHP_BIGWARN','Das bedeutet, dass das Image, das Sie geladen haben ' .
-      'kein offiziell unterst&uuml;tztes Image ist und eventuell die Sicherheit des Systems gef&auml;hrdet ' .
+      'kein offiziell unterst&uuml;tztes Image ist und eventuell die Sicherheit des Systems gef&auml;hrdet. ' .
       'Installieren Sie nur Images, die nur von vertrauten Quellen stammen, und &uuml;berpr&uuml;fen '.
       'Sie, dass das Image nicht manipuliert wurde.<br><br>'.  //abgegeben ?
       'M&ouml;chten Sie das Image trotzdem installieren (auf eigene Gefahr)?');
