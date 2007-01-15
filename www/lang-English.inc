@@ -266,7 +266,7 @@ define('_SYSTEMROUTESPHP_EDITROUTE','Edit Route');
 define('_SYSTEMROUTESPHP_MSGCONFIRM','Do you really want to delete this route?');
 define('_SYSTEMROUTESPHP_DELROUTE','Delete Route');
 define('_SYSTEMROUTESPHP_ADDROUTE','Add Route');
-define('_SYSTEMROUTESPHP_TEXT','Define an host name can be usefull for NFS.');
+define('_SYSTEMROUTESPHP_TEXT','Define an host name can be useful for NFS.');
 
 // Static Routes Edit Module
 // file: system_routes_edit.php

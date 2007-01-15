@@ -129,6 +129,7 @@ define('_SUCCESSFUL','Erfolgreich');
 define('_FAILED','Fehlgeschlagen');
 define('_ERROR','Fehler');
 define('_HINT','Hinweis');
+define('_FORMAT','Formatieren');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Die &Auml;nderungen wurden &uuml;bernommen.');
@@ -270,7 +271,7 @@ define('_SYSTEMROUTESPHP_EDITROUTE','Route bearbeiten');
 define('_SYSTEMROUTESPHP_MSGCONFIRM','Wollen Sie diese Route wirklich l&ouml;schen?');
 define('_SYSTEMROUTESPHP_DELROUTE','L&ouml;sche Route');
 define('_SYSTEMROUTESPHP_ADDROUTE','F&uuml;ge Route hinzu');
-define('_SYSTEMROUTESPHP_TEXT','Das definieren eines Hostnamens kann nützlich für ein NFS sein.');
+define('_SYSTEMROUTESPHP_TEXT','Das definieren eines Hostnamens kann n&uuml;tzlich f&uuml;r ein NFS sein.');
 
 // Static Routes Edit Module
 // file: system_routes_edit.php
@@ -407,7 +408,7 @@ define('_INTPHP_MSGCHANGED','Die LAN Konfiguration hat sich ge&auml;ndert.<br>Zu
 // Common text
 define('_DISKSPHP_NAME',_DISKS);
 define('_DISKSPHP_MANAGE','Verwalten');
-define('_DISKSPHP_FORMAT','Formatieren');
+define('_DISKSPHP_FORMAT',_FORMAT);
 define('_DISKSPHP_TOOLS','Tools');
 define('_DISKSPHP_ISCSIINIT','iSCSI initiator');
 define('_DISKSPHP_DISK',_DISK);
