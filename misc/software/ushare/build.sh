@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 build_ushare() {
-  sh $SVNDIR/misc/software/ushare/files/ushare-0.9.8_1.shar
+	cd /usr/ports/net
+  tar -zxvf $SVNDIR/misc/software/ushare/files/ushare.tar.gz
 
-  cd /usr/ports/net/ushare
+  cd ushare
 
   make clean
   make
