@@ -564,6 +564,7 @@ define('_DISKSMOUNTPHP_NAME','Mount Point');
 define('_DISKSMOUNTPHP_SHARENAME','Freigaben Name');
 define('_DISKSMOUNTPHP_MANAGE','Verwalten');
 define('_DISKSMOUNTPHP_TOOLS','Tools');
+define('_DISKSMOUNTPHP_FSCK','Fsck');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','Die Liste der Einbindungen (Mount Points) wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden.');
@@ -585,6 +586,13 @@ define('_DISKSMOUNTTOOLS_SENDCMD','Sende Befehl!');
 define('_DISKSMOUNTTOOLS_CMDINFO','Befehlsausgabe:');
 define('_DISKSMOUNTTOOLS_MOUNTTEXT','Mounting...');
 define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
+
+// file: disk_mount_fsck.php
+define('_DISKSMOUNTFSCK_NAMEDESC','Tools');
+define('_DISKSMOUNTFSCK_CMDINFO','Command output:');
+define('_DISKSMOUNTFSCK_MOUNTNOTE','The disk is currently mounted! The mount point will be removed temporary to perform selected command.');
+define('_DISKSMOUNTFSCK_UMOUNT','Unmount disk/partition');
+define('_DISKSMOUNTFSCK_UMOUNTTEXT','If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process.');
 
 // Service: CIFS/SAMBA
 // Common text

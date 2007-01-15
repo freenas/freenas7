@@ -576,17 +576,12 @@ define('_DISKSMOUNTTOOLS_CMDINFO','Command output:');
 define('_DISKSMOUNTTOOLS_MOUNTTEXT','Mounting...');
 define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Unmounting...');
 
-//disk_mount_fsck.php (old disk tools)
-//file: disks_manage_tools.php
-define('_DISKSMOUNTTOOLS_NAMEDESC','Tools');
-define('_DISKSMOUNTTOOLS_COMMAND','Command');
-define('_DISKSMOUNTTOOLS_SENDCMD','Send Command!');
-define('_DISKSMOUNTTOOLS_RAIDDISKNOTE','Use <a href="%s">RAID tools</a> for this disk!');
-define('_DISKSMOUNTTOOLS_CMDINFO','Command output:');
-define('_DISKSMOUNTTOOLS_MOUNTNOTE','The disk is currently mounted! The mount point will be removed temporary to perform selected command.');
-define('_DISKSMOUNTTOOLS_UMOUNT','Unmount disk/partition');
-define('_DISKSMOUNTTOOLS_UMOUNTTEXT','If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>
-Service disruption to users accessing this mount will occur during this process.');
+// file: disk_mount_fsck.php
+define('_DISKSMOUNTFSCK_NAMEDESC','Tools');
+define('_DISKSMOUNTFSCK_CMDINFO','Command output:');
+define('_DISKSMOUNTFSCK_MOUNTNOTE','The disk is currently mounted! The mount point will be removed temporary to perform selected command.');
+define('_DISKSMOUNTFSCK_UMOUNT','Unmount disk/partition');
+define('_DISKSMOUNTFSCK_UMOUNTTEXT','If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process.');
 
 // Service: CIFS/SAMBA
 // Common text
