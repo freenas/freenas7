@@ -183,9 +183,7 @@ function enable_change(enable_change) {
 					<tr>
 						<td class="list" colspan="1"></td>
 						<td class="list">
-							<?php if(isset($config['upnp']['enable'])): ?>
 							<a href="services_upnp_edit.php"><img src="plus.gif" title="<?=_SRVUPNP_ADDDIR;?>" width="17" height="17" border="0"></a>
-							<?php endif; ?>
 						</td>
 					</tr>
         </table>
