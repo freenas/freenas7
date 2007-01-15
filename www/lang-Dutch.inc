@@ -621,7 +621,7 @@ define('_SRVFTP_MAXCLIENTTEXT','Maximum aantal gelijktijdige connecties.');
 define('_SRVFTP_MAXIP','Max. aant. conn. per IP');
 define('_SRVFTP_MAXIPTEXT','Maximum aantal connecties per IP adres (0 = ongelimiteerd).');
 define('_SRVFTP_TIMEOUT','Onderbreking');
-define('_SRVFTP_TIMEOUTTEXT','Maximum inactiviteitsduur in seconden.');
+define('_SRVFTP_TIMEOUTTEXT','Maximum idle time in minutes.');
 define('_SRVFTP_ANONYMOUS','Anonieme aanmelding');
 define('_SRVFTP_ENANONYMOUS','Anonieme aanmelding activeren.');
 define('_SRVFTP_AUTH','Lokale gebruiker');

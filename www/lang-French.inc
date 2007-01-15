@@ -626,7 +626,7 @@ define('_SRVFTP_MAXCLIENTTEXT','Nombre maximum de clients simultan&eacute;s.');
 define('_SRVFTP_MAXIP','Max. conn. per IP');
 define('_SRVFTP_MAXIPTEXT','Nombre maximum de connexions par IP (0 = unlimited).');
 define('_SRVFTP_TIMEOUT','Timeout');
-define('_SRVFTP_TIMEOUTTEXT','Dur&eacute;e maximum d\'inactivit&eacute; en secondes.');
+define('_SRVFTP_TIMEOUTTEXT','Maximum idle time in minutes.');
 define('_SRVFTP_ANONYMOUS','Login anonyme');
 define('_SRVFTP_ENANONYMOUS','Accepter les connexions anonymes.');
 define('_SRVFTP_AUTH','Login local');

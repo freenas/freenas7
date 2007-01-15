@@ -625,7 +625,7 @@ define('_SRVFTP_MAXCLIENTTEXT','Numarul maxim de clienti.');
 define('_SRVFTP_MAXIP','Conex. Max pe IP');
 define('_SRVFTP_MAXIPTEXT','Numar maxim de conexiuni pe IP (0 = nelimitat).');
 define('_SRVFTP_TIMEOUT','Timeout');
-define('_SRVFTP_TIMEOUTTEXT','Timp maximum idle in secunde.');
+define('_SRVFTP_TIMEOUTTEXT','Maximum idle time in minutes.');
 define('_SRVFTP_ANONYMOUS','Login Anonymous');
 define('_SRVFTP_ENANONYMOUS','Activare login in mod anonymous.');
 define('_SRVFTP_AUTH','Utilizator Local');

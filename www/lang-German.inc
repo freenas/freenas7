@@ -633,7 +633,7 @@ define('_SRVFTP_MAXCLIENTTEXT','Maximale Anzahl der gleichzeitig eingew&auml;hlt
 define('_SRVFTP_MAXIP','Max. Anzahl Verb. einer IP');
 define('_SRVFTP_MAXIPTEXT','Maximale Anzahl der Verbindungen von einer IP-Adresse (0 = unbegrenzt).');
 define('_SRVFTP_TIMEOUT','Timeout');
-define('_SRVFTP_TIMEOUTTEXT','Maximum Leerlaufzeit in Sekunden.');
+define('_SRVFTP_TIMEOUTTEXT','Maximum Leerlaufzeit in Minuten.');
 define('_SRVFTP_ANONYMOUS','Anonymous login');
 define('_SRVFTP_ENANONYMOUS','Aktiviere anonymes Login.');
 define('_SRVFTP_AUTH','Lokaler Benutzer');
