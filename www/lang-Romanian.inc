@@ -44,7 +44,7 @@ define('_DATETIMELONG','%A, %B %d, %Y - %I:%M %p');
 define('_DAY_OF_WEEK_LONG','Duminica Luni Marti Miercuri Joi Vineri Simbata');
 define('_DAY_OF_WEEK_SHORT','Dum Lun Mar Mie Joi Vin Sim');
 define('_MONTH_LONG','Ianuarie Februarie Martie Aprilie Mai Iunie Iulie August Septembrie Octombrie Noiembrie Decembrie');
-define('_MONTH_SHORT','Ian Feb Mar Apr MAi Iun Iul Aug Sep Oct Nov Dec');
+define('_MONTH_SHORT','Ian Feb Mar Apr Mai Iun Iul Aug Sep Oct Nov Dec');
 define('_TIME', 'Timp');
 define('_TIMEBRIEF','%I:%M %p');
 define('_SECOND', 'secunda');
@@ -55,7 +55,7 @@ define('_HOUR', 'ora');
 define('_HOURS', 'ore');
 define('_DAY', 'zi');
 define('_DAYS', 'zile');
-define('_WEEK', 'sapatamina');
+define('_WEEK', 'saptamina');
 define('_WEEKS', 'saptamini');
 define('_WEEKDAYS', 'zilele saptaminii');
 define('_MONTH', 'luna');
@@ -64,7 +64,7 @@ define('_YEAR', 'an');
 define('_YEARS', 'ani');
 
 // common words
-define('_ALL','Toate');
+define('_ALL','toate');
 define('_AND','si');
 define('_BY','de');
 define('_DOWN','Down');
@@ -79,10 +79,10 @@ define('_URL', 'URL');
 define('_YES','Da');
 
 // common actions
-define('_ACTIVATE','Activ');
-define('_ADD','Adauga');
-define('_CANCEL', 'Cancel');
-define('_COMMIT', 'Actualizare');
+define('_ACTIVATE','Activare');
+define('_ADD','Adaugare');
+define('_CANCEL', 'Anuleaza');
+define('_COMMIT', 'Aplicare');
 define('_CREATE', 'Creare');
 define('_DEACTIVATE','Dezactivat');
 define('_DELETE','Stergere');
@@ -91,13 +91,13 @@ define('_ENABLE','Validare');
 define('_HELP', 'Ajutor');
 define('_IGNORE','Ignora');
 define('_LOGIN','Login');
-define('_LOGOUT','Log out');
+define('_LOGOUT','Logout');
 define('_MODIFY','Modificare');
 define('_NEW','Nou');
 define('_SEARCH', 'Cauta');
 define('_SAVE', 'Salvare');
 define('_SUBMIT','Trimite');
-define('_UPDATE', 'Update');
+define('_UPDATE', 'Actualizare');
 define('_VIEW', 'Vizualizare');
 define('_APPLY', 'Aplicare modificari');
 define('_WARNING', 'Atentie');
@@ -110,20 +110,21 @@ define('_STATUS', 'Stare');
 define('_TYPE', 'Tip');
 define('_CONFIGURING', 'Configurare');
 define('_DISK', 'Disc');
-define('_DISKS', 'Disc-uri');
+define('_DISKS', 'Discuri');
 define('_PARTITION', 'Partitie');
-define('_FILESYSTEM', 'Fisiere sistem');
+define('_FILESYSTEM', 'Sistem Fisiere');
 define('_DESC', 'Descriere');
 define('_SOFTRAID', 'RAID Software');
 define('_SERVICE','Serviciu');
 define('_SERVICES','Servicii');
 define('_TCPPORT','Port TCP');
 define('_CONFIRMATION','Confirmare');
-define('_NOTE','Obs.');
+define('_NOTE','Observatii');
 define('_SUCCESSFUL','Cu Succes');
 define('_FAILED','Incorect');
 define('_ERROR','Eroare');
 define('_HINT','Indiciu');
+define('_FORMAT','Formatare');
 
 // common messages
 define('_MESSAGES_SUCCESS', 'Modificarile au fost aplicate cu succes.');
@@ -132,11 +133,11 @@ define('_MESSAGES_ERROR', 'EROARE: modificarile nu pot fi aplicate (cod erroare 
 
 // Special messages
 define('_MSGVALIDIP','Trebuie sa introduceti o adresa IP valida.');
-define('_MSGVALIDNETBIT','Trebuie sa introduceti un nr. retea valid.');
+define('_MSGVALIDNETBIT','Trebuie sa introduceti un bit masca retea valid.');
 define('_MSGVALIDTCPPORT','Trebuie sa introduceti un port TCP valid.');
 define('_MSGVALIDPASSWORD','Parolele sint diferite.');
-define('_MSGSCHED_TEXT','Note: Ctrl-click (sau command-click pe Mac) pentru selectare/deselectare minute, ore, zile  si luni.');
-define('_MSGFILESYSTEM','UFS (+ variante) reprezinta sistemul de fisiere NATIV pentru  FreeBSD (sistemul sursa al FreeNAS). Utilizarea altor sisteme de fisere cum ar fi FAT, FAT32, EXT2, EXT3, sau NTFS poate avea rezultate incerte (inclusiv pierderi de date)!');
+define('_MSGSCHED_TEXT','Note: Ctrl+click (sau command+click pe Mac) pentru selectare/deselectare minute, ore, zile  si luni.');
+define('_MSGFILESYSTEM','UFS (si variante sale) reprezinta sistemul de fisiere NATIV pentru  FreeBSD (sistemul sursa al FreeNAS). Utilizarea altor sisteme de fisere cum ar fi FAT, FAT32, EXT2, EXT3, sau NTFS poate avea rezultate incerte (risc de pierderi date)!');
 
 // states
 define('_ACTIVE','Activ');
@@ -147,14 +148,16 @@ define('_SELECTED','Selectat');
 define('_MENULEFT_SYSTEM','Sistem');
 define('_MENULEFT_SYSGENSETUP','Setari Generale');
 define('_MENULEFT_SYSSTATROUTES','Rute Statice');
+define('_MENULEFT_SYSHOSTS','Host-uri');
 define('_MENULEFT_SYSFIRMWARE','Firmware');
 define('_MENULEFT_SYSADVANCED','Avansat');
 define('_MENULEFT_INTERFACES','Interfete');
 define('_MENULEFT_INTASSIGN','Atribuire');
-define('_MENULEFT_INTLAN','LAN');
+define('_MENULEFT_INTLAN','Retea');
 define('_MENULEFT_DISKS',_DISKS);
-define('_MENULEFT_DISKMANAG','Management');
+define('_MENULEFT_DISKMANAG','Administrare');
 define('_MENULEFT_DISKMNGSOFTRAID',_SOFTRAID);
+define('_MENULEFT_DISKMNGFORMAT',_FORMAT);
 define('_MENULEFT_DISKMNGMOUNTPOINT','Punct Montare');
 define('_MENULEFT_SERVICES','Servicii');
 define('_MENULEFT_SRVCIFS','CIFS');
@@ -205,11 +208,11 @@ define('_SYSTEMPHP_DNSTEXT','Adresa IP');
 define('_SYSTEMPHP_USERNAME','Nume Utilizator');
 define('_SYSTEMPHP_USERNAMETEXT','Daca doriti sa schimbati numele sub care veti accesa Interfa Web FreeNas, introduceti-l aici.');
 define('_SYSTEMPHP_PASSWORD','Parola');
-define('_SYSTEMPHP_PASSWORDTEXT','Daca doriti sa schimbati parola de acces pentru Interfa Web FreeNas, introduceti-o aici de doua ori.<br>Nu folositi caracterele \':\'.');
+define('_SYSTEMPHP_PASSWORDTEXT','Daca doriti sa schimbati parola de acces pentru Interfa Web FreeNas, introduceti-o aici de doua ori pentru verificare.<br>Nu folositi caracterele \':\'.');
 define('_SYSTEMPHP_WEBGUIPROTOCOL','Protocol Interfata Web');
 define('_SYSTEMPHP_WEBGUIPROTOCOLTEXT','');
 define('_SYSTEMPHP_WEBGUIPORT','Port Interfata Web');
-define('_SYSTEMPHP_WEBGUIPORTTEXT','Introduceti un port de acces Interfata daca vreti sa-l schimbati pe cel implicit (80 pentru HTTP, 443 pentru HTTPS).');
+define('_SYSTEMPHP_WEBGUIPORTTEXT','Introduceti un port de acces pentru Interfata Web daca vreti sa-l schimbati pe cel implicit (80 pentru HTTP, 443 pentru HTTPS).');
 define('_SYSTEMPHP_LANGUAGE','Limba');
 define('_SYSTEMPHP_LANGUAGETEXT','Selectati limba sistem');
 define('_SYSTEMPHP_TIMEZONE','Fus Orar');
@@ -222,7 +225,7 @@ define('_SYSTEMPHP_MSGHOSTNAME','HostName-ul poate contine doar caracterele  a-z
 define('_SYSTEMPHP_MSGDOMAIN','Numele de Domeniu poate contine doar caracterele  a-z, 0-9 si \'-\'.');
 define('_SYSTEMPHP_MSGDNS','Trebuie sa furnizati o adesa IP valida pentru server-ul DNS Primar/Secundar.');
 define('_SYSTEMPHP_MSGUSERNAME','Numele Utilizator poate contine doar caracterele a-z, A-Z and 0-9.');
-define('_SYSTEMPHP_MSGWEBGUIPORT','Trebuie sa introduceti un port TCP/IP valid pentru webGUI.');
+define('_SYSTEMPHP_MSGWEBGUIPORT','Trebuie sa introduceti un port TCP/IP valid pentru Interfata Web.');
 define('_SYSTEMPHP_MSGPASSWORD','Parolele nu coincid.');
 define('_SYSTEMPHP_MSGLANGUAGE','Trebuie sa selectati o limba valida.');
 define('_SYSTEMPHP_MSGTIMEUPDATEINTERVAL','Intervalul de actualizare poate fi fie 0 (dezactivat) sau o valoare intre 6 si 1440.');
@@ -263,18 +266,34 @@ define('_SYSTEMROUTESPHP_EDITROUTE','Editare Ruta');
 define('_SYSTEMROUTESPHP_MSGCONFIRM','Stergeti Aceasta Ruta?');
 define('_SYSTEMROUTESPHP_DELROUTE','Stergere Ruta');
 define('_SYSTEMROUTESPHP_ADDROUTE','Adaugare Ruta');
+define('_SYSTEMROUTESPHP_TEXT','Definirea unui nume pentru host poate fi util pentru NFS.');
 
 // Static Routes Edit Module
 // file: system_routes_edit.php
-define('_SYSTEMROUTESPHP_MSGVALID','Trebuie specificata o retea destinatie valida.');
+define('_SYSTEMROUTESPHP_MSGVALID','Trebuie specificata o retea de destinatie valida.');
 define('_SYSTEMROUTESPHP_MSGVALIDNETBIT',_MSGVALIDNETBIT);
-define('_SYSTEMROUTESPHP_MSGVALIDGW','Trebuie specificata o adresa IP de gateway valida.');
+define('_SYSTEMROUTESPHP_MSGVALIDGW','Trebuie specificata o adresa IP valida pentru gateway.');
 define('_SYSTEMROUTESPHP_MSGROUTEEXIST','Exista deja o ruta catre aceasta destinatie.');
 define('_SYSTEMROUTESPHP_CHOOSEINT','Selectati interfata pentru aceasta ruta.');
 define('_SYSTEMROUTESPHP_DESTNET','Reteaua Destinatie');
-define('_SYSTEMROUTESPHP_DESTNETROUTE','Reteaua Destinatie pentru aceasta ruta statica');
+define('_SYSTEMROUTESPHP_DESTNETROUTE','Reteaua de Destinatie pentru aceasta ruta statica');
 define('_SYSTEMROUTESPHP_GWTONET','Gateway-ul pentru acces la reteaua destinatie');
 define('_SYSTEMROUTESPHP_DESCREF','Puteti introduce aici o scurta descriere.');
+// Hosts
+// file: system_hosts.php
+define('_SYSTEMHOSTSPHP_MSG_CHANGED','Lista host a fost modificata.<br>Trebuie sa salvati modificarile pentru ca acestea sa devina active.');
+define('_SYSTEMHOSTSPHP_EDITHOST','Editare Host');
+define('_SYSTEMHOSTSPHP_MSGCONFIRM','Stergeti acest Host?');
+define('_SYSTEMHOSTSPHP_DELHOST','Stergere Host');
+define('_SYSTEMHOSTSPHP_ADDHOST','Adaugare Host');
+ 	  	 
+// file: system_hosts_edit.php
+define('_SYSTEMHOSTSPHP_MSGVALIDNAME','Numele pentru Host contine caractere invalide.');
+define('_SYSTEMHOSTSPHP_MSGVALIDIP','Trebuie sa specificati o adresa IP.');
+define('_SYSTEMHOSTSPHP_MSGHOSTEXIST','Un Host cu acest nume exista deja.');
+define('_SYSTEMHOSTSPHP_HOSTTEXT','Numele pentru Host poate contine doar caracterele a-z, A-Z and 0-9, - , _ si .');
+define('_SYSTEMHOSTSPHP_ADDRESSTEXT','Adresa IP a acestui Host..');
+define('_SYSTEMHOSTSPHP_DESCTEXT','Puteti introduce aici o scurta descriere.');
 
 // System Firmware Module
 // file: system_firmware.php
@@ -286,7 +305,7 @@ define('_SYSTEMFIRMWAREPHP_INVSIG','Semnatura digitala invalida a imaginii.');
 define('_SYSTEMFIRMWAREPHP_INVSIGSHORT','Imaginea nu are nicio semnatura digitala asociata.');
 define('_SYSTEMFIRMWAREPHP_INVSIGIMGT','Eroare la verificarea semnaturii digitale a imaginii.');
 define('_SYSTEMFIRMWAREPHP_CORRUPTIMG','Fisier corupt');
-define('_SYSTEMFIRMWAREPHP_INSTREBOOTLAT','Se actualizeaza sistemul. FreeNas va reporni apoi in mod automat.');
+define('_SYSTEMFIRMWAREPHP_INSTREBOOTLAT','Se actualizeaza sistemul dupa acre acesta va reporni apoi in mod automat.');
 define('_SYSTEMFIRMWAREPHP_NOTSUP','Actualizarea sistemului nu este posibila.');
 define('_SYSTEMFIRMWAREPHP_BIGWARN','Acest lucru insemna ca imaginea incarcata ' .
 		 	'nu este in mod oficial suportata si poate produce efecte nedorite in functionare ' .
@@ -310,7 +329,7 @@ define('_SYSTEMADVANCEDPHP_MSGVALIDCERTKEY','certificatul si cheia trebuiesc spe
 define('_SYSTEMADVANCEDPHP_MSGVALIDCERT','Acest certificat nu este valid.');
 define('_SYSTEMADVANCEDPHP_MSGVALIDKEY','Aceasta cheie nu este valida.');
 define('_SYSTEMADVANCEDPHP_NOTE','ATENTIE: Aceste Optiuni sint <strong>DOAR</strong> pentru utilizatori avansati!.');
-define('_SYSTEMADVANCEDPHP_WEBGUISSLKEY','cheie/cerfificat pentru webGUI SSL');
+define('_SYSTEMADVANCEDPHP_WEBGUISSLKEY','cheie/cerfificat pentru SSL Interfata Web');
 define('_SYSTEMADVANCEDPHP_WEBCERT','Certificat');
 define('_SYSTEMADVANCEDPHP_WEBCERTTEXT','Introduceti un certificat semnat tip X.509 PEM.');
 define('_SYSTEMADVANCEDPHP_WEBKEY','Cheie');
@@ -325,21 +344,21 @@ define('_SYSTEMADVANCEDPHP_FIRMTEXT','In acest mod FreeNAS NU va verifica existe
 define('_SYSTEMADVANCEDPHP_TCPIDLE','TCP idle timeout');
 define('_SYSTEMADVANCEDPHP_TCPIDLETEXT','Conexiunile TCP inactive vor fi eliminate din tabela de stare dupa ce nu va mai fi receptionat niciun pachet corespunzator conexiunii pentru un numar specificat de secunde. Nu setati valoari prea mari altfel tabela se poate umple rapid cu conexiuni expirate, inutile. Timpul implicit este de 2.5 ore.');
 define('_SYSTEMADVANCEDPHP_NAV','Navigare');
-define('_SYSTEMADVANCEDPHP_NAVTEXT','Pastrare Diagnostic in modul expandat');
+define('_SYSTEMADVANCEDPHP_NAVTEXT','Pastrare meniu Diagnostic in modul extins');
 define('_SYSTEMADVANCEDPHP_BEEP','Beep Sistem');
 define('_SYSTEMADVANCEDPHP_DISBEEP','Dezactivare sunet la pornire si la oprire');
 define('_SYSTEMADVANCEDPHP_SMART','Daemon S.M.A.R.T');
 define('_SYSTEMADVANCEDPHP_ENSMART','Activare daemon S.M.A.R.T');
 define('_SYSTEMADVANCEDPHP_SMARTTEXT','Monitorizare dispozitiv S.M.A.R.T cu jurnalizare.');
-define('_SYSTEMADVANCEDPHP_TUNING','Tuning');
-define('_SYSTEMADVANCEDPHP_ENTUNING','Activare tuning pentru citeva variabile din kernel');
+define('_SYSTEMADVANCEDPHP_TUNING','Reglaj Performanta');
+define('_SYSTEMADVANCEDPHP_ENTUNING','Activare reglaj performanta pentru citeva variabile din kernel');
 define('_SYSTEMADVANCEDPHP_ZEROCONF','ZeroConf');
-define('_SYSTEMADVANCEDPHP_DISZEROCONF','Dezactivare anunt serviciu ZeroConf');
+define('_SYSTEMADVANCEDPHP_DISZEROCONF','Dezactivare mesaj serviciu ZeroConf');
 
 // Interface assing:
 // file: interfaces_assign.php
 define('_INTASSIGNPHP_NAME','Interfete');
-define('_INTASSIGNPHP_NAMEDESC','Alocare porturi retea');
+define('_INTASSIGNPHP_NAMEDESC','Alocare porturi de retea');
 define('_INTASSIGNPHP_MSGVALIDPORT','Portul ');
 define('_INTASSIGNPHP_MSGVALIDPORTWASASSIG',' a fost alocat ');
 define('_INTASSIGNPHP_MSGVALIDINT',' interfetei:');
@@ -356,11 +375,11 @@ define('_INTASSIGNPHP_INTTEXT','Dupa ce faceti click pe &quot;Salvare&quot;, va 
 // Interface LAN/OPT:
 // file: interfaces_lan.php
 // file: interfaces_opt.php
-define('_INTLANPHP_NAME','Interfeta');
-define('_INTLANPHP_NAMEDESC','LAN');
+define('_INTLANPHP_NAME','Interfata');
+define('_INTLANPHP_NAMEDESC','Retea');
 define('_INTPHP_MSGVALIDIP',_MSGVALIDIP);
 define('_INTPHP_MSGVALIDMASK',_MSGVALIDNETBIT);
-define('_INTPHP_MSGVALIDGW','Trebuie introdus un gateway valid.');
+define('_INTPHP_MSGVALIDGW','Trebuie introdus o adresa valida pentru gateway.');
 define('_INTPHP_MSGVALIDMTU','Trebuie introdus o valoare MTU corecta.');
 define('_INTPHP_IP','Adresa IP');
 define('_INTPHP_NETMASK','Masca Retea');
@@ -402,24 +421,24 @@ define('_DISKSPHP_DISK',_DISK);
 define('_DISKSPHP_FILESYSTEM',_FILESYSTEM);
 
 // file: disks_manage.php
-define('_DISKSMANAGEPHP_NAMEDESC','Management');
-define('_DISKSMANAGEPHP_MSGCHANGED','Lista de disc-uri a fost modificata.<br>Trebuie sa salvati aceste modificari pentru a deveni active.');
+define('_DISKSMANAGEPHP_NAMEDESC','Administrare');
+define('_DISKSMANAGEPHP_MSGCHANGED','Lista de discuri a fost modificata.<br>Trebuie sa salvati aceste modificari pentru a deveni active.');
 define('_DISKSMANAGEPHP_DESC',_DESC);
 define('_DISKSMANAGEPHP_STANDBY','Timp Standby');
 define('_DISKSMANAGEPHP_STANDBYALWAYSON','Pornit Mereu');
 define('_DISKSMANAGEPHP_FSUNKNOWN','Necunoscut sau neformatat');
 define('_DISKSMANAGEPHP_EDIT','Editare disc');
 define('_DISKSMANAGEPHP_DEL','Stergere disc');
-define('_DISKSMANAGEPHP_DELCONF','Sigur stergeti disc-ul? Toate datele inclusiv partajarile definite vor fi sterse!');
+define('_DISKSMANAGEPHP_DELCONF','Sigur stergeti discul selectat? Toate datele inclusiv partajarile definite vor fi sterse!');
 define('_DISKSMANAGEPHP_ADD','Adaugare disc');
-define('_DISKSMANAGEPHP_NOTE','Primul pas: Adaugati disc la lista.');
+define('_DISKSMANAGEPHP_NOTE','Primul pas: Adaugati un disc la lista.');
 
 // file: disks_manage_edit.php
 define('_DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE','Acest disc este deja in lista.');
 define('_DISKSMANAGEEDITPHP_UDMA','Mod UDMA');
-define('_DISKSMANAGEEDITPHP_UDMATEXT','Puteti forta modul UDMA daca primiti mesajul de eroare "UDMA_ERROR.... LBA" de la harddisc.');
-define('_DISKSMANAGEEDITPHP_STANDBY','Timp de standby harddisc');
-define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Trece harddisc-ul in modul standby cind timpul selectat de la ultima accesare expira. <em>Nu setati acest mod pentru cardurile CF.</em>');
+define('_DISKSMANAGEEDITPHP_UDMATEXT','Puteti forta modul UDMA daca primiti mesajul de eroare "UDMA_ERROR.... LBA" de la disc.');
+define('_DISKSMANAGEEDITPHP_STANDBY','Timp de standby pentru disc');
+define('_DISKSMANAGEEDITPHP_STANDBYTEXT','Trece discul in modul standby cind timpul selectat de la ultima accesare expira. <em>Nu setati acest mod pentru cardurile CF.</em>');
 define('_DISKSMANAGEEDITPHP_APM','Advanced Power Management');
 define('_DISKSMANAGEEDITPHP_APM_0','Dezactivat');
 define('_DISKSMANAGEEDITPHP_APM_1','Consum minim in modul Standby');
@@ -433,30 +452,20 @@ define('_DISKSMANAGEEDITPHP_ACLEVEL_0','Dezactivat');
 define('_DISKSMANAGEEDITPHP_ACLEVEL_1','Performanta minima, Zgomot minim');
 define('_DISKSMANAGEEDITPHP_ACLEVEL_64','Nivel Mediu de Zgomot');
 define('_DISKSMANAGEEDITPHP_ACLEVEL_127','Performanta maxima, Nivel Maxim Zgomot');
-define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','Acest mod stabileste nivelul de zgomot in functionare pentru Harddisc.<em>Nu setati acest mod pentru cardurile CF.</em>');
+define('_DISKSMANAGEEDITPHP_ACLEVELTEXT','Acest mod stabileste nivelul de zgomot in functionare pentru disc.<em>Nu setati acest mod pentru cardurile CF.</em>');
 define('_DISKSMANAGEEDITPHP_PREFS','Preformatat FS');
-define('_DISKSMANAGEEDITPHP_PREFSTEXT','Permite stabilirea tipului FS pentru hardisc-uri preformatate, avind date scrise.<br><em>Selectati "neformatat" pentru disc-uri neformatate si folositi <a href="disks_manage_init.php">meniul format</a>.</em>');
+define('_DISKSMANAGEEDITPHP_PREFSTEXT','Permite stabilirea tipului FS pentru discuri preformatate, avind date scrise.<br><em>Selectati "neformatat" pentru discuri neformatate si folositi <a href="disks_manage_init.php">meniul format</a>.</em>');
 
 //file: disks_manage_init.php
 define('_DISKSMANAGEINITPHP_NAMEDESC','Initializare');
 define('_DISKSMANAGEINITPHP_DISKMOUNTERROR','Discul este montat! <a href=%s>De-montati</a> acest disc mai intii!');
 define('_DISKSMANAGEINITPHP_INITTEXT','<strong>Detalii initializare Disc:</strong>');
 define('_DISKSMANAGEINITPHP_INITINFO','\"fdisk: Geom not found\"nu este un mesaj de eroare!\n');
-define('_DISKSMANAGEINITPHP_TEXT','Vor fi sterse toate partiile, va fi creata partiatia 1 si va fi formatat harddisc-ul cu sistemul de fisiere selectat.');
+define('_DISKSMANAGEINITPHP_TEXT','Vor fi sterse toate partiile, va fi creata partiatia 1 si va fi formatat discul cu sistemul de fisiere selectat.');
 define('_DISKSMANAGEINITPHP_FORMATDISC','Formatare disc');
-define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Sigur doriti formatarea disc-ului? Veti pierde toate datele!');
+define('_DISKSMANAGEINITPHP_FORMATDISCCONF','Sigur doriti formatarea discului? Veti pierde toate datele!');
 define('_DISKSPHP_NOMBR','Nu stergeti MBR-ul');
 define('_DISKSPHP_NOMBRTEXT','nu stergeti MBR-ul (util pentru unele controlere RAID)');
-
-//file: disks_manage_tools.php
-define('_DISKSMANAGETOOLS_NAMEDESC','Unelte');
-define('_DISKSMANAGETOOLS_COMMAND','Comenzi');
-define('_DISKSMANAGETOOLS_SENDCMD','Excutare Comanda!');
-define('_DISKSMANAGETOOLS_RAIDDISKNOTE','Utilizati <a href="%s">Unelte RAID</a> pentru acest disc!');
-define('_DISKSMANAGETOOLS_CMDINFO','Rezultat comanda:');
-define('_DISKSMANAGETOOLS_MOUNTNOTE','Acest disc este montat! Punctul de montare disc va fi eliminat temporar pentru a efectua comanda selectata.');
-define('_DISKSMANAGETOOLS_UMOUNT','De-montare disc/partitie');
-define('_DISKSMANAGETOOLS_UMOUNTTEXT','Daca disc-ul/partitia selectata este montat va fi de-montat momentan pentru efectuarea comenzii, altfel comanda va fi rulata doar in modul citire.');
 
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','Management');
@@ -497,14 +506,14 @@ define('_DISKSRAIDPHP_NOTE','Pas optional: Configurati ca disc RAID virtual <a h
 
 //file: disks_raid_edit.php
 define('_DISKSRAIDEDITPHP_NAMEDESC',_EDIT);
-define('_DISKSRAIDEDITPHP_MSGADDDISKFIRST','Trebuia sa adaugati disc-ul mai intii.');
+define('_DISKSRAIDEDITPHP_MSGADDDISKFIRST','Trebuia sa adaugati discul mai intii.');
 define('_DISKSRAIDEDITPHP_MSGVALIDNAME','Numele dispozitivului poate contine doar caracterele  a-z, A-Z, 0-9.');
 define('_DISKSRAIDEDITPHP_MSGEXIST','Dispozitivul este deja in lista raid.');
-define('_DISKSRAIDEDITPHP_MSGVALIDRAID0','Sint necesare cel putin 2 disc-uri pentru un RAID 0.');
-define('_DISKSRAIDEDITPHP_MSGVALIDJBOD','Sint necesare cel putin 2 disc-uri pentru un JBOD.');
-define('_DISKSRAIDEDITPHP_MSGVALIDRAID1','Sint necesare cel putin 2 disc-uri pentru un RAID 1.');
-define('_DISKSRAIDEDITPHP_MSGVALIDRAID5','Sint necesare cel putin 3 disc-uri pentru un RAID 5.');
-define('_DISKSRAIDEDITPHP_MSGERROR','ERROARE: Configuratia RAID nu poate fi salvata.\n');
+define('_DISKSRAIDEDITPHP_MSGVALIDRAID0','Sint necesare cel putin 2 discuri pentru un RAID 0.');
+define('_DISKSRAIDEDITPHP_MSGVALIDJBOD','Sint necesare cel putin 2 discuri pentru un JBOD.');
+define('_DISKSRAIDEDITPHP_MSGVALIDRAID1','Sint necesare cel putin 2 discuri pentru un RAID 1.');
+define('_DISKSRAIDEDITPHP_MSGVALIDRAID5','Sint necesare cel putin 3 discuri pentru un RAID 5.');
+define('_DISKSRAIDEDITPHP_MSGERROR','EROARE: Configuratia RAID nu poate fi salvata.\n');
 define('_DISKSRAIDEDITPHP_RAIDNAME','Nume Raid');
 define('_DISKSRAIDEDITPHP_GVBALANCEALGO','Algoritm Balans');
 define('_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT','Selectati algoritmul de balans la citire.');
@@ -523,7 +532,7 @@ define('_DISKSRAIDINITPHP_TEXT','Volumul RAID va fi formatat folosind sistemul d
 define('_DISKSRAIDINITPHP_FORMAT','Formatare disc UFS!');
 
 //file: disks_raid_tools.php
-define('_DISKSRAIDTOOLSPHP_OBJNAME','NUme obiect');
+define('_DISKSRAIDTOOLSPHP_OBJNAME','Nume obiect');
 define('_DISKSRAIDTOOLSPHP_COMMAND','Comanda');
 define('_DISKSRAIDTOOLSPHP_INFO','rezultat comanda:');
 define('_DISKSRAIDTOOLSPHP_SENDCMD','Executare Comanda!');
@@ -535,13 +544,14 @@ define('_DISKSMOUNTPHP_NAME','Punct Montare');
 define('_DISKSMOUNTPHP_SHARENAME','Nume Share');
 define('_DISKSMOUNTPHP_MANAGE','Configurare');
 define('_DISKSMOUNTPHP_TOOLS','Unelte');
+define('_DISKSMOUNTPHP_FSCK','Fsck');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','Lista punctelor de montare a fost schimbata.<br>Trebuie sa salvati modificarile pentru ca acestea sa devina active.');
-define('_DISKSMOUNTPHP_NOTE','Pasul doi de configurare: Declararea sistemului de fisiere utilizat <a href="disks_manage.php">de disc-ul configurat anterior.</a><p>');
+define('_DISKSMOUNTPHP_NOTE','Pasul doi de configurare: Declararea sistemului de fisiere utilizat <a href="disks_manage.php">de discul configurat anterior.</a><p>');
 define('_DISKSMOUNTPHP_DELCONF','Doriti sa stergeti acest punct de montare? Toate elementele asociate, chiar active, vor fi sterse (inclusiv partajarile)!');
-define('_DISKSMOUNTPHP_DEL','stergere pct. montare');
-define('_DISKSMOUNTPHP_ADD','adaugare pct. montare');
+define('_DISKSMOUNTPHP_DEL','stergere punct montare');
+define('_DISKSMOUNTPHP_ADD','adaugare punct montare');
 
 // disks_mount_edit.php
 define('_DISKSMOUNTEDITPHP_MSGVALIDNAME','Numele pentru partajari poate contine doar caracterele a-z, A-Z, 0-9, _ , -.');
@@ -557,6 +567,18 @@ define('_DISKSMOUNTTOOLS_SENDCMD','Executa Comanda!');
 define('_DISKSMOUNTTOOLS_CMDINFO','Rezultat Comanda:');
 define('_DISKSMOUNTTOOLS_MOUNTTEXT','Montare...');
 define('_DISKSMOUNTTOOLS_UMOUNTTEXT','De-montare...');
+
+//disk_mount_fsck.php (old disk tools)
+//file: disks_manage_tools.php
+define('_DISKSMOUNTTOOLS_NAMEDESC','Unelte');
+define('_DISKSMOUNTTOOLS_COMMAND','Comanda');
+define('_DISKSMOUNTTOOLS_SENDCMD','Executare Comanda!');
+define('_DISKSMOUNTTOOLS_RAIDDISKNOTE','Utilizati <a href="%s">Unelte RAID</a> pentru acest disc!');
+define('_DISKSMOUNTTOOLS_CMDINFO','rezultat Comanda:');
+define('_DISKSMOUNTTOOLS_MOUNTNOTE','TAcest disc este montat! Punctul de montare disc va fi eliminat temporar pentru a efectua comanda selectata.');
+define('_DISKSMOUNTTOOLS_UMOUNT','De-montare disc/partitie');
+define('_DISKSMOUNTTOOLS_UMOUNTTEXT','Daca discul/partitia selectata este montat(a) va fi de-montat(a) momentan pentru efectuarea comenzii, altfel comanda va fi rulata doar in modul citire.<br>
+Atentie! Pot apare disfunctionalitati in acest timp pentru utilizatori.');
 
 // Service: CIFS/SAMBA
 // Common text
@@ -620,11 +642,12 @@ define('_SRVFTP_MSGVALIDPASVMIN','Port pasv_min_port invalid.');
 define('_SRVFTP_MSGVALIDAUTH','Trebuie sa selectati cel putin modul anonymous cu autentificare locala.');
 define('_SRVFTP_FTPSERVER','Server FTP');
 define('_SRVFTP_TCP',_TCPPORT);
+define('_SRVFTP_TCPTEXT','Implicit este 21');
 define('_SRVFTP_MAXCLIENT','Numarul de clienti');
 define('_SRVFTP_MAXCLIENTTEXT','Numarul maxim de clienti.');
 define('_SRVFTP_MAXIP','Conex. Max pe IP');
 define('_SRVFTP_MAXIPTEXT','Numar maxim de conexiuni pe IP (0 = nelimitat).');
-define('_SRVFTP_TIMEOUT','Timeout');
+define('_SRVFTP_TIMEOUT','Timp limita');
 define('_SRVFTP_TIMEOUTTEXT','Maximum idle time in minutes.');
 define('_SRVFTP_ANONYMOUS','Login Anonymous');
 define('_SRVFTP_ENANONYMOUS','Activare login in mod anonymous.');
@@ -635,7 +658,7 @@ define('_SRVFTP_ENFXP','Activare protocol FXP.');
 define('_SRVFTP_FXPTEXT','FXP permite transferul direct, la viteza maxima, intre doua servere fara ca traficul solicitat sa treaca si pe la clientul care a initiat transferul!');
 define('_SRVFTP_NATMODE','Mod NAT');
 define('_SRVFTP_ENNATMODE','Fortare mod NAT.');
-define('_SRVFTP_NATMODETEXT','Activati daca server-ul dvs. FTP se gaseste in spatele unui proxy care nu suporta modul proxy pentru FTP.');
+define('_SRVFTP_NATMODETEXT','Activati aceasta optiune daca server-ul dvs. FTP se gaseste in spatele unui proxy care nu suporta modul proxy pentru FTP.');
 define('_SRVFTP_PASSIVEIP','Adresa IP pasiva');
 define('_SRVFTP_PASSIVEIPTEXT','Folositi aceasta optiune pentru a suprascrie adresa IP furnizata de daemon-ul FTP ca raspuns la o comanda PASV.');
 define('_SRVFTP_PASVMIN','pasv_min_port');
@@ -667,11 +690,11 @@ define('_SRVRYNC_LOCAL','Local');
 // file: services_rsyncd.php
 define('_SRVRYNCD_NAMEDESC','RSYNCD');
 define('_SRVRYNCD_MSGVALIDTCPPORT',_MSGVALIDTCPPORT);
-define('_SRVRYNCD_RSYNCD','DaemonRsync Daemon');
+define('_SRVRYNCD_RSYNCD','Daemon Rsync');
 define('_SRVRYNCD_READONLY','Doar citire');
 define('_SRVRYNCD_MAPUSER','Mapare Utilizator');
 define('_SRVRYNCD_TCPORT',_TCPPORT);
-define('_SRVRYNCD_TCPORTTEXT','Port Alternativ TCP.');
+define('_SRVRYNCD_TCPORTTEXT','Port Alternativ TCP (implicit 873)');
 define('_SRVRYNCD_MAXCON','Numar Maxim Conexiuni');
 define('_SRVRYNCD_MAXCONTEXT','Numarul maxim de conexiuni simultane. Implicit 0 (nelimitat).');
 define('_SRVRYNCD_MOTD','MOTD');
@@ -698,7 +721,6 @@ define('_SRVRYNCL_SOURCETEXT','Punct Montare Sursa.');
 define('_SRVRYNCL_DESTINATION','Destinatie');
 define('_SRVRYNCL_DESTINATIONTEXT','Punct Montare Destinatie (backup drive).');
 
-
 // Service: SSHD
 // file: services_sshd.php
 define('_SRVSSHD_NAMEDESC','SSHD');
@@ -707,7 +729,7 @@ define('_SRVSSHD_MSGVALIDKEY','Cheie SSH invalida.');
 define('_SRVSSHD_SSHD','Daemon SSH');
 define('_SRVSSHD_READONLY','Doar Citire');
 define('_SRVSSHD_TCPORT',_TCPPORT);
-define('_SRVSSHD_TCPORTTEXT',_SRVRYNCD_TCPORTTEXT);
+define('_SRVSSHD_TCPORTTEXT','Port alternativ conectare (implicit 22)');
 define('_SRVSSHD_PERMITROOTLOGIN','Permisiune login root');
 define('_SRVSSHD_PERMITROOTLOGINTEXT','Specifica daca va puteti loga ca superutilizator (root) in mod direct.');
 define('_SRVSSHD_KEY','Cheie SSH');
@@ -843,8 +865,8 @@ define('_SHUTSCHED_TEXT',_MSGSCHED_TEXT);
 // file: diag_edit.php
 define('_DIAGEDITPHP_NAMEDESC','Editare Fisier');
 define('_DIAGEDITPHP_FILEPATH','Cale Fiser');
-define('_DIAGEDITPHP_SAVEMSG','Salvare fiser la');
-define('_DIAGEDITPHP_FILENOTFOUND','Fisier negasit');
+define('_DIAGEDITPHP_SAVEMSG','Salvare fiser in');
+define('_DIAGEDITPHP_FILENOTFOUND','Fisier lipsa');
 define('_DIAGEDITPHP_ROWS','Rinduri');
 define('_DIAGEDITPHP_COLS','Coloane');
 define('_DIAGEDITPHP_HIGHLIGHTING','Evidentiere');
@@ -852,7 +874,7 @@ define('_DIAGEDITPHP_HIGHLIGHTINGENABLED','Activat');
 define('_DIAGEDITPHP_HIGHLIGHTINGDISABLED','Dezactivat');
 
 // file: exec.php
-define('_DIAGEXECPHP_NAMEDESC','Executare comanda');
+define('_DIAGEXECPHP_NAMEDESC','Executa comanda');
 
 // file: reboot.php
 define('_DIAGREBOOT_NAME',_MENULEFT_DIAGNOSTICS);
@@ -957,14 +979,14 @@ define('_DIAGINFOS_PARTITIONS','Partitii');
 define('_DIAGINFOS_SMART','S.M.A.R.T.');
 define('_DIAGINFOS_ATAIDLE','ATAidle');
 define('_DIAGINFOS_SPACEUSED','Spatiu Utilizat');
-define('_DIAGINFOS_MOUNTS','Montari');
+define('_DIAGINFOS_MOUNTS','Partajari');
 define('_DIAGINFOS_SOFTWARERAID',_SOFTRAID);
 define('_DIAGINFOS_ISCSI','iSCSI');
 define('_DIAGINFOS_MSDOMAIN','Domeniu MS');
 
 // file: diag_infos.php
-define('_DIAGINFOSDISKS_ATA_INFO','Lista disc-urilor ATA detectate');
-define('_DIAGINFOSDISKS_SCSI_INFO','Lista disc-urilor SCSI detectate');
+define('_DIAGINFOSDISKS_ATA_INFO','Lista discurilor ATA detectate');
+define('_DIAGINFOSDISKS_SCSI_INFO','Lista discurilor SCSI detectate');
 
 // file: diag_infos_mount.php
 define('_DIAGINFOSMOUNT_INFO','Lista punctelor de montare');
@@ -998,7 +1020,7 @@ define('_STATSGRAPH_NAMEDESC','Grafic Trafic');
 
 // file: graph.php
 // Note for translator: Do not use international html coding here
-define('_GRAPH_ERRORGETIFDATA','Nicio informatie disponibila despre interfata');
+define('_GRAPH_ERRORGETIFDATA','Nicio informatie disponibila pentru interfata');
 define('_GRAPH_IN','In');
 define('_GRAPH_OUT','Out');
 define('_GRAPH_SWITCHTO','Comutare la');
