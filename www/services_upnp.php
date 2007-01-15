@@ -62,18 +62,15 @@ if($_POST) {
 	$pconfig['content'] = $config['upnp']['content'];
 
 	/* input validation */
-	$reqdfields = array();
-	$reqdfieldsn = array();
-
 	if($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "name interface"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVUPNP_NAME,_SRVUPNP_INTERFACE));
+		$reqdfields = explode(" ", "name interface");
+		$reqdfieldsn = array(_SRVUPNP_NAME, _SRVUPNP_INTERFACE);
+
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+		if(0 == count($pconfig['content']))
+			$input_errors[] = _SRVUPNP_CONTENTINVALIDMSG;
 	}
-
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-	if(0 == count($pconfig['content']))
-		$input_errors[] = _SRVUPNP_CONTENTINVALIDMSG;
 
 	if(!$input_errors) {
     $config['upnp']['enable'] = $_POST['enable'] ? true : false;
@@ -85,10 +82,10 @@ if($_POST) {
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			services_upnp_configure();
+			$retval = services_upnp_configure();
 			config_unlock();
 		}
-	
+
 		$savemsg = get_std_save_message($retval);
 
 		if($retval == 0) {
