@@ -137,8 +137,8 @@ define('_MESSAGES_SUCCESSWITHREBOOT', 'Die &Auml;nderungen wurden gespeichert. S
 define('_MESSAGES_ERROR', 'ERROR: die &Auml;nderungen konnten nicht &uuml;bernommen werden (error code '.$ok.').');
 
 // Special messages
-define('_MSGVALIDIP','Eine g&uuml;ltige IP Adresse muss eingegeben werden.');
-define('_MSGVALIDNETBIT','Eine g&uuml;ltige Subnet Adressierung muss eingegeben werden.');
+define('_MSGVALIDIP','Eine g&uuml;ltige IP Adresse muss angegeben werden.');
+define('_MSGVALIDNETBIT','Eine g&uuml;ltige Subnet Adressierung muss angegeben werden.');
 define('_MSGVALIDTCPPORT','Der TCP/IP Port muss eingetragen werden.');
 define('_MSGVALIDPASSWORD','Passwort FALSCH.');
 define('_MSGSCHED_TEXT','Hinweis: Strg-Klick (oder Kommando-Klick auf dem Mac) um Stunden, Tage und Monate zu w&auml;hlen bzw. abzuw&auml;hlen.');
@@ -284,6 +284,22 @@ define('_SYSTEMROUTESPHP_DESTNET','Zielnetzwerk');
 define('_SYSTEMROUTESPHP_DESTNETROUTE','Zielnetzwerk f&uuml;r diese Statische Route');
 define('_SYSTEMROUTESPHP_GWTONET','Gateway um dieses Netzwerk zu erreichen');
 define('_SYSTEMROUTESPHP_DESCREF','Hier k&ouml;nnen Sie eine Beschreibung eingeben (nicht &uuml;berpr&uuml;ft!).');
+
+// Hosts
+// file: system_hosts.php
+define('_SYSTEMHOSTSPHP_MSG_CHANGED','Die Host Liste hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen.');
+define('_SYSTEMHOSTSPHP_EDITHOST','Host bearbeiten');
+define('_SYSTEMHOSTSPHP_MSGCONFIRM','Wollen Sie diesen Host wirklich l&ouml;schen?');
+define('_SYSTEMHOSTSPHP_DELHOST','Host l&ouml;schen');
+define('_SYSTEMHOSTSPHP_ADDHOST','Host hinzuf&uuml;gen');
+
+// file: system_hosts_edit.php
+define('_SYSTEMHOSTSPHP_MSGVALIDNAME','Der Hostname enth&auml;lt ung&uuml;ltige Zeichen.');
+define('_SYSTEMHOSTSPHP_MSGVALIDIP','Eine g&uuml;ltige IP Adresse muss angegeben werden.');
+define('_SYSTEMHOSTSPHP_MSGHOSTEXIST','Ein Host mit diesem Namen existiert bereits.');
+define('_SYSTEMHOSTSPHP_HOSTTEXT','Der Hostname darf nur folgende Zeichen enthalten: a-z, A-Z and 0-9, - , _ und .');
+define('_SYSTEMHOSTSPHP_ADDRESSTEXT','Die IP Adresse welche diesen Hostnamen repr&auml;sentiert.');
+define('_SYSTEMHOSTSPHP_DESCTEXT','Sie k&ouml;nnen hier eine Beschreibung für Ihre Referenz eintragen.'); //'for your reference' wird wahrscheinlich falsch übersetzt sein.
 
 // System Firmware Module
 // file: system_firmware.php
