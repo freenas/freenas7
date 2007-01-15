@@ -51,7 +51,7 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "fullname action");
-	$reqdfieldsn = explode(",", "Fullname,Action");
+	$reqdfieldsn = array(_DISKSMOUNTPHP_SHARENAME,_DISKSMOUNTTOOLS_COMMAND);
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if(!$input_errors)

@@ -50,9 +50,16 @@ if ($_POST) {
 	unset($errormsg);
 	unset($do_fsck);
 
-	$do_fsck = true;
-	$disk = $_POST['disk'];
-	$umount = $_POST['umount'];
+	/* input validation */
+	$reqdfields = explode(" ", "disk");
+	$reqdfieldsn = array(_DISK);
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+	if(!$input_errors) {
+		$do_fsck = true;
+		$disk = $_POST['disk'];
+		$umount = $_POST['umount'];
+	}
 }
 
 if (!isset($do_fsck)) {
