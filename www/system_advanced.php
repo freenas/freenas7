@@ -103,7 +103,9 @@ if ($_POST) {
 		
 		if (isset($config['system']['tune']))
 			system_tuning();
-		
+
+		services_smart_configure();
+
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();

@@ -43,7 +43,7 @@ if ($_POST['clear'])
 {
 	exec("/usr/sbin/clog -i -s 262144 /var/log/smartd.log");
 	/* redirect to avoid reposting form data on refresh */
-	header("Location: diag_logs_ftp.php");
+	header("Location: diag_logs_smartd.php");
 	exit;
 }
 

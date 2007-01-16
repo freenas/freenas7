@@ -611,19 +611,18 @@ Return 0 if OK, 1 or error code if error */
 
 function services_smart_configure() {
 	global $config, $g;
-	
+
 	$result = 0 ;
-	
+
 	/* kill any running smartd */
-	killbyname("smartd");
+	killbypid("{$g['varrun_path']}/smartd.pid");
 
 	if (isset($config['system']['smart'])) {
-	
 		if ($g['booting'])
 			echo "Starting smartd... ";
 
 		/* run smartd */
-		$result = mwexec("/usr/local/sbin/smartd --logfacility=local5");
+		$result = mwexec("/usr/local/sbin/smartd --pidfile={$g['varrun_path']}/smartd.pid --logfacility=local5");
 
 		if ($g['booting'])
 			echo "done\n";
