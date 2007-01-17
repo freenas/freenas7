@@ -124,7 +124,7 @@ $pgtitle_omit = true;
     <td width="25%" class="vncellt"><?=_INDEXPHP_MEMUSE;?></td>
     <td width="75%" class="listr">
       <?php
-        exec("/sbin/sysctl -n vm.stats.vm.v_active_count vm.stats.vm.v_inactive_count " . "vm.stats.vm.v_wire_count vm.stats.vm.v_cache_count vm.stats.vm.v_free_count", $memory);
+        exec("/sbin/sysctl -n vm.stats.vm.v_active_count vm.stats.vm.v_inactive_count " . "vm.stats.vm.v_wire_count vm.stats.vm.v_cache_count vm.stats.vm.v_free_count hw.physmem", $memory);
         $totalMem = $memory[0] + $memory[1] + $memory[2] + $memory[3] + $memory[4];
         $freeMem = $memory[4] + $memory[1];
         $usedMem = $totalMem - $freeMem;
@@ -134,7 +134,7 @@ $pgtitle_omit = true;
         echo "<img src='bar_blue.gif' height='15' width='" . $memUsage . "' border='0' align='absmiddle'>";
         echo "<img src='bar_gray.gif' height='15' width='" . (100 - $memUsage) . "' border='0' align='absmiddle'>";
         echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
-        echo $memUsage . "%";
+        echo $memUsage . "% of " . round($memory[5] / 1024 / 1024) . "MB";
       ?>
     </td>
   </tr>
@@ -162,7 +162,7 @@ $pgtitle_omit = true;
 						echo "<img src='bar_blue.gif' height='15' width='" . $percent_used . "' border='0' align='absmiddle'>";
 						echo "<img src='bar_gray.gif' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle'>";
 						echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
-						echo $percent_used . "%";
+						echo $percent_used . "% of " . $diskusev['size'] . "B";
 						echo "<br></td></tr>";
 					}
 				} else {
