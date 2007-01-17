@@ -8,7 +8,7 @@
  */
 require("guiconfig.inc");
 
-$pageTitle = "FreeNAS: status";
+$pageTitle = "{$g['product_name']}: Status";
 
 /* Execute a command, with a title, and generate an HTML table
  * showing the results.

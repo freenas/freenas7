@@ -140,7 +140,7 @@ if ($g['booting']) {
 *******************************************************************************
 * FATAL ERROR                                                                 *
 * The device that contains the configuration file (config.xml) could not be   *
-* found. FreeNAS cannot continue booting.                                     *
+* found. {$g['product_name']} cannot continue booting.                                     *
 *******************************************************************************
 
 
@@ -194,7 +194,7 @@ if (!$noparseconfig) {
 					echo "file is inserted. If it isn't, your configuration changes will be lost\n";
 					echo "on reboot.\n";
 				} else {
-					echo "XML configuration file not found. FreeNAS cannot continue booting.\n"; 
+					echo "XML configuration file not found. {$g['product_name']} cannot continue booting.\n"; 
 					mwexec("/sbin/halt");
 					exit;
 				}
@@ -213,9 +213,9 @@ if (!$noparseconfig) {
 
 *******************************************************************************
 * WARNING!                                                                    *
-* The current configuration has been created with a newer version of FreeNAS  *
+* The current configuration has been created with a newer version of {$g['product_name']}  *
 * than this one! This can lead to serious misbehavior and even security       *
-* holes! You are urged to either upgrade to a newer version of FreeNAS or     *
+* holes! You are urged to either upgrade to a newer version of {$g['product_name']} or     *
 * revert to the default configuration immediately!                            *
 *******************************************************************************
 

@@ -2,7 +2,7 @@
 /*
     globals.inc
  	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -32,6 +32,8 @@
 */
 
 $g = array(
+		"product_name" => "FreeNAS",
+		"product_url" => "www.freenas.org",
     "varrun_path" => "/var/run",
     "varetc_path" => "/var/etc",
     "vardb_path" => "/var/db",

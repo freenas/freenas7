@@ -550,7 +550,7 @@ function services_pureftpd_configure() {
 
 		if (empty($config['ftp']['banner'])) {
 			$banner = <<<EOD
-Welcome to FreeNAS FTP service
+Welcome to {$g['product_name']} FTP service
 
 EOD;
 		} else {

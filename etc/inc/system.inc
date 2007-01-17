@@ -1530,7 +1530,7 @@ function system_install_installation($harddrive)
 	
 	echo "Installation:\n";
 	
-	if (mwexec("/usr/bin/gunzip -S \"\" -c /mnt/cdrom_fr_0507/FreeNAS-generic-pc.gz | dd of=/dev/" . escapeshellarg($harddrive) . " bs=16k > /dev/null 2>&1"))
+	if (mwexec("/usr/bin/gunzip -S \"\" -c /mnt/cdrom_fr_0507/{$g['product_name']}-generic-pc.gz | dd of=/dev/" . escapeshellarg($harddrive) . " bs=16k > /dev/null 2>&1"))
 		return 1;
 	
 	return 0;

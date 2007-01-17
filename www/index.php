@@ -3,7 +3,7 @@
 /*
   index.php
   part of FreeNAS (http://www.freenas.org)
-  Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+  Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
   All rights reserved.
   Improved by Stefan Hendricks (info@henmedia.de)
 
@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array("FreeNAS webGUI");
+$pgtitle = array("{$g['product_name']} webGUI");
 $pgtitle_omit = true;
 ?>
 <?php include("fbegin.inc"); ?>

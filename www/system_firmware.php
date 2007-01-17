@@ -3,7 +3,7 @@
 /*
 	system_firmware.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -45,12 +45,12 @@ function check_firmware_version() {
 	$post = "platform=" . rawurlencode($g['fullplatform']) . 
 		"&version=" . rawurlencode(trim(file_get_contents("/etc/version")));
 		
-	$rfd = @fsockopen("www.freenas.org", 80, $errno, $errstr, 3);
+	$rfd = @fsockopen($g['product_url'], 80, $errno, $errstr, 3);
 	if ($rfd) {
 		$hdr = "POST /checkversion.php HTTP/1.0\r\n";
 		$hdr .= "Content-Type: application/x-www-form-urlencoded\r\n";
-		$hdr .= "User-Agent: FreeNAS-webGUI/1.0\r\n";
-		$hdr .= "Host: www.freenas.org\r\n";
+		$hdr .= "User-Agent: {$g['product_name']}-webGUI/1.0\r\n";
+		$hdr .= "Host: {$g['product_url']}\r\n";
 		$hdr .= "Content-Length: " . strlen($post) . "\r\n\r\n";
 		
 		fwrite($rfd, $hdr);
