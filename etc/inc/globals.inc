@@ -55,15 +55,15 @@ $g = array(
 
 /* Available languages/locales */
 $available_languages = array (
-	"Dutch" => "nl_BE",
+	"Dutch" => "nl",
 	"English" => "en",
-	"French" => "fr_FR",
+	"French" => "fr",
 	"German" => "de",
-	"Italian" => "it_IT",
-	"Romanian" => "ro_RO",
-	"SimplifiedChinese" => "zh_CN.UTF8",
+	"Italian" => "it",
+	"Romanian" => "ro",
+	"SimplifiedChinese" => "zh_CN",
 	"Spanish" => "es",
-	"TraditionalChinese" => "zh_TW.UTF8"
+	"TraditionalChinese" => "zh_TW"
 );
 
 ?>
