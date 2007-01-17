@@ -76,6 +76,8 @@ mkdir usr/local ;
 mkdir usr/local/bin;
 mkdir usr/local/lib ;
 mkdir usr/local/sbin ;
+mkdir usr/local/share ;
+mkdir usr/local/share/locale ;
 mkdir usr/local/www ;
 mkdir usr/local/www/syntaxhighlighter ;
 mkdir usr/sbin ;
