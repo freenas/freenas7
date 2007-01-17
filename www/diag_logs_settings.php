@@ -3,7 +3,7 @@
 /*
 	diag_logs_settings.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -31,10 +31,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
-$pgtitle = array(_DIAGLOGS_NAME, _DIAGLOGS_NAMEDESC);
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 
 $pconfig['reverse'] = isset($config['syslog']['reverse']);
 $pconfig['nentries'] = $config['syslog']['nentries'];
@@ -54,16 +53,15 @@ if (!$pconfig['nentries'])
 	$pconfig['nentries'] = 50;
 
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
 	/* input validation */
 	if ($_POST['enable'] && !is_ipaddr($_POST['remoteserver'])) {
-		$input_errors[] = "A valid IP address must be specified.";
+		$input_errors[] = gettext("A valid IP address must be specified.");
 	}
 	if (($_POST['nentries'] < 5) || ($_POST['nentries'] > 1000)) {
-		$input_errors[] = "Number of log entries to show must be between 5 and 1000.";
+		$input_errors[] = gettext("Number of log entries to show must be between 5 and 1000.");
 	}
 
 	if (!$input_errors) {
@@ -89,13 +87,12 @@ if ($_POST) {
 			config_lock();
 			$retval = system_syslogd_start();
 			if ($oldnologdefaultblock !== isset($config['syslog']['nologdefaultblock']))
-				//$retval |= filter_configure();
+			//$retval |= filter_configure();
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);	
 	}
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
@@ -122,83 +119,90 @@ function enable_change(enable_over) {
 // -->
 </script>
 <form action="diag_logs_settings.php" method="post" name="iform" id="iform">
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-    <li class="tabinact1"><a href="diag_logs.php">System</a></li>
-    <li class="tabinact"><a href="diag_logs_ftp.php">FTP</a></li>
-    <li class="tabinact"><a href="diag_logs_rsyncd.php">RSYNCD</a></li>
-    <li class="tabinact"><a href="diag_logs_sshd.php">SSHD</a></li>
-    <li class="tabinact"><a href="diag_logs_smartd.php">SMARTD</a></li>
-    <li class="tabinact"><a href="diag_logs_daemon.php">Daemon</a></li>
-    <li class="tabact">Settings</li>
-  </ul>
-  </td></tr>
-  <tr> 
-    <td class="tabcont">
-	  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                      <tr> 
-                        <td width="22%" valign="top" class="vtable">&nbsp;</td>
-                        <td width="78%" class="vtable"> <input name="reverse" type="checkbox" id="reverse" value="yes" <?php if ($pconfig['reverse']) echo "checked"; ?>>
-                          <strong>Show log entries in reverse order (newest entries 
-                          on top)</strong></td>
-                      </tr>
-                      <tr> 
-                        <td width="22%" valign="top" class="vtable">&nbsp;</td>
-                        <td width="78%" class="vtable">Number of log entries to 
-                          show: 
-                          <input name="nentries" id="nentries" type="text" class="formfld" size="4" value="<?=htmlspecialchars($pconfig['nentries']);?>"></td>
-                      </tr>                      
-                      <tr> 
-                        <td valign="top" class="vtable">&nbsp;</td>
-                        <td class="vtable"> <input name="resolve" type="checkbox" id="resolve" value="yes" <?php if ($pconfig['resolve']) echo "checked"; ?>>
-                          <strong>Resolve IP addresses to hostnames</strong><br>
-                          Hint: If this is checked, IP addresses in FreeNAS logs are resolved to real hostnames where possible.<br>
-                          Warning: This can cause a huge delay in loading the FreeNAS log page!</td>
-                      </tr>
-                      <tr> 
-                        <td width="22%" valign="top" class="vtable">&nbsp;</td>
-                        <td width="78%" class="vtable"> <input name="enable" type="checkbox" id="enable" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)">
-                          <strong>Enable syslog'ing to remote syslog server</strong></td>
-                      </tr>
-                      <tr> 
-                        <td width="22%" valign="top" class="vncell">Remote syslog 
-                          server</td>
-                        <td width="78%" class="vtable"> <input name="remoteserver" id="remoteserver" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['remoteserver']);?>"> 
-                          <br>
-                          IP address of remote syslog server<br> <br>
-						  <input name="system" id="system" type="checkbox" value="yes" <?php if ($pconfig['system']) echo "checked"; ?>>
-                          system events <br>
-						  <input name="sshd" id="sshd" type="checkbox" value="yes" <?php if ($pconfig['sshd']) echo "checked"; ?>>
-                          SSHD events<br>
-						  <input name="ftp" id="ftp" type="checkbox" value="yes" <?php if ($pconfig['ftp']) echo "checked"; ?>>
-                          FTP events<br>
-						  <input name="rsyncd" id="rsyncd" type="checkbox" value="yes" <?php if ($pconfig['rsyncd']) echo "checked"; ?>>
-                          RSYNCD event<br>
-                          <input name="smartd" id="smartd" type="checkbox" value="yes" <?php if ($pconfig['smartd']) echo "checked"; ?>>
-                          SMARTD event<br>
-                          <input name="daemon" id="daemon" type="checkbox" value="yes" <?php if ($pconfig['daemon']) echo "checked"; ?>>
-                          Daemon event<br>					 
-                      </tr>
-                      <tr> 
-                        <td width="22%" valign="top">&nbsp;</td>
-                        <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onclick="enable_change(true)"> 
-                        </td>
-                      </tr>
-                      <tr> 
-                        <td width="22%" valign="top">&nbsp;</td>
-                        <td width="78%"><strong><span class="red">Note:</span></strong><br>
-                          syslog sends UDP datagrams to port 514 on the specified 
-                          remote syslog server. Be sure to set syslogd on the 
-                          remote server to accept syslog messages from FreeNAS. 
-                        </td>
-                      </tr>
-                    </table>
-    </td>
-  </tr>
-</table>
+	<?php if ($input_errors) print_input_errors($input_errors); ?>
+	<?php if ($savemsg) print_info_box($savemsg); ?>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<td class="tabnavtbl">
+				<ul id="tabnav">
+					<li class="tabinact1"><a href="diag_logs.php"><?=gettext("System");?></a></li>
+					<li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
+					<li class="tabinact"><a href="diag_logs_rsyncd.php"><?=gettext("RSYNCD");?></a></li>
+					<li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSHD");?></a></li>
+					<li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("SMARTD");?></a></li>
+					<li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
+					<li class="tabact"><a href="diag_logs_settings.php" style="color:black" title="reload page"><?=gettext("Settings");?></a></li>
+				</ul>
+			</td>
+		</tr>
+	  <tr> 
+	    <td class="tabcont">
+		  	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+	        <tr> 
+	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
+	          <td width="78%" class="vtable">
+							<input name="reverse" type="checkbox" id="reverse" value="yes" <?php if ($pconfig['reverse']) echo "checked"; ?>>
+	            <strong><?=gettext("Show log entries in reverse order (newest entries on top)");?></strong>
+						</td>
+	        </tr>
+	        <tr> 
+	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
+	          <td width="78%" class="vtable">
+							<?=gettext("Number of log entries to show:");?>
+	            <input name="nentries" id="nentries" type="text" class="formfld" size="4" value="<?=htmlspecialchars($pconfig['nentries']);?>"></td>
+	        </tr>                      
+	        <tr> 
+	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
+	          <td width="78%" class="vtable">
+							<input name="resolve" type="checkbox" id="resolve" value="yes" <?php if ($pconfig['resolve']) echo "checked"; ?>>
+	            <strong><?=gettext("Resolve IP addresses to hostnames");?></strong><br>
+	            <?=gettext("Hint: If this is checked, IP addresses in {$g['product_name']} logs are resolved to real hostnames where possible.");?><br>
+							<?=gettext("Warning: This can cause a huge delay in loading the {$g['product_name']} log page!");?>
+						</td>
+	        </tr>
+	        <tr> 
+	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
+	          <td width="78%" class="vtable">
+							<input name="enable" type="checkbox" id="enable" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)">
+	            <strong><?=gettext("Enable syslog'ing to remote syslog server");?></strong></td>
+	        </tr>
+	        <tr> 
+	          <td width="22%" valign="top" class="vncell"><?=gettext("Remote syslog server");?></td>
+	          <td width="78%" class="vtable">
+							<input name="remoteserver" id="remoteserver" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['remoteserver']);?>"> 
+	            <br>
+	            <?=gettext("IP address of remote syslog server");?><br><br>
+							<input name="system" id="system" type="checkbox" value="yes" <?php if ($pconfig['system']) echo "checked"; ?>>
+	            <?=gettext("System events");?><br>
+							<input name="sshd" id="sshd" type="checkbox" value="yes" <?php if ($pconfig['sshd']) echo "checked"; ?>>
+	            <?=gettext("SSHD events");?><br>
+							<input name="ftp" id="ftp" type="checkbox" value="yes" <?php if ($pconfig['ftp']) echo "checked"; ?>>
+	            <?=gettext("FTP events");?><br>
+							<input name="rsyncd" id="rsyncd" type="checkbox" value="yes" <?php if ($pconfig['rsyncd']) echo "checked"; ?>>
+	            <?=gettext("RSYNCD event");?><br>
+	            <input name="smartd" id="smartd" type="checkbox" value="yes" <?php if ($pconfig['smartd']) echo "checked"; ?>>
+	            <?=gettext("SMARTD event");?><br>
+	            <input name="daemon" id="daemon" type="checkbox" value="yes" <?php if ($pconfig['daemon']) echo "checked"; ?>>
+	            <?=gettext("Daemon event");?><br>
+	          </td>
+	        </tr>
+	        <tr> 
+	          <td width="22%" valign="top">&nbsp;</td>
+	          <td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)">
+						</td>
+	        </tr>
+	        <tr> 
+	          <td width="22%" valign="top">&nbsp;</td>
+	          <td width="78%">
+							<strong><span class="red"><?=gettext("Note");?>:</span></strong><br>
+	            <?=gettext("syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from {$g['product_name']}.");?> 
+	          </td>
+	        </tr>
+	      </table>
+			</td>
+		</tr>
+	</table>
 </form>
 <script language="JavaScript">
 <!--

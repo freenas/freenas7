@@ -3,7 +3,7 @@
 /*
 	diag_defaults.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,13 +33,13 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DIAGDEFAULTS_NAME, _DIAGDEFAULTS_NAMEDESC);
+$pgtitle = array(gettext("Diagnostics"), gettext("Factory defaults"));
 
 if ($_POST) {
-	if ($_POST['Submit'] != " No ") {
+	if (0 == strcmp($_POST['Submit'], gettext("Yes"))) {
 		reset_factory_defaults();
 		system_reboot();
-		$rebootmsg = "The system has been reset to factory defaults and is now rebooting. This may take one minute.";
+		$rebootmsg = gettext("The system has been reset to factory defaults and is now rebooting. This may take one minute.");
 	} else {
 		header("Location: index.php");
 		exit;
@@ -49,16 +49,16 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($rebootmsg): echo print_info_box($rebootmsg); else: ?>
 <form action="diag_defaults.php" method="post">
-              <p><strong>If you click &quot;Yes&quot;, FreeNAS will be reset 
-                to factory defaults and will reboot immediately. The entire system 
-                configuration will be overwritten. The LAN IP address will be 
-                reset to 192.168.1.250 and the password will be set to 'freenas'.<br>
-                <br>
-                Are you sure you want to proceed?</strong></p>
-        <p> 
-          <input name="Submit" type="submit" class="formbtn" value=" Yes ">
-          <input name="Submit" type="submit" class="formbtn" value=" No ">
-        </p>
-      </form>
+	<p>
+		<strong>
+			<?=gettext("If you click \"Yes\", {$g['product_name']} will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to 'freenas'.");?><br><br>
+			<?=gettext("Are you sure you want to proceed?");?>
+		</strong>
+	</p>
+	<p> 
+		<input name="Submit" type="submit" class="formbtn" value=<?=gettext("Yes");?>>
+		<input name="Submit" type="submit" class="formbtn" value=<?=gettext("No");?>>
+	</p>
+</form>
 <?php endif; ?>
 <?php include("fend.inc"); ?>
