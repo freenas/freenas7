@@ -354,7 +354,7 @@ define('_SYSTEMADVANCEDPHP_NAVTEXT','Diagnoseanzeige in Navigationsansicht einbl
 define('_SYSTEMADVANCEDPHP_BEEP','Systemlautsprecher piept');
 define('_SYSTEMADVANCEDPHP_DISBEEP','Systemlautsprecher beim Start und Shutdown ausschalten.');
 define('_SYSTEMADVANCEDPHP_SMART','S.M.A.R.T Daemon');
-define('_SYSTEMADVANCEDPHP_ENSMART','S.M.A.R.T daemon aktivieren');
+define('_SYSTEMADVANCEDPHP_ENSMART','S.M.A.R.T Daemon aktivieren');
 define('_SYSTEMADVANCEDPHP_SMARTTEXT','S.M.A.R.T-f&auml;hige Ger&auml;te &uuml;berwachen durch Aufzeichnung ihres Status in Logdatei.');
 define('_SYSTEMADVANCEDPHP_TUNING','Tuning');
 define('_SYSTEMADVANCEDPHP_ENTUNING','Aktiviere "Tuning" einiger "Kernel" Variablen');
