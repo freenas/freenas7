@@ -1534,46 +1534,33 @@ function system_install_installation($harddrive)
 		return 1;
 	
 	return 0;
-
 }
 
-
-function system_language_getall()
-{
-	/* Get all the languages */
-	global $g;
- 	$handle=opendir($g['www_path']);
-    while ($file = readdir($handle)) {
-        if (preg_match("/^lang\-(.+)\.inc/", $file, $matches)) {
-            $langFound = $matches[1];
-            $files[] = $langFound;
-        }
-    }
-    closedir($handle);
-    sort($files);
-    return $files;
-
-}
-
-function system_language_getlang()
-{
-	/* Get the language configured*/
-	global $config;
-	return $config['system']['language'];
-}
-
+/* Init language environment */
 function system_language_load()
 {
+	global $g, $config, $available_languages;
+
+	/* Get the language configured*/
+	$language = $config['system']['language'];
+	$locale = $available_languages[$language];
+
+	putenv( "LANG=$locale");
+	setlocale( LC_MESSAGES, $locale);
+	textdomain( strtolower( $g['product_name']));
+
+	/* ---------------------------------------------------------------------------- */
+	/* The following code can be removed after complete conversion to use gettext() */
+	/* ---------------------------------------------------------------------------- */
+
 	/* Include the language file*/
 	global $config, $g;
-	if (file_exists($g['www_path']."/lang-".system_language_getlang().".inc")){
-		require_once($g['www_path']."/lang-".system_language_getlang().".inc");
+	if (file_exists($g['www_path']."/lang-" . $config['system']['language'] . ".inc")) {
+		require_once($g['www_path']."/lang-" . $config['system']['language'] . ".inc");
 		return 1;
 	} else {
 		require_once($g['www_path']."/lang-English.inc");
 		return 1;
 	}
 }
-
-
 ?>

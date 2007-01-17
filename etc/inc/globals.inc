@@ -53,4 +53,17 @@ $g = array(
     "wireless_regex" => "/^(wi|ath|an|awi|ral|iwi|ipw|ural)/"
 );
 
+/* Available languages/locales */
+$available_languages = array (
+	"Dutch" => "nl_BE",
+	"English" => "en",
+	"French" => "fr_FR",
+	"German" => "de",
+	"Italian" => "it_IT",
+	"Romanian" => "ro_RO",
+	"SimplifiedChinese" => "zh_CN.UTF8",
+	"Spanish" => "es",
+	"TraditionalChinese" => "zh_TW.UTF8"
+);
+
 ?>

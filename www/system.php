@@ -70,11 +70,7 @@ exec('/usr/bin/tar -tzf /usr/share/zoneinfo.tgz', $timezonelist);
 $timezonelist = array_filter($timezonelist, 'is_timezone');
 sort($timezonelist);
 
-/* Get the language list */
-$language_list = system_language_getall();
-
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
@@ -160,7 +156,6 @@ if ($_POST) {
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
  			$retval |= system_tuning();
-
 			config_unlock();
 		}
 
@@ -228,12 +223,9 @@ if ($_POST) {
       <td width="22%" valign="top" class="vncell"><?=_SYSTEMPHP_LANGUAGE;?></td>
       <td width="78%" class="vtable">
         <select name="language" id="language">
-    		<?php foreach ($language_list as $value): ?>
-    			<option value="<?=htmlspecialchars($value);?>"
-    			<?php if ($value == system_language_getlang()) echo "selected"; ?>>
-    			<?=htmlspecialchars($value);?>
-          </option>
-    		<?php endforeach; ?>
+    			<?php foreach ($available_languages as $language => $value): ?>
+    			<option value="<?=htmlspecialchars($language);?>" <?php if ($language == $pconfig['language']) echo "selected"; ?>><?=gettext($language);?></option>
+	    		<?php endforeach; ?>
     		</select>
       </td>
     </tr>
