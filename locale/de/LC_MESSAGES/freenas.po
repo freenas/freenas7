@@ -7,7 +7,12 @@
 #	Based on m0n0wall (http://m0n0.ch/wall)
 #	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 #	All rights reserved.
-#	
+#
+# German translation done by:
+# Dominik Plaszewski domme555@gmx.net
+# Falk Menzel fmenzel@htwm.de
+# Volker Theile votdev@gmx.de
+#
 #	Redistribution and use in source and binary forms, with or without
 #	modification, are permitted provided that the following conditions are met:
 #	
@@ -28,10 +33,6 @@
 #	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 #	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 #	POSSIBILITY OF SUCH DAMAGE.
-msgid "ISO-8859-1"
-msgstr "ISO-8859-1"
-msgid "eng"
-msgstr "de"
 msgid "Date"
 msgstr "Datum"
 msgid "%b %d, %Y"
@@ -1401,3 +1402,7 @@ msgid "The IP address that this hostname represents."
 msgstr "Die IP Adresse welche diesen Hostnamen repr&auml;sentiert."
 msgid "You may enter a description here for your reference."
 msgstr "Sie k&ouml;nnen hier eine Beschreibung für Ihre Referenz eintragen."
+msgid "Download configuration"
+msgstr "Konfiguration herunterladen"
+msgid "Restore configuration"
+msgstr "Konfiguration wiederherstellen"

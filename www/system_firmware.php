@@ -31,7 +31,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 $d_isfwfile = 1;
 
 require("guiconfig.inc"); 
@@ -77,7 +76,6 @@ function check_firmware_version() {
 }
 
 if ($_POST && !file_exists($d_firmwarelock_path)) {
-
 	unset($input_errors);
 	unset($sig_warning);
 	
@@ -161,32 +159,33 @@ print_info_box($sig_warning);
 <input name="sig_no" type="submit" class="formbtn" id="sig_no" value=" No ">
 </form>
 <?php else: ?>
-            <?php if (!file_exists($d_firmwarelock_path)): ?>
-            <p><?=_SYSTEMFIRMWAREPHP_CLICKENFIRM;?></p>
-            <form action="system_firmware.php" method="post" enctype="multipart/form-data">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <?php if (!file_exists($d_sysrebootreqd_path)): ?>
-                    <?php if (!file_exists($d_fwupenabled_path)): ?>
-                    <input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_ENFIRMUP;?>">
-				  <?php else: ?>
-				   <input name="Submit" id="Disable" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_DESFIRMUP;?>">
-                    <br><br>
-					<strong><?=_SYSTEMFIRMWAREPHP_FIRMFILE;?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld">
-                    <br><br>
-                    <input name="Submit" id="Upgrade" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_UPFIRM;?>">
-				  <?php endif; else: ?>
-				    <strong><?=_SYSTEMFIRMWAREPHP_MSGREBOOTUP;?></strong>
-				  <?php endif; ?>
-                  </td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:</strong></span><br><?=_SYSTEMFIRMWAREPHP_DONOTABORT;?></span></td>
-                </tr>
-              </table>
+<?php if (!file_exists($d_firmwarelock_path)): ?>
+<p><?=_SYSTEMFIRMWAREPHP_CLICKENFIRM;?></p>
+<form action="system_firmware.php" method="post" enctype="multipart/form-data">
+  <table>
+    <tr> 
+      <td> 
+        <?php if (!file_exists($d_sysrebootreqd_path)): ?>
+				<?php if (!file_exists($d_fwupenabled_path)): ?>
+				<input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_ENFIRMUP;?>">
+				<?php else: ?>
+				<input name="Submit" id="Disable" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_DESFIRMUP;?>">
+				<br><br>
+				<strong><?=_SYSTEMFIRMWAREPHP_FIRMFILE;?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld">
+				<br><br>
+				<input name="Submit" id="Upgrade" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_UPFIRM;?>">
+				<?php endif; else: ?>
+				<strong><?=_SYSTEMFIRMWAREPHP_MSGREBOOTUP;?></strong>
+				<?php endif; ?>
+      </td>
+    </tr>
+    <tr>
+      <td>
+				<span class="vexpl"><span class="red"><strong><?=_WARNING;?>:</strong></span><br>
+				<?=_SYSTEMFIRMWAREPHP_DONOTABORT;?></span>
+			</td>
+    </tr>
+  </table>
 </form>
 <?php endif; endif; ?>
 <?php include("fend.inc"); ?>
