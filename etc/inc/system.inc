@@ -1547,7 +1547,7 @@ function system_language_load()
 
 	putenv( "LANG=$locale");
 	setlocale( LC_MESSAGES, $locale);
-	textdomain( strtolower( $g['product_name']));
+	bindtextdomain( strtolower( $g['product_name']), "/usr/local/share/locale");
 
 	/* ---------------------------------------------------------------------------- */
 	/* The following code can be removed after complete conversion to use gettext() */

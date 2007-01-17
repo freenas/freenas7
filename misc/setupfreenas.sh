@@ -77,6 +77,8 @@ copy_files() {
 		fi
 	done
 
+	rm -f $WORKINGDIR/freenas.files
+
 	# Setting right permission to su binary
 	chmod 4755 $FREENAS/usr/bin/su
 

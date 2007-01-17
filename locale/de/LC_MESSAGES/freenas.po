@@ -536,11 +536,7 @@ msgstr "L&ouml;sche Schnittstelle"
 msgid "Add interface"
 msgstr "F&uuml;ge Schnittstelle hinzu"
 msgid "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
-msgstr "Nach dem Anw&auml;hlen von &quot;Sichern&quot;, muss FreeNAS zur &Uuml;bernahme der &Auml;nderungen neu gestartet werden. Sie k&ouml;nnten auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen: </span></p>
-<ul>
-  <li><span class="vexpl">&Auml;ndern Sie die IP-Adresse ihres Computers </span></li>
-  <li><span class="vexpl">Greifen Sie auf die webGUI mit der neuen IP-Addresse zu</span></li>
-</ul>"
+msgstr "Nach dem Anw&auml;hlen von &quot;Sichern&quot;, muss FreeNAS zur &Uuml;bernahme der &Auml;nderungen neu gestartet werden. Sie k&ouml;nnten auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen: </span></p><ul><li><span class="vexpl">&Auml;ndern Sie die IP-Adresse ihres Computers </span></li><li><span class="vexpl">Greifen Sie auf die webGUI mit der neuen IP-Addresse zu</span></li></ul>"
 msgid "Interfaces"
 msgstr "Schnittstellen"
 msgid "LAN"
@@ -564,21 +560,13 @@ msgstr "Device polling"
 msgid "Enable device polling"
 msgstr "Aktiviere "device polling""
 msgid "Device polling is a technique that lets the system periodically poll network devices for "
-msgstr ""Device polling" ist eine Technik, welche das System periodisch Netzwerkger&auml;ten auf neue Daten anspricht
-                    anstatt sich auf "interrupts" zu verlassen. Dies kann die Prozessorauslastung veringern und dadurch den Durchsatz erh&ouml;hen,
-                     auf Kosten eines geringf&uuml;gig h&ouml;heren "forwarding delays" (die Ger&auml;te werden 1000 mal
-                    je Sekunde abgefragt). Nicht alle Netzwerkkarten unterst&uuml;tzen "polling"; sehen Sie auf der m0n0wall Homepage in die Liste der unterst&uuml;tzen Netzwerkkarten."
+msgstr ""Device polling" ist eine Technik, welche das System periodisch Netzwerkger&auml;ten auf neue Daten anspricht anstatt sich auf "interrupts" zu verlassen. Dies kann die Prozessorauslastung veringern und dadurch den Durchsatz erh&ouml;hen, auf Kosten eines geringf&uuml;gig h&ouml;heren "forwarding delays" (die Ger&auml;te werden 1000 mal je Sekunde abgefragt). Nicht alle Netzwerkkarten unterst&uuml;tzen "polling"; sehen Sie auf der m0n0wall Homepage in die Liste der unterst&uuml;tzen Netzwerkkarten."
 msgid "Speed"
 msgstr "Geschwindigkeit"
 msgid "Duplex"
 msgstr "Duplex"
 msgid "after you click &quot;Save&quot;, you may al"
-msgstr "Nach Klick auf &quot;Sichern&quot;, k&ouml;nnten Sie auch einige der folgenden Dinge
-                    vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen:
-                    <ul>
-                      <li>&Auml;ndern Sie die IP-Adresse ihres Computers</li>
-                      <li>Greifen Sie auf die webGUI mit der neuen IP-Addresse zu</li>
-                    </ul>"
+msgstr "Nach Klick auf &quot;Sichern&quot;, k&ouml;nnten Sie auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen:<ul><li>&Auml;ndern Sie die IP-Adresse ihres Computers</li><li>Greifen Sie auf die webGUI mit der neuen IP-Addresse zu</li></ul>"
 msgid "Enable Optional "
 msgstr "Aktiviere optionale "
 msgid " interface"
@@ -638,8 +626,7 @@ msgstr "UDMA Modus"
 msgid "Hard disk standby time"
 msgstr "Festplatten Standbyzeit"
 msgid "Puts the hard disk into standby mode when the selected amount of time after the l"
-msgstr "Festplatte nach dem letzten Zugriff nach der angegebenen Zeit
-                    in Standby versetzen. <em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
+msgstr "Festplatte nach dem letzten Zugriff nach der angegebenen Zeit in Standby versetzen. <em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
 msgid "Advanced Power Management"
 msgstr "Advanced Power Management"
 msgid "Disabled"
