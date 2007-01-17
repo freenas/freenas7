@@ -70,7 +70,8 @@ svn/misc/setupfreenas.sh
 
 FreeNAs 0.684b:
 - Fix UPnP WebGUI bug
-- Update language file
+- Little index page improvement : % used of TOTAL size display. Paul Wheels patch
+- Update language file: French, Chinese and Romanian
 
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails

@@ -2,10 +2,10 @@
 /*
 	lang-SimplifiedChinese.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2006 Baikuan Hsu <chicworks@gmail.com>
+	Copyright (C) 2006-2007 Baikuan Hsu <chicworks@gmail.com>
 	All rights reserved.
 	
-	This language file matches FreeNAS Ver.0.681B.(rev.336)
+	This language file works perfectly on FreeNAS Ver.0.683B
 	
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -123,6 +123,7 @@ define('_SUCCESSFUL','成功');
 define('_FAILED','失败');
 define('_ERROR','错误');
 define('_HINT','提示');
+define('_FORMAT','格式化');
 
 // common messages
 define('_MESSAGES_SUCCESS', '变更套用成功。');
@@ -149,6 +150,7 @@ define('_SELECTED','已选择');
 define('_MENULEFT_SYSTEM','系统');
 define('_MENULEFT_SYSGENSETUP','设定');
 define('_MENULEFT_SYSSTATROUTES','靜态路由');
+define('_MENULEFT_SYSHOSTS','主机');
 define('_MENULEFT_SYSFIRMWARE','韧体');
 define('_MENULEFT_SYSADVANCED','进阶');
 define('_MENULEFT_INTERFACES','网路介面');
@@ -157,6 +159,7 @@ define('_MENULEFT_INTLAN','区域网路');
 define('_MENULEFT_DISKS',_DISKS);
 define('_MENULEFT_DISKMANAG','管理');
 define('_MENULEFT_DISKMNGSOFTRAID',_SOFTRAID);
+define('_MENULEFT_DISKMNGFORMAT',_FORMAT);
 define('_MENULEFT_DISKMNGMOUNTPOINT','掛载点');
 define('_MENULEFT_SERVICES','服务');
 define('_MENULEFT_SRVCIFS','CIFS');
@@ -238,7 +241,7 @@ define('_INDEXPHP_VERSION','版本');
 define('_INDEXPHP_OSVERSION','作业系统版本');
 define('_INDEXPHP_PLATFORM','硬体平台');
 define('_INDEXPHP_DATE','日期');
-define('_INDEXPHP_UPTIME','啟动时间');
+define('_INDEXPHP_UPTIME','系统运作时间');
 define('_INDEXPHP_LASTCHANGE','上次设定时间');
 define('_INDEXPHP_MEMUSE','记忆体使用率');
 define('_INDEXPHP_LOADAVERAGE','系统负载');
@@ -265,6 +268,7 @@ define('_SYSTEMROUTESPHP_EDITROUTE','编辑路由');
 define('_SYSTEMROUTESPHP_MSGCONFIRM','确定要刪除这个路由资讯吗？');
 define('_SYSTEMROUTESPHP_DELROUTE','刪除路由');
 define('_SYSTEMROUTESPHP_ADDROUTE','新增路由');
+define('_SYSTEMROUTESPHP_TEXT','设定一个主机名称对NFS服务将有所帮助。');
 
 // Static Routes Edit Module
 // file: system_routes_edit.php
@@ -276,7 +280,23 @@ define('_SYSTEMROUTESPHP_CHOOSEINT','选择本路由设定要套用到哪一个�
 define('_SYSTEMROUTESPHP_DESTNET','目标网段');
 define('_SYSTEMROUTESPHP_DESTNETROUTE','本路由设定要套用的目标网段');
 define('_SYSTEMROUTESPHP_GWTONET','连線到目标网段的闸道IP位置');
-define('_SYSTEMROUTESPHP_DESCREF','可以加註必要的描述文字。(not parsed)');
+define('_SYSTEMROUTESPHP_DESCREF','可以为这笔资料加註必要的描述文字。(not parsed)');
+
+// Hosts
+// file: sytem_hosts.php
+define('_SYSTEMHOSTSPHP_MSG_CHANGED','主机列表已经变更。<br>套用之后才会生效。');
+define('_SYSTEMHOSTSPHP_EDITHOST','编辑主机');
+define('_SYSTEMHOSTSPHP_MSGCONFIRM','确定要刪除这个主机资料？');
+define('_SYSTEMHOSTSPHP_DELHOST','刪除主机');
+define('_SYSTEMHOSTSPHP_ADDHOST','新增主机');
+
+// file: system_hosts_edit.php
+define('_SYSTEMHOSTSPHP_MSGVALIDNAME','主机名称包含了无效的字元。');
+define('_SYSTEMHOSTSPHP_MSGVALIDIP','请输入一个有效的IP位置。');
+define('_SYSTEMHOSTSPHP_MSGHOSTEXIST','已经存在一个相同名称的主机设定。');
+define('_SYSTEMHOSTSPHP_HOSTTEXT','主机名称只能包含以下字元：a-z, A-Z, 0-9, - , _ , .');
+define('_SYSTEMHOSTSPHP_ADDRESSTEXT','这个主机所使用的IP位置。');
+define('_SYSTEMHOSTSPHP_DESCTEXT','可以为这笔资料加註必要的描述文字。');
 
 // System Firmware Module
 // file: system_firmware.php
@@ -300,7 +320,7 @@ define('_SYSTEMFIRMWAREPHP_DESFIRMUP','关闭韧体升级功能');
 define('_SYSTEMFIRMWAREPHP_FIRMFILE','韧体映像档');	
 define('_SYSTEMFIRMWAREPHP_UPFIRM','韧体升级');
 define('_SYSTEMFIRMWAREPHP_MSGREBOOTUP','系统必须重新开机才能开啟韧体升级功能。');
-define('_SYSTEMFIRMWAREPHP_DONOTABORT','一但轫体升级动作已经开始，千万不要中止其动作。FreeNAS在新的韧体上传完之后便会自动重新开机。所有之前所设定的组态都会被保留。<br>系统最少需要128MB的记忆体以执行此动作。');
+define('_SYSTEMFIRMWAREPHP_DONOTABORT','一但轫体升级动作已经开始，千万不要中止其动作！FreeNAS在新的韧体上传完成之后便会自动重新开机。所有之前所设定的组态都会被保留。<br>系统最少需要128MB的记忆体才能顺利执行此动作。<br>強烈的建议使用者，进行韧体升级之前请先<a href="diag_backup.php">备份</a>系统设定组态。');
 
 // System Advanced Module // file: system_advanced.php 
 define('_SYSTEMADVANCEDPHP_NAME',_MENULEFT_SYSTEM); 
@@ -323,7 +343,7 @@ define('_SYSTEMADVANCEDPHP_FIRM','韧体版本检查');
 define('_SYSTEMADVANCEDPHP_DISFIRM','关闭韧体版本检查功能');
 define('_SYSTEMADVANCEDPHP_FIRMTEXT','这会关闭FreeNAS中，<a href=system_firmware.php>系统: 韧体</a>页面的韧体版本检查功能。'); 
 define('_SYSTEMADVANCEDPHP_TCPIDLE','TCP閒置切断时间'); 
-define('_SYSTEMADVANCEDPHP_TCPIDLETEXT','閒置太久的TCP连線将会系统切断。不要把这个数值设定的太高，以免系统內同时存在太多的连線(例:不正常断線的程式)。预设的数值是2.5小时。'); 
+define('_SYSTEMADVANCEDPHP_TCPIDLETEXT','閒置太久的TCP连線将会系统切断。不要把这个数值设定的太高，以免系统內同时存在太多的连線(例:不正常断線的程式)。预设的数值是9000秒钟（2.5小时）。'); 
 define('_SYSTEMADVANCEDPHP_NAV','导览');
 define('_SYSTEMADVANCEDPHP_NAVTEXT','将诊断的页面连结预设为展开');
 define('_SYSTEMADVANCEDPHP_BEEP','提示声响'); 
@@ -441,16 +461,6 @@ define('_DISKSMANAGEINITPHP_FORMATDISCCONF','确定真的要格式化这个磁�
 define('_DISKSPHP_NOMBR','不要刪除MBR');
 define('_DISKSPHP_NOMBRTEXT','保留原本的MBR (某些RAID控制卡需要)');
 
-//file: disks_manage_tools.php
-define('_DISKSMANAGETOOLS_NAMEDESC','工具');
-define('_DISKSMANAGETOOLS_COMMAND','指令');
-define('_DISKSMANAGETOOLS_SENDCMD','传送指令！');
-define('_DISKSMANAGETOOLS_RAIDDISKNOTE','在这个磁碟使用<a href="%s">RAID工具</a>！');
-define('_DISKSMANAGETOOLS_CMDINFO','指令输出：');
-define('_DISKSMANAGETOOLS_MOUNTNOTE','磁碟目前正在掛载中！系统会将磁碟暂时卸载以进行指令。');
-define('_DISKSMANAGETOOLS_UMOUNT','卸载 磁碟/磁区');
-define('_DISKSMANAGETOOLS_UMOUNTTEXT','如果选择的磁碟/磁区正在掛载中，系统会将磁碟暂时卸载以进行指令，否则指令只能在唯读模式下运作。');
-
 //file: disks_manage_iscsi.php
 define('_DISKSMANAGEPHP_NAMEDESC','管理');
 define('_DISKSMANAGEISCSIPHP_NAMEDESC','iSCSI');
@@ -520,7 +530,7 @@ define('_DISKSRAIDTOOLSPHP_OBJNAME','物件名称');
 define('_DISKSRAIDTOOLSPHP_COMMAND','指令');
 define('_DISKSRAIDTOOLSPHP_INFO','GVINUM指令结果:');
 define('_DISKSRAIDTOOLSPHP_SENDCMD','传送指令！');
-define('_DISKSRAIDTOOLSPHP_TEXT','1. 这些特殊的命令只用来除错而已！<br>2. RAID磁碟在建立之后会自动的啟动，不需要利用activate工具再啟动一次。');
+define('_DISKSRAIDTOOLSPHP_TEXT','1. 这些特殊的指令大部分只用来除错而已！<br>2. RAID磁碟在建立之后会自动啟动，不需要再次下达activate指令。');
 
 //Disk Mount Point
 // Comon value
@@ -528,6 +538,7 @@ define('_DISKSMOUNTPHP_NAME','掛载点');
 define('_DISKSMOUNTPHP_SHARENAME','分享名称');
 define('_DISKSMOUNTPHP_MANAGE','管理');
 define('_DISKSMOUNTPHP_TOOLS','工具');
+define('_DISKSMOUNTPHP_FSCK','Fsck');
 
 // disks_mount.php
 define('_DISKSMOUNTPHP_MSGCHANGED','掛载点已经变更。<br>套用之后才会生效。');
@@ -551,6 +562,18 @@ define('_DISKSMOUNTTOOLS_CMDINFO','指令结果：');
 define('_DISKSMOUNTTOOLS_MOUNTTEXT','掛载中...');
 define('_DISKSMOUNTTOOLS_UMOUNTTEXT','卸载中...');
 
+// file: disk_mount_fsck.php
+define('_DISKSMOUNTFSCK_NAMEDESC','工具');
+define('_DISKSMOUNTFSCK_CMDINFO','指令输入结果：');
+define('_DISKSMOUNTFSCK_MOUNTNOTE','磁碟目前正在掛载中！系统会将磁碟暂时卸载以进行指令。');
+define('_DISKSMOUNTFSCK_UMOUNT','卸载 磁碟/磁区');
+define('_DISKSMOUNTFSCK_UMOUNTTEXT','如果选择的磁碟/磁区正在掛载中，系统会将磁碟暂时卸载以进行指令，否则指令只能在唯读模式下运作。<br>命令执行中如果有使用者存取这个掛载点可能会使服务中断。');
+
+//file: disks_manage_tools.php
+define('_DISKSMANAGETOOLS_COMMAND','指令');
+define('_DISKSMANAGETOOLS_SENDCMD','传送指令！');
+define('_DISKSMANAGETOOLS_RAIDDISKNOTE','在这个磁碟使用<a href="%s">RAID工具</a>！');
+define('_DISKSMANAGETOOLS_CMDINFO','指令输出：');
 // Service: CIFS/SAMBA
 // Common text
 define('_SRVCIFS_SETTINGS','设定');
@@ -613,12 +636,13 @@ define('_SRVFTP_MSGVALIDPASVMIN','被动式连接埠终点必须是一个有效�
 define('_SRVFTP_MSGVALIDAUTH','请至少选择 匿名/本地使用者 认证。');
 define('_SRVFTP_FTPSERVER','FTP伺服器');
 define('_SRVFTP_TCP',_TCPPORT);
+define('_SRVFTP_TCPTEXT','FTP的预设连接埠是21');
 define('_SRVFTP_MAXCLIENT','连線数目');
 define('_SRVFTP_MAXCLIENTTEXT','连線数目上限。');
 define('_SRVFTP_MAXIP','相同IP的连線数目');
 define('_SRVFTP_MAXIPTEXT','来自相同IP的连線数目上限(0 = 不限制).');
 define('_SRVFTP_TIMEOUT','失效时间');
-define('_SRVFTP_TIMEOUTTEXT','自动切断连線时间。');
+define('_SRVFTP_TIMEOUTTEXT','自动切断连線时间（分钟）。');
 define('_SRVFTP_ANONYMOUS','匿名登入');
 define('_SRVFTP_ENANONYMOUS','是否开啟匿名登入');
 define('_SRVFTP_AUTH','本机使用者');
@@ -628,7 +652,7 @@ define('_SRVFTP_ENFXP','开啟FXP协定支援。');
 define('_SRVFTP_FXPTEXT','FXP是支援两个远端伺服器互传档案的通讯协定。(有安全疑虑！).');
 define('_SRVFTP_NATMODE','NAT模式');
 define('_SRVFTP_ENNATMODE','強迫NAT模式。');
-define('_SRVFTP_NATMODETEXT','如果你的FTP伺服器是架设在NAT的环境之下，请开啟这个功能。');
+define('_SRVFTP_NATMODETEXT','如果你的FTP伺服器是架设在NAT的环境之下同时也不支援Applicative FTP Proxying，请开啟这个功能。');
 define('_SRVFTP_PASSIVEIP','被动式IP位置');
 define('_SRVFTP_PASSIVEIPTEXT','FTP伺服器的被动式连線IP位置。');
 define('_SRVFTP_PASVMIN','被动式连接埠起点');
@@ -664,7 +688,7 @@ define('_SRVRYNCD_RSYNCD','Rsync伺服器');
 define('_SRVRYNCD_READONLY','唯读');
 define('_SRVRYNCD_MAPUSER','对应到本地使用者');
 define('_SRVRYNCD_TCPORT',_TCPPORT);
-define('_SRVRYNCD_TCPORTTEXT','替代的TCP连接埠。');
+define('_SRVRYNCD_TCPORTTEXT','替代的TCP连接埠，预设值为873。');
 define('_SRVRYNCD_MAXCON','连線数目上線');
 define('_SRVRYNCD_MAXCONTEXT','同时最高连線数目。预设为0(不限制)。');
 define('_SRVRYNCD_MOTD','MOTD');
@@ -700,7 +724,7 @@ define('_SRVSSHD_MSGVALIDKEY','这个钥匙似乎是无效的。');
 define('_SRVSSHD_SSHD','SSH伺服器');
 define('_SRVSSHD_READONLY','唯读');
 define('_SRVSSHD_TCPORT',_TCPPORT);
-define('_SRVSSHD_TCPORTTEXT',_SRVRYNCD_TCPORTTEXT);
+define('_SRVSSHD_TCPORTTEXT','变更连接埠。预设值是22');
 define('_SRVSSHD_PERMITROOTLOGIN','root准许登入');
 define('_SRVSSHD_PERMITROOTLOGINTEXT','指定超级使用者 (root)是否可以透过SSH直接登入。');
 define('_SRVSSHD_KEY','SSH key');
