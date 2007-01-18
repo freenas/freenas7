@@ -140,9 +140,6 @@ msgstr "Toevoegen"
 msgid "Cancel"
 msgstr "Annuleren"
 
-msgid "Update"
-msgstr "Bevestigen"
-
 msgid "Create"
 msgstr "Aanmaken"
 
@@ -236,9 +233,6 @@ msgstr "Software RAID"
 msgid "Service"
 msgstr "Dienste"
 
-msgid "Services"
-msgstr "Diensten"
-
 msgid "TCP port"
 msgstr "TCP port"
 
@@ -278,7 +272,7 @@ msgstr "Er moet een geldige bit-count voor het netwerk gegeven worden."
 msgid "The TCP port must be a valid port number."
 msgstr "De TCP-poort moet geldig zijn."
 
-msgid "Password don\'t match."
+msgid "Password don't match."
 msgstr "De opgegeven wachtwoorden komen niet overeen."
 
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
@@ -310,9 +304,6 @@ msgstr "Firmware"
 
 msgid "Advanced"
 msgstr "Geavanceerd"
-
-msgid "Interfaces"
-msgstr "Interfaces"
 
 msgid "Assign"
 msgstr "Toewijzen"
@@ -367,9 +358,6 @@ msgstr "NIS"
 
 msgid "Radius"
 msgstr "Radius"
-
-msgid "System"
-msgstr "Systeem"
 
 msgid "Process"
 msgstr "Proces"
@@ -446,7 +434,7 @@ msgstr "Geef hier de gebruikersnaam voor toegang tot de webinterface op als je d
 msgid "Password"
 msgstr "Wachtwoord"
 
-msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don\'t use the character \':\'."
+msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don't use the character ':'."
 msgstr "Geef hier tweemaal het wachtwoord in als je dit wil veranderen.<br>Gebruik nooit het ':' karakter."
 
 msgid "WebGUI protocol"
@@ -482,10 +470,10 @@ msgstr "NTP tijd server"
 msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
 msgstr "Gebruik een spatie om meerdere hosts van elkaar te scheiden (slechts &eacute;&eacute;n nodig). Denk eraan om minstens &eacute;&eacute;n DNS server op te geven als je hier een hostnaam invult!"
 
-msgid "The hostname may only contain the characters a-z, 0-9 and \'-\'."
+msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
 msgstr "De hostnaam mag alleen de karakters a-z, 0-9 en '-' bevatten."
 
-msgid "The domain may only contain the characters a-z, 0-9, \'-\' and \'.\'."
+msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "Het domein mag alleen maar de karakters a-z, 0-9, '-' en '.' bevatten."
 
 msgid "A valid IP address must be specified for the primary/secondary DNS server."
@@ -506,7 +494,7 @@ msgstr "Je moet een geldige taal kiezen."
 msgid "The time update interval must be either 0 (disabled) or between 6 and 1440."
 msgstr "Het interval voor de tijdsynchronisatie moet ofwel 0 (inactief) of tussen 6 en 1440 liggen."
 
-msgid "A NTP Time Server name may only contain the characters a-z, 0-9, \'-\' and \'.\'."
+msgid "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "De naam van een NTP tijdserver mag alleen de karakters a-z, 0-9, '-' en '.' bevatten."
 
 msgid "System information"
@@ -523,9 +511,6 @@ msgstr "OS Versie"
 
 msgid "Platform"
 msgstr "Platform"
-
-msgid "Date"
-msgstr "Datum"
 
 msgid "Uptime"
 msgstr "Uptime"
@@ -662,11 +647,11 @@ msgstr "Dit certificaat is ongeldig."
 msgid "This key does not appear to be valid."
 msgstr "Deze sleutel is ongeldig"
 
-msgid "The options on this page are intended for use by advanced users only, and there\'s <strong>NO</strong> support for them."
+msgid "The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them."
 msgstr "De opties op deze pagina dienen alleen voor gespecialiseerd gebruik; er is <strong>GEEN</strong> ondersteuning voor deze opties."
 
-msgid "webGUI SSL certificate\/key"
-msgstr "webinterface SSL certificaat\/sleutel"
+msgid "webGUI SSL certificate/key"
+msgstr "webinterface SSL certificaat/sleutel"
 
 msgid "Certificate"
 msgstr "Certificaat"
@@ -701,7 +686,7 @@ msgstr "Controle op de versie van systeemsoftware uitschakelen."
 msgid "TCP idle timeout"
 msgstr "TCP inactiviteitsduur voor onderbreking"
 
-msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don\'t set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
+msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don't set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
 msgstr "Inactieve TCP connecties zullen verwijderd worden uit de statustabel als er gedurende het gespecifieerde aantal seconden geen pakketten ontvangen werden. Zet deze waarde niet te hoog, dit zou kunnen veroorzaken dat de statustabel vol verbindingen komt te staan die niet correct werden afgesloten. De standaard is 2,5 uur."
 
 msgid "Navigation"
@@ -737,9 +722,6 @@ msgstr "ZeroConf"
 msgid "Disable ZeroConf service announce"
 msgstr "ZeroConf service-aankondiging uitschakelen"
 
-msgid "Interfaces"
-msgstr "Interfaces"
-
 msgid "Assign network ports"
 msgstr "Netwerkpoorten toekennen"
 
@@ -751,9 +733,6 @@ msgstr " werd toegekend aan "
 
 msgid " interfaces:"
 msgstr " interfaces:"
-
-msgid "Interface"
-msgstr "Interface"
 
 msgid "Network port"
 msgstr "Netwerk poort"
@@ -767,12 +746,6 @@ msgstr "Interface toevoegen"
 msgid "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
 msgstr "Nadat je op &quot;Bewaren&quot; klikt moet je FreeNAS herstarten om de wijzigingen te activeren. Het kan zijn dat je ook nog &euml;&euml;n van volgende stappen moet uitvoeren om terug toegang te krijgen tot je NAS: </span></p"
 
-msgid "Interfaces"
-msgstr "Interfaces"
-
-msgid "LAN"
-msgstr "LAN"
-
 msgid "A valid gateway must be specified."
 msgstr "Er moet een geldige gateway opgegeven worden."
 
@@ -784,9 +757,6 @@ msgstr "IP adres"
 
 msgid "Subnet bit count"
 msgstr "Aantal bits voor het subnet"
-
-msgid "Gateway"
-msgstr "Gateway"
 
 msgid "MTU"
 msgstr "MTU"
@@ -830,9 +800,6 @@ msgstr "DHCP client instellingen"
 msgid "General configuration"
 msgstr "Algemene instellingen"
 
-msgid "Hostname"
-msgstr "Hostnaam"
-
 msgid "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
 msgstr "De waarde in dit veld wordt als DHCP hostnaam doorgestuurd bij het aanvragen van een DHCP lease."
 
@@ -859,9 +826,6 @@ msgstr "Hulpmiddelen"
 
 msgid "iSCSI initiator"
 msgstr "iSCSI initiator"
-
-msgid "Management"
-msgstr "Beheer"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "De lijst met schijven is gewijzigd.<br>Je moet op 'toepassen' klikken vooraleer de wijzigingen actief zijn."
@@ -908,7 +872,7 @@ msgstr "Hiermee kan je het energieverbruik van de schijf verminderen, ten koste 
 msgid "Acoustic level"
 msgstr "Akoestisch niveau"
 
-msgid "This allows you to set how loud the drive is while it\'s  operating.<em>Do not set this for CF cards.</em>"
+msgid "This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"
 msgstr "Hiermee kan je het geluidsniveau van de schijf instellen.<em>Gebruik dit niet voor CF kaarten.</em>"
 
 msgid "Preformatted FS"
@@ -935,23 +899,14 @@ msgstr "Formatteer schijf"
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Ben je zeker dat je deze schijf wil formatteren? Alle gegevens zullen verloren gaan!"
 
-msgid "Don\'t Erase MBR"
+msgid "Don't Erase MBR"
 msgstr "Het MBR niet wissen"
 
-msgid "don\'t erase the MBR (useful for some RAID controller cards)"
+msgid "don't erase the MBR (useful for some RAID controller cards)"
 msgstr "Het MBR niet wissen (zinvol voor sommige RAID controller kaarten)"
-
-msgid "Tools"
-msgstr "Hulpmiddelen"
-
-msgid "Command"
-msgstr "Commando"
 
 msgid "Send Command!"
 msgstr "Commando versturen!"
-
-msgid "Use <a href="%s">RAID tools</a> for this disk!"
-msgstr "Maak gebruik van <a href="%s">RAID hulpmiddelen</a> voor deze schijf!"
 
 msgid "Command output:"
 msgstr "Commando uitvoer:"
@@ -964,9 +919,6 @@ msgstr "Ontkoppel shijf/partitie"
 
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<"
 msgstr "Als de geselecteerde schijf/partitie gekoppeld is zal deze tijdelijk ontkoppeld worden om het geselecteerde commando uit te voeren, anders werken de commando's slechts in 'alleen-lezen' modus.."
-
-msgid "Management"
-msgstr "Beheer"
 
 msgid "iSCSI"
 msgstr "iSCSI"
@@ -991,12 +943,6 @@ msgstr "RAID beheer"
 
 msgid "Format RAID"
 msgstr "RAID formatteren"
-
-msgid "Tools"
-msgstr "Hulpmiddelen"
-
-msgid "Information"
-msgstr "Informatie"
 
 msgid "Volume Name"
 msgstr "Volumenaam"
@@ -1027,9 +973,6 @@ msgstr "RAID"
 
 msgid "The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "De Raid instellingen werden gewijzigd.<br>Je moet op 'toepassen' klikken vooraleer de wijzigingen actief zijn."
-
-msgid "Type"
-msgstr "Type"
 
 msgid "Edit RAID"
 msgstr "RAID bewerken"
@@ -1106,29 +1049,11 @@ msgstr "Formatter UFS schijf!"
 msgid "Object name"
 msgstr "Object naam"
 
-msgid "Command"
-msgstr "Commando"
-
-msgid "command output:"
-msgstr "GVINUM commando uitvoer:"
-
-msgid "Send Command!"
-msgstr "Commando versturen!"
-
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly)."
 msgstr "1. Gebruik deze speciale opdrachten alleen maar voor het debuggen!<br>2. Dit menu moet niet gebruikt worden om een RAID volume op te starten (dit start automatisch)."
 
-msgid "Mount Point"
-msgstr "Koppelpunt"
-
 msgid "Share Name"
 msgstr "Naam gedeelde map"
-
-msgid "Manage"
-msgstr "Beheer"
-
-msgid "Tools"
-msgstr "Hulpmiddelen"
 
 msgid "The mount point list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "De lijst van koppelpunten werd gewijzigd.<br>Je moet op 'toepassen' klikken vooraleer de wijzigingen actief zijn."
@@ -1145,7 +1070,7 @@ msgstr "koppelpunt toevoegen"
 msgid "The description name contain invalid characters."
 msgstr "De naam van de gedeelde map bevat ongeldige karakters."
 
-msgid "Can\'t mount the system partition 1, the DATA partition is the 2."
+msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Systeempartitie 1 kan niet gekoppeld worden, de DATA partitie is partitie2"
 
 msgid "Duplicate Share Name."
@@ -1154,17 +1079,8 @@ msgstr "Dubbele naam voor de gedeelde map."
 msgid "This disk/partition is allready configured."
 msgstr "Deze schijf/partiti is al ingesteld."
 
-msgid "1. You can\'t mount the partition \'%s\' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
+msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
 msgstr "1. Je kan geen partitie koppelen waarop de systeeminstellingen bewaard zijn.<br>2. FreeBSD NTFS vertoont nog veel fouten."
-
-msgid "Command"
-msgstr "Commando"
-
-msgid "Send Command!"
-msgstr "Commando versturen!"
-
-msgid "Command output:"
-msgstr "Commando uitvoer:"
 
 msgid "Mounting..."
 msgstr "Bezig met koppelen..."
@@ -1175,14 +1091,8 @@ msgstr "Bezig met ontkoppelen..."
 msgid "Settings"
 msgstr "Instellingen"
 
-msgid "Share"
-msgstr "Gedeelde map"
-
 msgid "Shares"
 msgstr "Gedeelde mappen"
-
-msgid "CIFS"
-msgstr "CIFS"
 
 msgid "The Netbios name contains invalid characters."
 msgstr "De Netbiosnaam bevat ongeldige karakters."
@@ -1274,14 +1184,8 @@ msgstr "Verkenbaar"
 msgid "Edit share"
 msgstr "Gedeelde map bewerken"
 
-msgid "Browseable"
-msgstr "Verkenbaar"
-
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "Dit bepaalt of de gedeelde map zichtbaar is in de lijst van beschikbare gedeelde mappen in het netwerkoverzicht."
-
-msgid "FTP"
-msgstr "FTP"
 
 msgid "The maximum Number of client must be a number."
 msgstr "Het maximum aantal clients moet een getal zijn."
@@ -1346,7 +1250,7 @@ msgstr "NAT modus"
 msgid "Force NAT mode."
 msgstr "Forceer NAT modus."
 
-msgid "Enable this if your FTP server is behind a NAT box that doesn\'t support applicative FTP proxying."
+msgid "Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying."
 msgstr "Activeren als de FTP server zich achter een NAT router bevindt die geen applicatieve proxy is voor FTP."
 
 msgid "Passive IP address"
@@ -1367,9 +1271,6 @@ msgstr "Banner"
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "Begroetingsbanner die getoond wordt bij het maken van een FTP verbinding."
 
-msgid "NFS"
-msgstr "NFS"
-
 msgid "A valid network must be specified."
 msgstr "Er moet een geldig netwerk moet gespecifieerd zijn."
 
@@ -1388,9 +1289,6 @@ msgstr "Geautoriseerd netwerk"
 msgid "Network that is authorised to access to NFS share"
 msgstr "Netwerk dat geautoriseerd is om toegang te krijgen tot de NFS mappen"
 
-msgid "Subnet bit count"
-msgstr "Aantal bits voor het subnet"
-
 msgid "The name of the exported directories are : /mnt/sharename"
 msgstr "De namen van de ge&euml;xporteerde mappen zijn van de vorm: /mnt/mapnaam"
 
@@ -1402,9 +1300,6 @@ msgstr "Client"
 
 msgid "Local"
 msgstr "Lokaal"
-
-msgid "RSYNCD"
-msgstr "RSYNCD"
 
 msgid "Rsync Daemon"
 msgstr "Rsync Daemon"
@@ -1445,8 +1340,8 @@ msgstr "IP adres van de RSYNC server op afstand"
 msgid "RSYNC Options"
 msgstr "RSYNC opties"
 
-msgid "Delete files that don\'t exist on sender."
-msgstr "Verwijder de bestanden niet niet op de "zender" staan."
+msgid "Delete files that don't exist on sender."
+msgstr "Verwijder de bestanden niet niet op de 'zender' staan."
 
 msgid "Shares to be synchronized"
 msgstr "Gedeelde mappen die moeten gesynchroniseerd worden"
@@ -1457,7 +1352,7 @@ msgstr "Deze zelfde lokale gedeelde map moet ook aanwezig zijn op de server op a
 msgid "Synchronization Time"
 msgstr "Synchronisatietijdstip"
 
-msgid "You can\'t have the same mount point for source and destination!"
+msgid "You can't have the same mount point for source and destination!"
 msgstr "Je kan niet hetzelfde koppelingspunt gebruiken voor bron en bestemming!"
 
 msgid "Rsync Local Synchronization"
@@ -1475,17 +1370,8 @@ msgstr "Bestemming"
 msgid "Destination Mount Point (backup drive)."
 msgstr "Bestemming koppelingspunt (backup schijf)."
 
-msgid "SSHD"
-msgstr "SSHD"
-
-msgid "This key does not appear to be valid."
-msgstr "Deze sleutel is ongeldig."
-
 msgid "SSH Daemon"
 msgstr "SSH Daemon"
-
-msgid "Read only"
-msgstr "Alleen lezen"
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Alternatieve TCP poort."
@@ -1505,9 +1391,6 @@ msgstr "Private sleutel"
 msgid "Paste a DSA PRIVATE KEY in PEM format here."
 msgstr "Plak (copy/paste) een DSA PRIVATE SLEUTEL in PEM formaat hier."
 
-msgid "Unison"
-msgstr "Unison"
-
 msgid "The combination of share and working directory does not exist."
 msgstr "De combinatie van gedeelde map en werkfolder bestaat niet."
 
@@ -1526,14 +1409,8 @@ msgstr "Werkfolder"
 msgid "Where the working files will be stored"
 msgstr "Plaats waar de werkbestanden zullen bewaard worden."
 
-msgid "Create"
-msgstr "Werkmap aanmaken"
-
-msgid "Create work directory if it doesn\'t exist"
+msgid "Create work directory if it doesn't exist"
 msgstr "Een werkmap aanmaken als deze niet bestaat"
-
-msgid "UPnP"
-msgstr "UPnP"
 
 msgid "UPnP A/V Media Server"
 msgstr "UPnP A/V Media Server"
@@ -1541,14 +1418,8 @@ msgstr "UPnP A/V Media Server"
 msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "De inhoudmappenlijst is veranderd.<br>Je moet op 'toepassen' klikken vooraleer de wijzigingen actief zijn."
 
-msgid "Name"
-msgstr "Naam"
-
 msgid "UPnP friendly name."
 msgstr "UPnP herkenbare naam."
-
-msgid "Interface"
-msgstr "Interface"
 
 msgid "Interface to listen to."
 msgstr "Interface waarop UPnP moet luisteren."
@@ -1577,14 +1448,8 @@ msgstr "Map verwijderen"
 msgid "Do you really want to delete this directory entry?"
 msgstr "Ben je zeker dat je deze map wil verwijderen?"
 
-msgid "Content"
-msgstr "Inhoud"
-
 msgid "Directory to be shared."
 msgstr "Map die gedeeld moet worden."
-
-msgid "AFP"
-msgstr "AFP"
 
 msgid "You must select at least one authentication method."
 msgstr "Je moet minstens &euml;&euml;n aanmeldingsmethode kiezen."
@@ -1595,17 +1460,11 @@ msgstr "AFP Server"
 msgid "Server Name"
 msgstr "Server Naam"
 
-msgid "Authentication"
-msgstr "Aanmdelding"
-
 msgid "Enable guest access."
 msgstr "Activeer gast-toegang."
 
 msgid "Enable local user authentication."
 msgstr "Activeer lokale gebruikersaanmelding."
-
-msgid "Access"
-msgstr "Toegang"
 
 msgid "User"
 msgstr "Gebruiker"
@@ -1653,16 +1512,13 @@ msgid "This user already exists in the user list."
 msgstr "Deze gebruiker bestaat al in de gebruikerslijst."
 
 msgid "The password contain the illegal : character"
-msgstr "Het wachtwoord bevat het ongeldige ":" karakter"
+msgstr "Het wachtwoord bevat het ongeldige ':' karakter"
 
 msgid "Unique login name of user."
 msgstr "Unieke aanmeldingsnaam van de gebruiker."
 
 msgid "User full name."
 msgstr "Volledige naam."
-
-msgid "Password"
-msgstr "Wachtwoord"
 
 msgid "User password."
 msgstr "Wachtwoord gebruiker."
@@ -1706,17 +1562,11 @@ msgstr "De omschrijving van de groep bevat ongeldige karakters."
 msgid "This group already exists in the group list."
 msgstr "Deze groep bestaat al in de groeplijst."
 
-msgid "Name"
-msgstr "Naam"
-
 msgid "Group name."
 msgstr "Groepsnaam."
 
 msgid "Group description."
 msgstr "Groepsomschrijving."
-
-msgid "Active Directory"
-msgstr "Active Directory"
 
 msgid "AD server name"
 msgstr "AD servernaam"
@@ -1748,9 +1598,6 @@ msgstr "Administrator wachtwoord"
 msgid "Password of domain administrator account, enter it here twice."
 msgstr "Wachtwoord voor de opgegeven gebruikersnaam, geef hier twee maal in."
 
-msgid "Diagnostics"
-msgstr "Diagnostiek"
-
 msgid "The system is halting now. This may take one minute."
 msgstr "Het systeem wordt nu gestopt. Dit kan een minuut duren."
 
@@ -1762,9 +1609,6 @@ msgstr "Geplande uitschakeling"
 
 msgid "Shutdown Time"
 msgstr "Uitschakelingstijdstip"
-
-msgid "Edit File"
-msgstr "Bestand bewerken"
 
 msgid "File path"
 msgstr "Bestandspad"
@@ -1802,10 +1646,7 @@ msgstr "Ben je zeker dat je het systeem wil herstarten?"
 msgid "License"
 msgstr "Licentie"
 
-msgid "Wireless"
-msgstr "Draadloos"
-
-msgid "%s interface (SSID \'%s\')"
+msgid "%s interface (SSID '%s')"
 msgstr "%s interface (SSID '%s')"
 
 msgid "Signal strength cache"
@@ -1813,9 +1654,6 @@ msgstr "Cache voor signaalsterkte"
 
 msgid "MAC address"
 msgstr "MAC adres"
-
-msgid "IP address"
-msgstr "IP adres"
 
 msgid "Signal"
 msgstr "Signaal"
@@ -1838,9 +1676,6 @@ msgstr "Er zijn geen ondersteunde draadloze interfaces gevonden om de status wee
 msgid "%s interface"
 msgstr "%s interface"
 
-msgid "Status"
-msgstr "Status"
-
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -1850,17 +1685,8 @@ msgstr "PPPoE"
 msgid "PPTP"
 msgstr "PPTP"
 
-msgid "MAC address"
-msgstr "MAC adres"
-
-msgid "IP address"
-msgstr "IP adres"
-
 msgid "Subnet mask"
 msgstr "Subnet mask"
-
-msgid "Gateway"
-msgstr "Gateway"
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS servers"
@@ -1886,9 +1712,6 @@ msgstr "Botsingen"
 msgid "CPU load"
 msgstr "CPU belasting"
 
-msgid "Interface"
-msgstr "Interface"
-
 msgid "VLAN tag"
 msgstr "VLAN tag"
 
@@ -1913,9 +1736,6 @@ msgstr "Gebruikte ruimte"
 msgid "Mounts"
 msgstr "Koppelingen"
 
-msgid "iSCSI"
-msgstr "iSCSI"
-
 msgid "MS Domain"
 msgstr "MS Domein"
 
@@ -1933,18 +1753,6 @@ msgstr "Beschikbare (vrije) ruimte"
 
 msgid "FreeNAS will reboot after restoring the configuration."
 msgstr "FreeNAS zal herstarten na het terugschrijven van de instellingen."
-
-msgid "IP address"
-msgstr "IP adres"
-
-msgid "MAC address"
-msgstr "MAC adres"
-
-msgid "Hostname"
-msgstr "Hostnaam"
-
-msgid "Interface"
-msgstr "Interface"
 
 msgid "Delete ARP entry"
 msgstr "ARP ingang verwijderen"
@@ -1972,9 +1780,6 @@ msgstr "AutoScale"
 
 msgid "Follow"
 msgstr "Follow"
-
-msgid "Up"
-msgstr "Up"
 
 msgid "Graph shows last"
 msgstr "Graph shows last"

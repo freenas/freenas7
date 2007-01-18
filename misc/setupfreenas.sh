@@ -423,7 +423,7 @@ use_svn() {
 		filename=$(basename $i)
 		language=${filename%*.po}
 		mkdir -v -p $FREENAS/usr/local/share/locale/$language/LC_MESSAGES
-		msgfmt --output-file="$FREENAS/usr/local/share/locale/$language/LC_MESSAGES/freenas.mo" $i
+		msgfmt -v --output-file="$FREENAS/usr/local/share/locale/$language/LC_MESSAGES/freenas.mo" $i
 	done
 
 	return 0

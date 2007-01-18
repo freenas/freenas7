@@ -138,9 +138,6 @@ msgstr "Adauga"
 msgid "Cancel"
 msgstr "Cancel"
 
-msgid "Update"
-msgstr "Actualizare"
-
 msgid "Create"
 msgstr "Creare"
 
@@ -234,9 +231,6 @@ msgstr "RAID Software"
 msgid "Service"
 msgstr "Serviciu"
 
-msgid "Services"
-msgstr "Servicii"
-
 msgid "TCP port"
 msgstr "Port TCP"
 
@@ -276,7 +270,7 @@ msgstr "Trebuie sa introduceti un nr. retea valid."
 msgid "The TCP port must be a valid port number."
 msgstr "Trebuie sa introduceti un port TCP valid."
 
-msgid "Password don\'t match."
+msgid "Password don't match."
 msgstr "Parolele sint diferite."
 
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
@@ -309,17 +303,11 @@ msgstr "Firmware"
 msgid "Advanced"
 msgstr "Avansat"
 
-msgid "Interfaces"
-msgstr "Interfete"
-
 msgid "Assign"
 msgstr "Atribuire"
 
 msgid "LAN"
 msgstr "LAN"
-
-msgid "Management"
-msgstr "Management"
 
 msgid "Mount Point"
 msgstr "Punct Montare"
@@ -351,9 +339,6 @@ msgstr "UPnP"
 msgid "AFP"
 msgstr "AFP"
 
-msgid "Access"
-msgstr "Acces"
-
 msgid "Users and Groups"
 msgstr "Utilizatori si Grupuri"
 
@@ -365,9 +350,6 @@ msgstr "NIS"
 
 msgid "Radius"
 msgstr "Radius"
-
-msgid "System"
-msgstr "Sistem"
 
 msgid "Process"
 msgstr "Procese"
@@ -417,9 +399,6 @@ msgstr "Oprire Sistem"
 msgid "Graph"
 msgstr "Graphic"
 
-msgid "Hostname"
-msgstr "HostName"
-
 msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
 msgstr "Numele sistemului NAS, fara domeniu<br>e.g. <em>nas</em>"
 
@@ -444,7 +423,7 @@ msgstr "Daca doriti sa schimbati numele sub care veti accesa Interfa Web FreeNas
 msgid "Password"
 msgstr "Parola"
 
-msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don\'t use the character \':\'."
+msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don't use the character ':'."
 msgstr "Daca doriti sa schimbati parola de acces pentru Interfa Web FreeNas, introduceti-o aici de doua ori.<br>Nu folositi caracterele ':'."
 
 msgid "WebGUI protocol"
@@ -480,10 +459,10 @@ msgstr "Server NTP"
 msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
 msgstr "Folositi un spatiu pentru separarea host-urilor multiple (daca e nevoie). Trebuie sa definiti cel putin 1 server DNS daca introduceti un nume de host aici!"
 
-msgid "The hostname may only contain the characters a-z, 0-9 and \'-\'."
+msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
 msgstr "HostName-ul poate contine doar caracterele  a-z, 0-9 si '-'."
 
-msgid "The domain may only contain the characters a-z, 0-9, \'-\' and \'.\'."
+msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "Numele de Domeniu poate contine doar caracterele  a-z, 0-9 si '-'."
 
 msgid "A valid IP address must be specified for the primary/secondary DNS server."
@@ -504,7 +483,7 @@ msgstr "Trebuie sa selectati o limba valida."
 msgid "The time update interval must be either 0 (disabled) or between 6 and 1440."
 msgstr "Intervalul de actualizare poate fi fie 0 (dezactivat) sau o valoare intre 6 si 1440."
 
-msgid "A NTP Time Server name may only contain the characters a-z, 0-9, \'-\' and \'.\'."
+msgid "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "Numele Server-ului NTP poate contine doar caracterele a-z, 0-9, '-' si '.'."
 
 msgid "System information"
@@ -521,9 +500,6 @@ msgstr "Versiune OS"
 
 msgid "Platform"
 msgstr "Platforma"
-
-msgid "Date"
-msgstr "Data"
 
 msgid "Uptime"
 msgstr "Functioneza de"
@@ -660,10 +636,10 @@ msgstr "Acest certificat nu este valid."
 msgid "This key does not appear to be valid."
 msgstr "Aceasta cheie nu este valida."
 
-msgid "The options on this page are intended for use by advanced users only, and there\'s <strong>NO</strong> support for them."
+msgid "The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them."
 msgstr "ATENTIE: Aceste Optiuni sint <strong>DOAR</strong> pentru utilizatori avansati!."
 
-msgid "webGUI SSL certificate\/key"
+msgid "webGUI SSL certificate/key"
 msgstr "cheie/cerfificat pentru webGUI SSL"
 
 msgid "Certificate"
@@ -699,7 +675,7 @@ msgstr "Dezactivare Verificare versiune firmware"
 msgid "TCP idle timeout"
 msgstr "TCP idle timeout"
 
-msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don\'t set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
+msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don't set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
 msgstr "Conexiunile TCP inactive vor fi eliminate din tabela de stare dupa ce nu va mai fi receptionat niciun pachet corespunzator conexiunii pentru un numar specificat de secunde. Nu setati valoari prea mari altfel tabela se poate umple rapid cu conexiuni expirate, inutile. Timpul implicit este de 2.5 ore."
 
 msgid "Navigation"
@@ -735,9 +711,6 @@ msgstr "ZeroConf"
 msgid "Disable ZeroConf service announce"
 msgstr "Dezactivare anunt serviciu ZeroConf"
 
-msgid "Interfaces"
-msgstr "Interfete"
-
 msgid "Assign network ports"
 msgstr "Alocare porturi retea"
 
@@ -749,9 +722,6 @@ msgstr " a fost alocat "
 
 msgid " interfaces:"
 msgstr " interfetei:"
-
-msgid "Interface"
-msgstr "Interfata"
 
 msgid "Network port"
 msgstr "Port retea"
@@ -765,12 +735,6 @@ msgstr "Adaugare Interfata"
 msgid "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
 msgstr "Dupa ce faceti click pe &quot;Salvare&quot;, va trebui sa reporniti sistemul pentru ca modificarile sa fie activate. Va trebui eventual sa parcurgeti urmatorii pasi pentru a putea accesa sistemul din nou: </span></p"
 
-msgid "Interfaces"
-msgstr "Interfeta"
-
-msgid "LAN"
-msgstr "LAN"
-
 msgid "A valid gateway must be specified."
 msgstr "Trebuie introdus un gateway valid."
 
@@ -782,9 +746,6 @@ msgstr "Adresa IP"
 
 msgid "Subnet bit count"
 msgstr "Masca Retea"
-
-msgid "Gateway"
-msgstr "Gateway"
 
 msgid "MTU"
 msgstr "MTU"
@@ -858,9 +819,6 @@ msgstr "Unelte"
 msgid "iSCSI initiator"
 msgstr "Initiator iSCSI"
 
-msgid "Management"
-msgstr "Management"
-
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Lista de disc-uri a fost modificata.<br>Trebuie sa salvati aceste modificari pentru a deveni active."
 
@@ -927,9 +885,6 @@ msgstr "Acest mod permite scaderea consumului discului, cu afectarea performante
 msgid "Acoustic level"
 msgstr "Nivel Acustic"
 
-msgid "Disabled"
-msgstr "Dezactivat"
-
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Performanta minima, Zgomot minim"
 
@@ -939,7 +894,7 @@ msgstr "Nivel Mediu de Zgomot"
 msgid "Maximum performance, maximum acoustic output"
 msgstr "Performanta maxima, Nivel Maxim Zgomot"
 
-msgid "This allows you to set how loud the drive is while it\'s  operating.<em>Do not set this for CF cards.</em>"
+msgid "This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"
 msgstr "Acest mod stabileste nivelul de zgomot in functionare pentru Harddisc.<em>Nu setati acest mod pentru cardurile CF.</em>"
 
 msgid "Preformatted FS"
@@ -966,23 +921,14 @@ msgstr "Formatare disc"
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Sigur doriti formatarea disc-ului? Veti pierde toate datele!"
 
-msgid "Don\'t Erase MBR"
+msgid "Don't Erase MBR"
 msgstr "Nu stergeti MBR-ul"
 
-msgid "don\'t erase the MBR (useful for some RAID controller cards)"
+msgid "don't erase the MBR (useful for some RAID controller cards)"
 msgstr "nu stergeti MBR-ul (util pentru unele controlere RAID)"
-
-msgid "Tools"
-msgstr "Unelte"
-
-msgid "Command"
-msgstr "Comenzi"
 
 msgid "Send Command!"
 msgstr "Excutare Comanda!"
-
-msgid "Use <a href="%s">RAID tools</a> for this disk!"
-msgstr "Utilizati <a href="%s">Unelte RAID</a> pentru acest disc!"
 
 msgid "Command output:"
 msgstr "Rezultat comanda:"
@@ -1023,12 +969,6 @@ msgstr "Configurare RAID"
 msgid "Format RAID"
 msgstr "Formatare RAID"
 
-msgid "Tools"
-msgstr "Unelte"
-
-msgid "Information"
-msgstr "Informatii"
-
 msgid "Volume Name"
 msgstr "Nume Volum"
 
@@ -1058,9 +998,6 @@ msgstr "RAID"
 
 msgid "The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Configuratia Raid a fost modificata.<br>Trebuie sa salvati modificarile pentru ca acestea sa devina active."
-
-msgid "Type"
-msgstr "Tip"
 
 msgid "Edit RAID"
 msgstr "Editare RAID"
@@ -1137,29 +1074,11 @@ msgstr "Formatare disc UFS!"
 msgid "Object name"
 msgstr "NUme obiect"
 
-msgid "Command"
-msgstr "Comanda"
-
-msgid "command output:"
-msgstr "rezultat comanda:"
-
-msgid "Send Command!"
-msgstr "Executare Comanda!"
-
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly)."
 msgstr "1. Folositi aceste comenzi speciale doar pentru analiza (debugging)<br>2. NU e nevoie sa folositi aceasta optiune a meniului pentru activarea volumului RAID (pornire automata)."
 
-msgid "Mount Point"
-msgstr "Punct Montare"
-
 msgid "Share Name"
 msgstr "Nume Share"
-
-msgid "Manage"
-msgstr "Configurare"
-
-msgid "Tools"
-msgstr "Unelte"
 
 msgid "The mount point list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Lista punctelor de montare a fost schimbata.<br>Trebuie sa salvati modificarile pentru ca acestea sa devina active."
@@ -1176,7 +1095,7 @@ msgstr "adaugare pct. montare"
 msgid "The description name contain invalid characters."
 msgstr "Numele contine caractere ilegale."
 
-msgid "Can\'t mount the system partition 1, the DATA partition is the 2."
+msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Partitia sistem 1 nu poate fi montata, partitia de date este partitia 2"
 
 msgid "Duplicate Share Name."
@@ -1185,17 +1104,8 @@ msgstr "Nume Partajare Duplicat."
 msgid "This disk/partition is allready configured."
 msgstr "Acest disc/partitie a fost deja configurat."
 
-msgid "1. You can\'t mount the partition \'%s\' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
+msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
 msgstr "1. Nu puteti monta partitia '%s' unde se afla fisierul de configuratie.<br>2. Sistemul NTFS pentru NTFS contine erori."
-
-msgid "Command"
-msgstr "Comanda"
-
-msgid "Send Command!"
-msgstr "Executa Comanda!"
-
-msgid "Command output:"
-msgstr "Rezultat Comanda:"
 
 msgid "Mounting..."
 msgstr "Montare..."
@@ -1211,9 +1121,6 @@ msgstr "Partajare"
 
 msgid "Shares"
 msgstr "Partajari"
-
-msgid "CIFS"
-msgstr "CIFS"
 
 msgid "The Netbios name contains invalid characters."
 msgstr "caractere invalide in numele pentru Netbios."
@@ -1305,14 +1212,8 @@ msgstr "Rasfoire"
 msgid "Edit share"
 msgstr "Editare partajari"
 
-msgid "Browseable"
-msgstr "Rasfoire"
-
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "Se stabileste daca partajarea definita este vizibila sau nu in modul Rasfoire."
-
-msgid "FTP"
-msgstr "FTP"
 
 msgid "The maximum Number of client must be a number."
 msgstr "Numar maxim de clienti invalid."
@@ -1377,7 +1278,7 @@ msgstr "Mod NAT"
 msgid "Force NAT mode."
 msgstr "Fortare mod NAT."
 
-msgid "Enable this if your FTP server is behind a NAT box that doesn\'t support applicative FTP proxying."
+msgid "Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying."
 msgstr "Activati daca server-ul dvs. FTP se gaseste in spatele unui proxy care nu suporta modul proxy pentru FTP."
 
 msgid "Passive IP address"
@@ -1398,9 +1299,6 @@ msgstr "Baner"
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "Baner afisat la conectare de catre server-ul FTP."
 
-msgid "NFS"
-msgstr "NFS"
-
 msgid "A valid network must be specified."
 msgstr "Trebuie introdusa o retea valida."
 
@@ -1419,9 +1317,6 @@ msgstr "Retea Autorizata"
 msgid "Network that is authorised to access to NFS share"
 msgstr "Retea autorizata pentru partajarea NTFS"
 
-msgid "Subnet bit count"
-msgstr "Masca Subretea"
-
 msgid "The name of the exported directories are : /mnt/sharename"
 msgstr "Numele directorului exportat: /mnt/sharename"
 
@@ -1433,9 +1328,6 @@ msgstr "Client"
 
 msgid "Local"
 msgstr "Local"
-
-msgid "RSYNCD"
-msgstr "RSYNCD"
 
 msgid "Rsync Daemon"
 msgstr "DaemonRsync Daemon"
@@ -1476,7 +1368,7 @@ msgstr "Adresa IP a server-ului RSYNC"
 msgid "RSYNC Options"
 msgstr "Optiuni RSYNC"
 
-msgid "Delete files that don\'t exist on sender."
+msgid "Delete files that don't exist on sender."
 msgstr "Stergere fisiere care nu exista la expeditor."
 
 msgid "Shares to be synchronized"
@@ -1488,7 +1380,7 @@ msgstr "Aceeasi partajare trebuie sa fie prezenta si la Remote Server."
 msgid "Synchronization Time"
 msgstr "Timp Sincronizare"
 
-msgid "You can\'t have the same mount point for source and destination!"
+msgid "You can't have the same mount point for source and destination!"
 msgstr "Nu aveti acelasi punct de montare si la sursa si la destinatie!"
 
 msgid "Rsync Local Synchronization"
@@ -1506,17 +1398,8 @@ msgstr "Destinatie"
 msgid "Destination Mount Point (backup drive)."
 msgstr "Punct Montare Destinatie (backup drive)."
 
-msgid "SSHD"
-msgstr "SSHD"
-
-msgid "This key does not appear to be valid."
-msgstr "Cheie SSH invalida."
-
 msgid "SSH Daemon"
 msgstr "Daemon SSH"
-
-msgid "Read only"
-msgstr "Doar Citire"
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Port Alternativ TCP."
@@ -1536,17 +1419,11 @@ msgstr "Cheie Privata"
 msgid "Paste a DSA PRIVATE KEY in PEM format here."
 msgstr "Introduceti o CHEIE PRIVATA RSA in formatul PEM."
 
-msgid "Unison"
-msgstr "Unison"
-
 msgid "The combination of share and working directory does not exist."
 msgstr "Combinatia de director / partajare nu exista."
 
 msgid "Unison File Synchronisation"
 msgstr "Sincronizare Sistem Fisiere Unison"
-
-msgid "Share"
-msgstr "Partajare"
 
 msgid "You may need enough space to duplicate all files being synced"
 msgstr "Aveti nevoie de spatiu pentru a duplica toate fisierele care sint sincronizate"
@@ -1557,14 +1434,8 @@ msgstr "Director de Lucru"
 msgid "Where the working files will be stored"
 msgstr "Unde sint stocate fisierele de lucru"
 
-msgid "Create"
-msgstr "Creare"
-
-msgid "Create work directory if it doesn\'t exist"
+msgid "Create work directory if it doesn't exist"
 msgstr "Creare director de lucru daca acesta nu exista"
-
-msgid "UPnP"
-msgstr "UPnP"
 
 msgid "UPnP A/V Media Server"
 msgstr "Server UPnP A/V"
@@ -1572,14 +1443,8 @@ msgstr "Server UPnP A/V"
 msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Lista continutului directorului curent a fost modificata.<br>Trebuie sa salvati modificarile pentru ca acestea sa devina active."
 
-msgid "Name"
-msgstr "Nume"
-
 msgid "UPnP friendly name."
 msgstr "Nume UPnP."
-
-msgid "Interface"
-msgstr "Interfata"
 
 msgid "Interface to listen to."
 msgstr "Interfata activa."
@@ -1608,14 +1473,8 @@ msgstr "Stergere director"
 msgid "Do you really want to delete this directory entry?"
 msgstr "Doriti sa stergeti link-ul la director?"
 
-msgid "Content"
-msgstr "Continut"
-
 msgid "Directory to be shared."
 msgstr "Directorul de partajat."
-
-msgid "AFP"
-msgstr "AFP"
 
 msgid "You must select at least one authentication method."
 msgstr "Trebuie sa selectati cel putin o metoda de autentificare."
@@ -1625,9 +1484,6 @@ msgstr "Server AFP"
 
 msgid "Server Name"
 msgstr "Nume Server"
-
-msgid "Authentication"
-msgstr "Autentificare"
 
 msgid "Enable guest access."
 msgstr "Activare acces mod guest."
@@ -1684,16 +1540,13 @@ msgid "This user already exists in the user list."
 msgstr "Acest nume de utilizator exista deja."
 
 msgid "The password contain the illegal : character"
-msgstr "Parola contine caracterul invalid ":""
+msgstr "Parola contine caracterul invalid ':'"
 
 msgid "Unique login name of user."
 msgstr "Nume unic de login utilizator."
 
 msgid "User full name."
 msgstr "Nume complet utilizator."
-
-msgid "Password"
-msgstr "Parola"
 
 msgid "User password."
 msgstr "Parola Utilizator."
@@ -1737,17 +1590,11 @@ msgstr "Descrierea Grup-ului contine caractere invalide."
 msgid "This group already exists in the group list."
 msgstr "Acest grup exista deja."
 
-msgid "Name"
-msgstr "Nume"
-
 msgid "Group name."
 msgstr "Nume de grup."
 
 msgid "Group description."
 msgstr "Descriere Grup."
-
-msgid "Active Directory"
-msgstr "Active Directory"
 
 msgid "AD server name"
 msgstr "Nume server AD"
@@ -1779,9 +1626,6 @@ msgstr "Parola Administrare"
 msgid "Password of domain administrator account, enter it here twice."
 msgstr "Parola administrator domeniu, introduceti-o de doua ori pentru verificare."
 
-msgid "Diagnostics"
-msgstr "Diagnosticare"
-
 msgid "The system is halting now. This may take one minute."
 msgstr "Sistemul se opreste> Dureaza aprox. 1 min.."
 
@@ -1793,9 +1637,6 @@ msgstr "Oprire Programata"
 
 msgid "Shutdown Time"
 msgstr "Timp de Oprire"
-
-msgid "Edit File"
-msgstr "Editare Fisier"
 
 msgid "File path"
 msgstr "Cale Fiser"
@@ -1818,9 +1659,6 @@ msgstr "Evidentiere"
 msgid "Enabled"
 msgstr "Activat"
 
-msgid "Disabled"
-msgstr "Dezactivat"
-
 msgid "Execute command"
 msgstr "Executare comanda"
 
@@ -1833,10 +1671,7 @@ msgstr "Doriti sa reporniti sistemul?"
 msgid "License"
 msgstr "Licente"
 
-msgid "Wireless"
-msgstr "Wireless"
-
-msgid "%s interface (SSID \'%s\')"
+msgid "%s interface (SSID '%s')"
 msgstr "interfata %s (SSID '%s')"
 
 msgid "Signal strength cache"
@@ -1844,9 +1679,6 @@ msgstr "Cache Tarie Semnal"
 
 msgid "MAC address"
 msgstr "Adresa MAC"
-
-msgid "IP address"
-msgstr "Adresa IP"
 
 msgid "Signal"
 msgstr "Semnal"
@@ -1869,9 +1701,6 @@ msgstr "Nu a fost gasita nicio cartela wireless (sint suportate doar cartelele w
 msgid "%s interface"
 msgstr "%s interfata"
 
-msgid "Status"
-msgstr "Stare"
-
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -1881,17 +1710,8 @@ msgstr "PPPoE"
 msgid "PPTP"
 msgstr "PPTP"
 
-msgid "MAC address"
-msgstr "Adresa MAC"
-
-msgid "IP address"
-msgstr "Adresa IP"
-
 msgid "Subnet mask"
 msgstr "Masca Subretea"
-
-msgid "Gateway"
-msgstr "Gateway"
 
 msgid "ISP DNS servers"
 msgstr "server DNS ISP"
@@ -1917,9 +1737,6 @@ msgstr "Coliziuni"
 msgid "CPU load"
 msgstr "Incarcare CPU"
 
-msgid "Interface"
-msgstr "Interfata"
-
 msgid "VLAN tag"
 msgstr "eticheta VLAN"
 
@@ -1944,9 +1761,6 @@ msgstr "Spatiu Utilizat"
 msgid "Mounts"
 msgstr "Montari"
 
-msgid "iSCSI"
-msgstr "iSCSI"
-
 msgid "MS Domain"
 msgstr "Domeniu MS"
 
@@ -1964,18 +1778,6 @@ msgstr "Spatiu Liber"
 
 msgid "FreeNAS will reboot after restoring the configuration."
 msgstr "FreeNAS va reporni dupa restaurarea configuratiei."
-
-msgid "IP address"
-msgstr "Adresa IP"
-
-msgid "MAC address"
-msgstr "Adresa MAC"
-
-msgid "Hostname"
-msgstr "Hostname"
-
-msgid "Interface"
-msgstr "Interfata"
 
 msgid "Delete ARP entry"
 msgstr "Sterge intrare ARP"
@@ -2003,9 +1805,6 @@ msgstr "AutoScalare"
 
 msgid "Follow"
 msgstr "Urmarire"
-
-msgid "Up"
-msgstr "Up"
 
 msgid "Graph shows last"
 msgstr "Graphic final"

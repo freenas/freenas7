@@ -141,9 +141,6 @@ msgstr "Hinzuf&uuml;gen"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-msgid "Update"
-msgstr "Best&auml;tigen"
-
 msgid "Create"
 msgstr "Erstellen"
 
@@ -237,9 +234,6 @@ msgstr "Software RAID"
 msgid "Service"
 msgstr "Service"
 
-msgid "Services"
-msgstr "Services"
-
 msgid "TCP port"
 msgstr "TCP Port"
 
@@ -265,7 +259,7 @@ msgid "The changes have been applied successfully."
 msgstr "Die &Auml;nderungen wurden &uuml;bernommen."
 
 msgid "The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS for changes to take effect."
-msgstr "Die &Auml;nderungen wurden gespeichert. Sie m&uuml;ssen <a href="/reboot.php">neu starten</a> damit Ihr NAS die &Auml;nderungen &uuml;bernimmt."
+msgstr "Die &Auml;nderungen wurden gespeichert. Sie m&uuml;ssen <a href=/reboot.php>neu starten</a> damit Ihr NAS die &Auml;nderungen &uuml;bernimmt."
 
 msgid "ERROR: the changes could not be applied (error code '.$ok.')."
 msgstr "ERROR: die &Auml;nderungen konnten nicht &uuml;bernommen werden (error code )."
@@ -279,7 +273,7 @@ msgstr "Eine g&uuml;ltige Subnet Adressierung muss eingegeben werden."
 msgid "The TCP port must be a valid port number."
 msgstr "Der TCP/IP Port muss eingetragen werden."
 
-msgid "Password don\'t match."
+msgid "Password don't match."
 msgstr "Passwort FALSCH."
 
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
@@ -312,9 +306,6 @@ msgstr "Firmware"
 msgid "Advanced"
 msgstr "Erweitert"
 
-msgid "Interfaces"
-msgstr "Schnittstellen"
-
 msgid "Assign"
 msgstr "Zuweisen"
 
@@ -332,9 +323,6 @@ msgstr "Dienste"
 
 msgid "CIFS"
 msgstr "CIFS"
-
-msgid "FTP"
-msgstr "FTP"
 
 msgid "NFS"
 msgstr "NFS"
@@ -368,9 +356,6 @@ msgstr "NIS"
 
 msgid "Radius"
 msgstr "Radius"
-
-msgid "System"
-msgstr "System"
 
 msgid "Process"
 msgstr "Prozesse"
@@ -420,9 +405,6 @@ msgstr "System Herunterfahren"
 msgid "Graph"
 msgstr "Graph"
 
-msgid "Hostname"
-msgstr "Host Name"
-
 msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
 msgstr "Name des NAS Host, ohne Domain<br>z.B. <em>nas</em>"
 
@@ -447,7 +429,7 @@ msgstr "Wenn Sie den Benutzernamen f&uuml;r die Web-Gui &auml;ndern m&ouml;chten
 msgid "Password"
 msgstr "Passwort"
 
-msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don\'t use the character \':\'."
+msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don't use the character ':'."
 msgstr "Wenn Sie den Benutzernamen f&uuml;r die Web-Gui &auml;ndern m&ouml;chten, tragen Sie ihn hier nochmals ein.<br>Bitte kein ':' benutzen."
 
 msgid "WebGUI protocol"
@@ -483,10 +465,10 @@ msgstr "NTP Zeit Server"
 msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
 msgstr "Benutzen Sie ein Leerzeichen um mehrere Hosts zu trennen (es ist nur ein Host n&ouml;tig). Denken Sie daran einen                   einen DNS Server einzutragen, wenn Sie hier einen Hostnamen eintragen!"
 
-msgid "The hostname may only contain the characters a-z, 0-9 and \'-\'."
+msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
 msgstr "The hostname may only contain the characters a-z, 0-9 and '-'."
 
-msgid "The domain may only contain the characters a-z, 0-9, \'-\' and \'.\'."
+msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "The domain may only contain the characters a-z, 0-9, '-' and '.'."
 
 msgid "A valid IP address must be specified for the primary/secondary DNS server."
@@ -507,7 +489,7 @@ msgstr "You must select a valid language."
 msgid "The time update interval must be either 0 (disabled) or between 6 and 1440."
 msgstr "The time update interval must be either 0 (disabled) or between 6 and 1440."
 
-msgid "A NTP Time Server name may only contain the characters a-z, 0-9, \'-\' and \'.\'."
+msgid "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 
 msgid "System information"
@@ -524,9 +506,6 @@ msgstr "Betriebssystemversion"
 
 msgid "Platform"
 msgstr "Plattform"
-
-msgid "Date"
-msgstr "Datum"
 
 msgid "Uptime"
 msgstr "Laufzeit"
@@ -556,7 +535,7 @@ msgid "Processes information"
 msgstr "Prozessinformationen"
 
 msgid "The static route configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr ""Static Route" wurde ge&auml;ndert! .<br>Sie m&uuml;ssen die &Auml;nderung der Einstellungen best&auml;tigen, damit diese &uuml;bernommen werden."
+msgstr "Die statische Route wurde ge&auml;ndert! .<br>Sie m&uuml;ssen die &Auml;nderung der Einstellungen best&auml;tigen, damit diese &uuml;bernommen werden."
 
 msgid "Interface"
 msgstr "Schnittstelle"
@@ -663,10 +642,10 @@ msgstr "Dieses Zertifikat scheint nicht g&uuml;ltig zu sein."
 msgid "This key does not appear to be valid."
 msgstr "Dieser Schl&uuml;ssel scheint nicht g&uuml;ltig zu sein ."
 
-msgid "The options on this page are intended for use by advanced users only, and there\'s <strong>NO</strong> support for them."
+msgid "The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them."
 msgstr "Die Optionen auf dieser Seite sind nur f&uuml;r erfahrene Benutzer(!), und es besteht <strong>KEIN</strong> Support."
 
-msgid "webGUI SSL certificate\/key"
+msgid "webGUI SSL certificate/key"
 msgstr "Web GUI SSL Zertifikat/Schl&uuml;ssel"
 
 msgid "Certificate"
@@ -679,7 +658,7 @@ msgid "Key"
 msgstr "Schl&uuml;ssel"
 
 msgid "Paste an RSA private key in PEM format here."
-msgstr "F&uuml;gen Sie einen "RSA private key" im PEM Format ein."
+msgstr "F&uuml;gen Sie einen 'RSA private key' im PEM Format ein."
 
 msgid "Miscellaneous"
 msgstr "Verschiedenes"
@@ -702,7 +681,7 @@ msgstr "Firmware Version &Uuml;berpr&uuml;fung abschalten"
 msgid "TCP idle timeout"
 msgstr "TCP idle Timeout"
 
-msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don\'t set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
+msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don't set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
 msgstr "Leerlauf TCP Verbindungen werden von der Statusanzeige nach Ablauf der angegebenen Sekunden entfernt, wenn nach dieser Zeit keine Pakete mehr empfangen werden. Diesen Wert nicht zu hoch ansetzen, oder die Statusanzeige wird von falsch beendeten Verbindungen &uuml;berflutet. Voreinstellung sind 2,5 Stunden."
 
 msgid "Navigation"
@@ -730,16 +709,10 @@ msgid "Tuning"
 msgstr "Tuning"
 
 msgid "Enable tuning of some kernel variable"
-msgstr "Aktiviere "Tuning" einiger "Kernel" Variablen"
+msgstr "Aktiviere Tuning einiger Kernel Variablen"
 
 msgid "ZeroConf"
 msgstr "ZeroConf"
-
-msgid "Disable ZeroConf service announce"
-msgstr "Deaktiviere "ZeroConf service announce""
-
-msgid "Interfaces"
-msgstr "Schnittstellen"
 
 msgid "Assign network ports"
 msgstr "Zuweisung Netzwerkports"
@@ -753,9 +726,6 @@ msgstr " wurde zugewiesen an "
 msgid " interfaces:"
 msgstr " Schnittstellen:"
 
-msgid "Interface"
-msgstr "Schnittstellen"
-
 msgid "Network port"
 msgstr "Netzwerkport"
 
@@ -768,41 +738,29 @@ msgstr "F&uuml;ge Schnittstelle hinzu"
 msgid "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
 msgstr "Nach dem Anw&auml;hlen von &quot;Sichern&quot;, muss FreeNAS zur &Uuml;bernahme der &Auml;nderungen neu gestartet werden. Sie k&ouml;nnten auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen: </span></p"
 
-msgid "Interfaces"
-msgstr "Schnittstellen"
-
-msgid "LAN"
-msgstr "LAN"
-
 msgid "A valid gateway must be specified."
 msgstr "Ein g&uuml;ltiges Gateway muss angegeben werden."
 
 msgid "A valid mtu size must be specified."
-msgstr "Eine g&uuml;ltige "MTU" muss angegeben werden."
-
-msgid "IP address"
-msgstr "IP-Adresse"
+msgstr "Eine g&uuml;ltige MTU muss angegeben werden."
 
 msgid "Subnet bit count"
 msgstr "Subnet bit count"
-
-msgid "Gateway"
-msgstr "Gateway"
 
 msgid "MTU"
 msgstr "MTU"
 
 msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-msgstr "Standard MTU ist 1500, 9000 f&uuml;r "jumbo frame" benutzen."
+msgstr "Standard MTU ist 1500, 9000 f&uuml;r 'jumbo frame' benutzen."
 
 msgid "Device polling"
 msgstr "Device polling"
 
 msgid "Enable device polling"
-msgstr "Aktiviere "device polling""
+msgstr "Aktiviere 'device polling'"
 
 msgid "Device polling is a technique that lets the system periodically poll network devices for "
-msgstr ""Device polling" ist eine Technik, welche das System periodisch Netzwerkger&auml;ten auf neue Daten ansprich"
+msgstr "'Device polling' ist eine Technik, welche das System periodisch Netzwerkger&auml;ten auf neue Daten ansprich"
 
 msgid "Speed"
 msgstr "Geschwindigkeit"
@@ -860,9 +818,6 @@ msgstr "Tools"
 
 msgid "iSCSI initiator"
 msgstr "iSCSI initiator"
-
-msgid "Management"
-msgstr "Management"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Der Festplattenstatus hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
@@ -930,9 +885,6 @@ msgstr "Verringert den Stromverbrauch der Festplatte auf Kosten der Geschwindigk
 msgid "Acoustic level"
 msgstr "Acoustic Level"
 
-msgid "Disabled"
-msgstr "Deaktiviert"
-
 msgid "Minimum performance, Minimum acoustic output"
 msgstr "Minimum performance, Minimum acoustic output"
 
@@ -942,7 +894,7 @@ msgstr "Medium acoustic output"
 msgid "Maximum performance, maximum acoustic output"
 msgstr "Maximum performance, maximum acoustic output"
 
-msgid "This allows you to set how loud the drive is while it\'s  operating.<em>Do not set this for CF cards.</em>"
+msgid "This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"
 msgstr "Lautst&auml;rke des Laufwerks w&auml;hrend des Betriebs einstellen.<em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
 
 msgid "Preformatted FS"
@@ -958,7 +910,7 @@ msgid "<strong>Disk initialization details:</strong>"
 msgstr "<strong>Festplatteninitialisierungseigenschaften:</strong>"
 
 msgid "\"fdisk: Geom not found\"is not an error message!\n"
-msgstr ""fdisk: Geom not found" ist keine Fehlermeldung!\n"
+msgstr "\"fdisk: Geom not found\" ist keine Fehlermeldung!\n"
 
 msgid "This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified."
 msgstr "Dieser Vorgang wird alle bestehenden Partitionen l&ouml;schen, Partition #1 anlegen und diese mit dem gew&auml;hlten Dateisystem formatieren."
@@ -969,23 +921,14 @@ msgstr "Festplatte formatieren!"
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Wollen Sie diese Festplatte wirklich formatieren? Alle Daten gehen dabei verloren!"
 
-msgid "Don\'t Erase MBR"
+msgid "Don't Erase MBR"
 msgstr "MBR (MasterBootRecord) nicht l&ouml;schen"
 
-msgid "don\'t erase the MBR (useful for some RAID controller cards)"
+msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr "Nicht den MBR l&ouml;schen (bei einigen Hardware RAID Kontrollerkarten empfehlenswert)"
-
-msgid "Tools"
-msgstr "Tools"
-
-msgid "Command"
-msgstr "Befehl"
 
 msgid "Send Command!"
 msgstr "Sende Befehl!"
-
-msgid "Use <a href="%s">RAID tools</a> for this disk!"
-msgstr "Ben&uuml;tzen Sie <a href="%s">RAID tools</a> f&uuml;r diese Festplatte!"
 
 msgid "Command output:"
 msgstr "Befehlsausgabe:"
@@ -998,9 +941,6 @@ msgstr "Unmount Festplatte/Partition"
 
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<"
 msgstr "Wenn die ausgew&auml;hlte Festplatte/Partition gemountet ist wird diese kurzzeitig ungemountet um den ausgew&auml;hlten Befehl auszuf&uuml;hren, sonst arbeiten die Befehle im nur-lesen Modus."
-
-msgid "Management"
-msgstr "Management"
 
 msgid "iSCSI"
 msgstr "iSCSI"
@@ -1025,12 +965,6 @@ msgstr "RAID-Einstellungen"
 
 msgid "Format RAID"
 msgstr "RAID formatieren"
-
-msgid "Tools"
-msgstr "Tools"
-
-msgid "Information"
-msgstr "Informationen"
 
 msgid "Volume Name"
 msgstr "Volume Name"
@@ -1062,9 +996,6 @@ msgstr "RAID"
 msgid "The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Die RAID-Einstellung wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden."
 
-msgid "Type"
-msgstr "Type"
-
 msgid "Edit RAID"
 msgstr "Bearbeite RAID"
 
@@ -1084,7 +1015,7 @@ msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Der Ger&auml;tename darf nur folgende Zeichen enthalten: a-z, A-Z, 0-9."
 
 msgid "This device already exists in the raid volume list."
-msgstr "Dieses Ger&auml;t ist bereits in der "raid volume list" enthalten."
+msgstr "Dieses Ger&auml;t ist bereits in der 'RAID Volume' Liste enthalten."
 
 msgid "There must be a minimum of 2 disks in a RAID 0 volume."
 msgstr "Mindestens zwei Festplatten sind f&uuml;r ein RAID 0 notwendig."
@@ -1105,7 +1036,7 @@ msgid "Balance algorithm"
 msgstr "Balance Algorithmus"
 
 msgid "Select your read balance algorithm."
-msgstr "Auswahl des "Read Balance Algorithmus"."
+msgstr "Auswahl des 'Read Balance Algorithmus'."
 
 msgid "striping"
 msgstr "striping"
@@ -1137,29 +1068,14 @@ msgstr "Formatiere UFS Festplatte!"
 msgid "Object name"
 msgstr "Objektname"
 
-msgid "Command"
-msgstr "Befehl"
-
 msgid "command output:"
 msgstr "GVINUM command output:"
-
-msgid "Send Command!"
-msgstr "Sende Befehl!"
 
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly)."
 msgstr "1. Diese Massnahmen nur zur Fehlerbehebung benutzen!<br>2. Es ist nicht zum Start eines RAIDvolume notwendig (startet automatisch)."
 
-msgid "Mount Point"
-msgstr "Mount Point"
-
 msgid "Share Name"
 msgstr "Freigaben Name"
-
-msgid "Manage"
-msgstr "Verwalten"
-
-msgid "Tools"
-msgstr "Tools"
 
 msgid "The mount point list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Die Liste der Einbindungen (Mount Points) wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden."
@@ -1176,23 +1092,14 @@ msgstr "MountPoint hinzuf&uuml;gen"
 msgid "The description name contain invalid characters."
 msgstr "Die Beschreibung enth&auml;lt ung&uuml;ltige Zeichen."
 
-msgid "Can\'t mount the system partition 1, the DATA partition is the 2."
+msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Die Systempartition (1. Partition) kann nicht eingebunden werden, die notwendige Datenpartition ist die 2. Partition auf dem Datentr&auml;ger."
 
 msgid "Duplicate Share Name."
 msgstr "Freigabenname duplizieren."
 
-msgid "1. You can\'t mount the partition \'%s\' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
+msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
 msgstr "1. Die Partition '%s' kann nicht eingebunden werden - sie enth&auml;lt die Konfigurationsdatei.<br>2. Die NTFS-implemtentierung von FreeBSD hat viele Fehler."
-
-msgid "Command"
-msgstr "Befehl"
-
-msgid "Send Command!"
-msgstr "Sende Befehl!"
-
-msgid "Command output:"
-msgstr "Befehlsausgabe:"
 
 msgid "Mounting..."
 msgstr "Mounting..."
@@ -1209,9 +1116,6 @@ msgstr "Freigabe"
 msgid "Shares"
 msgstr "Freigaben"
 
-msgid "CIFS"
-msgstr "CIFS"
-
 msgid "The Netbios name contains invalid characters."
 msgstr "Der Netbios-Name enth&auml;lt ung&uuml;ltige Zeichen."
 
@@ -1222,10 +1126,10 @@ msgid "The WINS server must be an IP address."
 msgstr "Der WINS-Server muss eine IP address haben."
 
 msgid "The SND Buffer value must be a number."
-msgstr "Der "SND Buffer"-Wert muss eine Nummer sein."
+msgstr "Der SND Puffer-Wert muss eine Nummer sein."
 
 msgid "The RCV Buffer value must be a number."
-msgstr "Der "RCV Buffer"-Wert muss eine Nummer sein."
+msgstr "Der RCV Puffer-Wert muss eine Nummer sein."
 
 msgid "CIFS share"
 msgstr "Freigabe"
@@ -1258,7 +1162,7 @@ msgid "Local Master Browser"
 msgstr "Local Master Browser"
 
 msgid "Allows FreeNAS to try and become a local master browser."
-msgstr "Versucht FreeNAS als "Local Master Browser" einzurichten."
+msgstr "Versucht FreeNAS als 'Local Master Browser' einzurichten."
 
 msgid "Time server"
 msgstr "Zeitserver"
@@ -1285,13 +1189,13 @@ msgid "Send Buffer Size"
 msgstr "Send Buffer Size"
 
 msgid "Size of send buffer (16384 by default)."
-msgstr "Gr&ouml;sse des "Send Buffer" (16384 Voreinstellung)."
+msgstr "Gr&ouml;sse des 'Send' Puffer (16384 Voreinstellung)."
 
 msgid "Receive Buffer Size"
 msgstr "Receive Buffer Size"
 
 msgid "Size of receive buffer (16384 by default)."
-msgstr "Gr&ouml;sse des "Receive Buffer" (16384 Voreinstellung)."
+msgstr "Gr&ouml;sse des 'Receive' Puffer (16384 Voreinstellung)."
 
 msgid "The shares has been modified.<br>You must apply the changes in order for them to take effect."
 msgstr "Die Freigaben wurden ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
@@ -1301,9 +1205,6 @@ msgstr "Sichtbar"
 
 msgid "Edit share"
 msgstr "Bearbeite Freigabe"
-
-msgid "Browseable"
-msgstr "Sichtbar"
 
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "Dieser Parameter dient dazu, eine Freigabe in der Liste der verf&uuml;gbaren Freigaben im Net View oder in der Browser List sichtbar zu machen."
@@ -1321,10 +1222,10 @@ msgid "The maximum idle time be a number."
 msgstr "Die maximale Leerlaufzeit muss eine Zahl sein."
 
 msgid "The pasv address must be a public IP address."
-msgstr "Die "pasv address" muss eine  "public IP address" sein."
+msgstr "Die 'pasv address' muss eine 'Public IP Address' sein."
 
 msgid "You must select at minium anonymous or/and local user authentication."
-msgstr "Mindestens einen Nutzer "anonymous" und/oder einen lokalen Benutzer angeben."
+msgstr "Mindestens einen Nutzer 'anonymous' und/oder einen lokalen Benutzer angeben."
 
 msgid "FTP Server"
 msgstr "FTP Server"
@@ -1374,8 +1275,8 @@ msgstr "NAT Mode"
 msgid "Force NAT mode."
 msgstr "Erzwinge NAT Mode"
 
-msgid "Enable this if your FTP server is behind a NAT box that doesn\'t support applicative FTP proxying."
-msgstr "Einschalten, falls der FTP Server hinter einer NAT (Network Address Translation) betrieben wird, die kein "applicative FTP proxying" unterst&uuml;tzt."
+msgid "Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying."
+msgstr "Einschalten, falls der FTP Server hinter einer NAT (Network Address Translation) betrieben wird, die kein 'applicative FTP proxying' unterst&uuml;tzt."
 
 msgid "Passive IP address"
 msgstr "Passive IP-Adresse"
@@ -1384,19 +1285,16 @@ msgid "Use this option to override the IP address that FTP daemon will advertise
 msgstr "Diese Einstellung benutzen, um die IP-Adresse zu ersetzen, die der FTP Dienst normalerweise auf die PASV-Anfrage senden wird."
 
 msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
-msgstr "Der kleinstm&ouml;gliche zuweisbare Port, der "PASV style" Datenverbindungen erm&ouml;glicht (0 = Verwende jeden Port)."
+msgstr "Der kleinstm&ouml;gliche zuweisbare Port, der 'PASV style' Datenverbindungen erm&ouml;glicht (0 = Verwende jeden Port)."
 
 msgid "The maximum port to allocate for PASV style data connections (0 = use any port)."
-msgstr "Der h&ouml;chstm&ouml;gliche zuweisbare Port, der "PASV style" Datenverbindungen erm&ouml;glicht (0 = Verwende jeden Port)."
+msgstr "Der h&ouml;chstm&ouml;gliche zuweisbare Port, der 'PASV style' Datenverbindungen erm&ouml;glicht (0 = Verwende jeden Port)."
 
 msgid "Banner"
 msgstr "Banner"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "Grussbotschaft - Angezeigt bei der ersten Verbindung via FTP."
-
-msgid "NFS"
-msgstr "NFS"
 
 msgid "A valid network must be specified."
 msgstr "Ein g&uuml;ltiges Netzwerk muss angegeben werden."
@@ -1416,9 +1314,6 @@ msgstr "Zugelassenes Netzwerk"
 msgid "Network that is authorised to access to NFS share"
 msgstr "Zugriffsberechtigtes Netzwerk auf die NFS-freigabe"
 
-msgid "Subnet bit count"
-msgstr "Subnet bit count"
-
 msgid "The name of the exported directories are : /mnt/sharename"
 msgstr "Die Namenskonvention f&uuml;r exportierte Verzeichnisse: /mnt/Freigabenname"
 
@@ -1430,9 +1325,6 @@ msgstr "Client"
 
 msgid "Local"
 msgstr "Local"
-
-msgid "RSYNCD"
-msgstr "RSYNCD"
 
 msgid "Rsync Daemon"
 msgstr "Rsync Daemon"
@@ -1459,7 +1351,7 @@ msgid "Message of the day."
 msgstr "Nachricht des Tages."
 
 msgid "You must configure mount point first."
-msgstr "Es muss zuerst ein "Mount Point" konfiguriert werden."
+msgstr "Es muss zuerst ein 'Mount Point' konfiguriert werden."
 
 msgid "Rsync Client Synchronization"
 msgstr "Rsync Client Synchronisation"
@@ -1473,7 +1365,7 @@ msgstr "IP-Adresse des remote RSYNC Servers"
 msgid "RSYNC Options"
 msgstr "RSYNC Optionen"
 
-msgid "Delete files that don\'t exist on sender."
+msgid "Delete files that don't exist on sender."
 msgstr "Daten l&ouml;schen, die beim Sender nicht existieren."
 
 msgid "Shares to be synchronized"
@@ -1485,7 +1377,7 @@ msgstr "Die gleiche lokale Freigabe muss auch beim Remote Server angegeben sein.
 msgid "Synchronization Time"
 msgstr "Synchronisationzeit"
 
-msgid "You can\'t have the same mount point for source and destination!"
+msgid "You can't have the same mount point for source and destination!"
 msgstr "Sie k&ouml;nnen nicht den selben Mount Point f&uuml;r Quelle und Ziel verwenden!"
 
 msgid "Rsync Local Synchronization"
@@ -1503,17 +1395,8 @@ msgstr "Ziel"
 msgid "Destination Mount Point (backup drive)."
 msgstr "Ziel Mount Point (Backup Laufwerk)."
 
-msgid "SSHD"
-msgstr "SSHD"
-
-msgid "This key does not appear to be valid."
-msgstr "Dieser Schl&uuml;ssel scheint nicht g&uuml;ltig zu sein."
-
 msgid "SSH Daemon"
 msgstr "SSH Daemon"
-
-msgid "Read only"
-msgstr "Nur-lesen"
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Alternativer TCP Port."
@@ -1531,19 +1414,13 @@ msgid "Private Key"
 msgstr "Private Key"
 
 msgid "Paste a DSA PRIVATE KEY in PEM format here."
-msgstr "F&uuml;gen Sie einen "RSA private key" im PEM Format hier ein."
-
-msgid "Unison"
-msgstr "Unison"
+msgstr "F&uuml;gen Sie einen 'RSA private key' im PEM Format hier ein."
 
 msgid "The combination of share and working directory does not exist."
 msgstr "The combination of share and working directory does not exist."
 
 msgid "Unison File Synchronisation"
 msgstr "Unison File Synchronisation"
-
-msgid "Share"
-msgstr "Share"
 
 msgid "You may need enough space to duplicate all files being synced"
 msgstr "You may need enough space to duplicate all files being synced"
@@ -1554,14 +1431,8 @@ msgstr "Working Directory"
 msgid "Where the working files will be stored"
 msgstr "Where the working files will be stored"
 
-msgid "Create"
-msgstr "Create"
-
-msgid "Create work directory if it doesn\'t exist"
+msgid "Create work directory if it doesn't exist"
 msgstr "Create work directory if it doesn't exist"
-
-msgid "UPnP"
-msgstr "UPnP"
 
 msgid "UPnP A/V Media Server"
 msgstr "UPnP A/V Media Server"
@@ -1569,14 +1440,8 @@ msgstr "UPnP A/V Media Server"
 msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
 
-msgid "Name"
-msgstr "Name"
-
 msgid "UPnP friendly name."
 msgstr "UPnP friendly name."
-
-msgid "Interface"
-msgstr "Interface"
 
 msgid "Interface to listen to."
 msgstr "Interface to listen to."
@@ -1605,14 +1470,8 @@ msgstr "Delete directory"
 msgid "Do you really want to delete this directory entry?"
 msgstr "Do you really want to delete this directory entry?"
 
-msgid "Content"
-msgstr "Content"
-
 msgid "Directory to be shared."
 msgstr "Directory to be shared."
-
-msgid "AFP"
-msgstr "AFP"
 
 msgid "You must select at least one authentication method."
 msgstr "Sie m&uuml;ssen mind. eine Authentifizierungsmethode ausw&auml;hlen."
@@ -1623,17 +1482,11 @@ msgstr "AFP Server"
 msgid "Server Name"
 msgstr "Server Name"
 
-msgid "Authentication"
-msgstr "Authentifizierung"
-
 msgid "Enable guest access."
 msgstr "Aktiviere Gast-Zugriff."
 
 msgid "Enable local user authentication."
 msgstr "Aktiviere Lokaler Benutzer-zugriff."
-
-msgid "Access"
-msgstr "Zugriff"
 
 msgid "User"
 msgstr "Benutzer"
@@ -1686,9 +1539,6 @@ msgstr "Eindeutiger Loginname des Benutzers."
 msgid "User full name."
 msgstr "Vollst&auml;ndiger Name."
 
-msgid "Password"
-msgstr "Passwort"
-
 msgid "User password."
 msgstr "Benutzerpasswort."
 
@@ -1705,7 +1555,7 @@ msgid "Full Shell"
 msgstr "Komplettes Terminal"
 
 msgid "Give full shell to user"
-msgstr "Vollst&auml;ndigen Zugriff zur "Shell" f&uuml;r Benutzer erlauben"
+msgstr "Vollst&auml;ndigen Zugriff zur 'Shell' f&uuml;r Benutzer erlauben"
 
 msgid "The group list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Die Gruppenliste wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
@@ -1731,17 +1581,11 @@ msgstr "Die Gruppenbeschreibung enth&auml;lt ung&uuml;ltige Zeichen."
 msgid "This group already exists in the group list."
 msgstr "Diese Gruppe gibt es bereits."
 
-msgid "Name"
-msgstr "Name"
-
 msgid "Group name."
 msgstr "Gruppenname."
 
 msgid "Group description."
 msgstr "Gruppenbeschreibung."
-
-msgid "Active Directory"
-msgstr "Active Directory"
 
 msgid "AD server name"
 msgstr "AD Servername"
@@ -1765,16 +1609,13 @@ msgid "Administrator name"
 msgstr "Administrator Name"
 
 msgid "Username of a domain administrator account."
-msgstr "Benutzername eines "Domain Administrator Account"."
+msgstr "Benutzername eines 'Domain Administrator Account'."
 
 msgid "Administration password"
 msgstr "Administration Passwort"
 
 msgid "Password of domain administrator account, enter it here twice."
-msgstr "Passwort eines "Domain Administrator Account", hier zweifach eingeben."
-
-msgid "Diagnostics"
-msgstr "Diagnose"
+msgstr "Passwort eines 'Domain Administrator Account', hier zweifach eingeben."
 
 msgid "The system is halting now. This may take one minute."
 msgstr "Das System wird heruntergefahren, dies kann kurz dauern."
@@ -1787,9 +1628,6 @@ msgstr "Geplanter Shutdown"
 
 msgid "Shutdown Time"
 msgstr "Shutdownzeit"
-
-msgid "Edit File"
-msgstr "Bearbeite Datei"
 
 msgid "File path"
 msgstr "Dateipfad"
@@ -1812,9 +1650,6 @@ msgstr "Hervorheben"
 msgid "Enabled"
 msgstr "Aktiviert"
 
-msgid "Disabled"
-msgstr "Deaktiviert"
-
 msgid "Execute command"
 msgstr "Befehl ausf&uuml;hren"
 
@@ -1827,10 +1662,7 @@ msgstr "Wollen Sie das System wirklich neu starten?"
 msgid "License"
 msgstr "Lizenz"
 
-msgid "Wireless"
-msgstr "Drahtlos"
-
-msgid "%s interface (SSID \'%s\')"
+msgid "%s interface (SSID '%s')"
 msgstr "%s Schnittstelle (SSID '%s')"
 
 msgid "Signal strength cache"
@@ -1863,9 +1695,6 @@ msgstr "No supported wireless interfaces were found for status display (only car
 msgid "%s interface"
 msgstr "%s Schnittstelle"
 
-msgid "Status"
-msgstr "Status"
-
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -1875,17 +1704,8 @@ msgstr "PPPoE"
 msgid "PPTP"
 msgstr "PPTP"
 
-msgid "MAC address"
-msgstr "MAC Addresse"
-
-msgid "IP address"
-msgstr "IP Addresse"
-
 msgid "Subnet mask"
 msgstr "Subnetz Maske"
-
-msgid "Gateway"
-msgstr "Gateway"
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS Server"
@@ -1911,9 +1731,6 @@ msgstr "Kollisionen"
 msgid "CPU load"
 msgstr "CPU Auslastung"
 
-msgid "Interface"
-msgstr "Schnittstelle"
-
 msgid "VLAN tag"
 msgstr "VLAN tag"
 
@@ -1938,9 +1755,6 @@ msgstr "Space Used"
 msgid "Mounts"
 msgstr "Mounts"
 
-msgid "iSCSI"
-msgstr "iSCSI"
-
 msgid "MS Domain"
 msgstr "MS Domain"
 
@@ -1958,18 +1772,6 @@ msgstr "Freier Speicherplatz"
 
 msgid "FreeNAS will reboot after restoring the configuration."
 msgstr "FreeNAS wird nach dem wiederherstellen der Konfiguration neu gestartet."
-
-msgid "IP address"
-msgstr "IP Addresse"
-
-msgid "MAC address"
-msgstr "MAC Addresse"
-
-msgid "Hostname"
-msgstr "Hostname"
-
-msgid "Interface"
-msgstr "Schnittstelle"
 
 msgid "Delete ARP entry"
 msgstr "L&ouml;sche ARP Eintrag"
@@ -1997,9 +1799,6 @@ msgstr "Autom. Skalierung"
 
 msgid "Follow"
 msgstr "Follow"
-
-msgid "Up"
-msgstr "Up"
 
 msgid "Graph shows last"
 msgstr "Graph zeigt die letzten"
@@ -2030,9 +1829,6 @@ msgstr "Host hinzuf&uuml;gen"
 
 msgid "The host name contain invalid characters."
 msgstr "Der Hostname enth&auml;lt ung&uuml;ltige Zeichen."
-
-msgid "A valid IP address must be specified."
-msgstr "Eine g&uuml;ltige IP Adresse muss angegeben werden."
 
 msgid "An host with this name already exists."
 msgstr "Ein Host mit diesem Namen existiert bereits."

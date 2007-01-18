@@ -141,9 +141,6 @@ msgstr "增加"
 msgid "Cancel"
 msgstr "取消"
 
-msgid "Update"
-msgstr "更新"
-
 msgid "Create"
 msgstr "建立"
 
@@ -237,9 +234,6 @@ msgstr "軟體RAID"
 msgid "Service"
 msgstr "服務"
 
-msgid "Services"
-msgstr "服務"
-
 msgid "TCP port"
 msgstr "TCP port"
 
@@ -279,7 +273,7 @@ msgstr "請輸入一個有效的network bit count。"
 msgid "The TCP port must be a valid port number."
 msgstr "請輸入一個有效的連接埠。"
 
-msgid "Password don\'t match."
+msgid "Password don't match."
 msgstr "密碼不相同"
 
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
@@ -312,17 +306,11 @@ msgstr "韌體"
 msgid "Advanced"
 msgstr "進階"
 
-msgid "Interfaces"
-msgstr "網路介面"
-
 msgid "Assign"
 msgstr "指派"
 
 msgid "LAN"
 msgstr "區域網路"
-
-msgid "Management"
-msgstr "管理"
 
 msgid "Mount Point"
 msgstr "掛載點"
@@ -348,9 +336,6 @@ msgstr "SSHD"
 msgid "Unison"
 msgstr "Unison"
 
-msgid "UPnP"
-msgstr "UPnP"
-
 msgid "AFP"
 msgstr "AFP"
 
@@ -368,9 +353,6 @@ msgstr "NIS"
 
 msgid "Radius"
 msgstr "Radius"
-
-msgid "System"
-msgstr "系統"
 
 msgid "Process"
 msgstr "處理程序"
@@ -420,9 +402,6 @@ msgstr "關機"
 msgid "Graph"
 msgstr "圖表"
 
-msgid "Hostname"
-msgstr "主機名稱"
-
 msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
 msgstr "NAS的主機名稱，不包含網域<br>例如: <em>nas"
 
@@ -444,10 +423,7 @@ msgstr "帳號"
 msgid "If you want to change the username for accessing the webGUI, enter it here."
 msgstr "變更網頁介面的帳號。"
 
-msgid "Password"
-msgstr "密碼"
-
-msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don\'t use the character \':\'."
+msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don't use the character ':'."
 msgstr "變更網頁介面的密碼（兩次）<br>不要使用以下的字元 ':'。"
 
 msgid "WebGUI protocol"
@@ -483,10 +459,10 @@ msgstr "NTP時間伺服器"
 msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
 msgstr "使用空白字元來分隔多個主機位置(一個空白即可)，這個服務需要先設定DNS伺服器"
 
-msgid "The hostname may only contain the characters a-z, 0-9 and \'-\'."
+msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
 msgstr "Hostname只能包含以下字元 a-z, 0-9, '-'。"
 
-msgid "The domain may only contain the characters a-z, 0-9, \'-\' and \'.\'."
+msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "網域只能包含以下字元 a-z, 0-9, '-', '.'。"
 
 msgid "A valid IP address must be specified for the primary/secondary DNS server."
@@ -507,7 +483,7 @@ msgstr "必須選擇一個有效的語言。"
 msgid "The time update interval must be either 0 (disabled) or between 6 and 1440."
 msgstr "將時間同步間隔設定只接受6-1440的範園，或者輸入0將其關閉。"
 
-msgid "A NTP Time Server name may only contain the characters a-z, 0-9, \'-\' and \'.\'."
+msgid "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "NTP時間伺服器只能包含以下字元a-z, 0-9, '-', '.'。"
 
 msgid "System information"
@@ -524,9 +500,6 @@ msgstr "作業系統版本"
 
 msgid "Platform"
 msgstr "硬體平台"
-
-msgid "Date"
-msgstr "日期"
 
 msgid "Uptime"
 msgstr "啟動時間"
@@ -663,10 +636,10 @@ msgstr "這個驗證似乎是無效的。"
 msgid "This key does not appear to be valid."
 msgstr "這個金鑰似乎是無效的。"
 
-msgid "The options on this page are intended for use by advanced users only, and there\'s <strong>NO</strong> support for them."
+msgid "The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them."
 msgstr "本頁的選項是設計給進階的使用者使用的，同時也<strong>不提供</strong>有本頁選項的相關技術支援"
 
-msgid "webGUI SSL certificate\/key"
+msgid "webGUI SSL certificate/key"
 msgstr "網頁管理介面SSL驗證/金鑰"
 
 msgid "Certificate"
@@ -702,7 +675,7 @@ msgstr "關閉韌體版本檢查功能"
 msgid "TCP idle timeout"
 msgstr "TCP閒置切斷時間"
 
-msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don\'t set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
+msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don't set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
 msgstr "閒置太久的TCP連線將會系統切斷。不要把這個數值設定的太高，以免系統內同時存在太多的連線(例:不正常斷線的程式)。預設的數值是2.5小時。"
 
 msgid "Navigation"
@@ -738,9 +711,6 @@ msgstr "ZeroConf"
 msgid "Disable ZeroConf service announce"
 msgstr "關閉ZeroConf的服務宣告"
 
-msgid "Interfaces"
-msgstr "網路介面"
-
 msgid "Assign network ports"
 msgstr "指派通訊埠"
 
@@ -752,9 +722,6 @@ msgstr " 被指派為 "
 
 msgid " interfaces:"
 msgstr " 介面:"
-
-msgid "Interface"
-msgstr "介面"
 
 msgid "Network port"
 msgstr "網路卡"
@@ -768,12 +735,6 @@ msgstr "新增介面"
 msgid "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
 msgstr "當按下&quot;儲存&quot;之後，請繼續執行下列的步驟，才能再次連線至FreeNAS：</span></p"
 
-msgid "Interfaces"
-msgstr "介面"
-
-msgid "LAN"
-msgstr "區域網路"
-
 msgid "A valid gateway must be specified."
 msgstr "請輸入一個有效的閘道。"
 
@@ -785,9 +746,6 @@ msgstr "IP位置"
 
 msgid "Subnet bit count"
 msgstr "網段遮罩位元數"
-
-msgid "Gateway"
-msgstr "閘道"
 
 msgid "MTU"
 msgstr "MTU"
@@ -830,9 +788,6 @@ msgstr "動態DHCP設定"
 
 msgid "General configuration"
 msgstr "一般設定"
-
-msgid "Hostname"
-msgstr "主機名稱"
 
 msgid "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
 msgstr "這個數值將會成為DHCP伺服器發送IP時用來識別機器的主機名稱。"
@@ -909,7 +864,7 @@ msgstr "用來控制磁碟的電源消耗，相反的會失去一些效能。<em
 msgid "Acoustic level"
 msgstr "噪音控制"
 
-msgid "This allows you to set how loud the drive is while it\'s  operating.<em>Do not set this for CF cards.</em>"
+msgid "This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"
 msgstr "用來控制磁碟的運轉噪音程度。<em>CF卡請勿選用。</em>"
 
 msgid "Preformatted FS"
@@ -936,23 +891,14 @@ msgstr "格式化磁碟"
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "確定真的要格式化這個磁碟？所有內部的資料都會消失！"
 
-msgid "Don\'t Erase MBR"
+msgid "Don't Erase MBR"
 msgstr "不要刪除MBR"
 
-msgid "don\'t erase the MBR (useful for some RAID controller cards)"
+msgid "don't erase the MBR (useful for some RAID controller cards)"
 msgstr "保留原本的MBR (某些RAID控制卡需要)"
-
-msgid "Tools"
-msgstr "工具"
-
-msgid "Command"
-msgstr "指令"
 
 msgid "Send Command!"
 msgstr "傳送指令！"
-
-msgid "Use <a href="%s">RAID tools</a> for this disk!"
-msgstr "在這個磁碟使用<a href="%s">RAID工具</a>！"
 
 msgid "Command output:"
 msgstr "指令輸出："
@@ -965,9 +911,6 @@ msgstr "卸載 磁碟/磁區"
 
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<"
 msgstr "如果選擇的磁碟/磁區正在掛載中，系統會將磁碟暫時卸載以進行指令，否則指令只能在唯讀模式下運作。"
-
-msgid "Management"
-msgstr "管理"
 
 msgid "iSCSI"
 msgstr "iSCSI"
@@ -992,12 +935,6 @@ msgstr "管理RAID"
 
 msgid "Format RAID"
 msgstr "格式化RAID"
-
-msgid "Tools"
-msgstr "工具"
-
-msgid "Information"
-msgstr "資訊"
 
 msgid "Volume Name"
 msgstr "Volume名稱"
@@ -1028,9 +965,6 @@ msgstr "RAID"
 
 msgid "The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Raid組態已經變更。<br>套用變更之後才會生效。"
-
-msgid "Type"
-msgstr "類型"
 
 msgid "Edit RAID"
 msgstr "編輯RAID"
@@ -1107,29 +1041,11 @@ msgstr "格式化UFS磁碟！"
 msgid "Object name"
 msgstr "物件名稱"
 
-msgid "Command"
-msgstr "指令"
-
-msgid "command output:"
-msgstr "GVINUM指令結果:"
-
-msgid "Send Command!"
-msgstr "傳送指令！"
-
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly)."
 msgstr "1. 這些特殊的命令只用來除錯而已！<br>2. RAID磁碟在建立之後會自動的啟動，不需要利用activate工具再啟動一次。"
 
-msgid "Mount Point"
-msgstr "掛載點"
-
 msgid "Share Name"
 msgstr "分享名稱"
-
-msgid "Manage"
-msgstr "管理"
-
-msgid "Tools"
-msgstr "工具"
 
 msgid "The mount point list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "掛載點已經變更。<br>套用之後才會生效。"
@@ -1146,7 +1062,7 @@ msgstr "新增掛載點"
 msgid "The description name contain invalid characters."
 msgstr "描述文字包含了無效的字元。"
 
-msgid "Can\'t mount the system partition 1, the DATA partition is the 2."
+msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "不能掛載系統區(第1區)，資料分割區為第2區。"
 
 msgid "Duplicate Share Name."
@@ -1155,17 +1071,8 @@ msgstr "輸入了存在的分享名稱。"
 msgid "This disk/partition is allready configured."
 msgstr "這個磁碟/磁區之前已經設定過了。"
 
-msgid "1. You can\'t mount the partition \'%s\' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
+msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
 msgstr "1. 你不可以掛載含有設定檔的磁區'%s'。<br>2. FreeBSD對NTFS格式的支援尚不完全（有BUG!）。"
-
-msgid "Command"
-msgstr "指令"
-
-msgid "Send Command!"
-msgstr "傳送指令！"
-
-msgid "Command output:"
-msgstr "指令結果："
 
 msgid "Mounting..."
 msgstr "掛載中..."
@@ -1181,9 +1088,6 @@ msgstr "分享"
 
 msgid "Shares"
 msgstr "分享"
-
-msgid "CIFS"
-msgstr "CIFS"
 
 msgid "The Netbios name contains invalid characters."
 msgstr "Netbios名稱輸入了無效的字元。"
@@ -1275,14 +1179,8 @@ msgstr "提供瀏覽"
 msgid "Edit share"
 msgstr "編輯"
 
-msgid "Browseable"
-msgstr "提供瀏覽"
-
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "控制這個分享資料夾能不能直接的被瀏覽器看到。"
-
-msgid "FTP"
-msgstr "FTP"
 
 msgid "The maximum Number of client must be a number."
 msgstr "連線數目上線必須是一個數字。"
@@ -1347,7 +1245,7 @@ msgstr "NAT模式"
 msgid "Force NAT mode."
 msgstr "強迫NAT模式。"
 
-msgid "Enable this if your FTP server is behind a NAT box that doesn\'t support applicative FTP proxying."
+msgid "Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying."
 msgstr "如果你的FTP伺服器是架設在NAT的環境之下，請開啟這個功能。"
 
 msgid "Passive IP address"
@@ -1368,9 +1266,6 @@ msgstr "歡迎文字"
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "當使用者剛連接上FTP所顯示的訊息。"
 
-msgid "NFS"
-msgstr "NFS"
-
 msgid "A valid network must be specified."
 msgstr "必須指定一個有效的網域。"
 
@@ -1389,9 +1284,6 @@ msgstr "認可網路"
 msgid "Network that is authorised to access to NFS share"
 msgstr "設定可以使用NFS分享的網路區段"
 
-msgid "Subnet bit count"
-msgstr "網段遮罩位元數"
-
 msgid "The name of the exported directories are : /mnt/sharename"
 msgstr "輸出的目錄名稱是：/mnt/sharename"
 
@@ -1403,9 +1295,6 @@ msgstr "客戶端"
 
 msgid "Local"
 msgstr "本地端"
-
-msgid "RSYNCD"
-msgstr "RSYNCD"
 
 msgid "Rsync Daemon"
 msgstr "Rsync伺服器"
@@ -1446,7 +1335,7 @@ msgstr "遠端的RSYNC伺服器IP位置"
 msgid "RSYNC Options"
 msgstr "RSYNC選項"
 
-msgid "Delete files that don\'t exist on sender."
+msgid "Delete files that don't exist on sender."
 msgstr "刪除本地端已經不存在的檔案。"
 
 msgid "Shares to be synchronized"
@@ -1458,7 +1347,7 @@ msgstr "遠端與本地端的分享目錄必須相同。"
 msgid "Synchronization Time"
 msgstr "同步啟動時間"
 
-msgid "You can\'t have the same mount point for source and destination!"
+msgid "You can't have the same mount point for source and destination!"
 msgstr "來源與目的不能相同！"
 
 msgid "Rsync Local Synchronization"
@@ -1476,17 +1365,8 @@ msgstr "目地位置"
 msgid "Destination Mount Point (backup drive)."
 msgstr "選擇目的位置的掛載點(備援磁碟機)。"
 
-msgid "SSHD"
-msgstr "SSHD"
-
-msgid "This key does not appear to be valid."
-msgstr "這個鑰匙似乎是無效的。"
-
 msgid "SSH Daemon"
 msgstr "SSH伺服器"
-
-msgid "Read only"
-msgstr "唯讀"
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "替代的TCP連接埠。"
@@ -1506,17 +1386,11 @@ msgstr "私鑰"
 msgid "Paste a DSA PRIVATE KEY in PEM format here."
 msgstr "在此貼上PEM格式的私鑰。"
 
-msgid "Unison"
-msgstr "Unison"
-
 msgid "The combination of share and working directory does not exist."
 msgstr "設定值內的分享/工作目錄不存在。"
 
 msgid "Unison File Synchronisation"
 msgstr "Unison 檔案同步機制"
-
-msgid "Share"
-msgstr "分享"
 
 msgid "You may need enough space to duplicate all files being synced"
 msgstr "確定你有足夠的空間來複製所有將要同步的檔案"
@@ -1527,10 +1401,7 @@ msgstr "工作目錄"
 msgid "Where the working files will be stored"
 msgstr "選擇工作檔案要儲存的位置"
 
-msgid "Create"
-msgstr "建立"
-
-msgid "Create work directory if it doesn\'t exist"
+msgid "Create work directory if it doesn't exist"
 msgstr "如果你還沒有工作目錄，請建立一個"
 
 msgid "UPnP"
@@ -1539,14 +1410,8 @@ msgstr "UPnP"
 msgid "UPnP A/V Media Server"
 msgstr "UPnP影音多媒體伺服器"
 
-msgid "Name"
-msgstr "名稱"
-
 msgid "UPnP friendly name."
 msgstr "UPnP friendly name."
-
-msgid "Interface"
-msgstr "網路介面"
 
 msgid "Interface to listen to."
 msgstr "要使用的網路介面"
@@ -1557,9 +1422,6 @@ msgstr "內容"
 msgid "Directories to be shared."
 msgstr "分享的資料夾(space or CSV list)."
 
-msgid "AFP"
-msgstr "AFP"
-
 msgid "You must select at least one authentication method."
 msgstr "請至少選擇一種認證方式。"
 
@@ -1569,17 +1431,11 @@ msgstr "AFP伺服器"
 msgid "Server Name"
 msgstr "伺服器名稱"
 
-msgid "Authentication"
-msgstr "認證"
-
 msgid "Enable guest access."
 msgstr "Guest可以登入。"
 
 msgid "Enable local user authentication."
 msgstr "啟用本地端使用者可以登入。"
-
-msgid "Access"
-msgstr "權限控制"
 
 msgid "User"
 msgstr "使用者"
@@ -1680,17 +1536,11 @@ msgstr "群組描述內有無效的字元。"
 msgid "This group already exists in the group list."
 msgstr "這個群組已經建立過了。"
 
-msgid "Name"
-msgstr "名稱"
-
 msgid "Group name."
 msgstr "群組名稱。"
 
 msgid "Group description."
 msgstr "群組描述文字。"
-
-msgid "Active Directory"
-msgstr "Active Directory"
 
 msgid "AD server name"
 msgstr "AD伺服器名稱"
@@ -1722,9 +1572,6 @@ msgstr "管理者密碼"
 msgid "Password of domain administrator account, enter it here twice."
 msgstr "請在此設定管理者的密碼，並且輸入兩次以確認無誤。"
 
-msgid "Diagnostics"
-msgstr "檢測"
-
 msgid "The system is halting now. This may take one minute."
 msgstr "系統關閉中，可能需要一分鐘的時間..."
 
@@ -1736,9 +1583,6 @@ msgstr "排程關機"
 
 msgid "Shutdown Time"
 msgstr "關機時間"
-
-msgid "Edit File"
-msgstr "檔案編輯"
 
 msgid "File path"
 msgstr "檔案路徑"
@@ -1776,10 +1620,7 @@ msgstr "確定要重新啟動系統？"
 msgid "License"
 msgstr "License"
 
-msgid "Wireless"
-msgstr "無線網路"
-
-msgid "%s interface (SSID \'%s\')"
+msgid "%s interface (SSID '%s')"
 msgstr "%s 介面 (SSID '%s')"
 
 msgid "Signal strength cache"
@@ -1787,9 +1628,6 @@ msgstr "訊號強度快取"
 
 msgid "MAC address"
 msgstr "MAC位置"
-
-msgid "IP address"
-msgstr "IP位置"
 
 msgid "Signal"
 msgstr "信號"
@@ -1812,9 +1650,6 @@ msgstr "並沒有找到支援的無線網路卡(使用wi[n]驅動的網路卡才
 msgid "%s interface"
 msgstr "%s 介面"
 
-msgid "Status"
-msgstr "狀態"
-
 msgid "DHCP"
 msgstr "DHCP"
 
@@ -1824,17 +1659,8 @@ msgstr "PPPoE"
 msgid "PPTP"
 msgstr "PPTP"
 
-msgid "MAC address"
-msgstr "MAC位置"
-
-msgid "IP address"
-msgstr "IP位置"
-
 msgid "Subnet mask"
 msgstr "網段遮罩"
-
-msgid "Gateway"
-msgstr "閘道"
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS伺服器"
@@ -1860,9 +1686,6 @@ msgstr "封包衝撞"
 msgid "CPU load"
 msgstr "CPU負載"
 
-msgid "Interface"
-msgstr "網路介面"
-
 msgid "VLAN tag"
 msgstr "VLAN tag"
 
@@ -1887,9 +1710,6 @@ msgstr "使用空間"
 msgid "Mounts"
 msgstr "掛載點"
 
-msgid "iSCSI"
-msgstr "iSCSI"
-
 msgid "MS Domain"
 msgstr "MS網域"
 
@@ -1908,17 +1728,8 @@ msgstr "可用空間"
 msgid "FreeNAS will reboot after restoring the configuration."
 msgstr "FreeNAS復原設定組態之後將會自動重新開機。"
 
-msgid "IP address"
-msgstr "IP位置"
-
-msgid "MAC address"
-msgstr "MAC位置"
-
 msgid "Hostname"
 msgstr "主機名稱"
-
-msgid "Interface"
-msgstr "網路介面"
 
 msgid "Delete ARP entry"
 msgstr "刪除ARP項目"
@@ -1946,9 +1757,6 @@ msgstr "AutoScale"
 
 msgid "Follow"
 msgstr "Follow"
-
-msgid "Up"
-msgstr "Up"
 
 msgid "Graph shows last"
 msgstr "Graph shows last"
