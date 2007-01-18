@@ -5,6 +5,7 @@
 # Modified: 11/2006 by Volker Theile (votdev@gmx.de)
 
 # Global Variables:
+PRODUCTNAME="FreeNAS"
 WORKINGDIR="/usr/local/freenas"
 FREENAS="/usr/local/freenas/rootfs"
 BOOTDIR="/usr/local/freenas/bootloader"
@@ -225,7 +226,7 @@ create_image() {
 	[ -f image.bin ] && rm -f image.bin
 	PLATFORM="generic-pc"
 	echo $PLATFORM > $FREENAS/etc/platform
-	IMGFILENAME="FreeNAS-$PLATFORM-$VERSION.img"
+	IMGFILENAME="$PRODUCTNAME-$PLATFORM-$VERSION.img"
 	
 	echo "IMG: Generating tempory $TMPDIR folder"
 	mkdir $TMPDIR
@@ -291,7 +292,7 @@ create_iso () {
 	[ -d $TMPDIR ] && rm -rf $TMPDIR
 	[ -f $WORKINGDIR/mfsroot.gz ] && rm -f $WORKINGDIR/mfsroot.gz
 	
-	ISOFILENAME="FreeNAS-$VERSION.iso"
+	ISOFILENAME="$PRODUCTNAME-$VERSION.iso"
 	
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Generating the FreeNAS Image file:"
@@ -329,7 +330,7 @@ create_iso () {
 	
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file on $TMPDIR folder"
-		cp $WORKINGDIR/FreeNAS-generic-pc-$VERSION.img $TMPDIR/FreeNAS-generic-pc.gz
+		cp $WORKINGDIR/$PRODUCTNAME-generic-pc-$VERSION.img $TMPDIR/FreeNAS-generic-pc.gz
 	fi
 
 	echo "ISO: Generating the ISO file"
@@ -422,8 +423,9 @@ use_svn() {
 	for i in $(ls $SVNDIR/locale/*.po); do
 		filename=$(basename $i)
 		language=${filename%*.po}
+		filename=$(echo $PRODUCTNAME | tr '[A-Z]' '[a-z]') # make filename lower case.
 		mkdir -v -p $FREENAS/usr/local/share/locale/$language/LC_MESSAGES
-		msgfmt -v --output-file="$FREENAS/usr/local/share/locale/$language/LC_MESSAGES/freenas.mo" $i
+		msgfmt -v --output-file="$FREENAS/usr/local/share/locale/$language/LC_MESSAGES/$filename.mo" $i
 	done
 
 	return 0
