@@ -1544,10 +1544,12 @@ function system_language_load()
 	/* Get the language configured*/
 	$language = $config['system']['language'];
 	$locale = $available_languages[$language];
+	$domain = strtolower( $g['product_name']);
 
 	putenv( "LANG=$locale");
 	setlocale( LC_MESSAGES, $locale);
-	bindtextdomain( strtolower( $g['product_name']), "/usr/local/share/locale");
+	bindtextdomain( $domain, "/usr/local/share/locale");
+	textdomain( $domain);
 
 	/* ---------------------------------------------------------------------------- */
 	/* The following code can be removed after complete conversion to use gettext() */
