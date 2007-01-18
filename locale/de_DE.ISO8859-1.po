@@ -1842,3 +1842,17 @@ msgstr "Die IP Adresse welche diesen Hostnamen repr&auml;sentiert."
 msgid "You may enter a description here for your reference."
 msgstr "Sie k&ouml;nnen hier eine Beschreibung für Ihre Referenz eintragen."
 
+msgid "Download configuration"
+msgstr "Konfiguration herunterladen"
+
+msgid "Restore configuration"
+msgstr "Konfiguration wiederherstellen"
+
+msgid "Open a FreeNAS configuration XML file and click the button below to restore the configuration."
+msgstr "&Ouml;ffnen Sie eine FreeNAS Konfigurationsdatei und dr&uuml;cken sie den Knopf weiter unten um die Konfiguration wiederherzustellen."
+
+msgid "Click this button to download the system configuration in XML format."
+msgstr "Dr&uuml;cken Sie diesen Knopf um die Systemkonfiguration im XML Format herunterzuladen."
+
+msgid "Backup configuration"
+msgstr "Konfiguration sichern"
