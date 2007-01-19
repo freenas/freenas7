@@ -627,9 +627,6 @@ msgstr "Upgrade Firmware"
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Sie m&uuml;ssen das System neu starten, bevor Sie diese Firmware upgraden k&ouml;nnen."
 
-msgid "DO NOT abort the firmware upgrade once it has started. FreeNAS will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of 128 Mb RAM to perform the firmware update.<"
-msgstr "Unterbrechen Sie das Firmware Upgrade NICHT, wenn es bereits gestartet wurde. FreeNAS wird automatisch neu gestartet, nachdem die neue Firmware geladen wurde. Ihre Konfiguration bleibt erhalten.<br>F&uuml;r das Upgrade werden mindestens 128 Mb RAM ben&ouml;tigt."
-
 msgid "The TCP idle timeout must be an integer."
 msgstr "Der TCP idle Timeout muss ein Integerwert sein."
 
@@ -735,8 +732,8 @@ msgstr "L&ouml;sche Schnittstelle"
 msgid "Add interface"
 msgstr "F&uuml;ge Schnittstelle hinzu"
 
-msgid "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
-msgstr "Nach dem Anw&auml;hlen von &quot;Sichern&quot;, muss FreeNAS zur &Uuml;bernahme der &Auml;nderungen neu gestartet werden. Sie k&ouml;nnten auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen: </span></p"
+msgid "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+msgstr "Nach dem Anw&auml;hlen von &quot;Sichern&quot;, muss FreeNAS zur &Uuml;bernahme der &Auml;nderungen neu gestartet werden. Sie k&ouml;nnten auch einige der folgenden Dinge vor erneutem Zugriff auf ihren NAS ausf&uuml;hren m&uuml;ssen: </span></p><ul><li><span class='vexpl'>&Auml;ndern Sie die IP-Adresse ihres Computers </span></li><li><span class='vexpl'>Greifen Sie auf die webGUI mit der neuen IP-Addresse zu</span></li></ul>"
 
 msgid "A valid gateway must be specified."
 msgstr "Ein g&uuml;ltiges Gateway muss angegeben werden."
@@ -767,9 +764,6 @@ msgstr "Geschwindigkeit"
 
 msgid "Duplex"
 msgstr "Duplex"
-
-msgid "after you click &quot;Save&quot;, you may al"
-msgstr "Nach Klick auf &quot;Sichern&quot;, k&ouml;nnten Sie auch einige der folgenden Ding"
 
 msgid "Enable Optional "
 msgstr "Aktiviere optionale "
@@ -879,8 +873,8 @@ msgstr "Medium power usage without Standby"
 msgid "Maximum performance, maximum power usage"
 msgstr "Maximum performance, maximum power usage"
 
-msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<em>Do not set this for CF cards.</em>"
-msgstr "Verringert den Stromverbrauch der Festplatte auf Kosten der Geschwindigkeit.<em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
+msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"
+msgstr "Verringert den Stromverbrauch der Festplatte auf Kosten der Geschwindigkeit.<br><em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
 
 msgid "Acoustic level"
 msgstr "Acoustic Level"
@@ -894,8 +888,8 @@ msgstr "Medium acoustic output"
 msgid "Maximum performance, maximum acoustic output"
 msgstr "Maximum performance, maximum acoustic output"
 
-msgid "This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"
-msgstr "Lautst&auml;rke des Laufwerks w&auml;hrend des Betriebs einstellen.<em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
+msgid "This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"
+msgstr "Lautst&auml;rke des Laufwerks w&auml;hrend des Betriebs einstellen.<br><em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
 
 msgid "Preformatted FS"
 msgstr "Vorformatiertes FS"
@@ -1810,7 +1804,7 @@ msgid "Hosts"
 msgstr "Hosts"
 
 msgid "Define an host name can be useful for NFS."
-msgstr "Das definieren eines Hostnamens kann nützlich für ein NFS sein."
+msgstr "Das definieren eines Hostnamens kann n&uuml;tzlich f&uuml;r ein NFS sein."
 
 msgid "The host list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Die Host Liste hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
@@ -1840,7 +1834,7 @@ msgid "The IP address that this hostname represents."
 msgstr "Die IP Adresse welche diesen Hostnamen repr&auml;sentiert."
 
 msgid "You may enter a description here for your reference."
-msgstr "Sie k&ouml;nnen hier eine Beschreibung für Ihre Referenz eintragen."
+msgstr "Sie k&ouml;nnen hier eine Beschreibung f&uuml;r Ihre Referenz eintragen."
 
 msgid "Download configuration"
 msgstr "Konfiguration herunterladen"

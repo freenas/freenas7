@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), _SYSTEMPHP_MODULE_NAME_DESCRIPTION);
+$pgtitle = array(gettext("System"), gettext("General setup");
 
 $pconfig['hostname'] = $config['system']['hostname'];
 $pconfig['domain'] = $config['system']['domain'];

@@ -137,14 +137,14 @@ if ($_POST) {
 				<?php endfor; ?>
 				</select>
 				<br>
-				<?=gettext("'You can force UDMA mode if you have "UDMAgettext("Error").... LBA" message with your hard drive.'"); ?>
+				<?=gettext("You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."); ?>
 			</td>
 		</tr>
 		<tr> 
 			<td width="22%" valign="top" class="vncell"><?=gettext("Hard disk standby time"); ?></td>
 			<td width="78%" class="vtable"> 
 				<select name="harddiskstandby" class="formfld">
-				<?php $sbvals = array(0=>gettext("Always on"), 5=>"5 "._MINUTES, 10=>"10 ".gettext("minutes"), 20=>"20 ".gettext("minutes"), 30=>"30 ".gettext("minutes"), 60=>"60 ".gettext("minutes"));?>
+				<?php $sbvals = array(0=>gettext("Always on"), 5=>"5 ".gettext("minutes"), 10=>"10 ".gettext("minutes"), 20=>"20 ".gettext("minutes"), 30=>"30 ".gettext("minutes"), 60=>"60 ".gettext("minutes"));?>
 				<?php foreach ($sbvals as $sbval => $sbname): ?>
 					<option value="<?=$sbval;?>" <?php if($pconfig['harddiskstandby'] == $sbval) echo 'selected';?>><?=htmlspecialchars($sbname);?></option>
 				<?php endforeach; ?>
@@ -157,26 +157,26 @@ if ($_POST) {
 			<td width="22%" valign="top" class="vncell"><?=gettext("Advanced Power Management"); ?></td>
 			<td width="78%" class="vtable"> 
 				<select name="apm" class="formfld">
-				<?php $apmvals = array(0=>gettext("Disabled"),1=>_DISKSMANAGEEDITPHP_APM_1,64=>gettext("Medium power usage with Standby"),128=>gettext("Minimum power usage without Standby"),192=>gettext("Medium power usage without Standby"),254=>gettext("Maximum performance, maximum power usage"));?>
+				<?php $apmvals = array(0=>gettext("Disabled"),1=>gettext("Minimum power usage with Standby"),64=>gettext("Medium power usage with Standby"),128=>gettext("Minimum power usage without Standby"),192=>gettext("Medium power usage without Standby"),254=>gettext("Maximum performance, maximum power usage"));?>
 				<?php foreach ($apmvals as $apmval => $apmname): ?>
 					<option value="<?=$apmval;?>" <?php if($pconfig['apm'] == $apmval) echo 'selected';?>><?=htmlspecialchars($apmname);?></option>
 				<?php endforeach; ?>
 				</select>
 				<br>
-				<?=gettext("This allows  you  to lower the power consumption of the drive, at the expense of performance.<em>Do not set this for CF cards.</em>"); ?>
+				<?=gettext("This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"); ?>
 			</td>
 		</tr>
 		<tr> 
 			<td width="22%" valign="top" class="vncell"><?=gettext("Acoustic level"); ?></td>
 			<td width="78%" class="vtable"> 
 				<select name="acoustic" class="formfld">
-				<?php $acvals = array(0=>gettext("Disabled"),1=>_DISKSMANAGEEDITPHP_ACLEVEL_1,64=>gettext("Medium acoustic output"),127=>gettext("Maximum performance, maximum acoustic output"));?>
+				<?php $acvals = array(0=>gettext("Disabled"),1=>gettext("Minimum performance, Minimum acoustic output"),64=>gettext("Medium acoustic output"),127=>gettext("Maximum performance, maximum acoustic output"));?>
 				<?php foreach ($acvals as $acval => $acname): ?>
 					<option value="<?=$acval;?>" <?php if($pconfig['acoustic'] == $acval) echo 'selected';?>><?=htmlspecialchars($acname);?></option>
 				<?php endforeach; ?>
 				</select>
 				<br>
-				<?=gettext("This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"); ?>
+				<?=gettext("This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"); ?>
 			</td>
 		</tr>
 		<tr> 
@@ -189,7 +189,7 @@ if ($_POST) {
 				<?php endforeach; ?>
 				</select>
 				<br>
-				<?=gettext("'This allows you to set FS type for preformated disk with data.<br><em>Leave "unformated" for unformated disk and then use <a href="disks_manage_init.php">format menu</a>.</em>'"); ?>
+				<?php echo sprintf( gettext("This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"), "disks_manage_init.php"); ?>
 			</td>
 		</tr>
 		<tr> 

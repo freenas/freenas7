@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME,gettext("Management"));
+$pgtitle = array(gettext("Disks"), gettext("Management"));
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
@@ -94,11 +94,11 @@ if ($_GET['act'] == "del") {
 			<?php endif; ?>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
-					<td width="5%" class="listhdrr"><?=_DISKSPHP_DISK; ?></td>
+					<td width="5%" class="listhdrr"><?=gettext("Disk"); ?></td>
 					<td width="5%" class="listhdrr"><?=gettext("Size"); ?></td>
-					<td width="50%" class="listhdrr"><?=_DISKSMANAGEPHP_DESC; ?></td>
+					<td width="50%" class="listhdrr"><?=gettext("Description"); ?></td>
 					<td width="10%" class="listhdrr"><?=gettext("Standby time"); ?></td>
-					<td width="10%" class="listhdrr"><?=_DISKSPHP_FILESYSTEM; ?></td>
+					<td width="10%" class="listhdrr"><?=gettext("File system"); ?></td>
 					<td width="10%" class="listhdr"><?=gettext("Status"); ?></td>
 					<td width="10%" class="list"></td>
 				</tr>

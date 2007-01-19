@@ -632,9 +632,6 @@ msgstr "Systeemsoftware opladen"
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Je moet het systeem herstarten vooraleer je de systeemsoftware kan opladen."
 
-msgid "DO NOT abort the firmware upgrade once it has started. FreeNAS will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of 128 Mb RAM to perform the firmware update.<"
-msgstr "Het opladen van de systeemsoftware NOOIT ONDERBREKEN eens de procedure opgestart is. FreeNAS zal automatisch herstarten als de nieuwe systeemsoftware opgeladen is. De configuratieinstellingen zullen bewaard blijven.<br>Er is minimaal 128Mb RAM in het systeem nodig voor het opladen van de systeemsoftware."
-
 msgid "The TCP idle timeout must be an integer."
 msgstr "De inactiviteitsduur voor TCP-onderbreking moet een geheel getal zijn."
 
@@ -779,9 +776,6 @@ msgstr "Snelheid"
 msgid "Duplex"
 msgstr "Duplex"
 
-msgid "after you click &quot;Save&quot;, you may al"
-msgstr "Nadat je op &quot;Bewaren&quot; klikt kan het zijn dat je ook nog &euml;&euml;n van volgende stappen moet uitvoeren om terug toegang te krijgen tot je NAS: </span></p"
-
 msgid "Enable Optional "
 msgstr "Activeer optioneel "
 
@@ -866,14 +860,14 @@ msgstr "Plaatst de harde schijf in standby modus wanneer de geselecteerde tijd v
 msgid "Advanced Power Management"
 msgstr "Geavanceerd Energiebeheer"
 
-msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<em>Do not set this for CF cards.</em>"
-msgstr "Hiermee kan je het energieverbruik van de schijf verminderen, ten koste van performantie. <em>Activeer dit niet voor CF kaarten.</em>"
+msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"
+msgstr "Hiermee kan je het energieverbruik van de schijf verminderen, ten koste van performantie.<br><em>Activeer dit niet voor CF kaarten.</em>"
 
 msgid "Acoustic level"
 msgstr "Akoestisch niveau"
 
-msgid "This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"
-msgstr "Hiermee kan je het geluidsniveau van de schijf instellen.<em>Gebruik dit niet voor CF kaarten.</em>"
+msgid "This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"
+msgstr "Hiermee kan je het geluidsniveau van de schijf instellen.<br><em>Gebruik dit niet voor CF kaarten.</em>"
 
 msgid "Preformatted FS"
 msgstr "Voorgeformatteerd bestandssysteem"

@@ -34,8 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),_MENULEFT_SYSHOSTS);
-
+$pgtitle = array(gettext("System"), gettext("Hosts");
 
 if (!is_array($config['system']['hosts']))
 	$config['system']['hosts'] = array();
@@ -45,7 +44,6 @@ hosts_sort();
 $a_hosts = &$config['system']['hosts'];
 
 if ($_POST) {
-
 	$pconfig = $_POST;
 
 	if ($_POST['apply']) {

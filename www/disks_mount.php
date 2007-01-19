@@ -147,7 +147,7 @@ if ($_GET['act'] == "ret")
           </tr>
         </table>
       </form>
-      <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("'Second configuration step: Declaring the filesystem used by your <a href="disks_manage.php">previously configured disk.</a><p>'");?></p>
+      <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a><p>"), "disks_manage.php");?></p>
       <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!");?></p>
     </td>
   </tr>

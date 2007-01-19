@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), _SYSTEMROUTESPHP_NAME_DESCRIPTION);
+$pgtitle = array(gettext("System"), gettext("Static routes");
 
 if (!is_array($config['staticroutes']['route']))
 	$config['staticroutes']['route'] = array();

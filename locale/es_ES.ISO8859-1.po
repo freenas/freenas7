@@ -549,9 +549,6 @@ msgstr "Actualizar Sistema Base"
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Usted debe reiniciar el sistema antes de actualizar el sistema base."
 
-msgid "DO NOT abort the firmware upgrade once it has started. FreeNAS will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of 128 Mb RAM to perform the firmware update.<"
-msgstr "No aborte el proceso una vez que comience. FreeNAS reiniciará automáticamente después de salvar el nuevo Sistema Base. La configuración se mantendrá.<br>Necesita un mínimo de 128 Mb RAM para actualizar el Sistema Base."
-
 msgid "The TCP idle timeout must be an integer."
 msgstr "The TCP idle timeout must be an integer."
 
@@ -696,9 +693,6 @@ msgstr "Speed"
 msgid "Duplex"
 msgstr "Duplex"
 
-msgid "after you click &quot;Save&quot;, you may al"
-msgstr "after you click &quot;Save&quot;, you may als"
-
 msgid "Enable Optional "
 msgstr "Enable Optional "
 
@@ -798,8 +792,8 @@ msgstr "Medium power usage without Standby"
 msgid "Maximum performance, maximum power usage"
 msgstr "Maximum performance, maximum power usage"
 
-msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<em>Do not set this for CF cards.</em>"
-msgstr "This allows  you  to lower the power consumption of the drive, at the expense of performance.<em>Do not set this for CF cards.</em>"
+msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"
+msgstr "This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"
 
 msgid "Acoustic level"
 msgstr "Acoustic level"
@@ -812,9 +806,6 @@ msgstr "Medium acoustic output"
 
 msgid "Maximum performance, maximum acoustic output"
 msgstr "Maximum performance, maximum acoustic output"
-
-msgid "This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"
-msgstr "This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"
 
 msgid "Preformatted FS"
 msgstr "Preformatted FS"

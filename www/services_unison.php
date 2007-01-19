@@ -174,7 +174,7 @@ function enable_change(enable_change) {
   </tr>
   <tr>
     <td width="22%" valign="top">&nbsp;</td>
-    <td width="78%"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("'<a href="/services_sshd.php">SSHD</a> must be enabled for Unison to work, and the <a href="/access_users.php">user</a> must have Full Shell enabled.'");?></td>
+    <td width="78%"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have Full Shell enabled."), "services_sshd.php", "access_users.php");?></td>
   </tr>
   </table>
 </form>

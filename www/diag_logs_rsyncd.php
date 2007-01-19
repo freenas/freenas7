@@ -72,13 +72,13 @@ function dump_clog($logfile, $tail, $withorig = true) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-    <li class="tabinact1"><a href="diag_logs.php">System</a></li>
-    <li class="tabinact"><a href="diag_logs_ftp.php">FTP</a></li>
-    <li class="tabact"><a href="diag_logs_rsyncd.php" style="color:black" title="reload page">RSYNCD</a></li>
-    <li class="tabinact"><a href="diag_logs_sshd.php">SSHD</a></li>
-    <li class="tabinact"><a href="diag_logs_smartd.php">SMARTD</a></li>
-    <li class="tabinact"><a href="diag_logs_daemon.php">Daemon</a></li>
-    <li class="tabinact"><a href="diag_logs_settings.php">Settings</a></li>
+    <li class="tabinact1"><a href="diag_logs.php"><?=gettext("System");?></a></li>
+    <li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
+    <li class="tabact"><a href="diag_logs_rsyncd.php" style="color:black" title="reload page"><?=gettext("RSYNCD");?></a></li>
+    <li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSHD");?></a></li>
+    <li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("SMARTD");?></a></li>
+    <li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
+    <li class="tabinact"><a href="diag_logs_settings.php"><?=gettext("Settings");?></a></li>
   </ul>
   </td></tr>
   <tr> 

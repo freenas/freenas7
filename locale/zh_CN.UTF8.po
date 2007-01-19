@@ -627,9 +627,6 @@ msgstr "韧体升级"
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "系统必须重新开机才能开啟韧体升级功能。"
 
-msgid "DO NOT abort the firmware upgrade once it has started. FreeNAS will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of 128 Mb RAM to perform the firmware update.<"
-msgstr "一但轫体升级动作已经开始，千万不要中止其动作。FreeNAS在新的韧体上传完之后便会自动重新开机。所有之前所设定的组态都会被保留。<br>系统最少需要128MB的记忆体以执行此动作。"
-
 msgid "The TCP idle timeout must be an integer."
 msgstr "TCP閒置切断时间必须是一个整数。"
 
@@ -774,9 +771,6 @@ msgstr "速度"
 msgid "Duplex"
 msgstr "双工模式"
 
-msgid "after you click &quot;Save&quot;, you may al"
-msgstr "当按下&quot;储存&quot;之后，请继续执行下列的步骤，才能再次连線至FreeNAS"
-
 msgid "Enable Optional "
 msgstr "开啟额外的选项"
 
@@ -864,14 +858,14 @@ msgstr "设定在多久时间之后，如果沒有存取动作便将硬碟切換
 msgid "Advanced Power Management"
 msgstr "进阶电源管理"
 
-msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<em>Do not set this for CF cards.</em>"
-msgstr "用来控制磁碟的电源消耗，相反的会失去一些效能。<em>CF卡请勿选用。</em>"
+msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"
+msgstr "用来控制磁碟的电源消耗，相反的会失去一些效能。<br><em>CF卡请勿选用。</em>"
 
 msgid "Acoustic level"
 msgstr "噪音控制"
 
-msgid "This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"
-msgstr "用来控制磁碟的运转噪音程度。<em>CF卡请勿选用。</em>"
+msgid "This allows you to set how loud the drive is while it's<br> operating.<br><em>Do not set this for CF cards.</em>"
+msgstr "用来控制磁碟的运转噪音程度。<br><em>CF卡请勿选用。</em>"
 
 msgid "Preformatted FS"
 msgstr "已存在之档案系统"

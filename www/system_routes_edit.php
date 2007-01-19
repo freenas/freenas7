@@ -31,10 +31,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), _SYSTEMROUTESPHP_NAME_DESCRIPTION, gettext("Edit"));
+$pgtitle = array(gettext("System"), gettext("Static routes"), gettext("Edit"));
 
 if (!is_array($config['staticroutes']['route']))
 	$config['staticroutes']['route'] = array();
@@ -61,7 +60,7 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "interface network network_subnet gateway");
-	$reqdfieldsn = explode(",", "Interface,Destination network,Destination network bit count,Gateway");
+	$reqdfieldsn = array(gettext("Interface"),gettext("Destination network"),gettext("Destination network bit count"),gettext("Gateway"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	

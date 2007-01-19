@@ -223,7 +223,7 @@ function getHostName($mac,$ip)
   </tr>
   <tr>
     <td colspan="4">
-      <span class="vexpl"><span class="red"><strong><?=gettext("Hint");?>:<br></strong></span><?=gettext("'IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href="diag_logs_settings.php">Diagnostics: Logs</a> page.'");?></span>
+      <span class="vexpl"><span class="red"><strong><?=gettext("Hint");?>:<br></strong></span><?php echo sprintf( gettext("IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>Diagnostics: Logs</a> page."), "diag_logs_settings.php");?></span>
     </td>
   </tr>
 </table>

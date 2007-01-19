@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("CIFS"),_SRVCIFS_SHARES);
+$pgtitle = array(gettext("Services"),gettext("CIFS"),gettext("Shares");
 
 if(!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();

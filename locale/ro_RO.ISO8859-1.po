@@ -621,9 +621,6 @@ msgstr "Actualizare Firmware"
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Sistemul trebuie repornit pentru activarea noului firmware."
 
-msgid "DO NOT abort the firmware upgrade once it has started. FreeNAS will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of 128 Mb RAM to perform the firmware update.<"
-msgstr "NU opriti procesul de actualizare firmware. FreeNAS va reporni in mod automat dupa incarcarea noului firmware cu pastrarea configuratiei actuale. <br>Aveti nevoie de minim 128 Mb RAM pentru a putea actualiza sistemul."
-
 msgid "The TCP idle timeout must be an integer."
 msgstr "Valoare pentru TCP idle timeout trebuie sa fie un numar intreg."
 
@@ -768,7 +765,7 @@ msgstr "Viteza"
 msgid "Duplex"
 msgstr "Duplex"
 
-msgid "after you click &quot;Save&quot;, you may al"
+msgid After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr "dupa ce selectati &quot;Salvare&quot;, va trebui eventual sa parcurgeti urmatorii pasi pentru a accesa din nou interfata FreeNas"
 
 msgid "Enable Optional "
@@ -879,8 +876,8 @@ msgstr "Consum madiu fara modul Standby"
 msgid "Maximum performance, maximum power usage"
 msgstr "Performanta Maxima, consum maxim"
 
-msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<em>Do not set this for CF cards.</em>"
-msgstr "Acest mod permite scaderea consumului discului, cu afectarea performantelor.<em>Nu setati acest mod pentru cardurile CF.</em>"
+msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"
+msgstr "Acest mod permite scaderea consumului discului, cu afectarea performantelor.<br><em>Nu setati acest mod pentru cardurile CF.</em>"
 
 msgid "Acoustic level"
 msgstr "Nivel Acustic"
@@ -894,8 +891,8 @@ msgstr "Nivel Mediu de Zgomot"
 msgid "Maximum performance, maximum acoustic output"
 msgstr "Performanta maxima, Nivel Maxim Zgomot"
 
-msgid "This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"
-msgstr "Acest mod stabileste nivelul de zgomot in functionare pentru Harddisc.<em>Nu setati acest mod pentru cardurile CF.</em>"
+msgid "This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"
+msgstr "Acest mod stabileste nivelul de zgomot in functionare pentru Harddisc.<br><em>Nu setati acest mod pentru cardurile CF.</em>"
 
 msgid "Preformatted FS"
 msgstr "Preformatat FS"

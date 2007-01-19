@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),_MENULEFT_SYSHOSTS,gettext("Hosts"),_EDIT);
+$pgtitle = array(gettext("System"),gettext("Hosts"),gettext("Hosts"),gettext("Edit");
 
 if (!is_array($config['system']['hosts']))
 	$config['system']['hosts'] = array();
@@ -59,7 +59,7 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "name address");
-	$reqdfieldsn = explode(",", "Name,Address");
+	$reqdfieldsn = array(gettext("Name"),gettext("Address"));
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
@@ -109,7 +109,7 @@ if ($_POST) {
                 <tr> 
                   <td valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
                   <td class="vtable"><?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"> 
-                    <br> <span class="vexpl"><?=gettext("'The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and .'");?></span></td>
+                    <br> <span class="vexpl"><?=gettext("The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and .");?></span></td>
                   </td>
                 </tr>
                 <tr> 

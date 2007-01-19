@@ -117,7 +117,7 @@ if ($_POST) {
 
    	$fd = @fopen("$d_raidconfdirty_path", "a");
    	if (!$fd) {
-   		echo "gettext("ERR Could not save RAID configuration.\n")";
+   		echo gettext("ERR Could not save RAID configuration.\n");
    		exit(0);
    	}
    	fwrite($fd, "$raid[name]\n");
