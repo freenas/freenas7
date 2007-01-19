@@ -411,6 +411,7 @@ update_sources() {
 
 use_svn() {
 	echo "Replacing old code with SVN code"
+
 	cp -v -p $SVNDIR/etc/*.* $FREENAS/etc
 	cp -v -p $SVNDIR/etc/* $FREENAS/etc
 	cp -v -p $SVNDIR/etc/inc/*.* $FREENAS/etc/inc
@@ -418,15 +419,6 @@ use_svn() {
 	cp -v -p $SVNDIR/www/*.* $FREENAS/usr/local/www
 	cp -v -p $SVNDIR/www/syntaxhighlighter/*.* $FREENAS/usr/local/www/syntaxhighlighter
 	cp -v -p $SVNDIR/conf/*.* $FREENAS/conf.default
-
-	# Translate *po files to *.mo.
-	for i in $(ls $SVNDIR/locale/*.po); do
-		filename=$(basename $i)
-		language=${filename%*.po}
-		filename=$(echo $PRODUCTNAME | tr '[A-Z]' '[a-z]') # make filename lower case.
-		mkdir -v -p $FREENAS/usr/local/share/locale/$language/LC_MESSAGES
-		msgfmt -v --output-file="$FREENAS/usr/local/share/locale/$language/LC_MESSAGES/$filename.mo" $i
-	done
 
 	return 0
 }
