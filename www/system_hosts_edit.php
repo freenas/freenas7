@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Hosts"),gettext("Hosts"),gettext("Edit");
+$pgtitle = array(gettext("System"),gettext("Hosts"),gettext("Hosts"),gettext("Edit"));
 
 if (!is_array($config['system']['hosts']))
 	$config['system']['hosts'] = array();

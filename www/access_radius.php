@@ -31,15 +31,12 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Access", "RADIUS");
 require("guiconfig.inc");
 
+$pgtitle = array(gettext("Access"), gettext("RADIUS"));
 
-if (!is_array($config['radius']))
-{
-	$config['radius'] = array();
-	
+if (!is_array($config['radius'])) {
+	$config['radius'] = array();	
 }
 
 $pconfig['enable'] = isset($config['radius']['enable']);
@@ -49,9 +46,7 @@ $pconfig['radiusip'] = $config['radius']['radiusip'];
 $pconfig['timeout'] = $config['radius']['timeout'];
 $pconfig['maxretry'] = $config['radius']['maxretry'];
 
-
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 

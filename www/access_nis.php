@@ -31,15 +31,12 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$pgtitle = array("Access", "NIS");
 require("guiconfig.inc");
 
+$pgtitle = array(gettext("Access"), gettext("NIS"));
 
-if (!is_array($config['nis']))
-{
+if (!is_array($config['nis'])) {
 	$config['nis'] = array();
-	
 }
 
 $pconfig['enable'] = isset($config['nis']['enable']);
@@ -47,33 +44,10 @@ $pconfig['nis_domain'] = $config['nis']['nis_domain'];
 $pconfig['nis_master_name'] = $config['nis']['nis_master_name'];
 $pconfig['nis_slave_name'] = $config['nis']['nis_slave_name'];
 
-
-
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
-	$reqdfields = array();
-	$reqdfieldsn = array();
-	
-	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "secret radiusip port"));
-		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Secret,RadiusIP,Port"));
-	}
-	
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	/*
-	if ($_POST['enable'] &&  !is_port($_POST['port']))
-	{
-		$input_errors[] = "The TCP port must be a valid port number.";
-	}
-	
-	if ($_POST['enable'] && !is_ipaddr($_POST['radiusip'])){
-  		$input_errors[] = "A valid IP address must be specified.";
-  	}
-	*/
 	if (!$input_errors)
 	{
 		$config['nis']['nis_domain'] = $_POST['nis_domain'];
@@ -93,7 +67,6 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 	}
-	
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -116,27 +89,27 @@ function enable_change(enable_change) {
                 <tr> 
                   <td colspan="2" valign="top" class="optsect_t">
 				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong>NIS Authentication</strong></td>
+				  <tr><td class="optsect_s"><strong><?=gettext("NIS Authentication");?></strong></td>
 				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong>Enable</strong></td></tr>
 				  </table></td>
                 </tr>
                  <tr> 
-                  <td width="22%" valign="top" class="vncellreq">Domain</td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="nis_domain" type="text" class="formfld" id="nis_domain" size="20" value="<?=htmlspecialchars($pconfig['nis_domain']);?>"> 
-                  <br>Enter the NIS domain name.</td>
+                  <br><?=gettext("Enter the NIS domain name.");?></td>
 				</tr>
                  <tr> 
-                  <td width="22%" valign="top" class="vncellreq">NIS master server name</td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("NIS master server name");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="nis_master_name" type="text" class="formfld" id="nis_master_name" size="20" value="<?=htmlspecialchars($pconfig['nis_master_name']);?>"> 
-                  <br>Enter the NIS Master server hostname.</td>
+                  <br><?=gettext("Enter the NIS Master server hostname.");?></td>
 				</tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq">NIS slave server name</td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("NIS slave server name");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="nis_slave_name" type="text" class="formfld" id="nis_slave_name" size="20" value="<?=htmlspecialchars($pconfig['nis_slave_name']);?>"> 
-                  <br>Enter the NIS Slave server hostname.</td>
+                  <br><?=gettext("Enter the NIS Slave server hostname.");?></td>
 				</tr>
 				<tr> 
                   <td width="22%" valign="top">&nbsp;</td>

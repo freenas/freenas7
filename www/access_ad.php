@@ -31,22 +31,16 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Access"),gettext("Active Directory"));
 
-
-if (!is_array($config['ad']))
-{
+if (!is_array($config['ad'])) {
 	$config['ad'] = array();
-	
 }
 
-if (!is_array($config['samba']))
-{
+if (!is_array($config['samba'])) {
 	$config['samba'] = array();
-	
 }
 
 $pconfig['enable'] = isset($config['ad']['enable']);
@@ -57,9 +51,7 @@ $pconfig['ad_srv_name'] = $config['ad']['ad_srv_name'];
 $pconfig['ad_srv_ip'] = $config['ad']['ad_srv_ip'];
 $pconfig['domain_name'] = $config['samba']['workgroup'];
 
-
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
@@ -69,7 +61,7 @@ if ($_POST) {
 	
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "admin_name admin_pass ad_srv_ip"));
-		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "admin_name,admin_pass,Ad_srv_ip"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Administrator name"),gettext("Administration password"),gettext("AD server IP")));
 	}
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -90,7 +82,6 @@ if ($_POST) {
 		$config['ad']['ad_srv_name'] = $_POST['ad_srv_name'];
 		$config['samba']['workgroup'] = $_POST['domain_name'];
 
-		
 		$config['ad']['enable'] = $_POST['enable'] ? true : false;
 		
 		if ($config['ad']['enable'])
@@ -114,8 +105,7 @@ if ($_POST) {
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
-	}
-	
+	}	
 }
 ?>
 <?php include("fbegin.inc"); ?>

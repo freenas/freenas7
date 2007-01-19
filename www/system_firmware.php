@@ -35,7 +35,7 @@ $d_isfwfile = 1;
 
 require("guiconfig.inc"); 
 
-$pgtitle = array(gettext("System"), _SYSTEMFIRMWAREPHP_NAMEDESC);
+$pgtitle = array(gettext("System"), gettext("Firmware"));
 
 /* checks with www.freenas.org to see if a newer firmware version is available;
    returns any HTML message it gets from the server */

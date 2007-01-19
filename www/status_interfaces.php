@@ -32,7 +32,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Status"), gettext("Interfaces");
+$pgtitle = array(gettext("Status"), gettext("Interfaces"));
 ?>
 <?php include("fbegin.inc"); ?>
 <form action="" method="post">
