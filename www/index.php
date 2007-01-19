@@ -46,22 +46,22 @@ $pgtitle_omit = true;
     <td height="170" colspan="2"><img src="logobig.gif" width="520" height="149"></td>
   </tr>
   <tr>
-    <td colspan="2" class="listtopic"><?=_INDEXPHP_TITLE;?></td>
+    <td colspan="2" class="listtopic"><?=gettext("System information");?></td>
   </tr>
   <tr>
-    <td width="25%" class="vncellt"><?=_INDEXPHP_NAME;?></td>
+    <td width="25%" class="vncellt"><?=gettext("Name");?></td>
     <td width="75%" class="listr">
       <?php echo $config['system']['hostname'] . "." . $config['system']['domain']; ?>
     </td>
   </tr>
   <tr>
-    <td width="25%" valign="top" class="vncellt"><?=_INDEXPHP_VERSION;?></td>
+    <td width="25%" valign="top" class="vncellt"><?=gettext("Version");?></td>
     <td width="75%" class="listr">
       <strong><?php readfile("/etc/version"); ?></strong><br>built on <?php readfile("/etc/version.buildtime"); ?>
     </td>
   </tr>
   <tr>
-    <td width="25%" valign="top" class="vncellt"><?=_INDEXPHP_OSVERSION;?></td>
+    <td width="25%" valign="top" class="vncellt"><?=gettext("OS Version");?></td>
     <td width="75%" class="listr">
       <? 
         exec("/sbin/sysctl -n kern.ostype", $ostype);
@@ -72,7 +72,7 @@ $pgtitle_omit = true;
     </td>
   </tr>
   <tr>
-    <td width="25%" class="vncellt"><?=_INDEXPHP_PLATFORM;?></td>
+    <td width="25%" class="vncellt"><?=gettext("Platform");?></td>
     <td width="75%" class="listr">
       <?=htmlspecialchars($g['fullplatform']);
       exec("/sbin/sysctl -n hw.model", $cputype);
@@ -83,13 +83,13 @@ $pgtitle_omit = true;
     </td>
   </tr>
   <tr>
-    <td width="25%" class="vncellt"><?=_INDEXPHP_DATE;?></td>
+    <td width="25%" class="vncellt"><?=gettext("Date");?></td>
     <td width="75%" class="listr">
       <?php exec("/bin/date", $date); echo htmlspecialchars($date[0]); ?>
     </td>
   </tr>
   <tr>
-    <td width="25%" class="vncellt"><?=_INDEXPHP_UPTIME;?></td>
+    <td width="25%" class="vncellt"><?=gettext("Uptime");?></td>
     <td width="75%" class="listr">
       <?php
         exec("/sbin/sysctl -n kern.boottime", $boottime);
@@ -114,14 +114,14 @@ $pgtitle_omit = true;
   </tr>
   <?php if ($config['lastchange']): ?>
     <tr>
-      <td width="25%" class="vncellt"><?=_INDEXPHP_LASTCHANGE;?></td>
+      <td width="25%" class="vncellt"><?=gettext("Last config change");?></td>
       <td width="75%" class="listr">
         <?=htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange']));?>
       </td>
     </tr>
   <?php endif; ?>
   <tr>
-    <td width="25%" class="vncellt"><?=_INDEXPHP_MEMUSE;?></td>
+    <td width="25%" class="vncellt"><?=gettext("Memory usage");?></td>
     <td width="75%" class="listr">
       <?php
         exec("/sbin/sysctl -n vm.stats.vm.v_active_count vm.stats.vm.v_inactive_count " . "vm.stats.vm.v_wire_count vm.stats.vm.v_cache_count vm.stats.vm.v_free_count hw.physmem", $memory);
@@ -140,14 +140,14 @@ $pgtitle_omit = true;
   </tr>
   <tr>
     <?
-       echo '<td width="25%" class="vncellt">'._INDEXPHP_LOADAVERAGE.'</td>';
+       echo '<td width="25%" class="vncellt">'.gettext("Load averages").'</td>';
         echo '<td width="75%" class="listr">';
-        exec("uptime", $result); echo substr(strrchr($result[0], "load averages:"),15)." <small>[<a href='status_process.php'>"._INDEXPHP_SHOWPROCESSING."</a></small>]";
+        exec("uptime", $result); echo substr(strrchr($result[0], "load averages:"),15)." <small>[<a href='status_process.php'>".gettext("show process information")."</a></small>]";
      ?>
     </td>
   </tr>
     <tr>
-    <td width="25%" class="vncellt"><?=_INDEXPHP_DISKS_USE;?></td>
+    <td width="25%" class="vncellt"><?=gettext("Disk space usage");?></td>
     <td width="75%" class="listr">
 	    <table>
 	      <?php
@@ -166,7 +166,7 @@ $pgtitle_omit = true;
 						echo "<br></td></tr>";
 					}
 				} else {
-					echo _INDEXPHP_NODISK ;
+					echo gettext("No disk configured") ;
 				}
 				?>
 			</table>&nbsp;

@@ -2,7 +2,7 @@
 <?php
 /*
 	disks_mount_tools.php
-	Copyright © 2006 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKS,_DISKSMOUNTPHP_NAME,_DISKSMOUNTPHP_TOOLS);
+$pgtitle = array(gettext("Disks"),gettext("Mount Point"),gettext("Tools"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -51,7 +51,7 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "fullname action");
-	$reqdfieldsn = array(_DISKSMOUNTPHP_SHARENAME,_DISKSMOUNTTOOLS_COMMAND);
+	$reqdfieldsn = array(gettext("Share Name"),_DISKSMOUNTTOOLS_COMMAND);
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if(!$input_errors)
@@ -85,9 +85,9 @@ if(isset($_GET['action'])) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="disks_mount.php"><?=_DISKSMOUNTPHP_MANAGE;?></a></li>
-        <li class="tabact"><?=_DISKSMOUNTPHP_TOOLS;?></a></li>
-        <li class="tabinact"><a href="disks_mount_fsck.php"><?=_DISKSMOUNTPHP_FSCK;?></a></li>
+        <li class="tabinact"><a href="disks_mount.php"><?=gettext("Manage");?></a></li>
+        <li class="tabact"><?=gettext("Tools");?></a></li>
+        <li class="tabinact"><a href="disks_mount_fsck.php"><?=gettext("Fsck");?></a></li>
 
       </ul>
     </td>
@@ -98,19 +98,19 @@ if(isset($_GET['action'])) {
 			<form action="disks_mount_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
-            <td valign="top" class="vncellreq"><?=_DISKSMOUNTPHP_SHARENAME;?></td>
+            <td valign="top" class="vncellreq"><?=gettext("Share Name");?></td>
             <td class="vtable">
               <select name="fullname" class="formfld" id="fullname">
                 <?php foreach ($a_mount as $mountv): ?>
                 <option value="<?=$mountv['fullname'];?>"<?php if ($mountv['fullname'] == $fullname) echo "selected";?>>
-                <?php echo htmlspecialchars($mountv['sharename'] . " (" . _DISK . ": " . $mountv['mdisk'] . " " . _PARTITION . ": " . $mountv['partition'] . ")");?>
+                <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
                 <?php endforeach; ?>
                 </option>
               </select>
             </td>
       		</tr>
           <tr>
-            <td valign="top" class="vncellreq"><?=_DISKSMOUNTTOOLS_COMMAND;?></td>
+            <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
             <td class="vtable"> 
               <select name="action" class="formfld" id="action">
                 <option value="mount" <?php if ($action == "mount") echo "selected"; ?>>mount</option>
@@ -121,14 +121,14 @@ if(isset($_GET['action'])) {
   				<tr>
   				  <td width="22%" valign="top">&nbsp;</td>
   				  <td width="78%">
-              <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMOUNTTOOLS_SENDCMD;?>">
+              <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
   				  </td>
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">
     				<?php if($do_action)
     				{
-    				  echo("<strong>" . _DISKSMOUNTTOOLS_CMDINFO . "</strong><br>");
+    				  echo("<strong>" . gettext("Command output:") . "</strong><br>");
     					echo('<pre>');
     					ob_end_flush();
 
@@ -140,17 +140,17 @@ if(isset($_GET['action'])) {
               switch($action)
               {
                 case "mount":
-                  echo(_DISKSMOUNTTOOLS_MOUNTTEXT . "<br>");
+                  echo(gettext("Mounting...") . "<br>");
                   $result = disks_mount_fullname($fullname);
                   break;
                 case "umount":
-                  echo(_DISKSMOUNTTOOLS_UMOUNTTEXT . "<br>");
+                  echo(gettext("Unmounting...") . "<br>");
                   $result = disks_umount_fullname($fullname);
                   break;
               }
 
               /* Display result */
-              echo((0 == $result) ? _SUCCESSFUL : _FAILED);
+              echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
 
     					echo('</pre>');
     				}

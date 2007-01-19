@@ -3,7 +3,7 @@
 /*
 	system_routes_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -34,7 +34,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_SYSTEMROUTESPHP_NAME, _SYSTEMROUTESPHP_NAME_DESCRIPTION, _EDIT);
+$pgtitle = array(gettext("System"), _SYSTEMROUTESPHP_NAME_DESCRIPTION, gettext("Edit"));
 
 if (!is_array($config['staticroutes']['route']))
 	$config['staticroutes']['route'] = array();
@@ -66,13 +66,13 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if (($_POST['network'] && !is_ipaddr($_POST['network']))) {
-		$input_errors[] = _SYSTEMROUTESPHP_MSGVALID;
+		$input_errors[] = gettext("A valid destination network must be specified.");
 	}
 	if (($_POST['network_subnet'] && !is_numeric($_POST['network_subnet']))) {
-		$input_errors[] = _SYSTEMROUTESPHP_MSGVALIDNETBIT;
+		$input_errors[] = gettext("A valid network bit count must be specified.");
 	}
 	if (($_POST['gateway'] && !is_ipaddr($_POST['gateway']))) {
-		$input_errors[] = _SYSTEMROUTESPHP_MSGVALIDGW;
+		$input_errors[] = gettext("A valid gateway IP address must be specified.");
 	}
 
 	/* check for overlaps */
@@ -82,7 +82,7 @@ if ($_POST) {
 			continue;
 
 		if ($route['network'] == $osn) {
-			$input_errors[] = _SYSTEMROUTESPHP_MSGROUTEEXIST;
+			$input_errors[] = gettext("A route to this destination network already exists.");
 			break;
 		}
 	}
@@ -113,7 +113,7 @@ if ($_POST) {
             <form action="system_routes_edit.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_SYSTEMROUTESPHP_INT;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Interface");?></td>
                   <td width="78%" class="vtable">
 					<select name="interface" class="formfld">
                       <?php $interfaces = array('lan' => 'LAN');
@@ -126,10 +126,10 @@ if ($_POST) {
                       </option>
                       <?php endforeach; ?>
                     </select> <br>
-                    <span class="vexpl"><?=_SYSTEMROUTESPHP_CHOOSEINT;?></span></td>
+                    <span class="vexpl"><?=gettext("Choose which interface this route applies to.");?></span></td>
                 </tr>
                 <tr>
-                  <td width="22%" valign="top" class="vncellreq"><?=_SYSTEMROUTESPHP_DESTNET;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Destination network");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> 
 				  / 
@@ -140,24 +140,24 @@ if ($_POST) {
                       </option>
                       <?php endfor; ?>
                     </select>
-                    <br> <span class="vexpl"><?=_SYSTEMROUTESPHP_DESTNETROUTE;?></span></td>
+                    <br> <span class="vexpl"><?=gettext("Destination network for this static route");?></span></td>
                 </tr>
 				<tr>
-                  <td width="22%" valign="top" class="vncellreq"><?=_SYSTEMROUTESPHP_GW;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Gateway");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="40" value="<?=htmlspecialchars($pconfig['gateway']);?>">
-                    <br> <span class="vexpl"><?=_SYSTEMROUTESPHP_GWTONET;?></span></td>
+                    <br> <span class="vexpl"><?=gettext("Gateway to be used to reach the destination network");?></span></td>
                 </tr>
 				<tr>
-                  <td width="22%" valign="top" class="vncell"><?=_SYSTEMROUTESPHP_DESC;?></td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
                   <td width="78%" class="vtable"> 
                     <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
-                    <br> <span class="vexpl"><?=_SYSTEMROUTESPHP_DESCREF;?></span></td>
+                    <br> <span class="vexpl"><?=gettext("You may enter a description here for your reference (not parsed).");?></span></td>
                 </tr>
                 <tr>
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>">
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
                     <?php if (isset($id) && $a_routes[$id]): ?>
                     <input name="id" type="hidden" value="<?=$id;?>">
                     <?php endif; ?>

@@ -3,7 +3,7 @@
 /*
 	diag_ping.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -34,7 +34,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DIAGPING_NAME, _DIAGPING_NAMEDESC);
+$pgtitle = array(gettext("Diagnostics"), gettext("Ping/Traceroute"));
 
 define('MAX_COUNT', 10);
 define('DEFAULT_COUNT', 3);

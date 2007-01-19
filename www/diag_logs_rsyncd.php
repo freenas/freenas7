@@ -3,7 +3,7 @@
 /*
 	diag_logs_rsyncd.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DIAGLOGS_NAME, _DIAGLOGS_NAMEDESC);
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 
 $nentries = $config['syslog']['nentries'];
 if (!$nentries)

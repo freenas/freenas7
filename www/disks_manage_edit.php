@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(_DISKSPHP_NAME,_DISK,isset($id)?_EDIT:_ADD);
+$pgtitle = array(gettext("Disks"),gettext("Disk"),isset($id)?gettext("Edit"):gettext("Add"));
 
 /* get disk list (without CDROM) */
 //$disklist = get_physical_disks_list();
@@ -72,7 +72,7 @@ if ($_POST) {
 			continue;
 
 		if ($disk['name'] == $_POST['name']) {
-			$input_errors[] = _DISKSMANAGEEDITPHP_MSGVALIDDUPLICATE;
+			$input_errors[] = gettext("This disk already exists in the disk list.");
 			break;
 		}
 	}
@@ -118,7 +118,7 @@ if ($_POST) {
 <form action="disks_manage_edit.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=_DISKSPHP_DISK; ?></td>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
 			<td width="78%" class="vtable">
 				<select name="name" class="formfld" id="name">
 				  <?php foreach ($disklist as $diski => $diskv): ?>
@@ -128,7 +128,7 @@ if ($_POST) {
 		  </td>
 		</tr>
 		<tr> 
-			<td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_UDMA; ?></td>
+			<td width="22%" valign="top" class="vncell"><?=gettext("UDMA mode"); ?></td>
 			<td width="78%" class="vtable">
 				<select name="udma" class="formfld" id="udma">
 				<?php $types = explode(",", "Auto,UDMA-33,UDMA-66,UDMA-100,UDMA-133"); $vals = explode(" ", "auto UDMA2 UDMA4 UDMA5 UDMA6");
@@ -137,50 +137,50 @@ if ($_POST) {
 				<?php endfor; ?>
 				</select>
 				<br>
-				<?=_DISKSMANAGEEDITPHP_UDMATEXT; ?>
+				<?=gettext("'You can force UDMA mode if you have "UDMAgettext("Error").... LBA" message with your hard drive.'"); ?>
 			</td>
 		</tr>
 		<tr> 
-			<td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_STANDBY; ?></td>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Hard disk standby time"); ?></td>
 			<td width="78%" class="vtable"> 
 				<select name="harddiskstandby" class="formfld">
-				<?php $sbvals = array(0=>_DISKSMANAGEPHP_STANDBYALWAYSON, 5=>"5 "._MINUTES, 10=>"10 "._MINUTES, 20=>"20 "._MINUTES, 30=>"30 "._MINUTES, 60=>"60 "._MINUTES);?>
+				<?php $sbvals = array(0=>gettext("Always on"), 5=>"5 "._MINUTES, 10=>"10 ".gettext("minutes"), 20=>"20 ".gettext("minutes"), 30=>"30 ".gettext("minutes"), 60=>"60 ".gettext("minutes"));?>
 				<?php foreach ($sbvals as $sbval => $sbname): ?>
 					<option value="<?=$sbval;?>" <?php if($pconfig['harddiskstandby'] == $sbval) echo 'selected';?>><?=htmlspecialchars($sbname);?></option>
 				<?php endforeach; ?>
 				</select>
 				<br>
-				<?=_DISKSMANAGEEDITPHP_STANDBYTEXT ;?>
+				<?=gettext("Puts the hard disk into standby mode when the selected amount of time after the last access has elapsed. <em>Do not set this for CF cards.</em>") ;?>
 			</td>
 		</tr>
 		<tr> 
-			<td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_APM; ?></td>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Advanced Power Management"); ?></td>
 			<td width="78%" class="vtable"> 
 				<select name="apm" class="formfld">
-				<?php $apmvals = array(0=>_DISKSMANAGEEDITPHP_APM_0,1=>_DISKSMANAGEEDITPHP_APM_1,64=>_DISKSMANAGEEDITPHP_APM_64,128=>_DISKSMANAGEEDITPHP_APM_128,192=>_DISKSMANAGEEDITPHP_APM_192,254=>_DISKSMANAGEEDITPHP_APM_254);?>
+				<?php $apmvals = array(0=>gettext("Disabled"),1=>_DISKSMANAGEEDITPHP_APM_1,64=>gettext("Medium power usage with Standby"),128=>gettext("Minimum power usage without Standby"),192=>gettext("Medium power usage without Standby"),254=>gettext("Maximum performance, maximum power usage"));?>
 				<?php foreach ($apmvals as $apmval => $apmname): ?>
 					<option value="<?=$apmval;?>" <?php if($pconfig['apm'] == $apmval) echo 'selected';?>><?=htmlspecialchars($apmname);?></option>
 				<?php endforeach; ?>
 				</select>
 				<br>
-				<?=_DISKSMANAGEEDITPHP_APMTEXT; ?>
+				<?=gettext("This allows  you  to lower the power consumption of the drive, at the expense of performance.<em>Do not set this for CF cards.</em>"); ?>
 			</td>
 		</tr>
 		<tr> 
-			<td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_ACLEVEL; ?></td>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Acoustic level"); ?></td>
 			<td width="78%" class="vtable"> 
 				<select name="acoustic" class="formfld">
-				<?php $acvals = array(0=>_DISKSMANAGEEDITPHP_ACLEVEL_0,1=>_DISKSMANAGEEDITPHP_ACLEVEL_1,64=>_DISKSMANAGEEDITPHP_ACLEVEL_64,127=>_DISKSMANAGEEDITPHP_ACLEVEL_127);?>
+				<?php $acvals = array(0=>gettext("Disabled"),1=>_DISKSMANAGEEDITPHP_ACLEVEL_1,64=>gettext("Medium acoustic output"),127=>gettext("Maximum performance, maximum acoustic output"));?>
 				<?php foreach ($acvals as $acval => $acname): ?>
 					<option value="<?=$acval;?>" <?php if($pconfig['acoustic'] == $acval) echo 'selected';?>><?=htmlspecialchars($acname);?></option>
 				<?php endforeach; ?>
 				</select>
 				<br>
-				<?=_DISKSMANAGEEDITPHP_ACLEVELTEXT; ?>
+				<?=gettext("This allows you to set how loud the drive is while it's  operating.<em>Do not set this for CF cards.</em>"); ?>
 			</td>
 		</tr>
 		<tr> 
-			<td width="22%" valign="top" class="vncell"><?=_DISKSMANAGEEDITPHP_PREFS; ?></td>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Preformatted FS"); ?></td>
 			<td width="78%" class="vtable"> 
 				<select name="fstype" class="formfld">
 				<?php $fstlist = get_fstype_list(); ?>
@@ -189,12 +189,12 @@ if ($_POST) {
 				<?php endforeach; ?>
 				</select>
 				<br>
-				<?=_DISKSMANAGEEDITPHP_PREFSTEXT; ?>
+				<?=gettext("'This allows you to set FS type for preformated disk with data.<br><em>Leave "unformated" for unformated disk and then use <a href="disks_manage_init.php">format menu</a>.</em>'"); ?>
 			</td>
 		</tr>
 		<tr> 
 			<td width="22%" valign="top">&nbsp;</td>
-			<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?_SAVE:_ADD?>"> 
+			<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>"> 
 			<?php if (isset($id) && $a_disk[$id]): ?>
 				<input name="id" type="hidden" value="<?=$id;?>">
 			<?php endif; ?>

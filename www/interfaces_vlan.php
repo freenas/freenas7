@@ -29,7 +29,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 
-$pgtitle = array(_INTVLAN_NAME, _INTVLAN_NAMEDESC);
+$pgtitle = array(gettext("Interfaces"), gettext("Assign network ports"));
 require("guiconfig.inc");
 
 if (!is_array($config['vlans']['vlan']))
@@ -99,9 +99,9 @@ if ($_GET['act'] == "del") {
     <td class="tabcont">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="20%" class="listhdrr"><?=_INTVLAN_INTERFACE;?></td>
-                  <td width="20%" class="listhdrr"><?=_INTVLAN_VLANTAG;?></td>
-                  <td width="50%" class="listhdr"><?=_INTVLAN_DESC;?></td>
+                  <td width="20%" class="listhdrr"><?=gettext("Interface");?></td>
+                  <td width="20%" class="listhdrr"><?=gettext("VLAN tag");?></td>
+                  <td width="50%" class="listhdr"><?=gettext("Description");?></td>
                   <td width="10%" class="list"></td>
 				</tr>
 			  <?php $i = 0; foreach ($a_vlans as $vlan): ?>

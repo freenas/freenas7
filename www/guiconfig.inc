@@ -200,11 +200,11 @@ function get_std_save_message($ok) {
 
 	if ($ok == 0) {
 		if (file_exists($d_sysrebootreqd_path))
-			return _MESSAGES_SUCCESSWITHREBOOT;
+			return gettext("The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS for changes to take effect.");
 		else
-			return _MESSAGES_SUCCESS;
+			return gettext("The changes have been applied successfully.");
 	} else {
-		return _MESSAGES_ERROR;
+		return gettext("ERROR: the changes could not be applied (error code '.$ok.').");
 	}
 }
 

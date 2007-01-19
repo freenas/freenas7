@@ -3,7 +3,7 @@
 /*
 	services_rsyncd_client.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	Improved by Mat Murdock <mmurdock@kimballequipment.com>.
 	All rights reserved.
 
@@ -34,11 +34,11 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_SERVICES,_SRVRYNCD_NAMEDESC);
+$pgtitle = array(gettext("Services"),gettext("RSYNCD"));
 
 /* Global arrays. */
-$a_months = explode(" ",_MONTH_LONG);
-$a_weekdays = explode(" ",_DAY_OF_WEEK_LONG);
+$a_months = explode(" ",gettext("January February March April May June July August September October November December"));
+$a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Friday Saturday"));
 $a_mount = array();
 
 if (!is_array($config['rsyncclient'])){
@@ -46,7 +46,7 @@ if (!is_array($config['rsyncclient'])){
 }
 
 if (!is_array($config['mounts']['mount'])) {
-  $nodisk_errors[] = _SRVRYNCC_MSGMPFIRST;
+  $nodisk_errors[] = gettext("You must configure mount point first.");
 } else {
   if ($_POST) {
   	unset($input_errors);
@@ -59,13 +59,13 @@ if (!is_array($config['mounts']['mount'])) {
 
   	if ($_POST['enable']) {
   		$reqdfields = array_merge($reqdfields, explode(" ", "rsyncserverip sharetosync"));
-  		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVRYNCC_REMOTESERVER,_SRVRYNCC_SHARES));
+  		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Remote RSYNC Server"),gettext("Shares to be synchronized")));
   	}
 
   	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
   	if ($_POST['enable'] && !is_ipaddr($_POST['rsyncserverip'])){
-  		$input_errors[] = _SRVRYNCC_MSGVALIDIP;
+  		$input_errors[] = gettext("A valid IP address must be specified.");
   	}
 
   	if (!$input_errors) {
@@ -191,9 +191,9 @@ function enable_change(enable_change) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="services_rsyncd.php"><?=_SRVRYNC_SERVER ;?></a></li>
-    <li class="tabact"><a href="services_rsyncd_client.php" style="color:black" title="reload page"><?=_SRVRYNC_CLIENT ;?></a></li>
-    <li class="tabinact"><a href="services_rsyncd_local.php"><?=_SRVRYNC_LOCAL ;?></a></li>
+	<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Server") ;?></a></li>
+    <li class="tabact"><a href="services_rsyncd_client.php" style="color:black" title="reload page"><?=gettext("Client") ;?></a></li>
+    <li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local") ;?></a></li>
   </ul>
   </td></tr>
   <tr>
@@ -203,23 +203,23 @@ function enable_change(enable_change) {
                 <tr>
                   <td colspan="2" valign="top" class="optsect_t">
 				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong><?=_SRVRYNCC_RSYNCC; ?></strong></td>
-				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE; ?></strong></td></tr>
+				  <tr><td class="optsect_s"><strong><?=gettext("Rsync Client Synchronization"); ?></strong></td>
+				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable"); ?></strong></td></tr>
 				  </table></td>
                 </tr>
                 <tr>
-                		<td width="22%" valign="top" class="vncell"><strong><?=_SRVRYNCC_REMOTESERVER;?><strong></td>
+                		<td width="22%" valign="top" class="vncell"><strong><?=gettext("Remote RSYNC Server");?><strong></td>
                 		<td width="78%" class="vtable"> <input name="rsyncserverip" id="rsyncserverip" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['rsyncserverip']);?>">
-                      <br><?=_SRVRYNCC_REMOTEID;?><br>
+                      <br><?=gettext("IP address of remote RSYNC server");?><br>
 										</td>
 								</tr>
 								<tr>
-                <td width="22%" valign="top" class="vncell"><strong><?=_SRVRYNCC_OPTIONS; ?><strong></td>
-                		<td width="78%" class="vtable"><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=_SRVRYNCC_OPTDEL; ?><br>
+                <td width="22%" valign="top" class="vncell"><strong><?=gettext("RSYNC Options"); ?><strong></td>
+                		<td width="78%" class="vtable"><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
 										</td>
 								</tr>
 					 			<tr>
-                     <td width="22%" valign="top" class="vncellreq"><?=_SRVRYNCC_SHARES;?></td>
+                     <td width="22%" valign="top" class="vncellreq"><?=gettext("Shares to be synchronized");?></td>
                      <td width="78%" class="vtable">
 <?php
 if (is_array($config['mounts']['mount'])) {
@@ -234,31 +234,31 @@ if (is_array($config['mounts']['mount'])) {
 	}
 }
 else
-	echo _SRVRYNCC_MSGMPFIRST;
+	echo gettext("You must configure mount point first.");
 ?>
-		               <br><?=_SRVRYNCC_SHARESTEXT;?></td>
+		               <br><?=gettext("This same local share must be present on the Remote Server.");?></td>
                       </tr>
 
 
                  <tr>
-                  <td width="22%" valign="top" class="vncellreq"><?=_SRVRYNCC_TIME;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Synchronization Time");?></td>
                   <td width="78%" class="vtable">
 
                      <table width=100% border cellpadding="6" cellspacing="0">
                     <tr>
-                      <td class="optsect_t"><b class="optsect_s"><?=_MINUTES;?></b></td>
-                      <td class="optsect_t"><b class="optsect_s"><?=_HOURS;?></b></td>
-                      <td class="optsect_t"><b class="optsect_s"><?=_DAYS;?></b></td>
-                      <td class="optsect_t"><b class="optsect_s"><?=_MONTHS;?></b></td>
-                      <td class="optsect_t"><b class="optsect_s"><?=_WEEKDAYS;?></b></td>
+                      <td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>
+                      <td class="optsect_t"><b class="optsect_s"><?=gettext("hours");?></b></td>
+                      <td class="optsect_t"><b class="optsect_s"><?=gettext("days");?></b></td>
+                      <td class="optsect_t"><b class="optsect_s"><?=gettext("months");?></b></td>
+                      <td class="optsect_t"><b class="optsect_s"><?=gettext("week days");?></b></td>
                     </tr>
                     <tr bgcolor=#cccccc>
                       <td valign=top>
 
 						<input type="radio" name="all_mins" id="all_mins1" value="1"<?php echo $all_mins_all;?>>
-                        <?=_ALL;?><br>
+                        <?=gettext("All");?><br>
                         	<input type="radio" name="all_mins" id="all_mins2" value="0"<?php echo $all_mins_selected;?>>
-                        <?=_SELECTED;?> ..<br>
+                        <?=gettext("Selected");?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
@@ -364,9 +364,9 @@ else
                         <br></td>
                       <td valign=top>
 											<input type="radio" name="all_hours" id="all_hours1" value="1"<?php echo $all_hours_all;?>>
-                        <?=_ALL;?><br>
+                        <?=gettext("All");?><br>
                         <input type="radio" name="all_hours" id="all_hours2" value="0"<?php echo $all_hours_selected;?>>
-                        <?=_SELECTED;?> ..<br>
+                        <?=gettext("Selected");?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
@@ -409,9 +409,9 @@ else
                           </tr>
                         </table></td>
                       <td valign=top><input type="radio" name="all_days" id="all_days1" value="1" <?php echo $all_days_all;?>>
-                        <?=_ALL;?><br>
+                        <?=gettext("All");?><br>
                         <input type="radio" name="all_days" id="all_days2" value="0"<?php echo $all_days_selected;?>>
-                        <?=_SELECTED;?> ..<br>
+                        <?=gettext("Selected");?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
@@ -472,9 +472,9 @@ else
                           </tr>
                         </table></td>
                       <td valign=top><input type="radio" name="all_months" id="all_months1" value="1"<?php echo $all_months_all;?>>
-                        <?=_ALL;?><br>
+                        <?=gettext("All");?><br>
                         <input type="radio" name="all_months" id="all_months2" value="0"<?php echo $all_months_selected;?>>
-                        <?=_SELECTED;?> ..<br>
+                        <?=gettext("Selected");?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
@@ -488,9 +488,9 @@ else
                           </tr>
                         </table></td>
                       <td valign=top><input type="radio" name="all_weekdays" id="all_weekdays1" value="1"<?php echo $all_weekdays_all;?>>
-                        <?=_ALL;?><br>
+                        <?=gettext("All");?><br>
                         <input type="radio" name="all_weekdays" id="all_weekdays2" value="0"<?php echo $all_weekdays_selected;?>>
-                        <?=_SELECTED;?> ..<br>
+                        <?=gettext("Selected");?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
@@ -505,7 +505,7 @@ else
                         </table></td>
                     </tr>
                     <tr bgcolor=#cccccc>
-                      <td colspan=5><?=_SRVRYNCC_TEXT;?></td>
+                      <td colspan=5><?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.");?></td>
                     </tr>
                   </table>
 										 </td>
@@ -514,7 +514,7 @@ else
 				<tr>
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%">
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)">
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
                   </td>
                 </tr>
                 </table>

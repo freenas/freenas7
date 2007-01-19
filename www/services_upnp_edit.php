@@ -2,11 +2,11 @@
 <?php 
 /*
 	services_upnp_edit.php
-	Copyright © 2006 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -40,7 +40,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(_SERVICES,_SRVUPNP_NAMEDESC,_SRVUPNP_CONTENT,isset($id)?_EDIT:_ADD);
+$pgtitle = array(gettext("Services"),gettext("UPnP"),_SRVUPNP_CONTENT,isset($id)?gettext("Edit"):gettext("Add"));
 
 if(!is_array($config['upnp']['content']))
 	$config['upnp']['content'] = array();
@@ -52,7 +52,7 @@ if($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "content");
-	$reqdfieldsn = array(_SRVUPNP_CONTENT);
+	$reqdfieldsn = array(gettext("Content"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if(!$input_errors) {
@@ -73,17 +73,17 @@ if($_POST) {
 <form action="services_upnp_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
-    	<td width="22%" valign="top" class="vncellreq"><?=_SRVUPNPEDIT_CONTENT;?></td>
+    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Content");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
 				<input name="content" type="text" class="formfld" id="content" size="60" value="<?=htmlspecialchars($config['upnp']['content'][$id]);?>">
 				<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.content; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
-				<br><?=_SRVUPNPEDIT_CONTENTTEXT;?>
+				<br><?=gettext("Directory to be shared.");?>
       </td>
     </tr>
     <tr> 
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>"> 
+      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"> 
         <?php if(isset($id)): ?>
         <input name="id" type="hidden" value="<?=$id;?>"> 
         <?php endif; ?>

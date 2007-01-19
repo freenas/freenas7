@@ -11,7 +11,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DIAG_NAME, _DIAGEXECPHP_NAMEDESC);
+$pgtitle = array(gettext("Diagnostics"), gettext("Execute command"));
 
 if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	session_cache_limiter('public');

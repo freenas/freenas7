@@ -3,7 +3,7 @@
 /*
 	acces_ad.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -34,7 +34,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_ACCESS_NAME,_ACCESSAD_NAME);
+$pgtitle = array(gettext("Access"),gettext("Active Directory"));
 
 
 if (!is_array($config['ad']))
@@ -75,11 +75,11 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if ($_POST['enable'] && !is_ipaddr($_POST['ad_srv_ip'])){
-  		$input_errors[] = _ACCESSAD_MSGVALIDIP;
+  		$input_errors[] = gettext("A valid IP address must be specified.");
   	}
   	
   	if (($_POST['admin_pass'] != $_POST['admin_pass2'])) {
-		$input_errors[] = _ACCESSAD_MSGVALIDPASSERROR;
+		$input_errors[] = gettext("Password don't match.");
 	}
 	
 	if (!$input_errors)
@@ -141,48 +141,48 @@ function enable_change(enable_change) {
                 <tr> 
                   <td colspan="2" valign="top" class="optsect_t">
 				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong><?=_ACCESSAD_NAME;?></strong></td>
-				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE;?></strong></td></tr>
+				  <tr><td class="optsect_s"><strong><?=gettext("Active Directory");?></strong></td>
+				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td></tr>
 				  </table></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSAD_ADNAME;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server name");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="ad_srv_name" type="text" class="formfld" id="ad_srv_name" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_name']);?>"> 
-                  <br><?=_ACCESSAD_ADNAMETEXT;?></td>
+                  <br><?=gettext("AD or PDC name.");?></td>
 				</tr>
                  <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSAD_IP;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server IP");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="ad_srv_ip" type="text" class="formfld" id="ad_srv_ip" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_ip']);?>"> 
-                  <br><?=_ACCESSAD_IPTEXT;?></td>
+                  <br><?=gettext("IP address of MS Active Directory server.");?></td>
 				</tr>
 				<tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSAD_DOMAIN;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="domain_name" type="text" class="formfld" id="domain_name" size="20" value="<?=htmlspecialchars($pconfig['domain_name']);?>"> 
-                  <br><?=_ACCESSAD_DOMAINTEXT;?></td>
+                  <br><?=gettext("Domain name in old format.");?></td>
 				</tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSAD_ADMINAME;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Administrator name");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="admin_name" type="text" class="formfld" id="admin_name" size="20" value="<?=htmlspecialchars($pconfig['admin_name']);?>"> 
-                  <br><?=_ACCESSAD_ADMINNAMETEXT;?></td>
+                  <br><?=gettext("Username of a domain administrator account.");?></td>
 				</tr>
 			
 				 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSAD_ADMINPASS;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Administration password");?></td>
                   <td width="78%" class="vtable">
                   <?=$mandfldhtml;?><input name="admin_pass" type="password" class="formfld" id="admin_pass" size="20" value="<?=htmlspecialchars($pconfig['admin_pass']);?>"> 
                     <br> <input name="admin_pass2" type="password" class="formfld" id="admin_pass2" size="20" value="<?=htmlspecialchars($pconfig['admin_pass2']);?>"> 
-                    &nbsp;(<?=_CONFIRMATION;?>)<br>
-                    <span class="vexpl"><?=_ACCESSAD_ADMINPASSTEXT;?></span></td>
+                    &nbsp;(<?=gettext("Confirmation");?>)<br>
+                    <span class="vexpl"><?=gettext("Password of domain administrator account, enter it here twice.");?></span></td>
                 </tr>
 				
 				<tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)"> 
                   </td>
                 </tr>
                 </table>

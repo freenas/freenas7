@@ -3,7 +3,7 @@
 /*
 	status_graph.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2006 Volker Theile <votdev@gmx.de>.
+	Copyright (C) 2006-2007 Volker Theile <votdev@gmx.de>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without

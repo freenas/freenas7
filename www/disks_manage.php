@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME,_DISKSMANAGEPHP_NAMEDESC);
+$pgtitle = array(_DISKSPHP_NAME,gettext("Management"));
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
@@ -79,8 +79,8 @@ if ($_GET['act'] == "del") {
   <tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">
-				<li class="tabact"><?=_DISKSPHP_MANAGE; ?></li>
-				<li class="tabinact"><a href="disks_manage_iscsi.php"><?=_DISKSPHP_ISCSIINIT; ?></a></li>
+				<li class="tabact"><?=gettext("Manage"); ?></li>
+				<li class="tabinact"><a href="disks_manage_iscsi.php"><?=gettext("iSCSI initiator"); ?></a></li>
   		</ul>
   	</td>
 	</tr>
@@ -89,17 +89,17 @@ if ($_GET['act'] == "del") {
 			<form action="disks_manage.php" method="post">
 			<?php if ($savemsg) print_info_box($savemsg); ?>
 			<?php if (file_exists($d_diskdirty_path)): ?><p>
-			<?php print_info_box_np(_DISKSMANAGEPHP_MSGCHANGED);?><br>
-			<input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY;?>"></p>
+			<?php print_info_box_np(gettext("The disk list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+			<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
 			<?php endif; ?>
 			<table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<tr>
 					<td width="5%" class="listhdrr"><?=_DISKSPHP_DISK; ?></td>
-					<td width="5%" class="listhdrr"><?=_SIZE; ?></td>
+					<td width="5%" class="listhdrr"><?=gettext("Size"); ?></td>
 					<td width="50%" class="listhdrr"><?=_DISKSMANAGEPHP_DESC; ?></td>
-					<td width="10%" class="listhdrr"><?=_DISKSMANAGEPHP_STANDBY; ?></td>
+					<td width="10%" class="listhdrr"><?=gettext("Standby time"); ?></td>
 					<td width="10%" class="listhdrr"><?=_DISKSPHP_FILESYSTEM; ?></td>
-					<td width="10%" class="listhdr"><?=_STATUS; ?></td>
+					<td width="10%" class="listhdr"><?=gettext("Status"); ?></td>
 					<td width="10%" class="list"></td>
 				</tr>
 			  <?php $i = 0; foreach ($a_disk_conf as $disk): ?>
@@ -107,19 +107,19 @@ if ($_GET['act'] == "del") {
 					<td class="listbg"><?=htmlspecialchars($disk['name']);?></td>
 					<td class="listbg"><?=htmlspecialchars($disk['size']);?></td>
 					<td class="listbg"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
-					<td class="listbg"><?php if($disk['harddiskstandby']) { $value=$disk['harddiskstandby']; echo $value; } else { echo _DISKSMANAGEPHP_STANDBYALWAYSON; }?>&nbsp;</td>
-					<td class="listbg"><?=($disk['fstype'])?get_fstype_shortdesc($disk['fstype']):_DISKSMANAGEPHP_FSUNKNOWN?>&nbsp;</td>           
+					<td class="listbg"><?php if($disk['harddiskstandby']) { $value=$disk['harddiskstandby']; echo $value; } else { echo gettext("Always on"); }?>&nbsp;</td>
+					<td class="listbg"><?=($disk['fstype'])?get_fstype_shortdesc($disk['fstype']):gettext("Unknown or unformatted")?>&nbsp;</td>           
 					<td class="listbg"><?php $stat=disks_status($disk);echo $stat;?>&nbsp;</td>           
-					<td valign="middle" nowrap class="list"> <a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_DISKSMANAGEPHP_EDIT;?>" width="17" height="17" border="0"></a>&nbsp;<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSMANAGEPHP_DELCONF; ?>')"><img src="x.gif" title="<?=_DISKSMANAGEPHP_DEL; ?>" width="17" height="17" border="0"></a></td>
+					<td valign="middle" nowrap class="list"> <a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" width="17" height="17" border="0"></a>&nbsp;<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" width="17" height="17" border="0"></a></td>
 				</tr>
 				<?php $i++; endforeach; ?>
 				<tr> 
 					<td class="list" colspan="6"></td>
-					<td class="list"> <a href="disks_manage_edit.php"><img src="plus.gif" title="<?=_DISKSMANAGEPHP_ADD; ?>" width="17" height="17" border="0"></a></td>
+					<td class="list"> <a href="disks_manage_edit.php"><img src="plus.gif" title="<?=gettext("Add disk"); ?>" width="17" height="17" border="0"></a></td>
 				</tr>
 			</table>
 		</form>
-		<p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_DISKSMANAGEPHP_NOTE;?></p>
+		<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("First configuration step: Add your hardrive to the disk list.");?></p>
 		</td>
 	</tr>
 </table>

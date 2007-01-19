@@ -67,54 +67,54 @@ function showhide(tspan, tri) {
     <td width="150" bgcolor="#9D9D9D">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
         <tr>
-          <td><span class="navlnk"><font color="#FFFFFF"> <strong><?=_MENULEFT_SYSTEM;?></strong> 
+          <td><span class="navlnk"><font color="#FFFFFF"> <strong><?=gettext("System");?></strong> 
               <br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system.php" class="navlnk"><?=_MENULEFT_SYSGENSETUP;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_routes.php" class="navlnk"><?=_MENULEFT_SYSSTATROUTES;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_hosts.php" class="navlnk"><?=_MENULEFT_SYSHOSTS;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_advanced.php" class="navlnk"><?=_MENULEFT_SYSADVANCED;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_firmware.php" class="navlnk"><?=_MENULEFT_SYSFIRMWARE;?></a><br>
-              <strong><?=_MENULEFT_INTERFACES;?></strong>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system.php" class="navlnk"><?=gettext("General setup");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_routes.php" class="navlnk"><?=gettext("Static routes");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_hosts.php" class="navlnk"><?=gettext("Hosts");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_advanced.php" class="navlnk"><?=gettext("Advanced");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_firmware.php" class="navlnk"><?=gettext("Firmware");?></a><br>
+              <strong><?=gettext("Interfaces");?></strong>
 			  <?php if (!isset($config['system']['webgui']['noassigninterfaces'])): ?>
-			  <a href="/interfaces_assign.php" class="navlnks">(<?=_MENULEFT_INTASSIGN;?>)</a>
+			  <a href="/interfaces_assign.php" class="navlnks">(<?=gettext("Assign");?>)</a>
 			  <?php endif; ?>
 			  <br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_lan.php" class="navlnk"><?=_MENULEFT_INTLAN;?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_lan.php" class="navlnk"><?=gettext("LAN");?></a><br>
               <?php for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++): ?>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_opt.php?index=<?=$i;?>" class="navlnk"><?=htmlspecialchars($config['interfaces']['opt' . $i]['descr']);?></a><br>
 			  <?php endfor; ?>
-              <strong><?=_MENULEFT_DISKS;?></strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_manage.php" class="navlnk"><?=_MENULEFT_DISKMANAG;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_raid_gmirror.php" class="navlnk"><?=_MENULEFT_DISKMNGSOFTRAID;?></a> <br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_init.php" class="navlnk"><?=_MENULEFT_DISKMNGFORMAT;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_mount.php" class="navlnk"><?=_MENULEFT_DISKMNGMOUNTPOINT;?></a><br>
+              <strong><?=gettext("Disks");?></strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_manage.php" class="navlnk"><?=gettext("Management");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_raid_gmirror.php" class="navlnk"><?=gettext("Software RAID");?></a> <br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_init.php" class="navlnk"><?=gettext("Format");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_mount.php" class="navlnk"><?=gettext("Mount Point");?></a><br>
  
-              <strong><?=_MENULEFT_SERVICES;?></strong><br>
-			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_samba.php" class="navlnk"><?=_MENULEFT_SRVCIFS;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_ftp.php" class="navlnk"><?=_MENULEFT_SRVFTP;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_nfs.php" class="navlnk"><?=_MENULEFT_SRVNFS;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_rsyncd.php" class="navlnk"><?=_MENULEFT_SRVRSYNCD;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_sshd.php" class="navlnk"><?=_MENULEFT_SRVSSHD;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_unison.php" class="navlnk"><?=_MENULEFT_SRVUNSN;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_afp.php" class="navlnk"><?=_MENULEFT_SRVAFP;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_upnp.php" class="navlnk"><?=_MENULEFT_SRVUPNP;?></a><br>
-              <strong><?=_MENULEFT_ACCESS;?></strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_users.php" class="navlnk"><?=_MENULEFT_ACUSERGROUPS;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_ad.php" class="navlnk"><?=_MENULEFT_ACMSAD;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/notavailable.php" class="navlnk"><?=_MENULEFT_ACNIS;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/notavailable.php" class="navlnk"><?=_MENULEFT_ACRADIUS;?></a><br>
-              <strong><?=_MENULEFT_STATUS;?></strong><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/index.php" class="navlnk"><?=_MENULEFT_STSYSTEM;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_process.php" class="navlnk"><?=_MENULEFT_STPROCESS;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_interfaces.php" class="navlnk"><?=_MENULEFT_STINTERFACES;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_disks.php" class="navlnk"><?=_MENULEFT_STDISKS;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_wireless.php" class="navlnk"><?=_MENULEFT_STWIRELESS;?></a><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_graph.php" class="navlnk"><?=_MENULEFT_GRAPH;?></a><br>
+              <strong><?=gettext("Services");?></strong><br>
+			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_samba.php" class="navlnk"><?=gettext("CIFS");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_ftp.php" class="navlnk"><?=gettext("FTP");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_nfs.php" class="navlnk"><?=gettext("NFS");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_rsyncd.php" class="navlnk"><?=gettext("RSYNCD");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_sshd.php" class="navlnk"><?=gettext("SSHD");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_unison.php" class="navlnk"><?=gettext("Unison");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_afp.php" class="navlnk"><?=gettext("AFP");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_upnp.php" class="navlnk"><?=gettext("UPnP");?></a><br>
+              <strong><?=gettext("Access");?></strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_users.php" class="navlnk"><?=gettext("Users and Groups");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_ad.php" class="navlnk"><?=gettext("Active Directory");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/notavailable.php" class="navlnk"><?=gettext("NIS");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/notavailable.php" class="navlnk"><?=gettext("Radius");?></a><br>
+              <strong><?=gettext("Status");?></strong><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/index.php" class="navlnk"><?=gettext("System");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_process.php" class="navlnk"><?=gettext("Process");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_interfaces.php" class="navlnk"><?=gettext("Interfaces");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_disks.php" class="navlnk"><?=gettext("Disks");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_wireless.php" class="navlnk"><?=gettext("Wireless");?></a><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_graph.php" class="navlnk"><?=gettext("Graph");?></a><br>
 <?php
 /* extensions section */
 if (is_dir("{$g['www_path']}/ext")):
 ?>
-              <strong><?=_MENULEFT_EXTENSIONS;?></strong><br>
+              <strong><?=gettext("Extensions");?></strong><br>
 <?php
 $dh = @opendir("{$g['www_path']}/ext");
 if ($dh) {
@@ -128,22 +128,22 @@ if ($dh) {
 endif;
 ?>
 			  <?php if (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_") || strstr($_SERVER['SCRIPT_FILENAME'], "reboot")): ?>
-			  <a href="javascript:showhide('diag','tri_diag')"><img src="/tri_o.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=_MENULEFT_DIAGNOSTICS;?></a></strong><br>
+			  <a href="javascript:showhide('diag','tri_diag')"><img src="/tri_o.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br>
 			  <span id="diag">
 			  <?php else: ?>
-			  <a href="javascript:showhide('diag','tri_diag')"><img src="/tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=_MENULEFT_DIAGNOSTICS;?></a></strong><br>
+			  <a href="javascript:showhide('diag','tri_diag')"><img src="/tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br>
 			  <span id="diag" style="display: none">
 			  <?php endif; ?>
-				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_logs.php" class="navlnk"><?=_MENULEFT_DIAGLOGS;?></a><br>
-				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_infos.php" class="navlnk"><?=_MENULEFT_DIAGINF;?></a><br>
-				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_ping.php" class="navlnk"><?=_MENULEFT_DIAGPINGTRACE;?></a><br>
-				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_arp.php" class="navlnk"><?=_MENULEFT_DIAGARPTAB;?></a><br>
-				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/exec.php" class="navlnk"><?=_MENULEFT_DIAGEXEC;?></a><br>
-				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_edit.php" class="navlnk"><?=_MENULEFT_DIAGEDITFILE;?></a><br>
-				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_backup.php" class="navlnk"><?=_MENULEFT_CMDBACKUPRESTORE;?></a><br>
-				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_defaults.php" class="navlnk"><?=_MENULEFT_CMDFACTORYDEF;?></a><br>
-				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/reboot.php" class="navlnk"><?=_MENULEFT_CMDREBOOTSYS;?></a>
-				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/shutdown.php" class="navlnk"><?=_MENULEFT_CMDSHUTDOWNSYS;?></a>
+				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_logs.php" class="navlnk"><?=gettext("Logs");?></a><br>
+				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_infos.php" class="navlnk"><?=gettext("Information");?></a><br>
+				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_ping.php" class="navlnk"><?=gettext("Ping/Traceroute");?></a><br>
+				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_arp.php" class="navlnk"><?=gettext("ARP table");?></a><br>
+				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/exec.php" class="navlnk"><?=gettext("Command");?></a><br>
+				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_edit.php" class="navlnk"><?=gettext("Edit File");?></a><br>
+				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_backup.php" class="navlnk"><?=gettext("Backup/Restore");?></a><br>
+				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_defaults.php" class="navlnk"><?=gettext("Factory defaults");?></a><br>
+				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/reboot.php" class="navlnk"><?=gettext("Reboot system");?></a>
+				  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/shutdown.php" class="navlnk"><?=gettext("Shutdown system");?></a>
 			  </span>
 			  </font></span>
             </td>

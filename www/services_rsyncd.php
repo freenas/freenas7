@@ -3,7 +3,7 @@
 /*
 	services_rsyncd.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_SERVICES,_SRVRYNCD_NAMEDESC);
+$pgtitle = array(gettext("Services"),gettext("RSYNCD"));
 
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();
@@ -63,14 +63,14 @@ if ($_POST) {
 
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "readonly port"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVRYNCD_READONLY,_SRVRYNCD_TCPORT));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Read only"),gettext("TCP port")));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if ($_POST['enable']) {
 		if (!is_port($_POST['port']))
-			$input_errors[] = _SRVRYNCD_MSGVALIDTCPPORT;
+			$input_errors[] = gettext("The TCP port must be a valid port number.");
 		else if (!is_numericint($_POST['maxcon']))
 			$input_errors[] = _SRVRYNCD_MSGVALIDMAXCON;
 	}
@@ -116,9 +116,9 @@ function enable_change(enable_change) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact"><a href="services_rsyncd.php" style="color:black" title="reload page"><?=_SRVRYNC_SERVER ;?></a></li>
-    <li class="tabinact"><a href="services_rsyncd_client.php"><?=_SRVRYNC_CLIENT ;?></a></li>
-    <li class="tabinact"><a href="services_rsyncd_local.php"><?=_SRVRYNC_LOCAL ;?></a></li>
+	<li class="tabact"><a href="services_rsyncd.php" style="color:black" title="reload page"><?=gettext("Server") ;?></a></li>
+    <li class="tabinact"><a href="services_rsyncd_client.php"><?=gettext("Client") ;?></a></li>
+    <li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local") ;?></a></li>
   </ul>
   </td></tr>
   <tr> 
@@ -128,15 +128,15 @@ function enable_change(enable_change) {
                 <tr> 
                   <td colspan="2" valign="top" class="optsect_t">
 				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong><?=_SRVRYNCD_RSYNCD; ?></strong></td>
-				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE;?></strong></td></tr>
+				  <tr><td class="optsect_s"><strong><?=gettext("Rsync Daemon"); ?></strong></td>
+				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td></tr>
 				  </table></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_SRVRYNCD_READONLY;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Read only");?></td>
                   <td width="78%" class="vtable">
 					<select name="readonly" class="formfld" id="readonly">
-                      <?php $types = array(_YES,_NO);
+                      <?php $types = array(gettext("Yes"),gettext("No"));
 					        $vals = explode(" ", "yes no");
 					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                       <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['readonly']) echo "selected";?>> 
@@ -146,7 +146,7 @@ function enable_change(enable_change) {
                     </select></td>
 				</tr>
 				  <tr>			  		
-			<td valign="top" class="vncellreq"><?=_SRVRYNCD_MAPUSER;?></td>
+			<td valign="top" class="vncellreq"><?=gettext("Map to user");?></td>
 	<td class="vtable"> 
 		<select name="rsyncd_user" class="formfld" id="rsyncd_user">
 		<option value="ftp"<?php if ($pconfig['rsyncd_user'] == "ftp") echo "selected";?>> 
@@ -159,28 +159,28 @@ function enable_change(enable_change) {
 		  <?php endforeach; ?>
 			</tr> 	
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_SRVRYNCD_TCPORT;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
-                     <br><?=_SRVRYNCD_TCPORTTEXT; ?></td>
+                     <br><?=gettext("Alternate TCP port. Default is 873"); ?></td>
                   </td>
 				</tr>
 				<tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_SRVRYNCD_MAXCON; ?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Maximum connections"); ?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="maxcon" type="text" class="formfld" id="maxcon" size="20" value="<?=htmlspecialchars($pconfig['maxcon']);?>"> 
-                  <br><?=_SRVRYNCD_MAXCONTEXT; ?></td>
+                  <br><?=gettext("Maximum number of simultaneous connections. Default is 0 (unlimited)."); ?></td>
 				</tr>
-				<td width="22%" valign="top" class="vncell"><?=_SRVRYNCD_MOTD;?></td>
+				<td width="22%" valign="top" class="vncell"><?=gettext("MOTD");?></td>
                   <td width="78%" class="vtable"> 
                     <textarea name="motd" cols="65" rows="7" id="motd" class="formpre"><?=htmlspecialchars($pconfig['motd']);?></textarea>
                     <br> 
-                    <?=_SRVRYNCD_MOTDTEXT;?></td>
+                    <?=gettext("Message of the day.");?></td>
                 </tr>
 				<tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)"> 
                   </td>
                 </tr>
                 </table>

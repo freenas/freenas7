@@ -3,7 +3,7 @@
 /*
 	shutdown.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,11 +33,11 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DIAG_NAME,_SHUT_NAME);
+$pgtitle = array(gettext("Diagnostics"),gettext("Shutdown system"));
 
 if ($_POST) {
-	if ($_POST['Submit'] != " " . _NO . " ") {
-		$rebootmsg = _SHUT_MSGSHUT;
+	if ($_POST['Submit'] != " " . gettext("No") . " ") {
+		$rebootmsg = gettext("The system is halting now. This may take one minute.");
 	} else {
 		header("Location: index.php");
 		exit;
@@ -49,8 +49,8 @@ if ($_POST) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><a href="shutdown.php" style="color:black" title="reload page"><?=_SHUT_NAME ;?></a></li>
-        <li class="tabinact"><a href="shutdown_sched.php"><?=_SHUTSCHED_NAME ;?></a></li></a></li>
+        <li class="tabact"><a href="shutdown.php" style="color:black" title="reload page"><?=gettext("Shutdown system") ;?></a></li>
+        <li class="tabinact"><a href="shutdown_sched.php"><?=gettext("Scheduled shutdown") ;?></a></li></a></li>
       </ul>
     </td>
   </tr>
@@ -59,10 +59,10 @@ if ($_POST) {
       <?php if ($rebootmsg): echo print_info_box($rebootmsg); system_halt(); else: ?>
       <form action="shutdown.php" method="post">
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
-          <p><strong><?=_SHUT_CONF;?></strong></p>
+          <p><strong><?=gettext("Are you sure you want to shutdown the system?");?></strong></p>
           <p>
-            <input name="Submit" type="submit" class="formbtn" value=" <?=_YES;?> ">
-            <input name="Submit" type="submit" class="formbtn" value=" <?=_NO;?> ">
+            <input name="Submit" type="submit" class="formbtn" value=" <?=gettext("Yes");?> ">
+            <input name="Submit" type="submit" class="formbtn" value=" <?=gettext("No");?> ">
           </p>
         </table>
       </form>

@@ -34,7 +34,7 @@
 require("guiconfig.inc");
 require("disks_raid.inc");
 
-$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GRAID5, _DISKSRAIDPHP_NAMEDESC);
+$pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("RAID"));
 
 if (!is_array($config['graid5']['vdisk']))
 	$config['graid5']['vdisk'] = array();
@@ -77,7 +77,7 @@ if ($_GET['act'] == "del") {
 			header("Location: disks_raid_graid5.php");
 			exit;
 		} else {
-			$errormsg = sprintf( _DISKSRAIDPHP_RAIDVOLUMEMOUNTERROR, "disks_mount.php");
+			$errormsg = sprintf( gettext("The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."), "disks_mount.php");
 		}
 	}
 }
@@ -86,18 +86,18 @@ if ($_GET['act'] == "del") {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_GMIRROR; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_GCONCAT; ?> </a></li>
-	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_GSTRIPE; ?></a></li>
-	<li class="tabact"><?=_DISKSRAIDPHP_GRAID5; ?></li>
-	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?> </a></li>
+	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("Geom Mirror"); ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("Geom Concat"); ?> </a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("Geom Stripe"); ?></a></li>
+	<li class="tabact"><?=gettext("Geom Raid5"); ?></li>
+	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?><?=gettext("(unstable)") ;?> </a></li>
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact"><?=_DISKSRAIDPHP_MANAGE; ?></li>
-	<li class="tabinact"><a href="disks_raid_graid5_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_graid5_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
+	<li class="tabact"><?=gettext("Manage RAID"); ?></li>
+	<li class="tabinact"><a href="disks_raid_graid5_tools.php"><?=gettext("Tools"); ?></a></li>
+	<li class="tabinact"><a href="disks_raid_graid5_info.php"><?=gettext("Information"); ?></a></li>
   </ul>
   </td></tr>
   
@@ -107,15 +107,15 @@ if ($_GET['act'] == "del") {
 <?php if ($errormsg) print_error_box($errormsg); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if (file_exists($d_raidconfdirty_path)): ?><p>
-<?php print_info_box_np(_DISKSRAIDPHP_MSGCHANGED);?><br>
-<input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY; ?>"></p>
+<?php print_info_box_np(gettext("The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes"); ?>"></p>
 <?php endif; ?>
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="25%" class="listhdrr"><?=_DISKSRAIDPHP_VOLUME; ?></td>
-                  <td width="25%" class="listhdrr"><?=_TYPE; ?></td>
-                  <td width="20%" class="listhdrr"><?=_SIZE; ?></td>
-                  <td width="20%" class="listhdrr"><?=_STATUS; ?></td>
+                  <td width="25%" class="listhdrr"><?=gettext("Volume Name"); ?></td>
+                  <td width="25%" class="listhdrr"><?=gettext("Type"); ?></td>
+                  <td width="20%" class="listhdrr"><?=gettext("Size"); ?></td>
+                  <td width="20%" class="listhdrr"><?=gettext("Status"); ?></td>
                   <td width="10%" class="list"></td>
 				</tr>
 			  <?php $i = 0; foreach ($a_raid as $raid): ?>
@@ -130,7 +130,7 @@ if ($_GET['act'] == "del") {
                   <?php
 		    $raidconfiguring=file_exists($d_raidconfdirty_path) && in_array($raid['name']."\n",file($d_raidconfdirty_path));
                     if ($raidconfiguring)
-						echo _CONFIGURING;
+						echo gettext("Configuring");
 					else
 						{
 						$tempo=$raid['name'];						
@@ -141,23 +141,23 @@ if ($_GET['act'] == "del") {
                    <td class="listbg">
                    <?php
                     if ($raidconfiguring)
-						echo _CONFIGURING;
+						echo gettext("Configuring");
 					else
 						{
 						echo "{$raidstatus[$tempo]['desc']}";
 						}
 						?>&nbsp;
                   </td>
-                  <td valign="middle" nowrap class="list"> <a href="disks_raid_graid5_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_DISKSRAIDPHP_EDITRAID; ?>" width="17" height="17" border="0"></a>
-                     &nbsp;<a href="disks_raid_graid5.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSRAIDPHP_DELCONF ;?>')"><img src="x.gif" title="<?=_DISKSRAIDPHP_DELRAID ;?>" width="17" height="17" border="0"></a></td>
+                  <td valign="middle" nowrap class="list"> <a href="disks_raid_graid5_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RAID"); ?>" width="17" height="17" border="0"></a>
+                     &nbsp;<a href="disks_raid_graid5.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" width="17" height="17" border="0"></a></td>
 				</tr>
 			  <?php $i++; endforeach; ?>
                 <tr> 
                   <td class="list" colspan="4"></td>
-                  <td class="list"> <a href="disks_raid_graid5_edit.php"><img src="plus.gif" title="<?=_DISKSRAIDPHP_ADDRAID;?>" width="17" height="17" border="0"></a></td>
+                  <td class="list"> <a href="disks_raid_graid5_edit.php"><img src="plus.gif" title="<?=gettext("Add RAID");?>" width="17" height="17" border="0"></a></td>
 				</tr>
               </table>
             </form>
-<p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_DISKSRAIDPHP_NOTE;?></p>
+<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("'Optional configuration step: Configuring a virtual RAID disk using your <a href="disks_manage.php">previsously configured disk</a>.<br>Wait for the "up" status before format and mount it!'");?></p>
 </td></tr></table>
 <?php include("fend.inc"); ?>

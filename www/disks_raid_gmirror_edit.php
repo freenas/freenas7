@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(_DISKSPHP_NAME,_DISKSRAIDPHP_NAMEDESC,isset($id)?_EDIT:_ADD);
+$pgtitle = array(gettext("Disks"),gettext("RAID"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['gmirror']['vdisk']))
 	$config['gmirror']['vdisk'] = array();
@@ -50,7 +50,7 @@ $all_raid = array_merge((array)$config['graid5']['vdisk'],(array)$config['gmirro
 $a_disk = get_fstype_disks_list("softraid");
 
 if (!sizeof($a_disk)) {
-	$nodisk_errors[] = _DISKSRAIDEDITPHP_MSGADDDISKFIRST;
+	$nodisk_errors[] = gettext("You must add disks first.");
 }
 
 if (isset($id) && $a_raid[$id]) {
@@ -67,12 +67,12 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "name");
-	$reqdfieldsn = array(_DISKSRAIDEDITPHP_RAIDNAME);
+	$reqdfieldsn = array(gettext("Raid name"));
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['name'] && !is_validaliasname($_POST['name']))) {
-		$input_errors[] = _DISKSRAIDEDITPHP_MSGVALIDNAME;
+		$input_errors[] = gettext("The device name may only consist of the characters a-z, A-Z, 0-9.");
 	}
 
 	/* check for name conflicts */
@@ -81,14 +81,14 @@ if ($_POST) {
 			continue;
 
 		if ($raid['name'] == $_POST['name']) {
-			$input_errors[] = _DISKSRAIDEDITPHP_MSGEXIST;
+			$input_errors[] = gettext("This device already exists in the raid volume list.");
 			break;
 		}
 	}
 
 	/* check the number of RAID disk for volume */
 	if (count($_POST['diskr']) != 2)
-		$input_errors[] = _DISKSRAIDEDITPHP_MSGVALIDRAID1;
+		$input_errors[] = gettext("There must be 2 disks in a RAID 1 volume.");
 
 	if (!$input_errors) {
 		$raid = array();
@@ -106,7 +106,7 @@ if ($_POST) {
 
    	$fd = @fopen("$d_raidconfdirty_path", "a");
    	if (!$fd) {
-   		echo "_DISKSRAIDEDITPHP_MSGERROR";
+   		echo "gettext("ERR Could not save RAID configuration.\n")";
    		exit(0);
    	}
    	fwrite($fd, "$raid[name]\n");
@@ -125,19 +125,19 @@ if ($_POST) {
 <form action="disks_raid_gmirror_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
-      <td valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_RAIDNAME;?></td>
+      <td valign="top" class="vncellreq"><?=gettext("Raid name");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDPHP_TYPE; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
       <td width="78%" class="vtable">
-      RAID 1 (<?=_DISKSRAIDEDITPHP_RAID1; ?>)
+      RAID 1 (<?=gettext("mirroring"); ?>)
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_GVBALANCEALGO; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Balance algorithm"); ?></td>
       <td width="78%" class="vtable">
         <select name="balance" class="formfld">
         <?php $balvals = array("split"=>"Split request", "load"=>"Read from lowest load", "round-robin"=>"Round-robin read"); ?>
@@ -145,10 +145,10 @@ if ($_POST) {
           <option value="<?=$balval;?>" <?php if($pconfig['balance'] == $balval) echo 'selected';?>><?=htmlspecialchars($balname);?></option>
         <?php endforeach; ?>
         </select><br>
-        <?=_DISKSRAIDEDITPHP_GVBALANCEALGOTEXT;?></td>
+        <?=gettext("Select your read balance algorithm.");?></td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_MEMBERS;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Members of this volume");?></td>
       <td width="78%" class="vtable">
       <?
         $i=0;
@@ -172,7 +172,7 @@ if ($_POST) {
     </tr>
     <tr>
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?_SAVE:_ADD;?>">
+      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>">
         <?php if (isset($id) && $a_raid[$id]): ?>
         <input name="id" type="hidden" value="<?=$id;?>">
         <?php endif; ?>

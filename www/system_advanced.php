@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_SYSTEMADVANCEDPHP_NAME, _SYSTEMADVANCEDPHP_NAMEDESC);
+$pgtitle = array(gettext("System"), _SYSTEMADVANCEDPHP_NAMEDESC);
 
 $pconfig['cert'] = base64_decode($config['system']['webgui']['certificate']);
 $pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
@@ -54,15 +54,15 @@ if ($_POST) {
 
 	/* input validation */
 	if ($_POST['tcpidletimeout'] && !is_numericint($_POST['tcpidletimeout'])) {
-		$input_errors[] = _SYSTEMADVANCEDPHP_MSGVALIDTCP;	
+		$input_errors[] = gettext("The TCP idle timeout must be an integer.");	
 	}
 	if (($_POST['cert'] && !$_POST['key']) || ($_POST['key'] && !$_POST['cert'])) {
-		$input_errors[] = _SYSTEMADVANCEDPHP_MSGVALIDCERTKEY;
+		$input_errors[] = gettext("Certificate and key must always be specified together.");
 	} else if ($_POST['cert'] && $_POST['key']) {
 		if (!strstr($_POST['cert'], "BEGIN CERTIFICATE") || !strstr($_POST['cert'], "END CERTIFICATE"))
-			$input_errors[] = _SYSTEMADVANCEDPHP_MSGVALIDCERT;
+			$input_errors[] = gettext("This certificate does not appear to be valid.");
 		if (!strstr($_POST['key'], "BEGIN RSA PRIVATE KEY") || !strstr($_POST['key'], "END RSA PRIVATE KEY"))
-			$input_errors[] = _SYSTEMADVANCEDPHP_MSGVALIDKEY;
+			$input_errors[] = gettext("This key does not appear to be valid.");
 	}
 
 	if (!$input_errors) {
@@ -120,89 +120,89 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-<p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_SYSTEMADVANCEDPHP_NOTE;?></p>
+<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them.");?></p>
 <form action="system_advanced.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr> 
       <td colspan="2" class="list" height="12"></td>
     </tr>
     <tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=_SYSTEMADVANCEDPHP_WEBGUISSLKEY;?></td>
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("webGUI SSL certificate\/key");?></td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_WEBCERT;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Certificate");?></td>
       <td width="78%" class="vtable"> 
         <textarea name="cert" cols="65" rows="7" id="cert" class="formpre"><?=htmlspecialchars($pconfig['cert']);?></textarea><br> 
-        <?=_SYSTEMADVANCEDPHP_WEBCERTTEXT;?>
+        <?=gettext("Paste a signed certificate in X.509 PEM format here.");?>
       </td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_WEBKEY;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Key");?></td>
       <td width="78%" class="vtable"> 
         <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea><br> 
-        <?=_SYSTEMADVANCEDPHP_WEBKEYTEXT;?>
+        <?=gettext("Paste an RSA private key in PEM format here.");?>
       </td>
     </tr>
     <tr> 
       <td colspan="2" class="list" height="12"></td>
     </tr>
     <tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=_SYSTEMADVANCEDPHP_MISC;?></td>
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("Miscellaneous");?></td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_CON;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Console menu");?></td>
       <td width="78%" class="vtable"> 
         <input name="disableconsolemenu" type="checkbox" id="disableconsolemenu" value="yes" <?php if ($pconfig['disableconsolemenu']) echo "checked"; ?>>
-        <strong><?=_SYSTEMADVANCEDPHP_DISCON;?></strong><span class="vexpl"><br><?=_SYSTEMADVANCEDPHP_CONTEXT;?></span>
+        <strong><?=gettext("Disable console menu");?></strong><span class="vexpl"><br><?=gettext("Changes to this option will take effect after a reboot.");?></span>
       </td>
     </tr>
     <tr>
-      <td valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_FIRM;?></td>
+      <td valign="top" class="vncell"><?=gettext("Firmware version check");?></td>
       <td class="vtable">
         <input name="disablefirmwarecheck" type="checkbox" id="disablefirmwarecheck" value="yes" <?php if ($pconfig['disablefirmwarecheck']) echo "checked"; ?>>
-        <strong><?=_SYSTEMADVANCEDPHP_DISFIRM;?></strong><span class="vexpl"><br><?=_SYSTEMADVANCEDPHP_FIRMTEXT;?></span>
+        <strong><?=gettext("Disable firmware version check");?></strong><span class="vexpl"><br><?=gettext("'This will cause FreeNAS not to check for newer firmware versions when the <a href=system_firmware.php>System: Firmware</a> page is viewed.'");?></span>
       </td>
     </tr>
 		<tr> 
-      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_NAV;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Navigation");?></td>
       <td width="78%" class="vtable"> 
         <input name="expanddiags" type="checkbox" id="expanddiags" value="yes" <?php if ($pconfig['expanddiags']) echo "checked"; ?>>
-        <strong><?=_SYSTEMADVANCEDPHP_NAVTEXT;?></strong>
+        <strong><?=gettext("Keep diagnostics in navigation expanded");?></strong>
       </td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_BEEP;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("System Beep");?></td>
       <td width="78%" class="vtable"> 
         <input name="disablebeep" type="checkbox" id="disablebeep" value="yes" <?php if ($pconfig['disablebeep']) echo "checked"; ?>>
-        <strong><?=_SYSTEMADVANCEDPHP_DISBEEP;?></strong>
+        <strong><?=gettext("Disable speaker beep on startup and shutdown");?></strong>
       </td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_SMART;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("S.M.A.R.T Daemon");?></td>
       <td width="78%" class="vtable"> 
         <input name="smart_enable" type="checkbox" id="smart_enable" value="yes" <?php if ($pconfig['smart_enable']) echo "checked"; ?>>
-        <strong><?=_SYSTEMADVANCEDPHP_ENSMART;?></strong><br>
-        <?=_SYSTEMADVANCEDPHP_SMARTTEXT;?>
+        <strong><?=gettext("Enable the S.M.A.R.T daemon");?></strong><br>
+        <?=gettext("Monitor the S.M.A.R.T device by logging their status in the log file.");?>
       </td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_TUNING;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Tuning");?></td>
       <td width="78%" class="vtable"> 
         <input name="tune_enable" type="checkbox" id="tune_enable" value="yes" <?php if ($pconfig['tune_enable']) echo "checked"; ?>>
-        <strong><?=_SYSTEMADVANCEDPHP_ENTUNING;?></strong>
+        <strong><?=gettext("Enable tuning of some kernel variable");?></strong>
       </td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncell"><?=_SYSTEMADVANCEDPHP_ZEROCONF;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("ZeroConf");?></td>
       <td width="78%" class="vtable"> 
         <input name="howl_disable" type="checkbox" id="howl_disable" value="yes" <?php if ($pconfig['howl_disable']) echo "checked"; ?>>
-        <strong><?=_SYSTEMADVANCEDPHP_DISZEROCONF;?></strong>
+        <strong><?=gettext("Disable ZeroConf service announce");?></strong>
       </td>
     </tr>
     <tr> 
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%"> 
-        <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onclick="enable_change(true)"> 
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)"> 
       </td>
     </tr>
   </table>

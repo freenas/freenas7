@@ -38,7 +38,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(_ACCESS_NAME,_ACCESS_USERS,isset($id)?_EDIT:_ADD);	
+$pgtitle = array(gettext("Access"),gettext("Users"),isset($id)?gettext("Edit"):gettext("Add"));	
 
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();
@@ -46,7 +46,7 @@ if (!is_array($config['access']['user']))
 users_sort();
 
 if (!is_array($config['access']['group']))
-	$nogroup_errors[] = _ACCESSUSERSEDIT_MSGGROUPFIRST;
+	$nogroup_errors[] = gettext("you must create a group first.");
 	/* $config['access']['group'] = array(); */
 else
 	groups_sort();
@@ -86,15 +86,15 @@ if ($_POST)
 	
 	/* check for valid login name */
 	if (($_POST['login'] && !is_validlogin($_POST['login']))) {
-		$input_errors[] = _ACCESSUSERSEDIT_MSGVALIDLOGIN;
+		$input_errors[] = gettext("The login name contains invalid characters.");
 	}
 	
 	if (($_POST['login'] && in_array($_POST['login'],$reservedlogin))) {
-		$input_errors[] = _ACCESSUSERSEDIT_MSGVALIDLOGINRESERVED;
+		$input_errors[] = gettext("The login name is a reserved login name.");
 	}
 	/* check for valid Full name */
 	if (($_POST['fullname'] && !is_validdesc($_POST['fullname']))) {
-		$input_errors[] = _ACCESSUSERSEDIT_MSGVALIDFULLNAME;
+		$input_errors[] = gettext("The full name contains invalid characters.");
 	}
 	
 	/* check for name conflicts */
@@ -105,7 +105,7 @@ if ($_POST)
 
 		if ($user['login'] == $_POST['login'])
 		{
-			$input_errors[] = _ACCESSUSERSEDIT_MSGVALIDDUPLICATE;
+			$input_errors[] = gettext("This user already exists in the user list.");
 			break;
 		}
 
@@ -113,13 +113,13 @@ if ($_POST)
 	
 	/* Check for a password mismatch */
 	if ($_POST['password']!=$_POST['passwordconf']) 	{
-			$input_errors[] = _ACCESSUSERSEDIT_MSGVALIDPASSERROR;
+			$input_errors[] = gettext("Password don't match.");
 	}
 	
 		/* check for valid password  */
 
 		if (($_POST['password'] && !is_validpassword($_POST['password']))) {
-		$input_errors[] = _ACCESSUSERSEDIT_MSGVALIDPASSWDBADCHAR;
+		$input_errors[] = gettext("The password contain the illegal : character");
 	}
 
 	if (!$input_errors) 	{
@@ -165,27 +165,27 @@ if ($_POST)
             <form action="access_users_edit.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSUSERSEDIT_LOGIN ;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Login") ;?></td>
                   <td width="78%" class="vtable"> 
                     <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>">
-                    <br><?=_ACCESSUSERSEDIT_LOGINTEXT ;?></td>
+                    <br><?=gettext("Unique login name of user.") ;?></td>
 				        </tr>
 				        <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSUSERSEDIT_FULLNAME ;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Full Name") ;?></td>
                   <td width="78%" class="vtable"> 
                     <input name="fullname" type="text" class="formfld" id="fullname" size="20" value="<?=htmlspecialchars($pconfig['fullname']);?>">
-                    <br><?=_ACCESSUSERSEDIT_FULLNAMETEXT ;?></td>
+                    <br><?=gettext("User full name.") ;?></td>
 				      </tr>
               <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSUSERSEDIT_PASSWORD ;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Password") ;?></td>
                   <td width="78%" class="vtable">
                     <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
-                    <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=_CONFIRMATION;?>)<br>
-                    <?=_ACCESSUSERSEDIT_PASSWORDTEXT ;?>
+                    <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
+                    <?=gettext("User password.") ;?>
                   </td>
                 </tr>
                 <tr>
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSUSERSEDIT_GROUPMEMBER ;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Group Member") ;?></td>
                   <td width="78%" class="vtable">
 		<select name="usergroup" class="formfld" id="usergroup">
 		  <?php foreach ($a_group as $group): ?>
@@ -196,10 +196,10 @@ if ($_POST)
 		  <?php endforeach; ?>
 			</tr>
 			<tr> 
-				  <td width="22%" valign="top" class="vncell"><?=_ACCESSUSERSEDIT_FULLSHELL ;?></td>
+				  <td width="22%" valign="top" class="vncell"><?=gettext("Full Shell") ;?></td>
 				  <td width="78%" class="vtable"> 
-				  <input name="fullshell" type="checkbox" value="yes" <?php if ($pconfig['fullshell']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE;?></strong>
-				  <br><?=_ACCESSUSERSEDIT_FULLSHELLTEXT;?></td>
+				  <input name="fullshell" type="checkbox" value="yes" <?php if ($pconfig['fullshell']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
+				  <br><?=gettext("Give full shell to user");?></td>
                 </tr>
 			
 		       <?php if (isset($id) && $a_user[$id]): ?>
@@ -208,7 +208,7 @@ if ($_POST)
                <?php endif; ?>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?_SAVE:_ADD;?>"> 
+                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>"> 
                     <?php if (isset($id) && $a_user[$id]): ?>
                     <input name="id" type="hidden" value="<?=$id;?>"> 
                     <?php endif; ?>

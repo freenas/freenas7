@@ -3,7 +3,7 @@
 /*
 	acces_nis.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -141,7 +141,7 @@ function enable_change(enable_change) {
 				<tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)"> 
                   </td>
                 </tr>
                 </table>

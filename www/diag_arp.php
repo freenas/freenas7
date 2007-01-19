@@ -30,7 +30,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DIAGARP_NAME, _DIAGARP_NAMEDESC);
+$pgtitle = array(gettext("Diagnostics"), gettext("ARP table"));
 
 $id = $_GET['id'];
 if (isset($_POST['id']))
@@ -199,10 +199,10 @@ function getHostName($mac,$ip)
 ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="listhdrr"><?=_DIAGARP_IPADDRESS;?></td>
-    <td class="listhdrr"><?=_DIAGARP_MACADDRESS;?></td>
-    <td class="listhdrr"><?=_DIAGARP_HOSTNAME;?></td>
-    <td class="listhdr"><?=_DIAGARP_INTERFACE;?></td>
+    <td class="listhdrr"><?=gettext("IP address");?></td>
+    <td class="listhdrr"><?=gettext("MAC address");?></td>
+    <td class="listhdrr"><?=gettext("Hostname");?></td>
+    <td class="listhdr"><?=gettext("Interface");?></td>
     <td class="list"></td>
   </tr>
   <?php $i = 0; foreach ($data as $entry): ?>
@@ -211,7 +211,7 @@ function getHostName($mac,$ip)
     <td class="listr"><?=$entry['mac'];?></td>
     <td class="listr"><?=getHostName($entry['mac'], $entry['ip']);?>&nbsp;</td>
     <td class="listr"><?=$hwif[$entry['interface']];?>&nbsp;</td>
-    <td valign="middle" nowrap class="list"><a href="diag_arp.php?act=del&id=<?=$entry['ip'];?>"><img src="x.gif" title="<?=_DIAGARP_DEL;?>" width="17" height="17" border="0"></a></td>
+    <td valign="middle" nowrap class="list"><a href="diag_arp.php?act=del&id=<?=$entry['ip'];?>"><img src="x.gif" title="<?=gettext("Delete ARP entry");?>" width="17" height="17" border="0"></a></td>
   </tr>
   <?php $i++; endforeach; ?>
   <tr> 
@@ -219,11 +219,11 @@ function getHostName($mac,$ip)
   </tr> 
   <tr> 
     <td class="list" colspan="4"></td>
-    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="<?=_DIAGARP_DELALL;?>" width="17" height="17" border="0"></a></td>
+    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="<?=gettext("Remove all entries from ARP table");?>" width="17" height="17" border="0"></a></td>
   </tr>
   <tr>
     <td colspan="4">
-      <span class="vexpl"><span class="red"><strong><?=_HINT;?>:<br></strong></span><?=_DIAGARP_NOTE;?></span>
+      <span class="vexpl"><span class="red"><strong><?=gettext("Hint");?>:<br></strong></span><?=gettext("'IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href="diag_logs_settings.php">Diagnostics: Logs</a> page.'");?></span>
     </td>
   </tr>
 </table>

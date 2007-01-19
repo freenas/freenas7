@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME,_DISKSMANAGEPHP_NAMEDESC);
+$pgtitle = array(gettext("Disks"),gettext("Management"));
 
 if (!is_array($config['iscsi'])) {
 	$config['iscsi'] = array();
@@ -53,13 +53,13 @@ if ($_POST) {
 
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "targetaddress targetname"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(_DISKSMANAGEISCSIPHP_TARGETIP,_DISKSMANAGEISCSIPHP_TARGETNAME));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Target IP address"),gettext("Targetname")));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['enable'] && !is_ipaddr($_POST['targetaddress'])) {
-  		$input_errors[] = _DISKSMANAGEISCSIPHP_MSGVALIDIP;
+  		$input_errors[] = gettext("A valid IP address must be specified.");
   }
 
 	if (!$input_errors) {
@@ -85,8 +85,8 @@ if ($_POST) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-      	<li class="tabinact"><a href="disks_manage.php"><?=_DISKSPHP_MANAGE; ?></a></li>
-      	<li class="tabact"><?=_DISKSPHP_ISCSIINIT; ?></li>
+      	<li class="tabinact"><a href="disks_manage.php"><?=gettext("Manage"); ?></a></li>
+      	<li class="tabact"><?=gettext("iSCSI initiator"); ?></li>
       </ul>
     </td>
   </tr>
@@ -109,32 +109,32 @@ function enable_change(enable_change) {
       <td colspan="2" valign="top" class="optsect_t">
         <table border="0" cellspacing="0" cellpadding="0" width="100%">
 				  <tr>
-            <td class="optsect_s"><strong><?=_DISKSMANAGEISCSIPHP_INITIATOR; ?></strong></td>
+            <td class="optsect_s"><strong><?=gettext("iSCSI Initiator"); ?></strong></td>
 				    <td align="right" class="optsect_s">
-              <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE; ?></strong>
+              <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable"); ?></strong>
             </td>
           </tr>
 				</table>
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_DISKSMANAGEISCSIPHP_TARGETIP; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Target IP address"); ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="targetaddress" type="text" class="formfld" id="targetaddress" size="20" value="<?=htmlspecialchars($pconfig['targetaddress']);?>"><br>
-        <?=_DISKSMANAGEISCSIPHP_TARGETIPTEXT; ?>
+        <?=gettext("IP address of the iSCSI target."); ?>
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_DISKSMANAGEISCSIPHP_TARGETNAME; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Targetname"); ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="targetname" type="text" class="formfld" id="targetname" size="20" value="<?=htmlspecialchars($pconfig['targetname']);?>"><br>
-        <?=_DISKSMANAGEISCSIPHP_TARGETNAMETEXT; ?>
+        <?=gettext("Targetname."); ?>
       </td>
     </tr>
 		<tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)">
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
       </td>
     </tr>
   </table>

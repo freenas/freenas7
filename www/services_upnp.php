@@ -2,11 +2,11 @@
 <?php
 /*
 	services_upnp.php
-	Copyright © 2006 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_SERVICES,_SRVUPNP_NAMEDESC);
+$pgtitle = array(gettext("Services"),gettext("UPnP"));
 
 if(!is_array($config['upnp']))
 	$config['upnp'] = array();
@@ -64,12 +64,12 @@ if($_POST) {
 	/* input validation */
 	if($_POST['enable']) {
 		$reqdfields = explode(" ", "name interface");
-		$reqdfieldsn = array(_SRVUPNP_NAME, _SRVUPNP_INTERFACE);
+		$reqdfieldsn = array(gettext("Name"), gettext("Interface"));
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 		if(0 == count($pconfig['content']))
-			$input_errors[] = _SRVUPNP_CONTENTINVALIDMSG;
+			$input_errors[] = gettext("No content directory to be shared.");
 	}
 
 	if(!$input_errors) {
@@ -121,30 +121,30 @@ function enable_change(enable_change) {
 	<?php if ($input_errors) print_input_errors($input_errors); ?>
 	<?php if ($savemsg) print_info_box($savemsg); ?>
 	<?php if (file_exists($d_upnpconfdirty_path)): ?><p>
-	<?php print_info_box_np(_SRVUPNP_MSGCHANGED);?><br>
-	<input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY;?>"></p>
+	<?php print_info_box_np(gettext("The content directory list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+	<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
 	<?php endif; ?>
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
       <td colspan="2" valign="top" class="optsect_t">
   		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
   		  <tr>
-          <td class="optsect_s"><strong><?=_SRVUPNP_UPNP;?></strong></td>
-  			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE;?></strong></td>
+          <td class="optsect_s"><strong><?=gettext("UPnP A/V Media Server");?></strong></td>
+  			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
         </tr>
   		  </table>
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVUPNP_NAME;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
         <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
-        <br><?=_SRVUPNP_NAMETEXT;?>
+        <br><?=gettext("UPnP friendly name.");?>
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVUPNP_INTERFACE;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Interface");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
         <select name="interface" class="formfld" id="interface">
@@ -154,16 +154,16 @@ function enable_change(enable_change) {
 					<?php endif; ?>
           <?php endforeach; ?>
         </select>
-        <br><?=_SRVUPNP_INTERFACETEXT;?>
+        <br><?=gettext("Interface to listen to.");?>
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVUPNP_CONTENT;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Content");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="90%" class="listhdrr"><?=_SRVUPNP_DIRECTORY;?></td>
+            <td width="90%" class="listhdrr"><?=gettext("Directory");?></td>
             <td width="10%" class="list"></td>
           </tr>
 					<?php $i = 0; foreach($pconfig['content'] as $contentv): ?>
@@ -171,8 +171,8 @@ function enable_change(enable_change) {
 						<td class="listlr"><?=htmlspecialchars($contentv);?> &nbsp;</td>
 						<td valign="middle" nowrap class="list">
 							<?php if(isset($config['upnp']['enable'])): ?>
-							<a href="services_upnp_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_SRVUPNP_EDITDIR;?>" width="17" height="17" border="0"></a>&nbsp;
-							<a href="services_upnp.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_SRVUPNP_DELCONF;?>')"><img src="x.gif" title="<?=_SRVUPNP_DELDIR; ?>" width="17" height="17" border="0"></a>
+							<a href="services_upnp_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit directory");?>" width="17" height="17" border="0"></a>&nbsp;
+							<a href="services_upnp.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this directory entry?");?>')"><img src="x.gif" title="<?=gettext("Delete directory"); ?>" width="17" height="17" border="0"></a>
 							<?php endif; ?>
 						</td>
 					</tr>
@@ -180,17 +180,17 @@ function enable_change(enable_change) {
 					<tr>
 						<td class="list" colspan="1"></td>
 						<td class="list">
-							<a href="services_upnp_edit.php"><img src="plus.gif" title="<?=_SRVUPNP_ADDDIR;?>" width="17" height="17" border="0"></a>
+							<a href="services_upnp_edit.php"><img src="plus.gif" title="<?=gettext("Add directory");?>" width="17" height="17" border="0"></a>
 						</td>
 					</tr>
         </table>
-        <?=_SRVUPNP_CONTENTTEXT;?>
+        <?=gettext("Directories to be shared.");?>
       </td>
     </tr>
     <tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)">
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
       </td>
     </tr>
   </table>

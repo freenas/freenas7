@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKS,_DISKSMOUNTPHP_NAME);
+$pgtitle = array(gettext("Disks"),gettext("Mount Point"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -90,9 +90,9 @@ if ($_GET['act'] == "ret")
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><?=_DISKSMOUNTPHP_MANAGE;?></li>
-        <li class="tabinact"><a href="disks_mount_tools.php"><?=_DISKSMOUNTPHP_TOOLS;?></a></li>
-        <li class="tabinact"><a href="disks_mount_fsck.php"><?=_DISKSMOUNTPHP_FSCK;?></a></li>
+        <li class="tabact"><?=gettext("Manage");?></li>
+        <li class="tabinact"><a href="disks_mount_tools.php"><?=gettext("Tools");?></a></li>
+        <li class="tabinact"><a href="disks_mount_fsck.php"><?=gettext("Fsck");?></a></li>
       </ul>
     </td>
   </tr>
@@ -101,17 +101,17 @@ if ($_GET['act'] == "ret")
       <form action="disks_mount.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
         <?php if (file_exists($d_mountdirty_path)): ?><p>
-        <?php print_info_box_np(_DISKSMOUNTPHP_MSGCHANGED);?><br>
-        <input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY;?>"></p>
+        <?php print_info_box_np(gettext("The mount point list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+        <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
         <?php endif; ?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="10%" class="listhdrr"><?=_DISK; ?></td>
-            <td width="10%" class="listhdrr"><?=_PARTITION; ?></td>
-            <td width="5%" class="listhdrr"><?=_FILESYSTEM; ?></td>
-            <td width="20%" class="listhdrr"><?=_DISKSMOUNTPHP_SHARENAME ;?></td>
-            <td width="25%" class="listhdrr"><?=_DESC ;?></td>
-            <td width="20%" class="listhdr"><?=_STATUS ;?></td>
+            <td width="10%" class="listhdrr"><?=gettext("Disk"); ?></td>
+            <td width="10%" class="listhdrr"><?=gettext("Partition"); ?></td>
+            <td width="5%" class="listhdrr"><?=gettext("File system"); ?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Share Name") ;?></td>
+            <td width="25%" class="listhdrr"><?=gettext("Description") ;?></td>
+            <td width="20%" class="listhdr"><?=gettext("Status") ;?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_mount as $mount): ?>
@@ -124,31 +124,31 @@ if ($_GET['act'] == "ret")
             <td class="listbg">
               <?php
               if (file_exists($d_mountdirty_path)) {
-                echo(_CONFIGURING);
+                echo(gettext("Configuring"));
               } else {
                 $stat = disks_check_mount($mount);
                 if(0 == $stat) {
-                  echo(_ERROR . " - <a href=\"disks_mount.php?act=ret&id=$i\">" . _RETRY . "</a>");
+                  echo(gettext("Error") . " - <a href=\"disks_mount.php?act=ret&id=$i\">" . gettext("Retry") . "</a>");
                 } else {
-                  echo(_OK);
+                  echo(gettext("OK"));
                 }
               }
               ?>&nbsp;
             </td>
             <td valign="middle" nowrap class="list">
               <a href="disks_mount_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit mount" width="17" height="17" border="0"></a>&nbsp;
-              <a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_DISKSMOUNTPHP_DELCONF;?>')"><img src="x.gif" title="<?=_DISKSMOUNTPHP_DEL; ?>" width="17" height="17" border="0"></a>
+              <a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("delete mount"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>
           <?php $i++; endforeach; ?>
           <tr> 
             <td class="list" colspan="6"></td>
-            <td class="list"><a href="disks_mount_edit.php"><img src="plus.gif" title="<?=_DISKSMOUNTPHP_ADD;?>" width="17" height="17" border="0"></a></td>
+            <td class="list"><a href="disks_mount_edit.php"><img src="plus.gif" title="<?=gettext("add mount");?>" width="17" height="17" border="0"></a></td>
           </tr>
         </table>
       </form>
-      <p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_DISKSMOUNTPHP_NOTE;?></p>
-      <p><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:</strong></span><br><?=_MSGFILESYSTEM;?></p>
+      <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("'Second configuration step: Declaring the filesystem used by your <a href="disks_manage.php">previously configured disk.</a><p>'");?></p>
+      <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!");?></p>
     </td>
   </tr>
 </table>

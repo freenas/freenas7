@@ -3,7 +3,7 @@
 /*
 	status_graph.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_STATSGRAPH_NAME, _STATSGRAPH_NAMEDESC);
+$pgtitle = array(gettext("Status"), gettext("Traffic graph"));
 
 $curif = "lan";
 if ($_GET['if'])
@@ -44,8 +44,8 @@ $ifnum = get_ifname($config['interfaces'][$curif]['if']);
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact"><?=_STATSGRAPH_NAMEDESC;?></li>
-	<li class="tabinact"><a href="status_graph_cpu.php"><?=_STATSGRAPHCPU_NAMEDESC;?></a></li>
+	<li class="tabact"><?=gettext("Traffic graph");?></li>
+	<li class="tabinact"><a href="status_graph_cpu.php"><?=gettext("CPU load");?></a></li>
   </ul>
   </td></tr>
   <tr> 

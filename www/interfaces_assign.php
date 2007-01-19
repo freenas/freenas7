@@ -32,7 +32,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_INTASSIGNPHP_NAME, _INTASSIGNPHP_NAMEDESC);
+$pgtitle = array(gettext("Interfaces"), gettext("Assign network ports"));
 
 /*
 	In this file, "port" refers to the physical port name,
@@ -64,9 +64,9 @@ if ($_POST) {
 	/* Deliver error message for any port with more than one assignment */
 	foreach ($portifmap as $portname => $ifnames) {
 		if (count($ifnames) > 1) {
-			$errstr = _INTASSIGNPHP_MSGVALIDPORT . $portname .
-				_INTASSIGNPHP_MSGVALIDPORTWASASSIG . count($ifnames) .
-				_INTASSIGNPHP_MSGVALIDINT;
+			$errstr = gettext("Port ") . $portname .
+				gettext(" was assigned to ") . count($ifnames) .
+				gettext(" interfaces:");
 				
 			foreach ($portifmap[$portname] as $ifn)
 				$errstr .= " " . $ifn;
@@ -177,8 +177,8 @@ if ($_GET['act'] == "add") {
     <td class="tabcont">
                     <table border="0" cellpadding="0" cellspacing="0">
                       <tr> 
-	<td class="listhdrr"><?=_INTASSIGNPHP_INT; ?></td>
-	<td class="listhdr"><?=_INTASSIGNPHP_PORT; ?></td>
+	<td class="listhdrr"><?=gettext("Interface"); ?></td>
+	<td class="listhdr"><?=gettext("Network port"); ?></td>
 	<td class="list">&nbsp;</td>
   </tr>
   <?php foreach ($config['interfaces'] as $ifname => $iface):
@@ -207,7 +207,7 @@ if ($_GET['act'] == "add") {
 		</td>
 		<td valign="middle" class="list"> 
 		  <?php if (($ifname != 'lan') && ($ifname != 'wan')): ?>
-		  <a href="interfaces_assign.php?act=del&id=<?=$ifname;?>"><img src="x.gif" title="<?=_INTASSIGNPHP_DELINT; ?>" width="17" height="17" border="0"></a> 
+		  <a href="interfaces_assign.php?act=del&id=<?=$ifname;?>"><img src="x.gif" title="<?=gettext("Delete interface"); ?>" width="17" height="17" border="0"></a> 
 		  <?php endif; ?>
 		</td>
   </tr>
@@ -216,7 +216,7 @@ if ($_GET['act'] == "add") {
   <tr>
 	<td class="list" colspan="2"></td>
 	<td class="list" nowrap>
-	<a href="interfaces_assign.php?act=add"><img src="plus.gif" title="<?=_INTASSIGNPHP_ADDINT; ?>" width="17" height="17" border="0"></a>
+	<a href="interfaces_assign.php?act=add"><img src="plus.gif" title="<?=gettext("Add interface"); ?>" width="17" height="17" border="0"></a>
 	</td>
   </tr>
   <?php else: ?>
@@ -225,9 +225,9 @@ if ($_GET['act'] == "add") {
   </tr>
   <?php endif; ?>
 </table>
-  <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>"><br><br>
-<p><span class="vexpl"><strong><span class="red"><?=_WARNING; ?>:</span><br>
-</strong><?=_INTASSIGNPHP_INTTEXT;?></td>
+  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"><br><br>
+<p><span class="vexpl"><strong><span class="red"><?=gettext("Warning"); ?>:</span><br>
+</strong><?=gettext("After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class=\"vexpl\">change the IP address of your computer</span></li><li><span class=\"vexpl\">access the webGUI with the new IP address</span></li></ul>");?></td>
 	</tr>
 </table>
 </form>

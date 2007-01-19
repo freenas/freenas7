@@ -3,7 +3,7 @@
 /*
 	services_sshd.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_SERVICES,_SRVSSHD_NAMEDESC);
+$pgtitle = array(gettext("Services"),gettext("SSHD"));
 
 if (!is_array($config['sshd'])) {
 	$config['sshd'] = array();
@@ -56,18 +56,18 @@ if ($_POST)
 
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "readonly"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVSSHD_READONLY));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Read only")));
 	}
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if (($_POST['port']) && !is_port($_POST['port'])) {
-		$input_errors[] = _SRVSSHD_MSGVALIDTCPPORT;
+		$input_errors[] = gettext("The TCP port must be a valid port number.");
 	}
 	
 	if ($_POST['key']) {
 		if (!strstr($_POST['key'], "BEGIN DSA PRIVATE KEY") || !strstr($_POST['key'], "END DSA PRIVATE KEY"))
-			$input_errors[] = _SRVSSHD_MSGVALIDKEY;
+			$input_errors[] = gettext("This key does not appear to be valid.");
 	}
 	
 	if (!$input_errors) {
@@ -110,15 +110,15 @@ function enable_change(enable_change) {
                 <tr> 
                   <td colspan="2" valign="top" class="optsect_t">
 				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong><?=_SRVSSHD_SSHD;?></strong></td>
-				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE;?></strong></td></tr>
+				  <tr><td class="optsect_s"><strong><?=gettext("SSH Daemon");?></strong></td>
+				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td></tr>
 				  </table></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_SRVSSHD_READONLY;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Read only");?></td>
                   <td width="78%" class="vtable">
 					<select name="readonly" class="formfld" id="readonly">
-                      <?php $types = array(_YES,_NO);
+                      <?php $types = array(gettext("Yes"),gettext("No"));
 					        $vals = explode(" ", "yes no");
 					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                       <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['readonly']) echo "selected";?>> 
@@ -128,32 +128,32 @@ function enable_change(enable_change) {
                     </select></td>
 				        </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_SRVSSHD_TCPORT;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
-                     <br><?=_SRVSSHD_TCPORTTEXT;?></td>
+                     <br><?=gettext("Alternate TCP port. Default is 22");?></td>
                   </td>
 				        </tr>
 				        <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVSSHD_PERMITROOTLOGIN;?></td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Permit root login");?></td>
                   <td width="78%" class="vtable"> 
                     <input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
-                    <?=_SRVSSHD_PERMITROOTLOGINTEXT;?>
+                    <?=gettext("Specifies whether it is allowed to login as superuser (root) directly.");?>
                 </tr>
                 <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=_SRVSSHD_KEY;?></td>
+                  <td colspan="2" valign="top" class="listtopic"><?=gettext("SSH key");?></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_SRVSSHD_PRIVATEKEY;?></td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Private Key");?></td>
                   <td width="78%" class="vtable"> 
                     <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea>
                     <br> 
-                    <?=_SRVSSHD_PRIVATEKEYTEXT;?></td>
+                    <?=gettext("Paste a DSA PRIVATE KEY in PEM format here.");?></td>
                 </tr>
 				        <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)"> 
                   </td>
                 </tr>
                 </table>

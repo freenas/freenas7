@@ -4,7 +4,7 @@
 	disks_raid_gvinum_info.php
 	
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -35,25 +35,25 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GVINUM, _DISKSRAIDPHP_NAMEDESC);
+$pgtitle = array(gettext("Disks"), gettext("Geom Vinum"), gettext("RAID"));
 
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_GMIRROR; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_GCONCAT; ?> </a></li>
-	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_GSTRIPE; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?></a></li> 
-	<li class="tabact"><?=_DISKSRAIDPHP_GVINUM; ?> <?=_DISKSRAIDPHP_UNSTABLE ;?></li>
+	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("Geom Mirror"); ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("Geom Concat"); ?> </a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("Geom Stripe"); ?></a></li>
+	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("Geom Raid5"); ?></a></li> 
+	<li class="tabact"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?></li>
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gvinum_tools.php"><?=_DISKSRAIDPHP_TOOLS; ?></a></li>
-	<li class="tabact"><?=_DISKSRAIDPHP_INFO; ?></li>
+	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Manage RAID"); ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gvinum_tools.php"><?=gettext("Tools"); ?></a></li>
+	<li class="tabact"><?=gettext("Information"); ?></li>
   </ul>
   </td></tr>
   <tr> 
@@ -63,7 +63,7 @@ $pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GVINUM, _DISKSRAIDPHP_NAMEDESC);
     
 echo "<pre>";
 
-echo "<strong>" . _DISKSRAIDINFOPHP_TEXT . "</strong><br>";
+echo "<strong>" . gettext("Software RAID information and status") . "</strong><br>";
 	exec("/sbin/gvinum list",$rawdata);
 	foreach ($rawdata as $line)
 	{

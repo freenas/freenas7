@@ -5,7 +5,7 @@
 	part of FreeNAS (http://freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
 	
-	Copyright (C) 2005 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -31,7 +31,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_INTLANPHP_NAME, _INTLANPHP_NAMEDESC);
+$pgtitle = array(gettext("Interfaces"), gettext("LAN"));
 
 $lancfg = &$config['interfaces']['lan'];
 
@@ -64,22 +64,22 @@ if ($_POST) {
 	/* input validation */
 	if ($_POST['type'] == "Static")   {
 		$reqdfields = explode(" ", "ipaddr subnet");
-		$reqdfieldsn = array(_INTPHP_IP,_INTPHP_NETMASK);
+		$reqdfieldsn = array(gettext("IP address"),gettext("Subnet bit count"));
 	
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
 	
 	if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr']))) {
-		$input_errors[] = _INTPHP_MSGVALIDIP;
+		$input_errors[] = gettext("A valid IP address must be specified.");
 	}
 	if (($_POST['subnet'] && !is_numeric($_POST['subnet']))) {
-		$input_errors[] = _INTPHP_MSGVALIDMASK;
+		$input_errors[] = gettext("A valid network bit count must be specified.");
 	}
 	if (($_POST['gateway'] && !is_ipaddr($_POST['gateway']))) {
-		$input_errors[] = _INTPHP_MSGVALIDGW;
+		$input_errors[] = gettext("A valid gateway must be specified.");
 	}
 	if (($_POST['mtu'] && !is_mtu($_POST['mtu']))) {
-		$input_errors[] = _INTPHP_MSGVALIDMTU;
+		$input_errors[] = gettext("A valid mtu size must be specified.");
 	}
 	
 	/* Wireless interface? */
@@ -175,12 +175,12 @@ function type_change() {
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if (file_exists($d_landirty_path)): ?><p>
-<?php print_info_box_np(_INTPHP_MSGCHANGED);?><br>
-  <input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY;?>"></p>
+<?php print_info_box_np(gettext("The LAN configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+  <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
 <?php endif; ?>
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr> 
-      <td valign="middle"><strong><?=_TYPE; ?></strong></td>
+      <td valign="middle"><strong><?=gettext("Type"); ?></strong></td>
       <td><select name="type" class="formfld" id="type" onchange="type_change()">
           <?php $opts = split(" ", "Static DHCP"); foreach ($opts as $opt): ?>
           <option <?php if ($opt == $pconfig['type']) echo "selected";?>> 
@@ -191,10 +191,10 @@ function type_change() {
       </td>
     </tr>
     <tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_STATIC; ?></td>
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("Static IP configuration"); ?></td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_IP; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address"); ?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
         / 
@@ -205,11 +205,11 @@ function type_change() {
           </option>
           <?php endfor; ?>
         </select>
-        <img name="calcnetmaskbits" src="calc.gif" title="<?=_INTPHP_CALCNETMASKBITS;?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
+        <img name="calcnetmaskbits" src="calc.gif" title="<?=gettext("Calculate netmask bits");?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
       </td>
     </tr>
      <tr> 
-      <td valign="top" class="vncellreq"><?=_INTPHP_GW; ?></td>
+      <td valign="top" class="vncellreq"><?=gettext("Gateway"); ?></td>
       <td class="vtable">
         <?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>">
       </td>
@@ -218,45 +218,45 @@ function type_change() {
       <td colspan="2" valign="top" height="16"></td>
     </tr>
     <tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_DHCP; ?></td>
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("DHCP client configuration"); ?></td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPCLIENTIDENTIFIER;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Client Identifier");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
-        <br><span class="vexpl"><?=_INTPHP_DHCPCLIENTIDENTIFIERTEXT;?></span>
+        <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.");?></span>
       </td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPHOSTNAME;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled><br>
-        <span class="vexpl"><?=_INTPHP_DHCPHOSTNAMETEXT;?></span>
+        <span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
       </td>
     </tr>
     <tr> 
       <td colspan="2" valign="top" height="4"></td>
     </tr>
     <tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_GENERAL; ?></td>
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("General configuration"); ?></td>
     </tr>
     <tr> 
-      <td valign="top" class="vncell"><?=_INTPHP_MTU; ?></td>
+      <td valign="top" class="vncell"><?=gettext("MTU"); ?></td>
       <td class="vtable">
         <?=$mandfldhtml;?><input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>">&nbsp;<br>
-        <?=_INTPHP_MTUTEXT; ?>
+        <?=gettext("Standard MTU is 1500, use 9000 for jumbo frame."); ?>
       </td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncell"><?=_INTPHP_POLLING; ?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Device polling"); ?></td>
       <td width="78%" class="vtable"> 
         <input name="polling" type="checkbox" id="polling" value="yes" <?php if ($pconfig['polling']) echo "checked"; ?>>
-        <strong><?=_INTPHP_ENPOLLING; ?></strong><br>
-        <?=_INTPHP_POLLINGTEXT; ?>
+        <strong><?=gettext("Enable device polling"); ?></strong><br>
+        <?=gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards."); ?>
       </td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncell"><?=_INTPHP_SPEED; ?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Speed"); ?></td>
       <td width="78%" class="vtable">
         <select name="media" class="formfld" id="media">
           <?php $types = explode(",", "autoselect,10baseT/UTP,100baseTX,1000baseTX,1000baseSX");
@@ -270,7 +270,7 @@ function type_change() {
       </td>
 		</tr>
 		<tr> 
-      <td width="22%" valign="top" class="vncell"><?=_INTPHP_DUPLEX; ?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Duplex"); ?></td>
       <td width="78%" class="vtable">
         <select name="mediaopt" class="formfld" id="mediaopt">
           <?php $types = explode(",", "half-duplex,full-duplex");
@@ -291,13 +291,13 @@ function type_change() {
     <tr> 
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%"> 
-        <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>"> 
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"> 
       </td>
     </tr>
     <tr> 
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"><span class="vexpl"><span class="red"><strong><?=_WARNING; ?>:<br>
-        </strong></span><?=_INTPHP_TEXT; ?>
+      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
+        </strong></span><?=gettext("after you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access FreeNAS again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"); ?>
         </span></td>
     </tr>
   </table>

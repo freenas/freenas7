@@ -30,7 +30,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DIAGTRACEROUTE_NAME, _DIAGTRACEROUTE_NAMEDESC);
+$pgtitle = array(gettext("Diagnostics"), gettext("Ping/Traceroute"));
 
 define('MAX_TTL', 64);
 define('DEFAULT_TTL', 18);
@@ -103,7 +103,7 @@ if (!isset($do_traceroute)) {
 				</tr>
 				<tr>
 				<td valign="top" colspan="2">
-				<p><span class="vexpl"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_DIAGTRACEROUTE_NOTE;?></p>
+				<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.");?></p>
 				<? if ($do_traceroute) {
 					echo("<br><strong>Traceroute output:</strong><br>");
 					echo('<pre>');

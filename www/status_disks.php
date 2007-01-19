@@ -3,7 +3,7 @@
 /*
 	status_disks.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_STATSDISKS_NAME, _STATSDISKS_NAMEDESC);
+$pgtitle = array(gettext("Status"), gettext("Disks"));
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
@@ -47,10 +47,10 @@ $a_disk_conf = &$config['disks']['disk'];
 <?php include("fbegin.inc"); ?>
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="5%" class="listhdrr"><?=_STATSDISKS_DISK;?></td>
-                  <td width="5%" class="listhdrr"><?=_STATSDISKS_SIZE;?></td>
-                  <td width="60%" class="listhdrr"><?=_STATSDISKS_DESC;?></td>
-                  <td width="10%" class="listhdr"><?=_STATSDISKS_STATUS;?></td>
+                  <td width="5%" class="listhdrr"><?=gettext("Disk");?></td>
+                  <td width="5%" class="listhdrr"><?=gettext("Size");?></td>
+                  <td width="60%" class="listhdrr"><?=gettext("Description");?></td>
+                  <td width="10%" class="listhdr"><?=gettext("Status");?></td>
 				</tr>
 			  <?php foreach ($a_disk_conf as $disk): ?>
                 <tr>

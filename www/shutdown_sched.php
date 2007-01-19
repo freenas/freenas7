@@ -3,7 +3,7 @@
 /*
 	shutdown_sched.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	Cron configuration from services_rsynclient.php improved by Mat Murdock <mmurdock@kimballequipment.com>
 
@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DIAG_NAME,_SHUTSCHED_NAME);
+$pgtitle = array(gettext("Diagnostics"),gettext("Scheduled shutdown"));
 
 if (!is_array($config['shutdown'])){
 	$config['shutdown'] = array();
@@ -87,8 +87,8 @@ $pconfig['all_days'] = $config['shutdown']['all_days'];
 $pconfig['all_months'] = $config['shutdown']['all_months'];
 $pconfig['all_weekdays'] = $config['shutdown']['all_weekdays'];
 
-$a_months = explode(" ",_MONTH_LONG);
-$a_weekdays = explode(" ",_DAY_OF_WEEK_LONG);
+$a_months = explode(" ",gettext("January February March April May June July August September October November December"));
+$a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Friday Saturday"));
 
 if ($pconfig['all_mins'] == 1){
    $all_mins_all = " checked";
@@ -154,8 +154,8 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="shutdown.php"><?=_SHUT_NAME ;?></a></li>
-        <li class="tabact"><a href="shutdown_sched.php" style="color:black" title="reload page"><?=_SHUTSCHED_NAME ;?></a></li>
+        <li class="tabinact"><a href="shutdown.php"><?=gettext("Shutdown system") ;?></a></li>
+        <li class="tabact"><a href="shutdown_sched.php" style="color:black" title="reload page"><?=gettext("Scheduled shutdown") ;?></a></li>
       </ul>
     </td>
   </tr>
@@ -167,24 +167,24 @@ function enable_change(enable_change) {
             <td colspan="2" valign="top" class="optsect_t">
               <table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tr>
-                  <td class="optsect_s"><strong><?=_SHUTSCHED_NAME; ?></strong></td>
+                  <td class="optsect_s"><strong><?=gettext("Scheduled shutdown"); ?></strong></td>
                   <td align="right" class="optsect_s">
-                    <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE; ?></strong>
+                    <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable"); ?></strong>
                   </td>
                 </tr>
 				      </table>
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=_SHUTSCHED_TIME;?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Shutdown Time");?></td>
             <td width="78%" class="vtable">
               <table width=100% border cellpadding="6" cellspacing="0">
                 <tr>
-                  <td class="optsect_t"><b class="optsect_s"><?=_MINUTES;?></b></td>
-                  <td class="optsect_t"><b class="optsect_s"><?=_HOURS;?></b></td>
-                  <td class="optsect_t"><b class="optsect_s"><?=_DAYS;?></b></td>
-                  <td class="optsect_t"><b class="optsect_s"><?=_MONTHS;?></b></td>
-                  <td class="optsect_t"><b class="optsect_s"><?=_WEEKDAYS;?></b></td>
+                  <td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>
+                  <td class="optsect_t"><b class="optsect_s"><?=gettext("hours");?></b></td>
+                  <td class="optsect_t"><b class="optsect_s"><?=gettext("days");?></b></td>
+                  <td class="optsect_t"><b class="optsect_s"><?=gettext("months");?></b></td>
+                  <td class="optsect_t"><b class="optsect_s"><?=gettext("week days");?></b></td>
                 </tr>
                 <tr bgcolor=#cccccc>
                   <td valign=top>
@@ -463,7 +463,7 @@ function enable_change(enable_change) {
                         </table></td>
                     </tr>
                     <tr bgcolor=#cccccc>
-                      <td colspan=5><?=_SHUTSCHED_TEXT;?></td>
+                      <td colspan=5><?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.");?></td>
                     </tr>
                   </table>
 
@@ -473,7 +473,7 @@ function enable_change(enable_change) {
 				<tr>
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%">
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)">
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
                   </td>
                 </tr>
                 </table>

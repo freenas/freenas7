@@ -30,7 +30,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_STATSWIRELESS_NAME, _STATSWIRELESS_NAMEDESC);
+$pgtitle = array(gettext("Status"), gettext("Wireless"));
 
 function get_wireless_info($ifdescr) {
 	global $config, $g;
@@ -106,19 +106,19 @@ if (count($ifdescrs) > 0): ?>
     <?php endif; ?>
     <tr>
       <td colspan="2" class="listtopic">
-        <?=sprintf(_STATSWIRELESS_INTERFACE, htmlspecialchars($ifname), htmlspecialchars($config['interfaces'][$ifdescr]['wireless']['ssid']));?>
+        <?=sprintf(gettext("%s interface (SSID '%s')"), htmlspecialchars($ifname), htmlspecialchars($config['interfaces'][$ifdescr]['wireless']['ssid']));?>
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellt"><?=_STATSWIRELESS_SIGNALSTRENGTHCACHE;?></td>
+      <td width="22%" valign="top" class="vncellt"><?=gettext("Signal strength cache");?></td>
       <td width="78%" class="listrpad">
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="30%" class="listhdrr"><?=_STATSWIRELESS_MACADDRESS;?></td>
-            <td width="25%" class="listhdrr"><?=_STATSWIRELESS_IPADDRESS;?></td>
-            <td width="15%" class="listhdrr"><?=_STATSWIRELESS_SIGNAL;?></td>
-            <td width="15%" class="listhdrr"><?=_STATSWIRELESS_NOISE;?></td>
-            <td width="15%" class="listhdr"><?=_STATSWIRELESS_QUALITY;?></td>
+            <td width="30%" class="listhdrr"><?=gettext("MAC address");?></td>
+            <td width="25%" class="listhdrr"><?=gettext("IP address");?></td>
+            <td width="15%" class="listhdrr"><?=gettext("Signal");?></td>
+            <td width="15%" class="listhdrr"><?=gettext("Noise");?></td>
+            <td width="15%" class="listhdr"><?=gettext("Quality");?></td>
           </tr>
           <?php foreach ($ifinfo['sscache'] as $ss): ?>
           <tr>
@@ -143,13 +143,13 @@ if (count($ifdescrs) > 0): ?>
     </tr>
     <?php if ($ifinfo['aslist']): ?>
     <tr>
-      <td width="22%" valign="top" class="vncellt"><?=_STATSWIRELESS_ASSOCIATEDSTATIONS;?></td>
+      <td width="22%" valign="top" class="vncellt"><?=gettext("Associated stations");?></td>
       <td width="78%" class="listrpad">
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="40%" class="listhdrr"><?=_STATSWIRELESS_MACADDRESS;?></td>
-            <td width="40%" class="listhdrr"><?=_STATSWIRELESS_TXRATES;?></td>
-            <td width="20%" class="listhdrr"><?=_STATSWIRELESS_SIGNAL;?></td>
+            <td width="40%" class="listhdrr"><?=gettext("MAC address");?></td>
+            <td width="40%" class="listhdrr"><?=gettext("TX rates");?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Signal");?></td>
           </tr>
           <?php foreach ($ifinfo['aslist'] as $as): ?>
           <tr>
@@ -171,6 +171,6 @@ if (count($ifdescrs) > 0): ?>
     <?php $i++; endforeach; ?>
   </table>
 <?php else: ?>
-  <strong><?=_STATSWIRELESS_MSGNOWINTFOUND;?></strong>
+  <strong><?=gettext("No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported).");?></strong>
 <?php endif; ?>
 <?php include("fend.inc"); ?>

@@ -31,7 +31,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_SYSTEMROUTESPHP_NAME, _SYSTEMROUTESPHP_NAME_DESCRIPTION);
+$pgtitle = array(gettext("System"), _SYSTEMROUTESPHP_NAME_DESCRIPTION);
 
 if (!is_array($config['staticroutes']['route']))
 	$config['staticroutes']['route'] = array();
@@ -74,15 +74,15 @@ if ($_GET['act'] == "del") {
 <form action="system_routes.php" method="post">
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if (file_exists($d_staticroutesdirty_path)): ?><p>
-<?php print_info_box_np(_SYSTEMROUTESPHP_MSG_CHANGED);?><br>
-<input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY;?>"></p>
+<?php print_info_box_np(gettext("The static route configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
 <?php endif; ?>
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr>
-                  <td width="15%" class="listhdrr"><?=_SYSTEMROUTESPHP_INT;?></td>
-                  <td width="25%" class="listhdrr"><?=_SYSTEMROUTESPHP_NET;?></td>
-                  <td width="20%" class="listhdrr"><?=_SYSTEMROUTESPHP_GW;?></td>
-                  <td width="30%" class="listhdr"><?=_SYSTEMROUTESPHP_DESC;?></td>
+                  <td width="15%" class="listhdrr"><?=gettext("Interface");?></td>
+                  <td width="25%" class="listhdrr"><?=gettext("Network");?></td>
+                  <td width="20%" class="listhdrr"><?=gettext("Gateway");?></td>
+                  <td width="30%" class="listhdr"><?=gettext("Description");?></td>
                   <td width="10%" class="list"></td>
 				</tr>
 			  <?php $i = 0; foreach ($a_routes as $route): ?>
@@ -103,13 +103,13 @@ if ($_GET['act'] == "del") {
                   <td class="listbg">
                     <?=htmlspecialchars($route['descr']);?>&nbsp;
                   </td>
-                  <td valign="middle" nowrap class="list"> <a href="system_routes_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=_SYSTEMROUTESPHP_EDITROUTE;?>" width="17" height="17" border="0"></a>
-                     &nbsp;<a href="system_routes.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=_SYSTEMROUTESPHP_MSGCONFIRM;?>')"><img src="x.gif" title="<?=_SYSTEMROUTESPHP_DELROUTE;?>" width="17" height="17" border="0"></a></td>
+                  <td valign="middle" nowrap class="list"> <a href="system_routes_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Route");?>" width="17" height="17" border="0"></a>
+                     &nbsp;<a href="system_routes.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this route?");?>')"><img src="x.gif" title="<?=gettext("Delete Route");?>" width="17" height="17" border="0"></a></td>
 				</tr>
 			  <?php $i++; endforeach; ?>
                 <tr> 
                   <td class="list" colspan="4"></td>
-                  <td class="list"> <a href="system_routes_edit.php"><img src="plus.gif" title="<?=_SYSTEMROUTESPHP_ADDROUTE;?>" width="17" height="17" border="0"></a></td>
+                  <td class="list"> <a href="system_routes_edit.php"><img src="plus.gif" title="<?=gettext("Add Route");?>" width="17" height="17" border="0"></a></td>
 				</tr>
               </table>
             </form>

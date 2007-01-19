@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME,_DISKSMANAGEINITPHP_NAMEDESC);
+$pgtitle = array(gettext("Disks"),gettext("Initialize"));
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
@@ -91,7 +91,7 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "disk type");
-	$reqdfieldsn = array(_DISK,_TYPE);
+	$reqdfieldsn = array(gettext("Disk"),gettext("Type"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (!$input_errors) {
@@ -102,7 +102,7 @@ if ($_POST) {
 
 		/* Check if disk is mounted. */ 
 		if(disks_check_mount_fullname($disk)) {
-			$errormsg = sprintf( _DISKSMANAGEINITPHP_DISKMOUNTERROR, "disks_mount_tools.php?disk={$disk}&action=umount");
+			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
 			$do_format = false;
 		}
 
@@ -196,7 +196,7 @@ function disk_change() {
 			<form action="disks_init.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
-            <td valign="top" class="vncellreq"><?=_DISK; ?></td>
+            <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
             <td class="vtable">
               <select name="disk" class="formfld" id="disk" onchange="disk_change()">
                 <?php foreach ($a_alldisk as $diskv): ?>
@@ -207,7 +207,7 @@ function disk_change() {
               </select>
             </td>
       		</tr>
-          <td valign="top" class="vncellreq"><?=_DISKSPHP_FILESYSTEM; ?></td>
+          <td valign="top" class="vncellreq"><?=gettext("File system"); ?></td>
           <td class="vtable">
             <select name="type" class="formfld" id="type">
               <?php foreach ($a_fst as $fstval => $fstname): ?>
@@ -216,23 +216,23 @@ function disk_change() {
              </select>
           </td>
           <tr>
-            <td width="22%" valign="top" class="vncell"><strong><?=_DISKSPHP_NOMBR; ?><strong></td>
+            <td width="22%" valign="top" class="vncell"><strong><?=gettext("Don't Erase MBR"); ?><strong></td>
             <td width="78%" class="vtable">
               <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes" >
-              <?=_DISKSPHP_NOMBRTEXT; ?><br>
+              <?=gettext("don't erase the MBR (useful for some RAID controller cards)"); ?><br>
 						</td>
 				  </tr>
   				<tr>
   				  <td width="22%" valign="top">&nbsp;</td>
   				  <td width="78%">
-              <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMANAGEINITPHP_FORMATDISC;?>" onclick="return confirm('<?=_DISKSMANAGEINITPHP_FORMATDISCCONF;?>')">
+              <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Format disk");?>" onclick="return confirm('<?=gettext("Do you really want to format this disk? All data will be lost!");?>')">
   				  </td>
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">
     				<? if ($do_format)
     				{
-    					echo(_DISKSMANAGEINITPHP_INITTEXT);
+    					echo(gettext("<strong>Disk initialization details:</strong>"));
     					echo('<pre>');
     					ob_end_flush();
 
@@ -328,8 +328,8 @@ function disk_change() {
   				</tr>
 			 </table>
     </form>
-    <p><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:<br></strong></span><?=_DISKSMANAGEINITPHP_TEXT;?></span></p>
-    <p><span class="vexpl"><?=_MSGFILESYSTEM;?></p>
+    <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br></strong></span><?=gettext("This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified.");?></span></p>
+    <p><span class="vexpl"><?=gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!");?></p>
   </td></tr>
 </table>
 <script language="JavaScript">

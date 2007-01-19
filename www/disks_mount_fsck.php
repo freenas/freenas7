@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME,_DISKSMOUNTFSCK_NAMEDESC);
+$pgtitle = array(gettext("Disks"),gettext("Tools"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -52,7 +52,7 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "disk");
-	$reqdfieldsn = array(_DISK);
+	$reqdfieldsn = array(gettext("Disk"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if(!$input_errors) {
@@ -74,9 +74,9 @@ if (!isset($do_fsck)) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-				<li class="tabinact"><a href="disks_mount.php"><?=_DISKSMOUNTPHP_MANAGE;?></a></li>
-        <li class="tabinact"><a href="disks_mount_tools.php"><?=_DISKSMOUNTPHP_TOOLS;?></a></li>
-				<li class="tabact"><?=_DISKSMOUNTPHP_FSCK;?></a></li>
+				<li class="tabinact"><a href="disks_mount.php"><?=gettext("Manage");?></a></li>
+        <li class="tabinact"><a href="disks_mount_tools.php"><?=gettext("Tools");?></a></li>
+				<li class="tabact"><?=gettext("Fsck");?></a></li>
       </ul>
     </td>
   </tr>
@@ -86,7 +86,7 @@ if (!isset($do_fsck)) {
 			<form action="disks_mount_fsck.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
-            <td valign="top" class="vncellreq"><?=_DISK;?></td>
+            <td valign="top" class="vncellreq"><?=gettext("Disk");?></td>
             <td class="vtable">
               <select name="disk" class="formfld" id="disk" onchange="disk_change()">
                 <?php foreach ($a_mount as $mount): ?>
@@ -102,20 +102,20 @@ if (!isset($do_fsck)) {
             <td width="22%" valign="top" class="vncell"></td>
             <td width="78%" class="vtable"> 
               <input name="umount" type="checkbox" id="umount" value="yes" <?php if ($umount) echo "checked"; ?>>
-              <strong><?=_DISKSMOUNTFSCK_UMOUNT;?></strong><span class="vexpl"><br>
-              <?=_DISKSMOUNTFSCK_UMOUNTTEXT;?></span>
+              <strong><?=gettext("Unmount disk/partition");?></strong><span class="vexpl"><br>
+              <?=gettext("If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process.");?></span>
             </td>
           </tr>
   				<tr>
   				  <td width="22%" valign="top">&nbsp;</td>
   				  <td width="78%">
-             <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSMOUNTPHP_FSCK;?>"">
+             <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Fsck");?>"">
   				  </td>
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">
 						<?php if($do_fsck) {
-							echo("<strong>" . _DISKSMOUNTFSCK_CMDINFO . "</strong><br>");
+							echo("<strong>" . gettext("Command output:") . "</strong><br>");
 							echo('<pre>');
 							ob_end_flush();
 
@@ -127,7 +127,7 @@ if (!isset($do_fsck)) {
 							$ismounted = disks_check_mount_fullname($disk);
 							/* Umount disk if necessary. */
 							if($umount && $ismounted) {
-								echo("<strong class='red'>" . _NOTE . ":</strong> " . _DISKSMOUNTFSCK_MOUNTNOTE . "<br><br>");
+								echo("<strong class='red'>" . gettext("Note") . ":</strong> " . gettext("The disk is currently mounted! The mount point will be removed temporary to perform selected command.") . "<br><br>");
 								disks_umount_fullname($disk);
 							}
 

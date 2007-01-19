@@ -3,7 +3,7 @@
 /*
 	access_users_groups_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -38,7 +38,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(_ACCESS_NAME,_ACCESS_USERS,_ACCESS_GROUPS,isset($id)?_EDIT:_ADD);
+$pgtitle = array(gettext("Access"),gettext("Users"),gettext("Groups"),isset($id)?gettext("Edit"):gettext("Add"));
 	
 if (!is_array($config['access']['group']))
 	$config['access']['group'] = array();
@@ -71,11 +71,11 @@ if ($_POST)
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if (($_POST['name'] && !is_domain($_POST['name']))) {
-		$input_errors[] = _ACCESSGROUPSEDIT_MSGVALIDNAME;
+		$input_errors[] = gettext("The Group name contains invalid characters.");
 	}
 	
 	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
-		$input_errors[] = _ACCESSGROUPSEDIT_MSGVALIDDESC;
+		$input_errors[] = gettext("The Group desc contains invalid characters.");
 	}
 	
 
@@ -87,7 +87,7 @@ if ($_POST)
 
 		if ($group['name'] == $_POST['name'])
 		{
-			$input_errors[] = _ACCESSGROUPSEDIT_MSGVALIDDUPLICATE;
+			$input_errors[] = gettext("This group already exists in the group list.");
 			break;
 		}
 	}
@@ -124,22 +124,22 @@ if ($_POST)
             <form action="access_users_groups_edit.php" method="post" name="iform" id="iform">
               <table width="100%" border="0" cellpadding="6" cellspacing="0">
                   <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSGROUPSEDIT_NAME;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
                   <td width="78%" class="vtable"> 
                     <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
-                    <br><?=_ACCESSGROUPSEDIT_NAMETEXT;?></td>
+                    <br><?=gettext("Group name.");?></td>
 				</tr>
 				
 				<tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_ACCESSGROUPSEDIT_DESC;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
                   <td width="78%" class="vtable"> 
                     <input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>">
-                    <br><?=_ACCESSGROUPSEDIT_DESCTEXT;?></td>
+                    <br><?=gettext("Group description.");?></td>
 				</tr>
               
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?_SAVE:_ADD;?>"> 
+                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>"> 
                     <?php if (isset($id) && $a_group[$id]): ?>
                     <input name="id" type="hidden" value="<?=$id;?>"> 
                     <?php endif; ?>

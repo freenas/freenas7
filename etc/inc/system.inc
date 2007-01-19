@@ -1550,19 +1550,5 @@ function system_language_load()
 	setlocale( LC_MESSAGES, $locale);
 	bindtextdomain( $domain, "/usr/local/share/locale");
 	textdomain( $domain);
-
-	/* ---------------------------------------------------------------------------- */
-	/* The following code can be removed after complete conversion to use gettext() */
-	/* ---------------------------------------------------------------------------- */
-
-	/* Include the language file*/
-	global $config, $g;
-	if (file_exists($g['www_path']."/lang-" . $config['system']['language'] . ".inc")) {
-		require_once($g['www_path']."/lang-" . $config['system']['language'] . ".inc");
-		return 1;
-	} else {
-		require_once($g['www_path']."/lang-English.inc");
-		return 1;
-	}
 }
 ?>

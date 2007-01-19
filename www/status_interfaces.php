@@ -32,7 +32,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_STATSINTERFACES_NAME, _STATSINTERFACES_NAMEDESC);
+$pgtitle = array(gettext("Status"), _STATSINTERFACES_NAMEDESC);
 ?>
 <?php include("fbegin.inc"); ?>
 <form action="" method="post">
@@ -51,18 +51,18 @@ $pgtitle = array(_STATSINTERFACES_NAME, _STATSINTERFACES_NAMEDESC);
       <?php endif; ?>
       <tr>
         <td colspan="2" class="listtopic">
-          <?=sprintf(_STATSINTERFACES_INTERFACE, htmlspecialchars($ifname));?>
+          <?=sprintf(gettext("%s interface"), htmlspecialchars($ifname));?>
         </td>
       </tr>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_STATUS;?></td>
+        <td width="22%" class="vncellt"><?=gettext("Status");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['status']);?>
         </td>
       </tr>
       <?php if ($ifinfo['dhcplink']): ?>
   	  <tr>
-  		  <td width="22%" class="vncellt"><?=_STATSINTERFACES_DHCP;?></td>
+  		  <td width="22%" class="vncellt"><?=gettext("DHCP");?></td>
   			<td width="78%" class="listr">
   			  <?=htmlspecialchars($ifinfo['dhcplink']);?>&nbsp;&nbsp;
   			  <?php if ($ifinfo['dhcplink'] == "up"): ?>
@@ -74,7 +74,7 @@ $pgtitle = array(_STATSINTERFACES_NAME, _STATSINTERFACES_NAMEDESC);
   	  </tr>
       <?php endif; if ($ifinfo['pppoelink']): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_PPPOE;?></td>
+        <td width="22%" class="vncellt"><?=gettext("PPPoE");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['pppoelink']);?>&nbsp;&nbsp;
   			  <?php if ($ifinfo['pppoelink'] == "up"): ?>
@@ -86,7 +86,7 @@ $pgtitle = array(_STATSINTERFACES_NAME, _STATSINTERFACES_NAMEDESC);
       </tr>
       <?php  endif; if ($ifinfo['pptplink']): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_PPTP;?></td>
+        <td width="22%" class="vncellt"><?=gettext("PPTP");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['pptplink']);?>&nbsp;&nbsp;
   			  <?php if ($ifinfo['pptplink'] == "up"): ?>
@@ -98,7 +98,7 @@ $pgtitle = array(_STATSINTERFACES_NAME, _STATSINTERFACES_NAMEDESC);
       </tr>
       <?php  endif; if ($ifinfo['macaddr']): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_MACADDRESS;?></td>
+        <td width="22%" class="vncellt"><?=gettext("MAC address");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['macaddr']);?>
         </td>
@@ -107,66 +107,66 @@ $pgtitle = array(_STATSINTERFACES_NAME, _STATSINTERFACES_NAMEDESC);
   		<?php if ($ifinfo['dhcplink'] != "down" && $ifinfo['pppoelink'] != "down" && $ifinfo['pptplink'] != "down"): ?>
   		<?php if ($ifinfo['ipaddr']): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_IPADDRESS;?></td>
+        <td width="22%" class="vncellt"><?=gettext("IP address");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['ipaddr']);?>&nbsp;
         </td>
       </tr>
       <?php endif; ?><?php if ($ifinfo['subnet']): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_SUBNETMASK;?></td>
+        <td width="22%" class="vncellt"><?=gettext("Subnet mask");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['subnet']);?>
         </td>
       </tr>
       <?php endif; ?><?php if ($ifinfo['gateway']): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_GATEWAY;?></td>
+        <td width="22%" class="vncellt"><?=gettext("Gateway");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['gateway']);?>
         </td>
       </tr>
       <?php endif; if ($ifdescr == "wan" && file_exists("{$g['varetc_path']}/nameservers.conf")): ?>
-      <td width="22%" class="vncellt"><?=_STATSINTERFACES_ISPDNSSERVERS;?></td>
+      <td width="22%" class="vncellt"><?=gettext("ISP DNS servers");?></td>
       <td width="78%" class="listr"><?php echo nl2br(file_get_contents("{$g['varetc_path']}/nameservers.conf")); ?></td>
       <?php endif; endif; if ($ifinfo['media']): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_MEDIA;?></td>
+        <td width="22%" class="vncellt"><?=gettext("Media");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['media']);?>
         </td>
       </tr>
       <?php endif; ?><?php if ($ifinfo['channel']): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_CHANNEL;?></td>
+        <td width="22%" class="vncellt"><?=gettext("Channel");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['channel']);?>
         </td>
       </tr>
       <?php endif; ?><?php if ($ifinfo['ssid']): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_SSID;?></td>
+        <td width="22%" class="vncellt"><?=gettext("SSID");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['ssid']);?>
         </td>
       </tr>
       <?php endif; ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_IOPACKETS;?></td>
+        <td width="22%" class="vncellt"><?=gettext("I/O packets");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['inpkts'] . "/" . $ifinfo['outpkts'] . " (" . format_bytes($ifinfo['inbytes']) . "/" . format_bytes($ifinfo['outbytes']) . ")");?>
         </td>
       </tr>
       <?php if (isset($ifinfo['inerrs'])): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_IOERRORS;?></td>
+        <td width="22%" class="vncellt"><?=gettext("I/O errors");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['inerrs'] . "/" . $ifinfo['outerrs']);?>
         </td>
       </tr>
       <?php endif; ?><?php if (isset($ifinfo['collisions'])): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=_STATSINTERFACES_COLLISIONS;?></td>
+        <td width="22%" class="vncellt"><?=gettext("Collisions");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['collisions']);?>
         </td>

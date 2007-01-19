@@ -2,11 +2,11 @@
 <?php
 /*
 	services_samba_share.php
-	Copyright © 2006 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_SERVICES,_SRVCIFS_NAMEDESC,_SRVCIFS_SHARES);
+$pgtitle = array(gettext("Services"),gettext("CIFS"),_SRVCIFS_SHARES);
 
 if(!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -75,8 +75,8 @@ if($_GET['act'] == "ret") {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="services_samba.php"><?=_SRVCIFS_SETTINGS;?></li>
-        <li class="tabact"><?=_SRVCIFS_SHARES;?></a></li>
+        <li class="tabinact"><a href="services_samba.php"><?=gettext("Settings");?></li>
+        <li class="tabact"><?=gettext("Shares");?></a></li>
       </ul>
     </td>
   </tr>
@@ -85,24 +85,24 @@ if($_GET['act'] == "ret") {
       <form action="services_samba_share.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
         <?php if (file_exists($d_smbshareconfdirty_path)): ?><p>
-        <?php print_info_box_np(_SRVCIFSSHARE_MSGCHANGED);?><br>
-        <input name="apply" type="submit" class="formbtn" id="apply" value="<?=_APPLY;?>"></p>
+        <?php print_info_box_np(gettext("The shares has been modified.<br>You must apply the changes in order for them to take effect."));?><br>
+        <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
         <?php endif; ?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="20%" class="listhdrr"><?=_SRVCIFSSHARE_SHARENAME;?></td>
-            <td width="25%" class="listhdrr"><?=_SRVCIFSSHARE_DESC;?></td>
-            <td width="20%" class="listhdrr"><?=_SRVCIFSSHARE_BROWSEABLE;?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Share Name");?></td>
+            <td width="25%" class="listhdrr"><?=gettext("Description");?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Browseable");?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_mount as $mountv): ?>
           <tr>
             <td class="listr"><?=htmlspecialchars($mountv['sharename']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mountv['desc']);?>&nbsp;</td>
-            <td class="listbg"><?=htmlspecialchars((is_array($config['samba']['hidemount']) && in_array($mountv['sharename'],$config['samba']['hidemount']))?_NO:_YES);?></td>
+            <td class="listbg"><?=htmlspecialchars((is_array($config['samba']['hidemount']) && in_array($mountv['sharename'],$config['samba']['hidemount']))?gettext("No"):gettext("Yes"));?></td>
             <td valign="middle" nowrap class="list">
               <?php if(isset($config['samba']['enable']))
-              echo("<a href='services_samba_share_edit.php?id={$i}'><img src='e.gif' title='" . _SRVCIFSSHARE_EDIT . "' width='17' height='17' border='0'></a>");
+              echo("<a href='services_samba_share_edit.php?id={$i}'><img src='e.gif' title='" . gettext("Edit share") . "' width='17' height='17' border='0'></a>");
               ?>
             </td>
           </tr>

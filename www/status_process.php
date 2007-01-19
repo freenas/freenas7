@@ -31,13 +31,13 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_STATSPROCPHP_NAME, _STATSPROCPHP_NAME_DESCRIPTION);
+$pgtitle = array(gettext("Status"), gettext("Processes"));
 
 include("fbegin.inc");
 ?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td class="listtopic"><?=_STATSPROCPHP_PROC_INF;?></td>
+    <td class="listtopic"><?=gettext("Processes information");?></td>
   </tr>
   <tr>
     <td class="listr">

@@ -3,7 +3,7 @@
 /*
 	services_nfs.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_SERVICES,_SRVNFS_NAMEDESC);
+$pgtitle = array(gettext("Services"),gettext("NFS"));
 
 if (!is_array($config['nfs'])) {
 	$config['nfs'] = array();
@@ -55,16 +55,16 @@ if ($_POST) {
 
   if ($_POST['enable']) {
     $reqdfields = array_merge($reqdfields, explode(" ", "network network_subnet"));
-    $reqdfieldsn = array_merge($reqdfieldsn, array(_SRVNFS_AUTHNET,_SRVNFS_AUTHNETMASK));
+    $reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Authorised network"),gettext("Subnet bit count")));
   }
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['network'] && !is_ipaddr($_POST['network']))) {
-		$input_errors[] = _SRVNFS_MSGVALIDNET;
+		$input_errors[] = gettext("A valid network must be specified.");
 	}
 	if (($_POST['network_subnet'] && !is_numeric($_POST['network_subnet']))) {
-		$input_errors[] = _SRVNFS_MSGVALIDNETBIT;
+		$input_errors[] = gettext("A valid network bit count must be specified.");
 	}
 
 	$osn = gen_subnet($_POST['network'], $_POST['network_subnet']) . "/" . $_POST['network_subnet'];
@@ -106,19 +106,19 @@ function enable_change(enable_change) {
       <td colspan="2" valign="top" class="optsect_t">
         <table border="0" cellspacing="0" cellpadding="0" width="100%">
           <tr>
-            <td class="optsect_s"><strong><?=_SRVNFS_NFSERVER; ?></strong></td>
+            <td class="optsect_s"><strong><?=gettext("NFS Server"); ?></strong></td>
             <td align="right" class="optsect_s">
-              <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE ;?></strong>
+              <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable") ;?></strong>
             </td>
           </tr>
         </table>
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVNFS_MAPALLROOT; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Map all users to root"); ?></td>
       <td width="78%" class="vtable">
         <select name="mapall" class="formfld" id="mapall">
-        <?php $types = array(_YES,_NO);?>
+        <?php $types = array(gettext("Yes"),gettext("No"));?>
         <?php $vals = explode(" ", "yes no");?>
         <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
           <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mapall']) echo "selected";?>>
@@ -126,11 +126,11 @@ function enable_change(enable_change) {
           </option>
         <?php endfor; ?>
         </select><br>
-        <?=_SRVNFS_MAPALLROOTTEXT ;?>
+        <?=gettext("All users will have the root privilege.") ;?>
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVNFS_AUTHNET ; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorised network") ; ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> / 
         <select name="network_subnet" class="formfld" id="network_subnet">
@@ -140,18 +140,18 @@ function enable_change(enable_change) {
           </option>
           <?php endfor; ?>
         </select><br>
-        <span class="vexpl"><?=_SRVNFS_AUTHNETTEXT ;?></span>
+        <span class="vexpl"><?=gettext("Network that is authorised to access to NFS share") ;?></span>
       </td>
     </tr>
     <tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)">
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
       </td>
     </tr>
     <tr>
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:</strong></span><br><?=_SRVNFS_TEXT;?></span></td>
+      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("The name of the exported directories are : /mnt/sharename");?></span></td>
     </tr>
   </table>
 </form>

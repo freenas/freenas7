@@ -30,7 +30,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_INTVLANEDIT_NAME, _INTVLANEDIT_NAMEDESC, _INTVLANEDIT_EDITVLAN);
+$pgtitle = array(gettext("Interfaces"), gettext("Assign network ports"), gettext("Edit VLAN"));
 
 if (!is_array($config['vlans']['vlan']))
 	$config['vlans']['vlan'] = array();
@@ -125,7 +125,7 @@ if ($_POST) {
                 <tr>
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>">
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
                     <?php if (isset($id) && $a_vlans[$id]): ?>
                     <input name="id" type="hidden" value="<?=$id;?>">
                     <?php endif; ?>

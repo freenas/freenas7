@@ -4,7 +4,7 @@
 	disks_raid_gconcat_tools.php
 	
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -36,7 +36,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_DISKSPHP_NAME, _DISKSRAIDPHP_GCONCAT, _DISKSRAIDEDITPHP_NAMEDESC);
+$pgtitle = array(gettext("Disks"), gettext("Geom Concat"), gettext("Edit"));
 
 if ($_POST) {
 	unset($input_errors);
@@ -67,18 +67,18 @@ if (!isset($do_action))
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=_DISKSRAIDPHP_GMIRROR; ?></a></li>
-	<li class="tabact"><?=_DISKSRAIDPHP_GCONCAT; ?></li>
-	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=_DISKSRAIDPHP_GSTRIPE; ?> </a></li>
-	<li class="tabinact"><a href="disks_raid_graid5.php"><?=_DISKSRAIDPHP_GRAID5; ?></a></li> 
-	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=_DISKSRAIDPHP_GVINUM; ?><?=_DISKSRAIDPHP_UNSTABLE ;?></a></li> 
+	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("Geom Mirror"); ?></a></li>
+	<li class="tabact"><?=gettext("Geom Concat"); ?></li>
+	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("Geom Stripe"); ?> </a></li>
+	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("Geom Raid5"); ?></a></li> 
+	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?><?=gettext("(unstable)") ;?></a></li> 
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=_DISKSRAIDPHP_MANAGE; ?></a></li>
-	<li class="tabact"><?=_DISKSRAIDPHP_TOOLS; ?></li>
-	<li class="tabinact"><a href="disks_raid_gconcat_info.php"><?=_DISKSRAIDPHP_INFO; ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("Manage RAID"); ?></a></li>
+	<li class="tabact"><?=gettext("Tools"); ?></li>
+	<li class="tabinact"><a href="disks_raid_gconcat_info.php"><?=gettext("Information"); ?></a></li>
   </ul>
   </td></tr>
   <tr> 
@@ -87,12 +87,12 @@ if (!isset($do_action))
 			<form action="disks_raid_gconcat_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr>
-				  <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDTOOLSPHP_OBJNAME;?></td>
+				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Object name");?></td>
 				  <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="object" type="text" class="formfld" id="object" size="20" value="<?=htmlspecialchars($disk);?>"></td>
 				</tr>
 				<tr> 
-                  <td valign="top" class="vncellreq"><?=_DISKSRAIDTOOLSPHP_COMMAND;?></td>
+                  <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
                   <td class="vtable"> 
                     <select name="action" class="formfld" id="action">
                       <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
@@ -105,14 +105,14 @@ if (!isset($do_action))
 				<tr>
 				  <td width="22%" valign="top">&nbsp;</td>
 				  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_DISKSRAIDTOOLSPHP_SENDCMD;?>">
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
 				</td>
 				</tr>
 				<tr>
 				<td valign="top" colspan="2">
 				<? if ($do_action)
 				{
-					echo("<strong>" . _DISKSRAIDTOOLSPHP_INFO . "</strong><br>");
+					echo("<strong>" . gettext("command output:") . "</strong><br>");
 					echo('<pre>');
 					ob_end_flush();
 					
@@ -125,6 +125,6 @@ if (!isset($do_action))
 				</tr>
 			</table>
 </form>
-<p><span class="vexpl"><span class="red"><strong><?=_WARNING;?>:</strong></span><br><?=_DISKSRAIDTOOLSPHP_TEXT;?></span></p>
+<p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly).");?></span></p>
 </td></tr></table>
 <?php include("fend.inc"); ?>

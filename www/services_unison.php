@@ -3,7 +3,7 @@
 /*
 	services_unison.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -53,7 +53,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_SERVICES,_SRVUNSN_NAMEDESC);
+$pgtitle = array(gettext("Services"),gettext("Unison"));
 
 if (!is_array($config['unison'])) {
 	$config['unison'] = array();
@@ -74,7 +74,7 @@ if ($_POST) {
 
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "share workdir"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVUNSN_SHARE,_SRVUNSN_WORKDIR));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Share"),gettext("Working Directory")));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -82,7 +82,7 @@ if ($_POST) {
 	$fullpath = "/mnt/{$_POST['share']}/{$_POST['workdir']}";
 
 	if (!$_POST['makedir'] && ($fullpath) && (!file_exists($fullpath))) {
-		$input_errors[] = _SRVUNSN_MSGVALIDWRKDIR;
+		$input_errors[] = gettext("The combination of share and working directory does not exist.");
 	}
 
 	if (!$input_errors) {
@@ -133,14 +133,14 @@ function enable_change(enable_change) {
     <td colspan="2" valign="top" class="optsect_t">
 		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
 		  <tr>
-        <td class="optsect_s"><strong><?=_SRVUNSN_UNISON;?></strong></td>
-			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE;?></strong></td>
+        <td class="optsect_s"><strong><?=gettext("Unison File Synchronisation");?></strong></td>
+			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
       </tr>
 		  </table>
     </td>
   </tr>
   <tr>
-    <td width="22%" valign="top" class="vncellreq"><?=_SRVUNSN_SHARE;?></td>
+    <td width="22%" valign="top" class="vncellreq"><?=gettext("Share");?></td>
     <td width="78%" class="vtable">
       <?=$mandfldhtml;?>
       <select name="share" class="formfld" id="share">
@@ -149,32 +149,32 @@ function enable_change(enable_change) {
         <?php if ($tmp == $pconfig['share']) echo "selected";?>><?=$tmp?></option>
         <?php endforeach; ?>
       </select>
-      <br><?=_SRVUNSN_SHAREDESC;?>.</td>
+      <br><?=gettext("You may need enough space to duplicate all files being synced");?>.</td>
     </td>
   </tr>
   <tr>
-    <td width="22%" valign="top" class="vncellreq"><?=_SRVUNSN_WORKDIR;?></td>
+    <td width="22%" valign="top" class="vncellreq"><?=gettext("Working Directory");?></td>
     <td width="78%" class="vtable">
       <?=$mandfldhtml;?><input name="workdir" type="text" class="formfld" id="workdir" size="20" value="<?=htmlspecialchars($pconfig['workdir']);?>">
-       <br><?=_SRVUNSN_WORKDIRDESC;?>.</td>
+       <br><?=gettext("Where the working files will be stored");?>.</td>
     </td>
   </tr>
   <tr>
-    <td width="22%" valign="top" class="vncellreq"><?=_SRVUNSN_MAKEDIR;?></td>
+    <td width="22%" valign="top" class="vncellreq"><?=gettext("Create");?></td>
     <td width="78%" class="vtable">
       <input name="makedir" type="checkbox" id="makedir" value="yes" <?php if ($pconfig['makedir']) echo "checked"; ?>>
-      <?=_SRVUNSN_MAKEDIRLABEL;?><span class="vexpl"><br>
+      <?=gettext("Create work directory if it doesn't exist");?><span class="vexpl"><br>
     </td>
   </tr>
   <tr>
     <td width="22%" valign="top">&nbsp;</td>
     <td width="78%">
-      <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)">
+      <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
     </td>
   </tr>
   <tr>
     <td width="22%" valign="top">&nbsp;</td>
-    <td width="78%"><span class="red"><strong><?=_NOTE;?>:</strong></span><br><?=_SRVUNSN_NOTESSH;?></td>
+    <td width="78%"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("'<a href="/services_sshd.php">SSHD</a> must be enabled for Unison to work, and the <a href="/access_users.php">user</a> must have Full Shell enabled.'");?></td>
   </tr>
   </table>
 </form>

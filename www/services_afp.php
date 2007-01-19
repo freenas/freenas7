@@ -3,7 +3,7 @@
 /*
 	services_afp.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -34,7 +34,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(_SERVICES,_SRVAFP_NAMEDESC);
+$pgtitle = array(gettext("Services"),gettext("AFP"));
 
 
 if (!is_array($config['afp']))
@@ -62,12 +62,12 @@ if ($_POST) {
 	if ($_POST['enable'] && !$_POST['guest'])
 	{
 		if (!$_POST['local'])
-			$input_errors[] = _SRVAFP_MSGVALIDAUTH;
+			$input_errors[] = gettext("You must select at least one authentication method.");
 	}
 	if ($_POST['enable'] && !$_POST['local'])
 	{
 		if (!$_POST['guest'])
-			$input_errors[] = _SRVAFP_MSGVALIDAUTH;
+			$input_errors[] = gettext("You must select at least one authentication method.");
 	}
 	
 	
@@ -115,26 +115,26 @@ function enable_change(enable_change) {
                 <tr> 
                   <td colspan="2" valign="top" class="optsect_t">
 				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong><?=_SRVAFP_AFPSRV;?></strong></td>
-				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE;?></strong></td></tr>
+				  <tr><td class="optsect_s"><strong><?=gettext("AFP Server");?></strong></td>
+				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td></tr>
 				  </table></td>
                 </tr>
 				<tr>
 				 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_SRVAFP_AFPNAME ;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Server Name") ;?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="afpname" type="text" class="formfld" id="afpname" size="20" value="<?=htmlspecialchars($pconfig['afpname']);?>"> 
                   </td>
 				</tr>
            
                   <tr>
-                <td width="22%" valign="top" class="vncell"><strong><?=_SRVAFP_AUTH;?><strong></td>
+                <td width="22%" valign="top" class="vncell"><strong><?=gettext("Authentication");?><strong></td>
                 		<td width="78%" class="vtable">
                 		<input name="guest" id="guest" type="checkbox" value="yes" <?php if ($pconfig['guest']) echo "checked"; ?>>
-                		<?=_SRVAFP_ENABLEGUEST;?><br>
+                		<?=gettext("Enable guest access.");?><br>
 						<br>
 						<input name="local" id="local" type="checkbox" value="yes" <?php if ($pconfig['local']) echo "checked"; ?>>
-						<?=_SRVAFP_ENABLELOCAL;?><br>
+						<?=gettext("Enable local user authentication.");?><br>
 						<br>
 						</td>
 				</tr>
@@ -142,7 +142,7 @@ function enable_change(enable_change) {
 				<tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)"> 
                   </td>
                 </tr>
                 </table>

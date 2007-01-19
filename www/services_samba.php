@@ -3,7 +3,7 @@
 /*
 	services_samba.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_SERVICES,_SRVCIFS_NAMEDESC);
+$pgtitle = array(gettext("Services"),gettext("CIFS"));
 
 if (!is_array($config['samba'])) {
 	$config['samba'] = array();
@@ -71,25 +71,25 @@ if ($_POST)
 	$reqdfieldsn = array();
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "security netbiosname workgroup localmaster"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVCIFS_AUTH,_SRVCIFS_NETBIOSNAME,_SRVCIFS_WORKGROUP,_SRVCIFS_LOCALMASTER));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"),gettext("Local Master Browser")));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['netbiosname'] && !is_domain($_POST['netbiosname']))) {
-		$input_errors[] = _SRVCIFS_MSGVALIDNETBIOSNAME;
+		$input_errors[] = gettext("The Netbios name contains invalid characters.");
 	}
 	if (($_POST['workgroup'] && !is_workgroup($_POST['workgroup']))) {
-		$input_errors[] = _SRVCIFS_MSGVALIDWORKGOUP;
+		$input_errors[] = gettext("The Workgroup name contains invalid characters.");
 	}
 	if (($_POST['winssrv'] && !is_ipaddr($_POST['winssrv']))) {
-		$input_errors[] = _SRVCIFS_MSGVALIDWINS;
+		$input_errors[] = gettext("The WINS server must be an IP address.");
 	}
 	if (!is_numericint($_POST['sndbuf'])) {
-		$input_errors[] = _SRVCIFS_MSGVALIDSNDBUFF;
+		$input_errors[] = gettext("The SND Buffer value must be a number.");
 	}
 	if (!is_numericint($_POST['rcvbuf'])) {
-		$input_errors[] = _SRVCIFS_MSGVALIDRCVBUFF;
+		$input_errors[] = gettext("The RCV Buffer value must be a number.");
 	}
 
 	if (!$input_errors) {
@@ -149,8 +149,8 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><?=_SRVCIFS_SETTINGS;?></li>
-        <li class="tabinact"><a href="services_samba_share.php"><?=_SRVCIFS_SHARES;?></a></li>
+        <li class="tabact"><?=gettext("Settings");?></li>
+        <li class="tabinact"><a href="services_samba_share.php"><?=gettext("Shares");?></a></li>
       </ul>
     </td>
   </tr>
@@ -165,13 +165,13 @@ function enable_change(enable_change) {
     				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
     				    <tr>
                   <td class="optsect_s"><strong>Common Internet File System</strong></td>
-    				      <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE ;?></strong></td>
+    				      <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable") ;?></strong></td>
                 </tr>
     				  </table>
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFS_AUTH; ?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Authentication"); ?></td>
             <td width="78%" class="vtable">
               <?=$mandfldhtml;?><select name="security" class="formfld" id="security">
               <?php $types = explode(",", "Anonymous,Local User,Domain"); $vals = explode(" ", "share user domain");?>
@@ -184,28 +184,28 @@ function enable_change(enable_change) {
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFS_NETBIOSNAME ;?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("NetBiosName") ;?></td>
             <td width="78%" class="vtable">
               <?=$mandfldhtml;?><input name="netbiosname" type="text" class="formfld" id="netbiosname" size="30" value="<?=htmlspecialchars($pconfig['netbiosname']);?>">
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFS_WORKGROUP ; ?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Workgroup") ; ?></td>
             <td width="78%" class="vtable">
               <?=$mandfldhtml;?><input name="workgroup" type="text" class="formfld" id="workgroup" size="30" value="<?=htmlspecialchars($pconfig['workgroup']);?>">
-              <br><?=_SRVCIFS_WORKGROUPTEXT ;?>
+              <br><?=gettext("Workgroup to be member of.") ;?>
             </td>
           </tr>
           <tr>
           <tr>
-            <td width="22%" valign="top" class="vncell"><?=_DESC ;?></td>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Description") ;?></td>
             <td width="78%" class="vtable">
               <input name="serverdesc" type="text" class="formfld" id="serverdesc" size="30" value="<?=htmlspecialchars($pconfig['serverdesc']);?>">
-              <br><?=_SRVCIFS_DESCTEXT ;?>
+              <br><?=gettext("Server description. This can usually be left blank.") ;?>
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_DOSCHARSET ; ?></td>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Dos charset") ; ?></td>
             <td width="78%" class="vtable">
               <select name="doscharset" class="formfld" id="doscharset">
               <?php $types = explode(",", "CP850,CP852,CP437,CP932,ASCII"); $vals = explode(" ", "CP850 CP852 CP437 CP932 ASCII");?>
@@ -218,7 +218,7 @@ function enable_change(enable_change) {
             </td>
           </tr>
 	        <tr>
-            <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_UNIXCHARSET ; ?></td>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Unix charset") ; ?></td>
             <td width="78%" class="vtable">
               <select name="unixcharset" class="formfld" id="unixcharset">
               <?php $types = explode(",", "UTF-8,iso-8859-1,iso-8859-15,gb2312,EUC-JP,ASCII"); $vals = explode(" ", "UTF-8 iso-8859-1 iso-8859-15 gb2312 EUC-JP ASCII");?>
@@ -231,7 +231,7 @@ function enable_change(enable_change) {
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_LOGLEVEL ; ?></td>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Log Level") ; ?></td>
             <td width="78%" class="vtable">
               <select name="loglevel" class="formfld" id="loglevel">
               <?php $types = explode(",", "Minimum,Normal,Full,Debug"); $vals = explode(" ", "1 2 3 10");?>
@@ -244,66 +244,66 @@ function enable_change(enable_change) {
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_LOCALMASTER; ?></td>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Local Master Browser"); ?></td>
             <td width="78%" class="vtable">
               <select name="localmaster" class="formfld" id="localmaster">
-              <?php $types = array(_YES,_NO); $vals = explode(" ", "yes no");?>
+              <?php $types = array(gettext("Yes"),gettext("No")); $vals = explode(" ", "yes no");?>
               <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                 <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['localmaster']) echo "selected";?>>
                 <?=htmlspecialchars($types[$j]);?>
                 </option>
               <?php endfor; ?>
               </select>
-              <br><?=_SRVCIFS_LOCALMASTERTEXT; ?>
+              <br><?=gettext("Allows FreeNAS to try and become a local master browser."); ?>
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_TIMESRV; ?></td>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Time server"); ?></td>
             <td width="78%" class="vtable">
               <select name="timesrv" class="formfld" id="timesrv">
-              <?php $types = array(_YES,_NO); $vals = explode(" ", "yes no");?>
+              <?php $types = array(gettext("Yes"),gettext("No")); $vals = explode(" ", "yes no");?>
               <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                 <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['timesrv']) echo "selected";?>>
                 <?=htmlspecialchars($types[$j]);?>
                 </option>
               <?php endfor; ?>
               </select>
-              <br><?=_SRVCIFS_TIMESRVTEXT; ?>
+              <br><?=gettext("FreeNAS advertises itself as a time server to Windows clients."); ?>
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_WINS; ?></td>
+            <td width="22%" valign="top" class="vncell"><?=gettext("WINS server"); ?></td>
             <td width="78%" class="vtable">
               <input name="winssrv" type="text" class="formfld" id="winssrv" size="30" value="<?=htmlspecialchars($pconfig['winssrv']);?>">
-              <br><?=_SRVCIFS_WINSTEXT; ?>
+              <br><?=gettext("WINS Server IP address."); ?>
             </td>
   				</tr>
   				<tr>
-            <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_RECYCLE;?></td>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Recycle Bin");?></td>
             <td width="78%" class="vtable">
               <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked"; ?>>
-              <?=_SRVCIFS_ENRECYCLE;?><span class="vexpl"><br>
-              <?=_SRVCIFS_ENRECYCLETEXT;?></span>
+              <?=gettext("Enable Recycle bin");?><span class="vexpl"><br>
+              <?=gettext("This will create a recycle bin on the CIFS shares");?></span>
             </td>
           </tr>
 	        <tr>
-            <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_SNBBUFF; ?></td>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Send Buffer Size"); ?></td>
             <td width="78%" class="vtable">
               <input name="sndbuf" type="text" class="formfld" id="sndbuf" size="30" value="<?=htmlspecialchars($pconfig['sndbuf']);?>">
-              <br><?=_SRVCIFS_SNBBUFFTEXT; ?>
+              <br><?=gettext("Size of send buffer (16384 by default)."); ?>
             </td>
   				</tr>
   				<tr>
-            <td width="22%" valign="top" class="vncell"><?=_SRVCIFS_RCVBUFF ; ?></td>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Receive Buffer Size") ; ?></td>
             <td width="78%" class="vtable">
               <input name="rcvbuf" type="text" class="formfld" id="rcvbuf" size="30" value="<?=htmlspecialchars($pconfig['rcvbuf']);?>">
-              <br><?=_SRVCIFS_RCVBUFFTEXT ; ?>
+              <br><?=gettext("Size of receive buffer (16384 by default).") ; ?>
             </td>
   				</tr>
   				<tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%">
-              <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)">
+              <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
             </td>
           </tr>
         </table>

@@ -30,15 +30,15 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_STATSGRAPHCPU_NAME, _STATSGRAPHCPU_NAMEDESC);
+$pgtitle = array(gettext("Status"), gettext("CPU load"));
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="status_graph.php"><?=_STATSGRAPH_NAMEDESC;?></a></li>
-        <li class="tabact"><?=_STATSGRAPHCPU_NAMEDESC;?></li>
+        <li class="tabinact"><a href="status_graph.php"><?=gettext("Traffic graph");?></a></li>
+        <li class="tabact"><?=gettext("CPU load");?></li>
       </ul>
     </td>
   </tr>

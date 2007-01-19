@@ -5,7 +5,7 @@
 	part of FreeNAS (http://www.freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
 	
-	Copyright (C) 2005 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -88,11 +88,11 @@ if ($_POST) {
 		}
 		
 		if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr'])))
-			$input_errors[] = _INTPHP_MSGVALIDIP;
+			$input_errors[] = gettext("A valid IP address must be specified.");
 		if (($_POST['subnet'] && !is_numeric($_POST['subnet'])))
-			$input_errors[] = _INTPHP_MSGVALIDMASK;
+			$input_errors[] = gettext("A valid network bit count must be specified.");
 		if (($_POST['mtu'] && !is_mtu($_POST['mtu'])))
-			$input_errors[] = _INTPHP_MSGVALIDMTU;
+			$input_errors[] = gettext("A valid mtu size must be specified.");
 	
 	}
 	
@@ -132,7 +132,7 @@ if ($_POST) {
 	}
 }
 
-$pgtitle = array(_INTLANPHP_NAME, "Optional $index (" . htmlspecialchars($optcfg['descr']) . ")");
+$pgtitle = array(gettext("Interfaces"), "Optional $index (" . htmlspecialchars($optcfg['descr']) . ")");
 ?>
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
@@ -222,13 +222,13 @@ function type_change() {
                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                       <tr>
                         <td class="optsect_s"></td>
-                        <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false);bridge_change(false)"><strong><?=_ACTIVATE;?></strong></td>
+                        <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false);bridge_change(false)"><strong><?=gettext("Activate");?></strong></td>
                       </tr>
                     </table>
                   </td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_TYPE;?></td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Type");?></td>
                   <td width="78%" class="vtable">
                     <select name="type" class="formfld" id="type" onchange="type_change()">
                       <?php $opts = split(" ", "Static DHCP"); foreach ($opts as $opt): ?>
@@ -240,20 +240,20 @@ function type_change() {
                   </td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_INTPHP_DESC;?></td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
                   <td width="78%" class="vtable"> 
                     <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
-                    <br><span class="vexpl"><?=_INTPHP_DESCTEXT;?></span>
+                    <br><span class="vexpl"><?=gettext("Enter a description (name) for the interface here.");?></span>
                   </td>
                 </tr>
                 <tr> 
                   <td colspan="2" valign="top" height="16"></td>
                 </tr>
                 <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_STATIC;?></td>
+                  <td colspan="2" valign="top" class="listtopic"><?=gettext("Static IP configuration");?></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_IP; ?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address"); ?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
                     /
@@ -262,52 +262,52 @@ function type_change() {
 					<option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected"; ?>><?=$i;?></option>
 					<?php endfor; ?>
                     </select>
-                    <img name="calcnetmaskbits" src="calc.gif" title="<?=_INTPHP_CALCNETMASKBITS;?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
+                    <img name="calcnetmaskbits" src="calc.gif" title="<?=gettext("Calculate netmask bits");?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
                   </td>
                 </tr>
                 <tr> 
                   <td colspan="2" valign="top" height="16"></td>
                 </tr>
                 <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_DHCP; ?></td>
+                  <td colspan="2" valign="top" class="listtopic"><?=gettext("DHCP client configuration"); ?></td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPCLIENTIDENTIFIER;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Client Identifier");?></td>
                   <td width="78%" class="vtable">
                     <input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars(get_macaddr($optcfg['if']));?>" disabled>
-                    <br><span class="vexpl"><?=_INTPHP_DHCPCLIENTIDENTIFIERTEXT;?></span>
+                    <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.");?></span>
                   </td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=_INTPHP_DHCPHOSTNAME;?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
                   <td width="78%" class="vtable">
                     <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($config['system']['hostname'] . "." . $config['system']['domain']);?>" disabled>
-                    <br><span class="vexpl"><?=_INTPHP_DHCPHOSTNAMETEXT;?></span>
+                    <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
                   </td>
                 </tr>
                 <tr> 
                   <td colspan="2" valign="top" height="4"></td>
                 </tr>
                 <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=_INTPHP_GENERAL; ?></td>
+                  <td colspan="2" valign="top" class="listtopic"><?=gettext("General configuration"); ?></td>
                 </tr>
                 <tr>
-                  <td valign="top" class="vncell"><?=_INTPHP_MTU; ?></td>
+                  <td valign="top" class="vncell"><?=gettext("MTU"); ?></td>
                   <td class="vtable"><?=$mandfldhtml;?><input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>"> 
                   <br>
-					<?=_INTPHP_MTUTEXT; ?>
+					<?=gettext("Standard MTU is 1500, use 9000 for jumbo frame."); ?>
                   </td>
                 </tr>
 				<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_INTPHP_POLLING; ?></td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Device polling"); ?></td>
                   <td width="78%" class="vtable"> 
                     <input name="polling" type="checkbox" id="polling" value="yes" <?php if ($pconfig['polling']) echo "checked"; ?>>
-                    <strong><?=_INTPHP_ENPOLLING; ?></strong><br>
-					<?=_INTPHP_POLLINGTEXT; ?>
+                    <strong><?=gettext("Enable device polling"); ?></strong><br>
+					<?=gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards."); ?>
 					</td>
                 </tr>
                  <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_INTPHP_SPEED; ?></td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Speed"); ?></td>
                   <td width="78%" class="vtable">
 					<select name="media" class="formfld" id="media">
                       <?php $types = explode(",", "autoselect,10baseT/UTP,100baseTX,1000baseTX,1000baseSX");
@@ -320,7 +320,7 @@ function type_change() {
                     </select></td>
 				</tr>
 				<tr> 
-                  <td width="22%" valign="top" class="vncell"><?=_INTPHP_DUPLEX; ?></td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Duplex"); ?></td>
                   <td width="78%" class="vtable">
 					<select name="mediaopt" class="formfld" id="mediaopt">
                       <?php $types = explode(",", "half-duplex,full-duplex");
@@ -340,7 +340,7 @@ function type_change() {
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
                     <input name="index" type="hidden" value="<?=$index;?>"> 
-				  <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onclick="enable_change(true);bridge_change(true)"> 
+				  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true);bridge_change(true)"> 
                   </td>
                 </tr>      
               </table>

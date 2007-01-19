@@ -3,7 +3,7 @@
 /*
 	diag_infos.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -32,21 +32,21 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
-$pgtitle = array(_DIAGINFOS_NAME, _DIAGINFOS_NAMEDESC);
+$pgtitle = array(gettext("Diagnostics"), gettext("Information"));
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-    <li class="tabinact"><a href="diag_infos.php"><?=_DIAGINFOS_DISKS;?></a></li>
-    <li class="tabinact"><a href="diag_infos_part.php"><?=_DIAGINFOS_PARTITIONS;?></a></li>
-    <li class="tabact"><a href="diag_infos_smart.php" title="reload page" style="color:black"><?=_DIAGINFOS_SMART;?></a></li>
-    <li class="tabinact"><a href="diag_infos_ataidle.php"><?=_DIAGINFOS_ATAIDLE;?></a></li>
-    <li class="tabinact"><a href="diag_infos_space.php"><?=_DIAGINFOS_SPACEUSED;?></a></li>
-    <li class="tabinact"><a href="diag_infos_mount.php"><?=_DIAGINFOS_MOUNTS;?></a></li>
-    <li class="tabinact"><a href="diag_infos_raid.php"><?=_DIAGINFOS_SOFTWARERAID;?></a></li>
-    <li class="tabinact"><a href="diag_infos_iscsi.php"><?=_DIAGINFOS_ISCSI;?></a></li>
-    <li class="tabinact"><a href="diag_infos_ad.php"><?=_DIAGINFOS_MSDOMAIN;?></a></li>
+    <li class="tabinact"><a href="diag_infos.php"><?=gettext("Disks");?></a></li>
+    <li class="tabinact"><a href="diag_infos_part.php"><?=gettext("Partitions");?></a></li>
+    <li class="tabact"><a href="diag_infos_smart.php" title="reload page" style="color:black"><?=gettext("S.M.A.R.T.");?></a></li>
+    <li class="tabinact"><a href="diag_infos_ataidle.php"><?=gettext("ATAidle");?></a></li>
+    <li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
+    <li class="tabinact"><a href="diag_infos_mount.php"><?=gettext("Mounts");?></a></li>
+    <li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
+    <li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI");?></a></li>
+    <li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
   </ul>
   </td></tr>
   <tr>

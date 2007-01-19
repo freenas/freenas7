@@ -35,7 +35,7 @@ $d_isfwfile = 1;
 
 require("guiconfig.inc"); 
 
-$pgtitle = array(_SYSTEMFIRMWAREPHP_NAME, _SYSTEMFIRMWAREPHP_NAMEDESC);
+$pgtitle = array(gettext("System"), _SYSTEMFIRMWAREPHP_NAMEDESC);
 
 /* checks with www.freenas.org to see if a newer firmware version is available;
    returns any HTML message it gets from the server */
@@ -79,11 +79,11 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 	unset($input_errors);
 	unset($sig_warning);
 	
-	if (stristr($_POST['Submit'], _SYSTEMFIRMWAREPHP_ENFIRMUP))
+	if (stristr($_POST['Submit'], gettext("Enable firmware upload'")))
 		$mode = "enable";
-	else if (stristr($_POST['Submit'], _SYSTEMFIRMWAREPHP_DESFIRMUP))
+	else if (stristr($_POST['Submit'], gettext("Disable firmware upload")))
 		$mode = "disable";
-	else if (stristr($_POST['Submit'], _SYSTEMFIRMWAREPHP_UPFIRM) || $_POST['sig_override'])
+	else if (stristr($_POST['Submit'], gettext("Upgrade firmware")) || $_POST['sig_override'])
 		$mode = "upgrade";
 	else if ($_POST['sig_no'])
 		unlink("{$g['ftmp_path']}/firmware.img");
@@ -100,10 +100,10 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 			if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
 				/* verify firmware image(s) */
 				if (!stristr($_FILES['ulfile']['name'], $g['fullplatform']) && !$_POST['sig_override'])
-					$input_errors[] = _SYSTEMFIRMWAREPHP_INVALIDFIRM." ({$g['fullplatform']}).";
+					$input_errors[] = gettext("The uploaded image file is not for this platform")." ({$g['fullplatform']}).";
 				else if (!file_exists($_FILES['ulfile']['tmp_name'])) {
 					/* probably out of memory for the MFS */
-					$input_errors[] = _SYSTEMFIRMWAREPHP_OUTMEM;
+					$input_errors[] = gettext("Image upload failed (out of memory?)");
 					exec_rc_script("/etc/rc.firmware disable");
 					if (file_exists($d_fwupenabled_path))
 						unlink($d_fwupenabled_path);
@@ -116,14 +116,14 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 					$sigchk = 0;
 					
 					if ($sigchk == 1)
-						$sig_warning = _SYSTEMFIRMWAREPHP_INVSIG;
+						$sig_warning = gettext("The digital signature on this image is invalid.");
 					else if ($sigchk == 2)
-						$sig_warning = _SYSTEMFIRMWAREPHP_INVSIGSHORT;
+						$sig_warning = gettext("This image is not digitally signed.");
 					else if (($sigchk == 3) || ($sigchk == 4))
-						$sig_warning = _SYSTEMFIRMWAREPHP_INVSIGIMGT;
+						$sig_warning = gettext("There has been an error verifying the signature on this image.");
 				
 					if (!verify_gzip_file("{$g['ftmp_path']}/firmware.img")) {
-						$input_errors[] = _SYSTEMFIRMWAREPHP_CORRUPTIMG;
+						$input_errors[] = gettext("The image file is corrupt");
 						unlink("{$g['ftmp_path']}/firmware.img");
 					}
 				}
@@ -134,7 +134,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 				touch($d_firmwarelock_path);
 				exec_rc_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
 				
-				$savemsg = _SYSTEMFIRMWAREPHP_INSTREBOOTLAT;
+				$savemsg = gettext("The firmware is now being installed. FreeNAS will reboot automatically.");
 			}
 		}
 	}
@@ -148,11 +148,11 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if ($fwinfo) echo $fwinfo; ?>
 <?php if (!in_array($g['platform'], $fwupplatforms)): ?>
-<p><strong><?=_SYSTEMFIRMWAREPHP_NOTSUP;?></strong></p>
+<p><strong><?=gettext("Firmware uploading is not supported on this platform.");?></strong></p>
 <?php elseif ($sig_warning && !$input_errors): ?>
 <form action="system_firmware.php" method="post">
 <?php 
-$sig_warning = "<strong>" . $sig_warning . "</strong><br>"._SYSTEMFIRMWAREPHP_BIGWARN;
+$sig_warning = "<strong>" . $sig_warning . "</strong><br>".gettext("This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?");
 print_info_box($sig_warning);
 ?>
 <input name="sig_override" type="submit" class="formbtn" id="sig_override" value=" Yes ">
@@ -160,29 +160,29 @@ print_info_box($sig_warning);
 </form>
 <?php else: ?>
 <?php if (!file_exists($d_firmwarelock_path)): ?>
-<p><?=_SYSTEMFIRMWAREPHP_CLICKENFIRM;?></p>
+<p><?=gettext("Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');");?></p>
 <form action="system_firmware.php" method="post" enctype="multipart/form-data">
   <table>
     <tr> 
       <td> 
         <?php if (!file_exists($d_sysrebootreqd_path)): ?>
 				<?php if (!file_exists($d_fwupenabled_path)): ?>
-				<input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_ENFIRMUP;?>">
+				<input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=gettext("Enable firmware upload'");?>">
 				<?php else: ?>
-				<input name="Submit" id="Disable" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_DESFIRMUP;?>">
+				<input name="Submit" id="Disable" type="submit" class="formbtn" value="<?=gettext("Disable firmware upload");?>">
 				<br><br>
-				<strong><?=_SYSTEMFIRMWAREPHP_FIRMFILE;?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld">
+				<strong><?=gettext("Firmware image file'");?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld">
 				<br><br>
-				<input name="Submit" id="Upgrade" type="submit" class="formbtn" value="<?=_SYSTEMFIRMWAREPHP_UPFIRM;?>">
+				<input name="Submit" id="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>">
 				<?php endif; else: ?>
-				<strong><?=_SYSTEMFIRMWAREPHP_MSGREBOOTUP;?></strong>
+				<strong><?=gettext("You must reboot the system before you can upgrade the firmware.");?></strong>
 				<?php endif; ?>
       </td>
     </tr>
     <tr>
       <td>
-				<span class="vexpl"><span class="red"><strong><?=_WARNING;?>:</strong></span><br>
-				<?=_SYSTEMFIRMWAREPHP_DONOTABORT;?></span>
+				<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br>
+				<?=gettext("'DO NOT abort the firmware upgrade once it has started. FreeNAS will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of 128 Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href="diag_backup.php">Backup</a> the System Configuration before doing a Firmware upgrade.'");?></span>
 			</td>
     </tr>
   </table>

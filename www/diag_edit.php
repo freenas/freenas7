@@ -6,7 +6,7 @@
     All rights reserved.
 
     Adapted for FreeNAS by Volker Theile (votdev@gmx.de)
-    Copyright © 2006 Volker Theile
+    Copyright © 2006-2007 Volker Theile
 
     Using dp.SyntaxHighlighter for syntax highlighting
     http://www.dreamprojections.com/SyntaxHighlighter 
@@ -38,9 +38,9 @@ require("guiconfig.inc");
 
 global $g;
 
-$pgtitle = array(_DIAG_NAME, _DIAGEDITPHP_NAMEDESC);
+$pgtitle = array(gettext("Diagnostics"), gettext("Edit File"));
 
-if (($_POST['submit'] == _LOAD) && file_exists($_POST['savetopath']) && is_file($_POST['savetopath'])) {
+if (($_POST['submit'] == gettext("Load")) && file_exists($_POST['savetopath']) && is_file($_POST['savetopath'])) {
 	$fd = fopen($_POST['savetopath'], "r");
 	$content = fread($fd, filesize($_POST['savetopath']));
 	fclose($fd);
@@ -57,19 +57,19 @@ if (($_POST['submit'] == _LOAD) && file_exists($_POST['savetopath']) && is_file(
 		$language = "js";
 	else if(stristr($_POST['savetopath'], ".css") == true)
 		$language = "css";
-} else if (($_POST['submit'] == _SAVE)) {
+} else if (($_POST['submit'] == gettext("Save"))) {
 	conf_mount_rw();
 	$content = ereg_replace("\r","",$_POST['code']) ;
 	$fd = fopen($_POST['savetopath'], "w");
 	fwrite($fd, $content);
 	fclose($fd);
 	$edit_area="";
-	$savemsg = _DIAGEDITPHP_SAVEMSG . " " . $_POST['savetopath'];
+	$savemsg = gettext("Saved file to") . " " . $_POST['savetopath'];
 	if($_POST['savetopath'] == "{$g['cf_conf_path']}/config.xml")
 		unlink_if_exists("/tmp/config.cache");
 	conf_mount_ro();
-} else if (($_POST['submit'] == _LOAD) && (!file_exists($_POST['savetopath']) || !is_file($_POST['savetopath']))) {
-	$savemsg = _DIAGEDITPHP_FILENOTFOUND . " " . $_POST['savetopath'];
+} else if (($_POST['submit'] == gettext("Load")) && (!file_exists($_POST['savetopath']) || !is_file($_POST['savetopath']))) {
+	$savemsg = gettext("File not found") . " " . $_POST['savetopath'];
 	$content = "";
 	$_POST['savetopath'] = "";
 }
@@ -104,22 +104,22 @@ else
     <table width="100%" cellpadding='9' cellspacing='9' bgcolor='#eeeeee'>
       <tr>
         <td>
-          <span class="label"><?=_DIAGEDITPHP_FILEPATH; ?>:</span>
+          <span class="label"><?=gettext("File path"); ?>:</span>
 	        <input size="42" id="savetopath" name="savetopath" value="<?php echo $_POST['savetopath']; ?>" />
           <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \> 
-	        <input name="submit" type="submit" class="formbtn" id="Load" value="<?=_LOAD;?>" /> 
-          <input name="submit" type="submit" class="formbtn" id="Save" value="<?=_SAVE;?>" />
+	        <input name="submit" type="submit" class="formbtn" id="Load" value="<?=gettext("Load");?>" /> 
+          <input name="submit" type="submit" class="formbtn" id="Save" value="<?=gettext("Save");?>" />
 	        <hr noshade="noshade" />
         	<?php if($_POST['highlight'] == "no"): ?>
-          <?=_DIAGEDITPHP_ROWS; ?>: <input size="3" name="rows" value="<? echo $rows; ?>" />
-        	<?=_DIAGEDITPHP_COLS; ?>: <input size="3" name="cols" value="<? echo $cols; ?>" />
+          <?=gettext("Rows"); ?>: <input size="3" name="rows" value="<? echo $rows; ?>" />
+        	<?=gettext("Cols"); ?>: <input size="3" name="cols" value="<? echo $cols; ?>" />
         	|
         	<?php endif; ?>
-        	<?=_DIAGEDITPHP_HIGHLIGHTING; ?>:
+        	<?=gettext("Highlighting"); ?>:
           <input id="highlighting_enabled" name="highlight" type="radio" value="yes" <?php if($highlight == "yes") echo " checked=\"checked\""; ?> />
-          <label for="highlighting_enabled"><?=_DIAGEDITPHP_HIGHLIGHTINGENABLED; ?></label>
+          <label for="highlighting_enabled"><?=gettext("Enabled"); ?></label>
         	<input id="highlighting_disabled" name="highlight" type="radio" value="no"<?php if($highlight == "no") echo " checked=\"checked\""; ?> />
-          <label for="highlighting_disabled"><?=_DIAGEDITPHP_HIGHLIGHTINGDISABLED; ?></label>
+          <label for="highlighting_disabled"><?=gettext("Disabled"); ?></label>
         </td>
       </tr>
     </table>

@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(_DISKS,_DISKSMOUNTPHP_NAME,isset($id)?_EDIT:_ADD);
+$pgtitle = array(gettext("Disks"),gettext("Mount Point"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -101,16 +101,16 @@ if ($_POST) {
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['sharename'] && !is_validsharename($_POST['sharename']))) {
-		$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDNAME;
+		$input_errors[] = gettext("'The share name may only consist of the characters a-z, A-Z, 0-9, _ , -.'");
 	}
 
 	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
-		$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDDESC;
+		$input_errors[] = gettext("The description name contain invalid characters.");
 	}
 
 	$device=$_POST['mdisk'].$_POST['partition'];
 	if ($device == $cfdevice ) {
-		$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDMOUNTSYS;
+		$input_errors[] = gettext("Can't mount the system partition 1, the DATA partition is the 2.");
 	}
 
 	/* check for name conflicts */
@@ -120,12 +120,12 @@ if ($_POST) {
 
 		// Check for duplicate mount point
 		if (($mount['mdisk'] == $_POST['mdisk']) && ($mount['partition'] == $_POST['partition']))       {
-			$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDDISK;
+			$input_errors[] = gettext("This disk/partition is allready configured.");
 			break;
 		}
 		
 		if (($_POST['sharename']) && ($mount['sharename'] == $_POST['sharename'])) {
-			$input_errors[] = _DISKSMOUNTEDITPHP_MSGVALIDDUP;
+			$input_errors[] = gettext("Duplicate Share Name.");
 			break;
 		}
 	}
@@ -164,7 +164,7 @@ if ($_POST) {
 <form action="disks_mount_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr> 
-      <td valign="top" class="vncellreq"><?=_DISK; ?></td>
+      <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
       <td class="vtable">            
     	 <select name="mdisk" class="formfld" id="mdisk">
     	  <?php foreach ($a_disk as $disk): ?>
@@ -179,7 +179,7 @@ if ($_POST) {
       </td>
     </tr>   
      <tr> 
-      <td valign="top" class="vncellreq"><?=_PARTITION ; ?></td>
+      <td valign="top" class="vncellreq"><?=gettext("Partition") ; ?></td>
       <td class="vtable"> 
         <select name="partition" class="formfld" id="partition">
           <option value="s1" <?php if ($pconfig['partition'] == "s1") echo "selected"; ?>>1 (or new software RAID method)</option>
@@ -187,15 +187,15 @@ if ($_POST) {
           <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
           <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
           <option value="" <?php if ($pconfig['partition'] == "") echo "selected"; ?>>CD/DVD</option>
-          <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>>previous <?=_SOFTRAID ;?> - gmirror</option>
-          <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>>previous <?=_SOFTRAID ;?> - graid5</option>
-          <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>>previous <?=_SOFTRAID ;?> - gvinum</option>
+          <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>>previous <?=gettext("Software RAID") ;?> - gmirror</option>
+          <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>>previous <?=gettext("Software RAID") ;?> - graid5</option>
+          <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>>previous <?=gettext("Software RAID") ;?> - gvinum</option>
           <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>GPT (or new software RAID method with GPT)</option>
         </select>
       </td>
     </tr>
     <tr> 
-      <td valign="top" class="vncellreq"><?=_FILESYSTEM ;?></td>
+      <td valign="top" class="vncellreq"><?=gettext("File system") ;?></td>
       <td class="vtable"> 
         <select name="fstype" class="formfld" id="fstype">
           <option value="ufs" <?php if ($pconfig['fstype'] == "ufs") echo "selected"; ?>>UFS</option>
@@ -207,20 +207,20 @@ if ($_POST) {
       </td>
     </tr>
      <tr> 
-     <td width="22%" valign="top" class="vncell"><?=_DISKSMOUNTPHP_SHARENAME ;?></td>
+     <td width="22%" valign="top" class="vncell"><?=gettext("Share Name") ;?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>"> 
       </td>
     </tr>
     <tr> 
-     <td width="22%" valign="top" class="vncell"><?=_DESC ;?></td>
+     <td width="22%" valign="top" class="vncell"><?=gettext("Description") ;?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"> 
       </td>
     </tr>
     <tr> 
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?_SAVE:_ADD?>"> 
+      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>"> 
         <?php if (isset($id) && $a_mount[$id]): ?>
         <input name="id" type="hidden" value="<?=$id;?>"> 
         <?php endif; ?>
@@ -228,9 +228,9 @@ if ($_POST) {
     </tr>
     <tr> 
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"><span class="vexpl"><span class="red"><strong><?=_WARNING; ?>:<br>
-        </strong></span><?=sprintf(_DISKSMOUNTEDITPHP_TEXT,htmlspecialchars($cfdevice));?></span>
-<p><span class="vexpl"><?=_MSGFILESYSTEM;?></p>
+      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
+        </strong></span><?=sprintf(gettext("1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."),htmlspecialchars($cfdevice));?></span>
+<p><span class="vexpl"><?=gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!");?></p>
       </td>
     </tr>
   </table>

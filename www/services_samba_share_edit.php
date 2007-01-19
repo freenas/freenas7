@@ -2,11 +2,11 @@
 <?php 
 /*
 	services_samba_share_edit.php
-	Copyright © 2006 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -40,7 +40,7 @@ $id = $_GET['id'];
 if(isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(_SERVICES,_SRVCIFS_NAMEDESC,_SRVCIFS_SHARE,_EDIT);
+$pgtitle = array(gettext("Services"),gettext("CIFS"),_SRVCIFS_SHARE,gettext("Edit"));
 
 if(!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -74,34 +74,34 @@ if($_POST) {
 <form action="services_samba_share_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFSSHAREEDIT_SHARENAME;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Share Name");?></td>
       <td width="78%" class="vtable"> 
         <input type="text" class="formfld" size="30" value="<?=htmlspecialchars($config['mounts']['mount'][$id]['sharename']);?>" disabled>
       </td>
     </tr>
     <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVCIFSSHAREEDIT_DESC;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
       <td width="78%" class="vtable"> 
         <input type="text" class="formfld" size="30" value="<?=htmlspecialchars($config['mounts']['mount'][$id]['desc']);?>" disabled>
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncell"><?=_SRVCIFSSHAREEDIT_BROWSEABLE;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Browseable");?></td>
       <td width="78%" class="vtable">
         <select name="browseable" class="formfld" id="browseable">
-          <?php $text = array(_YES,_NO); $vals = explode(" ","1 0"); $j = 0;
+          <?php $text = array(gettext("Yes"),gettext("No")); $vals = explode(" ","1 0"); $j = 0;
           for($j = 0; $j < count($vals); $j++): ?>
           <option value="<?=$vals[$j];?>" <?php if(is_array($config['samba']['hidemount']) && in_array($config['mounts']['mount'][$id]['sharename'],$config['samba']['hidemount'])) echo "selected";?>> 
             <?=htmlspecialchars($text[$j]);?>
           </option>
           <?php endfor;?>
         </select>
-        <br><?=_SRVCIFSSHAREEDIT_BROWSEABLETEXT;?>
+        <br><?=gettext("This controls whether this share is seen in the list of available shares in a net view and in the browse list.");?>
       </td>
     </tr>
     <tr> 
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>"> 
+      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"> 
         <?php if(isset($id)): ?>
         <input name="id" type="hidden" value="<?=$id;?>"> 
         <?php endif; ?>

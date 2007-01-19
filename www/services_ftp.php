@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(_SERVICES, _SRVFTP_NAMEDESC);
+$pgtitle = array(gettext("Services"), gettext("FTP"));
 
 if (!is_array($config['ftp'])) {
 	$config['ftp'] = array();
@@ -64,40 +64,40 @@ if ($_POST) {
 
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "port numberclients maxconperip timeout"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(_SRVFTP_TCP,_SRVFTP_MAXCLIENT,_SRVFTP_MAXIP,_SRVFTP_TIMEOUT));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("TCP port"),gettext("Number of clients"),gettext("Max. conn. per IP"),gettext("Timeout")));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['enable'] && !is_port($_POST['port'])) {
-		$input_errors[] = _SRVFTP_MSGVALIDPORT;
+		$input_errors[] = gettext("The TCP port must be a valid port number.");
 	}
 	if ($_POST['enable'] && !is_numericint($_POST['numberclients'])) {
-		$input_errors[] = _SRVFTP_MSGVALIDMAXCLIENT;
+		$input_errors[] = gettext("The maximum Number of client must be a number.");
 	}
 	if ($_POST['enable'] && !is_numericint($_POST['maxconperip'])) {
-		$input_errors[] = _SRVFTP_MSGVALIDMAXIP;
+		$input_errors[] = gettext("The max con per ip must be a number.");
 	}
 	if ($_POST['enable'] && !is_numericint($_POST['timeout'])) {
-		$input_errors[] = _SRVFTP_MSGVALIDIDLE;
+		$input_errors[] = gettext("The maximum idle time be a number.");
 	}
 	if ($_POST['enable'] && ($_POST['pasv_address'])) {
 		if (!is_ipaddr($_POST['pasv_address']))
-			$input_errors[] = _SRVFTP_MSGVALIDPASVIP;
+			$input_errors[] = gettext("The pasv address must be a public IP address.");
 	}
 	if ($_POST['enable'] && ($_POST['pasv_max_port'])) {
 		if (!is_port($_POST['pasv_max_port']))
-			$input_errors[] = _SRVFTP_MSGVALIDPASVMAX;
+			$input_errors[] = gettext("'The pasv_max_port port must be a valid port number.'");
 	}
 	if ($_POST['enable'] && ($_POST['pasv_min_port'])) {
 		if (!is_port($_POST['pasv_min_port']))
-			$input_errors[] = _SRVFTP_MSGVALIDPASVMIN;
+			$input_errors[] = gettext("'The pasv_min_port port must be a valid port number.'");
 	}
 	if (($_POST['passiveip'] && !is_ipaddr($_POST['passiveip']))) {
-		$input_errors[] = _INTPHP_MSGVALIDIP;
+		$input_errors[] = gettext("A valid IP address must be specified.");
 	}
 	if (!($_POST['anonymous']) && !($_POST['localuser'])) {
-		$input_errors[] = _SRVFTP_MSGVALIDAUTH;
+		$input_errors[] = gettext("You must select at minium anonymous or/and local user authentication.");
 	}
 
 	if (!$input_errors) {
@@ -159,91 +159,91 @@ function enable_change(enable_change) {
       <td colspan="2" valign="top" class="optsect_t">
         <table border="0" cellspacing="0" cellpadding="0" width="100%">
 				  <tr>
-            <td class="optsect_s"><strong><?=_SRVFTP_FTPSERVER;?></strong></td>
-				    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=_ENABLE; ?></strong></td>
+            <td class="optsect_s"><strong><?=gettext("FTP Server");?></strong></td>
+				    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable"); ?></strong></td>
           </tr>
 				</table>
       </td>
     </tr>
      <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_TCP; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port"); ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
-       <br><?=_SRVFTP_TCPTEXT; ?></td>
+       <br><?=gettext("Default is 21"); ?></td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_MAXCLIENT; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Number of clients"); ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="numberclients" type="text" class="formfld" id="numberclients" size="20" value="<?=htmlspecialchars($pconfig['numberclients']);?>">
-      <br><?=_SRVFTP_MAXCLIENTTEXT; ?></td>
+      <br><?=gettext("Maximum number of simultaneous clients."); ?></td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_MAXIP; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Max. conn. per IP"); ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="maxconperip" type="text" class="formfld" id="maxconperip" size="20" value="<?=htmlspecialchars($pconfig['maxconperip']);?>">
-        <br><?=_SRVFTP_MAXIPTEXT; ?></td>
+        <br><?=gettext("Maximum number of connections per IP address (0 = unlimited)."); ?></td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_SRVFTP_TIMEOUT ;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Timeout") ;?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="timeout" type="text" class="formfld" id="timeout" size="20" value="<?=htmlspecialchars($pconfig['timeout']);?>">
-        <br><?=_SRVFTP_TIMEOUTTEXT ;?></td>
+        <br><?=gettext("Maximum idle time in minutes.") ;?></td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_ANONYMOUS;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Anonymous login");?></td>
       <td width="78%" class="vtable">
         <input name="anonymous" type="checkbox" id="anonymous" value="yes" <?php if ($pconfig['anonymous']) echo "checked"; ?>>
-        <?=_SRVFTP_ENANONYMOUS;?></td>
+        <?=gettext("Enable anonymous login.");?></td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_AUTH;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Local User");?></td>
       <td width="78%" class="vtable">
         <input name="localuser" type="checkbox" id="localuser" value="yes" <?php if ($pconfig['localuser']) echo "checked"; ?>>
-        <?=_SRVFTP_ENAUTH;?></td>
+        <?=gettext("Enable local user login.");?></td>
     </tr>
         <tr>
-      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_BANNER;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Banner");?></td>
       <td width="78%" class="vtable">
         <textarea name="banner" cols="65" rows="7" id="banner" class="formpre"><?=htmlspecialchars($pconfig['banner']);?></textarea>
         <br>
-        <?=_SRVFTP_BANNERTEXT;?></td>
+        <?=gettext("Greeting banner displayed by FTP when a connection first comes in.");?></td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_FXP;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("FXP");?></td>
       <td width="78%" class="vtable">
         <input name="fxp" type="checkbox" id="fxp" value="yes" <?php if ($pconfig['fxp']) echo "checked"; ?>>
-        <?=_SRVFTP_ENFXP;?><span class="vexpl"><br>
-        <?=_SRVFTP_FXPTEXT;?></span></td>
+        <?=gettext("Enable FXP protocol.");?><span class="vexpl"><br>
+        <?=gettext("FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!).");?></span></td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_NATMODE;?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("NAT mode");?></td>
       <td width="78%" class="vtable">
         <input name="natmode" type="checkbox" id="natmode" value="yes" <?php if ($pconfig['natmode']) echo "checked"; ?>>
-        <?=_SRVFTP_ENNATMODE;?><span class="vexpl"><br>
-        <?=_SRVFTP_NATMODETEXT;?></span></td>
+        <?=gettext("Force NAT mode.");?><span class="vexpl"><br>
+        <?=gettext("Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying.");?></span></td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_PASSIVEIP; ?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Passive IP address"); ?></td>
       <td width="78%" class="vtable">
         <input name="passiveip" type="text" class="formfld" id="passiveip" size="20" value="<?=htmlspecialchars($pconfig['passiveip']);?>">
-        <br><?=_SRVFTP_PASSIVEIPTEXT; ?></td>
+        <br><?=gettext("Use this option to override the IP address that FTP daemon will advertise in response to the PASV command."); ?></td>
   	</tr>
   	<tr>
-      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_PASVMIN; ?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("'pasv_min_port'"); ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>">
-      <br><?=_SRVFTP_PASVMINTEXT; ?></td>
+      <br><?=gettext("The minimum port to allocate for PASV style data connections (0 = use any port)."); ?></td>
   	</tr>
   	<tr>
-      <td width="22%" valign="top" class="vncell"><?=_SRVFTP_PASVMAX; ?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("'pasv_max_port'"); ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>">
-      <br><?=_SRVFTP_PASVMAXTEXT; ?></td>
+      <br><?=gettext("The maximum port to allocate for PASV style data connections (0 = use any port)."); ?></td>
   	</tr>
   	<tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=_SAVE;?>" onClick="enable_change(true)">
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
       </td>
     </tr>
   </table>

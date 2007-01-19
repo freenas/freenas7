@@ -3,7 +3,7 @@
 /*
 	disks_raid_gstripe_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(_DISKSPHP_NAME,_DISKSRAIDPHP_NAMEDESC,isset($id)?_EDIT:_ADD);
+$pgtitle = array(gettext("Disks"),gettext("RAID"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['gstripe']['vdisk']))
 	$config['gstripe']['vdisk'] = array();
@@ -50,7 +50,7 @@ $a_disk = get_fstype_disks_list("softraid");
 $all_raid = array_merge((array)$config['graid5']['vdisk'],(array)$config['gmirror']['vdisk'],(array)$config['gvinum']['vdisk'],(array)$config['gstripe']['vdisk'],(array)$config['gconcat']['vdisk']);
 
 if (!sizeof($a_disk)) {
-	$nodisk_errors[] = _DISKSRAIDEDITPHP_MSGADDDISKFIRST;
+	$nodisk_errors[] = gettext("You must add disks first.");
 }
 
 if (isset($id) && $a_raid[$id]) {
@@ -66,12 +66,12 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "name");
-	$reqdfieldsn = array(_DISKSRAIDEDITPHP_RAIDNAME);
+	$reqdfieldsn = array(gettext("Raid name"));
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['name'] && !is_validaliasname($_POST['name']))) {
-		$input_errors[] = _DISKSRAIDEDITPHP_MSGVALIDNAME;
+		$input_errors[] = gettext("The device name may only consist of the characters a-z, A-Z, 0-9.");
 	}
 
 	/* check for name conflicts */
@@ -80,14 +80,14 @@ if ($_POST) {
 			continue;
 
 		if ($raid['name'] == $_POST['name']) {
-			$input_errors[] = _DISKSRAIDEDITPHP_MSGEXIST;
+			$input_errors[] = gettext("This device already exists in the raid volume list.");
 			break;
 		}
 	}
 
 	/* check the number of RAID disk for volume */
 	if (count($_POST['diskr']) < 2)
-		$input_errors[] = _DISKSRAIDEDITPHP_MSGVALIDRAID0;
+		$input_errors[] = gettext("There must be a minimum of 2 disks in a RAID 0 volume.");
 
 	if (!$input_errors) {
 		$raid = array();
@@ -104,7 +104,7 @@ if ($_POST) {
 
    	$fd = @fopen("$d_raidconfdirty_path", "a");
    	if (!$fd) {
-   		echo "_DISKSRAIDEDITPHP_MSGERROR";
+   		echo "gettext("ERR Could not save RAID configuration.\n")";
    		exit(0);
    	}
    	fwrite($fd, "$raid[name]\n");
@@ -123,19 +123,19 @@ if ($_POST) {
 <form action="disks_raid_gstripe_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
-      <td valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_RAIDNAME;?></td>
+      <td valign="top" class="vncellreq"><?=gettext("Raid name");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDPHP_TYPE; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
       <td width="78%" class="vtable">
-      RAID 1 (<?=_DISKSRAIDEDITPHP_RAID0; ?>)
+      RAID 1 (<?=gettext("striping"); ?>)
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=_DISKSRAIDEDITPHP_MEMBERS;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Members of this volume");?></td>
       <td width="78%" class="vtable">
       <?
         $i=0;
@@ -159,7 +159,7 @@ if ($_POST) {
     </tr>
     <tr>
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?_SAVE:_ADD;?>">
+      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>">
         <?php if (isset($id) && $a_raid[$id]): ?>
         <input name="id" type="hidden" value="<?=$id;?>">
         <?php endif; ?>
