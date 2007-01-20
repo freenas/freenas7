@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-01-18 09:45+0100\n"
+"PO-Revision-Date: 2007-01-20 18:26+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgid "January February March April May June July August September October Novem
 msgstr "Ianuarie Februarie Martie Aprilie Mai Iunie Iulie August Septembrie Octombrie Noiembrie Decembrie"
 
 msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
-msgstr "Ian Feb Mar Apr MAi Iun Iul Aug Sep Oct Nov Dec"
+msgstr "Ian Feb Mar Apr Mai Iun Iul Aug Sep Oct Nov Dec"
 
 msgid "Time"
 msgstr "Timp"
@@ -73,7 +73,7 @@ msgid "days"
 msgstr "zile"
 
 msgid "week"
-msgstr "sapatamina"
+msgstr "saptamina"
 
 msgid "weeks"
 msgstr "saptamini"
@@ -193,7 +193,7 @@ msgid "Warning"
 msgstr "Atentie"
 
 msgid "Load"
-msgstr "Load"
+msgstr "Incarcare"
 
 msgid "Retry"
 msgstr "Reincearca"
@@ -214,13 +214,13 @@ msgid "Disk"
 msgstr "Disc"
 
 msgid "Disks"
-msgstr "Disc-uri"
+msgstr "Discuri"
 
 msgid "Partition"
 msgstr "Partitie"
 
 msgid "File system"
-msgstr "Fisiere sistem"
+msgstr "Sistem Fisiere"
 
 msgid "Description"
 msgstr "Descriere"
@@ -241,10 +241,10 @@ msgid "Note"
 msgstr "Obs."
 
 msgid "Successful"
-msgstr "Cu Succes"
+msgstr "Cu succes"
 
 msgid "Failed"
-msgstr "Incorect"
+msgstr "Eroare"
 
 msgid "Error"
 msgstr "Eroare"
@@ -259,13 +259,13 @@ msgid "The changes have been saved. You must <a href=reboot.php>reboot</a> your 
 msgstr "Modificarile au fost salvate. Trebuie sa <a href=reboot.php>reporniti</a> sistemul pentru ca modificarile sa aiba efect."
 
 msgid "ERROR: the changes could not be applied (error code '.$ok.')."
-msgstr "EROARE: modificarile nu pot fi aplicate (cod erroare )."
+msgstr "EROARE: modificarile nu pot fi aplicate (cod erroare '.$ok.')."
 
 msgid "A valid IP address must be specified."
 msgstr "Trebuie sa introduceti o adresa IP valida."
 
 msgid "A valid network bit count must be specified."
-msgstr "Trebuie sa introduceti un nr. retea valid."
+msgstr "Trebuie sa introduceti un bit masca retea valid."
 
 msgid "The TCP port must be a valid port number."
 msgstr "Trebuie sa introduceti un port TCP valid."
@@ -274,10 +274,10 @@ msgid "Password don't match."
 msgstr "Parolele sint diferite."
 
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
-msgstr "Note: Ctrl-click (sau command-click pe Mac) pentru selectare/deselectare minute, ore, zile  si luni."
+msgstr "Note: Ctrl+click (sau command+click pe Mac) pentru selectare/deselectare minute, ore, zile  si luni."
 
 msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
-msgstr "UFS (+ variante) reprezinta sistemul de fisiere NATIV pentru  FreeBSD (sistemul sursa al %s). Utilizarea altor sisteme de fisere cum ar fi FAT, FAT32, EXT2, EXT3, sau NTFS poate avea rezultate incerte (inclusiv pierderi de date)!"
+msgstr "UFS (si variantele) reprezinta sistemul de fisiere NATIV pentru  FreeBSD (sistemul sursa al %s). Utilizarea altor sisteme de fisere cum ar fi FAT, FAT32, EXT2, EXT3, sau NTFS poate avea rezultate nedorite (inclusiv pierderi de date)!"
 
 msgid "Active"
 msgstr "Activ"
@@ -301,13 +301,13 @@ msgid "Firmware"
 msgstr "Firmware"
 
 msgid "Advanced"
-msgstr "Avansat"
+msgstr "Avansate"
 
 msgid "Assign"
 msgstr "Atribuire"
 
 msgid "LAN"
-msgstr "LAN"
+msgstr "RETEA"
 
 msgid "Mount Point"
 msgstr "Punct Montare"
@@ -364,7 +364,7 @@ msgid "Extensions"
 msgstr "Extensii"
 
 msgid "Diagnostics"
-msgstr "Diagnostic"
+msgstr "Diagnostice"
 
 msgid "Logs"
 msgstr "Jurnale"
@@ -412,7 +412,7 @@ msgid "DNS servers"
 msgstr "Servere DNS"
 
 msgid "IP addresses"
-msgstr "Adresa IP"
+msgstr "Adrese IP"
 
 msgid "Username"
 msgstr "Nume Utilizator"
@@ -424,7 +424,7 @@ msgid "Password"
 msgstr "Parola"
 
 msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don't use the character ':'."
-msgstr "Daca doriti sa schimbati parola de acces pentru Interfa webGUI, introduceti-o aici de doua ori.<br>Nu folositi caracterele ':'."
+msgstr "Daca doriti sa schimbati parola de acces pentru Interfa webGUI, introduceti-o aici de doua ori pentru verificare.<br>Nu folositi caracterul ':'."
 
 msgid "WebGUI protocol"
 msgstr "Protocol Interfata Web"
@@ -433,7 +433,7 @@ msgid "WebGUI port"
 msgstr "Port Interfata Web"
 
 msgid "Enter a custom port number for the webGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
-msgstr "Introduceti un port de acces Interfata daca vreti sa-l schimbati pe cel implicit (80 pentru HTTP, 443 pentru HTTPS)."
+msgstr "Introduceti un port de acces Interfata Web daca vreti sa-l schimbati pe cel implicit (80 pentru HTTP, 443 pentru HTTPS)."
 
 msgid "Language"
 msgstr "Limba"
@@ -445,13 +445,13 @@ msgid "Time zone"
 msgstr "Fus Orar"
 
 msgid "Select the location closest to you."
-msgstr "Selectati cea mai apropiata locatie."
+msgstr "Selectati cea mai apropiata locatie de dvs."
 
 msgid "Time update interval"
 msgstr "Interval actualizare"
 
 msgid "Minutes between network time sync.; 300	recommended, or 0 to disable."
-msgstr "Minute intre sincronizari; 300	recomandat, sau 0 pentru dezactivare."
+msgstr "Minute intre sincronizari; 300	recomandat, 0 pentru dezactivare."
 
 msgid "NTP time server"
 msgstr "Server NTP"
@@ -460,19 +460,19 @@ msgid "Use a space to separate multiple hosts (only one required). Remember to s
 msgstr "Folositi un spatiu pentru separarea host-urilor multiple (daca e nevoie). Trebuie sa definiti cel putin 1 server DNS daca introduceti un nume de host aici!"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-msgstr "HostName-ul poate contine doar caracterele  a-z, 0-9 si '-'."
+msgstr "Hostname-ul poate contine doar caracterele  a-z, 0-9 si '-'."
 
 msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr "Numele de Domeniu poate contine doar caracterele  a-z, 0-9 si '-'."
 
 msgid "A valid IP address must be specified for the primary/secondary DNS server."
-msgstr "Trebuie sa furnizati o adesa IP valida pentru server-ul DNS Primar/Secundar."
+msgstr "Trebuie sa introduceti o adesa IP valida pentru server-ul DNS Primar/Secundar."
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr "Numele Utilizator poate contine doar caracterele a-z, A-Z and 0-9."
+msgstr "Numele utilizator poate contine doar caracterele a-z, A-Z and 0-9."
 
 msgid "A valid TCP/IP port must be specified for the webGUI port."
-msgstr "Trebuie sa introduceti un port TCP/IP valid pentru webGUI."
+msgstr "Trebuie sa introduceti un port TCP/IP valid pentru Interfata Web."
 
 msgid "The passwords do not match."
 msgstr "Parolele nu coincid."
@@ -481,10 +481,10 @@ msgid "You must select a valid language."
 msgstr "Trebuie sa selectati o limba valida."
 
 msgid "The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr "Intervalul de actualizare poate fi fie 0 (dezactivat) sau o valoare intre 6 si 1440."
+msgstr "Intervalul de actualizare poate fi fie 0 (dezactivat) fie o valoare intre 6 si 1440."
 
 msgid "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr "Numele Server-ului NTP poate contine doar caracterele a-z, 0-9, '-' si '.'."
+msgstr "Numele Serverului NTP poate contine doar caracterele a-z, 0-9, '-' si '.'."
 
 msgid "System information"
 msgstr "Informatii Sistem"
@@ -505,31 +505,31 @@ msgid "Uptime"
 msgstr "Functioneza de"
 
 msgid "Last config change"
-msgstr "Ultima Modificare Configuratie"
+msgstr "Ultima modificare configuratie"
 
 msgid "Memory usage"
 msgstr "Utilizare memorie"
 
 msgid "Load averages"
-msgstr "Incarcare Medie"
+msgstr "Incarcare medie"
 
 msgid "show process information"
 msgstr "afisare informatii procese"
 
 msgid "Disk space usage"
-msgstr "utilizare Spatiu Disk"
+msgstr "utilizare spatiu disc"
 
 msgid "No disk configured"
-msgstr "Niciun Disk Configurat"
+msgstr "Niciun disc configurat"
 
 msgid "Processes"
 msgstr "Procese"
 
 msgid "Processes information"
-msgstr "Informatii Procese"
+msgstr "Informatii procese"
 
 msgid "The static route configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Ruta statica a fost schimbata. <br>Trebuie sa salvati modificarile pentru a deveni active."
+msgstr "Ruta statica a fost schimbata. <br>Trebuie sa salvati modificarile pentru ca acestea sa devina active."
 
 msgid "Interface"
 msgstr "Interfata"
@@ -544,7 +544,7 @@ msgid "Edit Route"
 msgstr "Editare Ruta"
 
 msgid "Do you really want to delete this route?"
-msgstr "Stergeti Aceasta Ruta?"
+msgstr "Stergeti aceasta ruta?"
 
 msgid "Delete Route"
 msgstr "Stergere Ruta"
@@ -565,10 +565,10 @@ msgid "Choose which interface this route applies to."
 msgstr "Selectati interfata pentru aceasta ruta."
 
 msgid "Destination network"
-msgstr "Reteaua Destinatie"
+msgstr "Reteaua destinatie"
 
 msgid "Destination network for this static route"
-msgstr "Reteaua Destinatie pentru aceasta ruta statica"
+msgstr "Reteaua destinatie pentru aceasta ruta statica"
 
 msgid "Gateway to be used to reach the destination network"
 msgstr "Gateway-ul pentru acces la reteaua destinatie"
@@ -577,7 +577,7 @@ msgid "You may enter a description here for your reference (not parsed)."
 msgstr "Puteti introduce aici o scurta descriere."
 
 msgid "The uploaded image file is not for this platform"
-msgstr "Imaginea incarcata nu este pentru aceassta platforma"
+msgstr "Imaginea sistem incarcata nu este pentru aceasta platforma"
 
 msgid "Image upload failed (out of memory?)"
 msgstr "Eroare la incarcarea imaginii (memorie insuficienta?)"
@@ -592,13 +592,13 @@ msgid "There has been an error verifying the signature on this image."
 msgstr "Eroare la verificarea semnaturii digitale a imaginii."
 
 msgid "The image file is corrupt"
-msgstr "Fisier corupt"
+msgstr "Fisierul imagine sistem corupt"
 
 msgid "The firmware is now being installed. %s will reboot automatically."
 msgstr "Se actualizeaza sistemul. %s va reporni apoi in mod automat."
 
 msgid "Firmware uploading is not supported on this platform."
-msgstr "Actualizarea sistemului nu este posibila."
+msgstr "Actualizarea acestui sistem nu este posibila."
 
 msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
 msgstr "Acest lucru insemna ca imaginea incarcata nu este in mod oficial suportata si poate produce efecte nedorite in functionare . Instalati doar imagini sistem care provin din surse sigure si asigurati-va ca imaginea respectiva nu a fost alterata.<br><br>Doriti sa instalati oricum aceasta imagine (pe riscul dvs.)?"
@@ -619,13 +619,13 @@ msgid "Upgrade firmware"
 msgstr "Actualizare Firmware"
 
 msgid "You must reboot the system before you can upgrade the firmware."
-msgstr "Sistemul trebuie repornit pentru activarea noului firmware."
+msgstr "Trebuie sa reporniti sistemul inainte de a putea actualiza firmware-ul."
 
 msgid "The TCP idle timeout must be an integer."
 msgstr "Valoare pentru TCP idle timeout trebuie sa fie un numar intreg."
 
 msgid "Certificate and key must always be specified together."
-msgstr "certificatul si cheia trebuiesc specificate impreuna."
+msgstr "Certificatul si cheia trebuiesc specificate mereu impreuna."
 
 msgid "This certificate does not appear to be valid."
 msgstr "Acest certificat nu este valid."
@@ -667,7 +667,7 @@ msgid "Firmware version check"
 msgstr "Verificare versiune Firmware"
 
 msgid "Disable firmware version check"
-msgstr "Dezactivare Verificare versiune firmware"
+msgstr "Dezactivare Verificare versiune Firmware"
 
 msgid "TCP idle timeout"
 msgstr "TCP idle timeout"
@@ -697,10 +697,10 @@ msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
 msgstr "Monitorizare dispozitiv S.M.A.R.T cu jurnalizare."
 
 msgid "Tuning"
-msgstr "Tuning"
+msgstr "Optimizari"
 
 msgid "Enable tuning of some kernel variable"
-msgstr "Activare tuning pentru citeva variabile din kernel"
+msgstr "Activare optimizari pentru citeva variabile din kernel"
 
 msgid "ZeroConf"
 msgstr "ZeroConf"
@@ -724,31 +724,31 @@ msgid "Network port"
 msgstr "Port retea"
 
 msgid "Delete interface"
-msgstr "Stergere interfata"
+msgstr "Stergere Interfata"
 
 msgid "Add interface"
 msgstr "Adaugare Interfata"
 
 msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
-msgstr "Dupa ce faceti click pe &quot;Salvare&quot;, va trebui sa reporniti sistemul pentru ca modificarile sa fie activate. Va trebui eventual sa parcurgeti urmatorii pasi pentru a putea accesa sistemul din nou: </span></p"
+msgstr "Dupa ce faceti click pe &quot;Salvare&quot;, va trebui sa reporniti sistemul %s pentru ca modificarile sa devina active. Va trebui eventual sa parcurgeti si urmatorii pasi pentru a putea accesa sistemul din nou: </span></p"
 
 msgid "A valid gateway must be specified."
 msgstr "Trebuie introdus un gateway valid."
 
 msgid "A valid mtu size must be specified."
-msgstr "Trebuie introdus o valoare MTU corecta."
+msgstr "Trebuie introdusa o valoare MTU corecta."
 
 msgid "IP address"
 msgstr "Adresa IP"
 
 msgid "Subnet bit count"
-msgstr "Masca Retea"
+msgstr "Bit Masca Retea"
 
 msgid "MTU"
 msgstr "MTU"
 
 msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-msgstr "valoarea starndard ptr. MTU e 1500, puteti folosi 9000 ptr. modul jumbo frame."
+msgstr "Valoarea starndard MTU e 1500, puteti folosi 9000 ptr. modul jumbo frame."
 
 msgid "Device polling"
 msgstr "Device polling"
@@ -757,7 +757,7 @@ msgid "Enable device polling"
 msgstr "Activare Device Polling"
 
 msgid "Device polling is a technique that lets the system periodically poll network devices for "
-msgstr "Device polling este o tehnica de a lasa sistemul sa verifice periodic starea dispozitivelor de retea in loc sa functioneze pe baza de intreruperi. In acest mod se reduce incarcarea 	procesorului cu scaderea semnificativa a intirzierilor in retea (dispozitivul e accesat de                    aprox. 1000 ori pe sec.) Nu toate cartele de retea accepta aces mod de lucru. Verificati la pagina web m0n0wall lista cartelelor de retea suportate."
+msgstr "Device polling este o tehnica de a lasa sistemul sa verifice periodic starea dispozitivelor de retea in loc sa functioneze pe baza de intreruperi. In acest mod se reduce incarcarea procesorului cu scaderea semnificativa a intirzierilor in retea (dispozitivul e accesat de aprox. 1000 ori pe sec.) Nu toate cartele de retea accepta aces mod de lucru. Verificati la pagina web m0n0wall lista cartelelor de retea suportate."
 
 msgid "Speed"
 msgstr "Viteza"
@@ -766,7 +766,7 @@ msgid "Duplex"
 msgstr "Duplex"
 
 msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-msgstr "dupa ce selectati &quot;Salvare&quot;, va trebui eventual sa parcurgeti urmatorii pasi pentru a accesa din nou interfata %s"
+msgstr "Dupa ce selectati &quot;Salvare&quot;, va trebui eventual sa parcurgeti si urmatorii pasi pentru a accesa din nou interfata %s: </span></p><ul><li><span class='vexpl'>schimbati adresa IP a calculatorului</span></li><li><span class='vexpl'> si accesati Interfata Web cu noua adresa IP</span></li></ul>"
 
 msgid "Enable Optional "
 msgstr "Activare Optionala "
@@ -799,10 +799,10 @@ msgid "The value in this field is sent as the DHCP client identifier when reques
 msgstr "Acesta valoare este trimisa ca identificator DHCP client cind se cere o alocare DHCP."
 
 msgid "Calculate netmask bits"
-msgstr "Calcul Masca Retea"
+msgstr "Calcul Biti Masca Retea"
 
 msgid "The LAN configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Configuratia LAN a fost modificata.<br>Trebuie sa salvati acest modificari pentru a deveni active."
+msgstr "Configuratia RETELEI a fost modificata.<br>Trebuie sa salvati acest modificari pentru ca acestea sa devena active."
 
 msgid "Manage"
 msgstr "Configurare"
@@ -817,7 +817,7 @@ msgid "iSCSI initiator"
 msgstr "Initiator iSCSI"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Lista de disc-uri a fost modificata.<br>Trebuie sa salvati aceste modificari pentru a deveni active."
+msgstr "Lista de discuri a fost modificata.<br>Trebuie sa salvati aceste modificari pentru ca acestea sa devena active."
 
 msgid "Standby time"
 msgstr "Timp Standby"
@@ -835,13 +835,13 @@ msgid "Delete disk"
 msgstr "Stergere disc"
 
 msgid "Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"
-msgstr "Sigur stergeti disc-ul? Toate datele inclusiv partajarile definite vor fi sterse!"
+msgstr "Sigur stergeti discul? Toate datele inclusiv partajarile definite vor fi sterse!"
 
 msgid "Add disk"
 msgstr "Adaugare disc"
 
 msgid "First configuration step: Add your hardrive to the disk list."
-msgstr "Primul pas: Adaugati disc la lista."
+msgstr "Primul pas: Adaugati discul la lista."
 
 msgid "This disk already exists in the disk list."
 msgstr "Acest disc este deja in lista."
@@ -850,10 +850,10 @@ msgid "UDMA mode"
 msgstr "Mod UDMA"
 
 msgid "Hard disk standby time"
-msgstr "Timp de standby harddisc"
+msgstr "Timp de standby disc"
 
 msgid "Puts the hard disk into standby mode when the selected amount of time after the l"
-msgstr "Trece harddisc-ul in modul standby cind timpul selectat de la ultima accesare expira. <em>Nu setati acest mod pentru cardurile CF.</em>"
+msgstr "Trece discul in modul standby cind timpul selectat de la ultima accesare expira. <em>Nu setati acest mod pentru cardurile CF.</em>"
 
 msgid "Advanced Power Management"
 msgstr "Advanced Power Management"
@@ -892,7 +892,7 @@ msgid "Maximum performance, maximum acoustic output"
 msgstr "Performanta maxima, Nivel Maxim Zgomot"
 
 msgid "This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"
-msgstr "Acest mod stabileste nivelul de zgomot in functionare pentru Harddisc.<br><em>Nu setati acest mod pentru cardurile CF.</em>"
+msgstr "Acest mod stabileste nivelul de zgomot in functionare pentru disc.<br><em>Nu setati acest mod pentru cardurile CF.</em>"
 
 msgid "Preformatted FS"
 msgstr "Preformatat FS"
@@ -910,13 +910,13 @@ msgid "\"fdisk: Geom not found\"is not an error message!\n"
 msgstr "\"fdisk: Geom not found\"nu este un mesaj de eroare!\n"
 
 msgid "This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified."
-msgstr "Vor fi sterse toate partiile, va fi creata partiatia 1 si va fi formatat harddisc-ul cu sistemul de fisiere selectat."
+msgstr "Vor fi sterse toate partiile, va fi creata partiatia 1 si va fi formatat discul cu sistemul de fisiere selectat."
 
 msgid "Format disk"
 msgstr "Formatare disc"
 
 msgid "Do you really want to format this disk? All data will be lost!"
-msgstr "Sigur doriti formatarea disc-ului? Veti pierde toate datele!"
+msgstr "Sigur doriti formatarea discului? Veti pierde toate datele!"
 
 msgid "Don't Erase MBR"
 msgstr "Nu stergeti MBR-ul"
@@ -937,7 +937,7 @@ msgid "Unmount disk/partition"
 msgstr "De-montare disc/partitie"
 
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<"
-msgstr "Daca disc-ul/partitia selectata este montat va fi de-montat momentan pentru efectuarea comenzii, altfel comanda va fi rulata doar in modul citire."
+msgstr "Daca discul/partitia selectata este montat va fi de-montat momentan pentru efectuarea comenzii, altfel comanda va fi rulata doar in modul citire."
 
 msgid "Management"
 msgstr "Management"
@@ -994,7 +994,7 @@ msgid "RAID"
 msgstr "RAID"
 
 msgid "The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Configuratia Raid a fost modificata.<br>Trebuie sa salvati modificarile pentru ca acestea sa devina active."
+msgstr "Configuratia Raid a fost modificata.<br>Trebuie sa salvati modificarile pentru ca aceasta sa devina activa."
 
 msgid "Edit RAID"
 msgstr "Editare RAID"
@@ -1009,25 +1009,25 @@ msgid "Do you really want to delete this raid volume? All elements that still us
 msgstr "Sigur stergeti volumul raid? Vor fi sterse toate elementele (date, partajari etc.)!"
 
 msgid "You must add disks first."
-msgstr "Trebuia sa adaugati disc-ul mai intii."
+msgstr "Trebuia sa adaugati discul mai intii."
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "Numele dispozitivului poate contine doar caracterele  a-z, A-Z, 0-9."
 
 msgid "This device already exists in the raid volume list."
-msgstr "Dispozitivul este deja in lista raid."
+msgstr "Discul este deja in lista raid."
 
 msgid "There must be a minimum of 2 disks in a RAID 0 volume."
-msgstr "Sint necesare cel putin 2 disc-uri pentru un RAID 0."
+msgstr "Sint necesare cel putin 2 discuri pentru un RAID 0."
 
 msgid "There must be a minimum of 2 disks in a JBOD."
-msgstr "Sint necesare cel putin 2 disc-uri pentru un JBOD."
+msgstr "Sint necesare cel putin 2 discuri pentru un JBOD."
 
 msgid "There must be 2 disks in a RAID 1 volume."
-msgstr "Sint necesare cel putin 2 disc-uri pentru un RAID 1."
+msgstr "Sint necesare cel putin 2 discuri pentru un RAID 1."
 
 msgid "There must be a minimum of 3 disks in a RAID 5 volume."
-msgstr "Sint necesare cel putin 3 disc-uri pentru un RAID 5."
+msgstr "Sint necesare cel putin 3 discuri pentru un RAID 5."
 
 msgid "ERR Could not save RAID configuration.\n"
 msgstr "ERROARE: Configuratia RAID nu poate fi salvata.\n"
@@ -1069,7 +1069,7 @@ msgid "Format UFS disk!"
 msgstr "Formatare disc UFS!"
 
 msgid "Object name"
-msgstr "NUme obiect"
+msgstr "Nume obiect"
 
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly)."
 msgstr "1. Folositi aceste comenzi speciale doar pentru analiza (debugging)<br>2. NU e nevoie sa folositi aceasta optiune a meniului pentru activarea volumului RAID (pornire automata)."
@@ -1201,7 +1201,7 @@ msgid "Size of receive buffer (16384 by default)."
 msgstr "Marimea buffer-ului de Intrare (implicit 16384)."
 
 msgid "The shares has been modified.<br>You must apply the changes in order for them to take effect."
-msgstr "Au fost modificat partajarile.<br>Modificarile trebuies salvate pentru a deveni active."
+msgstr "Au fost modificat partajarile.<br>Modificarile trebuiesc salvate pentru a deveni active."
 
 msgid "Browseable"
 msgstr "Rasfoire"
@@ -1246,7 +1246,7 @@ msgid "Timeout"
 msgstr "Timeout"
 
 msgid "Maximum idle time in minutes."
-msgstr "Maximum idle time in minutes."
+msgstr "Timp maxim in mod idle (minute)."
 
 msgid "Anonymous login"
 msgstr "Login Anonymous"
@@ -1336,7 +1336,7 @@ msgid "Map to user"
 msgstr "Mapare Utilizator"
 
 msgid "Alternate TCP port. Default is 873"
-msgstr "Port Alternativ TCP."
+msgstr "Port Alternativ TCP. Implicit este 873"
 
 msgid "Maximum connections"
 msgstr "Numar Maxim Conexiuni"
@@ -1393,13 +1393,13 @@ msgid "Destination"
 msgstr "Destinatie"
 
 msgid "Destination Mount Point (backup drive)."
-msgstr "Punct Montare Destinatie (backup drive)."
+msgstr "Punct Montare Destinatie (disc de backup)."
 
 msgid "SSH Daemon"
 msgstr "Daemon SSH"
 
 msgid "Alternate TCP port. Default is 22"
-msgstr "Port Alternativ TCP."
+msgstr "Port Alternativ TCP. Implicit este 22"
 
 msgid "Permit root login"
 msgstr "Permisiune login root"
@@ -1417,7 +1417,7 @@ msgid "Paste a DSA PRIVATE KEY in PEM format here."
 msgstr "Introduceti o CHEIE PRIVATA RSA in formatul PEM."
 
 msgid "The combination of share and working directory does not exist."
-msgstr "Combinatia de director / partajare nu exista."
+msgstr "Combinatia de director/partajare nu exista."
 
 msgid "Unison File Synchronisation"
 msgstr "Sincronizare Sistem Fisiere Unison"
@@ -1435,13 +1435,13 @@ msgid "Create work directory if it doesn't exist"
 msgstr "Creare director de lucru daca acesta nu exista"
 
 msgid "UPnP A/V Media Server"
-msgstr "Server UPnP A/V"
+msgstr "Server Media A/V UPnP"
 
 msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Lista continutului directorului curent a fost modificata.<br>Trebuie sa salvati modificarile pentru ca acestea sa devina active."
+msgstr "Lista continutului directorului curent a fost modificata.<br>Trebuie sa salvati modificarile pentru ca aceasta sa devina activa."
 
 msgid "UPnP friendly name."
-msgstr "Nume UPnP."
+msgstr "Nume simplu UPnP."
 
 msgid "Interface to listen to."
 msgstr "Interfata activa."
@@ -1483,7 +1483,7 @@ msgid "Server Name"
 msgstr "Nume Server"
 
 msgid "Enable guest access."
-msgstr "Activare acces mod guest."
+msgstr "Activare acces in mod guest."
 
 msgid "Enable local user authentication."
 msgstr "Activare autentificare locala."
@@ -1492,7 +1492,7 @@ msgid "Access"
 msgstr "Acces"
 
 msgid "User"
-msgstr "Utiliztor"
+msgstr "Utilizator"
 
 msgid "Users"
 msgstr "Utilizatori"
@@ -1507,7 +1507,7 @@ msgid "Full Name"
 msgstr "Nume Complet"
 
 msgid "The User list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Lista utilizatorilor a fost modificata.<br>Trebuie sa salvati modificarile pentru ca aceastea sa devina active."
+msgstr "Lista utilizatorilor a fost modificata.<br>Trebuie sa salvati modificarile pentru ca aceasta sa devina activa."
 
 msgid "Edit user"
 msgstr "Editare utilizator"
@@ -1537,7 +1537,7 @@ msgid "This user already exists in the user list."
 msgstr "Acest nume de utilizator exista deja."
 
 msgid "The password contain the illegal : character"
-msgstr "Parola contine caracterul invalid ':'"
+msgstr "Parola contine caracterul invalid :"
 
 msgid "Unique login name of user."
 msgstr "Nume unic de login utilizator."
@@ -1552,7 +1552,7 @@ msgid "Confirm Password"
 msgstr "Confirmare Parola"
 
 msgid "Confirm the password."
-msgstr "Confirmare Parola."
+msgstr "Confirm Parola."
 
 msgid "Group Member"
 msgstr "Membri Grup"
@@ -1570,7 +1570,7 @@ msgid "Edit group"
 msgstr "Editare grup"
 
 msgid "Delete group"
-msgstr "Sterger grup"
+msgstr "Stergere grup"
 
 msgid "Do you really want to delete this group?!"
 msgstr "Stergeti acest grup?!"
@@ -1582,7 +1582,7 @@ msgid "The Group name contains invalid characters."
 msgstr "Numele de Grup contine caractere invalide."
 
 msgid "The Group desc contains invalid characters."
-msgstr "Descrierea Grup-ului contine caractere invalide."
+msgstr "Descrierea Grupului contine caractere invalide."
 
 msgid "This group already exists in the group list."
 msgstr "Acest grup exista deja."
@@ -1624,7 +1624,7 @@ msgid "Password of domain administrator account, enter it here twice."
 msgstr "Parola administrator domeniu, introduceti-o de doua ori pentru verificare."
 
 msgid "The system is halting now. This may take one minute."
-msgstr "Sistemul se opreste> Dureaza aprox. 1 min.."
+msgstr "Sistemul se opreste. Dureaza aproximativ 1 minut."
 
 msgid "Are you sure you want to shutdown the system?"
 msgstr "Doriti sa opriti sistemul?"
@@ -1660,7 +1660,7 @@ msgid "Execute command"
 msgstr "Executare comanda"
 
 msgid "The system is rebooting now. This may take one minute."
-msgstr "Sistemul reporneste. Dureza aprox. 1 min.."
+msgstr "Sistemul reporneste. Dureza aproximativ 1 minut."
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "Doriti sa reporniti sistemul?"
@@ -1696,7 +1696,7 @@ msgid "No supported wireless interfaces were found for status display (only card
 msgstr "Nu a fost gasita nicio cartela wireless (sint suportate doar cartelele wireless cu driver pentru windows)."
 
 msgid "%s interface"
-msgstr "%s interfata"
+msgstr "interfata %s" 
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -1762,10 +1762,10 @@ msgid "MS Domain"
 msgstr "Domeniu MS"
 
 msgid "List of detected ATA disks"
-msgstr "Lista disc-urilor ATA detectate"
+msgstr "Lista discurilor ATA detectate"
 
 msgid "List of detected SCSI disks"
-msgstr "Lista disc-urilor SCSI detectate"
+msgstr "Lista discurilor SCSI detectate"
 
 msgid "List of mount points"
 msgstr "Lista punctelor de montare"
