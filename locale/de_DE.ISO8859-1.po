@@ -454,7 +454,7 @@ msgid "Select the location closest to you."
 msgstr "W&auml;hlen Sie den Standort, der Ihnen am n&auml;chsten liegt."
 
 msgid "Time update interval"
-msgstr "Zeit Update Interval"
+msgstr "Zeit Update Intervall"
 
 msgid "Minutes between network time sync.; 300	recommended, or 0 to disable."
 msgstr "Minuten zwischen Netzwerkzeit Synchronisation.; 300 vorgeschlagen, oder 0 um auszuschalten."
@@ -463,34 +463,34 @@ msgid "NTP time server"
 msgstr "NTP Zeit Server"
 
 msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
-msgstr "Benutzen Sie ein Leerzeichen um mehrere Hosts zu trennen (es ist nur ein Host n&ouml;tig). Denken Sie daran einen                   einen DNS Server einzutragen, wenn Sie hier einen Hostnamen eintragen!"
+msgstr "Benutzen Sie ein Leerzeichen um mehrere Hosts zu trennen (es ist nur ein Host n&ouml;tig). Denken Sie daran, einen DNS Server einzutragen, wenn Sie hier einen Hostnamen eintragen!"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-msgstr "The hostname may only contain the characters a-z, 0-9 and '-'."
+msgstr "Der Hostname darf nur folgende Zeichen enthalten: a-z, 0-9,'-'"
 
 msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr "The domain may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr "Die Domäne darf nur folgende Zeichen enthalten: a-z, 0-9, '-' und '.'."
 
 msgid "A valid IP address must be specified for the primary/secondary DNS server."
-msgstr "A valid IP address must be specified for the primary/secondary DNS server."
+msgstr "Eine gültige IP Adresse muss für den Primären/Sekundären DNS Server angegeben werden."
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr "The username may only contain the characters a-z, A-Z and 0-9."
+msgstr "Der Benutzername darf nur folgende Zeichen enthalten: a-z, A-Z und 0-9."
 
 msgid "A valid TCP/IP port must be specified for the webGUI port."
-msgstr "A valid TCP/IP port must be specified for the webGUI port."
+msgstr "Ein gültiger TCP/IP Port muss für den WebGUI Port angegeben werden."
 
 msgid "The passwords do not match."
-msgstr "The passwords do not match."
+msgstr "Die Passwörter stimmen nicht überein."
 
 msgid "You must select a valid language."
-msgstr "You must select a valid language."
+msgstr "Bitte eine gültige Sprache auswählen."
 
 msgid "The time update interval must be either 0 (disabled) or between 6 and 1440."
-msgstr "The time update interval must be either 0 (disabled) or between 6 and 1440."
+msgstr "Der Zeitintervall ist entweder 0 (ausgeschaltet) oder zwischen 6 und 1440."
 
 msgid "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr "Der Name des NTP Zeit Servers darf nur folgende Zeichen enthalten: a-z, 0-9, '-' und '.'."
 
 msgid "System information"
 msgstr "System Information"
@@ -757,7 +757,7 @@ msgid "Enable device polling"
 msgstr "Aktiviere 'device polling'"
 
 msgid "Device polling is a technique that lets the system periodically poll network devices for "
-msgstr "'Device polling' ist eine Technik, welche das System periodisch Netzwerkger&auml;ten auf neue Daten ansprich"
+msgstr "'Device polling' ist eine Technik, welche das System periodisch Netzwerkger&auml;ten auf neue Daten anspricht"
 
 msgid "Speed"
 msgstr "Geschwindigkeit"
@@ -1318,7 +1318,7 @@ msgid "Client"
 msgstr "Client"
 
 msgid "Local"
-msgstr "Local"
+msgstr "Lokal"
 
 msgid "Rsync Daemon"
 msgstr "Rsync Daemon"
@@ -1375,7 +1375,7 @@ msgid "You can't have the same mount point for source and destination!"
 msgstr "Sie k&ouml;nnen nicht den selben Mount Point f&uuml;r Quelle und Ziel verwenden!"
 
 msgid "Rsync Local Synchronization"
-msgstr "Rsync Local Synchronization"
+msgstr "Rsync lokale Synchronisation"
 
 msgid "Source"
 msgstr "Quelle"
@@ -1396,10 +1396,10 @@ msgid "Alternate TCP port. Default is 22"
 msgstr "Alternativer TCP Port."
 
 msgid "Permit root login"
-msgstr "Permit root login"
+msgstr "Root Login zulassen"
 
 msgid "Specifies whether it is allowed to login as superuser (root) directly."
-msgstr "Spezifiziert ob es dem Superuser (root) erlaubt ist, sich direkt einzuloggen."
+msgstr "Gibt an, ob es dem Administrator (root) erlaubt ist, sich direkt einzuloggen."
 
 msgid "SSH key"
 msgstr "SSH Schl&uuml;ssel"
@@ -1411,61 +1411,61 @@ msgid "Paste a DSA PRIVATE KEY in PEM format here."
 msgstr "F&uuml;gen Sie einen 'RSA private key' im PEM Format hier ein."
 
 msgid "The combination of share and working directory does not exist."
-msgstr "The combination of share and working directory does not exist."
+msgstr "Die Kombination aus dem Freigabe- sowie Arbeitsverzeichnis gibt es nicht."
 
 msgid "Unison File Synchronisation"
-msgstr "Unison File Synchronisation"
+msgstr "Unison Datei Synchronisation"
 
 msgid "You may need enough space to duplicate all files being synced"
-msgstr "You may need enough space to duplicate all files being synced"
+msgstr "Es könnte bei der Synchronisation zur Belegung von Speicherplatz in der Größenordnung der abzugleichenden Daten kommen, um diese zu duplizieren."
 
 msgid "Working Directory"
-msgstr "Working Directory"
+msgstr "Arbeitsverzeichnis"
 
 msgid "Where the working files will be stored"
-msgstr "Where the working files will be stored"
+msgstr "Hier werden die Arbeitsdaten abgelegt"
 
 msgid "Create work directory if it doesn't exist"
-msgstr "Create work directory if it doesn't exist"
+msgstr "Lege Arbeitsverzeichnis an, falls es diese noch nicht geben sollte"
 
 msgid "UPnP A/V Media Server"
 msgstr "UPnP A/V Media Server"
 
 msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "Die Übersicht der Verzeichnisse wurde verändert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
 
 msgid "UPnP friendly name."
-msgstr "UPnP friendly name."
+msgstr "UPnP-konformer Name."
 
 msgid "Interface to listen to."
-msgstr "Interface to listen to."
+msgstr "Abzufragendes Interface."
 
 msgid "Content"
-msgstr "Content"
+msgstr "Inhalt"
 
 msgid "Directories to be shared."
-msgstr "Directories to be shared."
+msgstr "Freizugebende Verzeichnisse."
 
 msgid "No content directory to be shared."
-msgstr "No content directory to be shared."
+msgstr "Kein Verzeichnis freigegeben."
 
 msgid "Directory"
-msgstr "Directory"
+msgstr "Verzeichnis"
 
 msgid "Add directory"
-msgstr "Add directory"
+msgstr "Füge Verzeichnis hinzu"
 
 msgid "Edit directory"
-msgstr "Edit directory"
+msgstr "Bearbeite Verzeichnis"
 
 msgid "Delete directory"
-msgstr "Delete directory"
+msgstr "Lösche Verzeichnis"
 
 msgid "Do you really want to delete this directory entry?"
-msgstr "Do you really want to delete this directory entry?"
+msgstr "Wollen Sie wirklich diesen Verzeichniseintrag löschen?"
 
 msgid "Directory to be shared."
-msgstr "Directory to be shared."
+msgstr "Freizugebendes Verzeichnis."
 
 msgid "You must select at least one authentication method."
 msgstr "Sie m&uuml;ssen mind. eine Authentifizierungsmethode ausw&auml;hlen."
@@ -1480,7 +1480,7 @@ msgid "Enable guest access."
 msgstr "Aktiviere Gast-Zugriff."
 
 msgid "Enable local user authentication."
-msgstr "Aktiviere Lokaler Benutzer-zugriff."
+msgstr "Aktiviere Zugriff für lokale Benutzer."
 
 msgid "User"
 msgstr "Benutzer"
@@ -1672,7 +1672,7 @@ msgid "Signal"
 msgstr "Signal"
 
 msgid "Noise"
-msgstr "Noise"
+msgstr "Störungen"
 
 msgid "Quality"
 msgstr "Qualit&auml;t"
@@ -1681,10 +1681,10 @@ msgid "Associated stations"
 msgstr "Zugeh&ouml;rige Stationen"
 
 msgid "TX rates"
-msgstr "TX rates"
+msgstr "TX Raten"
 
 msgid "No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported)."
-msgstr "No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported)."
+msgstr "Es konnten keine unterstützten Wireless-Schnittstellen gefunden werden (es wird ausschliesslich Hardware unter dem wi[n] Treiber unterstützt)."
 
 msgid "%s interface"
 msgstr "%s Schnittstelle"
@@ -1732,10 +1732,10 @@ msgid "Edit VLAN"
 msgstr "Bearbeite VLAN"
 
 msgid "Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
-msgstr "Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
+msgstr "Traceroute könnte einige Zeit in Anspruch nehmen. Drücken Sie den Abbrechen Button ihres Webbrowsers, um sich den Stand fehlgeschlagener Abfragen anzeigen zu lassen."
 
 msgid "Partitions"
-msgstr "Partitions"
+msgstr "Partitionen"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -1744,7 +1744,7 @@ msgid "ATAidle"
 msgstr "ATAidle"
 
 msgid "Space Used"
-msgstr "Space Used"
+msgstr "Benutzter Speicherplatz"
 
 msgid "Mounts"
 msgstr "Mounts"
@@ -1774,7 +1774,7 @@ msgid "Remove all entries from ARP table"
 msgstr "L&ouml;sch alle Eintr&auml;ge aus ARP Tabelle"
 
 msgid "Traffic graph"
-msgstr "Traffic Graph"
+msgstr "Durchgangsanzeige"
 
 msgid "Cannot get data about interface"
 msgstr "Kann keine Daten erfassen von Schnittstelle"
@@ -1804,7 +1804,7 @@ msgid "Hosts"
 msgstr "Hosts"
 
 msgid "Define an host name can be useful for NFS."
-msgstr "Das definieren eines Hostnamens kann n&uuml;tzlich f&uuml;r ein NFS sein."
+msgstr "Das Definieren eines Hostnamens kann n&uuml;tzlich f&uuml;r NFS sein."
 
 msgid "The host list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Die Host Liste hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
@@ -1828,10 +1828,10 @@ msgid "An host with this name already exists."
 msgstr "Ein Host mit diesem Namen existiert bereits."
 
 msgid "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and ."
-msgstr "Der Hostname darf nur folgende Zeichen enthalten: a-z, A-Z and 0-9, - , _ und ."
+msgstr "Der Hostname darf nur folgende Zeichen enthalten: a-z, A-Z und 0-9, - , _ sowie ."
 
 msgid "The IP address that this hostname represents."
-msgstr "Die IP Adresse welche diesen Hostnamen repr&auml;sentiert."
+msgstr "Die IP Adresse, welche diesen Hostnamen repr&auml;sentiert."
 
 msgid "You may enter a description here for your reference."
 msgstr "Sie k&ouml;nnen hier eine Beschreibung f&uuml;r Ihre Referenz eintragen."
@@ -1846,7 +1846,7 @@ msgid "Open a %s configuration XML file and click the button below to restore th
 msgstr "&Ouml;ffnen Sie eine %s Konfigurationsdatei und dr&uuml;cken sie den Knopf weiter unten um die Konfiguration wiederherzustellen."
 
 msgid "Click this button to download the system configuration in XML format."
-msgstr "Dr&uuml;cken Sie diesen Knopf um die Systemkonfiguration im XML Format herunterzuladen."
+msgstr "Dr&uuml;cken, um die Systemkonfiguration im XML Format herunterzuladen."
 
 msgid "Backup configuration"
 msgstr "Konfiguration sichern"
