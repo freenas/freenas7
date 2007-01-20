@@ -227,7 +227,7 @@ if ($_GET['act'] == "add") {
 </table>
   <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"><br><br>
 <p><span class="vexpl"><strong><span class="red"><?=gettext("Warning"); ?>:</span><br>
-</strong><?=gettext("After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>");?></td>
+</strong><?php echo sprintf(gettext("After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"), $g['product_name']);?></td>
 	</tr>
 </table>
 </form>

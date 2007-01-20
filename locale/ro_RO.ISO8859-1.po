@@ -276,8 +276,8 @@ msgstr "Parolele sint diferite."
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
 msgstr "Note: Ctrl-click (sau command-click pe Mac) pentru selectare/deselectare minute, ore, zile  si luni."
 
-msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
-msgstr "UFS (+ variante) reprezinta sistemul de fisiere NATIV pentru  FreeBSD (sistemul sursa al FreeNAS). Utilizarea altor sisteme de fisere cum ar fi FAT, FAT32, EXT2, EXT3, sau NTFS poate avea rezultate incerte (inclusiv pierderi de date)!"
+msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
+msgstr "UFS (+ variante) reprezinta sistemul de fisiere NATIV pentru  FreeBSD (sistemul sursa al %s). Utilizarea altor sisteme de fisere cum ar fi FAT, FAT32, EXT2, EXT3, sau NTFS poate avea rezultate incerte (inclusiv pierderi de date)!"
 
 msgid "Active"
 msgstr "Activ"
@@ -418,13 +418,13 @@ msgid "Username"
 msgstr "Nume Utilizator"
 
 msgid "If you want to change the username for accessing the webGUI, enter it here."
-msgstr "Daca doriti sa schimbati numele sub care veti accesa Interfa Web FreeNas, introduceti-l aici."
+msgstr "Daca doriti sa schimbati numele sub care veti accesa Interfa webGUI, introduceti-l aici."
 
 msgid "Password"
 msgstr "Parola"
 
 msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don't use the character ':'."
-msgstr "Daca doriti sa schimbati parola de acces pentru Interfa Web FreeNas, introduceti-o aici de doua ori.<br>Nu folositi caracterele ':'."
+msgstr "Daca doriti sa schimbati parola de acces pentru Interfa webGUI, introduceti-o aici de doua ori.<br>Nu folositi caracterele ':'."
 
 msgid "WebGUI protocol"
 msgstr "Protocol Interfata Web"
@@ -594,13 +594,13 @@ msgstr "Eroare la verificarea semnaturii digitale a imaginii."
 msgid "The image file is corrupt"
 msgstr "Fisier corupt"
 
-msgid "The firmware is now being installed. FreeNAS will reboot automatically."
-msgstr "Se actualizeaza sistemul. FreeNas va reporni apoi in mod automat."
+msgid "The firmware is now being installed. %s will reboot automatically."
+msgstr "Se actualizeaza sistemul. %s va reporni apoi in mod automat."
 
 msgid "Firmware uploading is not supported on this platform."
 msgstr "Actualizarea sistemului nu este posibila."
 
-msgid "This means that the image you uploaded "
+msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
 msgstr "Acest lucru insemna ca imaginea incarcata nu este in mod oficial suportata si poate produce efecte nedorite in functionare . Instalati doar imagini sistem care provin din surse sigure si asigurati-va ca imaginea respectiva nu a fost alterata.<br><br>Doriti sa instalati oricum aceasta imagine (pe riscul dvs.)?"
 
 msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
@@ -729,7 +729,7 @@ msgstr "Stergere interfata"
 msgid "Add interface"
 msgstr "Adaugare Interfata"
 
-msgid "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
+msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
 msgstr "Dupa ce faceti click pe &quot;Salvare&quot;, va trebui sa reporniti sistemul pentru ca modificarile sa fie activate. Va trebui eventual sa parcurgeti urmatorii pasi pentru a putea accesa sistemul din nou: </span></p"
 
 msgid "A valid gateway must be specified."
@@ -765,8 +765,8 @@ msgstr "Viteza"
 msgid "Duplex"
 msgstr "Duplex"
 
-msgid After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-msgstr "dupa ce selectati &quot;Salvare&quot;, va trebui eventual sa parcurgeti urmatorii pasi pentru a accesa din nou interfata FreeNas"
+msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+msgstr "dupa ce selectati &quot;Salvare&quot;, va trebui eventual sa parcurgeti urmatorii pasi pentru a accesa din nou interfata %s"
 
 msgid "Enable Optional "
 msgstr "Activare Optionala "
@@ -1164,14 +1164,14 @@ msgstr "Nivel Jurnal"
 msgid "Local Master Browser"
 msgstr "Master Browser Local"
 
-msgid "Allows FreeNAS to try and become a local master browser."
-msgstr "Permite sistemului FreeNAS sa devina un Master Browser local."
+msgid "Allows %s to try and become a local master browser."
+msgstr "Permite sistemului %s sa devina un Master Browser local."
 
 msgid "Time server"
 msgstr "Server Baza de Timp"
 
-msgid "FreeNAS advertises itself as a time server to Windows clients."
-msgstr "Initializare FreeNAS ca server de timp pentru clientii Windows."
+msgid "% advertises itself as a time server to Windows clients."
+msgstr "Initializare %s ca server de timp pentru clientii Windows."
 
 msgid "WINS server"
 msgstr "Server WINS"
@@ -1773,8 +1773,8 @@ msgstr "Lista punctelor de montare"
 msgid "Free Space"
 msgstr "Spatiu Liber"
 
-msgid "FreeNAS will reboot after restoring the configuration."
-msgstr "FreeNAS va reporni dupa restaurarea configuratiei."
+msgid "%s will reboot after restoring the configuration."
+msgstr "%s va reporni dupa restaurarea configuratiei."
 
 msgid "Delete ARP entry"
 msgstr "Sterge intrare ARP"

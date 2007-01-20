@@ -230,7 +230,7 @@ if ($_POST) {
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
         </strong></span><?=sprintf(gettext("1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."),htmlspecialchars($cfdevice));?></span>
-<p><span class="vexpl"><?=gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!");?></p>
+<p><span class="vexpl"><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), $g['product_name']);?></p>
       </td>
     </tr>
   </table>

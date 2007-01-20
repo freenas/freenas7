@@ -134,7 +134,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 				touch($d_firmwarelock_path);
 				exec_rc_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
 				
-				$savemsg = gettext("The firmware is now being installed. FreeNAS will reboot automatically.");
+				$savemsg = sprintf(gettext("The firmware is now being installed. %s will reboot automatically."), $g['product_name']);
 			}
 		}
 	}
@@ -182,7 +182,7 @@ print_info_box($sig_warning);
     <tr>
       <td>
 				<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br>
-				<?php echo sprintf( gettext("DO NOT abort the firmware upgrade once it has started. FreeNAS will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of 128 Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System Configuration before doing a Firmware upgrade."), "diag_backup.php");?></span>
+				<?php echo sprintf( gettext("DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of 128 Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System Configuration before doing a Firmware upgrade."), $g['product_name'], "diag_backup.php");?></span>
 			</td>
     </tr>
   </table>

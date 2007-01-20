@@ -156,8 +156,8 @@ function enable_change(enable_over) {
 	          <td width="78%" class="vtable">
 							<input name="resolve" type="checkbox" id="resolve" value="yes" <?php if ($pconfig['resolve']) echo "checked"; ?>>
 	            <strong><?=gettext("Resolve IP addresses to hostnames");?></strong><br>
-	            <?=gettext("Hint: If this is checked, IP addresses in {$g['product_name']} logs are resolved to real hostnames where possible.");?><br>
-							<?=gettext("Warning: This can cause a huge delay in loading the {$g['product_name']} log page!");?>
+	            <?php echo sprintf(gettext("Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."), $g['product_name']);?><br>
+							<?php echo sprintf(gettext("Warning: This can cause a huge delay in loading the %s log page!"), $g['product_name']);?>
 						</td>
 	        </tr>
 	        <tr> 
@@ -196,7 +196,7 @@ function enable_change(enable_over) {
 	          <td width="22%" valign="top">&nbsp;</td>
 	          <td width="78%">
 							<strong><span class="red"><?=gettext("Note");?>:</span></strong><br>
-	            <?=gettext("syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from {$g['product_name']}.");?> 
+	            <?php echo sprintf(gettext("syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."), $g['product_name']);?> 
 	          </td>
 	        </tr>
 	      </table>

@@ -279,8 +279,8 @@ msgstr "密碼不相同"
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
 msgstr "提示：使用Ctrl+滑鼠左鍵(Mac：command+滑鼠主鍵)就可以複選項目。"
 
-msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
-msgstr "UFS檔案系統格式是 FreeBSD 原生檔案格式 (FreeNAS的OS)。 如果使用FAT, FAT32, EXT2"
+msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
+msgstr "UFS檔案系統格式是 FreeBSD 原生檔案格式 (%s的OS)。 如果使用FAT, FAT32, EXT2"
 
 msgid "Active"
 msgstr "運作中"
@@ -594,14 +594,11 @@ msgstr "無法驗証映像檔內的數位簽章。"
 msgid "The image file is corrupt"
 msgstr "映像檔已損毀"
 
-msgid "The firmware is now being installed. FreeNAS will reboot automatically."
-msgstr "新的韌體正在安裝中，完成之後FreeNAS將會自動重新開機。"
+msgid "The firmware is now being installed. %s will reboot automatically."
+msgstr "新的韌體正在安裝中，完成之後%s將會自動重新開機。"
 
 msgid "Firmware uploading is not supported on this platform."
 msgstr "此系統並不支援韌體上傳功能。."
-
-msgid "This means that the image you uploaded "
-msgstr "這表示你所上傳的映像檔 並非由FreeNAS官方所發佈的，繼續安裝可能會導致安全漏洞或是不可預期的錯誤。請安裝來自官方，或是你所信任的來源所提供之映像檔，並確定所下載之映像檔並沒有被植入惡意程式。<br><br>你要繼續安裝這個映像檔嗎？(自行負責)"
 
 msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
 msgstr "於下方點選 &quot;開啟韌體升級功能&quot; ，然後選擇將要上傳的映像檔。<br>點選 &quot;韌體升級&quot; 來開啟升級動作"
@@ -729,8 +726,8 @@ msgstr "刪除介面"
 msgid "Add interface"
 msgstr "新增介面"
 
-msgid "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
-msgstr "當按下&quot;儲存&quot;之後，請繼續執行下列的步驟，才能再次連線至FreeNAS：</span></p"
+msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
+msgstr "當按下&quot;儲存&quot;之後，請繼續執行下列的步驟，才能再次連線至%s：</span></p"
 
 msgid "A valid gateway must be specified."
 msgstr "請輸入一個有效的閘道。"
@@ -1128,14 +1125,14 @@ msgstr "紀錄檔層級"
 msgid "Local Master Browser"
 msgstr "Local Master Browser"
 
-msgid "Allows FreeNAS to try and become a local master browser."
-msgstr "讓FreeNAS嘗試成為local master browser。"
+msgid "Allows %s to try and become a local master browser."
+msgstr "讓%s嘗試成為local master browser。"
 
 msgid "Time server"
 msgstr "時間伺服器"
 
-msgid "FreeNAS advertises itself as a time server to Windows clients."
-msgstr "設定FreeNAS成為Windows客戶端的時間伺服器。"
+msgid "%s advertises itself as a time server to Windows clients."
+msgstr "設定%s成為Windows客戶端的時間伺服器。"
 
 msgid "WINS server"
 msgstr "WINS伺服器"
@@ -1719,8 +1716,8 @@ msgstr "掛載點一覽"
 msgid "Free Space"
 msgstr "可用空間"
 
-msgid "FreeNAS will reboot after restoring the configuration."
-msgstr "FreeNAS復原設定組態之後將會自動重新開機。"
+msgid "%s will reboot after restoring the configuration."
+msgstr "%s復原設定組態之後將會自動重新開機。"
 
 msgid "Hostname"
 msgstr "主機名稱"

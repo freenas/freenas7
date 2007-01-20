@@ -267,8 +267,8 @@ msgstr "Password don't match."
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
 msgstr "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
 
-msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
-msgstr "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
+msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
+msgstr "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
 
 msgid "Active"
 msgstr "Active"
@@ -522,13 +522,13 @@ msgstr "Ha ocurrido un error verificando la firma en esta imagen."
 msgid "The image file is corrupt"
 msgstr "El fichero de la imagen está corrupto."
 
-msgid "The firmware is now being installed. FreeNAS will reboot automatically."
-msgstr "El Sistema Base se está instalando. Frenas se reiniciará automáticamente."
+msgid "The firmware is now being installed. %s will reboot automatically."
+msgstr "El Sistema Base se está instalando. %s se reiniciará automáticamente."
 
 msgid "Firmware uploading is not supported on this platform."
 msgstr "El envio del Sistema Base no está soportado en esta plataforma."
 
-msgid "This means that the image you uploaded "
+msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
 msgstr "Esto significa que la imagen enviada no es una imagen oficial/soportada y puede traer consigo comportamientos inesperados o compromisos de seguridad. Solo instale imágenes provenientes de fuentes de confianza, y asegure quela imagen no ha sido falseada.<br><br>La desea instalar de todas formas ? (bajo su propio riesgo)?"
 
 msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
@@ -657,8 +657,8 @@ msgstr "Delete interface"
 msgid "Add interface"
 msgstr "Add interface"
 
-msgid "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
-msgstr "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p"
+msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
+msgstr "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p"
 
 msgid "A valid gateway must be specified."
 msgstr "A valid gateway must be specified."
@@ -1065,14 +1065,14 @@ msgstr "Log Level"
 msgid "Local Master Browser"
 msgstr "Local Master Browser"
 
-msgid "Allows FreeNAS to try and become a local master browser."
-msgstr "Allows FreeNAS to try and become a local master browser."
+msgid "Allows %s to try and become a local master browser."
+msgstr "Allows %s to try and become a local master browser."
 
 msgid "Time server"
 msgstr "Time server"
 
-msgid "FreeNAS advertises itself as a time server to Windows clients."
-msgstr "FreeNAS advertises itself as a time server to Windows clients."
+msgid "%s advertises itself as a time server to Windows clients."
+msgstr "%s advertises itself as a time server to Windows clients."
 
 msgid "WINS server"
 msgstr "WINS server"
@@ -1509,8 +1509,8 @@ msgstr "List of mount points"
 msgid "Free Space"
 msgstr "Free Space"
 
-msgid "FreeNAS will reboot after restoring the configuration."
-msgstr "FreeNAS will reboot after restoring the configuration."
+msgid "%s will reboot after restoring the configuration."
+msgstr "%s will reboot after restoring the configuration."
 
 msgid "Hostname"
 msgstr "Nombre de Host"

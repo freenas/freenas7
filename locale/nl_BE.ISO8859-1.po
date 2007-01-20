@@ -278,8 +278,8 @@ msgstr "De opgegeven wachtwoorden komen niet overeen."
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
 msgstr "Hint: Ctrl-klik (of command-click op Mac) om minuten, uren, dagen en maanden te selecteren en de-selecteren."
 
-msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of FreeNAS). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
-msgstr "UFS en varianten zijn de ORIGINELE bestandsformaten voor FreeBSD (het onderliggende besturingssysteem van FreeNAS).  Een poging tot gebruik van andere bestandsformaten als FAT, FAT32, EXT2, EXT3, or NTFS kan onvoorspelbare resultaten opleveren, zoals beschadiging van bestanden of zelfs verlies van bestanden."
+msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
+msgstr "UFS en varianten zijn de ORIGINELE bestandsformaten voor FreeBSD (het onderliggende besturingssysteem van %s).  Een poging tot gebruik van andere bestandsformaten als FAT, FAT32, EXT2, EXT3, or NTFS kan onvoorspelbare resultaten opleveren, zoals beschadiging van bestanden of zelfs verlies van bestanden."
 
 msgid "Active"
 msgstr "Actief"
@@ -605,13 +605,13 @@ msgstr "Er heeft zich een fout voorgedaan bij het nakijken van de ondertekening 
 msgid "The image file is corrupt"
 msgstr "Het opgeladen bestand is corrupt."
 
-msgid "The firmware is now being installed. FreeNAS will reboot automatically."
-msgstr "De systeemsoftware wordt nu geïnstalleerd. FreeNAS zal automatisch herstarten."
+msgid "The firmware is now being installed. %s will reboot automatically."
+msgstr "De systeemsoftware wordt nu geïnstalleerd. %s zal automatisch herstarten."
 
 msgid "Firmware uploading is not supported on this platform."
 msgstr "Het opladen van systeemsoftware wordt niet ondersteund op dit platform."
 
-msgid "This means that the image you uploaded "
+msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
 msgstr "Dit wil zeggen dat het bestand dat je hebt opgelenden geen officieel of ondersteund bestand is en dat dit kan leiden tot onverwacht systeemgedrag of beveiligingsmankementen. Installeer alleen maar bestanden die afkomstig zijn van betrouwbare bronnen, en zorg ervoor dat er niet geknoeid werd met het bestand.<br><br>Wil je het opgeladen bestand toch installeren (op eigen risico)?"
 
 msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
@@ -740,8 +740,8 @@ msgstr "Interface verwijderen"
 msgid "Add interface"
 msgstr "Interface toevoegen"
 
-msgid "After you click &quot;Save&quot;, you must reboot FreeNAS to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
-msgstr "Nadat je op &quot;Bewaren&quot; klikt moet je FreeNAS herstarten om de wijzigingen te activeren. Het kan zijn dat je ook nog &euml;&euml;n van volgende stappen moet uitvoeren om terug toegang te krijgen tot je NAS: </span></p"
+msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
+msgstr "Nadat je op &quot;Bewaren&quot; klikt moet je %s herstarten om de wijzigingen te activeren. Het kan zijn dat je ook nog &euml;&euml;n van volgende stappen moet uitvoeren om terug toegang te krijgen tot je NAS: </span></p"
 
 msgid "A valid gateway must be specified."
 msgstr "Er moet een geldige gateway opgegeven worden."
@@ -1133,14 +1133,14 @@ msgstr "Log niveau"
 msgid "Local Master Browser"
 msgstr "Local Master Browser"
 
-msgid "Allows FreeNAS to try and become a local master browser."
-msgstr "Dit staat FreeNAS toe om te proberen om local master browser te worden."
+msgid "Allows %s to try and become a local master browser."
+msgstr "Dit staat %s toe om te proberen om local master browser te worden."
 
 msgid "Time server"
 msgstr "Tijd server"
 
-msgid "FreeNAS advertises itself as a time server to Windows clients."
-msgstr "FreeNAS maakt zichzelf als tijdserver kenbaar aan Windows clienten."
+msgid "%s advertises itself as a time server to Windows clients."
+msgstr "%s maakt zichzelf als tijdserver kenbaar aan Windows clienten."
 
 msgid "WINS server"
 msgstr "WINS server"
@@ -1745,8 +1745,8 @@ msgstr "Lijst van koppelpunten"
 msgid "Free Space"
 msgstr "Beschikbare (vrije) ruimte"
 
-msgid "FreeNAS will reboot after restoring the configuration."
-msgstr "FreeNAS zal herstarten na het terugschrijven van de instellingen."
+msgid "%s will reboot after restoring the configuration."
+msgstr "%s zal herstarten na het terugschrijven van de instellingen."
 
 msgid "Delete ARP entry"
 msgstr "ARP ingang verwijderen"
