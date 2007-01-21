@@ -40,7 +40,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"),gettext("UPnP"),_SRVUPNP_CONTENT,isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Services"),gettext("UPnP"),gettext("Content"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if(!is_array($config['upnp']['content']))
 	$config['upnp']['content'] = array();

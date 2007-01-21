@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), _SYSTEMADVANCEDPHP_NAMEDESC);
+$pgtitle = array(gettext("System"),gettext("Advanced"));
 
 $pconfig['cert'] = base64_decode($config['system']['webgui']['certificate']);
 $pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
@@ -160,7 +160,7 @@ if ($_POST) {
       <td valign="top" class="vncell"><?=gettext("Firmware version check");?></td>
       <td class="vtable">
         <input name="disablefirmwarecheck" type="checkbox" id="disablefirmwarecheck" value="yes" <?php if ($pconfig['disablefirmwarecheck']) echo "checked"; ?>>
-        <strong><?=gettext("Disable firmware version check");?></strong><span class="vexpl"><br><?=gettext("'This will cause FreeNAS not to check for newer firmware versions when the <a href=system_firmware.php>System: Firmware</a> page is viewed.'");?></span>
+        <strong><?=gettext("Disable firmware version check");?></strong><span class="vexpl"><br><?php echo sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), $g['product_name'], "system_firmware.php", gettext("System").": ".gettext("Firmware"));?></span>
       </td>
     </tr>
 		<tr> 
@@ -189,7 +189,7 @@ if ($_POST) {
       <td width="22%" valign="top" class="vncell"><?=gettext("Tuning");?></td>
       <td width="78%" class="vtable"> 
         <input name="tune_enable" type="checkbox" id="tune_enable" value="yes" <?php if ($pconfig['tune_enable']) echo "checked"; ?>>
-        <strong><?=gettext("Enable tuning of some kernel variable");?></strong>
+        <strong><?=gettext("Enable tuning of some kernel variables");?></strong>
       </td>
     </tr>
     <tr> 

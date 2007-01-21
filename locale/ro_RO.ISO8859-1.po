@@ -756,7 +756,7 @@ msgstr "Device polling"
 msgid "Enable device polling"
 msgstr "Activare Device Polling"
 
-msgid "Device polling is a technique that lets the system periodically poll network devices for "
+msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards."
 msgstr "Device polling este o tehnica de a lasa sistemul sa verifice periodic starea dispozitivelor de retea in loc sa functioneze pe baza de intreruperi. In acest mod se reduce incarcarea procesorului cu scaderea semnificativa a intirzierilor in retea (dispozitivul e accesat de aprox. 1000 ori pe sec.) Nu toate cartele de retea accepta aces mod de lucru. Verificati la pagina web m0n0wall lista cartelelor de retea suportate."
 
 msgid "Speed"
@@ -852,7 +852,7 @@ msgstr "Mod UDMA"
 msgid "Hard disk standby time"
 msgstr "Timp de standby disc"
 
-msgid "Puts the hard disk into standby mode when the selected amount of time after the l"
+msgid "Puts the hard disk into standby mode when the selected amount of time after the last access has elapsed. <em>Do not set this for CF cards.</em>"
 msgstr "Trece discul in modul standby cind timpul selectat de la ultima accesare expira. <em>Nu setati acest mod pentru cardurile CF.</em>"
 
 msgid "Advanced Power Management"
@@ -1809,3 +1809,20 @@ msgstr "Graphic final"
 msgid "Collecting initial data, please wait..."
 msgstr "Colectare initiala date, va rugam asteptati..."
 
+msgid "Enable tuning of some kernel variables"
+msgstr "Enable tuning of some kernel variables"
+
+msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+msgstr "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+
+msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+msgstr "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+
+msgid "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
+msgstr "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
+
+msgid "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
+msgstr "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
+
+msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
+msgstr "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"

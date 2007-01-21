@@ -34,17 +34,17 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Hosts"),gettext("Hosts"),gettext("Edit"));
+$id = $_GET['id'];
+if (isset($_POST['id']))
+	$id = $_POST['id'];
+
+$pgtitle = array(gettext("System"),gettext("Hosts"),gettext("Hosts"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['system']['hosts']))
 	$config['system']['hosts'] = array();
 
 hosts_sort();
 $a_hosts = &$config['system']['hosts'];
-
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
 
 if (isset($id) && $a_hosts[$id]) {
 	$pconfig['name'] = $a_hosts[$id]['name'];

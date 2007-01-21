@@ -759,7 +759,7 @@ msgstr "Sondage de p&eacute;riph&eacute;rique"
 msgid "Enable device polling"
 msgstr "Activer le Sondage de p&eacute;riph&eacute;rique"
 
-msgid "Device polling is a technique that lets the system periodically poll network devices for "
+msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards."
 msgstr "Le sondage de p&eacute;riph&eacute;rique est une technique permettant au syst&egrave;me d'interroger p&eacute;riodiquement les p&eacute;riph&eacute;riques r&eacute;seau pour v&eacute;rifier la pr&eacute;sence de nouvelles donn&eacute;es plutot que de se baser sur les interruptions. Ceci peut r&eacute;duire la charge CPU et donc augmenter le d&eacute;bit, au d&eacute;triment d'un d&eacute;lai de transfert plus &eacute;lev&eacute; (les p&eacute;riph&eacute;riques sont sond&eacute;s 1000 fois par seconde). Toutes les cartes r&eacute;seau ne supportent pas cette technique; voyez le site de <a href=http://m0n0.ch/wall>m0n0wall</a> pour trouver la liste des cartes support&eacute;es."
 
 msgid "Speed"
@@ -852,7 +852,7 @@ msgstr "Mode UDMA"
 msgid "Hard disk standby time"
 msgstr "Delai de mise en veille du disque"
 
-msgid "Puts the hard disk into standby mode when the selected amount of time after the l"
+msgid "Puts the hard disk into standby mode when the selected amount of time after the last access has elapsed. <em>Do not set this for CF cards.</em>"
 msgstr "Mets le disque en veille lorsque la dur&eacute;e sp&eacute;cifi&eacute;e depuis le dernier acc&egrave;s est &eacute;coul&eacute;e. <em>N'activez PAS cette option pour les cartes Compact Flash.</em>"
 
 msgid "Advanced Power Management"
@@ -1785,3 +1785,20 @@ msgstr "Afficher les dernieres"
 msgid "Collecting initial data, please wait..."
 msgstr "Collecte des premieres donnees, veuillez patienter..."
 
+msgid "Enable tuning of some kernel variables"
+msgstr "Enable tuning of some kernel variables"
+
+msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+msgstr "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+
+msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+msgstr "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+
+msgid "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
+msgstr "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
+
+msgid "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
+msgstr "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
+
+msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
+msgstr "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"

@@ -297,8 +297,8 @@ function type_change() {
     <tr> 
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
-        </strong></span><?=gettext("After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access FreeNAS again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"); ?>
-        </span></td>
+				</strong></span><?php echo sprintf(gettext("After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"), $g['product_name']);?></span>
+			</td>
     </tr>
   </table>
 </form>
