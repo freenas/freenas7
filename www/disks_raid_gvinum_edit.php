@@ -42,6 +42,9 @@ $pgtitle = array(gettext("Disks"),gettext("RAID"),isset($id)?gettext("Edit"):get
 if (!is_array($config['gvinum']['vdisk']))
 	$config['gvinum']['vdisk'] = array();
 
+if (!is_array($config['disks']['disk']))
+	$config['disks']['disk'] = array();
+
 gvinum_sort();
 disks_sort();
 

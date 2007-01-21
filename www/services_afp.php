@@ -31,49 +31,37 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"),gettext("AFP"));
 
-
-if (!is_array($config['afp']))
-{
-	$config['afp'] = array();
-	
+if (!is_array($config['afp'])) {
+	$config['afp'] = array();	
 }
-
 
 $pconfig['enable'] = isset($config['afp']['enable']);
 $pconfig['afpname'] = $config['afp']['afpname'];
 $pconfig['guest'] = isset($config['afp']['guest']);
 $pconfig['local'] = isset($config['afp']['local']);
 
-
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
 	/* input validation */
 	$reqdfields = array();
 	$reqdfieldsn = array();
-	
-	if ($_POST['enable'] && !$_POST['guest'])
-	{
+
+	if ($_POST['enable'] && !$_POST['guest']) {
 		if (!$_POST['local'])
 			$input_errors[] = gettext("You must select at least one authentication method.");
 	}
-	if ($_POST['enable'] && !$_POST['local'])
-	{
+	if ($_POST['enable'] && !$_POST['local']) {
 		if (!$_POST['guest'])
 			$input_errors[] = gettext("You must select at least one authentication method.");
 	}
-	
-	
-	if (!$input_errors)
-	{
-		
+
+	if (!$input_errors) {
 		$config['afp']['enable'] = $_POST['enable'] ? true : false;
 		$config['afp']['guest'] = $_POST['guest'] ? true : false;
 		$config['afp']['local'] = $_POST['local'] ? true : false;
@@ -92,7 +80,6 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 	}
-	
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -126,7 +113,6 @@ function enable_change(enable_change) {
                     <?=$mandfldhtml;?><input name="afpname" type="text" class="formfld" id="afpname" size="20" value="<?=htmlspecialchars($pconfig['afpname']);?>"> 
                   </td>
 				</tr>
-           
                   <tr>
                 <td width="22%" valign="top" class="vncell"><strong><?=gettext("Authentication");?><strong></td>
                 		<td width="78%" class="vtable">
@@ -138,7 +124,6 @@ function enable_change(enable_change) {
 						<br>
 						</td>
 				</tr>
-
 				<tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 

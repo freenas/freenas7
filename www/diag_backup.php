@@ -100,9 +100,9 @@ if ($_POST) {
     <tr> 
       <td width="22%" valign="baseline" class="vncell">&nbsp;</td>
       <td width="78%" class="vtable"> 
-				<?=gettext("Open a {$g['product_name']} configuration XML file and click the button below to restore the configuration.");?><br><br>
+				<?php echo sprintf(gettext("Open a %s configuration XML file and click the button below to restore the configuration."), $g['product_name']);?><br><br>
 				<strong><span class="red"><?=gettext("Note");?>:</span></strong><br>
-				<?=gettext("{$g['product_name']} will reboot after restoring the configuration.");?><br><br>
+				<?php echo sprintf(gettext("%s will reboot after restoring the configuration."), $g['product_name']);?><br><br>
 				<input name="conffile" type="file" class="formfld" id="conffile" size="40"><br><br>
 				<input name="Submit" type="submit" class="formbtn" id="restore" value="<?=gettext("Restore configuration");?>">
       </td>

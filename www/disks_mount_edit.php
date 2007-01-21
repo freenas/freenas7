@@ -97,11 +97,11 @@ if ($_POST) {
 
 	/* input validation */
   $reqdfields = explode(" ", "sharename");
-  $reqdfieldsn = array(_SHARENAME);
+  $reqdfieldsn = array(gettext("Share Name"));
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['sharename'] && !is_validsharename($_POST['sharename']))) {
-		$input_errors[] = gettext("'The share name may only consist of the characters a-z, A-Z, 0-9, _ , -.'");
+		$input_errors[] = gettext("The share name may only consist of the characters a-z, A-Z, 0-9, _ , -.");
 	}
 
 	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
@@ -120,7 +120,7 @@ if ($_POST) {
 
 		// Check for duplicate mount point
 		if (($mount['mdisk'] == $_POST['mdisk']) && ($mount['partition'] == $_POST['partition']))       {
-			$input_errors[] = gettext("This disk/partition is allready configured.");
+			$input_errors[] = gettext("This disk/partition is already configured.");
 			break;
 		}
 		
@@ -230,7 +230,7 @@ if ($_POST) {
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
         </strong></span><?=sprintf(gettext("1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."),htmlspecialchars($cfdevice));?></span>
-<p><span class="vexpl"><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), $g['product_name']);?></p>
+				<p><span class="vexpl"><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), $g['product_name']);?></p>
       </td>
     </tr>
   </table>

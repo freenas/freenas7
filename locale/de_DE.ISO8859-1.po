@@ -469,22 +469,22 @@ msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
 msgstr "Der Hostname darf nur folgende Zeichen enthalten: a-z, 0-9,'-'"
 
 msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr "Die Domäne darf nur folgende Zeichen enthalten: a-z, 0-9, '-' und '.'."
+msgstr "Die Dom&auml;ne darf nur folgende Zeichen enthalten: a-z, 0-9, '-' und '.'."
 
 msgid "A valid IP address must be specified for the primary/secondary DNS server."
-msgstr "Eine gültige IP Adresse muss für den Primären/Sekundären DNS Server angegeben werden."
+msgstr "Eine g&uuml;ltige IP Adresse muss f&uuml;r den Prim&auml;ren/Sekund&auml;ren DNS Server angegeben werden."
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr "Der Benutzername darf nur folgende Zeichen enthalten: a-z, A-Z und 0-9."
 
 msgid "A valid TCP/IP port must be specified for the webGUI port."
-msgstr "Ein gültiger TCP/IP Port muss für den WebGUI Port angegeben werden."
+msgstr "Ein g&uuml;ltiger TCP/IP Port muss f&uuml;r den WebGUI Port angegeben werden."
 
 msgid "The passwords do not match."
-msgstr "Die Passwörter stimmen nicht überein."
+msgstr "Die Passw&ouml;rter stimmen nicht &uuml;berein."
 
 msgid "You must select a valid language."
-msgstr "Bitte eine gültige Sprache auswählen."
+msgstr "Bitte eine g&uuml;ltige Sprache ausw&auml;hlen."
 
 msgid "The time update interval must be either 0 (disabled) or between 6 and 1440."
 msgstr "Der Zeitintervall ist entweder 0 (ausgeschaltet) oder zwischen 6 und 1440."
@@ -933,7 +933,7 @@ msgstr "Diese Festplatte is momentan gemountet. Der Mount Point wird kurzzeitig 
 msgid "Unmount disk/partition"
 msgstr "Unmount Festplatte/Partition"
 
-msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<"
+msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
 msgstr "Wenn die ausgew&auml;hlte Festplatte/Partition gemountet ist wird diese kurzzeitig ungemountet um den ausgew&auml;hlten Befehl auszuf&uuml;hren, sonst arbeiten die Befehle im nur-lesen Modus."
 
 msgid "iSCSI"
@@ -1162,7 +1162,7 @@ msgid "Time server"
 msgstr "Zeitserver"
 
 msgid "%s advertises itself as a time server to Windows clients."
-msgstr "%s meldet sich selbst als Zeitserver gegen&uuml;ber Windows clients."
+msgstr "%s meldet sich selbst als Zeitserver gegen&uuml;ber Windows Clients."
 
 msgid "WINS server"
 msgstr "WINS server"
@@ -1354,7 +1354,7 @@ msgid "Remote RSYNC Server"
 msgstr "Remote RSYNC Server"
 
 msgid "IP address of remote RSYNC server"
-msgstr "IP-Adresse des remote RSYNC Servers"
+msgstr "IP-Adresse des Remote RSYNC Servers"
 
 msgid "RSYNC Options"
 msgstr "RSYNC Optionen"
@@ -1417,7 +1417,7 @@ msgid "Unison File Synchronisation"
 msgstr "Unison Datei Synchronisation"
 
 msgid "You may need enough space to duplicate all files being synced"
-msgstr "Es könnte bei der Synchronisation zur Belegung von Speicherplatz in der Größenordnung der abzugleichenden Daten kommen, um diese zu duplizieren."
+msgstr "Es k&ouml;nnte bei der Synchronisation zur Belegung von Speicherplatz in der Gr&ouml;ßenordnung der abzugleichenden Daten kommen, um diese zu duplizieren."
 
 msgid "Working Directory"
 msgstr "Arbeitsverzeichnis"
@@ -1432,7 +1432,7 @@ msgid "UPnP A/V Media Server"
 msgstr "UPnP A/V Media Server"
 
 msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Die Übersicht der Verzeichnisse wurde verändert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
+msgstr "Die &Uuml;bersicht der Verzeichnisse wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
 
 msgid "UPnP friendly name."
 msgstr "UPnP-konformer Name."
@@ -1453,16 +1453,16 @@ msgid "Directory"
 msgstr "Verzeichnis"
 
 msgid "Add directory"
-msgstr "Füge Verzeichnis hinzu"
+msgstr "F&uuml;ge Verzeichnis hinzu"
 
 msgid "Edit directory"
 msgstr "Bearbeite Verzeichnis"
 
 msgid "Delete directory"
-msgstr "Lösche Verzeichnis"
+msgstr "L&ouml;sche Verzeichnis"
 
 msgid "Do you really want to delete this directory entry?"
-msgstr "Wollen Sie wirklich diesen Verzeichniseintrag löschen?"
+msgstr "Wollen Sie wirklich diesen Verzeichniseintrag l&ouml;schen?"
 
 msgid "Directory to be shared."
 msgstr "Freizugebendes Verzeichnis."
@@ -1480,7 +1480,7 @@ msgid "Enable guest access."
 msgstr "Aktiviere Gast-Zugriff."
 
 msgid "Enable local user authentication."
-msgstr "Aktiviere Zugriff für lokale Benutzer."
+msgstr "Aktiviere Zugriff f&uuml;r lokale Benutzer."
 
 msgid "User"
 msgstr "Benutzer"
@@ -1672,7 +1672,7 @@ msgid "Signal"
 msgstr "Signal"
 
 msgid "Noise"
-msgstr "Störungen"
+msgstr "St&ouml;rungen"
 
 msgid "Quality"
 msgstr "Qualit&auml;t"
@@ -1684,7 +1684,7 @@ msgid "TX rates"
 msgstr "TX Raten"
 
 msgid "No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported)."
-msgstr "Es konnten keine unterstützten Wireless-Schnittstellen gefunden werden (es wird ausschliesslich Hardware unter dem wi[n] Treiber unterstützt)."
+msgstr "Es konnten keine unterst&uuml;tzten Wireless-Schnittstellen gefunden werden (es wird ausschliesslich Hardware unter dem wi[n] Treiber unterst&uuml;tzt)."
 
 msgid "%s interface"
 msgstr "%s Schnittstelle"
@@ -1732,7 +1732,7 @@ msgid "Edit VLAN"
 msgstr "Bearbeite VLAN"
 
 msgid "Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
-msgstr "Traceroute könnte einige Zeit in Anspruch nehmen. Drücken Sie den Abbrechen Button ihres Webbrowsers, um sich den Stand fehlgeschlagener Abfragen anzeigen zu lassen."
+msgstr "Traceroute k&ouml;nnte einige Zeit in Anspruch nehmen. Dr&uuml;cken Sie den Abbrechen Schaltknopf ihres Webbrowsers, um sich den Stand fehlgeschlagener Abfragen anzeigen zu lassen."
 
 msgid "Partitions"
 msgstr "Partitionen"
@@ -1871,3 +1871,108 @@ msgstr "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with yo
 
 msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
 msgstr "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
+
+msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
+msgstr "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
+
+msgid "The following input errors were detected"
+msgstr "The following input errors were detected"
+
+msgid "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
+msgstr "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
+
+msgid "Default is 21"
+msgstr "Default is 21"
+
+msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+msgstr "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+
+msgid "Last %d %s log entries"
+msgstr "Last %d %s log entries"
+
+msgid "Clear log"
+msgstr "Clear log"
+
+msgid "Show log entries in reverse order (newest entries on top)"
+msgstr "Show log entries in reverse order (newest entries on top)"
+
+msgid "Number of log entries to show"
+msgstr "Number of log entries to show"
+
+msgid "Resolve IP addresses to hostnames"
+msgstr "Resolve IP addresses to hostnames"
+
+msgid "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
+msgstr "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
+
+msgid "Warning: This can cause a huge delay in loading the %s log page!"
+msgstr "Warning: This can cause a huge delay in loading the %s log page!"
+
+msgid "Enable syslog'ing to remote syslog server"
+msgstr "Enable syslog'ing to remote syslog server"
+
+msgid "Remote syslog server"
+msgstr "Remote syslog server"
+
+msgid "IP address of remote syslog server"
+msgstr "IP address of remote syslog server"
+
+msgid "System events"
+msgstr "System events"
+
+msgid "SSHD events"
+msgstr "SSHD events"
+
+msgid "FTP events"
+msgstr "FTP events"
+
+msgid "RSYNCD events"
+msgstr "RSYNCD events"
+
+msgid "SMARTD events"
+msgstr "SMARTD events"
+
+msgid "Daemon events"
+msgstr "Daemon events"
+
+msgid "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
+msgstr "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
+
+msgid "List of partition on all detected disk"
+msgstr "List of partition on all detected disk"
+
+msgid "List of SMART capabilities on all detected disk"
+msgstr "List of SMART capabilities on all detected disk"
+
+msgid "List of Advanced ATA capabilities on all ATA disk"
+msgstr "List of Advanced ATA capabilities on all ATA disk"
+
+msgid "iSCSI initiator disabled"
+msgstr "iSCSI initiator disabled"
+
+msgid "Show the list of available target Name on the iSCSI target"
+msgstr "Show the list of available target Name on the iSCSI target"
+
+msgid "AD Authentication disabled"
+msgstr "AD Authentication disabled"
+
+msgid "Count must be between 1 and %d"
+msgstr "Count must be between 1 and %d"
+
+msgid "Ping output"
+msgstr "Ping output"
+
+msgid "Maximum number of hops"
+msgstr "Maximum number of hops"
+
+msgid "Traceroute output"
+msgstr "Traceroute output"
+
+msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
+msgstr "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
+
+msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
+msgstr "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
+
+msgid "Are you sure you want to proceed?"
+msgstr "Are you sure you want to proceed?"

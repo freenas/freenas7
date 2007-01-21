@@ -54,7 +54,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
       <?php
       echo "<pre>";
       $disklist=get_ata_disks_list();
-      echo "<strong>List of Advanced ATA capabilities on all ATA disk:</strong><br><br>";
+      echo "<strong>".gettext("List of Advanced ATA capabilities on all ATA disk").":</strong><br><br>";
       foreach ($disklist as $disknamek => $disknamev)
       {
       	/* Found the channel and device number from the /dev name */

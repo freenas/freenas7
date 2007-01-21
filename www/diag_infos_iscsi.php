@@ -58,10 +58,10 @@ if (!is_array($config['iscsi']))
     <td class="tabcont">
       <?php
       if (!isset($config['iscsi']['enable'])) {
-      	echo  "<strong>iSCSI initiator disabled</strong><br><br>";
+      	echo  "<strong>".gettext("iSCSI initiator disabled")."</strong><br><br>";
       } else {
       	echo "<pre>";
-      	echo "<strong>Show the list of available target Name on the iSCSI target</strong><br><br>";
+      	echo "<strong>".gettext("Show the list of available target Name on the iSCSI target")."</strong><br><br>";
       	exec("/usr/local/sbin/iscontrol -d targetaddress={$config['iscsi']['targetaddress']}",$rawdata);
       	foreach ($rawdata as $line) {
       		echo htmlspecialchars($line) . "<br>";

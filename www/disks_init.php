@@ -219,7 +219,7 @@ function disk_change() {
             <td width="22%" valign="top" class="vncell"><strong><?=gettext("Don't Erase MBR"); ?><strong></td>
             <td width="78%" class="vtable">
               <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes" >
-              <?=gettext("don't erase the MBR (useful for some RAID controller cards)"); ?><br>
+              <?=gettext("Don't erase the MBR (useful for some RAID controller cards)"); ?><br>
 						</td>
 				  </tr>
   				<tr>

@@ -229,13 +229,13 @@ function enable_change(enable_change) {
         <br><?=gettext("Use this option to override the IP address that FTP daemon will advertise in response to the PASV command."); ?></td>
   	</tr>
   	<tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("'pasv_min_port'"); ?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("pasv_min_port"); ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>">
       <br><?=gettext("The minimum port to allocate for PASV style data connections (0 = use any port)."); ?></td>
   	</tr>
   	<tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("'pasv_max_port'"); ?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("pasv_max_port"); ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>">
       <br><?=gettext("The maximum port to allocate for PASV style data connections (0 = use any port)."); ?></td>

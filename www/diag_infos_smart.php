@@ -54,7 +54,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
       <?php
       echo "<pre>";
       $disklist=get_physical_disks_list();
-      echo "<strong>List of SMART capabilities on all detected disk:</strong><br><br>";
+      echo "<strong>".gettext("List of SMART capabilities on all detected disk").":</strong><br><br>";
       foreach ($disklist as $disknamek => $disknamev) {
       	exec("/usr/local/sbin/smartctl -a /dev/$disknamek",$fdiskrawdata);
       	foreach ($fdiskrawdata as $line) {

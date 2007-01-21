@@ -64,24 +64,26 @@ if (!isset($do_traceroute)) {
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-	<li class="tabinact"><a href="diag_ping.php">Ping</a></li>
-	<li class="tabact">Traceroute</li>
-  </ul>
-  </td></tr>
+  <tr>
+		<td class="tabnavtbl">
+		  <ul id="tabnav">
+				<li class="tabinact"><a href="diag_ping.php"><?=gettext("Ping");?></a></li>
+				<li class="tabact"><?=gettext("Traceroute");?></li>
+		  </ul>
+	  </td>
+	</tr>
   <tr> 
     <td class="tabcont">
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 			<form action="diag_traceroute.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
                 <tr>
-				  <td width="22%" valign="top" class="vncellreq">Host</td>
+				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Host");?></td>
 				  <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="host" type="text" class="formfld" id="host" size="20" value="<?=htmlspecialchars($host);?>"></td>
 				</tr>
 				<tr>
-				  <td width="22%" valign="top" class="vncellreq">Maximum number of hops</td>
+				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Maximum number of hops");?></td>
 				  <td width="78%" class="vtable">
 					<select name="ttl" class="formfld" id="ttl">
 					<?php for ($i = 1; $i <= MAX_TTL; $i++): ?>
@@ -92,20 +94,20 @@ if (!isset($do_traceroute)) {
 				  <tr> 
 					<td valign="top" class="vtable">&nbsp;</td>
 					<td class="vtable"> <input name="resolve" type="checkbox" id="resolve" value="yes" <?php if ($resolve) echo "checked"; ?>>
-					  <strong>Resolve IP addresses to hostnames</strong><br>
+					  <strong><?=gettext("Resolve IP addresses to hostnames");?></strong><br>
 					</td>
 				  </tr>
 				<tr>
 				  <td width="22%" valign="top">&nbsp;</td>
 				  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="Traceroute">
-				</td>
+						<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Traceroute");?>">
+					</td>
 				</tr>
 				<tr>
 				<td valign="top" colspan="2">
 				<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.");?></p>
 				<? if ($do_traceroute) {
-					echo("<br><strong>Traceroute output:</strong><br>");
+					echo("<br><strong>".gettext("Traceroute output").":</strong><br>");
 					echo('<pre>');
 					ob_end_flush();
 					system("/usr/sbin/traceroute " . ($resolve ? "" : "-n ") . "-w 2 -m " . escapeshellarg($ttl) . " " . escapeshellarg($host));

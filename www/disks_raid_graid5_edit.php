@@ -42,6 +42,9 @@ $pgtitle = array(gettext("Disks"),gettext("RAID"),isset($id)?gettext("Edit"):get
 if (!is_array($config['graid5']['vdisk']))
 	$config['graid5']['vdisk'] = array();
 
+if (!is_array($config['disks']['disk']))
+	$config['disks']['disk'] = array();
+
 graid5_sort();
 disks_sort();
 

@@ -86,13 +86,14 @@ function dump_clog($logfile, $tail, $withorig = true) {
         <td class="tabcont">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr> 
-			<td colspan="2" class="listtopic"> 
-			  Last <?=$nentries;?> FTP log entries</td>
+				<td colspan="2" class="listtopic">
+					<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("FTP"));?>
+				</td>
 		  </tr>
 		  <?php dump_clog("/var/log/ftp.log", $nentries); ?>
 		</table>
 		<br><form action="diag_logs_ftp.php" method="post">
-<input name="clear" type="submit" class="formbtn" value="Clear log">
+<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
 </form>
 	</td>
   </tr>

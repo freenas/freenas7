@@ -58,25 +58,25 @@ if (!is_array($config['ad']))
     <td class="tabcont">
       <?php
       if (!isset($config['ad']['enable'])) {
-      	echo "<strong>AD Authentication disable</strong><br><br>";
+      	echo "<strong>".gettext("AD Authentication disabled")."</strong><br><br>";
       } else {
       	echo "<pre>";
-      	echo "<strong>Accessiblity test to MS domain:</strong><br><br>";
-      	echo htmlspecialchars("Results for net rpc testjoin:") . "<br>";
+      	echo "<strong>".gettext("Accessiblity test to MS domain").":</strong><br><br>";
+      	echo gettext("Results for net rpc testjoin:") . "<br>";
       	exec("/usr/local/bin/net rpc testjoin",$rawdata);
       	foreach ($rawdata as $line) {
       		echo htmlspecialchars($line) . "<br>";
       	}
       	unset ($rawdata);
       	echo "<br>";
-      	echo htmlspecialchars("Ping winbindd to see if it is alive:") . "<br>";
+      	echo gettext("Ping winbindd to see if it is alive:") . "<br>";
       	exec("/usr/local/bin/wbinfo -p",$rawdata);
       	foreach ($rawdata as $line) {
       		echo htmlspecialchars($line) . "<br>";
       	}
       	unset ($rawdata);
       	echo "<br>";
-      	echo htmlspecialchars("Check shared secret:") . "<br>";
+      	echo gettext("Check shared secret:") . "<br>";
       	exec("/usr/local/bin/wbinfo -t",$rawdata);
       	foreach ($rawdata as $line) {
       		echo htmlspecialchars($line) . "<br>";

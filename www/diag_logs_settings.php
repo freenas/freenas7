@@ -148,7 +148,7 @@ function enable_change(enable_over) {
 	        <tr> 
 	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
 	          <td width="78%" class="vtable">
-							<?=gettext("Number of log entries to show:");?>
+							<?=gettext("Number of log entries to show");?>:
 	            <input name="nentries" id="nentries" type="text" class="formfld" size="4" value="<?=htmlspecialchars($pconfig['nentries']);?>"></td>
 	        </tr>                      
 	        <tr> 
@@ -179,11 +179,11 @@ function enable_change(enable_over) {
 							<input name="ftp" id="ftp" type="checkbox" value="yes" <?php if ($pconfig['ftp']) echo "checked"; ?>>
 	            <?=gettext("FTP events");?><br>
 							<input name="rsyncd" id="rsyncd" type="checkbox" value="yes" <?php if ($pconfig['rsyncd']) echo "checked"; ?>>
-	            <?=gettext("RSYNCD event");?><br>
+	            <?=gettext("RSYNCD events");?><br>
 	            <input name="smartd" id="smartd" type="checkbox" value="yes" <?php if ($pconfig['smartd']) echo "checked"; ?>>
-	            <?=gettext("SMARTD event");?><br>
+	            <?=gettext("SMARTD events");?><br>
 	            <input name="daemon" id="daemon" type="checkbox" value="yes" <?php if ($pconfig['daemon']) echo "checked"; ?>>
-	            <?=gettext("Daemon event");?><br>
+	            <?=gettext("Daemon events");?><br>
 	          </td>
 	        </tr>
 	        <tr> 
@@ -196,7 +196,7 @@ function enable_change(enable_over) {
 	          <td width="22%" valign="top">&nbsp;</td>
 	          <td width="78%">
 							<strong><span class="red"><?=gettext("Note");?>:</span></strong><br>
-	            <?php echo sprintf(gettext("syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."), $g['product_name']);?> 
+	            <?php echo sprintf(gettext("Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."), $g['product_name']);?> 
 	          </td>
 	        </tr>
 	      </table>

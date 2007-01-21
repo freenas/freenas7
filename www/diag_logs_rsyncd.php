@@ -85,13 +85,14 @@ function dump_clog($logfile, $tail, $withorig = true) {
     <td class="tabcont">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr> 
-			<td colspan="2" class="listtopic"> 
-			  Last <?=$nentries;?> RSYNCD log entries</td>
+				<td colspan="2" class="listtopic">
+					<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("RSYNCD"));?>
+				</td>
 		  </tr>
 		  <?php dump_clog("/var/log/rsyncd.log", $nentries); ?>
 		</table>
 		<br><form action="diag_logs_rsyncd.php" method="post">
-<input name="clear" type="submit" class="formbtn" value="Clear log">
+<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
 </form>
 	</td>
   </tr>

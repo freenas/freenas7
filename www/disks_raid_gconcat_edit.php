@@ -42,6 +42,9 @@ $pgtitle = array(gettext("Disks"),gettext("RAID"),isset($id)?gettext("Edit"):get
 if (!is_array($config['gconcat']['vdisk']))
 	$config['gconcat']['vdisk'] = array();
 
+if (!is_array($config['disks']['disk']))
+	$config['disks']['disk'] = array();
+
 gconcat_sort();
 disks_sort();
 

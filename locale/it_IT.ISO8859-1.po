@@ -915,7 +915,7 @@ msgstr "Si vuole realmente formattare questo disco? Verranno persi tutti i dati!
 msgid "Don't Erase MBR"
 msgstr "Non cancellare il MBR"
 
-msgid "don't erase the MBR (useful for some RAID controller cards)"
+msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr "non cancellare il MBR (utile nel caso si utilizzi dei controller RAID)"
 
 msgid "Send Command!"
@@ -930,7 +930,7 @@ msgstr "Al momento il disco &egrave; montato! Il punto di mount sar&agrave; rimo
 msgid "Unmount disk/partition"
 msgstr "Smonta disco/partizione"
 
-msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<"
+msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
 msgstr "Se il disco/partizione selezionati &egrave; montato sar&agrave; temporaneamente smontato per eseguire il comando selezionato, altrimenti i comandi lavorano in sola lettura."
 
 msgid "iSCSI"
@@ -1751,3 +1751,108 @@ msgstr "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with yo
 
 msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
 msgstr "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
+
+msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
+msgstr "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
+
+msgid "The following input errors were detected"
+msgstr "The following input errors were detected"
+
+msgid "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
+msgstr "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
+
+msgid "Default is 21"
+msgstr "Default is 21"
+
+msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+msgstr "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+
+msgid "Last %d %s log entries"
+msgstr "Last %d %s log entries"
+
+msgid "Clear log"
+msgstr "Clear log"
+
+msgid "Show log entries in reverse order (newest entries on top)"
+msgstr "Show log entries in reverse order (newest entries on top)"
+
+msgid "Number of log entries to show"
+msgstr "Number of log entries to show"
+
+msgid "Resolve IP addresses to hostnames"
+msgstr "Resolve IP addresses to hostnames"
+
+msgid "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
+msgstr "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
+
+msgid "Warning: This can cause a huge delay in loading the %s log page!"
+msgstr "Warning: This can cause a huge delay in loading the %s log page!"
+
+msgid "Enable syslog'ing to remote syslog server"
+msgstr "Enable syslog'ing to remote syslog server"
+
+msgid "Remote syslog server"
+msgstr "Remote syslog server"
+
+msgid "IP address of remote syslog server"
+msgstr "IP address of remote syslog server"
+
+msgid "System events"
+msgstr "System events"
+
+msgid "SSHD events"
+msgstr "SSHD events"
+
+msgid "FTP events"
+msgstr "FTP events"
+
+msgid "RSYNCD events"
+msgstr "RSYNCD events"
+
+msgid "SMARTD events"
+msgstr "SMARTD events"
+
+msgid "Daemon events"
+msgstr "Daemon events"
+
+msgid "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
+msgstr "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
+
+msgid "List of partition on all detected disk"
+msgstr "List of partition on all detected disk"
+
+msgid "List of SMART capabilities on all detected disk"
+msgstr "List of SMART capabilities on all detected disk"
+
+msgid "List of Advanced ATA capabilities on all ATA disk"
+msgstr "List of Advanced ATA capabilities on all ATA disk"
+
+msgid "iSCSI initiator disabled"
+msgstr "iSCSI initiator disabled"
+
+msgid "Show the list of available target Name on the iSCSI target"
+msgstr "Show the list of available target Name on the iSCSI target"
+
+msgid "AD Authentication disabled"
+msgstr "AD Authentication disabled"
+
+msgid "Count must be between 1 and %d"
+msgstr "Count must be between 1 and %d"
+
+msgid "Ping output"
+msgstr "Ping output"
+
+msgid "Maximum number of hops"
+msgstr "Maximum number of hops"
+
+msgid "Traceroute output"
+msgstr "Traceroute output"
+
+msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
+msgstr "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
+
+msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
+msgstr "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
+
+msgid "Are you sure you want to proceed?"
+msgstr "Are you sure you want to proceed?"

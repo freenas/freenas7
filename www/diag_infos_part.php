@@ -54,7 +54,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
       <?php
       echo "<pre>";
       $disklist=get_physical_disks_list();
-      echo "<strong>List of partition on all detected disk:</strong><br><br>";
+      echo "<strong>".gettext("List of partition on all detected disk").":</strong><br><br>";
       foreach ($disklist as $disknamek => $disknamev)
       {
       	exec("/sbin/fdisk $disknamek",$fdiskrawdata);
