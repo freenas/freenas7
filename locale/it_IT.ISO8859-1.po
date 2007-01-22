@@ -606,16 +606,16 @@ msgstr "L'upload del firmware non &egrave; supportato su questa piattaforma."
 msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
 msgstr "Questo significa che l'immagine che avete caricato non &egrave; una immagine ufficiale/supportata e pu&ograve; causare comportamenti inattesi o problemi di sicurezza. Installare solo immagini provenienti da fonti fidate, e accertatevi che l'immagine non sia stata alterata.<br><br>Volete installare quest'immagine comunque (a vostro proprio rischio)?"
 
-msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
+msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr "Clicca &quot;Abilita aggiornamento firmware&quot; sotto, e scegliere il file immagine da caricare.<br>Clicca &quot;Aggiorna firmware&quot; per iniziare il processo di upgrade."
 
-msgid "Enable firmware upload'"
+msgid "Enable firmware upload"
 msgstr "Abilita aggiornamento firmware"
 
 msgid "Disable firmware upload"
 msgstr "Disabilita aggiornamento firmware"
 
-msgid "Firmware image file'"
+msgid "Firmware image file"
 msgstr "File immagine del firmware"
 
 msgid "Upgrade firmware"

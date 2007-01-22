@@ -603,16 +603,16 @@ msgstr "Actualizarea acestui sistem nu este posibila."
 msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
 msgstr "Acest lucru insemna ca imaginea incarcata nu este in mod oficial suportata si poate produce efecte nedorite in functionare . Instalati doar imagini sistem care provin din surse sigure si asigurati-va ca imaginea respectiva nu a fost alterata.<br><br>Doriti sa instalati oricum aceasta imagine (pe riscul dvs.)?"
 
-msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
+msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr "Click &quot;Activati actualizarea firmware-ului&quot; mai jos, apoi alegeti imaginea de incarcat.<br>Click &quot;Actualizare firmware&quot; pentru inceperea actualizarii."
 
-msgid "Enable firmware upload'"
+msgid "Enable firmware upload"
 msgstr "Activare Actualizare Firmware"
 
 msgid "Disable firmware upload"
 msgstr "Dezactivare Actualizare Firmware"
 
-msgid "Firmware image file'"
+msgid "Firmware image file"
 msgstr "Fisier Imagine Firmware"
 
 msgid "Upgrade firmware"

@@ -1358,7 +1358,6 @@ function arp_get_mac_by_ip($ip) {
 	return false;
 }
 
-
 /* get the interface name */
 function get_ifname($if)
 {
@@ -1679,5 +1678,33 @@ function get_interface_info_ex($iftype)
   /* find out interface name */
 	$if = $config['interfaces'][$iftype]['if'];
 	return get_interface_info($if);
+}
+
+/* Get the product name */
+function get_product_name() {
+	global $g;
+	return $g['product_name'];
+}
+
+/* Get the product URL */
+function get_product_url() {
+	global $g;
+	return $g['product_url'];
+}
+
+/* Get the product copyright note */
+function get_product_copyright() {
+	global $g;
+	return $g['product_copyright'];
+}
+
+/* Get the product version */
+function get_product_version() {
+	return chop(file_get_contents("{$g['etc_path']}/version"));
+}
+
+/* Get the product version */
+function get_product_buildtime() {
+	return chop(file_get_contents("{$g['etc_path']}/version.buildtime"));
 }
 ?>

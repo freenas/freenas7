@@ -609,16 +609,16 @@ msgstr "Firmware Upload wird auf dieser Plattform nicht unterst&uuml;tzt."
 msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
 msgstr "Das bedeutet, dass das Image, das Sie geladen haben kein offiziell unterst&uuml;tztes Image ist und eventuell die Sicherheit des Systems gef&auml;hrdet. Installieren Sie nur Images, die nur von vertrauten Quellen stammen, und &uuml;berpr&uuml;fen Sie, dass das Image nicht manipuliert wurde.<br><br>M&ouml;chten Sie das Image trotzdem installieren (auf eigene Gefahr)?"
 
-msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
+msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr "Dr&uuml;cken Sie unten &quot;Firmware Upload zulassen&quot;, dann w&auml;hlen Sie das Image zum hochladen.<br>Dr&uuml;cken Sie &quot;Upgrade Firmware&quot; zum Starten des Upgrade Prozesses."
 
-msgid "Enable firmware upload'"
+msgid "Enable firmware upload"
 msgstr "Firmware Upload zulassen"
 
 msgid "Disable firmware upload"
 msgstr "Firmware Upload verbieten"
 
-msgid "Firmware image file'"
+msgid "Firmware image file"
 msgstr "Firmware Image"
 
 msgid "Upgrade firmware"

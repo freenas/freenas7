@@ -79,7 +79,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 	unset($input_errors);
 	unset($sig_warning);
 	
-	if (stristr($_POST['Submit'], gettext("Enable firmware upload'")))
+	if (stristr($_POST['Submit'], gettext("Enable firmware upload")))
 		$mode = "enable";
 	else if (stristr($_POST['Submit'], gettext("Disable firmware upload")))
 		$mode = "disable";
@@ -160,18 +160,18 @@ print_info_box($sig_warning);
 </form>
 <?php else: ?>
 <?php if (!file_exists($d_firmwarelock_path)): ?>
-<p><?=gettext("Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');");?></p>
+<p><?=gettext("Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.");?></p>
 <form action="system_firmware.php" method="post" enctype="multipart/form-data">
   <table>
     <tr> 
       <td> 
         <?php if (!file_exists($d_sysrebootreqd_path)): ?>
 				<?php if (!file_exists($d_fwupenabled_path)): ?>
-				<input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=gettext("Enable firmware upload'");?>">
+				<input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=gettext("Enable firmware upload");?>">
 				<?php else: ?>
 				<input name="Submit" id="Disable" type="submit" class="formbtn" value="<?=gettext("Disable firmware upload");?>">
 				<br><br>
-				<strong><?=gettext("Firmware image file'");?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld">
+				<strong><?=gettext("Firmware image file");?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld">
 				<br><br>
 				<input name="Submit" id="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>">
 				<?php endif; else: ?>

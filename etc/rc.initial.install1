@@ -31,21 +31,23 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
+
+	/* Get product information */
+	$productname = get_product_name();
 	
 	$fp = fopen('php://stdin', 'r');
 	
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
 	
-	echo "FreeNAS Installer on USB Key or Compact Flash\n";
+	echo "{$productname} Installer on USB Key or Compact Flash\n";
 	echo "\nWARNING: there will be some limitation:\n";
 	echo "1. It will erase ALL your partitions and data on the destination disk!\n";
 	echo "2. You can't use your destination disk for sharing data\n";
-	echo "3. You can't install FreeNAS if it's allready installed on this disk (Use upgrade from Web GUI)\n";
+	echo "3. You can't install {$productname} if it's allready installed on this disk (Use upgrade from Web GUI)\n";
 	echo "\nInstall on USB key is the prefered way:\nIt save you IDE or SCSI channel for more hard drive.\n";
 	echo "\nHere is the list of detected CDROM:\n";
 	
@@ -98,7 +100,7 @@
 	
 	echo <<<EOD
 	
-FreeNAS has been installed on $harddrive.
+{$productname} has been installed on $harddrive.
 You can now remove the CD-ROM and reboot the PC.
 
 Press ENTER to continue.

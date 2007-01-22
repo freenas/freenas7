@@ -606,16 +606,16 @@ msgstr "Mise &agrave; jour du logiciel non support&eacute;e sur cette plateforme
 msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
 msgstr "Cela signifie que l'image que vous avez charg&eacute;e n'est pas une image officiellement support&eacute;e, ceci pouvant causer un comportement erratique ou provoquerdes failles de s&eacute;curit&eacute;. N'installez que des images venant de sources de confiance, et assurez-vous que ces images n'aient pas &eacute;t&eacute; modifi&eacute;es.<br><br>Voulez-vous installer tout de m&ecirc;me cette image (sous votre enti&egrave;re responsabilit&eacute;)?"
 
-msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
+msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr "Cliquez sur &quot;Activer le chargement de mise &agrave; jour&quot; ci-dessous, puis choisissez un fichier image &agrave; charger.<br>Cliquez sur &quot;Charger&quot; pour lancer la mise &agrave; jour."
 
-msgid "Enable firmware upload'"
+msgid "Enable firmware upload"
 msgstr "Activer le chargement de mise a jour"
 
 msgid "Disable firmware upload"
 msgstr "Desactiver le chargement de mise a jour"
 
-msgid "Firmware image file'"
+msgid "Firmware image file"
 msgstr "Fichier image de mise &agrave; jour"
 
 msgid "Upgrade firmware"

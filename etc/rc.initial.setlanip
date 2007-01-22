@@ -31,7 +31,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
@@ -55,7 +54,7 @@
   		}
   	} while (!is_ipaddr($lanip));
   
-  	echo "\nSubnet masks are entered as bit counts (as in CIDR notation) in FreeNAS.\n";
+  	echo "\nSubnet masks are entered as bit counts (as in CIDR notation) in ".get_product_name().".\n";
   	echo "e.g. 255.255.255.0 = 24\n";
   	echo "     255.255.0.0   = 16\n";
   	echo "     255.0.0.0     = 8\n\n";

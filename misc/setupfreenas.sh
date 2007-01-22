@@ -330,7 +330,7 @@ create_iso () {
 	
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file on $TMPDIR folder"
-		cp $WORKINGDIR/$PRODUCTNAME-generic-pc-$VERSION.img $TMPDIR/FreeNAS-generic-pc.gz
+		cp $WORKINGDIR/$PRODUCTNAME-generic-pc-$VERSION.img $TMPDIR/$PRODUCTNAME-generic-pc.gz
 	fi
 
 	echo "ISO: Generating the ISO file"

@@ -606,16 +606,16 @@ msgstr "新的韧体正在安装中，完成之后%s将会自动重新开机。"
 msgid "Firmware uploading is not supported on this platform."
 msgstr "此系统並不支援韧体上传功能。."
 
-msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
+msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr "於下方点选 &quot;开啟韧体升级功能&quot; ，然后选择将要上传的映像档。<br>点选 &quot;韧体升级&quot; 来开啟升级动作"
 
-msgid "Enable firmware upload'"
+msgid "Enable firmware upload"
 msgstr "开啟韧体升级功能"
 
 msgid "Disable firmware upload"
 msgstr "关闭韧体升级功能"
 
-msgid "Firmware image file'"
+msgid "Firmware image file"
 msgstr "韧体映像档"
 
 msgid "Upgrade firmware"

@@ -31,37 +31,35 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
 	require_once("util.inc");
 
-	$version = chop(file_get_contents("{$g['etc_path']}/version"));
-	$buildtime = chop(file_get_contents("{$g['etc_path']}/version.buildtime"));
+	// Permit to display IP address for "auto" NIC
+  $if = get_ifname($config['interfaces']['lan']['if']);
 
-    $if = $config['interfaces']['lan']['if'];
-  
-  // Permit to display IP address for "auto" NIC
-  if ($if == "auto") {
-		$interfaces = explode(" ", exec("/sbin/ifconfig -l"));
-		$if = $interfaces[0];
-	}
-	
   $ipaddr = get_ipaddr($if);
+
+	/* Get product information */
+	$productname = get_product_name();
+	$producturl = get_product_url();
+	$copyright = get_product_copyright();
+	$version = get_product_version();
+	$buildtime = get_product_buildtime();
 
 	echo <<<EOD
 
 
-*** This is FreeNAS, version {$version}
+*** This is {$productname}, version {$version}
     built on {$buildtime} for {$g['fullplatform']}
-    Copyright (C) 2005-2007 by Olivier Cochard-Labbe. All rights reserved.
-    Visit http://www.freenas.org for updates.
-    
+    {$copyright}
+    Visit http://{$producturl} for updates.
+
     LAN IP address: {$ipaddr}
-    
+
     Port configuration:
-    
+
     LAN   -> {$if}
 
 EOD;

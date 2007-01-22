@@ -531,16 +531,16 @@ msgstr "El envio del Sistema Base no está soportado en esta plataforma."
 msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
 msgstr "Esto significa que la imagen enviada no es una imagen oficial/soportada y puede traer consigo comportamientos inesperados o compromisos de seguridad. Solo instale imágenes provenientes de fuentes de confianza, y asegure quela imagen no ha sido falseada.<br><br>La desea instalar de todas formas ? (bajo su propio riesgo)?"
 
-msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
+msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr "Click &quot;Habilitar la actualización del Sistema Base &quot; a continuación, luego seleccione el fichero de la imagen a enviar.<br>Click &quot;Actualizar Sistema Base&quot; para comenzar el proceso de actualización."
 
-msgid "Enable firmware upload'"
+msgid "Enable firmware upload"
 msgstr "Habilitar la actualización del Sistema Base"
 
 msgid "Disable firmware upload"
 msgstr "Deshabilitar la actualización del Sistema Base"
 
-msgid "Firmware image file'"
+msgid "Firmware image file"
 msgstr "Fichero Imagen del Sistema Base"
 
 msgid "Upgrade firmware"

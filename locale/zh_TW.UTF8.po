@@ -600,16 +600,16 @@ msgstr "新的韌體正在安裝中，完成之後%s將會自動重新開機。"
 msgid "Firmware uploading is not supported on this platform."
 msgstr "此系統並不支援韌體上傳功能。."
 
-msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
+msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr "於下方點選 &quot;開啟韌體升級功能&quot; ，然後選擇將要上傳的映像檔。<br>點選 &quot;韌體升級&quot; 來開啟升級動作"
 
-msgid "Enable firmware upload'"
+msgid "Enable firmware upload"
 msgstr "開啟韌體升級功能"
 
 msgid "Disable firmware upload"
 msgstr "關閉韌體升級功能"
 
-msgid "Firmware image file'"
+msgid "Firmware image file"
 msgstr "韌體映像檔"
 
 msgid "Upgrade firmware"

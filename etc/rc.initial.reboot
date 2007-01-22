@@ -31,16 +31,18 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
-	
+
+	/* Get product information */
+	$productname = get_product_name();
+
 	$fp = fopen('php://stdin', 'r');
 	
 	echo <<<EOD
 	
-FreeNAS will reboot. This may take one minute.
+{$productname} will reboot. This may take one minute.
 
 Do you want to proceed? (y/n) 
 EOD;
@@ -49,7 +51,7 @@ EOD;
 		
 		echo <<<EOD
 
-FreeNAS is rebooting now.
+{$productname} is rebooting now.
 
 EOD;
 	

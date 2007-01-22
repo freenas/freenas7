@@ -31,11 +31,13 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
-	
+
+	/* Get product information */
+	$productname = get_product_name();
+
 	$fp = fopen('php://stdin', 'r');
 	
 	$cdlist = get_cdrom_list();
@@ -43,9 +45,9 @@
 	
 	echo "Two Partition Install\n";
 	echo "Creates two partitions on the boot disk\n:";
-	echo "Installs FreeNAS on (small) partition 1 and creates and formats partition 2 for DATA\n";
+	echo "Installs {$productname} on (small) partition 1 and creates and formats partition 2 for DATA\n";
 	echo "\nWARNING: This WILL erase ALL your partitions and data on the destination hard drive!\n";
-	echo "\nWARNING: You can't install FreeNAS if it's already installed on a drive (Use upgrade from Web GUI)\n";
+	echo "\nWARNING: You can't install {$productname} if it's already installed on a drive (Use upgrade from Web GUI)\n";
 	echo "\nHere is the list of detected CDROM:\n";
 	
 	foreach ($cdlist as $cdromk =>$cdromv) 	{
@@ -105,7 +107,7 @@
 	
 	echo <<<EOD
 	
-FreeNAS has been installed on $installharddrive.
+{$productname} has been installed on $installharddrive.
 You can now remove the CD-ROM and reboot the PC.
 
 To use the DATA partition:

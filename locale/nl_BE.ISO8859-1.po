@@ -614,16 +614,16 @@ msgstr "Het opladen van systeemsoftware wordt niet ondersteund op dit platform."
 msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
 msgstr "Dit wil zeggen dat het bestand dat je hebt opgelenden geen officieel of ondersteund bestand is en dat dit kan leiden tot onverwacht systeemgedrag of beveiligingsmankementen. Installeer alleen maar bestanden die afkomstig zijn van betrouwbare bronnen, en zorg ervoor dat er niet geknoeid werd met het bestand.<br><br>Wil je het opgeladen bestand toch installeren (op eigen risico)?"
 
-msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.');"
+msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr "Klik hieronder op &quot;Opladen systeemsoftware activeren&quot;, en kies daarna het op te laden bestand..<br>Klik op &quot;Systeemsoftware opladen&quot; om het opladen te starten."
 
-msgid "Enable firmware upload'"
+msgid "Enable firmware upload"
 msgstr "Opladen systeemsoftware activeren"
 
 msgid "Disable firmware upload"
 msgstr "Opladen systeemsoftware desactiveren"
 
-msgid "Firmware image file'"
+msgid "Firmware image file"
 msgstr "Systeemsoftware bestand (firmware)"
 
 msgid "Upgrade firmware"

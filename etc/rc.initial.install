@@ -10,10 +10,10 @@ while : ; do
 
 # display a cheap menu
 echo
-echo "FreeNAS Install"
-echo "*********************"
+echo "Install"
+echo "*******"
 echo "1) Install on HD, CF or USB key: Create 1 UFS partition"
-echo "2) Install on HD: Create 2 UFS partitions (FreeNAS and DATA)"
+echo "2) Install on HD: Create 2 UFS partitions (OS and DATA)"
 echo "3) Return to main menu"
 echo
 
