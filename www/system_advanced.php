@@ -127,7 +127,7 @@ if ($_POST) {
       <td colspan="2" class="list" height="12"></td>
     </tr>
     <tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=gettext("webGUI SSL certificate\/key");?></td>
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("webGUI SSL certificate/key");?></td>
     </tr>
     <tr> 
       <td width="22%" valign="top" class="vncell"><?=gettext("Certificate");?></td>

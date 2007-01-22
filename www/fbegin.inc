@@ -56,8 +56,7 @@ function showhide(tspan, tri) {
     <td width="150" height="65" align="center" valign="middle"> <strong><a href="http://<?=$g['product_url'];?>" target="_blank"><img src="/logo.gif" width="150" height="47" border="0"></a></strong></td>
     <td height="65" bgcolor="#435370">
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
-	<tr><td align="left" valign="bottom"><span class="tfrtitle">&nbsp;webGUI 
-      Configuration</span></td>
+	<tr><td align="left" valign="bottom"><span class="tfrtitle">&nbsp;<?=gettext("webGUI Configuration");?></span></td>
 	  <td align="right" valign="bottom">
 	  <span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
 	  </td></tr></table>
@@ -82,15 +81,14 @@ function showhide(tspan, tri) {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_lan.php" class="navlnk"><?=gettext("LAN");?></a><br>
               <?php for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++): ?>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_opt.php?index=<?=$i;?>" class="navlnk"><?=htmlspecialchars($config['interfaces']['opt' . $i]['descr']);?></a><br>
-			  <?php endfor; ?>
+			  			<?php endfor; ?>
               <strong><?=gettext("Disks");?></strong><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_manage.php" class="navlnk"><?=gettext("Management");?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_raid_gmirror.php" class="navlnk"><?=gettext("Software RAID");?></a> <br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_init.php" class="navlnk"><?=gettext("Format");?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_mount.php" class="navlnk"><?=gettext("Mount Point");?></a><br>
- 
               <strong><?=gettext("Services");?></strong><br>
-			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_samba.php" class="navlnk"><?=gettext("CIFS");?></a><br>
+			  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_samba.php" class="navlnk"><?=gettext("CIFS");?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_ftp.php" class="navlnk"><?=gettext("FTP");?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_nfs.php" class="navlnk"><?=gettext("NFS");?></a><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_rsyncd.php" class="navlnk"><?=gettext("RSYNCD");?></a><br>

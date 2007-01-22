@@ -1542,8 +1542,8 @@ msgstr "modifier le groupe"
 msgid "Delete group"
 msgstr "supprimer le groupe"
 
-msgid "Do you really want to delete this group?!"
-msgstr "Voulez-vous vraiment supprimer ce groupe?!"
+msgid "Do you really want to delete this group?"
+msgstr "Voulez-vous vraiment supprimer ce groupe?"
 
 msgid "Add group"
 msgstr "ajouter un groupe"

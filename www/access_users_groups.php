@@ -31,7 +31,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Access"),gettext("Users"),gettext("Groups"));
@@ -72,8 +71,6 @@ if ($_GET['act'] == "del") {
 		exit;
 	}
 }
-
-
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -91,7 +88,6 @@ if ($_GET['act'] == "del") {
 <?php print_info_box_np(gettext("The User list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
 <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
 <?php endif; ?>
-
               <table width="100%" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                   <td width="30%" class="listhdrr"><?=gettext("Group");?></td>
@@ -107,7 +103,7 @@ if ($_GET['act'] == "del") {
                     <?=htmlspecialchars($group['desc']);?>&nbsp;
                   </td>
                    <td valign="middle" nowrap class="list"><a href="access_users_groups_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit group");?>" width="17" height="17" border="0"></a>
-                   &nbsp;<a href="access_users_groups.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this group?!");?>')"><img src="x.gif" title="<?=gettext("Delete group");?>" width="17" height="17" border="0"></a></td>
+                   &nbsp;<a href="access_users_groups.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this group?");?>')"><img src="x.gif" title="<?=gettext("Delete group");?>" width="17" height="17" border="0"></a></td>
 				</tr>
 			  <?php $i++; endforeach; ?>
                 <tr> 

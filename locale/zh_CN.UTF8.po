@@ -1512,7 +1512,7 @@ msgstr "编辑群组"
 msgid "Delete group"
 msgstr "刪除群组"
 
-msgid "Do you really want to delete this group?!"
+msgid "Do you really want to delete this group?"
 msgstr "确定要刪除此群组？"
 
 msgid "Add group"

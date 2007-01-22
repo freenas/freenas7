@@ -56,18 +56,18 @@ if ($_POST) {
 	
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "secret radiusip port"));
-		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Secret,RadiusIP,Port"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Shared secret"),gettext("Radius IP"),gettext("TCP port")));
 	}
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if ($_POST['enable'] &&  !is_port($_POST['port']))
 	{
-		$input_errors[] = "The TCP port must be a valid port number.";
+		$input_errors[] = gettext("The TCP port must be a valid port number.");
 	}
 	
 	if ($_POST['enable'] && !is_ipaddr($_POST['radiusip'])){
-  		$input_errors[] = "A valid IP address must be specified.";
+  		$input_errors[] = gettext("A valid IP address must be specified.");
   	}
 	
 	if (!$input_errors)
@@ -117,39 +117,39 @@ function enable_change(enable_change) {
                 <tr> 
                   <td colspan="2" valign="top" class="optsect_t">
 				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong>Radius Authentication</strong></td>
-				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong>Enable</strong></td></tr>
+				  <tr><td class="optsect_s"><strong><?=gettext("Radius Authentication");?></strong></td>
+				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td></tr>
 				  </table></td>
                 </tr>
                  <tr> 
-                  <td width="22%" valign="top" class="vncellreq">Radius IP</td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Radius IP");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="radiusip" type="text" class="formfld" id="radiusip" size="20" value="<?=htmlspecialchars($pconfig['radiusip']);?>"> 
-                  <br>IP address of radius server.</td>
+                  <br><?=gettext("IP address of radius server.");?></td>
 				</tr>
                  <tr> 
-                  <td width="22%" valign="top" class="vncellreq">TCP port</td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
-                  <br>Use 1812 for standard and 1645 for obsolete.</td>
+                  <br><?=gettext("Use 1812 for standard and 1645 for obsolete.");?></td>
 				</tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq">Shared secret</td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Shared secret");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="secret" type="text" class="formfld" id="secret" size="20" value="<?=htmlspecialchars($pconfig['secret']);?>"> 
-                  <br>Shared password for radius server.</td>
+                  <br><?=gettext("Shared password for radius server.");?></td>
 				</tr>
                  <tr> 
-                  <td width="22%" valign="top" class="vncell">Maximum retry</td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Maximum retry");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="maxretry" type="text" class="formfld" id="maxretry" size="20" value="<?=htmlspecialchars($pconfig['maxretry']);?>">
-                    <br>Maximum connection per IP adress.</td>
+                    <br><?=gettext("Maximum connection per IP adress.")?></td>
 				</tr>
                   <tr> 
-                  <td width="22%" valign="top" class="vncell">Timeout</td>
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Timeout");?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="timeout" type="text" class="formfld" id="timeout" size="20" value="<?=htmlspecialchars($pconfig['timeout']);?>">
-                    <br>Maximum idle time in seconds.</td>
+                    <br><?=gettext("Maximum idle time in seconds.");?></td>
 				</tr>
 				<tr> 
                   <td width="22%" valign="top">&nbsp;</td>

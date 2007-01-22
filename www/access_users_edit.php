@@ -31,7 +31,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $id = $_GET['id'];
@@ -52,12 +51,9 @@ else
 	groups_sort();
 
 $a_user = &$config['access']['user'];
-
 $a_group = &$config['access']['group'];
 
-
-if (isset($id) && $a_user[$id])
-{
+if (isset($id) && $a_user[$id]) {
 	$pconfig['login'] = $a_user[$id]['login'];
 	$pconfig['fullname'] = $a_user[$id]['fullname'];
 	$pconfig['usergroup'] = $a_user[$id]['usergroup'];
@@ -65,21 +61,17 @@ if (isset($id) && $a_user[$id])
 	$pconfig['passwordconf'] = $pconfig['password'];
 	$pconfig['userid'] = $a_user[$id]['id'];
 	$pconfig['fullshell'] = isset($a_user[$id]['fullshell']);
-
 }
 
-if ($_POST)
-{
-
+if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
-	
-	
+
 	$reqdfields = array();
 	$reqdfieldsn = array();
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "login fullname password passwordconf usergroup"));
-		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Login,Fullname,Password,Passwordconf,Usergroup"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Login"),gettext("Full Name"),gettext("Password"),gettext("Password confirmation"),gettext("Group Member")));
 	}
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -108,16 +100,14 @@ if ($_POST)
 			$input_errors[] = gettext("This user already exists in the user list.");
 			break;
 		}
-
 	}
 	
 	/* Check for a password mismatch */
 	if ($_POST['password']!=$_POST['passwordconf']) 	{
 			$input_errors[] = gettext("Password don't match.");
 	}
-	
-		/* check for valid password  */
 
+		/* check for valid password  */
 		if (($_POST['password'] && !is_validpassword($_POST['password']))) {
 		$input_errors[] = gettext("The password contain the illegal : character");
 	}
@@ -148,12 +138,11 @@ if ($_POST)
 			$config['access']['userid'] ++;
 			$a_user[] = $users;
 		}
-	
-		
+
 		touch($d_userconfdirty_path);
-		
+
 		write_config();
-		
+
 		header("Location: access_users.php");
 		exit;
 	}
@@ -201,7 +190,6 @@ if ($_POST)
 				  <input name="fullshell" type="checkbox" value="yes" <?php if ($pconfig['fullshell']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
 				  <br><?=gettext("Give full shell to user");?></td>
                 </tr>
-			
 		       <?php if (isset($id) && $a_user[$id]): ?>
                <input name="userid" type="hidden" class="formfld" id="userid" value="<?=$pconfig['userid'];?>">
                <input name="usergroupid" type="hidden" class="formfld" id="usergroupid" value="<?=$pconfig['usergroupid'];?>">

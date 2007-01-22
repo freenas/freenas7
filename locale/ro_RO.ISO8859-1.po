@@ -1572,7 +1572,7 @@ msgstr "Editare grup"
 msgid "Delete group"
 msgstr "Stergere grup"
 
-msgid "Do you really want to delete this group?!"
+msgid "Do you really want to delete this group?"
 msgstr "Stergeti acest grup?!"
 
 msgid "Add group"

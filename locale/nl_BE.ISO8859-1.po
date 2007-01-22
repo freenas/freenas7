@@ -1541,8 +1541,8 @@ msgstr "Groep bewerken"
 msgid "Delete group"
 msgstr "Groep verwijderen"
 
-msgid "Do you really want to delete this group?!"
-msgstr "Ben je zeker dat je deze groep wil verwijderen?!"
+msgid "Do you really want to delete this group?"
+msgstr "Ben je zeker dat je deze groep wil verwijderen?"
 
 msgid "Add group"
 msgstr "Groep toevoegen"

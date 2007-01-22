@@ -31,7 +31,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $id = $_GET['id'];
@@ -47,16 +46,12 @@ groups_sort();
 
 $a_group = &$config['access']['group'];
 
-
-if (isset($id) && $a_group[$id])
-{
+if (isset($id) && $a_group[$id]) {
 	$pconfig['name'] = $a_group[$id]['name'];
 	$pconfig['desc'] = $a_group[$id]['desc'];
 }
 
-if ($_POST)
-{
-
+if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
@@ -65,7 +60,7 @@ if ($_POST)
 	$reqdfieldsn = array();
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "name desc"));
-		$reqdfieldsn = array_merge($reqdfieldsn, explode(",", "Name,Desc"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Name"),gettext("Description")));
 	}
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -77,7 +72,6 @@ if ($_POST)
 	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
 		$input_errors[] = gettext("The Group desc contains invalid characters.");
 	}
-	
 
 	/* check for name conflicts */
 	foreach ($a_group as $group)
@@ -121,30 +115,30 @@ if ($_POST)
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-            <form action="access_users_groups_edit.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                  <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
-                    <br><?=gettext("Group name.");?></td>
-				</tr>
-				
-				<tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>">
-                    <br><?=gettext("Group description.");?></td>
-				</tr>
-              
-                <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>"> 
-                    <?php if (isset($id) && $a_group[$id]): ?>
-                    <input name="id" type="hidden" value="<?=$id;?>"> 
-                    <?php endif; ?>
-                  </td>
-                </tr>
-              </table>
+<form action="access_users_groups_edit.php" method="post" name="iform" id="iform">
+  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+      <tr> 
+        <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
+        <td width="78%" class="vtable"> 
+          <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>"><br>
+					<?=gettext("Group name.");?>
+				</td>
+			</tr>
+			<tr>
+        <td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
+        <td width="78%" class="vtable"> 
+          <input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"><br>
+					<?=gettext("Group description.");?>
+				</td>
+			</tr>
+			<tr> 
+        <td width="22%" valign="top">&nbsp;</td>
+        <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>"> 
+          <?php if (isset($id) && $a_group[$id]): ?>
+          <input name="id" type="hidden" value="<?=$id;?>"> 
+          <?php endif; ?>
+        </td>
+      </tr>
+  	</table>
 </form>
 <?php include("fend.inc"); ?>

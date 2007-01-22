@@ -1506,7 +1506,7 @@ msgstr "Bearbeite Benutzer"
 msgid "Delete user"
 msgstr "L&ouml;sche Benutzer"
 
-msgid "Do you really want to delete this user?!"
+msgid "Do you really want to delete this user?"
 msgstr "Benutzer wirklich l&ouml;schen?"
 
 msgid "Add user"
@@ -1560,7 +1560,7 @@ msgstr "Bearbeite Gruppe"
 msgid "Delete group"
 msgstr "L&ouml;sche Gruppe"
 
-msgid "Do you really want to delete this group?!"
+msgid "Do you really want to delete this group?"
 msgstr "Diese Gruppe wirklich l&ouml;schen?"
 
 msgid "Add group"
