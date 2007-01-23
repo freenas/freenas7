@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-URL_NETATALK="http://ovh.dl.sourceforge.net/sourceforge/netatalk/netatalk-2.0.3.tar.gz"
+URL_NETATALK="http://heanet.dl.sourceforge.net/sourceforge/netatalk/netatalk-2.0.3.tar.gz"
 
 build_netatalk() {
   cd $WORKINGDIR
