@@ -321,7 +321,7 @@ function get_interface_list() {
 		
 		if (substr($ifname, -1) == "*")
 			$ifname = substr($ifname, 0, strlen($ifname) - 1);
-		/* FreeNAS add the plip interface to be excluded too */
+		/* add the plip interface to be excluded too */
 		if (!preg_match("/^(ppp|sl|gif|faith|lo|vlan|tun|plip)/", $ifname)) {
 			$iflist[$ifname] = array();
 			
@@ -1700,11 +1700,13 @@ function get_product_copyright() {
 
 /* Get the product version */
 function get_product_version() {
+	global $g;
 	return chop(file_get_contents("{$g['etc_path']}/version"));
 }
 
 /* Get the product version */
 function get_product_buildtime() {
+	global $g;
 	return chop(file_get_contents("{$g['etc_path']}/version.buildtime"));
 }
 ?>

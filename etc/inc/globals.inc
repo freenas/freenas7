@@ -9,7 +9,7 @@
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
-	Parts of code based on pfSense (http://www.pfsense.org)
+	Based on pfSense (http://www.pfsense.org)
 	Copyright (C) 2006-2007 Daniel S. Haischt <me@daniel.stefan.haischt.name>.
 	All rights reserved.
 

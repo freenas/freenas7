@@ -982,7 +982,7 @@ function disks_raid_graid5_delete($raidname)
 	return 0;
 }
 
-/* Initialise HARD DRIVE for installing FreeNAS (creating 2 partition) */
+/* Initialise HARD DRIVE for installation (creating 2 partition) */
 function fdisk_hd_install($harddrive)
 {
 	global $config, $g;
@@ -990,7 +990,7 @@ function fdisk_hd_install($harddrive)
 	/* getting disk information */
 	$fdisk_info=fdisk_get_info($harddrive);
 
-	/* setting FreeNAS partition size to 32Mb*/	
+	/* setting partition size to 32Mb*/	
 	$part_freenas_size=32;
 
 	/* convert Mb to b */

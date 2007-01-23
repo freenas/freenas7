@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array("{$g['product_name']} webGUI");
+$pgtitle = array(get_product_name()." webGUI");
 $pgtitle_omit = true;
 ?>
 <?php include("fbegin.inc"); ?>
@@ -57,7 +57,7 @@ $pgtitle_omit = true;
   <tr>
     <td width="25%" valign="top" class="vncellt"><?=gettext("Version");?></td>
     <td width="75%" class="listr">
-      <strong><?php readfile("/etc/version"); ?></strong><br>built on <?php readfile("/etc/version.buildtime"); ?>
+      <strong><?=get_product_version();?></strong><br><?=gettext("built on");?> <?=get_product_buildtime();?>
     </td>
   </tr>
   <tr>
@@ -105,8 +105,8 @@ $pgtitle_omit = true;
         $upmins = (int)($uptime / 60);
 
         $uptimestr = "";
-        if ($updays > 1) $uptimestr .= "$updays days, ";
-        else if ($updays > 0) $uptimestr .= "1 day, ";
+        if ($updays > 1) $uptimestr .= "$updays ".gettext("days").", ";
+        else if ($updays > 0) $uptimestr .= "1 ".gettext("day").", ";
         $uptimestr .= sprintf("%02d:%02d", $uphours, $upmins);
         echo htmlspecialchars($uptimestr);
       ?>

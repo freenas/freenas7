@@ -254,7 +254,7 @@ function enable_change(enable_change) {
                 </option>
               <?php endfor; ?>
               </select>
-              <br><?php echo sprintf(gettext("Allows %s to try and become a local master browser."), $g['product_name']);?>
+              <br><?php echo sprintf(gettext("Allows %s to try and become a local master browser."), get_product_name());?>
             </td>
           </tr>
           <tr>
@@ -268,7 +268,7 @@ function enable_change(enable_change) {
                 </option>
               <?php endfor; ?>
               </select>
-              <br><?php echo sprintf(gettext("%s advertises itself as a time server to Windows clients."), $g['product_name']);?>
+              <br><?php echo sprintf(gettext("%s advertises itself as a time server to Windows clients."), get_product_name());?>
             </td>
           </tr>
           <tr>

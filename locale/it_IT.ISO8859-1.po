@@ -1856,3 +1856,12 @@ msgstr "If you click 'Yes', %s will be reset to factory defaults and will reboot
 
 msgid "Are you sure you want to proceed?"
 msgstr "Are you sure you want to proceed?"
+
+msgid "The configuration has been restored. %s is now rebooting."
+msgstr "The configuration has been restored. %s is now rebooting."
+
+msgid "The configuration could not be restored."
+msgstr "The configuration could not be restored."
+
+msgid "The configuration could not be restored (file upload error)."
+msgstr "The configuration could not be restored (file upload error)."

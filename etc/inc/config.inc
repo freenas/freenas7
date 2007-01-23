@@ -30,11 +30,13 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 /* include globals/utility/XML parser files */
 require_once("globals.inc");
 require_once("util.inc");
 require_once("xmlparse.inc");
+
+/* Get product information */
+$productname = get_product_name();
 
 /* read platform */
 if (file_exists("{$g['etc_path']}/platform")) {
@@ -66,7 +68,7 @@ if ($g['booting']) {
 				/* skip mfs mounted filesystems */
 				if (strstr($mountdisk, "md"))
 					continue;
-				/* Search on slice 1 for FreeNAS installed on disk with install script*/
+				/* Search on slice 1 for OS installed on disk with install script*/
 				if (mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$g['cf_path']}") == 0)
 				{
 					if (file_exists("{$g['cf_conf_path']}/config.xml"))
@@ -84,7 +86,7 @@ if ($g['booting']) {
 						break;
 				}
 				
-				/* Search on partition 'a' for FreeNAS IMG image written on disk*/
+				/* Search on partition 'a' for OS IMG image written on disk */
 				if (mwexec("/sbin/mount -r /dev/{$mountdisk}a {$g['cf_path']}") == 0)
 				{
 					if (file_exists("{$g['cf_conf_path']}/config.xml"))
@@ -112,7 +114,7 @@ if ($g['booting']) {
 				/* skip mfs mounted filesystems */
 				if (strstr($mountdisk, "md"))
 					continue;
-				/* Search on slice 1 for msdos FreeNAS */
+				/* Search on slice 1 for msdos OS */
 				if (mwexec("/sbin/mount -r -t msdos /dev/{$mountdisk}s1 {$g['cf_path']}") == 0)
 				{
 					if (file_exists("{$g['cf_conf_path']}/config.xml"))
@@ -140,7 +142,7 @@ if ($g['booting']) {
 *******************************************************************************
 * FATAL ERROR                                                                 *
 * The device that contains the configuration file (config.xml) could not be   *
-* found. {$g['product_name']} cannot continue booting.                                     *
+* found. {$productname} cannot continue booting.                                     *
 *******************************************************************************
 
 
@@ -194,7 +196,7 @@ if (!$noparseconfig) {
 					echo "file is inserted. If it isn't, your configuration changes will be lost\n";
 					echo "on reboot.\n";
 				} else {
-					echo "XML configuration file not found. {$g['product_name']} cannot continue booting.\n"; 
+					echo "XML configuration file not found. {$productname} cannot continue booting.\n"; 
 					mwexec("/sbin/halt");
 					exit;
 				}
@@ -213,9 +215,9 @@ if (!$noparseconfig) {
 
 *******************************************************************************
 * WARNING!                                                                    *
-* The current configuration has been created with a newer version of {$g['product_name']}  *
+* The current configuration has been created with a newer version of {$productname}  *
 * than this one! This can lead to serious misbehavior and even security       *
-* holes! You are urged to either upgrade to a newer version of {$g['product_name']} or     *
+* holes! You are urged to either upgrade to a newer version of {$productname} or     *
 * revert to the default configuration immediately!                            *
 *******************************************************************************
 

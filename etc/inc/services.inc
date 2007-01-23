@@ -549,8 +549,9 @@ function services_pureftpd_configure() {
 		}
 
 		if (empty($config['ftp']['banner'])) {
+			$productname = get_product_name();
 			$banner = <<<EOD
-Welcome to {$g['product_name']} FTP service
+Welcome to {$productname} FTP service
 
 EOD;
 		} else {

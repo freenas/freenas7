@@ -9,7 +9,6 @@
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-
 	
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -65,7 +64,7 @@ if ($_POST) {
 			if (is_uploaded_file($_FILES['conffile']['tmp_name'])) {
 				if (config_install($_FILES['conffile']['tmp_name']) == 0) {
 					system_reboot();
-					$savemsg = gettext("The configuration has been restored. {$g['product_name']} is now rebooting.");
+					$savemsg = sprintf(gettext("The configuration has been restored. %s is now rebooting."), get_product_name());
 				} else {
 					$input_errors[] = gettext("The configuration could not be restored.");
 				}
@@ -100,9 +99,9 @@ if ($_POST) {
     <tr> 
       <td width="22%" valign="baseline" class="vncell">&nbsp;</td>
       <td width="78%" class="vtable"> 
-				<?php echo sprintf(gettext("Open a %s configuration XML file and click the button below to restore the configuration."), $g['product_name']);?><br><br>
+				<?php echo sprintf(gettext("Open a %s configuration XML file and click the button below to restore the configuration."), get_product_name());?><br><br>
 				<strong><span class="red"><?=gettext("Note");?>:</span></strong><br>
-				<?php echo sprintf(gettext("%s will reboot after restoring the configuration."), $g['product_name']);?><br><br>
+				<?php echo sprintf(gettext("%s will reboot after restoring the configuration."), get_product_name());?><br><br>
 				<input name="conffile" type="file" class="formfld" id="conffile" size="40"><br><br>
 				<input name="Submit" type="submit" class="formbtn" id="restore" value="<?=gettext("Restore configuration");?>">
       </td>

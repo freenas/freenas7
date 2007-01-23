@@ -160,7 +160,7 @@ if ($_POST) {
       <td valign="top" class="vncell"><?=gettext("Firmware version check");?></td>
       <td class="vtable">
         <input name="disablefirmwarecheck" type="checkbox" id="disablefirmwarecheck" value="yes" <?php if ($pconfig['disablefirmwarecheck']) echo "checked"; ?>>
-        <strong><?=gettext("Disable firmware version check");?></strong><span class="vexpl"><br><?php echo sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), $g['product_name'], "system_firmware.php", gettext("System").": ".gettext("Firmware"));?></span>
+        <strong><?=gettext("Disable firmware version check");?></strong><span class="vexpl"><br><?php echo sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), get_product_name(), "system_firmware.php", gettext("System").": ".gettext("Firmware"));?></span>
       </td>
     </tr>
 		<tr> 

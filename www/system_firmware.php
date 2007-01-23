@@ -44,12 +44,12 @@ function check_firmware_version() {
 	$post = "platform=" . rawurlencode($g['fullplatform']) . 
 		"&version=" . rawurlencode(trim(file_get_contents("/etc/version")));
 		
-	$rfd = @fsockopen($g['product_url'], 80, $errno, $errstr, 3);
+	$rfd = @fsockopen(get_product_url(), 80, $errno, $errstr, 3);
 	if ($rfd) {
 		$hdr = "POST /checkversion.php HTTP/1.0\r\n";
 		$hdr .= "Content-Type: application/x-www-form-urlencoded\r\n";
-		$hdr .= "User-Agent: {$g['product_name']}-webGUI/1.0\r\n";
-		$hdr .= "Host: {$g['product_url']}\r\n";
+		$hdr .= "User-Agent: " . get_product_name() . "-webGUI/1.0\r\n";
+		$hdr .= "Host: " . get_product_url() . "\r\n";
 		$hdr .= "Content-Length: " . strlen($post) . "\r\n\r\n";
 		
 		fwrite($rfd, $hdr);
@@ -134,7 +134,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 				touch($d_firmwarelock_path);
 				exec_rc_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
 				
-				$savemsg = sprintf(gettext("The firmware is now being installed. %s will reboot automatically."), $g['product_name']);
+				$savemsg = sprintf(gettext("The firmware is now being installed. %s will reboot automatically."), get_product_name());
 			}
 		}
 	}
@@ -182,7 +182,7 @@ print_info_box($sig_warning);
     <tr>
       <td>
 				<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br>
-				<?php echo sprintf( gettext("DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."), $g['product_name'], 128, "diag_backup.php");?></span>
+				<?php echo sprintf( gettext("DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."), get_product_name(), 128, "diag_backup.php");?></span>
 			</td>
     </tr>
   </table>
