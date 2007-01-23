@@ -6,6 +6,7 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
+	JavaScript code are from Volker Theile
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
@@ -164,7 +165,7 @@ function raid_change() {
 						
 						
 						$cmd = "/sbin/graid5 $action " . escapeshellarg($raid) . " " . escapeshellarg($smalldisk);
-					} else if (strcmp($action,"dump") == 0 || strcmp($action,"clear") == 0) {
+					} else if (strcmp($action,"dump") == 0 || strcmp($action,"clear") == 0 ) {
 						$cmd = "/sbin/graid5 $action " . escapeshellarg($smalldisk);
 					} else {
 						$cmd = "/sbin/graid5 $action " . escapeshellarg($raid);

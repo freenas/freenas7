@@ -51,7 +51,7 @@ options 	NFSSERVER		# Network Filesystem Server
 options 	NFS_ROOT		# NFS usable as /, requires NFSCLIENT
 options 	MSDOSFS			# MSDOS Filesystem
 #ADDED FOR FREENAS:
-options		MSDOSFS_LARGE	# MSDOS Filesystem for FAT32 > 128GB 
+options		MSDOSFS_LARGE		# MSDOS Filesystem for FAT32 > 128GB 
 options 	CD9660			# ISO 9660 Filesystem
 options 	PROCFS			# Process filesystem (requires PSEUDOFS)
 options 	PSEUDOFS		# Pseudo-filesystem framework
@@ -66,10 +66,6 @@ options 	SYSVMSG			# SYSV-style message queues
 options 	SYSVSEM			# SYSV-style semaphores
 options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
 options 	KBD_INSTALL_CDEV	# install a CDEV entry in /dev
-options 	AHC_REG_PRETTY_PRINT	# Print register bitfields in debug
-					# output.  Adds ~128k to driver.
-options 	AHD_REG_PRETTY_PRINT	# Print register bitfields in debug
-					# output.  Adds ~215k to driver.
 options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
 
 #FreeNAS include ACPI in the kernel:
@@ -223,6 +219,7 @@ device		sf		# Adaptec AIC-6915 (``Starfire'')
 device		sis		# Silicon Integrated Systems SiS 900/SiS 7016
 device		sk		# SysKonnect SK-984x & SK-982x gigabit Ethernet
 device		ste		# Sundance ST201 (D-Link DFE-550TX)
+device          stge            # Sundance/Tamarack TC9021 gigabit Ethernet
 device		ti		# Alteon Networks Tigon I/II gigabit Ethernet
 device		tl		# Texas Instruments ThunderLAN
 device		tx		# SMC EtherPower II (83c170 ``EPIC'')
@@ -244,24 +241,24 @@ device		sn		# SMC's 9000 series of Ethernet chips
 device		xe		# Xircom pccard Ethernet
 
 # Wireless NIC cards
-device		wlan		# 802.11 support
-device		an		# Aironet 4500/4800 802.11 wireless NICs.
-device		awi		# BayStack 660 and others
-device		ral		# Ralink Technology RT2500 wireless NICs.
-device		wi		# WaveLAN/Intersil/Symbol 802.11 wireless NICs.
-#device		wl		# Older non 802.11 Wavelan wireless NIC.
+device          wlan            # 802.11 support
+device          wlan_wep        # 802.11 WEP support
+device          wlan_ccmp       # 802.11 CCMP support
+device          wlan_tkip       # 802.11 TKIP support
+device          an              # Aironet 4500/4800 802.11 wireless NICs.
+device          ath             # Atheros pci/cardbus NIC's
+device          ath_hal         # Atheros HAL (Hardware Access Layer)
+device          ath_rate_sample # SampleRate tx rate control for ath 
+device          awi             # BayStack 660 and others
+device          ral             # Ralink Technology RT2500 wireless NICs.  
+device          wi              # WaveLAN/Intersil/Symbol 802.11 wireless NICs.
+#device         wl              # Older non 802.11 Wavelan wireless NIC.
 
 #FREENAS ADD special Wifi 
 device 		firmware
 device          wlan_acl
 device          wlan_tkip
 device          wlan_xauth
-device          wlan_ccmp
-device          wlan_wep
-# FREENAS add ATHEROS support
-device          ath
-device          ath_hal
-device          ath_rate_onoe
 # FREENAS add Intel wifi support
 device		iwi
 device		ipw

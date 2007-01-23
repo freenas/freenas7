@@ -5,6 +5,7 @@
 	
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	JavaScript code are from Volker Theile
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -38,13 +39,19 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Geom Mirror"), gettext("Edit"));
 
+if (!is_array($config['gmirror']['vdisk']))
+	$config['gmirror']['vdisk'] = array();
+
+gmirror_sort();
+$a_raid = &$config['gmirror']['vdisk'];
+
 if ($_POST) {
 	unset($input_errors);
 	unset($do_action);
 
 	/* input validation */
-	$reqdfields = explode(" ", "action object");
-	$reqdfieldsn = explode(",", "Action,Object");
+	$reqdfields = explode(" ", "action disk");
+	$reqdfieldsn = explode(",", "Action,disk");
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	
@@ -52,7 +59,8 @@ if ($_POST) {
 	{
 		$do_action = true;
 		$action = $_POST['action'];
-		$object = $_POST['object'];
+		$raid = $_POST['raid'];
+		$disk = $_POST['disk'];
 	}
 }
 if (!isset($do_action))
@@ -64,6 +72,29 @@ if (!isset($do_action))
 
 ?>
 <?php include("fbegin.inc"); ?>
+<script language="JavaScript">
+<!--
+function raid_change() {
+ var next = null;
+ // Remove all entries from partition combobox.
+ document.iform.disk.length = 0;
+ // Insert entries for disk combobox.
+ switch(document.iform.raid.value)
+ {
+  <?php foreach ($a_raid as $raidv): ?>
+    case "<?=$raidv['name'];?>":
+      <?php foreach($raidv['diskr'] as $diskn => $diskrv): ?>
+         if(document.all) // MS IE workaround.
+            next = document.iform.disk.length;
+         document.iform.disk.add(new Option("<?=$diskrv;?>","<?=$diskrv;?>",false,
+<?php if("{$diskrv}" == $disk){echo "true";}else{echo "false";};?>), next);
+       <?php endforeach; ?>
+       break;
+     <?php endforeach; ?>
+   }
+ }
+// -->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr><td class="tabnavtbl">
   <ul id="tabnav">
@@ -86,11 +117,24 @@ if (!isset($do_action))
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 			<form action="disks_raid_gmirror_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr>
-				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Object name");?></td>
-				  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="object" type="text" class="formfld" id="object" size="20" value="<?=htmlspecialchars($disk);?>"></td>
-				</tr>
+               <tr> 
+      <td valign="top" class="vncellreq"><?=gettext("Volume Name"); ?></td>
+      <td class="vtable">           
+    	 <select name="raid" class="formfld" id="raid" onchange="raid_change()">
+    	  <?php foreach ($a_raid as $raidvol): ?>
+    				<option value="<?=$raidvol['name'];?>" <?php if ($pconfig['raid'] == $raid['name']) echo "selected";?>> 
+    				<?php echo htmlspecialchars($raidvol['name']);	?>
+    				</option>
+    		  <?php endforeach; ?>
+    		</select>
+      </td>
+    </tr>
+	<tr>
+            <td valign="top" class="vncellreq"><?=gettext("Disk");?></td>
+             <td class="vtable">
+             <select name="disk" class="formfld" id="disk"></select>
+             </td>
+          </tr>
 				<tr> 
                   <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
                   <td class="vtable"> 
@@ -120,9 +164,22 @@ if (!isset($do_action))
 					echo("<strong>" . gettext("command output:") . "</strong><br>");
 					echo('<pre>');
 					ob_end_flush();
+					//Remove the first 5 character of the diskname: /dev/
+					$smalldisk = substr($disk, 5);
 					
-					system("/sbin/gmirror $action " . escapeshellarg($object));
-				
+					
+					if (strcmp($action,"insert") == 0 || strcmp($action,"remove")==0 || strcmp($action,"deactivate")==0 || strcmp($action,"activate")==0) {
+						
+						
+						$cmd = "/sbin/gmirror $action " . escapeshellarg($raid) . " " . escapeshellarg($smalldisk);
+					} else if (strcmp($action,"dump") == 0 || strcmp($action,"clear") == 0 ) {
+						$cmd = "/sbin/gmirror $action " . escapeshellarg($smalldisk);
+					} else {
+						$cmd = "/sbin/gmirror $action " . escapeshellarg($raid);
+					}
+
+					
+					system($cmd);
 					echo('</pre>');
 				}
 				?>
@@ -132,4 +189,9 @@ if (!isset($do_action))
 </form>
 <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly).");?></span></p>
 </td></tr></table>
+<script language="JavaScript">
+<!--
+raid_change();
+//-->
+</script>
 <?php include("fend.inc"); ?>
