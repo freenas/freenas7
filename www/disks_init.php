@@ -232,91 +232,98 @@ function disk_change() {
     				<td valign="top" colspan="2">
     				<? if ($do_format)
     				{
-    					echo(gettext("<strong>Disk initialization details:</strong>"));
+    					echo("<strong>".gettext("Disk initialization details").":</strong>"));
     					echo('<pre>');
     					ob_end_flush();
 
     					// Erase MBR if not checked
     					if (!$notinitmbr) {
-    						echo "Erasing MBR and all paritions:\n";
+    						echo gettext("Erasing MBR and all paritions").":\n";
     						system("dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=32k count=640");
     					}
     					else
-    						echo "Keeping the MBR and all partitions\n";
+    						echo gettext("Keeping the MBR and all partitions")."\n";
 
     					switch ($type)
     					{
     					case "ufs":
     						// Initialize disk
-						echo "Creating one parition:\n";
+								echo gettext("Creating one parition").":\n";
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
     						// Initialise the partition (optional)
-						echo "Initializing parition:\n";
+								echo gettext("Initializing parition").":\n";
     						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
     						// Create s1 label
-						echo "Creating BSD label:\n";
+								echo gettext("Creating BSD label").":\n";
     						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
     						// Create filesystem
-						echo "Creating Filesystem:\n";
+						echo gettext("Creating filesystem").":\n";
     						system("/sbin/newfs -U " . escapeshellarg($disk) . "s1");
-						echo "Done!\n";
+						echo gettext("Done")."!\n";
 						break;
     					case "ufs_no_su":
     						// Initialize disk
-						echo "Creating one parition:\n";
+								echo gettext("Creating one parition").":\n";
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
     						// Initialise the partition (optional)
-						echo "Initializing parition:\n";
+								echo gettext("Initializing parition").":\n";
     						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
     						// Create s1 label
-						echo "Creating BSD label:\n";
+								echo gettext("Creating BSD label").":\n";
     						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
     						// Create filesystem
-						echo "Creating Filesystem:\n";
+								echo gettext("Creating filesystem").":\n";
     						system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "s1");
-						echo "Done!\n";
+								echo gettext("Done")."!\n";
 						break;
     					case "ufsgpt":
     						// Create GPT partition table
-						echo "Destroying old GTP information:\n";
+								echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
     						system("/sbin/gpt destroy " . escapeshellarg($disk));
-						echo "Creating GPT partition:\n";
-						system("/sbin/gpt create -f " . escapeshellarg($disk));
+								echo sprintf(gettext("Creating %s partition"), "GPT").":\n";
+								system("/sbin/gpt create -f " . escapeshellarg($disk));
     						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
     						// Create filesystem
-						echo "Creating Filesystem with Soft Updates:\n";
-						system("/sbin/newfs -U " . escapeshellarg($disk) . "p1");
-    						echo "Done!\n";
+								echo gettext("Creating filesystem with 'Soft Updates'").":\n";
+								system("/sbin/newfs -U " . escapeshellarg($disk) . "p1");
+    						echo gettext("Done")."!\n";
 						break;
     					case "ufsgpt_no_su":
     						// Create GPT partition table
-						echo "Destroying old GTP information:\n";
+								echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
     						system("/sbin/gpt destroy " . escapeshellarg($disk));
-						echo "Creating GPT partition:\n"; 
-						system("/sbin/gpt create -f " . escapeshellarg($disk));
+								echo sprintf(gettext("Creating %s partition"), "GPT").":\n"; 
+								system("/sbin/gpt create -f " . escapeshellarg($disk));
     						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
     						// Create filesystem
-						echo "Creating Filesystem without Soft Updates:\n";
+								echo gettext("Creating filesystem without 'Soft Updates'").":\n";
     						system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "p1");
-						echo "Done!\n";
+								echo gettext("Done")."!\n";
 						break;
 					case "softraid":
     						// Initialize disk
+    						echo gettext("Creating one parition").":\n";
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
     						// Initialise the partition (optional)
+    						echo gettext("Initializing parition").":\n";
     						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
     						// Delete old gmirror information */
+    						echo sprintf(gettext("Destroying old %s information"), "GMIRROR").":\n";
     						system("/sbin/gmirror clear " . escapeshellarg($disk));
-						echo "Done!\n";
+						echo gettext("Done")."!\n";
 						break;
     					case "msdos":
     						// Initialize disk
+    						echo gettext("Creating one parition").":\n";
     						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
     						// Initialise the partition (optional) */
+    						echo gettext("Initializing parition").":\n";
     						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
     						// Create s1 label
+    						echo gettext("Creating BSD label").":\n";
     						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
     						// Create filesystem
+    						echo gettext("Creating filesystem").":\n";
     						system("/sbin/newfs_msdos -F 32 " . escapeshellarg($disk) . "s1");
 						echo "Done!\n";
 						break;

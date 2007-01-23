@@ -867,8 +867,8 @@ msgstr "初始化"
 msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
 msgstr "磁碟已經掛載！請先<a href=%s>卸載</a>之後再繼續其他動作。"
 
-msgid "<strong>Disk initialization details:</strong>"
-msgstr "<strong>磁碟初始化系統資訊:</strong>"
+msgid "Disk initialization details"
+msgstr "磁碟初始化系統資訊"
 
 msgid "\"fdisk: Geom not found\"is not an error message!\n"
 msgstr "「fdisk: Geom not found」並不是一個錯誤訊息！\n"
@@ -1889,3 +1889,33 @@ msgstr "The configuration could not be restored (file upload error)."
 
 msgid "webGUI Configuration"
 msgstr "webGUI Configuration"
+
+msgid "Erasing MBR and all paritions"
+msgstr "Erasing MBR and all paritions"
+
+msgid "Keeping the MBR and all partitions"
+msgstr "Keeping the MBR and all partitions"
+
+msgid "Creating one parition"
+msgstr "Creating one parition"
+
+msgid "Initializing parition"
+msgstr "Initializing parition"
+
+msgid "Creating BSD label"
+msgstr "Creating BSD label"
+
+msgid "Creating filesystem"
+msgstr "Creating filesystem"
+
+msgid "Destroying old %s information"
+msgstr "Destroying old %s information"
+
+msgid "Done"
+msgstr "Done"
+
+msgid "Creating %s partition"
+msgstr "Creating %s partition"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "Creating filesystem with 'Soft Updates'"
