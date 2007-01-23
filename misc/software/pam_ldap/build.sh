@@ -6,7 +6,7 @@ build_pam_ldap() {
 	make clean
 	make
 
-	return 0
+	return $?
 }
 
 install_pam_ldap() {

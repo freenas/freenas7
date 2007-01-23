@@ -19,9 +19,11 @@ build_pureftpd() {
   cd $(basename $pureftpd_tarball .tar.gz)
 
   ./configure --with-rfc2640 --with-largefile --with-pam
+  [ 0 != $? ] && return 1 # successful?
+
   make
 
-	return 0
+	return $?
 }
 
 install_pureftpd() {

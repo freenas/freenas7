@@ -1,17 +1,9 @@
 #!/usr/bin/env bash
 
-BUILD_DEPENDS="openldap-client"
 URL_SAMBA="http://us1.samba.org/samba/ftp/stable/samba-3.0.23d.tar.gz"
 
 build_samba() {
   cd $WORKINGDIR
-
-  # Check if needed packages are installed.
-  check_packages $BUILD_DEPENDS
-  if [ 1 == $? ]; then
-    echo "==> Install missing package(s) first."
-    return 1
-  fi
 
   samba_tarball=$(urlbasename $URL_SAMBA)
 
@@ -27,9 +19,11 @@ build_samba() {
 	cd $(basename $samba_tarball .tar.gz)/source
 
 	./configure --without-cups --with-ads --disable-cups --with-pam --with-ldapsam --with-acl-support --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run --with-piddir=/var/run --with-shared-modules=idmap_rid --with-pammodulesdir=/usr/local/lib --with-syslog
+	[ 0 != $? ] && return 1 # successful?
+
 	make
 
-	return 0
+	return $?
 }
 
 install_samba() {

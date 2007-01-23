@@ -1,17 +1,9 @@
 #!/usr/bin/env bash
 
-BUILD_DEPENDS="db42"
 URL_NETATALK="http://ovh.dl.sourceforge.net/sourceforge/netatalk/netatalk-2.0.3.tar.gz"
 
 build_netatalk() {
   cd $WORKINGDIR
-
-  # Check if needed packages are installed.
-  check_packages $BUILD_DEPENDS
-  if [ 1 == $? ]; then
-    echo "==> Install missing package(s) first."
-    return 1
-  fi
 
   netatalk_tarball=$(urlbasename $URL_NETATALK)
 
@@ -27,9 +19,11 @@ build_netatalk() {
   cd $(basename $netatalk_tarball .tar.gz)
 
   ./configure --bindir=/usr/local/bin --sbindir=/usr/local/sbin --sysconfdir=/var/etc --localstatedir=/var --enable-largefile --disable-tcp-wrappers --disable-cups --with-pam --with-uams-path=/etc/uams/
+  [ 0 != $? ] && return 1 # successful?
+
   make
 
-	return 0
+	return $?
 }
 
 install_netatalk() {

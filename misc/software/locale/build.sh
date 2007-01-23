@@ -10,6 +10,7 @@ build_locale() {
 		filename=$(echo $PRODUCTNAME | tr '[A-Z]' '[a-z]') # make filename lower case.
 		mkdir -v -p $WORKINGDIR/locale/$language/LC_MESSAGES
 		msgfmt -v --output-file="$WORKINGDIR/locale/$language/LC_MESSAGES/$filename.mo" $i
+		[ 0 != $? ] && return 1 # successful?
 	done
 
   return 0

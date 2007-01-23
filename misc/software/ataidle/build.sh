@@ -6,7 +6,7 @@ build_ataidle() {
 	make clean
 	make
 
-	return 0
+	return $?
 }
 
 install_ataidle() {

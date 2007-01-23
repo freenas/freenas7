@@ -6,7 +6,7 @@ build_smarttools() {
 	make clean
 	make
 
-	return 0
+	return $?
 }
 
 install_smarttools() {

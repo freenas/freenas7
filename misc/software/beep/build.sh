@@ -6,7 +6,7 @@ build_beep() {
 	make clean
 	make
 
-	return 0
+	return $?
 }
 
 install_beep() {

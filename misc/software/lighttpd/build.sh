@@ -20,9 +20,11 @@ build_lighttpd() {
 	cd $(basename $lighttpd_tarball .tar.gz)
 
 	./configure --sysconfdir=/var/etc/ --enable-lfs --without-mysql --without-ldap --with-openssl --without-lua --with-bzip2 --without-pcre
+	[ 0 != $? ] && return 1 # successful?
+
 	make
 
-	return 0
+	return $?
 }
 
 install_lighttpd() {

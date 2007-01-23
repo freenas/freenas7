@@ -6,7 +6,7 @@ build_aaccli() {
 	make clean
 	make
 
-	return 0
+	return $?
 }
 
 install_aaccli() {

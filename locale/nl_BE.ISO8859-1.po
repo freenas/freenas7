@@ -1912,3 +1912,6 @@ msgstr "The configuration could not be restored."
 
 msgid "The configuration could not be restored (file upload error)."
 msgstr "The configuration could not be restored (file upload error)."
+
+msgid "webGUI Configuration"
+msgstr "webGUI Configuration"

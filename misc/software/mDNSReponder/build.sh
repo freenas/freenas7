@@ -6,7 +6,7 @@ build_mDNSReponder() {
 	make clean
 	make
 
-	return 0
+	return $?
 }
 
 install_mDNSReponder() {

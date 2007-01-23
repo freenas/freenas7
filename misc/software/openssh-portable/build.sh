@@ -10,7 +10,7 @@ build_openssh-portable() {
 	make clean
 	make
 
-	return 0
+	return $?
 }
 
 install_openssh-portable() {

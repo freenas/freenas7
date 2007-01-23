@@ -25,13 +25,14 @@ build_iscsi() {
   make clean
   ln -s ../.. @
   make
+  [ 0 != $? ] && return 1 # successful?
 
   cp -v iscsi_initiator.ko $FREENAS/boot/kernel/
 
   cd $WORKINGDIR/iscsi/iscontrol
   make
 
-	return 0
+	return $?
 }
 
 install_iscsi() {

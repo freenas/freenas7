@@ -24,23 +24,6 @@ URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
 URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
 URL_GEOMRAID5="http://home.tiscali.de/cmdr_faako/geom_raid5.tbz"
 
-# Check if needed packages are installed.
-check_packages() {
-  result=0
-  echo "Check if all needed packages are installed to compile properly:"
-	for pkg in $@; do
-		echo -n "checking for $pkg... "
-		installed=$(pkg_info | grep $pkg)
-		if [ -z "$installed" ]; then
-			echo "no"
-			result=1
-		else
-			echo "yes"
-		fi
-	done
-	return $result
-}
-
 # Return filename of URL
 urlbasename() {
   echo $1 | awk '{n=split($0,v,"/");print v[n]}'
@@ -456,6 +439,7 @@ build_softpkg() {
   echo "Menu:"
 
   count=0
+  result=0
 
 	for s in $SVNDIR/misc/software/*; do
 		package=`basename $s`
@@ -486,25 +470,34 @@ build_softpkg() {
           package=`basename $s`
           source $s/build.sh
           build_$package
-          [ 0 != $? ] && break
+          if [ 0 != $? ]; then
+          	let result=1
+						break
+					fi
         done
       elif [ "$choice" == "$installall" ]; then
         for s in $SVNDIR/misc/software/*; do
           package=`basename $s`
           source $s/build.sh
           install_$package
-          [ 0 != $? ] && break
+          if [ 0 != $? ]; then
+          	let result=1
+						break
+					fi
         done           
       elif [ "$choice" -le "$count" ]; then
         echo "Sourcing script ${script[$choice]}"
         source ${script[$choice]}
         echo "Running ${function[$choice]}"
         ${function[$choice]}
+        let result=$?
       fi;;
     *) fromscratch;;
   esac
 
   sleep 1
+
+  return $result
 }
 
 main() {

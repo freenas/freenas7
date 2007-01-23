@@ -6,7 +6,7 @@ build_msntp() {
 	make clean
 	make
 
-	return 0
+	return $?
 }
 
 install_msntp() {

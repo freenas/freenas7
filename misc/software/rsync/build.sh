@@ -19,9 +19,11 @@ build_rsync() {
   cd $(basename $rsync_tarball .tar.gz)
 
   ./configure --with-rsyncd-conf=/var/etc
+  [ 0 != $? ] && return 1 # successful?
+
   make
 
-	return 0
+	return $?
 }
 
 install_rsync() {

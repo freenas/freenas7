@@ -6,7 +6,7 @@ build_e2fsck() {
 	make clean
 	make
 
-	return 0
+	return $?
 }
 
 install_e2fsck() {

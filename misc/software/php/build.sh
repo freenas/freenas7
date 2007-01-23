@@ -1,17 +1,9 @@
 #!/usr/bin/env bash
 
-BUILD_DEPENDS="libxml2 perl pkg-config"
 URL_PHP="http://www.php.net/distributions/php-5.2.0.tar.gz"
 
 build_php() {
 	cd $WORKINGDIR
-
-  # Check if needed packages are installed.
-  check_packages $BUILD_DEPENDS
-  if [ 1 == $? ]; then
-    echo "==> Install missing package(s) first."
-    return 1
-  fi
 
   php_tarball=$(urlbasename $URL_PHP)
 
@@ -27,9 +19,11 @@ build_php() {
 	cd $(basename $php_tarball .tar.gz)
 
 	./configure --enable-fastcgi --enable-discard-path --enable-force-cgi-redirect --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex --with-gettext
+	[ 0 != $? ] && return 1 # successful?
+
 	make
 
-	return 0
+	return $?
 }
 
 install_php() {

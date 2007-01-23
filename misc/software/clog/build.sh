@@ -8,11 +8,12 @@ build_clog() {
 
   cd /usr/src/usr.sbin/syslogd
   make
+  [ 0 != $? ] && return 1 # successful?
 
   cd /usr/src/usr.sbin/clog
   gcc clog.c -o clog
 
-	return 0
+	return $?
 }
 
 install_clog() {
