@@ -47,6 +47,7 @@ $pconfig['polling_enable'] = isset($config['system']['polling']);
 $pconfig['tune_enable'] = isset($config['system']['tune']);
 $pconfig['smart_enable'] = isset($config['system']['smart']);
 $pconfig['howl_disable'] = isset($config['system']['howl_disable']);
+$pconfig['powerd'] = isset($config['system']['powerd']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -85,6 +86,7 @@ if ($_POST) {
 		$config['system']['tune'] = $_POST['tune_enable'] ? true : false;
 		$config['system']['howl_disable'] = $_POST['howl_disable'] ? true : false;
 		$config['system']['smart'] = $_POST['smart_enable'] ? true : false;
+		$config['system']['powerd'] = $_POST['powerd'] ? true : false;
 				
 		write_config();
 		
@@ -153,14 +155,16 @@ if ($_POST) {
       <td width="22%" valign="top" class="vncell"><?=gettext("Console menu");?></td>
       <td width="78%" class="vtable"> 
         <input name="disableconsolemenu" type="checkbox" id="disableconsolemenu" value="yes" <?php if ($pconfig['disableconsolemenu']) echo "checked"; ?>>
-        <strong><?=gettext("Disable console menu");?></strong><span class="vexpl"><br><?=gettext("Changes to this option will take effect after a reboot.");?></span>
+        <strong><?=gettext("Disable console menu");?></strong><span class="vexpl"><br>
+				<?=gettext("Changes to this option will take effect after a reboot.");?></span>
       </td>
     </tr>
     <tr>
       <td valign="top" class="vncell"><?=gettext("Firmware version check");?></td>
       <td class="vtable">
         <input name="disablefirmwarecheck" type="checkbox" id="disablefirmwarecheck" value="yes" <?php if ($pconfig['disablefirmwarecheck']) echo "checked"; ?>>
-        <strong><?=gettext("Disable firmware version check");?></strong><span class="vexpl"><br><?php echo sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), get_product_name(), "system_firmware.php", gettext("System").": ".gettext("Firmware"));?></span>
+        <strong><?=gettext("Disable firmware version check");?></strong><span class="vexpl"><br>
+				<?php echo sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), get_product_name(), "system_firmware.php", gettext("System").": ".gettext("Firmware"));?></span>
       </td>
     </tr>
 		<tr> 
@@ -181,7 +185,7 @@ if ($_POST) {
       <td width="22%" valign="top" class="vncell"><?=gettext("S.M.A.R.T Daemon");?></td>
       <td width="78%" class="vtable"> 
         <input name="smart_enable" type="checkbox" id="smart_enable" value="yes" <?php if ($pconfig['smart_enable']) echo "checked"; ?>>
-        <strong><?=gettext("Enable the S.M.A.R.T daemon");?></strong><br>
+        <strong><?=gettext("Enable the S.M.A.R.T daemon");?></strong><span class="vexpl"><br>
         <?=gettext("Monitor the S.M.A.R.T device by logging their status in the log file.");?>
       </td>
     </tr>
@@ -190,6 +194,14 @@ if ($_POST) {
       <td width="78%" class="vtable"> 
         <input name="tune_enable" type="checkbox" id="tune_enable" value="yes" <?php if ($pconfig['tune_enable']) echo "checked"; ?>>
         <strong><?=gettext("Enable tuning of some kernel variables");?></strong>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=gettext("Power Daemon");?></td>
+      <td width="78%" class="vtable"> 
+        <input name="powerd" type="checkbox" id="powerd" value="yes" <?php if ($pconfig['powerd']) echo "checked"; ?>>
+        <strong><?=gettext("Enable the system power control utility");?></strong><span class="vexpl"><br>
+        <?=gettext("The powerd utility monitors the system state and sets various power control options accordingly.");?>
       </td>
     </tr>
     <tr> 

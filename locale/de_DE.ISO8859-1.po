@@ -664,7 +664,7 @@ msgid "Console menu"
 msgstr "Konsolen Men&uuml;"
 
 msgid "Disable console menu"
-msgstr "Konsolen Men&uuml; abschalten."
+msgstr "Konsolen Men&uuml; abschalten"
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr "&Auml;nderungen in diesen Optionen werden erst nach einem Neustart wirksam."
@@ -691,7 +691,7 @@ msgid "System Beep"
 msgstr "Systemlautsprecher piept"
 
 msgid "Disable speaker beep on startup and shutdown"
-msgstr "Systemlautsprecher beim Start und Shutdown ausschalten."
+msgstr "Systemlautsprecher beim Start und Shutdown ausschalten"
 
 msgid "S.M.A.R.T Daemon"
 msgstr "S.M.A.R.T Daemon"
@@ -2018,3 +2018,12 @@ msgstr "Creating %s partition"
 
 msgid "Creating filesystem with 'Soft Updates'"
 msgstr "Creating filesystem with 'Soft Updates'"
+
+msgid "Power Daemon"
+msgstr "Power Daemon"
+
+msgid "Enable the system power control utility"
+msgstr "Enable the system power control utility"
+
+msgid "The powerd utility monitors the system state and sets various power control options accordingly."
+msgstr "The powerd utility monitors the system state and sets various power control options accordingly."

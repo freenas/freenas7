@@ -31,7 +31,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 	require_once("globals.inc");
 
 	/* let the other functions know we're booting */
@@ -108,6 +107,9 @@
 	
 	/* start the S.M.A.R.T daemon */
 	services_smart_configure();
+	
+	/* start the system power control utility */
+	services_powerd_configure();
 	
 	/* ATA disk Idle configuration */
 	disks_set_ataidle();

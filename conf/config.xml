@@ -30,7 +30,12 @@
 		<!-- <shellcmd></shellcmd> -->
 		<!-- <earlyshellcmd></earlyshellcmd> -->
 		<!-- <harddiskstandby></harddiskstandby> -->
-		<!-- <polling/> -->
+		<!-- <disablebeep></disablebeep> -->
+		<!-- <polling></polling> -->
+		<!-- <tune></tune> -->
+		<!-- <smart></smart> -->
+		<!-- <howl_disable></howl_disable> -->
+		<!-- <powerd></powerd> -->
 	</system>
 	<interfaces>
 		<lan>

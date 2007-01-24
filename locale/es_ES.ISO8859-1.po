@@ -1712,3 +1712,12 @@ msgstr "Creating %s partition"
 
 msgid "Creating filesystem with 'Soft Updates'"
 msgstr "Creating filesystem with 'Soft Updates'"
+
+msgid "Power Daemon"
+msgstr "Power Daemon"
+
+msgid "Enable the system power control utility"
+msgstr "Enable the system power control utility"
+
+msgid "The powerd utility monitors the system state and sets various power control options accordingly."
+msgstr "The powerd utility monitors the system state and sets various power control options accordingly."

@@ -72,6 +72,7 @@ FreeNAs 0.684b:
 - Fix UPnP WebGUI bug
 - Little index page improvement : % used of TOTAL size display. Paul Wheels patch
 - Update language file: French, Chinese and Romanian
+- Add powerd/cpufreq system power control utility
 
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails

@@ -632,6 +632,30 @@ function services_smart_configure() {
 	return $result;
 }
 
+/* Start/Stop system power control utility
+Return 0 if OK, 1 or error code if error */
+function services_powerd_configure() {
+	global $config, $g;
+
+	$result = 0 ;
+
+	/* kill any running powerd */
+	killbypid("{$g['varrun_path']}/powerd.pid");
+
+	if (isset($config['system']['powerd'])) {
+		if ($g['booting'])
+			echo "Starting powerd... ";
+
+		/* run powerd */
+		$result = mwexec("/usr/bin/powerd -a adaptive");
+
+		if ($g['booting'])
+			echo "done\n";
+	}
+
+	return $result;
+}
+
 /* Stop sshd, Generate the configuration file and start it
 Return 0 if OK, 1 or error code if error */
 

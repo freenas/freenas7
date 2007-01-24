@@ -294,7 +294,7 @@ usr/bin/touch
 usr/bin/uptime:usr/bin/w
 
 
-####### contents of usr/sbin
+####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
 
@@ -312,6 +312,9 @@ usr/sbin/chroot
 
 ## cron - The scheduler
 usr/sbin/cron
+
+## powerd -- System power control utility
+usr/sbin/powerd
 
 ## pwd_mkdb -- generate the password databases
 usr/sbin/pwd_mkdb

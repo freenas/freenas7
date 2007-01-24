@@ -316,3 +316,6 @@ device          speaker
 # FREENAS add GELI filesystem encryption
 device		crypto
 options		GEOM_ELI
+
+# FreeNAS add The cpufreq(4) driver provides support for non-ACPI CPU frequency control
+device		cpufreq
