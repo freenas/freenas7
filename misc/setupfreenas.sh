@@ -318,6 +318,7 @@ create_iso () {
 
 	echo "ISO: Generating the ISO file"
 	mkisofs -b "boot/cdboot" -no-emul-boot -A "FreeNAS CD-ROM image" -c "boot/boot.catalog" -d -r -publisher "freenas.org" -p "Olivier Cochard-Labbe" -V "freenas_cd" -o "$ISOFILENAME" $TMPDIR
+	[ 0 != $? ] && return 1 # successful?
 	
 	echo "ISO: Cleaning tempo file"
 	[ -d $TMPDIR ] && rm -rf $TMPDIR
@@ -511,8 +512,8 @@ Menu:
 1  - Download and decompress FreeNAS root filesystem 
 2  - Update the source to latest (need SVN)
 10 - Create FreeNAS IMG file (rawrite to CF/USB/DD)
-11 - Create FreeNAS ISO file (need cdrtool installed)
-12 - Create FreeNAS ISO file without IMG image (need cdrtool installed)
+11 - Create FreeNAS ISO file (need cdrtools installed)
+12 - Create FreeNAS ISO file without IMG image (need cdrtools installed)
 20 - Build FreeNAS from scratch advanced menu
 *  - Quit
 > '
