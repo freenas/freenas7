@@ -1683,30 +1683,30 @@ function get_interface_info_ex($iftype)
 /* Get the product name */
 function get_product_name() {
 	global $g;
-	return $g['product_name'];
+	return chop(file_get_contents("{$g['etc_path']}/prd.name"));
 }
 
 /* Get the product URL */
 function get_product_url() {
 	global $g;
-	return $g['product_url'];
+	return chop(file_get_contents("{$g['etc_path']}/prd.url"));
 }
 
 /* Get the product copyright note */
 function get_product_copyright() {
 	global $g;
-	return $g['product_copyright'];
+	return chop(file_get_contents("{$g['etc_path']}/prd.copyright"));
 }
 
 /* Get the product version */
 function get_product_version() {
 	global $g;
-	return chop(file_get_contents("{$g['etc_path']}/version"));
+	return chop(file_get_contents("{$g['etc_path']}/prd.version"));
 }
 
 /* Get the product version */
 function get_product_buildtime() {
 	global $g;
-	return chop(file_get_contents("{$g['etc_path']}/version.buildtime"));
+	return chop(file_get_contents("{$g['etc_path']}/prd.version.buildtime"));
 }
 ?>

@@ -5,13 +5,13 @@
 # Modified: 11/2006 by Volker Theile (votdev@gmx.de)
 
 # Global Variables:
-PRODUCTNAME="FreeNAS"
 WORKINGDIR="/usr/local/freenas"
 FREENAS="/usr/local/freenas/rootfs"
 BOOTDIR="/usr/local/freenas/bootloader"
 SVNDIR="/usr/local/freenas/svn"
 TMPDIR="/tmp/freenastmp"
-VERSION=`cat $SVNDIR/etc/version`
+VERSION=`cat $SVNDIR/etc/prd.version`
+PRODUCTNAME=`cat $SVNDIR/etc/prd.name`
 
 #Size in MB of the MFS Root filesystem that will include all FreeBSD binary and FreeNAS WEbGUI/Scripts
 #Keep this file very small! This file is unzipped to a RAM disk at FreeNAS startup
@@ -74,8 +74,8 @@ create_rootfs() {
 	$SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS
 
   # Configuring platform variable
-	echo $VERSION > $FREENAS/etc/version
-	date > $FREENAS/etc/version.buildtime
+	echo $VERSION > $FREENAS/etc/prd.version
+	date > $FREENAS/etc/prd.version.buildtime
 
   # Config file: config.xml
   cd $FREENAS/conf.default/
@@ -182,7 +182,7 @@ create_mfsroot() {
 	[ -d $WORKINGDIR/svn ] && use_svn ;
 
 	# Setting Version type and date
-	date > $FREENAS/etc/version.buildtime
+	date > $FREENAS/etc/prd.version.buildtime
 	
 	# Make mfsroot to have the size of the MFSROOT_SIZE variable
 	dd if=/dev/zero of=$WORKINGDIR/mfsroot bs=1M count=$MFSROOT_SIZE
@@ -285,7 +285,7 @@ create_iso () {
 	#Setting the variable for ISO image:
 	PLATFORM="generic-pc-cdrom"
 	echo "$PLATFORM" > $FREENAS/etc/platform
-	date > $FREENAS/etc/version.buildtime
+	date > $FREENAS/etc/prd.version.buildtime
 	
 	echo "ISO: Generating tempory $TMPDIR folder"
 	mkdir $TMPDIR

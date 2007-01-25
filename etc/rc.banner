@@ -54,7 +54,7 @@
 *** This is {$productname}, version {$version}
     built on {$buildtime} for {$g['fullplatform']}
     {$copyright}
-    Visit http://{$producturl} for updates.
+    Visit http://www.{$producturl} for updates.
 
     LAN IP address: {$ipaddr}
 

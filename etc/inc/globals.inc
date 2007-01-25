@@ -36,9 +36,6 @@
 */
 
 $g = array(
-		"product_name" => "FreeNAS",
-		"product_url" => "www.freenas.org",
-		"product_copyright" => "Copyright (C) 2005-2007 by Olivier Cochard-Labbe. All rights reserved.",
     "varrun_path" => "/var/run",
     "varetc_path" => "/var/etc",
     "vardb_path" => "/var/db",

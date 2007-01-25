@@ -44,13 +44,13 @@ function check_firmware_version() {
 	$post = "platform=" . rawurlencode($g['fullplatform']) . 
 		"&version=" . rawurlencode(trim(file_get_contents("/etc/version")));
 		
-	$rfd = @fsockopen(get_product_url(), 80, $errno, $errstr, 3);
+	$rfd = @fsockopen("www.".get_product_url(), 80, $errno, $errstr, 3);
 	if ($rfd) {
 		$hdr = "POST /checkversion.php HTTP/1.0\r\n";
 		$hdr .= "Content-Type: application/x-www-form-urlencoded\r\n";
-		$hdr .= "User-Agent: " . get_product_name() . "-webGUI/1.0\r\n";
-		$hdr .= "Host: " . get_product_url() . "\r\n";
-		$hdr .= "Content-Length: " . strlen($post) . "\r\n\r\n";
+		$hdr .= "User-Agent: ".get_product_name()."-webGUI/1.0\r\n";
+		$hdr .= "Host: www.".get_product_url()."\r\n";
+		$hdr .= "Content-Length: ".strlen($post)."\r\n\r\n";
 		
 		fwrite($rfd, $hdr);
 		fwrite($rfd, $post);
