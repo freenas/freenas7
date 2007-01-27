@@ -73,6 +73,7 @@ FreeNAs 0.684b:
 - Little index page improvement : % used of TOTAL size display. Paul Wheels patch
 - Update language file: French, Chinese and Romanian
 - Add powerd/cpufreq system power control utility
+- Permit to configure the system time: Paul Wheels patch
 
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails

@@ -3,8 +3,9 @@
 /*
 	system.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
+	Set time function added by Paul Wheels (pwheels@users.sourceforge.net)
 
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
@@ -158,6 +159,15 @@ if ($_POST) {
  			$retval |= system_tuning();
 			config_unlock();
 		}
+		if (($pconfig['systime'] != "Not Set") && ($pconfig['systime'] != "")) {
+			$timefields = split(" ", $pconfig['systime']);
+			$dateparts = split("/", $timefields[0]);
+			$timeparts = split(":", $timefields[1]);
+			$newsystime = substr($dateparts[2],-2).substr("0".$dateparts[0],-2).substr("0".$dateparts[1],-2);
+			$newsystime = $newsystime.substr("0".$timeparts[0],-2).substr("0".$timeparts[1],-2);
+			$retval = system_systime_set($newsystime);
+			$pconfig['systime']="Not Set";
+		}
 
 		$savemsg = get_std_save_message($retval);
 	}
@@ -166,6 +176,7 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
+<script language="JavaScript" src="datetimepicker.js"></script>
 <form action="system.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
@@ -228,6 +239,14 @@ if ($_POST) {
 	    		<?php endforeach; ?>
     		</select>
       </td>
+    </tr>
+<tr>
+      <td width="22%" valign="top" class="vncell"><?=gettext("System Time");?></td>
+      <td width="78%" class="vtable">
+	  <input name="systime" id="systime" type="text" size="25">
+	  <a href="javascript:NewCal('systime','mmddyyyy',true,24)">
+	  <img src="cal.gif" width="16" height="16" border="0" alt="Pick a date"></a><br>
+        <span class="vexpl"><?=gettext("Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select one, then use Save button to update system time. (Mind seconds part will be ignord");?></span></td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Time zone");?></td>

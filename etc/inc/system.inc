@@ -4,6 +4,7 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
+	system_systime_set() function added by Paul Wheels (pwheels@users.sourceforge.net)
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
@@ -521,6 +522,11 @@ function system_password_configure() {
 	fclose($fd);
 	chmod("{$g['varrun_path']}/htpasswd", 0600);
 	
+	return 0;
+}
+function system_systime_set($mydate) {
+
+	exec("/bin/date " . $mydate);
 	return 0;
 }
 
