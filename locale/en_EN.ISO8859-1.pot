@@ -124,7 +124,7 @@ msgid "The"
 msgstr ""
 
 msgid "Up"
-msgstr """
+msgstr ""
 
 msgid "URL"
 msgstr ""
@@ -364,7 +364,7 @@ msgid "Process"
 msgstr ""
 
 msgid "Interfaces"
-msgstr """
+msgstr ""
 
 msgid "Wireless"
 msgstr ""
@@ -421,16 +421,16 @@ msgid "IP addresses"
 msgstr ""
 
 msgid "Username"
-msgstr """
+msgstr ""
 
 msgid "If you want to change the username for accessing the webGUI, enter it here."
-msgstr """
+msgstr ""
 
 msgid "Password"
 msgstr ""
 
 msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don't use the character ':'."
-msgstr """
+msgstr ""
 
 msgid "WebGUI protocol"
 msgstr ""
@@ -439,7 +439,7 @@ msgid "WebGUI port"
 msgstr ""
 
 msgid "Enter a custom port number for the webGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
-msgstr """
+msgstr ""
 
 msgid "Language"
 msgstr ""
@@ -562,7 +562,7 @@ msgid "Add Route"
 msgstr ""
 
 msgid "A valid destination network must be specified."
-msgstr ""."
+msgstr ""
 
 msgid "A valid gateway IP address must be specified."
 msgstr ""
@@ -613,7 +613,7 @@ msgid "This means that the image you uploaded is not an official/supported image
 msgstr ""
 
 msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
-msgstr """
+msgstr ""
 
 msgid "Enable firmware upload"
 msgstr ""
@@ -796,10 +796,10 @@ msgid "Hostname"
 msgstr ""
 
 msgid "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
-msgstr """
+msgstr ""
 
 msgid "Client Identifier"
-msgstr """
+msgstr ""
 
 msgid "The value in this field is sent as the DHCP client identifier when requesting a DHCP lease."
 msgstr ""
@@ -841,7 +841,7 @@ msgid "Delete disk"
 msgstr ""
 
 msgid "Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"
-msgstr ""!"
+msgstr ""
 
 msgid "Add disk"
 msgstr ""
@@ -1317,7 +1317,7 @@ msgid "Map to user"
 msgstr ""
 
 msgid "Alternate TCP port. Default is 873"
-msgstr """
+msgstr ""
 
 msgid "Maximum connections"
 msgstr ""
@@ -1380,7 +1380,7 @@ msgid "SSH Daemon"
 msgstr ""
 
 msgid "Alternate TCP port. Default is 22"
-msgstr ""."
+msgstr ""
 
 msgid "Permit root login"
 msgstr ""
@@ -1581,7 +1581,7 @@ msgid "IP address of MS Active Directory server."
 msgstr ""
 
 msgid "Domain name"
-msgstr """
+msgstr ""
 
 msgid "Domain name in old format."
 msgstr ""
@@ -1671,7 +1671,7 @@ msgid "TX rates"
 msgstr ""
 
 msgid "No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported)."
-msgstr """
+msgstr ""
 
 msgid "%s interface"
 msgstr ""
@@ -1809,7 +1809,7 @@ msgid "This allows you to set FS type for preformated disk with data.<br><em>Lea
 msgstr ""
 
 msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
-msgstr """
+msgstr ""
 
 msgid "The following input errors were detected"
 msgstr ""
