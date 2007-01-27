@@ -3,7 +3,7 @@
 /*
 	services_sshd.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -42,6 +42,7 @@ if (!is_array($config['sshd'])) {
 $pconfig['readonly'] = $config['sshd']['readonly'];
 $pconfig['port'] = $config['sshd']['port'];
 $pconfig['permitrootlogin'] = isset($config['sshd']['permitrootlogin']);
+$pconfig['tcpforwarding'] = isset($config['sshd']['tcpforwarding']);
 $pconfig['enable'] = isset($config['sshd']['enable']);
 $pconfig['key'] = base64_decode($config['sshd']['private-key']);
 
@@ -74,6 +75,7 @@ if ($_POST)
 		$config['sshd']['readonly'] = $_POST['readonly'];	
 		$config['sshd']['port'] = $_POST['port'];
 		$config['sshd']['permitrootlogin'] = $_POST['permitrootlogin'] ? true : false;
+		$config['sshd']['tcpforwarding'] = $_POST['tcpforwarding'] ? true : false;
 		$config['sshd']['enable'] = $_POST['enable'] ? true : false;
 		$config['sshd']['private-key'] = base64_encode($_POST['key']);
 		
@@ -139,6 +141,12 @@ function enable_change(enable_change) {
                   <td width="78%" class="vtable"> 
                     <input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
                     <?=gettext("Specifies whether it is allowed to login as superuser (root) directly.");?>
+                </tr>
+ <tr> 
+                  <td width="22%" valign="top" class="vncell"><?=gettext("Enable TCP Forwarding");?></td>
+                  <td width="78%" class="vtable"> 
+                    <input name="tcpforwarding" type="checkbox" id="tcpforwarding" value="yes" <?php if ($pconfig['tcpforwarding']) echo "checked"; ?>>
+                    <?=gettext("Permit to do SSH Tunneling.");?>
                 </tr>
                 <tr> 
                   <td colspan="2" valign="top" class="listtopic"><?=gettext("SSH key");?></td>

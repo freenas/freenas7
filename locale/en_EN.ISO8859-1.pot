@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-01-27 14:39+0100\n"
+"PO-Revision-Date: 2007-01-27 15:18+0100\n"
 "Last-Translator: Olivier COCHARD-LABBE <olivier@freenas.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1383,6 +1383,12 @@ msgid "Alternate TCP port. Default is 22"
 msgstr ""
 
 msgid "Permit root login"
+msgstr ""
+
+msgid "Enable TCP Forwarding"
+msgstr ""
+
+Emsgid "Permit to do SSH Tunneling."
 msgstr ""
 
 msgid "Specifies whether it is allowed to login as superuser (root) directly."

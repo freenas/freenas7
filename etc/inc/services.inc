@@ -700,6 +700,12 @@ PermitRootLogin yes
 
 EOD;
 	}
+if (isset($config['sshd']['tcpforwarding'])) {
+		$sshconf .= <<<EOD
+AllowTcpForwarding yes
+
+EOD;
+	}
 
 		fwrite($fd, $sshconf);
 		fclose($fd);

@@ -74,6 +74,7 @@ FreeNAs 0.684b:
 - Update language file: French, Chinese and Romanian
 - Add powerd/cpufreq system power control utility
 - Permit to configure the system time: Paul Wheels patch
+- Permit to enable SSH TCP forwarding (SSH tunneling)
 
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails
