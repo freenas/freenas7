@@ -232,7 +232,7 @@ function disk_change() {
     				<td valign="top" colspan="2">
     				<? if ($do_format)
     				{
-    					echo("<strong>".gettext("Disk initialization details").":</strong>"));
+    					echo("<strong>".gettext("Disk initialization details").":</strong>");
     					echo('<pre>');
     					ob_end_flush();
 
