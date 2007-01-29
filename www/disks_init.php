@@ -191,157 +191,159 @@ function disk_change() {
 }
 // -->
 </script>
-      <?php if($input_errors) print_input_errors($input_errors);?>
-      <?php if($errormsg) print_error_box($errormsg);?>
-			<form action="disks_init.php" method="post" name="iform" id="iform">
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-          <tr>
-            <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
-            <td class="vtable">
-              <select name="disk" class="formfld" id="disk" onchange="disk_change()">
-                <?php foreach ($a_alldisk as $diskv): ?>
-		<?php if (strcmp($diskv['size'],"NA") == 0) continue; ?>
-		
-                <option value="<?=$diskv['fullname'];?>" <?php if ($diskv['name'] == $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
-                <?php endforeach; ?>
-              </select>
-            </td>
-      		</tr>
-          <td valign="top" class="vncellreq"><?=gettext("File system"); ?></td>
-          <td class="vtable">
-            <select name="type" class="formfld" id="type">
-              <?php foreach ($a_fst as $fstval => $fstname): ?>
-              <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
-              <?php endforeach; ?>
-             </select>
-          </td>
-          <tr>
-            <td width="22%" valign="top" class="vncell"><strong><?=gettext("Don't Erase MBR"); ?><strong></td>
-            <td width="78%" class="vtable">
-              <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes" >
-              <?=gettext("Don't erase the MBR (useful for some RAID controller cards)"); ?><br>
-						</td>
-				  </tr>
-  				<tr>
-  				  <td width="22%" valign="top">&nbsp;</td>
-  				  <td width="78%">
-              <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Format disk");?>" onclick="return confirm('<?=gettext("Do you really want to format this disk? All data will be lost!");?>')">
-  				  </td>
-  				</tr>
-  				<tr>
-    				<td valign="top" colspan="2">
-    				<? if ($do_format)
-    				{
-    					echo("<strong>".gettext("Disk initialization details").":</strong>");
-    					echo('<pre>');
-    					ob_end_flush();
+<form action="disks_init.php" method="post" name="iform" id="iform">
+<?php if($input_errors) print_input_errors($input_errors);?>
+<?php if($errormsg) print_error_box($errormsg);?>
+  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+    <tr>
+      <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
+      <td class="vtable">
+        <select name="disk" class="formfld" id="disk" onchange="disk_change()">
+          <?php foreach ($a_alldisk as $diskv): ?>
+					<?php if (strcmp($diskv['size'],"NA") == 0) continue; ?>
+          <option value="<?=$diskv['fullname'];?>" <?php if ($diskv['name'] == $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
+          <?php endforeach; ?>
+        </select>
+      </td>
+		</tr>
+    <td valign="top" class="vncellreq"><?=gettext("File system"); ?></td>
+    <td class="vtable">
+      <select name="type" class="formfld" id="type">
+        <?php foreach ($a_fst as $fstval => $fstname): ?>
+        <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
+        <?php endforeach; ?>
+       </select>
+    </td>
+    <tr>
+      <td width="22%" valign="top" class="vncell"><strong><?=gettext("Don't Erase MBR"); ?><strong></td>
+      <td width="78%" class="vtable">
+        <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes" >
+        <?=gettext("Don't erase the MBR (useful for some RAID controller cards)"); ?><br>
+			</td>
+	  </tr>
+		<tr>
+		  <td width="22%" valign="top">&nbsp;</td>
+		  <td width="78%">
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Format disk");?>" onclick="return confirm('<?=gettext("Do you really want to format this disk? All data will be lost!");?>')">
+		  </td>
+		</tr>
+		<tr>
+			<td valign="top" colspan="2">
+			<? if ($do_format)
+			{
+				echo("<strong>".gettext("Disk initialization details").":</strong>");
+				echo('<pre>');
+				ob_end_flush();
 
-    					// Erase MBR if not checked
-    					if (!$notinitmbr) {
-    						echo gettext("Erasing MBR and all paritions").":\n";
-    						system("dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=32k count=640");
-    					}
-    					else
-    						echo gettext("Keeping the MBR and all partitions")."\n";
+				// Erase MBR if not checked
+				if (!$notinitmbr) {
+					echo gettext("Erasing MBR and all paritions").":\n";
+					system("dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=32k count=640");
+				}
+				else
+					echo gettext("Keeping the MBR and all partitions")."\n";
 
-    					switch ($type)
-    					{
-    					case "ufs":
-    						// Initialize disk
-								echo gettext("Creating one parition").":\n";
-    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						// Initialise the partition (optional)
-								echo gettext("Initializing parition").":\n";
-    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						// Create s1 label
-								echo gettext("Creating BSD label").":\n";
-    						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-    						// Create filesystem
-						echo gettext("Creating filesystem").":\n";
-    						system("/sbin/newfs -U " . escapeshellarg($disk) . "s1");
-						echo gettext("Done")."!\n";
-						break;
-    					case "ufs_no_su":
-    						// Initialize disk
-								echo gettext("Creating one parition").":\n";
-    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						// Initialise the partition (optional)
-								echo gettext("Initializing parition").":\n";
-    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						// Create s1 label
-								echo gettext("Creating BSD label").":\n";
-    						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-    						// Create filesystem
-								echo gettext("Creating filesystem").":\n";
-    						system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "s1");
-								echo gettext("Done")."!\n";
-						break;
-    					case "ufsgpt":
-    						// Create GPT partition table
-								echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
-    						system("/sbin/gpt destroy " . escapeshellarg($disk));
-								echo sprintf(gettext("Creating %s partition"), "GPT").":\n";
-								system("/sbin/gpt create -f " . escapeshellarg($disk));
-    						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
-    						// Create filesystem
-								echo gettext("Creating filesystem with 'Soft Updates'").":\n";
-								system("/sbin/newfs -U " . escapeshellarg($disk) . "p1");
-    						echo gettext("Done")."!\n";
-						break;
-    					case "ufsgpt_no_su":
-    						// Create GPT partition table
-								echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
-    						system("/sbin/gpt destroy " . escapeshellarg($disk));
-								echo sprintf(gettext("Creating %s partition"), "GPT").":\n"; 
-								system("/sbin/gpt create -f " . escapeshellarg($disk));
-    						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
-    						// Create filesystem
-								echo gettext("Creating filesystem without 'Soft Updates'").":\n";
-    						system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "p1");
-								echo gettext("Done")."!\n";
-						break;
-					case "softraid":
-    						// Initialize disk
-    						echo gettext("Creating one parition").":\n";
-    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						// Initialise the partition (optional)
-    						echo gettext("Initializing parition").":\n";
-    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						// Delete old gmirror information */
-    						echo sprintf(gettext("Destroying old %s information"), "GMIRROR").":\n";
-    						system("/sbin/gmirror clear " . escapeshellarg($disk));
-						echo gettext("Done")."!\n";
-						break;
-    					case "msdos":
-    						// Initialize disk
-    						echo gettext("Creating one parition").":\n";
-    						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-    						// Initialise the partition (optional) */
-    						echo gettext("Initializing parition").":\n";
-    						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-    						// Create s1 label
-    						echo gettext("Creating BSD label").":\n";
-    						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-    						// Create filesystem
-    						echo gettext("Creating filesystem").":\n";
-    						system("/sbin/newfs_msdos -F 32 " . escapeshellarg($disk) . "s1");
-						echo "Done!\n";
-						break;
-    					}
-    					echo('</pre>');
-    				}
-    				?>
-    				</td>
-  				</tr>
-			 </table>
-    </form>
-    <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br></strong></span><?=gettext("This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified.");?></span></p>
-    <p><span class="vexpl"><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></p>
-  </td></tr>
-</table>
+				switch ($type)
+				{
+				case "ufs":
+					// Initialize disk
+					echo gettext("Creating one parition").":\n";
+					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+					// Initialise the partition (optional)
+					echo gettext("Initializing parition").":\n";
+					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+					// Create s1 label
+					echo gettext("Creating BSD label").":\n";
+					system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
+					// Create filesystem
+			echo gettext("Creating filesystem").":\n";
+					system("/sbin/newfs -U " . escapeshellarg($disk) . "s1");
+			echo gettext("Done")."!\n";
+			break;
+				case "ufs_no_su":
+					// Initialize disk
+					echo gettext("Creating one parition").":\n";
+					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+					// Initialise the partition (optional)
+					echo gettext("Initializing parition").":\n";
+					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+					// Create s1 label
+					echo gettext("Creating BSD label").":\n";
+					system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
+					// Create filesystem
+					echo gettext("Creating filesystem").":\n";
+					system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "s1");
+					echo gettext("Done")."!\n";
+			break;
+				case "ufsgpt":
+					// Create GPT partition table
+					echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
+					system("/sbin/gpt destroy " . escapeshellarg($disk));
+					echo sprintf(gettext("Creating %s partition"), "GPT").":\n";
+					system("/sbin/gpt create -f " . escapeshellarg($disk));
+					system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
+					// Create filesystem
+					echo gettext("Creating filesystem with 'Soft Updates'").":\n";
+					system("/sbin/newfs -U " . escapeshellarg($disk) . "p1");
+					echo gettext("Done")."!\n";
+			break;
+				case "ufsgpt_no_su":
+					// Create GPT partition table
+					echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
+					system("/sbin/gpt destroy " . escapeshellarg($disk));
+					echo sprintf(gettext("Creating %s partition"), "GPT").":\n"; 
+					system("/sbin/gpt create -f " . escapeshellarg($disk));
+					system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
+					// Create filesystem
+					echo gettext("Creating filesystem without 'Soft Updates'").":\n";
+					system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "p1");
+					echo gettext("Done")."!\n";
+			break;
+		case "softraid":
+					// Initialize disk
+					echo gettext("Creating one parition").":\n";
+					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+					// Initialise the partition (optional)
+					echo gettext("Initializing parition").":\n";
+					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+					// Delete old gmirror information */
+					echo sprintf(gettext("Destroying old %s information"), "GMIRROR").":\n";
+					system("/sbin/gmirror clear " . escapeshellarg($disk));
+			echo gettext("Done")."!\n";
+			break;
+				case "msdos":
+					// Initialize disk
+					echo gettext("Creating one parition").":\n";
+					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+					// Initialise the partition (optional) */
+					echo gettext("Initializing parition").":\n";
+					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+					// Create s1 label
+					echo gettext("Creating BSD label").":\n";
+					system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
+					// Create filesystem
+					echo gettext("Creating filesystem").":\n";
+					system("/sbin/newfs_msdos -F 32 " . escapeshellarg($disk) . "s1");
+			echo "Done!\n";
+			break;
+				}
+				echo('</pre>');
+			}
+			?>
+			</td>
+		</tr>
+		<tr>
+      <td width="22%" valign="top">&nbsp;</td>
+      <td width="78%">
+				<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br></strong></span><?=gettext("This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified.");?></span><br><br>
+				<span class="vexpl"><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></span>
+			</td>
+		</tr>
+	</table>
+</form>
 <script language="JavaScript">
 <!--
 disk_change();
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
