@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-01-18 09:43+0100\n"
-"Last-Translator: \n"
-"Language-Team: \n"
+"PO-Revision-Date: 2007-01-26 09:43+0100\n"
+"Last-Translator: Falk Menzel\n"
+"Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -850,7 +850,7 @@ msgid "Hard disk standby time"
 msgstr "Festplatten Standbyzeit"
 
 msgid "Puts the hard disk into standby mode when the selected amount of time after the last access has elapsed. <em>Do not set this for CF cards.</em>"
-msgstr "Festplatte nach dem letzten Zugriff nach der angegebenen Zei"
+msgstr "Festplatte nach dem letzten Zugriff nach der angegebenen Zeit in Standby versetzen. <em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
 
 msgid "Advanced Power Management"
 msgstr "Advanced Power Management"
@@ -859,40 +859,40 @@ msgid "Disabled"
 msgstr "Deaktiviert"
 
 msgid "Minimum power usage with Standby"
-msgstr "Minimum power usage with Standby"
+msgstr "Minimale Energiebelastung, mit Standby"
 
 msgid "Medium power usage with Standby"
-msgstr "Medium power usage with Standby"
+msgstr "Mittlere Energiebelastung, mit Standby"
 
 msgid "Minimum power usage without Standby"
-msgstr "Minimum power usage without Standby"
+msgstr "Minimale Energiebelastung, ohne Standby"
 
 msgid "Medium power usage without Standby"
-msgstr "Medium power usage without Standby"
+msgstr "Mittlere Energiebelastung, ohne Standby"
 
 msgid "Maximum performance, maximum power usage"
-msgstr "Maximum performance, maximum power usage"
+msgstr "Maximale Performance, maximale Energiebelastung"
 
 msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"
 msgstr "Verringert den Stromverbrauch der Festplatte auf Kosten der Geschwindigkeit.<br><em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
 
 msgid "Acoustic level"
-msgstr "Acoustic Level"
+msgstr "Geräuschpegel"
 
 msgid "Minimum performance, Minimum acoustic output"
-msgstr "Minimum performance, Minimum acoustic output"
+msgstr "Minimale Performance, minimale Geräuschbelastung"
 
 msgid "Medium acoustic output"
-msgstr "Medium acoustic output"
+msgstr "Mittlere Geräuschbelastung"
 
 msgid "Maximum performance, maximum acoustic output"
-msgstr "Maximum performance, maximum acoustic output"
+msgstr "Maximale Performance, maximale Geräuschbelastung"
 
 msgid "This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"
 msgstr "Lautst&auml;rke des Laufwerks w&auml;hrend des Betriebs einstellen.<br><em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
 
 msgid "Preformatted FS"
-msgstr "Vorformatiertes FS"
+msgstr "Vorformatiertes Dateisystem"
 
 msgid "Initialize"
 msgstr "Initialisierung"
@@ -916,7 +916,7 @@ msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Wollen Sie diese Festplatte wirklich formatieren? Alle Daten gehen dabei verloren!"
 
 msgid "Don't Erase MBR"
-msgstr "MBR (MasterBootRecord) nicht l&ouml;schen"
+msgstr "MBR (Master Boot Record) nicht l&ouml;schen"
 
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr "Nicht den MBR l&ouml;schen (bei einigen Hardware RAID Kontrollerkarten empfehlenswert)"
@@ -1852,178 +1852,178 @@ msgid "Backup configuration"
 msgstr "Konfiguration sichern"
 
 msgid "Enable tuning of some kernel variables"
-msgstr "Das tunen von einige Kernelvariablen aktivieren"
+msgstr "Das Tunen einiger Kernelvariablen aktivieren"
 
 msgid "Disable ZeroConf service announce"
-msgstr "Disable ZeroConf service announce"
+msgstr "ZeroConf-Dienst-Ankündigung deaktivieren"
 
 msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
-msgstr "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+msgstr "Damit wird %s beim Aufruf der Seite <a href=%s>%s</a> nicht nach einer neuen Firmware suchen."
 
 msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
-msgstr "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+msgstr "Das Firmware-Upgrade nach dem Start keinesfalls abbrechen. %s wird nach dem Aufspielen der neuen Firmware automatisch rebooten. Die Konfiguration bleibt erhalten.<br>Es werden wenigstens %d Mb RAM für das Firmwareupdate benötigt.<br>Ein <a href=%s>Backup</a> der Systemkonfiguration vor einem Firmwareupgrade wird dringend empfohlen."
 
 msgid "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
-msgstr "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
+msgstr "Nach dem Klick auf &quot;Speichern&quot;, könnten einige Arbeitsschritte notwendig werden, bevor wieder ein Zugriff auf %s möglich ist: <ul><li>Änderung der IP-Adresse des Systems</li><li>Zugriff auf die Web-GUI via neuer IP-Adresse</li></ul>"
 
 msgid "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
-msgstr "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
+msgstr "Das Erzwingen des UDMA-Modus beim Auftreten der 'UDMA_ERROR.... LBA'-Fehlermeldung von Festplatten ist möglich."
 
 msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
-msgstr "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
+msgstr "Hiermit wird der Dateisystemtyp von bereits formatierten und mit Daten bespielten Festplatten möglich.<br><em>Für eine nicht formatierte Festplatte lautet die Einstellung 'unformated', Sie sllten das <a href=%s>format menu</a> nutzen.</em>"
 
 msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
-msgstr "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
+msgstr "Optionaler Konfigurationsschritt: Einrichtung einer virtuellen RAID Festplatte, indem Sie ihre <a href='%s'>previsously configured disk</a> nutzen.<br>Bis zum  'up' Status warten, bevor Sie mit dem Formatieren und Einbinden fortfahren!"
 
 msgid "The following input errors were detected"
-msgstr "The following input errors were detected"
+msgstr "Die folgenden Eingabefehler sind aufgetreten"
 
 msgid "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
-msgstr "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
+msgstr "Zweiter Konfigurationsschritt: Angabe des Dateisystemtyps ihrer <a href=%s>previously configured disk.</a>"
 
 msgid "Default is 21"
-msgstr "Default is 21"
+msgstr "Standard ist 21"
 
 msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
-msgstr "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+msgstr "<a href=%s>SSHD</a> muss für Unison aktiviert sein, der <a href=%s>user</a> benötigt ausserdem Zugang zur vollständigen Shell - full Shell enabled."
 
 msgid "Last %d %s log entries"
-msgstr "Last %d %s log entries"
+msgstr "Letzte %d %s Logfileeinträge"
 
 msgid "Clear log"
-msgstr "Clear log"
+msgstr "Logfile leeren"
 
 msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Show log entries in reverse order (newest entries on top)"
+msgstr "Logfileeinträge in umgekehrter Reihenfolge anzeigen (neueste Einträge oben)"
 
 msgid "Number of log entries to show"
-msgstr "Number of log entries to show"
+msgstr "Anzahl der anzuzeigenden Einträge"
 
 msgid "Resolve IP addresses to hostnames"
-msgstr "Resolve IP addresses to hostnames"
+msgstr "IP-Adressen als Hostnamen auflösen"
 
 msgid "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
-msgstr "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
+msgstr "Hinweis: Sollte dies aktiviert sein, dann werden IP-Addressen in den Logfiles von %s wo immer möglich als Hostnamen angezeigt."
 
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
-msgstr "Warning: This can cause a huge delay in loading the %s log page!"
+msgstr "Warnung: Dies kann eine beträchtliche Verzögerung beim Laden der Logfiles von %s verursachen!"
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr "Enable syslog'ing to remote syslog server"
+msgstr "Aktiviere das Schreiben des Systemlogs auf einen entfernten Server 'Remote syslog server'"
 
 msgid "Remote syslog server"
 msgstr "Remote syslog server"
 
 msgid "IP address of remote syslog server"
-msgstr "IP address of remote syslog server"
+msgstr "IP-Adresse des remote syslog server"
 
 msgid "System events"
-msgstr "System events"
+msgstr "Systemereignisse"
 
 msgid "SSHD events"
-msgstr "SSHD events"
+msgstr "SSHD Ereignisse"
 
 msgid "FTP events"
-msgstr "FTP events"
+msgstr "FTP Ereignisse"
 
 msgid "RSYNCD events"
-msgstr "RSYNCD events"
+msgstr "RSYNCD Ereignisse"
 
 msgid "SMARTD events"
-msgstr "SMARTD events"
+msgstr "SMARTD Ereignisse"
 
 msgid "Daemon events"
-msgstr "Daemon events"
+msgstr "Daemon Ereignisse"
 
 msgid "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
-msgstr "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
+msgstr "Syslog sendet UDP Datagramme an Port 514 auf dem angegebenen remote syslog server. Stellen Sie sicher, dass 'syslogd' auf dem 'the remote server' syslog Meldungen von %s aktzeptiert."
 
 msgid "List of partition on all detected disk"
-msgstr "List of partition on all detected disk"
+msgstr "Liste der Partitionen aller erkannten Festplatten"
 
 msgid "List of SMART capabilities on all detected disk"
-msgstr "List of SMART capabilities on all detected disk"
+msgstr "Liste der SMART-Eigenschaften aller erkannten Festplatten"
 
 msgid "List of Advanced ATA capabilities on all ATA disk"
-msgstr "List of Advanced ATA capabilities on all ATA disk"
+msgstr "Liste der 'Advanced ATA capabilities' aller ATA(IDE) Festplatten"
 
 msgid "iSCSI initiator disabled"
-msgstr "iSCSI initiator disabled"
+msgstr "iSCSI initiator deaktiviert"
 
 msgid "Show the list of available target Name on the iSCSI target"
-msgstr "Show the list of available target Name on the iSCSI target"
+msgstr "Anzeigen der Liste aller verfügbaren target Name auf dem iSCSI target"
 
 msgid "AD Authentication disabled"
-msgstr "AD Authentication disabled"
+msgstr "AD Authentication deaktiviert"
 
 msgid "Count must be between 1 and %d"
-msgstr "Count must be between 1 and %d"
+msgstr "Anzahl muss zwischen 1 und %d liegen"
 
 msgid "Ping output"
-msgstr "Ping output"
+msgstr "Ping Ausgabe"
 
 msgid "Maximum number of hops"
 msgstr "Maximum number of hops"
 
 msgid "Traceroute output"
-msgstr "Traceroute output"
+msgstr "Traceroute Ausgabe"
 
 msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
-msgstr "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
+msgstr "IP-Adressen werden als Hostnamen beim Aktivieren von &quot;Resolve IP addresses to hostnames&quot; auf <a href=%s>%s</a> page aufgelöst."
 
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
-msgstr "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
+msgstr "Beim Auswählen von 'Ja' wird %s auf die Standardeinstellungen zurückgesetzt und sofort einen Reboot ausführen. Die komplette Systemkonfiguraton wird überschrieben. Die Netzwerk-IP-Adresse wird auf 192.168.1.250 , das Passwort auf '%s' gesetzt."
 
 msgid "Are you sure you want to proceed?"
-msgstr "Are you sure you want to proceed?"
+msgstr "Sind Sie sicher, dass Sie fortfahren möchten?"
 
 msgid "The configuration has been restored. %s is now rebooting."
-msgstr "The configuration has been restored. %s is now rebooting."
+msgstr "Die Konfiguration wurde wiederhergestellt. %s wird jetzt neustarten."
 
 msgid "The configuration could not be restored."
-msgstr "The configuration could not be restored."
+msgstr "Die Konfiguration konnte nicht wiederhergestellt werden."
 
 msgid "The configuration could not be restored (file upload error)."
-msgstr "The configuration could not be restored (file upload error)."
+msgstr "Die Konfiguration konnte nicht wiederhergestellt werden. (file upload error)."
 
 msgid "webGUI Configuration"
 msgstr "webGUI Konfiguration"
 
-msgid "Erasing MBR and all paritions"
-msgstr "Erasing MBR and all paritions"
+msgid "Erasing MBR and all partitions"
+msgstr "Lösche MBR (Master Boot Record) sowie sämtliche Partitionen"
 
 msgid "Keeping the MBR and all partitions"
-msgstr "Keeping the MBR and all partitions"
+msgstr "Übernehme den MBR sowie alle Partitionen"
 
-msgid "Creating one parition"
-msgstr "Creating one parition"
+msgid "Creating one partition"
+msgstr "Erstelle eine Partition"
 
-msgid "Initializing parition"
-msgstr "Initializing parition"
+msgid "Initializing partition"
+msgstr "Initialisiere Partition"
 
 msgid "Creating BSD label"
-msgstr "Creating BSD label"
+msgstr "Erstelle BSD label"
 
 msgid "Creating filesystem"
-msgstr "Creating filesystem"
+msgstr "Erstelle Dateisystem"
 
 msgid "Destroying old %s information"
-msgstr "Destroying old %s information"
+msgstr "Lösche %s alte Informationen"
 
 msgid "Done"
-msgstr "Done"
+msgstr "Fertig"
 
 msgid "Creating %s partition"
-msgstr "Creating %s partition"
+msgstr "Erstelle %s Partition"
 
 msgid "Creating filesystem with 'Soft Updates'"
-msgstr "Creating filesystem with 'Soft Updates'"
+msgstr "Erstelle Dateisystem samt 'Soft Updates'"
 
 msgid "Power Daemon"
 msgstr "Power Daemon"
 
 msgid "Enable the system power control utility"
-msgstr "Enable the system power control utility"
+msgstr "Aktiviere das System Power Control Utility"
 
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
-msgstr "The powerd utility monitors the system state and sets various power control options accordingly."
+msgstr "Das 'powerd utility' überwacht den Systemzustand und stellt entsprechend diverse Energiekontrolloptionen ein."
