@@ -3,6 +3,12 @@
 build_scponly() {
 	cd /usr/ports/shells/scponly/
 
+	# Copy required options files
+	mkdir -pv /var/db/ports/ocaml
+	mkdir -pv /var/db/ports/rsync
+	cp -pvr $SVNDIR/misc/software/scponly/files/* /var/db/ports
+
+	# scponly settings
   export WITH_SCPONLY_RSYNC=YES
   export WITH_SCPONLY_SCP=YES
   export WITH_SCPONLY_WINSCP=YES
