@@ -877,16 +877,16 @@ msgid "This allows  you  to lower the power consumption of the drive, at the exp
 msgstr "Verringert den Stromverbrauch der Festplatte auf Kosten der Geschwindigkeit.<br><em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
 
 msgid "Acoustic level"
-msgstr "Geräuschpegel"
+msgstr "Ger&auml;uschpegel"
 
 msgid "Minimum performance, Minimum acoustic output"
-msgstr "Minimale Performance, minimale Geräuschbelastung"
+msgstr "Minimale Performance, minimale Ger&auml;uschbelastung"
 
 msgid "Medium acoustic output"
-msgstr "Mittlere Geräuschbelastung"
+msgstr "Mittlere Ger&auml;uschbelastung"
 
 msgid "Maximum performance, maximum acoustic output"
-msgstr "Maximale Performance, maximale Geräuschbelastung"
+msgstr "Maximale Performance, maximale Ger&auml;uschbelastung"
 
 msgid "This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"
 msgstr "Lautst&auml;rke des Laufwerks w&auml;hrend des Betriebs einstellen.<br><em>Nicht f&uuml;r CompactFlash (CF) Karten verwenden.</em>"
@@ -1855,25 +1855,25 @@ msgid "Enable tuning of some kernel variables"
 msgstr "Das Tunen einiger Kernelvariablen aktivieren"
 
 msgid "Disable ZeroConf service announce"
-msgstr "ZeroConf-Dienst-Ankündigung deaktivieren"
+msgstr "ZeroConf-Dienst-Ank&uuml;ndigung deaktivieren"
 
 msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
 msgstr "Damit wird %s beim Aufruf der Seite <a href=%s>%s</a> nicht nach einer neuen Firmware suchen."
 
 msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
-msgstr "Das Firmware-Upgrade nach dem Start keinesfalls abbrechen. %s wird nach dem Aufspielen der neuen Firmware automatisch rebooten. Die Konfiguration bleibt erhalten.<br>Es werden wenigstens %d Mb RAM für das Firmwareupdate benötigt.<br>Ein <a href=%s>Backup</a> der Systemkonfiguration vor einem Firmwareupgrade wird dringend empfohlen."
+msgstr "Das Firmware-Upgrade nach dem Start keinesfalls abbrechen. %s wird nach dem Aufspielen der neuen Firmware automatisch rebooten. Die Konfiguration bleibt erhalten.<br>Es werden wenigstens %d Mb RAM f&uuml;r das Firmwareupdate ben&ouml;tigt.<br>Ein <a href=%s>Backup</a> der Systemkonfiguration vor einem Firmwareupgrade wird dringend empfohlen."
 
 msgid "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
-msgstr "Nach dem Klick auf &quot;Speichern&quot;, könnten einige Arbeitsschritte notwendig werden, bevor wieder ein Zugriff auf %s möglich ist: <ul><li>Änderung der IP-Adresse des Systems</li><li>Zugriff auf die Web-GUI via neuer IP-Adresse</li></ul>"
+msgstr "Nach dem Klick auf &quot;Speichern&quot;, k&ouml;nnten einige Arbeitsschritte notwendig werden, bevor wieder ein Zugriff auf %s m&ouml;glich ist: <ul><li>&Auml;nderung der IP-Adresse des Systems</li><li>Zugriff auf die Web-GUI via neuer IP-Adresse</li></ul>"
 
 msgid "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
-msgstr "Das Erzwingen des UDMA-Modus beim Auftreten der 'UDMA_ERROR.... LBA'-Fehlermeldung von Festplatten ist möglich."
+msgstr "Das Erzwingen des UDMA-Modus beim Auftreten der 'UDMA_ERROR.... LBA'-Fehlermeldung von Festplatten ist m&ouml;glich."
 
 msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
-msgstr "Hiermit wird der Dateisystemtyp von bereits formatierten und mit Daten bespielten Festplatten möglich.<br><em>Für eine nicht formatierte Festplatte lautet die Einstellung 'unformated', Sie sllten das <a href=%s>format menu</a> nutzen.</em>"
+msgstr "Hiermit wird der Dateisystemtyp von bereits formatierten und mit Daten bespielten Festplatten m&ouml;glich.<br><em>F&uuml;r eine nicht formatierte Festplatte lautet die Einstellung 'unformated', Sie sllten das <a href=%s>format menu</a> nutzen.</em>"
 
 msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
-msgstr "Optionaler Konfigurationsschritt: Einrichtung einer virtuellen RAID Festplatte, indem Sie ihre <a href='%s'>previsously configured disk</a> nutzen.<br>Bis zum  'up' Status warten, bevor Sie mit dem Formatieren und Einbinden fortfahren!"
+msgstr "Optionaler Konfigurationsschritt: Einrichtung einer virtuellen RAID Festplatte, indem Sie ihre <a href='%s'>previsously configured disk</a> nutzen.<br>Bis zum 'up' Status warten, bevor Sie mit dem Formatieren und Einbinden fortfahren!"
 
 msgid "The following input errors were detected"
 msgstr "Die folgenden Eingabefehler sind aufgetreten"
@@ -1885,28 +1885,28 @@ msgid "Default is 21"
 msgstr "Standard ist 21"
 
 msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
-msgstr "<a href=%s>SSHD</a> muss für Unison aktiviert sein, der <a href=%s>user</a> benötigt ausserdem Zugang zur vollständigen Shell - full Shell enabled."
+msgstr "<a href=%s>SSHD</a> muss f&uuml;r Unison aktiviert sein, der <a href=%s>user</a> ben&ouml;tigt ausserdem Zugang zur vollst&auml;ndigen Shell - full Shell enabled."
 
 msgid "Last %d %s log entries"
-msgstr "Letzte %d %s Logfileeinträge"
+msgstr "Letzte %d %s Logfileeintr&auml;ge"
 
 msgid "Clear log"
 msgstr "Logfile leeren"
 
 msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Logfileeinträge in umgekehrter Reihenfolge anzeigen (neueste Einträge oben)"
+msgstr "Logfileeintr&auml;ge in umgekehrter Reihenfolge anzeigen (neueste Eintr&auml;ge oben)"
 
 msgid "Number of log entries to show"
-msgstr "Anzahl der anzuzeigenden Einträge"
+msgstr "Anzahl der anzuzeigenden Eintr&auml;ge"
 
 msgid "Resolve IP addresses to hostnames"
-msgstr "IP-Adressen als Hostnamen auflösen"
+msgstr "IP-Adressen als Hostnamen aufl&ouml;sen"
 
 msgid "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
-msgstr "Hinweis: Sollte dies aktiviert sein, dann werden IP-Addressen in den Logfiles von %s wo immer möglich als Hostnamen angezeigt."
+msgstr "Hinweis: Sollte dies aktiviert sein, dann werden IP-Addressen in den Logfiles von %s wo immer m&ouml;glich als Hostnamen angezeigt."
 
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
-msgstr "Warnung: Dies kann eine beträchtliche Verzögerung beim Laden der Logfiles von %s verursachen!"
+msgstr "Warnung: Dies kann eine betr&auml;chtliche Verz&ouml;gerung beim Laden der Logfiles von %s verursachen!"
 
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Aktiviere das Schreiben des Systemlogs auf einen entfernten Server 'Remote syslog server'"
@@ -1951,7 +1951,7 @@ msgid "iSCSI initiator disabled"
 msgstr "iSCSI initiator deaktiviert"
 
 msgid "Show the list of available target Name on the iSCSI target"
-msgstr "Anzeigen der Liste aller verfügbaren target Name auf dem iSCSI target"
+msgstr "Anzeigen der Liste aller verf&uuml;gbaren target Name auf dem iSCSI target"
 
 msgid "AD Authentication disabled"
 msgstr "AD Authentication deaktiviert"
@@ -1969,13 +1969,13 @@ msgid "Traceroute output"
 msgstr "Traceroute Ausgabe"
 
 msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
-msgstr "IP-Adressen werden als Hostnamen beim Aktivieren von &quot;Resolve IP addresses to hostnames&quot; auf <a href=%s>%s</a> page aufgelöst."
+msgstr "IP-Adressen werden als Hostnamen beim Aktivieren von &quot;Resolve IP addresses to hostnames&quot; auf <a href=%s>%s</a> page aufgel&ouml;st."
 
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
-msgstr "Beim Auswählen von 'Ja' wird %s auf die Standardeinstellungen zurückgesetzt und sofort einen Reboot ausführen. Die komplette Systemkonfiguraton wird überschrieben. Die Netzwerk-IP-Adresse wird auf 192.168.1.250 , das Passwort auf '%s' gesetzt."
+msgstr "Beim Ausw&auml;hlen von 'Ja' wird %s auf die Standardeinstellungen zur&uuml;ckgesetzt und sofort einen Reboot ausf&uuml;hren. Die komplette Systemkonfiguraton wird &uuml;berschrieben. Die Netzwerk-IP-Adresse wird auf 192.168.1.250 , das Passwort auf '%s' gesetzt."
 
 msgid "Are you sure you want to proceed?"
-msgstr "Sind Sie sicher, dass Sie fortfahren möchten?"
+msgstr "Sind Sie sicher, dass Sie fortfahren m&ouml;chten?"
 
 msgid "The configuration has been restored. %s is now rebooting."
 msgstr "Die Konfiguration wurde wiederhergestellt. %s wird jetzt neustarten."
@@ -1990,10 +1990,10 @@ msgid "webGUI Configuration"
 msgstr "webGUI Konfiguration"
 
 msgid "Erasing MBR and all partitions"
-msgstr "Lösche MBR (Master Boot Record) sowie sämtliche Partitionen"
+msgstr "L&ouml;sche MBR (Master Boot Record) sowie s&auml;mtliche Partitionen"
 
 msgid "Keeping the MBR and all partitions"
-msgstr "Übernehme den MBR sowie alle Partitionen"
+msgstr "&Uuml;bernehme den MBR sowie alle Partitionen"
 
 msgid "Creating one partition"
 msgstr "Erstelle eine Partition"
@@ -2008,7 +2008,7 @@ msgid "Creating filesystem"
 msgstr "Erstelle Dateisystem"
 
 msgid "Destroying old %s information"
-msgstr "Lösche %s alte Informationen"
+msgstr "L&ouml;sche %s alte Informationen"
 
 msgid "Done"
 msgstr "Fertig"
@@ -2026,4 +2026,4 @@ msgid "Enable the system power control utility"
 msgstr "Aktiviere das System Power Control Utility"
 
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
-msgstr "Das 'powerd utility' überwacht den Systemzustand und stellt entsprechend diverse Energiekontrolloptionen ein."
+msgstr "Das 'powerd utility' &uuml;berwacht den Systemzustand und stellt entsprechend diverse Energiekontrolloptionen ein."
