@@ -32,7 +32,7 @@ install_pureftpd() {
   pureftpd_tarball=$(urlbasename $URL_PUREFTP)
   cd $(basename $pureftpd_tarball .tar.gz)
 
-  install -vs src/pure-ftpd $FREENAS/usr/local/sbin/
+  install -vs src/pure-ftpd $FREENAS/usr/local/sbin
 
   return 0
 }

@@ -32,7 +32,7 @@ install_rsync() {
  	rsync_tarball=$(urlbasename $URL_RSYNC)
 	cd $(basename $rsync_tarball .tar.gz)
 
-	install -vs rsync $FREENAS/usr/local/bin/
+	install -vs rsync $FREENAS/usr/local/bin
 
 	return 0
 }

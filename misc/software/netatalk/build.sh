@@ -32,7 +32,7 @@ install_netatalk() {
   netatalk_tarball=$(urlbasename $URL_NETATALK)
   cd $(basename $netatalk_tarball .tar.gz)
 
-  install -vs etc/afpd/afpd $FREENAS/usr/local/sbin/
+  install -vs etc/afpd/afpd $FREENAS/usr/local/sbin
 
   mkdir -p $FREENAS/etc/uams
   cp -v etc/uams/.libs/uams_passwd.so $FREENAS/etc/uams
