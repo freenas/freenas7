@@ -51,10 +51,12 @@ function get_disk_temp($diskname) {
 	
   foreach($smartctlinfo as $smartctl) {
     $asmartctl = preg_split("/\s+/", $smartctl);
-    $attributename = $asmartctl[1];
 
-    if( 0 == strncmp($attributename, "Temperature_", 12)) {
-      $temperature = chop($asmartctl[8])." C";
+    $id = trim($asmartctl[0]);
+    $attributename = trim($asmartctl[1]);
+
+    if((0 == strncmp($attributename, "Temperature_", 12)) && (0 != strcmp($id, "190"))) {
+      $temperature = chop($asmartctl[9])." C";
       break;
     }
   }
