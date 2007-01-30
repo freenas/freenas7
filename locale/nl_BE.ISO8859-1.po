@@ -462,12 +462,12 @@ msgid "Time update interval"
 msgstr "Interval voor de bijwerking van de tijd."
 
 msgid "Minutes between network time sync.; 300	recommended, or 0 to disable."
-msgstr "Aantal minuten tussen een tijdsynchronisatie.; 300	aangeraden, of 0 om te desactiveren."
+msgstr "Aantal minuten tussen een tijdsynchronisatie. 300	aangeraden, of 0 om te desactiveren."
 
 msgid "NTP time server"
 msgstr "NTP tijd server"
 
-msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
+msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
 msgstr "Gebruik een spatie om meerdere hosts van elkaar te scheiden (slechts &eacute;&eacute;n nodig). Denk eraan om minstens &eacute;&eacute;n DNS server op te geven als je hier een hostnaam invult!"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."

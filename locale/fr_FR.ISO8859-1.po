@@ -462,7 +462,7 @@ msgstr "Minutes entre les synchronisations de temps<br>300	recommand&eacute;, ou
 msgid "NTP time server"
 msgstr "Serveur de temps NTP"
 
-msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
+msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
 msgstr "Utilisez un espace pour s&eacute;parer plusieurs entr&eacute;es (une seule obligatoire). V&eacute;rifiez d'avoir configur&eacute; un serveur DNS avant d'utiliser un nom ici!"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."

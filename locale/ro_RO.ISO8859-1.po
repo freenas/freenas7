@@ -451,7 +451,7 @@ msgid "Time update interval"
 msgstr "Interval actualizare"
 
 msgid "Minutes between network time sync.; 300	recommended, or 0 to disable."
-msgstr "Minute intre sincronizari; 300	recomandat, 0 pentru dezactivare."
+msgstr "Minute intre sincronizari. 300	recomandat, 0 pentru dezactivare."
 
 msgid "NTP time server"
 msgstr "Server NTP"

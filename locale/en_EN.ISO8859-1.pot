@@ -468,7 +468,7 @@ msgstr ""
 msgid "NTP time server"
 msgstr ""
 
-msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
+msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
 msgstr ""
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."

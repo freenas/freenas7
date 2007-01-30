@@ -456,7 +456,7 @@ msgstr "多少分鐘與時間伺服器同步一次。建議設為300分鐘，輸
 msgid "NTP time server"
 msgstr "NTP時間伺服器"
 
-msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
+msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
 msgstr "使用空白字元來分隔多個主機位置(一個空白即可)，這個服務需要先設定DNS伺服器"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."

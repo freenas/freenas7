@@ -439,12 +439,12 @@ msgid "Time update interval"
 msgstr "Intervalo de actualización de tiempo"
 
 msgid "Minutes between network time sync.; 300	recommended, or 0 to disable."
-msgstr "Minutos entre la sincronización de tiempo por la red.; 300	recomendado, o 0 para deshabilitar."
+msgstr "Minutos entre la sincronización de tiempo por la red. 300	recomendado, o 0 para deshabilitar."
 
 msgid "NTP time server"
 msgstr "Servidor NTP"
 
-msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
+msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
 msgstr "Use espacio para separar varios servidores (solo se requiere uno). Recuerde configurar al menos un servidor DNS si introduce un nombre aquí!"
 
 msgid "System information"

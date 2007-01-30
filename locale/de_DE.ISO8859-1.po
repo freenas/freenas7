@@ -457,12 +457,12 @@ msgid "Time update interval"
 msgstr "Zeit Update Intervall"
 
 msgid "Minutes between network time sync.; 300	recommended, or 0 to disable."
-msgstr "Minuten zwischen Netzwerkzeit Synchronisation.; 300 vorgeschlagen, oder 0 um auszuschalten."
+msgstr "Minuten zwischen Netzwerkzeit Synchronisation. 300 vorgeschlagen, oder 0 um auszuschalten."
 
 msgid "NTP time server"
 msgstr "NTP Zeit Server"
 
-msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
+msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
 msgstr "Benutzen Sie ein Leerzeichen um mehrere Hosts zu trennen (es ist nur ein Host n&ouml;tig). Denken Sie daran, einen DNS Server einzutragen, wenn Sie hier einen Hostnamen eintragen!"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
