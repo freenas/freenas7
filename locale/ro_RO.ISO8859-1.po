@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-01-22 12:07+0200\n"
+"PO-Revision-Date: 2007-01-29 12:58+0200\n"
 "Last-Translator: Laurentiu Florin BUBUIANU <laurb@tvriasi.ro>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -301,7 +301,7 @@ msgid "Firmware"
 msgstr "Firmware"
 
 msgid "Advanced"
-msgstr "Avansate"
+msgstr "Setari Speciale"
 
 msgid "Assign"
 msgstr "Atribuire"
@@ -379,7 +379,7 @@ msgid "ARP table"
 msgstr "Tabela ARP"
 
 msgid "Command"
-msgstr "Comanda"
+msgstr "Comenzi"
 
 msgid "Edit File"
 msgstr "Editare Fisier"
@@ -427,10 +427,10 @@ msgid "If you want to change the password for accessing the webGUI, enter it her
 msgstr "Daca doriti sa schimbati parola de acces pentru Interfa Web, introduceti-o aici de doua ori pentru verificare.<br>Nu folositi caracterul ':'."
 
 msgid "WebGUI protocol"
-msgstr "Protocol Interfata Web"
+msgstr "Protocol Acces Interfata Web"
 
 msgid "WebGUI port"
-msgstr "Port Interfata Web"
+msgstr "Port Acces Interfata Web"
 
 msgid "Enter a custom port number for the webGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
 msgstr "Introduceti aici un port de acces Interfata Web daca vreti sa-l schimbati pe cel implicit (80 pentru HTTP, 443 pentru HTTPS)."
@@ -451,7 +451,7 @@ msgid "Time update interval"
 msgstr "Interval actualizare"
 
 msgid "Minutes between network time sync.; 300	recommended, or 0 to disable."
-msgstr "Minute intre sincronizari. 300	recomandat, 0 pentru dezactivare."
+msgstr "Minute intre sincronizari; 300	recomandat, 0 pentru dezactivare."
 
 msgid "NTP time server"
 msgstr "Server NTP"
@@ -502,7 +502,7 @@ msgid "Platform"
 msgstr "Platforma"
 
 msgid "Uptime"
-msgstr "Functioneza de"
+msgstr "Timp de functionare neintrerupta"
 
 msgid "Last config change"
 msgstr "Ultima modificare configuratie"
@@ -1933,52 +1933,54 @@ msgid "Are you sure you want to proceed?"
 msgstr "Sinteti sigur ca vreti sa continuati?"
 
 msgid "The configuration has been restored. %s is now rebooting."
-msgstr "The configuration has been restored. %s is now rebooting."
+msgstr "Configuratia a fost refacuta. %s va reporni."
 
 msgid "The configuration could not be restored."
-msgstr "The configuration could not be restored."
+msgstr "Configuratia nu a putut fi refacuta."
 
 msgid "The configuration could not be restored (file upload error)."
-msgstr "The configuration could not be restored (file upload error)."
+msgstr "Configuratia nu a putut fi refacuta (eroare incarcare fiser)."
 
 msgid "webGUI Configuration"
-msgstr "webGUI Configuration"
+msgstr "Configuratie Interfata Web"
 
 msgid "Erasing MBR and all paritions"
-msgstr "Erasing MBR and all paritions"
+msgstr "Stergere MBR si partitii"
 
 msgid "Keeping the MBR and all partitions"
-msgstr "Keeping the MBR and all partitions"
+msgstr "Pastrare MBR si partitii"
 
 msgid "Creating one parition"
-msgstr "Creating one parition"
+msgstr "Creare partitie"
 
 msgid "Initializing parition"
-msgstr "Initializing parition"
+msgstr "Initializare partitie"
 
 msgid "Creating BSD label"
-msgstr "Creating BSD label"
+msgstr "Creare eticheta BSD"
 
 msgid "Creating filesystem"
-msgstr "Creating filesystem"
+msgstr "Creare Sistem fisiere"
 
 msgid "Destroying old %s information"
-msgstr "Destroying old %s information"
+msgstr "Distrugere informatii vechi %s"
 
 msgid "Done"
-msgstr "Done"
+msgstr "Gata"
 
 msgid "Creating %s partition"
-msgstr "Creating %s partition"
+msgstr "Creare partitie %s"
 
 msgid "Creating filesystem with 'Soft Updates'"
-msgstr "Creating filesystem with 'Soft Updates'"
+msgstr "Creare sistem fisiere cu 'Soft Updates'"
 
 msgid "Power Daemon"
-msgstr "Power Daemon"
+msgstr "Daemon Alimentare"
 
 msgid "Enable the system power control utility"
-msgstr "Enable the system power control utility"
+msgstr "Activare utilitar control alimentare sistem (UPS)"
 
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
-msgstr "The powerd utility monitors the system state and sets various power control options accordingly."
+msgstr "Utilitarul powerd monitorizeaza si stabileste diferite setari pentru controlul alimentarii sistemului."
+
+
