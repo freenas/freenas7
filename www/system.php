@@ -240,13 +240,13 @@ if ($_POST) {
     		</select>
       </td>
     </tr>
-<tr>
+		<tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("System Time");?></td>
       <td width="78%" class="vtable">
-	  <input name="systime" id="systime" type="text" size="25">
-	  <a href="javascript:NewCal('systime','mmddyyyy',true,24)">
-	  <img src="cal.gif" width="16" height="16" border="0" alt="Pick a date"></a><br>
-        <span class="vexpl"><?=gettext("Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select one, then use Save button to update system time. (Mind seconds part will be ignored)");?></span></td>
+			  <input name="systime" id="systime" type="text" size="20">
+			  <a href="javascript:NewCal('systime','mmddyyyy',true,24)"><img src="cal.gif" width="16" height="16" border="0" align="top" alt="Pick a date"></a><br>
+        <span class="vexpl"><?=gettext("Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select one, then use Save button to update system time. (Mind seconds part will be ignored)");?></span>
+			</td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Time zone");?></td>
