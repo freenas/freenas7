@@ -424,13 +424,13 @@ msgid "Username"
 msgstr "Benutzername"
 
 msgid "If you want to change the username for accessing the webGUI, enter it here."
-msgstr "Wenn Sie den Benutzernamen f&uuml;r die Web-Gui &auml;ndern m&ouml;chten, tragen Sie ihn hier ein."
+msgstr "Wenn Sie den Benutzernamen f&uuml;r die WebGUI &auml;ndern m&ouml;chten, tragen Sie ihn hier ein."
 
 msgid "Password"
 msgstr "Passwort"
 
 msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don't use the character ':'."
-msgstr "Wenn Sie den Benutzernamen f&uuml;r die Web-Gui &auml;ndern m&ouml;chten, tragen Sie ihn hier nochmals ein.<br>Bitte kein ':' benutzen."
+msgstr "Wenn Sie den Benutzernamen f&uuml;r die WebGUI &auml;ndern m&ouml;chten, tragen Sie ihn hier nochmals ein.<br>Bitte kein ':' benutzen."
 
 msgid "WebGUI protocol"
 msgstr "WebGUI Protokoll"
@@ -1864,7 +1864,7 @@ msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot aut
 msgstr "Das Firmware-Upgrade nach dem Start keinesfalls abbrechen. %s wird nach dem Aufspielen der neuen Firmware automatisch rebooten. Die Konfiguration bleibt erhalten.<br>Es werden wenigstens %d Mb RAM f&uuml;r das Firmwareupdate ben&ouml;tigt.<br>Ein <a href=%s>Backup</a> der Systemkonfiguration vor einem Firmwareupgrade wird dringend empfohlen."
 
 msgid "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
-msgstr "Nach dem Klick auf &quot;Speichern&quot;, k&ouml;nnten einige Arbeitsschritte notwendig werden, bevor wieder ein Zugriff auf %s m&ouml;glich ist: <ul><li>&Auml;nderung der IP-Adresse des Systems</li><li>Zugriff auf die Web-GUI via neuer IP-Adresse</li></ul>"
+msgstr "Nach dem Klick auf &quot;Speichern&quot;, k&ouml;nnten einige Arbeitsschritte notwendig werden, bevor wieder ein Zugriff auf %s m&ouml;glich ist: <ul><li>&Auml;nderung der IP-Adresse des Systems</li><li>Zugriff auf die WebGUI via neuer IP-Adresse</li></ul>"
 
 msgid "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
 msgstr "Das Erzwingen des UDMA-Modus beim Auftreten der 'UDMA_ERROR.... LBA'-Fehlermeldung von Festplatten ist m&ouml;glich."
