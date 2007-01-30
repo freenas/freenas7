@@ -1,16 +1,45 @@
+#
+# zh_TW.UTF8.po
+#	part of FreeNAS (http://www.freenas.org)
+#	Copyright (C) 2006-2007 Baikuan Hsu <chicworks@gmail.com>
+#	All rights reserved.
+#	
+#	This language file works perfectly on FreeNAS rev.401 (0.683b)
+#	
+#	Redistribution and use in source and binary forms, with or without
+#	modification, are permitted provided that the following conditions are met:
+#	
+#	1. Redistributions of source code must retain the above copyright notice,
+#	   this list of conditions and the following disclaimer.
+#	
+#	2. Redistributions in binary form must reproduce the above copyright
+#	   notice, this list of conditions and the following disclaimer in the
+#	   documentation and/or other materials provided with the distribution.
+#	
+#	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+#	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+#	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+#	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+#	OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+#	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+#	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+#	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+#	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+#	POSSIBILITY OF SUCH DAMAGE.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-01-18 09:45+0100\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2007-01-30 10:33+0800\n"
+"Last-Translator: chicman <chicman@cosa.org.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Language: Chinese\n"
-"X-Poedit-Country: CHINA\n"
+"X-Poedit-Country: TAIWAN\n"
 
 msgid "Date"
 msgstr "日期"
@@ -280,7 +309,7 @@ msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select mi
 msgstr "提示：使用Ctrl+滑鼠左鍵(Mac：command+滑鼠主鍵)就可以複選項目。"
 
 msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
-msgstr "UFS檔案系統格式是 FreeBSD 原生檔案格式 (%s的OS)。 如果使用FAT, FAT32, EXT2"
+msgstr "UFS 檔案系統格式是 FreeBSD 原生檔案格式 (%s的OS)。 如果使用FAT, FAT32, EXT2, EXT3, 或是 NTFS 可能會導致檔案損毀等等不可預期的錯誤！"
 
 msgid "Active"
 msgstr "運作中"
@@ -403,7 +432,7 @@ msgid "Graph"
 msgstr "圖表"
 
 msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-msgstr "NAS的主機名稱，不包含網域<br>例如: <em>nas"
+msgstr "NAS的主機名稱，不包含網域<br>例如: <em>nas</em>"
 
 msgid "Domain"
 msgstr "網域"
@@ -456,8 +485,8 @@ msgstr "多少分鐘與時間伺服器同步一次。建議設為300分鐘，輸
 msgid "NTP time server"
 msgstr "NTP時間伺服器"
 
-msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
-msgstr "使用空白字元來分隔多個主機位置(一個空白即可)，這個服務需要先設定DNS伺服器"
+msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
+msgstr "使用空白字元來分隔多個主機位置(一個空白即可)，這個服務需要先設定DNS伺服器。"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
 msgstr "Hostname只能包含以下字元 a-z, 0-9, '-'。"
@@ -601,7 +630,7 @@ msgid "Firmware uploading is not supported on this platform."
 msgstr "此系統並不支援韌體上傳功能。."
 
 msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
-msgstr "於下方點選 &quot;開啟韌體升級功能&quot; ，然後選擇將要上傳的映像檔。<br>點選 &quot;韌體升級&quot; 來開啟升級動作"
+msgstr "於下方點選 &quot;開啟韌體升級功能&quot; ，然後選擇將要上傳的映像檔。<br>點選 &quot;韌體升級&quot; 以啟動升級動作"
 
 msgid "Enable firmware upload"
 msgstr "開啟韌體升級功能"
@@ -631,7 +660,7 @@ msgid "This key does not appear to be valid."
 msgstr "這個金鑰似乎是無效的。"
 
 msgid "The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them."
-msgstr "本頁的選項是設計給進階的使用者使用的，同時也<strong>不提供</strong>有本頁選項的相關技術支援"
+msgstr "本頁的選項是設計給進階的使用者使用的，同時也<strong>不提供</strong>關於本頁選項的相關技術支援"
 
 msgid "webGUI SSL certificate/key"
 msgstr "網頁管理介面SSL驗證/金鑰"
@@ -670,7 +699,7 @@ msgid "TCP idle timeout"
 msgstr "TCP閒置切斷時間"
 
 msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don't set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
-msgstr "閒置太久的TCP連線將會系統切斷。不要把這個數值設定的太高，以免系統內同時存在太多的連線(例:不正常斷線的程式)。預設的數值是2.5小時。"
+msgstr "閒置太久的TCP連線將會被系統切斷。不要把這個數值設定的太高，以免系統內同時存在太多的連線(例:不正常斷線的程式)。預設的數值是9000秒（2.5小時）。"
 
 msgid "Navigation"
 msgstr "導覽"
@@ -727,7 +756,7 @@ msgid "Add interface"
 msgstr "新增介面"
 
 msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
-msgstr "當按下&quot;儲存&quot;之後，請繼續執行下列的步驟，才能再次連線至%s：</span></p"
+msgstr "當按下&quot;儲存&quot;之後，必須重新開啟 %s 才能使變更生效。請繼續執行下列的步驟，才能再次連線您的NAS：</span></p>"
 
 msgid "A valid gateway must be specified."
 msgstr "請輸入一個有效的閘道。"
@@ -754,7 +783,7 @@ msgid "Enable device polling"
 msgstr "開啟device polling"
 
 msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards."
-msgstr "Device polling可以讓系統定期的從網路介面擷取新的資料而不必依賴CPU中斷"
+msgstr "Device polling可以讓系統定期的從網路介面擷取新的資料而不必依賴CPU中斷。這樣可以減低網路流量對CPU造成的負擔，同時增加系統的整體工作量。但是會稍微增加網路的延遲時間(系統每一秒鐘要詢問網路介面卡1000次)。請參訪m0n0wall的網站以確定你的網路卡是否支援Device polling。"
 
 msgid "Speed"
 msgstr "速度"
@@ -781,13 +810,13 @@ msgid "General configuration"
 msgstr "一般設定"
 
 msgid "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
-msgstr "這個數值將會成為DHCP伺服器發送IP時用來識別機器的主機名稱。"
+msgstr "這個數值將會成為向DHCP伺服器要求IP時發送出去的主機名稱。"
 
 msgid "Client Identifier"
 msgstr "DHCP識別值"
 
 msgid "The value in this field is sent as the DHCP client identifier when requesting a DHCP lease."
-msgstr "這個數值將會成為DHCP伺服器發送IP時用來識別機器的參數。"
+msgstr "這個數值將會成為向DHCP伺服器要求IP時發送出去的辨識參數。"
 
 msgid "Calculate netmask bits"
 msgstr "Calculate netmask bits"
@@ -901,7 +930,7 @@ msgid "Unmount disk/partition"
 msgstr "卸載 磁碟/磁區"
 
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
-msgstr "如果選擇的磁碟/磁區正在掛載中，系統會將磁碟暫時卸載以進行指令，否則指令只能在唯讀模式下運作。"
+msgstr "如果選擇的磁碟/磁區正在掛載中，系統會將磁碟暫時卸載以進行指令，期間可能或有暫時性的服務中斷。否則指令只能在唯讀模式下運作。"
 
 msgid "iSCSI"
 msgstr "iSCSI"
@@ -979,19 +1008,19 @@ msgid "This device already exists in the raid volume list."
 msgstr "這個裝置已經是RAID成員。"
 
 msgid "There must be a minimum of 2 disks in a RAID 0 volume."
-msgstr "架構RAID 0最少要有兩個磁碟。"
+msgstr "架構 RAID 0 最少要有兩個磁碟。"
 
 msgid "There must be a minimum of 2 disks in a JBOD."
-msgstr "架構JBOD最少要有兩個磁碟。"
+msgstr "架構 JBOD 最少要有兩個磁碟。"
 
 msgid "There must be 2 disks in a RAID 1 volume."
-msgstr "架構RAID 1最少要有兩個磁碟。"
+msgstr "架構 RAID 1 最少要有兩個磁碟。"
 
 msgid "There must be a minimum of 3 disks in a RAID 5 volume."
-msgstr "架構RAID 5最少要有三個磁碟。"
+msgstr "架構 RAID 5 最少要有三個磁碟。"
 
 msgid "ERR Could not save RAID configuration.\n"
-msgstr "錯誤！不能儲存RAID設定值。\n"
+msgstr "錯誤！不能儲存 RAID 設定值。\n"
 
 msgid "Raid name"
 msgstr "Raid名稱"
@@ -1063,7 +1092,7 @@ msgid "This disk/partition is allready configured."
 msgstr "這個磁碟/磁區之前已經設定過了。"
 
 msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
-msgstr "1. 你不可以掛載含有設定檔的磁區'%s'。<br>2. FreeBSD對NTFS格式的支援尚不完全（有BUG!）。"
+msgstr "1. 你不可以掛載含有'%s'設定檔的磁區。<br>2. FreeBSD對NTFS格式的支援尚不完全（有BUG!）。"
 
 msgid "Mounting..."
 msgstr "掛載中..."
@@ -1096,7 +1125,7 @@ msgid "The RCV Buffer value must be a number."
 msgstr "接收緩衝區必須是一個數字。"
 
 msgid "CIFS share"
-msgstr "分享"
+msgstr "CIFS分享"
 
 msgid "Authentication"
 msgstr "認證方式"
@@ -1114,13 +1143,13 @@ msgid "Server description. This can usually be left blank."
 msgstr "伺服器描述文字。通常可以留白。"
 
 msgid "Dos charset"
-msgstr "Dos編碼方式"
+msgstr "Dos字元編碼"
 
 msgid "Unix charset"
-msgstr "Unix編碼方式"
+msgstr "Unix字元編碼"
 
 msgid "Log Level"
-msgstr "紀錄檔層級"
+msgstr "記錄檔層級"
 
 msgid "Local Master Browser"
 msgstr "Local Master Browser"
@@ -1678,13 +1707,13 @@ msgid "CPU load"
 msgstr "CPU負載"
 
 msgid "VLAN tag"
-msgstr "VLAN tag"
+msgstr "VLAN標籤"
 
 msgid "Edit VLAN"
-msgstr "Edit VLAN"
+msgstr "編輯VLAN"
 
 msgid "Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
-msgstr "Traceroute需要一段時間才能完成。你可以隨時停止並觀看結果。"
+msgstr "Traceroute需要一段時間才能完成。你可以隨時按下瀏覽器的停止載入鈕並觀看結果。"
 
 msgid "Partitions"
 msgstr "磁區"
@@ -1756,175 +1785,176 @@ msgid "Collecting initial data, please wait..."
 msgstr "Collecting initial data, please wait..."
 
 msgid "Enable tuning of some kernel variables"
-msgstr "Enable tuning of some kernel variables"
+msgstr "開啟系統核心的參數微調"
 
 msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
-msgstr "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+msgstr "這會讓 %s 在瀏覽<a href=%s>%s</a>頁面時不檢查新版的韌體。"
 
 msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
-msgstr "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+msgstr "一但軔體升級動作已經開始，千萬不要中止其動作！ %s 在新的韌體上傳完成之後便會自動重新開機。所有之前所設定的組態都會被保留。<br>系統最少需要 %dMB 的記憶體才能順利執行此動作。<br>強烈的建議使用者，進行韌體升級之前請先<a href=%s>備份</a>系統設定組態。"
 
 msgid "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
-msgstr "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
+msgstr "當按下&quot;儲存&quot;之後，請繼續執行下列的步驟，才能再次連線至%s：<ul><li>變更電腦上的IP位置</li><li>使用新的IP位置來連接網頁管理介面</li></ul>"
 
 msgid "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
-msgstr "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
+msgstr "如果顯示「UDMA_ERROR.... LBA」的訊息，你可以手動選取UDMA的模式。"
 
 msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
-msgstr "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
+msgstr "如果新增已經包含資料的硬碟，請選擇其原本的檔案系統格式就可以獲取其中的資料。<br><em>還沒有規劃檔案格式的磁碟機請選擇「尚未格式化」，之後再進入<a href=%s>格式化工具。</a>選單。</em>"
 
 msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
-msgstr "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
+msgstr "選擇性的規劃步驟：利用你<a href='%s'>剛才設定的磁碟</a>來建立一個新的RAID磁碟。<br>請等待「up」的狀態出現之後再進行格式化與掛載的動作！"
 
 msgid "The following input errors were detected"
-msgstr "The following input errors were detected"
+msgstr "偵測到以下的輸入錯誤"
 
 msgid "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
-msgstr "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
+msgstr "規劃的第二步：選擇<a href=%s>剛才設定的磁碟</a>所使用之檔案系統"
 
 msgid "Default is 21"
-msgstr "Default is 21"
+msgstr "預設值為21"
 
 msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
-msgstr "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+msgstr "Unison服務必須配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user使用者</a>必須要有Shell權限。"
 
 msgid "Last %d %s log entries"
-msgstr "Last %d %s log entries"
+msgstr "最後 %d 筆 %s 記錄資料"
 
 msgid "Clear log"
-msgstr "Clear log"
+msgstr "清除記錄檔"
 
 msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Show log entries in reverse order (newest entries on top)"
+msgstr "反向顯示記錄資料(最新的在上面)"
 
 msgid "Number of log entries to show"
-msgstr "Number of log entries to show"
+msgstr "顯示的記錄數量"
 
 msgid "Resolve IP addresses to hostnames"
-msgstr "Resolve IP addresses to hostnames"
+msgstr "將IP解析成主機名稱"
 
 msgid "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
-msgstr "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
+msgstr "提示：如果開啟這個選項，%s 記錄檔中的IP位置都會轉換成對應主機名稱。"
 
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
-msgstr "Warning: This can cause a huge delay in loading the %s log page!"
+msgstr "注意：讀取 %s 記錄檔可能會再成很大的延遲！"
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr "Enable syslog'ing to remote syslog server"
+msgstr "開啟 syslog'ing 寫入遠端 syslog 伺服器"
 
 msgid "Remote syslog server"
-msgstr "Remote syslog server"
+msgstr "遠端syslog伺服器"
 
 msgid "IP address of remote syslog server"
-msgstr "IP address of remote syslog server"
+msgstr "遠端syslog伺服器的IP位置"
 
 msgid "System events"
-msgstr "System events"
+msgstr "系統事件"
 
 msgid "SSHD events"
-msgstr "SSHD events"
+msgstr "SSHD事件"
 
 msgid "FTP events"
-msgstr "FTP events"
+msgstr "FTP事件"
 
 msgid "RSYNCD events"
-msgstr "RSYNCD events"
+msgstr "RSYNCD事件"
 
 msgid "SMARTD events"
-msgstr "SMARTD events"
+msgstr "SMARTD事件"
 
 msgid "Daemon events"
-msgstr "Daemon events"
+msgstr "Daemon事件"
 
 msgid "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
-msgstr "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
+msgstr "Syslog會透過 UDP 514 連接埠將資料送到指定的遠端 syslog 伺服器。請確定遠端的 syslog 伺服器將會接受來自 %s 的記錄資料。"
 
 msgid "List of partition on all detected disk"
-msgstr "List of partition on all detected disk"
+msgstr "所有磁碟內的磁區列表"
 
 msgid "List of SMART capabilities on all detected disk"
-msgstr "List of SMART capabilities on all detected disk"
+msgstr "列出所有磁碟可用的SMART功能"
 
 msgid "List of Advanced ATA capabilities on all ATA disk"
-msgstr "List of Advanced ATA capabilities on all ATA disk"
+msgstr "列出所有ATA磁碟的ATA功能"
 
 msgid "iSCSI initiator disabled"
-msgstr "iSCSI initiator disabled"
+msgstr "關閉iSCSI初始器"
 
 msgid "Show the list of available target Name on the iSCSI target"
-msgstr "Show the list of available target Name on the iSCSI target"
+msgstr "列出iSCSI內可用的目標名稱"
 
 msgid "AD Authentication disabled"
-msgstr "AD Authentication disabled"
+msgstr "關閉AD認證"
 
 msgid "Count must be between 1 and %d"
-msgstr "Count must be between 1 and %d"
+msgstr "Count必需介於 1 與 %d"
 
 msgid "Ping output"
-msgstr "Ping output"
+msgstr "Ping結果輸出"
 
 msgid "Maximum number of hops"
-msgstr "Maximum number of hops"
+msgstr "hop上限"
 
 msgid "Traceroute output"
-msgstr "Traceroute output"
+msgstr "Traceroute結果輸出"
 
 msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
-msgstr "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
+msgstr "如果<a href=%s>%s</a>頁面內， &quot;將IP解析成主機名稱&quot;的選項有開啟，IP 位置會解析成主機名稱。"
 
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
-msgstr "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
+msgstr "如果你點選了 '是'， %s 的所有組態設定將會重設為預設值然後重新開機。 所有之前所做的變更都將被覆蓋。區域網路的 IP 位置會重新設定為192.168.1.250而密碼將設定為 '%s'。"
 
 msgid "Are you sure you want to proceed?"
-msgstr "Are you sure you want to proceed?"
+msgstr "確定要繼續進行？"
 
 msgid "The configuration has been restored. %s is now rebooting."
-msgstr "The configuration has been restored. %s is now rebooting."
+msgstr "設定組態復原成功。 %s 現在正重新啟動。"
 
 msgid "The configuration could not be restored."
-msgstr "The configuration could not be restored."
+msgstr "無法回覆設定組態。"
 
 msgid "The configuration could not be restored (file upload error)."
-msgstr "The configuration could not be restored (file upload error)."
+msgstr "無法回覆設定組態（檔案上傳錯誤）。"
 
 msgid "webGUI Configuration"
-msgstr "webGUI Configuration"
+msgstr "webGUI 組態設定"
 
 msgid "Erasing MBR and all paritions"
-msgstr "Erasing MBR and all paritions"
+msgstr "刪除 MBR 以及所有的磁區分割"
 
 msgid "Keeping the MBR and all partitions"
-msgstr "Keeping the MBR and all partitions"
+msgstr "保留原有的MBR以及所有的磁區分割"
 
 msgid "Creating one parition"
-msgstr "Creating one parition"
+msgstr "建立一個磁區"
 
 msgid "Initializing parition"
-msgstr "Initializing parition"
+msgstr "初始化磁區"
 
 msgid "Creating BSD label"
-msgstr "Creating BSD label"
+msgstr "建立 BSD 標籤"
 
 msgid "Creating filesystem"
-msgstr "Creating filesystem"
+msgstr "建立檔案系統"
 
 msgid "Destroying old %s information"
-msgstr "Destroying old %s information"
+msgstr "刪除舊 %s 資訊"
 
 msgid "Done"
-msgstr "Done"
+msgstr "完成"
 
 msgid "Creating %s partition"
-msgstr "Creating %s partition"
+msgstr "建立 %s 磁區"
 
 msgid "Creating filesystem with 'Soft Updates'"
-msgstr "Creating filesystem with 'Soft Updates'"
+msgstr "建立'Soft Updates'的檔案系統"
 
 msgid "Power Daemon"
-msgstr "Power Daemon"
+msgstr "電源監控"
 
 msgid "Enable the system power control utility"
-msgstr "Enable the system power control utility"
+msgstr "開啟電源監控程式。"
 
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
-msgstr "The powerd utility monitors the system state and sets various power control options accordingly."
+msgstr "電源監控程式會監控系統的整體狀態並且設定相關的電源控制項目。"
+
