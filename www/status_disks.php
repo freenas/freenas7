@@ -41,53 +41,54 @@ if (!is_array($config['disks']['disk']))
 disks_sort();
 
 $raidstatus=get_sraid_disks_list();
-
 $a_disk_conf = &$config['disks']['disk'];
+
+/* Get the disk temperature */
+function get_disk_temp($diskname) {
+	$temperature = gettext("n/a");
+
+  exec("/usr/local/sbin/smartctl -A /dev/{$diskname['name']}", $smartctlinfo);
+	
+  foreach($smartctlinfo as $smartctl) {
+    $asmartctl = preg_split("/\s+/", $smartctl);
+    $attributename = $asmartctl[1];
+
+    if( 0 == strncmp($attributename, "Temperature_", 12)) {
+      $temperature = chop($asmartctl[8])." C";
+      break;
+    }
+  }
+
+	return $temperature;
+}
 ?>
 <?php include("fbegin.inc"); ?>
-              <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td width="5%" class="listhdrr"><?=gettext("Disk");?></td>
-                  <td width="5%" class="listhdrr"><?=gettext("Size");?></td>
-                  <td width="60%" class="listhdrr"><?=gettext("Description");?></td>
-                  <td width="10%" class="listhdr"><?=gettext("Status");?></td>
-				</tr>
-			  <?php foreach ($a_disk_conf as $disk): ?>
-                <tr>
-                  <td class="listbg">
-                    <?=htmlspecialchars($disk['name']);?>
-                  </td>
-                  <td class="listbg">
-                    <?=htmlspecialchars($disk['size']);?>
-                  </td>
-                  <td class="listbg">
-                    <?=htmlspecialchars($disk['desc']);?>&nbsp;
-                  </td>
-                   <td class="listbg">
-                    <?php
-                    $stat=disks_status($disk);
-                    echo $stat;?>&nbsp;
-                  </td>
-				</tr>
-			  <?php endforeach; ?>
-			  <?php if (isset($raidstatus)): ?>
-				<?php foreach ($raidstatus as $diskk => $diskv): ?>
-                <tr>
-                  <td class="listbg">
-                    <?=htmlspecialchars($diskk);?>
-                  </td>
-                  <td class="listbg">
-                    <?=htmlspecialchars($diskv['size']);?>
-                  </td>
-                  <td class="listbg">
-                  
-                   <?=htmlspecialchars("Software RAID volume");?>&nbsp;
-                  </td>
-                   <td class="listbg">
-                      <?=htmlspecialchars($diskv['desc']);?>&nbsp;
-                  </td>
-				</tr>
-				<?php endforeach; ?>
-			  <?php endif; ?>
-              </table>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="5%" class="listhdrr"><?=gettext("Disk");?></td>
+    <td width="5%" class="listhdrr"><?=gettext("Size");?></td>
+    <td width="60%" class="listhdrr"><?=gettext("Description");?></td>
+    <td width="10%" class="listhdrr"><?=gettext("Temperature");?></td>
+    <td width="10%" class="listhdr"><?=gettext("Status");?></td>
+	</tr>
+	<?php foreach ($a_disk_conf as $disk): ?>
+	<tr>
+		<td class="listbg"><?=htmlspecialchars($disk['name']);?></td>
+		<td class="listbg"><?=htmlspecialchars($disk['size']);?></td>
+		<td class="listbg"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
+		<td class="listbg"><?php echo get_disk_temp($disk);?>&nbsp;</td>
+		<td class="listbg"><?php echo gettext(disks_status($disk));?>&nbsp;</td>
+	</tr>
+	<?php endforeach; ?>
+  <?php if (isset($raidstatus)): ?>
+	<?php foreach ($raidstatus as $diskk => $diskv): ?>
+	<tr>
+		<td class="listbg"><?=htmlspecialchars($diskk);?></td>
+		<td class="listbg"><?=htmlspecialchars($diskv['size']);?></td>
+		<td class="listbg"><?=htmlspecialchars(gettext("Software RAID"));?>&nbsp;</td>
+		<td class="listbg"><?=htmlspecialchars($diskv['desc']);?>&nbsp;</td>
+	</tr>
+	<?php endforeach; ?>
+	<?php endif; ?>
+</table>
 <?php include("fend.inc"); ?>
