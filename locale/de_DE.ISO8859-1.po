@@ -1657,7 +1657,7 @@ msgid "The following input errors were detected"
 msgstr "Die folgenden Eingabefehler sind aufgetreten"
 
 msgid "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
-msgstr "Zweiter Konfigurationsschritt: Angabe des Dateisystemtyps ihrer <a href=%s>previously configured disk.</a>"
+msgstr "Zweiter Konfigurationsschritt: Angabe des Dateisystemtyps ihrer <a href=%s>zuvor konfigurierten Festplatte.</a>"
 
 msgid "Default is 21"
 msgstr "Standard ist 21"

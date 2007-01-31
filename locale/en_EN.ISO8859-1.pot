@@ -91,7 +91,7 @@ msgid "year"
 msgstr ""
 
 msgid "years"
-msgstr "ann&eacute;es"
+msgstr ""
 
 msgid "All"
 msgstr ""
@@ -136,7 +136,7 @@ msgid "Activate"
 msgstr ""
 
 msgid "Add"
-msgstr "Ajouter"
+msgstr ""
 
 msgid "Cancel"
 msgstr ""
@@ -196,7 +196,7 @@ msgid "Warning"
 msgstr ""
 
 msgid "Load"
-msgstr "Charger"
+msgstr ""
 
 msgid "Retry"
 msgstr ""
@@ -268,7 +268,7 @@ msgid "A valid IP address must be specified."
 msgstr ""
 
 msgid "A valid network bit count must be specified."
-msgstr "Un nombre de bit valide doit &ecirc;tre sp&eacute;cifi&eacute;."
+msgstr ""
 
 msgid "The TCP port must be a valid port number."
 msgstr ""
@@ -376,7 +376,7 @@ msgid "Diagnostics"
 msgstr ""
 
 msgid "Logs"
-msgstr "Journaux"
+msgstr ""
 
 msgid "Information"
 msgstr ""
@@ -751,10 +751,10 @@ msgid "IP address"
 msgstr ""
 
 msgid "Subnet bit count"
-msgstr "Subnet bit count"
+msgstr ""
 
 msgid "MTU"
-msgstr "MTU"
+msgstr ""
 
 msgid "Standard MTU is 1500, use 9000 for jumbo frame."
 msgstr ""
@@ -937,7 +937,7 @@ msgid "The disk is currently mounted! The mount point will be removed temporary 
 msgstr ""
 
 msgid "Unmount disk/partition"
-msgstr "D&eacute;monter disque/partition"
+msgstr ""
 
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
 msgstr ""
@@ -1275,7 +1275,7 @@ msgid "Banner"
 msgstr ""
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
-msgstr "Banni&egrave;re d'accueil affich&eacute;e par le serveur FTP au d&eacute;but d'une connexion."
+msgstr ""
 
 msgid "A valid network must be specified."
 msgstr ""
@@ -1710,7 +1710,7 @@ msgid "SSID"
 msgstr ""
 
 msgid "I/O packets"
-msgstr "Paquets E/S"
+msgstr ""
 
 msgid "I/O errors"
 msgstr ""
