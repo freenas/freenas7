@@ -155,7 +155,7 @@ function raid_change() {
 				<td valign="top" colspan="2">
 				<? if ($do_action)
 				{
-					echo("<strong>" . gettext("command output:") . "</strong><br>");
+					echo("<strong>" . gettext("Command output:") . "</strong><br>");
 					echo('<pre>');
 					ob_end_flush();
 					

@@ -183,9 +183,6 @@ msgstr "Sichern"
 msgid "Submit"
 msgstr "&Uuml;bertragen"
 
-msgid "Update"
-msgstr "Update"
-
 msgid "View"
 msgstr "Ansicht"
 
@@ -230,9 +227,6 @@ msgstr "Beschreibung"
 
 msgid "Software RAID"
 msgstr "Software RAID"
-
-msgid "Service"
-msgstr "Service"
 
 msgid "TCP port"
 msgstr "TCP Port"
@@ -291,17 +285,11 @@ msgstr "Inaktiv"
 msgid "Selected"
 msgstr "Ausgew&auml;hlt"
 
-msgid "System"
-msgstr "System"
-
 msgid "General setup"
 msgstr "Allgemeine Einstellungen"
 
 msgid "Static routes"
 msgstr "Statische Route"
-
-msgid "Firmware"
-msgstr "Firmware"
 
 msgid "Advanced"
 msgstr "Erweitert"
@@ -315,47 +303,14 @@ msgstr "Netzwerk"
 msgid "Management"
 msgstr "Management"
 
-msgid "Mount Point"
-msgstr "Mount Point"
-
 msgid "Services"
 msgstr "Dienste"
-
-msgid "CIFS"
-msgstr "CIFS"
-
-msgid "NFS"
-msgstr "NFS"
-
-msgid "RSYNCD"
-msgstr "RSYNCD"
-
-msgid "SSHD"
-msgstr "SSHD"
-
-msgid "Unison"
-msgstr "Unison"
-
-msgid "UPnP"
-msgstr "UPnP"
-
-msgid "AFP"
-msgstr "AFP"
 
 msgid "Access"
 msgstr "Zugriff"
 
 msgid "Users and Groups"
 msgstr "Benutzer & Gruppen"
-
-msgid "Active Directory"
-msgstr "Active Directory"
-
-msgid "NIS"
-msgstr "NIS"
-
-msgid "Radius"
-msgstr "Radius"
 
 msgid "Process"
 msgstr "Prozesse"
@@ -401,9 +356,6 @@ msgstr "System Neustarten"
 
 msgid "Shutdown system"
 msgstr "System Herunterfahren"
-
-msgid "Graph"
-msgstr "Graph"
 
 msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
 msgstr "Name des NAS Host, ohne Domain<br>z.B. <em>nas</em>"
@@ -681,9 +633,6 @@ msgstr "TCP idle Timeout"
 msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don't set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
 msgstr "Leerlauf TCP Verbindungen werden von der Statusanzeige nach Ablauf der angegebenen Sekunden entfernt, wenn nach dieser Zeit keine Pakete mehr empfangen werden. Diesen Wert nicht zu hoch ansetzen, oder die Statusanzeige wird von falsch beendeten Verbindungen &uuml;berflutet. Voreinstellung sind 2,5 Stunden."
 
-msgid "Navigation"
-msgstr "Navigation"
-
 msgid "Keep diagnostics in navigation expanded"
 msgstr "Diagnoseanzeige in Navigationsansicht einblenden"
 
@@ -693,29 +642,17 @@ msgstr "Systemlautsprecher piept"
 msgid "Disable speaker beep on startup and shutdown"
 msgstr "Systemlautsprecher beim Start und Shutdown ausschalten"
 
-msgid "S.M.A.R.T Daemon"
-msgstr "S.M.A.R.T Daemon"
-
 msgid "Enable the S.M.A.R.T daemon"
 msgstr "S.M.A.R.T Daemon aktivieren"
 
 msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
 msgstr "S.M.A.R.T-f&auml;hige Ger&auml;te &uuml;berwachen durch Aufzeichnung ihres Status in Logdatei."
 
-msgid "Tuning"
-msgstr "Tuning"
-
 msgid "Enable tuning of some kernel variable"
 msgstr "Aktiviere Tuning einiger Kernel Variablen"
 
-msgid "ZeroConf"
-msgstr "ZeroConf"
-
 msgid "Assign network ports"
 msgstr "Netzwerkports zuweisen"
-
-msgid "Port "
-msgstr "Port "
 
 msgid " was assigned to "
 msgstr " wurde zugewiesen an "
@@ -741,17 +678,8 @@ msgstr "Ein g&uuml;ltiges Gateway muss angegeben werden."
 msgid "A valid mtu size must be specified."
 msgstr "Eine g&uuml;ltige MTU muss angegeben werden."
 
-msgid "Subnet bit count"
-msgstr "Subnet bit count"
-
-msgid "MTU"
-msgstr "MTU"
-
 msgid "Standard MTU is 1500, use 9000 for jumbo frame."
 msgstr "Standard MTU ist 1500, 9000 f&uuml;r 'jumbo frame' benutzen."
-
-msgid "Device polling"
-msgstr "Device polling"
 
 msgid "Enable device polling"
 msgstr "Aktiviere 'device polling'"
@@ -761,9 +689,6 @@ msgstr "'Device polling' ist eine Technik, welche das System periodisch Netzwerk
 
 msgid "Speed"
 msgstr "Geschwindigkeit"
-
-msgid "Duplex"
-msgstr "Duplex"
 
 msgid "Enable Optional "
 msgstr "Aktiviere optionale "
@@ -806,12 +731,6 @@ msgstr "Verwalten"
 
 msgid "Format"
 msgstr "Formatieren"
-
-msgid "Tools"
-msgstr "Tools"
-
-msgid "iSCSI initiator"
-msgstr "iSCSI initiator"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Der Festplattenstatus hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
@@ -936,12 +855,6 @@ msgstr "Unmount Festplatte/Partition"
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
 msgstr "Wenn die ausgew&auml;hlte Festplatte/Partition gemountet ist wird diese kurzzeitig ungemountet um den ausgew&auml;hlten Befehl auszuf&uuml;hren, sonst arbeiten die Befehle im nur-lesen Modus."
 
-msgid "iSCSI"
-msgstr "iSCSI"
-
-msgid "iSCSI Initiator"
-msgstr "iSCSI Initiator"
-
 msgid "Target IP address"
 msgstr "Ziel IP Adresse"
 
@@ -949,10 +862,10 @@ msgid "IP address of the iSCSI target."
 msgstr "IP Adresse des iSCSI target."
 
 msgid "Targetname"
-msgstr "Targetname"
+msgstr "Zielname"
 
 msgid "Targetname."
-msgstr "Targetname."
+msgstr "Zielname."
 
 msgid "Manage RAID"
 msgstr "RAID-Einstellungen"
@@ -960,32 +873,11 @@ msgstr "RAID-Einstellungen"
 msgid "Format RAID"
 msgstr "RAID formatieren"
 
-msgid "Volume Name"
-msgstr "Volume Name"
-
 msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
 msgstr "Das RAID Laufwerk ist momentan gemountet! Entfernen Sie den <a href=%s>Mount Point</a> zuerst bevor sie fortfahren."
 
-msgid "Geom Vinum"
-msgstr "Geom Vinum"
-
-msgid "Geom Mirror"
-msgstr "Geom Mirror"
-
-msgid "Geom Stripe"
-msgstr "Geom Stripe"
-
-msgid "Geom Concat"
-msgstr "Geom Concat"
-
-msgid "Geom Raid5"
-msgstr "Geom Raid5"
-
 msgid "(unstable)"
-msgstr "(unstable)"
-
-msgid "RAID"
-msgstr "RAID"
+msgstr "(instabil)"
 
 msgid "The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Die RAID-Einstellung wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden."
@@ -1032,18 +924,6 @@ msgstr "Balance Algorithmus"
 msgid "Select your read balance algorithm."
 msgstr "Auswahl des 'Read Balance Algorithmus'."
 
-msgid "striping"
-msgstr "striping"
-
-msgid "mirroring"
-msgstr "mirroring"
-
-msgid "rotated block-interleaved parity"
-msgstr "rotated block-interleaved parity"
-
-msgid "JBOD"
-msgstr "JBOD"
-
 msgid "Members of this volume"
 msgstr "Verwendete Ger&auml;te f&uuml;r dieses RAID"
 
@@ -1061,9 +941,6 @@ msgstr "Formatiere UFS Festplatte!"
 
 msgid "Object name"
 msgstr "Objektname"
-
-msgid "command output:"
-msgstr "GVINUM command output:"
 
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly)."
 msgstr "1. Diese Massnahmen nur zur Fehlerbehebung benutzen!<br>2. Es ist nicht zum Start eines RAIDvolume notwendig (startet automatisch)."
@@ -1094,12 +971,6 @@ msgstr "Freigabenname duplizieren."
 
 msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
 msgstr "1. Die Partition '%s' kann nicht eingebunden werden - sie enth&auml;lt die Konfigurationsdatei.<br>2. Die NTFS-implemtentierung von FreeBSD hat viele Fehler."
-
-msgid "Mounting..."
-msgstr "Mounting..."
-
-msgid "Unmounting..."
-msgstr "Unmounting..."
 
 msgid "Settings"
 msgstr "Einstellungen"
@@ -1165,7 +1036,7 @@ msgid "%s advertises itself as a time server to Windows clients."
 msgstr "%s meldet sich selbst als Zeitserver gegen&uuml;ber Windows Clients."
 
 msgid "WINS server"
-msgstr "WINS server"
+msgstr "WINS Server"
 
 msgid "WINS Server IP address."
 msgstr "WINS Server IP Adresse."
@@ -1203,9 +1074,6 @@ msgstr "Bearbeite Freigabe"
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "Dieser Parameter dient dazu, eine Freigabe in der Liste der verf&uuml;gbaren Freigaben im Net View oder in der Browser List sichtbar zu machen."
 
-msgid "FTP"
-msgstr "FTP"
-
 msgid "The maximum Number of client must be a number."
 msgstr "Die h&ouml;chste Anzahl an Clients muss eine Zahl sein."
 
@@ -1221,9 +1089,6 @@ msgstr "Die 'pasv address' muss eine 'Public IP Address' sein."
 msgid "You must select at minium anonymous or/and local user authentication."
 msgstr "Mindestens einen Nutzer 'anonymous' und/oder einen lokalen Benutzer angeben."
 
-msgid "FTP Server"
-msgstr "FTP Server"
-
 msgid "Number of clients"
 msgstr "Anzahl der Clients"
 
@@ -1236,14 +1101,11 @@ msgstr "Max. Anzahl Verb. einer IP"
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maximale Anzahl der Verbindungen von einer IP-Adresse (0 = unbegrenzt)."
 
-msgid "Timeout"
-msgstr "Timeout"
-
 msgid "Maximum idle time in minutes."
 msgstr "Maximum Leerlaufzeit in Minuten."
 
 msgid "Anonymous login"
-msgstr "Anonymous login"
+msgstr "Anonymes einlogen"
 
 msgid "Enable anonymous login."
 msgstr "Aktiviere anonymes Login."
@@ -1253,9 +1115,6 @@ msgstr "Lokaler Benutzer"
 
 msgid "Enable local user login."
 msgstr "Aktiviere 'Lokaler Benutzer' Anmeldung."
-
-msgid "FXP"
-msgstr "FXP"
 
 msgid "Enable FXP protocol."
 msgstr "Aktiviere FXP Protokoll."
@@ -1284,20 +1143,17 @@ msgstr "Der kleinstm&ouml;gliche zuweisbare Port, der 'PASV style' Datenverbindu
 msgid "The maximum port to allocate for PASV style data connections (0 = use any port)."
 msgstr "Der h&ouml;chstm&ouml;gliche zuweisbare Port, der 'PASV style' Datenverbindungen erm&ouml;glicht (0 = Verwende jeden Port)."
 
-msgid "Banner"
-msgstr "Banner"
-
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "Grussbotschaft - Angezeigt bei der ersten Verbindung via FTP."
 
 msgid "A valid network must be specified."
 msgstr "Ein g&uuml;ltiges Netzwerk muss angegeben werden."
 
-msgid "NFS Server"
-msgstr "NFS Server"
-
 msgid "Map all users to root"
 msgstr "Map all user to root"
+
+msgid "Map to user"
+msgstr "Map to user"
 
 msgid "All users will have the root privilege."
 msgstr "Alle Benutzer erhalten Administratorrechte."
@@ -1311,23 +1167,11 @@ msgstr "Zugriffsberechtigtes Netzwerk auf die NFS-freigabe"
 msgid "The name of the exported directories are : /mnt/sharename"
 msgstr "Die Namenskonvention f&uuml;r exportierte Verzeichnisse: /mnt/Freigabenname"
 
-msgid "Server"
-msgstr "Server"
-
-msgid "Client"
-msgstr "Client"
-
 msgid "Local"
 msgstr "Lokal"
 
-msgid "Rsync Daemon"
-msgstr "Rsync Daemon"
-
 msgid "Read only"
 msgstr "Nur lesen"
-
-msgid "Map to user"
-msgstr "Map to user"
 
 msgid "Alternate TCP port. Default is 873"
 msgstr "Alternativer TCP Port."
@@ -1338,9 +1182,6 @@ msgstr "Max. Verbindungen"
 msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
 msgstr "Max. Anzahl gleichzeitiger Verbindungen. Voreinstellung ist 0 (unbegrenzt)."
 
-msgid "MOTD"
-msgstr "MOTD"
-
 msgid "Message of the day."
 msgstr "Nachricht des Tages."
 
@@ -1349,9 +1190,6 @@ msgstr "Es muss zuerst ein 'Mount Point' konfiguriert werden."
 
 msgid "Rsync Client Synchronization"
 msgstr "Rsync Client Synchronisation"
-
-msgid "Remote RSYNC Server"
-msgstr "Remote RSYNC Server"
 
 msgid "IP address of remote RSYNC server"
 msgstr "IP-Adresse des Remote RSYNC Servers"
@@ -1389,9 +1227,6 @@ msgstr "Ziel"
 msgid "Destination Mount Point (backup drive)."
 msgstr "Ziel Mount Point (Backup Laufwerk)."
 
-msgid "SSH Daemon"
-msgstr "SSH Daemon"
-
 msgid "Alternate TCP port. Default is 22"
 msgstr "Alternativer TCP Port."
 
@@ -1405,7 +1240,7 @@ msgid "SSH key"
 msgstr "SSH Schl&uuml;ssel"
 
 msgid "Private Key"
-msgstr "Private Key"
+msgstr "Privater Schlüssel"
 
 msgid "Paste a DSA PRIVATE KEY in PEM format here."
 msgstr "F&uuml;gen Sie einen 'RSA private key' im PEM Format hier ein."
@@ -1427,9 +1262,6 @@ msgstr "Hier werden die Arbeitsdaten abgelegt"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "Lege Arbeitsverzeichnis an, falls es diese noch nicht geben sollte"
-
-msgid "UPnP A/V Media Server"
-msgstr "UPnP A/V Media Server"
 
 msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Die &Uuml;bersicht der Verzeichnisse wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
@@ -1469,12 +1301,6 @@ msgstr "Freizugebendes Verzeichnis."
 
 msgid "You must select at least one authentication method."
 msgstr "Sie m&uuml;ssen mind. eine Authentifizierungsmethode ausw&auml;hlen."
-
-msgid "AFP Server"
-msgstr "AFP Server"
-
-msgid "Server Name"
-msgstr "Server Name"
 
 msgid "Enable guest access."
 msgstr "Aktiviere Gast-Zugriff."
@@ -1668,9 +1494,6 @@ msgstr "MAC Addresse"
 msgid "IP address"
 msgstr "IP Addresse"
 
-msgid "Signal"
-msgstr "Signal"
-
 msgid "Noise"
 msgstr "St&ouml;rungen"
 
@@ -1689,29 +1512,11 @@ msgstr "Es konnten keine unterst&uuml;tzten Wireless-Schnittstellen gefunden wer
 msgid "%s interface"
 msgstr "%s Schnittstelle"
 
-msgid "DHCP"
-msgstr "DHCP"
-
-msgid "PPPoE"
-msgstr "PPPoE"
-
-msgid "PPTP"
-msgstr "PPTP"
-
 msgid "Subnet mask"
 msgstr "Subnetz Maske"
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS Server"
-
-msgid "Media"
-msgstr "Media"
-
-msgid "Channel"
-msgstr "Channel"
-
-msgid "SSID"
-msgstr "SSID"
 
 msgid "I/O packets"
 msgstr "I/O Pakete"
@@ -1725,9 +1530,6 @@ msgstr "Kollisionen"
 msgid "CPU load"
 msgstr "CPU Auslastung"
 
-msgid "VLAN tag"
-msgstr "VLAN tag"
-
 msgid "Edit VLAN"
 msgstr "Bearbeite VLAN"
 
@@ -1737,20 +1539,8 @@ msgstr "Traceroute k&ouml;nnte einige Zeit in Anspruch nehmen. Dr&uuml;cken Sie 
 msgid "Partitions"
 msgstr "Partitionen"
 
-msgid "S.M.A.R.T."
-msgstr "S.M.A.R.T."
-
-msgid "ATAidle"
-msgstr "ATAidle"
-
 msgid "Space Used"
 msgstr "Benutzter Speicherplatz"
-
-msgid "Mounts"
-msgstr "Mounts"
-
-msgid "MS Domain"
-msgstr "MS Domain"
 
 msgid "List of detected ATA disks"
 msgstr "Liste von gefundenen ATA Laufwerken"
@@ -1779,29 +1569,17 @@ msgstr "Durchgangsanzeige"
 msgid "Cannot get data about interface"
 msgstr "Kann keine Daten erfassen von Schnittstelle"
 
-msgid "In"
-msgstr "In"
-
-msgid "Out"
-msgstr "Out"
-
 msgid "Switch to"
 msgstr "Umschalten zu"
 
 msgid "AutoScale"
 msgstr "Autom. Skalierung"
 
-msgid "Follow"
-msgstr "Follow"
-
 msgid "Graph shows last"
 msgstr "Graph zeigt die letzten"
 
 msgid "Collecting initial data, please wait..."
 msgstr "Ermittle Daten, bitte warten..."
-
-msgid "Hosts"
-msgstr "Hosts"
 
 msgid "Define an host name can be useful for NFS."
 msgstr "Das Definieren eines Hostnamens kann n&uuml;tzlich f&uuml;r NFS sein."
@@ -2019,11 +1797,14 @@ msgstr "Erstelle %s Partition"
 msgid "Creating filesystem with 'Soft Updates'"
 msgstr "Erstelle Dateisystem samt 'Soft Updates'"
 
-msgid "Power Daemon"
-msgstr "Power Daemon"
-
 msgid "Enable the system power control utility"
 msgstr "Aktiviere das System Power Control Utility"
 
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
 msgstr "Das 'powerd utility' &uuml;berwacht den Systemzustand und stellt entsprechend diverse Energiekontrolloptionen ein."
+
+msgid "Temperature"
+msgstr "Temperatur"
+
+msgid "n/a"
+msgstr "k.A."
