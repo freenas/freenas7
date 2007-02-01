@@ -33,8 +33,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Geom Mirror"), gettext("Edit"));
@@ -50,11 +48,10 @@ if ($_POST) {
 	unset($do_action);
 
 	/* input validation */
-	$reqdfields = explode(" ", "action disk");
-	$reqdfieldsn = explode(",", "Action,disk");
+	$reqdfields = explode(" ", "action raid disk");
+	$reqdfieldsn = array(gettext("Command"),gettext("Volume Name"),gettext("Disk"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	
 	if (!$input_errors)
 	{
 		$do_action = true;
@@ -69,7 +66,6 @@ if (!isset($do_action))
 	$action = '';
 	$object = '';
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">

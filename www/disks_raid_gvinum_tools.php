@@ -32,8 +32,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Geom Vinum"), gettext("Edit"));
@@ -44,10 +42,9 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "action object");
-	$reqdfieldsn = explode(",", "Action,Object");
+	$reqdfieldsn = array(gettext("Command"),gettext("Object name"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	
 	if (!$input_errors)
 	{
 		$do_action = true;
@@ -61,7 +58,6 @@ if (!isset($do_action))
 	$action = '';
 	$object = '';
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">

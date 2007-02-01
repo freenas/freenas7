@@ -51,7 +51,7 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "fullname action");
-	$reqdfieldsn = array(gettext("Share Name"),_DISKSMOUNTTOOLS_COMMAND);
+	$reqdfieldsn = array(gettext("Share Name"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if(!$input_errors)

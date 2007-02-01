@@ -287,11 +287,11 @@ msgstr "提示"
 msgid "The changes have been applied successfully."
 msgstr "變更套用成功。"
 
-msgid "The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS for changes to take effect."
-msgstr "變更已儲存，必須<a href=reboot.php>重新開機</a>之後才會生效"
+msgid "The changes have been saved. You must <a href=%s>reboot</a> your NAS for changes to take effect."
+msgstr "變更已儲存，必須<a href=%s>重新開機</a>之後才會生效"
 
-msgid "ERROR: the changes could not be applied (error code '.$ok.')."
-msgstr "錯誤：變更無法套用 (error code )."
+msgid "ERROR: The changes could not be applied (error code %s)."
+msgstr "錯誤：變更無法套用 (error code %s)."
 
 msgid "A valid IP address must be specified."
 msgstr "請輸入一個有效的IP位置。"

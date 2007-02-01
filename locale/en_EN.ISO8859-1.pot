@@ -258,10 +258,10 @@ msgstr ""
 msgid "The changes have been applied successfully."
 msgstr ""
 
-msgid "The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS for changes to take effect."
+msgid "The changes have been saved. You must <a href=%s>reboot</a> your NAS for changes to take effect."
 msgstr ""
 
-msgid "ERROR: the changes could not be applied (error code '.$ok.')."
+msgid "ERROR: The changes could not be applied (error code %s)."
 msgstr ""
 
 msgid "A valid IP address must be specified."

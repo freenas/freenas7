@@ -257,11 +257,11 @@ msgstr "Hint"
 msgid "The changes have been applied successfully."
 msgstr "De wijzigingen werden succesvol toegepast."
 
-msgid "The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS for changes to take effect."
-msgstr "De wijzigingen werden bewaard. Je moet de NAS <a href=reboot.php>herstarten</a> om de wijzigingen te activeren."
+msgid "The changes have been saved. You must <a href=%s>reboot</a> your NAS for changes to take effect."
+msgstr "De wijzigingen werden bewaard. Je moet de NAS <a href=%s>herstarten</a> om de wijzigingen te activeren."
 
-msgid "ERROR: the changes could not be applied (error code '.$ok.')."
-msgstr "FOUT: de wijzigingen konden niet toegepast worden (foutcode )."
+msgid "ERROR: The changes could not be applied (error code %s)."
+msgstr "FOUT: De wijzigingen konden niet toegepast worden (foutcode %s)."
 
 msgid "A valid IP address must be specified."
 msgstr "Er moet een geldig IP-adres opgegeven worden."

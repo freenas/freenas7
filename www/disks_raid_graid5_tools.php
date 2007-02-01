@@ -33,8 +33,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("Edit"));
@@ -46,14 +44,21 @@ graid5_sort();
 $a_raid = &$config['graid5']['vdisk'];
 
 if ($_POST) {
+	unset($input_errors);
 	unset($do_action);
 
+	/* input validation */
+	$reqdfields = explode(" ", "action raid disk");
+	$reqdfieldsn = array(gettext("Command"),gettext("Volume Name"),gettext("Disk"));
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	$do_action = true;
-	$action = $_POST['action'];
-	$raid = $_POST['raid'];
-	$disk = $_POST['disk'];
-
+	if (!$input_errors)
+	{
+		$do_action = true;
+		$action = $_POST['action'];
+		$raid = $_POST['raid'];
+		$disk = $_POST['disk'];
+	}
 }
 if (!isset($do_action))
 {
@@ -61,7 +66,6 @@ if (!isset($do_action))
 	$action = '';
 	$object = '';
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">

@@ -255,11 +255,11 @@ msgstr "Indiciu"
 msgid "The changes have been applied successfully."
 msgstr "Modificarile au fost aplicate cu succes."
 
-msgid "The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS for changes to take effect."
-msgstr "Modificarile au fost salvate. Trebuie sa <a href=reboot.php>reporniti</a> sistemul pentru ca modificarile sa aiba efect."
+msgid "The changes have been saved. You must <a href=%s>reboot</a> your NAS for changes to take effect."
+msgstr "Modificarile au fost salvate. Trebuie sa <a href=%s>reporniti</a> sistemul pentru ca modificarile sa aiba efect."
 
-msgid "ERROR: the changes could not be applied (error code '.$ok.')."
-msgstr "EROARE: modificarile nu pot fi aplicate (cod erroare '.$ok.')."
+msgid "ERROR: The changes could not be applied (error code %s)."
+msgstr "EROARE: Modificarile nu pot fi aplicate (cod erroare %s)."
 
 msgid "A valid IP address must be specified."
 msgstr "Trebuie sa introduceti o adresa IP valida."

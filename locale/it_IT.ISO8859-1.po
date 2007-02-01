@@ -255,11 +255,11 @@ msgstr "Suggerimento"
 msgid "The changes have been applied successfully."
 msgstr "I cambiamenti sono stati applicati con successo."
 
-msgid "The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS for changes to take effect."
-msgstr "I cambiamenti sono stati salvati. E' necessario <a href=reboot.php>riavviare</a> il NAS affinch&eacute; i cambiamenti abbiano effetto."
+msgid "The changes have been saved. You must <a href=%s>reboot</a> your NAS for changes to take effect."
+msgstr "I cambiamenti sono stati salvati. E' necessario <a href=%s>riavviare</a> il NAS affinch&eacute; i cambiamenti abbiano effetto."
 
-msgid "ERROR: the changes could not be applied (error code '.$ok.')."
-msgstr "ERRORE: non &egrave; stato possibile applicare i cambiamenti (codice d'errore )."
+msgid "ERROR: The changes could not be applied (error code %s)."
+msgstr "ERRORE: Non &egrave; stato possibile applicare i cambiamenti (codice d'errore %s)."
 
 msgid "A valid IP address must be specified."
 msgstr "Deve essere specificato un indirizzo IP valido."
