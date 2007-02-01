@@ -495,7 +495,7 @@ EOD;
 	}
 	
 	if ($g['booting']) {
-		if ($result == 0)
+		if (!$result)
 			echo "done\n";
 		else
 			echo "failed\n";
@@ -727,8 +727,7 @@ function system_beep_up()
 	global $config, $g;
 	if (isset($config['system']['disablebeep']))
 		return 0;
-	else
-	{
+	else {
 		mwexec("/sbin/kldload speaker.ko");
 		mwexec("/usr/local/bin/beep -p 500 75");
 		mwexec("/usr/local/bin/beep -p 1000 75");
@@ -745,8 +744,7 @@ function system_beep_down()
 	global $config, $g;
 	if (isset($config['system']['disablebeep']))
 		return 0;
-	else
-	{		
+	else {		
 		mwexec("/usr/local/bin/beep -p 3000 75");
 		mwexec("/usr/local/bin/beep -p 2000 75");
 		mwexec("/usr/local/bin/beep -p 1000 75");
@@ -845,7 +843,7 @@ function system_users_create()
 		$res == 1;
 	
 	if ($g['booting']) {
-		if ($res == 0)
+		if (!$res)
 			echo "done\n";
 		else
 			echo "failed\n";
@@ -1302,6 +1300,9 @@ EOD;
 
 }
 
+/* Set the tuning value
+return 0 */
+
 function system_tuning()
 {
 	/* fine tune kernel value */
@@ -1309,8 +1310,9 @@ function system_tuning()
 	
 	if (isset($config['system']['tune'])) 	{
 	
-		if ($g['booting'])
+		if ($g['booting']) {
 			echo 'Tuning the system... ';
+		}
 		
 		mwexec('/sbin/sysctl net.inet.tcp.delayed_ack=0');
 		mwexec('/sbin/sysctl net.inet.tcp.sendspace=65536');
@@ -1328,9 +1330,9 @@ function system_tuning()
 		mwexec('/sbin/sysctl kern.maxfilesperproc=32768');
 		mwexec('/sbin/sysctl net.inet.tcp.inflight.enable=0');
 		
-		if ($g['booting'])
+		if ($g['booting']) {
 			echo "done\n";
-		return 0;
+		}
 	
 	}
 	else 	{
@@ -1350,10 +1352,15 @@ function system_tuning()
 			mwexec('/sbin/sysctl kern.maxfilesperproc=957');
 		}
 			
-			return 0;
 	}
+	
+	return 0;
 
 }
+
+/* Mount the CDROM
+return 0 if OK, 1 if error
+*/
 
 function system_install_mount_cd($cdrom)
 {
@@ -1363,17 +1370,24 @@ function system_install_mount_cd($cdrom)
 	
 	/* Creating tempo directory for cdrom*/
 	echo "Creating Mount point for the CDROM:\n";
-	if (mwexec("/bin/mkdir /mnt/cdrom_fr_0507"))
+	if (mwexec("/bin/mkdir /mnt/cdrom_fr_0507")) {
+		echo "Can't create the temporary folder!\n";
 		return 1;
+	}
 	
 	/* Monting the CDROM */
 	echo "Mount CDROM:\n";
-	if (mwexec("/sbin/mount_cd9660 /dev/$cdrom /mnt/cdrom_fr_0507"))
+	if (mwexec("/sbin/mount_cd9660 /dev/$cdrom /mnt/cdrom_fr_0507")) {
+		echo "Can't mount the CDROM!\n";
 		return 1;
+	}
 	
 	return 0;
 }
 
+/* Delete the desitnation disk and create one partition
+return 0 if OK, 1 if error
+*/
 function system_install_init_fulldisk($harddrive)
 {
 		
@@ -1382,12 +1396,16 @@ function system_install_init_fulldisk($harddrive)
 	global $config, $g;
 	
 	echo "Erasing partitions:\n";
-	if (mwexec("/bin/dd if=/dev/zero of=/dev/$harddrive bs=1k count=20"))
+	if (mwexec("/bin/dd if=/dev/zero of=/dev/$harddrive bs=1k count=20")) {
+		echo "Can't erase the destination disk!\n";
 		return 1;
+	}
 	
 	echo "Creating the primary partition and install simple MBR:\n";
-	if (mwexec("/sbin/fdisk -BI -b /boot/mbr $harddrive"))
+	if (mwexec("/sbin/fdisk -BI -b /boot/mbr $harddrive")) {
+		echo "Can't create the partition!\n";
 		return 1;
+	}
 	
 	/* Wait that the /dev is upatded with the new information */
 	// There should be a more intelligent code here than this stupid timer...
@@ -1400,30 +1418,35 @@ function system_install_init_fulldisk($harddrive)
 		sleep(1);
 		echo ".";
 		$i++;
-		if ($i==20)
+		if ($i==20) {
+			echo "The partition s1 don't appear!\n";
 			return 1;
+		}
 	}
 	echo "\n";
 	
-	echo "Erasing primary partition:\n";
-	if (mwexec("/bin/dd if=/dev/zero of=/dev/" . escapeshellarg($harddrive) . "s1 bs=32k count=16"))
-		return 1;
-	
 	echo "Creating FreeBSD partition:\n";
-	if (mwexec("/sbin/bsdlabel -B -w -b /boot/boot " . escapeshellarg($harddrive) ."s1 auto"))
+	if (mwexec("/sbin/bsdlabel -B -w -b /boot/boot " . escapeshellarg($harddrive) ."s1 auto")) {
+		echo "Can't BSDlabel the disk!\n";
 		return 1;
+	}
 	
 	echo "Setting BSDlabel:\n";
 
 	disks_bsdlabel($harddrive,"s1","4.2BSD");
 	
 	echo "Creating UFS filesystem:\n";
-	if (mwexec("/sbin/newfs -U /dev/" . escapeshellarg($harddrive) . "s1"))
+	if (mwexec("/sbin/newfs -U /dev/" . escapeshellarg($harddrive) . "s1")) {
+		echo "Can't create the filesystem!\n";
 		return 1;
+	}
 	
 	return 0;
 }
-
+/* Create to partition on the destination hard drive
+Call by install script
+Return 0 if OK, 1 if not
+*/
 function system_install_init_halfdisk($harddrive)
 {
 	/* Part of install process: Initialize the destination disk with 2 partitions */
@@ -1433,8 +1456,10 @@ function system_install_init_halfdisk($harddrive)
 	/* Create the partitions */
 	fdisk_hd_install($harddrive);
 	
-	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr $harddrive"))
-		return 0;
+	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr $harddrive")) {
+		echo "Can't fdisk the destination drive";
+		return 1;
+	}
 	
 	/* Must wait that the /dev is upatded with the new information */
 	
@@ -1442,21 +1467,25 @@ function system_install_init_halfdisk($harddrive)
 
 	$devtotest="/dev/$harddrive". "s2";
 	$i=0;
-	while (!file_exists($devtotest))
-	{
+	while (!file_exists($devtotest)) {
 		sleep(1);
 		echo ".";
 		$i++;
-		if ($i==20)
+		if ($i==20) {
+			echo "System not updated after 20 seconds !\n";
 			return 1;
+		}
 	}
 	echo "\n";
+
 		
 	echo "Creating BSD Label:\n";
-	if (mwexec("/sbin/bsdlabel -B -w -b /boot/boot " . escapeshellarg($harddrive) ."s1 auto"))
+	if (mwexec("/sbin/bsdlabel -B -w -b /boot/boot " . escapeshellarg($harddrive) ."s1 auto")) {
 		return 1;
-	if (mwexec("/sbin/bsdlabel -w " . escapeshellarg($harddrive) ."s2 auto"))
+	}
+	if (mwexec("/sbin/bsdlabel -w " . escapeshellarg($harddrive) ."s2 auto")) {
 		return 1;
+	}
 	
 	echo "Modify BSD Label information:\n";
 
@@ -1464,15 +1493,21 @@ function system_install_init_halfdisk($harddrive)
 	disks_bsdlabel($harddrive,"s2","4.2BSD");
 	
 	echo "Creating filesystem:\n";
-	if (mwexec("/sbin/newfs -U /dev/" . escapeshellarg($harddrive) . "s1"))
+	if (mwexec("/sbin/newfs -U /dev/" . escapeshellarg($harddrive) . "s1")) {
 		return 1;
-	if (mwexec("/sbin/newfs -U /dev/" . escapeshellarg($harddrive) . "s2"))
+	}
+	if (mwexec("/sbin/newfs -U /dev/" . escapeshellarg($harddrive) . "s2")) {
 		return 1;
+	}
 	
 	return 0;
 
 }
 
+/* Mount the destination disk
+Call by install script
+Return 0 if OK, 1 if not
+*/
 function system_install_mount_destdisk($harddrive)
 {
 	
@@ -1481,18 +1516,25 @@ function system_install_mount_destdisk($harddrive)
 	global $config, $g;
 	
 	echo "Creation tempory mouting point:\n";
-	if (mwexec("/bin/mkdir /mnt/install_fr_0507"))
+	if (mwexec("/bin/mkdir /mnt/install_fr_0507")) {
+		echo "Can't create the temp destination drive directory!\n";
 		return 1;
+	}
 	
 	echo "Mount destination disk:\n";
-	if (mwexec("/sbin/mount /dev/" . escapeshellarg($harddrive) . "s1 /mnt/install_fr_0507"))
+	if (mwexec("/sbin/mount /dev/" . escapeshellarg($harddrive) . "s1 /mnt/install_fr_0507")) {
+		echo "Can't mount the destination disk!\n";
 		return 1;
+	}
 		
 	return 0;
 	
 }
 
-
+/* unmount CDROM and destination disk
+Call by install script
+Return 0 if OK, 1 if not
+*/
 function system_install_unmount()
 {
 	
@@ -1500,32 +1542,38 @@ function system_install_unmount()
 	
 	global $config, $g;
 	
-	/* Unmounting disk */
-	if (mwexec("/sbin/umount /mnt/install_fr_0507"))
+	// Check if tempo directory exist
+	
+	if (is_dir("/mnt/install_fr_0507")) {
+		echo "Tempo directory for disk allready existing!\n";
 		return 1;
-	if (mwexec("/sbin/umount /mnt/cdrom_fr_0507"))
+	}
+	if (is_dir("/mnt/cdrom_fr_0507")) {
+		echo "Tempo directory for CD allready existing!\n";
 		return 1;
+	}
 		
-	// using 'rm -rf' for deleting the temp directory is too dangerous here... 
-	/*
 	
-	if (mwexec("/bin/rm -rf /mnt/cdrom_fr_0507"))
+	/* Unmounting disk */
+	if (mwexec("/sbin/umount /mnt/install_fr_0507")) {
 		return 1;
-	if (mwexec("/bin/rm -rf /mnt/install_fr_0507"))
+	}
+	if (mwexec("/sbin/umount /mnt/cdrom_fr_0507")) {
 		return 1;
+	}
 	
-	*/
-	
-	// Test: replace with PHP function rmdir
+	// Remove tempo directory
 	
 	@rmdir ("/mnt/cdrom_fr_0507");
 	@rmdir ("/mnt/install_fr_0507");
-	
-	
-	
-	return 0;
+
+	return $result;
 }
 
+/* Install the IMG on the destination harddrive
+Call by install script
+Return 0 if OK, 1 if not
+*/
 function system_install_installation($harddrive)
 {
 	/* Part of install process: dd image file on the destination disk */

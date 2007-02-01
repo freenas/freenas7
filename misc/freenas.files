@@ -225,6 +225,12 @@ sbin/shutdown
 ##sysctl -- get or set kernel state
 sbin/sysctl
 
+## swapon - Enable swap
+/sbin/swapon
+
+## swapoff - Disable swap
+/sbin/swapoff
+
 ##tunefs -- tune up an existing file system
 sbin/tunefs
 
@@ -318,6 +324,9 @@ usr/sbin/powerd
 
 ## pwd_mkdb -- generate the password databases
 usr/sbin/pwd_mkdb
+
+## swapinfo - Give info on the swap disk
+usr/sbin/swapinfo
 
 ##  traceroute - print the route packets take to network host
 usr/sbin/traceroute

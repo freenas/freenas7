@@ -5,10 +5,14 @@
 # Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
 # All rights reserved.
 # Modified for FreeNAS (http://www.freenas.org) by Olivier Cochard-Labbe <olivier@freenas.org>
+# Somes lines on this file are taken from pfSense (http://www.pfsense.com/) by Scott Ullrich
 
 # make sure the user can't kill us by pressing Ctrl-C
 trap : 2
 trap : 3
+trap : 4
+# Set our operating platform
+PLATFORM=`cat /etc/platform`
 
 # redirect input/output
 exec </dev/console >/dev/console 2>/dev/console
@@ -41,21 +45,28 @@ echo
 echo
 echo "Console setup"
 echo "*************"
+echo "0) Logout (SSH only)"
 echo "1) Assign Interfaces"
 echo "2) Set LAN IP address"
 echo "3) Reset webGUI password"
 echo "4) Reset to factory defaults"
-echo "5) Reboot system"
-echo "6) Ping host"
-echo "7) Install from CDROM to HD/CF/USB Key"
-echo "8) Shell"
-echo "9) PowerOff system"
+echo "5) Ping host"
+echo "6) Shell"
+echo "7) Reboot system"
+echo "8) PowerOff system"
+if [ "$PLATFORM" = "generic-pc-cdrom" ]; then
+    echo "9) Install to an hard drive/memory drive/USB pen, etc."
+fi
+
 echo
 
 read -p "Enter a number: " opmode
 
 # see what the user has chosen
 case ${opmode} in
+0)
+	exit && exit && logout
+        ;;
 1)
 	/etc/rc.initial.setports
  	;;
@@ -68,20 +79,22 @@ case ${opmode} in
 4)
 	/etc/rc.initial.defaults
 	;;
+
 5)
-	/etc/rc.initial.reboot
-	;;
-6)
 	/etc/rc.initial.ping
 	;;
-7)
-	/etc/rc.initial.install
-	;;
-8)
+
+6)
 	/bin/tcsh
 	;;
-9)
+7)
+	/etc/rc.initial.reboot
+	;;
+8)
 	/etc/rc.initial.halt
+	;;
+9)
+	/etc/rc.initial.install
 	;;
 esac
 

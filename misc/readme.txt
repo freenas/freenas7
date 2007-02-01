@@ -76,6 +76,13 @@ FreeNAs 0.684b:
 - Permit to configure the system time: Paul Wheels patch
 - Permit to enable SSH TCP forwarding (SSH tunneling)
 - Update iSCSI initiator to 2.0.1
+- Add swap tools: swapon, swapoff and swapinfo
+#Example for enable swap (not include on the webgui for the moment):
+#dd if=/dev/zero of=/mnt/system/swap0 bs=1024k count=64
+#chmod 0600 /mnt/system/swap0
+#mdconfig -a -t vnode -f /mnt/system/swap0 -u 1
+#swapon /dev/md1
+#swapinfo
 
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails
