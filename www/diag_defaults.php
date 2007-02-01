@@ -51,7 +51,7 @@ if ($_POST) {
 <form action="diag_defaults.php" method="post">
 	<p>
 		<strong>
-			<?php echo sprintf(gettext("If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."), get_product_name(), "freenas");?><br><br>
+			<?=sprintf(gettext("If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."), get_product_name(), $g['default_ip'], $g['default_passwd']);?><br><br>
 			<?=gettext("Are you sure you want to proceed?");?>
 		</strong>
 	</p>

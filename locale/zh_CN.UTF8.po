@@ -1901,8 +1901,8 @@ msgstr "Traceroute结果输出"
 msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
 msgstr "如果<a href=%s>%s</a>页面內， &quot;将IP解析成主机名称&quot;的选项有开啟，IP 位置会解析成主机名称。"
 
-msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
-msgstr "如果你点选了 '是'， %s 的所有组态设定将会重设为预设值然后重新开机。 所有之前所做的变更都将被覆盖。区域网路的 IP 位置会重新设定为192.168.1.250而密码将设定为 '%s'。"
+msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
+msgstr "如果你点选了 '是'， %s 的所有组态设定将会重设为预设值然后重新开机。 所有之前所做的变更都将被覆盖。区域网路的 IP 位置会重新设定为%s而密码将设定为 '%s'。"
 
 msgid "Are you sure you want to proceed?"
 msgstr "确定要继续进行？"

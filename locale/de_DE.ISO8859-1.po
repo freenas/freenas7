@@ -1749,8 +1749,8 @@ msgstr "Traceroute Ausgabe"
 msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
 msgstr "IP-Adressen werden als Hostnamen beim Aktivieren von &quot;Resolve IP addresses to hostnames&quot; auf <a href=%s>%s</a> page aufgel&ouml;st."
 
-msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
-msgstr "Beim Ausw&auml;hlen von 'Ja' wird %s auf die Standardeinstellungen zur&uuml;ckgesetzt und sofort einen Reboot ausf&uuml;hren. Die komplette Systemkonfiguraton wird &uuml;berschrieben. Die Netzwerk-IP-Adresse wird auf 192.168.1.250 , das Passwort auf '%s' gesetzt."
+msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
+msgstr "Beim Ausw&auml;hlen von 'Ja' wird %s auf die Standardeinstellungen zur&uuml;ckgesetzt und sofort einen Reboot ausf&uuml;hren. Die komplette Systemkonfiguraton wird &uuml;berschrieben. Die Netzwerk-IP-Adresse wird auf %s, das Passwort auf '%s' gesetzt."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Sind Sie sicher, dass Sie fortfahren m&ouml;chten?"

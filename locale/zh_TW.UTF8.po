@@ -1901,8 +1901,8 @@ msgstr "Traceroute結果輸出"
 msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
 msgstr "如果<a href=%s>%s</a>頁面內， &quot;將IP解析成主機名稱&quot;的選項有開啟，IP 位置會解析成主機名稱。"
 
-msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
-msgstr "如果你點選了 '是'， %s 的所有組態設定將會重設為預設值然後重新開機。 所有之前所做的變更都將被覆蓋。區域網路的 IP 位置會重新設定為192.168.1.250而密碼將設定為 '%s'。"
+msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
+msgstr "如果你點選了 '是'， %s 的所有組態設定將會重設為預設值然後重新開機。 所有之前所做的變更都將被覆蓋。區域網路的 IP 位置會重新設定為%s而密碼將設定為 '%s'。"
 
 msgid "Are you sure you want to proceed?"
 msgstr "確定要繼續進行？"
