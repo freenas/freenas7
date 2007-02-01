@@ -274,7 +274,7 @@ msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select mi
 msgstr "Hinweis: Strg-Klick (oder Kommando-Klick auf dem Mac) um Stunden, Tage und Monate zu w&auml;hlen bzw. abzuw&auml;hlen."
 
 msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
-msgstr "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
+msgstr "UFS und Varianten sind die nativen Dateisystemformate f&uuml;r FreeBSD (dem %s zugrundeliegenden Betriebssystem). Die Verwendung anderer Dateisysteme wie FAT, FAT32, EXT2, EXT3, oder NTFS kann unter Umst&auml;nden unvorhersehbare Folgen, Dateifehler oder Datenverlust verursachen!"
 
 msgid "Active"
 msgstr "Aktiv"
@@ -1150,10 +1150,10 @@ msgid "A valid network must be specified."
 msgstr "Ein g&uuml;ltiges Netzwerk muss angegeben werden."
 
 msgid "Map all users to root"
-msgstr "Map all user to root"
+msgstr "Bilde alle Benutzer auf den Nutzer 'root' ab"
 
 msgid "Map to user"
-msgstr "Map to user"
+msgstr "Bilde auf den Benutzer ab"
 
 msgid "All users will have the root privilege."
 msgstr "Alle Benutzer erhalten Administratorrechte."
