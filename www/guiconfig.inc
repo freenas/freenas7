@@ -79,16 +79,6 @@ $reservedlogin = array("root", "toor", "daemon", "operator", "bin", "tty", "kmem
 /* TCP flags */
 $tcpflags = array("fin", "syn", "rst", "psh", "ack", "urg");
 
-$specialnets = array("wanip" => "WAN address", "lan" => "LAN net", "pptp" => "PPTP clients");
-
-for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
-	$specialnets['opt' . $i] = $config['interfaces']['opt' . $i]['descr'] . " net";
-}
-	
-$medias = array("auto" => "autoselect", "100full" => "100BASE-TX full-duplex",
-	"100half" => "100BASE-TX half-duplex", "10full" => "10BASE-T full-duplex",
-	"10half" => "10BASE-T half-duplex");
-	
 /* platforms that support firmware updating */
 $fwupplatforms = array('net45xx', 'net48xx', 'generic-pc', 'wrap');
 
@@ -118,7 +108,6 @@ function print_input_errors($input_errors) {
 		echo "<li>" . htmlspecialchars($ierr) . "</li>\n";
 	}
 	echo "</ul></span>";
-	
 	echo "</td></tr></table></p>";
 }
 
@@ -208,44 +197,6 @@ function get_std_save_message($ok) {
 	}
 }
 
-function pprint_address($adr) {
-	global $specialnets;
-
-	if (isset($adr['any'])) {
-		$padr = "*";
-	} else if ($adr['network']) {
-		$padr = $specialnets[$adr['network']];
-	} else {
-		$padr = $adr['address'];
-	}
-	
-	if (isset($adr['not']))
-		$padr = "! " . $padr;
-	
-	return $padr;
-}
-
-function pprint_port($port) {
-	global $wkports;
-
-	$pport = "";
-		
-	if (!$port)
-		echo "*";
-	else {
-		$srcport = explode("-", $port);
-		if ((!$srcport[1]) || ($srcport[0] == $srcport[1])) {
-			$pport = $srcport[0];
-			if ($wkports[$srcport[0]]) {
-				$pport .= " (" . $wkports[$srcport[0]] . ")";
-			}
-		} else
-			$pport .= $srcport[0] . " - " . $srcport[1];
-	}
-	
-	return $pport;
-}
-
 function staticroutes_sort() {
 	global $g, $config;
 
@@ -255,21 +206,6 @@ function staticroutes_sort() {
 
 	usort($config['staticroutes']['route'], "staticroutecmp");
 }
-/* Comment this because don't use domain name
-function hosts_sort() {
-	global $g, $config;
-
-	function hostcmp($a, $b) {
-		if (strcasecmp($a['domain'], $b['domain']) == 0)
-			return strcasecmp($a['host'], $b['host']);
-		else
-			return strcasecmp($a['domain'], $b['domain']);
-	}
-
-	usort($config['dnsmasq']['hosts'], "hostcmp");
-}
-*/
-
 
 function staticmaps_sort($if) {
 	global $g, $config;
@@ -319,7 +255,6 @@ function gvinum_sort() {
 	}
 
 	usort($config['gvinum']['vdisk'], "gvinumcmp");
-	
 }
 
 function gmirror_sort() {
@@ -330,7 +265,6 @@ function gmirror_sort() {
 	}
 
 	usort($config['gmirror']['vdisk'], "gmirrorcmp");
-	
 }
 
 function gconcat_sort() {
@@ -341,7 +275,6 @@ function gconcat_sort() {
 	}
 
 	usort($config['gconcat']['vdisk'], "gconcatcmp");
-	
 }
 
 function gstripe_sort() {
@@ -352,7 +285,6 @@ function gstripe_sort() {
 	}
 
 	usort($config['gstripe']['vdisk'], "gstripecmp");
-	
 }
 
 function graid5_sort() {
@@ -363,7 +295,6 @@ function graid5_sort() {
 	}
 
 	usort($config['graid5']['vdisk'], "graid5cmp");
-	
 }
 
 function users_sort() {
@@ -386,7 +317,6 @@ function hosts_sort() {
 	usort($config['system']['hosts'], "userscmp");
 }
 
-
 function groups_sort() {
 	global $g, $config;
 
@@ -396,5 +326,4 @@ function groups_sort() {
 
 	usort($config['access']['group'], "groupscmp");
 }
-
 ?>
