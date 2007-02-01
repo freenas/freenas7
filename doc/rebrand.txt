@@ -1,4 +1,11 @@
-To rebrand FreeNAS the following steps has to be done:
+/*
+	rebrand.txt
+	Copyright © 2007 Volker Theile (votdev@gmx.de)
+  All rights reserved.
+*/
+
+Rebrand 'FreeNAS'
+-----------------
 
 1. Modify the following files:
    etc/prd.copyright         - The copyright text. Used in console.
@@ -21,5 +28,3 @@ To rebrand FreeNAS the following steps has to be done:
    - interfaces/lan/ip
    - samba/netbiosname
    - samba/serverdesc
-
-4. Some texts in the language .po files has to modified.
