@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-URL_ISCSI="ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-17.tar.bz2"
+URL_ISCSI="ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-2.0.1.tar.bz2"
 
 build_iscsi() {
   cd $WORKINGDIR
@@ -30,6 +30,7 @@ build_iscsi() {
   cp -v iscsi_initiator.ko $FREENAS/boot/kernel/
 
   cd $WORKINGDIR/iscsi/iscontrol
+  make clean
   make
 
 	return $?

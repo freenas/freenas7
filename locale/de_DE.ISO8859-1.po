@@ -1747,7 +1747,7 @@ msgid "Traceroute output"
 msgstr "Traceroute Ausgabe"
 
 msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
-msgstr "IP-Adressen werden als Hostnamen beim Aktivieren von &quot;Resolve IP addresses to hostnames&quot; auf <a href=%s>%s</a> page aufgel&ouml;st."
+msgstr "IP-Adressen werden als Hostnamen beim Aktivieren von &quot;IP-Adressen als Hostnamen aufl&ouml;sen&quot; auf <a href=%s>%s</a> Seite aufgel&ouml;st."
 
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr "Beim Ausw&auml;hlen von 'Ja' wird %s auf die Standardeinstellungen zur&uuml;ckgesetzt und sofort einen Reboot ausf&uuml;hren. Die komplette Systemkonfiguraton wird &uuml;berschrieben. Die Netzwerk-IP-Adresse wird auf %s, das Passwort auf '%s' gesetzt."
@@ -1808,3 +1808,6 @@ msgstr "Temperatur"
 
 msgid "n/a"
 msgstr "k.A."
+
+msgid "Follow"
+msgstr "Nachfolgen"

@@ -75,6 +75,7 @@ FreeNAs 0.684b:
 - Add powerd/cpufreq system power control utility
 - Permit to configure the system time: Paul Wheels patch
 - Permit to enable SSH TCP forwarding (SSH tunneling)
+- Update iSCSI initiator to 2.0.1
 
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails
