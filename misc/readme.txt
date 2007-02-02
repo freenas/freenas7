@@ -38,33 +38,33 @@ Here is how to build a FreeNAS from the latest source file:
 
 - Use the root user account on your FreeBSD system
 
-3.1. Download the FreeNAS tgz file (new bootdir, new binary, new symlinks, old FreeNAS scripts)
-cd /usr/local
-fetch http://www.freenas.org/donwloads/freenas.tgz
-tgz freenas.tgz
-
-This action Create two directories:
-freenas/rootfs
-freenas/bootloader
+3.1 Update your freenas scripts/WebGUI code with SVN:
+(this create the svn directory)
 
 cd /usr/local/freenas
-
-3.2 Update your freenas scripts/WebGUI code with SVN:
-(this create the svn directory)
 
 svn co https://svn.sourceforge.net/svnroot/freenas/trunk svn
 
 You should now have this directories now:
 /usr/local/freenas
-/usr/local/freenas/rootfs
-/usr/local/freenas/bootloader
 /usr/local/freenas/svn
 
+3.2 Update your ports collection:
+
+portsnap fetch
+portsnap extract
+portsnap update
 
 3.3 Use the building script:
-(this script overwrite the etc, conf and www files with the new one, and rebuild and ISO and IMG image).
+
 svn/misc/setupfreenas.sh
 
+Execute all menus in '20 - Build FreeNAS from scratch advanced menu' to build your FreeNAS
+from scretch. After that use one of the following menus:
+
+10 - Create FreeNAS IMG file (rawrite to CF/USB/DD)
+11 - Create FreeNAS ISO file (need cdrtools installed)
+12 - Create FreeNAS ISO file without IMG image (need cdrtools installed)
 
 ################ History Change logs ##############
 

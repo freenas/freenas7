@@ -1240,7 +1240,7 @@ msgid "SSH key"
 msgstr "SSH Schl&uuml;ssel"
 
 msgid "Private Key"
-msgstr "Privater Schlüssel"
+msgstr "Privater Schl&uuml;ssel"
 
 msgid "Paste a DSA PRIVATE KEY in PEM format here."
 msgstr "F&uuml;gen Sie einen 'RSA private key' im PEM Format hier ein."
@@ -1811,3 +1811,9 @@ msgstr "k.A."
 
 msgid "Follow"
 msgstr "Nachfolgen"
+
+msgid "Enable TCP Forwarding"
+msgstr "TCP Forwarding aktivieren"
+
+msgid "Permit to do SSH Tunneling."
+msgstr "SSH Tunneling erlauben."
