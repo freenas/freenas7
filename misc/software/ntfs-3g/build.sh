@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
 build_ntfs-3g() {
-	cd /usr/ports/sysutils
-	tar -zxvf $SVNDIR/misc/software/ntfs-3g/files/fusefs-ntfs.tar.gz
-
-	cd fusefs-ntfs
+	cd /usr/ports/sysutils/fusefs-ntfs
 
 	make clean
 	make
