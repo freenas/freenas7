@@ -1307,13 +1307,13 @@ function system_tuning()
 {
 	/* fine tune kernel value */
 	global $config, $g;
-	
+
 	if (isset($config['system']['tune'])) 	{
-	
+
 		if ($g['booting']) {
 			echo 'Tuning the system... ';
 		}
-		
+
 		mwexec('/sbin/sysctl net.inet.tcp.delayed_ack=0');
 		mwexec('/sbin/sysctl net.inet.tcp.sendspace=65536');
 		mwexec('/sbin/sysctl net.inet.tcp.recvspace=65536');
@@ -1329,16 +1329,18 @@ function system_tuning()
 		mwexec('/sbin/sysctl kern.maxfiles=65536');
 		mwexec('/sbin/sysctl kern.maxfilesperproc=32768');
 		mwexec('/sbin/sysctl net.inet.tcp.inflight.enable=0');
-		
+		mwexec('/sbin/sysctl net.inet.tcp.path_mtu_discovery=0');
+
 		if ($g['booting']) {
 			echo "done\n";
 		}
-	
 	}
 	else 	{
 		// Set the default value (if previously changed) if not booting mode
 		if (!$g['booting']) {
 			mwexec('/sbin/sysctl net.inet.tcp.delayed_ack=1');
+			mwexec('/sbin/sysctl net.inet.tcp.inflight.enable=1');
+			mwexec('/sbin/sysctl net.inet.tcp.path_mtu_discovery=1');
 			mwexec('/sbin/sysctl net.inet.tcp.sendspace=32768');
 			mwexec('/sbin/sysctl net.inet.tcp.recvspace=65536');
 			mwexec('/sbin/sysctl net.inet.udp.recvspace=42080');
@@ -1351,11 +1353,9 @@ function system_tuning()
 			mwexec('/sbin/sysctl kern.maxfiles=1064');
 			mwexec('/sbin/sysctl kern.maxfilesperproc=957');
 		}
-			
 	}
-	
-	return 0;
 
+	return 0;
 }
 
 /* Mount the CDROM
