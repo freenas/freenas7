@@ -51,9 +51,11 @@ You should now have this directories now:
 
 3.2 Update your ports collection:
 
-portsnap fetch
-portsnap extract
-portsnap update
+Using portsnap the first time:
+portsnap fetch extract
+
+To update the ports collection:
+portsnap fetch update
 
 3.3 Use the building script:
 
