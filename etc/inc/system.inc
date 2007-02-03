@@ -1368,8 +1368,15 @@ function system_install_mount_cd($cdrom)
 	
 	global $config, $g;
 	
+	echo "Creating Mount point for the CDROM:\n";	
+	
+	if (is_dir("/mnt/cdrom_fr_0507")) {
+		echo "Tempo directory for CD allready existing!\n";
+		return 1;
+	}
+	
 	/* Creating tempo directory for cdrom*/
-	echo "Creating Mount point for the CDROM:\n";
+
 	if (mwexec("/bin/mkdir /mnt/cdrom_fr_0507")) {
 		echo "Can't create the temporary folder!\n";
 		return 1;
@@ -1515,6 +1522,13 @@ function system_install_mount_destdisk($harddrive)
 	
 	global $config, $g;
 	
+	// Check if tempo directory exist
+	
+	if (is_dir("/mnt/install_fr_0507")) {
+		echo "Tempo directory for disk allready existing!\n";
+		return 1;
+	}
+	
 	echo "Creation tempory mouting point:\n";
 	if (mwexec("/bin/mkdir /mnt/install_fr_0507")) {
 		echo "Can't create the temp destination drive directory!\n";
@@ -1540,19 +1554,7 @@ function system_install_unmount()
 	
 	/* Part of install process: Unmounting the disks: CDROM and destination drive */
 	
-	global $config, $g;
-	
-	// Check if tempo directory exist
-	
-	if (is_dir("/mnt/install_fr_0507")) {
-		echo "Tempo directory for disk allready existing!\n";
-		return 1;
-	}
-	if (is_dir("/mnt/cdrom_fr_0507")) {
-		echo "Tempo directory for CD allready existing!\n";
-		return 1;
-	}
-		
+	global $config, $g;	
 	
 	/* Unmounting disk */
 	if (mwexec("/sbin/umount /mnt/install_fr_0507")) {
@@ -1605,4 +1607,52 @@ function system_language_load()
 	bindtextdomain( $domain, "/usr/local/share/locale");
 	textdomain( $domain);
 }
+
+/* Enable the swap file
+Return 0 is OK, 1 if error
+*/
+
+function system_swap_enable()
+{
+	global $config, $g;
+	
+	$result = 0;
+	
+	if (isset($config['system']['swap'])) {
+		/* Check if swap file exist TO BE DONE
+		if (file_exists("{$config['system']['swap_mount']}/freenas.swap"))
+		
+		IF NOT, CREATE IT:
+		mwexec("/bin/dd if=/dev/zero of={$config['system']['swap_mount']}/freenas.swap bs=1024k count={$config['system']['swap_size']}");
+		mwexec("chmod 0600 {$config['system']['swap_mount']}/freenas.swap);
+
+		*/
+		// Create the block device
+		$result = mwexec("/sbin/mdconfig -a -t vnode -f {$config['system']['swap_file']} -u 1");
+		// Enable Swap
+		$result |= mwexec("/sbin/swapon /dev/md1");
+	}
+	
+	return $result;
+}
+
+/* Enable the swap file
+Return 0 is OK, 1 if error
+*/
+
+function system_swap_disable()
+{
+	global $config, $g;
+	
+	if (isset($config['system']['swap'])) {
+		// Stop swap
+		$result = mwexec("/sbin/swapoff /dev/md1}");
+		
+		//Destroy block device
+		$result |= mwexec("/sbin/mdconfig -d -u 1");
+	}
+	
+	return $result;
+}
+
 ?>

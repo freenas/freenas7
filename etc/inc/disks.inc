@@ -137,7 +137,8 @@ function disks_mount($mount)
 		   break;
 		   
 		case "ntfs":
-			if (mwexec("/sbin/mount_ntfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
+			//if (mwexec("/sbin/mount_ntfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
+			if (mwexec("ntfs-3g $devname /mnt/$mountname") == 0)
 				$result = 0;
 			else 			{
 				/* Not OK, remove the directory, prevent writing on RAM disk */

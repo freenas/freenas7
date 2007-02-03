@@ -3,7 +3,7 @@
 /*
 	rc.bootup
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -119,6 +119,10 @@
 	
 	/* Mount the disks */
 	disks_mount_all();
+	
+	/* Enable the swap space */
+	// Should be done before the mount disk... but it use it
+	system_swap_enable();
 	
 	/* Generate the pam configuration file */
 	system_pam_configure();

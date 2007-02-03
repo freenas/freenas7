@@ -123,6 +123,17 @@ if ($_POST) {
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them.");?></p>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+        <li class="tabact"><?=gettext("Advanced");?></li>
+        <li class="tabinact"><a href="system_advanced_swap.php"><?=gettext("Swap");?></a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td class="tabcont">
 <form action="system_advanced.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr> 
@@ -219,6 +230,9 @@ if ($_POST) {
     </tr>
   </table>
 </form>
+    </td>
+  </tr>
+</table>
 <script language="JavaScript">
 <!--
 enable_change(false);
