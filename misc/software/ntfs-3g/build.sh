@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 build_ntfs-3g() {
+	# Copy options file
+	mkdir -pv /var/db/ports/fusefs
+	cp -pv $SVNDIR/misc/software/ntfs-3g/files/options /var/db/ports/fusefs
+
 	cd /usr/ports/sysutils/fusefs-kmod
 	make clean
 	make
