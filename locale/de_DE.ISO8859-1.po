@@ -1817,3 +1817,9 @@ msgstr "TCP Forwarding aktivieren"
 
 msgid "Permit to do SSH Tunneling."
 msgstr "SSH Tunneling erlauben."
+
+msgid "The attribute '%s' contains invalid characters."
+msgstr "Das Attribut '%s' enth&auml;lt ung&uuml;ltige Zeichen."
+
+msgid "The attribute '%s' is required."
+msgstr "Das Attribut '%s' wird ben&ouml;tigt."

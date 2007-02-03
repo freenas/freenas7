@@ -1975,3 +1975,9 @@ msgstr ""
 
 msgid "n/a"
 msgstr ""
+
+msgid "The attribute '%s' contains invalid characters."
+msgstr ""
+
+msgid "The attribute '%s' is required."
+msgstr ""

@@ -87,13 +87,13 @@ function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors
 	/* check for bad control characters */	
 	foreach ($postdata as $pn => $pd) {
 		if (is_string($pd) && preg_match("/[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]/", $pd)) {
-			$input_errors[] = "The field '" . $pn . "' contains invalid characters.";
+			$input_errors[] = sprintf( gettext("The attribute '%s' contains invalid characters."), $pn);
 		}
 	}
 	
 	for ($i = 0; $i < count($reqdfields); $i++) {
 		if (!isset($_POST[$reqdfields[$i]]) || ($_POST[$reqdfields[$i]] === "")) {
-			$input_errors[] = "The field '" . $reqdfieldsn[$i] . "' is required.";
+			$input_errors[] = sprintf( gettext("The attribute '%s' is required."), $reqdfieldsn[$i]);
 		}
 	}	
 }
