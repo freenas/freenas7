@@ -587,9 +587,14 @@ function system_ntp_configure() {
 function system_reboot() {
 	global $g;
 	
+	/* Stop swap */
+	system_swap_disable();
+	
 	/* Unmount all disk */
 	disks_umount_all();
 	disks_raid_stop();
+	
+	/* Send beep */
 	system_beep_down();
 	
 	exec("/usr/bin/nohup /etc/rc.reboot > /dev/null 2>&1 &");
@@ -598,9 +603,14 @@ function system_reboot() {
 function system_halt() {
 	global $g;
 	
+	/* Stop swap */
+	system_swap_disable();
+	
 	/* Unmount all disk */
 	disks_umount_all();
 	disks_raid_stop();
+	
+	/* Send beep */
 	system_beep_down();
 	
 	exec("/sbin/halt -p > /dev/null 2>&1 &");
@@ -609,9 +619,14 @@ function system_halt() {
 function system_reboot_sync() {
 	global $g;
 	
+	/* Stop swap */
+	system_swap_disable();
+	
 	/* Unmount all disk */
 	disks_umount_all();
 	disks_raid_stop();
+	
+	/* Send beep */
 	system_beep_down();
 
 	exec("/etc/rc.reboot > /dev/null 2>&1");
@@ -1612,31 +1627,39 @@ function system_language_load()
 Return 0 is OK, 1 if error
 */
 
-function system_swap_enable()
+function system_swap_configure()
 {
 	global $config, $g;
 	
 	$result = 0;
 	
+	// Stop swap if not in booting mode
+	
+	if (!$g['booting']) {
+	
+		// MUST add a checl if swap running
+		$result = mwexec("/sbin/swapoff /dev/md2");
+			
+		//Destroy block device
+		$result |= mwexec("/sbin/mdconfig -d -u 2");
+	}
+	
 	if (isset($config['system']['swap'])) {
-		/* Check if swap file exist TO BE DONE
-		if (file_exists("{$config['system']['swap_mount']}/freenas.swap"))
-		
-		IF NOT, CREATE IT:
-		mwexec("/bin/dd if=/dev/zero of={$config['system']['swap_mount']}/freenas.swap bs=1024k count={$config['system']['swap_size']}");
-		mwexec("chmod 0600 {$config['system']['swap_mount']}/freenas.swap);
-
-		*/
+		if (!file_exists("/mnt/{$config['system']['swap_mount-name']}/swap_file")){
+			$result |= mwexec("/bin/dd if=/dev/zero of=/mnt/{$config['system']['swap_mount-name']}/swap_file bs=1024k count={$config['system']['swap_size']}");
+			// $result |= mwexec("chmod 0600 /mnt/{$config['system']['swap_mount-name']}/swap_file");
+			chmod("/mnt/{$config['system']['swap_mount-name']}/swap_file",0600);
+		}
 		// Create the block device
-		$result = mwexec("/sbin/mdconfig -a -t vnode -f {$config['system']['swap_file']} -u 1");
+		$result |= mwexec("/sbin/mdconfig -a -t vnode -f /mnt/{$config['system']['swap_mount-name']}/swap_file -u 2");
 		// Enable Swap
-		$result |= mwexec("/sbin/swapon /dev/md1");
+		$result |= mwexec("/sbin/swapon /dev/md2");
 	}
 	
 	return $result;
 }
 
-/* Enable the swap file
+/* Disable the swap file
 Return 0 is OK, 1 if error
 */
 
@@ -1646,10 +1669,10 @@ function system_swap_disable()
 	
 	if (isset($config['system']['swap'])) {
 		// Stop swap
-		$result = mwexec("/sbin/swapoff /dev/md1}");
+		$result = mwexec("/sbin/swapoff /dev/md2}");
 		
 		//Destroy block device
-		$result |= mwexec("/sbin/mdconfig -d -u 1");
+		$result |= mwexec("/sbin/mdconfig -d -u 2");
 	}
 	
 	return $result;

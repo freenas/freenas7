@@ -351,9 +351,10 @@ function get_mounts_list()
 	//example: Array
 	//	[0] => Array
     //	    (
-    //        [mp] => /mnt/ad0s1
+    //        [mp] => /mnt/sharename
     //        [mdisk] => ad0s1
-    //		  [fullname] => /dev/ad0s1
+    //	[fullname] => /dev/ad0s1
+	//	[sharename] => sharename
     //      )
 
 	
@@ -372,14 +373,21 @@ function get_mounts_list()
 			continue;
 		$mountlist[$i]['fullname']=chop($aline[0]);
 		$mountlist[$i]['mp']=chop($aline[2]);
+		
+		// Get the sharename
+		$mp_explode=explode("/",chop($aline[2]));
+		$mountlist[$i]['sharename']=$mp_explode[2];
+		
 		// Get the complete name /dev/devicename
 		
 		$complete=explode("/",chop($aline[0]));
 
 		$devname=$complete[2];
 		
-		// Test if it's a gvinum,gmirror,gconcat or gstripe device
-		if ((strcmp($devname,"gvinum") == 0) || (strcmp($devname,"mirror") == 0) || (strcmp($devname,"concat") == 0) || (strcmp($devname,"stripe") == 0) || (strcmp($devname,"raid5") == 0))
+		// Test if it's a gvinum,gmirror,gconcat or gstripe  device
+		if ((strcmp($devname,"gvinum") == 0) || 
+(strcmp($devname,"mirror") == 0) || (strcmp($devname,"concat") == 0) || 
+(strcmp($devname,"stripe") == 0) || (strcmp($devname,"raid5") == 0))
 			$devname=$complete[3];
 		
 		$mountlist[$i]['mdisk']=$devname;

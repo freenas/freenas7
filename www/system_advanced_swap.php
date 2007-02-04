@@ -36,7 +36,8 @@ require("guiconfig.inc");
 $pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Swap file"));
 
 $pconfig['swap_enable'] = isset($config['system']['swap_enable']);
-$pconfig['swap_file'] = $config['system']['swap_file'];
+$pconfig['swap_mount-name'] = $config['system']['swap_mount-name'];
+$pconfig['swap_size'] = $config['system']['swap_size'];
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -50,15 +51,23 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
+	$reqdfields = array();
+	$reqdfieldsn = array();
+	if ($_POST['enable']) {
+		$reqdfields = array_merge($reqdfields, explode(" ", "swap_size swap_mount-name"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Swap size"),gettext("mount share")));
+	}
+
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (!$input_errors) {
 		$config['system']['swap_enable'] = $_POST['enable'] ? true : false;
-		$config['system']['swap_file'] = $_POST['swap_file'];
+		$config['system']['swap_mount-name'] = $_POST['swap_mount-name'];
+		$config['system']['swap_size'] = $_POST['swap_size'];
 				
 		write_config();
 
-		system_swap_enable();
-		// Must add code for create and disable swap file
+		system_swap_configure();
 		
 		$savemsg = get_std_save_message($retval);
 	}
@@ -71,7 +80,8 @@ function enable_change(enable_change) {
 	var endis;
 
 	endis = !(document.iform.enable.checked || enable_change);
-	document.iform.swap_file.disabled = endis;
+	document.iform.swap_mount-name.disabled = endis;
+	document.iform.swap_size.disabled = endis;
 }
 //-->
 </script>
@@ -102,9 +112,20 @@ function enable_change(enable_change) {
             </td>
           </tr>
 		  <tr>
-          <td width="22%" valign="top" class="vncellreq"><?=gettext("Swap file location and name") ;?></td>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("Mount to use for swap"); ?></td>
+			<td width="78%" class="vtable">
+				<select name="swap_mount-name" class="formfld" id="swap_mount-name">
+				  <?php foreach ($a_mount as $mount): ?>
+				  <option value="<?=$mount['sharename'];?>" <?php if ($mount['sharename'] == $pconfig['swap_mount-name']) echo "selected";?>><?php echo htmlspecialchars($mount['sharename']);?></option>
+		  		<?php endforeach; ?>
+		  	</select>
+		  </td>
+		</tr>
+		  <tr>
+          <td width="22%" valign="top" class="vncellreq"><?=gettext("Swap file size") ;?></td>
           <td width="78%" class="vtable">
-              <?=$mandfldhtml;?><input name="swap_file" type="text" class="formfld" id="swap_file" size="30" value="<?=htmlspecialchars($pconfig['swap_file']);?>">
+              <?=$mandfldhtml;?><input name="swap_size" type="text" class="formfld" id="swap_size" size="30" value="<?=htmlspecialchars($pconfig['swap_size']);?>">
+			   <br><?=gettext("Swap file size in MB.") ;?>
             </td>
           </tr>
    				<tr>

@@ -52,6 +52,7 @@ if (!is_array($config['ad']))
     <li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
     <li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI");?></a></li>
     <li class="tabact"><a href="diag_infos_ad.php" title="reload page" style="color:black"><?=gettext("MS Domain");?></a></li>
+	<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
   </ul>
   </td></tr>
   <tr>

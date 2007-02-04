@@ -138,7 +138,9 @@ function disks_mount($mount)
 		   
 		case "ntfs":
 			//if (mwexec("/sbin/mount_ntfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
-			if (mwexec("ntfs-3g $devname /mnt/$mountname") == 0)
+			// Load the kernel fuse module
+			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
+			if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname") == 0)
 				$result = 0;
 			else 			{
 				/* Not OK, remove the directory, prevent writing on RAM disk */
@@ -173,7 +175,9 @@ function disks_mount($mount)
 	
 }
 
-/* Mount using fullname (/dev/ad0s1) given in parameter*/
+/* Mount using fullname (/dev/ad0s1) given in parameter
+Can't be used for NTFS volume (use /dev/fuseX)
+*/
 function disks_mount_fullname($fullname)
 {
 	global $config;
@@ -198,6 +202,7 @@ function disks_mount_fullname($fullname)
 }
 
 /* Umount the specified configured mount point
+Can't be used for NTFS volume (use /dev/fuseX)
 Return 0 is successfull, 1 if error */
 function disks_umount($mount)
 {
@@ -285,11 +290,31 @@ function disks_check_mount_fullname($fullname)
 	return $status;
 }
 
+function disks_check_mount_sharename($sharename)
+{
+	$detmount = get_mounts_list();
+	$status=0;
+	//print_r($detmount);
+	foreach ($detmount as $detmountk => $detmountv) {
+		if (strcmp($detmountv['sharename'],$sharename) == 0) {
+			$status=1;
+			break;
+		}
+	}
+	return $status;
+}
+
 /* This option check if the configured mount is mounted */
 
 function disks_check_mount($mount)
 {
-	return disks_check_mount_fullname($mount['fullname']);
+	// MUST CHECK IF IT'S NTFS filesystem, and use a disks_check_mount_sharename function!!
+	if (strcmp($mount['fstype'],"ntfs")==0) {
+		return disks_check_mount_sharename($mount['sharename']);
+	}
+	else {
+		return disks_check_mount_fullname($mount['fullname']);
+	}
 }
 
 /* This function check if the disk is mounted

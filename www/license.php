@@ -90,10 +90,9 @@ or of the WebGUI</font></em><br>
       <p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br>
         Copyright &copy; 1995-2006 The FreeBSD Project. All rights reserved.</p>
 
-      <p> This product includes PHP, freely available from <a href="http://www.php.net" target="_blank">http://www.php.net</a>.<br>
+      <p> PHP <a href="http://www.php.net" target="_blank">http://www.php.net</a>.<br>
         Copyright &copy; 2001-2006 The PHP Group. All rights reserved.</p>
       <p> Lighttpd (<a href="http://www.lighttpd.net" target="_blank">http://http://www.lighttpd.net</a>)<br>
-
         Copyright &copy; 2004 by Jan Kneschke &lt;jan@kneschke.de&gt;. All rights reserved.</p>
       
       <p> OpenSSH (<a href="http://www.openssh.com" target="_blank">http://www.openssh.com</a>)<br>
@@ -118,7 +117,6 @@ or of the WebGUI</font></em><br>
         Copyright &copy; 2001 Jeff Wheelhouse (jdw@wwwi.com)</p>
      
       <p>msntp (<a href="http://www.hpcf.cam.ac.uk/export" target="_blank">http://www.hpcf.cam.ac.uk/export</a>)<br>
-
         Copyright &copy; 1996, 1997, 2000 N.M. Maclaren, University of Cambridge. 
         All rights reserved.</p>
       
@@ -136,5 +134,19 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 
     <p>uShare UPnP A/V Media Server (<a href="http://ushare.geexbox.org" target="_blank">http://ushare.geexbox.org</a>)<br>
       Copyright &copy; 2005-2006 Benjamin Zores. All rights reserved.</p>
+	  
+	 <p>NTFS-3G driver (<a href="http://www.ntfs-3g.org/" target="_blank">http://www.ntfs-3g.org/</a>)<br>
+      from Szabolcs Szakacsits.</p>
+	  
+	   <p>Fuse: Filesystem in Userspace (<a href="http://fuse.sourceforge.net/" target="_blank">http://fuse.sourceforge.net/</a>)<br>
+      </p>
+	  
+	  <p>pfSense FreeNAS use some pfSense code too (<a href="http://www.pfsense.com/" target="_blank">http://www.pfsense.com/</a>)<br>
+	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All Rights Reserved.
+      </p>
+	  
+	  
+	  
+	  
 
 <?php include("fend.inc"); ?>
