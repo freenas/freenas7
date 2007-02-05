@@ -189,7 +189,7 @@ if ($_POST) {
 				<?php endforeach; ?>
 				</select>
 				<br>
-				<?php echo sprintf( gettext("This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"), "disks_manage_init.php"); ?>
+				<?php echo sprintf( gettext("This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"), "disks_init.php"); ?>
 			</td>
 		</tr>
 		<tr> 

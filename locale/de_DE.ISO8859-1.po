@@ -1648,7 +1648,7 @@ msgid "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with you
 msgstr "Das Erzwingen des UDMA-Modus beim Auftreten der 'UDMA_ERROR.... LBA'-Fehlermeldung von Festplatten ist m&ouml;glich."
 
 msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
-msgstr "Hiermit wird der Dateisystemtyp von bereits formatierten und mit Daten bespielten Festplatten m&ouml;glich.<br><em>F&uuml;r eine nicht formatierte Festplatte lautet die Einstellung 'unformated', Sie sllten das <a href=%s>format menu</a> nutzen.</em>"
+msgstr "Hiermit wird der Dateisystemtyp von bereits formatierten und mit Daten bespielten Festplatten m&ouml;glich.<br><em>F&uuml;r eine nicht formatierte Festplatte lautet die Einstellung 'unformated', anschliessend Sie sollten das <a href=%s>Format Men&uuml;</a> nutzen.</em>"
 
 msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
 msgstr "Optionaler Konfigurationsschritt: Einrichtung einer virtuellen RAID Festplatte, indem Sie ihre <a href='%s'>previsously configured disk</a> nutzen.<br>Bis zum 'up' Status warten, bevor Sie mit dem Formatieren und Einbinden fortfahren!"

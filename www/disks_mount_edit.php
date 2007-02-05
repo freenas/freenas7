@@ -201,8 +201,8 @@ if ($_POST) {
           <option value="ufs" <?php if ($pconfig['fstype'] == "ufs") echo "selected"; ?>>UFS</option>
           <option value="msdosfs" <?php if ($pconfig['fstype'] == "msdosfs") echo "selected"; ?>>FAT</option>
           <option value="cd9660" <?php if ($pconfig['fstype'] == "cd9669") echo "selected"; ?>>CD/DVD</option>
-          <option value="ntfs" <?php if ($pconfig['fstype'] == "ntfs") echo "selected"; ?>>NTFS (read-only)</option> 
-          <option value="ext2fs" <?php if ($pconfig['fstype'] == "ext2fs") echo "selected"; ?>>EXT2 FS</option> 
+          <option value="ntfs" <?php if ($pconfig['fstype'] == "ntfs") echo "selected"; ?>>NTFS</option> 
+          <option value="ext2fs" <?php if ($pconfig['fstype'] == "ext2fs") echo "selected"; ?>>EXT2</option> 
         </select>
       </td>
     </tr>
