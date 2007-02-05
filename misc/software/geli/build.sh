@@ -3,8 +3,11 @@
 build_geli() {
 	cd /usr/src/sbin/geom/class/eli
 
-	patch ./geom_eli.c $SVNDIR/misc/software/geli/files/patch-geom_eli.c
-	[ 0 != $? ] && return 1 # successful?
+	# Patch geom eli sources.
+	if [ ! -e ./geom_eli.c.orig ]; then
+		patch -f ./geom_eli.c $SVNDIR/misc/software/geli/files/patch-geom_eli.c
+		[ 0 != $? ] && return 1 # successful?
+	fi
 
 	make clean
 	make
