@@ -18,7 +18,7 @@ build_geli() {
 install_geli() {
 	cd /usr/src/sbin/geom/class/eli
 
-	# How to create binary without this command?
+	# How to create binary without this command? Any ideas?
 	make install
 
 	install -vs /sbin/geli $FREENAS/sbin
