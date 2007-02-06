@@ -57,6 +57,7 @@ $d_allowedipsdirty_path = $g['varrun_path'] . "/allowedips.dirty";
 
 $d_mountdirty_path = $g['varrun_path'] . "/mount.dirty";
 $d_diskdirty_path = $g['varrun_path'] . "/disk.dirty";
+$d_gelidirty_path = $g['varrun_path'] . "/geli.dirty";
 $d_raidconfdirty_path = $g['varrun_path'] . "/raid.conf.dirty";
 $d_userconfdirty_path = $g['varrun_path'] . "/user.conf.dirty";
 $d_groupconfdirty_path = $g['varrun_path'] . "/group.conf.dirty";
@@ -295,6 +296,16 @@ function graid5_sort() {
 	}
 
 	usort($config['graid5']['vdisk'], "graid5cmp");
+}
+
+function geli_sort() {
+	global $g, $config;
+
+	function gelicmp($a, $b) {
+		return strcmp($a['fullname'], $b['fullname']);
+	}
+
+	usort($config['geli']['vdisk'], "gelicmp");
 }
 
 function users_sort() {

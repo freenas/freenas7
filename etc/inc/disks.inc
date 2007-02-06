@@ -201,6 +201,32 @@ function disks_mount_fullname($fullname)
 	return $result;
 }
 
+/* Mount using sharename given in parameter
+Can be used for NTFS volume (use /dev/fuseX)
+*/
+function disks_mount_sharename($sharename)
+{
+	global $config;
+
+	
+	if (is_array($config['mounts']['mount'])) {
+		// Search the mount list for given disk and partition
+		foreach($config['mounts']['mount'] as $mountk => $mountv) {
+			if($mountv['sharename'] == $sharename) {
+				$mount = $mountv;
+			}
+		}
+	}
+
+  	if($mount) {
+    		$result= disks_mount($mount);
+	}
+  	else {
+    		$result=0;
+	}
+	return $result;
+}
+
 /* Umount the specified configured mount point
 Can't be used for NTFS volume (use /dev/fuseX)
 Return 0 is successfull, 1 if error */
@@ -230,6 +256,30 @@ function disks_umount_fullname($fullname)
 	foreach($config['mounts']['mount'] as $mountk => $mountv) {
   
 		if (strcmp($mountv['fullname'],$fullname) == 0) {
+			$mount = $mountv;
+		}
+	}
+
+	if($mount) {
+		$result = disks_umount($mount);
+	}
+	else {
+		$result= 1;
+	}
+	
+	return $result;
+}
+
+/* Advanced umount using sharename
+Return 0 if successfull, 1 if error */
+function disks_umount_sharename($sharename)
+{
+	global $config;
+
+	/* Search the mount list for given fullname */
+	foreach($config['mounts']['mount'] as $mountk => $mountv) {
+  
+		if (strcmp($mountv['sharename'],$sharename) == 0) {
 			$mount = $mountv;
 		}
 	}
@@ -1224,5 +1274,10 @@ function disks_get_partition_info($disk)
   }
 
   return $result;
+}
+
+function disks_check_geli($geli)
+{
+	return 1;
 }
 ?>

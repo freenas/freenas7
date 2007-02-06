@@ -50,14 +50,14 @@ if ($_POST) {
 	unset($do_action);
 
 	/* input validation */
-	$reqdfields = explode(" ", "fullname action");
+	$reqdfields = explode(" ", "sharename action");
 	$reqdfieldsn = array(gettext("Share Name"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if(!$input_errors)
 	{
 		$do_action = true;
-		$fullname = $_POST['fullname'];
+		$sharename = $_POST['sharename'];
 		$action = $_POST['action'];
 	}
 }
@@ -74,7 +74,7 @@ if(isset($_GET['disk'])) {
   $disk = $_GET['disk'];
   $id = array_search_ex($disk, $a_mount, "mdisk");
   
-  $fullname = $a_mount[$id]['fullname'];
+  $sharename = $a_mount[$id]['sharename'];
 }
 if(isset($_GET['action'])) {
   $action = $_GET['action'];
@@ -100,9 +100,9 @@ if(isset($_GET['action'])) {
           <tr>
             <td valign="top" class="vncellreq"><?=gettext("Share Name");?></td>
             <td class="vtable">
-              <select name="fullname" class="formfld" id="fullname">
+              <select name="sharename" class="formfld" id="sharename">
                 <?php foreach ($a_mount as $mountv): ?>
-                <option value="<?=$mountv['fullname'];?>"<?php if ($mountv['fullname'] == $fullname) echo "selected";?>>
+                <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $sharename) echo "selected";?>>
                 <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
                 <?php endforeach; ?>
                 </option>
@@ -133,7 +133,7 @@ if(isset($_GET['action'])) {
     					ob_end_flush();
 
     					/* Get the id of the mount array entry. */
-		          $id = array_search_ex($fullname, $a_mount, "fullname");
+		          $id = array_search_ex($sharename, $a_mount, "sharename");
 		          /* Get the mount data. */
               $mount = $a_mount[$id];
 
@@ -141,11 +141,11 @@ if(isset($_GET['action'])) {
               {
                 case "mount":
                   echo(gettext("Mounting...") . "<br>");
-                  $result = disks_mount_fullname($fullname);
+                  $result = disks_mount_sharename($sharename);
                   break;
                 case "umount":
                   echo(gettext("Unmounting...") . "<br>");
-                  $result = disks_umount_fullname($fullname);
+                  $result = disks_umount_sharename($sharename);
                   break;
               }
 

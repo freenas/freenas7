@@ -66,6 +66,11 @@ if (!is_array($config['gvinum']['vdisk']))
 
 gvinum_sort();
 
+if (!is_array($config['geli']['vdisk']))
+	$config['geli']['vdisk'] = array();
+
+geli_sort();
+
 /* Get all fstype supported by FreeNAS. */
 $a_fst = get_fstype_list();
 // Remove NTFS: can't format on NTFS under FreeNAS
@@ -82,7 +87,8 @@ $a_gmirror = &$config['gmirror']['vdisk'];
 $a_gstripe = &$config['gstripe']['vdisk'];
 $a_graid5 = &$config['graid5']['vdisk'];
 $a_gvinum = &$config['gvinum']['vdisk'];
-$a_alldisk = array_merge($a_disk,$a_gconcat,$a_gmirror,$a_gstripe,$a_graid5,$a_gvinum);
+$a_geli = &$config['geli']['vdisk'];
+$a_alldisk = array_merge($a_disk,$a_gconcat,$a_gmirror,$a_gstripe,$a_graid5,$a_gvinum,$a_geli);
 
 if ($_POST) {
 	unset($input_errors);
@@ -160,6 +166,13 @@ if ($_POST) {
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_gvinum[$id]['fstype'] = $type;
+				$NotFound = 0;
+			}
+			
+			/* geli */
+			if (($id !== false) && $NotFound) {
+				/* Set new filesystem type. */
+ 				$a_geli[$id]['fstype'] = $type;
 				$NotFound = 0;
 			}
 

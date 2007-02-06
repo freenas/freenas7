@@ -74,9 +74,14 @@ if (!is_array($config['graid5']['vdisk']))
 
 graid5_sort();
 
+if (!is_array($config['geli']['vdisk']))
+	$config['geli']['vdisk'] = array();
+
+geli_sort();
+
 $a_mount = &$config['mounts']['mount'];
 
-$a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$config['gmirror']['vdisk'],$config['gconcat']['vdisk'],$config['gstripe']['vdisk'],$config['graid5']['vdisk']);
+$a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$config['gmirror']['vdisk'],$config['gconcat']['vdisk'],$config['gstripe']['vdisk'],$config['graid5']['vdisk'],$config['geli']['vdisk']);
 
 /* Load the cfdevice file*/
 $filename=$g['varetc_path']."/cfdevice";
@@ -168,7 +173,7 @@ if ($_POST) {
       <td class="vtable">            
     	 <select name="mdisk" class="formfld" id="mdisk">
     	  <?php foreach ($a_disk as $disk): ?>
-    			<?php if (strcmp($disk['fstype'],"softraid")==0): ?> 	  
+				<?php if ((strcmp($disk['fstype'],"softraid")==0) || (strcmp($disk['fstype'],"geli")==0)): ?> 	 				
     			<?php continue; ?>
     			<?php endif; ?>
     				<option value="<?=$disk['fullname'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 

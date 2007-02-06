@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-01-27 15:18+0100\n"
+"PO-Revision-Date: 2007-02-05 19:19+0100\n"
 "Last-Translator: Olivier COCHARD-LABBE <olivier@freenas.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -715,6 +715,24 @@ msgid "ZeroConf"
 msgstr ""
 
 msgid "Disable ZeroConf service announce"
+msgstr ""
+
+msgid "Swap file"
+msgstr ""
+
+msgid "Swap size"
+msgstr ""
+
+msgid "mount share"
+msgstr ""
+
+msgid "Mount to use for swap"
+msgstr ""
+
+msgid "Swap file size"
+msgstr ""
+
+msgid "Size in MB."
 msgstr ""
 
 msgid "Assign network ports"

@@ -1490,6 +1490,15 @@ function get_fstype_disks_list($fstype) {
 			}
     	}
   	}
+	
+	/* Scan all geli volume */
+	if (is_array($config['geli']['vdisk'])) {
+		foreach ($config['graid5']['vdisk'] as $disk) {
+			if (strcmp($disk['fstype'],$fstype) == 0) {
+				$result[] = $disk;
+			}
+    	}
+  	}
 	return $result;
 }
 
@@ -1528,6 +1537,8 @@ function get_fstype_shortdesc($fstype) {
     case "gvinum":        $shortdesc = "gvinum";
                           break;
     case "softraid":      $shortdesc = "softraid";
+                          break;
+	case "geli":      	$shortdesc = "encrypted";
                           break;
   }
   

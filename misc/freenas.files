@@ -186,8 +186,8 @@ sbin/mount_nfs
 ## mount_nfs4 -- mount NFSv4 file system
 sbin/mount_nfs4
 
-## mount_ntfs -- mount NTFS file system
-sbin/mount_ntfs
+## mount_ntfs -- mount NTFS file system: Replaced by NTFS-3G
+#sbin/mount_ntfs
 
 ## mount_ext2fs -- mount ext2fs file system
 sbin/mount_ext2fs
