@@ -58,7 +58,7 @@ $g = array(
 );
 
 /* Available languages/locales */
-$available_languages = array (
+$g_languages = array (
 	"Dutch" => "nl_BE.ISO8859-1",
 	"English" => "en_US.ISO8859-1",
 	"French" => "fr_FR.ISO8859-1",
@@ -68,6 +68,19 @@ $available_languages = array (
 	"SimplifiedChinese" => "zh_CN.UTF8",
 	"Spanish" => "es_ES.ISO8859-1",
 	"TraditionalChinese" => "zh_TW.UTF8"
+);
+
+/* Supported filesystems */
+$g_filesystems = array(
+	"" => "Unformated",
+	"ufs" => "UFS with Soft Updates (use 8% space disk)",
+	"ufs_no_su" => "UFS",
+	"ufsgpt" => "UFS (EFI/GPT) with Soft Updates (use 8% space disk)",
+	"ufsgpt_no_su" => "UFS (EFI/GPT)",
+	"msdos" => "FAT32",
+	"cd9660" => "CD/DVD",
+	"ntfs" => "NTFS",
+	"softraid" => "Software RAID"
 );
 
 ?>

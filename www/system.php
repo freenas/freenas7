@@ -50,8 +50,6 @@ $pconfig['language'] = $config['system']['language'];
 $pconfig['timezone'] = $config['system']['timezone'];
 $pconfig['timeupdateinterval'] = $config['system']['time-update-interval'];
 $pconfig['timeservers'] = $config['system']['timeservers'];
-
-
 $pconfig['language'] = $config['system']['language'];
 if (!$pconfig['language'])
 	$pconfig['language'] = "English";
@@ -234,7 +232,7 @@ if ($_POST) {
       <td width="22%" valign="top" class="vncell"><?=gettext("Language");?></td>
       <td width="78%" class="vtable">
         <select name="language" id="language">
-    			<?php foreach ($available_languages as $language => $value): ?>
+    			<?php foreach ($g_languages as $language => $value): ?>
     			<option value="<?=htmlspecialchars($language);?>" <?php if ($language == $pconfig['language']) echo "selected"; ?>><?=gettext($language);?></option>
 	    		<?php endforeach; ?>
     		</select>
@@ -244,7 +242,7 @@ if ($_POST) {
       <td width="22%" valign="top" class="vncell"><?=gettext("System Time");?></td>
       <td width="78%" class="vtable">
 			  <input name="systime" id="systime" type="text" size="20">
-			  <a href="javascript:NewCal('systime','mmddyyyy',true,24)"><img src="cal.gif" width="16" height="16" border="0" align="top" alt="Pick a date"></a><br>
+			  <a href="javascript:NewCal('systime','mmddyyyy',true,24)"><img src="cal.gif" width="16" height="16" border="0" align="top" alt="<?=gettext("Pick a date");?>"></a><br>
         <span class="vexpl"><?=gettext("Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select one, then use Save button to update system time. (Mind seconds part will be ignored)");?></span>
 			</td>
     </tr>

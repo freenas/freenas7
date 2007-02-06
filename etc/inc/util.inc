@@ -1494,30 +1494,12 @@ function get_fstype_disks_list($fstype) {
 }
 
 /* Get list of supported filesystem types */
-function get_fstype_list()
-{
-  $fstlist = array(
-    ""=>"Unformated",
-    "ufs"=>"UFS with Soft Updates (use 8% space disk)",
-    "ufs_no_su"=>"UFS",
-    "ufsgpt"=>"UFS (EFI/GPT) with Soft Updates (use 8% space disk)",
-    "ufsgpt_no_su"=>"UFS (EFI/GPT)",
-    "msdos"=>"FAT32",
-    "cd9660"=>"CD/DVD",
-    "ntfs"=>"NTFS",
-    "softraid"=>"Software RAID");
-/*
-    "gmirror"=>"Software RAID: gmirror",
-    "gconcat"=>"Software RAID: gconcat",
-    "gstripe"=>"Software RAID: gstripe",
-    "graid5"=>"Software RAID: graid5",
-    "gvinum"=>"Software RAID: gvinum");
-*/
-  return $fstlist;
+function get_fstype_list() {
+	global $g_filesystems;
+	return $g_filesystems;
 }
 
-function get_fstype_shortdesc($fstype)
-{
+function get_fstype_shortdesc($fstype) {
   $shortdesc = "";
 
   switch($fstype)

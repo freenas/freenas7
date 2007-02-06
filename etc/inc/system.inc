@@ -1610,11 +1610,11 @@ function system_install_installation($harddrive)
 /* Init language environment */
 function system_language_load()
 {
-	global $g, $config, $available_languages;
+	global $g, $config, $g_languages;
 
 	/* Get the language configured*/
 	$language = $config['system']['language'];
-	$locale = $available_languages[$language];
+	$locale = $g_languages[$language];
 	$domain = strtolower( get_product_name());
 
 	putenv( "LANG=$locale");
