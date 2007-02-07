@@ -1493,7 +1493,7 @@ function get_fstype_disks_list($fstype) {
 	
 	/* Scan all geli volume */
 	if (is_array($config['geli']['vdisk'])) {
-		foreach ($config['graid5']['vdisk'] as $disk) {
+		foreach ($config['geli']['vdisk'] as $disk) {
 			if (strcmp($disk['fstype'],$fstype) == 0) {
 				$result[] = $disk;
 			}

@@ -75,6 +75,8 @@ geli_sort();
 $a_fst = get_fstype_list();
 // Remove NTFS: can't format on NTFS under FreeNAS
 unset($a_fst['ntfs']);
+// Remove geli
+unset($a_fst['geli']);
 // Remove cd9660: can't format a CD/DVD !
 unset($a_fst['cd9660']);
 // Remove the first blank line 'unknown'
@@ -214,6 +216,7 @@ function disk_change() {
         <select name="disk" class="formfld" id="disk" onchange="disk_change()">
           <?php foreach ($a_alldisk as $diskv): ?>
 					<?php if (strcmp($diskv['size'],"NA") == 0) continue; ?>
+					<?php if (strcmp($diskv['fstype'],"geli") == 0) continue; ?>
           <option value="<?=$diskv['fullname'];?>" <?php if ($diskv['name'] == $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
           <?php endforeach; ?>
         </select>

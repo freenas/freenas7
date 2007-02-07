@@ -65,6 +65,7 @@ if ($_GET['act'] == "del")
 	if ($a_geli[$_GET['id']]) {
 		unset($a_geli[$_GET['id']]);
 		// must add a code for deleteing .geli disk
+		// disks_geli_del($a_geli[$_GET['id']];
 		write_config();
 		touch($d_gelidirty_path);
 		header("Location: disks_crypt.php");

@@ -218,8 +218,10 @@ if (!isset($do_crypt)) {
       <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
       <td class="vtable">            
 				<select name="disk" class="formfld" id="disk">
-				<?php foreach ($a_disk as $diskval): ?>
+				<?php foreach ($a_alldisk as $diskval): ?>
+				<?php if (strcmp($diskval['size'],"NA") == 0) continue; ?>
     			<?php if ((strcmp($diskval['fstype'],"softraid")==0)) continue;?> 	  
+				<?php if ((strcmp($diskval['fstype'],"geli")==0)) continue;?>
    				<option value="<?=$diskval['fullname'];?>" <?php if ($pconfig['disk'] == $diskval['fullname']) echo "selected";?>> 
    				<?php echo htmlspecialchars($diskval['name'] . ": " .$diskval['size'] . " (" . $diskval['desc'] . ")");	?>
    				</option>
