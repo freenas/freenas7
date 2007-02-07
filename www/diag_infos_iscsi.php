@@ -52,7 +52,8 @@ if (!is_array($config['iscsi']))
     <li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
     <li class="tabact"><a href="diag_infos_iscsi.php" title="reload page" style="color:black"><?=gettext("iSCSI");?></a></li>
     <li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
-	<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
+		<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
+		<li class="tabinact"><a href="diag_infos_hm.php"><?=gettext("Hardware Monitor");?></a></li>
   </ul>
   </td></tr>
   <tr>

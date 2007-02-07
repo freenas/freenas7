@@ -2044,3 +2044,6 @@ msgstr ""
 
 msgid "Using Data integrity will reduce size of available storage and also reduce speed."
 msgstr ""
+
+msgid "Hardware Monitor"
+msgstr ""

@@ -46,8 +46,9 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
     <li class="tabinact"><a href="diag_infos_mount.php"><?=gettext("Mounts");?></a></li>
     <li class="tabact"><a href="diag_infos_raid.php" title="reload page" style="color:black"><?=gettext("Software RAID");?></a></li>
     <li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI");?></a></li>
-    <li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>*
-	<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
+    <li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
+		<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
+		<li class="tabinact"><a href="diag_infos_hm.php"><?=gettext("Hardware Monitor");?></a></li>
   </ul>
   </td></tr>
   <tr>

@@ -1,7 +1,10 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	diag_infos.php
+	diag_infos_hm.php
+	Copyright © 2007 Volker Theile (votdev@gmx.de)
+  All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
@@ -38,7 +41,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-    <li class="tabact"><a href="diag_infos.php" style="color:black" title="reload page"><?=gettext("Disks");?></a></li>
+    <li class="tabinact"><a href="diag_infos.php"><?=gettext("Disks");?></a></li>
     <li class="tabinact"><a href="diag_infos_part.php"><?=gettext("Partitions");?></a></li>
     <li class="tabinact"><a href="diag_infos_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
     <li class="tabinact"><a href="diag_infos_ataidle.php"><?=gettext("ATAidle");?></a></li>
@@ -48,24 +51,20 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
     <li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI");?></a></li>
     <li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
 		<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
-		<li class="tabinact"><a href="diag_infos_hm.php"><?=gettext("Hardware Monitor");?></a></li>
+		<li class="tabact"><a href="diag_infos_hm.php" title="reload page" style="color:black"><?=gettext("Hardware Monitor");?></a></li>
   </ul>
   </td></tr>
   <tr>
     <td class="tabcont">
       <?php
-      exec("/sbin/atacontrol list",$iderawdata);
       echo "<pre>";
-      echo "<strong>" . gettext("List of detected ATA disks") . ":</strong><br><br>";
-      foreach ($iderawdata as $line) {
-        echo htmlspecialchars($line) . "<br>";
+      echo "<strong>" . gettext("Hardware Monitor") . ":</strong><br><br>";
+      exec("/usr/local/bin/chm -I -d 0 ", $rawdata);
+      $rawdata = array_slice($rawdata,4);
+      foreach($rawdata as $line) {
+				echo htmlspecialchars($line) . "<br>";
       }
       unset ($line);
-      exec("/sbin/camcontrol devlist",$scsirawdata);
-      echo "<br><strong>" . gettext("List of detected SCSI disks") . ":</strong><br><br>";
-      foreach ($scsirawdata as $line) {
-      	echo htmlspecialchars($line) . "<br>";
-      }
       echo "</pre>";
       ?>
     </td>
