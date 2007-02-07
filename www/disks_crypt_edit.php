@@ -92,6 +92,14 @@ if ($_POST) {
 
 	$pconfig = $_POST;
 
+	/* Check for duplicate disks */
+	foreach ($a_geli as $gelival) {
+		if ($gelival['fullname'] == $_POST['disk'].".eli") {
+			$input_errors[] = gettext("This disk already exists in the disk list.");
+			break;
+		}
+	}
+
 	/* input validation */
   $reqdfields = explode(" ", "disk aalgo ealgo password passwordconf");
   $reqdfieldsn = array(gettext("Disk"),gettext("Data integrity algorithm"),gettext("Encryption algorithm"),gettext("Passphrase"),gettext("Passphrase"));
@@ -190,9 +198,6 @@ if ($_POST) {
 			touch($d_gelidirty_path);
 			write_config();
 		}
-		
-		header("Location: disks_crypt.php");
-		exit;
 	}
 }
 if (!isset($do_crypt)) {
@@ -212,15 +217,13 @@ if (!isset($do_crypt)) {
     <tr> 
       <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
       <td class="vtable">            
-    	 <select name="disk" class="formfld" id="disk">
-    	  <?php foreach ($a_disk as $disk): ?>
-    			<?php if ((strcmp($disk['fstype'],"softraid")==0) || (strcmp($disk['fstype'],"geli")==0)): ?> 	  
-    			<?php continue; ?>
-    			<?php endif; ?>
-    				<option value="<?=$disk['fullname'];?>" <?php if ($pconfig['disk'] == $disk['fullname']) echo "selected";?>> 
-    				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
-    				</option>
-    		  <?php endforeach; ?>
+				<select name="disk" class="formfld" id="disk">
+				<?php foreach ($a_disk as $diskval): ?>
+    			<?php if ((strcmp($diskval['fstype'],"softraid")==0)) continue;?> 	  
+   				<option value="<?=$diskval['fullname'];?>" <?php if ($pconfig['disk'] == $diskval['fullname']) echo "selected";?>> 
+   				<?php echo htmlspecialchars($diskval['name'] . ": " .$diskval['size'] . " (" . $diskval['desc'] . ")");	?>
+   				</option>
+    		<?php endforeach; ?>
     		</select>
       </td>
     </tr>   
@@ -270,20 +273,19 @@ if (!isset($do_crypt)) {
 				echo('<pre>');
 				ob_end_flush();
 
-				// Encrypt the disk
+				// Initialize and encrypt the disk.
 				echo gettext("Encrypting the disk... Please wait").":\n";
-				if (strcmp($aalgo,"none") == 0) {
-					system("/sbin/geli init -e $ealgo -X " . escapeshellarg($passphrase) . " $disk");
+				if( 0 == strcmp($aalgo,"none")) {
+					system("/sbin/geli init -v -e $ealgo -X " . escapeshellarg($passphrase) . " " . $disk);
 				}
 				else {
-					system("/sbin/geli init -a $aalgo -e $ealgo -X " . escapeshellarg($passphrase) . " $disk");
+					system("/sbin/geli init -v -a $aalgo -e $ealgo -X " . escapeshellarg($passphrase) . " " . $disk);
 				}
-				echo gettext("Done").":\n";
-				
-				echo gettext("Attaching the disk...").":\n";
-				system("/sbin/geli attach -X " . escapeshellarg($passphrase) . " $disk");
-				echo gettext("Done").":\n";
-				
+
+				// Attach the disk.
+				echo(gettext("Attaching the disk...").":\n");
+				system("/sbin/geli attach -v -X " . escapeshellarg($passphrase) . " " . $disk);
+
 				echo('</pre>');
 			}
 			?>

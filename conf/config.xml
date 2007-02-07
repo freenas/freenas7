@@ -151,6 +151,13 @@
 		</vdisk>
 		-->
 	</graid5>
+	<geli>
+		<!--
+		<vdisk>
+			...
+		</vdisk>
+		-->
+	</geli>
 	<mounts>
 		<!--
 		<mount>
