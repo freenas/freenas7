@@ -584,15 +584,26 @@ function system_ntp_configure() {
 		echo "done\n";
 }
 
-function system_reboot() {
+function system_stop_common() {
 	global $g;
 	
 	/* Stop swap */
 	system_swap_disable();
 	
-	/* Unmount all disk */
+	/* Umount all disk s*/
 	disks_umount_all();
+	
+	/* Detach all encrypted disks */
+	disks_geli_detach_all();
+	
+	/* Stop all raid disks */
 	disks_raid_stop();
+}
+
+function system_reboot() {
+	global $g;
+	
+	system_stop_common();
 	
 	/* Send beep */
 	system_beep_down();
@@ -603,12 +614,7 @@ function system_reboot() {
 function system_halt() {
 	global $g;
 	
-	/* Stop swap */
-	system_swap_disable();
-	
-	/* Unmount all disk */
-	disks_umount_all();
-	disks_raid_stop();
+	system_stop_common();
 	
 	/* Send beep */
 	system_beep_down();
@@ -619,12 +625,7 @@ function system_halt() {
 function system_reboot_sync() {
 	global $g;
 	
-	/* Stop swap */
-	system_swap_disable();
-	
-	/* Unmount all disk */
-	disks_umount_all();
-	disks_raid_stop();
+	system_stop_common();
 	
 	/* Send beep */
 	system_beep_down();

@@ -83,6 +83,14 @@ if ($_GET['act'] == "ret")
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+        <li class="tabact"><?=gettext("Manage");?></li>
+        <li class="tabinact"><a href="disks_crypt_tools.php"><?=gettext("Tools");?></a></li>
+      </ul>
+    </td>
+  </tr>
   <tr> 
     <td class="tabcont">
       <form action="disks_crypt.php" method="post">
@@ -109,11 +117,11 @@ if ($_GET['act'] == "ret")
               if (file_exists($d_gelidirty_path)) {
                 echo(gettext("Configuring"));
               } else {
-                $stat = disks_check_geli($geli);
-                if(0 == $stat) {
-                  echo(gettext("Error") . " - <a href=\"disks_crypt.php?act=ret&id=$i\">" . gettext("Retry") . "</a>");
+                $stat = disks_geli_check($geli['fullname']);
+                if(1 == $stat) {
+                  echo(gettext("Not attached"));
                 } else {
-                  echo(gettext("OK"));
+                  echo(gettext("Attached"));
                 }
               }
               ?>&nbsp;

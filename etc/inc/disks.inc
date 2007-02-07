@@ -1276,8 +1276,59 @@ function disks_get_partition_info($disk)
   return $result;
 }
 
-function disks_check_geli($geli)
+// Check the status of a geli encrypted disk
+// Return 0 is OK, 1 is no OK
+function disks_geli_check($gelifullname)
 {
-	return 1;
+	if (file_exists("$gelifullname")) {
+		$result = 0;
+	}
+	else {
+		$result = 1;
+	}
+	return $result;
+}
+
+// Attach a geli encrypted disk
+// Return 0 is OK, 1 is no OK
+function disks_geli_attach($gelifullname,$passphrase)
+{
+	// Remove the 4 last character ".eli" of $gelifullanme
+	$gelifullname=rtrim($gelifullname,".eli");
+
+	$result=mwexec("/sbin/geli attach -X " . escapeshellarg($passphrase) . " " . $gelifullname);
+
+	return $result;
+}
+
+// Detach a geli encrypted disk
+// Return 0 is OK, 1 is no OK
+function disks_geli_detach($gelifullname)
+{
+
+	$result=mwexec("/sbin/geli detach $gelifullname");
+
+	return $result;
+}
+
+// Detach all geli encrypted disks
+// Return 0 is OK, 1 is no OK
+function disks_geli_detach_all()
+{
+	global $g, $config;
+	
+	$result = 0;
+	
+	if (!is_array($config['geli']['vdisk']))
+	$config['geli']['vdisk'] = array();
+	
+	$a_geli = &$config['geli']['vdisk'];
+	
+	foreach($a_geli as $geli) {
+		$result |= disks_geli_detach($geli['fullname']) ;
+	}
+	
+	return $result;
+
 }
 ?>
