@@ -99,16 +99,16 @@ if ($_GET['act'] == "del") {
 					<td width="50%" class="listhdrr"><?=gettext("Description"); ?></td>
 					<td width="10%" class="listhdrr"><?=gettext("Standby time"); ?></td>
 					<td width="10%" class="listhdrr"><?=gettext("File system"); ?></td>
-					<td width="10%" class="listhdr"><?=gettext("Status"); ?></td>
+					<td width="10%" class="listhdrr"><?=gettext("Status"); ?></td>
 					<td width="10%" class="list"></td>
 				</tr>
 			  <?php $i = 0; foreach ($a_disk_conf as $disk): ?>
 				<tr>
-					<td class="listbg"><?=htmlspecialchars($disk['name']);?></td>
-					<td class="listbg"><?=htmlspecialchars($disk['size']);?></td>
-					<td class="listbg"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
-					<td class="listbg"><?php if($disk['harddiskstandby']) { $value=$disk['harddiskstandby']; echo $value; } else { echo gettext("Always on"); }?>&nbsp;</td>
-					<td class="listbg"><?=($disk['fstype'])?get_fstype_shortdesc($disk['fstype']):gettext("Unknown or unformatted")?>&nbsp;</td>           
+					<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
+					<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
+					<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
+					<td class="listr"><?php if($disk['harddiskstandby']) { $value=$disk['harddiskstandby']; echo $value; } else { echo gettext("Always on"); }?>&nbsp;</td>
+					<td class="listr"><?=($disk['fstype'])?get_fstype_shortdesc($disk['fstype']):gettext("Unknown or unformatted")?>&nbsp;</td>           
 					<td class="listbg"><?php $stat=disks_status($disk);echo $stat;?>&nbsp;</td>           
 					<td valign="middle" nowrap class="list"> <a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" width="17" height="17" border="0"></a>&nbsp;<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" width="17" height="17" border="0"></a></td>
 				</tr>

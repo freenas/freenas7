@@ -87,9 +87,10 @@ if (!sizeof($a_disk)) {
 
 if ($_POST) {
 	unset($input_errors);
-	$pconfig = $_POST;
 	unset($errormsg);
 	unset($do_crypt);
+
+	$pconfig = $_POST;
 
 	/* input validation */
   $reqdfields = explode(" ", "disk aalgo ealgo password passwordconf");
@@ -190,7 +191,7 @@ if ($_POST) {
 			write_config();
 		}
 		
-		//header("Location: disks_crypt.php");
+		header("Location: disks_crypt.php");
 		exit;
 	}
 }
@@ -227,7 +228,7 @@ if (!isset($do_crypt)) {
       <td valign="top" class="vncellreq"><?=gettext("Data integrity algorithm") ; ?></td>
       <td class="vtable"> 
         <select name="aalgo" class="formfld" id="aalgo">
-		          <option value="none" <?php if ($pconfig['aalgo'] == "none") echo "selected"; ?>>none</option>
+					<option value="none" <?php if ($pconfig['aalgo'] == "none") echo "selected"; ?>>none</option>
           <option value="HMAC/MD5" <?php if ($pconfig['aalgo'] == "HMAC/MD5") echo "selected"; ?>>HMAC/MD5</option>
           <option value="HMAC/SHA1" <?php if ($pconfig['aalgo'] == "HMAC/SHA1") echo "selected"; ?>>HMAC/SHA1</option>
           <option value="HMAC/RIPEMD160" <?php if ($pconfig['aalgo'] == "HMAC/RIPEMD160") echo "selected"; ?>>HMAC/RIPEMD160</option>
@@ -247,21 +248,21 @@ if (!isset($do_crypt)) {
         </select>
       </td>
     </tr>
-	 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Passphrase") ;?></td>
-                  <td width="78%" class="vtable">
-                    <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
-                    <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
-                    <?=gettext("User password.") ;?>
-                  </td>
-                </tr>
+		<tr> 
+	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Passphrase") ;?></td>
+	    <td width="78%" class="vtable">
+	      <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
+	      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
+	      <?=gettext("User password.") ;?>
+	    </td>
+		</tr>
     <tr> 
       <td width="22%" valign="top">&nbsp;</td>
-	  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Init and encrypt disk");?>" onclick="return confirm('<?=gettext("Do you really want to initialize and encrypt this disk? All data will be lost!");?>')">
-
+      <td width="78%">
+				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Init and encrypt disk");?>" onclick="return confirm('<?=gettext("Do you really want to initialize and encrypt this disk? All data will be lost!");?>')">
       </td>
     </tr>
-	<tr>
+		<tr>
 			<td valign="top" colspan="2">
 			<? if ($do_crypt)
 			{

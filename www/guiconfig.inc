@@ -106,7 +106,7 @@ function print_input_errors($input_errors) {
 	
 	echo "<span class=\"errmsg\"><p>".gettext("The following input errors were detected").":<ul>\n";
 	foreach ($input_errors as $ierr) {
-		echo "<li>" . htmlspecialchars($ierr) . "</li>\n";
+		echo "<li>" . $ierr . "</li>\n";
 	}
 	echo "</ul></span>";
 	echo "</td></tr></table></p>";
@@ -198,6 +198,7 @@ function get_std_save_message($ok) {
 	}
 }
 
+/* Sort functions */
 function staticroutes_sort() {
 	global $g, $config;
 

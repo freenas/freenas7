@@ -1513,7 +1513,7 @@ function get_fstype_shortdesc($fstype) {
 
   switch($fstype)
   {
-    case "":              $shortdesc = "Unformated";
+    case "":              $shortdesc = gettext("Unformated");
                           break;
     case "ufs":
     case "ufs_no_su":
@@ -1522,7 +1522,7 @@ function get_fstype_shortdesc($fstype) {
                           break;
     case "msdos":         $shortdesc = "FAT32";
                           break;
-    case "cd9660":         $shortdesc = "CD/DVD";
+    case "cd9660":				$shortdesc = "CD/DVD";
                           break;
     case "ntfs":          $shortdesc = "NTFS";
                           break;
@@ -1532,13 +1532,13 @@ function get_fstype_shortdesc($fstype) {
                           break;
     case "gstripe":       $shortdesc = "gstripe";
                           break;
-    case "graid5":       $shortdesc = "graid5";
+    case "graid5":				$shortdesc = "graid5";
                           break;
     case "gvinum":        $shortdesc = "gvinum";
                           break;
-    case "softraid":      $shortdesc = "softraid";
+    case "softraid":      $shortdesc = gettext("SoftRaid");
                           break;
-	case "geli":      	$shortdesc = "encrypted";
+		case "geli":					$shortdesc = gettext("Encrypted");
                           break;
   }
   
