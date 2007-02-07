@@ -1999,3 +1999,48 @@ msgstr ""
 
 msgid "The attribute '%s' is required."
 msgstr ""
+
+msgid "Crypt"
+msgstr ""
+
+msgid "The crypted disk list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr ""
+
+msgid "Data integrity"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid "Do you really want to delete this encrypted disk? All elements that still use it will become invalid (e.g. share)!"
+msgstr ""
+
+msgid "Create encrypted disk"
+msgstr ""
+
+msgid "Data integrity algorithm"
+msgstr ""
+
+msgid "Encryption algorithm"
+msgstr ""
+
+msgid "Passphrase"
+msgstr ""
+
+msgid "Passphrase don't match."
+msgstr ""
+
+msgid "Init and encrypt disk"
+msgstr ""
+
+msgid "Disk initialization and encryption"
+msgstr ""
+
+msgid "Encrypting the disk... Please wait"
+msgstr ""
+
+msgid "Attaching the disk..."
+msgstr ""
+
+msgid "Using Data integrity will reduce size of available storage and also reduce speed."
+msgstr ""
