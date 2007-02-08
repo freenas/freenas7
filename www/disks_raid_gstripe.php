@@ -127,7 +127,7 @@ if ($_GET['act'] == "del") {
                   <td class="listr">
                     <?=htmlspecialchars($raid['type']);?>
                   </td>
-                  <td class="listbg">
+                  <td class="listr">
                   <?php
 		    $raidconfiguring=file_exists($d_raidconfdirty_path) && in_array($raid['name']."\n",file($d_raidconfdirty_path));
                     if ($raidconfiguring)
