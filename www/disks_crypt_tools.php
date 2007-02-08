@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Mount Point"),gettext("Tools"));
+$pgtitle = array(gettext("Disks"),gettext("Crypt"),gettext("Tools"));
 
 if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
@@ -58,11 +58,12 @@ if ($_POST) {
 	if (disks_check_mount_fullname($mount_fullname) && ($_POST['action']== "detach")) {
 		$input_errors[] = gettext("This encrypted disk is mounted, umount it before trying to detach it.");
 	}
+
 	/* Check for a password if 'attach' mode */
 	if ($_POST['password']=="" && $_POST['action']== "attach") 	{
 			$input_errors[] = gettext("You must use a passphrase for attach an encrypted disk.");
 	}
-	
+
 	if(!$input_errors)
 	{
 		$do_action = true;
@@ -98,7 +99,6 @@ if(isset($_GET['action'])) {
       <ul id="tabnav">
         <li class="tabinact"><a href="disks_crypt.php"><?=gettext("Manage");?></a></li>
         <li class="tabact"><?=gettext("Tools");?></a></li>
-
       </ul>
     </td>
   </tr>
@@ -108,22 +108,22 @@ if(isset($_GET['action'])) {
 			<form action="disks_crypt_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
-            <td valign="top" class="vncellreq"><?=gettext("Encrypted disk Name");?></td>
+            <td valign="top" class="vncellreq"><?=gettext("Encrypted disk name");?></td>
             <td class="vtable">
               <select name="fullname" class="formfld" id="fullname">
                 <?php foreach ($a_geli as $geliv): ?>
-				 <option value="<?=$geliv['fullname'];?>" <?php if ($geliv['name'] == $geliname) echo "selected";?>><?php echo htmlspecialchars($geliv['name'] . ": " .$geliv['size'] . " (" . $geliv['desc'] . ")");?>
+									<option value="<?=$geliv['fullname'];?>" <?php if ($geliv['name'] == $geliname) echo "selected";?>><?php echo htmlspecialchars($geliv['name'] . ": " .$geliv['size'] . " (" . $geliv['desc'] . ")");?>
                 <?php endforeach; ?>
                 </option>
               </select>
             </td>
       		</tr>
-			<tr> 
-	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Passphrase") ;?></td>
-	    <td width="78%" class="vtable">
-	      <input name="password" type="password" class="formfld" id="password" size="20"><br>
-	    </td>
-		</tr>
+					<tr> 
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Passphrase") ;?></td>
+						<td width="78%" class="vtable">
+							<input name="password" type="password" class="formfld" id="password" size="20">
+						</td>
+					</tr>
           <tr>
             <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
             <td class="vtable"> 
@@ -134,10 +134,10 @@ if(isset($_GET['action'])) {
             </td>
           </tr>
   				<tr>
-  				  <td width="22%" valign="top">&nbsp;</td>
-  				  <td width="78%">
-              <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
-  				  </td>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
+						</td>
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">

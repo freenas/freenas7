@@ -916,7 +916,7 @@ msgid "ERR Could not save RAID configuration.\n"
 msgstr "Fehler: RAID-Konfiguration konnte nicht gespeichert werden.\n"
 
 msgid "Raid name"
-msgstr "Raid Name"
+msgstr "RAID Name"
 
 msgid "Balance algorithm"
 msgstr "Balance Algorithmus"

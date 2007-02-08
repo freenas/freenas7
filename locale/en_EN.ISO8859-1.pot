@@ -2036,14 +2036,38 @@ msgstr ""
 msgid "Disk initialization and encryption"
 msgstr ""
 
-msgid "Encrypting the disk... Please wait"
+msgid "Encrypting... Please wait"
 msgstr ""
 
-msgid "Attaching the disk..."
+msgid "Attaching..."
 msgstr ""
 
 msgid "Using Data integrity will reduce size of available storage and also reduce speed."
 msgstr ""
 
 msgid "Sensors"
+msgstr ""
+
+msgid "This encrypted disk is mounted, umount it before trying to detach it."
+msgstr ""
+
+msgid "You must use a passphrase for attach an encrypted disk."
+msgstr ""
+
+msgid "Encrypted disk name"
+msgstr ""
+
+msgid "Detaching..."
+msgstr ""
+
+msgid "attach"
+msgstr ""
+
+msgid "detach"
+msgstr ""
+
+msgid "Attached"
+msgstr ""
+
+msgid "Not attached"
 msgstr ""

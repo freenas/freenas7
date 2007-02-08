@@ -257,8 +257,7 @@ if (!isset($do_crypt)) {
 	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Passphrase") ;?></td>
 	    <td width="78%" class="vtable">
 	      <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
-	      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
-	      <?=gettext("User password.") ;?>
+	      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)
 	    </td>
 		</tr>
     <tr> 
@@ -276,7 +275,7 @@ if (!isset($do_crypt)) {
 				ob_end_flush();
 
 				// Initialize and encrypt the disk.
-				echo gettext("Encrypting the disk... Please wait").":\n";
+				echo gettext("Encrypting... Please wait").":\n";
 				if( 0 == strcmp($aalgo,"none")) {
 					system("/sbin/geli init -v -e $ealgo -X " . escapeshellarg($passphrase) . " " . $disk);
 				}
@@ -285,7 +284,7 @@ if (!isset($do_crypt)) {
 				}
 
 				// Attach the disk.
-				echo(gettext("Attaching the disk...").":\n");
+				echo(gettext("Attaching...")."\n");
 				system("/sbin/geli attach -v -X " . escapeshellarg($passphrase) . " " . $disk);
 
 				echo('</pre>');
