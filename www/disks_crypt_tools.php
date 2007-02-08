@@ -127,10 +127,12 @@ if(isset($_GET['action'])) {
           <tr>
             <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
             <td class="vtable"> 
-              <select name="action" class="formfld" id="action">
-                <option value="attach" <?php if ($action == "attach") echo "selected"; ?>><?=gettext("attach");?></option>
-                <option value="detach" <?php if ($action == "detach") echo "selected"; ?>><?=gettext("detach");?></option>
-               </select>
+							<select name="action" class="formfld" id="action">
+                <option value="attach" <?php if ($action == "attach") echo "selected"; ?>>attach</option>
+                <option value="detach" <?php if ($action == "detach") echo "selected"; ?>>detach</option>
+                <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
+                <option value="status" <?php if ($action == "status") echo "selected"; ?>>status</option>
+							</select>
             </td>
           </tr>
   				<tr>
@@ -162,6 +164,14 @@ if(isset($_GET['action'])) {
                   echo(gettext("Detaching...") . "<br>");
                   $result = disks_geli_detach($gelifullname);
                   break;
+                case "list":
+                	echo("\n");
+                	system("/sbin/geli list");
+                	break;
+                case "status":
+                	echo("\n");
+                	system("/sbin/geli status");
+                	break;
               }
 
               /* Display result */

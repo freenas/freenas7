@@ -185,7 +185,7 @@ if ($_POST) {
 				<select name="fstype" class="formfld">
 				<?php $fstlist = get_fstype_list(); ?>
 				<?php foreach ($fstlist as $fstval => $fstname): ?>
-					<option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
+					<option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=gettext($fstname);?></option>
 				<?php endforeach; ?>
 				</select>
 				<br>

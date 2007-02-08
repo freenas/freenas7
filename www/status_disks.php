@@ -71,23 +71,24 @@ function get_disk_temp($diskname) {
     <td width="5%" class="listhdrr"><?=gettext("Size");?></td>
     <td width="60%" class="listhdrr"><?=gettext("Description");?></td>
     <td width="10%" class="listhdrr"><?=gettext("Temperature");?></td>
-    <td width="10%" class="listhdr"><?=gettext("Status");?></td>
+    <td width="10%" class="listhdrr"><?=gettext("Status");?></td>
 	</tr>
 	<?php foreach ($a_disk_conf as $disk): ?>
 	<tr>
-		<td class="listbg"><?=htmlspecialchars($disk['name']);?></td>
-		<td class="listbg"><?=htmlspecialchars($disk['size']);?></td>
-		<td class="listbg"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
-		<td class="listbg"><?php echo get_disk_temp($disk);?>&nbsp;</td>
+		<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
+		<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
+		<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
+		<td class="listr"><?php echo get_disk_temp($disk);?>&nbsp;</td>
 		<td class="listbg"><?php echo gettext(disks_status($disk));?>&nbsp;</td>
 	</tr>
 	<?php endforeach; ?>
   <?php if (isset($raidstatus)): ?>
 	<?php foreach ($raidstatus as $diskk => $diskv): ?>
 	<tr>
-		<td class="listbg"><?=htmlspecialchars($diskk);?></td>
-		<td class="listbg"><?=htmlspecialchars($diskv['size']);?></td>
-		<td class="listbg"><?=htmlspecialchars(gettext("Software RAID"));?>&nbsp;</td>
+		<td class="listlr"><?=htmlspecialchars($diskk);?></td>
+		<td class="listr"><?=htmlspecialchars($diskv['size']);?></td>
+		<td class="listr"><?=htmlspecialchars(gettext("Software RAID"));?>&nbsp;</td>
+		<td class="listr"><?php echo get_disk_temp($disk);?>&nbsp;</td>
 		<td class="listbg"><?=htmlspecialchars($diskv['desc']);?>&nbsp;</td>
 	</tr>
 	<?php endforeach; ?>

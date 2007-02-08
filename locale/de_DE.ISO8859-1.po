@@ -1651,7 +1651,7 @@ msgid "This allows you to set FS type for preformated disk with data.<br><em>Lea
 msgstr "Hiermit wird der Dateisystemtyp von bereits formatierten und mit Daten bespielten Festplatten m&ouml;glich.<br><em>F&uuml;r eine nicht formatierte Festplatte lautet die Einstellung 'unformated', anschliessend Sie sollten das <a href=%s>Format Men&uuml;</a> nutzen.</em>"
 
 msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
-msgstr "Optionaler Konfigurationsschritt: Einrichtung einer virtuellen RAID Festplatte, indem Sie ihre <a href='%s'>previsously configured disk</a> nutzen.<br>Bis zum 'up' Status warten, bevor Sie mit dem Formatieren und Einbinden fortfahren!"
+msgstr "Optionaler Konfigurationsschritt: Einrichtung einer virtuellen RAID Festplatte, indem Sie ihre <a href='%s'>zuvor konfigurierten Festplatte</a> nutzen.<br>Bis zum 'up' Status warten, bevor Sie mit dem Formatieren und Einbinden fortfahren!"
 
 msgid "The following input errors were detected"
 msgstr "Die folgenden Eingabefehler sind aufgetreten"
