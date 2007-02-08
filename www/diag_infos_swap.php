@@ -50,7 +50,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
     <li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI");?></a></li>
 		<li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
 		<li class="tabact"><a href="diag_infos_swap.php" title="reload page" style="color:black"><?=gettext("Swap");?></a></li>
-		<li class="tabinact"><a href="diag_infos_hm.php"><?=gettext("Hardware Monitor");?></a></li>
+		<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
   </ul>
   </td></tr>
   <tr>

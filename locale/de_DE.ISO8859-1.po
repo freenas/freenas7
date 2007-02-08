@@ -1823,3 +1823,6 @@ msgstr "Das Attribut '%s' enth&auml;lt ung&uuml;ltige Zeichen."
 
 msgid "The attribute '%s' is required."
 msgstr "Das Attribut '%s' wird ben&ouml;tigt."
+
+msgid "Sensors"
+msgstr "Sensoren"
