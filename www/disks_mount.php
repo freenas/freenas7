@@ -68,12 +68,17 @@ if ($_POST) {
 if ($_GET['act'] == "del")
 {
 	if ($a_mount[$_GET['id']]) {
+		// MUST check if it's use by swap
+		if (isset($config['system']['swap_enable']) && ($config['system']['swap_mount-name'] == $a_mount[$_GET['id']]['sharename'])) {
+			$errormsg[] = gettext("The swap file is using this mount point.");
+        } else {
 		disks_umount($a_mount[$_GET['id']]);
 		unset($a_mount[$_GET['id']]);
 		write_config();
 		touch($d_mountdirty_path);
 		header("Location: disks_mount.php");
 		exit;
+		}
 	}
 }
 if ($_GET['act'] == "ret")
@@ -86,6 +91,7 @@ if ($_GET['act'] == "ret")
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<?php if($errormsg) print_input_errors($errormsg);?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
@@ -126,11 +132,10 @@ if ($_GET['act'] == "ret")
               if (file_exists($d_mountdirty_path)) {
                 echo(gettext("Configuring"));
               } else {
-                $stat = disks_check_mount($mount);
-                if(0 == $stat) {
-                  echo(gettext("Error") . " - <a href=\"disks_mount.php?act=ret&id=$i\">" . gettext("Retry") . "</a>");
+                if(disks_check_mount($mount)) {
+					echo(gettext("OK"));
                 } else {
-                  echo(gettext("OK"));
+                  echo(gettext("Error") . " - <a href=\"disks_mount.php?act=ret&id=$i\">" . gettext("Retry") . "</a>");
                 }
               }
               ?>&nbsp;

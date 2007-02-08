@@ -1,0 +1,141 @@
+#!/usr/local/bin/php
+<?php 
+/*
+	disks_manage_iscsi_edit.php
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	All rights reserved.
+	
+	Based on m0n0wall (http://m0n0.ch/wall)
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+	
+	1. Redistributions of source code must retain the above copyright notice,
+	   this list of conditions and the following disclaimer.
+	
+	2. Redistributions in binary form must reproduce the above copyright
+	   notice, this list of conditions and the following disclaimer in the
+	   documentation and/or other materials provided with the distribution.
+	
+	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+	OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+	POSSIBILITY OF SUCH DAMAGE.
+*/
+require("guiconfig.inc");
+
+$id = $_GET['id'];
+if (isset($_POST['id']))
+	$id = $_POST['id'];
+
+$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("Add"));
+
+if (!is_array($config['iscsiinit']['vdisk']))
+	$config['iscsiinit']['vdisk'] = array();
+
+iscsiinit_sort();
+
+$a_iscsiinit = &$config['iscsiinit']['vdisk'];
+
+if (isset($id) && $a_iscsiinit[$id]) {
+	$pconfig['name'] = $a_iscsiinit[$id]['name'];
+	$pconfig['targetname'] = $a_iscsiinit[$id]['targetname'];
+	$pconfig['targetaddress'] = $a_iscsiinit[$id]['targetaddress'];
+	$pconfig['initiatorname'] = $a_iscsiinit[$id]['initiatorname'];
+}
+
+if ($_POST) {
+	unset($input_errors);
+	unset($errormsg);
+	unset($do_crypt);
+
+	$pconfig = $_POST;
+
+	/* Check for duplicate disks */
+	foreach ($a_iscsiinit as $iscsiinit) {
+		if (isset($id) && ($a_iscsiinit[$id]) && ($a_iscsiinit[$id] === $iscsiinit))
+			continue;
+		if (($iscsiinit['targetname'] == $_POST['targetname']) && ($iscsiinit['targetaddress'] == $_POST['targetaddress'])) {
+			$input_errors[] = gettext("This couple targetname/targetaddress already exists in the disk list.");
+			break;
+		}
+		if ($iscsiinit['name'] == $_POST['name']) {
+			$input_errors[] = gettext("This name already exists in the disk list.");
+			break;
+		}
+		
+	}
+
+	/* input validation */
+  $reqdfields = explode(" ", "name targetname targetaddress initiatorname");
+  $reqdfieldsn = array(gettext("Name"),gettext("Target name"),gettext("Target address"),gettext("Initiator name"));
+  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+	if (!$input_errors) {
+		$iscsiinit = array();
+		$iscsiinit['name'] = $_POST['name'];
+		$iscsiinit['targetname'] = $_POST['targetname'];
+		$iscsiinit['targetaddress'] = $_POST['targetaddress'];
+		$iscsiinit['initiatorname'] = $_POST['initiatorname'];
+	
+		if (isset($id) && $a_iscsiinit[$id])
+			$a_iscsiinit[$id] = $iscsiinit;
+		else
+			$a_iscsiinit[] = $iscsiinit;
+		touch($d_iscsiinitdirty_path);
+		
+		write_config();
+		
+		header("Location: disks_manage_iscsi.php");
+		exit;
+
+	}
+}
+
+?>
+<?php include("fbegin.inc"); ?>
+<?php if ($input_errors) print_input_errors($input_errors); ?>
+<form action="disks_manage_iscsi_edit.php" method="post" name="iform" id="iform">
+  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+     <tr>
+     <td width="22%" valign="top" class="vncell"><?=gettext("Name") ;?></td>
+      <td width="78%" class="vtable"> 
+        <?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>"> 
+      </td>
+    </tr>
+	    <tr>
+     <td width="22%" valign="top" class="vncell"><?=gettext("Target Name") ;?></td>
+      <td width="78%" class="vtable"> 
+        <?=$mandfldhtml;?><input name="targetname" type="text" class="formfld" id="targetname" size="20" value="<?=htmlspecialchars($pconfig['targetname']);?>"> 
+      </td>
+    </tr>
+	<tr>
+     <td width="22%" valign="top" class="vncell"><?=gettext("Target address") ;?></td>
+      <td width="78%" class="vtable"> 
+        <?=$mandfldhtml;?><input name="targetaddress" type="text" class="formfld" id="targetaddress" size="20" value="<?=htmlspecialchars($pconfig['targetaddress']);?>"> 
+      </td>
+    </tr>
+	<tr>
+     <td width="22%" valign="top" class="vncell"><?=gettext("Initiator name") ;?></td>
+      <td width="78%" class="vtable"> 
+        <?=$mandfldhtml;?><input name="initiatorname" type="text" class="formfld" id="initiatorname" size="20" value="<?=htmlspecialchars($pconfig['initiatorname']);?>"> 
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top">&nbsp;</td>
+      <td width="78%">
+				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
+      </td>
+    </tr>
+  </table>
+</form>
+<?php include("fend.inc"); ?>

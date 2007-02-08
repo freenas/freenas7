@@ -56,7 +56,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
   <tr>
     <td class="tabcont">
       <?php
-      if (!isset($config['system']['swap'])) {
+      if (!isset($config['system']['swap_enable'])) {
       	echo "<strong>".gettext("Swap disabled")."</strong><br><br>";
       } else {
       	echo "<pre>";

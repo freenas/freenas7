@@ -42,6 +42,8 @@ if (!is_array($config['gmirror']['vdisk']))
 gmirror_sort();
 $a_raid = &$config['gmirror']['vdisk'];
 
+$raidstatus=get_gmirror_disks_list();
+
 if ($_POST) {
 	$pconfig = $_POST;
 
@@ -52,6 +54,7 @@ if ($_POST) {
 			config_lock();
 			/* reload all components that create raid device */
 			disks_raid_gmirror_configure();
+			// MUST ADD CODE FOR ADDING RAID SIZE on the config file
 			config_unlock();
 			write_config();
 		}
@@ -62,8 +65,6 @@ if ($_POST) {
 		}
 	}
 }
-
-$raidstatus=get_sraid_disks_list();
 
 if ($_GET['act'] == "del") {
 	unset($errormsg);

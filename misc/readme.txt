@@ -83,6 +83,8 @@ FreeNAs 0.684b:
 - Update language file: French, Chinese and Romanian
 - Add hardware sensors information page
 
+known bug: Can't remount ntfs-3g volume under the mount_tools. Must restart FreeNAS. It seem a fuse problem.
+
 Working Notes:
 1. Must finish swap feature (when mount point management, must check if the mount point is used by swap)
 2. Must remove old ntfs binary (mount_ntfs, kernel module, etc...)

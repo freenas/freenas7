@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Crypt"),gettext("Tools"));
+$pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Tools"));
 
 if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
@@ -44,6 +44,17 @@ if (!is_array($config['geli']['vdisk']))
 geli_sort();
 
 $a_geli = &$config['geli']['vdisk'];
+
+if (!is_array($config['mounts']['mount']))
+	$config['mounts']['mount'] = array();
+
+mount_sort();
+
+$a_mount = &$config['mounts']['mount'];
+
+if ($config['system']['webgui']['protocol'] == "http") {
+	$nohttps_errors[] = gettext("You should use HTTPS as WebGUI protocol for sending passphrase.");
+}
 
 if ($_POST) {
 	unset($input_errors);
@@ -93,6 +104,7 @@ if(isset($_GET['action'])) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<?php if ($nohttps_errors) print_input_errors($nohttps_errors); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
@@ -149,10 +161,12 @@ if(isset($_GET['action'])) {
     					echo('<pre>');
     					ob_end_flush();
 
-    					/* Get the id of the mount array entry. */
-		          $id = array_search_ex($gelifullname, $a_geli, "fullname");
-		          /* Get the mount data. */
-              $geli = $a_geli[$id];
+    					/* Search if a mount point use this geli disk. */
+		          $id = array_search_ex($gelifullname, $a_mount, "mdisk");
+		          /* if found, get the mount data */
+				 if ($id) {
+					$mount = $a_mount[$id];
+			  }
 
               switch($action)
               {
@@ -176,10 +190,16 @@ if(isset($_GET['action'])) {
 
               /* Display result */
               echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
-
-    					echo('</pre>');
-    				}
-			// IF MOUNT POINT USE THIS DISK, CALL MOUNT TOO
+   					
+			if (($action=="attach") && $mount) {
+				echo(gettext("\nMounting this disk...") . "<br>");
+				$result = disks_mount($mount);
+				 /* Display result */
+				echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
+			}
+				
+				echo('</pre>');
+			}
     				?>
     				</td>
   				</tr>

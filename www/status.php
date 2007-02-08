@@ -106,16 +106,17 @@ defCmdT("resolv.conf","cat /etc/resolv.conf");
 
 defCmdT("Processes","ps xauww");
 defCmdT("dhclient.conf","cat /var/etc/dhclient.conf");
-defCmdT("ez-ipupdate.cache","cat /conf/ez-ipupdate.cache");
+defCmdT("swap use","/usr/sbin/swapinfo");
 
 defCmdT("ATA disk","/sbin/atacontrol list");
 defCmdT("SCSI disk","/sbin/camcontrol devlist");
 defCmdT("Mount point","/sbin/mount");
 defCmdT("Free Disk Space","/bin/df -h");
+defCmdT("Encrypted disks","/sbin/geli list");
 
 defCmdT("smb.conf","cat /var/etc/smb.conf");
-defCmdT("SPD","/usr/sbin/setkey -DP");
-defCmdT("SAD","/usr/sbin/setkey -D");
+defCmdT("mDNSResponder.conf","cat /var/etc/mDNSResponder.conf");
+defCmdT("crontab","cat /var/etc/crontab");
 
 defCmdT("last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail -n 200");
 

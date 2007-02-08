@@ -141,11 +141,13 @@ if(isset($_GET['action'])) {
               {
                 case "mount":
                   echo(gettext("Mounting...") . "<br>");
-                  $result = disks_mount_sharename($sharename);
+                  //$result = disks_mount_sharename($sharename);
+				  $result = disks_mount($mount);
                   break;
                 case "umount":
                   echo(gettext("Unmounting...") . "<br>");
-                  $result = disks_umount_sharename($sharename);
+                  //$result = disks_umount_sharename($sharename);
+				  $result = disks_umount($mount);
                   break;
               }
 

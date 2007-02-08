@@ -3,23 +3,23 @@
 /*
 	disks_manage_iscsi.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-
+	
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-
+	
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-
+	
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-
+	
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-
+	
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -35,114 +35,112 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Management"));
 
-if (!is_array($config['iscsi'])) {
-	$config['iscsi'] = array();
-}
+if (!is_array($config['iscsiinit']['vdisk']))
+	$config['iscsiinit']['vdisk'] = array();
 
-$pconfig['enable'] = isset($config['iscsi']['enable']);
-$pconfig['targetaddress'] = $config['iscsi']['targetaddress'];
-$pconfig['targetname'] = $config['iscsi']['targetname'];
+iscsiinit_sort();
+
+$a_iscsiinit = &$config['iscsiinit']['vdisk'];
 
 if ($_POST) {
-	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
-	$reqdfields = array();
-	$reqdfieldsn = array();
-
-	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "targetaddress targetname"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Target IP address"),gettext("Targetname")));
-	}
-
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-	if ($_POST['enable'] && !is_ipaddr($_POST['targetaddress'])) {
-  		$input_errors[] = gettext("A valid IP address must be specified.");
-  }
-
-	if (!$input_errors) {
-		$config['iscsi']['enable'] = $_POST['enable'] ? true : false;
-		$config['iscsi']['targetaddress'] = $_POST['targetaddress'];
-		$config['iscsi']['targetname'] = $_POST['targetname'];
-
-		write_config();
-
+	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			/* nuke the cache file */
-			config_lock();
-			services_iscsi_configure();
+			/*config_lock();
 			config_unlock();
+			*/
 		}
 		$savemsg = get_std_save_message($retval);
+		if ($retval == 0) {
+			if (file_exists($d_iscsiinitdirty_path))
+				unlink($d_iscsiinitdirty_path);
+		}
 	}
 }
+if ($_GET['act'] == "del")
+{
+	if ($a_iscsiinit[$_GET['id']]) {
+		if(disks_mount_check($a_iscsiinit[$_GET['id']]['fullname'])) {
+			// Killl encrypted volume
+			//disks_geli_kill($a_geli[$_GET['id']]['fullname']);
+			/*Remove the 'geli' fstype of the original disk */
+
+			// Del the geli volume on the config file
+			unset($a_iscsiinit[$_GET['id']]);
+			write_config();
+			touch($d_iscsiinitdirty_path);
+			header("Location: disks_crypt.php");
+			exit;
+        } else {
+                  $errormsg[] = gettext("This iscsi disk must be unlounted before to be delete");
+        }
+		
+	}
+}
+
 ?>
 <?php include("fbegin.inc"); ?>
+<?php if($errormsg) print_input_errors($errormsg);?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
+<tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-      	<li class="tabinact"><a href="disks_manage.php"><?=gettext("Manage"); ?></a></li>
+        <li class="tabinact"><a href="disks_manage.php"><?=gettext("Manage"); ?></a></li>
       	<li class="tabact"><?=gettext("iSCSI initiator"); ?></li>
       </ul>
     </td>
   </tr>
-  <tr>
+  <tr> 
     <td class="tabcont">
-<script language="JavaScript">
-<!--
-function enable_change(enable_change) {
-	var endis = !(document.iform.enable.checked || enable_change);
-	document.iform.targetname.disabled = endis;
-	document.iform.targetaddress.disabled = endis;
-}
-//-->
-</script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="disks_manage_iscsi.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-      <td colspan="2" valign="top" class="optsect_t">
-        <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr>
-            <td class="optsect_s"><strong><?=gettext("iSCSI Initiator"); ?></strong></td>
-				    <td align="right" class="optsect_s">
-              <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable"); ?></strong>
+      <form action="disks_manage_iscsi.php" method="post">
+        <?php if ($savemsg) print_info_box($savemsg); ?>
+        <?php if (file_exists($d_iscsiinitdirty_path)): ?><p>
+        <?php print_info_box_np(gettext("The iSCSI disk list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+        <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+        <?php endif; ?>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="25%" class="listhdrr"><?=gettext("Name"); ?></td>
+			<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
+            <td width="25%" class="listhdrr"><?=gettext("Target name"); ?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Initiator name"); ?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Status") ;?></td>
+            <td width="10%" class="list"></td>
+          </tr>
+  			  <?php $i = 0; foreach($a_iscsiinit as $iscsiinit): ?>
+          <tr>
+            <td class="listlr"><?=htmlspecialchars($iscsiinit['name']);?>&nbsp;</td>
+			<td class="listlr"><?=htmlspecialchars($iscsiinit['targetname']);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($iscsiinit['targetaddress']);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($iscsiinit['initiatorname']);?>&nbsp;</td>
+            <td class="listbg">
+              <?php
+              if (file_exists($d_iscsiinitdirty_path)) {
+                echo(gettext("Configuring"));
+              } else {
+                $stat = disks_iscsiinit_check($iscsiinit['name']);
+                if(1 == $stat) {
+                  echo(gettext("Offline"));
+                } else {
+                  echo(gettext("Online"));
+                }
+              }
+              ?>&nbsp;
+            </td>
+            <td valign="middle" nowrap class="list">
+              <a href="disks_manage_iscsi.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete intiator"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>
-				</table>
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Target IP address"); ?></td>
-      <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="targetaddress" type="text" class="formfld" id="targetaddress" size="20" value="<?=htmlspecialchars($pconfig['targetaddress']);?>"><br>
-        <?=gettext("IP address of the iSCSI target."); ?>
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Targetname"); ?></td>
-      <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="targetname" type="text" class="formfld" id="targetname" size="20" value="<?=htmlspecialchars($pconfig['targetname']);?>"><br>
-        <?=gettext("Targetname."); ?>
-      </td>
-    </tr>
-		<tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
-      </td>
-    </tr>
-  </table>
-</form>
-<script language="JavaScript">
-<!--
-enable_change(false);
-//-->
-</script>
-</td></tr></table>
+          <?php $i++; endforeach; ?>
+          <tr> 
+            <td class="list" colspan="5"></td>
+            <td class="list"><a href="disks_manage_iscsi_edit.php"><img src="plus.gif" title="<?=gettext("Add initiator");?>" width="17" height="17" border="0"></a></td>
+			    </tr>
+        </table>
+      </form>
+	  </td>
+  </tr>
+</table>
 <?php include("fend.inc"); ?>

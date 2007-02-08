@@ -45,7 +45,7 @@ echo
 echo
 echo "Console setup"
 echo "*************"
-echo "0) Logout (SSH only)"
+#echo "0) Logout (SSH only)"
 echo "1) Assign Interfaces"
 echo "2) Set LAN IP address"
 echo "3) Reset webGUI password"

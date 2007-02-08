@@ -1645,7 +1645,7 @@ function system_swap_configure()
 		$result |= mwexec("/sbin/mdconfig -d -u 2");
 	}
 	
-	if (isset($config['system']['swap'])) {
+	if (isset($config['system']['swap_enable'])) {
 		if (!file_exists("/mnt/{$config['system']['swap_mount-name']}/swap_file")){
 			$result |= mwexec("/bin/dd if=/dev/zero of=/mnt/{$config['system']['swap_mount-name']}/swap_file bs=1024k count={$config['system']['swap_size']}");
 			// $result |= mwexec("chmod 0600 /mnt/{$config['system']['swap_mount-name']}/swap_file");

@@ -94,6 +94,8 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['fstype'] = $a_mount[$id]['fstype'];
 	$pconfig['sharename'] = $a_mount[$id]['sharename'];
 	$pconfig['desc'] = $a_mount[$id]['desc'];
+} else {
+$pconfig['partition'] = "s1";
 }
 
 if ($_POST) {

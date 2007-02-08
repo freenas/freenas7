@@ -78,9 +78,18 @@ function disks_mount($mount)
 	/* mount the filesystems */
 	
 	$devname=escapeshellcmd($mount['fullname']);
-
-	/* check the fileystem only if there is a problem*/
 	
+	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
+	if ($g['booting']) {
+		 if (is_array($config['geli']['vdisk'])) {
+			$a_geli = $config['geli']['vdisk'];
+			if (array_search_ex($mount['mdisk'], $a_geli, "fullname")) {
+				echo "\nSkip mounting {$mount['sharename']}: Passphrase need."; 
+				return 0;
+			}
+		}
+	}
+	/* check the fileystem only if there is a problem*/
 	/* This part is too stupid: I must read the FreBSD start script for use the same intelligent method for checking hard drive */
 	
 	switch ($mount['fstype']) 	{
@@ -140,8 +149,14 @@ function disks_mount($mount)
 			//if (mwexec("/sbin/mount_ntfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
 			// Load the kernel fuse module
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
-			if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname") == 0)
+			if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname") == 0) {
+				/*echo "DEBUG: MOUNT status:\n";
+				system("/sbin/mount");
+				echo "\ncommand send: /usr/local/bin/ntfs-3g $devname /mnt/$mountname";
+				echo "\nDEBUG: MOUNT NTFS OK.";
+				system("/sbin/mount"); */
 				$result = 0;
+			}
 			else 			{
 				/* Not OK, remove the directory, prevent writing on RAM disk */
 				@rmdir ("/mnt/$mountname");
@@ -1313,6 +1328,19 @@ function disks_geli_detach($gelifullname)
 
 // Detach all geli encrypted disks
 // Return 0 is OK, 1 is no OK
+
+// Kill (destroy) a geli encrypted volume
+// Return 0 is OK, 1 is no OK
+function disks_geli_kill($gelifullname)
+{
+
+	$result=mwexec("/sbin/geli kill $gelifullname");
+
+	return $result;
+}
+
+// Detach all geli encrypted disks
+// Return 0 is OK, 1 is no OK
 function disks_geli_detach_all()
 {
 	global $g, $config;
@@ -1330,5 +1358,13 @@ function disks_geli_detach_all()
 	
 	return $result;
 
+}
+
+// Check is the iscsi initiator is connected to the target
+// Return 0 is OK, 1 is no OK
+function disks_iscsiinit_check($name)
+{
+	// To be Checked with a camcontrol ??
+	return 0;
 }
 ?>

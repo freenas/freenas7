@@ -90,7 +90,7 @@ function showhide(tspan, tri) {
             <strong><?=gettext("Disks");?></strong><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_manage.php" class="navlnk"><?=gettext("Management");?></a><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_raid_gmirror.php" class="navlnk"><?=gettext("Software RAID");?></a> <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_crypt.php" class="navlnk"><?=gettext("Crypt");?></a><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_crypt.php" class="navlnk"><?=gettext("Encryption");?></a><br>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_init.php" class="navlnk"><?=gettext("Format");?></a><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_mount.php" class="navlnk"><?=gettext("Mount Point");?></a><br>
             <strong><?=gettext("Services");?></strong><br>
