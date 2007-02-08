@@ -81,7 +81,7 @@ FreeNAs 0.684b:
 - Little index page improvement : % used of TOTAL size display. Paul Wheels patch
 - Permit to configure the system time: Paul Wheels patch
 - Update language file: French, Chinese and Romanian
-- Added hardware sensors information page
+- Add hardware sensors information page
 
 Working Notes:
 1. Must finish swap feature (when mount point management, must check if the mount point is used by swap)
