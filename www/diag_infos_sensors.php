@@ -51,18 +51,18 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
     <li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI");?></a></li>
     <li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
 		<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
-		<li class="tabact"><a href="diag_infos_sensors.php" title="reload page" style="color:black"><?=gettext("Sensors");?></a></li>
+		<li class="tabact"><a href="diag_infos_sensors.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Sensors");?></a></li>
   </ul>
   </td></tr>
   <tr>
     <td class="tabcont">
       <?php
-      echo "<pre>";
-      echo "<strong>" . gettext("Sensors") . ":</strong><br><br>";
+      echo("<pre>");
+      echo("<strong>" . gettext("Sensors") . ":</strong><br><br>");
       exec("/usr/local/bin/chm -I -d 0 ", $rawdata);
       $rawdata = array_slice($rawdata,4);
       foreach($rawdata as $line) {
-				echo htmlspecialchars($line) . "<br>";
+				echo(str_replace( "°", "&deg;", $line)) . "<br>";
       }
       unset ($line);
       echo "</pre>";

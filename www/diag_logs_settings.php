@@ -131,7 +131,7 @@ function enable_change(enable_over) {
 					<li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSHD");?></a></li>
 					<li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("SMARTD");?></a></li>
 					<li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
-					<li class="tabact"><a href="diag_logs_settings.php" style="color:black" title="reload page"><?=gettext("Settings");?></a></li>
+					<li class="tabact"><a href="diag_logs_settings.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Settings");?></a></li>
 				</ul>
 			</td>
 		</tr>

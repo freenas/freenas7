@@ -41,7 +41,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
     <li class="tabinact"><a href="diag_infos.php"><?=gettext("Disks");?></a></li>
     <li class="tabinact"><a href="diag_infos_part.php"><?=gettext("Partitions");?></a></li>
     <li class="tabinact"><a href="diag_infos_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
-    <li class="tabact"><a href="diag_infos_ataidle.php" title="reload page" style="color:black"><?=gettext("ATAidle");?></a></li>
+    <li class="tabact"><a href="diag_infos_ataidle.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("ATAidle");?></a></li>
     <li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
     <li class="tabinact"><a href="diag_infos_mount.php"><?=gettext("Mounts");?></a></li>
     <li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>

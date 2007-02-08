@@ -43,7 +43,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
     <li class="tabinact"><a href="diag_infos_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
     <li class="tabinact"><a href="diag_infos_ataidle.php"><?=gettext("ATAidle");?></a></li>
     <li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
-    <li class="tabact"><a href="diag_infos_mount.php" title="reload page" style="color:black"><?=gettext("Mounts");?></a></li>
+    <li class="tabact"><a href="diag_infos_mount.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Mounts");?></a></li>
     <li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
     <li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI");?></a></li>
     <li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>

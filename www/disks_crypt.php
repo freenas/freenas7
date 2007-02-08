@@ -86,7 +86,7 @@ if ($_GET['act'] == "ret")
 <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><?=gettext("Manage");?></li>
+        <li class="tabact"><a href="disks_crypt.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Manage");?></a></li>
         <li class="tabinact"><a href="disks_crypt_tools.php"><?=gettext("Tools");?></a></li>
       </ul>
     </td>

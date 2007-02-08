@@ -75,7 +75,7 @@ function dump_clog($logfile, $tail, $withorig = true) {
     <li class="tabinact1"><a href="diag_logs.php"><?=gettext("System");?></a></li>
     <li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
     <li class="tabinact"><a href="diag_logs_rsyncd.php"><?=gettext("RSYNC");?></a></li>
-    <li class="tabact"><a href="diag_logs_sshd.php" style="color:black" title="reload page"><?=gettext("SSHD");?></a></li>
+    <li class="tabact"><a href="diag_logs_sshd.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("SSHD");?></a></li>
     <li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("SMARTD");?></a></li>
     <li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
     <li class="tabinact"><a href="diag_logs_settings.php"><?=gettext("Settings");?></a></li>

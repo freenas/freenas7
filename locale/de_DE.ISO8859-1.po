@@ -1826,3 +1826,6 @@ msgstr "Das Attribut '%s' wird ben&ouml;tigt."
 
 msgid "Sensors"
 msgstr "Sensoren"
+
+msgid "Seite neu laden"
+msgstr ""

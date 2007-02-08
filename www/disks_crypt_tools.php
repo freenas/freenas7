@@ -98,7 +98,7 @@ if(isset($_GET['action'])) {
     <td class="tabnavtbl">
       <ul id="tabnav">
         <li class="tabinact"><a href="disks_crypt.php"><?=gettext("Manage");?></a></li>
-        <li class="tabact"><?=gettext("Tools");?></a></li>
+        <li class="tabact"><a href="disks_crypt_tools.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Tools");?></a></li>
       </ul>
     </td>
   </tr>

@@ -197,7 +197,7 @@ function enable_change(enable_change) {
   <ul id="tabnav">
 	<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Server") ;?></a></li>
     <li class="tabinact"><a href="services_rsyncd_client.php"><?=gettext("Client") ;?></a></li>
-    <li class="tabact"><a href="services_rsyncd_local.php" style="color:black" title="reload page"><?=gettext("Local") ;?></a></li>
+    <li class="tabact"><a href="services_rsyncd_local.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Local") ;?></a></li>
   </ul>
   </td></tr>
   <tr> 

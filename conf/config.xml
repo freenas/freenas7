@@ -120,6 +120,7 @@
 			<diskr>/dev/xxx</diskr>
 			<desc>xxx</desc>
 			<fullname>/dev/xxx</fullname>
+			<fstype>xxx</fstype>
 		</vdisk>
 		-->
 	</gvinum>

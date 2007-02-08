@@ -72,7 +72,7 @@ function dump_clog($logfile, $tail, $withorig = true) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact"><a href="diag_logs.php" style="color:black" title="reload page"><?=gettext("System");?></a></li>
+	<li class="tabact"><a href="diag_logs.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("System");?></a></li>
     <li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
     <li class="tabinact"><a href="diag_logs_rsyncd.php"><?=gettext("RSYNCD");?></a></li>
     <li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSHD");?></a></li>
