@@ -69,7 +69,7 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "name type");
-	$reqdfieldsn = array(gettext("Raid name"),_DISKSRAIDPHPgettext("Type"));
+	$reqdfieldsn = array(gettext("Raid name"),gettext("Type"));
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
