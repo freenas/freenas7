@@ -3,19 +3,19 @@
 #	part of FreeNAS (http://www.freenas.org)
 #	Copyright (C) 2006-2007 Baikuan Hsu <chicworks@gmail.com>
 #	All rights reserved.
-#	
+#
 #	This language file works perfectly on FreeNAS rev.401 (0.683b)
-#	
+#
 #	Redistribution and use in source and binary forms, with or without
 #	modification, are permitted provided that the following conditions are met:
-#	
+#
 #	1. Redistributions of source code must retain the above copyright notice,
 #	   this list of conditions and the following disclaimer.
-#	
+#
 #	2. Redistributions in binary form must reproduce the above copyright
 #	   notice, this list of conditions and the following disclaimer in the
 #	   documentation and/or other materials provided with the distribution.
-#	
+#
 #	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 #	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 #	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -31,7 +31,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-01-30 10:33+0800\n"
+"PO-Revision-Date: 2007-02-09 15:45+0800\n"
 "Last-Translator: chicman <chicman@cosa.org.tw>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -288,10 +288,10 @@ msgid "The changes have been applied successfully."
 msgstr "變更套用成功。"
 
 msgid "The changes have been saved. You must <a href=%s>reboot</a> your NAS for changes to take effect."
-msgstr "變更已儲存，必須<a href=%s>重新開機</a>之後才會生效"
+msgstr "變更已經儲存。 <a href=%s>重新開啟</a>NAS系統之後便會生效。"
 
 msgid "ERROR: The changes could not be applied (error code %s)."
-msgstr "錯誤：變更無法套用 (error code %s)."
+msgstr "錯誤：變更無法套用 (錯誤代碼 %s)."
 
 msgid "A valid IP address must be specified."
 msgstr "請輸入一個有效的IP位置。"
@@ -309,7 +309,7 @@ msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select mi
 msgstr "提示：使用Ctrl+滑鼠左鍵(Mac：command+滑鼠主鍵)就可以複選項目。"
 
 msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
-msgstr "UFS 檔案系統格式是 FreeBSD 原生檔案格式 (%s的OS)。 如果使用FAT, FAT32, EXT2, EXT3, 或是 NTFS 可能會導致檔案損毀等等不可預期的錯誤！"
+msgstr "UFS 檔案系統格式是 FreeBSD 原生檔案格式 (%s的OS)。 如果使用FAT, FAT32, EXT2, EXT3, 或是 NTFS 可能會導致檔案損毀等不可預期的錯誤！"
 
 msgid "Active"
 msgstr "運作中"
@@ -341,6 +341,9 @@ msgstr "指派"
 msgid "LAN"
 msgstr "區域網路"
 
+msgid "Management"
+msgstr "管理"
+
 msgid "Mount Point"
 msgstr "掛載點"
 
@@ -364,6 +367,9 @@ msgstr "SSHD"
 
 msgid "Unison"
 msgstr "Unison"
+
+msgid "UPnP"
+msgstr "UPnP"
 
 msgid "AFP"
 msgstr "AFP"
@@ -410,9 +416,6 @@ msgstr "Ping/Traceroute"
 msgid "ARP table"
 msgstr "ARP table"
 
-msgid "Command"
-msgstr "命令列"
-
 msgid "Edit File"
 msgstr "編輯檔案"
 
@@ -452,6 +455,9 @@ msgstr "帳號"
 msgid "If you want to change the username for accessing the webGUI, enter it here."
 msgstr "變更網頁介面的帳號。"
 
+msgid "Password"
+msgstr "密碼"
+
 msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don't use the character ':'."
 msgstr "變更網頁介面的密碼（兩次）<br>不要使用以下的字元 ':'。"
 
@@ -470,6 +476,12 @@ msgstr "Language/語言設定"
 msgid "Select the system language"
 msgstr "選擇網頁管理介面顯示語言"
 
+msgid "System Time"
+msgstr "系統時間"
+
+msgid "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select one, then use Save button to update system time. (Mind seconds part will be ignored)"
+msgstr "直接輸入欲設定的系統時間 (格式為 mm/dd/yyyy hh:mm) ，或是點選圖示選擇時間，點選儲存之後便會更新系統時間。 (秒數的資料將會忽略)"
+
 msgid "Time zone"
 msgstr "時區"
 
@@ -479,14 +491,14 @@ msgstr "選擇最鄰近的區域。"
 msgid "Time update interval"
 msgstr "時間同步間隔"
 
-msgid "Minutes between network time sync.; 300	recommended, or 0 to disable."
+msgid "Minutes between network time sync.; 300\trecommended, or 0 to disable."
 msgstr "多少分鐘與時間伺服器同步一次。建議設為300分鐘，輸入0則可以關閉同步功能"
 
 msgid "NTP time server"
 msgstr "NTP時間伺服器"
 
-msgid "Use a space to separate multiple hosts (only one required). Remember to set 				  up at least one DNS server if you enter a host name here!"
-msgstr "使用空白字元來分隔多個主機位置(一個空白即可)，這個服務需要先設定DNS伺服器。"
+msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
+msgstr "使用空白字元來分隔多個主機位置(一個空白即可)。如果你輸入主機名稱，請先設定DNS伺服器。"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
 msgstr "Hostname只能包含以下字元 a-z, 0-9, '-'。"
@@ -566,9 +578,6 @@ msgstr "網路介面卡"
 msgid "Network"
 msgstr "目標網段"
 
-msgid "Gateway"
-msgstr "閘道"
-
 msgid "Edit Route"
 msgstr "編輯路由"
 
@@ -628,6 +637,9 @@ msgstr "新的韌體正在安裝中，完成之後%s將會自動重新開機。"
 
 msgid "Firmware uploading is not supported on this platform."
 msgstr "此系統並不支援韌體上傳功能。."
+
+msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
+msgstr "這表示你所上傳的映像檔並非由FreeNAS官方所發佈的，安裝這個映像檔可能會導致安全漏洞或是不可預期的錯誤。請安裝來自官方，或是你所信任的來源所提供之映像檔，並確定所下載之映像檔並沒有被植入惡意程式。<br><br>你要繼續安裝這個映像檔嗎？(自行負責)"
 
 msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr "於下方點選 &quot;開啟韌體升級功能&quot; ，然後選擇將要上傳的映像檔。<br>點選 &quot;韌體升級&quot; 以啟動升級動作"
@@ -734,6 +746,24 @@ msgstr "ZeroConf"
 msgid "Disable ZeroConf service announce"
 msgstr "關閉ZeroConf的服務宣告"
 
+msgid "Swap file"
+msgstr "Swap檔"
+
+msgid "Swap size"
+msgstr "Swap大小"
+
+msgid "mount share"
+msgstr "分享之掛載點"
+
+msgid "Mount to use for swap"
+msgstr "Swap所使用的掛載點"
+
+msgid "Swap file size"
+msgstr "Swap檔案大小"
+
+msgid "Size in MB."
+msgstr "以MB為單位。"
+
 msgid "Assign network ports"
 msgstr "指派通訊埠"
 
@@ -809,6 +839,9 @@ msgstr "動態DHCP設定"
 msgid "General configuration"
 msgstr "一般設定"
 
+msgid "Hostname"
+msgstr "主機名稱"
+
 msgid "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
 msgstr "這個數值將會成為向DHCP伺服器要求IP時發送出去的主機名稱。"
 
@@ -836,14 +869,14 @@ msgstr "工具"
 msgid "iSCSI initiator"
 msgstr "iSCSI初始"
 
-msgid "Management"
-msgstr "管理"
-
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "磁碟組態已經變更。<br>套用之後便會生效。"
 
 msgid "Standby time"
 msgstr "進入待命時間"
+
+msgid "Always on"
+msgstr "永遠開啟"
 
 msgid "Unknown or unformatted"
 msgstr "未知/未格式化"
@@ -878,11 +911,35 @@ msgstr "設定在多久時間之後，如果沒有存取動作便將硬碟切換
 msgid "Advanced Power Management"
 msgstr "進階電源管理"
 
+msgid "Minimum power usage with Standby"
+msgstr "開啟待命模式之最小耗電量"
+
+msgid "Medium power usage with Standby"
+msgstr "開啟待命模式之中等耗電量"
+
+msgid "Minimum power usage without Standby"
+msgstr "關閉待命模式之最小耗電量"
+
+msgid "Medium power usage without Standby"
+msgstr "關閉待命模式之中等耗電量"
+
+msgid "Maximum performance, maximum power usage"
+msgstr "最大效能/耗電量"
+
 msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"
 msgstr "用來控制磁碟的電源消耗，相反的會失去一些效能。<br><em>CF卡請勿選用。</em>"
 
 msgid "Acoustic level"
 msgstr "噪音控制"
+
+msgid "Minimum performance, Minimum acoustic output"
+msgstr "最小效能/噪音"
+
+msgid "Medium acoustic output"
+msgstr "中等效能/噪音"
+
+msgid "Maximum performance, maximum acoustic output"
+msgstr "最大效能/噪音"
 
 msgid "This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"
 msgstr "用來控制磁碟的運轉噪音程度。<br><em>CF卡請勿選用。</em>"
@@ -1010,9 +1067,6 @@ msgstr "這個裝置已經是RAID成員。"
 msgid "There must be a minimum of 2 disks in a RAID 0 volume."
 msgstr "架構 RAID 0 最少要有兩個磁碟。"
 
-msgid "There must be a minimum of 2 disks in a JBOD."
-msgstr "架構 JBOD 最少要有兩個磁碟。"
-
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "架構 RAID 1 最少要有兩個磁碟。"
 
@@ -1024,12 +1078,6 @@ msgstr "錯誤！不能儲存 RAID 設定值。\n"
 
 msgid "Raid name"
 msgstr "Raid名稱"
-
-msgid "Balance algorithm"
-msgstr "效能均衡演算法"
-
-msgid "Select your read balance algorithm."
-msgstr "選擇讀取檔案時採用的效能均衡演算法。"
 
 msgid "striping"
 msgstr "striping"
@@ -1061,6 +1109,9 @@ msgstr "格式化UFS磁碟！"
 msgid "Object name"
 msgstr "物件名稱"
 
+msgid "Command"
+msgstr "命令列"
+
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly)."
 msgstr "1. 這些特殊的命令只用來除錯而已！<br>2. RAID磁碟在建立之後會自動的啟動，不需要利用activate工具再啟動一次。"
 
@@ -1088,9 +1139,6 @@ msgstr "不能掛載系統區(第1區)，資料分割區為第2區。"
 msgid "Duplicate Share Name."
 msgstr "輸入了存在的分享名稱。"
 
-msgid "This disk/partition is allready configured."
-msgstr "這個磁碟/磁區之前已經設定過了。"
-
 msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
 msgstr "1. 你不可以掛載含有'%s'設定檔的磁區。<br>2. FreeBSD對NTFS格式的支援尚不完全（有BUG!）。"
 
@@ -1099,15 +1147,6 @@ msgstr "掛載中..."
 
 msgid "Unmounting..."
 msgstr "卸載中..."
-
-msgid "Settings"
-msgstr "設定"
-
-msgid "Share"
-msgstr "分享"
-
-msgid "Shares"
-msgstr "分享"
 
 msgid "The Netbios name contains invalid characters."
 msgstr "Netbios名稱輸入了無效的字元。"
@@ -1394,6 +1433,9 @@ msgstr "替代的TCP連接埠。"
 msgid "Permit root login"
 msgstr "root准許登入"
 
+msgid "Enable TCP Forwarding"
+msgstr "Enable TCP Forwarding"
+
 msgid "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr "指定超級使用者 (root)是否可以透過SSH直接登入。"
 
@@ -1412,6 +1454,9 @@ msgstr "設定值內的分享/工作目錄不存在。"
 msgid "Unison File Synchronisation"
 msgstr "Unison 檔案同步機制"
 
+msgid "Share"
+msgstr "分享"
+
 msgid "You may need enough space to duplicate all files being synced"
 msgstr "確定你有足夠的空間來複製所有將要同步的檔案"
 
@@ -1423,9 +1468,6 @@ msgstr "選擇工作檔案要儲存的位置"
 
 msgid "Create work directory if it doesn't exist"
 msgstr "如果你還沒有工作目錄，請建立一個"
-
-msgid "UPnP"
-msgstr "UPnP"
 
 msgid "UPnP A/V Media Server"
 msgstr "UPnP影音多媒體伺服器"
@@ -1441,6 +1483,27 @@ msgstr "內容"
 
 msgid "Directories to be shared."
 msgstr "分享的資料夾(space or CSV list)."
+
+msgid "No content directory to be shared."
+msgstr "No content directory to be shared."
+
+msgid "Directory"
+msgstr "目錄"
+
+msgid "Add directory"
+msgstr "新增目錄"
+
+msgid "Edit directory"
+msgstr "編輯目錄"
+
+msgid "Delete directory"
+msgstr "刪除目錄"
+
+msgid "Do you really want to delete this directory entry?"
+msgstr "確定要刪除這個目錄？"
+
+msgid "Directory to be shared."
+msgstr "分享的目錄"
 
 msgid "You must select at least one authentication method."
 msgstr "請至少選擇一種認證方式。"
@@ -1502,17 +1565,11 @@ msgstr "全名包含無效的字元。"
 msgid "This user already exists in the user list."
 msgstr "使用者帳號已經存在。"
 
-msgid "The password contain the illegal : character"
-msgstr "密碼包含無效的 : 字元"
-
 msgid "Unique login name of user."
 msgstr "用來登入的使用者帳號"
 
 msgid "User full name."
 msgstr "使用者的全名"
-
-msgid "Password"
-msgstr "密碼"
 
 msgid "User password."
 msgstr "使用者自行設定的密碼"
@@ -1682,6 +1739,9 @@ msgstr "PPTP"
 msgid "Subnet mask"
 msgstr "網段遮罩"
 
+msgid "Gateway"
+msgstr "閘道"
+
 msgid "ISP DNS servers"
 msgstr "ISP DNS伺服器"
 
@@ -1747,9 +1807,6 @@ msgstr "可用空間"
 
 msgid "%s will reboot after restoring the configuration."
 msgstr "%s復原設定組態之後將會自動重新開機。"
-
-msgid "Hostname"
-msgstr "主機名稱"
 
 msgid "Delete ARP entry"
 msgstr "刪除ARP項目"
@@ -1902,7 +1959,7 @@ msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to h
 msgstr "如果<a href=%s>%s</a>頁面內， &quot;將IP解析成主機名稱&quot;的選項有開啟，IP 位置會解析成主機名稱。"
 
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
-msgstr "如果你點選了 '是'， %s 的所有組態設定將會重設為預設值然後重新開機。 所有之前所做的變更都將被覆蓋。區域網路的 IP 位置會重新設定為%s而密碼將設定為 '%s'。"
+msgstr "當你點選了'是'， %s 將會重設回原廠預設值並立刻重新開機。全部系統的設定值將會被覆寫，IP位置也將重設為 %s 。 而密碼將設定為 '%s' 。"
 
 msgid "Are you sure you want to proceed?"
 msgstr "確定要繼續進行？"
@@ -1957,4 +2014,91 @@ msgstr "開啟電源監控程式。"
 
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
 msgstr "電源監控程式會監控系統的整體狀態並且設定相關的電源控制項目。"
+
+msgid "Temperature"
+msgstr "溫度"
+
+msgid "n/a"
+msgstr "無資料"
+
+msgid "The attribute '%s' contains invalid characters."
+msgstr "資料 '%s' 包含了無效的字元。"
+
+msgid "The attribute '%s' is required."
+msgstr "資料 '%s' 是必須欄位。"
+
+msgid "Crypt"
+msgstr "加密"
+
+msgid "The crypted disk list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "加密磁碟設定已經變更。<br>變更之後才會生效。"
+
+msgid "Data integrity"
+msgstr "資料完整性"
+
+msgid "Encryption"
+msgstr "加密方式"
+
+msgid "Do you really want to delete this encrypted disk? All elements that still use it will become invalid (e.g. share)!"
+msgstr "確定要刪除這個加密磁碟嗎？所有使用此磁碟的元件都會失效！(例：分享)"
+
+msgid "Create encrypted disk"
+msgstr "建立加密磁碟"
+
+msgid "Data integrity algorithm"
+msgstr "資料完整性演算法"
+
+msgid "Encryption algorithm"
+msgstr "加密演算法"
+
+msgid "Passphrase"
+msgstr "加密金鑰"
+
+msgid "Passphrase don't match."
+msgstr "加密金鑰並不相同。"
+
+msgid "Init and encrypt disk"
+msgstr "初始並且開始加密磁碟"
+
+msgid "Disk initialization and encryption"
+msgstr "磁碟初始化與加密"
+
+msgid "Encrypting... Please wait"
+msgstr "加密中...請稍等"
+
+msgid "Attaching..."
+msgstr "連接中..."
+
+msgid "Using Data integrity will reduce size of available storage and also reduce speed."
+msgstr "套用資料完整性檢查會需要額外的儲存空間與計算時間。"
+
+msgid "Sensors"
+msgstr "感應器"
+
+msgid "This encrypted disk is mounted, umount it before trying to detach it."
+msgstr "這個加密磁碟正在掛載中，在卸除之前請先將其卸載。"
+
+msgid "You must use a passphrase for attach an encrypted disk."
+msgstr "連結加密磁碟之前請輸入一個加密金鑰。"
+
+msgid "Encrypted disk name"
+msgstr "加密磁碟名稱"
+
+msgid "Detaching..."
+msgstr "卸除中..."
+
+msgid "attach"
+msgstr "連結"
+
+msgid "detach"
+msgstr "卸除"
+
+msgid "Attached"
+msgstr "連結成功"
+
+msgid "Not attached"
+msgstr "尚未連結"
+
+msgid "Reload page"
+msgstr "重新載入頁面"
 

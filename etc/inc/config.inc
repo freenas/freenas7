@@ -534,6 +534,38 @@ function convert_config()
 		
 		$config['version'] = "1.5";
 	}
+	
+	/* convert 1.5 -> 1.6 */
+	/* Upgrade iSCSI and NFS configurations */
+	if ($config['version'] == "1.5") {
+	
+		if (isset($config['nfs']['enable'])) 	{
+				
+			$config['nfs']['nfsnetworks']=array();
+			$config['nfs']['nfsnetworks'][]=$config['nfs']['nfsnetwork'];
+			unset($config['nfs']['nfsnetwork']);
+		}
+		
+		if (isset($config['iscsi']['enable'])) 	{
+			
+			$iscsivdisk = array();
+			$iscsivdisk['targetname'] = $config['iscsi']['targetname'];
+			$iscsivdisk['targetaddress'] = $config['iscsi']['targetaddress'];
+			$iscsivdisk['name'] = "target0";
+			$iscsivdisk['initiatorname'] = "iqn.2005-01.il.ac.huji.cs";
+			$config['iscsiinit']['vdisk'] = array();
+			$config['iscsiinit']['vdisk'][] = $iscsivdisk;
+			
+			unset($config['iscsi']['enable']);
+			unset($config['iscsi']['targetaddress']);
+			unset($config['iscsi']['targetname']);
+		
+		}
+		
+		
+	$config['version'] = "1.6";
+	
+	}
 	write_config();
 	
 	if ($g['booting'])

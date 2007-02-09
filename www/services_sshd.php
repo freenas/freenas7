@@ -163,7 +163,7 @@ function enable_change(enable_change) {
 				        <tr> 
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)"> 
+                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart SSHD");?>" onClick="enable_change(true)"> 
                   </td>
                 </tr>
                 </table>

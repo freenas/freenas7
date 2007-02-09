@@ -48,9 +48,9 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			/*config_lock();
+			config_lock();
+			services_iscsiinit_configure();
 			config_unlock();
-			*/
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
@@ -62,20 +62,16 @@ if ($_POST) {
 if ($_GET['act'] == "del")
 {
 	if ($a_iscsiinit[$_GET['id']]) {
-		if(disks_mount_check($a_iscsiinit[$_GET['id']]['fullname'])) {
-			// Killl encrypted volume
-			//disks_geli_kill($a_geli[$_GET['id']]['fullname']);
-			/*Remove the 'geli' fstype of the original disk */
-
-			// Del the geli volume on the config file
+		/* if(disks_mount_check($a_iscsiinit[$_GET['id']]['fullname'])) {
+			*/
 			unset($a_iscsiinit[$_GET['id']]);
 			write_config();
 			touch($d_iscsiinitdirty_path);
-			header("Location: disks_crypt.php");
+			header("Location: disks_manage_iscsi.php");
 			exit;
-        } else {
+        /* } else {
                   $errormsg[] = gettext("This iscsi disk must be unlounted before to be delete");
-        }
+        } */
 		
 	}
 }
@@ -105,23 +101,20 @@ if ($_GET['act'] == "del")
             <td width="25%" class="listhdrr"><?=gettext("Name"); ?></td>
 			<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
             <td width="25%" class="listhdrr"><?=gettext("Target name"); ?></td>
-            <td width="20%" class="listhdrr"><?=gettext("Initiator name"); ?></td>
             <td width="20%" class="listhdrr"><?=gettext("Status") ;?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_iscsiinit as $iscsiinit): ?>
           <tr>
             <td class="listlr"><?=htmlspecialchars($iscsiinit['name']);?>&nbsp;</td>
-			<td class="listlr"><?=htmlspecialchars($iscsiinit['targetname']);?>&nbsp;</td>
+			<td class="listr"><?=htmlspecialchars($iscsiinit['targetname']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($iscsiinit['targetaddress']);?>&nbsp;</td>
-            <td class="listr"><?=htmlspecialchars($iscsiinit['initiatorname']);?>&nbsp;</td>
             <td class="listbg">
               <?php
               if (file_exists($d_iscsiinitdirty_path)) {
                 echo(gettext("Configuring"));
               } else {
-                $stat = disks_iscsiinit_check($iscsiinit['name']);
-                if(1 == $stat) {
+                if(disks_iscsiinit_check($iscsiinit['name'])) {
                   echo(gettext("Offline"));
                 } else {
                   echo(gettext("Online"));
@@ -129,8 +122,8 @@ if ($_GET['act'] == "del")
               }
               ?>&nbsp;
             </td>
-            <td valign="middle" nowrap class="list">
-              <a href="disks_manage_iscsi.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete intiator"); ?>" width="17" height="17" border="0"></a>
+            <td valign="middle" nowrap class="list"> <a href="disks_manage_iscsi_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit initiator");?>" width="17" height="17" border="0">
+              <a href="disks_manage_iscsi.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete initiator"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>
           <?php $i++; endforeach; ?>

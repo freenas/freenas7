@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-01-29 12:58+0200\n"
-"Last-Translator: Laurentiu Florin BUBUIANU <laurb@tvriasi.ro>\n"
+"PO-Revision-Date: 2007-02-08 16:31+0200\n"
+"Last-Translator: Laurentiu Florin BUBUIANU <laurfb@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
@@ -255,11 +255,11 @@ msgstr "Indiciu"
 msgid "The changes have been applied successfully."
 msgstr "Modificarile au fost aplicate cu succes."
 
-msgid "The changes have been saved. You must <a href=%s>reboot</a> your NAS for changes to take effect."
-msgstr "Modificarile au fost salvate. Trebuie sa <a href=%s>reporniti</a> sistemul pentru ca modificarile sa aiba efect."
+msgid "The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS for changes to take effect."
+msgstr "Modificarile au fost salvate. Trebuie sa <a href=reboot.php>reporniti</a> sistemul pentru ca modificarile sa aiba efect."
 
-msgid "ERROR: The changes could not be applied (error code %s)."
-msgstr "EROARE: Modificarile nu pot fi aplicate (cod erroare %s)."
+msgid "ERROR: the changes could not be applied (error code '.$ok.')."
+msgstr "EROARE: modificarile nu pot fi aplicate (cod erroare '.$ok.')."
 
 msgid "A valid IP address must be specified."
 msgstr "Trebuie sa introduceti o adresa IP valida."
@@ -1926,8 +1926,8 @@ msgstr "Iesire Traceroute"
 msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
 msgstr "Adresele IP vor fi afisate ca Nume Sistem daca &quot;Conversie adresa IP in  Nume Sistem&quot; este activata in pagina <a href=%s>%s</a>."
 
-msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
-msgstr "Daca veti alege optiunea 'Da', %s va fi resetat la valorile implicite si va reporni imediat. Intreaga configuratie va fi rescrisa, adresa IP implicita a sistemului va fi %s iar parola va fi modificata in '%s'."
+msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
+msgstr "Daca veti alege optiunea 'Da', %s va fi resetat la valorile implicite si va reporni imediat. Intreaga configuratie va fi rescrisa, adresa IP implicita a sistemului va fi 192.168.1.250 iar parola va fi modificata in '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Sinteti sigur ca vreti sa continuati?"
@@ -1983,4 +1983,90 @@ msgstr "Activare utilitar control alimentare sistem (UPS)"
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
 msgstr "Utilitarul powerd monitorizeaza si stabileste diferite setari pentru controlul alimentarii sistemului."
 
+msgid "Temperature"
+msgstr "Temperatura"
+
+msgid "n/a"
+msgstr "n/a"
+
+msgid "The attribute '%s' contains invalid characters."
+msgstr "Atributul '%s' contine caractere invalide"
+
+msgid "The attribute '%s' is required."
+msgstr "Atributul '%s' este necesar."
+
+msgid "Crypt"
+msgstr "Criptat"
+
+msgid "The crypted disk list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "Lista discurilor criptate a fost modificata.<br>Va trebui sa salvati modificarile pentru ca acestea sa devina active"
+
+msgid "Data integrity"
+msgstr "Integritate date"
+
+msgid "Encryption"
+msgstr "Criptare"
+
+msgid "Do you really want to delete this encrypted disk? All elements that still use it will become invalid (e.g. share)!"
+msgstr "Doriti sa stergeti acest disc criptat? Toate elementele asociate (ex. partajari definite) vor fi afectate!"
+
+msgid "Create encrypted disk"
+msgstr "Creare disc criptat"
+
+msgid "Data integrity algorithm"
+msgstr "Algoritm de integritate date"
+
+msgid "Encryption algorithm"
+msgstr "Algoritm criptare"
+
+msgid "Passphrase"
+msgstr "Fraza control"
+
+msgid "Passphrase don't match."
+msgstr "Frazele control nu coincid"
+
+msgid "Init and encrypt disk"
+msgstr "Initializare si criptare disc"
+
+msgid "Disk initialization and encryption"
+msgstr "Initializarea si criptarea discului"
+
+msgid "Encrypting... Please wait"
+msgstr "Criptare... Va rugam asteptati"
+
+msgid "Attaching..."
+msgstr "Atasare..."
+
+msgid "Using Data integrity will reduce size of available storage and also reduce speed."
+msgstr "Utilizarea optiunii de Integritate Date va reduce spatiul disponibil pe disc si viteza de acces."
+
+msgid "Sensors"
+msgstr "Senzori"
+
+msgid "This encrypted disk is mounted, umount it before trying to detach it."
+msgstr "Discul criptat este montay, demontati-l inainte de a-l detasa."
+
+msgid "You must use a passphrase for attach an encrypted disk."
+msgstr "Este necesar sa utilizati o fraza de control pentru a atasa un disc criptat"
+
+msgid "Encrypted disk name"
+msgstr "Nume disc criptat"
+
+msgid "Detaching..."
+msgstr "Detasare..."
+
+msgid "attach"
+msgstr "atasare"
+
+msgid "detach"
+msgstr "detasare"
+
+msgid "Attached"
+msgstr "Atasat"
+
+msgid "Not attached"
+msgstr "Neatasat"
+
+msgid "Reload page"
+msgstr "Reincarcare pagina"
 

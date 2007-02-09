@@ -99,8 +99,8 @@
 	/* start SNMP service */
 	/*services_snmpd_configure();*/
 	
-	/* start iSCSI service */
-	services_iscsi_configure();
+	/* start iSCSI initiator services */
+	services_iscsiinit_configure();
 	
 	/* start the NTP client */
 	system_ntp_configure();

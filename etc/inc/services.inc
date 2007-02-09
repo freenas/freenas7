@@ -466,38 +466,40 @@ function services_nfs_configure() {
 			printf("Error: cannot open exports in services_nfs_configure().\n");
 			$result = 1;
 		}
-		
-		list($network,$subnet) = 
-		explode('/', $config['nfs']['nfsnetwork']);
-		
-		$subnet=gen_subnet_mask($subnet);
-		
+		$a_net = &$config['nfs']['nfsnetworks'];
 		$a_mount = &$config['mounts']['mount'];
 		
-		foreach ($a_mount as $mount) {
-			$nfsconf .= <<<EOD
+		foreach ($a_net as $net) {
+		
+			list($network,$subnet) = explode('/', $net);
+		
+			$subnet=gen_subnet_mask($subnet);
+		
+			foreach ($a_mount as $mount) {
+				$nfsconf .= <<<EOD
 /mnt/{$mount['sharename']} -alldirs  
 EOD;
 
-			if (strcmp($config['nfs']['mapall'],"yes") == 0 ) 	{
+				if (strcmp($config['nfs']['mapall'],"yes") == 0 ) 	{
 			
-			$nfsconf .= <<<EOD
+				$nfsconf .= <<<EOD
 -mapall=root 
 EOD;
 			
-			} else {
-			$nfsconf .= <<<EOD
+				} else {
+				$nfsconf .= <<<EOD
 -maproot=root 
 EOD;
 			
-			}
+				}
 			
 			
-			$nfsconf .= <<<EOD
+				$nfsconf .= <<<EOD
 -network {$network} -mask $subnet
 
 EOD;
 			
+			}
 		}
 		fwrite($fd, $nfsconf);
 		fclose($fd);
@@ -1355,10 +1357,11 @@ function services_nis_configure()
 
 	return 0;
 }
+
 /* Start iscsi initiator
 Return 0 if Ok, 1 or error code if problem */
 // NEED TO STOP IT TOO ???
-function services_iscsi_configure()
+function old_services_iscsi_configure()
 {
 	global $config, $g;
 	
@@ -1376,6 +1379,74 @@ function services_iscsi_configure()
 		if ($g['booting']) {
 			echo "done\n";
 		}
+	}
+	
+	return $result;
+}
+
+/* Start iscsi initiator
+Return 0 if Ok, 1 or error code if problem */
+// NEED TO STOP IT TOO ???
+function services_iscsiinit_configure()
+{
+	global $config, $g;
+	
+	// MUST ADD LINE FOR STOP THE PROCESS
+	
+	if (is_array($config['iscsiinit']['vdisk'])) {
+		if ($g['booting']) {
+			echo "Loading iSCSI kernel module... ";
+		}
+		/* iSCSI initiator configured, start the process */
+		$result = mwexec("/sbin/kldload kdload /boot/kernel/iscsi_initiator.ko");
+		$result |= mwexec("/sbin/sysctl debug.iscsi=0");
+		
+		if ((!$result) && ($g['booting'])) {
+			echo "done\n";
+		} else if ($g['booting']) {
+			echo "ERROR\n";
+		}
+		if ($g['booting']) {
+			echo "Configuring initiator(s)... ";
+		}
+		
+		/* generate afpd.conf */
+		$fd = fopen("{$g['varetc_path']}/iscontrol.conf", "w");
+		if (!$fd) 		{
+			printf("Error: cannot open iscontrol.conf in services_iscsiinit_configure().\n");
+			$result = 1 ;
+		}
+		
+		$a_iscsiinit = &$config['iscsiinit']['vdisk'];
+		foreach ($a_iscsiinit as $iscsiinit)
+		{
+			$initiator .= <<<EOD
+{$iscsiinit['name']} {
+        targetname      = {$iscsiinit['targetname']}
+        targetaddress   = {$iscsiinit['targetaddress']}
+        initiatorname   = {$iscsiinit['initiatorname']}
+}
+
+EOD;
+		
+		}
+		
+		fwrite($fd, $initiator);
+		fclose($fd);
+			
+		/* run iscontrol if no previous error*/
+		
+		if (!$result) {
+			$result = mwexec("/usr/local/sbin/iscontrol -c {$g['varetc_path']}/iscontrol.conf");
+		}
+
+		if (($g['booting']) && (!$result)) {
+			echo "done\n";
+		}
+		else if ($g['booting']) {
+			echo "ERROR\n";
+		}
+			
 	}
 	
 	return $result;

@@ -2,6 +2,7 @@
 <?php
 /*
 	services_nfs.php
+	
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
@@ -39,52 +40,64 @@ if (!is_array($config['nfs'])) {
 	$config['nfs'] = array();
 }
 
+if(!is_array($config['nfs']['nfsnetworks']))
+	$config['nfs']['nfsnetworks'] = array();
+
+sort($config['nfs']['nfsnetworks']);
+
 $pconfig['enable'] = isset($config['nfs']['enable']);
 $pconfig['mapall'] = $config['nfs']['mapall'];
-
-list($pconfig['network'],$pconfig['network_subnet']) =
-		explode('/', $config['nfs']['nfsnetwork']);
+$pconfig['nfsnetworks'] = $config['nfs']['nfsnetworks'];
 
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
+	$pconfig['nfsnetworks'] = $config['nfs']['nfsnetworks'];
 
 	/* input validation */
 	$reqdfields = array();
 	$reqdfieldsn = array();
 
-  if ($_POST['enable']) {
+  /* if ($_POST['enable']) {
     $reqdfields = array_merge($reqdfields, explode(" ", "network network_subnet"));
     $reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Authorised network"),gettext("Subnet bit count")));
-  }
+  } */
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-	if (($_POST['network'] && !is_ipaddr($_POST['network']))) {
-		$input_errors[] = gettext("A valid network must be specified.");
-	}
-	if (($_POST['network_subnet'] && !is_numeric($_POST['network_subnet']))) {
-		$input_errors[] = gettext("A valid network bit count must be specified.");
-	}
-
-	$osn = gen_subnet($_POST['network'], $_POST['network_subnet']) . "/" . $_POST['network_subnet'];
+	
+	if(0 == count($pconfig['nfsnetworks']))
+			$input_errors[] = gettext("No networks declared.");
 
 	if (!$input_errors) {
 		$config['nfs']['enable'] = $_POST['enable'] ? true : false;
 		$config['nfs']['mapall'] = $_POST['mapall'];
-		$config['nfs']['nfsnetwork'] = $osn;
 
 		write_config();
-
+		
 		$retval = 0;
-		if (!file_exists($d_sysrebootreqd_path)) {
-			/* nuke the cache file */
+		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			services_nfs_configure();
+			$retval = services_nfs_configure();
 			config_unlock();
 		}
+
 		$savemsg = get_std_save_message($retval);
+
+		if($retval == 0) {
+			if(file_exists($d_nfsconfdirty_path))
+				unlink($d_nfsconfdirty_path);
+		}
+		
 	}
+}
+
+if($_GET['act'] == "del") {
+	/* Remove network entry from list */
+	$config['nfs']['nfsnetworks'] = array_diff($config['nfs']['nfsnetworks'],array($config['nfs']['nfsnetworks'][$_GET['id']]));
+	write_config();
+	touch($d_nfsconfdirty_path);
+	header("Location: services_nfs.php");
+	exit;
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -93,8 +106,7 @@ if ($_POST) {
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
   document.iform.mapall.disabled = endis;
-  document.iform.network.disabled = endis;
-  document.iform.network_subnet.disabled = endis;
+  document.iform.nfsnetworks.disabled = endis;
 }
 //-->
 </script>
@@ -129,24 +141,42 @@ function enable_change(enable_change) {
         <?=gettext("All users will have the root privilege.") ;?>
       </td>
     </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorised network") ; ?></td>
+	<tr>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorized");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> / 
-        <select name="network_subnet" class="formfld" id="network_subnet">
-          <?php for ($i = 32; $i >= 1; $i--): ?>
-          <option value="<?=$i;?>" <?php if ($i == $pconfig['network_subnet']) echo "selected"; ?>>
-          <?=$i;?>
-          </option>
-          <?php endfor; ?>
-        </select><br>
-        <span class="vexpl"><?=gettext("Network that is authorised to access to NFS share") ;?></span>
+        <?=$mandfldhtml;?>
+        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="90%" class="listhdrr"><?=gettext("Networks");?></td>
+            <td width="10%" class="list"></td>
+          </tr>
+					<?php $i = 0; foreach($pconfig['nfsnetworks'] as $contentv): ?>
+					<tr>
+						<td class="listlr"><?=htmlspecialchars($contentv);?> &nbsp;</td>
+						<td valign="middle" nowrap class="list">
+							<?php if(isset($config['nfs']['enable'])): ?>
+							<a href="services_nfs_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit network");?>" width="17" height="17" border="0"></a>&nbsp;
+							<a href="services_nfs.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this network entry?");?>')"><img src="x.gif" title="<?=gettext("Delete network"); ?>" width="17" height="17" border="0"></a>
+							<?php endif; ?>
+						</td>
+					</tr>
+          <?php $i++; endforeach; ?>
+					<tr>
+						<td class="list" colspan="1"></td>
+						<td class="list">
+							<a href="services_nfs_edit.php"><img src="plus.gif" title="<?=gettext("Add network");?>" width="17" height="17" border="0"></a>
+						</td>
+					</tr>
+        </table>
+        <?=gettext("Networks authorized.");?>
       </td>
     </tr>
+	
+	
     <tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart NFS");?>" onClick="enable_change(true)">
       </td>
     </tr>
     <tr>

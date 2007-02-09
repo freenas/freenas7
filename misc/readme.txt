@@ -73,6 +73,7 @@ from scretch. After that use one of the following menus:
 FreeNAs 0.684b:
 - Add disk encryption with geli
 - Permit to enable SSH TCP forwarding (SSH tunneling)
+- Permit to add more than one networks for NFS
 - Upgrade iSCSI initiator to 2.0.1
 - Add swap feature: Permit to create a file on a mount point for memory swap purpose
 - Replace ntfs FreeBSD module with ntfs-3g: read/write support for NTFS now!
