@@ -407,7 +407,6 @@ Result: "ONLINE", disk is online
 Result: "CHANGED", disk have changed (be replaced ?) */
 function disks_status($diskname)
 {
-	
 	global $config, $g;
 	
 	//$detectedlist = get_physical_disks_list();
@@ -1265,12 +1264,8 @@ Result is in the form:
 )
 
 Called in disks_manage_tools.php
-
 */
-
-function disks_get_partition_info($disk)
-{
-  
+function disks_get_partition_info($disk) {
   exec("/sbin/fdisk -s {$disk}", $rawdata);
   array_shift($rawdata);
   array_shift($rawdata);
@@ -1295,24 +1290,25 @@ function disks_get_partition_info($disk)
 // Return 0 is OK, 1 is no OK
 function disks_geli_check($gelifullname)
 {
+	$result = 1;
 	if (file_exists("$gelifullname")) {
 		$result = 0;
-	}
-	else {
-		$result = 1;
 	}
 	return $result;
 }
 
 // Attach a geli encrypted disk
 // Return 0 is OK, 1 is no OK
-function disks_geli_attach($gelifullname,$passphrase)
+function disks_geli_attach($gelifullname,$passphrase,$verbose = false)
 {
+	$result = 1;
 	// Remove the 4 last character ".eli" of $gelifullanme
 	$gelifullname=rtrim($gelifullname,".eli");
-
-	$result=mwexec("/sbin/geli attach -X " . escapeshellarg($passphrase) . " " . $gelifullname);
-
+	if(!$verbose) {
+		$result=mwexec("/sbin/geli attach -X " . escapeshellarg($passphrase) . " " . $gelifullname);
+	} else {
+		$result = (false !== system("/sbin/geli attach -v -X " . escapeshellarg($passphrase) . " " . $gelifullname));
+	}
 	return $result;
 }
 
@@ -1320,22 +1316,15 @@ function disks_geli_attach($gelifullname,$passphrase)
 // Return 0 is OK, 1 is no OK
 function disks_geli_detach($gelifullname)
 {
-
 	$result=mwexec("/sbin/geli detach $gelifullname");
-
 	return $result;
 }
-
-// Detach all geli encrypted disks
-// Return 0 is OK, 1 is no OK
 
 // Kill (destroy) a geli encrypted volume
 // Return 0 is OK, 1 is no OK
 function disks_geli_kill($gelifullname)
 {
-
 	$result=mwexec("/sbin/geli kill $gelifullname");
-
 	return $result;
 }
 
@@ -1357,7 +1346,6 @@ function disks_geli_detach_all()
 	}
 	
 	return $result;
-
 }
 
 // Check is the iscsi initiator is connected to the target

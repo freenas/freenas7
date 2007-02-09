@@ -290,7 +290,7 @@ if (!isset($do_crypt)) {
 
 				// Attach the disk.
 				echo(gettext("Attaching...")."\n");
-				system("/sbin/geli attach -v -X " . escapeshellarg($passphrase) . " " . $disk);
+				disks_geli_attach($disk,$passphrase,true);
 
 				echo('</pre>');
 			}

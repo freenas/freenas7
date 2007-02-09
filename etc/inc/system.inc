@@ -35,7 +35,7 @@
 /* include all configuration functions */
 require_once("functions.inc");
 	
-function system_resolvconf_generate($dynupdate = false) {
+function system_resolvconf_generate() {
 	global $config, $g;
 	
 	$syscfg = $config['system'];
@@ -1678,5 +1678,4 @@ function system_swap_disable()
 	
 	return $result;
 }
-
 ?>

@@ -2000,9 +2000,6 @@ msgstr ""
 msgid "The attribute '%s' is required."
 msgstr ""
 
-msgid "Crypt"
-msgstr ""
-
 msgid "The crypted disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
