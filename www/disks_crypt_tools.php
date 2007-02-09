@@ -53,7 +53,7 @@ mount_sort();
 $a_mount = &$config['mounts']['mount'];
 
 if ($config['system']['webgui']['protocol'] == "http") {
-	$nohttps_errors[] = gettext("You should use HTTPS as WebGUI protocol for sending passphrase.");
+	$nohttps_errors = gettext("You should use HTTPS as WebGUI protocol for sending passphrase.");
 }
 
 if ($_POST) {
@@ -104,7 +104,7 @@ if(isset($_GET['action'])) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($nohttps_errors) print_input_errors($nohttps_errors); ?>
+<?php if ($nohttps_errors) print_error_box($nohttps_errors); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">

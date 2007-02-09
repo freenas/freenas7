@@ -86,7 +86,7 @@ if (!sizeof($a_disk)) {
 }
 
 if ($config['system']['webgui']['protocol'] == "http") {
-	$nohttps_errors[] = gettext("You should use HTTPS as WebGUI protocol for sending passphrase.");
+	$nohttps_errors = gettext("You should use HTTPS as WebGUI protocol for sending passphrase.");
 }
 
 if ($_POST) {
@@ -215,7 +215,7 @@ if (!isset($do_crypt)) {
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($nodisk_errors) print_input_errors($nodisk_errors); ?>
-<?php if ($nohttps_errors) print_input_errors($nohttps_errors); ?>
+<?php if ($nohttps_errors) print_error_box($nohttps_errors); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <form action="disks_crypt_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
