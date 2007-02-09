@@ -56,7 +56,7 @@ if($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "network network_subnet");
-	$reqdfieldsn = array(gettext("Networks"),gettext("Subnet"));
+	$reqdfieldsn = array(gettext("Authorised network"),gettext("Subnet bit count"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if (($_POST['network'] && !is_ipaddr($_POST['network']))) {

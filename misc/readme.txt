@@ -23,7 +23,7 @@ Release: 0.68
 Edit the scripts:
 - /freenas/svn/misc/setupfreeenas.sh
 for modify the directory variable with yours.
-
+Check that you have installing bash, and
 start /freenas/svn/misc/setupfreeenas.sh
 And select your need
 

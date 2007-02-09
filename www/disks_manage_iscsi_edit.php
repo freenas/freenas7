@@ -127,7 +127,7 @@ if ($_POST) {
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="targetname" type="text" class="formfld" id="targetname" size="20" value="<?=htmlspecialchars($pconfig['targetname']);?>">
 		<br>
-				<?=gettext("This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."); ?>	
+				<?=gettext("This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."); ?>	
       </td>
     </tr>
 	<tr>

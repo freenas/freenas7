@@ -1361,32 +1361,6 @@ function services_nis_configure()
 /* Start iscsi initiator
 Return 0 if Ok, 1 or error code if problem */
 // NEED TO STOP IT TOO ???
-function old_services_iscsi_configure()
-{
-	global $config, $g;
-	
-	$result = 0 ;
-	
-	if (isset($config['iscsi']['enable'])) 	{
-		if ($g['booting']) {
-			echo "Starting iSCSI driver... ";
-		}
-			
-		$result = mwexec("/sbin/kldload kdload /boot/kernel/iscsi_initiator.ko");
-		$result |= mwexec("/sbin/sysctl debug.iscsi=0");
-		$result |= mwexec("/usr/local/sbin/iscontrol targetaddress={$config['iscsi']['targetaddress']} TargetName={$config['iscsi']['targetname']}");
-		
-		if ($g['booting']) {
-			echo "done\n";
-		}
-	}
-	
-	return $result;
-}
-
-/* Start iscsi initiator
-Return 0 if Ok, 1 or error code if problem */
-// NEED TO STOP IT TOO ???
 function services_iscsiinit_configure()
 {
 	global $config, $g;
@@ -1410,34 +1384,14 @@ function services_iscsiinit_configure()
 			echo "Configuring initiator(s)... ";
 		}
 		
-		/* generate afpd.conf */
-		$fd = fopen("{$g['varetc_path']}/iscontrol.conf", "w");
-		if (!$fd) 		{
-			printf("Error: cannot open iscontrol.conf in services_iscsiinit_configure().\n");
-			$result = 1 ;
-		}
-		
 		$a_iscsiinit = &$config['iscsiinit']['vdisk'];
-		foreach ($a_iscsiinit as $iscsiinit)
-		{
-			$initiator .= <<<EOD
-{$iscsiinit['name']} {
-        targetname      = {$iscsiinit['targetname']}
-        targetaddress   = {$iscsiinit['targetaddress']}
-        initiatorname   = {$iscsiinit['initiatorname']}
-}
-
-EOD;
-		
-		}
-		
-		fwrite($fd, $initiator);
-		fclose($fd);
-			
-		/* run iscontrol if no previous error*/
 		
 		if (!$result) {
-			$result = mwexec("/usr/local/sbin/iscontrol -c {$g['varetc_path']}/iscontrol.conf");
+			foreach ($a_iscsiinit as $iscsiinit) {
+				/* run iscontrol if no previous error*/
+				$result |= mwexec("/usr/local/sbin/iscontrol targetaddress={$iscsiinit['targetaddress']}  targetname={$iscsiinit['targetname']} initiatorname={$iscsiinit['initiatorname']}");
+					
+			}
 		}
 
 		if (($g['booting']) && (!$result)) {
