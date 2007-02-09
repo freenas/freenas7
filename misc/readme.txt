@@ -73,7 +73,7 @@ from scretch. After that use one of the following menus:
 FreeNAs 0.684b:
 - Add disk encryption with geli
 - Permit to enable SSH TCP forwarding (SSH tunneling)
-- Update iSCSI initiator to 2.0.1
+- Upgrade iSCSI initiator to 2.0.1
 - Add swap feature: Permit to create a file on a mount point for memory swap purpose
 - Replace ntfs FreeBSD module with ntfs-3g: read/write support for NTFS now!
 - Add powerd/cpufreq system power control utility
@@ -82,6 +82,7 @@ FreeNAs 0.684b:
 - Permit to configure the system time: Paul Wheels patch
 - Update language file: French, Chinese and Romanian
 - Add hardware sensors information page
+- Upgrade PHP to 5.2.1
 
 known bug: Can't remount ntfs-3g volume under the mount_tools. Must restart FreeNAS. It seem a fuse problem.
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-URL_PHP="http://www.php.net/distributions/php-5.2.0.tar.gz"
+URL_PHP="http://www.php.net/distributions/php-5.2.1.tar.gz"
 
 build_php() {
 	cd $WORKINGDIR
