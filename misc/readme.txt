@@ -84,6 +84,7 @@ FreeNAs 0.684b:
 - Update language file: French, Chinese and Romanian
 - Add hardware sensors information page
 - Upgrade PHP to 5.2.1
+- Add FTP 'Resume' mode. Fix bug in enabling 'FXP' and 'NAT mode'.
 
 known bug: Can't remount ntfs-3g volume under the mount_tools. Must restart FreeNAS. It seem a fuse problem.
 

@@ -53,6 +53,7 @@ $pconfig['banner'] = $config['ftp']['banner'];
 $pconfig['natmode'] = isset($config['ftp']['natmode']);
 $pconfig['passiveip'] = $config['ftp']['passiveip'];
 $pconfig['fxp'] = isset($config['ftp']['fxp']);
+$pconfig['keepallfiles'] = isset($config['ftp']['keepallfiles']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -114,6 +115,7 @@ if ($_POST) {
 		$config['ftp']['passiveip'] = $_POST['passiveip'];
 		$config['ftp']['fxp'] = $_POST['fxp'] ? true : false;
 		$config['ftp']['natmode'] = $_POST['natmode'] ? true : false;
+		$config['ftp']['keepallfiles'] = $_POST['keepallfiles'] ? true : false;
 		$config['ftp']['enable'] = $_POST['enable'] ? true : false;
 
 		write_config();
@@ -144,6 +146,7 @@ function enable_change(enable_change) {
 	document.iform.banner.disabled = endis;
 	document.iform.fxp.disabled = endis;
 	document.iform.natmode.disabled = endis;
+	document.iform.keepallfiles.disabled = endis;
 	document.iform.passiveip.disabled = endis;
 	document.iform.pasv_max_port.disabled = endis;
 	document.iform.pasv_min_port.disabled = endis;
@@ -223,6 +226,13 @@ function enable_change(enable_change) {
         <?=gettext("Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying.");?></span></td>
     </tr>
     <tr>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Resume");?></td>
+      <td width="78%" class="vtable">
+        <input name="keepallfiles" type="checkbox" id="keepallfiles" value="yes" <?php if ($pconfig['keepallfiles']) echo "checked"; ?>>
+        <?=gettext("Enable resume mode.");?><span class="vexpl"><br>
+        <?=gettext("Use this option to enable resuming broken transfers at the point of interruption.");?></span></td>
+    </tr>
+    <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Passive IP address"); ?></td>
       <td width="78%" class="vtable">
         <input name="passiveip" type="text" class="formfld" id="passiveip" size="20" value="<?=htmlspecialchars($pconfig['passiveip']);?>">
@@ -243,7 +253,7 @@ function enable_change(enable_change) {
   	<tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart FTP");?>" onClick="enable_change(true)">
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
       </td>
     </tr>
   </table>

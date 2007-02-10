@@ -587,7 +587,7 @@ EOD;
 				$cmd .= "-P {$config['ftp']['pasv_address']} ";
 			}
 	
-			if ($config['ftp']['natmode']) {
+			if (isset($config['ftp']['natmode'])) {
 				$cmd .= "-N ";
 			}
 	
@@ -595,10 +595,15 @@ EOD;
 				$cmd .= "-P {$config['ftp']['passiveip']} ";
 			}
 	
-			if ($config['ftp']['fxp']) {
+			if (isset($config['ftp']['fxp'])) {
 				$cmd .= "-W ";
 			}
-	
+
+			if (isset($config['ftp']['keepallfiles'])) {
+				# Enable resume mode.
+				$cmd .= "-K ";
+			}
+
 			$result = mwexec($cmd);
 	
 			if ($g['booting']) {

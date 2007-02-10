@@ -1105,7 +1105,7 @@ msgid "Maximum idle time in minutes."
 msgstr "Maximum Leerlaufzeit in Minuten."
 
 msgid "Anonymous login"
-msgstr "Anonymes einlogen"
+msgstr "Anonymes einloggen"
 
 msgid "Enable anonymous login."
 msgstr "Aktiviere anonymes Login."
@@ -1126,7 +1126,7 @@ msgid "NAT mode"
 msgstr "NAT Mode"
 
 msgid "Force NAT mode."
-msgstr "Erzwinge NAT Mode"
+msgstr "Erzwinge NAT Mode."
 
 msgid "Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying."
 msgstr "Einschalten, falls der FTP Server hinter einer NAT (Network Address Translation) betrieben wird, die kein 'applicative FTP proxying' unterst&uuml;tzt."

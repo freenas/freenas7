@@ -2074,3 +2074,12 @@ msgstr ""
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr ""
+
+msgid "Resume"
+msgstr ""
+
+msgid "Enable resume mode."
+msgstr ""
+
+msgid "Use this option to enable resuming broken transfers at the point of interruption."
+msgstr ""
