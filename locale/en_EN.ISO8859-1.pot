@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-02-05 19:19+0100\n"
+"PO-Revision-Date: 2007-02-11 00:04+0100\n"
 "Last-Translator: Olivier COCHARD-LABBE <olivier@freenas.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2082,4 +2082,22 @@ msgid "Enable resume mode."
 msgstr ""
 
 msgid "Use this option to enable resuming broken transfers at the point of interruption."
+msgstr ""
+
+msgid "iSCSI Target"
+msgstr ""
+
+msgid "The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr ""
+
+msgid "Do you really want to delete this target?"
+msgstr ""
+
+msgid "Delete target"
+msgstr ""
+
+msgid "Add target"
+msgstr ""
+
+msgid "Network that is authorised to access to this iSCSI target"
 msgstr ""

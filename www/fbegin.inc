@@ -102,6 +102,7 @@ function showhide(tspan, tri) {
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_unison.php" class="navlnk"><?=gettext("Unison");?></a><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_afp.php" class="navlnk"><?=gettext("AFP");?></a><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_upnp.php" class="navlnk"><?=gettext("UPnP");?></a><br>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_iscsitarget.php" class="navlnk"><?=gettext("iSCSI Target");?></a><br>
             <strong><?=gettext("Access");?></strong><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_users.php" class="navlnk"><?=gettext("Users and Groups");?></a><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_ad.php" class="navlnk"><?=gettext("Active Directory");?></a><br>

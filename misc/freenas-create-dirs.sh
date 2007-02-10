@@ -61,6 +61,7 @@ mkdir etc/defaults ;
 mkdir etc/inc ;
 mkdir etc/pam.d ;
 mkdir etc/ssh ;
+mkdir etc/iscsi ;
 mkdir lib ;
 mkdir lib/geom ;
 mkdir libexec ;
@@ -100,6 +101,7 @@ ln -s /var/etc/spwd.db etc/spwd.db
 ln -s /var/etc/crontab etc/crontab
 ln -s /var/etc/ssh/sshd_config etc/ssh/sshd_config
 ln -s /var/etc/ssh/ssh_host_dsa_key etc/ssh/ssh_host_dsa_key
+ln -s /var/etc/iscsi/targets etc/iscsi/targets
 ln -s /var/etc/pam.d/ftp etc/pam.d/ftp
 ln -s /var/etc/pam.d/sshd etc/pam.d/sshd
 ln -s /var/etc/pam.d/login etc/pam.d/login

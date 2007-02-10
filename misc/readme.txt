@@ -75,6 +75,7 @@ FreeNAs 0.684b:
 - Permit to enable SSH TCP forwarding (SSH tunneling)
 - Permit to add more than one networks for NFS
 - Upgrade iSCSI initiator to 2.0.1
+- Add iSCSI-Target: Permit to create specials files that simulate iSCSI target disk.
 - Add swap feature: Permit to create a file on a mount point for memory swap purpose
 - Replace ntfs FreeBSD module with ntfs-3g: read/write support for NTFS now!
 - Add powerd/cpufreq system power control utility
@@ -86,11 +87,10 @@ FreeNAs 0.684b:
 - Upgrade PHP to 5.2.1
 - Add FTP 'Resume' mode. Fix bug in enabling 'FXP' and 'NAT mode'.
 
-known bug: Can't remount ntfs-3g volume under the mount_tools. Must restart FreeNAS. It seem a fuse problem.
+known bug: Can't remount ntfs-3g volume under the mount:tools. Must restart FreeNAS. It seem to be a fuse problem.
 
 Working Notes:
 1. Must finish swap feature (when mount point management, must check if the mount point is used by swap)
-2. Must remove old ntfs binary (mount_ntfs, kernel module, etc...)
 
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails

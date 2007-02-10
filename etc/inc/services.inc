@@ -1501,12 +1501,14 @@ function services_nis_configure()
 
 /* Start iscsi initiator
 Return 0 if Ok, 1 or error code if problem */
-// NEED TO STOP IT TOO ???
+
 function services_iscsiinit_configure()
 {
 	global $config, $g;
 	
-	// MUST ADD LINE FOR STOP THE PROCESS
+	/* kill any running iscontrol */
+	
+	killbyname("iscontrol");
 	
 	if (is_array($config['iscsiinit']['vdisk'])) {
 		if ($g['booting']) {
@@ -1552,6 +1554,66 @@ function services_iscsiinit_configure()
 	}
 	
 	return $result;
+}
+
+/* Start iscsi target
+Return 0 if Ok, 1 or error code if problem */
+function services_iscsitarget_configure()
+{
+	global $config, $g;
+	
+	$result = 0 ;
+	
+	/* kill any running iscsi-target */
+	sigkillbypid("{$g['varrun_path']}/iscsi-target.pid", "TERM");
+	
+	if (is_array($config['iscsitarget']['vdisk'])) {
+		if ($g['booting']) {
+			echo "Loading iSCSI target... ";
+		}
+		
+		$a_iscsitarget = &$config['iscsitarget']['vdisk'];
+		
+		/* generate targets */
+		$fd = fopen("{$g['varetc_path']}/iscsi/targets", "w");
+		if (!$fd) {
+			printf("Error: cannot open {$g['varetc_path']}/iscsi/targets in services_iscsitarget_configure().\n");
+			mwexec('/usr/bin/logger "Error: cannot open iscsi/targets in services_iscsitarget_configure()" ');
+			$result = 1 ;
+		}
+		$i = 0;
+		foreach ($a_iscsitarget as $target) {
+			$targetsfile .= <<<EOD
+extent{$i} /mnt/{$target['sharename']}/iscsi_target{$i} 0 {$target['size']}MB
+target{$i} rw extent{$i} {$target['network']}
+
+EOD;
+			$i++;
+		}
+		
+		fwrite($fd, $targetsfile);
+		fclose($fd);
+		
+		/* run iscsi-target if no previous error*/
+		
+		if (!$result) {
+			//$result = mwexec("/usr/local/bin/iscsi-target");
+		}
+	
+		if (($g['booting']) && (!$result)) {
+			echo "done\n";
+			mwexec('/usr/bin/logger "iSCSI-target Daemon Server started" ');
+		} else if (!$result) {
+			mwexec('/usr/bin/logger "iSCSI-target Daemon started" ');
+		} else if ($g['booting']) {
+			echo "failed\n";
+			mwexec('/usr/bin/logger "Fail to start iSCSI-target Daemon" ');
+		} else {
+			mwexec('/usr/bin/logger "Fail to start iSCSI-target Daemon" ');
+		}
+		
+	}
+
 }
 
 /* Stop, generate config and start mdnsresponder

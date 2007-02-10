@@ -157,6 +157,9 @@
 	/* start RSYNC local service */
 	services_rsync_local_configure();
 	
+	/* start iSCSI target service */
+	services_iscsitarget_configure();
+	
 	/* Start cron */
 	services_cron_configure();
 	
