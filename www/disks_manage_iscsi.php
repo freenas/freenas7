@@ -101,7 +101,6 @@ if ($_GET['act'] == "del")
             <td width="25%" class="listhdrr"><?=gettext("Name"); ?></td>
 			<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
             <td width="25%" class="listhdrr"><?=gettext("Target name"); ?></td>
-            <td width="20%" class="listhdrr"><?=gettext("Status") ;?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_iscsiinit as $iscsiinit): ?>
@@ -109,26 +108,13 @@ if ($_GET['act'] == "del")
             <td class="listlr"><?=htmlspecialchars($iscsiinit['name']);?>&nbsp;</td>
 			<td class="listr"><?=htmlspecialchars($iscsiinit['targetname']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($iscsiinit['targetaddress']);?>&nbsp;</td>
-            <td class="listbg">
-              <?php
-              if (file_exists($d_iscsiinitdirty_path)) {
-                echo(gettext("Configuring"));
-              } else {
-                if(disks_iscsiinit_check($iscsiinit['name'])) {
-                  echo(gettext("Offline"));
-                } else {
-                  echo(gettext("Online"));
-                }
-              }
-              ?>&nbsp;
-            </td>
             <td valign="middle" nowrap class="list"> <a href="disks_manage_iscsi_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit initiator");?>" width="17" height="17" border="0">
               <a href="disks_manage_iscsi.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete initiator"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>
           <?php $i++; endforeach; ?>
           <tr> 
-            <td class="list" colspan="5"></td>
+            <td class="list" colspan="4"></td>
             <td class="list"><a href="disks_manage_iscsi_edit.php"><img src="plus.gif" title="<?=gettext("Add initiator");?>" width="17" height="17" border="0"></a></td>
 			    </tr>
         </table>
