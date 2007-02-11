@@ -61,9 +61,11 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
       <?php
       echo("<pre>");
       echo("<strong>" . gettext("FTP connected users") . ":</strong><br><br>");
-      exec("/usr/local/sbin/pure-ftpwho", $rawdata);
+      exec("/usr/local/sbin/pure-ftpwho -W", $rawdata);
+	  // remove the first line "Content-Type: text/html"
+	  $rawdata = array_slice($rawdata, 1);
       foreach($rawdata as $line) {
-				echo htmlspecialchars($line) . "<br>";
+				echo "$line";
       }
       unset ($line);
       echo "</pre>";
