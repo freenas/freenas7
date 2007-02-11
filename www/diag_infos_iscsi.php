@@ -50,25 +50,31 @@ if (!is_array($config['iscsi']))
     <li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
     <li class="tabinact"><a href="diag_infos_mount.php"><?=gettext("Mounts");?></a></li>
     <li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
-    <li class="tabact"><a href="diag_infos_iscsi.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("iSCSI");?></a></li>
+    <li class="tabact"><a href="diag_infos_iscsi.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("iSCSI initiator");?></a></li>
     <li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
-		<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
-		<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
+	<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
+	<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
+	<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP users");?></a></li>
   </ul>
   </td></tr>
   <tr>
     <td class="tabcont">
       <?php
-      if (!isset($config['iscsi']['enable'])) {
+	  if (!is_array($config['iscsiinit']['vdisk'])) {
       	echo  "<strong>".gettext("iSCSI initiator disabled")."</strong><br><br>";
       } else {
       	echo "<pre>";
-      	echo "<strong>".gettext("Show the list of available target Name on the iSCSI target")."</strong><br><br>";
-      	exec("/usr/local/sbin/iscontrol -d targetaddress={$config['iscsi']['targetaddress']}",$rawdata);
-      	foreach ($rawdata as $line) {
-      		echo htmlspecialchars($line) . "<br>";
-      	}
+      	echo "<strong>".gettext("Show the list of available target name on all configured iSCSI targets")."</strong><br><br>";
+		$a_iscsiinit = &$config['iscsiinit']['vdisk'];
+		foreach ($a_iscsiinit as $iscsiinit) {
+			echo "Discovered iSCSI target fo {$iscsiinit['targetaddress']}";
+			exec("/usr/local/sbin/iscontrol -d targetaddress={$iscsiinit['targetaddress']}",$rawdata);
+		
+			foreach ($rawdata as $line) {
+				echo htmlspecialchars($line) . "<br>";
+			}
       	unset ($rawdata);
+		}
       	echo "</pre>";
       }
       ?>

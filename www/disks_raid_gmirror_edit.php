@@ -143,7 +143,7 @@ if ($_POST) {
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Balance algorithm"); ?></td>
       <td width="78%" class="vtable">
         <select name="balance" class="formfld">
-        <?php $balvals = array("split"=>"Split request", "load"=>"Read from lowest load", "round-robin"=>"Round-robin read"); ?>
+        <?php $balvals = array("round-robin"=>"Round-robin read","split"=>"Split request", "load"=>"Read from lowest load"); ?>
         <?php foreach ($balvals as $balval => $balname): ?>
           <option value="<?=$balval;?>" <?php if($pconfig['balance'] == $balval) echo 'selected';?>><?=htmlspecialchars($balname);?></option>
         <?php endforeach; ?>

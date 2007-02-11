@@ -2107,3 +2107,9 @@ msgstr ""
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI-target"
 msgstr ""
+
+msgid "FTP users"
+msgstr ""
+
+msgid "FTP connected users"
+msgstr ""

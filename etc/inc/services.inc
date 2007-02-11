@@ -1262,7 +1262,7 @@ function services_rsyncclient_configure()
 
 	$syncscript = <<<EOD
 #!/bin/sh
-/usr/bin/logger "Start of Remote RSYNC synchronization"
+/usr/bin/logger -p local4.notice "Start of Remote RSYNC synchronization"
 if [ -r /var/run/rsync-running ]; then
 exit
 fi
@@ -1284,7 +1284,7 @@ EOD;
 	
 		$syncscript .= <<<EOD
 /bin/rm -f /var/run/rsync-running
-/usr/bin/logger "End of remote RSYNC synchronization"
+/usr/bin/logger -p local4.notice "End of remote RSYNC synchronization"
 
 EOD;
 
@@ -1325,7 +1325,7 @@ function services_rsync_local_configure()
 
 	$syncscript = <<<EOD
 #!/bin/sh
-/usr/bin/logger "Start of local RSYNC synchronization"
+/usr/bin/logger -p local4.notice "Start of local RSYNC synchronization"
 if [ -r /var/run/rsync_local-running ]; then
 exit
 fi
@@ -1345,7 +1345,7 @@ EOD;
 			
 		$syncscript .= <<<EOD
 /bin/rm -f /var/run/rsync_local-running
-/usr/bin/logger "End of local RSYNC synchronization"
+/usr/bin/logger -p local4.notice "End of local RSYNC synchronization"
 
 EOD;
 

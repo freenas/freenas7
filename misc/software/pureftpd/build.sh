@@ -18,7 +18,7 @@ build_pureftpd() {
   tar zxvf $pureftpd_tarball
   cd $(basename $pureftpd_tarball .tar.gz)
 
-  ./configure --with-rfc2640 --with-largefile --with-pam
+  ./configure --with-rfc2640 --with-largefile --with-pam --with-ftpwho
   [ 0 != $? ] && return 1 # successful?
 
   make
@@ -33,6 +33,7 @@ install_pureftpd() {
   cd $(basename $pureftpd_tarball .tar.gz)
 
   install -vs src/pure-ftpd $FREENAS/usr/local/sbin
+  install -vs src/pure-ftpwho $FREENAS/usr/local/sbin
 
   return 0
 }

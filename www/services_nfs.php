@@ -161,12 +161,14 @@ function enable_change(enable_change) {
 						</td>
 					</tr>
           <?php $i++; endforeach; ?>
+		  <?php if(isset($config['nfs']['enable'])): ?>
 					<tr>
 						<td class="list" colspan="1"></td>
 						<td class="list">
 							<a href="services_nfs_edit.php"><img src="plus.gif" title="<?=gettext("Add network");?>" width="17" height="17" border="0"></a>
 						</td>
 					</tr>
+		<?php endif; ?>
         </table>
         <?=gettext("Networks authorized.");?>
       </td>

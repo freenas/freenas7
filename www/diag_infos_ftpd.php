@@ -1,13 +1,16 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	diag_infos.php
+	diag_infos_ftpd.php
+	Copyright © 2007 Volker Theile (votdev@gmx.de)
+  All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
-	Copyright (C) 2003-2007 Manuel Kasper <mk@neon1.net>.
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -44,51 +47,25 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
     <li class="tabinact"><a href="diag_infos_ataidle.php"><?=gettext("ATAidle");?></a></li>
     <li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
     <li class="tabinact"><a href="diag_infos_mount.php"><?=gettext("Mounts");?></a></li>
-    <li class="tabact"><a href="diag_infos_raid.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Software RAID");?></a></li>
+    <li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
     <li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI initiator");?></a></li>
     <li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
 	<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
 	<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
-	<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP users");?></a></li>
+	<li class="tabact"><a href="diag_infos_ftpd.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("FTP users");?></a></li>
+		
   </ul>
   </td></tr>
   <tr>
     <td class="tabcont">
       <?php
-      echo "<pre>";
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Vinum") . ":</strong><br><br>";
-      exec("/sbin/gmirror list",$rawdata);
-      foreach ($rawdata as $line) {
-        echo htmlspecialchars($line) . "<br>";
+      echo("<pre>");
+      echo("<strong>" . gettext("FTP connected users") . ":</strong><br><br>");
+      exec("/usr/local/sbin/pure-ftpwho", $rawdata);
+      foreach($rawdata as $line) {
+				echo htmlspecialchars($line) . "<br>";
       }
       unset ($line);
-      unset ($rawdata);
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Mirror") . ":</strong><br><br>";
-      exec("/sbin/gvinum list",$rawdata);
-      foreach ($rawdata as $line) 	{
-        echo htmlspecialchars($line) . "<br>";
-      }
-		unset ($line);
-      unset ($rawdata);
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Concat") . ":</strong><br><br>";
-      exec("/sbin/gconcat list",$rawdata);
-      foreach ($rawdata as $line) 	{
-        echo htmlspecialchars($line) . "<br>";
-      }
-       unset ($line);
-      unset ($rawdata);
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Stripe") . ":</strong><br><br>";
-      exec("/sbin/gstripe list",$rawdata);
-      foreach ($rawdata as $line) 	{
-        echo htmlspecialchars($line) . "<br>";
-      }
-      unset ($line);
-      unset ($rawdata);
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Raid5") . ":</strong><br><br>";
-      exec("/sbin/graid5 list",$rawdata);
-      foreach ($rawdata as $line) 	{
-        echo htmlspecialchars($line) . "<br>";
-      }
       echo "</pre>";
       ?>
     </td>
