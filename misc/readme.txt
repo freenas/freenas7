@@ -86,8 +86,12 @@ FreeNAs 0.684b:
 - Add hardware sensors information page
 - Upgrade PHP to 5.2.1
 - Add FTP 'Resume' mode. Fix bug in enabling 'FXP' and 'NAT mode'.
+- Add syslog message for RSYNC local/remote synchronization
+- Upgrade Samba from 3.0.23d to 3.0.24 and add LDAP and Kerberos support (but not use it for the moment)
 
-known bug: Can't remount ntfs-3g volume under the mount:tools. Must restart FreeNAS. It seem to be a fuse problem.
+known bug in the 0.684b:
+- Can't remount ntfs-3g volume under the mount:tools. Must restart FreeNAS. It seem to be a fuse problem.
+- Using iSCSI-target can cause problem for stopping/restarting FreeNAS
 
 Working Notes:
 1. Must finish swap feature (when mount point management, must check if the mount point is used by swap)

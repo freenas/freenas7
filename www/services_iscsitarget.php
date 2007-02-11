@@ -98,7 +98,7 @@ if ($_GET['act'] == "del")
 			<td class="listr">iqn.1994-04.org.netbsd.iscsi-target:target<?=htmlspecialchars($i);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($iscsitarget['network']);?>&nbsp;</td>
 			<td class="listr"><?=htmlspecialchars($iscsitarget['sharename']);?>&nbsp;</td>
-			<td class="listlr"><?=htmlspecialchars($iscsitarget['size']);?>&nbsp;</td>
+			<td class="listr"><?=htmlspecialchars($iscsitarget['size']);?>&nbsp;</td>
             <td valign="middle" nowrap class="list"> 
               <a href="services_iscsitarget.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this target?");?>')"><img src="x.gif" title="<?=gettext("Delete target"); ?>" width="17" height="17" border="0"></a>
             </td>
@@ -110,6 +110,7 @@ if ($_GET['act'] == "del")
 			    </tr>
         </table>
       </form>
+	  <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("You must have a minimum of 256MB of RAM for using iSCSI-target");?></p>
 	  </td>
   </tr>
 </table>

@@ -587,6 +587,10 @@ function system_ntp_configure() {
 function system_stop_common() {
 	global $g;
 	
+	/* Stop iSCSI-target */
+	// If iSCSI-target is not stoped before disabling swap, the system can crash
+	services_iscsitarget_stop();
+	
 	/* Stop swap */
 	system_swap_disable();
 	

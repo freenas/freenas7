@@ -7,7 +7,7 @@ $pgtitle = array(gettext("License"));
             <p><strong>FreeNAS is Copyright &copy; 2005-2007 by Olivier Cochard-Labbe 
               (<a href="mailto:olivier@freenas.org">olivier@freenas.org</a>).<br>
               All rights reserved.</strong></p>
-		<p>FreeNAS is based on m0n0wall which is Copyright &copy; 2002-2006 by Manuel Kasper (mk@neon1.net).</p>
+		<p>FreeNAS is based on m0n0wall which is Copyright &copy; 2002-2007 by Manuel Kasper (mk@neon1.net).</p>
             <p> Redistribution and use in source and binary forms, with or without<br>
               modification, are permitted provided that the following conditions 
               are met:<br>
@@ -62,7 +62,7 @@ $pgtitle = array(gettext("License"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Beta tester and user manual contributor</font></em><br>
             <p>Regis Caubet (<a href="mailto:caubet.r@gmail.com">caubet.r@gmail.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">French translator of the user manual and WebGUI</font></em><br>
-            <p>yang vfor (<a href="mailto:vforyang@gmail.com">vforyang@gmail.com</a>)<br>
+            <p>Yang Vfor (<a href="mailto:vforyang@gmail.com">vforyang@gmail.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Chinese translator of the user manual and Webmaster of <a href="http://www.freenas.cn">http://www.freenas.cn</a></font></em><br>
             <p>Pietro De Faccio (<a href="mailto:defaccio.pietro@tiscali.it">defaccio.pietro@tiscali.it</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Italian translator of the WebGUI</font></em><br>
@@ -72,9 +72,9 @@ $pgtitle = array(gettext("License"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">German translator of the WebGUI</font></em><br>
 	   <p>Kris Verhoeven (<a href="mailto:kris@esiv.be">kris@esiv.be</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Dutch translator of the WebGUI</font></em><br>
-	   <p>Baikuan Hsu <> (<a href="mailto:chicworks@gmail.com">chicworks@gmail.com</a>)<br>
+	   <p>Baikuan Hsu (<a href="mailto:chicworks@gmail.com">chicworks@gmail.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Chinese translator of the WebGUI</font></em><br>
- <p>Laurentiu Florin Bubuianu <> (<a href="mailto:laurb@mail.dntis.ro">laurb@mail.dntis.ro</a>)<br>
+ <p>Laurentiu Florin Bubuianu (<a href="mailto:laurb@mail.dntis.ro">laurb@mail.dntis.ro</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Romana translat
 or of the WebGUI</font></em><br>
 
@@ -88,15 +88,15 @@ or of the WebGUI</font></em><br>
         The author of FreeNAS would like to thank the authors of these software 
         packages for their efforts.</p>
       <p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br>
-        Copyright &copy; 1995-2006 The FreeBSD Project. All rights reserved.</p>
+        Copyright &copy; 1995-2007 The FreeBSD Project. All rights reserved.</p>
 
       <p> PHP <a href="http://www.php.net" target="_blank">http://www.php.net</a>.<br>
-        Copyright &copy; 2001-2006 The PHP Group. All rights reserved.</p>
+        Copyright &copy; 2001-2007 The PHP Group. All rights reserved.</p>
       <p> Lighttpd (<a href="http://www.lighttpd.net" target="_blank">http://http://www.lighttpd.net</a>)<br>
         Copyright &copy; 2004 by Jan Kneschke &lt;jan@kneschke.de&gt;. All rights reserved.</p>
       
       <p> OpenSSH (<a href="http://www.openssh.com" target="_blank">http://www.openssh.com</a>)<br>
-        Copyright &copy; 1999-2006 OpenBSD</p>
+        Copyright &copy; 1999-2007 OpenBSD</p>
         
       <p> Samba (<a href="http://www.samba.org" target="_blank">http://www.samba.org</a>)<br>
        </p>
@@ -126,8 +126,12 @@ Copyright  &copy; 2004-2005 Bruce Cran &lt;bruce@cran.org.uk&gt;. All rights res
 	  <p>smartmontools (<a href="http://smartmontools.sourceforge.net" target="_blank">http://smartmontools.sourceforge.net</a>)<br>
 Copyright  &copy; 2002-2005 Bruce Allen.</p>
 
-	  <p>iSCSI target (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br>
+	  <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br>
 Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
+
+ <p>NetBSD iSCSI-target (<a href="http://www.netbsd.org/" target="_blank">http://www.netbsd.org/</a>)<br>
+	  Copyright &copy; 1994-2005 The NetBSD Foundation, Inc. All rights reserved.
+      </p>
 
     <p>dp.SyntaxHighlighter (<a href="http://www.dreamprojections.com/SyntaxHighlighter" target="_blank">http://www.dreamprojections.com/SyntaxHighlighter</a>)<br>
       Copyright &copy; 2004-2006 Alex Gorbatchev. All rights reserved.</p>    

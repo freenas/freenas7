@@ -1262,7 +1262,7 @@ function services_rsyncclient_configure()
 
 	$syncscript = <<<EOD
 #!/bin/sh
-
+/usr/bin/logger "Start of Remote RSYNC synchronization"
 if [ -r /var/run/rsync-running ]; then
 exit
 fi
@@ -1284,6 +1284,7 @@ EOD;
 	
 		$syncscript .= <<<EOD
 /bin/rm -f /var/run/rsync-running
+/usr/bin/logger "End of remote RSYNC synchronization"
 
 EOD;
 
@@ -1324,7 +1325,7 @@ function services_rsync_local_configure()
 
 	$syncscript = <<<EOD
 #!/bin/sh
-
+/usr/bin/logger "Start of local RSYNC synchronization"
 if [ -r /var/run/rsync_local-running ]; then
 exit
 fi
@@ -1344,6 +1345,7 @@ EOD;
 			
 		$syncscript .= <<<EOD
 /bin/rm -f /var/run/rsync_local-running
+/usr/bin/logger "End of local RSYNC synchronization"
 
 EOD;
 
@@ -1597,7 +1599,7 @@ EOD;
 		/* run iscsi-target if no previous error*/
 		
 		if (!$result) {
-			//$result = mwexec("/usr/local/bin/iscsi-target");
+			$result = mwexec("/usr/local/bin/iscsi-target");
 		}
 	
 		if (($g['booting']) && (!$result)) {
@@ -1614,6 +1616,16 @@ EOD;
 		
 	}
 
+}
+
+/* This special function is used by system_stop_common()
+It force to stop iSCSI-target before to stop swap */
+
+function services_iscsitarget_stop()
+{
+	
+	/* kill any running iscsi-target */
+	sigkillbypid("{$g['varrun_path']}/iscsi-target.pid", "TERM");
 }
 
 /* Stop, generate config and start mdnsresponder

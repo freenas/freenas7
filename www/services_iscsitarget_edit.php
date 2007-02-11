@@ -75,6 +75,10 @@ if ($_POST) {
 	if (($_POST['network_subnet'] && !is_numeric($_POST['network_subnet']))) {
 		$input_errors[] = gettext("A valid network bit count must be specified.");
 	}
+	
+	if (!is_numeric($_POST['size'])) {
+		$input_errors[] = gettext("A valid size target value must be specified.");
+	}
 	$osn = gen_subnet($_POST['network'], $_POST['network_subnet']) . "/" . $_POST['network_subnet'];
 	
 	if (!$input_errors) {
