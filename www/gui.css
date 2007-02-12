@@ -1,4 +1,4 @@
-body,td,th,input,select {
+body, td, th, input, select {
 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
 	font-size: 11px;
 }
@@ -27,19 +27,22 @@ pre {
 	color: #ffffff;
 	font-weight: bold;
 }
-.vncell {
+.vncellbg, .vncell, .vncellreq, .vncellt {
 	background-color: #DDDDDD;
 	padding-right: 20px;
 	padding-left: 8px;
+}
+.vncell, .vncellreq, .vncellt {
 	border-bottom: 1px solid #999999;
 }
-.vncellbg {
-	background-color: #DDDDDD;
-	padding-right: 20px;
-	padding-left: 8px;
+.vncellreq, .vncellt {
+	font-weight: bold;
+}
+.vncellt {
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
 .formfld {
-
 }
 .formfldalias {
 	background-color: #e7edf9;
@@ -57,9 +60,6 @@ pre {
 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
 	font-size: 10px;
 	font-weight: bold;
-}
-.vvcell {
-	background-color: #FFFFC6;
 }
 .errmsg {
 	font-weight: bold;
@@ -91,32 +91,8 @@ a {
 	color: #FFFFFF;
 	text-decoration: none;
 }
-.vncellreq {
-	background-color: #DDDDDD;
-	padding-right: 20px;
-	padding-left: 8px;
-	font-weight: bold;
-	border-bottom: 1px solid #999999;
-}
-.vncellt {
-	background-color: #DDDDDD;
-	padding-right: 20px;
-	padding-left: 8px;
-	padding-top: 4px;
-	padding-bottom: 4px;
-	font-weight: bold;
-	border-bottom: 1px solid #999999;
-}
 .vtable {
 	border-bottom: 1px solid #999999;
-}
-.vnsepcell {
-	background-color: #BBBBBB;
-	padding-right: 20px;
-	padding-left: 8px;
-	font-weight: bold;
-	border-bottom: 1px solid #999999;
-	font-size: 11px;
 }
 .cpline {
 	font-size: 11px;
@@ -125,15 +101,6 @@ a {
 .hostname {
 	font-size: 11px;
 	color: #FFFFFF;
-}
-.vnsepcellr {
-	background-color: #BBBBBB;
-	padding-right: 20px;
-	padding-left: 8px;
-	font-weight: bold;
-	border-right: 1px solid #999999;
-	border-bottom: 1px solid #999999;
-	font-size: 11px;
 }
 .listr {
 	background-color: #FFFFFF;
