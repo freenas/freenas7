@@ -72,7 +72,6 @@ if ($_GET['act'] == "del")
 	if ($a_rsyncclient[$_GET['id']]) {
 		
 			unset($a_rsyncclient[$_GET['id']]);
-			// Must delete the old file ???
 			write_config();
 			touch($d_rsyncclientdirty_path);
 			header("Location: services_rsyncd_client.php");

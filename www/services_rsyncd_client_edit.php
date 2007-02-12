@@ -4,6 +4,7 @@
 	services_rsyncd_client_edit.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Improved by Mat Murdock <mmurdock@kimballequipment.com>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)

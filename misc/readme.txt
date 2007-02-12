@@ -91,6 +91,7 @@ FreeNAs 0.684b:
 - Geom mirror: Change default algorithm to round robin (http://www.onlamp.com/pub/a/bsd/2005/11/10/FreeBSD_Basics.html)
 - Add 'FTP connected users list' information page
 - Fix FTP bug. Deletion of files uploaded and owned by user was not able.
+- Fix FTP PAM error (using MS AD account for example) 
 - Permit to configure multiple RSYNC local/client
 
 TO DO:
