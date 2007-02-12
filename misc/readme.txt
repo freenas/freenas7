@@ -89,7 +89,8 @@ FreeNAs 0.684b:
 - Add syslog message for RSYNC local/remote synchronization
 - Upgrade Samba from 3.0.23d to 3.0.24 and add LDAP and Kerberos support (but not use it for the moment)
 - Geom mirror: Change default algorithm to round robin (http://www.onlamp.com/pub/a/bsd/2005/11/10/FreeBSD_Basics.html)
-- Add FTP connected users list
+- Add 'FTP connected users list' information page
+- Fix FTP bug. Deletion of files uploaded and owned by user was not able.
 
 known bug in the 0.684b:
 - Can't remount ntfs-3g volume under the mount:tools. Must restart FreeNAS. It seem to be a fuse problem.

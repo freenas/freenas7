@@ -86,13 +86,11 @@ if ($_POST) {
 		if (!is_ipaddr($_POST['pasv_address']))
 			$input_errors[] = gettext("The pasv address must be a public IP address.");
 	}
-	if ($_POST['enable'] && ($_POST['pasv_max_port'])) {
+	if ($_POST['enable'] && ($_POST['pasv_max_port'] || $_POST['pasv_min_port'])) {
 		if (!is_port($_POST['pasv_max_port']))
-			$input_errors[] = gettext("'The pasv_max_port port must be a valid port number.'");
-	}
-	if ($_POST['enable'] && ($_POST['pasv_min_port'])) {
+			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_max_port"));
 		if (!is_port($_POST['pasv_min_port']))
-			$input_errors[] = gettext("'The pasv_min_port port must be a valid port number.'");
+			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_min_port"));
 	}
 	if (($_POST['passiveip'] && !is_ipaddr($_POST['passiveip']))) {
 		$input_errors[] = gettext("A valid IP address must be specified.");
@@ -239,8 +237,8 @@ function enable_change(enable_change) {
         <br><?=gettext("Use this option to override the IP address that FTP daemon will advertise in response to the PASV command."); ?></td>
   	</tr>
   	<tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("pasv_min_port"); ?></td>
-      <td width="78%" class="vtable">
+      <td width="22%" valign="top" class="vncellbg"><?=gettext("pasv_min_port"); ?></td>
+      <td width="78%" class="">
         <?=$mandfldhtml;?><input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>">
       <br><?=gettext("The minimum port to allocate for PASV style data connections (0 = use any port)."); ?></td>
   	</tr>

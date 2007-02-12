@@ -614,7 +614,7 @@ EOD;
 		/* run pure-ftpd if no previous error */
 		
 		if (!$result) {
-			$cmd = "/usr/local/sbin/pure-ftpd -S {$config['ftp']['port']} -c {$config['ftp']['numberclients']} -C {$config['ftp']['maxconperip']} -I {$config['ftp']['timeout']} -M U 077:077 -B -b ";
+			$cmd = "/usr/local/sbin/pure-ftpd -S {$config['ftp']['port']} -c {$config['ftp']['numberclients']} -C {$config['ftp']['maxconperip']} -I {$config['ftp']['timeout']} -M -U 077:077 -B -b ";
 	
 			if ( (isset($config['ftp']['anonymous'])) && (!isset($config['ftp']['localuser']))) {
 				$cmd .= "-e ";

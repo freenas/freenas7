@@ -2134,3 +2134,6 @@ msgstr ""
 
 msgid "Save and Restart AFP"
 msgstr ""
+
+msgid "The %s port must be a valid port number."
+msgstr ""

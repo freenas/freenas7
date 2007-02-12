@@ -86,48 +86,49 @@ if ($_GET['act'] == "del")
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-	<li class="tabact"><?=gettext("Users");?></li>
-	<li class="tabinact"><a href="access_users_groups.php"><?=gettext("Groups");?></a></li>
-  </ul>
-  </td></tr>
+  <tr>
+		<td class="tabnavtbl">
+  		<ul id="tabnav">
+				<li class="tabact"><a href="access_users.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Users");?></a></li>
+    		<li class="tabinact"><a href="access_users_groups.php"><?=gettext("Groups");?></a></li>
+  		</ul>
+  	</td>
+	</tr>
   <tr> 
     <td class="tabcont">
-<form action="access_users.php" method="post">
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<?php if (file_exists($d_userconfdirty_path)): ?><p>
-<?php print_info_box_np(gettext("The User list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
-<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
-<?php endif; ?>
-
-              <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td width="20%" class="listhdrr"><?=gettext("User");?></td>
-                  <td width="50%" class="listhdrr"><?=gettext("Full Name");?></td>
-                  <td width="20%" class="listhdrr"><?=gettext("Group");?></td>
-                  <td width="10%" class="list"></td>
-				</tr>
-			  <?php $i = 0; foreach ($a_user_conf as $user): ?>
-                <tr>
-                  <td class="listbg">
-                    <?=htmlspecialchars($user['login']);?>&nbsp;
-                  </td>
-                  <td class="listbg">
-                    <?=htmlspecialchars($user['fullname']);?>&nbsp;
-                  </td>
-                  <td class="listbg">
-                    <?=htmlspecialchars($user['usergroup']);?>&nbsp;
-                  </td>
-                   <td valign="middle" nowrap class="list"><a href="access_users_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit user");?>" width="17" height="17" border="0"></a>&nbsp;
-                   <a href="access_users.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this user?");?>')"><img src="x.gif" title="<?=gettext("Delete user");?>" width="17" height="17" border="0"></a></td>
-				</tr>
-			  <?php $i++; endforeach; ?>
-                <tr> 
-                  <td class="list" colspan="3"></td>
-                  <td class="list"> <a href="access_users_edit.php"><img src="plus.gif" title="<?=gettext("Add user");?>" width="17" height="17" border="0"></a></td>
-				</tr>
-              </table>
-            </form>
-</td></tr></table>
+			<form action="access_users.php" method="post">
+				<?php if ($savemsg) print_info_box($savemsg); ?>
+				<?php if (file_exists($d_userconfdirty_path)): ?><p>
+				<?php print_info_box_np(gettext("The User list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+				<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+				<?php endif; ?>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="20%" class="listhdrr"><?=gettext("User");?></td>
+						<td width="50%" class="listhdrr"><?=gettext("Full Name");?></td>
+						<td width="20%" class="listhdrr"><?=gettext("Group");?></td>
+						<td width="10%" class="list"></td>
+					</tr>
+				  <?php $i = 0; foreach ($a_user_conf as $user): ?>
+					<tr>
+						<td class="listlr"><?=htmlspecialchars($user['login']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($user['fullname']);?>&nbsp;</td>
+						<td class="listbg"><?=htmlspecialchars($user['usergroup']);?>&nbsp;</td>
+						<td valign="middle" nowrap class="list">
+							<a href="access_users_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit user");?>" width="17" height="17" border="0"></a>&nbsp;
+							<a href="access_users.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this user?");?>')"><img src="x.gif" title="<?=gettext("Delete user");?>" width="17" height="17" border="0"></a>
+						</td>
+					</tr>
+				  <?php $i++; endforeach; ?>
+					<tr> 
+						<td class="list" colspan="3"></td>
+						<td class="list">
+							<a href="access_users_edit.php"><img src="plus.gif" title="<?=gettext("Add user");?>" width="17" height="17" border="0"></a>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc"); ?>
