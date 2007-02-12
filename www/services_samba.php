@@ -149,8 +149,8 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><?=gettext("Settings");?></li>
-        <li class="tabinact"><a href="services_samba_share.php"><?=gettext("Shares");?></a></li>
+        <li class="tabact"><a href="services_samba.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Settings");?></a></li>
+				<li class="tabinact"><a href="services_samba_share.php"><?=gettext("Shares");?></a></li>
       </ul>
     </td>
   </tr>

@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"),gettext("iSCSI Target"),gettext("Add"));
+$pgtitle = array(gettext("Services"),gettext("iSCSI Target"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['iscsitarget']['vdisk']))
 	$config['iscsitarget']['vdisk'] = array();
@@ -106,7 +106,7 @@ if ($_POST) {
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <form action="services_iscsitarget_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
-     <tr>
+		<tr>
 			<td width="22%" valign="top" class="vncellreq"><?=gettext("Mount to use"); ?></td>
 			<td width="78%" class="vtable">
 				<select name="sharename" class="formfld" id="sharename">
@@ -116,14 +116,14 @@ if ($_POST) {
 		  	</select>
 		  </td>
 		</tr>
-		  <tr>
-          <td width="22%" valign="top" class="vncellreq"><?=gettext("File size") ;?></td>
-          <td width="78%" class="vtable">
-              <?=$mandfldhtml;?><input name="size" type="text" class="formfld" id="size" size="30" value="<?=htmlspecialchars($pconfig['size']);?>">
-			   <br><?=gettext("Size in MB.") ;?>
-            </td>
-          </tr>
-		  <tr>
+		<tr>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("File size") ;?></td>
+			<td width="78%" class="vtable">
+				<?=$mandfldhtml;?><input name="size" type="text" class="formfld" id="size" size="30" value="<?=htmlspecialchars($pconfig['size']);?>"><br>
+				<?=gettext("Size in MB.") ;?>
+			</td>
+		</tr>
+		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorised network") ; ?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> / 
@@ -136,11 +136,11 @@ if ($_POST) {
         </select><br>
         <span class="vexpl"><?=gettext("Network that is authorised to access to this iSCSI target") ;?></span>
       </td>
-	
-    <tr> 
+    </tr>
+    <tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
-				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
+				<input name="Submit" type="submit" class="formbtn" value="<?=isset($id)?gettext("Save"):gettext("Add")?>">
       </td>
     </tr>
   </table>

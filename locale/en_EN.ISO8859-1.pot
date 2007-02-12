@@ -2113,3 +2113,40 @@ msgstr ""
 
 msgid "FTP connected users"
 msgstr ""
+
+msgid "Save and Restart UPnP"
+msgstr ""
+
+msgid "Save and Restart Unison"
+msgstr ""
+
+msgid "Save and Restart SSHD"
+msgstr ""
+
+msgid "Save and Restart RSYNC"
+msgstr ""
+
+msgid "Save and Restart NFS"
+msgstr ""
+
+msgid "Save and Restart FTP"
+msgstr ""
+
+msgid "Save and Restart AFP"
+msgstr ""
+
+msgid "cccccccccccccccccc"
+msgstr ""
+
+
+
+
+
+
+
+
+
+
+
+
+

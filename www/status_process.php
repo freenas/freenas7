@@ -40,7 +40,7 @@ include("fbegin.inc");
     <td class="listtopic"><?=gettext("Processes information");?></td>
   </tr>
   <tr>
-    <td class="listr">
+    <td class="listt">
       <?php exec("top -b", $result); echo "<pre>".implode("\n", $result)."</pre>"; ?>
     </td>
   </tr>

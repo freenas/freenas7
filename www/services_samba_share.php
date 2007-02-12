@@ -75,8 +75,8 @@ if($_GET['act'] == "ret") {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="services_samba.php"><?=gettext("Settings");?></li>
-        <li class="tabact"><?=gettext("Shares");?></a></li>
+				<li class="tabinact"><a href="services_samba.php"><?=gettext("Settings");?></a></li>
+				<li class="tabact"><a href="services_samba_share.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Shares");?></a></li>
       </ul>
     </td>
   </tr>
