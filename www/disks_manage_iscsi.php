@@ -72,10 +72,8 @@ if ($_GET['act'] == "del")
         /* } else {
                   $errormsg[] = gettext("This iscsi disk must be unlounted before to be delete");
         } */
-		
 	}
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if($errormsg) print_input_errors($errormsg);?>
@@ -83,8 +81,8 @@ if ($_GET['act'] == "del")
 <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="disks_manage.php"><?=gettext("Manage"); ?></a></li>
-      	<li class="tabact"><?=gettext("iSCSI initiator"); ?></li>
+      	<li class="tabinact"><a href="disks_manage.php"><?=gettext("Manage");?></a></li>
+				<li class="tabact"><a href="disks_manage_iscsi.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI initiator");?></a></li>
       </ul>
     </td>
   </tr>
@@ -99,14 +97,14 @@ if ($_GET['act'] == "del")
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Name"); ?></td>
-			<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
+						<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
             <td width="25%" class="listhdrr"><?=gettext("Target name"); ?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_iscsiinit as $iscsiinit): ?>
           <tr>
             <td class="listlr"><?=htmlspecialchars($iscsiinit['name']);?>&nbsp;</td>
-			<td class="listr"><?=htmlspecialchars($iscsiinit['targetname']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($iscsiinit['targetname']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($iscsiinit['targetaddress']);?>&nbsp;</td>
             <td valign="middle" nowrap class="list"> <a href="disks_manage_iscsi_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit initiator");?>" width="17" height="17" border="0">
               <a href="disks_manage_iscsi.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete initiator"); ?>" width="17" height="17" border="0"></a>
