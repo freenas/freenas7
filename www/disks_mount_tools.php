@@ -47,15 +47,19 @@ $a_mount = &$config['mounts']['mount'];
 
 if ($_POST) {
 	unset($input_errors);
+	unset($errormsg);
 	unset($do_action);
 
 	/* input validation */
 	$reqdfields = explode(" ", "sharename action");
 	$reqdfieldsn = array(gettext("Share Name"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	
+	if (isset($config['system']['swap_enable']) && ($config['system']['swap_mount-name'] == $_POST['sharename'])) {
+		$errormsg[] = gettext("The swap file is using this mount point.");
+    }
 
-	if(!$input_errors)
-	{
+	if((!$input_errors) || (!$errormsg)) 	{
 		$do_action = true;
 		$sharename = $_POST['sharename'];
 		$action = $_POST['action'];
@@ -81,6 +85,7 @@ if(isset($_GET['action'])) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<?php if($errormsg) print_input_errors($errormsg);?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
@@ -126,7 +131,7 @@ if(isset($_GET['action'])) {
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">
-    				<?php if($do_action)
+    				<?php if(($do_action) && (!$errormsg))
     				{
     				  echo("<strong>" . gettext("Command output:") . "</strong><br>");
     					echo('<pre>');

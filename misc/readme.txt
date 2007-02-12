@@ -91,7 +91,11 @@ FreeNAs 0.684b:
 - Geom mirror: Change default algorithm to round robin (http://www.onlamp.com/pub/a/bsd/2005/11/10/FreeBSD_Basics.html)
 - Add 'FTP connected users list' information page
 - Fix FTP bug. Deletion of files uploaded and owned by user was not able.
+- Permit to configure multiple RSYNC local/client
 
+TO DO:
+- Must check config file conversion for local/client RSYNC
+- English reference file to test with the modification
 known bug in the 0.684b:
 - Can't remount ntfs-3g volume under the mount:tools. Must restart FreeNAS. It seem to be a fuse problem.
 - Using iSCSI-target can cause problem for stopping/restarting FreeNAS

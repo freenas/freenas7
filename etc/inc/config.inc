@@ -536,7 +536,8 @@ function convert_config()
 	}
 	
 	/* convert 1.5 -> 1.6 */
-	/* Upgrade iSCSI and NFS configurations */
+	/* Upgrade iSCSI and NFS configurations
+	Upgrade RSYNC client configuration */
 	if ($config['version'] == "1.5") {
 	
 		if (isset($config['nfs']['enable'])) 	{
@@ -562,7 +563,61 @@ function convert_config()
 		
 		}
 		
+		if (isset($config['rsyncclient']['enable'])) {
+			
+			$config['rsync'] = array();
+			$config['rsync']['rsyncclient'] = array();
+			
+			foreach ($config['rsyncclient']['sharetosync'] as $sharek => $sharev) 	{
+				$rsyncclient = array();
+				
+				$rsyncclient['opt_delete'] = isset($config['rsyncclient']['opt_delete']);
+				$rsyncclient['rsyncserverip'] = $config['rsyncclient']['rsyncserverip'];
+				$rsyncclient['localshare'] = $sharev;
+				$rsyncclient['remoteshare'] = $sharev;
+				$rsyncclient['minute'] = $config['rsyncclient']['minute'];
+				$rsyncclient['hour'] = $config['rsyncclient']['hour'];
+				$rsyncclient['day'] = $config['rsyncclient']['day'];
+				$rsyncclient['month'] = $config['rsyncclient']['month'];
+				$rsyncclient['weekday'] = $config['rsyncclient']['weekday'];
+				$rsyncclient['all_mins'] = $config['rsyncclient']['all_mins'];
+				$rsyncclient['all_hours'] = $config['rsyncclient']['all_hours'];
+				$rsyncclient['all_days'] = $config['rsyncclient']['all_days'];
+				$rsyncclient['all_months'] = $config['rsyncclient']['all_months'];
+				$rsyncclient['all_weekdays'] = $config['rsyncclient']['all_weekdays'];
+				
+				$config['rsync']['rsyncclient'][] = $rsyncclient;
+				unset($rsyncclient);
+			}
 		
+		unset ($config['rsyncclient']);
+			
+		}
+		if (isset($config['rsynclocal']['enable'])) {
+			
+			$config['rsync']['rsynclocal'] = array();
+			
+			$rsynclocal = array();
+				
+			$rsynclocal['opt_delete'] = isset($config['rsynclocal']['opt_delete']);
+			$rsynclocal['source'] = $config['rsynclocal']['source'];
+			$rsynclocal['destination'] = $config['rsynclocal']['destination'];
+			$rsynclocal['minute'] = $config['rsynclocalt']['minute'];
+			$rsynclocal['hour'] = $config['rsynclocal']['hour'];
+			$rsynclocal['day'] = $config['rsynclocal']['day'];
+			$rsynclocal['month'] = $config['rsynclocal']['month'];
+			$rsynclocal['weekday'] = $config['rsynclocal']['weekday'];
+			$rsynclocal['all_mins'] = $config['rsynclocal']['all_mins'];
+			$rsynclocal['all_hours'] = $config['rsynclocal']['all_hours'];
+			$rsynclocal['all_days'] = $config['rsynclocal']['all_days'];
+			$rsynclocal['all_months'] = $config['rsynclocal']['all_months'];
+			$rsynclocal['all_weekdays'] = $config['rsynclocal']['all_weekdays'];
+				
+			$config['rsync']['rsynclocal'][] = $rsynclocal;
+			
+			unset ($config['rsynclocal']);
+		}
+					
 	$config['version'] = "1.6";
 	
 	}

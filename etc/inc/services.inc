@@ -995,156 +995,168 @@ EOD;
 	}
 
 	// RSYNC CLIENT PART
-
-	if (isset($config['rsyncclient']['enable'])) {
-		
+	if (is_array($config['rsync']['rsyncclient'])) {
+		$a_rsyncclient = &$config['rsync']['rsyncclient'];
+				
 		if ($g['booting'])
 			echo "Configuring cron for rsync client... ";
 		
-		if ($config['rsyncclient']['all_mins'] == "0") 	{ 
-			foreach ($config['rsyncclient']['minute'] as $minutev) 	{
-				if (strlen($cron_min) > 0)
-					$cron_min = $cron_min . "," . $minutev;
-				else
-					$cron_min = $minutev;
-			}
-		}
-		else
-			$cron_min = "*";
-	
-	
-		if ($config['rsyncclient']['all_hours'] == "0") { 
-			foreach ($config['rsyncclient']['hour'] as $hourv) 	{
-				if (strlen($cron_hour) > 0)
-					 $cron_hour = $cron_hour . "," . $hourv;
-				else
-					 $cron_hour = $hourv;
-			}
-		}
-		else
-			$cron_hour = "*";
+		$i=0;
+		foreach($a_rsyncclient as $rsyncclient) {
 		
-		if ($config['rsyncclient']['all_days'] == "0") 	{ 
-			foreach ($config['rsyncclient']['day'] as $dayv) 	{
-				if (strlen($cron_day) > 0)
-					$cron_day = $cron_day . "," . $dayv;
-				else
-					$cron_day = $dayv;
+			if ($rsyncclient['all_mins'] == "0") 	{ 
+				foreach ($rsyncclient['minute'] as $minutev) 	{
+					if (strlen($cron_min) > 0)
+						$cron_min = $cron_min . "," . $minutev;
+					else
+						$cron_min = $minutev;
+				}
 			}
-		}
-		else
-			$cron_day = "*";
-		
-		if ($config['rsyncclient']['all_months'] == "0") 	{
-		  foreach ($config['rsyncclient']['month'] as $monthv) 	  {
-			if (strlen($cron_month) > 0)
-				$cron_month = $cron_month . "," . $monthv;
 			else
-				$cron_month = $monthv;
-		  }
-		}
-		else
-			$cron_month = "*";
+				$cron_min = "*";
 		
 		
-		if ($config['rsyncclient']['all_weekday'] == "0") 	{
-			foreach ($config['rsyncclient']['weekday'] as $weekdayv) 	{
-				if (strlen($cron_weekday) > 0)
-					 $cron_weekday = $cron_weekday . "," . $weekdayv;
-				else
-					 $cron_weekday = $weekdayv;
+			if ($rsyncclient['all_hours'] == "0") { 
+				foreach ($rsyncclient['hour'] as $hourv) 	{
+					if (strlen($cron_hour) > 0)
+						 $cron_hour = $cron_hour . "," . $hourv;
+					else
+						 $cron_hour = $hourv;
+				}
 			}
-		}
-		else
-			$cron_weekday = "*";		
-		
-		$crontabconf .= <<<EOD
-{$cron_min}    {$cron_hour}        {$cron_day}        {$cron_month}        {$cron_weekday}       root    {$g['varrun_path']}/sync.sh
+			else
+				$cron_hour = "*";
+			
+			if ($rsyncclient['all_days'] == "0") 	{ 
+				foreach ($rsyncclient['day'] as $dayv) 	{
+					if (strlen($cron_day) > 0)
+						$cron_day = $cron_day . "," . $dayv;
+					else
+						$cron_day = $dayv;
+				}
+			}
+			else
+				$cron_day = "*";
+			
+			if ($rsyncclient['all_months'] == "0") 	{
+			  foreach ($rsyncclient['month'] as $monthv) 	  {
+				if (strlen($cron_month) > 0)
+					$cron_month = $cron_month . "," . $monthv;
+				else
+					$cron_month = $monthv;
+			  }
+			}
+			else
+				$cron_month = "*";
+			
+			
+			if ($rsyncclient['all_weekday'] == "0") 	{
+				foreach ($rsyncclient['weekday'] as $weekdayv) 	{
+					if (strlen($cron_weekday) > 0)
+						 $cron_weekday = $cron_weekday . "," . $weekdayv;
+					else
+						 $cron_weekday = $weekdayv;
+				}
+			}
+			else
+				$cron_weekday = "*";		
+			
+			$crontabconf .= <<<EOD
+{$cron_min}    {$cron_hour}        {$cron_day}        {$cron_month}        {$cron_weekday}       root    {$g['varrun_path']}/rsync_client{$i}.sh
 
 EOD;
 
-		if ($g['booting'])
-			echo "done\n";
-	}
+			if ($g['booting'])
+				echo "done\n";
+		
 	
-	// Erase all variable used previously
-	unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
+		// Erase all variable used previously
+		unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
+		$i++;
+		}
+	}
 		
 	// RSYNC LOCAL PART
-
-	if (isset($config['rsync_local']['enable'])) {
-		
+	if (is_array($config['rsync']['rsynclocal'])) {
+		$a_rsynclocal = &$config['rsync']['rsynclocal'];
+	
 		if ($g['booting'])
 			echo "Configuring cron for local rsync... ";
+			
+		$i=0;
+		foreach($a_rsynclocal as $rsynclocal) {
 		
-		if ($config['rsync_local']['all_mins'] == "0") 	{ 
-			foreach ($config['rsync_local']['minute'] as $minutev) 	{
-				if (strlen($cron_min) > 0)
-					$cron_min = $cron_min . "," . $minutev;
-				else
-					$cron_min = $minutev;
+			if ($config['rsync_local']['all_mins'] == "0") 	{ 
+				foreach ($rsynclocal['minute'] as $minutev) 	{
+					if (strlen($cron_min) > 0)
+						$cron_min = $cron_min . "," . $minutev;
+					else
+						$cron_min = $minutev;
+				}
 			}
-		}
-		else
-			$cron_min = "*";
-	
-	
-		if ($config['rsync_local']['all_hours'] == "0") { 
-			foreach ($config['rsync_local']['hour'] as $hourv) 	{
-				if (strlen($cron_hour) > 0)
-					 $cron_hour = $cron_hour . "," . $hourv;
-				else
-					 $cron_hour = $hourv;
-			}
-		}
-		else
-			$cron_hour = "*";
-		
-		if ($config['rsync_local']['all_days'] == "0") 	{ 
-			foreach ($config['rsync_local']['day'] as $dayv) 	{
-				if (strlen($cron_day) > 0)
-					$cron_day = $cron_day . "," . $dayv;
-				else
-					$cron_day = $dayv;
-			}
-		}
-		else
-			$cron_day = "*";
-		
-		if ($config['rsync_local']['all_months'] == "0") 	{
-		  foreach ($config['rsync_local']['month'] as $monthv) 	  {
-			if (strlen($cron_month) > 0)
-				$cron_month = $cron_month . "," . $monthv;
 			else
-				$cron_month = $monthv;
-		  }
-		}
-		else
-			$cron_month = "*";
+				$cron_min = "*";
 		
 		
-		if ($config['rsync_local']['all_weekday'] == "0") 	{
-			foreach ($config['rsync_local']['weekday'] as $weekdayv) 	{
-				if (strlen($cron_weekday) > 0)
-					 $cron_weekday = $cron_weekday . "," . $weekdayv;
-				else
-					 $cron_weekday = $weekdayv;
+			if ($rsynclocal['all_hours'] == "0") { 
+				foreach ($rsynclocal['hour'] as $hourv) 	{
+					if (strlen($cron_hour) > 0)
+						 $cron_hour = $cron_hour . "," . $hourv;
+					else
+						 $cron_hour = $hourv;
+				}
 			}
-		}
-		else
-			$cron_weekday = "*";		
-		
-		$crontabconf .= <<<EOD
-{$cron_min}    {$cron_hour}        {$cron_day}        {$cron_month}        {$cron_weekday}       root    {$g['varrun_path']}/sync_local.sh
+			else
+				$cron_hour = "*";
+			
+			if ($rsynclocal['all_days'] == "0") 	{ 
+				foreach ($rsynclocal['day'] as $dayv) 	{
+					if (strlen($cron_day) > 0)
+						$cron_day = $cron_day . "," . $dayv;
+					else
+						$cron_day = $dayv;
+				}
+			}
+			else
+				$cron_day = "*";
+			
+			if ($rsynclocal['all_months'] == "0") 	{
+			  foreach ($rsynclocal['month'] as $monthv) 	  {
+				if (strlen($cron_month) > 0)
+					$cron_month = $cron_month . "," . $monthv;
+				else
+					$cron_month = $monthv;
+			  }
+			}
+			else
+				$cron_month = "*";
+			
+			
+			if ($rsynclocal['all_weekday'] == "0") 	{
+				foreach ($rsynclocal['weekday'] as $weekdayv) 	{
+					if (strlen($cron_weekday) > 0)
+						 $cron_weekday = $cron_weekday . "," . $weekdayv;
+					else
+						 $cron_weekday = $weekdayv;
+				}
+			}
+			else
+				$cron_weekday = "*";		
+			
+			$crontabconf .= <<<EOD
+{$cron_min}    {$cron_hour}        {$cron_day}        {$cron_month}        {$cron_weekday}       root    {$g['varrun_path']}/rsync_local{$i}.sh
 
 EOD;
 
+			// Erase all variable used previously
+			unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
+		
+		}
+				
 		if ($g['booting'])
-			echo "done\n";
+				echo "done\n";
+		
 	}
-	
-	// Erase all variable used previously
-	unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
 	
 	// SHUTDOWN PART
 		
@@ -1244,55 +1256,57 @@ function services_rsyncclient_configure()
 	// Generate a shell script that is used by cron
 	// Generate crontab works
 	
-	if (isset($config['rsyncclient']['enable']))
-	{	
+	if (is_array($config['rsync']['rsyncclient'])) {
+		$a_rsyncclient = &$config['rsync']['rsyncclient'];
 	
 		if ($g['booting'])
 			echo "Generating synchronizing cron script... ";
 		
-		/* generate /var/run/sync.sh script */
-		$fd = fopen("{$g['varrun_path']}/sync.sh", "w");
-		if (!$fd)
-		{
-			printf("Error: cannot open /var/run/sync.sh in services_rsyncclient_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open /var/run/sync.sh in services_rsyncclient_configure()" ');
-			
-			return 1;
-		}
+		$i=0;
+		foreach($a_rsyncclient as $rsyncclient) {
+		
+			/* generate /var/run/rsync_client'ID'.sh script */
+			$fd = fopen("{$g['varrun_path']}/rsync_client{$i}.sh", "w");
+			if (!$fd) {
+				printf("Error: cannot open /var/run/rsync_client{$i}.sh in services_rsyncclient_configure().\n");
+				mwexec('/usr/bin/logger "Error: cannot open rsync_client{$i}.sh in services_rsyncclient_configure()" ');
+				return 1;
+			}
 
-	$syncscript = <<<EOD
+			$syncscript = <<<EOD
 #!/bin/sh
-/usr/bin/logger -p local4.notice "Start of Remote RSYNC synchronization"
-if [ -r /var/run/rsync-running ]; then
+/usr/bin/logger -p local4.notice "Remote RSYNC synchronization from share {$rsyncclient['remoteshare']} on {$rsyncclient['rsyncserverip']} to {$rsyncclient['localshare']}"
+if [ -r {$g['varrun_path']}/rsync_client-running{$i} ]; then
+/usr/bin/logger -p local4.notice "Previous client synchronization still running...exiting"
 exit
 fi
-/usr/bin/touch /var/run/rsync-running
+/usr/bin/touch {$g['varrun_path']}/rsync_client-running{$i}
 
 EOD;
 
-		$opt_delete="";
-		if (isset($config['rsyncclient']['opt_delete']))
-			$opt_delete = "--delete --delete-after ";
+			$opt_delete="";
+			if (isset($rsyncclient['opt_delete'])) {
+				$opt_delete = "--delete --delete-after ";
+			}
 	
-		foreach ($config['rsyncclient']['sharetosync'] as $sharek => $sharev)
-		{
 			$syncscript .= <<<EOD
-/usr/local/bin/rsync -rtz {$opt_delete}rsync://{$config['rsyncclient']['rsyncserverip']}/{$sharev} /mnt/{$sharev}
+/usr/local/bin/rsync -rtz {$opt_delete}rsync://{$rsyncclient['rsyncserverip']}/{$rsyncclient['remoteshare']} /mnt/{$rsyncclient['localshare']}
 
 EOD;
-		}
 	
-		$syncscript .= <<<EOD
-/bin/rm -f /var/run/rsync-running
-/usr/bin/logger -p local4.notice "End of remote RSYNC synchronization"
+			$syncscript .= <<<EOD
+/bin/rm -f {$g['varrun_path']}/rsync_client-running{$i}
+/usr/bin/logger -p local4.notice "End of remote RSYNC synchronization from share {$rsyncclient['remoteshare']} on {$rsyncclient['rsyncserverip']} to {$rsyncclient['localshare']}"
 
 EOD;
 
-		fwrite($fd,$syncscript);
-		fclose($fd);
+			fwrite($fd,$syncscript);
+			fclose($fd);
 		
-		/* Add exectutive right to the script */
-		mwexec("/bin/chmod 770 {$g['varrun_path']}/sync.sh");
+			/* Add exectutive right to the script */
+			mwexec("/bin/chmod 770 {$g['varrun_path']}/rsync_client{$i}.sh");
+		
+		}
 		
 		if ($g['booting'])
 			echo "done\n";
@@ -1309,51 +1323,58 @@ function services_rsync_local_configure()
 	// Generate a shell script that is used by cron
 	// Generate crontab works
 	
-	if (isset($config['rsync_local']['enable']))
-	{	
+	if (is_array($config['rsync']['rsynclocal'])) {
+		$a_rsynclocal = &$config['rsync']['rsynclocal'];	
 	
 		if ($g['booting'])
 			echo "Generating local rsync cron script... ";
 		
-		/* generate /var/run/sync_local.sh script */
-		$fd = fopen("{$g['varrun_path']}/sync_local.sh", "w");
-		if (!$fd) {
-			printf("Error: cannot open /var/run/sync_local.sh in services_rsync_local_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open /var/run/sync_local.sh in services_rsync_local_configure()" ');
-			return 1;
-		}
+		$i=0;
+		foreach($a_rsynclocal as $rsynclocal) {
+		
+			/* generate /var/run/sync_local.sh script */
+			$fd = fopen("{$g['varrun_path']}/rsync_local{$i}.sh", "w");
+			if (!$fd) {
+				printf("Error: cannot open /var/run/rsync_local{$i}.sh in services_rsync_local_configure().\n");
+				mwexec('/usr/bin/logger "Error: cannot open /var/run/rsync_local{$i}.sh in services_rsync_local_configure()" ');
+				return 1;
+			}
 
-	$syncscript = <<<EOD
+			$syncscript = <<<EOD
 #!/bin/sh
-/usr/bin/logger -p local4.notice "Start of local RSYNC synchronization"
-if [ -r /var/run/rsync_local-running ]; then
+/usr/bin/logger -p local4.notice "Start of local RSYNC from {$rsynclocal['source']} to {$rsynclocal['destination']}"
+if [ -r {$g['varrun_path']}/rsync_local-running{$i} ]; then
+/usr/bin/logger -p local4.notice "Previous local synchronization still running...exiting"
 exit
 fi
-/usr/bin/touch /var/run/rsync_local-running
+/usr/bin/touch {$g['varrun_path']}/rsync_local-running{$i}
 
 EOD;
 
-		$opt_delete="";
-		if (isset($config['rsync_local']['opt_delete']))
-			$opt_delete = "--delete --delete-after ";
+			$opt_delete="";
+			if (isset($rsynclocal['opt_delete']))
+				$opt_delete = "--delete --delete-after ";
 	
 		
-		$syncscript .= <<<EOD
-/usr/local/bin/rsync -a {$opt_delete} /mnt/{$config['rsync_local']['source']} /mnt/{$config['rsync_local']['destination']}
+			$syncscript .= <<<EOD
+/usr/local/bin/rsync -a {$opt_delete} /mnt/{$rsynclocal['source']} /mnt/{$rsynclocal['destination']}
 
 EOD;
 			
-		$syncscript .= <<<EOD
-/bin/rm -f /var/run/rsync_local-running
-/usr/bin/logger -p local4.notice "End of local RSYNC synchronization"
+			$syncscript .= <<<EOD
+/bin/rm -f {$g['varrun_path']}/rsync_local-running{$i}
+/usr/bin/logger -p local4.notice "End of local RSYNC synchronization from {$rsynclocal['source']} to {$rsynclocal['destination']}"
 
 EOD;
 
-		fwrite($fd,$syncscript);
-		fclose($fd);
-		
-		/* Add exectutive right to the script */
-		mwexec("/bin/chmod 770 {$g['varrun_path']}/sync_local.sh");
+			fwrite($fd,$syncscript);
+			fclose($fd);
+			
+			/* Add exectutive right to the script */
+			mwexec("/bin/chmod 770 {$g['varrun_path']}/rsync_local{$i}.sh");
+			
+			$i++;
+		}
 		
 		if ($g['booting'])
 			echo "done\n";
@@ -1367,8 +1388,7 @@ function services_radius_configure()
 {
 	global $config, $g;
 
-	if (isset($config['radius']['enable']))
-	{
+	if (isset($config['radius']['enable'])) {
 	
 		/* generate radius.conf */
 		$fd = fopen("{$g['varetc_path']}/radius.conf", "w");

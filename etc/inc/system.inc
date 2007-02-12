@@ -43,6 +43,7 @@ function system_resolvconf_generate() {
 	$fd = fopen("{$g['varetc_path']}/resolv.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open resolv.conf in system_resolvconf_generate().\n");
+		mwexec('/usr/bin/logger "Error: cannot open resolv.conf in system_resolvconf_generate()" ');
 		return 1;
 	}
 		
@@ -97,6 +98,7 @@ function system_hosts_generate() {
 	$fd = fopen("{$g['varetc_path']}/hosts", "w");
 	if (!$fd) {
 		printf("Error: cannot open hosts file in system_hosts_generate().\n");
+		mwexec('/usr/bin/logger "Error: cannot open hosts file in system_hosts_generate()" ');
 		$result = 1;
 	}
  
@@ -148,6 +150,7 @@ function system_routing_configure() {
 		$fd = fopen("{$g['vardb_path']}/routes.db", "r");
 		if (!$fd) {
 			printf("Error: cannot open routes DB file in system_routing_configure().\n");
+			mwexec('/usr/bin/logger "Error: cannot open routes DB file in system_routing_configure()" ');
 			$result = 1 ;		
 		}
 		while (!feof($fd)) {
@@ -164,6 +167,7 @@ function system_routing_configure() {
 		$fd = fopen("{$g['vardb_path']}/routes.db", "w");
 		if (!$fd) {
 			printf("Error: cannot open routes DB file in system_routing_configure().\n");
+			mwexec('/usr/bin/logger "Error: cannot open routes DB file in system_routing_configure()" ');
 			$result = 1 ;		
 		}
 		
@@ -203,6 +207,8 @@ function system_syslogd_start() {
 		$fd = fopen("{$g['varetc_path']}/syslog.conf", "w");
 		if (!$fd) {
 			printf("Error: cannot open syslog.conf in system_syslogd_start().\n");
+			mwexec('/usr/bin/logger "Error: cannot open syslog.conf in system_syslogd_start()" ');
+			
 			$retval = 1 ;
 		}
 		
@@ -329,6 +335,7 @@ function system_webgui_start() {
 	$fd = fopen("{$g['varetc_path']}/lighttpd.conf", "w");
 	if (!$fd) {
 		printf("Error: cannot open lightppd.conf in system_webgui_start().\n");
+		mwexec('/usr/bin/logger "Error: cannot open lightppd.conf in system_webgui_start()" ');
 		$result = 1 ;
 	}
 	
@@ -468,6 +475,7 @@ EOD;
 		$fdcert = fopen("{$g['varetc_path']}/cert.pem", "w");
 		if (!$fdcert) {
 			printf("Error: cannot open cert.pem in system_webgui_start().\n");
+			mwexec('/usr/bin/logger "Error: cannot open cert.pem in system_webgui_start()" ');
 			$result = 1 ;
 		}
 		chmod("{$g['varetc_path']}/cert.pem", 0600);
@@ -493,12 +501,17 @@ EOD;
 	if (!$result) {
 		$result = mwexec("/usr/local/sbin/lighttpd -f  {$g['varetc_path']}/lighttpd.conf -m /usr/local/lib/lighttpd");
 	}
-	
-	if ($g['booting']) {
-		if (!$result)
-			echo "done\n";
-		else
-			echo "failed\n";
+
+	if (($g['booting']) && (!$result)) {
+		echo "done\n";
+		mwexec('/usr/bin/logger "WebGUI started" ');
+	} else if (!$result) {
+		mwexec('/usr/bin/logger "WebGUI started" ');
+	} else if ($g['booting']) {
+		echo "failed\n";
+		mwexec('/usr/bin/logger "Fail to start WebGUI" ');
+	} else {
+		mwexec('/usr/bin/logger "Fail to start WebGUI" ');
 	}
 	
 	return $result;
@@ -507,9 +520,12 @@ EOD;
 function system_password_configure() {
 	global $config, $g;
 	
+	$result = 0 ;
+	
 	$fd = fopen("{$g['varrun_path']}/htpasswd", "w");
 	if (!$fd) {
 		printf("Error: cannot open htpasswd in system_password_configure().\n");
+		mwexec('/usr/bin/logger "Error: cannot open htpasswd in system_password_configure()" ');
 		return 1;
 	}
 	
@@ -520,14 +536,13 @@ function system_password_configure() {
 	
 	fwrite($fd, $username . ":" . $config['system']['password'] . "\n");
 	fclose($fd);
-	chmod("{$g['varrun_path']}/htpasswd", 0600);
+	$result = chmod("{$g['varrun_path']}/htpasswd", 0600);
 	
-	return 0;
+	return $result;
 }
 function system_systime_set($mydate) {
-
-	exec("/bin/date " . $mydate);
-	return 0;
+	$result=mwexec("/bin/date " . $mydate);
+	return $result;
 }
 
 function system_timezone_configure() {
@@ -560,6 +575,7 @@ function system_ntp_configure() {
 	else {
 		killbypid("{$g['varrun_path']}/runmsntp.pid");
 		killbypid("{$g['varrun_path']}/msntp.pid");
+		mwexec('/usr/bin/logger "Stoping NTP client" ');
 	}
 
 	/* start ntp client if needed - needs to be forced into background */
@@ -580,8 +596,10 @@ function system_ntp_configure() {
 			escapeshellarg($timeservers));
 	}
 		
-	if ($g['booting'])
+	if ($g['booting']) {
 		echo "done\n";
+	}
+	mwexec('/usr/bin/logger "NTP client started" ');
 }
 
 function system_stop_common() {
@@ -698,6 +716,8 @@ function system_dmesg_save() {
 	$fd = fopen("{$g['varlog_path']}/dmesg.boot", "w");
 	if (!$fd) {
 		printf("Error: cannot open dmesg.boot in system_dmesg_save().\n");
+		mwexec('/usr/bin/logger "Error: cannot open dmesg.boot in system_dmesg_save()" ');
+		
 		return 1;
 	}
 	
@@ -838,6 +858,7 @@ EOD;
 	$fd = @fopen("/usr/share/misc/termcap", "w");
 	if (!$fd) {
 		printf("Error: cannot open termcap in system_set_termcap().\n");
+		mwexec('/usr/bin/logger "Error: cannot open termcap in system_set_termcap()" ');
 		return 1;
 	}
 	chmod("/usr/share/misc/termcap", 0644);
@@ -852,24 +873,31 @@ function system_users_create()
 	/* Create All the passwd file */
 	global $config, $g;
 	
+	$result = 0;
+	
 	if ($g['booting'])
 		echo "Generating user database... ";
 	
 	if (system_user_masterpasswd() )
-		$res == 1;
+		$result = 1;
 	if (system_user_group() )
-		$res == 1;
+		$result = 1;
 	if (system_user_pwdmkdb() )
-		$res == 1;
+		$result = 1;
 	
-	if ($g['booting']) {
-		if (!$res)
-			echo "done\n";
-		else
-			echo "failed\n";
-	}
+	if (($g['booting']) && (!$result)) {
+		echo "done\n";
+		mwexec('/usr/bin/logger "User database created" ');
+	} else if (!$result) {
+		mwexec('/usr/bin/logger "User database created" ');
+	} else if ($g['booting']) {
+		echo "failed\n";
+		mwexec('/usr/bin/logger "Fail to create User database" ');
+	} else {
+		mwexec('/usr/bin/logger "Fail to create User database" ');
+	}	
 	
-	return $res;
+	return $result;
 	
 }
 
@@ -919,9 +947,9 @@ EOD;
 	}
 	
 	$fd = fopen("{$g['varetc_path']}/master.passwd", "w");
-	if (!$fd)
-	{
+	if (!$fd) {
 		printf("Error: cannot open master.passwd in system_user_masterpasswd().\n");
+		mwexec('/usr/bin/logger "Error: cannot open master.passwd in system_user_masterpasswd()" ');
 		return 1;
 	}
 
@@ -989,6 +1017,7 @@ EOD;
 	$fd = fopen("{$g['varetc_path']}/group", "w");
 	if (!$fd) 	{
 		printf("Error: cannot open group in system_user_group().\n");
+		mwexec('/usr/bin/logger "Error: cannot open group in system_user_group()" ');
 		return 1;
 	}
 
@@ -1097,6 +1126,7 @@ EOD;
 	if (!$fd)
 	{
 		printf("Error: cannot open /pam.d/system in system_pam_configure().\n");
+		mwexec('/usr/bin/logger "Error: cannot open /pam.d/system in system_pam_configure()" ');
 		return 1;
 	}
 	
@@ -1161,6 +1191,7 @@ EOD;
 	$fd = fopen("{$g['varetc_path']}/pam.d/sshd", "w");
 	if (!$fd) 	{
 		printf("Error: cannot open /pam.d/sshd in system_pam_configure().\n");
+		mwexec('/usr/bin/logger "Error: cannot open /pam.d/sshd in system_pam_configure()" ');
 		return 1;
 	}
 
@@ -1212,6 +1243,7 @@ EOD;
 	$fd = fopen("{$g['varetc_path']}/pam.d/ftp", "w");
 	if (!$fd) 	{
 		printf("Error: cannot open /pam.d/ftp in system_pam_configure().\n");
+		mwexec('/usr/bin/logger "Error: cannot open /pam.d/ftp in system_pam_configure()" ');
 		return 1;
 	}
 
@@ -1267,6 +1299,7 @@ EOD;
 	$fd = fopen("{$g['varetc_path']}/pam.d/login", "w");
 	if (!$fd) 	{
 		printf("Error: cannot open /pam.d/login in system_pam_configure().\n");
+		mwexec('/usr/bin/logger "Error: cannot open /pam.d/login in system_pam_configure()" ');
 		return 1;
 	}
 
@@ -1308,6 +1341,7 @@ EOD;
 	$fd = fopen("{$g['varetc_path']}/nsswitch.conf", "w");
 	if (!$fd) 	{
 		printf("Error: cannot open /var/etc/nsswitch.conf in system_pam_configure().\n");
+		mwexec('/usr/bin/logger "Error: cannot open /var/etc/nsswitch.conf in system_pam_configure()" ');
 		return 1;
 	}
 
@@ -1642,7 +1676,7 @@ function system_swap_configure()
 	
 	if (!$g['booting']) {
 	
-		// MUST add a checl if swap running
+		// MUST add a check if the system can stop swap without problem
 		$result = mwexec("/sbin/swapoff /dev/md2");
 			
 		//Destroy block device

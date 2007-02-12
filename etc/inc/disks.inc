@@ -418,9 +418,12 @@ function disks_status($diskname)
 		
 		if ($detecteddisk == $diskname['name']) {
 			$status="ONLINE";
+			// Removed the information CHANGED: Not usefull, and depend of the dmesg log (if lot's of log, the state of disk will be 'changed'
+			/*
 			if (($detecteddiskv['size'] != $diskname['size']) || ($detecteddiskv['desc'] != $diskname['desc'])) {
 				$status="CHANGED";
 			}
+			*/
 			break;
 		}
 	}
