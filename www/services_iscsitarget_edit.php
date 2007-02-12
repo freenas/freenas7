@@ -97,10 +97,8 @@ if ($_POST) {
 		
 		header("Location: services_iscsitarget.php");
 		exit;
-
 	}
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
@@ -134,7 +132,7 @@ if ($_POST) {
           </option>
           <?php endfor; ?>
         </select><br>
-        <span class="vexpl"><?=gettext("Network that is authorised to access to this iSCSI target") ;?></span>
+        <span class="vexpl"><?=gettext("Network that is authorised to access to this iSCSI target.") ;?></span>
       </td>
     </tr>
     <tr>

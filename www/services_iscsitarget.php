@@ -62,56 +62,50 @@ if ($_POST) {
 if ($_GET['act'] == "del")
 {
 	if ($a_iscsitarget[$_GET['id']]) {
-		
 			unset($a_iscsitarget[$_GET['id']]);
 			// Must delete the old file ???
 			write_config();
 			touch($d_iscsitargetdirty_path);
 			header("Location: services_iscsitarget.php");
 			exit;
-		
 	}
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-    <td class="tabcont">
-      <form action="services_iscsitarget.php" method="post">
-        <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (file_exists($d_iscsitargetdirty_path)): ?><p>
-        <?php print_info_box_np(gettext("The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
-        <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
-        <?php endif; ?>
-        <table width="100%" border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td width="25%" class="listhdrr"><?=gettext("Target name"); ?></td>
-			<td width="25%" class="listhdrr"><?=gettext("Network"); ?></td>
-			<td width="25%" class="listhdrr"><?=gettext("Mount used"); ?></td>
-			<td width="25%" class="listhdrr"><?=gettext("Size"); ?></td>
-			
-            <td width="10%" class="list"></td>
-          </tr>
-  			  <?php $i = 0; foreach($a_iscsitarget as $iscsitarget): ?>
-          <tr>
-            
-			<td class="listr">iqn.1994-04.org.netbsd.iscsi-target:target<?=htmlspecialchars($i);?>&nbsp;</td>
-            <td class="listr"><?=htmlspecialchars($iscsitarget['network']);?>&nbsp;</td>
-			<td class="listr"><?=htmlspecialchars($iscsitarget['sharename']);?>&nbsp;</td>
-			<td class="listr"><?=htmlspecialchars($iscsitarget['size']);?>&nbsp;</td>
-            <td valign="middle" nowrap class="list"> 
-              <a href="services_iscsitarget.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this target?");?>')"><img src="x.gif" title="<?=gettext("Delete target"); ?>" width="17" height="17" border="0"></a>
-            </td>
-          </tr>
-          <?php $i++; endforeach; ?>
-          <tr> 
-            <td class="list" colspan="4"></td>
-            <td class="list"><a href="services_iscsitarget_edit.php"><img src="plus.gif" title="<?=gettext("Add target");?>" width="17" height="17" border="0"></a></td>
-			    </tr>
-        </table>
-      </form>
-	  <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("You must have a minimum of 256MB of RAM for using iSCSI-target");?></p>
-	  </td>
-  </tr>
+  <td class="tabcont">
+    <form action="services_iscsitarget.php" method="post">
+      <?php if ($savemsg) print_info_box($savemsg); ?>
+      <?php if (file_exists($d_iscsitargetdirty_path)): ?><p>
+      <?php print_info_box_np(gettext("The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+      <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+      <?php endif; ?>
+      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+					<td width="25%" class="listhdrr"><?=gettext("Target name"); ?></td>
+					<td width="25%" class="listhdrr"><?=gettext("Network"); ?></td>
+					<td width="25%" class="listhdrr"><?=gettext("Mount used"); ?></td>
+					<td width="25%" class="listhdrr"><?=gettext("Size"); ?></td>
+					<td width="10%" class="list"></td>
+        </tr>
+			  <?php $i = 0; foreach($a_iscsitarget as $iscsitarget): ?>
+        <tr>
+					<td class="listr">iqn.1994-04.org.netbsd.iscsi-target:target<?=htmlspecialchars($i);?>&nbsp;</td>
+          <td class="listr"><?=htmlspecialchars($iscsitarget['network']);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars($iscsitarget['sharename']);?>&nbsp;</td>
+					<td class="listr"><?=htmlspecialchars($iscsitarget['size']);?>&nbsp;</td>
+          <td valign="middle" nowrap class="list"> 
+            <a href="services_iscsitarget.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this target?");?>')"><img src="x.gif" title="<?=gettext("Delete target"); ?>" width="17" height="17" border="0"></a>
+          </td>
+        </tr>
+        <?php $i++; endforeach; ?>
+        <tr> 
+          <td class="list" colspan="4"></td>
+          <td class="list"><a href="services_iscsitarget_edit.php"><img src="plus.gif" title="<?=gettext("Add target");?>" width="17" height="17" border="0"></a></td>
+		    </tr>
+			</table>
+		</form>
+	  <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("You must have a minimum of 256MB of RAM for using iSCSI-target.");?></p>
+	</td>
 </table>
 <?php include("fend.inc"); ?>

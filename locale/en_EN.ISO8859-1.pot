@@ -2099,13 +2099,13 @@ msgstr ""
 msgid "Add target"
 msgstr ""
 
-msgid "Network that is authorised to access to this iSCSI target"
+msgid "Network that is authorised to access to this iSCSI target."
 msgstr ""
 
 msgid "A valid size target value must be specified"
 msgstr ""
 
-msgid "You must have a minimum of 256MB of RAM for using iSCSI-target"
+msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
 msgstr ""
 
 msgid "FTP users"
@@ -2134,19 +2134,3 @@ msgstr ""
 
 msgid "Save and Restart AFP"
 msgstr ""
-
-msgid "cccccccccccccccccc"
-msgstr ""
-
-
-
-
-
-
-
-
-
-
-
-
-
