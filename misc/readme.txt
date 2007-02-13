@@ -2,7 +2,7 @@ FreeNAS (http://www.freenas.org)
 Olivier Cochard-Labbe (olivier@freenas.org)
 Licence: BSD
 
-Release: 0.68
+Release: 0.684b (unreleased!)
 
 ============== SUMMARY =========
 
