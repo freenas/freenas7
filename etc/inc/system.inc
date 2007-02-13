@@ -31,10 +31,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 /* include all configuration functions */
 require_once("functions.inc");
-	
+
 function system_resolvconf_generate() {
 	global $config, $g;
 	
@@ -48,7 +47,6 @@ function system_resolvconf_generate() {
 	}
 		
 	$resolvconf = "domain {$syscfg['domain']}\n";
-	
 	$havedns = false;
 	
 	if (isset($syscfg['dnsallowoverride'])) {
@@ -81,7 +79,6 @@ function system_resolvconf_generate() {
 
 /* Generate the /etc/hosts file
 Return 0 if OK, and 1 if error */
-
 function system_hosts_generate() {
 	global $config, $g;
 	
@@ -128,7 +125,7 @@ EOD;
 }
 
 function system_hostname_configure() {
-	global $config, $g;
+	global $config;
 	
 	$syscfg = $config['system'];
 	
@@ -139,7 +136,6 @@ function system_hostname_configure() {
 
 /* Generate the static routes
 Return 0 if OK, and 1 if error */
-
 function system_routing_configure() {
 	global $config, $g;
 	
@@ -187,7 +183,6 @@ function system_routing_configure() {
 
 /* Start the syslog daemon
 Return 0 if OK, and 1 or retval if error */
-
 function system_syslogd_start() {
 	global $config, $g;
 	
@@ -225,7 +220,6 @@ auth.info;authpriv.info		%/var/log/system.log
 
 EOD;
 
-		
 		if (isset($syslogcfg['ftp'])) {
 			$syslogconf .= <<<EOD
 ftp.*					@{$syslogcfg['remoteserver']}
@@ -260,8 +254,7 @@ daemon.*  					@{$syslogcfg['remoteserver']}
 
 EOD;
 		}
-		
-		
+
 		if (isset($syslogcfg['system'])) {
 			$syslogconf .= <<<EOD
 *.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local7.none @{$syslogcfg['remoteserver']}
@@ -426,9 +419,7 @@ EOD;
 server.port                = {$config['system']['webgui']['port']}
 
 EOD;
-		
 	}
-
 
 	if ($config['system']['webgui']['protocol'] == "https") {
 	
@@ -496,7 +487,6 @@ EOD;
 	fclose($fd);
 
 	/* run lighttpd */
-	
 	// check if there is a previous error
 	if (!$result) {
 		$result = mwexec("/usr/local/sbin/lighttpd -f  {$g['varetc_path']}/lighttpd.conf -m /usr/local/lib/lighttpd");
@@ -603,8 +593,6 @@ function system_ntp_configure() {
 }
 
 function system_stop_common() {
-	global $g;
-	
 	/* Stop iSCSI-target */
 	// If iSCSI-target is not stoped before disabling swap, the system can crash
 	services_iscsitarget_stop();
@@ -623,8 +611,6 @@ function system_stop_common() {
 }
 
 function system_reboot() {
-	global $g;
-	
 	system_stop_common();
 	
 	/* Send beep */
@@ -634,8 +620,6 @@ function system_reboot() {
 }
 
 function system_halt() {
-	global $g;
-	
 	system_stop_common();
 	
 	/* Send beep */
@@ -645,8 +629,6 @@ function system_halt() {
 }
 
 function system_reboot_sync() {
-	global $g;
-	
 	system_stop_common();
 	
 	/* Send beep */
@@ -656,7 +638,7 @@ function system_reboot_sync() {
 }
 
 function system_do_shell_commands($early = 0) {
-	global $config, $g;
+	global $config;
 	
 	if ($early)
 		$cmdn = "earlyshellcmd";
@@ -775,13 +757,12 @@ function system_beep_up()
 		mwexec("/usr/local/bin/beep -p 3000 75");
 		return 0;
 	}
-	
 }
 
 function system_beep_down()
 {
 	/* Test if beep is enabled and send sound */
-	global $config, $g;
+	global $config;
 	if (isset($config['system']['disablebeep']))
 		return 0;
 	else {		
@@ -792,7 +773,6 @@ function system_beep_down()
 		return 0;
 	}
 }
-
 
 function system_set_termcap()
 {
@@ -898,7 +878,6 @@ function system_users_create()
 	}	
 	
 	return $result;
-	
 }
 
 function system_user_masterpasswd()
@@ -943,7 +922,6 @@ EOD;
 EOD;
 			}
 		}
-
 	}
 	
 	$fd = fopen("{$g['varetc_path']}/master.passwd", "w");
@@ -952,7 +930,6 @@ EOD;
 		mwexec('/usr/bin/logger "Error: cannot open master.passwd in system_user_masterpasswd()" ');
 		return 1;
 	}
-
 
 	fwrite($fd, $masterpasswd);
 	fclose($fd);
@@ -1021,12 +998,10 @@ EOD;
 		return 1;
 	}
 
-
 	fwrite($fd, $groupfile);
 	fclose($fd);
 	
 	return 0;
-
 }
 
 function system_user_pwdmkdb()
@@ -1035,7 +1010,6 @@ function system_user_pwdmkdb()
 	global $config, $g;
 		
 	return (mwexec("/usr/sbin/pwd_mkdb -p -d {$g['varetc_path']} {$g['varetc_path']}/master.passwd"));
-
 }
 
 function system_user_samba()
@@ -1044,7 +1018,7 @@ function system_user_samba()
 	
 	// MUST FIND A WAY OF USING UNIX CRYPTED PASSWORD IN THE PLACE OF CLEAR TEXT PASSWORD FOR GENERATING SAMBA DB!!!
 	
-	global $config, $g;
+	global $config;
 	
 	if (is_array($config['access']['user'])) 	{
 		
@@ -1058,7 +1032,6 @@ function system_user_samba()
 	}
 	
 	return 0;
-
 }
 
 function system_pam_configure()
@@ -1120,8 +1093,7 @@ EOD;
 password        required        pam_unix.so             no_warn try_first_pass
 
 EOD;
-	
-	
+
 	$fd = fopen("{$g['varetc_path']}/pam.d/system", "w");
 	if (!$fd)
 	{
@@ -1180,7 +1152,6 @@ password	sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass
 
 EOD;
 	} 
-
 
 $sshd .= <<<EOD
 password        required        pam_unix.so             no_warn try_first_pass
@@ -1249,8 +1220,7 @@ EOD;
 
 	fwrite($fd, $ftp);
 	fclose($fd);
-	
-		
+
 	$login = <<<EOD
 # PAM configuration for the "login" service
 #
@@ -1309,8 +1279,6 @@ EOD;
 	unset($fd);
 	
 	/* Create the nsswitch.conf file*/
-	
-	
 	if (isset($config['ad']['enable'])) 	{
 	$nsswitch = <<<EOD
 group: files winbind
@@ -1322,7 +1290,6 @@ passwd_compat: nis
 shells: files
 
 EOD;
-
 	}
 	else 	{
 	$nsswitch = <<<EOD
@@ -1336,8 +1303,7 @@ shells: files
 
 EOD;
 	}
-	
-	
+
 	$fd = fopen("{$g['varetc_path']}/nsswitch.conf", "w");
 	if (!$fd) 	{
 		printf("Error: cannot open /var/etc/nsswitch.conf in system_pam_configure().\n");
@@ -1351,12 +1317,10 @@ EOD;
 	unset($fd);
 	
 	return 0;
-
 }
 
 /* Set the tuning value
 return 0 */
-
 function system_tuning()
 {
 	/* fine tune kernel value */
@@ -1415,12 +1379,10 @@ function system_tuning()
 /* Mount the CDROM
 return 0 if OK, 1 if error
 */
-
 function system_install_mount_cd($cdrom)
 {
 	/* Part of install process: Mount the CDROM */
-	
-	global $config, $g;
+	global $config;
 	
 	echo "Creating Mount point for the CDROM:\n";	
 	
@@ -1451,10 +1413,9 @@ return 0 if OK, 1 if error
 */
 function system_install_init_fulldisk($harddrive)
 {
-		
 	/* Part of install process: Initialize the destination disk with one partition */
 	
-	global $config, $g;
+	global $config;
 	
 	echo "Erasing partitions:\n";
 	if (mwexec("/bin/dd if=/dev/zero of=/dev/$harddrive bs=1k count=20")) {
@@ -1504,6 +1465,7 @@ function system_install_init_fulldisk($harddrive)
 	
 	return 0;
 }
+
 /* Create to partition on the destination hard drive
 Call by install script
 Return 0 if OK, 1 if not
@@ -1511,8 +1473,7 @@ Return 0 if OK, 1 if not
 function system_install_init_halfdisk($harddrive)
 {
 	/* Part of install process: Initialize the destination disk with 2 partitions */
-	
-	global $config, $g;
+	global $config;
 	
 	/* Create the partitions */
 	fdisk_hd_install($harddrive);
@@ -1539,7 +1500,6 @@ function system_install_init_halfdisk($harddrive)
 	}
 	echo "\n";
 
-		
 	echo "Creating BSD Label:\n";
 	if (mwexec("/sbin/bsdlabel -B -w -b /boot/boot " . escapeshellarg($harddrive) ."s1 auto")) {
 		return 1;
@@ -1562,7 +1522,6 @@ function system_install_init_halfdisk($harddrive)
 	}
 	
 	return 0;
-
 }
 
 /* Mount the destination disk
@@ -1571,13 +1530,10 @@ Return 0 if OK, 1 if not
 */
 function system_install_mount_destdisk($harddrive)
 {
-	
 	/* Part of install process: Mount the destination disk */
-	
-	global $config, $g;
+	global $config;
 	
 	// Check if tempo directory exist
-	
 	if (is_dir("/mnt/install_fr_0507")) {
 		echo "Tempo directory for disk allready existing!\n";
 		return 1;
@@ -1596,7 +1552,6 @@ function system_install_mount_destdisk($harddrive)
 	}
 		
 	return 0;
-	
 }
 
 /* unmount CDROM and destination disk
@@ -1605,10 +1560,8 @@ Return 0 if OK, 1 if not
 */
 function system_install_unmount()
 {
-	
 	/* Part of install process: Unmounting the disks: CDROM and destination drive */
-	
-	global $config, $g;	
+	global $config;	
 	
 	/* Unmounting disk */
 	if (mwexec("/sbin/umount /mnt/install_fr_0507")) {
@@ -1619,7 +1572,6 @@ function system_install_unmount()
 	}
 	
 	// Remove tempo directory
-	
 	@rmdir ("/mnt/cdrom_fr_0507");
 	@rmdir ("/mnt/install_fr_0507");
 
@@ -1635,8 +1587,8 @@ function system_install_installation($harddrive)
 	/* Part of install process: dd image file on the destination disk */
 	
 	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
-	
-	global $config, $g;
+
+	global $config;
 	
 	echo "Installation:\n";
 	
@@ -1649,7 +1601,7 @@ function system_install_installation($harddrive)
 /* Init language environment */
 function system_language_load()
 {
-	global $g, $config, $g_languages;
+	global $config, $g_languages;
 
 	/* Get the language configured*/
 	$language = $config['system']['language'];
@@ -1665,7 +1617,6 @@ function system_language_load()
 /* Enable the swap file
 Return 0 is OK, 1 if error
 */
-
 function system_swap_configure()
 {
 	global $config, $g;
@@ -1673,16 +1624,14 @@ function system_swap_configure()
 	$result = 0;
 	
 	// Stop swap if not in booting mode
-	
 	if (!$g['booting']) {
-	
 		// MUST add a check if the system can stop swap without problem
 		$result = mwexec("/sbin/swapoff /dev/md2");
-			
-		//Destroy block device
+
+		// Destroy block device
 		$result |= mwexec("/sbin/mdconfig -d -u 2");
 	}
-	
+
 	if (isset($config['system']['swap_enable'])) {
 		if (!file_exists("/mnt/{$config['system']['swap_mountname']}/swap_file")){
 			$result |= mwexec("/bin/dd if=/dev/zero of=/mnt/{$config['system']['swap_mountname']}/swap_file bs=1024k count={$config['system']['swap_size']}");
@@ -1694,18 +1643,17 @@ function system_swap_configure()
 		// Enable Swap
 		$result |= mwexec("/sbin/swapon /dev/md2");
 	}
-	
+
 	return $result;
 }
 
 /* Disable the swap file
 Return 0 is OK, 1 if error
 */
-
 function system_swap_disable()
 {
-	global $config, $g;
-	
+	global $config;
+
 	if (isset($config['system']['swap'])) {
 		// Stop swap
 		$result = mwexec("/sbin/swapoff /dev/md2}");
@@ -1713,7 +1661,7 @@ function system_swap_disable()
 		//Destroy block device
 		$result |= mwexec("/sbin/mdconfig -d -u 2");
 	}
-	
+
 	return $result;
 }
 ?>
