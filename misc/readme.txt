@@ -70,7 +70,7 @@ from scretch. After that use one of the following menus:
 
 ################ History Change logs ##############
 
-FreeNAs 0.684b:
+FreeNAS 0.684b (UNRELEASE!):
 - Add disk encryption with geli
 - Permit to enable SSH TCP forwarding (SSH tunneling)
 - Permit to add more than one networks for NFS
@@ -96,14 +96,10 @@ FreeNAs 0.684b:
 - Add Japanese language: Thanks to Hiroyuki Seino
 
 TO DO:
-- Must check config file conversion for local/client RSYNC
-- English reference file to test with the modification
-known bug in the 0.684b:
+- Check the English reference file for the new pages added
+Known bug in the 0.684b:
 - Can't remount ntfs-3g volume under the mount:tools. Must restart FreeNAS. It seem to be a fuse problem.
 - Using iSCSI-target can cause problem for stopping/restarting FreeNAS
-
-Working Notes:
-1. Must finish swap feature (when mount point management, must check if the mount point is used by swap)
 
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails
