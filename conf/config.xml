@@ -36,6 +36,9 @@
 		<!-- <smart></smart> -->
 		<!-- <howl_disable></howl_disable> -->
 		<!-- <powerd></powerd> -->
+		<!-- <swap_mountname></swap_mountname> -->
+		<!-- <swap_size></swap_size> -->
+		<!-- <swap_enable/> -->
 	</system>
 	<interfaces>
 		<lan>

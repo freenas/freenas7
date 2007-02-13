@@ -2137,3 +2137,6 @@ msgstr ""
 
 msgid "The %s port must be a valid port number."
 msgstr ""
+
+msgid "Swap memory"
+msgstr ""

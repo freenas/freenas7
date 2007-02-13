@@ -1684,13 +1684,13 @@ function system_swap_configure()
 	}
 	
 	if (isset($config['system']['swap_enable'])) {
-		if (!file_exists("/mnt/{$config['system']['swap_mount-name']}/swap_file")){
-			$result |= mwexec("/bin/dd if=/dev/zero of=/mnt/{$config['system']['swap_mount-name']}/swap_file bs=1024k count={$config['system']['swap_size']}");
-			// $result |= mwexec("chmod 0600 /mnt/{$config['system']['swap_mount-name']}/swap_file");
-			chmod("/mnt/{$config['system']['swap_mount-name']}/swap_file",0600);
+		if (!file_exists("/mnt/{$config['system']['swap_mountname']}/swap_file")){
+			$result |= mwexec("/bin/dd if=/dev/zero of=/mnt/{$config['system']['swap_mountname']}/swap_file bs=1024k count={$config['system']['swap_size']}");
+			// $result |= mwexec("chmod 0600 /mnt/{$config['system']['swap_mountname']}/swap_file");
+			chmod("/mnt/{$config['system']['swap_mountname']}/swap_file",0600);
 		}
 		// Create the block device
-		$result |= mwexec("/sbin/mdconfig -a -t vnode -f /mnt/{$config['system']['swap_mount-name']}/swap_file -u 2");
+		$result |= mwexec("/sbin/mdconfig -a -t vnode -f /mnt/{$config['system']['swap_mountname']}/swap_file -u 2");
 		// Enable Swap
 		$result |= mwexec("/sbin/swapon /dev/md2");
 	}

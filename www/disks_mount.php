@@ -69,7 +69,7 @@ if ($_GET['act'] == "del")
 {
 	if ($a_mount[$_GET['id']]) {
 		// MUST check if it's use by swap
-		if (isset($config['system']['swap_enable']) && ($config['system']['swap_mount-name'] == $a_mount[$_GET['id']]['sharename'])) {
+		if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $a_mount[$_GET['id']]['sharename'])) {
 			$errormsg[] = gettext("The swap file is using this mount point.");
         } else {
 		disks_umount($a_mount[$_GET['id']]);

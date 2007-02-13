@@ -55,7 +55,7 @@ if ($_POST) {
 	$reqdfieldsn = array(gettext("Share Name"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
-	if (isset($config['system']['swap_enable']) && ($config['system']['swap_mount-name'] == $_POST['sharename'])) {
+	if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $_POST['sharename'])) {
 		$errormsg[] = gettext("The swap file is using this mount point.");
     }
 
