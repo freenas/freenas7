@@ -53,22 +53,27 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
 	<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
 	<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
 	<li class="tabact"><a href="diag_infos_ftpd.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("FTP users");?></a></li>
+	<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
 		
   </ul>
   </td></tr>
   <tr>
     <td class="tabcont">
       <?php
-      echo("<pre>");
-      echo("<strong>" . gettext("FTP connected users") . ":</strong><br><br>");
-      exec("/usr/local/sbin/pure-ftpwho -W", $rawdata);
-	  // remove the first line "Content-Type: text/html"
-	  $rawdata = array_slice($rawdata, 1);
-      foreach($rawdata as $line) {
-				echo "$line";
-      }
-      unset ($line);
-      echo "</pre>";
+	   if (!isset($config['ftp']['enable'])) {
+      	echo "<strong>".gettext("FTP Server disabled")."</strong><br><br>";
+      } else {
+		echo("<pre>");
+		echo("<strong>" . gettext("FTP connected users") . ":</strong><br><br>");
+		exec("/usr/local/sbin/pure-ftpwho -W", $rawdata);
+		// remove the first line "Content-Type: text/html"
+		$rawdata = array_slice($rawdata, 1);
+		foreach($rawdata as $line) {
+			echo "$line";
+		}
+		unset ($line);
+		echo "</pre>";
+	  }
       ?>
     </td>
   </tr>

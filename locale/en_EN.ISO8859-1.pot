@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-02-11 09:32+0100\n"
+"PO-Revision-Date: 2007-02-13 22:00+0100\n"
 "Last-Translator: Olivier COCHARD-LABBE <olivier@freenas.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2108,6 +2108,9 @@ msgstr ""
 msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
 msgstr ""
 
+msgid "FTP Server disabled"
+msgstr ""
+
 msgid "FTP users"
 msgstr ""
 
@@ -2139,4 +2142,10 @@ msgid "The %s port must be a valid port number."
 msgstr ""
 
 msgid "Swap memory"
+msgstr ""
+
+msgid "No RSYNC Client configured"
+msgstr ""
+
+msgid "Detected RSYNC remote shares"
 msgstr ""

@@ -1,7 +1,10 @@
 #!/usr/local/bin/php
 <?php 
 /*
-	diag_infos_ataidle.php
+	diag_infos_rsync_client.php
+	Copyright © 2007 Volker Theile (votdev@gmx.de)
+  All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
@@ -41,7 +44,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
     <li class="tabinact"><a href="diag_infos.php"><?=gettext("Disks");?></a></li>
     <li class="tabinact"><a href="diag_infos_part.php"><?=gettext("Partitions");?></a></li>
     <li class="tabinact"><a href="diag_infos_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
-    <li class="tabact"><a href="diag_infos_ataidle.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("ATAidle");?></a></li>
+    <li class="tabinact"><a href="diag_infos_ataidle.php"><?=gettext("ATAidle");?></a></li>
     <li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
     <li class="tabinact"><a href="diag_infos_mount.php"><?=gettext("Mounts");?></a></li>
     <li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
@@ -50,34 +53,33 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
 	<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
 	<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
 	<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP users");?></a></li>
-	<li class="tabinact"><a href="diag_infos_rsync_client"><?=gettext("RSYNC Client");?></a></li>
+	<li class="tabact"><a href="diag_infos_rsync_client.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("RSYNC Client");?></a></li>
+		
   </ul>
   </td></tr>
   <tr>
     <td class="tabcont">
       <?php
-      echo "<pre>";
-      $disklist=get_ata_disks_list();
-      echo "<strong>".gettext("List of Advanced ATA capabilities on all ATA disk").":</strong><br><br>";
-      foreach ($disklist as $disknamek => $disknamev)
-      {
-      	/* Found the channel and device number from the /dev name */
-      	/* Divise the number by 2, the interger is the channel number, the rest is the device */
-      	echo htmlspecialchars("Results for $disknamek:") . "<br>";
-      	$value=trim($disknamek,'ad');		
-      				
-      	$value=intval($value);
-      	$channel = $value/2;
-      	$device=$value % 2;
-      	$channel=intval($channel);
-      	
-      	exec("/usr/local/sbin/ataidle $channel $device",$rawdata);
-      	foreach ($rawdata as $line) {
-          echo htmlspecialchars($line) . "<br>";
-      	}
-      	unset ($rawdata);
-      }	
-      echo "</pre>";
+	   if (!is_array($config['rsync']['rsyncclient'])) {
+      	echo "<strong>".gettext("No RSYNC Client configured")."</strong><br><br>";
+      } else {
+		echo("<pre>");
+		echo("<strong>" . gettext("Detected RSYNC remote shares") . ":</strong><br><br>");
+		$i=0;
+		foreach($config['rsync']['rsyncclient'] as $rsyncclient) {
+			echo("<br>RSYNC client number $i:<br>");
+			echo("- Remote server address: {$rsyncclient['rsyncserverip']}<br>");
+			echo("- Remote share name configured : {$rsyncclient['remoteshare']}<br>");
+			echo("- Detected shares on this server: <br>");
+			exec("/usr/local/bin/rsync {$rsyncclient['rsyncserverip']}::", $rawdata);
+			foreach($rawdata as $line) {
+				echo "$line";
+				echo "<br>";
+			}
+			unset ($line);
+		}
+		echo "</pre>";
+	  }
       ?>
     </td>
   </tr>

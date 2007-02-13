@@ -55,6 +55,7 @@ if (!is_array($config['iscsi']))
 	<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
 	<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
 	<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP users");?></a></li>
+	<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
   </ul>
   </td></tr>
   <tr>
