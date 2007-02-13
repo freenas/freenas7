@@ -93,6 +93,7 @@ FreeNAs 0.684b:
 - Fix FTP bug. Deletion of files uploaded and owned by user was not able.
 - Fix FTP PAM error (using MS AD account for example) 
 - Permit to configure multiple RSYNC local/client
+- Add Japanese language: Thanks to Hiroyuki Seino
 
 TO DO:
 - Must check config file conversion for local/client RSYNC
