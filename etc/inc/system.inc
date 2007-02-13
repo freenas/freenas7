@@ -98,15 +98,13 @@ function system_hosts_generate() {
 		mwexec('/usr/bin/logger "Error: cannot open hosts file in system_hosts_generate()" ');
 		$result = 1;
 	}
- 
-  	// Get the IP addres of the interface for "auto" NIC
-  	if ($lanif == "auto") {
-                $interfaces = explode(" ", exec("/sbin/ifconfig -l"));
-                $lanif = $interfaces[0];
-        }
-        
-  	$ipaddr = get_ipaddr($lanif);
-		
+
+ 	// Get the IP addres of the interface for "auto" NIC
+	$lanif = get_ifname($lanif);
+
+	// Get the IP address of the interface.
+ 	$ipaddr = get_ipaddr($lanif);
+
 	$hosts = <<<EOD
 127.0.0.1	localhost localhost.{$syscfg['domain']}
 {$ipaddr}	{$syscfg['hostname']}.{$syscfg['domain']} {$syscfg['hostname']}
@@ -126,12 +124,11 @@ EOD;
 
 function system_hostname_configure() {
 	global $config;
-	
+
 	$syscfg = $config['system'];
-	
+
 	/* set hostname */
-	return mwexec("/bin/hostname " .
-		escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
+	return mwexec("/bin/hostname " . escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
 }
 
 /* Generate the static routes
@@ -507,27 +504,29 @@ EOD;
 	return $result;
 }
 
+/* Return 0 if OK, 1 if error */
 function system_password_configure() {
 	global $config, $g;
-	
+
 	$result = 0 ;
-	
+
 	$fd = fopen("{$g['varrun_path']}/htpasswd", "w");
 	if (!$fd) {
 		printf("Error: cannot open htpasswd in system_password_configure().\n");
 		mwexec('/usr/bin/logger "Error: cannot open htpasswd in system_password_configure()" ');
 		return 1;
 	}
-	
+
 	if ($config['system']['username'])
 		$username = $config['system']['username'];
 	else
 		$username = "admin";
-	
+
 	fwrite($fd, $username . ":" . $config['system']['password'] . "\n");
 	fclose($fd);
-	$result = chmod("{$g['varrun_path']}/htpasswd", 0600);
-	
+
+	$result = (TRUE == chmod("{$g['varrun_path']}/htpasswd", 0600)) ? 0 : 1;
+
 	return $result;
 }
 function system_systime_set($mydate) {
@@ -548,8 +547,7 @@ function system_timezone_configure() {
 	if (!$timezone)
 		$timezone = "Etc/UTC";
 		
-	exec("/usr/bin/tar xzfO /usr/share/zoneinfo.tgz " . 
-		escapeshellarg($timezone) . " > /etc/localtime");
+	exec("/usr/bin/tar xzfO /usr/share/zoneinfo.tgz " . escapeshellarg($timezone) . " > /etc/localtime");
 
 	if ($g['booting'])
 		echo "done\n";

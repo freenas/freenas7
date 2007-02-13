@@ -256,7 +256,7 @@ msgid "The changes have been saved. You must <a href=%s>reboot</a> your NAS for 
 msgstr "Die &Auml;nderungen wurden gespeichert. Sie m&uuml;ssen <a href=%s>neu starten</a> damit Ihr NAS die &Auml;nderungen &uuml;bernimmt."
 
 msgid "ERROR: The changes could not be applied (error code %s)."
-msgstr "ERROR: Die &Auml;nderungen konnten nicht &uuml;bernommen werden (Fehlercode %s)."
+msgstr "Fehler: Die &Auml;nderungen konnten nicht &uuml;bernommen werden (Fehlercode %s)."
 
 msgid "A valid IP address must be specified."
 msgstr "Eine g&uuml;ltige IP Adresse muss eingegeben werden."
