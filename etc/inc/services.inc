@@ -1305,6 +1305,8 @@ EOD;
 		
 			/* Add exectutive right to the script */
 			mwexec("/bin/chmod 770 {$g['varrun_path']}/rsync_client{$i}.sh");
+			
+			$i++;
 		
 		}
 		
