@@ -91,9 +91,8 @@ if(isset($_GET['action'])) {
     <td class="tabnavtbl">
       <ul id="tabnav">
         <li class="tabinact"><a href="disks_mount.php"><?=gettext("Manage");?></a></li>
-        <li class="tabact"><?=gettext("Tools");?></a></li>
+        <li class="tabact"><a href="disks_mount_tools.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Tools");?></a></li>
         <li class="tabinact"><a href="disks_mount_fsck.php"><?=gettext("Fsck");?></a></li>
-
       </ul>
     </td>
   </tr>
@@ -147,12 +146,12 @@ if(isset($_GET['action'])) {
                 case "mount":
                   echo(gettext("Mounting...") . "<br>");
                   //$result = disks_mount_sharename($sharename);
-				  $result = disks_mount($mount);
+									$result = disks_mount($mount);
                   break;
                 case "umount":
                   echo(gettext("Unmounting...") . "<br>");
                   //$result = disks_umount_sharename($sharename);
-				  $result = disks_umount($mount);
+									$result = disks_umount($mount);
                   break;
               }
 

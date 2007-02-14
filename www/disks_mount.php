@@ -96,7 +96,7 @@ if ($_GET['act'] == "ret")
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><?=gettext("Manage");?></li>
+        <li class="tabact"><a href="disks_mount.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Manage");?></a></li>
         <li class="tabinact"><a href="disks_mount_tools.php"><?=gettext("Tools");?></a></li>
         <li class="tabinact"><a href="disks_mount_fsck.php"><?=gettext("Fsck");?></a></li>
       </ul>
@@ -133,7 +133,7 @@ if ($_GET['act'] == "ret")
                 echo(gettext("Configuring"));
               } else {
                 if(disks_check_mount($mount)) {
-					echo(gettext("OK"));
+									echo(gettext("OK"));
                 } else {
                   echo(gettext("Error") . " - <a href=\"disks_mount.php?act=ret&id=$i\">" . gettext("Retry") . "</a>");
                 }

@@ -69,14 +69,13 @@ if (!isset($do_fsck)) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
 				<li class="tabinact"><a href="disks_mount.php"><?=gettext("Manage");?></a></li>
         <li class="tabinact"><a href="disks_mount_tools.php"><?=gettext("Tools");?></a></li>
-				<li class="tabact"><?=gettext("Fsck");?></a></li>
+				<li class="tabact"><a href="disks_mount_fsck.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Fsck");?></a></li>
       </ul>
     </td>
   </tr>

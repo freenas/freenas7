@@ -40,7 +40,7 @@ $id = $_GET['id'];
 if(isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"),gettext("CIFS"),_SRVCIFS_SHARE,gettext("Edit"));
+$pgtitle = array(gettext("Services"),gettext("CIFS"),gettext("Share"),gettext("Edit"));
 
 if(!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();

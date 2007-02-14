@@ -66,7 +66,7 @@ if ($_POST) {
 
 	/* input validation */
   $reqdfields = explode(" ", "sharename size network network_subnet");
-  $reqdfieldsn = array(gettext("Mount Point"),gettext("Size"),gettext("Authorised network"),gettext("Subnet bit count"));
+  $reqdfieldsn = array(gettext("Mount Point"),gettext("File size"),gettext("Authorised network"),gettext("Subnet bit count"));
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
   
   if (($_POST['network'] && !is_ipaddr($_POST['network']))) {
@@ -105,7 +105,7 @@ if ($_POST) {
 <form action="services_iscsitarget_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Mount to use"); ?></td>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("Mount Point"); ?></td>
 			<td width="78%" class="vtable">
 				<select name="sharename" class="formfld" id="sharename">
 				  <?php foreach ($a_mount as $mount): ?>
