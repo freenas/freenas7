@@ -525,7 +525,7 @@ function system_password_configure() {
 	fwrite($fd, $username . ":" . $config['system']['password'] . "\n");
 	fclose($fd);
 
-	$result = (TRUE == chmod("{$g['varrun_path']}/htpasswd", 0600)) ? 0 : 1;
+	$result = mwexec("/bin/chmod 0600 {$g['varrun_path']}/htpasswd");
 
 	return $result;
 }
