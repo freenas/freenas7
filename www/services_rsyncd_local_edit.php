@@ -165,30 +165,27 @@ if (!is_array($config['mounts']['mount'])) {
 <?php if ($input_errors) print_input_errors($input_errors); ?><table width="100%" border="0" cellpadding="0" cellspacing="0">
 <form action="services_rsyncd_local_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
-	<tr>
-	<td colspan="2" valign="top" class="optsect_t">
-    </tr>
 	 <tr>
-            <td valign="top" class="vncellreq"><?=gettext("Source share");?></td>
-            <td class="vtable">
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Source share");?></td>
+            <td width="78%" class="vtable"><?=$mandfldhtml;?>
               <select name="source" class="formfld" id="source">
                 <?php foreach ($a_mount as $mountv): ?>
                 <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $pconfig['source']) echo "selected";?>>
                 <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
-                <?php endforeach; ?>
                 </option>
+                <?php endforeach; ?>
               </select>
             </td>
       		</tr>		
  <tr>
-            <td valign="top" class="vncellreq"><?=gettext("Destination share");?></td>
-            <td class="vtable">
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Destination share");?></td>
+            <td width="78%" class="vtable"><?=$mandfldhtml;?>
               <select name="destination" class="formfld" id="destination">
                 <?php foreach ($a_mount as $mountv): ?>
                 <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $pconfig['destination']) echo "selected";?>>
                 <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
-                <?php endforeach; ?>
                 </option>
+                <?php endforeach; ?>
               </select>
             </td>
       		</tr>		
@@ -196,14 +193,14 @@ if (!is_array($config['mounts']['mount'])) {
 		
 		<tr>
                 <td width="22%" valign="top" class="vncell"><strong><?=gettext("RSYNC Options"); ?><strong></td>
-                		<td width="78%" class="vtable"><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
+                		<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
 										</td>
 								</tr>
 				
 
                  <tr>
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Synchronization Time");?></td>
-                  <td width="78%" class="vtable">
+                  <td width="78%" class="vtable"><?=$mandfldhtml;?>
 
                      <table width=100% border cellpadding="6" cellspacing="0">
                     <tr>

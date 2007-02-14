@@ -2161,3 +2161,42 @@ msgstr ""
 
 msgid "Password confirmation"
 msgstr ""
+
+msgid "Remote share (source)"
+msgstr ""
+
+msgid "Remote address"
+msgstr ""
+
+msgid "Local share (destination)"
+msgstr ""
+
+msgid "The RSYNC client list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr ""
+
+msgid "The RSYNC local list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr ""
+
+msgid "Add RSYNC"
+msgstr ""
+
+msgid "Edit RSYNC"
+msgstr ""
+
+msgid "Delete RSYNC"
+msgstr ""
+
+msgid "Do you really want to delete this RSYNC?"
+msgstr ""
+
+msgid "Source share"
+msgstr ""
+
+msgid "Destination share"
+msgstr ""
+
+msgid "Remote source share name"
+msgstr ""
+
+msgid "xxxxxxxxxxxxx"
+msgstr ""

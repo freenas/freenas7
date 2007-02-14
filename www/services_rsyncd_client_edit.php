@@ -171,44 +171,41 @@ if (!is_array($config['mounts']['mount'])) {
 <?php if ($input_errors) print_input_errors($input_errors); ?><table width="100%" border="0" cellpadding="0" cellspacing="0">
 <form action="services_rsyncd_client_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
-	<tr>
-	<td colspan="2" valign="top" class="optsect_t">
-    </tr>
 	 <tr>
-            <td valign="top" class="vncellreq"><?=gettext("Local share");?></td>
-            <td class="vtable">
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Local share");?></td>
+            <td width="78%" class="vtable"><?=$mandfldhtml;?>
               <select name="localshare" class="formfld" id="localshare">
                 <?php foreach ($a_mount as $mountv): ?>
                 <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $pconfig['localshare']) echo "selected";?>>
                 <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
-                <?php endforeach; ?>
                 </option>
+                <?php endforeach; ?>
               </select>
             </td>
       		</tr>		
     <tr>
-                		<td width="22%" valign="top" class="vncell"><strong><?=gettext("Remote RSYNC Server");?><strong></td>
-                		<td width="78%" class="vtable"> <input name="rsyncserverip" id="rsyncserverip" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['rsyncserverip']);?>">
+                		<td width="22%" valign="top" class="vncellreq"><strong><?=gettext("Remote RSYNC Server");?><strong></td>
+                		<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="rsyncserverip" id="rsyncserverip" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['rsyncserverip']);?>">
                       <br><?=gettext("IP address of remote RSYNC server");?><br>
 										</td>
 								</tr>
 		  
 		 <tr> 
-     <td width="22%" valign="top" class="vncell"><?=gettext("Remote source share name") ;?></td>
+     <td width="22%" valign="top" class="vncellreq"><?=gettext("Remote source share name") ;?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="remoteshare" type="text" class="formfld" id="remoteshare" size="20" value="<?=htmlspecialchars($pconfig['remoteshare']);?>"> 
       </td>
     </tr> 
 		<tr>
                 <td width="22%" valign="top" class="vncell"><strong><?=gettext("RSYNC Options"); ?><strong></td>
-                		<td width="78%" class="vtable"><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
+                		<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
 										</td>
 								</tr>
 				
 
                  <tr>
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Synchronization Time");?></td>
-                  <td width="78%" class="vtable">
+                  <td width="78%" class="vtable"><?=$mandfldhtml;?>
 
                      <table width=100% border cellpadding="6" cellspacing="0">
                     <tr>

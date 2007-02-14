@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("RSYNC Client"));
+$pgtitle = array(gettext("Services"),gettext("RSYNC"),gettext("Client"));
 
 if (!is_array($config['rsync'])) {
 	$config['rsync'] = array();
@@ -79,16 +79,18 @@ if ($_GET['act'] == "del")
 		
 	}
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
- <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-	<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Server") ;?></a></li>
-    <li class="tabact"><a href="services_rsyncd_client.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Client") ;?></a></li>
-    <li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local") ;?></a></li>
-  </ul>
-  </td></tr>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Server") ;?></a></li>
+				<li class="tabact"><a href="services_rsyncd_client.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Client") ;?></a></li>
+				<li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local") ;?></a></li>
+			</ul>
+		</td>
+	</tr>
   <tr>
     <td class="tabcont">
       <form action="services_rsyncd_client.php" method="post">
@@ -99,26 +101,25 @@ if ($_GET['act'] == "del")
         <?php endif; ?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-			<td width="25%" class="listhdrr"><?=gettext("Remote share (source)"); ?></td>
-			<td width="25%" class="listhdrr"><?=gettext("Remote address"); ?></td>
-			<td width="25%" class="listhdrr"><?=gettext("Local share (destination)"); ?></td>
-			
+						<td width="30%" class="listhdrr"><?=gettext("Remote share (source)"); ?></td>
+						<td width="30%" class="listhdrr"><?=gettext("Remote address"); ?></td>
+						<td width="30%" class="listhdrr"><?=gettext("Local share (destination)"); ?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_rsyncclient as $rsyncclient): ?>
           <tr>   
-			<td class="listr"><?=htmlspecialchars($rsyncclient['remoteshare']);?>&nbsp;</td>
-			<td class="listr"><?=htmlspecialchars($rsyncclient['rsyncserverip']);?>&nbsp;</td>
-			<td class="listr"><?=htmlspecialchars($rsyncclient['localshare']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($rsyncclient['remoteshare']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($rsyncclient['rsyncserverip']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($rsyncclient['localshare']);?>&nbsp;</td>
             <td valign="middle" nowrap class="list">
-			<a href="services_rsyncd_client_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit client");?>" width="17" height="17" border="0"></a>&nbsp;
-              <a href="services_rsyncd_client.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this sync?");?>')"><img src="x.gif" title="<?=gettext("Delete RSYNC client"); ?>" width="17" height="17" border="0"></a>
+							<a href="services_rsyncd_client_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RSYNC");?>" width="17" height="17" border="0"></a>&nbsp;
+              <a href="services_rsyncd_client.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this RSYNC?");?>')"><img src="x.gif" title="<?=gettext("Delete RSYNC"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>
           <?php $i++; endforeach; ?>
           <tr> 
-            <td class="list" colspan="4"></td>
-            <td class="list"><a href="services_rsyncd_client_edit.php"><img src="plus.gif" title="<?=gettext("Add client");?>" width="17" height="17" border="0"></a></td>
+            <td class="list" colspan="3"></td>
+            <td class="list"><a href="services_rsyncd_client_edit.php"><img src="plus.gif" title="<?=gettext("Add RSYNC");?>" width="17" height="17" border="0"></a></td>
 			    </tr>
         </table>
       </form>
