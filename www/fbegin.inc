@@ -106,8 +106,8 @@ function showhide(tspan, tri) {
             <strong><?=gettext("Access");?></strong><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_users.php" class="navlnk"><?=gettext("Users and Groups");?></a><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_ad.php" class="navlnk"><?=gettext("Active Directory");?></a><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_ldap.php" class="navlnk"><?=gettext("LDAP");?></a><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/notavailable.php" class="navlnk"><?=gettext("NIS");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/notavailable.php" class="navlnk"><?=gettext("Radius");?></a><br>
             <strong><?=gettext("Status");?></strong><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/index.php" class="navlnk"><?=gettext("System");?></a><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_process.php" class="navlnk"><?=gettext("Process");?></a><br>

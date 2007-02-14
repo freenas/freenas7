@@ -134,7 +134,7 @@ if ($_POST) {
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
       <td width="78%" class="vtable">
-      RAID 1 (<?=gettext("striping"); ?>)
+      RAID 0 (<?=gettext("striping"); ?>)
       </td>
     </tr>
     <tr>

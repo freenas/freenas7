@@ -1032,16 +1032,21 @@ function system_user_samba()
 	return 0;
 }
 
+/* Configure PAM, NSS and LDAP modules 
+Return 0 is Ok, 1 is error */
 function system_pam_configure()
 {
 	/* Create the pam configuration files*/
 	global $config, $g;
 	
-	if (!file_exists("{$g['varetc_path']}/pam.d"))
+	$result = 0;
+	
+	if (!file_exists("{$g['varetc_path']}/pam.d")) {
 		mkdir("{$g['varetc_path']}/pam.d", 0744);
+	}
 	
 	$system = <<<EOD
-	# System-wide defaults
+# System-wide defaults
 # auth
 auth            sufficient      pam_opie.so             no_warn no_fake_prompts
 auth            requisite       pam_opieaccess.so       no_warn allow_local
@@ -1049,8 +1054,14 @@ auth            requisite       pam_opieaccess.so       no_warn allow_local
 EOD;
 	
 	if (isset($config['ad']['enable'])) 	{
-	$system .= <<<EOD
+		$system .= <<<EOD
 #auth	sufficient		/usr/local/lib/pam_winbind.so	debug try_first_pass
+
+EOD;
+	} 
+	if (isset($config['ldap']['enable'])) 	{
+		$system .= <<<EOD
+#auth			sufficient		/usr/local/lib/pam_ldap.so	no_warn try_first_pass
 
 EOD;
 	} 
@@ -1062,8 +1073,8 @@ auth    required		pam_unix.so             no_warn try_first_pass nullok
 
 EOD;
 
-	if (isset($config['ad']['enable'])) 	{
-	$system .= <<<EOD
+	if (isset($config['ad']['enable'])) {
+		$system .= <<<EOD
 #account sufficient /usr/local/lib/pam_winbind.so
 
 EOD;
@@ -1081,7 +1092,7 @@ session         required        pam_lastlog.so          no_fail
 EOD;
 	
 	if (isset($config['ad']['enable'])) 	{
-	$system .= <<<EOD
+		$system .= <<<EOD
 #password 	sufficient /usr/local/lib/pam_winbind.so	debug try_first_pass
 
 EOD;
@@ -1093,17 +1104,16 @@ password        required        pam_unix.so             no_warn try_first_pass
 EOD;
 
 	$fd = fopen("{$g['varetc_path']}/pam.d/system", "w");
-	if (!$fd)
-	{
+	if (!$fd) 	{
 		printf("Error: cannot open /pam.d/system in system_pam_configure().\n");
 		mwexec('/usr/bin/logger "Error: cannot open /pam.d/system in system_pam_configure()" ');
-		return 1;
+		$result = 1;
 	}
 	
 	fwrite($fd, $system);
 	fclose($fd);
 		
-	$sshd .= <<<EOD
+	$sshd = <<<EOD
 # PAM configuration for the "sshd" service
 
 # auth
@@ -1114,8 +1124,14 @@ auth            requisite       pam_opieaccess.so       no_warn allow_local
 EOD;
 
 	if (isset($config['ad']['enable'])) {
-	$sshd .= <<<EOD
-auth sufficient /usr/local/lib/pam_winbind.so	debug try_first_pass
+		$sshd .= <<<EOD
+auth	sufficient			/usr/local/lib/pam_winbind.so	debug try_first_pass
+
+EOD;
+	} 
+	if (isset($config['ldap']['enable'])) 	{
+		$sshd .= <<<EOD
+auth	sufficient		/usr/local/lib/pam_ldap.so	no_warn try_first_pass
 
 EOD;
 	} 
@@ -1128,7 +1144,7 @@ auth            required        pam_unix.so             no_warn try_first_pass
 EOD;
 
 	if (isset($config['ad']['enable'])) 	{
-	$sshd .= <<<EOD
+		$sshd .= <<<EOD
 account			sufficient		/usr/local/lib/pam_winbind.so
 
 EOD;
@@ -1144,8 +1160,8 @@ session         required        pam_permit.so
 
 EOD;
 
-if (isset($config['ad']['enable']))	{
-	$sshd .= <<<EOD
+	if (isset($config['ad']['enable']))	{
+		$sshd .= <<<EOD
 password	sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass
 
 EOD;
@@ -1161,13 +1177,13 @@ EOD;
 	if (!$fd) 	{
 		printf("Error: cannot open /pam.d/sshd in system_pam_configure().\n");
 		mwexec('/usr/bin/logger "Error: cannot open /pam.d/sshd in system_pam_configure()" ');
-		return 1;
+		$result = 1;
 	}
 
 	fwrite($fd, $sshd);
 	fclose($fd);
 	
-		$ftp = <<<EOD
+	$ftp = <<<EOD
 # PAM configuration for the "ftpd" service
 
 # auth
@@ -1178,21 +1194,28 @@ auth            requisite       pam_opieaccess.so       no_warn allow_local
 EOD;
 
 	if (isset($config['ad']['enable'])) 	{
-	$ftp .= <<<EOD
+		$ftp .= <<<EOD
 auth	sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass
+
+EOD;
+	}
+	
+	if (isset($config['ldap']['enable'])) 	{
+		$ftp .= <<<EOD
+auth	sufficient		/usr/local/lib/pam_ldap.so	no_warn try_first_pass
 
 EOD;
 	} 
 
 	$ftp .= <<<EOD
-auth            required        pam_unix.so             no_warn try_first_pass
+auth            required        pam_unix.so         no_warn try_first_pass
 
 # account
 
 EOD;
 
-if (isset($config['ad']['enable'])) 	{
-	$ftp .= <<<EOD
+	if (isset($config['ad']['enable'])) 	{
+		$ftp .= <<<EOD
 account		sufficient	/usr/local/lib/pam_winbind.so
 
 EOD;
@@ -1213,7 +1236,7 @@ EOD;
 	if (!$fd) 	{
 		printf("Error: cannot open /pam.d/ftp in system_pam_configure().\n");
 		mwexec('/usr/bin/logger "Error: cannot open /pam.d/ftp in system_pam_configure()" ');
-		return 1;
+		$result = 1;
 	}
 
 	fwrite($fd, $ftp);
@@ -1229,22 +1252,28 @@ auth            required        pam_nologin.so          no_warn
 EOD;
 
 	if (isset($config['ad']['enable'])) 	{
-	$login .= <<<EOD
+		$login .= <<<EOD
 auth	sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass
 
 EOD;
-	} 
+	}
+	if (isset($config['ldap']['enable'])) 	{
+		$login .= <<<EOD
+auth	sufficient	/usr/local/lib/pam_ldap.so	no_warn try_first_pass
 
+EOD;
+	} 
+	
 	$login .= <<<EOD
-auth            sufficient      pam_self.so             no_warn
-auth            include         system
+auth	sufficient	pam_self.so	no_warn
+auth	include	system
 
 # account
 
 EOD;
 
-if (isset($config['ad']['enable'])) 	{
-	$login .= <<<EOD
+	if (isset($config['ad']['enable'])) {
+		$login .= <<<EOD
 account		sufficient	/usr/local/lib/pam_winbind.so
 
 EOD;
@@ -1268,7 +1297,7 @@ EOD;
 	if (!$fd) 	{
 		printf("Error: cannot open /pam.d/login in system_pam_configure().\n");
 		mwexec('/usr/bin/logger "Error: cannot open /pam.d/login in system_pam_configure()" ');
-		return 1;
+		$result = 1;
 	}
 
 	fwrite($fd, $login);
@@ -1277,8 +1306,8 @@ EOD;
 	unset($fd);
 	
 	/* Create the nsswitch.conf file*/
-	if (isset($config['ad']['enable'])) 	{
-	$nsswitch = <<<EOD
+	if ((isset($config['ad']['enable'])) && (!isset($config['ldap']['enable'])))	{
+		$nsswitch = <<<EOD
 group: files winbind
 group_compat: nis
 hosts: files dns wins
@@ -1288,9 +1317,31 @@ passwd_compat: nis
 shells: files
 
 EOD;
-	}
-	else 	{
-	$nsswitch = <<<EOD
+	} else if ((isset($config['ad']['enable'])) && (isset($config['ldap']['enable']))) {
+		$nsswitch = <<<EOD
+group: files winbind ldap
+group_compat: nis
+hosts: files dns wins ldap
+networks: files
+passwd: files winbind ldap
+passwd_compat: nis
+shells: files
+
+EOD;
+	} else if ((!isset($config['ad']['enable'])) && (isset($config['ldap']['enable'])))	{
+		$nsswitch = <<<EOD
+group: files ldap
+group_compat: nis
+hosts: files dns ldap
+networks: files
+passwd: files ldap
+passwd_compat: nis
+shells: files
+
+EOD;
+	
+	} else 	{
+		$nsswitch = <<<EOD
 group: compat
 group_compat: nis
 hosts: files dns
@@ -1306,7 +1357,7 @@ EOD;
 	if (!$fd) 	{
 		printf("Error: cannot open /var/etc/nsswitch.conf in system_pam_configure().\n");
 		mwexec('/usr/bin/logger "Error: cannot open /var/etc/nsswitch.conf in system_pam_configure()" ');
-		return 1;
+		$result = 1;
 	}
 
 	fwrite($fd, $nsswitch);
@@ -1314,7 +1365,32 @@ EOD;
 	
 	unset($fd);
 	
-	return 0;
+	// Generate the ldap.conf file
+	
+	if (isset($config['ldap']['enable'])) {
+		$ldapconf = <<<EOD
+host {$config['ldap']['host_ip']}
+base {$config['ldap']['base']}
+binddn {$config['ldap']['binddn']}
+bindpw {$config['ldap']['bindpw']}
+nss_base_passwd {$config['ldap']['password_suffix']}?one
+nss_base_group  {$config['ldap']['group_suffix']}?one
+
+EOD;
+		$fd = fopen("{$g['varetc_path']}/ldap.conf", "w");
+		if (!$fd) 	{
+			printf("Error: cannot open /var/etc/ldap.conf in system_pam_configure().\n");
+			mwexec('/usr/bin/logger "Error: cannot open /var/etc/ldap.conf in system_pam_configure()" ');
+			$result = 1;
+		}
+
+		fwrite($fd, $ldapconf);
+		fclose($fd);
+	
+		unset($fd);
+	}
+	
+	return $result;
 }
 
 /* Set the tuning value

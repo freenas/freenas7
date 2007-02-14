@@ -15,7 +15,7 @@ PRODUCTNAME=`cat $SVNDIR/etc/prd.name`
 
 #Size in MB of the MFS Root filesystem that will include all FreeBSD binary and FreeNAS WEbGUI/Scripts
 #Keep this file very small! This file is unzipped to a RAM disk at FreeNAS startup
-MFSROOT_SIZE="42"
+MFSROOT_SIZE="44"
 #Size in MB f the IMG file, that include zipped MFS Root filesystem image plus bootlaoder and kernel.
 IMG_SIZE="21"
 

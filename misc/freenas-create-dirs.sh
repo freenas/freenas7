@@ -79,6 +79,7 @@ mkdir usr/local/lib ;
 mkdir usr/local/sbin ;
 mkdir usr/local/share ;
 mkdir usr/local/share/locale ;
+mkdir usr/local/etc ;
 mkdir usr/local/www ;
 mkdir usr/local/www/syntaxhighlighter ;
 mkdir usr/sbin ;
@@ -107,5 +108,6 @@ ln -s /var/etc/pam.d/ftp etc/pam.d/pure-ftpd
 ln -s /var/etc/pam.d/sshd etc/pam.d/sshd
 ln -s /var/etc/pam.d/login etc/pam.d/login
 ln -s /var/etc/pam.d/system etc/pam.d/system
+ln -s /var/etc/ldap.conf usr/local/etc/ldap.conf
 ln -s /var/etc/nsswitch.conf etc/nsswitch.conf
 ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1
