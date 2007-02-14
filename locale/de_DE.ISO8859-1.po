@@ -1338,8 +1338,8 @@ msgstr "Benutzer wirklich l&ouml;schen?"
 msgid "Add user"
 msgstr "Lege Benutzer an"
 
-msgid "you must create a group first."
-msgstr "Zun&auml;chst eine Gruppe einrichten."
+msgid "You must create a group first."
+msgstr "Zuerst eine Gruppe einrichten."
 
 msgid "The login name contains invalid characters."
 msgstr "Der Login-Name enth&auml;lt ung&uuml;ltige Zeichen."
@@ -1829,3 +1829,6 @@ msgstr "Sensoren"
 
 msgid "Reload page"
 msgstr "Seite neu laden"
+
+msgid "Password confirmation"
+msgstr "Passwortbest&auml;tigung"

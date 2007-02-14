@@ -1521,7 +1521,7 @@ msgstr "Doriti sa stergeti utilizatorul?!"
 msgid "Add user"
 msgstr "Adaugare utilizator"
 
-msgid "you must create a group first."
+msgid "You must create a group first."
 msgstr "trebuie creat un grup mai intii."
 
 msgid "The login name contains invalid characters."

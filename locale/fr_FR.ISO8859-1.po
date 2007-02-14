@@ -1494,7 +1494,7 @@ msgstr "Voulez-vous vraiment supprimer cet utilisateur?!"
 msgid "Add user"
 msgstr "ajouter un utilisateur"
 
-msgid "you must create a group first."
+msgid "You must create a group first."
 msgstr "Vous devez d'abord cr&eacute;er un groupe."
 
 msgid "The login name contains invalid characters."

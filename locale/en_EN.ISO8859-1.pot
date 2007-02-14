@@ -1523,7 +1523,7 @@ msgstr ""
 msgid "Add user"
 msgstr ""
 
-msgid "you must create a group first."
+msgid "You must create a group first."
 msgstr ""
 
 msgid "The login name contains invalid characters."
@@ -2156,3 +2156,8 @@ msgstr ""
 msgid "LDAP"
 msgstr ""
 
+msgid "Hosts"
+msgstr ""
+
+msgid "Password confirmation"
+msgstr ""

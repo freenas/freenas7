@@ -56,15 +56,10 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	$reqdfields = array();
-	$reqdfieldsn = array();
-	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "name desc"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Name"),gettext("Description")));
-	}
-	
+	$reqdfields = explode(" ", "name desc");
+	$reqdfieldsn = array(gettext("Name"),gettext("Description"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
+
 	if (($_POST['name'] && !is_domain($_POST['name']))) {
 		$input_errors[] = gettext("The Group name contains invalid characters.");
 	}

@@ -94,6 +94,7 @@ FreeNAS 0.684b (UNRELEASE!):
 - Fix FTP PAM error (using MS AD account for example) 
 - Permit to configure multiple RSYNC local/client
 - Add Japanese language: Thanks to Hiroyuki Seino
+- Fix bug in user & groups WebGUI.
 
 TO DO:
 - Check the English reference file for the new pages added

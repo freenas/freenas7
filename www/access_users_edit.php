@@ -67,15 +67,10 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	$reqdfields = array();
-	$reqdfieldsn = array();
-	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "login fullname password passwordconf usergroup"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Login"),gettext("Full Name"),gettext("Password"),gettext("Password confirmation"),gettext("Group Member")));
-	}
-	
+	$reqdfields = explode(" ", "login fullname password passwordconf usergroup");
+	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Password"),gettext("Password confirmation"),gettext("Group Member"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
+
 	/* check for valid login name */
 	if (($_POST['login'] && !is_validlogin($_POST['login']))) {
 		$input_errors[] = gettext("The login name contains invalid characters.");

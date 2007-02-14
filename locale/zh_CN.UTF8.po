@@ -1550,7 +1550,7 @@ msgstr "确定要刪除此使用者帐号？"
 msgid "Add user"
 msgstr "新增使用者"
 
-msgid "you must create a group first."
+msgid "You must create a group first."
 msgstr "你必须先建立一个群组。"
 
 msgid "The login name contains invalid characters."
