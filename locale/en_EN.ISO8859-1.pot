@@ -2224,21 +2224,3 @@ msgstr ""
 
 msgid "Mount used"
 msgstr ""
-
-msgid "xxxxxxxxxxxxx"
-msgstr ""
-
-msgid "xxxxxxxxxxxxx"
-msgstr ""
-
-msgid "xxxxxxxxxxxxx"
-msgstr ""
-
-msgid "xxxxxxxxxxxxx"
-msgstr ""
-
-msgid "xxxxxxxxxxxxx"
-msgstr ""
-
-msgid "xxxxxxxxxxxxx"
-msgstr ""
