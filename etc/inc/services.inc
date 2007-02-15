@@ -718,16 +718,14 @@ function services_powerd_configure() {
 		/* run powerd */
 		$result = mwexec("/usr/sbin/powerd -a adaptive");
 
-		if (($g['booting']) && (!$result)) {
-			echo "done\n";
-			mwexec('/usr/bin/logger "Power Daemon started" ');
-		} else if (!$result) {
-			mwexec('/usr/bin/logger "Power Daemon started" ');
-		} else if ($g['booting']) {
-			echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start Power Daemon" ');
+		if (!$result) {
+			if ($g['booting'])
+				echo "done\n";
+			mwexec('/usr/bin/logger "Power Daemon started"');
 		} else {
-			mwexec('/usr/bin/logger "Fail to start Power Daemon" ');
+			if ($g['booting'])
+				echo "failed\n";
+			mwexec('/usr/bin/logger "Fail to start Power Daemon"');
 		}
 	}
 

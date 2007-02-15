@@ -436,69 +436,52 @@ Menu:
 }
 
 build_softpkg() {
-  echo "Software Package"
-  echo "Menu:"
+	count=0
+	tempfile=$WORKINGDIR/tmp$$
+	packages=$WORKINGDIR/packages$$
 
-  count=0
-  result=0
+	# Choose what to do.
+	dialog --title "Software packages" --menu "Select what to do." 9 40 2 "Build" "" "Install" "" 2> $tempfile
+	[ 0 != $? ] && return 1 # successful?
+	choice=`cat $tempfile`
+
+	# Create list of available packages.
+	echo "#! /bin/sh
+dialog --title \"Software packages\" \\
+--checklist \"Select the packages you want to process.\" 21 65 14 \\" > $tempfile
 
 	for s in $SVNDIR/misc/software/*; do
-		package=`basename $s`
 		let count=$count+1
-		echo "$count - Build $package" | awk '{printf("%-35s",$0)}'
+		package[$count]=`basename $s`
 		script[$count]="$s/build.sh"
-		function[$count]="build_$package"
-		let count=$count+1
-		echo "$count - Install $package"
-		script[$count]="$s/build.sh"
-		function[$count]="install_$package"
+		echo "\"$count\" \"${package[$count]}\" ON \\" >> $tempfile
 	done
 
-  let buildall=$count+1
-  let installall=$count+2
+	# Display list of available packages.
+	sh $tempfile 2> $packages
+	[ 0 != $? ] && return 1 # successful?
 
-  echo "$buildall - Build all" | awk '{printf("%-35s",$0)}'
-	echo -n "$installall - Install all
-* - Quit
-> "
+	for id in $(cat $packages | tr -d '"'); do
+		echo "======================================================================"
+		echo "Sourcing script ${script[$id]}"
+		source ${script[$id]}
 
-  read choice
+		if [ "$choice" == "Build" ]; then
+			function="build_${package[$id]}"
+		elif [ "$choice" == "Install" ]; then
+			function="install_${package[$id]}"
+		fi
 
-  case "$choice" in
-    [0-9]*)   
-      if [ "$choice" == "$buildall" ]; then
-        for s in $SVNDIR/misc/software/*; do
-          package=`basename $s`
-          source $s/build.sh
-          build_$package
-          if [ 0 != $? ]; then
-          	let result=1
-						break
-					fi
-        done
-      elif [ "$choice" == "$installall" ]; then
-        for s in $SVNDIR/misc/software/*; do
-          package=`basename $s`
-          source $s/build.sh
-          install_$package
-          if [ 0 != $? ]; then
-          	let result=1
-						break
-					fi
-        done           
-      elif [ "$choice" -le "$count" ]; then
-        echo "Sourcing script ${script[$choice]}"
-        source ${script[$choice]}
-        echo "Running ${function[$choice]}"
-        ${function[$choice]}
-        let result=$?
-      fi;;
-    *) fromscratch;;
-  esac
+		echo "Running $function"
+		$function
+		[ 0 != $? ] && return 1 # successful?
+	done
 
-  sleep 1
+	# Cleanup
+	rm $packages
+	rm $tempfile
 
-  return $result
+  return 0
 }
 
 main() {
