@@ -1307,10 +1307,10 @@ function disks_geli_attach($gelifullname,$passphrase,$verbose = false)
 	$result = 1;
 	// Remove the 4 last character ".eli" of $gelifullanme
 	$gelifullname=rtrim($gelifullname,".eli");
-	if(!$verbose) {
+	if(false == $verbose) {
 		$result=mwexec("/sbin/geli attach -X " . escapeshellarg($passphrase) . " " . $gelifullname);
 	} else {
-		$result = (false !== system("/sbin/geli attach -v -X " . escapeshellarg($passphrase) . " " . $gelifullname));
+		$result=mwexec("/sbin/geli attach -v -X " . escapeshellarg($passphrase) . " " . $gelifullname);
 	}
 	return $result;
 }

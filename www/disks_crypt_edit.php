@@ -290,7 +290,8 @@ if (!isset($do_crypt)) {
 
 				// Attach the disk.
 				echo(gettext("Attaching...")."\n");
-				disks_geli_attach($disk,$passphrase,true);
+				$result = disks_geli_attach($disk,$passphrase,true);
+				echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
 
 				echo('</pre>');
 			}

@@ -190,16 +190,17 @@ if(isset($_GET['action'])) {
 
               /* Display result */
               echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
-   					
-			if (($action=="attach") && $mount) {
-				echo(gettext("\nMounting this disk...") . "<br>");
-				$result = disks_mount($mount);
-				 /* Display result */
-				echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
-			}
-				
-				echo('</pre>');
-			}
+
+							/* When attaching the disk, then also mount it. */
+							if (("attach" == $action) && $mount) {
+								echo(gettext("\nMounting this disk...") . "<br>");
+								$result = disks_mount($mount);
+								/* Display result */
+								echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
+							}
+
+							echo('</pre>');
+						}
     				?>
     				</td>
   				</tr>
