@@ -13,6 +13,9 @@ TMPDIR="/tmp/freenastmp"
 VERSION=`cat $SVNDIR/etc/prd.version`
 PRODUCTNAME=`cat $SVNDIR/etc/prd.name`
 
+# Dialog command
+DIALOG="dialog"
+
 #Size in MB of the MFS Root filesystem that will include all FreeBSD binary and FreeNAS WEbGUI/Scripts
 #Keep this file very small! This file is unzipped to a RAM disk at FreeNAS startup
 MFSROOT_SIZE="44"
@@ -441,13 +444,16 @@ build_softpkg() {
 	packages=$WORKINGDIR/packages$$
 
 	# Choose what to do.
-	dialog --title "Software packages" --menu "Select what to do." 9 40 2 "Build" "" "Install" "" 2> $tempfile
+	$DIALOG --title "$PRODUCTNAME - Software packages" --menu "Please select whether you want to build or install packages." 10 45 2 \
+		"Build" "Build software packages" \
+		"Install" "Install software packages" 2> $tempfile
 	[ 0 != $? ] && return 1 # successful?
 	choice=`cat $tempfile`
+	rm $tempfile
 
 	# Create list of available packages.
 	echo "#! /bin/sh
-dialog --title \"Software packages\" \\
+$DIALOG --title \"$PRODUCTNAME - Software packages\" \\
 --checklist \"Select the packages you want to process.\" 21 65 14 \\" > $tempfile
 
 	for s in $SVNDIR/misc/software/*; do
@@ -460,6 +466,7 @@ dialog --title \"Software packages\" \\
 	# Display list of available packages.
 	sh $tempfile 2> $packages
 	[ 0 != $? ] && return 1 # successful?
+	rm $tempfile
 
 	for id in $(cat $packages | tr -d '"'); do
 		echo "======================================================================"
@@ -476,10 +483,7 @@ dialog --title \"Software packages\" \\
 		$function
 		[ 0 != $? ] && return 1 # successful?
 	done
-
-	# Cleanup
 	rm $packages
-	rm $tempfile
 
   return 0
 }
