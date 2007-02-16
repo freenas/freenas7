@@ -1949,16 +1949,16 @@ msgstr ""
 msgid "webGUI Configuration"
 msgstr ""
 
-msgid "Erasing MBR and all paritions"
+msgid "Erasing MBR and all partitions"
 msgstr ""
 
 msgid "Keeping the MBR and all partitions"
 msgstr ""
 
-msgid "Creating one parition"
+msgid "Creating one partition"
 msgstr ""
 
-msgid "Initializing parition"
+msgid "Initializing partition"
 msgstr ""
 
 msgid "Creating BSD label"

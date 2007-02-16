@@ -90,8 +90,10 @@ $pgtitle = array(gettext("License"));
         packages for their efforts.</p>
       <p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br>
         Copyright &copy; 1995-2007 The FreeBSD Project. All rights reserved.</p>
+	<p>Unofficial <a href="http://home.tiscali.de/cmdr_faako/geom_raid5.tbz">FreeBSD geom raid 5 module</a><br>
+        Copyright &copy; 2006-2007 Arne Woerner (<a href="mailto:arne_woerner@yahoo.com">arne_woerner@yahoo.com</a>).</p>
 
-      <p> PHP <a href="http://www.php.net" target="_blank">http://www.php.net</a>.<br>
+      <p> PHP (<a href="http://www.php.net" target="_blank">http://www.php.net</a>).<br>
         Copyright &copy; 2001-2007 The PHP Group. All rights reserved.</p>
       <p> Lighttpd (<a href="http://www.lighttpd.net" target="_blank">http://http://www.lighttpd.net</a>)<br>
         Copyright &copy; 2004 by Jan Kneschke &lt;jan@kneschke.de&gt;. All rights reserved.</p>

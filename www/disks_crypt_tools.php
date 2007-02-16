@@ -162,9 +162,10 @@ if(isset($_GET['action'])) {
     					ob_end_flush();
 
     					/* Search if a mount point use this geli disk. */
+						 $id = false ;
 		          $id = array_search_ex($gelifullname, $a_mount, "mdisk");
 		          /* if found, get the mount data */
-				 if ($id) {
+				 if ($id !== false) {
 					$mount = $a_mount[$id];
 			  }
 

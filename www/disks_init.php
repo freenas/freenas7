@@ -267,7 +267,7 @@ function disk_change() {
 					echo gettext("Creating one parition").":\n";
 					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
 					// Initialise the partition (optional)
-					echo gettext("Initializing parition").":\n";
+					echo gettext("Initializing partition").":\n";
 					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
 					// Create s1 label
 					echo gettext("Creating BSD label").":\n";
@@ -279,10 +279,10 @@ function disk_change() {
 			break;
 				case "ufs_no_su":
 					// Initialize disk
-					echo gettext("Creating one parition").":\n";
+					echo gettext("Creating one partition").":\n";
 					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
 					// Initialise the partition (optional)
-					echo gettext("Initializing parition").":\n";
+					echo gettext("Initializing partition").":\n";
 					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
 					// Create s1 label
 					echo gettext("Creating BSD label").":\n";
@@ -318,10 +318,10 @@ function disk_change() {
 			break;
 		case "softraid":
 					// Initialize disk
-					echo gettext("Creating one parition").":\n";
+					echo gettext("Creating one partition").":\n";
 					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
 					// Initialise the partition (optional)
-					echo gettext("Initializing parition").":\n";
+					echo gettext("Initializing partition").":\n";
 					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
 					// Delete old gmirror information */
 					echo sprintf(gettext("Destroying old %s information"), "GMIRROR").":\n";
@@ -330,10 +330,10 @@ function disk_change() {
 			break;
 				case "msdos":
 					// Initialize disk
-					echo gettext("Creating one parition").":\n";
+					echo gettext("Creating one partition").":\n";
 					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
 					// Initialise the partition (optional) */
-					echo gettext("Initializing parition").":\n";
+					echo gettext("Initializing partition").":\n";
 					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
 					// Create s1 label
 					echo gettext("Creating BSD label").":\n";
