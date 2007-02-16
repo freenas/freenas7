@@ -226,10 +226,10 @@ sbin/shutdown
 sbin/sysctl
 
 ## swapon - Enable swap
-/sbin/swapon
+sbin/swapon
 
 ## swapoff - Disable swap
-/sbin/swapoff
+sbin/swapoff
 
 ##tunefs -- tune up an existing file system
 sbin/tunefs
@@ -248,7 +248,7 @@ sbin/camcontrol
 usr/bin/chgrp
 
 # fstat -- identify active files . Fuse mount use fstat
-/usr/bin/fstat
+usr/bin/fstat
 
 ## FTP/HTTP download tools
 usr/bin/fetch
