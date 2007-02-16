@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-build_geli() {
+build_geom_eli() {
 	cd /usr/src/sbin/geom/class/eli
 
 	# Patch geom eli sources.
@@ -15,7 +15,7 @@ build_geli() {
 	return $?
 }
 
-install_geli() {
+install_geom_eli() {
 	cd /usr/src/sbin/geom/class/eli
 
 	# How to create binary without this command? Any ideas?
