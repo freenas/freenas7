@@ -95,6 +95,8 @@ FreeNAS 0.684b (UNRELEASE!):
 - Permit to configure multiple RSYNC local/client
 - Add Japanese language: Thanks to Hiroyuki Seino
 - Fix bug in user & groups WebGUI.
+- Upgrade Samba to 3.0.24
+  Try to improve samba performance by adding 'large readwrite = no' in smb.conf (see http://wiki.samba.org/index.php/Samba_Troubleshooting)
 
 TO DO:
 - Check the English reference file for the new pages added

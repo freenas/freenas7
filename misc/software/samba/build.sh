@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-URL_SAMBA="http://us1.samba.org/samba/ftp/stable/samba-3.0.23d.tar.gz"
+URL_SAMBA="http://us3.samba.org/samba/ftp/stable/samba-3.0.24.tar.gz"
 
 build_samba() {
   cd $WORKINGDIR
