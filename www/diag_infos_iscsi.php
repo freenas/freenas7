@@ -68,7 +68,8 @@ if (!is_array($config['iscsi']))
       	echo "<strong>".gettext("Show the list of available target name on all configured iSCSI targets")."</strong><br><br>";
 		$a_iscsiinit = &$config['iscsiinit']['vdisk'];
 		foreach ($a_iscsiinit as $iscsiinit) {
-			echo "Discovered iSCSI target fo {$iscsiinit['targetaddress']}";
+			echo "Discovered iSCSI target for {$iscsiinit['targetaddress']}";
+			echo "<br>";
 			exec("/usr/local/sbin/iscontrol -d targetaddress={$iscsiinit['targetaddress']}",$rawdata);
 		
 			foreach ($rawdata as $line) {

@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("Add"));
+$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("iSCSI initiator"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['iscsiinit']['vdisk']))
 	$config['iscsiinit']['vdisk'] = array();
@@ -117,7 +117,7 @@ if ($_POST) {
 	<tr>
      <td width="22%" valign="top" class="vncellreq"><?=gettext("Initiator name") ;?></td>
       <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="initiatorname" type="text" class="formfld" id="initiatorname" size="20" value="<?=htmlspecialchars($pconfig['initiatorname']);?>">
+        <?=$mandfldhtml;?><input name="initiatorname" type="text" class="formfld" id="initiatorname" size="40" value="<?=htmlspecialchars($pconfig['initiatorname']);?>">
 		<br>
 				<?=gettext("This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."); ?>	
       </td>
@@ -125,7 +125,7 @@ if ($_POST) {
 	    <tr>
      <td width="22%" valign="top" class="vncellreq"><?=gettext("Target Name") ;?></td>
       <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="targetname" type="text" class="formfld" id="targetname" size="20" value="<?=htmlspecialchars($pconfig['targetname']);?>">
+        <?=$mandfldhtml;?><input name="targetname" type="text" class="formfld" id="targetname" size="40" value="<?=htmlspecialchars($pconfig['targetname']);?>">
 		<br>
 				<?=gettext("This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."); ?>	
       </td>
