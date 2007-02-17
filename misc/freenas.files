@@ -120,6 +120,9 @@ sbin/fsck_msdosfs
 ## Gconcat -- Geom concat
 sbin/gconcat
 
+# Growfs -- grow size of an existing ufs file system
+sbin/growfs
+
 ## gstripe -- Geom stripe
 sbin/gstripe
 
