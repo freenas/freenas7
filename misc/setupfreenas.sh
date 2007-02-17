@@ -89,28 +89,60 @@ create_rootfs() {
   return 0
 }
 
+# Actions before building kernel (e.g. install spezial drivers).
+pre_build_kernel() {
+	count=0
+	tempfile=$WORKINGDIR/tmp$$
+	drivers=$WORKINGDIR/drivers$$
+
+	# Create list of available packages.
+	echo "#! /bin/sh
+$DIALOG --title \"$PRODUCTNAME - Drivers\" \\
+--checklist \"Select the drivers you want to add.\" 21 65 14 \\" > $tempfile
+
+	for s in $SVNDIR/misc/drivers/*; do
+		[ ! -d "$s" ] && continue
+		let count=$count+1
+		driver[$count]=`basename $s`
+		script[$count]="$s/build.sh"
+		echo "\"$count\" \"${driver[$count]}\" ON \\" >> $tempfile
+	done
+
+	# Display list of available drivers.
+	sh $tempfile 2> $drivers
+	[ 0 != $? ] && return 1 # successful?
+	rm $tempfile
+
+	for id in $(cat $drivers | tr -d '"'); do
+		echo "======================================================================"
+		echo "Sourcing script ${script[$id]}"
+		source ${script[$id]}
+		function="add_${driver[$id]}"
+		echo "Running $function"
+		$function
+		[ 0 != $? ] && return 1 # successful?
+	done
+	rm $drivers
+}
+
 # Building the kernel
 build_kernel() {
-	# Adding specials drivers:
-	# A100U2 U2W-SCSI-Controller
-	mkdir -p $TMPDIR/a100
-	cd $TMPDIR/a100
-	tar -zxvf $SVNDIR/misc/drivers/bsd4a100.zip
-	cp a100.* /usr/src/sys/pci
-	echo "pci/a100.c optional ihb device-driver" >> /usr/src/sys/conf/files
-	
+	# Adding specials drivers.
+	pre_build_kernel;
+	[ 0 != $? ] && return 1 # successful?
+
 	# Copy kernel configuration.
 	cd /sys/i386/conf
 	if [ -f FREENAS ]; then
 		rm -f FREENAS
 	fi
 	cp $SVNDIR/misc/kernel-config/FREENAS .
-	
+
 	# Compiling and compressing the kernel.
 	cd /usr/src
 	make buildkernel KERNCONF=FREENAS
-	gzip -f -9 kernel
-	
+	gzip -v -f -9 /usr/obj/usr/src/sys/FREENAS/kernel
+
 	# Installing the modules.
 	cd /usr/obj/usr/src/sys/FREENAS/modules/usr/src/sys/modules
 	cp -v -p ./geom/geom_vinum/geom_vinum.ko $FREENAS/boot/kernel
@@ -120,12 +152,12 @@ build_kernel() {
 	cp -v -p ./geom/geom_gpt/geom_gpt.ko $FREENAS/boot/kernel
 	cp -v -p ./geom/geom_eli/geom_eli.ko $FREENAS/boot/kernel
 	cp -v -p ./ext2fs/ext2fs.ko $FREENAS/boot/kernel
-	
+
 	# Installing the mbr.
 	cp -v -p /boot/mbr $FREENAS/boot
 	cp -v -p /boot/boot $FREENAS/boot
 	cp -v -p /boot/boot0 $FREENAS/boot
-	
+
 	return 0
 }
 
@@ -432,6 +464,7 @@ $DIALOG --title \"$PRODUCTNAME - Software packages\" \\
 --checklist \"Select the packages you want to process.\" 21 65 14 \\" > $tempfile
 
 	for s in $SVNDIR/misc/software/*; do
+		[ ! -d "$s" ] && continue
 		let count=$count+1
 		package[$count]=`basename $s`
 		script[$count]="$s/build.sh"
