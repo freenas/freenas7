@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-# A100U2 U2W-SCSI-Controller
+
+# Description displayed in dialog menu
+DESC="A100U2 U2W-SCSI-Controller"
+# Is dialog menu selected [ ON | OFF ]
+STATUS="ON"
 
 add_a100u2() {
 	# Extract sources

@@ -105,7 +105,8 @@ $DIALOG --title \"$PRODUCTNAME - Drivers\" \\
 		let count=$count+1
 		driver[$count]=`basename $s`
 		script[$count]="$s/build.sh"
-		echo "\"$count\" \"${driver[$count]}\" ON \\" >> $tempfile
+		source ${script[$count]}
+		echo "\"$count\" \"$DESC\" $STATUS \\" >> $tempfile
 	done
 
 	# Display list of available drivers.
