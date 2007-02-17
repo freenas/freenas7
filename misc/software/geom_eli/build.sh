@@ -5,7 +5,7 @@ build_geom_eli() {
 
 	# Patch geom eli sources.
 	if [ ! -e ./geom_eli.c.orig ]; then
-		patch -f ./geom_eli.c $SVNDIR/misc/software/geli/files/patch-geom_eli.c
+		patch -f ./geom_eli.c $SVNDIR/misc/software/geom_eli/files/patch-geom_eli.c
 		[ 0 != $? ] && return 1 # successful?
 	fi
 
