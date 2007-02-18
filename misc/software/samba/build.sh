@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="samba - A free SMB and CIFS client and server for UNIX"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 URL_SAMBA="http://us3.samba.org/samba/ftp/stable/samba-3.0.24.tar.gz"
 
 build_samba() {

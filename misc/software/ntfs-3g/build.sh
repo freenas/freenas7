@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="ntfs-3g - Mount NTFS partitions and disk images"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 build_ntfs-3g() {
 	# Copy options file
 	mkdir -pv /var/db/ports/fusefs

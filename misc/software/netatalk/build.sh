@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="netatalk - File and print server for AppleTalk networks"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 URL_NETATALK="http://heanet.dl.sourceforge.net/sourceforge/netatalk/netatalk-2.0.3.tar.gz"
 
 build_netatalk() {

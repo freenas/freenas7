@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="openssh-portable - The portable version of OpenBSD's OpenSSH"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 build_openssh-portable() {
 	cd /usr/ports/security/openssh-portable/
 

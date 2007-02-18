@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="lighttpd - A very flexible Web Server"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 URL_LIGHTTPD="http://www.lighttpd.net/download/lighttpd-1.4.13.tar.gz"
 
 build_lighttpd() {

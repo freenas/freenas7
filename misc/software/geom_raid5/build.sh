@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="GRAID5 - GEOM RAID5 filesystem"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 URL_GEOMRAID5="http://home.tiscali.de/cmdr_faako/geom_raid5.tbz"
 
 build_geom_raid5() {

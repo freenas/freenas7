@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="aaccli - Adaptec SCSI RAID administration tool"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 build_aaccli() {
 	cd /usr/ports/sysutils/aaccli/
 

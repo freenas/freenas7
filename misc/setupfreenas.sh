@@ -106,7 +106,7 @@ $DIALOG --title \"$PRODUCTNAME - Drivers\" \\
 		driver[$count]=`basename $s`
 		script[$count]="$s/build.sh"
 		source ${script[$count]}
-		echo "\"$count\" \"$DESC\" $STATUS \\" >> $tempfile
+		echo "\"$count\" \"$MENUDESC\" $MENUSTATUS \\" >> $tempfile
 	done
 
 	# Display list of available drivers.
@@ -462,14 +462,15 @@ build_softpkg() {
 	# Create list of available packages.
 	echo "#! /bin/sh
 $DIALOG --title \"$PRODUCTNAME - Software packages\" \\
---checklist \"Select the packages you want to process.\" 21 65 14 \\" > $tempfile
+--checklist \"Select the packages you want to process.\" 21 75 14 \\" > $tempfile
 
 	for s in $SVNDIR/misc/software/*; do
 		[ ! -d "$s" ] && continue
 		let count=$count+1
 		package[$count]=`basename $s`
 		script[$count]="$s/build.sh"
-		echo "\"$count\" \"${package[$count]}\" ON \\" >> $tempfile
+		source ${script[$count]}
+		echo "\"$count\" \"$MENUDESC\" $MENUSTATUS \\" >> $tempfile
 	done
 
 	# Display list of available packages.

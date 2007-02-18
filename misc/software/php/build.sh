@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="php5 - PHP Scripting Language"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 URL_PHP="http://www.php.net/distributions/php-5.2.1.tar.gz"
 
 build_php() {

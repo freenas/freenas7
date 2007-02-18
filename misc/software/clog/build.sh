@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="clog - Circular log file tool"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 build_clog() {
 	cd /usr/src/usr.sbin
 

@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="scponly - A tiny shell that only permits scp and sftp"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 build_scponly() {
-	cd /usr/ports/shells/scponly/
+	cd /usr/ports/shells/scponly
 
 	# Copy required options files
 	mkdir -pv /var/db/ports/ocaml

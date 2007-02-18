@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="rsync - A network file distribution/synchronization utility"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 URL_RSYNC="http://samba.anu.edu.au/ftp/rsync/rsync-2.6.9.tar.gz"
 
 build_rsync() {

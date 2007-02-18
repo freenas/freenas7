@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="iscsi - ISCSI tools"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 URL_ISCSI="ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-2.0.1.tar.bz2"
 
 build_iscsi() {

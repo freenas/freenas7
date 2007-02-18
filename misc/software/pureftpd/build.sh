@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="pure-ftpd - A fast and very secure FTP server"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 URL_PUREFTP="ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.21.tar.gz"
 
 build_pureftpd() {

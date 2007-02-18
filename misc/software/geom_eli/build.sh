@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="GELI - GEOM Eli filesystem encryption"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 build_geom_eli() {
 	cd /usr/src/sbin/geom/class/eli
 

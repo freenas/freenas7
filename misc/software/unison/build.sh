@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
+# Description displayed in dialog menu (max. 60 characters)
+MENUDESC="unison - A user-level file synchronization tool"
+# Is dialog menu selected [ ON | OFF ]
+MENUSTATUS="ON"
+
 build_unison() {
-	cd /usr/ports/net/unison/
+	cd /usr/ports/net/unison
 
 	# Copy ocaml options file
 	mkdir -pv /var/db/ports/ocaml
