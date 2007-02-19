@@ -83,8 +83,8 @@ create_rootfs() {
   cd $FREENAS/conf.default/
   cp -v $SVNDIR/conf/config.xml .
 
-  # Zone Info.
-  cp -v $SVNDIR/misc/zoneinfo.tgz $FREENAS/usr/share
+  # Compress zoneinfo data.
+	tar -cvf - -C /usr/share/zoneinfo/ ./ | gzip -cv > $FREENAS/usr/share/zoneinfo.tgz
 
   return 0
 }
