@@ -83,8 +83,12 @@ create_rootfs() {
   cd $FREENAS/conf.default/
   cp -v $SVNDIR/conf/config.xml .
 
-  # Compress zoneinfo data.
-	tar -cvf - -C /usr/share/zoneinfo/ ./ | gzip -cv > $FREENAS/usr/share/zoneinfo.tgz
+  # Compress zoneinfo data, exclude some useless files.
+  echo "Factory" > $TMPDIR/zoneinfo.exlude
+	echo "posixrules" >> $TMPDIR/zoneinfo.exlude
+	echo "zone.tab" >> $TMPDIR/zoneinfo.exlude
+	tar -c -v -f - -X $TMPDIR/zoneinfo.exlude -C /usr/share/zoneinfo/ . | gzip -cv > $FREENAS/usr/share/zoneinfo.tgz
+	rm $TMPDIR/zoneinfo.exlude
 
   return 0
 }
