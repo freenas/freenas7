@@ -5,7 +5,7 @@
   <title>FreeNAS Developers' Handbook</title>
 
   <bookinfo>
-    <date>January 4, 2007</date>
+    <date>February 21, 2007</date>
 
     <author>
       <firstname>Olivier</firstname>
@@ -69,8 +69,9 @@
     <sect1>
       <title>Installation of the FreeBSD developpement environement</title>
 
-      <para>Install FreeBSD 6.1 on your dedicaced PC (or under a VMware/Qemu),
-      selecting he developers set (without X), then install this ports:</para>
+      <para>Install FreeBSD 6.2 on your dedicaced PC (or under a VMware/Qemu),
+      selecting the developers set (without X), then install this
+      ports:</para>
 
       <itemizedlist>
         <listitem>
@@ -89,49 +90,6 @@
           <para>php (used for checking new code with the command <command>php
           -l filename.php</command>) before compiling a new ISO/IMG
           file)</para>
-        </listitem>
-      </itemizedlist>
-
-      <para>Then, as root create FreeNAS directory, and download the latest
-      (under developement) sources:</para>
-
-      <para><command>mkdir /usr/local/freenas</command></para>
-
-      <para><command>cd /usr/local/freenas</command></para>
-
-      <para><command>svn co https://svn.sourceforge.net/svnroot/freenas/trunk
-      svn</command></para>
-
-      <para>Then, you can run the generating script for downloading the latest
-      FreeNAS binary file set and compile an ISO/IMG file:</para>
-
-      <para><command>svn/misc/setupfreenas.sh</command></para>
-
-      <para>And select option:</para>
-
-      <itemizedlist>
-        <listitem>
-          <para>1 : Download latest freenas root file system TGZ file (that
-          include all FreeBSD binaries used by FreeNAS)</para>
-        </listitem>
-
-        <listitem>
-          <para>10: Generate a IMG file (to be write directly on a CF/USB
-          card)</para>
-        </listitem>
-
-        <listitem>
-          <para>11: Generate an ISO file (that include a IMG file for install
-          from ISO)</para>
-        </listitem>
-
-        <listitem>
-          <para>12: Generate an ISO file (without the IMG file)</para>
-        </listitem>
-
-        <listitem>
-          <para>20: Experimental sub-menu, that permit to step-by-step, create
-          a FreeNAS from scratch</para>
         </listitem>
       </itemizedlist>
     </sect1>
@@ -226,7 +184,7 @@
       <sect2>
         <title>Installation</title>
 
-        <para>Install FreeBSD 6.1 with the developer distribution with ports
+        <para>Install FreeBSD 6.2 with the developer distribution with ports
         collection.</para>
 
         <para>In the beginning of the install process:</para>
@@ -404,8 +362,10 @@
       <sect2>
         <title>Upgrading port</title>
 
-        <para>You can upgrade all installed port (and library) with this
-        command:</para>
+        <para>You can upgrade all installed port (and library) by installing
+        and using this command:</para>
+
+        <para><command>pkg_add -r perl</command></para>
 
         <para><command>cd /usr/ports</command></para>
 
@@ -460,20 +420,18 @@
           <para>Second step, create the working directory:</para>
 
           <para><command>mkdir /usr/local/freenas</command></para>
-
-          <para><command>mkdir /usr/local/freenas/rootfs</command></para>
         </sect3>
 
         <sect3>
           <title>Generating the minimum root filesytem</title>
 
           <para>Use the script <ulink
-          url="http://freenas.org/downloads/freenas-create-dirs.sh">freenas-create-dirs.sh</ulink>
+          url="http://freenas.svn.sourceforge.net/viewvc/*checkout*/freenas/trunk/misc/freenas-create-dirs.sh">freenas-create-dirs.sh</ulink>
           (don't forget to change the MINIBSD_DIR variable with your setting
           before using it):</para>
 
           <para><command>fetch
-          http://freenas.org/downloads/freenas-create-dirs.sh</command></para>
+          http://freenas.svn.sourceforge.net/viewvc/*checkout*/freenas/trunk/misc/freenas-create-dirs.sh</command></para>
 
           <para><command>./freenas-create-dirs.sh</command> it will create the
           root dir for you...</para>
@@ -487,21 +445,50 @@
 # E-Mail Contact: minibsd@ultradesic.com
 #
 # Adapted for FreeNAS by Olivier Cochard-Labbé (http://www.freenas.org)
+# Modified by Volker Theile (votdev@gmx.de)
 
-MINIBSD_DIR=/usr/local/freenas/rootfs ;
+MINIBSD_DIR=/usr/local/freenas/rootfs;
 
-if [ -d $MINIBSD_DIR ] ; then
-echo ;
-echo "$MINIBSD_DIR already exists.  Remove the directory" ;
-echo "before running this script." ;
-echo ;
-echo "Exiting..." ;
-echo ;
-exit ;
+# Initialize variables.
+opt_f=0
+
+# Parse the command-line options.
+while getopts 'fh' option
+do
+        case "$option" in
+    "f")  opt_f=1;;
+    "h")  echo "$(basename $0): Create FreeNAS directory structure";
+          echo "Common Options:";
+          echo "  -f    Force executing this script";
+          exit 1;;
+    ?)    echo "$0: Bad option specified. Exiting...";
+          exit 1;;
+  esac
+done
+
+shift `expr $OPTIND - 1`
+
+echo "Create FreeNAS directory structure..."
+
+if [ ! -z "$1" ]; then
+  MINIBSD_DIR=$1;
+  echo "Using directory $1.";
+fi
+
+if [ 1 != $opt_f -a -d "$MINIBSD_DIR" ]; then
+  echo ;
+  echo "$MINIBSD_DIR already exists. Remove the directory" ;
+  echo "before running this script." ;
+  echo ;
+  echo "Exiting..." ;
+  echo ;
+  exit 1 ;
 fi ;
 
 mkdir $MINIBSD_DIR ;
 cd $MINIBSD_DIR ;
+
+# Create directories
 mkdir boot ;
 mkdir boot/kernel ;
 mkdir bin ;
@@ -514,7 +501,9 @@ mkdir etc/defaults ;
 mkdir etc/inc ;
 mkdir etc/pam.d ;
 mkdir etc/ssh ;
+mkdir etc/iscsi ;
 mkdir lib ;
+mkdir lib/geom ;
 mkdir libexec ;
 mkdir -m 0777 mnt ;
 mkdir -m 0700 root ;
@@ -528,33 +517,42 @@ mkdir usr/local ;
 mkdir usr/local/bin;
 mkdir usr/local/lib ;
 mkdir usr/local/sbin ;
+mkdir usr/local/share ;
+mkdir usr/local/share/locale ;
+mkdir usr/local/etc ;
 mkdir usr/local/www ;
+mkdir usr/local/www/syntaxhighlighter ;
 mkdir usr/sbin ;
 mkdir usr/share ;
-mkdir tmp;
-# share/empty mandatory for VSFTPD
-mkdir usr/share/empty ;
+mkdir usr/share/misc ;
+mkdir usr/share/locale ;
+mkdir tmp ;
 mkdir var ;
-#ln -s var/tmp tmp
-# Creating symbolic links
+
+# Creating symbolic links. Most of the target files will be created at runtime.
 ln -s cf/conf conf
 ln -s /var/run/htpasswd usr/local/www/.htpasswd
 ln -s /var/etc/resolv.conf etc/resolv.conf
 ln -s /var/etc/master.passwd etc/master.passwd
 ln -s /var/etc/passwd etc/passwd
 ln -s /var/etc/group etc/group
+ln -s /var/etc/hosts etc/hosts
 ln -s /var/etc/pwd.db etc/pwd.db
 ln -s /var/etc/spwd.db etc/spwd.db
 ln -s /var/etc/crontab etc/crontab
 ln -s /var/etc/ssh/sshd_config etc/ssh/sshd_config
 ln -s /var/etc/ssh/ssh_host_dsa_key etc/ssh/ssh_host_dsa_key
+ln -s /var/etc/iscsi/targets etc/iscsi/targets
 ln -s /var/etc/pam.d/ftp etc/pam.d/ftp
+ln -s /var/etc/pam.d/ftp etc/pam.d/pure-ftpd
 ln -s /var/etc/pam.d/sshd etc/pam.d/sshd
 ln -s /var/etc/pam.d/login etc/pam.d/login
+ln -s /var/etc/pam.d/system etc/pam.d/system
+ln -s /var/etc/ldap.conf usr/local/etc/ldap.conf
 ln -s /var/etc/nsswitch.conf etc/nsswitch.conf
-ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
+ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1
 
-          <para></para>
+</programlisting>
         </sect3>
 
         <sect3>
@@ -619,12 +617,12 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
         <title>Copying required binaries</title>
 
         <para>Download the file <ulink
-        url="http://www.freenas.org/downloads/freenas.files">freenas.files</ulink>
+        url="http://freenas.svn.sourceforge.net/viewvc/*checkout*/freenas/trunk/misc/freenas.files">freenas.files</ulink>
         that will be use with the <ulink
         url="http://www.freenas.org/downloads/mkmini.pl">mkmini.pl</ulink>:</para>
 
         <para><command>fetch
-        http://www.freenas.org/downloads/freenas.files</command></para>
+        http://freenas.svn.sourceforge.net/viewvc/*checkout*/freenas/trunk/misc/freenas.files</command></para>
 
         <para><command>fetch
         http://www.freenas.org/downloads/mkmini.pl</command></para>
@@ -655,7 +653,7 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
           and decompress it in the $FREENAS/ directory:</para>
 
           <para><command>fetch
-          http//www.freenas.org/downloads/freenas-etc.tgz</command></para>
+          http://www.freenas.org/downloads/freenas-etc.tgz</command></para>
 
           <para><command>tar -xzf freenas-etc.tgz -C
           $FREENAS/</command></para>
@@ -841,7 +839,7 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
           /sys/i386/compile/FREENAS_GENERIC/modules/usr/src/sys/modules/geom/geom_gpt/geom_gpt.ko
           $FREENAS/boot/kernel</command></para>
 
-          <para><command>cp
+          <para><command>####cp
           /sys/i386/compile/FREENAS_GENERIC/modules/usr/src/sys/modules/ntfs/ntfs.ko
           $FREENAS/boot/kernel</command></para>
 
@@ -887,6 +885,8 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
 
           <para><command>cp -p /sbin/graid5 $FREENAS/sbin/</command></para>
 
+          <para><command>mkdir $FREENAS/lib/geom/</command></para>
+
           <para><command>cp geom_raid5.so $FREENAS/lib/geom/</command></para>
 
           <para><command></command></para>
@@ -912,6 +912,10 @@ ln -s /libexec/ld-elf.so.1 usr/libexec/ld-elf.so.1</programlisting>
 
         <sect3>
           <title>PHP 5</title>
+
+          <para>Install libxml2 with this command:</para>
+
+          <para><command>pkg_add -r libxml2</command></para>
 
           <para>PHP Download the latest version of PHP 5.2 from <ulink
           url="http://www.php.net">http://www.php.net</ulink> and decompress
@@ -1095,9 +1099,9 @@ done</programlisting>
           <para>Download, compile and install the iscsi initiator:</para>
 
           <para><command>fetch
-          ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-17.tar.bz2</command></para>
+          ftp://ftp.cs.huji.ac.il/users/danny/freebsd/iscsi-2.0.1.tar.bz2</command></para>
 
-          <para><command>tar zxvf iscsi-17.tar.bz2</command></para>
+          <para><command>tar zxvf iscsi-2.0.1.tar.bz2</command></para>
 
           <para><command>cd sys</command></para>
 
@@ -1257,6 +1261,8 @@ done</programlisting>
 
           <para><command>cd /usr/ports/databases/db42</command></para>
 
+          <para><command>make</command></para>
+
           <para><command>make install</command></para>
 
           <para>Then, download, compile and install netatalk:</para>
@@ -1312,11 +1318,11 @@ done</programlisting>
           <para>Download, compile and install RSYNC:</para>
 
           <para><command>fetch
-          http://samba.anu.edu.au/ftp/rsync/rsync-2.6.8.tar.gz</command></para>
+          http://samba.anu.edu.au/ftp/rsync/rsync-2.6.9.tar.gz</command></para>
 
-          <para><command>tar zxvf rsync-2.6.8.tar.gz</command></para>
+          <para><command>tar zxvf rsync-2.6.9.tar.gz</command></para>
 
-          <para><command>cd rsync-2.6.8</command></para>
+          <para><command>cd rsync-2.6.9</command></para>
 
           <para><command>./configure
           --with-rsyncd-conf=/var/etc</command></para>
@@ -1357,6 +1363,8 @@ done</programlisting>
 
           <para>WITH_SCPONLY_UNISON=YES</para>
 
+          <para>WITH_SCPONLY_SFTP_LOGGING=YES</para>
+
           <para><command>make</command></para>
 
           <para><command>install -s work/scponly-4.4/scponly
@@ -1389,6 +1397,37 @@ done</programlisting>
         </sect3>
 
         <sect3>
+          <title>ntfs-3g</title>
+
+          <para>Compile and install the e2fsck ports:</para>
+
+          <para><command>cd /usr/ports/sysutils/fusefs-kmod</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp -pv work/fuse4bsd-*/mount_fusefs/mount_fusefs
+          $FREENAS/usr/local/sbin/</command></para>
+
+          <para><command>cp -pv work/fuse4bsd-*/fuse_module/fuse.ko
+          $FREENAS/boot/kernel</command></para>
+
+          <para><command>cd /usr/ports/sysutils/fusefs-ntfs/</command></para>
+
+          <para><command>make</command></para>
+
+          <para><command>cp -p
+          work/ntfs-3g-0.20070118-BETA/libntfs-3g/.libs/libntfs-3g.so
+          $FREENAS/usr/local/lib/libntfs-3g.so.0</command></para>
+
+          <para><command>install -s
+          work/ntfs-3g-0.20070118-BETA/src/.libs/ntfs-3g
+          $FREENAS/usr/local/bin/</command></para>
+
+          <para><command>install -s /usr/local/lib/libfuse.so.2
+          $FREENAS/usr/local/lib/</command></para>
+        </sect3>
+
+        <sect3>
           <title>e2fsck</title>
 
           <para>Compile and install the e2fsck ports:</para>
@@ -1411,10 +1450,10 @@ done</programlisting>
 
           <para><command>make</command></para>
 
-          <para><command>install -s work/smartmontools-5.36/smartctl
+          <para><command>install -s work/smartmontools-5.37/smartctl
           $FREENAS/usr/local/sbin/</command></para>
 
-          <para><command>install -s work/smartmontools-5.36/smartd
+          <para><command>install -s work/smartmontools-5.37/smartd
           $FREENAS/usr/local/sbin/</command></para>
         </sect3>
 
@@ -1458,7 +1497,7 @@ done</programlisting>
           <para>Untar, compil and install it:</para>
 
           <para><command>install -s
-          work/mDNSResponder-107.5/mDNSPosix/build/prod/mDNSResponderPosix
+          work/mDNSResponder-108/mDNSPosix/build/prod/mDNSResponderPosix
           $FREENAS/usr/local/sbin/</command></para>
         </sect3>
       </sect2>
@@ -1467,7 +1506,7 @@ done</programlisting>
         <title>Building the boot loader</title>
 
         <para>Use the script <ulink
-        url="http://www.freenas.org/downloads/freenas-create-bootdir.sh">freenas-create-bootdir.sh</ulink>
+        url="http://freenas.svn.sourceforge.net/viewvc/*checkout*/freenas/trunk/misc/freenas-create-bootdir.sh">freenas-create-bootdir.sh</ulink>
         (don't forget to edit it before for setting the directory) for
         generating the file needed for booting.</para>
 
@@ -1480,38 +1519,104 @@ done</programlisting>
 # E-Mail Contact: minibsd@ultradesic.com
 #
 # Adapted for m0n0wall on FreeBSD 6.1 by Olivier Cochard-Labbé (http://www.freenas.org)
+# Modified by Volker Theile (votdev@gmx.de)
 
-MINIBSD_DIR=/usr/local/freenas/bootloader ;
+MINIBSD_DIR=/usr/local/freenas/bootloader;
 
-if [ -d $MINIBSD_DIR ] ; then
- echo ;
- echo "$MINIBSD_DIR already exists.  Remove the directory" ;
- echo "before running this script." ;
- echo ;
- echo "Exiting..." ;
- echo ;
- exit ;
-fi ;
+# Initialize variables.
+opt_a=0
+opt_d=0
+opt_s=0
+opt_f=0
+
+# Parse the command-line options.
+while getopts 'adfhs' option
+do
+        case "$option" in
+    "a")  opt_a=1;;
+    "d")  opt_d=1;;
+    "f")  opt_f=1;;
+    "s")  opt_s=1;;
+    "h")  echo "$(basename $0): Build boot loader";
+          echo "Common Options:";
+          echo "  -a    Disable ACPI"
+          echo "  -d    Enable debug"
+          echo "  -s    Enable serial console";
+          echo "  -f    Force executing this script";
+          exit 1;;
+    ?)    echo "$0: Bad option specified. Exiting...";
+          exit 1;;
+  esac
+done
+
+shift `expr $OPTIND - 1`
+
+echo "Building the boot loader..."
+
+if [ -n "$1" ]; then
+  MINIBSD_DIR=$1
+  echo "Using directory $1."
+fi
+
+if [ 1 != $opt_f -a -d "$MINIBSD_DIR" ]; then
+  echo
+  echo "=&gt; $MINIBSD_DIR already exists. Remove the directory"
+  echo "=&gt; before running this script."
+  echo
+  echo "=&gt; Exiting..."
+  echo
+  exit 1
+fi
+
 # Create the boot directory that will contain boot, and kernel
-mkdir $MINIBSD_DIR ;
+mkdir $MINIBSD_DIR
 mkdir $MINIBSD_DIR/defaults
 mkdir $MINIBSD_DIR/kernel
+
 # Copy the file in this directory:
-cp /boot/defaults/loader.conf $MINIBSD_DIR/defaults
-cp /boot/loader $MINIBSD_DIR
-cp /boot/boot $MINIBSD_DIR
-cp /boot/mbr $MINIBSD_DIR
-cp /boot/cdboot $MINIBSD_DIR
-cp /boot/loader.rc $MINIBSD_DIR
-cp /boot/loader.4th $MINIBSD_DIR
-cp /boot/support.4th $MINIBSD_DIR
-cp /boot/device.hints $MINIBSD_DIR
+cp -v /boot/defaults/loader.conf $MINIBSD_DIR/defaults
+cp -v /boot/loader $MINIBSD_DIR
+cp -v /boot/boot $MINIBSD_DIR
+cp -v /boot/mbr $MINIBSD_DIR
+cp -v /boot/cdboot $MINIBSD_DIR
+cp -v /boot/loader.4th $MINIBSD_DIR
+cp -v /boot/support.4th $MINIBSD_DIR
+cp -v /boot/device.hints $MINIBSD_DIR
+
+# Generate the loader.rc file using by bootloader
+echo "Generate $MINIBSD_DIR/loader.rc"
+echo 'include /boot/loader.4th
+start
+check-password' &gt; $MINIBSD_DIR/loader.rc
+
 # Generate the loader.conf file using by bootloader
-echo "mfsroot_load=\"YES\"" &gt; $MINIBSD_DIR/loader.conf
-echo "mfsroot_type=\"mfs_root\"" &gt;&gt; $MINIBSD_DIR/loader.conf
-echo "mfsroot_name=\"/mfsroot\"" &gt;&gt; $MINIBSD_DIR/loader.conf
-echo "autoboot_delay=\"-1\"" &gt;&gt; $MINIBSD_DIR/loader.conf
-cp /sys/i386/compile/FREENAS/kernel.gz $MINIBSD_DIR/kernel</programlisting>
+echo "Generate $MINIBSD_DIR/loader.conf"
+echo 'mfsroot_load="YES"
+mfsroot_type="mfs_root"
+mfsroot_name="/mfsroot"
+autoboot_delay="-1"' &gt; $MINIBSD_DIR/loader.conf
+# Enable debug?
+if [ 0 != $opt_d ]; then
+  echo 'verbose_loading="YES"' &gt;&gt; $MINIBSD_DIR/loader.conf
+  echo 'boot_verbose=""' &gt;&gt; $MINIBSD_DIR/loader.conf
+fi
+# Enable serial console?
+if [ 0 != $opt_s ]; then
+  echo 'console="comconsole"' &gt;&gt; $MINIBSD_DIR/loader.conf
+fi
+
+# Disable ACPI?
+if [ 0 != $opt_a ]; then
+  echo 'hint.acpi.0.disabled="1"' &gt;&gt; $MINIBSD_DIR/device.hints
+fi
+
+# Copy kernel.
+if [ -e "/usr/obj/usr/src/sys/FREENAS/kernel.gz" ] ; then
+  cp /usr/obj/usr/src/sys/FREENAS/kernel.gz $MINIBSD_DIR/kernel
+else
+  echo "=&gt; ERROR: File kernel.gz does not exist!";
+  exit 1;
+fi</programlisting>
 
         <para></para>
 
@@ -1614,7 +1719,7 @@ cp /sys/i386/compile/FREENAS/kernel.gz $MINIBSD_DIR/kernel</programlisting>
         (don't forget to edit it before for setting the directory):</para>
 
         <para><command>fetch
-        http://freenas.org/downloads/freenas-create-msfroot.sh</command></para>
+        http://www.freenas.org/downloads/freenas-create-msfroot.sh</command></para>
 
         <para><command>./freenas-create-msfroot.sh</command></para>
 
@@ -1675,7 +1780,7 @@ gzip -9 mfsroot</programlisting>
         <para>This is very similar to creating the mfsroot.</para>
 
         <para>Use the script <ulink
-        url="http://www.freenas.org/downloads/freenas-create-msfroot.sh">freenas-create-image.sh</ulink>
+        url="http://www.freenas.org/downloads/freenas-create-image.sh">freenas-create-image.sh</ulink>
         (don't forget to edit it before for setting the directory):</para>
 
         <para><command>fetch
@@ -1797,7 +1902,7 @@ fi ;</programlisting>
           <title>Create the bootable ISO file</title>
 
           <para>Use the script <ulink
-          url="http://www.freenas.org/downloads/freenas-create-msfroot.sh">freenas-create-cd.sh</ulink>
+          url="http://www.freenas.org/downloads/freenas-create-cd.sh">freenas-create-cd.sh</ulink>
           (don't forget to edit it before for setting the directory):</para>
 
           <para><command>fetch
