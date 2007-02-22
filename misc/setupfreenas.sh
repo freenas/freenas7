@@ -86,6 +86,7 @@ create_rootfs() {
   cp -v $SVNDIR/conf/config.xml .
 
   # Compress zoneinfo data, exclude some useless files.
+  mkdir $TMPDIR
   echo "Factory" > $TMPDIR/zoneinfo.exlude
 	echo "posixrules" >> $TMPDIR/zoneinfo.exlude
 	echo "zone.tab" >> $TMPDIR/zoneinfo.exlude
