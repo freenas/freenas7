@@ -1,0 +1,20 @@
+ARCNAME=	pure-ftpd-1.0.21.tar.gz
+URL=	ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/$(ARCNAME)
+SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCNAME) .tar.gz)
+
+all:	clean
+	-@if [ ! -f $(FREENASDISTFILES)/$(ARCNAME) ]; then \
+		cd $(FREENASDISTFILES) && fetch $(URL); \
+	fi
+
+	tar -zxvf $(FREENASDISTFILES)/$(ARCNAME) -C $(WORKINGDIR)
+
+	cd $(SRCDIR) && ./configure --with-rfc2640 --with-largefile --with-pam --with-ftpwho
+	make -C $(SRCDIR)
+
+install:
+	install -vs $(SRCDIR)/src/pure-ftpd $(FREENAS)/usr/local/sbin
+	install -vs $(SRCDIR)/src/pure-ftpwho $(FREENAS)/usr/local/sbin
+
+clean:
+	@rm -f -r $(SRCDIR)

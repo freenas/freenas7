@@ -5,10 +5,12 @@
 # Modified: 11/2006 by Volker Theile (votdev@gmx.de)
 
 # Global Variables:
-WORKINGDIR="/usr/local/freenas"
-FREENAS="/usr/local/freenas/rootfs"
+export WORKINGDIR="/usr/local/freenas"
+export FREENASDISTFILES="$WORKINGDIR/distfiles"
+export FREENAS="$WORKINGDIR/rootfs"
+export SVNDIR="$WORKINGDIR/svn"
+
 BOOTDIR="/usr/local/freenas/bootloader"
-SVNDIR="/usr/local/freenas/svn"
 TMPDIR="/tmp/freenastmp"
 VERSION=`cat $SVNDIR/etc/prd.version`
 PRODUCTNAME=`cat $SVNDIR/etc/prd.name`
@@ -451,7 +453,6 @@ Menu:
 }
 
 build_softpkg() {
-	count=0
 	tempfile=$WORKINGDIR/tmp$$
 	packages=$WORKINGDIR/packages$$
 
@@ -470,11 +471,9 @@ $DIALOG --title \"$PRODUCTNAME - Software packages\" \\
 
 	for s in $SVNDIR/misc/software/*; do
 		[ ! -d "$s" ] && continue
-		let count=$count+1
-		package[$count]=`basename $s`
-		script[$count]="$s/build.sh"
-		source ${script[$count]}
-		echo "\"$count\" \"$MENUDESC\" $MENUSTATUS \\" >> $tempfile
+		package=`basename $s`
+		desc=`cat $s/pkg-descr`
+		echo "\"$package\" \"$desc\" ON \\" >> $tempfile
 	done
 
 	# Display list of available packages.
@@ -482,19 +481,14 @@ $DIALOG --title \"$PRODUCTNAME - Software packages\" \\
 	[ 0 != $? ] && return 1 # successful?
 	rm $tempfile
 
-	for id in $(cat $packages | tr -d '"'); do
+	for package in $(cat $packages | tr -d '"'); do
 		echo "======================================================================"
-		echo "Sourcing script ${script[$id]}"
-		source ${script[$id]}
-
+		cd $SVNDIR/misc/software/$package
 		if [ "$choice" == "Build" ]; then
-			function="build_${package[$id]}"
+			make
 		elif [ "$choice" == "Install" ]; then
-			function="install_${package[$id]}"
+			make install
 		fi
-
-		echo "Running $function"
-		$function
 		[ 0 != $? ] && return 1 # successful?
 	done
 	rm $packages
@@ -503,6 +497,9 @@ $DIALOG --title \"$PRODUCTNAME - Software packages\" \\
 }
 
 main() {
+	# Ensure $FREENASDISTFILES exists
+	[ ! -d "$FREENASDISTFILES" ] && mkdir $FREENASDISTFILES
+
 	# Ensure we are in $WORKINGDIR
 	[ ! -d "$WORKINGDIR" ] && mkdir $WORKINGDIR
 	cd $WORKINGDIR
