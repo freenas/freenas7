@@ -1,13 +1,13 @@
-ARCNAME=	lighttpd-1.4.13.tar.gz
-URL=	http://www.lighttpd.net/download/$(ARCNAME)
-SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCNAME) .tar.gz)
+ARCHIVE=	lighttpd-1.4.13.tar.gz
+URL=	http://www.lighttpd.net/download/$(ARCHIVE)
+SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-all:	clean
-	-@if [ ! -f $(FREENASDISTFILES)/$(ARCNAME) ]; then \
+build:	clean
+	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
-	tar -zxvf $(FREENASDISTFILES)/$(ARCNAME) -C $(WORKINGDIR)
+	tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
 
 	cd $(SRCDIR) && ./configure --sysconfdir=/var/etc/ --enable-lfs --without-mysql --without-ldap --with-openssl --without-lua --with-bzip2 --without-pcre
 	make -C $(SRCDIR)

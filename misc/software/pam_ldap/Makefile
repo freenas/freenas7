@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/security/pam_ldap
 
-all:	clean
+build:	clean
 	make -C $(PORTDIR)
 
 install:

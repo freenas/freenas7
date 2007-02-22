@@ -1,13 +1,13 @@
-ARCNAME=	samba-3.0.24.tar.gz
-URL=	http://us3.samba.org/samba/ftp/stable/$(ARCNAME)
-SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCNAME) .tar.gz)
+ARCHIVE=	samba-3.0.24.tar.gz
+URL=	http://us3.samba.org/samba/ftp/stable/$(ARCHIVE)
+SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-all:	clean
-	-@if [ ! -f $(FREENASDISTFILES)/$(ARCNAME) ]; then \
+build:	clean
+	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
-	tar -zxvf $(FREENASDISTFILES)/$(ARCNAME) -C $(WORKINGDIR)
+	tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
 
 	cd $(SRCDIR)/source && ./configure --without-cups --with-ads --disable-cups --with-pam --with-ldapsam --with-acl-support --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run --with-piddir=/var/run --with-shared-modules=idmap_rid --with-pammodulesdir=/usr/local/lib --with-syslog --with-ldap
 	make -C $(SRCDIR)/source

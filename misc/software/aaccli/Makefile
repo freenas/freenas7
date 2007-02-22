@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/sysutils/aaccli
 
-all:	clean
+build:	clean
 	make -C $(PORTDIR)
 
 install:

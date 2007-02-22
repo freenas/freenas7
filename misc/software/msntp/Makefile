@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/net/msntp
 
-all:	clean
+build:	clean
 	make -C $(PORTDIR)
 
 install:

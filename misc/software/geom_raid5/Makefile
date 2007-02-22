@@ -1,12 +1,12 @@
-ARCNAME=	geom_raid5.tbz
-URL=	http://home.tiscali.de/cmdr_faako/$(ARCNAME)
+ARCHIVE=	geom_raid5.tbz
+URL=	http://home.tiscali.de/cmdr_faako/$(ARCHIVE)
 
-all:
-	-@if [ ! -f $(FREENASDISTFILES)/$(ARCNAME) ]; then \
+build:	clean
+	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
-	tar -zxvf $(FREENASDISTFILES)/$(ARCNAME) -C /usr/src
+	tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C /usr/src
 	
 	# Make kernel module.
 	make -C /usr/src/sys/modules/geom/geom_raid5 depend

@@ -1,4 +1,4 @@
-all:
+build:	clean
 	tar -zxvf ${.CURDIR}/files/syslogd_clog-current.tgz -C /usr/src/usr.sbin 
 	tar -zxvf ${.CURDIR}/files/clog-1.0.1.tar.gz -C /usr/src/usr.sbin
 

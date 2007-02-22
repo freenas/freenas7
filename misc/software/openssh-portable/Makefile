@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/security/openssh-portable
 
-all:	clean
+build:	clean
 	# Copy ocaml options file
 	mkdir -pv /var/db/ports/openssh
 	cp -pv ${.CURDIR}/files/options /var/db/ports/openssh

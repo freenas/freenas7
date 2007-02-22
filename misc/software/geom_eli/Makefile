@@ -1,6 +1,6 @@
 DIR=	/usr/src/sbin/geom/class/eli
 
-all:	clean
+build:	clean
 	# Patch geom eli sources if necessary.
 	-@if [ ! -e $(DIR)/geom_eli.c.orig ]; then \
 		@patch -f $(DIR)/geom_eli.c ${.CURDIR}/files/patch-geom_eli.c; \

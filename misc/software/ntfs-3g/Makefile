@@ -1,4 +1,4 @@
-all:	clean
+build:	clean
 	# Copy options file
 	mkdir -pv /var/db/ports/fusefs
 	cp -pv ${.CURDIR}/files/options /var/db/ports/fusefs

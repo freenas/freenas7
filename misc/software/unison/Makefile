@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/net/unison
 
-all:	clean
+build:	clean
 	# Copy ocaml options file
 	mkdir -pv /var/db/ports/ocaml
 	cp -pv ${.CURDIR}/files/ocaml/options /var/db/ports/ocaml

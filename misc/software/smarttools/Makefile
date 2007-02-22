@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/sysutils/smartmontools
 
-all:	clean
+build:	clean
 	make -C $(PORTDIR)
 
 install:

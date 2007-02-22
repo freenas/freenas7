@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/net/iscsi-target
 
-all:	clean
+build:	clean
 	make -C $(PORTDIR)
 
 install:

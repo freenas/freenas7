@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/shells/scponly
 
-all:	clean
+build:	clean
 	# Copy required options files
 	mkdir -pv /var/db/ports/ocaml
 	mkdir -pv /var/db/ports/rsync

@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/sysutils/e2fsprogs
 
-all:	clean
+build:	clean
 	make -C $(PORTDIR)
 
 install:

@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/audio/beep
 
-all:	clean
+build:	clean
 	make -C $(PORTDIR)
 
 install:

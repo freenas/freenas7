@@ -1,13 +1,13 @@
-ARCNAME=	pure-ftpd-1.0.21.tar.gz
-URL=	ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/$(ARCNAME)
-SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCNAME) .tar.gz)
+ARCHIVE=	pure-ftpd-1.0.21.tar.gz
+URL=	ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/$(ARCHIVE)
+SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-all:	clean
-	-@if [ ! -f $(FREENASDISTFILES)/$(ARCNAME) ]; then \
+build:	clean
+	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
-	tar -zxvf $(FREENASDISTFILES)/$(ARCNAME) -C $(WORKINGDIR)
+	tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
 
 	cd $(SRCDIR) && ./configure --with-rfc2640 --with-largefile --with-pam --with-ftpwho
 	make -C $(SRCDIR)

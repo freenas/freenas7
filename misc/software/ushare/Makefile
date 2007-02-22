@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/net/ushare
 
-all:	clean
+build:	clean
 	make -C $(PORTDIR)
 
 install:

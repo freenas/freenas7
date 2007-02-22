@@ -1,13 +1,13 @@
-ARCNAME=	rsync-2.6.9.tar.gz
-URL=	http://samba.anu.edu.au/ftp/rsync/$(ARCNAME)
-SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCNAME) .tar.gz)
+ARCHIVE=	rsync-2.6.9.tar.gz
+URL=	http://samba.anu.edu.au/ftp/rsync/$(ARCHIVE)
+SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-all:	clean
-	-@if [ ! -f $(FREENASDISTFILES)/$(ARCNAME) ]; then \
+build:	clean
+	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
-	tar -zxvf $(FREENASDISTFILES)/$(ARCNAME) -C $(WORKINGDIR)
+	tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
 
 	cd $(SRCDIR) && ./configure --with-rsyncd-conf=/var/etc
 	make -C $(SRCDIR)

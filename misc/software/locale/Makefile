@@ -1,4 +1,4 @@
-all:	clean
+build:	clean
 	# Translate *po files to *.mo.
 	@for i in $$(ls $(SVNDIR)/locale/*.po); do \
 		filename=$$(basename $$i); \

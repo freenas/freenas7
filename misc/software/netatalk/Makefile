@@ -1,13 +1,13 @@
-ARCNAME=	netatalk-2.0.3.tar.gz
-URL=	http://heanet.dl.sourceforge.net/sourceforge/netatalk/$(ARCNAME)
-SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCNAME) .tar.gz)
+ARCHIVE=	netatalk-2.0.3.tar.gz
+URL=	http://heanet.dl.sourceforge.net/sourceforge/netatalk/$(ARCHIVE)
+SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-all:	clean
-	-@if [ ! -f $(FREENASDISTFILES)/$(ARCNAME) ]; then \
+build:	clean
+	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
-	tar -zxvf $(FREENASDISTFILES)/$(ARCNAME) -C $(WORKINGDIR)
+	tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
 
 	cd $(SRCDIR) && ./configure --bindir=/usr/local/bin --sbindir=/usr/local/sbin --sysconfdir=/var/etc --localstatedir=/var --enable-largefile --disable-tcp-wrappers --disable-cups --with-pam --with-uams-path=/etc/uams/
 	make -C $(SRCDIR)

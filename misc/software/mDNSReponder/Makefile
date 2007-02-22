@@ -1,6 +1,6 @@
 PORTDIR=	/usr/ports/net/mDNSResponder
 
-all:	clean
+build:	clean
 	make -C $(PORTDIR)
 
 install:

@@ -1,14 +1,14 @@
-ARCNAME=	iscsi-2.0.1.tar.bz2
-URL=	ftp://ftp.cs.huji.ac.il/users/danny/freebsd/$(ARCNAME)
-SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCNAME) .tar.gz)
+ARCHIVE=	iscsi-2.0.1.tar.bz2
+URL=	ftp://ftp.cs.huji.ac.il/users/danny/freebsd/$(ARCHIVE)
+SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-all:	clean
-	-@if [ ! -f $(FREENASDISTFILES)/$(ARCNAME) ]; then \
+build:	clean
+	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
 	mkdir -pv $(WORKINGDIR)/iscsi
-	tar -zxvf $(FREENASDISTFILES)/$(ARCNAME) -C $(WORKINGDIR)/iscsi
+	tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)/iscsi
 
 	cd $(WORKINGDIR)/iscsi/sys && ln -fsv /sys/kern . && ln -fsv /sys/tools .
 	cd $(WORKINGDIR)/iscsi/sys/modules/iscsi_initiator && ln -fsv ../.. @

@@ -1,4 +1,4 @@
-all:
+build:	clean
 
 install:
 	install -vs /usr/sbin/nfsd $(FREENAS)/usr/sbin
