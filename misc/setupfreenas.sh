@@ -97,7 +97,6 @@ create_rootfs() {
 
 # Actions before building kernel (e.g. install spezial drivers).
 pre_build_kernel() {
-	count=0
 	tempfile=$WORKINGDIR/tmp$$
 	drivers=$WORKINGDIR/drivers$$
 
@@ -108,11 +107,10 @@ $DIALOG --title \"$PRODUCTNAME - Drivers\" \\
 
 	for s in $SVNDIR/misc/drivers/*; do
 		[ ! -d "$s" ] && continue
-		let count=$count+1
-		driver[$count]=`basename $s`
-		script[$count]="$s/build.sh"
-		source ${script[$count]}
-		echo "\"$count\" \"$MENUDESC\" $MENUSTATUS \\" >> $tempfile
+		package=`basename $s`
+		desc=`cat $s/pkg-descr`
+		state=`cat $s/pkg-state`
+		echo "\"$package\" \"$desc\" $state \\" >> $tempfile
 	done
 
 	# Display list of available drivers.
@@ -120,13 +118,10 @@ $DIALOG --title \"$PRODUCTNAME - Drivers\" \\
 	[ 0 != $? ] && return 1 # successful?
 	rm $tempfile
 
-	for id in $(cat $drivers | tr -d '"'); do
+	for driver in $(cat $drivers | tr -d '"'); do
 		echo "======================================================================"
-		echo "Sourcing script ${script[$id]}"
-		source ${script[$id]}
-		function="add_${driver[$id]}"
-		echo "Running $function"
-		$function
+		cd $SVNDIR/misc/drivers/$driver
+		make install
 		[ 0 != $? ] && return 1 # successful?
 	done
 	rm $drivers
