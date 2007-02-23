@@ -650,6 +650,11 @@ EOD;
 				$cmd .= "-K ";
 			}
 
+			if (!isset($config['ftp']['permitrootlogin'])) {
+				# Permit root login.
+				$cmd .= "-u 1 ";
+			}
+
 			$result = mwexec($cmd);
 	
 			if (($g['booting']) && (!$result)){

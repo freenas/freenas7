@@ -54,6 +54,7 @@ $pconfig['natmode'] = isset($config['ftp']['natmode']);
 $pconfig['passiveip'] = $config['ftp']['passiveip'];
 $pconfig['fxp'] = isset($config['ftp']['fxp']);
 $pconfig['keepallfiles'] = isset($config['ftp']['keepallfiles']);
+$pconfig['permitrootlogin'] = isset($config['ftp']['permitrootlogin']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -114,6 +115,7 @@ if ($_POST) {
 		$config['ftp']['fxp'] = $_POST['fxp'] ? true : false;
 		$config['ftp']['natmode'] = $_POST['natmode'] ? true : false;
 		$config['ftp']['keepallfiles'] = $_POST['keepallfiles'] ? true : false;
+		$config['ftp']['permitrootlogin'] = $_POST['permitrootlogin'] ? true : false;
 		$config['ftp']['enable'] = $_POST['enable'] ? true : false;
 
 		write_config();
@@ -149,6 +151,7 @@ function enable_change(enable_change) {
 	document.iform.pasv_max_port.disabled = endis;
 	document.iform.pasv_min_port.disabled = endis;
 	document.iform.pasv_address.disabled = endis;
+	document.iform.permitrootlogin.disabled = endis;
 }
 //-->
 </script>
@@ -190,6 +193,12 @@ function enable_change(enable_change) {
         <?=$mandfldhtml;?><input name="timeout" type="text" class="formfld" id="timeout" size="20" value="<?=htmlspecialchars($pconfig['timeout']);?>">
         <br><?=gettext("Maximum idle time in minutes.") ;?></td>
     </tr>
+    <tr> 
+			<td width="22%" valign="top" class="vncell"><?=gettext("Permit root login");?></td>
+			<td width="78%" class="vtable"> 
+				<input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
+				<?=gettext("Specifies whether it is allowed to login as superuser (root) directly.");?>
+		</tr>
     <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Anonymous login");?></td>
       <td width="78%" class="vtable">
