@@ -2156,9 +2156,6 @@ msgstr ""
 msgid "LDAP"
 msgstr ""
 
-msgid "Hosts"
-msgstr ""
-
 msgid "Password confirmation"
 msgstr ""
 
@@ -2204,19 +2201,7 @@ msgstr ""
 msgid "File size"
 msgstr ""
 
-msgid "Size in MB."
-msgstr ""
-
-msgid "Network that is authorised to access to this iSCSI target."
-msgstr ""
-
 msgid "A valid size target value must be specified."
-msgstr ""
-
-msgid "Mount Point"
-msgstr ""
-
-msgid "Subnet bit count"
 msgstr ""
 
 msgid "Target name"
