@@ -310,12 +310,26 @@ device		sbp		# SCSI over FireWire (Requires scbus and da)
 #FreeNAS add fwip:
 device		fwip		# Ethernet over FireWire (standard)
 
-#FREENAS ADD
-device          speaker
+#####################################################################
+# FREENAS
+#####################################################################
+device		speaker
 
-# FREENAS add GELI filesystem encryption
+# Hardware crypto acceleration
 device		crypto
+device		cryptodev
+device		padlock
+
+# GELI filesystem encryption
 options		GEOM_ELI
 
-# FreeNAS add The cpufreq(4) driver provides support for non-ACPI CPU frequency control
+# The cpufreq(4) driver provides support for non-ACPI CPU frequency control
 device		cpufreq
+
+# System Management Bus
+device		iicbb
+device		iicbus
+device		iicsmb
+device		smbus
+device		smb
+device		viapm
