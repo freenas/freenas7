@@ -254,7 +254,7 @@ function disk_change() {
 
 				// Erase MBR if not checked
 				if (!$notinitmbr) {
-					echo gettext("Erasing MBR and all paritions").":\n";
+					echo gettext("Erasing MBR and all partitions").":\n";
 					system("dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=32k count=640");
 				}
 				else
@@ -264,7 +264,7 @@ function disk_change() {
 				{
 				case "ufs":
 					// Initialize disk
-					echo gettext("Creating one parition").":\n";
+					echo gettext("Creating one partition").":\n";
 					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
 					// Initialise the partition (optional)
 					echo gettext("Initializing partition").":\n";
