@@ -99,6 +99,7 @@ FreeNAS 0.684b (UNRELEASE!):
   Try to improve samba performance by adding 'large readwrite = no' in smb.conf (see http://wiki.samba.org/index.php/Samba_Troubleshooting)
 - Added growfs tools
 - Disable FTP root login by default. Can be enabled via WebGUI.
+- Fix DHCP problem
 
 TO DO:
 - Check the English reference file for the new pages added
