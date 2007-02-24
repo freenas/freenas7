@@ -3,6 +3,10 @@ URL=	http://de2.php.net/distributions/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
 build:	clean
+
+	make -C /usr/ports/textproc/libxml2/
+	make -C /usr/ports/textproc/libxml2/ install
+	
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
@@ -13,8 +17,10 @@ build:	clean
 	make -C $(SRCDIR)
 
 install:
+	
 	install -vs $(SRCDIR)/sapi/cgi/php $(FREENAS)/usr/local/bin
 	cp -pv ${.CURDIR}/files/php.ini $(FREENAS)/usr/local/lib
 
 clean:
 	@rm -f -r $(SRCDIR)
+	make -C /usr/ports/textproc/libxml2/ clean
