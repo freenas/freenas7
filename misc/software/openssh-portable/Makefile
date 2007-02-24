@@ -1,9 +1,11 @@
+.include "bsd.freenas.mk"
+
 PORTDIR=	/usr/ports/security/openssh-portable
 
 build:	clean
 	# Copy ocaml options file
 	mkdir -pv /var/db/ports/openssh
-	cp -pv ${.CURDIR}/files/options /var/db/ports/openssh
+	cp -pv ${FILESDIR}/options /var/db/ports/openssh
 
 	make -C $(PORTDIR)
 

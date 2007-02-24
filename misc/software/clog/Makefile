@@ -1,6 +1,8 @@
+.include "bsd.freenas.mk"
+
 build:	clean
-	tar -zxvf ${.CURDIR}/files/syslogd_clog-current.tgz -C /usr/src/usr.bin 
-	tar -zxvf ${.CURDIR}/files/clog-1.0.1.tar.gz -C /usr/src/usr.bin
+	tar -zxvf ${FILESDIR}/syslogd_clog-current.tgz -C /usr/src/usr.bin 
+	tar -zxvf ${FILESDIR}/clog-1.0.1.tar.gz -C /usr/src/usr.bin
 
 	make -C /usr/src/usr.bin/syslogd
 

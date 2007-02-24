@@ -4,16 +4,20 @@
 # Created: 2/12/2006 by Scott Zahn
 # Modified: 11/2006 by Volker Theile (votdev@gmx.de)
 
-# Global Variables:
+# Global variables
 export WORKINGDIR="/usr/local/freenas"
 export FREENASDISTFILES="$WORKINGDIR/distfiles"
 export FREENAS="$WORKINGDIR/rootfs"
 export SVNDIR="$WORKINGDIR/svn"
 
+# Local variables
 BOOTDIR="/usr/local/freenas/bootloader"
 TMPDIR="/tmp/freenastmp"
 VERSION=`cat $SVNDIR/etc/prd.version`
 PRODUCTNAME=`cat $SVNDIR/etc/prd.name`
+
+# Path where to find Makefile includes
+MKINCLUDESDIR="$SVNDIR/misc/mk"
 
 # Dialog command
 DIALOG="dialog"
@@ -122,7 +126,7 @@ $DIALOG --title \"$PRODUCTNAME - Drivers\" \\
 	for driver in $(cat $drivers | tr -d '"'); do
 		echo "======================================================================"
 		cd $SVNDIR/misc/drivers/$driver
-		make install
+		make -I $MKINCLUDESDIR install
 		[ 0 != $? ] && return 1 # successful?
 	done
 	rm $drivers
@@ -481,9 +485,9 @@ $DIALOG --title \"$PRODUCTNAME - Software packages\" \\
 		echo "======================================================================"
 		cd $SVNDIR/misc/software/$package
 		if [ "$choice" == "Build" ]; then
-			make
+			make -I $MKINCLUDESDIR
 		elif [ "$choice" == "Install" ]; then
-			make install
+			make -I $MKINCLUDESDIR install
 		fi
 		[ 0 != $? ] && return 1 # successful?
 	done

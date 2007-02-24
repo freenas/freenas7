@@ -1,12 +1,13 @@
+.include "bsd.freenas.mk"
+
 ARCHIVE=	php-5.2.1.tar.gz
 URL=	http://de2.php.net/distributions/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-build:	clean
+# PHP depends on libxml2.
+PORTDIR=	/usr/ports/textproc/libxml2
 
-	make -C /usr/ports/textproc/libxml2/
-	make -C /usr/ports/textproc/libxml2/ install
-	
+build:	clean build_xml install_xml
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
@@ -17,10 +18,17 @@ build:	clean
 	make -C $(SRCDIR)
 
 install:
-	
 	install -vs $(SRCDIR)/sapi/cgi/php $(FREENAS)/usr/local/bin
-	cp -pv ${.CURDIR}/files/php.ini $(FREENAS)/usr/local/lib
+	cp -pv ${FILESDIR}/php.ini $(FREENAS)/usr/local/lib
 
-clean:
+clean:	clean_xml
 	@rm -f -r $(SRCDIR)
-	make -C /usr/ports/textproc/libxml2/ clean
+
+build_xml:
+	make -C $(PORTDIR)
+
+install_xml:
+	make -C $(PORTDIR) reinstall
+
+clean_xml:
+	make -C $(PORTDIR) clean

@@ -1,4 +1,4 @@
-.include <../../bsd.freenas.mk>
+.include "bsd.freenas.mk"
 
 PORTDIR=	/usr/ports/editors/nano
 

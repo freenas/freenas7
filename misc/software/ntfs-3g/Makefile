@@ -1,7 +1,9 @@
+.include "bsd.freenas.mk"
+
 build:	clean
 	# Copy options file
 	mkdir -pv /var/db/ports/fusefs
-	cp -pv ${.CURDIR}/files/options /var/db/ports/fusefs
+	cp -pv ${FILESDIR}/options /var/db/ports/fusefs
 
 	make -C /usr/ports/sysutils/fusefs-kmod
 	make -C /usr/ports/sysutils/fusefs-ntfs

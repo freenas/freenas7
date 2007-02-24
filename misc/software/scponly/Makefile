@@ -1,10 +1,12 @@
+.include "bsd.freenas.mk"
+
 PORTDIR=	/usr/ports/shells/scponly
 
 build:	clean
 	# Copy required options files
 	mkdir -pv /var/db/ports/ocaml
 	mkdir -pv /var/db/ports/rsync
-	cp -pvr ${.CURDIR}/files/* /var/db/ports
+	cp -pvr ${FILESDIR}/* /var/db/ports
 
 	@export WITH_SCPONLY_RSYNC=YES
 	@export WITH_SCPONLY_SCP=YES

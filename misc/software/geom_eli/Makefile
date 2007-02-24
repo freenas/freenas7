@@ -1,18 +1,20 @@
-DIR=	/usr/src/sbin/geom/class/eli
+.include "bsd.freenas.mk"
+
+SRCDIR=	/usr/src/sbin/geom/class/eli
 
 build:	clean
 	# Patch geom eli sources if necessary.
-	-@if [ ! -e $(DIR)/geom_eli.c.orig ]; then \
-		@patch -f $(DIR)/geom_eli.c ${.CURDIR}/files/patch-geom_eli.c; \
+	-@if [ ! -e $(SRCDIR)/geom_eli.c.orig ]; then \
+		@patch -f $(SRCDIR)/geom_eli.c ${FILESDIR}/patch-geom_eli.c; \
 	fi
 
-	make -C $(DIR)
+	make -C $(SRCDIR)
 
 install:
-	make -C $(DIR) install
+	make -C $(SRCDIR) install
 
 	install -vs /sbin/geli $(FREENAS)/sbin
 	install -vs /lib/geom/geom_eli.so $(FREENAS)/lib/geom
 
 clean:
-	make -C $(DIR) clean
+	make -C $(SRCDIR) clean
