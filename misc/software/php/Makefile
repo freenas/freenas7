@@ -28,6 +28,7 @@ build_xml:
 	make -C $(PORTDIR)
 
 install_xml:
+	make -C $(PORTDIR) deinstall
 	make -C $(PORTDIR) reinstall
 
 clean_xml:
