@@ -3,19 +3,19 @@
 #	part of FreeNAS (http://www.freenas.org)
 #	Copyright (C) 2006-2007 Baikuan Hsu <chicworks@gmail.com>
 #	All rights reserved.
-#	
-#	This language file works perfectly on FreeNAS rev.401 (0.683b)
-#	
+#
+#	This language file works perfectly on FreeNAS rev.551
+#
 #	Redistribution and use in source and binary forms, with or without
 #	modification, are permitted provided that the following conditions are met:
-#	
+#
 #	1. Redistributions of source code must retain the above copyright notice,
 #	   this list of conditions and the following disclaimer.
-#	
+#
 #	2. Redistributions in binary form must reproduce the above copyright
 #	   notice, this list of conditions and the following disclaimer in the
 #	   documentation and/or other materials provided with the distribution.
-#	
+#
 #	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 #	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 #	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -31,8 +31,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-01-30 10:33+0800\n"
-"Last-Translator: chicman <chicman@cosa.org.tw>\n"
+"PO-Revision-Date: 2007-02-24 07:46+0800\n"
+"Last-Translator: Baikuan Hsu <chicworks@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -1976,16 +1976,19 @@ msgstr "无法回覆设定组态（档案上传错误）。"
 msgid "webGUI Configuration"
 msgstr "webGUI 组态设定"
 
-msgid "Erasing MBR and all paritions"
+#, fuzzy
+msgid "Erasing MBR and all partitions"
 msgstr "刪除 MBR 以及所有的磁区分割"
 
 msgid "Keeping the MBR and all partitions"
 msgstr "保留原有的MBR以及所有的磁区分割"
 
-msgid "Creating one parition"
+#, fuzzy
+msgid "Creating one partition"
 msgstr "建立一个磁区"
 
-msgid "Initializing parition"
+#, fuzzy
+msgid "Initializing partition"
 msgstr "初始化磁区"
 
 msgid "Creating BSD label"
@@ -2026,9 +2029,6 @@ msgstr "资料 '%s' 包含了无效的字元。"
 
 msgid "The attribute '%s' is required."
 msgstr "资料 '%s' 是必须栏位。"
-
-msgid "Crypt"
-msgstr "加密"
 
 msgid "The crypted disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "加密磁碟设定已经变更。<br>变更之后才会生效。"
@@ -2101,3 +2101,144 @@ msgstr "尚未连结"
 
 msgid "Reload page"
 msgstr "重新载入页面"
+
+msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
+msgstr "建议您使用 HTTPS 加密模式连接 WebGUI 来传送加密金钥。"
+
+msgid "Resume"
+msgstr "续传"
+
+msgid "Enable resume mode."
+msgstr "开啟续传功能"
+
+msgid "Use this option to enable resuming broken transfers at the point of interruption."
+msgstr "Use this option to enable resuming broken transfers at the point of interruption."
+
+msgid "iSCSI Target"
+msgstr "iSCSI目标"
+
+msgid "The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "iSCSI组态已经变更。<br>套用之后便会生效。"
+
+msgid "Do you really want to delete this target?"
+msgstr "确定要刪除这个iSCSI目标吗？"
+
+msgid "Delete target"
+msgstr "刪除目标"
+
+msgid "Add target"
+msgstr "新增目标"
+
+msgid "Network that is authorised to access to this iSCSI target."
+msgstr "设定可以使用iSCSI目标的网路区段"
+
+msgid "A valid size target value must be specified"
+msgstr "请输入一个有效的Size。"
+
+msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
+msgstr "你最少要有 256MB 的记忆体才能开啟 iSCSI 目标功能。"
+
+msgid "FTP Server disabled"
+msgstr "FTP伺服器关闭中"
+
+msgid "FTP users"
+msgstr "FTP使用者"
+
+msgid "FTP connected users"
+msgstr "FTP connected users"
+
+msgid "Save and Restart UPnP"
+msgstr "储存並重新啟动 UPnP"
+
+msgid "Save and Restart Unison"
+msgstr "储存並重新啟动 Unison"
+
+msgid "Save and Restart SSHD"
+msgstr "储存並重新啟动 SSHD"
+
+msgid "Save and Restart RSYNC"
+msgstr "储存並重新啟动 RSYNC"
+
+msgid "Save and Restart NFS"
+msgstr "储存並重新啟动 NFS"
+
+msgid "Save and Restart FTP"
+msgstr "储存並重新啟动 FTP"
+
+msgid "Save and Restart AFP"
+msgstr "储存並重新啟动 AFP"
+
+msgid "The %s port must be a valid port number."
+msgstr "请给 %s 输入一个有效的连接埠。"
+
+msgid "Swap memory"
+msgstr "Swap记忆体"
+
+msgid "No RSYNC Client configured"
+msgstr "尚无RSYNC客戶端设定"
+
+msgid "Detected RSYNC remote shares"
+msgstr "刪除 RSYNC 远端分享"
+
+msgid "Hosts"
+msgstr "主机列表"
+
+msgid "LDAP"
+msgstr "LDAP"
+
+msgid "Password confirmation"
+msgstr "密码确认"
+
+msgid "Remote share (source)"
+msgstr "远端分享(来源)"
+
+msgid "Remote address"
+msgstr "远端位置"
+
+msgid "Local share (destination)"
+msgstr "本地端分享(目标)"
+
+msgid "The RSYNC client list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "客戶端RSYNC设定已经变更。<br>套用之后才会生效。"
+
+msgid "The RSYNC local list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "本地端RSYNC设定已经变更。<br>套用之后才会生效。"
+
+msgid "Add RSYNC"
+msgstr "新增RSYNC设定"
+
+msgid "Edit RSYNC"
+msgstr "编辑RSYNC设定"
+
+msgid "Delete RSYNC"
+msgstr "刪除RSYNC设定"
+
+msgid "Do you really want to delete this RSYNC?"
+msgstr "确定要刪除这个RSYNC设定吗？"
+
+#, fuzzy
+msgid "Source share"
+msgstr "分享之掛载点"
+
+#, fuzzy
+msgid "Destination share"
+msgstr "目地位置"
+
+msgid "Remote source share name"
+msgstr "远端来源名称"
+
+msgid "Mount to use"
+msgstr "使用的掛载点"
+
+msgid "File size"
+msgstr "档案大小"
+
+msgid "A valid size target value must be specified."
+msgstr "请输入一个有效的Size。"
+
+#, fuzzy
+msgid "Target name"
+msgstr "目标名称"
+
+msgid "Mount used"
+msgstr "使用之掛载点"
