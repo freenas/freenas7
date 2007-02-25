@@ -3,7 +3,7 @@ build:	clean
 	@for i in $$(ls $(SVNDIR)/locale/*.po); do \
 		filename=$$(basename $$i); \
 		language=$${filename%*.po}; \
-		filename=$$(echo $$(PRODUCTNAME) | tr '[A-Z]' '[a-z]'); \
+		filename=$$(echo $(PRODUCTNAME) | tr '[A-Z]' '[a-z]'); \
 		mkdir -vp $(WORKINGDIR)/locale/$$language/LC_MESSAGES; \
 		msgfmt -v --output-file="$(WORKINGDIR)/locale/$$language/LC_MESSAGES/$$filename.mo" $$i; \
 	done
