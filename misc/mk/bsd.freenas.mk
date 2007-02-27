@@ -161,7 +161,7 @@ _INSTALL_DEPENDS=	\
 			  (cd $$dir; ${MAKE} -DINSTALLS_DEPENDS $$target $$depends_args) ; \
 			fi; \
 		else \
-			(cd $$dir; ${MAKE} -DINSTALLS_DEPENDS $$target $$depends_args) ; \
+			(cd $$dir; ${MAKE} build install $$target $$depends_args) ; \
 		fi; \
 		if [ -z "${DESTDIR}" ] ; then \
 			${ECHO_MSG} "===>   Returning to build of ${PKGNAME}"; \
