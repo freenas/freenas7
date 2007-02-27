@@ -1,5 +1,3 @@
-.include "bsd.freenas.mk"
-
 PORTDIR=	/usr/ports/net/msntp
 
 build:	clean
@@ -13,3 +11,5 @@ install:
 
 clean:
 	make -C $(PORTDIR) clean
+
+.include "bsd.freenas.mk"

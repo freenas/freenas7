@@ -1,5 +1,3 @@
-.include "bsd.freenas.mk"
-
 SRCDIR=	/usr/src/sbin/geom/class/eli
 
 build:	clean
@@ -18,3 +16,5 @@ install:
 
 clean:
 	make -C $(SRCDIR) clean
+
+.include "bsd.freenas.mk"

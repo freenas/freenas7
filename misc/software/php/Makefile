@@ -1,5 +1,3 @@
-.include "bsd.freenas.mk"
-
 ARCHIVE=	php-5.2.1.tar.gz
 URL=	http://de2.php.net/distributions/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
@@ -33,3 +31,5 @@ install_xml:
 
 clean_xml:
 	make -C $(PORTDIR) clean
+
+.include "bsd.freenas.mk"

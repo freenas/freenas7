@@ -1,5 +1,3 @@
-.include "bsd.freenas.mk"
-
 build:	clean
 	# Copy options file
 	mkdir -pv /var/db/ports/fusefs
@@ -19,3 +17,5 @@ install:
 clean:
 	make -C /usr/ports/sysutils/fusefs-kmod clean
 	make -C /usr/ports/sysutils/fusefs-ntfs clean
+
+.include "bsd.freenas.mk"

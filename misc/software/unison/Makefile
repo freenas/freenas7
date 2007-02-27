@@ -1,5 +1,3 @@
-.include "bsd.freenas.mk"
-
 PORTDIR=	/usr/ports/net/unison
 
 build:	clean
@@ -14,3 +12,5 @@ install:
 
 clean:
 	make -C $(PORTDIR) clean
+
+.include "bsd.freenas.mk"
