@@ -71,16 +71,13 @@ EOD;
 		$result = mwexec("/usr/local/sbin/snmpd -c {$g['varetc_path']}/snmpd.conf" .
 			" -P {$g['varrun_path']}/snmpd.pid");
 
-		if (($g['booting']) && (!$result)) {
-			echo "done\n";
+		if(!$result) {
+			if($g['booting'])
+				echo "done\n";
 			mwexec('/usr/bin/logger "SNMP Daemon started" ');
-		}
-		else if (!$result) {
-			mwexec('/usr/bin/logger "SNMP Daemon started" ');
-		} else if ($g['booting']) {
-			echo "failed\n";
-			mwexec('/usr/bin/logger "Failed to start SNMP Daemon" ');
 		} else {
+			if($g['booting'])
+				echo "failed\n";
 			mwexec('/usr/bin/logger "Failed to start SNMP Daemon" ');
 		}
 	}
@@ -102,9 +99,7 @@ function services_samba_configure() {
 	killbyname("winbindd");
 	killbyname("nmbd");
 
-	if (isset($config['samba']['enable']))
-	{
-	
+	if (isset($config['samba']['enable'])) {
 		if ($g['booting'])
 			echo "Starting Samba... ";
 
@@ -252,9 +247,7 @@ guest ok = no
 EOD;
 		break;
 	}
-	
-	
-	
+
 			foreach ($config['mounts']['mount'] as $mountent) {
 				/* Unmount filesystem if not booting mode*/
 				
@@ -321,19 +314,16 @@ EOD;
 			/* Generate the samba password file */
 			$result |= system_user_samba();
 
-			if (($g['booting']) && (!$result)) {
-				echo "done\n";
+			if(!$result) {
+				if($g['booting'])
+					echo "done\n";
 				mwexec('/usr/bin/logger "Samba started" ');
-			} else if (!$result) {
-				mwexec('/usr/bin/logger "Samba started" ');
-			} else if ($g['booting']) {
-				echo "failed\n";
-				mwexec('/usr/bin/logger "Fail to start Samba" ');
 			} else {
+				if($g['booting'])
+					echo "failed\n";
 				mwexec('/usr/bin/logger "Fail to start Samba" ');
 			}
 		}
-	
 	}
 
 	return $result;
@@ -406,12 +396,9 @@ gid = ftp
 
 EOD;
 		}
-
-
 	
 		foreach ($config['mounts']['mount'] as $mountent) 	{
 			/* Unmount filesystem if not booting mode*/
-				
 			$rsyncdconf .= <<<EOD
 			
 [{$mountent['sharename']}]
@@ -425,7 +412,6 @@ EOD;
 		fclose($fd);
 		
 		// Generate MOTD file if configured
-		
 		if (!empty($config['rsyncd']['motd'])) {
 			$fd = fopen("{$g['varetc_path']}/rsyncd.motd", "w");
 			if (!$fd) 	{
@@ -444,22 +430,17 @@ EOD;
 		}
 
 		/* run rsync Daemon if no previous error*/
-		
 		if (!$result) {
 			$result = mwexec("/usr/local/bin/rsync --daemon --config={$g['varetc_path']}/rsyncd.conf");
 		}
 
-
-		if (($g['booting']) && (!$result)) {
-			echo "done\n";
+		if(!$result) {
+			if($g['booting'])
+				echo "done\n";
 			mwexec('/usr/bin/logger "RSYNC Daemon started" ');
-			
-		} else if (!$result) {
-			mwexec('/usr/bin/logger "RSYNC Daemon started" ');
-		} else if ($g['booting']) {
-			echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start RSYNC Daemon" ');
 		} else {
+			if($g['booting'])
+				echo "failed\n";
 			mwexec('/usr/bin/logger "Fail to start RSYNC Daemon" ');
 		}
 	}
@@ -483,7 +464,6 @@ function services_nfs_configure() {
 	forcekillbyname("nfsd");
 	killbyname("rpcbind");
 
-	
 	if (isset($config['nfs']['enable'])) {
 	
 		if ($g['booting']) {
@@ -527,15 +507,14 @@ EOD;
 				$nfsconf .= <<<EOD
 -maproot=root 
 EOD;
-			
+
 				}
-			
-			
+
 				$nfsconf .= <<<EOD
 -network {$network} -mask $subnet
 
 EOD;
-			
+
 			}
 		}
 		fwrite($fd, $nfsconf);
@@ -549,16 +528,15 @@ EOD;
 			$result |= mwexec("/usr/sbin/mountd -r {$g['varetc_path']}/exports");
 			$result |= mwexec("/usr/sbin/rpc.lockd");
 			$result |= mwexec("/usr/sbin/rpc.statd");
-			if (($g['booting']) && (!$result)) {
-				echo "done\n";
-				mwexec('/usr/bin/logger "NFS Daemons started" ');
-			} else if (!$result) {
-				mwexec('/usr/bin/logger "NFS Daemons started" ');
-			} else if ($g['booting']) {
-				echo "failed\n";
-				mwexec('/usr/bin/logger "Fail to start NFS Daemons" ');
+
+			if(!$result) {
+				if($g['booting'])
+					echo "done\n";
+				mwexec('/usr/bin/logger "NFS Daemon started" ');
 			} else {
-				mwexec('/usr/bin/logger "Fail to start NFS Daemons" ');
+				if($g['booting'])
+					echo "failed\n";
+				mwexec('/usr/bin/logger "Fail to start NFS Daemon" ');
 			}
 		}
 	}
@@ -652,20 +630,19 @@ EOD;
 			}
 
 			$result = mwexec($cmd);
-	
-			if (($g['booting']) && (!$result)){
-				echo "done\n";
+
+			if(!$result) {
+				if($g['booting'])
+					echo "done\n";
 				mwexec('/usr/bin/logger "FTP Daemon started" ');
-			} else if (!$result) {
-				mwexec('/usr/bin/logger "FTP Daemon started" ');
-			} else if ($g['booting']) {
-				echo "failed\n";
-				mwexec('/usr/bin/logger "Fail to start FTP Daemon" ');
 			} else {
+				if($g['booting'])
+					echo "failed\n";
 				mwexec('/usr/bin/logger "Fail to start FTP Daemon" ');
 			}
 		}
   }
+
 	return $result;
 }
 
@@ -687,15 +664,13 @@ function services_smart_configure() {
 		/* run smartd */
 		$result = mwexec("/usr/local/sbin/smartd --pidfile={$g['varrun_path']}/smartd.pid --logfacility=local5");
 
-		if (($g['booting']) && (!$result)) {
-			echo "done\n";
+		if(!$result) {
+			if($g['booting'])
+				echo "done\n";
 			mwexec('/usr/bin/logger "S.M.A.R.T Daemon started" ');
-		} else if (!$result) {
-			mwexec('/usr/bin/logger "S.M.A.R.T Daemon started" ');
-		} else if ($g['booting']) {
-			echo "failed \n";
-			mwexec('/usr/bin/logger "Fail to start S.M.A.R.T Daemon" ');
 		} else {
+			if($g['booting'])
+				echo "failed\n";
 			mwexec('/usr/bin/logger "Fail to start S.M.A.R.T Daemon" ');
 		}
 	}
@@ -839,16 +814,13 @@ EOD;
 			$result = mwexec("/usr/sbin/sshd -f {$g['varetc_path']}/ssh/sshd_config -h {$g['varetc_path']}/ssh/ssh_host_dsa_key");
 		}
 
-
-		if (($g['booting']) && (!$result)) {
-			echo "done\n";
+		if(!$result) {
+			if($g['booting'])
+				echo "done\n";
 			mwexec('/usr/bin/logger "SSH Daemon started" ');
-		} else if (!$result) {
-			mwexec('/usr/bin/logger "SSH Daemon started" ');
-		} else if ($g['booting']) {
-			echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start SSH Daemon" ');
 		} else {
+			if($g['booting'])
+				echo "failed\n";
 			mwexec('/usr/bin/logger "Fail to start SSH Daemon" ');
 		}
 	}
@@ -887,8 +859,8 @@ function services_unison_configure() {
 		/* add workdir to login.conf UNISON environment variable */
 		$logfile = "{$g['etc_path']}/login.conf";
 		if (!file_exists("$logfile")) {
-			printf("Error: $logfile doesn't exist, in services_unison_configure().\n");
-			mwexec('/usr/bin/logger "Error: $logfile doesn\'t exist, in services_unison_configure()" ');
+			printf("Error: $logfile does not exist, in services_unison_configure().\n");
+			mwexec('/usr/bin/logger "Error: $logfile does not exist, in services_unison_configure()" ');
 			$result = 1 ;
 		}
 		$tmp = file_get_contents("$logfile");
@@ -901,20 +873,18 @@ function services_unison_configure() {
 		$tmp = preg_replace($search, "UNISON=$workdir", $tmp);
 		if (!file_put_contents($logfile, $tmp)) {
 			printf("Error: couldn't write $logfile, in services_unison_configure().\n");
-			mwexec('/usr/bin/logger "Error: couldn\'t write $logfile, in services_unison_configure()" ');
+			mwexec('/usr/bin/logger "Error: could not write $logfile, in services_unison_configure()" ');
 			$result = 1 ;
 		}
 		$tmp = "";
-	
-		if (($g['booting']) && (!$result)) {
-			echo "done\n";
+
+		if(!$result) {
+			if($g['booting'])
+				echo "done\n";
 			mwexec('/usr/bin/logger "Unison started" ');
-		} else if (!$result) {
-			mwexec('/usr/bin/logger "Unison started" ');
-		} else if ($g['booting']) {
-			echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start Unison" ');
 		} else {
+			if($g['booting'])
+				echo "failed\n";
 			mwexec('/usr/bin/logger "Fail to start Unison" ');
 		}
 	}
@@ -940,30 +910,28 @@ function services_upnp_configure() {
 		if($g['booting'])
 			echo "Starting UPnP server... ";
 
-			/* Setup a multicast route for UPnP messages. */
-			$result = mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
+		/* Setup a multicast route for UPnP messages. */
+		$result = mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
 
-			$content = "";
-			foreach($config['upnp']['content'] as $contentv) {
-				$content .= " --content=$contentv";
-			}
+		$content = "";
+		foreach($config['upnp']['content'] as $contentv) {
+			$content .= " --content=$contentv";
+		}
 
-			/* Run uShare as daemon. */
-			$result |= mwexec("/usr/local/bin/ushare --daemon --no-web --name={$config['upnp']['name']} --interface={$config['upnp']['if']} {$content}");
+		/* Run uShare as daemon. */
+		$result |= mwexec("/usr/local/bin/ushare --daemon --no-web --name={$config['upnp']['name']} --interface={$config['upnp']['if']} {$content}");
+
+		if(!$result) {
+			if($g['booting'])
+				echo "done\n";
+			mwexec('/usr/bin/logger "UPnP Server started" ');
+		} else {
+			if($g['booting'])
+				echo "failed\n";
+			mwexec('/usr/bin/logger "Failed to start UPnP Server" ');
+		}
 	}
-	
-	if (($g['booting']) && (!$result)) {
-		echo "done\n";
-		mwexec('/usr/bin/logger "UPnP Server started" ');
-	} else if (!$result) {
-		mwexec('/usr/bin/logger "UPnP Server started" ');
-	} else if ($g['booting']) {
-		echo "failed\n";
-		mwexec('/usr/bin/logger "Failed to start UPnP Server" ');
-	} else {
-		mwexec('/usr/bin/logger "Failed to start UPnP Server" ');
-	}
-	
+
 	return $result;
 }
 
@@ -1244,7 +1212,6 @@ EOD;
 		mwexec('/usr/bin/logger "Fail to start cron" ');
 	}
 
-	
 	return $result;
 	
 }
@@ -1491,26 +1458,21 @@ EOD;
 		fwrite($fd, $AppleVolumes);
 		fclose($fd);
 
-
 		/* run afpdpd if no previous error*/
 		
 		if (!$result) {
 			$result = mwexec("/usr/local/sbin/afpd -F {$g['varetc_path']}/afpd.conf");
 		}
-	
-		if (($g['booting']) && (!$result)) {
-			echo "done\n";
-			mwexec('/usr/bin/logger "AFP Daemon Server started" ');
-		} else if (!$result) {
+
+		if(!$result) {
+			if($g['booting'])
+				echo "done\n";
 			mwexec('/usr/bin/logger "AFP Daemon started" ');
-		} else if ($g['booting']) {
-			echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start AFP Daemon" ');
 		} else {
+			if($g['booting'])
+				echo "failed\n";
 			mwexec('/usr/bin/logger "Fail to start AFP Daemon" ');
 		}
-		
-		
 	}
 
 	return $result;
@@ -1563,18 +1525,15 @@ function services_iscsiinit_configure()
 			}
 		}
 
-		if (($g['booting']) && (!$result)) {
-			echo "done\n";
+		if(!$result) {
+			if($g['booting'])
+				echo "done\n";
 			mwexec('/usr/bin/logger "iSCSI initiator(s) started" ');
-		} else if (!$result) {
-			mwexec('/usr/bin/logger "iSCSI initiator(s) started" ');
-		} else if ($g['booting']) {
-			echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start iSCSI initiator(s)" ');
 		} else {
+			if($g['booting'])
+				echo "failed\n";
 			mwexec('/usr/bin/logger "Fail to start iSCSI initiator(s)" ');
 		}
-	
 	}
 	
 	return $result;
@@ -1623,21 +1582,17 @@ EOD;
 		if (!$result) {
 			$result = mwexec("/usr/local/bin/iscsi-target");
 		}
-	
-		if (($g['booting']) && (!$result)) {
-			echo "done\n";
-			mwexec('/usr/bin/logger "iSCSI-target Daemon Server started" ');
-		} else if (!$result) {
+
+		if(!$result) {
+			if($g['booting'])
+				echo "done\n";
 			mwexec('/usr/bin/logger "iSCSI-target Daemon started" ');
-		} else if ($g['booting']) {
-			echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start iSCSI-target Daemon" ');
 		} else {
+			if($g['booting'])
+				echo "failed\n";
 			mwexec('/usr/bin/logger "Fail to start iSCSI-target Daemon" ');
 		}
-		
 	}
-
 }
 
 /* This special function is used by system_stop_common()
@@ -1792,30 +1747,23 @@ EOD;
 	
 		fwrite($fd, $mDNSResponder);
 		fclose($fd);
-	
-	
+
 		/* run mDNSResponder if no error*/
 		if (!$result) {
 			$result = mwexec("/usr/local/sbin/mDNSResponderPosix -b -f {$g['varetc_path']}/mDNSResponder.conf");
 		}
-	
-		if (($g['booting']) && (!$result)) {
-			echo "done\n";
+
+		if(!$result) {
+			if($g['booting'])
+				echo "done\n";
 			mwexec('/usr/bin/logger "ZeronConf service started" ');
-		} else if (!$result) {
-			mwexec('/usr/bin/logger "ZeronConf service started" ');
-		} else if ($g['booting']) {
-			echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start ZeronConf service" ');
-			sleep (5);
 		} else {
+			if($g['booting'])
+				echo "failed\n";
 			mwexec('/usr/bin/logger "Fail to start ZeronConf service" ');
 		}
-	
 	}
 	
 	return $result;
 }
-
-
 ?>
