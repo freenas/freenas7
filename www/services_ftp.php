@@ -51,7 +51,6 @@ $pconfig['pasv_min_port'] = $config['ftp']['pasv_min_port'];
 $pconfig['pasv_address'] = $config['ftp']['pasv_address'];
 $pconfig['banner'] = $config['ftp']['banner'];
 $pconfig['natmode'] = isset($config['ftp']['natmode']);
-$pconfig['passiveip'] = $config['ftp']['passiveip'];
 $pconfig['fxp'] = isset($config['ftp']['fxp']);
 $pconfig['keepallfiles'] = isset($config['ftp']['keepallfiles']);
 $pconfig['permitrootlogin'] = isset($config['ftp']['permitrootlogin']);
@@ -93,9 +92,6 @@ if ($_POST) {
 		if (!is_port($_POST['pasv_min_port']))
 			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_min_port"));
 	}
-	if (($_POST['passiveip'] && !is_ipaddr($_POST['passiveip']))) {
-		$input_errors[] = gettext("A valid IP address must be specified.");
-	}
 	if (!($_POST['anonymous']) && !($_POST['localuser'])) {
 		$input_errors[] = gettext("You must select at minium anonymous or/and local user authentication.");
 	}
@@ -111,7 +107,6 @@ if ($_POST) {
 		$config['ftp']['pasv_min_port'] = $_POST['pasv_min_port'];
 		$config['ftp']['pasv_address'] = $_POST['pasv_address'];
 		$config['ftp']['banner'] = $_POST['banner'];
-		$config['ftp']['passiveip'] = $_POST['passiveip'];
 		$config['ftp']['fxp'] = $_POST['fxp'] ? true : false;
 		$config['ftp']['natmode'] = $_POST['natmode'] ? true : false;
 		$config['ftp']['keepallfiles'] = $_POST['keepallfiles'] ? true : false;
@@ -139,6 +134,7 @@ function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.port.disabled = endis;
 	document.iform.timeout.disabled = endis;
+	document.iform.permitrootlogin.disabled = endis;
 	document.iform.numberclients.disabled = endis;
 	document.iform.maxconperip.disabled = endis;
 	document.iform.anonymous.disabled = endis;
@@ -147,11 +143,9 @@ function enable_change(enable_change) {
 	document.iform.fxp.disabled = endis;
 	document.iform.natmode.disabled = endis;
 	document.iform.keepallfiles.disabled = endis;
-	document.iform.passiveip.disabled = endis;
 	document.iform.pasv_max_port.disabled = endis;
 	document.iform.pasv_min_port.disabled = endis;
 	document.iform.pasv_address.disabled = endis;
-	document.iform.permitrootlogin.disabled = endis;
 }
 //-->
 </script>
@@ -195,9 +189,10 @@ function enable_change(enable_change) {
     </tr>
     <tr> 
 			<td width="22%" valign="top" class="vncell"><?=gettext("Permit root login");?></td>
-			<td width="78%" class="vtable"> 
+			<td width="78%" class="vtable">
 				<input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
 				<?=gettext("Specifies whether it is allowed to login as superuser (root) directly.");?>
+			</td>
 		</tr>
     <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Anonymous login");?></td>
@@ -242,7 +237,7 @@ function enable_change(enable_change) {
     <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Passive IP address"); ?></td>
       <td width="78%" class="vtable">
-        <input name="passiveip" type="text" class="formfld" id="passiveip" size="20" value="<?=htmlspecialchars($pconfig['passiveip']);?>">
+        <input name="pasv_address" type="text" class="formfld" id="pasv_address" size="20" value="<?=htmlspecialchars($pconfig['pasv_address']);?>">
         <br><?=gettext("Use this option to override the IP address that FTP daemon will advertise in response to the PASV command."); ?></td>
   	</tr>
   	<tr>

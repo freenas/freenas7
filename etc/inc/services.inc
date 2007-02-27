@@ -636,11 +636,7 @@ EOD;
 			if (isset($config['ftp']['natmode'])) {
 				$cmd .= "-N ";
 			}
-	
-			if ($config['ftp']['passiveip']) {
-				$cmd .= "-P {$config['ftp']['passiveip']} ";
-			}
-	
+
 			if (isset($config['ftp']['fxp'])) {
 				$cmd .= "-W ";
 			}
