@@ -919,7 +919,7 @@ function services_upnp_configure() {
 		}
 
 		/* Run uShare as daemon. */
-		$result |= mwexec("/usr/local/bin/ushare --daemon --no-web --name={$config['upnp']['name']} --interface={$config['upnp']['if']} {$content}");
+		$result |= mwexec("/usr/local/bin/ushare --daemon --no-web --xbox --name={$config['upnp']['name']} --interface={$config['upnp']['if']} {$content}");
 
 		if(!$result) {
 			if($g['booting'])

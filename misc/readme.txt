@@ -100,6 +100,7 @@ FreeNAS 0.684b (UNRELEASE!):
 - Added growfs tools
 - Disable FTP root login by default. Can be enabled via WebGUI.
 - Fix DHCP problem
+- Upgrade ushare to 0.9.9 (should now support xbox)
 
 TO DO:
 - Check the English reference file for the new pages added
