@@ -12,7 +12,7 @@ build:	clean build_xml install_xml
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
-	tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
+	-tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
 
 	cd $(SRCDIR) && ./configure --enable-fastcgi --enable-discard-path --enable-force-cgi-redirect --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex --with-gettext
 	make -C $(SRCDIR)
