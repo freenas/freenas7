@@ -1,9 +1,9 @@
 BUILD_DEPENDS=	unison:${PORTSDIR}/net/unison
 
 pre-depends:
-	# Copy ocaml options file
-	@{MKDIR} -v /var/db/ports/ocaml
-	@{CP} -pv ${FILESDIR}/ocaml/options /var/db/ports/ocaml
+# Copy ocaml options file
+	@${MKDIR} -v /var/db/ports/ocaml
+	@${CP} -pv ${FILESDIR}/ocaml/options /var/db/ports/ocaml
 
 install:
 	@${INSTALL_PROGRAM} ${PORTSDIR}/net/unison/work/unison-*/unison $(FREENAS)/usr/local/bin
