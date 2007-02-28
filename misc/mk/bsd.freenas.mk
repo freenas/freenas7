@@ -112,7 +112,7 @@ pre-depends:
 # Dependencies
 ################################################################
 .if !target(depends)
-depends: lib-depends build-depends
+depends: lib-depends build-depends run-depends
 
 .if defined(ALWAYS_BUILD_DEPENDS)
 _DEPEND_ALWAYS=	1
@@ -143,10 +143,11 @@ _INSTALL_DEPENDS=	\
 			${ECHO_MSG} "===>   Returning to build of ${PKGNAME} for ${DESTDIR}"; \
 		fi;
 
-build-depends:
-.if defined(BUILD_DEPENDS)
+.for deptype in BUILD RUN
+${deptype:L}-depends:
+.if defined(${deptype}_DEPENDS)
 .if !defined(NO_DEPENDS)
-	@for i in `${ECHO_CMD} "${BUILD_DEPENDS}"`; do \
+	@for i in `${ECHO_CMD} "${${deptype}_DEPENDS}"`; do \
 		prog=`${ECHO_CMD} $$i | ${SED} -e 's/:.*//'`; \
 		dir=`${ECHO_CMD} $$i | ${SED} -e 's/[^:]*://'`; \
 		if ${EXPR} "$$dir" : '.*:' > /dev/null; then \
@@ -250,6 +251,7 @@ build-depends:
 	done
 .endif
 .endif
+.endfor
 
 lib-depends:
 .if defined(LIB_DEPENDS) && !defined(NO_DEPENDS)
