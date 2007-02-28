@@ -1,3 +1,11 @@
+################################################################
+# This is the master file for the most common elements to all
+# FreeNAS Makefile.
+#
+# Copyright (C) 2007 Volker Theile <votdev@gmx.de>.
+#
+# Parts of code taken from FreeBSD <bsd.port.mk>.
+################################################################
 PKGNAME?=	${.CURDIR:T}
 
 # FILESDIR - A directory containing any miscellaneous additional files.
