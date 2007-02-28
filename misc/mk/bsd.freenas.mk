@@ -74,6 +74,7 @@ CP?=	/bin/cp
 CHMOD?=		/bin/chmod
 MKDIR?= /bin/mkdir -p
 RM?=	/bin/rm
+LN?=	/bin/ln
 INSTALL?=	/usr/bin/install
 INSTALL_PROGRAM?=	${INSTALL} -vs
 INSTALL_SCRIPT?=	${INSTALL} -v

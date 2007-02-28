@@ -22,3 +22,5 @@ install:
 
 clean:
 	@${RM} -f -r $(WORKINGDIR)/iscsi
+
+.include "bsd.freenas.mk"

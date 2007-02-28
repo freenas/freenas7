@@ -1,23 +1,18 @@
-PORTDIR=	/usr/ports/security/openssh-portable
+BUILD_DEPENDS=	openssh-portable:${PORTSDIR}/security/openssh-portable
 
-build:	clean
-	# Copy ocaml options file
-	mkdir -pv /var/db/ports/openssh
-	cp -pv ${FILESDIR}/options /var/db/ports/openssh
-
-	make -C $(PORTDIR)
+pre-depends:
+# Copy ocaml options file
+	@${MKDIR} -v /var/db/ports/openssh
+	@${CP} -pv ${FILESDIR}/options /var/db/ports/openssh
 
 install:
-	install -vs $(PORTDIR)/work/openssh-*/sshd $(FREENAS)/usr/sbin
-	install -vs $(PORTDIR)/work/openssh-*/ssh $(FREENAS)/usr/bin
-	install -vs $(PORTDIR)/work/openssh-*/sftp-server $(FREENAS)/usr/libexec
+	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/sshd $(FREENAS)/usr/sbin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/ssh $(FREENAS)/usr/bin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/sftp-server $(FREENAS)/usr/libexec
 
-	# Create link to moduli file to prevent log entry:
-	# WARNING: /usr/local/etc/ssh/moduli does not exist, using fixed modulus
-	mkdir -pv $(FREENAS)/usr/local/etc/ssh
-	ln -fsv $(FREENAS)/etc/ssh/moduli $(FREENAS)/usr/local/etc/ssh/moduli
-
-clean:
-	make -C $(PORTDIR) clean
+# Create link to moduli file to prevent log entry:
+# WARNING: /usr/local/etc/ssh/moduli does not exist, using fixed modulus
+	@${MKDIR} -v $(FREENAS)/usr/local/etc/ssh
+	@${LN} -fsv $(FREENAS)/etc/ssh/moduli $(FREENAS)/usr/local/etc/ssh/moduli
 
 .include "bsd.freenas.mk"

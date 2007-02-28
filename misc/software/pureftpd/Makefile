@@ -4,17 +4,19 @@ SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
 build:	clean
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
-		cd $(FREENASDISTFILES) && fetch $(URL); \
+		@cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
-	tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
+	${TAR} -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
 
-	cd $(SRCDIR) && ./configure --with-rfc2640 --with-largefile --with-pam --with-ftpwho
-	make -C $(SRCDIR)
+	@cd $(SRCDIR) && ./configure --with-rfc2640 --with-largefile --with-pam --with-ftpwho
+	@${MAKE} -C $(SRCDIR)
 
 install:
-	install -vs $(SRCDIR)/src/pure-ftpd $(FREENAS)/usr/local/sbin
-	install -vs $(SRCDIR)/src/pure-ftpwho $(FREENAS)/usr/local/sbin
+	@${INSTALL_PROGRAM} $(SRCDIR)/src/pure-ftpd $(FREENAS)/usr/local/sbin
+	@${INSTALL_PROGRAM} $(SRCDIR)/src/pure-ftpwho $(FREENAS)/usr/local/sbin
 
 clean:
-	@rm -f -r $(SRCDIR)
+	@${RM} -f -r $(SRCDIR)
+
+.include "bsd.freenas.mk"

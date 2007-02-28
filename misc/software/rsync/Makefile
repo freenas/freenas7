@@ -4,16 +4,18 @@ SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
 build:	clean
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
-		cd $(FREENASDISTFILES) && fetch $(URL); \
+		@cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
-	tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
+	${TAR} -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
 
-	cd $(SRCDIR) && ./configure --with-rsyncd-conf=/var/etc
-	make -C $(SRCDIR)
+	@cd $(SRCDIR) && ./configure --with-rsyncd-conf=/var/etc
+	@${MAKE} -C $(SRCDIR)
 
 install:
-	install -vs $(SRCDIR)/rsync $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/rsync $(FREENAS)/usr/local/bin
 
 clean:
-	@rm -f -r $(SRCDIR)
+	@${RM} -f -r $(SRCDIR)
+
+.include "bsd.freenas.mk"

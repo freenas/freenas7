@@ -1,21 +1,17 @@
-build:	clean
-	# Copy options file
-	mkdir -pv /var/db/ports/fusefs
-	cp -pv ${FILESDIR}/options /var/db/ports/fusefs
+BUILD_DEPENDS=	fusefs-kmod:${PORTSDIR}/sysutils/fusefs-kmod \
+		fusefs-ntfs:${PORTSDIR}/sysutils/fusefs-ntfs
 
-	make -C /usr/ports/sysutils/fusefs-kmod
-	make -C /usr/ports/sysutils/fusefs-ntfs
+pre-depends:
+# Copy options file
+	@${MKDIR} -v /var/db/ports/fusefs
+	@${CP} -pv ${FILESDIR}/options /var/db/ports/fusefs
 
 install:
-	cp -pv /usr/ports/sysutils/fusefs-kmod/work/fuse4bsd-*/mount_fusefs/mount_fusefs $(FREENAS)/usr/local/sbin/
-	cp -pv /usr/ports/sysutils/fusefs-kmod/work/fuse4bsd-*/fuse_module/fuse.ko $(FREENAS)/boot/kernel
-	cp -pv /usr/ports/sysutils/fusefs-ntfs/work/ntfs-3g-*/libntfs-3g/.libs/libntfs-3g.so $(FREENAS)/usr/local/lib/libntfs-3g.so.0
+	@${CP} -pv ${PORTSDIR}/sysutils/fusefs-kmod/work/fuse4bsd-*/mount_fusefs/mount_fusefs $(FREENAS)/usr/local/sbin/
+	@${CP} -pv ${PORTSDIR}/sysutils/fusefs-kmod/work/fuse4bsd-*/fuse_module/fuse.ko $(FREENAS)/boot/kernel
+	@${CP} -pv ${PORTSDIR}/sysutils/fusefs-ntfs/work/ntfs-3g-*/libntfs-3g/.libs/libntfs-3g.so $(FREENAS)/usr/local/lib/libntfs-3g.so.0
 
-	install -vs /usr/ports/sysutils/fusefs-ntfs/work/ntfs-3g-*/src/.libs/ntfs-3g $(FREENAS)/usr/local/bin/
-	install -vs /usr/local/lib/libfuse.so.2 $(FREENAS)/usr/local/lib/
-
-clean:
-	make -C /usr/ports/sysutils/fusefs-kmod clean
-	make -C /usr/ports/sysutils/fusefs-ntfs clean
+	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/fusefs-ntfs/work/ntfs-3g-*/src/.libs/ntfs-3g $(FREENAS)/usr/local/bin/
+	@${INSTALL_PROGRAM} /usr/local/lib/libfuse.so.2 $(FREENAS)/usr/local/lib/
 
 .include "bsd.freenas.mk"

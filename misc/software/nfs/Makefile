@@ -1,8 +1,6 @@
-build:	clean
-
 install:
-	install -vs /usr/sbin/nfsd $(FREENAS)/usr/sbin
-	install -vs /usr/sbin/mountd $(FREENAS)/usr/sbin
-	install -vs /usr/sbin/rpcbind $(FREENAS)/usr/sbin
+	@${INSTALL_PROGRAM} /usr/sbin/nfsd $(FREENAS)/usr/sbin
+	@${INSTALL_PROGRAM} /usr/sbin/mountd $(FREENAS)/usr/sbin
+	@${INSTALL_PROGRAM} /usr/sbin/rpcbind $(FREENAS)/usr/sbin
 
-clean:
+.include "bsd.freenas.mk"

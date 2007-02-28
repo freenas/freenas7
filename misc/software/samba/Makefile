@@ -4,36 +4,38 @@ SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
 build:	clean
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
-		cd $(FREENASDISTFILES) && fetch $(URL); \
+		@cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
-	tar -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
+	@${TAR} -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
 
-	cd $(SRCDIR)/source && ./configure --without-cups --with-ads --disable-cups --with-pam --with-ldapsam --with-acl-support --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run --with-piddir=/var/run --with-shared-modules=idmap_rid --with-pammodulesdir=/usr/local/lib --with-syslog --with-ldap
-	make -C $(SRCDIR)/source
+	@cd $(SRCDIR)/source && ./configure --without-cups --with-ads --disable-cups --with-pam --with-ldapsam --with-acl-support --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run --with-piddir=/var/run --with-shared-modules=idmap_rid --with-pammodulesdir=/usr/local/lib --with-syslog --with-ldap
+	@${MAKE} -C $(SRCDIR)/source
 
 install:
-	install -vs $(SRCDIR)/source/bin/smbd $(FREENAS)/usr/local/sbin/
-	install -vs $(SRCDIR)/source/bin/nmbd $(FREENAS)/usr/local/sbin/
-	install -vs $(SRCDIR)/source/bin/winbindd $(FREENAS)/usr/local/sbin/
-	install -vs $(SRCDIR)/source/bin/wbinfo $(FREENAS)/usr/local/bin/
-	install -vs $(SRCDIR)/source/bin/net $(FREENAS)/usr/local/bin/
-	install -vs $(SRCDIR)/source/bin/smbpasswd $(FREENAS)/usr/local/bin/
-	install -vs $(SRCDIR)/source/bin/smbstatus $(FREENAS)/usr/bin/
-	install -vs $(SRCDIR)/source/bin/smbcontrol $(FREENAS)/usr/bin/
-	install -vs $(SRCDIR)/source/bin/smbtree $(FREENAS)/usr/bin/
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbd $(FREENAS)/usr/local/sbin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/nmbd $(FREENAS)/usr/local/sbin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/winbindd $(FREENAS)/usr/local/sbin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/wbinfo $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/net $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbpasswd $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbstatus $(FREENAS)/usr/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbcontrol $(FREENAS)/usr/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbtree $(FREENAS)/usr/bin
 
-	mkdir -vp $(FREENAS)/usr/local/lib/samba/charset
-	mkdir -vp $(FREENAS)/usr/local/lib/samba/rpc
-	mkdir -vp $(FREENAS)/usr/local/lib/samba/pdb
-	mkdir -vp $(FREENAS)/usr/local/samba/lib/idmap
-	mkdir -vp $(FREENAS)/usr/local/samba/lib/vfs
+	@${MKDIR} -v $(FREENAS)/usr/local/lib/samba/charset
+	@${MKDIR} -v $(FREENAS)/usr/local/lib/samba/rpc
+	@${MKDIR} -v $(FREENAS)/usr/local/lib/samba/pdb
+	@${MKDIR} -v $(FREENAS)/usr/local/samba/lib/idmap
+	@${MKDIR} -v $(FREENAS)/usr/local/samba/lib/vfs
 
-	cp -vp $(SRCDIR)/source/bin/CP*.so $(FREENAS)/usr/local/lib/samba/charset
-	cp -vp $(SRCDIR)/source/codepages/*.dat $(FREENAS)/usr/local/lib/samba
-	cp -vp $(SRCDIR)/source/po/*.* $(FREENAS)/usr/local/lib/samba
-	cp -vp $(SRCDIR)/source/bin/recycle.so $(FREENAS)/usr/local/samba/lib/vfs
-	cp -vp $(SRCDIR)/source/bin/rid.so $(FREENAS)/usr/local/samba/lib/idmap
+	@${CP} -vp $(SRCDIR)/source/bin/CP*.so $(FREENAS)/usr/local/lib/samba/charset
+	@${CP} -vp $(SRCDIR)/source/codepages/*.dat $(FREENAS)/usr/local/lib/samba
+	@${CP} -vp $(SRCDIR)/source/po/*.* $(FREENAS)/usr/local/lib/samba
+	@${CP} -vp $(SRCDIR)/source/bin/recycle.so $(FREENAS)/usr/local/samba/lib/vfs
+	@${CP} -vp $(SRCDIR)/source/bin/rid.so $(FREENAS)/usr/local/samba/lib/idmap
 
 clean:
-	@rm -f -r $(SRCDIR)
+	@${RM} -f -r $(SRCDIR)
+
+.include "bsd.freenas.mk"
