@@ -1,11 +1,7 @@
-PORTDIR=	/usr/ports/sysutils/aaccli
-
-build:	clean
-	make -C $(PORTDIR)
+BUILD_DEPENDS=	aaccli:${PORTSDIR}/sysutils/aaccli
 
 install:
-	tar zxvf $(PORTDIR)/work/aaccli-1.0_0.tgz -C $(PORTDIR)/work
-	install -vs $(PORTDIR)/work/bin/aaccli $(FREENAS)/usr/local/bin
+	@${TAR} -zxvf ${PORTSDIR}/sysutils/aaccli/work/aaccli-1.0_0.tgz -C ${PORTSDIR}/sysutils/aaccli/work
+	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/aaccli/work/bin/aaccli $(FREENAS)/usr/local/bin
 
-clean:
-	make -C $(PORTDIR) clean
+.include "bsd.freenas.mk"

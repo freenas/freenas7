@@ -1,16 +1,11 @@
-PORTDIR=	/usr/ports/net/unison
+BUILD_DEPENDS=	unison:${PORTSDIR}/net/unison
 
-build:	clean
+pre-depends:
 	# Copy ocaml options file
-	mkdir -pv /var/db/ports/ocaml
-	cp -pv ${FILESDIR}/ocaml/options /var/db/ports/ocaml
-
-	make -C $(PORTDIR)
+	@{MKDIR} -v /var/db/ports/ocaml
+	@{CP} -pv ${FILESDIR}/ocaml/options /var/db/ports/ocaml
 
 install:
-	install -vs $(PORTDIR)/work/unison-*/unison $(FREENAS)/usr/local/bin
-
-clean:
-	make -C $(PORTDIR) clean
+	@${INSTALL_PROGRAM} ${PORTSDIR}/net/unison/work/unison-*/unison $(FREENAS)/usr/local/bin
 
 .include "bsd.freenas.mk"

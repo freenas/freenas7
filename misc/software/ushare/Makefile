@@ -1,10 +1,6 @@
-PORTDIR=	/usr/ports/net/ushare
-
-build:	clean
-	make -C $(PORTDIR)
+BUILD_DEPENDS=	ushare:${PORTSDIR}/net/ushare
 
 install:
-	install -vs $(PORTDIR)/work/ushare-*/src/ushare $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/net/ushare/work/ushare-*/src/ushare $(FREENAS)/usr/local/bin
 
-clean:
-	make -C $(PORTDIR) clean
+.include "bsd.freenas.mk"

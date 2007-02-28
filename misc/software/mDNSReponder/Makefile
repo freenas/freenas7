@@ -1,10 +1,6 @@
-PORTDIR=	/usr/ports/net/mDNSResponder
-
-build:	clean
-	make -C $(PORTDIR)
+BUILD_DEPENDS=	mDNSResponder:${PORTSDIR}/net/mDNSResponder
 
 install:
-	install -vs $(PORTDIR)/work/mDNSResponder-*/mDNSPosix/build/prod/mDNSResponderPosix $(FREENAS)/usr/local/sbin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/net/mDNSResponder/work/mDNSResponder-*/mDNSPosix/build/prod/mDNSResponderPosix $(FREENAS)/usr/local/sbin
 
-clean:
-	make -C $(PORTDIR) clean
+.include "bsd.freenas.mk"

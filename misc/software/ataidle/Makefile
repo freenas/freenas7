@@ -1,10 +1,6 @@
-PORTDIR=	/usr/ports/sysutils/ataidle
-
-build:	clean
-	make -C $(PORTDIR)
+BUILD_DEPENDS=	ataidle:${PORTSDIR}/sysutils/ataidle
 
 install:
-	install -vs $(PORTDIR)/work/ataidle*/ataidle $(FREENAS)/usr/local/sbin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/ataidle/work/ataidle*/ataidle $(FREENAS)/usr/local/sbin
 
-clean:
-	make -C $(PORTDIR) clean
+.include "bsd.freenas.mk"

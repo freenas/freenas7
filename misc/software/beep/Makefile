@@ -1,10 +1,6 @@
-PORTDIR=	/usr/ports/audio/beep
-
-build:	clean
-	make -C $(PORTDIR)
+BUILD_DEPENDS=	beep:${PORTSDIR}/audio/beep
 
 install:
-	install -vs $(PORTDIR)/work/beep/beep $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/audio/beep/work/beep/beep $(FREENAS)/usr/local/bin
 
-clean:
-	make -C $(PORTDIR) clean
+.include "bsd.freenas.mk"

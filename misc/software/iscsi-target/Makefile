@@ -1,10 +1,6 @@
-PORTDIR=	/usr/ports/net/iscsi-target
-
-build:	clean
-	make -C $(PORTDIR)
+BUILD_DEPENDS=	iscsi-target:${PORTSDIR}/net/iscsi-target
 
 install:
-	install -vs $(PORTDIR)/work/netbsd-iscsi-*/bin/iscsi-target $(FREENAS)/usr/local/bin/
+	@${INSTALL_PROGRAM} ${PORTSDIR}/net/iscsi-target/work/netbsd-iscsi-*/bin/iscsi-target $(FREENAS)/usr/local/bin/
 
-clean:
-	make -C $(PORTDIR) clean
+.include "bsd.freenas.mk"

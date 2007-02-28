@@ -1,10 +1,6 @@
-PORTDIR=	/usr/ports/security/pam_ldap
-
-build:	clean
-	make -C $(PORTDIR)
+BUILD_DEPENDS=	pam_ldap:${PORTSDIR}/security/pam_ldap
 
 install:
-	install -vs $(PORTDIR)/work/pam_ldap-*/pam_ldap.so $(FREENAS)/usr/local/lib
+	@${INSTALL_PROGRAM} ${PORTSDIR}/security/pam_ldap/work/pam_ldap-*/pam_ldap.so $(FREENAS)/usr/local/lib
 
-clean:
-	make -C $(PORTDIR) clean
+.include "bsd.freenas.mk"

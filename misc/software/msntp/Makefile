@@ -1,15 +1,9 @@
-PORTDIR=	/usr/ports/net/msntp
-
-build:	clean
-	make -C $(PORTDIR)
+BUILD_DEPENDS=	msntp:${PORTSDIR}/net/msntp
 
 install:
-	install -vs $(PORTDIR)/work/msntp*/msntp $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/net/msntp/work/msntp*/msntp $(FREENAS)/usr/local/bin
 
-	cp -pv ${FILESDIR}/runmsntp.sh $(FREENAS)/usr/local/bin
-	chmod +x $(FREENAS)/usr/local/bin/runmsntp.sh
-
-clean:
-	make -C $(PORTDIR) clean
+	@${CP} -pv ${FILESDIR}/runmsntp.sh $(FREENAS)/usr/local/bin
+	@${CHMOD} +x $(FREENAS)/usr/local/bin/runmsntp.sh
 
 .include "bsd.freenas.mk"

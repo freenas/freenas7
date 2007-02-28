@@ -22,6 +22,9 @@ PKGCOMPATDIR?=	${LOCALBASE}/lib/compat/pkg
 # Use this as the first operand to always build dependency.
 NONEXISTENT?=	/nonexistent
 
+################################################################
+# Default config how to process ports/packages/dependencies.
+################################################################
 .if !defined(DEPENDS_TARGET)
 .if make(reinstall)
 DEPENDS_TARGET=	reinstall
@@ -32,6 +35,15 @@ DEPENDS_TARGET=	install
 DEPENDS_TARGET+=	clean
 DEPENDS_ARGS+=	NOCLEANDEPENDS=yes
 .endif
+.endif
+
+################################################################
+# Special configuration if package depends on a port:
+# - Always clean and build port but do not install it.
+################################################################
+.if defined(BUILD_DEPENDS)
+ALWAYS_BUILD_DEPENDS=	1
+DEPENDS_TARGET=	clean build
 .endif
 
 ################################################################
@@ -53,10 +65,19 @@ TR?=	LANG=C /usr/bin/tr
 UNAME?=	/usr/bin/uname
 PKG_ADD?=	/usr/sbin/pkg_add
 PKG_INFO?=	/usr/sbin/pkg_info
+TAR?=	/usr/bin/tar
 TEST?=	test	# Shell builtin
 WHICH?=	/usr/bin/which
 LDCONFIG?=	/sbin/ldconfig
 FETCH_CMD?=	/usr/bin/fetch -ApRr
+CP?=	/bin/cp
+CHMOD?=		/bin/chmod
+MKDIR?= /bin/mkdir -p
+RM?=	/bin/rm
+INSTALL?=	/usr/bin/install
+INSTALL_PROGRAM?=	${INSTALL} -vs
+INSTALL_SCRIPT?=	${INSTALL} -v
+INSTALL_DATA?=	${INSTALL} -v
 
 # Get the architecture
 .if !defined(ARCH)
@@ -68,7 +89,23 @@ ARCH!=	${UNAME} -p
 ################################################################
 .MAIN: all
 
-all:	depends build
+all:	pre-depends depends build
+
+.if !target(build)
+build:
+.endif
+
+.if !target(install)
+install:
+.endif
+
+.if !target(clean)
+clean:
+.endif
+
+.if !target(pre-depends)
+pre-depends:
+.endif
 
 ################################################################
 # Dependencies

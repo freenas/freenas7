@@ -1,10 +1,6 @@
-PORTDIR=	/usr/ports/sysutils/consolehm
-
-build:	clean
-	make -C $(PORTDIR)
+BUILD_DEPENDS=	consolehm:${PORTSDIR}/sysutils/consolehm
 
 install:
-	install -vs $(PORTDIR)/work/consolehm*/consolehm/chm $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/consolehm/work/consolehm*/consolehm/chm $(FREENAS)/usr/local/bin
 
-clean:
-	make -C $(PORTDIR) clean
+.include "bsd.freenas.mk"

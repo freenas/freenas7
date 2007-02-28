@@ -1,10 +1,6 @@
-PORTDIR=	/usr/ports/sysutils/e2fsprogs
-
-build:	clean
-	make -C $(PORTDIR)
+BUILD_DEPENDS=	e2fsprogs:${PORTSDIR}/sysutils/e2fsprogs
 
 install:
-	install -vs $(PORTDIR)/work/e2fsprogs-*/e2fsck/e2fsck $(FREENAS)/usr/local/sbin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/e2fsck/e2fsck $(FREENAS)/usr/local/sbin
 
-clean:
-	make -C $(PORTDIR) clean
+.include "bsd.freenas.mk"
