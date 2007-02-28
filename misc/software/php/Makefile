@@ -2,7 +2,7 @@ ARCHIVE=	php-5.2.1.tar.gz
 URL=	http://de2.php.net/distributions/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-BUILD_DEPENDS=	libxml2:${PORTSDIR}/textproc/libxml2
+LIB_DEPENDS=	xml2.5:${PORTSDIR}/textproc/libxml2
 
 build:	clean
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \

@@ -14,21 +14,7 @@ PKGCOMPATDIR?=	${LOCALBASE}/lib/compat/pkg
 # Use this as the first operand to always build dependency.
 NONEXISTENT?=	/nonexistent
 
-.if !defined(DEPENDS_TARGET)
-.if make(reinstall)
-DEPENDS_TARGET=	reinstall
-.else
-DEPENDS_TARGET=	install
-.endif
-.if defined(DEPENDS_CLEAN)
-DEPENDS_TARGET+=	clean
-DEPENDS_ARGS+=	NOCLEANDEPENDS=yes
-.endif
-.endif
-
-################################################################
 # Command macros
-################################################################
 AWK?=	/usr/bin/awk
 BASENAME?=	/usr/bin/basename
 CUT?=	/usr/bin/cut
@@ -48,7 +34,6 @@ PKG_INFO?=	/usr/sbin/pkg_info
 TEST?=	test	# Shell builtin
 WHICH?=	/usr/bin/which
 LDCONFIG?=	/sbin/ldconfig
-FETCH_CMD?=	/usr/bin/fetch -ApRr
 
 # Get the architecture
 .if !defined(ARCH)
@@ -56,15 +41,102 @@ ARCH!=	${UNAME} -p
 .endif
 
 ################################################################
-# Main target
+# Main target.
 ################################################################
 .MAIN: all
 
 all:	depends build
 
-################################################################
-# Dependencies
-################################################################
+_UNIFIED_DEPENDS=${BUILD_DEPENDS} ${LIB_DEPENDS}
+_DEPEND_DIRS=	${_UNIFIED_DEPENDS:C,^[^:]*:([^:]*).*$,\1,}
+
+all-depends-list:
+	@${ALL-DEPENDS-LIST}
+
+ALL-DEPENDS-LIST= \
+	L="${_DEPEND_DIRS}";						\
+	checked="";							\
+	while [ -n "$$L" ]; do						\
+		l="";							\
+		for d in $$L; do					\
+			case $$checked in				\
+			$$d\ *|*\ $$d\ *|*\ $$d)			\
+				continue;;				\
+			esac;						\
+			checked="$$checked $$d";			\
+			if [ ! -d $$d ]; then				\
+				${ECHO_MSG} "${PKGNAME}: \"$$d\" non-existent -- dependency list incomplete" >&2; \
+				continue;				\
+			fi;						\
+			${ECHO_CMD} $$d;				\
+			if ! children=$$(cd $$d && ${MAKE} -V _DEPEND_DIRS); then\
+				${ECHO_MSG} "${PKGNAME}: \"$$d\" erroneous -- dependency list incomplete" >&2; \
+				continue;				\
+			fi;						\
+			for child in $$children; do			\
+				case "$$checked $$l" in			\
+				$$child\ *|*\ $$child\ *|*\ $$child)	\
+					continue;;			\
+				esac;					\
+				l="$$l $$child";			\
+			done;						\
+		done;							\
+		L=$$l;							\
+	done
+
+build-depends-list:
+.if defined(BUILD_DEPENDS) || defined(LIB_DEPENDS)
+	@${BUILD-DEPENDS-LIST}
+.endif
+
+BUILD-DEPENDS-LIST= \
+	for dir in $$(${ECHO_CMD} "${BUILD_DEPENDS} ${LIB_DEPENDS}" | ${TR} '\040' '\012' | ${SED} -e 's/^[^:]*://' -e 's/:.*//' | ${SORT} -u); do \
+		if [ -d $$dir ]; then \
+			${ECHO_CMD} $$dir; \
+		else \
+			${ECHO_MSG} "${PKGNAME}: \"$$dir\" non-existent -- dependency list incomplete" >&2; \
+		fi; \
+	done | ${SORT} -u
+
+package-depends-list:
+.if defined(LIB_DEPENDS)
+	@${PACKAGE-DEPENDS-LIST}
+.endif
+
+PACKAGE-DEPENDS-LIST?= \
+	checked="${PARENT_CHECKED}"; \
+	for dir in $$(${ECHO_CMD} "${LIB_DEPENDS}" | ${SED} -e 'y/ /\n/' | ${CUT} -f 2 -d ':'); do \
+		echo $$dir; \
+		dir=$$(${REALPATH} $$dir); \
+		if [ -d $$dir ]; then \
+			if (${ECHO_CMD} $$checked | ${GREP} -qwv "$$dir"); then \
+				childout=$$(cd $$dir; ${MAKE} CHILD_DEPENDS=yes PARENT_CHECKED="$$checked" package-depends-list); \
+				set -- $$childout; \
+				childdir=""; \
+				while [ $$\# != 0 ]; do \
+					childdir="$$childdir $$2"; \
+					${ECHO_CMD} "$$1 $$2 $$3"; \
+					shift 3; \
+				done; \
+				checked="$$dir $$childdir $$checked"; \
+			fi; \
+		else \
+			${ECHO_MSG} "${PKGNAME}: \"$$dir\" non-existent -- dependency list incomplete" >&2; \
+		fi; \
+	done
+
+package-depends:
+	@${PACKAGE-DEPENDS-LIST} | ${AWK} '{print $$1":"$$3}'
+
+missing:
+	@for dir in $$(${ALL-DEPENDS-LIST}); do \
+		THISORIGIN=$$(${ECHO_CMD} $$dir | ${SED} 's,${PORTSDIR}/,,'); \
+		installed=$$(${PKG_INFO} -qO $${THISORIGIN}); \
+		if [ -z "$$installed" ]; then \
+			${ECHO_CMD} $$THISORIGIN; \
+		fi \
+	done
+
 .if !target(depends)
 depends: lib-depends build-depends
 
@@ -89,7 +161,7 @@ _INSTALL_DEPENDS=	\
 			  (cd $$dir; ${MAKE} -DINSTALLS_DEPENDS $$target $$depends_args) ; \
 			fi; \
 		else \
-			(cd $$dir; ${MAKE} -DINSTALLS_DEPENDS $$target $$depends_args) ; \
+			(cd $$dir; ${MAKE} build install $$target $$depends_args) ; \
 		fi; \
 		if [ -z "${DESTDIR}" ] ; then \
 			${ECHO_MSG} "===>   Returning to build of ${PKGNAME}"; \
