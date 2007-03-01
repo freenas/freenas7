@@ -49,64 +49,65 @@ DEPENDS_TARGET=	clean build
 ################################################################
 # Command macros
 ################################################################
-AWK?=	/usr/bin/awk
-BASENAME?=	/usr/bin/basename
-CUT?=	/usr/bin/cut
-CHROOT?=	/usr/sbin/chroot
-ECHO_CMD?=	echo	# Shell builtin
-ECHO_MSG?=	${ECHO_CMD}
-EXPR?=	/bin/expr
-FALSE?=	false	# Shell builtin
-GREP?=	/usr/bin/grep
-REALPATH?=	/bin/realpath
-SED?=	/usr/bin/sed
-SORT?=	/usr/bin/sort
-TR?=	LANG=C /usr/bin/tr
-UNAME?=	/usr/bin/uname
-PKG_ADD?=	/usr/sbin/pkg_add
-PKG_INFO?=	/usr/sbin/pkg_info
-TAR?=	/usr/bin/tar
-TEST?=	test	# Shell builtin
-WHICH?=	/usr/bin/which
-LDCONFIG?=	/sbin/ldconfig
-FETCH_CMD?=	/usr/bin/fetch -ApRr
-CP?=	/bin/cp
-CHMOD?=		/bin/chmod
-MKDIR?= /bin/mkdir -p
-RM?=	/bin/rm
-LN?=	/bin/ln
-INSTALL?=	/usr/bin/install
-INSTALL_PROGRAM?=	${INSTALL} -vs
-INSTALL_SCRIPT?=	${INSTALL} -v
-INSTALL_DATA?=	${INSTALL} -v
-
-# Get the architecture
-.if !defined(ARCH)
-ARCH!=	${UNAME} -p
-.endif
+.include "bsd.freenas.macros.mk"
 
 ################################################################
 # Main target
 ################################################################
 .MAIN: all
 
-all:	pre-depends depends build
+all:	pre-depends depends clean build
 
 .if !target(build)
-build:
+build:	build-message pre-build do-build post-build
 .endif
 
 .if !target(install)
-install:
+install:	install-message pre-install do-install post-install
 .endif
 
 .if !target(clean)
-clean:
+clean:	clean-message do-clean
+.endif
+
+.if !target(do-clean)
+do-clean:
 .endif
 
 .if !target(pre-depends)
 pre-depends:
 .endif
+
+.if !target(pre-build)
+pre-build:
+.endif
+
+.if !target(do-build)
+do-build:
+.endif
+
+.if !target(post-build)
+post-build:
+.endif
+
+.if !target(pre-install)
+pre-install:
+.endif
+
+.if !target(do-install)
+do-install:
+.endif
+
+.if !target(post-install)
+post-install:
+.endif
+
+clean-message:
+	@${ECHO_MSG} "===>  Cleaning for ${PKGNAME}"
+build-message:
+	@${ECHO_MSG} "===>  Building for ${PKGNAME}"
+install-message:
+	@${ECHO_MSG} "===>  Installing for ${PKGNAME}"
 
 ################################################################
 # Dependencies

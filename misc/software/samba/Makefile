@@ -2,7 +2,7 @@ ARCHIVE=	samba-3.0.24.tar.gz
 URL=	http://us3.samba.org/samba/ftp/stable/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-build:	clean
+do-build:	clean
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		@cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
@@ -12,7 +12,7 @@ build:	clean
 	@cd $(SRCDIR)/source && ./configure --without-cups --with-ads --disable-cups --with-pam --with-ldapsam --with-acl-support --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run --with-piddir=/var/run --with-shared-modules=idmap_rid --with-pammodulesdir=/usr/local/lib --with-syslog --with-ldap
 	@${MAKE} -C $(SRCDIR)/source
 
-install:
+do-install:
 	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbd $(FREENAS)/usr/local/sbin
 	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/nmbd $(FREENAS)/usr/local/sbin
 	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/winbindd $(FREENAS)/usr/local/sbin
@@ -35,7 +35,7 @@ install:
 	@${CP} -vp $(SRCDIR)/source/bin/recycle.so $(FREENAS)/usr/local/samba/lib/vfs
 	@${CP} -vp $(SRCDIR)/source/bin/rid.so $(FREENAS)/usr/local/samba/lib/idmap
 
-clean:
+do-clean:
 	@${RM} -f -r $(SRCDIR)
 
 .include "bsd.freenas.mk"

@@ -1,6 +1,6 @@
 BUILD_DEPENDS=	consolehm:${PORTSDIR}/sysutils/consolehm
 
-install:
+do-install:
 	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/consolehm/work/consolehm*/consolehm/chm $(FREENAS)/usr/local/bin
 
 .include "bsd.freenas.mk"

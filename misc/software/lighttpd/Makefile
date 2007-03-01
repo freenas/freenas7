@@ -2,7 +2,7 @@ ARCHIVE=	lighttpd-1.4.13.tar.gz
 URL=	http://www.lighttpd.net/download/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-build:	clean
+do-build:	clean
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
@@ -12,7 +12,7 @@ build:	clean
 	cd $(SRCDIR) && ./configure --sysconfdir=/var/etc/ --enable-lfs --without-mysql --without-ldap --with-openssl --without-lua --with-bzip2 --without-pcre
 	make -C $(SRCDIR)
 
-install:
+do-install:
 	install -vs $(SRCDIR)/src/lighttpd $(FREENAS)/usr/local/sbin
 
 	mkdir -pv $(FREENAS)/usr/local/lib/lighttpd
@@ -25,5 +25,7 @@ install:
 	cp -pv $(SRCDIR)/src/.libs/mod_auth.so $(FREENAS)/usr/local/lib/lighttpd
 	cp -pv $(SRCDIR)/src/.libs/mod_webdav.so $(FREENAS)/usr/local/lib/lighttpd
 
-clean:
+do-clean:
 	@rm -f -r $(SRCDIR)
+
+.include "bsd.freenas.mk"

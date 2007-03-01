@@ -5,7 +5,7 @@ pre-depends:
 	@${MKDIR} -v /var/db/ports/ocaml
 	@${CP} -pv ${FILESDIR}/ocaml/options /var/db/ports/ocaml
 
-install:
-	@${INSTALL_PROGRAM} ${PORTSDIR}/net/unison/work/unison-*/unison $(FREENAS)/usr/local/bin
+do-install:
+	@${INSTALL_PROGRAM} ${PORTSDIR}/net/unison/work/unison*/unison $(FREENAS)/usr/local/bin
 
 .include "bsd.freenas.mk"

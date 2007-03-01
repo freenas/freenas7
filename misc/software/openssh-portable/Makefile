@@ -5,7 +5,7 @@ pre-depends:
 	@${MKDIR} -v /var/db/ports/openssh
 	@${CP} -pv ${FILESDIR}/options /var/db/ports/openssh
 
-install:
+do-install:
 	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/sshd $(FREENAS)/usr/sbin
 	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/ssh $(FREENAS)/usr/bin
 	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/sftp-server $(FREENAS)/usr/libexec

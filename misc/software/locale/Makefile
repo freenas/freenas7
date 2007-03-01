@@ -1,4 +1,4 @@
-build:	clean
+do-build:	clean
 	# Translate *po files to *.mo.
 	@for i in $$(ls $(SVNDIR)/locale/*.po); do \
 		filename=$$(basename $$i); \
@@ -8,8 +8,10 @@ build:	clean
 		msgfmt -v --output-file="$(WORKINGDIR)/locale/$$language/LC_MESSAGES/$$filename.mo" $$i; \
 	done
 
-install:
+do-install:
 	cp -vp -r $(WORKINGDIR)/locale/* $(FREENAS)/usr/local/share/locale
 
-clean:
+do-clean:
 	@rm -f -r $(WORKINGDIR)/locale
+
+.include "bsd.freenas.mk"

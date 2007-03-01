@@ -4,7 +4,7 @@ SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
 LIB_DEPENDS=	xml2.5:${PORTSDIR}/textproc/libxml2
 
-build:	clean
+do-build:	clean
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		@cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
@@ -14,11 +14,11 @@ build:	clean
 	@cd $(SRCDIR) && ./configure --enable-fastcgi --enable-discard-path --enable-force-cgi-redirect --without-mysql --without-pear --with-openssl --without-sqlite --with-pcre-regex --with-gettext
 	@${MAKE} -C $(SRCDIR)
 
-install:
+do-install:
 	@${INSTALL_PROGRAM} $(SRCDIR)/sapi/cgi/php $(FREENAS)/usr/local/bin
 	@${CP} -pv ${FILESDIR}/php.ini $(FREENAS)/usr/local/lib
 
-clean:
+do-clean:
 	@${RM} -f -r $(SRCDIR)
 
 .include "bsd.freenas.mk"
