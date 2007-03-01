@@ -1,5 +1,5 @@
-BUILD_DEPENDS=	fusefs-ntfs:${PORTSDIR}/sysutils/fusefs-ntfs
-RUN_DEPENDS=	${LOCALBASE}/modules/fuse.ko:${PORTSDIR}/sysutils/fusefs-kmod
+BUILD_DEPENDS=	fusefs-ntfs:${PORTSDIR}/sysutils/fusefs-ntfs \
+		fusefs-kmod:${PORTSDIR}/sysutils/fusefs-kmod
 
 pre-depends:
 # Copy options file
