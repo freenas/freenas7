@@ -2132,9 +2132,6 @@ msgstr "新增目標"
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "設定可以使用iSCSI目標的網路區段"
 
-msgid "A valid size target value must be specified"
-msgstr "請輸入一個有效的Size。"
-
 msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
 msgstr "你最少要有 256MB 的記憶體才能開啟 iSCSI 目標功能。"
 

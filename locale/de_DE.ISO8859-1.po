@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-01-26 09:43+0100\n"
+"PO-Revision-Date: 2007-03-01 09:43+0100\n"
 "Last-Translator: Falk Menzel\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
@@ -183,6 +183,9 @@ msgstr "Sichern"
 msgid "Submit"
 msgstr "&Uuml;bertragen"
 
+msgid "Update"
+msgstr "Update"
+
 msgid "View"
 msgstr "Ansicht"
 
@@ -227,6 +230,9 @@ msgstr "Beschreibung"
 
 msgid "Software RAID"
 msgstr "Software RAID"
+
+msgid "Service"
+msgstr "Service"
 
 msgid "TCP port"
 msgstr "TCP Port"
@@ -285,11 +291,17 @@ msgstr "Inaktiv"
 msgid "Selected"
 msgstr "Ausgew&auml;hlt"
 
+msgid "System"
+msgstr "System"
+
 msgid "General setup"
 msgstr "Allgemeine Einstellungen"
 
 msgid "Static routes"
 msgstr "Statische Route"
+
+msgid "Firmware"
+msgstr "Firmware"
 
 msgid "Advanced"
 msgstr "Erweitert"
@@ -303,14 +315,50 @@ msgstr "Netzwerk"
 msgid "Management"
 msgstr "Management"
 
+msgid "Mount Point"
+msgstr "Mount Verzeichnis"
+
 msgid "Services"
 msgstr "Dienste"
+
+msgid "CIFS"
+msgstr "CIFS"
+
+msgid "FTP"
+msgstr "FTP"
+
+msgid "NFS"
+msgstr "NFS"
+
+msgid "RSYNCD"
+msgstr "RSYNCD"
+
+msgid "SSHD"
+msgstr "SSHD"
+
+msgid "Unison"
+msgstr "Unison"
+
+msgid "UPnP"
+msgstr "UPnP"
+
+msgid "AFP"
+msgstr "AFP"
 
 msgid "Access"
 msgstr "Zugriff"
 
 msgid "Users and Groups"
 msgstr "Benutzer & Gruppen"
+
+msgid "Active Directory"
+msgstr "Active Directory"
+
+msgid "NIS"
+msgstr "NIS"
+
+msgid "Radius"
+msgstr "Radius"
 
 msgid "Process"
 msgstr "Prozesse"
@@ -398,6 +446,12 @@ msgstr "Sprache"
 
 msgid "Select the system language"
 msgstr "W&auml;hlen Sie die Systemsprache"
+
+msgid "System Time"
+msgstr "Systemzeit"
+
+msgid "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select one, then use Save button to update system time. (Mind seconds part will be ignored)"
+msgstr "Entweder die Uhrzeit im Format 'MM/TT/JJJJ ss:mm' direkt eingeben oder das Symbol benutzen - dann speichern."
 
 msgid "Time zone"
 msgstr "Zeitzone"
@@ -494,9 +548,6 @@ msgstr "Schnittstelle"
 
 msgid "Network"
 msgstr "Netzwerk"
-
-msgid "Gateway"
-msgstr "Gateway"
 
 msgid "Edit Route"
 msgstr "Route bearbeiten"
@@ -1515,6 +1566,9 @@ msgstr "%s Schnittstelle"
 msgid "Subnet mask"
 msgstr "Subnetz Maske"
 
+msgid "Gateway"
+msgstr "Gateway"
+
 msgid "ISP DNS servers"
 msgstr "ISP DNS Server"
 
@@ -1741,7 +1795,7 @@ msgid "Ping output"
 msgstr "Ping Ausgabe"
 
 msgid "Maximum number of hops"
-msgstr "Maximum number of hops"
+msgstr "Maximale Anzahl von Spr&uuml;ngen"
 
 msgid "Traceroute output"
 msgstr "Traceroute Ausgabe"
@@ -1797,6 +1851,9 @@ msgstr "Erstelle %s Partition"
 msgid "Creating filesystem with 'Soft Updates'"
 msgstr "Erstelle Dateisystem samt 'Soft Updates'"
 
+msgid "Power Daemon"
+msgstr "Power Daemon"
+
 msgid "Enable the system power control utility"
 msgstr "Aktiviere das System Power Control Utility"
 
@@ -1824,11 +1881,209 @@ msgstr "Das Attribut '%s' enth&auml;lt ung&uuml;ltige Zeichen."
 msgid "The attribute '%s' is required."
 msgstr "Das Attribut '%s' wird ben&ouml;tigt."
 
+msgid "The crypted disk list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "Die Liste der verschl&uuml;sselten Festplatten wurde ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden."
+
+msgid "Data integrity"
+msgstr "Datenintegrit&auml;t"
+
+msgid "Encryption"
+msgstr "Verschl&uuml;sselung"
+
+msgid "Do you really want to delete this encrypted disk? All elements that still use it will become invalid (e.g. share)!"
+msgstr "Wollen Sie wirklich diese verschl&uuml;sselte Festplatte l&ouml;schen? Alles, was noch auf dieses Medium zugreift, wird ung&uuml;ltig werden (z.B. Freigaben)!"
+
+msgid "Create encrypted disk"
+msgstr "Erstelle verschl&uuml;sselte Festplatte"
+
+msgid "Data integrity algorithm"
+msgstr "Datenintegrit&auml;tsalgorithmus"
+
+msgid "Encryption algorithm"
+msgstr "Verschl&uuml;sselungsalgorithmus"
+
+msgid "Passphrase"
+msgstr "Paﬂwort"
+
+msgid "Passphrase don't match."
+msgstr "Paﬂworte stimmen nicht &uuml;berein"
+
+msgid "Init and encrypt disk"
+msgstr "Initialisiere und verschl&uuml;ssele Festplatte"
+
+msgid "Disk initialization and encryption"
+msgstr "Festplatteninitialisierung und Verschl&uuml;sselung"
+
+msgid "Encrypting... Please wait"
+msgstr "Verschl&uuml;ssele... Bitte warten!"
+
+msgid "Attaching..."
+msgstr "Eibinden...."
+
+msgid "Using Data integrity will reduce size of available storage and also reduce speed."
+msgstr "Das Verwenden von Datenintegrit&auml;tsverfahrenhat die Verringerung des verf&uuml;gbaren Speicherplatzes sowie der Performance zur Folge."
+
 msgid "Sensors"
 msgstr "Sensoren"
+
+msgid "This encrypted disk is mounted, umount it before trying to detach it."
+msgstr "Diese verschl&uuml;sselte Festplatte ist eingebunden (gemountet); vor dem Entfernen ist diese zu entbinden (unmount)"
+
+msgid "You must use a passphrase for attach an encrypted disk."
+msgstr "Ein Paﬂwort ist zum Hinzuf&uuml;gen einer verschl&uuml;sselten Festplatte notwendig"
+
+msgid "Encrypted disk name"
+msgstr "Name der verschl&uuml;sselten Festplatte"
+
+msgid "Detaching..."
+msgstr "Entferne..."
+
+msgid "attach"
+msgstr "Hinzuf&uuml;gen"
+
+msgid "detach"
+msgstr "Entfernen"
+
+msgid "Attached"
+msgstr "Hinzugef&uuml;gt"
+
+msgid "Not attached"
+msgstr "Nicht hinzugef&uuml;gt"
 
 msgid "Reload page"
 msgstr "Seite neu laden"
 
+msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
+msgstr "Aus Sicherheitsgr&uuml;nden sollte HTTPS als WebGUI-Protokoll beim Senden des Paﬂworts benutzt werden."
+
+msgid "Resume"
+msgstr "Fortfahren"
+
+msgid "Enable resume mode."
+msgstr "Aktiviere 'Resume-Modus'"
+
+msgid "Use this option to enable resuming broken transfers at the point of interruption."
+msgstr "Diese Option dient der Wiederaufnahme eines unterbrochenen Datentransfers ab dem Punkt der Unterbrechung."
+
+msgid "iSCSI Target"
+msgstr "iSCSI Target"
+
+msgid "The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "Die Liste der 'iSCSI Targets' wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden."
+
+msgid "Do you really want to delete this target?"
+msgstr "Wollen Sie wirklich dieses iSCSI-target l&ouml;schen?"
+
+msgid "Delete target"
+msgstr "L&ouml;sche Target"
+
+msgid "Add target"
+msgstr "F&uuml;ge target hinzu"
+
+msgid "Network that is authorised to access to this iSCSI target."
+msgstr "Netzwerk, welches zum Zugriff auf dieses iSCSI-target berechtigt ist."
+
+msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
+msgstr "Mindestens 256 Mbyte RAM sind zum Betreiben eines iSCSI-target notwendig."
+
+msgid "FTP Server disabled"
+msgstr "FTP Server ausgeschaltet"
+
+msgid "FTP users"
+msgstr "FTP Benutzer"
+
+msgid "FTP connected users"
+msgstr "Mit FTP verbundene Nutzer"
+
+msgid "Save and Restart UPnP"
+msgstr "Sichern und Neustart UPnP"
+
+msgid "Save and Restart Unison"
+msgstr "Sichern und Neustart Unison"
+
+msgid "Save and Restart SSHD"
+msgstr "Sichern und Neustart SSHD"
+
+msgid "Save and Restart RSYNC"
+msgstr "Sichern und Neustart RSYNC"
+
+msgid "Save and Restart NFS"
+msgstr "Sichern und Neustart NFS"
+
+msgid "Save and Restart FTP"
+msgstr "Sichern und Neustart FTP"
+
+msgid "Save and Restart AFP"
+msgstr "Sichern und Neustart AFP"
+
+msgid "The %s port must be a valid port number."
+msgstr "Port Nr. %s muﬂ eine g&uuml;ltige Portnummer sein."
+
+msgid "Swap memory"
+msgstr "Auslagerungsspeicher"
+
+msgid "No RSYNC Client configured"
+msgstr "Kein RSYNC Client eingerichtet"
+
+msgid "Detected RSYNC remote shares"
+msgstr "Erkannte RSYNC remote Freigaben"
+
+msgid "Hosts"
+msgstr "Hosts"
+
+msgid "LDAP"
+msgstr "LDAP"
+
 msgid "Password confirmation"
 msgstr "Passwortbest&auml;tigung"
+
+msgid "Remote share (source)"
+msgstr "Entfernte (Remote) Freigabe (Quelle)"
+
+msgid "Remote address"
+msgstr "Entfernte (Remote) Adresse"
+
+msgid "Local share (destination)"
+msgstr "Lokale Freigabe (Ziel)"
+
+msgid "The RSYNC client list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "Die Liste der RSYNC Clients wurde ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden."
+
+msgid "The RSYNC local list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "Die 'RSYNC local list' wurde ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden."
+
+msgid "Add RSYNC"
+msgstr "F&uuml;ge RSYNC hinzu"
+
+msgid "Edit RSYNC"
+msgstr "Bearbeite RSYNC"
+
+msgid "Delete RSYNC"
+msgstr "L&ouml;sche RSYNC"
+
+msgid "Do you really want to delete this RSYNC?"
+msgstr "Wollen Sie wirklich dies RSYNC-Verbindung l&ouml;schen?"
+
+msgid "Source share"
+msgstr "Quell - Freigabe"
+
+msgid "Destination share"
+msgstr "Zielfreigabe"
+
+msgid "Remote source share name"
+msgstr "Freigabenname der entfernten (remote) Quelle"
+
+msgid "Mount to use"
+msgstr "Zu benutzende Mount-Adresse"
+
+msgid "File size"
+msgstr "Dateigr&ouml;ﬂe"
+      
+msgid "A valid size target value must be specified."
+msgstr "Eine g&uuml;ltige Zielgr&ouml;ﬂe muss angegeben werden."
+
+msgid "Target name"
+msgstr "Zielname"
+
+msgid "Mount used"
+msgstr "Benutzte Mount-Adresse"
