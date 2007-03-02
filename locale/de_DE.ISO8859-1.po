@@ -762,14 +762,8 @@ msgstr "Allgemeine Einstellungen"
 msgid "Hostname"
 msgstr "Hostname"
 
-msgid "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
-msgstr "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
-
 msgid "Client Identifier"
 msgstr "Client-Bezeichner"
-
-msgid "The value in this field is sent as the DHCP client identifier when requesting a DHCP lease."
-msgstr "The value in this field is sent as the DHCP client identifier when requesting a DHCP lease."
 
 msgid "Calculate netmask bits"
 msgstr "Berechne Netmask Bits"
