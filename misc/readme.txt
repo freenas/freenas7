@@ -101,6 +101,7 @@ FreeNAS 0.684b (UNRELEASE!):
 - Disable FTP root login by default. Can be enabled via WebGUI.
 - Fix DHCP problem
 - Upgrade ushare to 0.9.10 (should now support xbox)
+- Try to prevent "acd0: FAILURE READ_BIG ERROR" during install from CDROM (thanks to fortinde@isers.sourceforge.net)
 
 TO DO:
 - Check the English reference file for the new pages added

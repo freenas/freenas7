@@ -1521,7 +1521,7 @@ msgstr "Doriti sa stergeti utilizatorul?!"
 msgid "Add user"
 msgstr "Adaugare utilizator"
 
-msgid "You must create a group first."
+msgid "you must create a group first."
 msgstr "trebuie creat un grup mai intii."
 
 msgid "The login name contains invalid characters."
@@ -2070,3 +2070,137 @@ msgstr "Neatasat"
 msgid "Reload page"
 msgstr "Reincarcare pagina"
 
+msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
+msgstr "Va trebuie sa folositi protocolul HTTPS pentru Interfata Web la trimiterea frazei de control"
+
+msgid "Resume"
+msgstr "Continua"
+
+msgid "Enable resume mode."
+msgstr "Activare mod continuare"
+
+msgid "Use this option to enable resuming broken transfers at the point of interruption."
+msgstr "Folositi aceasta optiune pentru continuarea transferului de unde ati ramas"
+
+msgid "iSCSI Target"
+msgstr "Destinatie iSCSI"
+
+msgid "The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "Lista destinatiilor iSCSI a fost modificata.<br>Va trebui sa o salvati pentru a deveni activa"
+
+msgid "Do you really want to delete this target?"
+msgstr "Doriti sa stergeti aceasta destinatie?"
+
+msgid "Delete target"
+msgstr "Stergere destinatie"
+
+msgid "Add target"
+msgstr "Adaugare destinatie"
+
+msgid "Network that is authorised to access to this iSCSI target."
+msgstr "Retea autorizata pentru acces iSCSI"
+
+msgid "A valid size target value must be specified"
+msgstr "Valoare incorecta pentru dimensiunea destinatiei"
+
+msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
+msgstr "Trebuie sa aveti minim 256MB RAM pentru utilizarea iSCSI"
+
+msgid "FTP users"
+msgstr "Utilizatori FTP"
+
+msgid "FTP connected users"
+msgstr "Utilizatori conectati prin FTP"
+
+msgid "Save and Restart UPnP"
+msgstr "Salvare si Repornire UPnP"
+
+msgid "Save and Restart Unison"
+msgstr "Salvare si Repornire Unison"
+
+msgid "Save and Restart SSHD"
+msgstr "Salvare si Repornire SSHD"
+
+msgid "Save and Restart RSYNC"
+msgstr "Salvare si Repornire RSYNC"
+
+msgid "Save and Restart NFS"
+msgstr "Salvare si Repornire NFS"
+
+msgid "Save and Restart FTP"
+msgstr "Salvare si Repornire FTP"
+
+msgid "Save and Restart AFP"
+msgstr "Salvare si Repornire AFP"
+
+msgid "The %s port must be a valid port number."
+msgstr "Valoare incorecta pentru portul %s"
+
+msgid "Swap memory"
+msgstr "Memorie Swap"
+
+msgid "No RSYNC Client configured"
+msgstr "Niciun client RSYNC configurat"
+
+msgid "Detected RSYNC remote shares"
+msgstr "Partajari RSYNC detectate"
+
+msgid "Hosts"
+msgstr "Sisteme"
+
+msgid "LDAP"
+msgstr "LDAP"
+
+msgid "Password confirmation"
+msgstr "Confirmare Parola"
+
+msgid "Remote share (source)"
+msgstr "Sursa partajare"
+
+msgid "Remote address"
+msgstr "Adresa Destinatie"
+
+msgid "Local share (destination)"
+msgstr "Partajare locala (destinatie)"
+
+msgid "The RSYNC client list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "Lista clientilor RSYNC a fost modificata.<br> Trebuie sa salvati modificarile pentru ca acestea sa devina active."
+
+msgid "The RSYNC local list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr ""
+
+msgid "Add RSYNC"
+msgstr "Adaugare RSYNC"
+
+msgid "Edit RSYNC"
+msgstr "Editare RSYNC"
+
+msgid "Delete RSYNC"
+msgstr "Stergere RSYNC"
+
+msgid "Do you really want to delete this RSYNC?"
+msgstr "Doriti sa stergeti acest RSYNC?"
+
+msgid "Source share"
+msgstr "Sursa Partajare"
+
+msgid "Destination share"
+msgstr "Partajare Destinatie"
+
+msgid "Remote source share name"
+msgstr "Nume sursa partajare"
+
+msgid "Mount to use"
+msgstr "Punct montare de utilizat"
+
+msgid "File size"
+msgstr "Dimensiune fisier"
+
+msgid "A valid size target value must be specified."
+msgstr "Trebuie sa specificati o valoare corecta pentru marime destinatie"
+
+msgid "Target name"
+msgstr "Nume Destinatie"
+
+msgid "Mount used"
+msgstr "Punct montare utilizat"
