@@ -1018,7 +1018,7 @@ EOD;
 				$cron_month = "*";
 			
 			
-			if ($rsyncclient['all_weekday'] == "0") 	{
+			if ($rsyncclient['all_weekdays'] == "0") 	{
 				foreach ($rsyncclient['weekday'] as $weekdayv) 	{
 					if (strlen($cron_weekday) > 0)
 						 $cron_weekday = $cron_weekday . "," . $weekdayv;
@@ -1100,7 +1100,7 @@ EOD;
 				$cron_month = "*";
 			
 			
-			if ($rsynclocal['all_weekday'] == "0") 	{
+			if ($rsynclocal['all_weekdays'] == "0") 	{
 				foreach ($rsynclocal['weekday'] as $weekdayv) 	{
 					if (strlen($cron_weekday) > 0)
 						 $cron_weekday = $cron_weekday . "," . $weekdayv;
@@ -1179,7 +1179,7 @@ EOD;
 			$cron_month = "*";
 		
 		
-		if ($config['shutdown']['all_weekday'] == "0") 	{
+		if ($config['shutdown']['all_weekdays'] == "0") 	{
 			foreach ($config['shutdown']['weekday'] as $weekdayv) 		{
 				if (strlen($cron_weekday) > 0)
 					 $cron_weekday = $cron_weekday . "," . $weekdayv;
