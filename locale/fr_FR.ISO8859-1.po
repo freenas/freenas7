@@ -702,7 +702,7 @@ msgstr "Surveiller les p&eacute;riph&eacute;riques S.M.A.R.T en enregistrant leu
 msgid "Tuning"
 msgstr "Personnalisation"
 
-msgid "Enable tuning of some kernel variable"
+msgid "Enable tuning of some kernel variables"
 msgstr "Activer la personnalisation de quelques variables du noyau"
 
 msgid "ZeroConf"
@@ -812,9 +812,6 @@ msgstr "Formater"
 
 msgid "Tools"
 msgstr "Outils"
-
-msgid "iSCSI initiator"
-msgstr "initiateur iSCSI"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "La liste des disques a chang&eacute;.<br>Vous devez appliquer les changements pour qu'ils prennent effet."
@@ -1784,9 +1781,6 @@ msgstr "Afficher les dernieres"
 
 msgid "Collecting initial data, please wait..."
 msgstr "Collecte des premieres donnees, veuillez patienter..."
-
-msgid "Enable tuning of some kernel variables"
-msgstr "Enable tuning of some kernel variables"
 
 msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
 msgstr "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."

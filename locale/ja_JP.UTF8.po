@@ -708,9 +708,6 @@ msgstr "S.M.A.R.T デバイスの監視ステータスをログファイルに�
 msgid "Tuning"
 msgstr "チューニング"
 
-msgid "Enable tuning of some kernel variable"
-msgstr "カーネル変数のチューニングを有効にする"
-
 msgid "ZeroConf"
 msgstr "ZeroConf"
 
@@ -836,9 +833,6 @@ msgstr "フォーマット"
 
 msgid "Tools"
 msgstr "ツール"
-
-msgid "iSCSI initiator"
-msgstr "iSCSI イニシエータ"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "ディスクリストは変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"

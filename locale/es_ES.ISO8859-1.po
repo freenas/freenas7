@@ -627,9 +627,6 @@ msgstr "Monitor the S.M.A.R.T device by logging their status in the log file."
 msgid "Tuning"
 msgstr "Tuning"
 
-msgid "Enable tuning of some kernel variable"
-msgstr "Enable tuning of some kernel variable"
-
 msgid "ZeroConf"
 msgstr "ZeroConf"
 
@@ -731,9 +728,6 @@ msgstr "Manage"
 
 msgid "Format"
 msgstr "Format"
-
-msgid "iSCSI initiator"
-msgstr "iSCSI initiator"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "The disk list has been changed.<br>You must apply the changes in order for them to take effect."

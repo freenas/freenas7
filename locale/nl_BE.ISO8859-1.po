@@ -710,7 +710,7 @@ msgstr "De S.M.A.R.T toestellen overwaken door hun status te registreren in de h
 msgid "Tuning"
 msgstr "Tuning"
 
-msgid "Enable tuning of some kernel variable"
+msgid "Enable tuning of some kernel variables"
 msgstr "Het tunen van sommige kernelvariabelen inschakelen"
 
 msgid "ZeroConf"
@@ -817,9 +817,6 @@ msgstr "Formatteer"
 
 msgid "Tools"
 msgstr "Hulpmiddelen"
-
-msgid "iSCSI initiator"
-msgstr "iSCSI initiator"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "De lijst met schijven is gewijzigd.<br>Je moet op 'toepassen' klikken vooraleer de wijzigingen actief zijn."
@@ -1780,9 +1777,6 @@ msgstr "Graph shows last"
 
 msgid "Collecting initial data, please wait..."
 msgstr "Collecting initial data, please wait..."
-
-msgid "Enable tuning of some kernel variables"
-msgstr "Enable tuning of some kernel variables"
 
 msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
 msgstr "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."

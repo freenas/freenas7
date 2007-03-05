@@ -702,7 +702,7 @@ msgstr "Controlla la periferica S.M.A.R.T loggando lo stato nel file di log."
 msgid "Tuning"
 msgstr "Ottimizzazione"
 
-msgid "Enable tuning of some kernel variable"
+msgid "Enable tuning of some kernel variables"
 msgstr "Abilita l'ottimizzazione di alcune variabili del kernel"
 
 msgid "ZeroConf"
@@ -809,9 +809,6 @@ msgstr "Formatta"
 
 msgid "Tools"
 msgstr "Strumenti"
-
-msgid "iSCSI initiator"
-msgstr "iSCSI Initiator"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "La lista dei dischi &egrave; stata cambiata.<br>E' necessario applicare i cambiamenti affinché abbiano effetto."
@@ -1733,9 +1730,6 @@ msgstr "Il grafo mostra pi&ugrave; recenti"
 
 msgid "Collecting initial data, please wait..."
 msgstr "Ottengo i primi dati, aspettare..."
-
-msgid "Enable tuning of some kernel variables"
-msgstr "Enable tuning of some kernel variables"
 
 msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
 msgstr "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."

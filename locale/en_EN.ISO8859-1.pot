@@ -708,9 +708,6 @@ msgstr ""
 msgid "Tuning"
 msgstr ""
 
-msgid "Enable tuning of some kernel variable"
-msgstr ""
-
 msgid "ZeroConf"
 msgstr ""
 
@@ -835,9 +832,6 @@ msgid "Format"
 msgstr ""
 
 msgid "Tools"
-msgstr ""
-
-msgid "iSCSI initiator"
 msgstr ""
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
@@ -1004,6 +998,7 @@ msgstr ""
 
 msgid "Geom Raid5"
 msgstr ""
+
 msgid "(unstable)"
 msgstr ""
 
@@ -2205,4 +2200,61 @@ msgid "Target name"
 msgstr ""
 
 msgid "Mount used"
+msgstr ""
+
+msgid "Balance algorithm"
+msgstr ""
+
+msgid "Select your read balance algorithm."
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Define an host name can be useful for NFS."
+msgstr ""
+
+msgid "The host list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr ""
+
+msgid "Edit Host"
+msgstr ""
+
+msgid "Do you really want to delete this host?"
+msgstr ""
+
+msgid "Delete Host"
+msgstr ""
+
+msgid "Add Host"
+msgstr ""
+
+msgid "The host name contain invalid characters."
+msgstr ""
+
+msgid "An host with this name already exists."
+msgstr ""
+
+msgid "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and ."
+msgstr ""
+
+msgid "The IP address that this hostname represents."
+msgstr ""
+
+msgid "You may enter a description here for your reference."
+msgstr ""
+
+msgid "Download configuration"
+msgstr ""
+
+msgid "Restore configuration"
+msgstr ""
+
+msgid "Open a %s configuration XML file and click the button below to restore the configuration."
+msgstr ""
+
+msgid "Click this button to download the system configuration in XML format."
+msgstr ""
+
+msgid "Backup configuration"
 msgstr ""

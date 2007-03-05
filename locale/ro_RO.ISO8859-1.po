@@ -699,9 +699,6 @@ msgstr "Monitorizare dispozitiv S.M.A.R.T cu jurnalizare."
 msgid "Tuning"
 msgstr "Optimizari"
 
-msgid "Enable tuning of some kernel variable"
-msgstr "Activare optimizari pentru citeva variabile din kernel"
-
 msgid "ZeroConf"
 msgstr "ZeroConf"
 
@@ -812,9 +809,6 @@ msgstr "Formatare"
 
 msgid "Tools"
 msgstr "Unelte"
-
-msgid "iSCSI initiator"
-msgstr "Initiator iSCSI"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Lista de discuri a fost modificata.<br>Trebuie sa salvati modificarile pentru ca aceasta sa devina activa."

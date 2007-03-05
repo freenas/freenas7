@@ -737,9 +737,6 @@ msgstr "透过记錄档监控S.M.A.R.T装置。"
 msgid "Tuning"
 msgstr "微调"
 
-msgid "Enable tuning of some kernel variable"
-msgstr "开啟系统核心的微调参数"
-
 msgid "ZeroConf"
 msgstr "ZeroConf"
 
@@ -865,9 +862,6 @@ msgstr "格式化"
 
 msgid "Tools"
 msgstr "工具"
-
-msgid "iSCSI initiator"
-msgstr "iSCSI初始"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "磁碟组态已经变更。<br>套用之后便会生效。"

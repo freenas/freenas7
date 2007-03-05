@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-03-01 09:43+0100\n"
-"Last-Translator: Falk Menzel\n"
+"PO-Revision-Date: 2007-03-02 09:43+0100\n"
+"Last-Translator: Falk Menzel <fmenzel@htwm.de>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
@@ -684,6 +684,9 @@ msgstr "TCP idle Timeout"
 msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don't set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
 msgstr "Leerlauf TCP Verbindungen werden von der Statusanzeige nach Ablauf der angegebenen Sekunden entfernt, wenn nach dieser Zeit keine Pakete mehr empfangen werden. Diesen Wert nicht zu hoch ansetzen, oder die Statusanzeige wird von falsch beendeten Verbindungen &uuml;berflutet. Voreinstellung sind 2,5 Stunden."
 
+msgid "Navigation"
+msgstr "Navigation"
+
 msgid "Keep diagnostics in navigation expanded"
 msgstr "Diagnoseanzeige in Navigationsansicht einblenden"
 
@@ -693,17 +696,50 @@ msgstr "Systemlautsprecher piept"
 msgid "Disable speaker beep on startup and shutdown"
 msgstr "Systemlautsprecher beim Start und Shutdown ausschalten"
 
+msgid "S.M.A.R.T Daemon"
+msgstr "S.M.A.R.T Daemon"
+
 msgid "Enable the S.M.A.R.T daemon"
 msgstr "S.M.A.R.T Daemon aktivieren"
 
 msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
 msgstr "S.M.A.R.T-f&auml;hige Ger&auml;te &uuml;berwachen durch Aufzeichnung ihres Status in Logdatei."
 
-msgid "Enable tuning of some kernel variable"
-msgstr "Aktiviere Tuning einiger Kernel Variablen"
+msgid "Tuning"
+msgstr "Feineinstellungen"
+
+msgid "Enable tuning of some kernel variables"
+msgstr "Das Tunen einiger Kernelvariablen aktivieren"
+
+msgid "ZeroConf"
+msgstr "ZeroConf"
+
+msgid "Disable ZeroConf service announce"
+msgstr "ZeroConf-Dienst-Ank&uuml;ndigung deaktivieren"
+
+msgid "Swap file"
+msgstr "Auslagerungsdatei"
+
+msgid "Swap size"
+msgstr "Gr&ouml;§e des Auslagerungsspeichers"
+
+msgid "mount share"
+msgstr "Binde Freigabe ein"
+
+msgid "Mount to use for swap"
+msgstr "Binde den Auslagerungsspeicher ein"
+
+msgid "Swap file size"
+msgstr "Gr&ouml;§e der Auslagerungsdatei"
+
+msgid "Size in MB."
+msgstr "Gr&ouml;§e in Mbyte"
 
 msgid "Assign network ports"
 msgstr "Netzwerkports zuweisen"
+
+msgid "Port "
+msgstr "Port"
 
 msgid " was assigned to "
 msgstr " wurde zugewiesen an "
@@ -729,8 +765,20 @@ msgstr "Ein g&uuml;ltiges Gateway muss angegeben werden."
 msgid "A valid mtu size must be specified."
 msgstr "Eine g&uuml;ltige MTU muss angegeben werden."
 
+msgid "IP address"
+msgstr "IP Adresse"
+
+msgid "Subnet bit count"
+msgstr "Subnet bit count"
+
+msgid "MTU"
+msgstr "MTU"
+
 msgid "Standard MTU is 1500, use 9000 for jumbo frame."
 msgstr "Standard MTU ist 1500, 9000 f&uuml;r 'jumbo frame' benutzen."
+
+msgid "Device polling"
+msgstr "Device polling"
 
 msgid "Enable device polling"
 msgstr "Aktiviere 'device polling'"
@@ -740,6 +788,9 @@ msgstr "'Device polling' ist eine Technik, welche das System periodisch Netzwerk
 
 msgid "Speed"
 msgstr "Geschwindigkeit"
+
+msgid "Duplex"
+msgstr "Duplex"
 
 msgid "Enable Optional "
 msgstr "Aktiviere optionale "
@@ -762,8 +813,14 @@ msgstr "Allgemeine Einstellungen"
 msgid "Hostname"
 msgstr "Hostname"
 
+msgid "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
+msgstr "Der Inhalt dieses Feldes wird als der DHCP Hostname beim Anfordern eines DHCP lease gesendet."
+
 msgid "Client Identifier"
 msgstr "Client-Bezeichner"
+
+msgid "The value in this field is sent as the DHCP client identifier when requesting a DHCP lease."
+msgstr "Der Inhalt dieses Feldes wird als der 'DHCP client identifier' beim Anfordern eines DHCP lease gesendet."
 
 msgid "Calculate netmask bits"
 msgstr "Berechne Netmask Bits"
@@ -776,6 +833,9 @@ msgstr "Verwalten"
 
 msgid "Format"
 msgstr "Formatieren"
+
+msgid "Tools"
+msgstr "Tools"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Der Festplattenstatus hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
@@ -818,9 +878,6 @@ msgstr "Festplatte nach dem letzten Zugriff nach der angegebenen Zeit in Standby
 
 msgid "Advanced Power Management"
 msgstr "Advanced Power Management"
-
-msgid "Disabled"
-msgstr "Deaktiviert"
 
 msgid "Minimum power usage with Standby"
 msgstr "Minimale Energiebelastung, mit Standby"
@@ -900,6 +957,12 @@ msgstr "Unmount Festplatte/Partition"
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
 msgstr "Wenn die ausgew&auml;hlte Festplatte/Partition gemountet ist wird diese kurzzeitig ungemountet um den ausgew&auml;hlten Befehl auszuf&uuml;hren, sonst arbeiten die Befehle im nur-lesen Modus."
 
+msgid "iSCSI"
+msgstr "iSCSI"
+
+msgid "iSCSI Initiator"
+msgstr "iSCSI Initiator"
+
 msgid "Target IP address"
 msgstr "Ziel IP Adresse"
 
@@ -918,11 +981,31 @@ msgstr "RAID-Einstellungen"
 msgid "Format RAID"
 msgstr "RAID formatieren"
 
+msgid "Volume Name"
+msgstr "Volume Name"
+
 msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
 msgstr "Das RAID Laufwerk ist momentan gemountet! Entfernen Sie den <a href=%s>Mount Point</a> zuerst bevor sie fortfahren."
 
+msgid "Geom Vinum"
+msgstr "Geom Vinum"
+
+msgid "Geom Mirror"
+msgstr "Geom Mirror"
+
+msgid "Geom Stripe"
+msgstr "Geom Stripe"
+
+msgid "Geom Concat"
+msgstr "Geom Concat"
+
+msgid "Geom Raid5"
+msgstr "Geom Raid5"
 msgid "(unstable)"
 msgstr "(instabil)"
+
+msgid "RAID"
+msgstr "RAID"
 
 msgid "The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Die RAID-Einstellung wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen m&uuml;ssen diese best&auml;tigt werden."
@@ -963,11 +1046,17 @@ msgstr "Fehler: RAID-Konfiguration konnte nicht gespeichert werden.\n"
 msgid "Raid name"
 msgstr "RAID Name"
 
-msgid "Balance algorithm"
-msgstr "Balance Algorithmus"
+msgid "striping"
+msgstr "striping"
 
-msgid "Select your read balance algorithm."
-msgstr "Auswahl des 'Read Balance Algorithmus'."
+msgid "mirroring"
+msgstr "mirroring"
+
+msgid "rotated block-interleaved parity"
+msgstr "rotated block-interleaved parity"
+
+msgid "JBOD"
+msgstr "JBOD"
 
 msgid "Members of this volume"
 msgstr "Verwendete Ger&auml;te f&uuml;r dieses RAID"
@@ -986,6 +1075,9 @@ msgstr "Formatiere UFS Festplatte!"
 
 msgid "Object name"
 msgstr "Objektname"
+
+msgid "Command"
+msgstr "Command"
 
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly)."
 msgstr "1. Diese Massnahmen nur zur Fehlerbehebung benutzen!<br>2. Es ist nicht zum Start eines RAIDvolume notwendig (startet automatisch)."
@@ -1017,14 +1109,11 @@ msgstr "Freigabenname duplizieren."
 msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
 msgstr "1. Die Partition '%s' kann nicht eingebunden werden - sie enth&auml;lt die Konfigurationsdatei.<br>2. Die NTFS-implemtentierung von FreeBSD hat viele Fehler."
 
-msgid "Settings"
-msgstr "Einstellungen"
+msgid "Mounting..."
+msgstr "Mounting..."
 
-msgid "Share"
-msgstr "Freigabe"
-
-msgid "Shares"
-msgstr "Freigaben"
+msgid "Unmounting..."
+msgstr "Unmounting..."
 
 msgid "The Netbios name contains invalid characters."
 msgstr "Der Netbios-Name enth&auml;lt ung&uuml;ltige Zeichen."
@@ -1134,6 +1223,9 @@ msgstr "Die 'pasv address' muss eine 'Public IP Address' sein."
 msgid "You must select at minium anonymous or/and local user authentication."
 msgstr "Mindestens einen Nutzer 'anonymous' und/oder einen lokalen Benutzer angeben."
 
+msgid "FTP Server"
+msgstr "FTP Server"
+
 msgid "Number of clients"
 msgstr "Anzahl der Clients"
 
@@ -1145,6 +1237,9 @@ msgstr "Max. Anzahl Verb. einer IP"
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Maximale Anzahl der Verbindungen von einer IP-Adresse (0 = unbegrenzt)."
+
+msgid "Timeout"
+msgstr "Timeout"
 
 msgid "Maximum idle time in minutes."
 msgstr "Maximum Leerlaufzeit in Minuten."
@@ -1160,6 +1255,9 @@ msgstr "Lokaler Benutzer"
 
 msgid "Enable local user login."
 msgstr "Aktiviere 'Lokaler Benutzer' Anmeldung."
+
+msgid "FXP"
+msgstr "FXP"
 
 msgid "Enable FXP protocol."
 msgstr "Aktiviere FXP Protokoll."
@@ -1188,6 +1286,9 @@ msgstr "Der kleinstm&ouml;gliche zuweisbare Port, der 'PASV style' Datenverbindu
 msgid "The maximum port to allocate for PASV style data connections (0 = use any port)."
 msgstr "Der h&ouml;chstm&ouml;gliche zuweisbare Port, der 'PASV style' Datenverbindungen erm&ouml;glicht (0 = Verwende jeden Port)."
 
+msgid "Banner"
+msgstr "Banner"
+
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr "Grussbotschaft - Angezeigt bei der ersten Verbindung via FTP."
 
@@ -1212,11 +1313,23 @@ msgstr "Zugriffsberechtigtes Netzwerk auf die NFS-freigabe"
 msgid "The name of the exported directories are : /mnt/sharename"
 msgstr "Die Namenskonvention f&uuml;r exportierte Verzeichnisse: /mnt/Freigabenname"
 
+msgid "Server"
+msgstr "Server"
+
+msgid "Client"
+msgstr "Client"
+
 msgid "Local"
 msgstr "Lokal"
 
+msgid "Rsync Daemon"
+msgstr "Rsync Daemon"
+
 msgid "Read only"
 msgstr "Nur lesen"
+
+msgid "Map to user"
+msgstr "Map to user"
 
 msgid "Alternate TCP port. Default is 873"
 msgstr "Alternativer TCP Port."
@@ -1227,6 +1340,9 @@ msgstr "Max. Verbindungen"
 msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
 msgstr "Max. Anzahl gleichzeitiger Verbindungen. Voreinstellung ist 0 (unbegrenzt)."
 
+msgid "MOTD"
+msgstr "MOTD"
+
 msgid "Message of the day."
 msgstr "Nachricht des Tages."
 
@@ -1235,6 +1351,9 @@ msgstr "Es muss zuerst ein 'Mount Point' konfiguriert werden."
 
 msgid "Rsync Client Synchronization"
 msgstr "Rsync Client Synchronisation"
+
+msgid "Remote RSYNC Server"
+msgstr "Remote RSYNC Server"
 
 msgid "IP address of remote RSYNC server"
 msgstr "IP-Adresse des Remote RSYNC Servers"
@@ -1272,11 +1391,20 @@ msgstr "Ziel"
 msgid "Destination Mount Point (backup drive)."
 msgstr "Ziel Mount Point (Backup Laufwerk)."
 
+msgid "SSH Daemon"
+msgstr "SSH Daemon"
+
 msgid "Alternate TCP port. Default is 22"
 msgstr "Alternativer TCP Port."
 
 msgid "Permit root login"
 msgstr "Root Login zulassen"
+
+msgid "Enable TCP Forwarding"
+msgstr "Aktiviere TCP Forwarding"
+
+Emsgid "Permit to do SSH Tunneling."
+msgstr "Erlaube SSH Tunneling."
 
 msgid "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr "Gibt an, ob es dem Administrator (root) erlaubt ist, sich direkt einzuloggen."
@@ -1296,8 +1424,11 @@ msgstr "Die Kombination aus dem Freigabe- sowie Arbeitsverzeichnis gibt es nicht
 msgid "Unison File Synchronisation"
 msgstr "Unison Datei Synchronisation"
 
+msgid "Share"
+msgstr "Freigabe"
+
 msgid "You may need enough space to duplicate all files being synced"
-msgstr "Es k&ouml;nnte bei der Synchronisation zur Belegung von Speicherplatz in der Gr&ouml;ÃŸenordnung der abzugleichenden Daten kommen, um diese zu duplizieren."
+msgstr "Es k&ouml;nnte bei der Synchronisation zur Belegung von Speicherplatz in der Gr&ouml;Ã&uuml;enordnung der abzugleichenden Daten kommen, um diese zu duplizieren."
 
 msgid "Working Directory"
 msgstr "Arbeitsverzeichnis"
@@ -1346,6 +1477,12 @@ msgstr "Freizugebendes Verzeichnis."
 
 msgid "You must select at least one authentication method."
 msgstr "Sie m&uuml;ssen mind. eine Authentifizierungsmethode ausw&auml;hlen."
+
+msgid "AFP Server"
+msgstr "AFP Server"
+
+msgid "Server Name"
+msgstr "Server Name"
 
 msgid "Enable guest access."
 msgstr "Aktiviere Gast-Zugriff."
@@ -1515,6 +1652,9 @@ msgstr "Hervorheben"
 msgid "Enabled"
 msgstr "Aktiviert"
 
+msgid "Disabled"
+msgstr "Deaktiviert"
+
 msgid "Execute command"
 msgstr "Befehl ausf&uuml;hren"
 
@@ -1557,6 +1697,15 @@ msgstr "Es konnten keine unterst&uuml;tzten Wireless-Schnittstellen gefunden wer
 msgid "%s interface"
 msgstr "%s Schnittstelle"
 
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "PPPoE"
+msgstr "PPPoE"
+
+msgid "PPTP"
+msgstr "PPTP"
+
 msgid "Subnet mask"
 msgstr "Subnetz Maske"
 
@@ -1565,6 +1714,15 @@ msgstr "Gateway"
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS Server"
+
+msgid "Media"
+msgstr "Media"
+
+msgid "Channel"
+msgstr "Channel"
+
+msgid "SSID"
+msgstr "SSID"
 
 msgid "I/O packets"
 msgstr "I/O Pakete"
@@ -1581,14 +1739,29 @@ msgstr "CPU Auslastung"
 msgid "Edit VLAN"
 msgstr "Bearbeite VLAN"
 
+msgid "Edit VLAN"
+msgstr "Bearbeite VLAN"
+
 msgid "Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
 msgstr "Traceroute k&ouml;nnte einige Zeit in Anspruch nehmen. Dr&uuml;cken Sie den Abbrechen Schaltknopf ihres Webbrowsers, um sich den Stand fehlgeschlagener Abfragen anzeigen zu lassen."
 
 msgid "Partitions"
 msgstr "Partitionen"
 
+msgid "S.M.A.R.T."
+msgstr "S.M.A.R.T."
+
+msgid "ATAidle"
+msgstr "ATAidle"
+
 msgid "Space Used"
 msgstr "Benutzter Speicherplatz"
+
+msgid "Mounts"
+msgstr "Mounts"
+
+msgid "MS Domain"
+msgstr "MS Domain"
 
 msgid "List of detected ATA disks"
 msgstr "Liste von gefundenen ATA Laufwerken"
@@ -1617,71 +1790,26 @@ msgstr "Durchgangsanzeige"
 msgid "Cannot get data about interface"
 msgstr "Kann keine Daten erfassen von Schnittstelle"
 
+msgid "In"
+msgstr "Ankommend"
+
+msgid "Out"
+msgstr "Abgehend"
+
 msgid "Switch to"
 msgstr "Umschalten zu"
 
 msgid "AutoScale"
 msgstr "Autom. Skalierung"
 
+msgid "Follow"
+msgstr "Verfolgen"
+
 msgid "Graph shows last"
 msgstr "Graph zeigt die letzten"
 
 msgid "Collecting initial data, please wait..."
 msgstr "Ermittle Daten, bitte warten..."
-
-msgid "Define an host name can be useful for NFS."
-msgstr "Das Definieren eines Hostnamens kann n&uuml;tzlich f&uuml;r NFS sein."
-
-msgid "The host list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Die Host Liste hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
-
-msgid "Edit Host"
-msgstr "Host bearbeiten"
-
-msgid "Do you really want to delete this host?"
-msgstr "Wollen Sie diesen Host wirklich l&ouml;schen?"
-
-msgid "Delete Host"
-msgstr "Host l&ouml;schen"
-
-msgid "Add Host"
-msgstr "Host hinzuf&uuml;gen"
-
-msgid "The host name contain invalid characters."
-msgstr "Der Hostname enth&auml;lt ung&uuml;ltige Zeichen."
-
-msgid "An host with this name already exists."
-msgstr "Ein Host mit diesem Namen existiert bereits."
-
-msgid "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and ."
-msgstr "Der Hostname darf nur folgende Zeichen enthalten: a-z, A-Z und 0-9, - , _ sowie ."
-
-msgid "The IP address that this hostname represents."
-msgstr "Die IP Adresse, welche diesen Hostnamen repr&auml;sentiert."
-
-msgid "You may enter a description here for your reference."
-msgstr "Sie k&ouml;nnen hier eine Beschreibung f&uuml;r Ihre Referenz eintragen."
-
-msgid "Download configuration"
-msgstr "Konfiguration herunterladen"
-
-msgid "Restore configuration"
-msgstr "Konfiguration wiederherstellen"
-
-msgid "Open a %s configuration XML file and click the button below to restore the configuration."
-msgstr "&Ouml;ffnen Sie eine %s Konfigurationsdatei und dr&uuml;cken sie den Knopf weiter unten um die Konfiguration wiederherzustellen."
-
-msgid "Click this button to download the system configuration in XML format."
-msgstr "Dr&uuml;cken, um die Systemkonfiguration im XML Format herunterzuladen."
-
-msgid "Backup configuration"
-msgstr "Konfiguration sichern"
-
-msgid "Enable tuning of some kernel variables"
-msgstr "Das Tunen einiger Kernelvariablen aktivieren"
-
-msgid "Disable ZeroConf service announce"
-msgstr "ZeroConf-Dienst-Ank&uuml;ndigung deaktivieren"
 
 msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
 msgstr "Damit wird %s beim Aufruf der Seite <a href=%s>%s</a> nicht nach einer neuen Firmware suchen."
@@ -1859,15 +1987,6 @@ msgstr "Temperatur"
 
 msgid "n/a"
 msgstr "k.A."
-
-msgid "Follow"
-msgstr "Nachfolgen"
-
-msgid "Enable TCP Forwarding"
-msgstr "TCP Forwarding aktivieren"
-
-msgid "Permit to do SSH Tunneling."
-msgstr "SSH Tunneling erlauben."
 
 msgid "The attribute '%s' contains invalid characters."
 msgstr "Das Attribut '%s' enth&auml;lt ung&uuml;ltige Zeichen."
@@ -2081,3 +2200,69 @@ msgstr "Zielname"
 
 msgid "Mount used"
 msgstr "Benutzte Mount-Adresse"
+
+msgid "Balance algorithm"
+msgstr "Balance Algorithmus"
+
+msgid "Select your read balance algorithm."
+msgstr "Auswahl des 'Read Balance Algorithmus'."
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Define an host name can be useful for NFS."
+msgstr "Das Definieren eines Hostnamens kann n&uuml;tzlich f&uuml;r NFS sein."
+
+msgid "The host list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "Die Host Liste hat sich ge&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
+
+msgid "Edit Host"
+msgstr "Host bearbeiten"
+
+msgid "Do you really want to delete this host?"
+msgstr "Wollen Sie diesen Host wirklich l&ouml;schen?"
+
+msgid "Delete Host"
+msgstr "Host l&ouml;schen"
+
+msgid "Add Host"
+msgstr "Host hinzuf&uuml;gen"
+
+msgid "The host name contain invalid characters."
+msgstr "Der Hostname enth&auml;lt ung&uuml;ltige Zeichen."
+
+msgid "An host with this name already exists."
+msgstr "Ein Host mit diesem Namen existiert bereits."
+
+msgid "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and ."
+msgstr "Der Hostname darf nur folgende Zeichen enthalten: a-z, A-Z und 0-9, - , _ sowie ."
+
+msgid "The IP address that this hostname represents."
+msgstr "Die IP Adresse, welche diesen Hostnamen repr&auml;sentiert."
+
+msgid "You may enter a description here for your reference."
+msgstr "Sie k&ouml;nnen hier eine Beschreibung f&uuml;r Ihre Referenz eintragen."
+
+msgid "Download configuration"
+msgstr "Konfiguration herunterladen"
+
+msgid "Restore configuration"
+msgstr "Konfiguration wiederherstellen"
+
+msgid "Open a %s configuration XML file and click the button below to restore the configuration."
+msgstr "&Ouml;ffnen Sie eine %s Konfigurationsdatei und dr&uuml;cken sie den Knopf weiter unten um die Konfiguration wiederherzustellen."
+
+msgid "Click this button to download the system configuration in XML format."
+msgstr "Dr&uuml;cken, um die Systemkonfiguration im XML Format herunterzuladen."
+
+msgid "Backup configuration"
+msgstr "Konfiguration sichern"
+
+msgid "Follow"
+msgstr "Nachfolgen"
+
+msgid "Enable TCP Forwarding"
+msgstr "TCP Forwarding aktivieren"
+
+msgid "Permit to do SSH Tunneling."
+msgstr "SSH Tunneling erlauben."

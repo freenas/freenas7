@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("iSCSI initiator"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("iSCSI Initiator"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['iscsiinit']['vdisk']))
 	$config['iscsiinit']['vdisk'] = array();
