@@ -4,7 +4,7 @@ SRCDIR=	$(WORKINGDIR)/iscsi
 
 do-build:	clean
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
-		@cd $(FREENASDISTFILES) && fetch $(URL); \
+		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
 	@${MKDIR} -v $(SRCDIR)

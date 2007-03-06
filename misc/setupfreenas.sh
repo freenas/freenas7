@@ -108,7 +108,7 @@ pre_build_kernel() {
 	# Create list of available packages.
 	echo "#! /bin/sh
 $DIALOG --title \"$PRODUCTNAME - Drivers\" \\
---checklist \"Select the drivers you want to add.\" 21 65 14 \\" > $tempfile
+--checklist \"Select the drivers you want to add.\" 21 75 14 \\" > $tempfile
 
 	for s in $SVNDIR/misc/drivers/*; do
 		[ ! -d "$s" ] && continue

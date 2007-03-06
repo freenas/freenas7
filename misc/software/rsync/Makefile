@@ -4,7 +4,7 @@ SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
 do-build:	clean
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
-		@cd $(FREENASDISTFILES) && fetch $(URL); \
+		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
 	${TAR} -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)

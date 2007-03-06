@@ -6,7 +6,7 @@ LIB_DEPENDS=	xml2.5:${PORTSDIR}/textproc/libxml2
 
 do-build:	clean
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
-		@cd $(FREENASDISTFILES) && fetch $(URL); \
+		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
 
 	-${TAR} -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
