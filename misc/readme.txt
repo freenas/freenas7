@@ -102,6 +102,7 @@ FreeNAS 0.684b (UNRELEASE!):
 - Fix DHCP problem
 - Upgrade ushare to 0.9.10 (should now support xbox)
 - Try to prevent "acd0: FAILURE READ_BIG ERROR" during install from CDROM (thanks to fortinde@isers.sourceforge.net)
+- Upgrade twa kernel driver (e.g. 3ware 9650SE Series Raid S-ATA II PCIe)
 
 TO DO:
 - Check the English reference file for the new pages added
