@@ -184,7 +184,14 @@ add_libs() {
 
 	# Copy identified libs.
 	for i in $(sort -u /tmp/lib.list); do
-		cp -vp $i ${FREENAS}$(echo $i | rev | cut -d '/' -f 2- | rev)
+	  
+		if [ "$i" == "/lib/libc.so.6" ] || [ "$i" == "/lib/libcrypt.so.3" ] || [ "$i" == "/lib/libpthread.so.2" ]; then
+			if [ -f ${FREENAS}$i ]; then
+				echo "Remove flag for special libs"
+				chflags -RH noschg ${FREENAS}$i
+			fi
+		fi
+			cp -vp $i ${FREENAS}$(echo $i | rev | cut -d '/' -f 2- | rev)
 	done
 	rm -f /tmp/lib.list
 
