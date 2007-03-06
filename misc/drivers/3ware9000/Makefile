@@ -1,5 +1,5 @@
 ARCHIVE=	FreeBSD-6.x-driver-source-9.4.0.1.tgz
-SRCDIR=	$(WORKINGDIR)$(WORKINGDIR)/twa
+SRCDIR=	$(WORKINGDIR)/twa
 
 install:	clean
 	@tar -zxvf ${.CURDIR}/files/$(ARCHIVE) -C $(WORKINGDIR)
