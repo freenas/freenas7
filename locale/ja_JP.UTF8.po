@@ -427,7 +427,7 @@ msgid "If you want to change the username for accessing the webGUI, enter it her
 msgstr "WebUI にアクセスするユーザ名を変更したい場合，ここに入力して下さい．"
 
 msgid "Password"
-msgstr "パスワード
+msgstr "パスワー"
 
 msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don't use the character ':'."
 msgstr "WebUI にアクセスする為のパスワードを変更したい場合，ここに 2回入力して下さい．<br> ':' は使わないで下さい．"
@@ -2204,3 +2204,4 @@ msgstr "ターゲット名"
 
 msgid "Mount used"
 msgstr "マウントし利用"
+
