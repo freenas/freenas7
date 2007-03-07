@@ -1461,7 +1461,7 @@ function system_install_mount_cd($cdrom)
 	echo "Creating Mount point for the CDROM:\n";	
 	
 	if (is_dir("/mnt/cdrom_fr_0507")) {
-		echo "Tempo directory for CD allready existing!\n";
+		echo "Tempo directory for CD already existing!\n";
 		return 1;
 	}
 	
@@ -1609,7 +1609,7 @@ function system_install_mount_destdisk($harddrive)
 	
 	// Check if tempo directory exist
 	if (is_dir("/mnt/install_fr_0507")) {
-		echo "Tempo directory for disk allready existing!\n";
+		echo "Tempo directory for disk already existing!\n";
 		return 1;
 	}
 	

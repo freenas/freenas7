@@ -341,7 +341,8 @@ create_iso () {
 	fi
 
 	echo "ISO: Generating the ISO file"
-	mkisofs -b "boot/cdboot" -no-emul-boot -A "FreeNAS CD-ROM image" -c "boot/boot.catalog" -d -r -publisher "freenas.org" -p "Olivier Cochard-Labbe" -V "freenas_cd" -o "$ISOFILENAME" $TMPDIR
+	cp -p $SVNDIR/misc/.mkisofsrc $HOME
+	mkisofs -b "boot/cdboot" -no-emul-boot -c "boot/boot.catalog" -d -r -o "$ISOFILENAME" $TMPDIR
 	[ 0 != $? ] && return 1 # successful?
 	
 	echo "ISO: Cleaning tempo file"

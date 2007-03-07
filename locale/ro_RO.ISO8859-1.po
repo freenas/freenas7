@@ -1092,7 +1092,7 @@ msgstr "Partitia sistem 1 nu poate fi montata, partitia de DATE este partitia 2"
 msgid "Duplicate Share Name."
 msgstr "Nume Partajare Duplicat."
 
-msgid "This disk/partition is allready configured."
+msgid "This disk/partition is already configured."
 msgstr "Acest disc/partitie a fost deja configurat."
 
 msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."

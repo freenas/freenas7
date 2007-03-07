@@ -16,6 +16,7 @@ Rebrand 'FreeNAS'
    etc/inc/globals.inc
    www/fend.inc
    www/license.php
+   misc/.mkisofsrc
 
 2. Replace the images:
    www/logo.gif

@@ -1067,7 +1067,7 @@ msgstr "Systeempartitie 1 kan niet gekoppeld worden, de DATA partitie is partiti
 msgid "Duplicate Share Name."
 msgstr "Dubbele naam voor de gedeelde map."
 
-msgid "This disk/partition is allready configured."
+msgid "This disk/partition is already configured."
 msgstr "Deze schijf/partiti is al ingesteld."
 
 msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."

@@ -47,7 +47,7 @@
 	echo "\nWARNING: there will be some limitation:\n";
 	echo "1. It will erase ALL your partitions and data on the destination disk!\n";
 	echo "2. You can't use your destination disk for sharing data\n";
-	echo "3. You can't install {$productname} if it's allready installed on this disk (Use upgrade from Web GUI)\n";
+	echo "3. You can't install {$productname} if it's already installed on this disk (Use upgrade from Web GUI)\n";
 	echo "\nInstall on USB key is the prefered way:\nIt save you IDE or SCSI channel for more hard drive.\n";
 	echo "\nHere is the list of detected CDROM:\n";
 	
@@ -80,7 +80,7 @@
 	/* check if destination drive is mounted */
 
 	if (disks_check_mount($harddrive)) 	{
-		echo "\nYour destination drive is allready used!\n";
+		echo "\nYour destination drive is already used!\n";
 		fgets($fp);
 		exit(0);
 	}
