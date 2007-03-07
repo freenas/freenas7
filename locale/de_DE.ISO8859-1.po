@@ -1076,9 +1076,6 @@ msgstr "Formatiere UFS Festplatte!"
 msgid "Object name"
 msgstr "Objektname"
 
-msgid "Command"
-msgstr "Command"
-
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly)."
 msgstr "1. Diese Massnahmen nur zur Fehlerbehebung benutzen!<br>2. Es ist nicht zum Start eines RAIDvolume notwendig (startet automatisch)."
 
@@ -1328,9 +1325,6 @@ msgstr "Rsync Daemon"
 msgid "Read only"
 msgstr "Nur lesen"
 
-msgid "Map to user"
-msgstr "Map to user"
-
 msgid "Alternate TCP port. Default is 873"
 msgstr "Alternativer TCP Port."
 
@@ -1401,10 +1395,10 @@ msgid "Permit root login"
 msgstr "Root Login zulassen"
 
 msgid "Enable TCP Forwarding"
-msgstr "Aktiviere TCP Forwarding"
+msgstr "TCP Forwarding aktivieren"
 
-Emsgid "Permit to do SSH Tunneling."
-msgstr "Erlaube SSH Tunneling."
+msgid "Permit to do SSH Tunneling."
+msgstr "SSH Tunneling erlauben."
 
 msgid "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr "Gibt an, ob es dem Administrator (root) erlaubt ist, sich direkt einzuloggen."
@@ -1676,9 +1670,6 @@ msgstr "Signalst&auml;rke Cache"
 msgid "MAC address"
 msgstr "MAC Addresse"
 
-msgid "IP address"
-msgstr "IP Addresse"
-
 msgid "Noise"
 msgstr "St&ouml;rungen"
 
@@ -1735,9 +1726,6 @@ msgstr "Kollisionen"
 
 msgid "CPU load"
 msgstr "CPU Auslastung"
-
-msgid "Edit VLAN"
-msgstr "Bearbeite VLAN"
 
 msgid "Edit VLAN"
 msgstr "Bearbeite VLAN"
@@ -1803,7 +1791,7 @@ msgid "AutoScale"
 msgstr "Autom. Skalierung"
 
 msgid "Follow"
-msgstr "Verfolgen"
+msgstr "Nachfolgen"
 
 msgid "Graph shows last"
 msgstr "Graph zeigt die letzten"
@@ -2257,12 +2245,3 @@ msgstr "Dr&uuml;cken, um die Systemkonfiguration im XML Format herunterzuladen."
 
 msgid "Backup configuration"
 msgstr "Konfiguration sichern"
-
-msgid "Follow"
-msgstr "Nachfolgen"
-
-msgid "Enable TCP Forwarding"
-msgstr "TCP Forwarding aktivieren"
-
-msgid "Permit to do SSH Tunneling."
-msgstr "SSH Tunneling erlauben."
