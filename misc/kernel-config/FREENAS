@@ -326,10 +326,21 @@ options		GEOM_ELI
 # The cpufreq(4) driver provides support for non-ACPI CPU frequency control
 device		cpufreq
 
-# System Management Bus
-device		iicbb
-device		iicbus
-device		iicsmb
-device		smbus
-device		smb
+# SMB bus
+device		smbus		# Bus support, required for smb below.
+device		intpm
+device		alpm
+device		ichsmb
 device		viapm
+device		amdpm
+device		amdsmb
+device		nfpm
+device		nfsmb
+device		smb
+
+# I2C Bus
+device		iicbus		# Bus support, required for ic/iic/iicsmb below.
+device		iicbb
+device		ic
+device		iic
+device		iicsmb		# smb over i2c bridge
