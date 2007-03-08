@@ -1821,8 +1821,8 @@ msgstr "Puteti forta modul UDMA daca primiti mesaje de eroare 'UDMA_ERROR.... LB
 msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
 msgstr "Aceasta optiune va permite sa definiti Sistemul de Fisiere (FS) pentru discurile preformatate.<br><em>Lasati optiunea 'neformatat' selectata pentru discurile neformatate si folositi <a href=%s>meniul format </a>.</em>"
 
-msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
-msgstr "Pas optional: Crearea unui disc virtual RAID folosind discul configurat anterior<a href='%s'></a>.<br>Asteptati ca discul sa fie afisat ca 'Activ' inainte de a-l formata si monta!"
+msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"
+msgstr "Pas optional: Crearea unui disc virtual RAID folosind discul configurat anterior<a href='%s'></a>.<br>Asteptati ca discul sa fie afisat ca '%s' inainte de a-l formata si monta!"
 
 msgid "The following input errors were detected"
 msgstr "Au fost detectate urmatoarele erori"

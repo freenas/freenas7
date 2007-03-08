@@ -1850,8 +1850,8 @@ msgstr "如果顯示「UDMA_ERROR.... LBA」的訊息，你可以手動選取UDM
 msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
 msgstr "如果新增已經包含資料的硬碟，請選擇其原本的檔案系統格式就可以獲取其中的資料。<br><em>還沒有規劃檔案格式的磁碟機請選擇「尚未格式化」，之後再進入<a href=%s>格式化工具。</a>選單。</em>"
 
-msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
-msgstr "選擇性的規劃步驟：利用你<a href='%s'>剛才設定的磁碟</a>來建立一個新的RAID磁碟。<br>請等待「up」的狀態出現之後再進行格式化與掛載的動作！"
+msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"
+msgstr "選擇性的規劃步驟：利用你<a href='%s'>剛才設定的磁碟</a>來建立一個新的RAID磁碟。<br>請等待「%s」的狀態出現之後再進行格式化與掛載的動作！"
 
 msgid "The following input errors were detected"
 msgstr "偵測到以下的輸入錯誤"

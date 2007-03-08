@@ -1827,8 +1827,8 @@ msgstr "ハードディスクを使用中 'UDMA_ERROR.... LBA' メッセージ�
 msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
 msgstr "This allows you to set FS type for preformated disk with data.<br><em>フォーマットしないディスクに 'unformated' を選択してから <a href=%s>format menu</a> を使用して下さい．</em>"
 
-msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the 'up' status before format and mount it!"
-msgstr "オプションの設定ステップ: <a href='%s'>先立って設定されたディスク</a> を使用して仮想 RAID ディスクを設定します．<br>フォーマット及びマウントの前にステータスが 'up' する事を確認して下さい!"
+msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"
+msgstr "オプションの設定ステップ: <a href='%s'>先立って設定されたディスク</a> を使用して仮想 RAID ディスクを設定します．<br>フォーマット及びマウントの前にステータスが '%s' する事を確認して下さい!"
 
 msgid "The following input errors were detected"
 msgstr "以下の入力エラーが検出されました"
