@@ -322,11 +322,8 @@ function disk_change() {
 					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
 					// Initialise the partition (optional)
 					echo gettext("Initializing partition").":\n";
-					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-					// Delete old gmirror information */
-					echo sprintf(gettext("Destroying old %s information"), "GMIRROR").":\n";
-					system("/sbin/gmirror clear " . escapeshellarg($disk));
-			echo gettext("Done")."!\n";
+					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=512 count=16");
+					echo gettext("Done")."!\n";
 			break;
 				case "msdos":
 					// Initialize disk
