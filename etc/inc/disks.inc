@@ -149,7 +149,7 @@ function disks_mount($mount)
 			//if (mwexec("/sbin/mount_ntfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
 			// Load the kernel fuse module
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
-			if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname") == 0) {
+			if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname -o force,show_sys_files,allow_other") == 0) {
 				/*echo "DEBUG: MOUNT status:\n";
 				system("/sbin/mount");
 				echo "\ncommand send: /usr/local/bin/ntfs-3g $devname /mnt/$mountname";

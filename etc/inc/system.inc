@@ -1369,12 +1369,14 @@ EOD;
 	
 	if (isset($config['ldap']['enable'])) {
 		$ldapconf = <<<EOD
-host {$config['ldap']['host_ip']}
+uri ldap://{$config['ldap']['host_ip']}
 base {$config['ldap']['base']}
 binddn {$config['ldap']['binddn']}
 bindpw {$config['ldap']['bindpw']}
 nss_base_passwd {$config['ldap']['password_suffix']}?one
-nss_base_group  {$config['ldap']['group_suffix']}?one
+nss_base_shadow {$config['ldap']['password_suffix']}?one
+nss_base_group {$config['ldap']['group_suffix']}?one
+pam_password {$config['ldap']['pam_password']}
 
 EOD;
 		$fd = fopen("{$g['varetc_path']}/ldap.conf", "w");
@@ -1384,10 +1386,29 @@ EOD;
 			$result = 1;
 		}
 
-		fwrite($fd, $ldapconf);
+		fwrite($fd, $ldapsecret);
 		fclose($fd);
 	
 		unset($fd);
+		
+		// Generate the ldap.secret file
+	
+		$ldapsecret = <<<EOD
+{$config['ldap']['password_suffix']}
+
+EOD;
+		$fd = fopen("{$g['varetc_path']}/ldap.secret", "w");
+		if (!$fd) 	{
+			printf("Error: cannot open /var/etc/ldap.secret in system_pam_configure().\n");
+			mwexec('/usr/bin/logger "Error: cannot open /var/etc/ldap.secret in system_pam_configure()" ');
+			$result = 1;
+		}
+
+		fwrite($fd, $ldapsecret);
+		fclose($fd);
+		chmod("{$g['varetc_path']}/ldap.secret",0600);
+		unset($fd);	
+			
 	}
 	
 	return $result;

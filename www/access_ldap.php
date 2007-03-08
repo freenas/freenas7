@@ -51,6 +51,7 @@ $pconfig['bindpw2'] = $pconfig['bindpw'] = $config['ldap']['bindpw'];
 $pconfig['user_suffix'] = $config['ldap']['user_suffix'];
 $pconfig['password_suffix'] = $config['ldap']['password_suffix'];
 $pconfig['group_suffix'] = $config['ldap']['group_suffix'];
+$pconfig['pam_password'] = $config['ldap']['pam_password'];
 
 
 if ($_POST) {
@@ -86,6 +87,7 @@ if ($_POST) {
 		$config['ldap']['user_suffix'] = $_POST['user_suffix'];
 		$config['ldap']['password_suffix'] = $_POST['password_suffix'];
 		$config['ldap']['group_suffix'] = $_POST['group_suffix'];
+		$config['ldap']['pam_password'] = $_POST['pam_password'];
 
 		
 		write_config();
@@ -117,6 +119,7 @@ function enable_change(enable_change) {
 	document.iform.user_suffix.disabled = endis;
 	document.iform.password_suffix.disabled = endis;
 	document.iform.group_suffix.disabled = endis;
+	document.iform.pam_password.disabled = endis;
 }
 //-->
 </script>
@@ -147,22 +150,22 @@ function enable_change(enable_change) {
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Base DN");?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="base" type="text" class="formfld" id="base" size="20" value="<?=htmlspecialchars($pconfig['base']);?>"> 
-      <br><?=gettext("AD or PDC name.");?></td>
+      <br><?=gettext("Specifies the default base DN to use when performing ldap opera-tions. The base must be specified as a Distinguished Name in LDAP format");?></td>
 		</tr>
     <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Administrator name");?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("DN to bind");?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="binddn" type="text" class="formfld" id="binddn" size="20" value="<?=htmlspecialchars($pconfig['binddn']);?>"><br>
-				<?=gettext("Username of a domain administrator account.");?>
+				<?=gettext("Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a Distinguished Name in LDAP format.");?>
 			</td>
 		</tr>
 		<tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Administration password");?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password for DN");?></td>
       <td width="78%" class="vtable">
       	<?=$mandfldhtml;?><input name="bindpw" type="password" class="formfld" id="bindpw" size="20" value="<?=htmlspecialchars($pconfig['bindpw']);?>"><br>
 				<input name="bindpw2" type="password" class="formfld" id="bindpw2" size="20" value="<?=htmlspecialchars($pconfig['bindpw2']);?>"> 
         &nbsp;(<?=gettext("Confirmation");?>)<br>
-        <span class="vexpl"><?=gettext("Password of LDAP administrator account, enter it here twice.");?></span>
+        <span class="vexpl"><?=gettext("The credentials to bind with, enter it here twice.");?></span>
 			</td>
     </tr>
 		<tr>
@@ -185,6 +188,20 @@ function enable_change(enable_change) {
         <?=$mandfldhtml;?><input name="group_suffix" type="text" class="formfld" id="group_suffix" size="20" value="<?=htmlspecialchars($pconfig['group_suffix']);?>"> 
       <br><?=gettext("group_suffix.");?></td>
 		</tr>
+		<tr>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Password encryption"); ?></td>
+            <td width="78%" class="vtable">
+              <?=$mandfldhtml;?><select name="pam_password" class="formfld" id="pam_password">
+              <?php $types = explode(",", "clear,crypt,md5,nds,ad,exop"); $vals = explode(" ", "clear crypt md5 nds ad exop");?>
+              <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+                <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>>
+                <?=htmlspecialchars($types[$j]);?>
+                </option>
+              <?php endfor; ?>
+              </select>
+			  <br><?=gettext("Method of wich your password are sotred in your LDAP");?></td>
+            </td>
+          </tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%"> 
         <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)"> 

@@ -59,8 +59,17 @@ copy_files() {
 		if [ -d /$dir ]; then
 		  mkdir -v $FREENAS/$dir
 		fi
+		
 		# Copy files
 		cp -v -p /$file $FREENAS/$(echo $file | rev | cut -d "/" -f 2- | rev)
+		
+		# Deal with protected files
+		if [ "$file" == "usr/bin/su" ] || [ "$file" == "libexec/ld-elf.so.1" ] || [ "$file" == "usr/bin/passwd" ] || [ "$file" == "sbin/init" ]; then
+			if [ -f $FREENAS/$file ]; then
+				chflags -RH noschg $FREENAS/$file
+			fi
+		fi
+		
 		# Deal with links
 		if [ $(echo "$i" | grep -c ":") -gt 0 ]; then
 			for j in $(echo $i | cut -d ":" -f 2- | sed "s/:/ /g"); do
@@ -191,7 +200,7 @@ add_libs() {
 				chflags -RH noschg ${FREENAS}$i
 			fi
 		fi
-			cp -vp $i ${FREENAS}$(echo $i | rev | cut -d '/' -f 2- | rev)
+		cp -vp $i ${FREENAS}$(echo $i | rev | cut -d '/' -f 2- | rev)
 	done
 	rm -f /tmp/lib.list
 

@@ -247,6 +247,11 @@ sbin/atacontrol
 sbin/camcontrol
 
 ####### contents of /usr/bin
+
+# awk:  awk - pattern-directed scanning and processing language
+# Need for ntfs-3g
+usr/bin/awk
+
 # chgrp: change group
 usr/bin/chgrp
 
