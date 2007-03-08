@@ -46,23 +46,20 @@ $pgtitle = array(gettext("Disks"), gettext("Geom Vinum"), gettext("RAID"));
 	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("Geom Concat"); ?> </a></li>
 	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("Geom Stripe"); ?></a></li>
 	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("Geom Raid5"); ?></a></li> 
-	<li class="tabact"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?></li>
+	<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?></a></li>
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Manage RAID"); ?></a></li>
 	<li class="tabinact"><a href="disks_raid_gvinum_tools.php"><?=gettext("Tools"); ?></a></li>
-	<li class="tabact"><?=gettext("Information"); ?></li>
+	<li class="tabact"><a href="disks_raid_gvinum_info.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Information");?></a></li>
   </ul>
   </td></tr>
   <tr> 
     <td class="tabcont">
 <?php
-
-    
 echo "<pre>";
-
 echo "<strong>" . gettext("Software RAID information and status") . "</strong><br>";
 	exec("/sbin/gvinum list",$rawdata);
 	foreach ($rawdata as $line)

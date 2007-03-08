@@ -1035,8 +1035,8 @@ msgstr "RAID 0 ボリュームは最低でも 2つのディスクが必要です
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "RAID 1 ボリュームは 2つのディスクが必要です．"
 
-msgid "There must be a minimum of 3 disks in a RAID 5 volume."
-msgstr "RAID 5 ボリュームは最低でも 3つのディスクが必要です．"
+msgid "There must be a minimum of 2 disks in a RAID 5 volume."
+msgstr "RAID 5 ボリュームは最低でも 2つのディスクが必要です．"
 
 msgid "ERR Could not save RAID configuration.\n"
 msgstr "エラー: RAID 設定を保存する事が出来ませんでした．\n"

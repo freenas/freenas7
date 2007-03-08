@@ -45,7 +45,7 @@ $pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("RAID"));
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("Geom Mirror"); ?></a></li>
 	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("Geom Concat"); ?></a></li> 
 	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("Geom Stripe"); ?></a></li>
-	<li class="tabact"><?=gettext("Geom Raid5"); ?></li>
+	<li class="tabact"><a href="disks_raid_graid5.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Geom Raid5");?></a></li>
 	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?><?=gettext("(unstable)") ;?> </a></li>
   </ul>
   </td></tr>
@@ -53,16 +53,13 @@ $pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("RAID"));
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("Manage RAID"); ?></a></li>
 	<li class="tabinact"><a href="disks_raid_graid5_tools.php"><?=gettext("Tools"); ?></a></li>
-	<li class="tabact"><?=gettext("Information"); ?></li>
+	<li class="tabact"><a href="disks_raid_graid5_info.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Information");?></a></li>
   </ul>
   </td></tr>
   <tr> 
     <td class="tabcont">
 <?php
-
-    
 echo "<pre>";
-
 echo "<strong>" . gettext("Software RAID information and status") . "</strong><br>";
 	exec("/sbin/graid5 list",$rawdata);
 	foreach ($rawdata as $line)

@@ -1014,8 +1014,8 @@ msgstr "Un volume RAID0 doit &ecirc;tre compos&eacute; d'au moins 2 disques."
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "Un volume RAID1 doit &ecirc;tre compos&eacute; de 2 disques."
 
-msgid "There must be a minimum of 3 disks in a RAID 5 volume."
-msgstr "Un volume RAID5 doit &ecirc;tre compos&eacute; d'au moins 3 disques."
+msgid "There must be a minimum of 2 disks in a RAID 5 volume."
+msgstr "Un volume RAID5 doit &ecirc;tre compos&eacute; d'au moins 2 disques."
 
 msgid "ERR Could not save RAID configuration.\n"
 msgstr "ERREUR Impossible de sauvegarder la configuration RAID.\n"

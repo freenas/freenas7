@@ -1035,8 +1035,8 @@ msgstr "Mindestens zwei Festplatten sind f&uuml;r ein RAID 0 notwendig."
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "Zwei Festplatten sind f&uuml;r ein RAID 1 notwendig."
 
-msgid "There must be a minimum of 3 disks in a RAID 5 volume."
-msgstr "Mindestens drei Festplatten sind f&uuml;r ein RAID 5 notwendig."
+msgid "There must be a minimum of 2 disks in a RAID 5 volume."
+msgstr "Mindestens 2 Festplatten sind f&uuml;r ein RAID 5 notwendig."
 
 msgid "ERR Could not save RAID configuration.\n"
 msgstr "Fehler: RAID-Konfiguration konnte nicht gespeichert werden.\n"

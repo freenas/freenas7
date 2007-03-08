@@ -1020,8 +1020,8 @@ msgstr "Sint necesare cel putin 2 discuri pentru un JBOD."
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "Sint necesare cel putin 2 discuri pentru un RAID 1."
 
-msgid "There must be a minimum of 3 disks in a RAID 5 volume."
-msgstr "Sint necesare cel putin 3 discuri pentru un RAID 5."
+msgid "There must be a minimum of 2 disks in a RAID 5 volume."
+msgstr "Sint necesare cel putin 2 discuri pentru un RAID 5."
 
 msgid "ERR Could not save RAID configuration.\n"
 msgstr "ERROARE: Configuratia RAID nu poate fi salvata.\n"

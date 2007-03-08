@@ -927,8 +927,8 @@ msgstr "There must be a minimum of 2 disks in a RAID 0 volume."
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "There must be 2 disks in a RAID 1 volume."
 
-msgid "There must be a minimum of 3 disks in a RAID 5 volume."
-msgstr "There must be a minimum of 3 disks in a RAID 5 volume."
+msgid "There must be a minimum of 2 disks in a RAID 5 volume."
+msgstr "There must be a minimum of 2 disks in a RAID 5 volume."
 
 msgid "ERR Could not save RAID configuration.\n"
 msgstr "ERR Could not save RAID configuration.\n"

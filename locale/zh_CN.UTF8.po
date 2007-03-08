@@ -1064,9 +1064,6 @@ msgstr "架构 RAID 0 最少要有两个磁碟。"
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "架构 RAID 1 最少要有两个磁碟。"
 
-msgid "There must be a minimum of 3 disks in a RAID 5 volume."
-msgstr "架构 RAID 5 最少要有三个磁碟。"
-
 msgid "ERR Could not save RAID configuration.\n"
 msgstr "错误！不能储存 RAID 设定值。\n"
 

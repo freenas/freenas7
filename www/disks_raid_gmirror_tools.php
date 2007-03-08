@@ -94,7 +94,7 @@ function raid_change() {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact"><?=gettext("Geom Mirror"); ?></li>
+	<li class="tabact"><a href="disks_raid_gmirror.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Geom Mirror");?></a></li>
 	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("Geom Concat"); ?></a></li> 
 	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("Geom Stripe"); ?></a></li>
 	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("Geom Raid5"); ?></a></li> 
@@ -104,7 +104,7 @@ function raid_change() {
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("Manage RAID"); ?></a></li>
-	<li class="tabact"><?=gettext("Tools"); ?></li>
+	<li class="tabact"><a href="disks_raid_gmirror_tools.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Tools");?></a></li>
 	<li class="tabinact"><a href="disks_raid_gmirror_info.php"><?=gettext("Information"); ?></a></li>
   </ul>
   </td></tr>
