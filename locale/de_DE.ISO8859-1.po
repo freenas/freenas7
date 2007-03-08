@@ -387,9 +387,6 @@ msgstr "Ping / Traceroute"
 msgid "ARP table"
 msgstr "ARP Tabelle"
 
-msgid "Command"
-msgstr "Befehl"
-
 msgid "Edit File"
 msgstr "Datei bearbeiten"
 
@@ -404,6 +401,9 @@ msgstr "System Neustarten"
 
 msgid "Shutdown system"
 msgstr "System Herunterfahren"
+
+msgid "Graph"
+msgstr "Graph"
 
 msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
 msgstr "Name des NAS Host, ohne Domain<br>z.B. <em>nas</em>"
@@ -708,9 +708,6 @@ msgstr "S.M.A.R.T-f&auml;hige Ger&auml;te &uuml;berwachen durch Aufzeichnung ihr
 msgid "Tuning"
 msgstr "Feineinstellungen"
 
-msgid "Enable tuning of some kernel variables"
-msgstr "Das Tunen einiger Kernelvariablen aktivieren"
-
 msgid "ZeroConf"
 msgstr "ZeroConf"
 
@@ -1001,6 +998,7 @@ msgstr "Geom Concat"
 
 msgid "Geom Raid5"
 msgstr "Geom Raid5"
+
 msgid "(unstable)"
 msgstr "(instabil)"
 
@@ -1075,6 +1073,9 @@ msgstr "Formatiere UFS Festplatte!"
 
 msgid "Object name"
 msgstr "Objektname"
+
+msgid "Command"
+msgstr "Befehl"
 
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly)."
 msgstr "1. Diese Massnahmen nur zur Fehlerbehebung benutzen!<br>2. Es ist nicht zum Start eines RAIDvolume notwendig (startet automatisch)."
@@ -1292,11 +1293,11 @@ msgstr "Grussbotschaft - Angezeigt bei der ersten Verbindung via FTP."
 msgid "A valid network must be specified."
 msgstr "Ein g&uuml;ltiges Netzwerk muss angegeben werden."
 
+msgid "NFS Server"
+msgstr "NFS Server"
+
 msgid "Map all users to root"
 msgstr "Bilde alle Benutzer auf den Nutzer 'root' ab"
-
-msgid "Map to user"
-msgstr "Bilde auf den Benutzer ab"
 
 msgid "All users will have the root privilege."
 msgstr "Alle Benutzer erhalten Administratorrechte."
@@ -1324,6 +1325,9 @@ msgstr "Rsync Daemon"
 
 msgid "Read only"
 msgstr "Nur lesen"
+
+msgid "Map to user"
+msgstr "Bilde auf den Benutzer ab"
 
 msgid "Alternate TCP port. Default is 873"
 msgstr "Alternativer TCP Port."
@@ -1670,6 +1674,9 @@ msgstr "Signalst&auml;rke Cache"
 msgid "MAC address"
 msgstr "MAC Addresse"
 
+msgid "Signal"
+msgstr "Signal"
+
 msgid "Noise"
 msgstr "St&ouml;rungen"
 
@@ -1726,6 +1733,9 @@ msgstr "Kollisionen"
 
 msgid "CPU load"
 msgstr "CPU Auslastung"
+
+msgid "VLAN tag"
+msgstr "VLAN Tag"
 
 msgid "Edit VLAN"
 msgstr "Bearbeite VLAN"
@@ -1798,6 +1808,9 @@ msgstr "Graph zeigt die letzten"
 
 msgid "Collecting initial data, please wait..."
 msgstr "Ermittle Daten, bitte warten..."
+
+msgid "Enable tuning of some kernel variables"
+msgstr "Das Anpassen einiger KERNEL Variablen zulassen."
 
 msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
 msgstr "Damit wird %s beim Aufruf der Seite <a href=%s>%s</a> nicht nach einer neuen Firmware suchen."
