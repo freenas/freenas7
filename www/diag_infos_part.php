@@ -66,6 +66,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
           echo htmlspecialchars($line) . "<br>";
       	}
       	unset ($fdiskrawdata);
+      	echo "<br>";
       }
       echo "</pre>";
       ?>
