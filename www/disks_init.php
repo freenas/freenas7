@@ -254,7 +254,7 @@ function disk_change() {
 
 				// Erase MBR if not checked
 				if (!$notinitmbr) {
-					echo gettext("Erasing MBR and all partitions").":\n";
+					echo gettext("Erasing MBR and all partitions").".\n";
 					system("dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=32k count=640");
 				}
 				else
@@ -266,32 +266,32 @@ function disk_change() {
 					// Initialize disk
 					echo gettext("Creating one partition").":\n";
 					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-					// Initialise the partition (optional)
-					echo gettext("Initializing partition").":\n";
+					// Initialize the partition
+					echo gettext("Initializing partition").".\n";
 					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
 					// Create s1 label
-					echo gettext("Creating BSD label").":\n";
+					echo gettext("Creating BSD label").".\n";
 					system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
 					// Create filesystem
-			echo gettext("Creating filesystem").":\n";
+					echo gettext("Creating filesystem").":\n";
 					system("/sbin/newfs -U " . escapeshellarg($disk) . "s1");
-			echo gettext("Done")."!\n";
-			break;
+					echo gettext("Done")."!\n";
+					break;
 				case "ufs_no_su":
 					// Initialize disk
 					echo gettext("Creating one partition").":\n";
 					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-					// Initialise the partition (optional)
-					echo gettext("Initializing partition").":\n";
+					// Initialize the partition
+					echo gettext("Initializing partition").".\n";
 					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
 					// Create s1 label
-					echo gettext("Creating BSD label").":\n";
+					echo gettext("Creating BSD label").".\n";
 					system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
 					// Create filesystem
 					echo gettext("Creating filesystem").":\n";
 					system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "s1");
 					echo gettext("Done")."!\n";
-			break;
+					break;
 				case "ufsgpt":
 					// Create GPT partition table
 					echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
@@ -303,7 +303,7 @@ function disk_change() {
 					echo gettext("Creating filesystem with 'Soft Updates'").":\n";
 					system("/sbin/newfs -U " . escapeshellarg($disk) . "p1");
 					echo gettext("Done")."!\n";
-			break;
+					break;
 				case "ufsgpt_no_su":
 					// Create GPT partition table
 					echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
@@ -315,31 +315,28 @@ function disk_change() {
 					echo gettext("Creating filesystem without 'Soft Updates'").":\n";
 					system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "p1");
 					echo gettext("Done")."!\n";
-			break;
-		case "softraid":
-					// Initialize disk
-					echo gettext("Creating one partition").":\n";
-					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-					// Initialise the partition (optional)
-					echo gettext("Initializing partition").":\n";
-					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=512 count=16");
+					break;
+				case "softraid":
+					// Initialise the disk
+					echo gettext("Initializing disk").".\n";
+					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=1m count=16");
 					echo gettext("Done")."!\n";
-			break;
+					break;
 				case "msdos":
 					// Initialize disk
 					echo gettext("Creating one partition").":\n";
 					system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-					// Initialise the partition (optional) */
-					echo gettext("Initializing partition").":\n";
+					// Initialize the partition
+					echo gettext("Initializing partition")."\n";
 					system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
 					// Create s1 label
-					echo gettext("Creating BSD label").":\n";
+					echo gettext("Creating BSD label").".\n";
 					system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
 					// Create filesystem
 					echo gettext("Creating filesystem").":\n";
 					system("/sbin/newfs_msdos -F 32 " . escapeshellarg($disk) . "s1");
-			echo "Done!\n";
-			break;
+					echo "Done!\n";
+					break;
 				}
 				echo('</pre>');
 			}
