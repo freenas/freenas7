@@ -30,8 +30,8 @@ do-install:
 	@${MKDIR} -v $(FREENAS)/usr/local/samba/lib/vfs
 
 	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/CP*.so $(FREENAS)/usr/local/lib/samba/charset
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/codepages/*.dat $(FREENAS)/usr/local/lib/samba
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/po/*.* $(FREENAS)/usr/local/lib/samba
+	@${INSTALL_DATA} $(SRCDIR)/source/codepages/*.dat $(FREENAS)/usr/local/lib/samba
+	@${INSTALL_DATA} $(SRCDIR)/source/po/*.* $(FREENAS)/usr/local/lib/samba
 	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/recycle.so $(FREENAS)/usr/local/samba/lib/vfs
 	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/rid.so $(FREENAS)/usr/local/samba/lib/idmap
 
