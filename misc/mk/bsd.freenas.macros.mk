@@ -20,6 +20,7 @@ ECHO_MSG?=	${ECHO_CMD}
 EXPR?=	/bin/expr
 FALSE?=	false	# Shell builtin
 FETCH_CMD?=	/usr/bin/fetch -ApRr
+GCC?=	/usr/bin/gcc
 GREP?=	/usr/bin/grep
 INSTALL?=	/usr/bin/install
 INSTALL_DATA?=	${INSTALL} -v
