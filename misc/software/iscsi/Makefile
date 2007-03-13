@@ -2,7 +2,7 @@ ARCHIVE=	iscsi-2.0.1.tar.bz2
 URL=	ftp://ftp.cs.huji.ac.il/users/danny/freebsd/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/iscsi
 
-do-build:	clean
+do-build:
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi

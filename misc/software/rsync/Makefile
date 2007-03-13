@@ -2,7 +2,7 @@ ARCHIVE=	rsync-2.6.9.tar.gz
 URL=	http://samba.anu.edu.au/ftp/rsync/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-do-build:	clean
+do-build:
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi

@@ -2,7 +2,7 @@ ARCHIVE=	pure-ftpd-1.0.21.tar.gz
 URL=	ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-do-build:	clean
+do-build:
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi

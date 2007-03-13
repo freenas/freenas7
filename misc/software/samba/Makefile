@@ -2,7 +2,7 @@ ARCHIVE=	samba-3.0.24.tar.gz
 URL=	http://us3.samba.org/samba/ftp/stable/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
-do-build:	clean
+do-build:
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi
@@ -29,11 +29,11 @@ do-install:
 	@${MKDIR} -v $(FREENAS)/usr/local/samba/lib/idmap
 	@${MKDIR} -v $(FREENAS)/usr/local/samba/lib/vfs
 
-	@${CP} -vp $(SRCDIR)/source/bin/CP*.so $(FREENAS)/usr/local/lib/samba/charset
-	@${CP} -vp $(SRCDIR)/source/codepages/*.dat $(FREENAS)/usr/local/lib/samba
-	@${CP} -vp $(SRCDIR)/source/po/*.* $(FREENAS)/usr/local/lib/samba
-	@${CP} -vp $(SRCDIR)/source/bin/recycle.so $(FREENAS)/usr/local/samba/lib/vfs
-	@${CP} -vp $(SRCDIR)/source/bin/rid.so $(FREENAS)/usr/local/samba/lib/idmap
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/CP*.so $(FREENAS)/usr/local/lib/samba/charset
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/codepages/*.dat $(FREENAS)/usr/local/lib/samba
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/po/*.* $(FREENAS)/usr/local/lib/samba
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/recycle.so $(FREENAS)/usr/local/samba/lib/vfs
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/rid.so $(FREENAS)/usr/local/samba/lib/idmap
 
 do-clean:
 	@${RM} -f -r $(SRCDIR)

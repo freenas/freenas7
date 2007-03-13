@@ -11,34 +11,34 @@
 ################################################################
 AWK?=	/usr/bin/awk
 BASENAME?=	/usr/bin/basename
-CUT?=	/usr/bin/cut
+CHMOD?=		/bin/chmod
 CHROOT?=	/usr/sbin/chroot
+CP?=	/bin/cp
+CUT?=	/usr/bin/cut
 ECHO_CMD?=	echo	# Shell builtin
 ECHO_MSG?=	${ECHO_CMD}
 EXPR?=	/bin/expr
 FALSE?=	false	# Shell builtin
-GREP?=	/usr/bin/grep
-REALPATH?=	/bin/realpath
-SED?=	/usr/bin/sed
-SORT?=	/usr/bin/sort
-TR?=	LANG=C /usr/bin/tr
-UNAME?=	/usr/bin/uname
-PKG_ADD?=	/usr/sbin/pkg_add
-PKG_INFO?=	/usr/sbin/pkg_info
-TAR?=	/usr/bin/tar
-TEST?=	test	# Shell builtin
-WHICH?=	/usr/bin/which
-LDCONFIG?=	/sbin/ldconfig
 FETCH_CMD?=	/usr/bin/fetch -ApRr
-CP?=	/bin/cp
-CHMOD?=		/bin/chmod
-MKDIR?= /bin/mkdir -p
-RM?=	/bin/rm
-LN?=	/bin/ln
+GREP?=	/usr/bin/grep
 INSTALL?=	/usr/bin/install
+INSTALL_DATA?=	${INSTALL} -v
 INSTALL_PROGRAM?=	${INSTALL} -vs
 INSTALL_SCRIPT?=	${INSTALL} -v
-INSTALL_DATA?=	${INSTALL} -v
+LDCONFIG?=	/sbin/ldconfig
+LN?=	/bin/ln
+MKDIR?= /bin/mkdir -p
+PKG_ADD?=	/usr/sbin/pkg_add
+PKG_INFO?=	/usr/sbin/pkg_info
+REALPATH?=	/bin/realpath
+RM?=	/bin/rm
+SED?=	/usr/bin/sed
+SORT?=	/usr/bin/sort
+TAR?=	/usr/bin/tar
+TEST?=	test	# Shell builtin
+TR?=	LANG=C /usr/bin/tr
+UNAME?=	/usr/bin/uname
+WHICH?=	/usr/bin/which
 
 # Get the architecture
 .if !defined(ARCH)

@@ -4,7 +4,7 @@ SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
 
 LIB_DEPENDS=	xml2.5:${PORTSDIR}/textproc/libxml2
 
-do-build:	clean
+do-build:
 	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
 		cd $(FREENASDISTFILES) && fetch $(URL); \
 	fi

@@ -12,6 +12,6 @@ pre-depends:
 	@export WITH_SCPONLY_UNISON=YES
 
 do-install:
-	install -vs ${PORTSDIR}/shells/scponly/work/scponly*/scponly $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/shells/scponly/work/scponly*/scponly $(FREENAS)/usr/local/bin
 
 .include "bsd.freenas.mk"
