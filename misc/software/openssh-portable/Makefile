@@ -13,6 +13,6 @@ do-install:
 # Create link to moduli file to prevent log entry:
 # WARNING: /usr/local/etc/ssh/moduli does not exist, using fixed modulus
 	@${MKDIR} -v $(FREENAS)/usr/local/etc/ssh
-	@${LN} -fsv $(FREENAS)/etc/ssh/moduli $(FREENAS)/usr/local/etc/ssh/moduli
+	@${LN} -fsv /etc/ssh/moduli $(FREENAS)/usr/local/etc/ssh/moduli
 
 .include "bsd.freenas.mk"
