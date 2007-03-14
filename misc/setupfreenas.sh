@@ -490,7 +490,8 @@ $DIALOG --title \"$PRODUCTNAME - Software packages\" \\
 		[ ! -d "$s" ] && continue
 		package=`basename $s`
 		desc=`cat $s/pkg-descr`
-		echo "\"$package\" \"$desc\" ON \\" >> $tempfile
+		state=`cat $s/pkg-state`
+		echo "\"$package\" \"$desc\" $state \\" >> $tempfile
 	done
 
 	# Display list of available packages.
