@@ -12,6 +12,6 @@ do-install:
 	@${CP} -pv ${PORTSDIR}/sysutils/fusefs-ntfs/work/ntfs-3g*/libntfs-3g/.libs/libntfs-3g.so $(FREENAS)/usr/local/lib/libntfs-3g.so.0
 
 	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/fusefs-ntfs/work/ntfs-3g*/src/.libs/ntfs-3g $(FREENAS)/usr/local/bin
-	@${cp} -pv /usr/local/lib/libfuse.so.2 $(FREENAS)/usr/local/lib
+	@${CP} -pv /usr/local/lib/libfuse.so.2 $(FREENAS)/usr/local/lib
 
 .include "bsd.freenas.mk"
