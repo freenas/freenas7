@@ -13,17 +13,17 @@ do-build:
 	@${MAKE} -C $(SRCDIR)
 
 do-install:
-	@${INSTALL_PROGRAM} -vs $(SRCDIR)/src/lighttpd $(FREENAS)/usr/local/sbin
+	@${INSTALL_PROGRAM} $(SRCDIR)/src/lighttpd $(FREENAS)/usr/local/sbin
 
 	@${MKDIR} -v $(FREENAS)/usr/local/lib/lighttpd
-	@${INSTALL_PROGRAM} $(SRCDIR)/src/.libs/mod_indexfile.so $(FREENAS)/usr/local/lib/lighttpd
-	@${INSTALL_PROGRAM} $(SRCDIR)/src/.libs/mod_access.so $(FREENAS)/usr/local/lib/lighttpd
-	@${INSTALL_PROGRAM} $(SRCDIR)/src/.libs/mod_accesslog.so $(FREENAS)/usr/local/lib/lighttpd
-	@${INSTALL_PROGRAM} $(SRCDIR)/src/.libs/mod_dirlisting.so $(FREENAS)/usr/local/lib/lighttpd
-	@${INSTALL_PROGRAM} $(SRCDIR)/src/.libs/mod_staticfile.so $(FREENAS)/usr/local/lib/lighttpd
-	@${INSTALL_PROGRAM} $(SRCDIR)/src/.libs/mod_cgi.so $(FREENAS)/usr/local/lib/lighttpd
-	@${INSTALL_PROGRAM} $(SRCDIR)/src/.libs/mod_auth.so $(FREENAS)/usr/local/lib/lighttpd
-	@${INSTALL_PROGRAM} $(SRCDIR)/src/.libs/mod_webdav.so $(FREENAS)/usr/local/lib/lighttpd
+	@${CP} -pv $(SRCDIR)/src/.libs/mod_indexfile.so $(FREENAS)/usr/local/lib/lighttpd
+	@${CP} -pv $(SRCDIR)/src/.libs/mod_access.so $(FREENAS)/usr/local/lib/lighttpd
+	@${CP} -pv $(SRCDIR)/src/.libs/mod_accesslog.so $(FREENAS)/usr/local/lib/lighttpd
+	@${CP} -pv $(SRCDIR)/src/.libs/mod_dirlisting.so $(FREENAS)/usr/local/lib/lighttpd
+	@${CP} -pv $(SRCDIR)/src/.libs/mod_staticfile.so $(FREENAS)/usr/local/lib/lighttpd
+	@${CP} -pv $(SRCDIR)/src/.libs/mod_cgi.so $(FREENAS)/usr/local/lib/lighttpd
+	@${CP} -pv $(SRCDIR)/src/.libs/mod_auth.so $(FREENAS)/usr/local/lib/lighttpd
+	@${CP} -pv $(SRCDIR)/src/.libs/mod_webdav.so $(FREENAS)/usr/local/lib/lighttpd
 
 do-clean:
 	@${RM} -f -r $(SRCDIR)

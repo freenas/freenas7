@@ -17,8 +17,8 @@ do-build:
 	@${MAKE} -C $(SRCDIR)/iscontrol
 
 do-install:
-	@${INSTALL_PROGRAM} $(SRCDIR)/sys/modules/iscsi_initiator/iscsi_initiator.ko $(FREENAS)/boot/kernel
 	@${INSTALL_PROGRAM} $(SRCDIR)/iscontrol/iscontrol $(FREENAS)/usr/local/sbin
+	@${CP} -pv $(SRCDIR)/sys/modules/iscsi_initiator/iscsi_initiator.ko $(FREENAS)/boot/kernel
 
 do-clean:
 	@${RM} -f -r $(WORKINGDIR)/iscsi

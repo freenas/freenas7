@@ -16,12 +16,12 @@ do-install:
 	@${INSTALL_PROGRAM} $(SRCDIR)/etc/afpd/afpd $(FREENAS)/usr/local/sbin
 
 	@${MKDIR} -v $(FREENAS)/etc/uams
-	@${INSTALL_PROGRAM} $(SRCDIR)/etc/uams/.libs/uams_passwd.so $(FREENAS)/etc/uams
-	@${INSTALL_PROGRAM} $(SRCDIR)/etc/uams/.libs/uams_dhx_passwd.so $(FREENAS)/etc/uams
-	@${INSTALL_PROGRAM} $(SRCDIR)/etc/uams/.libs/uams_guest.so $(FREENAS)/etc/uams
-	@${INSTALL_PROGRAM} $(SRCDIR)/etc/uams/.libs/uams_randnum.so $(FREENAS)/etc/uams
+	@${CP} -pv $(SRCDIR)/etc/uams/.libs/uams_passwd.so $(FREENAS)/etc/uams
+	@${CP} -pv $(SRCDIR)/etc/uams/.libs/uams_dhx_passwd.so $(FREENAS)/etc/uams
+	@${CP} -pv $(SRCDIR)/etc/uams/.libs/uams_guest.so $(FREENAS)/etc/uams
+	@${CP} -pv $(SRCDIR)/etc/uams/.libs/uams_randnum.so $(FREENAS)/etc/uams
 
-	@cd $(FREENAS)/etc/uams && ln -fsv uams_passwd.so uams_clrtxt.so && ln -fsv uams_dhx_passwd.so uams_dhx.so
+	@cd $(FREENAS)/etc/uams && ${LN} -fsv uams_passwd.so uams_clrtxt.so && ${LN} -fsv uams_dhx_passwd.so uams_dhx.so
 
 do-clean:
 	@${RM} -f -r $(SRCDIR)

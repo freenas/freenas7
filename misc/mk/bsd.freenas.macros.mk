@@ -29,6 +29,7 @@ INSTALL_SCRIPT?=	${INSTALL} -v
 LDCONFIG?=	/sbin/ldconfig
 LN?=	/bin/ln
 MKDIR?= /bin/mkdir -p
+PATCH?=	/usr/bin/patch
 PKG_ADD?=	/usr/sbin/pkg_add
 PKG_INFO?=	/usr/sbin/pkg_info
 REALPATH?=	/bin/realpath

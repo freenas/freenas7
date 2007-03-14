@@ -3,7 +3,7 @@ SRCDIR=	/usr/src/sbin/geom/class/eli
 do-build:
 	# Patch geom eli sources if necessary.
 	-@if [ ! -e $(SRCDIR)/geom_eli.c.orig ]; then \
-		patch -f $(SRCDIR)/geom_eli.c ${FILESDIR}/patch-geom_eli.c; \
+		${PATCH} -f $(SRCDIR)/geom_eli.c ${FILESDIR}/patch-geom_eli.c; \
 	fi
 
 	@${MAKE} -C $(SRCDIR)
