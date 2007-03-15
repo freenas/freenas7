@@ -244,11 +244,10 @@ sbin/camcontrol
 
 ####### contents of /usr/bin
 
-# awk:  awk - pattern-directed scanning and processing language
-# Need for ntfs-3g
+# awk - pattern-directed scanning and processing language
 usr/bin/awk
 
-# chgrp: change group
+# chgrp - change group
 usr/bin/chgrp
 
 # fstat -- identify active files . Fuse mount use fstat
@@ -306,6 +305,8 @@ usr/bin/touch
 ## uptime -- show how long system has been running
 usr/bin/uptime:usr/bin/w
 
+## ldd - list dynamic object dependencies
+usr/bin/ldd
 
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
