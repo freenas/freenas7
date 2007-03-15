@@ -1,11 +1,10 @@
 # freenas.files
-# List of files required for a the FreeNAS,
-# intended to be parsed by mkmini.pl (script created by Manuel Kasper <mk@neon1.net>)
+# List of files required for a the FreeNAS.
 #
-# Lines with colons (':') in them list files that should be hard-linked
+# Lines with colons (':') in them list files that should be soft-linked
 # to each other, e.g.
 #     bin/link:bin/ln
-# instructs mkmini.pl to copy over bin/link, then hard link ln to it.
+# => Copy over bin/link, then soft link ln to it.
 
 ####### contents of /bin
 

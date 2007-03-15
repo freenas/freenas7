@@ -39,49 +39,52 @@ urlbasename() {
 
 # Copying required files
 copy_files() {
-  cd $WORKINGDIR
+	# Make a symbolic 'chroot' to FreeNAS root.
+  cd $FREENAS
 
 	echo
 	echo "Adding required files:"
 
-	[ -f freenas.files ] && rm -f freenas.files
+	[ -f $WORKINGDIR/freenas.files ] && rm -f $WORKINGDIR/freenas.files
 	cp $SVNDIR/misc/freenas.files $WORKINGDIR
 
 	# Add custom binaries
-	if [ -f freenas.custfiles ]; then
-		cat freenas.custfiles >> freenas.files
+	if [ -f $WORKINGDIR/freenas.custfiles ]; then
+		cat $WORKINGDIR/freenas.custfiles >> $WORKINGDIR/freenas.files
 	fi
 
-	for i in $(cat freenas.files | grep -v "^#"); do
+	for i in $(cat $WORKINGDIR/freenas.files | grep -v "^#"); do
 		file=$(echo "$i" | cut -d ":" -f 1)
+
 		# Deal with directories
 		dir=$(echo "$i" | cut -d "*" -f 1)	
-		if [ -d /$dir ]; then
-		  mkdir -pv $FREENAS/$dir
+		if [ -d $dir ]; then
+		  mkdir -pv $dir
 		fi
 		
 		# Copy files
-		cp -v -p /$file $FREENAS/$(echo $file | rev | cut -d "/" -f 2- | rev)
+		cp -pv /$file $(echo $file | rev | cut -d "/" -f 2- | rev)
 		
 		# Deal with protected files
 		if [ "$file" == "usr/bin/su" ] || [ "$file" == "libexec/ld-elf.so.1" ] || [ "$file" == "usr/bin/passwd" ] || [ "$file" == "sbin/init" ]; then
-			if [ -f $FREENAS/$file ]; then
-				chflags -RH noschg $FREENAS/$file
+			if [ -f $file ]; then
+				chflags -RH noschg $file
 			fi
 		fi
 		
 		# Deal with links
 		if [ $(echo "$i" | grep -c ":") -gt 0 ]; then
 			for j in $(echo $i | cut -d ":" -f 2- | sed "s/:/ /g"); do
-				ln $FREENAS/$file $FREENAS/$j
+				ln -sv /$file $j
 			done
 		fi
 	done
 
-	rm -f $WORKINGDIR/freenas.files
-
 	# Setting right permission to su binary
-	chmod 4755 $FREENAS/usr/bin/su
+	chmod 4755 usr/bin/su
+
+	# Cleanup
+	rm -f $WORKINGDIR/freenas.files
 
 	return 0
 }
