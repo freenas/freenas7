@@ -289,8 +289,8 @@ usr/bin/su
 usr/bin/scp
 
 ##ssh -- secure Shell Client (used for RSYNC and Unison over SSH)
-# FreeNAS use the port openssh-portable with HPN-SSH patch enabled
-# usr/bin/ssh
+# Note: Will be overwritten when openssh-portable package is activated.
+usr/bin/ssh
 
 ## tail -- display the last part of a file
 usr/bin/tail
@@ -350,16 +350,16 @@ usr/sbin/rpc.lockd
 usr/sbin/rpc.statd
 
 # sshd - Daemon program for ssh
-# FreeNAS use the port openssh-portable with HPN-SSH patch enabled
-#usr/sbin/sshd
+# Note: Will be overwritten when openssh-portable package is activated.
+usr/sbin/sshd
 
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
 
 # sft-server
-# FreeNAS use the port openssh-portable with HPN-SSH patch enabled
-#usr/libexec/sftp-server
+# Note: Will be overwritten when openssh-portable package is activated.
+usr/libexec/sftp-server
 
 ####### contents of /usr/share/misc
 usr/share/misc/termcap

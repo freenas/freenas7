@@ -9,6 +9,7 @@ do-install:
 	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/sshd $(FREENAS)/usr/sbin
 	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/ssh $(FREENAS)/usr/bin
 	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/sftp-server $(FREENAS)/usr/libexec
+	@${CP} -pv ${PORTSDIR}/security/openssh-portable/work/openssh-*/moduli $(FREENAS)/etc/ssh
 
 # Create link to moduli file to prevent log entry:
 # WARNING: /usr/local/etc/ssh/moduli does not exist, using fixed modulus
