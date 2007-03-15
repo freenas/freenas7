@@ -57,7 +57,7 @@ copy_files() {
 		# Deal with directories
 		dir=$(echo "$i" | cut -d "*" -f 1)	
 		if [ -d /$dir ]; then
-		  mkdir -v $FREENAS/$dir
+		  mkdir -pv $FREENAS/$dir
 		fi
 		
 		# Copy files
