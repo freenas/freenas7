@@ -34,6 +34,7 @@
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
+	require_once("install.inc");
 
 	/* Get product information */
 	$productname = get_product_name();
@@ -78,25 +79,24 @@
 	} while (!is_validaliasname($harddrive));
 	
 	/* check if destination drive is mounted */
-
 	if (disks_check_mount($harddrive)) 	{
 		echo "\nYour destination drive is already used!\n";
 		fgets($fp);
 		exit(0);
 	}
 	
-	if(system_install_mount_cd($cdrom)) 	{
+	if(install_mount_cd($cdrom)) {
 		echo "\nMeet a problem for mounting the CDROM.\n";
 		exit(0);
 	}
 	
-	if(system_install_installation($harddrive)) 	{
+	if(install_dd_image($harddrive)) {
 		echo "\nMeet a problem during file copying.\n";
-		system_install_unmount();
+		install_unmount_cd();
 		exit(0);
 	}
 	
-	system_install_unmount();
+	install_unmount_cd();
 	
 	echo <<<EOD
 	

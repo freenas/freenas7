@@ -34,6 +34,7 @@
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
+	require_once("install.inc");
 
 	/* Get product information */
 	$productname = get_product_name();
@@ -77,33 +78,32 @@
 	} while (!is_validaliasname($harddrive));
 	
 	/* check if destination drive is mounted */
-
 	if (disks_check_mount($harddrive)) 	{
 		echo "\nYour destination drive is already used!\n";
 		fgets($fp);
 		exit(0);
 	}
 
-	if(system_install_mount_cd($cdrom)) 	{
+	if(install_mount_cd($cdrom)) {
 		echo "\nThere is a problem mounting the CDROM.\n";
 		fgets($fp);
 		exit(0);
 	}
 	
-	if(system_install_init_halfdisk($harddrive)) 	{
+	if(install_init_halfdisk($harddrive)) {
 		echo "\nThere is a problem for initializing the destination disk.\n";
-		system_install_unmount();
+		install_unmount_cd();
 		exit(0);
 	}
 	
 	$installharddrive = "$harddrive" . "s1";
-	if(system_install_installation($installharddrive)) {
+	if(install_dd_image($installharddrive)) {
 		echo "\nThere is a problem during file copying.\n";
-		system_install_unmount();
+		install_unmount_cd();
 		exit(0);
 	}
 	
-	system_install_unmount();
+	install_unmount_cd();
 	
 	echo <<<EOD
 	
