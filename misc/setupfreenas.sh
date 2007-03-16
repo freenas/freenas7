@@ -39,7 +39,7 @@ urlbasename() {
 
 # Copying required files
 copy_files() {
-	# Make a symbolic 'chroot' to FreeNAS root.
+	# Make a pseudo 'chroot' to FreeNAS root.
   cd $FREENAS
 
 	echo
