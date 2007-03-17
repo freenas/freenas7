@@ -26,7 +26,7 @@ DIALOG="dialog"
 #Keep this file very small! This file is unzipped to a RAM disk at FreeNAS startup
 MFSROOT_SIZE="44"
 #Size in MB f the IMG file, that include zipped MFS Root filesystem image plus bootlaoder and kernel.
-IMG_SIZE="21"
+IMG_SIZE="22"
 
 # URL's:
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
@@ -176,6 +176,7 @@ build_kernel() {
 	cp -v -p /boot/mbr $FREENAS/boot
 	cp -v -p /boot/boot $FREENAS/boot
 	cp -v -p /boot/boot0 $FREENAS/boot
+	cp -v -p /boot/boot1 $FREENAS/boot
 
 	return 0
 }
@@ -260,6 +261,8 @@ create_image() {
 	echo "IMG: Configuring FreeBSD label on this memory disk"
 	bsdlabel -B -w -b $BOOTDIR/boot /dev/md0 auto
 	bsdlabel md0 >/tmp/label.$$
+	# Replace the a: unuset by a a:4.2BSD
+	#Replacing c: with a: is a trick, when this file is apply, this line is ignored
 	bsdlabel md0 |
 		 egrep unused |
 		 sed "s/c:/a:/" |
@@ -299,7 +302,12 @@ create_image() {
 	mv $WORKINGDIR/image.bin.gz $IMGFILENAME
 	
 	echo "Cleaning tempo file"
-	[ -d $TMPDIR ] && rm -rf $TMPDIR
+	if [ -d $TMPDIR ]; then
+		chflags -RH noschg $TMPDIR/lib/libc.so.6
+		chflags -RH noschg $TMPDIR/lib/libcrypt.so.3
+		chflags -RH noschg $TMPDIR/lib/libpthread.so.2
+		rm -rf $TMPDIR
+	fi
 	[ -f $WORKINGDIR/mfsroot.gz ] && rm -f $WORKINGDIR/mfsroot.gz
 	[ -f $WORKINGDIR/image.bin ] && rm -f $WORKINGDIR/image.bin
 
