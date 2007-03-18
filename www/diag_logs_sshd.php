@@ -40,7 +40,7 @@ if (!$nentries)
 	$nentries = 50;
 
 if ($_POST['clear']) {
-	exec("/usr/sbin/clog -i -s 262144 /var/log/sshd.log");
+	exec("/usr/sbin/clog -i -s 32768 /var/log/sshd.log");
 	/* redirect to avoid reposting form data on refresh */
 	header("Location: diag_logs_sshd.php");
 	exit;

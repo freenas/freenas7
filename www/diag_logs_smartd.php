@@ -41,7 +41,7 @@ if (!$nentries)
 
 if ($_POST['clear'])
 {
-	exec("/usr/sbin/clog -i -s 262144 /var/log/smartd.log");
+	exec("/usr/sbin/clog -i -s 32768 /var/log/smartd.log");
 	/* redirect to avoid reposting form data on refresh */
 	header("Location: diag_logs_smartd.php");
 	exit;

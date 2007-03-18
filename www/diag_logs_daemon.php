@@ -41,7 +41,7 @@ if (!$nentries)
 
 if ($_POST['clear'])
 {
-	exec("/usr/sbin/clog -i -s 262144 /var/log/daemon.log");
+	exec("/usr/sbin/clog -i -s 32768 /var/log/daemon.log");
 	/* redirect to avoid reposting form data on refresh */
 	header("Location: diag_logs_daemon.php");
 	exit;
