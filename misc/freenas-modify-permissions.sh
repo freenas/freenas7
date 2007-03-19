@@ -7,7 +7,7 @@ ROOTDIR=
 
 echo "Modify file permissions..."
 
-if [ ! -z "$1" ]; then
+if [ ! -z "$1" ] && [ -d "$1" ]; then
   ROOTDIR=$1;
   echo "Using directory $1.";
 fi
