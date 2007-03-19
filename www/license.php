@@ -147,13 +147,11 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 	  
 	   <p>Fuse: Filesystem in Userspace (<a href="http://fuse.sourceforge.net/" target="_blank">http://fuse.sourceforge.net/</a>)<br>
       </p>
-	  
+		<p>e2fsprogs (<a href="http://e2fsprogs.sourceforge.net" target="_blank">http://e2fsprogs.sourceforge.net</a>)<br>
+      Copyright &copy; 1994-2006 Theodore Ts'o. All rights reserved.
+		</p>
 	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com/" target="_blank">http://www.pfsense.com/</a>)<br>
-	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All Rights Reserved.
+	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
       </p>
-	  
-	  
-	  
-	  
 
 <?php include("fend.inc"); ?>
