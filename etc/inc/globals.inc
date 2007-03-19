@@ -80,6 +80,7 @@ $g_filesystems = array(
 	"msdos" => "FAT32",
 	"cd9660" => "CD/DVD",
 	"ntfs" => "NTFS",
+	"ext2" => "EXT2",
 	"softraid" => "Software RAID",
 	"geli" => "Encrypted"
 );
