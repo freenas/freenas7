@@ -173,7 +173,8 @@ build_kernel() {
 
 # Adding the libraries
 add_libs() {
-	echo "\nAdding required libs:"
+	echo
+	echo "Adding required libs:"
 
 	# Identify required libs.
 	[ -f /tmp/lib.list ] && rm -f /tmp/lib.list
