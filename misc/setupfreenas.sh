@@ -61,17 +61,10 @@ copy_files() {
 		if [ -d $dir ]; then
 		  mkdir -pv $dir
 		fi
-		
+
 		# Copy files
 		cp -pv /$file $(echo $file | rev | cut -d "/" -f 2- | rev)
-		
-		# Deal with protected files
-		if [ "$file" == "usr/bin/su" ] || [ "$file" == "libexec/ld-elf.so.1" ] || [ "$file" == "usr/bin/passwd" ] || [ "$file" == "sbin/init" ]; then
-			if [ -f $file ]; then
-				chflags -RH noschg $file
-			fi
-		fi
-		
+
 		# Deal with links
 		if [ $(echo "$i" | grep -c ":") -gt 0 ]; then
 			for j in $(echo $i | cut -d ":" -f 2- | sed "s/:/ /g"); do
@@ -79,9 +72,6 @@ copy_files() {
 			done
 		fi
 	done
-
-	# Setting right permission to su binary
-	chmod 4755 usr/bin/su
 
 	# Cleanup
 	rm -f $WORKINGDIR/freenas.files
@@ -183,8 +173,7 @@ build_kernel() {
 
 # Adding the libraries
 add_libs() {
-	echo
-	echo "Adding required libs:"
+	echo "\nAdding required libs:"
 
 	# Identify required libs.
 	[ -f /tmp/lib.list ] && rm -f /tmp/lib.list
@@ -197,15 +186,10 @@ add_libs() {
 
 	# Copy identified libs.
 	for i in $(sort -u /tmp/lib.list); do
-	  
-		if [ "$i" == "/lib/libc.so.6" ] || [ "$i" == "/lib/libcrypt.so.3" ] || [ "$i" == "/lib/libpthread.so.2" ]; then
-			if [ -f ${FREENAS}$i ]; then
-				echo "Remove flag for special libs"
-				chflags -RH noschg ${FREENAS}$i
-			fi
-		fi
 		cp -vp $i ${FREENAS}$(echo $i | rev | cut -d '/' -f 2- | rev)
 	done
+
+	# Cleanup.
 	rm -f /tmp/lib.list
 
   return 0
@@ -463,6 +447,7 @@ Menu:
 4 - Software package
 5 - Build bootloader
 6 - Add necessary libraries
+7 - Modify file permissions
 * - Quit
 > '
   	read choice
@@ -473,6 +458,7 @@ Menu:
   		4) build_softpkg;;
   		5) $SVNDIR/misc/freenas-create-bootdir.sh -f $BOOTDIR;;
   		6) add_libs;;
+  		7) $SVNDIR/misc/freenas-modify-permissions.sh $FREENAS;;
   		*) main;;
   	esac
   	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
