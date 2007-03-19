@@ -1540,6 +1540,8 @@ function get_fstype_shortdesc($fstype) {
                           break;
 		case "geli":					$shortdesc = gettext("Encrypted");
                           break;
+    case "ext2":					$shortdesc = "EXT2";
+    											break;
   }
   
   return $shortdesc;
