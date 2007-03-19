@@ -285,14 +285,10 @@ create_image() {
 	echo "IMG: Compress the IMG file"
 	gzip -9 $WORKINGDIR/image.bin
 	mv $WORKINGDIR/image.bin.gz $IMGFILENAME
-	
+
+	# Cleanup.
 	echo "Cleaning tempo file"
-	if [ -d $TMPDIR ]; then
-		chflags -RH noschg $TMPDIR/lib/libc.so.6
-		chflags -RH noschg $TMPDIR/lib/libcrypt.so.3
-		chflags -RH noschg $TMPDIR/lib/libpthread.so.2
-		rm -rf $TMPDIR
-	fi
+	[ -d $TMPDIR ] && rm -rf $TMPDIR
 	[ -f $WORKINGDIR/mfsroot.gz ] && rm -f $WORKINGDIR/mfsroot.gz
 	[ -f $WORKINGDIR/image.bin ] && rm -f $WORKINGDIR/image.bin
 
