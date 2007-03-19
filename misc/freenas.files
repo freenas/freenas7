@@ -259,8 +259,8 @@ usr/bin/fetch
 ## This utility prevent WinSCP to display error message
 usr/bin/groups
 
-## gzip, gunzip, zcat - compress or expand files
-usr/bin/gzip:usr/bin/gunzip
+## gzip, gunzip, zcat, gzcat - compress or expand files
+usr/bin/gzip:usr/bin/gunzip:usr/bin/zcat:usr/bin/gzcat
 
 ## id - displays the user and group names and numeric IDs, of the calling process
 usr/bin/id
