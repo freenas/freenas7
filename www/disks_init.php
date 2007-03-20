@@ -329,9 +329,6 @@ function disk_change() {
 						// Initialize the partition
 						echo gettext("Initializing partition")."\n";
 						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-						// Create s1 label
-						echo gettext("Creating BSD label").".\n";
-						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
 						// Create filesystem
 						echo gettext("Creating filesystem").":\n";
 						system("/sbin/newfs_msdos -F 32 " . escapeshellarg($disk) . "s1");
@@ -344,9 +341,6 @@ function disk_change() {
 						// Initialize the partition
 						echo gettext("Initializing partition")."\n";
 						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-						// Create s1 label
-						echo gettext("Creating BSD label").".\n";
-						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
 						// Create filesystem
 						echo gettext("Creating filesystem").":\n";
 						system("/usr/local/sbin/mke2fs " . escapeshellarg($disk) . "s1");
