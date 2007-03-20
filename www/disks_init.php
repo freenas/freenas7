@@ -82,6 +82,11 @@ unset($a_fst['cd9660']);
 // Remove the first blank line 'unknown'
 $a_fst = array_slice($a_fst, 1);
 
+/* Load the cfdevice file for found the disk where FreeNAS is installed*/
+$filename=$g['varetc_path']."/cfdevice";
+$cfdevice = trim(file_get_contents("$filename"));
+$cfdevice = "/dev/" . $cfdevice;
+
 /* Get disk configurations. */
 $a_disk = &$config['disks']['disk'];
 $a_gconcat = &$config['gconcat']['vdisk'];
@@ -112,6 +117,10 @@ if ($_POST) {
 		if(disks_check_mount_fullname($disk)) {
 			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
 			$do_format = false;
+		}
+		
+		if (strstr ($cfdevice,$disk) ) {
+		$input_errors[] = gettext("Can't Format the drive where FreeNAS configuration file is installed!");
 		}
 
 		if ($do_format) {
