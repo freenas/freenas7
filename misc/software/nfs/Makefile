@@ -1,3 +1,7 @@
+PKGNAME=	nfs
+COMMENT=	NFS Tools
+MAINTAINER=	votdev@gmx.de
+
 do-install:
 	@${INSTALL_PROGRAM} /usr/sbin/nfsd $(FREENAS)/usr/sbin
 	@${INSTALL_PROGRAM} /usr/sbin/mountd $(FREENAS)/usr/sbin

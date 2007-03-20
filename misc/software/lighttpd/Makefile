@@ -1,3 +1,7 @@
+PKGNAME=	lighttpd
+COMMENT=	A secure, fast, compliant, and very flexible Web Server
+MAINTAINER=	votdev@gmx.de
+
 ARCHIVE=	lighttpd-1.4.13.tar.gz
 URL=	http://www.lighttpd.net/download/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)

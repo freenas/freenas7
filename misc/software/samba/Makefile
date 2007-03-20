@@ -1,3 +1,7 @@
+PKGNAME=	samba
+COMMENT=	A free SMB and CIFS client and server for UNIX
+MAINTAINER=	votdev@gmx.de
+
 ARCHIVE=	samba-3.0.24.tar.gz
 URL=	http://us3.samba.org/samba/ftp/stable/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)

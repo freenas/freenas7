@@ -1,3 +1,7 @@
+PKGNAME=	gzip
+COMMENT=	A compression utility designed to be a replacement for compress
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	ataidle:${PORTSDIR}/archivers/gzip
 
 do-install:

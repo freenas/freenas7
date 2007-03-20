@@ -1,3 +1,7 @@
+PKGNAME=	mDNSResponder
+COMMENT=	Apple's mDNSResponder
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	mDNSResponder:${PORTSDIR}/net/mDNSResponder
 
 do-install:

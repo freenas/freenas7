@@ -1,3 +1,7 @@
+PKGNAME=	clog
+COMMENT=	Circular log file tool
+MAINTAINER=	votdev@gmx.de
+
 do-build:
 	@${TAR} -zxvf ${FILESDIR}/syslogd_clog-current.tgz -C /usr/src/usr.bin 
 	@${TAR} -zxvf ${FILESDIR}/clog-1.0.1.tar.gz -C /usr/src/usr.bin

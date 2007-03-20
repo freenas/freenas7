@@ -1,3 +1,7 @@
+PKGNAME=	unison
+COMMENT=	A user-level file synchronization tool
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	unison:${PORTSDIR}/net/unison
 
 pre-depends:

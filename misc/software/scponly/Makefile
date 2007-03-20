@@ -1,3 +1,7 @@
+PKGNAME=	scponly
+COMMENT=	A tiny shell that only permits scp and sftp
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	scponly:${PORTSDIR}/shells/scponly
 
 pre-depends:

@@ -1,3 +1,7 @@
+PKGNAME=	locale
+COMMENT=	Language packages for FreeNAS
+MAINTAINER=	votdev@gmx.de
+
 do-build:
 	# Translate *po files to *.mo.
 	@for i in $$(ls $(SVNDIR)/locale/*.po); do \

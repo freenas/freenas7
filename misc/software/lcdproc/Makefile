@@ -1,3 +1,7 @@
+PKGNAME=	lcdproc
+COMMENT=	A client/server suite for LCD devices
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	lcdproc:${PORTSDIR}/sysutils/lcdproc
 
 pre-depends:

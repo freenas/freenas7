@@ -1,3 +1,7 @@
+PKGNAME=	e2fsprogs
+COMMENT=	Utilities to manipulate ext2/ext3 filesystems
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	e2fsprogs:${PORTSDIR}/sysutils/e2fsprogs
 
 do-install:

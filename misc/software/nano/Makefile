@@ -1,3 +1,7 @@
+PKGNAME=	nano
+COMMENT=	Nano's ANOther editor, an enhanced free Pico clone
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	nano:${PORTSDIR}/editors/nano
 
 .include "bsd.freenas.macros.mk"

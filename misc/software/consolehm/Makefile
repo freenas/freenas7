@@ -1,3 +1,7 @@
+PKGNAME=	consolehm
+COMMENT=	Console based hardware monitor
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	consolehm:${PORTSDIR}/sysutils/consolehm
 
 do-install:

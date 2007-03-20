@@ -1,3 +1,7 @@
+PKGNAME=	ataidle
+COMMENT=	Utility to set spindown timeout for ATA drives
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	ataidle:${PORTSDIR}/sysutils/ataidle
 
 do-install:

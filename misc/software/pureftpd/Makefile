@@ -1,3 +1,7 @@
+PKGNAME=	pureftpd
+COMMENT=	A fast and very secure FTP server
+MAINTAINER=	votdev@gmx.de
+
 ARCHIVE=	pure-ftpd-1.0.21.tar.gz
 URL=	ftp://ftp.pureftpd.org/pub/pure-ftpd/releases/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)

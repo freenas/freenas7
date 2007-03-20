@@ -1,3 +1,7 @@
+PKGNAME=	geom_raid5
+COMMENT=	GEOM RAID5 filesystem
+MAINTAINER=	votdev@gmx.de
+
 ARCHIVE=	geom_raid5.tbz
 URL=	http://home.tiscali.de/cmdr_faako/$(ARCHIVE)
 

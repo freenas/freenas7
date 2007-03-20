@@ -1,3 +1,7 @@
+PKGNAME=	ntfs-3g
+COMMENT=	Mount NTFS partitions and disk images
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	fusefs-ntfs:${PORTSDIR}/sysutils/fusefs-ntfs \
 		fusefs-kmod:${PORTSDIR}/sysutils/fusefs-kmod
 

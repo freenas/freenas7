@@ -1,3 +1,7 @@
+PKGNAME=	smartmontools
+COMMENT=	S.M.A.R.T. disk monitoring tools
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	smartmontools:${PORTSDIR}/sysutils/smartmontools
 
 pre-depends:

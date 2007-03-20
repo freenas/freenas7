@@ -1,3 +1,7 @@
+PKGNAME=	netatalk
+COMMENT=	File and print server for AppleTalk networks
+MAINTAINER=	votdev@gmx.de
+
 ARCHIVE=	netatalk-2.0.3.tar.gz
 URL=	http://heanet.dl.sourceforge.net/sourceforge/netatalk/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)

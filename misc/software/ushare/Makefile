@@ -1,3 +1,7 @@
+PKGNAME=	ushare
+COMMENT=	A lightweight UPnP (TM) A/V Media Server
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	ushare:${PORTSDIR}/net/ushare
 
 do-install:

@@ -1,3 +1,7 @@
+PKGNAME=	geom_eli
+COMMENT=	GEOM Eli filesystem encryption
+MAINTAINER=	votdev@gmx.de
+
 SRCDIR=	/usr/src/sbin/geom/class/eli
 
 do-build:

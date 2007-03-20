@@ -1,3 +1,7 @@
+PKGNAME=	nss_ldap
+COMMENT=	RFC 2307 NSS module
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	nss_ldap:${PORTSDIR}/net/nss_ldap
 
 do-install:

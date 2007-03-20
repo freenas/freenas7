@@ -1,3 +1,7 @@
+PKGNAME=	msntp
+COMMENT=	A straightforward SNTP daemon/utility
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	msntp:${PORTSDIR}/net/msntp
 
 do-install:

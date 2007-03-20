@@ -1,3 +1,7 @@
+PKGNAME=	iscsi
+COMMENT=	iSCSI tools
+MAINTAINER=	votdev@gmx.de
+
 ARCHIVE=	iscsi-2.0.1.tar.bz2
 URL=	ftp://ftp.cs.huji.ac.il/users/danny/freebsd/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/iscsi

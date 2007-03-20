@@ -1,3 +1,7 @@
+PKGNAME=	openssh-portable
+COMMENT=	The portable version of OpenBSD's OpenSSH
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	openssh-portable:${PORTSDIR}/security/openssh-portable
 
 pre-depends:

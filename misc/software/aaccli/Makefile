@@ -1,3 +1,7 @@
+PKGNAME=	aaccli
+COMMENT=	Adaptec SCSI RAID administration tool
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	aaccli:${PORTSDIR}/sysutils/aaccli
 
 do-install:

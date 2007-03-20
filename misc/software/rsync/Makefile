@@ -1,3 +1,7 @@
+PKGNAME=	rsync
+COMMENT=	A network file distribution/sync utility
+MAINTAINER=	votdev@gmx.de
+
 ARCHIVE=	rsync-2.6.9.tar.gz
 URL=	http://samba.anu.edu.au/ftp/rsync/$(ARCHIVE)
 SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)

@@ -1,3 +1,7 @@
+PKGNAME=	iscsi-target
+COMMENT=	Implementation of userland ISCSI target (derived from NetBSD)
+MAINTAINER=	votdev@gmx.de
+
 BUILD_DEPENDS=	iscsi-target:${PORTSDIR}/net/iscsi-target
 
 do-install:
