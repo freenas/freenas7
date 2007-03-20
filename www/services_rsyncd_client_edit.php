@@ -478,6 +478,9 @@ if (!is_array($config['mounts']['mount'])) {
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%">
                     <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+		     <?php if (isset($id) && $a_rsyncclient[$id]): ?>
+        <input name="id" type="hidden" value="<?=$id;?>"> 
+        <?php endif; ?>
                   </td>
                 </tr>
                 </table>
