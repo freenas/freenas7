@@ -57,7 +57,7 @@ copy_files() {
 		file=$(echo "$i" | cut -d ":" -f 1)
 
 		# Deal with directories
-		dir=$(echo "$i" | cut -d "*" -f 1)	
+		dir=$(dirname $file)
 		if [ ! -d $dir ]; then
 		  mkdir -pv $dir
 		fi
