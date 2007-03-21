@@ -280,7 +280,7 @@ if (!isset($do_crypt)) {
 				ob_end_flush();
 
 				// Initialize and encrypt the disk.
-				echo gettext("Encrypting... Please wait").":\n";
+				echo gettext("Encrypting... Please wait")."!\n";
 				if( 0 == strcmp($aalgo,"none")) {
 					system("/sbin/geli init -v -e $ealgo -X " . escapeshellarg($passphrase) . " " . $disk);
 				}
