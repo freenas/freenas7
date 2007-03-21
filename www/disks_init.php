@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Initialize"));
+$pgtitle = array(gettext("Disks"),gettext("Format"));
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
@@ -118,9 +118,9 @@ if ($_POST) {
 			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
 			$do_format = false;
 		}
-		
-		if (strstr ($cfdevice,$disk) ) {
-		$input_errors[] = gettext("Can't Format the drive where FreeNAS configuration file is installed!");
+
+		if (strstr ($cfdevice,$disk)) {
+			$input_errors[] = gettext("Can't format the drive where FreeNAS configuration file is installed!");
 		}
 
 		if ($do_format) {
@@ -187,6 +187,10 @@ if ($_POST) {
 				$NotFound = 0;
 			}
 
+			/* Update $a_alldisks array. */
+			$a_alldisk = array_merge($a_disk,$a_gconcat,$a_gmirror,$a_gstripe,$a_graid5,$a_gvinum,$a_geli);
+
+			/* Write configuration. */
 			write_config();
 		}
 	}
@@ -255,107 +259,11 @@ function disk_change() {
 		</tr>
 		<tr>
 			<td valign="top" colspan="2">
-			<? if ($do_format)
-			{
+			<? if ($do_format) {
 				echo("<strong>".gettext("Disk initialization details").":</strong>");
 				echo('<pre>');
 				ob_end_flush();
-
-				// Erase MBR if not checked
-				if (!$notinitmbr) {
-					echo gettext("Erasing MBR and all partitions").".\n";
-					system("dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=32k count=640");
-				}
-				else
-					echo gettext("Keeping the MBR and all partitions")."\n";
-
-				switch ($type)
-				{
-					case "ufs":
-						// Initialize disk
-						echo gettext("Creating one partition").":\n";
-						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						// Initialize the partition
-						echo gettext("Initializing partition").".\n";
-						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-						// Create s1 label
-						echo gettext("Creating BSD label").".\n";
-						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-						// Create filesystem
-						echo gettext("Creating filesystem").":\n";
-						system("/sbin/newfs -U " . escapeshellarg($disk) . "s1");
-						echo gettext("Done")."!\n";
-						break;
-					case "ufs_no_su":
-						// Initialize disk
-						echo gettext("Creating one partition").":\n";
-						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						// Initialize the partition
-						echo gettext("Initializing partition").".\n";
-						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-						// Create s1 label
-						echo gettext("Creating BSD label").".\n";
-						system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-						// Create filesystem
-						echo gettext("Creating filesystem").":\n";
-						system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "s1");
-						echo gettext("Done")."!\n";
-						break;
-					case "ufsgpt":
-						// Create GPT partition table
-						echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
-						system("/sbin/gpt destroy " . escapeshellarg($disk));
-						echo sprintf(gettext("Creating %s partition"), "GPT").":\n";
-						system("/sbin/gpt create -f " . escapeshellarg($disk));
-						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
-						// Create filesystem
-						echo gettext("Creating filesystem with 'Soft Updates'").":\n";
-						system("/sbin/newfs -U " . escapeshellarg($disk) . "p1");
-						echo gettext("Done")."!\n";
-						break;
-					case "ufsgpt_no_su":
-						// Create GPT partition table
-						echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
-						system("/sbin/gpt destroy " . escapeshellarg($disk));
-						echo sprintf(gettext("Creating %s partition"), "GPT").":\n"; 
-						system("/sbin/gpt create -f " . escapeshellarg($disk));
-						system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
-						// Create filesystem
-						echo gettext("Creating filesystem without 'Soft Updates'").":\n";
-						system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "p1");
-						echo gettext("Done")."!\n";
-						break;
-					case "softraid":
-						// Initialise the disk
-						echo gettext("Initializing disk").".\n";
-						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=1m count=16");
-						echo gettext("Done")."!\n";
-						break;
-					case "msdos":
-						// Initialize disk
-						echo gettext("Creating one partition").":\n";
-						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						// Initialize the partition
-						echo gettext("Initializing partition")."\n";
-						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-						// Create filesystem
-						echo gettext("Creating filesystem").":\n";
-						system("/sbin/newfs_msdos -F 32 " . escapeshellarg($disk) . "s1");
-						echo "Done!\n";
-						break;
-					case "ext2":
-						// Initialize disk
-						echo gettext("Creating one partition").":\n";
-						system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-						// Initialize the partition
-						echo gettext("Initializing partition")."\n";
-						system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-						// Create filesystem
-						echo gettext("Creating filesystem").":\n";
-						system("/usr/local/sbin/mke2fs " . escapeshellarg($disk) . "s1");
-						echo "Done!\n";
-						break;
-				}
+				disks_format($disk,$type,$notinitmbr);
 				echo('</pre>');
 			}
 			?>

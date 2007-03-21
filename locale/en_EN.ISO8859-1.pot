@@ -918,7 +918,7 @@ msgstr ""
 msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
 msgstr ""
 
-msgid "Can't Format the drive where FreeNAS configuration file is installed!"
+msgid "Can't format the drive where FreeNAS configuration file is installed!"
 msgstr ""
 
 msgid "Disk initialization details"
