@@ -135,7 +135,7 @@ if ($_GET['act'] == "ret")
                 if(disks_check_mount($mount)) {
 									echo(gettext("OK"));
                 } else {
-                  echo(gettext("Error") . " - <a href=\"disks_mount.php?act=ret&id=$i\">" . gettext("Retry") . "</a>");
+                  echo(gettext("Error") . " - <a href=\"disks_mount.php?act=ret&id={$i}\">" . gettext("Retry") . "</a>");
                 }
               }
               ?>&nbsp;
