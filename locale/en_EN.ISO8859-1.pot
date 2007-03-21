@@ -2046,7 +2046,7 @@ msgstr ""
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 
-msgid "You must use a passphrase for attach an encrypted disk."
+msgid "You must use a passphrase to attach an encrypted disk."
 msgstr ""
 
 msgid "Encrypted disk name"

@@ -72,7 +72,7 @@ if ($_POST) {
 
 	/* Check for a password if 'attach' mode */
 	if ($_POST['password']=="" && $_POST['action']== "attach") 	{
-			$input_errors[] = gettext("You must use a passphrase for attach an encrypted disk.");
+			$input_errors[] = gettext("You must use a passphrase to attach an encrypted disk.");
 	}
 
 	if(!$input_errors)
@@ -91,12 +91,9 @@ if(!isset($do_action))
 	$action = '';
 }
 
-// URL GET from the disks_manage_init.php page:
-// we get the $disk value, must found the $fullname now
 if(isset($_GET['disk'])) {
   $disk = $_GET['disk'];
   $id = array_search_ex($disk, $a_geli, "name");
-  
   $gelifullname = $a_geli[$id]['fullname'];
 }
 if(isset($_GET['action'])) {
@@ -161,13 +158,13 @@ if(isset($_GET['action'])) {
     					echo('<pre>');
     					ob_end_flush();
 
-    					/* Search if a mount point use this geli disk. */
-						 $id = false ;
+							/* Search if a mount point use this geli disk. */
+							$id = false ;
 		          $id = array_search_ex($gelifullname, $a_mount, "mdisk");
 		          /* if found, get the mount data */
-				 if ($id !== false) {
-					$mount = $a_mount[$id];
-			  }
+							if ($id !== false) {
+								$mount = $a_mount[$id];
+							}
 
               switch($action)
               {
@@ -180,11 +177,11 @@ if(isset($_GET['action'])) {
                   $result = disks_geli_detach($gelifullname);
                   break;
                 case "list":
-                	echo("\n");
+                	echo("<br>");
                 	system("/sbin/geli list");
                 	break;
                 case "status":
-                	echo("\n");
+                	echo("<br>");
                 	system("/sbin/geli status");
                 	break;
               }

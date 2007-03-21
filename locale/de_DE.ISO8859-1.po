@@ -2043,8 +2043,8 @@ msgstr "Sensoren"
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "Diese verschl&uuml;sselte Festplatte ist eingebunden (gemountet); vor dem Entfernen ist diese zu entbinden (unmount)"
 
-msgid "You must use a passphrase for attach an encrypted disk."
-msgstr "Ein Paﬂwort ist zum Hinzuf&uuml;gen einer verschl&uuml;sselten Festplatte notwendig"
+msgid "You must use a passphrase to attach an encrypted disk."
+msgstr "Ein Paﬂwort ist zum Hinzuf&uuml;gen einer verschl&uuml;sselten Festplatte notwendig."
 
 msgid "Encrypted disk name"
 msgstr "Name der verschl&uuml;sselten Festplatte"

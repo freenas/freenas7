@@ -2043,7 +2043,7 @@ msgstr "センサー"
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "この暗号化ディスクはマウントされています．取り外す前にアンマウントして下さい．"
 
-msgid "You must use a passphrase for attach an encrypted disk."
+msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "暗号化ディスクを接続する為に，パスフレーズを使用する必要があります．"
 
 msgid "Encrypted disk name"

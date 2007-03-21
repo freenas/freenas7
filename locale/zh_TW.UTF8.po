@@ -2069,7 +2069,7 @@ msgstr "感應器"
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "這個加密磁碟正在掛載中，在卸除之前請先將其卸載。"
 
-msgid "You must use a passphrase for attach an encrypted disk."
+msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "連結加密磁碟之前請輸入一個加密金鑰。"
 
 msgid "Encrypted disk name"

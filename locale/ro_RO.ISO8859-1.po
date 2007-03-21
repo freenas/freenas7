@@ -2040,7 +2040,7 @@ msgstr "Senzori"
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "Discul criptat este montay, demontati-l inainte de a-l detasa."
 
-msgid "You must use a passphrase for attach an encrypted disk."
+msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "Este necesar sa utilizati o fraza de control pentru a atasa un disc criptat"
 
 msgid "Encrypted disk name"

@@ -2038,7 +2038,7 @@ msgstr "Sondes"
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "Ce disque crypté est monté, démontez-le avant d'essayer de la détacher."
 
-msgid "You must use a passphrase for attach an encrypted disk."
+msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "Vous devez utiliser une phrase de passe pour attacher un disque crypté."
 
 msgid "Encrypted disk name"
