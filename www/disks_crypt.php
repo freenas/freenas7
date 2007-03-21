@@ -215,7 +215,7 @@ if ($_GET['act'] == "ret")
               } else {
                 $stat = disks_geli_check($geli['fullname']);
                 if(1 == $stat) {
-                  echo("<a href=\"disks_crypt_tools.php?disk={$geli['fullname']}&action=attach\">" . gettext("Not attached"));
+                  echo("<a href=\"disks_crypt_tools.php?disk={$geli['fullname']}&action=attach\">" . gettext("Not attached") . "</a>");
                 } else {
                   echo(gettext("Attached"));
                 }
