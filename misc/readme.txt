@@ -71,6 +71,7 @@ from scretch. After that use one of the following menus:
 ################ History Change logs ##############
 
 FreeNAS 0.684b (UNRELEASE!):
+- Use the FreeBSD 6.2-RELEASE (production) for FreeNAS base 
 - Add disk encryption with geli
 - Permit to enable SSH TCP forwarding (SSH tunneling)
 - Permit to add more than one networks for NFS
