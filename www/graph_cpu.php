@@ -62,8 +62,7 @@ print('<?xml version="1.0" encoding="iso-8859-1"?>' . "\n");?>
     <line id="axis_x" x1="0" y1="0" x2="0" y2="100%" <?=$attribs['axis']?>/>
     <line id="axis_y" x1="0" y1="100%" x2="100%" y2="100%" <?=$attribs['axis']?>/>
     <path id="graph_cpu"  d="M0 <?=$height?> L 0 <?=$height?>" <?=$attribs['graph_cpu']?>/>
-    <text id="graph_in_lbl" x="5" y="8" <?=$attribs['cpu']?>>CPU</text>
-    <text id="graph_cpu_txt" x="20" y="8" <?=$attribs['cpu']?>> </text>
+    <text id="graph_in_lbl" x="5" y="8" <?=$attribs['cpu']?>><?=gettext("CPU");?> <tspan id="graph_cpu_txt" <?=$attribs['cpu']?>> </tspan></text>
     <path id="grid"  d="M0 <?=$height/4*1?> L <?=$width?> <?=$height/4*1?> M0 <?=$height/4*2?> L <?=$width?> <?=$height/4*2?> M0 <?=$height/4*3?> L <?=$width?> <?=$height/4*3?>" <?=$attribs['grid']?>/>
     <text id="grid_txt1" x="<?=$width?>" y="<?=$height/4*1?>" <?=$attribs['grid_txt']?> text-anchor="end">75%</text>
     <text id="grid_txt2" x="<?=$width?>" y="<?=$height/4*2?>" <?=$attribs['grid_txt']?> text-anchor="end">50%</text>

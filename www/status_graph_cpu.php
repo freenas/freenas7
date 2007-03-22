@@ -35,10 +35,10 @@ $pgtitle = array(gettext("Status"), gettext("CPU load"));
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="tabnavtbl">
-      <ul id="tabnav">
+		<td class="tabnavtbl">
+  		<ul id="tabnav">
         <li class="tabinact"><a href="status_graph.php"><?=gettext("Traffic graph");?></a></li>
-        <li class="tabact"><?=gettext("CPU load");?></li>
+        <li class="tabact"><a href="status_graph_cpu.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("CPU load");?></a></li>
       </ul>
     </td>
   </tr>

@@ -42,12 +42,14 @@ $ifnum = get_ifname($config['interfaces'][$curif]['if']);
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-	<li class="tabact"><?=gettext("Traffic graph");?></li>
-	<li class="tabinact"><a href="status_graph_cpu.php"><?=gettext("CPU load");?></a></li>
-  </ul>
-  </td></tr>
+  <tr>
+		<td class="tabnavtbl">
+  		<ul id="tabnav">
+				<li class="tabact"><a href="status_graph.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Traffic graph");?></a></li>
+				<li class="tabinact"><a href="status_graph_cpu.php"><?=gettext("CPU load");?></a></li>
+  		</ul>
+  	</td>
+	</tr>
   <tr> 
     <td class="tabcont">
 <?php

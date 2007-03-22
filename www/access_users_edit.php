@@ -45,8 +45,7 @@ if (!is_array($config['access']['user']))
 users_sort();
 
 if (!is_array($config['access']['group']))
-	$nogroup_errors[] = gettext("you must create a group first.");
-	/* $config['access']['group'] = array(); */
+	$nogroup_errors[] = gettext("You must create a group first.");
 else
 	groups_sort();
 
