@@ -21,10 +21,10 @@ Release: 0.684b (unreleased!)
 2. How to generate an FreeNAS ISO or IMG  file
 
 Edit the scripts:
-- /freenas/svn/misc/setupfreeenas.sh
+- /freenas/svn/build/setupfreeenas.sh
 for modify the directory variable with yours.
 Check that you have installing bash, and
-start /freenas/svn/misc/setupfreeenas.sh
+start /freenas/svn/build/setupfreeenas.sh
 And select your need
 
 burn the freenas.iso file created.
@@ -59,7 +59,7 @@ portsnap fetch update
 
 3.3 Use the building script:
 
-svn/misc/setupfreenas.sh
+svn/build/setupfreenas.sh
 
 Execute all menus in '20 - Build FreeNAS from scratch advanced menu' to build your FreeNAS
 from scretch. After that use one of the following menus:

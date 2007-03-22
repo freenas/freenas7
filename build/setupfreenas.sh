@@ -17,7 +17,7 @@ TMPDIR="/tmp/freenastmp"
 VERSION=`cat $SVNDIR/etc/prd.version`
 
 # Path where to find Makefile includes
-MKINCLUDESDIR="$SVNDIR/misc/mk"
+MKINCLUDESDIR="$SVNDIR/build/mk"
 
 # Dialog command
 DIALOG="dialog"
@@ -46,7 +46,7 @@ copy_files() {
 	echo "Adding required files:"
 
 	[ -f $WORKINGDIR/freenas.files ] && rm -f $WORKINGDIR/freenas.files
-	cp $SVNDIR/misc/freenas.files $WORKINGDIR
+	cp $SVNDIR/build/freenas.files $WORKINGDIR
 
 	# Add custom binaries
 	if [ -f $WORKINGDIR/freenas.custfiles ]; then
@@ -81,7 +81,7 @@ copy_files() {
 
 # Create rootfs
 create_rootfs() {
-	$SVNDIR/misc/freenas-create-dirs.sh -f $FREENAS
+	$SVNDIR/build/freenas-create-dirs.sh -f $FREENAS
 
   # Configuring platform variable
 	echo $VERSION > $FREENAS/etc/prd.version
@@ -112,7 +112,7 @@ pre_build_kernel() {
 $DIALOG --title \"$PRODUCTNAME - Drivers\" \\
 --checklist \"Select the drivers you want to add.\" 21 75 14 \\" > $tempfile
 
-	for s in $SVNDIR/misc/drivers/*; do
+	for s in $SVNDIR/build/drivers/*; do
 		[ ! -d "$s" ] && continue
 		package=`basename $s`
 		desc=`cat $s/pkg-descr`
@@ -127,7 +127,7 @@ $DIALOG --title \"$PRODUCTNAME - Drivers\" \\
 
 	for driver in $(cat $drivers | tr -d '"'); do
 		echo "======================================================================"
-		cd $SVNDIR/misc/drivers/$driver
+		cd $SVNDIR/build/drivers/$driver
 		make -I $MKINCLUDESDIR install
 		[ 0 != $? ] && return 1 # successful?
 	done
@@ -145,7 +145,7 @@ build_kernel() {
 	if [ -f FREENAS ]; then
 		rm -f FREENAS
 	fi
-	cp $SVNDIR/misc/kernel-config/FREENAS .
+	cp $SVNDIR/build/kernel-config/FREENAS .
 
 	# Compiling and compressing the kernel.
 	cd /usr/src
@@ -342,7 +342,7 @@ create_iso () {
 	fi
 
 	echo "ISO: Generating the ISO file"
-	cp -p $SVNDIR/misc/.mkisofsrc $HOME
+	cp -p $SVNDIR/build/.mkisofsrc $HOME
 	mkisofs -b "boot/cdboot" -no-emul-boot -c "boot/boot.catalog" -d -r -o "$ISOFILENAME" $TMPDIR
 	[ 0 != $? ] && return 1 # successful?
 	
@@ -453,9 +453,9 @@ Menu:
   		2) copy_files;;
   		3) build_kernel;;
   		4) build_softpkg;;
-  		5) $SVNDIR/misc/freenas-create-bootdir.sh -f $BOOTDIR;;
+  		5) $SVNDIR/build/freenas-create-bootdir.sh -f $BOOTDIR;;
   		6) add_libs;;
-  		7) $SVNDIR/misc/freenas-modify-permissions.sh $FREENAS;;
+  		7) $SVNDIR/build/freenas-modify-permissions.sh $FREENAS;;
   		*) main;;
   	esac
   	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
@@ -480,7 +480,7 @@ build_softpkg() {
 $DIALOG --title \"$PRODUCTNAME - Software packages\" \\
 --checklist \"Select the packages you want to process.\" 21 75 14 \\" > $tempfile
 
-	for s in $SVNDIR/misc/software/*; do
+	for s in $SVNDIR/build/software/*; do
 		[ ! -d "$s" ] && continue
 		package=`basename $s`
 		desc=`cat $s/pkg-descr`
@@ -495,7 +495,7 @@ $DIALOG --title \"$PRODUCTNAME - Software packages\" \\
 
 	for package in $(cat $packages | tr -d '"'); do
 		echo "======================================================================"
-		cd $SVNDIR/misc/software/$package
+		cd $SVNDIR/build/software/$package
 		if [ "$choice" == "Build" ]; then
 			make -I $MKINCLUDESDIR
 		elif [ "$choice" == "Install" ]; then
