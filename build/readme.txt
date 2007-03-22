@@ -96,6 +96,7 @@ FreeNAS 0.684b (UNRELEASE!):
 - Fix FTP PAM error (using MS AD account for example) 
 - Permit to configure multiple RSYNC local/client
 - Add Japanese language: Thanks to Hiroyuki Seino
+- Add Russian language: Thanks Ahmetov Shamil
 - Fix bug in user & groups WebGUI.
 - Upgrade Samba to 3.0.24
   Try to improve samba performance by adding 'large readwrite = no' in smb.conf (see http://wiki.samba.org/index.php/Samba_Troubleshooting)

@@ -65,6 +65,7 @@ $g_languages = array (
 	"German" => "de_DE.ISO8859-1",
 	"Italian" => "it_IT.ISO8859-1",
 	"Romanian" => "ro_RO.ISO8859-1",
+	"Russian" => "ru_RU.UTF8",
 	"SimplifiedChinese" => "zh_CN.UTF8",
 	"Spanish" => "es_ES.ISO8859-1",
 	"TraditionalChinese" => "zh_TW.UTF8"
