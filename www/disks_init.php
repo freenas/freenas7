@@ -81,6 +81,10 @@ unset($a_fst['geli']);
 unset($a_fst['cd9660']);
 // Remove the first blank line 'unknown'
 $a_fst = array_slice($a_fst, 1);
+// Remove old UFS type: Now FreeNAS will impose only one UFS type: GPT/EFI with softupdate
+unset($a_fst['ufs']);
+unset($a_fst['ufs_no_su']);
+unset($a_fst['ufsgpt_no_su']);
 
 /* Load the cfdevice file for found the disk where FreeNAS is installed*/
 $filename=$g['varetc_path']."/cfdevice";
@@ -97,6 +101,8 @@ $a_gvinum = &$config['gvinum']['vdisk'];
 $a_geli = &$config['geli']['vdisk'];
 $a_alldisk = array_merge($a_disk,$a_gconcat,$a_gmirror,$a_gstripe,$a_graid5,$a_gvinum,$a_geli);
 
+//MUST TO ADD A CODE FOR REMOVE DISKS THAT ARE USED IN SOFTWARE RAID
+
 if ($_POST) {
 	unset($input_errors);
 	unset($errormsg);
@@ -111,6 +117,7 @@ if ($_POST) {
 		$do_format = true;
 		$disk = $_POST['disk'];
 		$type = $_POST['type'];
+		$minspace = $_POST['minspace'];
 		$notinitmbr= $_POST['notinitmbr'];
 
 		/* Check if disk is mounted. */ 
@@ -199,6 +206,7 @@ if (!isset($do_format)) {
 	$do_format = false;
 	$disk = '';
 	$type = '';
+	$minspace = '';
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -217,7 +225,8 @@ function disk_change() {
     <?php endforeach; ?>
   }
 }
-// -->
+
+//-->
 </script>
 <form action="disks_init.php" method="post" name="iform" id="iform">
 <?php if($input_errors) print_input_errors($input_errors);?>
@@ -238,12 +247,26 @@ function disk_change() {
 		</tr>
     <td valign="top" class="vncellreq"><?=gettext("File system"); ?></td>
     <td class="vtable">
-      <select name="type" class="formfld" id="type">
+      <select name="type" class="formfld" id="type" onchange="fs_change()">
         <?php foreach ($a_fst as $fstval => $fstname): ?>
         <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
         <?php endforeach; ?>
        </select>
     </td>
+	</tr>
+	 <td width="22%" valign="top" class="vncell"><?=gettext("Minimum free space") ; ?></td>
+            <td width="78%" class="vtable">
+              <select name="minspace" class="formfld" id="minspace">
+              <?php $types = explode(",", "8,7,6,5,4,3,2,1"); $vals = explode(" ", "8 7 6 5 4 3 2 1");?>
+              <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+                <option value="<?=$vals[$j];?>" >
+                <?=htmlspecialchars($types[$j]);?>
+                </option>
+              <?php endfor; ?>
+              </select>
+			  <br><?=gettext("Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation.") ;?>
+            </td>
+          </tr>
     <tr>
       <td width="22%" valign="top" class="vncell"><strong><?=gettext("Don't Erase MBR"); ?><strong></td>
       <td width="78%" class="vtable">
@@ -263,7 +286,7 @@ function disk_change() {
 				echo("<strong>".gettext("Disk initialization details").":</strong>");
 				echo('<pre>');
 				ob_end_flush();
-				disks_format($disk,$type,$notinitmbr);
+				disks_format($disk,$type,$notinitmbr,$minspace);
 				echo('</pre>');
 			}
 			?>
@@ -272,8 +295,8 @@ function disk_change() {
 		<tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
-				<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br></strong></span><?=gettext("This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified.");?><br><br>
-				<?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></span>
+				<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br></strong></span><?=gettext("This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified.");?><br><br>
+				<?php echo sprintf(gettext("UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></span>
 			</td>
 		</tr>
 	</table>

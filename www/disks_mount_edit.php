@@ -95,7 +95,7 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['sharename'] = $a_mount[$id]['sharename'];
 	$pconfig['desc'] = $a_mount[$id]['desc'];
 } else {
-$pconfig['partition'] = "s1";
+$pconfig['partition'] = "gpt";
 }
 
 if ($_POST) {
@@ -189,16 +189,17 @@ if ($_POST) {
       <td valign="top" class="vncellreq"><?=gettext("Partition") ; ?></td>
       <td class="vtable"> 
         <select name="partition" class="formfld" id="partition">
-          <option value="s1" <?php if ($pconfig['partition'] == "s1") echo "selected"; ?>>1 (or new software RAID method)</option>
+		  <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>EFI GPT</option>
+          <option value="s1" <?php if ($pconfig['partition'] == "s1") echo "selected"; ?>>1</option>
           <option value="s2" <?php if ($pconfig['partition'] == "s2") echo "selected"; ?>>2</option>
           <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
           <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
           <option value="" <?php if ($pconfig['partition'] == "") echo "selected"; ?>>CD/DVD</option>
-          <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>>previous <?=gettext("Software RAID") ;?> - gmirror</option>
-          <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>>previous <?=gettext("Software RAID") ;?> - graid5</option>
-          <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>>previous <?=gettext("Software RAID") ;?> - gvinum</option>
-          <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>GPT (or new software RAID method with GPT)</option>
+          <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - gmirror</option>
+          <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - graid5</option>
+          <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - gvinum</option>
         </select>
+		<br><?=gettext("Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b).<br>Select 2 for mounting the DATA partition if you install FreeNAS on an hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with FreeNAS release older than 0.XX") ;?>
       </td>
     </tr>
     <tr> 
@@ -236,7 +237,7 @@ if ($_POST) {
     <tr> 
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
-        </strong></span><?=sprintf(gettext("1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."),htmlspecialchars($cfdevice));?></span>
+        </strong></span><?=sprintf(gettext("You can't mount the partition '%s' where the config file is stored.<br>"),htmlspecialchars($cfdevice));?></span>
 				<p><span class="vexpl"><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></p>
       </td>
     </tr>

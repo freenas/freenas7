@@ -42,10 +42,10 @@ $pgtitle = array(gettext("Disks"), gettext("Geom Vinum"), gettext("RAID"));
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("Geom Mirror"); ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("Geom Concat"); ?> </a></li>
-	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("Geom Stripe"); ?></a></li>
-	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("Geom Raid5"); ?></a></li> 
+	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("JBOD"); ?> </a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("RAID 0"); ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("RAID 1"); ?></a></li>
+	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("RAID 5"); ?></a></li> 
 	<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?></a></li>
   </ul>
   </td></tr>

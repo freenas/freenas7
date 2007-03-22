@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-03-20 17:41+0100\n"
+"PO-Revision-Date: 2007-03-22 08:17+0100\n"
 "Last-Translator: Olivier COCHARD-LABBE <olivier@freenas.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -936,6 +936,9 @@ msgstr ""
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
 
+msgid "Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation."
+msgstr ""
+
 msgid "Don't Erase MBR"
 msgstr ""
 
@@ -1107,7 +1110,7 @@ msgstr ""
 msgid "Duplicate Share Name."
 msgstr ""
 
-msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
+msgid "You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr ""
 
 msgid "Mounting..."

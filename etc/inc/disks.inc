@@ -1271,7 +1271,7 @@ function disks_iscsiinit_check($name)
 	return 0;
 }
 
-function disks_format($disk,$type,$notinitmbr)
+function disks_format($disk,$type,$notinitmbr,$minspace)
 {
 	if (!$notinitmbr) {
 		echo gettext("Erasing MBR and all partitions").".\n";
@@ -1279,36 +1279,6 @@ function disks_format($disk,$type,$notinitmbr)
 	}
 
 	switch ($type) {
-		case "ufs":
-			// Initialize disk
-			echo gettext("Creating one partition").":\n";
-			system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-			// Initialize the partition
-			echo gettext("Initializing partition").".\n";
-			system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-			// Create s1 label
-			echo gettext("Creating BSD label").".\n";
-			system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-			// Create filesystem
-			echo gettext("Creating filesystem").":\n";
-			system("/sbin/newfs -U " . escapeshellarg($disk) . "s1");
-			echo gettext("Done")."!\n";
-			break;
-		case "ufs_no_su":
-			// Initialize disk
-			echo gettext("Creating one partition").":\n";
-			system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
-			// Initialize the partition
-			echo gettext("Initializing partition").".\n";
-			system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
-			// Create s1 label
-			echo gettext("Creating BSD label").".\n";
-			system("/sbin/bsdlabel -w " . escapeshellarg($disk) . "s1 auto");
-			// Create filesystem
-			echo gettext("Creating filesystem").":\n";
-			system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "s1");
-			echo gettext("Done")."!\n";
-			break;
 		case "ufsgpt":
 			// Create GPT partition table
 			echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
@@ -1318,19 +1288,7 @@ function disks_format($disk,$type,$notinitmbr)
 			system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
 			// Create filesystem
 			echo gettext("Creating filesystem with 'Soft Updates'").":\n";
-			system("/sbin/newfs -U " . escapeshellarg($disk) . "p1");
-			echo gettext("Done")."!\n";
-			break;
-		case "ufsgpt_no_su":
-			// Create GPT partition table
-			echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
-			system("/sbin/gpt destroy " . escapeshellarg($disk));
-			echo sprintf(gettext("Creating %s partition"), "GPT").":\n"; 
-			system("/sbin/gpt create -f " . escapeshellarg($disk));
-			system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
-			// Create filesystem
-			echo gettext("Creating filesystem without 'Soft Updates'").":\n";
-			system("/sbin/newfs -m 0 " . escapeshellarg($disk) . "p1");
+			system("/sbin/newfs -m $minspace -U " . escapeshellarg($disk) . "p1");
 			echo gettext("Done")."!\n";
 			break;
 		case "softraid":

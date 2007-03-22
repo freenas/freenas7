@@ -73,9 +73,9 @@ $g_languages = array (
 /* Supported filesystems */
 $g_filesystems = array(
 	"" => "Unformated",
-	"ufs" => "UFS with Soft Updates (use 8% space disk)",
+	"ufs" => "UFS with Soft Updates",
 	"ufs_no_su" => "UFS",
-	"ufsgpt" => "UFS (EFI/GPT) with Soft Updates (use 8% space disk)",
+	"ufsgpt" => "UFS (GPT and Soft Updates)",
 	"ufsgpt_no_su" => "UFS (EFI/GPT)",
 	"msdos" => "FAT32",
 	"cd9660" => "CD/DVD",

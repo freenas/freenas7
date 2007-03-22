@@ -71,7 +71,8 @@ from scretch. After that use one of the following menus:
 ################ History Change logs ##############
 
 FreeNAS 0.684b (UNRELEASE!):
-- Use the FreeBSD 6.2-RELEASE (production) for FreeNAS base 
+- Use the FreeBSD 6.2-RELEASE (production) for FreeNAS base
+- Force only one UFS type: EFI GPT Partition with Softupdates, and permit to select percent of free disk space to kept (between 8 and 1)
 - Add disk encryption with geli
 - Permit to enable SSH TCP forwarding (SSH tunneling)
 - Permit to add more than one networks for NFS
