@@ -43,7 +43,7 @@ Here is how to build a FreeNAS from the latest source file:
 
 cd /usr/local/freenas
 
-svn co https://svn.sourceforge.net/svnroot/freenas/trunk svn
+svn co https://freenas.svn.sourceforge.net/svnroot/freenas/trunk svn
 
 You should now have this directories now:
 /usr/local/freenas
