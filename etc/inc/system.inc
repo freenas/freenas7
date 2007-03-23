@@ -748,11 +748,7 @@ function system_beep_up()
 	if (isset($config['system']['disablebeep']))
 		return 0;
 	else {
-		mwexec("/sbin/kldload speaker.ko");
-		mwexec("/usr/local/bin/beep -p 500 75");
-		mwexec("/usr/local/bin/beep -p 1000 75");
-		mwexec("/usr/local/bin/beep -p 2000 75");
-		mwexec("/usr/local/bin/beep -p 3000 75");
+		mwexec('echo "O1L15aO2L15bO3L15cO4L15d" > /dev/speaker');
 		return 0;
 	}
 }
@@ -764,10 +760,7 @@ function system_beep_down()
 	if (isset($config['system']['disablebeep']))
 		return 0;
 	else {		
-		mwexec("/usr/local/bin/beep -p 3000 75");
-		mwexec("/usr/local/bin/beep -p 2000 75");
-		mwexec("/usr/local/bin/beep -p 1000 75");
-		mwexec("/usr/local/bin/beep -p 500 75");
+		mwexec('echo "O4L15dO3L15cO2L15bO1L15a" > /dev/speaker');
 		return 0;
 	}
 }
