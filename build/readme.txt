@@ -32,7 +32,7 @@ burn the freenas.iso file created.
 =================================
 3. Building FreeNAS with the latest sources
 
-(normally possible with setupfreenas.sh)
+(normally possible with make.sh)
 
 Here is how to build a FreeNAS from the latest source file:
 
@@ -59,7 +59,7 @@ portsnap fetch update
 
 3.3 Use the building script:
 
-svn/build/setupfreenas.sh
+svn/build/make.sh
 
 Execute all menus in '20 - Build FreeNAS from scratch advanced menu' to build your FreeNAS
 from scretch. After that use one of the following menus:
