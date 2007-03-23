@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-03-02 09:43+0100\n"
+"PO-Revision-Date: 2007-03-22 09:43+0100\n"
 "Last-Translator: Falk Menzel <fmenzel@htwm.de>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
@@ -918,6 +918,9 @@ msgstr "Initialisierung"
 msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
 msgstr "Diese Festplatte ist momentan gemountet! <a href=%s>Unmounten</a> Sie diese Festplatte zuerst bevor sie fortfahren."
 
+msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgstr "Die Partition, auf der die Datei mit den FreeNAS-Einstellungen gespeichert ist, kann nicht formatiert werden. "
+
 msgid "Disk initialization details"
 msgstr "Festplatteninitialisierungseigenschaften"
 
@@ -932,6 +935,9 @@ msgstr "Festplatte formatieren!"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Wollen Sie diese Festplatte wirklich formatieren? Alle Daten gehen dabei verloren!"
+
+msgid "Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation."
+msgstr "Geben Sie die dem Nutzer vorbehaltene Speichermenge in Prozent an. Bedenken Sie, dass das Absenken des Schwellenwertes sowohl die Performance als auch die Auto-Defragmentation nachteilig beeinflussen kann."
 
 msgid "Don't Erase MBR"
 msgstr "MBR (Master Boot Record) nicht l&ouml;schen"
@@ -1437,8 +1443,8 @@ msgstr "Hier werden die Arbeitsdaten abgelegt"
 msgid "Create work directory if it doesn't exist"
 msgstr "Lege Arbeitsverzeichnis an, falls es diese noch nicht geben sollte"
 
-msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Die &Uuml;bersicht der Verzeichnisse wurde ver&auml;ndert.<br>Zur &Uuml;bernahme der &Auml;nderungen bitte best&auml;tigen."
+msgid "UPnP A/V Media Server"
+msgstr "UPnP A/V Media Server"
 
 msgid "UPnP friendly name."
 msgstr "UPnP-konformer Name."
@@ -1687,7 +1693,7 @@ msgid "Associated stations"
 msgstr "Zugeh&ouml;rige Stationen"
 
 msgid "TX rates"
-msgstr "TX Raten"
+msgstr "TX (Transfer)Raten"
 
 msgid "No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported)."
 msgstr "Es konnten keine unterst&uuml;tzten Wireless-Schnittstellen gefunden werden (es wird ausschliesslich Hardware unter dem wi[n] Treiber unterst&uuml;tzt)."
