@@ -2,15 +2,8 @@ PKGNAME=	geom_raid5
 COMMENT=	GEOM RAID5 filesystem
 MAINTAINER=	votdev@gmx.de
 
-ARCHIVE=	geom_raid5.tbz
-URL=	http://home.tiscali.de/cmdr_faako/$(ARCHIVE)
-
 do-build:
-	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
-		cd $(FREENASDISTFILES) && fetch $(URL); \
-	fi
-
-	@${TAR} -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C /usr/src
+	@${TAR} -zxvf ${FILESDIR}/geom_raid5.tbz -C /usr/src
 
 	# Make kernel module.
 	@${MAKE} -C /usr/src/sys/modules/geom/geom_raid5 depend
