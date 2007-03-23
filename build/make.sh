@@ -414,7 +414,7 @@ download_rootfs() {
 
 update_sources() {
 	cd $WORKINGDIR
-	svn co https://svn.sourceforge.net/svnroot/freenas/trunk svn
+	svn co https://freenas.svn.sourceforge.net/svnroot/freenas/trunk svn
 
 	return 0
 }
