@@ -111,6 +111,9 @@ FreeNAS 0.684b (UNRELEASE!):
 - Modify FreeNAS make.sh build script for supporting AMD64 FreeBSD now...
 - Remove the tools 'beep'
 - Now it is possible to store the configuration on floppy disk and USB stick when booting FreeNAS from CD.
+- Try to improve performance on VM machine: http://ivoras.sharanet.org/freebsd/vmware.html
+  Replace ethernet 'lnc' drivers with 'le' driver
+  Reduce Kernel's timer frequency  to 100HZ
 
 Known bug in the 0.684b:
 - Can't remount ntfs-3g volume under the mount:tools. Must restart FreeNAS. It seem to be a fuse problem.

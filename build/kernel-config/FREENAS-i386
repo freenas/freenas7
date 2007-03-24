@@ -212,14 +212,16 @@ device		fxp		# Intel EtherExpress PRO/100B (82557, 82558)
 device		lge		# Level 1 LXT1001 gigabit Ethernet
 device		nge		# NatSemi DP83820 gigabit Ethernet
 device		nve		# nVidia nForce MCP on-board Ethernet Networking
-device		pcn		# AMD Am79C97x PCI 10/100(precedence over 'lnc')
+#FREENAS: Replace pcn with le driver. Cause explain here: http://ivoras.sharanet.org/freebsd/vmware.html
+#device		pcn		# AMD Am79C97x PCI 10/100(precedence over 'lnc')
+device		le		# AMD Am7900 LANCE and Am79C9xx PCnet Ethernet interface driver
 device		re		# RealTek 8139C+/8169/8169S/8110S
 device		rl		# RealTek 8129/8139
 device		sf		# Adaptec AIC-6915 (``Starfire'')
 device		sis		# Silicon Integrated Systems SiS 900/SiS 7016
 device		sk		# SysKonnect SK-984x & SK-982x gigabit Ethernet
 device		ste		# Sundance ST201 (D-Link DFE-550TX)
-device          stge            # Sundance/Tamarack TC9021 gigabit Ethernet
+device      stge    # Sundance/Tamarack TC9021 gigabit Ethernet
 device		ti		# Alteon Networks Tigon I/II gigabit Ethernet
 device		tl		# Texas Instruments ThunderLAN
 device		tx		# SMC EtherPower II (83c170 ``EPIC'')

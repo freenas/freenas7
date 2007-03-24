@@ -81,6 +81,9 @@ echo "Generate $MINIBSD_DIR/loader.conf"
 echo 'mfsroot_load="YES"
 mfsroot_type="mfs_root"
 mfsroot_name="/mfsroot"
+#Reduce Kernel timer frequency for better performace in Virtual environement
+#explanation here: http://ivoras.sharanet.org/freebsd/vmware.html
+kern.hz="100"
 autoboot_delay="-1"' > $MINIBSD_DIR/loader.conf
 # Enable debug?
 if [ 0 != $opt_d ]; then

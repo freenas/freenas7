@@ -41,11 +41,52 @@
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
 	
-	/* Load the cfdevice file for found the disk where FreeNAS is installed*/
-	$filename=$g['varetc_path']."/cfdevice";
-	$cfdevice = trim(file_get_contents("$filename"));
-	$cfdevice = "/dev/" . $cfdevice;
+	/* Search where the config file is installed*/
+	$not_found=1;
 	
+	$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
+	foreach ($disks as $mountdisk) {
+		/* skip mfs mounted filesystems */
+		if (strstr($mountdisk, "md"))
+			continue;
+
+		/* Search on slice 1 for OS installed on disk with install script*/
+		if (mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$g['cf_path']}") == 0) 	{
+			if (file_exists("{$g['cf_conf_path']}/config.xml")) 	{
+				/* found it */
+				$cfgdevice = $mountdisk;
+				$cfgpartition = $cfgdevice . "s1";
+				$cfgfstype = "ufs";
+				$not_found=0;
+			}
+
+			mwexec("/sbin/umount -f {$g['cf_path']}");
+
+			if ($cfgdevice)
+				break;
+		}
+
+		/* Search on partition 'a' for OS IMG image written on disk */
+		if (mwexec("/sbin/mount -r /dev/{$mountdisk}a {$g['cf_path']}") == 0) {
+			if (file_exists("{$g['cf_conf_path']}/config.xml")) {
+				/* found it */
+				$cfgdevice = $mountdisk;
+				$cfgpartition = $cfgdevice . "a";
+				$cfgfstype = "ufs";
+				$not_found=0;
+			}
+
+			mwexec("/sbin/umount -f {$g['cf_path']}");
+
+			if ($cfgdevice)
+				break;
+		}
+	}
+	if ($not_found) {
+		echo "No configuration found!\n";
+		exit(0);
+	}	
+		
 	echo "{$productname} Upgrade from CDROM\n";
 	echo "\nHere is the list of detected CDROM:\n";
 	
@@ -63,7 +104,7 @@
 
 	echo "Here is the name of disk where detected FreeNAS Installation:\n";
 
-	echo "$cfdevice\n";
+	echo "$cfgdevice\n";
 
 	do 	{
 		echo "\nIs this is correct ? (y/n): ";
@@ -78,18 +119,18 @@
 		exit(0);
 	}
 	
-	if(install_backupconfig()) {
+	if(install_backupconfig($cfgpartition)) {
 		echo "\nMeet a problem for backuping configuration file.\n";
 		exit(0);
 	}
 	
-	if(install_dd_image($cfdevice)) {
+	if(install_dd_image($cfgdevice)) {
 		echo "\nMeet a problem during file copying.\n";
 		install_unmount_cd();
 		exit(0);
 	}
 	
-	if(install_restoreconfig()) {
+	if(install_restoreconfig($cfgpartition)) {
 		echo "\nMeet a problem for restoring configuration file.\n";
 		exit(0);
 	}	
