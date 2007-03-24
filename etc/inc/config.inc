@@ -53,12 +53,23 @@ if ($g['booting']) {
 	
 	/* check if there's already an fstab (NFS booting?) */
 	if (!file_exists("{$g['etc_path']}/fstab")) {
-	
 		if (strstr($g['platform'], "cdrom"))
 		{
-			/* config is on floppy disk for CD-ROM version */
+			/* Config is on floppy disk/USB stick for CD-ROM version */
 			$cfgdevice = $cfgpartition = "fd0";
 			$cfgfstype = "msdos";
+
+			/* Check if there is a USB device available. */
+			if (ereg("da0", exec("/sbin/sysctl kern.disks")) == true) {
+				/* Try to mount device. */
+				if (mwexec("/sbin/mount -r -t msdos /dev/da0s1 {$g['cf_path']}") == 0) {
+					$cfgdevice = "da0";
+					$cfgpartition = $cfgdevice . "s1";
+
+					/* Unmount device. */
+					mwexec("/sbin/umount -f /dev/{$cfgpartition}");
+				}
+			}
 		}
 		else
 		{
@@ -68,6 +79,7 @@ if ($g['booting']) {
 				/* skip mfs mounted filesystems */
 				if (strstr($mountdisk, "md"))
 					continue;
+
 				/* Search on slice 1 for OS installed on disk with install script*/
 				if (mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$g['cf_path']}") == 0)
 				{
@@ -77,15 +89,14 @@ if ($g['booting']) {
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "s1";
 						$cfgfstype = "ufs";
-						echo "Found configuration on $cfgpartition.\n";
 					}
-					
+
 					mwexec("/sbin/umount -f {$g['cf_path']}");
-					
+
 					if ($cfgdevice)
 						break;
 				}
-				
+
 				/* Search on partition 'a' for OS IMG image written on disk */
 				if (mwexec("/sbin/mount -r /dev/{$mountdisk}a {$g['cf_path']}") == 0)
 				{
@@ -95,15 +106,13 @@ if ($g['booting']) {
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "a";
 						$cfgfstype = "ufs";
-						echo "Found configuration on $cfgpartition.\n";
 					}
-					
+
 					mwexec("/sbin/umount -f {$g['cf_path']}");
-					
+
 					if ($cfgdevice)
 						break;
 				}
-
 			}
 		}
 		
@@ -123,7 +132,6 @@ if ($g['booting']) {
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "s1";
 						$cfgfstype = "msdos";
-						echo "Found configuration on $cfgpartition.\n";
 					}
 					
 					mwexec("/sbin/umount -f {$g['cf_path']}");
@@ -151,18 +159,22 @@ EOD;
 			mwexec("/sbin/halt");
 			exit;
 		}
-		
+
+		echo "Found configuration on\n";
+		echo "  Device = /dev/{$cfgpartition}\n";
+		echo "  Type   = {$cfgfstype}\n";
+
 		/* write device name to a file for rc.firmware */
 		$fd = fopen("{$g['varetc_path']}/cfdevice", "w");
 		fwrite($fd, $cfgpartition . "\n");
 		fclose($fd);
-		
+
 		/* write out an fstab */
 		$fd = fopen("{$g['etc_path']}/fstab", "w");
-		
+
 		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
 		/* $fstab .= "proc /proc procfs rw 0 0\n"; */
-		
+
 		fwrite($fd, $fstab);
 		fclose($fd);
 	}
