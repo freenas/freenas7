@@ -96,7 +96,7 @@ $pgtitle = array(gettext("License"));
 
       <p> PHP (<a href="http://www.php.net" target="_blank">http://www.php.net</a>).<br>
         Copyright &copy; 2001-2007 The PHP Group. All rights reserved.</p>
-      <p> Lighttpd (<a href="http://www.lighttpd.net" target="_blank">http://http://www.lighttpd.net</a>)<br>
+      <p> Lighttpd (<a href="http://www.lighttpd.net" target="_blank">http://www.lighttpd.net</a>)<br>
         Copyright &copy; 2004 by Jan Kneschke &lt;jan@kneschke.de&gt;. All rights reserved.</p>
       
       <p> OpenSSH (<a href="http://www.openssh.com" target="_blank">http://www.openssh.com</a>)<br>
@@ -146,7 +146,7 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 	 <p>NTFS-3G driver (<a href="http://www.ntfs-3g.org/" target="_blank">http://www.ntfs-3g.org/</a>)<br>
       from Szabolcs Szakacsits.</p>
 	  
-	   <p>Fuse: Filesystem in Userspace (<a href="http://fuse.sourceforge.net/" target="_blank">http://fuse.sourceforge.net/</a>)<br>
+	   <p>Fuse - Filesystem in Userspace (<a href="http://fuse.sourceforge.net/" target="_blank">http://fuse.sourceforge.net/</a>)<br>
       </p>
 		<p>e2fsprogs (<a href="http://e2fsprogs.sourceforge.net" target="_blank">http://e2fsprogs.sourceforge.net</a>)<br>
       Copyright &copy; 1994-2006 Theodore Ts'o. All rights reserved.
