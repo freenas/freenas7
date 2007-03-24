@@ -151,10 +151,10 @@ build_kernel() {
 	# Compiling and compressing the kernel.
 	cd /usr/src
 	make buildkernel KERNCONF=FREENAS-$ARCH
-	gzip -v -f -9 /usr/obj/usr/src/sys/FREENAS/kernel
+	gzip -v -f -9 /usr/obj/usr/src/sys/FREENAS-$ARCH/kernel
 
 	# Installing the modules.
-	cd /usr/obj/usr/src/sys/FREENAS/modules/usr/src/sys/modules
+	cd /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules
 	cp -v -p ./geom/geom_vinum/geom_vinum.ko $FREENAS/boot/kernel
 	cp -v -p ./geom/geom_stripe/geom_stripe.ko $FREENAS/boot/kernel
 	cp -v -p ./geom/geom_concat/geom_concat.ko $FREENAS/boot/kernel
