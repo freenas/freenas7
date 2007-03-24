@@ -107,6 +107,7 @@ FreeNAS 0.684b (UNRELEASE!):
 - Try to prevent "acd0: FAILURE READ_BIG ERROR" during install from CDROM (thanks to fortinde@isers.sourceforge.net)
 - Upgrade twa kernel driver (e.g. 3ware 9650SE Series Raid S-ATA II PCIe)
 - Add EXT2 filesystem creation support.
+- Now it is possible to store the configuration on floppy disk and USB stick when booting FreeNAS from CD.
 
 Known bug in the 0.684b:
 - Can't remount ntfs-3g volume under the mount:tools. Must restart FreeNAS. It seem to be a fuse problem.
