@@ -1,15 +1,11 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-	rc.initial.install
+	rc.initial.upgfromcdrom
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
-	Based on m0n0wall (http://m0n0.ch/wall)
-	Copyright (C) 2003-2007 Manuel Kasper <mk@neon1.net>.
-	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
 	
@@ -31,7 +27,8 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	/* parse the configuration and include all functions used below */
+
+/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
 	require_once("install.inc");
@@ -44,12 +41,12 @@
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
 	
-	echo "{$productname} Installer on USB Key or Compact Flash\n";
-	echo "\nWARNING: there will be some limitation:\n";
-	echo "1. It will erase ALL your partitions and data on the destination disk!\n";
-	echo "2. You can't use your destination disk for sharing data\n";
-	echo "3. You can't install {$productname} if it's already installed on this disk (Use upgrade from Web GUI)\n";
-	echo "\nInstall on USB key is the prefered way:\nIt save you IDE or SCSI channel for more hard drive.\n";
+	/* Load the cfdevice file for found the disk where FreeNAS is installed*/
+	$filename=$g['varetc_path']."/cfdevice";
+	$cfdevice = trim(file_get_contents("$filename"));
+	$cfdevice = "/dev/" . $cfdevice;
+	
+	echo "{$productname} Upgrade from CDROM\n";
 	echo "\nHere is the list of detected CDROM:\n";
 	
 	foreach ($cdlist as $cdromk =>$cdromv) 	{
@@ -64,43 +61,44 @@
 		}
 	} while (!is_validaliasname($cdrom));
 
-	echo "Here is the list of detected disk:\n";
+	echo "Here is the name of disk where detected FreeNAS Installation:\n";
 
-	foreach ($disklist as $diskk => $diskv) 	{
-		echo "$diskk (desc: {$diskv['desc']})\n";
-	}
-	
+	echo "$cfdevice\n";
+
 	do 	{
-		echo "\nEnter the name of the USB key or CF: ";
-		$harddrive = chop(fgets($fp));
-		if ($harddrive === "") {
+		echo "\nIs this is correct ? (y/n): ";
+		$valid = chop(fgets($fp));
+		if ($valid === "n") {
 			exit(0);
 		}
-	} while (!is_validaliasname($harddrive));
-	
-	/* check if destination drive is mounted */
-	if (disks_check_mount($harddrive)) 	{
-		echo "\nYour destination drive is already used!\n";
-		fgets($fp);
-		exit(0);
-	}
-	
+	} while ($valid != "y" );
+
 	if(install_mount_cd($cdrom)) {
 		echo "\nMeet a problem for mounting the CDROM.\n";
 		exit(0);
 	}
 	
-	if(install_dd_image($harddrive)) {
+	if(install_backupconfig()) {
+		echo "\nMeet a problem for backuping configuration file.\n";
+		exit(0);
+	}
+	
+	if(install_dd_image($cfdevice)) {
 		echo "\nMeet a problem during file copying.\n";
 		install_unmount_cd();
 		exit(0);
 	}
 	
+	if(install_restoreconfig()) {
+		echo "\nMeet a problem for restoring configuration file.\n";
+		exit(0);
+	}	
+	
 	install_unmount_cd();
 	
 	echo <<<EOD
 	
-{$productname} has been installed on $harddrive.
+{$productname} installed on $cfdevice has been upgraded.
 You can now remove the CD-ROM and reboot the PC.
 
 Press ENTER to continue.

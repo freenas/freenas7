@@ -150,3 +150,60 @@ function install_dd_image($harddrive)
 
 	return 0;
 }
+
+/* Backup the configuration file on the hard drive/CF and unmount this drive
+   Called by install script. Return 0 if OK, 1 if not. */
+function install_backupconfig()
+{	
+	/* Creating tempo directory for the config file*/
+	if (mwexec("/bin/mkdir /tmp/configbak")) {
+		echo "Can't create the temporary folder!\n";
+		return 1;
+	}
+	
+	/* Backuping the config file */
+	if (mwexec("cp -p /conf/* /tmp/configbak")) {
+		echo "Can't backup the config file!\n";
+		return 1;
+	}
+	
+	/* unmounting the drive to be upgraded */
+	if (mwexec("/sbin/umount -f /cf")) {
+		echo "Can't unmount the drive to be upgraded!\n";
+		$result = 1;
+	}
+	
+	return 0;
+
+}
+
+function install_restoreconfig()
+{	
+	
+	/* Mount the upgraded drive in RW mode*/
+	if (mwexec("/sbin/mount -w -o noatime /cf")) {
+		echo "Can't mount the drive just upgraded in RW mode!\n";
+		$result = 1;
+	}
+	
+	/* Restoring the config file*/
+	if (mwexec("cp -p /tmp/configbak/* /conf")) {
+		echo "Can't restore the config file!\n";
+		return 1;
+	}
+	
+	/* unmount the upgraded drive */
+	if (mwexec("/sbin/umount -f /cf")) {
+		echo "Can't unmount the drive just upgraded!\n";
+		$result = 1;
+	}
+	
+	/* re-mount the upgraded drive in RO mode*/
+	if (mwexec("/sbin/mount -r /cf")) {
+		echo "Can't mount the drive just upgraded in RO mode!\n";
+		$result = 1;
+	}
+	
+	return 0;
+}
+

@@ -21,10 +21,10 @@ Release: 0.684b (unreleased!)
 2. How to generate an FreeNAS ISO or IMG  file
 
 Edit the scripts:
-- /freenas/svn/build/setupfreeenas.sh
+- /freenas/svn/build/make.sh
 for modify the directory variable with yours.
 Check that you have installing bash, and
-start /freenas/svn/build/setupfreeenas.sh
+start /freenas/svn/build/make.sh
 And select your need
 
 burn the freenas.iso file created.
@@ -89,7 +89,7 @@ FreeNAS 0.684b (UNRELEASE!):
 - Upgrade PHP to 5.2.1
 - Add FTP 'Resume' mode. Fix bug in enabling 'FXP' and 'NAT mode'.
 - Add syslog message for RSYNC local/remote synchronization
-- Upgrade Samba from 3.0.23d to 3.0.24 and add LDAP and Kerberos support (but not use it for the moment)
+- Upgrade Samba from 3.0.23d to 3.0.24 and add LDAP and Kerberos support (but not used)
 - Geom mirror: Change default algorithm to round robin (http://www.onlamp.com/pub/a/bsd/2005/11/10/FreeBSD_Basics.html)
 - Add 'FTP connected users list' information page
 - Fix FTP bug. Deletion of files uploaded and owned by user was not able.
@@ -100,13 +100,16 @@ FreeNAS 0.684b (UNRELEASE!):
 - Fix bug in user & groups WebGUI.
 - Upgrade Samba to 3.0.24
   Try to improve samba performance by adding 'large readwrite = no' in smb.conf (see http://wiki.samba.org/index.php/Samba_Troubleshooting)
-- Added growfs tools
+- Added growfs tools (usable from the CLI only)
 - Disable FTP root login by default. Can be enabled via WebGUI.
 - Fix DHCP problem
 - Upgrade ushare to 0.9.10 (should now support xbox)
 - Try to prevent "acd0: FAILURE READ_BIG ERROR" during install from CDROM (thanks to fortinde@isers.sourceforge.net)
 - Upgrade twa kernel driver (e.g. 3ware 9650SE Series Raid S-ATA II PCIe)
 - Add EXT2 filesystem creation support.
+- Add option for upgrading FreeNAS from CDROM (this can be used as recovery mode too).
+- Modify FreeNAS make.sh build script for supporting AMD64 FreeBSD now...
+- Remove the tools 'beep'
 - Now it is possible to store the configuration on floppy disk and USB stick when booting FreeNAS from CD.
 
 Known bug in the 0.684b:

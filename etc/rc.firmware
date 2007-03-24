@@ -2,11 +2,11 @@
 
 # /etc/rc.firmware
 # part of FreeNAS (http://www.freenas.org)
-# Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+# Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 # All rights reserved.
 #
 # Based on m0n0wall (http://m0n0.ch/wall)
-# Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+# Copyright (C) 2003-2007 Manuel Kasper <mk@neon1.net>.
 # All rights reserved.
 
 CFDEVICE=`cat /var/etc/cfdevice`

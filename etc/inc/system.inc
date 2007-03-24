@@ -748,7 +748,7 @@ function system_beep_up()
 	if (isset($config['system']['disablebeep']))
 		return 0;
 	else {
-		mwexec('echo "O1L15aO2L15bO3L15cO4L15d" > /dev/speaker');
+		mwexec('echo "O3L30cO4L30cO5L30cO5L30g" > /dev/speaker');
 		return 0;
 	}
 }
@@ -760,7 +760,7 @@ function system_beep_down()
 	if (isset($config['system']['disablebeep']))
 		return 0;
 	else {		
-		mwexec('echo "O4L15dO3L15cO2L15bO1L15a" > /dev/speaker');
+		mwexec('echo "O5L30gO5L30cO4L30cO3L30c" > /dev/speaker');
 		return 0;
 	}
 }

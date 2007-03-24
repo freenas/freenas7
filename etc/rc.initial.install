@@ -2,7 +2,7 @@
 
 # /etc/rc.initial
 # part of FreeNAS (http://www.freenas.org)
-# Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>
+# Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>
 # All rights reserved.
 
 # endless loop
@@ -14,7 +14,8 @@ echo "Install"
 echo "*******"
 echo "1) Install on HD, CF or USB key: Create 1 UFS partition"
 echo "2) Install on HD: Create 2 UFS partitions (OS and DATA)"
-echo "3) Return to main menu"
+echo "3) Upgrade existing installed version from CDROM"
+echo "4) Return to main menu"
 echo
 
 read -p "Enter a number: " opmode
@@ -28,6 +29,9 @@ case ${opmode} in
 	/etc/rc.initial.install2
  	;;
 3)
+	/etc/rc.initial.upgfromcdrom
+	;;
+4)
 	/etc/rc.initial
 	;;
 esac
