@@ -57,6 +57,7 @@
 				$cfgdevice = $mountdisk;
 				$cfgpartition = $cfgdevice . "s1";
 				$cfgfstype = "ufs";
+				$slice=1;
 				$not_found=0;
 			}
 
@@ -73,6 +74,7 @@
 				$cfgdevice = $mountdisk;
 				$cfgpartition = $cfgdevice . "a";
 				$cfgfstype = "ufs";
+				$slice=0;
 				$not_found=0;
 			}
 
@@ -123,11 +125,21 @@
 		echo "\nMeet a problem for backuping configuration file.\n";
 		exit(0);
 	}
+	/* Must install on ad0s1 if installed on partition 1, but install on ad0 if installed on ad0a */
+	if ($slice) {
+		if(install_dd_image($cfgpartition)) {
+			echo "\nMeet a problem during file copying.\n";
+			install_unmount_cd();
+			exit(0);
+		}
+	}
+	else {
+		if(install_dd_image($cfgdevice)) {
+			echo "\nMeet a problem during file copying.\n";
+			install_unmount_cd();
+			exit(0);
+		}
 	
-	if(install_dd_image($cfgdevice)) {
-		echo "\nMeet a problem during file copying.\n";
-		install_unmount_cd();
-		exit(0);
 	}
 	
 	if(install_restoreconfig($cfgpartition)) {

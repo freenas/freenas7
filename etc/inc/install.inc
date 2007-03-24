@@ -157,24 +157,29 @@ function install_backupconfig($disk)
 {	
 	/* Creating tempo directory for the config file*/
 	if (mwexec("/bin/mkdir /tmp/configbak")) {
-		echo "Can't create the temporary folder!\n";
+		echo "Can't create /tmp/configbak!\n";
+		return 1;
+	}
+	
+	if (mwexec("/bin/mkdir /tmp/installdrive")) {
+		echo "Can't create /tmp/installdrive!\n";
 		return 1;
 	}
 	/* mounting the drive to be upgraded */
-	if (mwexec("/sbin/umount $disk /cf")) {
-		echo "Can't unmount the drive to be upgraded!\n";
+	if (mwexec("/sbin/mount /dev/$disk /tmp/installdrive")) {
+		echo "Can't mount the drive to be upgraded!\n";
 		$result = 1;
 	}
 	
 	/* Backuping the config file */
-	if (mwexec("cp -p /conf/* /tmp/configbak")) {
+	if (mwexec("cp -p /tmp/installdrive/conf/* /tmp/configbak")) {
 		echo "Can't backup the config file!\n";
 		return 1;
 	}
 	
 	/* unmounting the drive to be upgraded */
-	if (mwexec("/sbin/umount -f /cf")) {
-		echo "Can't unmount the drive to be upgraded!\n";
+	if (mwexec("/sbin/umount -f /dev/$disk")) {
+		echo "Can't unmount the drive to be upgraded during config backup process!\n";
 		$result = 1;
 	}
 	
@@ -186,26 +191,20 @@ function install_restoreconfig($disk)
 {	
 	
 	/* Mount the upgraded drive in RW mode */
-	if (mwexec("/sbin/mount -w -o noatime $disk /cf")) {
+	if (mwexec("/sbin/mount /dev/$disk /tmp/installdrive")) {
 		echo "Can't mount the drive just upgraded in RW mode!\n";
 		$result = 1;
 	}
 	
 	/* Restoring the config file*/
-	if (mwexec("cp -p /tmp/configbak/* /conf")) {
+	if (mwexec("cp -p /tmp/configbak/* /tmp/installdrive/conf")) {
 		echo "Can't restore the config file!\n";
 		return 1;
 	}
 	
 	/* unmount the upgraded drive */
-	if (mwexec("/sbin/umount -f /cf")) {
+	if (mwexec("/sbin/umount -f /dev/$disk")) {
 		echo "Can't unmount the drive just upgraded!\n";
-		$result = 1;
-	}
-	
-	/* re-mount the upgraded drive in RO mode*/
-	if (mwexec("/sbin/mount -r $disk /cf")) {
-		echo "Can't mount the drive just upgraded in RO mode!\n";
 		$result = 1;
 	}
 	
