@@ -132,7 +132,7 @@ if(isset($_GET['action'])) {
     				<td valign="top" colspan="2">
     				<?php if(($do_action) && (!$errormsg))
     				{
-    				  echo("<strong>" . gettext("Command output:") . "</strong><br>");
+    				  echo("<strong>" . gettext("Command output:") . "</strong>");
     					echo('<pre>');
     					ob_end_flush();
 
@@ -145,12 +145,10 @@ if(isset($_GET['action'])) {
               {
                 case "mount":
                   echo(gettext("Mounting...") . "<br>");
-                  //$result = disks_mount_sharename($sharename);
 									$result = disks_mount($mount);
                   break;
                 case "umount":
                   echo(gettext("Unmounting...") . "<br>");
-                  //$result = disks_umount_sharename($sharename);
 									$result = disks_umount($mount);
                   break;
               }

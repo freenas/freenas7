@@ -1323,4 +1323,48 @@ function disks_format($disk,$type,$notinitmbr,$minspace)
 			break;
 	}
 }
+
+// File system consistency check and interactive repair.
+// The filesystem type will be get from the mount configuration information.
+// Parameter:
+// disk   - Name of the disk.
+// umount - Unmount disk if necessary.
+// Return: 0 is OK, 1 is not OK
+function disks_fsck($disk,$umount = false)
+{
+	global $config;
+
+	/* Check if there exits any mounts. */
+	if(!is_array($config['mounts']['mount']))
+		return 1;
+
+	/* Get the id of the disk. */
+	$id = array_search_ex($disk, $config['mounts']['mount'], "fullname");
+	/* Get the filesystem type of the disk. */ 
+	$fstype = $config['mounts']['mount'][$id]['fstype'];
+	/* Check if disk is mounted. */
+	$ismounted = disks_check_mount_fullname($disk);
+	/* Umount disk temporary if necessary. */
+	if($umount && $ismounted) {
+		echo("<strong class='red'>" . gettext("Note") . ":</strong> " . gettext("The disk is currently mounted! The mount point will be removed temporary to perform selected command.") . "<br><br>");
+		disks_umount_fullname($disk);
+	}
+
+	switch($fstype) {
+		case "":
+		case "ufs":
+			system("/sbin/fsck -t ufs -y -f " . escapeshellarg($disk));
+			break;
+		case "msdosfs":
+			system("/sbin/fsck -t msdos -y -f " . escapeshellarg($disk));
+			break;
+	}
+
+	/* Mount disk again if necessary. */
+	if($umount && $ismounted) {
+		disks_mount_fullname($disk);
+	}
+
+	return 0;
+}
 ?>

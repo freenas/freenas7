@@ -48,7 +48,7 @@ $a_mount = &$config['mounts']['mount'];
 if ($_POST) {
 	unset($input_errors);
 	unset($errormsg);
-	unset($do_fsck);
+	unset($do_action);
 
 	/* input validation */
 	$reqdfields = explode(" ", "disk");
@@ -56,14 +56,14 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if(!$input_errors) {
-		$do_fsck = true;
+		$do_action = true;
 		$disk = $_POST['disk'];
 		$umount = $_POST['umount'];
 	}
 }
 
-if (!isset($do_fsck)) {
-	$do_fsck = false;
+if (!isset($do_action)) {
+	$do_action = false;
 	$disk = '';
 	$umount = false;
 }
@@ -87,7 +87,7 @@ if (!isset($do_fsck)) {
           <tr>
             <td valign="top" class="vncellreq"><?=gettext("Disk");?></td>
             <td class="vtable">
-              <select name="disk" class="formfld" id="disk" onchange="disk_change()">
+              <select name="disk" class="formfld" id="disk">
                 <?php foreach ($a_mount as $mount): ?>
 								<?php if (strcmp($mount['fstype'],"cd9660") == 0) continue; ?>
                 <option value="<?=$mount['fullname'];?>"<?php if ($mount['fullname'] == $disk) echo "selected";?>>
@@ -108,55 +108,27 @@ if (!isset($do_fsck)) {
   				<tr>
   				  <td width="22%" valign="top">&nbsp;</td>
   				  <td width="78%">
-             <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Fsck");?>"">
+             <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Fsck");?>">
   				  </td>
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">
-						<?php if($do_fsck) {
-							echo("<strong>" . gettext("Command output:") . "</strong><br>");
+						<?php if($do_action) {
+							echo("<strong>" . gettext("Command output:") . "</strong>");
 							echo('<pre>');
 							ob_end_flush();
-
-							/* Get the id of the disk. */
-							$id = array_search_ex($disk, $a_mount, "fullname");
-							/* Get the filesystem type of the disk. */ 
-							$type = $a_mount[$id]['fstype'];
-							/* Check if disk is mounted. */
-							$ismounted = disks_check_mount_fullname($disk);
-							/* Umount disk if necessary. */
-							if($umount && $ismounted) {
-								echo("<strong class='red'>" . gettext("Note") . ":</strong> " . gettext("The disk is currently mounted! The mount point will be removed temporary to perform selected command.") . "<br><br>");
-								disks_umount_fullname($disk);
-							}
-
-							switch($type)
-							{
-								case "":
-								case "ufs":
-									system("/sbin/fsck_ufs -y -f " . escapeshellarg($disk));
-									break;
-								case "msdosfs":
-									system("/sbin/fsck_msdosfs -y -f " . escapeshellarg($disk));
-									break;
-							}
-							
-							/* Mount disk if necessary. */
-							if($umount && $ismounted) {
-								disks_mount_fullname($disk);
-							}
+							/* Check filesystem */
+							$result = disks_fsck($disk,$umount);
+							/* Display result */
+              echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
 							echo('</pre>');
 						}
 						?>
     				</td>
   				</tr>
 			 </table>
-    </form>
-  </td></tr>
+    	</form>
+  	</td>
+	</tr>
 </table>
-<script language="JavaScript">
-<!--
-disk_change();
-//-->
-</script>
 <?php include("fend.inc"); ?>
