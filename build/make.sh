@@ -15,6 +15,7 @@ export PRODUCTNAME=`cat $SVNDIR/etc/prd.name`
 BOOTDIR="/usr/local/freenas/bootloader"
 TMPDIR="/tmp/freenastmp"
 VERSION=`cat $SVNDIR/etc/prd.version`
+ARCH=$(uname -p)
 
 # Path where to find Makefile includes
 MKINCLUDESDIR="$SVNDIR/build/mk"
@@ -141,15 +142,15 @@ build_kernel() {
 	[ 0 != $? ] && return 1 # successful?
 
 	# Copy kernel configuration.
-	cd /sys/i386/conf
-	if [ -f FREENAS ]; then
-		rm -f FREENAS
+	cd /sys/$ARCH/conf
+	if [ -f FREENAS-$ARCH ]; then
+		rm -f FREENAS-$ARCH
 	fi
-	cp $SVNDIR/build/kernel-config/FREENAS .
+	cp $SVNDIR/build/kernel-config/FREENAS-$ARCH .
 
 	# Compiling and compressing the kernel.
 	cd /usr/src
-	make buildkernel KERNCONF=FREENAS
+	make buildkernel KERNCONF=FREENAS-$ARCH
 	gzip -v -f -9 /usr/obj/usr/src/sys/FREENAS/kernel
 
 	# Installing the modules.
