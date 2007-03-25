@@ -250,7 +250,7 @@ function fstype_change() {
 					<?php if (strcmp($diskv['size'],"NA") == 0) continue; ?>
 					<?php if (strcmp($diskv['fstype'],"geli") == 0) continue; ?>
 					<?php if (disks_geli_check($diskv['fullname'])) continue; ?>
-          <option value="<?=$diskv['fullname'];?>" <?php if ($diskv['name'] == $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
+          <option value="<?=$diskv['fullname'];?>" <?php if ($diskv['fullname'] == $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
           <?php endforeach; ?>
         </select>
       </td>
