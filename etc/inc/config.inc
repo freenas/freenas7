@@ -89,6 +89,7 @@ if ($g['booting']) {
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "s1";
 						$cfgfstype = "ufs";
+						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}\n";
 					}
 
 					mwexec("/sbin/umount -f {$g['cf_path']}");
@@ -106,6 +107,7 @@ if ($g['booting']) {
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "a";
 						$cfgfstype = "ufs";
+						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}\n";
 					}
 
 					mwexec("/sbin/umount -f {$g['cf_path']}");
@@ -132,6 +134,7 @@ if ($g['booting']) {
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "s1";
 						$cfgfstype = "msdos";
+						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}\n";
 					}
 					
 					mwexec("/sbin/umount -f {$g['cf_path']}");
@@ -159,10 +162,6 @@ EOD;
 			mwexec("/sbin/halt");
 			exit;
 		}
-
-		echo "Found configuration on\n";
-		echo "  Device = /dev/{$cfgpartition}\n";
-		echo "  Type   = {$cfgfstype}\n";
 
 		/* write device name to a file for rc.firmware */
 		$fd = fopen("{$g['varetc_path']}/cfdevice", "w");
