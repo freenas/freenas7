@@ -89,7 +89,7 @@
 		exit(0);
 	}	
 		
-	echo "{$productname} Upgrade from CDROM\n";
+	echo "{$productname} upgrade from CDROM\n";
 	echo "\nHere is the list of detected CDROM:\n";
 	
 	foreach ($cdlist as $cdromk =>$cdromv) 	{
@@ -104,8 +104,7 @@
 		}
 	} while (!is_validaliasname($cdrom));
 
-	echo "Here is the name of disk where detected FreeNAS Installation:\n";
-
+	echo "\nHere is the name of disk where detected FreeNAS Installation:\n";
 	echo "$cfgdevice\n";
 
 	do 	{
