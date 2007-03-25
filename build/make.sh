@@ -103,7 +103,7 @@ create_rootfs() {
   return 0
 }
 
-# Actions before building kernel (e.g. install spezial drivers).
+# Actions before building kernel (e.g. install special/additional drivers).
 pre_build_kernel() {
 	tempfile=$WORKINGDIR/tmp$$
 	drivers=$WORKINGDIR/drivers$$
@@ -123,7 +123,10 @@ $DIALOG --title \"$PRODUCTNAME - Drivers\" \\
 
 	# Display list of available drivers.
 	sh $tempfile 2> $drivers
-	[ 0 != $? ] && return 1 # successful?
+	if [ 0 != $? ]; then # successful?
+		rm $tempfile
+		return 1
+	fi
 	rm $tempfile
 
 	for driver in $(cat $drivers | tr -d '"'); do
@@ -137,31 +140,50 @@ $DIALOG --title \"$PRODUCTNAME - Drivers\" \\
 
 # Building the kernel
 build_kernel() {
-	# Adding specials drivers.
-	pre_build_kernel;
-	[ 0 != $? ] && return 1 # successful?
+	tempfile=$WORKINGDIR/tmp$$
 
-	# Copy kernel configuration.
-	cd /sys/$ARCH/conf
-	if [ -f FREENAS-$ARCH ]; then
-		rm -f FREENAS-$ARCH
+	# Choose what to do.
+	$DIALOG --title "$PRODUCTNAME - Build kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 3 \
+		"prebuild" "Install additional drivers" ON \
+		"build" "Build kernel" ON \
+		"install" "Install kernel + modules" ON 2> $tempfile
+	if [ 0 != $? ]; then # successful?
+		rm $tempfile
+		return 1
 	fi
-	cp $SVNDIR/build/kernel-config/FREENAS-$ARCH .
 
-	# Compiling and compressing the kernel.
-	cd /usr/src
-	make buildkernel KERNCONF=FREENAS-$ARCH
-	gzip -v -f -9 /usr/obj/usr/src/sys/FREENAS-$ARCH/kernel
+	choices=`cat $tempfile`
+	rm $tempfile
 
-	# Installing the modules.
-	cd /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules
-	cp -v -p ./geom/geom_vinum/geom_vinum.ko $FREENAS/boot/kernel
-	cp -v -p ./geom/geom_stripe/geom_stripe.ko $FREENAS/boot/kernel
-	cp -v -p ./geom/geom_concat/geom_concat.ko $FREENAS/boot/kernel
-	cp -v -p ./geom/geom_mirror/geom_mirror.ko $FREENAS/boot/kernel
-	cp -v -p ./geom/geom_gpt/geom_gpt.ko $FREENAS/boot/kernel
-	cp -v -p ./geom/geom_eli/geom_eli.ko $FREENAS/boot/kernel
-	cp -v -p ./ext2fs/ext2fs.ko $FREENAS/boot/kernel
+	for choice in $(echo $choices | tr -d '"'); do
+		case $choice in
+			prebuild)
+				# Adding specials drivers.
+				pre_build_kernel;
+				[ 0 != $? ] && return 1;; # successful?
+  		build)
+				# Copy kernel configuration.
+				cd /sys/$ARCH/conf;
+				if [ -f FREENAS-$ARCH ]; then
+					rm -f FREENAS-$ARCH;
+				fi;
+				cp $SVNDIR/build/kernel-config/FREENAS-$ARCH .;
+				# Compiling and compressing the kernel.
+				cd /usr/src;
+				make buildkernel KERNCONF=FREENAS-$ARCH;
+				gzip -v -f -9 /usr/obj/usr/src/sys/FREENAS-$ARCH/kernel;;
+  		install)
+				# Installing the modules.
+				cd /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules;
+				cp -v -p ./geom/geom_vinum/geom_vinum.ko $FREENAS/boot/kernel;
+				cp -v -p ./geom/geom_stripe/geom_stripe.ko $FREENAS/boot/kernel;
+				cp -v -p ./geom/geom_concat/geom_concat.ko $FREENAS/boot/kernel;
+				cp -v -p ./geom/geom_mirror/geom_mirror.ko $FREENAS/boot/kernel;
+				cp -v -p ./geom/geom_gpt/geom_gpt.ko $FREENAS/boot/kernel;
+				cp -v -p ./geom/geom_eli/geom_eli.ko $FREENAS/boot/kernel;
+				cp -v -p ./ext2fs/ext2fs.ko $FREENAS/boot/kernel;;
+  	esac
+  done
 
 	return 0
 }
@@ -464,9 +486,13 @@ build_softpkg() {
 
 	# Choose what to do.
 	$DIALOG --title "$PRODUCTNAME - Software packages" --menu "Please select whether you want to build or install packages." 10 45 2 \
-		"Build" "Build software packages" \
-		"Install" "Install software packages" 2> $tempfile
-	[ 0 != $? ] && return 1 # successful?
+		"build" "Build software packages" \
+		"install" "Install software packages" 2> $tempfile
+	if [ 0 != $? ]; then # successful?
+		rm $tempfile
+		return 1
+	fi
+
 	choice=`cat $tempfile`
 	rm $tempfile
 
@@ -485,15 +511,19 @@ $DIALOG --title \"$PRODUCTNAME - Software packages\" \\
 
 	# Display list of available packages.
 	sh $tempfile 2> $packages
-	[ 0 != $? ] && return 1 # successful?
+	if [ 0 != $? ]; then # successful?
+		rm $tempfile
+		rm $packages
+		return 1
+	fi
 	rm $tempfile
 
 	for package in $(cat $packages | tr -d '"'); do
 		echo "======================================================================"
 		cd $SVNDIR/build/software/$package
-		if [ "$choice" == "Build" ]; then
+		if [ "$choice" == "build" ]; then
 			make -I $MKINCLUDESDIR
-		elif [ "$choice" == "Install" ]; then
+		elif [ "$choice" == "install" ]; then
 			make -I $MKINCLUDESDIR install
 		fi
 		[ 0 != $? ] && return 1 # successful?
