@@ -163,12 +163,6 @@ build_kernel() {
 	cp -v -p ./geom/geom_eli/geom_eli.ko $FREENAS/boot/kernel
 	cp -v -p ./ext2fs/ext2fs.ko $FREENAS/boot/kernel
 
-	# Installing the mbr.
-	cp -v -p /boot/mbr $FREENAS/boot
-	cp -v -p /boot/boot $FREENAS/boot
-	cp -v -p /boot/boot0 $FREENAS/boot
-	cp -v -p /boot/boot1 $FREENAS/boot
-
 	return 0
 }
 

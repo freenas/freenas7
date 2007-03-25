@@ -370,10 +370,6 @@ usr/share/locale/en_US.UTF-8/*
 usr/share/locale/la_LN.US-ASCII/*
 usr/share/locale/UTF-8/*
 
-####### contents of /usr/local/bin
-# nano - a small, free and friendly editor: IT's a port!!!
-#usr/local/bin/nano
-
 ####### contents of /usr/lib
 # PAM libraries
 usr/lib/pam_*.so.3
@@ -385,3 +381,10 @@ lib/geom/*
 ####### contents of /etc/ssh
 # moduli -- system moduli file
 etc/ssh/moduli
+
+####### contents of /boot
+# MBR
+boot/mbr
+boot/boot
+boot/boot0
+boot/boot1
