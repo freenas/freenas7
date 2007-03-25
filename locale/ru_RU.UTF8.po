@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-03-22 11:22+0500\n"
-"Last-Translator: Ahmetov Shamil <alienme@yandex.ru>\n"
+"PO-Revision-Date: 2007-03-25 10:11+0300\n"
+"Last-Translator: Alexander Samoilov <root@lifeslice.ru>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -244,10 +244,10 @@ msgid "Note"
 msgstr "Заметка"
 
 msgid "Successful"
-msgstr "Успех"
+msgstr "Успешно"
 
 msgid "Failed"
-msgstr "Сбой"
+msgstr "Неудачно"
 
 msgid "Error"
 msgstr "Ошибка"
@@ -280,7 +280,7 @@ msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select mi
 msgstr "Примечание : Ctrl-click (или command-click для Mac) чтобы выбрать или отменить выбор минут, часов, дней, месяцев."
 
 msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
-msgstr "UFS и ее вырианты являются РОДНЫМИ файловыми системами для FreeBSD (основа %s). Попытка использования других файловых систем таких как: FAT, FAT32, EXT2, EXT3, или NTFS может вылится в непредсказуемые результаты, повреждение файлов и потерю данных!"
+msgstr "UFS и ее варианты являются РОДНЫМИ файловыми системами для FreeBSD (основа %s). Попытка использования других файловых систем, таких как FAT, FAT32, EXT2, EXT3 или NTFS может привести к непредсказуемым результатам, повреждению файлов и потерям данных!"
 
 msgid "Active"
 msgstr "Активен"
@@ -310,7 +310,7 @@ msgid "Assign"
 msgstr "Назначить"
 
 msgid "LAN"
-msgstr "ЛВС"
+msgstr "Локальная сеть"
 
 msgid "Management"
 msgstr "Управление"
@@ -352,7 +352,7 @@ msgid "Users and Groups"
 msgstr "Пользователи и группы"
 
 msgid "Active Directory"
-msgstr "Active Directory"
+msgstr "Служба каталогов Active Directory"
 
 msgid "NIS"
 msgstr "NIS"
@@ -373,7 +373,7 @@ msgid "Extensions"
 msgstr "Расширения"
 
 msgid "Diagnostics"
-msgstr "Проверки"
+msgstr "Диагностика"
 
 msgid "Logs"
 msgstr "Журналы"
@@ -391,7 +391,7 @@ msgid "Edit File"
 msgstr "Редактировать файл"
 
 msgid "Backup/Restore"
-msgstr "Загрузить/Восстановить"
+msgstr "Копировать/Восстановить"
 
 msgid "Factory defaults"
 msgstr "Заводские настройки"
@@ -439,7 +439,7 @@ msgid "WebGUI port"
 msgstr "WebGUI порт"
 
 msgid "Enter a custom port number for the webGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
-msgstr "Введите нестандартный номер порта для webGUI выше, если хотите изменить настройки по умолчаниюt (80 для HTTP, 443 для HTTPS)."
+msgstr "Введите нестандартный номер порта для webGUI выше, если хотите изменить настройки по умолчанию (80 для HTTP, 443 для HTTPS)."
 
 msgid "Language"
 msgstr "Язык"
@@ -454,7 +454,7 @@ msgid "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon 
 msgstr "Введите желаемое системное время (в виде mm/dd/yyyy hh:mm) или используйте значок чтобы выбрать, Нажмите кнопку Сохранить чтобы обновить системное время. (Обратите внимание что секунды будут проигнорированы)"
 
 msgid "Time zone"
-msgstr "Временная зона"
+msgstr "Часовой пояс"
 
 msgid "Select the location closest to you."
 msgstr "Выберите ближайший к Вам город"
@@ -463,13 +463,13 @@ msgid "Time update interval"
 msgstr "Период обновления времени"
 
 msgid "Minutes between network time sync.; 300\trecommended, or 0 to disable."
-msgstr "Минут между синхронизацией времени в сети.; 300\tрекоммендовано, или 0 чтобы отключить."
+msgstr "Минут между синхронизацией времени по сети.; 300\tрекоммендовано, или 0 чтобы отключить."
 
 msgid "NTP time server"
 msgstr "Сервер времени NTP"
 
 msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
-msgstr "Используйте пробул чтобы ввести несколько узлов (необходим только один). Не забудьте установить хотя бы один DNS сервер если Вы вводите здесь имя узла!"
+msgstr "Используйте пробел, чтобы ввести несколько узлов (необходим только один). Не забудьте установить хотя бы один DNS сервер, если Вы вводите здесь имя узла!"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
 msgstr "Имя узла может содержать только символы a-z, 0-9 и '-'."
@@ -541,7 +541,7 @@ msgid "Processes information"
 msgstr "Информация о процессах"
 
 msgid "The static route configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Настройки статических маршрутов были изменены.<br>Вы должны применить их чтобы они вступили в силу."
+msgstr "Настройки статических маршрутов были изменены.<br>Вы должны применить их, чтобы они вступили в силу."
 
 msgid "Interface"
 msgstr "Интерфейс"
@@ -577,10 +577,10 @@ msgid "Destination network"
 msgstr "Сеть назначения"
 
 msgid "Destination network for this static route"
-msgstr "Сеть назначения для статического маршрута"
+msgstr "Сеть назначения данного статического маршрута"
 
 msgid "Gateway to be used to reach the destination network"
-msgstr "Шлюз используемы для доступа к сети назначения"
+msgstr "Шлюз используемый для доступа к сети назначения"
 
 msgid "You may enter a description here for your reference (not parsed)."
 msgstr "Можно ввести здесь описание для собственных нужд (не обрабатывается)."
@@ -595,7 +595,7 @@ msgid "The digital signature on this image is invalid."
 msgstr "Неправильная цифровая подпись образа."
 
 msgid "This image is not digitally signed."
-msgstr "Образ не имеет цифровой подписи"
+msgstr "Образ не имеет цифровой подписи."
 
 msgid "There has been an error verifying the signature on this image."
 msgstr "Произошла ошибка при проверке подписи этого образа"
@@ -604,13 +604,13 @@ msgid "The image file is corrupt"
 msgstr "Файл образа поврежден"
 
 msgid "The firmware is now being installed. %s will reboot automatically."
-msgstr "Прошика устанавливается. %s будет перезагружен автоматически."
+msgstr "Прошивка устанавливается. %s будет перезагружен автоматически."
 
 msgid "Firmware uploading is not supported on this platform."
 msgstr "Загрузка прошивки не поддерживается этой платформой."
 
 msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
-msgstr "Это означает что образ загруженный Вами не является официальным/поддерживаемым образом и может привести к неожиданному поведению или нарушению безопасности. Устанавливайте только те образы, которые были получены из доверенных источников и убедитесь что образы не были изменены.<br><br>Хотите ли Вы все равно установить этот образ (на свой риск)?"
+msgstr "Это означает, что загруженный Вами обаз не является официальным/поддерживаемым образом, использование которого может привести к неожиданному поведению или нарушению безопасности. Устанавливайте только те образы, которые были получены из доверенных источников, убедившись, что они не были изменены.<br><br>Хотите ли Вы все равно установить этот образ (на свой риск)?"
 
 msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
 msgstr "Щелкните &quot;Разрешить загрузку прошивки&quot; ниже, затем выберите файл образа, который хотите загрузить.<br>Щелкните &quot;Обновить прошивку&quot; чтобы начать процесс обновления."
@@ -670,7 +670,7 @@ msgid "Disable console menu"
 msgstr "Запретить консольное меню"
 
 msgid "Changes to this option will take effect after a reboot."
-msgstr "Изменение этого параметра вступят в действие после перезагрузки."
+msgstr "Изменения этого параметра подействуют после перезагрузки."
 
 msgid "Firmware version check"
 msgstr "Проверка версии прошивки"
@@ -682,7 +682,7 @@ msgid "TCP idle timeout"
 msgstr "Таймаут простоя TCP"
 
 msgid "Idle TCP connections will be removed from the state table after no packets have been received for the specified number of seconds. Don't set this too high or your state table could become full of connections that have been improperly shut down. The default is 9000 seconds (2.5 hours)."
-msgstr "Простаивающие TCP соединения будут удалены из таблицы состояния если в течении указанного количества секунд от них не получено никаких пакетов. Не ставьте слишком большое значение иначе таблица состояния переполнится неверно завершенными соединениями. Значение по умолчанию 9000 секунд (2.5 часа)."
+msgstr "Простаивающие TCP соединения будут удалены из таблицы состояния, если в течении указанного количества секунд от них не будет получено никаких пакетов. Не ставьте слишком большое значение, иначе таблица состояния переполнится неверно завершенными соединениями. Значение по умолчанию - 9000 секунд (2.5 часа)."
 
 msgid "Navigation"
 msgstr "Навигация"
@@ -703,13 +703,13 @@ msgid "Enable the S.M.A.R.T daemon"
 msgstr "Разрешить S.M.A.R.T демон"
 
 msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
-msgstr "Наблюдает за устройством S.M.A.R.T записывая его состояние в файл журнала."
+msgstr "Наблюдать за устройством S.M.A.R.T, записывая его состояние в файл журнала."
 
 msgid "Tuning"
-msgstr "Тюнинг"
+msgstr "Настройка"
 
 msgid "ZeroConf"
-msgstr "ZeroConf"
+msgstr "Сервис ZeroConf"
 
 msgid "Disable ZeroConf service announce"
 msgstr "Запретить оповещение о сервисе ZeroConf"
@@ -721,7 +721,7 @@ msgid "Swap size"
 msgstr "Размер подкачки"
 
 msgid "mount share"
-msgstr "монтировать шару"
+msgstr "монтировать общий ресурс"
 
 msgid "Mount to use for swap"
 msgstr "Монтирование используемое под подкачку"
@@ -754,7 +754,7 @@ msgid "Add interface"
 msgstr "Добавить интерфейс"
 
 msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span><"
-msgstr "После нажатия &quot;Сохранить&quot;, надо перезагрить %s чтобы изменения вступили в силу. Возможно также перед тем как Вы снова сможете получить доступ к NAS понадобится сделать следующее: </span><"
+msgstr "После нажатия &quot;Сохранить&quot;, необходимо  перезагрузить %s, чтобы изменения вступили в силу. Возможно, перед тем, как Вы снова сможете получить доступ к NAS, понадобится сделать следующее: </span><"
 
 msgid "A valid gateway must be specified."
 msgstr "Должен быть указан корректный шлюз."
@@ -766,13 +766,13 @@ msgid "IP address"
 msgstr "IP адрес"
 
 msgid "Subnet bit count"
-msgstr "Количество бит подсети"
+msgstr "Количество битов подсети"
 
 msgid "MTU"
-msgstr "MTU"
+msgstr "Размер MTU"
 
 msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-msgstr "Стандартный MTU равен 1500, для огромного кадра задайте 9000."
+msgstr "Стандартный размер MTU равен 1500, для кадров \"джамбо-фрэйм\" задайте 9000."
 
 msgid "Device polling"
 msgstr "Опрос устройств"
@@ -781,7 +781,7 @@ msgid "Enable device polling"
 msgstr "Разрешить опрос устройств"
 
 msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards."
-msgstr "Опрос устройств это способ при котором система периодически опрашивает сетевые устройства о новых данных вместо того чтобы полагаться на прерывания. Это может снизить нагрузку на ЦПУ и, следовательно, увеличить пропускную способность, за счет чуть большей задержки при отправлении (устройства опрашиваются 1000 раз в секунду). Не все сетевые карты поддерживают опрос; см. домашнюю страницу m0n0wall где указан список поддерживаемых карт."
+msgstr "Опрос устройств - это способ, при котором система периодически опрашивает сетевые устройства о новых данных, вместо того, чтобы полагаться на прерывания. Это может снизить загрузку процессора, и, следовательно, увеличить пропускную способность за счет чуть большей задержки при отправке (устройства опрашиваются 1000 раз в секунду). Не все сетевые карты поддерживают опрос; см. домашнюю страницу m0n0wall, где указан список поддерживаемых карт."
 
 msgid "Speed"
 msgstr "Скорость"
@@ -790,7 +790,7 @@ msgid "Duplex"
 msgstr "Дуплекс"
 
 msgid "Enable Optional "
-msgstr "Включить Настраиваемый"
+msgstr "Включить Дополнительный"
 
 msgid " interface"
 msgstr " интерфейс"
@@ -799,7 +799,7 @@ msgid "Enter a description (name) for the interface here."
 msgstr "Введите здесь описание (имя) для интерфейса."
 
 msgid "Static IP configuration"
-msgstr "Настройка статического IP"
+msgstr "Конфигурация со статическим IP"
 
 msgid "DHCP client configuration"
 msgstr "Настройка клиента DHCP"
@@ -823,7 +823,7 @@ msgid "Calculate netmask bits"
 msgstr "Рассчитать биты сетевой маски"
 
 msgid "The LAN configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Настройки ЛВС были изменены. <br>Нужно применить настройки чтобы они вступили в силу."
+msgstr "Настройки локальной сети были изменены. <br>Нужно применить настройки чтобы они вступили в силу."
 
 msgid "Manage"
 msgstr "Управление"
@@ -835,7 +835,7 @@ msgid "Tools"
 msgstr "Инструменты"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Список дисков был изменен. <br>Нужно применить настройки чтобы они вступили в силу."
+msgstr "Список дисков был изменен. <br>Нужно применить настройки, чтобы они вступили в силу."
 
 msgid "Standby time"
 msgstr "Время простоя"
@@ -853,7 +853,7 @@ msgid "Delete disk"
 msgstr "Удалить диск"
 
 msgid "Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"
-msgstr "Вы действительно хотите удалить этот диск? Все использующие его элементы станут неверны (напр. шары)!"
+msgstr "Вы действительно хотите удалить этот диск? Все использующие его объекты станут недоступны (например, общие ресурсы)!"
 
 msgid "Add disk"
 msgstr "Добавить диск"
@@ -880,7 +880,7 @@ msgid "Minimum power usage with Standby"
 msgstr "Минимальное энергопотребление с ожиданием"
 
 msgid "Medium power usage with Standby"
-msgstr "Среднее энегропотребление с ожиданием"
+msgstr "Среднее энергопотребление с ожиданием"
 
 msgid "Minimum power usage without Standby"
 msgstr "Минимальное энергопотребление без ожидания"
@@ -892,7 +892,7 @@ msgid "Maximum performance, maximum power usage"
 msgstr "Максимальная производительность, максимальное энергопотребление"
 
 msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"
-msgstr "Позволяет Вам снизить потребление напряжения за счет производительности.<br><em>Не устанавливайте для CF карт.</em>"
+msgstr "Позволяет снизить потребление энергии за счет падения  производительности.<br><em>Не устанавливайте для CF карт.</em>"
 
 msgid "Acoustic level"
 msgstr "Уровень шума"
@@ -907,25 +907,25 @@ msgid "Maximum performance, maximum acoustic output"
 msgstr "Максимальная производительность, максимальный уровень шума"
 
 msgid "This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"
-msgstr "Позволяет указать насколько шумным будет диск при работе.<br><em>Не устанавливайте для CF карт.</em>"
+msgstr "Позволяет указать, насколько шумным будет диск при работе.<br><em>Не устанавливайте для CF карт.</em>"
 
 msgid "Preformatted FS"
-msgstr "Предформатированная ФС"
+msgstr "Преформатированная ФС"
 
 msgid "Initialize"
-msgstr "Инициировать"
+msgstr "Инициализировать"
 
 msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
 msgstr "Этот диск смонтирован! <a href=%s>Размонтируйте</a> диск перед продолжением."
 
 msgid "Disk initialization details"
-msgstr "Подробности инициации диска"
+msgstr "Подробности инициализации диска"
 
 msgid "\"fdisk: Geom not found\"is not an error message!\n"
 msgstr "\"fdisk: Geom not found\" не является сообщением об ошибке!\n"
 
 msgid "This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified."
-msgstr "Этот шаг сотрет все Ваши разделы, создаст раздел номер 1 и отформатирует с указанной файловой системой."
+msgstr "Этот шаг сотрет все разделы, создаст раздел номер 1 и отформатирует его с указанной файловой системой."
 
 msgid "Format disk"
 msgstr "Форматировать диск"
@@ -952,7 +952,7 @@ msgid "Unmount disk/partition"
 msgstr "Размонтировать диск/раздел"
 
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
-msgstr "Если выбранный диск/раздел смонтирован, для выполнения выбранной команды он будет временно размонтирован, иначе команды работают в режиме только-для-чтения.<br>Во время этого процесса пользователи использующие это монтирование будут испытывать нарушение работы сервиса."
+msgstr "Если выбранный диск/раздел смонтирован, для выполнения выбранной команды он будет временно размонтирован, иначе команды смогут работать в режиме только-для-чтения.<br>Во время этого процесса пользователи, использующие данную точку монтирования, будут испытывать нарушение работы сервиса."
 
 msgid "iSCSI"
 msgstr "iSCSI"
@@ -973,16 +973,16 @@ msgid "Targetname."
 msgstr "Имя цели."
 
 msgid "Manage RAID"
-msgstr "Управление RAID"
+msgstr "Управление RAID-массивом"
 
 msgid "Format RAID"
-msgstr "Форматирование RAID"
+msgstr "Форматирование RAID-массива"
 
 msgid "Volume Name"
 msgstr "Имя тома"
 
 msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
-msgstr "RAID том в данный момент смонтирован! Удалите <a href=%s>точку монтирования</a> перед продолжением."
+msgstr "Том RAID-массива в данный момент смонтирован! Удалите <a href=%s>точку монтирования</a> перед продолжением."
 
 msgid "Geom Vinum"
 msgstr "Geom Vinum"
@@ -1003,22 +1003,22 @@ msgid "(unstable)"
 msgstr "(нестабилен)"
 
 msgid "RAID"
-msgstr "RAID"
+msgstr "RAID-массив"
 
 msgid "The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Настройки RAID были изменены.<br>Примените изменения чтобы они вступили в силу."
+msgstr "Настройки RAID были изменены.<br>Примените изменения, чтобы они вступили в силу."
 
 msgid "Edit RAID"
-msgstr "Редактировать RAID"
+msgstr "Редактировать RAID-массив"
 
 msgid "Delete RAID"
-msgstr "Удалить RAID"
+msgstr "Удалить RAID-массив"
 
 msgid "Add RAID"
-msgstr "Добавить RAID"
+msgstr "Добавить RAID-массив"
 
 msgid "Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!"
-msgstr "Вы действительно хотите удалить этот RAID? Все использующие его элементы станут неверны (напр. шары)!"
+msgstr "Вы действительно хотите удалить этот RAID-массив? Все использующие его объекты станут недоступны (например, общие ресурсы)!"
 
 msgid "You must add disks first."
 msgstr "Сначала добавьте диски."
@@ -1030,43 +1030,43 @@ msgid "This device already exists in the raid volume list."
 msgstr "Это устройство уже есть в списке тома RAID."
 
 msgid "There must be a minimum of 2 disks in a RAID 0 volume."
-msgstr "Должно быть как минимум 2 диска в томе RAID 0."
+msgstr "Для RAID уровня 0 нужно как минимум 2 диска."
 
 msgid "There must be 2 disks in a RAID 1 volume."
-msgstr "Для RAID 1 нужно 2 диска."
+msgstr "Для RAID уровня 1 нужно 2 диска."
 
 msgid "There must be a minimum of 2 disks in a RAID 5 volume."
-msgstr "Для RAID 5 нужно как минимум 2 диска."
+msgstr "Для RAID уровня 5 нужно как минимум 2 диска."
 
 msgid "ERR Could not save RAID configuration.\n"
-msgstr "ОШИБ Не могу сохранить конфигурацию RAID.\n"
+msgstr "ОШИБКА Не могу сохранить конфигурацию RAID.\n"
 
 msgid "Raid name"
-msgstr "Имя RAID"
+msgstr "Имя RAID-массива"
 
 msgid "striping"
-msgstr "чередующийся"
+msgstr "чередование"
 
 msgid "mirroring"
 msgstr "зеркалирование"
 
 msgid "rotated block-interleaved parity"
-msgstr "циклическая блочно-чередующаяся четность"
+msgstr "с циклическим чередованием контрольных сумм"
 
 msgid "JBOD"
-msgstr "JBOD"
+msgstr "тип JBOD (простой массив дисков)"
 
 msgid "Members of this volume"
 msgstr "Члены тома"
 
 msgid "Software RAID information and status"
-msgstr "Информация и состояние программного RAID"
+msgstr "Информация и состояние программного RAID-массива"
 
 msgid "Disk format UFS output:"
 msgstr "Сообщения при форматировании диска в UFS"
 
 msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
-msgstr "Этот шаг приведет к форматированию RAID в файловой системе Unix (UFS)."
+msgstr "Этот шаг приведет к форматированию RAID-массива в файловой системе Unix (UFS)."
 
 msgid "Format UFS disk!"
 msgstr "Форматировать диск в UFS!"
@@ -1078,22 +1078,22 @@ msgid "Command"
 msgstr "Команда"
 
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly)."
-msgstr "1. Используйте эти специальные действия только для отладки!<br>2.Для запуска RAID необходимости в использовании этого меню нет (запускается автоматически)."
+msgstr "1. Используйте эти специальные действия только для отладки!<br>2.Для запуска RAID-массива необходимости в использовании этого меню нет (запускается автоматически)."
 
 msgid "Share Name"
-msgstr "Имя шары"
+msgstr "Имя общего ресурса"
 
 msgid "The mount point list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Точка монтирования была изменена.<br>Вы должны применить изменения чтобы они вступили в силу."
+msgstr "Точка монтирования была изменена.<br>Вы должны применить изменения, чтобы они вступили в силу."
 
 msgid "Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!"
-msgstr "Вы действительно хотите удалить эту точку монтирования? Все элементы которые его еще используют станут неверны (напр. шары)!"
+msgstr "Вы действительно хотите удалить эту точку монтирования? Все объекты, использующие её, станут недоступны (например, общие ресурсы)!"
 
 msgid "delete mount"
-msgstr "удалить монтирование"
+msgstr "удалить точку монтирования"
 
 msgid "add mount"
-msgstr "добавить монтирование"
+msgstr "добавить точку монтирования"
 
 msgid "The description name contain invalid characters."
 msgstr "Описание содержит некорректные символы"
@@ -1102,10 +1102,10 @@ msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Не могу смонтировать системный раздел 1, раздел с данными - 2"
 
 msgid "Duplicate Share Name."
-msgstr "Повторяющееся имя шары"
+msgstr "Повторяющееся имя общего ресурса"
 
 msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
-msgstr "1. Вы не можете монтировать раздел '%s' где хранится файл настроек.<br>2. В ОС FreeBSD файлловая систма NTFS имеет множество глюков."
+msgstr "1. Невозможно смонтировать раздел '%s', где хранится файл настроек.<br>2. Поддержка файловой системы NTFS в ОС FreeBSD работает нестабильно."
 
 msgid "Mounting..."
 msgstr "Монтируется..."
@@ -1120,7 +1120,7 @@ msgid "The Workgroup name contains invalid characters."
 msgstr "Имя рабочей группы содержит некорректные символы."
 
 msgid "The WINS server must be an IP address."
-msgstr "WINS сервер должен быть IP адрес."
+msgstr "Поле WINS-сервера должно содержать IP-адрес."
 
 msgid "The SND Buffer value must be a number."
 msgstr "Значение SND Buffer должно быть числом."
@@ -1129,7 +1129,7 @@ msgid "The RCV Buffer value must be a number."
 msgstr "Значение RCV Buffer должно быть числом."
 
 msgid "CIFS share"
-msgstr "CIFS шара"
+msgstr "общий ресурс CIFS "
 
 msgid "Authentication"
 msgstr "Аутентификация"
@@ -1144,7 +1144,7 @@ msgid "Workgroup to be member of."
 msgstr "Стать членом рабочей группы."
 
 msgid "Server description. This can usually be left blank."
-msgstr "Описание Сервера. Обычно можно оствить пустым."
+msgstr "Описание Сервера. Обычно можно оставить пустым."
 
 msgid "Dos charset"
 msgstr "Кодовая страница Dos"
@@ -1156,10 +1156,10 @@ msgid "Log Level"
 msgstr "Степень журналирования"
 
 msgid "Local Master Browser"
-msgstr "Локальный обозреватель сети"
+msgstr "Локальный основной обозреватель сети"
 
 msgid "Allows %s to try and become a local master browser."
-msgstr "Позволяет %s участвовать в выборах и стать локальным обозревателем сети."
+msgstr "Позволяет %s участвовать в выборах и стать основным локальным обозревателем сети."
 
 msgid "Time server"
 msgstr "Сервер времени"
@@ -1180,7 +1180,7 @@ msgid "Enable Recycle bin"
 msgstr "Включить корзину"
 
 msgid "This will create a recycle bin on the CIFS shares"
-msgstr "Это создасть корзину на CIFS шарах"
+msgstr "Это создасть корзину на общих ресурсах CIFS"
 
 msgid "Send Buffer Size"
 msgstr "Размер буфера отправки"
@@ -1195,25 +1195,25 @@ msgid "Size of receive buffer (16384 by default)."
 msgstr "Размер буфера приема (по умолчанию 16384)."
 
 msgid "The shares has been modified.<br>You must apply the changes in order for them to take effect."
-msgstr "Шары были изменены.<br>Вы должны применить изменения чтобы они вступили в силу."
+msgstr "Общие ресурсы были изменены.<br>Вы должны применить изменения, чтобы они вступили в силу."
 
 msgid "Browseable"
 msgstr "Просматривается"
 
 msgid "Edit share"
-msgstr "Редактировать шару"
+msgstr "Редактировать общий ресурс"
 
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
-msgstr "Этим управляется будет ли шара видна в списке доступных шар в nwt view и в Сетевом окружении."
+msgstr "Этим управляется будет ли общий ресурс виден в списке доступных ресурсов в Сетевом окружении."
 
 msgid "The maximum Number of client must be a number."
 msgstr "Максимальное количество клиентов должно быть числом."
 
 msgid "The max con per ip must be a number."
-msgstr "Макс. соед. на IP должно быть числом."
+msgstr "Макс. число соединений с одного IP должно быть числом."
 
 msgid "The maximum idle time be a number."
-msgstr "Маскимальное время простоя должно быть числом."
+msgstr "Максимальное время простоя должно быть числом."
 
 msgid "The pasv address must be a public IP address."
 msgstr "Адрес pasv должен быть публичным IP адресом."
@@ -1228,13 +1228,13 @@ msgid "Number of clients"
 msgstr "Количество клиентов"
 
 msgid "Maximum number of simultaneous clients."
-msgstr "Максимальное количество одновременных клиентов."
+msgstr "Максимальное количество клиентов одновременно."
 
 msgid "Max. conn. per IP"
-msgstr "Макс. соед. на IP"
+msgstr "Макс. число соединений на IP"
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
-msgstr "Максимальное количество соединений на один IP адрес (0 = неограничено)."
+msgstr "Максимальное количество соединений с одного IP-адреса (0 = неограничено)."
 
 msgid "Timeout"
 msgstr "Таймаут"
@@ -1261,34 +1261,34 @@ msgid "Enable FXP protocol."
 msgstr "Разрешить протокол FXP."
 
 msgid "FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!)."
-msgstr "FXP позволяет передавать между двумя удаленными серверами без отправки данных клиенту с запросом на передачу (небезопасно!)."
+msgstr "Протокол FXP позволяет передавать данные между двумя удаленными серверами без отправки их клиенту, запросившему передачу (небезопасно!)."
 
 msgid "NAT mode"
-msgstr "Режим NAT"
+msgstr "Режим трансляции сетевых адресов (NAT)"
 
 msgid "Force NAT mode."
-msgstr "Ghbyelbntkmysq ht;bv ТФЕ"
+msgstr "Принудительный режим NAT."
 
 msgid "Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying."
-msgstr "Разрешите это если Ваш FTP сервер находится за NAT, который не поддерживает проксирование FTP."
+msgstr "Включите этот режим, если Ваш FTP сервер находится за устройством NAT, не поддерживающим FTP-прокси."
 
 msgid "Passive IP address"
-msgstr "Пассивный IP адрес"
+msgstr "Внутренний IP адрес"
 
 msgid "Use this option to override the IP address that FTP daemon will advertise in response to the PASV command."
-msgstr "Используйте этот параметр для перекрытия IP адреса который FTP демон предложит в ответ на команду PASV."
+msgstr "Используйте этот параметр для замещения IP-адреса, который FTP-сервер предложит в ответ на команду PASV."
 
 msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
-msgstr "Минимальный используемый порт для PASV соединений (0 = использовать любой порт)."
+msgstr "Минимальный номер используемого порта при PASV-соединении (0 = использовать любой порт)."
 
 msgid "The maximum port to allocate for PASV style data connections (0 = use any port)."
-msgstr "Максимальный используемый порт для PASV соединений (0 = использовать любой порт)."
+msgstr "Максимальный номер используемого порта при PASV-соединении (0 = использовать любой порт)."
 
 msgid "Banner"
-msgstr "Баннер"
+msgstr "Приветствие"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
-msgstr "Приветственный баннер показываемый FTP при первом подключении."
+msgstr "Приветствие, показываемое FTP-сервером в начале сеанса."
 
 msgid "A valid network must be specified."
 msgstr "Должна быть указана корректная сеть."
@@ -1297,19 +1297,19 @@ msgid "NFS Server"
 msgstr "Сервер NFS"
 
 msgid "Map all users to root"
-msgstr "Назначить всех пользователей rootами"
+msgstr "Присвоить всем пользователям права учётной записи root"
 
 msgid "All users will have the root privilege."
-msgstr "Все бользователи будут иметь rootовские права."
+msgstr "Все пользователи будут иметь права учётной записи root."
 
 msgid "Authorised network"
 msgstr "Авторизованная сеть"
 
 msgid "Network that is authorised to access to NFS share"
-msgstr "Сети которым разрешено подключатся к NFS шаре"
+msgstr "Сети, которым разрешено подключаться к общему ресурсу NFS"
 
 msgid "The name of the exported directories are : /mnt/sharename"
-msgstr "Имя экспортируемых каталогов будет вида: /mnt/sharename"
+msgstr "Имена экспортируемых каталогов будут вида /mnt/sharename"
 
 msgid "Server"
 msgstr "Сервер"
@@ -1336,7 +1336,7 @@ msgid "Maximum connections"
 msgstr "Максимальное количество соединений"
 
 msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
-msgstr "Максимальное количество одновременных соединений. По умолчанию 0 (не ограничено)."
+msgstr "Максимальное количество соединений одновременно. По умолчанию - 0 (не ограничено)."
 
 msgid "MOTD"
 msgstr "MOTD"
@@ -1363,16 +1363,16 @@ msgid "Delete files that don't exist on sender."
 msgstr "Удалять файлы отсутствующие на отправителе."
 
 msgid "Shares to be synchronized"
-msgstr "Шары для синхронизации"
+msgstr "Синхронизирующиеся папки"
 
 msgid "This same local share must be present on the Remote Server."
-msgstr "Такая же локальная шара должна присутствовать и на удаленном сервере."
+msgstr "Такая же локальная папка должна присутствовать и на удаленном сервере."
 
 msgid "Synchronization Time"
 msgstr "Время синхронизации"
 
 msgid "You can't have the same mount point for source and destination!"
-msgstr "Нельзя использовать одну и ту же точку монтирования и для источника и для получателя!"
+msgstr "Нельзя использовать одну и ту же точку монтирования и для источника, и для получателя!"
 
 msgid "Rsync Local Synchronization"
 msgstr "Локальная синхронизация RSYNC"
@@ -1387,7 +1387,7 @@ msgid "Destination"
 msgstr "Получатель"
 
 msgid "Destination Mount Point (backup drive)."
-msgstr "Точка монтирования получателя (запасной винт)."
+msgstr "Точка монтирования получателя (резервный жесткий диск)."
 
 msgid "SSH Daemon"
 msgstr "Демон SSH"
@@ -1396,31 +1396,31 @@ msgid "Alternate TCP port. Default is 22"
 msgstr "Другой TCP порт. По умолчанию 22"
 
 msgid "Permit root login"
-msgstr "Разрешать вход root"
+msgstr "Разрешать вход с учётной записью root"
 
 msgid "Enable TCP Forwarding"
 msgstr "Разрешить пересылку TCP"
 
 msgid "Specifies whether it is allowed to login as superuser (root) directly."
-msgstr "Указывает позволено ли логинится как сверхпользователь (root)."
+msgstr "Указывает, позволено ли входить с правами суперпользователя (root)."
 
 msgid "SSH key"
 msgstr "SSH Ключ"
 
 msgid "Private Key"
-msgstr "Частный ключ"
+msgstr "Личный ключ"
 
 msgid "Paste a DSA PRIVATE KEY in PEM format here."
 msgstr "Вставьте здесь DSA PRIVATE KEY в формате PEM."
 
 msgid "The combination of share and working directory does not exist."
-msgstr "Комбинация шары и рабочего каталога не существует."
+msgstr "Комбинация папки и рабочего каталога не существует."
 
 msgid "Unison File Synchronisation"
 msgstr "Синхронизация файлов Unison"
 
 msgid "Share"
-msgstr "Шара"
+msgstr "Ресурс"
 
 msgid "You may need enough space to duplicate all files being synced"
 msgstr "Вам понадобится достаточно места для дублирования всех синхронизуемых файлов"
@@ -1429,10 +1429,10 @@ msgid "Working Directory"
 msgstr "Рабочий каталог"
 
 msgid "Where the working files will be stored"
-msgstr "Где будут хранится рабочие файлы"
+msgstr "Где будут храниться рабочие файлы"
 
 msgid "Create work directory if it doesn't exist"
-msgstr "Создать рабочий каталог если не существует"
+msgstr "Создать рабочий каталог, если он не существует"
 
 msgid "UPnP A/V Media Server"
 msgstr "UPnP A/V Медиа сервер"
@@ -1447,10 +1447,10 @@ msgid "Content"
 msgstr "Содержимое"
 
 msgid "Directories to be shared."
-msgstr "Каталоги для расшаривания."
+msgstr "Общие каталоги."
 
 msgid "No content directory to be shared."
-msgstr "Нет содержимого каталога для расшаривания."
+msgstr "Нет общего каталога."
 
 msgid "Directory"
 msgstr "Каталог"
@@ -1468,7 +1468,7 @@ msgid "Do you really want to delete this directory entry?"
 msgstr "Вы действительно хотите удалить этот каталог?"
 
 msgid "Directory to be shared."
-msgstr "Каталог для расшаривания"
+msgstr "Общий каталог."
 
 msgid "You must select at least one authentication method."
 msgstr "Вы должны выбрать как минимум один из способов аутентификации."
@@ -1501,7 +1501,7 @@ msgid "Full Name"
 msgstr "Полное имя"
 
 msgid "The User list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Список пользователей был изменен.<br>Вы должны применить изменения чтобы они вступили в силу."
+msgstr "Список пользователей был изменен.<br>Вы должны применить изменения, чтобы они вступили в силу."
 
 msgid "Edit user"
 msgstr "Изменить пользователя"
@@ -1516,7 +1516,7 @@ msgid "Add user"
 msgstr "Добавить пользователя"
 
 msgid "You must create a group first."
-msgstr "Сначала надо создать группу."
+msgstr "Сначала нужно создать группу."
 
 msgid "The login name contains invalid characters."
 msgstr "Имя входа содержит недопустимые символы"
@@ -1543,19 +1543,19 @@ msgid "Confirm Password"
 msgstr "Подтверждение пароля"
 
 msgid "Confirm the password."
-msgstr "Подтвердит ранее введенный пароль."
+msgstr "Подтвердите ранее введенный пароль."
 
 msgid "Group Member"
 msgstr "Член группы"
 
 msgid "Full Shell"
-msgstr "Полный Шелл"
+msgstr "Оболочка"
 
 msgid "Give full shell to user"
-msgstr "Дать пользователю полный шелл"
+msgstr "Дать пользователю полную оболочку"
 
 msgid "The group list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Список групп был изменен.<br>Вы должны применить изменения чтобы они вступили в силу."
+msgstr "Список групп был изменен.<br>Вы должны применить изменения, чтобы они вступили в силу."
 
 msgid "Edit group"
 msgstr "Изменить группу"
@@ -1591,10 +1591,10 @@ msgid "AD or PDC name."
 msgstr "Имя AD или PDC."
 
 msgid "AD server IP"
-msgstr "IP сервера AD"
+msgstr "IP-сервера AD"
 
 msgid "IP address of MS Active Directory server."
-msgstr "IP адрес сервера MS Active Directory."
+msgstr "IP-адрес сервера служб каталогов Active Directory."
 
 msgid "Domain name"
 msgstr "Доменное имя"
@@ -1606,19 +1606,19 @@ msgid "Administrator name"
 msgstr "Имя администратора"
 
 msgid "Username of a domain administrator account."
-msgstr "Имя учетной записи администратора."
+msgstr "Имя учетной записи администратора домена."
 
 msgid "Administration password"
 msgstr "Администраторский пароль"
 
 msgid "Password of domain administrator account, enter it here twice."
-msgstr "Пароль учетной записи доменного администратора, введите здесь дважды."
+msgstr "Пароль учетной записи администратора домена, введите здесь дважды."
 
 msgid "The system is halting now. This may take one minute."
 msgstr "Система выключается. Это может занять одну минуту."
 
 msgid "Are you sure you want to shutdown the system?"
-msgstr "Вы уверены что хотите выключить систему?"
+msgstr "Вы уверены, что хотите выключить систему?"
 
 msgid "Scheduled shutdown"
 msgstr "Запланированное выключение"
@@ -1657,7 +1657,7 @@ msgid "The system is rebooting now. This may take one minute."
 msgstr "Система перезагружается. Это может занять одну минуту."
 
 msgid "Are you sure you want to reboot the system?"
-msgstr "Вы уверены что хотите перезагрузить систему?"
+msgstr "Вы уверены, что хотите перезагрузить систему?"
 
 msgid "License"
 msgstr "Лицензия"
@@ -1666,10 +1666,10 @@ msgid "%s interface (SSID '%s')"
 msgstr "%s интерфейс (SSID '%s')"
 
 msgid "Signal strength cache"
-msgstr "Кеш силы сигнала"
+msgstr "Кэш силы сигнала"
 
 msgid "MAC address"
-msgstr "MAC адрес"
+msgstr "MAC-адрес"
 
 msgid "Signal"
 msgstr "Сигнал"
@@ -1684,7 +1684,7 @@ msgid "Associated stations"
 msgstr "Ассоциированные станции"
 
 msgid "TX rates"
-msgstr "Уровень TX"
+msgstr "Скорость передачи"
 
 msgid "No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported)."
 msgstr "Не найдено поддерживаемых беспроводных интерфейсов для отображения их состояния (поддерживаются только карты использующие драйверы wi[n])"
@@ -1708,7 +1708,7 @@ msgid "Gateway"
 msgstr "Шлюз"
 
 msgid "ISP DNS servers"
-msgstr "DNS серверы провайдера"
+msgstr "DNS-серверы провайдера"
 
 msgid "Media"
 msgstr "Носитель"
@@ -1729,7 +1729,7 @@ msgid "Collisions"
 msgstr "Коллизии"
 
 msgid "CPU load"
-msgstr "Загрузка ЦПУ"
+msgstr "Загрузка прпоцессора"
 
 msgid "VLAN tag"
 msgstr "тэг VLAN"
@@ -1738,7 +1738,7 @@ msgid "Edit VLAN"
 msgstr "Редактировать VLAN"
 
 msgid "Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
-msgstr "Traceroute может занять некоторое время. Вы можете в любой момент нажать кнопку Стоп в браузере чтобы увидеть результат неудачных трассировок."
+msgstr "Выполнение команды Traceroute может занять некоторое время. Вы можете в любой момент нажать кнопку Стоп в браузере чтобы увидеть результат неудачных трассировок."
 
 msgid "Partitions"
 msgstr "Разделы"
@@ -1750,10 +1750,10 @@ msgid "ATAidle"
 msgstr "ATAidle"
 
 msgid "Space Used"
-msgstr "Занято объема"
+msgstr "Занятый объем"
 
 msgid "Mounts"
-msgstr "Монтирования"
+msgstr "Точки монтирования"
 
 msgid "MS Domain"
 msgstr "Домен MS"
@@ -1774,13 +1774,13 @@ msgid "%s will reboot after restoring the configuration."
 msgstr "%s будет перезагружен после восстановления конфигурации."
 
 msgid "Delete ARP entry"
-msgstr "Удалить ARP строку"
+msgstr "Удалить ARP-строку"
 
 msgid "Remove all entries from ARP table"
-msgstr "Удалить все строки из таблицы ARP"
+msgstr "Удалить все строки из ARP-таблицы"
 
 msgid "Traffic graph"
-msgstr "График траффика"
+msgstr "График трафика"
 
 msgid "Cannot get data about interface"
 msgstr "Невозможно получить информацию об интерфейсе"
@@ -1801,25 +1801,25 @@ msgid "Follow"
 msgstr "Следить"
 
 msgid "Graph shows last"
-msgstr "График показывает последний"
+msgstr "График показывает последние данные"
 
 msgid "Collecting initial data, please wait..."
-msgstr "Сбор исходных данных, пожалуйста подождите..."
+msgstr "Сбор исходных данных, пожалуйста, подождите..."
 
 msgid "Enable tuning of some kernel variables"
-msgstr "Включить возможность тюнинга некоторых переменных ядра"
+msgstr "Включить возможность настройки некоторых переменных ядра"
 
 msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
-msgstr "Это заставит %s не проверять обновления версий прошивок припросмотре <a href=%s>%s</a> страницы."
+msgstr "Это заставит %s не проверять обновления версий прошивок при просмотре страницы <a href=%s>%s</a>."
 
 msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
-msgstr "НЕ отменяйте обновление прошивки после того как она началась. %s будет перезагружен автоматически после сохранения новой прошивки. Настройки сохранятся.<br>Необходимо как минимум %d Мб ОЗУ для проведения обновления прошивки.<br>Настоятельно рекомендуется <a href=%s>Сохранить</a> настройки системы перед обновлением прошивки."
+msgstr "НЕ отменяйте обновление прошивки, после того как оно началось. %s будет перезагружен автоматически после сохранения новой прошивки. Настройки сохранятся.<br>Необходимо как минимум %d Мб ОЗУ для проведения обновления прошивки.<br>Настоятельно рекомендуется <a href=%s>Сохранить</a> настройки системы перед обновлением прошивки."
 
 msgid "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
-msgstr "После нажатия &quot;Сохранить&quot;, возможно придется сдеталь следующее для получения доступа к %s снова: <ul><li>Сменить IP адрес Вашего компьютера</li><li>войти в webGUI с новым IP адресом</li></ul>"
+msgstr "После нажатия &quot;Сохранить&quot;, возможно придется сделать следующее для получения доступа к %s снова: <ul><li>Сменить IP-адрес Вашего компьютера</li><li>войти в webGUI с новым IP-адресом</li></ul>"
 
 msgid "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
-msgstr "Вы можете поставить UDMA режим принудительно если получаете 'UDMA_ERROR.... LBA' сообщение при использовании жесткого диска."
+msgstr "Вы можете поставить UDMA-режим принудительно, если получаете сообщение 'UDMA_ERROR.... LBA' при использовании жесткого диска."
 
 msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
 msgstr "Это позволяет указать тип ФС для диска с данными.<br><em>Оставьте 'unformated' для неформатированного диска, затем используйте  <a href=%s>меню форматирования</a>.</em>"
@@ -1828,16 +1828,16 @@ msgid "Optional configuration step: Configuring a virtual RAID disk using your <
 msgstr "Возможный шаг настройки: Настройка виртуального RAID диска используя <a href='%s'>ранее настроенный диск</a>.<br>Дождитесь '%s' состояния перед форматированием и монтированием!"
 
 msgid "The following input errors were detected"
-msgstr "Следующие ошибки ввода были обнаружены"
+msgstr "Были обнаружены следующие ошибки ввода"
 
 msgid "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
-msgstr "Второй шаг настройки: Объявление файловой системы используемой <a href=%s>ранее настроенными дисками.</a>"
+msgstr "Второй шаг настройки: Объявление файловой системы используемой на <a href=%s>ранее настроенном диске</a>."
 
 msgid "Default is 21"
-msgstr "По умолчанию 21"
+msgstr "По умолчанию - 21"
 
 msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
-msgstr "<a href=%s>SSHD</a> должен быть включен для работы Unison,и у  <a href=%s>пользователя</a> должен быть разрешен Полный Шелл"
+msgstr "<a href=%s>SSHD</a> должен быть включен для работы Unison, и у  <a href=%s>пользователя</a> должна быть разрешена полная оболочка."
 
 msgid "Last %d %s log entries"
 msgstr "Последние %d %s записи в журнале"
@@ -1852,25 +1852,25 @@ msgid "Number of log entries to show"
 msgstr "Количество отображаемых записей журнала"
 
 msgid "Resolve IP addresses to hostnames"
-msgstr "Преобразовывать IP адреса в имена узлов"
+msgstr "Преобразовывать IP-адреса в имена узлов"
 
 msgid "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
-msgstr "Подсказка: Если это указано то IP адреса в %s журнале будут по возможности преобразовываться в реальные имена узлов."
+msgstr "Подсказка: Если это указано, то IP-адреса в %s журнале будут по возможности преобразовываться в реальные имена узлов."
 
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
-msgstr "Внимание: Это может привести к большой задержке в загрузке %s журнальной странице!"
+msgstr "Внимание: Это может привести к большой задержке в загрузке %s страницы журнала!"
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr "Разрешить syslog'ирование на удаленный syslog сервер"
+msgstr "Разрешить отпраку журналов на удаленный syslog-сервер"
 
 msgid "Remote syslog server"
-msgstr "Удаленный сервер syslog"
+msgstr "Удаленный syslog-сервер"
 
 msgid "IP address of remote syslog server"
-msgstr "ШЗflhtc elfktyyjuj ыныдщп cthdthf"
+msgstr "IP-адрес удаленного syslog-сервера"
 
 msgid "System events"
-msgstr "Cj,snbz cbcntvs"
+msgstr "События системы"
 
 msgid "SSHD events"
 msgstr "События SSHD"
@@ -1888,7 +1888,7 @@ msgid "Daemon events"
 msgstr "События демона"
 
 msgid "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
-msgstr "Syslog посылает UDP дейтаграммы на порт 514 указанного удаленного syslog сервера. Убедитесь что syslogd на удаленном сервере примет  syslog сообщения от %s."
+msgstr "Служба syslog посылает UDP-дейтаграммы на порт 514 указанного удаленного syslog-сервера. Убедитесь, что syslogd на удаленном сервере примет syslog-сообщения от %s."
 
 msgid "List of partition on all detected disk"
 msgstr "Список разделов на всех обнаруженных дисках"
@@ -1906,25 +1906,25 @@ msgid "Show the list of available target Name on the iSCSI target"
 msgstr "Показать список доступных имен Целей на iSCSI цели"
 
 msgid "AD Authentication disabled"
-msgstr "AD Аутентификация запрещена"
+msgstr "AD-аутентификация запрещена"
 
 msgid "Count must be between 1 and %d"
 msgstr "Количество должно быть между 1 и %d"
 
 msgid "Ping output"
-msgstr "Результат Ping"
+msgstr "Результат команды Ping"
 
 msgid "Maximum number of hops"
 msgstr "Максимальное количество прыжков"
 
 msgid "Traceroute output"
-msgstr "Результат Traceroute"
+msgstr "Результат команды Traceroute"
 
 msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
-msgstr "IP адреса преобразуются в имена узлов если параметр &quot;Преобразовывать IP адреса в имена узлов&quot; включен на странице <a href=%s>%s</a>."
+msgstr "IP адреса преобразуются в имена узлов, если параметр &quot;Преобразовывать IP-адреса в имена узлов&quot; включен на странице <a href=%s>%s</a>."
 
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
-msgstr "При нажатии \"Да\"', %s сбросит все настройки в заводские и немедленно перезагрузится. Все системные настройки будут перезаписаны. IP адрес ЛВС будет установлен в  %s и пароль будет установлен в '%s'."
+msgstr "При нажатии \"Да\" %s сбросит все настройки в заводские и немедленно перезагрузится. Все системные настройки будут перезаписаны. IP-адрес локальной сети будет установлен в  %s и пароль будет установлен в '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Вы действительно хотите продолжить?"
@@ -1993,7 +1993,7 @@ msgid "The attribute '%s' is required."
 msgstr "Необходим атрибут '%s'."
 
 msgid "The crypted disk list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Список шифрованных дисков был изменен.<br>Вы должны применить изменения чтобы они вступили в силу."
+msgstr "Список шифрованных дисков был изменен.<br>Вы должны применить изменения, чтобы они вступили в силу."
 
 msgid "Data integrity"
 msgstr "Целостность данных"
@@ -2002,7 +2002,7 @@ msgid "Encryption"
 msgstr "Шифрование"
 
 msgid "Do you really want to delete this encrypted disk? All elements that still use it will become invalid (e.g. share)!"
-msgstr "Вы действительно хотите удалить этот шифрованный диск? Все элементы использующие его станут некорректны (напр. шары)!"
+msgstr "Вы действительно хотите удалить этот шифрованный диск? Все объекты, использующие его, станут недоступны (например, общие ресурсы)!"
 
 msgid "Create encrypted disk"
 msgstr "Создать зашифрованный диск"
@@ -2020,7 +2020,7 @@ msgid "Passphrase don't match."
 msgstr "Парольные фразы не совпадают."
 
 msgid "Init and encrypt disk"
-msgstr "Инициировать и зашифровать диск"
+msgstr "Инициализировать и зашифровать диск"
 
 msgid "Disk initialization and encryption"
 msgstr "Инициация и шифрование диска"
@@ -2032,7 +2032,7 @@ msgid "Attaching..."
 msgstr "Присоединение..."
 
 msgid "Using Data integrity will reduce size of available storage and also reduce speed."
-msgstr "Использование целостности данных уменьшит размер доступного хранилища, а так же уменьшит скорость."
+msgstr "Использование контроля за целостностью данных уменьшит размер доступного хранилища, а также уменьшит скорость."
 
 msgid "Sensors"
 msgstr "Датчики"
@@ -2074,13 +2074,13 @@ msgid "Enable resume mode."
 msgstr "Разрешить режим продолжения."
 
 msgid "Use this option to enable resuming broken transfers at the point of interruption."
-msgstr "Используйте этот параметр чтобы разрешить продолжение нарушенных передач с места их обрыва."
+msgstr "Используйте этот параметр, чтобы разрешить продолжение нарушенных передач с места их обрыва."
 
 msgid "iSCSI Target"
-msgstr "iSCSI цель"
+msgstr "iSCSI-цель"
 
 msgid "The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Список iSCSI цели был изменен.<br>Вы должны применить изменения чтобы они вступили в силу."
+msgstr "Список iSCSI цели был изменен.<br>Вы должны применить изменения, чтобы они вступили в силу."
 
 msgid "Do you really want to delete this target?"
 msgstr "Вы действительно хотите удалить эту цель?"
@@ -2092,19 +2092,19 @@ msgid "Add target"
 msgstr "Добавить цель"
 
 msgid "Network that is authorised to access to this iSCSI target."
-msgstr "Сеть авторизованная для доступа к этой iSCSI цели."
+msgstr "Сеть, авторизованная для доступа к этой iSCSI-цели."
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
 msgstr "Нужно как минимум 256Мб ОЗУ для использования iSCSI-цели."
 
 msgid "FTP Server disabled"
-msgstr "FTP Сервер запрещен"
+msgstr "FTP-сервер запрещен"
 
 msgid "FTP users"
-msgstr "FTP пользователи"
+msgstr "Пользователи FTP"
 
 msgid "FTP connected users"
-msgstr "Соединившиеся пользователи FTP"
+msgstr "Подключенные пользователи FTP"
 
 msgid "Save and Restart UPnP"
 msgstr "Сохранить и перезагрузить UPnP"
@@ -2137,7 +2137,7 @@ msgid "No RSYNC Client configured"
 msgstr "Нет настроенных клиентов RSYNC"
 
 msgid "Detected RSYNC remote shares"
-msgstr "Обнаруженные удаленный RSYNC шары"
+msgstr "Обнаруженные удаленные RSYNC-папки"
 
 msgid "Hosts"
 msgstr "Узлы"
@@ -2149,19 +2149,19 @@ msgid "Password confirmation"
 msgstr "Подтверждение пароля"
 
 msgid "Remote share (source)"
-msgstr "Удаленная шара (источник)"
+msgstr "Удаленная папка (источник)"
 
 msgid "Remote address"
 msgstr "Удаленный адрес"
 
 msgid "Local share (destination)"
-msgstr "Локальная шара (получатель)"
+msgstr "Локальная папка (получатель)"
 
 msgid "The RSYNC client list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Список клиентов RSYNC был изменен.<br>Вы должны применить изменения чтобы они вступили в силу."
+msgstr "Список клиентов RSYNC был изменен.<br>Вы должны применить изменения, чтобы они вступили в силу."
 
 msgid "The RSYNC local list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Локальный список RSYNC был изменен.<br>Вы должны применить изменения чтобы они вступили в силу."
+msgstr "Локальный список RSYNC был изменен.<br>Вы должны применить изменения, чтобы они вступили в силу."
 
 msgid "Add RSYNC"
 msgstr "ДобавитьRSYNC"
@@ -2176,13 +2176,13 @@ msgid "Do you really want to delete this RSYNC?"
 msgstr "Вы действительно хотите удалить этот RSYNC?"
 
 msgid "Source share"
-msgstr "Шара источника"
+msgstr "Папка источника"
 
 msgid "Destination share"
-msgstr "Шара получателя"
+msgstr "Папка получателя"
 
 msgid "Remote source share name"
-msgstr "Имя шары удаленного источника"
+msgstr "Имя папки удаленного источника"
 
 msgid "Mount to use"
 msgstr "Монтирование для использования"
@@ -2203,7 +2203,7 @@ msgid "Balance algorithm"
 msgstr "Алгоритм балансировки"
 
 msgid "Select your read balance algorithm."
-msgstr "Выберите желаемых алгорить балансировки чтения"
+msgstr "Выберите желаемый алгоритм балансировки чтения"
 
 msgid "Settings"
 msgstr "Параметры"
@@ -2212,7 +2212,7 @@ msgid "Define an host name can be useful for NFS."
 msgstr "Указание имени узла может быть полезно для NFS."
 
 msgid "The host list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Список узлов был изменен.<br>Вы должны применить изменения чтобы они вступили в силу."
+msgstr "Список узлов был изменен.<br>Вы должны применить изменения, чтобы они вступили в силу."
 
 msgid "Edit Host"
 msgstr "Изменить узел"
@@ -2236,10 +2236,10 @@ msgid "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ 
 msgstr "Имя узла может состоять только из символов a-z, A-Z and 0-9, - , _ и ."
 
 msgid "The IP address that this hostname represents."
-msgstr "IP адрес представленный этим узлом"
+msgstr "IP-адрес, представленный этим узлом."
 
 msgid "You may enter a description here for your reference."
-msgstr "Можете ввести сюда описание для своих нужд."
+msgstr "Можно ввести сюда описание для своих нужд."
 
 msgid "Download configuration"
 msgstr "Скачать конфигурацию"
@@ -2248,7 +2248,7 @@ msgid "Restore configuration"
 msgstr "Восстановить конфигурацию"
 
 msgid "Open a %s configuration XML file and click the button below to restore the configuration."
-msgstr "Откройте %s XML файл настроек и нажмите кнопку ниже для восстановления настроек."
+msgstr "Откройте %s XML-файл настроек и нажмите кнопку ниже для восстановления конфигурации."
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr "Нажатие этой кнопки приведет к скачиванию настроек системы в формате XML."
@@ -2257,5 +2257,5 @@ msgid "Backup configuration"
 msgstr "Сохранить конфигурацию"
 
 msgid "Initializing disk"
-msgstr "Инициация диска"
+msgstr "Инициализация диска"
 

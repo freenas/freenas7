@@ -604,7 +604,7 @@ msgid "This means that the image you uploaded is not an official/supported image
 msgstr "Acest lucru insemna ca imaginea incarcata nu este in mod oficial suportata si poate produce efecte nedorite in functionare . Instalati doar imagini sistem care provin din surse sigure si asigurati-va ca imaginea respectiva nu a fost alterata.<br><br>Doriti sa instalati oricum aceasta imagine (pe riscul dvs.)?"
 
 msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
-msgstr "Click &quot;Activati actualizarea firmware-ului&quot; mai jos, apoi alegeti imaginea de incarcat.<br>Click &quot;Actualizare firmware&quot; pentru inceperea actualizarii."
+msgstr "Click &quot;Activati actualizarea firmware-ului&quot; mai jos, apoi alegeti imaginea de incarcat.<br>Click &quot;Actualizare Firmware&quot; pentru inceperea actualizarii."
 
 msgid "Enable firmware upload"
 msgstr "Activare Actualizare Firmware"
@@ -685,7 +685,7 @@ msgid "System Beep"
 msgstr "Beep Sistem"
 
 msgid "Disable speaker beep on startup and shutdown"
-msgstr "Dezactivare sunet la pornire si la oprire"
+msgstr "Dezactivare sunet (beep) la pornire si la oprire"
 
 msgid "S.M.A.R.T Daemon"
 msgstr "Daemon S.M.A.R.T"
@@ -754,16 +754,13 @@ msgid "Enable device polling"
 msgstr "Activare Device Polling"
 
 msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards."
-msgstr "Device polling este o tehnica de a lasa sistemul sa verifice periodic starea dispozitivelor de retea in loc sa functioneze pe baza de intreruperi. In acest mod se reduce incarcarea procesorului cu scaderea semnificativa a intirzierilor in retea (dispozitivul e accesat de aprox. 1000 ori pe sec.) Nu toate cartele de retea accepta aces mod de lucru. Verificati la pagina web m0n0wall lista cartelelor de retea suportate."
+msgstr "Device polling este tehnica de a lasa sistemul sa verifice periodic starea dispozitivelor de retea in loc de a folosi intreruperile. In acest mod se reduce incarcarea procesorului cu scaderea semnificativa a intirzierilor in retea (dispozitivul e accesat de aprox. 1000 ori pe sec.) Nu toate cartele de retea accepta acest mod de lucru. Verificati la pagina web m0n0wall lista cartelelor de retea suportate."
 
 msgid "Speed"
 msgstr "Viteza"
 
 msgid "Duplex"
 msgstr "Duplex"
-
-msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-msgstr "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 
 msgid "Enable Optional "
 msgstr "Activare Optionala "
@@ -799,7 +796,7 @@ msgid "Calculate netmask bits"
 msgstr "Calcul Biti Masca Retea"
 
 msgid "The LAN configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Configuratia RETELEI a fost modificata.<br>Trebuie sa salvati modificarile pentru ca aceasta sa devina activa."
+msgstr "Configuratia RETELEI a fost modificata.<br>Va trebui sa o salvati pentru a deveni activa."
 
 msgid "Manage"
 msgstr "Configurare"
@@ -811,7 +808,7 @@ msgid "Tools"
 msgstr "Unelte"
 
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Lista de discuri a fost modificata.<br>Trebuie sa salvati modificarile pentru ca aceasta sa devina activa."
+msgstr "Lista de discuri a fost modificata.<br>Va trebui sa o salvati pentru a deveni activa."
 
 msgid "Standby time"
 msgstr "Timp Standby"
@@ -988,7 +985,7 @@ msgid "RAID"
 msgstr "RAID"
 
 msgid "The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Configuratia Raid a fost modificata.<br>Trebuie sa salvati modificarile pentru ca aceasta sa devina activa."
+msgstr "Configuratia Raid a fost modificata.<br>Va trebui sa o salvati pentru a deveni activa."
 
 msgid "Edit RAID"
 msgstr "Editare RAID"
@@ -1072,7 +1069,7 @@ msgid "Share Name"
 msgstr "Nume Share"
 
 msgid "The mount point list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Lista punctelor de montare a fost schimbata.<br>Trebuie sa salvati modificarile pentru ca aceasta sa devina activa."
+msgstr "Lista punctelor de montare a fost schimbata.<br>Va trebui sa o salvati pentru a deveni activa."
 
 msgid "Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!"
 msgstr "Doriti sa stergeti acest punct de montare? Toate elementele asociate, chiar active, vor fi sterse (inclusiv partajarile)!"
@@ -1093,7 +1090,7 @@ msgid "Duplicate Share Name."
 msgstr "Nume Partajare Duplicat."
 
 msgid "This disk/partition is already configured."
-msgstr "Acest disc/partitie a fost deja configurat."
+msgstr "Acest disc/partitie a fost deja configurat(a)."
 
 msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
 msgstr "1. Nu puteti monta partitia '%s' unde se afla fisierul de configuratie.<br>2. Sistemul NTFS pentru FreeBSD se afla inca in faza de implementare."
@@ -1432,7 +1429,7 @@ msgid "UPnP A/V Media Server"
 msgstr "Server Media A/V UPnP"
 
 msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Lista continutului directorului curent a fost modificata.<br>Trebuie sa salvati modificarile pentru ca aceasta sa devina activa."
+msgstr "Lista continutului directorului curent a fost modificata.<br>Va trebui sa o salvati pentru a deveni activa."
 
 msgid "UPnP friendly name."
 msgstr "Nume simplu UPnP."
@@ -1462,7 +1459,7 @@ msgid "Delete directory"
 msgstr "Stergere director"
 
 msgid "Do you really want to delete this directory entry?"
-msgstr "Doriti sa stergeti link-ul la director?"
+msgstr "Doriti sa stergeti aceasta intrare director?"
 
 msgid "Directory to be shared."
 msgstr "Directorul de partajat."
@@ -1501,7 +1498,7 @@ msgid "Full Name"
 msgstr "Nume Complet"
 
 msgid "The User list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Lista utilizatorilor a fost modificata.<br>Trebuie sa salvati modificarile pentru ca aceasta sa devina activa."
+msgstr "Lista utilizatorilor a fost modificata.<br>Va trebui sa o salvati pentru a deveni activa."
 
 msgid "Edit user"
 msgstr "Editare utilizator"
@@ -1516,10 +1513,10 @@ msgid "Add user"
 msgstr "Adaugare utilizator"
 
 msgid "You must create a group first."
-msgstr "trebuie creat un grup mai intii."
+msgstr "Trebuie creat un grup mai intii."
 
 msgid "The login name contains invalid characters."
-msgstr "Numele de login contine caractere invalide."
+msgstr "Numele pentru login contine caractere invalide."
 
 msgid "The login name is a reserved login name."
 msgstr "Numele introdus reprezinta un nume rezervat."
@@ -1558,7 +1555,7 @@ msgid "Give full shell to user"
 msgstr "Acces complet la Shell pentru utilizator"
 
 msgid "The group list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Lista grupurilor a fost modificata.<br>Trebuie sa salvati modificarile pentru ca aceasta sa devina activa."
+msgstr "Lista grupurilor a fost modificata.<br>Va trebui sa o salvati pentru a deveni activa."
 
 msgid "Edit group"
 msgstr "Editare grup"
@@ -1582,7 +1579,7 @@ msgid "This group already exists in the group list."
 msgstr "Acest grup exista deja."
 
 msgid "Group name."
-msgstr "Nume de grup."
+msgstr "Nume Grup."
 
 msgid "Group description."
 msgstr "Descriere Grup."
@@ -1654,7 +1651,7 @@ msgid "Execute command"
 msgstr "Executare comanda"
 
 msgid "The system is rebooting now. This may take one minute."
-msgstr "Sistemul reporneste acum. Dureza aproximativ 1 minut."
+msgstr "Sistemul va reporni acum. Dureza aproximativ 1 minut."
 
 msgid "Are you sure you want to reboot the system?"
 msgstr "Doriti sa reporniti sistemul?"
@@ -1663,7 +1660,7 @@ msgid "License"
 msgstr "Licente"
 
 msgid "%s interface (SSID '%s')"
-msgstr "interfata %s (SSID '%s')"
+msgstr "Interfata %s (SSID '%s')"
 
 msgid "Signal strength cache"
 msgstr "Cache Tarie Semnal"
@@ -1687,10 +1684,10 @@ msgid "TX rates"
 msgstr "Viteza TX"
 
 msgid "No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported)."
-msgstr "Nu a fost gasita nicio cartela wireless (sint suportate doar cartelele wireless cu driver pentru windows)."
+msgstr "Nu a fost gasita nicio cartela wireless (sint suportate doar cartelele wireless cu driver wi[n])."
 
 msgid "%s interface"
-msgstr "interfata %s"
+msgstr "Interfata %s"
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -1804,16 +1801,16 @@ msgid "Collecting initial data, please wait..."
 msgstr "Colectare initiala date, va rugam asteptati..."
 
 msgid "Enable tuning of some kernel variables"
-msgstr "Activare optimizare citeva variabile kernel"
+msgstr "Activare optimizare pentru citeva variabile kernel"
 
 msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
 msgstr "Aceasta optiune va determina %s sa nu verifice existenta unor actualizari pentru firmware cind vizualizati pagina <a href=%s>%s</a>."
 
 msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minium of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
-msgstr "NU intrerupeti procesul de actualizare odata inceput. %s va reporni automat dupa ce va fi scris noul firmware. Configuratia curenta va fi pastrata.<br>Aveti nevoie de minim %d Mb RAM pentru a putea efectua actualizarea.<br>Va recomandam sa efectuati un <a href=%s>Backup</a> al Configuratiei Sistem inainte de actualizare."
+msgstr "NU intrerupeti procesul de actualizare firmware odata inceput. %s va reporni automat dupa ce va fi scris noul firmware. Configuratia curenta va fi pastrata.<br>Aveti nevoie de minim %d Mb RAM pentru a putea efectua actualizarea.<br>Va recomandam sa efectuati un <a href=%s>Backup</a> al Configuratiei Sistem inainte de actualizarea firmware-ului."
 
 msgid "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
-msgstr "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
+msgstr "Dupa ce selectati &quot;Salvare&quot;, va mai fi probabil necesar sa executati si urmatorii pasi inainte de a accesa %s din nou: <ul><li>schimbati adresa IP a calculatorului dumneavoastra</li><li>accesati Interfata Web cu noua adresa IP</li></ul>"
 
 msgid "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
 msgstr "Puteti forta modul UDMA daca primiti mesaje de eroare 'UDMA_ERROR.... LBA' pentru acest disc."
@@ -1828,7 +1825,7 @@ msgid "The following input errors were detected"
 msgstr "Au fost detectate urmatoarele erori"
 
 msgid "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
-msgstr "Pasul doi: Stabilirea sistemului de fisiere utilizat de discul configurat anterior<a href=%s></a>."
+msgstr "Pasul doi: Stabilirea sistemului de fisiere utilizat pentru discul configurat anterior<a href=%s></a>."
 
 msgid "Default is 21"
 msgstr "Implicit este 21"
@@ -1855,7 +1852,7 @@ msgid "Hint: If this is checked, IP addresses in %s logs are resolved to real ho
 msgstr "Obs.: Daca aceasta optiune este selectata, adresele IP din jurnalul %s vor fi convertite in  Nume Sistem acolo unde este posibil."
 
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
-msgstr "Atentie: In acest mod va apare o foarte mare intirziere in incarcarea paginii jurnal %s!"
+msgstr "Atentie: In acest mod poate apare o foarte mare intirziere in incarcarea paginii jurnal %s!"
 
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Activare trimitere mesaje syslog catre server-ul remote syslog"
@@ -1888,13 +1885,13 @@ msgid "Syslog sends UDP datagrams to port 514 on the specified remote syslog ser
 msgstr "Sistemul va trimite secvente UDP catre server-ul de syslog selectat prin portul 514. Verificati daca server-ul pentru syslog accepta mesaje de la %s."
 
 msgid "List of partition on all detected disk"
-msgstr "Lista partitiilor detectate la toate discurile"
+msgstr "Lista partitiilor detectate pentru toate discurile"
 
 msgid "List of SMART capabilities on all detected disk"
-msgstr "Lista caracteristicilor SMART disponibile la toate discurile"
+msgstr "Lista caracteristicilor SMART disponibile pentru toate discurile"
 
 msgid "List of Advanced ATA capabilities on all ATA disk"
-msgstr "Lista caracteristicilor Advanced ATA disponibile la toate discurile ATA"
+msgstr "Lista caracteristicilor Advanced ATA disponibile pentru toate discurile ATA"
 
 msgid "iSCSI initiator disabled"
 msgstr "initiator iSCSI dezactivat"
@@ -1909,7 +1906,7 @@ msgid "Count must be between 1 and %d"
 msgstr "Numarul trebuie sa fie intre 1 si %d"
 
 msgid "Ping output"
-msgstr "Iiesire comanda Ping"
+msgstr "Iesire comanda Ping"
 
 msgid "Maximum number of hops"
 msgstr "Numarul maxim de hop-uri"
@@ -1918,16 +1915,16 @@ msgid "Traceroute output"
 msgstr "Iesire Traceroute"
 
 msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
-msgstr "Adresele IP vor fi afisate ca Nume Sistem daca &quot;Conversie adresa IP in  Nume Sistem&quot; este activata in pagina <a href=%s>%s</a>."
+msgstr "Adresele IP vor fi afisate ca Nume Sistem daca &quot;Conversie Adresa IP in  Nume Sistem&quot; este activata in pagina <a href=%s>%s</a>."
 
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to 192.168.1.250 and the password will be set to '%s'."
-msgstr "Daca veti alege optiunea 'Da', %s va fi resetat la valorile implicite si va reporni imediat. Intreaga configuratie va fi rescrisa, adresa IP implicita a sistemului va fi 192.168.1.250 iar parola va fi modificata in '%s'."
+msgstr "Daca veti alege optiunea 'Da', %s va fi resetat la valorile implicite si va reporni imediat. Intreaga configuratie va fi rescrisa, adresa IP implicita a sistemului va fi setata la 192.168.1.250 iar parola va fi modificata in '%s'."
 
 msgid "Are you sure you want to proceed?"
 msgstr "Sinteti sigur ca vreti sa continuati?"
 
 msgid "The configuration has been restored. %s is now rebooting."
-msgstr "Configuratia a fost refacuta. %s va reporni."
+msgstr "Configuratia a fost refacuta. %s va reporni acum."
 
 msgid "The configuration could not be restored."
 msgstr "Configuratia nu a putut fi refacuta."
@@ -1975,7 +1972,7 @@ msgid "Enable the system power control utility"
 msgstr "Activare utilitar control alimentare sistem (UPS)"
 
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
-msgstr "Utilitarul powerd monitorizeaza si stabileste diferite setari pentru controlul alimentarii sistemului."
+msgstr "Utilitarul <b>powerd></b> monitorizeaza si stabileste diferite setari pentru controlul alimentarii sistemului."
 
 msgid "Temperature"
 msgstr "Temperatura"
@@ -1993,10 +1990,10 @@ msgid "Crypt"
 msgstr "Criptat"
 
 msgid "The crypted disk list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Lista discurilor criptate a fost modificata.<br>Va trebui sa salvati modificarile pentru ca acestea sa devina active"
+msgstr "Lista discurilor criptate a fost modificata.<br>Va trebui sa o salvati pentru a devini activa."
 
 msgid "Data integrity"
-msgstr "Integritate date"
+msgstr "Integritate Date"
 
 msgid "Encryption"
 msgstr "Criptare"
@@ -2008,7 +2005,7 @@ msgid "Create encrypted disk"
 msgstr "Creare disc criptat"
 
 msgid "Data integrity algorithm"
-msgstr "Algoritm de integritate date"
+msgstr "Algoritm Integritate Date"
 
 msgid "Encryption algorithm"
 msgstr "Algoritm criptare"
@@ -2032,13 +2029,13 @@ msgid "Attaching..."
 msgstr "Atasare..."
 
 msgid "Using Data integrity will reduce size of available storage and also reduce speed."
-msgstr "Utilizarea optiunii de Integritate Date va reduce spatiul disponibil pe disc si viteza de acces."
+msgstr "Utilizarea optiunii Integritate Date va reduce spatiul disponibil pe disc si viteza de acces."
 
 msgid "Sensors"
 msgstr "Senzori"
 
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
-msgstr "Discul criptat este montay, demontati-l inainte de a-l detasa."
+msgstr "Discul criptat este montat, demontati-l inainte de a-l detasa."
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "Este necesar sa utilizati o fraza de control pentru a atasa un disc criptat"
@@ -2158,10 +2155,10 @@ msgid "Local share (destination)"
 msgstr "Partajare locala (destinatie)"
 
 msgid "The RSYNC client list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Lista clientilor RSYNC a fost modificata.<br> Trebuie sa salvati modificarile pentru ca acestea sa devina active."
+msgstr "Lista clientilor RSYNC a fost modificata.<br>Va trebui sa o salvati pentru a deveni activa."
 
 msgid "The RSYNC local list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr ""
+msgstr "Lista locala RSYNC a fost modificata.<br>Va trebui sa o salvati pentru a deveni activa."
 
 msgid "Add RSYNC"
 msgstr "Adaugare RSYNC"
