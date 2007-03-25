@@ -213,8 +213,7 @@ if (!isset($do_format)) {
 <script language="JavaScript">
 <!--
 function disk_change() {
-  switch(document.iform.disk.value)
-  {
+  switch(document.iform.disk.value) {
     <?php foreach ($a_alldisk as $diskv): ?>
 		case "<?=$diskv['fullname'];?>":
 		  <?php $i = 0;?>
@@ -224,8 +223,19 @@ function disk_change() {
       break;
     <?php endforeach; ?>
   }
+  fstype_change();
 }
 
+function fstype_change() {
+	switch(document.iform.type.value) {
+		case "ufsgpt":
+			document.iform.minspace.disabled = 0;
+			break;
+		default:
+			document.iform.minspace.disabled = 1;
+			break;
+	}
+}
 //-->
 </script>
 <form action="disks_init.php" method="post" name="iform" id="iform">
@@ -247,7 +257,7 @@ function disk_change() {
 		</tr>
     <td valign="top" class="vncellreq"><?=gettext("File system"); ?></td>
     <td class="vtable">
-      <select name="type" class="formfld" id="type" onchange="fs_change()">
+      <select name="type" class="formfld" id="type" onchange="fstype_change()">
         <?php foreach ($a_fst as $fstval => $fstname): ?>
         <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
         <?php endforeach; ?>
