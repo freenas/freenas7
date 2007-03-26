@@ -965,7 +965,8 @@ function disks_raid_graid5_delete($raidname)
 	global $config;
 
 	// Stop the volume
-	mwexec("/sbin/graid5 stop {$raidname}");
+	// Arne Woerner Advice: Don't stop the volume before deleting it.
+	// mwexec("/sbin/graid5 stop {$raidname}");
 
 	// The volume can disapear a few second after stop
 	sleep(2);
