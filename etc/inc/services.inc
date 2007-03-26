@@ -737,6 +737,7 @@ function services_sshd_configure() {
 SyslogFacility LOCAL3
 Protocol 2
 UseDNS no
+PasswordAuthentication yes
 Subsystem       sftp    /usr/libexec/sftp-server
 
 EOD;
