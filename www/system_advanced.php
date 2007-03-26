@@ -108,6 +108,7 @@ if ($_POST) {
 
 		services_smart_configure();
 		services_powerd_configure();
+		services_mdnsresponder_configure();
 
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
