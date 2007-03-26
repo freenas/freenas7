@@ -4,7 +4,6 @@
 #	Copyright (C) 2006-2007 Baikuan Hsu <chicworks@gmail.com>
 #	All rights reserved.
 #
-#	This language file works perfectly on FreeNAS rev.551
 #
 #	Redistribution and use in source and binary forms, with or without
 #	modification, are permitted provided that the following conditions are met:
@@ -31,7 +30,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-02-24 07:46+0800\n"
+"PO-Revision-Date: 2007-03-27 00:35+0800\n"
 "Last-Translator: Baikuan Hsu <chicworks@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -947,6 +946,9 @@ msgstr "初始化"
 msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
 msgstr "磁碟已經掛載！請先<a href=%s>卸載</a>之後再繼續其他動作。"
 
+msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgstr "不能將有 FreeNAS 設定檔的磁碟格式化！"
+
 msgid "Disk initialization details"
 msgstr "磁碟初始化系統資訊"
 
@@ -961,6 +963,9 @@ msgstr "格式化磁碟"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "確定真的要格式化這個磁碟？所有內部的資料都會消失！"
+
+msgid "Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation."
+msgstr "指定要用多少百分比的硬碟空間給一般使用者。注意將這個數值降低會影響到磁碟效能。"
 
 msgid "Don't Erase MBR"
 msgstr "不要刪除MBR"
@@ -1064,6 +1069,9 @@ msgstr "架構 RAID 0 最少要有兩個磁碟。"
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "架構 RAID 1 最少要有兩個磁碟。"
 
+msgid "There must be a minimum of 2 disks in a RAID 5 volume."
+msgstr "架構 RAID 5 最少要有兩個磁碟。"
+
 msgid "ERR Could not save RAID configuration.\n"
 msgstr "錯誤！不能儲存 RAID 設定值。\n"
 
@@ -1130,8 +1138,8 @@ msgstr "不能掛載系統區(第1區)，資料分割區為第2區。"
 msgid "Duplicate Share Name."
 msgstr "輸入了存在的分享名稱。"
 
-msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
-msgstr "1. 你不可以掛載含有'%s'設定檔的磁區。<br>2. FreeBSD對NTFS格式的支援尚不完全（有BUG!）。"
+msgid "You can't mount the partition '%s' where the config file is stored.<br>"
+msgstr "你不可以掛載含有'%s'設定檔的磁區。<br>"
 
 msgid "Mounting..."
 msgstr "掛載中..."
@@ -2204,9 +2212,8 @@ msgstr "刪除RSYNC設定"
 msgid "Do you really want to delete this RSYNC?"
 msgstr "確定要刪除這個RSYNC設定嗎？"
 
-#, fuzzy
 msgid "Source share"
-msgstr "分享之掛載點"
+msgstr "來源位置"
 
 #, fuzzy
 msgid "Destination share"
@@ -2230,4 +2237,64 @@ msgstr "目標名稱"
 
 msgid "Mount used"
 msgstr "使用之掛載點"
+
+msgid "Balance algorithm"
+msgstr "平衡演算法"
+
+msgid "Select your read balance algorithm."
+msgstr "選擇平衡演算法"
+
+msgid "Settings"
+msgstr "設定"
+
+msgid "Define an host name can be useful for NFS."
+msgstr "設定主機名稱將對 NFS 服務有幫助"
+
+msgid "The host list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr "主機名稱列表已經變更。<br>套用之後便會生效。"
+
+msgid "Edit Host"
+msgstr "編輯主機資訊"
+
+msgid "Do you really want to delete this host?"
+msgstr "確定要刪除這個主機資訊嗎？"
+
+msgid "Delete Host"
+msgstr "刪除主機資訊"
+
+msgid "Add Host"
+msgstr "新增主機資訊"
+
+msgid "The host name contain invalid characters."
+msgstr "主機名稱輸入了無效的字元。"
+
+msgid "An host with this name already exists."
+msgstr "已經有一個相同的主機名稱存在了。"
+
+msgid "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and ."
+msgstr "主機名稱只可以由 a-z, A-Z, 0-9 組成。"
+
+msgid "The IP address that this hostname represents."
+msgstr "主機名稱所代表的 IP 位置"
+
+msgid "You may enter a description here for your reference."
+msgstr "可以加註必要的描述文字。"
+
+msgid "Download configuration"
+msgstr "下載設定"
+
+msgid "Restore configuration"
+msgstr "還原設定"
+
+msgid "Open a %s configuration XML file and click the button below to restore the configuration."
+msgstr "開啟 %s XML 設定檔並且點選下方的按鈕來回復設定。"
+
+msgid "Click this button to download the system configuration in XML format."
+msgstr "點這個按鈕下載 XML 格式的系統組態"
+
+msgid "Backup configuration"
+msgstr "備份設定"
+
+msgid "Initializing disk"
+msgstr "初始化磁碟"
 
