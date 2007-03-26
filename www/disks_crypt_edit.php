@@ -105,8 +105,8 @@ if ($_POST) {
 	}
 
 	/* input validation */
-  $reqdfields = explode(" ", "disk aalgo ealgo password passwordconf");
-  $reqdfieldsn = array(gettext("Disk"),gettext("Data integrity algorithm"),gettext("Encryption algorithm"),gettext("Passphrase"),gettext("Passphrase"));
+  $reqdfields = explode(" ", "disk ealgo password passwordconf");
+  $reqdfieldsn = array(gettext("Disk"),gettext("Encryption algorithm"),gettext("Passphrase"),gettext("Passphrase"));
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
   /* Check for a password mismatch */
@@ -118,7 +118,9 @@ if ($_POST) {
 		$do_crypt = true;
 		$geli = array();
 		$disk = $_POST['disk'];
-		$aalgo = $geli['aalgo'] = $_POST['aalgo'];
+		//Remove aalgo value: doesn't work
+		// $aalgo = $geli['aalgo'] = $_POST['aalgo'];
+		$aalgo = $geli['aalgo'] = "none";
 		$ealgo = $geli['ealgo'] = $_POST['ealgo'];
 		$geli['fullname'] = "$disk" . ".eli";
 		$geli['desc'] = "Encrypted disk";
@@ -233,7 +235,9 @@ if (!isset($do_crypt)) {
     		<?php endforeach; ?>
     		</select>
       </td>
-    </tr>   
+    </tr>  
+<?php 
+/* Remove Data Intergrity Algorithhm : there is a bug when enabled 	
      <tr> 
       <td valign="top" class="vncellreq"><?=gettext("Data integrity algorithm") ; ?></td>
       <td class="vtable"> 
@@ -248,6 +252,8 @@ if (!isset($do_crypt)) {
         </select>
       </td>
     </tr>
+*/
+?>
     <tr> 
       <td valign="top" class="vncellreq"><?=gettext("Encryption algorithm") ;?></td>
       <td class="vtable"> 
