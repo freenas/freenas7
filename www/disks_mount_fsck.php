@@ -128,6 +128,7 @@ if (!isset($do_action)) {
   				</tr>
 			 </table>
     	</form>
+		<p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?php echo sprintf(gettext("You can't unmount a drive used by swap file or iSCSI-target file!"), get_product_name());?></p>
   	</td>
 	</tr>
 </table>

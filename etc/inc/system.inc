@@ -1526,6 +1526,12 @@ function system_swap_disable()
 		
 		//Destroy block device
 		$result |= mwexec("/sbin/mdconfig -d -u 2");
+		
+		//Delete the swap file (I hope that no user have important file called swap_file!)
+		if (file_exists("/mnt/{$config['system']['swap_mountname']}/swap_file")){
+			$result = mwexec("rm -f /mnt/{$config['system']['swap_mountname']}/swap_file");
+		}
+		
 	}
 
 	return $result;

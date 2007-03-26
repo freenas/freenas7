@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-03-22 08:17+0100\n"
+"PO-Revision-Date: 2007-03-26 19:39+0100\n"
 "Last-Translator: Olivier COCHARD-LABBE <olivier@freenas.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1110,6 +1110,9 @@ msgstr ""
 msgid "Duplicate Share Name."
 msgstr ""
 
+msgid "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+msgstr ""
+
 msgid "You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr ""
 
@@ -1117,6 +1120,9 @@ msgid "Mounting..."
 msgstr ""
 
 msgid "Unmounting..."
+msgstr ""
+
+msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
 msgstr ""
 
 msgid "The Netbios name contains invalid characters."
