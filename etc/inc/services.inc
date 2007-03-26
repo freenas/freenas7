@@ -1635,14 +1635,25 @@ function services_mdnsresponder_configure()
 		if ($config['system']['webgui']['protocol'] == "https") {
 			if ($config['system']['webgui']['port']) 	{
 				$mDNSResponder = <<<EOD
-"{$config['system']['hostname']} Web Admin"
+# mDNSResponderPosix configuration File
+#
+# This file contains the services to be announced to other Rendezvous aware 
+# machines on the .local network
+# 
+# Entries constist of four consecutive lines as follows:
+# NAME OF SERVICE
+# TYPE OF SERVICE (and, if different from .local, the domain seperated by a space)
+# TXT RECORD (short description of service)
+# PORT OF SERVICE				
+
+{$config['system']['hostname']} Web Admin
 _https._tcp local.
 {$config['system']['webgui']['port']}
 
 EOD;
 			} else 	{
 			$mDNSResponder = <<<EOD
-"{$config['system']['hostname']} Web Admin"
+{$config['system']['hostname']} Web Admin
 _https._tcp local.
 443
 	
@@ -1654,14 +1665,14 @@ EOD;
 			} else {
 				if ($config['system']['webgui']['port'])	{
 					$mDNSResponder = <<<EOD
-"{$config['system']['hostname']} Web Admin"
+{$config['system']['hostname']} Web Admin
 _http._tcp local.
 {$config['system']['webgui']['port']}
 
 EOD;
 				} 	else 	{
 					$mDNSResponder = <<<EOD
-"{$config['system']['hostname']} Web Admin"
+{$config['system']['hostname']} Web Admin
 _http._tcp local.
 80
 
@@ -1674,7 +1685,7 @@ EOD;
 		if (isset($config['afp']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
-"{$config['system']['hostname']} AFP Server"
+{$config['system']['hostname']} AFP Server
 _afpovertcp._tcp local.
 548
 
@@ -1686,7 +1697,7 @@ EOD;
 		if (isset($config['rsyncd']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
-"{$config['system']['hostname']} RSYNC Server"
+{$config['system']['hostname']} RSYNC Server
 _rsync._tcp. local.
 {$config['rsyncd']['port']}
 
@@ -1698,7 +1709,7 @@ EOD;
 		if (isset($config['sshd']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
-"{$config['system']['hostname']} SSH Server"
+{$config['system']['hostname']} SSH Server
 _ssh._tcp local.
 {$config['sshd']['port']}
 
@@ -1708,7 +1719,7 @@ EOD;
 		if (isset($config['ftp']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
-"{$config['system']['hostname']} FTP Server"
+{$config['system']['hostname']} FTP Server
 _ftp._tcp local.
 {$config['ftp']['port']}
 
@@ -1718,7 +1729,7 @@ EOD;
 		if (isset($config['samba']['enable'])) {				
 			$mDNSResponder .= <<<EOD
 
-"{$config['system']['hostname']} Samba Server"
+{$config['system']['hostname']} Samba Server
 _smb._tcp local.	
 139
 
@@ -1737,7 +1748,7 @@ EOD;
 			foreach ($a_mount as $mount) {
 				$mDNSResponder .= <<<EOD
 
-"{$config['system']['hostname']} NFS: {$mount['sharename']}"
+{$config['system']['hostname']} NFS: {$mount['sharename']}
 _nfs._tcp local.
 2049 path=/mnt/{$mount['sharename']}
 
