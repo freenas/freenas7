@@ -1064,6 +1064,9 @@ msgstr "Systeempartitie 1 kan niet gekoppeld worden, de DATA partitie is partiti
 msgid "Duplicate Share Name."
 msgstr "Dubbele naam voor de gedeelde map."
 
+msgid "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+msgstr "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+
 msgid "This disk/partition is already configured."
 msgstr "Deze schijf/partiti is al ingesteld."
 

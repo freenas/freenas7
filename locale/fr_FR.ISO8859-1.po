@@ -1099,6 +1099,9 @@ msgstr "Impossible de monter la partition système 1, la partition de données e
 msgid "Duplicate Share Name."
 msgstr "Nom de partage dupliqué."
 
+msgid "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+msgstr "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+
 msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
 msgstr "1. Vous ne pouvez pas monter la partition '%s' car elle contient le fichier de configuration.<br>2. Le support NTFS de FreeBSD est bogué."
 

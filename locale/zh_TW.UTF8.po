@@ -1135,6 +1135,9 @@ msgstr "不能掛載系統區(第1區)，資料分割區為第2區。"
 msgid "Duplicate Share Name."
 msgstr "輸入了存在的分享名稱。"
 
+msgid "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+msgstr "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+
 msgid "You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr "你不可以掛載含有'%s'設定檔的磁區。<br>"
 

@@ -1086,6 +1086,9 @@ msgstr "Partitia sistem 1 nu poate fi montata, partitia de DATE este partitia 2"
 msgid "Duplicate Share Name."
 msgstr "Nume Partajare Duplicat."
 
+msgid "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+msgstr "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+
 msgid "This disk/partition is already configured."
 msgstr "Acest disc/partitie a fost deja configurat(a)."
 
