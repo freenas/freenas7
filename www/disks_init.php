@@ -102,14 +102,14 @@ $a_graid5 = &$config['graid5']['vdisk'];
 $a_gvinum = &$config['gvinum']['vdisk'];
 $a_geli = &$config['geli']['vdisk'];
 
-//PART THAT FOR REMOVE DISKS THAT ARE USED IN SOFTWARE RAID
+// SECTION THATREMOVE DISKS THAT ARE USED IN SOFTWARE RAID
 
 if (is_array($config['gconcat']['vdisk'])) {
 	foreach ($a_gconcat as $gconc_tofind) {
 		foreach ($gconc_tofind['diskr'] as $disk_used) {
 			$id = array_search_ex($disk_used, $b_disk, "fullname");
 			if ($id !== false) {
-				/* Set new filesystem type. */
+				/* Remove used drive */
 				unset($b_disk[$id]);
 			}
 		}
@@ -123,7 +123,7 @@ if (is_array($config['gmirror']['vdisk'])) {
 		foreach ($gmirror_tofind['diskr'] as $disk_used) {
 			$id = array_search_ex($disk_used, $b_disk, "fullname");
 			if ($id !== false) {
-				/* Set new filesystem type. */
+				/* Remove used drive */
 				unset($b_disk[$id]);
 			}
 		}
@@ -136,7 +136,7 @@ if (is_array($config['gstripe']['vdisk'])) {
 		foreach ($gstripe_tofind['diskr'] as $disk_used) {
 			$id = array_search_ex($disk_used, $b_disk, "fullname");
 			if ($id !== false) {
-				/* Set new filesystem type. */
+				/* Remove used drive */
 				unset($b_disk[$id]);
 			}
 		}
@@ -149,7 +149,7 @@ if (is_array($config['graid5']['vdisk'])) {
 		foreach ($graid5_tofind['diskr'] as $disk_used) {
 			$id = array_search_ex($disk_used, $b_disk, "fullname");
 			if ($id !== false) {
-				/* Set new filesystem type. */
+				/* Remove used drive */
 				unset($b_disk[$id]);
 			}
 		}
@@ -162,7 +162,7 @@ if (is_array($config['gvinum']['vdisk'])) {
 		foreach ($gvinum_tofind['diskr'] as $disk_used) {
 			$id = array_search_ex($disk_used, $b_disk, "fullname");
 			if ($id !== false) {
-				/* Set new filesystem type. */
+				/* Remove used drive */
 				unset($b_disk[$id]);
 			}
 		}
