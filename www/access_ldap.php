@@ -53,7 +53,6 @@ $pconfig['password_suffix'] = $config['ldap']['password_suffix'];
 $pconfig['group_suffix'] = $config['ldap']['group_suffix'];
 $pconfig['pam_password'] = $config['ldap']['pam_password'];
 
-
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
@@ -64,16 +63,16 @@ if ($_POST) {
 	
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "host_ip base binddn bindpw user_suffix password_suffix group_suffix"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("LDAP IP"),gettext("Base DN"),gettext("User"),gettext("User password"),gettext("User suffix"),gettext("Password suffix"),gettext("Group suffix")));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("LDAP server IP"),gettext("Base DN"),gettext("DN to bind"),gettext("Password for DN"),gettext("User suffix"),gettext("Password suffix"),gettext("Group suffix")));
 	}
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if ($_POST['enable'] && !is_ipaddr($_POST['host_ip'])){
-  		$input_errors[] = gettext("A valid IP address must be specified.");
-  	}
+  	$input_errors[] = gettext("A valid IP address must be specified.");
+  }
   	
-  	if (($_POST['bindpw'] != $_POST['bindpw2'])) {
+  if (($_POST['bindpw'] != $_POST['bindpw2'])) {
 		$input_errors[] = gettext("Password don't match.");
 	}
 	
@@ -89,7 +88,6 @@ if ($_POST) {
 		$config['ldap']['group_suffix'] = $_POST['group_suffix'];
 		$config['ldap']['pam_password'] = $_POST['pam_password'];
 
-		
 		write_config();
 		
 		$retval = 0;
@@ -139,24 +137,23 @@ function enable_change(enable_change) {
 			  </table>
 			</td>
     </tr>
-
 		<tr> 
       <td width="22%" valign="top" class="vncellreq"><?=gettext("LDAP server IP");?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="host_ip" type="text" class="formfld" id="host_ip" size="20" value="<?=htmlspecialchars($pconfig['host_ip']);?>"> 
       <br><?=gettext("IP address of LDAP server.");?></td>
 		</tr>
-		    <tr> 
+		<tr> 
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Base DN");?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="base" type="text" class="formfld" id="base" size="20" value="<?=htmlspecialchars($pconfig['base']);?>"> 
-      <br><?=gettext("Specifies the default base DN to use when performing ldap opera-tions. The base must be specified as a Distinguished Name in LDAP format");?></td>
+      <br><?=gettext("Specifies the default base DN to use when performing ldap operations. The base must be specified as a distinguished name in LDAP format.");?></td>
 		</tr>
     <tr> 
       <td width="22%" valign="top" class="vncellreq"><?=gettext("DN to bind");?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="binddn" type="text" class="formfld" id="binddn" size="20" value="<?=htmlspecialchars($pconfig['binddn']);?>"><br>
-				<?=gettext("Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a Distinguished Name in LDAP format.");?>
+				<?=gettext("Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a distinguished name in LDAP format.");?>
 			</td>
 		</tr>
 		<tr> 
@@ -170,40 +167,42 @@ function enable_change(enable_change) {
     </tr>
 		<tr>
 		  <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("user_suffix");?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("User suffix");?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="user_suffix" type="text" class="formfld" id="user_suffix" size="20" value="<?=htmlspecialchars($pconfig['user_suffix']);?>"> 
       <br><?=gettext("user_suffix.");?></td>
 		</tr>
 		<tr>
 		  <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("password_suffix");?></td>
-      <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="password_suffix" type="text" class="formfld" id="password_suffix" size="20" value="<?=htmlspecialchars($pconfig['password_suffix']);?>"> 
-      <br><?=gettext("password_suffix.");?></td>
-		</tr>
+	      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password suffix");?></td>
+	      <td width="78%" class="vtable"> 
+	        <?=$mandfldhtml;?><input name="password_suffix" type="text" class="formfld" id="password_suffix" size="20" value="<?=htmlspecialchars($pconfig['password_suffix']);?>"> 
+	      <br><?=gettext("password_suffix.");?></td>
+			</tr>
 		  <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("group_suffix");?></td>
-      <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="group_suffix" type="text" class="formfld" id="group_suffix" size="20" value="<?=htmlspecialchars($pconfig['group_suffix']);?>"> 
-      <br><?=gettext("group_suffix.");?></td>
-		</tr>
-		<tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Password encryption"); ?></td>
-            <td width="78%" class="vtable">
-              <?=$mandfldhtml;?><select name="pam_password" class="formfld" id="pam_password">
-              <?php $types = explode(",", "clear,crypt,md5,nds,ad,exop"); $vals = explode(" ", "clear crypt md5 nds ad exop");?>
-              <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-                <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>>
-                <?=htmlspecialchars($types[$j]);?>
-                </option>
-              <?php endfor; ?>
-              </select>
-			  <br><?=gettext("Method of wich your password are sotred in your LDAP");?></td>
-            </td>
-          </tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> 
+	      <td width="22%" valign="top" class="vncellreq"><?=gettext("Group suffix");?></td>
+	      <td width="78%" class="vtable"> 
+	        <?=$mandfldhtml;?><input name="group_suffix" type="text" class="formfld" id="group_suffix" size="20" value="<?=htmlspecialchars($pconfig['group_suffix']);?>"> 
+	      	<br><?=gettext("group_suffix.");?>
+				</td>
+			</tr>
+			<tr>
+	      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password encryption"); ?></td>
+				<td width="78%" class="vtable">
+	        <?=$mandfldhtml;?>
+					<select name="pam_password" class="formfld" id="pam_password">
+		        <?php $types = explode(",", "clear,crypt,md5,nds,ad,exop"); $vals = explode(" ", "clear crypt md5 nds ad exop");?>
+		        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+		          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>>
+		          <?=htmlspecialchars($types[$j]);?>
+		          </option>
+		        <?php endfor; ?>
+	        </select>
+				  <br><?=gettext("Method used to store your password in your LDAP.");?>
+				</td>
+			</tr>
+			<td width="22%" valign="top">&nbsp;</td>
+			<td width="78%"> 
         <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)"> 
       </td>
     </tr>

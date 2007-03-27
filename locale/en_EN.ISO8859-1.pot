@@ -2273,3 +2273,42 @@ msgstr ""
 
 msgid "Enable Zeroconf"
 msgstr ""
+
+msgid "LDAP server IP"
+msgstr ""
+
+msgid "IP address of LDAP server."
+msgstr ""
+
+msgid "Base DN"
+msgstr ""
+
+msgid "Specifies the default base DN to use when performing ldap operations. The base must be specified as a distinguished name in LDAP format."
+msgstr ""
+
+msgid "DN to bind"
+msgstr ""
+
+msgid "Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a distinguished name in LDAP format."
+msgstr ""
+
+msgid "Password for DN"
+msgstr ""
+
+msgid "The credentials to bind with, enter it here twice."
+msgstr ""
+
+msgid "User suffix"
+msgstr ""
+
+msgid "Password suffix"
+msgstr ""
+
+msgid "Group suffix"
+msgstr ""
+
+msgid "Password encryption"
+msgstr ""
+
+msgid "Method used to store your password in your LDAP."
+msgstr ""
