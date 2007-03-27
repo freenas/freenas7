@@ -937,12 +937,12 @@ function system_user_group()
 wheel:*:0:root
 EOD;
 	
-	/* If user exist with full shell, put them on the wheel group */
+	/* If user exist with admin right, put them on the wheel group */
 	if (is_array($config['access']['user']))
 		{
 			foreach ($config['access']['user'] as $user)
 			{
-				if (isset($user['fullshell']))
+				if (isset($user['admin']))
 				{
 					$groupfile .= <<<EOD
 ,{$user['login']}

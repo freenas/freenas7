@@ -1542,6 +1542,12 @@ msgstr "Shell Completa"
 msgid "Give full shell to user"
 msgstr "Concedi una shell completa all'utente"
 
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Put user in the administrator group"
+msgstr "Put user in the administrator group"
+
 msgid "The group list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "La lista dei gruppi &egrave; stata cambiata.<br>E'necessario applicare i cambiamenti affinch&eacute; abbiano effetto."
 

@@ -1554,6 +1554,12 @@ msgstr "Оболочка"
 msgid "Give full shell to user"
 msgstr "Дать пользователю полную оболочку"
 
+msgid "Administrator"
+msgstr "Administrator"
+
+msgid "Put user in the administrator group"
+msgstr "Put user in the administrator group"
+
 msgid "The group list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Список групп был изменен.<br>Вы должны применить изменения, чтобы они вступили в силу."
 

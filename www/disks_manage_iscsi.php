@@ -97,8 +97,8 @@ if ($_GET['act'] == "del")
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Name"); ?></td>
-						<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
-            <td width="25%" class="listhdrr"><?=gettext("Target name"); ?></td>
+			<td width="25%" class="listhdrr"><?=gettext("Target name"); ?></td>
+			<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_iscsiinit as $iscsiinit): ?>

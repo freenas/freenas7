@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-03-26 19:39+0100\n"
+"PO-Revision-Date: 2007-03-27 23:28+0100\n"
 "Last-Translator: Olivier COCHARD-LABBE <olivier@freenas.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1564,6 +1564,12 @@ msgid "Full Shell"
 msgstr ""
 
 msgid "Give full shell to user"
+msgstr ""
+
+msgid "Administrator"
+msgstr ""
+
+msgid "Put user in the administrator group"
 msgstr ""
 
 msgid "The group list has been changed.<br>You must apply the changes in order for them to take effect."

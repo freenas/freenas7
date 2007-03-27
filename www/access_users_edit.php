@@ -60,6 +60,7 @@ if (isset($id) && $a_user[$id]) {
 	$pconfig['passwordconf'] = $pconfig['password'];
 	$pconfig['userid'] = $a_user[$id]['id'];
 	$pconfig['fullshell'] = isset($a_user[$id]['fullshell']);
+	$pconfig['admin'] = isset($a_user[$id]['admin']);
 }
 
 if ($_POST) {
@@ -114,6 +115,7 @@ if ($_POST) {
 		$users['password'] = $_POST['password'];
 		$users['usergroup'] = $_POST['usergroup'];
 		$users['fullshell'] = $_POST['fullshell'] ? true : false;
+		$users['admin'] = $_POST['admin'] ? true : false;
 		
 		/* add the groupid for generate the password file */
 		foreach ($a_group as $group) 		{
@@ -183,6 +185,12 @@ if ($_POST) {
 				  <td width="78%" class="vtable"> 
 				  <input name="fullshell" type="checkbox" value="yes" <?php if ($pconfig['fullshell']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
 				  <br><?=gettext("Give full shell to user");?></td>
+                </tr>
+			<tr> 
+				  <td width="22%" valign="top" class="vncell"><?=gettext("Administrator") ;?></td>
+				  <td width="78%" class="vtable"> 
+				  <input name="admin" type="checkbox" value="yes" <?php if ($pconfig['admin']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
+				  <br><?=gettext("Put user in the administrator group");?></td>
                 </tr>
 		       <?php if (isset($id) && $a_user[$id]): ?>
                <input name="userid" type="hidden" class="formfld" id="userid" value="<?=$pconfig['userid'];?>">
