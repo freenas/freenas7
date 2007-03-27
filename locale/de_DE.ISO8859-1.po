@@ -708,11 +708,8 @@ msgstr "S.M.A.R.T-f&auml;hige Ger&auml;te &uuml;berwachen durch Aufzeichnung ihr
 msgid "Tuning"
 msgstr "Feineinstellungen"
 
-msgid "ZeroConf"
-msgstr "ZeroConf"
-
-msgid "Disable ZeroConf service announce"
-msgstr "ZeroConf-Dienst-Ank&uuml;ndigung deaktivieren"
+msgid "Zeroconf"
+msgstr "Zeroconf"
 
 msgid "Swap file"
 msgstr "Auslagerungsdatei"
@@ -2264,3 +2261,6 @@ msgstr "Dr&uuml;cken, um die Systemkonfiguration im XML Format herunterzuladen."
 
 msgid "Backup configuration"
 msgstr "Konfiguration sichern"
+
+msgid "Enable Zeroconf"
+msgstr "Aktiviere Zeroconf"

@@ -627,11 +627,8 @@ msgstr "Monitor the S.M.A.R.T device by logging their status in the log file."
 msgid "Tuning"
 msgstr "Tuning"
 
-msgid "ZeroConf"
-msgstr "ZeroConf"
-
-msgid "Disable ZeroConf service announce"
-msgstr "Disable ZeroConf service announce"
+msgid "Zeroconf"
+msgstr "Zeroconf"
 
 msgid "Assign network ports"
 msgstr "Assign network ports"

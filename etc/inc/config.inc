@@ -550,7 +550,6 @@ function convert_config()
 	/* Upgrade iSCSI and NFS configurations
 	Upgrade RSYNC client configuration */
 	if ($config['version'] == "1.5") {
-	
 		if (isset($config['nfs']['enable'])) 	{
 				
 			$config['nfs']['nfsnetworks']=array();
@@ -646,9 +645,36 @@ function convert_config()
 			unset ($config['rsync_local']);
 		}
 					
-	$config['version'] = "1.6";
-	
+		$config['version'] = "1.6";
 	}
+
+	/* Convert 1.6 -> 1.7 */
+	/* - Change ['system']['howl_disable'] to ['system']['zeroconf']. */
+	/* - Delete ['system']['polling']. */
+	/* - Delete ['filter']['bypassstaticroutes']. */
+	/* - Delete ['bridge'], ['bridge']['filteringbridge']. */
+	if ($config['version'] == "1.6") {
+		if (isset($config['system']['howl_disable'])) {
+			unset($config['system']['howl_disable']);
+		} else {
+			$config['system']['zeroconf'] = true;
+		}
+
+		if (isset($config['system']['polling'])) {
+			unset($config['system']['polling']);
+		}
+
+		if (isset($config['filter']['bypassstaticroutes'])) {
+			unset($config['filter']['bypassstaticroutes']);
+		}
+
+		if (isset($config['bridge'])) {
+			unset($config['bridge']);
+		}
+
+		$config['version'] = "1.7";
+	}
+
 	write_config();
 	
 	if ($g['booting'])

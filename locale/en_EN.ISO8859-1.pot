@@ -708,10 +708,7 @@ msgstr ""
 msgid "Tuning"
 msgstr ""
 
-msgid "ZeroConf"
-msgstr ""
-
-msgid "Disable ZeroConf service announce"
+msgid "Zeroconf"
 msgstr ""
 
 msgid "Swap file"
@@ -2272,4 +2269,7 @@ msgid "Backup configuration"
 msgstr ""
 
 msgid "Initializing disk"
+msgstr ""
+
+msgid "Enable Zeroconf"
 msgstr ""

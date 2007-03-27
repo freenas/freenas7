@@ -43,10 +43,9 @@ $pconfig['expanddiags'] = isset($config['system']['webgui']['expanddiags']);
 if ($g['platform'] == "generic-pc")
 	$pconfig['harddiskstandby'] = $config['system']['harddiskstandby'];
 $pconfig['disablebeep'] = isset($config['system']['disablebeep']);
-$pconfig['polling_enable'] = isset($config['system']['polling']);
 $pconfig['tune_enable'] = isset($config['system']['tune']);
 $pconfig['smart_enable'] = isset($config['system']['smart']);
-$pconfig['howl_disable'] = isset($config['system']['howl_disable']);
+$pconfig['zeroconf'] = isset($config['system']['zeroconf']);
 $pconfig['powerd'] = isset($config['system']['powerd']);
 
 if ($_POST) {
@@ -67,7 +66,6 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$config['bridge']['filteringbridge'] = $_POST['filteringbridge_enable'] ? true : false;
 		$oldcert = $config['system']['webgui']['certificate'];
 		$oldkey = $config['system']['webgui']['private-key'];
 		$config['system']['webgui']['certificate'] = base64_encode($_POST['cert']);
@@ -80,11 +78,9 @@ if ($_POST) {
 			$config['system']['harddiskstandby'] = $_POST['harddiskstandby'];
 		}
 		$config['system']['webgui']['noantilockout'] = $_POST['noantilockout'] ? true : false;
-		$config['filter']['bypassstaticroutes'] = $_POST['bypassstaticroutes'] ? true : false;
 		$config['system']['disablebeep'] = $_POST['disablebeep'] ? true : false;
-		$config['system']['polling'] = $_POST['polling_enable'] ? true : false;
 		$config['system']['tune'] = $_POST['tune_enable'] ? true : false;
-		$config['system']['howl_disable'] = $_POST['howl_disable'] ? true : false;
+		$config['system']['zeroconf'] = $_POST['zeroconf'] ? true : false;
 		$config['system']['smart'] = $_POST['smart_enable'] ? true : false;
 		$config['system']['powerd'] = $_POST['powerd'] ? true : false;
 				
@@ -218,10 +214,10 @@ if ($_POST) {
 			      </td>
 			    </tr>
 			    <tr> 
-			      <td width="22%" valign="top" class="vncell"><?=gettext("ZeroConf");?></td>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Zeroconf");?></td>
 			      <td width="78%" class="vtable"> 
-			        <input name="howl_disable" type="checkbox" id="howl_disable" value="yes" <?php if ($pconfig['howl_disable']) echo "checked"; ?>>
-			        <strong><?=gettext("Disable ZeroConf service announce");?></strong>
+			        <input name="zeroconf" type="checkbox" id="zeroconf" value="yes" <?php if ($pconfig['zeroconf']) echo "checked"; ?>>
+			        <strong><?=gettext("Enable Zeroconf");?></strong>
 			      </td>
 			    </tr>
 			    <tr> 

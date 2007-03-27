@@ -22,20 +22,19 @@
 			<private-key></private-key>
 			<noassigninterfaces/>
 			<expanddiags/>
-			<noantilockout></noantilockout>
+			<noantilockout/>
 			-->
 		</webgui>
+		<zeroconf/>
 		<!-- <disableconsolemenu/> -->
 		<!-- <disablefirmwarecheck/> -->
 		<!-- <shellcmd></shellcmd> -->
 		<!-- <earlyshellcmd></earlyshellcmd> -->
 		<!-- <harddiskstandby></harddiskstandby> -->
-		<!-- <disablebeep></disablebeep> -->
-		<!-- <polling></polling> -->
-		<!-- <tune></tune> -->
-		<!-- <smart></smart> -->
-		<!-- <howl_disable></howl_disable> -->
-		<!-- <powerd></powerd> -->
+		<!-- <disablebeep/> -->
+		<!-- <tune/> -->
+		<!-- <smart/> -->
+		<!-- <powerd/> -->
 		<!-- <swap_mountname></swap_mountname> -->
 		<!-- <swap_size></swap_size> -->
 		<!-- <swap_enable/> -->
@@ -241,9 +240,6 @@
 		</ipv6nat>
 		<!-- <ipfstatentries></ipfstatentries> -->
 	</diag>
-	<bridge>
-		<!-- <filteringbridge/> -->
-	</bridge>
 	<syslog>
 		<!--
 		<reverse/>

@@ -736,11 +736,8 @@ msgstr "透過記錄檔監控S.M.A.R.T裝置。"
 msgid "Tuning"
 msgstr "微調"
 
-msgid "ZeroConf"
-msgstr "ZeroConf"
-
-msgid "Disable ZeroConf service announce"
-msgstr "關閉ZeroConf的服務宣告"
+msgid "Zeroconf"
+msgstr "Zeroconf"
 
 msgid "Swap file"
 msgstr "Swap檔"

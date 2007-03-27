@@ -713,11 +713,8 @@ msgstr "Tuning"
 msgid "Enable tuning of some kernel variables"
 msgstr "Het tunen van sommige kernelvariabelen inschakelen"
 
-msgid "ZeroConf"
-msgstr "ZeroConf"
-
-msgid "Disable ZeroConf service announce"
-msgstr "ZeroConf service-aankondiging uitschakelen"
+msgid "Zeroconf"
+msgstr "Zeroconf"
 
 msgid "Assign network ports"
 msgstr "Netwerkpoorten toekennen"

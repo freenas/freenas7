@@ -705,11 +705,8 @@ msgstr "Ottimizzazione"
 msgid "Enable tuning of some kernel variables"
 msgstr "Abilita l'ottimizzazione di alcune variabili del kernel"
 
-msgid "ZeroConf"
-msgstr "ZeroConf"
-
-msgid "Disable ZeroConf service announce"
-msgstr "Disabilita annunci del servizio ZeroConf"
+msgid "Zeroconf"
+msgstr "Zeroconf"
 
 msgid "Assign network ports"
 msgstr "Assegna porte di rete"

@@ -1619,7 +1619,7 @@ function services_mdnsresponder_configure()
 	sigkillbypid("{$g['varrun_path']}/mDNSResponder.pid", "TERM");
 	
 	
-	if (!isset($config['system']['howl_disable'])) {
+	if (isset($config['system']['zeroconf'])) {
 		if ($g['booting']) {
 			echo "Starting Bonjour Zeroconf service... ";
 		}
@@ -1632,7 +1632,6 @@ function services_mdnsresponder_configure()
 		}
 	
 		// Check if WebGUI use HTTPS
-	
 		if ($config['system']['webgui']['protocol'] == "https") {
 			if ($config['system']['webgui']['port']) 	{
 				$mDNSResponder = <<<EOD
@@ -1647,42 +1646,39 @@ function services_mdnsresponder_configure()
 # TXT RECORD (short description of service)
 # PORT OF SERVICE				
 
-{$config['system']['hostname']} Web Admin
+{$config['system']['hostname']} WebAdmin
 _https._tcp local.
 {$config['system']['webgui']['port']}
 
 EOD;
 			} else 	{
 			$mDNSResponder = <<<EOD
-{$config['system']['hostname']} Web Admin
+{$config['system']['hostname']} WebAdmin
 _https._tcp local.
 443
 	
 EOD;
 			}
-
 			// if WebGUI don't use HTTPS then:
-	
 			} else {
 				if ($config['system']['webgui']['port'])	{
 					$mDNSResponder = <<<EOD
-{$config['system']['hostname']} Web Admin
+{$config['system']['hostname']} WebAdmin
 _http._tcp local.
 {$config['system']['webgui']['port']}
 
 EOD;
 				} 	else 	{
 					$mDNSResponder = <<<EOD
-{$config['system']['hostname']} Web Admin
+{$config['system']['hostname']} WebAdmin
 _http._tcp local.
 80
 
 EOD;
 				}
 			}
-	
-		// Check if AFP Enabled
-	
+
+		// Check if AFP service is enabled
 		if (isset($config['afp']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
@@ -1692,9 +1688,8 @@ _afpovertcp._tcp local.
 
 EOD;
 		}
-	
-		// Check if RSYNC Server Enabled
-	
+
+		// Check if RSYNC service is enabled
 		if (isset($config['rsyncd']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
@@ -1704,9 +1699,8 @@ _rsync._tcp. local.
 
 EOD;
 		}
-	
-		// Check if SSH Server Enabled
-	
+
+		// Check if SSH service is enabled
 		if (isset($config['sshd']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
@@ -1716,7 +1710,8 @@ _ssh._tcp local.
 
 EOD;
 		}
-	
+
+		// Check if FTP service is enabled
 		if (isset($config['ftp']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
@@ -1726,7 +1721,8 @@ _ftp._tcp local.
 
 EOD;
 		}
-	
+
+		// Check if Samba service is enabled
 		if (isset($config['samba']['enable'])) {				
 			$mDNSResponder .= <<<EOD
 
@@ -1736,9 +1732,9 @@ _smb._tcp local.
 
 EOD;
 		}
-	
+
+		// Check if NFS service is enabled
 		if (isset($config['nfs']['enable'])) {				
-		
 			/* If no share configured, exit */
 			if (!is_array($config['mounts']['mount'])) {
 				break;

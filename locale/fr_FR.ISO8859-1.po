@@ -706,11 +706,8 @@ msgstr "Surveiller les périphériques S.M.A.R.T en enregistrant leur état dans
 msgid "Tuning"
 msgstr "Personnalisation"
 
-msgid "ZeroConf"
-msgstr "ZeroConf"
-
-msgid "Disable ZeroConf service announce"
-msgstr "Désactiver l'annonce du service ZeroConf"
+msgid "Zeroconf"
+msgstr "Zeroconf"
 
 msgid "Swap file"
 msgstr "Fichier de pagination"

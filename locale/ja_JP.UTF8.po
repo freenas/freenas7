@@ -708,11 +708,8 @@ msgstr "S.M.A.R.T デバイスの監視ステータスをログファイルに�
 msgid "Tuning"
 msgstr "チューニング"
 
-msgid "ZeroConf"
-msgstr "ZeroConf"
-
-msgid "Disable ZeroConf service announce"
-msgstr "ZeroConf サービス通知を無効にする"
+msgid "Zeroconf"
+msgstr "Zeroconf"
 
 msgid "Swap file"
 msgstr "スワップファイル"

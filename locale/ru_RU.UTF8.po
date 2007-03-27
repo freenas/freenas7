@@ -708,11 +708,8 @@ msgstr "Наблюдать за устройством S.M.A.R.T, записыв
 msgid "Tuning"
 msgstr "Настройка"
 
-msgid "ZeroConf"
-msgstr "Сервис ZeroConf"
-
-msgid "Disable ZeroConf service announce"
-msgstr "Запретить оповещение о сервисе ZeroConf"
+msgid "Zeroconf"
+msgstr "Сервис Zeroconf"
 
 msgid "Swap file"
 msgstr "Файл подкачки"

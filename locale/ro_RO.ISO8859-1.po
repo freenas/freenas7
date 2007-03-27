@@ -699,11 +699,8 @@ msgstr "Monitorizare dispozitiv S.M.A.R.T cu jurnalizare."
 msgid "Tuning"
 msgstr "Optimizari"
 
-msgid "ZeroConf"
-msgstr "ZeroConf"
-
-msgid "Disable ZeroConf service announce"
-msgstr "Dezactivare anunt serviciu ZeroConf"
+msgid "Zeroconf"
+msgstr "Zeroconf"
 
 msgid "Assign network ports"
 msgstr "Alocare porturi retea"
