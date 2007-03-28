@@ -736,8 +736,11 @@ msgstr "透過記錄檔監控S.M.A.R.T裝置。"
 msgid "Tuning"
 msgstr "微調"
 
-msgid "Zeroconf"
-msgstr "Zeroconf"
+msgid "ZeroConf"
+msgstr "ZeroConf"
+
+msgid "Disable ZeroConf service announce"
+msgstr "關閉ZeroConf的服務宣告"
 
 msgid "Swap file"
 msgstr "Swap檔"
@@ -1134,9 +1137,6 @@ msgstr "不能掛載系統區(第1區)，資料分割區為第2區。"
 
 msgid "Duplicate Share Name."
 msgstr "輸入了存在的分享名稱。"
-
-msgid "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
-msgstr "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
 
 msgid "You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr "你不可以掛載含有'%s'設定檔的磁區。<br>"
@@ -1587,12 +1587,6 @@ msgstr "Shell權限"
 
 msgid "Give full shell to user"
 msgstr "讓這個使用者可以使用shell。"
-
-msgid "Administrator"
-msgstr "Administrator"
-
-msgid "Put user in the administrator group"
-msgstr "Put user in the administrator group"
 
 msgid "The group list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "群組列表已經變更。<br>套用變更之後才會生效。"
