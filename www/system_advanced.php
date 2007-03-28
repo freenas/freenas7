@@ -223,7 +223,7 @@ if ($_POST) {
 			    <tr> 
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%"> 
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)"> 
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 			      </td>
 			    </tr>
 			  </table>
@@ -231,9 +231,4 @@ if ($_POST) {
     </td>
   </tr>
 </table>
-<script language="JavaScript">
-<!--
-enable_change(false);
-//-->
-</script>
 <?php include("fend.inc"); ?>
