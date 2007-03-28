@@ -97,14 +97,16 @@ if ($_GET['act'] == "del")
         <?php endif; ?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="45%" class="listhdrr"><?=gettext("Source share"); ?></td>
-						<td width="45%" class="listhdrr"><?=gettext("Destination share"); ?></td>
+            <td width="25%" class="listhdrr"><?=gettext("Source share"); ?></td>
+						<td width="25%" class="listhdrr"><?=gettext("Destination share"); ?></td>
+						<td width="40%" class="listhdrr"><?=gettext("Description"); ?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_rsynclocal as $rsynclocal): ?>
           <tr>
             <td class="listr"><?=htmlspecialchars($rsynclocal['source']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($rsynclocal['destination']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($rsynclocal['description']);?>&nbsp;</td>
             <td valign="middle" nowrap class="list">
 							<a href="services_rsyncd_local_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RSYNC");?>" width="17" height="17" border="0"></a>&nbsp;
               <a href="services_rsyncd_local.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this RSYNC?");?>')"><img src="x.gif" title="<?=gettext("Delete RSYNC"); ?>" width="17" height="17" border="0"></a>
@@ -112,7 +114,7 @@ if ($_GET['act'] == "del")
           </tr>
           <?php $i++; endforeach; ?>
           <tr> 
-            <td class="list" colspan="2"></td>
+            <td class="list" colspan="3"></td>
             <td class="list"><a href="services_rsyncd_local_edit.php"><img src="plus.gif" title="<?=gettext("Add RSYNC");?>" width="17" height="17" border="0"></a></td>
 			    </tr>
         </table>

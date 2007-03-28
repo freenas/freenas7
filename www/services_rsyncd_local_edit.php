@@ -77,6 +77,8 @@ if (isset($id) && $a_rsynclocal[$id]) {
 	$pconfig['all_days'] = $a_rsynclocal[$id]['all_days'];
 	$pconfig['all_months'] = $a_rsynclocal[$id]['all_months'];
 	$pconfig['all_weekdays'] = $a_rsynclocal[$id]['all_weekdays'];
+	$pconfig['description'] = $a_rsynclocal[$id]['description'];
+
 	if ($pconfig['all_mins'] == 1){
 		$all_mins_all = " checked";
 	} else {
@@ -130,32 +132,32 @@ if (!is_array($config['mounts']['mount'])) {
 		
 		if (!$input_errors) {
 			$rsynclocal = array();
-			
-			$rsynclocal['opt_delete'] = $_POST['opt_delete'] ? true : false;;
-	  		$rsynclocal['minute'] = $_POST['minutes'];
-	  		$rsynclocal['hour'] = $_POST['hours'];
-	  		$rsynclocal['day'] = $_POST['days'];
-	  		$rsynclocal['month'] = $_POST['months'];
-	  		$rsynclocal['weekday'] = $_POST['weekdays'];
-	  		$rsynclocal['source'] = $_POST['source'];
-			$rsynclocal['destination'] = $_POST['destination'];
-	  		$rsynclocal['all_mins'] = $_POST['all_mins'];
-	  		$rsynclocal['all_hours'] = $_POST['all_hours'];
-	  		$rsynclocal['all_days'] = $_POST['all_days'];
-	  		$rsynclocal['all_months'] = $_POST['all_months'];
-	  		$rsynclocal['all_weekdays'] = $_POST['all_weekdays'];
-	
-		if (isset($id) && $a_rsynclocal[$id])
-			$a_rsynclocal[$id] = $rsynclocal;
-		else
-			$a_rsynclocal[] = $rsynclocal;
-		touch($d_rsynclocaldirty_path);
-		
-		write_config();
-		
-		header("Location: services_rsyncd_local.php");
-		exit;
 
+			$rsynclocal['opt_delete'] = $_POST['opt_delete'] ? true : false;;
+			$rsynclocal['minute'] = $_POST['minutes'];
+			$rsynclocal['hour'] = $_POST['hours'];
+			$rsynclocal['day'] = $_POST['days'];
+			$rsynclocal['month'] = $_POST['months'];
+			$rsynclocal['weekday'] = $_POST['weekdays'];
+			$rsynclocal['source'] = $_POST['source'];
+			$rsynclocal['destination'] = $_POST['destination'];
+			$rsynclocal['all_mins'] = $_POST['all_mins'];
+			$rsynclocal['all_hours'] = $_POST['all_hours'];
+			$rsynclocal['all_days'] = $_POST['all_days'];
+			$rsynclocal['all_months'] = $_POST['all_months'];
+			$rsynclocal['all_weekdays'] = $_POST['all_weekdays'];
+			$rsynclocal['description'] = $_POST['description'];
+
+			if (isset($id) && $a_rsynclocal[$id])
+				$a_rsynclocal[$id] = $rsynclocal;
+			else
+				$a_rsynclocal[] = $rsynclocal;
+			touch($d_rsynclocaldirty_path);
+
+			write_config();
+
+			header("Location: services_rsyncd_local.php");
+			exit;
 		}
 	}
 }
@@ -189,15 +191,6 @@ if (!is_array($config['mounts']['mount'])) {
               </select>
             </td>
       		</tr>		
-		  
-		
-		<tr>
-                <td width="22%" valign="top" class="vncell"><strong><?=gettext("RSYNC Options"); ?><strong></td>
-                		<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
-										</td>
-								</tr>
-				
-
                  <tr>
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Synchronization Time");?></td>
                   <td width="78%" class="vtable"><?=$mandfldhtml;?>
@@ -468,8 +461,20 @@ if (!is_array($config['mounts']['mount'])) {
                   </table>
 										 </td>
                   </td>
-				</tr>
-				<tr>
+								</tr>
+								<tr>
+									<td width="22%" valign="top" class="vncell"><?=gettext("RSYNC Options"); ?></td>
+									<td width="78%" class="vtable"><?=$mandfldhtml;?>
+										<input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
+									</td>
+								</tr>
+								<tr>
+									<td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
+									<td width="78%" class="vtable"><?=$mandfldhtml;?>
+										<input name="description" type="text" class="formfld" id="description" size="40" value="<?=htmlspecialchars($pconfig['description']);?>">
+									</td>
+								</tr>
+								<tr>
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%">
                     <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">

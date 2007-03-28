@@ -78,6 +78,8 @@ if (isset($id) && $a_rsyncclient[$id]) {
 	$pconfig['all_days'] = $a_rsyncclient[$id]['all_days'];
 	$pconfig['all_months'] = $a_rsyncclient[$id]['all_months'];
 	$pconfig['all_weekdays'] = $a_rsyncclient[$id]['all_weekdays'];
+	$pconfig['description'] = $a_rsyncclient[$id]['description'];
+
 	if ($pconfig['all_mins'] == 1){
 		$all_mins_all = " checked";
 	} else {
@@ -135,33 +137,33 @@ if (!is_array($config['mounts']['mount'])) {
 		
 		if (!$input_errors) {
 			$rsyncclient = array();
-			
-			$rsyncclient['opt_delete'] = $_POST['opt_delete'] ? true : false;;
-	  		$rsyncclient['rsyncserverip'] = $_POST['rsyncserverip'];
-	  		$rsyncclient['minute'] = $_POST['minutes'];
-	  		$rsyncclient['hour'] = $_POST['hours'];
-	  		$rsyncclient['day'] = $_POST['days'];
-	  		$rsyncclient['month'] = $_POST['months'];
-	  		$rsyncclient['weekday'] = $_POST['weekdays'];
-	  		$rsyncclient['localshare'] = $_POST['localshare'];
-			$rsyncclient['remoteshare'] = $_POST['remoteshare'];
-	  		$rsyncclient['all_mins'] = $_POST['all_mins'];
-	  		$rsyncclient['all_hours'] = $_POST['all_hours'];
-	  		$rsyncclient['all_days'] = $_POST['all_days'];
-	  		$rsyncclient['all_months'] = $_POST['all_months'];
-	  		$rsyncclient['all_weekdays'] = $_POST['all_weekdays'];
-	
-		if (isset($id) && $a_rsyncclient[$id])
-			$a_rsyncclient[$id] = $rsyncclient;
-		else
-			$a_rsyncclient[] = $rsyncclient;
-		touch($d_rsyncclientdirty_path);
-		
-		write_config();
-		
-		header("Location: services_rsyncd_client.php");
-		exit;
 
+			$rsyncclient['opt_delete'] = $_POST['opt_delete'] ? true : false;;
+			$rsyncclient['rsyncserverip'] = $_POST['rsyncserverip'];
+			$rsyncclient['minute'] = $_POST['minutes'];
+			$rsyncclient['hour'] = $_POST['hours'];
+			$rsyncclient['day'] = $_POST['days'];
+			$rsyncclient['month'] = $_POST['months'];
+			$rsyncclient['weekday'] = $_POST['weekdays'];
+			$rsyncclient['localshare'] = $_POST['localshare'];
+			$rsyncclient['remoteshare'] = $_POST['remoteshare'];
+			$rsyncclient['all_mins'] = $_POST['all_mins'];
+			$rsyncclient['all_hours'] = $_POST['all_hours'];
+			$rsyncclient['all_days'] = $_POST['all_days'];
+			$rsyncclient['all_months'] = $_POST['all_months'];
+			$rsyncclient['all_weekdays'] = $_POST['all_weekdays'];
+			$rsyncclient['description'] = $_POST['description'];
+
+			if (isset($id) && $a_rsyncclient[$id])
+				$a_rsyncclient[$id] = $rsyncclient;
+			else
+				$a_rsyncclient[] = $rsyncclient;
+			touch($d_rsyncclientdirty_path);
+
+			write_config();
+
+			header("Location: services_rsyncd_client.php");
+			exit;
 		}
 	}
 }
@@ -196,13 +198,6 @@ if (!is_array($config['mounts']['mount'])) {
         <?=$mandfldhtml;?><input name="remoteshare" type="text" class="formfld" id="remoteshare" size="20" value="<?=htmlspecialchars($pconfig['remoteshare']);?>"> 
       </td>
     </tr> 
-		<tr>
-                <td width="22%" valign="top" class="vncell"><strong><?=gettext("RSYNC Options"); ?><strong></td>
-                		<td width="78%" class="vtable"><?=$mandfldhtml;?><input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
-										</td>
-								</tr>
-				
-
                  <tr>
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Synchronization Time");?></td>
                   <td width="78%" class="vtable"><?=$mandfldhtml;?>
@@ -473,8 +468,20 @@ if (!is_array($config['mounts']['mount'])) {
                   </table>
 										 </td>
                   </td>
-				</tr>
-				<tr>
+								</tr>
+								<tr>
+									<td width="22%" valign="top" class="vncell"><?=gettext("RSYNC Options"); ?></td>
+									<td width="78%" class="vtable"><?=$mandfldhtml;?>
+										<input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
+									</td>
+								</tr>
+								<tr>
+									<td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
+									<td width="78%" class="vtable"><?=$mandfldhtml;?>
+										<input name="description" type="text" class="formfld" id="description" size="40" value="<?=htmlspecialchars($pconfig['description']);?>">
+									</td>
+								</tr>
+								<tr>
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%">
                     <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">

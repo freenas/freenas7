@@ -145,6 +145,7 @@ a {
 }
 .listhdrr {
 	border-right: 1px solid #999999;
+	vertical-align: top;
 }
 .listhdr a {
 	color: #000000;

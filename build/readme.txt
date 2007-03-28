@@ -114,6 +114,7 @@ FreeNAS 0.684b (UNRELEASE!):
 - Try to improve performance on VM machine: http://ivoras.sharanet.org/freebsd/vmware.html
   Replace ethernet 'lnc' drivers with 'le' driver
   Reduce Kernel's timer frequency  to 100HZ
+- Add description attribute to RSYNC tasks
 
 Known bug in the 0.684b:
 - Can't remount ntfs-3g volume under the mount:tools. Must restart FreeNAS. It seem to be a fuse problem.
