@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-03-22 09:43+0100\n"
+"PO-Revision-Date: 2007-03-28 09:43+0100\n"
 "Last-Translator: Falk Menzel <fmenzel@htwm.de>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
@@ -1119,6 +1119,9 @@ msgstr "Mounting..."
 msgid "Unmounting..."
 msgstr "Unmounting..."
 
+msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
+msgstr "Eine Festplatte, von der Auslagerungsdatei oder iSCSI-Target benutzt, kann nicht ausgeworfen werden."
+
 msgid "The Netbios name contains invalid characters."
 msgstr "Der Netbios-Name enth&auml;lt ung&uuml;ltige Zeichen."
 
@@ -1432,7 +1435,7 @@ msgid "Share"
 msgstr "Freigabe"
 
 msgid "You may need enough space to duplicate all files being synced"
-msgstr "Es k&ouml;nnte bei der Synchronisation zur Belegung von Speicherplatz in der Gr&ouml;√&uuml;enordnung der abzugleichenden Daten kommen, um diese zu duplizieren."
+msgstr "Es k&ouml;nnte bei der Synchronisation zur Belegung von Speicherplatz in der Gr&ouml;?&uuml;enordnung der abzugleichenden Daten kommen, um diese zu duplizieren."
 
 msgid "Working Directory"
 msgstr "Arbeitsverzeichnis"
@@ -2029,10 +2032,10 @@ msgid "Encryption algorithm"
 msgstr "Verschl&uuml;sselungsalgorithmus"
 
 msgid "Passphrase"
-msgstr "Paﬂwort"
+msgstr "Pa?wort"
 
 msgid "Passphrase don't match."
-msgstr "Paﬂworte stimmen nicht &uuml;berein"
+msgstr "Pa?worte stimmen nicht &uuml;berein"
 
 msgid "Init and encrypt disk"
 msgstr "Initialisiere und verschl&uuml;ssele Festplatte"
@@ -2056,7 +2059,7 @@ msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "Diese verschl&uuml;sselte Festplatte ist eingebunden (gemountet); vor dem Entfernen ist diese zu entbinden (unmount)"
 
 msgid "You must use a passphrase to attach an encrypted disk."
-msgstr "Ein Paﬂwort ist zum Hinzuf&uuml;gen einer verschl&uuml;sselten Festplatte notwendig."
+msgstr "Ein Pa?wort ist zum Hinzuf&uuml;gen einer verschl&uuml;sselten Festplatte notwendig."
 
 msgid "Encrypted disk name"
 msgstr "Name der verschl&uuml;sselten Festplatte"
@@ -2080,7 +2083,7 @@ msgid "Reload page"
 msgstr "Seite neu laden"
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
-msgstr "Aus Sicherheitsgr&uuml;nden sollte HTTPS als WebGUI-Protokoll beim Senden des Paﬂworts benutzt werden."
+msgstr "Aus Sicherheitsgr&uuml;nden sollte HTTPS als WebGUI-Protokoll beim Senden des Pa?worts benutzt werden."
 
 msgid "Resume"
 msgstr "Fortfahren"
@@ -2143,7 +2146,7 @@ msgid "Save and Restart AFP"
 msgstr "Sichern und Neustart AFP"
 
 msgid "The %s port must be a valid port number."
-msgstr "Port Nr. %s muﬂ eine g&uuml;ltige Portnummer sein."
+msgstr "Port Nr. %s mu? eine g&uuml;ltige Portnummer sein."
 
 msgid "Swap memory"
 msgstr "Auslagerungsspeicher"
@@ -2203,10 +2206,10 @@ msgid "Mount to use"
 msgstr "Zu benutzende Mount-Adresse"
 
 msgid "File size"
-msgstr "Dateigr&ouml;ﬂe"
+msgstr "Dateigr&ouml;?e"
       
 msgid "A valid size target value must be specified."
-msgstr "Eine g&uuml;ltige Zielgr&ouml;ﬂe muss angegeben werden."
+msgstr "Eine g&uuml;ltige Zielgr&ouml;?e muss angegeben werden."
 
 msgid "Target name"
 msgstr "Zielname"
@@ -2271,5 +2274,47 @@ msgstr "Dr&uuml;cken, um die Systemkonfiguration im XML Format herunterzuladen."
 msgid "Backup configuration"
 msgstr "Konfiguration sichern"
 
+msgid "Initializing disk"
+msgstr "Initialisiere Festplatte"
+
 msgid "Enable Zeroconf"
 msgstr "Aktiviere Zeroconf"
+
+msgid "LDAP server IP"
+msgstr "LDAP Server IP"
+
+msgid "IP address of LDAP server."
+msgstr "IP-Adresse des LDAP Server."
+
+msgid "Base DN"
+msgstr "Base DN"
+
+msgid "Specifies the default base DN to use when performing ldap operations. The base must be specified as a distinguished name in LDAP format."
+msgstr "Legt die Standard-Base-DN f?r das Durchf?hren von LDAP-Anwendungen fest. Sie muss als verwechslungssicherer Name im LDAP-Format angegeben werden."
+
+msgid "DN to bind"
+msgstr "zu verbindende DN "
+
+msgid "Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a distinguished name in LDAP format."
+msgstr "Legt die Standard-bind-DN f?r das Durchf?hren von LDAP-Anwendungen fest. Sie muss als verwechslungssicherer Name im LDAP-Format angegeben werden."
+
+msgid "Password for DN"
+msgstr "Passwort f?r DN"
+
+msgid "The credentials to bind with, enter it here twice."
+msgstr "Zweimalige Eingabe der Anmeldeinformationen"
+
+msgid "User suffix"
+msgstr "Benutzersuffix"
+
+msgid "Password suffix"
+msgstr "Passwortsuffix"
+
+msgid "Group suffix"
+msgstr "Gruppensuffix"
+
+msgid "Password encryption"
+msgstr "Passwortverschl&uuml;sselung"
+
+msgid "Method used to store your password in your LDAP."
+msgstr "Die benutzte Methode, mit der das Passwort im LDAP abgespeichert wird."
