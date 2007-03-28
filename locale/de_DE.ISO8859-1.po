@@ -715,7 +715,7 @@ msgid "Swap file"
 msgstr "Auslagerungsdatei"
 
 msgid "Swap size"
-msgstr "Gr&ouml;§e des Auslagerungsspeichers"
+msgstr "Gr&ouml;sse des Auslagerungsspeichers"
 
 msgid "mount share"
 msgstr "Binde Freigabe ein"
@@ -724,10 +724,10 @@ msgid "Mount to use for swap"
 msgstr "Binde den Auslagerungsspeicher ein"
 
 msgid "Swap file size"
-msgstr "Gr&ouml;§e der Auslagerungsdatei"
+msgstr "Gr&ouml;sse der Auslagerungsdatei"
 
 msgid "Size in MB."
-msgstr "Gr&ouml;§e in Mbyte"
+msgstr "Gr&ouml;sse in Mbyte"
 
 msgid "Assign network ports"
 msgstr "Netzwerkports zuweisen"
