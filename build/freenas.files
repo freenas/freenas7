@@ -308,6 +308,9 @@ usr/bin/uptime:usr/bin/w
 ## ldd - list dynamic object dependencies
 usr/bin/ldd
 
+## stat - display file status
+usr/bin/stat:usr/bin/readlink
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
@@ -352,6 +355,12 @@ usr/sbin/rpc.statd
 # sshd - Daemon program for ssh
 # Note: Will be overwritten when openssh-portable package is activated.
 usr/sbin/sshd
+
+# pkg_add - a utility for installing software package distributions
+usr/sbin/pkg_add
+
+# pkg_info - dump out information for packages
+usr/sbin/pkg_info
 
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
