@@ -208,7 +208,7 @@ function enable_change(enable_change) {
             <td width="22%" valign="top" class="vncell"><?=gettext("Dos charset") ; ?></td>
             <td width="78%" class="vtable">
               <select name="doscharset" class="formfld" id="doscharset">
-              <?php $types = explode(",", "CP850,CP852,CP437,CP932,ASCII"); $vals = explode(" ", "CP850 CP852 CP437 CP932 ASCII");?>
+              <?php $types = explode(",", "CP850,CP852,CP437,CP932,CP866,ASCII"); $vals = explode(" ", "CP850 CP852 CP437 CP932 CP866 ASCII");?>
               <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                 <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['doscharset']) echo "selected";?>>
                 <?=htmlspecialchars($types[$j]);?>

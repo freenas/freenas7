@@ -72,49 +72,56 @@ from scretch. After that use one of the following menus:
 
 FreeNAS 0.684b (UNRELEASE!):
 - Use the FreeBSD 6.2-RELEASE (production) for FreeNAS base
+- Upgrade twa kernel driver (e.g. 3ware 9650SE Series Raid S-ATA II PCIe)
+- Try to improve performance on VM machine: http://ivoras.sharanet.org/freebsd/vmware.html
+  Replace ethernet 'lnc' drivers with 'le' driver (WARNING: NEED CONFIGURATION CHANGE AFTER UPGRADE)
+  Reduce Kernel's timer frequency  to 100HZ
 - Force only one UFS type: EFI GPT Partition with Softupdates, and permit to select percent of free disk space to kept (between 8 and 1)
+- Add option for upgrading FreeNAS from CDROM (this can be used as recovery mode too).
+
 - Add disk encryption with geli
-- Permit to enable SSH TCP forwarding (SSH tunneling)
-- Permit to add more than one networks for NFS
-- Upgrade iSCSI initiator to 2.0.1
 - Add iSCSI-Target: Permit to create specials files that simulate iSCSI target disk.
 - Add swap feature: Permit to create a file on a mount point for memory swap purpose
-- Replace ntfs FreeBSD module with ntfs-3g: read/write support for NTFS now!
 - Add powerd/cpufreq system power control utility
+- NTFS: Replace ntfs FreeBSD module with ntfs-3g: read/write support for NTFS
+- Added growfs tools (usable from the CLI only)
+- Add EXT2 filesystem creation support
+
+- RSYNC: Permit to configure multiple RSYNC local/client
+- RSYNC: Add description attribute to RSYNC tasks
+- SSH: Permit to enable SSH TCP forwarding (SSH tunneling)
+- NFS: Permit to add more than one networks for NFS
+- iSCSI: Upgrade iSCSI initiator to 2.0.1
+- FTP: Add 'Resume' mode. Fix bug in enabling 'FXP' and 'NAT mode'.
+- FTP: Add 'connected users list' information page
+- Samba: Upgrade Samba to 3.0.24
+- Samba: Try to improve samba performance by adding 'large readwrite = no' in smb.conf
+(see http://wiki.samba.org/index.php/Samba_Troubleshooting)
+- Samba: Add dos charset CP866 (Russian)
+
 - Fix UPnP WebGUI bug
+- Fix bug in user & groups WebGUI.
+- FTP: Fixed: Deletion of files uploaded and owned by user was not able.
+- FTP: Fixed PAM error (using MS AD account for example) 
+- FTP: Disable root login by default. Can be enabled via WebGUI.
 - Little index page improvement : % used of TOTAL size display. Paul Wheels patch
 - Permit to configure the system time: Paul Wheels patch
-- Update language file: French, Chinese and Romanian
 - Add hardware sensors information page
-- Upgrade PHP to 5.2.1
-- Add FTP 'Resume' mode. Fix bug in enabling 'FXP' and 'NAT mode'.
 - Add syslog message for RSYNC local/remote synchronization
-- Upgrade Samba from 3.0.23d to 3.0.24 and add LDAP and Kerberos support (but not used)
-- Geom mirror: Change default algorithm to round robin (http://www.onlamp.com/pub/a/bsd/2005/11/10/FreeBSD_Basics.html)
-- Add 'FTP connected users list' information page
-- Fix FTP bug. Deletion of files uploaded and owned by user was not able.
-- Fix FTP PAM error (using MS AD account for example) 
-- Permit to configure multiple RSYNC local/client
-- Add Japanese language: Thanks to Hiroyuki Seino
-- Add Russian language: Thanks Ahmetov Shamil
-- Fix bug in user & groups WebGUI.
-- Upgrade Samba to 3.0.24
-  Try to improve samba performance by adding 'large readwrite = no' in smb.conf (see http://wiki.samba.org/index.php/Samba_Troubleshooting)
-- Added growfs tools (usable from the CLI only)
-- Disable FTP root login by default. Can be enabled via WebGUI.
+- Geom mirror: Change default algorithm to round robin
+(http://www.onlamp.com/pub/a/bsd/2005/11/10/FreeBSD_Basics.html)
+- Multilanguage: Update languages files and add Japanese (Thanks to Hiroyuki Seino)
+and Russian (Thanks Ahmetov Shamil)
 - Fix DHCP problem
+- Permit to select if a user is in the administrator group (wheel) or not 
+
+- Upgrade PHP to 5.2.1
 - Upgrade ushare to 0.9.10 (should now support xbox)
 - Try to prevent "acd0: FAILURE READ_BIG ERROR" during install from CDROM (thanks to fortinde@isers.sourceforge.net)
-- Upgrade twa kernel driver (e.g. 3ware 9650SE Series Raid S-ATA II PCIe)
-- Add EXT2 filesystem creation support.
-- Add option for upgrading FreeNAS from CDROM (this can be used as recovery mode too).
+
 - Modify FreeNAS make.sh build script for supporting AMD64 FreeBSD now...
 - Remove the tools 'beep'
 - Now it is possible to store the configuration on floppy disk and USB stick when booting FreeNAS from CD.
-- Try to improve performance on VM machine: http://ivoras.sharanet.org/freebsd/vmware.html
-  Replace ethernet 'lnc' drivers with 'le' driver
-  Reduce Kernel's timer frequency  to 100HZ
-- Add description attribute to RSYNC tasks
 
 Known bug in the 0.684b:
 - Can't remount ntfs-3g volume under the mount:tools. Must restart FreeNAS. It seem to be a fuse problem.
