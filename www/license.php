@@ -42,7 +42,7 @@ $pgtitle = array(gettext("License"));
             <hr size="1">
             <p>The following persons have contributed to FreeNAS code:</p>
              <p>Volker Theile (<a href="mailto:votdev@gmx.de">votdev@gmx.de</a>)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">FreeNAS developer team member: Added DHCP client feature (adapted from m0n0wall), bug fixes and Lot's of other enhancements</font></em><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">FreeNAS developer team member</font></em><br>
              <p>Stefan Hendricks (<a href="mailto:info@henmedia.de">info@henmedia.de</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added some system information and processes page</font></em><br>
              <p>Mat Murdock (<a href="mailto:mmurdock@kimballequipment.com">mmurdock@kimballequipment.com</a>)<br>
