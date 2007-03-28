@@ -1435,7 +1435,7 @@ msgid "Share"
 msgstr "Freigabe"
 
 msgid "You may need enough space to duplicate all files being synced"
-msgstr "Es k&ouml;nnte bei der Synchronisation zur Belegung von Speicherplatz in der Gr&ouml;?&uuml;enordnung der abzugleichenden Daten kommen, um diese zu duplizieren."
+msgstr "Es k&ouml;nnte bei der Synchronisation zur Belegung von Speicherplatz in der Gr&ouml;√&uuml;enordnung der abzugleichenden Daten kommen, um diese zu duplizieren."
 
 msgid "Working Directory"
 msgstr "Arbeitsverzeichnis"
@@ -2032,10 +2032,10 @@ msgid "Encryption algorithm"
 msgstr "Verschl&uuml;sselungsalgorithmus"
 
 msgid "Passphrase"
-msgstr "Pa?wort"
+msgstr "Paﬂwort"
 
 msgid "Passphrase don't match."
-msgstr "Pa?worte stimmen nicht &uuml;berein"
+msgstr "Paﬂworte stimmen nicht &uuml;berein"
 
 msgid "Init and encrypt disk"
 msgstr "Initialisiere und verschl&uuml;ssele Festplatte"
@@ -2059,7 +2059,7 @@ msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "Diese verschl&uuml;sselte Festplatte ist eingebunden (gemountet); vor dem Entfernen ist diese zu entbinden (unmount)"
 
 msgid "You must use a passphrase to attach an encrypted disk."
-msgstr "Ein Pa?wort ist zum Hinzuf&uuml;gen einer verschl&uuml;sselten Festplatte notwendig."
+msgstr "Ein Paﬂwort ist zum Hinzuf&uuml;gen einer verschl&uuml;sselten Festplatte notwendig."
 
 msgid "Encrypted disk name"
 msgstr "Name der verschl&uuml;sselten Festplatte"
@@ -2083,7 +2083,7 @@ msgid "Reload page"
 msgstr "Seite neu laden"
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
-msgstr "Aus Sicherheitsgr&uuml;nden sollte HTTPS als WebGUI-Protokoll beim Senden des Pa?worts benutzt werden."
+msgstr "Aus Sicherheitsgr&uuml;nden sollte HTTPS als WebGUI-Protokoll beim Senden des Paﬂworts benutzt werden."
 
 msgid "Resume"
 msgstr "Fortfahren"
@@ -2146,7 +2146,7 @@ msgid "Save and Restart AFP"
 msgstr "Sichern und Neustart AFP"
 
 msgid "The %s port must be a valid port number."
-msgstr "Port Nr. %s mu? eine g&uuml;ltige Portnummer sein."
+msgstr "Port Nr. %s muﬂ eine g&uuml;ltige Portnummer sein."
 
 msgid "Swap memory"
 msgstr "Auslagerungsspeicher"
@@ -2206,10 +2206,10 @@ msgid "Mount to use"
 msgstr "Zu benutzende Mount-Adresse"
 
 msgid "File size"
-msgstr "Dateigr&ouml;?e"
+msgstr "Dateigr&ouml;ﬂe"
       
 msgid "A valid size target value must be specified."
-msgstr "Eine g&uuml;ltige Zielgr&ouml;?e muss angegeben werden."
+msgstr "Eine g&uuml;ltige Zielgr&ouml;ﬂe muss angegeben werden."
 
 msgid "Target name"
 msgstr "Zielname"
@@ -2290,16 +2290,16 @@ msgid "Base DN"
 msgstr "Base DN"
 
 msgid "Specifies the default base DN to use when performing ldap operations. The base must be specified as a distinguished name in LDAP format."
-msgstr "Legt die Standard-Base-DN f?r das Durchf?hren von LDAP-Anwendungen fest. Sie muss als verwechslungssicherer Name im LDAP-Format angegeben werden."
+msgstr "Legt die Standard-Base-DN für das Durchführen von LDAP-Anwendungen fest. Sie muss als verwechslungssicherer Name im LDAP-Format angegeben werden."
 
 msgid "DN to bind"
 msgstr "zu verbindende DN "
 
 msgid "Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a distinguished name in LDAP format."
-msgstr "Legt die Standard-bind-DN f?r das Durchf?hren von LDAP-Anwendungen fest. Sie muss als verwechslungssicherer Name im LDAP-Format angegeben werden."
+msgstr "Legt die Standard-bind-DN für das Durchführen von LDAP-Anwendungen fest. Sie muss als verwechslungssicherer Name im LDAP-Format angegeben werden."
 
 msgid "Password for DN"
-msgstr "Passwort f?r DN"
+msgstr "Passwort für DN"
 
 msgid "The credentials to bind with, enter it here twice."
 msgstr "Zweimalige Eingabe der Anmeldeinformationen"
