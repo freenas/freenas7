@@ -362,6 +362,9 @@ usr/sbin/pkg_add
 # pkg_info - dump out information for packages
 usr/sbin/pkg_info
 
+# diskinfo -- get information about disk device
+usr/sbin/diskinfo
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
