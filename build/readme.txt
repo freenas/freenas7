@@ -104,6 +104,7 @@ Minors changes:
 (http://www.onlamp.com/pub/a/bsd/2005/11/10/FreeBSD_Basics.html)
 - Now it is possible to store the configuration on floppy disk and USB stick when booting FreeNAS from CD.
 - Permit to select if a user is in the administrator group (wheel) or not 
+- Add WebGUI page (System/Advanced/Startup) to add/edit/delete commands executed pre or post system initialization (booting).  
 
 Bug fixs:
 - Fix UPnP WebGUI bug

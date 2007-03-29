@@ -111,7 +111,7 @@ if ($_GET['act'] == "del")
           <td class="list"><a href="system_advanced_rcstartup_edit.php"><img src="plus.gif" title="<?=gettext("Add command");?>" width="17" height="17" border="0"></a></td>
         </tr>
       </table>
-      <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo gettext("These commands will be executed pre or post system initialization.");?></p>
+      <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo gettext("These commands will be executed pre or post system initialization (booting).");?></p>
     </td>
   </tr>
 </table>

@@ -2319,7 +2319,7 @@ msgstr ""
 msgid "Method used to store your password in your LDAP."
 msgstr ""
 
-msgid "These commands will be executed pre or post system initialization."
+msgid "These commands will be executed pre or post system initialization (booting)."
 msgstr ""
 
 msgid "Add command"
@@ -2334,7 +2334,7 @@ msgstr ""
 msgid "Do you really want to delete this command?"
 msgstr ""
 
-msgid "Execute command pre or post system initialization."
+msgid "Execute command pre or post system initialization (booting)."
 msgstr ""
 
 msgid "Startup"

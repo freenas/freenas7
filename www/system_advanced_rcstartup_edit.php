@@ -116,7 +116,7 @@ if ($_POST) {
 					<option value="PRE" <?php if ($type == "PRE") echo "selected";?>>Pre</option>
 					<option value="POST" <?php if ($type == "POST") echo "selected";?>>Post</option>
 				</select>
-				<br><?=gettext("Execute command pre or post system initialization.");?>
+				<br><?=gettext("Execute command pre or post system initialization (booting).");?>
 			</td>
 		</tr>
     <tr> 
