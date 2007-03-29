@@ -1,5 +1,6 @@
 msgid ""
-msgstr "Project-Id-Version: freenas 0.69\n"
+msgstr ""
+"Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: 2007-03-28 14:15-0300\n"
 "Last-Translator: Régis Caubet <caubet.r@gmail.com>\n"
@@ -7,7 +8,9 @@ msgstr "Project-Id-Version: freenas 0.69\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-Country: FRANCE\n"
+"X-Poedit-SourceCharset: utf-8\n"
 
 
 msgid "Date"
