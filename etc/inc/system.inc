@@ -637,16 +637,15 @@ function system_reboot_sync() {
 
 function system_do_shell_commands($early = 0) {
 	global $config;
-	
+
 	if ($early)
 		$cmdn = "earlyshellcmd";
 	else
 		$cmdn = "shellcmd";
-	
+
 	if (is_array($config['system'][$cmdn])) {
-		
 		foreach ($config['system'][$cmdn] as $cmd) {
-			exec($cmd);
+			system($cmd);
 		}
 	}
 }
