@@ -1113,10 +1113,7 @@ function get_cdrom_list()
 	
 	/* Recupere la liste des disques IDE */
 	exec("/sbin/atacontrol list",$rawdata);
-	
-	/* Recupere le dmesg */
-	exec("/sbin/dmesg",$rawdmesg);
-			
+
 	$disklist = array();
 	
 	/* Variable $i utilisé pour l'index du tableau */
@@ -1156,14 +1153,11 @@ function get_cdrom_list()
 		}
 		
 	}
-	
-	/* Get the SCSI disk list */
-	
+
 	/* Cleaning used variable and initialize array */
 	unset($rawdata);
-	unset($dmesgtab);
-	reset($rawdmesg);
-	
+
+	/* Get the SCSI disk list */	
 	/* Get the result of the command camcontrol*/
 	exec("/sbin/camcontrol devlist",$rawdata);
 		

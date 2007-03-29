@@ -1368,4 +1368,36 @@ function disks_fsck($disk,$umount = false)
 
 	return 0;
 }
+
+// Get disk informations.
+// Result is in the form:
+// [1] => Array
+// (
+// 	[name] => ad0
+// 	[sectorsize]  => 512
+// 	[mediasize_bytes]  => 5242503168
+// 	[mediasize_mbytes]  => 4999
+// 	[mediasize_sectors]  => 10239264
+// 	[cylinders] => 10158
+// 	[heads] => 16
+// 	[sectors] => 63
+// )
+function disks_get_diskinfo($disk)
+{
+	exec("/usr/sbin/diskinfo {$disk}",$rawdata);
+
+	$diskinfo = preg_split("/\s+/", $partinfo);
+
+	$result = array();
+	$result[name] = chop($diskinfo[0]);
+	$result[sectorsize] = chop($diskinfo[1]);
+	$result[mediasize_bytes] = chop($diskinfo[2]);
+	$result[mediasize_mbytes] = intval(chop($diskinfo[2])) / (1024/512) / 1024;
+	$result[mediasize_sectors] = chop($diskinfo[3]);
+	$result[cylinders] = chop($diskinfo[4]);
+	$result[heads] = chop($diskinfo[5]);
+	$result[sectors] = chop($diskinfo[6]);
+
+	return $result; 
+}
 ?>
