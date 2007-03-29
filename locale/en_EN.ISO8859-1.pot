@@ -2318,3 +2318,24 @@ msgstr ""
 
 msgid "Method used to store your password in your LDAP."
 msgstr ""
+
+msgid "These commands will be executed pre or post system initialization."
+msgstr ""
+
+msgid "Add command"
+msgstr ""
+
+msgid "Edit command"
+msgstr ""
+
+msgid "Delete command"
+msgstr ""
+
+msgid "Do you really want to delete this command?"
+msgstr ""
+
+msgid "Execute command pre or post system initialization."
+msgstr ""
+
+msgid "Startup"
+msgstr ""

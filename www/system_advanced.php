@@ -127,6 +127,7 @@ if ($_POST) {
       <ul id="tabnav">
         <li class="tabact"><a href="system_advanced.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Advanced");?></a></li>
         <li class="tabinact"><a href="system_advanced_swap.php"><?=gettext("Swap");?></a></li>
+        <li class="tabinact"><a href="system_advanced_rcstartup.php"><?=gettext("Startup");?></a></li>
       </ul>
     </td>
   </tr>

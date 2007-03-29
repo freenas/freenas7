@@ -94,6 +94,7 @@ function enable_change(enable_change) {
       <ul id="tabnav">
 				<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
 				<li class="tabact"><a href="system_advanced_swap.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Swap");?></a></li>
+				<li class="tabinact"><a href="system_advanced_rcstartup.php"><?=gettext("Startup");?></a></li>
       </ul>
     </td>
   </tr>
