@@ -858,147 +858,96 @@ function get_graid5_disks_list()
 		
 }
 
-
-
+// Get list of ATA disks.
+//[ad0] => Array
+//    (
+//        [type] => IDE
+//        [desc] => QUANTUM FIREBALL EX6.4A/A0A.0D00
+//        [size] => 6149MB
+//        [name] => ad0
+//        [fullname] => /dev/ad0
+//    )
 function get_ata_disks_list()
 {
-	/* Return list of ATA disk */
-	
-    //[ad0] => Array
-    //    (
-    //        [type] => IDE
-    //        [desc] => QUANTUM FIREBALL EX6.4A/A0A.0D00
-    //        [size] => 6149MB
-    //        [name] => ad0
-    //        [fullname] => /dev/ad0
-    //    )
-
-
-	global $g;
-	
-	/* Recupere le dmesg */
-	exec("/sbin/dmesg",$rawdmesg);
-			
 	$disklist = array();
 	
 	/******* Getting IDE disk informations *******/
-	
 	exec("/sbin/atacontrol list",$rawdata);
-	
+
 	foreach ($rawdata as $line) {
-					
 		/* Separe la ligne par les espace */
 		$aline = preg_split("/\s+/", $line);
-	
+
 		/* Si ATA alors NEXT */
 		if ($aline[0] == "ATA")
 			continue ;
-	
+
 		$diskname = chop($aline[2]);
-		
+
 		/* Exlude CDROM (acdX) and Empty (no) */
 		if (!preg_match("/^(acd)/", $diskname ) & $diskname != "no") {
-			
-			$disklist[$diskname]=array();
-			$disklist[$diskname]['name']=$diskname;
-			$disklist[$diskname]['fullname']= "/dev/" . $diskname;
-					
+			$disklist[$diskname] = array();
+			$disklist[$diskname]['name'] = $diskname;
+			$disklist[$diskname]['fullname'] = "/dev/" . $diskname;
 			$disklist[$diskname]['type'] = "IDE";
-		
+
 			/* Match the description witch is include between < and > */
-		
 			preg_match("/.*\<([^>]*)>.*/",$line,$match);
-		
 			$disklist[$diskname]['desc'] = $match[1];
-			
-			/* Looking for the disk size */
-			foreach ($rawdmesg as $dmesgline) 	{
-				
-				/* Take only the first dmesg line */
-				if (!$disklist[$diskname]['size']) 		{	
-				
-					/* Separe la ligne par les espace */
-					$dmesgtab = explode(" ", $dmesgline);
-					$dmesgtab[0] = rtrim($dmesgtab[0],":");
-					/* When there is a wrong DMA cable, the first line is:
-					ad0: DMA limited to UDMA33, controller found non-ATA66 cable
-					*/
-					if ($dmesgtab[0]!="" && (strcasecmp($dmesgtab[0],$diskname) == 0) && strcmp($dmesgtab[1],"DMA") !=0) {
-						$disklist[$diskname]['size'] = $dmesgtab[1];
-					}
-					
-				}
-			}
-			
+
+			/* Get diskinfo to get disk size */
+			$diskinfo = disks_get_diskinfo($diskname);
+			$disklist[$diskname]['size'] = $diskinfo['mediasize_mbytes'] . "MB";
 		}
-		
 	}
+
 	return $disklist;
 }
 
-
+// Get list of SCSI disks.
+//[ad0] => Array
+//    (
+//        [type] => IDE
+//        [desc] => QUANTUM FIREBALL EX6.4A/A0A.0D00
+//        [size] => 6149MB
+//        [name] => ad0
+//        [fullname] => /dev/ad0
+//    )
 function get_scsi_disks_list()
 {
-	/* Recupere la liste des disques SCSI */
-	
-	//[ad0] => Array
-    //    (
-    //        [type] => IDE
-    //        [desc] => QUANTUM FIREBALL EX6.4A/A0A.0D00
-    //        [size] => 6149MB
-    //        [name] => ad0
-    //        [fullname] => /dev/ad0
-    //    )
-
-
-	global $g;
-		
-	/* Recupere le dmesg */
-	exec("/sbin/dmesg",$rawdmesg);
-
 	/* on envoie la commande d'affichage de la liste des disques*/
 	exec("/sbin/camcontrol devlist",$rawdata);
-		
+
 	foreach ($rawdata as $line) {
-	
 		/* Get information include between parenthese: (pass0,da0) or (da0,pass0)*/
-		
 		preg_match("/.*\(([^>]*)\).*/",$line,$match);
-	
+
 		/* Sépare le resultat par la virgule  */
 		$temp = preg_split("/,/", $match[1]);
-		
+
 		// Check if diskname is the first (da0,pass0) or the second (pass0,da0) arguement
 		$diskname = $temp[1];
 		if ($diskname[0] == "p")
 			$diskname = $temp[0];
-		
+
 		/* On exlus les lecteurs cd */
 		if (!preg_match("/^(cd)/", $diskname  )) 	{
-			$disklist[$diskname]=array();
-			$disklist[$diskname]['name']=$diskname;
-			$disklist[$diskname]['fullname']= "/dev/" . $diskname;
+			$disklist[$diskname] = array();
+			$disklist[$diskname]['name'] = $diskname;
+			$disklist[$diskname]['fullname'] = "/dev/" . $diskname;
 			$disklist[$diskname]['type'] = "SCSI";
-			/* Recupère la description: ce qu'il y a entre < et > */
-		
+
+			/* Match the description witch is include between < and > */
 			preg_match("/.*\<([^>]*)>.*/",$line,$match);
-		
 			$disklist[$diskname]['desc'] = $match[1];
-			
-			/* Looking for the disk size */
-			foreach ($rawdmesg as $dmesgline) 	{			
-					/* Separe la ligne par les espace */
-					$dmesgtab = explode(" ", $dmesgline);
-					$dmesgtab[0] = rtrim($dmesgtab[0],":");
-					if ($dmesgtab[0]!="" &&(strcasecmp($dmesgtab[0],$diskname) == 0))
-						$disklist[$diskname]['size'] = $dmesgtab[1];
-				
-			}
-		
+
+			/* Get diskinfo to get disk size */
+			$diskinfo = disks_get_diskinfo($diskname);
+			$disklist[$diskname]['size'] = $diskinfo['mediasize_mbytes'] . "MB";
 		}
 	}
-	return $disklist;
 
+	return $disklist;
 }
 
 function get_hraid_disks_list()
@@ -1092,66 +1041,50 @@ function get_disks_size($diskname)
 	return $disksize;
 	
 }
-    
+
+// Get list of IDE AND SCSI CDROM.
+// exemple: Array
+// [acd0] => Array
+//    (
+//        [type] => IDE
+//        [desc] => TDK CDRW241040B/57S2
+//        [name] => acd0
+//        [size] => NA
+//        [fullname] => /dev/acd0
+//    )
 function get_cdrom_list()
 {
-	/* Return list of IDE AND SCSI CDROM */
-	// exemple: Array
-    // [acd0] => Array
-    //    (
-    //        [type] => IDE
-    //        [desc] => TDK CDRW241040B/57S2
-    //        [name] => acd0
-    //        [size] => NA
-    //        [fullname] => /dev/acd0
- 
-    //    )
+	$disklist = array();
 
-
-	
-	global $g;
-	
 	/* Recupere la liste des disques IDE */
 	exec("/sbin/atacontrol list",$rawdata);
 
-	$disklist = array();
-	
 	/* Variable $i utilisé pour l'index du tableau */
 	$i=0;
 	foreach ($rawdata as $line) 	{
-		
-				
 		/* Separe la ligne par les espace */
 		$aline = preg_split("/\s+/", $line);
-	
+
 		/* Si ATA alors NEXT */
 		if ($aline[0] == "ATA")
 			continue ;
-	
+
 		$diskname = chop($aline[2]);
-		
+
 		/* Exlude disk (adX) and Empty (no) */
 		if (!preg_match("/^(ad)/", $diskname ) & $diskname != "no") 	{
-			
-			$disklist[$diskname]=array();
-			
-			$disklist[$diskname]['name']=$diskname;
-			$disklist[$diskname]['fullname']= "/dev/" . $diskname;
-						
+			$disklist[$diskname] = array();
+			$disklist[$diskname]['name'] = $diskname;
+			$disklist[$diskname]['fullname'] = "/dev/" . $diskname;
 			$disklist[$diskname]['type'] = "IDE";
 			$disklist[$diskname]['size'] = "NA";
-		
+
 			/* Match the description witch is include between < and > */
-		
 			preg_match("/.*\<([^>]*)>.*/",$line,$match);
-		
 			$disklist[$diskname]['desc'] = $match[1];
 
-			
 			$i++;
-			
 		}
-		
 	}
 
 	/* Cleaning used variable and initialize array */
@@ -1160,49 +1093,42 @@ function get_cdrom_list()
 	/* Get the SCSI disk list */	
 	/* Get the result of the command camcontrol*/
 	exec("/sbin/camcontrol devlist",$rawdata);
-		
+
 	foreach ($rawdata as $line) 	{
-	
 		/* Get information include between parenthese: (pass0,da0) or (da0,pass0)*/
-		
 		preg_match("/.*\(([^>]*)\).*/",$line,$match);
-	
+
 		/* Sépare le resultat par la virgule  */
 		$temp = preg_split("/,/", $match[1]);
-		
+
 		// Check if diskname is the first (da0,pass0) or the second (pass0,da0) arguement
 		$diskname = $temp[1];
 		if ($diskname[0] == "p")
 			$diskname = $temp[0];
-		
+
 		/* On exlus les lecteurs disque dur da */
 		if (!preg_match("/^(da)/", $diskname  )) 	{
-			$disklist[$diskname]=array();
-			$disklist[$diskname]['name']=$diskname;
-			$disklist[$diskname]['fullname']= "/dev/" . $diskname;
+			$disklist[$diskname] = array();
+			$disklist[$diskname]['name'] = $diskname;
+			$disklist[$diskname]['fullname'] = "/dev/" . $diskname;
 			$disklist[$diskname]['type'] = "SCSI";
 			$disklist[$diskname]['size'] = "NA";
-			/* Recupère la description: ce qu'il y a entre < et > */
-		
-			preg_match("/.*\<([^>]*)>.*/",$line,$match);
-		
-			$disklist[$diskname]['desc'] = $match[1];
-			
-			$i++;
-		
-		}
-		
-	}
-	
-		return $disklist;
-}
 
+			/* Match the description witch is include between < and > */
+			preg_match("/.*\<([^>]*)>.*/",$line,$match);
+			$disklist[$diskname]['desc'] = $match[1];
+
+			$i++;
+		}
+	}
+
+	return $disklist;
+}
 
 /* wrapper for exec() */
 function mwexec($command) {
-
 	global $g;
-	
+
 	if ($g['debug']) {
 		if (!$_SERVER['REMOTE_ADDR'])
 			echo "mwexec(): $command\n";
@@ -1210,7 +1136,7 @@ function mwexec($command) {
 	} else {
 		exec("$command > /dev/null 2>&1", $oarr, $retval);
 	}
-	
+
 	return $retval; 
 }
 
