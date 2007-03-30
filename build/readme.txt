@@ -129,6 +129,7 @@ Underlying changes:
 
 Known bug in the 0.684b:
 - Using iSCSI-target can cause problem for stopping/restarting FreeNAS
+- French accent not correclty displayed
 
 FreeNAS 0.683b:
 - Updated licence file with new translators name/emails

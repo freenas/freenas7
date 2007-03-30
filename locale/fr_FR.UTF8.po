@@ -836,9 +836,8 @@ msgstr "Charger"
 msgid "You must reboot the system before you can upgrade the firmware."
 msgstr "Vous devez redémarrer le systeme avant de pouvoir faire une mise a jour."
 
-#, fuzzy
 msgid "The TCP idle timeout must be an integer."
-msgstr "Le timeout TCP idle doit être un entier."
+msgstr "Le TCP idle timeout doit être un entier."
 
 
 msgid "Certificate and key must always be specified together."
@@ -1400,7 +1399,6 @@ msgstr "striping"
 msgid "mirroring"
 msgstr "mirroring"
 
-#, fuzzy
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
 
@@ -2236,7 +2234,6 @@ msgstr "Licence"
 msgid "%s interface (SSID '%s')"
 msgstr "interface %s (SSID '%s')"
 
-#, fuzzy
 msgid "Signal strength cache"
 msgstr "Signal strength cache"
 
@@ -3044,17 +3041,15 @@ msgstr "Adresse IP du Serveur LDAP."
 msgid "Base DN"
 msgstr "DN de base"
 
-#, fuzzy
 msgid "Specifies the default base DN to use when performing ldap operations. The base must be specified as a distinguished name in LDAP format."
-msgstr "Spécifie le DN de base (base DN) par défaut à utiliser lors de l'exécution d'opérations LDAP. Le DN de base doit être spécifié comme un nom distingué au format LDAP."
+msgstr "Spécifie le base DN par défaut à utiliser lors de l'exécution d'opérations LDAP. Le base DN doit être spécifié comme un nom distingué au format LDAP."
 
 
 msgid "DN to bind"
 msgstr "DN à utiliser"
 
-#, fuzzy
 msgid "Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a distinguished name in LDAP format."
-msgstr "Spécifie le DN de liaison (bind DN) par défaut à utiliser lors de l'exécution d'opérations LDAP. Le DN de liaison doit être spécifié comme un nom distingué au format LDAP."
+msgstr "Spécifie le bind DN) par défaut à utiliser lors de l'exécution d'opérations LDAP. Le base DN doit être spécifié comme un nom distingué au format LDAP."
 
 
 msgid "Password for DN"
