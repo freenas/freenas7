@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-03-25 10:11+0300\n"
+"PO-Revision-Date: 2007-03-30 20:44+0300\n"
 "Last-Translator: Alexander Samoilov <root@lifeslice.ru>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgid "weeks"
 msgstr "недель"
 
 msgid "week days"
-msgstr "дни недели"
+msgstr "дней недели"
 
 msgid "month"
 msgstr "месяц"
@@ -109,7 +109,7 @@ msgid "No"
 msgstr "Нет"
 
 msgid "off"
-msgstr "выключен"
+msgstr "отключен"
 
 msgid "OK"
 msgstr "Да"
@@ -265,16 +265,16 @@ msgid "ERROR: The changes could not be applied (error code %s)."
 msgstr "ОШИБКА: Изменения не могут быть применены (код ошибки %s)."
 
 msgid "A valid IP address must be specified."
-msgstr "Должен быть указан верный IP адрес"
+msgstr "Должен быть указан верный IP адрес."
 
 msgid "A valid network bit count must be specified."
-msgstr "Должна быть указана правильная маска подсети"
+msgstr "Должна быть указана правильная маска подсети."
 
 msgid "The TCP port must be a valid port number."
 msgstr "Порт TCP должен быть верным номером порта."
 
 msgid "Password don't match."
-msgstr "Пароль не совпадает"
+msgstr "Пароль не совпадает."
 
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
 msgstr "Примечание : Ctrl-click (или command-click для Mac) чтобы выбрать или отменить выбор минут, часов, дней, месяцев."
@@ -382,7 +382,7 @@ msgid "Information"
 msgstr "Информация"
 
 msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
+msgstr "Команды Ping/Traceroute"
 
 msgid "ARP table"
 msgstr "Таблица ARP"
@@ -562,10 +562,10 @@ msgid "Add Route"
 msgstr "Добавить маршрут"
 
 msgid "A valid destination network must be specified."
-msgstr "Нужно указать корректную сеть назначения."
+msgstr "Нужно указать верную сеть назначения."
 
 msgid "A valid gateway IP address must be specified."
-msgstr "Нужно указать корректный IP адрес шлюза."
+msgstr "Нужно указать верный IP-адрес шлюза."
 
 msgid "A route to this destination network already exists."
 msgstr "Маршрут к этой сети назначения уже есть."
@@ -598,7 +598,7 @@ msgid "This image is not digitally signed."
 msgstr "Образ не имеет цифровой подписи."
 
 msgid "There has been an error verifying the signature on this image."
-msgstr "Произошла ошибка при проверке подписи этого образа"
+msgstr "Произошла ошибка при проверке подписи этого образа."
 
 msgid "The image file is corrupt"
 msgstr "Файл образа поврежден"
@@ -628,7 +628,7 @@ msgid "Upgrade firmware"
 msgstr "Обновить прошивку"
 
 msgid "You must reboot the system before you can upgrade the firmware."
-msgstr "Необходимо перезагрузить систему перед обновлением прошивки"
+msgstr "Необходимо перезагрузить систему перед обновлением прошивки."
 
 msgid "The TCP idle timeout must be an integer."
 msgstr "Таймаут простоя TCP должен быть целым числом."
@@ -646,7 +646,7 @@ msgid "The options on this page are intended for use by advanced users only, and
 msgstr "Параметры на этой странице предназначены только для опытных пользователей и они <strong>НЕ</strong> поддерживаются."
 
 msgid "webGUI SSL certificate/key"
-msgstr "webGUI SSL сертификат/ключ"
+msgstr "webGUI SSL-сертификат/ключ"
 
 msgid "Certificate"
 msgstr "Сертификат"
@@ -658,7 +658,7 @@ msgid "Key"
 msgstr "Ключ"
 
 msgid "Paste an RSA private key in PEM format here."
-msgstr "Вставьте сюда личный RSA ключ в формате PEM."
+msgstr "Вставьте сюда личный RSA-ключ в формате PEM."
 
 msgid "Miscellaneous"
 msgstr "Разное"
@@ -709,7 +709,7 @@ msgid "Tuning"
 msgstr "Настройка"
 
 msgid "Zeroconf"
-msgstr "Сервис Zeroconf"
+msgstr "Служба ZeroConf"
 
 msgid "Swap file"
 msgstr "Файл подкачки"
@@ -915,6 +915,9 @@ msgstr "Инициализировать"
 msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
 msgstr "Этот диск смонтирован! <a href=%s>Размонтируйте</a> диск перед продолжением."
 
+msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgstr "Форматировать диск, на котором размещён файл настроек FreeNAS, невозможно."
+
 msgid "Disk initialization details"
 msgstr "Подробности инициализации диска"
 
@@ -929,6 +932,9 @@ msgstr "Форматировать диск"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr "Вы действительно хотите форматировать диск? Все данные будут уничтожены!"
+
+msgid "Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation."
+msgstr "Задайте процент дискового пространства, недоступного обычным пользователям. Учтите, что занижение этого предела может негативно отразиться на производительности и возможностях автоматической дефрагментации."
 
 msgid "Don't Erase MBR"
 msgstr "Не стирать MBR"
@@ -1102,16 +1108,19 @@ msgid "Duplicate Share Name."
 msgstr "Повторяющееся имя общего ресурса"
 
 msgid "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
-msgstr "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+msgstr "Выберите вариант EFI GPT для монтирования диска GPT-формата (по умолчанию с версии 0.684b). <br>Выберите вариант 1 для монтирования UFS-диска или тома RAID-массива версии 0.683b или позже. <br>Выберите вариант 2 для монтирования раздела данных, если во время установки на жёсткий диск был выбран вариант 2.<br>Выберите вариант gmirror/graid5/gvinum для монтирования тома, созданного старым выпуском FreeNAS"
 
-msgid "1. You can't mount the partition '%s' where the config file is stored.<br>2. FreeBSD NTFS has lots of bugs."
-msgstr "1. Невозможно смонтировать раздел '%s', где хранится файл настроек.<br>2. Поддержка файловой системы NTFS в ОС FreeBSD работает нестабильно."
+msgid "You can't mount the partition '%s' where the config file is stored.<br>"
+msgstr "1. Невозможно смонтировать раздел '%s', где хранится файл настроек.<br>"
 
 msgid "Mounting..."
 msgstr "Монтируется..."
 
 msgid "Unmounting..."
 msgstr "Размонтируется..."
+
+msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
+msgstr "Невозможно размонтировать диск, занятый файлом подкачки или файлом iSCSI-цели."
 
 msgid "The Netbios name contains invalid characters."
 msgstr "Имя Netbios содержит некорректные символы"
@@ -1555,10 +1564,10 @@ msgid "Give full shell to user"
 msgstr "Дать пользователю полную оболочку"
 
 msgid "Administrator"
-msgstr "Administrator"
+msgstr "Администратор"
 
 msgid "Put user in the administrator group"
-msgstr "Put user in the administrator group"
+msgstr "Внести пользователя в группу администраторов"
 
 msgid "The group list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr "Список групп был изменен.<br>Вы должны применить изменения, чтобы они вступили в силу."
@@ -2046,7 +2055,7 @@ msgstr "Датчики"
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "Зашифрованный диск смонтирован, размонтируйте его перед отсоединением."
 
-msgid "You must use a passphrase for attach an encrypted disk."
+msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "Для присоединения шифрованного диска нужно использовать парольную фразу."
 
 msgid "Encrypted disk name"
@@ -2264,4 +2273,67 @@ msgstr "Сохранить конфигурацию"
 
 msgid "Initializing disk"
 msgstr "Инициализация диска"
+
+msgid "Enable Zeroconf"
+msgstr "Включить службу ZeroConf"
+
+msgid "LDAP server IP"
+msgstr "IP LDAP-сервера"
+
+msgid "IP address of LDAP server."
+msgstr "IP-адрес LDAP-сервера."
+
+msgid "Base DN"
+msgstr "Уникальное имя записи"
+
+msgid "Specifies the default base DN to use when performing ldap operations. The base must be specified as a distinguished name in LDAP format."
+msgstr "Задаёт основное уникальное имя по умолчанию для использования при LDAP-операциях. "
+
+msgid "DN to bind"
+msgstr "Уникальное имя для аутентификации"
+
+msgid "Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a distinguished name in LDAP format."
+msgstr "Задаёт уникальное имя по умолчанию для LDAP-операций. Имя должно соответствовать LDAP-формату."
+
+msgid "Password for DN"
+msgstr "Пароль для Уникального имени"
+
+msgid "The credentials to bind with, enter it here twice."
+msgstr "Введите здесь дважды реквизиты для аутентификации."
+
+msgid "User suffix"
+msgstr "Суффикс пользователя"
+
+msgid "Password suffix"
+msgstr "Суффикс пароля"
+
+msgid "Group suffix"
+msgstr "Суффикс группы"
+
+msgid "Password encryption"
+msgstr "Шифрование пароля"
+
+msgid "Method used to store your password in your LDAP."
+msgstr "Метод хранения паролей в службе LDAP."
+
+msgid "These commands will be executed pre or post system initialization (booting)."
+msgstr "Эти команды будут выполнены до или после инициализации (загрузки) системы."
+
+msgid "Add command"
+msgstr "Добавить команду"
+
+msgid "Edit command"
+msgstr "Редактировать команду"
+
+msgid "Delete command"
+msgstr "Удалить команду"
+
+msgid "Do you really want to delete this command?"
+msgstr "Вы действительно хотите удалить эту команду?"
+
+msgid "Execute command pre or post system initialization (booting)."
+msgstr "Выполнить команды до или после инициализации (загрузки) системы."
+
+msgid "Startup"
+msgstr "Запуск"
 
