@@ -2,7 +2,7 @@ FreeNAS (http://www.freenas.org)
 Olivier Cochard-Labbe (olivier@freenas.org)
 Licence: BSD
 
-Release: 0.684b (unreleased!)
+Release: 0.685b (unreleased!)
 
 ============== SUMMARY =========
 
@@ -70,7 +70,10 @@ from scretch. After that use one of the following menus:
 
 ################ History Change logs ##############
 
-FreeNAS 0.684b (UNRELEASE!):
+FreeNAS 0.685b:
+
+
+FreeNAS 0.684b :
 
 Majors changes:
 - Add disk encryption with geli
