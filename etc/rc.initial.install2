@@ -113,7 +113,7 @@ You can now remove the CD-ROM and reboot the PC.
 To use the DATA partition:
 1. Add the disk $harddrive on the Disks: Management page
 2. Add the mount point on the Disks: Mount point page
-(disk: $harddrive, partition 2, Filesystem: UFS + Softupdates)
+(disk: $harddrive, partition 2, Filesystem: UFS)
 DO NOT format the $harddrive drive! The data partition has been formatted for you as part of the installation!
 
 Press ENTER to continue.
