@@ -397,37 +397,34 @@ function get_mounts_list()
 	return $mountlist;
 }
 
+// Return list of mounted use
+// example: Array
+//	[mount_point_name] => Array
+//	    (
+//        [capacity] => 48%
+//        [used] => 2.4G
+//        [avail] => 2.6G
+//        [size] => 5.4G
+//      )
 function get_mount_use()
 {
-	// Return list of mounted use
-	//example: Array
-	//	[mount_point_name] => Array
-    //	    (
-    //        [capacity] => 48%
-    //        [used] => 2.4G
-    //        [avail] => 2.6G
-    //        [size] => 5.4G
-    //      )
+	global $config;
 
-	
-	global $config, $g;
-	
 	exec("/bin/df -h",$rawdata);
-	
+
 	$result=array();
-	
+
 	foreach ($rawdata as $line) {
 		/* separe the line by space*/
-		
 		$aline = preg_split("/[\s,]+/", $line);
-		
+
 		$tmp=explode("/",chop($aline[5]));
 		$mounted_on=$tmp[2];
 		$capacity = chop($aline[4]);
 		$avail = chop($aline[3]);
 		$used = chop($aline[2]);
 		$size = chop($aline[1]);
-		
+
 		if (is_array($config['mounts']['mount'])) 	{
 			foreach ($config['mounts']['mount'] as $mountcfg) {
 				if (strcmp($mounted_on,$mountcfg['sharename']) == 0) {
@@ -440,105 +437,79 @@ function get_mount_use()
 			}
 		}
 		else
-			return 0;
-		
+			return 0;		
 	}
-	//print_r($result);
-	
+
 	return $result;
 }
 
+/* Return list of ALL software volume: gvinum, gmirror */
 function get_sraid_disks_list()
 {
-	/* Return list of ALL software volume: gvinum, gmirror */
 	$disklist = array_merge((array)get_gvinum_disks_list(),(array)get_gmirror_disks_list(),(array)get_gconcat_disks_list(),(array)get_gstripe_disks_list(),(array)get_graid5_disks_list());
 	return $disklist;
-
 }
 
+// Get list of software gvinum RAID disks.
+//[volumename] => Array
+//    (
+//        [type] => Software RAID - gvinum
+//        [desc] => UP
+//        [size] => 6149 MB
+//        [name] => VolumeName
+//        [fullname] => /dev/gvinum/VolumeName
+//    )
 function get_gvinum_disks_list()
 {
-	/* Get information about gvinum volume */
-	global $g;
-	
-	/* Return list of Software RAID disk */
-	
-    //[volumename] => Array
-    //    (
-    //        [type] => Software RAID - gvinum
-    //        [desc] => UP
-    //        [size] => 6149 MB
-    //        [name] => VolumeName
-    //        [fullname] => /dev/gvinum/VolumeName
-    //    )
-    
-
-	/* Send the shell cmd and get the result*/
+	/* Send the shell cmd and get the result */
 	exec("/sbin/gvinum list",$rawdata);
-	
+
 	foreach ($rawdata as $line) {
-		
-				
 		/* Split the line using the space as separator */
 		$aline = preg_split("/\s+/", $line);
-	
+
 		/* Get the line that begin with the letter  'V' */
 		if ($aline[0] != "V")
 			continue ;
 		
 		$diskname = chop($aline[1]);
 		
-		$disklist[$diskname]=array();
-		
-		$disklist[$diskname]['name']=$diskname;
-		
-		$disklist[$diskname]['fullname']= "/dev/gvinum/" . $diskname;
-					
+		$disklist[$diskname] = array();
+		$disklist[$diskname]['name'] = $diskname;
+		$disklist[$diskname]['fullname'] = "/dev/gvinum/" . $diskname;
 		$disklist[$diskname]['type'] = "Software RAID - gvinum";
-		
 		$disklist[$diskname]['size'] = "$aline[7] $aline[8]" ;
-		
 		$disklist[$diskname]['desc'] = $aline[3];
-		
 	}
-	
-	
-		return $disklist;
+
+	return $disklist;
 }
 
+// Get list of software gmirror RAID disks.
+//[volumename] => Array
+//    (
+//        [type] => Software RAID - gmirror
+//        [name] => volumename
+//        [desc] => COMPLETE
+//        [size] => 6149M
+//        [fullname] => /dev/mirror/volumename
+//    )
 function get_gmirror_disks_list()
 {
-	/* Get information about gmirror volume */
-	global $g;
-	
-	
-    //[volumename] => Array
-    //    (
-    //		[type] => Software RAID - gmirror
-	//		[name] => volumename
-    //		[desc] => COMPLETE
-    //		[size] => 6149M
-	//		[fullname] => /dev/mirror/volumename
-    //    )
-    
-
-	/* Display all configured gmirror volume*/
+	/* Display all configured gmirror volume */
 	exec("/sbin/gmirror list",$rawdata);
-	
+
 	$foundname = 0 ;
 	$founddesc = 0 ;
 	$goodname = 0 ;
-	
-	foreach ($rawdata as $line) {
 
-				
+	foreach ($rawdata as $line) {
 		/* Use space for break the line */
 		$aline = preg_split("/\s+/", $line);
-		
+
 		// First Step: Getting the array name
 		// look for this output:
 		// Geom name: pouet
-		
 		if ( (strcmp($aline[0],"Geom") == 0) && (strcmp($aline[1],"name:") == 0) ) {
 			$diskname = $aline[2];
 			$disklist[$diskname]=array();
@@ -551,82 +522,67 @@ function get_gmirror_disks_list()
 		// Second Step: Getting the array status
 		// look for this output:
 		// State: COMPLETE
-		
 		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
-		
 			$desc = $aline[1];
 			$disklist[$diskname]['desc'] = $desc;
 			$founddesc=1;
 			continue ;
 		}
-		
+
 		// Third Step: Getting the array Size
 		// look for this output:
 		// Name: mirror/pouet
 		// Mediasize: 107373568 (102M)
-		
 		if (preg_match("/Name: mirror\/(.*)$/", $line, $matches)) {
 			if ($matches[1]=$diskname) {
 				$goodname=1;
 				continue ;
 			}
-		
 		}
-		
+
 		if (($aline[0] = "Mediasize:") && $goodname) {
 			// extract the size between the ( )
 			preg_match("/.*\\(([^\)]*)\).*/",$aline[3],$match);
 			$disklist[$diskname]['size'] = $match[1];
 			$disklist[$diskname]['type'] = "Software RAID - gmirror";
-			
+
 			// init the check variable for the next RAID volume
 			$foundname = 0 ;
 			$founddesc = 0 ;
 			$goodname = 0 ;
-			
+
 			continue ;
-			
 		}				
-		
 	}
-	
+
 	return $disklist;
-		
 }
 
+// Get list of software gconcat RAID disks.
+//[volumename] => Array
+//    (
+//        [type] => Software RAID - gconcat
+//        [desc] => COMPLETE
+//        [size] => 6149M
+//        [name] => concat1
+//        [fullname] => /dev/concat/concat1
+//    )
 function get_gconcat_disks_list()
 {
-	/* Get information about gconcat volume */
-	global $g;
-	
-	
-    //[volumename] => Array
-    //    (
-    //      [type] => Software RAID - gconcat
-    //      [desc] => COMPLETE
-    //      [size] => 6149M
-	// 		[name] => concat1
-	// 		[fullname] => /dev/concat/concat1
-    //    )
-    
-
-	/* Display all configured gconcat volume*/
+	/* Display all configured gconcat volume */
 	exec("/sbin/gconcat list",$rawdata);
-	
+
 	$foundname = 0 ;
 	$founddesc = 0 ;
 	$goodname = 0 ;
-	
-	foreach ($rawdata as $line) {
 
-				
+	foreach ($rawdata as $line) {
 		/* Use space for break the line */
 		$aline = preg_split("/\s+/", $line);
-		
+
 		// First Step: Getting the array name
 		// look for this output:
 		// Geom name: pouet
-		
 		if ( (strcmp($aline[0],"Geom") == 0) && (strcmp($aline[1],"name:") == 0) ) {
 			$diskname = $aline[2];
 			$disklist[$diskname]=array();
@@ -635,86 +591,71 @@ function get_gconcat_disks_list()
 			$foundname = 1 ;
 			continue ;
 		}
-		
+
 		// Second Step: Getting the array status
 		// look for this output:
 		// State: UP
-		
 		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
-		
 			$desc = $aline[1];
 			$disklist[$diskname]['desc'] = $desc;
 			$founddesc=1;
 			continue ;
 		}
-		
+
 		// Third Step: Getting the array Size
 		// look for this output:
 		// Name: concat/pouet
 		// Mediasize: 107373568 (102M)
-		
 		if (preg_match("/Name: concat\/(.*)$/", $line, $matches)) {
 			if ($matches[1]=$diskname) {
 				$goodname=1;
 				continue ;
 			}
-		
 		}
-		
+
 		if (($aline[0] = "Mediasize:") && $goodname) {
 			// extract the size between the ( )
 			preg_match("/.*\\(([^\)]*)\).*/",$aline[3],$match);
 			$disklist[$diskname]['size'] = $match[1];
 			$disklist[$diskname]['type'] = "Software RAID - gconcat";
-			
+
 			// init the check variable for the next RAID volume
 			$foundname = 0 ;
 			$founddesc = 0 ;
 			$goodname = 0 ;
-			
+
 			continue ;
-			
 		}				
-		
 	}
-	
+
 	return $disklist;
-		
 }
 
+// Get list of software gstripe RAID disks.
+//[volumename] => Array
+//    (
+//        [type] => Software RAID - gstripe
+//        [desc] => COMPLETE
+//        [size] => 6149M
+//        [name] => raid0
+//        [fullname] => /dev/stripe/raid0
+//    )
 function get_gstripe_disks_list()
 {
-	/* Get information about gstripe volume */
-	global $g;
-	
-	
-    //[volumename] => Array
-    //    (
-    //      [type] => Software RAID - gstripe
-    //      [desc] => COMPLETE
-    //      [size] => 6149M
-	//		[name] => raid0
-	//		[fullname] => /dev/stripe/raid0
-    //    )
-    
-
-	/* Display all configured gstripe volume*/
+	/* Display all configured gstripe volume */
 	exec("/sbin/gstripe list",$rawdata);
-	
+
 	$foundname = 0 ;
 	$founddesc = 0 ;
 	$goodname = 0 ;
-	
-	foreach ($rawdata as $line) {
 
-				
+	foreach ($rawdata as $line) {
 		/* Use space for break the line */
 		$aline = preg_split("/\s+/", $line);
-		
+
 		// First Step: Getting the array name
 		// look for this output:
 		// Geom name: pouet
-		
 		if ( (strcmp($aline[0],"Geom") == 0) && (strcmp($aline[1],"name:") == 0) ) {
 			$diskname = $aline[2];
 			$disklist[$diskname]=array();
@@ -723,86 +664,71 @@ function get_gstripe_disks_list()
 			$foundname = 1 ;
 			continue ;
 		}
-		
+
 		// Second Step: Getting the array status
 		// look for this output:
 		// State: UP
-		
 		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
-		
 			$desc = $aline[1];
 			$disklist[$diskname]['desc'] = $desc;
 			$founddesc=1;
 			continue ;
 		}
-		
+
 		// Third Step: Getting the array Size
 		// look for this output:
 		// Name: stripe/pouet
 		// Mediasize: 107373568 (102M)
-		
 		if (preg_match("/Name: stripe\/(.*)$/", $line, $matches)) {
 			if ($matches[1]=$diskname) {
 				$goodname=1;
 				continue ;
 			}
-		
 		}
-		
+
 		if (($aline[0] = "Mediasize:") && $goodname) {
 			// extract the size between the ( )
 			preg_match("/.*\\(([^\)]*)\).*/",$aline[3],$match);
 			$disklist[$diskname]['size'] = $match[1];
 			$disklist[$diskname]['type'] = "Software RAID - gstripe";
-			
+
 			// init the check variable for the next RAID volume
 			$foundname = 0 ;
 			$founddesc = 0 ;
 			$goodname = 0 ;
-			
+
 			continue ;
-			
 		}				
-		
 	}
-	
+
 	return $disklist;
-		
 }
 
+// Get list of software graid5 RAID disks.
+//[volumename] => Array
+//    (
+//        [type] => Software RAID - graid5
+//        [desc] => COMPLETE
+//        [size] => 6149M
+//        [name] => BIG1
+//        [fullname] => /dev/raid5/BIG1
+//    )
 function get_graid5_disks_list()
 {
-	/* Get information about graid5 volume */
-	global $g;
-	
-	
-    //[volumename] => Array
-    //    (
-    //      [type] => Software RAID - graid5
-    //      [desc] => COMPLETE
-    //      [size] => 6149M
-	//		[name] => BIG1
-	//		[fullname] => /dev/raid5/BIG1
-    //    )
-    
-
-	/* Display all configured graid5 volume*/
+	/* Display all configured graid5 volume */
 	exec("/sbin/graid5 list",$rawdata);
-	
+
 	$foundname = 0 ;
 	$founddesc = 0 ;
 	$goodname = 0 ;
-	
-	foreach ($rawdata as $line) {
 
-				
+	foreach ($rawdata as $line) {
 		/* Use space for break the line */
 		$aline = preg_split("/\s+/", $line);
-		
+
 		// First Step: Getting the array name
 		// look for this output:
 		// Geom name: pouet
-		
 		if ( (strcmp($aline[0],"Geom") == 0) && (strcmp($aline[1],"name:") == 0) ) {
 			$diskname = $aline[2];
 			$disklist[$diskname]=array();
@@ -811,51 +737,44 @@ function get_graid5_disks_list()
 			$foundname = 1 ;
 			continue ;
 		}
-		
+
 		// Second Step: Getting the array status
 		// look for this output:
 		// State: COMPLETE
-		
 		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
-		
 			$desc = $aline[1];
 			$disklist[$diskname]['desc'] = $desc;
 			$founddesc=1;
 			continue ;
 		}
-		
+
 		// Third Step: Getting the array Size
 		// look for this output:
 		// Name: raid5/pouet
 		// Mediasize: 107373568 (102M)
-		
 		if (preg_match("/Name: raid5\/(.*)$/", $line, $matches)) {
 			if ($matches[1]=$diskname) {
 				$goodname=1;
 				continue ;
 			}
-		
 		}
-		
+
 		if (($aline[0] = "Mediasize:") && $goodname) {
 			// extract the size between the ( )
 			preg_match("/.*\\(([^\)]*)\).*/",$aline[3],$match);
 			$disklist[$diskname]['size'] = $match[1];
 			$disklist[$diskname]['type'] = "Software RAID - graid5";
-			
+
 			// init the check variable for the next RAID volume
 			$foundname = 0 ;
 			$founddesc = 0 ;
 			$goodname = 0 ;
-			
+
 			continue ;
-			
 		}				
-		
 	}
-	
+
 	return $disklist;
-		
 }
 
 // Get list of ATA disks.
@@ -950,96 +869,65 @@ function get_scsi_disks_list()
 	return $disklist;
 }
 
+// Get list of hardware RAID disks.
+//[aacd0] => Array
+//    (
+//        [type] => RAID
+//        [desc] => XYZ
+//        [size] => xxxMB
+//        [name] => aacd0
+//        [fullname] => /dev/aacd0
+//    )
 function get_hraid_disks_list()
 {
 	/* Recupere la liste des disques RAID */
-	
 	$kerneldisks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 	
 	/* Recupere la liste des disques ATA et SCSI */
-	
 	$diskdetected = array_merge((array)get_ata_disks_list(),(array)get_scsi_disks_list());
-	
+
 	/* Recupere le dmesg */
 	exec("/sbin/dmesg",$rawdmesg);
-	
-	
+
 	foreach ($kerneldisks as $diskname) {
-		$allready=1;
-		
+		$allready = 1;
+
 		// Check of this entry is IDE or SCSI (allready detected)
 		foreach ($diskdetected as $diskfoundk => $diskfoundv) 	{
-			
 			if (strcasecmp($diskfoundk,$diskname) == 0)
-				$allready=0;
+				$allready = 0;
 		}
 		
 		if ($allready) 	{
-
 			/* If not an IDE and SCSI disk */
-			$disklist[$diskname]=array();
-			$disklist[$diskname]['name']=$diskname;
+			$disklist[$diskname] = array();
+			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['fullname']= "/dev/" . $diskname;
-		
 			$disklist[$diskname]['type'] = "RAID";
-			
-			/* Looking for the disk size in the dmesg */
-			foreach ($rawdmesg as $dmesgline) 		{
+
+			/* Looking for the disk description in the dmesg */
+			foreach ($rawdmesg as $dmesgline) {
 				/* Separe la ligne par les espace */
 				$dmesgtab = explode(" ", $dmesgline);
 				$dmesgtab[0] = rtrim($dmesgtab[0],":");
 				// si la ligne commence par le nom du disque: attention il y a 2 lignes
-				if ($dmesgtab[0]!="" &&(strcasecmp($dmesgtab[0],$diskname) == 0)) 	{
+				if ($dmesgtab[0]!="" &&(strcasecmp($dmesgtab[0],$diskname) == 0)) {
 					// the first line as this example "aacd0: <RAID 5> on aac0"
-					
-					if (strcasecmp(substr($dmesgtab[1], 0, 1),"<") == 0) 	{
+					if (strcasecmp(substr($dmesgtab[1], 0, 1),"<") == 0) {
 						/* Match the description witch is include between < and > */
 						preg_match("/.*\<([^>]*)>.*/",$dmesgline,$match);
 						$disklist[$diskname]['desc'] = $match[1];
 					}
-					else	{
-						// si c'est la deuxieme ligne, elle ressemble a "aacd0: 138850MB (284365824 sectors)"
-						$disklist[$diskname]['size'] = $dmesgtab[1];
-					}
-			
-				}	
+				}
 			}
+
+			/* Get diskinfo to get disk size */
+			$diskinfo = disks_get_diskinfo($diskname);
+			$disklist[$diskname]['size'] = $diskinfo['mediasize_mbytes'] . "MB";
 		}
-			
 	}
-		
-		return $disklist;
-}
 
-function get_physical_disks_list()
-{
-	/* Return list of ALL disk: physical, hardware RAID and Software RAID disk */
-	$disklist = array_merge((array)get_ata_disks_list(),(array)get_scsi_disks_list(),(array)get_hraid_disks_list());
 	return $disklist;
-
-}
-
-function get_all_disks_list()
-{
-	/* Return list of ALL disk: physical, hardware RAID and Software RAID disk */
-	$disklist = array_merge((array)get_ata_disks_list(),(array)get_scsi_disks_list(),(array)get_hraid_disks_list(), (array)get_sraid_disks_list());
-	return $disklist;
-
-}
-
-function get_disks_size($diskname)
-{
-	/* Return size of the disk */
-	$disklist=get_physical_disks_list();
-	
-	$disksize=0;
-	
-	foreach ($disklist as $diskk => $diskv) 	{
-		if (strcmp($diskk,$diskname)==0)
-			$disksize=$diskv['size'];	
-	}
-	return $disksize;
-	
 }
 
 // Get list of IDE AND SCSI CDROM.
@@ -1123,6 +1011,34 @@ function get_cdrom_list()
 	}
 
 	return $disklist;
+}
+
+/* Return list of ALL disk: physical, hardware RAID and Software RAID disk */
+function get_physical_disks_list()
+{
+	$disklist = array_merge((array)get_ata_disks_list(),(array)get_scsi_disks_list(),(array)get_hraid_disks_list());
+	return $disklist;
+}
+
+/* Return list of ALL disk: physical, hardware RAID and Software RAID disk */
+function get_all_disks_list()
+{
+	$disklist = array_merge((array)get_ata_disks_list(),(array)get_scsi_disks_list(),(array)get_hraid_disks_list(), (array)get_sraid_disks_list());
+	return $disklist;
+}
+
+/* Return size of the disk */
+function get_disks_size($diskname)
+{
+	$disklist = get_physical_disks_list();
+	$disksize = 0;
+
+	foreach ($disklist as $diskk => $diskv) {
+		if (strcmp($diskk,$diskname)==0)
+			$disksize=$diskv['size'];	
+	}
+
+	return $disksize;
 }
 
 /* wrapper for exec() */
