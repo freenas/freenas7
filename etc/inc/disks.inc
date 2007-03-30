@@ -1392,7 +1392,7 @@ function disks_get_diskinfo($disk)
 	$result[name] = chop($diskinfo[0]);
 	$result[sectorsize] = chop($diskinfo[1]);
 	$result[mediasize_bytes] = chop($diskinfo[2]);
-	$result[mediasize_mbytes] = intval(chop($diskinfo[2]) / 1024 / 1024);
+	$result[mediasize_mbytes] = ceil(chop($diskinfo[2]) / 1024 / 1024);
 	$result[mediasize_sectors] = chop($diskinfo[3]);
 	$result[cylinders] = chop($diskinfo[4]);
 	$result[heads] = chop($diskinfo[5]);
