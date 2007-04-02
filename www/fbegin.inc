@@ -11,6 +11,80 @@ function genhtmltitle($title) {
 	global $config;
 	return $config['system']['hostname'] . "." . $config['system']['domain'] . " - " . gentitle($title);
 }
+
+// Menu items.
+$menu['system']['desc'] = "System";
+$menu['system']['menuitem'] = array();
+$menu['system']['menuitem'][] = array("desc" => "General setup", "link" => "system.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "Static routes", "link" => "system_routes.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "Hosts", "link" => "system_hosts.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "Advanced", "link" => "system_advanced.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "Firmware", "link" => "system_firmware.php", "visible" => true); 
+
+$menu['disks']['desc'] = "Disks";
+$menu['disks']['menuitem'] = array();
+$menu['disks']['menuitem'][] = array("desc" => "Management", "link" => "disks_manage.php", "visible" => true);
+$menu['disks']['menuitem'][] = array("desc" => "Software RAID", "link" => "disks_raid_gmirror.php", "visible" => true);
+$menu['disks']['menuitem'][] = array("desc" => "Encryption", "link" => "disks_crypt.php", "visible" => true);
+$menu['disks']['menuitem'][] = array("desc" => "Format", "link" => "disks_init.php", "visible" => true);
+$menu['disks']['menuitem'][] = array("desc" => "Mount Point", "link" => "disks_mount.php", "visible" => true);
+
+$menu['services']['desc'] = "Services";
+$menu['services']['menuitem'] = array();
+$menu['services']['menuitem'][] = array("desc" => "CIFS", "link" => "services_samba.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => "FTP", "link" => "services_ftp.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => "SSHD", "link" => "services_sshd.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => "NFS", "link" => "services_nfs.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => "AFP", "link" => "services_afp.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => "RSYNCD", "link" => "services_rsyncd.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => "Unison", "link" => "services_unison.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => "iSCSI Target", "link" => "services_iscsitarget.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => "UPnP", "link" => "services_upnp.php", "visible" => true);
+
+$menu['access']['desc'] = "Access";
+$menu['access']['menuitem'] = array();
+$menu['access']['menuitem'][] = array("desc" => "Users and Groups", "link" => "access_users.php", "visible" => true);
+$menu['access']['menuitem'][] = array("desc" => "Active Directory", "link" => "access_ad.php", "visible" => true);
+$menu['access']['menuitem'][] = array("desc" => "LDAP", "link" => "access_ldap.php", "visible" => true);
+$menu['access']['menuitem'][] = array("desc" => "NIS", "link" => "notavailable.php", "visible" => false);
+
+$menu['status']['desc'] = "Status";
+$menu['status']['menuitem'] = array();
+$menu['status']['menuitem'][] = array("desc" => "System", "link" => "index.php", "visible" => true);
+$menu['status']['menuitem'][] = array("desc" => "Process", "link" => "status_process.php", "visible" => true);
+$menu['status']['menuitem'][] = array("desc" => "Interfaces", "link" => "status_interfaces.php", "visible" => true);
+$menu['status']['menuitem'][] = array("desc" => "Disks", "link" => "status_disks.php", "visible" => true);
+$menu['status']['menuitem'][] = array("desc" => "Wireless", "link" => "status_wireless.php", "visible" => true);
+$menu['status']['menuitem'][] = array("desc" => "Graph", "link" => "status_graph.php", "visible" => true);
+
+$menu['diagnostics']['desc'] = "Diagnostics";
+$menu['diagnostics']['menuitem'] = array();
+$menu['diagnostics']['menuitem'][] = array("desc" => "Logs", "link" => "diag_logs.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => "Information", "link" => "diag_infos.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => "Ping/Traceroute", "link" => "diag_ping.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => "ARP table", "link" => "diag_arp.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => "Command", "link" => "exec.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => "Edit File", "link" => "diag_edit.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => "Backup/Restore", "link" => "diag_backup.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => "Factory defaults", "link" => "diag_defaults.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => "Reboot system", "link" => "reboot.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => "Shutdown system", "link" => "shutdown.php", "visible" => true);
+
+function display_menu($menu, $display_title = true) {
+	# Display menu section description.
+	if ($display_title) {	
+		echo "<strong>".gettext($menu['desc'])."</strong><br>";
+	}
+	# Display menu items.
+	foreach ($menu['menuitem'] as $menuk => $menuv) {
+		# Is menu item visible?
+		if (!$menuv['visible']) {
+			continue;
+		}
+		# Display menuitem.
+		echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=\"/".$menuv['link']."\" class=\"navlnk\">".gettext($menuv['desc'])."</a><br>";
+	}
+}
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -72,12 +146,7 @@ function showhide(tspan, tri) {
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
         <tr>
           <td><span class="navlnk"><font color="#FFFFFF">
-						<strong><?=gettext("System");?></strong><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system.php" class="navlnk"><?=gettext("General setup");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_routes.php" class="navlnk"><?=gettext("Static routes");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_hosts.php" class="navlnk"><?=gettext("Hosts");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_advanced.php" class="navlnk"><?=gettext("Advanced");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/system_firmware.php" class="navlnk"><?=gettext("Firmware");?></a><br>
+						<?=display_menu($menu['system']);?>
             <strong><?=gettext("Interfaces");?></strong>
 					  <?php if (!isset($config['system']['webgui']['noassigninterfaces'])): ?>
 					  <a href="/interfaces_assign.php" class="navlnks">(<?=gettext("Assign");?>)</a>
@@ -87,34 +156,10 @@ function showhide(tspan, tri) {
             <?php for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++): ?>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/interfaces_opt.php?index=<?=$i;?>" class="navlnk"><?=htmlspecialchars($config['interfaces']['opt' . $i]['descr']);?></a><br>
 		  			<?php endfor; ?>
-            <strong><?=gettext("Disks");?></strong><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_manage.php" class="navlnk"><?=gettext("Management");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_raid_gmirror.php" class="navlnk"><?=gettext("Software RAID");?></a> <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_crypt.php" class="navlnk"><?=gettext("Encryption");?></a><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_init.php" class="navlnk"><?=gettext("Format");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/disks_mount.php" class="navlnk"><?=gettext("Mount Point");?></a><br>
-            <strong><?=gettext("Services");?></strong><br>
-		  			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_samba.php" class="navlnk"><?=gettext("CIFS");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_ftp.php" class="navlnk"><?=gettext("FTP");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_nfs.php" class="navlnk"><?=gettext("NFS");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_rsyncd.php" class="navlnk"><?=gettext("RSYNCD");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_sshd.php" class="navlnk"><?=gettext("SSHD");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_unison.php" class="navlnk"><?=gettext("Unison");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_afp.php" class="navlnk"><?=gettext("AFP");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_upnp.php" class="navlnk"><?=gettext("UPnP");?></a><br>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/services_iscsitarget.php" class="navlnk"><?=gettext("iSCSI Target");?></a><br>
-            <strong><?=gettext("Access");?></strong><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_users.php" class="navlnk"><?=gettext("Users and Groups");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_ad.php" class="navlnk"><?=gettext("Active Directory");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/access_ldap.php" class="navlnk"><?=gettext("LDAP");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/notavailable.php" class="navlnk"><?=gettext("NIS");?></a><br>
-            <strong><?=gettext("Status");?></strong><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/index.php" class="navlnk"><?=gettext("System");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_process.php" class="navlnk"><?=gettext("Process");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_interfaces.php" class="navlnk"><?=gettext("Interfaces");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_disks.php" class="navlnk"><?=gettext("Disks");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_wireless.php" class="navlnk"><?=gettext("Wireless");?></a><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/status_graph.php" class="navlnk"><?=gettext("Graph");?></a><br>
+						<?=display_menu($menu['disks']);?>
+						<?=display_menu($menu['services']);?>
+						<?=display_menu($menu['access']);?>
+						<?=display_menu($menu['status']);?>
 						<?php
 						/* extensions section */
 						if (is_dir("{$g['www_path']}/ext")):
@@ -139,16 +184,7 @@ function showhide(tspan, tri) {
 					  <a href="javascript:showhide('diag','tri_diag')"><img src="/tri_c.gif" id="tri_diag" width="14" height="10" border="0"></a><strong><a href="javascript:showhide('diag','tri_diag')" class="navlnk"><?=gettext("Diagnostics");?></a></strong><br>
 					  <span id="diag" style="display: none">
 					  <?php endif; ?>
-						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_logs.php" class="navlnk"><?=gettext("Logs");?></a><br>
-						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_infos.php" class="navlnk"><?=gettext("Information");?></a><br>
-						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_ping.php" class="navlnk"><?=gettext("Ping/Traceroute");?></a><br>
-						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_arp.php" class="navlnk"><?=gettext("ARP table");?></a><br>
-						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/exec.php" class="navlnk"><?=gettext("Command");?></a><br>
-						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_edit.php" class="navlnk"><?=gettext("Edit File");?></a><br>
-						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_backup.php" class="navlnk"><?=gettext("Backup/Restore");?></a><br>
-						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/diag_defaults.php" class="navlnk"><?=gettext("Factory defaults");?></a><br>
-						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/reboot.php" class="navlnk"><?=gettext("Reboot system");?></a>
-						  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/shutdown.php" class="navlnk"><?=gettext("Shutdown system");?></a>
+							<?=display_menu($menu['diagnostics'], false);?>
 			  		</span>
 			  	</font></span></td>
         </tr>
