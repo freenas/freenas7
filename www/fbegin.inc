@@ -26,7 +26,7 @@ $menu['system']['menuitem'][] = array("desc" => "Firmware", "link" => "system_fi
 $menu['interfaces']['desc'] = "Interfaces";
 $menu['interfaces']['menuitem'] = array();
 if (!isset($config['system']['webgui']['noassigninterfaces'])) {
-	$menu['interfaces']['menuitem'][] = array("desc" => "Assign", "link" => "interfaces_assign.php", "visible" => true);
+	$menu['interfaces']['menuitem'][] = array("desc" => "Management", "link" => "interfaces_assign.php", "visible" => true);
 }
 $menu['interfaces']['menuitem'][] = array("desc" => "LAN", "link" => "interfaces_lan.php", "visible" => true);
 for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {

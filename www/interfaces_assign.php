@@ -32,7 +32,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Interfaces"), gettext("Assign network ports"));
+$pgtitle = array(gettext("Interfaces"), gettext("Management"));
 
 /*
 	In this file, "port" refers to the physical port name,
@@ -42,12 +42,8 @@ $pgtitle = array(gettext("Interfaces"), gettext("Assign network ports"));
 /* get list without VLAN interfaces */
 $portlist = get_interface_list();
 
-
 if ($_POST) {
-
 	unset($input_errors);
-
-	/* input validation */
 
 	/* Build a list of the port names so we can see how the interfaces map */
 	$portifmap = array();
@@ -75,13 +71,10 @@ if ($_POST) {
 		}
 	}
 
-
 	if (!$input_errors) {
 		/* No errors detected, so update the config */
 		foreach ($_POST as $ifname => $ifport) {
-		
 			if (($ifname == 'lan') || (substr($ifname, 0, 3) == 'opt')) {
-				
 				if (!is_array($ifport)) {
 					$config['interfaces'][$ifname]['if'] = $ifport;
 					
@@ -92,7 +85,7 @@ if ($_POST) {
 					} else {
 						unset($config['interfaces'][$ifname]['wireless']);
 					}
-					
+
 					/* make sure there is a name for OPTn */
 					if (substr($ifname, 0, 3) == 'opt') {
 						if (!isset($config['interfaces'][$ifname]['descr']))
@@ -101,7 +94,7 @@ if ($_POST) {
 				}
 			}
 		}
-	
+
 		write_config();
 		touch($d_sysrebootreqd_path);
 	}
@@ -166,69 +159,71 @@ if ($_GET['act'] == "add") {
 	header("Location: interfaces_assign.php");
 	exit;
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0)); ?>
 <form action="interfaces_assign.php" method="post" name="iform" id="iform">
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr> 
-    <td class="tabcont">
-                    <table border="0" cellpadding="0" cellspacing="0">
-                      <tr> 
-	<td class="listhdrr"><?=gettext("Interface"); ?></td>
-	<td class="listhdr"><?=gettext("Network port"); ?></td>
-	<td class="list">&nbsp;</td>
-  </tr>
-  <?php foreach ($config['interfaces'] as $ifname => $iface):
-	if ($iface['descr'])
-		$ifdescr = $iface['descr'];
-	else
-		$ifdescr = strtoupper($ifname);
-	?>
-  <tr> 
-	<td class="listlr" valign="middle"><strong><?=$ifdescr;?></strong></td>
-	  <td valign="middle" class="listr">
-		<select name="<?=$ifname;?>" class="formfld" id="<?=$ifname;?>">
-		  <?php foreach ($portlist as $portname => $portinfo): ?>
-		  <option value="<?=$portname;?>" <?php if ($portname == $iface['if']) echo "selected";?>> 
-		  <?php if ($portinfo['isvlan']) {
-		  			$descr = "VLAN {$portinfo['tag']} on {$portinfo['if']}";
-					if ($portinfo['descr'])
-						$descr .= " (" . $portinfo['descr'] . ")";
-					echo htmlspecialchars($descr);
-				  } else
-					echo htmlspecialchars($portname . " (" . $portinfo['mac'] . ")");
-		  ?>
-		  </option>
-		  <?php endforeach; ?>
-		</select>
-		</td>
-		<td valign="middle" class="list"> 
-		  <?php if (($ifname != 'lan') && ($ifname != 'wan')): ?>
-		  <a href="interfaces_assign.php?act=del&id=<?=$ifname;?>"><img src="x.gif" title="<?=gettext("Delete interface"); ?>" width="17" height="17" border="0"></a> 
-		  <?php endif; ?>
-		</td>
-  </tr>
-  <?php endforeach; ?>
-  <?php if (count($config['interfaces']) < count($portlist)): ?>
-  <tr>
-	<td class="list" colspan="2"></td>
-	<td class="list" nowrap>
-	<a href="interfaces_assign.php?act=add"><img src="plus.gif" title="<?=gettext("Add interface"); ?>" width="17" height="17" border="0"></a>
-	</td>
-  </tr>
-  <?php else: ?>
-  <tr>
-	<td class="list" colspan="3" height="10"></td>
-  </tr>
-  <?php endif; ?>
-</table>
-  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"><br><br>
-<p><span class="vexpl"><strong><span class="red"><?=gettext("Warning"); ?>:</span><br>
-</strong><?php echo sprintf(gettext("After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"), get_product_name());?></td>
-	</tr>
-</table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr> 
+	    <td class="tabcont">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr> 
+						<td class="listhdrr"><?=gettext("Interface"); ?></td>
+						<td class="listhdr"><?=gettext("Network port"); ?></td>
+						<td class="list">&nbsp;</td>
+					</tr>
+					<?php foreach ($config['interfaces'] as $ifname => $iface):
+					if ($iface['descr'])
+						$ifdescr = $iface['descr'];
+					else
+						$ifdescr = strtoupper($ifname);
+					?>
+					<tr> 
+						<td class="listlr" valign="middle"><strong><?=$ifdescr;?></strong></td>
+					  <td valign="middle" class="listr">
+							<select name="<?=$ifname;?>" class="formfld" id="<?=$ifname;?>">
+							  <?php foreach ($portlist as $portname => $portinfo): ?>
+							  <option value="<?=$portname;?>" <?php if ($portname == $iface['if']) echo "selected";?>> 
+							  <?php if ($portinfo['isvlan']) {
+							  			$descr = "VLAN {$portinfo['tag']} on {$portinfo['if']}";
+										if ($portinfo['descr'])
+											$descr .= " (" . $portinfo['descr'] . ")";
+										echo htmlspecialchars($descr);
+									  } else
+										echo htmlspecialchars($portname . " (" . $portinfo['mac'] . ")");
+							  ?>
+							  </option>
+							  <?php endforeach; ?>
+							</select>
+						</td>
+						<td valign="middle" class="list"> 
+							<?php if (($ifname != 'lan') && ($ifname != 'wan')): ?>
+							<a href="interfaces_assign.php?act=del&id=<?=$ifname;?>"><img src="x.gif" title="<?=gettext("Delete interface"); ?>" width="17" height="17" border="0"></a> 
+							<?php endif; ?>
+						</td>
+					</tr>
+				  <?php endforeach; ?>
+				  <?php if (count($config['interfaces']) < count($portlist)): ?>
+				  <tr>
+						<td class="list" colspan="2"></td>
+						<td class="list" nowrap>
+							<a href="interfaces_assign.php?act=add"><img src="plus.gif" title="<?=gettext("Add interface"); ?>" width="17" height="17" border="0"></a>
+						</td>
+				  </tr>
+				  <?php else: ?>
+				  <tr>
+					<td class="list" colspan="3" height="10"></td>
+				  </tr>
+				  <?php endif; ?>
+				</table>
+				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"><br><br>
+				<span class="vexpl">
+					<span class="red"><strong><?=gettext("Warning"); ?>:</strong></span><br>
+					<?php echo sprintf(gettext("After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"), get_product_name());?>
+				</span>
+			</td>
+		</tr>
+	</table>
 </form>
 <?php include("fend.inc"); ?>
