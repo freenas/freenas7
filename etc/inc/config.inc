@@ -674,6 +674,38 @@ function convert_config()
 
 		$config['version'] = "1.7";
 	}
+	
+	/* Convert 1.7 -> 1.8 */
+	/* Bug Fix: Forget to confert old fstype value with new one */
+	/* Create bug "You must add disks first" with older configured disk */
+	/* - Change ['fstype']='gmirror' to 'softraid' */
+	/* - Change ['fstype']='gconcat' to 'softraid' */
+	/* - Change ['fstype']='gstripe' to 'softraid' */
+	/* - Change ['fstype']='graid5' to 'softraid' */
+	
+	if ($config['version'] == "1.7") {
+	
+		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
+			if (isset($config['disks']['disk'][$i]['name'])) 	{
+				switch ($config['disks']['disk'][$i]['fstype']) {
+				case "gmirror":
+					$config['disks']['disk'][$i]['fstype']="softraid";
+					break;
+				case "gconcat":
+					$config['disks']['disk'][$i]['fstype']="softraid";
+					break;
+				case "gstripe":
+					$config['disks']['disk'][$i]['fstype']="softraid";
+					break;
+				case "graid5":
+					$config['disks']['disk'][$i]['fstype']="softraid";
+					break;
+				}
+			}
+		}
+
+		$config['version'] = "1.8";
+	}
 
 	write_config();
 	

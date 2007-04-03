@@ -79,6 +79,7 @@ Bug fixs:
 - Add missing winbind/smbpass pam modules.
 - French accent are correclty displayed now.
 - Fix script error in rc.shutdown when pressing Ctrl+halt+del key.
+- Fix the ""You must add disks first" message with older software RAID formatted disk 
 
 FreeNAS 0.684b :
 
