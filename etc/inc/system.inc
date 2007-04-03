@@ -747,10 +747,10 @@ function system_beep_up()
 	/* Test if beep is enabled and send sound */
 	if (!isset($config['system']['disablebeep'])) {
 		//mwexec('echo O3L30cO4L30cO5L30cO5L30g > /dev/speaker');
-		mwexec("/usr/local/bin/beep -p 500 75");
-		mwexec("/usr/local/bin/beep -p 1000 75");
-		mwexec("/usr/local/bin/beep -p 2000 75");
-		mwexec("/usr/local/bin/beep -p 3000 75");
+		mwexec("/usr/local/bin/beep -p 500 5");
+		mwexec("/usr/local/bin/beep -p 1000 5");
+		mwexec("/usr/local/bin/beep -p 2000 5");
+		mwexec("/usr/local/bin/beep -p 3000 5");
 	}
 
 	return 0;
@@ -763,10 +763,10 @@ function system_beep_down()
 	/* Test if beep is enabled and send sound */
 	if (!isset($config['system']['disablebeep'])) {
 		//mwexec('echo O5L30gO5L30cO4L30cO3L30c > /dev/speaker');
-		mwexec("/usr/local/bin/beep -p 3000 75");
-		mwexec("/usr/local/bin/beep -p 2000 75");
-		mwexec("/usr/local/bin/beep -p 1000 75");
-		mwexec("/usr/local/bin/beep -p 500 75");
+		mwexec("/usr/local/bin/beep -p 3000 5");
+		mwexec("/usr/local/bin/beep -p 2000 5");
+		mwexec("/usr/local/bin/beep -p 1000 5");
+		mwexec("/usr/local/bin/beep -p 500 5");
 	}
 
 	return 0;
