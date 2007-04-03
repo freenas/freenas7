@@ -39,6 +39,11 @@ do-install:
 	@${CP} -pv $(SRCDIR)/source/bin/recycle.so $(FREENAS)/usr/local/samba/lib/vfs
 	@${CP} -pv $(SRCDIR)/source/bin/rid.so $(FREENAS)/usr/local/samba/lib/idmap
 
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/pam_smbpass.so $(FREENAS)/usr/local/lib
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/pam_winbind.so $(FREENAS)/usr/local/lib
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/nsswitch/nss_winbind.so $(FREENAS)/usr/local/lib/nss_winbind.so.1
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/nsswitch/nss_wins.so $(FREENAS)/usr/local/lib/nss_wins.so.1
+
 do-clean:
 	@${RM} -f -r $(SRCDIR)
 
