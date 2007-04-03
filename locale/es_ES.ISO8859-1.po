@@ -1080,8 +1080,8 @@ msgstr "Recycle Bin"
 msgid "Enable Recycle bin"
 msgstr "Enable Recycle bin"
 
-msgid "This will create a recycle bin on the CIFS shares"
-msgstr "This will create a recycle bin on the CIFS shares"
+msgid "This will create a recycle bin on the CIFS shares."
+msgstr "This will create a recycle bin on the CIFS shares."
 
 msgid "Send Buffer Size"
 msgstr "Send Buffer Size"

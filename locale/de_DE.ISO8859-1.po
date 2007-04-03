@@ -1188,7 +1188,7 @@ msgstr "Abfalleimer"
 msgid "Enable Recycle bin"
 msgstr "Abfalleimer aktivieren"
 
-msgid "This will create a recycle bin on the CIFS shares"
+msgid "This will create a recycle bin on the CIFS shares."
 msgstr "Richtet einen Abfalleimer auf den CIFS-Freigaben ein."
 
 msgid "Send Buffer Size"

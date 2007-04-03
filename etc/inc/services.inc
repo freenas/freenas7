@@ -190,7 +190,6 @@ disable spoolss = Yes
 #Test: Try to improve samba performance under FreeBSD:
 use sendfile = yes
 strict locking = no
-large readwrite = no
 #End of performance section
 log level = {$config['samba']['loglevel']}
 dos charset = {$config['samba']['doscharset']}
@@ -286,6 +285,13 @@ recycle:versions = Yes
 EOD;
 				}
 			}
+
+		if (!isset($config['samba']['largereadwrite'])) {
+			$sambaconf .= <<<EOD
+large readwrite = no
+
+EOD;
+		}
 
 		fwrite($fd, $sambaconf);
 		fclose($fd);

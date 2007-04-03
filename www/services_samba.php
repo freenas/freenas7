@@ -60,6 +60,7 @@ $pconfig['sndbuf'] = $config['samba']['sndbuf'];
 $pconfig['rcvbuf'] = $config['samba']['rcvbuf'];
 $pconfig['enable'] = isset($config['samba']['enable']);
 $pconfig['recyclebin'] = isset($config['samba']['recyclebin']);
+$pconfig['largereadwrite'] = isset($config['samba']['largereadwrite']);
 
 if ($_POST)
 {
@@ -106,6 +107,7 @@ if ($_POST)
 		$config['samba']['sndbuf'] = $_POST['sndbuf'];
 		$config['samba']['rcvbuf'] = $_POST['rcvbuf'];
 		$config['samba']['recyclebin'] = $_POST['recyclebin'] ? true : false;
+		$config['samba']['largereadwrite'] = $_POST['largereadwrite'] ? true : false;
 		$config['samba']['enable'] = $_POST['enable'] ? true : false;
 
 		write_config();
@@ -142,6 +144,7 @@ function enable_change(enable_change) {
 	document.iform.rcvbuf.disabled = endis;
 	document.iform.recyclebin.disabled = endis;
 	document.iform.security.disabled = endis;
+	document.iform.largereadwrite.disabled = endis;
 }
 //-->
 </script>
@@ -283,7 +286,7 @@ function enable_change(enable_change) {
             <td width="78%" class="vtable">
               <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked"; ?>>
               <?=gettext("Enable Recycle bin");?><span class="vexpl"><br>
-              <?=gettext("This will create a recycle bin on the CIFS shares");?></span>
+              <?=gettext("This will create a recycle bin on the CIFS shares.");?></span>
             </td>
           </tr>
 	        <tr>
@@ -300,6 +303,14 @@ function enable_change(enable_change) {
               <br><?=gettext("Size of receive buffer (16384 by default).") ; ?>
             </td>
   				</tr>
+  				<tr>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Large read/write");?></td>
+            <td width="78%" class="vtable">
+              <input name="largereadwrite" type="checkbox" id="largereadwrite" value="yes" <?php if ($pconfig['largereadwrite']) echo "checked"; ?>>
+              <?=gettext("Enable large read/write");?><span class="vexpl"><br>
+              <?=gettext("Use the new 64k streaming read and write varient SMB requests.");?></span>
+            </td>
+          </tr>
   				<tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%">

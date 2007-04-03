@@ -72,6 +72,9 @@ from scretch. After that use one of the following menus:
 
 FreeNAS 0.685b:
 
+Minors changes:
+- Add checkbox to enable/disable 'large readwrite' support on CIFS page.
+
 Bug fixs:
 - Add missing winbind/smbpass pam modules.
 - French accent are correclty displayed now.

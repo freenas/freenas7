@@ -1176,8 +1176,8 @@ msgstr "Recycle Bin"
 msgid "Enable Recycle bin"
 msgstr "Activare Recycle Bin"
 
-msgid "This will create a recycle bin on the CIFS shares"
-msgstr "Va fi creat un Recycle Bin in partajarea de tip CIFS"
+msgid "This will create a recycle bin on the CIFS shares."
+msgstr "Va fi creat un Recycle Bin in partajarea de tip CIFS."
 
 msgid "Send Buffer Size"
 msgstr "Marime Buffer Iesire"

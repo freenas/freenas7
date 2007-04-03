@@ -1151,8 +1151,8 @@ msgstr "Prullenmand"
 msgid "Enable Recycle bin"
 msgstr "Prullenmand activeren"
 
-msgid "This will create a recycle bin on the CIFS shares"
-msgstr "Dit maakt een prullenmand aan op de de CIFS gedeelde mappen"
+msgid "This will create a recycle bin on the CIFS shares."
+msgstr "Dit maakt een prullenmand aan op de de CIFS gedeelde mappen."
 
 msgid "Send Buffer Size"
 msgstr "Grootte van de zendbuffer"

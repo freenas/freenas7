@@ -1167,8 +1167,8 @@ msgstr "Cestino"
 msgid "Enable Recycle bin"
 msgstr "Abilita Cestino"
 
-msgid "This will create a recycle bin on the CIFS shares"
-msgstr "Verr&agrave; creato un Cestino nelle condivisioni CIFS"
+msgid "This will create a recycle bin on the CIFS shares."
+msgstr "Verr&agrave; creato un Cestino nelle condivisioni CIFS."
 
 msgid "Send Buffer Size"
 msgstr "Dimensione Buffer Invio"

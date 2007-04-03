@@ -1579,8 +1579,8 @@ msgid "Enable Recycle bin"
 msgstr "Activer la corbeille"
 
 
-msgid "This will create a recycle bin on the CIFS shares"
-msgstr "Ceci crééra une corbeille pour les partages CIFS"
+msgid "This will create a recycle bin on the CIFS shares."
+msgstr "Ceci crééra une corbeille pour les partages CIFS."
 
 
 msgid "Send Buffer Size"

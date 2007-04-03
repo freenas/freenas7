@@ -1188,7 +1188,7 @@ msgstr "Корзина"
 msgid "Enable Recycle bin"
 msgstr "Включить корзину"
 
-msgid "This will create a recycle bin on the CIFS shares"
+msgid "This will create a recycle bin on the CIFS shares."
 msgstr "Это создасть корзину на общих ресурсах CIFS"
 
 msgid "Send Buffer Size"

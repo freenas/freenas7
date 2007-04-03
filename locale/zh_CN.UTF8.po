@@ -1217,7 +1217,7 @@ msgstr "资源回收桶"
 msgid "Enable Recycle bin"
 msgstr "开啟资源回收桶"
 
-msgid "This will create a recycle bin on the CIFS shares"
+msgid "This will create a recycle bin on the CIFS shares."
 msgstr "开啟资源回收筒的功能，可救回刪除之档案。"
 
 msgid "Send Buffer Size"

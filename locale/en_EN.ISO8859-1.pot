@@ -1188,7 +1188,7 @@ msgstr ""
 msgid "Enable Recycle bin"
 msgstr ""
 
-msgid "This will create a recycle bin on the CIFS shares"
+msgid "This will create a recycle bin on the CIFS shares."
 msgstr ""
 
 msgid "Send Buffer Size"
@@ -2338,4 +2338,13 @@ msgid "Execute command pre or post system initialization (booting)."
 msgstr ""
 
 msgid "Startup"
+msgstr ""
+
+msgid "Large read/write"
+msgstr ""
+
+msgid "Enable large read/write"
+msgstr ""
+
+msgid "Use the new 64k streaming read and write varient SMB requests."
 msgstr ""

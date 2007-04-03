@@ -1179,7 +1179,7 @@ msgstr "ごみ箱"
 msgid "Enable Recycle bin"
 msgstr "ごみ箱を有効にする"
 
-msgid "This will create a recycle bin on the CIFS shares"
+msgid "This will create a recycle bin on the CIFS shares."
 msgstr "CIFS 共有上にごみ箱を作成します"
 
 msgid "Send Buffer Size"
