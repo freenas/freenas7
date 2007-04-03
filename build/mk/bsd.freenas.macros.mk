@@ -21,6 +21,7 @@ EXPR?=	/bin/expr
 FALSE?=	false	# Shell builtin
 FETCH_CMD?=	/usr/bin/fetch -ApRr
 GCC?=	/usr/bin/gcc
+GMAKE?=	gmake
 GREP?=	/usr/bin/grep
 INSTALL?=	/usr/bin/install
 INSTALL_DATA?=	${INSTALL} -v
