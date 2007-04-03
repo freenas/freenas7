@@ -74,6 +74,8 @@ FreeNAS 0.685b:
 
 Bug fixs:
 - Add missing winbind/smbpass pam modules.
+- French accent are correclty displayed now.
+- Fix script error in rc.shutdown when pressing Ctrl+halt+del key.
 
 FreeNAS 0.684b :
 
