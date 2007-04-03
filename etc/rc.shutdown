@@ -23,4 +23,5 @@ export HOME PATH
 
 /etc/rc.systemhalt
 
+echo
 exit 0

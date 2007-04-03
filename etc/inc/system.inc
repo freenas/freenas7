@@ -1472,10 +1472,12 @@ function system_language_load()
 	$language = $config['system']['language'];
 	$locale = $g_languages[$language];
 	$domain = strtolower( get_product_name());
+	$codeset = ltrim(strstr($locale,"."),".");
 
 	putenv( "LANG=$locale");
 	setlocale( LC_MESSAGES, $locale);
 	bindtextdomain( $domain, "/usr/local/share/locale");
+	bind_textdomain_codeset( $domain, $codeset);
 	textdomain( $domain);
 }
 
