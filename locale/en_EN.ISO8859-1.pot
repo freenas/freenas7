@@ -2346,5 +2346,5 @@ msgstr ""
 msgid "Enable large read/write"
 msgstr ""
 
-msgid "Use the new 64k streaming read and write varient SMB requests."
+msgid "Use the new 64k streaming read and write variant SMB requests."
 msgstr ""

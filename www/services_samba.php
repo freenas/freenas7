@@ -308,7 +308,7 @@ function enable_change(enable_change) {
             <td width="78%" class="vtable">
               <input name="largereadwrite" type="checkbox" id="largereadwrite" value="yes" <?php if ($pconfig['largereadwrite']) echo "checked"; ?>>
               <?=gettext("Enable large read/write");?><span class="vexpl"><br>
-              <?=gettext("Use the new 64k streaming read and write varient SMB requests.");?></span>
+              <?=gettext("Use the new 64k streaming read and write variant SMB requests.");?></span>
             </td>
           </tr>
   				<tr>
