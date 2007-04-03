@@ -72,6 +72,8 @@ from scretch. After that use one of the following menus:
 
 FreeNAS 0.685b:
 
+Bug fixs:
+- Add missing winbind/smbpass pam modules.
 
 FreeNAS 0.684b :
 
