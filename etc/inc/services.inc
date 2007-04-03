@@ -1654,15 +1654,15 @@ function services_mdnsresponder_configure()
 
 {$config['system']['hostname']} WebAdmin
 _https._tcp local.
-{$config['system']['webgui']['port']}
 
+{$config['system']['webgui']['port']}
 EOD;
 			} else 	{
 			$mDNSResponder = <<<EOD
 {$config['system']['hostname']} WebAdmin
 _https._tcp local.
+
 443
-	
 EOD;
 			}
 			// if WebGUI don't use HTTPS then:
@@ -1671,15 +1671,15 @@ EOD;
 					$mDNSResponder = <<<EOD
 {$config['system']['hostname']} WebAdmin
 _http._tcp local.
-{$config['system']['webgui']['port']}
 
+{$config['system']['webgui']['port']}
 EOD;
 				} 	else 	{
 					$mDNSResponder = <<<EOD
 {$config['system']['hostname']} WebAdmin
 _http._tcp local.
-80
 
+80
 EOD;
 				}
 			}
@@ -1690,8 +1690,8 @@ EOD;
 
 {$config['system']['hostname']} AFP Server
 _afpovertcp._tcp local.
-548
 
+548
 EOD;
 		}
 
@@ -1701,8 +1701,8 @@ EOD;
 
 {$config['system']['hostname']} RSYNC Server
 _rsync._tcp. local.
-{$config['rsyncd']['port']}
 
+{$config['rsyncd']['port']}
 EOD;
 		}
 
@@ -1712,8 +1712,8 @@ EOD;
 
 {$config['system']['hostname']} SSH Server
 _ssh._tcp local.
-{$config['sshd']['port']}
 
+{$config['sshd']['port']}
 EOD;
 		}
 
@@ -1723,8 +1723,8 @@ EOD;
 
 {$config['system']['hostname']} FTP Server
 _ftp._tcp local.
-{$config['ftp']['port']}
 
+{$config['ftp']['port']}
 EOD;
 		}
 
@@ -1734,8 +1734,8 @@ EOD;
 
 {$config['system']['hostname']} Samba Server
 _smb._tcp local.	
-139
 
+139
 EOD;
 		}
 
@@ -1753,8 +1753,8 @@ EOD;
 
 {$config['system']['hostname']} NFS: {$mount['sharename']}
 _nfs._tcp local.
-2049 path=/mnt/{$mount['sharename']}
-
+path=/mnt/{$mount['sharename']}
+2049
 EOD;
 			}
 		}
