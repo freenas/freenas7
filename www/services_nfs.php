@@ -51,22 +51,15 @@ $pconfig['nfsnetworks'] = $config['nfs']['nfsnetworks'];
 
 if ($_POST) {
 	unset($input_errors);
+
 	$pconfig = $_POST;
 	$pconfig['nfsnetworks'] = $config['nfs']['nfsnetworks'];
 
 	/* input validation */
-	$reqdfields = array();
-	$reqdfieldsn = array();
-
-  /* if ($_POST['enable']) {
-    $reqdfields = array_merge($reqdfields, explode(" ", "network network_subnet"));
-    $reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Authorised network"),gettext("Subnet bit count")));
-  } */
-
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
-	if(0 == count($pconfig['nfsnetworks']))
+	if($_POST['enable']) {
+		if(0 == count($pconfig['nfsnetworks']))
 			$input_errors[] = gettext("No networks declared.");
+	}
 
 	if (!$input_errors) {
 		$config['nfs']['enable'] = $_POST['enable'] ? true : false;
@@ -87,7 +80,6 @@ if ($_POST) {
 			if(file_exists($d_nfsconfdirty_path))
 				unlink($d_nfsconfdirty_path);
 		}
-		
 	}
 }
 
@@ -150,9 +142,9 @@ function enable_change(enable_change) {
             <td width="90%" class="listhdrr"><?=gettext("Networks");?></td>
             <td width="10%" class="list"></td>
           </tr>
-					<?php $i = 0; foreach($pconfig['nfsnetworks'] as $contentv): ?>
+					<?php $i = 0; foreach($pconfig['nfsnetworks'] as $nfsnetworksv): ?>
 					<tr>
-						<td class="listlr"><?=htmlspecialchars($contentv);?> &nbsp;</td>
+						<td class="listlr"><?=htmlspecialchars($nfsnetworksv);?> &nbsp;</td>
 						<td valign="middle" nowrap class="list">
 							<?php if(isset($config['nfs']['enable'])): ?>
 							<a href="services_nfs_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit network");?>" width="17" height="17" border="0"></a>&nbsp;
@@ -160,21 +152,17 @@ function enable_change(enable_change) {
 							<?php endif; ?>
 						</td>
 					</tr>
-          <?php $i++; endforeach; ?>
-		  <?php if(isset($config['nfs']['enable'])): ?>
+					<?php $i++; endforeach; ?>
 					<tr>
 						<td class="list" colspan="1"></td>
 						<td class="list">
 							<a href="services_nfs_edit.php"><img src="plus.gif" title="<?=gettext("Add network");?>" width="17" height="17" border="0"></a>
 						</td>
 					</tr>
-		<?php endif; ?>
         </table>
         <?=gettext("Networks authorized.");?>
       </td>
     </tr>
-	
-	
     <tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
