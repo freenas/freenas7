@@ -742,26 +742,35 @@ function system_set_harddisk_standby() {
 
 function system_beep_up()
 {
+	global $config;
+
 	/* Test if beep is enabled and send sound */
-	global $config, $g;
-	if (isset($config['system']['disablebeep']))
-		return 0;
-	else {
-		mwexec('echo O3L30cO4L30cO5L30cO5L30g > /dev/speaker');
-		return 0;
+	if (!isset($config['system']['disablebeep'])) {
+		//mwexec('echo O3L30cO4L30cO5L30cO5L30g > /dev/speaker');
+		mwexec("/sbin/kldload speaker.ko");
+		mwexec("/usr/local/bin/beep -p 500 75");
+		mwexec("/usr/local/bin/beep -p 1000 75");
+		mwexec("/usr/local/bin/beep -p 2000 75");
+		mwexec("/usr/local/bin/beep -p 3000 75");
 	}
+
+	return 0;
 }
 
 function system_beep_down()
 {
-	/* Test if beep is enabled and send sound */
 	global $config;
-	if (isset($config['system']['disablebeep']))
-		return 0;
-	else {		
-		mwexec('echo O5L30gO5L30cO4L30cO3L30c > /dev/speaker');
-		return 0;
+
+	/* Test if beep is enabled and send sound */
+	if (!isset($config['system']['disablebeep'])) {
+		//mwexec('echo O5L30gO5L30cO4L30cO3L30c > /dev/speaker');
+		mwexec("/usr/local/bin/beep -p 3000 75");
+		mwexec("/usr/local/bin/beep -p 2000 75");
+		mwexec("/usr/local/bin/beep -p 1000 75");
+		mwexec("/usr/local/bin/beep -p 500 75");
 	}
+
+	return 0;
 }
 
 function system_set_termcap()
