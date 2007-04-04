@@ -155,6 +155,7 @@ if ($_POST) {
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
  			$retval |= system_tuning();
+ 			$retval |= services_mdnsresponder_configure(); // Update and announce service via zeroconf.
 			config_unlock();
 		}
 		if (($pconfig['systime'] != "Not Set") && ($pconfig['systime'] != "")) {

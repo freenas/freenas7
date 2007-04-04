@@ -117,7 +117,7 @@ if ($_POST)
 			/* nuke the cache file */
 			config_lock();
 			services_samba_configure();
-			services_mdnsresponder_configure();
+			services_mdnsresponder_configure(); // Update and announce service via zeroconf.
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
