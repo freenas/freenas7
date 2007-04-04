@@ -164,13 +164,24 @@ function disks_mount($mount)
 				mwexec('/usr/bin/logger "Disk $devname mounted using NTFS on $mountname" ');
 				$result = 0;
 			}
-			else  {
-				/* Not OK, remove the directory, prevent writing on RAM disk */
-				@rmdir ("/mnt/$mountname");
-				mwexec('/usr/bin/logger "ERROR: Can not mount $devname! It need a fsck from a MS windows" ');
-				$result = 1;
-			}
-			break;		   
+			else {	
+				/* COMMENT FISR PART BEGIN: NTFSFIX DO'NT WORK
+				mwexec('/usr/bin/logger "Error detected for mounting disk $devname, starting a ntfsfix" ');
+				exec("/usr/local/bin/ntfsfix {$devname}");
+				if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname -o force,show_sys_files,allow_other") == 0) {
+					mwexec('/usr/bin/logger "Disk $devname mounted using NTFS on $mountname" ');
+					$result = 0;
+				}
+				else	{ 
+				COMMENT FIRST PART END */
+					/* Not OK, remove the directory, prevent writing on RAM disk*/
+					@rmdir ("/mnt/$mountname");
+					mwexec('/usr/bin/logger "ERROR: Can not mount $devname! using NTFS" ');
+					$result = 1;
+				/* COMMENT SECOND PART BEGIN
+				}
+				COMMENT SECOND PART END */
+			}	   
 		   
 		case "ext2fs":
 			if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0)	{
