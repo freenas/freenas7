@@ -699,7 +699,7 @@ function services_powerd_configure() {
 			echo "Starting powerd... ";
 
 		/* run powerd */
-		$result = mwexec("/usr/sbin/powerd -a adaptive");
+		$result = mwexec("/usr/sbin/powerd -a adaptive -b adaptive");
 
 		if (!$result) {
 			if ($g['booting'])
