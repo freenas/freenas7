@@ -98,21 +98,25 @@ function disks_mount($mount)
 			if (mwexec("/sbin/mount -t ufs  -o acls $devname /mnt/$mountname") == 0) {
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 /mnt/$mountname");
+				mwexec('/usr/bin/logger "Disk $devname mounted using UFS on $mountname" ');
 				$result = 0;
 			}
 			else {
 				/* If it's NOK, Check  filesystem and do a fsck, answer Yes to all question*/
+				mwexec('/usr/bin/logger "Error detected for mounting disk $devname, starting a UFS fsck" ');
 				mwexec("/sbin/fsck -y -t ufs $devname");
 		
 				/* Re-try to mount the partition */
 				if (mwexec("/sbin/mount -t ufs -o acls $devname /mnt/$mountname") == 0) {
 				/* Change this directory into 777 mode */
 					mwexec("/bin/chmod 777 /mnt/$mountname");
+					mwexec('/usr/bin/logger "Disk $devname mounted using UFS on $mountname" ');
 					$result = 0;
 				}
 				else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/$mountname");
+					mwexec('/usr/bin/logger "ERROR: Can not mount $devname! using UFS" ');
 					$result = 1;
 				}
 				
@@ -120,46 +124,50 @@ function disks_mount($mount)
 		   	break;
 		   
 		case "msdosfs":
-			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
+			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0) {
+				mwexec('/usr/bin/logger "Disk $devname mounted using FAT on $mountname" ');
 				$result = 0;
+			}
 			else 			{
 				exec("/sbin/fsck -y -t msdosfs {$devname}");
+				mwexec('/usr/bin/logger "Error detected for mounting disk $devname, starting a FAT fsck" ');
 				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0) {
+					mwexec('/usr/bin/logger "Disk $devname mounted using FAT on $mountname" ');
 					$result = 0;
 				}
 				else	{
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/$mountname");
+					mwexec('/usr/bin/logger "ERROR: Can not mount $devname! using FAT" ');
 					$result = 1;
 				}
 			}
 		case "cd9660":
-			if (mwexec("/sbin/mount_cd9660 $devname /mnt/$mountname") == 0)
+			if (mwexec("/sbin/mount_cd9660 $devname /mnt/$mountname") == 0) {
+				mwexec('/usr/bin/logger "Disk $devname mounted as CD/DVD on $mountname" ');
 				$result = 0;
+			}
 			else {
 				
 				/* Not OK, remove the directory, prevent writing on RAM disk*/
 				@rmdir ("/mnt/$mountname");
+				mwexec('/usr/bin/logger "ERROR: Can not mount $devname! as CD/DVD" ');
 				$result = 1;
 			}
 		
 		   break;
 		   
 		case "ntfs":
-			//if (mwexec("/sbin/mount_ntfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0)
 			// Load the kernel fuse module
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
 			if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname -o force,show_sys_files,allow_other") == 0) {
-				/*echo "DEBUG: MOUNT status:\n";
-				system("/sbin/mount");
-				echo "\ncommand send: /usr/local/bin/ntfs-3g $devname /mnt/$mountname";
-				echo "\nDEBUG: MOUNT NTFS OK.";
-				system("/sbin/mount"); */
+				mwexec('/usr/bin/logger "Disk $devname mounted using NTFS on $mountname" ');
 				$result = 0;
 			}
-			else 			{
+			else  {
 				/* Not OK, remove the directory, prevent writing on RAM disk */
 				@rmdir ("/mnt/$mountname");
+				mwexec('/usr/bin/logger "ERROR: Can not mount $devname! It need a fsck from a MS windows" ');
 				$result = 1;
 			}
 			break;		   
@@ -168,18 +176,22 @@ function disks_mount($mount)
 			if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0)	{
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 /mnt/$mountname");
+				mwexec('/usr/bin/logger "Disk $devname mounted using EXT2 on $mountname" ');
 				$result = 0;
 			}
 			else {
+				mwexec('/usr/bin/logger "Error detected for mounting disk $devname, starting a FAT fsck" ');
 				exec("/usr/local/sbin/e2fsck -f -p {$devname}");
 				if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0) {
 					/* Change this directory into 777 mode */
 					mwexec("/bin/chmod 777 /mnt/$mountname");
+					mwexec('/usr/bin/logger "Disk $devname mounted using EXT2 on $mountname" ');
 					$result = 0;
 				}
 				else {
 					/* Not OK, remove the directory, prevent writing on RAM */
 					@rmdir ("/mnt/$mountname");
+					mwexec('/usr/bin/logger "ERROR: Can not mount $devname! using EXT2" ');
 					$result= 1;
 				}
 			}
