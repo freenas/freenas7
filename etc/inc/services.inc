@@ -1604,17 +1604,14 @@ EOD;
 
 /* This special function is used by system_stop_common()
 It force to stop iSCSI-target before to stop swap */
-
 function services_iscsitarget_stop()
 {
-	
 	/* kill any running iscsi-target */
 	sigkillbypid("{$g['varrun_path']}/iscsi-target.pid", "TERM");
 }
 
 /* Stop, generate config and start mdnsresponder
 Return 0 if Ok, 1 or error code if problem */
-
 function services_mdnsresponder_configure()
 {
 	global $config, $g;
@@ -1623,8 +1620,7 @@ function services_mdnsresponder_configure()
 	
 	/* kill any running snmpd */
 	sigkillbypid("{$g['varrun_path']}/mDNSResponder.pid", "TERM");
-	
-	
+
 	if (isset($config['system']['zeroconf'])) {
 		if ($g['booting']) {
 			echo "Starting Bonjour Zeroconf service... ";
@@ -1645,21 +1641,24 @@ function services_mdnsresponder_configure()
 #
 # This file contains the services to be announced to other Rendezvous aware 
 # machines on the .local network
-# 
+#
 # Entries constist of four consecutive lines as follows:
 # NAME OF SERVICE
 # TYPE OF SERVICE (and, if different from .local, the domain seperated by a space)
-# PORT OF SERVICE				
+# PORT OF SERVICE
+# TXT RECORD (short description of service)
+#
+# For types: http://www.dns-sd.org/ServiceTypes.html
 
 {$config['system']['hostname']} WebAdmin
-_https._tcp local.
+_https._tcp. local.
 {$config['system']['webgui']['port']}
 
 EOD;
 			} else 	{
 			$mDNSResponder = <<<EOD
 {$config['system']['hostname']} WebAdmin
-_https._tcp local.
+_https._tcp. local.
 443
 	
 EOD;
@@ -1669,14 +1668,14 @@ EOD;
 				if ($config['system']['webgui']['port'])	{
 					$mDNSResponder = <<<EOD
 {$config['system']['hostname']} WebAdmin
-_http._tcp local.
+_http._tcp. local.
 {$config['system']['webgui']['port']}
 
 EOD;
 				} 	else 	{
 					$mDNSResponder = <<<EOD
 {$config['system']['hostname']} WebAdmin
-_http._tcp local.
+_http._tcp. local.
 80
 
 EOD;
@@ -1687,8 +1686,8 @@ EOD;
 		if (isset($config['afp']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
-{$config['system']['hostname']} AFP Server
-_afpovertcp._tcp local.
+{$config['system']['hostname']} AFP
+_afpovertcp._tcp. local.
 548
 
 EOD;
@@ -1698,7 +1697,7 @@ EOD;
 		if (isset($config['rsyncd']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
-{$config['system']['hostname']} RSYNC Server
+{$config['system']['hostname']} RSYNC
 _rsync._tcp. local.
 {$config['rsyncd']['port']}
 
@@ -1709,8 +1708,8 @@ EOD;
 		if (isset($config['sshd']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
-{$config['system']['hostname']} SSH Server
-_ssh._tcp local.
+{$config['system']['hostname']} SSH
+_ssh._tcp. local.
 {$config['sshd']['port']}
 
 EOD;
@@ -1720,19 +1719,19 @@ EOD;
 		if (isset($config['ftp']['enable'])) 	{				
 			$mDNSResponder .= <<<EOD
 
-{$config['system']['hostname']} FTP Server
-_ftp._tcp local.
+{$config['system']['hostname']} FTP
+_ftp._tcp. local.
 {$config['ftp']['port']}
 
 EOD;
 		}
 
 		// Check if Samba service is enabled
-		if (isset($config['samba']['enable'])) {				
+		if (isset($config['samba']['enable'])) {
 			$mDNSResponder .= <<<EOD
 
-{$config['system']['hostname']} Samba Server
-_smb._tcp local.	
+{$config['system']['hostname']} SMB
+_smb._tcp. local.
 139
 
 EOD;
@@ -1750,14 +1749,26 @@ EOD;
 			foreach ($a_mount as $mount) {
 				$mDNSResponder .= <<<EOD
 
-{$config['system']['hostname']} NFS: {$mount['sharename']}
-_nfs._tcp local.
-2049 path=/mnt/{$mount['sharename']}
+{$config['system']['hostname']} NFS
+_nfs._tcp. local.
+2049
+path=/mnt/{$mount['sharename']}
 
 EOD;
 			}
 		}
-	
+
+		// Check if UPnP service is enabled
+		if (isset($config['upnp']['enable'])) {				
+			$mDNSResponder .= <<<EOD
+
+{$config['system']['hostname']} UPnP
+_upnp._tcp. local.
+1900
+
+EOD;
+		}
+
 		fwrite($fd, $mDNSResponder);
 		fclose($fd);
 
