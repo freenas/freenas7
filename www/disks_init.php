@@ -299,10 +299,10 @@ function disk_change() {
 function fstype_change() {
 	switch(document.iform.type.value) {
 		case "ufsgpt":
-			document.iform.minspace.disabled = 0;
+			showElementById('minspace_tr','show');
 			break;
 		default:
-			document.iform.minspace.disabled = 1;
+			showElementById('minspace_tr','hide');
 			break;
 	}
 }
@@ -325,28 +325,28 @@ function fstype_change() {
         </select>
       </td>
 		</tr>
-    <td valign="top" class="vncellreq"><?=gettext("File system"); ?></td>
-    <td class="vtable">
-      <select name="type" class="formfld" id="type" onchange="fstype_change()">
-        <?php foreach ($a_fst as $fstval => $fstname): ?>
-        <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
-        <?php endforeach; ?>
-       </select>
-    </td>
-	</tr>
-	 <td width="22%" valign="top" class="vncell"><?=gettext("Minimum free space") ; ?></td>
-            <td width="78%" class="vtable">
-              <select name="minspace" class="formfld" id="minspace">
-              <?php $types = explode(",", "8,7,6,5,4,3,2,1"); $vals = explode(" ", "8 7 6 5 4 3 2 1");?>
-              <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-                <option value="<?=$vals[$j];?>" >
-                <?=htmlspecialchars($types[$j]);?>
-                </option>
-              <?php endfor; ?>
-              </select>
-			  <br><?=gettext("Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation.") ;?>
-            </td>
-          </tr>
+		<tr>
+	    <td valign="top" class="vncellreq"><?=gettext("File system"); ?></td>
+	    <td class="vtable">
+	      <select name="type" class="formfld" id="type" onchange="fstype_change()">
+	        <?php foreach ($a_fst as $fstval => $fstname): ?>
+	        <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
+	        <?php endforeach; ?>
+	       </select>
+	    </td>
+		</tr>
+		<tr id="minspace_tr">
+			<td width="22%" valign="top" class="vncell"><?=gettext("Minimum free space") ; ?></td>
+			<td width="78%" class="vtable">
+				<select name="minspace" class="formfld" id="minspace">
+				<?php $types = explode(",", "8,7,6,5,4,3,2,1"); $vals = explode(" ", "8 7 6 5 4 3 2 1");?>
+				<?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+					<option value="<?=$vals[$j];?>"><?=htmlspecialchars($types[$j]);?></option>
+				<?php endfor; ?>
+				</select>
+				<br><?=gettext("Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation.") ;?>
+			</td>
+		</tr>
     <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Don't Erase MBR"); ?></td>
       <td width="78%" class="vtable">

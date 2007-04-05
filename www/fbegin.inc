@@ -102,10 +102,10 @@ function display_menu($menu) {
 		$span_id = "span".rand(); # Create unique id.
 		$icon_id = "icon".rand(); # Create unique id.
 		if (call_user_func($menu['expandable_func'])) {
-			echo "<a href=\"javascript:showhide('{$span_id}','{$icon_id}')\"><img src='/tri_o.gif' id='{$icon_id}' width='14' height='10' border='0'></a><strong><a href=\"javascript:showhide('{$span_id}','{$icon_id}')\" class='navlnk'>".gettext($menu['desc'])."</a></strong><br>";
+			echo "<a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\"><img src='/tri_o.gif' id='{$icon_id}' width='14' height='10' border='0'></a><strong><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\" class='navlnk'>".gettext($menu['desc'])."</a></strong><br>";
 			echo "<span id='{$span_id}'>";
 		} else {
-			echo "<a href=\"javascript:showhide('{$span_id}','{$icon_id}')\"><img src='/tri_c.gif' id='{$icon_id}' width='14' height='10' border='0'></a><strong><a href=\"javascript:showhide('{$span_id}','{$icon_id}')\" class='navlnk'>".gettext($menu['desc'])."</a></strong><br>";
+			echo "<a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\"><img src='/tri_c.gif' id='{$icon_id}' width='14' height='10' border='0'></a><strong><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\" class='navlnk'>".gettext($menu['desc'])."</a></strong><br>";
 			echo "<span id='{$span_id}' style='display: none'>";
 		}
 	}
@@ -140,21 +140,17 @@ function display_menu($menu) {
 <body link="#0000CC" vlink="#0000CC" alink="#0000CC">
 <script language="javascript">
 <!--
-var tri_open = "";
-var tri_closed = "";
-
-window.onload = preload;
-
-function preload() {
-	if (document.images) {
-		tri_open = new Image(14,10);
-		tri_closed = new Image(14,10);
-		tri_open.src = "/tri_o.gif";
-		tri_closed.src = "/tri_c.gif";
+function showElementById(id,state) {
+	element = document.getElementById(id);
+	if ('show' == state) {
+		element.style.display = '';
+	}
+	if ('hide' == state) {
+		element.style.display = 'none';
 	}
 }
 
-function showhide(tspan, tri) {
+function showhideMenu(tspan, tri) {
 	tspanel = document.getElementById(tspan);
 	triel = document.getElementById(tri);
 	if (tspanel.style.display == 'none') {
