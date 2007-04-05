@@ -107,18 +107,19 @@ function interfaces_lan_configure()
 			/* Remove the link0 options that create some problem */
 			/* if (strpos($lanif, "fxp") !== false)
 			$addflags .= " link0"; */
-      
+
 			mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " " . 
 			escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
+
+			/* install default route */
+			if ($lancfg['gateway']) {
+				mwexec("/sbin/route delete default");
+				mwexec("/sbin/route add default " . escapeshellarg($lancfg['gateway']));
+			}
 			break;
 	}
-	
-	/* install default route */
-	mwexec("/sbin/route delete default");
-	mwexec("/sbin/route add default " . escapeshellarg($lancfg['gateway']));
-	
+
 	/* install multicast route */
-	
 	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lanif));
 	
 	if (!$g['booting']) {
@@ -339,6 +340,7 @@ function interfaces_dhcp_configure($if)
 send dhcp-client-identifier "{$macaddr}";
 interface "{$if}" {
     send host-name "{$hostname}";
+    script "/sbin/dhclient-script";
 }
 
 EOD;
