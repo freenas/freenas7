@@ -899,9 +899,8 @@ function services_unison_configure() {
 	return $result;
 }
 
-/* Stop and start ushare
+/* Stop and start UPnP server
 Return 0 if OK, 1 or error code if error */
-
 function services_upnp_configure() {
 	global $config, $g;
 	
@@ -938,6 +937,14 @@ function services_upnp_configure() {
 			mwexec('/usr/bin/logger "Failed to start UPnP Server" ');
 		}
 	}
+
+	return $result;
+}
+
+/* Stop and start DynDNS client
+Return 0 if OK, 1 or error code if error */
+function services_dyndns_configure() {
+	$result = 0;
 
 	return $result;
 }
