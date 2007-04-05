@@ -41,9 +41,9 @@ $pgtitle = array(gettext("System"), gettext("Firmware"));
    returns any HTML message it gets from the server */
 function check_firmware_version() {
 	global $g;
-	$post = "platform=" . rawurlencode($g['fullplatform']) . 
-		"&version=" . rawurlencode(trim(file_get_contents("/etc/version")));
-		
+
+	$post = "platform=".rawurlencode($g['fullplatform'])."&version=".rawurlencode(get_product_version());
+
 	$rfd = @fsockopen("www.".get_product_url(), 80, $errno, $errstr, 3);
 	if ($rfd) {
 		$hdr = "POST /checkversion.php HTTP/1.0\r\n";
