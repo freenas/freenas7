@@ -261,6 +261,8 @@
 		<hostname></hostname>
 		<username></username>
 		<password></password>
+		<updateperiod></updateperiod>
+		<forcedupdateperiod></forcedupdateperiod>
 		-->
 	</dyndns>
 </freenas>

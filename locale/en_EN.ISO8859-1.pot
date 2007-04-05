@@ -2396,3 +2396,15 @@ msgstr ""
 
 msgid "Save and Restart DynDNS"
 msgstr ""
+
+msgid "Update period"
+msgstr ""
+
+msgid "How often the IP is checked. The period is in seconds (max. is 10 days)."
+msgstr ""
+
+msgid "Forced update period"
+msgstr ""
+
+msgid "How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days)."
+msgstr ""

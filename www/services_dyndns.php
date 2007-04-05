@@ -46,6 +46,8 @@ $pconfig['servername'] = $config['dyndns']['servername'];
 $pconfig['hostname'] = $config['dyndns']['hostname'];
 $pconfig['username'] = $config['dyndns']['username'];
 $pconfig['password'] = $config['dyndns']['password'];
+$pconfig['updateperiod'] = $config['dyndns']['updateperiod'];
+$pconfig['forcedupdateperiod'] = $config['dyndns']['forcedupdateperiod'];
 
 if($_POST) {
 	unset($input_errors);
@@ -66,6 +68,8 @@ if($_POST) {
 		$config['dyndns']['hostname'] = $_POST['hostname'];
 		$config['dyndns']['username'] = $_POST['username'];
 		$config['dyndns']['password'] = $_POST['password'];
+		$config['dyndns']['updateperiod'] = $_POST['updateperiod'];
+		$config['dyndns']['forcedupdateperiod'] = $_POST['forcedupdateperiod'];
 
 		write_config();
 
@@ -91,6 +95,8 @@ function enable_change(enable_change) {
 	document.iform.hostname.disabled = endis;
 	document.iform.username.disabled = endis;
 	document.iform.password.disabled = endis;
+	document.iform.updateperiod.disabled = endis;
+	document.iform.forcedupdateperiod.disabled = endis;
 }
 //-->
 </script>
@@ -124,23 +130,37 @@ function enable_change(enable_change) {
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
-        <input name="hostname" type="text" class="formfld" id="hostname" size="20" value="<?=htmlspecialchars($pconfig['hostname']);?>">
+        <input name="hostname" type="text" class="formfld" id="hostname" size="20" value="<?=htmlentities($pconfig['hostname']);?>">
       </td>
     </tr>
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
-        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>">
+        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlentities($pconfig['username']);?>">
       </td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
-        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
+        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlentities($pconfig['password']);?>">
       </td>
-    </tr>
+		</tr>
+		<tr>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Update period");?></td>
+			<td width="78%" class="vtable">
+				<input name="updateperiod" type="text" class="formfld" id="updateperiod" size="20" value="<?=htmlentities($pconfig['updateperiod']);?>">
+				<br><?=gettext("How often the IP is checked. The period is in seconds (max. is 10 days).");?>
+			</td>
+		</tr>
+		<tr>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Forced update period");?></td>
+			<td width="78%" class="vtable">
+				<input name="forcedupdateperiod" type="text" class="formfld" id="forcedupdateperiod" size="20" value="<?=htmlentities($pconfig['forcedupdateperiod']);?>">
+				<br><?=gettext("How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days).");?>
+			</td>
+		</tr>
     <tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">

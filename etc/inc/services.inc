@@ -955,8 +955,20 @@ function services_dyndns_configure() {
 		if($g['booting'])
 			echo "Starting DynDNS service... ";
 
-		/* Run inadyn in background. */
-		$result = mwexec("/usr/local/bin/inadyn --background --syslog --dyndns_system {$config['dyndns']['servername']} --alias {$config['dyndns']['hostname']} --username {$config['dyndns']['username']} --password {$config['dyndns']['password']}");
+		/* Set command parameters. */
+		$param = "--background --syslog --dyndns_system {$config['dyndns']['servername']} --alias {$config['dyndns']['hostname']} --username {$config['dyndns']['username']} --password {$config['dyndns']['password']}";
+
+		/* Set additional command parameters. */
+		if ($config['dyndns']['updateperiod']) {
+			$param .= " --update_period_sec {$config['dyndns']['updateperiod']}"
+		}
+
+		if ($config['dyndns']['forcedupdateperiod']) {
+			$param .= " --forced_update_period {$config['dyndns']['forcedupdateperiod']}"
+		}
+
+		/* Run inadyn. */
+		$result = mwexec("/usr/local/bin/inadyn {$param}");
 
 		if(!$result) {
 			if($g['booting'])
