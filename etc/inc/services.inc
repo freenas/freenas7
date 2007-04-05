@@ -960,11 +960,11 @@ function services_dyndns_configure() {
 
 		/* Set additional command parameters. */
 		if ($config['dyndns']['updateperiod']) {
-			$param .= " --update_period_sec {$config['dyndns']['updateperiod']}"
+			$param .= " --update_period_sec {$config['dyndns']['updateperiod']}";
 		}
 
 		if ($config['dyndns']['forcedupdateperiod']) {
-			$param .= " --forced_update_period {$config['dyndns']['forcedupdateperiod']}"
+			$param .= " --forced_update_period {$config['dyndns']['forcedupdateperiod']}";
 		}
 
 		/* Run inadyn. */
