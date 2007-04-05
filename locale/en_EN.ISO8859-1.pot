@@ -279,7 +279,7 @@ msgstr ""
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
 msgstr ""
 
-msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
+msgid "UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
 msgstr ""
 
 msgid "Active"
@@ -304,6 +304,9 @@ msgid "Firmware"
 msgstr ""
 
 msgid "Advanced"
+msgstr ""
+
+msgid "Swap"
 msgstr ""
 
 msgid "Assign"
@@ -807,6 +810,9 @@ msgstr ""
 msgid "Hostname"
 msgstr ""
 
+msgid "Host"
+msgstr ""
+
 msgid "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
 msgstr ""
 
@@ -924,7 +930,7 @@ msgstr ""
 msgid "\"fdisk: Geom not found\"is not an error message!\n"
 msgstr ""
 
-msgid "This step will erase all your partition, create partition number 1 and format the hard drive with the file system specified."
+msgid "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified."
 msgstr ""
 
 msgid "Format disk"
@@ -1191,6 +1197,9 @@ msgstr ""
 msgid "This will create a recycle bin on the CIFS shares."
 msgstr ""
 
+msgid "Shares"
+msgstr ""
+
 msgid "Send Buffer Size"
 msgstr ""
 
@@ -1311,7 +1320,13 @@ msgstr ""
 msgid "All users will have the root privilege."
 msgstr ""
 
-msgid "Authorised network"
+msgid "Authorized"
+msgstr ""
+
+msgid "Networks"
+msgstr ""
+
+msgid "Networks Authorized"
 msgstr ""
 
 msgid "Network that is authorised to access to NFS share"
@@ -1410,7 +1425,7 @@ msgstr ""
 msgid "Enable TCP Forwarding"
 msgstr ""
 
-Emsgid "Permit to do SSH Tunneling."
+msgid "Permit to do SSH Tunneling."
 msgstr ""
 
 msgid "Specifies whether it is allowed to login as superuser (root) directly."
@@ -1929,6 +1944,9 @@ msgstr ""
 msgid "Count must be between 1 and %d"
 msgstr ""
 
+msgid "Count"
+msgstr ""
+
 msgid "Ping output"
 msgstr ""
 
@@ -2049,7 +2067,7 @@ msgstr ""
 msgid "Attaching..."
 msgstr ""
 
-msgid "Using Data integrity will reduce size of available storage and also reduce speed."
+msgid "This will erase ALL data on your disk!<br>Using Data integrity will reduce size of available storage and also reduce speed."
 msgstr ""
 
 msgid "Sensors"
@@ -2122,6 +2140,9 @@ msgid "FTP users"
 msgstr ""
 
 msgid "FTP connected users"
+msgstr ""
+
+msgid "Save and Restart CIFS"
 msgstr ""
 
 msgid "Save and Restart UPnP"
@@ -2212,6 +2233,24 @@ msgid "A valid size target value must be specified."
 msgstr ""
 
 msgid "Target name"
+msgstr ""
+
+msgid "Target address"
+msgstr ""
+
+msgid "Initiator name"
+msgstr ""
+
+msgid "This is for information only (not using during iSCSI negociation)."
+msgstr ""
+
+msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
+msgstr ""
+
+msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+msgstr ""
+
+msgid "This the IP address or DNS name of the iSCSI target."
 msgstr ""
 
 msgid "Mount used"

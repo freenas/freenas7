@@ -98,25 +98,25 @@ function disks_mount($mount)
 			if (mwexec("/sbin/mount -t ufs  -o acls $devname /mnt/$mountname") == 0) {
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 /mnt/$mountname");
-				mwexec('/usr/bin/logger "Disk $devname mounted using UFS on $mountname" ');
+				mwexec('/usr/bin/logger "Disk {$devname} mounted using UFS on {$mountname}" ');
 				$result = 0;
 			}
 			else {
 				/* If it's NOK, Check  filesystem and do a fsck, answer Yes to all question*/
-				mwexec('/usr/bin/logger "Error detected for mounting disk $devname, starting a UFS fsck" ');
+				mwexec('/usr/bin/logger "Error detected for mounting disk {$devname}, starting a UFS fsck" ');
 				mwexec("/sbin/fsck -y -t ufs $devname");
 		
 				/* Re-try to mount the partition */
 				if (mwexec("/sbin/mount -t ufs -o acls $devname /mnt/$mountname") == 0) {
 				/* Change this directory into 777 mode */
 					mwexec("/bin/chmod 777 /mnt/$mountname");
-					mwexec('/usr/bin/logger "Disk $devname mounted using UFS on $mountname" ');
+					mwexec('/usr/bin/logger "Disk {$devname} mounted using UFS on {$mountname}" ');
 					$result = 0;
 				}
 				else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/$mountname");
-					mwexec('/usr/bin/logger "ERROR: Can not mount $devname! using UFS" ');
+					mwexec('/usr/bin/logger "ERROR: Can not mount {$devname}! using UFS" ');
 					$result = 1;
 				}
 				
@@ -125,14 +125,14 @@ function disks_mount($mount)
 		   
 		case "msdosfs":
 			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0) {
-				mwexec('/usr/bin/logger "Disk $devname mounted using FAT on $mountname" ');
+				mwexec('/usr/bin/logger "Disk {$devname} mounted using FAT on {$mountname}" ');
 				$result = 0;
 			}
 			else 			{
 				exec("/sbin/fsck -y -t msdosfs {$devname}");
 				mwexec('/usr/bin/logger "Error detected for mounting disk $devname, starting a FAT fsck" ');
 				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0) {
-					mwexec('/usr/bin/logger "Disk $devname mounted using FAT on $mountname" ');
+					mwexec('/usr/bin/logger "Disk {$devname} mounted using FAT on {$mountname}" ');
 					$result = 0;
 				}
 				else	{
@@ -144,14 +144,14 @@ function disks_mount($mount)
 			}
 		case "cd9660":
 			if (mwexec("/sbin/mount_cd9660 $devname /mnt/$mountname") == 0) {
-				mwexec('/usr/bin/logger "Disk $devname mounted as CD/DVD on $mountname" ');
+				mwexec('/usr/bin/logger "Disk {$devname} mounted as CD/DVD on {$mountname}" ');
 				$result = 0;
 			}
 			else {
 				
 				/* Not OK, remove the directory, prevent writing on RAM disk*/
 				@rmdir ("/mnt/$mountname");
-				mwexec('/usr/bin/logger "ERROR: Can not mount $devname! as CD/DVD" ');
+				mwexec('/usr/bin/logger "ERROR: Can not mount {$devname}! as CD/DVD" ');
 				$result = 1;
 			}
 		
@@ -161,7 +161,7 @@ function disks_mount($mount)
 			// Load the kernel fuse module
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
 			if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname -o force,show_sys_files,allow_other") == 0) {
-				mwexec('/usr/bin/logger "Disk $devname mounted using NTFS on $mountname" ');
+				mwexec('/usr/bin/logger "Disk {$devname} mounted using NTFS on {$mountname}" ');
 				$result = 0;
 			}
 			else {	
@@ -169,14 +169,14 @@ function disks_mount($mount)
 				mwexec('/usr/bin/logger "Error detected for mounting disk $devname, starting a ntfsfix" ');
 				exec("/usr/local/bin/ntfsfix {$devname}");
 				if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname -o force,show_sys_files,allow_other") == 0) {
-					mwexec('/usr/bin/logger "Disk $devname mounted using NTFS on $mountname" ');
+					mwexec('/usr/bin/logger "Disk {$devname} mounted using NTFS on {$mountname}" ');
 					$result = 0;
 				}
 				else	{ 
 				COMMENT FIRST PART END */
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/$mountname");
-					mwexec('/usr/bin/logger "ERROR: Can not mount $devname! using NTFS" ');
+					mwexec('/usr/bin/logger "ERROR: Can not mount {$devname}! using NTFS" ');
 					$result = 1;
 				/* COMMENT SECOND PART BEGIN
 				}
@@ -187,22 +187,22 @@ function disks_mount($mount)
 			if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0)	{
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 /mnt/$mountname");
-				mwexec('/usr/bin/logger "Disk $devname mounted using EXT2 on $mountname" ');
+				mwexec('/usr/bin/logger "Disk {$devname} mounted using EXT2 on {$mountname}" ');
 				$result = 0;
 			}
 			else {
-				mwexec('/usr/bin/logger "Error detected for mounting disk $devname, starting a FAT fsck" ');
+				mwexec('/usr/bin/logger "Error detected for mounting disk {$devname}, starting a FAT fsck" ');
 				exec("/usr/local/sbin/e2fsck -f -p {$devname}");
 				if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0) {
 					/* Change this directory into 777 mode */
 					mwexec("/bin/chmod 777 /mnt/$mountname");
-					mwexec('/usr/bin/logger "Disk $devname mounted using EXT2 on $mountname" ');
+					mwexec('/usr/bin/logger "Disk {$devname} mounted using EXT2 on {$mountname}" ');
 					$result = 0;
 				}
 				else {
 					/* Not OK, remove the directory, prevent writing on RAM */
 					@rmdir ("/mnt/$mountname");
-					mwexec('/usr/bin/logger "ERROR: Can not mount $devname! using EXT2" ');
+					mwexec('/usr/bin/logger "ERROR: Can not mount {$devname}! using EXT2" ');
 					$result= 1;
 				}
 			}
