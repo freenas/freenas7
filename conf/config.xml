@@ -261,7 +261,6 @@
 		<hostname></hostname>
 		<username></username>
 		<password></password>
-		<iface></iface>
 		-->
 	</dyndns>
 </freenas>

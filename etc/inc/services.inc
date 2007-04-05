@@ -944,7 +944,30 @@ function services_upnp_configure() {
 /* Stop and start DynDNS client
 Return 0 if OK, 1 or error code if error */
 function services_dyndns_configure() {
-	$result = 0;
+	global $config, $g;
+
+	$result = 0 ;
+
+	/* Kill any running inadyn */
+	killbyname("inadyn");
+
+	if(isset($config['dyndns']['enable'])) {
+		if($g['booting'])
+			echo "Starting DynDNS service... ";
+
+		/* Run inadyn in background. */
+		$result = mwexec("/usr/local/bin/inadyn --background --syslog --dyndns_system {$config['dyndns']['servername']} --alias {$config['dyndns']['hostname']} --username {$config['dyndns']['username']} --password {$config['dyndns']['password']}");
+
+		if(!$result) {
+			if($g['booting'])
+				echo "done\n";
+			mwexec('/usr/bin/logger "DynDNS service started" ');
+		} else {
+			if($g['booting'])
+				echo "failed\n";
+			mwexec('/usr/bin/logger "Failed to start DynDNS service" ');
+		}
+	}
 
 	return $result;
 }

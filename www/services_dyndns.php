@@ -46,7 +46,6 @@ $pconfig['servername'] = $config['dyndns']['servername'];
 $pconfig['hostname'] = $config['dyndns']['hostname'];
 $pconfig['username'] = $config['dyndns']['username'];
 $pconfig['password'] = $config['dyndns']['password'];
-$pconfig['iface'] = $config['dyndns']['iface'];
 
 if($_POST) {
 	unset($input_errors);
@@ -55,8 +54,8 @@ if($_POST) {
 
 	/* input validation */
 	if($_POST['enable']) {
-		$reqdfields = explode(" ", "servername hostname username password iface");
-		$reqdfieldsn = array(gettext("Servername"), gettext("Hostname"), gettext("Username"), gettext("Password"), gettext("Interface"));
+		$reqdfields = explode(" ", "servername hostname username password");
+		$reqdfieldsn = array(gettext("Servername"), gettext("Hostname"), gettext("Username"), gettext("Password"));
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
@@ -67,7 +66,6 @@ if($_POST) {
 		$config['dyndns']['hostname'] = $_POST['hostname'];
 		$config['dyndns']['username'] = $_POST['username'];
 		$config['dyndns']['password'] = $_POST['password'];
-		$config['dyndns']['iface'] = $_POST['iface'];
 
 		write_config();
 
@@ -93,7 +91,6 @@ function enable_change(enable_change) {
 	document.iform.hostname.disabled = endis;
 	document.iform.username.disabled = endis;
 	document.iform.password.disabled = endis;
-	document.iform.iface.disabled = endis;
 }
 //-->
 </script>
@@ -142,19 +139,6 @@ function enable_change(enable_change) {
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
         <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
-      </td>
-    </tr>
-		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Interface");?></td>
-      <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
-        <select name="iface" class="formfld" id="iface">
-          <?php foreach($a_interface as $if => $ifinfo): ?>
-					<?php $ifinfo = get_interface_info($if); if($ifinfo['status'] == "up"): ?>
-					<option value="<?=$if;?>" <?php if ($if == $pconfig['iface']) echo "selected";?>><?=$if?></option>
-					<?php endif; ?>
-          <?php endforeach; ?>
-        </select>
       </td>
     </tr>
     <tr>

@@ -72,6 +72,9 @@ from scretch. After that use one of the following menus:
 
 FreeNAS 0.685b:
 
+Majors changes:
+- Add DynDNS service.
+
 Minors changes:
 - Add checkbox to enable/disable 'large readwrite' support on CIFS page.
 

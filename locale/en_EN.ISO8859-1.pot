@@ -2387,3 +2387,12 @@ msgstr ""
 
 msgid "Use the new 64k streaming read and write variant SMB requests."
 msgstr ""
+
+msgid "Dynamic DNS"
+msgstr ""
+
+msgid "Servername"
+msgstr ""
+
+msgid "Save and Restart DynDNS"
+msgstr ""
