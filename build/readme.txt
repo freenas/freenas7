@@ -86,6 +86,7 @@ Bug fixs:
 - Fix bug in interface initialization code - the 'default' route was deleted.
 - Fix Bug: Add line PubkeyAuthentication on sshd_config file
 - Fix UPnP bug - no supports blanks in directory names
+- Fix UPnP bug - service was not started on system startup
 
 FreeNAS 0.684b :
 
