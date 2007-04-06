@@ -955,8 +955,21 @@ function services_dynamicdns_configure() {
 		if($g['booting'])
 			echo "Starting Dynamic DNS service... ";
 
+		/* Get the service type */
+		$servicetype = "";
+		switch($config['dynamicdns']['provider']) {
+			case "dyndns.org":					$servicetype = "dyndns@dyndns.org";
+																	break;
+			case "freedns.afraid.org":	$servicetype = "default@freedns.afraid.org";
+																	break;
+			case "zoneedit.com":				$servicetype = "default@zoneedit.com";
+																	break;
+			case "no-ip.com":						$servicetype = "default@no-ip.com";
+																	break;
+		}
+
 		/* Set command parameters. */
-		$param = "--background --syslog --dyndns_system {$config['dynamicdns']['provider']} --alias {$config['dynamicdns']['domainname']} --username {$config['dynamicdns']['username']} --password {$config['dynamicdns']['password']}";
+		$param = "--background --syslog --dyndns_system {$servicetype} --alias {$config['dynamicdns']['domainname']} --username {$config['dynamicdns']['username']} --password {$config['dynamicdns']['password']}";
 
 		/* Set additional command parameters. */
 		if ($config['dynamicdns']['updateperiod']) {

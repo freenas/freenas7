@@ -119,10 +119,10 @@ function enable_change(enable_change) {
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
         <select name="provider" class="formfld" id="provider">
-					<option value="dyndns@dyndns.org" <?php if ("dyndns@dyndns.org" == $pconfig['provider']) echo "selected";?>>dyndns.org</option>
-					<option value="default@freedns.afraid.org" <?php if ("default@freedns.afraid.org" == $pconfig['provider']) echo "selected";?>>freedns.afraid.org</option>
-					<option value="default@zoneedit.com" <?php if ("default@zoneedit.com" == $pconfig['provider']) echo "selected";?>>www.zoneedit.com</option>
-					<option value="default@no-ip.com" <?php if ("default@no-ip.com" == $pconfig['provider']) echo "selected";?>>no-ip.com</option>
+					<option value="dyndns.org" <?php if ("dyndns.org" == $pconfig['provider']) echo "selected";?>>dyndns.org</option>
+					<option value="freedns.afraid.org" <?php if ("freedns.afraid.org" == $pconfig['provider']) echo "selected";?>>freedns.afraid.org</option>
+					<option value="zoneedit.com" <?php if ("zoneedit.com" == $pconfig['provider']) echo "selected";?>>zoneedit.com</option>
+					<option value="no-ip.com" <?php if ("no-ip.com" == $pconfig['provider']) echo "selected";?>>no-ip.com</option>
         </select>
       </td>
 		</tr>
