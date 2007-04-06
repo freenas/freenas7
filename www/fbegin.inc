@@ -89,9 +89,10 @@ $menu['diagnostics']['menuitem'][] = array("desc" => "Factory defaults", "link" 
 $menu['diagnostics']['menuitem'][] = array("desc" => "Reboot system", "link" => "reboot.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "Shutdown system", "link" => "shutdown.php", "visible" => true);
 $menu['diagnostics']['expandable'] = true;
-$menu['diagnostics']['expandable_func'] = "diagnostics_expandable_func";
+$menu['diagnostics']['is_expanded_func'] = "diagnostics_is_expanded";
 
-function diagnostics_expandable_func() {
+/* Shall the diagnostics menu be expanded? */
+function diagnostics_is_expanded() {
 	global $config;
 	return (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_") || strstr($_SERVER['SCRIPT_FILENAME'], "reboot") || strstr($_SERVER['SCRIPT_FILENAME'], "shutdown") || strstr($_SERVER['SCRIPT_FILENAME'], "exec")); 
 }
@@ -101,7 +102,7 @@ function display_menu($menu) {
 	if ($menu['expandable']) {
 		$span_id = "span".rand(); # Create unique id.
 		$icon_id = "icon".rand(); # Create unique id.
-		if (call_user_func($menu['expandable_func'])) {
+		if (call_user_func($menu['is_expanded_func'])) {
 			echo "<a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\"><img src='/tri_o.gif' id='{$icon_id}' width='14' height='10' border='0'></a><strong><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\" class='navlnk'>".gettext($menu['desc'])."</a></strong><br>";
 			echo "<span id='{$span_id}'>";
 		} else {
