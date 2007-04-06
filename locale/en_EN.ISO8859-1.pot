@@ -2384,3 +2384,6 @@ msgstr ""
 
 msgid "How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days)."
 msgstr ""
+
+msgid "The attribute '%s' must be of the type '%s'."
+msgstr ""
