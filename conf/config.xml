@@ -254,7 +254,7 @@
 		<userid>1002</userid>
 		<groupid>1002</groupid>
 	</access>
-	<dyndns>
+	<dynamicdns>
 		<!--
 		<enable/>
 		<servername></servername>
@@ -264,5 +264,5 @@
 		<updateperiod></updateperiod>
 		<forcedupdateperiod></forcedupdateperiod>
 		-->
-	</dyndns>
+	</dynamicdns>
 </freenas>

@@ -2121,26 +2121,8 @@ msgstr "Пользователи FTP"
 msgid "FTP connected users"
 msgstr "Подключенные пользователи FTP"
 
-msgid "Save and Restart UPnP"
-msgstr "Сохранить и перезагрузить UPnP"
-
-msgid "Save and Restart Unison"
-msgstr "Сохранить и перезагрузить Unison"
-
-msgid "Save and Restart SSHD"
-msgstr "Сохранить и перезагрузить SSHD"
-
-msgid "Save and Restart RSYNC"
-msgstr "Сохранить и перезагрузить RSYNC"
-
-msgid "Save and Restart NFS"
-msgstr "Сохранить и перезагрузить NFS"
-
-msgid "Save and Restart FTP"
-msgstr "Сохранить и перезагрузить FTP"
-
-msgid "Save and Restart AFP"
-msgstr "Сохранить и перезагрузить AFP"
+msgid "Save and Restart"
+msgstr "Сохранить и перезагрузить"
 
 msgid "The %s port must be a valid port number."
 msgstr "Порт %s должен быть корректным номером порта."

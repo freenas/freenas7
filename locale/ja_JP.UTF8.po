@@ -2118,26 +2118,8 @@ msgstr "FTP ユーザ"
 msgid "FTP connected users"
 msgstr "FTP 接続ユーザ"
 
-msgid "Save and Restart UPnP"
-msgstr "UPnP の保存と再起動"
-
-msgid "Save and Restart Unison"
-msgstr "Unison の保存と再起動"
-
-msgid "Save and Restart SSHD"
-msgstr "SSHD の保存と再起動"
-
-msgid "Save and Restart RSYNC"
-msgstr "RSYNC の保存と再起動"
-
-msgid "Save and Restart NFS"
-msgstr "NFS の保存と再起動"
-
-msgid "Save and Restart FTP"
-msgstr "FTP の保存と再起動"
-
-msgid "Save and Restart AFP"
-msgstr "AFP の保存と再起動"
+msgid "Save and Restart"
+msgstr "の保存と再起動"
 
 msgid "The %s port must be a valid port number."
 msgstr "%s ポートは有効なポート番号である必要があります．"

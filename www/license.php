@@ -153,6 +153,10 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 		<p>e2fsprogs (<a href="http://e2fsprogs.sourceforge.net" target="_blank">http://e2fsprogs.sourceforge.net</a>)<br>
       Copyright &copy; 1994-2006 Theodore Ts'o. All rights reserved.
 		</p>
+
+		<p>INADYN - Simple Dynamic DNS client (<a href="http://inadyn.ina-tech.net" target="_blank">http://inadyn.ina-tech.net</a>)<br>
+      Copyright &copy; 2003-2004 Narcis Ilisei. All rights reserved.</p>
+
 	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com/" target="_blank">http://www.pfsense.com/</a>)<br>
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
       </p>

@@ -2143,29 +2143,8 @@ msgstr "Utilisateurs FTP"
 msgid "FTP connected users"
 msgstr "Utilisateurs connectés en FTP"
 
-msgid "Save and Restart CIFS"
-msgstr "Sauvegarder et redémarrer CIFS"
-
-msgid "Save and Restart UPnP"
-msgstr "Sauvegarder et redémarrer UPnP"
-
-msgid "Save and Restart Unison"
-msgstr "Sauvegarder et redémarrer Unison"
-
-msgid "Save and Restart SSHD"
-msgstr "Sauvegarder et redémarrer SSHD"
-
-msgid "Save and Restart RSYNC"
-msgstr "Sauvegarder et redémarrer RSYNC"
-
-msgid "Save and Restart NFS"
-msgstr "Sauvegarder et redémarrer NFS"
-
-msgid "Save and Restart FTP"
-msgstr "Sauvegarder et redémarrer FTP"
-
-msgid "Save and Restart AFP"
-msgstr "Sauvegarder et redémarrer AFP"
+msgid "Save and Restart"
+msgstr "Sauvegarder et redémarrer"
 
 msgid "The %s port must be a valid port number."
 msgstr "Le port %s doit être un numéro de port valide."

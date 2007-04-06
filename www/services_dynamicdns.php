@@ -36,18 +36,18 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("DynDNS"));
+$pgtitle = array(gettext("Services"),gettext("Dynamic DNS"));
 
-if(!is_array($config['dyndns']))
-	$config['dyndns'] = array();
+if(!is_array($config['dynamicdns']))
+	$config['dynamicdns'] = array();
 
-$pconfig['enable'] = isset($config['dyndns']['enable']);
-$pconfig['servername'] = $config['dyndns']['servername'];
-$pconfig['hostname'] = $config['dyndns']['hostname'];
-$pconfig['username'] = $config['dyndns']['username'];
-$pconfig['password'] = $config['dyndns']['password'];
-$pconfig['updateperiod'] = $config['dyndns']['updateperiod'];
-$pconfig['forcedupdateperiod'] = $config['dyndns']['forcedupdateperiod'];
+$pconfig['enable'] = isset($config['dynamicdns']['enable']);
+$pconfig['servername'] = $config['dynamicdns']['servername'];
+$pconfig['hostname'] = $config['dynamicdns']['hostname'];
+$pconfig['username'] = $config['dynamicdns']['username'];
+$pconfig['password'] = $config['dynamicdns']['password'];
+$pconfig['updateperiod'] = $config['dynamicdns']['updateperiod'];
+$pconfig['forcedupdateperiod'] = $config['dynamicdns']['forcedupdateperiod'];
 
 if($_POST) {
 	unset($input_errors);
@@ -63,20 +63,20 @@ if($_POST) {
 	}
 
 	if(!$input_errors) {
-    $config['dyndns']['enable'] = $_POST['enable'] ? true : false;
-    $config['dyndns']['servername'] = $_POST['servername'];
-		$config['dyndns']['hostname'] = $_POST['hostname'];
-		$config['dyndns']['username'] = $_POST['username'];
-		$config['dyndns']['password'] = $_POST['password'];
-		$config['dyndns']['updateperiod'] = $_POST['updateperiod'];
-		$config['dyndns']['forcedupdateperiod'] = $_POST['forcedupdateperiod'];
+    $config['dynamicdns']['enable'] = $_POST['enable'] ? true : false;
+    $config['dynamicdns']['servername'] = $_POST['servername'];
+		$config['dynamicdns']['hostname'] = $_POST['hostname'];
+		$config['dynamicdns']['username'] = $_POST['username'];
+		$config['dynamicdns']['password'] = $_POST['password'];
+		$config['dynamicdns']['updateperiod'] = $_POST['updateperiod'];
+		$config['dynamicdns']['forcedupdateperiod'] = $_POST['forcedupdateperiod'];
 
 		write_config();
 
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval = services_dyndns_configure();
+			$retval = services_dynamicdns_configure();
 			config_unlock();
 		}
 
@@ -102,7 +102,7 @@ function enable_change(enable_change) {
 </script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="services_dyndns.php" method="post" name="iform" id="iform">
+<form action="services_dynamicdns.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
       <td colspan="2" valign="top" class="optsect_t">
@@ -164,7 +164,7 @@ function enable_change(enable_change) {
     <tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart DynDNS");?>" onClick="enable_change(true)">
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
       </td>
     </tr>
   </table>

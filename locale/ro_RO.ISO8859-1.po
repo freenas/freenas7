@@ -2109,26 +2109,8 @@ msgstr "Utilizatori FTP"
 msgid "FTP connected users"
 msgstr "Utilizatori conectati prin FTP"
 
-msgid "Save and Restart UPnP"
-msgstr "Salvare si Repornire UPnP"
-
-msgid "Save and Restart Unison"
-msgstr "Salvare si Repornire Unison"
-
-msgid "Save and Restart SSHD"
-msgstr "Salvare si Repornire SSHD"
-
-msgid "Save and Restart RSYNC"
-msgstr "Salvare si Repornire RSYNC"
-
-msgid "Save and Restart NFS"
-msgstr "Salvare si Repornire NFS"
-
-msgid "Save and Restart FTP"
-msgstr "Salvare si Repornire FTP"
-
-msgid "Save and Restart AFP"
-msgstr "Salvare si Repornire AFP"
+msgid "Save and Restart"
+msgstr "Salvare si Repornire"
 
 msgid "The %s port must be a valid port number."
 msgstr "Valoare incorecta pentru portul %s"

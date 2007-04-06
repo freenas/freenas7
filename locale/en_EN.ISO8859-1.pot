@@ -2142,28 +2142,7 @@ msgstr ""
 msgid "FTP connected users"
 msgstr ""
 
-msgid "Save and Restart CIFS"
-msgstr ""
-
-msgid "Save and Restart UPnP"
-msgstr ""
-
-msgid "Save and Restart Unison"
-msgstr ""
-
-msgid "Save and Restart SSHD"
-msgstr ""
-
-msgid "Save and Restart RSYNC"
-msgstr ""
-
-msgid "Save and Restart NFS"
-msgstr ""
-
-msgid "Save and Restart FTP"
-msgstr ""
-
-msgid "Save and Restart AFP"
+msgid "Save and Restart"
 msgstr ""
 
 msgid "The %s port must be a valid port number."
@@ -2392,9 +2371,6 @@ msgid "Dynamic DNS"
 msgstr ""
 
 msgid "Servername"
-msgstr ""
-
-msgid "Save and Restart DynDNS"
 msgstr ""
 
 msgid "Update period"

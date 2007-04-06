@@ -941,9 +941,9 @@ function services_upnp_configure() {
 	return $result;
 }
 
-/* Stop and start DynDNS client
+/* Stop and start Dynamic DNS client
 Return 0 if OK, 1 or error code if error */
-function services_dyndns_configure() {
+function services_dynamicdns_configure() {
 	global $config, $g;
 
 	$result = 0 ;
@@ -951,20 +951,20 @@ function services_dyndns_configure() {
 	/* Kill any running inadyn */
 	killbyname("inadyn");
 
-	if(isset($config['dyndns']['enable'])) {
+	if(isset($config['dynamicdns']['enable'])) {
 		if($g['booting'])
-			echo "Starting DynDNS service... ";
+			echo "Starting Dynamic DNS service... ";
 
 		/* Set command parameters. */
-		$param = "--background --syslog --dyndns_system {$config['dyndns']['servername']} --alias {$config['dyndns']['hostname']} --username {$config['dyndns']['username']} --password {$config['dyndns']['password']}";
+		$param = "--background --syslog --dyndns_system {$config['dynamicdns']['servername']} --alias {$config['dynamicdns']['hostname']} --username {$config['dynamicdns']['username']} --password {$config['dynamicdns']['password']}";
 
 		/* Set additional command parameters. */
-		if ($config['dyndns']['updateperiod']) {
-			$param .= " --update_period_sec {$config['dyndns']['updateperiod']}";
+		if ($config['dynamicdns']['updateperiod']) {
+			$param .= " --update_period_sec {$config['dynamicdns']['updateperiod']}";
 		}
 
-		if ($config['dyndns']['forcedupdateperiod']) {
-			$param .= " --forced_update_period {$config['dyndns']['forcedupdateperiod']}";
+		if ($config['dynamicdns']['forcedupdateperiod']) {
+			$param .= " --forced_update_period {$config['dynamicdns']['forcedupdateperiod']}";
 		}
 
 		/* Run inadyn. */
@@ -973,11 +973,11 @@ function services_dyndns_configure() {
 		if(!$result) {
 			if($g['booting'])
 				echo "done\n";
-			mwexec('/usr/bin/logger "DynDNS service started" ');
+			mwexec('/usr/bin/logger "Dynamic DNS service started" ');
 		} else {
 			if($g['booting'])
 				echo "failed\n";
-			mwexec('/usr/bin/logger "Failed to start DynDNS service" ');
+			mwexec('/usr/bin/logger "Failed to start Dynamic DNS service" ');
 		}
 	}
 

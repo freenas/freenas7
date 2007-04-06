@@ -2152,26 +2152,8 @@ msgstr "FTP使用者"
 msgid "FTP connected users"
 msgstr "FTP connected users"
 
-msgid "Save and Restart UPnP"
-msgstr "儲存並重新啟動 UPnP"
-
-msgid "Save and Restart Unison"
-msgstr "儲存並重新啟動 Unison"
-
-msgid "Save and Restart SSHD"
-msgstr "儲存並重新啟動 SSHD"
-
-msgid "Save and Restart RSYNC"
-msgstr "儲存並重新啟動 RSYNC"
-
-msgid "Save and Restart NFS"
-msgstr "儲存並重新啟動 NFS"
-
-msgid "Save and Restart FTP"
-msgstr "儲存並重新啟動 FTP"
-
-msgid "Save and Restart AFP"
-msgstr "儲存並重新啟動 AFP"
+msgid "Save and Restart"
+msgstr "儲存並重新啟動"
 
 msgid "The %s port must be a valid port number."
 msgstr "請給 %s 輸入一個有效的連接埠。"

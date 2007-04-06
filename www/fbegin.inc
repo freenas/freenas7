@@ -55,7 +55,7 @@ $menu['services']['menuitem'][] = array("desc" => "RSYNCD", "link" => "services_
 $menu['services']['menuitem'][] = array("desc" => "Unison", "link" => "services_unison.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => "iSCSI Target", "link" => "services_iscsitarget.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => "UPnP", "link" => "services_upnp.php", "visible" => true);
-$menu['services']['menuitem'][] = array("desc" => "DynDNS", "link" => "services_dyndns.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => "Dynamic DNS", "link" => "services_dyndns.php", "visible" => true);
 
 // Access
 $menu['access']['desc'] = "Access";
