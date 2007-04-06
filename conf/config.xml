@@ -257,8 +257,8 @@
 	<dynamicdns>
 		<!--
 		<enable/>
-		<servername></servername>
-		<hostname></hostname>
+		<provider></provider>
+		<domainname></domainname>
 		<username></username>
 		<password></password>
 		<updateperiod></updateperiod>

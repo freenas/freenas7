@@ -42,8 +42,8 @@ if(!is_array($config['dynamicdns']))
 	$config['dynamicdns'] = array();
 
 $pconfig['enable'] = isset($config['dynamicdns']['enable']);
-$pconfig['servername'] = $config['dynamicdns']['servername'];
-$pconfig['hostname'] = $config['dynamicdns']['hostname'];
+$pconfig['provider'] = $config['dynamicdns']['provider'];
+$pconfig['domainname'] = $config['dynamicdns']['domainname'];
 $pconfig['username'] = $config['dynamicdns']['username'];
 $pconfig['password'] = $config['dynamicdns']['password'];
 $pconfig['updateperiod'] = $config['dynamicdns']['updateperiod'];
@@ -56,16 +56,16 @@ if($_POST) {
 
 	/* input validation */
 	if($_POST['enable']) {
-		$reqdfields = explode(" ", "servername hostname username password");
-		$reqdfieldsn = array(gettext("Servername"), gettext("Hostname"), gettext("Username"), gettext("Password"));
+		$reqdfields = explode(" ", "provider domainname username password");
+		$reqdfieldsn = array(gettext("Provider"), gettext("Domain name"), gettext("Username"), gettext("Password"));
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
 
 	if(!$input_errors) {
     $config['dynamicdns']['enable'] = $_POST['enable'] ? true : false;
-    $config['dynamicdns']['servername'] = $_POST['servername'];
-		$config['dynamicdns']['hostname'] = $_POST['hostname'];
+    $config['dynamicdns']['provider'] = $_POST['provider'];
+		$config['dynamicdns']['domainname'] = $_POST['domainname'];
 		$config['dynamicdns']['username'] = $_POST['username'];
 		$config['dynamicdns']['password'] = $_POST['password'];
 		$config['dynamicdns']['updateperiod'] = $_POST['updateperiod'];
@@ -91,8 +91,8 @@ $a_interface = get_interface_list();
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
-	document.iform.servername.disabled = endis;
-	document.iform.hostname.disabled = endis;
+	document.iform.provider.disabled = endis;
+	document.iform.domainname.disabled = endis;
 	document.iform.username.disabled = endis;
 	document.iform.password.disabled = endis;
 	document.iform.updateperiod.disabled = endis;
@@ -115,22 +115,22 @@ function enable_change(enable_change) {
       </td>
     </tr>
     <tr>
-	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Servername");?></td>
+	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Provider");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
-        <select name="servername" class="formfld" id="servername">
-					<option value="dyndns@dyndns.org" <?php if ("dyndns@dyndns.org" == $pconfig['servername']) echo "selected";?>>dyndns.org</option>
-					<option value="default@freedns.afraid.org" <?php if ("default@freedns.afraid.org" == $pconfig['servername']) echo "selected";?>>freedns.afraid.org</option>
-					<option value="default@zoneedit.com" <?php if ("default@zoneedit.com" == $pconfig['servername']) echo "selected";?>>www.zoneedit.com</option>
-					<option value="default@no-ip.com" <?php if ("default@no-ip.com" == $pconfig['servername']) echo "selected";?>>www.no-ip.com</option>
+        <select name="provider" class="formfld" id="provider">
+					<option value="dyndns@dyndns.org" <?php if ("dyndns@dyndns.org" == $pconfig['provider']) echo "selected";?>>dyndns.org</option>
+					<option value="default@freedns.afraid.org" <?php if ("default@freedns.afraid.org" == $pconfig['provider']) echo "selected";?>>freedns.afraid.org</option>
+					<option value="default@zoneedit.com" <?php if ("default@zoneedit.com" == $pconfig['provider']) echo "selected";?>>www.zoneedit.com</option>
+					<option value="default@no-ip.com" <?php if ("default@no-ip.com" == $pconfig['provider']) echo "selected";?>>no-ip.com</option>
         </select>
       </td>
 		</tr>
 		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
-        <input name="hostname" type="text" class="formfld" id="hostname" size="20" value="<?=htmlentities($pconfig['hostname']);?>">
+        <input name="domainname" type="text" class="formfld" id="domainname" size="20" value="<?=htmlentities($pconfig['domainname']);?>">
       </td>
     </tr>
 		<tr>

@@ -2370,7 +2370,7 @@ msgstr ""
 msgid "Dynamic DNS"
 msgstr ""
 
-msgid "Servername"
+msgid "Provider"
 msgstr ""
 
 msgid "Update period"

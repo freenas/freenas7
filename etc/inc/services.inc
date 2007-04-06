@@ -956,7 +956,7 @@ function services_dynamicdns_configure() {
 			echo "Starting Dynamic DNS service... ";
 
 		/* Set command parameters. */
-		$param = "--background --syslog --dyndns_system {$config['dynamicdns']['servername']} --alias {$config['dynamicdns']['hostname']} --username {$config['dynamicdns']['username']} --password {$config['dynamicdns']['password']}";
+		$param = "--background --syslog --dyndns_system {$config['dynamicdns']['provider']} --alias {$config['dynamicdns']['domainname']} --username {$config['dynamicdns']['username']} --password {$config['dynamicdns']['password']}";
 
 		/* Set additional command parameters. */
 		if ($config['dynamicdns']['updateperiod']) {
