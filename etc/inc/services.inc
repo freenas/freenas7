@@ -922,7 +922,7 @@ function services_upnp_configure() {
 
 		$content = "";
 		foreach($config['upnp']['content'] as $contentv) {
-			$content .= " --content=$contentv";
+			$content .= " --content=" . escapeshellarg($contentv);
 		}
 
 		/* Run uShare as daemon. */
@@ -970,7 +970,7 @@ function services_dynamicdns_configure() {
 		}
 
 		/* Set command parameters. */
-		$param = "--background --syslog --dyndns_system {$servicetype} --alias {$config['dynamicdns']['domainname']} --username {$config['dynamicdns']['username']} --password {$config['dynamicdns']['password']}";
+		$param = "--background --syslog --dyndns_system {$servicetype} --alias {$config['dynamicdns']['domainname']} --username ".escapeshellarg($config['dynamicdns']['username'])." --password ".escapeshellarg($config['dynamicdns']['password']);
 
 		/* Set additional command parameters. */
 		if ($config['dynamicdns']['updateperiod']) {

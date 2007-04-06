@@ -89,7 +89,6 @@ $tcpflags = array("fin", "syn", "rst", "psh", "ack", "urg");
 $fwupplatforms = array('net45xx', 'net48xx', 'generic-pc', 'wrap');
 
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
-	
 	/* check for bad control characters */	
 	foreach ($postdata as $pn => $pd) {
 		if (is_string($pd) && preg_match("/[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]/", $pd)) {
@@ -102,6 +101,39 @@ function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors
 			$input_errors[] = sprintf( gettext("The attribute '%s' is required."), $reqdfieldsn[$i]);
 		}
 	}	
+}
+
+/* Validate attribute type. */
+function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfieldst, $input_errors) {
+	/* Validate type. */
+	for ($i = 0; $i < count($reqdfields); $i++) {
+		if (isset($_POST[$reqdfields[$i]]) && ($_POST[$reqdfields[$i]] !== "")) {
+			$valid = false;
+			switch($reqdfieldst[$i]) {
+				case 'string':			$valid = is_string($_POST[$reqdfields[$i]]);
+														break;
+				case 'numeric':			$valid = is_numeric($_POST[$reqdfields[$i]]);
+														break;
+				case 'numericint':	$valid = is_numericint($_POST[$reqdfields[$i]]);
+														break;
+				case 'ipaddr':			$valid = is_ipaddr($_POST[$reqdfields[$i]]);
+														break;
+				case 'macaddr': 		$valid = is_macaddr($_POST[$reqdfields[$i]]);
+														break;
+				case 'subnet': 			$valid = is_subnet($_POST[$reqdfields[$i]]);
+														break;
+				case 'domain': 			$valid = is_domain($_POST[$reqdfields[$i]]);
+														break;
+				case 'hostname': 		$valid = is_hostname($_POST[$reqdfields[$i]]);
+														break;
+				case 'workgroup': 	$valid = is_workgroup($_POST[$reqdfields[$i]]);
+														break;
+			}
+			if (!$valid) {
+				$input_errors[] = sprintf( gettext("The attribute '%s' must be of the type '%s'."), $reqdfieldsn[$i], $reqdfieldst[$i]);
+			}
+		}
+	}
 }
 
 function print_input_errors($input_errors) {
