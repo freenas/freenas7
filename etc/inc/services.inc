@@ -744,6 +744,7 @@ SyslogFacility LOCAL3
 Protocol 2
 UseDNS no
 PasswordAuthentication yes
+PubkeyAuthentication yes
 Subsystem       sftp    /usr/libexec/sftp-server
 
 EOD;

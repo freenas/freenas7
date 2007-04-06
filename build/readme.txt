@@ -84,6 +84,7 @@ Bug fixs:
 - Fix script error in rc.shutdown when pressing Ctrl+halt+del key.
 - Fix the "You must add disks first" message with older software RAID formatted disk 
 - Fix bug in interface initialization code - the 'default' route was deleted.
+- Fix Bug: Add line PubkeyAuthentication on sshd_config file
 
 FreeNAS 0.684b :
 
