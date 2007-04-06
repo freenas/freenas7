@@ -85,6 +85,7 @@ Bug fixs:
 - Fix the "You must add disks first" message with older software RAID formatted disk 
 - Fix bug in interface initialization code - the 'default' route was deleted.
 - Fix Bug: Add line PubkeyAuthentication on sshd_config file
+- Fix UPnP bug - no supports blanks in directory names
 
 FreeNAS 0.684b :
 
