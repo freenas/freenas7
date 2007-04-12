@@ -122,7 +122,7 @@ function display_menu($menu) {
 			continue;
 		}
 		# Display menuitem.
-		echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='".$menuv['link']."' class='navlnk'>".gettext($menuv['desc'])."</a><br>";
+		echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='".$menuv['link']."' class='navlnk' title='".gettext($menuv['desc'])."'>".gettext($menuv['desc'])."</a><br>";
 	}
 
 	# Is menu expandable?
