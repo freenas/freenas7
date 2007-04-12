@@ -10,11 +10,11 @@ export FREENASDISTFILES="$WORKINGDIR/distfiles"
 export FREENAS="$WORKINGDIR/rootfs"
 export SVNDIR="$WORKINGDIR/svn"
 export PRODUCTNAME=`cat $SVNDIR/etc/prd.name`
+export VERSION=`cat $SVNDIR/etc/prd.version`
 
 # Local variables
 BOOTDIR="/usr/local/freenas/bootloader"
 TMPDIR="/tmp/freenastmp"
-VERSION=`cat $SVNDIR/etc/prd.version`
 ARCH=$(uname -p)
 
 # Path where to find Makefile includes

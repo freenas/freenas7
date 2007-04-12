@@ -1,5 +1,4 @@
 PORTNAME=	lcdproc
-PORTVERSION=	0.1
 CATEGORIES=	sysutils
 
 MAINTAINER=	votdev@gmx.de

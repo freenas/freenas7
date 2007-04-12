@@ -23,6 +23,12 @@ PACKAGES?=	$(WORKINGDIR)/packages
 # The temporary working directory.
 WRKDIR?=	${PACKAGES}/work/${PORTNAME}
 
+# Suffix to specify compilation options.
+PKGNAMESUFFIX?=	-$(PRODUCTNAME)
+
+# Version of software.
+PORTVERSION?=	$(VERSION)
+
 ################################################################
 # Special configuration if package depends on a port:
 # - Always clean and build port but do not install it.
