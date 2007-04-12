@@ -23,11 +23,11 @@ MKINCLUDESDIR="$SVNDIR/build/mk"
 # Dialog command
 DIALOG="dialog"
 
-#Size in MB of the MFS Root filesystem that will include all FreeBSD binary and FreeNAS WEbGUI/Scripts
-#Keep this file very small! This file is unzipped to a RAM disk at FreeNAS startup
-MFSROOT_SIZE="44"
-#Size in MB f the IMG file, that include zipped MFS Root filesystem image plus bootlaoder and kernel.
-IMG_SIZE="22"
+# Size in MB of the MFS Root filesystem that will include all FreeBSD binary and FreeNAS WEbGUI/Scripts
+# Keep this file very small! This file is unzipped to a RAM disk at FreeNAS startup
+MFSROOT_SIZE="45"
+# Size in MB f the IMG file, that include zipped MFS Root filesystem image plus bootloader and kernel.
+IMG_SIZE="23"
 
 # URL's:
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"

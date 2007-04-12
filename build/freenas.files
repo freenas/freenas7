@@ -365,6 +365,9 @@ usr/sbin/pkg_info
 # diskinfo -- get information about disk device
 usr/sbin/diskinfo
 
+# mtree - map a directory hierarchy
+usr/sbin/mtree
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
