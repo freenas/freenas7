@@ -886,6 +886,7 @@ kmem:*:5:65533::0:0:KMem Sandbox:/:/usr/sbin/nologin
 www:*:80:80::0:0:World Wide Web Owner:/nonexistent:/usr/sbin/nologin
 nobody:*:65534:65534::0:0:Unprivileged user:/nonexistent:/usr/sbin/nologin
 ftp:*:21:50::0:0:FTP user:/mnt:/sbin/nologin
+man:*:9:9::0:0:Mister Man Pages:/usr/share/man:/usr/sbin/nologin
 sshd:*:22:22::0:0:Secure Shell Daemon:/var/empty:/usr/sbin/nologin
 _dhcp:*:65:65::0:0:dhcp programs:/var/empty:/usr/sbin/nologin
 
@@ -959,6 +960,7 @@ tty:*:4:
 operator:*:5:root
 bin:*:7:
 staff:*:20:
+man:*:9:
 sshd:*:22:
 guest:*:31:
 ftp:*:50:
