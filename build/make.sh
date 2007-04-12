@@ -242,7 +242,7 @@ $DIALOG --title \"$PRODUCTNAME - Software packages/plugins\" \\
 	for package in $(cat $packages | tr -d '"'); do
 		echo "======================================================================"
 		cd $SVNDIR/build/packages/$package
-		make -I $MKINCLUDESDIR package
+		make -I $MKINCLUDESDIR clean package
 		[ 0 != $? ] && return 1 # successful?
 	done
 	rm $packages
