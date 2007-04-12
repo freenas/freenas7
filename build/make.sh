@@ -213,6 +213,43 @@ add_libs() {
   return 0
 }
 
+# Build packages/plugins.
+build_packages() {
+	tempfile=$WORKINGDIR/tmp$$
+	packages=$WORKINGDIR/packages$$
+
+	# Create list of available packages.
+	echo "#! /bin/sh
+$DIALOG --title \"$PRODUCTNAME - Software packages/plugins\" \\
+--checklist \"Select the packages/plugins you want to build.\" 21 75 14 \\" > $tempfile
+
+	for s in $SVNDIR/build/packages/*; do
+		[ ! -d "$s" ] && continue
+		package=`basename $s`
+		desc=`cat $s/pkg-descr`
+		state=`cat $s/pkg-state`
+		echo "\"$package\" \"$desc\" $state \\" >> $tempfile
+	done
+
+	# Display list of available packages.
+	sh $tempfile 2> $packages
+	if [ 0 != $? ]; then # successful?
+		rm $tempfile
+		return 1
+	fi
+	rm $tempfile
+
+	for package in $(cat $packages | tr -d '"'); do
+		echo "======================================================================"
+		cd $SVNDIR/build/packages/$package
+		make -I $MKINCLUDESDIR package
+		[ 0 != $? ] && return 1 # successful?
+	done
+	rm $packages
+
+	return 0;
+}
+
 # Creating msfroot
 create_mfsroot() {
 	echo "Generating the MFSROOT filesystem"
@@ -462,6 +499,7 @@ Menu:
 5 - Build bootloader
 6 - Add necessary libraries
 7 - Modify file permissions
+8 - Build packages
 * - Quit
 > '
   	read choice
@@ -473,6 +511,7 @@ Menu:
   		5) $SVNDIR/build/freenas-create-bootdir.sh -f $BOOTDIR;;
   		6) add_libs;;
   		7) $SVNDIR/build/freenas-modify-permissions.sh $FREENAS;;
+  		8) build_packages;;
   		*) main;;
   	esac
   	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
