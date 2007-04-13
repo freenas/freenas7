@@ -335,7 +335,7 @@ create_image() {
 	mdconfig -d -u 0
 	echo "IMG: Compress the IMG file"
 	gzip -9 $FREENAS_WORKINGDIR/image.bin
-	mv $FREENAS_WORKINGDIR/image.bin.gz $IMGFILENAME
+	mv $FREENAS_WORKINGDIR/image.bin.gz $FREENAS_ROOTDIR/$IMGFILENAME
 
 	# Cleanup.
 	echo "Cleaning tempo file"
@@ -389,12 +389,12 @@ create_iso () {
 	
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file on $FREENAS_TMPDIR folder"
-		cp $FREENAS_WORKINGDIR/$FREENAS_PRODUCTNAME-generic-pc-$FREENAS_VERSION.img $FREENAS_TMPDIR/$FREENAS_PRODUCTNAME-generic-pc.gz
+		cp $FREENAS_ROOTDIR/$FREENAS_PRODUCTNAME-generic-pc-$FREENAS_VERSION.img $FREENAS_TMPDIR/$FREENAS_PRODUCTNAME-generic-pc.gz
 	fi
 
 	echo "ISO: Generating the ISO file"
 	cp -p $FREENAS_SVNDIR/build/.mkisofsrc $HOME
-	mkisofs -b "boot/cdboot" -no-emul-boot -c "boot/boot.catalog" -d -r -o "$ISOFILENAME" $FREENAS_TMPDIR
+	mkisofs -b "boot/cdboot" -no-emul-boot -c "boot/boot.catalog" -d -r -o "$FREENAS_ROOTDIR/$ISOFILENAME" $FREENAS_TMPDIR
 	[ 0 != $? ] && return 1 # successful?
 	
 	echo "ISO: Cleaning tempo file"
