@@ -250,8 +250,9 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Software packages/plugins\" \\
 create_mfsroot() {
 	echo "Generating the MFSROOT filesystem"
 	cd $FREENAS_WORKINGDIR
+
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
-	[ -d $FREENAS_WORKINGDIR/svn ] && use_svn ;
+	[ -d $FREENAS_SVNDIR ] && use_svn ;
 
 	# Setting Version type and date
 	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
@@ -264,7 +265,7 @@ create_mfsroot() {
 	bsdlabel -w md0 auto
 	# format it as UFS
 	newfs -b 8192 -f 1024 -o space -m 0 /dev/md0c
-	# umount the /mnt directory if allready used
+	# umount the /mnt directory if already used
 	umount $FREENAS_TMPDIR
 	mount /dev/md0c $FREENAS_TMPDIR
 	cd $FREENAS_TMPDIR
@@ -277,7 +278,7 @@ create_mfsroot() {
 }
 
 create_image() {
-	echo "IMG: Generating FreeNAS IMG File (to be rawrite on CF/USB/HD)"
+	echo "IMG: Generating $FREENAS_PRODUCTNAME IMG File (to be rawrite on CF/USB/HD)"
 	[ -f image.bin ] && rm -f image.bin
 	PLATFORM="generic-pc"
 	echo $PLATFORM > $FREENAS_ROOTFS/etc/platform
@@ -353,7 +354,7 @@ create_iso () {
 	ISOFILENAME="$FREENAS_PRODUCTNAME-$FREENAS_VERSION.iso"
 	
 	if [ ! $LIGHT_ISO ]; then
-		echo "ISO: Generating the FreeNAS Image file:"
+		echo "ISO: Generating the $FREENAS_PRODUCTNAME Image file:"
 		create_image;
 	fi
 	
@@ -463,7 +464,7 @@ download_rootfs() {
 }
 
 update_sources() {
-	cd $FREENAS_WORKINGDIR
+	cd $FREENAS_ROOTDIR
 	svn co https://freenas.svn.sourceforge.net/svnroot/freenas/trunk svn
 
 	return 0
