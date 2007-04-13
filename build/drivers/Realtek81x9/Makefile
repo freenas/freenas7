@@ -1,8 +1,8 @@
 ARCHIVE=	rtl_bsd_drv_v172.tgz
-SRCDIR=	$(WORKINGDIR)/rtl_bsd_drv_v172
+SRCDIR=	${FREENAS_WORKINGDIR}/rtl_bsd_drv_v172
 
 install:	clean
-	@tar -zxvf ${.CURDIR}/files/$(ARCHIVE) -C $(WORKINGDIR)
+	@tar -zxvf ${.CURDIR}/files/$(ARCHIVE) -C ${FREENAS_WORKINGDIR}
 
 	@if [ ! -e /sys/modules/rl.orig ]; then \
 		cp -pvR /sys/modules/rl /sys/modules/rl.orig; \

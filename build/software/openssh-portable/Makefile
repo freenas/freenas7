@@ -10,14 +10,14 @@ pre-depends:
 	@${CP} -pv ${FILESDIR}/options /var/db/ports/openssh
 
 do-install:
-	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/sshd $(FREENAS)/usr/sbin
-	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/ssh $(FREENAS)/usr/bin
-	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/sftp-server $(FREENAS)/usr/libexec
-	@${CP} -pv ${PORTSDIR}/security/openssh-portable/work/openssh-*/moduli $(FREENAS)/etc/ssh
+	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/sshd ${FREENAS_ROOTFS}/usr/sbin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/ssh ${FREENAS_ROOTFS}/usr/bin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/security/openssh-portable/work/openssh-*/sftp-server ${FREENAS_ROOTFS}/usr/libexec
+	@${CP} -pv ${PORTSDIR}/security/openssh-portable/work/openssh-*/moduli ${FREENAS_ROOTFS}/etc/ssh
 
 # Create link to moduli file to prevent log entry:
 # WARNING: /usr/local/etc/ssh/moduli does not exist, using fixed modulus
-	@${MKDIR} -v $(FREENAS)/usr/local/etc/ssh
-	@${LN} -fsv /etc/ssh/moduli $(FREENAS)/usr/local/etc/ssh/moduli
+	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/etc/ssh
+	@${LN} -fsv /etc/ssh/moduli ${FREENAS_ROOTFS}/usr/local/etc/ssh/moduli
 
 .include "bsd.freenas.mk"

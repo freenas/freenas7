@@ -4,45 +4,45 @@ MAINTAINER=	votdev@gmx.de
 
 ARCHIVE=	samba-3.0.24.tar.gz
 URL=	http://us3.samba.org/samba/ftp/stable/$(ARCHIVE)
-SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
+SRCDIR=	${FREENAS_WORKINGDIR}/$$(basename $(ARCHIVE) .tar.gz)
 
 do-build:
-	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
-		cd $(FREENASDISTFILES) && fetch $(URL); \
+	-@if [ ! -f ${FREENAS_DISTFILES}/$(ARCHIVE) ]; then \
+		cd ${FREENAS_DISTFILES} && fetch $(URL); \
 	fi
 
-	@${TAR} -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
+	@${TAR} -zxvf ${FREENAS_DISTFILES}/$(ARCHIVE) -C ${FREENAS_WORKINGDIR}
 
 	@cd $(SRCDIR)/source && ./configure --without-cups --with-ads --disable-cups --with-pam --with-ldapsam --with-acl-support --with-winbind --with-pam_smbpass --with-logfilebase=/var/log/samba --with-piddir=/var/run --with-privatedir=/var/etc/private --with-configdir=/var/etc --with-lockdir=/var/run --with-piddir=/var/run --with-shared-modules=idmap_rid --with-pammodulesdir=/usr/local/lib --with-syslog --with-ldap
 	@${MAKE} -C $(SRCDIR)/source
 
 do-install:
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbd $(FREENAS)/usr/local/sbin
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/nmbd $(FREENAS)/usr/local/sbin
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/winbindd $(FREENAS)/usr/local/sbin
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/wbinfo $(FREENAS)/usr/local/bin
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/net $(FREENAS)/usr/local/bin
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbpasswd $(FREENAS)/usr/local/bin
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbstatus $(FREENAS)/usr/bin
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbcontrol $(FREENAS)/usr/bin
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbtree $(FREENAS)/usr/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/nmbd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/winbindd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/wbinfo ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/net ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbpasswd ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbstatus ${FREENAS_ROOTFS}/usr/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbcontrol ${FREENAS_ROOTFS}/usr/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/smbtree ${FREENAS_ROOTFS}/usr/bin
 
-	@${MKDIR} -v $(FREENAS)/usr/local/lib/samba/charset
-	@${MKDIR} -v $(FREENAS)/usr/local/lib/samba/rpc
-	@${MKDIR} -v $(FREENAS)/usr/local/lib/samba/pdb
-	@${MKDIR} -v $(FREENAS)/usr/local/samba/lib/idmap
-	@${MKDIR} -v $(FREENAS)/usr/local/samba/lib/vfs
+	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/charset
+	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/rpc
+	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/pdb
+	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/samba/lib/idmap
+	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
 
-	@${CP} -pv $(SRCDIR)/source/bin/CP*.so $(FREENAS)/usr/local/lib/samba/charset
-	@${CP} -pv $(SRCDIR)/source/codepages/*.dat $(FREENAS)/usr/local/lib/samba
-	@${CP} -pv $(SRCDIR)/source/po/*.* $(FREENAS)/usr/local/lib/samba
-	@${CP} -pv $(SRCDIR)/source/bin/recycle.so $(FREENAS)/usr/local/samba/lib/vfs
-	@${CP} -pv $(SRCDIR)/source/bin/rid.so $(FREENAS)/usr/local/samba/lib/idmap
+	@${CP} -pv $(SRCDIR)/source/bin/CP*.so ${FREENAS_ROOTFS}/usr/local/lib/samba/charset
+	@${CP} -pv $(SRCDIR)/source/codepages/*.dat ${FREENAS_ROOTFS}/usr/local/lib/samba
+	@${CP} -pv $(SRCDIR)/source/po/*.* ${FREENAS_ROOTFS}/usr/local/lib/samba
+	@${CP} -pv $(SRCDIR)/source/bin/recycle.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
+	@${CP} -pv $(SRCDIR)/source/bin/rid.so ${FREENAS_ROOTFS}/usr/local/samba/lib/idmap
 
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/pam_smbpass.so $(FREENAS)/usr/local/lib
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/pam_winbind.so $(FREENAS)/usr/local/lib
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/nsswitch/nss_winbind.so $(FREENAS)/usr/local/lib/nss_winbind.so.1
-	@${INSTALL_PROGRAM} $(SRCDIR)/source/nsswitch/nss_wins.so $(FREENAS)/usr/local/lib/nss_wins.so.1
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/pam_smbpass.so ${FREENAS_ROOTFS}/usr/local/lib
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/pam_winbind.so ${FREENAS_ROOTFS}/usr/local/lib
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/nsswitch/nss_winbind.so ${FREENAS_ROOTFS}/usr/local/lib/nss_winbind.so.1
+	@${INSTALL_PROGRAM} $(SRCDIR)/source/nsswitch/nss_wins.so ${FREENAS_ROOTFS}/usr/local/lib/nss_wins.so.1
 
 do-clean:
 	@${RM} -f -r $(SRCDIR)

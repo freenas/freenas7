@@ -15,8 +15,8 @@ do-build:
 do-install:
 	@${MAKE} -C $(SRCDIR) install
 
-	@${INSTALL_PROGRAM} /sbin/geli $(FREENAS)/sbin
-	@${INSTALL_PROGRAM} /lib/geom/geom_eli.so $(FREENAS)/lib/geom
+	@${INSTALL_PROGRAM} /sbin/geli ${FREENAS_ROOTFS}/sbin
+	@${INSTALL_PROGRAM} /lib/geom/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
 
 do-clean:
 	@${MAKE} -C $(SRCDIR) clean

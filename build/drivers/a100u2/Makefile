@@ -1,5 +1,5 @@
 ARCHIVE=	bsd4a100.zip
-SRCDIR=	$(WORKINGDIR)/a100
+SRCDIR=	${FREENAS_WORKINGDIR}/a100
 
 install:	clean
 	@mkdir -pv $(SRCDIR)

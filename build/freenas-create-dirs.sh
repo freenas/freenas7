@@ -7,7 +7,7 @@
 # Adapted for FreeNAS by Olivier Cochard-Labbé (http://www.freenas.org)
 # Modified by Volker Theile (votdev@gmx.de)
 
-MINIBSD_DIR=/usr/local/freenas/rootfs;
+MINIBSD_DIR=${FREENAS_ROOTFS};
 
 # Initialize variables.
 opt_f=0
@@ -17,7 +17,7 @@ while getopts 'fh' option
 do
 	case "$option" in
     "f")  opt_f=1;;
-    "h")  echo "$(basename $0): Create FreeNAS directory structure";
+    "h")  echo "$(basename $0): Create directory structure";
           echo "Common Options:";
           echo "  -f    Force executing this script";
           exit 1;;
@@ -28,7 +28,7 @@ done
 
 shift `expr $OPTIND - 1`
 
-echo "Create FreeNAS directory structure..."
+echo "Create directory structure..."
 
 if [ ! -z "$1" ]; then
   MINIBSD_DIR=$1;

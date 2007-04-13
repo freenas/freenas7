@@ -8,9 +8,9 @@ BUILD_DEPENDS=	nano:${PORTSDIR}/editors/nano
 
 do-install:
 .if ${ARCH} == "amd64" || ${ARCH} == "ia64"
-	@${INSTALL_PROGRAM} ${PORTSDIR}/editors/nano/work/nano*/nano $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/editors/nano/work/nano*/nano ${FREENAS_ROOTFS}/usr/local/bin
 .else
-	@${INSTALL_PROGRAM} ${PORTSDIR}/editors/nano/work/nano*/src/nano $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} ${PORTSDIR}/editors/nano/work/nano*/src/nano ${FREENAS_ROOTFS}/usr/local/bin
 .endif
 
 .include "bsd.freenas.mk"

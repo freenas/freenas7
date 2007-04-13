@@ -73,20 +73,22 @@ from scretch. After that use one of the following menus:
 FreeNAS 0.685b:
 
 Majors changes:
-- Add Dynamic DNS service.
+- Add Dynamic DNS service
 
 Minors changes:
-- Add checkbox to enable/disable 'large readwrite' support on CIFS page.
+- Add checkbox to enable/disable 'large readwrite' support on CIFS page
+- Enhance build scripts (to build packages/plugins)
 
 Bug fixs:
-- Add missing winbind/smbpass pam modules.
-- French accent are correclty displayed now.
-- Fix script error in rc.shutdown when pressing Ctrl+halt+del key.
+- Add missing winbind/smbpass pam modules
+- French accent are correclty displayed now
+- Fix script error in rc.shutdown when pressing Ctrl+halt+del key
 - Fix the "You must add disks first" message with older software RAID formatted disk 
 - Fix bug in interface initialization code - the 'default' route was deleted.
 - Fix Bug: Add line PubkeyAuthentication on sshd_config file
-- Fix UPnP bug - no supports blanks in directory names
+- Fix UPnP bug - now supports blanks in directory names
 - Fix UPnP bug - service was not started on system startup
+- Fix beep bug
 
 FreeNAS 0.684b :
 

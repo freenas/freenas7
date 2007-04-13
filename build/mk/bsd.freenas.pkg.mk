@@ -18,16 +18,16 @@ NO_INSTALL_MANPAGES?=	1
 FORCE_PKG_REGISTER?=	1
 
 # A top level directory where all packages go.
-PACKAGES?=	$(WORKINGDIR)/packages
+PACKAGES?=	${FREENAS_WORKINGDIR}/packages
 
 # The temporary working directory.
 WRKDIR?=	${PACKAGES}/work/${PORTNAME}
 
 # Suffix to specify compilation options.
-PKGNAMESUFFIX?=	-$(PRODUCTNAME)
+PKGNAMESUFFIX?=	-${FREENAS_PRODUCTNAME}
 
 # Version of software.
-PORTVERSION?=	$(VERSION)
+PORTVERSION?=	${FREENAS_VERSION}
 
 ################################################################
 # Special configuration if package depends on a port:

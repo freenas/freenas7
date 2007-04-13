@@ -1,8 +1,8 @@
 ARCHIVE=	FreeBSD-6.x-driver-source-9.4.0.1.tgz
-SRCDIR=	$(WORKINGDIR)/twa
+SRCDIR=	${FREENAS_WORKINGDIR}/twa
 
 install:	clean
-	@tar -zxvf ${.CURDIR}/files/$(ARCHIVE) -C $(WORKINGDIR)
+	@tar -zxvf ${.CURDIR}/files/$(ARCHIVE) -C ${FREENAS_WORKINGDIR}
 
 	@if [ ! -e "/sys/modules/twa.orig" ]; then \
     cp -pvR /sys/modules/twa /sys/modules/twa.orig; \

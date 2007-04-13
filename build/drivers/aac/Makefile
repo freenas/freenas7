@@ -1,5 +1,5 @@
 ARCHIVE=	aac6x-i386.tar
-SRCDIR=	$(WORKINGDIR)/aac
+SRCDIR=	${FREENAS_WORKINGDIR}/aac
 
 install:	clean
 	@mkdir -pv $(SRCDIR)

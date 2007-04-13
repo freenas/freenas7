@@ -4,20 +4,20 @@ MAINTAINER=	votdev@gmx.de
 
 ARCHIVE=	rsync-2.6.9.tar.gz
 URL=	http://samba.anu.edu.au/ftp/rsync/$(ARCHIVE)
-SRCDIR=	$(WORKINGDIR)/$$(basename $(ARCHIVE) .tar.gz)
+SRCDIR=	${FREENAS_WORKINGDIR}/$$(basename $(ARCHIVE) .tar.gz)
 
 do-build:
-	-@if [ ! -f $(FREENASDISTFILES)/$(ARCHIVE) ]; then \
-		cd $(FREENASDISTFILES) && fetch $(URL); \
+	-@if [ ! -f ${FREENAS_DISTFILES}/$(ARCHIVE) ]; then \
+		cd ${FREENAS_DISTFILES} && fetch $(URL); \
 	fi
 
-	${TAR} -zxvf $(FREENASDISTFILES)/$(ARCHIVE) -C $(WORKINGDIR)
+	${TAR} -zxvf ${FREENAS_DISTFILES}/$(ARCHIVE) -C ${FREENAS_WORKINGDIR}
 
 	@cd $(SRCDIR) && ./configure --with-rsyncd-conf=/var/etc
 	@${MAKE} -C $(SRCDIR)
 
 do-install:
-	@${INSTALL_PROGRAM} $(SRCDIR)/rsync $(FREENAS)/usr/local/bin
+	@${INSTALL_PROGRAM} $(SRCDIR)/rsync ${FREENAS_ROOTFS}/usr/local/bin
 
 do-clean:
 	@${RM} -f -r $(SRCDIR)
