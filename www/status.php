@@ -31,6 +31,7 @@ function doCmdT($title, $command, $isstr) {
 					$line = fgets($fd);
 					/* remove password tag contents */
 					$line = preg_replace("/<password>.*?<\\/password>/", "<password>xxxxx</password>", $line);
+					$line = preg_replace("/<admin_pass>.*?<\\/admin_pass>/", "<admin_pass>xxxxx</admin_pass>", $line);
 					$line = preg_replace("/<pre-shared-key>.*?<\\/pre-shared-key>/", "<pre-shared-key>xxxxx</pre-shared-key>", $line);
 					$line = str_replace("\t", "    ", $line);
 					echo htmlspecialchars($line,ENT_NOQUOTES);
