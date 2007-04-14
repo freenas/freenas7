@@ -64,10 +64,7 @@
 	
 	/* set up our hostname */
 	system_hostname_configure();
-	
-	/* make hosts file */
-	system_hosts_generate();
-	
+
 	/* generate resolv.conf */
 	system_resolvconf_generate();
 	
@@ -83,7 +80,10 @@
 	
 	/* set up Optional interfaces */
 	interfaces_optional_configure();
-	
+
+	/* make hosts file (requires local ip address) */
+	system_hosts_generate();
+
 	/* set up static routes */
 	system_routing_configure();
 	
