@@ -195,7 +195,8 @@ function disks_mount($mount)
 				/* COMMENT SECOND PART BEGIN
 				}
 				COMMENT SECOND PART END */
-			}	   
+			}
+			break;
 		   
 		case "ext2fs":
 			if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0)	{
@@ -206,7 +207,7 @@ function disks_mount($mount)
 				$result = 0;
 			}
 			else {
-				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a FAT fsck\"";
+				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a e2fsck\"";
 				mwexec($cmd);
 				exec("/usr/local/sbin/e2fsck -f -p {$devname}");
 				if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0) {
