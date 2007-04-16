@@ -5,6 +5,15 @@
 # Copyright (C) 2007 Volker Theile <votdev@gmx.de>.
 ################################################################
 
+# Check if environment variables are set.
+.for variable in FREENAS_ROOTDIR FREENAS_PRODUCTNAME FREENAS_VERSION
+.if !defined(${variable})
+check-makevars::
+	@${ECHO_MSG} "${PKGNAME}: Environment error: '${variable}' not defined."
+	@${FALSE}
+.endif
+.endfor
+
 # No files are needed to be fetched for this package.
 DISTFILES?=	
 
@@ -18,7 +27,7 @@ NO_INSTALL_MANPAGES?=	1
 FORCE_PKG_REGISTER?=	1
 
 # A top level directory where all packages go.
-PACKAGES?=	${FREENAS_WORKINGDIR}/packages
+PACKAGES?=	${FREENAS_ROOTDIR}/packages
 
 # The temporary working directory.
 WRKDIR?=	${PACKAGES}/work/${PORTNAME}

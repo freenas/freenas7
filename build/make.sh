@@ -211,6 +211,9 @@ add_libs() {
 
 # Build packages/plugins.
 build_packages() {
+	# Make sure packages directory exists.
+	[ ! -d "$FREENAS_ROOTDIR/packages" ] && mkdir -p $FREENAS_ROOTDIR/packages
+	
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
 	packages=$FREENAS_WORKINGDIR/packages$$
 
