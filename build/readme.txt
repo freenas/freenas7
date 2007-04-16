@@ -74,6 +74,7 @@ FreeNAS 0.685b:
 
 Majors changes:
 - Add Dynamic DNS service
+- Add packages build infrastructure
 
 Minors changes:
 - Add checkbox to enable/disable 'large readwrite' support on CIFS page
