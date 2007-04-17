@@ -179,10 +179,12 @@ function disks_mount($mount)
 			}
 			else {	
 				/* COMMENT FISR PART BEGIN: NTFSFIX DO'NT WORK
-				mwexec('/usr/bin/logger "Error detected for mounting disk $devname, starting a ntfsfix" ');
+				$cmd="/usr/bin/logger \"Error detected for mounting disk $devname, starting a ntfsfix\"";
+				mwexec($cmd);
 				exec("/usr/local/bin/ntfsfix {$devname}");
 				if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname -o force,show_sys_files,allow_other") == 0) {
-					mwexec('/usr/bin/logger "Disk {$devname} mounted using NTFS on {$mountname}" ');
+					$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on /mnt/{$mountname}\"";
+					mwexec($cmd);
 					$result = 0;
 				}
 				else	{ 
@@ -196,6 +198,7 @@ function disks_mount($mount)
 				}
 				COMMENT SECOND PART END */
 			}
+			
 			break;
 		   
 		case "ext2fs":
@@ -293,10 +296,16 @@ function disks_umount($mount)
 	$mountname = "/mnt/{$mount['sharename']}";
 
 	if (mwexec("/sbin/umount $mountname") == 0) {
-		if(@rmdir("$mountname"))
+		if(@rmdir("$mountname")) {
 			$result = 0;
-		else
+			$cmd="/usr/bin/logger \"Sucessfulled umounted {/mnt/{$mountname}\"";
+			mwexec($cmd);
+		}
+		else {
+			$cmd="/usr/bin/logger \"Unsucessfulled umounted {/mnt/{$mountname}\"";
+			mwexec($cmd);
 			$result = 1;
+		}
 	}
 	else
 		$result = 1;
