@@ -4,6 +4,9 @@
 # Created: 2/12/2006 by Scott Zahn
 # Modified: 11/2006 by Volker Theile (votdev@gmx.de)
 
+# Debug script
+#set -x
+
 # Global variables
 export FREENAS_ROOTDIR="/usr/local/freenas"
 export FREENAS_WORKINGDIR="$FREENAS_ROOTDIR/work"
@@ -31,7 +34,7 @@ MFSROOT_SIZE="45"
 IMG_SIZE="23"
 
 # Support boot splash
-ENABLE_SPLASH=1
+OPT_BOOTSPLASH=1
 
 # URL's:
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
@@ -332,7 +335,7 @@ create_image() {
 	cp $FREENAS_BOOTDIR/defaults/loader.conf $FREENAS_TMPDIR/boot/defaults/
 	cp $FREENAS_BOOTDIR/device.hints $FREENAS_TMPDIR/boot
 
-	if [ $ENABLE_SPLASH ]; then
+	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
@@ -394,7 +397,7 @@ create_iso () {
 	cp $FREENAS_BOOTDIR/defaults/loader.conf $FREENAS_TMPDIR/boot/defaults/
 	cp $FREENAS_BOOTDIR/device.hints $FREENAS_TMPDIR/boot
 
-	if [ $ENABLE_SPLASH ]; then
+	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
@@ -515,20 +518,24 @@ Menu:
 8 - Build packages
 * - Quit
 > '
-  	read choice
-  	case $choice in
-  		1) create_rootfs;;
-  		2) copy_files;;
-  		3) build_kernel;;
-  		4) build_softpkg;;
-  		5) $FREENAS_SVNDIR/build/freenas-create-bootdir.sh -f $FREENAS_BOOTDIR -b;;
-  		6) add_libs;;
-  		7) $FREENAS_SVNDIR/build/freenas-modify-permissions.sh $FREENAS_ROOTFS;;
-  		8) build_packages;;
-  		*) main;;
-  	esac
-  	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
-  	sleep 1
+		read choice
+		case $choice in
+			1)	create_rootfs;;
+			2)	copy_files;;
+			3)	build_kernel;;
+			4)	build_softpkg;;
+			5)	opt="-f";
+					if [ 0 != $OPT_BOOTSPLASH ]; then
+						opt="$opt -b" 
+					fi;
+					$FREENAS_SVNDIR/build/freenas-create-bootdir.sh $opt $FREENAS_BOOTDIR;;
+			6)	add_libs;;
+			7)	$FREENAS_SVNDIR/build/freenas-modify-permissions.sh $FREENAS_ROOTFS;;
+			8)	build_packages;;
+			*)	main;;
+		esac
+		[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
+		sleep 1
   done
 }
 
