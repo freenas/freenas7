@@ -81,6 +81,7 @@ Minors changes:
 - Enhance build scripts (to build packages/plugins)
 - Add missing pccard.conf file to get pccardd daemon working
 - Create /etc/hosts file after interface initialization (current IP was not available when using DHCP)
+- Add boot splash screen (just for fun)
 
 Bug fixs:
 - Add missing winbind/smbpass pam modules

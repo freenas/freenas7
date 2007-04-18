@@ -21,6 +21,7 @@ Rebrand 'FreeNAS'
 2. Replace the images:
    www/logo.gif
    www/logobig.gif
+   boot/splash.bmp
 
 3. Modify conf/config.xml.
    The following attributes may have been modified:
