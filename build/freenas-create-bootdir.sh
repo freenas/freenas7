@@ -15,6 +15,7 @@ opt_a=0
 opt_d=0
 opt_s=0
 opt_f=0
+opt_b=0
 
 # Parse the command-line options.
 while getopts 'adfhs' option
@@ -24,12 +25,14 @@ do
     "d")  opt_d=1;;
     "f")  opt_f=1;;
     "s")  opt_s=1;;
+    "b")	opt_b=1;;
     "h")  echo "$(basename $0): Build boot loader";
           echo "Common Options:";
           echo "  -a    Disable ACPI"
           echo "  -d    Enable debug"
           echo "  -s    Enable serial console";
           echo "  -f    Force executing this script";
+          echo "  -b    Enable boot splash";
           exit 1;;
     ?)    echo "$0: Bad option specified. Exiting...";
           exit 1;;
@@ -81,6 +84,12 @@ echo "Generate $MINIBSD_DIR/loader.conf"
 echo 'mfsroot_load="YES"
 mfsroot_type="mfs_root"
 mfsroot_name="/mfsroot"
+# Enable boot splash?
+if [ 0 != $opt_b ]; then
+	echo 'splash_bmp_load="YES"' >> $MINIBSD_DIR/loader.conf
+	echo 'bitmap_load="YES"' >> $MINIBSD_DIR/loader.conf
+	echo 'bitmap_name="/boot/splash.bmp"' >> $MINIBSD_DIR/loader.conf
+fi
 #Reduce Kernel timer frequency for better performace in Virtual environement
 #explanation here: http://ivoras.sharanet.org/freebsd/vmware.html
 kern.hz="100"

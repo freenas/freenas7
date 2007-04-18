@@ -341,3 +341,9 @@ device		iicbb
 device		ic
 device		iic
 device		iicsmb		# smb over i2c bridge
+
+# Splashscreen
+device		vga				# VGA video card driver
+device		splash		# Splash screen and screen saver support
+options		VESA
+options		SC_PIXEL_MODE

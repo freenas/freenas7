@@ -30,6 +30,9 @@ MFSROOT_SIZE="45"
 # Size in MB f the IMG file, that include zipped MFS Root filesystem image plus bootloader and kernel.
 IMG_SIZE="23"
 
+# Support boot splash
+ENABLE_SPLASH=1
+
 # URL's:
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
 URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
@@ -328,7 +331,12 @@ create_image() {
 	cp $FREENAS_BOOTDIR/support.4th $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/defaults/loader.conf $FREENAS_TMPDIR/boot/defaults/
 	cp $FREENAS_BOOTDIR/device.hints $FREENAS_TMPDIR/boot
-	
+
+	if [ $ENABLE_SPLASH ]; then
+		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
+		cp /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
+	fi
+
 	#Special for enabling serial port if no keyboard
 	#cp $FREENAS_BOOTDIR/boot.config $FREENAS_TMPDIR/
 	
@@ -385,7 +393,12 @@ create_iso () {
 	cp $FREENAS_BOOTDIR/support.4th $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/defaults/loader.conf $FREENAS_TMPDIR/boot/defaults/
 	cp $FREENAS_BOOTDIR/device.hints $FREENAS_TMPDIR/boot
-	
+
+	if [ $ENABLE_SPLASH ]; then
+		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
+		cp /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
+	fi
+
 	#Special test for enabling serial port if no keyboard
 	#Removed because meet some problem with some hardware (no keyboard detected)
 	#cp $FREENAS_BOOTDIR/boot.config $FREENAS_TMPDIR/
@@ -508,7 +521,7 @@ Menu:
   		2) copy_files;;
   		3) build_kernel;;
   		4) build_softpkg;;
-  		5) $FREENAS_SVNDIR/build/freenas-create-bootdir.sh -f $FREENAS_BOOTDIR;;
+  		5) $FREENAS_SVNDIR/build/freenas-create-bootdir.sh -f $FREENAS_BOOTDIR -b;;
   		6) add_libs;;
   		7) $FREENAS_SVNDIR/build/freenas-modify-permissions.sh $FREENAS_ROOTFS;;
   		8) build_packages;;
