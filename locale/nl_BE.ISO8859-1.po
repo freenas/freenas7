@@ -1178,12 +1178,6 @@ msgstr "Gedeelde map bewerken"
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "Dit bepaalt of de gedeelde map zichtbaar is in de lijst van beschikbare gedeelde mappen in het netwerkoverzicht."
 
-msgid "The maximum Number of client must be a number."
-msgstr "Het maximum aantal clients moet een getal zijn."
-
-msgid "The max con per ip must be a number."
-msgstr "Het maximum aantal connecties per IP adres moet een getal zijn."
-
 msgid "The maximum idle time be a number."
 msgstr "De maximum inactiviteitsduur moet een getal zijn."
 

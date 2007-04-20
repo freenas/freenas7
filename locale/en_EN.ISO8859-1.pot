@@ -1224,12 +1224,6 @@ msgstr ""
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr ""
 
-msgid "The maximum Number of client must be a number."
-msgstr ""
-
-msgid "The max con per ip must be a number."
-msgstr ""
-
 msgid "The maximum idle time be a number."
 msgstr ""
 
@@ -2386,4 +2380,10 @@ msgid "How often the IP is updated even if it is not changed. The period is in s
 msgstr ""
 
 msgid "The attribute '%s' must be of the type '%s'."
+msgstr ""
+
+msgid "The number of clients must be between 1 and 50."
+msgstr ""
+
+msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""

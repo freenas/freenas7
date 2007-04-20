@@ -1206,12 +1206,6 @@ msgstr "共有の編集"
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "共有が net view とブラウズリスト内の使用可能な共有リストの中で見つかるかにかかわらずにコントロールされます．"
 
-msgid "The maximum Number of client must be a number."
-msgstr "クライアント数の最大値は数字で指定して下さい．"
-
-msgid "The max con per ip must be a number."
-msgstr "1IP あたりの最大接続数は数字で指定して下さい．"
-
 msgid "The maximum idle time be a number."
 msgstr "アイドル時間の最大数は数字で指定して下さい．"
 

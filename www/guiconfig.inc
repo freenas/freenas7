@@ -97,7 +97,7 @@ function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors
 	}
 	
 	for ($i = 0; $i < count($reqdfields); $i++) {
-		if (!isset($_POST[$reqdfields[$i]]) || ($_POST[$reqdfields[$i]] === "")) {
+		if (!isset($postdata[$reqdfields[$i]]) || ($postdata[$reqdfields[$i]] === "")) {
 			$input_errors[] = sprintf( gettext("The attribute '%s' is required."), $reqdfieldsn[$i]);
 		}
 	}	
@@ -107,26 +107,26 @@ function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors
 function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfieldst, $input_errors) {
 	/* Validate type. */
 	for ($i = 0; $i < count($reqdfields); $i++) {
-		if (isset($_POST[$reqdfields[$i]]) && ($_POST[$reqdfields[$i]] !== "")) {
+		if (isset($postdata[$reqdfields[$i]]) && ($postdata[$reqdfields[$i]] !== "")) {
 			$valid = false;
 			switch($reqdfieldst[$i]) {
-				case 'string':			$valid = is_string($_POST[$reqdfields[$i]]);
+				case 'string':			$valid = is_string($postdata[$reqdfields[$i]]);
 														break;
-				case 'numeric':			$valid = is_numeric($_POST[$reqdfields[$i]]);
+				case 'numeric':			$valid = is_numeric($postdata[$reqdfields[$i]]);
 														break;
-				case 'numericint':	$valid = is_numericint($_POST[$reqdfields[$i]]);
+				case 'numericint':	$valid = is_numericint($postdata[$reqdfields[$i]]);
 														break;
-				case 'ipaddr':			$valid = is_ipaddr($_POST[$reqdfields[$i]]);
+				case 'ipaddr':			$valid = is_ipaddr($postdata[$reqdfields[$i]]);
 														break;
-				case 'macaddr': 		$valid = is_macaddr($_POST[$reqdfields[$i]]);
+				case 'macaddr': 		$valid = is_macaddr($postdata[$reqdfields[$i]]);
 														break;
-				case 'subnet': 			$valid = is_subnet($_POST[$reqdfields[$i]]);
+				case 'subnet': 			$valid = is_subnet($postdata[$reqdfields[$i]]);
 														break;
-				case 'domain': 			$valid = is_domain($_POST[$reqdfields[$i]]);
+				case 'domain': 			$valid = is_domain($postdata[$reqdfields[$i]]);
 														break;
-				case 'hostname': 		$valid = is_hostname($_POST[$reqdfields[$i]]);
+				case 'hostname': 		$valid = is_hostname($postdata[$reqdfields[$i]]);
 														break;
-				case 'workgroup': 	$valid = is_workgroup($_POST[$reqdfields[$i]]);
+				case 'workgroup': 	$valid = is_workgroup($postdata[$reqdfields[$i]]);
 														break;
 			}
 			if (!$valid) {

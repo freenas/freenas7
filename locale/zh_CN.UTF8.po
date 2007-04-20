@@ -1244,12 +1244,6 @@ msgstr "编辑"
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "控制这个分享资料夹能不能直接的被浏览器看到。"
 
-msgid "The maximum Number of client must be a number."
-msgstr "连線数目上線必须是一个数字。"
-
-msgid "The max con per ip must be a number."
-msgstr "相同IP的连線数目必须是一个数字。"
-
 msgid "The maximum idle time be a number."
 msgstr "失效时间必须是一个数字。"
 

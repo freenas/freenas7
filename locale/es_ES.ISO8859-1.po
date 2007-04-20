@@ -1110,12 +1110,6 @@ msgstr "This controls whether this share is seen in the list of available shares
 msgid "FTP"
 msgstr "FTP"
 
-msgid "The maximum Number of client must be a number."
-msgstr "The maximum Number of client must be a number."
-
-msgid "The max con per ip must be a number."
-msgstr "The max con per ip must be a number."
-
 msgid "The maximum idle time be a number."
 msgstr "The maximum idle time be a number."
 

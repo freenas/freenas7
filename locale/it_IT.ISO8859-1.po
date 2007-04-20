@@ -1194,12 +1194,6 @@ msgstr "Modifica condivisione"
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "Controlla se questa condivisione &egrave; visibile nella lista di quelle disponibili in Risorse di Rete."
 
-msgid "The maximum Number of client must be a number."
-msgstr "Il massimo numero di client deve essere numerico."
-
-msgid "The max con per ip must be a number."
-msgstr "Max conn. per ip deve essere numerico."
-
 msgid "The maximum idle time be a number."
 msgstr "Il tempo di idle max deve essere numerico."
 

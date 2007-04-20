@@ -1203,12 +1203,6 @@ msgstr "Editare partajare"
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "Se stabileste daca partajarea definita este vizibila sau nu in modul Rasfoire."
 
-msgid "The maximum Number of client must be a number."
-msgstr "Numar maxim de clienti invalid."
-
-msgid "The max con per ip must be a number."
-msgstr "Numar maxim de conexiuni pe IP invalid."
-
 msgid "The maximum idle time be a number."
 msgstr "Timp maxim mod idle invalid."
 

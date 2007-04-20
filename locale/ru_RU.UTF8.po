@@ -1215,12 +1215,6 @@ msgstr "Редактировать общий ресурс"
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "Этим управляется будет ли общий ресурс виден в списке доступных ресурсов в Сетевом окружении."
 
-msgid "The maximum Number of client must be a number."
-msgstr "Максимальное количество клиентов должно быть числом."
-
-msgid "The max con per ip must be a number."
-msgstr "Макс. число соединений с одного IP должно быть числом."
-
 msgid "The maximum idle time be a number."
 msgstr "Максимальное время простоя должно быть числом."
 

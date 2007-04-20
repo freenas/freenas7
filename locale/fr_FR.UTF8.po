@@ -1224,12 +1224,6 @@ msgstr "Modifier un partage"
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "Indique si le partage doit être visible depuis la vue réseau du client."
 
-msgid "The maximum Number of client must be a number."
-msgstr "Le nombre maximum de clients doit être un entier."
-
-msgid "The max con per ip must be a number."
-msgstr "Le nombre maximum de connexions par IP doit être un entier."
-
 msgid "The maximum idle time be a number."
 msgstr "La durée maximum d'inactivité doit être un entier."
 

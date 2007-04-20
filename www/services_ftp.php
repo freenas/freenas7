@@ -73,11 +73,11 @@ if ($_POST) {
 	if ($_POST['enable'] && !is_port($_POST['port'])) {
 		$input_errors[] = gettext("The TCP port must be a valid port number.");
 	}
-	if ($_POST['enable'] && !is_numericint($_POST['numberclients'])) {
-		$input_errors[] = gettext("The maximum Number of client must be a number.");
+	if ($_POST['enable'] && ((1 > $_POST['numberclients']) || (50 < $_POST['numberclients']))) {
+		$input_errors[] = gettext("The number of clients must be between 1 and 50.");
 	}
-	if ($_POST['enable'] && !is_numericint($_POST['maxconperip'])) {
-		$input_errors[] = gettext("The max con per ip must be a number.");
+	if ($_POST['enable'] && (0 > $_POST['maxconperip'])) {
+		$input_errors[] = gettext("The max. connection per IP must be either 0 (unlimited) or greater.");
 	}
 	if ($_POST['enable'] && !is_numericint($_POST['timeout'])) {
 		$input_errors[] = gettext("The maximum idle time be a number.");

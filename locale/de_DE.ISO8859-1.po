@@ -1215,12 +1215,6 @@ msgstr "Bearbeite Freigabe"
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr "Dieser Parameter dient dazu, eine Freigabe in der Liste der verf&uuml;gbaren Freigaben im Net View oder in der Browser List sichtbar zu machen."
 
-msgid "The maximum Number of client must be a number."
-msgstr "Die h&ouml;chste Anzahl an Clients muss eine Zahl sein."
-
-msgid "The max con per ip must be a number."
-msgstr "Die h&ouml;chste Anzahl an Verbindungen von einer IP-Adresse muss eine Zahl sein."
-
 msgid "The maximum idle time be a number."
 msgstr "Die maximale Leerlaufzeit muss eine Zahl sein."
 
