@@ -93,6 +93,7 @@ Bug fixs:
 - Fix UPnP bug - now supports blanks in directory names
 - Fix UPnP bug - service was not started on system startup
 - Fix beep bug
+- Fix bug in ftp services page - Handle incorrect values for 'Number of clients' and 'Max. conn. per IP'.
 
 FreeNAS 0.684b :
 
