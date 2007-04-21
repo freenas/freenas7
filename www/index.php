@@ -127,7 +127,9 @@ $pgtitle_omit = true;
         exec("/sbin/sysctl -n vm.stats.vm.v_active_count vm.stats.vm.v_inactive_count " . "vm.stats.vm.v_wire_count vm.stats.vm.v_cache_count vm.stats.vm.v_free_count hw.physmem", $memory);
         $totalMem = $memory[0] + $memory[1] + $memory[2] + $memory[3] + $memory[4];
         $freeMem = $memory[4] + $memory[1];
-        $usedMem = $totalMem - $freeMem;
+		
+		$ram_info=get_ram_info();
+        $usedMem = $ram_info[1] - $ram_info[2];
         $memUsage = round(($usedMem * 100) / $totalMem, 0);
 
         echo " <img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
