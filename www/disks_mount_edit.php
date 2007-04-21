@@ -95,7 +95,7 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['sharename'] = $a_mount[$id]['sharename'];
 	$pconfig['desc'] = $a_mount[$id]['desc'];
 } else {
-$pconfig['partition'] = "gpt";
+$pconfig['partition'] = "p1";
 }
 
 if ($_POST) {
@@ -113,6 +113,14 @@ if ($_POST) {
 
 	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
 		$input_errors[] = gettext("The description name contain invalid characters.");
+	}
+	
+	/* if (($_POST['partition'] == "p1") && ($_POST['fstype'] != "ufs")); {
+		$input_errors[] = gettext("GPT can be used for UFS type only.");
+	} */
+	
+	if (($_POST['partition'] == "p1") && (($_POST['fstype'] == "msdosfs") || ($_POST['fstype'] == "cd9660") || ($_POST['fstype'] == "ntfs") || ($_POST['fstype'] == "ext2fs")))  {
+		$input_errors[] = gettext("EFI/GPT partition can be use with UFS only.");
 	}
 
 	$device=$_POST['mdisk'].$_POST['partition'];
@@ -189,7 +197,7 @@ if ($_POST) {
       <td valign="top" class="vncellreq"><?=gettext("Partition") ; ?></td>
       <td class="vtable"> 
         <select name="partition" class="formfld" id="partition">
-		  <option value="p1" <?php if ($pconfig['partition'] == "gpt") echo "selected"; ?>>EFI GPT</option>
+		  <option value="p1" <?php if ($pconfig['partition'] == "p1") echo "selected"; ?>>EFI GPT</option>
           <option value="s1" <?php if ($pconfig['partition'] == "s1") echo "selected"; ?>>1</option>
           <option value="s2" <?php if ($pconfig['partition'] == "s2") echo "selected"; ?>>2</option>
           <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
