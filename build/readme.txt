@@ -82,6 +82,7 @@ Minors changes:
 - Add missing pccard.conf file to get pccardd daemon working
 - Create /etc/hosts file after interface initialization (current IP was not available when using DHCP)
 - Add boot splash screen (just for fun)
+- Tune graid5 RAM use depending of RAM detected
 
 Bug fixs:
 - Add missing winbind/smbpass pam modules

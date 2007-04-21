@@ -191,7 +191,7 @@ function disks_mount($mount)
 				COMMENT FIRST PART END */
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/$mountname");
-					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname}! using NTFS\"";
+					$cmd="/usr/bin/logger \"ERROR for mounting  {$devname}! using NTFS: Try to fix error on this partition with MS Windows\"";
 					mwexec($cmd);
 					$result = 1;
 				/* COMMENT SECOND PART BEGIN
