@@ -298,11 +298,11 @@ function disks_umount($mount)
 	if (mwexec("/sbin/umount $mountname") == 0) {
 		if(@rmdir("$mountname")) {
 			$result = 0;
-			$cmd="/usr/bin/logger \"Sucessfulled umounted {/mnt/{$mountname}\"";
+			$cmd="/usr/bin/logger \"Sucessfull umounted /mnt/{$mountname}\"";
 			mwexec($cmd);
 		}
 		else {
-			$cmd="/usr/bin/logger \"Unsucessfulled umounted {/mnt/{$mountname}\"";
+			$cmd="/usr/bin/logger \"ERROR for umount /mnt/{$mountname}\"";
 			mwexec($cmd);
 			$result = 1;
 		}
@@ -712,7 +712,11 @@ function disks_raid_graid5_configure()
 				$cmd .= "{$diskrv} ";
 			}			
 			mwexec($cmd);
-		}	
+		}
+		
+		//Tune graid5
+		disks_raid_graid5_tune();
+		
 	}
 
 	return 0;
@@ -827,12 +831,47 @@ function disks_raid_graid5_start()
 		// Load geom raid5 module
 		mwexec("/sbin/graid5 load");
 		
-		if ($g['booting'])
+		//Tune graid5
+		disks_raid_graid5_tune();
+		
+		if ($g['booting']) {
 			echo "done\n";
+		}
+		
 	}
-
+	
 	return 0;
 }
+
+/* Optimize geom raid5 RAM use */
+function disks_raid_graid5_tune()
+{
+	
+	$ram_info=get_ram_info();
+	$physical_ram = $ram_info[0] / 1024 / 1024 ;
+	if ($physical_ram <= 128) {
+	
+		$cmd="/usr/bin/logger \"Optimizing graid5 for system with less or 128MB of RAM\"";
+		mwexec($cmd);
+		
+		mwexec('sysctl value kern.geom.raid5.maxwql=10');
+		mwexec('sysctl value kern.geom.raid5.maxmem=1100000');
+	}
+	else if ($physical_ram <= 256) {
+		$cmd="/usr/bin/logger \"Optimizing graid5 for system with loss or 256MB of RAM\"";
+		mwexec($cmd);
+		
+		mwexec('sysctl value kern.geom.raid5.maxwql=20');
+		mwexec('sysctl value kern.geom.raid5.maxmem=2000000');
+	}
+	
+	else {
+		$cmd="/usr/bin/logger \"512MB of RAM or more detected... No need to optimize RAM use for graid5\"";
+		mwexec($cmd);
+	
+	}
+}
+
 
 /* Stop all geom RAID volumes */
 function disks_raid_stop()
