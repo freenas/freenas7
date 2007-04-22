@@ -746,7 +746,7 @@ function system_beep_up()
 
 	/* Test if beep is enabled and send sound */
 	if (!isset($config['system']['disablebeep'])) {
-		if (is_file("/dev/speaker")) {
+		if (file_exists("/dev/speaker")) {
 			exec('echo O3L30cO4L30cO5L30cO5L30g > /dev/speaker');
 		}
 	}
@@ -760,7 +760,7 @@ function system_beep_down()
 
 	/* Test if beep is enabled and send sound */
 	if (!isset($config['system']['disablebeep'])) {
-		if (is_file("/dev/speaker")) {
+		if (file_exists("/dev/speaker")) {
 			exec('echo O5L30gO5L30cO4L30cO3L30c > /dev/speaker');
 		}
 	}
