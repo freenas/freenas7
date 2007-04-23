@@ -843,32 +843,29 @@ function disks_raid_graid5_start()
 	return 0;
 }
 
-/* Optimize geom raid5 RAM use */
+/* Optimize geom raid5 RAM use. */
 function disks_raid_graid5_tune()
 {
-	
-	$ram_info=get_ram_info();
-	$physical_ram = $ram_info[0] / 1024 / 1024 ;
-	if ($physical_ram <= 128) {
-	
+	/* Get RAM informations. */
+	$raminfo = get_ram_info();
+	/* Calculate real RAM in MB. */
+	$realram = $raminfo['real'] / 1024 / 1024;
+
+	if ($realram <= 128) {
 		$cmd="/usr/bin/logger \"Optimizing graid5 for system with less or 128MB of RAM\"";
 		mwexec($cmd);
-		
+
 		mwexec('sysctl value kern.geom.raid5.maxwql=10');
 		mwexec('sysctl value kern.geom.raid5.maxmem=1100000');
-	}
-	else if ($physical_ram <= 256) {
+	} else if ($realram <= 256) {
 		$cmd="/usr/bin/logger \"Optimizing graid5 for system with loss or 256MB of RAM\"";
 		mwexec($cmd);
-		
+
 		mwexec('sysctl value kern.geom.raid5.maxwql=20');
 		mwexec('sysctl value kern.geom.raid5.maxmem=2000000');
-	}
-	
-	else {
+	} else {
 		$cmd="/usr/bin/logger \"512MB of RAM or more detected... No need to optimize RAM use for graid5\"";
 		mwexec($cmd);
-	
 	}
 }
 

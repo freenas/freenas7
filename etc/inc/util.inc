@@ -1459,21 +1459,18 @@ function get_product_buildtime() {
 	return chop(file_get_contents("{$g['etc_path']}/prd.version.buildtime"));
 }
 
-/* Get the RAM information 
-returns an array listing the amount of
-memory installed in the hardware
-[0]Harwdware Real Mem (hw.physmem)
-[1]TotalMem
-[2]FreeMem
-*/
-
+/* Get the RAM information. Returns an array listing the amount of memory installed in the hardware. */
 function get_ram_info() {
-	global $g;
-	exec("/sbin/sysctl -n vm.stats.vm.v_active_count vm.stats.vm.v_inactive_count " . "vm.stats.vm.v_wire_count vm.stats.vm.v_cache_count vm.stats.vm.v_free_count hw.physmem", $memory);
+	exec("/sbin/sysctl -n vm.stats.vm.v_active_count vm.stats.vm.v_inactive_count vm.stats.vm.v_wire_count vm.stats.vm.v_cache_count vm.stats.vm.v_free_count hw.physmem", $memory);
 	exec("/sbin/sysctl -n hw.realmem", $hwmemory);
-    $totalMem = $memory[0] + $memory[1] + $memory[2] + $memory[3] + $memory[4];
-    $freeMem = $memory[4] + $memory[1];
-	
-	return array($hwmemory[0],$totalMem,$freeMem);
+
+	$raminfo = array();
+	$raminfo['real'] = $hwmemory;
+	$raminfo['physical'] = $memory[5];
+	$raminfo['total'] = $memory[0] + $memory[1] + $memory[2] + $memory[3] + $memory[4];
+	$raminfo['free'] = $memory[4] + $memory[1];
+	$raminfo['used'] = $raminfo['total'] - $raminfo['free'];
+
+	return $raminfo;
 }
 ?>
