@@ -63,6 +63,69 @@ function disks_mount_all()
 	
 }
 
+/* Mount all ISO files */
+function disks_mount_iso_all()
+{
+	global $config, $g;
+	
+	if ($g['booting'])
+		echo "Mounting ISO files... ";
+	
+	/* For each device configured:*/
+	
+	if (is_array($config['mounts']['iso'])) 	{
+		foreach ($config['mounts']['iso'] as $mount_iso) 		{
+			/* Advanced Umount filesystem if not booting mode (mount edition)*/
+			if (!$g['booting'])
+				disks_umount_iso_adv($mount);
+								
+			/* mount filesystem */
+			disks_mount_iso($mount);	
+		
+		}
+	}
+			
+	if ($g['booting'])
+		echo "done\n";
+	
+	return 0;
+	
+}
+
+/* Mount an ISO file
+Return 0 if sucessful, 1 if error */
+
+function disks_mount_iso($mount_iso)
+{
+	global $config, $g;
+	
+	/* Create one directory for each device under mnt */
+	$mountname = escapeshellcmd($mount_iso['sharename']);
+	@mkdir ("/mnt/{$mountname}",0777);
+	
+	/* Mount the ISO file. */
+	$filename = escapeshellcmd($mount_iso['fullname']);
+	$md_id = escapeshellcmd($mount_iso['md_id']);
+	
+	if (mwexec(" /sbin/mdconfig -a -t vnode -f {$filename} -u {$md_id}") == 0) {
+		if (mwexec(" /sbin/mount -t cd9660 /dev/md{$md_id} /mnt/$mountname") == 0) {
+	
+				/* Change this directory into 777 mode */
+				mwexec("/bin/chmod 777 /mnt/$mountname");
+				$cmd="/usr/bin/logger \"ISO file  {$devname} mounted on /mnt/{$mountname}\"";
+				mwexec($cmd);
+				$result = 0;
+		} else {
+			/* If  error for mounting iso file*/
+			$cmd="/usr/bin/logger \"Error for mounting ISO file  {$filename}\"";
+		}
+				
+	} else {
+		/* If  error for md device*/
+		$cmd="/usr/bin/logger \"Error for reading file {$filename}\"";
+	}
+}
+
 /* Mount using the configured mount given in parameter
 Return 0 if sucessful, 1 if error */
 function disks_mount($mount)
@@ -375,13 +438,42 @@ function disks_umount_adv($mount)
 	return $result;
 }
 
+/* Advanced unmount the specified ISO mount point without using the sharename value
+Used when changing the 'sharename': Need to umount the old unknow sharename
+Return 0 if successful, 1 if error */
+function disks_umount_iso_adv($mount)
+{
+	
+	$md_id="md" . "{$mount['md_id']}";
+		
+	// get the mount list
+	$detmount = get_mounts_list();
+	
+	//Look for the mount point in all mounted point corresponding to the md id
+	
+	foreach ($detmount as $detmountk => $detmountv) {
+		// If we found the mount point on the device
+		if (strcmp($detmountv['fullname'],$md_id) == 0) {
+			$mountname="{$detmountv['mp']}";
+		}
+	}
+	
+	if ($mountname) {
+		exec("/sbin/umount $mountname");
+		@rmdir ("$mountname");
+		return 0;
+	}
+	else
+		$result = 1;
+	return $result;
+}
+
 // This option check if this fullname (/dev/ad0s1) is mounted
 // Return 0 if not, 1 if yes
 function disks_check_mount_fullname($fullname)
 {
 	$detmount = get_mounts_list();
 	$status=0;
-	//print_r($detmount);
 	foreach ($detmount as $detmountk => $detmountv) {
 		if (strcmp($detmountv['fullname'],$fullname) == 0) {
 			$status=1;
@@ -390,12 +482,12 @@ function disks_check_mount_fullname($fullname)
 	}
 	return $status;
 }
-
+// This option check if the sharename (/mnt/tutu) is mounted
+// Return 0 if not, 1 if yes
 function disks_check_mount_sharename($sharename)
 {
 	$detmount = get_mounts_list();
 	$status=0;
-	//print_r($detmount);
 	foreach ($detmount as $detmountk => $detmountv) {
 		if (strcmp($detmountv['sharename'],$sharename) == 0) {
 			$status=1;
@@ -474,6 +566,12 @@ function disks_umount_all()
 	
 	/* Sync disks*/
 	mwexec("/bin/sync");
+	
+	if (is_array($config['mounts']['iso'])) 	{
+		foreach ($config['mounts']['iso'] as $mount_iso) 	{
+		disks_umount($mount_iso);
+		}
+	}
 					
 	if (is_array($config['mounts']['mount'])) 	{
 		foreach ($config['mounts']['mount'] as $mountent) 	{

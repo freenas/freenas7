@@ -93,6 +93,7 @@ if(isset($_GET['action'])) {
         <li class="tabinact"><a href="disks_mount.php"><?=gettext("Manage");?></a></li>
         <li class="tabact"><a href="disks_mount_tools.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Tools");?></a></li>
         <li class="tabinact"><a href="disks_mount_fsck.php"><?=gettext("Fsck");?></a></li>
+		<li class="tabinact"><a href="disks_mount_iso.php"><?=gettext("ISO");?></a></li>
       </ul>
     </td>
   </tr>

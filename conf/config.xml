@@ -162,6 +162,7 @@
 		-->
 	</geli>
 	<mounts>
+		<iso_md_id>2</iso_md_id>
 		<!--
 		<mount>
 			<mdisk>/dev/xxx</mdisk>

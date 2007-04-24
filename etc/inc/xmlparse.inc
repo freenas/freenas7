@@ -39,7 +39,7 @@ $listtags = explode(" ", "key dnsserver winsserver disk vdisk diskr sharetosync 
 	"encryption-algorithm-option hash-algorithm-option hosts onetoone hidemount " .
 	"staticmap route pipe queue shellcmd cacert earlyshellcmd user group " .
 	"servernat nfsnetworks passthrumac allowedip mount vlan domainoverrides " .
-	"minute hour day month weekday content rsyncclient rsynclocal");
+	"minute hour day month weekday content rsyncclient rsynclocal iso");
 
 function startElement($parser, $name, $attrs) {
 	global $depth, $curpath, $config, $havedata, $listtags;
