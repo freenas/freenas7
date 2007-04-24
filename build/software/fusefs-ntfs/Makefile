@@ -9,7 +9,7 @@ pre-depends:
 # Patch fusefs-ntfs port.
 	-@if [ ! -e /usr/ports/sysutils/fusefs-ntfs.orig ]; then \
 		cp -r /usr/ports/sysutils/fusefs-ntfs /usr/ports/sysutils/fusefs-ntfs.orig; \
-		${PATCH} -E -d /usr/ports/sysutils -i ${FILESDIR}/patch-fusefs-ntfs-1.417.diff; \
+		${PATCH} -E -u -d /usr/ports/sysutils < ${FILESDIR}/patch-fusefs-ntfs-1.417.diff; \
 	fi
 
 # Copy options file
