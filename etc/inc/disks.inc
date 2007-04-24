@@ -70,18 +70,15 @@ function disks_mount($mount)
 	global $config, $g;
 	
 	/* Create one directory for each device under mnt */
-	
-	$mountname=escapeshellcmd($mount['sharename']);
-		
-	@mkdir ("/mnt/$mountname",0777);
-			
-	/* mount the filesystems */
-	
-	$devname=escapeshellcmd($mount['fullname']);
+	$mountname = escapeshellcmd($mount['sharename']);
+	@mkdir ("/mnt/{$mountname}",0777);
+
+	/* Mount the filesystem. */
+	$devname = escapeshellcmd($mount['fullname']);
 	
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
 	if ($g['booting']) {
-		 if (is_array($config['geli']['vdisk'])) {
+		if (is_array($config['geli']['vdisk'])) {
 			$a_geli = $config['geli']['vdisk'];
 			if (array_search_ex($mount['mdisk'], $a_geli, "fullname")) {
 				echo "\nSkip mounting {$mount['sharename']}: Passphrase need.";
@@ -91,98 +88,90 @@ function disks_mount($mount)
 			}
 		}
 	}
+
 	/* check the fileystem only if there is a problem*/
 	/* This part is too stupid: I must read the FreBSD start script for use the same intelligent method for checking hard drive */
-	
 	switch ($mount['fstype']) 	{
 		case "ufs":
-			
-			if (mwexec("/sbin/mount -t ufs  -o acls $devname /mnt/$mountname") == 0) {
+			if (mwexec("/sbin/mount -t ufs  -o acls {$devname} /mnt/{$mountname}") == 0) {
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 /mnt/$mountname");
-				$cmd="/usr/bin/logger \"Disk $devname mounted using UFS on /mnt/$mountname\"";
+				$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on /mnt/{$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
-			}
-			else {
+			} else {
 				/* If it's NOK, Check  filesystem and do a fsck, answer Yes to all question*/
 				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a UFS fsck\"";
 				mwexec($cmd);
-				mwexec("/sbin/fsck -y -t ufs $devname");
+				mwexec("/sbin/fsck -y -t ufs {$devname}");
 		
 				/* Re-try to mount the partition */
-				if (mwexec("/sbin/mount -t ufs -o acls $devname /mnt/$mountname") == 0) {
+				if (mwexec("/sbin/mount -t ufs -o acls {$devname} /mnt/{$mountname}") == 0) {
 				/* Change this directory into 777 mode */
-					mwexec("/bin/chmod 777 /mnt/$mountname");
+					mwexec("/bin/chmod 777 /mnt/{$mountname}");
 					$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on /mnt/{$mountname}\"";
 					mwexec($cmd);
 					$result = 0;
-				}
-				else {
+				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
-					@rmdir ("/mnt/$mountname");
+					@rmdir ("/mnt/{$mountname}");
 					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname}! using UFS\"";
 					mwexec($cmd);
 					$result = 1;
 				}
-				
 			}
-		   	break;
+			break;
 		   
 		case "msdosfs":
-			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0) {
+			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} /mnt/{$mountname}") == 0) {
 				$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on /mnt/{$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
-			}
-			else 			{
+			} else {
 				exec("/sbin/fsck -y -t msdosfs {$devname}");
-				$cmd="/usr/bin/logger \"Error detected for mounting disk $devname, starting a FAT fsck\"";
+				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a FAT fsck\"";
 				mwexec($cmd);
-				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 $devname /mnt/$mountname") == 0) {
+				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} /mnt/{$mountname}") == 0) {
 					$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on /mnt/{$mountname}\"";
 					mwexec($cmd);
 					$result = 0;
-				}
-				else	{
+				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
-					@rmdir ("/mnt/$mountname");
-					$cmd="/usr/bin/logger \"ERROR: Can not mount $devname! using FAT\"";
+					@rmdir ("/mnt/{$mountname}");
+					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname}! using FAT\"";
 					mwexec($cmd);
 					$result = 1;
 				}
 			}
+			break;
+
 		case "cd9660":
-			if (mwexec("/sbin/mount_cd9660 $devname /mnt/$mountname") == 0) {
+			if (mwexec("/sbin/mount_cd9660 {$devname} /mnt/{$mountname}") == 0) {
 				$cmd="/usr/bin/logger \"Disk {$devname} mounted as CD/DVD on /mnt/{$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
-			}
-			else {
-				
+			} else {
 				/* Not OK, remove the directory, prevent writing on RAM disk*/
 				@rmdir ("/mnt/$mountname");
 				$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname}! as CD/DVD\"";
 				mwexec($cmd);
 				$result = 1;
 			}
-		
-		   break;
+			break;
 		   
 		case "ntfs":
 			// Load the kernel fuse module
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
-			if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname -o force,show_sys_files,allow_other") == 0) {
+			if (mwexec("/usr/local/bin/ntfs-3g {$devname} /mnt/{$mountname} -o force,show_sys_files,allow_other") == 0) {
 				$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on /mnt/{$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
-			}
-			else {	
+			} else {	
 				/* COMMENT FISR PART BEGIN: NTFSFIX DO'NT WORK
 				$cmd="/usr/bin/logger \"Error detected for mounting disk $devname, starting a ntfsfix\"";
 				mwexec($cmd);
 				exec("/usr/local/bin/ntfsfix {$devname}");
-				if (mwexec("/usr/local/bin/ntfs-3g $devname /mnt/$mountname -o force,show_sys_files,allow_other") == 0) {
+				if (mwexec("/usr/local/bin/ntfs-3g {$devname} /mnt/{$mountname} -o force,show_sys_files,allow_other") == 0) {
 					$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on /mnt/{$mountname}\"";
 					mwexec($cmd);
 					$result = 0;
@@ -190,49 +179,45 @@ function disks_mount($mount)
 				else	{ 
 				COMMENT FIRST PART END */
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
-					@rmdir ("/mnt/$mountname");
-					$cmd="/usr/bin/logger \"ERROR for mounting  {$devname}! using NTFS: Try to fix error on this partition with MS Windows\"";
+					@rmdir ("/mnt/{$mountname}");
+					$cmd="/usr/bin/logger \"ERROR for mounting {$devname}! using NTFS: Try to fix error on this partition with MS Windows\"";
 					mwexec($cmd);
 					$result = 1;
 				/* COMMENT SECOND PART BEGIN
 				}
 				COMMENT SECOND PART END */
 			}
-			
 			break;
 		   
 		case "ext2fs":
-			if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0)	{
+			if (mwexec("/sbin/mount_ext2fs {$devname} /mnt/{$mountname}") == 0)	{
 				/* Change this directory into 777 mode */
-				mwexec("/bin/chmod 777 /mnt/$mountname");
+				mwexec("/bin/chmod 777 /mnt/{$mountname}");
 				$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on /mnt/{$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
-			}
-			else {
+			} else {
 				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a e2fsck\"";
 				mwexec($cmd);
 				exec("/usr/local/sbin/e2fsck -f -p {$devname}");
-				if (mwexec("/sbin/mount_ext2fs $devname /mnt/$mountname") == 0) {
+				if (mwexec("/sbin/mount_ext2fs {$devname} /mnt/{$mountname}") == 0) {
 					/* Change this directory into 777 mode */
-					mwexec("/bin/chmod 777 /mnt/$mountname");
+					mwexec("/bin/chmod 777 /mnt/{$mountname}");
 					$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on /mnt/{$mountname}\"";
 					mwexec($cmd);
 					$result = 0;
-				}
-				else {
+				} else {
 					/* Not OK, remove the directory, prevent writing on RAM */
-					@rmdir ("/mnt/$mountname");
+					@rmdir ("/mnt/{$mountname}");
 					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname}! using EXT2\"";
 					mwexec($cmd);
 					$result= 1;
 				}
 			}
-		   break;
-		}
-	
+			break;
+	}
+
 	return $result;
-	
 }
 
 /* Mount using fullname (/dev/ad0s1) given in parameter

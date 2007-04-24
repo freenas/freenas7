@@ -1,0 +1,22 @@
+diff -ruN fusefs-libs.orig/Makefile fusefs-libs/Makefile
+--- fusefs-libs.orig/Makefile	Thu Feb  1 08:13:40 2007
++++ fusefs-libs/Makefile	Tue Apr 24 20:00:29 2007
+@@ -5,7 +5,7 @@
+ #
+ 
+ PORTNAME=	fusefs
+-PORTVERSION=	2.6.2
++PORTVERSION=	2.6.3
+ CATEGORIES=	sysutils
+ MASTER_SITES=	${MASTER_SITE_SOURCEFORGE}
+ MASTER_SITE_SUBDIR=	fuse
+diff -ruN fusefs-libs.orig/distinfo fusefs-libs/distinfo
+--- fusefs-libs.orig/distinfo	Thu Feb  1 08:13:40 2007
++++ fusefs-libs/distinfo	Tue Apr 24 21:55:10 2007
+@@ -1,3 +1,3 @@
+-MD5 (fuse-2.6.2.tar.gz) = fa3837fa6bc920303b02fb3820606964
+-SHA256 (fuse-2.6.2.tar.gz) = d4de79a8f08d83c92703957cfd7781344edd426fa1b53bd8d709ad833fd71026
+-SIZE (fuse-2.6.2.tar.gz) = 472682
++MD5 (fuse-2.6.3.tar.gz) = 3f4f5d07d12dedc0a3fd23472171fe94
++SHA256 (fuse-2.6.3.tar.gz) = 804d7fae424c97dc3790ad12d798e7b27dc6c12e4116f8bd69ca0130773d3f9d
++SIZE (fuse-2.6.3.tar.gz) = 473147

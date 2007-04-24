@@ -75,7 +75,7 @@ FreeNAS 0.685b:
 Majors changes:
 - Add Dynamic DNS service
 - Add packages build infrastructure
-- Upgrade fusefs-ntfs to 1.417
+- Upgrade fusefs-libs to 2.6.3 and fusefs-ntfs to 1.417
 
 Minors changes:
 - Add checkbox to enable/disable 'large readwrite' support on CIFS page
