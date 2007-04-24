@@ -95,6 +95,7 @@ Bug fixs:
 - Fix UPnP bug - service was not started on system startup
 - Fix beep bug
 - Fix bug in ftp services page - Handle incorrect values for 'Number of clients' and 'Max. conn. per IP'.
+- Disk encrypted WebGUI - Disk wasn't correct named when using gvinum RAID disk.
 
 FreeNAS 0.684b :
 

@@ -197,9 +197,11 @@ if ($_POST) {
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_gvinum[$id]['fstype'] = $type;
+ 				$geli['name'] = $a_gvinum[$id]['name'];
+				$geli['size'] = $a_gvinum[$id]['size'];
 				$NotFound = 0;
 			}
-			
+
 			$a_geli[] = $geli;
 			touch($d_gelidirty_path);
 			write_config();
@@ -288,10 +290,10 @@ if (!isset($do_crypt)) {
 				// Initialize and encrypt the disk.
 				echo gettext("Encrypting... Please wait")."!\n";
 				if( 0 == strcmp($aalgo,"none")) {
-					system("/sbin/geli init -v -e $ealgo -X " . escapeshellarg($passphrase) . " " . $disk);
+					system("/sbin/geli init -v -e {$ealgo} -X " . escapeshellarg($passphrase) . "{$disk}");
 				}
 				else {
-					system("/sbin/geli init -v -a $aalgo -e $ealgo -X " . escapeshellarg($passphrase) . " " . $disk);
+					system("/sbin/geli init -v -a {$aalgo} -e {$ealgo} -X " . escapeshellarg($passphrase) . " {$disk}");
 				}
 
 				// Attach the disk.

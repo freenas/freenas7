@@ -88,7 +88,7 @@ unset($a_fst['ufsgpt_no_su']);
 
 /* Load the cfdevice file for found the disk where FreeNAS is installed*/
 $filename=$g['varetc_path']."/cfdevice";
-$cfdevice = trim(file_get_contents("$filename"));
+$cfdevice = trim(file_get_contents($filename));
 $cfdevice = "/dev/" . $cfdevice;
 
 /* Get disk configurations. */
@@ -102,8 +102,7 @@ $a_graid5 = &$config['graid5']['vdisk'];
 $a_gvinum = &$config['gvinum']['vdisk'];
 $a_geli = &$config['geli']['vdisk'];
 
-// SECTION THATREMOVE DISKS THAT ARE USED IN SOFTWARE RAID
-
+// SECTION THAT REMOVE DISKS THAT ARE USED IN SOFTWARE RAID
 if (is_array($config['gconcat']['vdisk'])) {
 	foreach ($a_gconcat as $gconc_tofind) {
 		foreach ($gconc_tofind['diskr'] as $disk_used) {
@@ -116,7 +115,6 @@ if (is_array($config['gconcat']['vdisk'])) {
 		unset ($disk_used);
 	}
 }
-
 
 if (is_array($config['gmirror']['vdisk'])) {
 	foreach ($a_gmirror as $gmirror_tofind) {
