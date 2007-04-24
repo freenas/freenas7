@@ -115,7 +115,7 @@ function disks_mount($mount)
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/{$mountname}");
-					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname}! using UFS\"";
+					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} using UFS\"";
 					mwexec($cmd);
 					$result = 1;
 				}
@@ -138,7 +138,7 @@ function disks_mount($mount)
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/{$mountname}");
-					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname}! using FAT\"";
+					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} using FAT\"";
 					mwexec($cmd);
 					$result = 1;
 				}
@@ -153,7 +153,7 @@ function disks_mount($mount)
 			} else {
 				/* Not OK, remove the directory, prevent writing on RAM disk*/
 				@rmdir ("/mnt/$mountname");
-				$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname}! as CD/DVD\"";
+				$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} as CD/DVD\"";
 				mwexec($cmd);
 				$result = 1;
 			}
@@ -180,7 +180,7 @@ function disks_mount($mount)
 				COMMENT FIRST PART END */
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir ("/mnt/{$mountname}");
-					$cmd="/usr/bin/logger \"ERROR for mounting {$devname}! using NTFS: Try to fix error on this partition with MS Windows\"";
+					$cmd="/usr/bin/logger \"ERROR for mounting {$devname} using NTFS: Try to fix error on this partition with MS Windows\"";
 					mwexec($cmd);
 					$result = 1;
 				/* COMMENT SECOND PART BEGIN
@@ -209,7 +209,7 @@ function disks_mount($mount)
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM */
 					@rmdir ("/mnt/{$mountname}");
-					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname}! using EXT2\"";
+					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} using EXT2\"";
 					mwexec($cmd);
 					$result= 1;
 				}
