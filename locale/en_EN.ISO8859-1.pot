@@ -1107,7 +1107,7 @@ msgstr ""
 msgid "The description name contain invalid characters."
 msgstr ""
 
-msgid "EFI/GPT partition can be use with UFS only."
+msgid "EFI/GPT partition can be used with UFS only."
 msgstr ""
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
