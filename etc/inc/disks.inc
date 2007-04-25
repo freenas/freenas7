@@ -150,7 +150,8 @@ function disks_mount($mount)
 	/* This part is too stupid: I must read the FreBSD start script for use the same intelligent method for checking hard drive */
 	switch ($mount['fstype']) {
 		case "ufs":
-			if (mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'") == 0) {
+			$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'"); 
+			if (0 == $result) {
 				$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
@@ -161,7 +162,8 @@ function disks_mount($mount)
 				mwexec("/sbin/fsck -y -t ufs {$devname}");
 
 				/* Re-try to mount the partition */
-				if (mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'") == 0) {
+				$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'");
+				if (0 == $result) {
 					$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on '{$mountname}'\"";
 					mwexec($cmd);
 					$result = 0;
@@ -176,7 +178,8 @@ function disks_mount($mount)
 			break;
 
 		case "msdosfs":
-			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'") == 0) {
+			$result = mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'");
+			if (0 == $result) {
 				$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
@@ -184,7 +187,9 @@ function disks_mount($mount)
 				exec("/sbin/fsck -y -t msdosfs {$devname}");
 				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a FAT fsck\"";
 				mwexec($cmd);
-				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'") == 0) {
+
+				$result = mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'");
+				if (0 == $result) {
 					$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on '{$mountname}'\"";
 					mwexec($cmd);
 					$result = 0;
@@ -199,7 +204,8 @@ function disks_mount($mount)
 			break;
 
 		case "cd9660":
-			if (mwexec("/sbin/mount_cd9660 {$devname} '{$mountname}'") == 0) {
+			$result = mwexec("/sbin/mount_cd9660 {$devname} '{$mountname}'"); 
+			if (0 == $result) {
 				$cmd="/usr/bin/logger \"Disk {$devname} mounted as CD/DVD on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
@@ -216,7 +222,8 @@ function disks_mount($mount)
 			// Load the kernel fuse module.
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
 
-			if (mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force,allow_other,silent,noempty,no_def_opts") == 0) {
+			$result = mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force,allow_other,silent,noempty,no_def_opts"); 
+			if (0 == $result) {
 				$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
@@ -225,7 +232,9 @@ function disks_mount($mount)
 				$cmd="/usr/bin/logger \"Error detected for mounting disk $devname, starting a ntfsfix\"";
 				mwexec($cmd);
 				exec("/usr/local/bin/ntfsfix {$devname}");
-				if (mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force,allow_other,silent,noempty,no_def_opts") == 0) {
+
+				$result = mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force,allow_other,silent,noempty,no_def_opts"); 
+				if (0 == $result) {
 					$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on '{$mountname}'\"";
 					mwexec($cmd);
 					$result = 0;
@@ -244,7 +253,8 @@ function disks_mount($mount)
 			break;
 
 		case "ext2fs":
-			if (mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'") == 0)	{
+			$result = mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'"); 
+			if (0 == $result)	{
 				$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
@@ -252,7 +262,9 @@ function disks_mount($mount)
 				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a e2fsck\"";
 				mwexec($cmd);
 				exec("/usr/local/sbin/e2fsck -f -p {$devname}");
-				if (mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'") == 0) {
+
+				$result = mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'");
+				if (0 == $result) {
 					$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on '{$mountname}'\"";
 					mwexec($cmd);
 					$result = 0;
