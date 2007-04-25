@@ -94,7 +94,7 @@ function disks_mount_iso($mount_iso)
 
 	/* Create one directory for each device under /mnt. */
 	$mountname = "/mnt/{$mount_iso['sharename']}";
-	@mkdir("'{$mountname}'",0777);
+	@mkdir("{$mountname}", 0777);
 
 	/* Mount the ISO file. */
 	$filename = escapeshellcmd($mount_iso['fullname']);
@@ -128,7 +128,7 @@ function disks_mount($mount)
 	$mountname = "/mnt/{$mount['sharename']}";
 
 	/* Create one directory for each device under /mnt. */
-	@mkdir("'{$mountname}'", 0777);
+	@mkdir("{$mountname}", 0777);
 
 	/* Mount the filesystem. */
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
@@ -137,7 +137,7 @@ function disks_mount($mount)
 			$a_geli = $config['geli']['vdisk'];
 			if (array_search_ex($mount['mdisk'], $a_geli, "fullname")) {
 				echo "\nSkip mounting {$mount['sharename']}: Passphrase need.";
-				$cmd="/usr/bin/logger \"Passphrase needed for {$mountname}\"";
+				$cmd="/usr/bin/logger \"Passphrase needed for '{$mountname}'\"";
 				mwexec($cmd);
 				return 0;
 			}
@@ -146,12 +146,10 @@ function disks_mount($mount)
 
 	/* check the fileystem only if there is a problem*/
 	/* This part is too stupid: I must read the FreBSD start script for use the same intelligent method for checking hard drive */
-	switch ($mount['fstype']) 	{
+	switch ($mount['fstype']) {
 		case "ufs":
-			if (mwexec("/sbin/mount -t ufs  -o acls {$devname} '{$mountname}'") == 0) {
-				/* Change this directory into 777 mode */
-				mwexec("/bin/chmod 777 '{$mountname}'");
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on {$mountname}\"";
+			if (mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'") == 0) {
+				$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
 			} else {
@@ -162,9 +160,7 @@ function disks_mount($mount)
 
 				/* Re-try to mount the partition */
 				if (mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'") == 0) {
-				/* Change this directory into 777 mode */
-					mwexec("/bin/chmod 777 '{$mountname}'");
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on {$mountname}\"";
+					$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on '{$mountname}'\"";
 					mwexec($cmd);
 					$result = 0;
 				} else {
@@ -179,7 +175,7 @@ function disks_mount($mount)
 
 		case "msdosfs":
 			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'") == 0) {
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on {$mountname}\"";
+				$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
 			} else {
@@ -187,7 +183,7 @@ function disks_mount($mount)
 				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a FAT fsck\"";
 				mwexec($cmd);
 				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'") == 0) {
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on {$mountname}\"";
+					$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on '{$mountname}'\"";
 					mwexec($cmd);
 					$result = 0;
 				} else {
@@ -202,7 +198,7 @@ function disks_mount($mount)
 
 		case "cd9660":
 			if (mwexec("/sbin/mount_cd9660 {$devname} '{$mountname}'") == 0) {
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted as CD/DVD on {$mountname}\"";
+				$cmd="/usr/bin/logger \"Disk {$devname} mounted as CD/DVD on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
 			} else {
@@ -219,7 +215,7 @@ function disks_mount($mount)
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
 
 			if (mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force,show_sys_files,allow_other,silent,noempty,no_def_opts") == 0) {
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on {$mountname}\"";
+				$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
 			} else {	
@@ -228,7 +224,7 @@ function disks_mount($mount)
 				mwexec($cmd);
 				exec("/usr/local/bin/ntfsfix {$devname}");
 				if (mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force,show_sys_files,allow_other,silent,noempty,no_def_opts") == 0) {
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on {$mountname}\"";
+					$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on '{$mountname}'\"";
 					mwexec($cmd);
 					$result = 0;
 				}
@@ -249,7 +245,7 @@ function disks_mount($mount)
 			if (mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'") == 0)	{
 				/* Change this directory into 777 mode */
 				mwexec("/bin/chmod 777 '{$mountname}'");
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on {$mountname}\"";
+				$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
 			} else {
@@ -259,7 +255,7 @@ function disks_mount($mount)
 				if (mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'") == 0) {
 					/* Change this directory into 777 mode */
 					mwexec("/bin/chmod 777 '{$mountname}'");
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on {$mountname}\"";
+					$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on '{$mountname}'\"";
 					mwexec($cmd);
 					$result = 0;
 				} else {
