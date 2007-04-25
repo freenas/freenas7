@@ -40,12 +40,12 @@ function disks_mount_all()
 	global $config, $g;
 	
 	if ($g['booting'])
-		echo "Mounting Partitions... ";
+		echo "Mounting partitions... ";
 	
 	/* For each device configured: */
 	if (is_array($config['mounts']['mount'])) 	{
 		foreach ($config['mounts']['mount'] as $mount) 		{
-			/* Advanced Umount filesystem if not booting mode (mount edition)*/
+			/* Advanced umount filesystem if not booting mode (mount edition). */
 			if (!$g['booting'])
 				disks_umount_adv($mount);
 								
@@ -103,18 +103,16 @@ function disks_mount_iso($mount_iso)
 	$md_id = escapeshellcmd($mount_iso['md_id']);
 	
 	if (mwexec("/sbin/mdconfig -a -t vnode -f {$filename} -u {$md_id}") == 0) {
-		if (mwexec("/sbin/mount -t cd9660 /dev/md{$md_id} {$mountname}") == 0) {
-				$cmd="/usr/bin/logger \"ISO file  {$devname} mounted on {$mountname}\"";
+		if (mwexec("/sbin/mount -t cd9660 /dev/md{$md_id} '{$mountname}'") == 0) {
+				$cmd="/usr/bin/logger \"ISO file  {$devname} mounted on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
 		} else {
-			/* If  error for mounting iso file*/
-			$cmd="/usr/bin/logger \"Error for mounting ISO file {$filename}\"";
+			$cmd="/usr/bin/logger \"Error: Failed to mount ISO file {$filename}\"";
 		}
 				
 	} else {
-		/* If  error for md device*/
-		$cmd="/usr/bin/logger \"Error for reading file {$filename}\"";
+		$cmd="/usr/bin/logger \"Error: Failed to read file {$filename}\"";
 	}
 }
 
@@ -146,7 +144,7 @@ function disks_mount($mount)
 		}
 	}
 
-	/* check the fileystem only if there is a problem*/
+	/* Check the fileystem only if there is a problem. */
 	/* This part is too stupid: I must read the FreBSD start script for use the same intelligent method for checking hard drive */
 	switch ($mount['fstype']) {
 		case "ufs":
@@ -157,7 +155,7 @@ function disks_mount($mount)
 				$result = 0;
 			} else {
 				/* If it's NOK, Check  filesystem and do a fsck, answer Yes to all question*/
-				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a UFS fsck\"";
+				$cmd="/usr/bin/logger \"Error: Failed to detect disk {$devname}, starting a UFS fsck\"";
 				mwexec($cmd);
 				mwexec("/sbin/fsck -y -t ufs {$devname}");
 
@@ -169,8 +167,8 @@ function disks_mount($mount)
 					$result = 0;
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
-					@rmdir("'{$mountname}'");
-					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} using UFS\"";
+					@rmdir("{$mountname}");
+					$cmd="/usr/bin/logger \"Error: Failed to mount {$devname} using UFS\"";
 					mwexec($cmd);
 					$result = 1;
 				}
@@ -184,8 +182,8 @@ function disks_mount($mount)
 				mwexec($cmd);
 				$result = 0;
 			} else {
-				exec("/sbin/fsck -y -t msdosfs {$devname}");
-				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a FAT fsck\"";
+				mwexec("/sbin/fsck -y -t msdosfs {$devname}");
+				$cmd="/usr/bin/logger \"Error: Failed to detect disk {$devname}, starting a FAT fsck\"";
 				mwexec($cmd);
 
 				$result = mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'");
@@ -195,8 +193,8 @@ function disks_mount($mount)
 					$result = 0;
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
-					@rmdir("'{$mountname}'");
-					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} using FAT\"";
+					@rmdir("{$mountname}");
+					$cmd="/usr/bin/logger \"Error: Failed to mount {$devname} using FAT\"";
 					mwexec($cmd);
 					$result = 1;
 				}
@@ -211,8 +209,8 @@ function disks_mount($mount)
 				$result = 0;
 			} else {
 				/* Not OK, remove the directory, prevent writing on RAM disk*/
-				@rmdir("'{$mountname}'");
-				$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} as CD/DVD\"";
+				@rmdir("{$mountname}");
+				$cmd="/usr/bin/logger \"Error: Failed to mount {$devname} as CD/DVD\"";
 				mwexec($cmd);
 				$result = 1;
 			}
@@ -231,7 +229,7 @@ function disks_mount($mount)
 				/* COMMENT FISR PART BEGIN: NTFSFIX DO'NT WORK
 				$cmd="/usr/bin/logger \"Error detected for mounting disk $devname, starting a ntfsfix\"";
 				mwexec($cmd);
-				exec("/usr/local/bin/ntfsfix {$devname}");
+				mwexec("/usr/local/bin/ntfsfix {$devname}");
 
 				$result = mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force,allow_other,silent,noempty,no_def_opts"); 
 				if (0 == $result) {
@@ -242,8 +240,8 @@ function disks_mount($mount)
 				else	{ 
 				COMMENT FIRST PART END */
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
-					@rmdir("'{$mountname}'");
-					$cmd="/usr/bin/logger \"ERROR for mounting {$devname} using NTFS: Try to fix error on this partition with MS Windows\"";
+					@rmdir("{$mountname}");
+					$cmd="/usr/bin/logger \"Error: Failed to mount {$devname} using NTFS: Try to fix error on this partition with MS Windows\"";
 					mwexec($cmd);
 					$result = 1;
 				/* COMMENT SECOND PART BEGIN
@@ -259,9 +257,9 @@ function disks_mount($mount)
 				mwexec($cmd);
 				$result = 0;
 			} else {
-				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a e2fsck\"";
+				$cmd="/usr/bin/logger \"Error: Failed to detect disk {$devname}, starting a e2fsck\"";
 				mwexec($cmd);
-				exec("/usr/local/sbin/e2fsck -f -p {$devname}");
+				mwexec("/usr/local/sbin/e2fsck -f -p {$devname}");
 
 				$result = mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'");
 				if (0 == $result) {
@@ -270,8 +268,8 @@ function disks_mount($mount)
 					$result = 0;
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM */
-					@rmdir("'{$mountname}'");
-					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} using EXT2\"";
+					@rmdir("{$mountname}");
+					$cmd="/usr/bin/logger \"Error: Can't mount {$devname} using EXT2\"";
 					mwexec($cmd);
 					$result= 1;
 				}
@@ -332,17 +330,15 @@ function disks_mount_sharename($sharename)
 Return 0 is successfull, 1 if error */
 function disks_umount($mount)
 {
-	/* The $mount variable is the all config table for the mount point */
 	$mountname = "/mnt/{$mount['sharename']}";
 
 	if (mwexec("/sbin/umount '{$mountname}'") == 0) {
-		if(@rmdir("'{$mountname}'")) {
+		if(@rmdir("{$mountname}")) {
 			$result = 0;
-			$cmd="/usr/bin/logger \"Sucessfull umounted {$mountname}\"";
+			$cmd="/usr/bin/logger \"Sucessfull umounted '{$mountname}'\"";
 			mwexec($cmd);
-		}
-		else {
-			$cmd="/usr/bin/logger \"ERROR for umount {$mountname}\"";
+		} else {
+			$cmd="/usr/bin/logger \"Error: Failed to umount '{$mountname}'\"";
 			mwexec($cmd);
 			$result = 1;
 		}
@@ -376,29 +372,6 @@ function disks_umount_fullname($fullname)
 	return $result;
 }
 
-/* Advanced umount using sharename
-Return 0 if successfull, 1 if error */
-function disks_umount_sharename($sharename)
-{
-	global $config;
-
-	/* Search the mount list for given fullname */
-	foreach($config['mounts']['mount'] as $mountk => $mountv) {
-		if (strcmp($mountv['sharename'],$sharename) == 0) {
-			$mount = $mountv;
-		}
-	}
-
-	if($mount) {
-		$result = disks_umount($mount);
-	}
-	else {
-		$result = 1;
-	}
-	
-	return $result;
-}
-
 /* Advanced unmount the specified mount point without using the sharename value
 Used when changing the 'sharename': Need to umount the old unknow sharename
 Return 0 if successful, 1 if error */
@@ -416,8 +389,8 @@ function disks_umount_adv($mount)
 	}
 
 	if ($mountname) {
-		exec("/sbin/umount '{$mountname}'");
-		@rmdir("'{$mountname}'");
+		mwexec("/sbin/umount '{$mountname}'");
+		@rmdir("{$mountname}");
 		$result = 0;
 	} else {
 		$result = 1;
@@ -445,8 +418,8 @@ function disks_umount_iso_adv($mount)
 	}
 	
 	if ($mountname) {
-		exec("/sbin/umount '{$mountname}'");
-		@rmdir("'{$mountname}'");
+		mwexec("/sbin/umount '{$mountname}'");
+		@rmdir("{$mountname}");
 		$result = 0;
 	} else {
 		$result = 1;
@@ -547,7 +520,7 @@ function disks_umount_all()
 	
 	/* Sync disks*/
 	mwexec("/bin/sync");
-	
+
 	if (is_array($config['mounts']['iso'])) 	{
 		foreach ($config['mounts']['iso'] as $mount_iso) 	{
 		disks_umount($mount_iso);
@@ -567,7 +540,7 @@ function disks_umount_all()
 function disks_raid_gvinum_configure()
 {
 	global $config, $g;
-	
+
 	/* Generate the raid.conf file */
 	if ($config['gvinum']['vdisk']) 	{
 		foreach ($config['gvinum']['vdisk'] as $a_raid_conf) 		{
@@ -577,7 +550,7 @@ function disks_raid_gvinum_configure()
 			/* generate raid.conf */
 			$fd = fopen("{$g['varetc_path']}/raid-{$a_raid_conf['name']}.conf", "w");
 			if (!$fd) 			{
-				printf("Error: cannot open raid.conf in services_raid_configure().\n");
+				printf("Error: Failed to open raid.conf in services_raid_configure().\n");
 				return 1;
 			}
 
@@ -667,22 +640,17 @@ EOD;
 			fwrite($fd, $raidconf);
 			fclose($fd);
 
-		/* Create each volume */
-		
-		mwexec("/sbin/gvinum create {$g['varetc_path']}/raid-{$a_raid_conf['name']}.conf");
-		
+			/* Create each volume */
+			mwexec("/sbin/gvinum create {$g['varetc_path']}/raid-{$a_raid_conf['name']}.conf");
 		}
-						
-		
-		/* start each volume */
-		
-		foreach ($config['gvinum']['vdisk'] as $a_raid_conf)	{
-			exec("/sbin/gvinum lv $raidname",$rawdata);
-			if (strpos($rawdata[0],"State: up")>=0) continue;
 
+		/* start each volume */
+		foreach ($config['gvinum']['vdisk'] as $a_raid_conf)	{
+			exec("/sbin/gvinum lv $raidname", $rawdata);
+			if (strpos($rawdata[0],"State: up")>=0)
+				continue;
 			mwexec("/sbin/gvinum start {$a_raid_conf['name']}");
 		}
-		
 	}
 
 	return 0;
@@ -755,7 +723,6 @@ function disks_raid_gstripe_configure()
 }
 
 /* Configure, create and start graid5 volume */
-
 function disks_raid_graid5_configure()
 {
 	global $config;
@@ -775,7 +742,6 @@ function disks_raid_graid5_configure()
 		
 		//Tune graid5
 		disks_raid_graid5_tune();
-		
 	}
 
 	return 0;
@@ -1025,7 +991,8 @@ function disks_raid_gvinum_delete($raidname)
 {
 	global $config;
 
-	exec("/sbin/gvinum lv {$raidname}",$rawdata);
+	exec("/sbin/gvinum lv {$raidname}", $rawdata);
+
 	if (strpos($rawdata[0],"State: up") === false) {
 		return 0;
 	}
@@ -1188,7 +1155,7 @@ function fdisk_get_info($harddrive)
 {
 	global $config, $g;
 	
-	exec("/sbin/fdisk /dev/$harddrive",$rawdata);
+	exec("/sbin/fdisk /dev/$harddrive", $rawdata);
 	
 	$result=array();
 	
@@ -1329,6 +1296,7 @@ Called in disks_manage_tools.php
 */
 function disks_get_partition_info($disk) {
   exec("/sbin/fdisk -s {$disk}", $rawdata);
+
   array_shift($rawdata);
   array_shift($rawdata);
 
@@ -1530,7 +1498,7 @@ function disks_fsck($disk,$umount = false)
 // )
 function disks_get_diskinfo($disk)
 {
-	exec("/usr/sbin/diskinfo {$disk}",$rawdata);
+	exec("/usr/sbin/diskinfo {$disk}", $rawdata);
 
 	$diskinfo = preg_split("/\s+/", $rawdata[0]);
 
