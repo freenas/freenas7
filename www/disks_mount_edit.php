@@ -80,7 +80,6 @@ if (!is_array($config['geli']['vdisk']))
 geli_sort();
 
 $a_mount = &$config['mounts']['mount'];
-
 $a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$config['gmirror']['vdisk'],$config['gconcat']['vdisk'],$config['gstripe']['vdisk'],$config['graid5']['vdisk'],$config['geli']['vdisk']);
 
 /* Load the cfdevice file*/
@@ -95,7 +94,7 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['sharename'] = $a_mount[$id]['sharename'];
 	$pconfig['desc'] = $a_mount[$id]['desc'];
 } else {
-$pconfig['partition'] = "p1";
+	$pconfig['partition'] = "p1";
 }
 
 if ($_POST) {
@@ -114,11 +113,7 @@ if ($_POST) {
 	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
 		$input_errors[] = gettext("The description name contain invalid characters.");
 	}
-	
-	/* if (($_POST['partition'] == "p1") && ($_POST['fstype'] != "ufs")); {
-		$input_errors[] = gettext("GPT can be used for UFS type only.");
-	} */
-	
+
 	if (($_POST['partition'] == "p1") && (($_POST['fstype'] == "msdosfs") || ($_POST['fstype'] == "cd9660") || ($_POST['fstype'] == "ntfs") || ($_POST['fstype'] == "ext2fs")))  {
 		$input_errors[] = gettext("EFI/GPT partition can be use with UFS only.");
 	}
@@ -183,10 +178,10 @@ if ($_POST) {
       <td class="vtable">            
     	 <select name="mdisk" class="formfld" id="mdisk">
     	  <?php foreach ($a_disk as $disk): ?>
-				<?php if ((strcmp($disk['fstype'],"softraid")==0) || (strcmp($disk['fstype'],"geli")==0)): ?> 	 				
+					<?php if ((strcmp($disk['fstype'],"softraid")==0) || (strcmp($disk['fstype'],"geli")==0)): ?> 	 				
     			<?php continue; ?>
     			<?php endif; ?>
-    				<option value="<?=$disk['fullname'];?>" <?php if ($pconfig['mdisk'] == $disk['name']) echo "selected";?>> 
+    				<option value="<?=$disk['fullname'];?>" <?php if ($pconfig['mdisk'] == $disk['fullname']) echo "selected";?>> 
     				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
     				</option>
     		  <?php endforeach; ?>
@@ -197,7 +192,7 @@ if ($_POST) {
       <td valign="top" class="vncellreq"><?=gettext("Partition") ; ?></td>
       <td class="vtable"> 
         <select name="partition" class="formfld" id="partition">
-		  <option value="p1" <?php if ($pconfig['partition'] == "p1") echo "selected"; ?>>EFI GPT</option>
+		  		<option value="p1" <?php if ($pconfig['partition'] == "p1") echo "selected"; ?>>EFI GPT</option>
           <option value="s1" <?php if ($pconfig['partition'] == "s1") echo "selected"; ?>>1</option>
           <option value="s2" <?php if ($pconfig['partition'] == "s2") echo "selected"; ?>>2</option>
           <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
@@ -207,7 +202,8 @@ if ($_POST) {
           <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - graid5</option>
           <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - gvinum</option>
         </select>
-		<br><?=gettext("Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release") ;?>
+				<br>
+				<?=gettext("Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release") ;?>
       </td>
     </tr>
     <tr> 

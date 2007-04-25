@@ -95,6 +95,8 @@ function disks_mount_iso($mount_iso)
 	/* Create one directory for each device under /mnt. */
 	$mountname = "/mnt/{$mount_iso['sharename']}";
 	@mkdir("{$mountname}", 0777);
+	/* Change this directory into 777 mode. */
+	mwexec("/bin/chmod 777 '{$mountname}'");
 
 	/* Mount the ISO file. */
 	$filename = escapeshellcmd($mount_iso['fullname']);
@@ -102,8 +104,6 @@ function disks_mount_iso($mount_iso)
 	
 	if (mwexec("/sbin/mdconfig -a -t vnode -f {$filename} -u {$md_id}") == 0) {
 		if (mwexec("/sbin/mount -t cd9660 /dev/md{$md_id} {$mountname}") == 0) {
-				/* Change this directory into 777 mode */
-				mwexec("/bin/chmod 777 {$mountname}");
 				$cmd="/usr/bin/logger \"ISO file  {$devname} mounted on {$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
@@ -129,6 +129,8 @@ function disks_mount($mount)
 
 	/* Create one directory for each device under /mnt. */
 	@mkdir("{$mountname}", 0777);
+	/* Change this directory into 777 mode. */
+	mwexec("/bin/chmod 777 '{$mountname}'");
 
 	/* Mount the filesystem. */
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
@@ -243,8 +245,6 @@ function disks_mount($mount)
 
 		case "ext2fs":
 			if (mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'") == 0)	{
-				/* Change this directory into 777 mode */
-				mwexec("/bin/chmod 777 '{$mountname}'");
 				$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on '{$mountname}'\"";
 				mwexec($cmd);
 				$result = 0;
@@ -253,8 +253,6 @@ function disks_mount($mount)
 				mwexec($cmd);
 				exec("/usr/local/sbin/e2fsck -f -p {$devname}");
 				if (mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'") == 0) {
-					/* Change this directory into 777 mode */
-					mwexec("/bin/chmod 777 '{$mountname}'");
 					$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on '{$mountname}'\"";
 					mwexec($cmd);
 					$result = 0;
