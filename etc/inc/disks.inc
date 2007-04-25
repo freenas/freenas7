@@ -225,7 +225,7 @@ function disks_mount($mount)
 		case "ntfs":
 			// Load the kernel fuse module
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
-			if (mwexec("/usr/local/bin/ntfs-3g {$devname} /mnt/{$mountname} -o force,show_sys_files,allow_other") == 0) {
+			if (mwexec("/usr/local/bin/ntfs-3g {$devname} /mnt/{$mountname} -o force,show_sys_files,allow_other,silent,noempty,no_def_opts") == 0) {
 				$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on /mnt/{$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
@@ -234,7 +234,7 @@ function disks_mount($mount)
 				$cmd="/usr/bin/logger \"Error detected for mounting disk $devname, starting a ntfsfix\"";
 				mwexec($cmd);
 				exec("/usr/local/bin/ntfsfix {$devname}");
-				if (mwexec("/usr/local/bin/ntfs-3g {$devname} /mnt/{$mountname} -o force,show_sys_files,allow_other") == 0) {
+				if (mwexec("/usr/local/bin/ntfs-3g {$devname} /mnt/{$mountname} -o force,show_sys_files,allow_other,silent,noempty,no_def_opts") == 0) {
 					$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on /mnt/{$mountname}\"";
 					mwexec($cmd);
 					$result = 0;
