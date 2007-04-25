@@ -42,8 +42,7 @@ function disks_mount_all()
 	if ($g['booting'])
 		echo "Mounting Partitions... ";
 	
-	/* For each device configured:*/
-	
+	/* For each device configured: */
 	if (is_array($config['mounts']['mount'])) 	{
 		foreach ($config['mounts']['mount'] as $mount) 		{
 			/* Advanced Umount filesystem if not booting mode (mount edition)*/
@@ -52,15 +51,13 @@ function disks_mount_all()
 								
 			/* mount filesystem */
 			disks_mount($mount);	
-		
 		}
 	}
 			
 	if ($g['booting'])
 		echo "done\n";
-	
+
 	return 0;
-	
 }
 
 /* Mount all ISO files */
@@ -71,8 +68,7 @@ function disks_mount_iso_all()
 	if ($g['booting'])
 		echo "Mounting ISO files... ";
 	
-	/* For each device configured:*/
-	
+	/* For each device configured: */
 	if (is_array($config['mounts']['iso'])) 	{
 		foreach ($config['mounts']['iso'] as $mount_iso) 		{
 			/* Advanced Umount filesystem if not booting mode (mount edition)*/
@@ -81,7 +77,6 @@ function disks_mount_iso_all()
 								
 			/* mount filesystem */
 			disks_mount_iso($mount);	
-		
 		}
 	}
 			
@@ -89,35 +84,32 @@ function disks_mount_iso_all()
 		echo "done\n";
 	
 	return 0;
-	
 }
 
-/* Mount an ISO file
+/* Mount an ISO file.
 Return 0 if sucessful, 1 if error */
-
 function disks_mount_iso($mount_iso)
 {
 	global $config, $g;
-	
-	/* Create one directory for each device under mnt */
-	$mountname = escapeshellcmd($mount_iso['sharename']);
-	@mkdir ("/mnt/{$mountname}",0777);
-	
+
+	/* Create one directory for each device under /mnt. */
+	$mountname = "/mnt/{$mount_iso['sharename']}";
+	@mkdir("'{$mountname}'",0777);
+
 	/* Mount the ISO file. */
 	$filename = escapeshellcmd($mount_iso['fullname']);
 	$md_id = escapeshellcmd($mount_iso['md_id']);
 	
-	if (mwexec(" /sbin/mdconfig -a -t vnode -f {$filename} -u {$md_id}") == 0) {
-		if (mwexec(" /sbin/mount -t cd9660 /dev/md{$md_id} /mnt/$mountname") == 0) {
-	
+	if (mwexec("/sbin/mdconfig -a -t vnode -f {$filename} -u {$md_id}") == 0) {
+		if (mwexec("/sbin/mount -t cd9660 /dev/md{$md_id} {$mountname}") == 0) {
 				/* Change this directory into 777 mode */
-				mwexec("/bin/chmod 777 /mnt/$mountname");
-				$cmd="/usr/bin/logger \"ISO file  {$devname} mounted on /mnt/{$mountname}\"";
+				mwexec("/bin/chmod 777 {$mountname}");
+				$cmd="/usr/bin/logger \"ISO file  {$devname} mounted on {$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
 		} else {
 			/* If  error for mounting iso file*/
-			$cmd="/usr/bin/logger \"Error for mounting ISO file  {$filename}\"";
+			$cmd="/usr/bin/logger \"Error for mounting ISO file {$filename}\"";
 		}
 				
 	} else {
@@ -131,21 +123,21 @@ Return 0 if sucessful, 1 if error */
 function disks_mount($mount)
 {
 	global $config, $g;
-	
-	/* Create one directory for each device under mnt */
-	$mountname = escapeshellcmd($mount['sharename']);
-	@mkdir ("/mnt/{$mountname}",0777);
+
+	$devname = $mount['fullname'];
+	$mountname = "/mnt/{$mount['sharename']}";
+
+	/* Create one directory for each device under /mnt. */
+	@mkdir("'{$mountname}'", 0777);
 
 	/* Mount the filesystem. */
-	$devname = escapeshellcmd($mount['fullname']);
-	
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
 	if ($g['booting']) {
 		if (is_array($config['geli']['vdisk'])) {
 			$a_geli = $config['geli']['vdisk'];
 			if (array_search_ex($mount['mdisk'], $a_geli, "fullname")) {
 				echo "\nSkip mounting {$mount['sharename']}: Passphrase need.";
-				$cmd="/usr/bin/logger \"Passphrase needed for $mountname\"";
+				$cmd="/usr/bin/logger \"Passphrase needed for {$mountname}\"";
 				mwexec($cmd);
 				return 0;
 			}
@@ -156,10 +148,10 @@ function disks_mount($mount)
 	/* This part is too stupid: I must read the FreBSD start script for use the same intelligent method for checking hard drive */
 	switch ($mount['fstype']) 	{
 		case "ufs":
-			if (mwexec("/sbin/mount -t ufs  -o acls {$devname} /mnt/{$mountname}") == 0) {
+			if (mwexec("/sbin/mount -t ufs  -o acls {$devname} '{$mountname}'") == 0) {
 				/* Change this directory into 777 mode */
-				mwexec("/bin/chmod 777 /mnt/$mountname");
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on /mnt/{$mountname}\"";
+				mwexec("/bin/chmod 777 '{$mountname}'");
+				$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on {$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
 			} else {
@@ -167,40 +159,40 @@ function disks_mount($mount)
 				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a UFS fsck\"";
 				mwexec($cmd);
 				mwexec("/sbin/fsck -y -t ufs {$devname}");
-		
+
 				/* Re-try to mount the partition */
-				if (mwexec("/sbin/mount -t ufs -o acls {$devname} /mnt/{$mountname}") == 0) {
+				if (mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'") == 0) {
 				/* Change this directory into 777 mode */
-					mwexec("/bin/chmod 777 /mnt/{$mountname}");
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on /mnt/{$mountname}\"";
+					mwexec("/bin/chmod 777 '{$mountname}'");
+					$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on {$mountname}\"";
 					mwexec($cmd);
 					$result = 0;
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
-					@rmdir ("/mnt/{$mountname}");
+					@rmdir("'{$mountname}'");
 					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} using UFS\"";
 					mwexec($cmd);
 					$result = 1;
 				}
 			}
 			break;
-		   
+
 		case "msdosfs":
-			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} /mnt/{$mountname}") == 0) {
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on /mnt/{$mountname}\"";
+			if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'") == 0) {
+				$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on {$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
 			} else {
 				exec("/sbin/fsck -y -t msdosfs {$devname}");
 				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a FAT fsck\"";
 				mwexec($cmd);
-				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} /mnt/{$mountname}") == 0) {
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on /mnt/{$mountname}\"";
+				if (mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'") == 0) {
+					$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on {$mountname}\"";
 					mwexec($cmd);
 					$result = 0;
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
-					@rmdir ("/mnt/{$mountname}");
+					@rmdir("'{$mountname}'");
 					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} using FAT\"";
 					mwexec($cmd);
 					$result = 1;
@@ -209,24 +201,25 @@ function disks_mount($mount)
 			break;
 
 		case "cd9660":
-			if (mwexec("/sbin/mount_cd9660 {$devname} /mnt/{$mountname}") == 0) {
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted as CD/DVD on /mnt/{$mountname}\"";
+			if (mwexec("/sbin/mount_cd9660 {$devname} '{$mountname}'") == 0) {
+				$cmd="/usr/bin/logger \"Disk {$devname} mounted as CD/DVD on {$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
 			} else {
 				/* Not OK, remove the directory, prevent writing on RAM disk*/
-				@rmdir ("/mnt/$mountname");
+				@rmdir("'{$mountname}'");
 				$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} as CD/DVD\"";
 				mwexec($cmd);
 				$result = 1;
 			}
 			break;
-		   
+
 		case "ntfs":
-			// Load the kernel fuse module
+			// Load the kernel fuse module.
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
-			if (mwexec("/usr/local/bin/ntfs-3g {$devname} /mnt/{$mountname} -o force,show_sys_files,allow_other,silent,noempty,no_def_opts") == 0) {
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on /mnt/{$mountname}\"";
+
+			if (mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force,show_sys_files,allow_other,silent,noempty,no_def_opts") == 0) {
+				$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on {$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
 			} else {	
@@ -234,15 +227,15 @@ function disks_mount($mount)
 				$cmd="/usr/bin/logger \"Error detected for mounting disk $devname, starting a ntfsfix\"";
 				mwexec($cmd);
 				exec("/usr/local/bin/ntfsfix {$devname}");
-				if (mwexec("/usr/local/bin/ntfs-3g {$devname} /mnt/{$mountname} -o force,show_sys_files,allow_other,silent,noempty,no_def_opts") == 0) {
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on /mnt/{$mountname}\"";
+				if (mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force,show_sys_files,allow_other,silent,noempty,no_def_opts") == 0) {
+					$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on {$mountname}\"";
 					mwexec($cmd);
 					$result = 0;
 				}
 				else	{ 
 				COMMENT FIRST PART END */
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
-					@rmdir ("/mnt/{$mountname}");
+					@rmdir("'{$mountname}'");
 					$cmd="/usr/bin/logger \"ERROR for mounting {$devname} using NTFS: Try to fix error on this partition with MS Windows\"";
 					mwexec($cmd);
 					$result = 1;
@@ -251,27 +244,27 @@ function disks_mount($mount)
 				COMMENT SECOND PART END */
 			}
 			break;
-		   
+
 		case "ext2fs":
-			if (mwexec("/sbin/mount_ext2fs {$devname} /mnt/{$mountname}") == 0)	{
+			if (mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'") == 0)	{
 				/* Change this directory into 777 mode */
-				mwexec("/bin/chmod 777 /mnt/{$mountname}");
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on /mnt/{$mountname}\"";
+				mwexec("/bin/chmod 777 '{$mountname}'");
+				$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on {$mountname}\"";
 				mwexec($cmd);
 				$result = 0;
 			} else {
 				$cmd="/usr/bin/logger \"Error detected for mounting disk {$devname}, starting a e2fsck\"";
 				mwexec($cmd);
 				exec("/usr/local/sbin/e2fsck -f -p {$devname}");
-				if (mwexec("/sbin/mount_ext2fs {$devname} /mnt/{$mountname}") == 0) {
+				if (mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'") == 0) {
 					/* Change this directory into 777 mode */
-					mwexec("/bin/chmod 777 /mnt/{$mountname}");
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on /mnt/{$mountname}\"";
+					mwexec("/bin/chmod 777 '{$mountname}'");
+					$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on {$mountname}\"";
 					mwexec($cmd);
 					$result = 0;
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM */
-					@rmdir ("/mnt/{$mountname}");
+					@rmdir("'{$mountname}'");
 					$cmd="/usr/bin/logger \"ERROR: Can not mount {$devname} using EXT2\"";
 					mwexec($cmd);
 					$result= 1;
@@ -283,14 +276,11 @@ function disks_mount($mount)
 	return $result;
 }
 
-/* Mount using fullname (/dev/ad0s1) given in parameter
-Can't be used for NTFS volume (use /dev/fuseX)
-*/
+/* Mount using fullname (/dev/ad0s1) given in parameter. */
 function disks_mount_fullname($fullname)
 {
 	global $config;
 
-	
 	if (is_array($config['mounts']['mount'])) {
 		// Search the mount list for given disk and partition
 		foreach($config['mounts']['mount'] as $mountk => $mountv) {
@@ -300,23 +290,20 @@ function disks_mount_fullname($fullname)
 		}
 	}
 
-  	if($mount) {
-    		$result= disks_mount($mount);
+	if($mount) {
+		$result= disks_mount($mount);
+	} else {
+		$result=0;
 	}
-  	else {
-    		$result=0;
-	}
+
 	return $result;
 }
 
-/* Mount using sharename given in parameter
-Can be used for NTFS volume (use /dev/fuseX)
-*/
+/* Mount using sharename given in parameter. */
 function disks_mount_sharename($sharename)
 {
 	global $config;
 
-	
 	if (is_array($config['mounts']['mount'])) {
 		// Search the mount list for given disk and partition
 		foreach($config['mounts']['mount'] as $mountk => $mountv) {
@@ -326,37 +313,37 @@ function disks_mount_sharename($sharename)
 		}
 	}
 
-  	if($mount) {
-    		$result= disks_mount($mount);
+	if($mount) {
+		$result = disks_mount($mount);
+	} else {
+		$result=0;
 	}
-  	else {
-    		$result=0;
-	}
+
 	return $result;
 }
 
-/* Umount the specified configured mount point
-Can't be used for NTFS volume (use /dev/fuseX)
+/* Umount the specified configured mount point.
 Return 0 is successfull, 1 if error */
 function disks_umount($mount)
 {
 	/* The $mount variable is the all config table for the mount point */
 	$mountname = "/mnt/{$mount['sharename']}";
 
-	if (mwexec("/sbin/umount $mountname") == 0) {
-		if(@rmdir("$mountname")) {
+	if (mwexec("/sbin/umount '{$mountname}'") == 0) {
+		if(@rmdir("'{$mountname}'")) {
 			$result = 0;
-			$cmd="/usr/bin/logger \"Sucessfull umounted /mnt/{$mountname}\"";
+			$cmd="/usr/bin/logger \"Sucessfull umounted {$mountname}\"";
 			mwexec($cmd);
 		}
 		else {
-			$cmd="/usr/bin/logger \"ERROR for umount /mnt/{$mountname}\"";
+			$cmd="/usr/bin/logger \"ERROR for umount {$mountname}\"";
 			mwexec($cmd);
 			$result = 1;
 		}
-	}
-	else
+	} else {
 		$result = 1;
+	}
+
 	return $result;
 }
 
@@ -368,7 +355,6 @@ function disks_umount_fullname($fullname)
 
 	/* Search the mount list for given fullname */
 	foreach($config['mounts']['mount'] as $mountk => $mountv) {
-  
 		if (strcmp($mountv['fullname'],$fullname) == 0) {
 			$mount = $mountv;
 		}
@@ -378,7 +364,7 @@ function disks_umount_fullname($fullname)
 		$result = disks_umount($mount);
 	}
 	else {
-		$result= 1;
+		$result = 1;
 	}
 	
 	return $result;
@@ -392,7 +378,6 @@ function disks_umount_sharename($sharename)
 
 	/* Search the mount list for given fullname */
 	foreach($config['mounts']['mount'] as $mountk => $mountv) {
-  
 		if (strcmp($mountv['sharename'],$sharename) == 0) {
 			$mount = $mountv;
 		}
@@ -402,7 +387,7 @@ function disks_umount_sharename($sharename)
 		$result = disks_umount($mount);
 	}
 	else {
-		$result= 1;
+		$result = 1;
 	}
 	
 	return $result;
@@ -413,28 +398,25 @@ Used when changing the 'sharename': Need to umount the old unknow sharename
 Return 0 if successful, 1 if error */
 function disks_umount_adv($mount)
 {
-	
-	$fullname="{$mount['fullname']}";
-		
-	// get the mount list
+	// Get the mount list.
 	$detmount = get_mounts_list();
-	
-	//Look for the mount point in all mounted point
-	
+
+	// Look for the mount point in all mounted point.
 	foreach ($detmount as $detmountk => $detmountv) {
 		// If we found the mount point on the device
-		if (strcmp($detmountv['fullname'],$fullname) == 0) {
-			$mountname="{$detmountv['mp']}";
+		if (strcmp($detmountv['fullname'], $mount['fullname']) == 0) {
+			$mountname = $detmountv['mp'];
 		}
 	}
-	
+
 	if ($mountname) {
-		exec("/sbin/umount $mountname");
-		@rmdir ("$mountname");
-		return 0;
-	}
-	else
+		exec("/sbin/umount '{$mountname}'");
+		@rmdir("'{$mountname}'");
+		$result = 0;
+	} else {
 		$result = 1;
+	}
+
 	return $result;
 }
 
@@ -443,28 +425,27 @@ Used when changing the 'sharename': Need to umount the old unknow sharename
 Return 0 if successful, 1 if error */
 function disks_umount_iso_adv($mount)
 {
-	
-	$md_id="md" . "{$mount['md_id']}";
+	$md_id = "md" . "{$mount['md_id']}";
 		
 	// get the mount list
 	$detmount = get_mounts_list();
 	
 	//Look for the mount point in all mounted point corresponding to the md id
-	
 	foreach ($detmount as $detmountk => $detmountv) {
 		// If we found the mount point on the device
 		if (strcmp($detmountv['fullname'],$md_id) == 0) {
-			$mountname="{$detmountv['mp']}";
+			$mountname = $detmountv['mp'];
 		}
 	}
 	
 	if ($mountname) {
-		exec("/sbin/umount $mountname");
-		@rmdir ("$mountname");
-		return 0;
-	}
-	else
+		exec("/sbin/umount '{$mountname}'");
+		@rmdir("'{$mountname}'");
+		$result = 0;
+	} else {
 		$result = 1;
+	}
+
 	return $result;
 }
 
@@ -497,8 +478,7 @@ function disks_check_mount_sharename($sharename)
 	return $status;
 }
 
-/* This option check if the configured mount is mounted */
-
+/* This option check if the configured mount is mounted. */
 function disks_check_mount($mount)
 {
 	// MUST CHECK IF IT'S NTFS filesystem, and use a disks_check_mount_sharename function!!
@@ -514,10 +494,9 @@ function disks_check_mount($mount)
 Return 0 if not, 1 if yes */
 function disks_check_mount_disk($disk)
 {
-  
-  	$detmount = get_mounts_list();
-	$status=0;
-	
+	$status = 0;
+ 	$detmount = get_mounts_list();
+
 	foreach ($detmount as $detmountk => $detmountv) {
 		/* Must found the $disk (ad0) in result $mdisk (ad0s1) */
 		// strpos will return 0 (found at position 0) if found, must check the 'false' value
@@ -526,6 +505,7 @@ function disks_check_mount_disk($disk)
 			break;
 		}
 	}
+
 	return $status;
 }
 
@@ -542,19 +522,14 @@ function disks_status($diskname)
 	
 	$detectedlist = array_merge((array)get_physical_disks_list(),(array)get_cdrom_list());
 	$status="MISSING";
+
 	foreach ($detectedlist as $detecteddisk => $detecteddiskv) 	{
-		
 		if ($detecteddisk == $diskname['name']) {
 			$status="ONLINE";
-			// Removed the information CHANGED: Not usefull, and depend of the dmesg log (if lot's of log, the state of disk will be 'changed'
-			/*
-			if (($detecteddiskv['size'] != $diskname['size']) || ($detecteddiskv['desc'] != $diskname['desc'])) {
-				$status="CHANGED";
-			}
-			*/
 			break;
 		}
 	}
+
 	return $status;
 }
 
@@ -585,18 +560,14 @@ function disks_umount_all()
 /* Configure, create and start gvinum volume */
 function disks_raid_gvinum_configure()
 {
-		
 	global $config, $g;
 	
 	/* Generate the raid.conf file */
-
 	if ($config['gvinum']['vdisk']) 	{
-		
 		foreach ($config['gvinum']['vdisk'] as $a_raid_conf) 		{
+			if (file_exists($g['varrun_path'] . "/raid.conf.dirty") && !in_array("{$a_raid_conf['name']}\n",file($g['varrun_path'] . "/raid.conf.dirty")))
+				continue;
 
-			if (file_exists($g['varrun_path'] . "/raid.conf.dirty") && 
-	                    !in_array("{$a_raid_conf['name']}\n",file($g['varrun_path'] . "/raid.conf.dirty"))) continue;
-		
 			/* generate raid.conf */
 			$fd = fopen("{$g['varetc_path']}/raid-{$a_raid_conf['name']}.conf", "w");
 			if (!$fd) 			{
@@ -610,7 +581,6 @@ function disks_raid_gvinum_configure()
 drive disk_{$diskrv} device {$diskrv}
 
 EOD;
-		
 			}
 			 
 			$raidconf .= <<<EOD
