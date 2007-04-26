@@ -71,6 +71,7 @@ from scretch. After that use one of the following menus:
 ################ History Change logs ##############
 
 FreeNAS 0.685b:
+---------------
 
 Majors changes:
 - Add Dynamic DNS service
@@ -98,7 +99,12 @@ Bug fixs:
 - Fix bug in ftp services page - Handle incorrect values for 'Number of clients' and 'Max. conn. per IP'.
 - Disk encrypted WebGUI - Disk wasn't correct named when using gvinum RAID disk.
 
-FreeNAS 0.684b :
+Known bugs:
+- NTFS mount points are not mounted after creation, a reboot is necessary.
+
+
+FreeNAS 0.684b:
+---------------
 
 Majors changes:
 - Add disk encryption with geli
@@ -155,12 +161,15 @@ Underlying changes:
 - Upgrade PHP to 5.2.1
 - Upgrade ushare to 0.9.10 (should now support xbox)
 
-Known bug in the 0.684b:
+Known bugs:
 - Using iSCSI-target can cause problem for stopping/restarting FreeNAS
 - French accent not correclty displayed
 - When pressing Ctrl+halt+del key, the rc.shutdown script generate an error
 
+
 FreeNAS 0.683b:
+---------------
+
 - Updated licence file with new translators name/emails
 - Upgrade Smartmontolls from 5.36 to 5.37
 - Add the HPN-SSH client (for preparing rsync and unison over ssh)
@@ -174,7 +183,10 @@ FreeNAS 0.683b:
 - Fix the disk check mounted bug
 - Add gettext support on PHP (prepare migrating languague file to .po)
 
+
 FreeNAS 0.682b:
+---------------
+
 - Fixed 0.681b bug: missing function (fdisk) and fsck tools that don't umount
 - CIFS: hide dot files for prevent Netatalk system directory to be delete
 - CIFS: add two parameters for trying to improve performance (samba perf suck on FreeBSD...)
@@ -185,7 +197,10 @@ FreeNAS 0.682b:
 - New language: Traditional and simplified Chinese (Thanks to Baikuan Hsu), Dutch (thanks to Kris Verhoeven)
 - Add warning when choosing install with 2 partitions : Thanks Bob
 
+
 FreeNAS 0.681b:
+---------------
+
 - Allow the following characters in CIFS workgroup name: ! @ # $ % ^ & ( ) _ - ; : ' " , .
 - Modified build scripts
 - Upgrade lighttpd to 1.4.13
@@ -203,7 +218,10 @@ FreeNAS 0.681b:
 - Fixed the SFTP bug
 - Added uShare UPnP A/V Media Server service
 
+
 FreeNAS 0.68:
+-------------
+
 - Need 32MB of minimal disk space for installing (since release 0.67, but forget to mention it)
 - Need 128MB of RAM for using the webgui upgrade function (92MB of RAM should be enough for enabled all services)
 - Updated to FreeBSD 6.2 PRERELEASE
@@ -238,10 +256,15 @@ FreeNAS 0.68:
 - Added disk management tools page (e.g filesystem check).
 - Added mount point tools page (to mount/unmount mount points by hand).
 
+
 FreeNAS 0.671:
+--------------
+
 - gvinum bug fix: fix raid deletion , add config file conversion
 
+
 FreeNAS 0.67:
+-------------
 
 - Multilanguage WebGUI (thanks to Aliet Santiesteban Sifontes), French and spanich translation are work in progress.
 If you want translate the WebGUI, You can use the english file as reference file (this file is a work in progress and can change).
@@ -282,7 +305,9 @@ Vyatcheslav Tyulyukov patchs:
 
 - FreeNAS generating script 'setupfreenas.sh' by Scott Zahn
 
+
 FreeNAS 0.66:
+-------------
 
 News features:
 - Upgraded to FreeBSD 6.1 RC #12
@@ -312,6 +337,7 @@ Vyatcheslav Tyulyukov patches:
 
 
 FreeNAS 0.65:
+-------------
 
 News features :
 - Adding MS Windows Domain authentication
@@ -358,6 +384,7 @@ If 'user' mode: use 0744 for file and 0755 for directory
 
 
 FreeNAS 0.64:
+-------------
 
 bug fixes:
 - Fixed the read-only UFS disks
@@ -366,7 +393,9 @@ bug fixes:
 - Used a valided method for creating software RAID volume (but still same problem with software RAID 5)
 - Minors enhancement in status:system page 
 
+
 FreeNAS 0.62:
+-------------
 
 New features:
 - Changed the default IP address to: 192.168.1.250
@@ -415,7 +444,9 @@ kern.ipc.nmbclusters=60000
 kern.maxfiles=65536
 kern.maxfilesperproc=32768
 
+
 FreeNAS 0.6:
+------------
 
 - Adding local user/group authentication
 - Adding Rsync daemon
@@ -434,7 +465,9 @@ And minors changes/Bugs fixed:
 - Can boot if there is no serial port
 - "clean log" button works
 
+
 FreeNAS 0.52:
+-------------
 
 This release add minors features:
 - Possibility to use the disk where FreeNAS install for sharing data;
@@ -448,6 +481,7 @@ This release prepare the support of platform that don't have video and keyboard:
 
 
 FreeNAS 0.51:
+-------------
 
 New features:
 - Kernel compiled for support SMP PC
@@ -462,7 +496,9 @@ Bugs fixed:
 - Fix the wrong free memory display (bug n°1368478)
 - Fix the Samba Server description not used (bug n°1395997)
 
+
 FreeNAS 0.5:
+------------
 
 New features:
 - Software RAID with gvinum...need to be more tested (have a little problem with RAID 1 and soft reboot)
@@ -483,6 +519,7 @@ Know bugs (WARNING!):
 
 
 FreeNAS 0.4:
+------------
 
 Changelog:
 - Adding status for "disk" and "mount point"
@@ -498,7 +535,9 @@ knowbug:
 Limitation:
 - Can't use the disk where FreeNAS is installed for sharing data
 
+
 FreeNAS 0.3:
+------------
 
 There is only minors changes:
 - "install to hard drive" now works, and some new option for configuring FTP.
@@ -516,7 +555,9 @@ functionnaliy of disks status)
 Knowbug:
 - There is no check if there is error when trying to mount a disk
 
-FreeNAS 0.2
+
+FreeNAS 0.2:
+------------
 
 Change log:
 - Update to kernel FreeBSD 6 Stable
@@ -530,6 +571,8 @@ Know bugs:
 - Hotname lookup error
 - Partitions display errors (Status/disk)
 
+
 FreeNAS 0.1:
+------------
 
 Initial release!

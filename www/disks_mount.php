@@ -49,9 +49,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			/* reload all components that mount disk */
 			disks_mount_all();
-			/* reload all components that use mount */
 			services_samba_configure();
 			services_nfs_configure();
 			services_rsyncd_configure();
@@ -65,26 +63,33 @@ if ($_POST) {
 		}
 	}
 }
+
 if ($_GET['act'] == "del")
 {
 	if ($a_mount[$_GET['id']]) {
-		// MUST check if it's use by swap
+		// MUST check if mount point is used by swap.
 		if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $a_mount[$_GET['id']]['sharename'])) {
 			$errormsg[] = gettext("The swap file is using this mount point.");
-        } else {
-		disks_umount($a_mount[$_GET['id']]);
-		unset($a_mount[$_GET['id']]);
-		write_config();
-		touch($d_mountdirty_path);
-		header("Location: disks_mount.php");
-		exit;
+		} else {
+			disks_umount($a_mount[$_GET['id']]);
+			unset($a_mount[$_GET['id']]);
+			write_config();
+			touch($d_mountdirty_path);
+			header("Location: disks_mount.php");
+			exit;
 		}
 	}
 }
-if ($_GET['act'] == "ret")
+
+if ($_GET['act'] == "retry")
 {
 	if ($a_mount[$_GET['id']]) {
-		disks_mount($a_mount[$_GET['id']]);
+		if (0 == disks_mount($a_mount[$_GET['id']])) {
+			services_samba_configure();
+			services_nfs_configure();
+			services_rsyncd_configure();
+			services_afpd_configure();
+		}
 		header("Location: disks_mount.php");
 		exit;
 	}
@@ -136,7 +141,7 @@ if ($_GET['act'] == "ret")
                 if(disks_check_mount($mount)) {
 									echo(gettext("OK"));
                 } else {
-                  echo(gettext("Error") . " - <a href=\"disks_mount.php?act=ret&id={$i}\">" . gettext("Retry") . "</a>");
+                  echo(gettext("Error") . " - <a href=\"disks_mount.php?act=retry&id={$i}\">" . gettext("Retry") . "</a>");
                 }
               }
               ?>&nbsp;
