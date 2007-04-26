@@ -85,6 +85,7 @@ Minors changes:
 - Create /etc/hosts file after interface initialization (current IP was not available when using DHCP)
 - Add boot splash screen (just for fun)
 - Tune graid5 RAM use depending of RAM detected
+- Display DNS servers on 'System/General setup' page when using DHCP (edit controls are disabled in this case)
 
 Bug fixs:
 - Add missing winbind/smbpass pam modules

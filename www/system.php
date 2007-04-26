@@ -38,7 +38,7 @@ $pgtitle = array(gettext("System"), gettext("General setup"));
 
 $pconfig['hostname'] = $config['system']['hostname'];
 $pconfig['domain'] = $config['system']['domain'];
-list($pconfig['dns1'],$pconfig['dns2']) = $config['system']['dnsserver'];
+list($pconfig['dns1'],$pconfig['dns2']) = get_dnsserver();
 $pconfig['username'] = $config['system']['username'];
 if (!$pconfig['username'])
 	$pconfig['username'] = "admin";
@@ -127,10 +127,13 @@ if ($_POST) {
 		$config['system']['time-update-interval'] = $_POST['timeupdateinterval'];
 
 		unset($config['system']['dnsserver']);
-		if ($_POST['dns1'])
-			$config['system']['dnsserver'][] = $_POST['dns1'];
-		if ($_POST['dns2'])
-			$config['system']['dnsserver'][] = $_POST['dns2'];
+		// Only store DNS servers when using static IP.
+		if ("dhcp" == $config['interfaces']['lan']['ipaddr']) {
+			if ($_POST['dns1'])
+				$config['system']['dnsserver'][] = $_POST['dns1'];
+			if ($_POST['dns2'])
+				$config['system']['dnsserver'][] = $_POST['dns2'];
+		}
 
 		$olddnsallowoverride = $config['system']['dnsallowoverride'];
 		$config['system']['dnsallowoverride'] = $_POST['dnsallowoverride'] ? true : false;
@@ -195,9 +198,10 @@ if ($_POST) {
     <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("DNS servers");?></td>
       <td width="78%" class="vtable">
-          <input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>"><br>
-          <input name="dns2" type="text" class="formfld" id="dns22" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>"><br>
-          <span class="vexpl"><?=gettext("IP addresses");?><br>
+				<?php $dns_ctrl_disabled = ("dhcp" == $config['interfaces']['lan']['ipaddr']) ? "disabled" : "";?>
+				<input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>" <?=$dns_ctrl_disabled;?>><br>
+				<input name="dns2" type="text" class="formfld" id="dns22" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>" <?=$dns_ctrl_disabled;?>><br>
+				<span class="vexpl"><?=gettext("IP addresses");?><br>
       </td>
     </tr>
     <tr>

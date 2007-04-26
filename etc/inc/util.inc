@@ -1177,6 +1177,36 @@ function get_macaddr($if)
   return $macaddr;
 }
 
+/* Get DNS servers.
+Parse /etc/resolv.conf when using DHCP (will be updated
+when 'dhclient' is executed), otherwise use configured
+DNS servers from config.xml for static IP.
+Returns array of DNS servers. */
+function get_dnsserver() {
+	global $config;
+
+	$result = array();
+
+	switch ($config['interfaces']['lan']['ipaddr']) {
+		case 'dhcp':
+			exec("cat /etc/resolv.conf", $rawdata);
+			foreach($rawdata as $data) {
+				$adata = preg_split("/\s+/", $data);
+				if (0 == strcmp(strtolower(trim($adata[0])),"nameserver")) {
+					$result[] = trim($adata[1]);
+					break;
+				}
+			}
+			break;
+
+		default:
+			$result = $config['system']['dnsserver'];
+			break;
+	}
+
+	return $result;
+}
+
 /* Get list of disks from given type of filesystem. */
 function get_fstype_disks_list($fstype) {
 	global $config;
