@@ -84,7 +84,7 @@ copy_files() {
 
 # Create rootfs
 create_rootfs() {
-	$FREENAS_SVNDIR/build/freenas-create-dirs.sh -f $FREENAS_ROOTFS
+	$FREENAS_SVNDIR/build/freenas-create-rootfs.sh -f $FREENAS_ROOTFS
 
   # Configuring platform variable
 	echo $FREENAS_VERSION > $FREENAS_ROOTFS/etc/prd.version
