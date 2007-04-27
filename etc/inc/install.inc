@@ -224,7 +224,7 @@ function install_fdisk($harddrive)
 
 	// Calculate partition sector sizes.
 	$part1_size_sectors = $part1_size_bytes / $diskinfo['sectorsize'];
-	$part2_size_sectors = ($diskinfo['mediasize_bytes'] / $diskinfo['sectorsize']) - $part1_size_sectors;
+	$part2_size_sectors = $diskinfo['mediasize_sectors'] - $part1_size_sectors;
 
 	// Create fdisk config file (fdisk.conf).
 	$fd = fopen("{$g['varetc_path']}/fdisk.conf", "w");
