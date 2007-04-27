@@ -92,7 +92,7 @@ function install_init_halfdisk($harddrive)
 {
 	/* Part of install process: Initialize the destination disk with 2 partitions */
 	/* Create the partitions */
-	fdisk_hd_install($harddrive);
+	install_fdisk($harddrive);
 
 	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr $harddrive")) {
 		echo "Can't fdisk the destination drive!\n";
@@ -123,8 +123,8 @@ function install_init_halfdisk($harddrive)
 	}
 
 	echo "Modify BSD label information...\n";
-	disks_bsdlabel($harddrive,"s1","4.2BSD");
-	disks_bsdlabel($harddrive,"s2","4.2BSD");
+	install_bsdlabel($harddrive, "s1", "4.2BSD");
+	install_bsdlabel($harddrive, "s2", "4.2BSD");
 
 	echo "Creating filesystem...\n";
 	if (mwexec("/sbin/newfs -U /dev/" . escapeshellarg($harddrive) . "s1")) {
@@ -184,12 +184,10 @@ function install_backupconfig($disk)
 	}
 	
 	return 0;
-
 }
 
 function install_restoreconfig($disk)
-{	
-	
+{
 	/* Mount the upgraded drive in RW mode */
 	if (mwexec("/sbin/mount /dev/$disk /tmp/installdrive")) {
 		echo "Can't mount the drive just upgraded in RW mode!\n";
@@ -211,3 +209,82 @@ function install_restoreconfig($disk)
 	return 0;
 }
 
+// Initialise HARD DRIVE for installation (creating 2 partition).
+// Return 0 if successful, 1 if error
+function install_fdisk($harddrive)
+{
+	global $config, $g;
+
+	// Get disk informations.
+	$diskinfo = disks_get_diskinfo($harddrive);
+
+	// Setting partition size to 32Mb.
+	$part1_size_mbytes = 32;
+	$part1_size_bytes = $part1_size_mbytes * 1024 * 1024;
+
+	// Calculate partition sector sizes.
+	$part1_size_sectors = $part1_size_bytes / $diskinfo['sectorsize'];
+	$part2_size_sectors = ($diskinfo['mediasize_bytes'] / $diskinfo['sectorsize']) - $part1_size_sectors;
+
+	// Create fdisk config file (fdisk.conf).
+	$fd = fopen("{$g['varetc_path']}/fdisk.conf", "w");
+	if (!$fd) {
+		write_console("Error: Can't open fdisk.conf in install_fdisk().\n");
+		return 1;
+	}
+
+	$fdiskconf .= <<<EOD
+g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}
+p 1 165 1 $part1_size_sectors
+p 2 165 $part1_size_sectors $part2_size_sectors
+p 3 0 0 0
+p 4 0 0 0
+a 1
+
+EOD;
+
+	fwrite($fd, $fdiskconf);
+	fclose($fd);
+
+	// Fdisk the disk.
+	mwexec("/sbin/fdisk -f {$g['varetc_path']}/fdisk.conf /dev/{$harddrive}");
+
+	return 0;
+}
+
+// Create disk label.
+// Return none
+function install_bsdlabel($harddrive,$partition,$type)
+{
+	global $config, $g;
+
+	// Generating BSD Label table
+	passthru("/sbin/bsdlabel " . escapeshellarg($harddrive) ."$partition > {$g['tmp_path']}/label.tmp");
+
+	// put this file on a array
+	$tableau = file("{$g['tmp_path']}/label.tmp");
+
+	// Open this file in add mode 
+	$handle = fopen("{$g['tmp_path']}/label.tmp", 'a');
+
+	while(list(,$val) = each($tableau)) {
+		// If the line contain the word "unused"
+		// Why did I replace 'a' with 'c' ? Must found the URL where I found this information
+		if (ereg ("unused",$val)) {
+			// Replacing c: by a:
+			// Why ??? Must found the web page where I see this method
+			$val = ereg_replace ("c:","a:", $val);
+			// Peplacing unused by $type
+			$val = ereg_replace ("unused",$type, $val);
+			// Adding this line add the end of the file
+			fwrite($handle, $val);
+		}
+	}
+
+	// Closing file
+	fclose($handle);
+
+	// Injecting this new partition table 
+	passthru("/sbin/bsdlabel -R -B " . escapeshellarg($harddrive) ."$partition {$g['tmp_path']}/label.tmp");
+}
+?>
