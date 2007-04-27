@@ -66,9 +66,33 @@
   			exit(0);
   		}
   	} while (!is_numeric($lanbits) || ($lanbits < 1) || ($lanbits > 31));
-  	
+
   	$config['interfaces']['lan']['ipaddr'] = $lanip;
   	$config['interfaces']['lan']['subnet'] = $lanbits;
+
+		do {
+  		echo "Enter the default gateway (press enter to skip): ";
+  		$gatewayip = chop(fgets($fp));
+  		if ($gatewayip === "") {
+  			break;
+  		}
+  	} while (!is_ipaddr($gatewayip));
+
+  	if ($gatewayip) {
+  		$config['interfaces']['lan']['gateway'] = $gatewayip;
+		}
+
+  	do {
+  		echo "Enter a DNS server (press enter to skip): ";
+  		$dnsserverip = chop(fgets($fp));
+  		if ($dnsserverip === "") {
+  			break;
+  		}
+  	} while (!is_ipaddr($dnsserverip));
+
+  	if ($dnsserverip) {
+  		$config['system']['dnsserver'] = $dnsserverip;
+		}
 	}
 
 	$proto = "http";
