@@ -52,7 +52,7 @@ function interfaces_lan_configure()
 	$result = 0;
 	
 	if ($g['booting'])
-		echo "Configuring LAN interface... ";
+		write_console("Configuring LAN interface... ");
 	
 	$lancfg = $config['interfaces']['lan'];
 	
@@ -63,7 +63,7 @@ function interfaces_lan_configure()
 	if (strcmp($lanif,"auto") == 0) {
 		$lanif = get_ifname($lanif);
 		if ($g['booting']) {
-			echo "Using interface $lanif... ";
+			write_console("Using interface $lanif... ");
 		}
 	}
 
@@ -193,7 +193,7 @@ function interfaces_optional_configure_if($opti)
 		$optdescr = "";
 		if ($optcfg['descr'])
 			$optdescr = " ({$optcfg['descr']})";
-		echo "Configuring OPT{$opti}{$optdescr} interface... ";
+		write_console("Configuring OPT{$opti}{$optdescr} interface... ");
 	}
 	
 	if (isset($optcfg['enable'])) {

@@ -1146,7 +1146,7 @@ function get_ipaddr($if)
   }
 
   if (strcmp($ipaddr,"") == 0)
-    echo "Failed to get IP address for interface $if. ";
+    write_console("Failed to get IP address for interface $if. ");
 
   return $ipaddr;
 }
@@ -1171,7 +1171,7 @@ function get_macaddr($if)
   }
 
   if (strcmp($macaddr,"") == 0) {
-    echo "Failed to get MAC address for interface $if. ";
+    write_console("Failed to get MAC address for interface $if. ");
   }
 
   return $macaddr;

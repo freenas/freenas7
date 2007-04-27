@@ -192,7 +192,7 @@ function system_syslogd_start() {
 	$syslogcfg = $config['syslog'];
 
 	if ($g['booting']) {
-		echo "Starting syslog service... ";
+		write_console("Starting syslog service... ");
 	} else {
 		killbypid("{$g['varrun_path']}/syslog.pid");
 	}
@@ -285,7 +285,7 @@ function system_pccard_start() {
 	global $config, $g;
 	
 	if ($g['booting'])
-		echo "Initializing PC cards... ";
+		write_console("Initializing PC cards... ");
 	
 	/* kill any running pccardd */
 	killbypid("{$g['varrun_path']}/pccardd.pid");
@@ -297,7 +297,7 @@ function system_pccard_start() {
 		if ($res == 0)
 			write_console("done\n");
 		else
-			echo "failed (probably no PC card controller present)\n";
+			write_console("failed (probably no PC card controller present)\n");
 	}
 		
 	return $res;
@@ -305,14 +305,13 @@ function system_pccard_start() {
 
 /* Start the webgui
 Return 0 if OK, and 1 or retval if error */
-
 function system_webgui_start() {
 	global $config, $g;
 	
 	$result = 0 ;
 	
 	if ($g['booting'])
-		echo "Starting webGUI... ";
+		write_console("Starting webGUI... ");
 	
 	/* kill any running lighttpd */
 	killbypid("{$g['varrun_path']}/lighttpd.pid");
@@ -547,7 +546,7 @@ function system_timezone_configure() {
 	$syscfg = $config['system'];
 
 	if ($g['booting'])
-		echo "Initializing timezone... ";
+		write_console("Initializing timezone... ");
 
 	/* extract appropriate timezone file */
 	$timezone = $syscfg['timezone'];
@@ -566,7 +565,7 @@ function system_ntp_configure() {
 	$syscfg = $config['system'];
 
 	if ($g['booting'])
-		echo "Starting NTP client... ";
+		write_console("Starting NTP client... ");
 	else {
 		killbypid("{$g['varrun_path']}/runmsntp.pid");
 		killbypid("{$g['varrun_path']}/msntp.pid");
@@ -859,7 +858,7 @@ function system_users_create()
 	$result = 0;
 	
 	if ($g['booting'])
-		echo "Generating user database... ";
+		write_console("Generating user database... ");
 	
 	if (system_user_masterpasswd() )
 		$result = 1;

@@ -40,7 +40,7 @@ function disks_mount_all()
 	global $config, $g;
 	
 	if ($g['booting'])
-		echo "Mounting partitions... ";
+		write_console("Mounting partitions... ");
 	
 	/* For each device configured: */
 	if (is_array($config['mounts']['mount'])) 	{
@@ -55,7 +55,7 @@ function disks_mount_all()
 	}
 			
 	if ($g['booting'])
-		echo "done\n";
+		write_console("done\n");
 
 	return 0;
 }
@@ -66,7 +66,7 @@ function disks_mount_iso_all()
 	global $config, $g;
 	
 	if ($g['booting'])
-		echo "Mounting ISO files... ";
+		write_console("Mounting ISO files... ");
 	
 	/* For each device configured: */
 	if (is_array($config['mounts']['iso'])) 	{
@@ -81,7 +81,7 @@ function disks_mount_iso_all()
 	}
 			
 	if ($g['booting'])
-		echo "done\n";
+		write_console("done\n");
 	
 	return 0;
 }
@@ -135,7 +135,7 @@ function disks_mount($mount)
 		if (is_array($config['geli']['vdisk'])) {
 			$a_geli = $config['geli']['vdisk'];
 			if (array_search_ex($mount['mdisk'], $a_geli, "fullname")) {
-				echo "\nSkip mounting {$mount['sharename']}: Passphrase need.";
+				write_console("\nSkip mounting {$mount['sharename']}: Passphrase need.");
 				write_log("Passphrase needed for '{$mountname}'");
 				return 0;
 			}
@@ -748,7 +748,7 @@ function disks_raid_gvinum_start()
 
 	if ($config['gvinum']['vdisk']) {
 		if ($g['booting'])
-			echo "Start gvinum raid... ";
+			write_console("Start gvinum raid... ");
 
 		/* start each volume */
 		foreach ($config['gvinum']['vdisk'] as $a_raid_conf) 	{
@@ -756,7 +756,7 @@ function disks_raid_gvinum_start()
 		}
 		
 		if ($g['booting'])
-			echo "done\n";
+			write_console("done\n");
 	}
 	
 	return 0;
@@ -770,13 +770,13 @@ function disks_raid_gmirror_start()
 	/* Start Geom mirror */
 	if ($config['gmirror']['vdisk']) {
 		if ($g['booting'])
-			echo "Start gmirror raid... ";
+			write_console("Start gmirror raid... ");
 
 		// Load geom mirror module
 		mwexec("/sbin/gmirror load");
 		
 		if ($g['booting'])
-			echo "done\n";
+			write_console("done\n");
 	}
 
 	return 0;
@@ -790,13 +790,13 @@ function disks_raid_gconcat_start()
 	/* Start Geom concat */
 	if ($config['gconcat']['vdisk']) {
 		if ($g['booting'])
-			echo "Start gconcat raid... ";
+			write_console("Start gconcat raid... ");
 
 		// Load geom concat module
 		mwexec("/sbin/gconcat load");
 		
 		if ($g['booting'])
-			echo "done\n";
+			write_console("done\n");
 	}
 
 	return 0;
@@ -810,13 +810,13 @@ function disks_raid_gstripe_start()
 	/* Start Geom stripe */
 	if ($config['gstripe']['vdisk']) {
 		if ($g['booting'])
-			echo "Start gstripe raid... ";
+			write_console("Start gstripe raid... ");
 
 		// Load geom stripe module
 		mwexec("/sbin/gstripe load");
 		
 		if ($g['booting'])
-			echo "done\n";
+			write_console("done\n");
 	}
 
 	return 0;
@@ -830,7 +830,7 @@ function disks_raid_graid5_start()
 	/* Start Geom RAID5 */
 	if ($config['graid5']['vdisk']) {
 		if ($g['booting'])
-			echo "Start graid5 raid... ";
+			write_console("Start graid5 raid... ");
 
 		// Load geom raid5 module
 		mwexec("/sbin/graid5 load");
@@ -839,7 +839,7 @@ function disks_raid_graid5_start()
 		disks_raid_graid5_tune();
 		
 		if ($g['booting']) {
-			echo "done\n";
+			write_console("done\n");
 		}
 		
 	}

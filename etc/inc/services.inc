@@ -47,7 +47,7 @@ function services_snmpd_configure() {
 	if (isset($config['snmpd']['enable'])) {
 	
 		if ($g['booting'])
-			echo "Starting SNMP agent... ";
+			write_console("Starting SNMP agent... ");
 
 		/* generate snmpd.conf */
 		$fd = fopen("{$g['varetc_path']}/snmpd.conf", "w");
@@ -102,7 +102,7 @@ function services_samba_configure() {
 
 	if (isset($config['samba']['enable'])) {
 		if ($g['booting'])
-			echo "Starting Samba... ";
+			write_console("Starting Samba... ");
 
 		/* generate smb.conf */
 		$fd = fopen("{$g['varetc_path']}/smb.conf", "w");
@@ -352,7 +352,7 @@ function services_rsyncd_configure() {
 	if (isset($config['rsyncd']['enable'])) {
 	
 		if ($g['booting'])
-			echo "Starting RSYNC daemon... ";
+			write_console("Starting RSYNC daemon... ");
 		
 		/* If no share configured, can't start rsync */
 		if (!is_array($config['mounts']['mount'])) {
@@ -477,7 +477,7 @@ function services_nfs_configure() {
 	if (isset($config['nfs']['enable'])) {
 	
 		if ($g['booting']) {
-			echo "Starting NFS... ";
+			write_console("Starting NFS... ");
 		}
 		
 		/* If no share configured, exit */
@@ -574,7 +574,7 @@ function services_pureftpd_configure() {
 
 	if (isset($config['ftp']['enable'])) {
 		if ($g['booting'])
-			echo "Starting FTP server... ";
+			write_console("Starting FTP server... ");
 
 		/* Generate the banner file */
 		$fd = fopen("/mnt/.banner", "w");
@@ -674,7 +674,7 @@ function services_smart_configure() {
 
 	if (isset($config['system']['smart'])) {
 		if ($g['booting'])
-			echo "Starting smartd... ";
+			write_console("Starting smartd... ");
 
 		/* run smartd */
 		$result = mwexec("/usr/local/sbin/smartd --pidfile={$g['varrun_path']}/smartd.pid --logfacility=local5");
@@ -705,7 +705,7 @@ function services_powerd_configure() {
 
 	if (isset($config['system']['powerd'])) {
 		if ($g['booting'])
-			echo "Starting powerd... ";
+			write_console("Starting powerd... ");
 
 		/* run powerd */
 		$result = mwexec("/usr/sbin/powerd -a adaptive -b adaptive");
@@ -738,7 +738,7 @@ function services_sshd_configure() {
 	if (isset($config['sshd']['enable'])) {
 	
 		if ($g['booting'])
-			echo "Starting SSH server... ";
+			write_console("Starting SSH server... ");
 
 		/* generate /ssh/sshd_config */
 		$fd = fopen("{$g['varetc_path']}/ssh/sshd_config", "w");
@@ -848,7 +848,6 @@ EOD;
 
 /* Generate the unison configuration
 Return 0 if OK, 1 or error code if error */
-
 function services_unison_configure() {
 	global $config, $g;
 	
@@ -857,7 +856,7 @@ function services_unison_configure() {
 	if (isset($config['unison']['enable'])) {
 	
 	if ($g['booting'])
-		echo "Configuring  unison... \n";
+		write_console("Configuring unison... ");
 
 		/* ensure unison workdir exists */
 		$workdir = "/mnt/{$config['unison']['share']}/{$config['unison']['workdir']}";
@@ -930,7 +929,7 @@ function services_upnp_configure() {
 
 	if(isset($config['upnp']['enable'])) {
 		if($g['booting'])
-			echo "Starting UPnP server... ";
+			write_console("Starting UPnP server... ");
 
 		/* Setup a multicast route for UPnP messages. */
 		$result = mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
@@ -969,7 +968,7 @@ function services_dynamicdns_configure() {
 
 	if(isset($config['dynamicdns']['enable'])) {
 		if($g['booting'])
-			echo "Starting Dynamic DNS service... ";
+			write_console("Starting Dynamic DNS service... ");
 
 		/* Get the service type */
 		$servicetype = "";
@@ -1046,7 +1045,7 @@ EOD;
 		$a_rsyncclient = &$config['rsync']['rsyncclient'];
 				
 		if ($g['booting'])
-			echo "Configuring cron for rsync client... ";
+			write_console("Configuring cron for rsync client... ");
 		
 		$i=0;
 		foreach($a_rsyncclient as $rsyncclient) {
@@ -1127,7 +1126,7 @@ EOD;
 		$a_rsynclocal = &$config['rsync']['rsynclocal'];
 	
 		if ($g['booting'])
-			echo "Configuring cron for local rsync... ";
+			write_console("Configuring cron for local rsync... ");
 			
 		$i=0;
 		foreach($a_rsynclocal as $rsynclocal) {
@@ -1206,7 +1205,7 @@ EOD;
 	// SHUTDOWN PART
 	if (isset($config['shutdown']['enable'])) {
 		if ($g['booting'])
-			echo "Configuring Cron for shutdown... ";
+			write_console("Configuring Cron for shutdown... ");
 		
 		if ($config['shutdown']['all_mins'] == "0") { 
 			foreach ($config['shutdown']['minute'] as $minutev) 	{
@@ -1302,7 +1301,7 @@ function services_rsyncclient_configure()
 		$a_rsyncclient = &$config['rsync']['rsyncclient'];
 	
 		if ($g['booting'])
-			echo "Generating synchronizing cron script... ";
+			write_console("Generating synchronizing cron script... ");
 		
 		$i=0;
 		foreach($a_rsyncclient as $rsyncclient) {
@@ -1373,7 +1372,7 @@ function services_rsync_local_configure()
 		$a_rsynclocal = &$config['rsync']['rsynclocal'];	
 	
 		if ($g['booting'])
-			echo "Generating local rsync cron script... ";
+			write_console("Generating local rsync cron script... ");
 		
 		$i=0;
 		foreach($a_rsynclocal as $rsynclocal) {
@@ -1477,7 +1476,7 @@ function services_afpd_configure()
 			$result = 1 ;
 			
 		if ($g['booting'])
-			echo "Starting AFP server... ";
+			write_console("Starting AFP server... ");
 			
 		if (empty($config['afp']['afpname']))
 			$afpname="-";
@@ -1577,7 +1576,7 @@ function services_iscsiinit_configure()
 	
 	if (is_array($config['iscsiinit']['vdisk'])) {
 		if ($g['booting']) {
-			echo "Loading iSCSI kernel module... ";
+			write_console("Loading iSCSI kernel module... ");
 		}
 		/* iSCSI initiator configured, start the process */
 		$result = mwexec("/sbin/kldload iscsi_initiator.ko");
@@ -1588,10 +1587,10 @@ function services_iscsiinit_configure()
 			write_console("done\n");
 		} else if ($g['booting']) {
 			write_log("Fail to load iSCSI kernel module");
-			echo "ERROR\n";
+			write_console("failed\n");
 		}
 		if ($g['booting']) {
-			echo "Configuring initiator(s)... ";
+			write_console("Configuring initiator(s)... ");
 		}
 		
 		$a_iscsiinit = &$config['iscsiinit']['vdisk'];
@@ -1631,7 +1630,7 @@ function services_iscsitarget_configure()
 	
 	if (is_array($config['iscsitarget']['vdisk'])) {
 		if ($g['booting']) {
-			echo "Loading iSCSI target... ";
+			write_console("Loading iSCSI target... ");
 		}
 		
 		$a_iscsitarget = &$config['iscsitarget']['vdisk'];
@@ -1696,7 +1695,7 @@ function services_mdnsresponder_configure()
 
 	if (isset($config['system']['zeroconf'])) {
 		if ($g['booting']) {
-			echo "Starting Bonjour Zeroconf service... ";
+			write_console("Starting Bonjour Zeroconf service... ");
 		}
 	
 		$fd = fopen("{$g['varetc_path']}/mDNSResponder.conf", "w");
