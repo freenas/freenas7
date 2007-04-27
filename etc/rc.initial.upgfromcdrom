@@ -27,23 +27,21 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
 	require_once("install.inc");
 
 	/* Get product information */
 	$productname = get_product_name();
-	
+
 	$fp = fopen('php://stdin', 'r');
-	
+
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
-	
+
 	/* Search where the config file is installed*/
 	$not_found=1;
-	
+
 	$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 	foreach ($disks as $mountdisk) {
 		/* skip mfs mounted filesystems */
@@ -84,18 +82,19 @@
 				break;
 		}
 	}
+
 	if ($not_found) {
 		echo "No configuration found!\n";
 		exit(0);
 	}	
-		
+
 	echo "{$productname} upgrade from CDROM\n";
 	echo "\nHere is the list of detected CDROM:\n";
-	
+
 	foreach ($cdlist as $cdromk =>$cdromv) 	{
 		echo "$cdromk (desc: {$cdromv['desc']})\n";
 	}
-	
+
 	do {
 		echo "\nEnter the name of the CD-ROM drive: ";
 		$cdrom = chop(fgets($fp));
@@ -119,7 +118,7 @@
 		echo "\nMeet a problem for mounting the CDROM.\n";
 		exit(0);
 	}
-	
+
 	if(install_backupconfig($cfgpartition)) {
 		echo "\nMeet a problem for backuping configuration file.\n";
 		exit(0);
@@ -138,18 +137,17 @@
 			install_unmount_cd();
 			exit(0);
 		}
-	
 	}
-	
+
 	if(install_restoreconfig($cfgpartition)) {
 		echo "\nMeet a problem for restoring configuration file.\n";
 		exit(0);
 	}	
-	
+
 	install_unmount_cd();
-	
+
 	echo <<<EOD
-	
+
 {$productname} installed on $cfdevice has been upgraded.
 You can now remove the CD-ROM and reboot the PC.
 

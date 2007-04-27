@@ -31,31 +31,38 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
 	require_once("install.inc");
 
 	/* Get product information */
 	$productname = get_product_name();
-	
+
 	$fp = fopen('php://stdin', 'r');
-	
+
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
-	
-	echo "{$productname} Installer on USB Key or Compact Flash\n";
-	echo "\nWARNING: there will be some limitation:\n";
-	echo "1. It will erase ALL your partitions and data on the destination disk!\n";
-	echo "2. You can't use your destination disk for sharing data\n";
-	echo "3. You can't install {$productname} if it's already installed on this disk (Use upgrade from Web GUI)\n";
-	echo "\nInstall on USB key is the prefered way:\nIt save you IDE or SCSI channel for more hard drive.\n";
-	echo "\nHere is the list of detected CDROM:\n";
-	
-	foreach ($cdlist as $cdromk =>$cdromv) 	{
+
+	echo <<<EOD
+
+{$productname} Installer on HD, Compact Flash or USB Key.
+WARNING: There will be some limitations:
+1. This will erase ALL your partitions and data on the destination disk
+2. You can't use your destination disk for sharing data
+3. You can't install {$productname} if it's already installed on this disk
+   (use upgrade from WebGUI)
+
+Install on USB key is the prefered way:
+It saves you an IDE or SCSI channel for more hard drives.
+
+Here is the list of detected CDROM(s):
+
+EOD;
+
+	foreach ($cdlist as $cdromk =>$cdromv) {
 		echo "$cdromk (desc: {$cdromv['desc']})\n";
 	}
-	
+
 	do {
 		echo "\nEnter the name of the CD-ROM drive: ";
 		$cdrom = chop(fgets($fp));
@@ -64,42 +71,42 @@
 		}
 	} while (!is_validaliasname($cdrom));
 
-	echo "Here is the list of detected disk:\n";
+	echo "\nHere is the list of detected disk:\n";
 
-	foreach ($disklist as $diskk => $diskv) 	{
+	foreach ($disklist as $diskk => $diskv) {
 		echo "$diskk (desc: {$diskv['desc']})\n";
 	}
-	
-	do 	{
+
+	do {
 		echo "\nEnter the name of the USB key or CF: ";
 		$harddrive = chop(fgets($fp));
 		if ($harddrive === "") {
 			exit(0);
 		}
 	} while (!is_validaliasname($harddrive));
-	
+
 	/* check if destination drive is mounted */
-	if (disks_ismounted_mdisk($harddrive)) 	{
+	if (disks_ismounted_mdisk($harddrive)) {
 		echo "\nYour destination drive is already used!\n";
 		fgets($fp);
 		exit(0);
 	}
-	
+
 	if(install_mount_cd($cdrom)) {
 		echo "\nMeet a problem for mounting the CDROM.\n";
 		exit(0);
 	}
-	
+
 	if(install_dd_image($harddrive)) {
 		echo "\nMeet a problem during file copying.\n";
 		install_unmount_cd();
 		exit(0);
 	}
-	
+
 	install_unmount_cd();
-	
+
 	echo <<<EOD
-	
+
 {$productname} has been installed on $harddrive.
 You can now remove the CD-ROM and reboot the PC.
 

@@ -31,7 +31,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
 	require_once("install.inc");
@@ -40,21 +39,30 @@
 	$productname = get_product_name();
 
 	$fp = fopen('php://stdin', 'r');
-	
+
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
-	
-	echo "Two Partition Install\n";
-	echo "Creates two partitions on the boot disk\n:";
-	echo "Installs {$productname} on (small) partition 1 and creates and formats partition 2 for DATA\n";
-	echo "\nWARNING: This WILL erase ALL your partitions and data on the destination hard drive!\n";
-	echo "\nWARNING: You can't install {$productname} if it's already installed on a drive (Use upgrade from Web GUI)\n";
-	echo "\nHere is the list of detected CDROM:\n";
-	
-	foreach ($cdlist as $cdromk =>$cdromv) 	{
+
+	echo <<<EOD
+
+{$productname} Installer on HD.
+
+There will be created two partitions on the boot disk, partition 1 for
+the {$productname} OS and partition 2 for DATA.
+
+WARNING: There will be some limitations:
+1. This will erase ALL your partitions and data on the destination disk
+2. You can't install {$productname} if it's already installed on this disk
+   (use upgrade from WebGUI)
+
+Here is the list of detected CDROM(s):
+
+EOD;
+
+	foreach ($cdlist as $cdromk =>$cdromv) {
 		echo "$cdromk (desc: {$cdromv['desc']})\n";
 	}
-	
+
 	do {
 		echo "\nEnter the name of the CD-ROM drive: ";
 		$cdrom = chop(fgets($fp));
@@ -65,10 +73,10 @@
 
 	echo "Here is the list of detected disks:\n";
 
-	foreach ($disklist as $diskk => $diskv) 	{
+	foreach ($disklist as $diskk => $diskv) {
 		echo "$diskk (desc: {$diskv['desc']})\n";
 	}
-	
+
 	do {
 		echo "\nEnter the name of the Hard Drive: ";
 		$harddrive = chop(fgets($fp));
@@ -76,9 +84,9 @@
 			exit(0);
 		}
 	} while (!is_validaliasname($harddrive));
-	
+
 	/* check if destination drive is mounted */
-	if (disks_ismounted_mdisk($harddrive)) 	{
+	if (disks_ismounted_mdisk($harddrive)) {
 		echo "\nYour destination drive is already used!\n";
 		fgets($fp);
 		exit(0);
@@ -89,24 +97,24 @@
 		fgets($fp);
 		exit(0);
 	}
-	
+
 	if(install_init_halfdisk($harddrive)) {
 		echo "\nThere is a problem for initializing the destination disk.\n";
 		install_unmount_cd();
 		exit(0);
 	}
-	
+
 	$installharddrive = "$harddrive" . "s1";
 	if(install_dd_image($installharddrive)) {
 		echo "\nThere is a problem during file copying.\n";
 		install_unmount_cd();
 		exit(0);
 	}
-	
+
 	install_unmount_cd();
-	
+
 	echo <<<EOD
-	
+
 {$productname} has been installed on $installharddrive.
 You can now remove the CD-ROM and reboot the PC.
 
