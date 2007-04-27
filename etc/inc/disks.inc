@@ -104,15 +104,14 @@ function disks_mount_iso($mount_iso)
 	
 	if (mwexec("/sbin/mdconfig -a -t vnode -f {$filename} -u {$md_id}") == 0) {
 		if (mwexec("/sbin/mount -t cd9660 /dev/md{$md_id} '{$mountname}'") == 0) {
-				$cmd="/usr/bin/logger \"ISO file  {$devname} mounted on '{$mountname}'\"";
-				mwexec($cmd);
+				write_log("ISO file  {$devname} mounted on '{$mountname}'");
 				$result = 0;
 		} else {
-			$cmd="/usr/bin/logger \"Error: Failed to mount ISO file {$filename}\"";
+			write_log("Error: Failed to mount ISO file {$filename}");
 		}
 				
 	} else {
-		$cmd="/usr/bin/logger \"Error: Failed to read file {$filename}\"";
+		write_log("Error: Failed to read file {$filename}");
 	}
 }
 
@@ -137,8 +136,7 @@ function disks_mount($mount)
 			$a_geli = $config['geli']['vdisk'];
 			if (array_search_ex($mount['mdisk'], $a_geli, "fullname")) {
 				echo "\nSkip mounting {$mount['sharename']}: Passphrase need.";
-				$cmd="/usr/bin/logger \"Passphrase needed for '{$mountname}'\"";
-				mwexec($cmd);
+				write_log("Passphrase needed for '{$mountname}'");
 				return 0;
 			}
 		}
@@ -150,26 +148,23 @@ function disks_mount($mount)
 		case "ufs":
 			$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'"); 
 			if (0 == $result) {
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on '{$mountname}'\"";
-				mwexec($cmd);
+				write_log("Disk {$devname} mounted using UFS on '{$mountname}'");
 				$result = 0;
 			} else {
 				/* If it's NOK, Check  filesystem and do a fsck, answer Yes to all question*/
-				$cmd="/usr/bin/logger \"Error: Failed to detect disk {$devname}, starting a UFS fsck\"";
-				mwexec($cmd);
+				write_log("Error: Failed to detect disk {$devname}, starting a UFS fsck");
+
 				mwexec("/sbin/fsck -y -t ufs {$devname}");
 
 				/* Re-try to mount the partition */
 				$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'");
 				if (0 == $result) {
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using UFS on '{$mountname}'\"";
-					mwexec($cmd);
+					write_log("Disk {$devname} mounted using UFS on '{$mountname}'");
 					$result = 0;
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir("{$mountname}");
-					$cmd="/usr/bin/logger \"Error: Failed to mount {$devname} using UFS\"";
-					mwexec($cmd);
+					write_log("Error: Failed to mount {$devname} using UFS");
 					$result = 1;
 				}
 			}
@@ -178,24 +173,20 @@ function disks_mount($mount)
 		case "msdosfs":
 			$result = mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'");
 			if (0 == $result) {
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on '{$mountname}'\"";
-				mwexec($cmd);
+				write_log("Disk {$devname} mounted using FAT on '{$mountname}'");
 				$result = 0;
 			} else {
+				write_log("Error: Failed to detect disk {$devname}, starting a FAT fsck");
 				mwexec("/sbin/fsck -y -t msdosfs {$devname}");
-				$cmd="/usr/bin/logger \"Error: Failed to detect disk {$devname}, starting a FAT fsck\"";
-				mwexec($cmd);
 
 				$result = mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'");
 				if (0 == $result) {
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using FAT on '{$mountname}'\"";
-					mwexec($cmd);
+					write_log("Disk {$devname} mounted using FAT on '{$mountname}'");
 					$result = 0;
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir("{$mountname}");
-					$cmd="/usr/bin/logger \"Error: Failed to mount {$devname} using FAT\"";
-					mwexec($cmd);
+					write_log("Error: Failed to mount {$devname} using FAT");
 					$result = 1;
 				}
 			}
@@ -204,14 +195,12 @@ function disks_mount($mount)
 		case "cd9660":
 			$result = mwexec("/sbin/mount_cd9660 {$devname} '{$mountname}'"); 
 			if (0 == $result) {
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted as CD/DVD on '{$mountname}'\"";
-				mwexec($cmd);
+				write_log("Disk {$devname} mounted as CD/DVD on '{$mountname}'");
 				$result = 0;
 			} else {
 				/* Not OK, remove the directory, prevent writing on RAM disk*/
 				@rmdir("{$mountname}");
-				$cmd="/usr/bin/logger \"Error: Failed to mount {$devname} as CD/DVD\"";
-				mwexec($cmd);
+				write_log("Error: Failed to mount {$devname} as CD/DVD");
 				$result = 1;
 			}
 			break;
@@ -222,27 +211,23 @@ function disks_mount($mount)
 
 			$result = mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force"); // default options: silent,allow_other
 			if (0 == $result) {
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on '{$mountname}'\"";
-				mwexec($cmd);
+				write_log("Disk {$devname} mounted using NTFS on '{$mountname}'");
 				$result = 0;
 			} else {	
 				/* COMMENT FISR PART BEGIN: NTFSFIX DO'NT WORK
-				$cmd="/usr/bin/logger \"Error detected for mounting disk $devname, starting a ntfsfix\"";
-				mwexec($cmd);
+				write_log("Error detected for mounting disk $devname, starting a ntfsfix");
 				mwexec("/usr/local/bin/ntfsfix {$devname}");
 
 				$result = mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force"); // default options: silent,allow_other
 				if (0 == $result) {
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using NTFS on '{$mountname}'\"";
-					mwexec($cmd);
+					write_log("Disk {$devname} mounted using NTFS on '{$mountname}'");
 					$result = 0;
 				}
 				else	{ 
 				COMMENT FIRST PART END */
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir("{$mountname}");
-					$cmd="/usr/bin/logger \"Error: Failed to mount {$devname} using NTFS: Try to fix error on this partition with MS Windows\"";
-					mwexec($cmd);
+					write_log("Error: Failed to mount {$devname} using NTFS: Try to fix error on this partition with MS Windows");
 					$result = 1;
 				/* COMMENT SECOND PART BEGIN
 				}
@@ -253,24 +238,20 @@ function disks_mount($mount)
 		case "ext2fs":
 			$result = mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'"); 
 			if (0 == $result)	{
-				$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on '{$mountname}'\"";
-				mwexec($cmd);
+				write_log("Disk {$devname} mounted using EXT2 on '{$mountname}'");
 				$result = 0;
 			} else {
-				$cmd="/usr/bin/logger \"Error: Failed to detect disk {$devname}, starting a e2fsck\"";
-				mwexec($cmd);
+				write_log("Error: Failed to detect disk {$devname}, starting a e2fsck");
 				mwexec("/usr/local/sbin/e2fsck -f -p {$devname}");
 
 				$result = mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'");
 				if (0 == $result) {
-					$cmd="/usr/bin/logger \"Disk {$devname} mounted using EXT2 on '{$mountname}'\"";
-					mwexec($cmd);
+					write_log("Disk {$devname} mounted using EXT2 on '{$mountname}'");
 					$result = 0;
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM */
 					@rmdir("{$mountname}");
-					$cmd="/usr/bin/logger \"Error: Can't mount {$devname} using EXT2\"";
-					mwexec($cmd);
+					write_log("Error: Can't mount {$devname} using EXT2");
 					$result= 1;
 				}
 			}
@@ -334,12 +315,10 @@ function disks_umount($mount)
 
 	if (mwexec("/sbin/umount '{$mountname}'") == 0) {
 		if(@rmdir("{$mountname}")) {
+			write_log("Sucessfull umounted '{$mountname}'");
 			$result = 0;
-			$cmd="/usr/bin/logger \"Sucessfull umounted '{$mountname}'\"";
-			mwexec($cmd);
 		} else {
-			$cmd="/usr/bin/logger \"Error: Failed to umount '{$mountname}'\"";
-			mwexec($cmd);
+			write_log("Error: Failed to umount '{$mountname}'");
 			$result = 1;
 		}
 	} else {
@@ -550,7 +529,7 @@ function disks_raid_gvinum_configure()
 			/* generate raid.conf */
 			$fd = fopen("{$g['varetc_path']}/raid-{$a_raid_conf['name']}.conf", "w");
 			if (!$fd) 			{
-				printf("Error: Failed to open raid.conf in services_raid_configure().\n");
+				write_console("Error: Failed to open raid.conf in services_raid_configure().\n");
 				return 1;
 			}
 
@@ -877,20 +856,17 @@ function disks_raid_graid5_tune()
 	$realram = $raminfo['real'] / 1024 / 1024;
 
 	if ($realram <= 128) {
-		$cmd="/usr/bin/logger \"Optimizing graid5 for system with less or 128MB of RAM\"";
-		mwexec($cmd);
+		write_log("Optimizing graid5 for system with less or 128MB of RAM");
 
 		mwexec('sysctl value kern.geom.raid5.maxwql=10');
 		mwexec('sysctl value kern.geom.raid5.maxmem=1100000');
 	} else if ($realram <= 256) {
-		$cmd="/usr/bin/logger \"Optimizing graid5 for system with loss or 256MB of RAM\"";
-		mwexec($cmd);
+		write_log("Optimizing graid5 for system with loss or 256MB of RAM");
 
 		mwexec('sysctl value kern.geom.raid5.maxwql=20');
 		mwexec('sysctl value kern.geom.raid5.maxmem=2000000');
 	} else {
-		$cmd="/usr/bin/logger \"512MB of RAM or more detected... No need to optimize RAM use for graid5\"";
-		mwexec($cmd);
+		write_log("Detected 512MB or more RAM... No need to optimize RAM use for graid5");
 	}
 }
 
@@ -1120,7 +1096,7 @@ function fdisk_hd_install($harddrive)
 	/* Create fdisk config file (fdisk.conf) */
 	$fd = fopen("{$g['varetc_path']}/fdisk.conf", "w");
 	if (!$fd) {
-		printf("Error: cannot open fdisk.conf in fdisk_hd_install().\n");
+		write_console("Error: Can't open fdisk.conf in fdisk_hd_install().\n");
 		return 1;
 	}
 

@@ -154,7 +154,7 @@ function interfaces_lan_configure()
 	}
 	
 	if ($g['booting']) {
-		echo "done\n";
+		write_console("done\n");
 	}
 	
 	return $result;
@@ -248,7 +248,7 @@ function interfaces_optional_configure_if($opti)
 	}
 	
 	if ($g['booting']) {
-		echo "done\n";
+		write_console("done\n");
 	}
 	
 	return 0;

@@ -52,8 +52,9 @@ function services_snmpd_configure() {
 		/* generate snmpd.conf */
 		$fd = fopen("{$g['varetc_path']}/snmpd.conf", "w");
 		if (!$fd) {
-			printf("Error: cannot open snmpd.conf in services_snmpd_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open snmpd.conf in services_snmpd_configure()" ');
+			$message = "Error: Can't open snmpd.conf in services_snmpd_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result=1;
 		}
 			
@@ -73,12 +74,12 @@ EOD;
 
 		if(!$result) {
 			if($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "SNMP Daemon started" ');
+				write_console("done\n");
+			write_log("SNMP Daemon started");
 		} else {
 			if($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Failed to start SNMP Daemon" ');
+				write_console("failed\n");
+			write_log("Failed to start SNMP Daemon");
 		}
 	}
 
@@ -106,8 +107,9 @@ function services_samba_configure() {
 		/* generate smb.conf */
 		$fd = fopen("{$g['varetc_path']}/smb.conf", "w");
 		if (!$fd) {
-			printf("Error: cannot open smb.conf in services_samba_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open smb.conf in services_samba_configure()" ');
+			$message = "Error: Can't open smb.conf in services_samba_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1;
 		}
 		
@@ -322,12 +324,12 @@ EOD;
 
 			if(!$result) {
 				if($g['booting'])
-					echo "done\n";
-				mwexec('/usr/bin/logger "Samba started" ');
+					write_console("done\n");
+				write_log("Samba started");
 			} else {
 				if($g['booting'])
-					echo "failed\n";
-				mwexec('/usr/bin/logger "Fail to start Samba" ');
+					write_console("failed\n");
+				write_log("Fail to start Samba");
 			}
 		}
 	}
@@ -360,8 +362,9 @@ function services_rsyncd_configure() {
 		/* generate rsyncd.conf */
 		$fd = fopen("{$g['varetc_path']}/rsyncd.conf", "w");
 		if (!$fd) 	{
-			printf("Error: cannot open rsyncd.conf in services_rsyncd_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open rsyncd.conf in services_rsyncd_configure()" ');
+			$message = "Error: Can't open rsyncd.conf in services_rsyncd_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1;
 		}
 			
@@ -421,8 +424,9 @@ EOD;
 		if (!empty($config['rsyncd']['motd'])) {
 			$fd = fopen("{$g['varetc_path']}/rsyncd.motd", "w");
 			if (!$fd) 	{
-				printf("Error: cannot open rsyncd.motd in services_rsyncd_configure().\n");
-				mwexec('/usr/bin/logger "Error: cannot open rsyncd.motd in services_rsyncd_configure()" ');
+				$message = "Error: Can't open rsyncd.motd in services_rsyncd_configure()";
+				write_console($message . ".\n");
+				write_log($message);
 				$result = 1;
 			}
 			
@@ -442,12 +446,12 @@ EOD;
 
 		if(!$result) {
 			if($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "RSYNC Daemon started" ');
+				write_console("done\n");
+			write_log("RSYNC Daemon started");
 		} else {
 			if($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start RSYNC Daemon" ');
+				write_console("failed\n");
+			write_log("Fail to start RSYNC Daemon");
 		}
 	}
 
@@ -484,9 +488,9 @@ function services_nfs_configure() {
 		/* generate exports */
 		$fd = fopen("{$g['varetc_path']}/exports", "w");
 		if (!$fd) {
-			printf("Error: cannot open exports in services_nfs_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open exports in services_nfs_configure()" ');
-			
+			$message = "Error: Can't open exports in services_nfs_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1;
 		}
 		$a_net = &$config['nfs']['nfsnetworks'];
@@ -537,12 +541,12 @@ EOD;
 
 			if(!$result) {
 				if($g['booting'])
-					echo "done\n";
-				mwexec('/usr/bin/logger "NFS Daemon started" ');
+					write_console("done\n");
+				write_log("NFS Daemon started");
 			} else {
 				if($g['booting'])
-					echo "failed\n";
-				mwexec('/usr/bin/logger "Fail to start NFS Daemon" ');
+					write_console("failed\n");
+				write_log("Fail to start NFS Daemon");
 			}
 		}
 	}
@@ -575,8 +579,9 @@ function services_pureftpd_configure() {
 		/* Generate the banner file */
 		$fd = fopen("/mnt/.banner", "w");
 		if (!$fd) {
-			printf("Error: cannot open .banner in services_pureftpd_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open .banner in services_pureftpd_configure()" ');
+			$message = "Error: Can't open .banner in services_pureftpd_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1 ;
 		}
 
@@ -643,12 +648,12 @@ EOD;
 
 			if(!$result) {
 				if($g['booting'])
-					echo "done\n";
-				mwexec('/usr/bin/logger "FTP Daemon started" ');
+					write_console("done\n");
+				write_log("FTP Daemon started");
 			} else {
 				if($g['booting'])
-					echo "failed\n";
-				mwexec('/usr/bin/logger "Fail to start FTP Daemon" ');
+					write_console("failed\n");
+				write_log("Fail to start FTP Daemon");
 			}
 		}
   }
@@ -676,12 +681,12 @@ function services_smart_configure() {
 
 		if(!$result) {
 			if($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "S.M.A.R.T Daemon started" ');
+				write_console("done\n");
+			write_log("S.M.A.R.T Daemon started");
 		} else {
 			if($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start S.M.A.R.T Daemon" ');
+				write_console("failed\n");
+			write_log("Fail to start S.M.A.R.T Daemon");
 		}
 	}
 
@@ -707,12 +712,12 @@ function services_powerd_configure() {
 
 		if (!$result) {
 			if ($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "Power Daemon started"');
+				write_console("done\n");
+			write_log("Power Daemon started");
 		} else {
 			if ($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start Power Daemon"');
+				write_console("failed\n");
+			write_log("Fail to start Power Daemon");
 		}
 	}
 
@@ -738,8 +743,9 @@ function services_sshd_configure() {
 		/* generate /ssh/sshd_config */
 		$fd = fopen("{$g['varetc_path']}/ssh/sshd_config", "w");
 		if (!$fd) {
-			printf("Error: cannot open /ssh/sshd_config in services_sshd_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open /ssh/sshd_config in services_sshd_configure()" ');
+			$message = "Error: Can't open /ssh/sshd_config in services_sshd_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1 ;
 		}
 			
@@ -809,9 +815,9 @@ EOD;
 		
 		$fd = fopen("{$g['varetc_path']}/ssh/ssh_host_dsa_key", "w");
 		if (!$fd) {
-			printf("Error: cannot open /ssh/ssh_host_dsa_key in service_sshd_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open /ssh/ssh_host_dsa_key in service_sshd_configure()" ');
-			
+			$message = "Error: Can't open /ssh/ssh_host_dsa_key in service_sshd_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1 ;
 		}
 		
@@ -828,12 +834,12 @@ EOD;
 
 		if(!$result) {
 			if($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "SSH Daemon started" ');
+				write_console("done\n");
+			write_log("SSH Daemon started");
 		} else {
 			if($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start SSH Daemon" ');
+				write_console("failed\n");
+			write_log("Fail to start SSH Daemon");
 		}
 	}
 
@@ -857,47 +863,52 @@ function services_unison_configure() {
 		$workdir = "/mnt/{$config['unison']['share']}/{$config['unison']['workdir']}";
 		if (isset($config['unison']['makedir']) && !file_exists($workdir)) {
 			if (!mkdir($workdir)) {
-				printf("Error: cannot mkdir $workdir in services_unison_configure().\n");
-				mwexec('/usr/bin/logger "Error: cannot mkdir $workdir in services_unison_configure()" ');
+				$message = "Error: Can't mkdir $workdir in services_unison_configure()";
+				write_console($message . ".\n");
+				write_log($message);
 			}
 			exec("/bin/chmod 775 $workdir");
 		}
 		if (!file_exists($workdir)) {
-			printf("Error: cannot open $workdir in services_unison_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open $workdir in services_unison_configure()" ');
+			$message = "Error: Can't open $workdir in services_unison_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1 ;
 		}
 		
 		/* add workdir to login.conf UNISON environment variable */
 		$logfile = "{$g['etc_path']}/login.conf";
 		if (!file_exists("$logfile")) {
-			printf("Error: $logfile does not exist, in services_unison_configure().\n");
-			mwexec('/usr/bin/logger "Error: $logfile does not exist, in services_unison_configure()" ');
+			$message = "Error: $logfile does not exist, in services_unison_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1 ;
 		}
 		$tmp = file_get_contents("$logfile");
 		$search = "/UNISON=.*?(?=[,:])/";
 		if (!preg_match($search, $tmp)) {
-			printf("Error: cannot find UNISON in $logfile, in services_unison_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot find UNISON in $logfile, in services_unison_configure()" ');
+			$message = "Error: Can't find UNISON in $logfile, in services_unison_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1 ;
 		}
 		$tmp = preg_replace($search, "UNISON=$workdir", $tmp);
 		if (!file_put_contents($logfile, $tmp)) {
-			printf("Error: couldn't write $logfile, in services_unison_configure().\n");
-			mwexec('/usr/bin/logger "Error: could not write $logfile, in services_unison_configure()" ');
+			$message = "Error: Couldn't write $logfile, in services_unison_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1 ;
 		}
 		$tmp = "";
 
 		if(!$result) {
 			if($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "Unison started" ');
+				write_console("done\n");
+			write_log("Unison started");
 		} else {
 			if($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start Unison" ');
+				write_console("failed\n");
+			write_log("Fail to start Unison");
 		}
 	}
 
@@ -934,12 +945,12 @@ function services_upnp_configure() {
 
 		if(!$result) {
 			if($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "UPnP Server started" ');
+				write_console("done\n");
+			write_log("UPnP Server started");
 		} else {
 			if($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Failed to start UPnP Server" ');
+				write_console("failed\n");
+			write_log("Failed to start UPnP Server");
 		}
 	}
 
@@ -990,12 +1001,12 @@ function services_dynamicdns_configure() {
 
 		if(!$result) {
 			if($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "Dynamic DNS service started" ');
+				write_console("done\n");
+			write_log("Dynamic DNS service started");
 		} else {
 			if($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Failed to start Dynamic DNS service" ');
+				write_console("failed\n");
+			write_log("Failed to start Dynamic DNS service");
 		}
 	}
 
@@ -1024,8 +1035,9 @@ HOME=/var/log
 EOD;
 
 	if (!$fd) 	{
-		printf("Error: cannot open crontab in services_cron_configure().\n");
-		mwexec('/usr/bin/logger "Error: cannot open crontab in services_cron_configure()" ');
+		$message = "Error: Can't open crontab in services_cron_configure()";
+		write_console($message . ".\n");
+		write_log($message);
 		return 1;
 	}
 
@@ -1101,10 +1113,9 @@ EOD;
 
 EOD;
 
-			if ($g['booting'])
-				echo "done\n";
-		
-	
+		if ($g['booting'])
+			write_console("done\n");
+
 		// Erase all variable used previously
 		unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
 		$i++;
@@ -1187,18 +1198,15 @@ EOD;
 			unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
 		
 		}
-				
+
 		if ($g['booting'])
-				echo "done\n";
-		
+			write_console("done\n");
 	}
 	
 	// SHUTDOWN PART
-		
 	if (isset($config['shutdown']['enable'])) {
-		
 		if ($g['booting'])
-			echo "Configuring cron for shutdown... ";
+			echo "Configuring Cron for shutdown... ";
 		
 		if ($config['shutdown']['all_mins'] == "0") { 
 			foreach ($config['shutdown']['minute'] as $minutev) 	{
@@ -1263,7 +1271,7 @@ EOD;
 EOD;
 
 		if ($g['booting'])
-			echo "done\n";
+			write_console("done\n");
 	}
 				
 	fwrite($fd, $crontabconf);
@@ -1274,9 +1282,9 @@ EOD;
 	$result = mwexec("/usr/sbin/cron -s");
 	
 	if (!$result) {
-		mwexec('/usr/bin/logger "cron started" ');
+		write_log("Cron started");
 	} else {
-		mwexec('/usr/bin/logger "Fail to start cron" ');
+		write_log("Fail to start Cron");
 	}
 
 	return $result;
@@ -1302,8 +1310,9 @@ function services_rsyncclient_configure()
 			/* generate /var/run/rsync_client'ID'.sh script */
 			$fd = fopen("{$g['varrun_path']}/rsync_client{$i}.sh", "w");
 			if (!$fd) {
-				printf("Error: cannot open /var/run/rsync_client{$i}.sh in services_rsyncclient_configure().\n");
-				mwexec('/usr/bin/logger "Error: cannot open rsync_client{$i}.sh in services_rsyncclient_configure()" ');
+				$message = "Error: Can't open rsync_client{$i}.sh in services_rsyncclient_configure()";
+				write_console($message . ".\n");
+				write_log($message);
 				return 1;
 			}
 
@@ -1343,9 +1352,10 @@ EOD;
 			$i++;
 		
 		}
-		
+
 		if ($g['booting'])
-			echo "done\n";
+			write_console("done\n");
+
 		return 0;
 	}
 	
@@ -1371,8 +1381,9 @@ function services_rsync_local_configure()
 			/* generate /var/run/sync_local.sh script */
 			$fd = fopen("{$g['varrun_path']}/rsync_local{$i}.sh", "w");
 			if (!$fd) {
-				printf("Error: cannot open /var/run/rsync_local{$i}.sh in services_rsync_local_configure().\n");
-				mwexec('/usr/bin/logger "Error: cannot open /var/run/rsync_local{$i}.sh in services_rsync_local_configure()" ');
+				$message = "Error: Can't open /var/run/rsync_local{$i}.sh in services_rsync_local_configure()";
+				write_console($message . ".\n");
+				write_log($message);
 				return 1;
 			}
 
@@ -1413,7 +1424,8 @@ EOD;
 		}
 		
 		if ($g['booting'])
-			echo "done\n";
+			write_console("done\n");
+
 		return 0;
 	}
 	
@@ -1429,9 +1441,9 @@ function services_radius_configure()
 		/* generate radius.conf */
 		$fd = fopen("{$g['varetc_path']}/radius.conf", "w");
 		if (!$fd) {
-			printf("Error: cannot open radius.conf in services_radius_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open radius.conf in services_radius_configure()" ');
-			
+			$message = "Error: Can't open radius.conf in services_radius_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			return 1;
 		}
 			
@@ -1449,7 +1461,6 @@ EOD;
 
 /* Stop, Generate the config file and start AFP
 Return 0 if OK, 1 or error code if error */
-
 function services_afpd_configure()
 {
 	global $config, $g;
@@ -1476,8 +1487,9 @@ function services_afpd_configure()
 		/* generate afpd.conf */
 		$fd = fopen("{$g['varetc_path']}/afpd.conf", "w");
 		if (!$fd) {
-			printf("Error: cannot open afpd.conf in services_afpd_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open afpd.conf in services_afpd_configure()" ');
+			$message = "Error: Can't open afpd.conf in services_afpd_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1 ;
 		}
 			
@@ -1508,8 +1520,9 @@ EOD;
 		/* generate AppleVolumes.default */
 		$fd = fopen("{$g['varetc_path']}/AppleVolumes.default", "w");
 		if (!$fd) 	{
-			printf("Error: cannot open AppleVolumes.default in services_afpd_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open AppleVolumes.default in services_afpd_configure()" ');
+			$message = "Error: Can't open AppleVolumes.default in services_afpd_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1 ;
 		}
 		
@@ -1526,19 +1539,18 @@ EOD;
 		fclose($fd);
 
 		/* run afpdpd if no previous error*/
-		
 		if (!$result) {
 			$result = mwexec("/usr/local/sbin/afpd -F {$g['varetc_path']}/afpd.conf");
 		}
 
 		if(!$result) {
 			if($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "AFP Daemon started" ');
+				write_console("done\n");
+			write_log("AFP Daemon started");
 		} else {
 			if($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start AFP Daemon" ');
+				write_console("failed\n");
+			write_log("Fail to start AFP Daemon");
 		}
 	}
 
@@ -1572,10 +1584,10 @@ function services_iscsiinit_configure()
 		$result |= mwexec("/sbin/sysctl debug.iscsi=0");
 		
 		if ((!$result) && ($g['booting'])) {
-			mwexec('/usr/bin/logger "iSCSI kernel module loaded " ');
-			echo "done\n";
+			write_log("iSCSI kernel module loaded");
+			write_console("done\n");
 		} else if ($g['booting']) {
-			mwexec('/usr/bin/logger "Fail to load iSCSI kernel module" ');
+			write_log("Fail to load iSCSI kernel module");
 			echo "ERROR\n";
 		}
 		if ($g['booting']) {
@@ -1594,12 +1606,12 @@ function services_iscsiinit_configure()
 
 		if(!$result) {
 			if($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "iSCSI initiator(s) started" ');
+				write_console("done\n");
+			write_log("iSCSI initiator(s) started");
 		} else {
 			if($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start iSCSI initiator(s)" ');
+				write_console("failed\n");
+			write_log("Fail to start iSCSI initiator(s)");
 		}
 	}
 	
@@ -1627,8 +1639,9 @@ function services_iscsitarget_configure()
 		/* generate targets */
 		$fd = fopen("{$g['varetc_path']}/iscsi/targets", "w");
 		if (!$fd) {
-			printf("Error: cannot open {$g['varetc_path']}/iscsi/targets in services_iscsitarget_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open iscsi/targets in services_iscsitarget_configure()" ');
+			$message = "Error: Can't open iscsi/targets in services_iscsitarget_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1 ;
 		}
 		$i = 0;
@@ -1652,12 +1665,12 @@ EOD;
 
 		if(!$result) {
 			if($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "iSCSI-target Daemon started" ');
+				write_console("done\n");
+			write_log("iSCSI-target Daemon started");
 		} else {
 			if($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start iSCSI-target Daemon" ');
+				write_console("failed\n");
+			write_log("Fail to start iSCSI-target Daemon");
 		}
 	}
 }
@@ -1688,8 +1701,9 @@ function services_mdnsresponder_configure()
 	
 		$fd = fopen("{$g['varetc_path']}/mDNSResponder.conf", "w");
 		if (!$fd) 	{
-			printf("Error: cannot open mDNSResponder.conf in services_bonjour_configure().\n");
-			mwexec('/usr/bin/logger "Error: cannot open mDNSResponder.conf in services_bonjour_configure()" ');
+			$message = "Error: Can't open mDNSResponder.conf in services_bonjour_configure()";
+			write_console($message . ".\n");
+			write_log($message);
 			$result = 1 ;
 		}
 	
@@ -1843,15 +1857,15 @@ EOD;
 
 		if(!$result) {
 			if($g['booting'])
-				echo "done\n";
-			mwexec('/usr/bin/logger "ZeronConf service started" ');
+				write_console("done\n");
+			write_log("ZeronConf service started");
 		} else {
 			if($g['booting'])
-				echo "failed\n";
-			mwexec('/usr/bin/logger "Fail to start ZeronConf service" ');
+				write_console("failed\n");
+			write_log("Fail to start ZeronConf service");
 		}
 	}
-	
+
 	return $result;
 }
 ?>

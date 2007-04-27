@@ -1503,4 +1503,13 @@ function get_ram_info() {
 
 	return $raminfo;
 }
+
+function write_log($message) {
+	$cmd="/usr/bin/logger \"${$message}\"";
+	mwexec($cmd);
+}
+
+function write_console($message) {
+	echo($message);
+}
 ?>
