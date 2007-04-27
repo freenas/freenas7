@@ -123,7 +123,7 @@ if ($_GET['act'] == "ret")
               if (file_exists($d_mount_iso_dirty_path)) {
                 echo(gettext("Configuring"));
               } else {
-                if(disks_check_mount_sharename($mount_iso['sharename'])) {
+                if(disks_ismounted_sharename($mount_iso['sharename'])) {
 									echo(gettext("OK"));
                 } else {
                   echo(gettext("Error") . " - <a href=\"disks_mount_iso.php?act=ret&id={$i}\">" . gettext("Retry") . "</a>");

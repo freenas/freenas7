@@ -339,45 +339,57 @@ function get_interface_list() {
 //        [mdisk] => ad0s1
 //        [fullname] => /dev/ad0s1
 //        [sharename] => sharename
+//        [fsid] => file system ID
 //      )
 function get_mounts_list()
 {
-	exec("/sbin/mount",$rawdata);
-	
-	$mountlist = array();
-	$i=0;
-	
-	foreach ($rawdata as $line)
-	{
+	$amountlist = array();
+	$i = 0;
+
+	// Get list of mount points.
+	exec("/sbin/mount -v", $rawdata);
+
+	foreach ($rawdata as $line) {
 		$aline = explode(" ", $line);
-		
+
+		// Ignore various mount points.
 		if ((chop($aline[0]) == "/dev/md0") || (chop($aline[0]) == "devfs") || (chop($aline[0]) == "/dev/fd0"))
 			continue;
 
-		$mountlist[$i]['fullname']=chop($aline[0]);
-		$mountlist[$i]['mp']=chop($aline[2]);
-		
-		// Get the sharename
-		$mp_explode=explode("/",chop($aline[2]));
-		$mountlist[$i]['sharename']=$mp_explode[2];
-		
-		// Get the complete name /dev/devicename
-		
-		$complete=explode("/",chop($aline[0]));
+		// Get device path.
+		$devicepath = chop($aline[0]);
 
-		$devname=$complete[2];
-		
-		// Test if it's a gvinum,gmirror,gconcat or gstripe  device
-		if ((strcmp($devname,"gvinum") == 0) || 
-				(strcmp($devname,"mirror") == 0) || (strcmp($devname,"concat") == 0) || 
-				(strcmp($devname,"stripe") == 0) || (strcmp($devname,"raid5") == 0))
-			$devname=$complete[3];
-		
-		$mountlist[$i]['mdisk']=$devname;
+		// Get the complete name /dev/devicename.
+		$adevicepath = explode("/", $devicepath);
+		$devicename = $adevicepath[2];
+
+		// Test if it's a gvinum, gmirror, gconcat or gstripe device.
+		if ((strcmp($devicename,"gvinum") == 0) ||
+				(strcmp($devicename,"mirror") == 0) || (strcmp($devicename,"concat") == 0) || 
+				(strcmp($devicename,"stripe") == 0) || (strcmp($devicename,"raid5") == 0)) {
+			$devicename = $adevicepath[3];
+		}
+
+		// Get the mountpath.
+		$mountpath = chop($aline[2]);
+
+		// Get the sharename.
+		$amountpath = explode("/", $mountpath);
+		$sharename = $amountpath[2];
+
+		// Get file system ID.
+		$fsid = strtr(strrchr($line, "fsid"), array( "fsid " => "", ")" => ""));
+
+		$amountlist[$i]['mp'] = $mountpath;
+		$amountlist[$i]['mdisk'] = $devicename;
+		$amountlist[$i]['fullname'] = $devicepath;
+		$amountlist[$i]['sharename'] = $amountpath[2];
+		$amountlist[$i]['fsid'] = $fsid;
+
 		$i++;
 	}
-	
-	return $mountlist;
+
+	return $amountlist;
 }
 
 // Return list of mounted use

@@ -30,37 +30,37 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	
-/* include all configuration functions */
 require_once("functions.inc");
 
-/* Mount all configured disks */
+// Mount all configured disks.
+// Return 0 if sucessful, 1 if error
 function disks_mount_all()
 {
 	global $config, $g;
-	
+
 	if ($g['booting'])
 		write_console("Mounting partitions... ");
-	
+
 	/* For each device configured: */
 	if (is_array($config['mounts']['mount'])) 	{
 		foreach ($config['mounts']['mount'] as $mount) 		{
-			/* Advanced umount filesystem if not booting mode (mount edition). */
+			// Advanced umount filesystem if not in booting mode (mount edition).
 			if (!$g['booting'])
-				disks_umount_adv($mount);
-								
+				disks_umount_ex($mount);
+
 			/* mount filesystem */
 			disks_mount($mount);	
 		}
 	}
-			
+
 	if ($g['booting'])
 		write_console("done\n");
 
 	return 0;
 }
 
-/* Mount all ISO files */
+// Mount all ISO files.
+// Return 0 if sucessful, 1 if error
 function disks_mount_iso_all()
 {
 	global $config, $g;
@@ -73,7 +73,7 @@ function disks_mount_iso_all()
 		foreach ($config['mounts']['iso'] as $mount_iso) 		{
 			/* Advanced Umount filesystem if not booting mode (mount edition)*/
 			if (!$g['booting'])
-				disks_umount_iso_adv($mount);
+				disks_umount_iso_ex($mount);
 								
 			/* mount filesystem */
 			disks_mount_iso($mount);	
@@ -86,8 +86,8 @@ function disks_mount_iso_all()
 	return 0;
 }
 
-/* Mount an ISO file.
-Return 0 if sucessful, 1 if error */
+// Mount an ISO file.
+// Return 0 if sucessful, 1 if error
 function disks_mount_iso($mount_iso)
 {
 	global $config, $g;
@@ -115,8 +115,8 @@ function disks_mount_iso($mount_iso)
 	}
 }
 
-/* Mount using the configured mount given in parameter
-Return 0 if sucessful, 1 if error */
+// Mount using the configured mount given in parameter
+// Return 0 if sucessful, 1 if error
 function disks_mount($mount)
 {
 	global $config, $g;
@@ -261,54 +261,8 @@ function disks_mount($mount)
 	return $result;
 }
 
-/* Mount using fullname (/dev/ad0s1) given in parameter. */
-function disks_mount_fullname($fullname)
-{
-	global $config;
-
-	if (is_array($config['mounts']['mount'])) {
-		// Search the mount list for given disk and partition
-		foreach($config['mounts']['mount'] as $mountk => $mountv) {
-			if($mountv['fullname'] == $fullname) {
-				$mount = $mountv;
-			}
-		}
-	}
-
-	if($mount) {
-		$result = disks_mount($mount);
-	} else {
-		$result = 0;
-	}
-
-	return $result;
-}
-
-/* Mount using sharename given in parameter. */
-function disks_mount_sharename($sharename)
-{
-	global $config;
-
-	if (is_array($config['mounts']['mount'])) {
-		// Search the mount list for given disk and partition
-		foreach($config['mounts']['mount'] as $mountk => $mountv) {
-			if($mountv['sharename'] == $sharename) {
-				$mount = $mountv;
-			}
-		}
-	}
-
-	if($mount) {
-		$result = disks_mount($mount);
-	} else {
-		$result = 0;
-	}
-
-	return $result;
-}
-
-/* Umount the specified configured mount point.
-Return 0 is successfull, 1 if error */
+// Umount the specified configured mount point.
+// Return 0 is successfull, 1 if error
 function disks_umount($mount)
 {
 	$mountname = "/mnt/{$mount['sharename']}";
@@ -322,100 +276,92 @@ function disks_umount($mount)
 			$result = 1;
 		}
 	} else {
+		write_log("Error: Failed to umount '{$mountname}'");
 		$result = 1;
 	}
 
 	return $result;
 }
 
-/* Advanced umount using fullname (/dev/ad01s1)
-Return 0 if successfull, 1 if error */
-function disks_umount_fullname($fullname)
+// Advanced unmount the specified mount point without using the sharename,
+// e.g. used when the 'sharename' has been modified/changed. Use the device name instead.
+// Return 0 if successful, 1 if error
+function disks_umount_ex($mount)
 {
-	global $config;
+	// Get current mount list.
+	$amountlist = get_mounts_list();
 
-	/* Search the mount list for given fullname */
-	foreach($config['mounts']['mount'] as $mountk => $mountv) {
-		if (strcmp($mountv['fullname'],$fullname) == 0) {
-			$mount = $mountv;
-		}
-	}
-
-	if($mount) {
-		$result = disks_umount($mount);
-	}
-	else {
-		$result = 1;
-	}
-	
-	return $result;
-}
-
-/* Advanced unmount the specified mount point without using the sharename value
-Used when changing the 'sharename': Need to umount the old unknow sharename
-Return 0 if successful, 1 if error */
-function disks_umount_adv($mount)
-{
-	// Get the mount list.
-	$detmount = get_mounts_list();
-
-	// Look for the mount point in all mounted point.
-	foreach ($detmount as $detmountk => $detmountv) {
-		// If we found the mount point on the device
-		if (strcmp($detmountv['fullname'], $mount['fullname']) == 0) {
-			$mountname = $detmountv['mp'];
+	foreach ($amountlist as $amountk => $amountv) {
+		if (0 == strcmp($amountv['fullname'], $mount['fullname'])) {
+			$mountname = $amountv['mp'];
+			break;
 		}
 	}
 
 	if ($mountname) {
-		mwexec("/sbin/umount '{$mountname}'");
-		@rmdir("{$mountname}");
-		$result = 0;
-	} else {
-		$result = 1;
+		if (mwexec("/sbin/umount '{$mountname}'") == 0) {
+			if(@rmdir("{$mountname}")) {
+				write_log("Sucessfull umounted '{$mountname}'");
+				$result = 0;
+			} else {
+				write_log("Error: Failed to umount '{$mountname}'");
+				$result = 1;
+			}
+		} else {
+			write_log("Error: Failed to umount '{$mountname}'");
+			$result = 1;
+		}
 	}
 
 	return $result;
 }
 
-/* Advanced unmount the specified ISO mount point without using the sharename value
-Used when changing the 'sharename': Need to umount the old unknow sharename
-Return 0 if successful, 1 if error */
-function disks_umount_iso_adv($mount)
+// Advanced unmount the specified ISO mount point without using the sharename value.
+// Used when changing the 'sharename': Need to umount the old unknown sharename.
+// Return 0 if successful, 1 if error
+function disks_umount_iso_ex($mount)
 {
 	$md_id = "md" . "{$mount['md_id']}";
-		
-	// get the mount list
-	$detmount = get_mounts_list();
-	
-	//Look for the mount point in all mounted point corresponding to the md id
-	foreach ($detmount as $detmountk => $detmountv) {
-		// If we found the mount point on the device
-		if (strcmp($detmountv['fullname'],$md_id) == 0) {
-			$mountname = $detmountv['mp'];
+
+	// Get the mount list.
+	$amountlist = get_mounts_list();
+
+	// Look for the mount point in all mounted point corresponding to the md id.
+	foreach ($amountlist as $amountk => $amountv) {
+		if (0 == strcmp($amountv['fullname'], $md_id)) {
+			$mountname = $amountv['mp'];
+			break;
 		}
 	}
-	
+
 	if ($mountname) {
-		mwexec("/sbin/umount '{$mountname}'");
-		@rmdir("{$mountname}");
-		$result = 0;
-	} else {
-		$result = 1;
+		if (mwexec("/sbin/umount '{$mountname}'") == 0) {
+			if(@rmdir("{$mountname}")) {
+				write_log("Sucessfull umounted '{$mountname}'");
+				$result = 0;
+			} else {
+				write_log("Error: Failed to umount '{$mountname}'");
+				$result = 1;
+			}
+		} else {
+			write_log("Error: Failed to umount '{$mountname}'");
+			$result = 1;
+		}
 	}
 
 	return $result;
 }
 
-/* This option check if this fullname (/dev/ad0s1) is mounted.
-Return 0 if not, 1 if yes */
-function disks_check_mount_fullname($fullname)
+// Check if mount point is mounted. Use fullname/devicename
+// (e.g. /dev/ad0s1) as identifier.
+// Return 0 if not, 1 if yes
+function disks_ismounted_fullname($fullname)
 {
 	$status = 0;
-	$detmount = get_mounts_list();
+	$amountlist = get_mounts_list();
 
-	foreach ($detmount as $detmountk => $detmountv) {
-		if (strcmp($detmountv['fullname'],$fullname) == 0) {
+	foreach ($amountlist as $amountk => $amountv) {
+		if (strcmp($amountv['fullname'], $fullname) == 0) {
 			$status = 1;
 			break;
 		}
@@ -424,15 +370,15 @@ function disks_check_mount_fullname($fullname)
 	return $status;
 }
 
-/* This option check if the sharename (/mnt/tutu) is mounted.
-Return 0 if not, 1 if yes */
-function disks_check_mount_sharename($sharename)
+// Check if mount point is mounted. Use sharename as identifier.
+// Return 0 if not, 1 if yes
+function disks_ismounted_sharename($sharename)
 {
 	$status = 0;
-	$detmount = get_mounts_list();
+	$amountlist = get_mounts_list();
 
-	foreach ($detmount as $detmountk => $detmountv) {
-		if (strcmp($detmountv['sharename'],$sharename) == 0) {
+	foreach ($amountlist as $amountk => $amountv) {
+		if (strcmp($amountv['sharename'], $sharename) == 0) {
 			$status = 1;
 			break;
 		}
@@ -441,35 +387,35 @@ function disks_check_mount_sharename($sharename)
 	return $status;
 }
 
-/* This option checks if the configured mount is mounted.
-Return 0 if not, 1 if yes */
-function disks_check_mount($mount)
+// Check if mount point is mounted. Use mdisk (e.g. ad0s1) as identifier.
+// Return 0 if not, 1 if yes
+function disks_ismounted_mdisk($disk)
 {
-	// MUST CHECK IF IT'S NTFS filesystem, and use a disks_check_mount_sharename function!!
+	$status = 0;
+ 	$amountlist = get_mounts_list();
+
+	foreach ($amountlist as $amountk => $amountv) {
+		// Must found the $disk (ad0) in result $mdisk (ad0s1).
+		// strpos will return 0 (found at position 0) if found, must check the 'false' value.
+		if (strpos($amountv['mdisk'], $disk) !== false) {
+			$status = 1;
+			break;
+		}
+	}
+
+	return $status;
+}
+
+// This option checks if the configured mount is mounted.
+// Return 0 if not, 1 if yes
+function disks_ismounted($mount)
+{
+	// MUST CHECK IF IT'S NTFS filesystem, and use a disks_ismounted_sharename function!!
 	if (0 == strcmp($mount['fstype'],"ntfs")) {
-		return disks_check_mount_sharename($mount['sharename']);
+		return disks_ismounted_sharename($mount['sharename']);
 	} else {
-		return disks_check_mount_fullname($mount['fullname']);
+		return disks_ismounted_fullname($mount['fullname']);
 	}
-}
-
-/* This function check if the disk is mounted
-Return 0 if not, 1 if yes */
-function disks_check_mount_disk($disk)
-{
-	$status = 0;
- 	$detmount = get_mounts_list();
-
-	foreach ($detmount as $detmountk => $detmountv) {
-		/* Must found the $disk (ad0) in result $mdisk (ad0s1) */
-		// strpos will return 0 (found at position 0) if found, must check the 'false' value
-		if (strpos($detmountv['mdisk'], $disk) !== false) {
-			$status = 1;
-			break;
-		}
-	}
-
-	return $status;
 }
 
 /* This option check if the configured disk is online (detected by the system)
@@ -491,8 +437,8 @@ function disks_status($diskname)
 	return $status;
 }
 
-/* This function umount all configured mount.
-Return 0 if OK, and 1 if error */
+// This function umount all configured mount.
+// Return 0 if successful, 1 if error
 function disks_umount_all()
 {
 	// Unmount all mount point
@@ -516,7 +462,8 @@ function disks_umount_all()
 	return 0;
 }
 
-/* Configure, create and start gvinum volume */
+// Configure, create and start gvinum volume.
+// Return 0 if successful, 1 if error
 function disks_raid_gvinum_configure()
 {
 	global $config, $g;
@@ -630,8 +577,8 @@ EOD;
 	return 0;
 }
 
-/* Configure, create and start gmirror volume.
-Return 0 if OK, and 1 if error */
+// Configure, create and start gmirror volume.
+// Return 0 if successful, 1 if error
 function disks_raid_gmirror_configure()
 {
 	global $config;
@@ -653,8 +600,8 @@ function disks_raid_gmirror_configure()
 	return 0;
 }
 
-/* Configure, create and start gconcat volume.
-Return 0 if OK, and 1 if error */
+// Configure, create and start gconcat volume.
+// Return 0 if successful, 1 if error
 function disks_raid_gconcat_configure()
 {
 	global $config;
@@ -676,8 +623,8 @@ function disks_raid_gconcat_configure()
 	return 0;
 }
 
-/* Configure, create and start gstripe volume.
-Return 0 if OK, and 1 if error */
+// Configure, create and start gstripe volume.
+// Return 0 if successful, 1 if error
 function disks_raid_gstripe_configure()
 {
 	global $config;
@@ -699,8 +646,8 @@ function disks_raid_gstripe_configure()
 	return 0;
 }
 
-/* Configure, create and start graid5 volume.
-Return 0 if OK, and 1 if error */
+// Configure, create and start graid5 volume.
+// Return 0 if successful, 1 if error
 function disks_raid_graid5_configure()
 {
 	global $config;
@@ -725,8 +672,8 @@ function disks_raid_graid5_configure()
 	return 0;
 }
 
-/* Start all geom RAID volumes.
-Return 0 if OK, and 1 if error */
+// Start all geom RAID volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_start()
 {
 	/* WARNING:  Must change this code for advanced RAID configuration ex: RAID1+0
@@ -741,8 +688,8 @@ function disks_raid_start()
 	return 0;
 }	
 
-/* Start geom vinum volumes.
-Return 0 if OK, and 1 if error */
+// Start geom vinum volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_gvinum_start()
 {
 	global $config, $g;
@@ -763,8 +710,8 @@ function disks_raid_gvinum_start()
 	return 0;
 }
 
-/* Start geom mirror volumes.
-Return 0 if OK, and 1 if error */
+// Start geom mirror volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_gmirror_start()
 {
 	global $config, $g;
@@ -784,8 +731,8 @@ function disks_raid_gmirror_start()
 	return 0;
 }
 
-/* Start geom concat volumes.
-Return 0 if OK, and 1 if error */
+// Start geom concat volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_gconcat_start()
 {
 	global $config, $g;
@@ -805,8 +752,8 @@ function disks_raid_gconcat_start()
 	return 0;
 }
 
-/* Start geom stripe volumes.
-Return 0 if OK, and 1 if error */
+// Start geom stripe volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_gstripe_start()
 {
 	global $config, $g;
@@ -826,8 +773,8 @@ function disks_raid_gstripe_start()
 	return 0;
 }
 
-/* Start geom raid5 volumes.
-Return 0 if OK, and 1 if error */
+// Start geom raid5 volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_graid5_start()
 {
 	global $config, $g;
@@ -852,7 +799,8 @@ function disks_raid_graid5_start()
 	return 0;
 }
 
-/* Optimize geom raid5 RAM use. */
+// Optimize geom raid5 RAM use.
+// Return none
 function disks_raid_graid5_tune()
 {
 	/* Get RAM informations. */
@@ -873,7 +821,8 @@ function disks_raid_graid5_tune()
 	}
 }
 
-/* Stop all geom RAID volumes */
+// Stop all geom RAID volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_stop()
 {
 	/* WARNING:  Must change this code for advanced RAID configuration ex: RAID1+0
@@ -889,7 +838,8 @@ function disks_raid_stop()
 	return 0;
 }
 
-/* Stop all geom gvinum volumes */
+// Stop all geom gvinum volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_gvinum_stop()
 {
 	global $config;
@@ -904,7 +854,8 @@ function disks_raid_gvinum_stop()
 	return 0;
 }
 
-/* Stop all geom mirror volumes */
+// Stop all geom mirror volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_gmirror_stop()
 {
 	global $config;
@@ -919,7 +870,8 @@ function disks_raid_gmirror_stop()
 	return 0;
 }
 
-/* Stop all geom concat volumes */
+// Stop all geom concat volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_gconcat_stop()
 {
 	global $config;
@@ -934,7 +886,8 @@ function disks_raid_gconcat_stop()
 	return 0;
 }
 
-/* Stop all geom stripe volumes */
+// Stop all geom stripe volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_gstripe_stop()
 {
 	global $config;
@@ -949,7 +902,8 @@ function disks_raid_gstripe_stop()
 	return 0;
 }
 
-/* Stop all geom raid5 volumes */
+// Stop all geom raid5 volumes.
+// Return 0 if successful, 1 if error
 function disks_raid_graid5_stop()
 {
 	global $config;
@@ -964,7 +918,8 @@ function disks_raid_graid5_stop()
 	return 0;
 }
 
-/* Delete geom gvinum volume given in parameter */
+// Delete geom gvinum volume given in parameter.
+// Return 0 if successful, 1 if error
 function disks_raid_gvinum_delete($raidname)
 {
 	global $config;
@@ -974,21 +929,22 @@ function disks_raid_gvinum_delete($raidname)
 	if (strpos($rawdata[0],"State: up") === false) {
 		return 0;
 	}
-	
+
 	mwexec("/sbin/gvinum rm -r {$raidname}");
-	
+
 	foreach ($config['gvinum']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] == $raidname) {
-				foreach ($a_raid['diskr'] as $disk){				
-					mwexec("/sbin/gvinum rm -r disk_{$disk}");
-				}
+		if ($a_raid['name'] == $raidname) {
+			foreach ($a_raid['diskr'] as $disk){				
+				mwexec("/sbin/gvinum rm -r disk_{$disk}");
 			}
+		}
 	}
-	
+
 	return 0;
 }
 
-/* Delete geom mirror volume given in parameter */
+// Delete geom mirror volume given in parameter.
+// Return 0 if successful, 1 if error
 function disks_raid_gmirror_delete($raidname)
 {
 	global $config;
@@ -998,17 +954,18 @@ function disks_raid_gmirror_delete($raidname)
 
 	// Clear the gmirror information on the hard drive
 	foreach ($config['gmirror']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] == $raidname) {
-				foreach ($a_raid['diskr'] as $disk) {				
-					mwexec("/sbin/gmirror clear {$disk}");
-				}
+		if ($a_raid['name'] == $raidname) {
+			foreach ($a_raid['diskr'] as $disk) {				
+				mwexec("/sbin/gmirror clear {$disk}");
 			}
+		}
 	}
 
 	return 0;
 }
 
-/* Delete geom concat volume given in parameter */
+// Delete geom concat volume given in parameter.
+// Return 0 if successful, 1 if error
 function disks_raid_gconcat_delete($raidname)
 {
 	global $config;
@@ -1018,18 +975,19 @@ function disks_raid_gconcat_delete($raidname)
 
 	// Clear the gconcat information on the hard drive
 	foreach ($config['gconcat']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] == $raidname) {
-				foreach ($a_raid['diskr'] as $disk) {				
-					mwexec("/sbin/gconcat clear {$disk}");
-				}
-				mwexec("/sbin/gconcat destroy {$raidname}");
+		if ($a_raid['name'] == $raidname) {
+			foreach ($a_raid['diskr'] as $disk) {				
+				mwexec("/sbin/gconcat clear {$disk}");
 			}
+			mwexec("/sbin/gconcat destroy {$raidname}");
+		}
 	}
 
 	return 0;
 }
 
-/* Delete geom stripe volume given in parameter */
+// Delete geom stripe volume given in parameter.
+// Return 0 if successful, 1 if error
 function disks_raid_gstripe_delete($raidname)
 {
 	global $config;
@@ -1039,18 +997,19 @@ function disks_raid_gstripe_delete($raidname)
 
 	// Clear the gconcat information on the hard drive
 	foreach ($config['gstripe']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] == $raidname) 	{
-				foreach ($a_raid['diskr'] as $disk) {				
-					mwexec("/sbin/gstripe clear {$disk}");
-				}
-				mwexec("/sbin/gstripe destroy {$raidname}");
+		if ($a_raid['name'] == $raidname) 	{
+			foreach ($a_raid['diskr'] as $disk) {				
+				mwexec("/sbin/gstripe clear {$disk}");
 			}
+			mwexec("/sbin/gstripe destroy {$raidname}");
+		}
 	}
 
 	return 0;
 }
 
-/* Delete geom raid5 volume given in parameter */
+// Delete geom raid5 volume given in parameter.
+// Return 0 if successful, 1 if error
 function disks_raid_graid5_delete($raidname)
 {
 	global $config;
@@ -1064,22 +1023,23 @@ function disks_raid_graid5_delete($raidname)
 
 	// Clear the graid5 information on the hard drive
 	foreach ($config['graid5']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] == $raidname) 	{
-				foreach ($a_raid['diskr'] as $disk){
-					// Get the name of the provider.
-					$id = array_search_ex($disk, $config['disks']['disk'], "fullname");
-					$provider = $config['disks']['disk'][$id]['name'];
-					// Remove provider.
-					mwexec("/sbin/graid5 remove {$raidname} {$provider}");
-				}
-				mwexec("/sbin/graid5 destroy {$raidname}");
+		if ($a_raid['name'] == $raidname) 	{
+			foreach ($a_raid['diskr'] as $disk){
+				// Get the name of the provider.
+				$id = array_search_ex($disk, $config['disks']['disk'], "fullname");
+				$provider = $config['disks']['disk'][$id]['name'];
+				// Remove provider.
+				mwexec("/sbin/graid5 remove {$raidname} {$provider}");
 			}
+			mwexec("/sbin/graid5 destroy {$raidname}");
+		}
 	}
 
 	return 0;
 }
 
-/* Initialise HARD DRIVE for installation (creating 2 partition) */
+// Initialise HARD DRIVE for installation (creating 2 partition).
+// Return 0 if successful, 1 if error
 function fdisk_hd_install($harddrive)
 {
 	global $config, $g;
@@ -1122,56 +1082,51 @@ EOD;
 	return 0;
 }
 
-/* Return information about an harddrive given in parameter
-	$result['total'] : size
-	$result['cyl'] : cylinders
-	$result['head'] : heads
-	$result['sect'] :  sectors/track
-	$result['sec_size'] : Media sector size
-*/
+// Return information about an harddrive given in parameter.
+// $result['total'] : size
+// $result['cyl'] : cylinders
+// $result['head'] : heads
+// $result['sect'] :  sectors/track
+// $result['sec_size'] : Media sector size
 function fdisk_get_info($harddrive)
 {
 	global $config, $g;
 	
 	exec("/sbin/fdisk /dev/$harddrive", $rawdata);
 	
-	$result=array();
+	$result = array();
 	
 	foreach ($rawdata as $line) 	{
 		/* separe the line by space or egal*/
-		
 		$aline= preg_split("/[\s,]+|=/", $line);
-		
+
 		$first_word = chop($aline[0]);
-		
+
 		if ($aline[0] == "Media") {
 			$result['sec_size']=chop($aline[4]);
 			continue ;
 		}
-		
-		if ($aline[0] == "cylinders") 	{
-			
+
+		if ($aline[0] == "cylinders") {
 			$result['cyl']=chop($aline[1]);
 			$result['head']=chop($aline[3]);
 			$result['sect']=chop($aline[5]);
 			continue ;
 		}
-		
 	}
-	
+
 	$result['total'] = $result['cyl'] * $result['head'] * $result['sect'] ;
 
 	return $result;
-	
 }
 
-/* Is this function still used ??? */
+// Create disk label.
+// Return none
 function disks_bsdlabel($harddrive,$partition,$type)
 {
 	global $config, $g;
 	
 	// Generating BSD Label table
-	
 	passthru("/sbin/bsdlabel " . escapeshellarg($harddrive) ."$partition > {$g['tmp_path']}/label.tmp");
 
 	// put this file on a array
@@ -1202,7 +1157,8 @@ function disks_bsdlabel($harddrive,$partition,$type)
 	passthru("/sbin/bsdlabel -R -B " . escapeshellarg($harddrive) ."$partition {$g['tmp_path']}/label.tmp");
 }
 
-/* Set the ataidle tools parameters */
+// Set the ataidle tools parameters.
+// Return 0 if successful, 1 if error
 function disks_set_ataidle()
 {
 	global $g, $config;
@@ -1259,19 +1215,18 @@ function disks_set_ataidle()
 	return 0;
 }
 
-/* 
-Get list of partition information from disk.
-Result is in the form:
-[1] => Array
-(
-	[start] => 31
-	[size]  => 409169
-	[type]  => 0xa5
-	[flags] => 0x80
-)
-
-Called in disks_manage_tools.php
-*/
+// Get list of partition information from disk.
+// Result is in the form:
+// [1] => Array
+// (
+// 	[start] => 31
+// 	[size]  => 409169
+// 	[type]  => 0xa5
+// 	[flags] => 0x80
+// )
+//
+// Called in disks_manage_tools.php
+// Return array of partition info
 function disks_get_partition_info($disk) {
   exec("/sbin/fdisk -s {$disk}", $rawdata);
 
@@ -1295,7 +1250,7 @@ function disks_get_partition_info($disk) {
 }
 
 // Check the status of a geli encrypted disk
-// Return 0 is OK, 1 is no OK
+// Return 0 if successful, 1 if error
 function disks_geli_check($gelifullname)
 {
 	$result = 1;
@@ -1306,7 +1261,7 @@ function disks_geli_check($gelifullname)
 }
 
 // Attach a geli encrypted disk
-// Return 0 is OK, 1 is no OK
+// Return 0 if successful, 1 if error
 function disks_geli_attach($gelifullname,$passphrase,$verbose = false)
 {
 	$result = 1;
@@ -1321,7 +1276,7 @@ function disks_geli_attach($gelifullname,$passphrase,$verbose = false)
 }
 
 // Detach a geli encrypted disk
-// Return 0 is OK, 1 is no OK
+// Return 0 if successful, 1 if error
 function disks_geli_detach($gelifullname)
 {
 	$result=mwexec("/sbin/geli detach $gelifullname");
@@ -1329,7 +1284,7 @@ function disks_geli_detach($gelifullname)
 }
 
 // Kill (destroy) a geli encrypted volume
-// Return 0 is OK, 1 is no OK
+// Return 0 if successful, 1 if error
 function disks_geli_kill($gelifullname)
 {
 	$result=mwexec("/sbin/geli kill $gelifullname");
@@ -1337,7 +1292,7 @@ function disks_geli_kill($gelifullname)
 }
 
 // Detach all geli encrypted disks
-// Return 0 is OK, 1 is no OK
+// Return 0 if successful, 1 if error
 function disks_geli_detach_all()
 {
 	global $g, $config;
@@ -1357,13 +1312,15 @@ function disks_geli_detach_all()
 }
 
 // Check is the iscsi initiator is connected to the target
-// Return 0 is OK, 1 is no OK
+// Return 0 if successful, 1 if error
 function disks_iscsiinit_check($name)
 {
 	// To be Checked with a camcontrol ??
 	return 0;
 }
 
+// Format disk.
+// Return none
 function disks_format($disk,$type,$notinitmbr,$minspace)
 {
 	if (!$notinitmbr) {
@@ -1420,42 +1377,45 @@ function disks_format($disk,$type,$notinitmbr,$minspace)
 // File system consistency check and interactive repair.
 // The filesystem type will be get from the mount configuration information.
 // Parameter:
-// disk   - Name of the disk.
+// device - Name of the device (e.g. /dev/ad1s1).
 // umount - Unmount disk if necessary.
-// Return: 0 is OK, 1 is not OK
-function disks_fsck($disk,$umount = false)
+// Return 0 if successful, 1 if error
+function disks_fsck($device,$umount = false)
 {
 	global $config;
 
-	/* Check if there exits any mounts. */
+	// Check if there exits any mounts.
 	if(!is_array($config['mounts']['mount']))
 		return 1;
 
-	/* Get the id of the disk. */
-	$id = array_search_ex($disk, $config['mounts']['mount'], "fullname");
-	/* Get the filesystem type of the disk. */ 
-	$fstype = $config['mounts']['mount'][$id]['fstype'];
-	/* Check if disk is mounted. */
-	$ismounted = disks_check_mount_fullname($disk);
-	/* Umount disk temporary if necessary. */
+	// Get the id of the disk.
+	$id = array_search_ex($device, $config['mounts']['mount'], "fullname");
+
+	// Get the mount configuration.
+	$mount = $config['mounts']['mount'][$id];
+
+	// Check if disk is mounted.
+	$ismounted = disks_ismounted($mount);
+
+	// Umount disk temporary if necessary.
 	if($umount && $ismounted) {
 		echo("<strong class='red'>" . gettext("Note") . ":</strong> " . gettext("The disk is currently mounted! The mount point will be removed temporary to perform selected command.") . "<br><br>");
-		disks_umount_fullname($disk);
+		disks_umount($mount);
 	}
 
-	switch($fstype) {
+	switch($mount['fstype']) {
 		case "":
 		case "ufs":
-			system("/sbin/fsck -t ufs -y -f " . escapeshellarg($disk));
+			system("/sbin/fsck -t ufs -y -f " . escapeshellarg($device));
 			break;
 		case "msdosfs":
-			system("/sbin/fsck -t msdos -y -f " . escapeshellarg($disk));
+			system("/sbin/fsck -t msdos -y -f " . escapeshellarg($device));
 			break;
 	}
 
-	/* Mount disk again if necessary. */
+	// Remount disk again if necessary.
 	if($umount && $ismounted) {
-		disks_mount_fullname($disk);
+		disks_mount($mount);
 	}
 
 	return 0;
@@ -1474,6 +1434,7 @@ function disks_fsck($disk,$umount = false)
 // 	[heads] => 16
 // 	[sectors] => 63
 // )
+// Return array containing diskinfo.
 function disks_get_diskinfo($disk)
 {
 	exec("/usr/sbin/diskinfo {$disk}", $rawdata);

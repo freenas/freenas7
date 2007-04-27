@@ -79,7 +79,7 @@
 	} while (!is_validaliasname($harddrive));
 	
 	/* check if destination drive is mounted */
-	if (disks_check_mount($harddrive)) 	{
+	if (disks_ismounted_mdisk($harddrive)) 	{
 		echo "\nYour destination drive is already used!\n";
 		fgets($fp);
 		exit(0);

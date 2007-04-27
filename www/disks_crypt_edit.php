@@ -128,7 +128,7 @@ if ($_POST) {
 		$type = "geli";	
 		
 		/* Check if disk is mounted. */ 
-		if(disks_check_mount_fullname($disk)) {
+		if(disks_ismounted_fullname($disk)) {
 			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
 			$do_crypt = false;
 		}

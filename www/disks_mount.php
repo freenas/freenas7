@@ -138,7 +138,7 @@ if ($_GET['act'] == "retry")
               if (file_exists($d_mountdirty_path)) {
                 echo(gettext("Configuring"));
               } else {
-                if(disks_check_mount($mount)) {
+                if(disks_ismounted($mount)) {
 									echo(gettext("OK"));
                 } else {
                   echo(gettext("Error") . " - <a href=\"disks_mount.php?act=retry&id={$i}\">" . gettext("Retry") . "</a>");
