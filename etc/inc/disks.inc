@@ -104,8 +104,8 @@ function disks_mount_iso($mount_iso)
 	
 	if (mwexec("/sbin/mdconfig -a -t vnode -f {$filename} -u {$md_id}") == 0) {
 		if (mwexec("/sbin/mount -t cd9660 /dev/md{$md_id} '{$mountname}'") == 0) {
-				write_log("ISO file  {$devname} mounted on '{$mountname}'");
-				$result = 0;
+			write_log("ISO file {$devname} mounted on '{$mountname}'");
+			$result = 0;
 		} else {
 			write_log("Error: Failed to mount ISO file {$filename}");
 		}
@@ -135,7 +135,7 @@ function disks_mount($mount)
 		if (is_array($config['geli']['vdisk'])) {
 			$a_geli = $config['geli']['vdisk'];
 			if (array_search_ex($mount['mdisk'], $a_geli, "fullname")) {
-				write_console("\nSkip mounting {$mount['sharename']}: Passphrase need.");
+				write_console("\nSkip mounting {$mount['sharename']}: Passphrase needed.");
 				write_log("Passphrase needed for '{$mountname}'");
 				return 0;
 			}
@@ -276,9 +276,9 @@ function disks_mount_fullname($fullname)
 	}
 
 	if($mount) {
-		$result= disks_mount($mount);
+		$result = disks_mount($mount);
 	} else {
-		$result=0;
+		$result = 0;
 	}
 
 	return $result;
@@ -301,7 +301,7 @@ function disks_mount_sharename($sharename)
 	if($mount) {
 		$result = disks_mount($mount);
 	} else {
-		$result=0;
+		$result = 0;
 	}
 
 	return $result;
@@ -407,43 +407,48 @@ function disks_umount_iso_adv($mount)
 	return $result;
 }
 
-// This option check if this fullname (/dev/ad0s1) is mounted
-// Return 0 if not, 1 if yes
+/* This option check if this fullname (/dev/ad0s1) is mounted.
+Return 0 if not, 1 if yes */
 function disks_check_mount_fullname($fullname)
 {
+	$status = 0;
 	$detmount = get_mounts_list();
-	$status=0;
+
 	foreach ($detmount as $detmountk => $detmountv) {
 		if (strcmp($detmountv['fullname'],$fullname) == 0) {
-			$status=1;
+			$status = 1;
 			break;
 		}
 	}
-	return $status;
-}
-// This option check if the sharename (/mnt/tutu) is mounted
-// Return 0 if not, 1 if yes
-function disks_check_mount_sharename($sharename)
-{
-	$detmount = get_mounts_list();
-	$status=0;
-	foreach ($detmount as $detmountk => $detmountv) {
-		if (strcmp($detmountv['sharename'],$sharename) == 0) {
-			$status=1;
-			break;
-		}
-	}
+
 	return $status;
 }
 
-/* This option check if the configured mount is mounted. */
+/* This option check if the sharename (/mnt/tutu) is mounted.
+Return 0 if not, 1 if yes */
+function disks_check_mount_sharename($sharename)
+{
+	$status = 0;
+	$detmount = get_mounts_list();
+
+	foreach ($detmount as $detmountk => $detmountv) {
+		if (strcmp($detmountv['sharename'],$sharename) == 0) {
+			$status = 1;
+			break;
+		}
+	}
+
+	return $status;
+}
+
+/* This option checks if the configured mount is mounted.
+Return 0 if not, 1 if yes */
 function disks_check_mount($mount)
 {
 	// MUST CHECK IF IT'S NTFS filesystem, and use a disks_check_mount_sharename function!!
-	if (strcmp($mount['fstype'],"ntfs")==0) {
+	if (0 == strcmp($mount['fstype'],"ntfs")) {
 		return disks_check_mount_sharename($mount['sharename']);
-	}
-	else {
+	} else {
 		return disks_check_mount_fullname($mount['fullname']);
 	}
 }
@@ -458,8 +463,8 @@ function disks_check_mount_disk($disk)
 	foreach ($detmount as $detmountk => $detmountv) {
 		/* Must found the $disk (ad0) in result $mdisk (ad0s1) */
 		// strpos will return 0 (found at position 0) if found, must check the 'false' value
-		if (strpos($detmountv['mdisk'], $disk) !== false ) {
-			$status=1;
+		if (strpos($detmountv['mdisk'], $disk) !== false) {
+			$status = 1;
 			break;
 		}
 	}
@@ -473,17 +478,12 @@ Result: "ONLINE", disk is online
 Result: "CHANGED", disk have changed (be replaced ?) */
 function disks_status($diskname)
 {
-	global $config, $g;
-	
-	//$detectedlist = get_physical_disks_list();
-	/* get All disk list (with CDROM) */
-	
+	$status = "MISSING";
 	$detectedlist = array_merge((array)get_physical_disks_list(),(array)get_cdrom_list());
-	$status="MISSING";
 
-	foreach ($detectedlist as $detecteddisk => $detecteddiskv) 	{
+	foreach ($detectedlist as $detecteddisk => $detecteddiskv) {
 		if ($detecteddisk == $diskname['name']) {
-			$status="ONLINE";
+			$status = "ONLINE";
 			break;
 		}
 	}
@@ -491,24 +491,25 @@ function disks_status($diskname)
 	return $status;
 }
 
-/* This function umount all configured mount */
+/* This function umount all configured mount.
+Return 0 if OK, and 1 if error */
 function disks_umount_all()
 {
 	// Unmount all mount point
-	global $config, $g;
-	
-	/* Sync disks*/
+	global $config;
+
+	// Sync disks.
 	mwexec("/bin/sync");
 
-	if (is_array($config['mounts']['iso'])) 	{
-		foreach ($config['mounts']['iso'] as $mount_iso) 	{
-		disks_umount($mount_iso);
+	if (is_array($config['mounts']['iso'])) {
+		foreach ($config['mounts']['iso'] as $mount_iso) {
+			disks_umount($mount_iso);
 		}
 	}
-					
-	if (is_array($config['mounts']['mount'])) 	{
-		foreach ($config['mounts']['mount'] as $mountent) 	{
-		disks_umount($mountent);
+
+	if (is_array($config['mounts']['mount'])) {
+		foreach ($config['mounts']['mount'] as $mountent) {
+			disks_umount($mountent);
 		}
 	}
 
@@ -540,12 +541,11 @@ drive disk_{$diskrv} device {$diskrv}
 
 EOD;
 			}
-			 
+
 			$raidconf .= <<<EOD
 volume {$a_raid_conf['name']}
 
 EOD;
-
 			switch ($a_raid_conf['type']) 	{
 					case "0":
 						$raidconf .= <<<EOD
@@ -565,7 +565,6 @@ EOD; */
 sd length 0 drive disk_{$diskrv}
 
 EOD;
-		
 						}
 						break;
 					case "1":
@@ -574,7 +573,6 @@ EOD;
 plex org concat
 
 EOD;
-							
 							/* Get the disksize */
 							$disksize=get_disks_size($diskrv);
 							/* Remove the ending 'B' in 'MB' */
@@ -588,9 +586,8 @@ EOD; */
 sd length 0 drive disk_{$diskrv}
 
 EOD;
-		
 						}
-					
+
 						break;
 					case "5":
 					$raidconf .= <<<EOD
@@ -611,10 +608,8 @@ EOD; */
 sd length 0 drive disk_{$diskrv}
 
 EOD;
-		
 						}
 						break;
-		
 			}
 			fwrite($fd, $raidconf);
 			fclose($fd);
@@ -626,7 +621,7 @@ EOD;
 		/* start each volume */
 		foreach ($config['gvinum']['vdisk'] as $a_raid_conf)	{
 			exec("/sbin/gvinum lv $raidname", $rawdata);
-			if (strpos($rawdata[0],"State: up")>=0)
+			if (strpos($rawdata[0],"State: up" )>= 0)
 				continue;
 			mwexec("/sbin/gvinum start {$a_raid_conf['name']}");
 		}
@@ -635,7 +630,8 @@ EOD;
 	return 0;
 }
 
-/* Configure, create and start gmirror volume */
+/* Configure, create and start gmirror volume.
+Return 0 if OK, and 1 if error */
 function disks_raid_gmirror_configure()
 {
 	global $config;
@@ -657,7 +653,8 @@ function disks_raid_gmirror_configure()
 	return 0;
 }
 
-/* Configure, create and start gconcat volume */
+/* Configure, create and start gconcat volume.
+Return 0 if OK, and 1 if error */
 function disks_raid_gconcat_configure()
 {
 	global $config;
@@ -679,7 +676,8 @@ function disks_raid_gconcat_configure()
 	return 0;
 }
 
-/* Configure, create and start gstripe volume */
+/* Configure, create and start gstripe volume.
+Return 0 if OK, and 1 if error */
 function disks_raid_gstripe_configure()
 {
 	global $config;
@@ -701,7 +699,8 @@ function disks_raid_gstripe_configure()
 	return 0;
 }
 
-/* Configure, create and start graid5 volume */
+/* Configure, create and start graid5 volume.
+Return 0 if OK, and 1 if error */
 function disks_raid_graid5_configure()
 {
 	global $config;
@@ -726,7 +725,8 @@ function disks_raid_graid5_configure()
 	return 0;
 }
 
-/* Start all geom RAID volumes */
+/* Start all geom RAID volumes.
+Return 0 if OK, and 1 if error */
 function disks_raid_start()
 {
 	/* WARNING:  Must change this code for advanced RAID configuration ex: RAID1+0
@@ -741,7 +741,8 @@ function disks_raid_start()
 	return 0;
 }	
 
-/* Start geom vinum volumes */
+/* Start geom vinum volumes.
+Return 0 if OK, and 1 if error */
 function disks_raid_gvinum_start()
 {
 	global $config, $g;
@@ -762,7 +763,8 @@ function disks_raid_gvinum_start()
 	return 0;
 }
 
-/* Start geom mirror volumes */
+/* Start geom mirror volumes.
+Return 0 if OK, and 1 if error */
 function disks_raid_gmirror_start()
 {
 	global $config, $g;
@@ -782,7 +784,8 @@ function disks_raid_gmirror_start()
 	return 0;
 }
 
-/* Start geom concat volumes */
+/* Start geom concat volumes.
+Return 0 if OK, and 1 if error */
 function disks_raid_gconcat_start()
 {
 	global $config, $g;
@@ -802,7 +805,8 @@ function disks_raid_gconcat_start()
 	return 0;
 }
 
-/* Start geom stripe volumes */
+/* Start geom stripe volumes.
+Return 0 if OK, and 1 if error */
 function disks_raid_gstripe_start()
 {
 	global $config, $g;
@@ -822,7 +826,8 @@ function disks_raid_gstripe_start()
 	return 0;
 }
 
-/* Start geom raid5 volumes */
+/* Start geom raid5 volumes.
+Return 0 if OK, and 1 if error */
 function disks_raid_graid5_start()
 {
 	global $config, $g;
@@ -857,19 +862,16 @@ function disks_raid_graid5_tune()
 
 	if ($realram <= 128) {
 		write_log("Optimizing graid5 for system with less or 128MB of RAM");
-
 		mwexec('sysctl value kern.geom.raid5.maxwql=10');
 		mwexec('sysctl value kern.geom.raid5.maxmem=1100000');
 	} else if ($realram <= 256) {
 		write_log("Optimizing graid5 for system with loss or 256MB of RAM");
-
 		mwexec('sysctl value kern.geom.raid5.maxwql=20');
 		mwexec('sysctl value kern.geom.raid5.maxmem=2000000');
 	} else {
 		write_log("Detected 512MB or more RAM... No need to optimize RAM use for graid5");
 	}
 }
-
 
 /* Stop all geom RAID volumes */
 function disks_raid_stop()
