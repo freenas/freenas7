@@ -47,20 +47,20 @@
 	else
 	{
   	do {
-  		echo "\nEnter the new LAN IP address: ";
+  		echo "\nEnter new LAN IP address (press 'Enter' to abort): ";
   		$lanip = chop(fgets($fp));
   		if ($lanip === "") {
   			exit(0);
   		}
   	} while (!is_ipaddr($lanip));
-  
-  	echo "\nSubnet masks are entered as bit counts (as in CIDR notation) in ".get_product_name().".\n";
+
+  	echo "\nSubnet masks are entered as bit counts (as in CIDR notation) in " . get_product_name() . ".\n";
   	echo "e.g. 255.255.255.0 = 24\n";
   	echo "     255.255.0.0   = 16\n";
   	echo "     255.0.0.0     = 8\n\n";
-  	
+
   	do {
-  		echo "Enter the new LAN subnet bit count: ";
+  		echo "Enter new LAN subnet bit count: ";
   		$lanbits = chop(fgets($fp));
   		if ($lanbits === "") {
   			exit(0);
@@ -71,7 +71,7 @@
   	$config['interfaces']['lan']['subnet'] = $lanbits;
 
 		do {
-  		echo "Enter the default gateway (press enter to skip): ";
+  		echo "Enter IPv4 default gateway (press 'Enter' to skip): ";
   		$gatewayip = chop(fgets($fp));
   		if ($gatewayip === "") {
   			break;
@@ -83,7 +83,7 @@
 		}
 
   	do {
-  		echo "Enter a DNS server (press enter to skip): ";
+  		echo "Enter name server (press 'Enter' to skip): ";
   		$dnsserverip = chop(fgets($fp));
   		if ($dnsserverip === "") {
   			break;
@@ -97,17 +97,16 @@
 
 	$proto = "http";
 	if ($config['system']['webgui']['protocol'] == "https") {
-	
 		echo "\nDo you want to revert to HTTP as the webGUI protocol? (y/n) ";
-		
+
 		if (strcasecmp(chop(fgets($fp)), "y") == 0)
 			$config['system']['webgui']['protocol'] = "http";
 		else
 			$proto = "https";
 	}
-	
+
 	write_config();
-	
+
 	interfaces_lan_configure();
 
   /* Get current IP */
