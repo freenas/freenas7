@@ -1219,6 +1219,33 @@ function get_dnsserver() {
 	return $result;
 }
 
+// Get the default gateway.
+// Returns default gateway IP
+function get_defaultgateway() {
+	global $config;
+
+	$result = "";
+
+	switch ($config['interfaces']['lan']['ipaddr']) {
+		case 'dhcp':
+			exec("/sbin/route -n get default", $rawdata);
+			foreach($rawdata as $data) {
+				$adata = preg_split("/\s+/", trim($data));
+				if (false !== strstr($adata[0],"gateway")) {
+					$result = $adata[1];
+					break;
+				}
+			}
+			break;
+
+		default:
+			$result = $config['interfaces']['lan']['gateway'];
+			break;
+	}
+
+	return $result;
+}
+
 /* Get list of disks from given type of filesystem. */
 function get_fstype_disks_list($fstype) {
 	global $config;

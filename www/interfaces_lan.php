@@ -35,21 +35,22 @@ $pgtitle = array(gettext("Interfaces"), gettext("LAN"));
 
 $lancfg = &$config['interfaces']['lan'];
 
-if (strcmp($config['interfaces']['lan']['ipaddr'],"dhcp") == 0) {
+if (strcmp($lancfg['ipaddr'],"dhcp") == 0) {
 	$pconfig['type'] = "DHCP";
+	$pconfig['ipaddr'] = get_ipaddr($lancfg['if']);
 } else {
 	$pconfig['type'] = "Static";
-	$pconfig['ipaddr'] = $config['interfaces']['lan']['ipaddr'];
-	$pconfig['subnet'] = $config['interfaces']['lan']['subnet'];
-	$pconfig['gateway'] = $config['interfaces']['lan']['gateway'];
+	$pconfig['ipaddr'] = $lancfg['ipaddr'];
+	$pconfig['subnet'] = $lancfg['subnet'];
 }
 
+$pconfig['gateway'] = get_defaultgateway();
 $pconfig['dhcphostname'] = $config['system']['hostname'] . "." . $config['system']['domain'];
 $pconfig['dhcpclientidentifier'] = get_macaddr($lancfg['if']);
-$pconfig['mtu'] = $config['interfaces']['lan']['mtu'];
-$pconfig['media'] = $config['interfaces']['lan']['media'];
-$pconfig['mediaopt'] = $config['interfaces']['lan']['mediaopt'];
-$pconfig['polling'] = isset($config['interfaces']['lan']['polling']);
+$pconfig['mtu'] = $lancfg['mtu'];
+$pconfig['media'] = $lancfg['media'];
+$pconfig['mediaopt'] = $lancfg['mediaopt'];
+$pconfig['polling'] = isset($lancfg['polling']);
 
 /* Wireless interface? */
 if (isset($lancfg['wireless'])) {
@@ -158,14 +159,23 @@ function type_change() {
 		case 0: /* Static */
 		  /* use current ip address as default */
       document.iform.ipaddr.value = "<?=htmlspecialchars(get_ipaddr($lancfg['if']))?>";
+
       document.iform.ipaddr.disabled = 0;
     	document.iform.subnet.disabled = 0;
       document.iform.gateway.disabled = 0;
+
+      showElementById('dhcpclientidentifier_tr','hide');
+      showElementById('dhcphostname_tr','hide');
+
       break;
     case 1: /* DHCP */
       document.iform.ipaddr.disabled = 1;
     	document.iform.subnet.disabled = 1;
       document.iform.gateway.disabled = 1;
+
+      showElementById('dhcpclientidentifier_tr','show');
+      showElementById('dhcphostname_tr','show');
+
       break;
   }
 }
@@ -191,7 +201,7 @@ function type_change() {
       </td>
     </tr>
     <tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=gettext("Static IP configuration"); ?></td>
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("General configuration"); ?></td>
     </tr>
     <tr> 
       <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address"); ?></td>
@@ -214,31 +224,19 @@ function type_change() {
         <?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>">
       </td>
     </tr>
-    <tr> 
-      <td colspan="2" valign="top" height="16"></td>
-    </tr>
-    <tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=gettext("DHCP client configuration"); ?></td>
-    </tr>
-    <tr> 
+    <tr id="dhcpclientidentifier_tr">
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Client Identifier");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
         <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.");?></span>
       </td>
     </tr>
-    <tr> 
+    <tr id="dhcphostname_tr">
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled><br>
         <span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
       </td>
-    </tr>
-    <tr> 
-      <td colspan="2" valign="top" height="4"></td>
-    </tr>
-    <tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=gettext("General configuration"); ?></td>
     </tr>
     <tr> 
       <td valign="top" class="vncell"><?=gettext("MTU"); ?></td>
