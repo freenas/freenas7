@@ -535,8 +535,11 @@ function system_password_configure() {
 
 	return $result;
 }
-function system_systime_set($mydate) {
-	$result=mwexec("/bin/date " . $mydate);
+
+// The date utility exits 0 on success, 1 if unable to set the date,
+// and 2 if able to set the local date, but unable to set it globally.
+function system_systime_set($date) {
+	$result = mwexec("/bin/date -n {$date}");
 	return $result;
 }
 

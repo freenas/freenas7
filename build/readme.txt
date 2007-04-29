@@ -87,6 +87,7 @@ Minors changes:
 - Add boot splash screen (just for fun)
 - Tune graid5 RAM use depending of RAM detected
 - Display DNS servers on 'System/General setup' page when using DHCP (edit controls are disabled in this case)
+- Fix bug in system_systime_set function. Thanks to Paul Wheels for the tip.
 
 Bug fixs:
 - Add missing winbind/smbpass pam modules
