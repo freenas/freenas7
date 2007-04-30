@@ -43,7 +43,16 @@ if (!is_array($config['mounts']['mount']))
 
 mount_sort();
 
+if (!is_array($config['mounts']['iso']))
+	$config['mounts']['iso'] = array();
+
+mount_iso_sort();
+
+$a_mount_iso = &$config['mounts']['iso'];
+
 $a_mount = &$config['mounts']['mount'];
+
+$a_allmount = array_merge($a_mount_iso,$a_mount);
 
 if ($_POST) {
 	unset($input_errors);
@@ -111,6 +120,11 @@ if(isset($_GET['action'])) {
                 <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
                 <?php endforeach; ?>
                 </option>
+				<?php foreach ($a_mount_iso as $mountv_iso): ?>
+                <option value="<?=$mountv_iso['sharename'];?>"<?php if ($mountv_iso['sharename'] == $sharename) echo "selected";?>>
+                <?php echo htmlspecialchars($mountv_iso['sharename'] . " (" . gettext("File") . ": " . $mountv_iso['filename']. ")");?>
+                <?php endforeach; ?>
+                </option>
               </select>
             </td>
       		</tr>
@@ -138,9 +152,10 @@ if(isset($_GET['action'])) {
     					ob_end_flush();
 
     					/* Get the id of the mount array entry. */
-		          $id = array_search_ex($sharename, $a_mount, "sharename");
+						
+		          $id = array_search_ex($sharename, $a_allmount, "sharename");
 		          /* Get the mount data. */
-              $mount = $a_mount[$id];
+              $mount = $a_allmount[$id];
 
               switch($action)
               {
