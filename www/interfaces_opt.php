@@ -44,6 +44,7 @@ $optcfg = &$config['interfaces']['opt' . $index];
 
 if ($config['interfaces']['opt' . $index]['ipaddr'] == "dhcp") {
 	$pconfig['type'] = "DHCP";
+	$pconfig['ipaddr'] = get_ipaddr($optcfg['if']);
 } else {
 	$pconfig['type'] = "Static";
 	$pconfig['ipaddr'] = $optcfg['ipaddr'];
@@ -82,8 +83,8 @@ if ($_POST) {
 	
     if ($_POST['type'] == "Static") {
 		  $reqdfields = explode(" ", "descr ipaddr subnet");
-		  $reqdfieldsn = explode(",", "Description,IP address,Subnet bit count");
-		
+		  $reqdfieldsn = array(gettext("Description"),gettext("IP address"),gettext("Subnet bit count"));
+
 		  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		}
 		
@@ -138,12 +139,10 @@ $pgtitle = array(gettext("Interfaces"), "Optional $index (" . htmlspecialchars($
 <script language="JavaScript">
 <!--
 function enable_change(enable_over) {
-	var endis;
-	endis = !(document.iform.enable.checked || enable_over);
+	var endis = !(document.iform.enable.checked || enable_over);
+
 	document.iform.type.disabled = endis;
 	document.iform.descr.disabled = endis;
-	document.iform.ipaddr.disabled = endis;
-	document.iform.subnet.disabled = endis;
 	document.iform.mtu.disabled = endis;
   document.iform.polling.disabled = endis;
   document.iform.media.disabled = endis;
@@ -161,19 +160,26 @@ function enable_change(enable_over) {
 		 document.iform.key3.disabled = endis;
 		 document.iform.key4.disabled = endis;
 	}
+
+	type_change();
 }
+
 function bridge_change(enable_over) {
-	var endis;
-
-	if (document.iform.enable.checked || enable_over) {
-		endis = !((document.iform.bridge.selectedIndex == 0) || enable_over);
-	} else {
-		endis = true;
+	// Only for 'Static' mode.
+	if (0 == document.iform.type.selectedIndex) {
+		var endis;
+	
+		if (document.iform.enable.checked || enable_over) {
+			endis = !((document.iform.bridge.selectedIndex == 0) || enable_over);
+		} else {
+			endis = true;
+		}
+	
+		document.iform.ipaddr.disabled = endis;
+		document.iform.subnet.disabled = endis;
 	}
-
-	document.iform.ipaddr.disabled = endis;
-	document.iform.subnet.disabled = endis;
 }
+
 function calc_netmask_bits(ipaddr) {
     if (ipaddr.search(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) != -1) {
         var adr = ipaddr.split(/\./);
@@ -192,22 +198,33 @@ function calc_netmask_bits(ipaddr) {
     else
         return 0;
 }
+
 function change_netmask_bits() {
 	document.iform.subnet.selectedIndex = calc_netmask_bits(document.iform.ipaddr.value);
 }
+
 function type_change() {
-  if (document.iform.enable.checked) {
-    switch(document.iform.type.selectedIndex)
-    {
-  		case 0: /* Static */
-        document.iform.ipaddr.disabled = 0;
-      	document.iform.subnet.disabled = 0;
-        break;
-      case 1: /* DHCP */
-        document.iform.ipaddr.disabled = 1;
-      	document.iform.subnet.disabled = 1;
-        break;
-    }
+  switch(document.iform.type.selectedIndex)
+  {
+		case 0: /* Static */
+			var endis = !(document.iform.enable.checked);
+
+      document.iform.ipaddr.disabled = endis;
+    	document.iform.subnet.disabled = endis;
+
+    	showElementById('dhcpclientidentifier_tr','hide');
+      showElementById('dhcphostname_tr','hide');
+
+      break;
+
+    case 1: /* DHCP */
+      document.iform.ipaddr.disabled = 1;
+    	document.iform.subnet.disabled = 1;
+
+			showElementById('dhcpclientidentifier_tr','show');
+    	showElementById('dhcphostname_tr','show');
+
+      break;
   }
 }
 // -->
@@ -228,7 +245,7 @@ function type_change() {
                   </td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=gettext("Type");?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Type");?></td>
                   <td width="78%" class="vtable">
                     <select name="type" class="formfld" id="type" onchange="type_change()">
                       <?php $opts = split(" ", "Static DHCP"); foreach ($opts as $opt): ?>
@@ -240,17 +257,11 @@ function type_change() {
                   </td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
                   <td width="78%" class="vtable"> 
                     <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
                     <br><span class="vexpl"><?=gettext("Enter a description (name) for the interface here.");?></span>
                   </td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" height="16"></td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=gettext("Static IP configuration");?></td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address"); ?></td>
@@ -265,31 +276,19 @@ function type_change() {
                     <img name="calcnetmaskbits" src="calc.gif" title="<?=gettext("Calculate netmask bits");?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
                   </td>
                 </tr>
-                <tr> 
-                  <td colspan="2" valign="top" height="16"></td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=gettext("DHCP client configuration"); ?></td>
-                </tr>
-                <tr> 
+                <tr id="dhcpclientidentifier_tr"> 
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Client Identifier");?></td>
                   <td width="78%" class="vtable">
                     <input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars(get_macaddr($optcfg['if']));?>" disabled>
                     <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.");?></span>
                   </td>
                 </tr>
-                <tr> 
+                <tr id="dhcphostname_tr">
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
                   <td width="78%" class="vtable">
                     <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($config['system']['hostname'] . "." . $config['system']['domain']);?>" disabled>
                     <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
                   </td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" height="4"></td>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=gettext("General configuration"); ?></td>
                 </tr>
                 <tr>
                   <td valign="top" class="vncell"><?=gettext("MTU"); ?></td>
@@ -348,7 +347,6 @@ function type_change() {
 <script language="JavaScript">
 <!--
 enable_change(false);
-type_change();
 //-->
 </script>
 <?php else: ?>

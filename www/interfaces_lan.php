@@ -168,6 +168,7 @@ function type_change() {
       showElementById('dhcphostname_tr','hide');
 
       break;
+
     case 1: /* DHCP */
       document.iform.ipaddr.disabled = 1;
     	document.iform.subnet.disabled = 1;
@@ -190,8 +191,12 @@ function type_change() {
 <?php endif; ?>
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr> 
-      <td valign="middle"><strong><?=gettext("Type"); ?></strong></td>
-      <td><select name="type" class="formfld" id="type" onchange="type_change()">
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("General configuration"); ?></td>
+    </tr>
+    <tr> 
+    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
+      <td width="78%" class="vtable">
+  			<select name="type" class="formfld" id="type" onchange="type_change()">
           <?php $opts = split(" ", "Static DHCP"); foreach ($opts as $opt): ?>
           <option <?php if ($opt == $pconfig['type']) echo "selected";?>> 
             <?=htmlspecialchars($opt);?>
@@ -199,9 +204,6 @@ function type_change() {
           <?php endforeach; ?>
         </select>
       </td>
-    </tr>
-    <tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=gettext("General configuration"); ?></td>
     </tr>
     <tr> 
       <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address"); ?></td>
