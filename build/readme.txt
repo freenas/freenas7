@@ -75,6 +75,7 @@ FreeNAS 0.685b:
 
 Majors changes:
 - Add Dynamic DNS service
+- Permit to mount ISO files
 - Add packages build infrastructure
 - Upgrade fusefs-libs to 2.6.3 and fusefs-ntfs to 1.417
 - Code review from the FreeNAS core engine.
@@ -88,6 +89,7 @@ Minors changes:
 - Tune graid5 RAM use depending of RAM detected
 - Display DNS servers on 'System/General setup' page when using DHCP (edit controls are disabled in this case)
 - Fix bug in system_systime_set function. Thanks to Paul Wheels for the tip.
+- Improve hidden diagnostic status.php page.
 
 Bug fixs:
 - Add missing winbind/smbpass pam modules

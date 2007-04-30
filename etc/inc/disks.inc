@@ -446,7 +446,8 @@ function disks_umount_all()
 
 	// Sync disks.
 	mwexec("/bin/sync");
-
+	
+	//Unmount ISO
 	if (is_array($config['mounts']['iso'])) {
 		foreach ($config['mounts']['iso'] as $mount_iso) {
 			disks_umount($mount_iso);
