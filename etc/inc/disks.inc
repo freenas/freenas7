@@ -99,7 +99,7 @@ function disks_mount_iso($mount_iso)
 	mwexec("/bin/chmod 777 '{$mountname}'");
 
 	/* Mount the ISO file. */
-	$filename = escapeshellcmd($mount_iso['fullname']);
+	$filename = escapeshellcmd($mount_iso['filename']);
 	$md_id = escapeshellcmd($mount_iso['md_id']);
 	
 	if (mwexec("/sbin/mdconfig -a -t vnode -f {$filename} -u {$md_id}") == 0) {

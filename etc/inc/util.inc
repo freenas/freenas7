@@ -1544,7 +1544,7 @@ function get_ram_info() {
 }
 
 function write_log($message) {
-	$cmd="/usr/bin/logger \"${$message}\"";
+	$cmd="/usr/bin/logger \"{$message}\"";
 	mwexec($cmd);
 }
 
