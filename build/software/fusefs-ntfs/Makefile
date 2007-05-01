@@ -7,12 +7,6 @@ BUILD_DEPENDS=	fusefs-ntfs:${PORTSDIR}/sysutils/fusefs-ntfs \
 		fusefs-libs:${PORTSDIR}/sysutils/fusefs-libs
 
 pre-depends:
-# Patch fusefs-libs port.
-	-@if [ ! -e /usr/ports/sysutils/fusefs-libs.orig ]; then \
-		cp -r /usr/ports/sysutils/fusefs-libs /usr/ports/sysutils/fusefs-libs.orig; \
-		${PATCH} -E -u -d /usr/ports/sysutils < ${FILESDIR}/patch-fusefs-libs-2.6.3.diff; \
-	fi
-
 # Copy options file
 	@${MKDIR} -v /var/db/ports/fusefs
 	@${CP} -pv ${FILESDIR}/options /var/db/ports/fusefs
