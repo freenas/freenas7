@@ -39,13 +39,35 @@ require("packages.inc");
 
 $pgtitle = array(gettext("System"), gettext("Packages"));
 
+if(!is_array($config['packages']))
+	$config['packages'] = array();
+
+$pconfig['path'] = $config['packages']['path'];
+
 $a_packages = packages_get_installed(); 
 
 if ($_POST) {
+	unset($input_errors);
+
 	$pconfig = $_POST;
 
-	if ($_POST['apply']) {
+	$reqdfields = explode(" ", "path");
+	$reqdfieldsn = array(gettext("Path"));
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+	if(!$input_errors) {
+    $config['packages']['path'] = $_POST['path'];
+
+		write_config();
+
 		$retval = 0;
+		if(!file_exists($d_sysrebootreqd_path)) {
+			config_lock();
+			$retval = packages_init();
+			config_unlock();
+		}
+
+		$savemsg = get_std_save_message($retval);
 	}
 }
 
@@ -60,9 +82,30 @@ if ($_GET['act'] == "del") {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<form action="system_packages.php" method="post">
+<?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<form action="system_packages.php" method="post" name="iform" id="iform">
+	<table width="100%" border="0" cellpadding="6" cellspacing="0">
+    <tr> 
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("General configuration"); ?></td>
+    </tr>
+    <tr>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Path");?></td>
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?>
+        <input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlentities($pconfig['path']);?>">
+        <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+				<br><?=gettext("Path where to store packages.");?>
+      </td>
+    </tr>
+    <tr> 
+      <td colspan="2" valign="top" height="16"></td>
+    </tr>
+    <tr> 
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("Installed packages"); ?></td>
+    </tr>
+  </table>
+	<table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
       <td width="40%" class="listhdrr"><?=gettext("Package Name");?></td>
       <td width="50%" class="listhdrr"><?=gettext("Description");?></td>
@@ -80,5 +123,6 @@ if ($_GET['act'] == "del") {
 			<td class="list"> <a href="system_packages_edit.php"><img src="plus.gif" title="<?=gettext("Install package"); ?>" width="17" height="17" border="0"></a></td>
 		</tr>
   </table>
+  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"><br><br>
 </form>
 <?php include("fend.inc"); ?>

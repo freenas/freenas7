@@ -35,57 +35,72 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("packages.inc");
 
 $id = $_GET['id'];
 
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("System"),gettext("Packages"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("System"),gettext("Packages"),isset($id)?gettext("Edit"):gettext("Install"));
+
+if (!is_array($config['packages']['package']))
+	$config['packages']['package'] = array();
+
+$a_package = &$config['packages']['package'];
 
 if ($_POST) {
 	unset($input_errors);
+	$retval = 0;
 
-	/* Input validation */
-  $reqdfields = explode(" ", "command type");
-  $reqdfieldsn = array(gettext("Command"),gettext("Type"));
-  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
+		if (!file_exists($_FILES['ulfile']['tmp_name'])) {
+			// Probably out of memory for the MFS.
+			$input_errors[] = gettext("Package upload failed (out of memory?)");
+		} else if (!file_exists("{$config['packages']['path']}/packages")) {
+			// Packages directory does not exists.
+			$input_errors[] = gettext("Package path does not exist.");
+		} else {
+			$packagename = "{$config['packages']['path']}/packages/{$_FILES['ulfile']['name']}";
+			// Move the image so PHP won't delete it.
+			rename($_FILES['ulfile']['tmp_name'], $packagename);
+			// Install package.
+			$retval = packages_install($packagename);
 
-	if (!$input_errors) {
-		write_config();
-		header("Location: system_packages.php");
-		exit;
+			$savemsg = get_std_save_message($retval);
+
+			if (0 == $retval) {
+				$package = array();
+				$package['filename'] = $_FILES['ulfile']['name'];
+
+				$a_package[] = $package;
+
+				write_config();
+
+				header("Location: system_packages.php");
+				exit;
+			}
+		}
 	}
 }
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
-<form action="system_packages_edit.php" method="post" name="iform" id="iform">
+<?php if ($savemsg) print_info_box($savemsg); ?>
+<form action="system_packages_edit.php" method="post" enctype="multipart/form-data">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
-		<tr> 
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
+		<tr>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("Package file");?></td>
 			<td width="78%" class="vtable">
         <?=$mandfldhtml;?>
-				<input name="command" type="text" class="formfld" id="command" size="60" value="<?=htmlspecialchars($command);?>"> 
-			</td>
-		</tr>
-		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Type");?></td>
-			<td width="78%" class="vtable">
-				<?=$mandfldhtml;?>
-				<select name="type" class="formfld" id="type" <?php if ($type) echo "disabled";?>>
-					<option value="PRE" <?php if ($type == "PRE") echo "selected";?>>Pre</option>
-					<option value="POST" <?php if ($type == "POST") echo "selected";?>>Post</option>
-				</select>
-				<br><?=gettext("Execute command pre or post system initialization (booting).");?>
+				<input name="ulfile" type="file" class="formfld"> 
 			</td>
 		</tr>
     <tr> 
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id) && isset($type))?gettext("Save"):gettext("Add")?>"> 
-        <?php if (isset($id) && isset($type)): ?>
+      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Install")?>"> 
+        <?php if (isset($id)): ?>
         <input name="id" type="hidden" value="<?=$id;?>">
-        <input name="type" type="hidden" value="<?=$type;?>">
         <?php endif; ?>
       </td>
     </tr>

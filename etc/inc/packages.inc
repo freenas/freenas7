@@ -2,7 +2,7 @@
 /*
 	packages.inc
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
@@ -36,6 +36,16 @@
 require_once("functions.inc");
 require_once("util.inc");
 
+// Initialize packages.
+// Return 0 if sucessful, 1 if error
+function packages_init() {
+	global $config;
+
+	$packagespath = "{$config['packages']['path']}/packages";
+
+	return mwexec("mkdir {$packagespath}");
+}
+
 // Get list of installed packages.
 // Result is in the form:
 // [1] => Array
@@ -46,21 +56,33 @@ require_once("util.inc");
 // Return array of installed packages
 function packages_get_installed() {
 	$packages = array();
+	$id = 0;
 
 	exec("/usr/sbin/pkg_info", $rawdata);
 	foreach($rawdata as $line) {
 		$pos = strpos($line," ");
-		$pkgid = strstr($line,"-");
 		$pkgname = substr($line,0,$pos);
 		$pkgdesc = substr($line,$pos+1);
 
-		$packages[$pkgid] = array();
-		$packages[$pkgid]['name'] = $pkgname;
-		$packages[$pkgid]['desc'] = $pkgdesc;
+		$packages[$id] = array();
+		$packages[$id]['name'] = $pkgname;
+		$packages[$id]['desc'] = $pkgdesc;
+		
+		$id++;
   }
-  unset ($line);
+  unset($line);
 
 	return $packages; 
+}
+
+// Install package.
+// Return 0 if sucessful, 1 if error
+function packages_install($pkgname) {
+	global $config;
+
+	$prefix = $config['packages']['path'] . "/packages/usr";
+
+	return mwexec("/usr/sbin/pkg_add -P {$prefix} {$pkgname}");
 }
 
 // Uninstall package.

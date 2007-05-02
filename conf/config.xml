@@ -266,4 +266,12 @@
 		<forcedupdateperiod></forcedupdateperiod>
 		-->
 	</dynamicdns>
+	<packages>
+		<!--
+		<path>/mnt/Data/packages</path>
+		<package>
+			<filename>xxx.tbz</filename>
+		</package>
+		-->
+	</packages>
 </freenas>
