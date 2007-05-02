@@ -44,8 +44,6 @@ if(!is_array($config['packages']))
 
 $pconfig['path'] = $config['packages']['path'];
 
-$a_packages = packages_get_installed(); 
-
 if ($_POST) {
 	unset($input_errors);
 
@@ -63,13 +61,16 @@ if ($_POST) {
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval = packages_init();
+			$retval = packages_configure();
 			config_unlock();
 		}
 
 		$savemsg = get_std_save_message($retval);
 	}
 }
+
+// Get list of installed packages.
+$a_packages = packages_get_installed();
 
 if ($_GET['act'] == "del") {
 	if ($a_packages[$_GET['id']]) {

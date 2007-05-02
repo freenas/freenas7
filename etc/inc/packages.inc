@@ -38,12 +38,53 @@ require_once("util.inc");
 
 // Initialize packages.
 // Return 0 if sucessful, 1 if error
-function packages_init() {
+function packages_configure() {
 	global $config;
+	$result = 1;
 
-	$packagespath = "{$config['packages']['path']}/packages";
+	$pkgpath = "{$config['packages']['path']}/packages";
 
-	return mwexec("mkdir {$packagespath}");
+	// Create packages directory (if necessary).
+	$result = mwexec("mkdir -p {$pkgpath}");
+	if (1 == $result) {
+		write_log("Failed to create packages directory on '{$config['packages']['path']}'");
+	}
+
+	// Install packages.
+	$apackage = $config['packages']['package'];
+	foreach ($apackage as $packagev) {
+		packages_install("{$pkgpath}/{$packagev['filename']}");
+	}
+
+	packages_ln_files("{$pkgpath}/usr");
+
+	return $result;
+}
+
+// Create soft links for each file in the packages.
+function packages_ln_files($path) {
+	$pkgpath = "{$config['packages']['path']}/packages";
+
+	$handle = @opendir($path);
+  while($file = @readdir($handle)) {
+		if ($file == "." || $file == "..") {
+			continue;
+		}
+
+    $realpath = "/usr/local/" . substr(strchr($path,"packages/usr/"),13);
+
+    if(is_dir("{$path}/{$file}")) {
+    	// Make sure directory exists.
+    	$result = mwexec("mkdir -p {$realpath}/{$file}");
+    	// Scan directory recursively.
+      packages_ln_files("{$path}/{$file}");
+    }
+    else if(is_file("{$path}/{$file}")) {
+    	// Create a soft link.
+    	$result = mwexec("/bin/ln -s {$path}/{$file} {$realpath}/{$file}");
+		}
+  }
+  @closedir($handle);
 }
 
 // Get list of installed packages.
@@ -82,12 +123,26 @@ function packages_install($pkgname) {
 
 	$prefix = $config['packages']['path'] . "/packages/usr";
 
-	return mwexec("/usr/sbin/pkg_add -P {$prefix} {$pkgname}");
+	$result = mwexec("/usr/sbin/pkg_add -P {$prefix} {$pkgname}");
+	if (0 == $result) {
+		write_log("Successfully installed package '{$pkgname}'");
+	} else {
+		write_log("Failed to install package '{$pkgname}'");
+	}
+
+	return $result;
 }
 
 // Uninstall package.
 // Return 0 if sucessful, 1 if error
 function packages_uninstall($pkgname) {
-	return mwexec("/usr/sbin/pkg_delete {$pkgname}");
+	$result = mwexec("/usr/sbin/pkg_delete {$pkgname}");
+	if (0 == $result) {
+		write_log("Successfully deleted package '{$pkgname}'");
+	} else {
+		write_log("Failed to delete package '{$pkgname}'");
+	}
+
+	return $result;
 }
 ?>
