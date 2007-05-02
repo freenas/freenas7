@@ -99,7 +99,6 @@ if($_GET['act'] == "del") {
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
   document.iform.mapall.disabled = endis;
-  document.iform.nfsnetworks.disabled = endis;
 }
 //-->
 </script>
@@ -134,7 +133,7 @@ function enable_change(enable_change) {
         <?=gettext("All users will have the root privilege.") ;?>
       </td>
     </tr>
-	<tr>
+		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorized");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
