@@ -76,7 +76,7 @@ FreeNAS 0.685b:
 Majors changes:
 - Add Dynamic DNS service
 - Permit to mount ISO files
-- Add packages build infrastructure
+- Add packages build infrastructure and WebGUI
 - Upgrade fusefs-libs to 2.6.4 and fusefs-ntfs to 1.417
 - Code review from the FreeNAS core engine.
 
