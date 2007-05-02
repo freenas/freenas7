@@ -104,6 +104,7 @@ Bug fixs:
 - Fix bug in ftp services page - Handle incorrect values for 'Number of clients' and 'Max. conn. per IP'.
 - Disk encrypted WebGUI - Disk wasn't correct named when using gvinum RAID disk.
 - Disk size was calculated incorrect for 2 partition installation.
+- Fix local RSYNC bug logs each minute and crontab bug.
 
 Known bugs:
 - NTFS mount points are not mounted after creation, a reboot is necessary.

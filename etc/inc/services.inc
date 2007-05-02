@@ -1112,13 +1112,14 @@ EOD;
 
 EOD;
 
+			// Erase all variable used previously
+			unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
+			$i++;
+		}
+	
 		if ($g['booting'])
 			write_console("done\n");
-
-		// Erase all variable used previously
-		unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
-		$i++;
-		}
+		
 	}
 		
 	// RSYNC LOCAL PART
@@ -1131,7 +1132,7 @@ EOD;
 		$i=0;
 		foreach($a_rsynclocal as $rsynclocal) {
 		
-			if ($config['rsync_local']['all_mins'] == "0") 	{ 
+			if ($rsynclocal['all_mins'] == "0") 	{ 
 				foreach ($rsynclocal['minute'] as $minutev) 	{
 					if (strlen($cron_min) > 0)
 						$cron_min = $cron_min . "," . $minutev;
@@ -1195,11 +1196,14 @@ EOD;
 
 			// Erase all variable used previously
 			unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
+			$i++;
 		
 		}
 
 		if ($g['booting'])
 			write_console("done\n");
+		
+		
 	}
 	
 	// SHUTDOWN PART
