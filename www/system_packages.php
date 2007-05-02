@@ -3,7 +3,7 @@
 /*
 	system_packages.php
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
@@ -59,6 +59,7 @@ if ($_POST) {
 		write_config();
 
 		$retval = 0;
+
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval = packages_configure();
@@ -66,16 +67,22 @@ if ($_POST) {
 		}
 
 		$savemsg = get_std_save_message($retval);
+
+		if ($retval == 0) {
+			if (file_exists($d_packagesconfdirty_path))
+				unlink($d_packagesconfdirty_path);
+		}
 	}
 }
 
 // Get list of installed packages.
-$a_packages = packages_get_installed();
+$a_package = &$config['packages']['package'];
 
 if ($_GET['act'] == "del") {
-	if ($a_packages[$_GET['id']]) {
-		packages_uninstall($a_packages[$_GET['id']]['name']);
-		unset($a_packages[$_GET['id']]);
+	if ($a_package[$_GET['id']]) {
+		packages_uninstall($a_package[$_GET['id']]['filename']);
+		unset($a_package[$_GET['id']]);
+
 		write_config();
 		header("Location: system_packages.php");
 		exit;
@@ -83,9 +90,13 @@ if ($_GET['act'] == "del") {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="system_packages.php" method="post" name="iform" id="iform">
+	<?php if ($input_errors) print_input_errors($input_errors); ?>
+	<?php if ($savemsg) print_info_box($savemsg); ?>
+	<?php if (file_exists($d_packagesconfdirty_path)): ?><p>
+	<?php print_info_box_np(gettext("The package list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+	<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+	<?php endif; ?>
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr> 
       <td colspan="2" valign="top" class="listtopic"><?=gettext("General configuration"); ?></td>
@@ -112,7 +123,7 @@ if ($_GET['act'] == "del") {
       <td width="50%" class="listhdrr"><?=gettext("Description");?></td>
       <td width="10%" class="list"></td>
     </tr>
-	  <?php $i = 0; foreach($a_packages as $packagev): ?>
+	  <?php $i = 0; $a_packages = packages_get_installed(); foreach($a_packages as $packagev): ?>
     <tr>
       <td class="listr"><?=htmlspecialchars($packagev['name']);?>&nbsp;</td>
       <td class="listbg"><?=htmlspecialchars($packagev['desc']);?>&nbsp;</td>
@@ -124,6 +135,6 @@ if ($_GET['act'] == "del") {
 			<td class="list"> <a href="system_packages_edit.php"><img src="plus.gif" title="<?=gettext("Install package"); ?>" width="17" height="17" border="0"></a></td>
 		</tr>
   </table>
-  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"><br><br>
+  <input name="submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"><br><br>
 </form>
 <?php include("fend.inc"); ?>

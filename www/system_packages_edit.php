@@ -3,7 +3,7 @@
 /*
 	system_packages_edit.php
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
   
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
@@ -51,7 +51,6 @@ $a_package = &$config['packages']['package'];
 
 if ($_POST) {
 	unset($input_errors);
-	$retval = 0;
 
 	if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
 		if (!file_exists($_FILES['ulfile']['tmp_name'])) {
@@ -61,20 +60,23 @@ if ($_POST) {
 			// Packages directory does not exists.
 			$input_errors[] = gettext("Package path does not exist.");
 		} else {
-			$packagename = "{$config['packages']['path']}/packages/{$_FILES['ulfile']['name']}";
-			// Move the image so PHP won't delete it.
-			rename($_FILES['ulfile']['tmp_name'], $packagename);
-			// Install package.
-			$retval = packages_install($packagename);
+			// Check whether package is already configured/installed.
+			if (0 == packages_is_configured($_FILES['ulfile']['name'])) {
+				$input_errors[] = gettext("Package is already installed.");
+			} else if (0 == packages_is_installed($_FILES['ulfile']['name'])) {
+				$input_errors[] = gettext("Package is already installed.");
+			} else {
+				$packagename = "{$config['packages']['path']}/packages/{$_FILES['ulfile']['name']}";
 
-			$savemsg = get_std_save_message($retval);
-
-			if (0 == $retval) {
+				// Move the image so PHP won't delete it.
+				rename($_FILES['ulfile']['tmp_name'], $packagename);
+			
 				$package = array();
 				$package['filename'] = $_FILES['ulfile']['name'];
 
 				$a_package[] = $package;
 
+				touch($d_packagesconfdirty_path);
 				write_config();
 
 				header("Location: system_packages.php");

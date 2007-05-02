@@ -70,6 +70,7 @@ $d_smbshareconfdirty_path = $g['varrun_path'] . "/smbshare.conf.dirty";
 $d_upnpconfdirty_path = $g['varrun_path'] . "/upnp.conf.dirty";
 $d_nfsconfdirty_path = $g['varrun_path'] . "/nfs.conf.dirty";
 $d_landirty_path = $g['varrun_path'] . "/lan.dirty";
+$d_packagesconfdirty_path = $g['varrun_path'] . "/packages.conf.dirty";
 
 if (file_exists($d_firmwarelock_path)) {
 	if (!$d_isfwfile) {

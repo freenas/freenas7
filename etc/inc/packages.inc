@@ -56,35 +56,7 @@ function packages_configure() {
 		packages_install("{$pkgpath}/{$packagev['filename']}");
 	}
 
-	packages_ln_files("{$pkgpath}/usr");
-
 	return $result;
-}
-
-// Create soft links for each file in the packages.
-function packages_ln_files($path) {
-	$pkgpath = "{$config['packages']['path']}/packages";
-
-	$handle = @opendir($path);
-  while($file = @readdir($handle)) {
-		if ($file == "." || $file == "..") {
-			continue;
-		}
-
-    $realpath = "/usr/local/" . substr(strchr($path,"packages/usr/"),13);
-
-    if(is_dir("{$path}/{$file}")) {
-    	// Make sure directory exists.
-    	$result = mwexec("mkdir -p {$realpath}/{$file}");
-    	// Scan directory recursively.
-      packages_ln_files("{$path}/{$file}");
-    }
-    else if(is_file("{$path}/{$file}")) {
-    	// Create a soft link.
-    	$result = mwexec("/bin/ln -s {$path}/{$file} {$realpath}/{$file}");
-		}
-  }
-  @closedir($handle);
 }
 
 // Get list of installed packages.
@@ -117,14 +89,21 @@ function packages_get_installed() {
 }
 
 // Install package.
+// $pkgname - The package filename to be installed (e.g. xyz.tbz)
 // Return 0 if sucessful, 1 if error
 function packages_install($pkgname) {
 	global $config;
 
 	$prefix = $config['packages']['path'] . "/packages/usr";
 
-	$result = mwexec("/usr/sbin/pkg_add -P {$prefix} {$pkgname}");
+	$result = mwexec("/usr/sbin/pkg_add -P {$prefix} {$pkgname}");	
 	if (0 == $result) {
+		// Create a softlink for each installed file.
+		$apackinglist = packages_get_packinglist($pkgname);
+		foreach ($apackinglist as $filev) {
+			mwexec("/bin/ln -s {$prefix}/{$filev} /usr/local/{$filev}");
+		}
+
 		write_log("Successfully installed package '{$pkgname}'");
 	} else {
 		write_log("Failed to install package '{$pkgname}'");
@@ -134,14 +113,83 @@ function packages_install($pkgname) {
 }
 
 // Uninstall package.
+// $pkgname - The package name or filename (e.g. xyz or xyz.tbz)
 // Return 0 if sucessful, 1 if error
 function packages_uninstall($pkgname) {
+	// Remove '.tbz' if necessary.
+	$pkgname = basename($pkgname, ".tbz");
+
+	// Remove softlink for each installed file.
+	$apackinglist = packages_get_packinglist($pkgname);
+	foreach ($apackinglist as $filev) {
+		mwexec("/bin/rm -f /usr/local/{$filev}");
+	}
+
 	$result = mwexec("/usr/sbin/pkg_delete {$pkgname}");
 	if (0 == $result) {
-		write_log("Successfully deleted package '{$pkgname}'");
+		write_log("Successfully uninstalled package '{$pkgname}'");
 	} else {
-		write_log("Failed to delete package '{$pkgname}'");
+		write_log("Failed to uninstall package '{$pkgname}'");
 	}
+
+	return $result;
+}
+
+// Check whether package is already configured.
+// $pkgname - The package filename (e.g. xyz.tbz)
+// Return 0 if already configured, otherwise 1
+function packages_is_configured($pkgname) {
+	global $config;
+
+	$result = 1;
+
+	$apackage = $config['packages']['package'];
+	foreach ($apackage as $packagev) {
+		if (0 == strcmp($packagev['filename'], $pkgname)) {
+			$result = 0;
+			break;
+		}
+	}
+
+	return $result;
+}
+
+// Check whether package is already installed.
+// $pkgname - The package name or filename (e.g. xyz or xyz.tbz)
+// Return 0 if already installed, otherwise 1
+function packages_is_installed($pkgname) {
+	// Remove '.tbz' if necessary.
+	$pkgname = basename($pkgname, ".tbz");
+
+	// Check whether package is already installed.
+	$result = mwexec("/usr/sbin/pkg_info -e {$pkgname}");
+
+	return $result;
+}
+
+// Get packing list (list installed by package).
+// $pkgname - The package name or filename (e.g. xyz or xyz.tbz)
+// Return array of files installed by package
+function packages_get_packinglist($pkgname) {
+	$result = array();
+	$id = 0;
+
+	// Remove '.tbz' if necessary.
+	$pkgname = basename($pkgname, ".tbz");
+
+	exec("/usr/sbin/pkg_info -f {$pkgname}", $rawdata);
+	foreach($rawdata as $line) {
+		// Parse lines like: 'File: xxxx', ignore 'File: +xxxx'. 
+		if (false === strpos($line, "File: ") || 0 === strpos($line, "File: +")) {
+			continue;
+		}
+
+		$aline = preg_split("/\s+/", $line);
+
+		$result[$id] = $aline[1];
+		$id++;
+  }
+  unset($line);
 
 	return $result;
 }
