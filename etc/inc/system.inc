@@ -727,7 +727,7 @@ function system_set_harddisk_standby() {
 	if (isset($config['system']['harddiskstandby']) && 
 			($config['system']['harddiskstandby'] > 0)) {
 		if ($g['booting']) {
-			echo 'Setting harddisk standby time... ';
+			write_console("Setting harddisk standby time... ");
 		}
 
 		$standby = $config['system']['harddiskstandby'];
@@ -1442,7 +1442,7 @@ function system_tuning()
 	if (isset($config['system']['tune'])) 	{
 
 		if ($g['booting']) {
-			echo 'Tuning the system... ';
+			write_console("Tuning the system... ");
 		}
 
 		mwexec('/sbin/sysctl net.inet.tcp.delayed_ack=0');
