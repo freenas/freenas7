@@ -33,7 +33,9 @@ MFSROOT_SIZE="45"
 # Size in MB f the IMG file, that include zipped MFS Root filesystem image plus bootloader and kernel.
 IMG_SIZE="23"
 
-# Support boot splash
+# Support bootmenu
+OPT_BOOTMENU=1
+# Support bootsplash
 OPT_BOOTSPLASH=1
 
 # URL's:
@@ -320,6 +322,7 @@ create_image() {
 	mount /dev/md0a $FREENAS_TMPDIR
 	echo "IMG: Copying previously generated MFSROOT file on memory disk"
 	cp $FREENAS_WORKINGDIR/mfsroot.gz $FREENAS_TMPDIR
+
 	echo "Copying bootloader file on memory disk"
 	mkdir $FREENAS_TMPDIR/boot
 	mkdir $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults
@@ -334,7 +337,11 @@ create_image() {
 	cp $FREENAS_BOOTDIR/support.4th $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/defaults/loader.conf $FREENAS_TMPDIR/boot/defaults/
 	cp $FREENAS_BOOTDIR/device.hints $FREENAS_TMPDIR/boot
-
+	if [ 0 != $OPT_BOOTMENU ]; then
+		cp $FREENAS_SVNDIR/boot/beastie.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/frames.4th $FREENAS_TMPDIR/boot
+	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
@@ -396,7 +403,11 @@ create_iso () {
 	cp $FREENAS_BOOTDIR/support.4th $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/defaults/loader.conf $FREENAS_TMPDIR/boot/defaults/
 	cp $FREENAS_BOOTDIR/device.hints $FREENAS_TMPDIR/boot
-
+	if [ 0 != $OPT_BOOTMENU ]; then
+		cp $FREENAS_SVNDIR/boot/beastie.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/frames.4th $FREENAS_TMPDIR/boot
+	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
@@ -525,8 +536,11 @@ Menu:
 			3)	build_kernel;;
 			4)	build_softpkg;;
 			5)	opt="-f";
+					if [ 0 != $OPT_BOOTMENU ]; then
+						opt="$opt -m"
+					fi;
 					if [ 0 != $OPT_BOOTSPLASH ]; then
-						opt="$opt -b" 
+						opt="$opt -b"
 					fi;
 					$FREENAS_SVNDIR/build/freenas-create-bootdir.sh $opt $FREENAS_BOOTDIR;;
 			6)	add_libs;;

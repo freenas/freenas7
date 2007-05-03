@@ -14,16 +14,18 @@ ARCH=$(uname -p)
 opt_a=0
 opt_b=0
 opt_d=0
+opt_m=0
 opt_s=0
 opt_f=0
 
 # Parse the command-line options.
-while getopts 'abdfhs' option
+while getopts 'abdfhms' option
 do
 	case "$option" in
     "a")  opt_a=1;;
     "b")  opt_b=1;;
     "d")  opt_d=1;;
+    "m")  opt_m=1;;
     "f")  opt_f=1;;
     "s")  opt_s=1;;
     "h")  echo "$(basename $0): Build boot loader";
@@ -31,6 +33,7 @@ do
           echo "  -a    Disable ACPI"
           echo "  -b    Enable bootsplash";
           echo "  -d    Enable debug"
+          echo "  -m    Enable bootmenu";
           echo "  -s    Enable serial console";
           echo "  -f    Force executing this script";
           exit 1;;
@@ -63,7 +66,7 @@ mkdir $MINIBSD_DIR
 mkdir $MINIBSD_DIR/defaults
 mkdir $MINIBSD_DIR/kernel
 
-# Copy the file in this directory:
+# Copy required files
 cp -v /boot/defaults/loader.conf $MINIBSD_DIR/defaults
 cp -v /boot/loader $MINIBSD_DIR
 cp -v /boot/boot $MINIBSD_DIR
@@ -72,12 +75,22 @@ cp -v /boot/cdboot $MINIBSD_DIR
 cp -v /boot/loader.4th $MINIBSD_DIR
 cp -v /boot/support.4th $MINIBSD_DIR
 cp -v /boot/device.hints $MINIBSD_DIR
+# Copy files required by bootmenu
+if [ 0 != $opt_m ]; then
+	cp -v /boot/screen.4th $MINIBSD_DIR
+	cp -v /boot/frames.4th $MINIBSD_DIR
+fi
 
 # Generate the loader.rc file using by bootloader
 echo "Generate $MINIBSD_DIR/loader.rc"
 echo 'include /boot/loader.4th
 start
 check-password' > $MINIBSD_DIR/loader.rc
+# Enable bootmenu
+if [ 0 != $opt_m ]; then
+	echo 'include /boot/beastie.4th' >> $MINIBSD_DIR/loader.rc
+	echo 'beastie-start' >> $MINIBSD_DIR/loader.rc
+fi
 
 # Generate the loader.conf file using by bootloader
 echo "Generate $MINIBSD_DIR/loader.conf"
@@ -86,13 +99,17 @@ mfsroot_type="mfs_root"
 mfsroot_name="/mfsroot"
 #Reduce Kernel timer frequency for better performace in Virtual environement
 #explanation here: http://ivoras.sharanet.org/freebsd/vmware.html
-kern.hz="100"
-autoboot_delay="-1"' > $MINIBSD_DIR/loader.conf
-# Enable boot splash?
+kern.hz="100"' > $MINIBSD_DIR/loader.conf
+# Enable bootsplash?
 if [ 0 != $opt_b ]; then
 	echo 'splash_bmp_load="YES"' >> $MINIBSD_DIR/loader.conf
 	echo 'bitmap_load="YES"' >> $MINIBSD_DIR/loader.conf
 	echo 'bitmap_name="/boot/splash.bmp"' >> $MINIBSD_DIR/loader.conf
+fi
+# Enable bootmenu?
+if [ 0 != $opt_m ]; then
+else
+	echo 'autoboot_delay="-1"' >> $MINIBSD_DIR/loader.conf
 fi
 # Enable debug?
 if [ 0 != $opt_d ]; then
