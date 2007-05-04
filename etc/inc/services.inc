@@ -79,7 +79,7 @@ EOD;
 		} else {
 			if($g['booting'])
 				write_console("failed\n");
-			write_log("Failed to start SNMP Daemon");
+			write_log("Error: Failed to start SNMP Daemon");
 		}
 	}
 
@@ -88,14 +88,12 @@ EOD;
 
 /* Stop samba, Generate the samba configuration file and start samba
 Return 0 if OK, 1 or error code if error */
-
 function services_samba_configure() {
 	global $config, $g;
 	
 	$result = 0;
 
 	/* kill any running samba */
-	
 	killbyname("smbd");
 	killbyname("winbindd");
 	killbyname("nmbd");
@@ -329,7 +327,7 @@ EOD;
 			} else {
 				if($g['booting'])
 					write_console("failed\n");
-				write_log("Fail to start Samba");
+				write_log("Error: Failed to start Samba");
 			}
 		}
 	}
@@ -339,14 +337,12 @@ EOD;
 
 /* Stop rsync, Generate the rsync configuration file and start rsync
 Return 0 if OK, 1 or error code if error */
-
 function services_rsyncd_configure() {
 	global $config, $g;
 	
 	$result = 0;
 
 	/* kill any running rsync daemon */
-
 	sigkillbypid("{$g['varrun_path']}/rsyncd.pid", "TERM");
 
 	if (isset($config['rsyncd']['enable'])) {
@@ -451,7 +447,7 @@ EOD;
 		} else {
 			if($g['booting'])
 				write_console("failed\n");
-			write_log("Fail to start RSYNC Daemon");
+			write_log("Error: Failed to start RSYNC Daemon");
 		}
 	}
 
@@ -460,14 +456,12 @@ EOD;
 
 /* Stop nfs processes, Generate the nfs configuration file and start nfsd processes
 Return 0 if OK, 1 or error code if error */
-
 function services_nfs_configure() {
 	global $config, $g;
 	
 	$result = 0;
 
 	/* kill any running nfsd */
-	
 	killbyname("rpc.statd");
 	killbyname("rpc.lockd");
 	killbypid("{$g['varrun_path']}/mountd.pid");
@@ -546,31 +540,23 @@ EOD;
 			} else {
 				if($g['booting'])
 					write_console("failed\n");
-				write_log("Fail to start NFS Daemon");
+				write_log("Error: Failed to start NFS Daemon");
 			}
 		}
 	}
 
 	return $result;
-	
 }
 
+// Start/Stop/Restart pure-ftpd process.
+// Return 0 if OK, 1 or error code if error
 function services_ftpd_configure() {
 	global $config, $g;
-	// function services_vsftpd_configure();
-	services_pureftpd_configure();
-}
 
-/* stop and restart pure-ftpd proces
-Return 0 if OK, 1 or error code if error */
-
-function services_pureftpd_configure() {
-	global $config, $g;
-	
-	$result = 0 ;
+	$result = 0;
 
 	/* kill any Pure-FTPD */
-	killbyname("pure-ftpd");
+	killbypid("{$g['varrun_path']}/pure-ftpd.pid");
 
 	if (isset($config['ftp']['enable'])) {
 		if ($g['booting'])
@@ -579,10 +565,10 @@ function services_pureftpd_configure() {
 		/* Generate the banner file */
 		$fd = fopen("/mnt/.banner", "w");
 		if (!$fd) {
-			$message = "Error: Can't open .banner in services_pureftpd_configure()";
+			$message = "Error: Can't open /mnt/.banner in services_pureftpd_configure()";
 			write_console($message . ".\n");
 			write_log($message);
-			$result = 1 ;
+			$result = 1;
 		}
 
 		if (empty($config['ftp']['banner'])) {
@@ -600,9 +586,8 @@ EOD;
 
 		fwrite($fd, $banner);
 		fclose($fd);
-			
+
 		/* run pure-ftpd if no previous error */
-		
 		if (!$result) {
 			$cmd = "/usr/local/sbin/pure-ftpd -S {$config['ftp']['port']} -c {$config['ftp']['numberclients']} -I {$config['ftp']['timeout']} -M -U 077:077 -B -b ";
 	
@@ -646,14 +631,14 @@ EOD;
 
 			$result = mwexec($cmd);
 
-			if(!$result) {
+			if (0 == $result) {
 				if($g['booting'])
 					write_console("done\n");
 				write_log("FTP Daemon started");
 			} else {
 				if($g['booting'])
 					write_console("failed\n");
-				write_log("Fail to start FTP Daemon");
+				write_log("Error: Failed to start FTP Daemon");
 			}
 		}
   }
@@ -663,7 +648,6 @@ EOD;
 
 /* Stop smartd, Generate the configuration file and start smartd
 Return 0 if OK, 1 or error code if error */
-
 function services_smart_configure() {
 	global $config, $g;
 
@@ -686,7 +670,7 @@ function services_smart_configure() {
 		} else {
 			if($g['booting'])
 				write_console("failed\n");
-			write_log("Fail to start S.M.A.R.T Daemon");
+			write_log("Error: Failed to start S.M.A.R.T Daemon");
 		}
 	}
 
@@ -717,7 +701,7 @@ function services_powerd_configure() {
 		} else {
 			if ($g['booting'])
 				write_console("failed\n");
-			write_log("Fail to start Power Daemon");
+			write_log("Error: Failed to start Power Daemon");
 		}
 	}
 
@@ -726,7 +710,6 @@ function services_powerd_configure() {
 
 /* Stop sshd, Generate the configuration file and start it
 Return 0 if OK, 1 or error code if error */
-
 function services_sshd_configure() {
 	global $config, $g;
 	
@@ -839,7 +822,7 @@ EOD;
 		} else {
 			if($g['booting'])
 				write_console("failed\n");
-			write_log("Fail to start SSH Daemon");
+			write_log("Error: Failed to start SSH Daemon");
 		}
 	}
 
@@ -907,7 +890,7 @@ function services_unison_configure() {
 		} else {
 			if($g['booting'])
 				write_console("failed\n");
-			write_log("Fail to start Unison");
+			write_log("Error: Failed to start Unison");
 		}
 	}
 
@@ -949,7 +932,7 @@ function services_upnp_configure() {
 		} else {
 			if($g['booting'])
 				write_console("failed\n");
-			write_log("Failed to start UPnP Server");
+			write_log("Error: Failed to start UPnP Server");
 		}
 	}
 
@@ -1005,7 +988,7 @@ function services_dynamicdns_configure() {
 		} else {
 			if($g['booting'])
 				write_console("failed\n");
-			write_log("Failed to start Dynamic DNS service");
+			write_log("Error: Failed to start Dynamic DNS service");
 		}
 	}
 
@@ -1202,10 +1185,8 @@ EOD;
 
 		if ($g['booting'])
 			write_console("done\n");
-		
-		
 	}
-	
+
 	// SHUTDOWN PART
 	if (isset($config['shutdown']['enable'])) {
 		if ($g['booting'])
@@ -1281,17 +1262,15 @@ EOD;
 	fclose($fd);
 
 	/* run cron */
-	
 	$result = mwexec("/usr/sbin/cron -s");
 	
 	if (!$result) {
 		write_log("Cron started");
 	} else {
-		write_log("Fail to start Cron");
+		write_log("Error: Failed to start Cron");
 	}
 
 	return $result;
-	
 }
 
 function services_rsyncclient_configure()
@@ -1300,7 +1279,6 @@ function services_rsyncclient_configure()
 
 	// Generate a shell script that is used by cron
 	// Generate crontab works
-	
 	if (is_array($config['rsync']['rsyncclient'])) {
 		$a_rsyncclient = &$config['rsync']['rsyncclient'];
 	
@@ -1353,7 +1331,6 @@ EOD;
 			mwexec("/bin/chmod 770 {$g['varrun_path']}/rsync_client{$i}.sh");
 			
 			$i++;
-		
 		}
 
 		if ($g['booting'])
@@ -1371,7 +1348,6 @@ function services_rsync_local_configure()
 
 	// Generate a shell script that is used by cron
 	// Generate crontab works
-	
 	if (is_array($config['rsync']['rsynclocal'])) {
 		$a_rsynclocal = &$config['rsync']['rsynclocal'];	
 	
@@ -1380,7 +1356,6 @@ function services_rsync_local_configure()
 		
 		$i=0;
 		foreach($a_rsynclocal as $rsynclocal) {
-		
 			/* generate /var/run/sync_local.sh script */
 			$fd = fopen("{$g['varrun_path']}/rsync_local{$i}.sh", "w");
 			if (!$fd) {
@@ -1404,8 +1379,7 @@ EOD;
 			$opt_delete="";
 			if (isset($rsynclocal['opt_delete']))
 				$opt_delete = "--delete --delete-after ";
-	
-		
+
 			$syncscript .= <<<EOD
 /usr/local/bin/rsync -a {$opt_delete} /mnt/{$rsynclocal['source']} /mnt/{$rsynclocal['destination']}
 
@@ -1553,7 +1527,7 @@ EOD;
 		} else {
 			if($g['booting'])
 				write_console("failed\n");
-			write_log("Fail to start AFP Daemon");
+			write_log("Error: Failed to start AFP Daemon");
 		}
 	}
 
@@ -1575,7 +1549,6 @@ function services_iscsiinit_configure()
 	global $config, $g;
 	
 	/* kill any running iscontrol */
-	
 	killbyname("iscontrol");
 	
 	if (is_array($config['iscsiinit']['vdisk'])) {
@@ -1590,7 +1563,7 @@ function services_iscsiinit_configure()
 			write_log("iSCSI kernel module loaded");
 			write_console("done\n");
 		} else if ($g['booting']) {
-			write_log("Fail to load iSCSI kernel module");
+			write_log("Error: Failed to load iSCSI kernel module");
 			write_console("failed\n");
 		}
 		if ($g['booting']) {
@@ -1603,7 +1576,6 @@ function services_iscsiinit_configure()
 			foreach ($a_iscsiinit as $iscsiinit) {
 				/* run iscontrol if no previous error*/
 				$result |= mwexec("/usr/local/sbin/iscontrol targetaddress={$iscsiinit['targetaddress']}  targetname={$iscsiinit['targetname']} initiatorname={$iscsiinit['initiatorname']}");
-					
 			}
 		}
 
@@ -1614,7 +1586,7 @@ function services_iscsiinit_configure()
 		} else {
 			if($g['booting'])
 				write_console("failed\n");
-			write_log("Fail to start iSCSI initiator(s)");
+			write_log("Error: Failed to start iSCSI initiator(s)");
 		}
 	}
 	
@@ -1673,7 +1645,7 @@ EOD;
 		} else {
 			if($g['booting'])
 				write_console("failed\n");
-			write_log("Fail to start iSCSI-target Daemon");
+			write_log("Error: Failed to start iSCSI-target Daemon");
 		}
 	}
 }
@@ -1865,7 +1837,7 @@ EOD;
 		} else {
 			if($g['booting'])
 				write_console("failed\n");
-			write_log("Fail to start ZeronConf service");
+			write_log("Error: Failed to start ZeronConf service");
 		}
 	}
 
