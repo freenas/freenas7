@@ -14,7 +14,7 @@ diff -ruN ata.orig/ata-all.c ata/ata-all.c
  SYSCTL_INT(_hw_ata, OID_AUTO, wc, CTLFLAG_RDTUN, &ata_wc, 0,
  	   "ATA disk write caching");
 -
-+TUNABLE_INT(" hw.ata.to", &ata_to);
++TUNABLE_INT("hw.ata.to", &ata_to);
 +SYSCTL_INT(_hw_ata, OID_AUTO, to, CTLFLAG_RW, &ata_to, 0,
 +     "ATA disk timeout vis-a-vis power-saving");
  /*
