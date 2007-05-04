@@ -88,8 +88,8 @@ start
 check-password' > $MINIBSD_DIR/loader.rc
 # Enable bootmenu
 if [ 0 != $opt_m ]; then
-	echo 'include /boot/beastie.4th' >> $MINIBSD_DIR/loader.rc
-	echo 'beastie-start' >> $MINIBSD_DIR/loader.rc
+	echo 'include /boot/menu.4th' >> $MINIBSD_DIR/loader.rc
+	echo 'menu-start' >> $MINIBSD_DIR/loader.rc
 fi
 
 # Generate the loader.conf file using by bootloader

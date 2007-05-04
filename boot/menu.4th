@@ -1,4 +1,4 @@
-marker task-beastie.4th
+marker task-menu.4th
 
 include /boot/screen.4th
 include /boot/frames.4th
@@ -19,6 +19,29 @@ variable escapekey
 variable rebootkey
 
 46 constant dot
+
+\ The logo. It can be 19 rows high and 34 columns wide.
+: display-logo ( x y -- )
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+2dup at-xy ."" 1+
+at-xy .""
+;
 
 : acpienabled? ( -- flag )
 	s" acpi_load" getenv
@@ -50,14 +73,15 @@ variable rebootkey
 	menuidx @ 48 +
 ;
 
-: beastie-menu ( -- )
+: display-menu ( -- )
 	0 menuidx !
 	dot menubllt !
 	8 menuY !
 	5 menuX !
 	clear
 	77 20 2 2 box
-	5 6 at-xy ." Welcome!"
+	45 3 display-logo
+	5 7 at-xy ." Welcome!"
 	printmenuitem ."  Boot [default]" bootkey !
 	s" arch-i386" environment? if
 		drop
@@ -103,8 +127,8 @@ variable rebootkey
 
 set-current
 
-: beastie-start
-	s" beastie_disable" getenv
+: menu-start
+	s" menu_disable" getenv
 	dup -1 <> if
 		s" YES" compare-insensitive 0= if
 			exit
@@ -112,7 +136,7 @@ set-current
 	else
 		drop
 	then
-	beastie-menu
+	display-menu
 	s" autoboot_delay" getenv
 	dup -1 = if
 		drop
