@@ -1,6 +1,10 @@
-ARCHIVE=	ata-all.c.diff
+ARCHIVE= ata-all.c.diff
 SRCDIR=	${FREENAS_WORKINGDIR}/ata-timeout-patch
 
 install:	clean
-	patch /usr/src/sys/dev/ata/ata-all.c ${FREENAS_WORKINGDIR}/ata-timeout-patch/ata-all.c.diff
+	@mkdir -pv $(SRCDIR)
+	@cp -pv ${.CURDIR}/files/$(ARCHIVE) -C $(SRCDIR)
+	@patch /usr/src/sys/dev/ata/ata-all.c $(SRCDIR)/$(ARCHIVE)
 
+clean:
+    @rm -f -r $(SRCDIR)

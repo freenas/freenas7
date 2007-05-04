@@ -123,7 +123,7 @@ defCmdT("Free Disk Space","/bin/df -h");
 defCmdT("Encrypted disks","/sbin/geli list");
 
 defCmdT("smb.conf","cat /var/etc/smb.conf");
-defCmdT("sshd.conf","cat /var/etc/ssh/sshd.conf");
+defCmdT("sshd.conf","cat /var/etc/ssh/sshd_config");
 defCmdT("mDNSResponder.conf","cat /var/etc/mDNSResponder.conf");
 defCmdT("crontab","cat /var/etc/crontab");
 
