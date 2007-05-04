@@ -22,25 +22,25 @@ variable rebootkey
 
 \ The logo. It can be 19 rows high and 34 columns wide.
 : display-logo ( x y -- )
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-2dup at-xy ."" 1+
-at-xy .""
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+2dup at-xy ." " 1+
+at-xy ." "
 ;
 
 : acpienabled? ( -- flag )

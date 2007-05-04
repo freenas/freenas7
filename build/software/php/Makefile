@@ -2,7 +2,7 @@ PKGNAME=	php
 COMMENT=	PHP5 scripting language
 MAINTAINER=	votdev@gmx.de
 
-ARCHIVE=	php-5.2.1.tar.gz
+ARCHIVE=	php-5.2.2.tar.gz
 URL=	http://de2.php.net/distributions/$(ARCHIVE)
 SRCDIR=	${FREENAS_WORKINGDIR}/$$(basename $(ARCHIVE) .tar.gz)
 

@@ -79,6 +79,7 @@ Majors changes:
 - Add packages build infrastructure and WebGUI
 - Upgrade fusefs-libs to 2.6.4 and fusefs-ntfs to 1.417
 - Code review from the FreeNAS core engine.
+- Upgrade PHP to 5.2.2
 
 Minors changes:
 - Add checkbox to enable/disable 'large readwrite' support on CIFS page
