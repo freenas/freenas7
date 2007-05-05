@@ -807,7 +807,7 @@ function disks_raid_graid5_tune()
 	/* Get RAM informations. */
 	$raminfo = get_ram_info();
 	/* Calculate real RAM in MB. */
-	$realram = $raminfo['real'] / 1024 / 1024;
+	$realram = round($raminfo['real'] / 1024 / 1024);
 
 	if ($realram <= 128) {
 		write_log("Optimizing graid5 for system with less or 128MB of RAM");

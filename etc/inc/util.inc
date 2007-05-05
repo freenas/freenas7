@@ -1534,7 +1534,7 @@ function get_ram_info() {
 	exec("/sbin/sysctl -n hw.realmem", $hwmemory);
 
 	$raminfo = array();
-	$raminfo['real'] = $hwmemory;
+	$raminfo['real'] = $hwmemory[0];
 	$raminfo['physical'] = $memory[5];
 	$raminfo['total'] = $memory[0] + $memory[1] + $memory[2] + $memory[3] + $memory[4];
 	$raminfo['free'] = $memory[4] + $memory[1];
