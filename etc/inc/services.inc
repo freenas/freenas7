@@ -808,7 +808,7 @@ EOD;
 		fclose($fd);
 		
 		/* Restrict right on the SSH key */
-		exec("/bin/chmod 600 {$g['varetc_path']}/ssh/ssh_host_dsa_key");
+		mwexec("/bin/chmod 600 {$g['varetc_path']}/ssh/ssh_host_dsa_key");
 
 		/* run sshd if no previous error*/
 		if (!$result) {
@@ -837,22 +837,21 @@ function services_unison_configure() {
 	$result = 0 ;
 
 	if (isset($config['unison']['enable'])) {
-	
-	if ($g['booting'])
-		write_console("Configuring unison... ");
+		if ($g['booting'])
+			write_console("Configuring unison... ");
 
 		/* ensure unison workdir exists */
 		$workdir = "/mnt/{$config['unison']['share']}/{$config['unison']['workdir']}";
 		if (isset($config['unison']['makedir']) && !file_exists($workdir)) {
 			if (!mkdir($workdir)) {
-				$message = "Error: Can't mkdir $workdir in services_unison_configure()";
+				$message = "Error: Can't mkdir '{$workdir}' in services_unison_configure()";
 				write_console($message . ".\n");
 				write_log($message);
 			}
-			exec("/bin/chmod 775 $workdir");
+			mwexec("/bin/chmod 775 '{$workdir}'");
 		}
 		if (!file_exists($workdir)) {
-			$message = "Error: Can't open $workdir in services_unison_configure()";
+			$message = "Error: Can't open '{$workdir}' in services_unison_configure()";
 			write_console($message . ".\n");
 			write_log($message);
 			$result = 1 ;
@@ -860,23 +859,23 @@ function services_unison_configure() {
 		
 		/* add workdir to login.conf UNISON environment variable */
 		$logfile = "{$g['etc_path']}/login.conf";
-		if (!file_exists("$logfile")) {
-			$message = "Error: $logfile does not exist, in services_unison_configure()";
+		if (!file_exists($logfile)) {
+			$message = "Error: '{$logfile}' does not exist, in services_unison_configure()";
 			write_console($message . ".\n");
 			write_log($message);
 			$result = 1 ;
 		}
-		$tmp = file_get_contents("$logfile");
+		$tmp = file_get_contents($logfile);
 		$search = "/UNISON=.*?(?=[,:])/";
 		if (!preg_match($search, $tmp)) {
-			$message = "Error: Can't find UNISON in $logfile, in services_unison_configure()";
+			$message = "Error: Can't find UNISON in '{$logfile}', in services_unison_configure()";
 			write_console($message . ".\n");
 			write_log($message);
 			$result = 1 ;
 		}
-		$tmp = preg_replace($search, "UNISON=$workdir", $tmp);
+		$tmp = preg_replace($search, "UNISON={$workdir}", $tmp);
 		if (!file_put_contents($logfile, $tmp)) {
-			$message = "Error: Couldn't write $logfile, in services_unison_configure()";
+			$message = "Error: Couldn't write '{$logfile}', in services_unison_configure()";
 			write_console($message . ".\n");
 			write_log($message);
 			$result = 1 ;
@@ -1509,7 +1508,6 @@ EOD;
 /mnt/{$mount['sharename']} "{$mount['sharename']}" 
 
 EOD;
-		
 		}
 		
 		fwrite($fd, $AppleVolumes);
