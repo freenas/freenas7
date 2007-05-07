@@ -46,6 +46,11 @@ if (!is_array($config['rsync'])) {
 	$config['rsync'] = array();
 }
 
+if (!is_array($config['mounts']['mount']))
+	$config['mounts']['mount'] = array();
+
+mount_sort();
+
 $pconfig['readonly'] = $config['rsyncd']['readonly'];
 $pconfig['port'] = $config['rsyncd']['port'];
 $pconfig['motd'] = $config['rsyncd']['motd'];

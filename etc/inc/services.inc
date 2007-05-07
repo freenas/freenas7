@@ -112,8 +112,11 @@ function services_samba_configure() {
 		}
 		
 		/* If no share configured, exit */
-		if (!is_array($config['mounts']['mount']))
+		if (!is_array($config['mounts']['mount'])) {
+			$message = "Error: No mount point configured, Can't start CIFS (samba)";
+			write_log($message);
 			return 0;
+		}
 
 			
 		$sambaconf = <<<EOD
@@ -350,9 +353,12 @@ function services_rsyncd_configure() {
 		if ($g['booting'])
 			write_console("Starting RSYNC daemon... ");
 		
-		/* If no share configured, can't start rsync */
+		
+		/* If no share configured, exit */
 		if (!is_array($config['mounts']['mount'])) {
-			$result = 1;
+			$message = "Error: No mount point configured, Can't start rsyncd";
+			write_log($message);
+			return 0;
 		}
 
 		/* generate rsyncd.conf */
