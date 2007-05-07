@@ -443,7 +443,7 @@ EOD;
 
 		/* Run rsync daemon if no previous error. Preserve times when synchronizing. */
 		if (!$result) {
-			$result = mwexec("/usr/local/bin/rsync --daemon --times --config={$g['varetc_path']}/rsyncd.conf");
+			$result = mwexec("/usr/local/bin/rsync --daemon --config={$g['varetc_path']}/rsyncd.conf");
 		}
 
 		if(!$result) {
