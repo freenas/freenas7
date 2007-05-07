@@ -219,6 +219,8 @@
     <name/>
     <if/>
     <content/>
+    <port/>
+    <web/>
     -->
 	</upnp>
   <sshd>

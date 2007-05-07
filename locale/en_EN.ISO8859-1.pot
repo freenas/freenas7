@@ -2390,3 +2390,15 @@ msgstr ""
 
 msgid "The max. connection per IP must be either 0 (unlimited) or greater."
 msgstr ""
+
+msgid "Control web page"
+msgstr ""
+
+msgid "Enable control web page."
+msgstr ""
+
+msgid "Enter a custom port number for the HTTP server if you want to override the default (49152). Only dynamic or private ports can be used (from 49152 through 65535)."
+msgstr ""
+
+msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
+msgstr ""

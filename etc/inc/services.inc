@@ -921,8 +921,18 @@ function services_upnp_configure() {
 			$content .= " --content=" . escapeshellarg($contentv);
 		}
 
+		$cmd = "/usr/local/bin/ushare --daemon --xbox --name={$config['upnp']['name']} --interface={$config['upnp']['if']} {$content} ";
+
+		if ($config['upnp']['port']) {
+			$cmd .= "--port={$config['upnp']['port']} ";
+		}
+
+		if (!isset($config['upnp']['web'])) {
+			$cmd .= "--no-web ";
+		}
+
 		/* Run uShare as daemon. */
-		$result |= mwexec("/usr/local/bin/ushare --daemon --no-web --xbox --name={$config['upnp']['name']} --interface={$config['upnp']['if']} {$content}");
+		$result |= mwexec($cmd);
 
 		if(!$result) {
 			if($g['booting'])

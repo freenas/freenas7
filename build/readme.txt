@@ -81,6 +81,7 @@ Majors changes:
 - Code review from the FreeNAS core engine.
 - Upgrade PHP to 5.2.2
 - Upgrade lighttpd to 1.4.15
+- Improve UPnP WebGUI/Service.
 
 Minors changes:
 - Add checkbox to enable/disable 'large readwrite' support on CIFS page

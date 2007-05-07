@@ -50,6 +50,8 @@ $pconfig['enable'] = isset($config['upnp']['enable']);
 $pconfig['name'] = $config['upnp']['name'];
 $pconfig['if'] = $config['upnp']['if'];
 $pconfig['content'] = $config['upnp']['content'];
+$pconfig['port'] = $config['upnp']['port'];
+$pconfig['web'] = isset($config['upnp']['web']);
 
 /* Set name to configured hostname if it is not set */
 if(!$pconfig['name'])
@@ -76,6 +78,8 @@ if($_POST) {
     $config['upnp']['enable'] = $_POST['enable'] ? true : false;
 		$config['upnp']['name'] = $_POST['name'];
 		$config['upnp']['if'] = $_POST['interface'];
+		$config['upnp']['port'] = $_POST['port'];
+		$config['upnp']['web'] = $_POST['web'] ? true : false;
 
 		write_config();
 
@@ -114,7 +118,8 @@ function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.name.disabled = endis;
 	document.iform.interface.disabled = endis;
-	document.iform.content.disabled = endis;
+	document.iform.port.disabled = endis;
+	document.iform.web.disabled = endis;
 }
 //-->
 </script>
@@ -177,17 +182,32 @@ function enable_change(enable_change) {
 							<?php endif; ?>
 						</td>
 					</tr>
-          <?php $i++; endforeach; ?>
+					<?php $i++; endforeach; ?>
 					<tr>
 						<td class="list" colspan="1"></td>
 						<td class="list">
 							<a href="services_upnp_edit.php"><img src="plus.gif" title="<?=gettext("Add directory");?>" width="17" height="17" border="0"></a>
 						</td>
 					</tr>
-        </table>
-        <?=gettext("Directories to be shared.");?>
-      </td>
-    </tr>
+				</table>
+				<?=gettext("Directories to be shared.");?>
+			</td>
+		</tr>
+		<tr>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Port");?></td>
+			<td width="78%" class="vtable">
+				<input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
+				<br><?=gettext("Enter a custom port number for the HTTP server if you want to override the default (49152). Only dynamic or private ports can be used (from 49152 through 65535).");?>
+			</td>
+		</tr>
+		<tr>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Control web page");?></td>
+			<td width="78%" class="vtable">
+				<input name="web" type="checkbox" id="web" value="yes" <?php if ($pconfig['web']) echo "checked"; ?>>
+				<?=gettext("Enable control web page.");?>
+				<br><?=gettext("Accessible through 'http://ip_address:port/web/ushare.html'.");?>
+			</td>
+		</tr>
     <tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
