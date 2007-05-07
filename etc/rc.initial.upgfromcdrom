@@ -103,7 +103,7 @@
 		}
 	} while (!is_validaliasname($cdrom));
 
-	echo "\nHere is the name of disk where detected FreeNAS Installation:\n";
+	echo "\n{$productname} has been detected on disk:\n";
 	echo "$cfgdevice\n";
 
 	do 	{
