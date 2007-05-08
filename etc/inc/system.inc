@@ -1539,6 +1539,7 @@ function system_swap_configure()
 		// Create the block device
 		$result |= mwexec("/sbin/mdconfig -a -t vnode -f /mnt/{$config['system']['swap_mountname']}/swap_file -u 2");
 		// Enable Swap
+		write_log("Enabling swap");
 		$result |= mwexec("/sbin/swapon /dev/md2");
 	}
 
@@ -1554,6 +1555,7 @@ function system_swap_disable()
 
 	if (isset($config['system']['swap'])) {
 		// Stop swap
+		write_log("Stopping swap");
 		$result = mwexec("/sbin/swapoff /dev/md2}");
 		
 		//Destroy block device
@@ -1561,6 +1563,7 @@ function system_swap_disable()
 		
 		//Delete the swap file (I hope that no user have important file called swap_file!)
 		if (file_exists("/mnt/{$config['system']['swap_mountname']}/swap_file")){
+			write_log("Deleting swap file");
 			$result = mwexec("rm -f /mnt/{$config['system']['swap_mountname']}/swap_file");
 		}
 		
