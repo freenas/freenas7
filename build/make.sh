@@ -17,26 +17,30 @@ export FREENAS_PRODUCTNAME=`cat $FREENAS_SVNDIR/etc/prd.name`
 export FREENAS_VERSION=`cat $FREENAS_SVNDIR/etc/prd.version`
 
 # Local variables
+FREENAS_URL=`cat $FREENAS_SVNDIR/etc/prd.url`
 FREENAS_BOOTDIR="$FREENAS_ROOTDIR/bootloader"
 FREENAS_TMPDIR="/tmp/freenastmp"
-ARCH=$(uname -p)
+FREENAS_ARCH=$(uname -p)
 
 # Path where to find Makefile includes
-MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
-
-# Dialog command
-DIALOG="dialog"
+FREENAS_MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
 
 # Size in MB of the MFS Root filesystem that will include all FreeBSD binary and FreeNAS WEbGUI/Scripts
 # Keep this file very small! This file is unzipped to a RAM disk at FreeNAS startup
-MFSROOT_SIZE="45"
+FREENAS_MFSROOT_SIZE="45"
 # Size in MB f the IMG file, that include zipped MFS Root filesystem image plus bootloader and kernel.
-IMG_SIZE="23"
+FREENAS_IMG_SIZE="23"
+# 'newfs' parameters.
+FREENAS_NEWFS="-b 4096 -f 512 -i 8192 -U -o space -m 0"
 
+# Options:
 # Support bootmenu
 OPT_BOOTMENU=1
 # Support bootsplash
 OPT_BOOTSPLASH=1
+
+# Dialog command
+DIALOG="dialog"
 
 # URL's:
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
@@ -136,7 +140,7 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Drivers\" \\
 	for driver in $(cat $drivers | tr -d '"'); do
 		echo "======================================================================"
 		cd $FREENAS_SVNDIR/build/drivers/$driver
-		make -I $MKINCLUDESDIR install
+		make -I ${FREENAS_MKINCLUDESDIR} install
 		[ 0 != $? ] && return 1 # successful?
 	done
 	rm $drivers
@@ -167,18 +171,18 @@ build_kernel() {
 				[ 0 != $? ] && return 1;; # successful?
   		build)
 				# Copy kernel configuration.
-				cd /sys/$ARCH/conf;
-				if [ -f FREENAS-$ARCH ]; then
-					rm -f FREENAS-$ARCH;
+				cd /sys/${FREENAS_ARCH}/conf;
+				if [ -f FREENAS-${FREENAS_ARCH} ]; then
+					rm -f FREENAS-${FREENAS_ARCH};
 				fi;
-				cp $FREENAS_SVNDIR/build/kernel-config/FREENAS-$ARCH .;
+				cp $FREENAS_SVNDIR/build/kernel-config/FREENAS-${FREENAS_ARCH} .;
 				# Compiling and compressing the kernel.
 				cd /usr/src;
-				make buildkernel KERNCONF=FREENAS-$ARCH;
-				gzip -v -f -9 /usr/obj/usr/src/sys/FREENAS-$ARCH/kernel;;
+				make buildkernel KERNCONF=FREENAS-${FREENAS_ARCH};
+				gzip -v -f -9 /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/kernel;;
   		install)
 				# Installing the modules.
-				cd /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules;
+				cd /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules;
 				cp -v -p ./geom/geom_vinum/geom_vinum.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_stripe/geom_stripe.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_concat/geom_concat.ko $FREENAS_ROOTFS/boot/kernel;
@@ -249,7 +253,7 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Software packages/plugins\" \\
 	for package in $(cat $packages | tr -d '"'); do
 		echo "======================================================================"
 		cd $FREENAS_SVNDIR/build/packages/$package
-		make -I $MKINCLUDESDIR clean package
+		make -I ${FREENAS_MKINCLUDESDIR} clean package
 		[ 0 != $? ] && return 1 # successful?
 	done
 	rm $packages
@@ -268,14 +272,14 @@ create_mfsroot() {
 	# Setting Version type and date
 	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
 	
-	# Make mfsroot to have the size of the MFSROOT_SIZE variable
-	dd if=/dev/zero of=$FREENAS_WORKINGDIR/mfsroot bs=1M count=$MFSROOT_SIZE
+	# Make mfsroot to have the size of the FREENAS_MFSROOT_SIZE variable
+	dd if=/dev/zero of=$FREENAS_WORKINGDIR/mfsroot bs=1M count=${FREENAS_MFSROOT_SIZE}
 	# Configure this file as a memory disk
 	mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/mfsroot -u 0
 	# Create Label on this disk
 	bsdlabel -w md0 auto
 	# format it as UFS
-	newfs -b 8192 -f 1024 -o space -m 0 /dev/md0c
+	newfs ${FREENAS_NEWFS} /dev/md0c
 	# umount the /mnt directory if already used
 	umount $FREENAS_TMPDIR
 	mount /dev/md0c $FREENAS_TMPDIR
@@ -300,7 +304,7 @@ create_image() {
 	create_mfsroot;
 	
 	echo "IMG: Creating an empty destination IMG file"
-	dd if=/dev/zero of=$FREENAS_WORKINGDIR/image.bin bs=1M count=$IMG_SIZE
+	dd if=/dev/zero of=$FREENAS_WORKINGDIR/image.bin bs=1M count=${FREENAS_IMG_SIZE}
 	echo "IMG: using this file as a memory disk"
 	mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/image.bin -u 0
 	echo "IMG: Creating partition on this memory disk"
@@ -317,7 +321,7 @@ create_image() {
 	bsdlabel -R -B md0 /tmp/label.$$
 	rm -f /tmp/label.$$
 	echo "IMG: Formatting this memory disk on UFS"
-	newfs -b 8192 -f 1024 -o space -m 0 /dev/md0a
+	newfs ${FREENAS_NEWFS} /dev/md0a
 	echo "IMG: Mount this virtual disk on $FREENAS_TMPDIR"
 	mount /dev/md0a $FREENAS_TMPDIR
 	echo "IMG: Copying previously generated MFSROOT file on memory disk"
@@ -344,7 +348,7 @@ create_image() {
 	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
-		cp /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
+		cp /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 
 	#Special for enabling serial port if no keyboard
@@ -410,7 +414,7 @@ create_iso () {
 	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
-		cp /usr/obj/usr/src/sys/FREENAS-$ARCH/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
+		cp /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 
 	#Special test for enabling serial port if no keyboard
@@ -423,14 +427,13 @@ create_iso () {
 	fi
 
 	echo "ISO: Generating the ISO file"
-	cp -p $FREENAS_SVNDIR/build/.mkisofsrc $HOME
-	mkisofs -b "boot/cdboot" -no-emul-boot -c "boot/boot.catalog" -d -r -o "$FREENAS_ROOTDIR/$ISOFILENAME" $FREENAS_TMPDIR
+	mkisofs -b "boot/cdboot" -no-emul-boot -c "boot/boot.catalog" -d -r -A "${FREENAS_PRODUCTNAME} CD-ROM image" -P "${FREENAS_URL}" -p "Olivier Cochard-Labbe" -V "${FREENAS_PRODUCTNAME}_cd" -o "${FREENAS_ROOTDIR}/${ISOFILENAME}" ${FREENAS_TMPDIR}
 	[ 0 != $? ] && return 1 # successful?
-	
+
 	echo "ISO: Cleaning tempo file"
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
-	
+
 	return 0
 }
 
@@ -595,9 +598,9 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Software packages\" \\
 		echo "======================================================================"
 		cd $FREENAS_SVNDIR/build/software/$package
 		if [ "$choice" == "build" ]; then
-			make -I $MKINCLUDESDIR
+			make -I ${FREENAS_MKINCLUDESDIR}
 		elif [ "$choice" == "install" ]; then
-			make -I $MKINCLUDESDIR install
+			make -I ${FREENAS_MKINCLUDESDIR} install
 		fi
 		[ 0 != $? ] && return 1 # successful?
 	done
