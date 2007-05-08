@@ -109,6 +109,7 @@ Bug fixs:
 - Disk encrypted WebGUI - Disk wasn't correct named when using gvinum RAID disk.
 - Disk size was calculated incorrect for 2 partition installation.
 - Fix local RSYNC bug logs each minute and crontab bug.
+- Fix SWAP file size change bug
 
 Known bugs:
 - NTFS mount points are not mounted after creation, a reboot is necessary.

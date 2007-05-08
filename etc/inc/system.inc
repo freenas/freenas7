@@ -1519,10 +1519,15 @@ function system_swap_configure()
 	// Stop swap if not in booting mode
 	if (!$g['booting']) {
 		// MUST add a check if the system can stop swap without problem
+		write_log("Stopping swap");
 		$result = mwexec("/sbin/swapoff /dev/md2");
 
 		// Destroy block device
 		$result |= mwexec("/sbin/mdconfig -d -u 2");
+		
+		// Delete swap file
+		write_log("Deleting swap file");
+		$result = mwexec("rm -f /mnt/{$config['system']['swap_mountname']}/swap_file");
 	}
 
 	if (isset($config['system']['swap_enable'])) {
