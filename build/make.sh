@@ -320,14 +320,14 @@ create_image() {
 		 sed "s/unused/4.2BSD/" >>/tmp/label.$$
 	bsdlabel -R -B md0 /tmp/label.$$
 	rm -f /tmp/label.$$
-	echo "IMG: Formatting this memory disk on UFS"
+	echo "IMG: Formatting this memory disk using UFS"
 	newfs ${FREENAS_NEWFS} /dev/md0a
 	echo "IMG: Mount this virtual disk on $FREENAS_TMPDIR"
 	mount /dev/md0a $FREENAS_TMPDIR
-	echo "IMG: Copying previously generated MFSROOT file on memory disk"
+	echo "IMG: Copying previously generated MFSROOT file to memory disk"
 	cp $FREENAS_WORKINGDIR/mfsroot.gz $FREENAS_TMPDIR
 
-	echo "Copying bootloader file on memory disk"
+	echo "Copying bootloader file(s) to memory disk"
 	mkdir $FREENAS_TMPDIR/boot
 	mkdir $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults
 	mkdir $FREENAS_TMPDIR/conf
@@ -392,10 +392,10 @@ create_iso () {
 	mkdir $FREENAS_TMPDIR
 	create_mfsroot;
 	
-	echo "ISO: Copying previously generated MFSROOT file on $FREENAS_TMPDIR folder"
+	echo "ISO: Copying previously generated MFSROOT file to $FREENAS_TMPDIR"
 	cp $FREENAS_WORKINGDIR/mfsroot.gz $FREENAS_TMPDIR
 	
-	echo "ISO: Copying bootloader file on $FREENAS_TMPDIR folder"
+	echo "ISO: Copying bootloader file(s) to $FREENAS_TMPDIR"
 	mkdir $FREENAS_TMPDIR/boot
 	mkdir $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
@@ -422,12 +422,12 @@ create_iso () {
 	#cp $FREENAS_BOOTDIR/boot.config $FREENAS_TMPDIR/
 	
 	if [ ! $LIGHT_ISO ]; then
-		echo "ISO: Copying IMG file on $FREENAS_TMPDIR folder"
+		echo "ISO: Copying IMG file to $FREENAS_TMPDIR"
 		cp $FREENAS_ROOTDIR/$FREENAS_PRODUCTNAME-generic-pc-$FREENAS_VERSION.img $FREENAS_TMPDIR/$FREENAS_PRODUCTNAME-generic-pc.gz
 	fi
 
 	echo "ISO: Generating the ISO file"
-	mkisofs -b "boot/cdboot" -no-emul-boot -c "boot/boot.catalog" -d -r -A "${FREENAS_PRODUCTNAME} CD-ROM image" -P "${FREENAS_URL}" -p "Olivier Cochard-Labbe" -V "${FREENAS_PRODUCTNAME}_cd" -o "${FREENAS_ROOTDIR}/${ISOFILENAME}" ${FREENAS_TMPDIR}
+	mkisofs -b "boot/cdboot" -no-emul-boot -c "boot/boot.catalog" -d -r -A "${FREENAS_PRODUCTNAME} CD-ROM image" -publisher "${FREENAS_URL}" -p "Olivier Cochard-Labbe" -V "${FREENAS_PRODUCTNAME}_cd" -o "${FREENAS_ROOTDIR}/${ISOFILENAME}" ${FREENAS_TMPDIR}
 	[ 0 != $? ] && return 1 # successful?
 
 	echo "ISO: Cleaning tempo file"
