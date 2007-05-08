@@ -128,7 +128,7 @@ if ($_POST) {
 
 		unset($config['system']['dnsserver']);
 		// Only store DNS servers when using static IP.
-		if ("dhcp" == $config['interfaces']['lan']['ipaddr']) {
+		if ("dhcp" !== $config['interfaces']['lan']['ipaddr']) {
 			if ($_POST['dns1'])
 				$config['system']['dnsserver'][] = $_POST['dns1'];
 			if ($_POST['dns2'])
