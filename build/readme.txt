@@ -89,7 +89,7 @@ Minors changes:
 - Add missing pccard.conf file to get pccardd daemon working
 - Create /etc/hosts file after interface initialization (current IP was not available when using DHCP)
 - Add boot splash screen (just for fun)
-- Tune graid5 RAM use depending of RAM detected
+- Tune graid5 RAM usage depending of detected RAM
 - Display DNS servers on 'System/General setup' page when using DHCP (edit controls are disabled in this case)
 - Fix bug in system_systime_set function. Thanks to Paul Wheels for the tip.
 - Improve hidden diagnostic status.php page.
