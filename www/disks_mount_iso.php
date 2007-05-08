@@ -109,9 +109,9 @@ if ($_GET['act'] == "ret")
         <?php endif; ?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="10%" class="listhdrr"><?=gettext("Filename"); ?></td>
+            <td width="40%" class="listhdrr"><?=gettext("Filename"); ?></td>
             <td width="25%" class="listhdrr"><?=gettext("Share Name") ;?></td>
-            <td width="20%" class="listhdr"><?=gettext("Status") ;?></td>
+            <td width="25%" class="listhdr"><?=gettext("Status") ;?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_mount_iso as $mount_iso): ?>
@@ -138,7 +138,7 @@ if ($_GET['act'] == "ret")
           </tr>
           <?php $i++; endforeach; ?>
           <tr> 
-            <td class="list" colspan="4"></td>
+            <td class="list" colspan="3"></td>
             <td class="list"><a href="disks_mount_iso_edit.php"><img src="plus.gif" title="<?=gettext("add ISO to mount");?>" width="17" height="17" border="0"></a></td>
           </tr>
         </table>

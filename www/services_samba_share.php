@@ -90,9 +90,9 @@ if($_GET['act'] == "ret") {
         <?php endif; ?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="20%" class="listhdrr"><?=gettext("Share Name");?></td>
+            <td width="40%" class="listhdrr"><?=gettext("Share Name");?></td>
             <td width="25%" class="listhdrr"><?=gettext("Description");?></td>
-            <td width="20%" class="listhdrr"><?=gettext("Browseable");?></td>
+            <td width="25%" class="listhdrr"><?=gettext("Browseable");?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_mount as $mountv): ?>

@@ -69,13 +69,9 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-  $reqdfields = explode(" ", "filename");
-  $reqdfieldsn = array(gettext("FileName"));
+  $reqdfields = explode(" ", "filename sharename");
+  $reqdfieldsn = array(gettext("Filename"), gettext("Share Name"));
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-	/* if (($_POST['filename'] && !is_validdesc($_POST['filename']))) {
-		$input_errors[] = gettext("The filename name contain invalid characters.");
-	} */
 	
 	if (($_POST['sharename'] && !is_validsharename($_POST['sharename']))) {
 		$input_errors[] = gettext("The share name may only consist of the characters a-z, A-Z, 0-9, _ , -.");
@@ -91,12 +87,10 @@ if ($_POST) {
 			$input_errors[] = gettext("This filename is already configured.");
 			break;
 		}
-	
 	}
 	
 	/* check for sharename conflicts */
 	foreach ($a_mount as $mount) {
-		
 		if (($_POST['sharename']) && ($mount['sharename'] == $_POST['sharename'])) {
 			$input_errors[] = gettext("Duplicate Share Name with a mount point.");
 			break;
@@ -132,13 +126,13 @@ if ($_POST) {
 <form action="disks_mount_iso_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
      <tr> 
-     <td width="22%" valign="top" class="vncell"><?=gettext("Filename") ;?></td>
+     <td width="22%" valign="top" class="vncellreq"><?=gettext("Filename") ;?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="filename" type="text" class="formfld" id="filename" size="20" value="<?=htmlspecialchars($pconfig['filename']);?>"> 
       </td>
     </tr>
 	 <tr> 
-     <td width="22%" valign="top" class="vncell"><?=gettext("Share Name") ;?></td>
+     <td width="22%" valign="top" class="vncellreq"><?=gettext("Share Name") ;?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>"> 
       </td>
