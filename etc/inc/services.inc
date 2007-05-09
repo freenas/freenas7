@@ -112,13 +112,12 @@ function services_samba_configure() {
 		}
 		
 		/* If no share configured, exit */
-		if (!is_array($config['mounts']['mount'])) {
-			$message = "Error: No mount point configured, Can't start CIFS (samba)";
+		if (!is_array($config['mounts']['mount']) && !is_array($config['mounts']['iso'])) {
+			$message = "Error: Can't start CIFS (samba). No mount points configured.";
 			write_log($message);
 			return 0;
 		}
 
-			
 		$sambaconf = <<<EOD
 [global]
 encrypt passwords = yes
@@ -250,11 +249,9 @@ EOD;
 		break;
 	}
 
-			foreach ($config['mounts']['mount'] as $mountent) {
-				/* Unmount filesystem if not booting mode*/
-				
-				$sambaconf .= <<<EOD
-			
+		foreach ($config['mounts']['mount'] as $mountent) {
+			$sambaconf .= <<<EOD
+
 [{$mountent['sharename']}]
 comment = {$mountent['desc']}
 path = /mnt/{$mountent['sharename']}
@@ -269,25 +266,45 @@ hide dot files = yes
 
 EOD;
 
-				if ( (is_array($config['samba']['hidemount']) && in_array($mountent['sharename'],$config['samba']['hidemount']))) {
-			
+			if ((is_array($config['samba']['hidemount']) && in_array($mountent['sharename'],$config['samba']['hidemount']))) {
 				$sambaconf .= <<<EOD
 browseable = no
 
 EOD;
+			}
 
-				}
-			
-				if (isset($config['samba']['recyclebin'])) {
-					$sambaconf .= <<<EOD
+			if (isset($config['samba']['recyclebin'])) {
+				$sambaconf .= <<<EOD
 vfs object = recycle
 recycle:repository = RECYCLER
 recycle:keeptree = Yes
 recycle:versions = Yes
 
 EOD;
-				}
 			}
+		}
+
+		foreach ($config['mounts']['iso'] as $mountent) {
+			$sambaconf .= <<<EOD
+
+[{$mountent['sharename']}]
+comment = {$mountent['desc']}
+path = /mnt/{$mountent['sharename']}
+public = yes
+writeable = no
+printable = no
+hide dot files = yes
+{$guestmode}
+
+EOD;
+
+			if ((is_array($config['samba']['hidemount']) && in_array($mountent['sharename'],$config['samba']['hidemount']))) {
+				$sambaconf .= <<<EOD
+browseable = no
+
+EOD;
+			}
+		}
 
 		if (!isset($config['samba']['largereadwrite'])) {
 			$sambaconf .= <<<EOD
@@ -299,10 +316,8 @@ EOD;
 		fwrite($fd, $sambaconf);
 		fclose($fd);
 
-		/* run nmbd and nmbd if no previous error*/
-		
+		/* Run nmbd and nmbd if no previous error. */
 		if(!$result) {
-		
 			if (isset($config['ad']['enable'])) {
 				$result |= mwexec("/usr/local/bin/net rpc join -S {$config['ad']['ad_srv_name']} -U {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
 			}
