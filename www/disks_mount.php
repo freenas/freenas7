@@ -127,7 +127,7 @@ if ($_GET['act'] == "retry")
   			  <?php $i = 0; foreach($a_mount as $mount): ?>
           <tr>
           	<?php if ("disk" === $mount['type']): ?>
-            <td class="listlr"><?=htmlspecialchars("{$mount['mdisk']}{$mount['partition']}");?>&nbsp;</td>
+            <td class="listlr"><?=htmlspecialchars($mount['fullname']);?>&nbsp;</td>
             <?php else: ?>
             <td class="listlr"><?=htmlspecialchars($mount['filename']);?>&nbsp;</td>
             <?php endif; ?>
