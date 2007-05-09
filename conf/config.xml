@@ -164,18 +164,18 @@
 	<mounts>
 		<!--
 		<mount>
+			// Global attributes:
+			<type>disk|iso</type>
+			<desc>xxx</desc>
+			<sharename>xxx</sharename>
+			<fstype>xxx</fstype>
+			// 'disk' attributes:
 			<mdisk>/dev/xxx</mdisk>
 			<partition>xxx</partition>
-			<fstype>xxx</fstype>
-			<desc>xxx</desc>
-			<sharename>xxx</sharename>
 			<fullname>/dev/xxx</fullname>
-		</mount>
-		<iso>
+			// 'iso' attributes:
 			<filename>xxx</filename>
-			<desc>xxx</desc>
-			<sharename>xxx</sharename>
-		</iso>
+		</mount>
 		-->
 	</mounts>
 	<samba>

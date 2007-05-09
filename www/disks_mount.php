@@ -104,7 +104,6 @@ if ($_GET['act'] == "retry")
         <li class="tabact"><a href="disks_mount.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Manage");?></a></li>
         <li class="tabinact"><a href="disks_mount_tools.php"><?=gettext("Tools");?></a></li>
         <li class="tabinact"><a href="disks_mount_fsck.php"><?=gettext("Fsck");?></a></li>
-		<li class="tabinact"><a href="disks_mount_iso.php"><?=gettext("ISO");?></a></li>
       </ul>
     </td>
   </tr>
@@ -118,8 +117,7 @@ if ($_GET['act'] == "retry")
         <?php endif; ?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="10%" class="listhdrr"><?=gettext("Disk"); ?></td>
-            <td width="10%" class="listhdrr"><?=gettext("Partition"); ?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Disk"); ?></td>
             <td width="5%" class="listhdrr"><?=gettext("File system"); ?></td>
             <td width="20%" class="listhdrr"><?=gettext("Share Name") ;?></td>
             <td width="25%" class="listhdrr"><?=gettext("Description") ;?></td>
@@ -128,8 +126,11 @@ if ($_GET['act'] == "retry")
           </tr>
   			  <?php $i = 0; foreach($a_mount as $mount): ?>
           <tr>
-            <td class="listlr"><?=htmlspecialchars($mount['mdisk']);?>&nbsp;</td>
-            <td class="listr"><?=htmlspecialchars($mount['partition']);?>&nbsp;</td>
+          	<?php if ("disk" === $mount['type']): ?>
+            <td class="listlr"><?=htmlspecialchars("{$mount['mdisk']}{$mount['partition']}");?>&nbsp;</td>
+            <?php else: ?>
+            <td class="listlr"><?=htmlspecialchars($mount['filename']);?>&nbsp;</td>
+            <?php endif; ?>
             <td class="listr"><?=htmlspecialchars($mount['fstype']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount['sharename']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount['desc']);?>&nbsp;</td>
@@ -138,7 +139,7 @@ if ($_GET['act'] == "retry")
               if (file_exists($d_mountdirty_path)) {
                 echo(gettext("Configuring"));
               } else {
-                if(disks_ismounted($mount)) {
+                if(disks_ismounted_sharename($mount['sharename'])) {
 									echo(gettext("OK"));
                 } else {
                   echo(gettext("Error") . " - <a href=\"disks_mount.php?act=retry&id={$i}\">" . gettext("Retry") . "</a>");
@@ -147,13 +148,15 @@ if ($_GET['act'] == "retry")
               ?>&nbsp;
             </td>
             <td valign="middle" nowrap class="list">
+            	<?php if ("disk" === $mount['type']): ?>
               <a href="disks_mount_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit mount" width="17" height="17" border="0"></a>&nbsp;
+              <?php endif; ?>
               <a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("delete mount"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>
           <?php $i++; endforeach; ?>
           <tr> 
-            <td class="list" colspan="6"></td>
+            <td class="list" colspan="5"></td>
             <td class="list"><a href="disks_mount_edit.php"><img src="plus.gif" title="<?=gettext("add mount");?>" width="17" height="17" border="0"></a></td>
           </tr>
         </table>

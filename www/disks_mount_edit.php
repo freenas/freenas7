@@ -87,6 +87,7 @@ $filename=$g['varetc_path']."/cfdevice";
 $cfdevice = trim(file_get_contents("$filename"));
 
 if (isset($id) && $a_mount[$id]) {
+	$pconfig['type'] = $a_mount[$id]['type'];
 	$pconfig['mdisk'] = $a_mount[$id]['mdisk'];
 	$pconfig['partition'] = $a_mount[$id]['partition'];
 	$pconfig['fullname'] = $a_mount[$id]['fullname'];
@@ -94,6 +95,7 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['sharename'] = $a_mount[$id]['sharename'];
 	$pconfig['desc'] = $a_mount[$id]['desc'];
 } else {
+	$pconfig['type'] = "disk";
 	$pconfig['partition'] = "p1";
 }
 
@@ -102,8 +104,18 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-  $reqdfields = explode(" ", "sharename");
-  $reqdfieldsn = array(gettext("Share Name"));
+	switch($_POST['type']) {
+		case "disk":
+			$reqdfields = explode(" ", "mdisk partition fstype sharename");
+  		$reqdfieldsn = array(gettext("Disk"), gettext("Partition"), gettext("File system"), gettext("Share Name"));
+			break;
+
+		case "iso":
+			$reqdfields = explode(" ", "filename sharename");
+  		$reqdfieldsn = array(gettext("Filename"), gettext("Share Name"));
+			break;
+	}
+
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['sharename'] && !is_validsharename($_POST['sharename']))) {
@@ -114,26 +126,31 @@ if ($_POST) {
 		$input_errors[] = gettext("The description name contain invalid characters.");
 	}
 
-	if (($_POST['partition'] == "p1") && (($_POST['fstype'] == "msdosfs") || ($_POST['fstype'] == "cd9660") || ($_POST['fstype'] == "ntfs") || ($_POST['fstype'] == "ext2fs")))  {
-		$input_errors[] = gettext("EFI/GPT partition can be use with UFS only.");
+	// Do some 'disk' specific checks.
+	if ("disk" === $_POST['type']) {
+		if (($_POST['partition'] == "p1") && (($_POST['fstype'] == "msdosfs") || ($_POST['fstype'] == "cd9660") || ($_POST['fstype'] == "ntfs") || ($_POST['fstype'] == "ext2fs")))  {
+			$input_errors[] = gettext("EFI/GPT partition can be use with UFS only.");
+		}
+
+		$device=$_POST['mdisk'].$_POST['partition'];
+		if ($device == $cfdevice ) {
+			$input_errors[] = gettext("Can't mount the system partition 1, the DATA partition is the 2.");
+		}
 	}
 
-	$device=$_POST['mdisk'].$_POST['partition'];
-	if ($device == $cfdevice ) {
-		$input_errors[] = gettext("Can't mount the system partition 1, the DATA partition is the 2.");
-	}
-
-	/* check for name conflicts */
+	/* Check for name conflicts. */
 	foreach ($a_mount as $mount) {
 		if (isset($id) && ($a_mount[$id]) && ($a_mount[$id] === $mount))
 			continue;
 
-		// Check for duplicate mount point
-		if (($mount['mdisk'] == $_POST['mdisk']) && ($mount['partition'] == $_POST['partition']))       {
-			$input_errors[] = gettext("This disk/partition is already configured.");
-			break;
+		if ("disk" === $_POST['type']) {
+			// Check for duplicate mount point
+			if (($mount['mdisk'] == $_POST['mdisk']) && ($mount['partition'] == $_POST['partition']))       {
+				$input_errors[] = gettext("This disk/partition is already configured.");
+				break;
+			}
 		}
-		
+
 		if (($_POST['sharename']) && ($mount['sharename'] == $_POST['sharename'])) {
 			$input_errors[] = gettext("Duplicate Share Name.");
 			break;
@@ -142,19 +159,25 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$mount = array();
-		$mount['mdisk'] = $_POST['mdisk'];
-		$mount['partition'] = $_POST['partition'];
-		$mount['fstype'] = $_POST['fstype'];
+		$mount['type'] = $_POST['type'];
+
+		switch($_POST['type']) {
+			case "disk":
+				$mount['mdisk'] = $_POST['mdisk'];
+				$mount['partition'] = $_POST['partition'];
+				$mount['fstype'] = $_POST['fstype'];
+				$mount['fullname'] = "{$mount['mdisk']}{$mount['partition']}";
+				break;
+
+			case "iso":
+				$mount['filename'] = $_POST['filename'];
+				$mount['fstype'] = "cd9660";
+				break;
+		}
+
+		$mount['sharename'] = $_POST['sharename'];
 		$mount['desc'] = $_POST['desc'];
-		/* if not sharename given, create one */
-		if (!$_POST['sharename'])
-			$mount['sharename'] = "disk_{$_POST['mdisk']}_part_{$_POST['partition']}";
-		else
-			$mount['sharename'] = $_POST['sharename'];
-		
-		// Generate fullname
-		$mount['fullname'] = "{$mount['mdisk']}{$mount['partition']}";
-		
+
 		if (isset($id) && $a_mount[$id])
 			$a_mount[$id] = $mount;
 		else
@@ -170,10 +193,45 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
+<script language="JavaScript">
+<!--
+function type_change() {
+  switch(document.iform.type.selectedIndex)
+  {
+    case 0: /* Disk */
+      showElementById('mdisk_tr','show');
+      showElementById('partition_tr','show');
+      showElementById('fstype_tr','show');
+      showElementById('filename_tr','hide');
+      break;
+
+    case 1: /* ISO */
+      showElementById('mdisk_tr','hide');
+      showElementById('partition_tr','hide');
+      showElementById('fstype_tr','hide');
+      showElementById('filename_tr','show');
+      break;
+  }
+}
+// -->
+</script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <form action="disks_mount_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr> 
+  	<tr> 
+    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
+      <td width="78%" class="vtable">
+  			<select name="type" class="formfld" id="type" onchange="type_change()">
+          <?php $opts = array(gettext("Disk"), gettext("ISO")); $vals = explode(" ", "disk iso"); $i = 0;
+					foreach ($opts as $opt): ?>
+          <option <?php if ($opt == $pconfig['type']) echo "selected";?> value="<?=$vals[$i++];?>"> 
+            <?=htmlspecialchars($opt);?>
+          </option>
+          <?php endforeach; ?>
+        </select>
+      </td>
+    </tr>
+    <tr id="mdisk_tr"> 
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
       <td class="vtable">            
     	 <select name="mdisk" class="formfld" id="mdisk">
@@ -188,7 +246,7 @@ if ($_POST) {
     		</select>
       </td>
     </tr>   
-     <tr> 
+		<tr id="partition_tr"> 
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Partition") ; ?></td>
       <td class="vtable"> 
         <select name="partition" class="formfld" id="partition">
@@ -206,7 +264,7 @@ if ($_POST) {
 				<?=gettext("Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release") ;?>
       </td>
     </tr>
-    <tr> 
+    <tr id="fstype_tr"> 
       <td width="22%" valign="top" class="vncellreq"><?=gettext("File system") ;?></td>
       <td class="vtable"> 
         <select name="fstype" class="formfld" id="fstype">
@@ -218,7 +276,14 @@ if ($_POST) {
         </select>
       </td>
     </tr>
-     <tr> 
+    <tr id="filename_tr"> 
+     <td width="22%" valign="top" class="vncellreq"><?=gettext("Filename") ;?></td>
+      <td width="78%" class="vtable"> 
+        <?=$mandfldhtml;?><input name="filename" type="text" class="formfld" id="filename" size="20" value="<?=htmlspecialchars($pconfig['filename']);?>">
+				<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.filename; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \> 
+      </td>
+    </tr>
+		<tr> 
      <td width="22%" valign="top" class="vncellreq"><?=gettext("Share Name") ;?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>"> 
@@ -247,4 +312,9 @@ if ($_POST) {
     </tr>
   </table>
 </form>
+<script language="JavaScript">
+<!--
+type_change();
+//-->
+</script>
 <?php include("fend.inc"); ?>

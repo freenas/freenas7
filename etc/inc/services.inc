@@ -112,7 +112,7 @@ function services_samba_configure() {
 		}
 		
 		/* If no share configured, exit */
-		if (!is_array($config['mounts']['mount']) && !is_array($config['mounts']['iso'])) {
+		if (!is_array($config['mounts']['mount'])) {
 			$message = "Error: Can't start CIFS (samba). No mount points configured.";
 			write_log($message);
 			return 0;
@@ -279,28 +279,6 @@ vfs object = recycle
 recycle:repository = RECYCLER
 recycle:keeptree = Yes
 recycle:versions = Yes
-
-EOD;
-			}
-		}
-
-		foreach ($config['mounts']['iso'] as $mountent) {
-			$sambaconf .= <<<EOD
-
-[{$mountent['sharename']}]
-comment = {$mountent['desc']}
-path = /mnt/{$mountent['sharename']}
-public = yes
-writeable = no
-printable = no
-hide dot files = yes
-{$guestmode}
-
-EOD;
-
-			if ((is_array($config['samba']['hidemount']) && in_array($mountent['sharename'],$config['samba']['hidemount']))) {
-				$sambaconf .= <<<EOD
-browseable = no
 
 EOD;
 			}

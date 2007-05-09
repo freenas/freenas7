@@ -41,14 +41,29 @@ function disks_mount_all()
 	if ($g['booting'])
 		write_console("Mounting partitions... ");
 
-	/* For each device configured: */
+	// For each device configured:
 	if (is_array($config['mounts']['mount'])) {
+		// Mount real disks first.
 		foreach ($config['mounts']['mount'] as $mount) {
+			if ("disk" !== $mount['type'])
+				continue;
+
 			// Advanced umount filesystem if not in booting mode (mount edition).
 			if (!$g['booting'])
 				disks_umount_ex($mount);
 
-			/* mount filesystem */
+			disks_mount($mount);	
+		}
+
+		// Then mount ISOs.
+		foreach ($config['mounts']['mount'] as $mount) {
+			if ("iso" !== $mount['type'])
+				continue;
+
+			// Advanced umount filesystem if not in booting mode (mount edition).
+			if (!$g['booting'])
+				disks_umount($mount);
+
 			disks_mount($mount);	
 		}
 	}
@@ -59,75 +74,12 @@ function disks_mount_all()
 	return 0;
 }
 
-// Mount all ISO files.
-// Return 0 if sucessful, 1 if error
-function disks_mount_iso_all()
-{
-	global $config, $g;
-
-	if ($g['booting'])
-		write_console("Mounting ISO files... ");
-
-	/* For each device configured: */
-	if (is_array($config['mounts']['iso'])) {
-		foreach ($config['mounts']['iso'] as $mount) {
-			if (!$g['booting'])
-				disks_umount_iso($mount);
-
-			/* mount filesystem */
-			disks_mount_iso($mount);	
-		}
-	}
-
-	if ($g['booting'])
-		write_console("done\n");
-
-	return 0;
-}
-
-// Mount an ISO file.
-// Return 0 if sucessful, 1 if error
-function disks_mount_iso($mount_iso)
-{
-	global $config, $g;
-
-	$mountname = "/mnt/{$mount_iso['sharename']}";
-	$filename = $mount_iso['filename'];
-
-	/* Create one directory for each device under /mnt. */
-	@mkdir("{$mountname}", 0777);
-	/* Change this directory into 777 mode. */
-	mwexec("/bin/chmod 777 '{$mountname}'");
-
-	// Create memory disk. 'mdconfig' returns the ID of this disk. 
-	exec("/sbin/mdconfig -a -t vnode -f '{$filename}'", $mdid, $result);
-
-	if (0 == $result) {
-		$devname = "/dev/{$mdid[0]}";
-
-		/* Mount the ISO file. */
-		if (0 == mwexec("/sbin/mount -t cd9660 {$devname} '{$mountname}'")) {
-			write_log("ISO file {$devname} mounted on '{$mountname}'");
-			$result = 0;
-		} else {
-			write_log("Error: Failed to mount ISO file '{$filename}'");
-			$result = 1;
-		}
-	} else {
-		write_log("Error: Failed to read file '{$filename}'");
-		$result = 1;
-	}
-
-	return $result;
-}
-
 // Mount using the configured mount given in parameter
 // Return 0 if sucessful, 1 if error
 function disks_mount($mount)
 {
 	global $config, $g;
 
-	$devname = $mount['fullname'];
 	$mountname = "/mnt/{$mount['sharename']}";
 
 	/* Create one directory for each device under /mnt. */
@@ -148,13 +100,29 @@ function disks_mount($mount)
 		}
 	}
 
+	switch($mount['type']) {
+		case "disk":
+			$devname = $mount['fullname'];
+			break;
+
+		case "iso":
+			// Create memory disk. 'mdconfig' returns the ID of this disk. 
+			exec("/sbin/mdconfig -a -t vnode -f '{$mount['filename']}'", $mdid, $result);
+			if (0 !== $result) {
+				write_log("Error: Failed to create memory disk for '{$mount['filename']}'");
+				return 1;
+			}
+			$devname = "/dev/{$mdid[0]}";
+			break;
+	}
+
 	/* Check the fileystem only if there is a problem. */
 	/* This part is too stupid: I must read the FreBSD start script for use the same intelligent method for checking hard drive */
 	switch ($mount['fstype']) {
 		case "ufs":
 			$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'"); 
 			if (0 == $result) {
-				write_log("Disk {$devname} mounted using UFS on '{$mountname}'");
+				write_log("Device {$devname} mounted using UFS on '{$mountname}'");
 				$result = 0;
 			} else {
 				/* If it's NOK, Check  filesystem and do a fsck, answer Yes to all question*/
@@ -165,7 +133,7 @@ function disks_mount($mount)
 				/* Re-try to mount the partition */
 				$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'");
 				if (0 == $result) {
-					write_log("Disk {$devname} mounted using UFS on '{$mountname}'");
+					write_log("Device {$devname} mounted using UFS on '{$mountname}'");
 					$result = 0;
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
@@ -179,7 +147,7 @@ function disks_mount($mount)
 		case "msdosfs":
 			$result = mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'");
 			if (0 == $result) {
-				write_log("Disk {$devname} mounted using FAT on '{$mountname}'");
+				write_log("Device {$devname} mounted using FAT on '{$mountname}'");
 				$result = 0;
 			} else {
 				write_log("Error: Failed to detect disk {$devname}, starting a FAT fsck");
@@ -187,7 +155,7 @@ function disks_mount($mount)
 
 				$result = mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'");
 				if (0 == $result) {
-					write_log("Disk {$devname} mounted using FAT on '{$mountname}'");
+					write_log("Device {$devname} mounted using FAT on '{$mountname}'");
 					$result = 0;
 				} else {
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
@@ -201,7 +169,7 @@ function disks_mount($mount)
 		case "cd9660":
 			$result = mwexec("/sbin/mount_cd9660 {$devname} '{$mountname}'"); 
 			if (0 == $result) {
-				write_log("Disk {$devname} mounted as CD/DVD on '{$mountname}'");
+				write_log("Device {$devname} mounted as CD/DVD on '{$mountname}'");
 				$result = 0;
 			} else {
 				/* Not OK, remove the directory, prevent writing on RAM disk*/
@@ -271,6 +239,20 @@ function disks_mount($mount)
 // Return 0 is successfull, 1 if error
 function disks_umount($mount)
 {
+	// Get memory disk unit for ISOs.
+	if ("iso" === $mount['type']) {
+		// Get current mount list.
+		$amountlist = get_mounts_list();
+	
+		foreach ($amountlist as $amountk => $amountv) {
+			if (0 == strcmp($amountv['sharename'], $mount['sharename'])) {
+				$mdunit = substr($amountv['mdisk'], 2); // Remove 'md' to get unit id.
+				break;
+			}
+		}
+	}
+
+	// Umount mount point.
 	$mountname = "/mnt/{$mount['sharename']}";
 
 	if (mwexec("/sbin/umount '{$mountname}'") == 0) {
@@ -284,6 +266,11 @@ function disks_umount($mount)
 	} else {
 		write_log("Error: Failed to umount '{$mountname}'");
 		$result = 1;
+	}
+
+	// Detach memory disk for ISOs.
+	if (0 == $result && "iso" === $mount['type']) {
+		$result = mwexec("/sbin/mdconfig -d -u {$mdunit}");
 	}
 
 	return $result;
@@ -317,30 +304,6 @@ function disks_umount_ex($mount)
 			write_log("Error: Failed to umount '{$mountname}'");
 			$result = 1;
 		}
-	}
-
-	return $result;
-}
-
-// Umount the specified configured ISO mount point.
-// Return 0 is successfull, 1 if error
-function disks_umount_iso($mount)
-{
-	// Get current mount list.
-	$amountlist = get_mounts_list();
-
-	foreach ($amountlist as $amountk => $amountv) {
-		if (0 == strcmp($amountv['sharename'], $mount['sharename'])) {
-			$mdunit = substr($amountv['mdisk'], 2); // Remove 'md' to get unit id.
-			break;
-		}
-	}
-
-	// Finally umount mount point.
-	$result = disks_umount($mount);
-	if (0 == $result) {
-		// Detach memory disk.
-		$result = mwexec("/sbin/mdconfig -d -u {$mdunit}");
 	}
 
 	return $result;
@@ -440,13 +403,6 @@ function disks_umount_all()
 
 	// Sync disks.
 	mwexec("/bin/sync");
-	
-	//Unmount ISO
-	if (is_array($config['mounts']['iso'])) {
-		foreach ($config['mounts']['iso'] as $mount_iso) {
-			disks_umount_iso($mount_iso);
-		}
-	}
 
 	if (is_array($config['mounts']['mount'])) {
 		foreach ($config['mounts']['mount'] as $mountent) {

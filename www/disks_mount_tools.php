@@ -43,16 +43,7 @@ if (!is_array($config['mounts']['mount']))
 
 mount_sort();
 
-if (!is_array($config['mounts']['iso']))
-	$config['mounts']['iso'] = array();
-
-mount_iso_sort();
-
-$a_mount_iso = &$config['mounts']['iso'];
-
 $a_mount = &$config['mounts']['mount'];
-
-$a_allmount = array_merge($a_mount_iso,$a_mount);
 
 if ($_POST) {
 	unset($input_errors);
@@ -66,7 +57,7 @@ if ($_POST) {
 	
 	if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $_POST['sharename'])) {
 		$errormsg[] = gettext("The swap file is using this mount point.");
-    }
+  }
 
 	if((!$input_errors) || (!$errormsg)) 	{
 		$do_action = true;
@@ -102,7 +93,6 @@ if(isset($_GET['action'])) {
         <li class="tabinact"><a href="disks_mount.php"><?=gettext("Manage");?></a></li>
         <li class="tabact"><a href="disks_mount_tools.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Tools");?></a></li>
         <li class="tabinact"><a href="disks_mount_fsck.php"><?=gettext("Fsck");?></a></li>
-		<li class="tabinact"><a href="disks_mount_iso.php"><?=gettext("ISO");?></a></li>
       </ul>
     </td>
   </tr>
@@ -117,14 +107,13 @@ if(isset($_GET['action'])) {
               <select name="sharename" class="formfld" id="sharename">
                 <?php foreach ($a_mount as $mountv): ?>
                 <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $sharename) echo "selected";?>>
+                <?php if ("disk" === $mountv['type']): ?>
                 <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
-                <?php endforeach; ?>
+                <?php else: ?>
+                <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("File") . ": " . $mountv['filename']. ")");?>
+                <?php endif; ?>
                 </option>
-				<?php foreach ($a_mount_iso as $mountv_iso): ?>
-                <option value="<?=$mountv_iso['sharename'];?>"<?php if ($mountv_iso['sharename'] == $sharename) echo "selected";?>>
-                <?php echo htmlspecialchars($mountv_iso['sharename'] . " (" . gettext("File") . ": " . $mountv_iso['filename']. ")");?>
                 <?php endforeach; ?>
-                </option>
               </select>
             </td>
       		</tr>
