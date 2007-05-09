@@ -174,7 +174,7 @@ if ($_POST) {
 <form action="disks_mount_edit.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr> 
-      <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
       <td class="vtable">            
     	 <select name="mdisk" class="formfld" id="mdisk">
     	  <?php foreach ($a_disk as $disk): ?>
@@ -189,7 +189,7 @@ if ($_POST) {
       </td>
     </tr>   
      <tr> 
-      <td valign="top" class="vncellreq"><?=gettext("Partition") ; ?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Partition") ; ?></td>
       <td class="vtable"> 
         <select name="partition" class="formfld" id="partition">
 		  		<option value="p1" <?php if ($pconfig['partition'] == "p1") echo "selected"; ?>>EFI GPT</option>
@@ -207,7 +207,7 @@ if ($_POST) {
       </td>
     </tr>
     <tr> 
-      <td valign="top" class="vncellreq"><?=gettext("File system") ;?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("File system") ;?></td>
       <td class="vtable"> 
         <select name="fstype" class="formfld" id="fstype">
           <option value="ufs" <?php if ($pconfig['fstype'] == "ufs") echo "selected"; ?>>UFS</option>
@@ -219,7 +219,7 @@ if ($_POST) {
       </td>
     </tr>
      <tr> 
-     <td width="22%" valign="top" class="vncell"><?=gettext("Share Name") ;?></td>
+     <td width="22%" valign="top" class="vncellreq"><?=gettext("Share Name") ;?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>"> 
       </td>
@@ -227,7 +227,7 @@ if ($_POST) {
     <tr> 
      <td width="22%" valign="top" class="vncell"><?=gettext("Description") ;?></td>
       <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"> 
+				<input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"> 
       </td>
     </tr>
     <tr> 

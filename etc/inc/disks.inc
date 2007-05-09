@@ -42,8 +42,8 @@ function disks_mount_all()
 		write_console("Mounting partitions... ");
 
 	/* For each device configured: */
-	if (is_array($config['mounts']['mount'])) 	{
-		foreach ($config['mounts']['mount'] as $mount) 		{
+	if (is_array($config['mounts']['mount'])) {
+		foreach ($config['mounts']['mount'] as $mount) {
 			// Advanced umount filesystem if not in booting mode (mount edition).
 			if (!$g['booting'])
 				disks_umount_ex($mount);
@@ -64,25 +64,24 @@ function disks_mount_all()
 function disks_mount_iso_all()
 {
 	global $config, $g;
-	
+
 	if ($g['booting'])
 		write_console("Mounting ISO files... ");
-	
+
 	/* For each device configured: */
-	if (is_array($config['mounts']['iso'])) 	{
-		foreach ($config['mounts']['iso'] as $mount_iso) 		{
-			/* Advanced Umount filesystem if not booting mode (mount edition)*/
+	if (is_array($config['mounts']['iso'])) {
+		foreach ($config['mounts']['iso'] as $mount) {
 			if (!$g['booting'])
-				disks_umount_iso_ex($mount);
-								
+				disks_umount_iso($mount);
+
 			/* mount filesystem */
 			disks_mount_iso($mount);	
 		}
 	}
-			
+
 	if ($g['booting'])
 		write_console("done\n");
-	
+
 	return 0;
 }
 
@@ -92,27 +91,34 @@ function disks_mount_iso($mount_iso)
 {
 	global $config, $g;
 
-	/* Create one directory for each device under /mnt. */
 	$mountname = "/mnt/{$mount_iso['sharename']}";
+	$filename = $mount_iso['filename'];
+
+	/* Create one directory for each device under /mnt. */
 	@mkdir("{$mountname}", 0777);
 	/* Change this directory into 777 mode. */
 	mwexec("/bin/chmod 777 '{$mountname}'");
 
-	/* Mount the ISO file. */
-	$filename = escapeshellcmd($mount_iso['filename']);
-	$md_id = escapeshellcmd($mount_iso['md_id']);
-	
-	if (mwexec("/sbin/mdconfig -a -t vnode -f {$filename} -u {$md_id}") == 0) {
-		if (mwexec("/sbin/mount -t cd9660 /dev/md{$md_id} '{$mountname}'") == 0) {
+	// Create memory disk. 'mdconfig' returns the ID of this disk. 
+	exec("/sbin/mdconfig -a -t vnode -f '{$filename}'", $mdid, $result);
+
+	if (0 == $result) {
+		$devname = "/dev/{$mdid[0]}";
+
+		/* Mount the ISO file. */
+		if (0 == mwexec("/sbin/mount -t cd9660 {$devname} '{$mountname}'")) {
 			write_log("ISO file {$devname} mounted on '{$mountname}'");
 			$result = 0;
 		} else {
-			write_log("Error: Failed to mount ISO file {$filename}");
+			write_log("Error: Failed to mount ISO file '{$filename}'");
+			$result = 1;
 		}
-				
 	} else {
-		write_log("Error: Failed to read file {$filename}");
+		write_log("Error: Failed to read file '{$filename}'");
+		$result = 1;
 	}
+
+	return $result;
 }
 
 // Mount using the configured mount given in parameter
@@ -252,7 +258,7 @@ function disks_mount($mount)
 					/* Not OK, remove the directory, prevent writing on RAM */
 					@rmdir("{$mountname}");
 					write_log("Error: Can't mount {$devname} using EXT2");
-					$result= 1;
+					$result = 1;
 				}
 			}
 			break;
@@ -316,37 +322,25 @@ function disks_umount_ex($mount)
 	return $result;
 }
 
-// Advanced unmount the specified ISO mount point without using the sharename value.
-// Used when changing the 'sharename': Need to umount the old unknown sharename.
-// Return 0 if successful, 1 if error
-function disks_umount_iso_ex($mount)
+// Umount the specified configured ISO mount point.
+// Return 0 is successfull, 1 if error
+function disks_umount_iso($mount)
 {
-	$md_id = "md" . "{$mount['md_id']}";
-
-	// Get the mount list.
+	// Get current mount list.
 	$amountlist = get_mounts_list();
 
-	// Look for the mount point in all mounted point corresponding to the md id.
 	foreach ($amountlist as $amountk => $amountv) {
-		if (0 == strcmp($amountv['fullname'], $md_id)) {
-			$mountname = $amountv['mp'];
+		if (0 == strcmp($amountv['sharename'], $mount['sharename'])) {
+			$mdunit = substr($amountv['mdisk'], 2); // Remove 'md' to get unit id.
 			break;
 		}
 	}
 
-	if ($mountname) {
-		if (mwexec("/sbin/umount '{$mountname}'") == 0) {
-			if(@rmdir("{$mountname}")) {
-				write_log("Sucessfull umounted '{$mountname}'");
-				$result = 0;
-			} else {
-				write_log("Error: Failed to umount '{$mountname}'");
-				$result = 1;
-			}
-		} else {
-			write_log("Error: Failed to umount '{$mountname}'");
-			$result = 1;
-		}
+	// Finally umount mount point.
+	$result = disks_umount($mount);
+	if (0 == $result) {
+		// Detach memory disk.
+		$result = mwexec("/sbin/mdconfig -d -u {$mdunit}");
 	}
 
 	return $result;
@@ -450,7 +444,7 @@ function disks_umount_all()
 	//Unmount ISO
 	if (is_array($config['mounts']['iso'])) {
 		foreach ($config['mounts']['iso'] as $mount_iso) {
-			disks_umount($mount_iso);
+			disks_umount_iso($mount_iso);
 		}
 	}
 

@@ -39,29 +39,22 @@ if (isset($_POST['id']))
 
 $pgtitle = array(gettext("Disks"),gettext("Mount Point"),gettext("ISO"),isset($id)?gettext("Edit"):gettext("Add"));
 
-/* Fix old config file */
-if (!isset($config['mounts']['iso_md_id'])) {
-	$config['mounts']['iso_md_id']=2;
-}
+if (!is_array($config['mounts']['mount']))
+	$config['mounts']['mount'] = array();
 
 if (!is_array($config['mounts']['iso']))
 	$config['mounts']['iso'] = array();
 
+mount_sort();
 mount_iso_sort();
 
-if (is_array($config['mounts']['mount'])) {
-	$a_mount = &$config['mounts']['mount'];
-}
-else {
-	$input_errors[] = gettext("You must add a mount point before.");
-}
-
+$a_mount = &$config['mounts']['mount'];
 $a_mount_iso = &$config['mounts']['iso'];
 
 if (isset($id) && $a_mount_iso[$id]) {
 	$pconfig['filename'] = $a_mount_iso[$id]['filename'];
+	$pconfig['desc'] = $a_mount_iso[$id]['desc'];
 	$pconfig['sharename'] = $a_mount_iso[$id]['sharename'];
-	$pconfig['md_id'] = $a_mount_iso[$id]['md_id'];
 }
 
 if ($_POST) {
@@ -72,9 +65,13 @@ if ($_POST) {
   $reqdfields = explode(" ", "filename sharename");
   $reqdfieldsn = array(gettext("Filename"), gettext("Share Name"));
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
+
 	if (($_POST['sharename'] && !is_validsharename($_POST['sharename']))) {
 		$input_errors[] = gettext("The share name may only consist of the characters a-z, A-Z, 0-9, _ , -.");
+	}
+
+	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
+		$input_errors[] = gettext("The description name contain invalid characters.");
 	}
 
 	/* check for name conflicts */
@@ -88,11 +85,11 @@ if ($_POST) {
 			break;
 		}
 	}
-	
+
 	/* check for sharename conflicts */
 	foreach ($a_mount as $mount) {
 		if (($_POST['sharename']) && ($mount['sharename'] == $_POST['sharename'])) {
-			$input_errors[] = gettext("Duplicate Share Name with a mount point.");
+			$input_errors[] = gettext("Duplicate Share Name.");
 			break;
 		}
 	}
@@ -100,22 +97,19 @@ if ($_POST) {
 	if (!$input_errors) {
 		$mount_iso = array();
 		$mount_iso['filename'] = $_POST['filename'];
+		$mount_iso['desc'] = $_POST['desc'];
 		$mount_iso['sharename'] = $_POST['sharename'];
-			
+
 		if (isset($id) && $a_mount_iso[$id]) {
-			$mount_iso['md_id'] = $_POST['md_id'];
 			$a_mount_iso[$id] = $mount_iso;
-		}
-		else 	{
-			$mount_iso['md_id'] = $config['mounts']['iso_md_id'];
-			$config['mounts']['iso_md_id'] ++;
+		} else {
 			$a_mount_iso[] = $mount_iso;
 		}
-		
+
 		touch($d_mount_iso_dirty_path);
-		
+
 		write_config();
-		
+
 		header("Location: disks_mount_iso.php");
 		exit;
 	}
@@ -128,7 +122,8 @@ if ($_POST) {
      <tr> 
      <td width="22%" valign="top" class="vncellreq"><?=gettext("Filename") ;?></td>
       <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="filename" type="text" class="formfld" id="filename" size="20" value="<?=htmlspecialchars($pconfig['filename']);?>"> 
+        <?=$mandfldhtml;?><input name="filename" type="text" class="formfld" id="filename" size="20" value="<?=htmlspecialchars($pconfig['filename']);?>">
+				<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.filename; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \> 
       </td>
     </tr>
 	 <tr> 
@@ -138,10 +133,12 @@ if ($_POST) {
       </td>
     </tr>
     <tr> 
-	 <?php if (isset($id) && $a_mount_iso[$id]): ?>
-               <input name="md_id" type="hidden" class="formfld" id="md_id" value="<?=$pconfig['md_id'];?>">
-               <?php endif; ?>
-    <tr> 
+     <td width="22%" valign="top" class="vncell"><?=gettext("Description") ;?></td>
+      <td width="78%" class="vtable"> 
+        <input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"> 
+      </td>
+    </tr>
+    <tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add")?>"> 
         <?php if (isset($id) && $a_mount_iso[$id]): ?>

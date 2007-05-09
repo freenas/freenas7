@@ -162,7 +162,6 @@
 		-->
 	</geli>
 	<mounts>
-		<iso_md_id>2</iso_md_id>
 		<!--
 		<mount>
 			<mdisk>/dev/xxx</mdisk>
@@ -172,6 +171,11 @@
 			<sharename>xxx</sharename>
 			<fullname>/dev/xxx</fullname>
 		</mount>
+		<iso>
+			<filename>xxx</filename>
+			<desc>xxx</desc>
+			<sharename>xxx</sharename>
+		</iso>
 		-->
 	</mounts>
 	<samba>

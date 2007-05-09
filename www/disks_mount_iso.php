@@ -50,7 +50,7 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			/* reload all components that mount disk */
-			disks_mount_iso_all();
+			$retval = disks_mount_iso_all();
 			/* reload all components that use mount */
 			services_samba_configure();
 			services_nfs_configure();
@@ -65,10 +65,11 @@ if ($_POST) {
 		}
 	}
 }
+
 if ($_GET['act'] == "del")
 {
 	if ($a_mount_iso[$_GET['id']]) {
-		disks_umount($a_mount[$_GET['id']]);
+		disks_umount_iso($a_mount_iso[$_GET['id']]);
 		unset($a_mount_iso[$_GET['id']]);
 		write_config();
 		touch($d_mount_iso_dirty_path);
@@ -76,7 +77,8 @@ if ($_GET['act'] == "del")
 		exit;
 	}
 }
-if ($_GET['act'] == "ret")
+
+if ($_GET['act'] == "retry")
 {
 	if ($a_mount_iso[$_GET['id']]) {
 		disks_mount_iso($a_mount_iso[$_GET['id']]);
@@ -94,8 +96,7 @@ if ($_GET['act'] == "ret")
         <li class="tabinact"><a href="disks_mount.php"><?=gettext("Manage");?></a></li>
         <li class="tabinact"><a href="disks_mount_tools.php"><?=gettext("Tools");?></a></li>
         <li class="tabinact"><a href="disks_mount_fsck.php"><?=gettext("Fsck");?></a></li>
-		<li class="tabact"><a href="disks_mount_iso.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("ISO");?></a></li>
-		
+				<li class="tabact"><a href="disks_mount_iso.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("ISO");?></a></li>
       </ul>
     </td>
   </tr>
@@ -109,15 +110,17 @@ if ($_GET['act'] == "ret")
         <?php endif; ?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="40%" class="listhdrr"><?=gettext("Filename"); ?></td>
-            <td width="25%" class="listhdrr"><?=gettext("Share Name") ;?></td>
-            <td width="25%" class="listhdr"><?=gettext("Status") ;?></td>
+            <td width="25%" class="listhdrr"><?=gettext("Filename"); ?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Share Name") ;?></td>
+            <td width="25%" class="listhdrr"><?=gettext("Description") ;?></td>
+            <td width="20%" class="listhdr"><?=gettext("Status") ;?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_mount_iso as $mount_iso): ?>
           <tr>
             <td class="listlr"><?=htmlspecialchars($mount_iso['filename']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount_iso['sharename']);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($mount['desc']);?>&nbsp;</td>
             <td class="listbg">
               <?php
               if (file_exists($d_mount_iso_dirty_path)) {
@@ -126,20 +129,19 @@ if ($_GET['act'] == "ret")
                 if(disks_ismounted_sharename($mount_iso['sharename'])) {
 									echo(gettext("OK"));
                 } else {
-                  echo(gettext("Error") . " - <a href=\"disks_mount_iso.php?act=ret&id={$i}\">" . gettext("Retry") . "</a>");
+                  echo(gettext("Error") . " - <a href=\"disks_mount_iso.php?act=retry&id={$i}\">" . gettext("Retry") . "</a>");
                 }
               }
               ?>&nbsp;
             </td>
             <td valign="middle" nowrap class="list">
-              <a href="disks_mount_iso_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit mount" width="17" height="17" border="0"></a>&nbsp;
               <a href="disks_mount_iso.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("delete mount"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>
           <?php $i++; endforeach; ?>
           <tr> 
-            <td class="list" colspan="3"></td>
-            <td class="list"><a href="disks_mount_iso_edit.php"><img src="plus.gif" title="<?=gettext("add ISO to mount");?>" width="17" height="17" border="0"></a></td>
+            <td class="list" colspan="4"></td>
+            <td class="list"><a href="disks_mount_iso_edit.php"><img src="plus.gif" title="<?=gettext("add mount");?>" width="17" height="17" border="0"></a></td>
           </tr>
         </table>
       </form>
