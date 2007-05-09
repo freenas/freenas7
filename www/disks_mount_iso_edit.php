@@ -95,15 +95,15 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$mount_iso = array();
-		$mount_iso['filename'] = $_POST['filename'];
-		$mount_iso['desc'] = $_POST['desc'];
-		$mount_iso['sharename'] = $_POST['sharename'];
+		$mount = array();
+		$mount['filename'] = $_POST['filename'];
+		$mount['desc'] = $_POST['desc'];
+		$mount['sharename'] = $_POST['sharename'];
 
 		if (isset($id) && $a_mount_iso[$id]) {
-			$a_mount_iso[$id] = $mount_iso;
+			$a_mount_iso[$id] = $mount;
 		} else {
-			$a_mount_iso[] = $mount_iso;
+			$a_mount_iso[] = $mount;
 		}
 
 		touch($d_mount_iso_dirty_path);

@@ -40,7 +40,7 @@ if (!is_array($config['mounts']['iso']))
 
 mount_iso_sort();
 
-$a_mount_iso = &$config['mounts']['iso'];
+$a_mount = &$config['mounts']['iso'];
 
 if ($_POST) {
 	$pconfig = $_POST;
@@ -68,9 +68,9 @@ if ($_POST) {
 
 if ($_GET['act'] == "del")
 {
-	if ($a_mount_iso[$_GET['id']]) {
-		disks_umount_iso($a_mount_iso[$_GET['id']]);
-		unset($a_mount_iso[$_GET['id']]);
+	if ($a_mount[$_GET['id']]) {
+		disks_umount_iso($a_mount[$_GET['id']]);
+		unset($a_mount[$_GET['id']]);
 		write_config();
 		touch($d_mount_iso_dirty_path);
 		header("Location: disks_mount_iso.php");
@@ -80,8 +80,8 @@ if ($_GET['act'] == "del")
 
 if ($_GET['act'] == "retry")
 {
-	if ($a_mount_iso[$_GET['id']]) {
-		disks_mount_iso($a_mount_iso[$_GET['id']]);
+	if ($a_mount[$_GET['id']]) {
+		disks_mount_iso($a_mount[$_GET['id']]);
 		header("Location: disks_mount_iso.php");
 		exit;
 	}
@@ -116,17 +116,17 @@ if ($_GET['act'] == "retry")
             <td width="20%" class="listhdr"><?=gettext("Status") ;?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($a_mount_iso as $mount_iso): ?>
+  			  <?php $i = 0; foreach($a_mount as $mount): ?>
           <tr>
-            <td class="listlr"><?=htmlspecialchars($mount_iso['filename']);?>&nbsp;</td>
-            <td class="listr"><?=htmlspecialchars($mount_iso['sharename']);?>&nbsp;</td>
+            <td class="listlr"><?=htmlspecialchars($mount['filename']);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($mount['sharename']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount['desc']);?>&nbsp;</td>
             <td class="listbg">
               <?php
               if (file_exists($d_mount_iso_dirty_path)) {
                 echo(gettext("Configuring"));
               } else {
-                if(disks_ismounted_sharename($mount_iso['sharename'])) {
+                if(disks_ismounted_sharename($mount['sharename'])) {
 									echo(gettext("OK"));
                 } else {
                   echo(gettext("Error") . " - <a href=\"disks_mount_iso.php?act=retry&id={$i}\">" . gettext("Retry") . "</a>");
