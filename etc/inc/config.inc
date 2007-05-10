@@ -706,7 +706,17 @@ function convert_config()
 
 		$config['version'] = "1.8";
 	}
-
+	
+	/* Convert 1.8 -> 1.9 */
+	/* Add type "disk" to existing mountpoint */
+	/* Add fullname (/dev/ad0s1) under mount point */
+	
+	if ($config['version'] == "1.8") {
+		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
+			$config['mounts']['mount'][$i]['type']= "disk"; 			
+		}
+	}
+	
 	write_config();
 	
 	if ($g['booting'])
