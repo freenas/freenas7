@@ -1,0 +1,41 @@
+diff -ruN lcdproc.orig/Makefile lcdproc/Makefile
+--- lcdproc.orig/Makefile        Fri May  4 10:36:35 2007
++++ lcdproc/Makefile     Fri May  4 08:55:08 2007
+@@ -6,8 +6,7 @@
+ #
+ PORTNAME=       lcdproc
+-PORTVERSION=    0.5.1
+-PORTREVISION=   1
++PORTVERSION=    0.5.2
+ CATEGORIES=     sysutils
+ MASTER_SITES=   ${MASTER_SITE_SOURCEFORGE}
+ MASTER_SITE_SUBDIR=     ${PORTNAME}
+diff -ruN lcdproc.orig/distinfo lcdproc/distinfo
+--- lcdproc.orig/distinfo        Fri May  4 10:36:35 2007
++++ lcdproc/distinfo     Fri May  4 10:38:13 2007
+@@ -1,3 +1,3 @@
+-MD5 (lcdproc-0.5.1.tar.gz) = ad13d6cce7a7e068d85a66d30285af95
+-SHA256 (lcdproc-0.5.1.tar.gz) = f459280eb4eeb70be584895364c97ffab22b888235b2351a31e1c87ca9710727
+-SIZE (lcdproc-0.5.1.tar.gz) = 800205
++MD5 (lcdproc-0.5.2.tar.gz) = 860f192d061d87dda6512b11b79daac2
++SHA256 (lcdproc-0.5.2.tar.gz) = 3261910dd9155229a2a6067c82ec4cca0d7900420f2d74c87a24b41b9b961036
++SIZE (lcdproc-0.5.2.tar.gz) = 822695
+diff -ruN lcdproc.orig/pkg-plist lcdproc/pkg-plist
+--- lcdproc.orig/pkg-plist       Fri May  4 10:36:35 2007
++++ lcdproc/pkg-plist    Fri May  4 09:27:05 2007
+@@ -14,6 +14,7 @@
+ lib/lcdproc/CFontz633.so
+ lib/lcdproc/CFontzPacket.so
+ lib/lcdproc/CwLnx.so
++lib/lcdproc/ea65.so
+ lib/lcdproc/EyeboxOne.so
+ %%USB%%lib/lcdproc/IOWarrior.so
+ lib/lcdproc/MD8800.so
+@@ -33,6 +34,7 @@
+ lib/lcdproc/pyramid.so
+ lib/lcdproc/sed1330.so
+ lib/lcdproc/sed1520.so
++lib/lcdproc/serialPOS.so
+ lib/lcdproc/serialVFD.so
+ lib/lcdproc/sli.so
+ lib/lcdproc/stv5730.so
