@@ -49,7 +49,7 @@ function disks_raid_check_mount($raid) {
 	$id = array_search_ex($raidfullname, $config['mounts']['mount'], "mdisk");
 	if( false !== $id) {
 		$mountfullname = $config['mounts']['mount'][$id]['fullname'];
-		$result = disks_ismounted_fullname($mountfullname);
+		$result = disks_ismounted_ex($mountfullname,"fullname");
 	}
 
 	return $result;

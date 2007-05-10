@@ -49,6 +49,9 @@ function disks_mount_all()
 				continue;
 
 			// Advanced umount filesystem if not in booting mode (mount edition).
+			// Background: 'disks_umount' can't be used in the case the mount point
+			// has been renamed by the user because it uses the 'sharename' (which is
+			// now the new name of the share, but we need the old name) for unmounting.
 			if (!$g['booting'])
 				disks_umount_ex($mount);
 
@@ -74,6 +77,24 @@ function disks_mount_all()
 	return 0;
 }
 
+// This function umount all configured mount points.
+// Return 0 if successful, otherwise 1
+function disks_umount_all()
+{
+	global $config;
+
+	// Sync disks first.
+	mwexec("/bin/sync");
+
+	if (is_array($config['mounts']['mount'])) {
+		foreach ($config['mounts']['mount'] as $mountent) {
+			disks_umount($mountent);
+		}
+	}
+
+	return 0;
+}
+
 // Mount using the configured mount given in parameter
 // Return 0 if sucessful, 1 if error
 function disks_mount($mount)
@@ -83,7 +104,7 @@ function disks_mount($mount)
 	$mountname = "/mnt/{$mount['sharename']}";
 
 	/* Create one directory for each device under /mnt. */
-	@mkdir("{$mountname}", 0777);
+	@mkdir($mountname, 0777);
 	/* Change this directory into 777 mode. */
 	mwexec("/bin/chmod 777 '{$mountname}'");
 
@@ -117,7 +138,7 @@ function disks_mount($mount)
 	}
 
 	/* Check the fileystem only if there is a problem. */
-	/* This part is too stupid: I must read the FreBSD start script for use the same intelligent method for checking hard drive */
+	/* This part is too stupid: I must read the FreeBSD start script for use the same intelligent method for checking hard drive */
 	switch ($mount['fstype']) {
 		case "ufs":
 			$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'"); 
@@ -309,108 +330,81 @@ function disks_umount_ex($mount)
 	return $result;
 }
 
-// Check if mount point is mounted. Use fullname/devicename
-// (e.g. /dev/ad0s1) as identifier.
-// Return 0 if not, 1 if yes
-function disks_ismounted_fullname($fullname)
-{
-	$status = 0;
-	$amountlist = get_mounts_list();
-
-	foreach ($amountlist as $amountk => $amountv) {
-		if (strcmp($amountv['fullname'], $fullname) == 0) {
-			$status = 1;
-			break;
-		}
-	}
-
-	return $status;
-}
-
-// Check if mount point is mounted. Use sharename as identifier.
-// Return 0 if not, 1 if yes
-function disks_ismounted_sharename($sharename)
-{
-	$status = 0;
-	$amountlist = get_mounts_list();
-
-	foreach ($amountlist as $amountk => $amountv) {
-		if (strcmp($amountv['sharename'], $sharename) == 0) {
-			$status = 1;
-			break;
-		}
-	}
-
-	return $status;
-}
-
-// Check if mount point is mounted. Use mdisk (e.g. ad0s1) as identifier.
-// Return 0 if not, 1 if yes
-function disks_ismounted_mdisk($disk)
-{
-	$status = 0;
- 	$amountlist = get_mounts_list();
-
-	foreach ($amountlist as $amountk => $amountv) {
-		// Must found the $disk (ad0) in result $mdisk (ad0s1).
-		// strpos will return 0 (found at position 0) if found, must check the 'false' value.
-		if (strpos($amountv['mdisk'], $disk) !== false) {
-			$status = 1;
-			break;
-		}
-	}
-
-	return $status;
-}
-
-// This option checks if the configured mount is mounted.
-// Return 0 if not, 1 if yes
+// Check if mount point is mounted.
+// $mount - Mount point config array
+// Return 0 if not mounted, otherwise 1
 function disks_ismounted($mount)
 {
-	// MUST CHECK IF IT'S NTFS filesystem, and use a disks_ismounted_sharename function!!
+	// MUST CHECK IF IT'S NTFS filesystem.
 	if (0 == strcmp($mount['fstype'],"ntfs")) {
-		return disks_ismounted_sharename($mount['sharename']);
+		return disks_ismounted_ex($mount['sharename'],"sharename");
 	} else {
-		return disks_ismounted_fullname($mount['fullname']);
+		return disks_ismounted_ex($mount['fullname'],"fullname");
 	}
 }
 
-/* This option check if the configured disk is online (detected by the system)
-Result: "MISSING", disk don't detected by OS
-Result: "ONLINE", disk is online
-Result: "CHANGED", disk have changed (be replaced ?) */
-function disks_status($diskname)
+// Check if mount point is mounted.
+// $var - The attribute value to search for
+// $key - The attribute name to search for
+// e.g.:  disks_ismounted_ex("/dev/ad0s1","fullname");
+//        disks_ismounted_ex("data","sharename");
+//        disks_ismounted_ex("ad0","mdisk");
+// Return 0 if not mounted, otherwise 1
+function disks_ismounted_ex($var,$key)
 {
-	$status = "MISSING";
-	$detectedlist = array_merge((array)get_physical_disks_list(),(array)get_cdrom_list());
+	$result = 0;
 
-	foreach ($detectedlist as $detecteddisk => $detecteddiskv) {
-		if ($detecteddisk == $diskname['name']) {
-			$status = "ONLINE";
+	// Get current mount list.
+	$amountlist = get_mounts_list();
+
+	foreach ($amountlist as $amountk => $amountv) {
+		switch ($key) {
+			case "mdisk":
+				// Must found the $val (e.g. ad0) in result $mdisk (e.g. ad0s1).
+				if (false !== strpos($amountv[$key], $var)) {
+					$result = 1;
+					break;
+				}
+				break;
+
+			default:
+				if (0 == strcmp($amountv[$key], $var)) {
+					$result = 1;
+					break;
+				}
+				break;
+		}
+	}
+
+	return $result;
+}
+
+// This option check if the configured disk is online (detected by the system).
+// $disk - Disk array
+//    (
+//        [type] => IDE
+//        [desc] => QUANTUM FIREBALL EX6.4A/A0A.0D00
+//        [size] => 6149MB
+//        [name] => ad0
+//        [fullname] => /dev/ad0
+//    )
+// Return: "MISSING", disk isn't detected by OS
+//         "ONLINE", disk is online
+function disks_status($disk)
+{
+	$result = "MISSING";
+
+	// Get list of detected disks (ATA,SCSI,CDROM,...).
+	$adetectedlist = array_merge((array)get_physical_disks_list(),(array)get_cdrom_list());
+
+	foreach ($adetectedlist as $detectedv) {
+		if (0 == strcmp($detectedv['name'], $disk['name'])) {
+			$result = "ONLINE";
 			break;
 		}
 	}
 
-	return $status;
-}
-
-// This function umount all configured mount.
-// Return 0 if successful, 1 if error
-function disks_umount_all()
-{
-	// Unmount all mount point
-	global $config;
-
-	// Sync disks.
-	mwexec("/bin/sync");
-
-	if (is_array($config['mounts']['mount'])) {
-		foreach ($config['mounts']['mount'] as $mountent) {
-			disks_umount($mountent);
-		}
-	}
-
-	return 0;
+	return $result;
 }
 
 // Configure, create and start gvinum volume.
@@ -1051,46 +1045,12 @@ function disks_set_ataidle()
 	return 0;
 }
 
-// Get list of partition information from disk.
-// Result is in the form:
-// [1] => Array
-// (
-// 	[start] => 31
-// 	[size]  => 409169
-// 	[type]  => 0xa5
-// 	[flags] => 0x80
-// )
-//
-// Called in disks_manage_tools.php
-// Return array of partition info
-function disks_get_partition_info($disk) {
-  exec("/sbin/fdisk -s {$disk}", $rawdata);
-
-  array_shift($rawdata);
-  array_shift($rawdata);
-
-  $result = array();
-
-  foreach($rawdata as $partinfo)   {
-    $apartinfo = preg_split("/\s+/", $partinfo);
-    $partid = chop($apartinfo[1],":");
-
-    $result[$partid] = array();
-		$result[$partid]['start'] = chop($apartinfo[2]);
-		$result[$partid]['size']  = chop($apartinfo[3]);
-		$result[$partid]['type']  = chop($apartinfo[4]);
-		$result[$partid]['flags'] = chop($apartinfo[5]);
-  }
-
-  return $result;
-}
-
 // Check the status of a geli encrypted disk
 // Return 0 if successful, 1 if error
 function disks_geli_check($gelifullname)
 {
 	$result = 1;
-	if (file_exists("$gelifullname")) {
+	if (file_exists($gelifullname)) {
 		$result = 0;
 	}
 	return $result;
@@ -1145,14 +1105,6 @@ function disks_geli_detach_all()
 	}
 	
 	return $result;
-}
-
-// Check is the iscsi initiator is connected to the target
-// Return 0 if successful, 1 if error
-function disks_iscsiinit_check($name)
-{
-	// To be Checked with a camcontrol ??
-	return 0;
 }
 
 // Format disk.
@@ -1257,7 +1209,43 @@ function disks_fsck($device,$umount = false)
 	return 0;
 }
 
+// Get list of partition information from disk.
+// $disk - Name of the disk (e.g. ad0)
+// Result is in the form:
+// [1] => Array
+// (
+// 	[start] => 31
+// 	[size]  => 409169
+// 	[type]  => 0xa5
+// 	[flags] => 0x80
+// )
+//
+// Called in disks_manage_tools.php
+// Return array of partition info
+function disks_get_partition_info($disk) {
+  exec("/sbin/fdisk -s {$disk}", $rawdata);
+
+  array_shift($rawdata);
+  array_shift($rawdata);
+
+  $result = array();
+
+  foreach($rawdata as $partinfo)   {
+    $apartinfo = preg_split("/\s+/", $partinfo);
+    $partid = chop($apartinfo[1],":");
+
+    $result[$partid] = array();
+		$result[$partid]['start'] = chop($apartinfo[2]);
+		$result[$partid]['size']  = chop($apartinfo[3]);
+		$result[$partid]['type']  = chop($apartinfo[4]);
+		$result[$partid]['flags'] = chop($apartinfo[5]);
+  }
+
+  return $result;
+}
+
 // Get disk informations.
+// $disk - Name of the disk (e.g. ad0)
 // Result is in the form:
 // [1] => Array
 // (

@@ -66,7 +66,7 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	$mount_fullname=$_POST['fullname']."s1";
-	if (disks_ismounted_fullname($mount_fullname) && ($_POST['action']== "detach")) {
+	if (disks_ismounted_ex($mount_fullname,"fullname") && ($_POST['action']== "detach")) {
 		$input_errors[] = gettext("This encrypted disk is mounted, umount it before trying to detach it.");
 	}
 
