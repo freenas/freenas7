@@ -70,8 +70,8 @@ if ($_POST) {
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval = services_nfs_configure();
-			services_mdnsresponder_configure(); // Update and announce service via zeroconf.
+			$retval |= services_nfs_configure();
+			$retval |= services_mdnsresponder_configure(); // Update and announce service via zeroconf.
 			config_unlock();
 		}
 

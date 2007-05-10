@@ -47,15 +47,10 @@ if ($_POST) {
 
 	if ($_POST['apply']) {
 		$retval = 0;
-		if (!file_exists($d_sysrebootreqd_path)) {
-			config_lock();
-			/* reload all components that mount disk */
-			// disks_mount_all();
-			/* Is formated?: If not create FS */
-			/* $retval = disk_disks_create_ufs(); */
-			
-			config_unlock();
-		}
+//	if (!file_exists($d_sysrebootreqd_path)) {
+//		config_lock();
+//		config_unlock();
+//	}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
 			if (file_exists($d_diskdirty_path))

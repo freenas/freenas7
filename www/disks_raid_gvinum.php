@@ -47,11 +47,9 @@ if ($_POST) {
 
 	if ($_POST['apply']) {
 		$retval = 0;
-		if (!file_exists($d_sysrebootreqd_path))
-		{
+		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			/* reload all components that create raid device */
-			disks_raid_gvinum_configure();
+			$retval |= disks_raid_gvinum_configure();
 			config_unlock();
 			write_config();
 		}

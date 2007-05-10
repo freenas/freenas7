@@ -95,9 +95,8 @@ if ($_POST) {
 
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			/* nuke the cache file */
 			config_lock();
-			services_unison_configure();
+			$retval |= services_unison_configure();
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

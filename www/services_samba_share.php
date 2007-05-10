@@ -52,8 +52,8 @@ if($_POST) {
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 		  config_lock();
-			services_samba_configure();
-			services_mdnsresponder_configure();
+			$retval |= services_samba_configure();
+			$retval |= services_mdnsresponder_configure();
 			config_unlock();
 		}
 

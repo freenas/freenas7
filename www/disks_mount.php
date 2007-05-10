@@ -49,11 +49,11 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			disks_mount_all();
-			services_samba_configure();
-			services_nfs_configure();
-			services_rsyncd_configure();
-			services_afpd_configure();
+			$retval |= disks_mount_all();
+			$retval |= services_samba_configure();
+			$retval |= services_nfs_configure();
+			$retval |= services_rsyncd_configure();
+			$retval |= services_afpd_configure();
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

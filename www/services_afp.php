@@ -70,12 +70,10 @@ if ($_POST) {
 		write_config();
 		
 		$retval = 0;
-		if (!file_exists($d_sysrebootreqd_path))
-		{
-			/* nuke the cache file */
+		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			services_afpd_configure();
-			services_mdnsresponder_configure(); // Update and announce service via zeroconf.
+			$retval |= services_afpd_configure();
+			$retval |= services_mdnsresponder_configure(); // Update and announce service via zeroconf.
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

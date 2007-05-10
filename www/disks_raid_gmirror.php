@@ -47,12 +47,9 @@ if ($_POST) {
 
 	if ($_POST['apply']) {
 		$retval = 0;
-		if (!file_exists($d_sysrebootreqd_path))
-		{
+		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			/* reload all components that create raid device */
-			disks_raid_gmirror_configure();
-			// MUST ADD CODE FOR ADDING RAID SIZE on the config file
+			$retval |= disks_raid_gmirror_configure();
 			config_unlock();
 			write_config();
 		}
