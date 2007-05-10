@@ -52,13 +52,8 @@ if ($_POST) {
 	$reqdfields = array();
 	$reqdfieldsn = array();
 
-	if ($_POST['enable'] && !$_POST['guest']) {
-		if (!$_POST['local'])
-			$input_errors[] = gettext("You must select at least one authentication method.");
-	}
-	if ($_POST['enable'] && !$_POST['local']) {
-		if (!$_POST['guest'])
-			$input_errors[] = gettext("You must select at least one authentication method.");
+	if ($_POST['enable'] && !($_POST['guest'] || $_POST['local'])) {
+		$input_errors[] = gettext("You must select at least one authentication method.");
 	}
 
 	if (!$input_errors) {
