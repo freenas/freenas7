@@ -56,7 +56,6 @@ $d_sysrebootreqd_path = $g['varrun_path'] . "/sysreboot.reqd";
 $d_allowedipsdirty_path = $g['varrun_path'] . "/allowedips.dirty";
 
 $d_mountdirty_path = $g['varrun_path'] . "/mount.dirty";
-$d_mount_iso_dirty_path = $g['varrun_path'] . "/mount_iso.dirty";
 $d_diskdirty_path = $g['varrun_path'] . "/disk.dirty";
 $d_gelidirty_path = $g['varrun_path'] . "/geli.dirty";
 $d_iscsiinitdirty_path = $g['varrun_path'] . "/iscsiinit.dirty";
@@ -276,16 +275,6 @@ function mount_sort() {
 	}
 
 	usort($config['mounts']['mount'], "mountcmp");
-}
-
-function mount_iso_sort() {
-	global $g, $config;
-
-	function mount_iso_cmp($a, $b) {
-		return strcmp($a['fullname'], $b['fullname']);
-	}
-
-	usort($config['mounts']['iso'], "mount_iso_cmp");
 }
 
 function disks_sort() {

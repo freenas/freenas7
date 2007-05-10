@@ -122,13 +122,10 @@
 	
 	/* RAID configuration */
 	disks_raid_start();
-	
+
 	/* Mount the disks */
 	disks_mount_all();
-	
-	/* Mount the ISO files */
-	disks_mount_iso_all();
-	
+
 	/* Enable the swap space */
 	// Should be done before the mount disk... but it use it
 	system_swap_configure();
