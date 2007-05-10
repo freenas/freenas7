@@ -423,7 +423,6 @@ EOD;
 	}
 
 	if ($config['system']['webgui']['protocol'] == "https") {
-	
 		if ($config['system']['webgui']['certificate'] && $config['system']['webgui']['private-key']) {
 			$cert = base64_decode($config['system']['webgui']['certificate']);
 			$key = base64_decode($config['system']['webgui']['private-key']);
@@ -482,30 +481,26 @@ ssl.engine = "enable"
 ssl.pemfile = "{$g['varetc_path']}/cert.pem"
 
 EOD;
-	
 	}
 
 	fwrite($fd, $lighttpdconf);
 	fclose($fd);
 
-	/* run lighttpd */
-	// check if there is a previous error
+	// Run lighttpd. Check if there is a previous error.
 	if (!$result) {
 		$result = mwexec("/usr/local/sbin/lighttpd -f  {$g['varetc_path']}/lighttpd.conf -m /usr/local/lib/lighttpd");
 	}
 
-	if (($g['booting']) && (!$result)) {
-		write_console("done\n");
+	if (0 == $result) {
+		if($g['booting'])
+			write_console("done\n");
 		write_log("WebGUI started");
-	} else if (!$result) {
-		write_log("WebGUI started");
-	} else if ($g['booting']) {
-		write_console("failed\n");
-		write_log("Fail to start WebGUI");
 	} else {
-		write_log("Fail to start WebGUI");
+		if($g['booting'])
+			write_console("failed\n");
+		write_log("Error: Failed to start WebGUI");
 	}
-	
+
 	return $result;
 }
 
@@ -572,7 +567,7 @@ function system_ntp_configure() {
 	else {
 		killbypid("{$g['varrun_path']}/runmsntp.pid");
 		killbypid("{$g['varrun_path']}/msntp.pid");
-		write_log("Stoping NTP client");
+		write_log("Stopping NTP client");
 	}
 
 	/* start ntp client if needed - needs to be forced into background */
@@ -853,41 +848,38 @@ EOD;
 	return 0;
 }
 
+// Create all passwd files.
+// Return 0 if successful, otherwise 1
 function system_users_create()
 {
-	/* Create All the passwd file */
-	global $config, $g;
-	
+	global $g;
+
 	$result = 0;
-	
+
 	if ($g['booting'])
 		write_console("Generating user database... ");
-	
-	if (system_user_masterpasswd() )
-		$result = 1;
-	if (system_user_group() )
-		$result = 1;
-	if (system_user_pwdmkdb() )
-		$result = 1;
-	
-	if (($g['booting']) && (!$result)) {
-		write_console("done\n");
+
+	$result |= system_user_masterpasswd();
+	$result |= system_user_group();
+	$result |= system_user_pwdmkdb();
+
+	if (0 == $result) {
+		if($g['booting'])
+			write_console("done\n");
 		write_log("User database created");
-	} else if (!$result) {
-		write_log("User database created");
-	} else if ($g['booting']) {
-		write_console("failed\n");
-		write_log("Fail to create User database");
 	} else {
-		write_log("Fail to create User database");
-	}	
-	
+		if($g['booting'])
+			write_console("failed\n");
+		write_log("Error: Failed to create user database");
+	}
+
 	return $result;
 }
 
+// Create the master.passwd file.
+// Return 0 if successful, otherwise 1
 function system_user_masterpasswd()
 {
-	/* Create the master.passwd file*/
 	global $config, $g;
 	
 	$masterpasswd = <<<EOD
@@ -944,9 +936,10 @@ EOD;
 	return 0;
 }
 
+// Create the group file.
+// Return 0 if successful, otherwise 1
 function system_user_group()
 {
-	/* Create the group file*/
 	global $config, $g;
 	
 	$groupfile = <<<EOD
@@ -995,7 +988,6 @@ EOD;
 {$group['name']}:*:{$group['id']}:
 
 EOD;
-
 		}
 	}
 
@@ -1013,30 +1005,27 @@ EOD;
 	return 0;
 }
 
+// Generate the db of password.
+// Return 0 if successful, otherwise 1
 function system_user_pwdmkdb()
 {
-	/* Generate the db of password */
 	global $config, $g;
 		
 	return (mwexec("/usr/sbin/pwd_mkdb -p -d {$g['varetc_path']} {$g['varetc_path']}/master.passwd"));
 }
 
+// Generate the db of password.
+// Return 0 if successful, otherwise 1
 function system_user_samba()
 {
-	/* Generate the db of password */
-	
 	// MUST FIND A WAY OF USING UNIX CRYPTED PASSWORD IN THE PLACE OF CLEAR TEXT PASSWORD FOR GENERATING SAMBA DB!!!
-	
 	global $config;
-	
-	if (is_array($config['access']['user'])) 	{
-		
-		foreach ($config['access']['user'] as $user) 		{		
+
+	if (is_array($config['access']['user'])) {
+		foreach ($config['access']['user'] as $user) {
 			$password = escapeshellcmd($user['password']);
 			$login = escapeshellcmd($user['login']);
 			mwexec("(/bin/echo {$password}; /bin/echo {$password}) | /usr/local/bin/smbpasswd -s -a {$login}");
-			
-			//mwexec("(/bin/echo {$password}; /bin/echo {$password}) | /usr/local/bin/pdbedit -tau {$login}");
 		}
 	}
 	
@@ -1426,9 +1415,8 @@ EOD;
 		fclose($fd);
 		chmod("{$g['varetc_path']}/ldap.secret",0600);
 		unset($fd);	
-			
 	}
-	
+
 	return $result;
 }
 
@@ -1439,8 +1427,7 @@ function system_tuning()
 	/* fine tune kernel value */
 	global $config, $g;
 
-	if (isset($config['system']['tune'])) 	{
-
+	if (isset($config['system']['tune'])) {
 		if ($g['booting']) {
 			write_console("Tuning the system... ");
 		}
@@ -1566,7 +1553,6 @@ function system_swap_disable()
 			write_log("Deleting swap file");
 			$result = mwexec("rm -f /mnt/{$config['system']['swap_mountname']}/swap_file");
 		}
-		
 	}
 
 	return $result;
