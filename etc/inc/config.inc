@@ -715,6 +715,8 @@ function convert_config()
 		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
 			$config['mounts']['mount'][$i]['type']= "disk"; 			
 		}
+		
+		$config['version'] = "1.9";
 	}
 	
 	write_config();
