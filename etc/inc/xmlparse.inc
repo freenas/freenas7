@@ -39,7 +39,7 @@ $listtags = explode(" ", "key dnsserver winsserver disk vdisk diskr sharetosync 
 	"encryption-algorithm-option hash-algorithm-option hosts onetoone hidemount " .
 	"staticmap route pipe queue shellcmd cacert earlyshellcmd user group " .
 	"servernat nfsnetworks passthrumac allowedip mount vlan domainoverrides " .
-	"minute hour day month weekday content rsyncclient rsynclocal iso package");
+	"minute hour day month weekday content rsyncclient rsynclocal package");
 
 function startElement($parser, $name, $attrs) {
 	global $depth, $curpath, $config, $havedata, $listtags;
@@ -53,8 +53,7 @@ function startElement($parser, $name, $attrs) {
 	
 	/* is it an element that belongs to a list? */
 	if (in_array(strtolower($name), $listtags)) {
-	
-		/* is there an array already? */
+			/* is there an array already? */
 		if (!is_array($ptr)) {
 			/* make an array */
 			$ptr = array();
@@ -115,7 +114,6 @@ function cData($parser, $data) {
 }
 
 function parse_xml_config($cffile, $rootobj) {
-
 	global $depth, $curpath, $config, $havedata, $listtags;
 
 	$config = array();
@@ -149,7 +147,6 @@ function parse_xml_config($cffile, $rootobj) {
 }
 
 function dump_xml_config_sub($arr, $indent) {
-
 	global $listtags;
 	
 	$xmlconfig = "";
@@ -197,7 +194,6 @@ function dump_xml_config_sub($arr, $indent) {
 }
 
 function dump_xml_config($arr, $rootobj) {
-
 	$xmlconfig = "<?xml version=\"1.0\"?" . ">\n";
 	$xmlconfig .= "<$rootobj>\n";
 		
@@ -207,5 +203,4 @@ function dump_xml_config($arr, $rootobj) {
 	
 	return $xmlconfig;
 }
-
 ?>
