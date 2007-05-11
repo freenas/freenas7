@@ -1108,7 +1108,7 @@ function verify_digital_signature($fname) {
 		escapeshellarg($fname));
 }
 
-/* obtain MAC address given an IP address by looking at the ARP table */
+// Obtain MAC address given an IP address by looking at the ARP table.
 function arp_get_mac_by_ip($ip) {
 	exec("/usr/sbin/arp -n {$ip}", $arpoutput);
 	
@@ -1124,7 +1124,7 @@ function arp_get_mac_by_ip($ip) {
 	return false;
 }
 
-/* get the interface name */
+// Get the interface name.
 function get_ifname($if)
 {
   // Check if 'auto' mode is activated.
@@ -1136,7 +1136,7 @@ function get_ifname($if)
   return $if;
 }
 
-/* get local IP address */
+// Get local IP address.
 function get_ipaddr($if)
 {
   $if = get_ifname($if);
@@ -1158,12 +1158,12 @@ function get_ipaddr($if)
   }
 
   if (strcmp($ipaddr,"") == 0)
-    write_console("Failed to get IP address for interface $if. ");
+    write_console("Failed to get IP address for interface {$if}. ");
 
   return $ipaddr;
 }
 
-/* get local MAC address */
+// Get local MAC address.
 function get_macaddr($if)
 {
   $if = get_ifname($if);
@@ -1183,17 +1183,17 @@ function get_macaddr($if)
   }
 
   if (strcmp($macaddr,"") == 0) {
-    write_console("Failed to get MAC address for interface $if. ");
+    write_console("Failed to get MAC address for interface {$if}. ");
   }
 
   return $macaddr;
 }
 
-/* Get DNS servers.
-Parse /etc/resolv.conf when using DHCP (will be updated
-when 'dhclient' is executed), otherwise use configured
-DNS servers from config.xml for static IP.
-Returns array of DNS servers. */
+// Get DNS servers.
+// Parse /etc/resolv.conf when using DHCP (will be updated
+// when 'dhclient' is executed), otherwise use configured
+// DNS servers from config.xml for static IP.
+// Returns array of DNS servers.
 function get_dnsserver() {
 	global $config;
 
@@ -1246,74 +1246,34 @@ function get_defaultgateway() {
 	return $result;
 }
 
-/* Get list of disks from given type of filesystem. */
+// Get list of disks from given type of filesystem.
+// Return list containing disks of specified filesystem type
 function get_fstype_disks_list($fstype) {
 	global $config;
 
 	$result = array();
-	
-	/* Scan all physical disk */
+
+	// Scan all physical disk */
 	if (is_array($config['disks']['disk'])) {
 		foreach ($config['disks']['disk'] as $disk) {
 			if (strcmp($disk['fstype'],$fstype) == 0) {
 				$result[] = $disk;
 			}
-    	}
-  	}
+   	}
+ 	}
 
-	/* Scan all gmirror volume */
-	if (is_array($config['gmirror']['vdisk'])) {
-		foreach ($config['gmirror']['vdisk'] as $disk) {
-			if (strcmp($disk['fstype'],$fstype) == 0) {
-				$result[] = $disk;
+	// Scan all vdisk volumes.
+	$avdisktype = explode(" ","gmirror gconcat gstripe gvinum graid5 geli");
+	foreach ($avdisktype as $vdisktypev) {
+		if (is_array($config[$vdisktypev]['vdisk'])) {
+			foreach ($config[$vdisktypev]['vdisk'] as $disk) {
+				if (0 == strcmp($disk['fstype'],$fstype)) {
+					$result[] = $disk;
+				}
 			}
-    	}
-  	}
+		}
+	}
 
-	/* Scan all gconcat volume */
-	if (is_array($config['gconcat']['vdisk'])) {
-		foreach ($config['gconcat']['vdisk'] as $disk) {
-			if (strcmp($disk['fstype'],$fstype) == 0) {
-				$result[] = $disk;
-			}
-    	}
-  	}
-	
-	/* Scan all gstripe volume */
-	if (is_array($config['gstripe']['vdisk'])) {
-		foreach ($config['gstripe']['vdisk'] as $disk) {
-			if (strcmp($disk['fstype'],$fstype) == 0) {
-				$result[] = $disk;
-			}
-    	}
-  	}
-	
-	/* Scan all gvinum volume */
-	if (is_array($config['gvinum']['vdisk'])) {
-		foreach ($config['gvinum']['vdisk'] as $disk) {
-			if (strcmp($disk['fstype'],$fstype) == 0) {
-				$result[] = $disk;
-			}
-    	}
-  	}
-
-	/* Scan all graid5 volume */
-	if (is_array($config['graid5']['vdisk'])) {
-		foreach ($config['graid5']['vdisk'] as $disk) {
-			if (strcmp($disk['fstype'],$fstype) == 0) {
-				$result[] = $disk;
-			}
-    	}
-  	}
-	
-	/* Scan all geli volume */
-	if (is_array($config['geli']['vdisk'])) {
-		foreach ($config['geli']['vdisk'] as $disk) {
-			if (strcmp($disk['fstype'],$fstype) == 0) {
-				$result[] = $disk;
-			}
-    	}
-  	}
 	return $result;
 }
 
