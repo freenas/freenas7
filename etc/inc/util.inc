@@ -1344,13 +1344,30 @@ function array_search_ex($needle, $haystack, $key)
   return false;
 }
 
-/*
-  Get interface informations. 
-  $iftype - interface name (e.g. de0, ...)
-*/
-function get_interface_info($if)
-{
-	global $config, $g;
+// Get interface informations. 
+// $if - Interface name (e.g. re0, ...)
+// Result: Array
+//	(
+//		[hwif] => re0
+//		[if] => re0
+//		[status] => up
+//		[macaddr] => 00:0e:2e:0a:62:75
+//		[inpkts] => 367
+//		[inerrs] => 0
+//		[inbytes] => 54478
+//		[outpkts] => 401
+//		[outerrs] => 0
+//		[outbytes] => 327601
+//		[collisions] => 0
+//		[media] => 100baseTX
+//		[ipaddr] => 192.168.178.150
+//		[subnet] => 255.255.255.0
+// Additional:
+//		[channel] => xxx
+//		[ssid] => xxx
+//	)
+function get_interface_info($if) {
+	global $config;
 
 	$ifinfo = array();
 
@@ -1389,14 +1406,10 @@ function get_interface_info($if)
 		exec("/sbin/ifconfig " . $ifinfo['hwif'], $ifconfiginfo);
 
 		foreach ($ifconfiginfo as $ici) {
-			if (!isset($config['interfaces'][$iftype]['wireless'])) {
-				/* don't list media/speed for wireless cards, as it always
-				   displays 2 Mbps even though clients can connect at 11 Mbps */
-				if (preg_match("/media: .*? \((.*?)\)/", $ici, $matches)) {
-					$ifinfo['media'] = $matches[1];
-				} else if (preg_match("/media: Ethernet (.*)/", $ici, $matches)) {
-					$ifinfo['media'] = $matches[1];
-				}
+			if (preg_match("/media: .*? \((.*?)\)/", $ici, $matches)) {
+				$ifinfo['media'] = $matches[1];
+			} else if (preg_match("/media: Ethernet (.*)/", $ici, $matches)) {
+				$ifinfo['media'] = $matches[1];
 			}
 			if (preg_match("/status: (.*)$/", $ici, $matches)) {
 				if ($matches[1] != "active")
@@ -1427,35 +1440,40 @@ function get_interface_info($if)
 						$ifinfo['subnet'] = long2ip(hexdec($matches[1]));
 				}
 			}
-
-			if ($iftype == "lan") {
-				/* run netstat to determine the default gateway */
-				unset($netstatrninfo);
-				exec("/usr/bin/netstat -rnf inet", $netstatrninfo);
-				
-				foreach ($netstatrninfo as $nsr) {
-					if (preg_match("/^default\s*(\S+)/", $nsr, $matches)) {
-						$ifinfo['gateway'] = $matches[1];
-					}
-				}
-			}
 		}
 	}
 
 	return $ifinfo;
 }
 
-/*
-  Get interface informations. 
-  $iftype - interface type (e.g. lan, opt[n], ...)
-*/
-function get_interface_info_ex($iftype)
-{
+// Get interface informations. 
+// $iftype - interface type (e.g. lan, opt[n], ...)
+// Result: Array
+//	(
+//		see get_interface_info()
+// Additional:
+//    [gateway] => 192.168.178.1
+//	)
+function get_interface_info_ex($iftype) {
   global $config;
-  
-  /* find out interface name */
-	$if = $config['interfaces'][$iftype]['if'];
-	return get_interface_info($if);
+
+  // Get interfave informations.
+	$ifinfo = get_interface_info($config['interfaces'][$iftype]['if']);
+
+	// Get the default gateway if necessary.
+	if ($iftype == "lan") {
+		// Run netstat to determine the default gateway.
+		unset($netstatrninfo);
+		exec("/usr/bin/netstat -rnf inet", $netstatrninfo);
+
+		foreach ($netstatrninfo as $nsr) {
+			if (preg_match("/^default\s*(\S+)/", $nsr, $matches)) {
+				$ifinfo['gateway'] = $matches[1];
+			}
+		}
+	}
+
+	return $ifinfo;
 }
 
 /* Get the product name */

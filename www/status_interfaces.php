@@ -55,9 +55,9 @@ $pgtitle = array(gettext("Status"), gettext("Interfaces"));
         </td>
       </tr>
       <tr>
-        <td width="22%" class="vncellt"><?=gettext("Status");?></td>
+        <td width="22%" class="vncellt"><?=gettext("Name");?></td>
         <td width="78%" class="listr">
-          <?=htmlspecialchars($ifinfo['status']);?>
+          <?=htmlspecialchars($ifinfo['hwif']);?>
         </td>
       </tr>
       <?php if ($ifinfo['dhcplink']): ?>
@@ -173,6 +173,12 @@ $pgtitle = array(gettext("Status"), gettext("Interfaces"));
       </tr>
       <?php endif; ?>
   	  <?php endif; ?>
+  	  <tr>
+        <td width="22%" class="vncellt"><?=gettext("Status");?></td>
+        <td width="78%" class="listr">
+          <?=htmlspecialchars($ifinfo['status']);?>
+        </td>
+      </tr>
     <?php $i++; endforeach; ?>
   </table>
 </form>
