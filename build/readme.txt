@@ -94,6 +94,7 @@ Minors changes:
 - Fix bug in system_systime_set function. Thanks to Paul Wheels for the tip.
 - Improve hidden diagnostic status.php page.
 - ATA timeout default value (5) was changed to 15 second when graid5 is used.
+- Add geom NOP: Will permit to add drives to an existing graid5 volume
 
 Bug fixs:
 - Add missing winbind/smbpass pam modules

@@ -128,6 +128,9 @@ sbin/gstripe
 ## gmirror -- Geom mirror
 sbin/gmirror
 
+## gnop -- Geom NOP (Permit to add drive to a graid5 volume)
+sbin/gnop
+
 ## gpt -- Manipulate GUID partition tables
 sbin/gpt
 
