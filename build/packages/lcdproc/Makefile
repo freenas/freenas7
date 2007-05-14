@@ -4,9 +4,10 @@ CATEGORIES=	sysutils
 MAINTAINER=	votdev@gmx.de
 COMMENT=	A client/server suite for LCD devices
 
-# Package depends on port 'lcdproc'.
+# Package depends on port 'lcdproc' and 'libusb'.
+LIB_DEPENDS+=	usb-0.1.8:${PORTSDIR}/devel/libusb
 BUILD_DEPENDS=	lcdproc:${PORTSDIR}/sysutils/lcdproc
-DEPENDS_ARGS+=	WITH_USB
+DEPENDS_ARGS+=	WITH_USB=yes
 
 do-patch:
 	-@if [ ! -e ${PORTSDIR}/sysutils/lcdproc.orig ]; then \
