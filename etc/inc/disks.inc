@@ -968,7 +968,7 @@ function disks_raid_graid5_delete($raidname)
 	// mwexec("/sbin/graid5 stop {$raidname}");
 
 	// The volume can disapear a few second after stop
-	sleep(2);
+	//sleep(2);
 
 	// Clear the graid5 information on the hard drive
 	foreach ($config['graid5']['vdisk'] as $a_raid) {
