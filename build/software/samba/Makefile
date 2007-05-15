@@ -2,7 +2,7 @@ PKGNAME=	samba
 COMMENT=	A free SMB and CIFS client and server for UNIX
 MAINTAINER=	votdev@gmx.de
 
-ARCHIVE=	samba-3.0.24.tar.gz
+ARCHIVE=	samba-3.0.25.tar.gz
 URL=	http://us3.samba.org/samba/ftp/stable/$(ARCHIVE)
 SRCDIR=	${FREENAS_WORKINGDIR}/$$(basename $(ARCHIVE) .tar.gz)
 
@@ -21,7 +21,9 @@ do-build:
 
 	@${TAR} -zxvf ${FREENAS_DISTFILES}/$(ARCHIVE) -C ${FREENAS_WORKINGDIR}
 
-	@cd $(SRCDIR)/source && ./configure --without-cups --with-ads --disable-cups --with-pam --with-ldapsam --with-acl-support --with-winbind --with-pam_smbpass --with-logfilebase=${SAMBA_LOGFILEBASE} --with-piddir=${SAMBA_PIDDIR} --with-privatedir=${SAMBA_PRIVATEDIR} --with-configdir=${SAMBA_CONFIGDIR} --with-lockdir=${SAMBA_LOCKDIR} --with-piddir=${SAMBA_PIDDIR} --with-shared-modules=idmap_rid --with-pammodulesdir=${SAMBA_PAMMODULESDIR} --with-syslog --with-ldap
+# Disable --with-acl-support because of linker errors. 
+# @cd $(SRCDIR)/source && ./configure --without-cups --with-ads --disable-cups --with-pam --with-ldapsam --with-acl-support --with-winbind --with-pam_smbpass --with-logfilebase=${SAMBA_LOGFILEBASE} --with-piddir=${SAMBA_PIDDIR} --with-privatedir=${SAMBA_PRIVATEDIR} --with-configdir=${SAMBA_CONFIGDIR} --with-lockdir=${SAMBA_LOCKDIR} --with-piddir=${SAMBA_PIDDIR} --with-shared-modules=idmap_rid --with-pammodulesdir=${SAMBA_PAMMODULESDIR} --with-syslog --with-ldap
+	@cd $(SRCDIR)/source && ./configure --without-cups --with-ads --disable-cups --with-pam --with-ldapsam --with-winbind --with-pam_smbpass --with-logfilebase=${SAMBA_LOGFILEBASE} --with-piddir=${SAMBA_PIDDIR} --with-privatedir=${SAMBA_PRIVATEDIR} --with-configdir=${SAMBA_CONFIGDIR} --with-lockdir=${SAMBA_LOCKDIR} --with-piddir=${SAMBA_PIDDIR} --with-shared-modules=idmap_rid --with-pammodulesdir=${SAMBA_PAMMODULESDIR} --with-syslog --with-ldap
 	@${MAKE} -C $(SRCDIR)/source
 
 do-install:
