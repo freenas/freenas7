@@ -61,6 +61,7 @@ $pconfig['rcvbuf'] = $config['samba']['rcvbuf'];
 $pconfig['enable'] = isset($config['samba']['enable']);
 $pconfig['recyclebin'] = isset($config['samba']['recyclebin']);
 $pconfig['largereadwrite'] = isset($config['samba']['largereadwrite']);
+$pconfig['easupport'] = isset($config['samba']['easupport']);
 
 if ($_POST)
 {
@@ -108,6 +109,7 @@ if ($_POST)
 		$config['samba']['rcvbuf'] = $_POST['rcvbuf'];
 		$config['samba']['recyclebin'] = $_POST['recyclebin'] ? true : false;
 		$config['samba']['largereadwrite'] = $_POST['largereadwrite'] ? true : false;
+		$config['samba']['easupport'] = $_POST['easupport'] ? true : false;
 		$config['samba']['enable'] = $_POST['enable'] ? true : false;
 
 		write_config();
@@ -144,6 +146,7 @@ function enable_change(enable_change) {
 	document.iform.recyclebin.disabled = endis;
 	document.iform.security.disabled = endis;
 	document.iform.largereadwrite.disabled = endis;
+	document.iform.easupport.disabled = endis;
 }
 //-->
 </script>
@@ -288,6 +291,12 @@ function enable_change(enable_change) {
               <?=gettext("This will create a recycle bin on the CIFS shares.");?></span>
             </td>
           </tr>
+          <tr>
+			      <td colspan="2" class="list" height="12"></td>
+			    </tr>
+			    <tr>
+			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
+			    </tr>
 	        <tr>
             <td width="22%" valign="top" class="vncell"><?=gettext("Send Buffer Size"); ?></td>
             <td width="78%" class="vtable">
@@ -310,6 +319,14 @@ function enable_change(enable_change) {
               <?=gettext("Use the new 64k streaming read and write variant SMB requests.");?></span>
             </td>
           </tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("EA support");?></td>
+						<td width="78%" class="vtable">
+							<input name="easupport" type="checkbox" id="easupport" value="yes" <?php if ($pconfig['easupport']) echo "checked"; ?>>
+							<?=gettext("Enable extended attribute support");?><span class="vexpl"><br>
+							<?=gettext("Allow clients to attempt to store OS/2 style extended attributes on a share.");?></span>
+						</td>
+					</tr>
   				<tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%">

@@ -107,64 +107,68 @@ function enable_change(enable_change) {
 </script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-            <form action="services_sshd.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td colspan="2" valign="top" class="optsect_t">
-				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong><?=gettext("SSH Daemon");?></strong></td>
-				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td></tr>
-				  </table></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Read only");?></td>
-                  <td width="78%" class="vtable">
-					<select name="readonly" class="formfld" id="readonly">
-                      <?php $types = array(gettext("Yes"),gettext("No"));
-					        $vals = explode(" ", "yes no");
-					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['readonly']) echo "selected";?>> 
-                      <?=htmlspecialchars($types[$j]);?>
-                      </option>
-                      <?php endfor; ?>
-                    </select></td>
-				        </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
-                     <br><?=gettext("Alternate TCP port. Default is 22");?></td>
-                  </td>
-				        </tr>
-				        <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=gettext("Permit root login");?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
-                    <?=gettext("Specifies whether it is allowed to login as superuser (root) directly.");?>
-                </tr>
- <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=gettext("Enable TCP Forwarding");?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="tcpforwarding" type="checkbox" id="tcpforwarding" value="yes" <?php if ($pconfig['tcpforwarding']) echo "checked"; ?>>
-                    <?=gettext("Permit to do SSH Tunneling.");?>
-                </tr>
-                <tr> 
-                  <td colspan="2" valign="top" class="listtopic"><?=gettext("SSH key");?></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncell"><?=gettext("Private Key");?></td>
-                  <td width="78%" class="vtable"> 
-                    <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea>
-                    <br> 
-                    <?=gettext("Paste a DSA PRIVATE KEY in PEM format here.");?></td>
-                </tr>
-				        <tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)"> 
-                  </td>
-                </tr>
-                </table>
+<form action="services_sshd.php" method="post" name="iform" id="iform">
+  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+    <tr> 
+      <td colspan="2" valign="top" class="optsect_t">
+				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+				  <tr>
+						<td class="optsect_s"><strong><?=gettext("SSH Daemon");?></strong></td>
+						<td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
+					</tr>
+				</table>
+			</td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Read only");?></td>
+      <td width="78%" class="vtable">
+				<select name="readonly" class="formfld" id="readonly">
+          <?php $types = array(gettext("Yes"),gettext("No")); $vals = explode(" ", "yes no"); $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['readonly']) echo "selected";?>> 
+          <?=htmlspecialchars($types[$j]);?>
+          </option>
+          <?php endfor; ?>
+        </select></td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
+      <td width="78%" class="vtable"> 
+        <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
+         <br><?=gettext("Alternate TCP port. Default is 22");?></td>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=gettext("Permit root login");?></td>
+      <td width="78%" class="vtable"> 
+        <input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
+        <?=gettext("Specifies whether it is allowed to login as superuser (root) directly.");?>
+    </tr>
+		<tr>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Enable TCP Forwarding");?></td>
+      <td width="78%" class="vtable"> 
+        <input name="tcpforwarding" type="checkbox" id="tcpforwarding" value="yes" <?php if ($pconfig['tcpforwarding']) echo "checked"; ?>>
+        <?=gettext("Permit to do SSH Tunneling.");?>
+    </tr>
+		<tr>
+			<td colspan="2" class="list" height="12"></td>
+		</tr>
+    <tr>
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("SSH key");?></td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncell"><?=gettext("Private Key");?></td>
+      <td width="78%" class="vtable"> 
+        <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea>
+        <br> 
+        <?=gettext("Paste a DSA PRIVATE KEY in PEM format here.");?></td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top">&nbsp;</td>
+      <td width="78%"> 
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)"> 
+      </td>
+    </tr>
+  </table>
 </form>
 <script language="JavaScript">
 <!--

@@ -166,18 +166,29 @@ EOD;
 unix charset = {$config['samba']['unixcharset']}
 
 EOD;
-		}
-		else {
+		} else {
 			$sambaconf .= <<<EOD
 
 unix charset = UTF-8
 
 EOD;
-		
 		}
-			
-		$sambaconf .= <<<EOD
 
+		if (!isset($config['samba']['largereadwrite'])) {
+			$sambaconf .= <<<EOD
+large readwrite = no
+
+EOD;
+		}
+
+		if (isset($config['samba']['easupport'])) {
+			$sambaconf .= <<<EOD
+ea support = yes
+
+EOD;
+		}
+
+		$sambaconf .= <<<EOD
 local master = {$config['samba']['localmaster']}
 time server = {$config['samba']['timesrv']}
 guest account = ftp
@@ -282,13 +293,6 @@ recycle:versions = Yes
 
 EOD;
 			}
-		}
-
-		if (!isset($config['samba']['largereadwrite'])) {
-			$sambaconf .= <<<EOD
-large readwrite = no
-
-EOD;
 		}
 
 		fwrite($fd, $sambaconf);

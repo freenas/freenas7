@@ -95,6 +95,7 @@ Minors changes:
 - Improve hidden diagnostic status.php page.
 - ATA timeout default value (5) was changed to 15 second when graid5 is used.
 - Add geom NOP: Will permit to add drives to an existing graid5 volume
+- Added option to enable/disable 'ea support' for CIFS
 
 Bug fixs:
 - Add missing winbind/smbpass pam modules
