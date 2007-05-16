@@ -98,6 +98,7 @@ Minors changes:
 - CIFS: Add checkbox to enable/disable 'large readwrite' support
 - CIFS: Added option to enable/disable 'ea support'
 - CIFS: Added new "pipe-lined read support" for improved performance when transferring files with Vista client
+- CIFS: Added "netatalk" VFS plugin for hidding Netatalk (AFP) system file
 
 Bug fixs:
 - Add missing winbind/smbpass pam modules

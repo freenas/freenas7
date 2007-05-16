@@ -269,8 +269,8 @@ path = /mnt/{$mountent['sharename']}
 public = yes
 writeable = yes
 printable = no
-#Old veto line that create problem with 'icon' named file for example
-#veto files = /Network Trash Folder/Icon?/:2e*/.AppleDesktop/.AppleDB/.AppleDouble/TheFindByContentFolder/TheVolumeSettingsFolder/Temporary Items/.snap/
+#Hidde .snap folder
+#veto files = /.snap
 #This next line can (hide dot file) can be enough:
 hide dot files = yes
 {$guestmode}
@@ -299,6 +299,13 @@ vfs objects = readahead
 
 EOD;
 			}
+			if (isset($config['afp']['enable'])) 	{
+				$sambaconf .= <<<EOD
+vfs objects = netatalk
+
+EOD;
+			}			
+			
 		}
 
 		fwrite($fd, $sambaconf);

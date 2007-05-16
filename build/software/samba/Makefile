@@ -48,6 +48,7 @@ do-install:
 	@${CP} -pv $(SRCDIR)/source/po/*.* ${FREENAS_ROOTFS}/usr/local/lib/samba
 	@${CP} -pv $(SRCDIR)/source/bin/recycle.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
 	@${CP} -pv $(SRCDIR)/source/bin/readahead.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
+	@${CP} -pv $(SRCDIR)/source/bin/netatalk.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
 	@${CP} -pv $(SRCDIR)/source/bin/rid.so ${FREENAS_ROOTFS}/usr/local/samba/lib/idmap
 
 	@${INSTALL_PROGRAM} $(SRCDIR)/source/bin/pam_smbpass.so ${FREENAS_ROOTFS}/usr/local/lib
