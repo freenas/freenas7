@@ -62,6 +62,8 @@ $pconfig['enable'] = isset($config['samba']['enable']);
 $pconfig['recyclebin'] = isset($config['samba']['recyclebin']);
 $pconfig['largereadwrite'] = isset($config['samba']['largereadwrite']);
 $pconfig['easupport'] = isset($config['samba']['easupport']);
+$pconfig['readahead'] = isset($config['samba']['readahead']);
+
 
 if ($_POST)
 {
@@ -110,6 +112,7 @@ if ($_POST)
 		$config['samba']['recyclebin'] = $_POST['recyclebin'] ? true : false;
 		$config['samba']['largereadwrite'] = $_POST['largereadwrite'] ? true : false;
 		$config['samba']['easupport'] = $_POST['easupport'] ? true : false;
+		$config['samba']['readahead'] = $_POST['readahead'] ? true : false;
 		$config['samba']['enable'] = $_POST['enable'] ? true : false;
 
 		write_config();
@@ -147,6 +150,7 @@ function enable_change(enable_change) {
 	document.iform.security.disabled = endis;
 	document.iform.largereadwrite.disabled = endis;
 	document.iform.easupport.disabled = endis;
+	document.iform.readahead.disabled = endis;
 }
 //-->
 </script>
@@ -319,6 +323,14 @@ function enable_change(enable_change) {
               <?=gettext("Use the new 64k streaming read and write variant SMB requests.");?></span>
             </td>
           </tr>
+		  <tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("ReadAhead");?></td>
+						<td width="78%" class="vtable">
+							<input name="readahead" type="checkbox" id="readahead" value="yes" <?php if ($pconfig['readahead']) echo "checked"; ?>>
+							<?=gettext("Enable pipe-lined read support");?><span class="vexpl"><br>
+							<?=gettext("Improved performance when transferring files with Vista client");?></span>
+						</td>
+					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("EA support");?></td>
 						<td width="78%" class="vtable">

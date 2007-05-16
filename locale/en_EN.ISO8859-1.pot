@@ -1215,6 +1215,24 @@ msgstr ""
 msgid "Size of receive buffer (16384 by default)."
 msgstr ""
 
+msgid "ReadAhead"
+msgstr ""
+
+msgid "Enable pipe-lined read support"
+msgstr ""
+
+msgid "Improved performance when transferring files with Vista client"
+msgstr ""
+
+msgid "EA support"
+msgstr ""
+
+msgid "Enable extended attribute support"
+msgstr ""
+
+msgid "Allow clients to attempt to store OS/2 style extended attributes on a share."
+msgstr ""
+
 msgid "The shares has been modified.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 

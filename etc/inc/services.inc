@@ -293,6 +293,12 @@ recycle:versions = Yes
 
 EOD;
 			}
+			if (isset($config['samba']['readahead'])) {
+				$sambaconf .= <<<EOD
+vfs objects = readahead
+
+EOD;
+			}
 		}
 
 		fwrite($fd, $sambaconf);

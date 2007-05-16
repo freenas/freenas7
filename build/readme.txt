@@ -85,7 +85,6 @@ Majors changes:
 - Improve UPnP WebGUI/Service.
 
 Minors changes:
-- Add checkbox to enable/disable 'large readwrite' support on CIFS page
 - Enhance build scripts (to build packages/plugins)
 - Add missing pccard.conf file to get pccardd daemon working
 - Create /etc/hosts file after interface initialization (current IP was not available when using DHCP)
@@ -96,7 +95,9 @@ Minors changes:
 - Improve hidden diagnostic status.php page.
 - ATA timeout default value (5) was changed to 15 second when graid5 is used.
 - Add geom NOP: Will permit to add drives to an existing graid5 volume
-- Added option to enable/disable 'ea support' for CIFS
+- CIFS: Add checkbox to enable/disable 'large readwrite' support
+- CIFS: Added option to enable/disable 'ea support'
+- CIFS: Added new "pipe-lined read support" for improved performance when transferring files with Vista client
 
 Bug fixs:
 - Add missing winbind/smbpass pam modules
