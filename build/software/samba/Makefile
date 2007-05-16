@@ -57,7 +57,8 @@ do-install:
 	@${CP} -pv ${WRKSRC}/codepages/*.dat ${FREENAS_ROOTFS}/usr/local/lib/samba
 	@${CP} -pv ${WRKSRC}/po/*.* ${FREENAS_ROOTFS}/usr/local/lib/samba
 	@${CP} -pv ${WRKSRC}/bin/recycle.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
-	@${CP} -pv ${WRKSRC}/bin/netatalk.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
+	@${CP} -pv $(WRKSRC)/bin/netatalk.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
+	@${CP} -pv $(WRKSRC)/bin/readahead.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
 	@${CP} -pv ${WRKSRC}/bin/rid.so ${FREENAS_ROOTFS}/usr/local/samba/lib/idmap
 
 	@${INSTALL_PROGRAM} ${WRKSRC}/bin/pam_smbpass.so ${FREENAS_ROOTFS}/usr/local/lib
