@@ -83,7 +83,7 @@ Majors changes:
 - Upgrade lighttpd to 1.4.15
 - Upgrade Samba to 3.0.25
 - Improve UPnP WebGUI/Service
-- Parts of the build scripts are recoded (more FreeBSD like)
+- Refactoring build scripts (Makefiles)
 
 Minors changes:
 - Enhance build scripts (to build packages/plugins)

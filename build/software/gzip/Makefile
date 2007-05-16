@@ -4,7 +4,7 @@ CATEGORIES=		archivers
 COMMENT=			A compression utility designed to be a replacement for compress
 MAINTAINER=		votdev@gmx.de
 
-BUILD_DEPENDS=	ataidle:${PORTSDIR}/archivers/gzip
+BUILD_DEPENDS=	gzip:${PORTSDIR}/archivers/gzip
 # No build is required for this port.
 NO_BUILD?=			1
 

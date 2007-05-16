@@ -22,7 +22,7 @@ do-install:
 	@${INSTALL_PROGRAM} ${WRKSRC}/etc/afpd/afpd ${FREENAS_ROOTFS}/usr/local/sbin
 
 	@${MKDIR} -v ${FREENAS_ROOTFS}/etc/uams
-	@${CP} -pv $(SRCDIR)/etc/uams/.libs/uams_passwd.so ${FREENAS_ROOTFS}/etc/uams
+	@${CP} -pv ${WRKSRC}/etc/uams/.libs/uams_passwd.so ${FREENAS_ROOTFS}/etc/uams
 	@${CP} -pv ${WRKSRC}/etc/uams/.libs/uams_dhx_passwd.so ${FREENAS_ROOTFS}/etc/uams
 	@${CP} -pv ${WRKSRC}/etc/uams/.libs/uams_guest.so ${FREENAS_ROOTFS}/etc/uams
 	@${CP} -pv ${WRKSRC}/etc/uams/.libs/uams_randnum.so ${FREENAS_ROOTFS}/etc/uams

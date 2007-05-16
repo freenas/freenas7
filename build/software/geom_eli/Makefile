@@ -4,23 +4,23 @@ CATEGORIES=		sysutils
 COMMENT=			GEOM Eli filesystem encryption
 MAINTAINER=		votdev@gmx.de
 
-SRCDIR=	/usr/src/sbin/geom/class/eli
+WRKSRC=	/usr/src/sbin/geom/class/eli
 
 do-build:
-	# Patch geom eli sources if necessary.
-	-@if [ ! -e ${SRCDIR}/geom_eli.c.orig ]; then \
-		${PATCH} -f ${SRCDIR}/geom_eli.c ${FILESDIR}/patch-geom_eli.c; \
+# Patch geom eli sources if necessary.
+	-@if [ ! -e ${WRKSRC}/geom_eli.c.orig ]; then \
+		${PATCH} -f ${WRKSRC}/geom_eli.c ${FILESDIR}/geom_eli.c.diff; \
 	fi
 
-	@${MAKE} -C ${SRCDIR}
+	@${MAKE} -C ${WRKSRC}
 
 do-install:
-	@${MAKE} -C ${SRCDIR} install
+	@${MAKE} -C ${WRKSRC} install
 
 	@${INSTALL_PROGRAM} /sbin/geli ${FREENAS_ROOTFS}/sbin
 	@${INSTALL_PROGRAM} /lib/geom/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
 
-do-clean:
-	@${MAKE} -C ${SRCDIR} clean
+pre-clean:
+	@${MAKE} -C ${WRKSRC} clean
 
 .include "bsd.freenas.mk"

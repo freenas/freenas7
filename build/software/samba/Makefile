@@ -30,7 +30,8 @@ CONFIGURE_ARGS+=	--without-cups \
 									--with-piddir=${SAMBA_PIDDIR} \
 									--with-shared-modules=idmap_rid \
 									--with-pammodulesdir=${SAMBA_PAMMODULESDIR} \
-									--with-syslog --with-ldap
+									--with-syslog \
+									--with-ldap
 #									--with-acl-support
 
 WRKSRC=	${WRKDIR}/${DISTNAME}/source
@@ -56,7 +57,7 @@ do-install:
 	@${CP} -pv ${WRKSRC}/codepages/*.dat ${FREENAS_ROOTFS}/usr/local/lib/samba
 	@${CP} -pv ${WRKSRC}/po/*.* ${FREENAS_ROOTFS}/usr/local/lib/samba
 	@${CP} -pv ${WRKSRC}/bin/recycle.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
-	@${CP} -pv $(SRCDIR)/bin/netatalk.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
+	@${CP} -pv ${WRKSRC}/bin/netatalk.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
 	@${CP} -pv ${WRKSRC}/bin/rid.so ${FREENAS_ROOTFS}/usr/local/samba/lib/idmap
 
 	@${INSTALL_PROGRAM} ${WRKSRC}/bin/pam_smbpass.so ${FREENAS_ROOTFS}/usr/local/lib

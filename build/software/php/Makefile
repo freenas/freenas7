@@ -12,6 +12,7 @@ USE_BZIP2=					yes
 
 LIB_DEPENDS=	xml2.5:${PORTSDIR}/textproc/libxml2
 
+GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--enable-fastcgi \
 									--enable-discard-path \
 									--enable-force-cgi-redirect \
