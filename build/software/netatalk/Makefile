@@ -1,33 +1,32 @@
-PKGNAME=	netatalk
-COMMENT=	File and print server for AppleTalk networks
-MAINTAINER=	votdev@gmx.de
+PORTNAME=			netatalk
+PORTVERSION=	2.0.3
+CATEGORIES=		editors
+COMMENT=			File and print server for AppleTalk networks
+MAINTAINER=		votdev@gmx.de
 
-ARCHIVE=	netatalk-2.0.3.tar.gz
-URL=	http://heanet.dl.sourceforge.net/sourceforge/netatalk/$(ARCHIVE)
-SRCDIR=	${FREENAS_WORKINGDIR}/$$(basename $(ARCHIVE) .tar.gz)
+MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
+MASTER_SITE_SUBDIR=	netatalk
 
-do-build:
-	-@if [ ! -f ${FREENAS_DISTFILES}/$(ARCHIVE) ]; then \
-		cd ${FREENAS_DISTFILES} && fetch $(URL); \
-	fi
-
-	@${TAR} -zxvf ${FREENAS_DISTFILES}/$(ARCHIVE) -C ${FREENAS_WORKINGDIR}
-
-	@cd $(SRCDIR) && ./configure --bindir=/usr/local/bin --sbindir=/usr/local/sbin --sysconfdir=/var/etc --localstatedir=/var --enable-largefile --disable-tcp-wrappers --disable-cups --with-pam --with-uams-path=/etc/uams/
-	@${MAKE} -C $(SRCDIR)
+GNU_CONFIGURE=		yes
+CONFIGURE_ARGS+=	--bindir=/usr/local/bin \
+									--sbindir=/usr/local/sbin \
+									--sysconfdir=/var/etc \
+									--localstatedir=/var \
+									--enable-largefile \
+									--disable-tcp-wrappers \
+									--disable-cups \
+									--with-pam \
+									--with-uams-path=/etc/uams/
 
 do-install:
-	@${INSTALL_PROGRAM} $(SRCDIR)/etc/afpd/afpd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} ${WRKSRC}/etc/afpd/afpd ${FREENAS_ROOTFS}/usr/local/sbin
 
 	@${MKDIR} -v ${FREENAS_ROOTFS}/etc/uams
 	@${CP} -pv $(SRCDIR)/etc/uams/.libs/uams_passwd.so ${FREENAS_ROOTFS}/etc/uams
-	@${CP} -pv $(SRCDIR)/etc/uams/.libs/uams_dhx_passwd.so ${FREENAS_ROOTFS}/etc/uams
-	@${CP} -pv $(SRCDIR)/etc/uams/.libs/uams_guest.so ${FREENAS_ROOTFS}/etc/uams
-	@${CP} -pv $(SRCDIR)/etc/uams/.libs/uams_randnum.so ${FREENAS_ROOTFS}/etc/uams
+	@${CP} -pv ${WRKSRC}/etc/uams/.libs/uams_dhx_passwd.so ${FREENAS_ROOTFS}/etc/uams
+	@${CP} -pv ${WRKSRC}/etc/uams/.libs/uams_guest.so ${FREENAS_ROOTFS}/etc/uams
+	@${CP} -pv ${WRKSRC}/etc/uams/.libs/uams_randnum.so ${FREENAS_ROOTFS}/etc/uams
 
 	@cd ${FREENAS_ROOTFS}/etc/uams && ${LN} -fsv uams_passwd.so uams_clrtxt.so && ${LN} -fsv uams_dhx_passwd.so uams_dhx.so
-
-do-clean:
-	@${RM} -f -r $(SRCDIR)
 
 .include "bsd.freenas.mk"

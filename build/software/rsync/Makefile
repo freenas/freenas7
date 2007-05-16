@@ -1,25 +1,17 @@
-PKGNAME=	rsync
-COMMENT=	A network file distribution/sync utility
-MAINTAINER=	votdev@gmx.de
+PORTNAME=			rsync
+PORTVERSION=	2.6.9
+CATEGORIES=		net
+COMMENT=			A network file distribution/sync utility
+MAINTAINER=		votdev@gmx.de
 
-ARCHIVE=	rsync-2.6.9.tar.gz
-URL=	http://samba.anu.edu.au/ftp/rsync/$(ARCHIVE)
-SRCDIR=	${FREENAS_WORKINGDIR}/$$(basename $(ARCHIVE) .tar.gz)
+MASTER_SITES=	http://rsync.samba.org/ftp/%SUBDIR%/ \
+							ftp://ftp.samba.org/pub/%SUBDIR%/
+MASTER_SITE_SUBDIR=	rsync
 
-do-build:
-	-@if [ ! -f ${FREENAS_DISTFILES}/$(ARCHIVE) ]; then \
-		cd ${FREENAS_DISTFILES} && fetch $(URL); \
-	fi
-
-	${TAR} -zxvf ${FREENAS_DISTFILES}/$(ARCHIVE) -C ${FREENAS_WORKINGDIR}
-
-	@cd $(SRCDIR) && ./configure --with-rsyncd-conf=/var/etc
-	@${MAKE} -C $(SRCDIR)
+GNU_CONFIGURE=		yes
+CONFIGURE_ARGS+=	--with-rsyncd-conf=/var/etc
 
 do-install:
-	@${INSTALL_PROGRAM} $(SRCDIR)/rsync ${FREENAS_ROOTFS}/usr/local/bin
-
-do-clean:
-	@${RM} -f -r $(SRCDIR)
+	@${INSTALL_PROGRAM} ${WRKSRC}/rsync ${FREENAS_ROOTFS}/usr/local/bin
 
 .include "bsd.freenas.mk"

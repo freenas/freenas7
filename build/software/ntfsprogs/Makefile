@@ -1,8 +1,12 @@
-PKGNAME=	ntfsprogs
-COMMENT=	Utilities to manipulaite NTFS filesystems
-MAINTAINER=	FreeNAS team
+PORTNAME=			ntfsprogs
+PORTVERSION=	1.0
+CATEGORIES=		sysutils
+COMMENT=			Utilities to manipulaite NTFS filesystems
+MAINTAINER=		FreeNAS team
 
 BUILD_DEPENDS=	ntfsprogs:${PORTSDIR}/sysutils/ntfsprogs
+# No build is required for this port.
+NO_BUILD?=			1
 
 do-install:
 	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/ntfsprogs/work/ntfsprogs-*/ntfsprogs/.libs/ntfsfix ${FREENAS_ROOTFS}/usr/local/bin

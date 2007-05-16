@@ -1,8 +1,12 @@
-PKGNAME=	smartmontools
-COMMENT=	S.M.A.R.T. disk monitoring tools
-MAINTAINER=	votdev@gmx.de
+PORTNAME=			smartmontools
+PORTVERSION=	1.0
+CATEGORIES=		sysutils
+COMMENT=			S.M.A.R.T. disk monitoring tools
+MAINTAINER=		votdev@gmx.de
 
 BUILD_DEPENDS=	smartmontools:${PORTSDIR}/sysutils/smartmontools
+# No build is required for this port.
+NO_BUILD?=			1
 
 pre-depends:
 # Copy smarttools options file

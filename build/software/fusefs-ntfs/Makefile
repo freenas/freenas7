@@ -1,10 +1,14 @@
-PKGNAME=	fusefs-ntfs
-COMMENT=	Mount NTFS partitions and disk images
-MAINTAINER=	votdev@gmx.de
+PORTNAME=			fusefs-ntfs
+PORTVERSION=	1.0
+CATEGORIES=		sysutils
+COMMENT=			Mount NTFS partitions and disk images
+MAINTAINER=		votdev@gmx.de
 
 BUILD_DEPENDS=	fusefs-ntfs:${PORTSDIR}/sysutils/fusefs-ntfs \
-		fusefs-kmod:${PORTSDIR}/sysutils/fusefs-kmod \
-		fusefs-libs:${PORTSDIR}/sysutils/fusefs-libs
+								fusefs-kmod:${PORTSDIR}/sysutils/fusefs-kmod \
+								fusefs-libs:${PORTSDIR}/sysutils/fusefs-libs
+# No build is required for this port.
+NO_BUILD?=			1
 
 pre-depends:
 # Copy options file

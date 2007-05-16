@@ -1,8 +1,12 @@
-PKGNAME=	consolehm
-COMMENT=	Console based hardware monitor
-MAINTAINER=	votdev@gmx.de
+PORTNAME=			consolehm
+PORTVERSION=	1.0
+CATEGORIES=		sysutils
+COMMENT=			Console based hardware monitor
+MAINTAINER=		votdev@gmx.de
 
 BUILD_DEPENDS=	consolehm:${PORTSDIR}/sysutils/consolehm
+# No build is required for this port.
+NO_BUILD?=			1
 
 do-install:
 	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/consolehm/work/consolehm*/consolehm/chm ${FREENAS_ROOTFS}/usr/local/bin

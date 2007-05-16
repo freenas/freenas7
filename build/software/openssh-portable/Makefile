@@ -1,8 +1,12 @@
-PKGNAME=	openssh-portable
-COMMENT=	The portable version of OpenBSD's OpenSSH
-MAINTAINER=	votdev@gmx.de
+PORTNAME=			openssh-portable
+PORTVERSION=	1.0
+CATEGORIES=		security
+COMMENT=			The portable version of OpenBSD's OpenSSH
+MAINTAINER=		votdev@gmx.de
 
 BUILD_DEPENDS=	openssh-portable:${PORTSDIR}/security/openssh-portable
+# No build is required for this port.
+NO_BUILD?=			1
 
 pre-depends:
 # Copy ocaml options file

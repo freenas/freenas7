@@ -1,6 +1,8 @@
-PKGNAME=	mDNSResponder
-COMMENT=	Apple's mDNSResponder
-MAINTAINER=	votdev@gmx.de
+PORTNAME=			mDNSResponder
+PORTVERSION=	1.0
+CATEGORIES=		net
+COMMENT=			Apple's mDNSResponder
+MAINTAINER=		votdev@gmx.de
 
 BUILD_DEPENDS=	mDNSResponder:${PORTSDIR}/net/mDNSResponder
 

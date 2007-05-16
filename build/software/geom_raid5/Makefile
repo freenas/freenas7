@@ -1,6 +1,8 @@
-PKGNAME=	geom_raid5
-COMMENT=	GEOM RAID5 filesystem
-MAINTAINER=	votdev@gmx.de
+PORTNAME=			geom_raid5
+PORTVERSION=	1.0
+CATEGORIES=		sysutils
+COMMENT=			GEOM RAID5 filesystem
+MAINTAINER=		votdev@gmx.de
 
 do-build:
 	@${TAR} -zxvf ${FILESDIR}/geom_raid5.tbz -C /usr/src

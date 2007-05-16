@@ -1,8 +1,12 @@
-PKGNAME=	unison
-COMMENT=	A user-level file synchronization tool
-MAINTAINER=	votdev@gmx.de
+PORTNAME=			unison
+PORTVERSION=	1.0
+CATEGORIES=		net
+COMMENT=			A user-level file synchronization tool
+MAINTAINER=		votdev@gmx.de
 
 BUILD_DEPENDS=	unison:${PORTSDIR}/net/unison
+# No build is required for this port.
+NO_BUILD?=			1
 
 pre-depends:
 # Copy ocaml options file

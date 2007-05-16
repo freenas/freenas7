@@ -1,8 +1,12 @@
-PKGNAME=	pam_ldap
-COMMENT=	A pam module for authenticating with LDAP
-MAINTAINER=	votdev@gmx.de
+PORTNAME=			pam_ldap
+PORTVERSION=	1.0
+CATEGORIES=		security
+COMMENT=			A pam module for authenticating with LDAP
+MAINTAINER=		votdev@gmx.de
 
 BUILD_DEPENDS=	pam_ldap:${PORTSDIR}/security/pam_ldap
+# No build is required for this port.
+NO_BUILD?=			1
 
 do-install:
 	@${INSTALL_PROGRAM} ${PORTSDIR}/security/pam_ldap/work/pam_ldap-*/pam_ldap.so ${FREENAS_ROOTFS}/usr/local/lib
