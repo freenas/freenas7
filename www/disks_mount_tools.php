@@ -142,9 +142,9 @@ if(isset($_GET['action'])) {
 
     					/* Get the id of the mount array entry. */
 						
-		          $id = array_search_ex($sharename, $a_allmount, "sharename");
+		          $id = array_search_ex($sharename, $a_mount, "sharename");
 		          /* Get the mount data. */
-              $mount = $a_allmount[$id];
+              $mount = $a_mount[$id];
 
               switch($action)
               {
