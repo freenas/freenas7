@@ -78,11 +78,12 @@ Majors changes:
 - Permit to mount ISO files
 - Add packages build infrastructure and WebGUI
 - Upgrade fusefs-libs to 2.6.4 and fusefs-ntfs to 1.417
-- Code review from the FreeNAS core engine.
+- Code review from the FreeNAS core engine
 - Upgrade PHP to 5.2.2
 - Upgrade lighttpd to 1.4.15
 - Upgrade Samba to 3.0.25
-- Improve UPnP WebGUI/Service.
+- Improve UPnP WebGUI/Service
+- Parts of the build scripts are recoded (more FreeBSD like)
 
 Minors changes:
 - Enhance build scripts (to build packages/plugins)
@@ -91,9 +92,9 @@ Minors changes:
 - Add boot splash screen (just for fun)
 - Tune graid5 RAM usage depending of detected RAM
 - Display DNS servers on 'System/General setup' page when using DHCP (edit controls are disabled in this case)
-- Fix bug in system_systime_set function. Thanks to Paul Wheels for the tip.
-- Improve hidden diagnostic status.php page.
-- ATA timeout default value (5) was changed to 15 second when graid5 is used.
+- Fix bug in system_systime_set function. Thanks to Paul Wheels for the tip
+- Improve hidden diagnostic status.php page
+- ATA timeout default value (5) was changed to 15 second when graid5 is used
 - Add geom NOP: Will permit to add drives to an existing graid5 volume
 - CIFS: Add checkbox to enable/disable 'large readwrite' support
 - CIFS: Added option to enable/disable 'ea support'
