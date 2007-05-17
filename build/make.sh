@@ -602,10 +602,10 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Software packages\" \\
 		cd $FREENAS_SVNDIR/build/software/$package
 		if [ "$choice" == "build" ]; then
 			# Build port.
-			make -I ${FREENAS_MKINCLUDESDIR}
+			make -I ${FREENAS_MKINCLUDESDIR} clean build
 		elif [ "$choice" == "install" ]; then
 			# Delete cookie first, otherwise Makefile will skip this step.
-			rm -f cd $FREENAS_SVNDIR/build/software/$package/work/.install_done.*
+			rm -f ./work/.install_done.*
 			# Install port.
 			make -I ${FREENAS_MKINCLUDESDIR} install
 		fi
