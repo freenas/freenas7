@@ -9,6 +9,6 @@ BUILD_DEPENDS=	iscsi-target:${PORTSDIR}/net/iscsi-target
 NO_BUILD?=			1
 
 do-install:
-	@${INSTALL_PROGRAM} ${PORTSDIR}/net/iscsi-target/work/netbsd-iscsi-*/bin/iscsi-target ${FREENAS_ROOTFS}/usr/local/bin/
+	@${INSTALL_PROGRAM} -v ${PORTSDIR}/net/iscsi-target/work/netbsd-iscsi-*/bin/iscsi-target ${FREENAS_ROOTFS}/usr/local/bin/
 
 .include "bsd.freenas.mk"

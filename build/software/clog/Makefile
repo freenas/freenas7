@@ -12,7 +12,7 @@ do-build:
 	@${MAKE} -C /usr/src/usr.bin/clog
 
 do-install:
-	@${INSTALL_PROGRAM} /usr/src/usr.bin/syslogd/syslogd ${FREENAS_ROOTFS}/usr/sbin
-	@${INSTALL_PROGRAM} /usr/src/usr.bin/clog/clog ${FREENAS_ROOTFS}/usr/sbin
+	@${INSTALL_PROGRAM} -v /usr/src/usr.bin/syslogd/syslogd ${FREENAS_ROOTFS}/usr/sbin
+	@${INSTALL_PROGRAM} -v /usr/src/usr.bin/clog/clog ${FREENAS_ROOTFS}/usr/sbin
 
 .include "bsd.freenas.mk"

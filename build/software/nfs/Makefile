@@ -8,8 +8,8 @@ MAINTAINER=		votdev@gmx.de
 NO_BUILD?=		1
 
 do-install:
-	@${INSTALL_PROGRAM} /usr/sbin/nfsd ${FREENAS_ROOTFS}/usr/sbin
-	@${INSTALL_PROGRAM} /usr/sbin/mountd ${FREENAS_ROOTFS}/usr/sbin
-	@${INSTALL_PROGRAM} /usr/sbin/rpcbind ${FREENAS_ROOTFS}/usr/sbin
+	@${INSTALL_PROGRAM} -v /usr/sbin/nfsd ${FREENAS_ROOTFS}/usr/sbin
+	@${INSTALL_PROGRAM} -v /usr/sbin/mountd ${FREENAS_ROOTFS}/usr/sbin
+	@${INSTALL_PROGRAM} -v /usr/sbin/rpcbind ${FREENAS_ROOTFS}/usr/sbin
 
 .include "bsd.freenas.mk"

@@ -9,6 +9,6 @@ BUILD_DEPENDS=	sfdisk:${PORTSDIR}/sysutils/sfdisk
 NO_BUILD?=			1
 
 do-install:
-	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/sfdisk/work/sfdisk*/sfdisk ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/sfdisk/work/sfdisk*/sfdisk ${FREENAS_ROOTFS}/usr/local/sbin
 
 .include "bsd.freenas.mk"

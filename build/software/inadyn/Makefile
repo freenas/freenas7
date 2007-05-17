@@ -9,6 +9,6 @@ BUILD_DEPENDS=	inadyn:${PORTSDIR}/dns/inadyn
 NO_BUILD?=			1
 
 do-install:
-	@${INSTALL_PROGRAM} ${PORTSDIR}/dns/inadyn/work/inadyn*/bin/linux/inadyn ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${PORTSDIR}/dns/inadyn/work/inadyn*/bin/linux/inadyn ${FREENAS_ROOTFS}/usr/local/bin
 
 .include "bsd.freenas.mk"

@@ -17,8 +17,8 @@ do-build:
 do-install:
 	@${MAKE} -C ${WRKSRC} install
 
-	@${INSTALL_PROGRAM} /sbin/geli ${FREENAS_ROOTFS}/sbin
-	@${INSTALL_PROGRAM} /lib/geom/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
+	@${INSTALL_PROGRAM} -v /sbin/geli ${FREENAS_ROOTFS}/sbin
+	@${INSTALL_PROGRAM} -v /lib/geom/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
 
 pre-clean:
 	@${MAKE} -C ${WRKSRC} clean

@@ -9,7 +9,7 @@ BUILD_DEPENDS=	e2fsprogs:${PORTSDIR}/sysutils/e2fsprogs
 NO_BUILD?=			1
 
 do-install:
-	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/e2fsck/e2fsck ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/misc/mke2fs ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/e2fsck/e2fsck ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/misc/mke2fs ${FREENAS_ROOTFS}/usr/local/sbin
 
 .include "bsd.freenas.mk"

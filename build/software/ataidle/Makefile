@@ -9,6 +9,6 @@ BUILD_DEPENDS=	ataidle:${PORTSDIR}/sysutils/ataidle
 NO_BUILD?=			1
 
 do-install:
-	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/ataidle/work/ataidle*/ataidle ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/ataidle/work/ataidle*/ataidle ${FREENAS_ROOTFS}/usr/local/sbin
 
 .include "bsd.freenas.mk"

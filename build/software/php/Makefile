@@ -24,7 +24,7 @@ CONFIGURE_ARGS+=	--enable-fastcgi \
 									--with-gettext
 
 do-install:
-	@${INSTALL_PROGRAM} ${WRKSRC}/sapi/cgi/php ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php ${FREENAS_ROOTFS}/usr/local/bin
 	@${CP} -pv ${FILESDIR}/php.ini ${FREENAS_ROOTFS}/usr/local/lib
 
 .include "bsd.freenas.mk"

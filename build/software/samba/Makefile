@@ -37,15 +37,15 @@ CONFIGURE_ARGS+=	--without-cups \
 WRKSRC=	${WRKDIR}/${DISTNAME}/source
 
 do-install:
-	@${INSTALL_PROGRAM} ${WRKSRC}/bin/smbd ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_PROGRAM} ${WRKSRC}/bin/nmbd ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_PROGRAM} ${WRKSRC}/bin/winbindd ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_PROGRAM} ${WRKSRC}/bin/wbinfo ${FREENAS_ROOTFS}/usr/local/bin
-	@${INSTALL_PROGRAM} ${WRKSRC}/bin/net ${FREENAS_ROOTFS}/usr/local/bin
-	@${INSTALL_PROGRAM} ${WRKSRC}/bin/smbpasswd ${FREENAS_ROOTFS}/usr/local/bin
-	@${INSTALL_PROGRAM} ${WRKSRC}/bin/smbstatus ${FREENAS_ROOTFS}/usr/bin
-	@${INSTALL_PROGRAM} ${WRKSRC}/bin/smbcontrol ${FREENAS_ROOTFS}/usr/bin
-	@${INSTALL_PROGRAM} ${WRKSRC}/bin/smbtree ${FREENAS_ROOTFS}/usr/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/nmbd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/winbindd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/wbinfo ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/net ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbpasswd ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbstatus ${FREENAS_ROOTFS}/usr/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbcontrol ${FREENAS_ROOTFS}/usr/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbtree ${FREENAS_ROOTFS}/usr/bin
 
 	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/charset
 	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/rpc
@@ -61,9 +61,9 @@ do-install:
 	@${CP} -pv $(WRKSRC)/bin/readahead.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
 	@${CP} -pv ${WRKSRC}/bin/rid.so ${FREENAS_ROOTFS}/usr/local/samba/lib/idmap
 
-	@${INSTALL_PROGRAM} ${WRKSRC}/bin/pam_smbpass.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${INSTALL_PROGRAM} ${WRKSRC}/bin/pam_winbind.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${INSTALL_PROGRAM} ${WRKSRC}/nsswitch/nss_winbind.so ${FREENAS_ROOTFS}/usr/local/lib/nss_winbind.so.1
-	@${INSTALL_PROGRAM} ${WRKSRC}/nsswitch/nss_wins.so ${FREENAS_ROOTFS}/usr/local/lib/nss_wins.so.1
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_smbpass.so ${FREENAS_ROOTFS}/usr/local/lib
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_winbind.so ${FREENAS_ROOTFS}/usr/local/lib
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_winbind.so ${FREENAS_ROOTFS}/usr/local/lib/nss_winbind.so.1
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_wins.so ${FREENAS_ROOTFS}/usr/local/lib/nss_wins.so.1
 
 .include "bsd.freenas.mk"

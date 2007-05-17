@@ -9,6 +9,6 @@ BUILD_DEPENDS=	gzip:${PORTSDIR}/archivers/gzip
 NO_BUILD?=			1
 
 do-install:
-	@${INSTALL_PROGRAM} ${PORTSDIR}/archivers/gzip/work/gzip*/gzip ${FREENAS_ROOTFS}/usr/bin
+	@${INSTALL_PROGRAM} -v ${PORTSDIR}/archivers/gzip/work/gzip*/gzip ${FREENAS_ROOTFS}/usr/bin
 
 .include "bsd.freenas.mk"

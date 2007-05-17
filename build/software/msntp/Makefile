@@ -9,7 +9,7 @@ BUILD_DEPENDS=	msntp:${PORTSDIR}/net/msntp
 NO_BUILD?=			1
 
 do-install:
-	@${INSTALL_PROGRAM} ${PORTSDIR}/net/msntp/work/msntp*/msntp ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${PORTSDIR}/net/msntp/work/msntp*/msntp ${FREENAS_ROOTFS}/usr/local/bin
 
 	@${CP} -pv ${FILESDIR}/runmsntp.sh ${FREENAS_ROOTFS}/usr/local/bin
 	@${CHMOD} +x ${FREENAS_ROOTFS}/usr/local/bin/runmsntp.sh

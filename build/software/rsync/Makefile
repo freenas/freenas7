@@ -12,6 +12,6 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-rsyncd-conf=/var/etc
 
 do-install:
-	@${INSTALL_PROGRAM} ${WRKSRC}/rsync ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/rsync ${FREENAS_ROOTFS}/usr/local/bin
 
 .include "bsd.freenas.mk"

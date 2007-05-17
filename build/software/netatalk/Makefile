@@ -19,7 +19,7 @@ CONFIGURE_ARGS+=	--bindir=/usr/local/bin \
 									--with-uams-path=/etc/uams/
 
 do-install:
-	@${INSTALL_PROGRAM} ${WRKSRC}/etc/afpd/afpd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/afpd/afpd ${FREENAS_ROOTFS}/usr/local/sbin
 
 	@${MKDIR} -v ${FREENAS_ROOTFS}/etc/uams
 	@${CP} -pv ${WRKSRC}/etc/uams/.libs/uams_passwd.so ${FREENAS_ROOTFS}/etc/uams

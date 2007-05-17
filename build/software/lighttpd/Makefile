@@ -18,7 +18,7 @@ CONFIGURE_ARGS+=	--sysconfdir=/var/etc/ \
 									--without-pcre
 
 do-install:
-	@${INSTALL_PROGRAM} ${WRKSRC}/src/lighttpd ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/lighttpd ${FREENAS_ROOTFS}/usr/local/sbin
 
 	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
 	@${CP} -pv ${WRKSRC}/src/.libs/mod_indexfile.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd

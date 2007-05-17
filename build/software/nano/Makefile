@@ -10,9 +10,9 @@ NO_BUILD?=			1
 
 do-install:
 	@if [ "$${ARCH}" = "amd64" -o "$${ARCH}" = "ia64" ]; then \
-		${INSTALL_PROGRAM} ${PORTSDIR}/editors/nano/work/nano*/nano ${FREENAS_ROOTFS}/usr/local/bin; \
+		${INSTALL_PROGRAM} -v ${PORTSDIR}/editors/nano/work/nano*/nano ${FREENAS_ROOTFS}/usr/local/bin; \
 	else \
-		${INSTALL_PROGRAM} ${PORTSDIR}/editors/nano/work/nano*/src/nano ${FREENAS_ROOTFS}/usr/local/bin; \
+		${INSTALL_PROGRAM} -v ${PORTSDIR}/editors/nano/work/nano*/src/nano ${FREENAS_ROOTFS}/usr/local/bin; \
 	fi
 
 .include "bsd.freenas.mk"
