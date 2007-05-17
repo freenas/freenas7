@@ -31,7 +31,8 @@ FREENAS_MFSROOT_SIZE="45"
 # Size in MB f the IMG file, that include zipped MFS Root filesystem image plus bootloader and kernel.
 FREENAS_IMG_SIZE="23"
 # 'newfs' parameters.
-FREENAS_NEWFS="-b 8192 -f 1024 -o space -m 0"
+FREENAS_NEWFS="-b 4096 -f 512 -i 8192 -U -o space -m 0"
+# FREENAS_NEWFS="-b 8192 -f 1024 -o space -m 0"
 
 # Options:
 # Support bootmenu
