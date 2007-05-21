@@ -101,6 +101,11 @@ function packages_install($pkgname) {
 		// Create a softlink for each installed file.
 		$apackinglist = packages_get_packinglist($pkgname);
 		foreach ($apackinglist as $filev) {
+			// Check if we need to create a directory first.
+			$dirname = dirname("/usr/local/{$filev}");
+			if (!file_exists($dirname))
+				mkdir($dirname);
+			// Create link.
 			mwexec("/bin/ln -s {$prefix}/{$filev} /usr/local/{$filev}");
 		}
 
