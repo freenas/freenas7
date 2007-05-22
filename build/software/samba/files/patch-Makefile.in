@@ -1,0 +1,12 @@
+--- ./Makefile.in.orig	Mon Apr  9 19:31:00 2007
++++ ./Makefile.in	Tue Apr 17 02:06:59 2007
+@@ -1558,8 +1558,7 @@
+ 	@echo Linking $@
+ 	@$(CC) $(FLAGS) -o $@ $(DYNEXP) script/tests/timelimit.o
+ 
+-install: installservers installbin @INSTALL_CIFSMOUNT@ installman installscripts installdat installswat installmodules @INSTALL_LIBSMBCLIENT@ @INSTALL_LIBMSRPC@ @INSTALL_PAM_MODULES@ @INSTALL_LIBSMBSHAREMODES@
+-
++install: installservers installbin installscripts installdat installswat installmodules
+ 
+ install-everything: install installmodules
+ 
