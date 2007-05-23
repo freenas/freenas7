@@ -15,9 +15,7 @@ USE_GETOPT_LONG=	yes
 USE_GNOME=				libxml2
 
 GNU_CONFIGURE=		yes
-CONFIGURE_ARGS+=	--with-layout=GNU \
-									--enable-versioning \
-									--enable-fastcgi \
+CONFIGURE_ARGS+=	--enable-fastcgi \
 									--enable-discard-path \
 									--enable-force-cgi-redirect \
 									--without-mysql \
@@ -27,8 +25,7 @@ CONFIGURE_ARGS+=	--with-layout=GNU \
 									--with-pcre-regex \
 									--with-gettext \
 									--enable-libxml \
-									--with-libxml-dir=${LOCALBASE} \
-									--program-prefix=""
+									--with-libxml-dir=${LOCALBASE}
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php ${FREENAS_ROOTFS}/usr/local/bin
