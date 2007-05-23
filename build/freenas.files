@@ -383,7 +383,7 @@ libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
 usr/libexec/sftp-server
 
 ####### contents of /usr/share/misc
-usr/share/misc/termcap
+usr/share/misc/termcap:etc/termcap
 
 ####### contents of /usr/share/locale
 usr/share/locale/en_US.ISO8859-1/*
