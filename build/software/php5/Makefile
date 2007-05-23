@@ -10,10 +10,14 @@ DISTNAME=						php-${PORTVERSION:S/.r/RC/}
 DISTFILES=					${DISTNAME}${EXTRACT_SUFX}:release
 USE_BZIP2=					yes
 
-LIB_DEPENDS=	xml2.5:${PORTSDIR}/textproc/libxml2
+USE_AUTOTOOLS=		autoconf:259
+USE_GETOPT_LONG=	yes
+USE_GNOME=				libxml2
 
 GNU_CONFIGURE=		yes
-CONFIGURE_ARGS+=	--enable-fastcgi \
+CONFIGURE_ARGS+=	--with-layout=GNU \
+									--enable-versioning \
+									--enable-fastcgi \
 									--enable-discard-path \
 									--enable-force-cgi-redirect \
 									--without-mysql \
@@ -21,7 +25,10 @@ CONFIGURE_ARGS+=	--enable-fastcgi \
 									--with-openssl \
 									--without-sqlite \
 									--with-pcre-regex \
-									--with-gettext
+									--with-gettext \
+									--enable-libxml \
+									--with-libxml-dir=${LOCALBASE} \
+									--program-prefix=""
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php ${FREENAS_ROOTFS}/usr/local/bin
