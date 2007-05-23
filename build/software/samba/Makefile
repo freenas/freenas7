@@ -31,7 +31,7 @@ CONFIGURE_ARGS+=	--without-cups \
 									--with-shared-modules=idmap_rid \
 									--with-pammodulesdir=${SAMBA_PAMMODULESDIR} \
 									--with-syslog \
-									--with-ldap
+									--with-ldap \
 									--with-acl-support
 
 WRKSRC=	${WRKDIR}/${DISTNAME}/source
