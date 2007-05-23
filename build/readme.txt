@@ -106,16 +106,17 @@ Bug fixs:
 - French accent are correclty displayed now
 - Fix script error in rc.shutdown when pressing Ctrl+halt+del key
 - Fix the "You must add disks first" message with older software RAID formatted disk 
-- Fix bug in interface initialization code - the 'default' route was deleted.
+- Fix bug in interface initialization code - the 'default' route was deleted
 - Fix Bug: Add line PubkeyAuthentication on sshd_config file
 - Fix UPnP bug - now supports blanks in directory names
 - Fix UPnP bug - service was not started on system startup
 - Fix beep bug
-- Fix bug in ftp services page - Handle incorrect values for 'Number of clients' and 'Max. conn. per IP'.
-- Disk encrypted WebGUI - Disk wasn't correct named when using gvinum RAID disk.
-- Disk size was calculated incorrect for 2 partition installation.
-- Fix local RSYNC bug logs each minute and crontab bug.
+- Fix bug in ftp services page - Handle incorrect values for 'Number of clients' and 'Max. conn. per IP'
+- Disk encrypted WebGUI - Disk wasn't correct named when using gvinum RAID disk
+- Disk size was calculated incorrect for 2 partition installation
+- Fix local RSYNC bug logs each minute and crontab bug
 - Fix SWAP file size change bug
+- Add missing softlink /usr/share/misc/termcap -> /etc/termcap
 
 Known bugs:
 - NTFS mount points are not mounted after creation, a reboot is necessary.
