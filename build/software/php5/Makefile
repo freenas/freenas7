@@ -1,4 +1,4 @@
-PORTNAME=			php
+PORTNAME=			php5
 PORTVERSION=	5.2.2
 CATEGORIES=		lang
 COMMENT=			PHP5 scripting language
