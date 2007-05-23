@@ -1,6 +1,6 @@
 --- ./include/includes.h.orig	Mon Apr  9 19:30:59 2007
 +++ ./include/includes.h	Tue Apr 17 02:06:59 2007
-@@ -209,10 +209,10 @@
+@@ -212,10 +212,10 @@
  #undef HAVE_LDAP
  #endif
  
