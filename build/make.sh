@@ -10,7 +10,6 @@
 # Global variables
 export FREENAS_ROOTDIR="/usr/local/freenas"
 export FREENAS_WORKINGDIR="$FREENAS_ROOTDIR/work"
-export FREENAS_DISTFILES="$FREENAS_ROOTDIR/distfiles"
 export FREENAS_ROOTFS="$FREENAS_ROOTDIR/rootfs"
 export FREENAS_SVNDIR="$FREENAS_ROOTDIR/svn"
 export FREENAS_PRODUCTNAME=`cat $FREENAS_SVNDIR/etc/prd.name`
@@ -617,9 +616,6 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Software packages\" \\
 }
 
 main() {
-	# Ensure $FREENAS_DISTFILES exists
-	[ ! -d "$FREENAS_DISTFILES" ] && mkdir $FREENAS_DISTFILES
-
 	# Ensure we are in $FREENAS_WORKINGDIR
 	[ ! -d "$FREENAS_WORKINGDIR" ] && mkdir $FREENAS_WORKINGDIR
 	cd $FREENAS_WORKINGDIR
