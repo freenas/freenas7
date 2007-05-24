@@ -50,16 +50,16 @@ do-install:
 	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/charset
 	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/rpc
 	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/pdb
-	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/samba/lib/idmap
-	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
+	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/idmap
+	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/vfs
 
 	@${CP} -pv ${WRKSRC}/bin/CP*.so ${FREENAS_ROOTFS}/usr/local/lib/samba/charset
 	@${CP} -pv ${WRKSRC}/codepages/*.dat ${FREENAS_ROOTFS}/usr/local/lib/samba
 	@${CP} -pv ${WRKSRC}/po/*.* ${FREENAS_ROOTFS}/usr/local/lib/samba
-	@${CP} -pv ${WRKSRC}/bin/recycle.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
-	@${CP} -pv $(WRKSRC)/bin/netatalk.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
-	@${CP} -pv $(WRKSRC)/bin/readahead.so ${FREENAS_ROOTFS}/usr/local/samba/lib/vfs
-	@${CP} -pv ${WRKSRC}/bin/rid.so ${FREENAS_ROOTFS}/usr/local/samba/lib/idmap
+	@${CP} -pv ${WRKSRC}/bin/recycle.so ${FREENAS_ROOTFS}/usr/local/lib/samba/vfs
+	@${CP} -pv $(WRKSRC)/bin/netatalk.so ${FREENAS_ROOTFS}/usr/local/lib/samba/vfs
+	@${CP} -pv $(WRKSRC)/bin/readahead.so ${FREENAS_ROOTFS}/usr/local/lib/samba/vfs
+	@${CP} -pv ${WRKSRC}/bin/rid.so ${FREENAS_ROOTFS}/usr/local/lib/samba/idmap
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_smbpass.so ${FREENAS_ROOTFS}/usr/local/lib
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_winbind.so ${FREENAS_ROOTFS}/usr/local/lib

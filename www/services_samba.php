@@ -64,7 +64,6 @@ $pconfig['largereadwrite'] = isset($config['samba']['largereadwrite']);
 $pconfig['easupport'] = isset($config['samba']['easupport']);
 $pconfig['readahead'] = isset($config['samba']['readahead']);
 
-
 if ($_POST)
 {
 	unset($input_errors);
@@ -328,7 +327,7 @@ function enable_change(enable_change) {
 						<td width="78%" class="vtable">
 							<input name="readahead" type="checkbox" id="readahead" value="yes" <?php if ($pconfig['readahead']) echo "checked"; ?>>
 							<?=gettext("Enable pipe-lined read support");?><span class="vexpl"><br>
-							<?=gettext("Improved performance when transferring files with Vista client");?></span>
+							<?=gettext("Improved performance when transferring files via Vista client");?></span>
 						</td>
 					</tr>
 					<tr>

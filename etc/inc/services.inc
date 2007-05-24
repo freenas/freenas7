@@ -211,7 +211,7 @@ private dir = {$g['varetc_path']}/private
 
 EOD;
 
-	switch ($config['samba']['security']) 	{
+	switch ($config['samba']['security'])	{
 	case "share":
 		$sambaconf .= <<<EOD
 create mask = 0666
@@ -222,10 +222,9 @@ EOD;
 	
 		$guestmode = <<<EOD
 guest ok = yes
-
 EOD;
-		
 		break;
+
 	case "domain":
 		$sambaconf .= <<<EOD
 passdb backend = smbpasswd
@@ -242,23 +241,21 @@ template homedir = /mnt
 template shell = /bin/sh
 
 EOD;
-	
+
 		$guestmode = <<<EOD
 guest ok = no
-
 EOD;
 		break;
+
 	case "user":
 		$sambaconf .= <<<EOD
 passdb backend = smbpasswd
-
 EOD;
 		$guestmode = <<<EOD
 guest ok = no
-
 EOD;
 		break;
-	}
+		}
 
 		foreach ($config['mounts']['mount'] as $mountent) {
 			$sambaconf .= <<<EOD
@@ -269,9 +266,6 @@ path = /mnt/{$mountent['sharename']}
 public = yes
 writeable = yes
 printable = no
-#Hidde .snap folder
-#veto files = /.snap
-#This next line can (hide dot file) can be enough:
 hide dot files = yes
 {$guestmode}
 
@@ -286,7 +280,7 @@ EOD;
 
 			if (isset($config['samba']['recyclebin'])) {
 				$sambaconf .= <<<EOD
-vfs object = recycle
+vfs objects = recycle
 recycle:repository = RECYCLER
 recycle:keeptree = Yes
 recycle:versions = Yes
@@ -304,8 +298,7 @@ EOD;
 vfs objects = netatalk
 
 EOD;
-			}			
-			
+			}
 		}
 
 		fwrite($fd, $sambaconf);
