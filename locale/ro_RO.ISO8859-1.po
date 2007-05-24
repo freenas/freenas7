@@ -1299,7 +1299,7 @@ msgstr "Retea Autorizata"
 msgid "Network that is authorised to access to NFS share"
 msgstr "Retea autorizata pentru partajarea NFS"
 
-msgid "The name of the exported directories are : /mnt/sharename"
+msgid "The name of the exported directories are: /mnt/sharename"
 msgstr "Numele directorului exportat: /mnt/sharename"
 
 msgid "Server"

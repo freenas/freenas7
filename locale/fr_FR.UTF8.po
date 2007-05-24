@@ -1326,8 +1326,8 @@ msgstr "Réseaux autorisés"
 msgid "Network that is authorised to access to NFS share"
 msgstr "Réseau autorisé à accéder au partage NFS"
 
-msgid "The name of the exported directories are : /mnt/sharename"
-msgstr "Le nom de partage exporté est du type : /mnt/partage"
+msgid "The name of the exported directories are: /mnt/sharename"
+msgstr "Le nom de partage exporté est du type: /mnt/partage"
 
 msgid "Server"
 msgstr "Serveur"

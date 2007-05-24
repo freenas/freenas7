@@ -1311,7 +1311,7 @@ msgstr "Авторизованная сеть"
 msgid "Network that is authorised to access to NFS share"
 msgstr "Сети, которым разрешено подключаться к общему ресурсу NFS"
 
-msgid "The name of the exported directories are : /mnt/sharename"
+msgid "The name of the exported directories are: /mnt/sharename"
 msgstr "Имена экспортируемых каталогов будут вида /mnt/sharename"
 
 msgid "Server"

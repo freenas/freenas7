@@ -1347,7 +1347,7 @@ msgstr ""
 msgid "Network that is authorised to access to NFS share"
 msgstr ""
 
-msgid "The name of the exported directories are : /mnt/sharename"
+msgid "The name of the exported directories are: /mnt/sharename"
 msgstr ""
 
 msgid "Server"
@@ -2419,4 +2419,7 @@ msgid "Enter a custom port number for the HTTP server if you want to override th
 msgstr ""
 
 msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
+msgstr ""
+
+msgid "To increase CIFS performance <a href='%s'>enable tuning of some kernel variables</a>."
 msgstr ""

@@ -1340,7 +1340,7 @@ msgstr "认可网路"
 msgid "Network that is authorised to access to NFS share"
 msgstr "设定可以使用NFS分享的网路区段"
 
-msgid "The name of the exported directories are : /mnt/sharename"
+msgid "The name of the exported directories are: /mnt/sharename"
 msgstr "输出的目錄名称是：/mnt/sharename"
 
 msgid "Server"

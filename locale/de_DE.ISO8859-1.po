@@ -1311,7 +1311,7 @@ msgstr "Zugelassenes Netzwerk"
 msgid "Network that is authorised to access to NFS share"
 msgstr "Zugriffsberechtigtes Netzwerk auf die NFS-freigabe"
 
-msgid "The name of the exported directories are : /mnt/sharename"
+msgid "The name of the exported directories are: /mnt/sharename"
 msgstr "Die Namenskonvention f&uuml;r exportierte Verzeichnisse: /mnt/Freigabenname"
 
 msgid "Server"

@@ -1206,8 +1206,8 @@ msgstr "Authorised network"
 msgid "Network that is authorised to access to NFS share"
 msgstr "Network that is authorised to access to NFS share"
 
-msgid "The name of the exported directories are : /mnt/sharename"
-msgstr "The name of the exported directories are : /mnt/sharename"
+msgid "The name of the exported directories are: /mnt/sharename"
+msgstr "The name of the exported directories are: /mnt/sharename"
 
 msgid "Server"
 msgstr "Server"

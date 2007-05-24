@@ -1290,8 +1290,8 @@ msgstr "Rete autorizzata"
 msgid "Network that is authorised to access to NFS share"
 msgstr "Rete che &egrave; autorizzata all'accesso alla condivisione NFS"
 
-msgid "The name of the exported directories are : /mnt/sharename"
-msgstr "Il nome delle directories esportate &egrave; : /mnt/nomeshare"
+msgid "The name of the exported directories are: /mnt/sharename"
+msgstr "Il nome delle directories esportate &egrave;: /mnt/nomeshare"
 
 msgid "Server"
 msgstr "Server"

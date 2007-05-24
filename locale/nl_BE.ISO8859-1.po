@@ -1274,7 +1274,7 @@ msgstr "Geautoriseerd netwerk"
 msgid "Network that is authorised to access to NFS share"
 msgstr "Netwerk dat geautoriseerd is om toegang te krijgen tot de NFS mappen"
 
-msgid "The name of the exported directories are : /mnt/sharename"
+msgid "The name of the exported directories are: /mnt/sharename"
 msgstr "De namen van de ge&euml;xporteerde mappen zijn van de vorm: /mnt/mapnaam"
 
 msgid "Server"

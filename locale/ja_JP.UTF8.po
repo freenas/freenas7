@@ -1302,8 +1302,8 @@ msgstr "許可するネットワーク"
 msgid "Network that is authorised to access to NFS share"
 msgstr "NFS 共有へのアクセスが許可されるネットワーク"
 
-msgid "The name of the exported directories are : /mnt/sharename"
-msgstr "エクスポートされるディレクトリ名は次のようになります : /mnt/sharename"
+msgid "The name of the exported directories are: /mnt/sharename"
+msgstr "エクスポートされるディレクトリ名は次のようになります: /mnt/sharename"
 
 msgid "Server"
 msgstr "サーバ"
