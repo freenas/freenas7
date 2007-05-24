@@ -320,6 +320,12 @@ usr/bin/less:usr/bin/more
 ## grep, egrep, fgrep, zgrep, zegrep, zfgrep, bzgrep, bzegrep, bzfgrep - print lines matching a pattern
 usr/bin/grep:usr/bin/egrep:usr/bin/fgrep:usr/bin/zgrep:usr/bin/zegrep:usr/bin/zfgrep:usr/bin/bzgrep:usr/bin/bzegrep:usr/bin/bzfgrep
 
+## find - walk a file hierarchy
+usr/bin/find
+
+## uname - display information about the system
+usr/bin/uname
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
