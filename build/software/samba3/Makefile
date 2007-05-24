@@ -11,11 +11,15 @@ SAMBA_PIDDIR=					/var/run
 SAMBA_PRIVATEDIR=			/var/etc/private
 SAMBA_CONFIGDIR=			/var/etc
 SAMBA_LOCKDIR=				/var/run
-SAMBA_PIDDIR=					/var/run
 SAMBA_LIBDIR=					/usr/local/lib
 SAMBA_MODULEDIR=			${SAMBA_LIBDIR}/samba
 
+USE_ICONV=				yes
 GNU_CONFIGURE=		yes
+USE_AUTOTOOLS=		autoconf:259 autoheader:259
+AUTOHEADER_ARGS=	-I${WRKSRC} -I${WRKSRC}/lib/replace
+AUTOCONF_ARGS=		-I${WRKSRC} -I${WRKSRC}/lib/replace
+
 CONFIGURE_ARGS+=	--without-cups \
 									--with-ads \
 									--disable-cups \
@@ -25,7 +29,6 @@ CONFIGURE_ARGS+=	--without-cups \
 									--with-pam_smbpass \
 									--with-libdir="${SAMBA_MODULEDIR}" \
 									--with-logfilebase="${SAMBA_LOGFILEBASE}" \
-									--with-piddir="${SAMBA_PIDDIR}" \
 									--with-privatedir="${SAMBA_PRIVATEDIR}" \
 									--with-configdir="${SAMBA_CONFIGDIR}" \
 									--with-lockdir="${SAMBA_LOCKDIR}" \
@@ -33,7 +36,8 @@ CONFIGURE_ARGS+=	--without-cups \
 									--with-shared-modules=idmap_rid \
 									--with-pammodulesdir="${SAMBA_LIBDIR}" \
 									--with-syslog \
-									--with-ldap
+									--with-ldap \
+									--with-libiconv="${LOCALBASE}"
 #									--with-acl-support
 
 WRKSRC=	${WRKDIR}/${DISTNAME}/source
@@ -49,23 +53,23 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbcontrol ${FREENAS_ROOTFS}/usr/bin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbtree ${FREENAS_ROOTFS}/usr/bin
 
-	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/charset
-	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/rpc
-	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/pdb
-	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/idmap
-	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/lib/samba/vfs
+	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/charset
+	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/rpc
+	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/pdb
+	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
+	@${MKDIR} -v ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 
-	@${CP} -pv ${WRKSRC}/bin/CP*.so ${FREENAS_ROOTFS}/usr/local/lib/samba/charset
-	@${CP} -pv ${WRKSRC}/codepages/*.dat ${FREENAS_ROOTFS}/usr/local/lib/samba
-	@${CP} -pv ${WRKSRC}/po/*.* ${FREENAS_ROOTFS}/usr/local/lib/samba
-	@${CP} -pv ${WRKSRC}/bin/recycle.so ${FREENAS_ROOTFS}/usr/local/lib/samba/vfs
-	@${CP} -pv $(WRKSRC)/bin/netatalk.so ${FREENAS_ROOTFS}/usr/local/lib/samba/vfs
-	@${CP} -pv $(WRKSRC)/bin/readahead.so ${FREENAS_ROOTFS}/usr/local/lib/samba/vfs
-	@${CP} -pv ${WRKSRC}/bin/rid.so ${FREENAS_ROOTFS}/usr/local/lib/samba/idmap
+	@${CP} -pv ${WRKSRC}/bin/CP*.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/charset
+	@${CP} -pv ${WRKSRC}/codepages/*.dat ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}
+	@${CP} -pv ${WRKSRC}/po/*.* ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}
+	@${CP} -pv ${WRKSRC}/bin/recycle.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/netatalk.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv $(WRKSRC)/bin/readahead.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
+	@${CP} -pv ${WRKSRC}/bin/rid.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
 
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_smbpass.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_winbind.so ${FREENAS_ROOTFS}/usr/local/lib
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_winbind.so ${FREENAS_ROOTFS}/usr/local/lib/nss_winbind.so.1
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_wins.so ${FREENAS_ROOTFS}/usr/local/lib/nss_wins.so.1
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_smbpass.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_winbind.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_winbind.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_winbind.so.1
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_wins.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_wins.so.1
 
 .include "bsd.freenas.mk"
