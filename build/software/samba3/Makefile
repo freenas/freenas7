@@ -12,7 +12,8 @@ SAMBA_PRIVATEDIR=			/var/etc/private
 SAMBA_CONFIGDIR=			/var/etc
 SAMBA_LOCKDIR=				/var/run
 SAMBA_PIDDIR=					/var/run
-SAMBA_PAMMODULESDIR=	/usr/local/lib
+SAMBA_LIBDIR=					/usr/local/lib
+SAMBA_MODULEDIR=			${SAMBA_LIBDIR}/samba
 
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--without-cups \
@@ -22,14 +23,15 @@ CONFIGURE_ARGS+=	--without-cups \
 									--with-ldapsam \
 									--with-winbind \
 									--with-pam_smbpass \
-									--with-logfilebase=${SAMBA_LOGFILEBASE} \
-									--with-piddir=${SAMBA_PIDDIR} \
-									--with-privatedir=${SAMBA_PRIVATEDIR} \
-									--with-configdir=${SAMBA_CONFIGDIR} \
-									--with-lockdir=${SAMBA_LOCKDIR} \
-									--with-piddir=${SAMBA_PIDDIR} \
+									--with-libdir="${SAMBA_MODULEDIR}" \
+									--with-logfilebase="${SAMBA_LOGFILEBASE}" \
+									--with-piddir="${SAMBA_PIDDIR}" \
+									--with-privatedir="${SAMBA_PRIVATEDIR}" \
+									--with-configdir="${SAMBA_CONFIGDIR}" \
+									--with-lockdir="${SAMBA_LOCKDIR}" \
+									--with-piddir="${SAMBA_PIDDIR}" \
 									--with-shared-modules=idmap_rid \
-									--with-pammodulesdir=${SAMBA_PAMMODULESDIR} \
+									--with-pammodulesdir="${SAMBA_LIBDIR}" \
 									--with-syslog \
 									--with-ldap
 #									--with-acl-support
