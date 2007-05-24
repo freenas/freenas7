@@ -281,7 +281,6 @@ EOD;
 			if (isset($config['samba']['recyclebin'])) {
 				$sambaconf .= <<<EOD
 vfs objects = recycle
-recycle:repository = RECYCLER
 recycle:keeptree = Yes
 recycle:versions = Yes
 
