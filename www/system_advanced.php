@@ -83,9 +83,9 @@ if ($_POST) {
 		$config['system']['zeroconf'] = $_POST['zeroconf'] ? true : false;
 		$config['system']['smart'] = $_POST['smart_enable'] ? true : false;
 		$config['system']['powerd'] = $_POST['powerd'] ? true : false;
-				
+
 		write_config();
-		
+
 		if (($config['system']['webgui']['certificate'] != $oldcert) || ($config['system']['webgui']['private-key'] != $oldkey)) {
 			touch($d_sysrebootreqd_path);
 		} else if (($g['platform'] == "generic-pc") && ($config['system']['harddiskstandby'] != $oldharddiskstandby)) {
@@ -98,19 +98,16 @@ if ($_POST) {
 				system_set_harddisk_standby();
 			}
 		}
-		
+
 		if (isset($config['system']['tune']))
 			system_tuning();
-
-		services_smart_configure();
-		services_powerd_configure();
-		services_mdnsresponder_configure();
 
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			
-			$retval |= system_set_termcap();
+			$retval |= services_smart_configure();
+			$retval |= services_powerd_configure();
+			$retval |= services_mdnsresponder_configure();
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

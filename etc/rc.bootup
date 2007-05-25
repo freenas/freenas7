@@ -172,9 +172,6 @@
 	/* Start UPnP service */
 	services_upnp_configure();
 
-	/* set up termcap (for the firewall states page) */
-	system_set_termcap();
-	
 	/* execute the rc scripts of extensions */
 	system_do_extensions();
 	
