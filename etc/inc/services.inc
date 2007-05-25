@@ -266,6 +266,7 @@ path = /mnt/{$mountent['sharename']}
 public = yes
 writeable = yes
 printable = no
+veto files = /.snap/
 hide dot files = yes
 {$guestmode}
 
