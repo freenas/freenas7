@@ -212,21 +212,21 @@ private dir = {$g['varetc_path']}/private
 EOD;
 
 	switch ($config['samba']['security'])	{
-	case "share":
-		$sambaconf .= <<<EOD
+		case "share":
+			$sambaconf .= <<<EOD
 create mask = 0666
 directory mask = 0777
 passdb backend = smbpasswd
 
 EOD;
-	
-		$guestmode = <<<EOD
+
+			$guestmode = <<<EOD
 guest ok = yes
 EOD;
-		break;
+			break;
 
-	case "domain":
-		$sambaconf .= <<<EOD
+		case "domain":
+			$sambaconf .= <<<EOD
 passdb backend = smbpasswd
 allow trusted domains = No
 dns proxy = No
@@ -242,19 +242,20 @@ template shell = /bin/sh
 
 EOD;
 
-		$guestmode = <<<EOD
+			$guestmode = <<<EOD
 guest ok = no
 EOD;
-		break;
+			break;
 
-	case "user":
-		$sambaconf .= <<<EOD
+		case "user":
+			$sambaconf .= <<<EOD
 passdb backend = smbpasswd
+
 EOD;
-		$guestmode = <<<EOD
+			$guestmode = <<<EOD
 guest ok = no
 EOD;
-		break;
+			break;
 		}
 
 		foreach ($config['mounts']['mount'] as $mountent) {
@@ -263,7 +264,6 @@ EOD;
 [{$mountent['sharename']}]
 comment = {$mountent['desc']}
 path = /mnt/{$mountent['sharename']}
-public = yes
 writeable = yes
 printable = no
 veto files = /.snap/
