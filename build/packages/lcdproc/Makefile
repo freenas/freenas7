@@ -1,19 +1,15 @@
 PORTNAME=	lcdproc
+PORTVERSION=	1.0
 CATEGORIES=	sysutils
-
-MAINTAINER=	votdev@gmx.de
 COMMENT=	A client/server suite for LCD devices
+MAINTAINER=	votdev@gmx.de	
 
 # Package depends on port 'lcdproc' and 'libusb'.
 LIB_DEPENDS+=	usb-0.1.8:${PORTSDIR}/devel/libusb
 BUILD_DEPENDS=	lcdproc:${PORTSDIR}/sysutils/lcdproc
 DEPENDS_ARGS+=	WITH_USB=yes
-
-do-patch:
-	-@if [ ! -e ${PORTSDIR}/sysutils/lcdproc.orig ]; then \
-		${CP} -r ${PORTSDIR}/sysutils/lcdproc ${PORTSDIR}/sysutils/lcdproc.orig; \
-		${PATCH} -E -u -d ${PORTSDIR}/sysutils/lcdproc -i ${FILESDIR}/patch-lcdproc-0.5.2.diff; \
-	fi
+# No build is required for this port.
+NO_BUILD?=	1
 
 do-install:
 	@${INSTALL_PROGRAM} ${PORTSDIR}/sysutils/lcdproc/work/lcdproc*/clients/lcdproc/lcdproc ${PREFIX}/bin
