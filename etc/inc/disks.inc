@@ -754,15 +754,15 @@ function disks_raid_graid5_tune()
 	$realram = round($raminfo['real'] / 1024 / 1024);
 
 	if ($realram <= 128) {
-		write_log("Optimizing graid5 for system with less or 128MB of RAM");
+		write_log("Optimizing graid5 for systems with <= 128MB of RAM");
 		mwexec('sysctl value kern.geom.raid5.maxwql=10');
 		mwexec('sysctl value kern.geom.raid5.maxmem=1100000');
 	} else if ($realram <= 256) {
-		write_log("Optimizing graid5 for system with loss or 256MB of RAM");
+		write_log("Optimizing graid5 for systems with <= 256MB of RAM");
 		mwexec('sysctl value kern.geom.raid5.maxwql=20');
 		mwexec('sysctl value kern.geom.raid5.maxmem=2000000');
 	} else {
-		write_log("Detected 512MB or more RAM... No need to optimize RAM use for graid5");
+		write_log("Detected >= 512MB of RAM... No need to optimize RAM usage for graid5");
 	}
 
 	// Modify ATA timeout to 15 seconds.

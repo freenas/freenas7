@@ -154,7 +154,8 @@ if ($_POST) {
 			$retval = system_hostname_configure();
 			$retval |= system_hosts_generate();
 			$retval |= system_resolvconf_generate();
-			$retval |= system_password_configure();
+			$retval |= system_create_htpasswd();
+			$retval |= system_users_create();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
  			$retval |= system_tuning();

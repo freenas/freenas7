@@ -91,7 +91,7 @@ mkdir var ;
 
 # Creating symbolic links. Most of the target files will be created at runtime.
 ln -s cf/conf conf
-ln -s /var/run/htpasswd usr/local/www/.htpasswd
+ln -s /var/run/.htpasswd usr/local/www/.htpasswd
 ln -s /var/etc/resolv.conf etc/resolv.conf
 ln -s /var/etc/master.passwd etc/master.passwd
 ln -s /var/etc/passwd etc/passwd

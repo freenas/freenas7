@@ -303,28 +303,25 @@ function system_pccard_start() {
 	return $res;
 }
 
-/* Start the webgui
-Return 0 if OK, and 1 or retval if error */
+// Start the WebGUI.
+// Return 0 if OK, and 1 or retval if error
 function system_webgui_start() {
 	global $config, $g;
-	
+
 	$result = 0 ;
-	
+
 	if ($g['booting'])
 		write_console("Starting webGUI... ");
-	
+
 	/* kill any running lighttpd */
 	killbypid("{$g['varrun_path']}/lighttpd.pid");
-	
-	// Wait 1 second
-	sleep(1);
-	
-	/* generate password file */
-	system_password_configure();
-	
+
+	// Create .htpasswd file used by lighttpd.
+	system_create_htpasswd();
+
 	chdir($g['www_path']);
-	
-	/* generate lightppd.conf */
+
+	// Generate lighttpd.conf
 	$fd = fopen("{$g['varetc_path']}/lighttpd.conf", "w");
 	if (!$fd) {
 		$message = "Error: Can't open lightppd.conf in system_webgui_start()";
@@ -332,7 +329,7 @@ function system_webgui_start() {
 		write_log($message);
 		$result = 1 ;
 	}
-	
+
 	$lighttpdconf = <<<EOD
 server.modules              = (
                                 "mod_access",
@@ -500,33 +497,6 @@ EOD;
 			write_console("failed\n");
 		write_log("Error: Failed to start WebGUI");
 	}
-
-	return $result;
-}
-
-/* Return 0 if OK, 1 if error */
-function system_password_configure() {
-	global $config, $g;
-
-	$result = 0 ;
-
-	$fd = fopen("{$g['varrun_path']}/htpasswd", "w");
-	if (!$fd) {
-		$message = "Error: Can't open htpasswd in system_password_configure()";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	if ($config['system']['username'])
-		$username = $config['system']['username'];
-	else
-		$username = "admin";
-
-	fwrite($fd, $username . ":" . $config['system']['password'] . "\n");
-	fclose($fd);
-
-	$result = mwexec("/bin/chmod 0600 {$g['varrun_path']}/htpasswd");
 
 	return $result;
 }
@@ -955,6 +925,34 @@ function system_user_samba()
 	}
 	
 	return 0;
+}
+
+// Generate the .htpasswd file used by lighttpd.
+// Return 0 if successful, otherwise 1
+function system_create_htpasswd() {
+	global $config, $g;
+
+	$result = 0 ;
+
+	$fd = fopen("{$g['varrun_path']}/.htpasswd", "w");
+	if (!$fd) {
+		$message = "Error: Can't create .htpasswd in system_create_htpasswd()";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	if ($config['system']['username'])
+		$username = $config['system']['username'];
+	else
+		$username = "admin";
+
+	fwrite($fd, $username . ":" . $config['system']['password'] . "\n");
+	fclose($fd);
+
+	$result = mwexec("/bin/chmod 0600 {$g['varrun_path']}/.htpasswd");
+
+	return $result;
 }
 
 /* Configure PAM, NSS and LDAP modules 

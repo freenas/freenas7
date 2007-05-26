@@ -48,17 +48,14 @@ function interfaces_loopback_configure()
 function interfaces_lan_configure()
 {
 	global $config, $g;
-	
+
 	$result = 0;
-	
+
 	if ($g['booting'])
 		write_console("Configuring LAN interface... ");
-	
+
 	$lancfg = $config['interfaces']['lan'];
-	
 	$lanif = $config['interfaces']['lan']['if'];
-	
-	// $config['interfaces']['lan'] is allready set to the first detected NIC... Where ?
 
 	if (strcmp($lanif,"auto") == 0) {
 		$lanif = get_ifname($lanif);
@@ -71,29 +68,30 @@ function interfaces_lan_configure()
 	if (is_array($lancfg['wireless'])) {
 		interfaces_wireless_configure($lanif, $lancfg['wireless']);
 	}
-	
+
 	/* MAC spoofing? */
 	if ($lancfg['spoofmac']) {
-		mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . 
-			" link " . escapeshellarg($lancfg['spoofmac']));
+		mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " link " . escapeshellarg($lancfg['spoofmac']));
 	}
-	
+
 	/* media */
 	if ($lancfg['media'] || $lancfg['mediaopt'] || $lancfg['polling'] || $lancfg['mtu'] ) 	{
 		$cmd = "/sbin/ifconfig " . escapeshellarg($lanif);
-		
+
 		// If not in autoselect mode, force it:
 		if (strcmp($lancfg['media'],"autoselect") != 0) {
 			$cmd .= " media " . escapeshellarg($lancfg['media']);
 			$cmd .= " mediaopt " . escapeshellarg($lancfg['mediaopt']);
 		}
-		
+
 		if ($lancfg['polling']) {
 			$cmd .= " polling";
 		}
+
 		if ($lancfg['mtu']) {
 			$cmd .= " mtu ". escapeshellarg($lancfg['mtu']);
 		}
+
 		mwexec($cmd);
 	}
 
@@ -101,7 +99,7 @@ function interfaces_lan_configure()
 		case 'dhcp':
 			interfaces_dhcp_configure($lanif);
 			break;
-			
+
 		default:
 			$addflags = "";
 			/* Remove the link0 options that create some problem */
@@ -121,42 +119,37 @@ function interfaces_lan_configure()
 
 	/* install multicast route */
 	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lanif));
-	
+
 	if (!$g['booting']) {
 		/* make new hosts file */
 		$result = system_hosts_generate();
-		
+
 		/* reconfigure static routes (kernel may have deleted them) */
 		$result |= system_routing_configure();
-		
+
 		/* reload Samba */
 		$result |= services_samba_configure();
-		
+
 		/* reload FTP */
 		$result |= services_ftpd_configure();
-		
+
 		/* reload NFS */
 		$result |= services_nfs_configure();
-		
+
 		/* reload AFP */
 		$result |= services_afpd_configure();
-		
+
 		/* reload SSH */
 		$result |= services_sshd_configure();
-		
+
 		/* reload RSYNC */
-		$result |= services_rsyncd_configure();
-		
-		/* DO NOT reload the webgui
-		Lighttpd seem smart enough for use the new IP */
-		// $result |= system_webgui_start();
-				
+		$result |= services_rsyncd_configure();				
 	}
-	
+
 	if ($g['booting']) {
 		write_console("done\n");
 	}
-	
+
 	return $result;
 }
 
