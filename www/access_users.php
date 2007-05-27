@@ -51,11 +51,9 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) 
 		{
 			config_lock();
-			/* Re-generate the config file */
-			system_users_create();
+			system_create_usermanagement();
 			if (isset($config['samba']['enable']))
-				system_user_samba();
-			
+				system_create_smbpasswd();
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
@@ -71,12 +69,11 @@ if ($_GET['act'] == "del")
 	if ($a_user_conf[$_GET['id']]) 
 	{
 		unset($a_user_conf[$_GET['id']]);
-		
-		/* Re-generate the config file */
-		system_users_create();
+
+		system_create_usermanagement();
 		if (isset($config['samba']['enable']))
-			system_user_samba();
-		
+			system_create_smbpasswd();
+
 		write_config();
 		touch($d_userconfdirty_path);
 		header("Location: access_users.php");

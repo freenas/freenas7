@@ -311,20 +311,19 @@ EOD;
 			}
 
 			$result |= mwexec("/usr/local/sbin/nmbd -D -s {$g['varetc_path']}/smb.conf");
-		
+
 			if (isset($config['ad']['enable'])) {
 				mwexec("/usr/local/sbin/winbindd -s {$g['varetc_path']}/smb.conf");
 				//mwexec("/usr/local/bin/wbinfo --set-auth-user {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
 			}
-		
+
 			$result |= mwexec("/usr/local/sbin/smbd -D -s {$g['varetc_path']}/smb.conf");
-		
-		
+
 			/* TEST: Wait for samba starting */
 			sleep(2);
 
 			/* Generate the samba password file */
-			$result |= system_user_samba();
+			$result |= system_create_smbpasswd();
 
 			if(!$result) {
 				if($g['booting'])

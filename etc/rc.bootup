@@ -5,21 +5,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-		
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -40,44 +40,44 @@
 	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
-	
+
 	/* convert configuration, if necessary */
 	convert_config();
-	
+
 	/* Tune the system */
 	system_tuning();
-	
-	/* Generate local user base */
-	system_users_create();
-	
+
+	/* Generate local user database(s) */
+	system_create_usermanagement();
+
 	/* execute the rc.early scripts of extensions */
 	system_do_extensions(1);
-	
+
 	/* run any early shell commands specified in config.xml */
 	system_do_shell_commands(1);
-	
+
 	/* save dmesg output to file */
 	system_dmesg_save();
-	
+
 	/* set up our timezone */
 	system_timezone_configure();
-	
+
 	/* set up our hostname */
 	system_hostname_configure();
 
 	/* generate resolv.conf */
 	system_resolvconf_generate();
-	
+
 	/* start pccardd */
 	if (!in_array($g['platform'], $g['nopccard_platforms']))
 		system_pccard_start();
-	
+
 	/* configure loopback interface */
 	interfaces_loopback_configure();
-	
+
 	/* set up LAN interface */
 	interfaces_lan_configure();
-	
+
 	/* set up Optional interfaces */
 	interfaces_optional_configure();
 
@@ -86,40 +86,40 @@
 
 	/* set up static routes */
 	system_routing_configure();
-	
+
 	/* start syslogd */
 	system_syslogd_start();
-	
+
 	/* Generate the pam configuration file */
 	system_pam_configure();
-	
+
 	/* start SSH service */
 	services_sshd_configure();
-	
+
 	/* start web server */
 	system_webgui_start();
-	
+
 	/* configure console menu */
 	system_console_configure();
-	
+
 	/* start SNMP service */
 	/*services_snmpd_configure();*/
-	
+
 	/* start iSCSI initiator services */
 	services_iscsiinit_configure();
-	
+
 	/* start the NTP client */
 	system_ntp_configure();
-	
+
 	/* start the S.M.A.R.T daemon */
 	services_smart_configure();
-	
+
 	/* start the system power control utility */
 	services_powerd_configure();
-	
+
 	/* ATA disk Idle configuration */
 	disks_set_ataidle();
-	
+
 	/* RAID configuration */
 	disks_raid_start();
 
@@ -129,37 +129,37 @@
 	/* Enable the swap space */
 	// Should be done before the mount disk... but it use it
 	system_swap_configure();
-	
+
 	/* start NIS service */
 	services_nis_configure();
-	
+
 	/* start SAMBA service */
 	services_samba_configure();
-	
+
 	/* start Rsynd service */
 	services_rsyncd_configure();
-	
+
 	/* start FTP service */
 	services_ftpd_configure();
-	
+
 	/* start NFS service */
 	services_nfs_configure();
-	
+
 	/* configure Unison service */
 	services_unison_configure();
 
 	/* start AFP service */
 	services_afpd_configure();
-	
+
 	/* start RSYNC client/slave mode service */
 	services_rsyncclient_configure();
-	
+
 	/* start RSYNC local service */
 	services_rsync_local_configure();
-	
+
 	/* start iSCSI target service */
 	services_iscsitarget_configure();
-	
+
 	/* Start cron */
 	services_cron_configure();
 
@@ -174,16 +174,16 @@
 
 	/* execute the rc scripts of extensions */
 	system_do_extensions();
-	
+
 	/* run any shell commands specified in config.xml */
 	system_do_shell_commands();
-	
+
 	/*DEBUG: WAIT 10 secondes */
 	//mwexec("/bin/sleep 10");
-	
+
 	/* Send the start beep */
 	system_beep_up();
-	
+
 	/* done */
 	unlink("{$g['varrun_path']}/booting");
 ?>

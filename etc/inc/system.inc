@@ -316,9 +316,6 @@ function system_webgui_start() {
 	/* kill any running lighttpd */
 	killbypid("{$g['varrun_path']}/lighttpd.pid");
 
-	// Create .htpasswd file used by lighttpd.
-	system_create_htpasswd();
-
 	chdir($g['www_path']);
 
 	// Generate lighttpd.conf
@@ -743,37 +740,42 @@ function system_beep_down()
 	return 0;
 }
 
-// Create all passwd files.
+// Create the following files:
+// - /var/etc/master.passwd
+// - /var/etc/group
+// - /var/etc/passwd, pwd.db and spwd.db
+// - /var/run/.htpasswd
 // Return 0 if successful, otherwise 1
-function system_users_create()
+function system_create_usermanagement()
 {
 	global $g;
 
 	$result = 0;
 
 	if ($g['booting'])
-		write_console("Generating user database... ");
+		write_console("Generating user/password database(s)... ");
 
-	$result |= system_user_masterpasswd();
-	$result |= system_user_group();
-	$result |= system_user_pwdmkdb();
+	$result |= system_create_masterpasswd();
+	$result |= system_create_group();
+	$result |= system_create_pwdmkdb();
+	$result |= system_create_htpasswd();
 
 	if (0 == $result) {
 		if($g['booting'])
 			write_console("done\n");
-		write_log("User database created");
+		write_log("User/password database(s) created");
 	} else {
 		if($g['booting'])
 			write_console("failed\n");
-		write_log("Error: Failed to create user database");
+		write_log("Error: Failed to create user/password database(s)");
 	}
 
 	return $result;
 }
 
-// Create the master.passwd file.
+// Create the /var/etc/master.passwd file.
 // Return 0 if successful, otherwise 1
-function system_user_masterpasswd()
+function system_create_masterpasswd()
 {
 	global $config, $g;
 	
@@ -819,7 +821,7 @@ EOD;
 	
 	$fd = fopen("{$g['varetc_path']}/master.passwd", "w");
 	if (!$fd) {
-		$message = "Error: Can't open master.passwd in system_user_masterpasswd()";
+		$message = "Error: Can't open master.passwd in system_create_masterpasswd()";
 		write_console($message . ".\n");
 		write_log($message);
 		return 1;
@@ -831,29 +833,35 @@ EOD;
 	return 0;
 }
 
-// Create the group file.
+// Generate the /var/etc/passwd, pwd.db and spwd.db files.
 // Return 0 if successful, otherwise 1
-function system_user_group()
+function system_create_pwdmkdb()
+{
+	global $g;
+
+	return (mwexec("/usr/sbin/pwd_mkdb -p -d {$g['varetc_path']} {$g['varetc_path']}/master.passwd"));
+}
+
+// Create the /var/etc/group file.
+// Return 0 if successful, otherwise 1
+function system_create_group()
 {
 	global $config, $g;
-	
+
 	$groupfile = <<<EOD
 wheel:*:0:root
 EOD;
-	
+
 	/* If user exist with admin right, put them on the wheel group */
-	if (is_array($config['access']['user']))
-		{
-			foreach ($config['access']['user'] as $user)
-			{
-				if (isset($user['admin']))
-				{
-					$groupfile .= <<<EOD
+	if (is_array($config['access']['user'])) {
+		foreach ($config['access']['user'] as $user) {
+			if (isset($user['admin'])) {
+				$groupfile .= <<<EOD
 ,{$user['login']}
 EOD;
-				}
 			}
 		}
+	}
 
 	$groupfile .= <<<EOD
 
@@ -888,7 +896,7 @@ EOD;
 
 	$fd = fopen("{$g['varetc_path']}/group", "w");
 	if (!$fd) 	{
-		$message = "Error: Can't open group in system_user_group()";
+		$message = "Error: Can't open group in system_create_group()";
 		write_console($message . ".\n");
 		write_log($message);
 		return 1;
@@ -900,18 +908,9 @@ EOD;
 	return 0;
 }
 
-// Generate the db of password.
+// Generate the /var/etc/private/smbpasswd samba password database.
 // Return 0 if successful, otherwise 1
-function system_user_pwdmkdb()
-{
-	global $config, $g;
-		
-	return (mwexec("/usr/sbin/pwd_mkdb -p -d {$g['varetc_path']} {$g['varetc_path']}/master.passwd"));
-}
-
-// Generate the db of password.
-// Return 0 if successful, otherwise 1
-function system_user_samba()
+function system_create_smbpasswd()
 {
 	// MUST FIND A WAY OF USING UNIX CRYPTED PASSWORD IN THE PLACE OF CLEAR TEXT PASSWORD FOR GENERATING SAMBA DB!!!
 	global $config;
@@ -927,7 +926,7 @@ function system_user_samba()
 	return 0;
 }
 
-// Generate the .htpasswd file used by lighttpd.
+// Generate the /var/run/.htpasswd file used by lighttpd.
 // Return 0 if successful, otherwise 1
 function system_create_htpasswd() {
 	global $config, $g;

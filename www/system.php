@@ -149,19 +149,20 @@ if ($_POST) {
 			touch($d_sysrebootreqd_path);
 
 		$retval = 0;
+
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval = system_hostname_configure();
 			$retval |= system_hosts_generate();
 			$retval |= system_resolvconf_generate();
-			$retval |= system_create_htpasswd();
-			$retval |= system_users_create();
+			$retval |= system_create_usermanagement();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
  			$retval |= system_tuning();
  			$retval |= services_mdnsresponder_configure(); // Update and announce service via zeroconf.
 			config_unlock();
 		}
+
 		if (($pconfig['systime'] != "Not Set") && ($pconfig['systime'] != "")) {
 			$timefields = split(" ", $pconfig['systime']);
 			$dateparts = split("/", $timefields[0]);
