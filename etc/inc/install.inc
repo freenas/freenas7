@@ -91,8 +91,8 @@ function install_unmount_cd()
 function install_init_halfdisk($harddrive)
 {
 	/* Part of install process: Initialize the destination disk with 2 partitions */
-	/* Create the partitions */
-	install_fdisk($harddrive);
+	/* Create two partitions, the first as 32MB */
+	install_fdisk($harddrive,32);
 
 	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$harddrive}")) {
 		write_console("Error: Can't fdisk the destination drive '{$harddrive}'!\n");
@@ -141,6 +141,59 @@ function install_init_halfdisk($harddrive)
 	return 0;
 }
 
+function install_init_harddrive($harddrive)
+{
+	/* Part of install process: Initialize the destination disk with 2 partitions */
+	/* Create two partitions, the first as 64MB */
+	install_fdisk($harddrive,64);
+
+	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$harddrive}")) {
+		write_console("Error: Can't fdisk the destination drive '{$harddrive}'!\n");
+		return 1;
+	}
+
+	/* Must wait that the /dev is upatded with the new information */
+	write_console("Waiting for system update...");
+	$devtotest="/dev/{$harddrive}s2";
+	$i=0;
+	while (!file_exists($devtotest)) {
+		sleep(1);
+		write_console(".");
+		$i++;
+		if ($i==20) {
+			write_console(" System not updated after 20 seconds!\n");
+			return 1;
+		}
+	}
+	write_console("\n");
+
+	write_console("Creating BSD label...\n");
+	if (mwexec("/sbin/bsdlabel -B -w -b /boot/boot {$harddrive}s1 auto")) {
+		write_console("Error: Failed to label '{$harddrive}s1'!\n");
+		return 1;
+	}
+	if (mwexec("/sbin/bsdlabel -w {$harddrive}s2 auto")) {
+		write_console("Error: Failed to label '{$harddrive}s2'!\n");
+		return 1;
+	}
+
+	write_console("Modify BSD label information...\n");
+	install_bsdlabel($harddrive, "s1", "4.2BSD");
+	install_bsdlabel($harddrive, "s2", "4.2BSD");
+
+	write_console("Creating filesystem...\n");
+	if (mwexec("/sbin/newfs /dev/{$harddrive}s1")) {
+		write_console("Error: Failed to create filesystem on '/dev/{$harddrive}s1'!\n");
+		return 1;
+	}
+	if (mwexec("/sbin/newfs /dev/{$harddrive}s2")) {
+		write_console("Error: Failed to create filesystem on '/dev/{$harddrive}s2'!\n");
+		return 1;
+	}
+
+	return 0;
+}
+
 /* Install the IMG on the destination harddrive.
    Called by install script. Return 0 if OK, 1 if not. */
 function install_dd_image($harddrive)
@@ -153,6 +206,76 @@ function install_dd_image($harddrive)
 		return 1;
 	}
 
+	return 0;
+}
+
+/* Install FreeNAS on the destination harddrive.
+   Called by install script. Return 0 if OK, 1 if not. */
+function install_harddrive_image($harddrive)
+{
+	/* Part of install process: dd image file on the destination disk */
+	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
+	write_console("Installation...\n");
+	write_console("Formatting {$harddrive}s1a\n");
+	mwexec("/sbin/newfs -U {$harddrive}s1a");
+	mwexec("/sbin/newfs -U {$harddrive}s2");
+	mwexec("/bin/mkdir /tutu");
+	mwexec("/sbin/mount /dev/{$harddrive}s1a /tutu");
+	//mwexec("cd /tutu");
+	write_console("Copying system file on this hardrive\n");
+	mwexec("/usr/bin/tar --exclude /tutu --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C /tutu");
+	mwexec("/bin/mkdir /tutu/var");
+	mwexec("/bin/mkdir /tutu/dev");
+	mwexec("/bin/mkdir /tutu/mnt");
+	mwexec("/bin/mkdir /tutu/boot/defaults");
+	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/* /tutu/boot");
+	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/defaults/* /tutu/boot/defaults");
+	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/kernel/* /tutu/boot/kernel");
+	
+	// Generate new loader.conf file
+	$fd = fopen("/tutu/boot/loader.conf", "w");
+	if (!$fd) {
+		write_console("Error: Can't open loader.conf in install_harddrive_image().\n");
+		return 1;
+	}
+
+	$loaderconf .= <<<EOD
+kernel="kernel"
+bootfile="kernel"
+kernel_options=""
+kern.hz="100"
+splash_bmp_load="YES"
+bitmap_load="YES"
+bitmap_name="/boot/splash.bmp"
+
+EOD;
+
+	fwrite($fd, $loaderconf);
+	fclose($fd);
+	
+	//Re-configuring the release type
+	mwexec("/bin/echo 'generic-pc-harddrive' > /tutu/etc/platform");
+	
+	//Unzipping the Kernel
+	mwexec("/usr/bin/gunzip /tutu/boot/kernel/kernel.gz");
+	
+	//Generating the FSTAB
+	
+	$fd = fopen("/tutu/etc/fstab", "w");
+	if (!$fd) {
+		write_console("Error: Can't open fstab in install_harddrive_image().\n");
+		return 1;
+	}
+	$fstab .= <<<EOD
+# Device                Mountpoint      FStype  Options         Dump    Pass#
+/dev/{$harddrive}s1a             /       ufs     rw              1       1
+
+EOD;
+
+	fwrite($fd, $fstab);
+	fclose($fd);
+
+	
 	return 0;
 }
 
@@ -215,16 +338,19 @@ function install_restoreconfig($disk)
 }
 
 // Initialise HARD DRIVE for installation (creating 2 partition).
+//Function need two parameters:
+// - disk name ((ad0)
+// - disk size in MB
 // Return 0 if successful, 1 if error
-function install_fdisk($harddrive)
+function install_fdisk($harddrive,$size)
 {
 	global $config, $g;
 
 	// Get disk informations.
 	$diskinfo = disks_get_diskinfo($harddrive);
 
-	// Setting partition size to 32Mb.
-	$part1_size_mbytes = 32;
+	// Setting partition size to $size (in MB).
+	$part1_size_mbytes = $size;
 	$part1_size_bytes = $part1_size_mbytes * 1024 * 1024;
 
 	// Calculate partition sector sizes.
