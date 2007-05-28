@@ -926,16 +926,16 @@ function system_create_smbpasswd()
 	return 0;
 }
 
-// Generate the /var/run/htpasswd file used by lighttpd.
+// Generate the /var/run/.htpasswd file used by lighttpd.
 // Return 0 if successful, otherwise 1
 function system_create_htpasswd() {
 	global $config, $g;
 
 	$result = 0 ;
 
-	$fd = fopen("{$g['varrun_path']}/htpasswd", "w");
+	$fd = fopen("{$g['varrun_path']}/.htpasswd", "w");
 	if (!$fd) {
-		$message = "Error: Can't create htpasswd in system_create_htpasswd()";
+		$message = "Error: Can't create .htpasswd in system_create_htpasswd()";
 		write_console($message . ".\n");
 		write_log($message);
 		return 1;
@@ -949,7 +949,7 @@ function system_create_htpasswd() {
 	fwrite($fd, $username . ":" . $config['system']['password'] . "\n");
 	fclose($fd);
 
-	$result = mwexec("/bin/chmod 0600 {$g['varrun_path']}/htpasswd");
+	$result = mwexec("/bin/chmod 0600 {$g['varrun_path']}/.htpasswd");
 
 	return $result;
 }
