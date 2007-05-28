@@ -297,7 +297,7 @@ create_mfsroot() {
 create_image() {
 	echo "IMG: Generating $FREENAS_PRODUCTNAME IMG File (to be rawrite on CF/USB/HD)"
 	[ -f image.bin ] && rm -f image.bin
-	PLATFORM="generic-pc"
+	PLATFORM="$FREENAS_ARCH-embedded"
 	echo $PLATFORM > $FREENAS_ROOTFS/etc/platform
 	IMGFILENAME="$FREENAS_PRODUCTNAME-$PLATFORM-$FREENAS_VERSION.img"
 	
@@ -378,7 +378,7 @@ create_iso () {
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 	
-	ISOFILENAME="$FREENAS_PRODUCTNAME-$FREENAS_VERSION.iso"
+	ISOFILENAME="$FREENAS_PRODUCTNAME-$FREENAS_ARCH-liveCD-$FREENAS_VERSION.iso"
 	
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Generating the $FREENAS_PRODUCTNAME Image file:"
@@ -386,7 +386,7 @@ create_iso () {
 	fi
 	
 	#Setting the variable for ISO image:
-	PLATFORM="generic-pc-cdrom"
+	PLATFORM="$FREENAS_ARCH-liveCD"
 	echo "$PLATFORM" > $FREENAS_ROOTFS/etc/platform
 	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
 	
@@ -425,7 +425,7 @@ create_iso () {
 	
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file to $FREENAS_TMPDIR"
-		cp $FREENAS_ROOTDIR/$FREENAS_PRODUCTNAME-generic-pc-$FREENAS_VERSION.img $FREENAS_TMPDIR/$FREENAS_PRODUCTNAME-generic-pc.gz
+		cp $FREENAS_ROOTDIR/$FREENAS_PRODUCTNAME-$FREENAS_ARCH-embedded-$FREENAS_VERSION.img $FREENAS_TMPDIR/$FREENAS_PRODUCTNAME-$FREENAS_ARCH-embedded.gz
 	fi
 
 	echo "ISO: Generating the ISO file"

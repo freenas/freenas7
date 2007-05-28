@@ -84,6 +84,10 @@ Majors changes:
 - Upgrade Samba to 3.0.25
 - Improve UPnP WebGUI/Service
 - Refactoring build scripts (Makefiles)
+- New platform name:
+    + liveCD (old "generic-pc-cdrom") for the CD-ROM release
+    + embedded (old "generic-pc") for install on hard drive or flash device
+    + full (new platform) for real install (no more use RAM disk)
 
 Minors changes:
 - Enhance build scripts (to build packages/plugins)

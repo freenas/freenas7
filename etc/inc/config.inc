@@ -41,10 +41,11 @@ $productname = get_product_name();
 /* read platform */
 if (file_exists("{$g['etc_path']}/platform")) {
 	$g['fullplatform'] = chop(file_get_contents("{$g['etc_path']}/platform"));
-	$pla = explode("_", $g['fullplatform']);
-	$g['platform'] = $pla[0];
+	$pla = explode("-", $g['fullplatform']);
+	$g['arch'] = $pla[0];
+	$g['platform'] = $pla[1];
 } else {
-	$g['platform'] = $g['fullplatform'] = "unknown";
+	$g['arch'] = $g['fullplatform'] = "unknown";
 }
 
 if ($g['booting']) {
@@ -53,8 +54,8 @@ if ($g['booting']) {
 	
 	/* check if there's already an fstab (NFS booting?) */
 	if (!file_exists("{$g['etc_path']}/fstab")) {
-		if (strstr($g['platform'], "cdrom"))
-		{
+		if (strstr($g['platform'], "liveCD")) 	{
+			echo "Booting from liveCD : Looking for configuration file on floppy or USB\n";
 			/* Config is on floppy disk/USB stick for CD-ROM version */
 			$cfgdevice = $cfgpartition = "fd0";
 			$cfgfstype = "msdos";
@@ -68,23 +69,27 @@ if ($g['booting']) {
 
 					/* Unmount device. */
 					mwexec("/sbin/umount -f /dev/{$cfgpartition}");
+				} else if (mwexec("/sbin/mount -r -t msdos /dev/da0 {$g['cf_path']}") == 0){
+					$cfgdevice = "da0";
+					$cfgpartition = $cfgdevice ;
+
+					/* Unmount device. */
+					mwexec("/sbin/umount -f /dev/{$cfgpartition}");
 				}
 			}
 		}
-		else
-		{
+		else 	{
 			/* probe kernel known disks until we find one with config.xml */
 			$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 			foreach ($disks as $mountdisk) {
 				/* skip mfs mounted filesystems */
-				if (strstr($mountdisk, "md"))
+				if (strstr($mountdisk, "md")) {
 					continue;
+				}
 
 				/* Search on slice 1 for OS installed on disk with install script*/
-				if (mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$g['cf_path']}") == 0)
-				{
-					if (file_exists("{$g['cf_conf_path']}/config.xml"))
-					{
+				if (mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$g['cf_path']}") == 0) 	{
+					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 						/* found it */
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "s1";
@@ -94,15 +99,14 @@ if ($g['booting']) {
 
 					mwexec("/sbin/umount -f {$g['cf_path']}");
 
-					if ($cfgdevice)
+					if ($cfgdevice) {
 						break;
+					}
 				}
 
 				/* Search on partition 'a' for OS IMG image written on disk */
-				if (mwexec("/sbin/mount -r /dev/{$mountdisk}a {$g['cf_path']}") == 0)
-				{
-					if (file_exists("{$g['cf_conf_path']}/config.xml"))
-					{
+				if (mwexec("/sbin/mount -r /dev/{$mountdisk}a {$g['cf_path']}") == 0) 	{
+					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 						/* found it */
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "a";
@@ -112,8 +116,9 @@ if ($g['booting']) {
 
 					mwexec("/sbin/umount -f {$g['cf_path']}");
 
-					if ($cfgdevice)
+					if ($cfgdevice) {
 						break;
+					}
 				}
 			}
 		}
@@ -144,7 +149,7 @@ if ($g['booting']) {
 				}
 			}
 		}
-		
+		echo "DEBUG cfgdevice: {$cfgdevice}\n";
 		if (!$cfgdevice) {
 			/* no device found, print an error and die */
 			echo <<<EOD
@@ -172,7 +177,7 @@ EOD;
 		$fd = fopen("{$g['etc_path']}/fstab", "w");
 
 		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
-		/* $fstab .= "proc /proc procfs rw 0 0\n"; */
+		// $fstab .= "proc /proc procfs rw 0 0\n";
 
 		fwrite($fd, $fstab);
 		fclose($fd);
@@ -198,7 +203,7 @@ if (!$noparseconfig) {
 	
 		if (!file_exists("{$g['conf_path']}/config.xml")) {
 			if ($g['booting']) {
-				if (strstr($g['platform'], "cdrom")) {
+				if (strstr($g['platform'], "liveCD")) {
 					/* try copying the default config. to the floppy */
 					reset_factory_defaults();
 					
@@ -255,18 +260,22 @@ EOD;
 function conf_mount_rw() {
 	global $g;
 
-	/* don't use mount -u anymore
-	   (doesn't sync the files properly and /bin/sync won't help either) */
-	mwexec("/sbin/umount -f {$g['cf_path']}");
-	mwexec("/sbin/mount -w -o noatime {$g['cf_path']}");
+	if ($g['platform'] != "full") {
+		/* don't use mount -u anymore
+		(doesn't sync the files properly and /bin/sync won't help either) */
+		mwexec("/sbin/umount -f {$g['cf_path']}");
+		mwexec("/sbin/mount -w -o noatime {$g['cf_path']}");
+	}
 }
 
 /* mount flash card read only */
 function conf_mount_ro() {
 	global $g;
 	
-	mwexec("/sbin/umount -f {$g['cf_path']}");
-	mwexec("/sbin/mount -r {$g['cf_path']}");
+	if ($g['platform'] != "full") {
+		mwexec("/sbin/umount -f {$g['cf_path']}");
+		mwexec("/sbin/mount -r {$g['cf_path']}");
+	}
 }
 
 /* save the system configuration */

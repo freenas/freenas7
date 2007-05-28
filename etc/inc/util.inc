@@ -1482,6 +1482,12 @@ function get_product_name() {
 	return chop(file_get_contents("{$g['etc_path']}/prd.name"));
 }
 
+/* Get the platform type */
+function get_platform_type() {
+	global $g;
+	return chop(file_get_contents("{$g['etc_path']}/platform"));
+}
+
 /* Get the product URL */
 function get_product_url() {
 	global $g;

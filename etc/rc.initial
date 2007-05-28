@@ -54,8 +54,8 @@ echo "5) Ping host"
 echo "6) Shell"
 echo "7) Reboot system"
 echo "8) PowerOff system"
-if [ "$PLATFORM" = "generic-pc-cdrom" ]; then
-    echo "9) Install to an hard drive/memory drive/USB pen, etc."
+if [ "$PLATFORM" = "i386-liveCD" ] || [ "$PLATFORM" = "amd64-liveCD" ]; then
+    echo "9) Install to an hard drive/flash device, etc."
 fi
 
 echo

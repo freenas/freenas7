@@ -23,17 +23,27 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin
 
 export HOME PATH
 
-#Mount the ramdisk / in Read-Write
-mount -u -o rw /dev/md0 /
+# Set our operating platform
+PLATFORM=`cat /etc/platform`
+
+#If running from liveCD or embedded, mount the root (ramdisk) in Read-Write
+if [ "$PLATFORM" = "i386-liveCD" ] || [ "$PLATFORM" = "i386-embedded" ]; then
+    mount -u -o rw /dev/md0 /
+fi
 
 set -T
 trap "echo 'Reboot interrupted'; exit 1" 3
 
-# make some directories in /var
-mkdir /var/run /var/log /var/etc /var/etc/ssh /var/db /var/log/samba /var/mount /var/etc/private /var/empty /var/etc/iscsi
+# make some directories in /var if doesn't exist
+if [ ! -d "/var/run" ]; then
+	mkdir /var/run /var/log /var/etc /var/etc/ssh /var/db /var/log/samba /var/mount /var/etc/private /var/empty /var/etc/iscsi
+fi
+
 # Special for afpd
-mkdir /var/spool
-mkdir /var/spool/lock
+if [ -d "/var/spool" ]; then
+	mkdir /var/spool
+	mkdir /var/spool/lock
+fi
 
 # generate circular logfiles
 clog -i -s 262144 /var/log/system.log
@@ -51,7 +61,9 @@ adjkerntz -i
 cd /var/run && cp /dev/null utmp && chmod 644 utmp
 
 # Create symlink for lighhtpd file upload
-ln -s /ftmp /var/tmp
+if [ -h "/ftmp" ]; then
+	ln -s /ftmp /var/tmp
+fi
 
 # Run ldconfig
 /sbin/ldconfig -elf /usr/lib /usr/local/lib /lib

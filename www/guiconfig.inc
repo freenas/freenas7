@@ -87,7 +87,7 @@ $reservedlogin = array("root", "toor", "daemon", "operator", "bin", "tty", "kmem
 $tcpflags = array("fin", "syn", "rst", "psh", "ack", "urg");
 
 /* platforms that support firmware updating */
-$fwupplatforms = array('net45xx', 'net48xx', 'generic-pc', 'wrap');
+$fwupplatforms = array('net45xx', 'net48xx', 'embedded', 'wrap');
 
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
 	/* check for bad control characters */	

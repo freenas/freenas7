@@ -198,10 +198,13 @@ function install_init_harddrive($harddrive)
    Called by install script. Return 0 if OK, 1 if not. */
 function install_dd_image($harddrive)
 {
+	global $g;
+	
 	/* Part of install process: dd image file on the destination disk */
 	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
 	write_console("Installation...\n");
-	if (mwexec("/usr/bin/gunzip -S \"\" -c /mnt/cdrom_fr_0507/".get_product_name()."-generic-pc.gz | dd of=/dev/{$harddrive} bs=512 > /dev/null 2>&1")) {
+	$imgfilename=get_product_name(). "-{$g['arch']}-embedded.gz";
+	if (mwexec("/usr/bin/gunzip -S \"\" -c /mnt/cdrom_fr_0507/{$imgfilename} | dd of=/dev/{$harddrive} bs=512 > /dev/null 2>&1")) {
 		write_console("Error: Failed to dd image on '/dev/{$harddrive}'!\n");
 		return 1;
 	}
@@ -219,21 +222,21 @@ function install_harddrive_image($harddrive)
 	write_console("Formatting {$harddrive}s1a\n");
 	mwexec("/sbin/newfs -U {$harddrive}s1a");
 	mwexec("/sbin/newfs -U {$harddrive}s2");
-	mwexec("/bin/mkdir /tutu");
-	mwexec("/sbin/mount /dev/{$harddrive}s1a /tutu");
+	mwexec("/bin/mkdir /destdisk");
+	mwexec("/sbin/mount /dev/{$harddrive}s1a /destdisk");
 	//mwexec("cd /tutu");
 	write_console("Copying system file on this hardrive\n");
-	mwexec("/usr/bin/tar --exclude /tutu --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C /tutu");
-	mwexec("/bin/mkdir /tutu/var");
-	mwexec("/bin/mkdir /tutu/dev");
-	mwexec("/bin/mkdir /tutu/mnt");
-	mwexec("/bin/mkdir /tutu/boot/defaults");
-	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/* /tutu/boot");
-	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/defaults/* /tutu/boot/defaults");
-	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/kernel/* /tutu/boot/kernel");
+	mwexec("/usr/bin/tar --exclude /destdisk --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C /destdisk");
+	mwexec("/bin/mkdir /destdisk/var");
+	mwexec("/bin/mkdir /destdisk/dev");
+	mwexec("/bin/mkdir /destdisk/mnt");
+	mwexec("/bin/mkdir /destdisk/boot/defaults");
+	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/* /destdisk/boot");
+	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/defaults/* /destdisk/boot/defaults");
+	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/kernel/* /destdisk/boot/kernel");
 	
 	// Generate new loader.conf file
-	$fd = fopen("/tutu/boot/loader.conf", "w");
+	$fd = fopen("/destdisk/boot/loader.conf", "w");
 	if (!$fd) {
 		write_console("Error: Can't open loader.conf in install_harddrive_image().\n");
 		return 1;
@@ -254,14 +257,16 @@ EOD;
 	fclose($fd);
 	
 	//Re-configuring the release type
-	mwexec("/bin/echo 'generic-pc-harddrive' > /tutu/etc/platform");
+	$cmd="/bin/echo " . get_product_name() . "{$g['arch']}-full > /destdisk/etc/platform";
+	
+	mwexec($cmd);
 	
 	//Unzipping the Kernel
-	mwexec("/usr/bin/gunzip /tutu/boot/kernel/kernel.gz");
+	mwexec("/usr/bin/gunzip /destdisk/boot/kernel/kernel.gz");
 	
 	//Generating the FSTAB
 	
-	$fd = fopen("/tutu/etc/fstab", "w");
+	$fd = fopen("/destdisk/etc/fstab", "w");
 	if (!$fd) {
 		write_console("Error: Can't open fstab in install_harddrive_image().\n");
 		return 1;

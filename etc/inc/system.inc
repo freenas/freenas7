@@ -683,7 +683,7 @@ function system_dmesg_save() {
 function system_set_harddisk_standby() {
 	global $g, $config;
 
-	if ($g['platform'] != "generic-pc")
+	if (($g['platform'] != "embedded") || ($g['platform'] != "full"))
 		return;
 
 	if (isset($config['system']['harddiskstandby']) && 
