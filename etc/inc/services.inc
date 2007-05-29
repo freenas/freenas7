@@ -203,6 +203,13 @@ disable spoolss = Yes
 #Test: Try to improve samba performance under FreeBSD:
 use sendfile = yes
 strict locking = no
+read raw = yes    # Default
+write raw = yes   # Default
+oplocks = yes     # Default
+max xmit = 65535  # Default
+dead time = 15    # Default is 0
+getwd cache = yes
+lpq cache = 30
 #End of performance section
 log level = {$config['samba']['loglevel']}
 dos charset = {$config['samba']['doscharset']}
