@@ -43,6 +43,11 @@ if [ ! -d "/var/run" ]; then
 	mkdir /var/run /var/log /var/etc /var/etc/ssh /var/db /var/log/samba /var/mount /var/etc/private /var/empty /var/etc/iscsi
 fi
 
+# If the file /etc/cfdevice exist (this mean 'full' release), and symlink /var/etc/cfdevice doesn't exist.. create it.
+if [ -f "/etc/cfdevice" ] && [ ! -h /var/etc/cfdevice ] ; then
+	ln -s /etc/cfdevice /var/etc/cfdevice
+fi
+
 # Make spool dor (for afpd) if doesn't exist
 if [ ! -d "/var/spool" ]; then
 	mkdir /var/spool

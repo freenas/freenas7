@@ -293,6 +293,25 @@ EOD;
 	fwrite($fd, $fstab);
 	fclose($fd);
 
+	// Generating the /etc/cfdevice (this file is linked in /var/etc at bootup)
+	// This file (more exatly /var/etc/cfdevice) is used by the firmware and mount check
+	// This file is normally generated with 'liveCD' and 'embedded' during startup, but need to be created during install of 'full'
+	
+	$fd = fopen("/destdisk/etc/cfdevice", "w");
+	if (!$fd) {
+		write_console("Error: Can't open etc/cfdevice in install_harddrive_image().\n");
+		return 1;
+	}
+	$cfdevice .= <<<EOD
+{$harddrive}s1a
+
+EOD;
+
+	fwrite($fd, $cfdevice);
+	fclose($fd);
+	
+	//unmounting destination disk
+	mwexec("/sbin/umount /destdisk");
 	
 	return 0;
 }

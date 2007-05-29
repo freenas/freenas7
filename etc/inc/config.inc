@@ -52,7 +52,7 @@ if ($g['booting']) {
 	/* find the device where config.xml resides and write out an fstab */
 	unset($cfgdevice);
 	
-	/* check if there's already an fstab (NFS booting?) */
+	/* check if there's already an fstab ('full' release booting?) */
 	if (!file_exists("{$g['etc_path']}/fstab")) {
 		if (strstr($g['platform'], "liveCD")) 	{
 			echo "Booting from liveCD : Looking for configuration file on floppy or USB\n";
