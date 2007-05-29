@@ -30,6 +30,10 @@ PLATFORM=`cat /etc/platform`
 if [ "$PLATFORM" = "i386-liveCD" ] || [ "$PLATFORM" = "i386-embedded" ]; then
     mount -u -o rw /dev/md0 /
 fi
+#If running from full, mount the root (/) in Read-Write
+if [ "$PLATFORM" = "i386-full" ] ; then
+    mount -u -o rw /
+fi
 
 set -T
 trap "echo 'Reboot interrupted'; exit 1" 3

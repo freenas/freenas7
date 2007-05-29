@@ -149,7 +149,7 @@ if ($g['booting']) {
 				}
 			}
 		}
-		echo "DEBUG cfgdevice: {$cfgdevice}\n";
+		
 		if (!$cfgdevice) {
 			/* no device found, print an error and die */
 			echo <<<EOD

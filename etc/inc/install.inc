@@ -216,6 +216,8 @@ function install_dd_image($harddrive)
    Called by install script. Return 0 if OK, 1 if not. */
 function install_harddrive_image($harddrive)
 {
+	global $g;
+	
 	/* Part of install process: dd image file on the destination disk */
 	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
 	write_console("Installation...\n");
@@ -238,7 +240,7 @@ function install_harddrive_image($harddrive)
 	// Generate new loader.conf file
 	$fd = fopen("/destdisk/boot/loader.conf", "w");
 	if (!$fd) {
-		write_console("Error: Can't open loader.conf in install_harddrive_image().\n");
+		write_console("Error: Can't open boot/loader.conf in install_harddrive_image().\n");
 		return 1;
 	}
 
@@ -257,9 +259,20 @@ EOD;
 	fclose($fd);
 	
 	//Re-configuring the release type
-	$cmd="/bin/echo " . get_product_name() . "{$g['arch']}-full > /destdisk/etc/platform";
 	
-	mwexec($cmd);
+	$fd = fopen("/destdisk/etc/platform", "w");
+	if (!$fd) {
+		write_console("Error: Can't open etc/platform in install_harddrive_image().\n");
+		return 1;
+	}
+	
+	$platform .= <<<EOD
+{$g['arch']}-full
+
+EOD;
+
+	fwrite($fd, $platform);
+	fclose($fd);
 	
 	//Unzipping the Kernel
 	mwexec("/usr/bin/gunzip /destdisk/boot/kernel/kernel.gz");
