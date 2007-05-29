@@ -89,7 +89,7 @@ function interfaces_lan_configure()
 		}
 
 		if ($lancfg['mtu']) {
-			$cmd .= " mtu ". escapeshellarg($lancfg['mtu']);
+			$cmd .= " mtu {$lancfg['mtu']}";
 		}
 
 		mwexec($cmd);
@@ -106,8 +106,7 @@ function interfaces_lan_configure()
 			/* if (strpos($lanif, "fxp") !== false)
 			$addflags .= " link0"; */
 
-			mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " " . 
-			escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
+			mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " " . escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
 
 			/* install default route */
 			if ($lancfg['gateway']) {
@@ -127,23 +126,26 @@ function interfaces_lan_configure()
 		/* reconfigure static routes (kernel may have deleted them) */
 		$result |= system_routing_configure();
 
-		/* reload Samba */
+		/* Restart Samba */
 		$result |= services_samba_configure();
 
-		/* reload FTP */
+		/* Restart FTP */
 		$result |= services_ftpd_configure();
 
-		/* reload NFS */
+		/* Restart NFS */
 		$result |= services_nfs_configure();
 
-		/* reload AFP */
+		/* Restart AFP */
 		$result |= services_afpd_configure();
 
-		/* reload SSH */
+		/* Restart SSH */
 		$result |= services_sshd_configure();
 
-		/* reload RSYNC */
-		$result |= services_rsyncd_configure();				
+		/* Restart RSYNC */
+		$result |= services_rsyncd_configure();
+
+		/* Restart mdnsresponder (Zeroconf/Bonjour) */
+		$result |= services_mdnsresponder_configure();
 	}
 
 	if ($g['booting']) {
