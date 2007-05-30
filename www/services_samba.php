@@ -346,7 +346,7 @@ function enable_change(enable_change) {
           </tr>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("To increase CIFS performance <a href='%s'>enable tuning of some kernel variables</a>."), "system_advanced.php");?></td>
+						<td width="78%"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("To increase CIFS performance try the following:<br>- Enable 'Large read/write' switch<br>- Enable '<a href='%s'>Tuning</a>' switch<br>- Increase <a href='%s'>MTU</a>"), "system_advanced.php", "interfaces_lan.php");?></td>
 					</tr>
         </table>
       </form>

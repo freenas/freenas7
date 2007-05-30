@@ -2421,5 +2421,5 @@ msgstr ""
 msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
 msgstr ""
 
-msgid "To increase CIFS performance <a href='%s'>enable tuning of some kernel variables</a>."
+msgid "To increase CIFS performance try the following:<br>- Enable 'Large read/write' switch<br>- Enable '<a href='%s'>Tuning</a>' switch<br>- Increase <a href='%s'>MTU</a>"
 msgstr ""

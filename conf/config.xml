@@ -47,6 +47,8 @@
 			<media/>
 			<mediaopt/>
 			<!--
+			<mtu>1500</mtu>
+			<polling/>
 			<wireless>
 				*see below (opt[n])*
 			</wireless>
