@@ -5,21 +5,21 @@
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	system_systime_set() function added by Paul Wheels (pwheels@users.sourceforge.net)
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -34,11 +34,14 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
+// Create /var/etc/resolv.conf file. Will be automatically overwritten by /sbin/dhclient-script
+// when using DHCP.
+// Return 0 if successful, otherwise 1
 function system_resolvconf_generate() {
 	global $config, $g;
-	
+
 	$syscfg = $config['system'];
-	
+
 	$fd = fopen("{$g['varetc_path']}/resolv.conf", "w");
 	if (!$fd) {
 		$message = "Error: Can't open resolv.conf in system_resolvconf_generate()";
@@ -46,10 +49,10 @@ function system_resolvconf_generate() {
 		write_log($message);
 		return 1;
 	}
-		
+
 	$resolvconf = "domain {$syscfg['domain']}\n";
 	$havedns = false;
-	
+
 	if (isset($syscfg['dnsallowoverride'])) {
 		/* get dynamically assigned DNS servers (if any) */
 		$nfd = @fopen("{$g['varetc_path']}/nameservers.conf", "r");
@@ -71,10 +74,10 @@ function system_resolvconf_generate() {
 			$havedns = true;
 		}
 	}
-		
+
 	fwrite($fd, $resolvconf);
 	fclose($fd);
-		
+
 	return 0;
 }
 
@@ -82,9 +85,9 @@ function system_resolvconf_generate() {
 Return 0 if OK, and 1 if error */
 function system_hosts_generate() {
 	global $config, $g;
-	
+
 	$result = 0 ;
-	
+
 	$syscfg = $config['system'];
 	$lanif = $config['interfaces']['lan']['if'];
 
@@ -92,7 +95,7 @@ function system_hosts_generate() {
 		$syscfg['hosts'] = array();
 	}
 	$hostscfg = $syscfg['hosts'];
-	
+
 	$fd = fopen("{$g['varetc_path']}/hosts", "w");
 	if (!$fd) {
 		$message = "Error: Can't open hosts file in system_hosts_generate()";
@@ -112,7 +115,7 @@ function system_hosts_generate() {
 {$ipaddr}	{$syscfg['hostname']}.{$syscfg['domain']} {$syscfg['hostname']}
 
 EOD;
-	
+
 	foreach ($hostscfg as $host) {
 		if ($host['name']) {
 			$hosts .= "{$host['address']}	{$host['name']}\n";
@@ -120,7 +123,7 @@ EOD;
 	}
 	fwrite($fd, $hosts);
 	fclose($fd);
-	
+
 	return $result;
 }
 
@@ -137,9 +140,9 @@ function system_hostname_configure() {
 Return 0 if OK, and 1 if error */
 function system_routing_configure() {
 	global $config, $g;
-	
+
 	$result = 0 ;
-	
+
 	/* clear out old routes, if necessary */
 	if (file_exists("{$g['vardb_path']}/routes.db")) {
 		$fd = fopen("{$g['vardb_path']}/routes.db", "r");
@@ -147,7 +150,7 @@ function system_routing_configure() {
 			$message = "Error: Can't open routes DB file in system_routing_configure()";
 			write_console($message . ".\n");
 			write_log($message);
-			$result = 1 ;		
+			$result = 1 ;
 		}
 		while (!feof($fd)) {
 			$oldrt = fgets($fd);
@@ -157,28 +160,28 @@ function system_routing_configure() {
 		fclose($fd);
 		unlink("{$g['vardb_path']}/routes.db");
 	}
-	
+
 	if (is_array($config['staticroutes']['route'])) {
-		
+
 		$fd = fopen("{$g['vardb_path']}/routes.db", "w");
 		if (!$fd) {
 			$message = "Error: Can't open routes DB file in system_routing_configure()";
 			write_console($message . ".\n");
 			write_log($message);
-			$result = 1 ;		
+			$result = 1 ;
 		}
-		
+
 		foreach ($config['staticroutes']['route'] as $rtent) {
-			mwexec("/sbin/route add " . escapeshellarg($rtent['network']) . 
+			mwexec("/sbin/route add " . escapeshellarg($rtent['network']) .
 				" " . escapeshellarg($rtent['gateway']));
-			
+
 			/* record route so it can be easily removed later (if necessary) */
 			fwrite($fd, $rtent['network'] . "\n");
 		}
-		
-		fclose($fd); 
+
+		fclose($fd);
 	}
-	
+
 	return $result;
 }
 
@@ -186,9 +189,9 @@ function system_routing_configure() {
 Return 0 if OK, and 1 or retval if error */
 function system_syslogd_start() {
 	global $config, $g;
-	
+
 	$retval = 0 ;
-	
+
 	$syslogcfg = $config['syslog'];
 
 	if ($g['booting']) {
@@ -196,7 +199,7 @@ function system_syslogd_start() {
 	} else {
 		killbypid("{$g['varrun_path']}/syslog.pid");
 	}
-			
+
 	if (isset($syslogcfg['enable'])) {
 
 		/* write syslog.conf */
@@ -207,7 +210,7 @@ function system_syslogd_start() {
 			write_log($message);
 			$retval = 1 ;
 		}
-		
+
 		$syslogconf = <<<EOD
 local3.*					%/var/log/sshd.log
 local4.*					%/var/log/rsyncd.log
@@ -227,28 +230,28 @@ ftp.*					@{$syslogcfg['remoteserver']}
 
 EOD;
 		}
-		
+
 		if (isset($syslogcfg['sshd'])) {
 			$syslogconf .= <<<EOD
 local3.*					@{$syslogcfg['remoteserver']}
 
 EOD;
 		}
-		
+
 		if (isset($syslogcfg['rsyncd'])) {
 			$syslogconf .= <<<EOD
 local4.*					@{$syslogcfg['remoteserver']}
 
 EOD;
 		}
-		
+
 		if (isset($syslogcfg['smartd'])) {
 			$syslogconf .= <<<EOD
 local5.*					@{$syslogcfg['remoteserver']}
 
 EOD;
 		}
-		
+
 		if (isset($syslogcfg['daemon'])) {
 			$syslogconf .= <<<EOD
 daemon.*  					@{$syslogcfg['remoteserver']}
@@ -268,38 +271,38 @@ EOD;
 
 		fwrite($fd, $syslogconf);
 		fclose($fd);
-		
+
 		$retval = mwexec("/usr/sbin/syslogd -s -f {$g['varetc_path']}/syslog.conf");
 
 	} else {
 		$retval = mwexec("/usr/sbin/syslogd -ss");
 	}
-	
+
 	if ($g['booting'])
 		write_console("done\n");
-		
+
 	return $retval;
 }
 
 function system_pccard_start() {
 	global $config, $g;
-	
+
 	if ($g['booting'])
 		write_console("Initializing PC cards... ");
-	
+
 	/* kill any running pccardd */
 	killbypid("{$g['varrun_path']}/pccardd.pid");
-	
+
 	/* fire up pccardd */
 	$res = mwexec("/usr/sbin/pccardd -z -f {$g['etc_path']}/pccard.conf");
-	
+
 	if ($g['booting']) {
 		if ($res == 0)
 			write_console("done\n");
 		else
 			write_console("failed (probably no PC card controller present)\n");
 	}
-		
+
 	return $res;
 }
 
@@ -399,12 +402,12 @@ auth.backend               = "htpasswd"
 auth.backend.htpasswd.userfile = "/usr/local/www/.htpasswd"
 cgi.assign = (".php" => "/usr/local/bin/php")
 auth.require = ( "/" =>
-					(	
+					(
 						"method"  => "basic",
 						"realm"   => "{$config['system']['hostname']}",
 						"require" => "valid-user"
 					),
-				) 
+				)
 
 EOD;
 
@@ -456,7 +459,7 @@ CsF1s0TdJLi/wzNQRAL37A8vqCeVFR/ng3Xpg96Yg+8Z
 
 EOD;
 		}
-		
+
 		$fdcert = fopen("{$g['varetc_path']}/cert.pem", "w");
 		if (!$fdcert) {
 			$message = "Error: Can't open cert.pem in system_webgui_start()";
@@ -469,7 +472,7 @@ EOD;
 		fwrite($fdcert, "\n");
 		fwrite($fdcert, $key);
 		fclose($fdcert);
-	
+
 		$lighttpdconf .= <<<EOD
 ssl.engine = "enable"
 ssl.pemfile = "{$g['varetc_path']}/cert.pem"
@@ -517,7 +520,7 @@ function system_timezone_configure() {
 	$timezone = $syscfg['timezone'];
 	if (!$timezone)
 		$timezone = "Etc/UTC";
-		
+
 	exec("/usr/bin/tar xzfO /usr/share/zoneinfo.tgz " . escapeshellarg($timezone) . " > /etc/localtime");
 
 	if ($g['booting'])
@@ -539,22 +542,22 @@ function system_ntp_configure() {
 
 	/* start ntp client if needed - needs to be forced into background */
 	$updateinterval = $syscfg['time-update-interval'];
-	
+
 	if ($updateinterval > 0) {
 		if ($updateinterval < 6)
 			$updateinterval = 6;
-		
+
 		$timeservers = "";
 		foreach (explode(' ', $syscfg['timeservers']) as $ts)
 			$timeservers .= " " . $ts;
-		
+
 		mwexec_bg("/usr/local/bin/runmsntp.sh " .
 			escapeshellarg("{$g['varrun_path']}/runmsntp.pid") . " " .
 			escapeshellarg("{$g['varrun_path']}/msntp.pid") . " " .
 			escapeshellarg($updateinterval) . " " .
 			escapeshellarg($timeservers));
 	}
-		
+
 	if ($g['booting']) {
 		write_console("done\n");
 	}
@@ -566,41 +569,41 @@ function system_stop_common() {
 	/* Stop iSCSI-target */
 	// If iSCSI-target is not stoped before disabling swap, the system can crash
 	services_iscsitarget_stop();
-	
+
 	/* Stop swap */
 	system_swap_disable();
-	
+
 	/* Umount all disk s*/
 	disks_umount_all();
-	
+
 	/* Detach all encrypted disks */
 	disks_geli_detach_all();
-	
+
 	/* Stop all raid disks */
 	disks_raid_stop();
 }
 
 function system_reboot() {
 	system_stop_common();
-	
+
 	/* Send beep */
 	system_beep_down();
-	
+
 	exec("/usr/bin/nohup /etc/rc.reboot > /dev/null 2>&1 &");
 }
 
 function system_halt() {
 	system_stop_common();
-	
+
 	/* Send beep */
 	system_beep_down();
-	
+
 	exec("/sbin/halt -p > /dev/null 2>&1 &");
 }
 
 function system_reboot_sync() {
 	system_stop_common();
-	
+
 	/* Send beep */
 	system_beep_down();
 
@@ -624,10 +627,10 @@ function system_do_shell_commands($early = 0) {
 
 function system_do_extensions($early = false) {
 	global $config, $g;
-	
+
 	if (!is_dir("{$g['etc_path']}/inc/ext"))
 		return;
-	
+
 	$dh = @opendir("{$g['etc_path']}/inc/ext");
 	if ($dh) {
 		while (($extd = readdir($dh)) !== false) {
@@ -643,7 +646,7 @@ function system_do_extensions($early = false) {
 
 function system_console_configure() {
 	global $config, $g;
-	
+
 	if (isset($config['system']['disableconsolemenu'])) {
 		touch("{$g['varetc_path']}/disableconsole");
 	} else {
@@ -653,17 +656,17 @@ function system_console_configure() {
 
 function system_dmesg_save() {
 	global $g;
-	
+
 	exec("/sbin/dmesg", $dmesg);
-	
+
 	/* find last copyright line (output from previous boots may be present) */
 	$lastcpline = 0;
-	
+
 	for ($i = 0; $i < count($dmesg); $i++) {
 		if (strstr($dmesg[$i], "Copyright (c) 1992-"))
 			$lastcpline = $i;
 	}
-	
+
 	$fd = fopen("{$g['varlog_path']}/dmesg.boot", "w");
 	if (!$fd) {
 		$message = "Error: Can't open dmesg.boot in system_dmesg_save()";
@@ -671,12 +674,12 @@ function system_dmesg_save() {
 		write_log($message);
 		return 1;
 	}
-	
+
 	for ($i = $lastcpline; $i < count($dmesg); $i++)
 		fwrite($fd, $dmesg[$i] . "\n");
-	
+
 	fclose($fd);
-	
+
 	return 0;
 }
 
@@ -686,7 +689,7 @@ function system_set_harddisk_standby() {
 	if (($g['platform'] != "embedded") || ($g['platform'] != "full"))
 		return;
 
-	if (isset($config['system']['harddiskstandby']) && 
+	if (isset($config['system']['harddiskstandby']) &&
 			($config['system']['harddiskstandby'] > 0)) {
 		if ($g['booting']) {
 			write_console("Setting harddisk standby time... ");
@@ -778,7 +781,7 @@ function system_create_usermanagement()
 function system_create_masterpasswd()
 {
 	global $config, $g;
-	
+
 	$masterpasswd = <<<EOD
 root:{$config['system']['password']}:0:0::0:0:Charlie &:/root:/bin/tcsh
 toor:*:0:0::0:0:Bourne-again Superuser:/root:
@@ -795,13 +798,13 @@ sshd:*:22:22::0:0:Secure Shell Daemon:/var/empty:/usr/sbin/nologin
 _dhcp:*:65:65::0:0:dhcp programs:/var/empty:/usr/sbin/nologin
 
 EOD;
-	
+
 	if (is_array($config['access']['user']))
 	{
 		foreach ($config['access']['user'] as $user)
 		{
 			$password=crypt($user['password']);
-			
+
 			if (isset($user['fullshell']))
 			{
 				$masterpasswd .= <<<EOD
@@ -818,7 +821,7 @@ EOD;
 			}
 		}
 	}
-	
+
 	$fd = fopen("{$g['varetc_path']}/master.passwd", "w");
 	if (!$fd) {
 		$message = "Error: Can't open master.passwd in system_create_masterpasswd()";
@@ -829,7 +832,7 @@ EOD;
 
 	fwrite($fd, $masterpasswd);
 	fclose($fd);
-	
+
 	return 0;
 }
 
@@ -904,7 +907,7 @@ EOD;
 
 	fwrite($fd, $groupfile);
 	fclose($fd);
-	
+
 	return 0;
 }
 
@@ -922,7 +925,7 @@ function system_create_smbpasswd()
 			mwexec("(/bin/echo {$password}; /bin/echo {$password}) | /usr/local/bin/smbpasswd -s -a {$login}");
 		}
 	}
-	
+
 	return 0;
 }
 
@@ -954,19 +957,19 @@ function system_create_htpasswd() {
 	return $result;
 }
 
-/* Configure PAM, NSS and LDAP modules 
+/* Configure PAM, NSS and LDAP modules
 Return 0 is Ok, 1 is error */
 function system_pam_configure()
 {
 	/* Create the pam configuration files*/
 	global $config, $g;
-	
+
 	$result = 0;
-	
+
 	if (!file_exists("{$g['varetc_path']}/pam.d")) {
 		mkdir("{$g['varetc_path']}/pam.d", 0744);
 	}
-	
+
 	$system = <<<EOD
 # System-wide defaults
 # auth
@@ -974,19 +977,19 @@ auth            sufficient      pam_opie.so             no_warn no_fake_prompts
 auth            requisite       pam_opieaccess.so       no_warn allow_local
 
 EOD;
-	
+
 	if (isset($config['ad']['enable'])) 	{
 		$system .= <<<EOD
 #auth	sufficient		/usr/local/lib/pam_winbind.so	debug try_first_pass
 
 EOD;
-	} 
+	}
 	if (isset($config['ldap']['enable'])) 	{
 		$system .= <<<EOD
 #auth			sufficient		/usr/local/lib/pam_ldap.so	no_warn try_first_pass
 
 EOD;
-	} 
+	}
 
 	$system .= <<<EOD
 auth    required		pam_unix.so             no_warn try_first_pass nullok
@@ -1000,7 +1003,7 @@ EOD;
 #account sufficient /usr/local/lib/pam_winbind.so
 
 EOD;
-	} 
+	}
 
 	$system .= <<<EOD
 account         required        pam_login_access.so
@@ -1012,14 +1015,14 @@ session         required        pam_lastlog.so          no_fail
 # password
 
 EOD;
-	
+
 	if (isset($config['ad']['enable'])) 	{
 		$system .= <<<EOD
 #password 	sufficient /usr/local/lib/pam_winbind.so	debug try_first_pass
 
 EOD;
 	}
-	
+
 	$system .= <<<EOD
 password        required        pam_unix.so             no_warn try_first_pass
 
@@ -1032,10 +1035,10 @@ EOD;
 		write_log($message);
 		$result = 1;
 	}
-	
+
 	fwrite($fd, $system);
 	fclose($fd);
-		
+
 	$sshd = <<<EOD
 # PAM configuration for the "sshd" service
 
@@ -1051,13 +1054,13 @@ EOD;
 auth	sufficient			/usr/local/lib/pam_winbind.so	debug try_first_pass
 
 EOD;
-	} 
+	}
 	if (isset($config['ldap']['enable'])) 	{
 		$sshd .= <<<EOD
 auth	sufficient		/usr/local/lib/pam_ldap.so	no_warn try_first_pass
 
 EOD;
-	} 
+	}
 
 	$sshd .= <<<EOD
 auth            required        pam_unix.so             no_warn try_first_pass
@@ -1071,7 +1074,7 @@ EOD;
 account			sufficient		/usr/local/lib/pam_winbind.so
 
 EOD;
-	} 
+	}
 
 	$sshd .= <<<EOD
 account         required        pam_unix.so
@@ -1088,13 +1091,13 @@ EOD;
 password	sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass
 
 EOD;
-	} 
+	}
 
 $sshd .= <<<EOD
 password        required        pam_unix.so             no_warn try_first_pass
 
 EOD;
-	
+
 	unset($fd);
 	$fd = fopen("{$g['varetc_path']}/pam.d/sshd", "w");
 	if (!$fd) 	{
@@ -1106,7 +1109,7 @@ EOD;
 
 	fwrite($fd, $sshd);
 	fclose($fd);
-	
+
 	$ftp = <<<EOD
 # PAM configuration for the "ftpd" service
 
@@ -1123,13 +1126,13 @@ auth	sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass
 
 EOD;
 	}
-	
+
 	if (isset($config['ldap']['enable'])) 	{
 		$ftp .= <<<EOD
 auth	sufficient		/usr/local/lib/pam_ldap.so	no_warn try_first_pass
 
 EOD;
-	} 
+	}
 
 	$ftp .= <<<EOD
 auth            required        pam_unix.so         no_warn try_first_pass
@@ -1143,7 +1146,7 @@ EOD;
 account		sufficient	/usr/local/lib/pam_winbind.so
 
 EOD;
-	} 
+	}
 
 	$ftp .= <<<EOD
 account         required        pam_login_access.so
@@ -1153,9 +1156,9 @@ account         required        pam_unix.so
 session         required        pam_permit.so
 
 EOD;
-	
+
 	unset($fd);
-	
+
 	$fd = fopen("{$g['varetc_path']}/pam.d/ftp", "w");
 	if (!$fd) 	{
 		$message = "Error: Can't open /pam.d/ftp in system_pam_configure()";
@@ -1187,8 +1190,8 @@ EOD;
 auth	sufficient	/usr/local/lib/pam_ldap.so	no_warn try_first_pass
 
 EOD;
-	} 
-	
+	}
+
 	$login .= <<<EOD
 auth	sufficient	pam_self.so	no_warn
 auth	include	system
@@ -1202,7 +1205,7 @@ EOD;
 account		sufficient	/usr/local/lib/pam_winbind.so
 
 EOD;
-	} 
+	}
 
 	$login .= <<<EOD
 account         requisite       pam_securetty.so
@@ -1215,9 +1218,9 @@ session         include         system
 password        include         system
 
 EOD;
-	
+
 	unset($fd);
-	
+
 	$fd = fopen("{$g['varetc_path']}/pam.d/login", "w");
 	if (!$fd) 	{
 		$message = "Error: Can't open /pam.d/login in system_pam_configure()";
@@ -1228,9 +1231,9 @@ EOD;
 
 	fwrite($fd, $login);
 	fclose($fd);
-	
+
 	unset($fd);
-	
+
 	/* Create the nsswitch.conf file*/
 	if ((isset($config['ad']['enable'])) && (!isset($config['ldap']['enable'])))	{
 		$nsswitch = <<<EOD
@@ -1265,7 +1268,7 @@ passwd_compat: nis
 shells: files
 
 EOD;
-	
+
 	} else 	{
 		$nsswitch = <<<EOD
 group: compat
@@ -1289,11 +1292,11 @@ EOD;
 
 	fwrite($fd, $nsswitch);
 	fclose($fd);
-	
+
 	unset($fd);
-	
+
 	// Generate the ldap.conf file
-	
+
 	if (isset($config['ldap']['enable'])) {
 		$ldapconf = <<<EOD
 uri ldap://{$config['ldap']['host_ip']}
@@ -1316,11 +1319,11 @@ EOD;
 
 		fwrite($fd, $ldapsecret);
 		fclose($fd);
-	
+
 		unset($fd);
-		
+
 		// Generate the ldap.secret file
-	
+
 		$ldapsecret = <<<EOD
 {$config['ldap']['password_suffix']}
 
@@ -1336,7 +1339,7 @@ EOD;
 		fwrite($fd, $ldapsecret);
 		fclose($fd);
 		chmod("{$g['varetc_path']}/ldap.secret",0600);
-		unset($fd);	
+		unset($fd);
 	}
 
 	return $result;
@@ -1361,7 +1364,7 @@ function system_tuning()
 		mwexec('/sbin/sysctl net.inet.udp.maxdgram=57344');
 		mwexec('/sbin/sysctl net.local.stream.recvspace=65535');
 		mwexec('/sbin/sysctl net.local.stream.sendspace=65535');
-		mwexec('/sbin/sysctl kern.ipc.maxsockbuf=2097152');	
+		mwexec('/sbin/sysctl kern.ipc.maxsockbuf=2097152');
 		mwexec('/sbin/sysctl kern.ipc.somaxconn=8192');
 		// This variable can be set on the boot conf file only:
 		// mwexec('/sbin/sysctl kern.ipc.maxsockets=16424');
@@ -1387,7 +1390,7 @@ function system_tuning()
 			mwexec('/sbin/sysctl net.inet.udp.maxdgram=9216');
 			mwexec('/sbin/sysctl net.local.stream.recvspace=8192');
 			mwexec('/sbin/sysctl net.local.stream.sendspace=8192');
-			mwexec('/sbin/sysctl kern.ipc.maxsockbuf=262144');	
+			mwexec('/sbin/sysctl kern.ipc.maxsockbuf=262144');
 			mwexec('/sbin/sysctl kern.ipc.somaxconn=128');
 			mwexec('/sbin/sysctl kern.ipc.nmbclusters=3072');
 			mwexec('/sbin/sysctl kern.maxfiles=1064');
@@ -1422,9 +1425,9 @@ Return 0 is OK, 1 if error
 function system_swap_configure()
 {
 	global $config, $g;
-	
+
 	$result = 0;
-	
+
 	// Stop swap if not in booting mode
 	if (!$g['booting']) {
 		// MUST add a check if the system can stop swap without problem
@@ -1433,7 +1436,7 @@ function system_swap_configure()
 
 		// Destroy block device
 		$result |= mwexec("/sbin/mdconfig -d -u 2");
-		
+
 		// Delete swap file
 		write_log("Deleting swap file");
 		$result = mwexec("rm -f /mnt/{$config['system']['swap_mountname']}/swap_file");
@@ -1466,10 +1469,10 @@ function system_swap_disable()
 		// Stop swap
 		write_log("Stopping swap");
 		$result = mwexec("/sbin/swapoff /dev/md2}");
-		
+
 		//Destroy block device
 		$result |= mwexec("/sbin/mdconfig -d -u 2");
-		
+
 		//Delete the swap file (I hope that no user have important file called swap_file!)
 		if (file_exists("/mnt/{$config['system']['swap_mountname']}/swap_file")){
 			write_log("Deleting swap file");
