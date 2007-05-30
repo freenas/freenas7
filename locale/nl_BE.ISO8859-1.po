@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-05-23 19:21+0000\n"
+"PO-Revision-Date: 2007-05-25 18:25+0000\n"
 "Last-Translator: kingcharles1666 <mico@kabelfoon.nl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
 "X-Poedit-Language: Dutch\n"
-"X-Rosetta-Export-Date: 2007-05-24 20:28:11+0000\n"
+"X-Rosetta-Export-Date: 2007-05-30 09:28:14+0000\n"
 
 msgid "Date"
 msgstr "Datum"
@@ -1655,22 +1655,22 @@ msgid "RSYNC Options"
 msgstr "RSYNC opties"
 
 msgid "Delete files that don't exist on sender."
-msgstr "Verwijder de bestanden niet niet op de 'zender' staan."
+msgstr "Verwijder de bestanden niet niet op de 'verzender' staan."
 
 msgid "Shares to be synchronized"
-msgstr "Gedeelde mappen die moeten gesynchroniseerd worden"
+msgstr "Gedeelde mappen die gesynchroniseerd moeten worden"
 
 msgid "This same local share must be present on the Remote Server."
 msgstr ""
-"Deze zelfde lokale gedeelde map moet ook aanwezig zijn op de server op "
-"afstand."
+"De lokaal gedeelde map moet ook aanwezig zijn op de server op afstand."
 
 msgid "Synchronization Time"
 msgstr "Synchronisatietijdstip"
 
 msgid "You can't have the same mount point for source and destination!"
 msgstr ""
-"Je kan niet hetzelfde koppelingspunt gebruiken voor bron en bestemming!"
+"Je kunt niet hetzelfde aanhechtingspunt gebruiken voor zowel bron als "
+"bestemming!"
 
 msgid "Rsync Local Synchronization"
 msgstr "RSYNC lokale synchronisatie"
@@ -1679,42 +1679,43 @@ msgid "Source"
 msgstr "Bron"
 
 msgid "Source Mount Point."
-msgstr "Bron koppelingspunt."
+msgstr "Bron aanhechtingspunt."
 
 msgid "Destination"
 msgstr "Bestemming"
 
 msgid "Destination Mount Point (backup drive)."
-msgstr "Bestemming koppelingspunt (backup schijf)."
+msgstr "Bestemmings aanhechtingspunt (backup schijf)."
 
 msgid "SSH Daemon"
 msgstr "SSH Daemon"
 
 msgid "Alternate TCP port. Default is 22"
-msgstr "Alternatieve TCP poort."
+msgstr "Alternatieve TCP poort. Standaard 22"
 
 msgid "Permit root login"
 msgstr "root aanmelding toestaan"
 
 msgid "Enable TCP Forwarding"
-msgstr ""
+msgstr "TCP doorsturen inschakelen"
 
 msgid "Permit to do SSH Tunneling."
-msgstr ""
+msgstr "SSH Tunneling toestaan"
 
 msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
-"Specifies whether it is allowed to login as superuser (root) directly."
+"Instelling die bepaalt of het is toegestaan om rechtstreeks als Superuser "
+"(root) in te loggen."
 
 msgid "SSH key"
 msgstr "SSH sleutel"
 
 msgid "Private Key"
-msgstr "Private sleutel"
+msgstr "Prive sleutel"
 
 msgid "Paste a DSA PRIVATE KEY in PEM format here."
-msgstr "Plak (copy/paste) een DSA PRIVATE SLEUTEL in PEM formaat hier."
+msgstr "Plak hier (copy/paste) een DSA PRIVATE SLEUTEL in PEM formaat."
 
 msgid "The combination of share and working directory does not exist."
 msgstr "De combinatie van gedeelde map en werkfolder bestaat niet."
@@ -1727,7 +1728,7 @@ msgstr "Gedeelde map"
 
 msgid "You may need enough space to duplicate all files being synced"
 msgstr ""
-"Er moet voldoende plaats zijn om alle te synchroniseren bestanden te "
+"Er moet voldoende ruimte zijn om alle te synchroniseren bestanden te "
 "dupliceren"
 
 msgid "Working Directory"
@@ -1755,7 +1756,7 @@ msgid "Directories to be shared."
 msgstr "Mappen die gedeeld moeten worden."
 
 msgid "No content directory to be shared."
-msgstr "Er is geen inhoudmap die gedeeld wordt."
+msgstr "Er is geen inhoudsmap om te delen."
 
 msgid "Directory"
 msgstr "Map"
@@ -1770,7 +1771,7 @@ msgid "Delete directory"
 msgstr "Map verwijderen"
 
 msgid "Do you really want to delete this directory entry?"
-msgstr "Ben je zeker dat je deze map wil verwijderen?"
+msgstr "Weet je zeker dat je deze map wilt verwijderen?"
 
 msgid "Directory to be shared."
 msgstr "Map die gedeeld moet worden."
@@ -1819,7 +1820,7 @@ msgid "Delete user"
 msgstr "Gebruiker verwijderen"
 
 msgid "Do you really want to delete this user?!"
-msgstr "Ben je zeker dat je deze gebruiker wil verwijderen?!"
+msgstr "Weet je zeker dat je deze gebruiker wilt verwijderen?!"
 
 msgid "Add user"
 msgstr "Gebruiker toevoegen"
@@ -1864,10 +1865,10 @@ msgid "Give full shell to user"
 msgstr "Geef de volledige gebruikersomgeving aan de gebruiker"
 
 msgid "Administrator"
-msgstr "Administrator"
+msgstr "beheerder"
 
 msgid "Put user in the administrator group"
-msgstr "Put user in the administrator group"
+msgstr "Plaats gebruiker in de beheerders groep"
 
 msgid ""
 "The group list has been changed.<br>You must apply the changes in order for "
@@ -1883,7 +1884,7 @@ msgid "Delete group"
 msgstr "Groep verwijderen"
 
 msgid "Do you really want to delete this group?"
-msgstr "Ben je zeker dat je deze groep wil verwijderen?"
+msgstr "Weet je zeker dat je deze groep wilt verwijderen?"
 
 msgid "Add group"
 msgstr "Groep toevoegen"
@@ -1895,7 +1896,7 @@ msgid "The Group desc contains invalid characters."
 msgstr "De omschrijving van de groep bevat ongeldige karakters."
 
 msgid "This group already exists in the group list."
-msgstr "Deze groep bestaat al in de groeplijst."
+msgstr "Deze groep bestaat al in de groepenlijst."
 
 msgid "Group name."
 msgstr "Groepsnaam."
@@ -1922,22 +1923,24 @@ msgid "Domain name in old format."
 msgstr "Domeinnaam in oud formaat."
 
 msgid "Administrator name"
-msgstr "Administrator naam"
+msgstr "Naam van de beheerder"
 
 msgid "Username of a domain administrator account."
-msgstr "Gebruikersnaam van een domeinadministrator."
+msgstr "Gebruikersnaam van een domeinbeheerder."
 
 msgid "Administration password"
-msgstr "Administrator wachtwoord"
+msgstr "Wachtwoord van de beheerder"
 
 msgid "Password of domain administrator account, enter it here twice."
-msgstr "Wachtwoord voor de opgegeven gebruikersnaam, geef hier twee maal in."
+msgstr ""
+"Wachtwoord voor de opgegeven domein beheerders gebruikersnaam, geef hier "
+"twee maal in."
 
 msgid "The system is halting now. This may take one minute."
 msgstr "Het systeem wordt nu gestopt. Dit kan een minuut duren."
 
 msgid "Are you sure you want to shutdown the system?"
-msgstr "Ben je zeker dat je het systeem wil uitschakelen?"
+msgstr "Weet je zeker dat je het systeem wilt uitschakelen?"
 
 msgid "Scheduled shutdown"
 msgstr "Geplande uitschakeling"
@@ -1976,7 +1979,7 @@ msgid "The system is rebooting now. This may take one minute."
 msgstr "Het systeem is nu aan het herstarten. Dit kan een minuut duren."
 
 msgid "Are you sure you want to reboot the system?"
-msgstr "Ben je zeker dat je het systeem wil herstarten?"
+msgstr "Weet je zeker dat je het systeem wilt herstarten?"
 
 msgid "License"
 msgstr "Licentie"

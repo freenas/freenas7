@@ -445,6 +445,64 @@ create_iso_light() {
 	return 0
 }
 
+create_full() {
+	#### CODE NOT FINISH ######
+	echo "FULL: Generating $FREENAS_PRODUCTNAME tgz update file"	
+	
+	PLATFORM="$FREENAS_ARCH-full"
+	echo $PLATFORM > $FREENAS_ROOTFS/etc/platform
+	FULLFILENAME="$FREENAS_PRODUCTNAME-$PLATFORM-$FREENAS_VERSION.img"
+	
+	echo "FULL: Generating tempory $FREENAS_TMPDIR folder"
+	mkdir $FREENAS_TMPDIR
+	
+	# Setting Version type and date
+	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
+	
+	#Copying all FreeNAS rootfilesystem (including symlink) on this folder
+	cd $FREENAS_TMPDIR
+	tar -cf - -C $FREENAS_ROOTFS ./ | tar -xvpf -
+		
+	echo "Copying bootloader file(s) to root filesystem"
+	mkdir $FREENAS_TMPDIR/boot
+	mkdir $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults
+	mkdir $FREENAS_TMPDIR/conf
+	cp $FREENAS_ROOTFS/conf.default/config.xml $FREENAS_TMPDIR/conf
+	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
+	cp $FREENAS_BOOTDIR/boot $FREENAS_TMPDIR/boot
+	cp $FREENAS_BOOTDIR/loader $FREENAS_TMPDIR/boot
+	cp $FREENAS_BOOTDIR/loader.conf $FREENAS_TMPDIR/boot
+	cp $FREENAS_BOOTDIR/loader.rc $FREENAS_TMPDIR/boot
+	cp $FREENAS_BOOTDIR/loader.4th $FREENAS_TMPDIR/boot
+	cp $FREENAS_BOOTDIR/support.4th $FREENAS_TMPDIR/boot
+	cp $FREENAS_BOOTDIR/defaults/loader.conf $FREENAS_TMPDIR/boot/defaults/
+	cp $FREENAS_BOOTDIR/device.hints $FREENAS_TMPDIR/boot
+	if [ 0 != $OPT_BOOTMENU ]; then
+		cp $FREENAS_SVNDIR/boot/menu.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/screen.4th $FREENAS_TMPDIR/boot
+		cp $FREENAS_BOOTDIR/frames.4th $FREENAS_TMPDIR/boot
+	fi
+	if [ 0 != $OPT_BOOTSPLASH ]; then
+		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
+		cp /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
+	fi
+
+	#Special for enabling serial port if no keyboard
+	#cp $FREENAS_BOOTDIR/boot.config $FREENAS_TMPDIR/
+	
+	echo "IMG: Compress the IMG file"
+	gzip -9 $FREENAS_WORKINGDIR/image.bin
+	mv $FREENAS_WORKINGDIR/image.bin.gz $FREENAS_ROOTDIR/$IMGFILENAME
+
+	# Cleanup.
+	echo "Cleaning tempo file"
+	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
+	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
+	[ -f $FREENAS_WORKINGDIR/image.bin ] && rm -f $FREENAS_WORKINGDIR/image.bin
+
+	return 0
+}
+
 download_rootfs() {
   # Ensure we are in $FREENAS_WORKINGDIR
 	[ ! -d "$FREENAS_WORKINGDIR" ] && mkdir $FREENAS_WORKINGDIR
@@ -625,9 +683,10 @@ Welcome to the FreeNAS build environment.
 Menu:
 1  - Download and decompress FreeNAS root filesystem 
 2  - Update the source to latest (need SVN)
-10 - Create FreeNAS IMG file (rawrite to CF/USB/DD)
-11 - Create FreeNAS ISO file (need cdrtools installed)
-12 - Create FreeNAS ISO file without IMG image (need cdrtools installed)
+10 - Create FreeNAS "embedded" (IMG) file (rawrite to CF/USB/DD)
+11 - Create FreeNAS "liveCD" (ISO) file (need cdrtools)
+12 - Create FreeNAS "LiveCD" (ISO) file without 'embedded' file (need cdrtools)
+13 - Create FreeNAS "full" (TGZ) update file (TO BE ADDED!!)
 20 - Build FreeNAS from scratch advanced menu
 *  - Quit
 > '
