@@ -89,7 +89,7 @@ function interfaces_lan_configure()
 		}
 
 		if ($lancfg['mtu']) {
-			$cmd .= " mtu {$lancfg['mtu']}";
+			$cmd .= " mtu ". escapeshellarg($lancfg['mtu']);
 		}
 
 		mwexec($cmd);
@@ -101,12 +101,7 @@ function interfaces_lan_configure()
 			break;
 
 		default:
-			$addflags = "";
-			/* Remove the link0 options that create some problem */
-			/* if (strpos($lanif, "fxp") !== false)
-			$addflags .= " link0"; */
-
-			mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " " . escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']) . $addflags);
+			mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " " . escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']));
 
 			/* install default route */
 			if ($lancfg['gateway']) {
@@ -210,13 +205,15 @@ function interfaces_optional_configure_if($opti)
 				$cmd .= " media " . escapeshellarg($optcfg['media']);
 				$cmd .= " mediaopt " . escapeshellarg($optcfg['mediaopt']);
 			}
-		
+
 			if ($optcfg['polling']) {
-				$cmd .= " polling ";
+				$cmd .= " polling";
 			}
+
 			if ($optcfg['mtu']) {
 				$cmd .= " mtu ". escapeshellarg($optcfg['mtu']);
 			}
+
 			mwexec($cmd);
 		}
 	
@@ -230,18 +227,16 @@ function interfaces_optional_configure_if($opti)
 				if (strpos($optcfg['if'], "fxp") !== false) {
 					$addflags .= " link0";
 				}
-				mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " " . 
-				escapeshellarg($optcfg['ipaddr'] . "/" . $optcfg['subnet']) . $addflags);
+				mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " " . escapeshellarg($optcfg['ipaddr'] . "/" . $optcfg['subnet']) . $addflags);
 				break;
 		}
 		
 		/* install multicast route */
 		mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($optcfg['if']));
 	} else 	{
-		mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . 
-			" delete down");
+		mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " delete down");
 	}
-	
+
 	if ($g['booting']) {
 		write_console("done\n");
 	}
