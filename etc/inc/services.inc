@@ -127,10 +127,19 @@ server string = {$config['samba']['serverdesc']}
 load printers = no
 security = {$config['samba']['security']}
 dns proxy = no
+# Settings to enhance performance:
+use sendfile = yes
+strict locking = no
+read raw = yes
+write raw = yes
+oplocks = yes
+max xmit = 65535
+deadtime = 15
+getwd cache = yes
 socket options = IPTOS_LOWDELAY TCP_NODELAY
 EOD;
 
-		if ($config['samba']['sndbuf']) 	{
+		if ($config['samba']['sndbuf']) {
 			$sambaconf .= <<<EOD
  SO_SNDBUF={$config['samba']['sndbuf']}
 EOD;
@@ -141,7 +150,7 @@ EOD;
 EOD;
 		}
 		
-		if ($config['samba']['rcvbuf']) 	{
+		if ($config['samba']['rcvbuf']) {
 			$sambaconf .= <<<EOD
  SO_RCVBUF={$config['samba']['rcvbuf']}
 EOD;
@@ -151,24 +160,27 @@ EOD;
  SO_RCVBUF=16384
 EOD;
 		}
-		
-		if ($config['samba']['winssrv']) 	{
-			$sambaconf .= <<<EOD
 
+		$sambaconf .= <<<EOD
+
+# End of performance section
+
+EOD;
+
+		if ($config['samba']['winssrv']) {
+			$sambaconf .= <<<EOD
 wins server = {$config['samba']['winssrv']}
 
 EOD;
 		}
 		
-		if (isset ($config['samba']['unixcharset'])) 		{
+		if (isset ($config['samba']['unixcharset'])) {
 			$sambaconf .= <<<EOD
-
 unix charset = {$config['samba']['unixcharset']}
 
 EOD;
 		} else {
 			$sambaconf .= <<<EOD
-
 unix charset = UTF-8
 
 EOD;
@@ -200,17 +212,6 @@ load printers = no
 printing = bsd
 printcap name = /dev/null
 disable spoolss = Yes
-#Test: Try to improve samba performance under FreeBSD:
-use sendfile = yes
-strict locking = no
-read raw = yes    # Default
-write raw = yes   # Default
-oplocks = yes     # Default
-max xmit = 65535  # Default
-dead time = 15    # Default is 0
-getwd cache = yes
-lpq cache = 30
-#End of performance section
 log level = {$config['samba']['loglevel']}
 dos charset = {$config['samba']['doscharset']}
 smb passwd file = {$g['varetc_path']}/private/smbpasswd

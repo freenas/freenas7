@@ -114,12 +114,14 @@ if ($_POST) {
 				$retval |= interfaces_lan_configure();
 				config_unlock();
 			}
-		$savemsg = get_std_save_message($retval);
+			$savemsg = get_std_save_message($retval);
 			if ($retval == 0) {
 				if (file_exists($d_landirty_path)) {
 					unlink($d_landirty_path);
 				}
 			}
+			// Reload page to update disabled controls, otherwise they're empty. 
+			header("Location: interfaces_lan.php");
 		} else {
 			touch($d_landirty_path);
 		}
@@ -244,15 +246,15 @@ function type_change() {
       <td valign="top" class="vncell"><?=gettext("MTU"); ?></td>
       <td class="vtable">
         <?=$mandfldhtml;?><input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>">&nbsp;<br>
-        <?=gettext("Standard MTU is 1500, use 9000 for jumbo frame."); ?>
+        <span class="vexpl"><?=gettext("Standard MTU is 1500, use 9000 for jumbo frame."); ?></span>
       </td>
     </tr>
     <tr> 
       <td width="22%" valign="top" class="vncell"><?=gettext("Device polling"); ?></td>
       <td width="78%" class="vtable"> 
         <input name="polling" type="checkbox" id="polling" value="yes" <?php if ($pconfig['polling']) echo "checked"; ?>>
-        <strong><?=gettext("Enable device polling"); ?></strong><br>
-        <?=gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards."); ?>
+        <?=gettext("Enable device polling"); ?><br>
+        <span class="vexpl"><?=gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."); ?></span>
       </td>
     </tr>
     <tr> 

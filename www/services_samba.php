@@ -290,8 +290,8 @@ function enable_change(enable_change) {
             <td width="22%" valign="top" class="vncell"><?=gettext("Recycle Bin");?></td>
             <td width="78%" class="vtable">
               <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked"; ?>>
-              <?=gettext("Enable Recycle bin");?><span class="vexpl"><br>
-              <?=gettext("This will create a recycle bin on the CIFS shares.");?></span>
+              <?=gettext("Enable Recycle bin");?><br>
+              <span class="vexpl"><?=gettext("This will create a recycle bin on the CIFS shares.");?></span>
             </td>
           </tr>
           <tr>
