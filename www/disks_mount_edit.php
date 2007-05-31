@@ -273,7 +273,7 @@ function type_change() {
           <option value="s2" <?php if ($pconfig['partition'] == "s2") echo "selected"; ?>>2</option>
           <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
           <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
-          <option value="" <?php if ($pconfig['partition'] == "") echo "selected"; ?>>CD/DVD</option>
+          <option value=" " <?php if ($pconfig['partition'] == " ") echo "selected"; ?>>CD/DVD</option>
           <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - gmirror</option>
           <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - graid5</option>
           <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - gvinum</option>
