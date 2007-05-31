@@ -107,16 +107,16 @@ if ($_POST) {
 	switch($_POST['type']) {
 		case "disk":
 			$reqdfields = explode(" ", "mdisk partition fstype sharename");
-  		$reqdfieldsn = array(gettext("Disk"), gettext("Partition"), gettext("File system"), gettext("Share Name"));
+			$reqdfieldsn = array(gettext("Disk"), gettext("Partition"), gettext("File system"), gettext("Share Name"));
 			break;
 
 		case "iso":
 			$reqdfields = explode(" ", "filename sharename");
-  		$reqdfieldsn = array(gettext("Filename"), gettext("Share Name"));
+			$reqdfieldsn = array(gettext("Filename"), gettext("Share Name"));
 			break;
 	}
 
-  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['sharename'] && !is_validsharename($_POST['sharename']))) {
 		$input_errors[] = gettext("The share name may only consist of the characters a-z, A-Z, 0-9, _ , -.");
@@ -135,6 +135,26 @@ if ($_POST) {
 		$device=$_POST['mdisk'].$_POST['partition'];
 		if ($device == $cfdevice ) {
 			$input_errors[] = gettext("Can't mount the system partition 1, the DATA partition is the 2.");
+		}
+	}
+
+	// Do some 'iso' specific checks.
+	if ("iso" === $_POST['type']) {
+		// Check if it is a valid ISO file.
+		// 32769    string    CD001     ISO 9660 CD-ROM filesystem data
+		// 37633    string    CD001     ISO 9660 CD-ROM filesystem data (raw 2352 byte sectors)
+		// 32776    string    CDROM     High Sierra CD-ROM filesystem data
+		$fp = fopen($_POST['filename'], 'r');
+		fseek($fp, 32769, SEEK_SET);
+		$identifier[] = fgets($fp, 6);
+		fseek($fp, 37633, SEEK_SET);
+		$identifier[] = fgets($fp, 6);
+		fseek($fp, 32776, SEEK_SET);
+		$identifier[] = fgets($fp, 6);
+		fclose($fp);
+
+		if (FALSE === array_search('CD001', $identifier) && FALSE === array_search('CDROM', $identifier)) {
+			$input_errors[] = gettext("Selected file isn't an valid ISO file.");
 		}
 	}
 
@@ -224,9 +244,7 @@ function type_change() {
   			<select name="type" class="formfld" id="type" onchange="type_change()">
           <?php $opts = array(gettext("Disk"), gettext("ISO")); $vals = explode(" ", "disk iso"); $i = 0;
 					foreach ($opts as $opt): ?>
-          <option <?php if ($opt == $pconfig['type']) echo "selected";?> value="<?=$vals[$i++];?>"> 
-            <?=htmlspecialchars($opt);?>
-          </option>
+          <option <?php if ($vals[$i] === $pconfig['type']) echo "selected";?> value="<?=$vals[$i++];?>"><?=htmlspecialchars($opt);?></option>
           <?php endforeach; ?>
         </select>
       </td>
