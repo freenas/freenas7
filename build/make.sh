@@ -233,7 +233,7 @@ build_packages() {
 
 	# Create list of available packages.
 	echo "#! /bin/sh
-$DIALOG --title \"$FREENAS_PRODUCTNAME - Software packages/plugins\" \\
+$DIALOG --title \"$FREENAS_PRODUCTNAME - Packages/Plugins\" \\
 --checklist \"Select the packages/plugins you want to build.\" 21 75 14 \\" > $tempfile
 
 	for s in $FREENAS_SVNDIR/build/packages/*; do
@@ -585,7 +585,7 @@ Menu:
 1 - Create FreeNAS filesystem structure 
 2 - Copy required files to FreeNAS filesystem
 3 - Build kernel
-4 - Software package
+4 - Build ports
 5 - Build bootloader
 6 - Add necessary libraries
 7 - Modify file permissions
@@ -597,7 +597,7 @@ Menu:
 			1)	create_rootfs;;
 			2)	copy_files;;
 			3)	build_kernel;;
-			4)	build_softpkg;;
+			4)	build_ports;;
 			5)	opt="-f";
 					if [ 0 != $OPT_BOOTMENU ]; then
 						opt="$opt -m"
@@ -616,14 +616,14 @@ Menu:
   done
 }
 
-build_softpkg() {
+build_ports() {
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
-	packages=$FREENAS_WORKINGDIR/packages$$
+	ports=$FREENAS_WORKINGDIR/ports$$
 
 	# Choose what to do.
-	$DIALOG --title "$FREENAS_PRODUCTNAME - Software packages" --menu "Please select whether you want to build or install packages." 10 45 2 \
-		"build" "Build software packages" \
-		"install" "Install software packages" 2> $tempfile
+	$DIALOG --title "$FREENAS_PRODUCTNAME - Ports" --menu "Please select whether you want to build or install ports." 10 45 2 \
+		"build" "Build ports" \
+		"install" "Install ports" 2> $tempfile
 	if [ 0 != $? ]; then # successful?
 		rm $tempfile
 		return 1
@@ -632,31 +632,31 @@ build_softpkg() {
 	choice=`cat $tempfile`
 	rm $tempfile
 
-	# Create list of available packages.
+	# Create list of available ports.
 	echo "#! /bin/sh
-$DIALOG --title \"$FREENAS_PRODUCTNAME - Software packages\" \\
---checklist \"Select the packages you want to process.\" 21 75 14 \\" > $tempfile
+$DIALOG --title \"$FREENAS_PRODUCTNAME - Ports\" \\
+--checklist \"Select the ports you want to process.\" 21 75 14 \\" > $tempfile
 
-	for s in $FREENAS_SVNDIR/build/software/*; do
+	for s in $FREENAS_SVNDIR/build/ports/*; do
 		[ ! -d "$s" ] && continue
-		package=`basename $s`
+		port=`basename $s`
 		desc=`cat $s/pkg-descr`
 		state=`cat $s/pkg-state`
-		echo "\"$package\" \"$desc\" $state \\" >> $tempfile
+		echo "\"$port\" \"$desc\" $state \\" >> $tempfile
 	done
 
-	# Display list of available packages.
-	sh $tempfile 2> $packages
+	# Display list of available ports.
+	sh $tempfile 2> $ports
 	if [ 0 != $? ]; then # successful?
 		rm $tempfile
-		rm $packages
+		rm $ports
 		return 1
 	fi
 	rm $tempfile
 
-	for package in $(cat $packages | tr -d '"'); do
+	for port in $(cat $ports | tr -d '"'); do
 		echo "======================================================================"
-		cd $FREENAS_SVNDIR/build/software/$package
+		cd $FREENAS_SVNDIR/build/ports/$port
 		if [ "$choice" == "build" ]; then
 			# Build port.
 			make -I ${FREENAS_MKINCLUDESDIR} clean build
@@ -668,7 +668,7 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Software packages\" \\
 		fi
 		[ 0 != $? ] && return 1 # successful?
 	done
-	rm $packages
+	rm $ports
 
   return 0
 }
