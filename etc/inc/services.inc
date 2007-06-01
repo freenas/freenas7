@@ -1002,6 +1002,14 @@ function services_dynamicdns_configure() {
 		if($g['booting'])
 			write_console("Starting Dynamic DNS service... ");
 
+		$fd = fopen("{$g['varetc_path']}/inadyn.conf", "w");
+		if (!$fd) {
+			$message = "Error: Can't open inadyn.conf in services_dynamicdns_configure()";
+			write_console($message . ".\n");
+			write_log($message);
+			return 1;
+		}
+
 		/* Get the service type */
 		$servicetype = "";
 		switch($config['dynamicdns']['provider']) {
@@ -1016,19 +1024,36 @@ function services_dynamicdns_configure() {
 		}
 
 		/* Set command parameters. */
-		$param = "--background --syslog --dyndns_system {$servicetype} --alias {$config['dynamicdns']['domainname']} --username ".escapeshellarg($config['dynamicdns']['username'])." --password ".escapeshellarg($config['dynamicdns']['password']);
+		$inadynconf = <<<EOD
+--background
+--syslog
+--dyndns_system {$servicetype}
+--alias {$config['dynamicdns']['domainname']}
+--username "{$config['dynamicdns']['username']}"
+--password "{$config['dynamicdns']['password']}"
+
+EOD;
 
 		/* Set additional command parameters. */
 		if ($config['dynamicdns']['updateperiod']) {
-			$param .= " --update_period_sec {$config['dynamicdns']['updateperiod']}";
+			$inadynconf .= <<<EOD
+--update_period_sec {$config['dynamicdns']['updateperiod']}
+
+EOD;
 		}
 
 		if ($config['dynamicdns']['forcedupdateperiod']) {
-			$param .= " --forced_update_period {$config['dynamicdns']['forcedupdateperiod']}";
+			$inadynconf .= <<<EOD
+--forced_update_period {$config['dynamicdns']['forcedupdateperiod']}
+
+EOD;
 		}
 
+		fwrite($fd, $inadynconf);
+		fclose($fd);
+
 		/* Run inadyn. */
-		$result = mwexec("/usr/local/bin/inadyn {$param}");
+		$result = mwexec("/usr/local/bin/inadyn --input_file {$g['varetc_path']}/inadyn.conf");
 
 		if(!$result) {
 			if($g['booting'])
