@@ -28,7 +28,7 @@ CONFIGURE_ARGS+=	--enable-fastcgi \
 									--with-libxml-dir=${LOCALBASE}
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php-cgi ${FREENAS_ROOTFS}/usr/local/bin/php
 	@${CP} -pv ${FILESDIR}/php.ini ${FREENAS_ROOTFS}/usr/local/lib
 
 .include "bsd.freenas.mk"
