@@ -917,7 +917,7 @@ Return 0 if OK, 1 or error code if error */
 function services_upnp_configure() {
 	global $config, $g;
 	
-	$result = 0 ;
+	$result = 0;
 
 	/* Kill any running uShare */
 	killbyname("ushare");
@@ -929,26 +929,50 @@ function services_upnp_configure() {
 		if($g['booting'])
 			write_console("Starting UPnP server... ");
 
+		$fd = fopen("{$g['varetc_path']}/ushare.conf", "w");
+		if (!$fd) {
+			$message = "Error: Can't open ushare.conf in services_upnp_configure()";
+			write_console($message . ".\n");
+			write_log($message);
+			return 1;
+		}
+
 		/* Setup a multicast route for UPnP messages. */
 		$result = mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
 
-		$content = "";
-		foreach($config['upnp']['content'] as $contentv) {
-			$content .= " --content=" . escapeshellarg($contentv);
-		}
+		$ushareconf = <<<EOD
+USHARE_NAME={$config['upnp']['name']}
+USHARE_IFACE={$config['upnp']['if']}
+USHARE_OVERRIDE_ICONV_ERR=YES
 
-		$cmd = "/usr/local/bin/ushare --daemon --xbox --name={$config['upnp']['name']} --interface={$config['upnp']['if']} {$content} ";
+EOD;
 
 		if ($config['upnp']['port']) {
-			$cmd .= "--port={$config['upnp']['port']} ";
+$ushareconf .= <<<EOD
+USHARE_PORT={$config['upnp']['port']}
+
+EOD;
 		}
 
+		$content = "";
+		foreach($config['upnp']['content'] as $contentv) {
+			$content .= "\"$contentv\" ";
+		}
+
+		$ushareconf .= <<<EOD
+USHARE_DIR={$content}
+
+EOD;
+
+		fwrite($fd, $ushareconf);
+		fclose($fd);
+
+		$options = "--daemon --xbox";
 		if (!isset($config['upnp']['web'])) {
-			$cmd .= "--no-web ";
+			$options .= " --no-web";
 		}
 
-		/* Run uShare as daemon. */
-		$result |= mwexec($cmd);
+		$result = mwexec("/usr/local/bin/ushare {$options} --cfg={$g['varetc_path']}/ushare.conf");
 
 		if(!$result) {
 			if($g['booting'])
@@ -969,7 +993,7 @@ Return 0 if OK, 1 or error code if error */
 function services_dynamicdns_configure() {
 	global $config, $g;
 
-	$result = 0 ;
+	$result = 0;
 
 	/* Kill any running inadyn */
 	killbyname("inadyn");
