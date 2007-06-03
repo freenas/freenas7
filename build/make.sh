@@ -695,10 +695,10 @@ Welcome to the FreeNAS build environment.
 Menu:
 1  - Download and decompress FreeNAS root filesystem 
 2  - Update the source to latest (need SVN)
-10 - Create FreeNAS "embedded" (IMG) file (rawrite to CF/USB/DD)
-11 - Create FreeNAS "liveCD" (ISO) file (need cdrtools)
+10 - Create FreeNAS "Embedded" (IMG) file (rawrite to CF/USB/DD)
+11 - Create FreeNAS "LiveCD" (ISO) file (need cdrtools)
 12 - Create FreeNAS "LiveCD" (ISO) file without 'embedded' file (need cdrtools)
-13 - Create FreeNAS "full" (TGZ) update file
+13 - Create FreeNAS "Full" (TGZ) update file
 20 - Build FreeNAS from scratch advanced menu
 *  - Quit
 > '
