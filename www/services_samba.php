@@ -63,6 +63,8 @@ $pconfig['recyclebin'] = isset($config['samba']['recyclebin']);
 $pconfig['largereadwrite'] = isset($config['samba']['largereadwrite']);
 $pconfig['easupport'] = isset($config['samba']['easupport']);
 $pconfig['readahead'] = isset($config['samba']['readahead']);
+$pconfig['createmask'] = $config['samba']['createmask'];
+$pconfig['directorymask'] = $config['samba']['directorymask'];
 
 if ($_POST)
 {
@@ -78,6 +80,14 @@ if ($_POST)
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+	if ($_POST['enable']) {
+		$reqdfields = explode(" ", "createmask directorymask");
+		$reqdfieldsn = array(gettext("Create mask"),gettext("Directory mask"));
+		$reqdfieldst = explode(" ", "numericint numericint");
+
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+	}
 
 	if (($_POST['netbiosname'] && !is_domain($_POST['netbiosname']))) {
 		$input_errors[] = gettext("The Netbios name contains invalid characters.");
@@ -112,6 +122,14 @@ if ($_POST)
 		$config['samba']['largereadwrite'] = $_POST['largereadwrite'] ? true : false;
 		$config['samba']['easupport'] = $_POST['easupport'] ? true : false;
 		$config['samba']['readahead'] = $_POST['readahead'] ? true : false;
+		if (!empty($_POST['createmask']))
+			$config['samba']['createmask'] = $_POST['createmask'];
+		else
+			unset($config['samba']['createmask']);
+		if (!empty($_POST['directorymask']))
+			$config['samba']['directorymask'] = $_POST['directorymask'];
+		else
+			unset($config['samba']['directorymask']);
 		$config['samba']['enable'] = $_POST['enable'] ? true : false;
 
 		write_config();
@@ -150,6 +168,21 @@ function enable_change(enable_change) {
 	document.iform.largereadwrite.disabled = endis;
 	document.iform.easupport.disabled = endis;
 	document.iform.readahead.disabled = endis;
+	document.iform.createmask.disabled = endis;
+	document.iform.directorymask.disabled = endis;
+}
+
+function authentication_change() {
+	switch(document.iform.security.value) {
+		case "share":
+			showElementById('createmask_tr','show');
+			showElementById('directorymask_tr','show');
+			break;
+		default:
+			showElementById('createmask_tr','hide');
+			showElementById('directorymask_tr','hide');
+			break;
+	}
 }
 //-->
 </script>
@@ -181,7 +214,7 @@ function enable_change(enable_change) {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Authentication"); ?></td>
             <td width="78%" class="vtable">
-              <?=$mandfldhtml;?><select name="security" class="formfld" id="security">
+              <?=$mandfldhtml;?><select name="security" class="formfld" id="security" onchange="authentication_change()">
               <?php $types = explode(",", "Anonymous,Local User,Domain"); $vals = explode(" ", "share user domain");?>
               <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                 <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>>
@@ -300,6 +333,20 @@ function enable_change(enable_change) {
 			    <tr>
 			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
 			    </tr>
+					<tr id="createmask_tr">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Create mask"); ?></td>
+						<td width="78%" class="vtable">
+							<input name="createmask" type="text" class="formfld" id="createmask" size="30" value="<?=htmlspecialchars($pconfig['createmask']);?>">
+							<br><?=gettext("Use this option to override the file creation mask (0666 by default).");?>
+						</td>
+					</tr>
+					<tr id="directorymask_tr">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Directory mask"); ?></td>
+						<td width="78%" class="vtable">
+							<input name="directorymask" type="text" class="formfld" id="directorymask" size="30" value="<?=htmlspecialchars($pconfig['directorymask']);?>">
+							<br><?=gettext("Use this option to override the directory creation mask (0777 by default).");?>
+						</td>
+					</tr>
 	        <tr>
             <td width="22%" valign="top" class="vncell"><?=gettext("Send Buffer Size"); ?></td>
             <td width="78%" class="vtable">
@@ -322,7 +369,7 @@ function enable_change(enable_change) {
               <?=gettext("Use the new 64k streaming read and write variant SMB requests.");?></span>
             </td>
           </tr>
-		  <tr>
+					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("ReadAhead");?></td>
 						<td width="78%" class="vtable">
 							<input name="readahead" type="checkbox" id="readahead" value="yes" <?php if ($pconfig['readahead']) echo "checked"; ?>>
@@ -356,6 +403,7 @@ function enable_change(enable_change) {
 <script language="JavaScript">
 <!--
 enable_change(false);
+authentication_change();
 //-->
 </script>
 <?php include("fend.inc"); ?>

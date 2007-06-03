@@ -4,21 +4,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -38,14 +38,14 @@ require_once("functions.inc");
 Return 0 if OK, 1 if erro */
 function services_snmpd_configure() {
 	global $config, $g;
-	
+
 	$result=0;
 
 	/* kill any running snmpd */
 	sigkillbypid("{$g['varrun_path']}/snmpd.pid", "TERM");
 
 	if (isset($config['snmpd']['enable'])) {
-	
+
 		if ($g['booting'])
 			write_console("Starting SNMP agent... ");
 
@@ -57,7 +57,7 @@ function services_snmpd_configure() {
 			write_log($message);
 			$result=1;
 		}
-			
+
 		$snmpdconf = <<<EOD
 syslocation "{$config['snmpd']['syslocation']}"
 syscontact "{$config['snmpd']['syscontact']}"
@@ -90,7 +90,7 @@ EOD;
 Return 0 if OK, 1 or error code if error */
 function services_samba_configure() {
 	global $config, $g;
-	
+
 	$result = 0;
 
 	/* kill any running samba */
@@ -110,7 +110,7 @@ function services_samba_configure() {
 			write_log($message);
 			$result = 1;
 		}
-		
+
 		/* If no share configured, exit */
 		if (!is_array($config['mounts']['mount'])) {
 			$message = "Error: Can't start CIFS (samba). No mount points configured.";
@@ -149,7 +149,7 @@ EOD;
  SO_SNDBUF=16384
 EOD;
 		}
-		
+
 		if ($config['samba']['rcvbuf']) {
 			$sambaconf .= <<<EOD
  SO_RCVBUF={$config['samba']['rcvbuf']}
@@ -173,7 +173,7 @@ wins server = {$config['samba']['winssrv']}
 
 EOD;
 		}
-		
+
 		if (isset ($config['samba']['unixcharset'])) {
 			$sambaconf .= <<<EOD
 unix charset = {$config['samba']['unixcharset']}
@@ -221,10 +221,23 @@ EOD;
 
 	switch ($config['samba']['security'])	{
 		case "share":
+			$createmask = "0666";
+			$directorymask = "0777";
+
+			if (!empty($config['samba']['createmask'])) {
+				$createmask = $config['samba']['createmask'];
+			}
+
+			if (!empty($config['samba']['directorymask'])) {
+				$directorymask = $config['samba']['directorymask'];
+			}
+
 			$sambaconf .= <<<EOD
-create mask = 0666
-directory mask = 0777
 passdb backend = smbpasswd
+create mask = {$createmask}
+directory mask = {$directorymask}
+force user = ftp
+force group = ftp
 
 EOD;
 
@@ -352,18 +365,18 @@ EOD;
 Return 0 if OK, 1 or error code if error */
 function services_rsyncd_configure() {
 	global $config, $g;
-	
+
 	$result = 0;
 
 	/* kill any running rsync daemon */
 	sigkillbypid("{$g['varrun_path']}/rsyncd.pid", "TERM");
 
 	if (isset($config['rsyncd']['enable'])) {
-	
+
 		if ($g['booting'])
 			write_console("Starting RSYNC daemon... ");
-		
-		
+
+
 		/* If no share configured, exit */
 		if (!is_array($config['mounts']['mount'])) {
 			$message = "Error: No mount point configured, Can't start rsyncd";
@@ -379,7 +392,7 @@ function services_rsyncd_configure() {
 			write_log($message);
 			$result = 1;
 		}
-			
+
 		$rsyncdconf = <<<EOD
 read only = {$config['rsyncd']['readonly']}
 syslog facility = local4
@@ -395,14 +408,14 @@ max connections = {$config['rsyncd']['maxcon']}
 
 EOD;
 		}
-		
+
 		if (!empty($config['rsyncd']['motd'])) {
 		$rsyncdconf .= <<<EOD
 motd file = {$g['varetc_path']}/rsyncd.motd
 
 EOD;
 		}
-		
+
 		if (isset($config['rsyncd']['rsyncd_user'])) 	{
 			$rsyncdconf .= <<<EOD
 uid = {$config['rsyncd']['rsyncd_user']}
@@ -417,11 +430,11 @@ gid = ftp
 
 EOD;
 		}
-	
+
 		foreach ($config['mounts']['mount'] as $mountent) 	{
 			/* Unmount filesystem if not booting mode*/
 			$rsyncdconf .= <<<EOD
-			
+
 [{$mountent['sharename']}]
 comment = {$mountent['desc']}
 path = /mnt/{$mountent['sharename']}
@@ -431,7 +444,7 @@ EOD;
 
 		fwrite($fd, $rsyncdconf);
 		fclose($fd);
-		
+
 		// Generate MOTD file if configured
 		if (!empty($config['rsyncd']['motd'])) {
 			$fd = fopen("{$g['varetc_path']}/rsyncd.motd", "w");
@@ -441,14 +454,14 @@ EOD;
 				write_log($message);
 				$result = 1;
 			}
-			
+
 			$motd  = <<<EOD
 {$config['rsyncd']['motd']}
 
 EOD;
-				
+
 			fwrite($fd, $motd);
-			fclose($fd);				
+			fclose($fd);
 		}
 
 		/* Run rsync daemon if no previous error. Preserve times when synchronizing. */
@@ -474,7 +487,7 @@ EOD;
 Return 0 if OK, 1 or error code if error */
 function services_nfs_configure() {
 	global $config, $g;
-	
+
 	$result = 0;
 
 	/* kill any running nfsd */
@@ -485,11 +498,11 @@ function services_nfs_configure() {
 	killbyname("rpcbind");
 
 	if (isset($config['nfs']['enable'])) {
-	
+
 		if ($g['booting']) {
 			write_console("Starting NFS... ");
 		}
-		
+
 		/* If no share configured, exit */
 		if (!is_array($config['mounts']['mount'])) {
 			$result = 1;
@@ -505,27 +518,27 @@ function services_nfs_configure() {
 		}
 		$a_net = &$config['nfs']['nfsnetworks'];
 		$a_mount = &$config['mounts']['mount'];
-		
+
 		foreach ($a_net as $net) {
-		
+
 			list($network,$subnet) = explode('/', $net);
-		
+
 			$subnet=gen_subnet_mask($subnet);
-		
+
 			foreach ($a_mount as $mount) {
 				$nfsconf .= <<<EOD
-/mnt/{$mount['sharename']} -alldirs  
+/mnt/{$mount['sharename']} -alldirs
 EOD;
 
 				if (strcmp($config['nfs']['mapall'],"yes") == 0 ) 	{
-			
+
 				$nfsconf .= <<<EOD
--mapall=root 
+-mapall=root
 EOD;
-			
+
 				} else {
 				$nfsconf .= <<<EOD
--maproot=root 
+-maproot=root
 EOD;
 
 				}
@@ -541,7 +554,7 @@ EOD;
 		fclose($fd);
 
 		/* run rpcbind, nfsd and mountd if no previous error*/
-		
+
 		if (!$result) {
 			$result = mwexec("/usr/sbin/rpcbind");
 			$result |= mwexec("/usr/sbin/nfsd -u -t -n 4");
@@ -606,27 +619,27 @@ EOD;
 		/* run pure-ftpd if no previous error */
 		if (!$result) {
 			$cmd = "/usr/local/sbin/pure-ftpd -S {$config['ftp']['port']} -c {$config['ftp']['numberclients']} -I {$config['ftp']['timeout']} -M -U 077:077 -B -b ";
-	
+
 			if (0 < $config['ftp']['maxconperip']) {
 				$cmd .= "-C {$config['ftp']['maxconperip']} ";
 			}
-	
+
 			if ( (isset($config['ftp']['anonymous'])) && (!isset($config['ftp']['localuser']))) {
 				$cmd .= "-e ";
 			}
-	
+
 			if ( (!isset($config['ftp']['anonymous'])) && (isset($config['ftp']['localuser']))) {
 				$cmd .= "-E ";
 			}
-	
+
 			if ($config['ftp']['pasv_min_port'] && $config['ftp']['pasv_max_port']) {
 				$cmd .= "-p {$config['ftp']['pasv_min_port']}:{$config['ftp']['pasv_max_port']} ";
 			}
-	
+
 			if ($config['ftp']['pasv_address']) {
 				$cmd .= "-P {$config['ftp']['pasv_address']} ";
 			}
-	
+
 			if (isset($config['ftp']['natmode'])) {
 				$cmd .= "-N ";
 			}
@@ -728,14 +741,14 @@ function services_powerd_configure() {
 Return 0 if OK, 1 or error code if error */
 function services_sshd_configure() {
 	global $config, $g;
-	
+
 	$result = 0 ;
 
 	/* kill any SSHD */
 	sigkillbypid("{$g['varrun_path']}/sshd.pid", "TERM");
 
 	if (isset($config['sshd']['enable'])) {
-	
+
 		if ($g['booting'])
 			write_console("Starting SSH server... ");
 
@@ -747,7 +760,7 @@ function services_sshd_configure() {
 			write_log($message);
 			$result = 1 ;
 		}
-			
+
 		$sshconf = <<<EOD
 SyslogFacility LOCAL3
 Protocol 2
@@ -780,13 +793,13 @@ EOD;
 
 		fwrite($fd, $sshconf);
 		fclose($fd);
-		
-		
+
+
 		if ($config['sshd']['private-key']) {
 			$key = base64_decode($config['sshd']['private-key']);
 		} else {
 			/* default certificate/key */
-			
+
 			$key = <<<EOD
 -----BEGIN DSA PRIVATE KEY-----
 MIIDPwIBAAKCAQEA8fkdytzZDMiLspAt/Xs35pS4V/Bvu4rG6iPOY7eTJvecx2fe
@@ -811,7 +824,7 @@ j2nICMgv/gj3zzuk7zcMpnbvGyA3W8VWb6IjJDvww4rJ21Q2gHBC5XCohJsCFQCD
 
 EOD;
 		}
-		
+
 		$fd = fopen("{$g['varetc_path']}/ssh/ssh_host_dsa_key", "w");
 		if (!$fd) {
 			$message = "Error: Can't open /ssh/ssh_host_dsa_key in service_sshd_configure()";
@@ -819,10 +832,10 @@ EOD;
 			write_log($message);
 			$result = 1 ;
 		}
-		
+
 		fwrite($fd, $key);
 		fclose($fd);
-		
+
 		/* Restrict right on the SSH key */
 		mwexec("/bin/chmod 600 {$g['varetc_path']}/ssh/ssh_host_dsa_key");
 
@@ -849,7 +862,7 @@ EOD;
 Return 0 if OK, 1 or error code if error */
 function services_unison_configure() {
 	global $config, $g;
-	
+
 	$result = 0 ;
 
 	if (isset($config['unison']['enable'])) {
@@ -872,7 +885,7 @@ function services_unison_configure() {
 			write_log($message);
 			$result = 1 ;
 		}
-		
+
 		/* add workdir to login.conf UNISON environment variable */
 		$logfile = "{$g['etc_path']}/login.conf";
 		if (!file_exists($logfile)) {
@@ -916,7 +929,7 @@ function services_unison_configure() {
 Return 0 if OK, 1 or error code if error */
 function services_upnp_configure() {
 	global $config, $g;
-	
+
 	$result = 0;
 
 	/* Kill any running uShare */
@@ -1071,15 +1084,15 @@ EOD;
 
 function services_cron_configure() {
 	global $config, $g;
-	
+
 	$result = 0;
-	
+
 	/* kill any running cron */
 	killbyname("cron");
-			
+
 	/* generate crontab */
 	$fd = fopen("{$g['varetc_path']}/crontab", "w");
-	
+
 	$crontabconf = <<<EOD
 SHELL=/bin/sh
 PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin
@@ -1100,14 +1113,14 @@ EOD;
 	// RSYNC CLIENT PART
 	if (is_array($config['rsync']['rsyncclient'])) {
 		$a_rsyncclient = &$config['rsync']['rsyncclient'];
-				
+
 		if ($g['booting'])
 			write_console("Configuring cron for rsync client... ");
-		
+
 		$i=0;
 		foreach($a_rsyncclient as $rsyncclient) {
-		
-			if ($rsyncclient['all_mins'] == "0") 	{ 
+
+			if ($rsyncclient['all_mins'] == "0") 	{
 				foreach ($rsyncclient['minute'] as $minutev) 	{
 					if (strlen($cron_min) > 0)
 						$cron_min = $cron_min . "," . $minutev;
@@ -1117,9 +1130,9 @@ EOD;
 			}
 			else
 				$cron_min = "*";
-		
-		
-			if ($rsyncclient['all_hours'] == "0") { 
+
+
+			if ($rsyncclient['all_hours'] == "0") {
 				foreach ($rsyncclient['hour'] as $hourv) 	{
 					if (strlen($cron_hour) > 0)
 						 $cron_hour = $cron_hour . "," . $hourv;
@@ -1129,8 +1142,8 @@ EOD;
 			}
 			else
 				$cron_hour = "*";
-			
-			if ($rsyncclient['all_days'] == "0") 	{ 
+
+			if ($rsyncclient['all_days'] == "0") 	{
 				foreach ($rsyncclient['day'] as $dayv) 	{
 					if (strlen($cron_day) > 0)
 						$cron_day = $cron_day . "," . $dayv;
@@ -1140,7 +1153,7 @@ EOD;
 			}
 			else
 				$cron_day = "*";
-			
+
 			if ($rsyncclient['all_months'] == "0") 	{
 			  foreach ($rsyncclient['month'] as $monthv) 	  {
 				if (strlen($cron_month) > 0)
@@ -1151,8 +1164,8 @@ EOD;
 			}
 			else
 				$cron_month = "*";
-			
-			
+
+
 			if ($rsyncclient['all_weekdays'] == "0") 	{
 				foreach ($rsyncclient['weekday'] as $weekdayv) 	{
 					if (strlen($cron_weekday) > 0)
@@ -1162,8 +1175,8 @@ EOD;
 				}
 			}
 			else
-				$cron_weekday = "*";		
-			
+				$cron_weekday = "*";
+
 			$crontabconf .= <<<EOD
 {$cron_min}    {$cron_hour}        {$cron_day}        {$cron_month}        {$cron_weekday}       root    {$g['varrun_path']}/rsync_client{$i}.sh
 
@@ -1173,23 +1186,23 @@ EOD;
 			unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
 			$i++;
 		}
-	
+
 		if ($g['booting'])
 			write_console("done\n");
-		
+
 	}
-		
+
 	// RSYNC LOCAL PART
 	if (is_array($config['rsync']['rsynclocal'])) {
 		$a_rsynclocal = &$config['rsync']['rsynclocal'];
-	
+
 		if ($g['booting'])
 			write_console("Configuring cron for local rsync... ");
-			
+
 		$i=0;
 		foreach($a_rsynclocal as $rsynclocal) {
-		
-			if ($rsynclocal['all_mins'] == "0") 	{ 
+
+			if ($rsynclocal['all_mins'] == "0") 	{
 				foreach ($rsynclocal['minute'] as $minutev) 	{
 					if (strlen($cron_min) > 0)
 						$cron_min = $cron_min . "," . $minutev;
@@ -1199,9 +1212,9 @@ EOD;
 			}
 			else
 				$cron_min = "*";
-		
-		
-			if ($rsynclocal['all_hours'] == "0") { 
+
+
+			if ($rsynclocal['all_hours'] == "0") {
 				foreach ($rsynclocal['hour'] as $hourv) 	{
 					if (strlen($cron_hour) > 0)
 						 $cron_hour = $cron_hour . "," . $hourv;
@@ -1211,8 +1224,8 @@ EOD;
 			}
 			else
 				$cron_hour = "*";
-			
-			if ($rsynclocal['all_days'] == "0") 	{ 
+
+			if ($rsynclocal['all_days'] == "0") 	{
 				foreach ($rsynclocal['day'] as $dayv) 	{
 					if (strlen($cron_day) > 0)
 						$cron_day = $cron_day . "," . $dayv;
@@ -1222,7 +1235,7 @@ EOD;
 			}
 			else
 				$cron_day = "*";
-			
+
 			if ($rsynclocal['all_months'] == "0") 	{
 			  foreach ($rsynclocal['month'] as $monthv) 	  {
 				if (strlen($cron_month) > 0)
@@ -1233,8 +1246,8 @@ EOD;
 			}
 			else
 				$cron_month = "*";
-			
-			
+
+
 			if ($rsynclocal['all_weekdays'] == "0") 	{
 				foreach ($rsynclocal['weekday'] as $weekdayv) 	{
 					if (strlen($cron_weekday) > 0)
@@ -1244,8 +1257,8 @@ EOD;
 				}
 			}
 			else
-				$cron_weekday = "*";		
-			
+				$cron_weekday = "*";
+
 			$crontabconf .= <<<EOD
 {$cron_min}    {$cron_hour}        {$cron_day}        {$cron_month}        {$cron_weekday}       root    {$g['varrun_path']}/rsync_local{$i}.sh
 
@@ -1254,7 +1267,7 @@ EOD;
 			// Erase all variable used previously
 			unset ($cron_min, $cron_hour, $cron_day, $cron_month, $cron_weekday);
 			$i++;
-		
+
 		}
 
 		if ($g['booting'])
@@ -1265,8 +1278,8 @@ EOD;
 	if (isset($config['shutdown']['enable'])) {
 		if ($g['booting'])
 			write_console("Configuring Cron for shutdown... ");
-		
-		if ($config['shutdown']['all_mins'] == "0") { 
+
+		if ($config['shutdown']['all_mins'] == "0") {
 			foreach ($config['shutdown']['minute'] as $minutev) 	{
 				if (strlen($cron_min) > 0)
 					$cron_min = $cron_min . "," . $minutev;
@@ -1276,9 +1289,9 @@ EOD;
 		}
 		else
 			$cron_min = "*";
-	
-	
-		if ($config['shutdown']['all_hours'] == "0") 	{ 
+
+
+		if ($config['shutdown']['all_hours'] == "0") 	{
 			foreach ($config['shutdown']['hour'] as $hourv) 	{
 				if (strlen($cron_hour) > 0)
 					 $cron_hour = $cron_hour . "," . $hourv;
@@ -1288,8 +1301,8 @@ EOD;
 		}
 		else
 			$cron_hour = "*";
-		
-		if ($config['shutdown']['all_days'] == "0") { 
+
+		if ($config['shutdown']['all_days'] == "0") {
 			foreach ($config['shutdown']['day'] as $dayv) 	{
 				if (strlen($cron_day) > 0)
 					$cron_day = $cron_day . "," . $dayv;
@@ -1299,7 +1312,7 @@ EOD;
 		}
 		else
 			$cron_day = "*";
-		
+
 		if ($config['shutdown']['all_months'] == "0") 	{
 			foreach ($config['shutdown']['month'] as $monthv)   {
 				if (strlen($cron_month) > 0)
@@ -1310,8 +1323,8 @@ EOD;
 		}
 		else
 			$cron_month = "*";
-		
-		
+
+
 		if ($config['shutdown']['all_weekdays'] == "0") 	{
 			foreach ($config['shutdown']['weekday'] as $weekdayv) 		{
 				if (strlen($cron_weekday) > 0)
@@ -1321,8 +1334,8 @@ EOD;
 			}
 		}
 		else
-			$cron_weekday = "*";		
-		
+			$cron_weekday = "*";
+
 		$crontabconf .= <<<EOD
 {$cron_min}    {$cron_hour}        {$cron_day}        {$cron_month}        {$cron_weekday}       root    /etc/rc.shutdown
 
@@ -1331,13 +1344,13 @@ EOD;
 		if ($g['booting'])
 			write_console("done\n");
 	}
-				
+
 	fwrite($fd, $crontabconf);
 	fclose($fd);
 
 	/* run cron */
 	$result = mwexec("/usr/sbin/cron -s");
-	
+
 	if (!$result) {
 		write_log("Cron started");
 	} else {
@@ -1355,13 +1368,13 @@ function services_rsyncclient_configure()
 	// Generate crontab works
 	if (is_array($config['rsync']['rsyncclient'])) {
 		$a_rsyncclient = &$config['rsync']['rsyncclient'];
-	
+
 		if ($g['booting'])
 			write_console("Generating synchronizing cron script... ");
-		
+
 		$i=0;
 		foreach($a_rsyncclient as $rsyncclient) {
-		
+
 			/* generate /var/run/rsync_client'ID'.sh script */
 			$fd = fopen("{$g['varrun_path']}/rsync_client{$i}.sh", "w");
 			if (!$fd) {
@@ -1386,12 +1399,12 @@ EOD;
 			if (isset($rsyncclient['opt_delete'])) {
 				$opt_delete = "--delete --delete-after ";
 			}
-	
+
 			$syncscript .= <<<EOD
 /usr/local/bin/rsync -rtz {$opt_delete}rsync://{$rsyncclient['rsyncserverip']}/{$rsyncclient['remoteshare']} /mnt/{$rsyncclient['localshare']}
 
 EOD;
-	
+
 			$syncscript .= <<<EOD
 /bin/rm -f {$g['varrun_path']}/rsync_client-running{$i}
 /usr/bin/logger -p local4.notice "End of remote RSYNC synchronization from share {$rsyncclient['remoteshare']} on {$rsyncclient['rsyncserverip']} to {$rsyncclient['localshare']}"
@@ -1400,10 +1413,10 @@ EOD;
 
 			fwrite($fd,$syncscript);
 			fclose($fd);
-		
+
 			/* Add exectutive right to the script */
 			mwexec("/bin/chmod 770 {$g['varrun_path']}/rsync_client{$i}.sh");
-			
+
 			$i++;
 		}
 
@@ -1412,7 +1425,7 @@ EOD;
 
 		return 0;
 	}
-	
+
 	return 0;
 }
 
@@ -1423,11 +1436,11 @@ function services_rsync_local_configure()
 	// Generate a shell script that is used by cron
 	// Generate crontab works
 	if (is_array($config['rsync']['rsynclocal'])) {
-		$a_rsynclocal = &$config['rsync']['rsynclocal'];	
-	
+		$a_rsynclocal = &$config['rsync']['rsynclocal'];
+
 		if ($g['booting'])
 			write_console("Generating local rsync cron script... ");
-		
+
 		$i=0;
 		foreach($a_rsynclocal as $rsynclocal) {
 			/* generate /var/run/sync_local.sh script */
@@ -1458,7 +1471,7 @@ EOD;
 /usr/local/bin/rsync -a {$opt_delete} /mnt/{$rsynclocal['source']} /mnt/{$rsynclocal['destination']}
 
 EOD;
-			
+
 			$syncscript .= <<<EOD
 /bin/rm -f {$g['varrun_path']}/rsync_local-running{$i}
 /usr/bin/logger -p local4.notice "End of local RSYNC synchronization from {$rsynclocal['source']} to {$rsynclocal['destination']}"
@@ -1467,19 +1480,19 @@ EOD;
 
 			fwrite($fd,$syncscript);
 			fclose($fd);
-			
+
 			/* Add exectutive right to the script */
 			mwexec("/bin/chmod 770 {$g['varrun_path']}/rsync_local{$i}.sh");
-			
+
 			$i++;
 		}
-		
+
 		if ($g['booting'])
 			write_console("done\n");
 
 		return 0;
 	}
-	
+
 	return 0;
 }
 
@@ -1488,7 +1501,7 @@ function services_radius_configure()
 	global $config, $g;
 
 	if (isset($config['radius']['enable'])) {
-	
+
 		/* generate radius.conf */
 		$fd = fopen("{$g['varetc_path']}/radius.conf", "w");
 		if (!$fd) {
@@ -1497,7 +1510,7 @@ function services_radius_configure()
 			write_log($message);
 			return 1;
 		}
-			
+
 		$radiusconf = <<<EOD
 auth  {$config['radius']['radiusip']}:{$config['radius']['port']} {$config['radius']['secret']} {$config['radius']['timeout']} {$config['radius']['maxretry']}
 
@@ -1515,26 +1528,26 @@ Return 0 if OK, 1 or error code if error */
 function services_afpd_configure()
 {
 	global $config, $g;
-	
+
 	$result = 0 ;
 
 	/* kill any VSFTPD */
 	killbyname("afpd");
 
 	if (isset($config['afp']['enable'])) 	{
-	
+
 		/* If no share configured, there is a problem */
 		if (!is_array($config['mounts']['mount']))
 			$result = 1 ;
-			
+
 		if ($g['booting'])
 			write_console("Starting AFP server... ");
-			
+
 		if (empty($config['afp']['afpname']))
 			$afpname="-";
 		else
 			$afpname=$config['afp']['afpname'];
-			
+
 		/* generate afpd.conf */
 		$fd = fopen("{$g['varetc_path']}/afpd.conf", "w");
 		if (!$fd) {
@@ -1543,7 +1556,7 @@ function services_afpd_configure()
 			write_log($message);
 			$result = 1 ;
 		}
-			
+
 		$afpconf = <<<EOD
 {$afpname} -transall -uamlist
 EOD;
@@ -1560,14 +1573,14 @@ EOD;
 			$afpconf .= <<<EOD
  uams_clrtxt.so,uams_dhx.so
 EOD;
-		
+
 		$afpconf .= <<<EOD
  -nosavepassword -defaultvol {$g['varetc_path']}/AppleVolumes.default -systemvol {$g['varetc_path']}/AppleVolumes.system -uampath /etc/uams -guestname ftp
 
 EOD;
 		fwrite($fd, $afpconf);
 		fclose($fd);
-		
+
 		/* generate AppleVolumes.default */
 		$fd = fopen("{$g['varetc_path']}/AppleVolumes.default", "w");
 		if (!$fd) 	{
@@ -1576,15 +1589,15 @@ EOD;
 			write_log($message);
 			$result = 1 ;
 		}
-		
+
 		$a_mount = &$config['mounts']['mount'];
 		foreach ($a_mount as $mount) {
 			$AppleVolumes .= <<<EOD
-/mnt/{$mount['sharename']} "{$mount['sharename']}" 
+/mnt/{$mount['sharename']} "{$mount['sharename']}"
 
 EOD;
 		}
-		
+
 		fwrite($fd, $AppleVolumes);
 		fclose($fd);
 
@@ -1620,10 +1633,10 @@ Return 0 if Ok, 1 or error code if problem */
 function services_iscsiinit_configure()
 {
 	global $config, $g;
-	
+
 	/* kill any running iscontrol */
 	killbyname("iscontrol");
-	
+
 	if (is_array($config['iscsiinit']['vdisk'])) {
 		if ($g['booting']) {
 			write_console("Loading iSCSI kernel module... ");
@@ -1631,7 +1644,7 @@ function services_iscsiinit_configure()
 		/* iSCSI initiator configured, start the process */
 		$result = mwexec("/sbin/kldload iscsi_initiator.ko");
 		$result |= mwexec("/sbin/sysctl debug.iscsi=0");
-		
+
 		if ((!$result) && ($g['booting'])) {
 			write_log("iSCSI kernel module loaded");
 			write_console("done\n");
@@ -1642,9 +1655,9 @@ function services_iscsiinit_configure()
 		if ($g['booting']) {
 			write_console("Configuring initiator(s)... ");
 		}
-		
+
 		$a_iscsiinit = &$config['iscsiinit']['vdisk'];
-		
+
 		if (!$result) {
 			foreach ($a_iscsiinit as $iscsiinit) {
 				/* run iscontrol if no previous error*/
@@ -1662,7 +1675,7 @@ function services_iscsiinit_configure()
 			write_log("Error: Failed to start iSCSI initiator(s)");
 		}
 	}
-	
+
 	return $result;
 }
 
@@ -1671,19 +1684,19 @@ Return 0 if Ok, 1 or error code if problem */
 function services_iscsitarget_configure()
 {
 	global $config, $g;
-	
+
 	$result = 0 ;
-	
+
 	/* kill any running iscsi-target */
 	sigkillbypid("{$g['varrun_path']}/iscsi-target.pid", "TERM");
-	
+
 	if (is_array($config['iscsitarget']['vdisk'])) {
 		if ($g['booting']) {
 			write_console("Loading iSCSI target... ");
 		}
-		
+
 		$a_iscsitarget = &$config['iscsitarget']['vdisk'];
-		
+
 		/* generate targets */
 		$fd = fopen("{$g['varetc_path']}/iscsi/targets", "w");
 		if (!$fd) {
@@ -1701,12 +1714,12 @@ target{$i} rw extent{$i} {$target['network']}
 EOD;
 			$i++;
 		}
-		
+
 		fwrite($fd, $targetsfile);
 		fclose($fd);
-		
+
 		/* run iscsi-target if no previous error*/
-		
+
 		if (!$result) {
 			$result = mwexec("/usr/local/bin/iscsi-target");
 		}
@@ -1736,9 +1749,9 @@ Return 0 if Ok, 1 or error code if problem */
 function services_mdnsresponder_configure()
 {
 	global $config, $g;
-	
+
 	$result = 0 ;
-	
+
 	/* kill any running snmpd */
 	sigkillbypid("{$g['varrun_path']}/mDNSResponder.pid", "TERM");
 
@@ -1746,7 +1759,7 @@ function services_mdnsresponder_configure()
 		if ($g['booting']) {
 			write_console("Starting Bonjour Zeroconf service... ");
 		}
-	
+
 		$fd = fopen("{$g['varetc_path']}/mDNSResponder.conf", "w");
 		if (!$fd) 	{
 			$message = "Error: Can't open mDNSResponder.conf in services_bonjour_configure()";
@@ -1754,14 +1767,14 @@ function services_mdnsresponder_configure()
 			write_log($message);
 			$result = 1 ;
 		}
-	
+
 		// Check if WebGUI use HTTPS
 		if ($config['system']['webgui']['protocol'] == "https") {
 			if ($config['system']['webgui']['port']) 	{
 				$mDNSResponder = <<<EOD
 # mDNSResponderPosix configuration File
 #
-# This file contains the services to be announced to other Rendezvous aware 
+# This file contains the services to be announced to other Rendezvous aware
 # machines on the .local network
 #
 # Entries constist of four consecutive lines as follows:
@@ -1809,7 +1822,7 @@ EOD;
 			}
 
 		// Check if AFP service is enabled
-		if (isset($config['afp']['enable'])) 	{				
+		if (isset($config['afp']['enable'])) 	{
 			$mDNSResponder .= <<<EOD
 
 {$config['system']['hostname']} AFP Service
@@ -1820,7 +1833,7 @@ EOD;
 		}
 
 		// Check if RSYNC service is enabled
-		if (isset($config['rsyncd']['enable'])) 	{				
+		if (isset($config['rsyncd']['enable'])) 	{
 			$mDNSResponder .= <<<EOD
 
 {$config['system']['hostname']} RSYNC Service
@@ -1831,7 +1844,7 @@ EOD;
 		}
 
 		// Check if SSH service is enabled
-		if (isset($config['sshd']['enable'])) 	{				
+		if (isset($config['sshd']['enable'])) 	{
 			$mDNSResponder .= <<<EOD
 
 {$config['system']['hostname']} SSH Service
@@ -1842,7 +1855,7 @@ EOD;
 		}
 
 		// Check if FTP service is enabled
-		if (isset($config['ftp']['enable'])) 	{				
+		if (isset($config['ftp']['enable'])) 	{
 			$mDNSResponder .= <<<EOD
 
 {$config['system']['hostname']} FTP Service
@@ -1864,14 +1877,14 @@ EOD;
 		}
 
 		// Check if NFS service is enabled
-		if (isset($config['nfs']['enable'])) {				
+		if (isset($config['nfs']['enable'])) {
 			/* If no share configured, exit */
 			if (!is_array($config['mounts']['mount'])) {
 				break;
 			}
-		
+
 			$a_mount = &$config['mounts']['mount'];
-		
+
 			foreach ($a_mount as $mount) {
 				$mDNSResponder .= <<<EOD
 
@@ -1885,7 +1898,7 @@ EOD;
 		}
 
 		// Check if UPnP service is enabled
-		if (isset($config['upnp']['enable'])) {				
+		if (isset($config['upnp']['enable'])) {
 			$mDNSResponder .= <<<EOD
 
 {$config['system']['hostname']} UPnP Service

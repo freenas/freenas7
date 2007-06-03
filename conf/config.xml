@@ -189,6 +189,11 @@
 		<localmaster>yes</localmaster>
 		<rcvbuf>16384</rcvbuf>
 		<sndbuf>16384</sndbuf>
+		<!--
+		// createmask and directorymask can be used to overwrite default values when security=share 
+		<createmask>0666</createmask>
+		<directorymask>0777</directorymask>
+		-->
 	</samba>
 	<ftp>
 	<!-- <enable/> -->
