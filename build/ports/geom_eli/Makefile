@@ -7,7 +7,7 @@ MAINTAINER=		votdev@gmx.de
 WRKSRC=	/usr/src/sbin/geom/class/eli
 
 do-build:
-# Patch geom eli sources if necessary.
+	# Patch geom eli sources if necessary.
 	-@if [ ! -e ${WRKSRC}/geom_eli.c.orig ]; then \
 		${PATCH} -f ${WRKSRC}/geom_eli.c ${FILESDIR}/geom_eli.c.diff; \
 	fi
@@ -15,10 +15,12 @@ do-build:
 	@${MAKE} -C ${WRKSRC}
 
 do-install:
-	@${MAKE} -C ${WRKSRC} install
+	# Install kernel module.
+	@${CP} -pv /usr/obj/usr/src/sys/FREENAS-${ARCH}/modules/usr/src/sys/modules/geom/geom_eli/geom_eli.ko ${FREENAS_ROOTFS}/boot/kernel
 
-	@${INSTALL_PROGRAM} -v /sbin/geli ${FREENAS_ROOTFS}/sbin
-	@${INSTALL_PROGRAM} -v /lib/geom/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
+	# Install application.
+	@${LN} -s /sbin/geom ${FREENAS_ROOTFS}/sbin/geli
+	@${CP} -pv /usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
 
 pre-clean:
 	@${MAKE} -C ${WRKSRC} clean

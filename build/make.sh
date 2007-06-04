@@ -190,7 +190,6 @@ build_kernel() {
 				cp -v -p ./geom/geom_nop/geom_nop.ko $FREENAS_ROOTFS/boot/kernel;
 
 				cp -v -p ./geom/geom_gpt/geom_gpt.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./geom/geom_eli/geom_eli.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./ext2fs/ext2fs.ko $FREENAS_ROOTFS/boot/kernel;;
   	esac
   done

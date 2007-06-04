@@ -116,20 +116,11 @@ sbin/fsck_ufs:sbin/fsck_ffs:sbin/fsck_4.2bsd
 ## fsck -- DOS/WINDOWS file system consistency check and interactive repair
 sbin/fsck_msdosfs
 
-## Gconcat -- Geom concat
-sbin/gconcat
+## geom -- universal control utility for GEOM classes
+sbin/geom:sbin/gconcat:sbin/gmirror:sbin/gnop:sbin/gstripe
 
 # Growfs -- grow size of an existing ufs file system
 sbin/growfs
-
-## gstripe -- Geom stripe
-sbin/gstripe
-
-## gmirror -- Geom mirror
-sbin/gmirror
-
-## gnop -- Geom NOP (Permit to add drive to a graid5 volume)
-sbin/gnop
 
 ## gpt -- Manipulate GUID partition tables
 sbin/gpt

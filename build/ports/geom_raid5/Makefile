@@ -18,12 +18,11 @@ do-build:
 	@${MAKE} -C /usr/src/sbin/geom/class/raid5
 
 do-install:
+	# Install kernel module.
 	@${CP} -pv /usr/src/sys/modules/geom/geom_raid5/geom_raid5.ko ${FREENAS_ROOTFS}/boot/kernel
-	
-	# How to create application binary without this command? Any ideas?
-	@${MAKE} -C /usr/src/sbin/geom/class/raid5 install
-	
-	@${INSTALL_PROGRAM} /sbin/graid5 ${FREENAS_ROOTFS}/sbin
+
+	# Install application.
+	@${LN} -s /sbin/geom ${FREENAS_ROOTFS}/sbin/graid5
 	@${CP} -pv /usr/src/sbin/geom/class/raid5/geom_raid5.so ${FREENAS_ROOTFS}/lib/geom
 
 .include "bsd.freenas.mk"
