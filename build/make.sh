@@ -476,7 +476,7 @@ create_full() {
 	cp $FREENAS_BOOTDIR/loader.rc $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader.4th $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/support.4th $FREENAS_TMPDIR/boot
-	#cp $FREENAS_BOOTDIR/defaults/loader.conf $FREENAS_TMPDIR/boot/defaults/
+	cp $FREENAS_BOOTDIR/defaults/loader.conf $FREENAS_TMPDIR/boot/defaults/
 	cp $FREENAS_BOOTDIR/device.hints $FREENAS_TMPDIR/boot
 	if [ 0 != $OPT_BOOTMENU ]; then
 		cp $FREENAS_SVNDIR/boot/menu.4th $FREENAS_TMPDIR/boot

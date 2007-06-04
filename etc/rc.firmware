@@ -9,9 +9,16 @@
 # Copyright (C) 2003-2007 Manuel Kasper <mk@neon1.net>.
 # All rights reserved.
 
+# Script usage:
+# rc.firmware <args> [<file>]
+# Where <args> can take theses values:
+# - enable: Create a 30MB ram drive in /ftmp
+# - upgrade <file> : Do an embedded release (IMG file) upgrade using the file <file>
+# - fullupgrade <file> : Do a full release (TGZ file) upgrade using the file <file>
+
 CFDEVICE=`cat /var/etc/cfdevice`
 
-if [ $1 != "upgrade" ]; then
+if [ $1 != "upgrade" ] || [ $1 != "fullupgrade" ]; then
 	/sbin/umount -f /ftmp > /dev/null 2>&1
 fi
 
@@ -60,5 +67,60 @@ upgrade)
 
 	echo "Done - rebooting system..."	
 	/sbin/reboot
+	;;
+fullupgrade)
+	# wait 5 seconds before beginning
+	sleep 5
+
+	exec </dev/console >/dev/console 2>/dev/console
+	
+	# Check if firmware file exist
+	if [ ! -r $2 ]; then
+		echo "File does not exist. Exiting."
+		exit
+	fi
+
+	echo
+	echo "Firmware upgrade in progress..."
+	# Extract and start pre-upgrade script
+	#Actually (0.685b) this script are not used... but peraps one day
+	tar zxvf $2 --include etc/preupgrade.sh -C /ftmp
+	if [ ! -f /ftmp/etc/preupgrade.sh ]; then
+		echo "Starting Pre-upgrade script."
+		/ftmp/etc/pre-upgrade.sh
+		exit
+	fi
+	
+	#DO NOT OVERRIDE LIBRARY IN USE: lib/libc.so.6
+	#WARNING: The library files name are related to the FreeNAS release to be upgraded
+	#Must add a switch (case) here depending of the version number being upgraded ?
+	#MUST TO CLOSE ALL SERVICES before ???
+	#(FreeBSD can crash if replacing a library in use ?)
+	#ls /var/run/*.pid
+	#cat
+	#kill -9 pidnumber
+	#
+	#Warning: tar use usr/lib/libarchive.so.2 and lib/libz.so.3
+	tar zxvf $2 --exclude usr/lib/libarchive.so.2 --exclude lib/libz.so.3 --exclude lib/libc.so.6 -C /
+	#Extract libarchive.so.2 and libz.so.3 on the /ftmp direcoty and copy it (cp doesn't use these library)
+	tar zxvf $2 --include usr/lib/libarchive.so.2 --include lib/libz.so.3 -C /ftmp
+	cp -p /ftmp/usr/lib/libarchive.so.2 /usr/lib/libarchive.so.2
+	cp -p /ftmp/lib/libz.so.3 /lib/libz.so.32
+	
+	#How to override lib/libc.so.6 ? And, Is overrided this file is needed ?
+	
+	#Need to be added: List of old files to be deleted ?
+	
+	# Extract and start post-upgrade script
+	# Actually (0.685b) this script are not used... but peraps one day
+	tar zxvf $2 --include etc/postupgrade.sh -C /ftmp
+	if [ ! -f /ftmp/etc/post-upgrade.sh ]; then
+		echo "Starting Post-upgrade script."
+		/ftmp/etc/postupgrade.sh
+		exit
+	fi
+	
+	#echo "Done - rebooting system..."	
+	#/sbin/reboot
 	;;
 esac
