@@ -81,7 +81,7 @@ Majors changes:
 - Code review from the FreeNAS core engine
 - Upgrade PHP to 5.2.3
 - Upgrade lighttpd to 1.4.15
-- Upgrade Samba to 3.0.25
+- Upgrade Samba to 3.0.25a
 - Improve UPnP WebGUI/Service
 - Refactoring build scripts (Makefiles)
 - New platform name:

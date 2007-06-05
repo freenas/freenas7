@@ -1,5 +1,7 @@
 PORTNAME=			samba
-PORTVERSION=	3.0.25
+PORTVERSION=	3.0.25a
+PORTREVISION=	0
+PORTEPOCH=		1
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
 MAINTAINER=		votdev@gmx.de
@@ -20,6 +22,8 @@ USE_AUTOTOOLS=		autoconf:259 autoheader:259
 AUTOHEADER_ARGS=	-I${WRKSRC} -I${WRKSRC}/lib/replace
 AUTOCONF_ARGS=		-I${WRKSRC} -I${WRKSRC}/lib/replace
 
+WRKSRC=						${WRKDIR}/${DISTNAME}/source
+
 CONFIGURE_ARGS+=	--without-cups \
 									--with-ads \
 									--disable-cups \
@@ -39,8 +43,6 @@ CONFIGURE_ARGS+=	--without-cups \
 									--with-ldap \
 									--with-libiconv="${LOCALBASE}"
 #									--with-acl-support
-
-WRKSRC=	${WRKDIR}/${DISTNAME}/source
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbd ${FREENAS_ROOTFS}/usr/local/sbin
