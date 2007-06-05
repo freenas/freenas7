@@ -74,6 +74,8 @@ if ($_POST)
 	/* input validation */
 	$reqdfields = array();
 	$reqdfieldsn = array();
+	$reqdfieldst = array();
+
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "security netbiosname workgroup localmaster"));
 		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"),gettext("Local Master Browser")));
@@ -82,28 +84,12 @@ if ($_POST)
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "createmask directorymask");
-		$reqdfieldsn = array(gettext("Create mask"),gettext("Directory mask"));
-		$reqdfieldst = explode(" ", "numericint numericint");
-
-		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+		$reqdfields = explode(" ", "netbiosname workgroup winssrv sndbuf rcvbuf createmask directorymask");
+		$reqdfieldsn = array(gettext("NetBiosName"),gettext("Workgroup"),gettext("WINS server"),gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"));
+		$reqdfieldst = explode(" ", "domain workgroup ipaddr numericint numericint filemode filemode");
 	}
 
-	if (($_POST['netbiosname'] && !is_domain($_POST['netbiosname']))) {
-		$input_errors[] = gettext("The Netbios name contains invalid characters.");
-	}
-	if (($_POST['workgroup'] && !is_workgroup($_POST['workgroup']))) {
-		$input_errors[] = gettext("The Workgroup name contains invalid characters.");
-	}
-	if (($_POST['winssrv'] && !is_ipaddr($_POST['winssrv']))) {
-		$input_errors[] = gettext("The WINS server must be an IP address.");
-	}
-	if (!is_numericint($_POST['sndbuf'])) {
-		$input_errors[] = gettext("The SND Buffer value must be a number.");
-	}
-	if (!is_numericint($_POST['rcvbuf'])) {
-		$input_errors[] = gettext("The RCV Buffer value must be a number.");
-	}
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	if (!$input_errors) {
 		$config['samba']['netbiosname'] = $_POST['netbiosname'];

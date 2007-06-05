@@ -110,28 +110,42 @@ function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfie
 	for ($i = 0; $i < count($reqdfields); $i++) {
 		if (isset($postdata[$reqdfields[$i]]) && ($postdata[$reqdfields[$i]] !== "")) {
 			$valid = false;
+			$message = "";
+
 			switch($reqdfieldst[$i]) {
 				case 'string':			$valid = is_string($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' must be a string."), $reqdfieldsn[$i]);
 														break;
 				case 'numeric':			$valid = is_numeric($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' must be a number."), $reqdfieldsn[$i]);
 														break;
 				case 'numericint':	$valid = is_numericint($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' must be a number."), $reqdfieldsn[$i]);
 														break;
 				case 'ipaddr':			$valid = is_ipaddr($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' is no valid IP address."), $reqdfieldsn[$i]);
 														break;
 				case 'macaddr': 		$valid = is_macaddr($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' is no valid MAC address."), $reqdfieldsn[$i]);
 														break;
 				case 'subnet': 			$valid = is_subnet($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' is no valid subnet mask."), $reqdfieldsn[$i]);
 														break;
 				case 'domain': 			$valid = is_domain($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' contains invalid characters and is no valid domain name."), $reqdfieldsn[$i]);
 														break;
 				case 'hostname': 		$valid = is_hostname($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' contains invalid characters and is no valid host name."), $reqdfieldsn[$i]);
 														break;
 				case 'workgroup': 	$valid = is_workgroup($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' contains invalid characters and is no valid workgroup name."), $reqdfieldsn[$i]);
+														break;
+				case 'filemode': 		$valid = is_filemode($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' is no valid file mode mask."), $reqdfieldsn[$i]);
 														break;
 			}
 			if (!$valid) {
-				$input_errors[] = sprintf( gettext("The attribute '%s' must be of the type '%s'."), $reqdfieldsn[$i], $reqdfieldst[$i]);
+				$input_errors[] = $message;
 			}
 		}
 	}

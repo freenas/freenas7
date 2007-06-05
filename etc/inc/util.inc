@@ -294,6 +294,14 @@ function is_mtu($mtu) {
 		return true;
 }
 
+/* Returns true if $mode is a valid file mode mask. */
+function is_filemode($mode) {
+	if (decbin($mode) & decbin(0777))
+		return true;
+
+	return false;
+}
+
 function get_interface_list() {
 	/* build interface list with netstat */
 	exec("/usr/bin/netstat -inW -f link", $linkinfo);
