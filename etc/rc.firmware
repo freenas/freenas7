@@ -80,7 +80,6 @@ fullupgrade)
 		exit
 	fi
 
-	echo
 	echo "Firmware upgrade in progress..."
 	# Extract and start pre-upgrade script
 	#Actually (0.685b) this script are not used... but peraps one day
@@ -88,14 +87,13 @@ fullupgrade)
 	if [ ! -f /ftmp/etc/preupgrade.sh ]; then
 		echo "Starting Pre-upgrade script."
 		/ftmp/etc/pre-upgrade.sh
-		exit
 	fi
 	
 	#DO NOT OVERRIDE LIBRARY IN USE: lib/libc.so.6
 	#WARNING: The library files name are related to the FreeNAS release to be upgraded
 	#Must add a switch (case) here depending of the version number being upgraded ?
 	#MUST TO CLOSE ALL SERVICES before ???
-	#(FreeBSD can crash if replacing a library in use ?)
+	#(FreeBSD seem to crash if replacing a library in use ?)
 	#ls /var/run/*.pid
 	#cat
 	#kill -9 pidnumber
@@ -109,7 +107,7 @@ fullupgrade)
 	
 	#How to override lib/libc.so.6 ? And, Is overrided this file is needed ?
 	
-	#Need to be added: List of old files to be deleted ?
+	#Need to be added: List of old files to be deleted (is necessary?)
 	
 	# Extract and start post-upgrade script
 	# Actually (0.685b) this script are not used... but peraps one day
@@ -117,7 +115,6 @@ fullupgrade)
 	if [ ! -f /ftmp/etc/post-upgrade.sh ]; then
 		echo "Starting Post-upgrade script."
 		/ftmp/etc/postupgrade.sh
-		exit
 	fi
 	
 	#echo "Done - rebooting system..."	
