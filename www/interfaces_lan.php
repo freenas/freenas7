@@ -223,29 +223,29 @@ function type_change() {
       </td>
     </tr>
      <tr> 
-      <td valign="top" class="vncellreq"><?=gettext("Gateway"); ?></td>
+      <td valign="top" class="vncell"><?=gettext("Gateway"); ?></td>
       <td class="vtable">
-        <?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>">
+        <input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>">
       </td>
     </tr>
     <tr id="dhcpclientidentifier_tr">
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Client Identifier");?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Client Identifier");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
+        <input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
         <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.");?></span>
       </td>
     </tr>
     <tr id="dhcphostname_tr">
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Hostname");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled><br>
+        <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled><br>
         <span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
       </td>
     </tr>
     <tr> 
       <td valign="top" class="vncell"><?=gettext("MTU"); ?></td>
       <td class="vtable">
-        <?=$mandfldhtml;?><input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>">&nbsp;<br>
+        <input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>">&nbsp;<br>
         <span class="vexpl"><?=gettext("Standard MTU is 1500, use 9000 for jumbo frame."); ?></span>
       </td>
     </tr>
