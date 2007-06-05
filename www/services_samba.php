@@ -135,9 +135,7 @@ if ($_POST)
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
-	var endis;
-
-	endis = !(document.iform.enable.checked || enable_change);
+	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.netbiosname.disabled = endis;
 	document.iform.workgroup.disabled = endis;
 	document.iform.localmaster.disabled = endis;

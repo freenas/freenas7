@@ -4,21 +4,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -58,7 +58,7 @@ function forcekillbyname($procname) {
 function gen_subnet($ipaddr, $bits) {
 	if (!is_ipaddr($ipaddr) || !is_numeric($bits))
 		return "";
-	
+
 	return long2ip(ip2long($ipaddr) & gen_subnet_mask_long($bits));
 }
 
@@ -66,7 +66,7 @@ function gen_subnet($ipaddr, $bits) {
 function gen_subnet_max($ipaddr, $bits) {
 	if (!is_ipaddr($ipaddr) || !is_numeric($bits))
 		return "";
-	
+
 	return long2ip(ip2long($ipaddr) | ~gen_subnet_mask_long($bits));
 }
 
@@ -93,10 +93,10 @@ function is_numericint($arg) {
 function is_ipaddr($ipaddr) {
 	if (!is_string($ipaddr))
 		return false;
-		
+
 	$ip_long = ip2long($ipaddr);
 	$ip_reverse = long2ip($ip_long);
- 
+
 	if ($ipaddr == $ip_reverse)
 		return true;
 	else
@@ -105,9 +105,9 @@ function is_ipaddr($ipaddr) {
 
 /* returns true if $ipaddr is a valid dotted IPv4 address or an alias thereof */
 function is_ipaddroralias($ipaddr) {
-	
+
 	global $aliastable;
-	
+
 	if (isset($aliastable[$ipaddr]) && is_ipaddr($aliastable[$ipaddr]))
 		return true;
 	else
@@ -116,9 +116,9 @@ function is_ipaddroralias($ipaddr) {
 
 /* returns true if $ipaddr is a valid dotted IPv4 address or any alias */
 function is_ipaddroranyalias($ipaddr) {
-	
+
 	global $aliastable;
-	
+
 	if (isset($aliastable[$ipaddr]))
 		return true;
 	else
@@ -129,23 +129,23 @@ function is_ipaddroranyalias($ipaddr) {
 function is_subnet($subnet) {
 	if (!is_string($subnet))
 		return false;
-		
+
 	list($hp,$np) = explode('/', $subnet);
-	
+
 	if (!is_ipaddr($hp))
 		return false;
-	
+
 	if (!is_numeric($np) || ($np < 1) || ($np > 32))
 		return false;
-		
+
 	return true;
 }
 
 /* returns true if $subnet is a valid subnet in CIDR format or an alias thereof */
 function is_subnetoralias($subnet) {
-	
+
 	global $aliastable;
-	
+
 	if (isset($aliastable[$subnet]) && is_subnet($aliastable[$subnet]))
 		return true;
 	else
@@ -156,7 +156,7 @@ function is_subnetoralias($subnet) {
 function is_hostname($hostname) {
 	if (!is_string($hostname))
 		return false;
-		
+
 	if (preg_match("/^[a-z0-9\-]+$/i", $hostname))
 		return true;
 	else
@@ -166,10 +166,10 @@ function is_hostname($hostname) {
 /* returns true if $desc is a valid description (alphanum and space, _ , - , .)*/
 function is_validdesc($desc)
 {
-	
+
 	if (!is_string($desc))
 		return false;
-		
+
 	if (preg_match("/^[A-Za-z0-9]([A-Za-z0-9_\-\.\s]*[A-Za-z0-9])*$/", $desc))
 		return true;
 	else
@@ -179,13 +179,13 @@ function is_validdesc($desc)
 /* returns true if $login is a valid login name (alphanum,dot, _ , -)*/
 function is_validlogin($login)
 {
-	
+
 	if (!is_string($login))
 		return false;
-		
+
 	if (preg_match("/^[A-Za-z0-9]([A-Za-z0-9_\-\.\s]*[A-Za-z0-9])*$/", $login))
 		return true;
-	
+
 	else
 		return false;
 }
@@ -193,13 +193,13 @@ function is_validlogin($login)
 /* returns true if $password is a valid password (not used of special : character)*/
 function is_validpassword($password)
 {
-	
+
 	if (!is_string($password))
 		return false;
-	
+
 	if (strstr($password, ':'))
 			return false;
-	
+
 	else
 		return true;
 }
@@ -207,13 +207,13 @@ function is_validpassword($password)
 /* returns true if $login is a valid share name (alphanum,dot, _ , -)*/
 function is_validsharename($sharename)
 {
-	
+
 	if (!is_string($sharename))
 		return false;
-		
+
 	if (preg_match("/^[A-Za-z0-9]([A-Za-z0-9_\-\.\s]*[A-Za-z0-9])*$/", $sharename))
 		return true;
-	
+
 	else
 		return false;
 }
@@ -222,7 +222,7 @@ function is_validsharename($sharename)
 function is_domain($domain) {
 	if (!is_string($domain))
 		return false;
-		
+
 	if (preg_match("/^([a-z0-9\-]+\.?)*$/i", $domain))
 		return true;
 	else
@@ -247,18 +247,18 @@ function is_workgroup($workgroup) {
 function is_macaddr($macaddr) {
 	if (!is_string($macaddr))
 		return false;
-		
+
 	$maca = explode(":", $macaddr);
 	if (count($maca) != 6)
 		return false;
-	
+
 	foreach ($maca as $macel) {
 		if (($macel === "") || (strlen($macel) > 2))
 			return false;
 		if (preg_match("/[^0-9a-f]/i", $macel))
 			return false;
 	}
-	
+
 	return true;
 }
 
@@ -276,7 +276,7 @@ function is_validaliasname($name) {
 function is_port($port) {
 	if (!is_numericint($port))
 		return false;
-		
+
 	if (($port < 1) || ($port > 65535))
 		return false;
 	else
@@ -287,7 +287,7 @@ function is_port($port) {
 function is_mtu($mtu) {
 	if (!is_numericint($mtu))
 		return false;
-		
+
 	if (($mtu < 100) || ($mtu > 9000))
 		return false;
 	else
@@ -296,36 +296,39 @@ function is_mtu($mtu) {
 
 /* Returns true if $mode is a valid file mode mask. */
 function is_filemode($mode) {
-	if (decbin($mode) & decbin(0777))
-		return true;
+	if (!is_numericint($mode))
+		return false;
 
-	return false;
+	if (($mode < 0) || ($mode > 777))
+		return false;
+	else
+		return true;
 }
 
 function get_interface_list() {
 	/* build interface list with netstat */
 	exec("/usr/bin/netstat -inW -f link", $linkinfo);
 	array_shift($linkinfo);
-	
+
 	$iflist = array();
-	
+
 	foreach ($linkinfo as $link) {
 		$alink = preg_split("/\s+/", $link);
 		$ifname = chop($alink[0]);
-		
+
 		if (substr($ifname, -1) == "*")
 			$ifname = substr($ifname, 0, strlen($ifname) - 1);
 		/* add the plip interface to be excluded too */
 		if (!preg_match("/^(ppp|sl|gif|faith|lo|vlan|tun|plip)/", $ifname)) {
 			$iflist[$ifname] = array();
-			
+
 			$iflist[$ifname]['mac'] = chop($alink[3]);
 			$iflist[$ifname]['up'] = false;
-			
+
 			/* find out if the link on this interface is up */
 			unset($ifinfo);
 			exec("/sbin/ifconfig {$ifname}", $ifinfo);
-			
+
 			foreach ($ifinfo as $ifil) {
 				if (preg_match("/status: (.*)$/", $ifil, $matches)) {
 					if ($matches[1] == "active")
@@ -335,7 +338,7 @@ function get_interface_list() {
 			}
 		}
 	}
-	
+
 	return $iflist;
 }
 
@@ -373,7 +376,7 @@ function get_mounts_list()
 
 		// Test if it's a gvinum, gmirror, gconcat or gstripe device.
 		if ((strcmp($devicename,"gvinum") == 0) ||
-				(strcmp($devicename,"mirror") == 0) || (strcmp($devicename,"concat") == 0) || 
+				(strcmp($devicename,"mirror") == 0) || (strcmp($devicename,"concat") == 0) ||
 				(strcmp($devicename,"stripe") == 0) || (strcmp($devicename,"raid5") == 0)) {
 			$devicename = $adevicepath[3];
 		}
@@ -440,7 +443,7 @@ function get_mount_use()
 			}
 		}
 		else
-			return 0;		
+			return 0;
 	}
 
 	return $result;
@@ -521,7 +524,7 @@ function get_gmirror_disks_list()
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['fullname'] = "/dev/mirror/" . $diskname;
 			$disklist[$diskname]['type'] = "Software RAID - gmirror";
-			
+
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['fullname']);
 			$disklist[$diskname]['size'] = $diskinfo['mediasize_mbytes'] . "MB";
@@ -529,7 +532,7 @@ function get_gmirror_disks_list()
 			$foundname = 1 ;
 			continue ;
 		}
-		
+
 		// Second Step: Getting the array status
 		// look for this output:
 		// State: COMPLETE
@@ -575,7 +578,7 @@ function get_gconcat_disks_list()
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['fullname'] = "/dev/concat/" . $diskname;
 			$disklist[$diskname]['type'] = "Software RAID - gconcat";
-			
+
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['fullname']);
 			$disklist[$diskname]['size'] = $diskinfo['mediasize_mbytes'] . "MB";
@@ -719,7 +722,7 @@ function get_graid5_disks_list()
 function get_ata_disks_list()
 {
 	$disklist = array();
-	
+
 	/******* Getting IDE disk informations *******/
 	exec("/sbin/atacontrol list",$rawdata);
 
@@ -812,7 +815,7 @@ function get_hraid_disks_list()
 {
 	/* Recupere la liste des disques RAID */
 	$kerneldisks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
-	
+
 	/* Recupere la liste des disques ATA et SCSI */
 	$diskdetected = array_merge((array)get_ata_disks_list(),(array)get_scsi_disks_list());
 
@@ -827,7 +830,7 @@ function get_hraid_disks_list()
 			if (strcasecmp($diskfoundk,$diskname) == 0)
 				$allready = 0;
 		}
-		
+
 		if ($allready) 	{
 			/* If not an IDE and SCSI disk */
 			$disklist[$diskname] = array();
@@ -908,7 +911,7 @@ function get_cdrom_list()
 	/* Cleaning used variable and initialize array */
 	unset($rawdata);
 
-	/* Get the SCSI disk list */	
+	/* Get the SCSI disk list */
 	/* Get the result of the command camcontrol*/
 	exec("/sbin/camcontrol devlist",$rawdata);
 
@@ -965,7 +968,7 @@ function get_disks_size($diskname)
 
 	foreach ($disklist as $diskk => $diskv) {
 		if (strcmp($diskk,$diskname)==0)
-			$disksize=$diskv['size'];	
+			$disksize=$diskv['size'];
 	}
 
 	return $disksize;
@@ -983,19 +986,19 @@ function mwexec($command) {
 		exec("$command > /dev/null 2>&1", $oarr, $retval);
 	}
 
-	return $retval; 
+	return $retval;
 }
 
 /* wrapper for exec() in background */
 function mwexec_bg($command) {
 
 	global $g;
-	
+
 	if ($g['debug']) {
 		if (!$_SERVER['REMOTE_ADDR'])
 			echo "mwexec(): $command\n";
 	}
-	
+
 	exec("nohup $command > /dev/null 2>&1 &");
 }
 
@@ -1007,11 +1010,11 @@ function unlink_if_exists($fn) {
 
 /* make a global alias table (for faster lookups) */
 function alias_make_table() {
-	
+
 	global $config, $g, $aliastable;
-	
+
 	$aliastable = array();
-	
+
 	if (is_array($config['aliases']['alias'])) {
 		foreach ($config['aliases']['alias'] as $alias) {
 			if ($alias['name'])
@@ -1022,17 +1025,17 @@ function alias_make_table() {
 
 /* check if an alias exists */
 function is_alias($name) {
-	
+
 	global $aliastable;
-	
+
 	return isset($aliastable[$name]);
 }
 
 /* expand a host or network alias, if necessary */
 function alias_expand($name) {
-	
+
 	global $aliastable;
-	
+
 	if (isset($aliastable[$name]))
 		return $aliastable[$name];
 	else if (is_ipaddr($name) || is_subnet($name))
@@ -1043,9 +1046,9 @@ function alias_expand($name) {
 
 /* expand a host alias, if necessary */
 function alias_expand_host($name) {
-	
+
 	global $aliastable;
-	
+
 	if (isset($aliastable[$name]) && is_ipaddr($aliastable[$name]))
 		return $aliastable[$name];
 	else if (is_ipaddr($name))
@@ -1056,9 +1059,9 @@ function alias_expand_host($name) {
 
 /* expand a network alias, if necessary */
 function alias_expand_net($name) {
-	
+
 	global $aliastable;
-	
+
 	if (isset($aliastable[$name]) && is_subnet($aliastable[$name]))
 		return $aliastable[$name];
 	else if (is_subnet($name))
@@ -1079,10 +1082,10 @@ function check_subnets_overlap($subnet1, $bits1, $subnet2, $bits2) {
 		$relbits = $bits1;
 	else
 		$relbits = $bits2;
-	
+
 	$sn1 = gen_subnet_mask_long($relbits) & ip2long($subnet1);
 	$sn2 = gen_subnet_mask_long($relbits) & ip2long($subnet2);
-	
+
 	if ($sn1 == $sn2)
 		return true;
 	else
@@ -1119,7 +1122,7 @@ function verify_digital_signature($fname) {
 // Obtain MAC address given an IP address by looking at the ARP table.
 function arp_get_mac_by_ip($ip) {
 	exec("/usr/sbin/arp -n {$ip}", $arpoutput);
-	
+
 	if ($arpoutput[0]) {
 		$arpi = explode(" ", $arpoutput[0]);
 		$macaddr = $arpi[3];
@@ -1128,7 +1131,7 @@ function arp_get_mac_by_ip($ip) {
 		else
 			return false;
 	}
-	
+
 	return false;
 }
 
@@ -1183,7 +1186,7 @@ function get_macaddr($if)
   foreach($linkinfo as $link)  {
     $alink = preg_split("/\s+/", $link);
     $ifname = chop($alink[0]);
-    
+
     if (strncmp($ifname,$if,strlen($if)) == 0) {
       $macaddr = chop($alink[3]);
       break;
@@ -1326,18 +1329,18 @@ function get_fstype_shortdesc($fstype) {
     case "ext2":					$shortdesc = "EXT2";
     											break;
   }
-  
+
   return $shortdesc;
 }
 
-/* Search in a multidimensional array */		
+/* Search in a multidimensional array */
 function array_search_ex($needle, $haystack, $key)
 {
   foreach($haystack as $haystackval => $value) {
     $found = false;
     if(is_array($needle) && is_array($key)) {
       foreach($needle as $n => $needlev) {
-        $found = ($value[$key[$n]] == $needlev);        
+        $found = ($value[$key[$n]] == $needlev);
         if(false == $found) {
           break;
         }
@@ -1352,7 +1355,7 @@ function array_search_ex($needle, $haystack, $key)
   return false;
 }
 
-// Get interface informations. 
+// Get interface informations.
 // $if - Interface name (e.g. re0, ...)
 // Result: Array
 //	(
@@ -1454,7 +1457,7 @@ function get_interface_info($if) {
 	return $ifinfo;
 }
 
-// Get interface informations. 
+// Get interface informations.
 // $iftype - interface type (e.g. lan, opt[n], ...)
 // Result: Array
 //	(
