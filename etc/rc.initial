@@ -38,7 +38,7 @@ else
 while : ; do
 
 # Change permission to the / directory
-chmod 711 root /
+chmod 0711 root /
 
 # display a cheap menu
 echo

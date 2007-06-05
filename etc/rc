@@ -67,7 +67,7 @@ chmod 0600 /var/log/*.log
 adjkerntz -i
 
 # Create an initial utmp file
-cd /var/run && cp /dev/null utmp && chmod 644 utmp
+cd /var/run && cp /dev/null utmp && chmod 0644 utmp
 
 # Create symlink for lighhtpd file upload if doesn't exist
 if [ ! -h "/var/tmp" ]; then

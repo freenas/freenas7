@@ -837,7 +837,7 @@ EOD;
 		fclose($fd);
 
 		/* Restrict right on the SSH key */
-		mwexec("/bin/chmod 600 {$g['varetc_path']}/ssh/ssh_host_dsa_key");
+		mwexec("/bin/chmod 0600 {$g['varetc_path']}/ssh/ssh_host_dsa_key");
 
 		/* run sshd if no previous error*/
 		if (!$result) {
@@ -877,7 +877,7 @@ function services_unison_configure() {
 				write_console($message . ".\n");
 				write_log($message);
 			}
-			mwexec("/bin/chmod 775 '{$workdir}'");
+			mwexec("/bin/chmod 0775 '{$workdir}'");
 		}
 		if (!file_exists($workdir)) {
 			$message = "Error: Can't open '{$workdir}' in services_unison_configure()";
@@ -1415,7 +1415,7 @@ EOD;
 			fclose($fd);
 
 			/* Add exectutive right to the script */
-			mwexec("/bin/chmod 770 {$g['varrun_path']}/rsync_client{$i}.sh");
+			mwexec("/bin/chmod 0770 {$g['varrun_path']}/rsync_client{$i}.sh");
 
 			$i++;
 		}
@@ -1482,7 +1482,7 @@ EOD;
 			fclose($fd);
 
 			/* Add exectutive right to the script */
-			mwexec("/bin/chmod 770 {$g['varrun_path']}/rsync_local{$i}.sh");
+			mwexec("/bin/chmod 0770 {$g['varrun_path']}/rsync_local{$i}.sh");
 
 			$i++;
 		}
