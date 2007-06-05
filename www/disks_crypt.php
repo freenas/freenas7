@@ -161,10 +161,9 @@ if ($_GET['act'] == "del")
 			touch($d_gelidirty_path);
 			header("Location: disks_crypt.php");
 			exit;
-        } else {
-                  $errormsg[] = gettext("This volume must be detached before to be killed");
-        }
-		
+		} else {
+			$errormsg[] = gettext("This volume must be detached before to be killed");
+		}
 	}
 }
 if ($_GET['act'] == "ret")

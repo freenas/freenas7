@@ -4,21 +4,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -55,7 +55,7 @@ function disks_mount_all()
 			if (!$g['booting'])
 				disks_umount_ex($mount);
 
-			disks_mount($mount);	
+			disks_mount($mount);
 		}
 
 		// Then mount ISOs.
@@ -67,7 +67,7 @@ function disks_mount_all()
 			if (!$g['booting'])
 				disks_umount($mount);
 
-			disks_mount($mount);	
+			disks_mount($mount);
 		}
 	}
 
@@ -127,7 +127,7 @@ function disks_mount($mount)
 			break;
 
 		case "iso":
-			// Create memory disk. 'mdconfig' returns the ID of this disk. 
+			// Create memory disk. 'mdconfig' returns the ID of this disk.
 			exec("/sbin/mdconfig -a -t vnode -f '{$mount['filename']}'", $mdid, $result);
 			if (0 !== $result) {
 				write_log("Error: Failed to create memory disk for '{$mount['filename']}'");
@@ -141,7 +141,7 @@ function disks_mount($mount)
 	/* This part is too stupid: I must read the FreeBSD start script for use the same intelligent method for checking hard drive */
 	switch ($mount['fstype']) {
 		case "ufs":
-			$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'"); 
+			$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'");
 			if (0 == $result) {
 				write_log("Device {$devname} mounted using UFS on '{$mountname}'");
 				$result = 0;
@@ -188,7 +188,7 @@ function disks_mount($mount)
 			break;
 
 		case "cd9660":
-			$result = mwexec("/sbin/mount_cd9660 {$devname} '{$mountname}'"); 
+			$result = mwexec("/sbin/mount_cd9660 {$devname} '{$mountname}'");
 			if (0 == $result) {
 				write_log("Device {$devname} mounted as CD/DVD on '{$mountname}'");
 				$result = 0;
@@ -208,7 +208,7 @@ function disks_mount($mount)
 			if (0 == $result) {
 				write_log("Disk {$devname} mounted using NTFS on '{$mountname}'");
 				$result = 0;
-			} else {	
+			} else {
 				/* COMMENT FISR PART BEGIN: NTFSFIX DO'NT WORK
 				write_log("Error detected for mounting disk $devname, starting a ntfsfix");
 				mwexec("/usr/local/bin/ntfsfix {$devname}");
@@ -218,7 +218,7 @@ function disks_mount($mount)
 					write_log("Disk {$devname} mounted using NTFS on '{$mountname}'");
 					$result = 0;
 				}
-				else	{ 
+				else	{
 				COMMENT FIRST PART END */
 					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir("{$mountname}");
@@ -231,7 +231,7 @@ function disks_mount($mount)
 			break;
 
 		case "ext2fs":
-			$result = mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'"); 
+			$result = mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'");
 			if (0 == $result)	{
 				write_log("Disk {$devname} mounted using EXT2 on '{$mountname}'");
 				$result = 0;
@@ -264,7 +264,7 @@ function disks_umount($mount)
 	if ("iso" === $mount['type']) {
 		// Get current mount list.
 		$amountlist = get_mounts_list();
-	
+
 		foreach ($amountlist as $amountk => $amountv) {
 			if (0 == strcmp($amountv['sharename'], $mount['sharename'])) {
 				$mdunit = substr($amountv['mdisk'], 2); // Remove 'md' to get unit id.
@@ -531,15 +531,15 @@ function disks_raid_gmirror_configure()
 	if ($config['gmirror']['vdisk']) {
 		// Load gmirror
 		mwexec("/sbin/gmirror load");
-				
+
 		foreach ($config['gmirror']['vdisk'] as $a_raid_conf) {
 			/* Create each volume */
 			$cmd = "/sbin/gmirror label -b {$a_raid_conf['balance']} {$a_raid_conf['name']} ";
 			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
 				$cmd .= "{$diskrv} ";
-			}			
+			}
 			mwexec($cmd);
-		}	
+		}
 	}
 
 	return 0;
@@ -554,15 +554,15 @@ function disks_raid_gconcat_configure()
 	if ($config['gconcat']['vdisk']) {
 		// Load gconcat
 		mwexec("/sbin/gconcat load");
-				
+
 		foreach ($config['gconcat']['vdisk'] as $a_raid_conf) {
 			/* Create each volume */
 			$cmd = "/sbin/gconcat label {$a_raid_conf['name']} ";
 			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
 				$cmd .= "{$diskrv} ";
-			}			
+			}
 			mwexec($cmd);
-		}	
+		}
 	}
 
 	return 0;
@@ -583,9 +583,9 @@ function disks_raid_gstripe_configure()
 			$cmd = "/sbin/gstripe label {$a_raid_conf['name']} ";
 			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) 	{
 				$cmd .= "{$diskrv} ";
-			}			
+			}
 			mwexec($cmd);
-		}	
+		}
 	}
 
 	return 0;
@@ -600,16 +600,16 @@ function disks_raid_graid5_configure()
 	if ($config['graid5']['vdisk']) {
 		// Load graid5
 		mwexec("/sbin/graid5 load");
-		
+
 		foreach ($config['graid5']['vdisk'] as $a_raid_conf) 	{
 			/* Create each volume */
 			$cmd = "/sbin/graid5 label -s 131072 {$a_raid_conf['name']} ";
 			foreach ($a_raid_conf['diskr'] as $diskrk => $diskrv) {
 				$cmd .= "{$diskrv} ";
-			}			
+			}
 			mwexec($cmd);
 		}
-		
+
 		//Tune graid5
 		disks_raid_graid5_tune();
 	}
@@ -629,9 +629,9 @@ function disks_raid_start()
 	disks_raid_gstripe_start();
 	disks_raid_gconcat_start();
 	disks_raid_graid5_start();
-	
+
 	return 0;
-}	
+}
 
 // Start geom vinum volumes.
 // Return 0 if successful, 1 if error
@@ -647,11 +647,11 @@ function disks_raid_gvinum_start()
 		foreach ($config['gvinum']['vdisk'] as $a_raid_conf) 	{
 			mwexec("/sbin/gvinum start {$a_raid_conf['name']}");
 		}
-		
+
 		if ($g['booting'])
 			write_console("done\n");
 	}
-	
+
 	return 0;
 }
 
@@ -668,7 +668,7 @@ function disks_raid_gmirror_start()
 
 		// Load geom mirror module
 		mwexec("/sbin/gmirror load");
-		
+
 		if ($g['booting'])
 			write_console("done\n");
 	}
@@ -689,7 +689,7 @@ function disks_raid_gconcat_start()
 
 		// Load geom concat module
 		mwexec("/sbin/gconcat load");
-		
+
 		if ($g['booting'])
 			write_console("done\n");
 	}
@@ -702,7 +702,7 @@ function disks_raid_gconcat_start()
 function disks_raid_gstripe_start()
 {
 	global $config, $g;
-	
+
 	/* Start Geom stripe */
 	if ($config['gstripe']['vdisk']) {
 		if ($g['booting'])
@@ -710,7 +710,7 @@ function disks_raid_gstripe_start()
 
 		// Load geom stripe module
 		mwexec("/sbin/gstripe load");
-		
+
 		if ($g['booting'])
 			write_console("done\n");
 	}
@@ -731,16 +731,16 @@ function disks_raid_graid5_start()
 
 		// Load geom raid5 module
 		mwexec("/sbin/graid5 load");
-		
+
 		//Tune graid5
 		disks_raid_graid5_tune();
-		
+
 		if ($g['booting']) {
 			write_console("done\n");
 		}
-		
+
 	}
-	
+
 	return 0;
 }
 
@@ -766,7 +766,7 @@ function disks_raid_graid5_tune()
 	}
 
 	// Modify ATA timeout to 15 seconds.
-	mwexec('sysctl hw.ata.to=15');	
+	mwexec('sysctl hw.ata.to=15');
 }
 
 // Stop all geom RAID volumes.
@@ -882,7 +882,7 @@ function disks_raid_gvinum_delete($raidname)
 
 	foreach ($config['gvinum']['vdisk'] as $a_raid) {
 		if ($a_raid['name'] == $raidname) {
-			foreach ($a_raid['diskr'] as $disk){				
+			foreach ($a_raid['diskr'] as $disk){
 				mwexec("/sbin/gvinum rm -r disk_{$disk}");
 			}
 		}
@@ -903,7 +903,7 @@ function disks_raid_gmirror_delete($raidname)
 	// Clear the gmirror information on the hard drive
 	foreach ($config['gmirror']['vdisk'] as $a_raid) {
 		if ($a_raid['name'] == $raidname) {
-			foreach ($a_raid['diskr'] as $disk) {				
+			foreach ($a_raid['diskr'] as $disk) {
 				mwexec("/sbin/gmirror clear {$disk}");
 			}
 		}
@@ -924,7 +924,7 @@ function disks_raid_gconcat_delete($raidname)
 	// Clear the gconcat information on the hard drive
 	foreach ($config['gconcat']['vdisk'] as $a_raid) {
 		if ($a_raid['name'] == $raidname) {
-			foreach ($a_raid['diskr'] as $disk) {				
+			foreach ($a_raid['diskr'] as $disk) {
 				mwexec("/sbin/gconcat clear {$disk}");
 			}
 			mwexec("/sbin/gconcat destroy {$raidname}");
@@ -946,7 +946,7 @@ function disks_raid_gstripe_delete($raidname)
 	// Clear the gconcat information on the hard drive
 	foreach ($config['gstripe']['vdisk'] as $a_raid) {
 		if ($a_raid['name'] == $raidname) 	{
-			foreach ($a_raid['diskr'] as $disk) {				
+			foreach ($a_raid['diskr'] as $disk) {
 				mwexec("/sbin/gstripe clear {$disk}");
 			}
 			mwexec("/sbin/gstripe destroy {$raidname}");
@@ -994,33 +994,33 @@ function disks_set_ataidle()
 
 	if (is_array($config['disks']['disk'])) {
 		foreach ($config['disks']['disk'] as $disk) {
-		
-			if ($disk['type']=="IDE") {		
+
+			if ($disk['type']=="IDE") {
 				/* If UDMA mode forced, launch atacontrol */
 				if (isset($disk['udma']) && ($disk['udma'] != "auto")) {
 					mwexec("/sbin/atacontrol mode {$disk['name']}  {$disk['udma']}");
 				}
-					
+
 				/* Don't use ataidle if all is disabled */
 				if (($disk['harddiskstandby'] == 0) && ($disk['apm'] == 0) && ($disk['acoustic'] == 0)) {
 					continue;
 				}
-						
+
 				/* Found the channel and device number from the /dev name */
 				/* Divise the number by 2, the interger is the channel number, the rest is the device */
-				
-				$value=trim($disk['name'],'ad');		
-				
+
+				$value=trim($disk['name'],'ad');
+
 				$value=intval($value);
 				$channel = $value/2;
 				$device=$value % 2;
 				$channel=intval($channel);
 				$time=$disk['harddiskstandby'];
 				$apm=$disk['apm'];
-				$ac=$disk['acoustic'];				
-					
+				$ac=$disk['acoustic'];
+
 				$cmd = "/usr/local/sbin/ataidle ";
-				
+
 				if ($disk['acoustic'] != 0) {
 					$cmd .= "-A $ac  ";
 				}
@@ -1030,17 +1030,15 @@ function disks_set_ataidle()
 				if ($disk['harddiskstandby'] !=0) {
 					$cmd .= "-S $time ";
 				}
-					
-				$cmd .= "$channel $device";
-				
-				mwexec($cmd);	
-			
-			}	
 
+				$cmd .= "$channel $device";
+
+				mwexec($cmd);
+			}
 		}
 		return 1;
 	}
-			
+
 	return 0;
 }
 
@@ -1060,13 +1058,16 @@ function disks_geli_check($gelifullname)
 function disks_geli_attach($gelifullname,$passphrase,$verbose = false)
 {
 	$result = 1;
+
 	// Remove the 4 last character ".eli" of $gelifullanme
-	$gelifullname=rtrim($gelifullname,".eli");
-	if(false == $verbose) {
-		$result=mwexec("/sbin/geli attach -X " . escapeshellarg($passphrase) . " " . $gelifullname);
+	$gelifullname = rtrim($gelifullname,".eli");
+
+	if (false == $verbose) {
+		$result = mwexec("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli attach -t {$gelifullname}");
 	} else {
-		$result=mwexec("/sbin/geli attach -v -X " . escapeshellarg($passphrase) . " " . $gelifullname);
+		$result = mwexec("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli attach -t -v {$gelifullname}");
 	}
+
 	return $result;
 }
 
@@ -1074,7 +1075,7 @@ function disks_geli_attach($gelifullname,$passphrase,$verbose = false)
 // Return 0 if successful, 1 if error
 function disks_geli_detach($gelifullname)
 {
-	$result=mwexec("/sbin/geli detach $gelifullname");
+	$result = mwexec("/sbin/geli detach {$gelifullname}");
 	return $result;
 }
 
@@ -1082,7 +1083,7 @@ function disks_geli_detach($gelifullname)
 // Return 0 if successful, 1 if error
 function disks_geli_kill($gelifullname)
 {
-	$result=mwexec("/sbin/geli kill $gelifullname");
+	$result=mwexec("/sbin/geli kill {$gelifullname}");
 	return $result;
 }
 
@@ -1091,18 +1092,18 @@ function disks_geli_kill($gelifullname)
 function disks_geli_detach_all()
 {
 	global $g, $config;
-	
+
 	$result = 0;
-	
+
 	if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
-	
+
 	$a_geli = &$config['geli']['vdisk'];
-	
+
 	foreach($a_geli as $geli) {
 		$result |= disks_geli_detach($geli['fullname']) ;
 	}
-	
+
 	return $result;
 }
 
@@ -1274,6 +1275,6 @@ function disks_get_diskinfo($disk)
 	$result[heads] = chop($diskinfo[5]);
 	$result[sectors] = chop($diskinfo[6]);
 
-	return $result; 
+	return $result;
 }
 ?>

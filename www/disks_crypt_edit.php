@@ -290,10 +290,10 @@ if (!isset($do_crypt)) {
 				// Initialize and encrypt the disk.
 				echo gettext("Encrypting... Please wait")."!\n";
 				if( 0 == strcmp($aalgo,"none")) {
-					system("/sbin/geli init -v -e {$ealgo} -X " . escapeshellarg($passphrase) . " {$disk}");
+					system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init -t -v -e {$ealgo} {$disk}");
 				}
 				else {
-					system("/sbin/geli init -v -a {$aalgo} -e {$ealgo} -X " . escapeshellarg($passphrase) . " {$disk}");
+					system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init -t -v -a {$aalgo} -e {$ealgo} {$disk}");
 				}
 
 				// Attach the disk.
