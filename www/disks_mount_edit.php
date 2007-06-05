@@ -85,6 +85,7 @@ $a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$confi
 /* Load the cfdevice file*/
 $filename=$g['varetc_path']."/cfdevice";
 $cfdevice = trim(file_get_contents("$filename"));
+$cfdevice = "/dev/" . $cfdevice;
 
 if (isset($id) && $a_mount[$id]) {
 	$pconfig['type'] = $a_mount[$id]['type'];

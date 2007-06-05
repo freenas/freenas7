@@ -121,6 +121,7 @@ Bug fixs:
 - Fix local RSYNC bug logs each minute and crontab bug
 - Fix SWAP file size change bug
 - Add missing softlink /usr/share/misc/termcap -> /etc/termcap
+- Fix bug for preventing to mount system disk (thanks to SF.net user : snikulin)
 
 Known bugs:
 - NTFS mount points are not mounted after creation, a reboot is necessary.
