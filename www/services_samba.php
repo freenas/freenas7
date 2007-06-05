@@ -71,14 +71,13 @@ if ($_POST)
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
 	$reqdfields = array();
 	$reqdfieldsn = array();
 	$reqdfieldst = array();
 
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "security netbiosname workgroup localmaster"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"),gettext("Local Master Browser")));
+		$reqdfields = explode(" ", "security netbiosname workgroup localmaster");
+		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"),gettext("Local Master Browser"));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);

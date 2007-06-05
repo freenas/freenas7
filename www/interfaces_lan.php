@@ -62,27 +62,27 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
+	$reqdfields = array();
+	$reqdfieldsn = array();
+	$reqdfieldst = array();
+
 	if ($_POST['type'] == "Static")   {
 		$reqdfields = explode(" ", "ipaddr subnet");
 		$reqdfieldsn = array(gettext("IP address"),gettext("Subnet bit count"));
 	
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+		$reqdfields = explode(" ", "ipaddr gateway");
+		$reqdfieldsn = array(gettext("IP address"),gettext("Gateway"));
+		$reqdfieldst = explode(" ", "ipaddr ipaddr");
 	}
-	
-	if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr']))) {
-		$input_errors[] = gettext("A valid IP address must be specified.");
-	}
-	if (($_POST['subnet'] && !is_numeric($_POST['subnet']))) {
-		$input_errors[] = gettext("A valid network bit count must be specified.");
-	}
-	if (($_POST['gateway'] && !is_ipaddr($_POST['gateway']))) {
-		$input_errors[] = gettext("A valid gateway must be specified.");
-	}
-	if (($_POST['mtu'] && !is_mtu($_POST['mtu']))) {
-		$input_errors[] = gettext("A valid mtu size must be specified.");
-	}
-	
+
+	$reqdfields = array_merge($reqdfields, explode(" ", "mtu"));
+	$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("MTU")));
+	$reqdfieldst = array_merge($reqdfieldst, explode(" ", "mtu"));
+
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+
 	/* Wireless interface? */
 	if (isset($lancfg['wireless'])) {
 		$wi_input_errors = wireless_config_post();

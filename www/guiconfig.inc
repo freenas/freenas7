@@ -143,6 +143,12 @@ function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfie
 				case 'filemode': 		$valid = is_filemode($postdata[$reqdfields[$i]]);
 														$message = sprintf( gettext("The attribute '%s' is no valid file mode mask."), $reqdfieldsn[$i]);
 														break;
+				case 'mtu': 				$valid = is_mtu($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' is invalid."), $reqdfieldsn[$i]);
+														break;
+				case 'port': 				$valid = is_port($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' is an invalid port number."), $reqdfieldsn[$i]);
+														break;
 			}
 			if (!$valid) {
 				$input_errors[] = $message;
