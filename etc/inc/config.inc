@@ -55,7 +55,7 @@ if ($g['booting']) {
 	/* check if there's already an fstab ('full' release booting?) */
 	if (!file_exists("{$g['etc_path']}/fstab")) {
 		if (strstr($g['platform'], "liveCD")) 	{
-			echo "Booting from liveCD : Looking for configuration file on floppy or USB\n";
+			echo "Booting from liveCD: Looking for configuration file on floppy or USB\n";
 			/* Config is on floppy disk/USB stick for CD-ROM version */
 			$cfgdevice = $cfgpartition = "fd0";
 			$cfgfstype = "msdos";
