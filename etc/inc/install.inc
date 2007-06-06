@@ -55,6 +55,7 @@ function install_mount_cd($cdrom)
 	write_console("Mounting CDROM...\n");
 	if (mwexec("/sbin/mount_cd9660 /dev/{$cdrom} /mnt/cdrom")) {
 		write_console("Error: Failed to mount device {$cdrom}!\n");
+		@rmdir ("/mnt/cdrom");
 		return 1;
 	}
 
