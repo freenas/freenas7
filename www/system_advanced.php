@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	system_advanced.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -40,7 +40,7 @@ $pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
 $pconfig['disableconsolemenu'] = isset($config['system']['disableconsolemenu']);
 $pconfig['disablefirmwarecheck'] = isset($config['system']['disablefirmwarecheck']);
 $pconfig['expanddiags'] = isset($config['system']['webgui']['expanddiags']);
-if ($g['platform'] == "generic-pc")
+if (("embedded" === $g['platform']) || ("full" === $g['platform']))
 	$pconfig['harddiskstandby'] = $config['system']['harddiskstandby'];
 $pconfig['disablebeep'] = isset($config['system']['disablebeep']);
 $pconfig['tune_enable'] = isset($config['system']['tune']);
@@ -54,7 +54,7 @@ if ($_POST) {
 
 	/* input validation */
 	if ($_POST['tcpidletimeout'] && !is_numericint($_POST['tcpidletimeout'])) {
-		$input_errors[] = gettext("The TCP idle timeout must be an integer.");	
+		$input_errors[] = gettext("The TCP idle timeout must be an integer.");
 	}
 	if (($_POST['cert'] && !$_POST['key']) || ($_POST['key'] && !$_POST['cert'])) {
 		$input_errors[] = gettext("Certificate and key must always be specified together.");
@@ -73,7 +73,7 @@ if ($_POST) {
 		$config['system']['disableconsolemenu'] = $_POST['disableconsolemenu'] ? true : false;
 		$config['system']['disablefirmwarecheck'] = $_POST['disablefirmwarecheck'] ? true : false;
 		$config['system']['webgui']['expanddiags'] = $_POST['expanddiags'] ? true : false;
-		if ($g['platform'] == "generic-pc") {
+		if (("embedded" === $g['platform']) || ("full" === $g['platform'])) {
 			$oldharddiskstandby = $config['system']['harddiskstandby'];
 			$config['system']['harddiskstandby'] = $_POST['harddiskstandby'];
 		}
@@ -88,7 +88,7 @@ if ($_POST) {
 
 		if (($config['system']['webgui']['certificate'] != $oldcert) || ($config['system']['webgui']['private-key'] != $oldkey)) {
 			touch($d_sysrebootreqd_path);
-		} else if (($g['platform'] == "generic-pc") && ($config['system']['harddiskstandby'] != $oldharddiskstandby)) {
+		} else if ((("embedded" === $g['platform']) || ("full" === $g['platform'])) && ($config['system']['harddiskstandby'] != $oldharddiskstandby)) {
 			if (!$config['system']['harddiskstandby']) {
 				// Reboot needed to deactivate standby due to a stupid ATA-protocol
 				touch($d_sysrebootreqd_path);
@@ -128,39 +128,39 @@ if ($_POST) {
       </ul>
     </td>
   </tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
 			<form action="system_advanced.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr> 
+			    <tr>
 			      <td colspan="2" class="list" height="12"></td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td colspan="2" valign="top" class="listtopic"><?=gettext("webGUI SSL certificate/key");?></td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Certificate");?></td>
-			      <td width="78%" class="vtable"> 
-			        <textarea name="cert" cols="65" rows="7" id="cert" class="formpre"><?=htmlspecialchars($pconfig['cert']);?></textarea><br> 
+			      <td width="78%" class="vtable">
+			        <textarea name="cert" cols="65" rows="7" id="cert" class="formpre"><?=htmlspecialchars($pconfig['cert']);?></textarea><br>
 			        <?=gettext("Paste a signed certificate in X.509 PEM format here.");?>
 			      </td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Key");?></td>
-			      <td width="78%" class="vtable"> 
-			        <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea><br> 
+			      <td width="78%" class="vtable">
+			        <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea><br>
 			        <?=gettext("Paste an RSA private key in PEM format here.");?>
 			      </td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td colspan="2" class="list" height="12"></td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Miscellaneous");?></td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Console menu");?></td>
-			      <td width="78%" class="vtable"> 
+			      <td width="78%" class="vtable">
 			        <input name="disableconsolemenu" type="checkbox" id="disableconsolemenu" value="yes" <?php if ($pconfig['disableconsolemenu']) echo "checked"; ?>>
 			        <strong><?=gettext("Disable console menu");?></strong><span class="vexpl"><br>
 							<?=gettext("Changes to this option will take effect after a reboot.");?></span>
@@ -174,53 +174,53 @@ if ($_POST) {
 							<?php echo sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), get_product_name(), "system_firmware.php", gettext("System").": ".gettext("Firmware"));?></span>
 			      </td>
 			    </tr>
-					<tr> 
+					<tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Navigation");?></td>
-			      <td width="78%" class="vtable"> 
+			      <td width="78%" class="vtable">
 			        <input name="expanddiags" type="checkbox" id="expanddiags" value="yes" <?php if ($pconfig['expanddiags']) echo "checked"; ?>>
 			        <strong><?=gettext("Keep diagnostics in navigation expanded");?></strong>
 			      </td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("System Beep");?></td>
-			      <td width="78%" class="vtable"> 
+			      <td width="78%" class="vtable">
 			        <input name="disablebeep" type="checkbox" id="disablebeep" value="yes" <?php if ($pconfig['disablebeep']) echo "checked"; ?>>
 			        <strong><?=gettext("Disable speaker beep on startup and shutdown");?></strong>
 			      </td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("S.M.A.R.T Daemon");?></td>
-			      <td width="78%" class="vtable"> 
+			      <td width="78%" class="vtable">
 			        <input name="smart_enable" type="checkbox" id="smart_enable" value="yes" <?php if ($pconfig['smart_enable']) echo "checked"; ?>>
 			        <strong><?=gettext("Enable the S.M.A.R.T daemon");?></strong><span class="vexpl"><br>
 			        <?=gettext("Monitor the S.M.A.R.T device by logging their status in the log file.");?>
 			      </td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Tuning");?></td>
-			      <td width="78%" class="vtable"> 
+			      <td width="78%" class="vtable">
 			        <input name="tune_enable" type="checkbox" id="tune_enable" value="yes" <?php if ($pconfig['tune_enable']) echo "checked"; ?>>
 			        <strong><?=gettext("Enable tuning of some kernel variables");?></strong>
 			      </td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Power Daemon");?></td>
-			      <td width="78%" class="vtable"> 
+			      <td width="78%" class="vtable">
 			        <input name="powerd" type="checkbox" id="powerd" value="yes" <?php if ($pconfig['powerd']) echo "checked"; ?>>
 			        <strong><?=gettext("Enable the system power control utility");?></strong><span class="vexpl"><br>
 			        <?=gettext("The powerd utility monitors the system state and sets various power control options accordingly.");?>
 			      </td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Zeroconf");?></td>
-			      <td width="78%" class="vtable"> 
+			      <td width="78%" class="vtable">
 			        <input name="zeroconf" type="checkbox" id="zeroconf" value="yes" <?php if ($pconfig['zeroconf']) echo "checked"; ?>>
 			        <strong><?=gettext("Enable Zeroconf");?></strong>
 			      </td>
 			    </tr>
-			    <tr> 
+			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> 
+			      <td width="78%">
 			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 			      </td>
 			    </tr>

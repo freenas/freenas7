@@ -20,8 +20,10 @@ $menu['system']['menuitem'][] = array("desc" => "General setup", "link" => "syst
 $menu['system']['menuitem'][] = array("desc" => "Static routes", "link" => "system_routes.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => "Hosts", "link" => "system_hosts.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => "Advanced", "link" => "system_advanced.php", "visible" => true);
-$menu['system']['menuitem'][] = array("desc" => "Packages", "link" => "system_packages.php", "visible" => true);
-$menu['system']['menuitem'][] = array("desc" => "Firmware", "link" => "system_firmware.php", "visible" => true); 
+if ("full" === $g['platform']) {
+	$menu['system']['menuitem'][] = array("desc" => "Packages", "link" => "system_packages.php", "visible" => true);
+}
+$menu['system']['menuitem'][] = array("desc" => "Firmware", "link" => "system_firmware.php", "visible" => true);
 
 // Interfaces
 $menu['interfaces']['desc'] = "Interfaces";
@@ -95,7 +97,7 @@ $menu['diagnostics']['is_expanded_func'] = "diagnostics_is_expanded";
 /* Shall the diagnostics menu be expanded? */
 function diagnostics_is_expanded() {
 	global $config;
-	return (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_") || strstr($_SERVER['SCRIPT_FILENAME'], "reboot") || strstr($_SERVER['SCRIPT_FILENAME'], "shutdown") || strstr($_SERVER['SCRIPT_FILENAME'], "exec")); 
+	return (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_") || strstr($_SERVER['SCRIPT_FILENAME'], "reboot") || strstr($_SERVER['SCRIPT_FILENAME'], "shutdown") || strstr($_SERVER['SCRIPT_FILENAME'], "exec"));
 }
 
 function display_menu($menu) {
@@ -166,7 +168,7 @@ function showhideMenu(tspan, tri) {
 -->
 </script>
 <table width="750" border="0" cellspacing="0" cellpadding="2">
-  <tr valign="bottom"> 
+  <tr valign="bottom">
     <td width="150" height="65" align="center" valign="middle">
 			<strong><a href="http://www.<?=get_product_url();?>" target="_blank"><img src="/logo.gif" width="150" height="47" border="0"></a></strong>
 		</td>
@@ -183,7 +185,7 @@ function showhideMenu(tspan, tri) {
 			</table>
 		</td>
 	</tr>
-  <tr valign="top"> 
+  <tr valign="top">
     <td width="150" bgcolor="#9D9D9D">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
         <tr>
