@@ -278,6 +278,7 @@ EOD;
 		write_console("Error: Can't open fstab in install_harddrive_image().\n");
 		return 1;
 	}
+
 	$fstab .= <<<EOD
 # Device                Mountpoint      FStype  Options         Dump    Pass#
 /dev/{$harddrive}s1a             /       ufs     rw              1       1
