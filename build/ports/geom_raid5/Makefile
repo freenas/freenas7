@@ -22,7 +22,7 @@ do-install:
 	@${CP} -pv /usr/src/sys/modules/geom/geom_raid5/geom_raid5.ko ${FREENAS_ROOTFS}/boot/kernel
 
 	# Install application.
-	@${LN} -s /sbin/geom ${FREENAS_ROOTFS}/sbin/graid5
+	@${LN} -f -v -s /sbin/geom ${FREENAS_ROOTFS}/sbin/graid5
 	@${CP} -pv /usr/src/sbin/geom/class/raid5/geom_raid5.so ${FREENAS_ROOTFS}/lib/geom
 
 .include "bsd.freenas.mk"

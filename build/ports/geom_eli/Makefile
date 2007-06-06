@@ -19,7 +19,7 @@ do-install:
 	@${CP} -pv /usr/obj/usr/src/sys/FREENAS-${ARCH}/modules/usr/src/sys/modules/geom/geom_eli/geom_eli.ko ${FREENAS_ROOTFS}/boot/kernel
 
 	# Install application.
-	@${LN} -s /sbin/geom ${FREENAS_ROOTFS}/sbin/geli
+	@${LN} -f -v -s /sbin/geom ${FREENAS_ROOTFS}/sbin/geli
 	@${CP} -pv /usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
 
 pre-clean:
