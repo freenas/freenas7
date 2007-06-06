@@ -316,7 +316,7 @@ function get_interface_list() {
 		$alink = preg_split("/\s+/", $link);
 		$ifname = chop($alink[0]);
 
-		if (substr($ifname, -1) == "*")
+		if (substr($ifname, -1) === "*")
 			$ifname = substr($ifname, 0, strlen($ifname) - 1);
 		/* add the plip interface to be excluded too */
 		if (!preg_match("/^(ppp|sl|gif|faith|lo|vlan|tun|plip)/", $ifname)) {
@@ -331,7 +331,7 @@ function get_interface_list() {
 
 			foreach ($ifinfo as $ifil) {
 				if (preg_match("/status: (.*)$/", $ifil, $matches)) {
-					if ($matches[1] == "active")
+					if ($matches[1] === "active")
 						$iflist[$ifname]['up'] = true;
 					break;
 				}
@@ -729,7 +729,7 @@ function get_ata_disks_list()
 		$aline = preg_split("/\s+/", $line);
 
 		/* Si ATA alors NEXT */
-		if ($aline[0] == "ATA")
+		if ($aline[0] === "ATA")
 			continue ;
 
 		$diskname = chop($aline[2]);
@@ -777,7 +777,7 @@ function get_scsi_disks_list()
 
 		// Check if diskname is the first (da0,pass0) or the second (pass0,da0) arguement
 		$diskname = $temp[1];
-		if ($diskname[0] == "p")
+		if ($diskname[0] === "p")
 			$diskname = $temp[0];
 
 		/* On exlus les lecteurs cd */
@@ -885,7 +885,7 @@ function get_cdrom_list()
 		$aline = preg_split("/\s+/", $line);
 
 		/* Si ATA alors NEXT */
-		if ($aline[0] == "ATA")
+		if ($aline[0] === "ATA")
 			continue ;
 
 		$diskname = chop($aline[2]);
@@ -922,7 +922,7 @@ function get_cdrom_list()
 
 		// Check if diskname is the first (da0,pass0) or the second (pass0,da0) arguement
 		$diskname = $temp[1];
-		if ($diskname[0] == "p")
+		if ($diskname[0] === "p")
 			$diskname = $temp[0];
 
 		/* On exlus les lecteurs disque dur da */
@@ -965,7 +965,7 @@ function get_disks_size($diskname)
 	$disksize = 0;
 
 	foreach ($disklist as $diskk => $diskv) {
-		if (strcmp($diskk,$diskname)==0)
+		if (strcmp($diskk,$diskname) == 0)
 			$disksize=$diskv['size'];
 	}
 
@@ -1137,7 +1137,7 @@ function arp_get_mac_by_ip($ip) {
 function get_ifname($if)
 {
   // Check if 'auto' mode is activated.
-  if ($if == "auto")   {
+  if ($if === "auto")   {
     $interfaces = explode(" ", exec("/sbin/ifconfig -l"));
     $if = $interfaces[0];
   }
@@ -1409,7 +1409,7 @@ function get_interface_info($if) {
 		$ifinfo['outbytes'] = $linkinfo[8];
 	}
 
-	if ($ifinfo['status'] == "up") {
+	if ($ifinfo['status'] === "up") {
 		/* try to determine media with ifconfig */
 		unset($ifconfiginfo);
 		exec("/sbin/ifconfig " . $ifinfo['hwif'], $ifconfiginfo);
@@ -1470,7 +1470,7 @@ function get_interface_info_ex($iftype) {
 	$ifinfo = get_interface_info($config['interfaces'][$iftype]['if']);
 
 	// Get the default gateway if necessary.
-	if ($iftype == "lan") {
+	if ($iftype === "lan") {
 		// Run netstat to determine the default gateway.
 		unset($netstatrninfo);
 		exec("/usr/bin/netstat -rnf inet", $netstatrninfo);

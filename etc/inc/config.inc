@@ -402,7 +402,7 @@ function convert_config()
 	
 	/* convert 1 -> 1.1 */
 	/* changing partition name, and initializing old bad user parameters */
-	if ($config['version'] == "1")
+	if ($config['version'] === "1")
 	{
 		/* change the partitions name "1" to "s1" */	
 		
@@ -444,7 +444,7 @@ function convert_config()
 	
 	/* convert 1.1 -> 1.2 */
 	/* change the gvnium mount point type 'sraid' to 'gvinum' */
-	if ($config['version'] == "1.1") {
+	if ($config['version'] === "1.1") {
 			
 		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) 	{
 			if (isset($config['mounts']['mount'][$i]['partition'])) 	{
@@ -459,14 +459,14 @@ function convert_config()
 	
 	/* convert 1.2 -> 1.3 */
 	/* change the FTP anonymous and local user authentication YES/NO value to right/flase type */
-	if ($config['version'] == "1.2") {
+	if ($config['version'] === "1.2") {
 			
-		if ($config['ftp']['anonymous'] == "YES")
+		if ($config['ftp']['anonymous'] === "YES")
 			$config['ftp']['anonymous'] = true;
 		else
 			$config['ftp']['anonymous'] = false;
 		
-		if ($config['ftp']['localuser'] == "YES")
+		if ($config['ftp']['localuser'] === "YES")
 			$config['ftp']['localuser'] = true;
 		else
 			$config['ftp']['localuser'] = false;
@@ -477,7 +477,7 @@ function convert_config()
 	/* convert 1.3 -> 1.4 */
 	/* change the gvnium disk fstype attribute 'raid' to 'gvinum' */
 	/* change <raid> to <gvinum> */
-	if ($config['version'] == "1.3") {
+	if ($config['version'] === "1.3") {
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			if (0==strcmp($config['disks']['disk'][$i]['fstype'],"raid")) {
 				$config['disks']['disk'][$i]['fstype'] = "gvinum";
@@ -494,7 +494,7 @@ function convert_config()
 
 	/* convert 1.4 -> 1.5 */
 	/* Add [fullname] information on mount,disk, gmirror, gvinum and graid5 */
-	if ($config['version'] == "1.4") {
+	if ($config['version'] === "1.4") {
 	
 	
 		/* Add fullname (/dev/ad0) under disk */	
@@ -558,7 +558,7 @@ function convert_config()
 	/* convert 1.5 -> 1.6 */
 	/* Upgrade iSCSI and NFS configurations
 	Upgrade RSYNC client configuration */
-	if ($config['version'] == "1.5") {
+	if ($config['version'] === "1.5") {
 		if (isset($config['nfs']['enable'])) 	{
 				
 			$config['nfs']['nfsnetworks']=array();
@@ -662,7 +662,7 @@ function convert_config()
 	/* - Delete ['system']['polling']. */
 	/* - Delete ['filter']['bypassstaticroutes']. */
 	/* - Delete ['bridge'], ['bridge']['filteringbridge']. */
-	if ($config['version'] == "1.6") {
+	if ($config['version'] === "1.6") {
 		if (isset($config['system']['howl_disable'])) {
 			unset($config['system']['howl_disable']);
 		} else {
@@ -692,7 +692,7 @@ function convert_config()
 	/* - Change ['fstype']='gstripe' to 'softraid' */
 	/* - Change ['fstype']='graid5' to 'softraid' */
 	
-	if ($config['version'] == "1.7") {
+	if ($config['version'] === "1.7") {
 	
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			if (isset($config['disks']['disk'][$i]['name'])) 	{
@@ -720,7 +720,7 @@ function convert_config()
 	/* Add type "disk" to existing mountpoint */
 	/* Add fullname (/dev/ad0s1) under mount point */
 	
-	if ($config['version'] == "1.8") {
+	if ($config['version'] === "1.8") {
 		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
 			$config['mounts']['mount'][$i]['type']= "disk"; 			
 		}
@@ -734,7 +734,6 @@ function convert_config()
 		echo "done\n";
 }
 
-
 /* unlock configuration file */
 function config_unlock() {
 	
@@ -745,5 +744,4 @@ function config_unlock() {
 	if (file_exists($lockfile))
 		unlink($lockfile);
 }
-
 ?>

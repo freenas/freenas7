@@ -419,7 +419,7 @@ server.port                = {$config['system']['webgui']['port']}
 EOD;
 	}
 
-	if ($config['system']['webgui']['protocol'] == "https") {
+	if ($config['system']['webgui']['protocol'] === "https") {
 		if ($config['system']['webgui']['certificate'] && $config['system']['webgui']['private-key']) {
 			$cert = base64_decode($config['system']['webgui']['certificate']);
 			$key = base64_decode($config['system']['webgui']['private-key']);

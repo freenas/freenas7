@@ -881,7 +881,7 @@ function disks_raid_gvinum_delete($raidname)
 	mwexec("/sbin/gvinum rm -r {$raidname}");
 
 	foreach ($config['gvinum']['vdisk'] as $a_raid) {
-		if ($a_raid['name'] == $raidname) {
+		if ($a_raid['name'] === $raidname) {
 			foreach ($a_raid['diskr'] as $disk){
 				mwexec("/sbin/gvinum rm -r disk_{$disk}");
 			}
@@ -902,7 +902,7 @@ function disks_raid_gmirror_delete($raidname)
 
 	// Clear the gmirror information on the hard drive
 	foreach ($config['gmirror']['vdisk'] as $a_raid) {
-		if ($a_raid['name'] == $raidname) {
+		if ($a_raid['name'] === $raidname) {
 			foreach ($a_raid['diskr'] as $disk) {
 				mwexec("/sbin/gmirror clear {$disk}");
 			}
@@ -923,7 +923,7 @@ function disks_raid_gconcat_delete($raidname)
 
 	// Clear the gconcat information on the hard drive
 	foreach ($config['gconcat']['vdisk'] as $a_raid) {
-		if ($a_raid['name'] == $raidname) {
+		if ($a_raid['name'] === $raidname) {
 			foreach ($a_raid['diskr'] as $disk) {
 				mwexec("/sbin/gconcat clear {$disk}");
 			}
@@ -945,7 +945,7 @@ function disks_raid_gstripe_delete($raidname)
 
 	// Clear the gconcat information on the hard drive
 	foreach ($config['gstripe']['vdisk'] as $a_raid) {
-		if ($a_raid['name'] == $raidname) 	{
+		if ($a_raid['name'] === $raidname) 	{
 			foreach ($a_raid['diskr'] as $disk) {
 				mwexec("/sbin/gstripe clear {$disk}");
 			}
@@ -971,7 +971,7 @@ function disks_raid_graid5_delete($raidname)
 
 	// Clear the graid5 information on the hard drive
 	foreach ($config['graid5']['vdisk'] as $a_raid) {
-		if ($a_raid['name'] == $raidname) 	{
+		if ($a_raid['name'] === $raidname) 	{
 			foreach ($a_raid['diskr'] as $disk){
 				// Get the name of the provider.
 				$id = array_search_ex($disk, $config['disks']['disk'], "fullname");
@@ -995,7 +995,7 @@ function disks_set_ataidle()
 	if (is_array($config['disks']['disk'])) {
 		foreach ($config['disks']['disk'] as $disk) {
 
-			if ($disk['type']=="IDE") {
+			if ($disk['type'] === "IDE") {
 				/* If UDMA mode forced, launch atacontrol */
 				if (isset($disk['udma']) && ($disk['udma'] != "auto")) {
 					mwexec("/sbin/atacontrol mode {$disk['name']}  {$disk['udma']}");

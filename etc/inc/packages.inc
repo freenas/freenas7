@@ -185,7 +185,7 @@ function packages_get_packinglist($pkgname) {
 	exec("/usr/sbin/pkg_info -f {$pkgname}", $rawdata);
 	foreach($rawdata as $line) {
 		// Parse lines like: 'File: xxxx', ignore 'File: +xxxx'. 
-		if (false === strpos($line, "File: ") || 0 === strpos($line, "File: +")) {
+		if (false == strpos($line, "File: ") || 0 == strpos($line, "File: +")) {
 			continue;
 		}
 

@@ -1120,7 +1120,7 @@ EOD;
 		$i=0;
 		foreach($a_rsyncclient as $rsyncclient) {
 
-			if ($rsyncclient['all_mins'] == "0") 	{
+			if ($rsyncclient['all_mins'] === "0") 	{
 				foreach ($rsyncclient['minute'] as $minutev) 	{
 					if (strlen($cron_min) > 0)
 						$cron_min = $cron_min . "," . $minutev;
@@ -1132,7 +1132,7 @@ EOD;
 				$cron_min = "*";
 
 
-			if ($rsyncclient['all_hours'] == "0") {
+			if ($rsyncclient['all_hours'] === "0") {
 				foreach ($rsyncclient['hour'] as $hourv) 	{
 					if (strlen($cron_hour) > 0)
 						 $cron_hour = $cron_hour . "," . $hourv;
@@ -1143,7 +1143,7 @@ EOD;
 			else
 				$cron_hour = "*";
 
-			if ($rsyncclient['all_days'] == "0") 	{
+			if ($rsyncclient['all_days'] === "0") 	{
 				foreach ($rsyncclient['day'] as $dayv) 	{
 					if (strlen($cron_day) > 0)
 						$cron_day = $cron_day . "," . $dayv;
@@ -1154,7 +1154,7 @@ EOD;
 			else
 				$cron_day = "*";
 
-			if ($rsyncclient['all_months'] == "0") 	{
+			if ($rsyncclient['all_months'] === "0") 	{
 			  foreach ($rsyncclient['month'] as $monthv) 	  {
 				if (strlen($cron_month) > 0)
 					$cron_month = $cron_month . "," . $monthv;
@@ -1166,7 +1166,7 @@ EOD;
 				$cron_month = "*";
 
 
-			if ($rsyncclient['all_weekdays'] == "0") 	{
+			if ($rsyncclient['all_weekdays'] === "0") 	{
 				foreach ($rsyncclient['weekday'] as $weekdayv) 	{
 					if (strlen($cron_weekday) > 0)
 						 $cron_weekday = $cron_weekday . "," . $weekdayv;
@@ -1202,7 +1202,7 @@ EOD;
 		$i=0;
 		foreach($a_rsynclocal as $rsynclocal) {
 
-			if ($rsynclocal['all_mins'] == "0") 	{
+			if ($rsynclocal['all_mins'] === "0") 	{
 				foreach ($rsynclocal['minute'] as $minutev) 	{
 					if (strlen($cron_min) > 0)
 						$cron_min = $cron_min . "," . $minutev;
@@ -1214,7 +1214,7 @@ EOD;
 				$cron_min = "*";
 
 
-			if ($rsynclocal['all_hours'] == "0") {
+			if ($rsynclocal['all_hours'] === "0") {
 				foreach ($rsynclocal['hour'] as $hourv) 	{
 					if (strlen($cron_hour) > 0)
 						 $cron_hour = $cron_hour . "," . $hourv;
@@ -1225,7 +1225,7 @@ EOD;
 			else
 				$cron_hour = "*";
 
-			if ($rsynclocal['all_days'] == "0") 	{
+			if ($rsynclocal['all_days'] === "0") 	{
 				foreach ($rsynclocal['day'] as $dayv) 	{
 					if (strlen($cron_day) > 0)
 						$cron_day = $cron_day . "," . $dayv;
@@ -1236,7 +1236,7 @@ EOD;
 			else
 				$cron_day = "*";
 
-			if ($rsynclocal['all_months'] == "0") 	{
+			if ($rsynclocal['all_months'] === "0") 	{
 			  foreach ($rsynclocal['month'] as $monthv) 	  {
 				if (strlen($cron_month) > 0)
 					$cron_month = $cron_month . "," . $monthv;
@@ -1248,7 +1248,7 @@ EOD;
 				$cron_month = "*";
 
 
-			if ($rsynclocal['all_weekdays'] == "0") 	{
+			if ($rsynclocal['all_weekdays'] === "0") 	{
 				foreach ($rsynclocal['weekday'] as $weekdayv) 	{
 					if (strlen($cron_weekday) > 0)
 						 $cron_weekday = $cron_weekday . "," . $weekdayv;
@@ -1279,7 +1279,7 @@ EOD;
 		if ($g['booting'])
 			write_console("Configuring Cron for shutdown... ");
 
-		if ($config['shutdown']['all_mins'] == "0") {
+		if ($config['shutdown']['all_mins'] === "0") {
 			foreach ($config['shutdown']['minute'] as $minutev) 	{
 				if (strlen($cron_min) > 0)
 					$cron_min = $cron_min . "," . $minutev;
@@ -1291,7 +1291,7 @@ EOD;
 			$cron_min = "*";
 
 
-		if ($config['shutdown']['all_hours'] == "0") 	{
+		if ($config['shutdown']['all_hours'] === "0") 	{
 			foreach ($config['shutdown']['hour'] as $hourv) 	{
 				if (strlen($cron_hour) > 0)
 					 $cron_hour = $cron_hour . "," . $hourv;
@@ -1302,7 +1302,7 @@ EOD;
 		else
 			$cron_hour = "*";
 
-		if ($config['shutdown']['all_days'] == "0") {
+		if ($config['shutdown']['all_days'] === "0") {
 			foreach ($config['shutdown']['day'] as $dayv) 	{
 				if (strlen($cron_day) > 0)
 					$cron_day = $cron_day . "," . $dayv;
@@ -1313,7 +1313,7 @@ EOD;
 		else
 			$cron_day = "*";
 
-		if ($config['shutdown']['all_months'] == "0") 	{
+		if ($config['shutdown']['all_months'] === "0") 	{
 			foreach ($config['shutdown']['month'] as $monthv)   {
 				if (strlen($cron_month) > 0)
 					$cron_month = $cron_month . "," . $monthv;
@@ -1325,7 +1325,7 @@ EOD;
 			$cron_month = "*";
 
 
-		if ($config['shutdown']['all_weekdays'] == "0") 	{
+		if ($config['shutdown']['all_weekdays'] === "0") 	{
 			foreach ($config['shutdown']['weekday'] as $weekdayv) 		{
 				if (strlen($cron_weekday) > 0)
 					 $cron_weekday = $cron_weekday . "," . $weekdayv;
@@ -1769,7 +1769,7 @@ function services_mdnsresponder_configure()
 		}
 
 		// Check if WebGUI use HTTPS
-		if ($config['system']['webgui']['protocol'] == "https") {
+		if ($config['system']['webgui']['protocol'] === "https") {
 			if ($config['system']['webgui']['port']) 	{
 				$mDNSResponder = <<<EOD
 # mDNSResponderPosix configuration File
