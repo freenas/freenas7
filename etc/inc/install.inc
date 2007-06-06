@@ -199,7 +199,7 @@ function install_dd_image($harddrive)
 	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
 	write_console("Installation...\n");
 	$imgfilename=get_product_name(). "-{$g['arch']}-embedded.gz";
-	if (mwexec("/usr/bin/zcat /mnt/cdrom/{$imgfilename} | /bin/dd of=/dev/{$harddrive} bs=512 > /dev/null 2>&1")) {
+	if (mwexec("/usr/bin/gzip -cd /mnt/cdrom/{$imgfilename} | /bin/dd of=/dev/{$harddrive} bs=512 > /dev/null 2>&1")) {
 		write_console("Error: Failed to dd image on '/dev/{$harddrive}'!\n");
 		return 1;
 	}
@@ -270,7 +270,7 @@ EOD;
 	fclose($fd);
 
 	//Unzipping the Kernel
-	mwexec("/usr/bin/gunzip /destdisk/boot/kernel/kernel.gz");
+	mwexec("/usr/bin/gzip -d /destdisk/boot/kernel/kernel.gz");
 
 	//Generating the FSTAB
 	$fd = fopen("/destdisk/etc/fstab", "w");
