@@ -38,24 +38,23 @@ require_once("util.inc");
    Called by install script. Return 0 if OK, 1 if not. */
 function install_mount_cd($cdrom)
 {
-	/* Part of install process: Mount the CDROM */
-	write_console("\nCreating mount point for the CDROM...\n");	
+	write_console("\nCreating mount point for the CDROM...\n");
 
-	if (is_dir("/mnt/cdrom_fr_0507")) {
-		write_console("Error: Temporary directory for CD already exists!\n");
+	if (is_dir("/mnt/cdrom")) {
+		write_console("Error: Temporary directory /mnt/cdrom for CDROM already exists!\n");
 		return 1;
 	}
 
-	/* Creating tempo directory for cdrom*/
-	if (mwexec("/bin/mkdir /mnt/cdrom_fr_0507")) {
-		write_console("Error: Can't create the temporary folder!\n");
+	/* Creating tempo directory for cdrom */
+	if (mwexec("/bin/mkdir /mnt/cdrom")) {
+		write_console("Error: Can't create temporary directory /mnt/cdrom!\n");
 		return 1;
 	}
 
 	/* Monting the CDROM */
-	write_console("Mount CDROM...\n");
-	if (mwexec("/sbin/mount_cd9660 /dev/{$cdrom} /mnt/cdrom_fr_0507")) {
-		write_console("Error: Can't mount the CDROM!\n");
+	write_console("Mounting CDROM...\n");
+	if (mwexec("/sbin/mount_cd9660 /dev/{$cdrom} /mnt/cdrom")) {
+		write_console("Error: Failed to mount device {$cdrom}!\n");
 		return 1;
 	}
 
@@ -68,20 +67,15 @@ function install_unmount_cd()
 {
 	$result = 0;
 
-	/* Part of install process: Unmounting the disks: CDROM and destination drive */
 	write_console("Unmount CDROM...\n");
 
-	/* Unmounting disk */
-	if (mwexec("/sbin/umount /mnt/install_fr_0507")) {
-		$result = 1;
-	}
-	if (mwexec("/sbin/umount /mnt/cdrom_fr_0507")) {
+	/* Unmounting cdrom */
+	if (mwexec("/sbin/umount /mnt/cdrom")) {
 		$result = 1;
 	}
 
 	// Remove tempo directory
-	@rmdir ("/mnt/cdrom_fr_0507");
-	@rmdir ("/mnt/install_fr_0507");
+	@rmdir ("/mnt/cdrom");
 
 	return $result;
 }
@@ -199,12 +193,12 @@ function install_init_harddrive($harddrive)
 function install_dd_image($harddrive)
 {
 	global $g;
-	
+
 	/* Part of install process: dd image file on the destination disk */
 	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
 	write_console("Installation...\n");
 	$imgfilename=get_product_name(). "-{$g['arch']}-embedded.gz";
-	if (mwexec("/usr/bin/gunzip -S \"\" -c /mnt/cdrom_fr_0507/{$imgfilename} | dd of=/dev/{$harddrive} bs=512 > /dev/null 2>&1")) {
+	if (mwexec("/usr/bin/gzip --stdout /mnt/cdrom/{$imgfilename} | /bin/dd of=/dev/{$harddrive} bs=512 > /dev/null 2>&1")) {
 		write_console("Error: Failed to dd image on '/dev/{$harddrive}'!\n");
 		return 1;
 	}
@@ -217,7 +211,7 @@ function install_dd_image($harddrive)
 function install_harddrive_image($harddrive)
 {
 	global $g;
-	
+
 	/* Part of install process: dd image file on the destination disk */
 	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
 	write_console("Installation...\n");
@@ -233,10 +227,10 @@ function install_harddrive_image($harddrive)
 	mwexec("/bin/mkdir /destdisk/dev");
 	mwexec("/bin/mkdir /destdisk/mnt");
 	mwexec("/bin/mkdir /destdisk/boot/defaults");
-	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/* /destdisk/boot");
-	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/defaults/* /destdisk/boot/defaults");
-	mwexec("/bin/cp -v /mnt/cdrom_fr_0507/boot/kernel/* /destdisk/boot/kernel");
-	
+	mwexec("/bin/cp -v /mnt/cdrom/boot/* /destdisk/boot");
+	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* /destdisk/boot/defaults");
+	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* /destdisk/boot/kernel");
+
 	// Generate new loader.conf file
 	$fd = fopen("/destdisk/boot/loader.conf", "w");
 	if (!$fd) {
@@ -257,15 +251,15 @@ EOD;
 
 	fwrite($fd, $loaderconf);
 	fclose($fd);
-	
+
 	//Re-configuring the release type
-	
+
 	$fd = fopen("/destdisk/etc/platform", "w");
 	if (!$fd) {
 		write_console("Error: Can't open etc/platform in install_harddrive_image().\n");
 		return 1;
 	}
-	
+
 	$platform .= <<<EOD
 {$g['arch']}-full
 
@@ -273,12 +267,12 @@ EOD;
 
 	fwrite($fd, $platform);
 	fclose($fd);
-	
+
 	//Unzipping the Kernel
-	mwexec("/usr/bin/gunzip /destdisk/boot/kernel/kernel.gz");
-	
+	mwexec("/usr/bin/gzip /destdisk/boot/kernel/kernel.gz");
+
 	//Generating the FSTAB
-	
+
 	$fd = fopen("/destdisk/etc/fstab", "w");
 	if (!$fd) {
 		write_console("Error: Can't open fstab in install_harddrive_image().\n");
@@ -296,7 +290,7 @@ EOD;
 	// Generating the /etc/cfdevice (this file is linked in /var/etc at bootup)
 	// This file (more exatly /var/etc/cfdevice) is used by the firmware and mount check
 	// This file is normally generated with 'liveCD' and 'embedded' during startup, but need to be created during install of 'full'
-	
+
 	$fd = fopen("/destdisk/etc/cfdevice", "w");
 	if (!$fd) {
 		write_console("Error: Can't open etc/cfdevice in install_harddrive_image().\n");
@@ -309,23 +303,23 @@ EOD;
 
 	fwrite($fd, $cfdevice);
 	fclose($fd);
-	
+
 	//unmounting destination disk
 	mwexec("/sbin/umount /destdisk");
-	
+
 	return 0;
 }
 
 /* Backup the configuration file on the hard drive/CF and unmount this drive
    Called by install script. Return 0 if OK, 1 if not. */
 function install_backupconfig($disk)
-{	
+{
 	/* Creating tempo directory for the config file*/
 	if (mwexec("/bin/mkdir /tmp/configbak")) {
 		write_console("Error: Can't create /tmp/configbak!\n");
 		return 1;
 	}
-	
+
 	if (mwexec("/bin/mkdir /tmp/installdrive")) {
 		write_console("Error: Can't create /tmp/installdrive!\n");
 		return 1;
@@ -335,19 +329,19 @@ function install_backupconfig($disk)
 		write_console("Error: Can't mount the drive to be upgraded!\n");
 		$result = 1;
 	}
-	
+
 	/* Backuping the config file */
 	if (mwexec("cp -p /tmp/installdrive/conf/* /tmp/configbak")) {
 		write_console("Error: Can't backup the config file!\n");
 		return 1;
 	}
-	
+
 	/* unmounting the drive to be upgraded */
 	if (mwexec("/sbin/umount -f /dev/{$disk}")) {
 		write_console("Error: Can't unmount the drive to be upgraded during config backup process!\n");
 		$result = 1;
 	}
-	
+
 	return 0;
 }
 
@@ -358,19 +352,19 @@ function install_restoreconfig($disk)
 		write_console("Error: Can't mount the drive just upgraded in RW mode!\n");
 		$result = 1;
 	}
-	
+
 	/* Restoring the config file*/
 	if (mwexec("cp -p /tmp/configbak/* /tmp/installdrive/conf")) {
 		write_console("Error: Can't restore the config file!\n");
 		return 1;
 	}
-	
+
 	/* unmount the upgraded drive */
 	if (mwexec("/sbin/umount -f /dev/{$disk}")) {
 		write_console("Error: Can't unmount the drive just upgraded!\n");
 		$result = 1;
 	}
-	
+
 	return 0;
 }
 
@@ -432,7 +426,7 @@ function install_bsdlabel($harddrive,$partition,$type)
 	// put this file on a array
 	$tableau = file("{$g['tmp_path']}/label.tmp");
 
-	// Open this file in add mode 
+	// Open this file in add mode
 	$handle = fopen("{$g['tmp_path']}/label.tmp", 'a');
 
 	while(list(,$val) = each($tableau)) {
@@ -452,7 +446,7 @@ function install_bsdlabel($harddrive,$partition,$type)
 	// Closing file
 	fclose($handle);
 
-	// Injecting this new partition table 
+	// Injecting this new partition table
 	passthru("/sbin/bsdlabel -R -B {$harddrive}{$partition} {$g['tmp_path']}/label.tmp");
 }
 ?>
