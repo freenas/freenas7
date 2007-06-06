@@ -97,7 +97,7 @@ function is_ipaddr($ipaddr) {
 	$ip_long = ip2long($ipaddr);
 	$ip_reverse = long2ip($ip_long);
 
-	if ($ipaddr == $ip_reverse)
+	if ($ipaddr === $ip_reverse)
 		return true;
 	else
 		return false;
