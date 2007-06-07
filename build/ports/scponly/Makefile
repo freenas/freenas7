@@ -1,5 +1,7 @@
 PORTNAME=			scponly
 PORTVERSION=	1.0
+PORTREVISION=	0
+PORTEPOCH=		1
 CATEGORIES=		shells
 COMMENT=			A tiny shell that only permits scp and sftp
 MAINTAINER=		votdev@gmx.de
@@ -9,10 +11,13 @@ BUILD_DEPENDS=	scponly:${PORTSDIR}/shells/scponly
 NO_BUILD?=			1
 
 pre-depends:
-# Copy required options files
+# Copy ocaml options file
 	@${MKDIR} -v /var/db/ports/ocaml
+	@${CP} -pv ${FILESDIR}/ocaml-options /var/db/ports/ocaml/options
+
+# Copy rsync options file
 	@${MKDIR} -v /var/db/ports/rsync
-	@${CP} -pvr ${FILESDIR}/* /var/db/ports
+	@${CP} -pv ${FILESDIR}/rsync-options /var/db/ports/rsync/options
 
 	@export WITH_SCPONLY_RSYNC=YES
 	@export WITH_SCPONLY_SCP=YES

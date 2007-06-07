@@ -1,5 +1,7 @@
 PORTNAME=			openssh-portable
 PORTVERSION=	1.0
+PORTREVISION=	0
+PORTEPOCH=		1
 CATEGORIES=		security
 COMMENT=			The portable version of OpenBSD's OpenSSH
 MAINTAINER=		votdev@gmx.de
@@ -9,9 +11,9 @@ BUILD_DEPENDS=	openssh-portable:${PORTSDIR}/security/openssh-portable
 NO_BUILD?=			1
 
 pre-depends:
-# Copy ocaml options file
+# Copy openssh options file
 	@${MKDIR} -v /var/db/ports/openssh
-	@${CP} -pv ${FILESDIR}/options /var/db/ports/openssh
+	@${CP} -pv ${FILESDIR}/openssh-options /var/db/ports/openssh/options
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/security/openssh-portable/work/openssh-*/sshd ${FREENAS_ROOTFS}/usr/sbin
