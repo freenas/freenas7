@@ -15,11 +15,11 @@ NO_BUILD?=			1
 pre-depends:
 # Copy fusefs options file
 	@${MKDIR} -v /var/db/ports/fusefs
-	@${CP} -pv ${FILESDIR}/fusefs/options /var/db/ports/fusefs
+	@${CP} -pv ${FILESDIR}/fusefs-options /var/db/ports/fusefs/options
 
 # Copy fusefs-ntfs options file
 	@${MKDIR} -v /var/db/ports/fusefs-ntfs
-	@${CP} -pv ${FILESDIR}/fusefs-ntfs/options /var/db/ports/fusefs-ntfs
+	@${CP} -pv ${FILESDIR}/fusefs-ntfs-options /var/db/ports/fusefs-ntfs/options
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/fusefs-kmod/work/fuse4bsd*/mount_fusefs/mount_fusefs ${FREENAS_ROOTFS}/usr/local/sbin
