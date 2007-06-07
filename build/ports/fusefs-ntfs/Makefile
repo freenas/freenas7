@@ -1,5 +1,7 @@
 PORTNAME=			fusefs-ntfs
 PORTVERSION=	1.0
+PORTREVISION=	0
+PORTEPOCH=		1
 CATEGORIES=		sysutils
 COMMENT=			Mount NTFS partitions and disk images
 MAINTAINER=		votdev@gmx.de
@@ -11,9 +13,13 @@ BUILD_DEPENDS=	fusefs-ntfs:${PORTSDIR}/sysutils/fusefs-ntfs \
 NO_BUILD?=			1
 
 pre-depends:
-# Copy options file
+# Copy fusefs options file
 	@${MKDIR} -v /var/db/ports/fusefs
-	@${CP} -pv ${FILESDIR}/options /var/db/ports/fusefs
+	@${CP} -pv ${FILESDIR}/fusefs/options /var/db/ports/fusefs
+
+# Copy fusefs-ntfs options file
+	@${MKDIR} -v /var/db/ports/fusefs-ntfs
+	@${CP} -pv ${FILESDIR}/fusefs-ntfs/options /var/db/ports/fusefs-ntfs
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/fusefs-kmod/work/fuse4bsd*/mount_fusefs/mount_fusefs ${FREENAS_ROOTFS}/usr/local/sbin
