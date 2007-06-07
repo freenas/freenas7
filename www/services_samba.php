@@ -349,7 +349,7 @@ function authentication_change() {
             <td width="78%" class="vtable">
               <input name="largereadwrite" type="checkbox" id="largereadwrite" value="yes" <?php if ($pconfig['largereadwrite']) echo "checked"; ?>>
               <?=gettext("Enable large read/write");?><span class="vexpl"><br>
-              <?=gettext("Use the new 64k streaming read and write variant SMB requests.");?></span>
+              <?=gettext("This parameter determines whether or not to use the new 64k streaming read and write varient SMB requests introduced with Windows 2000.");?></span>
             </td>
           </tr>
 					<tr>
