@@ -212,19 +212,17 @@ if (!is_array($config['mounts']['mount'])) {
                     </tr>
                     <tr bgcolor=#cccccc>
                       <td valign=top>
-
-						<input type="radio" name="all_mins" id="all_mins1" value="1"<?php echo $all_mins_all;?>>
+												<input type="radio" name="all_mins" id="all_mins1" value="1"<?php echo $all_mins_all;?>>
                         <?=gettext("All");?><br>
                         	<input type="radio" name="all_mins" id="all_mins2" value="0"<?php echo $all_mins_selected;?>>
                         <?=gettext("Selected");?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
-							<select multiple size="12" name="minutes[]" id="minutes1">
-							<?php
+															<select multiple size="12" name="minutes[]" id="minutes1">
+															<?php
 																$i = 0;
 																	 while ($i <= 11){
-
 																	 	if (isset($pconfig['minute'])){
     																	  if (in_array($i, $pconfig['minute'])){
                                     	 		$is_selected = " selected";
@@ -232,7 +230,6 @@ if (!is_array($config['mounts']['mount'])) {
     																			$is_selected = "";
     																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -244,7 +241,6 @@ if (!is_array($config['mounts']['mount'])) {
                             <?php
 																$i = 12;
 																	 while ($i <= 23){
-
 																	 	if (isset($pconfig['minute'])){
   																	  if (in_array($i, $pconfig['minute'])){
                                   	 		$is_selected = " selected";
@@ -252,7 +248,6 @@ if (!is_array($config['mounts']['mount'])) {
   																			$is_selected = "";
   																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -264,7 +259,6 @@ if (!is_array($config['mounts']['mount'])) {
                                <<?php
 																$i = 24;
 																	 while ($i <= 35){
-
 																		if (isset($pconfig['minute'])){
   																	  if (in_array($i, $pconfig['minute'])){
                                   	 		$is_selected = " selected";
@@ -272,7 +266,6 @@ if (!is_array($config['mounts']['mount'])) {
   																			$is_selected = "";
   																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -283,7 +276,6 @@ if (!is_array($config['mounts']['mount'])) {
                                <?php
 																$i = 36;
 																	 while ($i <= 47){
-
 																	  if (isset($pconfig['minute'])){
   																		if (in_array($i, $pconfig['minute'])){
                                   	 		$is_selected = " selected";
@@ -302,7 +294,6 @@ if (!is_array($config['mounts']['mount'])) {
                                <?php
 																$i = 48;
 																	 while ($i <= 59){
-
 																	 	if (isset($pconfig['minute'])){
   																		if (in_array($i, $pconfig['minute'])){
                                   	 		$is_selected = " selected";
@@ -310,7 +301,6 @@ if (!is_array($config['mounts']['mount'])) {
   																			$is_selected = "";
   																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -332,7 +322,6 @@ if (!is_array($config['mounts']['mount'])) {
                                <?php
 																$i = 0;
 																	 while ($i <= 11){
-
 																	  if (isset($pconfig['hour'])){
   																	  if (in_array($i, $pconfig['hour'])){
                                   	 		$is_selected = " selected";
@@ -351,7 +340,6 @@ if (!is_array($config['mounts']['mount'])) {
                                <?php
 																$i = 12;
 																	 while ($i <= 23){
-
 																	  if (isset($pconfig['hour'])){
   																	  if (in_array($i, $pconfig['hour'])){
                                   	 		$is_selected = " selected";
@@ -377,7 +365,6 @@ if (!is_array($config['mounts']['mount'])) {
                                  <?php
   																$i = 1;
   																	 while ($i <= 12){
-
 																		  if (isset($pconfig['day'])){
     																	  if (in_array($i, $pconfig['day'])){
                                     	 		$is_selected = " selected";
@@ -395,7 +382,6 @@ if (!is_array($config['mounts']['mount'])) {
                                   <?php
   																$i = 13;
   																	 while ($i <= 24){
-
 																		  if (isset($pconfig['day'])){
     																	  if (in_array($i, $pconfig['day'])){
                                     	 		$is_selected = " selected";
@@ -414,7 +400,6 @@ if (!is_array($config['mounts']['mount'])) {
                                   <?php
   																$i = 25;
   																	 while ($i <= 31){
-
 																		  if (isset($pconfig['day'])){
     																	  if (in_array($i, $pconfig['day'])){
                                     	 		$is_selected = " selected";
@@ -438,7 +423,7 @@ if (!is_array($config['mounts']['mount'])) {
                             <td valign=top>
     														<select multiple size="12" name="months[]" id="months">
 																<?php $i=1; foreach ($a_months as $month):?>
-                                <option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array($i, $pconfig['month'])) echo "selected";?>><?=$month;?></option>
+                                <option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array($i, $pconfig['month'])) echo "selected";?>><?=htmlentities($month);?></option>
                                 <?php $i++;?>
                                 <?php endforeach;?>
                               </select>

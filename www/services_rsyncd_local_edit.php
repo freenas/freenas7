@@ -167,7 +167,7 @@ if (!is_array($config['mounts']['mount'])) {
 <?php if ($input_errors) print_input_errors($input_errors); ?><table width="100%" border="0" cellpadding="0" cellspacing="0">
 <form action="services_rsyncd_local_edit.php" method="post" name="iform" id="iform">
 <table width="100%" border="0" cellpadding="6" cellspacing="0">
-	 <tr>
+	 				<tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Source share");?></td>
             <td width="78%" class="vtable"><?=$mandfldhtml;?>
               <select name="source" class="formfld" id="source">
@@ -179,7 +179,7 @@ if (!is_array($config['mounts']['mount'])) {
               </select>
             </td>
       		</tr>		
- <tr>
+ 					<tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Destination share");?></td>
             <td width="78%" class="vtable"><?=$mandfldhtml;?>
               <select name="destination" class="formfld" id="destination">
@@ -191,10 +191,9 @@ if (!is_array($config['mounts']['mount'])) {
               </select>
             </td>
       		</tr>		
-                 <tr>
+                <tr>
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Synchronization Time");?></td>
                   <td width="78%" class="vtable"><?=$mandfldhtml;?>
-
                      <table width=100% border cellpadding="6" cellspacing="0">
                     <tr>
                       <td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>
@@ -205,19 +204,17 @@ if (!is_array($config['mounts']['mount'])) {
                     </tr>
                     <tr bgcolor=#cccccc>
                       <td valign=top>
-
-						<input type="radio" name="all_mins" id="all_mins1" value="1"<?php echo $all_mins_all;?>>
+												<input type="radio" name="all_mins" id="all_mins1" value="1"<?php echo $all_mins_all;?>>
                         <?=gettext("All");?><br>
                         	<input type="radio" name="all_mins" id="all_mins2" value="0"<?php echo $all_mins_selected;?>>
                         <?=gettext("Selected");?> ..<br>
                         <table>
                           <tr>
                             <td valign=top>
-							<select multiple size="12" name="minutes[]" id="minutes1">
-							<?php
+															<select multiple size="12" name="minutes[]" id="minutes1">
+															<?php
 																$i = 0;
 																	 while ($i <= 11){
-
 																	 	if (isset($pconfig['minute'])){
     																	  if (in_array($i, $pconfig['minute'])){
                                     	 		$is_selected = " selected";
@@ -225,7 +222,6 @@ if (!is_array($config['mounts']['mount'])) {
     																			$is_selected = "";
     																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -237,7 +233,6 @@ if (!is_array($config['mounts']['mount'])) {
                             <?php
 																$i = 12;
 																	 while ($i <= 23){
-
 																	 	if (isset($pconfig['minute'])){
   																	  if (in_array($i, $pconfig['minute'])){
                                   	 		$is_selected = " selected";
@@ -245,7 +240,6 @@ if (!is_array($config['mounts']['mount'])) {
   																			$is_selected = "";
   																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -265,7 +259,6 @@ if (!is_array($config['mounts']['mount'])) {
   																			$is_selected = "";
   																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -303,7 +296,6 @@ if (!is_array($config['mounts']['mount'])) {
   																			$is_selected = "";
   																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -344,7 +336,6 @@ if (!is_array($config['mounts']['mount'])) {
                                <?php
 																$i = 12;
 																	 while ($i <= 23){
-
 																	  if (isset($pconfig['hour'])){
   																	  if (in_array($i, $pconfig['hour'])){
                                   	 		$is_selected = " selected";
@@ -370,7 +361,6 @@ if (!is_array($config['mounts']['mount'])) {
                                  <?php
   																$i = 1;
   																	 while ($i <= 12){
-
 																		  if (isset($pconfig['day'])){
     																	  if (in_array($i, $pconfig['day'])){
                                     	 		$is_selected = " selected";
@@ -388,7 +378,6 @@ if (!is_array($config['mounts']['mount'])) {
                                   <?php
   																$i = 13;
   																	 while ($i <= 24){
-
 																		  if (isset($pconfig['day'])){
     																	  if (in_array($i, $pconfig['day'])){
                                     	 		$is_selected = " selected";
@@ -407,7 +396,6 @@ if (!is_array($config['mounts']['mount'])) {
                                   <?php
   																$i = 25;
   																	 while ($i <= 31){
-
 																		  if (isset($pconfig['day'])){
     																	  if (in_array($i, $pconfig['day'])){
                                     	 		$is_selected = " selected";
@@ -431,7 +419,7 @@ if (!is_array($config['mounts']['mount'])) {
                             <td valign=top>
     														<select multiple size="12" name="months[]" id="months">
 																<?php $i=1; foreach ($a_months as $month):?>
-                                <option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array($i, $pconfig['month'])) echo "selected";?>><?=$month;?></option>
+                                <option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array($i, $pconfig['month'])) echo "selected";?>><?=htmlentities($month);?></option>
                                 <?php $i++;?>
                                 <?php endforeach;?>
                               </select>

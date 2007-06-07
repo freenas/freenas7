@@ -199,7 +199,6 @@ function enable_change(enable_change) {
 							<?php
 																$i = 0;
 																	 while ($i <= 11){
-
 																	 	if (isset($pconfig['minute'])){
     																	  if (in_array($i, $pconfig['minute'])){
                                     	 		$is_selected = " selected";
@@ -207,7 +206,6 @@ function enable_change(enable_change) {
     																			$is_selected = "";
     																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -219,7 +217,6 @@ function enable_change(enable_change) {
                             <?php
 																$i = 12;
 																	 while ($i <= 23){
-
 																	 	if (isset($pconfig['minute'])){
   																	  if (in_array($i, $pconfig['minute'])){
                                   	 		$is_selected = " selected";
@@ -227,7 +224,6 @@ function enable_change(enable_change) {
   																			$is_selected = "";
   																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -239,7 +235,6 @@ function enable_change(enable_change) {
                                <<?php
 																$i = 24;
 																	 while ($i <= 35){
-
 																		if (isset($pconfig['minute'])){
   																	  if (in_array($i, $pconfig['minute'])){
                                   	 		$is_selected = " selected";
@@ -247,7 +242,6 @@ function enable_change(enable_change) {
   																			$is_selected = "";
   																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -258,7 +252,6 @@ function enable_change(enable_change) {
                                <?php
 																$i = 36;
 																	 while ($i <= 47){
-
 																	  if (isset($pconfig['minute'])){
   																		if (in_array($i, $pconfig['minute'])){
                                   	 		$is_selected = " selected";
@@ -277,7 +270,6 @@ function enable_change(enable_change) {
                                <?php
 																$i = 48;
 																	 while ($i <= 59){
-
 																	 	if (isset($pconfig['minute'])){
   																		if (in_array($i, $pconfig['minute'])){
                                   	 		$is_selected = " selected";
@@ -285,7 +277,6 @@ function enable_change(enable_change) {
   																			$is_selected = "";
   																		}
 																		}
-
 																	 			 echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
 																				 $i++;
 																		}
@@ -307,7 +298,6 @@ function enable_change(enable_change) {
                                <?php
 																$i = 0;
 																	 while ($i <= 11){
-
 																	  if (isset($pconfig['hour'])){
   																	  if (in_array($i, $pconfig['hour'])){
                                   	 		$is_selected = " selected";
@@ -326,7 +316,6 @@ function enable_change(enable_change) {
                                <?php
 																$i = 12;
 																	 while ($i <= 23){
-
 																	  if (isset($pconfig['hour'])){
   																	  if (in_array($i, $pconfig['hour'])){
                                   	 		$is_selected = " selected";
@@ -352,7 +341,6 @@ function enable_change(enable_change) {
                                  <?php
   																$i = 1;
   																	 while ($i <= 12){
-
 																		  if (isset($pconfig['day'])){
     																	  if (in_array($i, $pconfig['day'])){
                                     	 		$is_selected = " selected";
@@ -370,7 +358,6 @@ function enable_change(enable_change) {
                                   <?php
   																$i = 13;
   																	 while ($i <= 24){
-
 																		  if (isset($pconfig['day'])){
     																	  if (in_array($i, $pconfig['day'])){
                                     	 		$is_selected = " selected";
@@ -389,7 +376,6 @@ function enable_change(enable_change) {
                                   <?php
   																$i = 25;
   																	 while ($i <= 31){
-
 																		  if (isset($pconfig['day'])){
     																	  if (in_array($i, $pconfig['day'])){
                                     	 		$is_selected = " selected";
@@ -412,12 +398,9 @@ function enable_change(enable_change) {
                           <tr>
                             <td valign=top>
     														<select multiple size="12" name="months[]" id="months">
-
 																<?php
 																		 $i=1;
-
 																		 foreach ($a_months as $monthv){
-
 																				if (isset($pconfig['month'])){
   																		 		if (in_array($i, $pconfig['month'])){
                                     	 			 $is_selected = " selected";
@@ -425,7 +408,7 @@ function enable_change(enable_change) {
       																			$is_selected = "";
       																		}
 																				}
-																		 		echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $monthv . "\n";
+																		 		echo "<option value=\"" . $i . "\"" . $is_selected . ">" . htmlentities($monthv) . "\n";
                                   			$i++;
 																			}
 																?>
@@ -443,9 +426,7 @@ function enable_change(enable_change) {
     														<select multiple size="7" name="weekdays[]" id="weekdays">
                                   <?php
 																		 $i=0;
-
 																		 foreach ($a_weekdays as $weekdayv){
-
 																		 if (isset($pconfig['weekday'])){
 																		 		if (in_array($i, $pconfig['weekday'])){
                                   	 			 $is_selected = " selected";
@@ -466,11 +447,10 @@ function enable_change(enable_change) {
                       <td colspan=5><?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.");?></td>
                     </tr>
                   </table>
-
 										 </td>
                   </td>
-				</tr>
-				<tr>
+								</tr>
+								<tr>
                   <td width="22%" valign="top">&nbsp;</td>
                   <td width="78%">
                     <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
