@@ -110,18 +110,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 				} else {
 					/* move the image so PHP won't delete it */
 					rename($_FILES['ulfile']['tmp_name'], "{$g['ftmp_path']}/firmware.img");
-					
-					/* Remove the check digital signature */
-					/* $sigchk = verify_digital_signature("{$g['ftmp_path']}/firmware.img"); */
-					$sigchk = 0;
-					
-					if ($sigchk == 1)
-						$sig_warning = gettext("The digital signature on this image is invalid.");
-					else if ($sigchk == 2)
-						$sig_warning = gettext("This image is not digitally signed.");
-					else if (($sigchk == 3) || ($sigchk == 4))
-						$sig_warning = gettext("There has been an error verifying the signature on this image.");
-				
+
 					if (!verify_gzip_file("{$g['ftmp_path']}/firmware.img")) {
 						$input_errors[] = gettext("The image file is corrupt");
 						unlink("{$g['ftmp_path']}/firmware.img");

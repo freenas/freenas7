@@ -1107,16 +1107,6 @@ function ip_in_subnet($addr,$subnet) {
 	return ((ip2long($addr) & $mask) == (ip2long($ip) & $mask));
 }
 
-/* verify (and remove) the digital signature on a file - returns 0 if OK */
-function verify_digital_signature($fname) {
-
-	global $g;
-
-	return mwexec("/usr/local/bin/verifysig " .
-		escapeshellarg("{$g['etc_path']}/pubkey.pem") . " " .
-		escapeshellarg($fname));
-}
-
 // Obtain MAC address given an IP address by looking at the ARP table.
 function arp_get_mac_by_ip($ip) {
 	exec("/usr/sbin/arp -n {$ip}", $arpoutput);

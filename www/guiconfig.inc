@@ -171,7 +171,6 @@ function print_input_errors($input_errors) {
 }
 
 function exec_rc_script($scriptname) {
-	
 	global $d_sysrebootreqd_path;
 	
 	if (file_exists($d_sysrebootreqd_path))
@@ -182,7 +181,6 @@ function exec_rc_script($scriptname) {
 }
 
 function exec_rc_script_async($scriptname) {
-	
 	global $d_sysrebootreqd_path;
 	
 	if (file_exists($d_sysrebootreqd_path))
@@ -193,8 +191,7 @@ function exec_rc_script_async($scriptname) {
 }
 
 function verify_gzip_file($fname) {
-
-	$returnvar = mwexec("/usr/bin/gunzip -S \"\" -t " . escapeshellarg($fname));
+	$returnvar = mwexec("/usr/bin/gzip -t " . escapeshellarg($fname));
 	if ($returnvar != 0)
 		return 0;
 	else

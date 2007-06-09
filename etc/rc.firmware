@@ -51,8 +51,12 @@ upgrade)
 
 	# dd image onto card
 	if [ -r $2 ]; then
-		/usr/bin/gunzip -S "" -c $2 | dd of=/dev/$CFDEVICE bs=16k > /dev/null 2>&1
-		echo "Image installed."
+		/usr/bin/gzip -cd $2 | /bin/dd of=/dev/$CFDEVICE bs=512 > /dev/null 2>&1
+		if [ 0 != $? ]; then # successful?
+			echo "Failed to dd image on '/dev/$CFDEVICE'!"
+			exit
+		else
+			echo "Image installed successful."
 	fi
 
 	# mount /cf
