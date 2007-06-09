@@ -60,7 +60,7 @@ function check_firmware_version() {
 		while (!feof($rfd)) {
 			$line = fgets($rfd);
 			if ($inhdr) {
-				if (trim($line) == "")
+				if (trim($line) === "")
 					$inhdr = false;
 			} else {
 				$resp .= $line;
@@ -89,14 +89,14 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 		unlink("{$g['ftmp_path']}/firmware.img");
 		
 	if ($mode) {
-		if ($mode == "enable") {
+		if ($mode === "enable") {
 			exec_rc_script("/etc/rc.firmware enable");
 			touch($d_fwupenabled_path);
-		} else if ($mode == "disable") {
+		} else if ($mode === "disable") {
 			exec_rc_script("/etc/rc.firmware disable");
 			if (file_exists($d_fwupenabled_path))
 				unlink($d_fwupenabled_path);
-		} else if ($mode == "upgrade") {
+		} else if ($mode === "upgrade") {
 			if (is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
 				/* verify firmware image(s) */
 				if (!stristr($_FILES['ulfile']['name'], $g['fullplatform']) && !$_POST['sig_override'])
@@ -122,7 +122,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 				/* fire up the update script in the background */
 				touch($d_firmwarelock_path);
 				exec_rc_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
-				
+
 				$savemsg = sprintf(gettext("The firmware is now being installed. %s will reboot automatically."), get_product_name());
 			}
 		}
