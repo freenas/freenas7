@@ -3,7 +3,7 @@
 /*
 	system_firmware.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -121,8 +121,12 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 			if (!$input_errors && !file_exists($d_firmwarelock_path) && (!$sig_warning || $_POST['sig_override'])) {			
 				/* fire up the update script in the background */
 				touch($d_firmwarelock_path);
-				exec_rc_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
-
+				if ($g['platform'] === "embedded") {
+					exec_rc_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
+				}
+				else if ($g['platform'] === "full") {
+					exec_rc_script_async("/etc/rc.firmware fullupgrade {$g['ftmp_path']}/firmware.img");
+				}
 				$savemsg = sprintf(gettext("The firmware is now being installed. %s will reboot automatically."), get_product_name());
 			}
 		}

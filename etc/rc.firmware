@@ -160,7 +160,9 @@ case $1 in
 			/ftmp/etc/postupgrade.sh
 		fi
 
-		#echo "Done - rebooting system..."
-		#/sbin/reboot
+		echo "Upgrade Done - rebooting system..."
+		/usr/bin/logger "Upgrade Done - rebooting system..."
+		
+		/sbin/reboot
 		;;
 esac

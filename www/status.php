@@ -100,6 +100,7 @@ function execCmds() {
 /* Set up all of the commands we want to execute. */
 
 defCmdT("Version","cat /etc/prd.version");
+defCmdT("Platform","cat /etc/platform");
 defCmdT("System uptime","uptime");
 defCmdT("Interfaces","/sbin/ifconfig -a");
 
