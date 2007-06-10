@@ -1,4 +1,5 @@
 #!/bin/sh
+#set -x
 
 # /etc/rc.firmware
 # part of FreeNAS (http://www.freenas.org)
@@ -19,25 +20,46 @@
 SIZE="30M"
 CFDEVICE=`cat /var/etc/cfdevice`
 
-if [ $1 != "upgrade" ] || [ $1 != "fullupgrade" ]; then
-	/sbin/umount -f /ftmp > /dev/null 2>&1
-fi
-
 case $1 in
 	enable)
+		# Redirect I/O to console.
+		exec </dev/console >/dev/console 2>/dev/console
+
 		# Use auto-unit feature to automatically select an unused device.
 		/sbin/mdmfs -s $SIZE -b 8192 -f 1024 md /ftmp > /dev/null 2>&1
+		if [ 0 != $? ]; then # successful?
+				echo "Error: Failed to create in-memory file system."
+		fi
+		;;
+
+	disable)
+		# Redirect I/O to console.
+		exec </dev/console >/dev/console 2>/dev/console
+
+		# Get the md device.
+		MDID=`/sbin/mount -p | /usr/bin/grep /ftmp | /usr/bin/awk '{print $1}'`
+
+		# Umount in-memory file system.
+		/sbin/umount -f /ftmp > /dev/null 2>&1
+		if [ 0 != $? ]; then # successful?
+				echo "Error: Failed to umount in-memory file system."
+				exit
+		fi
+
+		# Detach md device.
+		/sbin/mdconfig -d -u $MDID
 		;;
 
 	upgrade)
 		# wait 5 seconds before beginning
 		sleep 5
 
+		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
 
 		# Check if firmware file exist
 		if [ ! -r $2 ]; then
-			echo "Error: File does not exist."
+			echo "Error: Firmware file does not exist."
 			exit
 		fi
 
@@ -55,7 +77,7 @@ case $1 in
 		if [ -r $2 ]; then
 			/usr/bin/gzip -cd -S "" $2 | /bin/dd of=/dev/$CFDEVICE bs=16k > /dev/null 2>&1
 			if [ 0 != $? ]; then # successful?
-				echo "Error: Failed to dd image on '/dev/$CFDEVICE'!"
+				echo "Error: Failed to dd firmware image on '/dev/$CFDEVICE'!"
 				exit
 			else
 				echo "Image installed successful."
@@ -80,11 +102,12 @@ case $1 in
 		# wait 5 seconds before beginning
 		sleep 5
 
+		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
 
 		# Check if firmware file exist
 		if [ ! -r $2 ]; then
-			echo "Error: File does not exist."
+			echo "Error: Firmware file does not exist."
 			exit
 		fi
 
