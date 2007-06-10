@@ -30,7 +30,8 @@ case $1 in
 		/sbin/mdmfs -s $SIZE -b 8192 -f 1024 md /ftmp > /dev/null 2>&1
 		if [ 0 != $? ]; then # successful?
 				echo
-				echo "Error: Failed to create in-memory file system."
+				echo "Upgrade Error: Failed to create in-memory file system."
+				/usr/bin/logger "Upgrade Error: Failed to create in-memory file system."
 		fi
 		;;
 
@@ -45,7 +46,8 @@ case $1 in
 		/sbin/umount -f /ftmp > /dev/null 2>&1
 		if [ 0 != $? ]; then # successful?
 				echo
-				echo "Error: Failed to umount in-memory file system."
+				echo "Upgrade Error: Failed to umount in-memory file system."
+				/usr/bin/logger "Upgrade Error: Failed to umount in-memory file system."
 				exit
 		fi
 
@@ -63,7 +65,8 @@ case $1 in
 		# Check if firmware file exist
 		if [ ! -r $2 ]; then
 			echo
-			echo "Error: Firmware file does not exist."
+			echo "Upgrade Error: Firmware file does not exist."
+			/usr/bin/logger "Upgrade Error: Firmware file does not exist."
 			exit
 		fi
 
@@ -81,10 +84,12 @@ case $1 in
 		if [ -r $2 ]; then
 			/usr/bin/gzip -cd -S "" $2 | /bin/dd of=/dev/$CFDEVICE bs=16k > /dev/null 2>&1
 			if [ 0 != $? ]; then # successful?
-				echo "Error: Failed to dd firmware image on '/dev/$CFDEVICE'!"
+				echo "Uprade Error: Failed to dd firmware image on '/dev/$CFDEVICE'!"
+				/usr/bin/logger "Uprade Error: Failed to dd firmware image on '/dev/$CFDEVICE'!"
 				exit
 			else
-				echo "Image installed successful."
+				echo "Upgrade: Image installed successful."
+				/usr/bin/logger "Upgrade: Image installed successful."
 			fi
 		fi
 
@@ -98,7 +103,9 @@ case $1 in
 		/sbin/umount -f /cf
 		/sbin/mount -r /cf
 
-		echo "Done - rebooting system..."
+		echo "Upgrade Done - rebooting system..."
+		/usr/bin/logger "Upgrade Done - rebooting system..."
+		
 		/sbin/reboot
 		;;
 
@@ -111,7 +118,8 @@ case $1 in
 
 		# Check if firmware file exist
 		if [ ! -r $2 ]; then
-			echo "Error: Firmware file does not exist."
+			echo "Upgrade Error: Firmware file does not exist."
+			/usr/bin/logger "Upgrade Error: Firmware file does not exist."
 			exit
 		fi
 
