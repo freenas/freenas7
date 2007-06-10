@@ -28,6 +28,7 @@ case $1 in
 		# Use auto-unit feature to automatically select an unused device.
 		/sbin/mdmfs -s $SIZE -b 8192 -f 1024 md /ftmp > /dev/null 2>&1
 		if [ 0 != $? ]; then # successful?
+				echo
 				echo "Error: Failed to create in-memory file system."
 		fi
 		;;
@@ -42,6 +43,7 @@ case $1 in
 		# Umount in-memory file system.
 		/sbin/umount -f /ftmp > /dev/null 2>&1
 		if [ 0 != $? ]; then # successful?
+				echo
 				echo "Error: Failed to umount in-memory file system."
 				exit
 		fi
@@ -59,6 +61,7 @@ case $1 in
 
 		# Check if firmware file exist
 		if [ ! -r $2 ]; then
+			echo
 			echo "Error: Firmware file does not exist."
 			exit
 		fi
