@@ -317,6 +317,9 @@ usr/bin/find
 ## uname - display information about the system
 usr/bin/uname
 
+## env -- set environment and execute command, or print environment
+usr/bin/env
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
