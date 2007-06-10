@@ -3,14 +3,14 @@
 /*
   index.php
   part of FreeNAS (http://www.freenas.org)
-  Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+  Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
   All rights reserved.
   Improved by Stefan Hendricks (info@henmedia.de)
 
   Based on m0n0wall (http://m0n0.ch/wall)
   Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
   All rights reserved.
-
+	
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions are met:
 

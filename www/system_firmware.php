@@ -128,6 +128,15 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 					exec_rc_script_async("/etc/rc.firmware fullupgrade {$g['ftmp_path']}/firmware.img");
 				}
 				$savemsg = sprintf(gettext("The firmware is now being installed. %s will reboot automatically."), get_product_name());
+				
+				//Must clean the two tempo file for 'full' release
+				//firmwarelock permit to force all pages to be redirect on the firmware page
+				if (file_exists($d_firmwarelock_path))
+					unlink($d_firmwarelock_path);
+				
+				//fwupenabled permit to know if the ram drive /ftmp is created
+				if (file_exists($d_fwupenabled_path))
+					unlink($d_fwupenabled_path);
 			}
 		}
 	}
