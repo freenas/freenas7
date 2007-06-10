@@ -14,6 +14,7 @@
 # rc.firmware <args> [<file>]
 # Where <args> can take theses values:
 # - enable: Create a 30MB ram drive in /ftmp
+# - disable: Erase ram drive
 # - upgrade <file> : Do an embedded release (IMG file) upgrade using the file <file>
 # - fullupgrade <file> : Do a full release (TGZ file) upgrade using the file <file>
 
