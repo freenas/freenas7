@@ -1,7 +1,7 @@
 PORTNAME=			openssh-portable
 PORTVERSION=	1.0
 PORTREVISION=	0
-PORTEPOCH=		1
+PORTEPOCH=		2
 CATEGORIES=		security
 COMMENT=			The portable version of OpenBSD's OpenSSH
 MAINTAINER=		votdev@gmx.de
@@ -10,7 +10,7 @@ BUILD_DEPENDS=	openssh-portable:${PORTSDIR}/security/openssh-portable
 # No build is required for this port.
 NO_BUILD?=			1
 
-pre-depends:
+post-patch:
 # Copy openssh options file
 	@${MKDIR} -v /var/db/ports/openssh
 	@${CP} -pv ${FILESDIR}/openssh-options /var/db/ports/openssh/options

@@ -1,7 +1,7 @@
 PORTNAME=			fusefs-ntfs
 PORTVERSION=	1.0
 PORTREVISION=	0
-PORTEPOCH=		1
+PORTEPOCH=		2
 CATEGORIES=		sysutils
 COMMENT=			Mount NTFS partitions and disk images
 MAINTAINER=		votdev@gmx.de
@@ -12,7 +12,7 @@ BUILD_DEPENDS=	fusefs-ntfs:${PORTSDIR}/sysutils/fusefs-ntfs \
 # No build is required for this port.
 NO_BUILD?=			1
 
-pre-depends:
+post-patch:
 # Copy fusefs options file
 	@${MKDIR} -v /var/db/ports/fusefs
 	@${CP} -pv ${FILESDIR}/fusefs-options /var/db/ports/fusefs/options
