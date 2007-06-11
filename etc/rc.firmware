@@ -32,6 +32,7 @@ case $1 in
 				echo
 				echo "Upgrade Error: Failed to create in-memory file system."
 				/usr/bin/logger "Upgrade Error: Failed to create in-memory file system."
+				exit 1
 		fi
 		;;
 
@@ -48,7 +49,7 @@ case $1 in
 				echo
 				echo "Upgrade Error: Failed to umount in-memory file system."
 				/usr/bin/logger "Upgrade Error: Failed to umount in-memory file system."
-				exit
+				exit 1
 		fi
 
 		# Detach md device.
@@ -67,7 +68,7 @@ case $1 in
 			echo
 			echo "Upgrade Error: Firmware file does not exist."
 			/usr/bin/logger "Upgrade Error: Firmware file does not exist."
-			exit
+			exit 1
 		fi
 
 		echo
@@ -86,7 +87,7 @@ case $1 in
 			if [ 0 != $? ]; then # successful?
 				echo "Uprade Error: Failed to dd firmware image on '/dev/$CFDEVICE'!"
 				/usr/bin/logger "Uprade Error: Failed to dd firmware image on '/dev/$CFDEVICE'!"
-				exit
+				exit 1
 			else
 				echo "Upgrade: Image installed successful."
 				/usr/bin/logger "Upgrade: Image installed successful."
@@ -120,7 +121,7 @@ case $1 in
 		if [ ! -r $2 ]; then
 			echo "Upgrade Error: Firmware file does not exist."
 			/usr/bin/logger "Upgrade Error: Firmware file does not exist."
-			exit
+			exit 1
 		fi
 
 		echo "Firmware upgrade in progress..."
@@ -166,3 +167,5 @@ case $1 in
 		/sbin/reboot
 		;;
 esac
+
+exit 0

@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	system_firmware.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -33,7 +33,7 @@
 */
 $d_isfwfile = 1;
 
-require("guiconfig.inc"); 
+require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Firmware"));
 
@@ -51,10 +51,10 @@ function check_firmware_version() {
 		$hdr .= "User-Agent: ".get_product_name()."-webGUI/1.0\r\n";
 		$hdr .= "Host: www.".get_product_url()."\r\n";
 		$hdr .= "Content-Length: ".strlen($post)."\r\n\r\n";
-		
+
 		fwrite($rfd, $hdr);
 		fwrite($rfd, $post);
-		
+
 		$inhdr = true;
 		$resp = "";
 		while (!feof($rfd)) {
@@ -66,19 +66,19 @@ function check_firmware_version() {
 				$resp .= $line;
 			}
 		}
-		
+
 		fclose($rfd);
-		
+
 		return $resp;
 	}
-	
+
 	return null;
 }
 
 if ($_POST && !file_exists($d_firmwarelock_path)) {
 	unset($input_errors);
 	unset($sig_warning);
-	
+
 	if (stristr($_POST['Submit'], gettext("Enable firmware upload")))
 		$mode = "enable";
 	else if (stristr($_POST['Submit'], gettext("Disable firmware upload")))
@@ -87,11 +87,15 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 		$mode = "upgrade";
 	else if ($_POST['sig_no'])
 		unlink("{$g['ftmp_path']}/firmware.img");
-		
+
 	if ($mode) {
 		if ($mode === "enable") {
-			exec_rc_script("/etc/rc.firmware enable");
-			touch($d_fwupenabled_path);
+			$retval = exec_rc_script("/etc/rc.firmware enable");
+			if (0 == $retval) {
+				touch($d_fwupenabled_path);
+			} else {
+				$input_errors[] = gettext("Failed to create in-memory file system.");
+			}
 		} else if ($mode === "disable") {
 			exec_rc_script("/etc/rc.firmware disable");
 			if (file_exists($d_fwupenabled_path))
@@ -104,37 +108,42 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 				else if (!file_exists($_FILES['ulfile']['tmp_name'])) {
 					/* probably out of memory for the MFS */
 					$input_errors[] = gettext("Image upload failed (out of memory?)");
-					exec_rc_script("/etc/rc.firmware disable");
-					if (file_exists($d_fwupenabled_path))
-						unlink($d_fwupenabled_path);
 				} else {
 					/* move the image so PHP won't delete it */
 					rename($_FILES['ulfile']['tmp_name'], "{$g['ftmp_path']}/firmware.img");
 
 					if (!verify_gzip_file("{$g['ftmp_path']}/firmware.img")) {
 						$input_errors[] = gettext("The image file is corrupt");
-						unlink("{$g['ftmp_path']}/firmware.img");
+						unlink("{$g['ftmp_path']}/firmware.img");	
 					}
 				}
 			}
 
-			if (!$input_errors && !file_exists($d_firmwarelock_path) && (!$sig_warning || $_POST['sig_override'])) {			
-				/* fire up the update script in the background */
+			// Cleanup if there were errors.
+			if ($input_errors) {
+				exec_rc_script("/etc/rc.firmware disable");
+				if (file_exists($d_fwupenabled_path))
+					unlink($d_fwupenabled_path);
+			}
+
+			// Upgrade firmware if there were no errors.
+			if (!$input_errors && !file_exists($d_firmwarelock_path) && (!$sig_warning || $_POST['sig_override'])) {
 				touch($d_firmwarelock_path);
+
 				if ($g['platform'] === "embedded") {
 					exec_rc_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
 				}
 				else if ($g['platform'] === "full") {
 					exec_rc_script_async("/etc/rc.firmware fullupgrade {$g['ftmp_path']}/firmware.img");
 				}
+
 				$savemsg = sprintf(gettext("The firmware is now being installed. %s will reboot automatically."), get_product_name());
-				
-				//Must clean the two tempo file for 'full' release
-				//firmwarelock permit to force all pages to be redirect on the firmware page
+
+				// Clean firmwarelock: Permit to force all pages to be redirect on the firmware page.
 				if (file_exists($d_firmwarelock_path))
 					unlink($d_firmwarelock_path);
-				
-				//fwupenabled permit to know if the ram drive /ftmp is created
+
+				// Clean fwupenabled: Permit to know if the ram drive /ftmp is created.
 				if (file_exists($d_fwupenabled_path))
 					unlink($d_fwupenabled_path);
 			}
@@ -153,7 +162,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 <p><strong><?=gettext("Firmware uploading is not supported on this platform.");?></strong></p>
 <?php elseif ($sig_warning && !$input_errors): ?>
 <form action="system_firmware.php" method="post">
-<?php 
+<?php
 $sig_warning = "<strong>" . $sig_warning . "</strong><br>".gettext("This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?");
 print_info_box($sig_warning);
 ?>
@@ -165,8 +174,8 @@ print_info_box($sig_warning);
 <p><?=gettext("Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.");?></p>
 <form action="system_firmware.php" method="post" enctype="multipart/form-data">
   <table>
-    <tr> 
-      <td> 
+    <tr>
+      <td>
         <?php if (!file_exists($d_sysrebootreqd_path)): ?>
 				<?php if (!file_exists($d_fwupenabled_path)): ?>
 				<input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=gettext("Enable firmware upload");?>">
