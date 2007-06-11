@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# /etc/rc 
+# /etc/rc
 #part of FreeNAS (http://www.freenas.org)
 #Copyright (C) 2005-2006 Olivier Cochard <cochard@gmail.com>.
 #All rights reserved.
@@ -8,7 +8,6 @@
 #Based on m0n0wall (http://m0n0.ch/wall)
 #Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 #All rights reserved.
-	
 
 stty status '^T'
 
@@ -48,7 +47,7 @@ if [ -f "/etc/cfdevice" ] && [ ! -h /var/etc/cfdevice ] ; then
 	ln -s /etc/cfdevice /var/etc/cfdevice
 fi
 
-# Make spool dor (for afpd) if doesn't exist
+# Make spool directorie (for afpd) if doesn't exist
 if [ ! -d "/var/spool" ]; then
 	mkdir /var/spool
 	mkdir /var/spool/lock
@@ -69,7 +68,7 @@ adjkerntz -i
 # Create an initial utmp file
 cd /var/run && cp /dev/null utmp && chmod 0644 utmp
 
-# Create symlink for lighhtpd file upload if doesn't exist
+# Create symlink for lighttpd file upload if doesn't exist
 if [ ! -h "/var/tmp" ]; then
 	ln -s /ftmp /var/tmp
 fi
@@ -83,4 +82,3 @@ fi
 /etc/rc.banner
 
 exit 0
-
