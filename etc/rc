@@ -47,6 +47,11 @@ if [ -f "/etc/cfdevice" ] && [ ! -h /var/etc/cfdevice ] ; then
 	ln -s /etc/cfdevice /var/etc/cfdevice
 fi
 
+# If the firmware.lock file, delete it (if not, all WebGUI pages will be redirected to upgrade page)
+if [ -f "/etc/cfdevice" ] ; then
+	rm -f /var/run/firmware.lock
+fi
+
 # Make spool directorie (for afpd) if doesn't exist
 if [ ! -d "/var/spool" ]; then
 	mkdir /var/spool

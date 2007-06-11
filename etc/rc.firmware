@@ -137,7 +137,7 @@ case $1 in
 		#WARNING: The library files name are related to the FreeNAS release to be upgraded
 		#Must add a switch (case) here depending of the version number being upgraded ?
 		#MUST TO CLOSE ALL SERVICES before ???
-		#(FreeBSD seem to crash if replacing a library in use ?)
+		#(FreeBSD seem to crash if replacing a library in use)
 		#ls /var/run/*.pid
 		#cat
 		#kill -9 pidnumber

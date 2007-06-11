@@ -2,7 +2,7 @@
 /*
 	system.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	system_systime_set() function added by Paul Wheels (pwheels@users.sourceforge.net)
 
@@ -139,8 +139,8 @@ function install_init_halfdisk($harddrive)
 function install_init_harddrive($harddrive)
 {
 	/* Part of install process: Initialize the destination disk with 2 partitions */
-	/* Create two partitions, the first as 64MB */
-	install_fdisk($harddrive,64);
+	/* Create two partitions, the first as 128MB */
+	install_fdisk($harddrive,128);
 
 	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$harddrive}")) {
 		write_console("Error: Can't fdisk the destination drive '{$harddrive}'!\n");

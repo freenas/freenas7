@@ -2,7 +2,7 @@
 /*
 	interfaces.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -110,6 +110,15 @@ function interfaces_lan_configure()
 			}
 			break;
 	}
+	
+	/* IPv6: disallow "internal" addresses to appear on the wire */
+	/* These two line are taken from /etc/rc.d/network_ipv6 script */
+	
+    mwexec("/sbin/route add -inet6 ::ffff:0.0.0.0 -prefixlen 96 ::1 -reject");
+    mwexec("/sbin/route add -inet6 ::0.0.0.0 -prefixlen 96 ::1 -reject");
+	
+	/* Disable IPv6 forwaring (should be allready done) */
+	mwexec("/sbin/sysctl net.inet6.ip6.forwarding=0");
 
 	/* install multicast route */
 	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lanif));

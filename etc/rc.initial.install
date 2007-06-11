@@ -12,13 +12,22 @@ while : ; do
 echo
 echo "Install"
 echo "*******"
-echo "1) Install on Flash device (CF or USB key): Create 1 UFS partition"
-echo "2) Install on Hard drive: Create 2 UFS partitions (OS and DATA)"
-echo "3) Upgrade existing installed version from CDROM"
-echo "4) EXPERIMENTAL Install for hard drive: Create 2 UFS partitions (OS and DATA)"
+echo "1) Install 'Embedded' release on flash device: Create 1 UFS partition"
+echo "2) Install 'Embedded' release on hard drive:"
+echo "      - Create MBR partition 1, 64MB size for FreeNAS"
+echo "      - Create MBR partition 2, using UFS, for DATA"
+echo "3) Upgrade existing installed 'embedded' release from CDROM"
+echo "4) Install 'full' release on hard drive:"
+echo "      - Create MBR partition 1, 128MB size for FreeNAS"
+echo "      - Create MBR partition 2, using UFS, for DATA"
 echo "5) Return to main menu"
 echo
-
+echo "Differences between release:"
+echo "- 'Embedded' need a 64MB device, use a RAM drive for limiting read/write access"
+echo "   to flash device"
+echo "- 'Full' (experimenal) need a 128MB hard drive, doesn't use RAM drive, "
+echo "  easyest to modify and support plugin"
+echo
 read -p "Enter a number: " opmode
 
 # see what the user has chosen
