@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# PROVIDE: SERVERS
+
+#	This is a dummy dependency, for early-start servers relying on
+#	some basic configuration.

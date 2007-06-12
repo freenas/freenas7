@@ -1,0 +1,55 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: systune
+
+. /etc/rc.subr
+
+name="systune"
+start_cmd="${name}_start"
+stop_cmd="${name}_stop"
+rcvar=`set_rcvar`
+
+systune_start()
+{
+	echo "Starting system tuning:"
+
+	/sbin/sysctl net.inet.tcp.delayed_ack=0
+	/sbin/sysctl net.inet.tcp.sendspace=65536
+	/sbin/sysctl net.inet.tcp.recvspace=65536
+	/sbin/sysctl net.inet.udp.recvspace=65536
+	/sbin/sysctl net.inet.udp.maxdgram=57344
+	/sbin/sysctl net.local.stream.recvspace=65535
+	/sbin/sysctl net.local.stream.sendspace=65535
+	/sbin/sysctl kern.ipc.maxsockbuf=2097152
+	/sbin/sysctl kern.ipc.somaxconn=8192
+	/sbin/sysctl kern.ipc.nmbclusters=32768
+	/sbin/sysctl kern.maxfiles=65536
+	/sbin/sysctl kern.maxfilesperproc=32768
+	/sbin/sysctl net.inet.tcp.inflight.enable=0
+	/sbin/sysctl net.inet.tcp.path_mtu_discovery=0
+}
+
+systune_stop()
+{
+	echo "Undo system tuning:"
+
+	/sbin/sysctl net.inet.tcp.delayed_ack=1
+	/sbin/sysctl net.inet.tcp.inflight.enable=1
+	/sbin/sysctl net.inet.tcp.path_mtu_discovery=1
+	/sbin/sysctl net.inet.tcp.sendspace=32768
+	/sbin/sysctl net.inet.tcp.recvspace=65536
+	/sbin/sysctl net.inet.udp.recvspace=42080
+	/sbin/sysctl net.inet.udp.maxdgram=9216
+	/sbin/sysctl net.local.stream.recvspace=8192
+	/sbin/sysctl net.local.stream.sendspace=8192
+	/sbin/sysctl kern.ipc.maxsockbuf=262144
+	/sbin/sysctl kern.ipc.somaxconn=128
+	/sbin/sysctl kern.ipc.nmbclusters=3072
+	/sbin/sysctl kern.maxfiles=1064
+	/sbin/sysctl kern.maxfilesperproc=957
+}
+
+load_rc_config $name
+run_rc_command "$1"

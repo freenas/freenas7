@@ -236,6 +236,9 @@ sbin/atacontrol
 # camcontrol: manage SCSI disk
 sbin/camcontrol
 
+# rcorder -- print a dependency ordering of interdependent files
+sbin/rcorder
+
 ####### contents of /usr/bin
 
 # awk - pattern-directed scanning and processing language
@@ -415,3 +418,7 @@ boot/mbr
 boot/boot
 boot/boot0
 boot/boot1
+
+####### contents of /etc
+# Functions used by various rc scripts
+etc/rc.subr

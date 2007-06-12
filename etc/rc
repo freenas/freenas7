@@ -81,9 +81,62 @@ fi
 # Run ldconfig
 /sbin/ldconfig -elf /usr/lib /usr/local/lib /lib
 
-# let the PHP-based configuration subsystem set up the system now
+# Let the PHP-based configuration subsystem set up the system now
 /etc/rc.bootup
 
+if [ "$1" = autoboot ]; then
+	autoboot=yes
+	_boot="faststart"
+	rc_fast=yes        # run_rc_command(): do fast booting
+else
+	autoboot=no
+	_boot="start"
+fi
+
+. /etc/rc.subr
+echo "Loading configuration files."
+load_rc_config 'XXX'
+
+skip="-s nostart"
+
+# Do a first pass to get everything up to $early_late_divider so that
+# we can do a second pass that includes $local_startup directories
+#
+files=`rcorder ${skip} /etc/rc.d/* 2>/dev/null`
+
+for _rc_elem in ${files}; do
+	run_rc_script ${_rc_elem} ${_boot}
+
+	case "$_rc_elem" in
+	*/${early_late_divider})	break ;;
+	esac
+done
+
+unset files local_rc
+
+# Now that disks are mounted, for each dir in $local_startup
+# search for init scripts that use the new rc.d semantics.
+#
+case ${local_startup} in
+[Nn][Oo] | '') ;;
+*)	find_local_scripts_new ;;
+esac
+
+files=`rcorder ${skip} /etc/rc.d/* ${local_rc} 2>/dev/null`
+_skip_early=1
+for _rc_elem in ${files}; do
+	case "$_skip_early" in
+	1)	case "$_rc_elem" in
+		*/${early_late_divider})	_skip_early=0 ;;
+		esac
+		continue
+		;;
+	esac
+
+	run_rc_script ${_rc_elem} ${_boot}
+done
+
+# Display banner.
 /etc/rc.banner
 
 exit 0

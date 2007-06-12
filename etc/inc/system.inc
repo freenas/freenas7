@@ -34,6 +34,22 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
+// Create /etc/rc.conf file.
+// Return 0 if successful, otherwise 1
+function system_rcconf_generate() {
+	global $config;
+
+	if (isset($config['system']['tune'])) {
+		mwexec("/usr/local/sbin/rconf enable systune");
+	}
+
+	if (isset($config['upnp']['enable'])) {
+		mwexec("/usr/local/sbin/rconf enable ushare");
+	}
+
+	return 0;
+}
+
 // Create /var/etc/resolv.conf file. Will be automatically overwritten by /sbin/dhclient-script
 // when using DHCP.
 // Return 0 if successful, otherwise 1

@@ -44,8 +44,8 @@
 	/* convert configuration, if necessary */
 	convert_config();
 
-	/* Tune the system */
-	system_tuning();
+	/* Create /etc/rc.conf file */
+	system_rcconf_generate();
 
 	/* Generate local user database(s) */
 	system_create_usermanagement();
@@ -168,9 +168,6 @@
 
 	/* Start Dynamic DNS service */
 	services_dynamicdns_configure();
-
-	/* Start UPnP service */
-	services_upnp_configure();
 
 	/* execute the rc scripts of extensions */
 	system_do_extensions();

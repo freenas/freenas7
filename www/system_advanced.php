@@ -99,15 +99,13 @@ if ($_POST) {
 			}
 		}
 
-		if (isset($config['system']['tune']))
-			system_tuning();
-
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= services_smart_configure();
 			$retval |= services_powerd_configure();
 			$retval |= services_mdnsresponder_configure();
+			$retval |= rc_update_service("systune",isset($config['system']['tune']));
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

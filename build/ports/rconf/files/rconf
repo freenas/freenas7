@@ -1,0 +1,65 @@
+#!/bin/sh
+#
+# Copyright (c) 2007 Volker Theile <votdev@gmx.de>.
+# All rights reserved.
+#
+#set -x
+
+cmd=${1}
+service=${2}
+
+usage() {
+cat  << FOO
+usage: ${0} -e|enable service
+       ${0} -d|disable service
+       ${0} -r|remove service
+
+examples:
+       # ${0} enable sshd
+       Set sshd_enable="YES" in /etc/rc.conf.
+
+       # rc-update disable sshd
+       Set sshd_enable="NO" in /etc/rc.conf.
+
+       # rc-update remove sshd
+       Delete sshd_enable in /etc/rc.conf.
+FOO
+	exit 1
+}
+
+remove() {
+	for _line in `cat /etc/rc.conf`; do
+		if [ ${service} != ${_line%_enable=*} ]; then
+			echo ${_line} >> /etc/rc.conf.tmp
+		fi
+	done
+	mv -f /etc/rc.conf.tmp /etc/rc.conf
+}
+
+if [ $# -lt 2 ]; then
+	usage
+	exit 1
+fi
+
+case ${cmd} in
+	enable|-e)
+		remove
+		echo "${service}_enable=\"YES\"" >> /etc/rc.conf
+		;;
+
+	disable|-d)
+		remove
+		echo "${service}_enable=\"NO\"" >> /etc/rc.conf
+		;;
+
+	remove|-r)
+		remove
+		;;
+
+	*)
+		usage
+		exit 1
+		;;
+esac
+
+exit 0

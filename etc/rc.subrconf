@@ -1,0 +1,31 @@
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+#
+# rc.subrconf
+#	functions used by various rc scripts
+#
+
+#
+# create_conf_file
+#	Create configuration file for the given service.
+#
+create_conf_file()
+{
+	_file="/etc/rc.d.conf/${name}"
+
+	if [ -n "${rcvar}" ]; then
+		if checkyesno ${rcvar}; then
+			if [ ! -e "${_file}" ]; then
+				debug "create_conf_file: no such file (${_file})"
+				return 1
+			fi
+
+			if [ ! -x ${_file} ]; then
+				info "create_conf_file: cannot run ($_file)."
+				return 1
+			fi
+
+			eval $_file
+		fi
+	fi
+}

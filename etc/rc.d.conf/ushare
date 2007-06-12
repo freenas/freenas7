@@ -1,6 +1,7 @@
+#!/usr/local/bin/php -f
 <?php
 /*
-	rc.inc
+	ushare.inc
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
@@ -29,45 +30,51 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-require_once("functions.inc");
-require_once("util.inc");
+	require_once("config.inc");
+	require_once("functions.inc");
+	require_once("util.inc");
 
-// Execute rc script.
-// Return 0 if successful, otherwise 1.
-function rc_exec_script($scriptname) {
-	exec("{$scriptname} >/dev/null 2>&1", $output, $retval);
-	return $retval;
-}
+	global $config, $g;
 
-// Execute rc script asynchron.
-// Return 0 if successful, otherwise 1.
-function rc_exec_script_async($scriptname) {
-	exec("nohup {$scriptname} >/dev/null 2>&1 &", $output, $retval);
-	return $retval;
-}
-
-// Update service (Modify rc.conf and execute rc script).
-// Return 0 if successful, otherwise 1.
-function rc_update_service($name,$enabled) {
-	$retval = 0;
-
-	// Update rc.conf and execute rc script.
-	if ($enabled) {
-		mwexec("/usr/local/sbin/rconf enable {$name}");
-		$retval = rc_exec_script("/etc/rc.d/{$name} start");
-		if (0 == $retval)
-			write_log("{$name} service started");
-		else
-			write_log("Failed to start service {$name}");
-	} else {
-		mwexec("/usr/local/sbin/rconf disable {$name}");
-		$retval = rc_exec_script("/etc/rc.d/{$name} stop");
-		if (0 == $retval)
-			write_log("{$name} service stopped");
-		else
-			write_log("Failed to stop service {$name}");
+	$fd = fopen("{$g['varetc_path']}/ushare.conf", "w");
+	if (!$fd) {
+		$message = "Error: Can't open ushare.conf in services_upnp_configure()";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
 	}
 
-	return $retval;
-}
+	/* Setup a multicast route for UPnP messages. */
+	$result = mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
+
+	$ushareconf = <<<EOD
+USHARE_NAME={$config['upnp']['name']}
+USHARE_IFACE={$config['upnp']['if']}
+USHARE_OVERRIDE_ICONV_ERR=YES
+
+EOD;
+
+	if ($config['upnp']['port']) {
+$ushareconf .= <<<EOD
+USHARE_PORT={$config['upnp']['port']}
+
+EOD;
+	}
+
+	$content = "";
+	if (is_array($config['upnp']['content'])) {
+		foreach($config['upnp']['content'] as $contentv) {
+			$content .= "\"$contentv\" ";
+		}
+	}
+
+	$ushareconf .= <<<EOD
+USHARE_DIR={$content}
+
+EOD;
+
+	fwrite($fd, $ushareconf);
+	fclose($fd);
+
+	return 0;
 ?>
