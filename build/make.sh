@@ -577,15 +577,32 @@ update_sources() {
 use_svn() {
 	echo "Replacing old code with SVN code"
 
-	cp -v -p $FREENAS_SVNDIR/etc/*.* $FREENAS_ROOTFS/etc
-	cp -v -p $FREENAS_SVNDIR/etc/* $FREENAS_ROOTFS/etc
-	cp -v -p $FREENAS_SVNDIR/etc/inc/*.* $FREENAS_ROOTFS/etc/inc
-	cp -v -p $FREENAS_SVNDIR/etc/defaults/*.* $FREENAS_ROOTFS/etc/defaults
-	cp -v -p $FREENAS_SVNDIR/etc/rc.d/*.* $FREENAS_ROOTFS/etc/rc.d
-	cp -v -p $FREENAS_SVNDIR/etc/rc.d.conf/*.* $FREENAS_ROOTFS/etc/rc.d.conf
-	cp -v -p $FREENAS_SVNDIR/www/*.* $FREENAS_ROOTFS/usr/local/www
-	cp -v -p $FREENAS_SVNDIR/www/syntaxhighlighter/*.* $FREENAS_ROOTFS/usr/local/www/syntaxhighlighter
-	cp -v -p $FREENAS_SVNDIR/conf/*.* $FREENAS_ROOTFS/conf.default
+	cd $FREENAS_SVNDIR/etc
+	cp -v -p * $FREENAS_ROOTFS/etc
+
+	cd $FREENAS_SVNDIR/etc/inc
+	cp -v -p * $FREENAS_ROOTFS/etc/inc
+
+	cd $FREENAS_SVNDIR/etc/defaults
+	cp -v -p * $FREENAS_ROOTFS/etc/defaults
+	
+	cd $FREENAS_SVNDIR/etc/rc.d
+	cp -v -p * $FREENAS_ROOTFS/etc/rc.d
+
+	cd $FREENAS_SVNDIR/etc/rc.d.conf
+	cp -v -p * $FREENAS_ROOTFS/etc/rc.d.conf
+
+	cd $FREENAS_SVNDIR/etc/pam.d
+	cp -v -p * $FREENAS_ROOTFS/etc/pam.d
+
+	cd $FREENAS_SVNDIR/www
+	cp -v -p * $FREENAS_ROOTFS/usr/local/www
+
+	cd $FREENAS_SVNDIR/www/syntaxhighlighter
+	cp -v -p * $FREENAS_ROOTFS/usr/local/www/syntaxhighlighter
+
+	cd $FREENAS_SVNDIR/conf
+	cp -v -p * $FREENAS_ROOTFS/conf.default
 
 	return 0
 }
