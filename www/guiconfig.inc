@@ -43,6 +43,7 @@ if (!$omit_nocacheheaders) {
 /* parse the configuration and include all configuration functions */
 require_once("config.inc");
 require_once("functions.inc");
+require_once("rc.inc");
 
 /* Set the current language */
 system_language_load();
@@ -168,26 +169,6 @@ function print_input_errors($input_errors) {
 	}
 	echo "</ul></span>";
 	echo "</td></tr></table></p>";
-}
-
-function exec_rc_script($scriptname) {
-	global $d_sysrebootreqd_path;
-	
-	if (file_exists($d_sysrebootreqd_path))
-		return 0;
-	
-	exec($scriptname . " >/dev/null 2>&1", $execoutput, $retval);
-	return $retval; 
-}
-
-function exec_rc_script_async($scriptname) {
-	global $d_sysrebootreqd_path;
-	
-	if (file_exists($d_sysrebootreqd_path))
-		return 0;
-		
-	exec("nohup " . $scriptname . " >/dev/null 2>&1 &", $execoutput, $retval);
-	return $retval; 
 }
 
 function verify_gzip_file($fname) {

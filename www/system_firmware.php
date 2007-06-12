@@ -90,14 +90,14 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 
 	if ($mode) {
 		if ($mode === "enable") {
-			$retval = exec_rc_script("/etc/rc.firmware enable");
+			$retval = rc_exec_script("/etc/rc.firmware enable");
 			if (0 == $retval) {
 				touch($d_fwupenabled_path);
 			} else {
 				$input_errors[] = gettext("Failed to create in-memory file system.");
 			}
 		} else if ($mode === "disable") {
-			exec_rc_script("/etc/rc.firmware disable");
+			rc_exec_script("/etc/rc.firmware disable");
 			if (file_exists($d_fwupenabled_path))
 				unlink($d_fwupenabled_path);
 		} else if ($mode === "upgrade") {
@@ -121,7 +121,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 
 			// Cleanup if there were errors.
 			if ($input_errors) {
-				exec_rc_script("/etc/rc.firmware disable");
+				rc_exec_script("/etc/rc.firmware disable");
 				if (file_exists($d_fwupenabled_path))
 					unlink($d_fwupenabled_path);
 			}
@@ -131,10 +131,10 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 				touch($d_firmwarelock_path);
 
 				if ($g['platform'] === "embedded") {
-					exec_rc_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
+					rc_exec_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
 				}
 				else if ($g['platform'] === "full") {
-					exec_rc_script_async("/etc/rc.firmware fullupgrade {$g['ftmp_path']}/firmware.img");
+					rc_exec_script_async("/etc/rc.firmware fullupgrade {$g['ftmp_path']}/firmware.img");
 				}
 
 				$savemsg = sprintf(gettext("The firmware is now being installed. %s will reboot automatically."), get_product_name());
