@@ -5,7 +5,7 @@
 	part of FreeNAS (http://freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
 	
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -42,6 +42,14 @@ if (strcmp($lancfg['ipaddr'],"dhcp") == 0) {
 	$pconfig['type'] = "Static";
 	$pconfig['ipaddr'] = $lancfg['ipaddr'];
 	$pconfig['subnet'] = $lancfg['subnet'];
+}
+
+if (strcmp($lancfg['ipv6addr'],"auto") == 0) {
+	$pconfig['ipv6type'] = "Auto";
+	$pconfig['ipv6addr'] = get_ipv6addr($lancfg['if']);
+} else {
+	$pconfig['ipv6type'] = "Static";
+	$pconfig['ipv6addr'] = $lancfg['ipv6addr'];
 }
 
 $pconfig['gateway'] = get_defaultgateway();
@@ -98,6 +106,13 @@ if ($_POST) {
 			$config['interfaces']['lan']['gateway'] = $_POST['gateway'];
 		} else if (strcmp($_POST['type'],"DHCP") == 0) {
 			$config['interfaces']['lan']['ipaddr'] = "dhcp";
+		}
+		
+		if(strcmp($_POST['ipv6type'],"Static") == 0) {
+			$config['interfaces']['lan']['ipv6addr'] = $_POST['ipv6addr'];
+			$config['interfaces']['lan']['ipv6gateway'] = $_POST['ipv6gateway'];
+		} else if (strcmp($_POST['type'],"Auto") == 0) {
+			$config['interfaces']['lan']['ipv6addr'] = "auto";
 		}
 
 		$config['interfaces']['lan']['mtu'] = $_POST['mtu'];
@@ -182,6 +197,25 @@ function type_change() {
       break;
   }
 }
+function ipv6_type_change() {
+  switch(document.iform.type.selectedIndex)
+  {
+		case 0: /* Static */
+		  /* use current ip address as default */
+      document.iform.ipv6addr.value = "<?=htmlspecialchars(get_ipv6addr($lancfg['if']))?>";
+
+      document.iform.ipv6addr.disabled = 0;
+      document.iform.ipv6gateway.disabled = 0;
+
+      break;
+
+    case 1: /* Autoconfigure */
+      document.iform.ipv6addr.disabled = 1;
+      document.iform.ipv6gateway.disabled = 1;
+
+      break;
+  }
+}
 // -->
 </script>
 <form action="interfaces_lan.php" method="post" name="iform" id="iform">
@@ -193,7 +227,7 @@ function type_change() {
 <?php endif; ?>
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=gettext("General configuration"); ?></td>
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("IPv4 Configuration"); ?></td>
     </tr>
     <tr> 
     	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
@@ -241,6 +275,35 @@ function type_change() {
         <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled><br>
         <span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
       </td>
+    </tr>
+	<tr> 
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("IPv6 Configuration"); ?></td>
+    </tr>
+    <tr> 
+    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
+      <td width="78%" class="vtable">
+  			<select name="ipv6type" class="formfld" id="ipv6type" onchange="ipv6_type_change()">
+          <?php $opts = split(" ", "Static Auto"); foreach ($opts as $opt): ?>
+          <option <?php if ($opt == $pconfig['ipv6type']) echo "selected";?>> 
+            <?=htmlspecialchars($opt);?>
+          </option>
+          <?php endforeach; ?>
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv6 address"); ?></td>
+      <td width="78%" class="vtable"> 
+        <?=$mandfldhtml;?><input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="20" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
+      </td>
+    </tr>
+     <tr> 
+      <td valign="top" class="vncell"><?=gettext("IPv6 Gateway"); ?></td>
+      <td class="vtable">
+        <input name="ipv6gateway" type="text" class="formfld" id="ipv6gateway" size="20" value="<?=htmlspecialchars($pconfig['ipv6gateway']);?>">
+      </td>
+	 <tr> 
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("Global Configuration"); ?></td>
     </tr>
     <tr> 
       <td valign="top" class="vncell"><?=gettext("MTU"); ?></td>
@@ -307,6 +370,7 @@ function type_change() {
 <script language="JavaScript">
 <!--
 type_change();
+ipv6_type_change();
 //-->
 </script>
 <?php include("fend.inc"); ?>

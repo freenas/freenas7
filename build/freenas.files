@@ -209,6 +209,9 @@ sbin/nologin
 ## ping -- send ICMP ECHO_REQUEST packets to network hosts
 sbin/ping
 
+## ping -- -- send ICMPv6 ECHO_REQUEST packets to network hosts
+sbin/ping6
+
 ## route -- manually manipulate the routing tables
 sbin/route
 

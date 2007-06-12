@@ -445,7 +445,11 @@ create_iso_light() {
 }
 
 create_full() {
-	#### CODE NOT FINISH ######
+	#### Create full release ######
+	
+	#use SVN
+	[ -d $FREENAS_SVNDIR ] && use_svn ;
+	
 	echo "FULL: Generating $FREENAS_PRODUCTNAME tgz update file"	
 	
 	PLATFORM="$FREENAS_ARCH-full"

@@ -353,4 +353,19 @@ EOD;
 
     return 0;
 }
+
+function interfaces_auto_configure($if)
+{
+    global $config, $g;
+
+    /* Configure the kernel for receiving RA */
+	
+	mwexec("/sbin/sysctl net.inet6.ip6.accept_rtadv=1");
+
+    /* fire up rtsol client */
+    mwexec("/sbin/rtsol " . escapeshellarg($if));
+
+    return 0;
+}
+
 ?>

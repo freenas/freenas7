@@ -2,7 +2,7 @@
 /*
 	util.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -1135,7 +1135,7 @@ function get_ifname($if)
   return $if;
 }
 
-// Get local IP address.
+// Get local IPv4 address.
 function get_ipaddr($if)
 {
   $if = get_ifname($if);
@@ -1158,6 +1158,33 @@ function get_ipaddr($if)
 
   if (strcmp($ipaddr,"") == 0)
     write_console("Failed to get IP address for interface {$if}. ");
+
+  return $ipaddr;
+}
+
+// Get local IPv6 address.
+function get_ipv6addr($if)
+{
+  $if = get_ifname($if);
+
+  unset($ipaddr);
+  exec("/usr/bin/netstat -inW -f inet6 -I {$if}", $inetinfo);
+  array_shift($inetinfo);
+
+  foreach($inetinfo as $inet)
+  {
+    $ainet = preg_split("/\s+/", $inet);
+    $ifname = chop($ainet[0]);
+
+    if (strncmp($ifname,$if,strlen($if)) == 0)
+    {
+      $ipaddr = chop($ainet[3]);
+      break;
+    }
+  }
+
+  if (strcmp($ipaddr,"") == 0)
+    write_console("Failed to get IPv6 address for interface {$if}. ");
 
   return $ipaddr;
 }
