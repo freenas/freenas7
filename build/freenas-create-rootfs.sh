@@ -62,6 +62,8 @@ mkdir etc/inc ;
 mkdir etc/pam.d ;
 mkdir etc/ssh ;
 mkdir etc/iscsi ;
+mkdir etc/rc.d ;
+mkdir etc/rc.d.conf ;
 mkdir lib ;
 mkdir lib/geom ;
 mkdir libexec ;
