@@ -12,9 +12,7 @@ NO_WRKSUBDIR=		yes
 DISTFILES=
 PLIST_FILES=	sbin/${PORTNAME}
 
-.include <bsd.port.pre.mk>
-
 do-install:
-	${INSTALL_SCRIPT} ${FILESDIR}/${PORTNAME} ${PREFIX}/sbin/
+	${INSTALL_SCRIPT} ${FILESDIR}/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/sbin/
 
-.include <bsd.port.post.mk>
+.include "bsd.freenas.mk"
