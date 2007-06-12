@@ -581,6 +581,8 @@ use_svn() {
 	cp -v -p $FREENAS_SVNDIR/etc/* $FREENAS_ROOTFS/etc
 	cp -v -p $FREENAS_SVNDIR/etc/inc/*.* $FREENAS_ROOTFS/etc/inc
 	cp -v -p $FREENAS_SVNDIR/etc/defaults/*.* $FREENAS_ROOTFS/etc/defaults
+	cp -v -p $FREENAS_SVNDIR/etc/rc.d/*.* $FREENAS_ROOTFS/etc/rc.d
+	cp -v -p $FREENAS_SVNDIR/etc/rc.d.conf/*.* $FREENAS_ROOTFS/etc/rc.d.conf
 	cp -v -p $FREENAS_SVNDIR/www/*.* $FREENAS_ROOTFS/usr/local/www
 	cp -v -p $FREENAS_SVNDIR/www/syntaxhighlighter/*.* $FREENAS_ROOTFS/usr/local/www/syntaxhighlighter
 	cp -v -p $FREENAS_SVNDIR/conf/*.* $FREENAS_ROOTFS/conf.default
