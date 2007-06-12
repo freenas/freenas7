@@ -120,7 +120,7 @@ function interfaces_lan_configure()
 	/* Disable IPv6 forwaring (should be allready done) */
 	mwexec("/sbin/sysctl net.inet6.ip6.forwarding=0");
 
-	/* install multicast route */
+	/* install multicast route (for uPnP)*/
 	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lanif));
 
 	if (!$g['booting']) {
