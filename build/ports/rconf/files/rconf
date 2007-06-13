@@ -8,21 +8,28 @@
 cmd=${1}
 service=${2}
 
+. /etc/rc.subr
+
 usage() {
 cat  << FOO
-usage: ${0} -e|enable service
-       ${0} -d|disable service
-       ${0} -r|remove service
+usage: ${0} enable servicename
+       ${0} disable servicename
+       ${0} remove servicename
+       ${0} rcvar servicename
 
 examples:
        # ${0} enable sshd
        Set sshd_enable="YES" in /etc/rc.conf.
 
-       # rc-update disable sshd
+       # ${0} disable sshd
        Set sshd_enable="NO" in /etc/rc.conf.
 
-       # rc-update remove sshd
+       # ${0} remove sshd
        Delete sshd_enable in /etc/rc.conf.
+       
+       # ${0} rcvar sshd
+       Display what rc.conf variable is used (if any).
+       Return 0 if YES, otherwise 1
 FOO
 	exit 1
 }
@@ -42,18 +49,27 @@ if [ $# -lt 2 ]; then
 fi
 
 case ${cmd} in
-	enable|-e)
+	enable)
 		remove
 		echo "${service}_enable=\"YES\"" >> /etc/rc.conf
 		;;
 
-	disable|-d)
+	disable)
 		remove
 		echo "${service}_enable=\"NO\"" >> /etc/rc.conf
 		;;
 
-	remove|-r)
+	remove)
 		remove
+		;;
+
+	rcvar)
+		load_rc_config ${service}
+		if checkyesno "${service}_enable"; then
+			exit 0
+		else
+			exit 1
+		fi
 		;;
 
 	*)

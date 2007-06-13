@@ -46,9 +46,17 @@ function rc_exec_script_async($scriptname) {
 	return $retval;
 }
 
-// Check service status.
+// Check if service is enabled.
+// Looks for xxx_enabled="YES|NO" in rc.conf.
+// Return 0 if service is enabled, otherwise 1.
+function rc_is_service_enabled($name) {
+	$retval = mwexec("/usr/local/sbin/rconf rcvar {$name}");
+	return $retval;
+}
+
+// Check if service is running.
 // Return 0 if service is running, otherwise 1.
-function rc_get_service_status($name) {
+function rc_is_service_running($name) {
 	$retval = rc_exec_script("/etc/rc.d/{$name} status");
 	return $retval;
 }
@@ -59,7 +67,7 @@ function rc_update_service($name,$enabled) {
 	$retval = 0;
 
 	// Check if service is running.
-	$state = rc_get_service_status($name);
+	$running = rc_is_service_running($name);
 
 	// Update rc.conf and execute rc script.
 	if ($enabled) {
@@ -67,7 +75,7 @@ function rc_update_service($name,$enabled) {
 		mwexec("/usr/local/sbin/rconf enable {$name}");
 
 		// Start/Restart service.
-		$cmd = (0 == $state) ? "restart" : "start";
+		$cmd = (0 == $running) ? "restart" : "start";
 		$retval = rc_exec_script("/etc/rc.d/{$name} {$cmd}");
 		if (0 == $retval) {
 			write_log("{$name} service {$cmd}ed");
@@ -75,11 +83,8 @@ function rc_update_service($name,$enabled) {
 			write_log("Failed to {$cmd} service {$name}");
 		}
 	} else {
-		// Update rc.conf.
-		mwexec("/usr/local/sbin/rconf disable {$name}");
-
 		// Stop service if necessary. 
-		if (0 == $state) {
+		if (0 == $running) {
 			$retval = rc_exec_script("/etc/rc.d/{$name} stop");
 			if (0 == $retval) {
 				write_log("{$name} service stopped");
@@ -87,6 +92,9 @@ function rc_update_service($name,$enabled) {
 				write_log("Failed to stop service {$name}");
 			}
 		}
+
+		// Update rc.conf.
+		mwexec("/usr/local/sbin/rconf disable {$name}");
 	}
 
 	return $retval;
