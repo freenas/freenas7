@@ -925,87 +925,6 @@ function services_unison_configure() {
 	return $result;
 }
 
-/* Stop and start Dynamic DNS client
-Return 0 if OK, 1 or error code if error */
-function services_dynamicdns_configure() {
-	global $config, $g;
-
-	$result = 0;
-
-	/* Kill any running inadyn */
-	killbyname("inadyn");
-
-	if(isset($config['dynamicdns']['enable'])) {
-		if($g['booting'])
-			write_console("Starting Dynamic DNS service... ");
-
-		$fd = fopen("{$g['varetc_path']}/inadyn.conf", "w");
-		if (!$fd) {
-			$message = "Error: Can't open inadyn.conf in services_dynamicdns_configure()";
-			write_console($message . ".\n");
-			write_log($message);
-			return 1;
-		}
-
-		/* Get the service type */
-		$servicetype = "";
-		switch($config['dynamicdns']['provider']) {
-			case "dyndns.org":					$servicetype = "dyndns@dyndns.org";
-																	break;
-			case "freedns.afraid.org":	$servicetype = "default@freedns.afraid.org";
-																	break;
-			case "zoneedit.com":				$servicetype = "default@zoneedit.com";
-																	break;
-			case "no-ip.com":						$servicetype = "default@no-ip.com";
-																	break;
-		}
-
-		/* Set command parameters. */
-		$inadynconf = <<<EOD
---background
---syslog
---dyndns_system {$servicetype}
---alias {$config['dynamicdns']['domainname']}
---username "{$config['dynamicdns']['username']}"
---password "{$config['dynamicdns']['password']}"
-
-EOD;
-
-		/* Set additional command parameters. */
-		if ($config['dynamicdns']['updateperiod']) {
-			$inadynconf .= <<<EOD
---update_period_sec {$config['dynamicdns']['updateperiod']}
-
-EOD;
-		}
-
-		if ($config['dynamicdns']['forcedupdateperiod']) {
-			$inadynconf .= <<<EOD
---forced_update_period {$config['dynamicdns']['forcedupdateperiod']}
-
-EOD;
-		}
-
-		fwrite($fd, $inadynconf);
-		fclose($fd);
-
-		/* Run inadyn. */
-		$result = mwexec("/usr/local/bin/inadyn --input_file {$g['varetc_path']}/inadyn.conf");
-
-		if(!$result) {
-			if($g['booting'])
-				write_console("done\n");
-			write_log("Dynamic DNS service started");
-		} else {
-			if($g['booting'])
-				write_console("failed\n");
-			write_log("Error: Failed to start Dynamic DNS service");
-		}
-	}
-
-	return $result;
-}
-
 function services_cron_configure() {
 	global $config, $g;
 
@@ -1544,16 +1463,8 @@ EOD;
 	return $result;
 }
 
-function services_nis_configure()
-{
-	global $config, $g;
-
-	return 0;
-}
-
 /* Start iscsi initiator
 Return 0 if Ok, 1 or error code if problem */
-
 function services_iscsiinit_configure()
 {
 	global $config, $g;

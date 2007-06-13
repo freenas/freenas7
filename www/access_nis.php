@@ -58,11 +58,9 @@ if ($_POST) {
 		write_config();
 		
 		$retval = 0;
-		if (!file_exists($d_sysrebootreqd_path))
-		{
-			/* nuke the cache file */
+		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			services_nis_configure();
+			$retval |= rc_update_service("nis",isset($config['nis']['enable']));
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

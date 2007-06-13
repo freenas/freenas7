@@ -38,7 +38,7 @@
 
 	$fd = fopen("{$g['varetc_path']}/mdnsresponder.conf", "w");
 	if (!$fd) {
-		$message = "Error: Can't create mdnsresponder.conf";
+		$message = "Error: Failed to create mdnsresponder.conf";
 		write_console($message . ".\n");
 		write_log($message);
 		return 1;

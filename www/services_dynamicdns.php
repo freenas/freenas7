@@ -80,7 +80,7 @@ if($_POST) {
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= services_dynamicdns_configure();
+			$retval |= rc_update_service("inadyn",isset($config['dynamicdns']['enable']));
 			config_unlock();
 		}
 

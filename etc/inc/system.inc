@@ -51,6 +51,10 @@ function system_rcconf_generate() {
 		mwexec("/usr/local/sbin/rconf enable mdnsresponder");
 	}
 
+	if (isset($config['dynamicdns']['enable'])) {
+		mwexec("/usr/local/sbin/rconf enable inadyn");
+	}
+
 	return 0;
 }
 

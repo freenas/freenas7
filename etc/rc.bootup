@@ -130,9 +130,6 @@
 	// Should be done before the mount disk... but it use it
 	system_swap_configure();
 
-	/* start NIS service */
-	services_nis_configure();
-
 	/* start SAMBA service */
 	services_samba_configure();
 
@@ -162,9 +159,6 @@
 
 	/* Start cron */
 	services_cron_configure();
-
-	/* Start Dynamic DNS service */
-	services_dynamicdns_configure();
 
 	/* execute the rc scripts of extensions */
 	system_do_extensions();
