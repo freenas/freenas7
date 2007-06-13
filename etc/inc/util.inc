@@ -1292,14 +1292,14 @@ function get_defaultgateway() {
 	return $result;
 }
 
-// Returns default gateway IPv4
+// Returns default gateway IPv6
 function get_ipv6defaultgateway() {
 	global $config;
 
 	$result = "";
 
-	switch ($config['interfaces']['lan']['ipaddr']) {
-		case 'dhcp':
+	switch ($config['interfaces']['lan']['ipv6addr']) {
+		case 'auto':
 			exec("/sbin/route -inet6 -n get default", $rawdata);
 			foreach($rawdata as $data) {
 				$adata = preg_split("/\s+/", trim($data));

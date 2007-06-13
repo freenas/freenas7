@@ -50,6 +50,7 @@ if (strcmp($lancfg['ipv6addr'],"auto") == 0) {
 } else {
 	$pconfig['ipv6type'] = "Static";
 	$pconfig['ipv6addr'] = $lancfg['ipv6addr'];
+	$pconfig['ipv6subnet'] = $lancfg['ipv6subnet'];
 }
 
 $pconfig['gateway'] = get_defaultgateway();
@@ -111,8 +112,9 @@ if ($_POST) {
 		
 		if(strcmp($_POST['ipv6type'],"Static") == 0) {
 			$config['interfaces']['lan']['ipv6addr'] = $_POST['ipv6addr'];
+			$config['interfaces']['lan']['ipv6subnet'] = $_POST['ipv6subnet'];
 			$config['interfaces']['lan']['ipv6gateway'] = $_POST['ipv6gateway'];
-		} else if (strcmp($_POST['type'],"Auto") == 0) {
+		} else if (strcmp($_POST['ipv6type'],"Auto") == 0) {
 			$config['interfaces']['lan']['ipv6addr'] = "auto";
 		}
 

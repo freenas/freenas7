@@ -2,7 +2,7 @@
 /*
 	config.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -734,13 +734,13 @@ function convert_config()
 	if ($config['version'] === "1.9") {
 		
 		$config['interfaces']['lan']['ipv6addr']="auto";
-		$config['interfaces']['lan']['ipvsubnet']=64;
+		$config['interfaces']['lan']['ipv6subnet']=64;
 		
 		for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 			$optcfg = $config['interfaces']['opt' . $i];
 			if (isset($optcfg['enable'])) {
 				$config['interfaces']['opt' . $i]['ipv6addr']="auto";
-				$config['interfaces']['opt' . $i]['ipvsubnet']=64;
+				$config['interfaces']['opt' . $i]['ipv6subnet']=64;
 			}
 		}
 		
