@@ -386,6 +386,9 @@ usr/sbin/mtree
 # diskinfo -- get information about disk device
 usr/sbin/diskinfo
 
+# sed -- stream editor
+usr/bin/sed
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
