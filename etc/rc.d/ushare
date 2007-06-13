@@ -3,7 +3,8 @@
 # All rights reserved.
 
 # PROVIDE: ushare
-# REQUIRE: NETWORKING
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
 
 . /etc/rc.subr
 . /etc/rc.subrconf

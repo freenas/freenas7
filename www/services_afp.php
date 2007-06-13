@@ -68,7 +68,7 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= services_afpd_configure();
-			$retval |= services_mdnsresponder_configure(); // Update and announce service via zeroconf.
+			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

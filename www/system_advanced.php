@@ -104,7 +104,7 @@ if ($_POST) {
 			config_lock();
 			$retval |= services_smart_configure();
 			$retval |= services_powerd_configure();
-			$retval |= services_mdnsresponder_configure();
+			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
 			$retval |= rc_update_service("systune",isset($config['system']['tune']));
 			config_unlock();
 		}

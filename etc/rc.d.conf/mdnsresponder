@@ -1,0 +1,191 @@
+#!/usr/local/bin/php -f
+<?php
+/*
+	mdnsresponder.inc
+	Copyright © 2007 Volker Theile (votdev@gmx.de)
+  All rights reserved.
+
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+
+	1. Redistributions of source code must retain the above copyright notice,
+	   this list of conditions and the following disclaimer.
+
+	2. Redistributions in binary form must reproduce the above copyright
+	   notice, this list of conditions and the following disclaimer in the
+	   documentation and/or other materials provided with the distribution.
+
+	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+	OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+	POSSIBILITY OF SUCH DAMAGE.
+*/
+	require_once("config.inc");
+	require_once("functions.inc");
+	require_once("util.inc");
+
+	global $config, $g;
+
+	$fd = fopen("{$g['varetc_path']}/mdnsresponder.conf", "w");
+	if (!$fd) {
+		$message = "Error: Can't create mdnsresponder.conf";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	// Check if WebGUI use HTTPS
+	if ($config['system']['webgui']['protocol'] === "https") {
+		if ($config['system']['webgui']['port']) {
+			$mdnsresponderconf = <<<EOD
+# mDNSResponderPosix configuration File
+#
+# This file contains the services to be announced to other Rendezvous aware
+# machines on the .local network
+#
+# Entries constist of four consecutive lines as follows:
+# NAME OF SERVICE
+# TYPE OF SERVICE (and, if different from .local, the domain seperated by a space)
+# PORT OF SERVICE
+# TXT RECORD (short description of service)
+#
+# For types: http://www.dns-sd.org/ServiceTypes.html
+
+{$config['system']['hostname']} WebAdmin Service
+_https._tcp. local.
+{$config['system']['webgui']['port']}
+path=/index.php
+
+EOD;
+		} else {
+		$mdnsresponderconf = <<<EOD
+{$config['system']['hostname']} WebAdmin Service
+_https._tcp. local.
+443
+path=/index.php
+
+EOD;
+		}
+		// if WebGUI don't use HTTPS then:
+		} else {
+			if ($config['system']['webgui']['port']) {
+				$mdnsresponderconf = <<<EOD
+{$config['system']['hostname']} WebAdmin Service
+_http._tcp. local.
+{$config['system']['webgui']['port']}
+path=/index.php
+
+EOD;
+			} else {
+				$mdnsresponderconf = <<<EOD
+{$config['system']['hostname']} WebAdmin Service
+_http._tcp. local.
+80
+path=/index.php
+
+EOD;
+			}
+		}
+
+	// Check if AFP service is enabled
+	if (isset($config['afp']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} AFP Service
+_afpovertcp._tcp. local.
+548
+
+EOD;
+	}
+
+	// Check if RSYNC service is enabled
+	if (isset($config['rsyncd']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} RSYNC Service
+_rsync._tcp. local.
+{$config['rsyncd']['port']}
+
+EOD;
+	}
+
+	// Check if SSH service is enabled
+	if (isset($config['sshd']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} SSH Service
+_ssh._tcp. local.
+{$config['sshd']['port']}
+
+EOD;
+	}
+
+	// Check if FTP service is enabled
+	if (isset($config['ftp']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} FTP Service
+_ftp._tcp. local.
+{$config['ftp']['port']}
+
+EOD;
+	}
+
+	// Check if Samba service is enabled
+	if (isset($config['samba']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} SMB Service
+_smb._tcp. local.
+139
+
+EOD;
+	}
+
+	// Check if NFS service is enabled
+	if (isset($config['nfs']['enable'])) {
+		/* If no share configured, exit */
+		if (!is_array($config['mounts']['mount'])) {
+			break;
+		}
+
+		$a_mount = &$config['mounts']['mount'];
+
+		foreach ($a_mount as $mount) {
+			$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} NFS Service
+_nfs._tcp. local.
+2049
+path=/mnt/{$mount['sharename']}
+
+EOD;
+		}
+	}
+
+	// Check if UPnP service is enabled
+	if (isset($config['upnp']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} UPnP Service
+_upnp._tcp. local.
+1900
+
+EOD;
+	}
+
+	fwrite($fd, $mdnsresponderconf);
+	fclose($fd);
+
+	return 0;
+?>

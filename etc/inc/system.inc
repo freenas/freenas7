@@ -47,6 +47,10 @@ function system_rcconf_generate() {
 		mwexec("/usr/local/sbin/rconf enable ushare");
 	}
 
+	if (isset($config['system']['zeroconf'])) {
+		mwexec("/usr/local/sbin/rconf enable mdnsresponder");
+	}
+
 	return 0;
 }
 
@@ -1359,62 +1363,6 @@ EOD;
 	}
 
 	return $result;
-}
-
-/* Set the tuning value
-return 0 */
-function system_tuning()
-{
-	/* fine tune kernel value */
-	global $config, $g;
-
-	if (isset($config['system']['tune'])) {
-		if ($g['booting']) {
-			write_console("Tuning the system... ");
-		}
-
-		mwexec('/sbin/sysctl net.inet.tcp.delayed_ack=0');
-		mwexec('/sbin/sysctl net.inet.tcp.sendspace=65536');
-		mwexec('/sbin/sysctl net.inet.tcp.recvspace=65536');
-		mwexec('/sbin/sysctl net.inet.udp.recvspace=65536');
-		mwexec('/sbin/sysctl net.inet.udp.maxdgram=57344');
-		mwexec('/sbin/sysctl net.local.stream.recvspace=65535');
-		mwexec('/sbin/sysctl net.local.stream.sendspace=65535');
-		mwexec('/sbin/sysctl kern.ipc.maxsockbuf=2097152');
-		mwexec('/sbin/sysctl kern.ipc.somaxconn=8192');
-		// This variable can be set on the boot conf file only:
-		// mwexec('/sbin/sysctl kern.ipc.maxsockets=16424');
-		mwexec('/sbin/sysctl kern.ipc.nmbclusters=32768');
-		mwexec('/sbin/sysctl kern.maxfiles=65536');
-		mwexec('/sbin/sysctl kern.maxfilesperproc=32768');
-		mwexec('/sbin/sysctl net.inet.tcp.inflight.enable=0');
-		mwexec('/sbin/sysctl net.inet.tcp.path_mtu_discovery=0');
-
-		if ($g['booting']) {
-			write_console("done\n");
-		}
-	}
-	else 	{
-		// Set the default value (if previously changed) if not booting mode
-		if (!$g['booting']) {
-			mwexec('/sbin/sysctl net.inet.tcp.delayed_ack=1');
-			mwexec('/sbin/sysctl net.inet.tcp.inflight.enable=1');
-			mwexec('/sbin/sysctl net.inet.tcp.path_mtu_discovery=1');
-			mwexec('/sbin/sysctl net.inet.tcp.sendspace=32768');
-			mwexec('/sbin/sysctl net.inet.tcp.recvspace=65536');
-			mwexec('/sbin/sysctl net.inet.udp.recvspace=42080');
-			mwexec('/sbin/sysctl net.inet.udp.maxdgram=9216');
-			mwexec('/sbin/sysctl net.local.stream.recvspace=8192');
-			mwexec('/sbin/sysctl net.local.stream.sendspace=8192');
-			mwexec('/sbin/sysctl kern.ipc.maxsockbuf=262144');
-			mwexec('/sbin/sysctl kern.ipc.somaxconn=128');
-			mwexec('/sbin/sysctl kern.ipc.nmbclusters=3072');
-			mwexec('/sbin/sysctl kern.maxfiles=1064');
-			mwexec('/sbin/sysctl kern.maxfilesperproc=957');
-		}
-	}
-
-	return 0;
 }
 
 /* Init language environment */

@@ -163,9 +163,6 @@
 	/* Start cron */
 	services_cron_configure();
 
-	/* Start mdnsresponder (Zeroconf/Bonjour) */
-	services_mdnsresponder_configure();
-
 	/* Start Dynamic DNS service */
 	services_dynamicdns_configure();
 

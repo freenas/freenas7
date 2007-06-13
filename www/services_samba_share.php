@@ -53,7 +53,7 @@ if($_POST) {
 		if(!file_exists($d_sysrebootreqd_path)) {
 		  config_lock();
 			$retval |= services_samba_configure();
-			$retval |= services_mdnsresponder_configure();
+			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
 			config_unlock();
 		}
 

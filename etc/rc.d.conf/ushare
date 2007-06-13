@@ -38,7 +38,7 @@
 
 	$fd = fopen("{$g['varetc_path']}/ushare.conf", "w");
 	if (!$fd) {
-		$message = "Error: Can't open ushare.conf in services_upnp_configure()";
+		$message = "Error: Can't create ushare.conf";
 		write_console($message . ".\n");
 		write_log($message);
 		return 1;

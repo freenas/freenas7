@@ -1,0 +1,20 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: mdnsresponder
+# REQUIRE: DAEMON ushare
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+. /etc/rc.subrconf
+
+name="mdnsresponder"
+rcvar=`set_rcvar`
+command="/usr/local/sbin/mDNSResponderPosix"
+command_args="-b -f /var/etc/${name}.conf"
+pidfile="/var/run/mDNSResponder.pid"
+
+load_rc_config $name
+create_conf_file $name
+run_rc_command "$1"

@@ -158,8 +158,7 @@ if ($_POST) {
 			$retval |= system_create_usermanagement();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
- 			$retval |= system_tuning();
- 			$retval |= services_mdnsresponder_configure(); // Update and announce service via zeroconf.
+ 			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
 			config_unlock();
 		}
 

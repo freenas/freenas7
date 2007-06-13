@@ -149,7 +149,7 @@ function interfaces_lan_configure()
 		$result |= services_rsyncd_configure();
 
 		/* Restart mdnsresponder (Zeroconf/Bonjour) */
-		$result |= services_mdnsresponder_configure();
+		/* $result |= services_mdnsresponder_configure(); */
 	}
 
 	if ($g['booting']) {
