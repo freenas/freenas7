@@ -119,6 +119,22 @@ function interfaces_lan_configure()
 	
 	/* Disable IPv6 forwaring (should be allready done) */
 	mwexec("/sbin/sysctl net.inet6.ip6.forwarding=0");
+	
+	switch ($lancfg['ipv6addr']) {
+		case 'auto':
+			interfaces_auto_configure($lanif);
+			break;
+
+		default:
+			mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " inet6 alias " . escapeshellarg($lancfg['ipv6addr'] . "/" . $lancfg['ipv6subnet']));
+
+			/* install default route */
+			if ($lancfg['gateway']) {
+				mwexec("/sbin/route delete default");
+				mwexec("/sbin/route add -inet6 default " . escapeshellarg($lancfg['ipv6gateway']));
+			}
+			break;
+	}
 
 	/* install multicast route (for uPnP)*/
 	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lanif));

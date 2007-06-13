@@ -77,6 +77,7 @@ Majors changes:
 - Add Dynamic DNS service
 - Permit to mount ISO files
 - Add packages build infrastructure and WebGUI
+- Add IPv6 support on the WebGUI
 - Upgrade fusefs-libs to 2.6.4 and fusefs-ntfs to 1.417
 - Code review from the FreeNAS core engine
 - Upgrade PHP to 5.2.3
@@ -99,7 +100,7 @@ Minors changes:
 - Fix bug in system_systime_set function. Thanks to Paul Wheels for the tip
 - Improve hidden diagnostic status.php page
 - ATA timeout default value (5) was changed to 15 second when graid5 is used
-- Add geom NOP: Will permit to add drives to an existing graid5 volume
+- Add geom NOP: Will permit to add drives to an existing graid5 volume (still not possible from the WebGUI)
 - CIFS: Added option to enable/disable 'large readwrite' support
 - CIFS: Added option to enable/disable 'ea support'
 - CIFS: Added new "pipe-lined read support" for improved performance when transferring files with Vista client

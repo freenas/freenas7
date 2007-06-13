@@ -53,6 +53,7 @@ if (strcmp($lancfg['ipv6addr'],"auto") == 0) {
 }
 
 $pconfig['gateway'] = get_defaultgateway();
+$pconfig['ipv6gateway'] = get_ipv6defaultgateway();
 $pconfig['dhcphostname'] = $config['system']['hostname'] . "." . $config['system']['domain'];
 $pconfig['dhcpclientidentifier'] = get_macaddr($lancfg['if']);
 $pconfig['mtu'] = $lancfg['mtu'];
@@ -146,7 +147,7 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
-/* Calculate default netmask bits for network's class. */
+/* Calculate default IPv4 netmask bits for network's class. */
 function calc_netmask_bits(ipaddr) {
     if (ipaddr.search(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) != -1) {
         var adr = ipaddr.split(/\./);
@@ -188,7 +189,7 @@ function type_change() {
 
     case 1: /* DHCP */
       document.iform.ipaddr.disabled = 1;
-    	document.iform.subnet.disabled = 1;
+		document.iform.subnet.disabled = 1;
       document.iform.gateway.disabled = 1;
 
       showElementById('dhcpclientidentifier_tr','show');
@@ -198,19 +199,21 @@ function type_change() {
   }
 }
 function ipv6_type_change() {
-  switch(document.iform.type.selectedIndex)
+  switch(document.iform.ipv6type.selectedIndex)
   {
 		case 0: /* Static */
 		  /* use current ip address as default */
       document.iform.ipv6addr.value = "<?=htmlspecialchars(get_ipv6addr($lancfg['if']))?>";
 
       document.iform.ipv6addr.disabled = 0;
+	  document.iform.ipv6subnet.disabled = 0;
       document.iform.ipv6gateway.disabled = 0;
 
       break;
 
     case 1: /* Autoconfigure */
       document.iform.ipv6addr.disabled = 1;
+	  document.iform.ipv6subnet.disabled = 1;
       document.iform.ipv6gateway.disabled = 1;
 
       break;
@@ -257,7 +260,7 @@ function ipv6_type_change() {
       </td>
     </tr>
      <tr> 
-      <td valign="top" class="vncell"><?=gettext("Gateway"); ?></td>
+      <td valign="top" class="vncell"><?=gettext("IPv4 Gateway"); ?></td>
       <td class="vtable">
         <input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>">
       </td>
@@ -295,6 +298,14 @@ function ipv6_type_change() {
       <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv6 address"); ?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="20" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
+		 / 
+        <select name="ipv6subnet" class="formfld" id="ipv6subnet">
+          <?php for ($i = 64; $i > 0; $i--): ?>
+          <option value="<?=$i;?>" <?php if ($i == $pconfig['ipv6subnet']) echo "selected"; ?>>
+          <?=$i;?>
+          </option>
+          <?php endfor; ?>
+        </select>
       </td>
     </tr>
      <tr> 

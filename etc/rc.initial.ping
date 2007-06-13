@@ -2,11 +2,12 @@
 <?php
 /*
 	rc.initial.ping
-	part of m0n0wall (http://m0n0.ch/wall)
 	
+	part of m0n0wall (http://neon1.net/m0n0wall)
 	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+	Modified for FreeNAS (http://www.freenas.org) by Olivier Cochard-Labbe <olivier@freenas.org>
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
 	
@@ -38,10 +39,26 @@
 	echo "\nEnter a host name or IP address: ";
 
 	$pinghost = chop(fgets($fp));
-	if ($pinghost) {
+	
+	if (is_ipv4addr($pinghost)) {
 		echo "\n";
+		echo "IPv4 address detected...\n";
 		passthru("/sbin/ping -c 3 -n " . escapeshellarg($pinghost));
 		echo "\nPress ENTER to continue.\n";
 		fgets($fp);
+	} else if (is_ipv6addr($pinghost)) {
+		echo "\n";
+		echo "IPv6 address detected...\n";
+		passthru("/sbin/ping6 -c 3 -n " . escapeshellarg($pinghost));
+		echo "\nPress ENTER to continue.\n";
+		fgets($fp);
+	} else {
+		echo "\n";
+		echo "Hostname supposed, trying IPv4 and IPv6 ping...\n";
+		passthru("/sbin/ping -c 3 -n " . escapeshellarg($pinghost));
+		passthru("/sbin/ping6 -c 3 -n " . escapeshellarg($pinghost));
+		echo "\nPress ENTER to continue.\n";
+		fgets($fp);
 	}
+	
 ?>

@@ -6,8 +6,6 @@
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -89,59 +87,81 @@ function is_numericint($arg) {
 	return (preg_match("/[^0-9]/", $arg) ? false : true);
 }
 
-/* returns true if $ipaddr is a valid dotted IPv4 address */
+/* returns true if $ipaddr is a valid IPv4 OR IPv6 address */
 function is_ipaddr($ipaddr) {
-	if (!is_string($ipaddr))
-		return false;
-
-	$ip_long = ip2long($ipaddr);
-	$ip_reverse = long2ip($ip_long);
-
-	if ($ipaddr === $ip_reverse)
-		return true;
-	else
-		return false;
+	
+	if  (filter_var($ipaddr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
+		$result = true ;
+	} else if (filter_var($ipaddr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
+		$result = true ;
+	} else {
+		$result = false ;
+	}
+	
+	return $result;
 }
 
-/* returns true if $ipaddr is a valid dotted IPv4 address or an alias thereof */
+/* returns true if $ipv4addr is a valid dotted IPv4 address */
+function is_ipv4addr($ipv4addr) {
+	return filter_var($ipv4addr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+}
+
+/* returns true if $ipv6addr is a valid dotted IPv6 address */
+function is_ipv6addr($ipv6addr) {
+	return filter_var($ipv6addr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6);
+}
+
+/* returns true if $ipaddr is a valid dotted IPv4 address, IPv6 or an alias thereof */
 function is_ipaddroralias($ipaddr) {
 
 	global $aliastable;
 
-	if (isset($aliastable[$ipaddr]) && is_ipaddr($aliastable[$ipaddr]))
+	if (isset($aliastable[$ipaddr]) && is_ipaddr($aliastable[$ipaddr])) {
 		return true;
-	else
+	} else {
 		return is_ipaddr($ipaddr);
+	}
 }
 
-/* returns true if $ipaddr is a valid dotted IPv4 address or any alias */
+/* returns true if $ipaddr is a valid dotted IPv4/IPv6 address or any alias */
 function is_ipaddroranyalias($ipaddr) {
 
 	global $aliastable;
 
-	if (isset($aliastable[$ipaddr]))
+	if (isset($aliastable[$ipaddr])) {
 		return true;
-	else
+	} else {
 		return is_ipaddr($ipaddr);
+	}
 }
 
-/* returns true if $subnet is a valid subnet in CIDR format */
+/* returns true if $subnet is a valid subnet in IPv4/IPv6 CIDR format */
 function is_subnet($subnet) {
-	if (!is_string($subnet))
-		return false;
 
+	if (!is_string($subnet)) {
+		$result = false ;
+	}
+	
 	list($hp,$np) = explode('/', $subnet);
+	
+	if (!is_ipaddr($hp)) {
+		$result = false ;
+	}
 
-	if (!is_ipaddr($hp))
-		return false;
+	// If it's an IPv4 address, but with a bitcount outise 1-32 range, there is a problem
+	if (is_ipv4addr($hp) && (!is_numeric($np) || ($np < 1) || ($np > 32))) {
+			$result = false ;
+	// If it's an IPv6 address, but with a bitcount outise 1-64 range, there is a problem
+	} else if (is_ipv6addr($hp) && (!is_numeric($np) || ($np < 1) || ($np > 64))) {
+		$result = false ;
+	} else {
+		$result = true ;
+	}
 
-	if (!is_numeric($np) || ($np < 1) || ($np > 32))
-		return false;
-
-	return true;
+	return $result;
 }
 
-/* returns true if $subnet is a valid subnet in CIDR format or an alias thereof */
+/* returns true if $subnet is a valid subnet in IPv4/IPv6 CIDR format or an alias thereof */
 function is_subnetoralias($subnet) {
 
 	global $aliastable;
@@ -1246,7 +1266,7 @@ function get_dnsserver() {
 }
 
 // Get the default gateway.
-// Returns default gateway IP
+// Returns default gateway IPv4
 function get_defaultgateway() {
 	global $config;
 
@@ -1254,7 +1274,7 @@ function get_defaultgateway() {
 
 	switch ($config['interfaces']['lan']['ipaddr']) {
 		case 'dhcp':
-			exec("/sbin/route -n get default", $rawdata);
+			exec("/sbin/route -inet -n get default", $rawdata);
 			foreach($rawdata as $data) {
 				$adata = preg_split("/\s+/", trim($data));
 				if (false !== strstr($adata[0],"gateway")) {
@@ -1266,6 +1286,32 @@ function get_defaultgateway() {
 
 		default:
 			$result = $config['interfaces']['lan']['gateway'];
+			break;
+	}
+
+	return $result;
+}
+
+// Returns default gateway IPv4
+function get_ipv6defaultgateway() {
+	global $config;
+
+	$result = "";
+
+	switch ($config['interfaces']['lan']['ipaddr']) {
+		case 'dhcp':
+			exec("/sbin/route -inet6 -n get default", $rawdata);
+			foreach($rawdata as $data) {
+				$adata = preg_split("/\s+/", trim($data));
+				if (false !== strstr($adata[0],"gateway")) {
+					$result = $adata[1];
+					break;
+				}
+			}
+			break;
+
+		default:
+			$result = $config['interfaces']['lan']['ipv6gateway'];
 			break;
 	}
 

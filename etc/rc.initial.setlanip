@@ -49,7 +49,7 @@
 			if ($lanip === "") {
 				exit(0);
 			}
-		} while (!is_ipaddr($lanip));
+		} while (!is_ipv4addr($lanip));
 
 		echo "\nSubnet masks are entered as bit counts (as in CIDR notation) in " . get_product_name() . ".\n";
 		echo "e.g. 255.255.255.0 = 24\n";
@@ -62,7 +62,7 @@
 			if ($lanbits === "") {
 				exit(0);
 			}
-		} while (!is_numeric($lanbits) || ($lanbits < 1) || ($lanbits > 31));
+		} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 31))) == false);
 
 		$config['interfaces']['lan']['ipaddr'] = $lanip;
 		$config['interfaces']['lan']['subnet'] = $lanbits;
@@ -73,7 +73,7 @@
 			if ($gatewayip === "") {
 				break;
 			}
-		} while (!is_ipaddr($gatewayip));
+		} while (!is_ipv4addr($gatewayip));
 
 		if ($gatewayip) {
 			$config['interfaces']['lan']['gateway'] = $gatewayip;
@@ -85,7 +85,7 @@
 			if ($dnsserverip === "") {
 				break;
 			}
-		} while (!is_ipaddr($dnsserverip));
+		} while (!is_ipv4addr($dnsserverip));
 
 		if ($dnsserverip) {
 			$config['system']['dnsserver'] = $dnsserverip;
@@ -98,12 +98,12 @@
 		$config['interfaces']['lan']['ipv6addr'] = "auto";
 	} else {
 		do {
-			echo "\nEnter new LAN IPv6 address (press 'Enter' to abort): ";
+			echo "\nEnter new LAN IPv6 address (press 'Enter' to skip): ";
 			$lanip = chop(fgets($fp));
 			if ($lanip === "") {
 				exit(0);
 			}
-		} while (!is_ipaddr($lanip));
+		} while (!is_ipv6addr($lanip));
 	}
 	
 	$config['interfaces']['lan']['ipv6addr'] = $lanip;

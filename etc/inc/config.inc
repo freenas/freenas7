@@ -728,6 +728,25 @@ function convert_config()
 		$config['version'] = "1.9";
 	}
 	
+	/* Convert 1.9 -> 2.0 */
+	/* Add ipv6 address type */
+	
+	if ($config['version'] === "1.9") {
+		
+		$config['interfaces']['lan']['ipv6addr']="auto";
+		$config['interfaces']['lan']['ipvsubnet']=64;
+		
+		for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
+			$optcfg = $config['interfaces']['opt' . $i];
+			if (isset($optcfg['enable'])) {
+				$config['interfaces']['opt' . $i]['ipv6addr']="auto";
+				$config['interfaces']['opt' . $i]['ipvsubnet']=64;
+			}
+		}
+		
+		$config['version'] = "2.0";
+	}
+	
 	write_config();
 	
 	if ($g['booting'])
