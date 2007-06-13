@@ -1,0 +1,18 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: powerd
+# REQUIRE: DAEMON
+# BEFORE: LOGIN
+# KEYWORD: nojail
+
+. /etc/rc.subr
+
+name="powerd"
+rcvar=`set_rcvar`
+command="/usr/sbin/${name}"
+command_args="-a adaptive -b adaptive"
+
+load_rc_config $name
+run_rc_command "$1"

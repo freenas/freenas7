@@ -59,6 +59,14 @@ function system_rcconf_generate() {
 		mwexec("/usr/local/sbin/rconf enable pureftpd");
 	}
 
+	if (isset($config['system']['smart'])) {
+		mwexec("/usr/local/sbin/rconf enable smartd");
+	}
+
+	if (isset($config['system']['powerd'])) {
+		mwexec("/usr/local/sbin/rconf enable powerd");
+	}
+
 	return 0;
 }
 

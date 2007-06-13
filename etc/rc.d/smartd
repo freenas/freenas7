@@ -1,0 +1,19 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: smartd
+# REQUIRE: DAEMON
+# BEFORE: LOGIN
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="smartd"
+rcvar=`set_rcvar`
+pidfile="/var/run/${name}.pid"
+command="/usr/local/sbin/smartd"
+command_args="--pidfile=${pidfile} --logfacility=local5"
+
+load_rc_config ${name}
+run_rc_command "$1"

@@ -111,12 +111,6 @@
 	/* start the NTP client */
 	system_ntp_configure();
 
-	/* start the S.M.A.R.T daemon */
-	services_smart_configure();
-
-	/* start the system power control utility */
-	services_powerd_configure();
-
 	/* ATA disk Idle configuration */
 	disks_set_ataidle();
 

@@ -577,68 +577,6 @@ EOD;
 	return $result;
 }
 
-/* Stop smartd, Generate the configuration file and start smartd
-Return 0 if OK, 1 or error code if error */
-function services_smart_configure() {
-	global $config, $g;
-
-	$result = 0 ;
-
-	/* kill any running smartd */
-	killbypid("{$g['varrun_path']}/smartd.pid");
-
-	if (isset($config['system']['smart'])) {
-		if ($g['booting'])
-			write_console("Starting smartd... ");
-
-		/* run smartd */
-		$result = mwexec("/usr/local/sbin/smartd --pidfile={$g['varrun_path']}/smartd.pid --logfacility=local5");
-
-		if(!$result) {
-			if($g['booting'])
-				write_console("done\n");
-			write_log("S.M.A.R.T Daemon started");
-		} else {
-			if($g['booting'])
-				write_console("failed\n");
-			write_log("Error: Failed to start S.M.A.R.T Daemon");
-		}
-	}
-
-	return $result;
-}
-
-/* Start/Stop system power control utility
-Return 0 if OK, 1 or error code if error */
-function services_powerd_configure() {
-	global $config, $g;
-
-	$result = 0 ;
-
-	/* kill any running powerd */
-	killbypid("{$g['varrun_path']}/powerd.pid");
-
-	if (isset($config['system']['powerd'])) {
-		if ($g['booting'])
-			write_console("Starting powerd... ");
-
-		/* run powerd */
-		$result = mwexec("/usr/sbin/powerd -a adaptive -b adaptive");
-
-		if (!$result) {
-			if ($g['booting'])
-				write_console("done\n");
-			write_log("Power Daemon started");
-		} else {
-			if ($g['booting'])
-				write_console("failed\n");
-			write_log("Error: Failed to start Power Daemon");
-		}
-	}
-
-	return $result;
-}
-
 /* Stop sshd, Generate the configuration file and start it
 Return 0 if OK, 1 or error code if error */
 function services_sshd_configure() {
