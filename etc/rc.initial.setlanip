@@ -106,7 +106,30 @@
 		} while (!is_ipv6addr($lanip));
 	}
 	
+	echo "\nPrefix masks (enter 64 here if you don't know)\n";
+
+		do {
+			echo "Enter new LAN subnet bit count: ";
+			$lanbits = chop(fgets($fp));
+			if ($lanbits === "") {
+				exit(0);
+			}
+		} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))) == false);
+
 	$config['interfaces']['lan']['ipv6addr'] = $lanip;
+	$config['interfaces']['lan']['ipv6subnet'] = $lanbits;
+	
+	do {
+			echo "Enter DNS IPv6 address(press 'Enter' to skip): ";
+			$dnsserverip = chop(fgets($fp));
+			if ($dnsserveripv6 === "") {
+				break;
+			}
+		} while (!is_ipv6addr($dnsserveripv6));
+
+		if ($dnsserveripv6) {
+			$config['system']['ipv6dnsserver'] = $dnsserveripv6;
+		}
 	
 	$proto = "http";
 	if ($config['system']['webgui']['protocol'] == "https") {

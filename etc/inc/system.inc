@@ -2,7 +2,7 @@
 /*
 	system.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	system_systime_set() function added by Paul Wheels (pwheels@users.sourceforge.net)
 
@@ -102,6 +102,14 @@ function system_resolvconf_generate() {
 			$havedns = true;
 		}
 	}
+	
+	if (!$havedns && is_array($syscfg['ipv6dnsserver'])) {
+		foreach ($syscfg['ipv6dnsserver'] as $ns) {
+			if ($ns)
+				$resolvconf .= "nameserver $ns\n";
+			$havedns = true;
+		}
+	}
 
 	fwrite($fd, $resolvconf);
 	fclose($fd);
@@ -139,6 +147,7 @@ function system_hosts_generate() {
  	$ipaddr = get_ipaddr($lanif);
 
 	$hosts = <<<EOD
+::1			localhost localhost.{$syscfg['domain']}
 127.0.0.1	localhost localhost.{$syscfg['domain']}
 {$ipaddr}	{$syscfg['hostname']}.{$syscfg['domain']} {$syscfg['hostname']}
 

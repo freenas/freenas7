@@ -7,6 +7,7 @@
 		<hostname>freenas</hostname>
 		<domain>local</domain>
 		<dnsserver></dnsserver>
+		<ipv6dnsserver></ipv6dnsserver>
 		<dnsallowoverride/>
 		<username>admin</username>
 		<password>$1$KLfrklGE$9mMLCl/tNeqZJzdCJw6Gb0</password>
