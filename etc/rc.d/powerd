@@ -17,8 +17,7 @@ stop_postcmd=powerd_poststop
 
 powerd_poststop()
 {
-	sysctl dev.cpu.0.freq=`sysctl -n dev.cpu.0.freq_levels |
-	    sed -e 's:/.*::'` > /dev/null
+	/sbin/sysctl dev.cpu.0.freq=`/sbin/sysctl -n dev.cpu.0.freq_levels | /usr/bin/sed -e 's:/.*::'` > /dev/null
 }
 
 load_rc_config $name
