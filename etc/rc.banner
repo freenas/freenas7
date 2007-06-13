@@ -58,7 +58,7 @@
     Visit http://www.{$producturl} for updates.
 
     LAN IPv4 address: {$ipaddr}
-	LAN IPv6 address: {$ipv6addr}
+    LAN IPv6 address: {$ipv6addr}
 
     Port configuration:
 

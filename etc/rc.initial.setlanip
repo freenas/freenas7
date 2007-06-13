@@ -62,7 +62,7 @@
 			if ($lanbits === "") {
 				exit(0);
 			}
-		} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 31))) == false);
+		} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 32))) == false);
 
 		$config['interfaces']['lan']['ipaddr'] = $lanip;
 		$config['interfaces']['lan']['subnet'] = $lanbits;
@@ -99,29 +99,39 @@
 	} else {
 		do {
 			echo "\nEnter new LAN IPv6 address (press 'Enter' to skip): ";
-			$lanip = chop(fgets($fp));
-			if ($lanip === "") {
+			$lanipv6 = chop(fgets($fp));
+			if ($lanipv6 === "") {
 				exit(0);
 			}
-		} while (!is_ipv6addr($lanip));
+		} while (!is_ipv6addr($lanipv6));
 	}
 	
-	echo "\nPrefix masks (enter 64 here if you don't know)\n";
-
 		do {
-			echo "Enter new LAN subnet bit count: ";
-			$lanbits = chop(fgets($fp));
-			if ($lanbits === "") {
-				exit(0);
+			echo "\nEnter Prefix (press 'Enter' to use 64): ";
+			$lanbitsv6 = chop(fgets($fp));
+			if ($lanbitsv6 === "") {
+				$lanbitsv6 = 64;
 			}
-		} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))) == false);
+		} while (filter_var($lanbitsv6, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))) == false);
 
-	$config['interfaces']['lan']['ipv6addr'] = $lanip;
-	$config['interfaces']['lan']['ipv6subnet'] = $lanbits;
+	$config['interfaces']['lan']['ipv6addr'] = $lanipv6;
+	$config['interfaces']['lan']['ipv6subnet'] = $lanbitsv6;
 	
 	do {
-			echo "Enter DNS IPv6 address(press 'Enter' to skip): ";
-			$dnsserverip = chop(fgets($fp));
+			echo "Enter IPv6 default gateway (press 'Enter' to skip): ";
+			$gatewayipv6 = chop(fgets($fp));
+			if ($gatewayipv6 === "") {
+				break;
+			}
+		} while (!is_ipv6addr($gatewayipv6));
+
+		if ($gatewayipv6) {
+			$config['interfaces']['lan']['ipv6gateway'] = $gatewayipv6;
+		}
+	
+	do {
+			echo "\nEnter DNS IPv6 address(press 'Enter' to skip): ";
+			$dnsserveripv6 = chop(fgets($fp));
 			if ($dnsserveripv6 === "") {
 				break;
 			}
@@ -143,27 +153,34 @@
 	write_config();
 
 	interfaces_lan_configure();
+	system_resolvconf_generate();
 
   /* Get current IP */
   $if = $config['interfaces']['lan']['if'];
-  $lanip = get_ipaddr($if);
+  $lanipv4 = get_ipaddr($if);
   $lanipv6 = get_ipv6addr($if);
 
   unset($laninfo);
-  if ($config['interfaces']['lan']['ipaddr'] == "dhcp")
-    $laninfo = "$lanip";
+  if ($config['interfaces']['lan']['ipaddr'] === "dhcp")
+    $laninfov4 = "$lanipv4";
   else
-    $laninfo = "$lanip/$lanbits";
+    $laninfov4 = "$lanipv4/$lanbits";
+	
+  unset($laninfov6);
+  if ($config['interfaces']['lan']['ipv6addr'] === "auto")
+    $laninfov6 = "$lanipv6";
+  else
+    $laninfov6 = "$lanipv6/$lanbitsv6";
 
 	echo <<<EOD
 	
 The LAN IP address has been set to:
-- IPv4: $laninfo
-- IPv6: $lanipv6
+- IPv4: $laninfov4
+- IPv6: $laninfov6
 You can now access the webGUI by opening the following URL
 in your browser:
 
-$proto://$lanip/
+$proto://$lanipv4/
 $proto://[$lanipv6]/
 
 Press ENTER to continue.

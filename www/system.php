@@ -38,7 +38,8 @@ $pgtitle = array(gettext("System"), gettext("General setup"));
 
 $pconfig['hostname'] = $config['system']['hostname'];
 $pconfig['domain'] = $config['system']['domain'];
-list($pconfig['dns1'],$pconfig['dns2']) = get_dnsserver();
+list($pconfig['dns1'],$pconfig['dns2']) = get_ipv4dnsserver();
+list($pconfig['ipv6dns1'],$pconfig['ipv6dns2']) = get_ipv6dnsserver();
 $pconfig['username'] = $config['system']['username'];
 if (!$pconfig['username'])
 	$pconfig['username'] = "admin";
@@ -85,8 +86,11 @@ if ($_POST) {
 	if ($_POST['domain'] && !is_domain($_POST['domain'])) {
 		$input_errors[] = gettext("The domain may only contain the characters a-z, 0-9, '-' and '.'.");
 	}
-	if (($_POST['dns1'] && !is_ipaddr($_POST['dns1'])) || ($_POST['dns2'] && !is_ipaddr($_POST['dns2']))) {
-		$input_errors[] = gettext("A valid IP address must be specified for the primary/secondary DNS server.");
+	if (($_POST['dns1'] && !is_ipv4addr($_POST['dns1'])) || ($_POST['dns2'] && !is_ipv4addr($_POST['dns2']))) {
+		$input_errors[] = gettext("A valid IPv4 address must be specified for the primary/secondary DNS server.");
+	}
+	if (($_POST['ipv6dns1'] && !is_ipv6addr($_POST['ipv6dns1'])) || ($_POST['ipv6dns2'] && !is_ipv6addr($_POST['ipv6dns2']))) {
+		$input_errors[] = gettext("A valid IPv6 address must be specified for the primary/secondary DNS server.");
 	}
 	if ($_POST['username'] && !preg_match("/^[a-zA-Z0-9]*$/", $_POST['username'])) {
 		$input_errors[] = gettext("The username may only contain the characters a-z, A-Z and 0-9.");
@@ -127,12 +131,19 @@ if ($_POST) {
 		$config['system']['time-update-interval'] = $_POST['timeupdateinterval'];
 
 		unset($config['system']['dnsserver']);
-		// Only store DNS servers when using static IP.
+		// Only store IPv4 DNS servers when using static IPv4.
 		if ("dhcp" !== $config['interfaces']['lan']['ipaddr']) {
 			if ($_POST['dns1'])
 				$config['system']['dnsserver'][] = $_POST['dns1'];
 			if ($_POST['dns2'])
 				$config['system']['dnsserver'][] = $_POST['dns2'];
+		}
+		// Only store IPv6 DNS servers when using static IPv6.
+		if ("auto" !== $config['interfaces']['lan']['ipv6addr']) {
+			if ($_POST['ipv6dns1'])
+				$config['system']['ipv6dnsserver'][] = $_POST['ipv6dns1'];
+			if ($_POST['ipv6dns2'])
+				$config['system']['ipv6dnsserver'][] = $_POST['ipv6dns2'];
 		}
 
 		$olddnsallowoverride = $config['system']['dnsallowoverride'];
@@ -197,12 +208,21 @@ if ($_POST) {
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("DNS servers");?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("IPv4 DNS servers");?></td>
       <td width="78%" class="vtable">
 				<?php $dns_ctrl_disabled = ("dhcp" == $config['interfaces']['lan']['ipaddr']) ? "disabled" : "";?>
 				<input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>" <?=$dns_ctrl_disabled;?>><br>
-				<input name="dns2" type="text" class="formfld" id="dns22" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>" <?=$dns_ctrl_disabled;?>><br>
-				<span class="vexpl"><?=gettext("IP addresses");?><br>
+				<input name="dns2" type="text" class="formfld" id="dns2" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>" <?=$dns_ctrl_disabled;?>><br>
+				<span class="vexpl"><?=gettext("IPv4 addresses");?><br>
+      </td>
+    </tr>
+	  <tr>
+      <td width="22%" valign="top" class="vncell"><?=gettext("IPv6 DNS servers");?></td>
+      <td width="78%" class="vtable">
+				<?php $dns_ctrl_disabled = ("auto" == $config['interfaces']['lan']['ipv6addr']) ? "disabled" : "";?>
+				<input name="ipv6dns1" type="text" class="formfld" id="ipv6dns1" size="20" value="<?=htmlspecialchars($pconfig['ipv6dns1']);?>" <?=$dns_ctrl_disabled;?>><br>
+				<input name="ipv6dns2" type="text" class="formfld" id="ipv6dns2" size="20" value="<?=htmlspecialchars($pconfig['ipv6dns2']);?>" <?=$dns_ctrl_disabled;?>><br>
+				<span class="vexpl"><?=gettext("IPv6 addresses");?><br>
       </td>
     </tr>
     <tr>

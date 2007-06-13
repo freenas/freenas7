@@ -300,14 +300,8 @@ function ipv6_type_change() {
       <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv6 address"); ?></td>
       <td width="78%" class="vtable"> 
         <?=$mandfldhtml;?><input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="20" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
-		 / 
-        <select name="ipv6subnet" class="formfld" id="ipv6subnet">
-          <?php for ($i = 64; $i > 0; $i--): ?>
-          <option value="<?=$i;?>" <?php if ($i == $pconfig['ipv6subnet']) echo "selected"; ?>>
-          <?=$i;?>
-          </option>
-          <?php endfor; ?>
-        </select>
+		 /
+		 <input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
       </td>
     </tr>
      <tr> 

@@ -3,7 +3,7 @@
 /*
 	system_routes_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -67,13 +67,29 @@ if ($_POST) {
 	if (($_POST['network'] && !is_ipaddr($_POST['network']))) {
 		$input_errors[] = gettext("A valid destination network must be specified.");
 	}
-	if (($_POST['network_subnet'] && !is_numeric($_POST['network_subnet']))) {
-		$input_errors[] = gettext("A valid network bit count must be specified.");
+	
+	if (($_POST['network'] && is_ipv4addr($_POST['network'])) && $_POST['network_subnet'])  {
+		if (filter_var($_POST['network_subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 32))) == false)
+			$input_errors[] = gettext("A valid IPv4 network bit count must be specified.");
 	}
+	
+	if (($_POST['network'] && is_ipv6addr($_POST['network'])) && $_POST['network_subnet'])  {
+		if (filter_var($_POST['network_subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))) == false)
+			$input_errors[] = gettext("A valid IPv6 prefix must be specified.");
+	}
+	
 	if (($_POST['gateway'] && !is_ipaddr($_POST['gateway']))) {
 		$input_errors[] = gettext("A valid gateway IP address must be specified.");
 	}
-
+	
+	if ($_POST['gateway'] && $_POST['network']) {
+		if (is_ipv4addr($_POST['gateway']) && !is_ipv4addr($_POST['network'])) {
+			$input_errors[] = gettext("You must the same IP type for network and gateway.");
+		} else if (is_ipv6addr($_POST['gateway']) && !is_ipv6addr($_POST['network'])) {
+			$input_errors[] = gettext("IP type mistmatch for network and gateway.");
+		}
+	}
+	
 	/* check for overlaps */
 	$osn = gen_subnet($_POST['network'], $_POST['network_subnet']) . "/" . $_POST['network_subnet'];
 	foreach ($a_routes as $route) {
@@ -132,14 +148,9 @@ if ($_POST) {
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> 
 				  / 
-                    <select name="network_subnet" class="formfld" id="network_subnet">
-                      <?php for ($i = 32; $i >= 1; $i--): ?>
-                      <option value="<?=$i;?>" <?php if ($i == $pconfig['network_subnet']) echo "selected"; ?>>
-                      <?=$i;?>
-                      </option>
-                      <?php endfor; ?>
-                    </select>
-                    <br> <span class="vexpl"><?=gettext("Destination network for this static route");?></span></td>
+                     <input name="network_subnet" type="text" class="formfld" id="network_subnet" size="2" value="<?=htmlspecialchars($pconfig['network_subnet']);?>">
+				
+				     <br> <span class="vexpl"><?=gettext("Destination network for this static route");?></span></td>
                 </tr>
 				<tr>
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Gateway");?></td>

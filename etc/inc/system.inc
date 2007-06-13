@@ -87,35 +87,18 @@ function system_resolvconf_generate() {
 	}
 
 	$resolvconf = "domain {$syscfg['domain']}\n";
-	$havedns = false;
 
-	if (isset($syscfg['dnsallowoverride'])) {
-		/* get dynamically assigned DNS servers (if any) */
-		$nfd = @fopen("{$g['varetc_path']}/nameservers.conf", "r");
-		if ($nfd) {
-			while (!feof($nfd)) {
-				$dnss = trim(fgets($nfd));
-				if ($dnss) {
-					$resolvconf .= "nameserver $dnss\n";
-					$havedns = true;
-				}
-			}
-			fclose($nfd);
-		}
-	}
-	if (!$havedns && is_array($syscfg['dnsserver'])) {
+	if (is_array($syscfg['dnsserver'])) {
 		foreach ($syscfg['dnsserver'] as $ns) {
 			if ($ns)
 				$resolvconf .= "nameserver $ns\n";
-			$havedns = true;
 		}
 	}
 	
-	if (!$havedns && is_array($syscfg['ipv6dnsserver'])) {
+	if (is_array($syscfg['ipv6dnsserver'])) {
 		foreach ($syscfg['ipv6dnsserver'] as $ns) {
 			if ($ns)
 				$resolvconf .= "nameserver $ns\n";
-			$havedns = true;
 		}
 	}
 
@@ -155,7 +138,7 @@ function system_hosts_generate() {
  	$ipaddr = get_ipaddr($lanif);
 
 	$hosts = <<<EOD
-::1			localhost localhost.{$syscfg['domain']}
+::1		localhost localhost.{$syscfg['domain']}
 127.0.0.1	localhost localhost.{$syscfg['domain']}
 {$ipaddr}	{$syscfg['hostname']}.{$syscfg['domain']} {$syscfg['hostname']}
 

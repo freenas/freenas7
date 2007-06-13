@@ -152,7 +152,7 @@ function is_subnet($subnet) {
 	if (is_ipv4addr($hp) && (!is_numeric($np) || ($np < 1) || ($np > 32))) {
 			$result = false ;
 	// If it's an IPv6 address, but with a bitcount outise 1-64 range, there is a problem
-	} else if (is_ipv6addr($hp) && (!is_numeric($np) || ($np < 1) || ($np > 64))) {
+	} else if (is_ipv6addr($hp) && (!is_numeric($np) || ($np < 1) || ($np > 128))) {
 		$result = false ;
 	} else {
 		$result = true ;
@@ -1240,7 +1240,7 @@ function get_macaddr($if)
 // when 'dhclient' is executed), otherwise use configured
 // DNS servers from config.xml for static IP.
 // Returns array of DNS servers.
-function get_dnsserver() {
+function get_ipv4dnsserver() {
 	global $config;
 
 	$result = array();
@@ -1251,14 +1251,43 @@ function get_dnsserver() {
 			foreach($rawdata as $data) {
 				$adata = preg_split("/\s+/", $data);
 				if (0 == strcmp(strtolower(trim($adata[0])),"nameserver")) {
-					$result[] = trim($adata[1]);
-					break;
+					if (is_ipv4addr(trim($adata[1]))) {
+						$result[] = trim($adata[1]);
+						break;
+					}
 				}
 			}
 			break;
 
 		default:
 			$result = $config['system']['dnsserver'];
+			break;
+	}
+
+	return $result;
+}
+
+function get_ipv6dnsserver() {
+	global $config;
+
+	$result = array();
+
+	switch ($config['interfaces']['lan']['ipv6addr']) {
+		case 'auto':
+			exec("cat /etc/resolv.conf", $rawdata);
+			foreach($rawdata as $data) {
+				$adata = preg_split("/\s+/", $data);
+				if (0 == strcmp(strtolower(trim($adata[0])),"nameserver")) {
+					if (is_ipv6addr(trim($adata[1]))) {
+						$result[] = trim($adata[1]);
+						break;
+					}
+				}
+			}
+			break;
+
+		default:
+			$result = $config['system']['ipv6dnsserver'];
 			break;
 	}
 
