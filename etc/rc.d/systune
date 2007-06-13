@@ -3,6 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: systune
+# BEFORE: NETWORKING
 
 . /etc/rc.subr
 

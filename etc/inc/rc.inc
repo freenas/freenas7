@@ -46,26 +46,47 @@ function rc_exec_script_async($scriptname) {
 	return $retval;
 }
 
+// Check service status.
+// Return 0 if service is running, otherwise 1.
+function rc_get_service_status($name) {
+	$retval = rc_exec_script("/etc/rc.d/{$name} status");
+	return $retval;
+}
+
 // Update service (Modify rc.conf and execute rc script).
 // Return 0 if successful, otherwise 1.
 function rc_update_service($name,$enabled) {
 	$retval = 0;
 
+	// Check if service is running.
+	$state = rc_get_service_status($name);
+
 	// Update rc.conf and execute rc script.
 	if ($enabled) {
+		// Update rc.conf.
 		mwexec("/usr/local/sbin/rconf enable {$name}");
-		$retval = rc_exec_script("/etc/rc.d/{$name} start");
-		if (0 == $retval)
-			write_log("{$name} service started");
-		else
-			write_log("Failed to start service {$name}");
+
+		// Start/Restart service.
+		$cmd = (0 == $state) ? "restart" : "start";
+		$retval = rc_exec_script("/etc/rc.d/{$name} {$cmd}");
+		if (0 == $retval) {
+			write_log("{$name} service {$cmd}ed");
+		}	else {
+			write_log("Failed to {$cmd} service {$name}");
+		}
 	} else {
+		// Update rc.conf.
 		mwexec("/usr/local/sbin/rconf disable {$name}");
-		$retval = rc_exec_script("/etc/rc.d/{$name} stop");
-		if (0 == $retval)
-			write_log("{$name} service stopped");
-		else
-			write_log("Failed to stop service {$name}");
+
+		// Stop service if necessary. 
+		if (0 == $state) {
+			$retval = rc_exec_script("/etc/rc.d/{$name} stop");
+			if (0 == $retval) {
+				write_log("{$name} service stopped");
+			}	else {
+				write_log("Failed to stop service {$name}");
+			}
+		}
 	}
 
 	return $retval;

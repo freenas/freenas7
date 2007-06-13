@@ -12,6 +12,9 @@
 
 name="pureftpd"
 rcvar=`set_rcvar`
+
+load_rc_config ${name}
+
 command="/usr/local/sbin/pure-ftpd"
 pureftpd_config=${pureftpd_config:-"/var/etc/pure-ftpd.conf"}
 required_files=${pureftpd_config}
@@ -26,6 +29,5 @@ pureftpd_start_precmd()
 	done
 }
 
-load_rc_config ${name}
 create_conf_file ${name}
 run_rc_command "$1"
