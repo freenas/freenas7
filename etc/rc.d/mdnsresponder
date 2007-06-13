@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: mdnsresponder
-# REQUIRE: DAEMON ushare
+# REQUIRE: DAEMON
 # KEYWORD: shutdown
 
 . /etc/rc.subr
@@ -11,10 +11,12 @@
 
 name="mdnsresponder"
 rcvar=`set_rcvar`
+mdnsresponder_config=${mdnsresponder_config:-"/var/etc/${name}.conf"}
+required_files=${mdnsresponder_config}
 command="/usr/local/sbin/mDNSResponderPosix"
-command_args="-b -f /var/etc/${name}.conf"
+command_args="-b -f ${mdnsresponder_config}"
 pidfile="/var/run/mDNSResponder.pid"
 
-load_rc_config $name
-create_conf_file $name
+load_rc_config ${name}
+create_conf_file ${name}
 run_rc_command "$1"

@@ -136,9 +136,6 @@
 	/* start Rsynd service */
 	services_rsyncd_configure();
 
-	/* start FTP service */
-	services_ftpd_configure();
-
 	/* start NFS service */
 	services_nfs_configure();
 

@@ -6,12 +6,13 @@
 #
 
 #
-# create_conf_file
+# create_conf_file script
 #	Create configuration file for the given service.
+#	$1 - filename of script, in /etc/rc.d.conf, to run
 #
 create_conf_file()
 {
-	_file="/etc/rc.d.conf/${name}"
+	_file="/etc/rc.d.conf/$1"
 
 	if [ -n "${rcvar}" ]; then
 		if checkyesno ${rcvar}; then

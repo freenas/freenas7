@@ -1,0 +1,31 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: pureftpd
+# REQUIRE: NETWORKING SERVERS
+# BEFORE: DAEMON
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+. /etc/rc.subrconf
+
+name="pureftpd"
+rcvar=`set_rcvar`
+command="/usr/local/sbin/pure-ftpd"
+pureftpd_config=${pureftpd_config:-"/var/etc/pure-ftpd.conf"}
+required_files=${pureftpd_config}
+pidfile="/var/run/pure-ftpd.pid"
+start_precmd="pureftpd_start_precmd"
+
+pureftpd_start_precmd()
+{
+	# Convert config file into command args (pure-ftpd does not support config files).
+	for _command_arg in `cat ${pureftpd_config}`; do
+		command_args="${command_args} ${_command_arg}"
+	done
+}
+
+load_rc_config ${name}
+create_conf_file ${name}
+run_rc_command "$1"

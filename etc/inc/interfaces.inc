@@ -150,7 +150,7 @@ function interfaces_lan_configure()
 		$result |= services_samba_configure();
 
 		/* Restart FTP */
-		$result |= services_ftpd_configure();
+		/* $result |= services_ftpd_configure(); */
 
 		/* Restart NFS */
 		$result |= services_nfs_configure();

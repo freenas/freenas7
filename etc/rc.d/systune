@@ -51,5 +51,5 @@ systune_stop()
 	/sbin/sysctl kern.maxfilesperproc=957
 }
 
-load_rc_config $name
+load_rc_config ${name}
 run_rc_command "$1"

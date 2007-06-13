@@ -55,6 +55,10 @@ function system_rcconf_generate() {
 		mwexec("/usr/local/sbin/rconf enable inadyn");
 	}
 
+	if (isset($config['ftp']['enable'])) {
+		mwexec("/usr/local/sbin/rconf enable pureftpd");
+	}
+
 	return 0;
 }
 
