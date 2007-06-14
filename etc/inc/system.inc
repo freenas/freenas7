@@ -33,6 +33,7 @@
 */
 /* include all configuration functions */
 require_once("functions.inc");
+require_once("rc.inc");
 
 // Create /etc/rc.conf file.
 // Return 0 if successful, otherwise 1
