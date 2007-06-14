@@ -93,9 +93,6 @@
 	/* start SSH service */
 	services_sshd_configure();
 
-	/* start web server */
-	system_webgui_start();
-
 	/* configure console menu */
 	system_console_configure();
 
