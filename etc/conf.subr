@@ -1,7 +1,7 @@
 # Copyright © 2007 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 #
-# rc.subrconf
+# conf.subr
 #	functions used by various rc scripts
 #
 

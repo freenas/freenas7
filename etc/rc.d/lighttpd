@@ -5,7 +5,7 @@
 # KEYWORD: shutdown
 
 . /etc/rc.subr
-. /etc/rc.subrconf
+. /etc/conf.subr
 
 name="lighttpd"
 rcvar=`set_rcvar`

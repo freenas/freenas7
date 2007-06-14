@@ -9,7 +9,7 @@
 inadyn_enable=${inadyn_enable-"NO"}
 
 . /etc/rc.subr
-. /etc/rc.subrconf
+. /etc/conf.subr
 
 name="inadyn"
 rcvar=`set_rcvar`

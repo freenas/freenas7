@@ -9,7 +9,7 @@
 snmpd_enable=${snmpd_enable-"NO"}
 
 . /etc/rc.subr
-. /etc/rc.subrconf
+. /etc/conf.subr
 
 name="snmpd"
 rcvar=`set_rcvar`

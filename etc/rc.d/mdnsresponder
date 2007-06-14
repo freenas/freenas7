@@ -7,7 +7,7 @@
 # KEYWORD: shutdown
 
 . /etc/rc.subr
-. /etc/rc.subrconf
+. /etc/conf.subr
 
 name="mdnsresponder"
 rcvar=`set_rcvar`

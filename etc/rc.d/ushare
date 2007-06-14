@@ -9,7 +9,7 @@
 ushare_enable=${ushare_enable-"NO"}
 
 . /etc/rc.subr
-. /etc/rc.subrconf
+. /etc/conf.subr
 
 name="ushare"
 rcvar=`set_rcvar`

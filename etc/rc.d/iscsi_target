@@ -4,7 +4,7 @@
 # REQUIRE: NETWORKING
 
 . /etc/rc.subr
-. /etc/rc.subrconf
+. /etc/conf.subr
 
 name="iscsi_target"
 rcvar=`set_rcvar`

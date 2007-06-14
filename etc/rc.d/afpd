@@ -9,7 +9,7 @@
 afpd_enable=${afpd_enable-"NO"}
 
 . /etc/rc.subr
-. /etc/rc.subrconf
+. /etc/conf.subr
 
 name="afpd"
 rcvar=`set_rcvar`
