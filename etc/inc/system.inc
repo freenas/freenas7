@@ -33,7 +33,6 @@
 */
 /* include all configuration functions */
 require_once("functions.inc");
-require_once("rc.inc");
 
 // Create /etc/rc.conf file.
 // Return 0 if successful, otherwise 1
@@ -603,10 +602,6 @@ function system_ntp_configure() {
 }
 
 function system_stop_common() {
-	/* Stop iSCSI-target */
-	// If iSCSI-target is not stoped before disabling swap, the system can crash
-	rc_stop_service("iscsi_target");
-
 	/* Stop swap */
 	system_swap_disable();
 
