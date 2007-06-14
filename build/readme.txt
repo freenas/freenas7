@@ -106,6 +106,7 @@ Minors changes:
 - CIFS: Added new "pipe-lined read support" for improved performance when transferring files with Vista client
 - CIFS: Added "netatalk" VFS plugin for hidding Netatalk (AFP) system file
 - Add netatalk patches
+- Add sed stream editor (for internal scripting)
 
 Bug fixs:
 - Add missing winbind/smbpass pam modules
