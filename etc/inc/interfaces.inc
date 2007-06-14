@@ -156,7 +156,7 @@ function interfaces_lan_configure()
 		$result |= services_nfs_configure();
 
 		/* Restart AFP */
-		$result |= services_afpd_configure();
+		/* $result |= services_afpd_configure(); */
 
 		/* Restart SSH */
 		$result |= services_sshd_configure();

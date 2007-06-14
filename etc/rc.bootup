@@ -136,9 +136,6 @@
 	/* configure Unison service */
 	services_unison_configure();
 
-	/* start AFP service */
-	services_afpd_configure();
-
 	/* start RSYNC client/slave mode service */
 	services_rsyncclient_configure();
 

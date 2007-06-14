@@ -1,0 +1,102 @@
+#!/usr/local/bin/php -f
+<?php
+/*
+	afpd init script to create conf file
+	Copyright © 2007 Volker Theile (votdev@gmx.de)
+  All rights reserved.
+
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+
+	1. Redistributions of source code must retain the above copyright notice,
+	   this list of conditions and the following disclaimer.
+
+	2. Redistributions in binary form must reproduce the above copyright
+	   notice, this list of conditions and the following disclaimer in the
+	   documentation and/or other materials provided with the distribution.
+
+	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+	OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+	POSSIBILITY OF SUCH DAMAGE.
+*/
+	require_once("config.inc");
+	require_once("functions.inc");
+	require_once("util.inc");
+
+	global $config, $g;
+
+	if (empty($config['afp']['afpname']))
+		$afpname="-";
+	else
+		$afpname=$config['afp']['afpname'];
+
+	// Generate afpd.conf.
+	$fd = fopen("{$g['varetc_path']}/afpd.conf", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create afpd.conf";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$afpconf = <<<EOD
+{$afpname} -transall -uamlist
+EOD;
+
+	if (isset($config['afp']['guest']) && isset($config['afp']['local']))
+		$afpconf .= <<<EOD
+uams_guest.so,uams_clrtxt.so,uams_dhx.so
+EOD;
+	else if (isset($config['afp']['guest']))
+		$afpconf .= <<<EOD
+uams_guest.so
+EOD;
+	else if (isset($config['afp']['local']))
+		$afpconf .= <<<EOD
+uams_clrtxt.so,uams_dhx.so
+EOD;
+
+	$afpconf .= <<<EOD
+-nosavepassword -defaultvol {$g['varetc_path']}/AppleVolumes.default -systemvol {$g['varetc_path']}/AppleVolumes.system -uampath /etc/uams -guestname ftp
+
+EOD;
+
+	fwrite($fd, $afpconf);
+	fclose($fd);
+
+	// Generate AppleVolumes.default.
+	$fd = fopen("{$g['varetc_path']}/AppleVolumes.default", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create AppleVolumes.default";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$applevolumes = "";
+	if (is_array($config['mounts']['mount'])) {
+		$a_mount = &$config['mounts']['mount'];
+		foreach ($a_mount as $mount) {
+			$applevolumes .= <<<EOD
+/mnt/{$mount['sharename']} "{$mount['sharename']}"
+
+EOD;
+		}
+	}
+
+	fwrite($fd, $applevolumes);
+	fclose($fd);
+
+	return 0;
+?>

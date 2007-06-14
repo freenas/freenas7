@@ -6,6 +6,8 @@
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
 
+inadyn_enable=${inadyn_enable-"NO"}
+
 . /etc/rc.subr
 . /etc/rc.subrconf
 

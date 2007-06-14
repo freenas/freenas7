@@ -6,6 +6,8 @@
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
 
+ushare_enable=${ushare_enable-"NO"}
+
 . /etc/rc.subr
 . /etc/rc.subrconf
 

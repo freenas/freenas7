@@ -7,6 +7,8 @@
 # BEFORE: LOGIN
 # KEYWORD: nojail
 
+powerd_enable=${powerd_enable-"NO"}
+
 . /etc/rc.subr
 
 name="powerd"

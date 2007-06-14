@@ -1,0 +1,23 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: afpd
+# REQUIRE: DAEMON 
+# KEYWORD: shutdown
+
+afpd_enable=${afpd_enable-"NO"}
+
+. /etc/rc.subr
+. /etc/rc.subrconf
+
+name="afpd"
+rcvar=`set_rcvar`
+afpd_config=${afpd_config:-"/var/etc/${name}.conf"}
+required_files=${afpd_config}
+command="/usr/local/sbin/${name}"
+command_args="-F ${afpd_config}"
+
+load_rc_config ${name}
+create_conf_file ${name}
+run_rc_command "$1"

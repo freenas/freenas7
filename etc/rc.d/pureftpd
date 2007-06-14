@@ -7,6 +7,8 @@
 # BEFORE: DAEMON
 # KEYWORD: shutdown
 
+pureftpd_enable=${pureftpd_enable-"NO"}
+
 . /etc/rc.subr
 . /etc/rc.subrconf
 

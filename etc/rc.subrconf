@@ -27,6 +27,7 @@ create_conf_file()
 			fi
 
 			eval $_file
+			return $?
 		fi
 	fi
 }

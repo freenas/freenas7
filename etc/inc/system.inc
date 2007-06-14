@@ -67,6 +67,10 @@ function system_rcconf_generate() {
 		mwexec("/usr/local/sbin/rconf enable powerd");
 	}
 
+	if (isset($config['afp']['enable'])) {
+		mwexec("/usr/local/sbin/rconf enable afpd");
+	}
+
 	return 0;
 }
 
