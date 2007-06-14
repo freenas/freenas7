@@ -50,7 +50,7 @@ function rc_exec_script_async($scriptname) {
 // Looks for xxx_enabled="YES|NO" in rc.conf.
 // Return 0 if service is enabled, otherwise 1.
 function rc_is_service_enabled($name) {
-	$retval = mwexec("/usr/local/sbin/rconf rcvar {$name}");
+	$retval = mwexec("/usr/local/sbin/rconf service rcvar {$name}");
 	return $retval;
 }
 
@@ -72,7 +72,7 @@ function rc_update_service($name,$enabled) {
 	// Update rc.conf and execute rc script.
 	if ($enabled) {
 		// Update rc.conf.
-		mwexec("/usr/local/sbin/rconf enable {$name}");
+		mwexec("/usr/local/sbin/rconf service enable {$name}");
 
 		// Start/Restart service.
 		$cmd = (0 == $running) ? "restart" : "start";
@@ -94,7 +94,7 @@ function rc_update_service($name,$enabled) {
 		}
 
 		// Update rc.conf.
-		mwexec("/usr/local/sbin/rconf disable {$name}");
+		mwexec("/usr/local/sbin/rconf service disable {$name}");
 	}
 
 	return $retval;

@@ -40,43 +40,43 @@ function system_rcconf_generate() {
 	global $config;
 
 	if (isset($config['system']['tune'])) {
-		mwexec("/usr/local/sbin/rconf enable systune");
+		mwexec("/usr/local/sbin/rconf service enable systune");
 	}
 
 	if (isset($config['upnp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf enable ushare");
+		mwexec("/usr/local/sbin/rconf service enable ushare");
 	}
 
 	if (isset($config['system']['zeroconf'])) {
-		mwexec("/usr/local/sbin/rconf enable mdnsresponder");
+		mwexec("/usr/local/sbin/rconf service enable mdnsresponder");
 	}
 
 	if (isset($config['dynamicdns']['enable'])) {
-		mwexec("/usr/local/sbin/rconf enable inadyn");
+		mwexec("/usr/local/sbin/rconf service enable inadyn");
 	}
 
 	if (isset($config['ftp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf enable pureftpd");
+		mwexec("/usr/local/sbin/rconf service enable pureftpd");
 	}
 
 	if (isset($config['system']['smart'])) {
-		mwexec("/usr/local/sbin/rconf enable smartd");
+		mwexec("/usr/local/sbin/rconf service enable smartd");
 	}
 
 	if (isset($config['system']['powerd'])) {
-		mwexec("/usr/local/sbin/rconf enable powerd");
+		mwexec("/usr/local/sbin/rconf service enable powerd");
 	}
 
 	if (isset($config['afp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf enable afpd");
+		mwexec("/usr/local/sbin/rconf service enable afpd");
 	}
 
 	if (is_array($config['iscsitarget']['vdisk'])) {
-		mwexec("/usr/local/sbin/rconf enable iscsi_target");
+		mwexec("/usr/local/sbin/rconf service enable iscsi_target");
 	}
 
 	if (isset($config['snmpd']['enable'])) {
-		mwexec("/usr/local/sbin/rconf enable snmpd");
+		mwexec("/usr/local/sbin/rconf service enable snmpd");
 	}
 
 	return 0;

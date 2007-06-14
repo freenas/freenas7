@@ -5,38 +5,46 @@
 #
 #set -x
 
-cmd=${1}
-service=${2}
+type=${1}
+action=${2}
 
 . /etc/rc.subr
 
 usage() {
 cat  << FOO
-usage: ${0} enable servicename
-       ${0} disable servicename
-       ${0} remove servicename
-       ${0} rcvar servicename
+usage: ${0} service enable servicename
+       ${0} service disable servicename
+       ${0} service remove servicename
+       ${0} service rcvar servicename
+       ${0} attribute set name value
+       ${0} attribute remove name
 
 examples:
-       # ${0} enable sshd
+       # ${0} service enable sshd
        Set sshd_enable="YES" in /etc/rc.conf.
 
-       # ${0} disable sshd
+       # ${0} service disable sshd
        Set sshd_enable="NO" in /etc/rc.conf.
 
-       # ${0} remove sshd
-       Delete sshd_enable in /etc/rc.conf.
-       
-       # ${0} rcvar sshd
+       # ${0} service remove sshd
+       Remove sshd_enable from /etc/rc.conf.
+
+       # ${0} service rcvar sshd
        Display what rc.conf variable is used (if any).
        Return 0 if YES, otherwise 1
+
+       # ${0} attribute set hostname xyz
+       Set attribute hostname="xyz" in /etc/rc.conf.
+
+       # ${0} attribute remove hostname
+       Remove attribute hostname from /etc/rc.conf.
 FOO
 	exit 1
 }
 
 remove() {
 	for _line in `cat /etc/rc.conf`; do
-		if [ ${service} != ${_line%_enable=*} ]; then
+		if [ ${1} != ${_line%=*} ]; then
 			echo ${_line} >> /etc/rc.conf.tmp
 		fi
 	done
@@ -48,28 +56,48 @@ if [ $# -lt 2 ]; then
 	exit 1
 fi
 
-case ${cmd} in
-	enable)
-		remove
-		echo "${service}_enable=\"YES\"" >> /etc/rc.conf
+case ${type} in
+	service)
+		service=${3}
+		case ${action} in
+			enable)
+				remove "${service}_enable"
+				echo "${service}_enable=\"YES\"" >> /etc/rc.conf
+				;;
+		
+			disable)
+				remove "${service}_enable"
+				echo "${service}_enable=\"NO\"" >> /etc/rc.conf
+				;;
+		
+			remove)
+				remove "${service}_enable"
+				;;
+		
+			rcvar)
+				load_rc_config ${service}
+				if checkyesno "${service}_enable"; then
+					exit 0
+				else
+					exit 1
+				fi
+				;;
+		esac
 		;;
 
-	disable)
-		remove
-		echo "${service}_enable=\"NO\"" >> /etc/rc.conf
-		;;
+	attribute)
+		attribute=${3}
+		case ${action} in
+			set)
+				remove "${attribute}"
+				value=${4}
+				echo "${attribute}=\"${value}\"" >> /etc/rc.conf
+				;;
 
-	remove)
-		remove
-		;;
-
-	rcvar)
-		load_rc_config ${service}
-		if checkyesno "${service}_enable"; then
-			exit 0
-		else
-			exit 1
-		fi
+			remove)
+				remove "${attribute}"
+				;;
+		esac
 		;;
 
 	*)
