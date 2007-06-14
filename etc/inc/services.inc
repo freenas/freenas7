@@ -1179,33 +1179,6 @@ EOD;
 	return 0;
 }
 
-function services_radius_configure()
-{
-	global $config, $g;
-
-	if (isset($config['radius']['enable'])) {
-
-		/* generate radius.conf */
-		$fd = fopen("{$g['varetc_path']}/radius.conf", "w");
-		if (!$fd) {
-			$message = "Error: Can't open radius.conf in services_radius_configure()";
-			write_console($message . ".\n");
-			write_log($message);
-			return 1;
-		}
-
-		$radiusconf = <<<EOD
-auth  {$config['radius']['radiusip']}:{$config['radius']['port']} {$config['radius']['secret']} {$config['radius']['timeout']} {$config['radius']['maxretry']}
-
-EOD;
-
-		fwrite($fd, $radiusconf);
-		fclose($fd);
-	}
-
-	return 0;
-}
-
 /* Start iscsi initiator
 Return 0 if Ok, 1 or error code if problem */
 function services_iscsiinit_configure()
