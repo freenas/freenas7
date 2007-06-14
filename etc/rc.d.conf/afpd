@@ -48,7 +48,7 @@
 	// Generate afpd.conf.
 	$fd = fopen("{$g['varetc_path']}/afpd.conf", "w");
 	if (!$fd) {
-		$message = "Error: Failed to create afpd.conf";
+		$message = "Error: Failed to create '{$g['varetc_path']}/afpd.conf'";
 		write_console($message . ".\n");
 		write_log($message);
 		return 1;

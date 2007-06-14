@@ -139,9 +139,6 @@
 	/* start RSYNC local service */
 	services_rsync_local_configure();
 
-	/* start iSCSI target service */
-	services_iscsitarget_configure();
-
 	/* Start cron */
 	services_cron_configure();
 
@@ -150,9 +147,6 @@
 
 	/* run any shell commands specified in config.xml */
 	system_do_shell_commands();
-
-	/*DEBUG: WAIT 10 secondes */
-	//mwexec("/bin/sleep 10");
 
 	/* Send the start beep */
 	system_beep_up();

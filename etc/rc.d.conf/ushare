@@ -39,7 +39,7 @@
 
 	$fd = fopen("{$g['varetc_path']}/ushare.conf", "w");
 	if (!$fd) {
-		$message = "Error: Failed to create ushare.conf";
+		$message = "Error: Failed to create '{$g['varetc_path']}/ushare.conf'";
 		write_console($message . ".\n");
 		write_log($message);
 		return 1;

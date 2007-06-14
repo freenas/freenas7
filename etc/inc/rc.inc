@@ -85,7 +85,7 @@ function rc_update_service($name,$enabled) {
 	} else {
 		// Stop service if necessary. 
 		if (0 == $running) {
-			$retval = rc_exec_script("/etc/rc.d/{$name} stop");
+			$retval = rc_stop_service($name);
 			if (0 == $retval) {
 				write_log("{$name} service stopped");
 			}	else {
@@ -97,6 +97,13 @@ function rc_update_service($name,$enabled) {
 		mwexec("/usr/local/sbin/rconf disable {$name}");
 	}
 
+	return $retval;
+}
+
+// Stop service.
+// Return 0 if successful, otherwise 1.
+function rc_stop_service($name) {
+	$retval = rc_exec_script("/etc/rc.d/{$name} stop");
 	return $retval;
 }
 ?>

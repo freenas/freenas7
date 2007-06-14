@@ -71,6 +71,10 @@ function system_rcconf_generate() {
 		mwexec("/usr/local/sbin/rconf enable afpd");
 	}
 
+	if (is_array($config['iscsitarget']['vdisk'])) {
+		mwexec("/usr/local/sbin/rconf enable iscsi_target");
+	}
+
 	return 0;
 }
 
@@ -600,7 +604,7 @@ function system_ntp_configure() {
 function system_stop_common() {
 	/* Stop iSCSI-target */
 	// If iSCSI-target is not stoped before disabling swap, the system can crash
-	services_iscsitarget_stop();
+	rc_stop_service("iscsi_target")
 
 	/* Stop swap */
 	system_swap_disable();
