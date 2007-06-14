@@ -66,7 +66,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= services_snmpd_configure();
+			$retval |= rc_update_service("snmpd",isset($config['snmpd']['enable']));
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

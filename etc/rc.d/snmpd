@@ -1,0 +1,24 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: snmpd
+# REQUIRE: NETWORKING
+# KEYWORD: nojail
+
+snmpd_enable=${snmpd_enable-"NO"}
+
+. /etc/rc.subr
+. /etc/rc.subrconf
+
+name="snmpd"
+rcvar=`set_rcvar`
+snmpd_config=${snmpd_config:-"/var/etc/${name}.conf"}
+required_files=${snmpd_config}
+pidfile="/var/run/${name}.pid"
+command="/usr/sbin/${name}"
+command_args="-c ${snmpd_config} -P ${pidfile}"
+
+load_rc_config ${name}
+create_conf_file ${name}
+run_rc_command "$1"

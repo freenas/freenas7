@@ -34,58 +34,6 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
-/* Start SNMPD
-Return 0 if OK, 1 if erro */
-function services_snmpd_configure() {
-	global $config, $g;
-
-	$result=0;
-
-	/* kill any running snmpd */
-	sigkillbypid("{$g['varrun_path']}/snmpd.pid", "TERM");
-
-	if (isset($config['snmpd']['enable'])) {
-
-		if ($g['booting'])
-			write_console("Starting SNMP agent... ");
-
-		/* generate snmpd.conf */
-		$fd = fopen("{$g['varetc_path']}/snmpd.conf", "w");
-		if (!$fd) {
-			$message = "Error: Can't open snmpd.conf in services_snmpd_configure()";
-			write_console($message . ".\n");
-			write_log($message);
-			$result=1;
-		}
-
-		$snmpdconf = <<<EOD
-syslocation "{$config['snmpd']['syslocation']}"
-syscontact "{$config['snmpd']['syscontact']}"
-rocommunity "{$config['snmpd']['rocommunity']}"
-
-EOD;
-
-		fwrite($fd, $snmpdconf);
-		fclose($fd);
-
-		/* run snmpd */
-		$result = mwexec("/usr/local/sbin/snmpd -c {$g['varetc_path']}/snmpd.conf" .
-			" -P {$g['varrun_path']}/snmpd.pid");
-
-		if(!$result) {
-			if($g['booting'])
-				write_console("done\n");
-			write_log("SNMP Daemon started");
-		} else {
-			if($g['booting'])
-				write_console("failed\n");
-			write_log("Error: Failed to start SNMP Daemon");
-		}
-	}
-
-	return 0;
-}
-
 /* Stop samba, Generate the samba configuration file and start samba
 Return 0 if OK, 1 or error code if error */
 function services_samba_configure() {

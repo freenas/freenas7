@@ -99,9 +99,6 @@
 	/* configure console menu */
 	system_console_configure();
 
-	/* start SNMP service */
-	/*services_snmpd_configure();*/
-
 	/* start iSCSI initiator services */
 	services_iscsiinit_configure();
 

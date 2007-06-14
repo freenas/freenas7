@@ -75,6 +75,10 @@ function system_rcconf_generate() {
 		mwexec("/usr/local/sbin/rconf enable iscsi_target");
 	}
 
+	if (isset($config['snmpd']['enable'])) {
+		mwexec("/usr/local/sbin/rconf enable snmpd");
+	}
+
 	return 0;
 }
 
