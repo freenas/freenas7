@@ -10,7 +10,7 @@ name="iscsi_target"
 rcvar=`set_rcvar`
 
 command="/usr/local/bin/iscsi-target"
-required_files="/usr/local/etc/iscsi/targets"
+required_files="/var/etc/iscsi/targets"
 pidfile="/var/run/iscsi-target.pid"
 
 load_rc_config $name
