@@ -56,9 +56,6 @@
 	/* run any early shell commands specified in config.xml */
 	system_do_shell_commands(1);
 
-	/* save dmesg output to file */
-	system_dmesg_save();
-
 	/* set up our timezone */
 	system_timezone_configure();
 

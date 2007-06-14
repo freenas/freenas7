@@ -686,35 +686,6 @@ function system_console_configure() {
 	}
 }
 
-function system_dmesg_save() {
-	global $g;
-
-	exec("/sbin/dmesg", $dmesg);
-
-	/* find last copyright line (output from previous boots may be present) */
-	$lastcpline = 0;
-
-	for ($i = 0; $i < count($dmesg); $i++) {
-		if (strstr($dmesg[$i], "Copyright (c) 1992-"))
-			$lastcpline = $i;
-	}
-
-	$fd = fopen("{$g['varlog_path']}/dmesg.boot", "w");
-	if (!$fd) {
-		$message = "Error: Can't open dmesg.boot in system_dmesg_save()";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	for ($i = $lastcpline; $i < count($dmesg); $i++)
-		fwrite($fd, $dmesg[$i] . "\n");
-
-	fclose($fd);
-
-	return 0;
-}
-
 function system_set_harddisk_standby() {
 	global $g, $config;
 
