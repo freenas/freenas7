@@ -1,7 +1,8 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-	inadyn init script to create conf file
+	inadyn init script to create config file
+
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
   All rights reserved.
 

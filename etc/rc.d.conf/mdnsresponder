@@ -1,13 +1,17 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-	mdnsresponder init script to create conf file
-	Copyright © 2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	mdnsresponder init script to create config file
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
+
+	Based on m0n0wall (http://m0n0.ch/wall)
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	All rights reserved.
+
+	Adapted to init rc system by Volker Theile (votdev@gmx.de)
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
