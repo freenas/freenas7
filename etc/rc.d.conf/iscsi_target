@@ -49,16 +49,20 @@
 		return 1;
 	}
 
-	$i = 0;
-	$a_iscsitarget = &$config['iscsitarget']['vdisk'];
+	$iscsitargets = "";
 
-	foreach ($a_iscsitarget as $target) {
-		$iscsitargets .= <<<EOD
+	if (is_array($config['iscsitarget']['vdisk'])) {
+		$i = 0;
+		$a_iscsitarget = &$config['iscsitarget']['vdisk'];
+
+		foreach ($a_iscsitarget as $target) {
+			$iscsitargets .= <<<EOD
 extent{$i} /mnt/{$target['sharename']}/iscsi_target{$i} 0 {$target['size']}MB
 target{$i} rw extent{$i} {$target['network']}
 
 EOD;
-		$i++;
+			$i++;
+		}
 	}
 
 	fwrite($fd, $iscsitargets);
