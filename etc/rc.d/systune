@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: systune
-# BEFORE: NETWORKING
+# BEFORE: DAEMON
 
 systune_enable=${systune_enable-"NO"}
 
