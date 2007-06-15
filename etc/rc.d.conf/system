@@ -59,9 +59,6 @@
 	/* set up our timezone */
 	system_timezone_configure();
 
-	/* set up our hostname */
-	system_hostname_configure();
-
 	/* generate resolv.conf */
 	system_resolvconf_generate();
 
