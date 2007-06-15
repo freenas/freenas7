@@ -2,7 +2,7 @@
 <?php 
 /*
 	interfaces_lan.php
-	part of FreeNAS (http://freenas.org)
+	part of FreeNAS (http://www.freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
 	
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
@@ -106,6 +106,8 @@ if ($_POST) {
 			$input_errors[] = gettext("A valid IPv6 address must be specified.");
 		if ($_POST['ipv6subnet'] && !filter_var($_POST['ipv6subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))))
 			$input_errors[] = gettext("A valid prefix (1-128) must be specified.");
+		if (($_POST['ipv6gatewayr'] && !is_ipv6addr($_POST['ipv6gateway'])))
+			$input_errors[] = gettext("A valid IPv6 Gateway address must be specified.");
 		
 	}
 	

@@ -5,7 +5,7 @@
 	part of FreeNAS (http://www.freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
 	
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -44,11 +44,19 @@ $optcfg = &$config['interfaces']['opt' . $index];
 
 if ($config['interfaces']['opt' . $index]['ipaddr'] == "dhcp") {
 	$pconfig['type'] = "DHCP";
-	$pconfig['ipaddr'] = get_ipaddr($optcfg['if']);
+	$pconfig['ipaddr'] = get_ipv4addr($optcfg['if']);
 } else {
 	$pconfig['type'] = "Static";
 	$pconfig['ipaddr'] = $optcfg['ipaddr'];
   $pconfig['subnet'] = $optcfg['subnet'];
+}
+if ($config['interfaces']['opt' . $index]['ipv6addr'] == "auto") {
+	$pconfig['ipv6type'] = "Auto";
+	$pconfig['ipv6addr'] = get_ipv6addr($optcfg['if']);
+} else {
+	$pconfig['ipv6type'] = "Static";
+	$pconfig['ipv6addr'] = $optcfg['ipv6addr'];
+	$pconfig['ipv6subnet'] = $optcfg['ipv6subnet'];
 }
 
 $pconfig['descr'] = $optcfg['descr'];
@@ -80,18 +88,29 @@ if ($_POST) {
 				}
 			}
 		}
+			
 	
-    if ($_POST['type'] == "Static") {
-		  $reqdfields = explode(" ", "descr ipaddr subnet");
-		  $reqdfieldsn = array(gettext("Description"),gettext("IP address"),gettext("Subnet bit count"));
+		if ($_POST['type'] == "Static") {
+			$reqdfields = explode(" ", "descr ipaddr subnet");
+			$reqdfieldsn = array(gettext("Description"),gettext("IP address"),gettext("Subnet bit count"));
 
-		  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+			do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		}
+		if ($_POST['ipv6type'] == "Static")   {
+			$reqdfields = array_merge($reqdfields,explode(" ", "ipv6addr ipv6subnet"));
+			$reqdfieldsn = array_merge($reqdfieldsn,array(gettext("IPv6 address"),gettext("Prefix")));
+	
+			do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		}
 		
-		if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr'])))
+		if (($_POST['ipaddr'] && !is_ipv4addr($_POST['ipaddr'])))
 			$input_errors[] = gettext("A valid IP address must be specified.");
-		if (($_POST['subnet'] && !is_numeric($_POST['subnet'])))
-			$input_errors[] = gettext("A valid network bit count must be specified.");
+		if ($_POST['subnet'] && !filter_var($_POST['subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 32))))
+			$input_errors[] = gettext("A valid network bit count (1-32) must be specified.");
+		if (($_POST['ipv6addr'] && !is_ipv6addr($_POST['ipv6addr'])))
+			$input_errors[] = gettext("A valid IPv6 address must be specified.");
+		if ($_POST['ipv6subnet'] && !filter_var($_POST['ipv6subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))))
+			$input_errors[] = gettext("A valid prefix (1-128) must be specified.");
 		if (($_POST['mtu'] && !is_mtu($_POST['mtu'])))
 			$input_errors[] = gettext("A valid mtu size must be specified.");
 	
@@ -106,12 +125,18 @@ if ($_POST) {
 	}
 	
 	if (!$input_errors) {
-    if($_POST['type'] == "Static") {
-      $optcfg['ipaddr'] = $_POST['ipaddr'];
-			$optcfg['subnet'] = $_POST['subnet'];
-		} else if ($_POST['type'] == "DHCP") {
+    if(strcmp($_POST['type'],"Static") == 0) {
+		$optcfg['ipaddr'] = $_POST['ipaddr'];
+		$optcfg['subnet'] = $_POST['subnet'];
+	} else if ($_POST['type'] == "DHCP") {
 			$optcfg['ipaddr'] = "dhcp";
-		}
+	}
+	if(strcmp($_POST['ipv6type'],"Static") == 0) {
+		$optcfg['ipv6addr'] = $_POST['ipv6addr'];
+		$optcfg['ipv6subnet'] = $_POST['ipv6subnet'];
+	} else if (strcmp($_POST['ipv6type'],"Auto") == 0) {
+		$optcfg['ipv6addr'] = "auto";
+	}
 
 		$optcfg['descr'] = $_POST['descr'];
 		$optcfg['mtu'] = $_POST['mtu'];
@@ -226,6 +251,26 @@ function type_change() {
       break;
   }
 }
+function ipv6_type_change() {
+  switch(document.iform.ipv6type.selectedIndex)
+  {
+		case 0: /* Static */
+		  /* use current ip address as default */
+		  /* comment this line, because function get_ipv6addr use the local IPv6 address*/
+      /*document.iform.ipv6addr.value = "<?=htmlspecialchars(get_ipv6addr($lancfg['if']))?>"; */
+
+      document.iform.ipv6addr.disabled = 0;
+	  document.iform.ipv6subnet.disabled = 0;
+
+      break;
+
+    case 1: /* Autoconfigure */
+      document.iform.ipv6addr.disabled = 1;
+	  document.iform.ipv6subnet.disabled = 1;
+
+      break;
+  }
+}
 // -->
 </script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
@@ -243,6 +288,9 @@ function type_change() {
                     </table>
                   </td>
                 </tr>
+				<tr> 
+      <td colspan="2" valign="top" class="listtopic"><?=gettext("IPv4 Configuration"); ?></td>
+    </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Type");?></td>
                   <td width="78%" class="vtable">
@@ -263,7 +311,7 @@ function type_change() {
                   </td>
                 </tr>
                 <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address"); ?></td>
+                  <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv4 address"); ?></td>
                   <td width="78%" class="vtable"> 
                     <?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
                     /
@@ -289,6 +337,31 @@ function type_change() {
                     <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
                   </td>
                 </tr>
+				  <td colspan="2" valign="top" class="listtopic"><?=gettext("IPv6 Configuration"); ?></td>
+    </tr>
+    <tr> 
+    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
+      <td width="78%" class="vtable">
+  			<select name="ipv6type" class="formfld" id="ipv6type" onchange="ipv6_type_change()">
+          <?php $opts = split(" ", "Static Auto"); foreach ($opts as $opt): ?>
+          <option <?php if ($opt == $pconfig['ipv6type']) echo "selected";?>> 
+            <?=htmlspecialchars($opt);?>
+          </option>
+          <?php endforeach; ?>
+        </select>
+      </td>
+    </tr>
+    <tr> 
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv6 address"); ?></td>
+      <td width="78%" class="vtable"> 
+        <?=$mandfldhtml;?><input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="30" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
+		 /
+		 <input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
+      </td>
+    </tr>
+	<tr>
+	 <td colspan="2" valign="top" class="listtopic"><?=gettext("Global Configuration"); ?></td>
+	 </tr>
                 <tr>
                   <td valign="top" class="vncell"><?=gettext("MTU"); ?></td>
                   <td class="vtable"><?=$mandfldhtml;?><input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>"> 

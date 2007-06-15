@@ -130,7 +130,7 @@ case $1 in
 		tar zxvf $2 --include etc/preupgrade.sh -C /ftmp
 		if [ -f /ftmp/etc/preupgrade.sh ]; then
 			echo "Starting Pre-upgrade script."
-			/ftmp/etc/pre-upgrade.sh
+			/ftmp/etc/preupgrade.sh
 		fi
 
 		#DO NOT OVERRIDE LIBRARY IN USE: lib/libc.so.6
@@ -156,7 +156,7 @@ case $1 in
 		# Extract and start post-upgrade script
 		# Actually (0.685b) this script are not used... but peraps one day
 		tar zxvf $2 --include etc/postupgrade.sh -C /ftmp
-		if [ -f /ftmp/etc/post-upgrade.sh ]; then
+		if [ -f /ftmp/etc/postupgrade.sh ]; then
 			echo "Starting Post-upgrade script."
 			/ftmp/etc/postupgrade.sh
 		fi

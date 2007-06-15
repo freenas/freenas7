@@ -2,12 +2,11 @@
 <?php
 /*
 	status_interfaces.php
-	part of m0n0wall (http://m0n0.ch/wall)
-
-	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
+	part of FreeNAS (http://www.freenas.org)
+	Based on m0n0wall (http://m0n0.ch/wall)
+	
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-
-	Modified for FreeNAS (http://freenas.org) by Olivier Cochard <olivier@freenas.org>
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -124,6 +123,27 @@ $pgtitle = array(gettext("Status"), gettext("Interfaces"));
         <td width="22%" class="vncellt"><?=gettext("Gateway");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['gateway']);?>
+        </td>
+      </tr>
+	  <?php endif; ?><?php if ($ifinfo['ipv6addr']): ?>
+	  <tr>
+        <td width="22%" class="vncellt"><?=gettext("IPv6 address");?></td>
+        <td width="78%" class="listr">
+          <?=htmlspecialchars($ifinfo['ipv6addr']);?>&nbsp;
+        </td>
+      </tr>
+      <?php endif; ?><?php if ($ifinfo['ipv6subnet']): ?>
+      <tr>
+        <td width="22%" class="vncellt"><?=gettext("Prefix");?></td>
+        <td width="78%" class="listr">
+          <?=htmlspecialchars($ifinfo['ipv6subnet']);?>
+        </td>
+      </tr>
+      <?php endif; ?><?php if ($ifinfo['ipv6gateway']): ?>
+      <tr>
+        <td width="22%" class="vncellt"><?=gettext("IPv6 Gateway");?></td>
+        <td width="78%" class="listr">
+          <?=htmlspecialchars($ifinfo['ipv6gateway']);?>
         </td>
       </tr>
       <?php endif; if ($ifdescr == "wan" && file_exists("{$g['varetc_path']}/nameservers.conf")): ?>

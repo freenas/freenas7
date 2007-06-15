@@ -57,15 +57,25 @@ function gen_subnet($ipaddr, $bits) {
 	if (!is_ipaddr($ipaddr) || !is_numeric($bits))
 		return "";
 
-	return long2ip(ip2long($ipaddr) & gen_subnet_mask_long($bits));
+	if (is_ipv4addr($ipaddr))
+		return long2ip(ip2long($ipaddr) & gen_subnet_mask_long($bits));
+	// STILL NOT READY FOR IPv6
+	else if (is_ipv6addr($ipaddr))
+		return "";
+		
 }
 
 /* return the highest (broadcast) address in the subnet given a host address and a subnet bit count */
 function gen_subnet_max($ipaddr, $bits) {
 	if (!is_ipaddr($ipaddr) || !is_numeric($bits))
 		return "";
-
-	return long2ip(ip2long($ipaddr) | ~gen_subnet_mask_long($bits));
+	
+	if (is_ipv4addr($ipaddr))
+		return long2ip(ip2long($ipaddr) | ~gen_subnet_mask_long($bits));
+	// STILL NOT READY FOR IPv6
+	else if (is_ipv6addr($ipaddr))
+		return "";
+	
 }
 
 /* returns a subnet mask (long given a bit count) */
