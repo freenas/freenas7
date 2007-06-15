@@ -16,7 +16,13 @@ required_files=${mdnsresponder_config}
 command="/usr/local/sbin/mDNSResponderPosix"
 command_args="-b -f ${mdnsresponder_config}"
 pidfile="/var/run/mDNSResponder.pid"
+start_precmd="start_precmd"
+
+start_precmd()
+{
+	# Create .conf file
+	create_conf_file ${name}
+}
 
 load_rc_config ${name}
-create_conf_file ${name}
 run_rc_command "$1"

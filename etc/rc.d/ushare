@@ -17,14 +17,20 @@ ushare_config=${ushare_config:-"/var/etc/${name}.conf"}
 required_files=${ushare_config}
 command="/usr/local/bin/${name}"
 command_args="--daemon --xbox --cfg=${ushare_config}"
-stop_postcmd="ushare_stop_postcmd"
+start_precmd="start_precmd"
+stop_postcmd="stop_postcmd"
 
-ushare_stop_postcmd()
+start_precmd()
+{
+	# Create .conf file
+	create_conf_file ${name}
+}
+
+stop_postcmd()
 {
 	# Delete multicast route.
 	/sbin/route delete -net 239.0.0.0 > /dev/null
 }
 
 load_rc_config ${name}
-create_conf_file ${name}
 run_rc_command "$1"

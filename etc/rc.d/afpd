@@ -17,7 +17,13 @@ afpd_config=${afpd_config:-"/var/etc/${name}.conf"}
 required_files=${afpd_config}
 command="/usr/local/sbin/${name}"
 command_args="-F ${afpd_config}"
+start_precmd="start_precmd"
+
+start_precmd()
+{
+	# Create .conf file
+	create_conf_file ${name}
+}
 
 load_rc_config ${name}
-create_conf_file ${name}
 run_rc_command "$1"

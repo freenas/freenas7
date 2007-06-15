@@ -21,15 +21,17 @@ command="/usr/local/sbin/pure-ftpd"
 pureftpd_config=${pureftpd_config:-"/var/etc/pure-ftpd.conf"}
 required_files=${pureftpd_config}
 pidfile="/var/run/pure-ftpd.pid"
-start_precmd="pureftpd_start_precmd"
+start_precmd="start_precmd"
 
-pureftpd_start_precmd()
+start_precmd()
 {
+	# Create .conf file
+	create_conf_file ${name}
+
 	# Convert config file into command args (pure-ftpd does not support config files).
 	for _command_arg in `cat ${pureftpd_config}`; do
 		command_args="${command_args} ${_command_arg}"
 	done
 }
 
-create_conf_file ${name}
 run_rc_command "$1"
