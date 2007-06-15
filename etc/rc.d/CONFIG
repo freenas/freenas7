@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# PROVIDE: CONFIG
+# REQUIRE: rcconf
+# BEFORE: DAEMON
+
+#	This is a dummy dependency.

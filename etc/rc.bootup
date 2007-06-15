@@ -44,9 +44,6 @@
 	/* convert configuration, if necessary */
 	convert_config();
 
-	/* Create /etc/rc.conf file */
-	system_rcconf_generate();
-
 	/* Generate local user database(s) */
 	system_create_usermanagement();
 

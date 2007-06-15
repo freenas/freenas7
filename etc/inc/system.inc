@@ -34,54 +34,6 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
-// Create /etc/rc.conf file.
-// Return 0 if successful, otherwise 1
-function system_rcconf_generate() {
-	global $config;
-
-	if (isset($config['system']['tune'])) {
-		mwexec("/usr/local/sbin/rconf service enable systune");
-	}
-
-	if (isset($config['upnp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable ushare");
-	}
-
-	if (isset($config['system']['zeroconf'])) {
-		mwexec("/usr/local/sbin/rconf service enable mdnsresponder");
-	}
-
-	if (isset($config['dynamicdns']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable inadyn");
-	}
-
-	if (isset($config['ftp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable pureftpd");
-	}
-
-	if (isset($config['system']['smart'])) {
-		mwexec("/usr/local/sbin/rconf service enable smartd");
-	}
-
-	if (isset($config['system']['powerd'])) {
-		mwexec("/usr/local/sbin/rconf service enable powerd");
-	}
-
-	if (isset($config['afp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable afpd");
-	}
-
-	if (is_array($config['iscsitarget']['vdisk'])) {
-		mwexec("/usr/local/sbin/rconf service enable iscsi_target");
-	}
-
-	if (isset($config['snmpd']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable snmpd");
-	}
-
-	return 0;
-}
-
 // Create /var/etc/resolv.conf file. Will be automatically overwritten by /sbin/dhclient-script
 // when using DHCP.
 // Return 0 if successful, otherwise 1
