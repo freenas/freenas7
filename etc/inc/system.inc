@@ -119,15 +119,6 @@ EOD;
 	return $result;
 }
 
-function system_hostname_configure() {
-	global $config;
-
-	$syscfg = $config['system'];
-
-	/* set hostname */
-	return mwexec("/bin/hostname " . escapeshellarg("{$syscfg['hostname']}.{$syscfg['domain']}"));
-}
-
 /* Generate the static routes
 Return 0 if OK, and 1 if error */
 function system_routing_configure() {

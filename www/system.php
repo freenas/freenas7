@@ -163,7 +163,8 @@ if ($_POST) {
 
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval = system_hostname_configure();
+			$retval |= rc_restart_service("rcconf"); // Update rc.conf
+			$retval |= rc_restart_service("hostname"); // Set hostname
 			$retval |= system_hosts_generate();
 			$retval |= system_resolvconf_generate();
 			$retval |= system_create_usermanagement();
