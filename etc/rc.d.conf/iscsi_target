@@ -1,7 +1,7 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-	iscsi_target init script to create config file
+	iscsi_target - script to create config file
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
