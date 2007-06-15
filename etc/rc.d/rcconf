@@ -1,97 +1,21 @@
-#!/usr/local/bin/php -f
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
 # PROVIDE: rcconf
-<?php
-/*
-	rcconf - Modify /etc/rc.conf
 
-	Copyright © 2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+. /etc/rc.subr
+. /etc/conf.subr
 
-	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
-	All rights reserved.
+name="rcconf"
+stop_cmd=":"
+start_cmd="start_cmd"
 
-	Redistribution and use in source and binary forms, with or without
-	modification, are permitted provided that the following conditions are met:
+start_cmd()
+{
+	# Create .conf file
+	create_conf_file ${name}
+}
 
-	1. Redistributions of source code must retain the above copyright notice,
-	   this list of conditions and the following disclaimer.
-
-	2. Redistributions in binary form must reproduce the above copyright
-	   notice, this list of conditions and the following disclaimer in the
-	   documentation and/or other materials provided with the distribution.
-
-	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
-	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
-	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-	OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-	POSSIBILITY OF SUCH DAMAGE.
-*/
-	require_once("config.inc");
-	require_once("functions.inc");
-	require_once("util.inc");
-
-	global $config;
-
-	if (isset($config['system']['tune'])) {
-		mwexec("/usr/local/sbin/rconf service enable systune");
-	}
-
-	if (isset($config['upnp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable ushare");
-	}
-
-	if (isset($config['system']['zeroconf'])) {
-		mwexec("/usr/local/sbin/rconf service enable mdnsresponder");
-	}
-
-	if (isset($config['dynamicdns']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable inadyn");
-	}
-
-	if (isset($config['ftp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable pureftpd");
-	}
-
-	if (isset($config['system']['smart'])) {
-		mwexec("/usr/local/sbin/rconf service enable smartd");
-	}
-
-	if (isset($config['system']['powerd'])) {
-		mwexec("/usr/local/sbin/rconf service enable powerd");
-	}
-
-	if (isset($config['afp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable afpd");
-	}
-
-	if (is_array($config['iscsitarget']['vdisk'])) {
-		mwexec("/usr/local/sbin/rconf service enable iscsi_target");
-	}
-
-	if (isset($config['snmpd']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable snmpd");
-	}
-
-	// Set hostname.
-	mwexec("/usr/local/sbin/rconf attribute set hostname \"{$config['system']['hostname']}.{$config['system']['domain']}\"");
-
-	// Set interface config.
-	$ifname = get_ifname($config['interfaces']['lan']['if']);
-	switch ($config['interfaces']['lan']) {
-		case 'dhcp':
-			$ifconfigvalue="DHCP";
-			break;
-		default:
-			$ifconfigvalue="{$config['interfaces']['lan']['ipaddr']}/{$config['interfaces']['lan']['subnet']}";
-			break;
-	}
-	mwexec("/usr/local/sbin/rconf attribute set \"ifconfig_{$ifname}\" \"{$ifconfigvalue}\"");
-
-	return 0;
-?>
+load_rc_config ${name}
+run_rc_command "$1"

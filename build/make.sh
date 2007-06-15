@@ -614,7 +614,7 @@ use_svn() {
 fromscratch() {
   while true; do
 echo -n '
-Rebulding FreeNAS from Scratch
+Bulding FreeNAS from scratch
 Menu:
 1 - Create FreeNAS filesystem structure 
 2 - Copy required files to FreeNAS filesystem
@@ -721,7 +721,7 @@ Menu:
 11 - Create FreeNAS "LiveCD" (ISO) file (need cdrtools)
 12 - Create FreeNAS "LiveCD" (ISO) file without 'embedded' file (need cdrtools)
 13 - Create FreeNAS "Full" (TGZ) update file
-20 - Build FreeNAS from scratch advanced menu
+20 - Build FreeNAS from scratch
 *  - Quit
 > '
 	read choice

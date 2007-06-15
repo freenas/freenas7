@@ -1,4 +1,5 @@
 #!/usr/local/bin/php -f
+# PROVIDE: rcconf
 <?php
 /*
 	rcconf - Modify /etc/rc.conf
@@ -32,7 +33,6 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 	require_once("config.inc");
-	require_once("functions.inc");
 	require_once("util.inc");
 
 	global $config;
