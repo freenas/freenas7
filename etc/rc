@@ -81,9 +81,6 @@ fi
 # Run ldconfig
 /sbin/ldconfig -elf /usr/lib /usr/local/lib /lib
 
-# Let the PHP-based configuration subsystem set up the system now
-/etc/rc.bootup
-
 if [ "$1" = autoboot ]; then
 	autoboot=yes
 	_boot="faststart"
