@@ -17,13 +17,7 @@ inadyn_config=${inadyn_config:-"/var/etc/${name}.conf"}
 required_files=${inadyn_config}
 command="/usr/local/bin/${name}"
 command_args="--input_file ${inadyn_config}"
-start_precmd="start_precmd"
-
-start_precmd()
-{
-	# Create .conf file
-	create_conf_file ${name}
-}
 
 load_rc_config ${name}
+create_conf_file ${name}
 run_rc_command "$1"

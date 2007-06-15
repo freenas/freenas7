@@ -12,13 +12,6 @@ rcvar=`set_rcvar`
 command="/usr/local/bin/iscsi-target"
 required_files="/var/etc/iscsi/targets"
 pidfile="/var/run/iscsi-target.pid"
-start_precmd="start_precmd"
-
-start_precmd()
-{
-	# Create .conf file
-	create_conf_file ${name}
-}
 
 load_rc_config $name
 
@@ -27,4 +20,5 @@ load_rc_config $name
 
 command_args="-f $iscsi_target_config"
 
+create_conf_file ${name}
 run_rc_command "$1"

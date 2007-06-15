@@ -19,7 +19,6 @@ command=/usr/local/sbin/lighttpd
 command_args="-f ${lighttpd_conf} -m /usr/local/lib/lighttpd"
 pidfile=/var/run/lighttpd.pid
 required_files=${lighttpd_conf}
-start_precmd="start_precmd"
 stop_postcmd=stop_postcmd
 restart_precmd="checkconfig"
 reload_precmd=reload_precmd
@@ -27,12 +26,6 @@ reload_postcmd=reload_postcmd
 sig_reload="-INT"
 check_cmd="checkconfig"
 extra_commands="reload check"
-
-start_precmd()
-{
-	# Create .conf file
-	create_conf_file ${name}
-}
 
 checkconfig()
 {
@@ -56,4 +49,5 @@ reload_postcmd()
 	run_rc_command start
 }
 
+create_conf_file ${name}
 run_rc_command "$1"

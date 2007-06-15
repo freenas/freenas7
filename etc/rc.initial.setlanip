@@ -80,7 +80,7 @@
 		}
 
 		do {
-			echo "Enter DNS IPv4 address(press 'Enter' to skip): ";
+			echo "Enter DNS IPv4 address (press 'Enter' to skip): ";
 			$dnsserverip = chop(fgets($fp));
 			if ($dnsserverip === "") {
 				break;
@@ -130,7 +130,7 @@
 		}
 	
 	do {
-			echo "Enter DNS IPv6 address(press 'Enter' to skip): ";
+			echo "Enter DNS IPv6 address (press 'Enter' to skip): ";
 			$dnsserveripv6 = chop(fgets($fp));
 			if ($dnsserveripv6 === "") {
 				break;

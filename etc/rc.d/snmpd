@@ -18,13 +18,7 @@ required_files=${snmpd_config}
 pidfile="/var/run/${name}.pid"
 command="/usr/sbin/${name}"
 command_args="-c ${snmpd_config} -P ${pidfile}"
-start_precmd="start_precmd"
-
-start_precmd()
-{
-	# Create .conf file
-	create_conf_file ${name}
-}
 
 load_rc_config ${name}
+create_conf_file ${name}
 run_rc_command "$1"
