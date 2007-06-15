@@ -82,16 +82,38 @@ if ($_POST) {
 	
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-		$reqdfields = explode(" ", "ipaddr gateway");
+		/*$reqdfields = explode(" ", "ipaddr gateway");
 		$reqdfieldsn = array(gettext("IP address"),gettext("Gateway"));
-		$reqdfieldst = explode(" ", "ipaddr ipaddr");
+		$reqdfieldst = explode(" ", "ipaddr ipaddr"); */
+		
+		if (($_POST['ipaddr'] && !is_ipv4addr($_POST['ipaddr'])))
+			$input_errors[] = gettext("A valid IPv4 address must be specified.");
+		if ($_POST['subnet'] && !filter_var($_POST['subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 32))))
+			$input_errors[] = gettext("A valid network bit count (1-32) must be specified.");
 	}
+	
+	if ($_POST['ipv6type'] == "Static")   {
+		$reqdfields = array_merge($reqdfields,explode(" ", "ipv6addr ipv6subnet"));
+		$reqdfieldsn = array_merge($reqdfieldsn,array(gettext("IPv6 address"),gettext("Prefix")));
+	
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	$reqdfields = array_merge($reqdfields, explode(" ", "mtu"));
+		/*$reqdfields = array_merge($reqdfields,explode(" ", "ipv6addr ipv6gateway"));
+		$reqdfieldsn = array_merge($reqdfieldsn,array(gettext("IPv6 address"),gettext("Gateway")));
+		$reqdfieldst = array_merge($reqdfieldst,explode(" ", "ipv6addr ipv6addr")); */
+		
+		if (($_POST['ipv6addr'] && !is_ipv6addr($_POST['ipv6addr'])))
+			$input_errors[] = gettext("A valid IPv6 address must be specified.");
+		if ($_POST['ipv6subnet'] && !filter_var($_POST['ipv6subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))))
+			$input_errors[] = gettext("A valid prefix (1-128) must be specified.");
+		
+	}
+	
+	/*$reqdfields = array_merge($reqdfields, explode(" ", "mtu"));
 	$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("MTU")));
 	$reqdfieldst = array_merge($reqdfieldst, explode(" ", "mtu"));
 
-	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors); */
 
 	/* Wireless interface? */
 	if (isset($lancfg['wireless'])) {
@@ -205,7 +227,8 @@ function ipv6_type_change() {
   {
 		case 0: /* Static */
 		  /* use current ip address as default */
-      document.iform.ipv6addr.value = "<?=htmlspecialchars(get_ipv6addr($lancfg['if']))?>";
+		  /* comment this line, because function get_ipv6addr use the local IPv6 address*/
+      /*document.iform.ipv6addr.value = "<?=htmlspecialchars(get_ipv6addr($lancfg['if']))?>"; */
 
       document.iform.ipv6addr.disabled = 0;
 	  document.iform.ipv6subnet.disabled = 0;
@@ -299,7 +322,7 @@ function ipv6_type_change() {
     <tr> 
       <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv6 address"); ?></td>
       <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="20" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
+        <?=$mandfldhtml;?><input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="30" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
 		 /
 		 <input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
       </td>
