@@ -106,8 +106,8 @@
 		} while (!is_ipv6addr($lanipv6));
 	}
 	
-		do {
-			echo "\nEnter Prefix (press 'Enter' to use 64): ";
+	do {
+			echo "Enter Prefix (press 'Enter' to use 64): ";
 			$lanbitsv6 = chop(fgets($fp));
 			if ($lanbitsv6 === "") {
 				$lanbitsv6 = 64;
@@ -130,7 +130,7 @@
 		}
 	
 	do {
-			echo "\nEnter DNS IPv6 address(press 'Enter' to skip): ";
+			echo "Enter DNS IPv6 address(press 'Enter' to skip): ";
 			$dnsserveripv6 = chop(fgets($fp));
 			if ($dnsserveripv6 === "") {
 				break;
@@ -177,6 +177,7 @@
 The LAN IP address has been set to:
 - IPv4: $laninfov4
 - IPv6: $laninfov6
+
 You can now access the webGUI by opening the following URL
 in your browser:
 

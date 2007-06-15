@@ -30,11 +30,9 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-/* include all configuration functions */
 require_once("functions.inc");
-/* include utilities */
 require_once("util.inc");
+require_once("rc.inc");
 
 function interfaces_loopback_configure()
 {
@@ -150,13 +148,13 @@ function interfaces_lan_configure()
 		$result |= services_samba_configure();
 
 		/* Restart FTP */
-		/* $result |= services_ftpd_configure(); */
+		$result |= rc_restart_service("pureftpd");
 
 		/* Restart NFS */
 		$result |= services_nfs_configure();
 
 		/* Restart AFP */
-		/* $result |= services_afpd_configure(); */
+		$result |= rc_restart_service("afpd");
 
 		/* Restart SSH */
 		$result |= services_sshd_configure();
@@ -165,7 +163,7 @@ function interfaces_lan_configure()
 		$result |= services_rsyncd_configure();
 
 		/* Restart mdnsresponder (Zeroconf/Bonjour) */
-		/* $result |= services_mdnsresponder_configure(); */
+		$result |= rc_restart_service("mdnsresponder");
 	}
 
 	if ($g['booting']) {

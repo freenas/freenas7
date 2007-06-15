@@ -5,7 +5,6 @@
 # PROVIDE: rcconf
 
 . /etc/rc.subr
-. /etc/conf.subr
 
 name="rcconf"
 stop_cmd=":"
@@ -14,7 +13,8 @@ start_cmd="start_cmd"
 start_cmd()
 {
 	# Create .conf file
-	create_conf_file ${name}
+	eval "/etc/rc.d.conf/${name}"
+	return $?
 }
 
 load_rc_config ${name}

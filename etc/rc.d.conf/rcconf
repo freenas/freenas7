@@ -1,5 +1,4 @@
 #!/usr/local/bin/php -f
-# PROVIDE: rcconf
 <?php
 /*
 	rcconf - Modify /etc/rc.conf
@@ -81,13 +80,14 @@
 	mwexec("/usr/local/sbin/rconf attribute set hostname \"{$config['system']['hostname']}.{$config['system']['domain']}\"");
 
 	// Set interface config.
+	$ipaddress = $config['interfaces']['lan']['ipaddr'];
 	$ifname = get_ifname($config['interfaces']['lan']['if']);
-	switch ($config['interfaces']['lan']) {
+	switch ($ipaddress) {
 		case 'dhcp':
 			$ifconfigvalue="DHCP";
 			break;
 		default:
-			$ifconfigvalue="{$config['interfaces']['lan']['ipaddr']}/{$config['interfaces']['lan']['subnet']}";
+			$ifconfigvalue="{$ipaddress}/{$config['interfaces']['lan']['subnet']}";
 			break;
 	}
 	mwexec("/usr/local/sbin/rconf attribute set \"ifconfig_{$ifname}\" \"{$ifconfigvalue}\"");

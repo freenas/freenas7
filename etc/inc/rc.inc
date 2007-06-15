@@ -61,6 +61,27 @@ function rc_is_service_running($name) {
 	return $retval;
 }
 
+// Start service.
+// Return 0 if successful, otherwise 1.
+function rc_start_service($name) {
+	$retval = rc_exec_script("/etc/rc.d/{$name} start");
+	return $retval;
+}
+
+// Restart service.
+// Return 0 if successful, otherwise 1.
+function rc_restart_service($name) {
+	$retval = rc_exec_script("/etc/rc.d/{$name} restart");
+	return $retval;
+}
+
+// Stop service.
+// Return 0 if successful, otherwise 1.
+function rc_stop_service($name) {
+	$retval = rc_exec_script("/etc/rc.d/{$name} stop");
+	return $retval;
+}
+
 // Update service (Modify rc.conf and execute rc script).
 // Return 0 if successful, otherwise 1.
 function rc_update_service($name,$enabled) {
@@ -97,13 +118,6 @@ function rc_update_service($name,$enabled) {
 		mwexec("/usr/local/sbin/rconf service disable {$name}");
 	}
 
-	return $retval;
-}
-
-// Stop service.
-// Return 0 if successful, otherwise 1.
-function rc_stop_service($name) {
-	$retval = rc_exec_script("/etc/rc.d/{$name} stop");
 	return $retval;
 }
 ?>
