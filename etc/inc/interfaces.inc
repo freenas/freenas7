@@ -49,7 +49,7 @@ function interfaces_lan_configure()
 
 	$result = 0;
 
-	if ($g['booting'])
+	if (is_booting())
 		write_console("Configuring LAN interface... ");
 
 	$lancfg = $config['interfaces']['lan'];
@@ -57,7 +57,7 @@ function interfaces_lan_configure()
 
 	if (strcmp($lanif,"auto") == 0) {
 		$lanif = get_ifname($lanif);
-		if ($g['booting']) {
+		if (is_booting()) {
 			write_console("Using interface $lanif... ");
 		}
 	}
@@ -137,7 +137,7 @@ function interfaces_lan_configure()
 	/* install multicast route (for uPnP)*/
 	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lanif));
 
-	if (!$g['booting']) {
+	if (!is_booting()) {
 		/* make new hosts file */
 		$result = system_hosts_generate();
 
@@ -166,7 +166,7 @@ function interfaces_lan_configure()
 		$result |= rc_restart_service("mdnsresponder");
 	}
 
-	if ($g['booting']) {
+	if (is_booting()) {
 		write_console("done\n");
 	}
 
@@ -184,7 +184,7 @@ function interfaces_optional_configure()
 		interfaces_optional_configure_if($i);
 	}
 		
-	if (!$g['booting']) {
+	if (!is_booting()) {
 		/* reconfigure static routes (kernel may have deleted them) */
 		system_routing_configure();
 		
@@ -202,7 +202,7 @@ function interfaces_optional_configure_if($opti)
 	
 	$optcfg = $config['interfaces']['opt' . $opti];
 	
-	if ($g['booting']) {
+	if (is_booting()) {
 		$optdescr = "";
 		if ($optcfg['descr'])
 			$optdescr = " ({$optcfg['descr']})";
@@ -260,7 +260,7 @@ function interfaces_optional_configure_if($opti)
 		mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " delete down");
 	}
 
-	if ($g['booting']) {
+	if (is_booting()) {
 		write_console("done\n");
 	}
 	

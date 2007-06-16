@@ -39,9 +39,6 @@
 	require_once("functions.inc");
 	require_once("util.inc");
 
-	// Let the other functions know we're booting.
-	$g['booting'] = TRUE;
-
 	/* Generate local user database(s) */
 	system_create_usermanagement();
 

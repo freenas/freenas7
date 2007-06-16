@@ -177,7 +177,7 @@ function system_syslogd_start() {
 
 	$syslogcfg = $config['syslog'];
 
-	if ($g['booting']) {
+	if (is_booting()) {
 		write_console("Starting syslog service... ");
 	} else {
 		killbypid("{$g['varrun_path']}/syslog.pid");
@@ -261,7 +261,7 @@ EOD;
 		$retval = mwexec("/usr/sbin/syslogd -ss");
 	}
 
-	if ($g['booting'])
+	if (is_booting())
 		write_console("done\n");
 
 	return $retval;
@@ -270,7 +270,7 @@ EOD;
 function system_pccard_start() {
 	global $config, $g;
 
-	if ($g['booting'])
+	if (is_booting())
 		write_console("Initializing PC cards... ");
 
 	/* kill any running pccardd */
@@ -279,7 +279,7 @@ function system_pccard_start() {
 	/* fire up pccardd */
 	$res = mwexec("/usr/sbin/pccardd -z -f {$g['etc_path']}/pccard.conf");
 
-	if ($g['booting']) {
+	if (is_booting()) {
 		if ($res == 0)
 			write_console("done\n");
 		else
@@ -301,7 +301,7 @@ function system_timezone_configure() {
 
 	$syscfg = $config['system'];
 
-	if ($g['booting'])
+	if (is_booting())
 		write_console("Initializing timezone... ");
 
 	/* extract appropriate timezone file */
@@ -311,7 +311,7 @@ function system_timezone_configure() {
 
 	exec("/usr/bin/tar xzfO /usr/share/zoneinfo.tgz " . escapeshellarg($timezone) . " > /etc/localtime");
 
-	if ($g['booting'])
+	if (is_booting())
 		write_console("done\n");
 }
 
@@ -320,7 +320,7 @@ function system_ntp_configure() {
 
 	$syscfg = $config['system'];
 
-	if ($g['booting'])
+	if (is_booting())
 		write_console("Starting NTP client... ");
 	else {
 		killbypid("{$g['varrun_path']}/runmsntp.pid");
@@ -346,7 +346,7 @@ function system_ntp_configure() {
 			escapeshellarg($timeservers));
 	}
 
-	if ($g['booting']) {
+	if (is_booting()) {
 		write_console("done\n");
 	}
 
@@ -446,7 +446,7 @@ function system_set_harddisk_standby() {
 
 	if (isset($config['system']['harddiskstandby']) &&
 			($config['system']['harddiskstandby'] > 0)) {
-		if ($g['booting']) {
+		if (is_booting()) {
 			write_console("Setting harddisk standby time... ");
 		}
 
@@ -458,13 +458,13 @@ function system_set_harddisk_standby() {
 			if (!mwexec('/sbin/sysctl hw.ata.suspend=' . ((int)$standby*60))) {
 				// Reinitialize ATA-drives
 				mwexec('/usr/local/sbin/atareinit');
-				if ($g['booting']) {
+				if (is_booting()) {
 					write_console("done\n");
 				}
-			} else if ($g['booting']) {
+			} else if (is_booting()) {
 				write_console("failed\n");
 			}
-		} else if ($g['booting']) {
+		} else if (is_booting()) {
 			write_console("failed\n");
 		}
 	}
@@ -510,7 +510,7 @@ function system_create_usermanagement()
 
 	$result = 0;
 
-	if ($g['booting'])
+	if (is_booting())
 		write_console("Generating user/password database(s)... ");
 
 	$result |= system_create_masterpasswd();
@@ -519,11 +519,11 @@ function system_create_usermanagement()
 	$result |= system_create_htpasswd();
 
 	if (0 == $result) {
-		if($g['booting'])
+		if(is_booting())
 			write_console("done\n");
 		write_log("User/password database(s) created");
 	} else {
-		if($g['booting'])
+		if(is_booting())
 			write_console("failed\n");
 		write_log("Error: Failed to create user/password database(s)");
 	}
@@ -1128,7 +1128,7 @@ function system_swap_configure()
 	$result = 0;
 
 	// Stop swap if not in booting mode
-	if (!$g['booting']) {
+	if (!is_booting()) {
 		// MUST add a check if the system can stop swap without problem
 		write_log("Stopping swap");
 		$result = mwexec("/sbin/swapoff /dev/md2");

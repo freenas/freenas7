@@ -1638,12 +1638,24 @@ function get_ram_info() {
 	return $raminfo;
 }
 
+// Write message into log file.
+// Return 0 if successful, otherwise 1
 function write_log($message) {
 	$cmd="/usr/bin/logger \"{$message}\"";
-	mwexec($cmd);
+	return mwexec($cmd);
 }
 
+// Display message on console.
+// Return 0 if successful, otherwise 1
 function write_console($message) {
 	echo($message);
+	return 0;
+}
+
+// Check if booting process is performed.
+// Return TRUE if booting, otherwise FALSE
+function is_booting() {
+	global $g;
+	return file_exists("{$g['varrun_path']}/booting");
 }
 ?>

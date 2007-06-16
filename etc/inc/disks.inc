@@ -38,7 +38,7 @@ function disks_mount_all()
 {
 	global $config, $g;
 
-	if ($g['booting'])
+	if (is_booting())
 		write_console("Mounting partitions... ");
 
 	// For each device configured:
@@ -52,7 +52,7 @@ function disks_mount_all()
 			// Background: 'disks_umount' can't be used in the case the mount point
 			// has been renamed by the user because it uses the 'sharename' (which is
 			// now the new name of the share, but we need the old name) for unmounting.
-			if (!$g['booting'])
+			if (!is_booting())
 				disks_umount_ex($mount);
 
 			disks_mount($mount);
@@ -64,14 +64,14 @@ function disks_mount_all()
 				continue;
 
 			// Advanced umount filesystem if not in booting mode (mount edition).
-			if (!$g['booting'])
+			if (!is_booting())
 				disks_umount($mount);
 
 			disks_mount($mount);
 		}
 	}
 
-	if ($g['booting'])
+	if (is_booting())
 		write_console("done\n");
 
 	return 0;
@@ -110,7 +110,7 @@ function disks_mount($mount)
 
 	/* Mount the filesystem. */
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
-	if ($g['booting']) {
+	if (is_booting()) {
 		if (is_array($config['geli']['vdisk'])) {
 			$a_geli = $config['geli']['vdisk'];
 			if (array_search_ex($mount['mdisk'], $a_geli, "fullname")) {
@@ -640,7 +640,7 @@ function disks_raid_gvinum_start()
 	global $config, $g;
 
 	if ($config['gvinum']['vdisk']) {
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Start gvinum raid... ");
 
 		/* start each volume */
@@ -648,7 +648,7 @@ function disks_raid_gvinum_start()
 			mwexec("/sbin/gvinum start {$a_raid_conf['name']}");
 		}
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("done\n");
 	}
 
@@ -663,13 +663,13 @@ function disks_raid_gmirror_start()
 
 	/* Start Geom mirror */
 	if ($config['gmirror']['vdisk']) {
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Start gmirror raid... ");
 
 		// Load geom mirror module
 		mwexec("/sbin/gmirror load");
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("done\n");
 	}
 
@@ -684,13 +684,13 @@ function disks_raid_gconcat_start()
 
 	/* Start Geom concat */
 	if ($config['gconcat']['vdisk']) {
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Start gconcat raid... ");
 
 		// Load geom concat module
 		mwexec("/sbin/gconcat load");
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("done\n");
 	}
 
@@ -705,13 +705,13 @@ function disks_raid_gstripe_start()
 
 	/* Start Geom stripe */
 	if ($config['gstripe']['vdisk']) {
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Start gstripe raid... ");
 
 		// Load geom stripe module
 		mwexec("/sbin/gstripe load");
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("done\n");
 	}
 
@@ -726,7 +726,7 @@ function disks_raid_graid5_start()
 
 	/* Start Geom RAID5 */
 	if ($config['graid5']['vdisk']) {
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Start graid5 raid... ");
 
 		// Load geom raid5 module
@@ -735,7 +735,7 @@ function disks_raid_graid5_start()
 		//Tune graid5
 		disks_raid_graid5_tune();
 
-		if ($g['booting']) {
+		if (is_booting()) {
 			write_console("done\n");
 		}
 

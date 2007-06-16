@@ -47,7 +47,7 @@ function services_samba_configure() {
 	killbyname("nmbd");
 
 	if (isset($config['samba']['enable'])) {
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Starting Samba... ");
 
 		/* generate smb.conf */
@@ -295,11 +295,11 @@ EOD;
 			$result |= system_create_smbpasswd();
 
 			if(!$result) {
-				if($g['booting'])
+				if(is_booting())
 					write_console("done\n");
 				write_log("Samba started");
 			} else {
-				if($g['booting'])
+				if(is_booting())
 					write_console("failed\n");
 				write_log("Error: Failed to start Samba");
 			}
@@ -321,7 +321,7 @@ function services_rsyncd_configure() {
 
 	if (isset($config['rsyncd']['enable'])) {
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Starting RSYNC daemon... ");
 
 
@@ -418,11 +418,11 @@ EOD;
 		}
 
 		if(!$result) {
-			if($g['booting'])
+			if(is_booting())
 				write_console("done\n");
 			write_log("RSYNC Daemon started");
 		} else {
-			if($g['booting'])
+			if(is_booting())
 				write_console("failed\n");
 			write_log("Error: Failed to start RSYNC Daemon");
 		}
@@ -447,7 +447,7 @@ function services_nfs_configure() {
 
 	if (isset($config['nfs']['enable'])) {
 
-		if ($g['booting']) {
+		if (is_booting()) {
 			write_console("Starting NFS... ");
 		}
 
@@ -511,11 +511,11 @@ EOD;
 			$result |= mwexec("/usr/sbin/rpc.statd");
 
 			if(!$result) {
-				if($g['booting'])
+				if(is_booting())
 					write_console("done\n");
 				write_log("NFS Daemon started");
 			} else {
-				if($g['booting'])
+				if(is_booting())
 					write_console("failed\n");
 				write_log("Error: Failed to start NFS Daemon");
 			}
@@ -537,7 +537,7 @@ function services_sshd_configure() {
 
 	if (isset($config['sshd']['enable'])) {
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Starting SSH server... ");
 
 		/* generate /ssh/sshd_config */
@@ -633,11 +633,11 @@ EOD;
 		}
 
 		if(!$result) {
-			if($g['booting'])
+			if(is_booting())
 				write_console("done\n");
 			write_log("SSH Daemon started");
 		} else {
-			if($g['booting'])
+			if(is_booting())
 				write_console("failed\n");
 			write_log("Error: Failed to start SSH Daemon");
 		}
@@ -654,7 +654,7 @@ function services_unison_configure() {
 	$result = 0 ;
 
 	if (isset($config['unison']['enable'])) {
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Configuring unison... ");
 
 		/* ensure unison workdir exists */
@@ -700,11 +700,11 @@ function services_unison_configure() {
 		$tmp = "";
 
 		if(!$result) {
-			if($g['booting'])
+			if(is_booting())
 				write_console("done\n");
 			write_log("Unison started");
 		} else {
-			if($g['booting'])
+			if(is_booting())
 				write_console("failed\n");
 			write_log("Error: Failed to start Unison");
 		}
@@ -745,7 +745,7 @@ EOD;
 	if (is_array($config['rsync']['rsyncclient'])) {
 		$a_rsyncclient = &$config['rsync']['rsyncclient'];
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Configuring cron for rsync client... ");
 
 		$i=0;
@@ -818,7 +818,7 @@ EOD;
 			$i++;
 		}
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("done\n");
 
 	}
@@ -827,7 +827,7 @@ EOD;
 	if (is_array($config['rsync']['rsynclocal'])) {
 		$a_rsynclocal = &$config['rsync']['rsynclocal'];
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Configuring cron for local rsync... ");
 
 		$i=0;
@@ -901,13 +901,13 @@ EOD;
 
 		}
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("done\n");
 	}
 
 	// SHUTDOWN PART
 	if (isset($config['shutdown']['enable'])) {
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Configuring Cron for shutdown... ");
 
 		if ($config['shutdown']['all_mins'] === "0") {
@@ -972,7 +972,7 @@ EOD;
 
 EOD;
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("done\n");
 	}
 
@@ -1000,7 +1000,7 @@ function services_rsyncclient_configure()
 	if (is_array($config['rsync']['rsyncclient'])) {
 		$a_rsyncclient = &$config['rsync']['rsyncclient'];
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Generating synchronizing cron script... ");
 
 		$i=0;
@@ -1051,7 +1051,7 @@ EOD;
 			$i++;
 		}
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("done\n");
 
 		return 0;
@@ -1069,7 +1069,7 @@ function services_rsync_local_configure()
 	if (is_array($config['rsync']['rsynclocal'])) {
 		$a_rsynclocal = &$config['rsync']['rsynclocal'];
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("Generating local rsync cron script... ");
 
 		$i=0;
@@ -1118,7 +1118,7 @@ EOD;
 			$i++;
 		}
 
-		if ($g['booting'])
+		if (is_booting())
 			write_console("done\n");
 
 		return 0;
@@ -1137,21 +1137,21 @@ function services_iscsiinit_configure()
 	killbyname("iscontrol");
 
 	if (is_array($config['iscsiinit']['vdisk'])) {
-		if ($g['booting']) {
+		if (is_booting()) {
 			write_console("Loading iSCSI kernel module... ");
 		}
 		/* iSCSI initiator configured, start the process */
 		$result = mwexec("/sbin/kldload iscsi_initiator.ko");
 		$result |= mwexec("/sbin/sysctl debug.iscsi=0");
 
-		if ((!$result) && ($g['booting'])) {
+		if ((!$result) && (is_booting())) {
 			write_log("iSCSI kernel module loaded");
 			write_console("done\n");
-		} else if ($g['booting']) {
+		} else if (is_booting()) {
 			write_log("Error: Failed to load iSCSI kernel module");
 			write_console("failed\n");
 		}
-		if ($g['booting']) {
+		if (is_booting()) {
 			write_console("Configuring initiator(s)... ");
 		}
 
@@ -1165,11 +1165,11 @@ function services_iscsiinit_configure()
 		}
 
 		if(!$result) {
-			if($g['booting'])
+			if (is_booting())
 				write_console("done\n");
 			write_log("iSCSI initiator(s) started");
 		} else {
-			if($g['booting'])
+			if (is_booting())
 				write_console("failed\n");
 			write_log("Error: Failed to start iSCSI initiator(s)");
 		}

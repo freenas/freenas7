@@ -48,7 +48,7 @@ if (file_exists("{$g['etc_path']}/platform")) {
 	$g['arch'] = $g['fullplatform'] = "unknown";
 }
 
-if ($g['booting']) {
+if (is_booting()) {
 	/* find the device where config.xml resides and write out an fstab */
 	unset($cfgdevice);
 	
@@ -202,7 +202,7 @@ if (!$noparseconfig) {
 	} else {
 	
 		if (!file_exists("{$g['conf_path']}/config.xml")) {
-			if ($g['booting']) {
+			if (is_booting()) {
 				if (strstr($g['platform'], "liveCD")) {
 					/* try copying the default config. to the floppy */
 					reset_factory_defaults();
@@ -225,7 +225,7 @@ if (!$noparseconfig) {
 		$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
 		
 		if ((float)$config['version'] > (float)$g['latest_config']) {
-			if ($g['booting']) {
+			if (is_booting()) {
 				echo <<<EOD
 
 
@@ -397,7 +397,7 @@ function convert_config()
 	if ($config['version'] == $g['latest_config'])
 		return;		/* already at latest version */
 	
-	if ($g['booting'])
+	if (is_booting())
 		echo "Converting configuration... ";
 	
 	/* convert 1 -> 1.1 */
@@ -749,7 +749,7 @@ function convert_config()
 	
 	write_config();
 	
-	if ($g['booting'])
+	if (is_booting())
 		echo "done\n";
 }
 
