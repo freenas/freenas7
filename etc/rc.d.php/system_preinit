@@ -36,7 +36,7 @@
 	require_once("util.inc");
 
 	// Let the other functions know we're booting.
-	@touch("{$g['varrun_path']}/booting");
+	@touch("/var/etc/booting");
 
 	// Parse the configuration and initialize $global array.
 	require_once("config.inc");

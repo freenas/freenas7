@@ -1656,6 +1656,6 @@ function write_console($message) {
 // Return TRUE if booting, otherwise FALSE
 function is_booting() {
 	global $g;
-	return file_exists("{$g['varrun_path']}/booting");
+	return file_exists("/var/etc/booting");
 }
 ?>

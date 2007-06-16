@@ -34,5 +34,5 @@
 	require_once("globals.inc");
 
 	// Let the other functions know we've finished booting.
-	@unlink("{$g['varrun_path']}/booting");
+	@unlink("/var/etc/booting");
 ?>
