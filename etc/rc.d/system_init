@@ -2,11 +2,11 @@
 # Copyright © 2007 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
-# PROVIDE: system
+# PROVIDE: system_init
 
 . /etc/rc.subr
 
-name="system"
+name="system_init"
 stop_cmd=":"
 start_cmd="start_cmd"
 
