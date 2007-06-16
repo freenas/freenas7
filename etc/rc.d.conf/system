@@ -139,9 +139,6 @@
 	/* run any shell commands specified in config.xml */
 	system_do_shell_commands();
 
-	/* Send the start beep */
-	system_beep_up();
-
 	/* done */
 	unlink("{$g['varrun_path']}/booting");
 ?>

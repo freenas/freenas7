@@ -10,11 +10,11 @@ systune_enable=${systune_enable-"NO"}
 . /etc/rc.subr
 
 name="systune"
-start_cmd="${name}_start"
-stop_cmd="${name}_stop"
+start_cmd="start_cmd"
+stop_cmd="stop_cmd"
 rcvar=`set_rcvar`
 
-systune_start()
+start_cmd()
 {
 	echo "Starting system tuning:"
 
@@ -34,7 +34,7 @@ systune_start()
 	/sbin/sysctl net.inet.tcp.path_mtu_discovery=0
 }
 
-systune_stop()
+stop_cmd()
 {
 	echo "Undo system tuning:"
 

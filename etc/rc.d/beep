@@ -1,0 +1,30 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: beep
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+
+name="beep"
+start_cmd="start_cmd"
+stop_cmd="stop_cmd"
+
+start_cmd()
+{
+	# Start core system.
+	eval "/etc/rc.d.conf/${name} up"
+	return $?
+}
+
+stop_cmd()
+{
+	# Start core system.
+	eval "/etc/rc.d.conf/${name} down"
+	return $?
+}
+
+load_rc_config ${name}
+run_rc_command "$1"
