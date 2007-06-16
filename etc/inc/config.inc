@@ -379,16 +379,16 @@ function config_lock() {
 	}
 }
 
-/* Convert the config file */
-function convert_config()
-{
+// Convert the config file.
+// Return 0 if successful, otherwise 1
+function convert_config() {
 	global $config, $g;
 
 	if ($config['version'] == $g['latest_config'])
-		return;		/* already at latest version */
+		return 0;		/* already at latest version */
 
 	if (is_booting())
-		echo "Converting configuration... ";
+		echo "Converting configuration.";
 
 	/* convert 1 -> 1.1 */
 	/* changing partition name, and initializing old bad user parameters */
@@ -723,6 +723,8 @@ function convert_config()
 
 	if (is_booting())
 		echo "done\n";
+
+	return 0;
 }
 
 /* unlock configuration file */

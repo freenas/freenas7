@@ -65,8 +65,8 @@ hostname_start()
 hostname_restart()
 {
 	# Reset hostname
-	/bin/hostname ${hostname}
-	hostname_start
+	/bin/hostname ""
+	run_rc_command start
 }
 
 load_rc_config $name
