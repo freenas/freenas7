@@ -3,7 +3,8 @@
 # All rights reserved.
 
 # PROVIDE: afpd
-# REQUIRE: DAEMON 
+# REQUIRE: DAEMON
+# BEFORE: LOGIN
 # KEYWORD: shutdown
 
 afpd_enable=${afpd_enable-"NO"}
