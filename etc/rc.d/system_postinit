@@ -1,0 +1,21 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: system_postinit
+
+. /etc/rc.subr
+
+name="system_postinit"
+stop_cmd=":"
+start_cmd="start_cmd"
+
+start_cmd()
+{
+	# Start core system.
+	eval "/etc/rc.d.conf/${name}"
+	return $?
+}
+
+load_rc_config ${name}
+run_rc_command "$1"

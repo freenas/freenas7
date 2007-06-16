@@ -35,17 +35,12 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 	require_once("globals.inc");
-
-	/* let the other functions know we're booting */
-	$g['booting'] = TRUE;
-	touch("{$g['varrun_path']}/booting");
-
-	/* parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
+	require_once("util.inc");
 
-	/* convert configuration, if necessary */
-	convert_config();
+	// Let the other functions know we're booting.
+	$g['booting'] = TRUE;
 
 	/* Generate local user database(s) */
 	system_create_usermanagement();
@@ -138,7 +133,4 @@
 
 	/* run any shell commands specified in config.xml */
 	system_do_shell_commands();
-
-	/* done */
-	unlink("{$g['varrun_path']}/booting");
 ?>
