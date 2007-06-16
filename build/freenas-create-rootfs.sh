@@ -63,7 +63,7 @@ mkdir etc/pam.d ;
 mkdir etc/ssh ;
 mkdir etc/iscsi ;
 mkdir etc/rc.d ;
-mkdir etc/rc.d.conf ;
+mkdir etc/rc.d.php ;
 mkdir lib ;
 mkdir lib/geom ;
 mkdir libexec ;

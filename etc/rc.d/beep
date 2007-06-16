@@ -15,14 +15,14 @@ stop_cmd="stop_cmd"
 start_cmd()
 {
 	# Start core system.
-	eval "/etc/rc.d.conf/${name} up"
+	eval "/etc/rc.d.php/${name} up"
 	return $?
 }
 
 stop_cmd()
 {
 	# Start core system.
-	eval "/etc/rc.d.conf/${name} down"
+	eval "/etc/rc.d.php/${name} down"
 	return $?
 }
 

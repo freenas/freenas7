@@ -14,7 +14,7 @@ start_cmd()
 {
 	echo "Updating rc.conf."
 	# Update rc.conf file. Use settings from config.xml.
-	eval "/etc/rc.d.conf/${name}"
+	eval "/etc/rc.d.php/${name}"
 	return $?
 }
 

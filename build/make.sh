@@ -593,8 +593,8 @@ use_svn() {
 	cd $FREENAS_SVNDIR/etc/rc.d
 	cp -v -p * $FREENAS_ROOTFS/etc/rc.d
 
-	cd $FREENAS_SVNDIR/etc/rc.d.conf
-	cp -v -p * $FREENAS_ROOTFS/etc/rc.d.conf
+	cd $FREENAS_SVNDIR/etc/rc.d.php
+	cp -v -p * $FREENAS_ROOTFS/etc/rc.d.php
 
 	cd $FREENAS_SVNDIR/etc/pam.d
 	cp -v -p * $FREENAS_ROOTFS/etc/pam.d
