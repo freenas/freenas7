@@ -32,6 +32,8 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 	require_once("globals.inc");
+	require_once("functions.inc");
+	require_once("util.inc");
 
 	// Let the other functions know we're booting.
 	@touch("{$g['varrun_path']}/booting");
