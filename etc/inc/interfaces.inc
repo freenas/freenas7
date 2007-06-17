@@ -139,7 +139,7 @@ function interfaces_lan_configure()
 
 	if (!is_booting()) {
 		/* Make new hosts file */
-		$result = rc_exec_script("hosts");
+		$result = rc_exec_service("hosts");
 
 		/* Reconfigure static routes (kernel may have deleted them) */
 		$result |= system_routing_configure();

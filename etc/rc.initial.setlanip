@@ -154,7 +154,7 @@
 	write_config();
 
 	interfaces_lan_configure();
-	rc_exec_script("resolv");
+	rc_exec_service("resolv");
 
   /* Get current IP */
   $if = $config['interfaces']['lan']['if'];

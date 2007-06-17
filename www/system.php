@@ -163,10 +163,10 @@ if ($_POST) {
 
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_exec_script("rcconf"); // Update rc.conf
+			$retval |= rc_exec_service("rcconf"); // Update rc.conf
 			$retval |= rc_restart_service("hostname"); // Set hostname
-			$retval |= rc_exec_script("hosts");
-			$retval |= rc_exec_script("resolv");
+			$retval |= rc_exec_service("hosts");
+			$retval |= rc_exec_service("resolv");
 			$retval |= system_create_usermanagement();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();

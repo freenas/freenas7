@@ -60,6 +60,13 @@ function rc_is_service_running($name) {
 	return $retval;
 }
 
+// Execute service.
+// Return 0 if successful, otherwise 1.
+function rc_exec_service($name) {
+	$retval = rc_exec_script("/etc/rc.d/{$name}");
+	return $retval;
+}
+
 // Start service.
 // Return 0 if successful, otherwise 1.
 function rc_start_service($name) {
