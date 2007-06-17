@@ -105,9 +105,8 @@
 				exit(0);
 			}
 		} while (!is_ipv6addr($lanipv6));
-	}
-	
-	do {
+
+		do {
 			echo "Enter Prefix (press 'Enter' to use 64): ";
 			$lanbitsv6 = chop(fgets($fp));
 			if ($lanbitsv6 === "") {
@@ -118,7 +117,7 @@
 	$config['interfaces']['lan']['ipv6addr'] = $lanipv6;
 	$config['interfaces']['lan']['ipv6subnet'] = $lanbitsv6;
 	
-	do {
+		do {
 			echo "Enter IPv6 default gateway (press 'Enter' to skip): ";
 			$gatewayipv6 = chop(fgets($fp));
 			if ($gatewayipv6 === "") {
@@ -130,7 +129,7 @@
 			$config['interfaces']['lan']['ipv6gateway'] = $gatewayipv6;
 		}
 	
-	do {
+		do {
 			echo "Enter DNS IPv6 address (press 'Enter' to skip): ";
 			$dnsserveripv6 = chop(fgets($fp));
 			if ($dnsserveripv6 === "") {
@@ -141,6 +140,7 @@
 		if ($dnsserveripv6) {
 			$config['system']['ipv6dnsserver'] = $dnsserveripv6;
 		}
+	}
 	
 	$proto = "http";
 	if ($config['system']['webgui']['protocol'] == "https") {
