@@ -52,5 +52,5 @@ if [ ! -e /etc/resolv.conf -a \
           echo nameserver $ns >> /etc/resolv.conf;
   done
 else
-	eval "/etc/rc.d.php/${name}"
+	eval /etc/rc.d.php/${name}
 fi

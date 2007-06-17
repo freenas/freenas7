@@ -163,7 +163,7 @@ if ($_POST) {
 
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_exec_service("rcconf"); // Update rc.conf
+			$retval |= rc_exec_service("rcconf.sh"); // Update rc.conf
 			$retval |= rc_restart_service("hostname"); // Set hostname
 			$retval |= rc_exec_service("hosts");
 			$retval |= rc_exec_service("resolv");
