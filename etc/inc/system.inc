@@ -34,44 +34,6 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
-// Create /var/etc/resolv.conf file. Will be automatically overwritten by /sbin/dhclient-script
-// when using DHCP.
-// Return 0 if successful, otherwise 1
-function system_resolvconf_generate() {
-	global $config, $g;
-
-	$syscfg = $config['system'];
-
-	$fd = fopen("{$g['varetc_path']}/resolv.conf", "w");
-	if (!$fd) {
-		$message = "Error: Can't open resolv.conf in system_resolvconf_generate()";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	$resolvconf = "domain {$syscfg['domain']}\n";
-
-	if (is_array($syscfg['dnsserver'])) {
-		foreach ($syscfg['dnsserver'] as $ns) {
-			if ($ns)
-				$resolvconf .= "nameserver $ns\n";
-		}
-	}
-	
-	if (is_array($syscfg['ipv6dnsserver'])) {
-		foreach ($syscfg['ipv6dnsserver'] as $ns) {
-			if ($ns)
-				$resolvconf .= "nameserver $ns\n";
-		}
-	}
-
-	fwrite($fd, $resolvconf);
-	fclose($fd);
-
-	return 0;
-}
-
 /* Generate the /etc/hosts file
 Return 0 if OK, and 1 if error */
 function system_hosts_generate() {

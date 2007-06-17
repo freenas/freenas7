@@ -7,17 +7,10 @@
 . /etc/rc.subr
 
 name="rcconf"
-stop_cmd=":"
-start_cmd="start_cmd"
 
-start_cmd()
-{
-	echo "Updating rc.conf."
-	# Update rc.conf file. Use settings from config.xml.
-	eval "/etc/rc.d.php/${name}"
-	# Force reloading of rc.conf file.
-	_rc_conf_loaded=false
-	load_rc_config $name
-}
-
-run_rc_command "$1"
+echo "Updating rc.conf."
+# Update rc.conf file. Use settings from config.xml.
+eval "/etc/rc.d.php/${name}"
+# Force reloading of rc.conf file.
+_rc_conf_loaded=false
+load_rc_config ${name}

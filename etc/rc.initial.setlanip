@@ -35,6 +35,7 @@
 	require_once("config.inc");
 	require_once("functions.inc");
 	require_once("util.inc");
+	require_once("rc.inc");
 
 	$fp = fopen('php://stdin', 'r');
 
@@ -153,7 +154,7 @@
 	write_config();
 
 	interfaces_lan_configure();
-	system_resolvconf_generate();
+	rc_exec_script("resolv");
 
   /* Get current IP */
   $if = $config['interfaces']['lan']['if'];

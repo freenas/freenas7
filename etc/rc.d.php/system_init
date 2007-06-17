@@ -51,9 +51,6 @@
 	/* set up our timezone */
 	system_timezone_configure();
 
-	/* generate resolv.conf */
-	system_resolvconf_generate();
-
 	/* start pccardd */
 	if (!in_array($g['platform'], $g['nopccard_platforms']))
 		system_pccard_start();
