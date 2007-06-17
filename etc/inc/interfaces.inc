@@ -127,8 +127,8 @@ function interfaces_lan_configure()
 			mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " inet6 alias " . escapeshellarg($lancfg['ipv6addr'] . "/" . $lancfg['ipv6subnet']));
 
 			/* install default route */
-			if ($lancfg['gateway']) {
-				mwexec("/sbin/route delete default");
+			if ($lancfg['ipv6gateway']) {
+				mwexec("/sbin/route delete -inet6 default");
 				mwexec("/sbin/route add -inet6 default " . escapeshellarg($lancfg['ipv6gateway']));
 			}
 			break;

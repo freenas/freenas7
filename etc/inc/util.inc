@@ -61,8 +61,23 @@ function gen_subnet($ipaddr, $bits) {
 		return long2ip(ip2long($ipaddr) & gen_subnet_mask_long($bits));
 	// STILL NOT READY FOR IPv6
 	else if (is_ipv6addr($ipaddr))
-		return "";
+		return long2ip6(ip2long6($ipaddr) & gen_subnet_mask_long6($bits));
 		
+}
+
+function ip2long6($ip)   {
+    if (substr_count($ip, '::'))     {
+        $ip = str_replace('::', str_repeat(':0000', 8 - substr_count($ip, ':')) . ':', $ip) ;
+    }
+           
+    $ip = explode(':', $ip) ;
+       
+    $r_ip = '' ;
+    foreach ($ip as $v)    {
+        $r_ip .= str_pad(base_convert($v, 16, 2), 16, 0, STR_PAD_LEFT) ;
+    }
+           
+    return base_convert($r_ip, 2, 10) ;
 }
 
 /* return the highest (broadcast) address in the subnet given a host address and a subnet bit count */
@@ -74,11 +89,11 @@ function gen_subnet_max($ipaddr, $bits) {
 		return long2ip(ip2long($ipaddr) | ~gen_subnet_mask_long($bits));
 	// STILL NOT READY FOR IPv6
 	else if (is_ipv6addr($ipaddr))
-		return "";
+		return long2ip6(ip2long6($ipaddr) | ~gen_subnet_mask_long6($bits));
 	
 }
 
-/* returns a subnet mask (long given a bit count) */
+/* returns a IPv4 subnet mask (long given a bit count) */
 function gen_subnet_mask_long($bits) {
 	$sm = 0;
 	for ($i = 0; $i < $bits; $i++) {
@@ -88,9 +103,24 @@ function gen_subnet_mask_long($bits) {
 	return $sm;
 }
 
-/* same as above but returns a string */
+/* returns a IPv6 subnet mask (long given a bit count) */
+/* NEED TO BE ADAPTED FOR IPv6 !!!!! */
+function gen_subnet_mask_long6($bits) {
+	$sm = 0;
+	for ($i = 0; $i < $bits; $i++) {
+		$sm >>= 1;
+		$sm |= 0x80000000;
+	}
+	return $sm;
+}
+
+/* same as above for IPv4 but returns a string */
 function gen_subnet_mask($bits) {
 	return long2ip(gen_subnet_mask_long($bits));
+}
+/* same as above for IPv6 but returns a string */
+function gen_subnet_mask6($bits) {
+	return long2ip6(gen_subnet_mask_long6($bits));
 }
 
 function is_numericint($arg) {
@@ -1550,6 +1580,12 @@ function get_interface_info($if) {
 					if (preg_match("/^0x/", $matches[1]))
 						$ifinfo['subnet'] = long2ip(hexdec($matches[1]));
 				}
+				if (preg_match("/inet6 (\S+)/", $ici, $matches)) {
+					$ifinfo['ipv6addr'] = $matches[1];
+				}
+				if (preg_match("/prefixlen (\S+)/", $ici, $matches)) {
+					$ifinfo['ipv6subnet'] = $matches[1];
+				}
 			}
 		}
 	}
@@ -1568,18 +1604,27 @@ function get_interface_info($if) {
 function get_interface_info_ex($iftype) {
   global $config;
 
-  // Get interfave informations.
+  // Get interface informations.
 	$ifinfo = get_interface_info($config['interfaces'][$iftype]['if']);
 
 	// Get the default gateway if necessary.
 	if ($iftype === "lan") {
-		// Run netstat to determine the default gateway.
+		// Run netstat to determine the default IPv4 gateway.
 		unset($netstatrninfo);
 		exec("/usr/bin/netstat -rnf inet", $netstatrninfo);
 
 		foreach ($netstatrninfo as $nsr) {
 			if (preg_match("/^default\s*(\S+)/", $nsr, $matches)) {
 				$ifinfo['gateway'] = $matches[1];
+			}
+		}
+		// Run netstat to determine the default IPv6 gateway.
+		unset($netstatrninfo);
+		exec("/usr/bin/netstat -rnf inet6", $netstatrninfo);
+
+		foreach ($netstatrninfo as $nsr) {
+			if (preg_match("/^default\s*(\S+)/", $nsr, $matches)) {
+				$ifinfo['ipv6gateway'] = $matches[1];
 			}
 		}
 	}

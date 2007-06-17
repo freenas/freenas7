@@ -134,7 +134,7 @@ $pgtitle = array(gettext("Status"), gettext("Interfaces"));
       </tr>
       <?php endif; ?><?php if ($ifinfo['ipv6subnet']): ?>
       <tr>
-        <td width="22%" class="vncellt"><?=gettext("Prefix");?></td>
+        <td width="22%" class="vncellt"><?=gettext("IPv6 Prefix");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['ipv6subnet']);?>
         </td>
