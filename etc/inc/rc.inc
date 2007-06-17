@@ -64,6 +64,11 @@ function rc_is_service_running($name) {
 // Return 0 if successful, otherwise 1.
 function rc_exec_service($name) {
 	$retval = rc_exec_script("/etc/rc.d/{$name}");
+	if (0 == $retval) {
+		write_log("{$name} service executed");
+	}	else {
+		write_log("Failed to execute service {$name}");
+	}
 	return $retval;
 }
 
@@ -71,6 +76,11 @@ function rc_exec_service($name) {
 // Return 0 if successful, otherwise 1.
 function rc_start_service($name) {
 	$retval = rc_exec_script("/etc/rc.d/{$name} start");
+	if (0 == $retval) {
+		write_log("{$name} service started");
+	}	else {
+		write_log("Failed to start service {$name}");
+	}
 	return $retval;
 }
 
@@ -78,6 +88,11 @@ function rc_start_service($name) {
 // Return 0 if successful, otherwise 1.
 function rc_restart_service($name) {
 	$retval = rc_exec_script("/etc/rc.d/{$name} restart");
+	if (0 == $retval) {
+		write_log("{$name} service restarted");
+	}	else {
+		write_log("Failed to restart service {$name}");
+	}
 	return $retval;
 }
 
@@ -85,6 +100,11 @@ function rc_restart_service($name) {
 // Return 0 if successful, otherwise 1.
 function rc_stop_service($name) {
 	$retval = rc_exec_script("/etc/rc.d/{$name} stop");
+	if (0 == $retval) {
+		write_log("{$name} service stopped");
+	}	else {
+		write_log("Failed to stop service {$name}");
+	}
 	return $retval;
 }
 
@@ -101,23 +121,18 @@ function rc_update_service($name,$enabled) {
 		// Update rc.conf.
 		mwexec("/usr/local/sbin/rconf service enable {$name}");
 
-		// Start/Restart service.
-		$cmd = (0 == $running) ? "restart" : "start";
-		$retval = rc_exec_script("/etc/rc.d/{$name} {$cmd}");
-		if (0 == $retval) {
-			write_log("{$name} service {$cmd}ed");
-		}	else {
-			write_log("Failed to {$cmd} service {$name}");
+		switch ($running) {
+			case 0:
+				$retval = rc_restart_service($name);
+				break;
+			case 1:
+				$retval = rc_start_service($name);
+				break;
 		}
 	} else {
 		// Stop service if necessary. 
 		if (0 == $running) {
 			$retval = rc_stop_service($name);
-			if (0 == $retval) {
-				write_log("{$name} service stopped");
-			}	else {
-				write_log("Failed to stop service {$name}");
-			}
 		}
 
 		// Update rc.conf.

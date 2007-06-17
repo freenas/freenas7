@@ -4,9 +4,9 @@
 
 # PROVIDE: hosts
 # REQUIRE: NETWORKING
-# KEYWORD: nojail
 
 name="hosts"
 
+echo "Updating hosts."
 # Generate /var/etc/hosts file.
 eval /etc/rc.d.php/${name}
