@@ -91,7 +91,13 @@ if ($_POST) {
 	}
 	
 	/* check for overlaps */
-	$osn = gen_subnet($_POST['network'], $_POST['network_subnet']) . "/" . $_POST['network_subnet'];
+	/* gen_subnet work for IPv4 only... This function permit to fix user input error for network number*/
+	if (is_ipv4addr($_POST['network'])) {
+		$osn = gen_subnet($_POST['network'], $_POST['network_subnet']) . "/" . $_POST['network_subnet'];
+	} else {
+		$osn = $_POST['network'] . "/" . $_POST['network_subnet'] ;
+	}
+	
 	foreach ($a_routes as $route) {
 		if (isset($id) && ($a_routes[$id]) && ($a_routes[$id] === $route))
 			continue;

@@ -130,7 +130,7 @@ Bug fixs:
 Known bugs:
 - NTFS mount points are not mounted after creation, a reboot is necessary.
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
-- IPv6: static routes need to be added, opt interface need to be tested
+- IPv6: auto mode, and IPv6 on optionnal interfaces need to be tested
 
 FreeNAS 0.684b:
 ---------------

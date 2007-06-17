@@ -70,13 +70,21 @@ function system_routing_configure() {
 		}
 
 		foreach ($config['staticroutes']['route'] as $rtent) {
-			mwexec("/sbin/route add " . escapeshellarg($rtent['network']) .
+		
+			list($hp,$np) = explode('/', $rtent['network']);
+			if (is_ipv4addr($hp)) {
+				mwexec("/sbin/route add " . escapeshellarg($rtent['network']) .
 				" " . escapeshellarg($rtent['gateway']));
-
-			/* record route so it can be easily removed later (if necessary) */
-			fwrite($fd, $rtent['network'] . "\n");
+				/* record route so it can be easily removed later (if necessary) */
+				fwrite($fd, $rtent['network'] . "\n");
+			} else if (is_ipv6addr($hp)) {
+				mwexec("/sbin/route add -inet6 " . escapeshellarg($rtent['network']) .
+				" " . escapeshellarg($rtent['gateway']));
+				/* record route so it can be easily removed later (if necessary) */
+				fwrite($fd, $rtent['network'] . "\n");
+			}
+			
 		}
-
 		fclose($fd);
 	}
 
