@@ -30,8 +30,6 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-/* include all configuration functions */
 require_once("functions.inc");
 
 /* Stop samba, Generate the samba configuration file and start samba
@@ -57,13 +55,6 @@ function services_samba_configure() {
 			write_console($message . ".\n");
 			write_log($message);
 			$result = 1;
-		}
-
-		/* If no share configured, exit */
-		if (!is_array($config['mounts']['mount'])) {
-			$message = "Error: Can't start CIFS (samba). No mount points configured.";
-			write_log($message);
-			return 0;
 		}
 
 		$sambaconf = <<<EOD
@@ -227,8 +218,9 @@ EOD;
 			break;
 		}
 
-		foreach ($config['mounts']['mount'] as $mountent) {
-			$sambaconf .= <<<EOD
+		if (is_array($config['mounts']['mount'])) {
+			foreach ($config['mounts']['mount'] as $mountent) {
+				$sambaconf .= <<<EOD
 
 [{$mountent['sharename']}]
 comment = {$mountent['desc']}
@@ -241,32 +233,33 @@ hide dot files = yes
 
 EOD;
 
-			if ((is_array($config['samba']['hidemount']) && in_array($mountent['sharename'],$config['samba']['hidemount']))) {
-				$sambaconf .= <<<EOD
+				if ((is_array($config['samba']['hidemount']) && in_array($mountent['sharename'],$config['samba']['hidemount']))) {
+					$sambaconf .= <<<EOD
 browseable = no
 
 EOD;
-			}
+				}
 
-			if (isset($config['samba']['recyclebin'])) {
-				$sambaconf .= <<<EOD
+				if (isset($config['samba']['recyclebin'])) {
+					$sambaconf .= <<<EOD
 vfs objects = recycle
 recycle:keeptree = Yes
 recycle:versions = Yes
 
 EOD;
-			}
-			if (isset($config['samba']['readahead'])) {
-				$sambaconf .= <<<EOD
+				}
+				if (isset($config['samba']['readahead'])) {
+					$sambaconf .= <<<EOD
 vfs objects = readahead
 
 EOD;
-			}
-			if (isset($config['afp']['enable'])) 	{
-				$sambaconf .= <<<EOD
+				}
+				if (isset($config['afp']['enable'])) 	{
+					$sambaconf .= <<<EOD
 vfs objects = netatalk
 
 EOD;
+				}
 			}
 		}
 
