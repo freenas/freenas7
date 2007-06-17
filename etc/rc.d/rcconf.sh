@@ -14,3 +14,5 @@ eval /etc/rc.d.php/${name}
 # Force reloading of rc.conf file.
 _rc_conf_loaded=false
 load_rc_config ${name}
+
+return 0
