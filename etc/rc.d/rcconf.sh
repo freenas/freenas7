@@ -10,9 +10,7 @@ name="rcconf"
 
 echo "Updating rc.conf."
 # Update /etc/rc.conf file. Use settings from config.xml.
-eval "/etc/rc.d.php/${name}"
+eval /etc/rc.d.php/${name}
 # Force reloading of rc.conf file.
 _rc_conf_loaded=false
 load_rc_config ${name}
-
-exit 0

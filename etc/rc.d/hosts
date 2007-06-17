@@ -10,5 +10,3 @@ name="hosts"
 
 # Generate /var/etc/hosts file.
 eval /etc/rc.d.php/${name}
-
-exit $?
