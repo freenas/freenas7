@@ -80,6 +80,21 @@ function ip2long6($ip)   {
     return base_convert($r_ip, 2, 10) ;
 }
 
+/* Convert a long to an IPv6 */
+/* NEED TO FINISH THIS FUNCTION */
+/* This function bug for IPv6 bigger than ::1f:ffff:ffff:ffff */
+function long2ip6($long) {
+    // Valid range: ::0000 -> ffff:ffff:ffff:ffff:ffff:fffff:fffff:fffff
+    if ($long < 0 || $long > 340282366920938463463374607431768211456) return false;
+	$ipv6 = "";
+    for ($i=7;$i>=0;$i--) {
+        $ipv6 .= base_convert((int)($long / pow(65536,$i)),10,16);
+        $long -= (int)($long / pow(65536,$i))*pow(65536,$i);
+        if ($i>0) $ipv6 .= ":";
+    }
+    return $ipv6;
+}
+
 /* return the highest (broadcast) address in the subnet given a host address and a subnet bit count */
 function gen_subnet_max($ipaddr, $bits) {
 	if (!is_ipaddr($ipaddr) || !is_numeric($bits))
@@ -94,6 +109,9 @@ function gen_subnet_max($ipaddr, $bits) {
 }
 
 /* returns a IPv4 subnet mask (long given a bit count) */
+/* Warning: Bitwise operator depend of the OS architecture */
+/* No problem using IPv4 32 bit on 32bit OS... but with 64bit OS, there might be a bug here */
+/* see: http://www.php.net/manual/en/language.operators.bitwise.php */
 function gen_subnet_mask_long($bits) {
 	$sm = 0;
 	for ($i = 0; $i < $bits; $i++) {
@@ -105,11 +123,15 @@ function gen_subnet_mask_long($bits) {
 
 /* returns a IPv6 subnet mask (long given a bit count) */
 /* NEED TO BE ADAPTED FOR IPv6 !!!!! */
+/* WARNING: Bitwise operator depend of the OS architecture */
+/* It's not possile to use bitwise on number greater than 32 bit on 32bit OS*/
+/* Must found a solution for working with 128bits..... */
+/* see: http://www.php.net/manual/en/language.operators.bitwise.php */
 function gen_subnet_mask_long6($bits) {
 	$sm = 0;
 	for ($i = 0; $i < $bits; $i++) {
 		$sm >>= 1;
-		$sm |= 0x80000000;
+		$sm |= 0x80000000000000000000000000000000;
 	}
 	return $sm;
 }
