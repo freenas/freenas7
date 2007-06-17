@@ -27,7 +27,7 @@
 #
 
 # PROVIDE: hostname
-# BEFORE:  system
+# BEFORE:  system_init
 
 . /etc/rc.subr
 
