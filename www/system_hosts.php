@@ -50,8 +50,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			/* reload all components that use host */
-			$retval = system_hosts_generate();
+			$retval |= rc_exec_script("hosts");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

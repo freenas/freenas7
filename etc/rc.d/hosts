@@ -1,0 +1,14 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: hosts
+# REQUIRE: NETWORKING
+# KEYWORD: nojail
+
+. /etc/rc.subr
+
+name="hosts"
+
+# Generate /var/etc/hosts file.
+eval "/etc/rc.d.php/${name}"

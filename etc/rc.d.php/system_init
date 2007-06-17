@@ -64,9 +64,6 @@
 	/* set up Optional interfaces */
 	interfaces_optional_configure();
 
-	/* make hosts file (requires local ip address) */
-	system_hosts_generate();
-
 	/* set up static routes */
 	system_routing_configure();
 

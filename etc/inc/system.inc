@@ -34,53 +34,6 @@
 /* include all configuration functions */
 require_once("functions.inc");
 
-/* Generate the /etc/hosts file
-Return 0 if OK, and 1 if error */
-function system_hosts_generate() {
-	global $config, $g;
-
-	$result = 0 ;
-
-	$syscfg = $config['system'];
-	$lanif = $config['interfaces']['lan']['if'];
-
-	if (!is_array($syscfg['hosts'])) {
-		$syscfg['hosts'] = array();
-	}
-	$hostscfg = $syscfg['hosts'];
-
-	$fd = fopen("{$g['varetc_path']}/hosts", "w");
-	if (!$fd) {
-		$message = "Error: Can't open hosts file in system_hosts_generate()";
-		write_console($message . ".\n");
-		write_log($message);
-		$result = 1;
-	}
-
- 	// Get the IP addres of the interface for "auto" NIC
-	$lanif = get_ifname($lanif);
-
-	// Get the IP address of the interface.
- 	$ipaddr = get_ipaddr($lanif);
-
-	$hosts = <<<EOD
-::1		localhost localhost.{$syscfg['domain']}
-127.0.0.1	localhost localhost.{$syscfg['domain']}
-{$ipaddr}	{$syscfg['hostname']}.{$syscfg['domain']} {$syscfg['hostname']}
-
-EOD;
-
-	foreach ($hostscfg as $host) {
-		if ($host['name']) {
-			$hosts .= "{$host['address']}	{$host['name']}\n";
-		}
-	}
-	fwrite($fd, $hosts);
-	fclose($fd);
-
-	return $result;
-}
-
 /* Generate the static routes
 Return 0 if OK, and 1 if error */
 function system_routing_configure() {

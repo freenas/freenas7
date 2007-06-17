@@ -138,10 +138,10 @@ function interfaces_lan_configure()
 	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lanif));
 
 	if (!is_booting()) {
-		/* make new hosts file */
-		$result = system_hosts_generate();
+		/* Make new hosts file */
+		$result = rc_exec_script("hosts");
 
-		/* reconfigure static routes (kernel may have deleted them) */
+		/* Reconfigure static routes (kernel may have deleted them) */
 		$result |= system_routing_configure();
 
 		/* Restart Samba */
