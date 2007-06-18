@@ -104,8 +104,9 @@ if ($_POST) {
 			config_lock();
 			$retval |= rc_update_service("smartd",isset($config['system']['smart']));
 			$retval |= rc_update_service("powerd",isset($config['system']['powerd']));
-			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
 			$retval |= rc_update_service("systune",isset($config['system']['tune']));
+			$retval |= services_create_mdnsresponder_conf();
+			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

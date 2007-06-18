@@ -49,6 +49,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
+			$retval |= services_create_iscsitarget_conf();
 			$retval |= rc_update_service("iscsi_target",is_array($config['iscsitarget']['vdisk']));
 			config_unlock();
 		}

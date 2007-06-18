@@ -148,12 +148,14 @@ function interfaces_lan_configure()
 		$result |= services_samba_configure();
 
 		/* Restart FTP */
+		$result |= services_create_pureftpd_conf();
 		$result |= rc_restart_service("pureftpd");
 
 		/* Restart NFS */
 		$result |= services_nfs_configure();
 
 		/* Restart AFP */
+		$retval |= services_create_afpd_conf();
 		$result |= rc_restart_service("afpd");
 
 		/* Restart SSH */
@@ -162,7 +164,12 @@ function interfaces_lan_configure()
 		/* Restart RSYNC */
 		$result |= services_rsyncd_configure();
 
+		/* Restart uShare */
+		$result |= services_create_ushare_conf();
+		$result |= rc_restart_service("ushare");
+
 		/* Restart mdnsresponder (Zeroconf/Bonjour) */
+		$result |= services_create_mdnsresponder_conf();
 		$result |= rc_restart_service("mdnsresponder");
 	}
 

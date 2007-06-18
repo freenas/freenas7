@@ -94,6 +94,7 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= services_rsyncd_configure();
+			$retval |= services_create_mdnsresponder_conf();
 			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
 			config_unlock();
 		}

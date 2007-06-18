@@ -67,7 +67,9 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
+			$retval |= services_create_afpd_conf();
 			$retval |= rc_update_service("afpd",isset($config['afp']['enable']));
+			$retval |= services_create_mdnsresponder_conf();
 			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
 			config_unlock();
 		}

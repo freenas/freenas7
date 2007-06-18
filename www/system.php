@@ -163,13 +163,14 @@ if ($_POST) {
 
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_exec_service("rcconf.sh"); // Update rc.conf
+			$retval |= system_create_rc_conf(); // Update rc.conf
 			$retval |= rc_restart_service("hostname"); // Set hostname
 			$retval |= system_create_hosts_conf();
 			$retval |= system_create_resolv_conf();
 			$retval |= system_create_usermanagement();
 			$retval |= system_timezone_configure();
  			$retval |= system_ntp_configure();
+ 			$retval |= services_create_mdnsresponder_conf();
  			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
 			config_unlock();
 		}
