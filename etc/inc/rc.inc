@@ -52,6 +52,23 @@ require_once("util.inc");
 // !!          rc init php wrapper (/etc/rc.d.php/xxx)
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+// Services settings.
+// Register new services by adding them to this array:
+// exec_func       - Function executes before service is started.
+// is_enabled_func - Function to test if service is enabled
+$g_rcservices = array();
+$g_rcservices['afpd']          = array("exec_func" => "services_create_afpd_conf", "is_enabled_func" => "isset(\$config['afp']['enable'])");
+$g_rcservices['inadyn']        = array("exec_func" => "services_create_inadyn_conf", "is_enabled_func" => "isset(\$config['dynamicdns']['enable'])");
+$g_rcservices['iscsi_target']  = array("exec_func" => "services_create_iscsitarget_conf", "is_enabled_func" => "is_array(\$config['iscsitarget']['vdisk'])");
+$g_rcservices['lighttpd']      = array("exec_func" => "services_create_lighttpd_conf", "is_enabled_func" => "true");
+$g_rcservices['mdnsresponder'] = array("exec_func" => "services_create_mdnsresponder_conf", "is_enabled_func" => "isset(\$config['system']['zeroconf'])");
+$g_rcservices['pureftpd']      = array("exec_func" => "services_create_pureftpd_conf", "is_enabled_func" => "isset(\$config['ftp']['enable'])");
+$g_rcservices['snmpd']         = array("exec_func" => "services_create_snmpd_conf", "is_enabled_func" => "isset(\$config['snmpd']['enable'])");
+$g_rcservices['ushare']        = array("exec_func" => "services_create_ushare_conf", "is_enabled_func" => "isset(\$config['upnp']['enable'])");
+$g_rcservices['hosts']         = array("exec_func" => "system_create_hosts_conf", "is_enabled_func" => "true");
+$g_rcservices['rcconf']        = array("exec_func" => "system_create_rc_conf", "is_enabled_func" => "true");
+$g_rcservices['resolv']        = array("exec_func" => "system_create_resolv_conf", "is_enabled_func" => "true");
+
 // Execute rc script.
 // Return 0 if successful, otherwise 1.
 function rc_exec_script($scriptname) {
