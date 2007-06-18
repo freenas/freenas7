@@ -43,6 +43,13 @@ require_once("util.inc");
 // !! $retval |= rc_update_service("pureftpd",isset($config['ftp']['enable']));
 // !!
 // !! It seems to be a problem with the lighttpd cgi modul.
+// !!
+// !! Scenarios:
+// !! OK    => console -> rc init script (/etc/rc.d/xxx) ->
+// !!          rc init php wrapper (/etc/rc.d.php/xxx)
+// !!
+// !! FAILS => WebGUI (lighttpd/mod_cgi) -> rc init script (/etc/rc.d/xxx) ->
+// !!          rc init php wrapper (/etc/rc.d.php/xxx)
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // Execute rc script.
