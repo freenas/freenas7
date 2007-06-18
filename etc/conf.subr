@@ -5,6 +5,13 @@
 #	functions used by various rc scripts
 #
 
+# If script is called with parameter 'noconf' the conf file creation won't be done.
+if [ "noconf" == "$2" ]; then
+	noconf=1
+else
+	noconf=0
+fi
+
 #
 # create_conf_file script
 #	Create configuration file for the given service.
@@ -13,6 +20,11 @@
 create_conf_file()
 {
 	_file="/etc/rc.d.php/$1"
+
+	if [ $noconf -eq 1 ]; then
+		debug "create_conf_file: 'noconf' is set."
+		return 0;
+	fi
 
 	if [ -n "${rcvar}" ]; then
 		if checkyesno ${rcvar}; then
@@ -28,6 +40,8 @@ create_conf_file()
 
 			eval $_file
 			return $?
+		else
+			debug "create_conf_file: ${rcvar} disabled."
 		fi
 	fi
 }

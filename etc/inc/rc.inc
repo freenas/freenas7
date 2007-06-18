@@ -75,7 +75,7 @@ function rc_exec_service($name) {
 // Start service.
 // Return 0 if successful, otherwise 1.
 function rc_start_service($name) {
-	$retval = rc_exec_script("/etc/rc.d/{$name} start");
+	$retval = rc_exec_script("/etc/rc.d/{$name} start noconf");
 	if (0 == $retval) {
 		write_log("{$name} service started");
 	}	else {
@@ -87,7 +87,7 @@ function rc_start_service($name) {
 // Restart service.
 // Return 0 if successful, otherwise 1.
 function rc_restart_service($name) {
-	$retval = rc_exec_script("/etc/rc.d/{$name} restart");
+	$retval = rc_exec_script("/etc/rc.d/{$name} restart noconf");
 	if (0 == $retval) {
 		write_log("{$name} service restarted");
 	}	else {
