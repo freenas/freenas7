@@ -31,6 +31,20 @@
 */
 require_once("util.inc");
 
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !! ATTENTION:
+// !! It seems to be impossible to call a rc init script that
+// !! creates a conf file using 'create_conf_file' command.
+// !! A workaround is to call start/restart a service with
+// !! the additional parameter 'noconf'. The configuration file
+// !! has to be created by hand. Example for WebGUI:
+// !!
+// !! $retval |= services_create_pureftpd_conf();
+// !! $retval |= rc_update_service("pureftpd",isset($config['ftp']['enable']));
+// !!
+// !! It seems to be a problem with the lighttpd cgi modul.
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 // Execute rc script.
 // Return 0 if successful, otherwise 1.
 function rc_exec_script($scriptname) {
