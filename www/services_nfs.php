@@ -71,8 +71,7 @@ if ($_POST) {
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= services_nfs_configure();
-			$retval |= services_create_mdnsresponder_conf();
-			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
+			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
 

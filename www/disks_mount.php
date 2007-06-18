@@ -53,8 +53,7 @@ if ($_POST) {
 			$retval |= services_samba_configure();
 			$retval |= services_nfs_configure();
 			$retval |= services_rsyncd_configure();
-			$retval |= services_create_afpd_conf();
-			$retval |= rc_update_service("afpd",isset($config['afp']['enable']));
+			$retval |= rc_update_service("afpd");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

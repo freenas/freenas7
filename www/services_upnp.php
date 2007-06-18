@@ -86,10 +86,8 @@ if($_POST) {
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= services_create_ushare_conf();
-			$retval |= rc_update_service("ushare",isset($config['upnp']['enable']));
-			$retval |= services_create_mdnsresponder_conf();
-			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
+			$retval |= rc_update_service("ushare");
+			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
 

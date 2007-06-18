@@ -102,11 +102,10 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_update_service("smartd",isset($config['system']['smart']));
-			$retval |= rc_update_service("powerd",isset($config['system']['powerd']));
-			$retval |= rc_update_service("systune",isset($config['system']['tune']));
-			$retval |= services_create_mdnsresponder_conf();
-			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
+			$retval |= rc_update_service("smartd");
+			$retval |= rc_update_service("powerd");
+			$retval |= rc_update_service("systune");
+			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

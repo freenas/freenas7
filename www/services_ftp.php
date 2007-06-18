@@ -118,10 +118,8 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= services_create_pureftpd_conf();
-			$retval |= rc_update_service("pureftpd",isset($config['ftp']['enable']));
-			$retval |= services_create_mdnsresponder_conf();
-			$retval |= rc_update_service("mdnsresponder",isset($config['system']['zeroconf']));
+			$retval |= rc_update_service("pureftpd");
+			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
