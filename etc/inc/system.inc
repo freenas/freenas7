@@ -31,8 +31,8 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-/* include all configuration functions */
 require_once("functions.inc");
+require_once("util.inc");
 
 /* Generate the static routes
 Return 0 if OK, and 1 if error */
@@ -1103,5 +1103,149 @@ function system_swap_disable()
 	}
 
 	return $result;
+}
+
+// Create resolv.conf file.
+// Return 0 if successful, otherwise 1.
+function system_create_hosts_conf() {
+	global $config, $g;
+
+	$fd = fopen("{$g['varetc_path']}/hosts", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/hosts'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+ 	// Get the IP addres of the interface for "auto" NIC
+	$lanif = get_ifname($config['interfaces']['lan']['if']);
+
+	// Get the IP address of the interface.
+ 	$ipaddr = get_ipaddr($lanif);
+
+	$hosts = <<<EOD
+::1		localhost localhost.{$config['system']['domain']}
+127.0.0.1	localhost localhost.{$config['system']['domain']}
+{$ipaddr}	{$config['system']['hostname']}.{$config['system']['domain']} {$config['system']['hostname']}
+
+EOD;
+
+	if (is_array($config['system']['hosts'])) {
+		foreach ($config['system']['hosts'] as $host) {
+			if ($host['name']) {
+				$hosts .= "{$host['address']}	{$host['name']}\n";
+			}
+		}
+	}
+
+	fwrite($fd, $hosts);
+	fclose($fd);
+
+	return 0;
+}
+
+// Create rc.conf file.
+// Return 0 if successful, otherwise 1.
+function system_create_rc_conf() {
+	global $config;
+
+	if (isset($config['system']['tune'])) {
+		mwexec("/usr/local/sbin/rconf service enable systune");
+	}
+
+	if (isset($config['upnp']['enable'])) {
+		mwexec("/usr/local/sbin/rconf service enable ushare");
+	}
+
+	if (isset($config['system']['zeroconf'])) {
+		mwexec("/usr/local/sbin/rconf service enable mdnsresponder");
+	}
+
+	if (isset($config['dynamicdns']['enable'])) {
+		mwexec("/usr/local/sbin/rconf service enable inadyn");
+	}
+
+	if (isset($config['ftp']['enable'])) {
+		mwexec("/usr/local/sbin/rconf service enable pureftpd");
+	}
+
+	if (isset($config['system']['smart'])) {
+		mwexec("/usr/local/sbin/rconf service enable smartd");
+	}
+
+	if (isset($config['system']['powerd'])) {
+		mwexec("/usr/local/sbin/rconf service enable powerd");
+	}
+
+	if (isset($config['afp']['enable'])) {
+		mwexec("/usr/local/sbin/rconf service enable afpd");
+	}
+
+	if (is_array($config['iscsitarget']['vdisk'])) {
+		mwexec("/usr/local/sbin/rconf service enable iscsi_target");
+	}
+
+	if (isset($config['snmpd']['enable'])) {
+		mwexec("/usr/local/sbin/rconf service enable snmpd");
+	}
+
+	// Set hostname.
+	mwexec("/usr/local/sbin/rconf attribute set hostname \"{$config['system']['hostname']}.{$config['system']['domain']}\"");
+
+	// Set interface config.
+	$ipaddress = $config['interfaces']['lan']['ipaddr'];
+	$ifname = get_ifname($config['interfaces']['lan']['if']);
+	switch ($ipaddress) {
+		case 'dhcp':
+			$ifconfigvalue="DHCP";
+			break;
+		default:
+			$ifconfigvalue="{$ipaddress}/{$config['interfaces']['lan']['subnet']}";
+			break;
+	}
+	mwexec("/usr/local/sbin/rconf attribute set \"ifconfig_{$ifname}\" \"{$ifconfigvalue}\"");
+
+	return 0;
+}
+
+// Create resolv.conf file.
+// Return 0 if successful, otherwise 1.
+function system_create_resolv_conf() {
+	global $config, $g;
+
+	// Exit if DHCP is enabled. /var/etc/resolv.conf will be created by dhclient
+	// automatically 
+	if ("dhcp" === $config['interfaces']['lan']['ipaddr'])
+		return 0;
+
+	$fd = fopen("{$g['varetc_path']}/resolv.conf", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/resolv.conf'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$resolvconf = "domain {$config['system']['domain']}\n";
+
+	if (is_array($config['system']['dnsserver'])) {
+		foreach ($config['system']['dnsserver'] as $ns) {
+			if ($ns)
+				$resolvconf .= "nameserver $ns\n";
+		}
+	}
+
+	if (is_array($config['system']['ipv6dnsserver'])) {
+		foreach ($config['system']['ipv6dnsserver'] as $ns) {
+			if ($ns)
+				$resolvconf .= "nameserver $ns\n";
+		}
+	}
+
+	fwrite($fd, $resolvconf);
+	fclose($fd);
+
+	return 0;
 }
 ?>

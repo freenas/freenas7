@@ -32,50 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 	require_once("config.inc");
-	require_once("functions.inc");
-	require_once("util.inc");
+	require_once("services.inc");
 
-	global $config, $g;
-
-	$fd = fopen("{$g['varetc_path']}/ushare.conf", "w");
-	if (!$fd) {
-		$message = "Error: Failed to create '{$g['varetc_path']}/ushare.conf'";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	/* Setup a multicast route for UPnP messages. */
-	$result = mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
-
-	$ushareconf = <<<EOD
-USHARE_NAME={$config['upnp']['name']}
-USHARE_IFACE={$config['upnp']['if']}
-USHARE_OVERRIDE_ICONV_ERR=YES
-
-EOD;
-
-	if ($config['upnp']['port']) {
-$ushareconf .= <<<EOD
-USHARE_PORT={$config['upnp']['port']}
-
-EOD;
-	}
-
-	$content = "";
-	if (is_array($config['upnp']['content'])) {
-		foreach($config['upnp']['content'] as $contentv) {
-			$content .= "\"$contentv\" ";
-		}
-	}
-
-	$ushareconf .= <<<EOD
-USHARE_DIR={$content}
-
-EOD;
-
-	fwrite($fd, $ushareconf);
-	fclose($fd);
-
-	return 0;
+	return services_create_ushare_conf();
 ?>

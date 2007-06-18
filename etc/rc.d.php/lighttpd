@@ -3,15 +3,12 @@
 /*
 	lighttpd - script to create config file
 
+	Copyright © 2007 Volker Theile (votdev@gmx.de)
+  All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-
-	Based on m0n0wall (http://m0n0.ch/wall)
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	All rights reserved.
-
-	Adapted to rc init system by Volker Theile (votdev@gmx.de)
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -35,172 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 	require_once("config.inc");
-	require_once("functions.inc");
-	require_once("util.inc");
+	require_once("services.inc");
 
-	global $config, $g;
-
-	$fd = fopen("{$g['varetc_path']}/lighttpd.conf", "w");
-	if (!$fd) {
-		$message = "Error: Failed to create '{$g['varetc_path']}/lighttpd.conf'";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	$lighttpdconf = <<<EOD
-server.modules              = (
-                                "mod_access",
-                                "mod_auth",
-                                "mod_cgi" )
-#                               "mod_accesslog" )
-server.document-root        = "{$g['www_path']}"
-#server.errorlog             = "{$g['varlog_path']}/lighttpd.error.log"
-server.errorlog-use-syslog = "enable"
-server.event-handler        = "freebsd-kqueue"
-index-file.names            = ( "index.php" )
-mimetype.assign             = (
-  ".pdf"          =>      "application/pdf",
-  ".sig"          =>      "application/pgp-signature",
-  ".spl"          =>      "application/futuresplash",
-  ".class"        =>      "application/octet-stream",
-  ".ps"           =>      "application/postscript",
-  ".torrent"      =>      "application/x-bittorrent",
-  ".dvi"          =>      "application/x-dvi",
-  ".gz"           =>      "application/x-gzip",
-  ".pac"          =>      "application/x-ns-proxy-autoconfig",
-  ".swf"          =>      "application/x-shockwave-flash",
-  ".tar.gz"       =>      "application/x-tgz",
-  ".tgz"          =>      "application/x-tgz",
-  ".tar"          =>      "application/x-tar",
-  ".zip"          =>      "application/zip",
-  ".mp3"          =>      "audio/mpeg",
-  ".m3u"          =>      "audio/x-mpegurl",
-  ".wma"          =>      "audio/x-ms-wma",
-  ".wax"          =>      "audio/x-ms-wax",
-  ".ogg"          =>      "application/ogg",
-  ".wav"          =>      "audio/x-wav",
-  ".gif"          =>      "image/gif",
-  ".jpg"          =>      "image/jpeg",
-  ".jpeg"         =>      "image/jpeg",
-  ".png"          =>      "image/png",
-  ".xbm"          =>      "image/x-xbitmap",
-  ".xpm"          =>      "image/x-xpixmap",
-  ".xwd"          =>      "image/x-xwindowdump",
-  ".css"          =>      "text/css",
-  ".html"         =>      "text/html",
-  ".htm"          =>      "text/html",
-  ".js"           =>      "text/javascript",
-  ".asc"          =>      "text/plain",
-  ".c"            =>      "text/plain",
-  ".cpp"          =>      "text/plain",
-  ".log"          =>      "text/plain",
-  ".conf"         =>      "text/plain",
-  ".text"         =>      "text/plain",
-  ".txt"          =>      "text/plain",
-  ".dtd"          =>      "text/xml",
-  ".xml"          =>      "text/xml",
-  ".mpeg"         =>      "video/mpeg",
-  ".mpg"          =>      "video/mpeg",
-  ".mov"          =>      "video/quicktime",
-  ".qt"           =>      "video/quicktime",
-  ".avi"          =>      "video/x-msvideo",
-  ".asf"          =>      "video/x-ms-asf",
-  ".asx"          =>      "video/x-ms-asf",
-  ".wmv"          =>      "video/x-ms-wmv",
-  ".bz2"          =>      "application/x-bzip",
-  ".tbz"          =>      "application/x-bzip-compressed-tar",
-  ".tar.bz2"      =>      "application/x-bzip-compressed-tar"
- )
-#accesslog.filename          = "{$g['varlog_path']}/access.log"
-url.access-deny             = ( "~", ".inc" )
-static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
-server.pid-file            = "{$g['varrun_path']}/lighttpd.pid"
-auth.backend               = "htpasswd"
-auth.backend.htpasswd.userfile = "/usr/local/www/.htpasswd"
-cgi.assign = (".php" => "/usr/local/bin/php")
-auth.require = ( "/" =>
-					(
-						"method"  => "basic",
-						"realm"   => "{$config['system']['hostname']}",
-						"require" => "valid-user"
-					),
-				)
-
-EOD;
-
-	// Non-standard port?
-	if ($config['system']['webgui']['port']) {
-	$lighttpdconf .= <<<EOD
-server.port                = {$config['system']['webgui']['port']}
-
-EOD;
-	}
-
-	if ($config['system']['webgui']['protocol'] === "https") {
-		if ($config['system']['webgui']['certificate'] && $config['system']['webgui']['private-key']) {
-			$cert = base64_decode($config['system']['webgui']['certificate']);
-			$key = base64_decode($config['system']['webgui']['private-key']);
-		} else {
-			// Default certificate/key.
-			$cert = <<<EOD
------BEGIN CERTIFICATE-----
-MIIBlDCB/gIBADANBgkqhkiG9w0BAQQFADATMREwDwYDVQQKEwhtMG4wd2FsbDAe
-Fw0wNTA1MTAxMjI0NDRaFw0wNzA1MTAxMjI0NDRaMBMxETAPBgNVBAoTCG0wbjB3
-YWxsMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDAShszhFz+o8lsMWTGgTxs
-TMPR+v4+qL5jXDyY97MLTGFK7aqQOtpIQc+TcTc4jklgOVlHoR7oBXrsi8YrbCd+
-83LPQmQoSPC0VqhfU3uYf3NzxiK8r97aPCsmWgwT2pQ6TcESTm6sF7nLprOf/zFP
-C4jE2fvjkbzyVolPywBuewIDAQABMA0GCSqGSIb3DQEBBAUAA4GBAFR962c4R5tV
-cTn0OQcszYoW6WC+ini9tQQh5ku5jYDAiC+00atawJEVLnL3lwAcpSKTIWlTkD20
-tl3lz5br1qFgYky+Rd0kwS2nk9jRbkxSXxd6KJVnNRCKre28aw3ENzZfCSurPQsX
-UPp5er+NtwMT1g7s/JDmKTC4w1rGr5/c
------END CERTIFICATE-----
-
-EOD;
-
-			$key = <<<EOD
------BEGIN RSA PRIVATE KEY-----
-MIICXQIBAAKBgQDAShszhFz+o8lsMWTGgTxsTMPR+v4+qL5jXDyY97MLTGFK7aqQ
-OtpIQc+TcTc4jklgOVlHoR7oBXrsi8YrbCd+83LPQmQoSPC0VqhfU3uYf3NzxiK8
-r97aPCsmWgwT2pQ6TcESTm6sF7nLprOf/zFPC4jE2fvjkbzyVolPywBuewIDAQAB
-AoGAbJJrQW9fQrggJuLMz/hwsYW2m31oyOBmf5u463YQtjRuSuxe/gj87weZuNqY
-H2rXq2k2K+ehl8hgW+egASyUL3L7kCkEAsVREujKTEyhSqqIRDPWTxo9S/YA9Gvn
-2ZnJvkrcKjqCO9aHX3rvJOK/ErYI6akctgI3KmgkYw5XNmECQQDuZU97RTWH9rmP
-aQr57ysNXxgFsyhetOOqeYkPtIVwpOiNbfwE1zi5RGdtO4Ku3fG1lV4J2UoWJ9yD
-awdoyYIHAkEAzn0xJ90IjPsHk+8SODEj5JGdHSZPNu1tgtrbjEi9sfGWg4K7XTxr
-QW90pWb1bKKU1uh5FzW6OhnFfuQXt1kC7QJAPSthqY+onKqCEnoxhtAHi/bKgyvl
-P+fKQwPMV2tKkgy+XwvJjrRqqZ8TqsOKVLQ+QQmCh6RpjiXMPyxHSmvqIQJBAKLR
-HF1ucDuaBROkwx0DwmWMW/KMLpIFDQDNSaiIAuu4rxHrl4mhBoGGPNffI04RtILw
-s+qVNs5xW8T+XaT4ztECQQDFHPnZeoPWE5z+AX/UUQIUWaDExz3XRzmIxRbOrlFi
-CsF1s0TdJLi/wzNQRAL37A8vqCeVFR/ng3Xpg96Yg+8Z
------END RSA PRIVATE KEY-----
-
-EOD;
-		}
-
-		$fdcert = fopen("{$g['varetc_path']}/cert.pem", "w");
-		if (!$fdcert) {
-			$message = "Error: Failed to create '{$g['varetc_path']}/cert.pem'";
-			write_console($message . ".\n");
-			write_log($message);
-			return 1;
-		}
-
-		chmod("{$g['varetc_path']}/cert.pem", 0600);
-		fwrite($fdcert, $cert);
-		fwrite($fdcert, "\n");
-		fwrite($fdcert, $key);
-		fclose($fdcert);
-
-		$lighttpdconf .= <<<EOD
-ssl.engine = "enable"
-ssl.pemfile = "{$g['varetc_path']}/cert.pem"
-
-EOD;
-	}
-
-	fwrite($fd, $lighttpdconf);
-	fclose($fd);
-
-	return 0;
+	return services_create_lighttpd_conf();
 ?>

@@ -3,15 +3,12 @@
 /*
 	iscsi_target - script to create config file
 
+	Copyright © 2007 Volker Theile (votdev@gmx.de)
+  All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-
-	Based on m0n0wall (http://m0n0.ch/wall)
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	All rights reserved.
-
-	Adapted to rc init system by Volker Theile (votdev@gmx.de)
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -35,38 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 	require_once("config.inc");
-	require_once("functions.inc");
-	require_once("util.inc");
+	require_once("services.inc");
 
-	global $config, $g;
-
-	/* generate targets */
-	$fd = fopen("{$g['varetc_path']}/iscsi/targets", "w");
-	if (!$fd) {
-		$message = "Error: Failed to create '{$g['varetc_path']}/iscsi/targets'";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	$iscsitargets = "";
-
-	if (is_array($config['iscsitarget']['vdisk'])) {
-		$i = 0;
-		$a_iscsitarget = &$config['iscsitarget']['vdisk'];
-
-		foreach ($a_iscsitarget as $target) {
-			$iscsitargets .= <<<EOD
-extent{$i} /mnt/{$target['sharename']}/iscsi_target{$i} 0 {$target['size']}MB
-target{$i} rw extent{$i} {$target['network']}
-
-EOD;
-			$i++;
-		}
-	}
-
-	fwrite($fd, $iscsitargets);
-	fclose($fd);
-
-	return 0;
+	return services_create_iscsitarget_conf();
 ?>

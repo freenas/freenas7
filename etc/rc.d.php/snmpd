@@ -3,15 +3,12 @@
 /*
 	snmpd - script to create config file
 
+	Copyright © 2007 Volker Theile (votdev@gmx.de)
+  All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-
-	Based on m0n0wall (http://m0n0.ch/wall)
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	All rights reserved.
-
-	Adapted to rc init system by Volker Theile (votdev@gmx.de)
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -35,28 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 	require_once("config.inc");
-	require_once("functions.inc");
-	require_once("util.inc");
+	require_once("services.inc");
 
-	global $config, $g;
-
-	$fd = fopen("{$g['varetc_path']}/snmpd.conf", "w");
-	if (!$fd) {
-		$message = "Error: Failed to create '{$g['varetc_path']}/snmpd.conf'";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	$snmpdconf = <<<EOD
-syslocation "{$config['snmpd']['syslocation']}"
-syscontact "{$config['snmpd']['syscontact']}"
-rocommunity "{$config['snmpd']['rocommunity']}"
-
-EOD;
-
-	fwrite($fd, $snmpdconf);
-	fclose($fd);
-
-	return 0;
+	return services_create_snmpd_conf();
 ?>

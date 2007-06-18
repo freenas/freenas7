@@ -1,7 +1,7 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-	ushare - script to create config file
+	beep - script to call internal php function
 
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
   All rights reserved.
@@ -31,6 +31,7 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+	require_once("config.inc");
 	require_once("system.inc");
 
 	switch(key($_GET)) {

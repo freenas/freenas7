@@ -31,6 +31,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require_once("functions.inc");
+require_once("util.inc");
 
 /* Stop samba, Generate the samba configuration file and start samba
 Return 0 if OK, 1 or error code if error */
@@ -1169,5 +1170,663 @@ function services_iscsiinit_configure()
 	}
 
 	return $result;
+}
+
+/* ------------------------------------------------------- */
+
+// Create afpd.conf file.
+// Return 0 if successful, otherwise 1.
+function services_create_afpd_conf() {
+	global $config, $g;
+
+	if (empty($config['afp']['afpname']))
+		$afpname="-";
+	else
+		$afpname=$config['afp']['afpname'];
+
+	// Generate afpd.conf.
+	$fd = fopen("{$g['varetc_path']}/afpd.conf", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/afpd.conf'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$afpconf = <<<EOD
+{$afpname} -transall -uamlist
+EOD;
+
+	if (isset($config['afp']['guest']) && isset($config['afp']['local']))
+		$afpconf .= <<<EOD
+uams_guest.so,uams_clrtxt.so,uams_dhx.so
+EOD;
+	else if (isset($config['afp']['guest']))
+		$afpconf .= <<<EOD
+uams_guest.so
+EOD;
+	else if (isset($config['afp']['local']))
+		$afpconf .= <<<EOD
+uams_clrtxt.so,uams_dhx.so
+EOD;
+
+	$afpconf .= <<<EOD
+-nosavepassword -defaultvol {$g['varetc_path']}/AppleVolumes.default -systemvol {$g['varetc_path']}/AppleVolumes.system -uampath /etc/uams -guestname ftp
+
+EOD;
+
+	fwrite($fd, $afpconf);
+	fclose($fd);
+
+	// Generate AppleVolumes.default.
+	$fd = fopen("{$g['varetc_path']}/AppleVolumes.default", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create AppleVolumes.default";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$applevolumes = "";
+	if (is_array($config['mounts']['mount'])) {
+		$a_mount = &$config['mounts']['mount'];
+		foreach ($a_mount as $mount) {
+			$applevolumes .= <<<EOD
+/mnt/{$mount['sharename']} "{$mount['sharename']}"
+
+EOD;
+		}
+	}
+
+	fwrite($fd, $applevolumes);
+	fclose($fd);
+
+	return 0;
+}
+
+// Create inadyn.conf file.
+// Return 0 if successful, otherwise 1.
+function services_create_inadyn_conf() {
+	global $config, $g;
+
+	$fd = fopen("{$g['varetc_path']}/inadyn.conf", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/inadyn.conf'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	/* Get the service type */
+	$servicetype = "";
+	switch($config['dynamicdns']['provider']) {
+		case "dyndns.org":					$servicetype = "dyndns@dyndns.org";
+																break;
+		case "freedns.afraid.org":	$servicetype = "default@freedns.afraid.org";
+																break;
+		case "zoneedit.com":				$servicetype = "default@zoneedit.com";
+																break;
+		case "no-ip.com":						$servicetype = "default@no-ip.com";
+																break;
+	}
+
+	/* Set command parameters. */
+	$inadynconf = <<<EOD
+--background
+--syslog
+--dyndns_system {$servicetype}
+--alias {$config['dynamicdns']['domainname']}
+--username "{$config['dynamicdns']['username']}"
+--password "{$config['dynamicdns']['password']}"
+
+EOD;
+
+	/* Set additional command parameters. */
+	if ($config['dynamicdns']['updateperiod']) {
+		$inadynconf .= <<<EOD
+--update_period_sec {$config['dynamicdns']['updateperiod']}
+
+EOD;
+	}
+
+	if ($config['dynamicdns']['forcedupdateperiod']) {
+		$inadynconf .= <<<EOD
+--forced_update_period {$config['dynamicdns']['forcedupdateperiod']}
+
+EOD;
+	}
+
+	fwrite($fd, $inadynconf);
+	fclose($fd);
+
+	return 0;
+}
+
+// Create .../iscsi/targets file.
+// Return 0 if successful, otherwise 1.
+function services_create_iscsitarget_conf() {
+	global $config, $g;
+
+	/* generate targets */
+	$fd = fopen("{$g['varetc_path']}/iscsi/targets", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/iscsi/targets'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$iscsitargets = "";
+
+	if (is_array($config['iscsitarget']['vdisk'])) {
+		$i = 0;
+		$a_iscsitarget = &$config['iscsitarget']['vdisk'];
+
+		foreach ($a_iscsitarget as $target) {
+			$iscsitargets .= <<<EOD
+extent{$i} /mnt/{$target['sharename']}/iscsi_target{$i} 0 {$target['size']}MB
+target{$i} rw extent{$i} {$target['network']}
+
+EOD;
+			$i++;
+		}
+	}
+
+	fwrite($fd, $iscsitargets);
+	fclose($fd);
+
+	return 0;
+}
+
+// Create lighttpd.conf file.
+// Return 0 if successful, otherwise 1.
+function services_create_lighttpd_conf() {
+	global $config, $g;
+
+	$fd = fopen("{$g['varetc_path']}/lighttpd.conf", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/lighttpd.conf'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$lighttpdconf = <<<EOD
+server.modules              = (
+                                "mod_access",
+                                "mod_auth",
+                                "mod_cgi" )
+#                               "mod_accesslog" )
+server.document-root        = "{$g['www_path']}"
+#server.errorlog             = "{$g['varlog_path']}/lighttpd.error.log"
+server.errorlog-use-syslog = "enable"
+server.event-handler        = "freebsd-kqueue"
+index-file.names            = ( "index.php" )
+mimetype.assign             = (
+  ".pdf"          =>      "application/pdf",
+  ".sig"          =>      "application/pgp-signature",
+  ".spl"          =>      "application/futuresplash",
+  ".class"        =>      "application/octet-stream",
+  ".ps"           =>      "application/postscript",
+  ".torrent"      =>      "application/x-bittorrent",
+  ".dvi"          =>      "application/x-dvi",
+  ".gz"           =>      "application/x-gzip",
+  ".pac"          =>      "application/x-ns-proxy-autoconfig",
+  ".swf"          =>      "application/x-shockwave-flash",
+  ".tar.gz"       =>      "application/x-tgz",
+  ".tgz"          =>      "application/x-tgz",
+  ".tar"          =>      "application/x-tar",
+  ".zip"          =>      "application/zip",
+  ".mp3"          =>      "audio/mpeg",
+  ".m3u"          =>      "audio/x-mpegurl",
+  ".wma"          =>      "audio/x-ms-wma",
+  ".wax"          =>      "audio/x-ms-wax",
+  ".ogg"          =>      "application/ogg",
+  ".wav"          =>      "audio/x-wav",
+  ".gif"          =>      "image/gif",
+  ".jpg"          =>      "image/jpeg",
+  ".jpeg"         =>      "image/jpeg",
+  ".png"          =>      "image/png",
+  ".xbm"          =>      "image/x-xbitmap",
+  ".xpm"          =>      "image/x-xpixmap",
+  ".xwd"          =>      "image/x-xwindowdump",
+  ".css"          =>      "text/css",
+  ".html"         =>      "text/html",
+  ".htm"          =>      "text/html",
+  ".js"           =>      "text/javascript",
+  ".asc"          =>      "text/plain",
+  ".c"            =>      "text/plain",
+  ".cpp"          =>      "text/plain",
+  ".log"          =>      "text/plain",
+  ".conf"         =>      "text/plain",
+  ".text"         =>      "text/plain",
+  ".txt"          =>      "text/plain",
+  ".dtd"          =>      "text/xml",
+  ".xml"          =>      "text/xml",
+  ".mpeg"         =>      "video/mpeg",
+  ".mpg"          =>      "video/mpeg",
+  ".mov"          =>      "video/quicktime",
+  ".qt"           =>      "video/quicktime",
+  ".avi"          =>      "video/x-msvideo",
+  ".asf"          =>      "video/x-ms-asf",
+  ".asx"          =>      "video/x-ms-asf",
+  ".wmv"          =>      "video/x-ms-wmv",
+  ".bz2"          =>      "application/x-bzip",
+  ".tbz"          =>      "application/x-bzip-compressed-tar",
+  ".tar.bz2"      =>      "application/x-bzip-compressed-tar"
+ )
+#accesslog.filename          = "{$g['varlog_path']}/access.log"
+url.access-deny             = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+server.pid-file            = "{$g['varrun_path']}/lighttpd.pid"
+auth.backend               = "htpasswd"
+auth.backend.htpasswd.userfile = "/usr/local/www/.htpasswd"
+cgi.assign = (".php" => "/usr/local/bin/php")
+auth.require = ( "/" =>
+					(
+						"method"  => "basic",
+						"realm"   => "{$config['system']['hostname']}",
+						"require" => "valid-user"
+					),
+				)
+
+EOD;
+
+	// Non-standard port?
+	if ($config['system']['webgui']['port']) {
+	$lighttpdconf .= <<<EOD
+server.port                = {$config['system']['webgui']['port']}
+
+EOD;
+	}
+
+	if ($config['system']['webgui']['protocol'] === "https") {
+		if ($config['system']['webgui']['certificate'] && $config['system']['webgui']['private-key']) {
+			$cert = base64_decode($config['system']['webgui']['certificate']);
+			$key = base64_decode($config['system']['webgui']['private-key']);
+		} else {
+			// Default certificate/key.
+			$cert = <<<EOD
+-----BEGIN CERTIFICATE-----
+MIIBlDCB/gIBADANBgkqhkiG9w0BAQQFADATMREwDwYDVQQKEwhtMG4wd2FsbDAe
+Fw0wNTA1MTAxMjI0NDRaFw0wNzA1MTAxMjI0NDRaMBMxETAPBgNVBAoTCG0wbjB3
+YWxsMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDAShszhFz+o8lsMWTGgTxs
+TMPR+v4+qL5jXDyY97MLTGFK7aqQOtpIQc+TcTc4jklgOVlHoR7oBXrsi8YrbCd+
+83LPQmQoSPC0VqhfU3uYf3NzxiK8r97aPCsmWgwT2pQ6TcESTm6sF7nLprOf/zFP
+C4jE2fvjkbzyVolPywBuewIDAQABMA0GCSqGSIb3DQEBBAUAA4GBAFR962c4R5tV
+cTn0OQcszYoW6WC+ini9tQQh5ku5jYDAiC+00atawJEVLnL3lwAcpSKTIWlTkD20
+tl3lz5br1qFgYky+Rd0kwS2nk9jRbkxSXxd6KJVnNRCKre28aw3ENzZfCSurPQsX
+UPp5er+NtwMT1g7s/JDmKTC4w1rGr5/c
+-----END CERTIFICATE-----
+
+EOD;
+
+			$key = <<<EOD
+-----BEGIN RSA PRIVATE KEY-----
+MIICXQIBAAKBgQDAShszhFz+o8lsMWTGgTxsTMPR+v4+qL5jXDyY97MLTGFK7aqQ
+OtpIQc+TcTc4jklgOVlHoR7oBXrsi8YrbCd+83LPQmQoSPC0VqhfU3uYf3NzxiK8
+r97aPCsmWgwT2pQ6TcESTm6sF7nLprOf/zFPC4jE2fvjkbzyVolPywBuewIDAQAB
+AoGAbJJrQW9fQrggJuLMz/hwsYW2m31oyOBmf5u463YQtjRuSuxe/gj87weZuNqY
+H2rXq2k2K+ehl8hgW+egASyUL3L7kCkEAsVREujKTEyhSqqIRDPWTxo9S/YA9Gvn
+2ZnJvkrcKjqCO9aHX3rvJOK/ErYI6akctgI3KmgkYw5XNmECQQDuZU97RTWH9rmP
+aQr57ysNXxgFsyhetOOqeYkPtIVwpOiNbfwE1zi5RGdtO4Ku3fG1lV4J2UoWJ9yD
+awdoyYIHAkEAzn0xJ90IjPsHk+8SODEj5JGdHSZPNu1tgtrbjEi9sfGWg4K7XTxr
+QW90pWb1bKKU1uh5FzW6OhnFfuQXt1kC7QJAPSthqY+onKqCEnoxhtAHi/bKgyvl
+P+fKQwPMV2tKkgy+XwvJjrRqqZ8TqsOKVLQ+QQmCh6RpjiXMPyxHSmvqIQJBAKLR
+HF1ucDuaBROkwx0DwmWMW/KMLpIFDQDNSaiIAuu4rxHrl4mhBoGGPNffI04RtILw
+s+qVNs5xW8T+XaT4ztECQQDFHPnZeoPWE5z+AX/UUQIUWaDExz3XRzmIxRbOrlFi
+CsF1s0TdJLi/wzNQRAL37A8vqCeVFR/ng3Xpg96Yg+8Z
+-----END RSA PRIVATE KEY-----
+
+EOD;
+		}
+
+		$fdcert = fopen("{$g['varetc_path']}/cert.pem", "w");
+		if (!$fdcert) {
+			$message = "Error: Failed to create '{$g['varetc_path']}/cert.pem'";
+			write_console($message . ".\n");
+			write_log($message);
+			return 1;
+		}
+
+		chmod("{$g['varetc_path']}/cert.pem", 0600);
+		fwrite($fdcert, $cert);
+		fwrite($fdcert, "\n");
+		fwrite($fdcert, $key);
+		fclose($fdcert);
+
+		$lighttpdconf .= <<<EOD
+ssl.engine = "enable"
+ssl.pemfile = "{$g['varetc_path']}/cert.pem"
+
+EOD;
+	}
+
+	fwrite($fd, $lighttpdconf);
+	fclose($fd);
+
+	return 0;
+}
+
+// Create mdnsresponder.conf file.
+// Return 0 if successful, otherwise 1.
+function services_create_mdnsresponder_conf() {
+	global $config, $g;
+
+	$fd = fopen("{$g['varetc_path']}/mdnsresponder.conf", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/mdnsresponder.conf'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	// Check if WebGUI use HTTPS
+	if ($config['system']['webgui']['protocol'] === "https") {
+		if ($config['system']['webgui']['port']) {
+			$mdnsresponderconf = <<<EOD
+# mDNSResponderPosix configuration File
+#
+# This file contains the services to be announced to other Rendezvous aware
+# machines on the .local network
+#
+# Entries constist of four consecutive lines as follows:
+# NAME OF SERVICE
+# TYPE OF SERVICE (and, if different from .local, the domain seperated by a space)
+# PORT OF SERVICE
+# TXT RECORD (short description of service)
+#
+# For types: http://www.dns-sd.org/ServiceTypes.html
+
+{$config['system']['hostname']} WebAdmin Service
+_https._tcp. local.
+{$config['system']['webgui']['port']}
+path=/index.php
+
+EOD;
+		} else {
+		$mdnsresponderconf = <<<EOD
+{$config['system']['hostname']} WebAdmin Service
+_https._tcp. local.
+443
+path=/index.php
+
+EOD;
+		}
+		// if WebGUI don't use HTTPS then:
+		} else {
+			if ($config['system']['webgui']['port']) {
+				$mdnsresponderconf = <<<EOD
+{$config['system']['hostname']} WebAdmin Service
+_http._tcp. local.
+{$config['system']['webgui']['port']}
+path=/index.php
+
+EOD;
+			} else {
+				$mdnsresponderconf = <<<EOD
+{$config['system']['hostname']} WebAdmin Service
+_http._tcp. local.
+80
+path=/index.php
+
+EOD;
+			}
+		}
+
+	// Check if AFP service is enabled
+	if (isset($config['afp']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} AFP Service
+_afpovertcp._tcp. local.
+548
+
+EOD;
+	}
+
+	// Check if RSYNC service is enabled
+	if (isset($config['rsyncd']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} RSYNC Service
+_rsync._tcp. local.
+{$config['rsyncd']['port']}
+
+EOD;
+	}
+
+	// Check if SSH service is enabled
+	if (isset($config['sshd']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} SSH Service
+_ssh._tcp. local.
+{$config['sshd']['port']}
+
+EOD;
+	}
+
+	// Check if FTP service is enabled
+	if (isset($config['ftp']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} FTP Service
+_ftp._tcp. local.
+{$config['ftp']['port']}
+
+EOD;
+	}
+
+	// Check if Samba service is enabled
+	if (isset($config['samba']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} SMB Service
+_smb._tcp. local.
+139
+
+EOD;
+	}
+
+	// Check if NFS service is enabled
+	if (isset($config['nfs']['enable'])) {
+		/* If no share configured, exit */
+		if (!is_array($config['mounts']['mount'])) {
+			break;
+		}
+
+		$a_mount = &$config['mounts']['mount'];
+
+		foreach ($a_mount as $mount) {
+			$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} NFS Service
+_nfs._tcp. local.
+2049
+path=/mnt/{$mount['sharename']}
+
+EOD;
+		}
+	}
+
+	// Check if UPnP service is enabled
+	if (isset($config['upnp']['enable'])) {
+		$mdnsresponderconf .= <<<EOD
+
+{$config['system']['hostname']} UPnP Service
+_upnp._tcp. local.
+1900
+
+EOD;
+	}
+
+	fwrite($fd, $mdnsresponderconf);
+	fclose($fd);
+
+	return 0;
+}
+
+// Create pure-ftpd.conf file.
+// Return 0 if successful, otherwise 1.
+function services_create_pureftpd_conf() {
+	global $config, $g;
+
+	$fd = fopen("/mnt/.banner", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '/mnt/.banner' for pure-ftpd";
+		write_console($message . ".\n");
+		write_log($message);
+	} else {
+		if (empty($config['ftp']['banner'])) {
+			$productname = get_product_name();
+			$banner = <<<EOD
+Welcome to {$productname} FTP service
+
+EOD;
+		} else {
+			$banner = <<<EOD
+{$config['ftp']['banner']}
+
+EOD;
+		}
+
+		fwrite($fd, $banner);
+		fclose($fd);
+	}
+
+	$fd = fopen("{$g['varetc_path']}/pure-ftpd.conf", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create pure-ftpd.conf";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$pureftpdconf = <<<EOD
+-S {$config['ftp']['port']}
+-c {$config['ftp']['numberclients']}
+-I {$config['ftp']['timeout']}
+-M
+-U 077:077
+-B
+-b
+
+EOD;
+
+	if (0 < $config['ftp']['maxconperip']) {
+		$pureftpdconf .= "-C {$config['ftp']['maxconperip']}\n";
+	}
+
+	if ( (isset($config['ftp']['anonymous'])) && (!isset($config['ftp']['localuser']))) {
+		$pureftpdconf .= "-e\n";
+	}
+
+	if ( (!isset($config['ftp']['anonymous'])) && (isset($config['ftp']['localuser']))) {
+		$pureftpdconf .= "-E\n";
+	}
+
+	if ($config['ftp']['pasv_min_port'] && $config['ftp']['pasv_max_port']) {
+		$pureftpdconf .= "-p {$config['ftp']['pasv_min_port']}:{$config['ftp']['pasv_max_port']}\n";
+	}
+
+	if ($config['ftp']['pasv_address']) {
+		$pureftpdconf .= "-P {$config['ftp']['pasv_address']}\n";
+	}
+
+	if (isset($config['ftp']['natmode'])) {
+		$pureftpdconf .= "-N\n";
+	}
+
+	if (isset($config['ftp']['fxp'])) {
+		$pureftpdconf .= "-W\n";
+	}
+
+	if (isset($config['ftp']['keepallfiles'])) {
+		$pureftpdconf .= "-K\n"; # Enable resume mode.
+	}
+
+	if (!isset($config['ftp']['permitrootlogin'])) {
+		$pureftpdconf .= "-u 1\n"; # Permit root login.
+	}
+
+	fwrite($fd, $pureftpdconf);
+	fclose($fd);
+
+	return 0;
+}
+
+// Create snmpd.conf file.
+// Return 0 if successful, otherwise 1.
+function services_create_snmpd_conf() {
+	global $config, $g;
+
+	$fd = fopen("{$g['varetc_path']}/snmpd.conf", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/snmpd.conf'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$snmpdconf = <<<EOD
+syslocation "{$config['snmpd']['syslocation']}"
+syscontact "{$config['snmpd']['syscontact']}"
+rocommunity "{$config['snmpd']['rocommunity']}"
+
+EOD;
+
+	fwrite($fd, $snmpdconf);
+	fclose($fd);
+
+	return 0;
+}
+
+// Create ushare.conf file.
+// Return 0 if successful, otherwise 1.
+function services_create_ushare_conf() {
+	global $config, $g;
+
+	$fd = fopen("{$g['varetc_path']}/ushare.conf", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/ushare.conf'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	/* Setup a multicast route for UPnP messages. */
+	$result = mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
+
+	$ushareconf = <<<EOD
+USHARE_NAME={$config['upnp']['name']}
+USHARE_IFACE={$config['upnp']['if']}
+USHARE_OVERRIDE_ICONV_ERR=YES
+
+EOD;
+
+	if ($config['upnp']['port']) {
+$ushareconf .= <<<EOD
+USHARE_PORT={$config['upnp']['port']}
+
+EOD;
+	}
+
+	$content = "";
+	if (is_array($config['upnp']['content'])) {
+		foreach($config['upnp']['content'] as $contentv) {
+			$content .= "\"$contentv\" ";
+		}
+	}
+
+	$ushareconf .= <<<EOD
+USHARE_DIR={$content}
+
+EOD;
+
+	fwrite($fd, $ushareconf);
+	fclose($fd);
+
+	return 0;
 }
 ?>
