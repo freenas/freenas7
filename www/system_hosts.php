@@ -50,7 +50,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_exec_service("hosts");
+			$retval |= system_create_hosts_conf();
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
