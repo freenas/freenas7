@@ -6,7 +6,7 @@
 #
 
 # If script is called with parameter 'noconf' the conf file creation won't be done.
-if [ "noconf" == "$2" ]; then
+if [ "noconf" = "$2" ]; then
 	noconf=1
 else
 	noconf=0
