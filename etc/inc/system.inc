@@ -1152,18 +1152,22 @@ function system_create_rc_conf() {
 	global $config, $g_rcservices;
 
 	while ($service = current($g_rcservices)) {
+		// Check if service needs to set 'xxx_enabled="YES"|"NO"' attribute in rc.conf.
 		if ("false" === $service['set_rcvar']) {
 			next($g_rcservices);
 			continue;
 		}
 
-		// Check if service is enabled.
+		// Check if service state.
 		$enabled = false;
 		eval($service['is_enabled_func']);
 
+		// Enable/disable service.
+		$servicename = key($g_rcservices);
 		if ($enabled) {
-			$servicename = key($g_rcservices);
 			mwexec("/usr/local/sbin/rconf service enable {$servicename}");
+		} else {
+			mwexec("/usr/local/sbin/rconf service disable {$servicename}");
 		}
 
 	 	next($g_rcservices);
