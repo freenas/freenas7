@@ -58,22 +58,22 @@ require_once("util.inc");
 // stop_func       - Function executed before service is stopped.
 // is_enabled_func - Function to test if service is enabled
 $g_rcservices = array();
-$g_rcservices['afpd']          = array("start_func" => "services_create_afpd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['afp']['enable']);");
-$g_rcservices['inadyn']        = array("start_func" => "services_create_inadyn_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['dynamicdns']['enable']);");
-$g_rcservices['iscsi_target']  = array("start_func" => "services_create_iscsitarget_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = is_array(\$config['iscsitarget']['vdisk']);");
-$g_rcservices['lighttpd']      = array("start_func" => "services_create_lighttpd_conf", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;");
-$g_rcservices['mdnsresponder'] = array("start_func" => "services_create_mdnsresponder_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['zeroconf']);");
-$g_rcservices['pureftpd']      = array("start_func" => "services_create_pureftpd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['ftp']['enable']);");
-$g_rcservices['snmpd']         = array("start_func" => "services_create_snmpd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['snmpd']['enable']);");
-$g_rcservices['ushare']        = array("start_func" => "services_create_ushare_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['upnp']['enable']);");
-$g_rcservices['sshd']          = array("start_func" => "services_create_sshd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['sshd']['enable']);");
-$g_rcservices['rsyncd']        = array("start_func" => "services_create_rsyncd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['rsyncd']['enable']);");
-$g_rcservices['hosts']         = array("start_func" => "system_create_hosts_conf", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;");
-$g_rcservices['rcconf']        = array("start_func" => "system_create_rc_conf", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;");
-$g_rcservices['resolv']        = array("start_func" => "system_create_resolv_conf", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;");
-$g_rcservices['smartd']        = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['smart']);");
-$g_rcservices['powerd']        = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['powerd']);");
-$g_rcservices['systune']       = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['tune']);");
+$g_rcservices['afpd']          = array("start_func" => "services_create_afpd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['afp']['enable']);", "set_rcvar" => "true");
+$g_rcservices['inadyn']        = array("start_func" => "services_create_inadyn_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['dynamicdns']['enable']);", "set_rcvar" => "true");
+$g_rcservices['iscsi_target']  = array("start_func" => "services_create_iscsitarget_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = is_array(\$config['iscsitarget']['vdisk']);", "set_rcvar" => "true");
+$g_rcservices['lighttpd']      = array("start_func" => "services_create_lighttpd_conf", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "set_rcvar" => "true");
+$g_rcservices['mdnsresponder'] = array("start_func" => "services_create_mdnsresponder_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['zeroconf']);", "set_rcvar" => "true");
+$g_rcservices['pureftpd']      = array("start_func" => "services_create_pureftpd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['ftp']['enable']);", "set_rcvar" => "true");
+$g_rcservices['snmpd']         = array("start_func" => "services_create_snmpd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['snmpd']['enable']);", "set_rcvar" => "true");
+$g_rcservices['ushare']        = array("start_func" => "services_create_ushare_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['upnp']['enable']);", "set_rcvar" => "true");
+$g_rcservices['sshd']          = array("start_func" => "services_create_sshd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['sshd']['enable']);", "set_rcvar" => "true");
+$g_rcservices['rsyncd']        = array("start_func" => "services_create_rsyncd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['rsyncd']['enable']);", "set_rcvar" => "true");
+$g_rcservices['hosts']         = array("start_func" => "system_create_hosts_conf", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "set_rcvar" => "false");
+$g_rcservices['rcconf']        = array("start_func" => "system_create_rc_conf", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "set_rcvar" => "false");
+$g_rcservices['resolv']        = array("start_func" => "system_create_resolv_conf", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "set_rcvar" => "false");
+$g_rcservices['smartd']        = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['smart']);", "set_rcvar" => "true");
+$g_rcservices['powerd']        = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['powerd']);", "set_rcvar" => "true");
+$g_rcservices['systune']       = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['tune']);", "set_rcvar" => "true");
 
 // Execute rc script.
 // Return 0 if successful, otherwise 1.

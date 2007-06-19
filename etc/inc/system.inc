@@ -33,6 +33,7 @@
 */
 require_once("functions.inc");
 require_once("util.inc");
+require_once("rc.inc");
 
 /* Generate the static routes
 Return 0 if OK, and 1 if error */
@@ -1148,54 +1149,24 @@ EOD;
 // Create rc.conf file.
 // Return 0 if successful, otherwise 1.
 function system_create_rc_conf() {
-	global $config;
+	global $config, $g_rcservices;
 
-	if (isset($config['system']['tune'])) {
-		mwexec("/usr/local/sbin/rconf service enable systune");
-	}
+	while ($service = current($g_rcservices)) {
+		if ("false" === $service['set_rcvar']) {
+			next($g_rcservices);
+			continue;
+		}
 
-	if (isset($config['upnp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable ushare");
-	}
+		// Check if service is enabled.
+		$enabled = false;
+		eval($service['is_enabled_func']);
 
-	if (isset($config['system']['zeroconf'])) {
-		mwexec("/usr/local/sbin/rconf service enable mdnsresponder");
-	}
+		if ($enabled) {
+			$servicename = key($g_rcservices);
+			mwexec("/usr/local/sbin/rconf service enable {$servicename}");
+		}
 
-	if (isset($config['dynamicdns']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable inadyn");
-	}
-
-	if (isset($config['ftp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable pureftpd");
-	}
-
-	if (isset($config['system']['smart'])) {
-		mwexec("/usr/local/sbin/rconf service enable smartd");
-	}
-
-	if (isset($config['system']['powerd'])) {
-		mwexec("/usr/local/sbin/rconf service enable powerd");
-	}
-
-	if (isset($config['afp']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable afpd");
-	}
-
-	if (is_array($config['iscsitarget']['vdisk'])) {
-		mwexec("/usr/local/sbin/rconf service enable iscsi_target");
-	}
-
-	if (isset($config['snmpd']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable snmpd");
-	}
-
-	if (isset($config['sshd']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable sshd");
-	}
-
-	if (isset($config['rsyncd']['enable'])) {
-		mwexec("/usr/local/sbin/rconf service enable rsyncd");
+	 	next($g_rcservices);
 	}
 
 	// Set hostname.
