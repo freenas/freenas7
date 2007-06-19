@@ -3,7 +3,8 @@
 # All rights reserved.
 
 # PROVIDE: sshd
-# REQUIRE: LOGIN
+# REQUIRE: NETWORKING
+# KEYWORD: shutdown
 
 sshd_enable=${sshd_enable-"NO"}
 
