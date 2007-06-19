@@ -1190,6 +1190,10 @@ function system_create_rc_conf() {
 		mwexec("/usr/local/sbin/rconf service enable snmpd");
 	}
 
+	if (isset($config['sshd']['enable'])) {
+		mwexec("/usr/local/sbin/rconf service enable sshd");
+	}
+
 	// Set hostname.
 	mwexec("/usr/local/sbin/rconf attribute set hostname \"{$config['system']['hostname']}.{$config['system']['domain']}\"");
 
