@@ -49,223 +49,8 @@ function services_samba_configure() {
 		if (is_booting())
 			write_console("Starting Samba... ");
 
-		/* generate smb.conf */
-		$fd = fopen("{$g['varetc_path']}/smb.conf", "w");
-		if (!$fd) {
-			$message = "Error: Can't open smb.conf in services_samba_configure()";
-			write_console($message . ".\n");
-			write_log($message);
-			$result = 1;
-		}
-
-		$sambaconf = <<<EOD
-[global]
-encrypt passwords = yes
-netbios name = {$config['samba']['netbiosname']}
-workgroup = {$config['samba']['workgroup']}
-server string = {$config['samba']['serverdesc']}
-load printers = no
-security = {$config['samba']['security']}
-dns proxy = no
-# Settings to enhance performance:
-use sendfile = yes
-strict locking = no
-read raw = yes
-write raw = yes
-oplocks = yes
-max xmit = 65535
-deadtime = 15
-getwd cache = yes
-socket options = IPTOS_LOWDELAY TCP_NODELAY
-EOD;
-
-		if ($config['samba']['sndbuf']) {
-			$sambaconf .= <<<EOD
- SO_SNDBUF={$config['samba']['sndbuf']}
-EOD;
-		}
-		else 	{
-			$sambaconf .= <<<EOD
- SO_SNDBUF=16384
-EOD;
-		}
-
-		if ($config['samba']['rcvbuf']) {
-			$sambaconf .= <<<EOD
- SO_RCVBUF={$config['samba']['rcvbuf']}
-EOD;
-		}
-		else 	{
-			$sambaconf .= <<<EOD
- SO_RCVBUF=16384
-EOD;
-		}
-
-		$sambaconf .= <<<EOD
-
-# End of performance section
-
-EOD;
-
-		if ($config['samba']['winssrv']) {
-			$sambaconf .= <<<EOD
-wins server = {$config['samba']['winssrv']}
-
-EOD;
-		}
-
-		if (isset ($config['samba']['unixcharset'])) {
-			$sambaconf .= <<<EOD
-unix charset = {$config['samba']['unixcharset']}
-
-EOD;
-		} else {
-			$sambaconf .= <<<EOD
-unix charset = UTF-8
-
-EOD;
-		}
-
-		if (!isset($config['samba']['largereadwrite'])) {
-			$sambaconf .= <<<EOD
-large readwrite = no
-
-EOD;
-		}
-
-		if (isset($config['samba']['easupport'])) {
-			$sambaconf .= <<<EOD
-ea support = yes
-
-EOD;
-		}
-
-		$sambaconf .= <<<EOD
-local master = {$config['samba']['localmaster']}
-time server = {$config['samba']['timesrv']}
-guest account = ftp
-display charset = UTF-8
-max log size = 10
-syslog only = yes
-syslog = {$config['samba']['loglevel']}
-load printers = no
-printing = bsd
-printcap name = /dev/null
-disable spoolss = Yes
-log level = {$config['samba']['loglevel']}
-dos charset = {$config['samba']['doscharset']}
-smb passwd file = {$g['varetc_path']}/private/smbpasswd
-private dir = {$g['varetc_path']}/private
-
-EOD;
-
-	switch ($config['samba']['security'])	{
-		case "share":
-			$createmask = "0666";
-			$directorymask = "0777";
-
-			if (!empty($config['samba']['createmask'])) {
-				$createmask = $config['samba']['createmask'];
-			}
-
-			if (!empty($config['samba']['directorymask'])) {
-				$directorymask = $config['samba']['directorymask'];
-			}
-
-			$sambaconf .= <<<EOD
-passdb backend = smbpasswd
-create mask = {$createmask}
-directory mask = {$directorymask}
-force user = ftp
-force group = ftp
-
-EOD;
-
-			$guestmode = <<<EOD
-guest ok = yes
-EOD;
-			break;
-
-		case "domain":
-			$sambaconf .= <<<EOD
-passdb backend = smbpasswd
-allow trusted domains = No
-dns proxy = No
-ldap ssl = no
-idmap backend = rid:{$config['samba']['workgroup']}=10000-20000
-idmap uid = 10000-20000
-idmap gid = 10000-20000
-winbind enum groups = yes
-winbind enum users = yes
-winbind use default domain = Yes
-template homedir = /mnt
-template shell = /bin/sh
-
-EOD;
-
-			$guestmode = <<<EOD
-guest ok = no
-EOD;
-			break;
-
-		case "user":
-			$sambaconf .= <<<EOD
-passdb backend = smbpasswd
-
-EOD;
-			$guestmode = <<<EOD
-guest ok = no
-EOD;
-			break;
-		}
-
-		if (is_array($config['mounts']['mount'])) {
-			foreach ($config['mounts']['mount'] as $mountent) {
-				$sambaconf .= <<<EOD
-
-[{$mountent['sharename']}]
-comment = {$mountent['desc']}
-path = /mnt/{$mountent['sharename']}
-writeable = yes
-printable = no
-veto files = /.snap/
-hide dot files = yes
-{$guestmode}
-
-EOD;
-
-				if ((is_array($config['samba']['hidemount']) && in_array($mountent['sharename'],$config['samba']['hidemount']))) {
-					$sambaconf .= <<<EOD
-browseable = no
-
-EOD;
-				}
-
-				if (isset($config['samba']['recyclebin'])) {
-					$sambaconf .= <<<EOD
-vfs objects = recycle
-recycle:keeptree = Yes
-recycle:versions = Yes
-
-EOD;
-				}
-				if (isset($config['samba']['readahead'])) {
-					$sambaconf .= <<<EOD
-vfs objects = readahead
-
-EOD;
-				}
-				if (isset($config['afp']['enable'])) 	{
-					$sambaconf .= <<<EOD
-vfs objects = netatalk
-
-EOD;
-				}
-			}
-		}
-
-		fwrite($fd, $sambaconf);
-		fclose($fd);
+		// Create smb.conf file.
+		$result = services_create_samba_conf();
 
 		/* Run nmbd and nmbd if no previous error. */
 		if(!$result) {
@@ -1576,7 +1361,7 @@ EOD;
 
 	$fd = fopen("{$g['varetc_path']}/pure-ftpd.conf", "w");
 	if (!$fd) {
-		$message = "Error: Failed to create pure-ftpd.conf";
+		$message = "Error: Failed to create '{$g['varetc_path']}/pure-ftpd.conf'";
 		write_console($message . ".\n");
 		write_log($message);
 		return 1;
@@ -1630,6 +1415,231 @@ EOD;
 	}
 
 	fwrite($fd, $pureftpdconf);
+	fclose($fd);
+
+	return 0;
+}
+
+// Create smb.conf file.
+// Return 0 if successful, otherwise 1.
+function services_create_samba_conf() {
+	global $config, $g;
+
+	$fd = fopen("{$g['varetc_path']}/smb.conf", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/smb.conf'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$sambaconf = <<<EOD
+[global]
+encrypt passwords = yes
+netbios name = {$config['samba']['netbiosname']}
+workgroup = {$config['samba']['workgroup']}
+server string = {$config['samba']['serverdesc']}
+load printers = no
+security = {$config['samba']['security']}
+dns proxy = no
+# Settings to enhance performance:
+use sendfile = yes
+strict locking = no
+read raw = yes
+write raw = yes
+oplocks = yes
+max xmit = 65535
+deadtime = 15
+getwd cache = yes
+socket options = IPTOS_LOWDELAY TCP_NODELAY
+EOD;
+
+	if ($config['samba']['sndbuf']) {
+		$sambaconf .= <<<EOD
+SO_SNDBUF={$config['samba']['sndbuf']}
+EOD;
+	} else {
+		$sambaconf .= <<<EOD
+SO_SNDBUF=16384
+EOD;
+	}
+
+	if ($config['samba']['rcvbuf']) {
+		$sambaconf .= <<<EOD
+SO_RCVBUF={$config['samba']['rcvbuf']}
+EOD;
+	} else {
+		$sambaconf .= <<<EOD
+SO_RCVBUF=16384
+EOD;
+	}
+
+	$sambaconf .= <<<EOD
+
+# End of performance section
+
+EOD;
+
+	if ($config['samba']['winssrv']) {
+		$sambaconf .= <<<EOD
+wins server = {$config['samba']['winssrv']}
+
+EOD;
+	}
+
+	if (isset ($config['samba']['unixcharset'])) {
+		$sambaconf .= <<<EOD
+unix charset = {$config['samba']['unixcharset']}
+
+EOD;
+	} else {
+		$sambaconf .= <<<EOD
+unix charset = UTF-8
+
+EOD;
+	}
+
+	if (!isset($config['samba']['largereadwrite'])) {
+		$sambaconf .= <<<EOD
+large readwrite = no
+
+EOD;
+	}
+
+	if (isset($config['samba']['easupport'])) {
+		$sambaconf .= <<<EOD
+ea support = yes
+
+EOD;
+	}
+
+	$sambaconf .= <<<EOD
+local master = {$config['samba']['localmaster']}
+time server = {$config['samba']['timesrv']}
+guest account = ftp
+display charset = UTF-8
+max log size = 10
+syslog only = yes
+syslog = {$config['samba']['loglevel']}
+load printers = no
+printing = bsd
+printcap name = /dev/null
+disable spoolss = Yes
+log level = {$config['samba']['loglevel']}
+dos charset = {$config['samba']['doscharset']}
+smb passwd file = {$g['varetc_path']}/private/smbpasswd
+private dir = {$g['varetc_path']}/private
+
+EOD;
+
+	switch ($config['samba']['security'])	{
+		case "share":
+			$createmask = "0666";
+			$directorymask = "0777";
+
+			if (!empty($config['samba']['createmask'])) {
+				$createmask = $config['samba']['createmask'];
+			}
+
+			if (!empty($config['samba']['directorymask'])) {
+				$directorymask = $config['samba']['directorymask'];
+			}
+
+			$sambaconf .= <<<EOD
+passdb backend = smbpasswd
+create mask = {$createmask}
+directory mask = {$directorymask}
+force user = ftp
+force group = ftp
+
+EOD;
+
+			$guestmode = <<<EOD
+guest ok = yes
+EOD;
+			break;
+
+		case "domain":
+			$sambaconf .= <<<EOD
+passdb backend = smbpasswd
+allow trusted domains = No
+dns proxy = No
+ldap ssl = no
+idmap backend = rid:{$config['samba']['workgroup']}=10000-20000
+idmap uid = 10000-20000
+idmap gid = 10000-20000
+winbind enum groups = yes
+winbind enum users = yes
+winbind use default domain = Yes
+template homedir = /mnt
+template shell = /bin/sh
+
+EOD;
+
+			$guestmode = <<<EOD
+guest ok = no
+EOD;
+			break;
+
+		case "user":
+			$sambaconf .= <<<EOD
+passdb backend = smbpasswd
+
+EOD;
+			$guestmode = <<<EOD
+guest ok = no
+EOD;
+			break;
+	}
+
+	if (is_array($config['mounts']['mount'])) {
+		foreach ($config['mounts']['mount'] as $mountent) {
+			$sambaconf .= <<<EOD
+
+[{$mountent['sharename']}]
+comment = {$mountent['desc']}
+path = /mnt/{$mountent['sharename']}
+writeable = yes
+printable = no
+veto files = /.snap/
+hide dot files = yes
+{$guestmode}
+
+EOD;
+
+			if ((is_array($config['samba']['hidemount']) && in_array($mountent['sharename'],$config['samba']['hidemount']))) {
+				$sambaconf .= <<<EOD
+browseable = no
+
+EOD;
+			}
+
+			if (isset($config['samba']['recyclebin'])) {
+				$sambaconf .= <<<EOD
+vfs objects = recycle
+recycle:keeptree = Yes
+recycle:versions = Yes
+
+EOD;
+			}
+
+			if (isset($config['samba']['readahead'])) {
+				$sambaconf .= <<<EOD
+vfs objects = readahead
+
+EOD;
+			}
+
+			if (isset($config['afp']['enable'])) {
+				$sambaconf .= <<<EOD
+vfs objects = netatalk
+
+EOD;
+			}
+		}
+	}
+
+	fwrite($fd, $sambaconf);
 	fclose($fd);
 
 	return 0;
