@@ -73,9 +73,6 @@
 	/* Generate the pam configuration file */
 	system_pam_configure();
 
-	/* start SSH service */
-	services_sshd_configure();
-
 	/* configure console menu */
 	system_console_configure();
 

@@ -84,7 +84,7 @@ if ($_POST)
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= services_sshd_configure();
+			$retval |= rc_update_service("sshd");
 			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}

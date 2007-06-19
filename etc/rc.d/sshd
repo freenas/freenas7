@@ -1,0 +1,22 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: sshd
+# REQUIRE: LOGIN
+
+sshd_enable=${sshd_enable-"NO"}
+
+. /etc/rc.subr
+. /etc/conf.subr
+
+name="sshd"
+rcvar=`set_rcvar`
+command="/usr/sbin/${name}"
+command_args="-f /var/etc/ssh/sshd_config -h /var/etc/ssh/ssh_host_dsa_key"
+pidfile="/var/run/${name}.pid"
+extra_commands="reload"
+
+load_rc_config $name
+create_conf_file ${name}
+run_rc_command "$1"
