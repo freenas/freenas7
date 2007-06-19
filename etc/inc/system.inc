@@ -1194,6 +1194,10 @@ function system_create_rc_conf() {
 		mwexec("/usr/local/sbin/rconf service enable sshd");
 	}
 
+	if (isset($config['rsyncd']['enable'])) {
+		mwexec("/usr/local/sbin/rconf service enable rsyncd");
+	}
+
 	// Set hostname.
 	mwexec("/usr/local/sbin/rconf attribute set hostname \"{$config['system']['hostname']}.{$config['system']['domain']}\"");
 

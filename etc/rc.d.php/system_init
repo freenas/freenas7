@@ -98,9 +98,6 @@
 	/* start SAMBA service */
 	services_samba_configure();
 
-	/* start Rsynd service */
-	services_rsyncd_configure();
-
 	/* start NFS service */
 	services_nfs_configure();
 

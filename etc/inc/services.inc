@@ -88,128 +88,6 @@ function services_samba_configure() {
 	return $result;
 }
 
-/* Stop rsync, Generate the rsync configuration file and start rsync
-Return 0 if OK, 1 or error code if error */
-function services_rsyncd_configure() {
-	global $config, $g;
-
-	$result = 0;
-
-	/* kill any running rsync daemon */
-	sigkillbypid("{$g['varrun_path']}/rsyncd.pid", "TERM");
-
-	if (isset($config['rsyncd']['enable'])) {
-
-		if (is_booting())
-			write_console("Starting RSYNC daemon... ");
-
-
-		/* If no share configured, exit */
-		if (!is_array($config['mounts']['mount'])) {
-			$message = "Error: No mount point configured, Can't start rsyncd";
-			write_log($message);
-			return 0;
-		}
-
-		/* generate rsyncd.conf */
-		$fd = fopen("{$g['varetc_path']}/rsyncd.conf", "w");
-		if (!$fd) 	{
-			$message = "Error: Can't open rsyncd.conf in services_rsyncd_configure()";
-			write_console($message . ".\n");
-			write_log($message);
-			$result = 1;
-		}
-
-		$rsyncdconf = <<<EOD
-read only = {$config['rsyncd']['readonly']}
-syslog facility = local4
-list = yes
-port = {$config['rsyncd']['port']}
-pid file = {$g['varrun_path']}/rsyncd.pid
-
-EOD;
-
-		if (!empty($config['rsyncd']['maxcon'])) {
-		$rsyncdconf .= <<<EOD
-max connections = {$config['rsyncd']['maxcon']}
-
-EOD;
-		}
-
-		if (!empty($config['rsyncd']['motd'])) {
-		$rsyncdconf .= <<<EOD
-motd file = {$g['varetc_path']}/rsyncd.motd
-
-EOD;
-		}
-
-		if (isset($config['rsyncd']['rsyncd_user'])) 	{
-			$rsyncdconf .= <<<EOD
-uid = {$config['rsyncd']['rsyncd_user']}
-
-EOD;
-
-		}
-		else 	{
-			$rsyncdconf .= <<<EOD
-uid = ftp
-gid = ftp
-
-EOD;
-		}
-
-		foreach ($config['mounts']['mount'] as $mountent) 	{
-			/* Unmount filesystem if not booting mode*/
-			$rsyncdconf .= <<<EOD
-
-[{$mountent['sharename']}]
-comment = {$mountent['desc']}
-path = /mnt/{$mountent['sharename']}
-
-EOD;
-		}
-
-		fwrite($fd, $rsyncdconf);
-		fclose($fd);
-
-		// Generate MOTD file if configured
-		if (!empty($config['rsyncd']['motd'])) {
-			$fd = fopen("{$g['varetc_path']}/rsyncd.motd", "w");
-			if (!$fd) 	{
-				$message = "Error: Can't open rsyncd.motd in services_rsyncd_configure()";
-				write_console($message . ".\n");
-				write_log($message);
-				$result = 1;
-			}
-
-			$motd  = <<<EOD
-{$config['rsyncd']['motd']}
-
-EOD;
-
-			fwrite($fd, $motd);
-			fclose($fd);
-		}
-
-		/* Run rsync daemon if no previous error. Preserve times when synchronizing. */
-		if (!$result) {
-			$result = mwexec("/usr/local/bin/rsync --daemon --config={$g['varetc_path']}/rsyncd.conf");
-		}
-
-		if(!$result) {
-			if(is_booting())
-				write_console("done\n");
-			write_log("RSYNC Daemon started");
-		} else {
-			if(is_booting())
-				write_console("failed\n");
-			write_log("Error: Failed to start RSYNC Daemon");
-		}
-	}
-
-	return $result;
-}
-
 /* Stop nfs processes, Generate the nfs configuration file and start nfsd processes
 Return 0 if OK, 1 or error code if error */
 function services_nfs_configure() {
@@ -1641,6 +1519,91 @@ EOD;
 
 	fwrite($fd, $sambaconf);
 	fclose($fd);
+
+	return 0;
+}
+
+// Create rsyncd.conf file.
+// Return 0 if successful, otherwise 1.
+function services_create_rsyncd_conf() {
+	global $config, $g;
+
+	$fd = fopen("{$g['varetc_path']}/rsyncd.conf", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/rsyncd.conf'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$rsyncdconf = <<<EOD
+read only = {$config['rsyncd']['readonly']}
+syslog facility = local4
+list = yes
+port = {$config['rsyncd']['port']}
+pid file = {$g['varrun_path']}/rsyncd.pid
+
+EOD;
+
+	if (!empty($config['rsyncd']['maxcon'])) {
+		$rsyncdconf .= <<<EOD
+max connections = {$config['rsyncd']['maxcon']}
+
+EOD;
+	}
+
+	if (!empty($config['rsyncd']['motd'])) {
+		$rsyncdconf .= <<<EOD
+motd file = {$g['varetc_path']}/rsyncd.motd
+
+EOD;
+	}
+
+	if (isset($config['rsyncd']['rsyncd_user'])) 	{
+		$rsyncdconf .= <<<EOD
+uid = {$config['rsyncd']['rsyncd_user']}
+
+EOD;
+		} else {
+			$rsyncdconf .= <<<EOD
+uid = ftp
+gid = ftp
+
+EOD;
+	}
+
+	if (is_array($config['mounts']['mount'])) {
+		foreach ($config['mounts']['mount'] as $mountent) {
+			$rsyncdconf .= <<<EOD
+
+[{$mountent['sharename']}]
+comment = {$mountent['desc']}
+path = /mnt/{$mountent['sharename']}
+
+EOD;
+		}
+	}
+
+	fwrite($fd, $rsyncdconf);
+	fclose($fd);
+
+	// Generate MOTD file if configured
+	if (!empty($config['rsyncd']['motd'])) {
+		$fd = fopen("{$g['varetc_path']}/rsyncd.motd", "w");
+		if (!$fd) {
+			$message = "Error: Failed to create '{$g['varetc_path']}/rsyncd.motd'";
+			write_console($message . ".\n");
+			write_log($message);
+		} else {
+			$motd  = <<<EOD
+{$config['rsyncd']['motd']}
+
+EOD;
+
+			fwrite($fd, $motd);
+			fclose($fd);
+		}
+	}
 
 	return 0;
 }

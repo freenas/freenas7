@@ -52,7 +52,7 @@ if ($_POST) {
 			$retval |= disks_mount_all();
 			$retval |= services_samba_configure();
 			$retval |= services_nfs_configure();
-			$retval |= services_rsyncd_configure();
+			$retval |= rc_update_service("rsyncd");
 			$retval |= rc_update_service("afpd");
 			config_unlock();
 		}
@@ -87,8 +87,8 @@ if ($_GET['act'] == "retry")
 		if (0 == disks_mount($a_mount[$_GET['id']])) {
 			services_samba_configure();
 			services_nfs_configure();
-			services_rsyncd_configure();
-			rc_update_service("afpd",isset($config['afp']['enable']));
+			rc_update_service("rsyncd");
+			rc_update_service("afpd");
 		}
 		header("Location: disks_mount.php");
 		exit;

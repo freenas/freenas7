@@ -1,0 +1,24 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: rsyncd
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+
+rsyncd_enable=${rsyncd_enable-"NO"}
+
+. /etc/rc.subr
+. /etc/conf.subr
+
+name="rsyncd"
+rcvar=`set_rcvar`
+rsyncd_config=${rsyncd_config:-"/var/etc/${name}.conf"}
+required_files=${rsyncd_config}
+command="/usr/local/bin/${name}"
+command_args="--daemon --config=${rsyncd_config}"
+pidfile="/var/run/${name}.pid"
+
+load_rc_config $name
+create_conf_file ${name}
+run_rc_command "$1"

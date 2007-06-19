@@ -160,7 +160,7 @@ function interfaces_lan_configure()
 		$result |= rc_restart_service("sshd");
 
 		/* Restart RSYNC */
-		$result |= services_rsyncd_configure();
+		$result |= rc_update_service("rsyncd");
 
 		/* Restart uShare */
 		$result |= rc_restart_service("ushare");
