@@ -7,6 +7,7 @@
 # KEYWORD: shutdown
 
 . /etc/rc.subr
+. /etc/configxml.subr
 
 name="beep"
 start_cmd="start_cmd"
@@ -14,17 +15,18 @@ stop_cmd="stop_cmd"
 
 start_cmd()
 {
-	# Start core system.
-	eval /etc/rc.d.php/${name} up
-	return $?
+	_disable=$(configxml_isset //system/disablebeep)
+	if [ ! _disable ]; then
+		echo O3L30cO4L30cO5L30cO5L30g > /dev/speaker
+	fi
 }
 
 stop_cmd()
 {
-	# Start core system.
-	eval /etc/rc.d.php/${name} down
-	return $?
+	_disable=$(configxml_isset //system/disablebeep)
+	if [ ! _disable ]; then
+		echo O5L30gO5L30cO4L30cO3L30c > /dev/speaker
+	fi
 }
 
-load_rc_config ${name}
 run_rc_command "$1"

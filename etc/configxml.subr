@@ -1,0 +1,21 @@
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+#
+# configxml.subr
+#	functions used by various rc scripts
+#
+
+configxml_file=${configxml_file:-"/conf/config.xml"}
+
+#
+# configxml_isset xpath
+#	Check in /conf/config.xml if xpath is available/found.
+# Return 1 if found, otherwise 0
+#	$1 - XPATH expression
+#
+configxml_isset()
+{
+	_xpath=$1
+	_result=`/usr/local/bin/xml sel -t -v "count(${_xpath})" ${configxml_file}`
+	return ${_result}
+}
