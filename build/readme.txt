@@ -88,7 +88,7 @@ Majors changes:
     + liveCD (old "generic-pc-cdrom") for the CD-ROM release
     + embedded (old "generic-pc") for install on hard drive or flash device
     + full (new platform) for real install (no more use RAM disk)
-- Use rc init system to start/stop services
+- Use sysvinit for services
 
 Minors changes:
 - Enhance build scripts (to build packages/plugins)
@@ -125,6 +125,7 @@ Bug fixs:
 - Fix SWAP file size change bug
 - Add missing softlink /usr/share/misc/termcap -> /etc/termcap
 - Fix bug for preventing to mount system disk (thanks to SF.net user : snikulin)
+- Fix bug concerning runmsntp.sh (File mode was DOS -> changed to UNIX)
 
 Known bugs:
 - NTFS mount points are not mounted after creation, a reboot is necessary.
