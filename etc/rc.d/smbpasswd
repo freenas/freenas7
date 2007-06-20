@@ -1,0 +1,21 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: smbpasswd
+
+. /etc/configxml.subr
+
+name="smbpasswd"
+command="/usr/local/bin/${name}"
+
+# Clear password database.
+cat /dev/null > /var/etc/private/smbpasswd
+
+# Generate /var/etc/private/smbpasswd Samba password database.
+_userlist=`xml sel -t -m "//access/user" -v login -o "|" -v password -o " " ${configxml_file}`
+for _userdata in ${_userlist}; do
+		_username=${_userdata%|*}
+		_password=${_userdata#*|}
+		(/bin/echo "${_password}"; /bin/echo "${_password}") | ${command} -s -a "${_username}"
+done

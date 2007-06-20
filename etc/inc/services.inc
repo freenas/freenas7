@@ -70,8 +70,8 @@ function services_samba_configure() {
 			/* TEST: Wait for samba starting */
 			sleep(2);
 
-			/* Generate the samba password file */
-			$result |= system_create_smbpasswd();
+			// Generate the samba password file.
+			$result |= rc_exec_service("smbpasswd");
 
 			if(!$result) {
 				if(is_booting())

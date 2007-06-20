@@ -43,17 +43,15 @@ users_sort();
 $a_user_conf = &$config['access']['user'];
 
 if ($_POST) {
-
 	$pconfig = $_POST;
 
 	if ($_POST['apply']) {
 		$retval = 0;
-		if (!file_exists($d_sysrebootreqd_path)) 
-		{
+		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			system_create_usermanagement();
 			if (isset($config['samba']['enable']))
-				system_create_smbpasswd();
+				rc_exec_service("smbpasswd");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
@@ -70,11 +68,12 @@ if ($_GET['act'] == "del")
 	{
 		unset($a_user_conf[$_GET['id']]);
 
+		write_config();
+
 		system_create_usermanagement();
 		if (isset($config['samba']['enable']))
-			system_create_smbpasswd();
+			rc_exec_service("smbpasswd");
 
-		write_config();
 		touch($d_userconfdirty_path);
 		header("Location: access_users.php");
 		exit;

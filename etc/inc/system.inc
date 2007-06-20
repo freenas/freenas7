@@ -590,24 +590,6 @@ EOD;
 	return 0;
 }
 
-// Generate the /var/etc/private/smbpasswd samba password database.
-// Return 0 if successful, otherwise 1
-function system_create_smbpasswd()
-{
-	// MUST FIND A WAY OF USING UNIX CRYPTED PASSWORD IN THE PLACE OF CLEAR TEXT PASSWORD FOR GENERATING SAMBA DB!!!
-	global $config;
-
-	if (is_array($config['access']['user'])) {
-		foreach ($config['access']['user'] as $user) {
-			$password = escapeshellcmd($user['password']);
-			$login = escapeshellcmd($user['login']);
-			mwexec("(/bin/echo {$password}; /bin/echo {$password}) | /usr/local/bin/smbpasswd -s -a {$login}");
-		}
-	}
-
-	return 0;
-}
-
 // Generate the /var/run/.htpasswd file used by lighttpd.
 // Return 0 if successful, otherwise 1
 function system_create_htpasswd() {

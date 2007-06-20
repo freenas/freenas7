@@ -15,17 +15,23 @@ stop_cmd="stop_cmd"
 
 start_cmd()
 {
-	_disable=$(configxml_isset //system/disablebeep)
-	if [ ! _disable ]; then
-		echo O3L30cO4L30cO5L30cO5L30g > /dev/speaker
+	configxml_isset //system/disablebeep
+	_disable=$?
+	if [ ! ${_disable} ]; then
+		if [ -e /dev/speaker ]; then
+			echo O3L30cO4L30cO5L30cO5L30g > /dev/speaker
+		fi
 	fi
 }
 
 stop_cmd()
 {
-	_disable=$(configxml_isset //system/disablebeep)
-	if [ ! _disable ]; then
-		echo O5L30gO5L30cO4L30cO3L30c > /dev/speaker
+	configxml_isset //system/disablebeep
+	_disable=$?
+	if [ ! ${_disable} ]; then
+		if [ -e /dev/speaker ]; then
+			echo O5L30gO5L30cO4L30cO3L30c > /dev/speaker
+		fi
 	fi
 }
 
