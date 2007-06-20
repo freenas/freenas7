@@ -3,11 +3,15 @@
 # All rights reserved.
 
 # PROVIDE: smbpasswd
+# REQUIRE: samba
 
 . /etc/configxml.subr
 
 name="smbpasswd"
 command="/usr/local/bin/${name}"
+
+# Display message.
+echo "Updating smbpasswd."
 
 # Clear password database.
 cat /dev/null > /var/etc/private/smbpasswd
