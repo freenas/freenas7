@@ -13,7 +13,7 @@ command="/usr/local/bin/${name}"
 cat /dev/null > /var/etc/private/smbpasswd
 
 # Generate /var/etc/private/smbpasswd Samba password database.
-_userlist=`xml sel -t -m "//access/user" -v login -o "|" -v password -o " " ${configxml_file}`
+_userlist=`/usr/local/bin/xml sel -t -m "//access/user" -v login -o "|" -v password -o " " ${configxml_file}`
 for _userdata in ${_userlist}; do
 		_username=${_userdata%|*}
 		_password=${_userdata#*|}
