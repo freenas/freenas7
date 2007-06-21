@@ -40,7 +40,7 @@ ad_enable=$?
 if [ -n "${rcvar}" ] && checkyesno "${rcvar}"; then
     nmbd_enable="${nmbd_enable=YES}"
     smbd_enable="${smbd_enable=YES}"
-    if [ 1 -eq ${ad_enable} ]; then
+    if [ 0 -eq ${ad_enable} ]; then
 			winbindd_enable="${winbindd_enable=YES}"
 		fi
 fi
@@ -110,7 +110,7 @@ samba_cmd() {
 
 	# Start additional processes when starting
 	if [ "${rc_arg}" = "start" ]; then
-		if [ 1 -eq ${ad_enable} ]; then
+		if [ 0 -eq ${ad_enable} ]; then
 			local _srvname=`/usr/local/bin/xml sel -t -m "//ad" -v ad_srv_name ${configxml_file}`
 			local _username=`/usr/local/bin/xml sel -t -m "//ad" -v admin_name ${configxml_file}`
 			local _password=`/usr/local/bin/xml sel -t -m "//ad" -v admin_pass ${configxml_file}`

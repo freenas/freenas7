@@ -19,6 +19,8 @@ fi
 #
 create_conf_file()
 {
+	local _file
+
 	_file="/etc/rc.d.php/$1"
 
 	if [ $noconf -eq 1 ]; then

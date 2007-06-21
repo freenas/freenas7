@@ -10,12 +10,36 @@ configxml_file=${configxml_file:-"/conf/config.xml"}
 #
 # configxml_isset xpath
 #	Check in /conf/config.xml if xpath is available/found.
-# Return 1 if found, otherwise 0
+#	Return 0 if set, nonzero otherwise.
 #	$1 - XPATH expression
 #
 configxml_isset()
 {
-	_xpath=$1
-	_result=`/usr/local/bin/xml sel -t -v "count(${_xpath})" ${configxml_file}`
-	return ${_result}
+	local _result
+
+	_result=`/usr/local/bin/xml sel -t -v "count($1)" ${configxml_file}`
+	if [ 0 -eq ${_result} ]; then
+		return 1
+	else
+		return 0
+	fi
+}
+
+#
+# configxml_set_rcvar xpath
+#	Set ${rcvar} depending on whether XPATH expression evaluates true.
+#	$1 - XPATH expression
+#
+configxml_set_rcvar()
+{
+	local _value
+
+	if configxml_isset $1; then
+		eval ${rcvar}=YES
+	else
+		eval ${rcvar}=NO
+	fi
+
+	eval _value=\$${rcvar}
+	debug "configxml_setrcvar: ${rcvar} has been changed to $_value."
 }

@@ -21,13 +21,6 @@ stop_cmd="stop_cmd"
 iscsi_initiator_enable="${iscsi_initiator_enable:=NO}"
 command="/usr/local/sbin/iscontrol"
 
-# Setup dependent variables
-configxml_isset //iscsiinit/vdisk
-_enable=$?
-if [ 0 -ne ${_enable} ]; then
-	iscsi_initiator_enable="${iscsi_initiator_enable=YES}"
-fi
-
 start_precmd()
 {
 	/sbin/kldload iscsi_initiator.ko > /dev/null
@@ -59,4 +52,5 @@ stop_cmd()
 	/usr/bin/killall iscontrol
 }
 
+configxml_set_rcvar //iscsiinit/vdisk
 run_rc_command "$1"
