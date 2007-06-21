@@ -112,7 +112,7 @@ if ($_GET['act'] == "del")
           </tr>
           <?php $i++; endforeach; ?>
           <tr> 
-            <td class="list" colspan="4"></td>
+            <td class="list" colspan="3"></td>
             <td class="list"><a href="disks_manage_iscsi_edit.php"><img src="plus.gif" title="<?=gettext("Add initiator");?>" width="17" height="17" border="0"></a></td>
 			    </tr>
         </table>

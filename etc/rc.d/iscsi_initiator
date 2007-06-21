@@ -1,0 +1,50 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: iscsi_initiator
+# REQUIRE: NETWORKING
+# KEYWORD: nostart
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+name="iscsi_initiator"
+start_precmd="start_precmd"
+start_cmd="start_cmd"
+stop_cmd="stop_cmd"
+
+command="/usr/local/sbin/iscontrol"
+
+start_precmd()
+{
+	/sbin/kldload iscsi_initiator.ko > /dev/null
+	/sbin/sysctl debug.iscsi=0 > /dev/null
+}
+
+start_cmd()
+{
+	local _initiatorname _targetname _targetaddress
+
+	echo "Starting ${name}."
+
+	_disknum=`/usr/local/bin/xml sel -t -v "count(//iscsiinit/vdisk)" ${configxml_file}`
+	while [ $_disknum -gt 0 ]
+	do
+    _initiatorname=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=$_disknum]" -v initiatorname ${configxml_file}`
+    _targetname=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=$_disknum]" -v targetname ${configxml_file}`
+    _targetaddress=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=$_disknum]" -v targetaddress ${configxml_file}`
+
+		eval ${command} targetaddress=${_targetaddress} targetname=${_targetname} initiatorname=${_initiatorname} > /dev/null
+
+    _disknum=$(( $_disknum - 1 ))
+	done
+}
+
+stop_cmd()
+{
+	echo "Stopping ${name}."
+	/usr/bin/killall iscontrol
+}
+
+run_rc_command "$1"
