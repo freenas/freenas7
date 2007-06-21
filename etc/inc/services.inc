@@ -688,42 +688,6 @@ EOD;
 	return 0;
 }
 
-// Create .../iscsi/targets file.
-// Return 0 if successful, otherwise 1.
-function services_create_iscsitarget_conf() {
-	global $config, $g;
-
-	/* generate targets */
-	$fd = fopen("{$g['varetc_path']}/iscsi/targets", "w");
-	if (!$fd) {
-		$message = "Error: Failed to create '{$g['varetc_path']}/iscsi/targets'";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	$iscsitargets = "";
-
-	if (is_array($config['iscsitarget']['vdisk'])) {
-		$i = 0;
-		$a_iscsitarget = &$config['iscsitarget']['vdisk'];
-
-		foreach ($a_iscsitarget as $target) {
-			$iscsitargets .= <<<EOD
-extent{$i} /mnt/{$target['sharename']}/iscsi_target{$i} 0 {$target['size']}MB
-target{$i} rw extent{$i} {$target['network']}
-
-EOD;
-			$i++;
-		}
-	}
-
-	fwrite($fd, $iscsitargets);
-	fclose($fd);
-
-	return 0;
-}
-
 // Create lighttpd.conf file.
 // Return 0 if successful, otherwise 1.
 function services_create_lighttpd_conf() {

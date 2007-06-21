@@ -30,7 +30,7 @@ start_precmd()
 
 start_cmd()
 {
-	local _initiatorname _targetname _targetaddress
+	local _disknum _initiatorname _targetname _targetaddress
 
 	echo "Starting ${name}."
 

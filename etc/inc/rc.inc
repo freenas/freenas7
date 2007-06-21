@@ -60,7 +60,7 @@ require_once("util.inc");
 $g_rcservices = array();
 $g_rcservices['afpd']            = array("start_func" => "services_create_afpd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['afp']['enable']);", "set_rcvar" => "true");
 $g_rcservices['inadyn']          = array("start_func" => "services_create_inadyn_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['dynamicdns']['enable']);", "set_rcvar" => "true");
-$g_rcservices['iscsi_target']    = array("start_func" => "services_create_iscsitarget_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = is_array(\$config['iscsitarget']['vdisk']);", "set_rcvar" => "true");
+$g_rcservices['iscsi_target']    = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = is_array(\$config['iscsitarget']['vdisk']);", "set_rcvar" => "true");
 $g_rcservices['iscsi_initiator'] = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = is_array(\$config['iscsiinit']['vdisk']);", "set_rcvar" => "true");
 $g_rcservices['lighttpd']        = array("start_func" => "services_create_lighttpd_conf", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "set_rcvar" => "true");
 $g_rcservices['mdnsresponder']   = array("start_func" => "services_create_mdnsresponder_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['zeroconf']);", "set_rcvar" => "true");
