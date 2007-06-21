@@ -52,5 +52,5 @@ stop_cmd()
 	/usr/bin/killall iscontrol
 }
 
-configxml_set_rcvar //iscsiinit/vdisk
+load_rc_config ${name}
 run_rc_command "$1"
