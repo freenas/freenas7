@@ -33,61 +33,6 @@
 require_once("functions.inc");
 require_once("util.inc");
 
-/* Stop samba, Generate the samba configuration file and start samba
-Return 0 if OK, 1 or error code if error */
-function services_samba_configure() {
-	global $config, $g;
-
-	$result = 0;
-
-	/* kill any running samba */
-	killbyname("smbd");
-	killbyname("winbindd");
-	killbyname("nmbd");
-
-	if (isset($config['samba']['enable'])) {
-		if (is_booting())
-			write_console("Starting Samba... ");
-
-		// Create smb.conf file.
-		$result = services_create_samba_conf();
-
-		/* Run nmbd and nmbd if no previous error. */
-		if(!$result) {
-			if (isset($config['ad']['enable'])) {
-				$result |= mwexec("/usr/local/bin/net rpc join -S {$config['ad']['ad_srv_name']} -U {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
-			}
-
-			$result |= mwexec("/usr/local/sbin/nmbd -D -s {$g['varetc_path']}/smb.conf");
-
-			if (isset($config['ad']['enable'])) {
-				mwexec("/usr/local/sbin/winbindd -s {$g['varetc_path']}/smb.conf");
-				//mwexec("/usr/local/bin/wbinfo --set-auth-user {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}");
-			}
-
-			$result |= mwexec("/usr/local/sbin/smbd -D -s {$g['varetc_path']}/smb.conf");
-
-			/* TEST: Wait for samba starting */
-			sleep(2);
-
-			// Generate the samba password file.
-			$result |= rc_exec_service("smbpasswd");
-
-			if(!$result) {
-				if(is_booting())
-					write_console("done\n");
-				write_log("Samba started");
-			} else {
-				if(is_booting())
-					write_console("failed\n");
-				write_log("Error: Failed to start Samba");
-			}
-		}
-	}
-
-	return $result;
-}
-
 /* Stop nfs processes, Generate the nfs configuration file and start nfsd processes
 Return 0 if OK, 1 or error code if error */
 function services_nfs_configure() {

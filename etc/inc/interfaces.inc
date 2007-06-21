@@ -145,7 +145,7 @@ function interfaces_lan_configure()
 		$result |= system_routing_configure();
 
 		/* Restart Samba */
-		$result |= services_samba_configure();
+		$result |= rc_update_service("samba");
 
 		/* Restart FTP */
 		$result |= rc_restart_service("pureftpd");

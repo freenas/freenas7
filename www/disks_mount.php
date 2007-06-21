@@ -50,7 +50,7 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= disks_mount_all();
-			$retval |= services_samba_configure();
+			$retval |= rc_update_service("samba");
 			$retval |= services_nfs_configure();
 			$retval |= rc_update_service("rsyncd");
 			$retval |= rc_update_service("afpd");
@@ -85,7 +85,7 @@ if ($_GET['act'] == "retry")
 {
 	if ($a_mount[$_GET['id']]) {
 		if (0 == disks_mount($a_mount[$_GET['id']])) {
-			services_samba_configure();
+			rc_update_service("samba");
 			services_nfs_configure();
 			rc_update_service("rsyncd");
 			rc_update_service("afpd");

@@ -1,0 +1,136 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: nmbd smbd winbindd
+# REQUIRE: NETWORKING SERVERS DAEMON resolv
+# BEFORE: LOGIN
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+. /etc/conf.subr
+. /etc/configxml.subr
+
+name="samba"
+rcvar=`set_rcvar`
+
+load_rc_config "${name}"
+
+# Custom commands
+extra_commands="reload status"
+start_precmd="samba_start_precmd"
+start_cmd="samba_cmd"
+stop_cmd="samba_cmd"
+status_cmd="samba_cmd"
+
+# Defaults
+samba_enable="${samba_enable:=NO}"
+samba_config_default="/var/etc/smb.conf"
+samba_config="${samba_config=${samba_config_default}}"
+command_args="${samba_config:+-s "${samba_config}"}"			#"
+samba_daemons="nmbd smbd winbindd"
+samba_lockdir="${samba_lockdir=/var/run}"
+samba_piddir="${samba_piddir=/var/run}"
+
+# Check if 'Active Directory' is enabled?
+configxml_isset //ad/enable
+ad_enable=$?
+
+# Setup dependent variables
+if [ -n "${rcvar}" ] && checkyesno "${rcvar}"; then
+    nmbd_enable="${nmbd_enable=YES}"
+    smbd_enable="${smbd_enable=YES}"
+    if [ 1 -eq ${ad_enable} ]; then
+			winbindd_enable="${winbindd_enable=YES}"
+		fi
+fi
+
+# Hack to work around name change of pid file with non-default config
+pid_extra=
+if [ -n "${samba_config}" -a "${samba_config}" != "${samba_config_default}" ]; then
+    pid_extra="-$(basename "${samba_config}")"
+fi
+
+# Hack to enable check of dependent variables
+eval real_${rcvar}="\${${rcvar}:=NO}"	${rcvar}="YES"
+
+# Defaults for dependent variables
+nmbd_enable="${nmbd_enable:=NO}"
+nmbd_flags="${nmbd_flags=\"-D\"}"
+smbd_enable="${smbd_enable:=NO}"
+smbd_flags="${smbd_flags=\"-D\"}"
+winbindd_enable="${winbindd_enable:=NO}"
+winbindd_flags="${winbindd_flags=''}"
+
+# Requirements
+required_files="${samba_config}"
+required_dirs="${samba_lockdir}"
+
+samba_start_precmd() {
+	# XXX: Never delete winbindd_idmap, winbindd_cache and group_mapping
+	if [ -n "${samba_lockdir}" -a -d "${samba_lockdir}" ]; then
+		echo -n "Removing stale Samba tdb files: "
+		for file in brlock.tdb browse.dat connections.tdb gencache.tdb \
+				locking.tdb messages.tdb namelist.debug sessionid.tdb \
+				unexpected.tdb
+		do
+	    rm "${samba_lockdir}/${file}" </dev/null 2>/dev/null && echo -n '.'
+		done
+		echo " done"
+	fi
+}
+
+samba_rcvar_cmd() {
+	# Prevent recursive calling
+	unset "${rc_arg}_cmd" "${rc_arg}_precmd" "${rc_arg}_postcmd"
+	# Check master variable
+	echo "# ${name}"
+	if [ -n "${rcvar}" ]; then
+		# Use original configured value
+		if checkyesno "real_${rcvar}"; then
+			echo "\$${rcvar}=YES"
+		else
+			echo "\$${rcvar}=NO"
+		fi
+	fi
+	# Check dependent variables
+	samba_cmd "${_rc_prefix}${rc_arg}" ${rc_extra_args}
+}
+
+samba_cmd() {
+	local name rcvar command pidfile samba_daemons
+
+	# Prevent recursive calling
+	unset "${rc_arg}_cmd" "${rc_arg}_precmd" "${rc_arg}_postcmd"
+
+	# Stop processes in the reverse to order
+	if [ "${rc_arg}" = "stop" ]; then
+		samba_daemons=$(reverse_list ${samba_daemons})
+	fi
+
+	# Start additional processes when starting
+	if [ "${rc_arg}" = "start" ]; then
+		if [ 1 -eq ${ad_enable} ]; then
+			local _srvname=`/usr/local/bin/xml sel -t -m "//ad" -v ad_srv_name ${configxml_file}`
+			local _username=`/usr/local/bin/xml sel -t -m "//ad" -v admin_name ${configxml_file}`
+			local _password=`/usr/local/bin/xml sel -t -m "//ad" -v admin_pass ${configxml_file}`
+			/usr/local/bin/net rpc join -S ${_srvname} -U ${_username}%${_password}
+		fi
+	fi
+
+	# Apply to all the daemons
+	for name in ${samba_daemons}; do
+		rcvar=$(set_rcvar)
+		command="/usr/local/sbin/${name}"
+		pidfile="${samba_piddir}/${name}${pid_extra}.pid"
+		run_rc_command "${_rc_prefix}${rc_arg}" ${rc_extra_args}
+	done
+
+	# Start additional processes when starting
+	if [ "${rc_arg}" = "start" ]; then
+		/etc/rc.d/smbpasswd
+	fi
+}
+
+create_conf_file ${name}
+run_rc_command "$1"

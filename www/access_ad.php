@@ -101,7 +101,7 @@ if ($_POST) {
 			/* nuke the cache file */
 			config_lock();
 			system_pam_configure();
-			services_samba_configure();
+			rc_update_service("samba");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
