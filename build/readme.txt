@@ -132,6 +132,10 @@ Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
 - IPv6: auto mode, and IPv6 on optionnal interfaces need to be tested
 
+Help needed:
+- Need help for adding LDAP authentication feature:
+Major services can be easly authenticated using PAM-LDAP, but for Samba too is harder.
+
 FreeNAS 0.684b:
 ---------------
 

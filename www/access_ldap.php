@@ -3,7 +3,7 @@
 /*
 	acces_ldap.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -206,6 +206,10 @@ function enable_change(enable_change) {
         <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)"> 
       </td>
     </tr>
+		<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%"><span class="red"><strong><?=gettext("Help Needed!");?>:</strong></span><br><?php echo sprintf( gettext("LDAP authentication feature is not implemented: If you know how to use PAMauthenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome."));?></td>
+					</tr>
   </table>
 </form>
 <script language="JavaScript">
