@@ -10,11 +10,23 @@
 . /etc/configxml.subr
 
 name="iscsi_initiator"
+rcvar=`set_rcvar`
+
+# Custom commands
 start_precmd="start_precmd"
 start_cmd="start_cmd"
 stop_cmd="stop_cmd"
 
+# Defaults
+iscsi_initiator_enable="${iscsi_initiator_enable:=NO}"
 command="/usr/local/sbin/iscontrol"
+
+# Setup dependent variables
+configxml_isset //iscsiinit/vdisk
+_enable=$?
+if [ 0 -ne ${_enable} ]; then
+	iscsi_initiator_enable="${iscsi_initiator_enable=YES}"
+fi
 
 start_precmd()
 {
@@ -31,13 +43,13 @@ start_cmd()
 	_disknum=`/usr/local/bin/xml sel -t -v "count(//iscsiinit/vdisk)" ${configxml_file}`
 	while [ $_disknum -gt 0 ]
 	do
-    _initiatorname=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=$_disknum]" -v initiatorname ${configxml_file}`
-    _targetname=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=$_disknum]" -v targetname ${configxml_file}`
-    _targetaddress=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=$_disknum]" -v targetaddress ${configxml_file}`
-
+		_initiatorname=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=$_disknum]" -v initiatorname ${configxml_file}`
+		_targetname=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=$_disknum]" -v targetname ${configxml_file}`
+		_targetaddress=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=$_disknum]" -v targetaddress ${configxml_file}`
+		
 		eval ${command} targetaddress=${_targetaddress} targetname=${_targetname} initiatorname=${_initiatorname} > /dev/null
-
-    _disknum=$(( $_disknum - 1 ))
+		
+		_disknum=$(( $_disknum - 1 ))
 	done
 }
 
