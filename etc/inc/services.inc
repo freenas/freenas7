@@ -40,7 +40,7 @@ function services_nfs_configure() {
 
 	$result = 0;
 
-	/* kill any running nfsd */
+	// Kill any running processes.
 	killbyname("rpc.statd");
 	killbyname("rpc.lockd");
 	killbypid("{$g['varrun_path']}/mountd.pid");
@@ -48,62 +48,12 @@ function services_nfs_configure() {
 	killbyname("rpcbind");
 
 	if (isset($config['nfs']['enable'])) {
-
 		if (is_booting()) {
 			write_console("Starting NFS... ");
 		}
 
-		/* If no share configured, exit */
-		if (!is_array($config['mounts']['mount'])) {
-			$result = 1;
-		}
-
-		/* generate exports */
-		$fd = fopen("{$g['varetc_path']}/exports", "w");
-		if (!$fd) {
-			$message = "Error: Can't open exports in services_nfs_configure()";
-			write_console($message . ".\n");
-			write_log($message);
-			$result = 1;
-		}
-		$a_net = &$config['nfs']['nfsnetworks'];
-		$a_mount = &$config['mounts']['mount'];
-
-		foreach ($a_net as $net) {
-
-			list($network,$subnet) = explode('/', $net);
-
-			$subnet=gen_subnet_mask($subnet);
-
-			foreach ($a_mount as $mount) {
-				$nfsconf .= <<<EOD
-/mnt/{$mount['sharename']} -alldirs
-EOD;
-
-				if (strcmp($config['nfs']['mapall'],"yes") == 0 ) 	{
-
-				$nfsconf .= <<<EOD
--mapall=root
-EOD;
-
-				} else {
-				$nfsconf .= <<<EOD
--maproot=root
-EOD;
-
-				}
-
-				$nfsconf .= <<<EOD
--network {$network} -mask $subnet
-
-EOD;
-
-			}
-		}
-		fwrite($fd, $nfsconf);
-		fclose($fd);
-
-		/* run rpcbind, nfsd and mountd if no previous error*/
+		// Create /var/etc/exports file.
+		$result = services_create_mountd_conf();
 
 		if (!$result) {
 			$result = mwexec("/usr/sbin/rpcbind");
@@ -111,16 +61,16 @@ EOD;
 			$result |= mwexec("/usr/sbin/mountd -r {$g['varetc_path']}/exports");
 			$result |= mwexec("/usr/sbin/rpc.lockd");
 			$result |= mwexec("/usr/sbin/rpc.statd");
+		}
 
-			if(!$result) {
-				if(is_booting())
-					write_console("done\n");
-				write_log("NFS Daemon started");
-			} else {
-				if(is_booting())
-					write_console("failed\n");
-				write_log("Error: Failed to start NFS Daemon");
-			}
+		if (!$result) {
+			if(is_booting())
+				write_console("done\n");
+			write_log("NFS Daemon started");
+		} else {
+			if(is_booting())
+				write_console("failed\n");
+			write_log("Error: Failed to start NFS Daemon");
 		}
 	}
 
@@ -1714,6 +1664,55 @@ USHARE_DIR={$content}
 EOD;
 
 	fwrite($fd, $ushareconf);
+	fclose($fd);
+
+	return 0;
+}
+
+// Create /var/etc/exports file.
+// Return 0 if successful, otherwise 1.
+function services_create_mountd_conf() {
+	global $config, $g;
+
+	$fd = fopen("{$g['varetc_path']}/exports", "w");
+	if (!$fd) {
+		$message = "Error: Failed to create '{$g['varetc_path']}/exports'";
+		write_console($message . ".\n");
+		write_log($message);
+		return 1;
+	}
+
+	$exports = "";
+
+	foreach ($config['nfs']['nfsnetworks'] as $net) {
+		list($network,$subnet) = explode('/', $net);
+		$subnet = gen_subnet_mask($subnet);
+
+		if (is_array($config['mounts']['mount'])) {
+			foreach ($config['mounts']['mount'] as $mount) {
+				$exports .= <<<EOD
+/mnt/{$mount['sharename']} -alldirs
+EOD;
+
+				if (0 == strcmp($config['nfs']['mapall'],"yes")) {
+					$exports .= <<<EOD
+-mapall=root
+EOD;
+				} else {
+					$exports .= <<<EOD
+-maproot=root
+EOD;
+				}
+
+				$exports .= <<<EOD
+-network {$network} -mask $subnet
+
+EOD;
+			}
+		}
+	}
+
+	fwrite($fd, $exports);
 	fclose($fd);
 
 	return 0;
