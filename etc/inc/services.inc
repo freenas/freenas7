@@ -558,57 +558,6 @@ EOD;
 	return 0;
 }
 
-/* Start iscsi initiator
-Return 0 if Ok, 1 or error code if problem */
-function services_iscsiinit_configure()
-{
-	global $config, $g;
-
-	/* kill any running iscontrol */
-	killbyname("iscontrol");
-
-	if (is_array($config['iscsiinit']['vdisk'])) {
-		if (is_booting()) {
-			write_console("Loading iSCSI kernel module... ");
-		}
-		/* iSCSI initiator configured, start the process */
-		$result = mwexec("/sbin/kldload iscsi_initiator.ko");
-		$result |= mwexec("/sbin/sysctl debug.iscsi=0");
-
-		if ((!$result) && (is_booting())) {
-			write_log("iSCSI kernel module loaded");
-			write_console("done\n");
-		} else if (is_booting()) {
-			write_log("Error: Failed to load iSCSI kernel module");
-			write_console("failed\n");
-		}
-		if (is_booting()) {
-			write_console("Configuring initiator(s)... ");
-		}
-
-		$a_iscsiinit = &$config['iscsiinit']['vdisk'];
-
-		if (!$result) {
-			foreach ($a_iscsiinit as $iscsiinit) {
-				/* run iscontrol if no previous error*/
-				$result |= mwexec("/usr/local/sbin/iscontrol targetaddress={$iscsiinit['targetaddress']}  targetname={$iscsiinit['targetname']} initiatorname={$iscsiinit['initiatorname']}");
-			}
-		}
-
-		if(!$result) {
-			if (is_booting())
-				write_console("done\n");
-			write_log("iSCSI initiator(s) started");
-		} else {
-			if (is_booting())
-				write_console("failed\n");
-			write_log("Error: Failed to start iSCSI initiator(s)");
-		}
-	}
-
-	return $result;
-}
-
 /* ------------------------------------------------------- */
 
 // Create afpd.conf file.

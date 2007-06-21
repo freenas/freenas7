@@ -49,10 +49,12 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			services_iscsiinit_configure();
+			$retval |= rc_update_service("iscsi_initiator");
 			config_unlock();
 		}
+
 		$savemsg = get_std_save_message($retval);
+
 		if ($retval == 0) {
 			if (file_exists($d_iscsiinitdirty_path))
 				unlink($d_iscsiinitdirty_path);
@@ -62,16 +64,11 @@ if ($_POST) {
 if ($_GET['act'] == "del")
 {
 	if ($a_iscsiinit[$_GET['id']]) {
-		/* if(disks_mount_check($a_iscsiinit[$_GET['id']]['fullname'])) {
-			*/
-			unset($a_iscsiinit[$_GET['id']]);
-			write_config();
-			touch($d_iscsiinitdirty_path);
-			header("Location: disks_manage_iscsi.php");
-			exit;
-        /* } else {
-                  $errormsg[] = gettext("This iscsi disk must be unlounted before to be delete");
-        } */
+		unset($a_iscsiinit[$_GET['id']]);
+		write_config();
+		touch($d_iscsiinitdirty_path);
+		header("Location: disks_manage_iscsi.php");
+		exit;
 	}
 }
 ?>
