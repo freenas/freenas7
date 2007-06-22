@@ -4,6 +4,7 @@
 
 # PROVIDE: systune
 # BEFORE: DAEMON
+# XPATH: //system/tune
 
 systune_enable=${systune_enable-"NO"}
 

@@ -6,6 +6,7 @@
 # REQUIRE: DAEMON
 # BEFORE: LOGIN
 # KEYWORD: shutdown
+# XPATH: //afp/enable
 
 afpd_enable=${afpd_enable-"NO"}
 

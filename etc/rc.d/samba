@@ -6,6 +6,7 @@
 # REQUIRE: NETWORKING SERVERS DAEMON resolv
 # BEFORE: LOGIN
 # KEYWORD: shutdown
+# XPATH: //samba/enable
 
 . /etc/rc.subr
 . /etc/conf.subr

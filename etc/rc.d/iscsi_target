@@ -2,6 +2,7 @@
 
 # PROVIDE: iscsi_target
 # REQUIRE: NETWORKING
+# XPATH: //iscsitarget/vdisk
 
 . /etc/rc.subr
 . /etc/configxml.subr

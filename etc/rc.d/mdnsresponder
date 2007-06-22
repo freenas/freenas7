@@ -5,6 +5,7 @@
 # PROVIDE: mdnsresponder
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
+# XPATH: //system/zeroconf
 
 . /etc/rc.subr
 . /etc/conf.subr

@@ -5,6 +5,7 @@
 # PROVIDE: inadyn
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
+# XPATH: //dynamicdns/enable
 
 inadyn_enable=${inadyn_enable-"NO"}
 

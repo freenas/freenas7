@@ -6,6 +6,7 @@
 # REQUIRE: NETWORKING SERVERS
 # BEFORE: DAEMON
 # KEYWORD: shutdown
+# XPATH: //ftp/enable
 
 pureftpd_enable=${pureftpd_enable-"NO"}
 

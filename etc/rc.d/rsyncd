@@ -5,6 +5,7 @@
 # PROVIDE: rsyncd
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
+# XPATH: //rsyncd/enable
 
 rsyncd_enable=${rsyncd_enable-"NO"}
 

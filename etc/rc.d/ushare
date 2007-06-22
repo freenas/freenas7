@@ -5,6 +5,7 @@
 # PROVIDE: ushare
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
+# XPATH: //upnp/enable
 
 ushare_enable=${ushare_enable-"NO"}
 

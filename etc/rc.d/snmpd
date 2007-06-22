@@ -5,6 +5,7 @@
 # PROVIDE: snmpd
 # REQUIRE: NETWORKING
 # KEYWORD: nojail
+# XPATH: //snmpd/enable
 
 snmpd_enable=${snmpd_enable-"NO"}
 

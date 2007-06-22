@@ -5,6 +5,7 @@
 # PROVIDE: sshd
 # REQUIRE: NETWORKING
 # KEYWORD: shutdown
+# XPATH: //sshd/enable
 
 sshd_enable=${sshd_enable-"NO"}
 

@@ -4,6 +4,7 @@
 
 # PROVIDE: iscsi_initiator
 # REQUIRE: NETWORKING
+# XPATH: //iscsiinit/vdisk
 
 . /etc/rc.subr
 . /etc/configxml.subr
