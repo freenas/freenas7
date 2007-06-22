@@ -133,6 +133,7 @@ if ($_POST)
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
+
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.netbiosname.disabled = endis;
@@ -150,7 +151,7 @@ function enable_change(enable_change) {
 	document.iform.security.disabled = endis;
 	document.iform.largereadwrite.disabled = endis;
 	document.iform.easupport.disabled = endis;
-	document.iform.readahead.disabled = endis;
+	document.iform.readahead.disabled = true;
 	document.iform.createmask.disabled = endis;
 	document.iform.directorymask.disabled = endis;
 }
