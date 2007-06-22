@@ -11,12 +11,11 @@ name="rcconf"
 
 sethostname()
 {
-	local _hostname _domain
+	local _hostname
 
-	_hostname=`/usr/local/bin/xml sel -t -v "//system/hostname" ${configxml_file}`
-	_domain=`/usr/local/bin/xml sel -t -v "//system/domain" ${configxml_file}`
+	_hostname=`/usr/local/bin/xml sel -t -m "//system" -v hostname -o "." -v domain ${configxml_file}`
 
-	eval /usr/local/sbin/rconf attribute set hostname "${_hostname}.${_domain}"
+	eval /usr/local/sbin/rconf attribute set hostname "${_hostname}"
 }
 
 setifconfig()
