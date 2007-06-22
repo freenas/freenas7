@@ -262,6 +262,23 @@ function interfaces_optional_configure_if($opti)
 	} else 	{
 		mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " delete down");
 	}
+	
+	switch ($optcfg['ipv6addr']) {
+		case 'auto':
+			interfaces_auto_configure($optcfg['if']);
+			break;
+
+		default:
+			mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " inet6 alias " . escapeshellarg($optcfg['ipv6addr'] . "/" . $optcfg['ipv6subnet']));
+
+			/* install default route */
+			if ($optcfg['ipv6gateway']) {
+				mwexec("/sbin/route delete -inet6 default");
+				mwexec("/sbin/route add -inet6 default " . escapeshellarg($optcfg['ipv6gateway']));
+			}
+			break;
+	}
+
 
 	if (is_booting()) {
 		write_console("done\n");
