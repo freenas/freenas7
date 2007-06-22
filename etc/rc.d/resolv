@@ -61,15 +61,10 @@ else
 		# Clear existing file.
 		cat /dev/null > /etc/resolv.conf
 
-		# Set the domain.
-		/usr/local/bin/xml sel -t -o "domain " -v "//system/domain" ${configxml_file} >> /etc/resolv.conf
-
-		# Set IP4 DNS servers
-		/usr/local/bin/xml sel -t -m "//system/dnsserver" -i "string-length() > 0" \
-			-o "nameserver " -v "." -n ${configxml_file} >> /etc/resolv.conf
-
-		# Set IP6 DNS servers
-		/usr/local/bin/xml sel -t -m "//system/ipv6dnsserver" -i "string-length() > 0" \
-			-o "nameserver " -v "." -n ${configxml_file} >> /etc/resolv.conf
+		# Set the domain, IP4 and IP6 DNS servers.
+		/usr/local/bin/xml sel -t -o "domain " -v "//system/domain" -n \
+			-t -m "//system/dnsserver" -i "string-length() > 0" -o "nameserver " -v "." -n \
+			-t -m "//system/ipv6dnsserver" -i "string-length() > 0" -o "nameserver " -v "." -n \
+			${configxml_file} >> /etc/resolv.conf
 	fi
 fi
