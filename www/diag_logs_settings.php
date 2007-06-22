@@ -45,7 +45,6 @@ $pconfig['smartd'] = isset($config['syslog']['smartd']);
 $pconfig['daemon'] = isset($config['syslog']['daemon']);
 $pconfig['system'] = isset($config['syslog']['system']);
 $pconfig['enable'] = isset($config['syslog']['enable']);
-$pconfig['logdefaultblock'] = !isset($config['syslog']['nologdefaultblock']);
 $pconfig['rawfilter'] = isset($config['syslog']['rawfilter']);
 $pconfig['resolve'] = isset($config['syslog']['resolve']);
 
@@ -75,8 +74,6 @@ if ($_POST) {
 		$config['syslog']['daemon'] = $_POST['daemon'] ? true : false;
 		$config['syslog']['system'] = $_POST['system'] ? true : false;
 		$config['syslog']['enable'] = $_POST['enable'] ? true : false;
-		$oldnologdefaultblock = isset($config['syslog']['nologdefaultblock']);
-		$config['syslog']['nologdefaultblock'] = $_POST['logdefaultblock'] ? false : true;
 		$config['syslog']['rawfilter'] = $_POST['rawfilter'] ? true : false;
 		$config['syslog']['resolve'] = $_POST['resolve'] ? true : false;
 		
@@ -85,9 +82,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval = system_syslogd_start();
-			if ($oldnologdefaultblock !== isset($config['syslog']['nologdefaultblock']))
-			//$retval |= filter_configure();
+			$retval = rc_restart_service("syslogd");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);	

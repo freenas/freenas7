@@ -67,9 +67,6 @@
 	/* set up static routes */
 	system_routing_configure();
 
-	/* start syslogd */
-	system_syslogd_start();
-
 	/* Generate the pam configuration file */
 	system_pam_configure();
 

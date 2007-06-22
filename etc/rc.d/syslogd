@@ -1,0 +1,92 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: syslogd
+# BEFORE:  SERVERS
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+name="syslogd"
+rcvar=`set_rcvar`
+
+# Defaults
+syslogd_enable="YES"
+syslogd_config=${syslogd_config:-"/var/etc/${name}.conf"}
+pidfile="/var/run/syslog.pid"
+command="/usr/sbin/${name}"
+required_files=${syslogd_config}
+
+if configxml_isset //syslog/enable; then
+	command_args="-s -f ${syslogd_config}"
+else
+	command_args="-ss"
+fi
+
+# Custom commands
+start_precmd="start_precmd"
+extra_commands="reload"
+reload_precmd="reload_precmd"
+
+create_conf()
+{
+	local _remoteserver
+
+	_remoteserver=`/usr/local/bin/xml sel -t -v "//syslog/remoteserver" ${configxml_file}`
+
+	echo "local3.*	%/var/log/sshd.log
+local4.*	%/var/log/rsyncd.log
+local5.*	%/var/log/smartd.log
+ftp.*	%/var/log/ftp.log
+daemon.*	%/var/log/daemon.log
+*.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local7.none	%/var/log/system.log
+security.*	%/var/log/system.log
+auth.info;authpriv.info	%/var/log/system.log
+*.emerg	*" > ${syslogd_config}
+
+	if configxml_isset //syslog/ftp; then
+		echo "ftp.*	@${_remoteserver}" >> ${syslogd_config}
+	fi
+
+	if configxml_isset //syslog/sshd; then
+		echo "local3.*	@${_remoteserver}" >> ${syslogd_config}
+	fi
+
+	if configxml_isset //syslog/rsyncd; then
+		echo "local4.*	@${_remoteserver}" >> ${syslogd_config}
+	fi
+
+	if configxml_isset //syslog/smartd; then
+		echo "local5.*	@${_remoteserver}" >> ${syslogd_config}
+	fi
+
+	if configxml_isset //syslog/daemon; then
+		echo "daemon.*	@${_remoteserver}" >> ${syslogd_config}
+	fi
+
+	if configxml_isset //syslog/system; then
+		echo "*.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local7.none	@${_remoteserver}
+security.*	@${_remoteserver}
+auth.info;authpriv.info	@${_remoteserver}
+*.emerg	@${_remoteserver}" >> ${syslogd_config}
+	fi
+}
+
+reload_precmd()
+{
+	# Clear existing file.
+	cat /dev/null > ${syslogd_config}
+
+	# Create configuration file.
+	if configxml_isset //syslog/enable; then
+		create_conf
+	fi
+}
+
+start_precmd()
+{
+	reload_precmd
+}
+
+run_rc_command "$1"
