@@ -59,8 +59,8 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "name address");
-	$reqdfieldsn = array(gettext("Name"),gettext("Address"));
-	
+	$reqdfieldsn = array(gettext("Hostname"),gettext("IP address"));
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	
 	if (($_POST['name'] && !is_validdesc($_POST['name']))) {

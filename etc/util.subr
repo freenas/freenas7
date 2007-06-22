@@ -1,0 +1,34 @@
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+#
+# util.subr
+#	functions used by various rc scripts
+#
+
+# get_if if
+# Get the interface. If it is set to 'auto' use the
+# first interface found.
+get_if()
+{
+	local _ifname _interfaces
+
+	_if=$1
+	if [ "auto" = "${_if}" ]; then
+		_iflist=`/sbin/ifconfig -l`
+		_if=${_iflist% *}
+	fi
+
+	echo ${_if}
+}
+
+# get_ipaddr if
+# Get IPv4 address from given interface.
+get_ipaddr()
+{
+	local _if
+
+	_if=$1
+  _if=`get_if ${_if}`
+
+  echo `/usr/bin/netstat -inW -f inet -I ${_if} | grep ${_if} | awk '{print $4}'`
+}

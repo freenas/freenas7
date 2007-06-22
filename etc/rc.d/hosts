@@ -5,8 +5,18 @@
 # PROVIDE: hosts
 # REQUIRE: NETWORKING
 
-name="hosts"
+. /etc/util.subr
+. /etc/configxml.subr
 
 echo "Updating hosts."
-# Generate /var/etc/hosts file.
-eval /etc/rc.d.php/${name}
+
+# Get interface address.
+_if=`/usr/local/bin/xml sel -t -v "//interfaces/lan/if" ${configxml_file}`
+_ipaddr=`get_ipaddr ${_if}`
+
+# Generate /etc/hosts file.
+/usr/local/bin/xml sel -t -m "//system" -o "::1 localhost localhost." -v domain -n \
+	-o "127.0.0.1 localhost localhost." -v domain -n \
+	-o "${_ipaddr} " -v hostname -o "." -v domain -o " " -v hostname -n \
+	-t -m "//system/hosts" -i "string-length(name) > 0" -v address -o " " -v name -n \
+	${configxml_file} > /etc/hosts

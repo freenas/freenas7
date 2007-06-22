@@ -5,6 +5,7 @@
 # PROVIDE: rcconf
 
 . /etc/rc.subr
+. /etc/util.subr
 . /etc/configxml.subr
 
 name="rcconf"
@@ -24,20 +25,14 @@ setifconfig()
 
 	_ipaddress=`/usr/local/bin/xml sel -t -v "//interfaces/lan/ipaddr" ${configxml_file}`
 	_if=`/usr/local/bin/xml sel -t -v "//interfaces/lan/if" ${configxml_file}`
-
-	# Find out interface name if it is set to 'auto'. Use first interface that is found in list.
-	if [ "auto" = "${_if}" ]; then
-		_interfaces=`/sbin/ifconfig -l`
-		_if=${_interfaces% *}
-	fi
+	_if=`get_if ${_if}`
 
 	case ${_ipaddress} in
 		dhcp)
 			_ifconf="DHCP"
 			;;
 		*)
-			_subnet=`/usr/local/bin/xml sel -t -v "//interfaces/lan/subnet" ${configxml_file}`
-			_ifconf="${_ipaddress}/${_subnet}"
+			_subnet=`/usr/local/bin/xml sel -t -o "${_ipaddress}/" -v "//interfaces/lan/subnet" ${configxml_file}`
 			;;
 	esac
 

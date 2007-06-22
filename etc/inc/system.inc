@@ -1087,44 +1087,4 @@ function system_swap_disable()
 
 	return $result;
 }
-
-// Create resolv.conf file.
-// Return 0 if successful, otherwise 1.
-function system_create_hosts_conf() {
-	global $config, $g;
-
-	$fd = fopen("{$g['varetc_path']}/hosts", "w");
-	if (!$fd) {
-		$message = "Error: Failed to create '{$g['varetc_path']}/hosts'";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
- 	// Get the IP addres of the interface for "auto" NIC
-	$lanif = get_ifname($config['interfaces']['lan']['if']);
-
-	// Get the IP address of the interface.
- 	$ipaddr = get_ipaddr($lanif);
-
-	$hosts = <<<EOD
-::1		localhost localhost.{$config['system']['domain']}
-127.0.0.1	localhost localhost.{$config['system']['domain']}
-{$ipaddr}	{$config['system']['hostname']}.{$config['system']['domain']} {$config['system']['hostname']}
-
-EOD;
-
-	if (is_array($config['system']['hosts'])) {
-		foreach ($config['system']['hosts'] as $host) {
-			if ($host['name']) {
-				$hosts .= "{$host['address']}	{$host['name']}\n";
-			}
-		}
-	}
-
-	fwrite($fd, $hosts);
-	fclose($fd);
-
-	return 0;
-}
 ?>
