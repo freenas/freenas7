@@ -53,7 +53,7 @@ the {$productname} OS and partition 2 for DATA.
 WARNING: There will be some limitations:
 1. This will erase ALL your partitions and data on the destination disk
 2. You can't install {$productname} if it's already installed on this disk
-   (use upgrade from WebGUI)
+   (use upgrade from WebGUI or Console)
 
 Here is the list of detected CDROM(s):
 

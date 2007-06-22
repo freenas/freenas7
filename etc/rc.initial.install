@@ -25,8 +25,8 @@ echo
 echo "Differences between release:"
 echo "- 'Embedded' need a 64MB device, use a RAM drive for limiting read/write access"
 echo "   to flash device"
-echo "- 'Full' (experimenal) need a 128MB hard drive, doesn't use RAM drive, "
-echo "  easyest to modify and support plugin"
+echo "- 'Full' need a 128MB hard drive, consume less RAM (doesn't use RAM drive), "
+echo "  is easyest to modify and support plugin"
 echo
 read -p "Enter a number: " opmode
 
