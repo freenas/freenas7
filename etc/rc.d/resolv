@@ -26,11 +26,14 @@
 #
 # $FreeBSD: src/etc/rc.d/resolv,v 1.35.2.1 2005/12/21 07:11:34 dougb Exp $
 #
+# Modified by Volker Theile (votdev@gmx.de)
+#
 
 # PROVIDE: resolv
 # KEYWORD: nojail
 
 . /etc/rc.subr
+. /etc/configxml.subr
 
 name="resolv"
 
@@ -52,5 +55,21 @@ if [ ! -e /etc/resolv.conf -a \
           echo nameserver $ns >> /etc/resolv.conf;
   done
 else
-	eval /etc/rc.d.php/${name}
+	# Update resolv.conf if DHCP is not configured. Use configuration values from config.xml.
+	_ipaddress=`/usr/local/bin/xml sel -t -v "//interfaces/lan/ipaddr" ${configxml_file}`
+	if [ "dhcp" != "${_ipaddress}" ]; then
+		# Clear existing file.
+		cat /dev/null > /etc/resolv.conf
+
+		# Set the domain.
+		/usr/local/bin/xml sel -t -o "domain " -v "//system/domain" ${configxml_file} >> /etc/resolv.conf
+
+		# Set IP4 DNS servers
+		/usr/local/bin/xml sel -t -m "//system/dnsserver" -i "string-length() > 0" \
+			-o "nameserver " -v "." -n ${configxml_file} >> /etc/resolv.conf
+
+		# Set IP6 DNS servers
+		/usr/local/bin/xml sel -t -m "//system/ipv6dnsserver" -i "string-length() > 0" \
+			-o "nameserver " -v "." -n ${configxml_file} >> /etc/resolv.conf
+	fi
 fi

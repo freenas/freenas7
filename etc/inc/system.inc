@@ -1127,44 +1127,4 @@ EOD;
 
 	return 0;
 }
-
-// Create resolv.conf file.
-// Return 0 if successful, otherwise 1.
-function system_create_resolv_conf() {
-	global $config, $g;
-
-	// Exit if DHCP is enabled. /var/etc/resolv.conf will be created by dhclient
-	// automatically 
-	if ("dhcp" === $config['interfaces']['lan']['ipaddr'])
-		return 0;
-
-	$fd = fopen("{$g['varetc_path']}/resolv.conf", "w");
-	if (!$fd) {
-		$message = "Error: Failed to create '{$g['varetc_path']}/resolv.conf'";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	$resolvconf = "domain {$config['system']['domain']}\n";
-
-	if (is_array($config['system']['dnsserver'])) {
-		foreach ($config['system']['dnsserver'] as $ns) {
-			if ($ns)
-				$resolvconf .= "nameserver $ns\n";
-		}
-	}
-
-	if (is_array($config['system']['ipv6dnsserver'])) {
-		foreach ($config['system']['ipv6dnsserver'] as $ns) {
-			if ($ns)
-				$resolvconf .= "nameserver $ns\n";
-		}
-	}
-
-	fwrite($fd, $resolvconf);
-	fclose($fd);
-
-	return 0;
-}
 ?>
