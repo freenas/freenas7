@@ -1128,52 +1128,6 @@ EOD;
 	return 0;
 }
 
-// Create rc.conf file.
-// Return 0 if successful, otherwise 1.
-function system_create_rc_conf() {
-	global $config, $g_rcservices;
-
-	while ($service = current($g_rcservices)) {
-		// Check if service needs to set 'xxx_enabled="YES"|"NO"' attribute in rc.conf.
-		if ("false" === $service['set_rcvar']) {
-			next($g_rcservices);
-			continue;
-		}
-
-		// Check if service state.
-		$enabled = false;
-		eval($service['is_enabled_func']);
-
-		// Enable/disable service.
-		$servicename = key($g_rcservices);
-		if ($enabled) {
-			mwexec("/usr/local/sbin/rconf service enable {$servicename}");
-		} else {
-			mwexec("/usr/local/sbin/rconf service disable {$servicename}");
-		}
-
-	 	next($g_rcservices);
-	}
-
-	// Set hostname.
-	mwexec("/usr/local/sbin/rconf attribute set hostname \"{$config['system']['hostname']}.{$config['system']['domain']}\"");
-
-	// Set interface config.
-	$ipaddress = $config['interfaces']['lan']['ipaddr'];
-	$ifname = get_ifname($config['interfaces']['lan']['if']);
-	switch ($ipaddress) {
-		case 'dhcp':
-			$ifconfigvalue="DHCP";
-			break;
-		default:
-			$ifconfigvalue="{$ipaddress}/{$config['interfaces']['lan']['subnet']}";
-			break;
-	}
-	mwexec("/usr/local/sbin/rconf attribute set \"ifconfig_{$ifname}\" \"{$ifconfigvalue}\"");
-
-	return 0;
-}
-
 // Create resolv.conf file.
 // Return 0 if successful, otherwise 1.
 function system_create_resolv_conf() {
