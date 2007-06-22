@@ -10,7 +10,7 @@
 # first interface found.
 get_if()
 {
-	local _ifname _interfaces
+	local _ifname _iflist
 
 	_if=$1
 	if [ "auto" = "${_if}" ]; then
