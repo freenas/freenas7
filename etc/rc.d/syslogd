@@ -12,7 +12,7 @@ name="syslogd"
 rcvar=`set_rcvar`
 
 # Defaults
-syslogd_enable="YES"
+syslogd_enable=${syslogd_enable-"NO"}
 syslogd_config=${syslogd_config:-"/var/etc/${name}.conf"}
 pidfile="/var/run/syslog.pid"
 command="/usr/sbin/${name}"
@@ -89,4 +89,5 @@ start_precmd()
 	reload_precmd
 }
 
+load_rc_config ${name}
 run_rc_command "$1"
