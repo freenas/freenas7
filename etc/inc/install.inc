@@ -278,45 +278,69 @@ EOD;
 	//Unzipping the Kernel
 	mwexec("/usr/bin/gzip -d /destdisk/boot/kernel/kernel.gz");
 
-	// If there is no fstab: it's not an update, but an install, then create it
-	if (!file_exists("/destdisk/etc/fstab")) {
-		//Generating the FSTAB
-		$fd = fopen("/destdisk/etc/fstab", "w");
-		if (!$fd) {
-			write_console("Error: Can't open fstab in install_harddrive_image().\n");
-			return 1;
-		}
+	//Generating the FSTAB
+	$fd = fopen("/destdisk/etc/fstab", "w");
+	if (!$fd) {
+		write_console("Error: Can't open fstab in install_harddrive_image().\n");
+		return 1;
+	}
 
-		$fstab .= <<<EOD
+	$fstab .= <<<EOD
 # Device                Mountpoint      FStype  Options         Dump    Pass#
 /dev/{$harddrive}s1a             /       ufs     rw              1       1
 
 EOD;
 
-		fwrite($fd, $fstab);
-		fclose($fd);
+	fwrite($fd, $fstab);
+	fclose($fd);
 	
-	}
-	// If there is no cfdevice: it's not an update, but an install, then create it
-	if (!file_exists("/destdisk/etc/cfdevice")) {
-		// Generating the /etc/cfdevice (this file is linked in /var/etc at bootup)
-		// This file (more exatly /var/etc/cfdevice) is used by the firmware and mount check
-		// This file is normally generated with 'liveCD' and 'embedded' during startup, but need to be created during install of 'full'
+	// Generating the /etc/cfdevice (this file is linked in /var/etc at bootup)
+	// This file (more exatly /var/etc/cfdevice) is used by the firmware and mount check
+	// This file is normally generated with 'liveCD' and 'embedded' during startup, but need to be created during install of 'full'
 
-		$fd = fopen("/destdisk/etc/cfdevice", "w");
-		if (!$fd) {
-			write_console("Error: Can't open etc/cfdevice in install_harddrive_image().\n");
-			return 1;
-		}
-		$cfdevice .= <<<EOD
+	$fd = fopen("/destdisk/etc/cfdevice", "w");
+	if (!$fd) {
+		write_console("Error: Can't open etc/cfdevice in install_harddrive_image().\n");
+		return 1;
+	}
+	$cfdevice .= <<<EOD
 {$harddrive}s1a
 
 EOD;
 
-		fwrite($fd, $cfdevice);
-		fclose($fd);
-	}
+	fwrite($fd, $cfdevice);
+	fclose($fd);
 
+	//unmounting destination disk
+	mwexec("/sbin/umount /destdisk");
+
+	return 0;
+}
+
+/* Upfrade a FreeNAS 'full' releaseon the destination harddrive.
+   Called by install script. Return 0 if OK, 1 if not. */
+function install_upgrade_full($harddrive)
+{
+	global $g;
+
+	
+	write_console("Upgrading...\n");
+	
+	mwexec("/bin/mkdir /destdisk");
+	mwexec("/sbin/mount /dev/{$harddrive}s1a /destdisk");
+	
+	// Start pre-upgrade script
+	mwexec("/etc/preupgrade.sh");
+	
+	// Install upgrade
+	mwexec("/usr/bin/tar --exclude /destdisk --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C /destdisk");
+	mwexec("/bin/cp -v /mnt/cdrom/boot/* /destdisk/boot");
+	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* /destdisk/boot/defaults");
+	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* /destdisk/boot/kernel");
+	
+	// Start post-upgrade script
+	mwexec("/etc/postupgrade.sh");
+	
 	//unmounting destination disk
 	mwexec("/sbin/umount /destdisk");
 

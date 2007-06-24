@@ -141,22 +141,10 @@
 		exit(0);
 	}
 	
-	/* FUNCTION install_harddrive_image($cfgpartition) CAN'T BE USED FOR UPGRADE!!!
-	
-	/* Must install on ad0s1 if installed on partition 1, but install on ad0 if installed on ad0a */
-	if ($slice) {
-		if(install_harddrive_image($cfgpartition)) {
-			echo "\nMeet a problem during file copying.\n";
-			install_unmount_cd();
-			exit(0);
-		}
-	}
-	else {
-		if(install_harddrive_image($cfgdevice)) {
-			echo "\nMeet a problem during file copying.\n";
-			install_unmount_cd();
-			exit(0);
-		}
+	if(install_upgrade_full($cfgdevice)) {
+		echo "\nMeet a problem during file copying.\n";
+		install_unmount_cd();
+		exit(0);
 	}
 
 	if(install_restoreconfig($cfgpartition)) {
