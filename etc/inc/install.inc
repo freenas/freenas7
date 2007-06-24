@@ -206,6 +206,16 @@ function install_dd_image($harddrive)
 	return 0;
 }
 
+/* Format the two partitions for 'full' install */
+function install_format_full($harddrive)
+{
+	write_console("Formatting {$harddrive}s1a\n");
+	$result = mwexec("/sbin/newfs -U {$harddrive}s1a");
+	$result |= mwexec("/sbin/newfs -U {$harddrive}s2");
+	return $result;
+}
+
+
 /* Install FreeNAS on the destination harddrive.
    Called by install script. Return 0 if OK, 1 if not. */
 function install_harddrive_image($harddrive)
@@ -215,9 +225,6 @@ function install_harddrive_image($harddrive)
 	/* Part of install process: dd image file on the destination disk */
 	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
 	write_console("Installation...\n");
-	write_console("Formatting {$harddrive}s1a\n");
-	mwexec("/sbin/newfs -U {$harddrive}s1a");
-	mwexec("/sbin/newfs -U {$harddrive}s2");
 	mwexec("/bin/mkdir /destdisk");
 	mwexec("/sbin/mount /dev/{$harddrive}s1a /destdisk");
 	//mwexec("cd /tutu");
@@ -271,38 +278,44 @@ EOD;
 	//Unzipping the Kernel
 	mwexec("/usr/bin/gzip -d /destdisk/boot/kernel/kernel.gz");
 
-	//Generating the FSTAB
-	$fd = fopen("/destdisk/etc/fstab", "w");
-	if (!$fd) {
-		write_console("Error: Can't open fstab in install_harddrive_image().\n");
-		return 1;
-	}
+	// If there is no fstab: it's not an update, but an install, then create it
+	if (!file_exists("/destdisk/etc/fstab")) {
+		//Generating the FSTAB
+		$fd = fopen("/destdisk/etc/fstab", "w");
+		if (!$fd) {
+			write_console("Error: Can't open fstab in install_harddrive_image().\n");
+			return 1;
+		}
 
-	$fstab .= <<<EOD
+		$fstab .= <<<EOD
 # Device                Mountpoint      FStype  Options         Dump    Pass#
 /dev/{$harddrive}s1a             /       ufs     rw              1       1
 
 EOD;
 
-	fwrite($fd, $fstab);
-	fclose($fd);
-
-	// Generating the /etc/cfdevice (this file is linked in /var/etc at bootup)
-	// This file (more exatly /var/etc/cfdevice) is used by the firmware and mount check
-	// This file is normally generated with 'liveCD' and 'embedded' during startup, but need to be created during install of 'full'
-
-	$fd = fopen("/destdisk/etc/cfdevice", "w");
-	if (!$fd) {
-		write_console("Error: Can't open etc/cfdevice in install_harddrive_image().\n");
-		return 1;
+		fwrite($fd, $fstab);
+		fclose($fd);
+	
 	}
-	$cfdevice .= <<<EOD
+	// If there is no cfdevice: it's not an update, but an install, then create it
+	if (!file_exists("/destdisk/etc/cfdevice")) {
+		// Generating the /etc/cfdevice (this file is linked in /var/etc at bootup)
+		// This file (more exatly /var/etc/cfdevice) is used by the firmware and mount check
+		// This file is normally generated with 'liveCD' and 'embedded' during startup, but need to be created during install of 'full'
+
+		$fd = fopen("/destdisk/etc/cfdevice", "w");
+		if (!$fd) {
+			write_console("Error: Can't open etc/cfdevice in install_harddrive_image().\n");
+			return 1;
+		}
+		$cfdevice .= <<<EOD
 {$harddrive}s1a
 
 EOD;
 
-	fwrite($fd, $cfdevice);
-	fclose($fd);
+		fwrite($fd, $cfdevice);
+		fclose($fd);
+	}
 
 	//unmounting destination disk
 	mwexec("/sbin/umount /destdisk");

@@ -45,7 +45,7 @@
 
 	echo <<<EOD
 
-{$productname} Installer on HD.
+{$productname} "Embedded" installer for hard-drive.
 
 There will be created two partitions on the boot disk, partition 1 for
 the {$productname} OS and partition 2 for DATA.

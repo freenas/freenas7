@@ -16,17 +16,14 @@ echo "1) Install 'Embedded' release on flash device: Create 1 UFS partition"
 echo "2) Install 'Embedded' release on hard drive:"
 echo "      - Create MBR partition 1, 64MB size for FreeNAS"
 echo "      - Create MBR partition 2, using UFS, for DATA"
-echo "3) Upgrade existing installed 'embedded' release from CDROM"
-echo "4) Install 'full' release on hard drive:"
+echo "      - Use a RAM drive for limit read/write access to the flash device"
+echo "3) Install 'full' release on hard drive:"
 echo "      - Create MBR partition 1, 128MB size for FreeNAS"
 echo "      - Create MBR partition 2, using UFS, for DATA"
-echo "5) Return to main menu"
-echo
-echo "Differences between release:"
-echo "- 'Embedded' need a 64MB device, use a RAM drive for limiting read/write access"
-echo "   to flash device"
-echo "- 'Full' need a 128MB hard drive, consume less RAM (doesn't use RAM drive), "
-echo "  is easyest to modify and support plugin"
+echo "      - Easyest to customize and support plugin"
+echo "4) Upgrade existing installed 'embedded' release from CDROM"
+#echo "5) Upgrade existing installed 'full' release from CDROM"
+echo "6) Return to main menu"
 echo
 read -p "Enter a number: " opmode
 
@@ -39,13 +36,15 @@ case ${opmode} in
 	/etc/rc.initial.install2
  	;;
 3)
-	/etc/rc.initial.upgfromcdrom
-	;;
-4)
 	/etc/rc.initial.install3
 	;;
-
-5)
+4)
+	/etc/rc.initial.embupgfromcdrom
+	;;
+#5)
+#	/etc/rc.initial.fullupgfromcdrom
+#	;;
+6)
 	/etc/rc.initial
 	;;
 esac

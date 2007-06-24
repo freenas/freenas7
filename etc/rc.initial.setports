@@ -140,7 +140,7 @@ EOD;
 
 echo <<<EOD
 
-{$productname} will reboot after saving the changes.
+{$productname} will save and apply the changes.
 
 Do you want to proceed? (y/n) 
 EOD;
@@ -184,13 +184,15 @@ EOD;
 		
 		write_config();
 		
-		echo <<<EOD
+		interfaces_lan_configure();
+		
+		/* echo <<<EOD
 
 {$productname} is rebooting now.
 
 EOD;
-	
-		system_reboot_sync();
+	*/
+		// system_reboot_sync();
 		
 }
 	

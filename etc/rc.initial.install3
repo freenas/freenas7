@@ -45,7 +45,7 @@
 
 	echo <<<EOD
 
-{$productname} Installer for HD only.
+{$productname} "Full" installer (not for flash device).
 
 WARNING: There will be some limitations:
 1. This will erase ALL your partitions and data on the destination disk
@@ -96,6 +96,12 @@ EOD;
 
 	if(install_init_harddrive($harddrive)) {
 		echo "\nThere is a problem for initializing the destination disk.\n";
+		install_unmount_cd();
+		exit(0);
+	}
+	
+	if(install_format_full($harddrive)) {
+		echo "\nThere is a problem for formatting the destination disk.\n";
 		install_unmount_cd();
 		exit(0);
 	}
