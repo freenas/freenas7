@@ -16,10 +16,10 @@ syslogd_enable=${syslogd_enable-"NO"}
 syslogd_config=${syslogd_config:-"/var/etc/${name}.conf"}
 pidfile="/var/run/syslog.pid"
 command="/usr/sbin/${name}"
-required_files=${syslogd_config}
 
 if configxml_isset //syslog/enable; then
 	command_args="-s -f ${syslogd_config}"
+	required_files=${syslogd_config}
 else
 	command_args="-ss"
 fi
