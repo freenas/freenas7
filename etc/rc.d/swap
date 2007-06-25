@@ -14,14 +14,29 @@ name="swap"
 rcvar=`set_rcvar`
 
 # Custom commands
+extra_commands="status"
 start_cmd="start_cmd"
 stop_cmd="stop_cmd"
+status_cmd="status_cmd"
 
 # Defaults
 swap_enable="${swap_enable:=NO}"
 mdidfile="/var/run/${name}.mdid"
 swap_mountname=`/usr/local/bin/xml sel -t -v "//system/swap_mountname" ${configxml_file}`
 swap_file="/mnt/${swap_mountname}/swap_file"
+
+status_cmd()
+{
+	local _mdid
+
+	if [ -e ${mdidfile} ]; then
+		_mdid=`cat ${mdidfile}`
+		echo "${name} is running using mdid ${_mdid}."
+	else
+		echo "${name} is not running."
+		return 1
+	fi
+}
 
 start_cmd()
 {
