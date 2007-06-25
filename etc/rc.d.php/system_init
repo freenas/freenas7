@@ -70,9 +70,6 @@
 	/* configure console menu */
 	system_console_configure();
 
-	/* start the NTP client */
-	system_ntp_configure();
-
 	/* ATA disk Idle configuration */
 	disks_set_ataidle();
 

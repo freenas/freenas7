@@ -121,44 +121,6 @@ function system_systime_set($date) {
 	return $result;
 }
 
-function system_ntp_configure() {
-	global $config, $g;
-
-	$syscfg = $config['system'];
-
-	if (is_booting())
-		write_console("Starting NTP client... ");
-	else {
-		killbypid("{$g['varrun_path']}/runmsntp.pid");
-		killbypid("{$g['varrun_path']}/msntp.pid");
-		write_log("Stopping NTP client");
-	}
-
-	/* start ntp client if needed - needs to be forced into background */
-	$updateinterval = $syscfg['time-update-interval'];
-
-	if ($updateinterval > 0) {
-		if ($updateinterval < 6)
-			$updateinterval = 6;
-
-		$timeservers = "";
-		foreach (explode(' ', $syscfg['timeservers']) as $ts)
-			$timeservers .= " " . $ts;
-
-		mwexec_bg("/usr/local/bin/runmsntp.sh " .
-			escapeshellarg("{$g['varrun_path']}/runmsntp.pid") . " " .
-			escapeshellarg("{$g['varrun_path']}/msntp.pid") . " " .
-			escapeshellarg($updateinterval) . " " .
-			escapeshellarg($timeservers));
-	}
-
-	if (is_booting()) {
-		write_console("done\n");
-	}
-
-	write_log("NTP client started");
-}
-
 function system_stop_common() {
 	/* Stop swap */
 	system_swap_disable();
