@@ -69,7 +69,7 @@ if ($_POST) {
 
 		write_config();
 
-		system_swap_configure();
+		$retval = rc_restart_service("swap");
 
 		$savemsg = get_std_save_message($retval);
 	}

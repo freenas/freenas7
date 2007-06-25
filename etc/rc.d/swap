@@ -1,0 +1,84 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: swap
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+# XPATH: //system/swap_enable
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+name="swap"
+rcvar=`set_rcvar`
+
+# Custom commands
+start_cmd="start_cmd"
+stop_cmd="stop_cmd"
+
+# Defaults
+swap_enable="${swap_enable:=NO}"
+mdidfile="/var/run/${name}.mdid"
+swap_mountname=`/usr/local/bin/xml sel -t -v "//system/swap_mountname" ${configxml_file}`
+swap_file="/mnt/${swap_mountname}/swap_file"
+
+start_cmd()
+{
+	local _swap_size _mdid
+
+	# Check if already running?
+	if [ -e ${mdidfile} ]; then
+		_mdid=`cat ${mdidfile}`
+		echo "${name} already running? (mdid=${_mdid})."
+		return 0
+	fi
+
+	echo "Starting ${name}."
+
+	# Create swap file if necessary.
+	if [ ! -e ${swap_file} ]; then
+		_swap_size=`/usr/local/bin/xml sel -t -v "//system/swap_size" ${configxml_file}`
+		/bin/dd if=/dev/zero of=${swap_file} bs=1024k count=${_swap_size} >/dev/null 2>&1
+		[ 0 != $? ] && return 1
+		/bin/chmod 0600 ${swap_file}
+	fi
+
+	# Create block device.
+	_mdid=`/sbin/mdconfig -a -t vnode -f ${swap_file}`
+	echo ${_mdid} > ${mdidfile}
+
+	# Enable swap.
+	/sbin/swapon "/dev/${_mdid}"
+}
+
+stop_cmd()
+{
+	local _mdid
+
+	# Check if running?
+	if [ ! -e ${mdidfile} ]; then
+		echo "${name} not running? (check ${mdidfile})."
+		return 0
+	fi
+
+	echo "Stopping ${name}."
+
+	# Get memory disk id.
+	_mdid=`cat ${mdidfile}`
+
+	# Stop swap.
+	/sbin/swapoff "/dev/${_mdid}"
+
+	# Destroy block device.
+	/sbin/mdconfig -d -u ${_mdid}
+
+	# Delete swap file.
+	rm -f ${swap_file}
+	
+	# Cleanup.
+	rm -f ${mdidfile}
+}
+
+load_rc_config ${name}
+run_rc_command "$1"

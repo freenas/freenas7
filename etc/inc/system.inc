@@ -123,7 +123,7 @@ function system_systime_set($date) {
 
 function system_stop_common() {
 	/* Stop swap */
-	system_swap_disable();
+	rc_stop_service("swap");
 
 	/* Umount all disk s*/
 	disks_umount_all();
@@ -866,69 +866,5 @@ function system_language_load()
 	bindtextdomain( $domain, "/usr/local/share/locale");
 	bind_textdomain_codeset( $domain, $codeset);
 	textdomain( $domain);
-}
-
-/* Enable the swap file
-Return 0 is OK, 1 if error
-*/
-function system_swap_configure()
-{
-	global $config, $g;
-
-	$result = 0;
-
-	// Stop swap if not in booting mode
-	if (!is_booting()) {
-		// MUST add a check if the system can stop swap without problem
-		write_log("Stopping swap");
-		$result = mwexec("/sbin/swapoff /dev/md2");
-
-		// Destroy block device
-		$result |= mwexec("/sbin/mdconfig -d -u 2");
-
-		// Delete swap file
-		write_log("Deleting swap file");
-		$result = mwexec("rm -f /mnt/{$config['system']['swap_mountname']}/swap_file");
-	}
-
-	if (isset($config['system']['swap_enable'])) {
-		if (!file_exists("/mnt/{$config['system']['swap_mountname']}/swap_file")){
-			$result |= mwexec("/bin/dd if=/dev/zero of=/mnt/{$config['system']['swap_mountname']}/swap_file bs=1024k count={$config['system']['swap_size']}");
-			// $result |= mwexec("chmod 0600 /mnt/{$config['system']['swap_mountname']}/swap_file");
-			chmod("/mnt/{$config['system']['swap_mountname']}/swap_file",0600);
-		}
-		// Create the block device
-		$result |= mwexec("/sbin/mdconfig -a -t vnode -f /mnt/{$config['system']['swap_mountname']}/swap_file -u 2");
-		// Enable Swap
-		write_log("Enabling swap");
-		$result |= mwexec("/sbin/swapon /dev/md2");
-	}
-
-	return $result;
-}
-
-/* Disable the swap file
-Return 0 is OK, 1 if error
-*/
-function system_swap_disable()
-{
-	global $config;
-
-	if (isset($config['system']['swap'])) {
-		// Stop swap
-		write_log("Stopping swap");
-		$result = mwexec("/sbin/swapoff /dev/md2}");
-
-		//Destroy block device
-		$result |= mwexec("/sbin/mdconfig -d -u 2");
-
-		//Delete the swap file (I hope that no user have important file called swap_file!)
-		if (file_exists("/mnt/{$config['system']['swap_mountname']}/swap_file")){
-			write_log("Deleting swap file");
-			$result = mwexec("rm -f /mnt/{$config['system']['swap_mountname']}/swap_file");
-		}
-	}
-
-	return $result;
 }
 ?>
