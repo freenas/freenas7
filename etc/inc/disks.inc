@@ -104,9 +104,10 @@ function disks_mount($mount)
 	$mountname = "/mnt/{$mount['sharename']}";
 
 	/* Create one directory for each device under /mnt. */
-	mwexec("/bin/mkdir '{$mountname}'");
+	mwexec("/bin/mkdir -m 0777 '{$mountname}'");
 	/* Change this directory mode to 0777. */
 	mwexec("/bin/chmod 0777 '{$mountname}'");
+	chmod("{$mountname}", 0777);
 
 	/* Mount the filesystem. */
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
