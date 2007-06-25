@@ -72,7 +72,7 @@ $g_rcservices['rsyncd']          = array("start_func" => "services_create_rsyncd
 $g_rcservices['samba']           = array("start_func" => "services_create_samba_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['samba']['enable']);", "set_rcvar" => "true");
 $g_rcservices['swap']            = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['swap_enable']);", "set_rcvar" => "true");
 $g_rcservices['hosts']           = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "set_rcvar" => "false");
-$g_rcservices['rcconf']          = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "set_rcvar" => "false");
+$g_rcservices['rcconf.sh']       = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "set_rcvar" => "false");
 $g_rcservices['resolv']          = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "set_rcvar" => "false");
 $g_rcservices['smartd']          = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['smart']);", "set_rcvar" => "true");
 $g_rcservices['powerd']          = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['powerd']);", "set_rcvar" => "true");
