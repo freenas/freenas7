@@ -168,7 +168,7 @@ if ($_POST) {
 			$retval |= rc_exec_service("hosts"); // Update /etc/hosts
 			$retval |= rc_restart_service("hostname"); // Set hostname
 			$retval |= system_create_usermanagement();
-			$retval |= system_timezone_configure();
+			$retval |= rc_exec_service("timezone");
  			$retval |= system_ntp_configure();
  			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();

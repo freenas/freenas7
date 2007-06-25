@@ -1,0 +1,14 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: timezone
+
+. /etc/configxml.subr
+
+_timezone=`/usr/local/bin/xml sel -t -v "//system/timezone" ${configxml_file}`
+if [ -z ${_timezone} ]; then
+	_timezone="Etc/UTC"
+fi
+
+/usr/bin/tar xzfO /usr/share/zoneinfo.tgz "${_timezone}" > /etc/localtime

@@ -121,25 +121,6 @@ function system_systime_set($date) {
 	return $result;
 }
 
-function system_timezone_configure() {
-	global $config, $g;
-
-	$syscfg = $config['system'];
-
-	if (is_booting())
-		write_console("Initializing timezone... ");
-
-	/* extract appropriate timezone file */
-	$timezone = $syscfg['timezone'];
-	if (!$timezone)
-		$timezone = "Etc/UTC";
-
-	exec("/usr/bin/tar xzfO /usr/share/zoneinfo.tgz " . escapeshellarg($timezone) . " > /etc/localtime");
-
-	if (is_booting())
-		write_console("done\n");
-}
-
 function system_ntp_configure() {
 	global $config, $g;
 
