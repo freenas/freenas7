@@ -43,11 +43,7 @@ FOO
 }
 
 remove() {
-	for _line in `cat /etc/rc.conf`; do
-		if [ ${1} != ${_line%=*} ]; then
-			echo ${_line} >> /etc/rc.conf.tmp
-		fi
-	done
+	/usr/bin/sed "/${1}*/d" /etc/rc.conf > /etc/rc.conf.tmp
 	mv -f /etc/rc.conf.tmp /etc/rc.conf
 }
 
