@@ -48,10 +48,6 @@
 	/* run any early shell commands specified in config.xml */
 	system_do_shell_commands(1);
 
-	/* start pccardd */
-	if (!in_array($g['platform'], $g['nopccard_platforms']))
-		system_pccard_start();
-
 	/* configure loopback interface */
 	interfaces_loopback_configure();
 

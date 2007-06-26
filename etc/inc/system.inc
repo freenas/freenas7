@@ -92,28 +92,6 @@ function system_routing_configure() {
 	return $result;
 }
 
-function system_pccard_start() {
-	global $config, $g;
-
-	if (is_booting())
-		write_console("Initializing PC cards... ");
-
-	/* kill any running pccardd */
-	killbypid("{$g['varrun_path']}/pccardd.pid");
-
-	/* fire up pccardd */
-	$res = mwexec("/usr/sbin/pccardd -z -f {$g['etc_path']}/pccard.conf");
-
-	if (is_booting()) {
-		if ($res == 0)
-			write_console("done\n");
-		else
-			write_console("failed (probably no PC card controller present)\n");
-	}
-
-	return $res;
-}
-
 // The date utility exits 0 on success, 1 if unable to set the date,
 // and 2 if able to set the local date, but unable to set it globally.
 function system_systime_set($date) {
