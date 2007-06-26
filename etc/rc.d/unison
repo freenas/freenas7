@@ -13,8 +13,10 @@ name="unison"
 rcvar=`set_rcvar`
 
 # Custom commands
+extra_commands="status"
 start_cmd="start_cmd"
 stop_cmd=":"
+status_cmd="status_cmd"
 
 # Defaults
 unison_enable="${unison_enable:=NO}"
@@ -44,6 +46,11 @@ start_cmd()
 	_workdir=`echo ${_workdir} | /usr/bin/sed 's/\//\\\\\//g'`
 	/usr/bin/sed "s/UNISON=[a-zA-Z0-9/.=+-]*/UNISON=${_workdir}/" ${unison_config} > ${unison_config}.tmp
 	mv -f ${unison_config}.tmp ${unison_config}
+}
+
+status_cmd()
+{
+	# Nothing to do here, but keep empty implementation.
 }
 
 load_rc_config ${name}
