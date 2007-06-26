@@ -48,11 +48,17 @@ for _rcscript in /etc/rc.d/*; do
 		_xpath=`cat ${_rcscript} | grep XPATH:`
 		_xpath=${_xpath#*XPATH: }
 		if [ -n "${_xpath}" ]; then
+			# Get the rcvar (may differ with the scriptname because it can
+			# be changed internally by the script itself).
+			_rcvar=$(eval '. /etc/rc.d/"$_rcscriptname"; echo ${rcvar%*_enable};' )
+			if [ -z "${_rcvar}" ]; then
+				_rcvar=${_rcscriptname}
+			fi
 			if configxml_isset ${_xpath}; then
-				eval /usr/local/sbin/rconf service enable ${_rcscriptname}
+				eval /usr/local/sbin/rconf service enable ${_rcvar}
 				debug "rcconf.sh: Enable service ${_rcscriptname}"
 			else
-				eval /usr/local/sbin/rconf service disable ${_rcscriptname}
+				eval /usr/local/sbin/rconf service disable ${_rcvar}
 				debug "rcconf.sh: Disable service ${_rcscriptname}"
 			fi
 		fi

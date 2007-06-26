@@ -63,7 +63,6 @@ if ($_GET['act'] == "del")
 {
 	if ($a_iscsitarget[$_GET['id']]) {
 			unset($a_iscsitarget[$_GET['id']]);
-			// Must delete the old file ???
 			write_config();
 			touch($d_iscsitargetdirty_path);
 			header("Location: services_iscsitarget.php");
