@@ -2,7 +2,7 @@
 /*
 	disks.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -107,7 +107,8 @@ function disks_mount($mount)
 	mwexec("/bin/mkdir -m 0777 '{$mountname}'");
 	/* Change this directory mode to 0777. */
 	mwexec("/bin/chmod 0777 '{$mountname}'");
-	chmod("{$mountname}", 0777);
+	mwexec("/bin/chmod 0777 {$mountname}");
+	chmod($mountname, 0777);
 
 	/* Mount the filesystem. */
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
