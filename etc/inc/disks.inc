@@ -106,9 +106,20 @@ function disks_mount($mount)
 	/* Create one directory for each device under /mnt. */
 	mwexec("/bin/mkdir -m 0777 '{$mountname}'");
 	/* Change this directory mode to 0777. */
-	mwexec("/bin/chmod 0777 '{$mountname}'");
-	mwexec("/bin/chmod 0777 {$mountname}");
-	chmod($mountname, 0777);
+	if (mwexec("/bin/chmod 0777 '{$mountname}'")) {
+		write_log("Can't execute shell chmod 0777 to {$mountname}");
+		echo "Can't execute shell chmod 0777 to {$mountname}\n";
+	} else {
+		write_log("DEBUG: Successful execute shell chmod 0777 to {$mountname}");
+		echo "DEBUG: Successful execute shell chmod 0777 to {$mountname}\n";
+	}
+	if (!chmod($mountname, 0777)) {
+		write_log("DEBUG: Can't set mode 0777 to {$mountname}");
+		echo "DEBUG: Can't set mode 0777 to {$mountname}\n";
+	} else {
+		write_log("DEBUG: Successful mode 0777 to {$mountname}");
+		echo "DEBUG: Successful mode 0777 to {$mountname}\n" ;
+	}
 
 	/* Mount the filesystem. */
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
