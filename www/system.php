@@ -180,7 +180,11 @@ if ($_POST) {
 			$timeparts = split(":", $timefields[1]);
 			$newsystime = substr($dateparts[2],-2).substr("0".$dateparts[0],-2).substr("0".$dateparts[1],-2);
 			$newsystime = $newsystime.substr("0".$timeparts[0],-2).substr("0".$timeparts[1],-2);
-			$retval = system_systime_set($newsystime);
+
+			// The date utility exits 0 on success, 1 if unable to set the date,
+			// and 2 if able to set the local date, but unable to set it globally.
+			$retval |= mwexec("/bin/date -n {$newsystime}");
+
 			$pconfig['systime']="Not Set";
 		}
 

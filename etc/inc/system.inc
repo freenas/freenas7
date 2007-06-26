@@ -4,7 +4,6 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	system_systime_set() function added by Paul Wheels (pwheels@users.sourceforge.net)
 
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
@@ -89,13 +88,6 @@ function system_routing_configure() {
 		fclose($fd);
 	}
 
-	return $result;
-}
-
-// The date utility exits 0 on success, 1 if unable to set the date,
-// and 2 if able to set the local date, but unable to set it globally.
-function system_systime_set($date) {
-	$result = mwexec("/bin/date -n {$date}");
 	return $result;
 }
 
