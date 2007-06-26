@@ -31,9 +31,9 @@ start_cmd()
 		err 1 "Can't find UNISON in ${unison_config}"
 	fi
 
-	_makedir=`/usr/local/bin/xml sel -t -v "count(//unison/makedir)" ${configxml_file}`
-	if [ 0 -ne ${_makedir} ]; then
-		_workdir=`/usr/local/bin/xml sel -t -m "//unison" -v "concat('/mnt/',share,'/',workdir)" ${configxml_file}`
+	_workdir=`/usr/local/bin/xml sel -t -m "//unison" -v "concat('/mnt/',share,'/',workdir)" ${configxml_file}`
+
+	if [ 0 -ne `/usr/local/bin/xml sel -t -v "count(//unison/makedir)" ${configxml_file}` ]; then
 		if [ -n ${_workdir} -a ! -e ${_workdir} ]; then
 			/bin/mkdir ${_workdir}
 			/bin/chmod 0775 ${_workdir}
