@@ -428,6 +428,11 @@ boot/boot0
 boot/boot1
 
 ####### contents of /etc
-# Functions used by various rc scripts
 etc/rc.subr
 etc/network.subr
+etc/pccard_ether
+
+####### contents of /etc/defaults
+etc/defaults/devfs.rules
+etc/defaults/pccard.conf
+etc/defaults/rc.conf
