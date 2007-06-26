@@ -30,12 +30,10 @@ create_conf()
 	_i=0
 	while [ $_disknum -gt 0 ]
 	do
-		_data=`/usr/local/bin/xml sel -t -m "//iscsitarget/vdisk[position()=$_disknum]" \
-			-o "extent${_i} /mnt/" -v sharename -o "/iscsi_target${_i} 0 " -v size -o "MB" ${configxml_file}`
-		echo ${_data} >> ${iscsi_target_config}
-		_data=`/usr/local/bin/xml sel -t -m "//iscsitarget/vdisk[position()=$_disknum]" \
-			-o "target${_i} rw extent${_i} " -v network ${configxml_file}`
-		echo ${_data} >> ${iscsi_target_config}
+		/usr/local/bin/xml sel -t -m "//iscsitarget/vdisk[position()=$_disknum]" \
+			-o "extent${_i} /mnt/" -v sharename -o "/iscsi_target${_i} 0 " -v size -o "MB" -n \
+			-o "target${_i} rw extent${_i} " -v network \
+			${configxml_file} >> ${iscsi_target_config}
 
 		_i=$(( $_i + 1 ))
 		_disknum=$(( $_disknum - 1 ))
