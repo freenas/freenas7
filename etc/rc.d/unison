@@ -1,0 +1,50 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: unison
+# REQUIRE: DAEMON
+# XPATH: //unison/enable
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+name="unison"
+rcvar=`set_rcvar`
+
+# Custom commands
+start_cmd="start_cmd"
+stop_cmd=":"
+
+# Defaults
+unison_enable="${unison_enable:=NO}"
+unison_config=${unison_config:-"/etc/login.conf"}
+
+start_cmd()
+{
+	local _makedir _workdir
+
+	echo "Configuring ${name}."
+
+	# Ensure unison workdir exists.
+	if [ 0 -eq `grep -c 'UNISON=.*' ${unison_config}` ]; then
+		err 1 "Can't find UNISON in ${unison_config}"
+	fi
+
+	_makedir=`/usr/local/bin/xml sel -t -v "count(//unison/makedir)" ${configxml_file}`
+	if [ 0 -ne ${_makedir} ]; then
+		_workdir=`/usr/local/bin/xml sel -t -m "//unison" -v "concat('/mnt/',share,'/',workdir)" ${configxml_file}`
+		if [ -n ${_workdir} -a ! -e ${_workdir} ]; then
+			/bin/mkdir ${_workdir}
+			/bin/chmod 0775 ${_workdir}
+		fi
+	fi
+
+	# Add workdir to login.conf UNISON environment variable.
+	_workdir=`echo ${_workdir} | /usr/bin/sed 's/\//\\\\\//g'`
+	/usr/bin/sed "s/UNISON=[a-zA-Z0-9/.=+-]*/UNISON=${_workdir}/" ${unison_config} > ${unison_config}.tmp
+	mv -f ${unison_config}.tmp ${unison_config}
+}
+
+load_rc_config ${name}
+run_rc_command "$1"
