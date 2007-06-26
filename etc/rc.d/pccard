@@ -46,6 +46,7 @@ _platform=`cat /etc/platform`
 _platform=${_platform#*-}
 if [ 0 -eq `echo "wrap net48xx" | grep -c "${_platform}"` ]; then
 	pccard_enable="YES"
+	debug "pccard_enable is set to YES."
 fi
 
 pccard_start()
