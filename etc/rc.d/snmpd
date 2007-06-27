@@ -7,7 +7,7 @@
 # KEYWORD: nojail
 # XPATH: //snmpd/enable
 
-snmpd_enable=${snmpd_enable-"NO"}
+snmpd_enable=${snmpd_enable:-"NO"}
 
 . /etc/rc.subr
 . /etc/conf.subr

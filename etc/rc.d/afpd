@@ -8,7 +8,7 @@
 # KEYWORD: shutdown
 # XPATH: //afp/enable
 
-afpd_enable=${afpd_enable-"NO"}
+afpd_enable=${afpd_enable:-"NO"}
 
 . /etc/rc.subr
 . /etc/conf.subr

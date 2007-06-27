@@ -8,7 +8,7 @@
 # KEYWORD: shutdown
 # XPATH: //system/smart
 
-smartd_enable=${smartd_enable-"NO"}
+smartd_enable=${smartd_enable:-"NO"}
 
 . /etc/rc.subr
 

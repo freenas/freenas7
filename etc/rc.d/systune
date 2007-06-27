@@ -6,7 +6,7 @@
 # BEFORE: DAEMON
 # XPATH: //system/tune
 
-systune_enable=${systune_enable-"NO"}
+systune_enable=${systune_enable:-"NO"}
 
 . /etc/rc.subr
 

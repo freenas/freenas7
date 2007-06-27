@@ -8,7 +8,7 @@
 # KEYWORD: shutdown
 # XPATH: //ftp/enable
 
-pureftpd_enable=${pureftpd_enable-"NO"}
+pureftpd_enable=${pureftpd_enable:-"NO"}
 
 . /etc/rc.subr
 . /etc/conf.subr

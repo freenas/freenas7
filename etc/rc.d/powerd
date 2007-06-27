@@ -6,7 +6,7 @@
 # KEYWORD: nojail
 # XPATH: //system/powerd
 
-powerd_enable=${powerd_enable-"NO"}
+powerd_enable=${powerd_enable:-"NO"}
 
 . /etc/rc.subr
 

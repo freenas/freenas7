@@ -7,7 +7,7 @@
 # KEYWORD: shutdown
 # XPATH: //dynamicdns/enable
 
-inadyn_enable=${inadyn_enable-"NO"}
+inadyn_enable=${inadyn_enable:-"NO"}
 
 . /etc/rc.subr
 . /etc/conf.subr

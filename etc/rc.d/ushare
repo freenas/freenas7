@@ -7,7 +7,7 @@
 # KEYWORD: shutdown
 # XPATH: //upnp/enable
 
-ushare_enable=${ushare_enable-"NO"}
+ushare_enable=${ushare_enable:-"NO"}
 
 . /etc/rc.subr
 . /etc/configxml.subr
