@@ -42,10 +42,7 @@ if (!is_array($config['rsync'])) {
 } else if (!is_array($config['rsync']['rsyncclient'])) {
 	$config['rsync']['rsyncclient'] = array();
 }
-/*
-if (!is_array($config['rsync']['rsyncclient']))
-	$config['rsync']['rsyncclient'] = array();
-*/
+
 $a_rsyncclient = &$config['rsync']['rsyncclient'];
 
 if ($_POST) {
@@ -55,7 +52,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= services_rsyncclient_configure();
+			$retval |= rc_exec_service("rsync_client");
 			$retval |= services_cron_configure();
 			config_unlock();
 		}
@@ -66,16 +63,13 @@ if ($_POST) {
 		}
 	}
 }
-if ($_GET['act'] == "del")
-{
+if ($_GET['act'] == "del") {
 	if ($a_rsyncclient[$_GET['id']]) {
-		
 			unset($a_rsyncclient[$_GET['id']]);
 			write_config();
 			touch($d_rsyncclientdirty_path);
 			header("Location: services_rsyncd_client.php");
 			exit;
-		
 	}
 }
 ?>

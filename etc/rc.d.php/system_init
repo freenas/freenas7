@@ -78,9 +78,6 @@
 	/* start NFS service */
 	services_nfs_configure();
 
-	/* start RSYNC client/slave mode service */
-	services_rsyncclient_configure();
-
 	/* start RSYNC local service */
 	services_rsync_local_configure();
 
