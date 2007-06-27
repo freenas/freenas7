@@ -3,19 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: system_postinit
+# REQUIRE: system_init
 
-. /etc/rc.subr
-
-name="system_postinit"
-stop_cmd=":"
-start_cmd="start_cmd"
-
-start_cmd()
-{
-	# Start core system.
-	eval /etc/rc.d.php/${name}
-	return $?
-}
-
-load_rc_config ${name}
-run_rc_command "$1"
+// Let the other functions know we've finished booting.
+rm -f /var/etc/booting > /dev/null
