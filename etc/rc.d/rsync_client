@@ -8,32 +8,36 @@
 
 . /etc/configxml.subr
 
-echo "Generating synchronizing cron script."
+# Get number of scripts to generate.
+_scriptnum=`/usr/local/bin/xml sel -t -v "count(//rsync/rsyncclient)" ${configxml_file}`
 
-# Iterate over all configured disks.
-_index=`/usr/local/bin/xml sel -t -v "count(//rsync/rsyncclient)" ${configxml_file}`
-_i=0
-while [ ${_index} -gt 0 ]
-do
-	_rsyncscript=/var/run/rsync_client${_i}.sh
+if [ 0 < ${_scriptnum} ]; then
+	echo "Generating synchronizing cron scripts."
 
-	# Generate a shell script that is used by cron
-	/usr/local/bin/xml sel -t -m "//rsync/rsyncclient[position()=${_index}]" \
-		-o "#!/bin/sh" -n \
-		-v "concat('/usr/bin/logger -p local4.notice &quot;Remote RSYNC synchronization from share ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" -n \
-		-o "if [ -r /var/run/rsync_client-running${_i} ]; then" -n \
-		-o "/usr/bin/logger -p local4.notice &quot;Previous client synchronization still running... exiting&quot;" -n \
-		-o "exit" -n \
-		-o "fi" -n \
-		-o "/usr/bin/touch /var/run/rsync_client-running${_i}" -n \
-		-o "/usr/local/bin/rsync -rtz " -i "count(opt_delete) > 0" -o "--delete --delete-after " -b -o "rsync://" -v "concat(rsyncserverip,'/',remoteshare,' /mnt/',localshare)" -n \
-		-o "/bin/rm -f /var/run/rsync_client-running${_i}" -n \
-		-v "concat('/usr/bin/logger -p local4.notice &quot;End of remote RSYNC synchronization from share ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" \
-		${configxml_file} > ${_rsyncscript}
+	_i=0
+	while [ ${_scriptnum} -gt 0 ]
+	do
+		# Set scriptname.
+		_rsyncscript=/var/run/rsync_client${_i}.sh
 
-	# Add exectutive right to the script.
-	/bin/chmod 0770 ${_rsyncscript}
-
-	_i=$(( ${_i} + 1 ))
-	_index=$(( ${_index} - 1 ))
-done
+		# Generate the shell script that is used by cron.
+		/usr/local/bin/xml sel -t -m "//rsync/rsyncclient[position()=${_scriptnum}]" \
+			-o "#!/bin/sh" -n \
+			-v "concat('/usr/bin/logger -p local4.notice &quot;Remote RSYNC synchronization from share ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" -n \
+			-o "if [ -r /var/run/rsync_client-running${_i} ]; then" -n \
+			-o "/usr/bin/logger -p local4.notice &quot;Previous client synchronization still running... exiting&quot;" -n \
+			-o "exit" -n \
+			-o "fi" -n \
+			-o "/usr/bin/touch /var/run/rsync_client-running${_i}" -n \
+			-o "/usr/local/bin/rsync -rtz " -i "count(opt_delete) > 0" -o "--delete --delete-after " -b -o "rsync://" -v "concat(rsyncserverip,'/',remoteshare,' /mnt/',localshare)" -n \
+			-o "/bin/rm -f /var/run/rsync_client-running${_i}" -n \
+			-v "concat('/usr/bin/logger -p local4.notice &quot;End of remote RSYNC synchronization from share ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" \
+			${configxml_file} > ${_rsyncscript}
+	
+		# Add exectutive right to the script.
+		/bin/chmod 0770 ${_rsyncscript}
+	
+		_i=$(( ${_i} + 1 ))
+		_scriptnum=$(( ${_scriptnum} - 1 ))
+	done
+fi
