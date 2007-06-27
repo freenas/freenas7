@@ -53,7 +53,7 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= rc_exec_service("rsync_client");
-			$retval |= services_cron_configure();
+			$retval |= rc_update_service("cron");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
@@ -65,11 +65,11 @@ if ($_POST) {
 }
 if ($_GET['act'] == "del") {
 	if ($a_rsyncclient[$_GET['id']]) {
-			unset($a_rsyncclient[$_GET['id']]);
-			write_config();
-			touch($d_rsyncclientdirty_path);
-			header("Location: services_rsyncd_client.php");
-			exit;
+		unset($a_rsyncclient[$_GET['id']]);
+		write_config();
+		touch($d_rsyncclientdirty_path);
+		header("Location: services_rsyncd_client.php");
+		exit;
 	}
 }
 ?>

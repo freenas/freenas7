@@ -65,9 +65,8 @@ if ($_POST){
 
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			/* nuke the cache file */
 			config_lock();
-			services_cron_configure();
+			$retval |= rc_update_service("cron");
 			config_unlock();
 		}
 

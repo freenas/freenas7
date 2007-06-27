@@ -78,9 +78,6 @@
 	/* start NFS service */
 	services_nfs_configure();
 
-	/* Start cron */
-	services_cron_configure();
-
 	/* execute the rc scripts of extensions */
 	system_do_extensions();
 

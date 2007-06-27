@@ -1,0 +1,125 @@
+#!/bin/sh
+#
+# $NetBSD: cron,v 1.5 2000/09/19 13:04:38 lukem Exp $
+# $FreeBSD: src/etc/rc.d/cron,v 1.7 2005/01/16 03:12:03 obrien Exp $
+#
+# Modified by Volker Theile (votdev@gmx.de)
+#
+
+# PROVIDE: cron
+# REQUIRE: LOGIN cleanvar
+# BEFORE: securelevel
+# KEYWORD: shutdown
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+name="cron"
+rcvar="`set_rcvar`"
+command="/usr/sbin/${name}"
+pidfile="/var/run/${name}.pid"
+start_precmd="create_conf"
+cron_config=${cron_config:-"/etc/crontab"}
+
+create_conf()
+{
+	# Create /etc/crontab.
+	echo "SHELL=/bin/sh" > ${cron_config}
+	echo "PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin" >> ${cron_config}
+	echo "HOME=/var/log" >> ${cron_config}
+	echo "#" >> ${cron_config}
+	echo "#minute	hour	mday	month	wday	who	command" >> ${cron_config}
+	echo "#" >> ${cron_config}
+
+	# RSYNC client
+	_index=`/usr/local/bin/xml sel -t -v "count(//rsync/rsyncclient)" ${configxml_file}`
+	if [ 0 -lt ${_index} ]; then
+		echo "# Perform RSYNC client." >> ${cron_config}
+	fi
+	_i=0
+	while [ ${_index} -gt 0 ]
+	do
+		/usr/local/bin/xml sel -t -m "//rsync/rsyncclient[position()=${_index}]" \
+			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_mins[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_hours[. = "0"]" -m hour -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_hours[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_days[. = "0"]" -m day -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_days[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_months[. = "0"]" -m month -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_months[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_weekdays[. != "0"]" -o "*" -b \
+			-o " " \
+			-o "root	/var/run/rsync_client${_i}.sh" \
+			${configxml_file} >> ${cron_config}
+
+		_i=$(( ${_i} + 1 ))
+		_index=$(( ${_index} - 1 ))
+	done
+
+	# RSYNC local
+	_index=`/usr/local/bin/xml sel -t -v "count(//rsync/rsynclocal)" ${configxml_file}`
+	if [ 0 -lt ${_index} ]; then
+		echo "# Perform RSYNC local." >> ${cron_config}
+	fi
+	_i=0
+	while [ ${_index} -gt 0 ]
+	do
+		/usr/local/bin/xml sel -t -m "//rsync/rsynclocal[position()=${_index}]" \
+			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_mins[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_hours[. = "0"]" -m hour -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_hours[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_days[. = "0"]" -m day -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_days[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_months[. = "0"]" -m month -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_months[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_weekdays[. != "0"]" -o "*" -b \
+			-o " " \
+			-o "root	/var/run/rsync_local${_i}.sh" \
+			${configxml_file} >> ${cron_config}
+
+		_i=$(( ${_i} + 1 ))
+		_index=$(( ${_index} - 1 ))
+	done
+
+	# Shutdown
+	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//shutdown/enable)" ${configxml_file}` ]; then
+		echo "# Perform shutdown." >> ${cron_config}
+		/usr/local/bin/xml sel -t -m "//shutdown" \
+			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_mins[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_hours[. = "0"]" -m hour -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_hours[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_days[. = "0"]" -m day -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_days[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_months[. = "0"]" -m month -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_months[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_weekdays[. != "0"]" -o "*" -b \
+			-o " " \
+			-o "root /etc/rc.shutdown" \
+			${configxml_file} >> ${cron_config}
+	fi
+}
+
+load_rc_config $name
+if checkyesno cron_dst
+then
+	cron_flags="$cron_flags -s"
+fi
+run_rc_command "$1"
