@@ -195,8 +195,10 @@ function rc_update_service($name) {
 
 	// Update rc.conf and execute rc script.
 	if ($enabled) {
-		// Update rc.conf.
-		mwexec("/usr/local/sbin/rconf service enable {$name}");
+		// Check if service needs to set 'xxx_enabled="YES"|"NO"' attribute in rc.conf.
+		if ("true" === $g_rcservices[$name]['set_rcvar']) {
+			mwexec("/usr/local/sbin/rconf service enable {$name}");
+		}
 
 		switch ($running) {
 			case 0:
@@ -212,8 +214,10 @@ function rc_update_service($name) {
 			$retval = rc_stop_service($name);
 		}
 
-		// Update rc.conf.
-		mwexec("/usr/local/sbin/rconf service disable {$name}");
+		// Check if service needs to set 'xxx_enabled="YES"|"NO"' attribute in rc.conf.
+		if ("true" === $g_rcservices[$name]['set_rcvar']) {
+			mwexec("/usr/local/sbin/rconf service disable {$name}");
+		}
 	}
 
 	return $retval;
