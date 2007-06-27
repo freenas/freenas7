@@ -11,8 +11,8 @@
 # Get number of scripts to generate.
 _scriptnum=`/usr/local/bin/xml sel -t -v "count(//rsync/rsyncclient)" ${configxml_file}`
 
-if [ 0 < ${_scriptnum} ]; then
-	echo "Generating synchronizing cron scripts."
+if [ 0 -lt ${_scriptnum} ]; then
+	echo "Generating client rsyncd cron scripts."
 
 	_i=0
 	while [ ${_scriptnum} -gt 0 ]
@@ -23,7 +23,7 @@ if [ 0 < ${_scriptnum} ]; then
 		# Generate the shell script that is used by cron.
 		/usr/local/bin/xml sel -t -m "//rsync/rsyncclient[position()=${_scriptnum}]" \
 			-o "#!/bin/sh" -n \
-			-v "concat('/usr/bin/logger -p local4.notice &quot;Remote RSYNC synchronization from share ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" -n \
+			-v "concat('/usr/bin/logger -p local4.notice &quot;Start of remote RSYNC synchronization from share ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" -n \
 			-o "if [ -r /var/run/rsync_client-running${_i} ]; then" -n \
 			-o "/usr/bin/logger -p local4.notice &quot;Previous client synchronization still running... exiting&quot;" -n \
 			-o "exit" -n \
@@ -33,10 +33,10 @@ if [ 0 < ${_scriptnum} ]; then
 			-o "/bin/rm -f /var/run/rsync_client-running${_i}" -n \
 			-v "concat('/usr/bin/logger -p local4.notice &quot;End of remote RSYNC synchronization from share ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" \
 			${configxml_file} > ${_rsyncscript}
-	
+
 		# Add exectutive right to the script.
 		/bin/chmod 0770 ${_rsyncscript}
-	
+
 		_i=$(( ${_i} + 1 ))
 		_scriptnum=$(( ${_scriptnum} - 1 ))
 	done

@@ -52,7 +52,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= services_rsync_local_configure();
+			$retval |= rc_exec_service("rsync_local");
 			$retval |= services_cron_configure();
 			config_unlock();
 		}

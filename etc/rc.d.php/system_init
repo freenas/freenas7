@@ -78,9 +78,6 @@
 	/* start NFS service */
 	services_nfs_configure();
 
-	/* start RSYNC local service */
-	services_rsync_local_configure();
-
 	/* Start cron */
 	services_cron_configure();
 
