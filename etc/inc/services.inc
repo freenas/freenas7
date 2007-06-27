@@ -1331,54 +1331,6 @@ EOD;
 	return 0;
 }
 
-// Create ushare.conf file.
-// Return 0 if successful, otherwise 1.
-function services_create_ushare_conf() {
-	global $config, $g;
-
-	$fd = fopen("{$g['varetc_path']}/ushare.conf", "w");
-	if (!$fd) {
-		$message = "Error: Failed to create '{$g['varetc_path']}/ushare.conf'";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	/* Setup a multicast route for UPnP messages. */
-	$result = mwexec("/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface " . escapeshellarg($config['upnp']['if']));
-
-	$ushareconf = <<<EOD
-USHARE_NAME={$config['upnp']['name']}
-USHARE_IFACE={$config['upnp']['if']}
-USHARE_OVERRIDE_ICONV_ERR=YES
-
-EOD;
-
-	if ($config['upnp']['port']) {
-$ushareconf .= <<<EOD
-USHARE_PORT={$config['upnp']['port']}
-
-EOD;
-	}
-
-	$content = "";
-	if (is_array($config['upnp']['content'])) {
-		foreach($config['upnp']['content'] as $contentv) {
-			$content .= "\"$contentv\" ";
-		}
-	}
-
-	$ushareconf .= <<<EOD
-USHARE_DIR={$content}
-
-EOD;
-
-	fwrite($fd, $ushareconf);
-	fclose($fd);
-
-	return 0;
-}
-
 // Create /var/etc/exports file.
 // Return 0 if successful, otherwise 1.
 function services_create_mountd_conf() {
