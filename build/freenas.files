@@ -328,6 +328,12 @@ usr/bin/uname
 ## env -- set environment and execute command, or print environment
 usr/bin/env
 
+## tr -- translate characters
+usr/bin/tr
+
+## wc -- word, line, character, and byte count
+usr/bin/wc
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
