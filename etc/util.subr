@@ -5,30 +5,62 @@
 #	functions used by various rc scripts
 #
 
-# get_if if
+# get_if interface
 # Get the interface. If it is set to 'auto' use the
 # first interface found.
 get_if()
 {
-	local _ifname _iflist
+	local _interface _iflist
 
-	_if=$1
-	if [ "auto" = "${_if}" ]; then
+	_interface=$1
+	if [ "auto" = "${_interface}" ]; then
 		_iflist=`/sbin/ifconfig -l`
-		_if=${_iflist% *}
+		_interface=${_iflist% *}
 	fi
 
-	echo ${_if}
+	echo ${_interface}
 }
 
-# get_ipaddr if
-# Get IPv4 address from given interface.
+# get_ipaddr protocol_family interface
+# Get IP address for given protocol family and interface.
+#
+# Example:
+# get_ipaddr inet eth0
+# get_ipaddr inet6 auto
 get_ipaddr()
 {
-	local _if
+	local _protocol_family _interface
 
-	_if=$1
-  _if=`get_if ${_if}`
+	_protocol_family=$1
+  _interface=`get_if $2`
 
-  echo `/usr/bin/netstat -inW -f inet -I ${_if} | grep ${_if} | awk '{print $4}'`
+  echo `/usr/bin/netstat -inW -f ${_protocol_family} -I ${_interface} | grep ${_interface} | awk '{print $4}'`
+}
+
+# get_subnetmask [address family] [address] [netmask] [mask]  
+# Get subnet mask from given IP address.
+#	Return subnet mask as string.
+#
+# Example:
+# get_subnetmask inet 192.168.0.1/16
+# get_subnetmask inet 192.168.0.1 prefixlen 16
+# get_subnetmask inet6 3ffe:beef:13e1:4c92::cd90/48
+get_subnetmask()
+{
+	echo `/usr/local/bin/subcalc $@ | grep "mask:" | awk '{print $2}'`
+}
+
+# is_validip [address family] [address] [netmask] [mask]
+# Check if given IP is valid.
+#	Return 0 if valid, nonzero otherwise.
+#
+# Example:
+# is_validip inet 192.168.0.1/24
+# is_validip inet 192.168.0.1 netmask 255.255.255.0
+# is_validip inet 192.168.0.1 prefixlen 24
+# is_validip inet6 3ffe:beef:13e1:4c92::cd90/48
+is_validip()
+{
+	/usr/local/bin/subcalc $@
+	return $?
 }
