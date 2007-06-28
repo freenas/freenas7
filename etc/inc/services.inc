@@ -2,7 +2,7 @@
 /*
 	services.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -577,7 +577,6 @@ EOD;
 -c {$config['ftp']['numberclients']}
 -I {$config['ftp']['timeout']}
 -M
--U 077:077
 -B
 -b
 
@@ -598,6 +597,13 @@ EOD;
 	if ($config['ftp']['pasv_min_port'] && $config['ftp']['pasv_max_port']) {
 		$pureftpdconf .= "-p {$config['ftp']['pasv_min_port']}:{$config['ftp']['pasv_max_port']}\n";
 	}
+	
+	if ($config['ftp']['filemask'] && $config['ftp']['directorymask']) {
+		$pureftpdconf .= "-U {$config['ftp']['filemask']}:{$config['ftp']['directorymask']}\n";
+	} else {
+		$pureftpdconf .= "-U 077:022\n";
+	}
+	
 
 	if ($config['ftp']['pasv_address']) {
 		$pureftpdconf .= "-P {$config['ftp']['pasv_address']}\n";

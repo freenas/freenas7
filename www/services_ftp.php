@@ -3,7 +3,7 @@
 /*
 	services_ftp.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -49,6 +49,21 @@ $pconfig['localuser'] = isset($config['ftp']['localuser']);
 $pconfig['pasv_max_port'] = $config['ftp']['pasv_max_port'];
 $pconfig['pasv_min_port'] = $config['ftp']['pasv_min_port'];
 $pconfig['pasv_address'] = $config['ftp']['pasv_address'];
+
+if ($config['ftp']['filemask']) {
+	$pconfig['filemask'] = $config['ftp']['filemask'];
+} else {
+	$pconfig['filemask'] = "077";
+}
+
+if ($config['ftp']['directorymask']) {
+	$pconfig['directorymask'] = $config['ftp']['directorymask'];
+} else {
+	$pconfig['directorymask'] = "022";
+}
+		
+$pconfig[''] = $config['ftp'][''];
+$pconfig[''] = $config['ftp'][''];
 $pconfig['banner'] = $config['ftp']['banner'];
 $pconfig['natmode'] = isset($config['ftp']['natmode']);
 $pconfig['fxp'] = isset($config['ftp']['fxp']);
@@ -64,7 +79,7 @@ if ($_POST) {
 	$reqdfieldsn = array();
 
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "port numberclients maxconperip timeout"));
+		$reqdfields = array_merge($reqdfields, explode(" ", "port numberclients maxconperip timeout filemask directorymask"));
 		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("TCP port"),gettext("Number of clients"),gettext("Max. conn. per IP"),gettext("Timeout")));
 	}
 
@@ -107,6 +122,8 @@ if ($_POST) {
 		$config['ftp']['pasv_min_port'] = $_POST['pasv_min_port'];
 		$config['ftp']['pasv_address'] = $_POST['pasv_address'];
 		$config['ftp']['banner'] = $_POST['banner'];
+		$config['ftp']['filemask'] = $_POST['filemask'];
+		$config['ftp']['directorymask'] = $_POST['directorymask'];
 		$config['ftp']['fxp'] = $_POST['fxp'] ? true : false;
 		$config['ftp']['natmode'] = $_POST['natmode'] ? true : false;
 		$config['ftp']['keepallfiles'] = $_POST['keepallfiles'] ? true : false;
@@ -145,6 +162,8 @@ function enable_change(enable_change) {
 	document.iform.pasv_max_port.disabled = endis;
 	document.iform.pasv_min_port.disabled = endis;
 	document.iform.pasv_address.disabled = endis;
+	document.iform.filemask.disabled = endis;
+	document.iform.directorymask.disabled = endis;
 }
 //-->
 </script>
@@ -212,6 +231,24 @@ function enable_change(enable_change) {
         <br>
         <?=gettext("Greeting banner displayed by FTP when a connection first comes in.");?></td>
     </tr>
+	   <tr>
+			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
+			    </tr>
+					<tr id="filemask">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Create mask"); ?></td>
+						<td width="78%" class="vtable">
+							<input name="filemask" type="text" class="formfld" id="filemask" size="30" value="<?=htmlspecialchars($pconfig['filemask']);?>">
+							<br><?=gettext("Use this option to override the file creation mask (077 by default).");?>
+						</td>
+					</tr>
+					<tr id="directorymask">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Directory mask"); ?></td>
+						<td width="78%" class="vtable">
+							<input name="directorymask" type="text" class="formfld" id="directorymask" size="30" value="<?=htmlspecialchars($pconfig['directorymask']);?>">
+							<br><?=gettext("Use this option to override the directory creation mask (022 by default).");?>
+						</td>
+					</tr>
+	        <tr>
     <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("FXP");?></td>
       <td width="78%" class="vtable">
