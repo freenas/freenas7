@@ -64,6 +64,6 @@ get_subnetmask()
 # is_validip inet6 3ffe:beef:13e1:4c92::cd90/48
 is_validip()
 {
-	/usr/local/bin/subcalc $@
+	/usr/local/bin/subcalc $@ > /dev/null
 	return $?
 }
