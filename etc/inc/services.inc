@@ -1096,16 +1096,16 @@ EOD;
 
 				if (0 == strcmp($config['nfs']['mapall'],"yes")) {
 					$exports .= <<<EOD
--mapall=root
+ -mapall=root
 EOD;
 				} else {
 					$exports .= <<<EOD
--maproot=root
+ -maproot=root
 EOD;
 				}
 
 				$exports .= <<<EOD
--network {$network} -mask $subnet
+ -network {$network} -mask $subnet
 
 EOD;
 			}
