@@ -13,10 +13,13 @@ get_if()
 	local _interface _iflist
 
 	_interface=$1
-	if [ "auto" = "${_interface}" ]; then
-		_iflist=`/sbin/ifconfig -l`
-		_interface=${_iflist% *}
-	fi
+
+	case ${_interface} in
+		[Aa][Uu][Tt][Oo])
+			_iflist=`/sbin/ifconfig -l`
+			_interface=${_iflist% *}
+			;;
+	esac
 
 	echo ${_interface}
 }
