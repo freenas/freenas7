@@ -8,19 +8,30 @@
 # XPATH: //snmpd/enable
 # RCVAR: snmpd
 
-snmpd_enable=${snmpd_enable:-"NO"}
-
 . /etc/rc.subr
-. /etc/conf.subr
+. /etc/configxml.subr
 
 name="snmpd"
 rcvar=`set_rcvar`
+
+# Custom commands
+start_precmd="create_conf"
+
+# Defaults
+snmpd_enable=${snmpd_enable:-"NO"}
 snmpd_config=${snmpd_config:-"/var/etc/${name}.conf"}
-required_files=${snmpd_config}
 pidfile="/var/run/${name}.pid"
 command="/usr/sbin/${name}"
 command_args="-c ${snmpd_config} -P ${pidfile}"
 
+create_conf()
+{
+	/usr/local/bin/xml sel -t -m "//snmpd" \
+		-v "concat('syslocation ',syslocation)" -n \
+		-v "concat('syscontact ',syscontact)" -n \
+		-v "concat('rocommunity ',rocommunity)" -n \
+		${configxml_file} > ${snmpd_config}
+}
+
 load_rc_config ${name}
-create_conf_file ${name}
 run_rc_command "$1"

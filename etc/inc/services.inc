@@ -682,32 +682,6 @@ EOD;
 	return 0;
 }
 
-// Create snmpd.conf file.
-// Return 0 if successful, otherwise 1.
-function services_create_snmpd_conf() {
-	global $config, $g;
-
-	$fd = fopen("{$g['varetc_path']}/snmpd.conf", "w");
-	if (!$fd) {
-		$message = "Error: Failed to create '{$g['varetc_path']}/snmpd.conf'";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	$snmpdconf = <<<EOD
-syslocation "{$config['snmpd']['syslocation']}"
-syscontact "{$config['snmpd']['syscontact']}"
-rocommunity "{$config['snmpd']['rocommunity']}"
-
-EOD;
-
-	fwrite($fd, $snmpdconf);
-	fclose($fd);
-
-	return 0;
-}
-
 // Create .../ssh/sshd_config file.
 // Return 0 if successful, otherwise 1.
 function services_create_sshd_conf() {
