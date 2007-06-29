@@ -5,7 +5,7 @@
 #	functions used by various rc scripts
 #
 
-# get_if interface
+# get_if [interface]
 # Get the interface. If it is set to 'auto' use the
 # first interface found.
 get_if()
@@ -24,7 +24,7 @@ get_if()
 	echo ${_interface}
 }
 
-# get_ipaddr protocol_family interface
+# get_ipaddr [protocol_family] [interface]
 # Get IP address for given protocol family and interface.
 #
 # Example:
@@ -40,30 +40,51 @@ get_ipaddr()
   echo `/usr/bin/netstat -inW -f ${_protocol_family} -I ${_interface} | grep ${_interface} | awk '{print $4}'`
 }
 
-# get_subnetmask [address family] [address] [netmask] [mask]  
+# get_subnetmask [address]
 # Get subnet mask from given IP address.
 #	Return subnet mask as string.
 #
 # Example:
-# get_subnetmask inet 192.168.0.1/16
-# get_subnetmask inet 192.168.0.1 prefixlen 16
-# get_subnetmask inet6 3ffe:beef:13e1:4c92::cd90/48
+# get_subnetmask 192.168.0.1/16
+# get_subnetmask 3ffe:beef:13e1:4c92::cd90/48
 get_subnetmask()
 {
-	echo `/usr/local/bin/subcalc $@ | grep "mask:" | awk '{print $2}'`
+	_data=`/usr/local/bin/sipcalc $@`
+	_protocol=`cat ${_data} | head -n 1 | awk '{print $1}'`
+	_protocol=${_protocol#-[*}
+
+	case ${_protocol} in
+		ipv4)
+			echo `cat ${_data} | grep "Network mask" | head -n 1 | awk '{print $4}'`
+			;;
+		ipv6)
+			echo `cat ${_data} | grep "Prefix address" | awk '{print $4}'`
+			;;
+	esac
 }
 
-# is_validip [address family] [address] [netmask] [mask]
+# is_validip [protocol_family] [address]
 # Check if given IP is valid.
 #	Return 0 if valid, nonzero otherwise.
 #
 # Example:
 # is_validip inet 192.168.0.1/24
-# is_validip inet 192.168.0.1 netmask 255.255.255.0
-# is_validip inet 192.168.0.1 prefixlen 24
+# is_validip inet 192.168.0.1
 # is_validip inet6 3ffe:beef:13e1:4c92::cd90/48
 is_validip()
 {
-	/usr/local/bin/subcalc $@ > /dev/null
-	return $?
+	_protocol=$1
+	shift 1
+
+	_result=`/usr/local/bin/sipcalc $@ | head -n 1 | awk '{print $1}'`
+	_result=${_result#-[*}
+
+	if [ "ipv4" = "${_result}" -a "inet" = "${_protocol}" ]; then
+		return 0
+	fi
+	if [ "ipv6" = "${_result}" -a "inet6" = "${_protocol}" ]; then
+		return 0
+	fi
+
+	return 1
 }

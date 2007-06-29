@@ -43,7 +43,7 @@ create_conf()
 	do
 		_ipaddr=`/usr/local/bin/xml sel -t -v "//nfs/nfsnetworks[position()=${_index}]" ${configxml_file}`
 		_network=${_ipaddr%/*}
-		_subnetmask=`get_subnetmask inet ${_ipaddr}`
+		_subnetmask=`get_subnetmask ${_ipaddr}`
 
 		/usr/local/bin/xml sel -t -m "//mounts/mount" \
 			-v "concat('/mnt/',sharename,' -alldirs ')" \
