@@ -8,18 +8,50 @@
 # XPATH: //dynamicdns/enable
 # RCVAR: inadyn
 
-inadyn_enable=${inadyn_enable:-"NO"}
-
 . /etc/rc.subr
-. /etc/conf.subr
+. /etc/configxml.subr
 
 name="inadyn"
 rcvar=`set_rcvar`
+
+# Custom commands
+start_precmd="create_conf"
+
+# Defaults
+inadyn_enable=${inadyn_enable:-"NO"}
 inadyn_config=${inadyn_config:-"/var/etc/${name}.conf"}
-required_files=${inadyn_config}
 command="/usr/local/bin/${name}"
 command_args="--input_file ${inadyn_config}"
 
+create_conf()
+{
+	local _servicetype
+
+	# Get the service type.
+	case `/usr/local/bin/xml sel -t -v "//dynamicdns/provider" ${configxml_file}` in
+		dyndns.org)
+			_servicetype="dyndns@dyndns.org";;
+		freedns.afraid.org)
+			_servicetype="default@freedns.afraid.org";;
+		zoneedit.com)
+			_servicetype="default@zoneedit.com";;
+		no-ip.com)
+			_servicetype="default@no-ip.com";;
+		*)
+			_servicetype="";;		
+	esac
+
+	/usr/local/bin/xml sel -t -m "//dynamicdns" \
+		-o "--background" -n \
+		-o "--syslog" -n \
+		-o "--dyndns_system ${_servicetype}" -n \
+		-v "concat('--alias ',domainname)" -n \
+		-v "concat('--username ',username)" -n \
+		-v "concat('--password ',password)" -n \
+		-i "string-length(updateperiod) > 0" -v "concat('--update_period_sec ',updateperiod)" -n -b \
+		-i "string-length(forcedupdateperiod) > 0" -v "concat('--forced_update_period ',forcedupdateperiod)" -n -b \
+		${configxml_file} > ${inadyn_config}
+}
+
 load_rc_config ${name}
-create_conf_file ${name}
 run_rc_command "$1"

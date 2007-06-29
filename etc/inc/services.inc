@@ -33,64 +33,6 @@
 require_once("functions.inc");
 require_once("util.inc");
 
-// Create inadyn.conf file.
-// Return 0 if successful, otherwise 1.
-function services_create_inadyn_conf() {
-	global $config, $g;
-
-	$fd = fopen("{$g['varetc_path']}/inadyn.conf", "w");
-	if (!$fd) {
-		$message = "Error: Failed to create '{$g['varetc_path']}/inadyn.conf'";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	/* Get the service type */
-	$servicetype = "";
-	switch($config['dynamicdns']['provider']) {
-		case "dyndns.org":					$servicetype = "dyndns@dyndns.org";
-																break;
-		case "freedns.afraid.org":	$servicetype = "default@freedns.afraid.org";
-																break;
-		case "zoneedit.com":				$servicetype = "default@zoneedit.com";
-																break;
-		case "no-ip.com":						$servicetype = "default@no-ip.com";
-																break;
-	}
-
-	/* Set command parameters. */
-	$inadynconf = <<<EOD
---background
---syslog
---dyndns_system {$servicetype}
---alias {$config['dynamicdns']['domainname']}
---username "{$config['dynamicdns']['username']}"
---password "{$config['dynamicdns']['password']}"
-
-EOD;
-
-	/* Set additional command parameters. */
-	if ($config['dynamicdns']['updateperiod']) {
-		$inadynconf .= <<<EOD
---update_period_sec {$config['dynamicdns']['updateperiod']}
-
-EOD;
-	}
-
-	if ($config['dynamicdns']['forcedupdateperiod']) {
-		$inadynconf .= <<<EOD
---forced_update_period {$config['dynamicdns']['forcedupdateperiod']}
-
-EOD;
-	}
-
-	fwrite($fd, $inadynconf);
-	fclose($fd);
-
-	return 0;
-}
-
 // Create lighttpd.conf file.
 // Return 0 if successful, otherwise 1.
 function services_create_lighttpd_conf() {
