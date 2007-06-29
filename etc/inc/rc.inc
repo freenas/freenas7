@@ -37,10 +37,13 @@ require_once("util.inc");
 // !! creates a conf file using 'create_conf_file' command.
 // !! A workaround is to call start/restart a service with
 // !! the additional parameter 'noconf'. The configuration file
-// !! has to be created by hand. Example for WebGUI:
+// !! has to be created by using the internal php code.
+// !! Example for WebGUI:
 // !!
-// !! $retval |= services_create_pureftpd_conf();
-// !! $retval |= rc_update_service("pureftpd",isset($config['ftp']['enable']));
+// !! $retval |= rc_update_service("pureftpd");
+// !!
+// !! The configuration file will be created by calling the configured
+// !! function services_create_pureftpd_conf() in $g_rcservices['pureftpd'].
 // !!
 // !! It seems to be a problem with the lighttpd cgi modul.
 // !!
