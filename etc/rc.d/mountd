@@ -29,12 +29,12 @@ required_files="${mountd_config}"
 command="/usr/sbin/${name}"
 command_args="-r ${mountd_config}"
 
+# Clear existing file.
+cat /dev/null > ${mountd_config}
+
 create_conf()
 {
 	local _index _i _ipaddr _network _subnetmask
-
-	# Clear existing file.
-	cat /dev/null > ${mountd_config}
 
 	# Create /var/etc/exports file.
 	_index=`/usr/local/bin/xml sel -t -v "count(//nfs/nfsnetworks)" ${configxml_file}`
