@@ -40,10 +40,10 @@ require_once("util.inc");
 // !! has to be created by using the internal php code.
 // !! Example for WebGUI:
 // !!
-// !! $retval |= rc_update_service("pureftpd");
+// !! $retval |= rc_update_service("mdnsresponder");
 // !!
 // !! The configuration file will be created by calling the configured
-// !! function services_create_pureftpd_conf() in $g_rcservices['pureftpd'].
+// !! function services_create_mdnsresponder_conf() in $g_rcservices['mdnsresponder'].
 // !!
 // !! It seems to be a problem with the lighttpd cgi modul.
 // !!
@@ -67,7 +67,7 @@ $g_rcservices['iscsi_target']    = array("start_func" => "", "stop_func"  => "",
 $g_rcservices['iscsi_initiator'] = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = is_array(\$config['iscsiinit']['vdisk']) && count(\$config['iscsiinit']['vdisk']);", "rcvar" => "iscsi_initiator", "set_rcvar" => "true");
 $g_rcservices['lighttpd']        = array("start_func" => "services_create_lighttpd_conf", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "rcvar" => "lighttpd", "set_rcvar" => "true");
 $g_rcservices['mdnsresponder']   = array("start_func" => "services_create_mdnsresponder_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['zeroconf']);", "rcvar" => "mdnsresponder", "set_rcvar" => "true");
-$g_rcservices['pureftpd']        = array("start_func" => "services_create_pureftpd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['ftp']['enable']);", "rcvar" => "pureftpd", "set_rcvar" => "true");
+$g_rcservices['pureftpd']        = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['ftp']['enable']);", "rcvar" => "pureftpd", "set_rcvar" => "true");
 $g_rcservices['snmpd']           = array("start_func" => "services_create_snmpd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['snmpd']['enable']);", "rcvar" => "snmpd", "set_rcvar" => "true");
 $g_rcservices['ushare']          = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['upnp']['enable']);", "rcvar" => "ushare", "set_rcvar" => "true");
 $g_rcservices['sshd']            = array("start_func" => "services_create_sshd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['sshd']['enable']);", "rcvar" => "sshd", "set_rcvar" => "true");

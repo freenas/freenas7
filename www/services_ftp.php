@@ -79,7 +79,7 @@ if ($_POST) {
 	$reqdfieldsn = array();
 
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "port numberclients maxconperip timeout filemask directorymask"));
+		$reqdfields = array_merge($reqdfields, explode(" ", "port numberclients maxconperip timeout"));
 		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("TCP port"),gettext("Number of clients"),gettext("Max. conn. per IP"),gettext("Timeout")));
 	}
 

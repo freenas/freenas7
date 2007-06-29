@@ -9,29 +9,52 @@
 # XPATH: //ftp/enable
 # RCVAR: pureftpd
 
-pureftpd_enable=${pureftpd_enable:-"NO"}
-
 . /etc/rc.subr
-. /etc/conf.subr
+. /etc/configxml.subr
 
 name="pureftpd"
 rcvar=`set_rcvar`
 
-load_rc_config ${name}
+# Custom commands
+start_precmd="create_conf"
 
+# Defaults
+pureftpd_enable=${pureftpd_enable:-"NO"}
 command="/usr/local/sbin/pure-ftpd"
-pureftpd_config=${pureftpd_config:-"/var/etc/pure-ftpd.conf"}
-required_files=${pureftpd_config}
 pidfile="/var/run/pure-ftpd.pid"
-start_precmd="start_precmd"
 
-start_precmd()
+create_conf()
 {
-	# Convert config file into command args (pure-ftpd does not support config files).
-	for _command_arg in `cat ${pureftpd_config}`; do
-		command_args="${command_args} ${_command_arg}"
-	done
+	local _banner
+
+	# Create /mnt/.banner file.
+	_banner=`/usr/local/bin/xml sel -t -v "//ftp/banner" ${configxml_file}`
+	if [ -z "${_banner}" ]; then
+		_productname=`cat /etc/prd.name`
+		echo "Welcome to ${_productname} FTP service" > /mnt/.banner
+	else
+		echo ${_banner} > /mnt/.banner
+	fi
+
+	# Set command args.
+	command_args=`/usr/local/bin/xml sel -t -m "//ftp" \
+		-v "concat('-S ',port,' ')" \
+		-v "concat('-c ',numberclients,' ')" \
+		-v "concat('-I ',timeout,' ')" \
+		-o "-M -B -b " \
+		-i "string-length(maxconperip) > 0" -v "concat('-C ',maxconperip,' ')" -b \
+		-i "count(anonymous) > 0" -i "count(localuser) = 0" -o "-e " -b -b \
+		-i "count(anonymous) = 0" -i "count(localuser) > 0" -o "-E " -b -b \
+		-i "pasv_min_port[. != '0']" -i "pasv_max_port[. != '0']" -v "concat('-p ',pasv_min_port,':',pasv_max_port,' ')" -b -b \
+		-i "string-length(filemask) > 0" -i "string-length(directorymask) > 0" -v "concat('-U ',filemask,':',directorymask,' ')" -b -b \
+		-i "string-length(filemask) = 0" -i "string-length(directorymask) = 0" -o "-U 077:022 " -b -b \
+		-i "string-length(pasv_address) > 0" -v "concat('-P ',pasv_address,' ')" -b \
+		-i "count(natmode) > 0" -o "-N " -b \
+		-i "count(fxp) > 0" -o "-W " -b \
+		-i "count(keepallfiles) > 0" -o "-K " -b \
+		-i "count(permitrootlogin) = 0" -o "-u 1 " -b \
+		${configxml_file}`
 }
 
-create_conf_file ${name}
+load_rc_config ${name}
 run_rc_command "$1"

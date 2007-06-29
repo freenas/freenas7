@@ -36,6 +36,8 @@ start_cmd()
 
 	_workdir=`/usr/local/bin/xml sel -t -m "//unison" -v "concat('/mnt/',share,'/',workdir)" ${configxml_file}`
 
+	# Create 'workdir' if necessary (Check if '//unison/makedir' is set). Use '//unison/workdir' to
+	# create directory name /mnt/xxx.
 	if [ 0 -ne `/usr/local/bin/xml sel -t -v "count(//unison/makedir)" ${configxml_file}` ]; then
 		if [ -n ${_workdir} -a ! -e ${_workdir} ]; then
 			/bin/mkdir ${_workdir}
