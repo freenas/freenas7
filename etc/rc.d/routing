@@ -31,13 +31,16 @@ routing_start()
 
 routing_stop()
 {
+	# Do not delete all routes, because there are set
+	# various routes all over the code (e.g in ushare or
+	# the default route in lan config.)
 	#route -n flush
 
 	for _route in `cat /var/db/routes.db`; do
 		/sbin/route delete ${_route}
 	done
 
-	rm -f /var/db/routes.db
+	rm -f /var/db/routes.db > /dev/null 2>&1
 }
 
 create_conf()

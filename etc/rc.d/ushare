@@ -57,7 +57,7 @@ create_conf()
 stop_postcmd()
 {
 	# Delete multicast route.
-	/sbin/route delete -net 239.0.0.0 > /dev/null
+	/sbin/route delete -net 239.0.0.0 > /dev/null 2>&1
 }
 
 load_rc_config ${name}
