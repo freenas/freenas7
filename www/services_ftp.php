@@ -231,10 +231,13 @@ function enable_change(enable_change) {
         <br>
         <?=gettext("Greeting banner displayed by FTP when a connection first comes in.");?></td>
     </tr>
-	   <tr>
-			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
-			    </tr>
-					<tr id="filemask">
+    <tr>
+      <td colspan="2" class="list" height="12"></td>
+    </tr>
+		<tr>
+			<td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
+		</tr>
+		<tr id="filemask">
 						<td width="22%" valign="top" class="vncell"><?=gettext("Create mask"); ?></td>
 						<td width="78%" class="vtable">
 							<input name="filemask" type="text" class="formfld" id="filemask" size="30" value="<?=htmlspecialchars($pconfig['filemask']);?>">
