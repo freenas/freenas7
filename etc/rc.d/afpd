@@ -9,18 +9,39 @@
 # XPATH: //afp/enable
 # RCVAR: afpd
 
-afpd_enable=${afpd_enable:-"NO"}
-
 . /etc/rc.subr
-. /etc/conf.subr
+. /etc/configxml.subr
 
 name="afpd"
 rcvar=`set_rcvar`
+
+# Custom commands
+start_precmd="create_conf"
+
+# Defaults
+afpd_enable=${afpd_enable:-"NO"}
 afpd_config=${afpd_config:-"/var/etc/${name}.conf"}
-required_files=${afpd_config}
+afpd_defaultvol=${afpd_defaultvol:-"/var/etc/AppleVolumes.default"}
 command="/usr/local/sbin/${name}"
 command_args="-F ${afpd_config}"
 
+create_conf()
+{
+	# Create config file.
+	/usr/local/bin/xml sel -t -m "//afp" \
+		-i "string-length(afpname) > 0" -v afpname -b \
+		-i "string-length(afpname) = 0" -o "-" -b \
+		-o " -transall -uamlist " \
+		-i "count(guest) > 0" -o "uams_guest.so" -b \
+		-i "count(local) > 0" -i "count(guest) > 0" -o "," -b -o "uams_clrtxt.so,uams_dhx.so" -b \
+		-o " -nosavepassword -defaultvol ${afpd_volumes_config} -systemvol /var/etc/AppleVolumes.system -uampath /etc/uams -guestname ftp" -n \
+		${configxml_file} > ${afpd_config}
+
+	# Generate '/var/etc/AppleVolumes.default'.
+	/usr/local/bin/xml sel -t -m "//mounts/mount" \
+		-v "concat('/mnt/',sharename,' &quot;',sharename,'&quot;')" -n \
+		${configxml_file} > ${afpd_defaultvol}
+}
+
 load_rc_config ${name}
-create_conf_file ${name}
 run_rc_command "$1"

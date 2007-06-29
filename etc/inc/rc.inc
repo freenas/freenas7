@@ -61,7 +61,7 @@ require_once("util.inc");
 // stop_func       - Function executed before service is stopped.
 // is_enabled_func - Function to test if service is enabled
 $g_rcservices = array();
-$g_rcservices['afpd']            = array("start_func" => "services_create_afpd_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['afp']['enable']);", "rcvar" => "afpd", "set_rcvar" => "true");
+$g_rcservices['afpd']            = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['afp']['enable']);", "rcvar" => "afpd", "set_rcvar" => "true");
 $g_rcservices['inadyn']          = array("start_func" => "services_create_inadyn_conf", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['dynamicdns']['enable']);", "rcvar" => "inadyn", "set_rcvar" => "true");
 $g_rcservices['iscsi_target']    = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = is_array(\$config['iscsitarget']['vdisk']) && count(\$config['iscsitarget']['vdisk']);", "rcvar" => "iscsi_target", "set_rcvar" => "true");
 $g_rcservices['iscsi_initiator'] = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = is_array(\$config['iscsiinit']['vdisk']) && count(\$config['iscsiinit']['vdisk']);", "rcvar" => "iscsi_initiator", "set_rcvar" => "true");
