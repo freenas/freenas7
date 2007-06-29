@@ -4,6 +4,7 @@
 
 # PROVIDE: system_postinit
 # REQUIRE: system_init
+# BEFORE: CONFIG
 
 # Let the other functions know we've finished booting.
 rm -f /var/etc/booting > /dev/null 2>&1

@@ -3,6 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: timezone
+# BEFORE: CONFIG
 
 . /etc/configxml.subr
 

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # PROVIDE: CONFIG
-# REQUIRE: system_postinit system_init timezone hostname rcconf system_preinit
-# BEFORE: DAEMON
+# REQUIRE: system_postinit system_init timezone rcconf system_preinit
+# BEFORE: NETWORKING
 
 #	This is a dummy dependency.

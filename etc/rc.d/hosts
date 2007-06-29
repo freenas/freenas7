@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: hosts
-# REQUIRE: NETWORKING
+# BEFORE: NETWORKING
 
 . /etc/util.subr
 . /etc/configxml.subr

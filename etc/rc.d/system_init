@@ -3,6 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: system_init
+# BEFORE: CONFIG
 
 . /etc/rc.subr
 

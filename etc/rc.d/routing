@@ -8,7 +8,7 @@
 #
 
 # PROVIDE: routing
-# REQUIRE: NETWORKING pccard sysctl
+# REQUIRE: CONFIG
 # KEYWORD: nojail
 
 . /etc/rc.subr

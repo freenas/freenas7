@@ -8,7 +8,7 @@
 
 # PROVIDE: nfslocking
 # REQUIRE: nfsd
-# BEFORE:  DAEMON
+# BEFORE: DAEMON
 # KEYWORD: nojail
 # XPATH: //nfs/enable
 # RCVAR: rpc_statd rpc_lockd

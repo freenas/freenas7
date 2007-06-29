@@ -3,6 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: smbpasswd
+# REQUIRE: smbd
 # KEYWORD: nostart
 
 . /etc/configxml.subr

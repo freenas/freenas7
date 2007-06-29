@@ -5,7 +5,7 @@
 #
 
 # PROVIDE: dmesg
-# BEFORE:  DAEMON
+# BEFORE: DAEMON
 # KEYWORD: Daemon nojail
 
 . /etc/rc.subr

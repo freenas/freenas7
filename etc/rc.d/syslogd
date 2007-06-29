@@ -3,7 +3,8 @@
 # All rights reserved.
 
 # PROVIDE: syslogd
-# BEFORE:  SERVERS
+# BEFORE: SERVERS
+# REQUIRE: CONFIG
 
 . /etc/rc.subr
 . /etc/configxml.subr

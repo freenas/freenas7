@@ -6,7 +6,7 @@
 
 # PROVIDE: local
 # REQUIRE: DAEMON
-# BEFORE:  LOGIN
+# BEFORE: LOGIN
 # KEYWORD: shutdown
 
 . /etc/rc.subr

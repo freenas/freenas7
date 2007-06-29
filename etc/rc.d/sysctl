@@ -5,7 +5,7 @@
 #
 
 # PROVIDE: sysctl
-# BEFORE:  DAEMON
+# BEFORE: DAEMON
 
 . /etc/rc.subr
 

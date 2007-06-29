@@ -3,6 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: rcconf
+# BEFORE: CONFIG
 
 . /etc/rc.subr
 . /etc/util.subr
