@@ -29,15 +29,15 @@ create_conf()
 	# Iterate over all configured disks.
 	_disknum=`/usr/local/bin/xml sel -t -v "count(//iscsitarget/vdisk)" ${configxml_file}`
 	_i=0
-	while [ $_disknum -gt 0 ]
+	while [ ${_disknum} -gt 0 ]
 	do
-		/usr/local/bin/xml sel -t -m "//iscsitarget/vdisk[position()=$_disknum]" \
+		/usr/local/bin/xml sel -t -m "//iscsitarget/vdisk[position()=${_disknum}]" \
 			-o "extent${_i} /mnt/" -v sharename -o "/iscsi_target${_i} 0 " -v size -o "MB" -n \
 			-o "target${_i} rw extent${_i} " -v network \
 			${configxml_file} >> ${iscsi_target_config}
 
-		_i=$(( $_i + 1 ))
-		_disknum=$(( $_disknum - 1 ))
+		_i=$(( ${_i} + 1 ))
+		_disknum=$(( ${_disknum} - 1 ))
 	done
 }
 

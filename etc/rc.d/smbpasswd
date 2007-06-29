@@ -20,12 +20,12 @@ cat /dev/null > /var/etc/private/smbpasswd
 # Generate /var/etc/private/smbpasswd Samba password database.
 # Iterate over all configured users.
 _usernum=`/usr/local/bin/xml sel -t -v "count(//access/user)" ${configxml_file}`
-while [ $_usernum -gt 0 ]
+while [ ${_usernum} -gt 0 ]
 do
-	_username=`/usr/local/bin/xml sel -t -v "//access/user[position()=$_usernum]/login" ${configxml_file}`
-	_password=`/usr/local/bin/xml sel -t -v "//access/user[position()=$_usernum]/password" ${configxml_file}`
+	_username=`/usr/local/bin/xml sel -t -v "//access/user[position()=${_usernum}]/login" ${configxml_file}`
+	_password=`/usr/local/bin/xml sel -t -v "//access/user[position()=${_usernum}]/password" ${configxml_file}`
 
 	(/bin/echo "${_password}"; /bin/echo "${_password}") | ${command} -s -a "${_username}" > /dev/null
 
-	_usernum=$(( $_usernum - 1 ))
+	_usernum=$(( ${_usernum} - 1 ))
 done
