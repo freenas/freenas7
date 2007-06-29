@@ -24,12 +24,12 @@ cron_config=${cron_config:-"/etc/crontab"}
 create_conf()
 {
 	# Create /etc/crontab.
-	echo "SHELL=/bin/sh" > ${cron_config}
-	echo "PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin" >> ${cron_config}
-	echo "HOME=/var/log" >> ${cron_config}
-	echo "#" >> ${cron_config}
-	echo "#minute	hour	mday	month	wday	who	command" >> ${cron_config}
-	echo "#" >> ${cron_config}
+	echo "SHELL=/bin/sh
+PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin
+HOME=/var/log
+#
+#minute	hour	mday	month	wday	who	command
+#" > ${cron_config}
 
 	# RSYNC client
 	_index=`/usr/local/bin/xml sel -t -v "count(//rsync/rsyncclient)" ${configxml_file}`
