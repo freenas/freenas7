@@ -51,7 +51,10 @@ if ($_POST) {
 			config_lock();
 			$retval |= disks_mount_all();
 			$retval |= rc_update_service("samba");
-			$retval |= services_nfs_configure();
+			$retval |= rc_update_service("rpcbind");
+			$retval |= rc_update_service("mountd");
+			$retval |= rc_update_service("nfsd");
+			$retval |= rc_update_service("nfslocking");
 			$retval |= rc_update_service("rsyncd");
 			$retval |= rc_update_service("afpd");
 			config_unlock();
@@ -86,7 +89,10 @@ if ($_GET['act'] == "retry")
 	if ($a_mount[$_GET['id']]) {
 		if (0 == disks_mount($a_mount[$_GET['id']])) {
 			rc_update_service("samba");
-			services_nfs_configure();
+			rc_update_service("rpcbind");
+			rc_update_service("mountd");
+			rc_update_service("nfsd");
+			rc_update_service("nfslocking");
 			rc_update_service("rsyncd");
 			rc_update_service("afpd");
 		}

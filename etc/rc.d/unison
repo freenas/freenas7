@@ -5,6 +5,7 @@
 # PROVIDE: unison
 # REQUIRE: DAEMON
 # XPATH: //unison/enable
+# RCVAR: unison
 
 . /etc/rc.subr
 . /etc/configxml.subr

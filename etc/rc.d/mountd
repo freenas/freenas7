@@ -8,8 +8,9 @@
 
 # PROVIDE: mountd
 # REQUIRE: NETWORKING rpcbind
-# KEYWORD: nojail nostart
+# KEYWORD: nojail
 # XPATH: //nfs/enable
+# RCVAR: mountd
 
 . /etc/rc.subr
 . /etc/configxml.subr

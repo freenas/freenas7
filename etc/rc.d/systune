@@ -5,6 +5,7 @@
 # PROVIDE: systune
 # BEFORE: DAEMON
 # XPATH: //system/tune
+# RCVAR: systune
 
 systune_enable=${systune_enable:-"NO"}
 

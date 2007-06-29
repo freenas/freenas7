@@ -75,9 +75,6 @@
 	/* Mount the disks */
 	disks_mount_all();
 
-	/* start NFS service */
-	services_nfs_configure();
-
 	/* execute the rc scripts of extensions */
 	system_do_extensions();
 

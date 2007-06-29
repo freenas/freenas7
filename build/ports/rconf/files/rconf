@@ -42,6 +42,8 @@ FOO
 	exit 1
 }
 
+# remove string
+# Remove given string from file.
 remove() {
 	/usr/bin/sed "/${1}*/d" /etc/rc.conf > /etc/rc.conf.tmp
 	mv -f /etc/rc.conf.tmp /etc/rc.conf
@@ -54,31 +56,34 @@ fi
 
 case ${type} in
 	service)
-		service=${3}
-		case ${action} in
-			enable)
-				remove "${service}_enable"
-				echo "${service}_enable=\"YES\"" >> /etc/rc.conf
-				;;
-		
-			disable)
-				remove "${service}_enable"
-				echo "${service}_enable=\"NO\"" >> /etc/rc.conf
-				;;
-		
-			remove)
-				remove "${service}_enable"
-				;;
-		
-			rcvar)
-				load_rc_config ${service}
-				if checkyesno "${service}_enable"; then
-					exit 0
-				else
-					exit 1
-				fi
-				;;
-		esac
+		shift 2
+		services=$*
+		for service in $services; do
+			case ${action} in
+				enable)
+					remove "${service}_enable"
+					echo "${service}_enable=\"YES\"" >> /etc/rc.conf
+					;;
+			
+				disable)
+					remove "${service}_enable"
+					echo "${service}_enable=\"NO\"" >> /etc/rc.conf
+					;;
+			
+				remove)
+					remove "${service}_enable"
+					;;
+			
+				rcvar)
+					load_rc_config ${service}
+					if checkyesno "${service}_enable"; then
+						exit 0
+					else
+						exit 1
+					fi
+					;;
+			esac
+		done
 		;;
 
 	attribute)

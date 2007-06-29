@@ -8,8 +8,9 @@
 
 # PROVIDE: nfsd
 # REQUIRE: mountd
-# KEYWORD: nojail nostart
+# KEYWORD: nojail
 # XPATH: //nfs/enable
+# RCVAR: nfs_server
 
 . /etc/rc.subr
 

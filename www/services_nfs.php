@@ -70,7 +70,10 @@ if ($_POST) {
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= services_nfs_configure();
+			$retval |= rc_update_service("rpcbind");
+			$retval |= rc_update_service("mountd");
+			$retval |= rc_update_service("nfsd");
+			$retval |= rc_update_service("nfslocking");
 			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}

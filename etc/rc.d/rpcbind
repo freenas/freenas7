@@ -8,8 +8,8 @@
 
 # PROVIDE: rpcbind
 # REQUIRE: NETWORKING syslogd
-# KEYWORD: nostart
 # XPATH: //nfs/enable
+# RCVAR: rpcbind
 
 . /etc/rc.subr
 

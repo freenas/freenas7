@@ -7,6 +7,7 @@
 # BEFORE: LOGIN
 # KEYWORD: shutdown
 # XPATH: //afp/enable
+# RCVAR: afpd
 
 afpd_enable=${afpd_enable:-"NO"}
 

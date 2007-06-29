@@ -9,7 +9,9 @@
 # PROVIDE: nfslocking
 # REQUIRE: nfsd
 # BEFORE:  DAEMON
-# KEYWORD: nojail nostart
+# KEYWORD: nojail
+# XPATH: //nfs/enable
+# RCVAR: rpc_statd rpc_lockd
 
 . /etc/rc.subr
 

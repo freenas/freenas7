@@ -6,6 +6,7 @@
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
 # XPATH: //system/swap_enable
+# RCVAR: swap
 
 . /etc/rc.subr
 . /etc/configxml.subr

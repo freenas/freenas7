@@ -7,6 +7,7 @@
 # BEFORE: LOGIN
 # KEYWORD: shutdown
 # XPATH: //samba/enable
+# RCVAR: samba
 
 . /etc/rc.subr
 . /etc/conf.subr

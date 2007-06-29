@@ -48,9 +48,8 @@ for _rcscript in /etc/rc.d/*; do
 		_xpath=`cat ${_rcscript} | grep XPATH:`
 		_xpath=${_xpath#*XPATH: }
 		if [ -n "${_xpath}" ]; then
-			# Get the rcvar (may differ with the scriptname because it can
-			# be changed internally by the script itself).
-			_rcvar=$(eval '. /etc/rc.d/"$_rcscriptname"; echo ${rcvar%*_enable};' )
+			_rcvar=`cat ${_rcscript} | grep RCVAR:`
+			_rcvar=${_rcvar#*RCVAR: }
 			if [ -z "${_rcvar}" ]; then
 				_rcvar=${_rcscriptname}
 			fi

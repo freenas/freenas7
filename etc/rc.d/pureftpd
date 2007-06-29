@@ -7,6 +7,7 @@
 # BEFORE: DAEMON
 # KEYWORD: shutdown
 # XPATH: //ftp/enable
+# RCVAR: pureftpd
 
 pureftpd_enable=${pureftpd_enable:-"NO"}
 
