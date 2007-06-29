@@ -57,9 +57,6 @@
 	/* set up Optional interfaces */
 	interfaces_optional_configure();
 
-	/* set up static routes */
-	system_routing_configure();
-
 	/* Generate the pam configuration file */
 	system_pam_configure();
 

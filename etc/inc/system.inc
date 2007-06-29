@@ -34,63 +34,6 @@ require_once("functions.inc");
 require_once("util.inc");
 require_once("rc.inc");
 
-/* Generate the static routes
-Return 0 if OK, and 1 if error */
-function system_routing_configure() {
-	global $config, $g;
-
-	$result = 0 ;
-
-	/* clear out old routes, if necessary */
-	if (file_exists("{$g['vardb_path']}/routes.db")) {
-		$fd = fopen("{$g['vardb_path']}/routes.db", "r");
-		if (!$fd) {
-			$message = "Error: Can't open routes DB file in system_routing_configure()";
-			write_console($message . ".\n");
-			write_log($message);
-			$result = 1 ;
-		}
-		while (!feof($fd)) {
-			$oldrt = fgets($fd);
-			if ($oldrt)
-				mwexec("/sbin/route delete " . escapeshellarg($oldrt));
-		}
-		fclose($fd);
-		unlink("{$g['vardb_path']}/routes.db");
-	}
-
-	if (is_array($config['staticroutes']['route'])) {
-
-		$fd = fopen("{$g['vardb_path']}/routes.db", "w");
-		if (!$fd) {
-			$message = "Error: Can't open routes DB file in system_routing_configure()";
-			write_console($message . ".\n");
-			write_log($message);
-			$result = 1 ;
-		}
-
-		foreach ($config['staticroutes']['route'] as $rtent) {
-		
-			list($hp,$np) = explode('/', $rtent['network']);
-			if (is_ipv4addr($hp)) {
-				mwexec("/sbin/route add " . escapeshellarg($rtent['network']) .
-				" " . escapeshellarg($rtent['gateway']));
-				/* record route so it can be easily removed later (if necessary) */
-				fwrite($fd, $rtent['network'] . "\n");
-			} else if (is_ipv6addr($hp)) {
-				mwexec("/sbin/route add -inet6 " . escapeshellarg($rtent['network']) .
-				" " . escapeshellarg($rtent['gateway']));
-				/* record route so it can be easily removed later (if necessary) */
-				fwrite($fd, $rtent['network'] . "\n");
-			}
-			
-		}
-		fclose($fd);
-	}
-
-	return $result;
-}
-
 function system_stop_common() {
 	/* Stop swap */
 	rc_stop_service("swap");

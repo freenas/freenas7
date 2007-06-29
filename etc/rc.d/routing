@@ -9,10 +9,11 @@
 
 # PROVIDE: routing
 # REQUIRE: NETWORKING pccard sysctl
-# KEYWORD: nojail nostart
+# KEYWORD: nojail
 
 . /etc/rc.subr
 . /etc/configxml.subr
+. /etc/util.subr
 
 name="routing"
 start_cmd="routing_start"
@@ -30,12 +31,21 @@ routing_start()
 
 routing_stop()
 {
-	route -n flush
+	#route -n flush
+
+	for _route in `cat /var/db/routes.db`; do
+		/sbin/route delete ${_route}
+	done
+
+	rm -f /var/db/routes.db
 }
 
 create_conf()
 {
 	local _index _name _network _gateway _protocol
+
+	# Clear /var/db/routes.db
+	cat /dev/null > /var/db/routes.db
 
 	_index=`/usr/local/bin/xml sel -t -v "count(//staticroutes/route)" ${configxml_file}`
 	_i=0
@@ -46,11 +56,15 @@ create_conf()
 		_gateway=`/usr/local/bin/xml sel -t -v "//staticroutes/route[position()=${_index}]/gateway" ${configxml_file}`
 
 		if is_validip inet6 ${_network}; then
-			_protocol="inet6"
+			_protocol="-inet6"
 		fi
 
 		static_routes="${static_routes} ${_name}"
 		eval route_${_name}="\"${_protocol} ${_network} ${_gateway}\""
+
+		# Store route so it can be easily removed later (if necessary).
+		# This is a stupid workaround, should be improved in future.
+		echo ${_network} >> /var/db/routes.db
 
 		_i=$(( ${_i} + 1 ))
 		_index=$(( ${_index} - 1 ))

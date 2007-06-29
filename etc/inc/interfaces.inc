@@ -144,8 +144,8 @@ function interfaces_lan_configure()
 		/* Make new /etc/hosts */
 		$result |= rc_exec_service("hosts");
 
-		/* Reconfigure static routes (kernel may have deleted them) */
-		$result |= system_routing_configure();
+		/* Reconfigure static routes */
+		$result |= rc_update_service("routing");
 
 		/* Restart Samba */
 		$result |= rc_update_service("samba");
@@ -192,15 +192,12 @@ function interfaces_optional_configure()
 	for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 		interfaces_optional_configure_if($i);
 	}
-		
+
 	if (!is_booting()) {
-		/* reconfigure static routes (kernel may have deleted them) */
-		system_routing_configure();
-		
-		/* restart dnsmasq */
-		/* services_dnsmasq_configure();*/
+		/* Reconfigure static routes */
+		rc_update_service("routing");
 	}
-	
+
 	return 0;
 }
 
@@ -396,16 +393,14 @@ EOD;
 
 function interfaces_auto_configure($if)
 {
-    global $config, $g;
+	global $config, $g;
 
-    /* Configure the kernel for receiving RA */
-	
+	/* Configure the kernel for receiving RA */
 	mwexec("/sbin/sysctl net.inet6.ip6.accept_rtadv=1");
 
-    /* fire up rtsol client */
-    mwexec("/sbin/rtsol " . escapeshellarg($if));
+	/* fire up rtsol client */
+	mwexec("/sbin/rtsol " . escapeshellarg($if));
 
-    return 0;
+	return 0;
 }
-
 ?>
