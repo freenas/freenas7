@@ -85,7 +85,7 @@ $g_rcservices['resolv']          = array("start_func" => "", "stop_func"  => "",
 $g_rcservices['cron']            = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "rcvar" => "", "set_rcvar" => "false");
 $g_rcservices['smartd']          = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['smart']);", "rcvar" => "smartd", "set_rcvar" => "true");
 $g_rcservices['powerd']          = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['powerd']);", "rcvar" => "powerd", "set_rcvar" => "true");
-$g_rcservices['systune']         = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['tune']);", "rcvar" => "systune", set_rcvar" => "true");
+$g_rcservices['systune']         = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['tune']);", "rcvar" => "systune", "set_rcvar" => "true");
 
 // Execute rc script.
 // Return 0 if successful, otherwise 1.
@@ -205,7 +205,7 @@ function rc_update_service($name) {
 	$rcvar = $name;
 	if ($g_rcservices[$name]) {
 		if (!empty($g_rcservices[$name]['rcvar'])) {
-			$rcvar = $g_rcservices[$name]['rcvar']
+			$rcvar = $g_rcservices[$name]['rcvar'];
 		}
 	}
 
@@ -225,7 +225,7 @@ function rc_update_service($name) {
 				break;
 		}
 	} else {
-		// Stop service if necessary. 
+		// Stop service if necessary.
 		if (0 == $running) {
 			$retval = rc_stop_service($name);
 		}

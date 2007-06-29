@@ -5,5 +5,5 @@
 # PROVIDE: system_postinit
 # REQUIRE: system_init
 
-// Let the other functions know we've finished booting.
+# Let the other functions know we've finished booting.
 rm -f /var/etc/booting > /dev/null
