@@ -83,6 +83,7 @@ $g_rcservices['hosts']           = array("start_func" => "", "stop_func"  => "",
 $g_rcservices['rcconf.sh']       = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "rcvar" => "", "set_rcvar" => "false");
 $g_rcservices['resolv']          = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "rcvar" => "", "set_rcvar" => "false");
 $g_rcservices['cron']            = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "rcvar" => "", "set_rcvar" => "false");
+$g_rcservices['routing']         = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "\$enabled = true;", "rcvar" => "", "set_rcvar" => "false");
 $g_rcservices['smartd']          = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['smart']);", "rcvar" => "smartd", "set_rcvar" => "true");
 $g_rcservices['powerd']          = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['powerd']);", "rcvar" => "powerd", "set_rcvar" => "true");
 $g_rcservices['systune']         = array("start_func" => "", "stop_func"  => "", "is_enabled_func" => "global \$config; \$enabled = isset(\$config['system']['tune']);", "rcvar" => "systune", "set_rcvar" => "true");
