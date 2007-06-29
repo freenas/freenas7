@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # PROVIDE: CONFIG
-# REQUIRE: system_postinit system_init timezone rcconf system_preinit
+# REQUIRE: system_postinit system_init execcmd_preinit timezone rcconf system_preinit
 # BEFORE: NETWORKING
 
 #	This is a dummy dependency.

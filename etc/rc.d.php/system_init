@@ -45,9 +45,6 @@
 	/* execute the rc.early scripts of extensions */
 	system_do_extensions(1);
 
-	/* run any early shell commands specified in config.xml */
-	system_do_shell_commands(1);
-
 	/* configure loopback interface */
 	interfaces_loopback_configure();
 

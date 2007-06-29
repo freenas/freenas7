@@ -3,7 +3,6 @@
 # All rights reserved.
 
 # PROVIDE: system_postinit
-# REQUIRE: system_init
 # BEFORE: CONFIG
 
 # Let the other functions know we've finished booting.
