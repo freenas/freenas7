@@ -49,16 +49,17 @@ get_ipaddr()
 # get_subnetmask 3ffe:beef:13e1:4c92::cd90/48
 get_subnetmask()
 {
-	_data=`/usr/local/bin/sipcalc $@`
-	_protocol=`cat ${_data} | head -n 1 | awk '{print $1}'`
+	local _protocol
+
+	_protocol=`/usr/local/bin/sipcalc $@ | head -n 1 | awk '{print $1}'`
 	_protocol=${_protocol#-[*}
 
 	case ${_protocol} in
 		ipv4)
-			echo `cat ${_data} | grep "Network mask" | head -n 1 | awk '{print $4}'`
+			echo `/usr/local/bin/sipcalc $@ | grep "Network mask" | head -n 1 | awk '{print $4}'`;
 			;;
 		ipv6)
-			echo `cat ${_data} | grep "Prefix address" | awk '{print $4}'`
+			echo `/usr/local/bin/sipcalc $@ | grep "Prefix address" | awk '{print $4}'`;
 			;;
 	esac
 }
@@ -73,18 +74,22 @@ get_subnetmask()
 # is_validip inet6 3ffe:beef:13e1:4c92::cd90/48
 is_validip()
 {
-	_protocol=$1
+	local _protocol_family _protocol
+
+	_protocol_family=$1
 	shift 1
 
-	_result=`/usr/local/bin/sipcalc $@ | head -n 1 | awk '{print $1}'`
-	_result=${_result#-[*}
+	_protocol=`/usr/local/bin/sipcalc $@ | head -n 1 | awk '{print $1}'`
+	_protocol=${_protocol#-[*}
 
-	if [ "ipv4" = "${_result}" -a "inet" = "${_protocol}" ]; then
-		return 0
-	fi
-	if [ "ipv6" = "${_result}" -a "inet6" = "${_protocol}" ]; then
-		return 0
-	fi
+	case ${_protocol} in
+		ipv4)
+			[ "inet" = "${_protocol_family}" ] && return 0;
+			;;
+		ipv6)
+			[ "inet6" = "${_protocol_family}" ] && return 0;
+			;;
+	esac
 
 	return 1
 }
