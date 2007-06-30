@@ -4,6 +4,7 @@
 
 # PROVIDE: ataidle
 # REQUIRE: DAEMON
+# BEFORE: LOGIN
 
 . /etc/configxml.subr
 
