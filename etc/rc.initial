@@ -7,6 +7,8 @@
 # Modified for FreeNAS (http://www.freenas.org) by Olivier Cochard-Labbe <olivier@freenas.org>
 # Somes lines on this file are taken from pfSense (http://www.pfsense.com/) by Scott Ullrich
 
+. /etc/configxml.subr
+
 # make sure the user can't kill us by pressing Ctrl-C
 trap : 2
 trap : 3
@@ -17,87 +19,74 @@ PLATFORM=`cat /etc/platform`
 # redirect input/output
 exec </dev/console >/dev/console 2>/dev/console
 
-if [ -r /var/etc/disableconsole ]; then
-
-while : ; do
-
-echo
-echo
-echo "*** Console menu disabled. ***"
-echo
-
-read tmp
-
-done
-
-#/bin/sleep 10
-
+# Check if console menu is disabled.
+if configxml_isset //system/disableconsolemenu; then
+	while : ; do
+		echo
+		echo
+		echo "*** Console menu disabled. ***"
+		echo
+		read tmp
+	done
 else
+	# endless loop
+	while : ; do
+		# Change permission to the / directory
+		chmod 0711 root /
 
-# endless loop
-while : ; do
+		# display a cheap menu
+		echo
+		echo
+		echo "Console setup"
+		echo "*************"
+		#echo "0) Logout (SSH only)"
+		echo "1) Assign Interfaces"
+		echo "2) Set LAN IP address"
+		echo "3) Reset webGUI password"
+		echo "4) Reset to factory defaults"
+		echo "5) Ping host"
+		echo "6) Shell"
+		echo "7) Reboot system"
+		echo "8) PowerOff system"
+		if [ "$PLATFORM" = "i386-liveCD" ] || [ "$PLATFORM" = "amd64-liveCD" ]; then
+		    echo "9) Install/Upgrade to an hard drive/flash device, etc."
+		fi
 
-# Change permission to the / directory
-chmod 0711 root /
+		echo
+		read -p "Enter a number: " opmode
 
-# display a cheap menu
-echo
-echo
-echo "Console setup"
-echo "*************"
-#echo "0) Logout (SSH only)"
-echo "1) Assign Interfaces"
-echo "2) Set LAN IP address"
-echo "3) Reset webGUI password"
-echo "4) Reset to factory defaults"
-echo "5) Ping host"
-echo "6) Shell"
-echo "7) Reboot system"
-echo "8) PowerOff system"
-if [ "$PLATFORM" = "i386-liveCD" ] || [ "$PLATFORM" = "amd64-liveCD" ]; then
-    echo "9) Install/Upgrade to an hard drive/flash device, etc."
-fi
-
-echo
-
-read -p "Enter a number: " opmode
-
-# see what the user has chosen
-case ${opmode} in
-0)
-	exit && exit && logout
+		# see what the user has chosen
+		case ${opmode} in
+			0)
+				exit && exit && logout
         ;;
-1)
-	/etc/rc.initial.setports
- 	;;
-2)
-	/etc/rc.initial.setlanip
- 	;;
-3)
-	/etc/rc.initial.password
-	;;
-4)
-	/etc/rc.initial.defaults
-	;;
-
-5)
-	/etc/rc.initial.ping
-	;;
-
-6)
-	/bin/tcsh
-	;;
-7)
-	/etc/rc.initial.reboot
-	;;
-8)
-	/etc/rc.initial.halt
-	;;
-9)
-	/etc/rc.initial.install
-	;;
-esac
-
-done
-
+			1)
+				/etc/rc.initial.setports
+			 	;;
+			2)
+				/etc/rc.initial.setlanip
+			 	;;
+			3)
+				/etc/rc.initial.password
+				;;
+			4)
+				/etc/rc.initial.defaults
+				;;
+			5)
+				/etc/rc.initial.ping
+				;;
+			6)
+				/bin/tcsh
+				;;
+			7)
+				/etc/rc.initial.reboot
+				;;
+			8)
+				/etc/rc.initial.halt
+				;;
+			9)
+				/etc/rc.initial.install
+				;;
+		esac
+	done
 fi

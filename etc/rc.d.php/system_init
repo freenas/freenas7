@@ -57,9 +57,6 @@
 	/* Generate the pam configuration file */
 	system_pam_configure();
 
-	/* configure console menu */
-	system_console_configure();
-
 	/* ATA disk Idle configuration */
 	disks_set_ataidle();
 

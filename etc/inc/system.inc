@@ -109,16 +109,6 @@ function system_do_extensions($early = false) {
 	}
 }
 
-function system_console_configure() {
-	global $config, $g;
-
-	if (isset($config['system']['disableconsolemenu'])) {
-		touch("{$g['varetc_path']}/disableconsole");
-	} else {
-		unlink_if_exists("{$g['varetc_path']}/disableconsole");
-	}
-}
-
 function system_set_harddisk_standby() {
 	global $g, $config;
 
