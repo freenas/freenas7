@@ -8,7 +8,7 @@
 
 . /etc/configxml.subr
 
-echo -n "Initializing ataidle: "
+echo -n "Initializing idle timer/UDMA on ATA disks: "
 
 # Get number of configured IDE disks.
 _index=`/usr/local/bin/xml sel -t -v "count(//disks/disk[type = 'IDE'])" ${configxml_file}`
