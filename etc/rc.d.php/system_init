@@ -57,9 +57,6 @@
 	/* Generate the pam configuration file */
 	system_pam_configure();
 
-	/* ATA disk Idle configuration */
-	disks_set_ataidle();
-
 	/* RAID configuration */
 	disks_raid_start();
 

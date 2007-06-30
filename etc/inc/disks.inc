@@ -999,62 +999,6 @@ function disks_raid_graid5_delete($raidname)
 	return 0;
 }
 
-// Set the ataidle tools parameters.
-// Return 0 if successful, 1 if error
-function disks_set_ataidle()
-{
-	global $g, $config;
-
-	if (is_array($config['disks']['disk'])) {
-		foreach ($config['disks']['disk'] as $disk) {
-
-			if ($disk['type'] === "IDE") {
-				/* If UDMA mode forced, launch atacontrol */
-				if (isset($disk['udma']) && ($disk['udma'] != "auto")) {
-					mwexec("/sbin/atacontrol mode {$disk['name']}  {$disk['udma']}");
-				}
-
-				/* Don't use ataidle if all is disabled */
-				if (($disk['harddiskstandby'] == 0) && ($disk['apm'] == 0) && ($disk['acoustic'] == 0)) {
-					continue;
-				}
-
-				/* Found the channel and device number from the /dev name */
-				/* Divise the number by 2, the interger is the channel number, the rest is the device */
-
-				$value=trim($disk['name'],'ad');
-
-				$value=intval($value);
-				$channel = $value/2;
-				$device=$value % 2;
-				$channel=intval($channel);
-				$time=$disk['harddiskstandby'];
-				$apm=$disk['apm'];
-				$ac=$disk['acoustic'];
-
-				$cmd = "/usr/local/sbin/ataidle ";
-
-				if ($disk['acoustic'] != 0) {
-					$cmd .= "-A $ac  ";
-				}
-				if ($disk['apm'] != 0) {
-					$cmd .= "-P $apm ";
-				}
-				if ($disk['harddiskstandby'] !=0) {
-					$cmd .= "-S $time ";
-				}
-
-				$cmd .= "$channel $device";
-
-				mwexec($cmd);
-			}
-		}
-		return 1;
-	}
-
-	return 0;
-}
-
 // Check the status of a geli encrypted disk
 // Return 0 if successful, 1 if error
 function disks_geli_check($gelifullname)

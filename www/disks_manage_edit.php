@@ -97,17 +97,17 @@ if ($_POST) {
 		$disks['type'] = $disklist[$devname]['type'];
 		$disks['desc'] = $disklist[$devname]['desc'];
 		$disks['size'] = $disklist[$devname]['size'];
-		
+
 		if (isset($id) && $a_disk[$id])
 			$a_disk[$id] = $disks;
 		else
 			$a_disk[] = $disks;
-		
+
 		touch($d_diskdirty_path);
-		
-		disks_set_ataidle();
+
 		write_config();
-		
+		rc_exec_service("ataidle");
+
 		header("Location: disks_manage.php");
 		exit;
 	}

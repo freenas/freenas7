@@ -1,0 +1,57 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: ataidle
+# REQUIRE: DAEMON
+
+. /etc/configxml.subr
+
+echo "Initializing ataidle."
+
+# Get number of configured IDE disks.
+_index=`/usr/local/bin/xml sel -t -v "count(//disks/disk[type = 'IDE'])" ${configxml_file}`
+while [ ${_index} -gt 0 ]
+do
+	# Get disk informations.
+	_diskinfo=`/usr/local/bin/xml sel -t -m "//disks/disk[type = 'IDE'][${_index}]" \
+		-v "concat(name,' ',udma,' ',harddiskstandby,' ',apm,' ',acoustic)" \
+		${configxml_file}`
+
+	# Extract attributes.
+	# This is not the best solution. Got a better idea how to do that?
+	_name=`echo ${_diskinfo} | awk '{print $1}'`
+	_udma=`echo ${_diskinfo} | awk '{print $2}'`
+	_harddiskstandby=`echo ${_diskinfo} | awk '{print $3}'`
+	_apm=`echo ${_diskinfo} | awk '{print $4}'`
+	_acoustic=`echo ${_diskinfo} | awk '{print $5}'`
+
+	# Calculate the channel and device ids.
+	_devnum=${_name#*ad}
+	_channel=$(( ${_devnum} / 2 ))
+	_device=$(( ${_devnum} % 2 ))
+
+	# If UDMA mode is forced, launch atacontrol.
+	if [ "auto" != "${_udma}" ]; then
+		/sbin/atacontrol mode ${_name} ${_udma} > /dev/null 2>&1
+	fi
+
+	# Set command args.
+	_cmdargs=""
+
+	if [ ${_acoustic} != 0 ]; then
+		_cmdargs="${_cmdargs} -A ${_acoustic}"
+	fi
+
+	if [ ${_apm} != 0 ]; then
+		_cmdargs="${_cmdargs} -P ${_apm}"
+	fi
+
+	if [ ${_harddiskstandby} != 0 ]; then
+		_cmdargs="${_cmdargs} -S ${_harddiskstandby}"
+	fi
+
+	/usr/local/sbin/ataidle ${_cmdargs} ${_channel} ${_device} > /dev/null 2>&1
+
+	_index=$(( ${_index} - 1 ))
+done
