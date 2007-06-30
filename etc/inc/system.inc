@@ -35,9 +35,6 @@ require_once("util.inc");
 require_once("rc.inc");
 
 function system_stop_common() {
-	/* Stop swap */
-	rc_stop_service("swap");
-
 	/* Umount all disk s*/
 	disks_umount_all();
 
@@ -54,10 +51,13 @@ function system_reboot() {
 	/* Send beep */
 	system_beep_down();
 
-	exec("/usr/bin/nohup /etc/rc.reboot > /dev/null 2>&1 &");
+	rc_exec_script_async("/etc/rc.reboot");
 }
 
 function system_halt() {
+	/* Stop swap */
+	rc_stop_service("swap");
+
 	system_stop_common();
 
 	/* Send beep */
@@ -67,12 +67,15 @@ function system_halt() {
 }
 
 function system_reboot_sync() {
+	/* Stop swap */
+	rc_stop_service("swap");
+
 	system_stop_common();
 
 	/* Send beep */
 	system_beep_down();
 
-	exec("/etc/rc.reboot > /dev/null 2>&1");
+	rc_exec_script("/etc/rc.reboot");
 }
 
 function system_do_shell_commands($early = 0) {

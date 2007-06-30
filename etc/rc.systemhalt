@@ -4,6 +4,5 @@ require_once("globals.inc");
 require_once("functions.inc");
 require_once("util.inc");
 
-// Start the shutdown
-system_halt();
+system_stop_common();
 ?>
