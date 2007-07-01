@@ -229,6 +229,9 @@ sbin/swapon
 ## swapoff - Disable swap
 sbin/swapoff
 
+## pstat, swapinfo -- display system data structures
+usr/sbin/pstat:usr/sbin/swapinfo
+
 ##tunefs -- tune up an existing file system
 sbin/tunefs
 
