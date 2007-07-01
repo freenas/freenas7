@@ -99,6 +99,8 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			rc_exec_service("pam");
+			rc_exec_service("ldap");
+			rc_start_service("nsswitch");
 			rc_update_service("samba");
 			config_unlock();
 		}

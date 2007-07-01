@@ -1,0 +1,38 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: ldap
+# BEFORE: CONFIG
+# REQUIRE: system_postinit
+
+#
+# Configure LDAP modules
+#
+
+. /etc/configxml.subr
+
+# Defaults
+ldap_config=${ldap_config:-"/var/etc/ldap.conf"}
+ldap_secret=${ldap_secret:-"/var/etc/ldap.secret"}
+
+# Create /var/etc/ldap.conf and /var/etc/ldap.secret
+if configxml_isset //ldap/enable; then
+	echo "Generating ldap.conf."
+	/usr/local/bin/xml sel -t -m "//ldap" \
+		-v "concat('uri ldap://',host_ip)" -n \
+		-v "concat('base ',base)" -n \
+		-v "concat('binddn ',binddn)" -n \
+		-v "concat('bindpw ',bindpw)" -n \
+		-v "concat('nss_base_passwd ',password_suffix,'?one')" -n \
+		-v "concat('nss_base_shadow ',password_suffix,'?one')" -n \
+		-v "concat('nss_base_group ',group_suffix,'?one')" -n \
+		-v "concat('pam_password ',pam_password)" \
+		${configxml_file} > ${ldap_config}
+
+	echo "Generating ldap.secret."
+	/usr/local/bin/xml sel -t -m "//ldap" \
+		-v "password_suffix" \
+		${configxml_file} > ${ldap_secret}
+	/bin/chmod 0600 ${ldap_secret}
+fi

@@ -7,7 +7,7 @@
 # REQUIRE: system_postinit
 
 #
-# Configure PAM, NSS and LDAP modules
+# Configure PAM configuration files.
 #
 
 . /etc/configxml.subr
@@ -17,9 +17,6 @@ system_config=${system_config:-"/etc/pam.d/system"}
 sshd_config=${sshd_config:-"/etc/pam.d/sshd"}
 ftp_config=${ftp_config:-"/etc/pam.d/ftp"}
 login_config=${login_config:-"/etc/pam.d/login"}
-nsswitch_config=${nsswitch_config:-"/etc/nsswitch.conf"}
-ldap_config=${ldap_config:-"/var/etc/ldap.conf"}
-ldap_secret=${ldap_secret:-"/var/etc/ldap.secret"}
 
 # Ensure that target directory exists.
 if [ ! -e /var/etc/pam.d ]; then
@@ -134,63 +131,3 @@ fi
 	-n -o "# password" -n \
 	-o "password   include         system" \
 	${configxml_file} > ${login_config}
-
-# Create /var/etc/nsswitch.conf
-/usr/local/bin/xml sel -t \
-	-i "count(//ad/enable) > 0" -i "count(//ldap/enable) = 0" \
-		-o "group: files winbind" -n \
-		-o "group_compat: nis" -n \
-		-o "hosts: files dns wins" -n \
-		-o "networks: files" -n \
-		-o "passwd: files winbind" -n \
-		-o "passwd_compat: nis" -n \
-		-o "shells: files" \
-	-b -b \
-	-i "count(//ad/enable) > 0" -i "count(//ldap/enable) > 0" \
-		-o "group: files winbind ldap" -n \
-		-o "group_compat: nis" -n \
-		-o "hosts: files dns wins ldap" -n \
-		-o "networks: files" -n \
-		-o "passwd: files winbind ldap" -n \
-		-o "passwd_compat: nis" -n \
-		-o "shells: files" \
-	-b -b \
-	-i "count(//ad/enable) = 0" -i "count(//ldap/enable) > 0" \
-		-o "group: files ldap" -n \
-		-o "group_compat: nis" -n \
-		-o "hosts: files dns ldap" -n \
-		-o "networks: files" -n \
-		-o "passwd: files ldap" -n \
-		-o "passwd_compat: nis" -n \
-		-o "shells: files" \
-	-b -b \
-	-i "count(//ad/enable) = 0" -i "count(//ldap/enable) = 0" \
-		-o "group: compat" -n \
-		-o "group_compat: nis" -n \
-		-o "hosts: files dns" -n \
-		-o "networks: files" -n \
-		-o "passwd: compat" -n \
-		-o "passwd_compat: nis" -n \
-		-o "shells: files" \
-	-b -b \
-	${configxml_file} > ${nsswitch_config}
-
-# Create /var/etc/ldap.conf and /var/etc/ldap.secret
-if configxml_isset //ldap/enable; then
-	/usr/local/bin/xml sel -t -m "//ldap" \
-		-v "concat('uri ldap://',host_ip)" -n \
-		-v "concat('base ',base)" -n \
-		-v "concat('binddn ',binddn)" -n \
-		-v "concat('bindpw ',bindpw)" -n \
-		-v "concat('nss_base_passwd ',password_suffix,'?one')" -n \
-		-v "concat('nss_base_shadow ',password_suffix,'?one')" -n \
-		-v "concat('nss_base_group ',group_suffix,'?one')" -n \
-		-v "concat('pam_password ',pam_password)" \
-		${configxml_file} > ${ldap_config}
-
-	/usr/local/bin/xml sel -t -m "//ldap" \
-		-v "password_suffix" \
-		${configxml_file} > ${ldap_secret}
-
-	/bin/chmod 0600 ${ldap_secret}
-fi
