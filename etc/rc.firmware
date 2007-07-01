@@ -107,7 +107,7 @@ case $1 in
 		echo "Upgrade Done - rebooting system..."
 		/usr/bin/logger "Upgrade Done - rebooting system..."
 
-		/sbin/shutdown -r now
+		/sbin/shutdown -r now > /dev/null 2>&1
 		;;
 
 	fullupgrade)
@@ -164,7 +164,7 @@ case $1 in
 		echo "Upgrade Done - rebooting system..."
 		/usr/bin/logger "Upgrade Done - rebooting system..."
 
-		/sbin/shutdown -r now
+		/sbin/shutdown -r now > /dev/null 2>&1
 		;;
 esac
 
