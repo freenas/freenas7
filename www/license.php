@@ -157,6 +157,12 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 		<p>INADYN - Simple Dynamic DNS client (<a href="http://inadyn.ina-tech.net" target="_blank">http://inadyn.ina-tech.net</a>)<br>
       Copyright &copy; 2003-2004 Narcis Ilisei. All rights reserved.</p>
 
+		<p>XMLStarlet Command Line XML Toolkit (<a href="http://xmlstar.sourceforge.net" target="_blank">http://xmlstar.sourceforge.net</a>)<br>
+      Copyright (c) 2002 Mikhail Grushinskiy. All rights reserved.</p>
+
+		<p>sipcalc (<a href="http://www.routemeister.net/projects/sipcalc" target="_blank">http://www.routemeister.net/projects/sipcalc</a>)<br>
+      Copyright (c) 2003 Simon Ekstrand. All rights reserved.</p>
+
 	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com/" target="_blank">http://www.pfsense.com/</a>)<br>
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
       </p>
