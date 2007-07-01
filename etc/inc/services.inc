@@ -584,7 +584,8 @@ EOD;
 
 			if (isset($config['afp']['enable'])) {
 				$sambaconf .= <<<EOD
-vfs objects = netatalk
+#Comment netatalk vfs, because it crash Samba
+#vfs objects = netatalk
 
 EOD;
 			}
