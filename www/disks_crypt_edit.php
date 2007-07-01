@@ -3,7 +3,7 @@
 /*
 	disks_crypt_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -290,10 +290,10 @@ if (!isset($do_crypt)) {
 				// Initialize and encrypt the disk.
 				echo gettext("Encrypting... Please wait")."!\n";
 				if( 0 == strcmp($aalgo,"none")) {
-					system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init -t -v -e {$ealgo} {$disk}");
+					system("/sbin/geli init -X {$passphrase} -v -e {$ealgo} {$disk}");
 				}
 				else {
-					system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init -t -v -a {$aalgo} -e {$ealgo} {$disk}");
+					system("/sbin/geli init -X {$passphrase} -v -a {$aalgo} -e {$ealgo} {$disk}");
 				}
 
 				// Attach the disk.

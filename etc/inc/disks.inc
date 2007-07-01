@@ -1027,9 +1027,9 @@ function disks_geli_attach($gelifullname,$passphrase,$verbose = false)
 	$gelifullname = rtrim($gelifullname,".eli");
 
 	if (false == $verbose) {
-		$result = mwexec("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli attach -t {$gelifullname}");
+		$result = mwexec("/sbin/geli attach -X {$passphrase} {$gelifullname}");
 	} else {
-		$result = mwexec("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli attach -t -v {$gelifullname}");
+		$result = mwexec("/sbin/geli attach -X {$passphrase} -v {$gelifullname}");
 	}
 
 	return $result;
