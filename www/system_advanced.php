@@ -40,8 +40,6 @@ $pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
 $pconfig['disableconsolemenu'] = isset($config['system']['disableconsolemenu']);
 $pconfig['disablefirmwarecheck'] = isset($config['system']['disablefirmwarecheck']);
 $pconfig['expanddiags'] = isset($config['system']['webgui']['expanddiags']);
-if (("embedded" === $g['platform']) || ("full" === $g['platform']))
-	$pconfig['harddiskstandby'] = $config['system']['harddiskstandby'];
 $pconfig['disablebeep'] = isset($config['system']['disablebeep']);
 $pconfig['tune_enable'] = isset($config['system']['tune']);
 $pconfig['smart_enable'] = isset($config['system']['smart']);
@@ -73,10 +71,6 @@ if ($_POST) {
 		$config['system']['disableconsolemenu'] = $_POST['disableconsolemenu'] ? true : false;
 		$config['system']['disablefirmwarecheck'] = $_POST['disablefirmwarecheck'] ? true : false;
 		$config['system']['webgui']['expanddiags'] = $_POST['expanddiags'] ? true : false;
-		if (("embedded" === $g['platform']) || ("full" === $g['platform'])) {
-			$oldharddiskstandby = $config['system']['harddiskstandby'];
-			$config['system']['harddiskstandby'] = $_POST['harddiskstandby'];
-		}
 		$config['system']['webgui']['noantilockout'] = $_POST['noantilockout'] ? true : false;
 		$config['system']['disablebeep'] = $_POST['disablebeep'] ? true : false;
 		$config['system']['tune'] = $_POST['tune_enable'] ? true : false;
@@ -88,15 +82,6 @@ if ($_POST) {
 
 		if (($config['system']['webgui']['certificate'] != $oldcert) || ($config['system']['webgui']['private-key'] != $oldkey)) {
 			touch($d_sysrebootreqd_path);
-		} else if ((("embedded" === $g['platform']) || ("full" === $g['platform'])) && ($config['system']['harddiskstandby'] != $oldharddiskstandby)) {
-			if (!$config['system']['harddiskstandby']) {
-				// Reboot needed to deactivate standby due to a stupid ATA-protocol
-				touch($d_sysrebootreqd_path);
-				unset($config['system']['harddiskstandby']);
-			} else {
-				// No need to set the standby-time if a reboot is needed anyway
-				system_set_harddisk_standby();
-			}
 		}
 
 		$retval = 0;
@@ -108,6 +93,7 @@ if ($_POST) {
 			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
+
 		$savemsg = get_std_save_message($retval);
 	}
 }

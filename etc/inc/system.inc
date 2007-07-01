@@ -56,7 +56,7 @@ function system_halt() {
 	// Initiate halt. Everything will be done automatically
 	// in /etc/rc.dhutdown by executing rc-init scripts in
 	// reverse order (the 'KEYWORD: shutdown' must be defined).
-	mwexec_bg("/sbin/shutdown -p now");
+	mwexec("/sbin/shutdown -p now");
 }
 
 function system_do_shell_commands($early = 0) {
@@ -90,38 +90,6 @@ function system_do_extensions($early = false) {
 				passthru($rcfile);
 		}
 		closedir($dh);
-	}
-}
-
-function system_set_harddisk_standby() {
-	global $g, $config;
-
-	if (($g['platform'] != "embedded") || ($g['platform'] != "full"))
-		return;
-
-	if (isset($config['system']['harddiskstandby']) &&
-			($config['system']['harddiskstandby'] > 0)) {
-		if (is_booting()) {
-			write_console("Setting harddisk standby time... ");
-		}
-
-		$standby = $config['system']['harddiskstandby'];
-		// Check for a numeric value
-		if (is_numeric($standby)) {
-			// Sync the disk(s)
-			mwexec('/bin/sync');
-			if (!mwexec('/sbin/sysctl hw.ata.suspend=' . ((int)$standby*60))) {
-				// Reinitialize ATA-drives
-				mwexec('/usr/local/sbin/atareinit');
-				if (is_booting()) {
-					write_console("done\n");
-				}
-			} else if (is_booting()) {
-				write_console("failed\n");
-			}
-		} else if (is_booting()) {
-			write_console("failed\n");
-		}
 	}
 }
 

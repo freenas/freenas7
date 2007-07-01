@@ -719,6 +719,16 @@ function convert_config() {
 		$config['version'] = "2.0";
 	}
 
+	/* Convert 2.0 -> 2.1 */
+	/* Remove //system/harddiskstandby */
+	if ($config['version'] === "2.0") {
+		if (isset($config['system']['harddiskstandby'])) {
+			unset($config['system']['harddiskstandby']);
+		}
+
+		$config['version'] = "2.1";
+	}
+
 	write_config();
 
 	if (is_booting())
