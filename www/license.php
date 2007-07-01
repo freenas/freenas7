@@ -135,7 +135,7 @@ Copyright  &copy; 2002-2005 Bruce Allen.</p>
 	  <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br>
 Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 
- <p>NetBSD iSCSI-target (<a href="http://www.netbsd.org/" target="_blank">http://www.netbsd.org/</a>)<br>
+ <p>NetBSD iSCSI-target (<a href="http://www.netbsd.org" target="_blank">http://www.netbsd.org/</a>)<br>
 	  Copyright &copy; 1994-2005 The NetBSD Foundation, Inc. All rights reserved.
       </p>
 
@@ -145,10 +145,10 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
     <p>uShare UPnP A/V Media Server (<a href="http://ushare.geexbox.org" target="_blank">http://ushare.geexbox.org</a>)<br>
       Copyright &copy; 2005-2006 Benjamin Zores. All rights reserved.</p>
 	  
-	 <p>NTFS-3G driver (<a href="http://www.ntfs-3g.org/" target="_blank">http://www.ntfs-3g.org/</a>)<br>
+	 <p>NTFS-3G driver (<a href="http://www.ntfs-3g.org" target="_blank">http://www.ntfs-3g.org/</a>)<br>
       from Szabolcs Szakacsits.</p>
 	  
-	   <p>Fuse - Filesystem in Userspace (<a href="http://fuse.sourceforge.net/" target="_blank">http://fuse.sourceforge.net/</a>)<br>
+	   <p>Fuse - Filesystem in Userspace (<a href="http://fuse.sourceforge.net" target="_blank">http://fuse.sourceforge.net/</a>)<br>
       </p>
 		<p>e2fsprogs (<a href="http://e2fsprogs.sourceforge.net" target="_blank">http://e2fsprogs.sourceforge.net</a>)<br>
       Copyright &copy; 1994-2006 Theodore Ts'o. All rights reserved.
@@ -163,7 +163,7 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 		<p>sipcalc (<a href="http://www.routemeister.net/projects/sipcalc" target="_blank">http://www.routemeister.net/projects/sipcalc</a>)<br>
       Copyright (c) 2003 Simon Ekstrand. All rights reserved.</p>
 
-	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com/" target="_blank">http://www.pfsense.com/</a>)<br>
+	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com" target="_blank">http://www.pfsense.com/</a>)<br>
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
       </p>
 
