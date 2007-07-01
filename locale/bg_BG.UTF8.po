@@ -1,19 +1,24 @@
+# English (United Kingdom) translation for freenas
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the freenas package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: freenas\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-05-25 18:25+0000\n"
-"Last-Translator: kingcharles1666 <mico@kabelfoon.nl>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2007-04-05 17:39+0000\n"
+"Last-Translator: Boris <protoblade@gmail.com>\n"
+"Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-SourceCharset: iso-8859-1\n"
-"X-Poedit-Language: Dutch\n"
-"X-Rosetta-Export-Date: 2007-06-28 13:18:56+0000\n"
+"X-Rosetta-Export-Date: 2007-06-28 13:18:17+0000\n"
 
 msgid "Date"
-msgstr "Datum"
+msgstr "дата"
 
 msgid "%b %d, %Y"
 msgstr "%b %d, %Y"
@@ -31,317 +36,316 @@ msgid "%A, %B %d, %Y - %I:%M %p"
 msgstr "%A, %B %d, %Y - %I:%M %p"
 
 msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
-msgstr "zondag maandag dinsdag woensdag donderdag vrijdag zaterdag"
+msgstr "Неделя Понеделник Вторник Сряда Четвъртък Петък Събота"
 
 msgid "Sun Mon Tue Wed Thu Fri Sat"
-msgstr "ma di wo do vr za zo"
+msgstr "Нед Пон Вто Сря Чет Пет Съб"
 
 msgid ""
 "January February March April May June July August September October November "
 "December"
 msgstr ""
-"januari februari maart april mei juni juli augustus september oktober "
-"november december"
+"Януари Февруари Март Април Май Юни Юли Август Септември Октомври Ноември "
+"Декември"
 
 msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
-msgstr "jan feb maa apr mei jun jul aug sep okt nov dec"
+msgstr "Яну Фев Мар Апр Май Юни Юли Авг Сеп Окт Ное"
 
 msgid "Time"
-msgstr "Tijd"
+msgstr "Час"
 
 msgid "%I:%M %p"
 msgstr "%I:%M %p"
 
 msgid "second"
-msgstr "seconde"
+msgstr "секунда"
 
 msgid "seconds"
-msgstr "seconden"
+msgstr "секунди"
 
 msgid "minute"
-msgstr "minuut"
+msgstr "минута"
 
 msgid "minutes"
-msgstr "minuten"
+msgstr "минути"
 
 msgid "hour"
-msgstr "uur"
+msgstr "час"
 
 msgid "hours"
-msgstr "uren"
+msgstr "ч"
 
 msgid "day"
-msgstr "dag"
+msgstr "ден"
 
 msgid "days"
-msgstr "dagen"
+msgstr "дни"
 
 msgid "week"
-msgstr "week"
+msgstr "седмица"
 
 msgid "weeks"
-msgstr "weken"
+msgstr "седмици"
 
 msgid "week days"
-msgstr "weekdagen"
+msgstr "ден от седмицата"
 
 msgid "month"
-msgstr "maand"
+msgstr "месец"
 
 msgid "months"
-msgstr "maanden"
+msgstr "месеци"
 
 msgid "year"
-msgstr "jaar"
+msgstr "година"
 
 msgid "years"
-msgstr "jaren"
+msgstr "години"
 
 msgid "All"
-msgstr "Alle"
+msgstr "Всички"
 
 msgid "and"
-msgstr "en"
+msgstr "и"
 
 msgid "by"
-msgstr "tegen"
+msgstr "към"
 
 msgid "Down"
-msgstr "Onder"
+msgstr "Надолу"
 
 msgid "No"
-msgstr "Nee"
+msgstr "Не"
 
 msgid "off"
-msgstr "uit"
+msgstr "изкл."
 
 msgid "OK"
-msgstr "OK"
+msgstr "Да"
 
 msgid "on"
-msgstr "aan"
+msgstr "вкл."
 
 msgid "To"
-msgstr "Tot"
+msgstr "To"
 
 msgid "The"
-msgstr "De"
+msgstr "The"
 
 msgid "Up"
-msgstr "Boven"
+msgstr "Нагоре"
 
 msgid "URL"
-msgstr "URL"
+msgstr "Уеб адрес"
 
 msgid "Yes"
-msgstr "Ja"
+msgstr "Да"
 
 msgid "Activate"
-msgstr "Activeren"
+msgstr "Активирай"
 
 msgid "Add"
-msgstr "Toevoegen"
+msgstr "Добави"
 
 msgid "Cancel"
-msgstr "Annuleren"
+msgstr "Отмени"
 
 msgid "Create"
-msgstr "Aanmaken"
+msgstr "Създай"
 
 msgid "Deactivate"
-msgstr "Deactiveren"
+msgstr "Деактивирай"
 
 msgid "Delete"
-msgstr "Verwijderen"
+msgstr "Премахни"
 
 msgid "Edit"
-msgstr "Bewerken"
+msgstr "Редакция"
 
 msgid "Enable"
-msgstr "Instellen"
+msgstr "Позволи"
 
 msgid "Help"
-msgstr "Help"
+msgstr "Помощ"
 
 msgid "Ignore"
-msgstr "Negeren"
+msgstr "Игнорирай"
 
 msgid "Login"
-msgstr "Aanmelden"
+msgstr "Вписване"
 
 msgid "Log out"
-msgstr "Afmelden"
+msgstr "Изход"
 
 msgid "Modify"
-msgstr "Wijzigen"
+msgstr "Промяна"
 
 msgid "New"
-msgstr "Nieuw"
+msgstr "Нов"
 
 msgid "Search"
-msgstr "Zoeken"
+msgstr "Търсене"
 
 msgid "Save"
-msgstr "Bewaren"
+msgstr "Запази"
 
 msgid "Submit"
-msgstr "Doorsturen"
+msgstr "Потвърди"
 
 msgid "Update"
-msgstr "Bijwerken"
+msgstr "Обнови"
 
 msgid "View"
-msgstr "Bekijken"
+msgstr "Покажи"
 
 msgid "Apply changes"
-msgstr "Wijzigingen toepassen"
+msgstr "Прилагане на промените"
 
 msgid "Warning"
-msgstr "Waarschuwing"
+msgstr "Внимания"
 
 msgid "Load"
-msgstr "Laden"
+msgstr "Зареди"
 
 msgid "Retry"
-msgstr "Opnieuw proberen"
+msgstr "Нов опит"
 
 msgid "Size"
-msgstr "Grootte"
+msgstr "Размер"
 
 msgid "Status"
-msgstr "Status"
+msgstr "Състояние"
 
 msgid "Type"
-msgstr "Type"
+msgstr "Тип:"
 
 msgid "Configuring"
-msgstr "Configureren"
+msgstr "конфигуриране"
 
 msgid "Disk"
-msgstr "Schijf"
+msgstr "Диск"
 
 msgid "Disks"
-msgstr "Schijven"
+msgstr "Дискове"
 
 msgid "Partition"
-msgstr "Partitie"
+msgstr "Дял"
 
 msgid "File system"
-msgstr "Bestandssysteem"
+msgstr "Файлова система"
 
 msgid "Description"
-msgstr "Omschrijving"
+msgstr "Описание"
 
 msgid "Software RAID"
-msgstr "Software RAID"
+msgstr "Софтуерен RAID"
 
 msgid "Service"
-msgstr "Dienst"
+msgstr "Услуга"
 
 msgid "TCP port"
-msgstr "TCP poort"
+msgstr "ТCP порт"
 
 msgid "Confirmation"
-msgstr "Bevestiging"
+msgstr "Потвърждение"
 
 msgid "Note"
-msgstr "Aantekening"
+msgstr "Забележка"
 
 msgid "Successful"
-msgstr "Succesvol"
+msgstr "Успешно"
 
 msgid "Failed"
-msgstr "Mislukt"
+msgstr "Неуспех"
 
 msgid "Error"
-msgstr "Fout"
+msgstr "Грешка"
 
 msgid "Hint"
-msgstr "Hint"
+msgstr "Съвет"
 
 msgid "The changes have been applied successfully."
-msgstr "De wijzigingen zijn doorgevoerd"
+msgstr "Промените бяха приложени успешно."
 
 msgid ""
 "The changes have been saved. You must <a href=%s>reboot</a> your NAS for "
 "changes to take effect."
 msgstr ""
-"De wijzigingen zijn opgeslagen. Je moet de NAS <a href=%s>herstarten</a> om "
-"de wijzigingen te activeren."
+"Промените бяха запазени. Трябва да <a href=%s>рестартираш</a>  NAS за \n"
+"да влязат в сила."
 
 msgid "ERROR: The changes could not be applied (error code %s)."
-msgstr "FOUT: De wijzigingen konden niet toegepast worden (foutcode %s)."
+msgstr "ГРЕШКА: Промените не могат да бъдат прилжени (код на грешката %s)."
 
 msgid "A valid IP address must be specified."
-msgstr "Er moet een geldig IP-adres opgegeven worden."
+msgstr "Трябава да въведете валиден IP адрес."
 
 msgid "A valid network bit count must be specified."
-msgstr "Er moet een geldige bit-count voor het netwerk gegeven worden."
+msgstr "A valid network bit count must be specified."
 
 msgid "The TCP port must be a valid port number."
-msgstr "De TCP-poort moet geldig zijn."
+msgstr "The TCP port must be a valid port number."
 
 msgid "Password don't match."
-msgstr "De opgegeven wachtwoorden komen niet overeen."
+msgstr "паролата не съвпада."
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and de-select "
 "minutes, hours, days and months."
 msgstr ""
-"Hint: Ctrl-klik (of command-click op Mac) om minuten, uren, dagen en maanden "
-"te selecteren en de-selecteren."
+"Note: Ctrl-click (or command-click on the Mac) to select and de-select "
+"minutes, hours, days and months."
 
 msgid ""
 "UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
 "Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
 "can result in unpredictable results, file corruption, and loss of data!"
 msgstr ""
-"UFS is het standaard bestandssysteem voor FreeBSD (het onderliggende "
-"besturingssysteem van %s). Het gebruik van andere bestandssystemen zoals "
-"FAT, FAT32, EXT2, EXT3 of NTFS kan onvoorspelbare gevolgen hebben, of "
-"resulteren in beschadigde bestanden en verlies van gegevens!"
+"UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
+"Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
+"can result in unpredictable results, file corruption, and loss of data!"
 
 msgid "Active"
-msgstr "Actief"
+msgstr "Активен"
 
 msgid "Inactive"
-msgstr "Niet actief"
+msgstr "Неактивен"
 
 msgid "Selected"
-msgstr "Geselecteerd"
+msgstr "Маркирани"
 
 msgid "System"
-msgstr "Systeem"
+msgstr "Системен"
 
 msgid "General setup"
-msgstr "Algemene instellingen"
+msgstr "Основни настройки"
 
 msgid "Static routes"
-msgstr "Statische routes"
+msgstr "Статични пътища"
 
 msgid "Firmware"
 msgstr "Firmware"
 
 msgid "Advanced"
-msgstr "Geavanceerd"
+msgstr "Разширен"
 
 msgid "Swap"
-msgstr "Swap-geheugen"
+msgstr "Суап"
 
 msgid "Assign"
-msgstr "Toewijzen"
+msgstr "Assign"
 
 msgid "LAN"
-msgstr "LAN"
+msgstr "Локална мрежа"
 
 msgid "Management"
-msgstr "Beheer"
+msgstr "Управление"
 
 msgid "Mount Point"
-msgstr "Aanhechtings punt:"
+msgstr "Място за монтиране"
 
 msgid "Services"
-msgstr "Diensten"
+msgstr "Услуги"
 
 msgid "CIFS"
 msgstr "CIFS"
@@ -368,317 +372,300 @@ msgid "AFP"
 msgstr "AFP"
 
 msgid "Access"
-msgstr "Toegang"
+msgstr "Достъп"
 
 msgid "Users and Groups"
-msgstr "Gebruikers en Groepen"
+msgstr "Потребители и Групи"
 
 msgid "Active Directory"
-msgstr "Active Directory"
+msgstr "Активна директория"
 
 msgid "NIS"
 msgstr "NIS"
 
 msgid "Radius"
-msgstr "Radius"
+msgstr "Радиус"
 
 msgid "Process"
-msgstr "Proces"
+msgstr "Процес"
 
 msgid "Interfaces"
-msgstr "Interfaces"
+msgstr "Интерфейси"
 
 msgid "Wireless"
-msgstr "Draadloos"
+msgstr "Безжичен"
 
 msgid "Extensions"
-msgstr "Uitbreidingen"
+msgstr "Разширения"
 
 msgid "Diagnostics"
-msgstr "Diagnostiek"
+msgstr "Диагностика"
 
 msgid "Logs"
-msgstr "Logboeken"
+msgstr "Логове"
 
 msgid "Information"
-msgstr "Informatie"
+msgstr "Информация"
 
 msgid "Ping/Traceroute"
 msgstr "Ping/Traceroute"
 
 msgid "ARP table"
-msgstr "ARP tabel"
+msgstr "ARP таблица"
 
 msgid "Edit File"
-msgstr "Bestand bewerken"
+msgstr "Редактиране на Файл"
 
 msgid "Backup/Restore"
-msgstr "Reservekopie/Kopie herstellen"
+msgstr "Съхрани/Върни"
 
 msgid "Factory defaults"
-msgstr "Fabrieksinstellingen"
+msgstr "Фабрични настройки"
 
 msgid "Reboot system"
-msgstr "Systeem herstarten"
+msgstr "Рестартирай системата"
 
 msgid "Shutdown system"
-msgstr "Systeem uitschakelen"
+msgstr "Изключи системата"
 
 msgid "Graph"
-msgstr "Grafiek"
+msgstr "Графика"
 
 msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-msgstr "Naam van de NAS host, zonder het domein gedeelte<br>b.v. <em>nas"
+msgstr "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
 
 msgid "Domain"
-msgstr "Domein"
+msgstr "Домейн"
 
 msgid "e.g. <em>mycorp.com</em>"
-msgstr "b.v. <em>mijndomein.com</em>"
+msgstr "e.g. <em>mycorp.com</em>"
 
 msgid "DNS servers"
-msgstr "DNS servers"
+msgstr "DNS Сървъри"
 
 msgid "IP addresses"
-msgstr "IP adressen"
+msgstr "IP адреси"
 
 msgid "Username"
-msgstr "Gebruikersnaam"
+msgstr "Потребителско Име"
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
 msgstr ""
-"Geef hier de gebruikersnaam voor toegang tot de webinterface op, indien je "
-"deze wilt veranderen."
+"Ако искате да смените потребителското име за достъп до webGUI, въведете го "
+"тук."
 
 msgid "Password"
-msgstr "Wachtwoord"
+msgstr "Парола"
 
 msgid ""
 "If you want to change the password for accessing the webGUI, enter it here "
 "twice.<br>Don't use the character ':'."
 msgstr ""
-"Indien je het wachtwoord voor de webinterface wilt aanpassen, voer het hier "
-"dan tweemaal in.<br>Gebruik niet het ':' karakter."
+"Ако искате да смените паролата за достъп до webGUI, въведете я тук 2 "
+"пъти.<br>не използвайте символа ':'."
 
 msgid "WebGUI protocol"
-msgstr "Webinterface protocol"
+msgstr "WebGUI Протокол"
 
 msgid "WebGUI port"
-msgstr "Webinterface poort"
+msgstr "WebGUI порт"
 
 msgid ""
 "Enter a custom port number for the webGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
-"Vul hier een eigen poortnummer in voor bovenstaande webinterface, indien je "
-"geen gebruik wenst te maken van de standaard poorten (80 voor HTTP, 443 voor "
-"HTTPS)."
+"Enter a custom port number for the webGUI above if you want to override the "
+"default (80 for HTTP, 443 for HTTPS)."
 
 msgid "Language"
-msgstr "Taal"
+msgstr "Език"
 
 msgid "Select the system language"
-msgstr "Selecteer de systeemtaal"
+msgstr "Изберете системен език"
 
 msgid "System Time"
-msgstr "Systeemtijd"
+msgstr "Системно време"
 
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
 "select one, then use Save button to update system time. (Mind seconds part "
 "will be ignored)"
 msgstr ""
-"Voer de gewenste systeemtijd in (formaat mm/dd/jjj uu:mm) of gebruik het "
-"icoontje om deze te selecteren. Klik dan op de Bewaren knop om de "
-"systeemtijd aan te passen. (het gedeelte van de seconden zal genegeerd "
-"worden)"
+"Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
+"select one, then use Save button to update system time. (Mind seconds part "
+"will be ignored)"
 
 msgid "Time zone"
-msgstr "Tijdzone"
+msgstr "Часова зона"
 
 msgid "Select the location closest to you."
-msgstr "Selecteer de dichtstbijzijnde locatie."
+msgstr "Изберете най-близкото до вас място."
 
 msgid "Time update interval"
-msgstr "Interval voor het bijwerken van de tijd."
+msgstr "Time update interval"
 
 msgid ""
 "Minutes between network time sync.; 300\trecommended, or 0 to disable."
 msgstr ""
-"Aantal minuten tussen een tijdsynchronisatie. 300\taangeraden, of 0 om te "
-"deactiveren."
+"Minutes between network time sync.; 300\trecommended, or 0 to disable."
 
 msgid "NTP time server"
-msgstr "NTP tijd server"
+msgstr "NTP времеви сървър"
 
 msgid ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
 "up at least one DNS server if you enter a host name here!"
 msgstr ""
-"Gebruik een spatie om meerdere hosts van elkaar te scheiden (slechts "
-"&eacute;&eacute;n nodig). Denk eraan om tenminste &eacute;&eacute;n DNS "
-"server op te geven wanneer je hier een hostnaam invult!"
+"Use a space to separate multiple hosts (only one required). Remember to set "
+"up at least one DNS server if you enter a host name here!"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-msgstr "De hostnaam mag alleen de karakters a-z, 0-9 en '-' bevatten."
+msgstr "The hostname may only contain the characters a-z, 0-9 and '-'."
 
 msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr ""
-"Het domein mag alleen maar de karakters a-z, 0-9, '-' en '.' bevatten."
+msgstr "The domain may only contain the characters a-z, 0-9, '-' and '.'."
 
 msgid ""
 "A valid IP address must be specified for the primary/secondary DNS server."
-msgstr ""
-"Er moet een geldig IP-adres opgegeven worden voor de primaire/secundaire DNS "
-"server."
+msgstr "трябава да въведете валиден IP адрес за първия/втория DNS сървър."
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr "De gebruikersnaam mag alleen de karakters a-z, A-Z en 0-9 bevatten."
+msgstr "The username may only contain the characters a-z, A-Z and 0-9."
 
 msgid "A valid TCP/IP port must be specified for the webGUI port."
-msgstr ""
-"Er moet een geldige TCP/IP poort opgegeven worden voor de webinterface."
+msgstr "A valid TCP/IP port must be specified for the webGUI port."
 
 msgid "The passwords do not match."
-msgstr "De wachtwoorden komen niet overeen."
+msgstr "Паролата не съвпада."
 
 msgid "You must select a valid language."
-msgstr "Je moet een geldige taal kiezen."
+msgstr "Трябва да изберете валиден език."
 
 msgid ""
 "The time update interval must be either 0 (disabled) or between 6 and 1440."
 msgstr ""
-"De interval voor de tijdsynchronisatie moet ofwel 0 (uitgeschakeld) of "
-"tussen de 6 en 1440 liggen."
+"The time update interval must be either 0 (disabled) or between 6 and 1440."
 
 msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
-"De naam van een NTP tijdserver mag alleen de karakters a-z, 0-9, '-' en '.' "
-"bevatten."
+"A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 
 msgid "System information"
-msgstr "Systeem informatie"
+msgstr "Системна информация"
 
 msgid "Name"
-msgstr "Naam"
+msgstr "Име"
 
 msgid "Version"
-msgstr "Versie"
+msgstr "Версия"
 
 msgid "OS Version"
-msgstr "OS Versie"
+msgstr "ОС Версия"
 
 msgid "Platform"
-msgstr "Platform"
+msgstr "Платформа"
 
 msgid "Uptime"
-msgstr "Uptime"
+msgstr "Време на непрекъсната работа"
 
 msgid "Last config change"
-msgstr "Laatste configuratiewijziging"
+msgstr "Последна конфигурационна промяна"
 
 msgid "Memory usage"
-msgstr "Geheugengebruik"
+msgstr "Използвана памет"
 
 msgid "Load averages"
-msgstr "Gemiddelde systeembelasting"
+msgstr "Средно натоварване"
 
 msgid "show process information"
-msgstr "geef proces informatie weer"
+msgstr "Покажи информация за процесите"
 
 msgid "Disk space usage"
-msgstr "Gebruikte schijfruimte"
+msgstr "Заето място на диска"
 
 msgid "No disk configured"
-msgstr "Geen schijf geconfigureerd"
+msgstr "Няма конфигуриран диск"
 
 msgid "Processes"
-msgstr "Processen"
+msgstr "Процеси"
 
 msgid "Processes information"
-msgstr "Procesinformatie"
+msgstr "Информация за процесите"
 
 msgid ""
 "The static route configuration has been changed.<br>You must apply the "
 "changes in order for them to take effect."
 msgstr ""
-"De instellingen voor de statische routes zijn aangepast.<br>Je moet op "
-"'toepassen' klikken om ze in gebruik te nemen."
+"The static route configuration has been changed.<br>You must apply the "
+"changes in order for them to take effect."
 
 msgid "Interface"
-msgstr "Interface"
+msgstr "Интерфейс"
 
 msgid "Network"
-msgstr "Netwerk"
+msgstr "мрежа"
 
 msgid "Edit Route"
-msgstr "Route bewerken"
+msgstr "Промени пътя"
 
 msgid "Do you really want to delete this route?"
-msgstr "Weet je zeker dat je deze route wilt verwijderen?"
+msgstr "Наистина ли искатате да изтриете пътя?"
 
 msgid "Delete Route"
-msgstr "Route verwijderen"
+msgstr "Изтрий пътя"
 
 msgid "Add Route"
-msgstr "Route toevoegen"
+msgstr "Добави път"
 
 msgid "A valid destination network must be specified."
-msgstr "Je moet een geldig bestemmingsnetwerk opgeven."
+msgstr "A valid destination network must be specified."
 
 msgid "A valid gateway IP address must be specified."
-msgstr "Je moet een geldig IP adres opgeven voor de gateway."
+msgstr "Трябва да посочите валиден адрес за шлюза."
 
 msgid "A route to this destination network already exists."
-msgstr "Er bestaat al een route naar dit bestemmingsnetwerk."
+msgstr "A route to this destination network already exists."
 
 msgid "Choose which interface this route applies to."
-msgstr "Kies de interface waarop deze route van toepassing is."
+msgstr "Choose which interface this route applies to."
 
 msgid "Destination network"
-msgstr "Bestemmingsnetwerk"
+msgstr "Отправна мрежа"
 
 msgid "Destination network for this static route"
-msgstr "Bestemmingsnetwerk voor deze statische route"
+msgstr "Отправна мрежа за този статичен път"
 
 msgid "Gateway to be used to reach the destination network"
-msgstr ""
-"De gateway die gebruikt moet worden om het bestemmingsnetwerk te bereiken"
+msgstr "Gateway to be used to reach the destination network"
 
 msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
-"Je kunt hier een omschrijving opgeven voor eigen referentie (wordt niet "
-"verwerkt)."
+msgstr "You may enter a description here for your reference (not parsed)."
 
 msgid "The uploaded image file is not for this platform"
-msgstr "Het ingevoerde image bestand is ongeschikt voor dit platform"
+msgstr "Качения имидж не е за тази платформа"
 
 msgid "Image upload failed (out of memory?)"
-msgstr "Het inlezen van het image bestand is mislukt (te weinig geheugen?)"
+msgstr "Качването се провали (Недостиг на памет?)"
 
 msgid "The digital signature on this image is invalid."
-msgstr "De digitale handtekening van het image bestand is ongeldig."
+msgstr "The digital signature on this image is invalid."
 
 msgid "This image is not digitally signed."
-msgstr "Het image bestand heeft geen digitale handtekening."
+msgstr "This image is not digitally signed."
 
 msgid "There has been an error verifying the signature on this image."
-msgstr ""
-"Er is een fout opgetreden bij het verifieren van de digitale handtekening "
-"van het image bestand."
+msgstr "There has been an error verifying the signature on this image."
 
 msgid "The image file is corrupt"
-msgstr "Het image bestand is beschadigd."
+msgstr "The image file is corrupt"
 
 msgid "The firmware is now being installed. %s will reboot automatically."
-msgstr ""
-"De systeemsoftware wordt nu ge�nstalleerd. %s zal automatisch herstarten."
+msgstr "The firmware is now being installed. %s will reboot automatically."
 
 msgid "Firmware uploading is not supported on this platform."
-msgstr ""
-"Het uploaden van systeemsoftware wordt niet ondersteund op dit platform."
+msgstr "Firmware uploading is not supported on this platform."
 
 msgid ""
 "This means that the image you uploaded is not an official/supported image "
@@ -687,96 +674,90 @@ msgid ""
 "has not been tampered with.<br><br>Do you want to install this image anyway "
 "(on your own risk)?"
 msgstr ""
-"Dit betekent dat het image bestand dat je hebt gebruikt geen "
-"officieel/ondersteund image bestand is en dat dit kan leiden tot onverwacht "
-"systeemgedrag of beveiligingsrisico's. Installeer uitsluitend bestanden die "
-"afkomstig zijn van betrouwbare bronnen, en zorg ervoor dat er niet geknoeid "
-"is met het bestand.<br><br>Wil je het image bestand toch installeren (op "
-"eigen risico)?"
+"This means that the image you uploaded is not an official/supported image "
+"and may lead to unexpected behavior or security compromises. Only install "
+"images that come from sources that you trust, and make sure that the image "
+"has not been tampered with.<br><br>Do you want to install this image anyway "
+"(on your own risk)?"
 
 msgid ""
 "Click &quot;Enable firmware upload&quot; below, then choose the image file "
 "to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
 "process."
 msgstr ""
-"Klik hieronder op &quot;Uploaden systeemsoftware activeren&quot;, en kies "
-"daarna het te uploaden image bestand.<br>Klik op &quot;Systeemsoftware "
-"bijwerken&quot; om het bijwerken te starten."
+"Click &quot;Enable firmware upload&quot; below, then choose the image file "
+"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+"process."
 
 msgid "Enable firmware upload"
-msgstr "Uploaden systeemsoftware activeren"
+msgstr "Позволи качването на firmware"
 
 msgid "Disable firmware upload"
-msgstr "Uploaden systeemsoftware deactiveren"
+msgstr "Забрани качването на firmware"
 
 msgid "Firmware image file"
-msgstr "Systeemsoftware image bestand (firmware)"
+msgstr "Firmware image фаил"
 
 msgid "Upgrade firmware"
-msgstr "Systeemsoftware bijwerken"
+msgstr "Поднови firmware-а"
 
 msgid "You must reboot the system before you can upgrade the firmware."
-msgstr ""
-"Je moet het systeem herstarten voordat je de systeemsoftware kunt bijwerken."
+msgstr "трябва да рестартирате системата преди да обновите firmware-а."
 
 msgid "The TCP idle timeout must be an integer."
-msgstr ""
-"De inactiviteitsduur voor TCP-onderbreking moet een geheel getal zijn."
+msgstr "The TCP idle timeout must be an integer."
 
 msgid "Certificate and key must always be specified together."
-msgstr ""
-"Certificaat en sleutel moeten altijd gezamenlijk gespecifieerd worden."
+msgstr "Certificate and key must always be specified together."
 
 msgid "This certificate does not appear to be valid."
-msgstr "Dit certificaat is ongeldig."
+msgstr "This certificate does not appear to be valid."
 
 msgid "This key does not appear to be valid."
-msgstr "Deze sleutel is ongeldig"
+msgstr "This key does not appear to be valid."
 
 msgid ""
 "The options on this page are intended for use by advanced users only, and "
 "there's <strong>NO</strong> support for them."
 msgstr ""
-"De opties op deze pagina zijn bedoeld voor ervaren gebruikers; er is "
-"<strong>GEEN</strong> ondersteuning voor deze opties."
+"The options on this page are intended for use by advanced users only, and "
+"there's <strong>NO</strong> support for them."
 
 msgid "webGUI SSL certificate/key"
-msgstr "webinterface SSL certificaat/sleutel"
+msgstr "webGUI SSL certificate/key"
 
 msgid "Certificate"
-msgstr "Certificaat"
+msgstr "Сертификат"
 
 msgid "Paste a signed certificate in X.509 PEM format here."
-msgstr ""
-"Plak hier (copy/paste) een ondertekend certificaat in het X.509 PEM formaat."
+msgstr "Paste a signed certificate in X.509 PEM format here."
 
 msgid "Key"
-msgstr "Sleutel"
+msgstr "Ключ"
 
 msgid "Paste an RSA private key in PEM format here."
-msgstr "Plak hier (copy/paste) een RSA private sleutel in het PEM formaat."
+msgstr "Paste an RSA private key in PEM format here."
 
 msgid "Miscellaneous"
-msgstr "Diverse"
+msgstr "Други настройки"
 
 msgid "Console menu"
-msgstr "Consolemenu"
+msgstr "конзолно меню"
 
 msgid "Disable console menu"
-msgstr "Consolemenu uitschakelen"
+msgstr "Забрани конзолното меню"
 
 msgid "Changes to this option will take effect after a reboot."
-msgstr "Wijzigingen aan deze optie zullen pas actief worden na een herstart."
+msgstr "промените ще влязат в действие след рестарта"
 
 msgid "Firmware version check"
-msgstr "Controle op de versie van systeemsoftware"
+msgstr "проверка на версията на фирмуера"
 
 msgid "Disable firmware version check"
-msgstr "Controle op de versie van systeemsoftware uitschakelen."
+msgstr "забрани проверката на версията на фирмуера"
 
-#, fuzzy
 msgid "TCP idle timeout"
-msgstr "TCP inactiviteitsduur voor onderbreking"
+msgstr "TCP idle timeout"
 
 msgid ""
 "Idle TCP connections will be removed from the state table after no packets "
@@ -784,115 +765,111 @@ msgid ""
 "high or your state table could become full of connections that have been "
 "improperly shut down. The default is 9000 seconds (2.5 hours)."
 msgstr ""
-"Inactieve TCP connecties zullen uit de statustabel verwijderd worden zodra "
-"er gedurende het gespecifieerde aantal seconden geen pakketten ontvangen "
-"zijn. Zet deze waarde niet te hoog, dit kan tot gevolg hebben dat de "
-"statustabel vol verbindingen komt te staan die niet correct zijn afgesloten. "
-"De standaard instelling is 9000 seconden (2,5 uur)."
+"Idle TCP connections will be removed from the state table after no packets "
+"have been received for the specified number of seconds. Don't set this too "
+"high or your state table could become full of connections that have been "
+"improperly shut down. The default is 9000 seconds (2.5 hours)."
 
 msgid "Navigation"
-msgstr "Navigatie"
+msgstr "Навигация"
 
 msgid "Keep diagnostics in navigation expanded"
-msgstr "Hou de diagnosegegevens in de navigatie uitgevouwen"
+msgstr "Keep diagnostics in navigation expanded"
 
 msgid "System Beep"
-msgstr "Systeem geluid"
+msgstr "Системен звънец"
 
 msgid "Disable speaker beep on startup and shutdown"
-msgstr "Systeem geluid uitschakelen bij het opstarten en afsluiten"
+msgstr "забрани Системния звънец при пускане и спиране"
 
 msgid "S.M.A.R.T Daemon"
-msgstr "S.M.A.R.T Daemon"
+msgstr "S.M.A.R.T Демон"
 
 msgid "Enable the S.M.A.R.T daemon"
-msgstr "De S.M.A.R.T daemon inschakelen"
+msgstr "позволли S.M.A.R.T. демона"
 
 msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
 msgstr ""
-"Beheer de S.M.A.R.T schijven door hun status te registreren in een "
-"logbestand."
+"Monitor the S.M.A.R.T device by logging their status in the log file."
 
 msgid "Tuning"
-msgstr "Fijnafstemming"
+msgstr "Настройки"
 
 msgid "Zeroconf"
 msgstr "Zeroconf"
 
 msgid "Swap file"
-msgstr "wissel bestand"
+msgstr "Swap фаил"
 
 msgid "Swap size"
-msgstr "Ruimte voor het wissel bestand"
+msgstr "Swap размер"
 
 msgid "mount share"
-msgstr "aanhechtingspunt gedeelde map"
+msgstr "mount share"
 
 msgid "Mount to use for swap"
-msgstr "aanhechtingspunt voor wissel bestandsruimte"
+msgstr "Mount to use for swap"
 
 msgid "Swap file size"
-msgstr "wissel bestandsgrootte"
+msgstr "Swap file size"
 
 msgid "Size in MB."
-msgstr "Grootte in MB."
+msgstr "размер в MB"
 
 msgid "Assign network ports"
-msgstr "Netwerkpoorten toekennen"
+msgstr "определи мрежовите портове"
 
 msgid "Port "
-msgstr "Poort "
+msgstr "Порт "
 
 msgid " was assigned to "
-msgstr " werd toegekend aan "
+msgstr " беше зададен на "
 
 msgid " interfaces:"
-msgstr " interfaces:"
+msgstr " интерфейси:"
 
 msgid "Network port"
-msgstr "Netwerk poort"
+msgstr "мрежов порт"
 
 msgid "Delete interface"
-msgstr "Interface verwijderen"
+msgstr "изтрий интерфейса"
 
 msgid "Add interface"
-msgstr "Interface toevoegen"
+msgstr "добави интерфейс"
 
 msgid ""
 "After you click &quot;Save&quot;, you must reboot %s to make the changes "
 "take effect. You may also have to do one or more of the following steps "
 "before you can access your NAS again: </span><"
 msgstr ""
-"Nadat je op &quot;Bewaren&quot; klikt moet je %s herstarten om de "
-"wijzigingen door te voeren. Het kan zijn dat je ook nog &euml;&euml;n van "
-"volgende stappen moet uitvoeren om opnieuw toegang te krijgen tot je NAS: "
-"</span></p"
+"After you click &quot;Save&quot;, you must reboot %s to make the changes "
+"take effect. You may also have to do one or more of the following steps "
+"before you can access your NAS again: </span><"
 
 msgid "A valid gateway must be specified."
-msgstr "Er moet een geldige gateway opgegeven worden."
+msgstr "трябва да посочите валиден шлюз"
 
 msgid "A valid mtu size must be specified."
-msgstr "Er moet een geldige MTU grootte opgegeven worden."
+msgstr "трябва да посочите валиден MTU"
 
 msgid "IP address"
-msgstr "IP adres"
+msgstr "IP адрес"
 
 msgid "Subnet bit count"
-msgstr "Aantal bits voor het subnet"
+msgstr "Subnet bit count"
 
 msgid "MTU"
 msgstr "MTU"
 
 msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-msgstr "De standaard MTU is 1500, gebruik 9000 voor jumbo frame."
+msgstr "стандартния MTU е 1500 , използвайте 9000 за jumbo frame-иве"
 
 msgid "Device polling"
 msgstr "Device polling"
 
 msgid "Enable device polling"
-msgstr "Device polling"
+msgstr "позволи device polling"
 
-#, fuzzy
 msgid ""
 "Device polling is a technique that lets the system periodically poll network "
 "devices for new data instead of relying on interrupts. This can reduce CPU "
@@ -909,241 +886,236 @@ msgstr ""
 "cards."
 
 msgid "Speed"
-msgstr "Snelheid"
+msgstr "Скорост"
 
 msgid "Duplex"
-msgstr "Duplex"
+msgstr "Дуплекс"
 
 msgid "Enable Optional "
-msgstr "Activeer optioneel "
+msgstr "позволи настройката "
 
 msgid " interface"
-msgstr " interface"
+msgstr " интерфейс"
 
 msgid "Enter a description (name) for the interface here."
-msgstr "Geef hier een omschrijving (naam) voor de interface."
+msgstr "Enter a description (name) for the interface here."
 
 msgid "Static IP configuration"
-msgstr "Statische IP instellingen"
+msgstr "статичен IP адрес"
 
 msgid "DHCP client configuration"
-msgstr "DHCP client instellingen"
+msgstr "настройка на DHCP клиента"
 
 msgid "General configuration"
-msgstr "Algemene instellingen"
+msgstr "Главни настройки"
 
 msgid "Hostname"
-msgstr "Hostnaam"
+msgstr "Име на хоста"
 
 msgid "Host"
-msgstr "Host"
+msgstr "хост"
 
 msgid ""
 "The value in this field is sent as the DHCP hostname when requesting a DHCP "
 "lease."
 msgstr ""
-"De waarde in dit veld wordt als DHCP hostnaam doorgestuurd bij het aanvragen "
-"van een DHCP lease."
+"The value in this field is sent as the DHCP hostname when requesting a DHCP "
+"lease."
 
-#, fuzzy
 msgid "Client Identifier"
-msgstr "Client Identifier"
+msgstr "идентификатор на клиента"
 
 msgid ""
 "The value in this field is sent as the DHCP client identifier when "
 "requesting a DHCP lease."
 msgstr ""
-"De waarde in dit veld wordt doorgestuurd als DHCP client identifier wanneer "
-"een DHCP-lease wordt aangevraagd."
+"The value in this field is sent as the DHCP client identifier when "
+"requesting a DHCP lease."
 
 msgid "Calculate netmask bits"
-msgstr "Bereken de netmask bits"
+msgstr "изчисли мрежовата маска"
 
 msgid ""
 "The LAN configuration has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
-"De LAN instellingen zijn gewijzigd.<br>Je moet op 'toepassen' klikken "
-"voordat de wijzigingen actief worden."
+"The LAN configuration has been changed.<br>You must apply the changes in "
+"order for them to take effect."
 
 msgid "Manage"
-msgstr "Beheer"
+msgstr "Управление"
 
 msgid "Format"
-msgstr "Formatteer"
+msgstr "Формат"
 
 msgid "Tools"
-msgstr "Hulpmiddelen"
+msgstr "Инструменти"
 
 msgid ""
 "The disk list has been changed.<br>You must apply the changes in order for "
 "them to take effect."
 msgstr ""
-"De lijst met schijven is gewijzigd.<br>Je moet op 'toepassen' klikken "
-"voordat de wijzigingen actief worden."
+"The disk list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
 
 msgid "Standby time"
-msgstr "Standby tijd"
+msgstr "Standby time"
 
 msgid "Always on"
-msgstr "Altijd aan"
+msgstr "винаги включен"
 
 msgid "Unknown or unformatted"
-msgstr "Onbekend of niet geformatteerd"
+msgstr "непознат и неформатиран"
 
 msgid "Edit disk"
-msgstr "Schijf bewerken"
+msgstr "промени настрйките на диска"
 
 msgid "Delete disk"
-msgstr "Schijf verwijderen"
+msgstr "изтрий диска"
 
 msgid ""
 "Do you really want to delete this disk? All elements that still use it will "
 "become invalid (e.g. share)!"
 msgstr ""
-"Weet je zeker dat je deze schijf wilt verwijderen? Alle elementen die "
-"gebruik maken van deze schijf worden ongeldig. (bv gedeelde mappen)!"
+"Do you really want to delete this disk? All elements that still use it will "
+"become invalid (e.g. share)!"
 
 msgid "Add disk"
-msgstr "Schijf toevoegen"
+msgstr "добави диск"
 
 msgid "First configuration step: Add your hardrive to the disk list."
-msgstr ""
-"Eerste stap van de instellingen: voeg de schijf toe aan de lijst met "
-"schijven."
+msgstr "първа стъпка: Добави харддиск към списъка с дисковете"
 
 msgid "This disk already exists in the disk list."
-msgstr "Deze schijf bestaat al in de lijst met schijven."
+msgstr "харддиска вече съществува в списъка с дисковете"
 
 msgid "UDMA mode"
-msgstr "UDMA modus"
+msgstr "UDMA mode"
 
 msgid "Hard disk standby time"
-msgstr "Standby tijd van de harde schijf."
+msgstr "време за стендбай режим на харддиска"
 
 msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
 "the last access has elapsed. <em>Do not set this for CF cards.</em>"
 msgstr ""
-"Plaatst de harde schijf in standby modus wanneer de ingestelde tijd na de "
-"laatste schijftoegang is verstreken. <em>Activeer dit niet voor CF "
-"kaarten.</em>"
+"Puts the hard disk into standby mode when the selected amount of time after "
+"the last access has elapsed. <em>Do not set this for CF cards.</em>"
 
 msgid "Advanced Power Management"
-msgstr "Geavanceerd Energiebeheer"
+msgstr "Управление на захранването"
 
 msgid "Minimum power usage with Standby"
-msgstr "Minimaal energieverbruik met Stand-by"
+msgstr "минимален разход на енергия в стендбай режим"
 
 msgid "Medium power usage with Standby"
-msgstr "Medium energieverbruik met Stand-by"
+msgstr "среден разход на енергия в стендбай режим"
 
 msgid "Minimum power usage without Standby"
-msgstr "Minimaal energieverbruik zonder Stand-by"
+msgstr "минимален разход на енергия без използване на стендбай режим"
 
 msgid "Medium power usage without Standby"
-msgstr "Medium energieverbruik zonder Stand-by"
+msgstr "среден разход на енергия без използване на стендбай режим"
 
 msgid "Maximum performance, maximum power usage"
-msgstr "Maximale prestaties, maximaal energieverbruik"
+msgstr "Maximum performance, maximum power usage"
 
 msgid ""
 "This allows  you  to lower the power consumption of the drive, at the "
 "expense of performance.<br><em>Do not set this for CF cards.</em>"
 msgstr ""
-"Hiermee kun je het energieverbruik van de schijf reduceren, dit gaat wel ten "
-"koste van de prestaties.<br><em>Activeer dit niet voor CF kaarten.</em>"
+"This allows  you  to lower the power consumption of the drive, at the "
+"expense of performance.<br><em>Do not set this for CF cards.</em>"
 
 msgid "Acoustic level"
-msgstr "Geluidsniveau"
+msgstr "акустично ниво"
 
 msgid "Minimum performance, Minimum acoustic output"
-msgstr "Minimale prestaties, Minimale geluidsproductie"
+msgstr "Minimum performance, Minimum acoustic output"
 
 msgid "Medium acoustic output"
-msgstr "Medium geluidsproductie"
+msgstr "средно акустично ниво"
 
 msgid "Maximum performance, maximum acoustic output"
-msgstr "Maximale prestaties, maximale geluidsproductie"
+msgstr "Maximum performance, maximum acoustic output"
 
 msgid ""
 "This allows you to set how loud the drive is while it's operating.<br><em>Do "
 "not set this for CF cards.</em>"
 msgstr ""
-"Hiermee kun je het geluidsniveau van de schijf instellen.<br><em>Gebruik dit "
-"niet voor CF kaarten.</em>"
+"This allows you to set how loud the drive is while it's operating.<br><em>Do "
+"not set this for CF cards.</em>"
 
 msgid "Preformatted FS"
-msgstr "Voorgeformatteerd bestandssysteem"
+msgstr "Преформатирана Файлова система"
 
 msgid "Initialize"
-msgstr "Initialiseer"
+msgstr "инициализирай"
 
 msgid ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
 msgstr ""
-"De schijf is momenteel aangekoppeld! <a href=%s>Ontkoppel</a> deze schijf "
-"eerst voor verder te gaan."
+"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
+"proceeding."
 
 msgid "Can't format the drive where FreeNAS configuration file is installed!"
 msgstr ""
-"Kan de schijf waar het FreeNAS configuratie bestand is opgeslagen niet "
-"formatteren!"
+"Can't format the drive where FreeNAS configuration file is installed!"
 
 msgid "Disk initialization details"
-msgstr "Initialisatiedetails van de schijf"
+msgstr "детаили за инициализирането на диска"
 
 msgid "\"fdisk: Geom not found\"is not an error message!\n"
-msgstr "\"fdisk: Geom not found\" is geen foutmelding!\n"
+msgstr "\"fdisk: Geom not found\"is not an error message!\n"
 
 msgid ""
 "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
 "(for others) partition and format the hard drive with the file system "
 "specified."
 msgstr ""
-"Deze stap zal de gehele partitie wissen, een GPT/EFI (voor UFS) of MBR (voor "
-"overige) partitie aanmaken en de harde schijf formatteren met het gekozen "
-"bestandssysteem."
+"This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
+"(for others) partition and format the hard drive with the file system "
+"specified."
 
 msgid "Format disk"
-msgstr "Formatteer schijf"
+msgstr "форматирай диска"
 
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
-"Weet je zeker dat je deze schijf wilt formatteren? Alle gegevens zullen "
-"verloren gaan!"
+"Наистина ли искате да форматирате диска ? Всичката информация ще бъде "
+"загубена"
 
 msgid ""
 "Specify the percentage of space held back from normal users. Note that "
 "lowering the threshold can adversely affect performance and auto-"
 "defragmentation."
 msgstr ""
-"Kies het percentage van de ruimte die moet worden verborgen voor algemene "
-"gebruikers. Het verlagen van deze drempel kan een negatief effect hebben op "
-"de prestaties en auto-defragmentatie."
+"Specify the percentage of space held back from normal users. Note that "
+"lowering the threshold can adversely affect performance and auto-"
+"defragmentation."
 
 msgid "Don't Erase MBR"
-msgstr "De MBR niet wissen"
+msgstr "не изтривай MBR"
 
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
-msgstr "De MBR niet wissen (zinvol voor sommige RAID controller kaarten)"
+msgstr "не изтривай MBR (полезно за някой RAID контролери)"
 
 msgid "Send Command!"
-msgstr "Commando versturen!"
+msgstr "Изпрати командата"
 
 msgid "Command output:"
-msgstr "Commando uitvoer:"
+msgstr "Изходни данни на команда:"
 
 msgid ""
 "The disk is currently mounted! The mount point will be removed temporary to "
 "perform selected command."
 msgstr ""
-"De schijf is momenteel aangekoppeld! Het aanhechtingspunt zal tijdelijk "
-"verwijderd worden om het gekozen commando uit te voeren."
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
 
 msgid "Unmount disk/partition"
-msgstr "Ontkoppel schijf/partitie"
+msgstr "демонтирай диска/дяла"
 
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
@@ -1151,44 +1123,44 @@ msgid ""
 "mode.<br>Service disruption to users accessing this mount will occur during "
 "this process."
 msgstr ""
-"Als de geselecteerde schijf/partitie aangekoppeld is zal deze tijdelijk "
-"ontkoppeld worden om het gekozen commando uit te voeren, anders werken de "
-"commando's slechts in 'alleen-lezen' modus.<br>Gebruikers kunnen tijdens dit "
-"proces geen gebruik maken van de schijf/partitie."
+"If the selected disk/partition is mounted it will be unmounted temporarily "
+"to perform selected command, otherwise the commands work in read-only "
+"mode.<br>Service disruption to users accessing this mount will occur during "
+"this process."
 
 msgid "iSCSI"
 msgstr "iSCSI"
 
 msgid "iSCSI Initiator"
-msgstr "iSCSI initiator"
+msgstr "iSCSI Initiator"
 
 msgid "Target IP address"
-msgstr "bestemmings IP adres"
+msgstr "Target IP address"
 
 msgid "IP address of the iSCSI target."
-msgstr "IP adres van de iSCSI bestemming."
+msgstr "IP адрес на  iSCSI целта"
 
 msgid "Targetname"
-msgstr "Bestemmingsnaam"
+msgstr "Име на целта"
 
 msgid "Targetname."
-msgstr "Bestemmingsnaam."
+msgstr "Име на целта."
 
 msgid "Manage RAID"
-msgstr "RAID beheer"
+msgstr "Помени настройките на RAID-а"
 
 msgid "Format RAID"
-msgstr "RAID formatteren"
+msgstr "Форматирай RAID-а"
 
 msgid "Volume Name"
-msgstr "Volumenaam"
+msgstr "Име на диск"
 
 msgid ""
 "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
 "first before proceeding."
 msgstr ""
-"Het RAID volume is nog aangekoppeld! Verwijder het <a "
-"href=%s>aanhechtingspunt</a> eerst."
+"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
+"first before proceeding."
 
 msgid "Geom Vinum"
 msgstr "Geom Vinum"
@@ -1206,7 +1178,7 @@ msgid "Geom Raid5"
 msgstr "Geom Raid5"
 
 msgid "(unstable)"
-msgstr "(instabiel)"
+msgstr "(нестабилен)"
 
 msgid "RAID"
 msgstr "RAID"
@@ -1215,49 +1187,48 @@ msgid ""
 "The Raid configuration has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
-"De Raid instellingen zijn gewijzigd.<br>Je moet op 'toepassen' klikken "
-"voordat de wijzigingen doorgevoerd worden."
+"The Raid configuration has been changed.<br>You must apply the changes in "
+"order for them to take effect."
 
 msgid "Edit RAID"
-msgstr "RAID bewerken"
+msgstr "Промени RAID-а"
 
 msgid "Delete RAID"
-msgstr "RAID verwijderen"
+msgstr "изтрий RAID-а"
 
 msgid "Add RAID"
-msgstr "RAID toevoegen"
+msgstr "добави RAID"
 
 msgid ""
 "Do you really want to delete this raid volume? All elements that still use "
 "it will become invalid (e.g. share)!"
 msgstr ""
-"Weet je zeker dat je dit RAID volume wilt verwijderen? Alle elementen die er "
-"gebruik van maken zullen ongeldig worden (bv gedeelde mappen)!"
+"Do you really want to delete this raid volume? All elements that still use "
+"it will become invalid (e.g. share)!"
 
 msgid "You must add disks first."
-msgstr "Je moet eerst schijven toevoegen."
+msgstr "трябва първо да добавите диск"
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
-msgstr ""
-"De toestelnaam mag alleen maar bestaan uit de karakters a-z, A-Z, 0-9."
+msgstr "The device name may only consist of the characters a-z, A-Z, 0-9."
 
 msgid "This device already exists in the raid volume list."
-msgstr "Dit toestel bestaat al in de RAID volumelijst."
+msgstr "устройството вече съществува в листа с раид устрийства"
 
 msgid "There must be a minimum of 2 disks in a RAID 0 volume."
-msgstr "Er moeten minimaal 2 schijven zijn voor een RAID 0 volume."
+msgstr "трябват минимум 2 диска за RAID 0"
 
 msgid "There must be 2 disks in a RAID 1 volume."
-msgstr "Er moeten minimaal 2 schijven zijn in een RAID 1 volume."
+msgstr "трябват  2 диска за RAID 1"
 
 msgid "There must be a minimum of 2 disks in a RAID 5 volume."
-msgstr "Er moeten minimaal 2 schijven zijn in een RAID 5 volume."
+msgstr "трябват минимум 2 диска за RAID 5"
 
 msgid "ERR Could not save RAID configuration.\n"
-msgstr "FOUT: kon de RAID instellingen niet opslaan.\n"
+msgstr "ERR Could not save RAID configuration.\n"
 
 msgid "Raid name"
-msgstr "RAID naam"
+msgstr "Име на Raid"
 
 msgid "striping"
 msgstr "striping"
@@ -1272,67 +1243,64 @@ msgid "JBOD"
 msgstr "JBOD"
 
 msgid "Members of this volume"
-msgstr "Onderdelen van dit volume"
+msgstr "членове на тази група"
 
 msgid "Software RAID information and status"
-msgstr "Software RAID informatie en status"
+msgstr "Информация и статус на RAID"
 
 msgid "Disk format UFS output:"
-msgstr "Schijf formattering UFS uitvoer:"
+msgstr "Disk format UFS output:"
 
 msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
-msgstr ""
-"Deze stap zal het RAID volume formatteren in het unix bestandssysteem (UFS)."
+msgstr "This step will format the RAID volume in Unix FileSystem (UFS)."
 
 msgid "Format UFS disk!"
-msgstr "Formatter UFS schijf!"
+msgstr "Format UFS disk!"
 
 msgid "Object name"
-msgstr "Object naam"
+msgstr "Име на обекта"
 
 msgid "Command"
-msgstr "Opdracht"
+msgstr "Команда"
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
 "using this menu for start a RAID volume (start automaticaly)."
 msgstr ""
-"1. Gebruik deze speciale opdrachten alleen maar voor het debuggen!<br>2. "
-"Gebruik dit menu niet om een RAID volume op te starten (dit start "
-"automatisch)."
+"1. Use these specials actions for debugging only!<br>2. There is no need of "
+"using this menu for start a RAID volume (start automaticaly)."
 
 msgid "Share Name"
-msgstr "Naam gedeelde map"
+msgstr "Share Name"
 
 msgid ""
 "The mount point list has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
-"De lijst van aanhechtingspunten is gewijzigd.<br>Je moet op 'toepassen' "
-"klikken voordat de wijzigingen doorgevoerd worden."
+"The mount point list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
 
 msgid ""
 "Do you really want to delete this mount point? All elements that still use "
 "it will become invalid (e.g. share)!"
 msgstr ""
-"Weet je zeker dat je dit koppelpunt wilt verwijderen? Alle elementen die er "
-"gebruik van maken zullen ongeldig worden (bv gedeelde mappen)!"
+"Do you really want to delete this mount point? All elements that still use "
+"it will become invalid (e.g. share)!"
 
 msgid "delete mount"
-msgstr "aanhechtingspunt verwijderen"
+msgstr "изтрий точката за монтиране"
 
 msgid "add mount"
-msgstr "aanhechtingspunt toevoegen"
+msgstr "добави точка за монтиране"
 
 msgid "The description name contain invalid characters."
-msgstr "De naam van de gedeelde map bevat ongeldige karakters."
+msgstr "Описанието съдържа невалидни символи"
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
-msgstr ""
-"Systeempartitie 1 kan niet gekoppeld worden, de DATA partitie is partitie2"
+msgstr "Can't mount the system partition 1, the DATA partition is the 2."
 
 msgid "Duplicate Share Name."
-msgstr "Dubbele naam voor de gedeelde map."
+msgstr "Duplicate Share Name."
 
 msgid ""
 "Select EFI GPT if you want to mount a GPT formatted drive (default method "
@@ -1341,683 +1309,666 @@ msgid ""
 "you select option 2 during installation on hard drive.<br>Select old "
 "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
 msgstr ""
-"Kies EFI GPT wanneer je een GPT geformatteerde schijf (standaard methode "
-"sinds 0.684b) wilt koppelen.<br>Kies 1 voor het aankoppelen van een UFS "
-"geformatterde schijf of software RAID volume na 0.683b.<br>Kies 2 voor het "
-"koppelen van de DATA partitie als je ook optie 2 bij de installatie van de "
-"systeem software hebt gekozen.<br>Kies de oude software "
-"gmirror/graid5/gvinum voor een volume aangemaakt met een oude FreeNAS versie."
+"Select EFI GPT if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+"you select option 2 during installation on hard drive.<br>Select old "
+"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
 
 msgid ""
 "You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr ""
-"Je kunt de partitie '%s' waarop het configuratiebestand is opgeslagen niet "
-"aankoppelen.<br>"
+"You can't mount the partition '%s' where the config file is stored.<br>"
 
 msgid "Mounting..."
-msgstr "Bezig met koppelen..."
+msgstr "Монтиране..."
 
 msgid "Unmounting..."
-msgstr "Bezig met ontkoppelen..."
+msgstr "Демонтиране..."
 
 msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
-msgstr ""
-"Je kunt een schijf die gebruikt wordt als wissel bestandsruimte of iSCSI "
-"doel niet ontkoppelen!"
+msgstr "You can't unmount a drive used by swap file or iSCSI-target file!"
 
 msgid "The Netbios name contains invalid characters."
-msgstr "De Netbiosnaam bevat ongeldige karakters."
+msgstr "Netbios името съдържа невалидни символи."
 
 msgid "The Workgroup name contains invalid characters."
-msgstr "De werkgroepnaam bevat ongeldige karakters."
+msgstr "името на рабтната група съдържа невалидни символи."
 
 msgid "The WINS server must be an IP address."
-msgstr "De WINS server moet een IP adres zijn."
+msgstr "WINS сървъра трябва де е IP адрес."
 
 msgid "The SND Buffer value must be a number."
-msgstr "De verzendbufferwaarde moet een getal zijn."
+msgstr "SND буфера трябва да е число."
 
 msgid "The RCV Buffer value must be a number."
-msgstr "De ontvangbufferwaarde moet een getal zijn."
+msgstr "RCV буфера трябва да е число."
 
 msgid "CIFS share"
-msgstr "Gedeelde map"
+msgstr "CIFS share"
 
 msgid "Authentication"
-msgstr "Legitimatie"
+msgstr "Идентификация"
 
 msgid "NetBiosName"
-msgstr "NetBiosnaam"
+msgstr "NetBios име"
 
 msgid "Workgroup"
-msgstr "Werkgroep"
+msgstr "Работна група"
 
 msgid "Workgroup to be member of."
-msgstr "Werkgroep waarvan lid."
+msgstr "член на Работна група"
 
 msgid "Server description. This can usually be left blank."
-msgstr "Omschrijving van de server. Dit kan normaliter leeg blijven."
+msgstr "Server description. This can usually be left blank."
 
 msgid "Dos charset"
-msgstr "DOS karakterset"
+msgstr "Dos charset"
 
 msgid "Unix charset"
-msgstr "UNIX karakterset"
+msgstr "Unix charset"
 
 msgid "Log Level"
-msgstr "Log niveau"
+msgstr "ниво на логване"
 
 msgid "Local Master Browser"
-msgstr "Locale Hoofd Browser"
+msgstr "Local Master Browser"
 
 msgid "Allows %s to try and become a local master browser."
-msgstr "Dit staat %s toe om te proberen locale hoofd browser te worden."
+msgstr "Allows %s to try and become a local master browser."
 
 msgid "Time server"
-msgstr "Tijd server"
+msgstr "Time server"
 
 msgid "%s advertises itself as a time server to Windows clients."
-msgstr "%s maakt zichzelf als tijdserver kenbaar aan Windows clienten."
+msgstr "%s advertises itself as a time server to Windows clients."
 
 msgid "WINS server"
-msgstr "WINS server"
+msgstr "WINS сървър"
 
 msgid "WINS Server IP address."
-msgstr "WINS Server IP adres."
+msgstr "IP адрес на WINS сървър"
 
 msgid "Recycle Bin"
-msgstr "Prullenmand"
+msgstr "Кошче"
 
 msgid "Enable Recycle bin"
-msgstr "Prullenmand activeren"
+msgstr "позволи Кошче"
 
 msgid "This will create a recycle bin on the CIFS shares."
-msgstr "Dit maakt een prullenmand aan op de CIFS gedeelde mappen."
+msgstr "това ще направи Кошче в споделените папки"
 
 msgid "Shares"
-msgstr "Gedeelde mappen"
+msgstr "споделени папки"
 
 msgid "Send Buffer Size"
-msgstr "Zendbuffer grootte"
+msgstr "Send Buffer Size"
 
 msgid "Size of send buffer (16384 by default)."
-msgstr "Grootte van de zendbuffer (standaard 16384)."
+msgstr "Size of send buffer (16384 by default)."
 
 msgid "Receive Buffer Size"
-msgstr "Ontvangstbuffer grootte"
+msgstr "Receive Buffer Size"
 
 msgid "Size of receive buffer (16384 by default)."
-msgstr "Grootte van de ontvangstbuffer (standaard 16384)."
+msgstr "Size of receive buffer (16384 by default)."
 
 msgid ""
 "The shares has been modified.<br>You must apply the changes in order for "
 "them to take effect."
 msgstr ""
-"De gedeelde mappen zijn gewijzigd.<br>Je moet op 'toepassen' klikken voordat "
-"de wijzigingen doorgevoerd worden."
+"The shares has been modified.<br>You must apply the changes in order for "
+"them to take effect."
 
 msgid "Browseable"
-msgstr "Verkenbaar"
+msgstr "отварящ се"
 
 msgid "Edit share"
-msgstr "Gedeelde map bewerken"
+msgstr "промени споделените папки"
 
 msgid ""
 "This controls whether this share is seen in the list of available shares in "
 "a net view and in the browse list."
-msgstr ""
-"Dit bepaalt of de gedeelde map zichtbaar is in de lijst van beschikbare "
-"gedeelde mappen in het netwerkoverzicht."
+msgstr "Показване на ресурса в списъка с наличните ресурси."
 
 msgid "The maximum Number of client must be a number."
-msgstr "Het maximum aantal clients moet een getal zijn."
+msgstr "максималния брай клиенти трябва да е да е число."
 
 msgid "The max con per ip must be a number."
-msgstr "Het maximum aantal connecties per IP adres moet een getal zijn."
+msgstr "максималните конекции към IP трябва да е число."
 
 msgid "The maximum idle time be a number."
-msgstr "De maximum inactiviteitsduur moet een getal zijn."
+msgstr "максималното време за чакане трябва да е да е число."
 
 msgid "The pasv address must be a public IP address."
-msgstr "Het pasv adres moet een publiek IP adres zijn."
+msgstr "The pasv address must be a public IP address."
 
 msgid "You must select at minium anonymous or/and local user authentication."
 msgstr ""
-"Je moet minstens een anonieme- en/of lokale gebruikersaanmelding selecteren."
+"You must select at minium anonymous or/and local user authentication."
 
 msgid "FTP Server"
-msgstr "FTP server"
+msgstr "FTP сървър"
 
 msgid "Number of clients"
-msgstr "Aantal clienten"
+msgstr "брой на клиенти"
 
 msgid "Maximum number of simultaneous clients."
-msgstr "Maximum aantal gelijktijdige connecties."
+msgstr "Maximum number of simultaneous clients."
 
 msgid "Max. conn. per IP"
-msgstr "Max. aant. conn. per IP"
+msgstr "максимум конекции към IP"
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
-msgstr "Maximum aantal connecties per IP adres (0 = ongelimiteerd)."
+msgstr "максимум конекции към IP адрес (0 = неограничени)"
 
 msgid "Timeout"
-msgstr "Onderbreking"
+msgstr "Максимално изчакване"
 
 msgid "Maximum idle time in minutes."
-msgstr "Maximale non-actieve tijd in minuten."
+msgstr "Максимално изчакване в минути"
 
 msgid "Anonymous login"
-msgstr "Anonieme aanmelding"
+msgstr "анонимен вход"
 
 msgid "Enable anonymous login."
-msgstr "Anonieme aanmelding activeren."
+msgstr "позволи анонимен вход"
 
 msgid "Local User"
-msgstr "Lokale gebruiker"
+msgstr "локален потребител"
 
 msgid "Enable local user login."
-msgstr "Lokale gebruikersaanmelding activeren."
+msgstr "позволи вход за локален потребител"
 
 msgid "FXP"
 msgstr "FXP"
 
 msgid "Enable FXP protocol."
-msgstr "Het FXP protocol activeren."
+msgstr "позволи FXP протолола"
 
 msgid ""
 "FXP allows transfers between two remote servers without any file data going "
 "to the client asking for the transfer (insecure!)."
 msgstr ""
-"FXP laat bestandsoverdrachten toe tussen twee externe servers zonder "
-"bestandsoverdracht naar de client die de overdracht aanvraagt (niet veilig!)."
+"FXP allows transfers between two remote servers without any file data going "
+"to the client asking for the transfer (insecure!)."
 
 msgid "NAT mode"
-msgstr "NAT modus"
+msgstr "NAT опция"
 
 msgid "Force NAT mode."
-msgstr "Forceer NAT modus."
+msgstr "форсирай NAT опцията"
 
 msgid ""
 "Enable this if your FTP server is behind a NAT box that doesn't support "
 "applicative FTP proxying."
 msgstr ""
-"Activeer deze optie wanneer de FTP server zich achter een NAT router bevindt "
-"welke geen proxy functie heeft (ingesteld) voor het FTP verkeer."
+"Enable this if your FTP server is behind a NAT box that doesn't support "
+"applicative FTP proxying."
 
 msgid "Passive IP address"
-msgstr "Passief IP address"
+msgstr "пасивен IP адрес"
 
 msgid ""
 "Use this option to override the IP address that FTP daemon will advertise in "
 "response to the PASV command."
 msgstr ""
-"Gebruik deze optie om het IP adres te omzeilen dat de FTP server zal "
-"adverteren in antwoord op het PASV commando."
+"Use this option to override the IP address that FTP daemon will advertise in "
+"response to the PASV command."
 
 msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
 "port)."
 msgstr ""
-"De minimum poort die toegewezen wordt voor de PASV type dataverbindingen (0 "
-"= iedere poort is mogelijk)."
+"The minimum port to allocate for PASV style data connections (0 = use any "
+"port)."
 
 msgid ""
 "The maximum port to allocate for PASV style data connections (0 = use any "
 "port)."
 msgstr ""
-"De maximum poort die toegewezen wordt voor de PASV type dataverbindingen (0 "
-"= iedere poort is mogelijk)."
+"The maximum port to allocate for PASV style data connections (0 = use any "
+"port)."
 
 msgid "Banner"
-msgstr "Banner"
+msgstr "банер"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
-msgstr ""
-"Begroetingsbanner die getoond wordt bij het maken van een FTP verbinding."
+msgstr "Greeting banner displayed by FTP when a connection first comes in."
 
 msgid "A valid network must be specified."
-msgstr "Er moet een geldig netwerk gespecifieerd zijn."
+msgstr "трябва да посочите валидна мрежа"
 
 msgid "NFS Server"
-msgstr "NFS server"
+msgstr "NFS Server"
 
 msgid "Map all users to root"
-msgstr "Link alle gebruikers aan root"
+msgstr "Направи всички потребители администратори"
 
 msgid "All users will have the root privilege."
-msgstr "Alle gebruikers zullen root-privilleges hebben."
+msgstr "всички потребители ще имат администраторски права,"
 
 msgid "Authorized"
-msgstr "Geauthoriseerd"
+msgstr "разрешен"
 
 msgid "Networks"
-msgstr "Netwerken"
+msgstr "Мрежи"
 
 msgid "Networks Authorized"
-msgstr "Geauthoriseerde Netwerken"
+msgstr "разрешени мрежи"
 
 msgid "Network that is authorised to access to NFS share"
-msgstr ""
-"Netwerk dat geautoriseerd is om toegang te krijgen tot de gedeelde NFS mappen"
+msgstr "Network that is authorised to access to NFS share"
 
 msgid "The name of the exported directories are : /mnt/sharename"
-msgstr ""
-"De namen van de ge&euml;xporteerde mappen zijn van de vorm: /mnt/mapnaam"
+msgstr "The name of the exported directories are : /mnt/sharename"
 
 msgid "Server"
-msgstr "Server"
+msgstr "Сървър"
 
 msgid "Client"
-msgstr "Client"
+msgstr "Клиент"
 
 msgid "Local"
-msgstr "Lokaal"
+msgstr "Локален"
 
 msgid "Rsync Daemon"
 msgstr "Rsync Daemon"
 
 msgid "Read only"
-msgstr "Alleen lezen"
+msgstr "Само за четене"
 
 msgid "Map to user"
-msgstr "Linken naar gebruiker"
+msgstr "Map to user"
 
 msgid "Alternate TCP port. Default is 873"
-msgstr "Alternatieve TCP poort."
+msgstr "Alternate TCP port. Default is 873"
 
 msgid "Maximum connections"
-msgstr "Maximum aantal verbindingen"
+msgstr "максимален брой връзки"
 
 msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
 msgstr ""
-"Het maximum aantal gelijktijdige verbindingen. Standaard is dit 0 "
-"(ongelimiteerd)."
+"Maximum number of simultaneous connections. Default is 0 (unlimited)."
 
 msgid "MOTD"
-msgstr "BVDD"
+msgstr "MOTD"
 
 msgid "Message of the day."
-msgstr "Bericht Van De Dag"
+msgstr "Съобщение за деня."
 
 msgid "You must configure mount point first."
-msgstr "Je moet eerst een koppelingspunt instellen."
+msgstr "трябва да конфигурирате първо точчката за монтиране"
 
 msgid "Rsync Client Synchronization"
-msgstr "RSYNC client synchronisatie"
+msgstr "Rsync Client Synchronization"
 
 msgid "Remote RSYNC Server"
-msgstr "RSYNC server op afstand"
+msgstr "отданечен RSYNC сървър"
 
 msgid "IP address of remote RSYNC server"
-msgstr "IP adres van de RSYNC server op afstand"
+msgstr "IP адрес на отданечения RSYNC сървър"
 
 msgid "RSYNC Options"
-msgstr "RSYNC opties"
+msgstr "RSYNC Options"
 
 msgid "Delete files that don't exist on sender."
-msgstr "Verwijder de bestanden niet niet op de 'verzender' staan."
+msgstr "Delete files that don't exist on sender."
 
 msgid "Shares to be synchronized"
-msgstr "Gedeelde mappen die gesynchroniseerd moeten worden"
+msgstr "Shares to be synchronized"
 
 msgid "This same local share must be present on the Remote Server."
-msgstr ""
-"De lokaal gedeelde map moet ook aanwezig zijn op de server op afstand."
+msgstr "This same local share must be present on the Remote Server."
 
 msgid "Synchronization Time"
-msgstr "Synchronisatietijdstip"
+msgstr "Synchronization Time"
 
 msgid "You can't have the same mount point for source and destination!"
-msgstr ""
-"Je kunt niet hetzelfde aanhechtingspunt gebruiken voor zowel bron als "
-"bestemming!"
+msgstr "You can't have the same mount point for source and destination!"
 
 msgid "Rsync Local Synchronization"
-msgstr "RSYNC lokale synchronisatie"
+msgstr "Rsync Local Synchronization"
 
 msgid "Source"
-msgstr "Bron"
+msgstr "Източник"
 
 msgid "Source Mount Point."
-msgstr "Bron aanhechtingspunt."
+msgstr "Source Mount Point."
 
 msgid "Destination"
-msgstr "Bestemming"
+msgstr "Дестинация"
 
 msgid "Destination Mount Point (backup drive)."
-msgstr "Bestemmings aanhechtingspunt (backup schijf)."
+msgstr "Destination Mount Point (backup drive)."
 
 msgid "SSH Daemon"
 msgstr "SSH Daemon"
 
 msgid "Alternate TCP port. Default is 22"
-msgstr "Alternatieve TCP poort. Standaard 22"
+msgstr "Alternate TCP port. Default is 22"
 
 msgid "Permit root login"
-msgstr "root aanmelding toestaan"
+msgstr "позволи администраторския вход"
 
 msgid "Enable TCP Forwarding"
-msgstr "TCP doorsturen inschakelen"
+msgstr "позволи TCP пренасочване"
 
 msgid "Permit to do SSH Tunneling."
-msgstr "SSH Tunneling toestaan"
+msgstr "Permit to do SSH Tunneling."
 
 msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
-"Instelling die bepaalt of het is toegestaan om rechtstreeks als Superuser "
-"(root) in te loggen."
+"Specifies whether it is allowed to login as superuser (root) directly."
 
 msgid "SSH key"
-msgstr "SSH sleutel"
+msgstr "SSH ключ"
 
 msgid "Private Key"
-msgstr "Prive sleutel"
+msgstr "частен ключ"
 
 msgid "Paste a DSA PRIVATE KEY in PEM format here."
-msgstr "Plak hier (copy/paste) een DSA PRIVATE SLEUTEL in PEM formaat."
+msgstr "Paste a DSA PRIVATE KEY in PEM format here."
 
 msgid "The combination of share and working directory does not exist."
-msgstr "De combinatie van gedeelde map en werkfolder bestaat niet."
+msgstr "The combination of share and working directory does not exist."
 
 msgid "Unison File Synchronisation"
-msgstr "Unison bestandssynchronisatie"
+msgstr "Unison File Synchronisation"
 
 msgid "Share"
-msgstr "Gedeelde map"
+msgstr "Споделен"
 
 msgid "You may need enough space to duplicate all files being synced"
-msgstr ""
-"Er moet voldoende ruimte zijn om alle te synchroniseren bestanden te "
-"dupliceren"
+msgstr "You may need enough space to duplicate all files being synced"
 
 msgid "Working Directory"
-msgstr "Werkfolder"
+msgstr "Working Directory"
 
 msgid "Where the working files will be stored"
-msgstr "Plaats waar de werkbestanden zullen bewaard worden."
+msgstr "Where the working files will be stored"
 
 msgid "Create work directory if it doesn't exist"
-msgstr "Een werkmap aanmaken als deze niet bestaat"
+msgstr "Create work directory if it doesn't exist"
 
 msgid "UPnP A/V Media Server"
 msgstr "UPnP A/V Media Server"
 
 msgid "UPnP friendly name."
-msgstr "UPnP herkenbare naam."
+msgstr "UPnP friendly name."
 
 msgid "Interface to listen to."
-msgstr "Interface waarop UPnP moet luisteren."
+msgstr "Interface to listen to."
 
 msgid "Content"
-msgstr "Inhoud"
+msgstr "Съдържание"
 
 msgid "Directories to be shared."
-msgstr "Mappen die gedeeld moeten worden."
+msgstr "Directories to be shared."
 
 msgid "No content directory to be shared."
-msgstr "Er is geen inhoudsmap om te delen."
+msgstr "No content directory to be shared."
 
 msgid "Directory"
-msgstr "Map"
+msgstr "Папка"
 
 msgid "Add directory"
-msgstr "Map toevoegen"
+msgstr "Добави папка"
 
 msgid "Edit directory"
-msgstr "Map bewerken"
+msgstr "промени папката"
 
 msgid "Delete directory"
-msgstr "Map verwijderen"
+msgstr "итрий папката"
 
 msgid "Do you really want to delete this directory entry?"
-msgstr "Weet je zeker dat je deze map wilt verwijderen?"
+msgstr "Do you really want to delete this directory entry?"
 
 msgid "Directory to be shared."
-msgstr "Map die gedeeld moet worden."
+msgstr "папка която да бъде споделена"
 
 msgid "You must select at least one authentication method."
-msgstr "Je moet minstens &euml;&euml;n aanmeldingsmethode kiezen."
+msgstr "You must select at least one authentication method."
 
 msgid "AFP Server"
-msgstr "AFP Server"
+msgstr ""
+"Copy text   \t\n"
+"AFP сърър"
 
 msgid "Server Name"
-msgstr "Server Naam"
+msgstr "Име на сървъра"
 
 msgid "Enable guest access."
-msgstr "Activeer gast-toegang."
+msgstr "позволи вход за гости"
 
 msgid "Enable local user authentication."
-msgstr "Activeer lokale gebruikersaanmelding."
+msgstr "позволи идентификация за локални потребители"
 
 msgid "User"
-msgstr "Gebruiker"
+msgstr "потребител"
 
 msgid "Users"
-msgstr "Gebruikers"
+msgstr "Потребители"
 
 msgid "Group"
-msgstr "Groep"
+msgstr "Група"
 
 msgid "Groups"
-msgstr "Groepen"
+msgstr "Групи"
 
 msgid "Full Name"
-msgstr "Volledige naam"
+msgstr "Пълно име"
 
 msgid ""
 "The User list has been changed.<br>You must apply the changes in order for "
 "them to take effect."
 msgstr ""
-"De gebruikerslijst werd aangepast.<br>Je moet op 'toepassen' klikken "
-"vooraleer de wijzigingen actief zijn."
+"The User list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
 
 msgid "Edit user"
-msgstr "Gebruiker bewerken"
+msgstr "Помени потребителя"
 
 msgid "Delete user"
-msgstr "Gebruiker verwijderen"
+msgstr "изтрий потребителя"
 
 msgid "Do you really want to delete this user?!"
-msgstr "Weet je zeker dat je deze gebruiker wilt verwijderen?!"
+msgstr "наистина ли искате да изтриете потребителя?!"
 
 msgid "Add user"
-msgstr "Gebruiker toevoegen"
+msgstr "Добавяне на потребител"
 
 msgid "You must create a group first."
-msgstr "Je moet eerst een groep aanmaken."
+msgstr "Трябва да създадете първо група."
 
 msgid "The login name contains invalid characters."
-msgstr "De gebruikersnaam bevat ongeldige karakters."
+msgstr "Входното име съдържа невалидни символи."
 
 msgid "The login name is a reserved login name."
-msgstr "De gebruikersnaam is een gereserveerde gebruikersnaam."
+msgstr "Входното име вече е заето."
 
 msgid "The full name contains invalid characters."
-msgstr "De  volledige naam bevat ongeldige karakters."
+msgstr "Пълното име съдържа невалидни символи."
 
 msgid "This user already exists in the user list."
-msgstr "Deze gebruiker bestaat al in de gebruikerslijst."
+msgstr "Този потребител вече съществува в листа с потребителите."
 
 msgid "Unique login name of user."
-msgstr "Unieke aanmeldingsnaam van de gebruiker."
+msgstr "Уникално входно име на потребителя."
 
 msgid "User full name."
-msgstr "Volledige naam."
+msgstr "Пълно име."
 
 msgid "User password."
-msgstr "Wachtwoord gebruiker."
+msgstr "Потребителска парола."
 
 msgid "Confirm Password"
-msgstr "Bevestig wachtwoord"
+msgstr "Потвърди паролата"
 
 msgid "Confirm the password."
-msgstr "Bevestig het wachtwoord."
+msgstr "Потвърди паролата."
 
 msgid "Group Member"
-msgstr "Groepslid"
+msgstr "Член на група"
 
 msgid "Full Shell"
-msgstr "Volledige gebruikersomgeving"
+msgstr "Пълен достъп"
 
 msgid "Give full shell to user"
-msgstr "Geef de volledige gebruikersomgeving aan de gebruiker"
+msgstr "Дай пълен достъп на потребителя"
 
 msgid "Administrator"
-msgstr "beheerder"
+msgstr "Администратор"
 
 msgid "Put user in the administrator group"
-msgstr "Plaats gebruiker in de beheerders groep"
+msgstr "Добави потребителя в административната група"
 
 msgid ""
 "The group list has been changed.<br>You must apply the changes in order for "
 "them to take effect."
 msgstr ""
-"De groeplijst werd gewijzigd.<br>Je moet op 'toepassen' klikken vooraleer de "
-"wijzigingen actief zijn."
+"The group list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
 
 msgid "Edit group"
-msgstr "Groep bewerken"
+msgstr "Промени групата"
 
 msgid "Delete group"
-msgstr "Groep verwijderen"
+msgstr "Изтрий група"
 
 msgid "Do you really want to delete this group?"
-msgstr "Weet je zeker dat je deze groep wilt verwijderen?"
+msgstr "Наистина ли искате да изтриете тази група?"
 
 msgid "Add group"
-msgstr "Groep toevoegen"
+msgstr "Добавяне на група"
 
 msgid "The Group name contains invalid characters."
-msgstr "De naam van de groep bevat ongeldige karakters."
+msgstr "Името на групата съдържа невалидни символи."
 
 msgid "The Group desc contains invalid characters."
-msgstr "De omschrijving van de groep bevat ongeldige karakters."
+msgstr "Описанието на групата съдържа невалидни символи."
 
 msgid "This group already exists in the group list."
-msgstr "Deze groep bestaat al in de groepenlijst."
+msgstr "Тази група вече съществува в листа с групите."
 
 msgid "Group name."
-msgstr "Groepsnaam."
+msgstr "Име на групата."
 
 msgid "Group description."
-msgstr "Groepsomschrijving."
+msgstr "Описание на групата."
 
 msgid "AD server name"
-msgstr "AD servernaam"
+msgstr "AD server name"
 
 msgid "AD or PDC name."
-msgstr "AD of PDC naam."
+msgstr "AD or PDC name."
 
 msgid "AD server IP"
 msgstr "AD server IP"
 
 msgid "IP address of MS Active Directory server."
-msgstr "IP adres van de MS Active Directory server."
+msgstr "IP address of MS Active Directory server."
 
 msgid "Domain name"
-msgstr "Domeinnaam"
+msgstr "Домейн"
 
 msgid "Domain name in old format."
-msgstr "Domeinnaam in oud formaat."
+msgstr "Domain name in old format."
 
 msgid "Administrator name"
-msgstr "Naam van de beheerder"
+msgstr "Имв на администратора"
 
 msgid "Username of a domain administrator account."
-msgstr "Gebruikersnaam van een domeinbeheerder."
+msgstr "Потребителско име за администраторския акаунт."
 
 msgid "Administration password"
-msgstr "Wachtwoord van de beheerder"
+msgstr "Парола на администратора"
 
 msgid "Password of domain administrator account, enter it here twice."
-msgstr ""
-"Wachtwoord voor de opgegeven domein beheerders gebruikersnaam, geef hier "
-"twee maal in."
+msgstr "Въведете тук паролата за администраторския акаунт 2 път ."
 
 msgid "The system is halting now. This may take one minute."
-msgstr "Het systeem wordt nu gestopt. Dit kan een minuut duren."
+msgstr "Системата се спира в момента. Това може да отнеме минута."
 
 msgid "Are you sure you want to shutdown the system?"
-msgstr "Weet je zeker dat je het systeem wilt uitschakelen?"
+msgstr "Сигурни ли сте ,че искате да спрете системата?"
 
 msgid "Scheduled shutdown"
-msgstr "Geplande uitschakeling"
+msgstr "Предвидено изключване"
 
 msgid "Shutdown Time"
-msgstr "Uitschakelingstijdstip"
+msgstr "Време за изключване"
 
 msgid "File path"
-msgstr "Bestandspad"
+msgstr "Път до файла"
 
 msgid "Saved file to"
-msgstr "Bestand bewaard op"
+msgstr "Запази фаила в"
 
 msgid "File not found"
-msgstr "Bestand niet gevonden"
+msgstr "Файла не е намерен"
 
 msgid "Rows"
-msgstr "Rijen"
+msgstr "Редове"
 
 msgid "Cols"
-msgstr "Kolommen"
+msgstr "Колони"
 
 msgid "Highlighting"
-msgstr "Markeren"
+msgstr "Открояване на синтаксиса"
 
 msgid "Enabled"
-msgstr "Geactiveerd"
+msgstr "Позволи"
 
 msgid "Disabled"
-msgstr "Niet geactiveerd"
+msgstr "Забрани"
 
 msgid "Execute command"
-msgstr "Commando uitvoeren"
+msgstr "Изпълни командата"
 
 msgid "The system is rebooting now. This may take one minute."
-msgstr "Het systeem is nu aan het herstarten. Dit kan een minuut duren."
+msgstr "Системата се рестартира в момента. Това може да отнеме минута"
 
 msgid "Are you sure you want to reboot the system?"
-msgstr "Weet je zeker dat je het systeem wilt herstarten?"
+msgstr "Сигурни ли сте ,че искате да рестартирате системата?"
 
 msgid "License"
-msgstr "Licentie"
+msgstr "Лицензно споразумение"
 
 msgid "%s interface (SSID '%s')"
-msgstr "%s interface (SSID '%s')"
+msgstr "%s интерфейс (SSID '%s')"
 
 msgid "Signal strength cache"
-msgstr "Cache voor signaalsterkte"
+msgstr "Скалд за сила на сигнала"
 
 msgid "MAC address"
-msgstr "MAC adres"
+msgstr "MAC адрес"
 
 msgid "Signal"
-msgstr "Signaal"
+msgstr "Сигнал"
 
 msgid "Noise"
-msgstr "Ruis"
+msgstr "Шум"
 
 msgid "Quality"
-msgstr "Kwaliteit"
+msgstr "Качество"
 
 msgid "Associated stations"
-msgstr "Gekoppelde stations"
+msgstr "Associated stations"
 
 msgid "TX rates"
-msgstr "TX (verzend) snelheden"
+msgstr "TX rates"
 
 msgid ""
 "No supported wireless interfaces were found for status display (only cards "
 "that use the wi[n] driver are supported)."
 msgstr ""
-"Er zijn geen ondersteunde draadloze interfaces gevonden om de status weer te "
-"geven (alleen kaarten die het wi[n] stuurprogramma gebruiken worden "
-"ondersteund)."
+"No supported wireless interfaces were found for status display (only cards "
+"that use the wi[n] driver are supported)."
 
 msgid "%s interface"
-msgstr "%s interface"
+msgstr "%s интерфейс"
 
 msgid "DHCP"
 msgstr "DHCP"
@@ -2029,51 +1980,50 @@ msgid "PPTP"
 msgstr "PPTP"
 
 msgid "Subnet mask"
-msgstr "Subnet mask"
+msgstr "Подмрежова маска"
 
 msgid "Gateway"
-msgstr "Gateway"
+msgstr "Шлюз"
 
 msgid "ISP DNS servers"
-msgstr "ISP DNS servers"
+msgstr "ISP DNS сървъри"
 
 msgid "Media"
-msgstr "Media"
+msgstr "Носител"
 
 msgid "Channel"
-msgstr "Kanaal"
+msgstr "Канал"
 
 msgid "SSID"
 msgstr "SSID"
 
 msgid "I/O packets"
-msgstr "I/O paketten"
+msgstr "I/O пакети"
 
 msgid "I/O errors"
-msgstr "I/O fouten"
+msgstr "I/O грешки"
 
 msgid "Collisions"
-msgstr "Botsingen"
+msgstr "Колизии"
 
 msgid "CPU load"
-msgstr "CPU belasting"
+msgstr "натоварване на процесора"
 
 msgid "VLAN tag"
 msgstr "VLAN tag"
 
 msgid "Edit VLAN"
-msgstr "VLAN bewerken"
+msgstr "Промени VLAN"
 
 msgid ""
 "Traceroute may take a while to complete. You may hit the Stop button on your "
 "browser at any time to see the progress of failed traceroutes."
 msgstr ""
-"Het kan even duren vooraleer traceroute klaar is. Ja mag altijd op de stop "
-"knop van je browser klikken om de vooruitgang te zien van de gefaalde "
-"traceroutes."
+"Traceroute may take a while to complete. You may hit the Stop button on your "
+"browser at any time to see the progress of failed traceroutes."
 
 msgid "Partitions"
-msgstr "Partities"
+msgstr "Дялове"
 
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
@@ -2082,49 +2032,51 @@ msgid "ATAidle"
 msgstr "ATAidle"
 
 msgid "Space Used"
-msgstr "Gebruikte ruimte"
+msgstr "използвано място"
 
 msgid "Mounts"
-msgstr "Koppelingen"
+msgstr "Монтирани"
 
 msgid "MS Domain"
-msgstr "MS Domein"
+msgstr "MS Domain"
 
 msgid "List of detected ATA disks"
-msgstr "Lijst van gedetecteerde ATA schijven"
+msgstr "Лист на АТА дисковете"
 
 msgid "List of detected SCSI disks"
-msgstr "Lijst van gedetecteerde SCSI schijven"
+msgstr "Лист на SCSI дисковете"
 
 msgid "List of mount points"
-msgstr "Lijst van koppelpunten"
+msgstr "лист на точките за монтиране"
 
 msgid "Free Space"
-msgstr "Beschikbare (vrije) ruimte"
+msgstr "Свободно място"
 
 msgid "%s will reboot after restoring the configuration."
-msgstr "%s zal herstarten na het terugschrijven van de instellingen."
+msgstr "%s ще се рестартира след възстановяването на конфигурацията."
 
 msgid "Delete ARP entry"
-msgstr "ARP ingang verwijderen"
+msgstr ""
+"Copy text   \t\n"
+"изтрий ARP позицията"
 
 msgid "Remove all entries from ARP table"
-msgstr "Alle ARP ingangen verwijderen uit de tabel"
+msgstr "Изтрий цялата ARP таблица"
 
 msgid "Traffic graph"
-msgstr "Grafiek van het netwerkverkeer"
+msgstr "Графика на трафика"
 
 msgid "Cannot get data about interface"
-msgstr "Cannot get data about interface"
+msgstr "Не мога да взема информация за интерфейса"
 
 msgid "In"
-msgstr "In"
+msgstr "Входен"
 
 msgid "Out"
-msgstr "Out"
+msgstr "Изходен"
 
 msgid "Switch to"
-msgstr "Switch to"
+msgstr "прмини към"
 
 msgid "AutoScale"
 msgstr "AutoScale"
@@ -2139,7 +2091,7 @@ msgid "Collecting initial data, please wait..."
 msgstr "Collecting initial data, please wait..."
 
 msgid "Enable tuning of some kernel variables"
-msgstr "Het tunen van sommige kernelvariabelen inschakelen"
+msgstr "Enable tuning of some kernel variables"
 
 msgid ""
 "This will cause %s not to check for newer firmware versions when the <a "
@@ -2208,7 +2160,7 @@ msgstr ""
 "href=%s>previously configured disk.</a>"
 
 msgid "Default is 21"
-msgstr "Default is 21"
+msgstr "по подразбиране е 21"
 
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
@@ -2218,16 +2170,16 @@ msgstr ""
 "href=%s>user</a> must have full Shell enabled."
 
 msgid "Last %d %s log entries"
-msgstr "Last %d %s log entries"
+msgstr "последни %d %s позиции в дневника"
 
 msgid "Clear log"
-msgstr "Clear log"
+msgstr "Изчисти дневника"
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr "Show log entries in reverse order (newest entries on top)"
 
 msgid "Number of log entries to show"
-msgstr "Number of log entries to show"
+msgstr "брой на показваните позициите в дневника"
 
 msgid "Resolve IP addresses to hostnames"
 msgstr "Resolve IP addresses to hostnames"
@@ -2246,28 +2198,28 @@ msgid "Enable syslog'ing to remote syslog server"
 msgstr "Enable syslog'ing to remote syslog server"
 
 msgid "Remote syslog server"
-msgstr "Remote syslog server"
+msgstr "отдалечен системен дневник"
 
 msgid "IP address of remote syslog server"
 msgstr "IP address of remote syslog server"
 
 msgid "System events"
-msgstr "System events"
+msgstr "Системни събития"
 
 msgid "SSHD events"
-msgstr "SSHD events"
+msgstr "SSHD събития"
 
 msgid "FTP events"
-msgstr "FTP events"
+msgstr "FTP събития"
 
 msgid "RSYNCD events"
-msgstr "RSYNCD events"
+msgstr "RSYNCD събития"
 
 msgid "SMARTD events"
-msgstr "SMARTD events"
+msgstr "SMARTD събития"
 
 msgid "Daemon events"
-msgstr "Daemon events"
+msgstr "Daemon събития"
 
 msgid ""
 "Syslog sends UDP datagrams to port 514 on the specified remote syslog "
@@ -2294,19 +2246,19 @@ msgid "Show the list of available target Name on the iSCSI target"
 msgstr "Show the list of available target Name on the iSCSI target"
 
 msgid "AD Authentication disabled"
-msgstr "AD Authentication disabled"
+msgstr "AD оторизацията е забранена"
 
 msgid "Count must be between 1 and %d"
-msgstr "Count must be between 1 and %d"
+msgstr "Бройката тряба да е мождъ 1 и %d"
 
 msgid "Count"
-msgstr ""
+msgstr "Броене"
 
 msgid "Ping output"
 msgstr "Ping output"
 
 msgid "Maximum number of hops"
-msgstr "Maximum number of hops"
+msgstr "Максимален брой скокове"
 
 msgid "Traceroute output"
 msgstr "Traceroute output"
@@ -2328,7 +2280,7 @@ msgstr ""
 "address will be reset to %s and the password will be set to '%s'."
 
 msgid "Are you sure you want to proceed?"
-msgstr "Are you sure you want to proceed?"
+msgstr "Сигурни ли сте, че желаете да продължите?"
 
 msgid "The configuration has been restored. %s is now rebooting."
 msgstr "The configuration has been restored. %s is now rebooting."
@@ -2343,31 +2295,31 @@ msgid "webGUI Configuration"
 msgstr "webGUI Configuration"
 
 msgid "Erasing MBR and all partitions"
-msgstr ""
+msgstr "Erasing MBR and all partitions"
 
 msgid "Keeping the MBR and all partitions"
 msgstr "Keeping the MBR and all partitions"
 
 msgid "Creating one partition"
-msgstr ""
+msgstr "Creating one partition"
 
 msgid "Initializing partition"
-msgstr ""
+msgstr "Инициализиране на партицията"
 
 msgid "Creating BSD label"
-msgstr "Creating BSD label"
+msgstr "Създаване на BSD label"
 
 msgid "Creating filesystem"
-msgstr "Creating filesystem"
+msgstr "Създаване на файлова система"
 
 msgid "Destroying old %s information"
-msgstr "Destroying old %s information"
+msgstr "Унищожаване на стара %s информация"
 
 msgid "Done"
-msgstr "Done"
+msgstr "Завърши"
 
 msgid "Creating %s partition"
-msgstr "Creating %s partition"
+msgstr "Създаване %s партиция"
 
 msgid "Creating filesystem with 'Soft Updates'"
 msgstr "Creating filesystem with 'Soft Updates'"
@@ -2376,7 +2328,7 @@ msgid "Power Daemon"
 msgstr "Power Daemon"
 
 msgid "Enable the system power control utility"
-msgstr "Enable the system power control utility"
+msgstr "Позволи system power control utility"
 
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
@@ -2386,466 +2338,437 @@ msgstr ""
 "options accordingly."
 
 msgid "Temperature"
-msgstr ""
+msgstr "Температура"
 
 msgid "n/a"
-msgstr ""
+msgstr "няма"
 
 msgid "The attribute '%s' contains invalid characters."
-msgstr ""
+msgstr "The attribute '%s' contains invalid characters."
 
 msgid "The attribute '%s' is required."
-msgstr ""
+msgstr "The attribute '%s' is required."
 
 msgid ""
 "The crypted disk list has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
+"The crypted disk list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
 
 msgid "Data integrity"
-msgstr ""
+msgstr "Data integrity"
 
 msgid "Encryption"
-msgstr ""
+msgstr "Криптиране"
 
 msgid ""
 "Do you really want to delete this encrypted disk? All elements that still "
 "use it will become invalid (e.g. share)!"
 msgstr ""
+"Do you really want to delete this encrypted disk? All elements that still "
+"use it will become invalid (e.g. share)!"
 
 msgid "Create encrypted disk"
-msgstr ""
+msgstr "Създай криптиран диск"
 
 msgid "Data integrity algorithm"
-msgstr ""
+msgstr "Data integrity algorithm"
 
 msgid "Encryption algorithm"
-msgstr ""
+msgstr "алгоритъм за криптиране"
 
 msgid "Passphrase"
-msgstr ""
+msgstr "Парола"
 
 msgid "Passphrase don't match."
-msgstr ""
+msgstr "секретната фраза не съвпаде."
 
 msgid "Init and encrypt disk"
-msgstr ""
+msgstr "Init and encrypt disk"
 
 msgid "Disk initialization and encryption"
-msgstr ""
+msgstr "инициализиране и криптиране на диска"
 
 msgid "Encrypting... Please wait"
-msgstr ""
+msgstr "Криптиране... Моля почакайте"
 
 msgid "Attaching..."
-msgstr "Verbinden..."
+msgstr "Закачане..."
 
 msgid ""
 "This will erase ALL data on your disk!<br>Using Data integrity will reduce "
 "size of available storage and also reduce speed."
 msgstr ""
+"This will erase ALL data on your disk!<br>Using Data integrity will reduce "
+"size of available storage and also reduce speed."
 
 msgid "Sensors"
-msgstr "Sensors"
+msgstr "Сензори"
 
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
+"Този криптиран диск е монтиран , демонтирайте го преди да го разкачате ."
 
 msgid "You must use a passphrase to attach an encrypted disk."
-msgstr ""
+msgstr "Трябва да използвате секретна фраза за да закачите криптиран диск."
 
 msgid "Encrypted disk name"
-msgstr ""
+msgstr "Криприрано име на диска"
 
 msgid "Detaching..."
-msgstr "Los koppelen..."
+msgstr "Разкачане..."
 
 msgid "attach"
-msgstr "verbind"
+msgstr "прикрепи"
 
 msgid "detach"
-msgstr "Koppel los"
+msgstr "разкачи"
 
 msgid "Attached"
-msgstr "Verbonden"
+msgstr "закачен"
 
 msgid "Not attached"
-msgstr "Niet verbonden"
+msgstr "не е закачен"
 
 msgid "Reload page"
-msgstr "Herlaad pagina"
+msgstr "опресни страницата"
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr ""
+"Трябва да използвате HTTPS за WebGUI протокол за да пращате passphrase."
 
 msgid "Resume"
-msgstr "Hervat"
+msgstr "Възстановяване"
 
 msgid "Enable resume mode."
-msgstr "Activeer hervat modus."
+msgstr "Позволи resume mode."
 
 msgid ""
 "Use this option to enable resuming broken transfers at the point of "
 "interruption."
 msgstr ""
+"Use this option to enable resuming broken transfers at the point of "
+"interruption."
 
 msgid "iSCSI Target"
-msgstr "iSCSI Doel"
+msgstr "iSCSI цел"
 
 msgid ""
 "The iSCSI target list has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
+"The iSCSI target list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
 
 msgid "Do you really want to delete this target?"
-msgstr "Bent u zeker dat u deze target wil verwijderen?"
+msgstr "Do you really want to delete this target?"
 
 msgid "Delete target"
-msgstr "Verwijder doel"
+msgstr "Изтрий целта"
 
 msgid "Add target"
-msgstr "Voeg doel toe"
+msgstr "Добави цел"
 
 msgid "Network that is authorised to access to this iSCSI target."
-msgstr "Toegelaten netwerk om dit iSCSI doel te gebruiken."
+msgstr "Network that is authorised to access to this iSCSI target."
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
-msgstr ""
-"U heeft minimum 256MB Ram geheugen nodig om iSCSI-target te gebruiken."
+msgstr "You must have a minimum of 256MB of RAM for using iSCSI-target."
 
 msgid "FTP Server disabled"
-msgstr "FTP server uitgeschakeld"
+msgstr "FTP Сървъра е спрян"
 
 msgid "FTP users"
-msgstr "FTP gebruikers"
+msgstr "FTP потребители"
 
 msgid "FTP connected users"
-msgstr "FTP verbonden gebruikers"
+msgstr "FTP свързани потребители"
 
 msgid "Save and Restart CIFS"
-msgstr "Sla op en herstart CIFS"
+msgstr "запази и рестартирай CIFS"
 
 msgid "Save and Restart UPnP"
-msgstr "Sla op en herstrat UPnP"
+msgstr "запази и рестартирай UPnP"
 
 msgid "Save and Restart Unison"
-msgstr "Sla op en herstart Unison"
+msgstr "запази и рестартирай Unison"
 
 msgid "Save and Restart SSHD"
-msgstr "Sla op en herstart SSHD"
+msgstr "запази и рестартирай SSHD"
 
 msgid "Save and Restart RSYNC"
-msgstr "Sla op en herstart RSYNC"
+msgstr "запази и рестартирай RSYNC"
 
 msgid "Save and Restart NFS"
-msgstr "Sla op en herstart NFS"
+msgstr "запази и рестартирай NFS"
 
 msgid "Save and Restart FTP"
-msgstr "Sla op en herstart FTP"
+msgstr "запази и рестартирай FTP"
 
 msgid "Save and Restart AFP"
-msgstr "Sla op en herstart AFP"
+msgstr "запази и рестартирай AFP"
 
 msgid "The %s port must be a valid port number."
-msgstr ""
+msgstr "The %s port must be a valid port number."
 
 msgid "Swap memory"
-msgstr ""
+msgstr "Суап памет"
 
 msgid "No RSYNC Client configured"
-msgstr "Geen RSYNC Client geconfigureerd"
+msgstr "No RSYNC Client configured"
 
 msgid "Detected RSYNC remote shares"
-msgstr ""
+msgstr "Засечени RSYNC отдалечени дялове"
 
 msgid "Hosts"
-msgstr "Hosts"
+msgstr "Хостове"
 
 msgid "LDAP"
 msgstr "LDAP"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Потвърждение с парола"
 
 msgid "Remote share (source)"
-msgstr ""
+msgstr "Отдалечен дял (source)"
 
 msgid "Remote address"
-msgstr ""
+msgstr "Отдалечен адрес"
 
 msgid "Local share (destination)"
-msgstr ""
+msgstr "Локален дял (дестинация)"
 
 msgid ""
 "The RSYNC client list has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
+"The RSYNC client list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
 
 msgid ""
 "The RSYNC local list has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
+"The RSYNC local list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
 
 msgid "Add RSYNC"
-msgstr "Voeg RSYNC toe"
+msgstr "Добави RSYNC"
 
 msgid "Edit RSYNC"
-msgstr "Bewerk RSYNC"
+msgstr "Промени RSYNC"
 
 msgid "Delete RSYNC"
-msgstr "Verwijder RSYNC"
+msgstr "Изтрий RSYNC"
 
 msgid "Do you really want to delete this RSYNC?"
-msgstr "Bent u zeker dat u deze RSYNC wil verwijderen?"
+msgstr "Do you really want to delete this RSYNC?"
 
 msgid "Source share"
-msgstr ""
+msgstr "Source share"
 
 msgid "Destination share"
-msgstr ""
+msgstr "Destination share"
 
 msgid "Remote source share name"
-msgstr ""
+msgstr "Remote source share name"
 
 msgid "Mount to use"
-msgstr ""
+msgstr "Mount to use"
 
 msgid "File size"
-msgstr "Bestands grootte"
+msgstr "Размер на файла"
 
 msgid "A valid size target value must be specified."
-msgstr ""
+msgstr "A valid size target value must be specified."
 
 msgid "Target name"
-msgstr "Doel naam"
+msgstr "Target name"
 
 msgid "Target address"
-msgstr "Doel adres"
+msgstr "Target address"
 
 msgid "Initiator name"
-msgstr "Initiator naam"
+msgstr "Initiator name"
 
 msgid "This is for information only (not using during iSCSI negociation)."
-msgstr ""
+msgstr "This is for information only (not using during iSCSI negociation)."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
-msgstr ""
+msgstr "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid ""
 "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 msgstr ""
+"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 
 msgid "This the IP address or DNS name of the iSCSI target."
-msgstr ""
+msgstr "This the IP address or DNS name of the iSCSI target."
 
 msgid "Mount used"
-msgstr ""
+msgstr "Mount used"
 
 msgid "Balance algorithm"
-msgstr "Balance algoritme"
+msgstr "Balance algorithm"
 
 msgid "Select your read balance algorithm."
-msgstr "Selecteer het algoritme voor de leesbalans."
+msgstr "Select your read balance algorithm."
 
 msgid "Settings"
-msgstr "Instellingen"
+msgstr "Натройки"
 
 msgid "Define an host name can be useful for NFS."
-msgstr "Het defini�ren van een host name kan handig zijn voor NFS."
+msgstr "Define an host name can be useful for NFS."
 
 msgid ""
 "The host list has been changed.<br>You must apply the changes in order for "
 "them to take effect."
 msgstr ""
+"The host list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
 
 msgid "Edit Host"
-msgstr "Bewerk host"
+msgstr "Редактиране на хост"
 
 msgid "Do you really want to delete this host?"
-msgstr "Bent u zeker dat u deze host wil verwijderen?"
+msgstr "Do you really want to delete this host?"
 
 msgid "Delete Host"
-msgstr "Verwijder host"
+msgstr "Delete Host"
 
 msgid "Add Host"
-msgstr "Voeg host toe"
+msgstr "Добавяне на хост"
 
 msgid "The host name contain invalid characters."
-msgstr "De hostnaam bevat ongeldige karakters"
+msgstr "The host name contain invalid characters."
 
 msgid "An host with this name already exists."
-msgstr "Een host met deze naam bestaat reeds."
+msgstr "An host with this name already exists."
 
 msgid ""
 "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
 "."
 msgstr ""
+"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
+"."
 
 msgid "The IP address that this hostname represents."
-msgstr "Het IP adres dat deze hostnaam vertegenwoordigd."
+msgstr "The IP address that this hostname represents."
 
 msgid "You may enter a description here for your reference."
-msgstr "U mag hier een beschrijving ingeven als referentie."
+msgstr "You may enter a description here for your reference."
 
 msgid "Download configuration"
-msgstr "Download configuratie"
+msgstr "Свали конфигурацията"
 
 msgid "Restore configuration"
-msgstr "Zet Configuratie terug"
+msgstr "Възстанови конфигурацията"
 
 msgid ""
 "Open a %s configuration XML file and click the button below to restore the "
 "configuration."
 msgstr ""
+"Отвори %s конфигурационен XML фаил и натисни бутона от долу за да "
+"възстановите  конфигурацията."
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr ""
-"Klik deze knop om de systeem configuratie op de slaan in XML formaat."
+"Натиснете този бутон за да свалите системната конфигурация в XML формат."
 
 msgid "Backup configuration"
-msgstr "Backup configuratie"
+msgstr "Запази конфигурацията"
 
 msgid "Initializing disk"
-msgstr "Schijf Initializeren"
+msgstr "Инициализиране на диска"
 
 msgid "Enable Zeroconf"
-msgstr "Activeer Zeroconf"
+msgstr "Позволи Zeroconf"
 
 msgid "LDAP server IP"
-msgstr "LDAP server IP"
+msgstr "LDAP сървър IP"
 
 msgid "IP address of LDAP server."
-msgstr "IP adres van de LDAP server."
+msgstr "IP адрес на LDAP сървъра."
 
 msgid "Base DN"
-msgstr "Basis DN"
+msgstr "Базов индекс"
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations. The "
 "base must be specified as a distinguished name in LDAP format."
 msgstr ""
+"Specifies the default base DN to use when performing ldap operations. The "
+"base must be specified as a distinguished name in LDAP format."
 
 msgid "DN to bind"
-msgstr ""
+msgstr "DN to bind"
 
 msgid ""
 "Specifies the default bind DN to use when performing ldap operations. The "
 "bind DN must be specified as a distinguished name in LDAP format."
 msgstr ""
+"Specifies the default bind DN to use when performing ldap operations. The "
+"bind DN must be specified as a distinguished name in LDAP format."
 
 msgid "Password for DN"
-msgstr "Wachtwoord voor DN"
+msgstr "Password for DN"
 
 msgid "The credentials to bind with, enter it here twice."
-msgstr "De rechten om samen te voegen, geef ze hier twee maal in."
+msgstr "The credentials to bind with, enter it here twice."
 
 msgid "User suffix"
-msgstr "Gebruiker achtervoegsel"
+msgstr "User suffix"
 
 msgid "Password suffix"
-msgstr "Wachtwoord achtervoegsel"
+msgstr "Password suffix"
 
 msgid "Group suffix"
-msgstr "Groep achtervoegsel"
+msgstr "Group suffix"
 
 msgid "Password encryption"
-msgstr "Wachtwoord encryptie"
+msgstr "Криптиране на паролата"
 
 msgid "Method used to store your password in your LDAP."
-msgstr "Methode om uw wachtwoord op te slaan in de LDAP."
+msgstr "Method used to store your password in your LDAP."
 
 msgid ""
 "These commands will be executed pre or post system initialization (booting)."
 msgstr ""
-"Deze commando's zullen uitgevoerd worden voor of na de systeem initializatie "
-"(opstarten)."
+"These commands will be executed pre or post system initialization (booting)."
 
 msgid "Add command"
-msgstr "Voeg commando toe"
+msgstr "добави команда"
 
 msgid "Edit command"
-msgstr "Bewerk commando"
+msgstr "Редактиране на команда"
 
 msgid "Delete command"
-msgstr "Verwijder commando"
+msgstr "изтрий командата"
 
 msgid "Do you really want to delete this command?"
-msgstr "Bent u zeker dat u dit commando wil verwijderen?"
+msgstr "Do you really want to delete this command?"
 
 msgid "Execute command pre or post system initialization (booting)."
-msgstr "Voer commando voor of na systeem initializatie uit (opstarten)."
+msgstr "Execute command pre or post system initialization (booting)."
 
 msgid "Startup"
-msgstr "Opstarten"
+msgstr "Стартиране"
 
 msgid "Large read/write"
-msgstr "Grote lees/schrijf"
+msgstr "Large read/write"
 
 msgid "Enable large read/write"
-msgstr "Activeer grote lees/schrijf"
+msgstr "Enable large read/write"
 
 msgid "Use the new 64k streaming read and write variant SMB requests."
-msgstr "Maak gebruik van de nieuwe 64k lees en schrijf variant SMB opvragen."
+msgstr "Изплзвай новите 64к четящи и пишещи SMB запитвания."
 
 msgid "Dynamic DNS"
-msgstr "Dynamische DNS"
+msgstr "Динамичен DNS"
 
 msgid "Servername"
-msgstr "Servernaam"
+msgstr "Име на сървъра"
 
 msgid "Save and Restart DynDNS"
-msgstr "Opslaan en herstart DynDNS"
-
-#~ msgid ""
-#~ "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS "
-#~ "of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, "
-#~ "or NTFS can result in unpredictable results, file corruption, and loss of "
-#~ "data!"
-#~ msgstr ""
-#~ "UFS en varianten zijn de ORIGINELE bestandsformaten voor FreeBSD (het "
-#~ "onderliggende besturingssysteem van %s).  Een poging tot gebruik van andere "
-#~ "bestandsformaten als FAT, FAT32, EXT2, EXT3, or NTFS kan onvoorspelbare "
-#~ "resultaten opleveren, zoals beschadiging van bestanden of zelfs verlies van "
-#~ "bestanden."
-
-#~ msgid ""
-#~ "This step will erase all your partition, create partition number 1 and "
-#~ "format the hard drive with the file system specified."
-#~ msgstr ""
-#~ "Deze stap zal alle partities wissen, een nieuwe partitie aanmaken en deze "
-#~ "formatteren met het opgegeven bestandssysteem."
-
-#~ msgid "There must be a minimum of 2 disks in a JBOD."
-#~ msgstr "Er moeten minimaal 2 schijven zijn in een JBOD."
-
-#~ msgid "This disk/partition is already configured."
-#~ msgstr "Deze schijf/partitie is reeds ingesteld."
-
-#~ msgid ""
-#~ "1. You can't mount the partition '%s' where the config file is stored.<br>2. "
-#~ "FreeBSD NTFS has lots of bugs."
-#~ msgstr ""
-#~ "1. Je kan geen partitie koppelen waarop de systeeminstellingen bewaard "
-#~ "zijn.<br>2. FreeBSD NTFS vertoont nog veel fouten."
-
-#~ msgid "Authorised network"
-#~ msgstr "Geautoriseerd netwerk"
-
-#~ msgid ""
-#~ "The content directory list has been changed.<br>You must apply the changes "
-#~ "in order for them to take effect."
-#~ msgstr ""
-#~ "De inhoudmappenlijst is veranderd.<br>Je moet op 'toepassen' klikken "
-#~ "vooraleer de wijzigingen actief zijn."
-
-#~ msgid "The password contain the illegal : character"
-#~ msgstr "Het wachtwoord bevat het ongeldige ':' karakter"
-
-#~ msgid "Erasing MBR and all paritions"
-#~ msgstr "Wissen van MBR en alle partities"
-
-#~ msgid "Creating one parition"
-#~ msgstr "Een partitie maken"
-
-#~ msgid "Initializing parition"
-#~ msgstr "Partitie initializeren"
+msgstr "Запази и Рестартирай DynDNS"

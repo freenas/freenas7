@@ -59,6 +59,7 @@ $g = array(
 
 /* Available languages/locales */
 $g_languages = array (
+	"Bulgarian" => "bg_BG.UTF8",
 	"Dutch" => "nl_BE.ISO8859-1",
 	"English" => "en_US.ISO8859-1",
 	"French" => "fr_FR.UTF8",

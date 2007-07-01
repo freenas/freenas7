@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
-"X-Rosetta-Export-Date: 2007-05-10 09:48:17+0000\n"
+"X-Rosetta-Export-Date: 2007-06-28 13:18:41+0000\n"
 
 msgid "Date"
 msgstr "Date"
