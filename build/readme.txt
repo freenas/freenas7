@@ -88,7 +88,8 @@ Majors changes:
     + liveCD (old "generic-pc-cdrom") for the CD-ROM release
     + embedded (old "generic-pc") for install on hard drive or flash device
     + full (new platform) for real install (no more use RAM disk)
-- Use sysvinit for services
+- Use sysvinit for services. Convert most of the system and services code into shell scripts.
+- Upgrade iscsi_initiator to 2.0.92
 
 Minors changes:
 - Enhance build scripts (to build packages/plugins)

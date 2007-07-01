@@ -1,11 +1,10 @@
 PORTNAME=			iscsi
-PORTVERSION=	2.0.1
+PORTVERSION=	2.0.92
 CATEGORIES=		sysutils
 COMMENT=			iSCSI tools
 MAINTAINER=		votdev@gmx.de
 
 MASTER_SITES=	ftp://ftp.cs.huji.ac.il/users/danny/freebsd/
-USE_BZIP2=		yes
 
 do-build:
 	@cd ${WRKDIR}/sys && ln -sv /sys/kern . && ln -sv /sys/tools .
