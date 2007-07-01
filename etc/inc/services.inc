@@ -403,26 +403,26 @@ oplocks = yes
 max xmit = 65535
 deadtime = 15
 getwd cache = yes
-socket options = IPTOS_LOWDELAY TCP_NODELAY
+socket options = IPTOS_LOWDELAY TCP_NODELAY 
 EOD;
 
 	if ($config['samba']['sndbuf']) {
 		$sambaconf .= <<<EOD
-SO_SNDBUF={$config['samba']['sndbuf']}
+SO_SNDBUF={$config['samba']['sndbuf']} 
 EOD;
 	} else {
 		$sambaconf .= <<<EOD
-SO_SNDBUF=16384
+SO_SNDBUF=16384 
 EOD;
 	}
 
 	if ($config['samba']['rcvbuf']) {
 		$sambaconf .= <<<EOD
-SO_RCVBUF={$config['samba']['rcvbuf']}
+SO_RCVBUF={$config['samba']['rcvbuf']} 
 EOD;
 	} else {
 		$sambaconf .= <<<EOD
-SO_RCVBUF=16384
+SO_RCVBUF=16384 
 EOD;
 	}
 

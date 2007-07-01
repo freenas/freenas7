@@ -34,7 +34,7 @@ create_conf()
 		-o " -transall -uamlist " \
 		-i "count(guest) > 0" -o "uams_guest.so" -b \
 		-i "count(local) > 0" -i "count(guest) > 0" -o "," -b -o "uams_clrtxt.so,uams_dhx.so" -b \
-		-o " -nosavepassword -defaultvol ${afpd_volumes_config} -systemvol /var/etc/AppleVolumes.system -uampath /etc/uams -guestname ftp" -n \
+		-o " -nosavepassword -defaultvol ${afpd_volumes_config} -systemvol /var/etc/AppleVolumes.default -uampath /etc/uams -guestname ftp" -n \
 		${configxml_file} > ${afpd_config}
 
 	# Generate '/var/etc/AppleVolumes.default'.
