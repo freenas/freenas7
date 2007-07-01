@@ -46,36 +46,17 @@ function system_stop_common() {
 }
 
 function system_reboot() {
-	system_stop_common();
-
-	/* Send beep */
-	system_beep_down();
-
-	rc_exec_script_async("/etc/rc.reboot");
+	// Initiate halt. Everything will be done automatically
+	// in /etc/rc.dhutdown by executing rc-init scripts in
+	// reverse order (the 'KEYWORD: shutdown' must be defined).
+	mwexec("/sbin/shutdown -r now");
 }
 
 function system_halt() {
-	/* Stop swap */
-	rc_stop_service("swap");
-
-	system_stop_common();
-
-	/* Send beep */
-	system_beep_down();
-
-	exec("/sbin/halt -p > /dev/null 2>&1 &");
-}
-
-function system_reboot_sync() {
-	/* Stop swap */
-	rc_stop_service("swap");
-
-	system_stop_common();
-
-	/* Send beep */
-	system_beep_down();
-
-	rc_exec_script("/etc/rc.reboot");
+	// Initiate halt. Everything will be done automatically
+	// in /etc/rc.dhutdown by executing rc-init scripts in
+	// reverse order (the 'KEYWORD: shutdown' must be defined).
+	mwexec_bg("/sbin/shutdown -p now");
 }
 
 function system_do_shell_commands($early = 0) {
@@ -142,34 +123,6 @@ function system_set_harddisk_standby() {
 			write_console("failed\n");
 		}
 	}
-}
-
-function system_beep_up()
-{
-	global $config;
-
-	/* Test if beep is enabled and send sound */
-	if (!isset($config['system']['disablebeep'])) {
-		if (file_exists("/dev/speaker")) {
-			exec('echo O3L30cO4L30cO5L30cO5L30g > /dev/speaker');
-		}
-	}
-
-	return 0;
-}
-
-function system_beep_down()
-{
-	global $config;
-
-	/* Test if beep is enabled and send sound */
-	if (!isset($config['system']['disablebeep'])) {
-		if (file_exists("/dev/speaker")) {
-			exec('echo O5L30gO5L30cO4L30cO3L30c > /dev/speaker');
-		}
-	}
-
-	return 0;
 }
 
 // Create the following files:

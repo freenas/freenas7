@@ -80,7 +80,7 @@ if [ -n "$_rcshutdown_watchdog" ]; then
 fi
 
 # Insert other shutdown procedures here
-/etc/rc.systemhalt
+/etc/rc.shutdown.common
 
 echo '.'
 exit 0

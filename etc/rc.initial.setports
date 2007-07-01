@@ -5,21 +5,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2006 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -37,11 +37,11 @@
 
 	/* Get product information */
 	$productname = get_product_name();
-	
+
 	$fp = fopen('php://stdin', 'r');
-	
+
 	$iflist = get_interface_list();
-	
+
 	echo <<<EOD
 
 Valid interfaces are:
@@ -53,7 +53,7 @@ EOD;
 		echo sprintf("% -8s%s%s\n", $iface, $ifa['mac'],
 			$ifa['up'] ? "   (up)" : "");
 	}
-	
+
 	echo <<<EOD
 
 If you don't know the names of your interfaces, you may choose to use
@@ -61,14 +61,14 @@ auto-detection. In that case, disconnect all interfaces before you begin,
 and reconnect each one when prompted to do so.
 
 EOD;
-	
+
 	do {
 		echo "\nEnter the LAN interface name or 'a' for auto-detection: ";
 		$lanif = chop(fgets($fp));
 		if ($lanif === "") {
 			exit(0);
 		}
-		
+
 		if ($lanif === "a")
 			$lanif = autodetect_interface("LAN", $fp);
 		else if (!array_key_exists($lanif, $iflist)) {
@@ -77,11 +77,11 @@ EOD;
 			continue;
 		}
 	} while (!$lanif);
-	
+
 	/* optional interfaces */
 	$i = 0;
 	$optif = array();
-	
+
 	while (1) {
 		if ($optif[$i])
 			$i++;
@@ -89,7 +89,7 @@ EOD;
 		echo "\nEnter the Optional {$i1} interface name or 'a' for auto-detection\n" .
 			"(or nothing if finished): ";
 		$optif[$i] = chop(fgets($fp));
-		
+
 		if ($optif[$i]) {
 			if ($optif[$i] === "a") {
 				$ad = autodetect_interface("Optional " . $i1, $fp);
@@ -107,15 +107,15 @@ EOD;
 			break;
 		}
 	}
-	
+
 	/* check for double assignments */
 	$ifarr = array_merge(array($lanif, $wanif), $optif);
-	
+
 	for ($i = 0; $i < (count($ifarr)-1); $i++) {
 		for ($j = ($i+1); $j < count($ifarr); $j++) {
 			if ($ifarr[$i] == $ifarr[$j]) {
 				echo <<<EOD
-	
+
 Error: you can't assign the same interface name twice!
 
 EOD;
@@ -124,9 +124,9 @@ EOD;
 			}
 		}
 	}
-	
+
 	echo <<<EOD
-	
+
 The interfaces will be assigned as follows:
 
 LAN  -> {$lanif}
@@ -142,30 +142,30 @@ echo <<<EOD
 
 {$productname} will save and apply the changes.
 
-Do you want to proceed? (y/n) 
+Do you want to proceed? (y/n)
 EOD;
-	
-	
+
+
 	if (strcasecmp(chop(fgets($fp)), "y") == 0)
 	{
-	
+
 		$config['interfaces']['lan']['if'] = $lanif;
 		if (preg_match($g['wireless_regex'], $lanif)) {
 			if (!is_array($config['interfaces']['lan']['wireless']))
 				$config['interfaces']['lan']['wireless'] = array();
-	
+
 	}
 	else
 	{
 			unset($config['interfaces']['lan']['wireless']);
 	}
-		
+
 		for ($i = 0; $i < count($optif); $i++) {
 			if (!is_array($config['interfaces']['opt' . ($i+1)]))
 				$config['interfaces']['opt' . ($i+1)] = array();
-			
+
 			$config['interfaces']['opt' . ($i+1)]['if'] = $optif[$i];
-			
+
 			/* wireless interface? */
 			if (preg_match($g['wireless_regex'], $optif[$i])) {
 				if (!is_array($config['interfaces']['opt' . ($i+1)]['wireless']))
@@ -173,29 +173,20 @@ EOD;
 			} else {
 				unset($config['interfaces']['opt' . ($i+1)]['wireless']);
 			}
-			
+
 			unset($config['interfaces']['opt' . ($i+1)]['enable']);
 			$config['interfaces']['opt' . ($i+1)]['descr'] = "OPT" . ($i+1);
 		}
-		
+
 		/* remove all other (old) optional interfaces */
 		for (; isset($config['interfaces']['opt' . ($i+1)]); $i++)
 			unset($config['interfaces']['opt' . ($i+1)]);
-		
+
 		write_config();
-		
+
 		interfaces_lan_configure();
-		
-		/* echo <<<EOD
-
-{$productname} is rebooting now.
-
-EOD;
-	*/
-		// system_reboot_sync();
-		
 }
-	
+
 function autodetect_interface($ifname, $fp) {
 		$iflist_prev = get_interface_list();
 		echo <<<EOD
@@ -206,17 +197,17 @@ Then press ENTER to continue.
 EOD;
 		fgets($fp);
 		$iflist = get_interface_list();
-		
+
 		foreach ($iflist_prev as $ifn => $ifa) {
 			if (!$ifa['up'] && $iflist[$ifn]['up']) {
 				echo "Detected link-up on interface {$ifn}.\n";
 				return $ifn;
 			}
 		}
-		
+
 		echo "No link-up detected.\n";
-		
+
 		return null;
 	}
-	
+
 ?>

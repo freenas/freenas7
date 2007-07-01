@@ -55,6 +55,6 @@ EOD;
 
 EOD;
 	
-		system_reboot_sync();
+		system_reboot();
 	}
 ?>
