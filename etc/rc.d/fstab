@@ -1,0 +1,22 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: fstab
+# BEFORE: CONFIG
+# KEYWORD: nostart
+
+. /etc/configxml.subr
+
+echo -n "Updating /etc/fstab."
+
+# Get number of configured mount points.
+_index=`/usr/local/bin/xml sel -t -v "count(//mounts/mount)" ${configxml_file}`
+while [ ${_index} -gt 0 ]
+do
+	/usr/local/bin/xml sel -t -m "//mounts/mount[${_index}]" \
+		-v "concat(fullname,' /mnt/',sharename,' ',fstype,' rw,acls 2 2)" \
+		${configxml_file} >> /etc/fstab
+
+	_index=$(( ${_index} - 1 ))
+done
