@@ -51,12 +51,12 @@ if ($_POST) {
 			config_lock();
 			$retval |= disks_mount_all();
 			$retval |= rc_update_service("samba");
-			$retval |= rc_update_service("rpcbind");
-			$retval |= rc_update_service("mountd");
-			$retval |= rc_update_service("nfsd");
-			$retval |= rc_update_service("nfslocking");
 			$retval |= rc_update_service("rsyncd");
 			$retval |= rc_update_service("afpd");
+			$retval |= rc_update_service("rpcbind");    // !!! Do not
+			$retval |= rc_update_service("mountd");     // !!! change
+			$retval |= rc_update_service("nfsd");       // !!! this
+			$retval |= rc_update_service("nfslocking"); // !!! order
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
