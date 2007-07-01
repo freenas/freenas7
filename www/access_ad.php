@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	acces_ad.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -58,22 +58,22 @@ if ($_POST) {
 	/* input validation */
 	$reqdfields = array();
 	$reqdfieldsn = array();
-	
+
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "admin_name admin_pass ad_srv_ip"));
 		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Administrator name"),gettext("Administration password"),gettext("AD server IP")));
 	}
-	
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
+
 	if ($_POST['enable'] && !is_ipaddr($_POST['ad_srv_ip'])){
   		$input_errors[] = gettext("A valid IP address must be specified.");
   	}
-  	
+
   	if (($_POST['admin_pass'] != $_POST['admin_pass2'])) {
 		$input_errors[] = gettext("Password don't match.");
 	}
-	
+
 	if (!$input_errors)
 	{
 		$config['ad']['admin_name'] = $_POST['admin_name'];
@@ -83,7 +83,7 @@ if ($_POST) {
 		$config['samba']['workgroup'] = $_POST['domain_name'];
 
 		$config['ad']['enable'] = $_POST['enable'] ? true : false;
-		
+
 		if ($config['ad']['enable'])
 		{
 			$config['samba']['security'] = "domain";
@@ -92,20 +92,18 @@ if ($_POST) {
 		}
 		else
 			$config['samba']['security'] = "user";
-		
+
 		write_config();
-		
+
 		$retval = 0;
-		if (!file_exists($d_sysrebootreqd_path))
-		{
-			/* nuke the cache file */
+		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			system_pam_configure();
+			rc_exec_service("pam");
 			rc_update_service("samba");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
-	}	
+	}
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -113,7 +111,7 @@ if ($_POST) {
 <!--
 function enable_change(enable_change) {
 	var endis;
-	
+
 	endis = !(document.iform.enable.checked || enable_change);
 	document.iform.ad_srv_name.disabled = endis;
 	document.iform.ad_srv_ip.disabled = endis;
@@ -128,7 +126,7 @@ function enable_change(enable_change) {
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="access_ad.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr> 
+    <tr>
       <td colspan="2" valign="top" class="optsect_t">
 			  <table border="0" cellspacing="0" cellpadding="0" width="100%">
 				  <tr>
@@ -140,44 +138,44 @@ function enable_change(enable_change) {
 			  </table>
 			</td>
     </tr>
-    <tr> 
+    <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server name");?></td>
-      <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="ad_srv_name" type="text" class="formfld" id="ad_srv_name" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_name']);?>"> 
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="ad_srv_name" type="text" class="formfld" id="ad_srv_name" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_name']);?>">
       <br><?=gettext("AD or PDC name.");?></td>
 		</tr>
-		<tr> 
+		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server IP");?></td>
-      <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="ad_srv_ip" type="text" class="formfld" id="ad_srv_ip" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_ip']);?>"> 
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="ad_srv_ip" type="text" class="formfld" id="ad_srv_ip" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_ip']);?>">
       <br><?=gettext("IP address of MS Active Directory server.");?></td>
 		</tr>
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
-      <td width="78%" class="vtable"> 
+      <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="domain_name" type="text" class="formfld" id="domain_name" size="20" value="<?=htmlspecialchars($pconfig['domain_name']);?>"><br>
 				<?=gettext("Domain name in old format.");?></td>
 		</tr>
-    <tr> 
+    <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Administrator name");?></td>
-      <td width="78%" class="vtable"> 
+      <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="admin_name" type="text" class="formfld" id="admin_name" size="20" value="<?=htmlspecialchars($pconfig['admin_name']);?>"><br>
 				<?=gettext("Username of a domain administrator account.");?>
 			</td>
 		</tr>
-		<tr> 
+		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Administration password");?></td>
       <td width="78%" class="vtable">
       	<?=$mandfldhtml;?><input name="admin_pass" type="password" class="formfld" id="admin_pass" size="20" value="<?=htmlspecialchars($pconfig['admin_pass']);?>"><br>
-				<input name="admin_pass2" type="password" class="formfld" id="admin_pass2" size="20" value="<?=htmlspecialchars($pconfig['admin_pass2']);?>"> 
+				<input name="admin_pass2" type="password" class="formfld" id="admin_pass2" size="20" value="<?=htmlspecialchars($pconfig['admin_pass2']);?>">
         &nbsp;(<?=gettext("Confirmation");?>)<br>
         <span class="vexpl"><?=gettext("Password of domain administrator account, enter it here twice.");?></span>
 			</td>
     </tr>
-		<tr> 
+		<tr>
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> 
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)"> 
+      <td width="78%">
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
       </td>
     </tr>
   </table>

@@ -54,9 +54,6 @@
 	/* set up Optional interfaces */
 	interfaces_optional_configure();
 
-	/* Generate the pam configuration file */
-	system_pam_configure();
-
 	/* RAID configuration */
 	disks_raid_start();
 
