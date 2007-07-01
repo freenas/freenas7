@@ -388,7 +388,7 @@ function convert_config() {
 		return 0;		/* already at latest version */
 
 	if (is_booting())
-		echo "Converting configuration.";
+		echo "Converting configuration. ";
 
 	/* convert 1 -> 1.1 */
 	/* changing partition name, and initializing old bad user parameters */
