@@ -102,24 +102,25 @@ function disks_mount($mount)
 	global $config, $g;
 
 	$mountname = "/mnt/{$mount['sharename']}";
-
+	
+	// Changing the PHP file creation mask to 0777
+	$oldumask = umask(0);  
+	
 	/* Create one directory for each device under /mnt. */
-	if (!mwexec("/bin/mkdir -m 0777 '{$mountname}'")) {
-		write_log("DEBUG ERROR Can't create directory {$mountname}");
-	} else {
-		write_log("DEBUG: Sucessull create directory {$mountname}");
+
+	if (!mkdir ($mountname, 0777)) {
+		write_log("ERROR Can't create directory {$mountname} with php mkdir");
 	}
-	/* Change this directory mode to 0777. */
-	if (!mwexec("/bin/chmod 0777 '{$mountname}'")) {
-		write_log("DEBUG ERROR: Can't execute shell chmod 0777 to {$mountname}");
-	} else {
-		write_log("DEBUG: Successful execute shell chmod 0777 to {$mountname}");
+
+	// Restoring PHP file creation mask to old value
+	umask($oldumask);
+
+	// Check
+	if ($oldumask != umask()) {
+    		write_log("ERROR: occured while changing back the umask in disks_mount()");
 	}
-	if (!chmod($mountname, 0777)) {
-		write_log("DEBUG ERROR: Can't set mode 0777 to {$mountname}");
-	} else {
-		write_log("DEBUG: Successful mode 0777 to {$mountname}");
-	}
+
+
 
 	/* Mount the filesystem. */
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
@@ -264,6 +265,12 @@ function disks_mount($mount)
 				}
 			}
 			break;
+	}
+
+	// Re-Change this directory mode to 0777
+	
+	if (!chmod($mountname, 0777)) {
+		write_log("ERROR: Can't re-set mode 0777 to {$mountname}");
 	}
 
 	return $result;

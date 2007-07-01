@@ -134,7 +134,6 @@ Known bugs:
 - NTFS mount points are not mounted after creation, a reboot is necessary.
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
 - IPv6: auto mode is not tested
-- Mount point doesn't have the full permission (0777)
 
 Help needed:
 - Need help for adding LDAP authentication feature:
