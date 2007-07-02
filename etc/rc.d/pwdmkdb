@@ -1,0 +1,10 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: pwdmkdb
+# BEFORE: CONFIG
+# KEYWORD: nostart
+
+# Generate the /var/etc/passwd, pwd.db and spwd.db files.
+/usr/sbin/pwd_mkdb -p -d /var/ect /var/etc/master.passwd
