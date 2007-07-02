@@ -3,8 +3,8 @@
 # All rights reserved.
 
 # PROVIDE: swap
-# REQUIRE: DAEMON
-# KEYWORD: shutdown
+# REQUIRE: mountcritlocal
+# KEYWORD: nojail shutdown
 # XPATH: //system/swap_enable
 # RCVAR: swap
 
