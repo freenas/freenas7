@@ -167,17 +167,19 @@ EOD;
 
 		/* write device name to a file for rc.firmware */
 		$fd = fopen("{$g['varetc_path']}/cfdevice", "w");
-		fwrite($fd, $cfgpartition . "\n");
-		fclose($fd);
+		if ($fd) {
+			fwrite($fd, $cfgpartition . "\n");
+			fclose($fd);
+		}
 
 		/* write out an fstab */
 		$fd = fopen("{$g['etc_path']}/fstab", "w");
+		if ($fd) {
+			$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
 
-		$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
-		// $fstab .= "proc /proc procfs rw 0 0\n";
-
-		fwrite($fd, $fstab);
-		fclose($fd);
+			fwrite($fd, $fstab);
+			fclose($fd);
+		}
 	}
 
 	/* mount all filesystems */
