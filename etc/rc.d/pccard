@@ -30,7 +30,7 @@
 #
 
 # PROVIDE: pccard
-# BEFORE: NETWORKING
+# REQUIRE: mountcritlocal
 # KEYWORD: nojail
 
 . /etc/rc.subr

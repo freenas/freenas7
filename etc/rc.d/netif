@@ -1,0 +1,23 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: netif
+# REQUIRE: mountcritlocal pccard sysctl
+# KEYWORD: nojail
+
+. /etc/rc.subr
+
+name="network"
+start_cmd="start_cmd"
+stop_cmd=":"
+
+start_cmd()
+{
+	# Bring up network interfaces.
+	eval /etc/rc.d.php/netif
+	return $?
+}
+
+load_rc_config ${name}
+run_rc_command "$1"

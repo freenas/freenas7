@@ -38,9 +38,6 @@ function disks_mount_all()
 {
 	global $config, $g;
 
-	if (is_booting())
-		write_console("Mounting partitions... ");
-
 	// For each device configured:
 	if (is_array($config['mounts']['mount'])) {
 		// Mount real disks first.
@@ -70,9 +67,6 @@ function disks_mount_all()
 			disks_mount($mount);
 		}
 	}
-
-	if (is_booting())
-		write_console("done\n");
 
 	return 0;
 }

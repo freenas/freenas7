@@ -1,0 +1,31 @@
+#!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: mountcritlocal
+# REQUIRE: root
+# KEYWORD: nojail
+
+. /etc/rc.subr
+
+name="mountcritlocal"
+start_cmd="start_cmd"
+stop_cmd=":"
+
+start_cmd()
+{
+	local _result
+
+	echo -n 'Mounting local file systems:'
+
+	# Mount everything all configured filesystems.
+	eval /etc/rc.d.php/${name}
+	_result=$?
+
+	echo '.'
+
+	return ${_result}
+}
+
+load_rc_config ${name}
+run_rc_command "$1"

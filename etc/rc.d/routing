@@ -8,7 +8,7 @@
 #
 
 # PROVIDE: routing
-# REQUIRE: CONFIG
+# REQUIRE: netif
 # KEYWORD: nojail
 
 . /etc/rc.subr
