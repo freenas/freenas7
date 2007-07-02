@@ -101,26 +101,24 @@ function disks_mount($mount)
 {
 	global $config, $g;
 
+	// Set mount name.
 	$mountname = "/mnt/{$mount['sharename']}";
-	
+
 	// Changing the PHP file creation mask to 0777
 	$oldumask = umask(0);  
-	
-	/* Create one directory for each device under /mnt. */
 
-	if (!mkdir ($mountname, 0777)) {
-		write_log("ERROR Can't create directory {$mountname} with php mkdir");
+	// Create one directory for each device under /mnt.
+	if (! @mkdir($mountname, 0777)) {
+		write_log("Error: Can't create directory {$mountname} in disks_mount().");
 	}
 
-	// Restoring PHP file creation mask to old value
+	// Restoring PHP file creation mask to old value.
 	umask($oldumask);
 
 	// Check
 	if ($oldumask != umask()) {
-    		write_log("ERROR: occured while changing back the umask in disks_mount()");
+		write_log("Error: Failed to change back umask in disks_mount().");
 	}
-
-
 
 	/* Mount the filesystem. */
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
@@ -267,10 +265,11 @@ function disks_mount($mount)
 			break;
 	}
 
-	// Re-Change this directory mode to 0777
-	
-	if (!chmod($mountname, 0777)) {
-		write_log("ERROR: Can't re-set mode 0777 to {$mountname}");
+	// Re-Change this directory mode to 0777.
+	if (file_exists($mountname)) {
+		if (!chmod($mountname, 0777)) {
+			write_log("Error: Can't re-set mode 0777 on directory {$mountname}");
+		}
 	}
 
 	return $result;
