@@ -139,6 +139,9 @@ for _rc_elem in ${files}; do
 	run_rc_script ${_rc_elem} ${_boot}
 done
 
+# Let the other functions know we've finished booting.
+rm -f /var/etc/booting > /dev/null 2>&1
+
 # Display banner.
 /etc/rc.banner
 

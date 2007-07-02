@@ -4,7 +4,7 @@
 
 # PROVIDE: fstab
 # BEFORE: CONFIG
-# REQUIRE: system_postinit
+# REQUIRE: system_init
 # KEYWORD: nostart
 
 . /etc/configxml.subr

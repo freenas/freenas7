@@ -4,7 +4,7 @@
 
 # PROVIDE: pam
 # BEFORE: CONFIG
-# REQUIRE: system_postinit
+# REQUIRE: system_init
 
 #
 # Configure PAM configuration files.
