@@ -6,5 +6,7 @@
 # BEFORE: CONFIG
 # KEYWORD: nostart
 
+echo "Generating passwd database(s)."
+
 # Generate the /var/etc/passwd, pwd.db and spwd.db files.
 /usr/sbin/pwd_mkdb -p -d /var/ect /var/etc/master.passwd

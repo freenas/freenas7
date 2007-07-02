@@ -11,6 +11,8 @@
 # Defaults
 group=${group:-"/var/etc/group"}
 
+echo "Generating group."
+
 # Create the /var/etc/group file.
 /usr/local/bin/xml sel -t -m "//access/user" \
 	-o "wheel:*:0:root" \
