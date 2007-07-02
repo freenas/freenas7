@@ -3,8 +3,8 @@
 # All rights reserved.
 
 # PROVIDE: syslogd
+# REQUIRE: mountcritlocal
 # BEFORE: SERVERS
-# REQUIRE: CONFIG
 
 . /etc/rc.subr
 . /etc/configxml.subr
