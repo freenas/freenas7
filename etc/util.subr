@@ -51,17 +51,21 @@ get_subnetmask()
 {
 	local _protocol
 
-	_protocol=`/usr/local/bin/sipcalc $@ | head -n 1 | awk '{print $1}'`
-	_protocol=${_protocol#-[*}
+	_sipcalc=`/usr/local/bin/sipcalc $@`
+	_protocol=`/bin/expr -- "${_sipcalc}" : '-\[\(ipv[46]\).*'`
 
 	case ${_protocol} in
 		ipv4)
 			echo `/usr/local/bin/sipcalc $@ | grep "Network mask" | head -n 1 | awk '{print $4}'`;
+			return 0;
 			;;
 		ipv6)
 			echo `/usr/local/bin/sipcalc $@ | grep "Prefix address" | awk '{print $4}'`;
+			return 0;
 			;;
 	esac
+
+	return 1
 }
 
 # is_validip [protocol_family] [address]
@@ -79,8 +83,8 @@ is_validip()
 	_protocol_family=$1
 	shift 1
 
-	_protocol=`/usr/local/bin/sipcalc $@ | head -n 1 | awk '{print $1}'`
-	_protocol=${_protocol#-[*}
+	_sipcalc=`/usr/local/bin/sipcalc $@`
+	_protocol=`/bin/expr -- "${_sipcalc}" : '-\[\(ipv[46]\).*'`
 
 	case ${_protocol} in
 		ipv4)
