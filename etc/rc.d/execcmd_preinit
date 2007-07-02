@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: execcmd_preinit
-# REQUIRE: rcconf
+# REQUIRE: system_preinit rcconf
 # BEFORE: CONFIG
 
 . /etc/configxml.subr

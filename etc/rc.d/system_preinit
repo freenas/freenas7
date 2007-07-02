@@ -2,13 +2,12 @@
 # Copyright © 2007 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
-# PROVIDE: system_init
-# REQUIRE: system_preinit
+# PROVIDE: system_preinit
 # BEFORE: CONFIG
 
 . /etc/rc.subr
 
-name="system_init"
+name="system_preinit"
 stop_cmd=":"
 start_cmd="start_cmd"
 

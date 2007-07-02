@@ -1,17 +1,14 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-	system - Start FreeNAS core system
+	system_preinit
+
+	Copyright © 2007 Volker Theile (votdev@gmx.de)
+  All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-
-	Based on m0n0wall (http://m0n0.ch/wall)
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-	All rights reserved.
-
-	Adapted to rc init system by Volker Theile (votdev@gmx.de)
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
@@ -35,19 +32,12 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 	require_once("globals.inc");
-	require_once("config.inc");
 	require_once("functions.inc");
 	require_once("util.inc");
 
-	/* Generate local user database(s) */
-	system_create_usermanagement();
-
-	/* execute the rc.early scripts of extensions */
-	system_do_extensions(1);
-
-	/* execute the rc scripts of extensions */
-	system_do_extensions();
-
-	/* run any shell commands specified in config.xml */
-	system_do_shell_commands();
+	// Parse the configuration and initialize $global array.
+	require_once("config.inc");
+	
+	// Convert configuration, if necessary.
+	convert_config();
 ?>
