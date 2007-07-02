@@ -35,9 +35,14 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 	require_once("globals.inc");
-	require_once("config.inc");
 	require_once("functions.inc");
 	require_once("util.inc");
+
+	// Parse the configuration and initialize $global array.
+	require_once("config.inc");
+
+	// Convert configuration, if necessary.
+	convert_config();
 
 	/* Generate local user database(s) */
 	system_create_usermanagement();

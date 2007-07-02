@@ -81,6 +81,9 @@ fi
 # Run ldconfig
 /sbin/ldconfig -elf /usr/lib /usr/local/lib /lib
 
+# Let the other functions know we're booting.
+touch /var/etc/booting
+
 if [ "$1" = autoboot ]; then
 	autoboot=yes
 	_boot="faststart"

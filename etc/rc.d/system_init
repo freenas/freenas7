@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: system_init
-# REQUIRE: system_preinit
+# REQUIRE: rcconf execcmd_preinit
 # BEFORE: CONFIG
 
 . /etc/rc.subr
