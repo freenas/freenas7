@@ -362,6 +362,9 @@ usr/sbin/cron
 ## powerd -- System power control utility
 usr/sbin/powerd
 
+## pw -- create, remove, modify & display system users and groups
+usr/sbin/pw
+
 ## pwd_mkdb -- generate the password databases
 usr/sbin/pwd_mkdb
 
