@@ -141,6 +141,7 @@ Knowns Bugs to be fixed before to release the 0.685b:
 - no more DHCP working
 - rsyncd doesn't start
 - error message when using more than 1 NIC
+- netatalk VFS crash samba
 
 Help needed:
 - Need help for adding LDAP authentication feature:
