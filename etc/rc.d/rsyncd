@@ -8,19 +8,52 @@
 # XPATH: //rsyncd/enable
 # RCVAR: rsyncd
 
-rsyncd_enable=${rsyncd_enable:-"NO"}
-
 . /etc/rc.subr
-. /etc/conf.subr
+. /etc/configxml.subr
 
 name="rsyncd"
 rcvar=`set_rcvar`
+
+# Custom commands
+start_precmd="create_conf"
+
+# Defaults
+rsyncd_enable=${rsyncd_enable:-"NO"}
 rsyncd_config=${rsyncd_config:-"/var/etc/${name}.conf"}
-required_files=${rsyncd_config}
+rsyncd_motd=${rsyncd_motd:-"/var/etc/rsyncd.motd"}
 command="/usr/local/bin/${name}"
 command_args="--daemon --config=${rsyncd_config}"
 pidfile="/var/run/${name}.pid"
 
+create_conf()
+{
+	local _motd
+
+	# Create rsyncd.conf file.
+	/usr/local/bin/xml sel -t -m "//rsyncd" \
+		-v "concat('read only = ',readonly)" -n \
+		-o "syslog facility = local4" -n \
+		-o "list = yes" -n \
+		-v "concat('port = ',port)" -n \
+		-o "pid file = ${pidfile}" -n \
+		-i "string-length(maxcon) > 0" -v "concat('max connections = ',maxcon)" -n -b \
+		-i "string-length(motd) > 0" -o "motd file = ${rsyncd_motd}" -n -b \
+		-i "count(rsyncd_user) > 0" -v "concat('uid = ',rsyncd_user)" -n -b \
+		-i "count(rsyncd_user) = 0" -o "uid = ftp" -n -o "gid = ftp" -n -b \
+		-m "//mounts/mount" \
+		-n -v "concat('[',sharename,']')" -n \
+		-v "concat('comment = ',desc)" -n \
+		-v "concat('path = /mnt/',sharename)" -n \
+		${configxml_file} > ${rsyncd_config}
+
+	# Create MOTD file.
+	_motd=`/usr/local/bin/xml sel -t -v "//rsyncd/motd" \
+		${configxml_file}`
+
+	if [ -n "${_motd}" ]; then
+		echo "${_motd}" > ${rsyncd_motd}
+	fi
+}
+
 load_rc_config $name
-create_conf_file ${name}
 run_rc_command "$1"
