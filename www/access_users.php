@@ -50,7 +50,7 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= rc_exec_service("group");
-			$retval |= rc_exec_service("pwdmkdb");
+			$retval |= rc_exec_service("passwd");
 			$retval |= rc_exec_service("htpasswd");
 			if (isset($config['samba']['enable']))
 				rc_exec_service("smbpasswd");

@@ -168,7 +168,7 @@ if ($_POST) {
 			$retval |= rc_exec_service("hosts"); // Update /etc/hosts
 			$retval |= rc_restart_service("hostname"); // Set hostname
 			$retval |= rc_exec_service("group");
-			$retval |= rc_exec_service("pwdmkdb");
+			$retval |= rc_exec_service("passwd");
 			$retval |= rc_exec_service("htpasswd");
 			$retval |= rc_exec_service("timezone");
  			$retval |= rc_restart_service("msntp");
