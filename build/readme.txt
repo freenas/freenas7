@@ -137,11 +137,20 @@ Known bugs:
 - IPv6: auto mode is not tested
 
 Knowns Bugs to be fixed before to release the 0.685b:
-- iscsi-target crash (need to test with more RAM)
-- no more DHCP working
-- rsyncd doesn't start
-- error message when using more than 1 NIC
-- netatalk VFS crash samba
+- iscsi-target crash:
+ ***ERROR*** getaddrinfo: servname not supported for ai_socktype
+ ***ERROR*** iscsi_sock_establish() failed
+Tips: http://www.ducea.com/2006/09/11/error-servname-not-supported-for-ai_socktype/
+But adding iscsi-target to /etc/services doesn't solve the problem
+
+- rsyncd doesn't start: configuration file (/var/etc/rsyncd/conf missing)
+- error message during startup when PC have more than 1 NIC :
+
+Updating hosts.
+grep: lnc1: No such file or directory
+grep: lnc2: No such file or directory
+
+- netatalk VFS samba module (automatically enabled when netatalk started) crash samba when acces to share
 - Need to write a online-test procedure
 
 Help needed:
