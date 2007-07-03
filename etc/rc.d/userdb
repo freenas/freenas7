@@ -2,17 +2,44 @@
 # Copyright © 2007 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
-# PROVIDE: passwd
-# REQUIRE: group
+# PROVIDE: userdb
 # BEFORE: CONFIG
 
 . /etc/configxml.subr
 
 # Defaults
+group=${group:-"/var/etc/group"}
 passwd=${passwd:-"/var/etc/passwd"}
 masterpasswd=${masterpasswd:-"/var/etc/master.passwd"}
 
-echo "Generating passwd database(s)."
+echo "Generating user database(s)."
+
+# Create the /var/etc/group file.
+/usr/local/bin/xml sel -t \
+	-o "wheel:*:0:root" \
+	-m "//access/user" \
+	-i "count(admin) > 0" -v "concat(',',login)" -b -b -n \
+	-o "daemon:*:1:" -n \
+	-o "kmem:*:2:" -n \
+	-o "sys:*:3:" -n \
+	-o "tty:*:4:" -n \
+	-o "operator:*:5:root" -n \
+	-o "bin:*:7:" -n \
+	-o "staff:*:20:" -n \
+	-o "man:*:9:" -n \
+	-o "sshd:*:22:" -n \
+	-o "guest:*:31:" -n \
+	-o "ftp:*:50:" -n \
+	-o "_pflogd:*:64:" -n \
+	-o "_dhcp:*:65:" -n \
+	-o "network:*:69:" -n \
+	-o "www:*:80:" -n \
+	-o "nogroup:*:65533:" -n \
+	-o "nobody:*:65534:" -n \
+	-o "admin:*:1000:" -n \
+	-m "//access/group" \
+	-v "concat(name,':*:',id,':')" -n \
+	 ${configxml_file} > ${group}
 
 # Clean /var/etc/passwd file
 cat /dev/null > ${passwd}

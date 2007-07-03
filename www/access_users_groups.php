@@ -50,8 +50,7 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			/* reload all components that use group */
-			
+			$retval |= rc_exec_service("userdb");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
@@ -65,7 +64,11 @@ if ($_POST) {
 if ($_GET['act'] == "del") {
 	if ($a_group_conf[$_GET['id']]) {
 		unset($a_group_conf[$_GET['id']]);
+
 		write_config();
+
+		rc_exec_service("userdb");
+
 		touch($d_groupconfdirty_path);
 		header("Location: access_users_groups.php");
 		exit;
