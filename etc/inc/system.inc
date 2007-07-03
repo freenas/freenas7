@@ -109,9 +109,6 @@ function system_create_usermanagement()
 		write_console("Generating user/password database(s)... ");
 
 	$result |= system_create_masterpasswd();
-	$result |= system_create_group();
-	$result |= system_create_pwdmkdb();
-	$result |= system_create_htpasswd();
 
 	if (0 == $result) {
 		if(is_booting())
@@ -184,109 +181,6 @@ EOD;
 	fclose($fd);
 
 	return 0;
-}
-
-// Generate the /var/etc/passwd, pwd.db and spwd.db files.
-// Return 0 if successful, otherwise 1
-function system_create_pwdmkdb()
-{
-	global $g;
-
-	return (mwexec("/usr/sbin/pwd_mkdb -p -d {$g['varetc_path']} {$g['varetc_path']}/master.passwd"));
-}
-
-// Create the /var/etc/group file.
-// Return 0 if successful, otherwise 1
-function system_create_group()
-{
-	global $config, $g;
-
-	$groupfile = <<<EOD
-wheel:*:0:root
-EOD;
-
-	/* If user exist with admin right, put them on the wheel group */
-	if (is_array($config['access']['user'])) {
-		foreach ($config['access']['user'] as $user) {
-			if (isset($user['admin'])) {
-				$groupfile .= <<<EOD
-,{$user['login']}
-EOD;
-			}
-		}
-	}
-
-	$groupfile .= <<<EOD
-
-daemon:*:1:
-kmem:*:2:
-sys:*:3:
-tty:*:4:
-operator:*:5:root
-bin:*:7:
-staff:*:20:
-man:*:9:
-sshd:*:22:
-guest:*:31:
-ftp:*:50:
-_pflogd:*:64:
-_dhcp:*:65:
-network:*:69:
-www:*:80:
-nogroup:*:65533:
-nobody:*:65534:
-admin:*:1000:
-
-EOD;
-	if (is_array($config['access']['group'])) 	{
-		foreach ($config['access']['group'] as $group) 	{
-			$groupfile .= <<<EOD
-{$group['name']}:*:{$group['id']}:
-
-EOD;
-		}
-	}
-
-	$fd = fopen("{$g['varetc_path']}/group", "w");
-	if (!$fd) 	{
-		$message = "Error: Can't open group in system_create_group()";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	fwrite($fd, $groupfile);
-	fclose($fd);
-
-	return 0;
-}
-
-// Generate the /var/run/.htpasswd file used by lighttpd.
-// Return 0 if successful, otherwise 1
-function system_create_htpasswd() {
-	global $config, $g;
-
-	$result = 0 ;
-
-	$fd = fopen("{$g['varrun_path']}/.htpasswd", "w");
-	if (!$fd) {
-		$message = "Error: Can't create .htpasswd in system_create_htpasswd()";
-		write_console($message . ".\n");
-		write_log($message);
-		return 1;
-	}
-
-	if ($config['system']['username'])
-		$username = $config['system']['username'];
-	else
-		$username = "admin";
-
-	fwrite($fd, $username . ":" . $config['system']['password'] . "\n");
-	fclose($fd);
-
-	$result = mwexec("/bin/chmod 0600 {$g['varrun_path']}/.htpasswd");
-
-	return $result;
 }
 
 /* Init language environment */

@@ -39,9 +39,6 @@
 	require_once("functions.inc");
 	require_once("util.inc");
 
-	/* Generate local user database(s) */
-	system_create_usermanagement();
-
 	/* execute the rc.early scripts of extensions */
 	system_do_extensions(1);
 

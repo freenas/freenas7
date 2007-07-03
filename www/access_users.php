@@ -49,7 +49,9 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			system_create_usermanagement();
+			$retval |= rc_exec_service("group");
+			$retval |= rc_exec_service("pwdmkdb");
+			$retval |= rc_exec_service("htpasswd");
 			if (isset($config['samba']['enable']))
 				rc_exec_service("smbpasswd");
 			config_unlock();
@@ -62,15 +64,15 @@ if ($_POST) {
 	}
 }
 
-if ($_GET['act'] == "del") 
-{
-	if ($a_user_conf[$_GET['id']]) 
-	{
+if ($_GET['act'] == "del") {
+	if ($a_user_conf[$_GET['id']]) {
 		unset($a_user_conf[$_GET['id']]);
 
 		write_config();
 
-		system_create_usermanagement();
+		rc_exec_service("group");
+		rc_exec_service("pwdmkdb");
+		rc_exec_service("htpasswd");
 		if (isset($config['samba']['enable']))
 			rc_exec_service("smbpasswd");
 

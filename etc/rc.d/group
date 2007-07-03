@@ -4,7 +4,6 @@
 
 # PROVIDE: group
 # BEFORE: CONFIG
-# KEYWORD: nostart
 
 . /etc/configxml.subr
 
@@ -14,9 +13,10 @@ group=${group:-"/var/etc/group"}
 echo "Generating group."
 
 # Create the /var/etc/group file.
-/usr/local/bin/xml sel -t -m "//access/user" \
+/usr/local/bin/xml sel -t \
 	-o "wheel:*:0:root" \
-	-i "count(admin) > 0" -v "concat(',',login)" -b -n \
+	-m "//access/user" \
+	-i "count(admin) > 0" -v "concat(',',login)" -b -b -n \
 	-o "daemon:*:1:" -n \
 	-o "kmem:*:2:" -n \
 	-o "sys:*:3:" -n \
