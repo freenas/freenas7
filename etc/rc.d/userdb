@@ -82,4 +82,4 @@ do
 done
 
 # Generate the /var/etc/passwd, pwd.db and spwd.db files.
-/usr/sbin/pwd_mkdb -p -d /var/etc ${masterpasswd} >/dev/null 2>&1
+/usr/sbin/pwd_mkdb -p -d /var/etc ${masterpasswd} > /dev/null 2>&1
