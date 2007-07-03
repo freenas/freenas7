@@ -137,7 +137,7 @@ Known bugs:
 - IPv6: auto mode is not tested
 
 Knowns Bugs to be fixed before to release the 0.685b:
-- iscsi-target crash
+- iscsi-target crash (need to test with more RAM)
 - no more DHCP working
 - rsyncd doesn't start
 - error message when using more than 1 NIC
