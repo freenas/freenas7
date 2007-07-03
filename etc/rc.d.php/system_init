@@ -44,7 +44,4 @@
 
 	/* execute the rc scripts of extensions */
 	system_do_extensions();
-
-	/* run any shell commands specified in config.xml */
-	system_do_shell_commands();
 ?>

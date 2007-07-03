@@ -59,21 +59,6 @@ function system_halt() {
 	mwexec("/sbin/shutdown -p now");
 }
 
-function system_do_shell_commands($early = 0) {
-	global $config;
-
-	if ($early)
-		$cmdn = "earlyshellcmd";
-	else
-		$cmdn = "shellcmd";
-
-	if (is_array($config['system'][$cmdn])) {
-		foreach ($config['system'][$cmdn] as $cmd) {
-			system($cmd);
-		}
-	}
-}
-
 function system_do_extensions($early = false) {
 	global $config, $g;
 
