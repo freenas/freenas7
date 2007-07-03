@@ -136,6 +136,12 @@ Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
 - IPv6: auto mode is not tested
 
+Knowns Bugs to be fixed before to release the 0.685b:
+- iscsi-target crash
+- no more DHCP working
+- rsyncd doesn't start
+- error message when using more than 1 NIC
+
 Help needed:
 - Need help for adding LDAP authentication feature:
 Major services can be easly authenticated using PAM-LDAP, but for Samba too is harder.
