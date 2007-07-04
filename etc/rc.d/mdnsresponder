@@ -5,7 +5,7 @@
 # PROVIDE: mdnsresponder
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
-# XPATH: //system/zeroconf
+# XQUERY: -i "count(//system/zeroconf) > 0" -o "0" -b
 # RCVAR: mdnsresponder
 
 . /etc/rc.subr

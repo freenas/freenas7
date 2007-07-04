@@ -6,7 +6,7 @@
 # REQUIRE: DAEMON
 # BEFORE: LOGIN
 # KEYWORD: shutdown
-# XPATH: //afp/enable
+# XQUERY: -i "count(//afp/enable) > 0" -o "0" -b
 # RCVAR: afpd
 
 . /etc/rc.subr

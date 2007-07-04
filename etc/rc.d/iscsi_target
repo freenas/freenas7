@@ -2,7 +2,7 @@
 
 # PROVIDE: iscsi_target
 # REQUIRE: NETWORKING
-# XPATH: //iscsitarget/vdisk
+# XQUERY: -i "count(//iscsitarget/vdisk) > 0" -o "0" -b
 # RCVAR: iscsi_target
 
 . /etc/rc.subr

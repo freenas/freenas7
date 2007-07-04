@@ -7,12 +7,10 @@
 
 configxml_file=${configxml_file:-"/conf/config.xml"}
 
-#
 # configxml_isset xpath
-#	Check in /conf/config.xml if xpath is available/found.
-#	Return 0 if set, nonzero otherwise.
-#	$1 - XPATH expression
-#
+# Check in /conf/config.xml if xpath is available/found.
+# Return 0 if set, nonzero otherwise.
+# $1 - XPATH expression
 configxml_isset()
 {
 	local _result
@@ -25,11 +23,34 @@ configxml_isset()
 	fi
 }
 
-#
+# configxml_exec_query xquery
+# Execute given query.
+# Return result from query is echoed.
+configxml_exec_query()
+{
+	local _tmpfile _queryresult _result
+
+	# Create temporary script filename.
+	_tmpfile="/tmp/xmlquery$$"
+
+	# Create temporary script to execute xml query.
+	echo "/usr/local/bin/xml sel -t $@ ${configxml_file}" > ${_tmpfile}
+	# Change permissions to execute script.
+	chmod 0700 ${_tmpfile}
+	# Execute script and store result in variable.
+	_queryresult=`${_tmpfile}`
+	_result=$?
+	# Remove temporary script.
+	rm -f ${_tmpfile}
+	# Output query result for later processing.
+	echo ${_queryresult}
+
+	return ${_result}
+}
+
 # configxml_set_rcvar xpath
-#	Set ${rcvar} depending on whether XPATH expression evaluates true.
-#	$1 - XPATH expression
-#
+# Set ${rcvar} depending on whether XPATH expression evaluates true.
+# $1 - XPATH expression
 configxml_set_rcvar()
 {
 	local _value

@@ -8,7 +8,7 @@
 
 # PROVIDE: rpcbind
 # REQUIRE: NETWORKING syslogd
-# XPATH: //nfs/enable
+# XQUERY: -i "count(//nfs/enable) > 0" -o "0" -b
 # RCVAR: rpcbind
 
 . /etc/rc.subr

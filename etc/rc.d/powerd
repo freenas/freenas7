@@ -4,7 +4,7 @@
 # REQUIRE: DAEMON
 # BEFORE: LOGIN
 # KEYWORD: nojail
-# XPATH: //system/powerd
+# XQUERY: -i "count(//system/powerd) > 0" -o "0" -b
 # RCVAR: powerd
 
 powerd_enable=${powerd_enable:-"NO"}

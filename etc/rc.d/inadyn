@@ -5,7 +5,7 @@
 # PROVIDE: inadyn
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
-# XPATH: //dynamicdns/enable
+# XQUERY: -i "count(//dynamicdns/enable) > 0" -o "0" -b
 # RCVAR: inadyn
 
 . /etc/rc.subr

@@ -14,7 +14,7 @@ name="rcconf"
 
 load_rc_config ${name}
 
-echo "Updating rc.conf."
+echo -n "Updating rc.conf:"
 
 sethostname()
 {
@@ -38,7 +38,7 @@ setifconfig()
 			_ifconf="DHCP"
 			;;
 		*)
-			_subnet=`/usr/local/bin/xml sel -t -o "${_ipaddress}/" -v "//interfaces/lan/subnet" ${configxml_file}`
+			_ifconf=`/usr/local/bin/xml sel -t -o "${_ipaddress}/" -v "//interfaces/lan/subnet" ${configxml_file}`
 			;;
 	esac
 
@@ -49,9 +49,9 @@ setifconfig()
 for _rcscript in /etc/rc.d/*; do
 	_rcscriptname=${_rcscript#/etc/rc.d/}
 	if [ "${name}.sh" != "${_rcscriptname}" ]; then
-		_xpath=`cat ${_rcscript} | grep XPATH:`
-		_xpath=${_xpath#*XPATH: }
-		if [ -n "${_xpath}" ]; then
+		_xquery=`cat ${_rcscript} | grep XQUERY:`
+		_xquery=${_xquery#*XQUERY: }
+		if [ -n "${_xquery}" ]; then
 			_rcvar=`cat ${_rcscript} | grep RCVAR:`
 			_rcvar=${_rcvar#*RCVAR: }
 			if [ -z "${_rcvar}" ]; then
@@ -59,16 +59,21 @@ for _rcscript in /etc/rc.d/*; do
 			fi
 
 			debug "rcconf.sh: Processing ${_rcscript}"
-			debug "rcconf.sh:    XPATH=${_xpath}"
-			debug "rcconf.sh:    RCVAR=${_rcvar}"
+			debug "rcconf.sh:   XQUERY=${_xquery}"
+			debug "rcconf.sh:   RCVAR=${_rcvar}"
 
-			if configxml_isset ${_xpath}; then
+			# Execute query.
+			_queryresult=`configxml_exec_query ${_xquery}`
+
+			if [ "0" = "${_queryresult}" ]; then
 				eval /usr/local/sbin/rconf service enable ${_rcvar}
-				debug "rcconf.sh: -> service enabled"
+				debug "rcconf.sh: -> ${_rcscriptname} service enabled"
 			else
 				eval /usr/local/sbin/rconf service disable ${_rcvar}
-				debug "rcconf.sh: -> service disabled"
+				debug "rcconf.sh: -> ${_rcscriptname} service disabled"
 			fi
+
+			echo -n "."
 		fi
 	fi
 done
@@ -78,6 +83,9 @@ sethostname
 
 # Set interface configuration.
 setifconfig
+
+# Finally do a line break.
+echo
 
 # Force reloading of rc.conf file.
 _rc_conf_loaded=false

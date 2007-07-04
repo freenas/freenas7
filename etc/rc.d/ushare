@@ -5,7 +5,7 @@
 # PROVIDE: ushare
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
-# XPATH: //upnp/enable
+# XQUERY: -i "count(//upnp/enable) > 0" -o "0" -b
 # RCVAR: ushare
 
 ushare_enable=${ushare_enable:-"NO"}

@@ -5,7 +5,7 @@
 # PROVIDE: swap
 # REQUIRE: mountcritlocal
 # KEYWORD: nojail shutdown
-# XPATH: //system/swap_enable
+# XQUERY: -i "count(//system/swap_enable) > 0" -o "0" -b
 # RCVAR: swap
 
 . /etc/rc.subr

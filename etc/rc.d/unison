@@ -4,7 +4,7 @@
 
 # PROVIDE: unison
 # REQUIRE: DAEMON
-# XPATH: //unison/enable
+# XQUERY: -i "count(//unison/enable) > 0" -o "0" -b
 # RCVAR: unison
 
 . /etc/rc.subr

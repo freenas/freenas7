@@ -4,7 +4,7 @@
 
 # PROVIDE: iscsi_initiator
 # REQUIRE: NETWORKING
-# XPATH: //iscsiinit/vdisk
+# XQUERY: -i "count(//iscsiinit/vdisk) > 0" -o "0" -b
 # RCVAR: iscsi_initiator
 
 . /etc/rc.subr

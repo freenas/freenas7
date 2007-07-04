@@ -4,7 +4,7 @@
 
 # PROVIDE: msntp
 # REQUIRE: DAEMON
-# XQUERY: -m "//system" -i "time-update-interval[. > 0]" -i "string-length(timeservers) > 0" -o "1" -b -b
+# XQUERY: -m "//system" -i "time-update-interval[. > 0]" -i "string-length(timeservers) > 0" -o "0" -b -b
 # RCVAR: msntp
 
 . /etc/rc.subr

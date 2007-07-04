@@ -4,7 +4,7 @@
 
 # PROVIDE: systune
 # BEFORE: DAEMON
-# XPATH: //system/tune
+# XQUERY: -i "count(//system/tune) > 0" -o "0" -b
 # RCVAR: systune
 
 systune_enable=${systune_enable:-"NO"}
