@@ -21,7 +21,7 @@ start_precmd="create_conf"
 rsyncd_enable=${rsyncd_enable:-"NO"}
 rsyncd_config=${rsyncd_config:-"/var/etc/${name}.conf"}
 rsyncd_motd=${rsyncd_motd:-"/var/etc/rsyncd.motd"}
-command="/usr/local/bin/${name}"
+command="/usr/local/bin/rsync"
 command_args="--daemon --config=${rsyncd_config}"
 pidfile="/var/run/${name}.pid"
 
