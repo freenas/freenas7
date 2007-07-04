@@ -12,39 +12,32 @@ name="msntp"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_cmd="start_cmd"
-stop_cmd="stop_cmd"
+start_precmd="start_precmd"
+stop_postcmd="stop_postcmd"
 
 # Defaults
 msntp_enable="${msntp_enable:=NO}"
 pidfile="/var/run/${name}.pid"
-scriptpidfile="/var/run/runmsntp.pid"
+command="/usr/local/bin/${name}"
+command_args="-r -P no -l ${pidfile} -x"
 
-start_cmd()
+start_precmd()
 {
 	local _cmdarg
 
-	echo "Starting ${name}."
-
-	# Get command attributes from config file.
+	# Get additional command arguments from config file.
 	_cmdarg=`/usr/local/bin/xml sel -t \
 		-v "concat(//system/time-update-interval,' ',//system/timeservers)" \
 		${configxml_file}`
 
-	nohup /usr/local/bin/runmsntp.sh ${scriptpidfile} ${pidfile} ${_cmdarg} > /dev/null 2>&1 &
+	# Add additional arguments and set '&' to run background.
+	command_args="${command_args} ${_cmdarg} &"
 }
 
-stop_cmd()
+stop_postcmd()
 {
-	echo "Stopping ${name}."
-
-	# Kill runmsntp script.
-	/bin/kill -s TERM `/bin/cat ${scriptpidfile}`
-	rm -r ${scriptpidfile}
-
-	# Kill msntp.
-	/bin/kill -s TERM `/bin/cat ${pidfile}`
-	rm -r ${pidfile}
+	# Remove 'pidfile' because this is not done automatically.
+	rm -f ${pidfile}
 }
 
 load_rc_config ${name}

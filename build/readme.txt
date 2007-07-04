@@ -129,7 +129,6 @@ Bug fixs:
 - Fix SWAP file size change bug
 - Add missing softlink /usr/share/misc/termcap -> /etc/termcap
 - Fix bug for preventing to mount system disk (thanks to SF.net user : snikulin)
-- Fix bug concerning runmsntp.sh (File mode was DOS -> changed to UNIX)
 
 Known bugs:
 - NTFS mount points are not mounted after creation, a reboot is necessary.
