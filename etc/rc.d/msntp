@@ -30,7 +30,7 @@ start_precmd()
 		-v "concat(//system/time-update-interval,' ',//system/timeservers)" \
 		${configxml_file}`
 
-	# Add additional arguments and set '&' to run background.
+	# Add additional arguments and set '&' to run in background.
 	command_args="${command_args} ${_cmdarg} &"
 }
 
