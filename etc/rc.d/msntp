@@ -22,14 +22,16 @@ scriptpidfile="/var/run/runmsntp.pid"
 
 start_cmd()
 {
-	local _updateinterval _timeservers
+	local _cmdarg
 
 	echo "Starting ${name}."
 
-	_updateinterval=`/usr/local/bin/xml sel -t -v "//system/time-update-interval" ${configxml_file}`
-	_timeservers=`/usr/local/bin/xml sel -t -v "//system/timeservers" ${configxml_file}`
+	# Get command attributes from config file.
+	_cmdarg=`/usr/local/bin/xml sel -t \
+		-v "concat(//system/time-update-interval,' ',//system/timeservers)" \
+		${configxml_file}`
 
-	nohup /usr/local/bin/runmsntp.sh "${scriptpidfile}" "${pidfile}" "${_updateinterval}" "${_timeservers}" > /dev/null 2>&1 &
+	nohup /usr/local/bin/runmsntp.sh ${scriptpidfile} ${pidfile} ${_cmdarg} > /dev/null 2>&1 &
 }
 
 stop_cmd()
