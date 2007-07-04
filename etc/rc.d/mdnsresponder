@@ -9,16 +9,97 @@
 # RCVAR: mdnsresponder
 
 . /etc/rc.subr
-. /etc/conf.subr
+. /etc/configxml.subr
 
 name="mdnsresponder"
 rcvar=`set_rcvar`
+
+# Custom commands
+start_precmd="create_conf"
+
+# Defaults
 mdnsresponder_config=${mdnsresponder_config:-"/var/etc/${name}.conf"}
-required_files=${mdnsresponder_config}
 command="/usr/local/sbin/mDNSResponderPosix"
 command_args="-b -f ${mdnsresponder_config}"
 pidfile="/var/run/mDNSResponder.pid"
 
+create_conf()
+{
+	echo "# mDNSResponderPosix configuration File
+#
+# This file contains the services to be announced to other Rendezvous aware
+# machines on the .local network
+#
+# Entries constist of four consecutive lines as follows:
+# NAME OF SERVICE
+# TYPE OF SERVICE (and, if different from .local, the domain seperated by a space)
+# PORT OF SERVICE
+# TXT RECORD (short description of service)
+#
+# For types: http://www.dns-sd.org/ServiceTypes.html
+" > ${mdnsresponder_config}
+
+	/usr/local/bin/xml sel -t \
+		-v "concat(//system/hostname,' WebAdmin Service')" -n \
+		-i "//system/webgui/protocol[. = 'https']" \
+			-o "_https._tcp. local." -n \
+			-i "string-length(//system/webgui/port) > 0" -v "//system/webgui/port" -n -b \
+			-i "string-length(//system/webgui/port) = 0" -o "443" -n -b \
+		-b \
+		-i "//system/webgui/protocol[. != 'https']" \
+			-o "_http._tcp. local." -n \
+			-i "string-length(//system/webgui/port) > 0" -v "//system/webgui/port" -n -b \
+			-i "string-length(//system/webgui/port) = 0" -o "80" -n -b \
+		-b \
+		-o "path=/index.php" -n \
+		-n \
+		-i "count(//afp/enable) > 0" \
+			-v "concat(//system/hostname,' AFP Service')" -n \
+			-o "_afpovertcp._tcp. local." -n \
+			-o "548" -n \
+			-n \
+		-b \
+		-i "count(//rsyncd/enable) > 0" \
+			-v "concat(//system/hostname,' RSYNC Service')" -n \
+			-o "_rsync._tcp. local." -n \
+			-v "//rsyncd/port" -n \
+			-n \
+		-b \
+		-i "count(//sshd/enable) > 0" \
+			-v "concat(//system/hostname,' SSH Service')" -n \
+			-o "_ssh._tcp. local." -n \
+			-v "//sshd/port" -n \
+			-n \
+		-b \
+		-i "count(//ftp/enable) > 0" \
+			-v "concat(//system/hostname,' FTP Service')" -n \
+			-o "_ftp._tcp. local." -n \
+			-v "//ftp/port" -n \
+			-n \
+		-b \
+		-i "count(//samba/enable) > 0" \
+			-v "concat(//system/hostname,' SMB Service')" -n \
+			-o "_smb._tcp. local." -n \
+			-o "139" -n \
+			-n \
+		-b \
+		-i "count(//nfs/enable) > 0" \
+			-m "//mounts/mount" \
+				-v "concat(//system/hostname,' NFS Service')" -n \
+				-o "_nfs._tcp. local." -n \
+				-o "2049" -n \
+				-v "concat('path=/mnt/',sharename)" -n \
+				-n \
+			-b \
+		-b \
+		-i "count(//upnp/enable) > 0" \
+			-v "concat(//system/hostname,' UPnP Service')" -n \
+			-o "_upnp._tcp. local." -n \
+			-o "1900" -n \
+			-n \
+		-b \
+		${configxml_file} >> ${mdnsresponder_config}
+}
+
 load_rc_config ${name}
-create_conf_file ${name}
 run_rc_command "$1"
