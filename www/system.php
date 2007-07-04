@@ -170,7 +170,7 @@ if ($_POST) {
 			$retval |= rc_exec_service("userdb");
 			$retval |= rc_exec_service("htpasswd");
 			$retval |= rc_exec_service("timezone");
- 			$retval |= rc_restart_service("msntp");
+ 			$retval |= rc_update_service("msntp");
  			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
