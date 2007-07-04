@@ -1,76 +1,6 @@
-FreeNAS (http://www.freenas.org) 
-Olivier Cochard-Labbe (olivier@freenas.org)
-Licence: BSD
-
-Release: 0.685b (unreleased!)
-
-============== SUMMARY =========
-
-1. Files and directories listing
-2. How to generate an FreeNAS ISO or IMG  file
-3. Building FreeNAS with the latest sources
-4. History changes log
-
-================================
-1. Files and directories listing
-- /freenas/bootloader : contain FreeBSD boot loader files
-- /freenas/rootfs: Minimum FreeBSD root filesystem and FreeNAS script/WebGUI
-- /freenas/svn: contain all the up-to-date (working) release and scripts
-
-================================
-2. How to generate an FreeNAS ISO or IMG  file
-
-Edit the scripts:
-- /freenas/svn/build/make.sh
-for modify the directory variable with yours.
-Check that you have installing bash, and
-start /freenas/svn/build/make.sh
-And select your need
-
-burn the freenas.iso file created.
-
-=================================
-3. Building FreeNAS with the latest sources
-
-(normally possible with make.sh)
-
-Here is how to build a FreeNAS from the latest source file:
-
-- Use the root user account on your FreeBSD system
-
-3.1 Update your freenas scripts/WebGUI code with SVN:
-(this create the svn directory)
-
-cd /usr/local/freenas
-
-svn co https://freenas.svn.sourceforge.net/svnroot/freenas/trunk svn
-
-You should now have this directories now:
-/usr/local/freenas
-/usr/local/freenas/svn
-
-3.2 Update your ports collection:
-
-Using portsnap the first time:
-portsnap fetch extract
-
-To update the ports collection:
-portsnap fetch update
-
-3.3 Use the building script:
-
-svn/build/make.sh
-
-Execute all menus in '20 - Build FreeNAS from scratch advanced menu' to build your FreeNAS
-from scretch. After that use one of the following menus:
-
-10 - Create FreeNAS IMG file (rawrite to CF/USB/DD)
-11 - Create FreeNAS ISO file (need cdrtools installed)
-12 - Create FreeNAS ISO file without IMG image (need cdrtools installed)
-
 ################ History Change logs ##############
 
-FreeNAS 0.685b:
+FreeNAS 0.685b (unreleased):
 ---------------
 
 Majors changes:
@@ -463,15 +393,15 @@ About the SYNC between two FreeNAS box, You must have the same share name on the
 Bugs fixed:
 - Fixed the FTP bug that permit the user going to the / folder (chrooting vsftpd)
 - Remove the link0 options for fxp drivers (seem create problem with some users)
-- Prevent using the reserved system login name (bug nÂ°1433691)
+- Prevent using the reserved system login name (bug n°1433691)
 - Prevent adding the system partition on the disk:mount point list
-- No more error message "no config file found" when the image file is directly written on CF or hard drive. (bug nÂ° 1424451)
-- FAT volume are now mounted in read/write (chmod 777) for all services(bug nÂ° 1400583 )
-- Share/Mount Name and Description Error checking (bug nÂ°1433339)
+- No more error message "no config file found" when the image file is directly written on CF or hard drive. (bug n° 1424451)
+- FAT volume are now mounted in read/write (chmod 777) for all services(bug n° 1400583 )
+- Share/Mount Name and Description Error checking (bug n°1433339)
 - Mount share not sorted (Request Id: 1442332)
-- Error message "This group already exists in the group list" when editing group (bug nÂ°1443102)
-- Rsync log works now (bug nÂ°1437039)
-- Editing user prevent starting WebGUI (bug nÂ°1443403)
+- Error message "This group already exists in the group list" when editing group (bug n°1443102)
+- Rsync log works now (bug n°1437039)
+- Editing user prevent starting WebGUI (bug n°1443403)
 
 Tunning:
 - setting kernels variables to:
@@ -536,11 +466,11 @@ New features:
 
 Bugs fixed:
 
-- fix the bug "Windows station display incorrect disk size" (nÂ° 1397508)
-- Fix a problem for configuring a Nforce Ethernet card (nÂ° 1379697)
-- Fix a problem when there is ONLY a USB keyboard plug on the PC (nÂ°1387815)
-- Fix the wrong free memory display (bug nÂ°1368478)
-- Fix the Samba Server description not used (bug nÂ°1395997)
+- fix the bug "Windows station display incorrect disk size" (n° 1397508)
+- Fix a problem for configuring a Nforce Ethernet card (n° 1379697)
+- Fix a problem when there is ONLY a USB keyboard plug on the PC (n°1387815)
+- Fix the wrong free memory display (bug n°1368478)
+- Fix the Samba Server description not used (bug n°1395997)
 
 
 FreeNAS 0.5:
@@ -548,16 +478,16 @@ FreeNAS 0.5:
 
 New features:
 - Software RAID with gvinum...need to be more tested (have a little problem with RAID 1 and soft reboot)
-- S.M.A.R.T support (only logging actualy) with smartmontools (feature nÂ°1368868)
-- ext2 filesystem support...need to be more tested (feature nÂ°1385882)
-- Playing few notes after startup and reboot (feature nÂ°1373316)
-- Removing the small boot menu (feature nÂ°1377592)
+- S.M.A.R.T support (only logging actualy) with smartmontools (feature n°1368868)
+- ext2 filesystem support...need to be more tested (feature n°1385882)
+- Playing few notes after startup and reboot (feature n°1373316)
+- Removing the small boot menu (feature n°1377592)
 
 Bug resolved:
-- Deleting file with FTP by replace pure-ftpd with vsftpd (bug nÂ°1367965)
-- Displaying hardware RAID disk (bug nÂ°1373409)
-- Call to undefined function in system_advanced (bug nÂ°1372744)
-- NFS server doesn't works (bug nÂ°1372054)
+- Deleting file with FTP by replace pure-ftpd with vsftpd (bug n°1367965)
+- Displaying hardware RAID disk (bug n°1373409)
+- Call to undefined function in system_advanced (bug n°1372744)
+- NFS server doesn't works (bug n°1372054)
 
 Know bugs (WARNING!):
 - When you delete a RAID volume, you must remove (with the RAID/Tools menu) all the object (especially the disks) used by this volume.
