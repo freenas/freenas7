@@ -12,6 +12,10 @@
 
 name="rcconf"
 
+load_rc_config ${name}
+
+echo "Updating rc.conf."
+
 sethostname()
 {
 	local _hostname
@@ -41,8 +45,6 @@ setifconfig()
 	eval /usr/local/sbin/rconf attribute set "ifconfig_${_if}" "${_ifconf}"
 }
 
-echo "Updating rc.conf."
-
 # Update rcvar's. Use settings from config.xml.
 for _rcscript in /etc/rc.d/*; do
 	_rcscriptname=${_rcscript#/etc/rc.d/}
@@ -55,12 +57,17 @@ for _rcscript in /etc/rc.d/*; do
 			if [ -z "${_rcvar}" ]; then
 				_rcvar=${_rcscriptname}
 			fi
+
+			debug "rcconf.sh: Processing ${_rcscript}"
+			debug "rcconf.sh:    XPATH=${_xpath}"
+			debug "rcconf.sh:    RCVAR=${_rcvar}"
+
 			if configxml_isset ${_xpath}; then
 				eval /usr/local/sbin/rconf service enable ${_rcvar}
-				debug "rcconf.sh: Enable service ${_rcscriptname}"
+				debug "rcconf.sh: -> service enabled"
 			else
 				eval /usr/local/sbin/rconf service disable ${_rcvar}
-				debug "rcconf.sh: Disable service ${_rcscriptname}"
+				debug "rcconf.sh: -> service disabled"
 			fi
 		fi
 	fi
