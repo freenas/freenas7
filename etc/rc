@@ -37,10 +37,8 @@ fi
 set -T
 trap "echo 'Reboot interrupted'; exit 1" 3
 
-# make some directories in /var if doesn't exist
-if [ ! -d "/var/run" ]; then
-	mkdir /var/run /var/log /var/etc /var/etc/ssh /var/db /var/log/samba /var/mount /var/etc/private /var/empty /var/etc/iscsi /var/cron /var/cron/tabs
-fi
+# Create directories in /var
+mkdir /var/run /var/log /var/etc /var/etc/ssh /var/db /var/log/samba /var/mount /var/etc/private /var/empty /var/etc/iscsi /var/cron /var/cron/tabs > /dev/null 2>&1
 
 # If the file /etc/cfdevice exist (this mean 'full' release), and symlink /var/etc/cfdevice doesn't exist.. create it.
 if [ -f "/etc/cfdevice" ] && [ ! -h /var/etc/cfdevice ] ; then
