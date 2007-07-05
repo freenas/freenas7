@@ -1,5 +1,5 @@
 ARCHIVE=	rtl_bsd_drv_v172.tgz
-SRCDIR=	${FREENAS_WORKINGDIR}/rtl_bsd_drv_v172
+SRCDIR=	${FREENAS_WORKINGDIR}/rtl_bsd_drv_v173
 
 install:	clean
 	@tar -zxvf ${.CURDIR}/files/$(ARCHIVE) -C ${FREENAS_WORKINGDIR}
