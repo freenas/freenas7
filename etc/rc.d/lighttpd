@@ -170,6 +170,8 @@ zRfbjS9ATPZrW+4W1wJAWgDCN8tt1yKiIe1EMWsNfRV75ubogH489DO35ud+P8ss
 EG4I1k299JhubmkB2FjvgFC4BTA7C75nBLpsY6ckYA==
 -----END RSA PRIVATE KEY-----" > ${lighttpd_certpem}
 		fi
+
+		/bin/chmod 0600 ${lighttpd_certpem}
 	fi
 }
 
