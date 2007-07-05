@@ -32,6 +32,5 @@
 */
 require_once("system.inc");
 require_once("interfaces.inc");
-require_once("services.inc");
 require_once("disks.inc");
 ?>

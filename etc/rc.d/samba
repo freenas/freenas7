@@ -10,7 +10,6 @@
 # RCVAR: samba
 
 . /etc/rc.subr
-. /etc/conf.subr
 . /etc/configxml.subr
 
 name="samba"
@@ -68,7 +67,137 @@ winbindd_flags="${winbindd_flags=''}"
 required_files="${samba_config}"
 required_dirs="${samba_lockdir}"
 
+create_conf()
+{
+	# Create smb.conf file.
+	/usr/local/bin/xml sel -t \
+		-o "[global]" -n \
+		-o "encrypt passwords = yes" -n \
+		-v "concat('netbios name = ',//samba/netbiosname)" -n \
+		-v "concat('workgroup = ',//samba/workgroup)" -n \
+		-v "concat('server string = ',//samba/serverdesc)" -n \
+		-o "load printers = no" -n \
+		-v "concat('security = ',//samba/security)" -n \
+		-o "dns proxy = no" -n \
+		-o "# Settings to enhance performance:" -n \
+		-o "use sendfile = yes" -n \
+		-o "strict locking = no" -n \
+		-o "read raw = yes" -n \
+		-o "write raw = yes" -n \
+		-o "oplocks = yes" -n \
+		-o "max xmit = 65535" -n \
+		-o "deadtime = 15" -n \
+		-o "getwd cache = yes" -n \
+		-o "socket options = IPTOS_LOWDELAY TCP_NODELAY " \
+		-i "string-length(//samba/sndbuf) > 0" \
+			-v "concat('SO_SNDBUF=',//samba/sndbuf,' ')" \
+		-b \
+		-i "string-length(//samba/sndbuf) = 0" \
+			-o "SO_SNDBUF=16384 " \
+		-b \
+		-i "string-length(//samba/rcvbuf) > 0" \
+			-v "concat('SO_RCVBUF=',//samba/rcvbuf,' ')" \
+		-b \
+		-i "string-length(//samba/rcvbuf) = 0" \
+			-o "SO_RCVBUF=16384 " \
+		-b \
+		-n -o "# End of performance section" -n \
+		-i "string-length(//samba/winssrv) > 0" \
+			-v "concat('wins server = ',//samba/winssrv)" -n \
+		-b \
+		-i "string-length(//samba/unixcharset) > 0" \
+			-v "concat('unix charset = ',//samba/unixcharset)" -n \
+		-b \
+		-i "string-length(//samba/unixcharset) = 0" \
+			-o "unix charset = UTF-8" -n \
+		-b \
+		-i "count(//samba/largereadwrite) = 0" \
+			-o "large readwrite = no" -n \
+		-b \
+		-i "count(//samba/easupport) > 0" \
+			-o "ea support = yes" -n \
+		-b \
+		-v "concat('local master = ',//samba/localmaster)" -n \
+		-v "concat('time server = ',//samba/timesrv)" -n \
+		-o "guest account = ftp" -n \
+		-o "display charset = UTF-8" -n \
+		-o "max log size = 10" -n \
+		-o "syslog only = yes" -n \
+		-v "concat('syslog = ',//samba/loglevel)" -n \
+		-o "load printers = no" -n \
+		-o "printing = bsd" -n \
+		-o "printcap name = /dev/null" -n \
+		-o "disable spoolss = yes" -n \
+		-v "concat('log level = ',//samba/loglevel)" -n \
+		-v "concat('dos charset = ',//samba/doscharset)" -n \
+		-o "smb passwd file = /var/etc/private/smbpasswd" -n \
+		-o "private dir = /var/etc/private" -n \
+		-i "//samba/security[. = 'share']" \
+			-o "passdb backend = smbpasswd" -n \
+			-i "string-length(//samba/createmask) > 0" -v "concat('create mask = ',//samba/createmask)" -n -b \
+			-i "string-length(//samba/createmask) = 0" -o "create mask = 0666" -n -b \
+			-i "string-length(//samba/directorymask) > 0" -v "concat('directory mask = ',//samba/directorymask)" -n -b \
+			-i "string-length(//samba/directorymask) = 0" -o "directory mask = 0777" -n -b \
+			-o "force user = ftp" -n \
+			-o "force group = ftp" -n \
+		-b \
+		-i "//samba/security[. = 'domain']" \
+			-o "passdb backend = smbpasswd" -n \
+			-o "allow trusted domains = no" -n \
+			-o "dns proxy = no" -n \
+			-o "ldap ssl = no" -n \
+			-v "concat('idmap backend = rid:',//samba/workgroup,'=10000-20000')" -n \
+			-o "idmap uid = 10000-20000" -n \
+			-o "idmap gid = 10000-20000" -n \
+			-o "winbind enum groups = yes" -n \
+			-o "winbind enum users = yes" -n \
+			-o "winbind use default domain = yes" -n \
+			-o "template homedir = /mnt" -n \
+			-o "template shell = /bin/sh" -n \
+		-b \
+		-i "//samba/security[. = 'user']" \
+			-o "passdb backend = smbpasswd" -n \
+		-b \
+		-n \
+		-m "//mounts/mount" \
+			-v "concat('[',sharename,']')" -n \
+			-v "concat('comment = ',desc)" -n \
+			-v "concat('path = /mnt/',sharename)" -n \
+			-o "writeable = yes" -n \
+			-o "printable = no" -n \
+			-o "veto files = /.snap/" -n \
+			-o "hide dot files = yes" -n \
+			-i "//samba/security[. = 'share']" \
+				-o "guest ok = yes" -n \
+			-b \
+			-i "//samba/security[. = 'domain']" \
+				-o "guest ok = no" -n \
+			-b \
+			-i "//samba/security[. = 'user']" \
+				-o "guest ok = no" -n \
+			-b \
+			-i "contains(//samba/hidemount,sharename)" \
+				-o "browseable = no" -n \
+			-b \
+			-i "count(//samba/recyclebin) > 0" \
+				-o "vfs objects = recycle" -n \
+				-o "recycle:keeptree = yes" -n \
+				-o "recycle:versions = yes" -n \
+			-b \
+			-i "count(//samba/readahead) > 0" \
+				-o "vfs objects = readahead" -n \
+			-b \
+			-i "count(//afp/enable) > 0" \
+				-o "#vfs objects = netatalk" -n \
+			-b \
+			-n \
+		-b \
+		${configxml_file} > ${samba_config}
+}
+
 samba_start_precmd() {
+	create_conf
+
 	# XXX: Never delete winbindd_idmap, winbindd_cache and group_mapping
 	if [ -n "${samba_lockdir}" -a -d "${samba_lockdir}" ]; then
 		echo -n "Removing stale Samba tdb files: "
@@ -134,5 +263,4 @@ samba_cmd() {
 	fi
 }
 
-create_conf_file ${name}
 run_rc_command "$1"

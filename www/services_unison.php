@@ -45,7 +45,7 @@
 	variable without compromising ssh turned out to be non-trivial.
 	The solution is to modify the default path found in /etc/login.conf.
 	The path is seeded with "UNISON=/mnt" and this updated by the
-	/etc/inc/services.inc file.
+	/etc/rc.d/unison file.
 
 	Todo:
 	* 	Arguably, a full client install could be done too to
