@@ -1,31 +1,177 @@
 #!/bin/sh
+# Copyright © 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
 
 # PROVIDE: lighttpd
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
 
 . /etc/rc.subr
-. /etc/conf.subr
+. /etc/configxml.subr
 
 name="lighttpd"
 rcvar=`set_rcvar`
 
-load_rc_config ${name}
-
-: ${lighttpd_enable="NO"}
-: ${lighttpd_conf="/var/etc/lighttpd.conf"}
-
-command=/usr/local/sbin/lighttpd
-command_args="-f ${lighttpd_conf} -m /usr/local/lib/lighttpd"
-pidfile=/var/run/lighttpd.pid
-required_files=${lighttpd_conf}
+# Custom commands
+start_precmd="create_conf"
 stop_postcmd=stop_postcmd
 restart_precmd="checkconfig"
 reload_precmd=reload_precmd
 reload_postcmd=reload_postcmd
+extra_commands="reload check"
+
+# Defaults
+lighttpd_enable=${lighttpd_enable:-"NO"}
+lighttpd_conf=${lighttpd_conf:-"/var/etc/lighttpd.conf"}
+lighttpd_certpem=${lighttpd_certpem:-"/var/etc/cert.pem"}
+command=/usr/local/sbin/lighttpd
+command_args="-f ${lighttpd_conf} -m /usr/local/lib/lighttpd"
+pidfile=/var/run/lighttpd.pid
 sig_reload="-INT"
 check_cmd="checkconfig"
-extra_commands="reload check"
+
+create_conf()
+{
+	local _protocol _certificate _privatekey _tmpfile
+
+	# Create lighttpd.conf file.
+	echo 'server.modules = (
+  "mod_access",
+  "mod_auth",
+  "mod_cgi" )
+server.document-root = "/usr/local/www"
+server.errorlog-use-syslog = "enable"
+server.event-handler = "freebsd-kqueue"
+index-file.names = ( "index.php" )
+mimetype.assign = (
+  ".pdf"     => "application/pdf",
+  ".sig"     => "application/pgp-signature",
+  ".spl"     => "application/futuresplash",
+  ".class"   => "application/octet-stream",
+  ".ps"      => "application/postscript",
+  ".torrent" => "application/x-bittorrent",
+  ".dvi"     => "application/x-dvi",
+  ".gz"      => "application/x-gzip",
+  ".pac"     => "application/x-ns-proxy-autoconfig",
+  ".swf"     => "application/x-shockwave-flash",
+  ".tar.gz"  => "application/x-tgz",
+  ".tgz"     => "application/x-tgz",
+  ".tar"     => "application/x-tar",
+  ".zip"     => "application/zip",
+  ".mp3"     => "audio/mpeg",
+  ".m3u"     => "audio/x-mpegurl",
+  ".wma"     => "audio/x-ms-wma",
+  ".wax"     => "audio/x-ms-wax",
+  ".ogg"     => "application/ogg",
+  ".wav"     => "audio/x-wav",
+  ".gif"     => "image/gif",
+  ".jpg"     => "image/jpeg",
+  ".jpeg"    => "image/jpeg",
+  ".png"     => "image/png",
+  ".xbm"     => "image/x-xbitmap",
+  ".xpm"     => "image/x-xpixmap",
+  ".xwd"     => "image/x-xwindowdump",
+  ".css"     => "text/css",
+  ".html"    => "text/html",
+  ".htm"     => "text/html",
+  ".js"      => "text/javascript",
+  ".asc"     => "text/plain",
+  ".c"       => "text/plain",
+  ".cpp"     => "text/plain",
+  ".log"     => "text/plain",
+  ".conf"    => "text/plain",
+  ".text"    => "text/plain",
+  ".txt"     => "text/plain",
+  ".dtd"     => "text/xml",
+  ".xml"     => "text/xml",
+  ".mpeg"    => "video/mpeg",
+  ".mpg"     => "video/mpeg",
+  ".mov"     => "video/quicktime",
+  ".qt"      => "video/quicktime",
+  ".avi"     => "video/x-msvideo",
+  ".asf"     => "video/x-ms-asf",
+  ".asx"     => "video/x-ms-asf",
+  ".wmv"     => "video/x-ms-wmv",
+  ".bz2"     => "application/x-bzip",
+  ".tbz"     => "application/x-bzip-compressed-tar",
+  ".tar.bz2" => "application/x-bzip-compressed-tar"
+)
+url.access-deny = ( "~", ".inc" )
+static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
+server.pid-file = "/var/run/lighttpd.pid"
+auth.backend = "htpasswd"
+auth.backend.htpasswd.userfile = "/usr/local/www/.htpasswd"
+cgi.assign = (".php" => "/usr/local/bin/php")' > ${lighttpd_conf}
+
+	/usr/local/bin/xml sel -t \
+		-o "auth.require = ( &quot;/&quot; => (" -n \
+		-o "  &quot;method&quot;  => &quot;basic&quot;," -n \
+		-v "concat('  &quot;realm&quot;   => &quot;',//system/hostname,'&quot;,')" -n \
+		-o "  &quot;require&quot; => &quot;valid-user&quot;" -n \
+		-o "  )," -n \
+		-o ")" -n \
+		-i "string-length(//system/webgui/port) > 0" -v "concat('server.port = ',//system/webgui/port)" -n -b \
+		-i "//system/webgui/protocol[. = 'https']" \
+			-o "ssl.engine = &quot;enable&quot;" -n \
+			-o "ssl.pemfile = &quot;${lighttpd_certpem}&quot;" -n \
+		-b \
+		${configxml_file} | /usr/bin/sed "s/&gt;/>/g" >> ${lighttpd_conf}
+
+	_protocol=`/usr/local/bin/xml sel -t -v "//system/webgui/protocol" ${configxml_file}`
+	_certificate=`/usr/local/bin/xml sel -t -v "//system/webgui/certificate" ${configxml_file}`
+	_privatekey=`/usr/local/bin/xml sel -t -v "//system/webgui/private-key" ${configxml_file}`
+
+	if [ "${_protocol}" = "https" ]; then
+		# Create /var/etc/cert.pem file.
+		if [ -n "${_certificate}" -a -n "${_privatekey}" ]; then
+			_tmpfile=/tmp/lighttpd$$.tmp
+
+			echo "${_certificate}" > ${_tmpfile}
+			/usr/bin/uudecode -m -p -r ${_tmpfile} > ${lighttpd_certpem}
+			echo "" >> ${lighttpd_certpem}
+			echo "${_privatekey}" > ${_tmpfile}
+			/usr/bin/uudecode -m -p -r ${_tmpfile} >> ${lighttpd_certpem}
+
+			/bin/rm -f ${_tmpfile}
+		else
+			echo "-----BEGIN CERTIFICATE-----
+MIIDVTCCAr6gAwIBAgIJAJKqT796+FGHMA0GCSqGSIb3DQEBBQUAMHsxCzAJBgNV
+BAYTAkZSMRMwEQYDVQQIEwpTb21lLVN0YXRlMQ8wDQYDVQQHEwZOYW50ZXMxEDAO
+BgNVBAoTB0ZyZWVOQVMxEDAOBgNVBAMTB0ZyZWVOQVMxIjAgBgkqhkiG9w0BCQEW
+E29saXZpZXJAZnJlZW5hcy5vcmcwHhcNMDcwNjI4MTcyODA5WhcNMzQxMTEyMTcy
+ODA5WjB7MQswCQYDVQQGEwJGUjETMBEGA1UECBMKU29tZS1TdGF0ZTEPMA0GA1UE
+BxMGTmFudGVzMRAwDgYDVQQKEwdGcmVlTkFTMRAwDgYDVQQDEwdGcmVlTkFTMSIw
+IAYJKoZIhvcNAQkBFhNvbGl2aWVyQGZyZWVuYXMub3JnMIGfMA0GCSqGSIb3DQEB
+AQUAA4GNADCBiQKBgQCjKqGAk2OKnoIZHPb9hhUZy8pFEtPvmR0IfE7VAmsTYTzV
+vnhf6YWnCQIYPerOm+WrLPqfeqpjjiNRpcPX1LCiOPNSQsSOV+iaUdCvrGVtolrk
+lhbSQ860gQFVZKkMslnvrdkUY8TLtL5mXaNj7zMh4UcNugmkkG8eERGkPDuxqQID
+AQABo4HgMIHdMB0GA1UdDgQWBBQ2aBkawbD7+upiqT9nmSviC8/APTCBrQYDVR0j
+BIGlMIGigBQ2aBkawbD7+upiqT9nmSviC8/APaF/pH0wezELMAkGA1UEBhMCRlIx
+EzARBgNVBAgTClNvbWUtU3RhdGUxDzANBgNVBAcTBk5hbnRlczEQMA4GA1UEChMH
+RnJlZU5BUzEQMA4GA1UEAxMHRnJlZU5BUzEiMCAGCSqGSIb3DQEJARYTb2xpdmll
+ckBmcmVlbmFzLm9yZ4IJAJKqT796+FGHMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcN
+AQEFBQADgYEAWFvm1x2crB5nTjW0np8YayCXgTvJN5zHgILR+84fKfseMlogT+T/
+gAkxW/rGRNsf6UEUGS8mov6S2y21ldph05tjt5WegGvT4OAAlpltZh4QH1z3ArZF
+73xX9WbPI2LkKf/RO1Cs442aSRkbCZ1tZRyNmYEPYZt/5b6+ZgXKlAE=
+-----END CERTIFICATE-----
+-----BEGIN RSA PRIVATE KEY-----
+MIICWwIBAAKBgQCjKqGAk2OKnoIZHPb9hhUZy8pFEtPvmR0IfE7VAmsTYTzVvnhf
+6YWnCQIYPerOm+WrLPqfeqpjjiNRpcPX1LCiOPNSQsSOV+iaUdCvrGVtolrklhbS
+Q860gQFVZKkMslnvrdkUY8TLtL5mXaNj7zMh4UcNugmkkG8eERGkPDuxqQIDAQAB
+AoGALFYZLGbgVXpcv5YvRxR4B1poy/whuqlQSk383cSac9moPixTaTx7JLg96Xhp
+pVqXPbwrHcqnIgYtcrIoVS1mET9VPUQExyh8DmtDgQ3Iwvg8szmbdpzEVndrVmRl
+ZGhMIjxdMmWuQrROyCkz1EXGPZ0BPaRoK9XbaliyYuCWK0ECQQDWdS3FS4HirSZT
+j44IF7Oeg7Ma/J6ruvIkM1GOudD+r5t368/+sJ16QyrcrylmC7CrgoT4N6WrxTJ+
+31+/iOPvAkEAwsX0SQBdAByIW9cmdBc0IqqjA78dZRZ5DPc30lChZiUAmGD6wCcm
+menq4sP2i4h1EtKkRulz/wKzY8gRJwFL5wJAGmNQvnYMBVhI3v9K+rPv5hFOeIOd
+AoR+RvYJkwZKMQxqlNbvQOd6eRDKtVzYOzY1BuWIdwJh4EDjdbkGjwrJAQJAaX7g
+3r2Eoe/SZ7Q0DsMWqQQ1gWz9lehDLqOkp5SmpvW5yc8VYgiSnuEVKTgtDMyfZM+U
+zRfbjS9ATPZrW+4W1wJAWgDCN8tt1yKiIe1EMWsNfRV75ubogH489DO35ud+P8ss
+EG4I1k299JhubmkB2FjvgFC4BTA7C75nBLpsY6ckYA==
+-----END RSA PRIVATE KEY-----" > ${lighttpd_certpem}
+		fi
+	fi
+}
 
 checkconfig()
 {
@@ -49,5 +195,5 @@ reload_postcmd()
 	run_rc_command start
 }
 
-create_conf_file ${name}
+load_rc_config ${name}
 run_rc_command "$1"
