@@ -45,8 +45,10 @@ FOO
 # remove string
 # Remove given string from file.
 remove() {
-	/usr/bin/sed "/${1}*/d" /etc/rc.conf > /etc/rc.conf.tmp
-	mv -f /etc/rc.conf.tmp /etc/rc.conf
+	if [ -e /etc/rc.conf ]; then
+		/usr/bin/sed "/${1}*/d" /etc/rc.conf > /etc/rc.conf.tmp
+		mv -f /etc/rc.conf.tmp /etc/rc.conf
+	fi
 }
 
 if [ $# -lt 2 ]; then
