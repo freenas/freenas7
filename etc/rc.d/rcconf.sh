@@ -49,11 +49,9 @@ setifconfig()
 for _rcscript in /etc/rc.d/*; do
 	_rcscriptname=${_rcscript#/etc/rc.d/}
 	if [ "${name}.sh" != "${_rcscriptname}" ]; then
-		_xquery=`grep "XQUERY:" ${_rcscript}`
-		_xquery=${_xquery#*XQUERY: }
+		_xquery=`grep "XQUERY:" ${_rcscript} | sed 's/.*XQUERY: \(.*\)/\1/'`
 		if [ -n "${_xquery}" ]; then
-			_rcvar=`grep "RCVAR:" ${_rcscript}`
-			_rcvar=${_rcvar#*RCVAR: }
+			_rcvar=`grep "RCVAR:" ${_rcscript} | sed 's/.*RCVAR: \(.*\)/\1/'`
 			if [ -z "${_rcvar}" ]; then
 				_rcvar=${_rcscriptname}
 			fi
