@@ -77,12 +77,6 @@ But adding iscsi-target to /etc/services doesn't solve the problem
 - netatalk VFS samba module (automatically enabled when netatalk started) crash samba when acces to share
 - Need to write a online-test procedure
 
-- RSYNC and IPV6:
-The RSYNC client script (/etc/rc.d/rsyncd) must detect if it's an IPv4 or v6 address to be used:
-If it's an IPv6 address, then the generated line should be for example:
-/usr/local/bin/rsync -rtz rsync://\[faad::baad\]/system /mnt/system
-Note the IPv6 address is between [] and this special character must be escaped from shell with '\'
-
 Help needed:
 - Need help for adding LDAP authentication feature:
 Major services can be easly authenticated using PAM-LDAP, but for Samba too is harder.

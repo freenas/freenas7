@@ -29,7 +29,16 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-o "exit" -n \
 			-o "fi" -n \
 			-o "/usr/bin/touch /var/run/rsync_client-running${_i}" -n \
-			-o "/usr/local/bin/rsync -rtz " -i "count(opt_delete) > 0" -o "--delete --delete-after " -b -o "rsync://" -v "concat(rsyncserverip,'/',remoteshare,' /mnt/',localshare)" -n \
+			-o "/usr/local/bin/rsync -rtz " \
+			-i "count(opt_delete) > 0" \
+				-o "--delete --delete-after " \
+			-b \
+			-i "contains(rsyncserverip,'.')" \
+				-v "concat('rsync://',rsyncserverip,'/',remoteshare,' /mnt/',localshare)" -n \
+			-b \
+			-i "contains(rsyncserverip,':')" \
+				-v "concat('rsync://\\[',rsyncserverip,'\\]/',remoteshare,' /mnt/',localshare)" -n \
+			-b \
 			-o "/bin/rm -f /var/run/rsync_client-running${_i}" -n \
 			-v "concat('/usr/bin/logger -p local4.notice &quot;End of remote RSYNC synchronization from share ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" \
 			${configxml_file} > ${_rsyncscript}
