@@ -49,7 +49,7 @@ function rc_exec_script_async($scriptname) {
 // Check if service is running.
 // Return 0 if service is running, otherwise 1.
 function rc_is_service_running($name) {
-	$retval = rc_exec_script("/etc/rc.d/{$name} status");
+	$retval = rc_exec_script("/etc/rc.d/{$name} onestatus");
 	return $retval;
 }
 
