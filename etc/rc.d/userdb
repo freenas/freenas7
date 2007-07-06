@@ -18,7 +18,9 @@ echo "Generating user database(s)."
 /usr/local/bin/xml sel -t \
 	-o "wheel:*:0:root" \
 	-m "//access/user" \
-	-i "count(admin) > 0" -v "concat(',',login)" -b -b -n \
+		-i "count(admin) > 0" -v "concat(',',login)" -b \
+	-b \
+	-n \
 	-o "daemon:*:1:" -n \
 	-o "kmem:*:2:" -n \
 	-o "sys:*:3:" -n \
@@ -38,7 +40,8 @@ echo "Generating user database(s)."
 	-o "nobody:*:65534:" -n \
 	-o "admin:*:1000:" -n \
 	-m "//access/group" \
-	-v "concat(name,':*:',id,':')" -n \
+		-v "concat(name,':*:',id,':')" -n \
+	-b \
 	 ${configxml_file} > ${group}
 
 # Clean /var/etc/passwd file

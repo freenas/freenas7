@@ -15,8 +15,11 @@ _if=`/usr/local/bin/xml sel -t -v "//interfaces/lan/if" ${configxml_file}`
 _ipaddr=`get_ipaddr inet ${_if}`
 
 # Generate /etc/hosts file.
-/usr/local/bin/xml sel -t -m "//system" -o "::1 localhost localhost." -v domain -n \
-	-o "127.0.0.1 localhost localhost." -v domain -n \
-	-o "${_ipaddr} " -v hostname -o "." -v domain -o " " -v hostname -n \
-	-t -m "//system/hosts" -i "string-length(name) > 0" -v address -o " " -v name -n \
+/usr/local/bin/xml sel -t -m "//system" \
+	-v "concat('::1 localhost localhost.',domain)" -n \
+	-v "concat('127.0.0.1 localhost localhost.',domain)" -n \
+	-o "${_ipaddr} " -v "concat(hostname,'.',domain,' ',hostname)" -n \
+	-m "//system/hosts" \
+		-i "string-length(name) > 0" -v "concat(address,' ',name)" -n -b \
+	-b \
 	${configxml_file} > /etc/hosts

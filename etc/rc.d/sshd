@@ -39,9 +39,10 @@ create_conf()
 		-o "PubkeyAuthentication yes" -n \
 		-o "Subsystem       sftp    /usr/libexec/sftp-server" -n \
 		-m "//sshd" \
-		-i "count(port) > 0" -v "concat('Port ',port)" -n -b \
-		-i "count(permitrootlogin) > 0" -o "PermitRootLogin yes" -n -b \
-		-i "count(tcpforwarding) > 0" -o "AllowTcpForwarding yes" -n -b \
+			-i "count(port) > 0" -v "concat('Port ',port)" -n -b \
+			-i "count(permitrootlogin) > 0" -o "PermitRootLogin yes" -n -b \
+			-i "count(tcpforwarding) > 0" -o "AllowTcpForwarding yes" -n -b \
+		-b \
 		${configxml_file} > ${sshd_config}
 
 	# Create ssh_host_dsa_key file.

@@ -41,9 +41,10 @@ create_conf()
 		-i "count(rsyncd_user) > 0" -v "concat('uid = ',rsyncd_user)" -n -b \
 		-i "count(rsyncd_user) = 0" -o "uid = ftp" -n -o "gid = ftp" -n -b \
 		-m "//mounts/mount" \
-		-n -v "concat('[',sharename,']')" -n \
-		-v "concat('comment = ',desc)" -n \
-		-v "concat('path = /mnt/',sharename)" -n \
+			-n -v "concat('[',sharename,']')" -n \
+			-v "concat('comment = ',desc)" -n \
+			-v "concat('path = /mnt/',sharename)" -n \
+		-b \
 		${configxml_file} > ${rsyncd_config}
 
 	# Create MOTD file.
