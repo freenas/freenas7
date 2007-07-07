@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: rcconf
-# REQUIRE: system_preinit
+# REQUIRE: system_init
 # BEFORE: CONFIG
 
 . /etc/rc.subr
