@@ -2,7 +2,7 @@
 # Copyright © 2007 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
-# PROVIDE: execcmd_postinit
+# PROVIDE: execcmd_late
 # REQUIRE: LOGIN
 
 . /etc/configxml.subr

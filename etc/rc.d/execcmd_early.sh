@@ -2,7 +2,7 @@
 # Copyright © 2007 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
-# PROVIDE: execcmd_preinit
+# PROVIDE: execcmd_early
 # REQUIRE: system_init rcconf
 # BEFORE: CONFIG
 
