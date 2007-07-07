@@ -306,7 +306,10 @@ function ipv6_type_change() {
         <span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
       </td>
     </tr>
-	<tr> 
+    <tr>
+			<td colspan="2" class="list" height="12"></td>
+		</tr>
+		<tr> 
       <td colspan="2" valign="top" class="listtopic"><?=gettext("IPv6 Configuration"); ?></td>
     </tr>
     <tr> 
@@ -329,12 +332,16 @@ function ipv6_type_change() {
 		 <input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
       </td>
     </tr>
-     <tr> 
+		<tr> 
       <td valign="top" class="vncell"><?=gettext("IPv6 Gateway"); ?></td>
       <td class="vtable">
         <input name="ipv6gateway" type="text" class="formfld" id="ipv6gateway" size="20" value="<?=htmlspecialchars($pconfig['ipv6gateway']);?>">
       </td>
-	 <tr> 
+		</tr>
+		<tr>
+			<td colspan="2" class="list" height="12"></td>
+		</tr>
+		<tr> 
       <td colspan="2" valign="top" class="listtopic"><?=gettext("Global Configuration"); ?></td>
     </tr>
     <tr> 

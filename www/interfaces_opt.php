@@ -337,31 +337,35 @@ function ipv6_type_change() {
                     <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
                   </td>
                 </tr>
-				  <td colspan="2" valign="top" class="listtopic"><?=gettext("IPv6 Configuration"); ?></td>
-    </tr>
-    <tr> 
-    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
-      <td width="78%" class="vtable">
-  			<select name="ipv6type" class="formfld" id="ipv6type" onchange="ipv6_type_change()">
-          <?php $opts = split(" ", "Static Auto"); foreach ($opts as $opt): ?>
-          <option <?php if ($opt == $pconfig['ipv6type']) echo "selected";?>> 
-            <?=htmlspecialchars($opt);?>
-          </option>
-          <?php endforeach; ?>
-        </select>
-      </td>
-    </tr>
-    <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv6 address"); ?></td>
-      <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="30" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
-		 /
-		 <input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
-      </td>
-    </tr>
-	<tr>
-	 <td colspan="2" valign="top" class="listtopic"><?=gettext("Global Configuration"); ?></td>
-	 </tr>
+              	<tr>
+				  				<td colspan="2" valign="top" class="listtopic"><?=gettext("IPv6 Configuration"); ?></td>
+    						</tr>
+						    <tr>
+						    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
+						      <td width="78%" class="vtable">
+						  			<select name="ipv6type" class="formfld" id="ipv6type" onchange="ipv6_type_change()">
+						          <?php $opts = split(" ", "Static Auto"); foreach ($opts as $opt): ?>
+						          <option <?php if ($opt == $pconfig['ipv6type']) echo "selected";?>> 
+						            <?=htmlspecialchars($opt);?>
+						          </option>
+						          <?php endforeach; ?>
+						        </select>
+						      </td>
+						    </tr>
+						    <tr> 
+						      <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv6 address"); ?></td>
+						      <td width="78%" class="vtable"> 
+						        <?=$mandfldhtml;?><input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="30" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
+								 /
+								 <input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
+						      </td>
+						    </tr>
+						    <tr>
+									<td colspan="2" class="list" height="12"></td>
+								</tr>
+								<tr>
+	 								<td colspan="2" valign="top" class="listtopic"><?=gettext("Global Configuration"); ?></td>
+								</tr>
                 <tr>
                   <td valign="top" class="vncell"><?=gettext("MTU"); ?></td>
                   <td class="vtable"><?=$mandfldhtml;?><input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>"> 
