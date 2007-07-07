@@ -2,7 +2,7 @@
 
 # PROVIDE: NETWORKING NETWORK
 # REQUIRE: CONFIG
-# REQUIRE: netif routing
+# REQUIRE: netif routing resolv
 
 #	This is a dummy dependency, for services which require networking
 #	to be operational before starting.

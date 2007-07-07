@@ -9,10 +9,10 @@
 . /etc/rc.subr
 
 name="mountcritlocal"
-start_cmd="start_cmd"
+start_cmd="mountcritlocal_start"
 stop_cmd=":"
 
-start_cmd()
+mountcritlocal_start()
 {
 	local _result
 
