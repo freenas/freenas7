@@ -14,6 +14,7 @@ version="0.1.6"
 type=${1}
 action=${2}
 rc_config=${rc_config:-"/etc/rc.conf"}
+rc_config_tmp=${rc_config_tmp:-"/tmp/rc$$.conf"}
 
 usage() {
 cat << FOO
@@ -51,7 +52,8 @@ FOO
 # Remove given string from file.
 remove() {
 	if [ -e ${rc_config} ]; then
-		cat ${rc_config} | /usr/bin/sed "/${1}*/d" > ${rc_config}
+		/usr/bin/sed "/^${1}=.*/d" ${rc_config} > ${rc_config_tmp}
+		/bin/mv -f ${rc_config_tmp} ${rc_config}
 	fi
 }
 
@@ -70,16 +72,16 @@ case ${type} in
 					remove "${service}_enable"
 					echo "${service}_enable=\"YES\"" >> ${rc_config}
 					;;
-			
+
 				disable)
 					remove "${service}_enable"
 					echo "${service}_enable=\"NO\"" >> ${rc_config}
 					;;
-			
+
 				remove)
 					remove "${service}_enable"
 					;;
-			
+
 				rcvar)
 					load_rc_config ${service}
 					if checkyesno "${service}_enable"; then
