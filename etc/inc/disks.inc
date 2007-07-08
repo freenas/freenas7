@@ -259,9 +259,11 @@ function disks_mount($mount)
 			break;
 	}
 
-	// Re-Change this directory mode to 0777.
-	if (file_exists($mountname)) {
-		if (!chmod($mountname, 0777)) {
+	// Modify directory mode to 0777. Check if target directory is writable,
+	// otherwise we will get an error message.
+	// For ISO's this may be 'chmod: /mnt/xxx: Read-only file system)'.
+	if (file_exists($mountname) && is_writable($mountname)) {
+		if (!@chmod($mountname, 0777)) {
 			write_log("Error: Can't re-set mode 0777 on directory {$mountname}");
 		}
 	}
