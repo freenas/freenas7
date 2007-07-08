@@ -36,10 +36,8 @@ require_once("rc.inc");
 
 function interfaces_loopback_configure()
 {
-	global $config, $g;
-
 	mwexec("/sbin/ifconfig lo0 127.0.0.1");
-	
+
 	return 0;
 }
 
@@ -50,7 +48,7 @@ function interfaces_lan_configure()
 	$result = 0;
 
 	if (is_booting())
-		write_console("Configuring LAN interface... ");
+		write_console("Starting network: ");
 
 	$lancfg = $config['interfaces']['lan'];
 	$lanif = $config['interfaces']['lan']['if'];
@@ -58,11 +56,11 @@ function interfaces_lan_configure()
 	if (strcmp($lanif,"auto") == 0) {
 		$lanif = get_ifname($lanif);
 		if (is_booting()) {
-			write_console("Using interface $lanif... ");
+			write_console("using interface $lanif");
 		}
 	}
 
-	/* wireless configuration? */
+	/* Wireless configuration? */
 	if (is_array($lancfg['wireless'])) {
 		interfaces_wireless_configure($lanif, $lancfg['wireless']);
 	}
@@ -108,16 +106,15 @@ function interfaces_lan_configure()
 			}
 			break;
 	}
-	
-	/* IPv6: disallow "internal" addresses to appear on the wire */
-	/* These two line are taken from /etc/rc.d/network_ipv6 script */
-	
-    mwexec("/sbin/route add -inet6 ::ffff:0.0.0.0 -prefixlen 96 ::1 -reject");
-    mwexec("/sbin/route add -inet6 ::0.0.0.0 -prefixlen 96 ::1 -reject");
-	
-	/* Disable IPv6 forwaring (should be allready done) */
+
+	/* IPv6: disallow "internal" addresses to appear on the wire. */
+	/* These two line are taken from /etc/rc.d/network_ipv6 script. */
+	mwexec("/sbin/route add -inet6 ::ffff:0.0.0.0 -prefixlen 96 ::1 -reject");
+	mwexec("/sbin/route add -inet6 ::0.0.0.0 -prefixlen 96 ::1 -reject");
+
+	/* Disable IPv6 forwarding (should already be done). */
 	mwexec("/sbin/sysctl net.inet6.ip6.forwarding=0");
-	
+
 	switch ($lancfg['ipv6addr']) {
 		case 'auto':
 			interfaces_auto_configure($lanif);
@@ -173,10 +170,6 @@ function interfaces_lan_configure()
 
 		/* Restart mdnsresponder (Zeroconf/Bonjour) */
 		$result |= rc_restart_service("mdnsresponder");
-	}
-
-	if (is_booting()) {
-		write_console("done\n");
 	}
 
 	return $result;
@@ -393,8 +386,6 @@ EOD;
 
 function interfaces_auto_configure($if)
 {
-	global $config, $g;
-
 	/* Configure the kernel for receiving RA */
 	mwexec("/sbin/sysctl net.inet6.ip6.accept_rtadv=1");
 

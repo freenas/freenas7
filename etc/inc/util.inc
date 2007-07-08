@@ -1365,7 +1365,7 @@ function get_defaultgateway() {
 
 	switch ($config['interfaces']['lan']['ipaddr']) {
 		case 'dhcp':
-			exec("/sbin/route -inet -n get default", $rawdata);
+			exec("/sbin/route -n get -inet default", $rawdata);
 			foreach($rawdata as $data) {
 				$adata = preg_split("/\s+/", trim($data));
 				if (false !== strstr($adata[0],"gateway")) {
@@ -1391,7 +1391,7 @@ function get_ipv6defaultgateway() {
 
 	switch ($config['interfaces']['lan']['ipv6addr']) {
 		case 'auto':
-			exec("/sbin/route -inet6 -n get default", $rawdata);
+			exec("/sbin/route -n get -inet6 default", $rawdata);
 			foreach($rawdata as $data) {
 				$adata = preg_split("/\s+/", trim($data));
 				if (false !== strstr($adata[0],"gateway")) {
