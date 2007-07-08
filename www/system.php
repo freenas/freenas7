@@ -190,6 +190,10 @@ if ($_POST) {
 		}
 
 		$savemsg = get_std_save_message($retval);
+
+		// Update DNS server controls.
+		list($pconfig['dns1'],$pconfig['dns2']) = get_ipv4dnsserver();
+		list($pconfig['ipv6dns1'],$pconfig['ipv6dns2']) = get_ipv6dnsserver();
 	}
 }
 ?>
