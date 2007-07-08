@@ -5,39 +5,44 @@
 #
 #set -x
 
-type=${1}
-action=${2}
-
 . /etc/rc.subr
 
+name="rconf"
+version="0.1.6"
+
+# Defaults
+type=${1}
+action=${2}
+rc_config=${rc_config:-"/etc/rc.conf"}
+
 usage() {
-cat  << FOO
-usage: ${0} service enable servicename
-       ${0} service disable servicename
-       ${0} service remove servicename
-       ${0} service rcvar servicename
+cat << FOO
+${name} (version ${version}), manipulate ${rc_config} file.
+Volker Theile (votdev@gmx.de) Copyright (C) 2007
+
+Usage: ${0} service (enable|disable|remove|rcvar) servicename
        ${0} attribute set name value
        ${0} attribute remove name
 
-examples:
-       # ${0} service enable sshd
-       Set sshd_enable="YES" in /etc/rc.conf.
+Examples:
+       # ${name} service enable sshd
+       Set sshd_enable="YES" in ${rc_config}.
 
-       # ${0} service disable sshd
-       Set sshd_enable="NO" in /etc/rc.conf.
+       # ${name} service disable sshd
+       Set sshd_enable="NO" in ${rc_config}.
 
-       # ${0} service remove sshd
-       Remove sshd_enable from /etc/rc.conf.
+       # ${name} service remove sshd
+       Remove sshd_enable from ${rc_config}.
 
-       # ${0} service rcvar sshd
+       # ${name} service rcvar sshd
        Display what rc.conf variable is used (if any).
        Return 0 if YES, otherwise 1
 
-       # ${0} attribute set hostname xyz
-       Set attribute hostname="xyz" in /etc/rc.conf.
+       # ${name} attribute set hostname xyz
+       Set attribute hostname="xyz" in ${rc_config}.
 
-       # ${0} attribute remove hostname
-       Remove attribute hostname from /etc/rc.conf.
+       # ${name} attribute remove hostname
+       Remove attribute hostname from ${rc_config}.
 FOO
 	exit 1
 }
@@ -45,9 +50,8 @@ FOO
 # remove string
 # Remove given string from file.
 remove() {
-	if [ -e /etc/rc.conf ]; then
-		/usr/bin/sed "/${1}*/d" /etc/rc.conf > /etc/rc.conf.tmp
-		mv -f /etc/rc.conf.tmp /etc/rc.conf
+	if [ -e ${rc_config} ]; then
+		cat ${rc_config} | /usr/bin/sed "/${1}*/d" > ${rc_config}
 	fi
 }
 
@@ -64,12 +68,12 @@ case ${type} in
 			case ${action} in
 				enable)
 					remove "${service}_enable"
-					echo "${service}_enable=\"YES\"" >> /etc/rc.conf
+					echo "${service}_enable=\"YES\"" >> ${rc_config}
 					;;
 			
 				disable)
 					remove "${service}_enable"
-					echo "${service}_enable=\"NO\"" >> /etc/rc.conf
+					echo "${service}_enable=\"NO\"" >> ${rc_config}
 					;;
 			
 				remove)
@@ -94,7 +98,7 @@ case ${type} in
 			set)
 				remove "${attribute}"
 				value=${4}
-				echo "${attribute}=\"${value}\"" >> /etc/rc.conf
+				echo "${attribute}=\"${value}\"" >> ${rc_config}
 				;;
 
 			remove)

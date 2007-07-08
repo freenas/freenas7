@@ -30,6 +30,8 @@ configxml_exec_query()
 {
 	local _tmpfile _queryresult _result
 
+	debug "configxml_exec_query: query=<$@>"
+
 	# Create temporary script filename.
 	_tmpfile="/tmp/xmlquery$$"
 
@@ -45,22 +47,7 @@ configxml_exec_query()
 	# Output query result for later processing.
 	echo ${_queryresult}
 
+	debug "configxml_exec_query: results: query=<${_queryresult}> cmd=<${_result}>"
+
 	return ${_result}
-}
-
-# configxml_set_rcvar xpath
-# Set ${rcvar} depending on whether XPATH expression evaluates true.
-# $1 - XPATH expression
-configxml_set_rcvar()
-{
-	local _value
-
-	if configxml_isset $1; then
-		eval ${rcvar}=YES
-	else
-		eval ${rcvar}=NO
-	fi
-
-	eval _value=\$${rcvar}
-	debug "configxml_setrcvar: ${rcvar} has been changed to $_value."
 }

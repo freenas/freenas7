@@ -56,19 +56,16 @@ for _rcscript in /etc/rc.d/*; do
 				_rcvar=${_rcscriptname}
 			fi
 
-			debug "rcconf.sh: Processing ${_rcscript}"
-			debug "rcconf.sh:   XQUERY=${_xquery}"
-			debug "rcconf.sh:   RCVAR=${_rcvar}"
-
 			# Execute query.
 			_queryresult=`configxml_exec_query ${_xquery}`
 
+			# Enable/disable service depending on query result.
 			if [ "0" = "${_queryresult}" ]; then
 				eval /usr/local/sbin/rconf service enable ${_rcvar}
-				debug "rcconf.sh: -> ${_rcscriptname} service enabled"
+				debug "rcconf.sh: ${_rcscriptname} service enabled"
 			else
 				eval /usr/local/sbin/rconf service disable ${_rcvar}
-				debug "rcconf.sh: -> ${_rcscriptname} service disabled"
+				debug "rcconf.sh: ${_rcscriptname} service disabled"
 			fi
 
 			echo -n "."
