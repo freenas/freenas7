@@ -3,6 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: hosts
+# REQUIRE: netif
 # BEFORE: NETWORKING
 
 . /etc/util.subr

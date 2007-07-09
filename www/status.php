@@ -98,20 +98,13 @@ function execCmds() {
 }
 
 /* Set up all of the commands we want to execute. */
-
 defCmdT("Version","cat /etc/prd.version");
 defCmdT("Platform","cat /etc/platform");
 defCmdT("System uptime","uptime");
 defCmdT("Interfaces","/sbin/ifconfig -a");
-
 defCmdT("Routing tables","netstat -nr");
-
-defCmdT("resolv.conf","cat /var/etc/resolv.conf");
-
 defCmdT("Processes","ps xauww");
-defCmdT("dhclient.conf","cat /var/etc/dhclient.conf");
 defCmdT("swap use","/usr/sbin/swapinfo");
-
 defCmdT("ATA disk","/sbin/atacontrol list");
 defCmdT("SCSI disk","/sbin/camcontrol devlist");
 defCmdT("Geom Concat","/sbin/gconcat list");
@@ -122,14 +115,15 @@ defCmdT("Geom Vinum","/sbin/gvinum list");
 defCmdT("Mount point","/sbin/mount");
 defCmdT("Free Disk Space","/bin/df -h");
 defCmdT("Encrypted disks","/sbin/geli list");
-
+defCmdT("rc.conf","cat /etc/rc.conf");
+defCmdT("resolv.conf","cat /var/etc/resolv.conf");
+defCmdT("hosts","cat /etc/hosts");
+defCmdT("crontab","cat /var/etc/crontab");
+defCmdT("dhclient.conf","cat /var/etc/dhclient.conf");
 defCmdT("smb.conf","cat /var/etc/smb.conf");
 defCmdT("sshd.conf","cat /var/etc/ssh/sshd_config");
-defCmdT("mDNSResponder.conf","cat /var/etc/mDNSResponder.conf");
-defCmdT("crontab","cat /var/etc/crontab");
-
+defCmdT("mdnsresponder.conf","cat /var/etc/mdnsresponder.conf");
 defCmdT("last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail -n 200");
-
 defCmd("ls /conf");
 defCmd("ls /var/run");
 defCmdT("config.xml","dumpconfigxml");
