@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	disks_manage_iscsi_edit.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -64,15 +64,16 @@ if ($_POST) {
 	foreach ($a_iscsiinit as $iscsiinit) {
 		if (isset($id) && ($a_iscsiinit[$id]) && ($a_iscsiinit[$id] === $iscsiinit))
 			continue;
+
 		if (($iscsiinit['targetname'] == $_POST['targetname']) && ($iscsiinit['targetaddress'] == $_POST['targetaddress'])) {
 			$input_errors[] = gettext("This couple targetname/targetaddress already exists in the disk list.");
 			break;
 		}
+
 		if ($iscsiinit['name'] == $_POST['name']) {
 			$input_errors[] = gettext("This name already exists in the disk list.");
 			break;
 		}
-		
 	}
 
 	/* input validation */
@@ -86,21 +87,20 @@ if ($_POST) {
 		$iscsiinit['targetname'] = $_POST['targetname'];
 		$iscsiinit['targetaddress'] = $_POST['targetaddress'];
 		$iscsiinit['initiatorname'] = $_POST['initiatorname'];
-	
+
 		if (isset($id) && $a_iscsiinit[$id])
 			$a_iscsiinit[$id] = $iscsiinit;
 		else
 			$a_iscsiinit[] = $iscsiinit;
+
 		touch($d_iscsiinitdirty_path);
-		
+
 		write_config();
-		
+
 		header("Location: disks_manage_iscsi.php");
 		exit;
-
 	}
 }
-
 ?>
 <?php include("fbegin.inc"); ?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
@@ -108,43 +108,44 @@ if ($_POST) {
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
      <tr>
      <td width="22%" valign="top" class="vncellreq"><?=gettext("Name") ;?></td>
-      <td width="78%" class="vtable"> 
+      <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
-<br>
-				<?=gettext("This is for information only (not using during iSCSI negociation)."); ?>		
+				<br>
+				<?=gettext("This is for information only (not using during iSCSI negociation)."); ?>
       </td>
     </tr>
-	<tr>
+		<tr>
      <td width="22%" valign="top" class="vncellreq"><?=gettext("Initiator name") ;?></td>
-      <td width="78%" class="vtable"> 
+      <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="initiatorname" type="text" class="formfld" id="initiatorname" size="40" value="<?=htmlspecialchars($pconfig['initiatorname']);?>">
-		<br>
-				<?=gettext("This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."); ?>	
+				<br>
+				<?=gettext("This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."); ?>
       </td>
-    </tr>
+			</tr>
 	    <tr>
      <td width="22%" valign="top" class="vncellreq"><?=gettext("Target Name") ;?></td>
-      <td width="78%" class="vtable"> 
+      <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="targetname" type="text" class="formfld" id="targetname" size="40" value="<?=htmlspecialchars($pconfig['targetname']);?>">
-		<br>
-				<?=gettext("This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."); ?>	
+				<br>
+				<?=gettext("This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."); ?>
       </td>
     </tr>
-	<tr>
+		<tr>
      <td width="22%" valign="top" class="vncellreq"><?=gettext("Target address") ;?></td>
-      <td width="78%" class="vtable"> 
+      <td width="78%" class="vtable">
         <?=$mandfldhtml;?><input name="targetaddress" type="text" class="formfld" id="targetaddress" size="20" value="<?=htmlspecialchars($pconfig['targetaddress']);?>">
-		<br>
-				<?=gettext("This the IP address or DNS name of the iSCSI target."); ?>	
+				<br>
+				<?=gettext("This the IP address or DNS name of the iSCSI target."); ?>
       </td>
     </tr>
-	
-    <tr> 
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
-      </td>
-    </tr>
+    <tr>
+			<td width="22%" valign="top">&nbsp;</td>
+			<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsiinit[$id]))?gettext("Save"):gettext("Add")?>">
+			<?php if (isset($id) && $a_iscsiinit[$id]): ?>
+				<input name="id" type="hidden" value="<?=$id;?>">
+			<?php endif; ?>
+			</td>
+		</tr>
   </table>
 </form>
 <?php include("fend.inc"); ?>

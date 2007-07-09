@@ -68,19 +68,21 @@ if ($_POST) {
   $reqdfields = explode(" ", "sharename size network network_subnet");
   $reqdfieldsn = array(gettext("Mount Point"),gettext("File size"),gettext("Authorised network"),gettext("Subnet bit count"));
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-  
+
   if (($_POST['network'] && !is_ipaddr($_POST['network']))) {
 		$input_errors[] = gettext("A valid network must be specified.");
 	}
+
 	if (($_POST['network_subnet'] && !is_numeric($_POST['network_subnet']))) {
 		$input_errors[] = gettext("A valid network bit count must be specified.");
 	}
-	
+
 	if (!is_numeric($_POST['size'])) {
 		$input_errors[] = gettext("A valid size target value must be specified.");
 	}
+
 	$osn = gen_subnet($_POST['network'], $_POST['network_subnet']) . "/" . $_POST['network_subnet'];
-	
+
 	if (!$input_errors) {
 		$iscsitarget = array();
 		$iscsitarget['sharename'] = $_POST['sharename'];
@@ -91,10 +93,11 @@ if ($_POST) {
 			$a_iscsitarget[$id] = $iscsitarget;
 		else
 			$a_iscsitarget[] = $iscsitarget;
+
 		touch($d_iscsitargetdirty_path);
-		
+
 		write_config();
-		
+
 		header("Location: services_iscsitarget.php");
 		exit;
 	}
@@ -135,12 +138,14 @@ if ($_POST) {
         <span class="vexpl"><?=gettext("Network that is authorised to access to this iSCSI target.") ;?></span>
       </td>
     </tr>
-    <tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-				<input name="Submit" type="submit" class="formbtn" value="<?=isset($id)?gettext("Save"):gettext("Add")?>">
-      </td>
-    </tr>
+    <tr> 
+			<td width="22%" valign="top">&nbsp;</td>
+			<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget[$id]))?gettext("Save"):gettext("Add")?>"> 
+			<?php if (isset($id) && $a_iscsitarget[$id]): ?>
+				<input name="id" type="hidden" value="<?=$id;?>">
+			<?php endif; ?>
+			</td>
+		</tr>
   </table>
 </form>
 <?php include("fend.inc"); ?>
