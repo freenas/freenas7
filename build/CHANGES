@@ -19,7 +19,8 @@ Majors changes:
     + full (new platform) for real install (no more use RAM disk)
 - Use sysvinit for services. Convert most of the system and services code into shell scripts.
 - Upgrade iscsi_initiator to 2.0.92
-- New language: Bulgarian (Thanks to Boris) 
+- New language: Bulgarian (Thanks to Boris)
+- Upgrade ushare to 1.0 (XBOX fix, added PS3 support, added DLNA compliant profile)
 
 Minors changes:
 - Enhance build scripts

@@ -24,7 +24,7 @@ stop_postcmd="stop_postcmd"
 ushare_config=${ushare_config:-"/var/etc/${name}.conf"}
 required_files=${ushare_config}
 command="/usr/local/bin/${name}"
-command_args="--daemon --xbox --cfg=${ushare_config}"
+command_args="--daemon --xbox --dlna --cfg=${ushare_config}"
 
 # Check if ushare web interface is disabled.
 if ! configxml_isset //upnp/web; then
