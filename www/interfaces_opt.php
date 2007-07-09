@@ -166,6 +166,7 @@ function enable_change(enable_over) {
 	var endis = !(document.iform.enable.checked || enable_over);
 
 	document.iform.type.disabled = endis;
+	document.iform.ipv6type.disabled = endis;
 	document.iform.descr.disabled = endis;
 	document.iform.mtu.disabled = endis;
   document.iform.polling.disabled = endis;
@@ -186,21 +187,33 @@ function enable_change(enable_over) {
 	}
 
 	type_change();
+	ipv6_type_change();
 }
 
 function bridge_change(enable_over) {
+	var endis;
+
 	// Only for 'Static' mode.
 	if (0 == document.iform.type.selectedIndex) {
-		var endis;
-	
 		if (document.iform.enable.checked || enable_over) {
 			endis = !((document.iform.bridge.selectedIndex == 0) || enable_over);
 		} else {
 			endis = true;
 		}
-	
+
 		document.iform.ipaddr.disabled = endis;
 		document.iform.subnet.disabled = endis;
+	}
+
+	if (0 == document.iform.ipv6type.selectedIndex) {
+		if (document.iform.enable.checked || enable_over) {
+			endis = !((document.iform.bridge.selectedIndex == 0) || enable_over);
+		} else {
+			endis = true;
+		}
+
+		document.iform.ipv6addr.disabled = endis;
+		document.iform.ipv6subnet.disabled = endis;
 	}
 }
 
@@ -258,15 +271,16 @@ function ipv6_type_change() {
 		  /* use current ip address as default */
 		  /* comment this line, because function get_ipv6addr use the local IPv6 address*/
       /*document.iform.ipv6addr.value = "<?=htmlspecialchars(get_ipv6addr($lancfg['if']))?>"; */
+      var endis = !(document.iform.enable.checked);
 
-      document.iform.ipv6addr.disabled = 0;
-	  document.iform.ipv6subnet.disabled = 0;
+      document.iform.ipv6addr.disabled = endis;
+	  	document.iform.ipv6subnet.disabled = endis;
 
       break;
 
     case 1: /* Autoconfigure */
       document.iform.ipv6addr.disabled = 1;
-	  document.iform.ipv6subnet.disabled = 1;
+		  document.iform.ipv6subnet.disabled = 1;
 
       break;
   }
@@ -282,15 +296,12 @@ function ipv6_type_change() {
                   <td colspan="2" valign="top" class="optsect_t">
                     <table border="0" cellspacing="0" cellpadding="0" width="100%">
                       <tr>
-                        <td class="optsect_s"></td>
+                        <td class="optsect_s"><strong><?=gettext("IPv4 Configuration");?></strong></td>
                         <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false);bridge_change(false)"><strong><?=gettext("Activate");?></strong></td>
                       </tr>
                     </table>
                   </td>
                 </tr>
-				<tr> 
-      <td colspan="2" valign="top" class="listtopic"><?=gettext("IPv4 Configuration"); ?></td>
-    </tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Type");?></td>
                   <td width="78%" class="vtable">
@@ -337,6 +348,9 @@ function ipv6_type_change() {
                     <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
                   </td>
                 </tr>
+                <tr>
+									<td colspan="2" class="list" height="12"></td>
+								</tr>
               	<tr>
 				  				<td colspan="2" valign="top" class="listtopic"><?=gettext("IPv6 Configuration"); ?></td>
     						</tr>
@@ -373,18 +387,18 @@ function ipv6_type_change() {
 					<?=gettext("Standard MTU is 1500, use 9000 for jumbo frame."); ?>
                   </td>
                 </tr>
-				<tr> 
+								<tr> 
                   <td width="22%" valign="top" class="vncell"><?=gettext("Device polling"); ?></td>
                   <td width="78%" class="vtable"> 
                     <input name="polling" type="checkbox" id="polling" value="yes" <?php if ($pconfig['polling']) echo "checked"; ?>>
                     <strong><?=gettext("Enable device polling"); ?></strong><br>
 					<?=gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards."); ?>
-					</td>
+									</td>
                 </tr>
                  <tr> 
                   <td width="22%" valign="top" class="vncell"><?=gettext("Speed"); ?></td>
                   <td width="78%" class="vtable">
-					<select name="media" class="formfld" id="media">
+										<select name="media" class="formfld" id="media">
                       <?php $types = explode(",", "autoselect,10baseT/UTP,100baseTX,1000baseTX,1000baseSX");
 					        $vals = explode(" ", "autoselect 10baseT/UTP 100baseTX 1000baseTX 1000baseSX");
 					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
@@ -393,11 +407,11 @@ function ipv6_type_change() {
                       </option>
                       <?php endfor; ?>
                     </select></td>
-				</tr>
-				<tr> 
+								</tr>
+								<tr> 
                   <td width="22%" valign="top" class="vncell"><?=gettext("Duplex"); ?></td>
                   <td width="78%" class="vtable">
-					<select name="mediaopt" class="formfld" id="mediaopt">
+										<select name="mediaopt" class="formfld" id="mediaopt">
                       <?php $types = explode(",", "half-duplex,full-duplex");
 					        $vals = explode(" ", "half-duplex full-duplex");
 					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
