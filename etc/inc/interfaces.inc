@@ -4,21 +4,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -56,7 +56,7 @@ function interfaces_lan_configure()
 	if (strcmp($lanif,"auto") == 0) {
 		$lanif = get_ifname($lanif);
 		if (is_booting()) {
-			write_console("using interface $lanif");
+			write_console("using interface $lanif\n");
 		}
 	}
 
@@ -178,10 +178,10 @@ function interfaces_lan_configure()
 function interfaces_optional_configure()
 {
 	global $config, $g;
-	
+
 	/* Reset bridge configuration.	Interfaces will add to it. */
 	$bridgeconfig = "";
-	
+
 	for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 		interfaces_optional_configure_if($i);
 	}
@@ -198,26 +198,26 @@ function interfaces_optional_configure_if($opti)
 {
 	global $config, $g;
 	global $bridgeconfig;
-	
+
 	$optcfg = $config['interfaces']['opt' . $opti];
-	
+
 	if (is_booting()) {
 		$optdescr = "";
 		if ($optcfg['descr'])
 			$optdescr = " ({$optcfg['descr']})";
-		write_console("Configuring OPT{$opti}{$optdescr} interface... ");
+		write_console("Initializing OPT{$opti}{$optdescr} interface.\n");
 	}
-	
+
 	if (isset($optcfg['enable'])) {
 		/* wireless configuration? */
 		if (is_array($optcfg['wireless']))
 			interfaces_wireless_configure($optcfg['if'], $optcfg['wireless']);
-		
+
 		/* MAC spoofing? */
 		if ($optcfg['spoofmac'])
-			mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . 
+			mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) .
 				" link " . escapeshellarg($optcfg['spoofmac']));
-		
+
 		/* media */
 		if ($optcfg['media'] || $optcfg['mediaopt'] || $optcfg['polling'] || $optcfg['mtu']) {
 			$cmd = "/sbin/ifconfig " . escapeshellarg($optcfg['if']);
@@ -238,12 +238,12 @@ function interfaces_optional_configure_if($opti)
 
 			mwexec($cmd);
 		}
-	
+
 		switch ($optcfg['ipaddr']) {
 			case 'dhcp':
 				interfaces_dhcp_configure($optcfg['if']);
 				break;
-			
+
 			default:
 				$addflags = "";
 				if (strpos($optcfg['if'], "fxp") !== false) {
@@ -252,13 +252,13 @@ function interfaces_optional_configure_if($opti)
 				mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " " . escapeshellarg($optcfg['ipaddr'] . "/" . $optcfg['subnet']) . $addflags);
 				break;
 		}
-		
+
 		/* install multicast route */
 		mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($optcfg['if']));
 	} else 	{
 		mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " delete down");
 	}
-	
+
 	switch ($optcfg['ipv6addr']) {
 		case 'auto':
 			interfaces_auto_configure($optcfg['if']);
@@ -275,29 +275,24 @@ function interfaces_optional_configure_if($opti)
 			break;
 	}
 
-
-	if (is_booting()) {
-		write_console("done\n");
-	}
-	
 	return 0;
 }
 
 function interfaces_wireless_configure($if, $wlcfg)
 {
 	global $config, $g;
-	
+
 	/* wireless configuration */
-	$ifcargs = escapeshellarg($if) . 
-		" ssid " . escapeshellarg($wlcfg['ssid']) . " channel " . 
+	$ifcargs = escapeshellarg($if) .
+		" ssid " . escapeshellarg($wlcfg['ssid']) . " channel " .
 		escapeshellarg($wlcfg['channel']) . " ";
-	
+
 	if ($wlcfg['stationname'])
 		$ifcargs .= "stationname " . escapeshellarg($wlcfg['stationname']) . " ";
-	
+
 	if (isset($wlcfg['wep']['enable']) && is_array($wlcfg['wep']['key'])) {
 		$ifcargs .= "wepmode on ";
-		
+
 		$i = 1;
 		foreach ($wlcfg['wep']['key'] as $wepkey) {
 			$ifcargs .= "wepkey " . escapeshellarg("{$i}:{$wepkey['value']}") . " ";
@@ -308,12 +303,12 @@ function interfaces_wireless_configure($if, $wlcfg)
 	} else 	{
 		$ifcargs .= "wepmode off ";
 	}
-	
+
 	if (strstr($if, "ath")) {
 		if ($wlcfg['standard'])
 			$ifcargs .= "mode {$wlcfg['standard']} ";
 	}
-	
+
 	switch ($wlcfg['mode']) {
 		case 'hostap':
 			if (strstr($if, "ath")) {
@@ -343,11 +338,11 @@ function interfaces_wireless_configure($if, $wlcfg)
 			}
 			break;
 	}
-	
+
 	$ifcargs .= "up";
-	
+
 	mwexec("/sbin/ifconfig " . $ifcargs);
-	
+
 	return 0;
 }
 
