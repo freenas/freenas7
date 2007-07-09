@@ -412,9 +412,6 @@ usr/bin/sed
 # wall -- write a message to users (repuired by shutdown)
 usr/bin/wall
 
-# pccardc -- PC-CARD (PCMCIA) management and monitoring tool
-usr/sbin/pccardc
-
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
