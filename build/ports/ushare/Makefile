@@ -6,11 +6,8 @@ MASTER_SITES=	http://ushare.geexbox.org/releases/
 MAINTAINER=	votdev@gmx.de
 COMMENT=	A lightweight UPnP (TM) A/V Media Server
 
-# Overwrite upnp
-FORCE_PKG_REGISTER?=
-
-BUILD_DEPENDS=	upnp.2:${.CURDIR}/../upnp:reinstall \
-								iconv:${PORTSDIR}/converters/libiconv
+LIB_DEPENDS=		upnp.2:${.CURDIR}/../upnp:install
+BUILD_DEPENDS=	iconv:${PORTSDIR}/converters/libiconv
 
 USE_BZIP2=			yes
 GNU_CONFIGURE=	yes
