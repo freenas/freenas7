@@ -676,7 +676,13 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Ports\" \\
 		port=`basename $s`
 		desc=`cat $s/pkg-descr`
 		state=`cat $s/pkg-state`
-		echo "\"$port\" \"$desc\" $state \\" >> $tempfile
+		case ${state} in
+			[hH][iI][dD][eE])
+				;;
+			*)
+				echo "\"$port\" \"$desc\" $state \\" >> $tempfile;
+				;;
+		esac
 	done
 
 	# Display list of available ports.
