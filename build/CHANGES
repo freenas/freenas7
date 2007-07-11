@@ -21,6 +21,9 @@ Majors changes:
 - Upgrade iscsi_initiator to 2.0.92
 - New language: Bulgarian (Thanks to Boris)
 - Upgrade ushare to 1.0 (XBOX fix, added PS3 support, added DLNA compliant profile)
+- Improve Samba shares administration.
+    + It is possible to create multiple shares for a mount point.
+    + Add new option 'Inherit permissions' to shares
 
 Minors changes:
 - Enhance build scripts
