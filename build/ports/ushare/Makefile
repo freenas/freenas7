@@ -6,7 +6,7 @@ MASTER_SITES=	http://ushare.geexbox.org/releases/
 MAINTAINER=	votdev@gmx.de
 COMMENT=	A lightweight UPnP (TM) A/V Media Server
 
-LIB_DEPENDS=		upnp.2:${.CURDIR}/../upnp:install
+LIB_DEPENDS=		upnp.2:${.CURDIR}/../upnp146:install
 BUILD_DEPENDS=	iconv:${PORTSDIR}/converters/libiconv
 
 USE_BZIP2=			yes
