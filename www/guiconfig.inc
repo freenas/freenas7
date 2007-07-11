@@ -355,8 +355,6 @@ function iscsiinit_sort() {
 	usort($config['iscsiinit']['vdisk'], "iscsiinitcmp");
 }
 
-
-
 function users_sort() {
 	global $g, $config;
 
@@ -385,5 +383,15 @@ function groups_sort() {
 	}
 
 	usort($config['access']['group'], "groupscmp");
+}
+
+function share_sort() {
+	global $config;
+
+	function sharecmp($a, $b) {
+		return strcmp($a['name'], $b['name']);
+	}
+
+	usort($config['samba']['share'], "sharecmp");
 }
 ?>

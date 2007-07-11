@@ -38,12 +38,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"),gettext("CIFS"),gettext("Shares"));
 
-if(!is_array($config['mounts']['mount']))
-	$config['mounts']['mount'] = array();
+if(!is_array($config['samba']['share']))
+	$config['samba']['share'] = array();
 
-mount_sort();
+share_sort();
 
-$a_mount = &$config['mounts']['mount'];
+$a_share = &$config['samba']['share'];
 
 if($_POST) {
 	$pconfig = $_POST;
@@ -65,9 +65,17 @@ if($_POST) {
 		}
 	}
 }
-if($_GET['act'] == "ret") {
-  header("Location: services_samba_share.php");
-  exit;
+
+if ($_GET['act'] == "del") {
+	if ($a_share[$_GET['id']]) {
+		unset($a_share[$_GET['id']]);
+
+		write_config();
+		touch($d_smbshareconfdirty_path);
+
+		header("Location: services_samba_share.php");
+		exit;
+	}
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -90,23 +98,30 @@ if($_GET['act'] == "ret") {
         <?php endif; ?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="40%" class="listhdrr"><?=gettext("Share Name");?></td>
-            <td width="25%" class="listhdrr"><?=gettext("Description");?></td>
+            <td width="40%" class="listhdrr"><?=gettext("Name");?></td>
+            <td width="25%" class="listhdrr"><?=gettext("Comment");?></td>
             <td width="25%" class="listhdrr"><?=gettext("Browseable");?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($a_mount as $mountv): ?>
+  			  <?php $i = 0; foreach($a_share as $sharev):?>
           <tr>
-            <td class="listr"><?=htmlspecialchars($mountv['sharename']);?>&nbsp;</td>
-            <td class="listr"><?=htmlspecialchars($mountv['desc']);?>&nbsp;</td>
-            <td class="listbg"><?=htmlspecialchars((is_array($config['samba']['hidemount']) && in_array($mountv['sharename'],$config['samba']['hidemount']))?gettext("No"):gettext("Yes"));?></td>
+            <td class="listr"><?=htmlspecialchars($sharev['name']);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
+            <td class="listbg"><?=htmlspecialchars(isset($sharev['browseable'])?gettext("Yes"):gettext("No"));?></td>
             <td valign="middle" nowrap class="list">
               <?php if(isset($config['samba']['enable']))
               echo("<a href='services_samba_share_edit.php?id={$i}'><img src='e.gif' title='" . gettext("Edit share") . "' width='17' height='17' border='0'></a>");
+              echo("<a href='services_samba_share_edit.php?act=del&id={$i}'' onclick='return confirm('" . gettext("Do you really want to delete this share?") . "')'><img src='x.gif' title='" . gettext("Delete share") . "' width='17' height='17' border='0'></a>");
               ?>
             </td>
           </tr>
-          <?php $i++; endforeach; ?>
+          <?php $i++; endforeach;?>
+          <?php if(isset($config['samba']['enable'])):?>
+          <tr> 
+            <td class="list" colspan="3"></td>
+            <td class="list"><a href="services_samba_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" width="17" height="17" border="0"></a></td>
+          </tr>
+          <?php endif;?>
         </table>
       </form>
     </td>

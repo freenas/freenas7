@@ -159,10 +159,10 @@ create_conf()
 			-o "passdb backend = smbpasswd" -n \
 		-b \
 		-n \
-		-m "//mounts/mount" \
-			-v "concat('[',sharename,']')" -n \
-			-v "concat('comment = ',desc)" -n \
-			-v "concat('path = /mnt/',sharename)" -n \
+		-m "//samba/share" \
+			-v "concat('[',name,']')" -n \
+			-v "concat('comment = ',comment)" -n \
+			-v "concat('path = ',path)" -n \
 			-o "writeable = yes" -n \
 			-o "printable = no" -n \
 			-o "veto files = /.snap/" -n \
@@ -176,8 +176,11 @@ create_conf()
 			-i "//samba/security[. = 'user']" \
 				-o "guest ok = no" -n \
 			-b \
-			-i "contains(//samba/hidemount,sharename)" \
+			-i "count(browseable) = 0" \
 				-o "browseable = no" -n \
+			-b \
+			-i "count(inheritpermissions) > 0" \
+				-o "inherit permissions = yes" -n \
 			-b \
 			-i "count(//samba/recyclebin) > 0" \
 				-o "vfs objects = recycle" -n \
