@@ -108,65 +108,86 @@ if($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<form action="services_samba_share_edit.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-  	<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
-      <td width="78%" class="vtable">
-        <input name="name" type="text" class="formfld" id="name" size="30" value="<?=htmlspecialchars($pconfig['name']);?>">
-      </td>
-    </tr>
-    <tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Path/Mount point"); ?></td>
-			<td width="78%" class="vtable">
-				<select name="path" class="formfld" id="path">
-				  <?php foreach ($a_mount as $mountv): ?>
-				  <option value="<?="/mnt/{$mountv['sharename']}";?>" <?php if ("/mnt/{$mountv['sharename']}" === "{$pconfig['path']}") echo "selected";?>>
-				  <?php echo "/mnt/{$mountv['sharename']}";?>
-				  </option>
-		  		<?php endforeach; ?>
-		  	</select>
-		  </td>
-		</tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Comment");?></td>
-      <td width="78%" class="vtable">
-        <input name="comment" type="text" class="formfld" id="comment" size="30" value="<?=htmlspecialchars($pconfig['comment']);?>">
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Browseable");?></td>
-      <td width="78%" class="vtable">
-      	<input name="browseable" type="checkbox" id="browseable" value="yes" <?php if ($pconfig['browseable']) echo "checked"; ?>>
-      	<?=gettext("Set browseable");?><span class="vexpl"><br>
-        <?=gettext("This controls whether this share is seen in the list of available shares in a net view and in the browse list.");?>
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Inherit permissions");?></td>
-      <td width="78%" class="vtable">
-        <input name="inheritpermissions" type="checkbox" id="inheritpermissions" value="yes" <?php if ($pconfig['inheritpermissions']) echo "checked"; ?>>
-        <?=gettext("Enable permission inheritance");?><span class="vexpl"><br>
-        <?=gettext("The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user.");?></span>
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Recycle bin");?></td>
-      <td width="78%" class="vtable">
-        <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked"; ?>>
-        <?=gettext("Enable recycle bin");?><br>
-        <span class="vexpl"><?=gettext("This will create a recycle bin on the share.");?></span>
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id]))?gettext("Save"):gettext("Add")?>">
-        <?php if (isset($id) && $a_share[$id]): ?>
-        <input name="id" type="hidden" value="<?=$id;?>">
-        <?php endif; ?>
-      </td>
-    </tr>
-  </table>
-</form>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+				<li class="tabinact"><a href="services_samba.php"><?=gettext("Settings");?></a></li>
+				<li class="tabact"><a href="services_samba_share.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Shares");?></a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+		<td class="tabnavtbl">
+		  <ul id="tabnav">
+				<li class="tabact"><a href="services_samba_share_edit.php?id=<?=$id;?>" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Share");?></a></li>
+		  </ul>
+	  </td>
+	</tr>
+  <tr>
+    <td class="tabcont">
+			<form action="services_samba_share_edit.php" method="post" name="iform" id="iform">
+				<?php if ($input_errors) print_input_errors($input_errors); ?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			  	<tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="name" type="text" class="formfld" id="name" size="30" value="<?=htmlspecialchars($pconfig['name']);?>">
+			      </td>
+			    </tr>
+			    <tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Path/Mount point"); ?></td>
+						<td width="78%" class="vtable">
+							<select name="path" class="formfld" id="path">
+							  <?php foreach ($a_mount as $mountv): ?>
+							  <option value="<?="/mnt/{$mountv['sharename']}";?>" <?php if ("/mnt/{$mountv['sharename']}" === "{$pconfig['path']}") echo "selected";?>>
+							  <?php echo "/mnt/{$mountv['sharename']}";?>
+							  </option>
+					  		<?php endforeach; ?>
+					  	</select>
+					  </td>
+					</tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Comment");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="comment" type="text" class="formfld" id="comment" size="30" value="<?=htmlspecialchars($pconfig['comment']);?>">
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Browseable");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="browseable" type="checkbox" id="browseable" value="yes" <?php if ($pconfig['browseable']) echo "checked"; ?>>
+			      	<?=gettext("Set browseable");?><span class="vexpl"><br>
+			        <?=gettext("This controls whether this share is seen in the list of available shares in a net view and in the browse list.");?>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Inherit permissions");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="inheritpermissions" type="checkbox" id="inheritpermissions" value="yes" <?php if ($pconfig['inheritpermissions']) echo "checked"; ?>>
+			        <?=gettext("Enable permission inheritance");?><span class="vexpl"><br>
+			        <?=gettext("The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user.");?></span>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Recycle bin");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked"; ?>>
+			        <?=gettext("Enable recycle bin");?><br>
+			        <span class="vexpl"><?=gettext("This will create a recycle bin on the share.");?></span>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id]))?gettext("Save"):gettext("Add")?>">
+			        <?php if (isset($id) && $a_share[$id]): ?>
+			        <input name="id" type="hidden" value="<?=$id;?>">
+			        <?php endif; ?>
+			      </td>
+			    </tr>
+			  </table>
+			</form>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc");?>

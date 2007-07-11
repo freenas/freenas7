@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Management"));
+$pgtitle = array(gettext("Disks"),gettext("Management"));
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
@@ -74,7 +74,7 @@ if ($_GET['act'] == "del") {
   <tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">
-				<li class="tabact"><a href="disks_manage.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Manage");?></a></li>
+				<li class="tabact"><a href="disks_manage.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Management");?></a></li>
 				<li class="tabinact"><a href="disks_manage_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
   		</ul>
   	</td>

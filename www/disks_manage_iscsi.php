@@ -78,7 +78,7 @@ if ($_GET['act'] == "del")
 <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-      	<li class="tabinact"><a href="disks_manage.php"><?=gettext("Manage");?></a></li>
+      	<li class="tabinact"><a href="disks_manage.php"><?=gettext("Management");?></a></li>
 				<li class="tabact"><a href="disks_manage_iscsi.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
       </ul>
     </td>

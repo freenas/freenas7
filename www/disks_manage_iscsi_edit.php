@@ -103,49 +103,70 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<form action="disks_manage_iscsi_edit.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-     <tr>
-     <td width="22%" valign="top" class="vncellreq"><?=gettext("Name") ;?></td>
-      <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
-				<br>
-				<?=gettext("This is for information only (not using during iSCSI negociation)."); ?>
-      </td>
-    </tr>
-		<tr>
-     <td width="22%" valign="top" class="vncellreq"><?=gettext("Initiator name") ;?></td>
-      <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="initiatorname" type="text" class="formfld" id="initiatorname" size="40" value="<?=htmlspecialchars($pconfig['initiatorname']);?>">
-				<br>
-				<?=gettext("This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."); ?>
-      </td>
-			</tr>
-	    <tr>
-     <td width="22%" valign="top" class="vncellreq"><?=gettext("Target Name") ;?></td>
-      <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="targetname" type="text" class="formfld" id="targetname" size="40" value="<?=htmlspecialchars($pconfig['targetname']);?>">
-				<br>
-				<?=gettext("This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."); ?>
-      </td>
-    </tr>
-		<tr>
-     <td width="22%" valign="top" class="vncellreq"><?=gettext("Target address") ;?></td>
-      <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="targetaddress" type="text" class="formfld" id="targetaddress" size="20" value="<?=htmlspecialchars($pconfig['targetaddress']);?>">
-				<br>
-				<?=gettext("This the IP address or DNS name of the iSCSI target."); ?>
-      </td>
-    </tr>
-    <tr>
-			<td width="22%" valign="top">&nbsp;</td>
-			<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsiinit[$id]))?gettext("Save"):gettext("Add")?>">
-			<?php if (isset($id) && $a_iscsiinit[$id]): ?>
-				<input name="id" type="hidden" value="<?=$id;?>">
-			<?php endif; ?>
-			</td>
-		</tr>
-  </table>
-</form>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+      	<li class="tabinact"><a href="disks_manage.php"><?=gettext("Management");?></a></li>
+				<li class="tabact"><a href="disks_manage_iscsi.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+		<td class="tabnavtbl">
+		  <ul id="tabnav">
+				<li class="tabact"><a href="disks_manage_iscsi_edit.php?id=<?=$id;?>" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
+		  </ul>
+	  </td>
+	</tr>
+  <tr> 
+    <td class="tabcont">
+			<form action="disks_manage_iscsi_edit.php" method="post" name="iform" id="iform">
+				<?php if ($input_errors) print_input_errors($input_errors); ?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			     <tr>
+			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Name") ;?></td>
+			      <td width="78%" class="vtable">
+			        <?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
+							<br>
+							<?=gettext("This is for information only (not using during iSCSI negociation)."); ?>
+			      </td>
+			    </tr>
+					<tr>
+			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Initiator name") ;?></td>
+			      <td width="78%" class="vtable">
+			        <?=$mandfldhtml;?><input name="initiatorname" type="text" class="formfld" id="initiatorname" size="40" value="<?=htmlspecialchars($pconfig['initiatorname']);?>">
+							<br>
+							<?=gettext("This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."); ?>
+			      </td>
+						</tr>
+				    <tr>
+			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Target Name") ;?></td>
+			      <td width="78%" class="vtable">
+			        <?=$mandfldhtml;?><input name="targetname" type="text" class="formfld" id="targetname" size="40" value="<?=htmlspecialchars($pconfig['targetname']);?>">
+							<br>
+							<?=gettext("This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."); ?>
+			      </td>
+			    </tr>
+					<tr>
+			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Target address") ;?></td>
+			      <td width="78%" class="vtable">
+			        <?=$mandfldhtml;?><input name="targetaddress" type="text" class="formfld" id="targetaddress" size="20" value="<?=htmlspecialchars($pconfig['targetaddress']);?>">
+							<br>
+							<?=gettext("This the IP address or DNS name of the iSCSI target."); ?>
+			      </td>
+			    </tr>
+			    <tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsiinit[$id]))?gettext("Save"):gettext("Add")?>">
+						<?php if (isset($id) && $a_iscsiinit[$id]): ?>
+							<input name="id" type="hidden" value="<?=$id;?>">
+						<?php endif; ?>
+						</td>
+					</tr>
+			  </table>
+			</form>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc"); ?>
