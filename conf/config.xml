@@ -201,6 +201,7 @@
 			<comment>xxx</comment>
 			<browseable/>
 			<inheritpermissions/>
+			<recyclebin/>
 		</share>
 		-->
 	</samba>

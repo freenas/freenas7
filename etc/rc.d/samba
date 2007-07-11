@@ -182,7 +182,7 @@ create_conf()
 			-i "count(inheritpermissions) > 0" \
 				-o "inherit permissions = yes" -n \
 			-b \
-			-i "count(//samba/recyclebin) > 0" \
+			-i "count(recyclebin) > 0" \
 				-o "vfs objects = recycle" -n \
 				-o "recycle:keeptree = yes" -n \
 				-o "recycle:versions = yes" -n \

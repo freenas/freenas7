@@ -1,5 +1,5 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	services_samba_share_edit.php
 	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
@@ -8,21 +8,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -61,12 +61,14 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['comment'] = $a_share[$id]['comment'];
 	$pconfig['browseable'] = isset($a_share[$id]['browseable']);
 	$pconfig['inheritpermissions'] = isset($a_share[$id]['inheritpermissions']);
+	$pconfig['recyclebin'] = isset($a_share[$id]['recyclebin']);
 } else {
 	$pconfig['name'] = "";
 	$pconfig['path'] = "";
 	$pconfig['comment'] = "";
 	$pconfig['browseable'] = true;
 	$pconfig['inheritpermissions'] = true;
+	$pconfig['recyclebin'] = false;
 }
 
 if($_POST) {
@@ -90,6 +92,7 @@ if($_POST) {
 		$share['comment'] = $_POST['comment'];
 		$share['browseable'] = $_POST['browseable'] ? true : false;
 		$share['inheritpermissions'] = $_POST['inheritpermissions'] ? true : false;
+		$share['recyclebin'] = $_POST['recyclebin'] ? true : false;
 
 		if (isset($id) && $a_share[$id])
 			$a_share[$id] = $share;
@@ -110,7 +113,7 @@ if($_POST) {
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
   	<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
-      <td width="78%" class="vtable"> 
+      <td width="78%" class="vtable">
         <input name="name" type="text" class="formfld" id="name" size="30" value="<?=htmlspecialchars($pconfig['name']);?>">
       </td>
     </tr>
@@ -128,7 +131,7 @@ if($_POST) {
 		</tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Comment");?></td>
-      <td width="78%" class="vtable"> 
+      <td width="78%" class="vtable">
         <input name="comment" type="text" class="formfld" id="comment" size="30" value="<?=htmlspecialchars($pconfig['comment']);?>">
       </td>
     </tr>
@@ -148,14 +151,22 @@ if($_POST) {
         <?=gettext("The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user.");?></span>
       </td>
     </tr>
-    <tr> 
+    <tr>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Recycle bin");?></td>
+      <td width="78%" class="vtable">
+        <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked"; ?>>
+        <?=gettext("Enable recycle bin");?><br>
+        <span class="vexpl"><?=gettext("This will create a recycle bin on the share.");?></span>
+      </td>
+    </tr>
+    <tr>
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id]))?gettext("Save"):gettext("Add")?>"> 
+      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id]))?gettext("Save"):gettext("Add")?>">
         <?php if (isset($id) && $a_share[$id]): ?>
-        <input name="id" type="hidden" value="<?=$id;?>"> 
+        <input name="id" type="hidden" value="<?=$id;?>">
         <?php endif; ?>
       </td>
     </tr>
   </table>
 </form>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

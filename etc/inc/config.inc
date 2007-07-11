@@ -745,11 +745,13 @@ function convert_config() {
 					$share['browseable'] = false;
 			}
 			$share['inheritpermissions'] = true;
+			$share['recyclebin'] = isset($config['samba']['recyclebin']);
 
 			$config['samba']['share'][] = $share;
 		}
 
 		unset($config['samba']['hidemount']);
+		unset($config['samba']['recyclebin']);
 
 		$config['version'] = "2.2";
 	}

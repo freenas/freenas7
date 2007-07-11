@@ -59,7 +59,6 @@ $pconfig['loglevel'] = $config['samba']['loglevel'];
 $pconfig['sndbuf'] = $config['samba']['sndbuf'];
 $pconfig['rcvbuf'] = $config['samba']['rcvbuf'];
 $pconfig['enable'] = isset($config['samba']['enable']);
-$pconfig['recyclebin'] = isset($config['samba']['recyclebin']);
 $pconfig['largereadwrite'] = isset($config['samba']['largereadwrite']);
 $pconfig['easupport'] = isset($config['samba']['easupport']);
 $pconfig['readahead'] = isset($config['samba']['readahead']);
@@ -103,7 +102,6 @@ if ($_POST)
 		$config['samba']['loglevel'] = $_POST['loglevel'];
 		$config['samba']['sndbuf'] = $_POST['sndbuf'];
 		$config['samba']['rcvbuf'] = $_POST['rcvbuf'];
-		$config['samba']['recyclebin'] = $_POST['recyclebin'] ? true : false;
 		$config['samba']['largereadwrite'] = $_POST['largereadwrite'] ? true : false;
 		$config['samba']['easupport'] = $_POST['easupport'] ? true : false;
 		$config['samba']['readahead'] = $_POST['readahead'] ? true : false;
@@ -147,7 +145,6 @@ function enable_change(enable_change) {
 	document.iform.loglevel.disabled = endis;
 	document.iform.sndbuf.disabled = endis;
 	document.iform.rcvbuf.disabled = endis;
-	document.iform.recyclebin.disabled = endis;
 	document.iform.security.disabled = endis;
 	document.iform.largereadwrite.disabled = endis;
 	document.iform.easupport.disabled = endis;
@@ -303,14 +300,6 @@ function authentication_change() {
               <br><?=gettext("WINS Server IP address."); ?>
             </td>
   				</tr>
-  				<tr>
-            <td width="22%" valign="top" class="vncell"><?=gettext("Recycle Bin");?></td>
-            <td width="78%" class="vtable">
-              <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked"; ?>>
-              <?=gettext("Enable Recycle bin");?><br>
-              <span class="vexpl"><?=gettext("This will create a recycle bin on the CIFS shares.");?></span>
-            </td>
-          </tr>
           <tr>
 			      <td colspan="2" class="list" height="12"></td>
 			    </tr>
