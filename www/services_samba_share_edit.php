@@ -119,7 +119,9 @@ if($_POST) {
 			<td width="78%" class="vtable">
 				<select name="path" class="formfld" id="path">
 				  <?php foreach ($a_mount as $mountv): ?>
-				  <option value="<?=$mountv['sharename'];?>" <?php if ($mountv['sharename'] === $pconfig['path']) echo "selected";?>><?php echo htmlspecialchars($mountv['sharename']);?></option>
+				  <option value="<?="/mnt/{$mountv['sharename']}";?>" <?php if ("/mnt/{$mountv['sharename']}" === "{$pconfig['path']}") echo "selected";?>>
+				  <?php echo "/mnt/{$mountv['sharename']}";?>
+				  </option>
 		  		<?php endforeach; ?>
 		  	</select>
 		  </td>

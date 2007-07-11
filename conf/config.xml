@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>2.1</version>
+	<version>2.2</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -195,6 +195,13 @@
 		// createmask and directorymask can be used to overwrite default values when security=share 
 		<createmask>0666</createmask>
 		<directorymask>0777</directorymask>
+		<share>
+			<name>xxx</name>
+			<path>/mnt/xxx</path>
+			<comment>xxx</comment>
+			<browseable/>
+			<inheritpermissions/>
+		</share>
 		-->
 	</samba>
 	<ftp>

@@ -731,6 +731,29 @@ function convert_config() {
 		$config['version'] = "2.1";
 	}
 
+	/* Convert 2.1 -> 2.2 */
+	/* Remove //system/harddiskstandby */
+	if ($config['version'] === "2.1") {
+		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
+			$share = array();
+			$share['name'] = $config['mounts']['mount'][$i]['sharename'];
+			$share['path'] = "/mnt/{$config['mounts']['mount'][$i]['sharename']}";
+			$share['comment'] = $config['mounts']['mount'][$i]['desc'];
+			$share['browseable'] = true;
+			if (is_array($config['samba']['hidemount'])) {
+				if (in_array($config['mounts']['mount'][$i]['sharename'],$config['samba']['hidemount']))
+					$share['browseable'] = false;
+			}
+			$share['inheritpermissions'] = true;
+
+			$config['samba']['share'][] = $share;
+		}
+
+		unset($config['samba']['hidemount']);
+
+		$config['version'] = "2.2";
+	}
+
 	write_config();
 
 	if (is_booting())
