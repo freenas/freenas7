@@ -109,31 +109,45 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<form action="access_users_groups_edit.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-      <tr> 
-        <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
-        <td width="78%" class="vtable"> 
-          <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>"><br>
-					<?=gettext("Group name.");?>
-				</td>
-			</tr>
-			<tr>
-        <td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
-        <td width="78%" class="vtable"> 
-          <input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"><br>
-					<?=gettext("Group description.");?>
-				</td>
-			</tr>
-			<tr> 
-        <td width="22%" valign="top">&nbsp;</td>
-        <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>"> 
-          <?php if (isset($id) && $a_group[$id]): ?>
-          <input name="id" type="hidden" value="<?=$id;?>"> 
-          <?php endif; ?>
-        </td>
-      </tr>
-  	</table>
-</form>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+		<td class="tabnavtbl">
+  		<ul id="tabnav">
+    		<li class="tabinact"><a href="access_users.php"><?=gettext("Users");?></a></li>
+    		<li class="tabact"><a href="access_users_groups.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Groups");?></a></li>
+  		</ul>
+  	</td>
+	</tr>
+  <tr> 
+    <td class="tabcont">
+			<form action="access_users_groups_edit.php" method="post" name="iform" id="iform">
+				<?php if ($input_errors) print_input_errors($input_errors); ?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+		      <tr> 
+		        <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
+		        <td width="78%" class="vtable"> 
+		          <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>"><br>
+							<?=gettext("Group name.");?>
+						</td>
+					</tr>
+					<tr>
+		        <td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
+		        <td width="78%" class="vtable"> 
+		          <input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"><br>
+							<?=gettext("Group description.");?>
+						</td>
+					</tr>
+					<tr> 
+		        <td width="22%" valign="top">&nbsp;</td>
+		        <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>"> 
+		          <?php if (isset($id) && $a_group[$id]): ?>
+		          <input name="id" type="hidden" value="<?=$id;?>"> 
+		          <?php endif; ?>
+		        </td>
+		      </tr>
+		  	</table>
+			</form>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc"); ?>
