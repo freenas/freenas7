@@ -138,13 +138,6 @@ if ($_POST) {
   		</ul>
   	</td>
 	</tr>
-	<tr>
-		<td class="tabnavsubtbl">
-		  <ul id="tabnav">
-				<li class="tabact"><a href="system_routes_edit.php?id=<?=$id;?>" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Static route");?></a></li>
-		  </ul>
-	  </td>
-	</tr>
   <tr>
     <td class="tabcont">
       <form action="system_routes_edit.php" method="post" name="iform" id="iform">

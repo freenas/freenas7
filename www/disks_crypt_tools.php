@@ -101,18 +101,18 @@ if(isset($_GET['action'])) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($nohttps_errors) print_error_box($nohttps_errors); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="disks_crypt.php"><?=gettext("Manage");?></a></li>
+        <li class="tabinact"><a href="disks_crypt.php"><?=gettext("Management");?></a></li>
         <li class="tabact"><a href="disks_crypt_tools.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Tools");?></a></li>
       </ul>
     </td>
   </tr>
   <tr> 
     <td class="tabcont">
+    	<?php if ($nohttps_errors) print_error_box($nohttps_errors); ?>
       <?php if ($input_errors) print_input_errors($input_errors); ?>
 			<form action="disks_crypt_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">

@@ -118,13 +118,6 @@ if($_POST) {
     </td>
   </tr>
   <tr>
-		<td class="tabnavsubtbl">
-		  <ul id="tabnav">
-				<li class="tabact"><a href="services_samba_share_edit.php?id=<?=$id;?>" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Share");?></a></li>
-		  </ul>
-	  </td>
-	</tr>
-  <tr>
     <td class="tabcont">
 			<form action="services_samba_share_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>

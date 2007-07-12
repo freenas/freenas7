@@ -110,13 +110,6 @@ if ($_POST) {
     </td>
   </tr>
   <tr>
-		<td class="tabnavsubtbl">
-		  <ul id="tabnav">
-				<li class="tabact"><a href="system_advanced_rcstartup_edit.php?id=<?=$id;?>&type=<?=$type;?>" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Command");?></a></li>
-		  </ul>
-	  </td>
-	</tr>
-  <tr>
     <td class="tabcont">
 			<form action="system_advanced_rcstartup_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>

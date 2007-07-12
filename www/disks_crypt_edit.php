@@ -218,101 +218,115 @@ if (!isset($do_crypt)) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($nodisk_errors) print_input_errors($nodisk_errors); ?>
-<?php if ($nohttps_errors) print_error_box($nohttps_errors); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<form action="disks_crypt_edit.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr> 
-      <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
-      <td class="vtable">            
-				<select name="disk" class="formfld" id="disk">
-				<?php foreach ($a_alldisk as $diskval): ?>
-				<?php if (strcmp($diskval['size'],"NA") == 0) continue; ?>
-    			<?php if ((strcmp($diskval['fstype'],"softraid")==0)) continue;?> 	  
-				<?php if ((strcmp($diskval['fstype'],"geli")==0)) continue;?>
-   				<option value="<?=$diskval['fullname'];?>" <?php if ($pconfig['disk'] == $diskval['fullname']) echo "selected";?>> 
-   				<?php echo htmlspecialchars($diskval['name'] . ": " .$diskval['size'] . " (" . $diskval['desc'] . ")");	?>
-   				</option>
-    		<?php endforeach; ?>
-    		</select>
-      </td>
-    </tr>  
-<?php 
-/* Remove Data Intergrity Algorithhm : there is a bug when enabled 	
-     <tr> 
-      <td valign="top" class="vncellreq"><?=gettext("Data integrity algorithm") ; ?></td>
-      <td class="vtable"> 
-        <select name="aalgo" class="formfld" id="aalgo">
-					<option value="none" <?php if ($pconfig['aalgo'] == "none") echo "selected"; ?>>none</option>
-          <option value="HMAC/MD5" <?php if ($pconfig['aalgo'] == "HMAC/MD5") echo "selected"; ?>>HMAC/MD5</option>
-          <option value="HMAC/SHA1" <?php if ($pconfig['aalgo'] == "HMAC/SHA1") echo "selected"; ?>>HMAC/SHA1</option>
-          <option value="HMAC/RIPEMD160" <?php if ($pconfig['aalgo'] == "HMAC/RIPEMD160") echo "selected"; ?>>HMAC/RIPEMD160</option>
-          <option value="HMAC/SHA256" <?php if ($pconfig['aalgo'] == "HMAC/SHA256") echo "selected"; ?>>HMAC/SHA256</option>
-          <option value="HMAC/SHA384" <?php if ($pconfig['aalgo'] == "HMAC/SHA384") echo "selected"; ?>>HMAC/SHA384</option>
-          <option value="HMAC/SHA512" <?php if ($pconfig['aalgo'] == "HMAC/SHA512") echo "selected"; ?>>HMAC/SHA512</option>
-        </select>
-      </td>
-    </tr>
-*/
-?>
-    <tr> 
-      <td valign="top" class="vncellreq"><?=gettext("Encryption algorithm") ;?></td>
-      <td class="vtable"> 
-        <select name="ealgo" class="formfld" id="ealgo">
-          <option value="AES" <?php if ($pconfig['ealgo'] == "AES") echo "selected"; ?>>AES</option>
-          <option value="Blowfish" <?php if ($pconfig['ealgo'] == "Blowfish") echo "selected"; ?>>Blowfish</option>
-          <option value="3DES" <?php if ($pconfig['ealgo'] == "3DES") echo "selected"; ?>>3DES</option> 
-        </select>
-      </td>
-    </tr>
-		<tr> 
-	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Passphrase") ;?></td>
-	    <td width="78%" class="vtable">
-	      <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
-	      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)
-	    </td>
-		</tr>
-    <tr> 
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Init and encrypt disk");?>" onclick="return confirm('<?=gettext("Do you really want to initialize and encrypt this disk? All data will be lost!");?>')">
-      </td>
-    </tr>
-		<tr>
-			<td valign="top" colspan="2">
-			<? if ($do_crypt)
-			{
-				echo("<strong>".gettext("Disk initialization and encryption").":</strong>");
-				echo('<pre>');
-				ob_end_flush();
-
-				// Initialize and encrypt the disk.
-				echo gettext("Encrypting... Please wait")."!\n";
-				if( 0 == strcmp($aalgo,"none")) {
-					system("/sbin/geli init -X {$passphrase} -v -e {$ealgo} {$disk}");
-				}
-				else {
-					system("/sbin/geli init -X {$passphrase} -v -a {$aalgo} -e {$ealgo} {$disk}");
-				}
-
-				// Attach the disk.
-				echo(gettext("Attaching...")."\n");
-				$gelifullname = "$disk" . ".eli";
-				$result = disks_geli_attach($gelifullname,$passphrase,true);
-				echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
-
-				echo('</pre>');
-			}
-			?>
-			</td>
-		</tr>
-    <tr> 
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
-        </strong></span><?=gettext("This will erase ALL data on your disk!<br>Using Data integrity will reduce size of available storage and also reduce speed.");?></span>
-      </td>
-    </tr>
-  </table>
-</form>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+        <li class="tabact"><a href="disks_crypt.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Management");?></a></li>
+        <li class="tabinact"><a href="disks_crypt_tools.php"><?=gettext("Tools");?></a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr> 
+    <td class="tabcont">
+			<form action="disks_crypt_edit.php" method="post" name="iform" id="iform">
+				<?php if ($nodisk_errors) print_input_errors($nodisk_errors); ?>
+				<?php if ($nohttps_errors) print_error_box($nohttps_errors); ?>
+				<?php if ($input_errors) print_input_errors($input_errors); ?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr> 
+			      <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
+			      <td class="vtable">            
+							<select name="disk" class="formfld" id="disk">
+							<?php foreach ($a_alldisk as $diskval): ?>
+							<?php if (strcmp($diskval['size'],"NA") == 0) continue; ?>
+			    			<?php if ((strcmp($diskval['fstype'],"softraid")==0)) continue;?> 	  
+							<?php if ((strcmp($diskval['fstype'],"geli")==0)) continue;?>
+			   				<option value="<?=$diskval['fullname'];?>" <?php if ($pconfig['disk'] == $diskval['fullname']) echo "selected";?>> 
+			   				<?php echo htmlspecialchars($diskval['name'] . ": " .$diskval['size'] . " (" . $diskval['desc'] . ")");	?>
+			   				</option>
+			    		<?php endforeach; ?>
+			    		</select>
+			      </td>
+			    </tr>  
+					<?php 
+					/* Remove Data Intergrity Algorithhm : there is a bug when enabled 	
+					<tr> 
+						<td valign="top" class="vncellreq"><?=gettext("Data integrity algorithm");?></td>
+			      <td class="vtable">
+			        <select name="aalgo" class="formfld" id="aalgo">
+								<option value="none" <?php if ($pconfig['aalgo'] == "none") echo "selected"; ?>>none</option>
+			          <option value="HMAC/MD5" <?php if ($pconfig['aalgo'] == "HMAC/MD5") echo "selected"; ?>>HMAC/MD5</option>
+			          <option value="HMAC/SHA1" <?php if ($pconfig['aalgo'] == "HMAC/SHA1") echo "selected"; ?>>HMAC/SHA1</option>
+			          <option value="HMAC/RIPEMD160" <?php if ($pconfig['aalgo'] == "HMAC/RIPEMD160") echo "selected"; ?>>HMAC/RIPEMD160</option>
+			          <option value="HMAC/SHA256" <?php if ($pconfig['aalgo'] == "HMAC/SHA256") echo "selected"; ?>>HMAC/SHA256</option>
+			          <option value="HMAC/SHA384" <?php if ($pconfig['aalgo'] == "HMAC/SHA384") echo "selected"; ?>>HMAC/SHA384</option>
+			          <option value="HMAC/SHA512" <?php if ($pconfig['aalgo'] == "HMAC/SHA512") echo "selected"; ?>>HMAC/SHA512</option>
+			        </select>
+			      </td>
+			    </tr>
+					*/
+					?>
+			    <tr> 
+			      <td valign="top" class="vncellreq"><?=gettext("Encryption algorithm") ;?></td>
+			      <td class="vtable"> 
+			        <select name="ealgo" class="formfld" id="ealgo">
+			          <option value="AES" <?php if ($pconfig['ealgo'] == "AES") echo "selected"; ?>>AES</option>
+			          <option value="Blowfish" <?php if ($pconfig['ealgo'] == "Blowfish") echo "selected"; ?>>Blowfish</option>
+			          <option value="3DES" <?php if ($pconfig['ealgo'] == "3DES") echo "selected"; ?>>3DES</option> 
+			        </select>
+			      </td>
+			    </tr>
+					<tr> 
+				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Passphrase") ;?></td>
+				    <td width="78%" class="vtable">
+				      <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
+				      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)
+				    </td>
+					</tr>
+			    <tr> 
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Init and encrypt disk");?>" onclick="return confirm('<?=gettext("Do you really want to initialize and encrypt this disk? All data will be lost!");?>')">
+			      </td>
+			    </tr>
+					<tr>
+						<td valign="top" colspan="2">
+						<? if ($do_crypt)
+						{
+							echo("<strong>".gettext("Disk initialization and encryption").":</strong>");
+							echo('<pre>');
+							ob_end_flush();
+			
+							// Initialize and encrypt the disk.
+							echo gettext("Encrypting... Please wait")."!\n";
+							if( 0 == strcmp($aalgo,"none")) {
+								system("/sbin/geli init -X {$passphrase} -v -e {$ealgo} {$disk}");
+							}
+							else {
+								system("/sbin/geli init -X {$passphrase} -v -a {$aalgo} -e {$ealgo} {$disk}");
+							}
+			
+							// Attach the disk.
+							echo(gettext("Attaching...")."\n");
+							$gelifullname = "$disk" . ".eli";
+							$result = disks_geli_attach($gelifullname,$passphrase,true);
+							echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
+			
+							echo('</pre>');
+						}
+						?>
+						</td>
+					</tr>
+			    <tr> 
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
+			        </strong></span><?=gettext("This will erase ALL data on your disk!<br>Using Data integrity will reduce size of available storage and also reduce speed.");?></span>
+			      </td>
+			    </tr>
+			  </table>
+			</form>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc"); ?>
