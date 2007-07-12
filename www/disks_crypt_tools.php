@@ -64,7 +64,7 @@ if ($_POST) {
 	$reqdfields = explode(" ", "fullname action");
 	$reqdfieldsn = array(gettext("Disk Name"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
+
 	$mount_fullname=$_POST['fullname']."s1";
 	if (disks_ismounted_ex($mount_fullname,"fullname") && ($_POST['action']== "detach")) {
 		$input_errors[] = gettext("This encrypted disk is mounted, umount it before trying to detach it.");
@@ -110,7 +110,7 @@ if(isset($_GET['action'])) {
       </ul>
     </td>
   </tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
     	<?php if ($nohttps_errors) print_error_box($nohttps_errors); ?>
       <?php if ($input_errors) print_input_errors($input_errors); ?>
@@ -127,7 +127,7 @@ if(isset($_GET['action'])) {
               </select>
             </td>
       		</tr>
-					<tr> 
+					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Passphrase") ;?></td>
 						<td width="78%" class="vtable">
 							<input name="password" type="password" class="formfld" id="password" size="20">
@@ -135,7 +135,7 @@ if(isset($_GET['action'])) {
 					</tr>
           <tr>
             <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
-            <td class="vtable"> 
+            <td class="vtable">
 							<select name="action" class="formfld" id="action">
                 <option value="attach" <?php if ($action == "attach") echo "selected"; ?>>attach</option>
                 <option value="detach" <?php if ($action == "detach") echo "selected"; ?>>detach</option>
@@ -206,4 +206,4 @@ if(isset($_GET['action'])) {
     </form>
   </td></tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

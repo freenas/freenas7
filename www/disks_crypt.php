@@ -5,21 +5,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -68,9 +68,9 @@ if ($_GET['act'] == "del")
 			/*Remove the 'geli' fstype of the original disk
 			BEGIN OF A COPY/PAST of the disks_crypt_edit.php file
 			The should be a more clean way */
-			
+
 			$disk = $a_geli[$_GET['id']]['name'];
-			
+
 			if (!is_array($config['disks']['disk']))
 				$config['disks']['disk'] = array();
 
@@ -96,7 +96,7 @@ if ($_GET['act'] == "del")
 			$a_gstripe = &$config['gstripe']['vdisk'];
 			$a_graid5 = &$config['graid5']['vdisk'];
 			$a_gvinum = &$config['gvinum']['vdisk'];
-			
+
 			/* Get the id of the disk array entry. */
 			$NotFound = 1;
 			$id = array_search_ex($disk, $a_disk, "name");
@@ -153,7 +153,7 @@ if ($_GET['act'] == "del")
  				$a_gvinum[$id]['fstype']="";
 				$NotFound = 0;
 			}
-			
+
 			/* End of COPY/PAST */
 			// Del the geli volume on the config file
 			unset($a_geli[$_GET['id']]);
@@ -186,7 +186,7 @@ if ($_GET['act'] == "ret")
       </ul>
     </td>
   </tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
       <form action="disks_crypt.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
@@ -226,7 +226,7 @@ if ($_GET['act'] == "ret")
             </td>
           </tr>
           <?php $i++; endforeach; ?>
-          <tr> 
+          <tr>
             <td class="list" colspan="4"></td>
             <td class="list"><a href="disks_crypt_edit.php"><img src="plus.gif" title="<?=gettext("Create encrypted volume");?>" width="17" height="17" border="0"></a></td>
 			    </tr>
@@ -235,4 +235,4 @@ if ($_GET['act'] == "ret")
 	  </td>
   </tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	disks_crypt_edit.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -125,14 +125,14 @@ if ($_POST) {
 		$geli['fullname'] = "$disk" . ".eli";
 		$geli['desc'] = "Encrypted disk";
 		$passphrase = $_POST['password'];
-		$type = "geli";	
-		
-		/* Check if disk is mounted. */ 
+		$type = "geli";
+
+		/* Check if disk is mounted. */
 		if(disks_ismounted_ex($disk,"fullname")) {
 			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
 			$do_crypt = false;
 		}
-		
+
 		if ($do_crypt) {
 			/* Get the id of the disk array entry. */
 			$NotFound = 1;
@@ -227,31 +227,31 @@ if (!isset($do_crypt)) {
       </ul>
     </td>
   </tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
 			<form action="disks_crypt_edit.php" method="post" name="iform" id="iform">
 				<?php if ($nodisk_errors) print_input_errors($nodisk_errors); ?>
 				<?php if ($nohttps_errors) print_error_box($nohttps_errors); ?>
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr> 
+			    <tr>
 			      <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
-			      <td class="vtable">            
+			      <td class="vtable">
 							<select name="disk" class="formfld" id="disk">
 							<?php foreach ($a_alldisk as $diskval): ?>
 							<?php if (strcmp($diskval['size'],"NA") == 0) continue; ?>
-			    			<?php if ((strcmp($diskval['fstype'],"softraid")==0)) continue;?> 	  
+			    			<?php if ((strcmp($diskval['fstype'],"softraid")==0)) continue;?>
 							<?php if ((strcmp($diskval['fstype'],"geli")==0)) continue;?>
-			   				<option value="<?=$diskval['fullname'];?>" <?php if ($pconfig['disk'] == $diskval['fullname']) echo "selected";?>> 
+			   				<option value="<?=$diskval['fullname'];?>" <?php if ($pconfig['disk'] == $diskval['fullname']) echo "selected";?>>
 			   				<?php echo htmlspecialchars($diskval['name'] . ": " .$diskval['size'] . " (" . $diskval['desc'] . ")");	?>
 			   				</option>
 			    		<?php endforeach; ?>
 			    		</select>
 			      </td>
-			    </tr>  
-					<?php 
-					/* Remove Data Intergrity Algorithhm : there is a bug when enabled 	
-					<tr> 
+			    </tr>
+					<?php
+					/* Remove Data Intergrity Algorithhm : there is a bug when enabled
+					<tr>
 						<td valign="top" class="vncellreq"><?=gettext("Data integrity algorithm");?></td>
 			      <td class="vtable">
 			        <select name="aalgo" class="formfld" id="aalgo">
@@ -267,24 +267,24 @@ if (!isset($do_crypt)) {
 			    </tr>
 					*/
 					?>
-			    <tr> 
+			    <tr>
 			      <td valign="top" class="vncellreq"><?=gettext("Encryption algorithm") ;?></td>
-			      <td class="vtable"> 
+			      <td class="vtable">
 			        <select name="ealgo" class="formfld" id="ealgo">
 			          <option value="AES" <?php if ($pconfig['ealgo'] == "AES") echo "selected"; ?>>AES</option>
 			          <option value="Blowfish" <?php if ($pconfig['ealgo'] == "Blowfish") echo "selected"; ?>>Blowfish</option>
-			          <option value="3DES" <?php if ($pconfig['ealgo'] == "3DES") echo "selected"; ?>>3DES</option> 
+			          <option value="3DES" <?php if ($pconfig['ealgo'] == "3DES") echo "selected"; ?>>3DES</option>
 			        </select>
 			      </td>
 			    </tr>
-					<tr> 
+					<tr>
 				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Passphrase") ;?></td>
 				    <td width="78%" class="vtable">
 				      <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
 				      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)
 				    </td>
 					</tr>
-			    <tr> 
+			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
 							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Init and encrypt disk");?>" onclick="return confirm('<?=gettext("Do you really want to initialize and encrypt this disk? All data will be lost!");?>')">
@@ -297,7 +297,7 @@ if (!isset($do_crypt)) {
 							echo("<strong>".gettext("Disk initialization and encryption").":</strong>");
 							echo('<pre>');
 							ob_end_flush();
-			
+
 							// Initialize and encrypt the disk.
 							echo gettext("Encrypting... Please wait")."!\n";
 							if( 0 == strcmp($aalgo,"none")) {
@@ -306,19 +306,19 @@ if (!isset($do_crypt)) {
 							else {
 								system("/sbin/geli init -X {$passphrase} -v -a {$aalgo} -e {$ealgo} {$disk}");
 							}
-			
+
 							// Attach the disk.
 							echo(gettext("Attaching...")."\n");
 							$gelifullname = "$disk" . ".eli";
 							$result = disks_geli_attach($gelifullname,$passphrase,true);
 							echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
-			
+
 							echo('</pre>');
 						}
 						?>
 						</td>
 					</tr>
-			    <tr> 
+			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
 			        </strong></span><?=gettext("This will erase ALL data on your disk!<br>Using Data integrity will reduce size of available storage and also reduce speed.");?></span>
@@ -329,4 +329,4 @@ if (!isset($do_crypt)) {
 		</td>
 	</tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

@@ -112,7 +112,7 @@ if ($_POST) {
       </ul>
     </td>
   </tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
 			<form action="disks_manage_iscsi_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
@@ -162,4 +162,4 @@ if ($_POST) {
 		</td>
 	</tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
