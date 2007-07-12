@@ -121,53 +121,79 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($nodisk_errors) print_input_errors($nodisk_errors); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<form action="disks_raid_graid5_edit.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-      <td valign="top" class="vncellreq"><?=gettext("Raid name");?></td>
-      <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
-      </td>
-    </tr>
-    <tr>
-      <td valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
-      <td width="78%" class="vtable">
-      RAID 5 (<?=gettext("rotated block-interleaved parity"); ?>)
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Members of this volume");?></td>
-      <td width="78%" class="vtable">
-      <?
-        $i=0;
-        $disable_script="";
-        foreach ($a_disk as $diskv) {
-          $r_name="";
-          foreach($all_raid as $raid) {
-            if (in_array($diskv['fullname'],(array)$raid['diskr'])) {
-              $r_name=$raid['name'];
-              if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
-              break;
-            }
-          }
-          echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[fullname]'".
-               ((is_array($pconfig['diskr']) && in_array($diskv['fullname'],$pconfig['diskr']))?" checked":"").
-               ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
-          $i++;
-        }
-        if ($disable_script) echo "<script language='javascript'><!--\n$disable_script--></script>\n";
-      ?>
-    </tr>
-    <tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>">
-        <?php if (isset($id) && $a_raid[$id]): ?>
-        <input name="id" type="hidden" value="<?=$id;?>">
-        <?php endif; ?>
-      </td>
-    </tr>
-  </table>
-</form>
-<?php include("fend.inc"); ?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+		<td class="tabnavtbl">
+		  <ul id="tabnav">
+				<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("JBOD"); ?> </a></li>
+				<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("RAID 0"); ?></a></li>
+				<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("RAID 1"); ?></a></li>
+				<li class="tabact"><a href="disks_raid_graid5.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("RAID 5");?></a></li>
+				<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?> </a></li>
+		  </ul>
+	  </td>
+	</tr>
+  <tr>
+		<td class="tabnavtbl">
+		  <ul id="tabnav">
+				<li class="tabact"><a href="disks_raid_graid5.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Manage RAID");?></a></li>
+				<li class="tabinact"><a href="disks_raid_graid5_tools.php"><?=gettext("Tools"); ?></a></li>
+				<li class="tabinact"><a href="disks_raid_graid5_info.php"><?=gettext("Information"); ?></a></li>
+		  </ul>
+	  </td>
+	</tr>
+  <tr>
+    <td class="tabcont">
+			<form action="disks_raid_graid5_edit.php" method="post" name="iform" id="iform">
+				<?php if ($nodisk_errors) print_input_errors($nodisk_errors); ?>
+				<?php if ($input_errors) print_input_errors($input_errors); ?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr>
+			      <td valign="top" class="vncellreq"><?=gettext("Raid name");?></td>
+			      <td width="78%" class="vtable">
+			        <?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
+			      </td>
+			    </tr>
+			    <tr>
+			      <td valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
+			      <td width="78%" class="vtable">
+			      RAID 5 (<?=gettext("rotated block-interleaved parity"); ?>)
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Members of this volume");?></td>
+			      <td width="78%" class="vtable">
+			      <?
+			        $i=0;
+			        $disable_script="";
+			        foreach ($a_disk as $diskv) {
+			          $r_name="";
+			          foreach($all_raid as $raid) {
+			            if (in_array($diskv['fullname'],(array)$raid['diskr'])) {
+			              $r_name=$raid['name'];
+			              if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
+			              break;
+			            }
+			          }
+			          echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[fullname]'".
+			               ((is_array($pconfig['diskr']) && in_array($diskv['fullname'],$pconfig['diskr']))?" checked":"").
+			               ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
+			          $i++;
+			        }
+			        if ($disable_script) echo "<script language='javascript'><!--\n$disable_script--></script>\n";
+			      ?>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>">
+			        <?php if (isset($id) && $a_raid[$id]): ?>
+			        <input name="id" type="hidden" value="<?=$id;?>">
+			        <?php endif; ?>
+			      </td>
+			    </tr>
+			  </table>
+			</form>
+		</td>
+	</tr>
+</table>
+<?php include("fend.inc");?>

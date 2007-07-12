@@ -5,21 +5,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -82,23 +82,26 @@ if ($_GET['act'] == "del") {
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("JBOD"); ?></a></li> 
-	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("RAID 0"); ?> </a></li>
-	<li class="tabact"><a href="disks_raid_gmirror.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("RAID 1");?></a></li>
-	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("RAID 5"); ?></a></li> 
-	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?> </a></li>
-  </ul>
-  </td></tr>
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-	<li class="tabact"><a href="disks_raid_gmirror.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Manage RAID");?></a></li>
-	<li class="tabinact"><a href="disks_raid_gmirror_tools.php"><?=gettext("Tools"); ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gmirror_info.php"><?=gettext("Information"); ?></a></li>
-  </ul>
-  </td></tr>
-  
+  <tr>
+		<td class="tabnavtbl">
+		  <ul id="tabnav">
+				<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("JBOD"); ?></a></li>
+				<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("RAID 0"); ?> </a></li>
+				<li class="tabact"><a href="disks_raid_gmirror.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("RAID 1");?></a></li>
+				<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("RAID 5"); ?></a></li>
+				<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?> </a></li>
+		  </ul>
+	  </td>
+	</tr>
+  <tr>
+		<td class="tabnavtbl">
+		  <ul id="tabnav">
+				<li class="tabact"><a href="disks_raid_gmirror.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Manage RAID");?></a></li>
+				<li class="tabinact"><a href="disks_raid_gmirror_tools.php"><?=gettext("Tools"); ?></a></li>
+				<li class="tabinact"><a href="disks_raid_gmirror_info.php"><?=gettext("Information"); ?></a></li>
+		  </ul>
+	  </td>
+	</tr>
   <tr>
     <td class="tabcont">
 <form action="disks_raid_gmirror.php" method="post">
@@ -131,11 +134,10 @@ if ($_GET['act'] == "del") {
 						echo gettext("Configuring");
 					else
 						{
-						$tempo=$raid['name'];						
+						$tempo=$raid['name'];
 						echo "{$raidstatus[$tempo]['size']}";
 						}?>&nbsp;
                   </td>
-                 </td>
                    <td class="listbg">
                    <?php
                     if ($raidconfiguring)
@@ -150,12 +152,14 @@ if ($_GET['act'] == "del") {
                      &nbsp;<a href="disks_raid_gmirror.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" width="17" height="17" border="0"></a></td>
 				</tr>
 			  <?php $i++; endforeach; ?>
-                <tr> 
+                <tr>
                   <td class="list" colspan="4"></td>
                   <td class="list"> <a href="disks_raid_gmirror_edit.php"><img src="plus.gif" title="<?=gettext("Add RAID");?>" width="17" height="17" border="0"></a></td>
 				</tr>
               </table>
             </form>
 <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"), "disks_manage.php", "COMPLETE");?></p>
-</td></tr></table>
-<?php include("fend.inc"); ?>
+		</td>
+	</tr>
+</table>
+<?php include("fend.inc");?>
