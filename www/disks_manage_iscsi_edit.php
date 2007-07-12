@@ -113,7 +113,7 @@ if ($_POST) {
     </td>
   </tr>
   <tr>
-		<td class="tabnavtbl">
+		<td class="tabnavsubtbl">
 		  <ul id="tabnav">
 				<li class="tabact"><a href="disks_manage_iscsi_edit.php?id=<?=$id;?>" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
 		  </ul>

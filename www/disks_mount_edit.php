@@ -247,7 +247,7 @@ function type_change() {
     </td>
   </tr>
   <tr>
-		<td class="tabnavtbl">
+		<td class="tabnavsubtbl">
 		  <ul id="tabnav">
 				<li class="tabact"><a href="disks_mount_edit.php?id=<?=$id;?>" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Mount Point");?></a></li>
 		  </ul>

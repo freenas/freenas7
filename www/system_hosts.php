@@ -72,40 +72,53 @@ if ($_GET['act'] == "del") {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<form action="system_hosts.php" method="post">
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<?php if (file_exists($d_hostsdirty_path)): ?><p>
-<?php print_info_box_np(gettext("The host list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
-<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
-<?php endif; ?>
-              <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td width="25%" class="listhdrr"><?=gettext("Hostname");?></td>
-                  <td width="30%" class="listhdrr"><?=gettext("IP address");?></td>
-                  <td width="35%" class="listhdr"><?=gettext("Description");?></td>
-                  <td width="10%" class="list"></td>
-				</tr>
-			  <?php $i = 0; foreach ($a_hosts as $host): ?>
-                <tr>
-                  <td class="listlr">
-                    <?=htmlspecialchars($host['name']);?>
-                  </td>
-                  <td class="listr">
-                    <?=htmlspecialchars($host['address']);?>
-                  </td>
-                  <td class="listbg">
-                    <?=htmlspecialchars($host['descr']);?>&nbsp;
-                  </td>
-                  <td valign="middle" nowrap class="list"> <a href="system_hosts_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" width="17" height="17" border="0"></a>
-                     &nbsp;<a href="system_hosts.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" width="17" height="17" border="0"></a></td>
-				</tr>
-			  <?php $i++; endforeach; ?>
-                <tr> 
-                  <td class="list" colspan="3"></td>
-                  <td class="list"> <a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" width="17" height="17" border="0"></a></td>
-				</tr>
-              </table>
-            </form>
-<p><span class="vexpl"><span class="red"><strong>Note:<br>
-                </strong></span><?=gettext("Define an host name can be useful for NFS.");?></span></p>
-<?php include("fend.inc"); ?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+		<td class="tabnavtbl">
+  		<ul id="tabnav">
+				<li class="tabact"><a href="system_hosts.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Hosts");?></a></li>
+  		</ul>
+  	</td>
+	</tr>
+  <tr>
+    <td class="tabcont">
+			<form action="system_hosts.php" method="post">
+				<?php if ($savemsg) print_info_box($savemsg); ?>
+				<?php if (file_exists($d_hostsdirty_path)): ?><p>
+				<?php print_info_box_np(gettext("The host list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+				<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+				<?php endif; ?>
+			  <table width="100%" border="0" cellpadding="0" cellspacing="0">
+			    <tr>
+			      <td width="25%" class="listhdrr"><?=gettext("Hostname");?></td>
+			      <td width="30%" class="listhdrr"><?=gettext("IP address");?></td>
+			      <td width="35%" class="listhdr"><?=gettext("Description");?></td>
+			      <td width="10%" class="list"></td>
+					</tr>
+					<?php $i = 0; foreach ($a_hosts as $host): ?>
+					<tr>
+						<td class="listlr"><?=htmlspecialchars($host['name']);?></td>
+						<td class="listr"><?=htmlspecialchars($host['address']);?></td>
+						<td class="listbg"><?=htmlspecialchars($host['descr']);?>&nbsp;</td>
+						<td valign="middle" nowrap class="list">
+							<a href="system_hosts_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Host");?>" width="17" height="17" border="0"></a>
+							<a href="system_hosts.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this host?");?>')"><img src="x.gif" title="<?=gettext("Delete Host");?>" width="17" height="17" border="0"></a>
+						</td>
+					</tr>
+				  <?php $i++; endforeach; ?>
+					<tr> 
+						<td class="list" colspan="3"></td>
+						<td class="list"> <a href="system_hosts_edit.php"><img src="plus.gif" title="<?=gettext("Add Host");?>" width="17" height="17" border="0"></a></td>
+					</tr>
+				</table>
+			</form>
+			<p>
+				<span class="vexpl">
+					<span class="red"><strong>Note:<br></strong></span>
+					<?=gettext("Define an host name can be useful for NFS.");?>
+				</span>
+			</p>
+		</td>
+	</tr>
+</table>
+<?php include("fend.inc");?>

@@ -70,46 +70,55 @@ if ($_GET['act'] == "del") {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<form action="system_routes.php" method="post">
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<?php if (file_exists($d_staticroutesdirty_path)): ?><p>
-<?php print_info_box_np(gettext("The static route configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
-<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
-<?php endif; ?>
-              <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td width="15%" class="listhdrr"><?=gettext("Interface");?></td>
-                  <td width="25%" class="listhdrr"><?=gettext("Network");?></td>
-                  <td width="20%" class="listhdrr"><?=gettext("Gateway");?></td>
-                  <td width="30%" class="listhdr"><?=gettext("Description");?></td>
-                  <td width="10%" class="list"></td>
-				</tr>
-			  <?php $i = 0; foreach ($a_routes as $route): ?>
-                <tr>
-                  <td class="listlr">
-                    <?php
-				  $iflabels = array('lan' => 'LAN', 'wan' => 'WAN', 'pptp' => 'PPTP');
-				  for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++)
-				  	$iflabels['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
-				  echo htmlspecialchars($iflabels[$route['interface']]); ?>
-                  </td>
-                  <td class="listr">
-                    <?=strtolower($route['network']);?>
-                  </td>
-                  <td class="listr">
-                    <?=strtolower($route['gateway']);?>
-                  </td>
-                  <td class="listbg">
-                    <?=htmlspecialchars($route['descr']);?>&nbsp;
-                  </td>
-                  <td valign="middle" nowrap class="list"> <a href="system_routes_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Route");?>" width="17" height="17" border="0"></a>
-                     &nbsp;<a href="system_routes.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this route?");?>')"><img src="x.gif" title="<?=gettext("Delete Route");?>" width="17" height="17" border="0"></a></td>
-				</tr>
-			  <?php $i++; endforeach; ?>
-                <tr> 
-                  <td class="list" colspan="4"></td>
-                  <td class="list"> <a href="system_routes_edit.php"><img src="plus.gif" title="<?=gettext("Add Route");?>" width="17" height="17" border="0"></a></td>
-				</tr>
-              </table>
-            </form>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+		<td class="tabnavtbl">
+  		<ul id="tabnav">
+				<li class="tabact"><a href="system_routes.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Static routes");?></a></li>
+  		</ul>
+  	</td>
+	</tr>
+  <tr>
+    <td class="tabcont">
+			<form action="system_routes.php" method="post">
+				<?php if ($savemsg) print_info_box($savemsg); ?>
+				<?php if (file_exists($d_staticroutesdirty_path)): ?><p>
+				<?php print_info_box_np(gettext("The static route configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+				<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+				<?php endif; ?>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="15%" class="listhdrr"><?=gettext("Interface");?></td>
+						<td width="25%" class="listhdrr"><?=gettext("Network");?></td>
+						<td width="20%" class="listhdrr"><?=gettext("Gateway");?></td>
+						<td width="30%" class="listhdr"><?=gettext("Description");?></td>
+						<td width="10%" class="list"></td>
+					</tr>
+					<?php $i = 0; foreach ($a_routes as $route): ?>
+					<tr>
+						<td class="listlr">
+							<?php
+					  	$iflabels = array('lan' => 'LAN', 'wan' => 'WAN', 'pptp' => 'PPTP');
+					  	for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++)
+					  	$iflabels['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
+					  	echo htmlspecialchars($iflabels[$route['interface']]); ?>
+						</td>
+	          <td class="listr"><?=strtolower($route['network']);?></td>
+	          <td class="listr"><?=strtolower($route['gateway']);?></td>
+	          <td class="listbg"><?=htmlspecialchars($route['descr']);?>&nbsp;</td>
+	          <td valign="middle" nowrap class="list">
+							<a href="system_routes_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit Route");?>" width="17" height="17" border="0"></a>
+	          	<a href="system_routes.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this route?");?>')"><img src="x.gif" title="<?=gettext("Delete Route");?>" width="17" height="17" border="0"></a>
+						</td>
+					</tr>
+				  <?php $i++; endforeach; ?>
+					<tr> 
+						<td class="list" colspan="4"></td>
+						<td class="list"> <a href="system_routes_edit.php"><img src="plus.gif" title="<?=gettext("Add Route");?>" width="17" height="17" border="0"></a></td>
+					</tr>
+				</table>
+      </form>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc"); ?>

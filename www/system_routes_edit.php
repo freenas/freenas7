@@ -33,17 +33,17 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"), gettext("Static routes"), gettext("Edit"));
+$id = $_GET['id'];
+if (isset($_POST['id']))
+	$id = $_POST['id'];
+
+$pgtitle = array(gettext("System"),gettext("Static routes"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['staticroutes']['route']))
 	$config['staticroutes']['route'] = array();
 
 staticroutes_sort();
 $a_routes = &$config['staticroutes']['route'];
-
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
 
 if (isset($id) && $a_routes[$id]) {
 	$pconfig['interface'] = $a_routes[$id]['interface'];
@@ -130,55 +130,76 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-            <form action="system_routes_edit.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Interface");?></td>
-                  <td width="78%" class="vtable">
-					<select name="interface" class="formfld">
-                      <?php $interfaces = array('lan' => 'LAN');
-					  for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
-					  	$interfaces['opt' . $i] = $config['interfaces']['opt' . $i]['descr'];
-					  }
-					  foreach ($interfaces as $iface => $ifacename): ?>
-                      <option value="<?=$iface;?>" <?php if ($iface == $pconfig['interface']) echo "selected"; ?>> 
-                      <?=htmlspecialchars($ifacename);?>
-                      </option>
-                      <?php endforeach; ?>
-                    </select> <br>
-                    <span class="vexpl"><?=gettext("Choose which interface this route applies to.");?></span></td>
-                </tr>
-                <tr>
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Destination network");?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> 
-				  / 
-                     <input name="network_subnet" type="text" class="formfld" id="network_subnet" size="2" value="<?=htmlspecialchars($pconfig['network_subnet']);?>">
-				
-				     <br> <span class="vexpl"><?=gettext("Destination network for this static route");?></span></td>
-                </tr>
-				<tr>
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Gateway");?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="40" value="<?=htmlspecialchars($pconfig['gateway']);?>">
-                    <br> <span class="vexpl"><?=gettext("Gateway to be used to reach the destination network");?></span></td>
-                </tr>
-				<tr>
-                  <td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
-                  <td width="78%" class="vtable"> 
-                    <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
-                    <br> <span class="vexpl"><?=gettext("You may enter a description here for your reference (not parsed).");?></span></td>
-                </tr>
-                <tr>
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
-                    <?php if (isset($id) && $a_routes[$id]): ?>
-                    <input name="id" type="hidden" value="<?=$id;?>">
-                    <?php endif; ?>
-                  </td>
-                </tr>
-              </table>
-</form>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+		<td class="tabnavtbl">
+  		<ul id="tabnav">
+				<li class="tabact"><a href="system_routes.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Static routes");?></a></li>
+  		</ul>
+  	</td>
+	</tr>
+	<tr>
+		<td class="tabnavsubtbl">
+		  <ul id="tabnav">
+				<li class="tabact"><a href="system_routes_edit.php?id=<?=$id;?>" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Static route");?></a></li>
+		  </ul>
+	  </td>
+	</tr>
+  <tr>
+    <td class="tabcont">
+      <form action="system_routes_edit.php" method="post" name="iform" id="iform">
+      	<?php if ($input_errors) print_input_errors($input_errors); ?>
+        <table width="100%" border="0" cellpadding="6" cellspacing="0">
+          <tr> 
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Interface");?></td>
+            <td width="78%" class="vtable">
+							<select name="interface" class="formfld">
+                <?php $interfaces = array('lan' => 'LAN');
+							  for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
+							  	$interfaces['opt' . $i] = $config['interfaces']['opt' . $i]['descr'];
+							  }
+							  foreach ($interfaces as $iface => $ifacename): ?>
+                <option value="<?=$iface;?>" <?php if ($iface == $pconfig['interface']) echo "selected"; ?>> 
+                <?=htmlspecialchars($ifacename);?>
+                </option>
+                <?php endforeach; ?>
+            	</select> <br>
+              <span class="vexpl"><?=gettext("Choose which interface this route applies to.");?></span>
+						</td>
+          </tr>
+          <tr>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Destination network");?></td>
+            <td width="78%" class="vtable"> 
+							<?=$mandfldhtml;?><input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> 
+							/
+							<input name="network_subnet" type="text" class="formfld" id="network_subnet" size="2" value="<?=htmlspecialchars($pconfig['network_subnet']);?>">
+							<br><span class="vexpl"><?=gettext("Destination network for this static route");?></span>
+						</td>
+          </tr>
+					<tr>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Gateway");?></td>
+            <td width="78%" class="vtable"> 
+              <?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="40" value="<?=htmlspecialchars($pconfig['gateway']);?>">
+              <br> <span class="vexpl"><?=gettext("Gateway to be used to reach the destination network");?></span></td>
+          </tr>
+					<tr>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
+            <td width="78%" class="vtable"> 
+              <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
+              <br> <span class="vexpl"><?=gettext("You may enter a description here for your reference (not parsed).");?></span></td>
+          </tr>
+          <tr>
+            <td width="22%" valign="top">&nbsp;</td>
+            <td width="78%"> 
+              <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_routes[$id]))?gettext("Save"):gettext("Add")?>">
+              <?php if (isset($id) && $a_routes[$id]): ?>
+              <input name="id" type="hidden" value="<?=$id;?>">
+              <?php endif; ?>
+            </td>
+          </tr>
+        </table>
+			</form>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc"); ?>
