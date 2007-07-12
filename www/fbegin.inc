@@ -107,17 +107,20 @@ function display_menu($menu) {
 		$span_id = "span".rand(); # Create unique id.
 		$icon_id = "icon".rand(); # Create unique id.
 		if (call_user_func($menu['is_expanded_func'])) {
-			echo "<a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\"><img src='/tri_o.gif' id='{$icon_id}' width='14' height='10' border='0'></a><strong><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\" class='navlnk'>".gettext($menu['desc'])."</a></strong><br>";
-			echo "<span id='{$span_id}'>";
+			echo "<li><h1><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\"><img src='/tri_o.gif' id='{$icon_id}' width='14' height='10' border='0'></a><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\">".gettext($menu['desc'])."</a></h1>\n";
+			echo "<span id='{$span_id}'>\n";
 		} else {
-			echo "<a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\"><img src='/tri_c.gif' id='{$icon_id}' width='14' height='10' border='0'></a><strong><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\" class='navlnk'>".gettext($menu['desc'])."</a></strong><br>";
-			echo "<span id='{$span_id}' style='display: none'>";
+			echo "<li><h1><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\"><img src='/tri_c.gif' id='{$icon_id}' width='14' height='10' border='0'></a><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\">".gettext($menu['desc'])."</a></h1>\n";
+			echo "<span id='{$span_id}' style='display: none'>\n";
 		}
 	}
 	else {
 		# Display menu section description only.
-		echo "<strong>".gettext($menu['desc'])."</strong><br>";
+		echo "<li><h1>".gettext($menu['desc'])."</h1>\n";
 	}
+
+	# Open new navigation layer.
+	echo "<ul>\n";
 
 	# Display menu items.
 	foreach( $menu['menuitem'] as $menuk => $menuv) {
@@ -126,12 +129,15 @@ function display_menu($menu) {
 			continue;
 		}
 		# Display menuitem.
-		echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='".$menuv['link']."' class='navlnk' title='".gettext($menuv['desc'])."'>".gettext($menuv['desc'])."</a><br>";
+		echo "<li><a href='".$menuv['link']."' title='".gettext($menuv['desc'])."'>".gettext($menuv['desc'])."</a></li>\n";
 	}
+
+	# Close navigation layer.
+	echo "</ul></li>\n";
 
 	# Is menu expandable?
 	if ($menu['expandable']) {
-		echo "</span>";
+		echo "</span>\n";
 	}
 }
 ?>
@@ -190,32 +196,35 @@ function showhideMenu(tspan, tri) {
     <td width="150" bgcolor="#9D9D9D">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
         <tr>
-          <td><span class="navlnk"><font color="#FFFFFF">
-						<?=display_menu($menu['system']);?>
-		  			<?=display_menu($menu['interfaces']);?>
-						<?=display_menu($menu['disks']);?>
-						<?=display_menu($menu['services']);?>
-						<?=display_menu($menu['access']);?>
-						<?=display_menu($menu['status']);?>
-						<?php
-						/* extensions section */
-						if (is_dir("{$g['www_path']}/ext")):
-						?>
-						<strong><?=gettext("Extensions");?></strong><br>
-						<?php
-						$dh = @opendir("{$g['www_path']}/ext");
-						if ($dh) {
-							while (($extd = readdir($dh)) !== false) {
-								if (($extd === ".") || ($extd === ".."))
-									continue;
-								@include("{$g['www_path']}/ext/" . $extd . "/menu.inc");
+          <td>
+          	<ul id="navigation">
+							<?=display_menu($menu['system']);?>
+			  			<?=display_menu($menu['interfaces']);?>
+							<?=display_menu($menu['disks']);?>
+							<?=display_menu($menu['services']);?>
+							<?=display_menu($menu['access']);?>
+							<?=display_menu($menu['status']);?>
+							<?php
+							/* extensions section */
+							if (is_dir("{$g['www_path']}/ext")):
+							?>
+							<li><h1><?=gettext("Extensions");?></h1>
+							<?php
+							$dh = @opendir("{$g['www_path']}/ext");
+							if ($dh) {
+								while (($extd = readdir($dh)) !== false) {
+									if (($extd === ".") || ($extd === ".."))
+										continue;
+									@include("{$g['www_path']}/ext/" . $extd . "/menu.inc");
+								}
+								closedir($dh);
 							}
-							closedir($dh);
-						}
-						endif;
-						?>
-						<?=display_menu($menu['diagnostics']);?>
-			  	</font></span></td>
+							?>
+							</li>
+							<?php endif;?>
+							<?=display_menu($menu['diagnostics']);?>
+			  		</ul>
+					</td>
         </tr>
 			</table>
 		</td>

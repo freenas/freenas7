@@ -74,18 +74,38 @@ pre {
 .vexpl {
 	font-size: 11px;
 }
+ul#navigation {
+	color: #FFFFFF;
+	background-color: #9D9D9D;
+	font-size: 13px;
+	padding-left: 0px;
+	text-decoration: none;
+}
+ul#navigation h1 {
+	color: #FFFFFF;
+	font-size: 13px;
+	margin: 0 0 0 0;
+}
+ul#navigation li {
+	list-style: none;
+	text-decoration: none;
+}
+ul#Navigation li ul {
+	margin: 0 0 0 1em;
+	padding: 0;
+	text-decoration: none;
+}
+ul#navigation a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+ul#navigation a:hover {
+	color: #FFFFFF;
+	background-color: gray;
+	text-decoration: none;
+}
 a {
 	text-decoration: none;
-}
-.navlnk {
-	color: #FFFFFF;
-	text-decoration: none;
-	font-size: 13px;
-}
-.navlnks {
-	color: #FFFFFF;
-	text-decoration: none;
-	font-size: 11px;
 }
 .tblnk {
 	color: #FFFFFF;
