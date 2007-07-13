@@ -1920,8 +1920,10 @@ NSWS		3049/udp
 sj3		3086/tcp   #SJ3 (kanji input)
 vmodem		3141/tcp
 vmodem		3141/udp
-iscsi-target	3260/tcp   # iSCSI port
-iscsi-target	3260/udp   # iSCSI port
+# FreeNAS =============================================================
+iscsi			3260/tcp   # iSCSI port
+iscsi			3260/udp   # iSCSI port
+# FreeNAS =============================================================
 ccmail		3264/tcp   #cc:mail/lotus
 ccmail		3264/udp   #cc:mail/lotus
 dec-notes	3333/tcp   #DEC Notes
@@ -2114,7 +2116,3 @@ wnn4_Tw		22321/tcp  wnn6_Tw	#Wnn4 (Taiwanse input)
 wnn6_DS		26208/tcp  #Wnn6 (Dserver)
 dbbrowse	47557/tcp  #Databeam Corporation
 dbbrowse	47557/udp  #Databeam Corporation
-# FreeNAS =============================================================
-iscsi			3260/tcp   # iSCSI port
-iscsi			3260/udp   # iSCSI port
-# FreeNAS =============================================================
