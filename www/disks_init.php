@@ -348,8 +348,8 @@ function fstype_change() {
     <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Don't Erase MBR"); ?></td>
       <td width="78%" class="vtable">
-        <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes" >
-        <?=gettext("Don't erase the MBR (useful for some RAID controller cards)"); ?><br>
+        <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes">
+        <?=gettext("Don't erase the MBR (useful for some RAID controller cards)");?>
 			</td>
 	  </tr>
 		<tr>

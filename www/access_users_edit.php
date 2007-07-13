@@ -196,14 +196,15 @@ if ($_POST) {
 					<tr>
 					  <td width="22%" valign="top" class="vncell"><?=gettext("Full Shell") ;?></td>
 					  <td width="78%" class="vtable">
-					  <input name="fullshell" type="checkbox" value="yes" <?php if ($pconfig['fullshell']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
-					  <br><?=gettext("Give full shell to user");?></td>
+					  	<input name="fullshell" type="checkbox" value="yes" <?php if ($pconfig['fullshell']) echo "checked"; ?> onClick="enable_change(false)">
+							<?=gettext("Give full shell to user");?>
+						</td>
 				  </tr>
 					<tr>
 					  <td width="22%" valign="top" class="vncell"><?=gettext("Administrator") ;?></td>
 					  <td width="78%" class="vtable">
-						  <input name="admin" type="checkbox" value="yes" <?php if ($pconfig['admin']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
-						  <br><?=gettext("Put user in the administrator group");?>
+						  <input name="admin" type="checkbox" value="yes" <?php if ($pconfig['admin']) echo "checked"; ?> onClick="enable_change(false)">
+							<?=gettext("Put user in the administrator group");?>
 						</td>
           </tr>
 					<?php if (isset($id) && $a_user[$id]): ?>
