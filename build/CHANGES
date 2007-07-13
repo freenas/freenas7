@@ -71,13 +71,6 @@ NEED TO BE TESTED:
 - IPv6: auto mode is not tested
 - All services using IPv6 address (NFS, FTP, etc...)
 
-Knowns Bugs to be fixed before to release the 0.685b:
-- iscsi-target crash:
- ***ERROR*** getaddrinfo: servname not supported for ai_socktype
- ***ERROR*** iscsi_sock_establish() failed
-Tips: http://www.ducea.com/2006/09/11/error-servname-not-supported-for-ai_socktype/
-But adding iscsi-target to /etc/services doesn't solve the problem
-
 - netatalk VFS samba module (automatically enabled when netatalk started) crash samba when acces to share
 - Need to write a online-test procedure
 

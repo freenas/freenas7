@@ -2114,3 +2114,7 @@ wnn4_Tw		22321/tcp  wnn6_Tw	#Wnn4 (Taiwanse input)
 wnn6_DS		26208/tcp  #Wnn6 (Dserver)
 dbbrowse	47557/tcp  #Databeam Corporation
 dbbrowse	47557/udp  #Databeam Corporation
+# FreeNAS =============================================================
+iscsi			3260/tcp   # iSCSI port
+iscsi			3260/udp   # iSCSI port
+# FreeNAS =============================================================
