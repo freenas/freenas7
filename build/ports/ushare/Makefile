@@ -1,20 +1,12 @@
-PORTNAME=	ushare
+PORTNAME=			ushare
 PORTVERSION=	1.0
-CATEGORIES=	net
-MASTER_SITES=	http://ushare.geexbox.org/releases/
+CATEGORIES=		net
+COMMENT=			A lightweight UPnP (TM) A/V Media Server
+MAINTAINER=		votdev@gmx.de
 
-MAINTAINER=	votdev@gmx.de
-COMMENT=	A lightweight UPnP (TM) A/V Media Server
-
-LIB_DEPENDS=		upnp.2:${.CURDIR}/../upnp146:install
-BUILD_DEPENDS=	iconv:${PORTSDIR}/converters/libiconv
-
-USE_BZIP2=			yes
-GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--with-libiconv-prefix=${LOCALBASE}/lib \
-								--with-libintl-prefix=${LOCALBASE}/lib \
-								--mandir=${LOCALBASE}/man
-USE_GNOME=			pkgconfig
+BUILD_DEPENDS=	ushare:${PORTSDIR}/net/ushare
+# No build is required for this port.
+NO_BUILD?=			1
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/net/ushare/work/ushare-*/src/ushare ${FREENAS_ROOTFS}/usr/local/bin
