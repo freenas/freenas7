@@ -308,8 +308,8 @@ if (!isset($do_crypt)) {
 							}
 
 							// Attach the disk.
-							echo(gettext("Attaching...")."\n");
-							$gelifullname = "$disk" . ".eli";
+							echo(sprintf(gettext("Attaching device '%s'."), $disk) . "<br>");
+							$gelifullname = "{$disk}.eli";
 							$result = disks_geli_attach($gelifullname,$passphrase,true);
 							echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
 

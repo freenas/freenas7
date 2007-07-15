@@ -169,19 +169,17 @@ if(isset($_GET['action'])) {
               switch($action)
               {
                 case "attach":
-                  echo(gettext("Attaching...") . "<br>");
+                  echo(sprintf(gettext("Attaching device '%s'."), $gelifullname) . "<br>");
                   $result = disks_geli_attach($gelifullname,$passphrase);
                   break;
                 case "detach":
-                  echo(gettext("Detaching...") . "<br>");
+                	echo(sprintf(gettext("Detaching device '%s'."), $gelifullname) . "<br>");
                   $result = disks_geli_detach($gelifullname);
                   break;
                 case "list":
-                	echo("<br>");
                 	system("/sbin/geli list");
                 	break;
                 case "status":
-                	echo("<br>");
                 	system("/sbin/geli status");
                 	break;
               }
@@ -190,8 +188,8 @@ if(isset($_GET['action'])) {
               echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
 
 							/* When attaching the disk, then also mount it. */
-							if (("attach" == $action) && $mount) {
-								echo(gettext("\nMounting this disk...") . "<br>");
+							if ((0 == $result) && ("attach" === $action) && ($mount)) {
+								echo("<br>" . gettext("Mounting device.") . "<br>");
 								$result = disks_mount($mount);
 								/* Display result */
 								echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
