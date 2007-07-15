@@ -29,6 +29,7 @@ FreeNAS 0.685b1:
 
 Bug fixs:
 - Update WebGUI to deny using spaces in usernames.
+- Fix bug in /etc/rc.d/userdb when user fullname contains spaces.
 - Fix GELI encryption bug.
 
 FreeNAS 0.685b:
