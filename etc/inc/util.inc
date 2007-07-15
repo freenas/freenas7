@@ -258,9 +258,9 @@ function is_validlogin($login) {
 		return false;
 
 	if (preg_match("/[^a-zA-Z0-9\.\-_]/", $login))
-		return true;
+		return false;
 
-	return false;
+	return true;
 }
 
 /* returns true if $password is a valid password (not used of special : character)*/
