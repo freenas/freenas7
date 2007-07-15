@@ -24,6 +24,13 @@ Help needed:
 - Need help for adding LDAP authentication feature:
 Major services can be easly authenticated using PAM-LDAP, but for Samba too is harder.
 
+FreeNAS 0.685b1:
+----------------
+
+Bug fixs:
+- Fix FTP bug. Spaces in usernames denies users to login into system.
+- Fix GELI encryption bug.
+
 FreeNAS 0.685b:
 ---------------
 
@@ -31,7 +38,7 @@ Majors changes:
 - Add Dynamic DNS service
 - Permit to mount ISO files
 - Add IPv6 support on the WebGUI
-- Upgrade fusefs-libs to 2.6.4 and fusefs-ntfs to 1.417
+- Upgrade fusefs-libs to 2.7.0 and fusefs-ntfs to 1.417
 - Code review from the FreeNAS core engine
 - Upgrade PHP to 5.2.3
 - Upgrade lighttpd to 1.4.15
