@@ -278,7 +278,7 @@ if (!isset($do_crypt)) {
 			      </td>
 			    </tr>
 					<tr>
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Passphrase") ;?></td>
+				    <td width="22%" valign="top" class="vncellreq"><?=htmlentities(gettext("Passphrase"));?></td>
 				    <td width="78%" class="vtable">
 				      <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
 				      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)
@@ -300,11 +300,11 @@ if (!isset($do_crypt)) {
 
 							// Initialize and encrypt the disk.
 							echo gettext("Encrypting... Please wait")."!\n";
-							if( 0 == strcmp($aalgo,"none")) {
-								system("/sbin/geli init -X {$passphrase} -v -e {$ealgo} {$disk}");
+							if (0 == strcmp($aalgo,"none")) {
+								system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init -t -v -e {$ealgo} {$disk}");
 							}
 							else {
-								system("/sbin/geli init -X {$passphrase} -v -a {$aalgo} -e {$ealgo} {$disk}");
+								system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init -t -v -a {$aalgo} -e {$ealgo} {$disk}");
 							}
 
 							// Attach the disk.
@@ -321,7 +321,7 @@ if (!isset($do_crypt)) {
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
-			        </strong></span><?=gettext("This will erase ALL data on your disk!<br>Using Data integrity will reduce size of available storage and also reduce speed.");?></span>
+			        </strong></span><?=htmlentities(gettext("This will erase ALL data on your disk!<br>Using Data integrity will reduce size of available storage and also reduce speed."));?></span>
 			      </td>
 			    </tr>
 			  </table>

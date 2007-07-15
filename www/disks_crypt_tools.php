@@ -128,7 +128,7 @@ if(isset($_GET['action'])) {
             </td>
       		</tr>
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Passphrase") ;?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=htmlentities(gettext("Passphrase"));?></td>
 						<td width="78%" class="vtable">
 							<input name="password" type="password" class="formfld" id="password" size="20">
 						</td>
