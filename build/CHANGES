@@ -28,7 +28,7 @@ FreeNAS 0.685b1:
 ----------------
 
 Bug fixs:
-- Fix FTP bug. Spaces in usernames denies users to login into system.
+- Update WebGUI to deny using spaces in usernames.
 - Fix GELI encryption bug.
 
 FreeNAS 0.685b:
