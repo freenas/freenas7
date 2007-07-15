@@ -79,7 +79,12 @@ do
 	_userpasswd=`/usr/local/bin/xml sel -t -v "//access/user[${_index}]/password" ${configxml_file}`
 
 	# Add user.
-	(/bin/echo ${_userpasswd}) | /usr/sbin/pw add user -h 0 -V /var/etc ${_cmdarg}
+	# Create a script to execute (otherwise pw command missunderstands "fullname").
+	_tmpfile="/tmp/adduser$$"
+	echo "(/bin/echo ${_userpasswd}) | /usr/sbin/pw add user -q -h 0 -V /var/etc ${_cmdarg}" > ${_tmpfile}
+	chmod 0700 ${_tmpfile}
+	eval $_tmpfile
+	rm -f ${_tmpfile}
 
 	_index=$(( ${_index} - 1 ))
 done
