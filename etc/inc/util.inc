@@ -175,7 +175,6 @@ function is_ipv6addr($ipv6addr) {
 
 /* returns true if $ipaddr is a valid dotted IPv4 address, IPv6 or an alias thereof */
 function is_ipaddroralias($ipaddr) {
-
 	global $aliastable;
 
 	if (isset($aliastable[$ipaddr]) && is_ipaddr($aliastable[$ipaddr])) {
@@ -187,7 +186,6 @@ function is_ipaddroralias($ipaddr) {
 
 /* returns true if $ipaddr is a valid dotted IPv4/IPv6 address or any alias */
 function is_ipaddroranyalias($ipaddr) {
-
 	global $aliastable;
 
 	if (isset($aliastable[$ipaddr])) {
@@ -199,7 +197,6 @@ function is_ipaddroranyalias($ipaddr) {
 
 /* returns true if $subnet is a valid subnet in IPv4/IPv6 CIDR format */
 function is_subnet($subnet) {
-
 	if (!is_string($subnet)) {
 		$result = false ;
 	}
@@ -225,13 +222,12 @@ function is_subnet($subnet) {
 
 /* returns true if $subnet is a valid subnet in IPv4/IPv6 CIDR format or an alias thereof */
 function is_subnetoralias($subnet) {
-
 	global $aliastable;
 
 	if (isset($aliastable[$subnet]) && is_subnet($aliastable[$subnet]))
 		return true;
-	else
-		return is_subnet($subnet);
+
+	return is_subnet($subnet);
 }
 
 /* returns true if $hostname is a valid hostname */
@@ -241,63 +237,52 @@ function is_hostname($hostname) {
 
 	if (preg_match("/^[a-z0-9\-]+$/i", $hostname))
 		return true;
-	else
-		return false;
+
+	return false;
 }
 
 /* returns true if $desc is a valid description (alphanum and space, _ , - , .)*/
-function is_validdesc($desc)
-{
-
+function is_validdesc($desc) {
 	if (!is_string($desc))
 		return false;
 
 	if (preg_match("/^[A-Za-z0-9]([A-Za-z0-9_\-\.\s]*[A-Za-z0-9])*$/", $desc))
 		return true;
-	else
-		return false;
+
+	return false;
 }
 
 /* returns true if $login is a valid login name (alphanum,dot, _ , -)*/
-function is_validlogin($login)
-{
-
+function is_validlogin($login) {
 	if (!is_string($login))
 		return false;
 
-	if (preg_match("/^[A-Za-z0-9]([A-Za-z0-9_\-\.\s]*[A-Za-z0-9])*$/", $login))
+	if (preg_match("/[^a-zA-Z0-9\.\-_]/", $login))
 		return true;
 
-	else
-		return false;
+	return false;
 }
 
 /* returns true if $password is a valid password (not used of special : character)*/
-function is_validpassword($password)
-{
-
+function is_validpassword($password) {
 	if (!is_string($password))
 		return false;
 
 	if (strstr($password, ':'))
 			return false;
 
-	else
-		return true;
+	return true;
 }
 
 /* returns true if $login is a valid share name (alphanum,dot, _ , -)*/
-function is_validsharename($sharename)
-{
-
+function is_validsharename($sharename) {
 	if (!is_string($sharename))
 		return false;
 
 	if (preg_match("/^[A-Za-z0-9]([A-Za-z0-9_\-\.\s]*[A-Za-z0-9])*$/", $sharename))
 		return true;
 
-	else
-		return false;
+	return false;
 }
 
 /* returns true if $domain is a valid domain name */
@@ -307,8 +292,8 @@ function is_domain($domain) {
 
 	if (preg_match("/^([a-z0-9\-]+\.?)*$/i", $domain))
 		return true;
-	else
-		return false;
+
+	return false;
 }
 
 /* Returns true if $workgroup is a valid workgroup name */
@@ -321,8 +306,8 @@ function is_workgroup($workgroup) {
 
 	if (preg_match("/^[\w\d]+[\w\d\!\@\#\$\%\^\&\(\)\_\-\;\:\'\"\,\.]*$/", $workgroup))
 		return true;
-	else
-		return false;
+
+	return false;
 }
 
 /* returns true if $macaddr is a valid MAC address */
@@ -348,10 +333,11 @@ function is_macaddr($macaddr) {
 function is_validaliasname($name) {
 	if (!is_string($name))
 		return false;
+
 	if (!preg_match("/[^a-zA-Z0-9]/", $name))
 		return true;
-	else
-		return false;
+
+	return false;
 }
 
 /* returns true if $port is a valid TCP/UDP port */
@@ -361,8 +347,8 @@ function is_port($port) {
 
 	if (($port < 1) || ($port > 65535))
 		return false;
-	else
-		return true;
+
+	return true;
 }
 
 /* returns true if $mtu is a valid MTU size */
@@ -372,8 +358,8 @@ function is_mtu($mtu) {
 
 	if (($mtu < 100) || ($mtu > 9000))
 		return false;
-	else
-		return true;
+
+	return true;
 }
 
 /* Returns true if $mode is a valid file mode mask. */
@@ -383,8 +369,8 @@ function is_filemode($mode) {
 
 	if (($mode < 0) || ($mode > 777))
 		return false;
-	else
-		return true;
+
+	return true;
 }
 
 function get_interface_list() {
