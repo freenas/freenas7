@@ -573,7 +573,7 @@ download_rootfs() {
 
 update_sources() {
 	cd $FREENAS_ROOTDIR
-	svn co https://freenas.svn.sourceforge.net/svnroot/freenas/trunk svn
+	svn co https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.685b svn
 
 	return 0
 }
