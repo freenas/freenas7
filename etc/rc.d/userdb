@@ -5,6 +5,7 @@
 # PROVIDE: userdb
 # BEFORE: CONFIG
 
+. /etc/rc.subr
 . /etc/configxml.subr
 
 # Defaults
@@ -48,7 +49,7 @@ echo "Generating user database(s)."
 cat /dev/null > ${passwd}
 
 # Create the /var/etc/master.passwd file.
-_systempasswd=`/usr/local/bin/xml sel -t -v "//system/password" ${configxml_file}`
+_systempasswd=`configxml_get "//system/password"`
 
 echo "root:${_systempasswd}:0:0::0:0:Charlie &:/root:/bin/tcsh
 toor:*:0:0::0:0:Bourne-again Superuser:/root:
@@ -76,10 +77,10 @@ do
 		-o " -d /mnt" \
 		${configxml_file}`
 
-	_userpasswd=`/usr/local/bin/xml sel -t -v "//access/user[${_index}]/password" ${configxml_file}`
+	_userpasswd=`configxml_get "//access/user[${_index}]/password"`
 
 	# Add user.
-	eval "(/bin/echo ${_userpasswd}) | /usr/sbin/pw add user -h 0 -V /var/etc ${_cmdarg}"
+	eval "(/bin/echo ${_userpasswd}) | /usr/sbin/pw add user -q -h 0 -V /var/etc ${_cmdarg}"
 
 	_index=$(( ${_index} - 1 ))
 done
