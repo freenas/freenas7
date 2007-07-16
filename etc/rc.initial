@@ -7,6 +7,7 @@
 # Modified for FreeNAS (http://www.freenas.org) by Olivier Cochard-Labbe <olivier@freenas.org>
 # Somes lines on this file are taken from pfSense (http://www.pfsense.com/) by Scott Ullrich
 
+. /etc/rc.subr
 . /etc/configxml.subr
 
 # make sure the user can't kill us by pressing Ctrl-C
@@ -20,7 +21,7 @@ PLATFORM=`cat /etc/platform`
 exec </dev/console >/dev/console 2>/dev/console
 
 # Check if console menu is disabled.
-if configxml_isset //system/disableconsolemenu; then
+if configxml_isset "//system/disableconsolemenu"; then
 	while : ; do
 		echo
 		echo

@@ -5,9 +5,10 @@
 # PROVIDE: timezone
 # BEFORE: CONFIG
 
+. /etc/rc.subr
 . /etc/configxml.subr
 
-_timezone=`/usr/local/bin/xml sel -t -v "//system/timezone" ${configxml_file}`
+_timezone=`configxml_get "//system/timezone"`
 if [ -z ${_timezone} ]; then
 	_timezone="Etc/UTC"
 fi

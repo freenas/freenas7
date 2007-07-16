@@ -7,6 +7,7 @@
 # REQUIRE: system_init
 # KEYWORD: nostart
 
+. /etc/rc.subr
 . /etc/configxml.subr
 
 # Defaults

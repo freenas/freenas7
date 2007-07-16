@@ -6,6 +6,7 @@
 # REQUIRE: DAEMON
 # BEFORE: LOGIN
 
+. /etc/rc.subr
 . /etc/configxml.subr
 
 echo -n "Initializing idle timer/UDMA on ATA disks: "

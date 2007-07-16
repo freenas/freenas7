@@ -10,6 +10,7 @@
 # Configure PAM configuration files.
 #
 
+. /etc/rc.subr
 . /etc/configxml.subr
 
 # Defaults

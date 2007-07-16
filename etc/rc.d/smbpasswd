@@ -6,6 +6,7 @@
 # REQUIRE: smbd
 # KEYWORD: nostart
 
+. /etc/rc.subr
 . /etc/configxml.subr
 
 name="smbpasswd"

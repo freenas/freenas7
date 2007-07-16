@@ -6,6 +6,7 @@
 # REQUIRE: system_init rcconf
 # BEFORE: CONFIG
 
+. /etc/rc.subr
 . /etc/configxml.subr
 
 _index=`/usr/local/bin/xml sel -t -v "count(//system/earlyshellcmd)" ${configxml_file}`
