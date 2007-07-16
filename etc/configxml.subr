@@ -61,18 +61,10 @@ configxml_exec_query()
 
 	debug "configxml_exec_query: query=<$@>"
 
-	# Create temporary script filename.
-	_tmpfile="/tmp/xmlquery$$"
-
 	# Create temporary script to execute xml query.
-	echo "/usr/local/bin/xml sel -t $@ ${configxml_file}" > ${_tmpfile}
-	# Change permissions to execute script.
-	chmod 0700 ${_tmpfile}
-	# Execute script and store result in variable.
-	_queryresult=`${_tmpfile}`
+	_queryresult=`eval "/usr/local/bin/xml sel -t $@ ${configxml_file}"`
 	_result=$?
-	# Remove temporary script.
-	rm -f ${_tmpfile}
+
 	# Output query result for later processing.
 	echo ${_queryresult}
 
