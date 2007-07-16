@@ -13,17 +13,17 @@ configxml_file=${configxml_file:-"/conf/config.xml"}
 # $1 - XPATH expression
 configxml_isset()
 {
-	local _value _result
+	local _queryresult _result
 
 	debug "configxml_isset: xpath=<$1>"
 
 	# Get requested xpath
-	_value=`/usr/local/bin/xml sel -t -v "count($1)" ${configxml_file}`
+	_queryresult=`/usr/local/bin/xml sel -t -v "count($1)" ${configxml_file}`
 	_result=$?
 
-	debug "configxml_isset: results: value=<${_value}> cmd=<${_result}>"
+	debug "configxml_isset: results: query=<${_queryresult}> cmd=<${_result}>"
 
-	if [ 0 -eq ${_value} ]; then
+	if [ 0 -eq ${_queryresult} ]; then
 		return 1
 	else
 		return 0
@@ -36,18 +36,18 @@ configxml_isset()
 # $1 - XPATH expression
 configxml_get()
 {
-	local _value _result
+	local _queryresult _result
 
 	debug "configxml_get: xpath=<$1>"
 
 	# Get requested xpath
-	_value=`/usr/local/bin/xml sel -t -v "$1" ${configxml_file}`
+	_queryresult=`/usr/local/bin/xml sel -t -v "$1" ${configxml_file}`
 	_result=$?
 
-	# Output value for later processing.
-	echo ${_value}
+	# Output query for later processing.
+	echo ${_queryresult}
 
-	debug "configxml_get: results: value=<${_value}> cmd=<${_result}>"
+	debug "configxml_get: results: query=<${_queryresult}> cmd=<${_result}>"
 
 	return ${_result}
 }
@@ -57,11 +57,11 @@ configxml_get()
 # Return result from query is echoed.
 configxml_exec_query()
 {
-	local _tmpfile _queryresult _result
+	local _queryresult _result
 
 	debug "configxml_exec_query: query=<$@>"
 
-	# Create temporary script to execute xml query.
+	# Execute xml query.
 	_queryresult=`eval "/usr/local/bin/xml sel -t $@ ${configxml_file}"`
 	_result=$?
 
