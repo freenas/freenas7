@@ -8,8 +8,6 @@
 # XQUERY: -i "count(//upnp/enable) > 0" -o "0" -b
 # RCVAR: ushare
 
-ushare_enable=${ushare_enable:-"NO"}
-
 . /etc/rc.subr
 . /etc/configxml.subr
 
@@ -21,15 +19,27 @@ start_precmd="create_conf"
 stop_postcmd="stop_postcmd"
 
 # Defaults
+ushare_enable=${ushare_enable:-"NO"}
 ushare_config=${ushare_config:-"/var/etc/${name}.conf"}
 required_files=${ushare_config}
 command="/usr/local/bin/${name}"
-command_args="--daemon --xbox --dlna --cfg=${ushare_config}"
+command_args="--daemon --cfg=${ushare_config}"
 
 # Check if ushare web interface is disabled.
-if ! configxml_isset //upnp/web; then
+if ! configxml_isset "//upnp/web"; then
 	command_args="${command_args} --no-web"
 fi
+
+# Get the compliant profile to be used.
+_profile=`configxml_get "//upnp/profile"`
+case ${_profile} in
+	xbox)
+		command_args="${command_args} --xbox"
+		;;
+	dlna)
+		command_args="${command_args} --dlna"
+		;;
+esac
 
 # Clear existing config file.
 cat /dev/null > ${ushare_config}
@@ -39,7 +49,7 @@ create_conf()
 	local _if
 
 	# Get interface used for uPnP.
-	_if=`/usr/local/bin/xml sel -t -v "//upnp/if" ${configxml_file}`
+	_if=`configxml_get "//upnp/if"`
 
 	# Setup a multicast route for UPnP messages.
 	/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface ${_if}

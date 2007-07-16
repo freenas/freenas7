@@ -13,14 +13,43 @@ configxml_file=${configxml_file:-"/conf/config.xml"}
 # $1 - XPATH expression
 configxml_isset()
 {
-	local _result
+	local _value _result
 
-	_result=`/usr/local/bin/xml sel -t -v "count($1)" ${configxml_file}`
-	if [ 0 -eq ${_result} ]; then
+	debug "configxml_isset: xpath=<$1>"
+
+	# Get requested xpath
+	_value=`/usr/local/bin/xml sel -t -v "count($1)" ${configxml_file}`
+	_result=$?
+
+	debug "configxml_isset: results: value=<${_value}> cmd=<${_result}>"
+
+	if [ 0 -eq ${_value} ]; then
 		return 1
 	else
 		return 0
 	fi
+}
+
+# configxml_get xpath
+# Get xpath from /conf/config.xml.
+# Return 0 if successful, nonzero otherwise.
+# $1 - XPATH expression
+configxml_get()
+{
+	local _value _result
+
+	debug "configxml_get: xpath=<$1>"
+
+	# Get requested xpath
+	_value=`/usr/local/bin/xml sel -t -v "$1" ${configxml_file}`
+	_result=$?
+
+	# Output value for later processing.
+	echo ${_value}
+
+	debug "configxml_get: results: value=<${_value}> cmd=<${_result}>"
+
+	return ${_result}
 }
 
 # configxml_exec_query xquery

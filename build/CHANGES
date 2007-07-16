@@ -6,6 +6,10 @@ FreeNAS 0.686b (unreleased):
 Majors changes:
 
 Minors changes:
+- Add 'Profile' dropdown box on UPnP page. XboX 360 users should use the XboX 360
+  compliant profile. PS3 users should try DLNA. If the 'Default' doesn't work
+  with you're UPnP client also try the DLNA compliant profile.
+- Rename CIFS to CIFS/SMB for better understanding.
 
 Bug fixs:
 

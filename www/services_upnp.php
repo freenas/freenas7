@@ -51,6 +51,7 @@ $pconfig['name'] = $config['upnp']['name'];
 $pconfig['if'] = $config['upnp']['if'];
 $pconfig['content'] = $config['upnp']['content'];
 $pconfig['port'] = $config['upnp']['port'];
+$pconfig['profile'] = $config['upnp']['profile'];
 $pconfig['web'] = isset($config['upnp']['web']);
 
 /* Set name to configured hostname if it is not set */
@@ -79,6 +80,7 @@ if($_POST) {
 		$config['upnp']['name'] = $_POST['name'];
 		$config['upnp']['if'] = $_POST['interface'];
 		$config['upnp']['port'] = $_POST['port'];
+		$config['upnp']['profile'] = $_POST['profile'];
 		$config['upnp']['web'] = $_POST['web'] ? true : false;
 
 		write_config();
@@ -200,6 +202,20 @@ function enable_change(enable_change) {
 				<br><?=gettext("Enter a custom port number for the HTTP server if you want to override the default (49152). Only dynamic or private ports can be used (from 49152 through 65535).");?>
 			</td>
 		</tr>
+		<tr>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Profile"); ?></td>
+      <td width="78%" class="vtable">
+        <select name="profile" class="formfld" id="profile">
+        <?php $types = array(gettext("Default"),gettext("XboX 360"),gettext("DLNA")); $vals = explode(" ", "default xbox dlna");?>
+        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['profile']) echo "selected";?>>
+          <?=htmlspecialchars($types[$j]);?>
+          </option>
+        <?php endfor; ?>
+        </select>
+        <br/><?=gettext("Compliant profile to be used.");?>
+      </td>
+    </tr>
 		<tr>
 			<td width="22%" valign="top" class="vncell"><?=gettext("Control web page");?></td>
 			<td width="78%" class="vtable">

@@ -50,7 +50,7 @@ $menu['disks']['menuitem'][] = array("desc" => "Mount Point", "link" => "disks_m
 // Services
 $menu['services']['desc'] = "Services";
 $menu['services']['menuitem'] = array();
-$menu['services']['menuitem'][] = array("desc" => "CIFS", "link" => "services_samba.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => "CIFS/SMB", "link" => "services_samba.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => "FTP", "link" => "services_ftp.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => "SSHD", "link" => "services_sshd.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => "NFS", "link" => "services_nfs.php", "visible" => true);

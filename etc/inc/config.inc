@@ -732,7 +732,7 @@ function convert_config() {
 	}
 
 	/* Convert 2.1 -> 2.2 */
-	/* Remove //system/harddiskstandby */
+	/* Add //samba/share and remove useless //samba/xxx attributes.
 	if ($config['version'] === "2.1") {
 		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
 			$share = array();
@@ -754,6 +754,14 @@ function convert_config() {
 		unset($config['samba']['recyclebin']);
 
 		$config['version'] = "2.2";
+	}
+
+	/* Convert 2.2 -> 2.3 */
+	/* Set default UPnP profile //upnp/profile. */
+	if ($config['version'] === "2.2") {
+		$config['upnp']['profile'] = "default";
+
+		$config['version'] = "2.3";
 	}
 
 	write_config();

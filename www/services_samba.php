@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("CIFS"));
+$pgtitle = array(gettext("Services"),gettext("CIFS/SMB"));
 
 if (!is_array($config['samba'])) {
 	$config['samba'] = array();

@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("CIFS"),gettext("Shares"));
+$pgtitle = array(gettext("Services"),gettext("CIFS/SMB"),gettext("Shares"));
 
 if(!is_array($config['samba']['share']))
 	$config['samba']['share'] = array();
