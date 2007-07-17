@@ -21,7 +21,7 @@ stop_postcmd="stop_postcmd"
 # Defaults
 ushare_enable=${ushare_enable:-"NO"}
 command="/usr/local/bin/${name}"
-command_args="--daemon --override-iconv-err --verbose"
+command_args="--daemon --override-iconv-err"
 
 start_precmd()
 {
