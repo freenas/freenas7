@@ -15,38 +15,17 @@ name="ushare"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="create_conf"
+start_precmd="start_precmd"
 stop_postcmd="stop_postcmd"
 
 # Defaults
 ushare_enable=${ushare_enable:-"NO"}
-ushare_config=${ushare_config:-"/var/etc/${name}.conf"}
-required_files=${ushare_config}
 command="/usr/local/bin/${name}"
-command_args="--daemon --cfg=${ushare_config}"
+command_args="--daemon --override-iconv-err"
 
-# Check if ushare web interface is disabled.
-if ! configxml_isset "//upnp/web"; then
-	command_args="${command_args} --no-web"
-fi
-
-# Get the compliant profile to be used.
-_profile=`configxml_get "//upnp/profile"`
-case ${_profile} in
-	xbox)
-		command_args="${command_args} --xbox"
-		;;
-	dlna)
-		command_args="${command_args} --dlna"
-		;;
-esac
-
-# Clear existing config file.
-cat /dev/null > ${ushare_config}
-
-create_conf()
+start_precmd()
 {
-	local _if
+	local _if _command_args
 
 	# Get interface used for uPnP.
 	_if=`configxml_get "//upnp/if"`
@@ -54,14 +33,18 @@ create_conf()
 	# Setup a multicast route for UPnP messages.
 	/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface ${_if}
 
-	# Create config file.
-	/usr/local/bin/xml sel -t -m "//upnp" \
-		-v "concat('USHARE_NAME=',name)" -n \
-		-v "concat('USHARE_IFACE=',if)" -n \
-		-o "USHARE_OVERRIDE_ICONV_ERR=YES" -n \
-		-i "string-length(port) > 0" -v "concat('USHARE_PORT=',port)" -n -b \
-		-o "USHARE_DIR=" -m "//upnp/content" -v "concat(.,' ')" -b -n \
-		${configxml_file} > ${ushare_config}
+	# Create command args line.
+	_command_args=`/usr/local/bin/xml sel -t -m "//upnp" \
+		-i "profile[. = 'xbox']" -o " --xbox" -b \
+		-i "profile[. = 'dlna']" -o " --dlna" -b \
+		-i "count(web) = 0" -o " --no-web" -b \
+		-v "concat(' --name=&quot;',name,'&quot;')" \
+		-v "concat(' --interface=',if)" \
+		-i "string-length(port) > 0" -v "concat(' --port=',port)" -b \
+		-m "//upnp/content" -v "concat(' --content=&quot;',.,'&quot;')" -b \
+		${configxml_file}`
+
+	command_args="${command_args} ${_command_args}"
 }
 
 stop_postcmd()

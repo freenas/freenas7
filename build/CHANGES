@@ -28,6 +28,12 @@ Help needed:
 - Need help for adding LDAP authentication feature:
 Major services can be easly authenticated using PAM-LDAP, but for Samba too is harder.
 
+FreeNAS 0.685b2:
+----------------
+
+Bug fixs:
+- Fix bug in UPnP rc-script. There was a bug when sharing multiple directories.
+
 FreeNAS 0.685b1:
 ----------------
 
