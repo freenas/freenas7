@@ -33,6 +33,7 @@ FreeNAS 0.685b2:
 
 Bug fixs:
 - Fix bug in UPnP rc-script. There was a bug when sharing multiple directories.
+- Modified /etc/rc.d/htpasswd script to prevent creation of malformed file.
 
 FreeNAS 0.685b1:
 ----------------
