@@ -100,9 +100,7 @@ function packages_is_installed($pkgname) {
 // $pkgname - The package filename to be installed (e.g. xyz.tbz)
 // Return 0 if sucessful, 1 if error
 function packages_install($pkgname) {
-	global $config;
-
-	$result = mwexec("/usr/sbin/pkg_add {$pkgname}");
+	system("/usr/sbin/pkg_add -v {$pkgname}", $result);
 	if (0 == $result) {
 		write_log("Successfully installed package '{$pkgname}'");
 	} else {

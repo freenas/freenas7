@@ -37,17 +37,7 @@
 require("guiconfig.inc");
 require("packages.inc");
 
-$id = $_GET['id'];
-
-if (isset($_POST['id']))
-	$id = $_POST['id'];
-
-$pgtitle = array(gettext("System"),gettext("Packages"),isset($id)?gettext("Edit"):gettext("Install"));
-
-if (!is_array($config['packages']['package']))
-	$config['packages']['package'] = array();
-
-$a_package = &$config['packages']['package'];
+$pgtitle = array(gettext("System"),gettext("Packages"),gettext("Install"));
 
 if ($_POST) {
 	unset($input_errors);
@@ -66,19 +56,15 @@ if ($_POST) {
 				// Move the image so PHP won't delete it.
 				@rename($_FILES['ulfile']['tmp_name'], $packagename);
 
-				// Install package.
-				if (0 != packages_install($packagename)) {
-					$input_errors[] = gettext("Failed to install package.");
-				}
-
-				// Delete file.
-				@unlink($packagename);
-
-				header("Location: system_packages.php");
-				exit;
+				$do_action = true;
 			}
 		}
 	}
+}
+
+if(!isset($do_action)) {
+	$do_action = false;
+	$packagename = "";
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -106,12 +92,29 @@ if ($_POST) {
 					</tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Install")?>">
-			        <?php if (isset($id)): ?>
-			        <input name="id" type="hidden" value="<?=$id;?>">
-			        <?php endif; ?>
+			      <td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Install")?>">
 			      </td>
-			    </tr>
+					</tr>
+					<tr>
+						<td valign="top" colspan="2">
+						<?php if($do_action)
+						{
+							echo("<strong>" . gettext("Command output:") . "</strong><br>");
+							echo('<pre>');
+							ob_end_flush();
+							
+							// Install package.
+							packages_install($packagename);
+							
+							// Delete file.
+							@unlink($packagename);
+							
+							echo('</pre>');
+						}
+						?>
+						</td>
+					</tr>
 			  </table>
 			</form>
 			<p>
