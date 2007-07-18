@@ -158,7 +158,7 @@ if ($_GET['act'] == "del") {
 				</tr>
               </table>
             </form>
-<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"), "disks_manage.php", "COMPLETE");?></p>
+<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"), "disks_manage.php", "COMPLETE");?></span></p>
 		</td>
 	</tr>
 </table>
