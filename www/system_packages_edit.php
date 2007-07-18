@@ -1,28 +1,28 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	system_packages_edit.php
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
 	All rights reserved.
-  
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -56,28 +56,23 @@ if ($_POST) {
 		if (!file_exists($_FILES['ulfile']['tmp_name'])) {
 			// Probably out of memory for the MFS.
 			$input_errors[] = gettext("Package upload failed (out of memory?)");
-		} else if (!file_exists("{$config['packages']['path']}/packages")) {
-			// Packages directory does not exists.
-			$input_errors[] = gettext("Package path does not exist.");
 		} else {
-			// Check whether package is already configured/installed.
-			if (0 == packages_is_configured($_FILES['ulfile']['name'])) {
-				$input_errors[] = gettext("Package is already installed.");
-			} else if (0 == packages_is_installed($_FILES['ulfile']['name'])) {
+			// Check whether package is already installed.
+			if (0 == packages_is_installed($_FILES['ulfile']['name'])) {
 				$input_errors[] = gettext("Package is already installed.");
 			} else {
-				$packagename = "{$config['packages']['path']}/packages/{$_FILES['ulfile']['name']}";
+				$packagename = "{$g['tmp_path']}/{$_FILES['ulfile']['name']}";
 
 				// Move the image so PHP won't delete it.
-				rename($_FILES['ulfile']['tmp_name'], $packagename);
-			
-				$package = array();
-				$package['filename'] = $_FILES['ulfile']['name'];
+				@rename($_FILES['ulfile']['tmp_name'], $packagename);
 
-				$a_package[] = $package;
+				// Install package.
+				if (0 != packages_install($packagename)) {
+					$input_errors[] = gettext("Failed to install package.");
+				}
 
-				touch($d_packagesconfdirty_path);
-				write_config();
+				// Delete file.
+				@unlink($packagename);
 
 				header("Location: system_packages.php");
 				exit;
@@ -86,26 +81,46 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="system_packages_edit.php" method="post" enctype="multipart/form-data">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Package file");?></td>
-			<td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
-				<input name="ulfile" type="file" class="formfld"> 
-			</td>
-		</tr>
-    <tr> 
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Install")?>"> 
-        <?php if (isset($id)): ?>
-        <input name="id" type="hidden" value="<?=$id;?>">
-        <?php endif; ?>
-      </td>
-    </tr>
-  </table>
-</form>
-<?php include("fend.inc"); ?>
+<?php include("fbegin.inc");?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+		<td class="tabnavtbl">
+  		<ul id="tabnav">
+				<li class="tabact"><a href="system_packages.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Packages");?></a></li>
+  		</ul>
+  	</td>
+	</tr>
+  <tr>
+    <td class="tabcont">
+			<form action="system_packages_edit.php" method="post" enctype="multipart/form-data">
+				<?php if ($input_errors) print_input_errors($input_errors); ?>
+				<?php if ($savemsg) print_info_box($savemsg); ?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Package file");?></td>
+						<td width="78%" class="vtable">
+			        <?=$mandfldhtml;?>
+							<input name="ulfile" type="file" class="formfld">
+							<br><?=gettext("Select the FreeBSD package to be installed.");?>
+						</td>
+					</tr>
+			    <tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Install")?>">
+			        <?php if (isset($id)): ?>
+			        <input name="id" type="hidden" value="<?=$id;?>">
+			        <?php endif; ?>
+			      </td>
+			    </tr>
+			  </table>
+			</form>
+			<p>
+				<span class="vexpl">
+					<span class="red"><strong><?=gettext("Note");?>:</strong></span><br>
+					<?=gettext("You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename");?>
+				</span>
+			</p>
+		</td>
+	</tr>
+</table>
+<?php include("fend.inc");?>

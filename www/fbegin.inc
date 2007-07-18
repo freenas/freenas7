@@ -20,10 +20,9 @@ $menu['system']['menuitem'][] = array("desc" => "General setup", "link" => "syst
 $menu['system']['menuitem'][] = array("desc" => "Static routes", "link" => "system_routes.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => "Hosts", "link" => "system_hosts.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => "Advanced", "link" => "system_advanced.php", "visible" => true);
-// Must be recoded before releasing.
-//if ("full" === $g['platform']) {
-//	$menu['system']['menuitem'][] = array("desc" => "Packages", "link" => "system_packages.php", "visible" => true);
-//}
+if ("full" === $g['platform']) {
+	$menu['system']['menuitem'][] = array("desc" => "Packages", "link" => "system_packages.php", "visible" => true);
+}
 $menu['system']['menuitem'][] = array("desc" => "Firmware", "link" => "system_firmware.php", "visible" => true);
 
 // Interfaces

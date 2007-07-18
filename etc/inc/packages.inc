@@ -36,29 +36,6 @@
 require_once("functions.inc");
 require_once("util.inc");
 
-// Initialize packages.
-// Return 0 if sucessful, 1 if error
-function packages_configure() {
-	global $config;
-	$result = 1;
-
-	$pkgpath = "{$config['packages']['path']}/packages";
-
-	// Create packages directory (if necessary).
-	$result = mwexec("mkdir -p {$pkgpath}");
-	if (1 == $result) {
-		write_log("Failed to create packages directory on '{$config['packages']['path']}'");
-	}
-
-	// Install packages.
-	$apackage = $config['packages']['package'];
-	foreach ($apackage as $packagev) {
-		packages_install("{$pkgpath}/{$packagev['filename']}");
-	}
-
-	return $result;
-}
-
 // Get list of installed packages.
 // Result is in the form:
 // [1] => Array
@@ -80,41 +57,12 @@ function packages_get_installed() {
 		$packages[$id] = array();
 		$packages[$id]['name'] = $pkgname;
 		$packages[$id]['desc'] = $pkgdesc;
-		
+
 		$id++;
   }
   unset($line);
 
-	return $packages; 
-}
-
-// Install package.
-// $pkgname - The package filename to be installed (e.g. xyz.tbz)
-// Return 0 if sucessful, 1 if error
-function packages_install($pkgname) {
-	global $config;
-
-	$prefix = $config['packages']['path'] . "/packages/usr";
-
-	$result = mwexec("/usr/sbin/pkg_add -P {$prefix} {$pkgname}");	
-	if (0 == $result) {
-		// Create a softlink for each installed file.
-		$apackinglist = packages_get_packinglist($pkgname);
-		foreach ($apackinglist as $filev) {
-			// Check if we need to create a directory first.
-			$dirname = dirname("/usr/local/{$filev}");
-			if (!file_exists($dirname))
-				mkdir($dirname);
-			// Create link.
-			mwexec("/bin/ln -s {$prefix}/{$filev} /usr/local/{$filev}");
-		}
-
-		write_log("Successfully installed package '{$pkgname}'");
-	} else {
-		write_log("Failed to install package '{$pkgname}'");
-	}
-
-	return $result;
+	return $packages;
 }
 
 // Uninstall package.
@@ -124,36 +72,12 @@ function packages_uninstall($pkgname) {
 	// Remove '.tbz' if necessary.
 	$pkgname = basename($pkgname, ".tbz");
 
-	// Remove softlink for each installed file.
-	$apackinglist = packages_get_packinglist($pkgname);
-	foreach ($apackinglist as $filev) {
-		mwexec("/bin/rm -f /usr/local/{$filev}");
-	}
-
 	$result = mwexec("/usr/sbin/pkg_delete {$pkgname}");
+
 	if (0 == $result) {
 		write_log("Successfully uninstalled package '{$pkgname}'");
 	} else {
 		write_log("Failed to uninstall package '{$pkgname}'");
-	}
-
-	return $result;
-}
-
-// Check whether package is already configured.
-// $pkgname - The package filename (e.g. xyz.tbz)
-// Return 0 if already configured, otherwise 1
-function packages_is_configured($pkgname) {
-	global $config;
-
-	$result = 1;
-
-	$apackage = $config['packages']['package'];
-	foreach ($apackage as $packagev) {
-		if (0 == strcmp($packagev['filename'], $pkgname)) {
-			$result = 0;
-			break;
-		}
 	}
 
 	return $result;
@@ -172,29 +96,18 @@ function packages_is_installed($pkgname) {
 	return $result;
 }
 
-// Get packing list (list installed by package).
-// $pkgname - The package name or filename (e.g. xyz or xyz.tbz)
-// Return array of files installed by package
-function packages_get_packinglist($pkgname) {
-	$result = array();
-	$id = 0;
+// Install package.
+// $pkgname - The package filename to be installed (e.g. xyz.tbz)
+// Return 0 if sucessful, 1 if error
+function packages_install($pkgname) {
+	global $config;
 
-	// Remove '.tbz' if necessary.
-	$pkgname = basename($pkgname, ".tbz");
-
-	exec("/usr/sbin/pkg_info -f {$pkgname}", $rawdata);
-	foreach($rawdata as $line) {
-		// Parse lines like: 'File: xxxx', ignore 'File: +xxxx'. 
-		if (false == strpos($line, "File: ") || 0 == strpos($line, "File: +")) {
-			continue;
-		}
-
-		$aline = preg_split("/\s+/", $line);
-
-		$result[$id] = $aline[1];
-		$id++;
-  }
-  unset($line);
+	$result = mwexec("/usr/sbin/pkg_add {$pkgname}");
+	if (0 == $result) {
+		write_log("Successfully installed package '{$pkgname}'");
+	} else {
+		write_log("Failed to install package '{$pkgname}'");
+	}
 
 	return $result;
 }
