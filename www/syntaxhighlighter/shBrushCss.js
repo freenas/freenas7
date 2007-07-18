@@ -13,7 +13,7 @@ dp.sh.Brushes.CSS = function()
 					'page-break-after page-break-before page-break-inside pause pause-after pause-before pitch pitch-range play-during position ' +
 					'quotes richness right size slope src speak-header speak-numeral speak-punctuation speak speech-rate stemh stemv stress ' +
 					'table-layout text-align text-decoration text-indent text-shadow text-transform unicode-bidi unicode-range units-per-em ' +
-					'vertical-align visibility voice-family volume white-space widows width widths word-spacing x-height z-index';
+					'vertical-align visibility voice-family volume white-space widows width widths word-spacing x-height z-index important';
 
 	var values =	'above absolute all always aqua armenian attr aural auto avoid baseline behind below bidi-override black blink block blue bold bolder '+
 					'both bottom braille capitalize caption center center-left center-right circle close-quote code collapse compact condensed '+
@@ -44,6 +44,8 @@ dp.sh.Brushes.CSS = function()
 		];
 
 	this.CssClass = 'dp-css';
+	this.Style =	'.dp-css .colors { color: darkred; }' +
+					'.dp-css .vars { color: #d00; }';
 }
 
 dp.sh.Brushes.CSS.prototype	= new dp.sh.Highlighter();

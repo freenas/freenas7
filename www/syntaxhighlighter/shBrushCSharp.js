@@ -25,6 +25,7 @@ dp.sh.Brushes.CSharp = function()
 		];
 
 	this.CssClass = 'dp-c';
+	this.Style = '.dp-c .vars { color: #d00; }';
 }
 
 dp.sh.Brushes.CSharp.prototype	= new dp.sh.Highlighter();

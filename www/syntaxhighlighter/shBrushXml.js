@@ -1,6 +1,10 @@
 dp.sh.Brushes.Xml = function()
 {
 	this.CssClass = 'dp-xml';
+	this.Style =	'.dp-xml .cdata { color: #ff1493; }' +
+					'.dp-xml .tag, .dp-xml .tag-name { color: #069; font-weight: bold; }' +
+					'.dp-xml .attribute { color: red; }' +
+					'.dp-xml .attribute-value { color: blue; }';
 }
 
 dp.sh.Brushes.Xml.prototype	= new dp.sh.Highlighter();
@@ -26,18 +30,23 @@ dp.sh.Brushes.Xml.prototype.ProcessRegexList = function()
 	var regex	= null;
 
 	// Match CDATA in the following format <![ ... [ ... ]]>
-	// <\!\[[\w\s]*?\[(.|\s)*?\]\]>
-	this.GetMatches(new RegExp('<\\!\\[[\\w\\s]*?\\[(.|\\s)*?\\]\\]>', 'gm'), 'cdata');
+	// (\&lt;|<)\!\[[\w\s]*?\[(.|\s)*?\]\](\&gt;|>)
+	this.GetMatches(new RegExp('(\&lt;|<)\\!\\[[\\w\\s]*?\\[(.|\\s)*?\\]\\](\&gt;|>)', 'gm'), 'cdata');
 	
 	// Match comments
-	// <!--\s*.*\s*?-->
-	this.GetMatches(new RegExp('<!--\\s*.*\\s*?-->', 'gm'), 'comments');
+	// (\&lt;|<)!--\s*.*\s*?--(\&gt;|>)
+	this.GetMatches(new RegExp('(\&lt;|<)!--\\s*.*\\s*?--(\&gt;|>)', 'gm'), 'comments');
 
 	// Match attributes and their values
 	// (:|\w+)\s*=\s*(".*?"|\'.*?\'|\w+)*
-	regex = new RegExp('([:\\w-\.]+)\\s*=\\s*(".*?"|\'.*?\'|\\w+)*', 'gm'); // Thanks to Tomi Blinnikka of Yahoo! for fixing namespaces in attributes
+	regex = new RegExp('([:\\w-\.]+)\\s*=\\s*(".*?"|\'.*?\'|\\w+)*|(\\w+)', 'gm'); // Thanks to Tomi Blinnikka of Yahoo! for fixing namespaces in attributes
 	while((match = regex.exec(this.code)) != null)
 	{
+		if(match[1] == null)
+		{
+			continue;
+		}
+			
 		push(this.matches, new dp.sh.Match(match[1], match.index, 'attribute'));
 	
 		// if xml is invalid and attribute has no property value, ignore it	
@@ -48,12 +57,12 @@ dp.sh.Brushes.Xml.prototype.ProcessRegexList = function()
 	}
 
 	// Match opening and closing tag brackets
-	// </*\?*(?!\!)|/*\?*>
-	this.GetMatches(new RegExp('</*\\?*(?!\\!)|/*\\?*>', 'gm'), 'tag');
+	// (\&lt;|<)/*\?*(?!\!)|/*\?*(\&gt;|>)
+	this.GetMatches(new RegExp('(\&lt;|<)/*\\?*(?!\\!)|/*\\?*(\&gt;|>)', 'gm'), 'tag');
 
 	// Match tag names
-	// </*\?*\s*(\w+)
-	regex = new RegExp('</*\\?*\\s*([:\\w-\.]+)', 'gm');
+	// (\&lt;|<)/*\?*\s*(\w+)
+	regex = new RegExp('(?:\&lt;|<)/*\\?*\\s*([:\\w-\.]+)', 'gm');
 	while((match = regex.exec(this.code)) != null)
 	{
 		push(this.matches, new dp.sh.Match(match[1], match.index + match[0].indexOf(match[1]), 'tag-name'));

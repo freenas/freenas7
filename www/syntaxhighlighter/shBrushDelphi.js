@@ -25,6 +25,9 @@ dp.sh.Brushes.Delphi = function()
 		];
 
 	this.CssClass = 'dp-delphi';
+	this.Style =	'.dp-delphi .number { color: blue; }' +
+					'.dp-delphi .directive { color: #008284; }' +
+					'.dp-delphi .vars { color: #000; }';
 }
 
 dp.sh.Brushes.Delphi.prototype	= new dp.sh.Highlighter();

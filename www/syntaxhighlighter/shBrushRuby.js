@@ -14,13 +14,15 @@ dp.sh.Brushes.Ruby = function()
 		{ regex: dp.sh.RegexLib.DoubleQuotedString,				css: 'string' },	// double quoted strings
 		{ regex: dp.sh.RegexLib.SingleQuotedString,				css: 'string' },	// single quoted strings
 		{ regex: new RegExp(':[a-z][A-Za-z0-9_]*', 'g'),		css: 'symbol' },	// symbols
-		{ regex: new RegExp('[\\$|@|@@]\\w+', 'g'),				css: 'variable' },	// $global, @instance, and @@class variables
+		{ regex: new RegExp('(\\$|@@|@)\\w+', 'g'),				css: 'variable' },	// $global, @instance, and @@class variables
 		{ regex: new RegExp(this.GetKeywords(keywords), 'gm'),	css: 'keyword' },	// keywords
 		{ regex: new RegExp(this.GetKeywords(builtins), 'gm'),	css: 'builtin' }	// builtins
 		];
 
 	this.CssClass = 'dp-rb';
+	this.Style =	'.dp-rb .symbol { color: #a70; }' +
+					'.dp-rb .variable { color: #a70; font-weight: bold; }';
 }
 
-dp.sh.Brushes.Ruby.prototype	= new dp.sh.Highlighter();
-dp.sh.Brushes.Ruby.Aliases	= ['ruby', 'rails'];
+dp.sh.Brushes.Ruby.prototype = new dp.sh.Highlighter();
+dp.sh.Brushes.Ruby.Aliases = ['ruby', 'rails', 'ror'];

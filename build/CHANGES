@@ -11,6 +11,7 @@ Minors changes:
   compliant profile. PS3 users should try DLNA. If the 'Default' doesn't work
   with you're UPnP client also try the DLNA compliant profile.
 - Rename CIFS to CIFS/SMB for better understanding.
+- Upgrade dp.SyntaxHighlighter to 1.5.
 
 Bug fixs:
 

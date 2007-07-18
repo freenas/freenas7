@@ -20,6 +20,8 @@ dp.sh.Brushes.Java = function()
 		];
 
 	this.CssClass = 'dp-j';
+	this.Style =	'.dp-j .annotation { color: #646464; }' +
+					'.dp-j .number { color: #C00000; }';
 }
 
 dp.sh.Brushes.Java.prototype	= new dp.sh.Highlighter();
