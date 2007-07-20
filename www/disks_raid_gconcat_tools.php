@@ -179,7 +179,7 @@ function raid_change() {
 				</tr>
 			</table>
 </form>
-<p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for start a RAID volume (start automaticaly).");?></span></p>
+<p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly).");?></span></p>
 </td></tr></table>
 <script language="JavaScript">
 <!--

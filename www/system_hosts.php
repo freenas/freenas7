@@ -115,7 +115,7 @@ if ($_GET['act'] == "del") {
 			<p>
 				<span class="vexpl">
 					<span class="red"><strong>Note:<br></strong></span>
-					<?=gettext("Define an host name can be useful for NFS.");?>
+					<?=gettext("Defining a hostname can be useful for NFS.");?>
 				</span>
 			</p>
 		</td>
