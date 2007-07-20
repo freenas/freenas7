@@ -106,7 +106,7 @@ else
         <td>
           <span class="label"><?=gettext("File path"); ?>:</span>
 	        <input size="42" id="savetopath" name="savetopath" value="<?php echo $_POST['savetopath']; ?>" />
-          <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=500,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \> 
+          <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \> 
 	        <input name="submit" type="submit" class="formbtn" id="Load" value="<?=gettext("Load");?>" /> 
           <input name="submit" type="submit" class="formbtn" id="Save" value="<?=gettext("Save");?>" />
 	        <hr noshade="noshade" />
