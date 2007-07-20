@@ -114,7 +114,7 @@ if ($_GET['act'] == "del") {
 				</tr>
 			</table>
 		</form>
-		<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("First configuration step: Add your hardrive to the disk list.");?></p>
+		<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("First configuration step: Add your harddrive to the disk list.");?></p>
 		</td>
 	</tr>
 </table>
