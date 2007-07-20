@@ -1,7 +1,7 @@
 <?
 /*
     filechooser.php
-    Copyright © 2006 Volker Theile (votdev@gmx.de)
+    Copyright © 2007 Volker Theile (votdev@gmx.de)
     All rights reserved.
 
     Parts of code are take from 'File Browser Class'
@@ -64,7 +64,9 @@ class FileChooser
 
     // Check if file exists.
     if(!file_exists($path)) {
-      print_info_box("File not found $path");
+    	echo "<tr><td class=\"addrbar\">";
+		  print_info_box("File not found $path");
+		  echo "</tr></td>";
       $path = $this->get_valid_parent_dir($path);
     }
 
@@ -124,22 +126,21 @@ class FileChooser
 		$folderInfo = array();
 		$fileArray = array();
 		$fileInfo = array();
-		
+
 		$content = $this->get_content($dir);
 
 		foreach($content as $file)
     {
-			if(is_dir($dir.$file)) // is a folder
+			if(is_dir("{$dir}/{$file}")) // is a folder
 			{
 				// store elements of folder in sub array
 				$folderInfo['name']	= $file;
-				$folderInfo['mtime'] = @filemtime($dir.$file);
+				$folderInfo['mtime'] = @filemtime("{$dir}/{$file}");
 				$folderInfo['type'] = 'Folder';
 				// calc folder size ?
 				$folderInfo['size'] =
 					$this->cfg['calcFolderSizes'] ?
-					$this->get_folder_size($dir.$file) :
-					'-';
+					$this->get_folder_size("{$dir}/{$file}") : '-';
 				$folderInfo['rowType'] = 'fr';
 				$folderArray[] = $folderInfo;
 			}
@@ -147,11 +148,11 @@ class FileChooser
 			{
 				// store elements of file in sub array
 				$fileInfo['name'] = $file;
-				$fileInfo['mtime'] = @filemtime($dir.$file);
+				$fileInfo['mtime'] = @filemtime("{$dir}/{$file}");
 				$fileInfo['type'] = $this->cfg['simpleType'] ?
-					$this->get_extension($dir.$file) :
-					mime_content_type($dir.$file);
-				$fileInfo['size'] = @filesize($dir.$file);
+					$this->get_extension("{$dir}/{$file}") :
+					mime_content_type("{$dir}/{$file}");
+				$fileInfo['size'] = @filesize("{$dir}/{$file}");
 				$fileInfo['rowType'] = 'fl';
 				$fileArray[] = $fileInfo;
 			}
@@ -167,12 +168,12 @@ class FileChooser
   {
     $folders = array();
     $files = array();
-     
+
     $handle = @opendir($dir);
     while($file = @readdir($handle)) {
-      if(is_dir("$dir/$file"))
+      if(is_dir("{$dir}/{$file}"))
         $folders[] = $file;
-      elseif(is_file("$dir/$file"))
+      elseif(is_file("{$dir}/{$file}"))
         $files[] = $file;
     }
     @closedir($handle);
@@ -187,14 +188,14 @@ class FileChooser
   {
     $allow = $this->make_regex($allow);
     $hide = $this->make_regex($hide);
-  
+
     $ret = array();
     $ret = preg_grep("/$allow/", $arr);
     $ret = preg_grep("/$hide/",  $ret, PREG_GREP_INVERT);
-  
+
     return $ret;
   }
-  
+
   function make_regex($filter)
   {
     $regex = str_replace('.', '\.', $filter);
@@ -218,12 +219,12 @@ class FileChooser
 			return '?';
 		}
 	}
-  
+
   function get_valid_parent_dir($path)
   {
     if(strcmp($path,"/") == 0) // Is it already root of filesystem?
       return false;
-      
+
   	$expl = explode("/", substr($path, 0, -1));
   	$path = substr($path, 0, -strlen($expl[(sizeof($expl)-1)].'/'));
 
@@ -255,19 +256,13 @@ class FileChooser
 	function get_folder_size($dir)
 	{
 		$size = 0;
-		if ($handle = opendir($dir))
-		{
-			while (false !== ($file = readdir($handle)))
-			{
-				if ($file != '.' && $file != '..')
-				{
-					if(is_dir($dir.'/'.$file))
-					{
-						$size += $this->get_folder_size($dir.'/'.$file);
-					}
-					else
-					{
-						$size += filesize($dir.'/'.$file);
+		if ($handle = opendir($dir)) {
+			while (false !== ($file = readdir($handle))) {
+				if ($file != '.' && $file != '..') {
+					if(is_dir("{$dir}/{$file}")) {
+						$size += $this->get_folder_size("{$dir}/{$file}");
+					} else {
+						$size += filesize("{$dir}/{$file}");
 					}
 				}
 			}
@@ -350,8 +345,9 @@ class FileChooser
 
 	function file_list($dir, $files)
 	{
-    $ret  = '<div id="fileBrowser">';
-    $ret .= '<table class="filelist" cellspacing="0" border="0">';
+    $ret .= '<tr>';
+    $ret .= '<td class="filelist">';
+    $ret .= '<table cellspacing="0" border="0">';
 		$ret .= ($this->cfg['sort']) ? $this->row('sort', $dir) : '';
 		$ret .= ($this->get_valid_parent_dir($dir)) ? $this->row('parent', $dir) : '';
 
@@ -373,15 +369,16 @@ class FileChooser
 		$ret .= ($this->cfg['footer']) ? $this->row('footer') : '';
 
 		$ret .= '</table>';
-		$ret .= '</div>';
-		
+		$ret .= '</td>';
+		$ret .= '</tr>';
+
 		return $ret;
 	}
 
 	function row($type, $dir=null, $rowcount=null, $file=null)
 	{
 		// alternating row styles
-		$rnum = $rowcount ? ($rowcount%2 == 0 ? ' r2' : ' r1') : null;
+		$rnum = $rowcount ? ($rowcount%2 == 0 ? '_even' : '_odd') : null;
 
 		// start row string variable to be returned
 		$row = "\n".'<tr class="'.$type.$rnum.'">'."\n";
@@ -389,15 +386,14 @@ class FileChooser
 		switch($type)
 		{
 			// file / folder row
-			case 'fl' :
-			case 'fr' :
+			case 'fl':
+			case 'fr':
 				// line number
-				$row .= $this->cfg['lineNumbers'] ?
-				        '<td class="ln">'.$rowcount.'</td>' : '';
+				$row .= $this->cfg['lineNumbers'] ? '<td class="ln">'.$rowcount.'</td>' : '';
 
 				// filename
 				$row .= '<td class="nm"><a href="';
-				$row .= $type == 'fr' ? '?p='.$dir.$file['name'].'/' : '?p='.$dir.$file['name'];
+				$row .= ($type === "fr") ? '?p='.$dir.$file['name'].'/' : '?p='.$dir.$file['name'];
 				$row .= '">'.$file['name'].'</a></td>';
 
 				// file size
@@ -417,7 +413,7 @@ class FileChooser
 				break;
 
 			// sorting header
-			case 'sort' :
+			case 'sort':
 				// sort order. Setting ascending or descending for sorting links
 				$N = ($this->cfg['sortMode'] == 'N') ?
 					 ($this->cfg['sortOrder'] == 'A' ? 'D' : 'A') : 'A';
@@ -449,7 +445,7 @@ class FileChooser
 				break;
 
 			// parent directory row
-			case 'parent' :
+			case 'parent':
 				$row .= $this->cfg['lineNumbers'] ?
 				        '<td class="ln">&laquo;</td>' : '';
 				$row .= '<td class="nm">
@@ -465,7 +461,7 @@ class FileChooser
 				break;
 
 			// footer row
-			case 'footer' :
+			case 'footer':
 				$row .= $this->cfg['lineNumbers'] ?
 				        '<td class="ln">&nbsp;</td>' : '';
 				$row .= '<td class="nm">&nbsp;</td>';
@@ -487,13 +483,13 @@ class FileChooser
 	{
     $ret .= <<<EOD
 
-  <form method="get" action="?">
-    <div id="addrBar">
-      <tr>
-        <input name="p" value="{$path}" type="text">
-      </tr>
-    </div>
-  </form>
+		<tr>
+		  <form method="get" action="?">
+		  	<td class="addrbar">
+	        <input name="p" value="{$path}" type="text">
+		    </td>
+		  </form>
+	  </tr>
 
 EOD;
     return $ret;
@@ -503,14 +499,14 @@ EOD;
 	{
     $ret = <<<EOD
 
-  <form method="get" onSubmit="onSubmit();" onReset="onReset();">
-    <div id="cmdBar">
-      <tr>
-        <input type="submit" value="Ok">
-        <input type="reset" value="Cancel">
-      </tr>
-    </div>
-  </form>
+    <tr>
+    	<form method="get" onSubmit="onSubmit();" onReset="onReset();">
+	    	<td class="cmdbar">
+	    	  <input type="submit" value="Ok">
+	      	<input type="reset" value="Cancel">
+	      </td>
+      </form>
+    </tr>
 
 EOD;
     return $ret;
@@ -520,47 +516,51 @@ EOD;
 <html>
   <head>
 <style type="text/css">
-/* global */
-#body,td,th,input,select { font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif; font-size: 11px; }
-/* local */
-#fileBrowser { }
-/* File Browser Table */
-#fileBrowser table { width:100%; }
-/* rows */
-#fileBrowser table tr td { padding:1px; font-size:12px; }
-#fileBrowser a { text-decoration:none; }
-#fileBrowser a:hover { text-decoration:underline; }
-/* rows */
-#fileBrowser table tr.fr td,
-#fileBrowser table tr.fl td { border-top:1px solid #fff; border-bottom:1px solid #ddd; }
-/* folder row */
-#fileBrowser table tr.fr td.nm { font-weight:bold; }
-/* parent row */
-#fileBrowser table tr.parent { font-weight:bold; }
-#fileBrowser table tr.parent td { border-bottom:1px solid #eee; background:#efefd3; }
+.filechooser { background-color: #fff; margin: 0px; padding: 0px; }
+.filechooser table { width: 100%; height: 100%; font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; }
+.filechooser td { padding: 10px; vertical-align: top; }
+
+.filechooser .filelist table { width:100%; }
+.filechooser .filelist table tr td { padding:1px; font-size:12px; }
+.filechooser .filelist table tr.fr_odd td,
+.filechooser .filelist table tr.fr_even td,
+.filechooser .filelist table tr.fl_odd td,
+.filechooser .filelist table tr.fl_even td { height: 18px; border-top:1px solid #fff; border-bottom:1px solid #ddd; }
+.filechooser .filelist table tr.fr_odd td,
+.filechooser .filelist table tr.fl_odd td { background:#eee; }
+.filechooser .filelist a { text-decoration:none; }
+.filechooser .filelist a:hover { text-decoration:underline; }
 /* sorting row */
-#fileBrowser tr.sort td {  }
-/* Columns */
-/* line number */
-#fileBrowser table tr td.ln { border-left:1px solid #eee; font-weight:normal; text-align:right; padding:0 10px 0 10px; width:10px; color: #999; }
-/* date  */
-#fileBrowser table tr td.dt { border-right:1px solid #eee; }
+.filechooser .filelist table tr.sort td { height: 18px; border: 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+.filechooser .filelist table tr.sort a { text-decoration:none; color:#9d9d9d; }
+.filechooser .filelist table tr.sort a:hover { text-decoration:underline; }
+/* parent row */
+.filechooser .filelist table tr.parent { font-weight:bold; }
+.filechooser .filelist table tr.parent td { height: 18px; border-bottom: 1px solid #eee; text-color: #ffffff; background: #435370; }
+.filechooser .filelist table tr.parent a { text-decoration:none; color:#ffffff; }
+.filechooser .filelist table tr.parent a:hover { text-decoration:underline; }
+/* filelist rows */
+/* line number column */
+.filechooser .filelist table tr td.ln { border-left:1px solid #eee; font-weight:normal; text-align:right; padding:0 10px 0 10px; width:10px; color: #999; }
+/* filename column */
+.filechooser .filelist table tr.fr_odd td.nm,
+.filechooser .filelist table tr.fr_even td.nm { font-weight:bold; }
+.filechooser .filelist table tr.fl_odd td.nm,
+.filechooser .filelist table tr.fl_even td.nm { font-weight:normal; }
+/* size column */
+.filechooser .filelist table tr td.sz { }
+/* type column */
+.filechooser .filelist table tr td.tp { }
+/* date column */
+.filechooser .filelist table tr td.dt { border-right:1px solid #eee; }
 /* footer row */
-#fileBrowser table tr.footer td { border:0; font-weight:bold; }
-/* sort row */
-#fileBrowser table tr.sort td { border:0; border-bottom:1px solid #eee; }
-#fileBrowser table tr.sort a { text-decoration:none; color:#9d9d9d; }
-#fileBrowser table tr.sort a:hover { text-decoration:underline; }
-/* alternating Row Colors */
-/* folders */
-tr.fr.r1 { background-color:#eee; }
-tr.fr.r2 { }
-/* files */
-tr.r1 { background-color:#eee; }
-tr.r2 { }
-#cmdBar { padding:2px 3px; text-align:right; border-left:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee; border-top:1px solid #fff; background-color:#eee; border-spacing:0; }
-#addrBar { padding:2px 3px; text-align:right; border-left:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee; border-top:1px solid #fff; background-color:#eee; border-spacing:0; }
-#addrbar input { width:100%; }
+.filechooser .filelist table tr.footer td { border:0; font-weight:bold; }
+
+/* Address and command bar */
+.filechooser .addrbar { background-color: #eee; padding: 6px 9px; text-align:right; border-left:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee; border-spacing:0; height: 20px }
+.filechooser .addrbar input { width:100%; }
+.filechooser .cmdbar { background-color: #eee; border-top: 1px solid #fff; text-align: right; height: 40px }
+.filechooser .cmdbar input { background-color: #eee; font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; width: 60px; height: 22px; }
 </style>
 <script class="javascript">
 function onSubmit()
@@ -574,9 +574,11 @@ function onReset()
 }
 </script>
   </head>
-  <body>
+  <body class="filechooser">
+  	<table cellspacing="0">
 <?
-	new FileChooser();
+			new FileChooser();
 ?>
+		</table>
   </body>
 </html>
