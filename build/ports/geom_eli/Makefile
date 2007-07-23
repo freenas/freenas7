@@ -7,10 +7,12 @@ MAINTAINER=		votdev@gmx.de
 WRKSRC=	/usr/src/sbin/geom/class/eli
 
 do-build:
-	# Patch geom eli sources if necessary.
-	-@if [ ! -e ${WRKSRC}/geom_eli.c.orig ]; then \
-		${PATCH} -f ${WRKSRC}/geom_eli.c ${FILESDIR}/geom_eli.c.diff; \
+	-@if [ -e ${WRKSRC}/geom_eli.c.orig ]; then \
+		${MV} ${WRKSRC}/geom_eli.c.orig ${WRKSRC}/geom_eli.c
 	fi
+
+	# Patch geom eli sources.
+	${PATCH} -f ${WRKSRC}/geom_eli.c ${FILESDIR}/geom_eli.c.diff;
 
 	@${MAKE} -C ${WRKSRC}
 
