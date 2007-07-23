@@ -38,6 +38,8 @@ Bug fixs:
 - Modified /etc/rc.d/htpasswd script to prevent creation of malformed file.
 - Modify Filechooser GUI.
 - Fix typos in WebGUI. Thanks to El Marconi.
+- Fix bugs in rc-script processing.
+- Fix bug in scheduled shutdown.
 
 FreeNAS 0.685b1:
 ----------------
