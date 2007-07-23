@@ -57,14 +57,14 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"));
     <td class="tabcont">
       <?php
       echo "<pre>";
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Vinum") . ":</strong><br><br>";
+      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Mirror") . ":</strong><br><br>";
       exec("/sbin/gmirror list",$rawdata);
       foreach ($rawdata as $line) {
         echo htmlspecialchars($line) . "<br>";
       }
       unset ($line);
       unset ($rawdata);
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Mirror") . ":</strong><br><br>";
+      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Vinum") . ":</strong><br><br>";
       exec("/sbin/gvinum list",$rawdata);
       foreach ($rawdata as $line) 	{
         echo htmlspecialchars($line) . "<br>";
