@@ -4,7 +4,7 @@ FreeNAS 0.686b (unreleased):
 ----------------------------
 
 Majors changes:
-- Add 'System/Packages' WebGUI page to administrate packages.
+- Add 'System/Packages' WebGUI page to administrate packages (only available in 'full' install mode).
 
 Minors changes:
 - Add 'Profile' dropdown box on UPnP page. XboX 360 users should use the XboX 360
