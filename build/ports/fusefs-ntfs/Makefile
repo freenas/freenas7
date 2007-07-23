@@ -1,7 +1,7 @@
 PORTNAME=			fusefs-ntfs
 PORTVERSION=	1.0
 PORTREVISION=	0
-PORTEPOCH=		2
+PORTEPOCH=		3
 CATEGORIES=		sysutils
 COMMENT=			Mount NTFS partitions and disk images
 MAINTAINER=		votdev@gmx.de
