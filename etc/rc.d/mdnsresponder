@@ -36,8 +36,7 @@ create_conf()
 # PORT OF SERVICE
 # TXT RECORD (short description of service)
 #
-# For types: http://www.dns-sd.org/ServiceTypes.html
-" > ${mdnsresponder_config}
+# For types: http://www.dns-sd.org/ServiceTypes.html" > ${mdnsresponder_config}
 
 	/usr/local/bin/xml sel -t \
 		-v "concat(//system/hostname,' WebAdmin Service')" -n \
@@ -95,8 +94,7 @@ create_conf()
 		-i "count(//upnp/enable) > 0" \
 			-v "concat(//system/hostname,' UPnP Service')" -n \
 			-o "_upnp._tcp. local." -n \
-			-o "1900" -n \
-			-n \
+			-o "1900" \
 		-b \
 		${configxml_file} >> ${mdnsresponder_config}
 }
