@@ -116,7 +116,7 @@ function rc_update_service($name) {
 	$enabled = rc_is_service_enabled($name);
 
 	// Update rc.conf and execute rc script.
-	if ($enabled) {
+	if (0 == $enabled) {
 		rc_update_rcconf($name, "enable");
 
 		switch ($running) {
@@ -149,7 +149,9 @@ function rc_update_rcconf($name,$state) {
 	}
 
 	// Update /etc/rc.conf.
-	mwexec("/usr/local/sbin/rconf service {$state} {$rcvar[1]}");
+	$retval = mwexec("/usr/local/sbin/rconf service {$state} {$rcvar[1]}");
+
+	return $retval;
 }
 
 // Check if service is enabled.
@@ -167,6 +169,6 @@ function rc_is_service_enabled($name) {
 	// Execute query.
 	exec("/usr/local/bin/xml sel -t {$xquery[1]} {$g['conf_path']}/config.xml",$result);
 
-	return ("0" === $result[0]);
+	return ("0" === $result[0]) ? 0 : 1;
 }
 ?>

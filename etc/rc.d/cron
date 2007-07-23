@@ -112,7 +112,7 @@ HOME=/var/log
 			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
 			-i "all_weekdays[. != "0"]" -o "*" -b \
 			-o " " \
-			-o "root /etc/rc.shutdown" \
+			-o "root /sbin/shutdown -p now" \
 			${configxml_file} >> ${cron_config}
 	fi
 }
