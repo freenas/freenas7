@@ -47,14 +47,14 @@ function system_stop_common() {
 
 function system_reboot() {
 	// Initiate halt. Everything will be done automatically
-	// in /etc/rc.dhutdown by executing rc-init scripts in
+	// in /etc/rc.shutdown by executing rc-init scripts in
 	// reverse order (the 'KEYWORD: shutdown' must be defined).
 	mwexec("/sbin/shutdown -r now");
 }
 
 function system_halt() {
 	// Initiate halt. Everything will be done automatically
-	// in /etc/rc.dhutdown by executing rc-init scripts in
+	// in /etc/rc.shutdown by executing rc-init scripts in
 	// reverse order (the 'KEYWORD: shutdown' must be defined).
 	mwexec("/sbin/shutdown -p now");
 }
