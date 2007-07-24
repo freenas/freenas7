@@ -77,6 +77,11 @@ class FileChooser
       $dir = dirname($dir).'/';
     }
 
+		// Check if directory string end with '/'. Add it if necessary.
+		if ("/" !== substr(strrev($dir),0,1)) {
+			$dir .= "/";
+		}
+
 		// Get sorting vars from URL, if nothing is set, sort by N [file Name].
 		$this->cfg['sortMode'] = (isset($_GET['N']) ? 'N' :
 			        				 (isset($_GET['S']) ? 'S' :
