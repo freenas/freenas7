@@ -36,7 +36,7 @@ FreeNAS 0.685b2:
 Bug fixs:
 - Fix bug in UPnP rc-script. There was a bug when sharing multiple directories.
 - Modified /etc/rc.d/htpasswd script to prevent creation of malformed file.
-- Modify Filechooser GUI.
+- Modify Filechooser GUI and fix some bugs.
 - Fix typos in WebGUI. Thanks to El Marconi.
 - Fix bugs in rc-script processing.
 - Fix bug in scheduled shutdown.
