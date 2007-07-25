@@ -43,6 +43,7 @@ Bug fixs:
 - Fix typo in diag_infos_raid.php. Thanks to Dan Merschi.
 - Fix bug in mdnsresponder rc-script.
 - Fix bug in iscsi-target rc-script. Keep order of targets.
+- Fix bug in pureftpd rc-script.
 
 FreeNAS 0.685b1:
 ----------------

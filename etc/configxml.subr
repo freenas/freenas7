@@ -6,6 +6,7 @@
 #
 
 configxml_file=${configxml_file:-"/conf/config.xml"}
+configxml_root=`cat /etc/prd.name | tr '[:upper:]' '[:lower:]'`
 
 # configxml_isset xpath
 # Check in /conf/config.xml if xpath is available/found.
