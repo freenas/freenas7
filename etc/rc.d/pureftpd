@@ -36,22 +36,22 @@ create_conf()
 	fi
 
 	# Set command args.
-	command_args=`/usr/local/bin/xml sel -t -m "//ftp" \
-		-v "concat('-S ',port,' ')" \
-		-v "concat('-c ',numberclients,' ')" \
-		-v "concat('-I ',timeout,' ')" \
-		-o "-M -B -b " \
-		-i "string-length(maxconperip) > 0" -v "concat('-C ',maxconperip,' ')" -b \
-		-i "count(anonymous) > 0" -i "count(localuser) = 0" -o "-e " -b -b \
-		-i "count(anonymous) = 0" -i "count(localuser) > 0" -o "-E " -b -b \
-		-i "pasv_min_port[. != '0']" -i "pasv_max_port[. != '0']" -v "concat('-p ',pasv_min_port,':',pasv_max_port,' ')" -b -b \
-		-i "string-length(filemask) > 0" -i "string-length(directorymask) > 0" -v "concat('-U ',filemask,':',directorymask,' ')" -b -b \
-		-i "string-length(filemask) = 0" -i "string-length(directorymask) = 0" -o "-U 077:022 " -b -b \
-		-i "string-length(pasv_address) > 0" -v "concat('-P ',pasv_address,' ')" -b \
-		-i "count(natmode) > 0" -o "-N " -b \
-		-i "count(fxp) > 0" -o "-W " -b \
-		-i "count(keepallfiles) > 0" -o "-K " -b \
-		-i "count(permitrootlogin) = 0" -o "-u 1 " -b \
+	command_args=`/usr/local/bin/xml sel -t -m "/${configxml_root}/ftp" \
+		-v "concat('-S ',port)" \
+		-v "concat(' -c ',numberclients)" \
+		-v "concat(' -I ',timeout)" \
+		-o " -M -B -b" \
+		-i "string-length(maxconperip) > 0" -v "concat(' -C ',maxconperip)" -b \
+		-i "count(anonymous) > 0" -i "count(localuser) = 0" -o " -e" -b -b \
+		-i "count(anonymous) = 0" -i "count(localuser) > 0" -o " -E" -b -b \
+		-i "pasv_min_port[. != '0']" -i "pasv_max_port[. != '0']" -v "concat(' -p ',pasv_min_port,':',pasv_max_port)" -b -b \
+		-i "string-length(filemask) > 0" -i "string-length(directorymask) > 0" -v "concat(' -U ',filemask,':',directorymask)" -b -b \
+		-i "string-length(filemask) = 0" -i "string-length(directorymask) = 0" -o " -U 077:022" -b -b \
+		-i "string-length(pasv_address) > 0" -v "concat(' -P ',pasv_address)" -b \
+		-i "count(natmode) > 0" -o " -N" -b \
+		-i "count(fxp) > 0" -o " -W" -b \
+		-i "count(keepallfiles) > 0" -o " -K" -b \
+		-i "count(permitrootlogin) = 0" -o " -u 1" -b \
 		${configxml_file}`
 }
 
