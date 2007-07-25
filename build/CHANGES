@@ -42,6 +42,7 @@ Bug fixs:
 - Fix bug in scheduled shutdown.
 - Fix typo in diag_infos_raid.php. Thanks to Dan Merschi.
 - Fix bug in mdnsresponder rc-script.
+- Fix bug in iscsi-target rc-script. Keep order of targets.
 
 FreeNAS 0.685b1:
 ----------------

@@ -11,38 +11,27 @@
 name="iscsi_target"
 rcvar=`set_rcvar`
 
+# Custom commands
+start_precmd="create_conf"
+
 # Defaults
-iscsi_target_enable="${iscsi_target_enable:=NO}"
+iscsi_target_enable=${iscsi_target_enable:-"NO"}
 iscsi_target_config="/var/etc/iscsi/targets"
 command="/usr/local/bin/iscsi-target"
 command_args="-f ${iscsi_target_config}"
-required_files="/var/etc/iscsi/targets"
 pidfile="/var/run/iscsi-target.pid"
 
 create_conf()
 {
-	local _disknum _i _data
-
 	# Clear existing file.
 	cat /dev/null > ${iscsi_target_config}
 
 	# Iterate over all configured disks.
-	_disknum=`/usr/local/bin/xml sel -t -v "count(//iscsitarget/vdisk)" ${configxml_file}`
-	_i=0
-	while [ ${_disknum} -gt 0 ]
-	do
-		/usr/local/bin/xml sel -t -m "//iscsitarget/vdisk[position()=${_disknum}]" \
-			-o "extent${_i} /mnt/" -v sharename -o "/iscsi_target${_i} 0 " -v size -o "MB" -n \
-			-o "target${_i} rw extent${_i} " -v network \
-			${configxml_file} >> ${iscsi_target_config}
-
-		_i=$(( ${_i} + 1 ))
-		_disknum=$(( ${_disknum} - 1 ))
-	done
+	/usr/local/bin/xml sel -t -m "//iscsitarget/vdisk" \
+		-v "concat('extent',position()-1,' /mnt/',sharename,'/iscsi_target',position()-1,' 0 ',size,'MB')" -n \
+		-v "concat('target',position()-1,' rw extent',position()-1,' ',network)" -n \
+		${configxml_file} >> ${iscsi_target_config}
 }
-
-# Create '/var/etc/iscsi/targets' configuration file.
-create_conf
 
 load_rc_config ${name}
 run_rc_command "$1"
