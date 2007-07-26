@@ -40,7 +40,7 @@ $listtags = explode(" ", "key dnsserver winsserver disk vdisk diskr sharetosync 
 	"staticmap route pipe queue shellcmd cacert earlyshellcmd user group " .
 	"servernat nfsnetworks passthrumac allowedip mount vlan domainoverrides " .
 	"minute hour day month weekday content rsyncclient rsynclocal package " .
-	"ipv6dnsserver share");
+	"ipv6dnsserver share auxparam");
 
 function startElement($parser, $name, $attrs) {
 	global $depth, $curpath, $config, $havedata, $listtags;

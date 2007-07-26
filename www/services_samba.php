@@ -39,6 +39,11 @@ if (!is_array($config['samba'])) {
 	$config['samba'] = array();
 }
 
+if(!is_array($config['samba']['auxparam']))
+	$config['samba']['auxparam'] = array();
+
+sort($config['samba']['auxparam']);
+
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
@@ -65,9 +70,9 @@ $pconfig['readahead'] = isset($config['samba']['readahead']);
 $pconfig['createmask'] = $config['samba']['createmask'];
 $pconfig['directorymask'] = $config['samba']['directorymask'];
 
-if ($_POST)
-{
+if ($_POST) {
 	unset($input_errors);
+
 	$pconfig = $_POST;
 
 	$reqdfields = array();
@@ -124,14 +129,28 @@ if ($_POST)
 			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
+
 		$savemsg = get_std_save_message($retval);
+
+		if(0 == $retval) {
+			if(file_exists($d_smbconfdirty_path))
+				unlink($d_smbconfdirty_path);
+		}
 	}
 }
+
+if($_GET['act'] === "del") {
+	/* Remove entry from auxparam list */
+	unset($config['samba']['auxparam'][$_GET['id']]);
+	write_config();
+	touch($d_smbconfdirty_path);
+	header("Location: services_samba.php");
+	exit;
+}
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
-
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.netbiosname.disabled = endis;
@@ -178,10 +197,14 @@ function authentication_change() {
   </tr>
   <tr>
     <td class="tabcont">
-      <?php if ($input_errors) print_input_errors($input_errors); ?>
-      <?php if ($savemsg) print_info_box($savemsg); ?>
       <form action="services_samba.php" method="post" name="iform" id="iform">
-        <table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
+				<?php if (file_exists($d_smbconfdirty_path)):?><p>
+					<?php print_info_box_np(gettext("The configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+					<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+				<?php endif;?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
             <td colspan="2" valign="top" class="optsect_t">
     				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
@@ -358,6 +381,36 @@ function authentication_change() {
 							<?=gettext("Allow clients to attempt to store OS/2 style extended attributes on a share.");?></span>
 						</td>
 					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Auxiliary parameters");?></td>
+						<td width="78%" class="vtable">
+							<table width="100%" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td width="90%" class="listhdrr"><?=gettext("Parameter");?></td>
+									<td width="10%" class="list"></td>
+								</tr>
+								<?php if (is_array($config['samba']['auxparam'])):?>
+								<?php $i = 0; foreach($config['samba']['auxparam'] as $auxparamv):?>
+								<tr>
+									<td class="listlr"><?=htmlspecialchars($auxparamv);?> &nbsp;</td>
+									<td valign="middle" nowrap class="list">
+										<?php if(isset($config['samba']['enable'])):?>
+										<a href="services_samba_auxparam.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit parameter");?>" width="17" height="17" border="0"></a>&nbsp;
+										<a href="services_samba.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this parameter?");?>')"><img src="x.gif" title="<?=gettext("Delete parameter"); ?>" width="17" height="17" border="0"></a>
+										<?php endif;?>
+									</td>
+								</tr>
+								<?php $i++; endforeach;?>
+								<?php endif;?>
+								<tr>
+									<td class="list" colspan="1"></td>
+									<td class="list">
+										<a href="services_samba_auxparam.php"><img src="plus.gif" title="<?=gettext("Add parameter");?>" width="17" height="17" border="0"></a>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
   				<tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%">
@@ -379,4 +432,4 @@ enable_change(false);
 authentication_change();
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

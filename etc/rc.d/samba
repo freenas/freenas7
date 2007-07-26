@@ -158,6 +158,9 @@ create_conf()
 		-i "//samba/security[. = 'user']" \
 			-o "passdb backend = smbpasswd" -n \
 		-b \
+		-m "//samba/auxparam" \
+			-v "." -n \
+		-b \
 		-n \
 		-m "//samba/share" \
 			-v "concat('[',name,']')" -n \
@@ -192,6 +195,9 @@ create_conf()
 			-b \
 			-i "count(//afp/enable) > 0" \
 				-o "#vfs objects = netatalk" -n \
+			-b \
+			-m "auxparam" \
+				-v "." -n \
 			-b \
 			-n \
 		-b \

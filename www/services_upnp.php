@@ -49,7 +49,6 @@ sort($config['upnp']['content']);
 $pconfig['enable'] = isset($config['upnp']['enable']);
 $pconfig['name'] = $config['upnp']['name'];
 $pconfig['if'] = $config['upnp']['if'];
-$pconfig['content'] = $config['upnp']['content'];
 $pconfig['port'] = $config['upnp']['port'];
 $pconfig['profile'] = $config['upnp']['profile'];
 $pconfig['web'] = isset($config['upnp']['web']);
@@ -62,7 +61,6 @@ if($_POST) {
 	unset($input_errors);
 
 	$pconfig = $_POST;
-	$pconfig['content'] = $config['upnp']['content'];
 
 	/* input validation */
 	if($_POST['enable']) {
@@ -70,9 +68,6 @@ if($_POST) {
 		$reqdfieldsn = array(gettext("Name"), gettext("Interface"));
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-		if(0 == count($pconfig['content']))
-			$input_errors[] = gettext("No content directory to be shared.");
 	}
 
 	if(!$input_errors) {
@@ -113,7 +108,7 @@ if($_GET['act'] == "del") {
 
 $a_interface = get_interface_list();
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
@@ -129,8 +124,8 @@ function enable_change(enable_change) {
 	<?php if ($input_errors) print_input_errors($input_errors); ?>
 	<?php if ($savemsg) print_info_box($savemsg); ?>
 	<?php if (file_exists($d_upnpconfdirty_path)): ?><p>
-	<?php print_info_box_np(gettext("The content directory list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
-	<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+		<?php print_info_box_np(gettext("The content directory list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+		<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
 	<?php endif; ?>
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
@@ -174,7 +169,8 @@ function enable_change(enable_change) {
             <td width="90%" class="listhdrr"><?=gettext("Directory");?></td>
             <td width="10%" class="list"></td>
           </tr>
-					<?php $i = 0; foreach($pconfig['content'] as $contentv): ?>
+					<?php if (is_array($config['upnp']['content'])):?>
+					<?php $i = 0; foreach($config['upnp']['content'] as $contentv): ?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($contentv);?> &nbsp;</td>
 						<td valign="middle" nowrap class="list">
@@ -185,6 +181,7 @@ function enable_change(enable_change) {
 						</td>
 					</tr>
 					<?php $i++; endforeach; ?>
+					<?php endif;?>
 					<tr>
 						<td class="list" colspan="1"></td>
 						<td class="list">
@@ -237,4 +234,4 @@ function enable_change(enable_change) {
 enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

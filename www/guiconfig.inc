@@ -66,6 +66,7 @@ $d_rsynclocaldirty_path = $g['varrun_path'] . "/rsynclocal.dirty";
 $d_raidconfdirty_path = $g['varrun_path'] . "/raid.conf.dirty";
 $d_userconfdirty_path = $g['varrun_path'] . "/user.conf.dirty";
 $d_groupconfdirty_path = $g['varrun_path'] . "/group.conf.dirty";
+$d_smbconfdirty_path = $g['varrun_path'] . "/smb.conf.dirty";
 $d_smbshareconfdirty_path = $g['varrun_path'] . "/smbshare.conf.dirty";
 $d_upnpconfdirty_path = $g['varrun_path'] . "/upnp.conf.dirty";
 $d_nfsconfdirty_path = $g['varrun_path'] . "/nfs.conf.dirty";

@@ -12,6 +12,8 @@ Minors changes:
   with you're UPnP client also try the DLNA compliant profile.
 - Rename CIFS to CIFS/SMB for better understanding.
 - Upgrade dp.SyntaxHighlighter to 1.5.
+- Add attribute //samba/auxparam and //samba/share/auxparam to add auxiliary parameters.
+- Add 'Auxiliary parameters' field on CIFS/SMB page to manage auxiliary parameters.
 
 Bug fixs:
 

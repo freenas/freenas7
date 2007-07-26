@@ -195,6 +195,7 @@
 		// createmask and directorymask can be used to overwrite default values when security=share
 		<createmask>0666</createmask>
 		<directorymask>0777</directorymask>
+		<auxparam></auxparam>
 		<share>
 			<name>xxx</name>
 			<path>/mnt/xxx</path>
@@ -202,6 +203,7 @@
 			<browseable/>
 			<inheritpermissions/>
 			<recyclebin/>
+			<auxparam></auxparam>
 		</share>
 		-->
 	</samba>
