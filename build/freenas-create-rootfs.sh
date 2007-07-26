@@ -97,6 +97,7 @@ ln -s /var/run/.htpasswd usr/local/www/.htpasswd
 ln -s /var/etc/resolv.conf etc/resolv.conf
 ln -s /var/etc/master.passwd etc/master.passwd
 ln -s /var/etc/passwd etc/passwd
+ln -s /var/etc/exports etc/exports
 ln -s /var/etc/group etc/group
 ln -s /var/etc/hosts etc/hosts
 ln -s /var/etc/pwd.db etc/pwd.db

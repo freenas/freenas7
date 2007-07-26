@@ -16,6 +16,7 @@ Minors changes:
 - Add 'Auxiliary parameters' field on CIFS/SMB page to manage auxiliary parameters.
 
 Bug fixs:
+- Add missing link /etc/exports -> /var/etc/exports.
 
 Known bugs:
 - NTFS mount points are not mounted after creation, a reboot is necessary.

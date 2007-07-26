@@ -2,7 +2,6 @@
 <?php
 /*
 	services_nfs.php
-	
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
@@ -47,26 +46,18 @@ sort($config['nfs']['nfsnetworks']);
 
 $pconfig['enable'] = isset($config['nfs']['enable']);
 $pconfig['mapall'] = $config['nfs']['mapall'];
-$pconfig['nfsnetworks'] = $config['nfs']['nfsnetworks'];
 
 if ($_POST) {
 	unset($input_errors);
 
 	$pconfig = $_POST;
-	$pconfig['nfsnetworks'] = $config['nfs']['nfsnetworks'];
-
-	/* input validation */
-	if($_POST['enable']) {
-		if(0 == count($pconfig['nfsnetworks']))
-			$input_errors[] = gettext("No networks declared.");
-	}
 
 	if (!$input_errors) {
 		$config['nfs']['enable'] = $_POST['enable'] ? true : false;
 		$config['nfs']['mapall'] = $_POST['mapall'];
 
 		write_config();
-		
+
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
@@ -89,14 +80,14 @@ if ($_POST) {
 
 if($_GET['act'] == "del") {
 	/* Remove network entry from list */
-	$config['nfs']['nfsnetworks'] = array_diff($config['nfs']['nfsnetworks'],array($config['nfs']['nfsnetworks'][$_GET['id']]));
+	unset($config['nfs']['nfsnetworks'][$_GET['id']]);
 	write_config();
 	touch($d_nfsconfdirty_path);
 	header("Location: services_nfs.php");
 	exit;
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
@@ -137,15 +128,16 @@ function enable_change(enable_change) {
       </td>
     </tr>
 		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorized");?></td>
-      <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
-        <table width="100%" border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td width="90%" class="listhdrr"><?=gettext("Networks");?></td>
-            <td width="10%" class="list"></td>
-          </tr>
-					<?php $i = 0; foreach($pconfig['nfsnetworks'] as $nfsnetworksv): ?>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("Authorized");?></td>
+			<td width="78%" class="vtable">
+				<?=$mandfldhtml;?>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="90%" class="listhdrr"><?=gettext("Networks");?></td>
+						<td width="10%" class="list"></td>
+					</tr>
+					<?php if (is_array($config['nfs']['nfsnetworks'])):?>
+					<?php $i = 0; foreach($config['nfs']['nfsnetworks'] as $nfsnetworksv): ?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($nfsnetworksv);?> &nbsp;</td>
 						<td valign="middle" nowrap class="list">
@@ -156,6 +148,7 @@ function enable_change(enable_change) {
 						</td>
 					</tr>
 					<?php $i++; endforeach; ?>
+					<?php endif;?>
 					<tr>
 						<td class="list" colspan="1"></td>
 						<td class="list">
@@ -183,4 +176,4 @@ function enable_change(enable_change) {
 enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
