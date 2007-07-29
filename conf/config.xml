@@ -272,11 +272,18 @@
 	<syslog>
 		<!--
 		<reverse/>
-		<enable/>
 		<remoteserver>xxx.xxx.xxx.xxx</remoteserver>
-		<system/>
 		<nologdefaultblock/>
 		<resolve/>
+		<nentries/>
+		<rawfilter/>
+		<enable/>
+		<sshd/>
+		<ftp/>
+		<rsyncd/>
+		<smartd/>
+		<daemon/>
+		<system/>
 		-->
 	</syslog>
 	<access>
@@ -294,12 +301,4 @@
 		<forcedupdateperiod></forcedupdateperiod>
 		-->
 	</dynamicdns>
-	<packages>
-		<!--
-		<path>/mnt/Data/packages</path>
-		<package>
-			<filename>xxx.tbz</filename>
-		</package>
-		-->
-	</packages>
 </freenas>
