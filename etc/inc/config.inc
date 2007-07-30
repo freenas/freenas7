@@ -732,7 +732,7 @@ function convert_config() {
 	}
 
 	/* Convert 2.1 -> 2.2 */
-	/* Remove //system/harddiskstandby */
+	/* Add //samba/share and remove useless //samba/xxx attributes.
 	if ($config['version'] === "2.1") {
 		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
 			$share = array();
@@ -754,6 +754,35 @@ function convert_config() {
 		unset($config['samba']['recyclebin']);
 
 		$config['version'] = "2.2";
+	}
+
+	/* Convert 2.2 -> 2.3 */
+	/* Set default UPnP profile //upnp/profile. */
+	if ($config['version'] === "2.2") {
+		$config['upnp']['profile'] = "default";
+
+		$config['version'] = "2.3";
+	}
+
+	/* Convert 2.3 -> 2.4 */
+	/* Refactor //syslog. */
+	if ($config['version'] === "2.3") {
+	
+		$config['syslogd']['reverse'] = isset($config['syslog']['reverse']);
+		$config['syslogd']['nentries'] = $config['syslog']['nentries'];
+		$config['syslogd']['resolve'] = isset($config['syslog']['resolve']);
+		$config['syslogd']['remote']['enable'] = isset($config['syslog']['enable']);
+		$config['syslogd']['remote']['ipaddr'] = $config['syslog']['remoteserver'];
+		$config['syslogd']['remote']['daemon'] = isset($config['syslog']['daemon']);
+		$config['syslogd']['remote']['ftp'] = isset($config['syslog']['ftp']);
+		$config['syslogd']['remote']['rsyncd'] = isset($config['syslog']['rsyncd']);
+		$config['syslogd']['remote']['smartd'] = isset($config['syslog']['smartd']);
+		$config['syslogd']['remote']['sshd'] = isset($config['syslog']['sshd']);
+		$config['syslogd']['remote']['system'] = isset($config['syslog']['system']);
+
+		unset($config['syslog']);
+
+		$config['version'] = "2.4";
 	}
 
 	write_config();

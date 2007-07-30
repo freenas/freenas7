@@ -53,7 +53,7 @@ if ($_GET['act'] == "del") {
 		exit;
 	}
 }
-$resolve = isset($config['syslog']['resolve']);
+$resolve = isset($config['syslogd']['resolve']);
 ?>
 <?php include("fbegin.inc"); ?>
 <?php

@@ -35,18 +35,17 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 
-$pconfig['reverse'] = isset($config['syslog']['reverse']);
-$pconfig['nentries'] = $config['syslog']['nentries'];
-$pconfig['remoteserver'] = $config['syslog']['remoteserver'];
-$pconfig['sshd'] = isset($config['syslog']['sshd']);
-$pconfig['ftp'] = isset($config['syslog']['ftp']);
-$pconfig['rsyncd'] = isset($config['syslog']['rsyncd']);
-$pconfig['smartd'] = isset($config['syslog']['smartd']);
-$pconfig['daemon'] = isset($config['syslog']['daemon']);
-$pconfig['system'] = isset($config['syslog']['system']);
-$pconfig['enable'] = isset($config['syslog']['enable']);
-$pconfig['rawfilter'] = isset($config['syslog']['rawfilter']);
-$pconfig['resolve'] = isset($config['syslog']['resolve']);
+$pconfig['reverse'] = isset($config['syslogd']['reverse']);
+$pconfig['nentries'] = $config['syslogd']['nentries'];
+$pconfig['resolve'] = isset($config['syslogd']['resolve']);
+$pconfig['enable'] = isset($config['syslogd']['remote']['enable']);
+$pconfig['ipaddr'] = $config['syslogd']['remote']['ipaddr'];
+$pconfig['daemon'] = isset($config['syslogd']['remote']['daemon']);
+$pconfig['ftp'] = isset($config['syslogd']['remote']['ftp']);
+$pconfig['rsyncd'] = isset($config['syslogd']['remote']['rsyncd']);
+$pconfig['smartd'] = isset($config['syslogd']['remote']['smartd']);
+$pconfig['sshd'] = isset($config['syslogd']['remote']['sshd']);
+$pconfig['system'] = isset($config['syslogd']['remote']['system']);
 
 if (!$pconfig['nentries'])
 	$pconfig['nentries'] = 50;
@@ -56,7 +55,7 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	if ($_POST['enable'] && !is_ipaddr($_POST['remoteserver'])) {
+	if ($_POST['enable'] && !is_ipaddr($_POST['ipaddr'])) {
 		$input_errors[] = gettext("A valid IP address must be specified.");
 	}
 	if (($_POST['nentries'] < 5) || ($_POST['nentries'] > 1000)) {
@@ -64,19 +63,18 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$config['syslog']['reverse'] = $_POST['reverse'] ? true : false;
-		$config['syslog']['nentries'] = (int)$_POST['nentries'];
-		$config['syslog']['remoteserver'] = $_POST['remoteserver'];
-		$config['syslog']['sshd'] = $_POST['sshd'] ? true : false;
-		$config['syslog']['ftp'] = $_POST['ftp'] ? true : false;
-		$config['syslog']['rsyncd'] = $_POST['rsyncd'] ? true : false;
-		$config['syslog']['smartd'] = $_POST['smartd'] ? true : false;
-		$config['syslog']['daemon'] = $_POST['daemon'] ? true : false;
-		$config['syslog']['system'] = $_POST['system'] ? true : false;
-		$config['syslog']['enable'] = $_POST['enable'] ? true : false;
-		$config['syslog']['rawfilter'] = $_POST['rawfilter'] ? true : false;
-		$config['syslog']['resolve'] = $_POST['resolve'] ? true : false;
-		
+		$config['syslogd']['reverse'] = $_POST['reverse'] ? true : false;
+		$config['syslogd']['nentries'] = (int)$_POST['nentries'];
+		$config['syslogd']['resolve'] = $_POST['resolve'] ? true : false;
+		$config['syslogd']['remote']['enable'] = $_POST['enable'] ? true : false;
+		$config['syslogd']['remote']['ipaddr'] = $_POST['ipaddr'];
+		$config['syslogd']['remote']['daemon'] = $_POST['daemon'] ? true : false;
+		$config['syslogd']['remote']['ftp'] = $_POST['ftp'] ? true : false;
+		$config['syslogd']['remote']['rsyncd'] = $_POST['rsyncd'] ? true : false;
+		$config['syslogd']['remote']['smartd'] = $_POST['smartd'] ? true : false;
+		$config['syslogd']['remote']['sshd'] = $_POST['sshd'] ? true : false;
+		$config['syslogd']['remote']['system'] = $_POST['system'] ? true : false;
+
 		write_config();
 		
 		$retval = 0;
@@ -94,7 +92,7 @@ if ($_POST) {
 <!--
 function enable_change(enable_over) {
 	if (document.iform.enable.checked || enable_over) {
-		document.iform.remoteserver.disabled = 0;
+		document.iform.ipaddr.disabled = 0;
 		document.iform.sshd.disabled = 0;
 		document.iform.system.disabled = 0;
 		document.iform.ftp.disabled = 0;
@@ -102,7 +100,7 @@ function enable_change(enable_over) {
 		document.iform.smartd.disabled = 0;
 		document.iform.daemon.disabled = 0;
 	} else {
-		document.iform.remoteserver.disabled = 1;
+		document.iform.ipaddr.disabled = 1;
 		document.iform.sshd.disabled = 1;
 		document.iform.system.disabled = 1;
 		document.iform.ftp.disabled = 1;
@@ -164,7 +162,7 @@ function enable_change(enable_over) {
 	        <tr> 
 	          <td width="22%" valign="top" class="vncell"><?=gettext("Remote syslog server");?></td>
 	          <td width="78%" class="vtable">
-							<input name="remoteserver" id="remoteserver" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['remoteserver']);?>"> 
+							<input name="ipaddr" id="ipaddr" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>"> 
 	            <br>
 	            <?=gettext("IP address of remote syslog server");?><br><br>
 							<input name="system" id="system" type="checkbox" value="yes" <?php if ($pconfig['system']) echo "checked"; ?>>

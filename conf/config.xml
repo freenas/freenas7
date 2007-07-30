@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>2.2</version>
+	<version>2.4</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -192,9 +192,10 @@
 		<rcvbuf>16384</rcvbuf>
 		<sndbuf>16384</sndbuf>
 		<!--
-		// createmask and directorymask can be used to overwrite default values when security=share 
+		// createmask and directorymask can be used to overwrite default values when security=share
 		<createmask>0666</createmask>
 		<directorymask>0777</directorymask>
+		<auxparam></auxparam>
 		<share>
 			<name>xxx</name>
 			<path>/mnt/xxx</path>
@@ -202,6 +203,7 @@
 			<browseable/>
 			<inheritpermissions/>
 			<recyclebin/>
+			<auxparam></auxparam>
 		</share>
 		-->
 	</samba>
@@ -237,14 +239,15 @@
   	<makedir/>
 	</unison>
 	<upnp>
-    <!--
+		<!--
 		<enable/>
-    <name/>
-    <if/>
-    <content/>
-    <port/>
-    <web/>
-    -->
+		<name>xxx</name>
+		<if>xxx</if>
+		<content>xxx</content>
+		<port>xxx</port>
+		<profile>default|xbox|dlna</profile>
+		<web/>
+		-->
 	</upnp>
   <sshd>
     <!-- <enable/> -->
@@ -266,14 +269,21 @@
 		</ipv6nat>
 		<!-- <ipfstatentries></ipfstatentries> -->
 	</diag>
-	<syslog>
+	<syslogd>
 		<!--
 		<reverse/>
-		<enable/>
-		<remoteserver>xxx.xxx.xxx.xxx</remoteserver>
-		<system/>
-		<nologdefaultblock/>
 		<resolve/>
+		<nentries/>
+		<remote>
+			<enable/>
+			<ipaddr>xxx.xxx.xxx.xxx</ipaddr>
+			<daemon/>
+			<ftp/>
+			<rsyncd/>
+			<smartd/>
+			<sshd/>
+			<system/>
+		</remote>
 		-->
 	</syslog>
 	<access>
@@ -291,12 +301,4 @@
 		<forcedupdateperiod></forcedupdateperiod>
 		-->
 	</dynamicdns>
-	<packages>
-		<!--
-		<path>/mnt/Data/packages</path>
-		<package>
-			<filename>xxx.tbz</filename>
-		</package>
-		-->
-	</packages>
 </freenas>
