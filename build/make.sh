@@ -20,6 +20,7 @@ FREENAS_URL=`cat $FREENAS_SVNDIR/etc/prd.url`
 FREENAS_BOOTDIR="$FREENAS_ROOTDIR/bootloader"
 FREENAS_TMPDIR="/tmp/freenastmp"
 FREENAS_ARCH=$(uname -p)
+FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/trunk"
 
 # Path where to find Makefile includes
 FREENAS_MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
@@ -573,7 +574,7 @@ download_rootfs() {
 
 update_sources() {
 	cd $FREENAS_ROOTDIR
-	svn co https://freenas.svn.sourceforge.net/svnroot/freenas/trunk svn
+	svn co $FREENAS_SVNURL svn
 
 	return 0
 }
