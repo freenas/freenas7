@@ -44,7 +44,7 @@ $optcfg = &$config['interfaces']['opt' . $index];
 
 if ($config['interfaces']['opt' . $index]['ipaddr'] == "dhcp") {
 	$pconfig['type'] = "DHCP";
-	$pconfig['ipaddr'] = get_ipv4addr($optcfg['if']);
+	$pconfig['ipaddr'] = get_ipaddr($optcfg['if']);
 } else {
 	$pconfig['type'] = "Static";
 	$pconfig['ipaddr'] = $optcfg['ipaddr'];
