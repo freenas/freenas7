@@ -20,7 +20,7 @@ command="/usr/sbin/${name}"
 command_args="-ss -f ${syslogd_config}"
 
 # Check if syslog'ing to remote syslog server is enabled.
-if configxml_isset //syslog/enable; then
+if configxml_isset //syslogd/remote/enable; then
 	command_args="-s -f ${syslogd_config}"
 fi
 
@@ -31,7 +31,7 @@ reload_precmd="reload_precmd"
 
 create_conf()
 {
-	echo "local3.*	%/var/log/sshd.log
+	echo "local3.* %/var/log/sshd.log
 local4.* %/var/log/rsyncd.log
 local5.* %/var/log/smartd.log
 ftp.* %/var/log/ftp.log
@@ -39,26 +39,26 @@ daemon.* %/var/log/daemon.log
 *.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local7.none %/var/log/system.log
 security.* %/var/log/system.log
 auth.info;authpriv.info %/var/log/system.log
-*.emerg	*" > ${syslogd_config}
+*.emerg *" > ${syslogd_config}
 
 	# Add remote server configuration if syslog'ing to remote syslog server is enabled.
 	/usr/local/bin/xml sel -t \
-		-i "//syslog/enable" \
-			-i "//syslog/ftp" \
-				-o "ftp.* @" -v "//syslog/remoteserver" -n -b \
-			-i "//syslog/sshd" \
-				-o "local3.* @" -v "//syslog/remoteserver" -n -b \
-			-i "//syslog/rsyncd" \
-				-o "local4.* @" -v "//syslog/remoteserver" -n -b \
-			-i "//syslog/smartd" \
-				-o "local5.* @" -v "//syslog/remoteserver" -n -b \
-			-i "//syslog/daemon" \
-				-o "daemon.* @" -v "//syslog/remoteserver" -n -b \
-			-i "//syslog/system" \
-				-o "*.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local7.none @" -v "//syslog/remoteserver" -n \
-				-o "security.* @" -v "//syslog/remoteserver" -n \
-				-o "auth.info;authpriv.info @" -v "//syslog/remoteserver" -n \
-				-o "*.emerg	@" -v "//syslog/remoteserver" -n -b \
+		-i "//syslogd/remote/enable" \
+			-i "//syslogd/remote/ftp" \
+				-o "ftp.* @" -v "//syslogd/remote/ipaddr" -n -b \
+			-i "//syslogd/remote/sshd" \
+				-o "local3.* @" -v "//syslogd/remote/ipaddr" -n -b \
+			-i "//syslogd/remote/rsyncd" \
+				-o "local4.* @" -v "//syslogd/remote/ipaddr" -n -b \
+			-i "//syslogd/remote/smartd" \
+				-o "local5.* @" -v "//syslogd/remote/ipaddr" -n -b \
+			-i "//syslogd/remote/daemon" \
+				-o "daemon.* @" -v "//syslogd/remote/ipaddr" -n -b \
+			-i "//syslogd/remote/system" \
+				-o "*.notice;kern.debug;lpr.info;mail.crit;news.err;local0.none;local7.none @" -v "//syslogd/remote/ipaddr" -n \
+				-o "security.* @" -v "//syslogd/remote/ipaddr" -n \
+				-o "auth.info;authpriv.info @" -v "//syslogd/remote/ipaddr" -n \
+				-o "*.emerg	@" -v "//syslogd/remote/ipaddr" -n -b \
 		-b \
 		${configxml_file} >> ${syslogd_config}
 }

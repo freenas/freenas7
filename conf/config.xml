@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>2.3</version>
+	<version>2.4</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -269,21 +269,21 @@
 		</ipv6nat>
 		<!-- <ipfstatentries></ipfstatentries> -->
 	</diag>
-	<syslog>
+	<syslogd>
 		<!--
 		<reverse/>
-		<remoteserver>xxx.xxx.xxx.xxx</remoteserver>
-		<nologdefaultblock/>
 		<resolve/>
 		<nentries/>
-		<rawfilter/>
-		<enable/>
-		<sshd/>
-		<ftp/>
-		<rsyncd/>
-		<smartd/>
-		<daemon/>
-		<system/>
+		<remote>
+			<enable/>
+			<ipaddr>xxx.xxx.xxx.xxx</ipaddr>
+			<daemon/>
+			<ftp/>
+			<rsyncd/>
+			<smartd/>
+			<sshd/>
+			<system/>
+		</remote>
 		-->
 	</syslog>
 	<access>

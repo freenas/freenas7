@@ -7,9 +7,6 @@ Majors changes:
 - Add 'System/Packages' WebGUI page to administrate packages (only available in 'full' install mode).
 
 Minors changes:
-- Add 'Profile' dropdown box on UPnP page. XboX 360 users should use the XboX 360
-  compliant profile. PS3 users should try DLNA. If the 'Default' doesn't work
-  with you're UPnP client also try the DLNA compliant profile.
 - Rename CIFS to CIFS/SMB for better understanding.
 - Upgrade dp.SyntaxHighlighter to 1.5.
 - Add attribute //samba/auxparam and //samba/share/auxparam to add auxiliary parameters.
@@ -36,6 +33,11 @@ Major services can be easly authenticated using PAM-LDAP, but for Samba too is h
 FreeNAS 0.685b2:
 ----------------
 
+Minors changes:
+- Add 'Profile' dropdown box on UPnP page. XboX 360 users should use the XboX 360
+  compliant profile. PS3 users should try DLNA. If the 'Default' doesn't work
+  with you're UPnP client also try the DLNA compliant profile.
+
 Bug fixs:
 - Fix bug in UPnP rc-script. There was a bug when sharing multiple directories.
 - Modified /etc/rc.d/htpasswd script to prevent creation of malformed file.
@@ -47,6 +49,7 @@ Bug fixs:
 - Fix bug in mdnsresponder rc-script.
 - Fix bug in iscsi-target rc-script. Keep order of targets.
 - Fix bug in pureftpd rc-script.
+- Fix syslogd bug.
 
 FreeNAS 0.685b1:
 ----------------

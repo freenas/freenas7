@@ -35,7 +35,7 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 
-$nentries = $config['syslog']['nentries'];
+$nentries = $config['syslogd']['nentries'];
 if (!$nentries)
 	$nentries = 50;
 
@@ -50,7 +50,7 @@ if ($_POST['clear'])
 function dump_clog($logfile, $tail, $withorig = true) {
 	global $g, $config;
 
-	$sor = isset($config['syslog']['reverse']) ? "-r" : "";
+	$sor = isset($config['syslogd']['reverse']) ? "-r" : "";
 
 	exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $tail, $logarr);
 	
