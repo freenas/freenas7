@@ -17,6 +17,8 @@ start_precmd="create_conf"
 # Defaults
 iscsi_target_enable=${iscsi_target_enable:-"NO"}
 iscsi_target_config="/var/etc/iscsi/targets"
+iscsi_target_auths="/var/etc/iscsi/auths"
+iscsi_target_passwd="/var/etc/iscsi/passwd"
 command="/usr/local/bin/iscsi-target"
 command_args="-f ${iscsi_target_config}"
 pidfile="/var/run/iscsi-target.pid"
@@ -25,6 +27,14 @@ create_conf()
 {
 	# Clear existing file.
 	cat /dev/null > ${iscsi_target_config}
+
+	# Create passwd and auths file if necessary.
+	if [ ! -e ${iscsi_target_auths} ]; then
+		cat /dev/null > ${iscsi_target_auths}
+	fi
+	if [ ! -e ${iscsi_target_passwd} ]; then
+		cat /dev/null > ${iscsi_target_passwd}
+	fi
 
 	# Iterate over all configured disks.
 	/usr/local/bin/xml sel -t -m "//iscsitarget/vdisk" \

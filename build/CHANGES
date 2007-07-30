@@ -50,6 +50,7 @@ Bug fixs:
 - Fix bug in iscsi-target rc-script. Keep order of targets.
 - Fix bug in pureftpd rc-script.
 - Fix syslogd bug.
+- Add missing files /etc/iscsi/auths and /etc/iscsi/passwd.
 
 FreeNAS 0.685b1:
 ----------------

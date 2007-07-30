@@ -61,7 +61,6 @@ mkdir etc/defaults ;
 mkdir etc/inc ;
 mkdir etc/pam.d ;
 mkdir etc/ssh ;
-mkdir etc/iscsi ;
 mkdir etc/rc.d ;
 mkdir etc/rc.d.php ;
 mkdir lib ;
@@ -92,6 +91,7 @@ mkdir tmp ;
 mkdir var ;
 
 # Creating symbolic links. Most of the target files will be created at runtime.
+# !!! For optional ports add the required links in the port Makefile. !!!
 ln -s cf/conf conf
 ln -s /var/run/.htpasswd usr/local/www/.htpasswd
 ln -s /var/etc/resolv.conf etc/resolv.conf
@@ -105,7 +105,6 @@ ln -s /var/etc/spwd.db etc/spwd.db
 ln -s /var/etc/crontab etc/crontab
 ln -s /var/etc/ssh/sshd_config etc/ssh/sshd_config
 ln -s /var/etc/ssh/ssh_host_dsa_key etc/ssh/ssh_host_dsa_key
-ln -s /var/etc/iscsi/targets etc/iscsi/targets
 ln -s /var/etc/pam.d/ftp etc/pam.d/ftp
 ln -s /var/etc/pam.d/ftp etc/pam.d/pure-ftpd
 ln -s /var/etc/pam.d/sshd etc/pam.d/sshd
