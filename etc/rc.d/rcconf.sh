@@ -20,7 +20,7 @@ sethostname()
 {
 	local _hostname
 
-	_hostname=`/usr/local/bin/xml sel -t -m "//system" -v hostname -o "." -v domain ${configxml_file}`
+	_hostname=`/usr/local/bin/xml sel -t -v "concat(//system/hostname,'.',//system/domain)" ${configxml_file}`
 
 	eval /usr/local/sbin/rconf attribute set hostname "${_hostname}"
 }
