@@ -285,7 +285,7 @@
 			<system/>
 		</remote>
 		-->
-	</syslog>
+	</syslogd>
 	<access>
 		<userid>1002</userid>
 		<groupid>1002</groupid>
