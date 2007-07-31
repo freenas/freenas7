@@ -35,17 +35,19 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 
-$pconfig['reverse'] = isset($config['syslogd']['reverse']);
+$pconfig['reverse']  = isset($config['syslogd']['reverse']);
 $pconfig['nentries'] = $config['syslogd']['nentries'];
-$pconfig['resolve'] = isset($config['syslogd']['resolve']);
-$pconfig['enable'] = isset($config['syslogd']['remote']['enable']);
-$pconfig['ipaddr'] = $config['syslogd']['remote']['ipaddr'];
-$pconfig['daemon'] = isset($config['syslogd']['remote']['daemon']);
-$pconfig['ftp'] = isset($config['syslogd']['remote']['ftp']);
-$pconfig['rsyncd'] = isset($config['syslogd']['remote']['rsyncd']);
-$pconfig['smartd'] = isset($config['syslogd']['remote']['smartd']);
-$pconfig['sshd'] = isset($config['syslogd']['remote']['sshd']);
-$pconfig['system'] = isset($config['syslogd']['remote']['system']);
+$pconfig['resolve']  = isset($config['syslogd']['resolve']);
+if (is_array($config['syslogd']['remote'])) {
+	$pconfig['enable'] = isset($config['syslogd']['remote']['enable']);
+	$pconfig['ipaddr'] = $config['syslogd']['remote']['ipaddr'];
+	$pconfig['daemon'] = isset($config['syslogd']['remote']['daemon']);
+	$pconfig['ftp']    = isset($config['syslogd']['remote']['ftp']);
+	$pconfig['rsyncd'] = isset($config['syslogd']['remote']['rsyncd']);
+	$pconfig['smartd'] = isset($config['syslogd']['remote']['smartd']);
+	$pconfig['sshd']   = isset($config['syslogd']['remote']['sshd']);
+	$pconfig['system'] = isset($config['syslogd']['remote']['system']);
+}
 
 if (!$pconfig['nentries'])
 	$pconfig['nentries'] = 50;
