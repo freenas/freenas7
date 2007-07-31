@@ -346,6 +346,12 @@ usr/bin/uudecode:usr/bin/b64decode
 ## install -- install binaries
 usr/bin/install
 
+## basename, dirname -- return filename or directory portion of pathname
+usr/bin/basename:usr/bin/dirname
+
+## tee -- pipe fitting
+usr/bin/tee
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol

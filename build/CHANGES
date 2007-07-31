@@ -34,7 +34,7 @@ FreeNAS 0.685b3:
 ----------------
 
 Bug fixs:
-- Add missing binary /usr/bin/install.
+- Add missing binary /usr/bin/dirname, /usr/bin/install and /usr/bin/tee.
 
 FreeNAS 0.685b2:
 ----------------
