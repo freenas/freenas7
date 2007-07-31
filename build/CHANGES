@@ -8,7 +8,7 @@ Majors changes:
 Minors changes:
 
 Bug fixs:
-- Add missing binary /usr/bin/install.
+- Add missing binary /usr/bin/dirname, /usr/bin/install and /usr/bin/tee.
 
 Known bugs:
 
