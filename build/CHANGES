@@ -52,6 +52,7 @@ Bug fixs:
 - Fix syslogd bug.
 - Add missing files /etc/iscsi/auths and /etc/iscsi/passwd.
 - Fix call to undefined function get_ipv4addr() in /usr/local/www/interfaces_opt.php.
+- Fix bug in 'hostname' creation.
 
 FreeNAS 0.685b1:
 ----------------
