@@ -343,6 +343,9 @@ usr/bin/head
 ## uudecode, b64decode -- decode a binary file
 usr/bin/uudecode:usr/bin/b64decode
 
+## install -- install binaries
+usr/bin/install
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
