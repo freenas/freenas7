@@ -1,7 +1,7 @@
 <?php
 /*
 	rc.inc
-	Copyright © 2007 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2007 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
