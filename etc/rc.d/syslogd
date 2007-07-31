@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: syslogd
-# REQUIRE: mountcritlocal
+# REQUIRE: mountcritlocal NETWORKING
 # BEFORE: SERVERS
 
 . /etc/rc.subr
