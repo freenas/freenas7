@@ -767,7 +767,6 @@ function convert_config() {
 	/* Convert 2.3 -> 2.4 */
 	/* Refactor //syslog. */
 	if ($config['version'] === "2.3") {
-	
 		$config['syslogd']['reverse'] = isset($config['syslog']['reverse']);
 		$config['syslogd']['nentries'] = $config['syslog']['nentries'];
 		$config['syslogd']['resolve'] = isset($config['syslog']['resolve']);
