@@ -270,10 +270,10 @@
 		<!-- <ipfstatentries></ipfstatentries> -->
 	</diag>
 	<syslogd>
+		<nentries>50</nentries>
 		<!--
 		<reverse/>
 		<resolve/>
-		<nentries/>
 		<remote>
 			<enable/>
 			<ipaddr>xxx.xxx.xxx.xxx</ipaddr>
