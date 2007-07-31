@@ -17,17 +17,20 @@ syslogd_enable=${syslogd_enable:-"NO"}
 syslogd_config=${syslogd_config:-"/var/etc/${name}.conf"}
 pidfile="/var/run/syslog.pid"
 command="/usr/sbin/${name}"
-command_args="-ss -f ${syslogd_config}"
-
-# Check if syslog'ing to remote syslog server is enabled.
-if configxml_isset //syslogd/remote/enable; then
-	command_args="-s -f ${syslogd_config}"
-fi
+command_args="-f ${syslogd_config}"
 
 # Custom commands
 start_precmd="start_precmd"
 extra_commands="reload"
 reload_precmd="reload_precmd"
+
+load_rc_config ${name}
+
+# Check if syslog'ing to remote syslog server is disabled.
+if ! configxml_isset //syslogd/remote/enable; then
+	syslogd_flags="-ss"
+	command_args="-f ${syslogd_config}"
+fi
 
 create_conf()
 {
@@ -77,5 +80,4 @@ start_precmd()
 	reload_precmd
 }
 
-load_rc_config ${name}
 run_rc_command "$1"
