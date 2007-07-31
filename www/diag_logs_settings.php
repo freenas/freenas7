@@ -70,12 +70,12 @@ if ($_POST) {
 		$config['syslogd']['resolve'] = $_POST['resolve'] ? true : false;
 		$config['syslogd']['remote']['enable'] = $_POST['enable'] ? true : false;
 		$config['syslogd']['remote']['ipaddr'] = $_POST['ipaddr'];
-		$config['syslogd']['remote']['daemon'] = $_POST['daemon'] ? true : false;
+		$config['syslogd']['remote']['system'] = $_POST['system'] ? true : false;
 		$config['syslogd']['remote']['ftp'] = $_POST['ftp'] ? true : false;
 		$config['syslogd']['remote']['rsyncd'] = $_POST['rsyncd'] ? true : false;
-		$config['syslogd']['remote']['smartd'] = $_POST['smartd'] ? true : false;
 		$config['syslogd']['remote']['sshd'] = $_POST['sshd'] ? true : false;
-		$config['syslogd']['remote']['system'] = $_POST['system'] ? true : false;
+		$config['syslogd']['remote']['smartd'] = $_POST['smartd'] ? true : false;
+		$config['syslogd']['remote']['daemon'] = $_POST['daemon'] ? true : false;
 
 		write_config();
 		
@@ -169,12 +169,12 @@ function enable_change(enable_over) {
 	            <?=gettext("IP address of remote syslog server");?><br><br>
 							<input name="system" id="system" type="checkbox" value="yes" <?php if ($pconfig['system']) echo "checked"; ?>>
 	            <?=gettext("System events");?><br>
-							<input name="sshd" id="sshd" type="checkbox" value="yes" <?php if ($pconfig['sshd']) echo "checked"; ?>>
-	            <?=gettext("SSHD events");?><br>
 							<input name="ftp" id="ftp" type="checkbox" value="yes" <?php if ($pconfig['ftp']) echo "checked"; ?>>
 	            <?=gettext("FTP events");?><br>
 							<input name="rsyncd" id="rsyncd" type="checkbox" value="yes" <?php if ($pconfig['rsyncd']) echo "checked"; ?>>
 	            <?=gettext("RSYNCD events");?><br>
+							<input name="sshd" id="sshd" type="checkbox" value="yes" <?php if ($pconfig['sshd']) echo "checked"; ?>>
+	            <?=gettext("SSHD events");?><br>
 	            <input name="smartd" id="smartd" type="checkbox" value="yes" <?php if ($pconfig['smartd']) echo "checked"; ?>>
 	            <?=gettext("SMARTD events");?><br>
 	            <input name="daemon" id="daemon" type="checkbox" value="yes" <?php if ($pconfig['daemon']) echo "checked"; ?>>
