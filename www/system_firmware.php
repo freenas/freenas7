@@ -114,7 +114,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 
 					if (!verify_gzip_file("{$g['ftmp_path']}/firmware.img")) {
 						$input_errors[] = gettext("The image file is corrupt");
-						unlink("{$g['ftmp_path']}/firmware.img");	
+						unlink("{$g['ftmp_path']}/firmware.img");
 					}
 				}
 			}
@@ -130,11 +130,14 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 			if (!$input_errors && !file_exists($d_firmwarelock_path) && (!$sig_warning || $_POST['sig_override'])) {
 				touch($d_firmwarelock_path);
 
-				if ($g['platform'] === "embedded") {
-					rc_exec_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
-				}
-				else if ($g['platform'] === "full") {
-					rc_exec_script_async("/etc/rc.firmware fullupgrade {$g['ftmp_path']}/firmware.img");
+				switch($g['platform']) {
+					case "embedded":
+						rc_exec_script_async("/etc/rc.firmware upgrade {$g['ftmp_path']}/firmware.img");
+						break;
+
+					case "full":
+						rc_exec_script_async("/etc/rc.firmware fullupgrade {$g['ftmp_path']}/firmware.img");
+						break;
 				}
 
 				$savemsg = sprintf(gettext("The firmware is now being installed. %s will reboot automatically."), get_product_name());
@@ -154,7 +157,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 		$fwinfo = check_firmware_version();
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <?php if ($fwinfo) echo $fwinfo; ?>
@@ -200,4 +203,4 @@ print_info_box($sig_warning);
   </table>
 </form>
 <?php endif; endif; ?>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
