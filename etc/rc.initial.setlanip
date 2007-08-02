@@ -5,21 +5,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2006 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -58,10 +58,10 @@
 		echo "     255.0.0.0     = 8\n\n";
 
 		do {
-			echo "Enter new LAN subnet bit count: ";
+			echo "Enter new LAN subnet bit count (press 'Enter' to use 24): ";
 			$lanbits = chop(fgets($fp));
 			if ($lanbits === "") {
-				exit(0);
+				$lanbits = 24;
 			}
 		} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 32))) == false);
 
@@ -92,14 +92,14 @@
 			$config['system']['dnsserver'] = $dnsserverip;
 		}
 	}
-	
+
 	echo "\nDo you want to use AutoConfiguration for IPv6? (y/n) ";
 
 	if (strcasecmp(chop(fgets($fp)), "y") == 0) {
 		$config['interfaces']['lan']['ipv6addr'] = "auto";
 	} else {
 		do {
-			echo "\nEnter new LAN IPv6 address (press 'Enter' to exit): ";
+			echo "\nEnter new LAN IPv6 address (press 'Enter' to abort): ";
 			$lanipv6 = chop(fgets($fp));
 			if ($lanipv6 === "") {
 				exit(0);
@@ -116,7 +116,7 @@
 
 	$config['interfaces']['lan']['ipv6addr'] = $lanipv6;
 	$config['interfaces']['lan']['ipv6subnet'] = $lanbitsv6;
-	
+
 		do {
 			echo "Enter IPv6 default gateway (press 'Enter' to skip): ";
 			$gatewayipv6 = chop(fgets($fp));
@@ -128,7 +128,7 @@
 		if ($gatewayipv6) {
 			$config['interfaces']['lan']['ipv6gateway'] = $gatewayipv6;
 		}
-	
+
 		do {
 			echo "Enter DNS IPv6 address (press 'Enter' to skip): ";
 			$dnsserveripv6 = chop(fgets($fp));
@@ -141,7 +141,7 @@
 			$config['system']['ipv6dnsserver'] = $dnsserveripv6;
 		}
 	}
-	
+
 	$proto = "http";
 	if ($config['system']['webgui']['protocol'] == "https") {
 		echo "\nDo you want to revert to HTTP as the webGUI protocol? (y/n) ";
@@ -165,7 +165,7 @@
     $laninfov4 = "$lanipv4";
   else
     $laninfov4 = "$lanipv4/$lanbits";
-	
+
   unset($laninfov6);
   if ($config['interfaces']['lan']['ipv6addr'] === "auto")
     $laninfov6 = "$lanipv6";
@@ -173,7 +173,7 @@
     $laninfov6 = "$lanipv6/$lanbitsv6";
 
 	echo <<<EOD
-	
+
 The LAN IP address has been set to:
 - IPv4: $laninfov4
 - IPv6: $laninfov6
