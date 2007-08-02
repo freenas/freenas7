@@ -138,6 +138,9 @@ function interfaces_lan_configure()
 		/* Update /etc/rc.conf */
 		$result = rc_exec_service("rcconf.sh");
 
+		/* Update /etc/resolv */
+		$result |= rc_exec_service("resolv");
+
 		/* Make new /etc/hosts */
 		$result |= rc_exec_service("hosts");
 

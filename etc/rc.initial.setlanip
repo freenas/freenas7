@@ -99,7 +99,7 @@
 		$config['interfaces']['lan']['ipv6addr'] = "auto";
 	} else {
 		do {
-			echo "\nEnter new LAN IPv6 address (press 'Enter' to skip): ";
+			echo "\nEnter new LAN IPv6 address (press 'Enter' to exit): ";
 			$lanipv6 = chop(fgets($fp));
 			if ($lanipv6 === "") {
 				exit(0);
@@ -154,7 +154,6 @@
 	write_config();
 
 	interfaces_lan_configure();
-	rc_exec_service("resolv"); // Update /etc/resolv
 
   /* Get current IP */
   $if = $config['interfaces']['lan']['if'];
