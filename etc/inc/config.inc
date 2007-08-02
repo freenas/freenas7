@@ -39,12 +39,14 @@ $productname = get_product_name();
 
 /* read platform */
 if (file_exists("{$g['etc_path']}/platform")) {
-	$g['fullplatform'] = chop(file_get_contents("{$g['etc_path']}/platform"));
-	$pla = explode("-", $g['fullplatform']);
-	$g['arch'] = $pla[0];
-	$g['platform'] = $pla[1];
+	$g['fullplatform'] = strtolower(chop(file_get_contents("{$g['etc_path']}/platform")));
+	$data = explode("-", $g['fullplatform']);
+	$g['arch'] = $data[0];
+	$g['platform'] = $data[1];
 } else {
-	$g['arch'] = $g['fullplatform'] = "unknown";
+	$g['arch'] = "unknown";
+	$g['platform'] = "unknown";
+	$g['fullplatform'] = "unknown";
 }
 
 if (is_booting()) {
