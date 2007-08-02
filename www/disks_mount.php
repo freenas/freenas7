@@ -117,8 +117,7 @@ if ($_GET['act'] == "retry")
     <td class="tabcont">
       <form action="disks_mount.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0)); ?>
-        <?php if (!file_exists($d_sysrebootreqd_path) && file_exists($d_mountdirty_path)): ?><p>
+        <?php if (file_exists($d_mountdirty_path)): ?><p>
         <?php print_info_box_np(gettext("The mount point list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
         <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
         <?php endif; ?>
