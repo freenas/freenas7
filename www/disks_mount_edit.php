@@ -203,9 +203,15 @@ if ($_POST) {
 			$a_mount[$id] = $mount;
 		else
 			$a_mount[] = $mount;
-		
+
 		touch($d_mountdirty_path);
-		
+
+		if("ntfs" === $mount['fstype']) {
+			// Force a reboot, otherwise disk can't be mounted. Seems to
+			// be a bug.
+			touch($d_sysrebootreqd_path);
+		}
+
 		write_config();
 		
 		header("Location: disks_mount.php");
