@@ -210,7 +210,7 @@ function disks_mount($mount)
 			// Load the kernel fuse module.
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
 
-			mwexec("/sbin/mount -t ntfs-3g -o force {$devname} '{$mountname}'"); // default options: silent,allow_other
+			$result = mwexec("/sbin/mount -t ntfs-3g -o force {$devname} '{$mountname}'"); // default options: silent,allow_other
 			if (0 == $result) {
 				write_log("Disk {$devname} mounted using NTFS on '{$mountname}'");
 				$result = 0;
