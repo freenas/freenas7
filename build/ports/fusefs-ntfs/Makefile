@@ -1,7 +1,7 @@
 PORTNAME=			fusefs-ntfs
 PORTVERSION=	1.0
 PORTREVISION=	0
-PORTEPOCH=		3
+PORTEPOCH=		4
 CATEGORIES=		sysutils
 COMMENT=			Mount NTFS partitions and disk images
 MAINTAINER=		votdev@gmx.de
@@ -29,7 +29,7 @@ do-install:
 	@${CP} -pv ${PORTSDIR}/sysutils/fusefs-ntfs/work/ntfs-3g*/libntfs-3g/.libs/libntfs-3g.so.5 ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -pv ${PORTSDIR}/sysutils/fusefs-libs/work/fuse-*/lib/.libs/libfuse.so.2 ${FREENAS_ROOTFS}/usr/local/lib
 
-	@${LN} -s /usr/local/bin/ntfs-3g ${FREENAS_ROOTFS}/sbin/mount_ntfs
-	@${LN} -s /usr/local/bin/ntfs-3g ${FREENAS_ROOTFS}/sbin/mount_ntfs-3g
+	@${LN} -s -f -v /usr/local/bin/ntfs-3g ${FREENAS_ROOTFS}/sbin/mount_ntfs
+	@${LN} -s -f -v /usr/local/bin/ntfs-3g ${FREENAS_ROOTFS}/sbin/mount_ntfs-3g
 
 .include "bsd.freenas.mk"
