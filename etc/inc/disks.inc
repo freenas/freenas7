@@ -210,29 +210,14 @@ function disks_mount($mount)
 			// Load the kernel fuse module.
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
 
-			$result = mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force"); // default options: silent,allow_other
+			mwexec("/sbin/mount -t ntfs-3g -o force {$devname} '{$mountname}'"); // default options: silent,allow_other
 			if (0 == $result) {
 				write_log("Disk {$devname} mounted using NTFS on '{$mountname}'");
 				$result = 0;
 			} else {
-				/* COMMENT FISR PART BEGIN: NTFSFIX DO'NT WORK
-				write_log("Error detected for mounting disk $devname, starting a ntfsfix");
-				mwexec("/usr/local/bin/ntfsfix {$devname}");
-
-				$result = mwexec("/usr/local/bin/ntfs-3g {$devname} '{$mountname}' -o force"); // default options: silent,allow_other
-				if (0 == $result) {
-					write_log("Disk {$devname} mounted using NTFS on '{$mountname}'");
-					$result = 0;
-				}
-				else	{
-				COMMENT FIRST PART END */
-					/* Not OK, remove the directory, prevent writing on RAM disk*/
-					@rmdir("{$mountname}");
-					write_log("Error: Failed to mount {$devname} using NTFS: Try to fix error on this partition with MS Windows");
-					$result = 1;
-				/* COMMENT SECOND PART BEGIN
-				}
-				COMMENT SECOND PART END */
+				@rmdir("{$mountname}");
+				write_log("Error: Failed to mount {$devname} using NTFS.");
+				$result = 1;
 			}
 			break;
 

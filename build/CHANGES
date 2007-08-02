@@ -33,6 +33,9 @@ Major services can be easly authenticated using PAM-LDAP, but for Samba too is h
 FreeNAS 0.685b3:
 ----------------
 
+Minors changes:
+- Add link /sbin/mount_ntfs-3g and /sbin/mount_ntfs-3g to use mount -t ntfs-3g ntfs-3g /dev/xxx /mnt/xxx.
+
 Bug fixs:
 - Add missing binary /usr/bin/dirname, /usr/bin/install and /usr/bin/tee.
 

@@ -24,8 +24,12 @@ post-patch:
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/fusefs-kmod/work/fuse4bsd*/mount_fusefs/mount_fusefs ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/fusefs-ntfs/work/ntfs-3g*/src/.libs/ntfs-3g ${FREENAS_ROOTFS}/usr/local/bin
+
 	@${CP} -pv ${PORTSDIR}/sysutils/fusefs-kmod/work/fuse4bsd*/fuse_module/fuse.ko ${FREENAS_ROOTFS}/boot/kernel
 	@${CP} -pv ${PORTSDIR}/sysutils/fusefs-ntfs/work/ntfs-3g*/libntfs-3g/.libs/libntfs-3g.so.5 ${FREENAS_ROOTFS}/usr/local/lib
 	@${CP} -pv ${PORTSDIR}/sysutils/fusefs-libs/work/fuse-*/lib/.libs/libfuse.so.2 ${FREENAS_ROOTFS}/usr/local/lib
+
+	@${LN} -s /usr/local/bin/ntfs-3g ${FREENAS_ROOTFS}/sbin/mount_ntfs
+	@${LN} -s /usr/local/bin/ntfs-3g ${FREENAS_ROOTFS}/sbin/mount_ntfs-3g
 
 .include "bsd.freenas.mk"
