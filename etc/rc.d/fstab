@@ -42,7 +42,7 @@ do
 			_options="ro,noauto";
 			;;
 		[nN][tT][fF][sS])
-			_options="rw";
+			_options="rw,force";
 			;;
 		[eE][xX][tT]2[fF][sS])
 			_options="rw";
