@@ -12,10 +12,6 @@
 
 name="rcconf"
 
-load_rc_config ${name}
-
-echo -n "Updating rc.conf:"
-
 sethostname()
 {
 	local _hostname
@@ -45,33 +41,43 @@ setifconfig()
 	eval /usr/local/sbin/rconf attribute set "ifconfig_${_if}" "${_ifconf}"
 }
 
-# Update rcvar's. Use settings from config.xml.
-for _rcscript in /etc/rc.d/*; do
-	_rcscriptname=${_rcscript#/etc/rc.d/}
-	if [ "${name}.sh" != "${_rcscriptname}" ]; then
-		_xquery=`grep "XQUERY:" ${_rcscript} | sed 's/.*XQUERY: \(.*\)/\1/'`
-		if [ -n "${_xquery}" ]; then
-			_rcvar=`grep "RCVAR:" ${_rcscript} | sed 's/.*RCVAR: \(.*\)/\1/'`
-			if [ -z "${_rcvar}" ]; then
-				_rcvar=${_rcscriptname}
+updateservices()
+{
+	# Update rcvar's. Use settings from config.xml.
+	for _rcscript in /etc/rc.d/*; do
+		_rcscriptname=${_rcscript#/etc/rc.d/}
+		if [ "${name}.sh" != "${_rcscriptname}" ]; then
+			_xquery=`grep "XQUERY:" ${_rcscript} | sed 's/.*XQUERY: \(.*\)/\1/'`
+			if [ -n "${_xquery}" ]; then
+				_rcvar=`grep "RCVAR:" ${_rcscript} | sed 's/.*RCVAR: \(.*\)/\1/'`
+				if [ -z "${_rcvar}" ]; then
+					_rcvar=${_rcscriptname}
+				fi
+
+				# Execute query.
+				_queryresult=`configxml_exec_query ${_xquery}`
+
+				# Enable/disable service depending on query result.
+				if [ "0" = "${_queryresult}" ]; then
+					eval /usr/local/sbin/rconf service enable ${_rcvar}
+					debug "rcconf.sh: ${_rcscriptname} service enabled"
+				else
+					eval /usr/local/sbin/rconf service disable ${_rcvar}
+					debug "rcconf.sh: ${_rcscriptname} service disabled"
+				fi
+
+				echo -n "."
 			fi
-
-			# Execute query.
-			_queryresult=`configxml_exec_query ${_xquery}`
-
-			# Enable/disable service depending on query result.
-			if [ "0" = "${_queryresult}" ]; then
-				eval /usr/local/sbin/rconf service enable ${_rcvar}
-				debug "rcconf.sh: ${_rcscriptname} service enabled"
-			else
-				eval /usr/local/sbin/rconf service disable ${_rcvar}
-				debug "rcconf.sh: ${_rcscriptname} service disabled"
-			fi
-
-			echo -n "."
 		fi
-	fi
-done
+	done
+}
+
+load_rc_config ${name}
+
+echo -n "Updating rc.conf:"
+
+# Update services.
+updateservices
 
 # Set hostname.
 sethostname
