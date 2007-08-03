@@ -152,18 +152,15 @@ function disks_mount($mount)
 				write_log("Device {$devname} mounted using UFS on '{$mountname}'");
 				$result = 0;
 			} else {
-				/* If it's NOK, Check  filesystem and do a fsck, answer Yes to all question*/
 				write_log("Error: Failed to detect disk {$devname}, starting a UFS fsck");
-
+				// Do a filesystem check.
 				mwexec("/sbin/fsck -y -t ufs {$devname}");
-
-				/* Re-try to mount the partition */
+				// Retry to mount the partition.
 				$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'");
 				if (0 == $result) {
 					write_log("Device {$devname} mounted using UFS on '{$mountname}'");
 					$result = 0;
 				} else {
-					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir("{$mountname}");
 					write_log("Error: Failed to mount {$devname} using UFS");
 					$result = 1;
@@ -172,20 +169,20 @@ function disks_mount($mount)
 			break;
 
 		case "msdosfs":
-			$result = mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$devname} '{$mountname}'");
 			if (0 == $result) {
 				write_log("Device {$devname} mounted using FAT on '{$mountname}'");
 				$result = 0;
 			} else {
 				write_log("Error: Failed to detect disk {$devname}, starting a FAT fsck");
+				// Do a filesystem check.
 				mwexec("/sbin/fsck -y -t msdosfs {$devname}");
-
+				// Retry to mount the partition.
 				$result = mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'");
 				if (0 == $result) {
 					write_log("Device {$devname} mounted using FAT on '{$mountname}'");
 					$result = 0;
 				} else {
-					/* Not OK, remove the directory, prevent writing on RAM disk*/
 					@rmdir("{$mountname}");
 					write_log("Error: Failed to mount {$devname} using FAT");
 					$result = 1;
@@ -194,12 +191,11 @@ function disks_mount($mount)
 			break;
 
 		case "cd9660":
-			$result = mwexec("/sbin/mount_cd9660 {$devname} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t cd9660 {$devname} '{$mountname}'");
 			if (0 == $result) {
 				write_log("Device {$devname} mounted as CD/DVD on '{$mountname}'");
 				$result = 0;
 			} else {
-				/* Not OK, remove the directory, prevent writing on RAM disk*/
 				@rmdir("{$mountname}");
 				write_log("Error: Failed to mount {$devname} as CD/DVD");
 				$result = 1;
@@ -209,7 +205,6 @@ function disks_mount($mount)
 		case "ntfs":
 			// Load the kernel fuse module.
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
-
 			$result = mwexec("/sbin/mount -t ntfs-3g -o force {$devname} '{$mountname}'"); // default options: silent,allow_other
 			if (0 == $result) {
 				write_log("Disk {$devname} mounted using NTFS on '{$mountname}'");
@@ -222,20 +217,20 @@ function disks_mount($mount)
 			break;
 
 		case "ext2fs":
-			$result = mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t ext2fs {$devname} '{$mountname}'");
 			if (0 == $result)	{
 				write_log("Disk {$devname} mounted using EXT2 on '{$mountname}'");
 				$result = 0;
 			} else {
 				write_log("Error: Failed to detect disk {$devname}, starting a e2fsck");
+				// Do a filesystem check.
 				mwexec("/usr/local/sbin/e2fsck -f -p {$devname}");
-
-				$result = mwexec("/sbin/mount_ext2fs {$devname} '{$mountname}'");
+				// Retry to mount the partition.
+				$result = mwexec("/sbin/mount -t ext2fs {$devname} '{$mountname}'");
 				if (0 == $result) {
 					write_log("Disk {$devname} mounted using EXT2 on '{$mountname}'");
 					$result = 0;
 				} else {
-					/* Not OK, remove the directory, prevent writing on RAM */
 					@rmdir("{$mountname}");
 					write_log("Error: Can't mount {$devname} using EXT2");
 					$result = 1;
@@ -249,7 +244,7 @@ function disks_mount($mount)
 	// For ISO's this may be 'chmod: /mnt/xxx: Read-only file system)'.
 	if (file_exists($mountname) && is_writable($mountname)) {
 		if (!@chmod($mountname, 0777)) {
-			write_log("Error: Can't re-set mode 0777 on directory {$mountname}");
+			write_log("Error: Can't reset mode 0777 on directory {$mountname}");
 		}
 	}
 

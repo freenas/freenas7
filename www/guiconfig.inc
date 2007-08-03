@@ -226,12 +226,14 @@ function get_std_save_message($ok) {
 	global $d_sysrebootreqd_path;
 
 	if ($ok == 0) {
-		if (file_exists($d_sysrebootreqd_path))
-			return sprintf( gettext("The changes have been saved. You must <a href=%s>reboot</a> your NAS for changes to take effect."), "reboot.php");
-		else
+		if (file_exists($d_sysrebootreqd_path)) {
+			return sprintf( gettext("The changes have been saved. You have to <a href=%s>reboot</a> the system for the changes to take effect."), "reboot.php");
+		}
+		else {
 			return gettext("The changes have been applied successfully.");
+		}
 	} else {
-		return sprintf( gettext("ERROR: The changes could not be applied (error code %s)."), $ok);
+		return sprintf( gettext("Error: The changes could not be applied (error code %s)."), $ok);
 	}
 }
 
