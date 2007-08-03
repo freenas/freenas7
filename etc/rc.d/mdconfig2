@@ -28,6 +28,9 @@
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #
+# Changes:
+# - Add mdconfig2_unit processing.
+#
 
 # PROVIDE: mdconfig2
 # REQUIRE: mountcritremote
@@ -219,6 +222,11 @@ fi
 load_rc_config $name
 
 _mdconfig2_unit=0
+
+if [ $mdconfig2_unit ]; then
+	eval _mdconfig2_unit=\$mdconfig2_unit
+fi
+
 if [ -z "${_mdconfig2_list}" ]; then
 	while :; do
 		eval _mdconfig2_config=\$mdconfig_md${_mdconfig2_unit}
