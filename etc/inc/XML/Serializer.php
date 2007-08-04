@@ -25,6 +25,10 @@
  */
 
 /**
+ * Parts of code are taken from PfSense.org.
+ */
+
+/**
  * uses PEAR error management
  */
 require_once 'PEAR.php';
@@ -270,6 +274,24 @@ define('XML_SERIALIZER_OPTION_RETURN_RESULT', 'returnResult');
 define('XML_SERIALIZER_OPTION_IGNORE_NULL', 'ignoreNull');
 
 /**
+ * option: whether to ignore properties that are set to false
+ *
+ * Possible values:
+ * - true
+ * - false (default)
+ */
+define('XML_SERIALIZER_OPTION_IGNORE_FALSE', 'ignoreFalse');
+
+/**
+ * option: whether to 'condense' all booleans to <tag/>.
+ *
+ * Possible values:
+ * - true
+ * - false (default)
+ */
+define('XML_SERIALIZER_OPTION_CONDENSE_BOOLS', 'condenseBools');
+
+/**
  * option: whether to use cdata sections for character data
  *
  * Possible values:
@@ -420,6 +442,8 @@ class XML_Serializer extends PEAR
                                  XML_SERIALIZER_OPTION_ENTITIES,
                                  XML_SERIALIZER_OPTION_RETURN_RESULT,
                                  XML_SERIALIZER_OPTION_IGNORE_NULL,
+                                 XML_SERIALIZER_OPTION_IGNORE_FALSE,
+                                 XML_SERIALIZER_OPTION_CONDENSE_BOOLS,
                                  XML_SERIALIZER_OPTION_CDATA_SECTIONS
                                 );
     
@@ -457,6 +481,8 @@ class XML_Serializer extends PEAR
                          XML_SERIALIZER_OPTION_ENTITIES             => XML_SERIALIZER_ENTITIES_XML, // type of entities to replace,
                          XML_SERIALIZER_OPTION_RETURN_RESULT        => false,                 // serialize() returns the result of the serialization instead of true
                          XML_SERIALIZER_OPTION_IGNORE_NULL          => false,                 // ignore properties that are set to null
+                         XML_SERIALIZER_OPTION_IGNORE_FALSE	        => false,		              // ignore properties that are set to false
+                         XML_SERIALIZER_OPTION_CONDENSE_BOOLS	      => false,	                // set true properties to false
                          XML_SERIALIZER_OPTION_CDATA_SECTIONS       => false                  // Whether to use cdata sections for plain character data
                         );
 
@@ -733,6 +759,27 @@ class XML_Serializer extends PEAR
         	}
         }
 
+				if ($this->options[XML_SERIALIZER_OPTION_IGNORE_FALSE] === true) {
+					foreach(array_keys($array) as $key) {
+						if ($array[$key] === false) {
+							unset($array[$key]);
+						}
+					}
+				}
+
+				/*
+				 * colin: Added option to ignore tags marked as (bool) false. This
+				 * is required to retain compatibility with the old pfSense parser
+				 * inherited by m0n0wall.
+				 */
+				if ($this->options[XML_SERIALIZER_OPTION_IGNORE_FALSE] === true) {
+					foreach(array_keys($array) as $key) {
+						if ($array[$key] === false) {
+							unset($array[$key]);
+						}
+					}
+				}
+
         /*
         * if mode is set to simpleXML, check whether
         * the array is associative or indexed
@@ -986,6 +1033,14 @@ class XML_Serializer extends PEAR
         } elseif(is_scalar($tag['content']) && (string)$tag['content'] == '') {
             $tag['content'] =   '';
         }
+
+				/*
+				 * colin: Add option to set (bool) true tags to <tag/>. This is needed to retain compatibility
+				 * with the XML parser inherited from m0n0wall.
+				 */
+				if($this->options[XML_SERIALIZER_OPTION_CONDENSE_BOOLS]) {
+					if($tag['content'] === true) $tag['content'] = false;
+				}
 
         // replace XML entities (only needed, if this is not a nested call)
         if ($firstCall === true) {

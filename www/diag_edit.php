@@ -9,7 +9,7 @@
     Copyright © 2006-2007 Volker Theile
 
     Using dp.SyntaxHighlighter for syntax highlighting
-    http://www.dreamprojections.com/SyntaxHighlighter 
+    http://www.dreamprojections.com/SyntaxHighlighter
     Copyright © 2004-2006 Alex Gorbatchev. All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -66,7 +66,7 @@ if (($_POST['submit'] == gettext("Load")) && file_exists($_POST['savetopath']) &
 	$edit_area="";
 	$savemsg = gettext("Saved file to") . " " . $_POST['savetopath'];
 	if($_POST['savetopath'] == "{$g['cf_conf_path']}/config.xml")
-		unlink_if_exists("/tmp/config.cache");
+		unlink_if_exists("{$g['tmp_path']}/config.cache");
 	conf_mount_ro();
 } else if (($_POST['submit'] == gettext("Load")) && (!file_exists($_POST['savetopath']) || !is_file($_POST['savetopath']))) {
 	$savemsg = gettext("File not found") . " " . $_POST['savetopath'];
@@ -96,7 +96,7 @@ else
 	$cols = 66;
 ?>
 
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="diag_edit.php" method="post">
   <div id="inputerrors"></div>
@@ -106,8 +106,8 @@ else
         <td>
           <span class="label"><?=gettext("File path"); ?>:</span>
 	        <input size="42" id="savetopath" name="savetopath" value="<?php echo $_POST['savetopath']; ?>" />
-          <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \> 
-	        <input name="submit" type="submit" class="formbtn" id="Load" value="<?=gettext("Load");?>" /> 
+          <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+	        <input name="submit" type="submit" class="formbtn" id="Load" value="<?=gettext("Load");?>" />
           <input name="submit" type="submit" class="formbtn" id="Save" value="<?=gettext("Save");?>" />
 	        <hr noshade="noshade" />
         	<?php if($_POST['highlight'] == "no"): ?>
@@ -152,7 +152,7 @@ else
 <!--
   // Set focus.
   document.forms[0].savetopath.focus();
-  
+
   // Append css for syntax highlighter.
   var head = document.getElementsByTagName("head")[0];
   var linkObj = document.createElement("link");
@@ -171,4 +171,4 @@ else
 ?>
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

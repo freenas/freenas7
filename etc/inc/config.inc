@@ -322,7 +322,6 @@ function reset_factory_defaults() {
 	global $g;
 
 	config_lock();
-
 	conf_mount_rw();
 
 	/* create conf directory, if necessary */
@@ -342,7 +341,6 @@ function reset_factory_defaults() {
 	@copy("{$g['conf_default_path']}/config.xml", "{$g['conf_path']}/config.xml");
 
 	conf_mount_ro();
-
 	config_unlock();
 
 	return 0;
@@ -365,8 +363,7 @@ function config_install($conffile) {
 	return 0;
 }
 
-/* lock configuration file, decide that the lock file is stale after
-   10 seconds */
+/* Lock configuration file, decide that the lock file is stale after 10 seconds. */
 function config_lock() {
 	global $g;
 
@@ -385,6 +382,16 @@ function config_lock() {
 			$n++;
 		}
 	}
+}
+
+/* Unlock configuration file. */
+function config_unlock() {
+	global $g;
+
+	$lockfile = "{$g['varrun_path']}/config.lock";
+
+	if (file_exists($lockfile))
+		unlink($lockfile);
 }
 
 // Convert the config file.
@@ -798,23 +805,22 @@ function convert_config() {
 	return 0;
 }
 
-/* unlock configuration file */
-function config_unlock() {
-	global $g;
-
-	$lockfile = "{$g['varrun_path']}/config.lock";
-
-	if (file_exists($lockfile))
-		unlink($lockfile);
-}
-
 // Load configuration XML file and unserialize it into an array.
 // Returns configuration array if successful, otherwise false.
 function config_unserialize_xml_data() {
 	global $g;
 
+	/* Tags that always will be treated as arrays in config.xml. */
+	$listtags = explode(" ", "key dnsserver winsserver disk vdisk diskr sharetosync " .
+		"encryption-algorithm-option hash-algorithm-option hosts onetoone hidemount " .
+		"staticmap route pipe queue shellcmd cacert earlyshellcmd user group " .
+		"servernat nfsnetworks passthrumac allowedip mount vlan domainoverrides " .
+		"minute hour day month weekday content rsyncclient rsynclocal " .
+		"ipv6dnsserver share");
+
 	$options = array(
-										XML_UNSERIALIZER_OPTION_COMPLEXTYPE => 'array'
+										XML_UNSERIALIZER_OPTION_COMPLEXTYPE => 'array',
+										XML_UNSERIALIZER_OPTION_FORCE_ENUM  => $listtags
 									);
 
 	$unserializer = &new XML_Unserializer($options);
@@ -840,7 +846,9 @@ function config_serialize_xml_data($data) {
 										XML_SERIALIZER_OPTION_INDENT           => "\t",
 										XML_SERIALIZER_OPTION_LINEBREAKS       => "\n",
 										XML_SERIALIZER_OPTION_ROOT_NAME        => $g['xml_rootobj'],
-										XML_SERIALIZER_OPTION_MODE             => XML_SERIALIZER_MODE_SIMPLEXML
+										XML_SERIALIZER_OPTION_MODE             => XML_SERIALIZER_MODE_SIMPLEXML,
+										XML_SERIALIZER_OPTION_IGNORE_FALSE     => true,
+										XML_SERIALIZER_OPTION_CONDENSE_BOOLS   => true
 									);
 
 	$serializer = new XML_Serializer($options);
