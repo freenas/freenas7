@@ -98,13 +98,15 @@ if ($_GET['act'] == "del") {
         <?php endif; ?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="40%" class="listhdrr"><?=gettext("Name");?></td>
-            <td width="25%" class="listhdrr"><?=gettext("Comment");?></td>
-            <td width="25%" class="listhdrr"><?=gettext("Browseable");?></td>
+          	<td width="30%" class="listhdrr"><?=gettext("Path");?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Name");?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Comment");?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Browseable");?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_share as $sharev):?>
           <tr>
+          	<td class="listr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['name']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
             <td class="listbg"><?=htmlspecialchars(isset($sharev['browseable'])?gettext("Yes"):gettext("No"));?></td>
@@ -118,7 +120,7 @@ if ($_GET['act'] == "del") {
           <?php $i++; endforeach;?>
           <?php if(isset($config['samba']['enable'])):?>
           <tr> 
-            <td class="list" colspan="3"></td>
+            <td class="list" colspan="4"></td>
             <td class="list"><a href="services_samba_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" width="17" height="17" border="0"></a></td>
           </tr>
           <?php endif;?>
