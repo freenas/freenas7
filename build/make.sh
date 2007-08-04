@@ -152,7 +152,8 @@ build_kernel() {
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
 
 	# Choose what to do.
-	$DIALOG --title "$FREENAS_PRODUCTNAME - Build kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 3 \
+	$DIALOG --title "$FREENAS_PRODUCTNAME - Build kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 4 \
+		"cvsup" "Update kernel sources" OFF \
 		"prebuild" "Install additional drivers" ON \
 		"build" "Build kernel" ON \
 		"install" "Install kernel + modules" ON 2> $tempfile
@@ -166,11 +167,14 @@ build_kernel() {
 
 	for choice in $(echo $choices | tr -d '"'); do
 		case $choice in
+			cvsup)
+				cvsup $FREENAS_SVNDIR/build/kernel-config/source-supfile
+				[ 0 != $? ] && return 1;; # successful?
 			prebuild)
 				# Adding specials drivers.
 				pre_build_kernel;
 				[ 0 != $? ] && return 1;; # successful?
-  		build)
+			build)
 				# Copy kernel configuration.
 				cd /sys/${FREENAS_ARCH}/conf;
 				if [ -f FREENAS-${FREENAS_ARCH} ]; then
@@ -181,7 +185,7 @@ build_kernel() {
 				cd /usr/src;
 				make buildkernel KERNCONF=FREENAS-${FREENAS_ARCH};
 				gzip -v -f -9 /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/kernel;;
-  		install)
+			install)
 				# Installing the modules.
 				cd /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules;
 				cp -v -p ./geom/geom_vinum/geom_vinum.ko $FREENAS_ROOTFS/boot/kernel;
@@ -189,7 +193,6 @@ build_kernel() {
 				cp -v -p ./geom/geom_concat/geom_concat.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_mirror/geom_mirror.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_nop/geom_nop.ko $FREENAS_ROOTFS/boot/kernel;
-
 				cp -v -p ./geom/geom_gpt/geom_gpt.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./ext2fs/ext2fs.ko $FREENAS_ROOTFS/boot/kernel;;
   	esac
