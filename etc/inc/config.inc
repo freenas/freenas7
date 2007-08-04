@@ -201,7 +201,6 @@ if (!$noparseconfig) {
 		/* read cache */
 		$config = unserialize(file_get_contents("{$g['tmp_path']}/config.cache"));
 	} else {
-
 		if (!file_exists("{$g['conf_path']}/config.xml")) {
 			if (is_booting()) {
 				if (strstr($g['platform'], "liveCD")) {
@@ -247,11 +246,10 @@ EOD;
 			}
 		}
 
-		/* write config cache */
-		$fd = @fopen("{$g['tmp_path']}/config.cache", "wb");
-		if ($fd) {
-			fwrite($fd, serialize($config));
-			fclose($fd);
+		/* Write config cache. */
+		$result = config_write_cache($config);
+		if (false === $result) {
+			echo "Error: Failed to write configuration cache file.\n";
 		}
 	}
 
@@ -288,43 +286,33 @@ function write_config() {
 	global $config, $g;
 
 	config_lock();
-
 	conf_mount_rw();
 
-	if (time() > mktime(0, 0, 0, 9, 1, 2004))	/* make sure the clock settings is plausible */
+	if (time() > mktime(0, 0, 0, 9, 1, 2004)) {	/* make sure the clock settings is plausible */
 		$config['lastchange'] = time();
+	}
 
 	/* Convert configuration data into XML. */
 	$xmlconfig = config_serialize_xml_data($config);
-	if (false === $xmlconfig) {
-		echo "Failed to write XML configuration file. {$productname} cannot continue.\n";
+		if (false === $xmlconfig) {
+		echo "Error: Failed to serialize XML configuration data. {$productname} cannot continue.\n";
 		mwexec("/sbin/halt");
 		exit;
 	} else {
-		/* Write configuration file. */
-		$fd = fopen("{$g['cf_conf_path']}/config.xml", "w");
-		if (!$fd) {
-			die("Error: Unable to open config.xml for writing.\n");
+		$result = file_put_contents("{$g['cf_conf_path']}/config.xml", $xmlconfig);
+		if (false === $result) {
+			echo "Error: Failed to write XML configuration file. {$productname} cannot continue.\n";
+			mwexec("/sbin/halt");
+			exit;
 		}
-		fwrite($fd, $xmlconfig);
-		fclose($fd);
 	}
 
 	conf_mount_ro();
 
-	/* Reload configuration. */
-	$config = config_unserialize_xml_data();
-	if (false === $config) {
-		echo "Failed to load XML configuration file. {$productname} cannot continue.\n";
-		mwexec("/sbin/halt");
-		exit;
-	}
-
 	/* Write config cache. */
-	$fd = @fopen("{$g['tmp_path']}/config.cache", "wb");
-	if ($fd) {
-		fwrite($fd, serialize($config));
-		fclose($fd);
+	$result = config_write_cache($config);
+	if (false === $result) {
+		echo "Error: Failed to write configuration cache file.\n";
 	}
 
 	config_unlock();
@@ -866,5 +854,22 @@ function config_serialize_xml_data($data) {
 	}
 
 	return $serializer->getSerializedData();
+}
+
+// Write config cache file.
+// Return true if successful, otherwise false.
+function config_write_cache($data) {
+	global $g;
+
+	$result = false;
+
+	$fd = @fopen("{$g['tmp_path']}/config.cache", "wb");
+	if ($fd) {
+		fwrite($fd, serialize($data));
+		fclose($fd);
+		$result = true;
+	}
+
+	return $result;
 }
 ?>
