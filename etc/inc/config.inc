@@ -32,8 +32,7 @@
 */
 require_once("globals.inc");
 require_once("util.inc");
-require_once("XML/Unserializer.php");
-require_once("XML/Serializer.php");
+require_once("xmlparse.inc");
 
 /* Get product information */
 $productname = get_product_name();
@@ -223,9 +222,9 @@ if (!$noparseconfig) {
 		}
 
 		/* Load configuration file into array. */
-		$config = config_unserialize_xml_data();
+		$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
 		if (false === $config) {
-			echo "Failed to load XML configuration file. {$productname} cannot continue booting.\n";
+			echo "Failed to load '{$g['conf_path']}/config.xml' file. {$productname} cannot continue booting.\n";
 			mwexec("/sbin/halt");
 			exit;
 		}
@@ -246,10 +245,10 @@ EOD;
 			}
 		}
 
-		/* Write config cache. */
+		/* write config cache */
 		$result = config_write_cache($config);
 		if (false === $result) {
-			echo "Error: Failed to write configuration cache file.\n";
+			echo "Error: Failed to write '{$g['tmp_path']}/config.cache' file.\n";
 		}
 	}
 
@@ -292,28 +291,29 @@ function write_config() {
 		$config['lastchange'] = time();
 	}
 
-	/* Convert configuration data into XML. */
-	$xmlconfig = config_serialize_xml_data($config);
-		if (false === $xmlconfig) {
-		echo "Error: Failed to serialize XML configuration data. {$productname} cannot continue.\n";
-		mwexec("/sbin/halt");
-		exit;
-	} else {
-		$result = file_put_contents("{$g['cf_conf_path']}/config.xml", $xmlconfig);
-		if (false === $result) {
-			echo "Error: Failed to write XML configuration file. {$productname} cannot continue.\n";
-			mwexec("/sbin/halt");
-			exit;
-		}
-	}
+	/* generate configuration XML */
+	$xmlconfig = dump_xml_config($config, $g['xml_rootobj']);
+
+	/* write configuration */
+	$fd = fopen("{$g['cf_conf_path']}/config.xml", "w");
+	if (!$fd)
+		die("Error: Failed to write '{$g['cf_conf_path']}/config.xml' file.\n");
+	fwrite($fd, $xmlconfig);
+	fclose($fd);
 
 	conf_mount_ro();
 
-	/* Write config cache. */
+	/* re-read configuration */
+	$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
+
+	/* write config cache */
 	$result = config_write_cache($config);
 	if (false === $result) {
-		echo "Error: Failed to write configuration cache file.\n";
+		echo "Error: Failed to write '{$g['tmp_path']}/config.cache' file.\n";
 	}
+
+	/* tell kernel to sync fs data */
+	mwexec("/bin/sync");
 
 	config_unlock();
 }
@@ -803,65 +803,6 @@ function convert_config() {
 		echo "done\n";
 
 	return 0;
-}
-
-// Load configuration XML file and unserialize it into an array.
-// Returns configuration array if successful, otherwise false.
-function config_unserialize_xml_data() {
-	global $g;
-
-	/* Tags that always will be treated as arrays in config.xml. */
-	$listtags = explode(" ", "key dnsserver winsserver disk vdisk diskr sharetosync " .
-		"encryption-algorithm-option hash-algorithm-option hosts onetoone hidemount " .
-		"staticmap route pipe queue shellcmd cacert earlyshellcmd user group " .
-		"servernat nfsnetworks passthrumac allowedip mount vlan domainoverrides " .
-		"minute hour day month weekday content rsyncclient rsynclocal " .
-		"ipv6dnsserver share");
-
-	$options = array(
-										XML_UNSERIALIZER_OPTION_COMPLEXTYPE => 'array',
-										XML_UNSERIALIZER_OPTION_FORCE_ENUM  => $listtags
-									);
-
-	$unserializer = &new XML_Unserializer($options);
-	$status = $unserializer->unserialize("{$g['conf_path']}/config.xml", true);
-
-	if (PEAR::isError($status)) {
-		echo "Error: Failed to unserialize data.\n";
-		echo $status->getMessage();
-		echo "\n";
-		return false;
-	}
-
-	return $unserializer->getUnserializedData();
-}
-
-// Serialize configuration array into XML string.
-// Returns configuration as XML string if successful, otherwise false.
-function config_serialize_xml_data($data) {
-	global $g;
-
-	$options = array(
-										XML_SERIALIZER_OPTION_XML_DECL_ENABLED => true,
-										XML_SERIALIZER_OPTION_INDENT           => "\t",
-										XML_SERIALIZER_OPTION_LINEBREAKS       => "\n",
-										XML_SERIALIZER_OPTION_ROOT_NAME        => $g['xml_rootobj'],
-										XML_SERIALIZER_OPTION_MODE             => XML_SERIALIZER_MODE_SIMPLEXML,
-										XML_SERIALIZER_OPTION_IGNORE_FALSE     => true,
-										XML_SERIALIZER_OPTION_CONDENSE_BOOLS   => true
-									);
-
-	$serializer = new XML_Serializer($options);
-	$result = $serializer->serialize($data);
-
-	if (true !== $result) {
-		echo "Error: Failed to serialize data.\n";
-		print_r($result);
-		echo "\n";
-		return false;
-	}
-
-	return $serializer->getSerializedData();
 }
 
 // Write config cache file.
