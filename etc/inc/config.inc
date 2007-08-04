@@ -32,7 +32,8 @@
 */
 require_once("globals.inc");
 require_once("util.inc");
-require_once("xmlparse.inc");
+require_once("XML/Unserializer.php");
+require_once("XML/Serializer.php");
 
 /* Get product information */
 $productname = get_product_name();
@@ -222,7 +223,13 @@ if (!$noparseconfig) {
 			}
 		}
 
-		$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
+		/* Load configuration file into array. */
+		$config = config_unserialize_xml_data();
+		if (false === $config) {
+			echo "Failed to load XML configuration file. {$productname} cannot continue booting.\n";
+			mwexec("/sbin/halt");
+			exit;
+		}
 
 		if ((float)$config['version'] > (float)$g['latest_config']) {
 			if (is_booting()) {
@@ -287,24 +294,33 @@ function write_config() {
 	if (time() > mktime(0, 0, 0, 9, 1, 2004))	/* make sure the clock settings is plausible */
 		$config['lastchange'] = time();
 
-	/* generate configuration XML */
-	$xmlconfig = dump_xml_config($config, $g['xml_rootobj']);
-
-	/* write configuration */
-	$fd = fopen("{$g['cf_conf_path']}/config.xml", "w");
-
-	if (!$fd)
-		die("Unable to open config.xml for writing in write_config()\n");
-
-	fwrite($fd, $xmlconfig);
-	fclose($fd);
+	/* Convert configuration data into XML. */
+	$xmlconfig = config_serialize_xml_data($config);
+	if (false === $xmlconfig) {
+		echo "Failed to write XML configuration file. {$productname} cannot continue.\n";
+		mwexec("/sbin/halt");
+		exit;
+	} else {
+		/* Write configuration file. */
+		$fd = fopen("{$g['cf_conf_path']}/config.xml", "w");
+		if (!$fd) {
+			die("Error: Unable to open config.xml for writing.\n");
+		}
+		fwrite($fd, $xmlconfig);
+		fclose($fd);
+	}
 
 	conf_mount_ro();
 
-	/* re-read configuration */
-	$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
+	/* Reload configuration. */
+	$config = config_unserialize_xml_data();
+	if (false === $config) {
+		echo "Failed to load XML configuration file. {$productname} cannot continue.\n";
+		mwexec("/sbin/halt");
+		exit;
+	}
 
-	/* write config cache */
+	/* Write config cache. */
 	$fd = @fopen("{$g['tmp_path']}/config.cache", "wb");
 	if ($fd) {
 		fwrite($fd, serialize($config));
@@ -802,5 +818,53 @@ function config_unlock() {
 
 	if (file_exists($lockfile))
 		unlink($lockfile);
+}
+
+// Load configuration XML file and unserialize it into an array.
+// Returns configuration array if successful, otherwise false.
+function config_unserialize_xml_data() {
+	global $g;
+
+	$options = array(
+										XML_UNSERIALIZER_OPTION_COMPLEXTYPE => 'array'
+									);
+
+	$unserializer = &new XML_Unserializer($options);
+	$status = $unserializer->unserialize("{$g['conf_path']}/config.xml", true);
+
+	if (PEAR::isError($status)) {
+		echo "Error: Failed to unserialize data.\n";
+		echo $status->getMessage();
+		echo "\n";
+		return false;
+	}
+
+	return $unserializer->getUnserializedData();
+}
+
+// Serialize configuration array into XML string.
+// Returns configuration as XML string if successful, otherwise false.
+function config_serialize_xml_data($data) {
+	global $g;
+
+	$options = array(
+										XML_SERIALIZER_OPTION_XML_DECL_ENABLED => true,
+										XML_SERIALIZER_OPTION_INDENT           => "\t",
+										XML_SERIALIZER_OPTION_LINEBREAKS       => "\n",
+										XML_SERIALIZER_OPTION_ROOT_NAME        => $g['xml_rootobj'],
+										XML_SERIALIZER_OPTION_MODE             => XML_SERIALIZER_MODE_SIMPLEXML
+									);
+
+	$serializer = new XML_Serializer($options);
+	$result = $serializer->serialize($data);
+
+	if (true !== $result) {
+		echo "Error: Failed to serialize data.\n";
+		print_r($result);
+		echo "\n";
+		return false;
+	}
+
+	return $serializer->getSerializedData();
 }
 ?>
