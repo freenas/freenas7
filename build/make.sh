@@ -168,7 +168,7 @@ build_kernel() {
 	for choice in $(echo $choices | tr -d '"'); do
 		case $choice in
 			cvsup)
-				cvsup $FREENAS_SVNDIR/build/kernel-config/source-supfile
+				cvsup $FREENAS_SVNDIR/build/source-supfile
 				[ 0 != $? ] && return 1;; # successful?
 			prebuild)
 				# Adding specials drivers.
