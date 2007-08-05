@@ -121,17 +121,11 @@ function enable_change(enable_change) {
 function auth_change() {
 	switch(document.iform.auth.checked) {
 		case false:
-      document.iform.username.disabled = 1;
-			document.iform.password.disabled = 1;
-			document.iform.passwordconf.disabled = 1;
       showElementById('username_tr','hide');
   		showElementById('password_tr','hide');
       break;
 
     case true:
-      document.iform.username.disabled = 0;
-			document.iform.password.disabled = 0;
-			document.iform.passwordconf.disabled = 0;
       showElementById('username_tr','show');
   		showElementById('password_tr','show');
       break;
