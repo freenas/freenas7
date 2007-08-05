@@ -117,6 +117,7 @@ function enable_change(enable_change) {
 	document.iform.interface.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.web.disabled = endis;
+	document.iform.profile.disabled = endis;
 }
 //-->
 </script>
