@@ -224,7 +224,7 @@ if (!$noparseconfig) {
 		/* Load configuration file into array. */
 		$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
 		if (false === $config) {
-			echo "Failed to load '{$g['conf_path']}/config.xml' file. {$productname} cannot continue booting.\n";
+			echo "Error: Failed to load '{$g['conf_path']}/config.xml' file. {$productname} cannot continue booting.\n";
 			mwexec("/sbin/halt");
 			exit;
 		}
@@ -805,7 +805,7 @@ function convert_config() {
 	return 0;
 }
 
-// Write config cache file.
+// Write configuration cache file.
 // Return true if successful, otherwise false.
 function config_write_cache($data) {
 	global $g;

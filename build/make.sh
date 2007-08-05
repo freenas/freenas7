@@ -591,9 +591,6 @@ use_svn() {
 	cd $FREENAS_SVNDIR/etc/inc
 	cp -v -p * $FREENAS_ROOTFS/etc/inc
 
-	cd $FREENAS_SVNDIR/etc/inc/XML
-	cp -v -p * $FREENAS_ROOTFS/etc/inc/XML
-
 	cd $FREENAS_SVNDIR/etc/defaults
 	cp -v -p * $FREENAS_ROOTFS/etc/defaults
 	

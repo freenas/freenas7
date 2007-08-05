@@ -59,7 +59,6 @@ mkdir dev ;
 mkdir etc ;
 mkdir etc/defaults ;
 mkdir etc/inc ;
-mkdir etc/inc/XML ;
 mkdir etc/pam.d ;
 mkdir etc/ssh ;
 mkdir etc/rc.d ;
