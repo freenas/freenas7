@@ -54,7 +54,6 @@ fi
 if [ ! -d "/var/spool" ]; then
 	mkdir /var/spool
 	mkdir /var/spool/lock
-	mkdir /var/spool/mqueue
 fi
 
 # generate circular logfiles
