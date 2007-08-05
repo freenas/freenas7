@@ -301,4 +301,18 @@
 		<forcedupdateperiod></forcedupdateperiod>
 		-->
 	</dynamicdns>
+	<email>
+		<port>25</port>
+		<tpoll>hours</tpoll>
+		<npoll>1</npoll>
+		<!--
+		<enable/>
+		<server>mail.xxx.xxx</server>
+		<auth/>
+		<username>xxx</username>
+		<password>xxx</password>
+		<from>freenas@xxx.xxx</from>
+		<to>xxx@xxx.xxx</to>
+		-->
+	</email>
 </freenas>

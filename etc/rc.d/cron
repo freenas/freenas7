@@ -115,6 +115,22 @@ HOME=/var/log
 			-o "root /sbin/shutdown -p now" \
 			${configxml_file} >> ${cron_config}
 	fi
+
+	# Email status notification
+	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//email/enable)" ${configxml_file}` ]; then
+		echo "# Perform email status notification." >> ${cron_config}
+		/usr/local/bin/xml sel -t \
+			-i "//email/tpoll[. = 'minutes']" -v "concat('0-59/',//email/npoll)" -b \
+			-i "//email/tpoll[. != 'minutes']" -o "*" -b \
+			-o " " \
+			-i "//email/tpoll[. = 'hours']" -v "concat('0-23/',//email/npoll)" -b \
+			-i "//email/tpoll[. != 'hours']" -o "*" -b \
+			-o " " \
+			-i "//email/tpoll[. = 'days']" -v "concat('0-31/',//email/npoll)" -b \
+			-i "//email/tpoll[. != 'days']" -o "*" -b \
+			-o " * * root /usr/local/bin/php /etc/mail/sendmail.php" \
+			${configxml_file} >> ${cron_config}
+	fi
 }
 
 load_rc_config $name

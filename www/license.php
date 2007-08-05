@@ -162,6 +162,10 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 
 		<p>sipcalc (<a href="http://www.routemeister.net/projects/sipcalc" target="_blank">http://www.routemeister.net/projects/sipcalc</a>)<br>
       Copyright (c) 2003 Simon Ekstrand. All rights reserved.</p>
+      
+    <p>PHPMailer (<a href="http://phpmailer.sourceforge.net/" target="_blank">http://phpmailer.sourceforge.net/</a>)<br>
+      Copyright (c) Brent R. Matzelle (author), Patrice Fournier, Chris Ryan, Cem Hurturk, Tom Klingenberg, Jaime Bozza.<br>
+			All rights reserved.</p>
 
 	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com" target="_blank">http://www.pfsense.com/</a>)<br>
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.

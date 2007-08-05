@@ -83,6 +83,7 @@ $menu['diagnostics']['desc'] = "Diagnostics";
 $menu['diagnostics']['menuitem'] = array();
 $menu['diagnostics']['menuitem'][] = array("desc" => "Logs", "link" => "diag_logs.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "Information", "link" => "diag_infos.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => "Email", "link" => "diag_email.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "Ping/Traceroute", "link" => "diag_ping.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "ARP table", "link" => "diag_arp.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "Command", "link" => "exec.php", "visible" => true);
