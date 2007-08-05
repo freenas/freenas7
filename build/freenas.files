@@ -352,6 +352,12 @@ usr/bin/basename:usr/bin/dirname
 ## tee -- pipe fitting
 usr/bin/tee
 
+# sed -- stream editor
+usr/bin/sed
+
+# wall -- write a message to users (repuired by shutdown)
+usr/bin/wall
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
@@ -414,12 +420,6 @@ usr/sbin/mtree
 
 # diskinfo -- get information about disk device
 usr/sbin/diskinfo
-
-# sed -- stream editor
-usr/bin/sed
-
-# wall -- write a message to users (repuired by shutdown)
-usr/bin/wall
 
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
