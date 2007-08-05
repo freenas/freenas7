@@ -9,32 +9,35 @@ require_once("phpmailer/class.phpmailer.php");
 // Define a command, with a title, to be executed later.
 function defCmdT($title, $command) {
 	global $commands;
-	$commands[] = array($title, $command, false);
+	$commands[] = array($title, $command);
 }
 
 // Execute a command, with a title, and generate command results output.
-function doCmdT(&$body, $title, $command, $isstr) {
+function doCmdT(&$body, $title, $command) {
 	// Set title.
-	$nWidth = strlen($title) + 1;
-	$body .= sprintf("%s:\n%'-{$nWidth}s\n",$title,"");
-
-	// Execute command and retrieve output.
-	exec($command . " 2>&1", $execOutput, $execStatus);
-	for ($i = 0; isset($execOutput[$i]); $i++) {
-		if ($i > 0) {
-			$body .= "\n";
-		}
-		$body .= $execOutput[$i];
+	if (!empty($title)) {
+		$nWidth = strlen($title) + 1;
+		$body .= sprintf("%s:\n%'-{$nWidth}s\n",$title,"");
 	}
 
-	$body .= "\n\n";
+	// Execute command and retrieve output.
+	if (!empty($command)) {
+		exec($command . " 2>&1", $execOutput, $execStatus);
+		for ($i = 0; isset($execOutput[$i]); $i++) {
+			if ($i > 0) {
+				$body .= "\n";
+			}
+			$body .= $execOutput[$i];
+		}
+		$body .= "\n\n";
+	}
 }
 
 // Execute all of the commands.
 function create_email_body(&$body) {
 	global $commands;
 	for ($i = 0; isset($commands[$i]); $i++) {
-		doCmdT($body, $commands[$i][0], $commands[$i][1], $commands[$i][2]);
+		doCmdT($body, $commands[$i][0], $commands[$i][1]);
 	}
 }
 
@@ -46,8 +49,14 @@ defCmdT("Interfaces","/sbin/ifconfig -a");
 defCmdT("Routing tables","netstat -nr");
 defCmdT("Processes","ps xauww");
 defCmdT("Swap usege","/usr/sbin/swapinfo");
+defCmdT("Sensors","/usr/local/bin/chm -I -d 0");
 defCmdT("ATA disk","/sbin/atacontrol list");
 defCmdT("SCSI disk","/sbin/camcontrol devlist");
+defCmdT("SMART","");
+$disklist=get_physical_disks_list();
+foreach ($disklist as $disknamek => $disknamev) {
+	defCmdT("","/usr/local/sbin/smartctl -a /dev/{$disknamek}");
+}
 defCmdT("Geom Concat","/sbin/gconcat list");
 defCmdT("Geom Stripe","/sbin/gstripe list");
 defCmdT("Geom Mirror","/sbin/gmirror list");
