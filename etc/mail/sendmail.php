@@ -45,7 +45,7 @@ defCmdT("System uptime","uptime");
 defCmdT("Interfaces","/sbin/ifconfig -a");
 defCmdT("Routing tables","netstat -nr");
 defCmdT("Processes","ps xauww");
-defCmdT("swap use","/usr/sbin/swapinfo");
+defCmdT("Swap usege","/usr/sbin/swapinfo");
 defCmdT("ATA disk","/sbin/atacontrol list");
 defCmdT("SCSI disk","/sbin/camcontrol devlist");
 defCmdT("Geom Concat","/sbin/gconcat list");
