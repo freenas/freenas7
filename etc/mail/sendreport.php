@@ -5,6 +5,7 @@
 <?php
 require_once("config.inc");
 require_once("util.inc");
+require_once("disks.inc");
 require_once("phpmailer/class.phpmailer.php");
 
 // Define a command, with a title, to be executed later.
