@@ -21,11 +21,16 @@ Licence: BSD
 Edit the scripts:
 - /freenas/svn/build/make.sh
 for modify the directory variable with yours.
-Check that you have installing bash, and
-start /freenas/svn/build/make.sh
-And select your need
 
-burn the freenas.iso file created.
+Check that you have installing the following ports:
+- cvsup-without-gui
+- subversion
+- bash
+
+Start /freenas/svn/build/make.sh
+and select your need.
+
+Burn the freenas.iso file created.
 
 =================================
 3. Building FreeNAS with the latest sources
