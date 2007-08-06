@@ -6,8 +6,8 @@ FreeNAS 0.686b (unreleased):
 Majors changes:
 - Add 'System/Packages' WebGUI page to administrate packages (only available in 'full' install mode).
 - Update kernel sources (RELENG_6_2) via cvsup. Modified build scripts.
-- Add email status notification.
-- Add 'Diagnostics/Email' WebGUI page to administrate email status notification.
+- Add email status report.
+- Add 'Status/Report' WebGUI page to administrate email status report.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.

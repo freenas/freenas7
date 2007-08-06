@@ -117,18 +117,18 @@ HOME=/var/log
 	fi
 
 	# Email status notification
-	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//email/enable)" ${configxml_file}` ]; then
-		echo "# Perform email status notification." >> ${cron_config}
+	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//statusreport/enable)" ${configxml_file}` ]; then
+		echo "# Perform email status report." >> ${cron_config}
 		/usr/local/bin/xml sel -t \
-			-i "//email/tpoll[. = 'minutes']" -v "concat('0-59/',//email/npoll)" -b \
-			-i "//email/tpoll[. != 'minutes']" -o "*" -b \
+			-i "//statusreport/tpoll[. = 'minutes']" -v "concat('0-59/',//statusreport/npoll)" -b \
+			-i "//statusreport/tpoll[. != 'minutes']" -o "*" -b \
 			-o " " \
-			-i "//email/tpoll[. = 'hours']" -v "concat('0-23/',//email/npoll)" -b \
-			-i "//email/tpoll[. != 'hours']" -o "*" -b \
+			-i "//statusreport/tpoll[. = 'hours']" -v "concat('0-23/',//statusreport/npoll)" -b \
+			-i "//statusreport/tpoll[. != 'hours']" -o "*" -b \
 			-o " " \
-			-i "//email/tpoll[. = 'days']" -v "concat('0-31/',//email/npoll)" -b \
-			-i "//email/tpoll[. != 'days']" -o "*" -b \
-			-o " * * root /usr/local/bin/php /etc/mail/sendmail.php" \
+			-i "//statusreport/tpoll[. = 'days']" -v "concat('0-31/',//statusreport/npoll)" -b \
+			-i "//statusreport/tpoll[. != 'days']" -o "*" -b \
+			-o " * * root /usr/local/bin/php /etc/mail/sendreport.php" \
 			${configxml_file} >> ${cron_config}
 	fi
 }

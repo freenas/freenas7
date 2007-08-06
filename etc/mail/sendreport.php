@@ -1,4 +1,5 @@
 #!/usr/local/bin/php -n -q
+# status_report.php
 # Copyright (c) 2007 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 <?php
@@ -73,18 +74,18 @@ $mail->IsHTML(false);
 $mail->SetLanguage("en","/etc/inc/phpmailer/");
 $mail->SMTPDebug = false;
 $mail->Hostname = "{$config['system']['hostname']}.{$config['system']['domain']}";
-$mail->Host = $config['email']['server'];
-$mail->Port = $config['email']['port'];
-$mail->From = $config['email']['from'];
+$mail->Host = $config['statusreport']['server'];
+$mail->Port = $config['statusreport']['port'];
+$mail->From = $config['statusreport']['from'];
 $mail->FromName = get_product_name() . " status";
-$mail->Subject = get_product_name() . " status notification";
-$mail->AddAddress($config['email']['to']);
+$mail->Subject = get_product_name() . " status report";
+$mail->AddAddress($config['statusreport']['to']);
 
 // Enable SMTH authentication if set.
-if (isset($config['email']['auth'])) {
+if (isset($config['statusreport']['auth'])) {
 	$mail->SMTPAuth = true;
-	$mail->Username = $config['email']['username'];
-	$mail->Password = base64_decode($config['email']['password']);
+	$mail->Username = $config['statusreport']['username'];
+	$mail->Password = base64_decode($config['statusreport']['password']);
 }
 
 // Create email body.
@@ -94,6 +95,6 @@ create_email_body($mail->Body);
 if(!$mail->Send()) {
 	write_log($mail->ErrorInfo);
 } else {
-	write_log("Status email successfully sent to {$config['email']['to']}.");
+	write_log("Status report successfully sent to {$config['statusreport']['to']}.");
 }
 ?>

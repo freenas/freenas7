@@ -77,13 +77,13 @@ $menu['status']['menuitem'][] = array("desc" => "Interfaces", "link" => "status_
 $menu['status']['menuitem'][] = array("desc" => "Disks", "link" => "status_disks.php", "visible" => true);
 $menu['status']['menuitem'][] = array("desc" => "Wireless", "link" => "status_wireless.php", "visible" => true);
 $menu['status']['menuitem'][] = array("desc" => "Graph", "link" => "status_graph.php", "visible" => true);
+$menu['status']['menuitem'][] = array("desc" => "Report", "link" => "status_report.php", "visible" => true);
 
 // Diagnostics
 $menu['diagnostics']['desc'] = "Diagnostics";
 $menu['diagnostics']['menuitem'] = array();
 $menu['diagnostics']['menuitem'][] = array("desc" => "Logs", "link" => "diag_logs.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "Information", "link" => "diag_infos.php", "visible" => true);
-$menu['diagnostics']['menuitem'][] = array("desc" => "Email", "link" => "diag_email.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "Ping/Traceroute", "link" => "diag_ping.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "ARP table", "link" => "diag_arp.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "Command", "link" => "exec.php", "visible" => true);

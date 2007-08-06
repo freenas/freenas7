@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	diag_email.php
+	status_report.php
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
 	Copyright © 2007 Dan Merschi (freenas@bcapro.com)
   All rights reserved.
@@ -36,20 +36,20 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
-$pgtitle = array(gettext("Diagnostics"), gettext("Email"));
+$pgtitle = array(gettext("Status"), gettext("Report"));
 
-if(!is_array($config['email']))
-	$config['email'] = array();
+if(!is_array($config['statusreport']))
+	$config['statusreport'] = array();
 
-$pconfig['enable'] = isset($config['email']['enable']);
-$pconfig['server'] = $config['email']['server'];
-$pconfig['port'] = $config['email']['port'];
-$pconfig['auth'] = isset($config['email']['auth']);
-$pconfig['username'] = $config['email']['username'];
-$pconfig['from'] = $config['email']['from'];
-$pconfig['to'] = $config['email']['to'];
-$pconfig['npoll'] = $config['email']['npoll'];
-$pconfig['tpoll'] = $config['email']['tpoll'];
+$pconfig['enable'] = isset($config['statusreport']['enable']);
+$pconfig['server'] = $config['statusreport']['server'];
+$pconfig['port'] = $config['statusreport']['port'];
+$pconfig['auth'] = isset($config['statusreport']['auth']);
+$pconfig['username'] = $config['statusreport']['username'];
+$pconfig['from'] = $config['statusreport']['from'];
+$pconfig['to'] = $config['statusreport']['to'];
+$pconfig['npoll'] = $config['statusreport']['npoll'];
+$pconfig['tpoll'] = $config['statusreport']['tpoll'];
 
 if($_POST) {
 	unset($input_errors);
@@ -78,16 +78,16 @@ if($_POST) {
 	}
 
 	if(!$input_errors) {
-		$config['email']['enable'] = $_POST['enable'] ? true : false;
-		$config['email']['server'] = $_POST['server'];
-		$config['email']['port'] = $_POST['port'];
-		$config['email']['auth'] = $_POST['auth'] ? true : false;
-		$config['email']['username'] = $_POST['username'];
-		$config['email']['password'] = base64_encode($_POST['password']);
-		$config['email']['from'] = $_POST['from'];
-		$config['email']['to'] = $_POST['to'];
-    $config['email']['tpoll']= $_POST['tpoll'];
-    $config['email']['npoll']= $_POST['npoll'];
+		$config['statusreport']['enable'] = $_POST['enable'] ? true : false;
+		$config['statusreport']['server'] = $_POST['server'];
+		$config['statusreport']['port'] = $_POST['port'];
+		$config['statusreport']['auth'] = $_POST['auth'] ? true : false;
+		$config['statusreport']['username'] = $_POST['username'];
+		$config['statusreport']['password'] = base64_encode($_POST['password']);
+		$config['statusreport']['from'] = $_POST['from'];
+		$config['statusreport']['to'] = $_POST['to'];
+    $config['statusreport']['tpoll']= $_POST['tpoll'];
+    $config['statusreport']['npoll']= $_POST['npoll'];
 
 		write_config();
 
@@ -135,13 +135,13 @@ function auth_change() {
 </script>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="diag_email.php" method="post" name="iform" id="iform">
+<form action="status_report.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
       <td colspan="2" valign="top" class="optsect_t">
   		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
   		  <tr>
-          <td class="optsect_s"><strong><?=gettext("Status email");?></strong></td>
+          <td class="optsect_s"><strong><?=gettext("Status report");?></strong></td>
   			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
         </tr>
   		  </table>
