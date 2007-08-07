@@ -125,7 +125,7 @@ pre {
 </head>
 <body link="#0000CC" vlink="#0000CC" alink="#0000CC">
 <p><span class="pgtitle">Status Report</span><br>
-<strong><?=$currentDate;?></strong>
+<strong>{$currentDate}</strong>
 <p><span class="red"><strong>Note: make sure to remove any sensitive information
 (passwords, maybe also IP addresses) before posting
 information from this page in public places (like mailing lists)!</strong></span><br>
