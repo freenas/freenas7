@@ -69,35 +69,39 @@ class StatusReportRenderer
 {
 	function Generate($articles) {
 		$report = "";
-		$this->_Render($report,$articles);
+		$this->_RenderReport($report,$articles);
 		return $report;
 	}
 
-	function _Render(&$report,$articles) {
+	function _RenderReport(&$report,$articles) {
 		for ($i = 0; is_object($articles[$i]); $i++) {
-			$this->_SetTitle($report, $articles[$i]->GetTitle());
-			$report .= $articles[$i]->GetText();
-			$report .= "\n";
+			$this->_RenderArticle($report,$articles[$i]);
 		}
 	}
 
-	function _SetTitle(&$report,$title) {
+	function _RenderArticle(&$report,$article) {
+		// To be implemented by derived class.
 	}
 }
 
 class StatusReportRendererText extends StatusReportRenderer
 {
-	function _SetTitle(&$report,$title) {
+	function _RenderReport(&$report,$articles) {
+		// Render article title.
+		$title = $article->GetTitle();
 		if (!empty($title)) {
 			$nWidth = strlen($title) + 1;
 			$report .= sprintf("%s:\n%'-{$nWidth}s\n",$title,""); // Print title and underline.
 		}
+		// Render article text.
+		$report .= $article->GetText();
+		$report .= "\n";
 	}
 }
 
 class StatusReportRendererHTML extends StatusReportRenderer
 {
-	function _Render(&$report,$articles) {
+	function _RenderReport(&$report,$articles) {
 		exec("/bin/date", $dateOutput, $dateStatus);
 		$currentDate = $dateOutput[0];
 
@@ -129,12 +133,12 @@ Passwords in config.xml have been automatically removed.
 
 EOD;
 
+		// Render table of contents.
+		$this->_RenderTableOfContents($report, $articles);
+
 		// Render articles.
-		for ($i = 0; isset($articles[$i]); $i++) {
-			$this->_SetTitle($report, $articles[$i]->GetTitle());
-			$report .= $articles[$i]->GetText();
-			$report .= "</pre></tr>\n";
-    	$report .= "</table>\n";
+		for ($i = 0; is_object($articles[$i]); $i++) {
+			$this->_RenderArticle($report,$articles[$i]);
 		}
 
 		$report .= <<<EOD
@@ -144,13 +148,24 @@ EOD;
 EOD;
 	}
 
-	function _SetTitle($title) {
-		$text = "<p>\n";
-    $text .= "<a name=\"{$title}\">\n";
-    $text .= "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
-    $text .= "<tr><td class=\"listtopic\">{$title}</td></tr>\n";
-    $text .= "<tr><td class=\"listlr\"><pre>";
-    return $text;
+	function _RenderTableOfContents(&$report,$articles) {
+		$report .= "<p>This status page includes the following information:\n";
+		$report .= "<ul>\n";
+		for ($i = 0; is_object($articles[$i]); $i++) {
+			$report .= "<li><strong><a href=\"#" . $articles[$i]->GetTitle() . "\">" . $articles[$i]->GetTitle() . "</a></strong>\n";
+		}
+    $report .= "</ul>\n";
+	}
+
+	function _RenderArticle(&$report,$article) {
+		$report .= "<p>\n";
+    $report .= "<a name=\"" . $article->GetTitle() . "\">\n";
+    $report .= "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
+    $report .= "<tr><td class=\"listtopic\">" . $article->GetTitle() . "</td></tr>\n";
+    $report .= "<tr><td class=\"listlr\"><pre>";
+		$report .= htmlspecialchars($article->GetText(),ENT_NOQUOTES);
+		$report .= "</pre></tr>\n";
+    $report .= "</table>\n";
 	}
 }
 
@@ -191,7 +206,7 @@ class StatusReport
 	*/
 	function Generate() {
 		$report = "";
-		if ($this->isHTML) {
+		if (true === $this->isHTML) {
 			$renderer = new StatusReportRendererHTML;
 			$report = $renderer->Generate($this->articles);
 		} else {
