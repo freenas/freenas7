@@ -23,7 +23,7 @@ $statusreport->AddCommand("SCSI disk","/sbin/camcontrol devlist");
 $statusreport->AddTitle("S.M.A.R.T.");
 $disklist=get_physical_disks_list();
 foreach ($disklist as $disknamek => $disknamev) {
-	$statusreport->AddCommand("/usr/local/sbin/smartctl -a /dev/{$disknamek}");
+	$statusreport->AddCommandEx("/usr/local/sbin/smartctl -a /dev/{$disknamek}");
 }
 $statusreport->AddCommand("Geom Concat","/sbin/gconcat list");
 $statusreport->AddCommand("Geom Stripe","/sbin/gstripe list");

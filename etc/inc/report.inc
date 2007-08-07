@@ -29,28 +29,152 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+class StatusReportRenderer
+{
+	function Generate($commands) {
+		$report = "";
+		$this->_Render($report,$commands);
+		return $report;
+	}
+
+	function _Render(&$report,$commands) {
+		for ($i = 0; isset($commands[$i]); $i++) {
+			// Set title.
+			$this->_SetTitle($report, $commands[$i][0]);
+
+			// Execute command and render output.
+			$this->_ExecCmd($report, $commands[$i][1]);
+
+			$report .= "\n";
+		}
+	}
+
+	function _SetTitle(&$report,$title) {
+	}
+
+	function _ExecCmd(&$report, $command) {
+		if (!empty($command)) {
+			exec($command . " 2>&1", $execOutput, $execStatus);
+			for ($i = 0; isset($execOutput[$i]); $i++) {
+				if ($i > 0) {
+					$report .= "\n";
+				}
+				$report .= $execOutput[$i]; // Print command output.
+			}
+			$report .= "\n";
+		}
+	}
+}
+
+class StatusReportRendererText extends StatusReportRenderer
+{
+	function _SetTitle(&$report,$title) {
+		if (!empty($title)) {
+			$nWidth = strlen($title) + 1; // Print title.
+			$report .= sprintf("%s:\n%'-{$nWidth}s\n",$title,""); // Print underline.
+		}
+	}
+}
+
+class StatusReportRendererHTML extends StatusReportRenderer
+{
+	function _Render(&$report,$commands) {
+		exec("/bin/date", $dateOutput, $dateStatus);
+		$currentDate = $dateOutput[0];
+
+		$report = <<<EOD
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Status Report</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="gui.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+pre {
+   margin: 0px;
+   font-family: courier new, courier;
+   font-weight: normal;
+   font-size: 9pt;
+}
+-->
+</style>
+</head>
+<body link="#0000CC" vlink="#0000CC" alink="#0000CC">
+<p><span class="pgtitle">Status Report</span><br>
+<strong><?=$currentDate;?></strong>
+<p><span class="red"><strong>Note: make sure to remove any sensitive information
+(passwords, maybe also IP addresses) before posting
+information from this page in public places (like mailing lists)!</strong></span><br>
+Passwords in config.xml have been automatically removed.
+
+EOD;
+
+		// Render commands.
+		for ($i = 0; isset($commands[$i]); $i++) {
+			// Set title.
+			$this->_SetTitle($report, $commands[$i][0]);
+
+			// Execute command and render output.
+			$this->_ExecCmd($report, $commands[$i][1]);
+
+			$report .= "</pre></tr>\n";
+    	$report .= "</table>\n";
+		}
+
+	$report .= <<<EOD
+</body>
+</html>
+
+EOD;
+	}
+
+	function _SetTitle(&$report,$title) {
+		$report .= "<p>\n";
+    $report .= "<a name=\"{$title}\">\n";
+    $report .= "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
+    $report .= "<tr><td class=\"listtopic\">{$title}</td></tr>\n";
+    $report .= "<tr><td class=\"listlr\"><pre>";
+	}
+}
+
 class StatusReport
 {
 	/**
 	* Contains commands using to generate report.
 	* @var array
 	*/
-	var $commands;
+	var $commands = array();
+
+	/**
+	* Sets the Content-type of the message.
+	* @var bollean
+	*/
+  var $isHTML = false;
+
+	/**
+	* Sets message type to HTML.
+	* @param bool $bool
+	* @return void
+	*/
+	function IsHTML($bool) {
+		$this->isHTML = $bool;
+	}
 
 	/**
 	* Add command with title.
 	* @return void
 	*/
 	function AddCommand($title, $command) {
-		$this->$commands[] = array($title, $command);
+		$this->commands[] = array($title, $command);
 	}
 
 	/**
 	* Add command without title.
 	* @return void
 	*/
-	function AddCommand($command) {
-		$this->AddCommand("", $command);
+	function AddCommandEx($command) {
+		$this->commands[] = array("", $command);
 	}
 
 	/**
@@ -67,38 +191,15 @@ class StatusReport
 	*/
 	function Generate() {
 		$report = "";
-		for ($i = 0; isset($this->$commands[$i]); $i++) {
-			$this->_Render($report, $this->$commands[$i][0], $this->$commands[$i][1]);
+		if ($this->isHTML) {
+			$renderer = new StatusReportRendererHTML;
+			$report = $renderer->Generate($this->commands);
+		} else {
+			$renderer = new StatusReportRendererText;
+			$report = $renderer->Generate($this->commands);
 		}
+
 		return $report;
-	}
-
-	function _Render(&$report, $title, $command) {
-		// Set title.
-		$this->_SetTitle($report, $title);
-
-		// Execute command and render output.
-		$this->_ExecCmd($report, $command);
-	}
-
-	function _SetTitle(&$report,$title) {
-		if (!empty($title)) {
-			$nWidth = strlen($title) + 1; // Print title.
-			$report .= sprintf("%s:\n%'-{$nWidth}s\n",$title,""); // Print underline.
-		}
-	}
-
-	function _ExecCmd(&$report, $command) {
-		if (!empty($command)) {
-			exec($command . " 2>&1", $execOutput, $execStatus);
-			for ($i = 0; isset($execOutput[$i]); $i++) {
-				if ($i > 0) {
-					$report .= "\n";
-				}
-				$report .= $execOutput[$i]; // Print command output.
-			}
-			$report .= "\n\n";
-		}
 	}
 }
 ?>
