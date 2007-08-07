@@ -29,40 +29,59 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+class StatusReportArticle
+{
+	var $_title = "";
+	var $_text = "";
+
+	function StatusReportArticle($title,$text) {
+		$this->_title = $title;
+		$this->_text = $text;
+	}
+
+	function GetTitle() {
+		return $this->_title;
+	}
+
+	function GetText() {
+		return $this->_text;
+	}
+}
+
+class StatusReportArticleCmd extends StatusReportArticle
+{
+	function StatusReportArticleCmd($title,$command) {
+		$this->_title = $title;
+		$this->_text = "";
+
+		if (!empty($command)) {
+			exec($command . " 2>&1", $execOutput, $execStatus);
+			for ($i = 0; isset($execOutput[$i]); $i++) {
+				if ($i > 0) $this->_text .= "\n";
+				$this->_text .= $execOutput[$i]; // Print command output.
+			}
+			$this->_text .= "\n";
+		}
+	}
+}
+
 class StatusReportRenderer
 {
-	function Generate($commands) {
+	function Generate($articles) {
 		$report = "";
-		$this->_Render($report,$commands);
+		$this->_Render($report,$articles);
 		return $report;
 	}
 
-	function _Render(&$report,$commands) {
-		for ($i = 0; isset($commands[$i]); $i++) {
-			// Set title.
-			$this->_SetTitle($report, $commands[$i][0]);
-
-			// Execute command and render output.
-			$this->_ExecCmd($report, $commands[$i][1]);
-
+	function _Render(&$report,$articles) {
+		for ($i = 0; is_object($articles[$i]); $i++) {
+			$this->_SetTitle($report, $articles[$i]->GetTitle());
+			$report .= $articles[$i]->GetText();
 			$report .= "\n";
 		}
 	}
 
 	function _SetTitle(&$report,$title) {
-	}
-
-	function _ExecCmd(&$report, $command) {
-		if (!empty($command)) {
-			exec($command . " 2>&1", $execOutput, $execStatus);
-			for ($i = 0; isset($execOutput[$i]); $i++) {
-				if ($i > 0) {
-					$report .= "\n";
-				}
-				$report .= $execOutput[$i]; // Print command output.
-			}
-			$report .= "\n";
-		}
 	}
 }
 
@@ -70,15 +89,15 @@ class StatusReportRendererText extends StatusReportRenderer
 {
 	function _SetTitle(&$report,$title) {
 		if (!empty($title)) {
-			$nWidth = strlen($title) + 1; // Print title.
-			$report .= sprintf("%s:\n%'-{$nWidth}s\n",$title,""); // Print underline.
+			$nWidth = strlen($title) + 1;
+			$report .= sprintf("%s:\n%'-{$nWidth}s\n",$title,""); // Print title and underline.
 		}
 	}
 }
 
 class StatusReportRendererHTML extends StatusReportRenderer
 {
-	function _Render(&$report,$commands) {
+	function _Render(&$report,$articles) {
 		exec("/bin/date", $dateOutput, $dateStatus);
 		$currentDate = $dateOutput[0];
 
@@ -110,31 +129,28 @@ Passwords in config.xml have been automatically removed.
 
 EOD;
 
-		// Render commands.
-		for ($i = 0; isset($commands[$i]); $i++) {
-			// Set title.
-			$this->_SetTitle($report, $commands[$i][0]);
-
-			// Execute command and render output.
-			$this->_ExecCmd($report, $commands[$i][1]);
-
+		// Render articles.
+		for ($i = 0; isset($articles[$i]); $i++) {
+			$this->_SetTitle($report, $articles[$i]->GetTitle());
+			$report .= $articles[$i]->GetText();
 			$report .= "</pre></tr>\n";
     	$report .= "</table>\n";
 		}
 
-	$report .= <<<EOD
+		$report .= <<<EOD
 </body>
 </html>
 
 EOD;
 	}
 
-	function _SetTitle(&$report,$title) {
-		$report .= "<p>\n";
-    $report .= "<a name=\"{$title}\">\n";
-    $report .= "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
-    $report .= "<tr><td class=\"listtopic\">{$title}</td></tr>\n";
-    $report .= "<tr><td class=\"listlr\"><pre>";
+	function _SetTitle($title) {
+		$text = "<p>\n";
+    $text .= "<a name=\"{$title}\">\n";
+    $text .= "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
+    $text .= "<tr><td class=\"listtopic\">{$title}</td></tr>\n";
+    $text .= "<tr><td class=\"listlr\"><pre>";
+    return $text;
 	}
 }
 
@@ -144,7 +160,7 @@ class StatusReport
 	* Contains commands using to generate report.
 	* @var array
 	*/
-	var $commands = array();
+	var $articles = array();
 
 	/**
 	* Sets the Content-type of the message.
@@ -162,27 +178,11 @@ class StatusReport
 	}
 
 	/**
-	* Add command with title.
+	* Add article.
 	* @return void
 	*/
-	function AddCommand($title, $command) {
-		$this->commands[] = array($title, $command);
-	}
-
-	/**
-	* Add command without title.
-	* @return void
-	*/
-	function AddCommandEx($command) {
-		$this->commands[] = array("", $command);
-	}
-
-	/**
-	* Add title.
-	* @return void
-	*/
-	function AddTitle($title) {
-		$this->AddCommand($title, "");
+	function AddArticle($articles) {
+		$this->articles[] = $articles;
 	}
 
 	/**
@@ -193,10 +193,10 @@ class StatusReport
 		$report = "";
 		if ($this->isHTML) {
 			$renderer = new StatusReportRendererHTML;
-			$report = $renderer->Generate($this->commands);
+			$report = $renderer->Generate($this->articles);
 		} else {
 			$renderer = new StatusReportRendererText;
-			$report = $renderer->Generate($this->commands);
+			$report = $renderer->Generate($this->articles);
 		}
 
 		return $report;
