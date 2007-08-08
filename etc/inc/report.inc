@@ -111,25 +111,58 @@ class StatusReportRendererHTML extends StatusReportRenderer
 <head>
 <title>Status Report</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="gui.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 <!--
+body, td, th {
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+}
+a {
+	text-decoration: none;
+}
+.title {
+	font-size: 18px;
+	color: #777777;
+	font-weight: bold;
+}
+.listtopic {
+	border-right: 1px solid #999999;
+	font-size: 11px;
+	background-color: #435370;
+	padding-right: 16px;
+	padding-left: 6px;
+	color: #FFFFFF;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.listlr {
+	background-color: #FFFFFF;
+	border-right: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	border-left: 1px solid #999999;
+	font-size: 11px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-right: 6px;
+	padding-left: 6px;
+	text-align: left;
+}
 pre {
-   margin: 0px;
-   font-family: courier new, courier;
-   font-weight: normal;
-   font-size: 9pt;
+	margin: 0px;
+	font-family: courier new, courier;
+	font-weight: normal;
+	font-size: 9pt;
+}
+table {
+	width: 800px;
 }
 -->
 </style>
 </head>
 <body link="#0000CC" vlink="#0000CC" alink="#0000CC">
-<p><span class="pgtitle">Status Report</span><br>
-<strong>{$currentDate}</strong>
-<p><span class="red"><strong>Note: make sure to remove any sensitive information
-(passwords, maybe also IP addresses) before posting
-information from this page in public places (like mailing lists)!</strong></span><br>
-Passwords in config.xml have been automatically removed.
+<span class="title">Status Report</span><br>
+<strong>{$currentDate}</strong><br>
 
 EOD;
 
@@ -149,7 +182,8 @@ EOD;
 	}
 
 	function _RenderTableOfContents(&$report,$articles) {
-		$report .= "<p>This status page includes the following information:\n";
+		$report .= "<br>";
+		$report .= "This status page includes the following information:\n";
 		$report .= "<ul>\n";
 		for ($i = 0; is_object($articles[$i]); $i++) {
 			$report .= "<li><strong><a href=\"#" . $articles[$i]->GetTitle() . "\">" . $articles[$i]->GetTitle() . "</a></strong>\n";
@@ -158,7 +192,6 @@ EOD;
 	}
 
 	function _RenderArticle(&$report,$article) {
-		$report .= "<p>\n";
     $report .= "<a name=\"" . $article->GetTitle() . "\">\n";
     $report .= "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
     $report .= "<tr><td class=\"listtopic\">" . $article->GetTitle() . "</td></tr>\n";
@@ -166,6 +199,7 @@ EOD;
 		$report .= htmlspecialchars($article->GetText(),ENT_NOQUOTES);
 		$report .= "</pre></tr>\n";
     $report .= "</table>\n";
+    $report .= "<br>\n";
 	}
 }
 

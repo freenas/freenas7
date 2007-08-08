@@ -16,7 +16,7 @@ $statusreport->AddArticle(new StatusReportArticleCmd("System uptime","uptime"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Interfaces","/sbin/ifconfig -a"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Routing tables","netstat -nr"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Processes","ps xauww"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Swap usege","/usr/sbin/swapinfo"));
+$statusreport->AddArticle(new StatusReportArticleCmd("Swap usage","/usr/sbin/swapinfo"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Sensors","/usr/local/bin/chm -I -d 0"));
 $statusreport->AddArticle(new StatusReportArticleCmd("ATA disk","/sbin/atacontrol list"));
 $statusreport->AddArticle(new StatusReportArticleCmd("SCSI disk","/sbin/camcontrol devlist"));
@@ -30,7 +30,7 @@ $statusreport->AddArticle(new StatusReportArticleCmd("Geom Mirror","/sbin/gmirro
 $statusreport->AddArticle(new StatusReportArticleCmd("Geom RAID5","/sbin/graid5 list"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Geom Vinum","/sbin/gvinum list"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Mount point","/sbin/mount"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Free Disk Space","/bin/df -h"));
+$statusreport->AddArticle(new StatusReportArticleCmd("Free disk space","/bin/df -h"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Encrypted disks","/sbin/geli list"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail -n 200"));
 
