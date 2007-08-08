@@ -20,9 +20,9 @@ $statusreport->AddArticle(new StatusReportArticleCmd("Swap usage","/usr/sbin/swa
 $statusreport->AddArticle(new StatusReportArticleCmd("Sensors","/usr/local/bin/chm -I -d 0"));
 $statusreport->AddArticle(new StatusReportArticleCmd("ATA disk","/sbin/atacontrol list"));
 $statusreport->AddArticle(new StatusReportArticleCmd("SCSI disk","/sbin/camcontrol devlist"));
-$disklist=get_physical_disks_list();
+$disklist = get_physical_disks_list();
 foreach ($disklist as $disknamek => $disknamev) {
-	$statusreport->AddArticle(new StatusReportArticleCmd("S.M.A.R.T.","/usr/local/sbin/smartctl -a /dev/{$disknamek}"));
+	$statusreport->AddArticle(new StatusReportArticleCmd("S.M.A.R.T. [/dev/{$disknamek}]","/usr/local/sbin/smartctl -a /dev/{$disknamek}"));
 }
 $statusreport->AddArticle(new StatusReportArticleCmd("Geom Concat","/sbin/gconcat list"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Geom Stripe","/sbin/gstripe list"));
