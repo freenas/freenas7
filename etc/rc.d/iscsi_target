@@ -2,7 +2,7 @@
 
 # PROVIDE: iscsi_target
 # REQUIRE: NETWORKING
-# XQUERY: -i "count(//iscsitarget/vdisk) > 0" -o "0" -b
+# XQUERY: -i "count(//iscsitarget/target) > 0" -o "0" -b
 # RCVAR: iscsi_target
 
 . /etc/rc.subr
@@ -36,10 +36,27 @@ create_conf()
 		cat /dev/null > ${iscsi_target_passwd}
 	fi
 
-	# Iterate over all configured disks.
-	/usr/local/bin/xml sel -t -m "//iscsitarget/vdisk" \
-		-v "concat('extent',position()-1,' /mnt/',sharename,'/iscsi_target',position()-1,' 0 ',size,'MB')" -n \
-		-v "concat('target',position()-1,' rw extent',position()-1,' ',network)" -n \
+	# Iterate over all extent/device/target attributes.
+	/usr/local/bin/xml sel -t \
+		-o "# extents" -n \
+		-m "//iscsitarget/extent" \
+			-v "concat(name,' ',path,'/',name,' 0 ',size,'MB')" -n \
+		-b \
+		-n -o "# devices" -n \
+		-m "//iscsitarget/device" \
+			-v "concat(name,' ',type,' ')" \
+			-m "storage" \
+				-v "concat(.,' ')" \
+			-b -n \
+		-b \
+		-n -o "# targets" -n \
+		-m "//iscsitarget/target" \
+			-v "concat(name,' ',flags,' ')"  \
+			-m "storage" \
+				-v "concat(.,' ')" \
+			-b \
+			-v "concat(ipaddr,'/',subnet)" -n \
+		-b \
 		${configxml_file} >> ${iscsi_target_config}
 }
 

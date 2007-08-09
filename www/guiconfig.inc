@@ -397,4 +397,34 @@ function share_sort() {
 
 	usort($config['samba']['share'], "sharecmp");
 }
+
+function iscsitargetextent_sort() {
+	global $config;
+
+	function iscsitargetextentcmd($a, $b) {
+		return strcmp($a['name'], $b['name']);
+	}
+
+	usort($config['iscsitarget']['extent'], "iscsitargetextentcmd");
+}
+
+function iscsitargetdevice_sort() {
+	global $config;
+
+	function iscsitargetdevicecmp($a, $b) {
+		return strcmp($a['name'], $b['name']);
+	}
+
+	usort($config['iscsitarget']['device'], "iscsitargetdevicecmp");
+}
+
+function iscsitargettarget_sort() {
+	global $config;
+
+	function iscsitargettargetcmd($a, $b) {
+		return strcmp($a['name'], $b['name']);
+	}
+
+	usort($config['iscsitarget']['extent'], "iscsitargettargetcmd");
+}
 ?>

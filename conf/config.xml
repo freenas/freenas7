@@ -165,6 +165,27 @@
 		</vdisk>
 		-->
 	</geli>
+	<iscsitarget>
+		<!--
+		<extent>
+			<name>xxx</name>
+			<path>xxx</path> // Directory where file is stored.
+			<size>xxx</size> // Size in MB.
+		</extent>
+		<device>
+			<name>xxx</name>
+			<type>RAID0|RAID1</type>
+			<storage>xxx<storage> // 'Extents' or 'Devices' to be used. Can be defined multiple times.
+		</device>
+		<target>
+			<name>xxx</name>
+			<storage>xxx<storage> // 'Extents' or 'Devices' to be used. Can be defined multiple times.
+			<flags>rw</flags>
+			<ipaddr>xxx.xxx.xxx.xxx</ipaddr>
+			<subnet>xxx</subnet>
+		</target>
+		-->
+	</iscsitarget>
 	<mounts>
 		<!--
 		<mount>
@@ -195,7 +216,7 @@
 		// createmask and directorymask can be used to overwrite default values when security=share
 		<createmask>0666</createmask>
 		<directorymask>0777</directorymask>
-		<auxparam></auxparam>
+		<auxparam></auxparam> // Can be defined multiple times.
 		<share>
 			<name>xxx</name>
 			<path>/mnt/xxx</path>
@@ -203,7 +224,7 @@
 			<browseable/>
 			<inheritpermissions/>
 			<recyclebin/>
-			<auxparam></auxparam>
+			<auxparam></auxparam> // Can be defined multiple times.
 		</share>
 		-->
 	</samba>
