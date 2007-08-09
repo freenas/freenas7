@@ -129,6 +129,12 @@ if($_POST) {
 			      </td>
 			    </tr>
 			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Comment");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="comment" type="text" class="formfld" id="comment" size="30" value="<?=htmlspecialchars($pconfig['comment']);?>">
+			      </td>
+			    </tr>
+			    <tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Path/Mount point"); ?></td>
 						<td width="78%" class="vtable">
 							<select name="path" class="formfld" id="path">
@@ -140,12 +146,6 @@ if($_POST) {
 					  	</select>
 					  </td>
 					</tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Comment");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="comment" type="text" class="formfld" id="comment" size="30" value="<?=htmlspecialchars($pconfig['comment']);?>">
-			      </td>
-			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Browseable");?></td>
 			      <td width="78%" class="vtable">
