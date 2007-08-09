@@ -182,6 +182,8 @@ if ($_POST) {
 			        }
 			        if ($disable_script) echo "<script language='javascript'><!--\n$disable_script--></script>\n";
 			      ?>
+			      <?php if (0 == $i):?>&nbsp;<?php endif;?>
+						</td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
