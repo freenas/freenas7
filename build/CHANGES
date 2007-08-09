@@ -8,6 +8,8 @@ Majors changes:
 - Update kernel sources (RELENG_6_2) via cvsup. Modified build scripts.
 - Add email status report.
 - Add 'Status/Report' WebGUI page to administrate email status report.
+- Update 'iSCSI Target' WebGUI + services. Now it is possible to expand existing targets and define
+  RAID0 and RAID1 devices.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
