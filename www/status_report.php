@@ -148,17 +148,19 @@ function auth_change() {
       </td>
     </tr>
     <tr>
-	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Server address");?></td>
+	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Outgoing mail server");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
-        <input name="server" type="text" class="formfld" id="server" size="40" value="<?=htmlentities($pconfig['server']);?>">
+        <input name="server" type="text" class="formfld" id="server" size="40" value="<?=htmlentities($pconfig['server']);?>"><br>
+        <?=gettext("Outgoing SMTP mail server address, e.g. smtp.example.com.");?>
       </td>
 		</tr>
 		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Server port");?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
-        <input name="port" type="text" class="formfld" id="port" size="10" value="<?=htmlentities($pconfig['port']);?>">
+        <input name="port" type="text" class="formfld" id="port" size="10" value="<?=htmlentities($pconfig['port']);?>"><br>
+        <?=gettext("The default SMTP mail server port, e.g. 25 or 587.");?>
       </td>
     </tr>
 		<tr>
