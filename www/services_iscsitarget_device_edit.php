@@ -103,25 +103,25 @@ if ($_POST) {
 	}
 }
 
-function iscsitarget_checkusage($name) {
-	global $config, $pconfig;
+function iscsitarget_checkusage($name,$skipdevice = "") {
+	global $config;
 
 	$result = false;
 
 	foreach($config['iscsitarget']['device'] as $device) {
-		if ($device['name'] === $pconfig['name']) continue;
+		if (!empty($skipdevice) && ($device['name'] === $skipdevice)) continue;
 		foreach($device['storage'] as $storage) {
 			if ($storage === $name) {
 				$result = true;
 				break;
 			}
-		}	
+		}
 	}
 
 	return $result;
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
 		<td class="tabnavtbl">
@@ -142,7 +142,7 @@ function iscsitarget_checkusage($name) {
 							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" readonly>
 					  </td>
 					</tr>
-					<tr> 
+					<tr>
 			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
 			      <td width="78%" class="vtable">
 			  			<select name="type" class="formfld" id="type">
@@ -157,16 +157,15 @@ function iscsitarget_checkusage($name) {
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Storage");?></td>
 			      <td width="78%" class="vtable">
 				      <?php $i = 0; foreach ($a_iscsitarget_extent as $extent):?>
-				      <?php if (true === iscsitarget_checkusage($extent['name'])) continue;?>
+				      <?php if (true === iscsitarget_checkusage($extent['name'], $pconfig['name'])) continue;?>
 							<input name="storage[]" id="<?=$i;?>" type="checkbox" value="<?=$extent['name'];?>" <?php if (is_array($pconfig['storage']) && in_array($extent['name'],$pconfig['storage'])) echo "checked";?>><?=htmlspecialchars($extent['name']);?><br>
 				      <?php $i++; endforeach;?>
-				      <?php $i = 0; foreach ($a_iscsitarget_device as $device):?>
+				      <?php $k = 0; foreach ($a_iscsitarget_device as $device):?>
+				      <?php if ($device['name'] === $pconfig['name']) continue;?>
 				      <?php if (true === iscsitarget_checkusage($device['name'])) continue;?>
-							<input name="storage[]" id="<?=$i;?>" type="checkbox" value="<?=$device['name'];?>" <?php if (is_array($pconfig['storage']) && in_array($device['name'],$pconfig['storage'])) echo "checked";?>><?=htmlspecialchars($device['name']);?><br>
-				      <?php $i++; endforeach;?>
-				      <?php if (0 == $i):?>
-							&nbsp;
-							<?php endif;?>
+							<input name="storage[]" id="<?=$k;?>" type="checkbox" value="<?=$device['name'];?>" <?php if (is_array($pconfig['storage']) && in_array($device['name'],$pconfig['storage'])) echo "checked";?>><?=htmlspecialchars($device['name']);?><br>
+				      <?php $k++; endforeach;?>
+				      <?php if ((0 == $i) && (0 == $k)):?>&nbsp;<?php endif;?>
 				    </td>
 			    </tr>
 			    <tr>
@@ -177,7 +176,7 @@ function iscsitarget_checkusage($name) {
 						<?php endif; ?>
 						</td>
 					</tr>
-					<tr> 
+					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
 							<span class="vexpl">

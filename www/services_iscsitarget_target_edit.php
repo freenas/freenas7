@@ -128,7 +128,7 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
 		<td class="tabnavtbl">
@@ -149,7 +149,7 @@ if ($_POST) {
 							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" readonly>
 					  </td>
 					</tr>
-					<tr> 
+					<tr>
 			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Flags"); ?></td>
 			      <td width="78%" class="vtable">
 			  			<select name="flags" class="formfld" id="flags">
@@ -169,9 +169,7 @@ if ($_POST) {
 				      <?php $k = 0; foreach ($a_iscsitarget_device as $device):?>
 							<input name="storage[]" id="<?=$k;?>" type="checkbox" value="<?=$device['name'];?>" <?php if (is_array($pconfig['storage']) && in_array($device['name'],$pconfig['storage'])) echo "checked";?>><?=htmlspecialchars($device['name']);?><br>
 				      <?php $k++; endforeach;?>
-				      <?php if (0 == $i && 0 == $k):?>
-							&nbsp;
-							<?php endif;?>
+				      <?php if (0 == $i && 0 == $k):?>&nbsp;<?php endif;?>
 				    </td>
 			    </tr>
 					<tr>
@@ -197,7 +195,7 @@ if ($_POST) {
 						<?php endif; ?>
 						</td>
 					</tr>
-					<tr> 
+					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
 							<span class="vexpl">
