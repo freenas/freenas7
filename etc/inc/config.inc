@@ -806,7 +806,7 @@ function convert_config() {
 			$extent['path'] = "/mnt/" . $config['iscsitarget']['vdisk'][$i]['sharename'];
 			$extent['size'] = $config['iscsitarget']['vdisk'][$i]['size'];
 
-			$network = explode("/", $config['iscsitarget']['vdisk'][$i]['network'])
+			$network = explode("/", $config['iscsitarget']['vdisk'][$i]['network']);
 
 			$target = array();
 			$target['name'] = "target{$i}";
