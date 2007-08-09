@@ -195,7 +195,7 @@ if ($_GET['act'] == "del") {
 			    </tr>
 				</table>
 			</form>
-		  <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("You must have a minimum of 256MB of RAM for using iSCSI-target.");?></p>
+		  <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?=gettext("You must have a minimum of 256MB of RAM for using iSCSI-Target.");?></p>
 		</td>
 	</tr>
 </table>
