@@ -797,6 +797,33 @@ function convert_config() {
 		$config['version'] = "2.4";
 	}
 
+	/* Convert 2.4 -> 2.5 */
+	/* Refactor //iscsitarget. */
+	if ($config['version'] === "2.4") {
+		for ($i = 0; isset($config['iscsitarget']['vdisk'][$i]); $i++) {
+			$extent = array();
+			$extent['name'] = "extent{$i}";
+			$extent['path'] = "/mnt/" . $config['iscsitarget']['vdisk'][$i]['sharename'];
+			$extent['size'] = $config['iscsitarget']['vdisk'][$i]['size'];
+
+			$network = explode("/", $config['iscsitarget']['vdisk'][$i]['network'])
+
+			$target = array();
+			$target['name'] = "target{$i}";
+			$target['storage'] = "extent{$i}";
+			$target['flags'] = "rw";
+			$target['ipaddr'] = $network[0];
+			$target['subnet'] = $network[1];
+
+			$config['iscsitarget']['extent'][] = $extent;
+			$config['iscsitarget']['target'][] = $target;
+
+			unset($config['iscsitarget']['vdisk'][$i]);
+		}
+
+		$config['version'] = "2.5";
+	}
+
 	write_config();
 
 	if (is_booting())
