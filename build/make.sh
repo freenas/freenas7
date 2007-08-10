@@ -153,6 +153,7 @@ build_kernel() {
 
 	# Choose what to do.
 	$DIALOG --title "$FREENAS_PRODUCTNAME - Build kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 3 \
+		"cvsup" "Update kernel sources" OFF \
 		"prebuild" "Install additional drivers" ON \
 		"build" "Build kernel" ON \
 		"install" "Install kernel + modules" ON 2> $tempfile
@@ -166,6 +167,9 @@ build_kernel() {
 
 	for choice in $(echo $choices | tr -d '"'); do
 		case $choice in
+			cvsup)
+				cvsup $FREENAS_SVNDIR/build/source-supfile
+				[ 0 != $? ] && return 1;; # successful?
 			prebuild)
 				# Adding specials drivers.
 				pre_build_kernel;
