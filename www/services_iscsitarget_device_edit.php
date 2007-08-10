@@ -103,6 +103,8 @@ if ($_POST) {
 	}
 }
 
+// Check if the extent/device storage object is already used.
+// Return true if it is used anywhere, otherwise false.
 function iscsitarget_checkusage($name,$skipdevice = "") {
 	global $config;
 
