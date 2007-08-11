@@ -71,10 +71,10 @@ if ($_POST) {
 
 	/* check for name conflicts */
 	foreach ($a_group as $group) {
-		if (isset($id) && ($a_group[$id]) && ($a_group[$id] === $group))
+		if (isset($id) && ($a_group[$id]) && ($a_group[$id] == $group))
 			continue;
 
-		if ($group['name'] == $_POST['name']) {
+		if ($group['name'] === $_POST['name']) {
 			$input_errors[] = gettext("This group already exists in the group list.");
 			break;
 		}
@@ -90,8 +90,10 @@ if ($_POST) {
 			$groups['id'] = $_POST['groupid'];
 			$a_group[$id] = $groups;
 		} else {
-			$groups['id'] = $config['access']['groupid'];
-			$config['access']['groupid'] ++;
+			// Get next group id.
+			exec("/usr/sbin/pw groupnext", $output);
+
+			$groups['id'] = $output[0];
 			$a_group[] = $groups;
 		}
 

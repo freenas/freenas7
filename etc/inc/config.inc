@@ -824,6 +824,24 @@ function convert_config() {
 		$config['version'] = "2.5";
 	}
 
+	/* Convert 2.5 -> 2.6 */
+	/* Remove useless //access/userid and //access/groupid. */
+	/* Remove useless //access/user/usergroup. */
+	/* Rename //access/user/usergroupid to //access/user/group. */ 
+	if ($config['version'] === "2.5") {
+		for ($i = 0; isset($config['access']['user'][$i]); $i++) {
+			$config['access']['user'][$i]['group'] = $config['access']['user'][$i]['usergroupid'];
+
+			unset($config['access']['user'][$i]['usergroupid']);
+			unset($config['access']['user'][$i]['usergroup']);
+		}
+
+		unset($config['access']['userid']);
+		unset($config['access']['groupid']);
+
+		$config['version'] = "2.6";
+	}
+
 	write_config();
 
 	if (is_booting())

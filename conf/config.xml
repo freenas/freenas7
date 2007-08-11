@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>2.5</version>
+	<version>2.6</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -308,8 +308,22 @@
 		-->
 	</syslogd>
 	<access>
-		<userid>1002</userid>
-		<groupid>1002</groupid>
+		<!--
+		<user>
+			<id>xxx</id>
+			<group>xxx</group> // Can be defined multiple times.
+			<login>xxx</login>
+			<fullname>xxx</fullname>
+			<password>xxx</password>
+			<fullshell/>
+			<admin/>
+		</user>
+		<group>
+			<id>xxx</id>
+			<name>xxx</name>
+			<desc>xxx</desc>
+		</group>
+		-->
 	</access>
 	<dynamicdns>
 		<!--

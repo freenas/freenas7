@@ -9,6 +9,7 @@ Majors changes:
 - Add 'Status/Report' WebGUI page to administrate email status report.
 - Update 'iSCSI Target' WebGUI + services. Now it is possible to expand existing targets and define
   RAID0 and RAID1 devices.
+- Refactor complete user/group management (code, services & WebGUI).
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.

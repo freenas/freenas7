@@ -55,10 +55,10 @@ $a_group = &$config['access']['group'];
 if (isset($id) && $a_user[$id]) {
 	$pconfig['login'] = $a_user[$id]['login'];
 	$pconfig['fullname'] = $a_user[$id]['fullname'];
-	$pconfig['usergroup'] = $a_user[$id]['usergroup'];
 	$pconfig['password'] = $a_user[$id]['password'];
 	$pconfig['passwordconf'] = $pconfig['password'];
 	$pconfig['userid'] = $a_user[$id]['id'];
+	$pconfig['group'] = $a_user[$id]['group'];
 	$pconfig['fullshell'] = isset($a_user[$id]['fullshell']);
 	$pconfig['admin'] = isset($a_user[$id]['admin']);
 }
@@ -67,7 +67,7 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	$reqdfields = explode(" ", "login fullname password passwordconf usergroup");
+	$reqdfields = explode(" ", "login fullname password passwordconf group");
 	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Password"),gettext("Password confirmation"),gettext("Group Member"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -87,7 +87,7 @@ if ($_POST) {
 
 	/* check for name conflicts */
 	foreach ($a_user as $user) {
-		if (isset($id) && ($a_user[$id]) && ($a_user[$id] === $user))
+		if (isset($id) && ($a_user[$id]) && ($a_user[$id] == $user))
 			continue;
 
 		if ($user['login'] === $_POST['login']) {
@@ -111,25 +111,19 @@ if ($_POST) {
 		$users['login'] = $_POST['login'];
 		$users['fullname'] = $_POST['fullname'];
 		$users['password'] = $_POST['password'];
-		$users['usergroup'] = $_POST['usergroup'];
 		$users['fullshell'] = $_POST['fullshell'] ? true : false;
 		$users['admin'] = $_POST['admin'] ? true : false;
-
-		/* add the groupid for generate the password file */
-		foreach ($a_group as $group) {
-			if (strcmp($users['usergroup'],$group['name']) == 0) {
-				$users['usergroupid']=$group['id'];
-				break;
-			}
-		}
+		$users['group'] = $_POST['group'];
 
 		if (isset($id) && $a_user[$id]) {
 			$users['id'] = $_POST['userid'];
 			$a_user[$id] = $users;
-		}
-		else 		{
-			$users['id'] = $config['access']['userid'];
-			$config['access']['userid'] ++;
+		} else {
+			// Get next user id.
+			exec("/usr/sbin/pw nextuser", $output);
+			$output = explode(":", $output[0]);
+
+			$users['id'] = $output[0];
 			$a_user[] = $users;
 		}
 
@@ -183,12 +177,9 @@ if ($_POST) {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Group Member") ;?></td>
             <td width="78%" class="vtable">
-							<select name="usergroup" class="formfld" id="usergroup">
+							<select name="group" class="formfld" id="group">
 								<?php foreach ($a_group as $group): ?>
-								<option value="<?=$group['name'];?>" <?php if ($group['name'] == $pconfig['usergroup']) echo "selected";?>>
-								<?php echo htmlspecialchars($group['name']);
-								?>
-								</option>
+								<option value="<?=$group['id'];?>" <?php if ($group['id'] === $pconfig['group']) echo "selected";?>><?php echo htmlspecialchars($group['name']);?></option>
 								<?php endforeach; ?>
 							</select>
 						</td>
@@ -213,7 +204,6 @@ if ($_POST) {
 							<?php if (isset($id) && $a_user[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<input name="userid" type="hidden" value="<?=$pconfig['userid'];?>">
-							<input name="usergroupid" type="hidden" value="<?=$pconfig['usergroupid'];?>">
 							<?php endif;?>
             </td>
           </tr>
