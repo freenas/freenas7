@@ -324,7 +324,7 @@
 	</dynamicdns>
 	<statusreport>
 		<port>25</port>
-		<tpoll>hours</tpoll>
+		<tpoll>hour</tpoll>
 		<npoll>1</npoll>
 		<!--
 		<enable/>

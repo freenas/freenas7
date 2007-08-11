@@ -77,6 +77,29 @@ if($_POST) {
 		$input_errors[] = gettext("The passwords do not match.");
 	}
 
+	/* Check npoll ranges. */
+	switch($_POST['tpoll']) {
+		case "minute":
+			if (false == in_array($_POST['npoll'], range(1, 59)))
+				$input_errors[] = gettext("Polling step must be between 1 and 59 minutes.");
+			break;
+
+		case "hour":
+			if (false == in_array($_POST['npoll'], range(1, 24)))
+				$input_errors[] = gettext("Polling step must be between 1 and 24 hours.");
+			break;
+
+		case "day":
+			if (false == in_array($_POST['npoll'], range(1, 31)))
+				$input_errors[] = gettext("Polling step must be between 1 and 31 days.");
+			break;
+
+		case "month":
+			if (false == in_array($_POST['npoll'], range(1, 12)))
+				$input_errors[] = gettext("Polling step must be between 1 and 12 months.");
+			break;
+	}
+
 	if(!$input_errors) {
 		$config['statusreport']['enable'] = $_POST['enable'] ? true : false;
 		$config['statusreport']['server'] = $_POST['server'];
@@ -203,21 +226,16 @@ function auth_change() {
 			</td>
 		</tr>
 		<tr id="minspace_tr">
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Polling period") ; ?></td>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("Polling step") ; ?></td>
 			<td width="78%" class="vtable">
 				<?=$mandfldhtml;?>
 				<?=gettext("Poll every ");?>
-				<select name="npoll" class="formfld" id="npoll">
-				<?php $types = explode(",", "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23"); $vals = explode(" ", "1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23");?>
-				<?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-					<option value="<?=$vals[$j];?>"><?=htmlspecialchars($types[$j]);?></option>
-				<?php endfor; ?>
-				</select>&nbsp;&nbsp;
+				<input name="npoll" type="text" class="formfld" id="npoll" size="5" value="<?=htmlentities($pconfig['npoll']);?>">&nbsp;
 				<select name="tpoll" class="formfld" id="tpoll">
-				<?php $types = explode(",", "minutes, hours, days"); $vals = explode(" ", "minutes hours days");?>
-				<?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-					<option value="<?=$vals[$j];?>"><?=htmlspecialchars($types[$j]);?></option>
-				<?php endfor; ?>
+					<?php $vals = explode(" ", "minute hour day month"); $text = explode(" ", "minutes hours days months")?>
+					<?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+					<option value="<?=$vals[$j];?>" <?php if ($vals[$j] === "{$pconfig['tpoll']}") echo "selected";?>><?=htmlspecialchars(gettext($text[$j]));?></option>
+					<?php endfor; ?>
 				</select>
 			</td>
 		</tr>
