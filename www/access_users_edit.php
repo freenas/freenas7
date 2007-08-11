@@ -71,7 +71,7 @@ if ($_POST) {
 	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Password"),gettext("Password confirmation"),gettext("Group Member"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	/* check for valid login name */
+	/* Check for valid login name */
 	if (($_POST['login'] && !is_validlogin($_POST['login']))) {
 		$input_errors[] = gettext("The login name contains invalid characters.");
 	}
@@ -79,34 +79,34 @@ if ($_POST) {
 	if (($_POST['login'] && in_array($_POST['login'],$reservedlogin))) {
 		$input_errors[] = gettext("The login name is a reserved login name.");
 	}
-	/* check for valid Full name */
+
+	/* Check for valid Full name */
 	if (($_POST['fullname'] && !is_validdesc($_POST['fullname']))) {
 		$input_errors[] = gettext("The full name contains invalid characters.");
 	}
 
 	/* check for name conflicts */
-	foreach ($a_user as $user)
-	{
+	foreach ($a_user as $user) {
 		if (isset($id) && ($a_user[$id]) && ($a_user[$id] === $user))
 			continue;
 
-		if ($user['login'] == $_POST['login'])
-		{
+		if ($user['login'] === $_POST['login']) {
 			$input_errors[] = gettext("This user already exists in the user list.");
 			break;
 		}
 	}
 
 	/* Check for a password mismatch */
-	if ($_POST['password']!=$_POST['passwordconf']) 	{
+	if ($_POST['password'] != $_POST['passwordconf']) {
 			$input_errors[] = gettext("Password don't match.");
 	}
-		/* check for valid password  */
-		if (($_POST['password'] && !is_validpassword($_POST['password']))) {
+
+	/* Check for valid password  */
+	if (($_POST['password'] && !is_validpassword($_POST['password']))) {
 		$input_errors[] = gettext("The password contain the illegal : character");
 	}
 
-	if (!$input_errors) 	{
+	if (!$input_errors) {
 		$users = array();
 		$users['login'] = $_POST['login'];
 		$users['fullname'] = $_POST['fullname'];
@@ -116,8 +116,8 @@ if ($_POST) {
 		$users['admin'] = $_POST['admin'] ? true : false;
 
 		/* add the groupid for generate the password file */
-		foreach ($a_group as $group) 		{
-			if (strcmp($users['usergroup'],$group['name']) == 0)	{
+		foreach ($a_group as $group) {
+			if (strcmp($users['usergroup'],$group['name']) == 0) {
 				$users['usergroupid']=$group['id'];
 				break;
 			}
@@ -142,7 +142,7 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
 		<td class="tabnavtbl">
@@ -207,16 +207,14 @@ if ($_POST) {
 							<?=gettext("Put user in the administrator group");?>
 						</td>
           </tr>
-					<?php if (isset($id) && $a_user[$id]): ?>
-					<input name="userid" type="hidden" class="formfld" id="userid" value="<?=$pconfig['userid'];?>">
-					<input name="usergroupid" type="hidden" class="formfld" id="usergroupid" value="<?=$pconfig['usergroupid'];?>">
-					<?php endif; ?>
           <tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>">
-              <?php if (isset($id) && $a_user[$id]): ?>
-              <input name="id" type="hidden" value="<?=$id;?>">
-              <?php endif; ?>
+							<?php if (isset($id) && $a_user[$id]):?>
+							<input name="id" type="hidden" value="<?=$id;?>">
+							<input name="userid" type="hidden" value="<?=$pconfig['userid'];?>">
+							<input name="usergroupid" type="hidden" value="<?=$pconfig['usergroupid'];?>">
+							<?php endif;?>
             </td>
           </tr>
         </table>
