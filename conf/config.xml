@@ -311,10 +311,8 @@
 		<!--
 		<user>
 			<id>xxx</id>
-			<group>xxx</group> // Primary group.
-			<grouplist> // Additional group memberships.
-				<group>xxx</group> // Can be defined multiple times.
-			</grouplist>
+			<primarygroup>xxx</primarygroup> // Primary group.
+			<group>xxx</group> // Additional group memberships. Can be defined multiple times.
 			<login>xxx</login>
 			<fullname>xxx</fullname>
 			<password>xxx</password>

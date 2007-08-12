@@ -71,7 +71,7 @@ _index=`/usr/local/bin/xml sel -t -v "count(//access/user)" ${configxml_file}`
 while [ ${_index} -gt 0 ]
 do
 	_cmdarg=`/usr/local/bin/xml sel -t -m "//access/user[${_index}]" \
-		-v "concat('-n ',login,' -u ',id,' -g ',group,' -c &quot;',fullname,'&quot;')" \
+		-v "concat('-n ',login,' -u ',id,' -g ',primarygroup,' -c &quot;',fullname,'&quot;')" \
 		-i "count(fullshell) > 0" -o " -s /bin/tcsh" -b \
 		-i "count(fullshell) = 0" -o " -s /usr/local/bin/scponly" -b \
 		-o " -d /mnt" \

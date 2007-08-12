@@ -58,7 +58,7 @@ if (isset($id) && $a_user[$id]) {
 	$pconfig['password'] = $a_user[$id]['password'];
 	$pconfig['passwordconf'] = $pconfig['password'];
 	$pconfig['userid'] = $a_user[$id]['id'];
-	$pconfig['group'] = $a_user[$id]['group'];
+	$pconfig['primarygroup'] = $a_user[$id]['primarygroup'];
 	$pconfig['fullshell'] = isset($a_user[$id]['fullshell']);
 	$pconfig['admin'] = isset($a_user[$id]['admin']);
 }
@@ -67,8 +67,8 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	$reqdfields = explode(" ", "login fullname password passwordconf group");
-	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Password"),gettext("Password confirmation"),gettext("Group Member"));
+	$reqdfields = explode(" ", "login fullname password passwordconf primarygroup");
+	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Password"),gettext("Password confirmation"),gettext("Primary Group"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	/* Check for valid login name */
@@ -113,7 +113,7 @@ if ($_POST) {
 		$users['password'] = $_POST['password'];
 		$users['fullshell'] = $_POST['fullshell'] ? true : false;
 		$users['admin'] = $_POST['admin'] ? true : false;
-		$users['group'] = $_POST['group'];
+		$users['primarygroup'] = $_POST['primarygroup'];
 
 		if (isset($id) && $a_user[$id]) {
 			$users['id'] = $_POST['userid'];
@@ -139,9 +139,9 @@ if ($_POST) {
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-		<td class="tabnavtbl">
+	<td class="tabnavtbl">
   		<ul id="tabnav">
-				<li class="tabact"><a href="access_users.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Users");?></a></li>
+			<li class="tabact"><a href="access_users.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Users");?></a></li>
     		<li class="tabinact"><a href="access_users_groups.php"><?=gettext("Groups");?></a></li>
   		</ul>
   	</td>
@@ -157,16 +157,16 @@ if ($_POST) {
             <td width="78%" class="vtable">
               <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>">
               <br><?=gettext("Unique login name of user.") ;?>
-						</td>
-	        </tr>
-	        <tr>
+			</td>
+	       </tr>
+	       <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Full Name") ;?></td>
             <td width="78%" class="vtable">
               <input name="fullname" type="text" class="formfld" id="fullname" size="20" value="<?=htmlspecialchars($pconfig['fullname']);?>">
               <br><?=gettext("User full name.") ;?>
-						</td>
-	      	</tr>
-        	<tr>
+			</td>
+			</tr>
+			<tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Password") ;?></td>
             <td width="78%" class="vtable">
               <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
@@ -175,11 +175,11 @@ if ($_POST) {
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Group Member") ;?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Primary Group") ;?></td>
             <td width="78%" class="vtable">
-							<select name="group" class="formfld" id="group">
+							<select name="primarygroup" class="formfld" id="primarygroup">
 								<?php foreach ($a_group as $group): ?>
-								<option value="<?=$group['id'];?>" <?php if ($group['id'] === $pconfig['group']) echo "selected";?>><?php echo htmlspecialchars($group['name']);?></option>
+								<option value="<?=$group['id'];?>" <?php if ($group['id'] === $pconfig['primarygroup']) echo "selected";?>><?php echo htmlspecialchars($group['name']);?></option>
 								<?php endforeach; ?>
 							</select>
 						</td>

@@ -108,12 +108,10 @@ if ($_GET['act'] == "del") {
 						<td class="listlr"><?=htmlspecialchars($user['login']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($user['fullname']);?>&nbsp;</td>
 						<td class="listbg">
-							<?php foreach ($user['group'] as $usergroup):?>
-								<?php foreach ($config['access']['group'] as $group):?>
-									<?php if ($group['id'] == $usergroup):?>
-									<?=htmlspecialchars($group['name']);?>
-									<?php endif;?>
-								<?php endforeach;?>
+							<?php foreach ($config['access']['group'] as $group):?>
+								<?php if ($group['id'] == $user['primarygroup']):?>
+								<?=htmlspecialchars($group['name']);?>
+								<?php endif;?>
 							<?php endforeach;?>
 							&nbsp;
 						</td>
