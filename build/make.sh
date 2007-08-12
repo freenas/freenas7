@@ -47,6 +47,12 @@ DIALOG="dialog"
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
 URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
 
+# Update kernel/userland sources.
+cvsup_sources() {
+	csup $FREENAS_SVNDIR/build/source-supfile
+	return $?
+}
+
 # Create userland.
 create_userland() {
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
@@ -184,7 +190,6 @@ build_kernel() {
 
 	# Choose what to do.
 	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 4 \
-		"cvsup" "Update kernel sources" OFF \
 		"prebuild" "Install additional drivers" ON \
 		"build" "Build kernel" ON \
 		"install" "Install kernel + modules" ON 2> $tempfile
@@ -198,9 +203,6 @@ build_kernel() {
 
 	for choice in $(echo $choices | tr -d '"'); do
 		case $choice in
-			cvsup)
-				cvsup $FREENAS_SVNDIR/build/source-supfile
-				[ 0 != $? ] && return 1;; # successful?
 			prebuild)
 				# Adding specials drivers.
 				pre_build_kernel;
@@ -657,23 +659,25 @@ fromscratch() {
 echo -n '
 Bulding FreeNAS from scratch
 Menu:
-1 - Create FreeNAS filesystem structure 
-2 - Build kernel
-3 - Create userland
-4 - Build ports
-5 - Build bootloader
-6 - Add necessary libraries
-7 - Modify file permissions
-8 - Build packages
+1 - Create FreeNAS filesystem structure
+2 - Update kernel/userland sources (cvsup) 
+3 - Build kernel
+4 - Create userland
+5 - Build ports
+6 - Build bootloader
+7 - Add necessary libraries
+8 - Modify file permissions
+9 - Build packages
 * - Quit
 > '
 		read choice
 		case $choice in
 			1)	create_rootfs;;
-			2)	build_kernel;;
-			3)	create_userland;;
-			4)	build_ports;;
-			5)	opt="-f";
+			2)	cvsup_sources;;
+			3)	build_kernel;;
+			4)	create_userland;;
+			5)	build_ports;;
+			6)	opt="-f";
 					if [ 0 != $OPT_BOOTMENU ]; then
 						opt="$opt -m"
 					fi;
@@ -681,9 +685,9 @@ Menu:
 						opt="$opt -b"
 					fi;
 					$FREENAS_SVNDIR/build/freenas-create-bootdir.sh $opt $FREENAS_BOOTDIR;;
-			6)	add_libs;;
-			7)	$FREENAS_SVNDIR/build/freenas-modify-permissions.sh $FREENAS_ROOTFS;;
-			8)	build_packages;;
+			7)	add_libs;;
+			8)	$FREENAS_SVNDIR/build/freenas-modify-permissions.sh $FREENAS_ROOTFS;;
+			9)	build_packages;;
 			*)	main;;
 		esac
 		[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"

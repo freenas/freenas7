@@ -18,17 +18,14 @@ Licence: BSD
 ================================
 2. How to generate an FreeNAS ISO or IMG  file
 
-Edit the scripts:
-- /freenas/svn/build/make.sh
-for modify the directory variable with yours.
+Edit the scripts '/freenas/svn/build/make.sh' and modify the directory
+variables with your local ones.
 
-Check that you have installing the following ports:
-- cvsup-without-gui
+Check that you have installed the following ports:
 - subversion
 - bash
 
 Start /freenas/svn/build/make.sh
-and select your need.
 
 Burn the freenas.iso file created.
 
