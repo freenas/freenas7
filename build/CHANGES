@@ -52,6 +52,7 @@ Bug fixs:
 - Add missing binary /usr/bin/dirname, /usr/bin/install and /usr/bin/tee.
 - Fix bug in UPnP WebGUI page. Profile dropdown control is not disabled when service is disabled.
 - Fix bug in Access/Group WebGUI page. Group ID was lost when editing existing group.
+- Fix bug in userdb generation. User administrator privilegs were not set correct.
 
 FreeNAS 0.685b2:
 ----------------

@@ -17,11 +17,7 @@ echo "Generating user database(s)."
 
 # Create the /var/etc/group file.
 /usr/local/bin/xml sel -t \
-	-o "wheel:*:0:root" \
-	-m "//access/user" \
-		-i "count(admin) > 0" -v "concat(',',login)" -b \
-	-b \
-	-n \
+	-o "wheel:*:0:root" -n \
 	-o "daemon:*:1:" -n \
 	-o "kmem:*:2:" -n \
 	-o "sys:*:3:" -n \
@@ -72,6 +68,7 @@ while [ ${_index} -gt 0 ]
 do
 	_cmdarg=`/usr/local/bin/xml sel -t -m "//access/user[${_index}]" \
 		-v "concat('-n ',login,' -u ',id,' -g ',primarygroup,' -c &quot;',fullname,'&quot;')" \
+		-i "count(admin) > 0" -o " -G 0" -b \
 		-i "count(fullshell) > 0" -o " -s /bin/tcsh" -b \
 		-i "count(fullshell) = 0" -o " -s /usr/local/bin/scponly" -b \
 		-o " -d /mnt" \
