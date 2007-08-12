@@ -1,7 +1,11 @@
 The following has to be done when upgrading to FreeBSD 7.0:
 
-- Update GEOM Eli sources.
-- Update/Adapt rc.d scripts
+- Update GEOM Eli sources (STDIN patch).
+- Update/Adapt rc.d scripts (there are new scripts in FreeBSD)
 - Update /build/kernel-config/source-supfile
-	*default release=cvs tag=RELENG_xxx
+	*default release=cvs tag=RELENG_7
+- Update build/kernel-config/FREENAS-i386 and build/kernel-config/FREENAS-amd64:
+	- Remove MSDOSFS_LARGE
+- Modify /inc/disks.inc
+  - $result = mwexec("/sbin/mount -t msdosfs -o -large,-u=ftp,-g=ftp,-m=777 {$devname} '{$mountname}'");
 - ...
