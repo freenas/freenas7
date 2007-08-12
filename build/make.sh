@@ -47,6 +47,11 @@ DIALOG="dialog"
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
 URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
 
+# Create userland.
+create_userland() {
+	copy_files
+}
+
 # Copying required files
 copy_files() {
 	# Make a pseudo 'chroot' to FreeNAS root.
@@ -628,7 +633,7 @@ Bulding FreeNAS from scratch
 Menu:
 1 - Create FreeNAS filesystem structure 
 2 - Build kernel
-3 - Copy required files to FreeNAS filesystem
+3 - Create userland
 4 - Build ports
 5 - Build bootloader
 6 - Add necessary libraries
@@ -640,7 +645,7 @@ Menu:
 		case $choice in
 			1)	create_rootfs;;
 			2)	build_kernel;;
-			3)	copy_files;;
+			3)	create_userland;;
 			4)	build_ports;;
 			5)	opt="-f";
 					if [ 0 != $OPT_BOOTMENU ]; then
