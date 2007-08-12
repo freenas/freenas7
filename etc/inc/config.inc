@@ -830,7 +830,7 @@ function convert_config() {
 	/* Rename //access/user/usergroupid to //access/user/group. */ 
 	if ($config['version'] === "2.5") {
 		for ($i = 0; isset($config['access']['user'][$i]); $i++) {
-			$config['access']['user'][$i]['group'] = $config['access']['user'][$i]['usergroupid'];
+			$config['access']['user'][$i]['primarygroup'] = $config['access']['user'][$i]['usergroupid'];
 
 			unset($config['access']['user'][$i]['usergroupid']);
 			unset($config['access']['user'][$i]['usergroup']);
