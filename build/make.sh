@@ -49,7 +49,33 @@ URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
 
 # Create userland.
 create_userland() {
-	copy_files
+	tempfile=$FREENAS_WORKINGDIR/tmp$$
+
+	# Choose what to do.
+	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install userland" --checklist "Please select whether you want to build or install the userland." 10 75 4 \
+		"build" "Build userland" OFF \
+		"install" "Install userland" ON 2> $tempfile
+	if [ 0 != $? ]; then # successful?
+		rm $tempfile
+		return 1
+	fi
+
+	choices=`cat $tempfile`
+	rm $tempfile
+
+	for choice in $(echo $choices | tr -d '"'); do
+		case $choice in
+			build)
+				# Compiling userland.
+				cd /usr/src;
+				make buildworld;;
+			install)
+				# Install required userland files.
+				copy_files;;
+  	esac
+  done
+
+	return 0
 }
 
 # Copying required files
@@ -157,7 +183,7 @@ build_kernel() {
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
 
 	# Choose what to do.
-	$DIALOG --title "$FREENAS_PRODUCTNAME - Build kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 4 \
+	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 4 \
 		"cvsup" "Update kernel sources" OFF \
 		"prebuild" "Install additional drivers" ON \
 		"build" "Build kernel" ON \
