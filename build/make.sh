@@ -627,8 +627,8 @@ echo -n '
 Bulding FreeNAS from scratch
 Menu:
 1 - Create FreeNAS filesystem structure 
-2 - Copy required files to FreeNAS filesystem
-3 - Build kernel
+2 - Build kernel
+3 - Copy required files to FreeNAS filesystem
 4 - Build ports
 5 - Build bootloader
 6 - Add necessary libraries
@@ -639,8 +639,8 @@ Menu:
 		read choice
 		case $choice in
 			1)	create_rootfs;;
-			2)	copy_files;;
-			3)	build_kernel;;
+			2)	build_kernel;;
+			3)	copy_files;;
 			4)	build_ports;;
 			5)	opt="-f";
 					if [ 0 != $OPT_BOOTMENU ]; then
