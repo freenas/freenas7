@@ -178,7 +178,7 @@ function disks_mount($mount)
 				// Do a filesystem check.
 				mwexec("/sbin/fsck -y -t msdosfs {$devname}");
 				// Retry to mount the partition.
-				$result = mwexec("/sbin/mount_msdosfs -u ftp -g ftp -m 777 {$devname} '{$mountname}'");
+				$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$devname} '{$mountname}'");
 				if (0 == $result) {
 					write_log("Device {$devname} mounted using FAT on '{$mountname}'");
 					$result = 0;
