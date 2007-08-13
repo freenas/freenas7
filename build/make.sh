@@ -47,14 +47,36 @@ DIALOG="dialog"
 URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
 URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
 
-# Update kernel/userland sources.
-cvsup_sources() {
-	csup -L 2 $FREENAS_SVNDIR/build/source-supfile
+# Update source tree and ports collection.
+update_sources() {
+	tempfile=$FREENAS_WORKINGDIR/tmp$$
+
+	# Choose what to do.
+	$DIALOG --title "$FREENAS_PRODUCTNAME - Update sources" --checklist "Please select what to update." 10 50 2 \
+		"portsnap" "Update ports collection" ON \
+		"cvsup" "Update source tree" ON 2> $tempfile
+	if [ 0 != $? ]; then # successful?
+		rm $tempfile
+		return 1
+	fi
+
+	choices=`cat $tempfile`
+	rm $tempfile
+
+	for choice in $(echo $choices | tr -d '"'); do
+		case $choice in
+			portsnap)
+				portsnap fetch update;;
+			cvsup)
+				csup -L 2 ${FREENAS_SVNDIR}/build/source-supfile;;
+  	esac
+  done
+
 	return $?
 }
 
-# Create userland. Copying required files defined in 'build/freenas.files'.
-create_userland() {
+# Build world. Copying required files defined in 'build/freenas.files'.
+build_world() {
 	# Make a pseudo 'chroot' to FreeNAS root.
   cd $FREENAS_ROOTFS
 
@@ -577,7 +599,8 @@ download_rootfs() {
 	return 0
 }
 
-update_sources() {
+# Update subversion sources.
+update_svn() {
 	cd $FREENAS_ROOTDIR
 	svn co $FREENAS_SVNURL svn
 
@@ -626,12 +649,12 @@ use_svn() {
 fromscratch() {
   while true; do
 echo -n '
-Bulding FreeNAS from scratch
+Bulding system from scratch
 Menu:
-1 - Create FreeNAS filesystem structure
-2 - Update kernel/userland sources (cvsup) 
+1 - Create filesystem structure
+2 - Update source tree and ports collection.
 3 - Build kernel
-4 - Create userland
+4 - Build world
 5 - Build ports
 6 - Build bootloader
 7 - Add necessary libraries
@@ -642,9 +665,9 @@ Menu:
 		read choice
 		case $choice in
 			1)	create_rootfs;;
-			2)	cvsup_sources;;
+			2)	update_sources;;
 			3)	build_kernel;;
-			4)	create_userland;;
+			4)	build_world;;
 			5)	build_ports;;
 			6)	opt="-f";
 					if [ 0 != $OPT_BOOTMENU ]; then
@@ -669,7 +692,7 @@ build_ports() {
 	ports=$FREENAS_WORKINGDIR/ports$$
 
 	# Choose what to do.
-	$DIALOG --title "$FREENAS_PRODUCTNAME - Ports" --menu "Please select whether you want to build or install ports." 10 45 2 \
+	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install Ports" --menu "Please select whether you want to build or install ports." 10 45 2 \
 		"build" "Build ports" \
 		"install" "Install ports" 2> $tempfile
 	if [ 0 != $? ]; then # successful?
@@ -747,7 +770,7 @@ Menu:
 	read choice
 	case $choice in
 		1)  download_rootfs;;
-		2)  update_sources;;
+		2)  update_svn;;
 		10) create_image;;
 		11) create_iso;;
 		12) create_iso_light;;
