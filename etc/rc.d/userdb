@@ -77,7 +77,7 @@ do
 	_userpasswd=`configxml_get "//access/user[${_index}]/password"`
 
 	# Add user.
-	eval "(/bin/echo ${_userpasswd}) | /usr/sbin/pw add user -q -h 0 -V /var/etc ${_cmdarg}"
+	eval "(/bin/echo '${_userpasswd}') | /usr/sbin/pw add user -q -h 0 -V /var/etc ${_cmdarg}"
 
 	_index=$(( ${_index} - 1 ))
 done
