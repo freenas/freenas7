@@ -611,7 +611,7 @@ echo -n '
 Bulding system from scratch
 Menu:
 1 - Create filesystem structure
-2 - Update source tree and ports collection.
+2 - Update source tree and ports collection
 3 - Build kernel
 4 - Build world
 5 - Build ports
