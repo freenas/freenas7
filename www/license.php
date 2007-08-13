@@ -73,17 +73,18 @@ $pgtitle = array(gettext("License"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">German translator of the WebGUI</font></em><br>
             <p>Falk Menzel (<a href="mailto:fmenzel@htwm.de">fmenzel@htwm.de</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">German translator of the WebGUI</font></em><br>
-	   <p>Kris Verhoeven (<a href="mailto:kris@esiv.be">kris@esiv.be</a>)<br>
+						<p>Kris Verhoeven (<a href="mailto:kris@esiv.be">kris@esiv.be</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Dutch translator of the WebGUI</font></em><br>
-	   <p>Baikuan Hsu (<a href="mailto:chicworks@gmail.com">chicworks@gmail.com</a>)<br>
+						<p>Baikuan Hsu (<a href="mailto:chicworks@gmail.com">chicworks@gmail.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Chinese translator of the WebGUI</font></em><br>
- <p>Laurentiu Florin Bubuianu (<a href="mailto:laurb@mail.dntis.ro">laurb@mail.dntis.ro</a>)<br>
+						<p>Laurentiu Florin Bubuianu (<a href="mailto:laurb@mail.dntis.ro">laurb@mail.dntis.ro</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Romana translator of the WebGUI</font></em><br>
- <p>Hiroyuki Seino (<a href="mailto:seichan-ml@wakhok.ne.jp">seichan-ml@wakhok.ne.jp</a>)<br>
+						<p>Hiroyuki Seino (<a href="mailto:seichan-ml@wakhok.ne.jp">seichan-ml@wakhok.ne.jp</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Japanese translator of the WebGUI</font></em><br>
-<p>Alexander Samoilov (<a href="mailto:root@lifeslice.ru">root@lifeslice.ru</a>)<br>
+						<p>Alexander Samoilov (<a href="mailto:root@lifeslice.ru">root@lifeslice.ru</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Russian translator of the WebGUI</font></em><br>  
-			  
+			  		<p>Ioannis Koniaris (<a href="mailto:ikoniari@csd.auth.gr">ikoniari@csd.auth.gr</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Greek translator of the WebGUI</font></em><br>
             <br><br>      
             <p>The following persons have contributed to FreeNAS Website:</p>
             <p>Youri Trioreau (<a href="mailto:youri.trioreau@no-log.org">youri.trioreau@no-log.org</a>)<br>
