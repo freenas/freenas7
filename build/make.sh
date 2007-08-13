@@ -43,10 +43,6 @@ OPT_BOOTSPLASH=1
 # Dialog command
 DIALOG="dialog"
 
-# URL's:
-URL_FREENASROOTFS="http://www.freenas.org/downloads/freenas-rootfs.tgz"
-URL_FREENASBOOT="http://www.freenas.org/downloads/freenas-boot.tgz"
-
 # Update source tree and ports collection.
 update_sources() {
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
@@ -181,8 +177,8 @@ build_kernel() {
 
 	# Choose what to do.
 	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 3 \
-		"prebuild" "Install additional drivers" ON \
-		"build" "Build kernel" ON \
+		"prebuild" "Install additional drivers" OFF \
+		"build" "Build kernel" OFF \
 		"install" "Install kernel + modules" ON 2> $tempfile
 	if [ 0 != $? ]; then # successful?
 		rm $tempfile
@@ -546,59 +542,6 @@ create_full() {
 	return 0
 }
 
-download_rootfs() {
-  # Ensure we are in $FREENAS_WORKINGDIR
-	[ ! -d "$FREENAS_WORKINGDIR" ] && mkdir $FREENAS_WORKINGDIR
-	cd $FREENAS_WORKINGDIR
-
-	update=y
-	if [ -e freenas-rootfs.tgz -a -e freenas-boot.tgz ]; then
-    echo -n "Update existing archives [y/n]? "
-    read update
-	fi
-
-  if [ $update = 'y' ]; then
-    echo "Deleting old archives"
-    [ -f "freenas-rootfs.tgz" ] && rm -f freenas-rootfs.tgz
-    [ -f "freenas-boot.tgz" ] && rm -f freenas-boot.tgz
-
-    echo "Downloading latest archives..."
-    fetch $URL_FREENASROOTFS
-    if [ 1 == $? ]; then
-      echo "==> Failed to fetch freenas-rootfs.tgz."
-      return 1
-    fi
-    fetch $URL_FREENASBOOT
-    if [ 1 == $? ]; then
-      echo "==> Failed to fetch freenas-boot.tgz."
-      return 1
-    fi
-	fi
-
-  # Remove old data.
-  delete=n
-	if [ -e "./bootloader" -o -e "./rootfs" ]; then
-    echo -n "Delete existing directory structure (./bootloader/ and ./rootfs/) [y/n]? "
-    read delete
-	fi
-
-  if [ $delete = 'y' ]; then
-    if [ -e "./bootloader" ]; then
-      rm -r ./bootloader
-    fi
-    if [ -e "./rootfs" ]; then
-      rm -r ./rootfs
-    fi
-  fi
-
-  # Extracting bootloader and rootfs data.
-	echo "De-taring archives..."
-	tar -xzf freenas-rootfs.tgz -C $FREENAS_WORKINGDIR/
-	tar -xzf freenas-boot.tgz -C $FREENAS_WORKINGDIR/
-
-	return 0
-}
-
 # Update subversion sources.
 update_svn() {
 	cd $FREENAS_ROOTDIR
@@ -646,7 +589,7 @@ use_svn() {
 	return 0
 }
 
-fromscratch() {
+build_system() {
   while true; do
 echo -n '
 Bulding system from scratch
@@ -756,27 +699,25 @@ main() {
 	cd $FREENAS_WORKINGDIR
 
 	echo -n '
-Welcome to the FreeNAS build environment.
+Welcome to the ${FREENAS_PRODUCTNAME} build environment.
 Menu:
-1  - Download and decompress FreeNAS root filesystem 
-2  - Update the source to latest (need SVN)
-10 - Create FreeNAS "Embedded" (IMG) file (rawrite to CF/USB/DD)
-11 - Create FreeNAS "LiveCD" (ISO) file (need cdrtools)
-12 - Create FreeNAS "LiveCD" (ISO) file without 'embedded' file (need cdrtools)
-13 - Create FreeNAS "Full" (TGZ) update file
-20 - Build FreeNAS from scratch
+1  - Update the sources to CURRENT
+2  - Build system from scratch
+10 - Create "Embedded" (IMG) file (rawrite to CF/USB/DD)
+11 - Create "LiveCD" (ISO) file
+12 - Create "LiveCD" (ISO) file without 'embedded' file
+13 - Create "Full" (TGZ) update file
 *  - Quit
 > '
 	read choice
 	case $choice in
-		1)  download_rootfs;;
-		2)  update_svn;;
-		10) create_image;;
-		11) create_iso;;
-		12) create_iso_light;;
-		13) create_full;;
-		20) fromscratch;;
-		*)  exit 0;;
+		1)	update_svn;;
+		2)	build_system;;
+		10)	create_image;;
+		11)	create_iso;;
+		12)	create_iso_light;;
+		13)	create_full;;
+		*)	exit 0;;
 	esac
 
 	[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
