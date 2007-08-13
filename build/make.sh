@@ -158,7 +158,7 @@ build_kernel() {
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
 
 	# Choose what to do.
-	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 4 \
+	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 3 \
 		"prebuild" "Install additional drivers" ON \
 		"build" "Build kernel" ON \
 		"install" "Install kernel + modules" ON 2> $tempfile
