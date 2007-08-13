@@ -20,7 +20,7 @@ do-build:
 
 do-install:
 	# Install kernel module.
-	@${CP} -pv ${MAKEOBJDIRPREFIX}/usr/src/sys/FREENAS-${ARCH}/modules/usr/src/sys/modules/geom/geom_eli/geom_eli.ko ${FREENAS_ROOTFS}/boot/kernel
+	@${CP} -pv /usr/obj/usr/src/sys/FREENAS-${ARCH}/modules/usr/src/sys/modules/geom/geom_eli/geom_eli.ko ${FREENAS_ROOTFS}/boot/kernel
 
 	# Install application.
 	@${LN} -f -v -s /sbin/geom ${FREENAS_ROOTFS}/sbin/geli
