@@ -65,8 +65,8 @@ update_sources() {
 
 	# Choose what to do.
 	$DIALOG --title "$FREENAS_PRODUCTNAME - Update sources" --checklist "Please select what to update." 10 50 2 \
-		"portsnap" "Update ports collection" ON \
-		"cvsup" "Update source tree" ON 2> $tempfile
+		"portsnap" "Update ports collection" OFF \
+		"cvsup" "Update source tree" OFF 2> $tempfile
 	if [ 0 != $? ]; then # successful?
 		rm $tempfile
 		return 1
