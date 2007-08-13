@@ -15,9 +15,6 @@ export FREENAS_SVNDIR="$FREENAS_ROOTDIR/svn"
 export FREENAS_PRODUCTNAME=`cat $FREENAS_SVNDIR/etc/prd.name`
 export FREENAS_VERSION=`cat $FREENAS_SVNDIR/etc/prd.version`
 
-# Set directory to root the object tree.
-export MAKEOBJDIRPREFIX=/usr/obj/${FREENAS_PRODUCTNAME}
-
 # Local variables
 FREENAS_URL=`cat $FREENAS_SVNDIR/etc/prd.url`
 FREENAS_BOOTDIR="$FREENAS_ROOTDIR/bootloader"
@@ -56,39 +53,8 @@ cvsup_sources() {
 	return $?
 }
 
-# Create userland.
+# Create userland. Copying required files defined in 'build/freenas.files'.
 create_userland() {
-	tempfile=$FREENAS_WORKINGDIR/tmp$$
-
-	# Choose what to do.
-	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install userland" --checklist "Please select whether you want to build or install the userland." 10 75 4 \
-		"build" "Build userland" OFF \
-		"install" "Install userland" ON 2> $tempfile
-	if [ 0 != $? ]; then # successful?
-		rm $tempfile
-		return 1
-	fi
-
-	choices=`cat $tempfile`
-	rm $tempfile
-
-	for choice in $(echo $choices | tr -d '"'); do
-		case $choice in
-			build)
-				# Compiling userland.
-				cd /usr/src;
-				make buildworld;;
-			install)
-				# Install required userland files.
-				copy_files;;
-  	esac
-  done
-
-	return 0
-}
-
-# Copying required files
-copy_files() {
 	# Make a pseudo 'chroot' to FreeNAS root.
   cd $FREENAS_ROOTFS
 
@@ -220,10 +186,10 @@ build_kernel() {
 				# Compiling and compressing the kernel.
 				cd /usr/src;
 				make buildkernel KERNCONF=FREENAS-${FREENAS_ARCH};
-				gzip -v -f -9 ${MAKEOBJDIRPREFIX}/usr/src/sys/FREENAS-${FREENAS_ARCH}/kernel;;
+				gzip -v -f -9 /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/kernel;;
 			install)
 				# Installing the modules.
-				cd ${MAKEOBJDIRPREFIX}/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules;
+				cd /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules;
 				cp -v -p ./geom/geom_vinum/geom_vinum.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_stripe/geom_stripe.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_concat/geom_concat.ko $FREENAS_ROOTFS/boot/kernel;
@@ -389,7 +355,7 @@ create_image() {
 	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
-		cp ${MAKEOBJDIRPREFIX}/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
+		cp /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 
 	#Special for enabling serial port if no keyboard
@@ -455,7 +421,7 @@ create_iso () {
 	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
-		cp ${MAKEOBJDIRPREFIX}/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
+		cp /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 
 	#Special test for enabling serial port if no keyboard
@@ -529,7 +495,7 @@ create_full() {
 	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
-		cp ${MAKEOBJDIRPREFIX}/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
+		cp /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 	
 	#Generate a loader.conf for full mode:
