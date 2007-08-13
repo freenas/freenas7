@@ -1,19 +1,29 @@
 #!/usr/bin/env bash
-# This is a script designed to automate the assembly of
-# a FreeNAS box.
+# This is a script designed to automate the assembly of the FreeNAS OS.
 # Created: 2/12/2006 by Scott Zahn
-# Modified: 11/2006 by Volker Theile (votdev@gmx.de)
+# Modified by Volker Theile (votdev@gmx.de)
 
 # Debug script
 #set -x
 
+################################################################################
+# Settings
+################################################################################
+
 # Global variables
-export FREENAS_ROOTDIR="/usr/local/freenas"
-export FREENAS_WORKINGDIR="$FREENAS_ROOTDIR/work"
-export FREENAS_ROOTFS="$FREENAS_ROOTDIR/rootfs"
-export FREENAS_SVNDIR="$FREENAS_ROOTDIR/svn"
-export FREENAS_PRODUCTNAME=`cat $FREENAS_SVNDIR/etc/prd.name`
-export FREENAS_VERSION=`cat $FREENAS_SVNDIR/etc/prd.version`
+FREENAS_ROOTDIR="/usr/local/freenas"
+FREENAS_WORKINGDIR="$FREENAS_ROOTDIR/work"
+FREENAS_ROOTFS="$FREENAS_ROOTDIR/rootfs"
+FREENAS_SVNDIR="$FREENAS_ROOTDIR/svn"
+FREENAS_PRODUCTNAME=`cat $FREENAS_SVNDIR/etc/prd.name`
+FREENAS_VERSION=`cat $FREENAS_SVNDIR/etc/prd.version`
+
+export FREENAS_ROOTDIR
+export FREENAS_WORKINGDIR
+export FREENAS_ROOTFS
+export FREENAS_SVNDIR
+export FREENAS_PRODUCTNAME
+export FREENAS_VERSION
 
 # Local variables
 FREENAS_URL=`cat $FREENAS_SVNDIR/etc/prd.url`
@@ -25,10 +35,12 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/trunk"
 # Path where to find Makefile includes
 FREENAS_MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
 
-# Size in MB of the MFS Root filesystem that will include all FreeBSD binary and FreeNAS WEbGUI/Scripts
-# Keep this file very small! This file is unzipped to a RAM disk at FreeNAS startup
+# Size in MB of the MFS Root filesystem that will include all FreeBSD binary
+# and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
+# to a RAM disk at FreeNAS startup.
 FREENAS_MFSROOT_SIZE="45"
-# Size in MB f the IMG file, that include zipped MFS Root filesystem image plus bootloader and kernel.
+# Size in MB f the IMG file, that include zipped MFS Root filesystem image plus
+# bootloader and kernel.
 FREENAS_IMG_SIZE="23"
 # 'newfs' parameters.
 FREENAS_NEWFS="-b 4096 -f 512 -i 8192 -U -o space -m 0"
@@ -42,6 +54,10 @@ OPT_BOOTSPLASH=1
 
 # Dialog command
 DIALOG="dialog"
+
+################################################################################
+# Functions
+################################################################################
 
 # Update source tree and ports collection.
 update_sources() {
@@ -77,7 +93,7 @@ build_world() {
   cd $FREENAS_ROOTFS
 
 	echo
-	echo "Adding required files:"
+	echo "Building world:"
 
 	[ -f $FREENAS_WORKINGDIR/freenas.files ] && rm -f $FREENAS_WORKINGDIR/freenas.files
 	cp $FREENAS_SVNDIR/build/freenas.files $FREENAS_WORKINGDIR
@@ -698,17 +714,17 @@ main() {
 	[ ! -d "$FREENAS_WORKINGDIR" ] && mkdir $FREENAS_WORKINGDIR
 	cd $FREENAS_WORKINGDIR
 
-	echo -n '
+	echo -n "
 Welcome to the ${FREENAS_PRODUCTNAME} build environment.
 Menu:
 1  - Update the sources to CURRENT
 2  - Build system from scratch
-10 - Create "Embedded" (IMG) file (rawrite to CF/USB/DD)
-11 - Create "LiveCD" (ISO) file
-12 - Create "LiveCD" (ISO) file without 'embedded' file
-13 - Create "Full" (TGZ) update file
+10 - Create 'Embedded' (IMG) file (rawrite to CF/USB/DD)
+11 - Create 'LiveCD' (ISO) file
+12 - Create 'LiveCD' (ISO) file without 'Embedded' file
+13 - Create 'Full' (TGZ) update file
 *  - Quit
-> '
+> "
 	read choice
 	case $choice in
 		1)	update_svn;;
