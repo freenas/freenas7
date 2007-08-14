@@ -4,7 +4,7 @@
 	status_report.php
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
 	Copyright © 2007 Dan Merschi (freenas@bcapro.com)
-  All rights reserved.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
@@ -97,11 +97,11 @@ if($_POST) {
 		$config['statusreport']['password'] = base64_encode($_POST['password']);
 		$config['statusreport']['from'] = $_POST['from'];
 		$config['statusreport']['to'] = $_POST['to'];
-		$config['statusreport']['minute'] = $_POST['minutes'];
-		$config['statusreport']['hour'] = $_POST['hours'];
-		$config['statusreport']['day'] = $_POST['days'];
-		$config['statusreport']['month'] = $_POST['months'];
-		$config['statusreport']['weekday'] = $_POST['weekdays'];
+		$config['statusreport']['minute'] = $_POST['minute'];
+		$config['statusreport']['hour'] = $_POST['hour'];
+		$config['statusreport']['day'] = $_POST['day'];
+		$config['statusreport']['month'] = $_POST['month'];
+		$config['statusreport']['weekday'] = $_POST['weekday'];
 		$config['statusreport']['all_mins'] = $_POST['all_mins'];
 		$config['statusreport']['all_hours'] = $_POST['all_hours'];
 		$config['statusreport']['all_days'] = $_POST['all_days'];
@@ -263,77 +263,38 @@ function auth_change() {
 							<table>
 								<tr>
 									<td valign=top>
-										<select multiple size="12" name="minutes[]" id="minutes1">
-										<?php $i = 0; while ($i <= 11) {
-											if (isset($pconfig['minute'])) {
-												if (in_array($i, $pconfig['minute'])) {
-													$is_selected = " selected";
-												} else {
-													$is_selected = "";
-												}
-											}
-											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n"; $i++;
-										}?>
+										<select multiple size="12" name="minute[]" id="minutes1">
+											<?php for ($i = 0; $i <= 11; $i++):?>
+											<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array($i, $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+											<?php endfor;?>
 										</select>
 									</td>
 									<td valign=top>
-										<select multiple size="12" name="minutes[]" id="minutes2">
-										<?php $i = 12; while ($i <= 23){
-											if (isset($pconfig['minute'])) {
-												if (in_array($i, $pconfig['minute'])) {
-													$is_selected = " selected";
-												} else {
-													$is_selected = "";
-												}
-											}
-											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
-											$i++;
-										}?>
+										<select multiple size="12" name="minute[]" id="minutes2">
+											<?php for ($i = 12; $i <= 23; $i++):?>
+											<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array($i, $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+											<?php endfor;?>
 										</select>
 									</td>
 									<td valign=top>
-										<select multiple size="12" name="minutes[]" id="minutes3">
-										<?php $i = 24; while ($i <= 35) {
-											if (isset($pconfig['minute'])) {
-												if (in_array($i, $pconfig['minute'])) {
-													$is_selected = " selected";
-												} else {
-													$is_selected = "";
-												}
-											}
-											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
-											$i++;
-										}?>
+										<select multiple size="12" name="minute[]" id="minutes3">
+											<?php for ($i = 24; $i <= 35; $i++):?>
+											<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array($i, $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+											<?php endfor;?>
 										</select>
 									</td>
 									<td valign=top>
-										<select multiple size="12" name="minutes[]" id="minutes4">
-											<?php $i = 36; while ($i <= 47) {
-											if (isset($pconfig['minute'])) {
-												if (in_array($i, $pconfig['minute'])) {
-													$is_selected = " selected";
-												} else {
-													$is_selected = "";
-												}
-											}
-											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
-											$i++;
-										}?>
+										<select multiple size="12" name="minute[]" id="minutes4">
+											<?php for ($i = 36; $i <= 47; $i++):?>
+											<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array($i, $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+											<?php endfor;?>
 										</select>
 									</td>
 									<td valign=top>
-										<select multiple size="12" name="minutes[]" id="minutes5">
-										<?php $i = 48; while ($i <= 59) {
-											if (isset($pconfig['minute'])) {
-												if (in_array($i, $pconfig['minute'])) {
-													$is_selected = " selected";
-												} else {
-													$is_selected = "";
-												}
-											}
-											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
-											$i++;
-										}?>
+										<select multiple size="12" name="minute[]" id="minutes5">
+											<?php for ($i = 48; $i <= 59; $i++):?>
+											<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array($i, $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+											<?php endfor;?>
 										</select>
 									</td>
 								</tr>
@@ -348,39 +309,23 @@ function auth_change() {
 							<table>
 								<tr>
 									<td valign=top>
-										<select multiple size="12" name="hours[]" id="hours1">
-										<?php $i = 0; while ($i <= 11) {
-											if (isset($pconfig['hour'])) {
-												if (in_array($i, $pconfig['hour'])) {
-													$is_selected = " selected";
-												} else {
-													$is_selected = "";
-												}
-											}
-											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
-											$i++;
-										}?>
+										<select multiple size="12" name="hour[]" id="hours1">
+											<?php for ($i = 0; $i <= 11; $i++):?>
+											<option value="<?=$i;?>" <?php if (is_array($pconfig['hour']) && in_array($i, $pconfig['hour'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+											<?php endfor;?>
 										</select>
 									</td>
 									<td valign=top>
-										<select multiple size="12" name="hours[]" id="hours2">
-										<?php $i = 12; while ($i <= 23) {
-											if (isset($pconfig['hour'])) {
-												if (in_array($i, $pconfig['hour'])) {
-													$is_selected = " selected";
-												} else {
-													$is_selected = "";
-												}
-											}
-											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
-											$i++;
-										}?>
+										<select multiple size="12" name="hour[]" id="hours2">
+											<?php for ($i = 12; $i <= 23; $i++):?>
+											<option value="<?=$i;?>" <?php if (is_array($pconfig['hour']) && in_array($i, $pconfig['hour'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+											<?php endfor;?>
 										</select>
 									</td>
 								</tr>
 							</table>
 						</td>
-            <td valign=top>
+						<td valign=top>
 							<input type="radio" name="all_days" id="all_days1" value="1" <?php if (1 == $pconfig['all_days']) echo "checked";?>>
 							<?=gettext("All");?><br>
 							<input type="radio" name="all_days" id="all_days2" value="0" <?php if (1 != $pconfig['all_days']) echo "checked";?>>
@@ -388,48 +333,24 @@ function auth_change() {
 							<table>
 								<tr>
 									<td valign=top>
-										<select multiple size="12" name="days[]" id="days1">
-										<?php $i = 1; while ($i <= 12) {
-											if (isset($pconfig['day'])) {
-												if (in_array($i, $pconfig['day'])) {
-													$is_selected = " selected";
-												} else {
-													$is_selected = "";
-												}
-											}
-											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
-											$i++;
-										}?>
+										<select multiple size="12" name="day[]" id="days1">
+											<?php for ($i = 0; $i <= 12; $i++):?>
+											<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array($i, $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+											<?php endfor;?>
 										</select>
 									</td>
 									<td valign=top>
-										<select multiple size="12" name="days[]" id="days2">
-										<?php $i = 13; while ($i <= 24) {
-											if (isset($pconfig['day'])) {
-												if (in_array($i, $pconfig['day'])) {
-													$is_selected = " selected";
-												} else {
-													$is_selected = "";
-												}
-											}
-											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
-											$i++;
-										}?>
+										<select multiple size="12" name="day[]" id="days2">
+											<?php for ($i = 13; $i <= 24; $i++):?>
+											<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array($i, $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+											<?php endfor;?>
 										</select>
 									</td>
 									<td valign=top>
-										<select multiple size="7" name="days[]" id="days3">
-										<?php $i = 25; while ($i <= 31) {
-											if (isset($pconfig['day'])) {
-												if (in_array($i, $pconfig['day'])) {
-													$is_selected = " selected";
-												} else {
-													$is_selected = "";
-												}
-											}
-											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
-											$i++;
-										}?>
+										<select multiple size="7" name="day[]" id="days3">
+											<?php for ($i = 25; $i <= 31; $i++):?>
+											<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array($i, $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+											<?php endfor;?>
 										</select>
 									</td>
 								</tr>
@@ -440,11 +361,11 @@ function auth_change() {
 							<?=gettext("All");?><br>
 							<input type="radio" name="all_months" id="all_months2" value="0" <?php if (1 != $pconfig['all_months']) echo "checked";?>>
 							<?=gettext("Selected");?> ..<br>
-              <table>
+							<table>
 								<tr>
 									<td valign=top>
-										<select multiple size="12" name="months[]" id="months">
-											<?php $i=1; foreach ($a_months as $month):?>
+										<select multiple size="12" name="month[]" id="months">
+											<?php $i = 1; foreach ($a_months as $month):?>
 											<option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array($i, $pconfig['month'])) echo "selected";?>><?=htmlentities($month);?></option>
 											<?php $i++; endforeach;?>
 										</select>
@@ -460,8 +381,8 @@ function auth_change() {
 							<table>
 								<tr>
 									<td valign=top>
-										<select multiple size="7" name="weekdays[]" id="weekdays">
-											<?php $i=0; foreach ($a_weekdays as $day):?>
+										<select multiple size="7" name="weekday[]" id="weekdays">
+											<?php $i = 0; foreach ($a_weekdays as $day):?>
 											<option value="<?=$i;?>" <?php if (isset($pconfig['weekday']) && in_array($i, $pconfig['weekday'])) echo "selected";?>><?=$day;?></option>
 											<?php $i++; endforeach;?>
 										</select>
