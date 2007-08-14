@@ -55,7 +55,7 @@ HOME=/var/log
 			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
 			-i "all_weekdays[. != "0"]" -o "*" -b \
 			-o " " \
-			-o "root	/var/run/rsync_client${_i}.sh" \
+			-o "root /var/run/rsync_client${_i}.sh" \
 			${configxml_file} >> ${cron_config}
 
 		_i=$(( ${_i} + 1 ))
@@ -86,7 +86,7 @@ HOME=/var/log
 			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
 			-i "all_weekdays[. != "0"]" -o "*" -b \
 			-o " " \
-			-o "root	/var/run/rsync_local${_i}.sh" \
+			-o "root /var/run/rsync_local${_i}.sh" \
 			${configxml_file} >> ${cron_config}
 
 		_i=$(( ${_i} + 1 ))
@@ -119,15 +119,23 @@ HOME=/var/log
 	# Email status notification
 	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//statusreport/enable)" ${configxml_file}` ]; then
 		echo "# Perform email status report." >> ${cron_config}
-		/usr/local/bin/xml sel -t \
-			-i "//statusreport/tpoll[. = 'minute']" -v "concat('*/',//statusreport/npoll,' * * *')" -b \
+		/usr/local/bin/xml sel -t -m "//statusreport" \
+			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_mins[. != "0"]" -o "*" -b \
 			-o " " \
-			-i "//statusreport/tpoll[. = 'hour']" -v "concat('0 */',//statusreport/npoll,' * *')" -b \
+			-i "all_hours[. = "0"]" -m hour -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_hours[. != "0"]" -o "*" -b \
 			-o " " \
-			-i "//statusreport/tpoll[. = 'day']" -v "concat('0 0 */',//statusreport/npoll,' *')" -b \
+			-i "all_days[. = "0"]" -m day -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_days[. != "0"]" -o "*" -b \
 			-o " " \
-			-i "//statusreport/tpoll[. = 'month']" -v "concat('0 0 1 */',//statusreport/npoll)" -b \
-			-o " * root /usr/local/bin/php /etc/mail/sendreport.php" \
+			-i "all_months[. = "0"]" -m month -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_months[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_weekdays[. != "0"]" -o "*" -b \
+			-o " " \
+			-o "root /usr/local/bin/php /etc/mail/sendreport.php" \
 			${configxml_file} >> ${cron_config}
 	fi
 }

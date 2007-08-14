@@ -48,8 +48,19 @@ $pconfig['auth'] = isset($config['statusreport']['auth']);
 $pconfig['username'] = $config['statusreport']['username'];
 $pconfig['from'] = $config['statusreport']['from'];
 $pconfig['to'] = $config['statusreport']['to'];
-$pconfig['npoll'] = $config['statusreport']['npoll'];
-$pconfig['tpoll'] = $config['statusreport']['tpoll'];
+$pconfig['minute'] = $config['statusreport']['minute'];
+$pconfig['hour'] = $config['statusreport']['hour'];
+$pconfig['day'] = $config['statusreport']['day'];
+$pconfig['month'] = $config['statusreport']['month'];
+$pconfig['weekday'] = $config['statusreport']['weekday'];
+$pconfig['all_mins'] = $config['statusreport']['all_mins'];
+$pconfig['all_hours'] = $config['statusreport']['all_hours'];
+$pconfig['all_days'] = $config['statusreport']['all_days'];
+$pconfig['all_months'] = $config['statusreport']['all_months'];
+$pconfig['all_weekdays'] = $config['statusreport']['all_weekdays'];
+
+$a_months = explode(" ",gettext("January February March April May June July August September October November December"));
+$a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Friday Saturday"));
 
 if($_POST) {
 	unset($input_errors);
@@ -77,29 +88,6 @@ if($_POST) {
 		$input_errors[] = gettext("The passwords do not match.");
 	}
 
-	/* Check npoll ranges. */
-	switch($_POST['tpoll']) {
-		case "minute":
-			if (false == in_array($_POST['npoll'], range(1, 59)))
-				$input_errors[] = gettext("Polling step must be between 1 and 59 minutes.");
-			break;
-
-		case "hour":
-			if (false == in_array($_POST['npoll'], range(1, 24)))
-				$input_errors[] = gettext("Polling step must be between 1 and 24 hours.");
-			break;
-
-		case "day":
-			if (false == in_array($_POST['npoll'], range(1, 31)))
-				$input_errors[] = gettext("Polling step must be between 1 and 31 days.");
-			break;
-
-		case "month":
-			if (false == in_array($_POST['npoll'], range(1, 12)))
-				$input_errors[] = gettext("Polling step must be between 1 and 12 months.");
-			break;
-	}
-
 	if(!$input_errors) {
 		$config['statusreport']['enable'] = $_POST['enable'] ? true : false;
 		$config['statusreport']['server'] = $_POST['server'];
@@ -109,8 +97,16 @@ if($_POST) {
 		$config['statusreport']['password'] = base64_encode($_POST['password']);
 		$config['statusreport']['from'] = $_POST['from'];
 		$config['statusreport']['to'] = $_POST['to'];
-    $config['statusreport']['tpoll']= $_POST['tpoll'];
-    $config['statusreport']['npoll']= $_POST['npoll'];
+		$config['statusreport']['minute'] = $_POST['minutes'];
+		$config['statusreport']['hour'] = $_POST['hours'];
+		$config['statusreport']['day'] = $_POST['days'];
+		$config['statusreport']['month'] = $_POST['months'];
+		$config['statusreport']['weekday'] = $_POST['weekdays'];
+		$config['statusreport']['all_mins'] = $_POST['all_mins'];
+		$config['statusreport']['all_hours'] = $_POST['all_hours'];
+		$config['statusreport']['all_days'] = $_POST['all_days'];
+		$config['statusreport']['all_months'] = $_POST['all_months'];
+		$config['statusreport']['all_weekdays'] = $_POST['all_weekdays'];
 
 		write_config();
 
@@ -138,9 +134,30 @@ function enable_change(enable_change) {
 	document.iform.passwordconf.disabled = endis;
 	document.iform.from.disabled = endis;
 	document.iform.to.disabled = endis;
-	document.iform.tpoll.disabled = endis;
-	document.iform.npoll.disabled = endis;
+	document.iform.minutes1.disabled = endis;
+	document.iform.minutes2.disabled = endis;
+	document.iform.minutes3.disabled = endis;
+	document.iform.minutes4.disabled = endis;
+	document.iform.minutes5.disabled = endis;
+	document.iform.hours1.disabled = endis;
+	document.iform.hours2.disabled = endis;
+	document.iform.days1.disabled = endis;
+	document.iform.days2.disabled = endis;
+	document.iform.days3.disabled = endis;
+	document.iform.months.disabled = endis;
+	document.iform.weekdays.disabled = endis;
+	document.iform.all_mins1.disabled = endis;
+	document.iform.all_mins2.disabled = endis;
+	document.iform.all_hours1.disabled = endis;
+	document.iform.all_hours2.disabled = endis;
+	document.iform.all_days1.disabled = endis;
+	document.iform.all_days2.disabled = endis;
+	document.iform.all_months1.disabled = endis;
+	document.iform.all_months2.disabled = endis;
+	document.iform.all_weekdays1.disabled = endis;
+	document.iform.all_weekdays2.disabled = endis;
 }
+
 function auth_change() {
 	switch(document.iform.auth.checked) {
 		case false:
@@ -225,18 +242,240 @@ function auth_change() {
 				<?=gettext("Destination e-mail.");?>
 			</td>
 		</tr>
-		<tr id="minspace_tr">
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Polling step") ; ?></td>
+		<tr>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("Polling time");?></td>
 			<td width="78%" class="vtable">
 				<?=$mandfldhtml;?>
-				<?=gettext("Poll every ");?>
-				<input name="npoll" type="text" class="formfld" id="npoll" size="5" value="<?=htmlentities($pconfig['npoll']);?>">&nbsp;
-				<select name="tpoll" class="formfld" id="tpoll">
-					<?php $vals = explode(" ", "minute hour day month"); $text = explode(" ", "minutes hours days months")?>
-					<?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-					<option value="<?=$vals[$j];?>" <?php if ($vals[$j] === "{$pconfig['tpoll']}") echo "selected";?>><?=htmlspecialchars(gettext($text[$j]));?></option>
-					<?php endfor; ?>
-				</select>
+				<table width=100% border cellpadding="6" cellspacing="0">
+					<tr>
+						<td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>
+						<td class="optsect_t"><b class="optsect_s"><?=gettext("hours");?></b></td>
+						<td class="optsect_t"><b class="optsect_s"><?=gettext("days");?></b></td>
+						<td class="optsect_t"><b class="optsect_s"><?=gettext("months");?></b></td>
+						<td class="optsect_t"><b class="optsect_s"><?=gettext("week days");?></b></td>
+					</tr>
+					<tr bgcolor=#cccccc>
+						<td valign=top>
+							<input type="radio" name="all_mins" id="all_mins1" value="1" <?php if (1 == $pconfig['all_mins']) echo "checked";?>>
+							<?=gettext("All");?><br>
+							<input type="radio" name="all_mins" id="all_mins2" value="0" <?php if (1 != $pconfig['all_mins']) echo "checked";?>>
+							<?=gettext("Selected");?> ..<br>
+							<table>
+								<tr>
+									<td valign=top>
+										<select multiple size="12" name="minutes[]" id="minutes1">
+										<?php $i = 0; while ($i <= 11) {
+											if (isset($pconfig['minute'])) {
+												if (in_array($i, $pconfig['minute'])) {
+													$is_selected = " selected";
+												} else {
+													$is_selected = "";
+												}
+											}
+											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n"; $i++;
+										}?>
+										</select>
+									</td>
+									<td valign=top>
+										<select multiple size="12" name="minutes[]" id="minutes2">
+										<?php $i = 12; while ($i <= 23){
+											if (isset($pconfig['minute'])) {
+												if (in_array($i, $pconfig['minute'])) {
+													$is_selected = " selected";
+												} else {
+													$is_selected = "";
+												}
+											}
+											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
+											$i++;
+										}?>
+										</select>
+									</td>
+									<td valign=top>
+										<select multiple size="12" name="minutes[]" id="minutes3">
+										<?php $i = 24; while ($i <= 35) {
+											if (isset($pconfig['minute'])) {
+												if (in_array($i, $pconfig['minute'])) {
+													$is_selected = " selected";
+												} else {
+													$is_selected = "";
+												}
+											}
+											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
+											$i++;
+										}?>
+										</select>
+									</td>
+									<td valign=top>
+										<select multiple size="12" name="minutes[]" id="minutes4">
+											<?php $i = 36; while ($i <= 47) {
+											if (isset($pconfig['minute'])) {
+												if (in_array($i, $pconfig['minute'])) {
+													$is_selected = " selected";
+												} else {
+													$is_selected = "";
+												}
+											}
+											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
+											$i++;
+										}?>
+										</select>
+									</td>
+									<td valign=top>
+										<select multiple size="12" name="minutes[]" id="minutes5">
+										<?php $i = 48; while ($i <= 59) {
+											if (isset($pconfig['minute'])) {
+												if (in_array($i, $pconfig['minute'])) {
+													$is_selected = " selected";
+												} else {
+													$is_selected = "";
+												}
+											}
+											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
+											$i++;
+										}?>
+										</select>
+									</td>
+								</tr>
+							</table>
+							<br>
+						</td>
+						<td valign=top>
+							<input type="radio" name="all_hours" id="all_hours1" value="1" <?php if (1 == $pconfig['all_hours']) echo "checked";?>>
+							<?=gettext("All");?><br>
+							<input type="radio" name="all_hours" id="all_hours2" value="0" <?php if (1 != $pconfig['all_hours']) echo "checked";?>>
+							<?=gettext("Selected");?> ..<br>
+							<table>
+								<tr>
+									<td valign=top>
+										<select multiple size="12" name="hours[]" id="hours1">
+										<?php $i = 0; while ($i <= 11) {
+											if (isset($pconfig['hour'])) {
+												if (in_array($i, $pconfig['hour'])) {
+													$is_selected = " selected";
+												} else {
+													$is_selected = "";
+												}
+											}
+											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
+											$i++;
+										}?>
+										</select>
+									</td>
+									<td valign=top>
+										<select multiple size="12" name="hours[]" id="hours2">
+										<?php $i = 12; while ($i <= 23) {
+											if (isset($pconfig['hour'])) {
+												if (in_array($i, $pconfig['hour'])) {
+													$is_selected = " selected";
+												} else {
+													$is_selected = "";
+												}
+											}
+											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
+											$i++;
+										}?>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</td>
+            <td valign=top>
+							<input type="radio" name="all_days" id="all_days1" value="1" <?php if (1 == $pconfig['all_days']) echo "checked";?>>
+							<?=gettext("All");?><br>
+							<input type="radio" name="all_days" id="all_days2" value="0" <?php if (1 != $pconfig['all_days']) echo "checked";?>>
+							<?=gettext("Selected");?> ..<br>
+							<table>
+								<tr>
+									<td valign=top>
+										<select multiple size="12" name="days[]" id="days1">
+										<?php $i = 1; while ($i <= 12) {
+											if (isset($pconfig['day'])) {
+												if (in_array($i, $pconfig['day'])) {
+													$is_selected = " selected";
+												} else {
+													$is_selected = "";
+												}
+											}
+											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
+											$i++;
+										}?>
+										</select>
+									</td>
+									<td valign=top>
+										<select multiple size="12" name="days[]" id="days2">
+										<?php $i = 13; while ($i <= 24) {
+											if (isset($pconfig['day'])) {
+												if (in_array($i, $pconfig['day'])) {
+													$is_selected = " selected";
+												} else {
+													$is_selected = "";
+												}
+											}
+											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
+											$i++;
+										}?>
+										</select>
+									</td>
+									<td valign=top>
+										<select multiple size="7" name="days[]" id="days3">
+										<?php $i = 25; while ($i <= 31) {
+											if (isset($pconfig['day'])) {
+												if (in_array($i, $pconfig['day'])) {
+													$is_selected = " selected";
+												} else {
+													$is_selected = "";
+												}
+											}
+											echo "<option value=\"" . $i . "\"" . $is_selected . ">" . $i . "\n";
+											$i++;
+										}?>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td valign=top>
+							<input type="radio" name="all_months" id="all_months1" value="1" <?php if (1 == $pconfig['all_months']) echo "checked";?>>
+							<?=gettext("All");?><br>
+							<input type="radio" name="all_months" id="all_months2" value="0" <?php if (1 != $pconfig['all_months']) echo "checked";?>>
+							<?=gettext("Selected");?> ..<br>
+              <table>
+								<tr>
+									<td valign=top>
+										<select multiple size="12" name="months[]" id="months">
+											<?php $i=1; foreach ($a_months as $month):?>
+											<option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array($i, $pconfig['month'])) echo "selected";?>><?=htmlentities($month);?></option>
+											<?php $i++; endforeach;?>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td valign=top>
+							<input type="radio" name="all_weekdays" id="all_weekdays1" value="1" <?php if (1 == $pconfig['all_weekdays']) echo "checked";?>>
+							<?=gettext("All");?><br>
+							<input type="radio" name="all_weekdays" id="all_weekdays2" value="0" <?php if (1 != $pconfig['all_weekdays']) echo "checked";?>>
+							<?=gettext("Selected");?> ..<br>
+							<table>
+								<tr>
+									<td valign=top>
+										<select multiple size="7" name="weekdays[]" id="weekdays">
+											<?php $i=0; foreach ($a_weekdays as $day):?>
+											<option value="<?=$i;?>" <?php if (isset($pconfig['weekday']) && in_array($i, $pconfig['weekday'])) echo "selected";?>><?=$day;?></option>
+											<?php $i++; endforeach;?>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr bgcolor=#cccccc>
+						<td colspan=5>
+							<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.");?>
+						</td>
+					</tr>
+				</table>
 			</td>
 		</tr>
     <tr>
@@ -249,8 +488,8 @@ function auth_change() {
 </form>
 <script language="JavaScript">
 <!--
-enable_change(false);
 auth_change();
+enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
