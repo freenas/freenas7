@@ -78,6 +78,13 @@ if (isset($id) && $a_rsyncclient[$id]) {
 	$pconfig['all_months'] = $a_rsyncclient[$id]['all_months'];
 	$pconfig['all_weekdays'] = $a_rsyncclient[$id]['all_weekdays'];
 	$pconfig['description'] = $a_rsyncclient[$id]['description'];
+} else {
+	// Set default values.
+	$pconfig['all_mins'] = 1;
+	$pconfig['all_hours'] = 1;
+	$pconfig['all_days'] = 1;
+	$pconfig['all_months'] = 1;
+	$pconfig['all_weekdays'] = 1;
 }
 
 if (!is_array($config['mounts']['mount'])) {

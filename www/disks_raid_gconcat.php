@@ -61,7 +61,7 @@ if ($_POST) {
 	}
 }
 
-$raidstatus=get_sraid_disks_list();
+$raidstatus=get_gconcat_disks_list();
 
 if ($_GET['act'] == "del") {
 	unset($errormsg);
@@ -155,6 +155,6 @@ if ($_GET['act'] == "del") {
 				</tr>
               </table>
             </form>
-<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"), "disks_manage.php", "UP");?></p>
+<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"), "disks_manage.php", "UP");?></span></p>
 </td></tr></table>
 <?php include("fend.inc"); ?>

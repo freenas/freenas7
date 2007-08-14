@@ -102,7 +102,7 @@ function install_init_halfdisk($harddrive)
 		write_console(".");
 		$i++;
 		if ($i==20) {
-			write_console(" System not updated after 20 seconds!\n");
+			write_console("\nSystem not updated after 20 seconds!\n");
 			return 1;
 		}
 	}
