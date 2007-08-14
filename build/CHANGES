@@ -54,6 +54,7 @@ Bug fixs:
 - Fix bug in UPnP WebGUI page. Profile dropdown control is not disabled when service is disabled.
 - Fix bug in Access/Group WebGUI page. Group ID was lost when editing existing group.
 - Fix bug in userdb generation. User administrator privilegs were not set correct.
+- Fix problem that RAID size and status isn't displayed correct.
 
 FreeNAS 0.685b2:
 ----------------
