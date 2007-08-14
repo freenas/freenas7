@@ -61,7 +61,7 @@ if ($_POST) {
 	}
 }
 
-$raidstatus=get_sraid_disks_list();
+$raidstatus=get_graid5_disks_list();
 
 if ($_GET['act'] == "del") {
 	unset($errormsg);
