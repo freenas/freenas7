@@ -55,7 +55,7 @@ if (is_booting()) {
 
 	/* check if there's already an fstab ('full' release booting?) */
 	if (!file_exists("{$g['etc_path']}/fstab")) {
-		if (strstr($g['platform'], "liveCD")) 	{
+		if (stristr($g['platform'], "liveCD")) 	{
 			echo "Booting from liveCD: Looking for configuration file on floppy or USB\n";
 			/* Config is on floppy disk/USB stick for CD-ROM version */
 			$cfgdevice = $cfgpartition = "fd0";
@@ -78,8 +78,7 @@ if (is_booting()) {
 					mwexec("/sbin/umount -f /dev/{$cfgpartition}");
 				}
 			}
-		}
-		else 	{
+		} else {
 			/* probe kernel known disks until we find one with config.xml */
 			$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 			foreach ($disks as $mountdisk) {
@@ -202,7 +201,7 @@ if (!$noparseconfig) {
 	} else {
 		if (!file_exists("{$g['conf_path']}/config.xml")) {
 			if (is_booting()) {
-				if (strstr($g['platform'], "liveCD")) {
+				if (stristr($g['platform'], "liveCD")) {
 					/* try copying the default config. to the floppy */
 					reset_factory_defaults();
 
