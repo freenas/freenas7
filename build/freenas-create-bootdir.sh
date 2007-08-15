@@ -67,18 +67,18 @@ mkdir $MINIBSD_DIR/defaults
 mkdir $MINIBSD_DIR/kernel
 
 # Copy required files
-cp -v /boot/defaults/loader.conf $MINIBSD_DIR/defaults
-cp -v /boot/loader $MINIBSD_DIR
-cp -v /boot/boot $MINIBSD_DIR
-cp -v /boot/mbr $MINIBSD_DIR
-cp -v /boot/cdboot $MINIBSD_DIR
-cp -v /boot/loader.4th $MINIBSD_DIR
-cp -v /boot/support.4th $MINIBSD_DIR
-cp -v /boot/device.hints $MINIBSD_DIR
+cp -v ${FREENAS_WORLD}/boot/defaults/loader.conf $MINIBSD_DIR/defaults
+cp -v ${FREENAS_WORLD}/boot/loader $MINIBSD_DIR
+cp -v ${FREENAS_WORLD}/boot/boot $MINIBSD_DIR
+cp -v ${FREENAS_WORLD}/boot/mbr $MINIBSD_DIR
+cp -v ${FREENAS_WORLD}/boot/cdboot $MINIBSD_DIR
+cp -v ${FREENAS_WORLD}/boot/loader.4th $MINIBSD_DIR
+cp -v ${FREENAS_WORLD}/boot/support.4th $MINIBSD_DIR
+cp -v ${FREENAS_WORLD}/boot/device.hints $MINIBSD_DIR
 # Copy files required by bootmenu
 if [ 0 != $opt_m ]; then
-	cp -v /boot/screen.4th $MINIBSD_DIR
-	cp -v /boot/frames.4th $MINIBSD_DIR
+	cp -v ${FREENAS_WORLD}/boot/screen.4th $MINIBSD_DIR
+	cp -v ${FREENAS_WORLD}/boot/frames.4th $MINIBSD_DIR
 fi
 
 # Generate the loader.rc file using by bootloader

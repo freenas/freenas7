@@ -15,6 +15,7 @@ FREENAS_ROOTDIR="/usr/local/freenas"
 FREENAS_WORKINGDIR="$FREENAS_ROOTDIR/work"
 FREENAS_ROOTFS="$FREENAS_ROOTDIR/rootfs"
 FREENAS_SVNDIR="$FREENAS_ROOTDIR/svn"
+FREENAS_WORLD=""
 FREENAS_PRODUCTNAME=`cat $FREENAS_SVNDIR/etc/prd.name`
 FREENAS_VERSION=`cat $FREENAS_SVNDIR/etc/prd.version`
 
@@ -22,6 +23,7 @@ export FREENAS_ROOTDIR
 export FREENAS_WORKINGDIR
 export FREENAS_ROOTFS
 export FREENAS_SVNDIR
+export FREENAS_WORLD
 export FREENAS_PRODUCTNAME
 export FREENAS_VERSION
 
@@ -112,8 +114,8 @@ build_world() {
 		  mkdir -pv $dir
 		fi
 
-		# Copy files
-		cp -pv /$file $(echo $file | rev | cut -d "/" -f 2- | rev)
+		# Copy files from world.
+		cp -pv ${FREENAS_WORLD}/$file $(echo $file | rev | cut -d "/" -f 2- | rev)
 
 		# Deal with links
 		if [ $(echo "$i" | grep -c ":") -gt 0 ]; then
@@ -253,7 +255,7 @@ add_libs() {
 
 	# Copy identified libs.
 	for i in $(sort -u /tmp/lib.list); do
-		cp -vp $i ${FREENAS_ROOTFS}$(echo $i | rev | cut -d '/' -f 2- | rev)
+		cp -vp ${FREENAS_WORLD}${i} ${FREENAS_ROOTFS}$(echo $i | rev | cut -d '/' -f 2- | rev)
 	done
 
 	# Cleanup.
@@ -330,6 +332,7 @@ create_mfsroot() {
 	umount $FREENAS_TMPDIR
 	mdconfig -d -u 0
 	gzip -9 $FREENAS_WORKINGDIR/mfsroot
+
 	return 0
 }
 
@@ -392,9 +395,6 @@ create_image() {
 		cp /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 
-	#Special for enabling serial port if no keyboard
-	#cp $FREENAS_BOOTDIR/boot.config $FREENAS_TMPDIR/
-	
 	echo "IMG: unmount memory disk"
 	umount $FREENAS_TMPDIR
 	echo "IMG: Deconfigure memory disk"
@@ -458,10 +458,6 @@ create_iso () {
 		cp /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 
-	#Special test for enabling serial port if no keyboard
-	#Removed because meet some problem with some hardware (no keyboard detected)
-	#cp $FREENAS_BOOTDIR/boot.config $FREENAS_TMPDIR/
-	
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file to $FREENAS_TMPDIR"
 		cp $FREENAS_ROOTDIR/$FREENAS_PRODUCTNAME-$FREENAS_ARCH-embedded-$FREENAS_VERSION.img $FREENAS_TMPDIR/$FREENAS_PRODUCTNAME-$FREENAS_ARCH-embedded.gz
