@@ -32,6 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("diag_logs.inc");
 
 $pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
 
@@ -46,28 +47,6 @@ if ($_POST['clear'])
 	header("Location: diag_logs_ftp.php");
 	exit;
 }
-
-function dump_clog($logfile, $tail, $withorig = true) {
-	global $g, $config;
-
-	$sor = isset($config['syslogd']['reverse']) ? "-r" : "";
-
-	exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $tail, $logarr);
-	
-	foreach ($logarr as $logent) {
-		$logent = preg_split("/\s+/", $logent, 6);
-		echo "<tr valign=\"top\">\n";
-		
-		if ($withorig) {
-			echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";
-			echo "<td class=\"listr\">" . htmlspecialchars($logent[4] . " " . $logent[5]) . "</td>\n";
-		} else {
-			echo "<td class=\"listlr\" colspan=\"2\">" . htmlspecialchars($logent[5]) . "</td>\n";
-		}
-		echo "</tr>\n";
-	}
-}
-
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -90,7 +69,7 @@ function dump_clog($logfile, $tail, $withorig = true) {
 					<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("FTP"));?>
 				</td>
 		  </tr>
-		  <?php dump_clog("/var/log/ftp.log", $nentries); ?>
+		  <?php logs_dump("/var/log/ftp.log", $nentries); ?>
 		</table>
 		<br><form action="diag_logs_ftp.php" method="post">
 <input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
