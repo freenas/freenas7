@@ -77,7 +77,7 @@ $menu['status']['menuitem'][] = array("desc" => "Interfaces", "link" => "status_
 $menu['status']['menuitem'][] = array("desc" => "Disks", "link" => "status_disks.php", "visible" => true);
 $menu['status']['menuitem'][] = array("desc" => "Wireless", "link" => "status_wireless.php", "visible" => true);
 $menu['status']['menuitem'][] = array("desc" => "Graph", "link" => "status_graph.php", "visible" => true);
-$menu['status']['menuitem'][] = array("desc" => "Report", "link" => "status_report.php", "visible" => true);
+$menu['status']['menuitem'][] = array("desc" => "Email report", "link" => "status_report.php", "visible" => true);
 
 // Diagnostics
 $menu['diagnostics']['desc'] = "Diagnostics";
