@@ -241,6 +241,7 @@
 			<all_months></all_months>
 			<all_weekdays></all_weekdays>
 			<minute></minute>
+			<hour></hour>
 			<day></day>
 			<month></month>
 			<weekday></weekday>
@@ -257,6 +258,7 @@
 			<all_months></all_months>
 			<all_weekdays></all_weekdays>
 			<minute></minute>
+			<hour></hour>
 			<day></day>
 			<month></month>
 			<weekday></weekday>
@@ -334,4 +336,17 @@
 		<forcedupdateperiod></forcedupdateperiod>
 		-->
 	</dynamicdns>
+	<shutdown>
+		<!-- <enable/> -->
+		<all_mins>1</all_mins>
+		<all_hours>1</all_hours>
+		<all_days>1</all_days>
+		<all_months>1</all_months>
+		<all_weekdays>1</all_weekdays>
+		<minute></minute>
+		<hour></hour>
+		<day></day>
+		<month></month>
+		<weekday></weekday>
+	</shutdown>
 </freenas>
