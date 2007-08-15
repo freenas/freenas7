@@ -48,6 +48,7 @@ $pconfig['auth'] = isset($config['statusreport']['auth']);
 $pconfig['username'] = $config['statusreport']['username'];
 $pconfig['password'] = base64_decode($config['statusreport']['password']);
 $pconfig['passwordconf'] = $pconfig['password'];
+$pconfig['subject'] = $config['statusreport']['subject'];
 $pconfig['from'] = $config['statusreport']['from'];
 $pconfig['to'] = $config['statusreport']['to'];
 $pconfig['minute'] = $config['statusreport']['minute'];
@@ -97,6 +98,7 @@ if($_POST) {
 		$config['statusreport']['auth'] = $_POST['auth'] ? true : false;
 		$config['statusreport']['username'] = $_POST['username'];
 		$config['statusreport']['password'] = base64_encode($_POST['password']);
+		$config['statusreport']['subject'] = $_POST['subject'];
 		$config['statusreport']['from'] = $_POST['from'];
 		$config['statusreport']['to'] = $_POST['to'];
 		$config['statusreport']['minute'] = $_POST['minute'];
@@ -233,7 +235,7 @@ function auth_change() {
 			<td width="78%" class="vtable">
 				<?=$mandfldhtml;?>
 				<input name="from" type="text" class="formfld" id="from" size="40" value="<?=htmlentities($pconfig['from']);?>"><br>
-				<?=gettext("Your own email.");?>
+				<?=gettext("Your own email address.");?>
 			</td>
 		</tr>
 		<tr>
@@ -241,8 +243,15 @@ function auth_change() {
 			<td width="78%" class="vtable">
 				<?=$mandfldhtml;?>
 				<input name="to" type="text" class="formfld" id="to" size="40" value="<?=htmlentities($pconfig['to']);?>"><br>
-				<?=gettext("Destination e-mail.");?>
+				<?=gettext("Destination email address.");?>
 			</td>
+		</tr>
+		<tr>
+	    <td width="22%" valign="top" class="vncell"><?=gettext("Subject");?></td>
+      <td width="78%" class="vtable">
+        <input name="subject" type="text" class="formfld" id="subject" size="60" value="<?=htmlentities($pconfig['subject']);?>"><br>
+        <?=gettext("The subject of the email.");?>
+      </td>
 		</tr>
 		<tr>
 			<td width="22%" valign="top" class="vncellreq"><?=gettext("Polling time");?></td>

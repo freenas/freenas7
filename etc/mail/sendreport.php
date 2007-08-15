@@ -32,7 +32,15 @@ $statusreport->AddArticle(new StatusReportArticleCmd("Geom Vinum","/sbin/gvinum 
 $statusreport->AddArticle(new StatusReportArticleCmd("Mount point","/sbin/mount"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Free disk space","/bin/df -h"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Encrypted disks","/sbin/geli list"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Last 200 system log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail -n 200"));
+$statusreport->AddArticle(new StatusReportArticleCmd("dmesg","/sbin/dmesg"));
+$numentries = $config['syslogd']['nentries'];
+$reverse = isset($config['syslogd']['reverse']) ? "-r" : "";
+$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} System log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail {$reverse} -n {$numentries}"));
+$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} FTP log entries","/usr/sbin/clog /var/log/ftp.log 2>&1 | tail {$reverse} -n {$numentries}"));
+$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} RSYNCD log entries","/usr/sbin/clog /var/log/rsyncd.log 2>&1 | tail {$reverse} -n {$numentries}"));
+$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} SSHD log entries","/usr/sbin/clog /var/log/sshd.log 2>&1 | tail {$reverse} -n {$numentries}"));
+$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} SMARTD log entries","/usr/sbin/clog /var/log/smartd.log 2>&1 | tail {$reverse} -n {$numentries}"));
+$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} Daemon log entries","/usr/sbin/clog /var/log/daemon.log 2>&1 | tail {$reverse} -n {$numentries}"));
 
 $mail = new PHPMailer();
 $mail->IsSMTP();
@@ -44,7 +52,7 @@ $mail->Host = $config['statusreport']['server'];
 $mail->Port = $config['statusreport']['port'];
 $mail->From = $config['statusreport']['from'];
 $mail->FromName = get_product_name() . " status";
-$mail->Subject = get_product_name() . " status report";
+$mail->Subject = $config['statusreport']['subject'];
 $mail->AddAddress($config['statusreport']['to']);
 
 // Enable SMTH authentication if set.

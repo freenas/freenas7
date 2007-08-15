@@ -374,6 +374,7 @@
 	</dynamicdns>
 	<statusreport>
 		<port>25</port>
+		<subject>Status report</subject>
 		<all_mins>1</all_mins>
 		<all_hours>1</all_hours>
 		<all_days>1</all_days>
