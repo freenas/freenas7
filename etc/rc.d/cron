@@ -93,9 +93,9 @@ HOME=/var/log
 		_index=$(( ${_index} - 1 ))
 	done
 
-	# Shutdown
+	# Scheduled shutdown
 	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//shutdown/enable)" ${configxml_file}` ]; then
-		echo "# Perform shutdown." >> ${cron_config}
+		echo "# Perform scheduled shutdown." >> ${cron_config}
 		/usr/local/bin/xml sel -t -m "//shutdown" \
 			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
 			-i "all_mins[. != "0"]" -o "*" -b \
@@ -113,6 +113,29 @@ HOME=/var/log
 			-i "all_weekdays[. != "0"]" -o "*" -b \
 			-o " " \
 			-o "root /sbin/shutdown -p now" \
+			${configxml_file} >> ${cron_config}
+	fi
+
+	# Scheduled reboot
+	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//reboot/enable)" ${configxml_file}` ]; then
+		echo "# Perform scheduled reboot." >> ${cron_config}
+		/usr/local/bin/xml sel -t -m "//reboot" \
+			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_mins[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_hours[. = "0"]" -m hour -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_hours[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_days[. = "0"]" -m day -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_days[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_months[. = "0"]" -m month -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_months[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_weekdays[. != "0"]" -o "*" -b \
+			-o " " \
+			-o "root /sbin/shutdown -r now" \
 			${configxml_file} >> ${cron_config}
 	fi
 

@@ -1,11 +1,13 @@
 #!/usr/local/bin/php
 <?php
 /*
-	shutdown_sched.php
+	reboot_sched.php
+	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
+  All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
-	Cron configuration from services_rsynclient.php improved by Mat Murdock <mmurdock@kimballequipment.com>
 
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
@@ -34,23 +36,23 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Diagnostics"),gettext("Scheduled shutdown"));
+$pgtitle = array(gettext("Diagnostics"),gettext("Scheduled reboot"));
 
-if (!is_array($config['shutdown'])){
-	$config['shutdown'] = array();
+if (!is_array($config['reboot'])){
+	$config['reboot'] = array();
 }
 
-$pconfig['enable'] = isset($config['shutdown']['enable']);
-$pconfig['minute'] = $config['shutdown']['minute'];
-$pconfig['hour'] = $config['shutdown']['hour'];
-$pconfig['day'] = $config['shutdown']['day'];
-$pconfig['month'] = $config['shutdown']['month'];
-$pconfig['weekday'] = $config['shutdown']['weekday'];
-$pconfig['all_mins'] = $config['shutdown']['all_mins'];
-$pconfig['all_hours'] = $config['shutdown']['all_hours'];
-$pconfig['all_days'] = $config['shutdown']['all_days'];
-$pconfig['all_months'] = $config['shutdown']['all_months'];
-$pconfig['all_weekdays'] = $config['shutdown']['all_weekdays'];
+$pconfig['enable'] = isset($config['reboot']['enable']);
+$pconfig['minute'] = $config['reboot']['minute'];
+$pconfig['hour'] = $config['reboot']['hour'];
+$pconfig['day'] = $config['reboot']['day'];
+$pconfig['month'] = $config['reboot']['month'];
+$pconfig['weekday'] = $config['reboot']['weekday'];
+$pconfig['all_mins'] = $config['reboot']['all_mins'];
+$pconfig['all_hours'] = $config['reboot']['all_hours'];
+$pconfig['all_days'] = $config['reboot']['all_days'];
+$pconfig['all_months'] = $config['reboot']['all_months'];
+$pconfig['all_weekdays'] = $config['reboot']['all_weekdays'];
 
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
 $a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Friday Saturday"));
@@ -61,17 +63,17 @@ if ($_POST){
 	$pconfig = $_POST;
 
 	if (!$input_errors) {
-		$config['shutdown']['enable'] = $_POST['enable'] ? true : false;
-		$config['shutdown']['minute'] = $_POST['minute'];
-		$config['shutdown']['hour'] = $_POST['hour'];
-		$config['shutdown']['day'] = $_POST['day'];
-		$config['shutdown']['month'] = $_POST['month'];
-		$config['shutdown']['weekday'] = $_POST['weekday'];
-		$config['shutdown']['all_mins'] = $_POST['all_mins'];
-		$config['shutdown']['all_hours'] = $_POST['all_hours'];
-		$config['shutdown']['all_days'] = $_POST['all_days'];
-		$config['shutdown']['all_months'] = $_POST['all_months'];
-		$config['shutdown']['all_weekdays'] = $_POST['all_weekdays'];
+		$config['reboot']['enable'] = $_POST['enable'] ? true : false;
+		$config['reboot']['minute'] = $_POST['minute'];
+		$config['reboot']['hour'] = $_POST['hour'];
+		$config['reboot']['day'] = $_POST['day'];
+		$config['reboot']['month'] = $_POST['month'];
+		$config['reboot']['weekday'] = $_POST['weekday'];
+		$config['reboot']['all_mins'] = $_POST['all_mins'];
+		$config['reboot']['all_hours'] = $_POST['all_hours'];
+		$config['reboot']['all_days'] = $_POST['all_days'];
+		$config['reboot']['all_months'] = $_POST['all_months'];
+		$config['reboot']['all_weekdays'] = $_POST['all_weekdays'];
 
 		write_config();
 
@@ -120,20 +122,20 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="shutdown.php"><?=gettext("Shutdown system");?></a></li>
-        <li class="tabact"><a href="shutdown_sched.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Scheduled shutdown");?></a></li>
+        <li class="tabinact"><a href="reboot.php"><?=gettext("Reboot system");?></a></li>
+        <li class="tabact"><a href="reboot_sched.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Scheduled reboot");?></a></li>
       </ul>
     </td>
   </tr>
   <tr>
     <td class="tabcont">
-      <form action="shutdown_sched.php" method="post" name="iform" id="iform">
+      <form action="reboot_sched.php" method="post" name="iform" id="iform">
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
             <td colspan="2" valign="top" class="optsect_t">
               <table border="0" cellspacing="0" cellpadding="0" width="100%">
                 <tr>
-                  <td class="optsect_s"><strong><?=gettext("Scheduled shutdown"); ?></strong></td>
+                  <td class="optsect_s"><strong><?=gettext("Scheduled reboot"); ?></strong></td>
                   <td align="right" class="optsect_s">
                     <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable"); ?></strong>
                   </td>

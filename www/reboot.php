@@ -41,14 +41,28 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
-<?php if ($rebootmsg): echo print_info_box($rebootmsg); system_reboot(); else: ?>
-<form action="reboot.php" method="post">
-  <p><strong><?=gettext("Are you sure you want to reboot the system?");?></strong></p>
-  <p>
-    <input name="Submit" type="submit" class="formbtn" value=" <?=gettext("Yes");?> ">
-    <input name="Submit" type="submit" class="formbtn" value=" <?=gettext("No");?> ">
-  </p>
-</form>
-<?php endif; ?>
-<?php include("fend.inc"); ?>
+<?php include("fbegin.inc");?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+        <li class="tabact"><a href="reboot.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Reboot system");?></a></li>
+        <li class="tabinact"><a href="reboot_sched.php"><?=gettext("Scheduled reboot");?></a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td class="tabcont">
+			<?php if ($rebootmsg): echo print_info_box($rebootmsg); system_reboot(); else:?>
+			<form action="reboot.php" method="post">
+			  <p><strong><?=gettext("Are you sure you want to reboot the system?");?></strong></p>
+			  <p>
+			    <input name="Submit" type="submit" class="formbtn" value=" <?=gettext("Yes");?> ">
+			    <input name="Submit" type="submit" class="formbtn" value=" <?=gettext("No");?> ">
+			  </p>
+			</form>
+			<?php endif;?>
+    </td>
+  </tr>
+</table>
+<?php include("fend.inc");?>

@@ -44,19 +44,19 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><a href="shutdown.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Shutdown system") ;?></a></li>
-        <li class="tabinact"><a href="shutdown_sched.php"><?=gettext("Scheduled shutdown") ;?></a></li></a></li>
+        <li class="tabact"><a href="shutdown.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Shutdown system");?></a></li>
+        <li class="tabinact"><a href="shutdown_sched.php"><?=gettext("Scheduled shutdown");?></a></li>
       </ul>
     </td>
   </tr>
   <tr>
     <td class="tabcont">
-      <?php if ($rebootmsg): echo print_info_box($rebootmsg); system_halt(); else: ?>
+      <?php if ($rebootmsg): echo print_info_box($rebootmsg); system_halt(); else:?>
       <form action="shutdown.php" method="post">
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <p><strong><?=gettext("Are you sure you want to shutdown the system?");?></strong></p>
@@ -66,8 +66,8 @@ if ($_POST) {
           </p>
         </table>
       </form>
-      <?php endif; ?>
+      <?php endif;?>
     </td>
   </tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
