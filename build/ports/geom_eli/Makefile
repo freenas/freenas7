@@ -24,7 +24,7 @@ do-install:
 
 	# Install application.
 	@${LN} -f -v -s /sbin/geom ${FREENAS_ROOTFS}/sbin/geli
-	@${CP} -pv ${FREENAS_OBJDIRPREFIX}/usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
+	@${CP} -pv /usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
 
 pre-clean:
 	@${MAKE} -C ${WRKSRC} clean
