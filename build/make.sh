@@ -18,6 +18,7 @@ FREENAS_SVNDIR="$FREENAS_ROOTDIR/svn"
 FREENAS_WORLD=""
 FREENAS_PRODUCTNAME=`cat $FREENAS_SVNDIR/etc/prd.name`
 FREENAS_VERSION=`cat $FREENAS_SVNDIR/etc/prd.version`
+FREENAS_KERNCONF="FREENAS-${FREENAS_ARCH}"
 
 export FREENAS_ROOTDIR
 export FREENAS_WORKINGDIR
@@ -26,6 +27,7 @@ export FREENAS_SVNDIR
 export FREENAS_WORLD
 export FREENAS_PRODUCTNAME
 export FREENAS_VERSION
+export FREENAS_KERNCONF
 
 # Local variables
 FREENAS_URL=`cat $FREENAS_SVNDIR/etc/prd.url`
@@ -215,17 +217,14 @@ build_kernel() {
 			build)
 				# Copy kernel configuration.
 				cd /sys/${FREENAS_ARCH}/conf;
-				if [ -f FREENAS-${FREENAS_ARCH} ]; then
-					rm -f FREENAS-${FREENAS_ARCH};
-				fi;
-				cp $FREENAS_SVNDIR/build/kernel-config/FREENAS-${FREENAS_ARCH} .;
+				cp -f $FREENAS_SVNDIR/build/kernel-config/${FREENAS_KERNCONF} .;
 				# Compiling and compressing the kernel.
 				cd /usr/src;
-				make buildkernel KERNCONF=FREENAS-${FREENAS_ARCH};
-				gzip -v -f -9 /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/kernel;;
+				make buildkernel KERNCONF=${FREENAS_KERNCONF};
+				gzip -v -f -9 /usr/obj/usr/src/sys/${FREENAS_KERNCONF}/kernel;;
 			install)
 				# Installing the modules.
-				cd /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules;
+				cd /usr/obj/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules;
 				cp -v -p ./geom/geom_vinum/geom_vinum.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_stripe/geom_stripe.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_concat/geom_concat.ko $FREENAS_ROOTFS/boot/kernel;
@@ -392,7 +391,7 @@ create_image() {
 	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
-		cp /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
+		cp /usr/obj/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 
 	echo "IMG: unmount memory disk"
@@ -455,7 +454,7 @@ create_iso () {
 	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
-		cp /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
+		cp /usr/obj/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 
 	if [ ! $LIGHT_ISO ]; then
@@ -525,7 +524,7 @@ create_full() {
 	fi
 	if [ 0 != $OPT_BOOTSPLASH ]; then
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
-		cp /usr/obj/usr/src/sys/FREENAS-${FREENAS_ARCH}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
+		cp /usr/obj/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 	
 	#Generate a loader.conf for full mode:

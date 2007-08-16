@@ -8,7 +8,7 @@
 ################################################################
 
 # Check if environment variables are set.
-.for variable in FREENAS_ROOTFS FREENAS_SVNDIR FREENAS_PRODUCTNAME
+.for variable in FREENAS_ROOTFS FREENAS_SVNDIR FREENAS_PRODUCTNAME FREENAS_KERNCONF
 .if !defined(${variable})
 check-makevars::
 	@${ECHO_MSG} "${PKGNAME}: Environment error: '${variable}' not defined."
