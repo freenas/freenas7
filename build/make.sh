@@ -19,7 +19,6 @@ FREENAS_WORLD=""
 FREENAS_PRODUCTNAME=$(cat $FREENAS_SVNDIR/etc/prd.name)
 FREENAS_VERSION=$(cat $FREENAS_SVNDIR/etc/prd.version)
 FREENAS_ARCH=$(uname -p)
-FREENAS_KERNCONF="FREENAS-${FREENAS_ARCH}"
 FREENAS_OBJDIRPREFIX="/usr/obj"
 
 export FREENAS_ROOTDIR
@@ -37,6 +36,7 @@ export FREENAS_OBJDIRPREFIX
 FREENAS_URL=$(cat $FREENAS_SVNDIR/etc/prd.url)
 FREENAS_BOOTDIR="$FREENAS_ROOTDIR/bootloader"
 FREENAS_TMPDIR="/tmp/freenastmp"
+FREENAS_KERNCONF="FREENAS-${FREENAS_ARCH}"
 FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/trunk"
 
 # Path where to find Makefile includes
