@@ -19,7 +19,8 @@ FREENAS_WORLD=""
 FREENAS_PRODUCTNAME=$(cat $FREENAS_SVNDIR/etc/prd.name)
 FREENAS_VERSION=$(cat $FREENAS_SVNDIR/etc/prd.version)
 FREENAS_ARCH=$(uname -p)
-FREENAS_OBJDIRPREFIX="/usr/obj"
+FREENAS_KERNCONF="$(echo ${FREENAS_PRODUCTNAME} | tr '[:lower:]' '[:upper:]')-${FREENAS_ARCH}"
+FREENAS_OBJDIRPREFIX="/usr/obj/$(echo ${FREENAS_PRODUCTNAME} | tr '[:upper:]' '[:lower:]')"
 
 export FREENAS_ROOTDIR
 export FREENAS_WORKINGDIR
@@ -36,7 +37,6 @@ export FREENAS_OBJDIRPREFIX
 FREENAS_URL=$(cat $FREENAS_SVNDIR/etc/prd.url)
 FREENAS_BOOTDIR="$FREENAS_ROOTDIR/bootloader"
 FREENAS_TMPDIR="/tmp/freenastmp"
-FREENAS_KERNCONF="FREENAS-${FREENAS_ARCH}"
 FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/trunk"
 
 # Path where to find Makefile includes
@@ -223,7 +223,7 @@ build_kernel() {
 				cp -f $FREENAS_SVNDIR/build/kernel-config/${FREENAS_KERNCONF} .;
 				# Compiling and compressing the kernel.
 				cd /usr/src;
-				make buildkernel KERNCONF=${FREENAS_KERNCONF};
+				env MAKEOBJDIRPREFIX=${FREENAS_OBJDIRPREFIX} make buildkernel KERNCONF=${FREENAS_KERNCONF};
 				gzip -v -f -9 ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/kernel;;
 			install)
 				# Installing the modules.
