@@ -27,17 +27,19 @@
 			-->
 		</webgui>
 		<zeroconf/>
-		<!-- <disableconsolemenu/> -->
-		<!-- <disablefirmwarecheck/> -->
-		<!-- <shellcmd></shellcmd> -->
-		<!-- <earlyshellcmd></earlyshellcmd> -->
-		<!-- <disablebeep/> -->
-		<!-- <tune/> -->
-		<!-- <smart/> -->
-		<!-- <powerd/> -->
-		<!-- <swap_mountname></swap_mountname> -->
-		<!-- <swap_size></swap_size> -->
-		<!-- <swap_enable/> -->
+		<!--
+		<disableconsolemenu/>
+		<disablefirmwarecheck/>
+		<shellcmd></shellcmd> // Can be defined multiple times.
+		<earlyshellcmd></earlyshellcmd> // Can be defined multiple times.
+		<disablebeep/>
+		<tune/>
+		<smart/>
+		<powerd/>
+		<swap_mountname></swap_mountname>
+		<swap_size></swap_size>
+		<swap_enable/>
+		 -->
 	</system>
 	<interfaces>
 		<lan>
@@ -422,27 +424,9 @@
 		<weekday></weekday>
 	</reboot>
 	<cron>
-		<job>
-			<internal/>
-			<id>reboot</id>
-			<all_mins>1</all_mins>
-			<all_hours>1</all_hours>
-			<all_days>1</all_days>
-			<all_months>1</all_months>
-			<all_weekdays>1</all_weekdays>
-			<minute></minute>
-			<hour></hour>
-			<day></day>
-			<month></month>
-			<weekday></weekday>
-			<who>root<who>
-			<command>/sbin/shutdown -r now</command>
-		</job>
 		<!--
 		<job> // Can be defined multiple times.
 			<enable/>
-			<internal/>
-			<id>xxx</id> // Used to identify job.
 			<desc>xxx</desc>
 			<all_mins>1</all_mins>
 			<all_hours>1</all_hours>
