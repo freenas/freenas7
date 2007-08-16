@@ -27,17 +27,19 @@
 			-->
 		</webgui>
 		<zeroconf/>
-		<!-- <disableconsolemenu/> -->
-		<!-- <disablefirmwarecheck/> -->
-		<!-- <shellcmd></shellcmd> -->
-		<!-- <earlyshellcmd></earlyshellcmd> -->
-		<!-- <disablebeep/> -->
-		<!-- <tune/> -->
-		<!-- <smart/> -->
-		<!-- <powerd/> -->
-		<!-- <swap_mountname></swap_mountname> -->
-		<!-- <swap_size></swap_size> -->
-		<!-- <swap_enable/> -->
+		<!--
+		<disableconsolemenu/>
+		<disablefirmwarecheck/>
+		<shellcmd></shellcmd> // Can be defined multiple times.
+		<earlyshellcmd></earlyshellcmd> // Can be defined multiple times.
+		<disablebeep/>
+		<tune/>
+		<smart/>
+		<powerd/>
+		<swap_mountname></swap_mountname>
+		<swap_size></swap_size>
+		<swap_enable/>
+		 -->
 	</system>
 	<interfaces>
 		<lan>
