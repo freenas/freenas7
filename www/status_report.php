@@ -138,6 +138,7 @@ function enable_change(enable_change) {
 	document.iform.passwordconf.disabled = endis;
 	document.iform.from.disabled = endis;
 	document.iform.to.disabled = endis;
+	document.iform.subject.disabled = endis;
 	document.iform.minutes1.disabled = endis;
 	document.iform.minutes2.disabled = endis;
 	document.iform.minutes3.disabled = endis;
