@@ -8,7 +8,6 @@
 # Modified by Volker Theile (votdev@gmx.de)
 
 MINIBSD_DIR=${FREENAS_ROOTDIR}/bootloader;
-ARCH=$(uname -p)
 
 # Initialize variables.
 opt_a=0
@@ -127,8 +126,8 @@ if [ 0 != $opt_a ]; then
 fi
 
 # Copy kernel.
-if [ -e "/usr/obj/usr/src/sys/FREENAS-$ARCH/kernel.gz" ] ; then
-  cp /usr/obj/usr/src/sys/FREENAS-$ARCH/kernel.gz $MINIBSD_DIR/kernel
+if [ -e "${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/kernel.gz" ] ; then
+  cp ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/kernel.gz $MINIBSD_DIR/kernel
 else
   echo "=> ERROR: File kernel.gz does not exist!";
   exit 1;
