@@ -122,6 +122,14 @@ if($_POST) {
 		}
 
 		$savemsg = get_std_save_message($retval);
+
+		// Send an email status report now.
+		if (stristr($_POST['Submit'], gettext("Send now"))) {
+			if (0 == $retval) {
+				$retval = mwexec("/usr/local/bin/php /etc/mail/sendreport.php");
+				$savemsg = get_std_save_message($retval);
+			}
+		}
 	}
 }
 ?>
@@ -161,6 +169,7 @@ function enable_change(enable_change) {
 	document.iform.all_months2.disabled = endis;
 	document.iform.all_weekdays1.disabled = endis;
 	document.iform.all_weekdays2.disabled = endis;
+	document.iform.sendnow.disabled = endis;
 }
 
 function auth_change() {
@@ -411,13 +420,15 @@ function auth_change() {
 				</table>
 			</td>
 		</tr>
-    <tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-      </td>
-    </tr>
-  </table>
+		<tr>
+			<td width="22%" valign="top">&nbsp;</td>
+			<td width="78%">
+				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+				&nbsp;
+				<input name="Submit" id="sendnow" type="submit" class="formbtn" value="<?=gettext("Send now");?>">
+			</td>
+		</tr>
+	</table>
 </form>
 <script language="JavaScript">
 <!--
