@@ -89,7 +89,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$cronjob = array();
-		$cronjob['enable'] = ("yes" === $_POST['enable']) ? true : false;
+		$cronjob['enable'] = $_POST['enable'] ? true : false;
 		$cronjob['desc'] = $_POST['desc'];
 		$cronjob['minute'] = $_POST['minute'];
 		$cronjob['hour'] = $_POST['hour'];
@@ -118,6 +118,38 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function enable_change(enable_change) {
+	var endis = !(document.iform.enable.checked || enable_change);
+	document.iform.desc.disabled = endis;
+	document.iform.minutes1.disabled = endis;
+	document.iform.minutes2.disabled = endis;
+	document.iform.minutes3.disabled = endis;
+	document.iform.minutes4.disabled = endis;
+	document.iform.minutes5.disabled = endis;
+	document.iform.hours1.disabled = endis;
+	document.iform.hours2.disabled = endis;
+	document.iform.days1.disabled = endis;
+	document.iform.days2.disabled = endis;
+	document.iform.days3.disabled = endis;
+	document.iform.months.disabled = endis;
+	document.iform.weekdays.disabled = endis;
+	document.iform.all_mins1.disabled = endis;
+	document.iform.all_mins2.disabled = endis;
+	document.iform.all_hours1.disabled = endis;
+	document.iform.all_hours2.disabled = endis;
+	document.iform.all_days1.disabled = endis;
+	document.iform.all_days2.disabled = endis;
+	document.iform.all_months1.disabled = endis;
+	document.iform.all_months2.disabled = endis;
+	document.iform.all_weekdays1.disabled = endis;
+	document.iform.all_weekdays2.disabled = endis;
+	document.iform.who.disabled = endis;
+	document.iform.command.disabled = endis;
+}
+//-->
+</script>
 <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them.");?></p>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -135,16 +167,16 @@ if ($_POST) {
 			<form action="system_advanced_cron_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Enable");?></td>
-						<td width="78%" class="vtable">
-							<?=$mandfldhtml;?>
-							<select name="enable" class="formfld" id="enable">
-								<option value="yes" <?php if (true === $pconfig['enable']) echo "selected";?>><?=gettext("Yes");?></option>
-								<option value="no" <?php if (false == $pconfig['enable']) echo "selected";?>><?=gettext("No");?></option>
-							</select>
-						</td>
-					</tr>
+			  	<tr>
+            <td colspan="2" valign="top" class="optsect_t">
+    				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+    				    <tr>
+                  <td class="optsect_s"><strong><?=gettext("Cron job");?></strong></td>
+    				      <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable") ;?></strong></td>
+                </tr>
+    				  </table>
+            </td>
+          </tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
 						<td width="78%" class="vtable">
@@ -326,7 +358,7 @@ if ($_POST) {
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_cronjob[$id]))?gettext("Save"):gettext("Add")?>">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_cronjob[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
 							<?php if (isset($id) && $a_cronjob[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif; ?>
@@ -337,4 +369,9 @@ if ($_POST) {
     </td>
   </tr>
 </table>
+<script language="JavaScript">
+<!--
+enable_change(false);
+//-->
+</script>
 <?php include("fend.inc");?>
