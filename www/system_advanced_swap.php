@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	system_advanced_swap.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -75,7 +75,7 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
@@ -95,10 +95,11 @@ function enable_change(enable_change) {
 				<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
 				<li class="tabact"><a href="system_advanced_swap.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Swap");?></a></li>
 				<li class="tabinact"><a href="system_advanced_rcstartup.php"><?=gettext("Startup");?></a></li>
+				<li class="tabinact"><a href="system_advanced_cron.php"><?=gettext("Cron");?></a></li>
       </ul>
     </td>
   </tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
 			<form action="system_advanced_swap.php" method="post" name="iform" id="iform">
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -145,4 +146,4 @@ function enable_change(enable_change) {
 enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

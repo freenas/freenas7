@@ -161,6 +161,28 @@ HOME=/var/log
 			-o "root /usr/local/bin/php /etc/mail/sendreport.php" \
 			${configxml_file} >> ${cron_config}
 	fi
+
+	# Additional cron jobs
+	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//cron/job[enable])" ${configxml_file}` ]; then
+		echo "# Additional cron jobs." >> ${cron_config}
+		/usr/local/bin/xml sel -t -m "//cron/job[enable]" \
+			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_mins[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_hours[. = "0"]" -m hour -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_hours[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_days[. = "0"]" -m day -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_days[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_months[. = "0"]" -m month -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_months[. != "0"]" -o "*" -b \
+			-o " " \
+			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
+			-i "all_weekdays[. != "0"]" -o "*" -b \
+			-v "concat(' ',who,' ',command)" -n \
+			${configxml_file} >> ${cron_config}
+	fi
 }
 
 load_rc_config $name

@@ -3,7 +3,7 @@
 /*
 	system_advanced_rcstartup_edit.php
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
@@ -97,7 +97,7 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them.");?></p>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -106,6 +106,7 @@ if ($_POST) {
       	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
       	<li class="tabinact"><a href="system_advanced_swap.php"><?=gettext("Swap");?></a></li>
         <li class="tabact"><a href="system_advanced_rcstartup.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Startup");?></a></li>
+        <li class="tabinact"><a href="system_advanced_cron.php"><?=gettext("Cron");?></a></li>
       </ul>
     </td>
   </tr>

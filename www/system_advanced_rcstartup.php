@@ -3,26 +3,26 @@
 /*
 	system_advanced_rcstartup.php
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -66,7 +66,7 @@ if ($_GET['act'] == "del")
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them.");?></p>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
@@ -75,10 +75,11 @@ if ($_GET['act'] == "del")
       	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
       	<li class="tabinact"><a href="system_advanced_swap.php"><?=gettext("Swap");?></a></li>
         <li class="tabact"><a href="system_advanced_rcstartup.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Startup");?></a></li>
+        <li class="tabinact"><a href="system_advanced_cron.php"><?=gettext("Cron");?></a></li>
       </ul>
     </td>
   </tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
       <table width="100%" border="0" cellpadding="0" cellspacing="0">
         <tr>
@@ -106,7 +107,7 @@ if ($_GET['act'] == "del")
           </td>
         </tr>
         <?php $i++; endforeach; ?>
-        <tr> 
+        <tr>
           <td class="list" colspan="2"></td>
           <td class="list"><a href="system_advanced_rcstartup_edit.php"><img src="plus.gif" title="<?=gettext("Add command");?>" width="17" height="17" border="0"></a></td>
         </tr>
@@ -115,4 +116,4 @@ if ($_GET['act'] == "del")
     </td>
   </tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

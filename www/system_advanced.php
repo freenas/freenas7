@@ -98,7 +98,7 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them.");?></p>
@@ -109,6 +109,7 @@ if ($_POST) {
         <li class="tabact"><a href="system_advanced.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Advanced");?></a></li>
         <li class="tabinact"><a href="system_advanced_swap.php"><?=gettext("Swap");?></a></li>
         <li class="tabinact"><a href="system_advanced_rcstartup.php"><?=gettext("Startup");?></a></li>
+        <li class="tabinact"><a href="system_advanced_cron.php"><?=gettext("Cron");?></a></li>
       </ul>
     </td>
   </tr>
@@ -213,4 +214,4 @@ if ($_POST) {
     </td>
   </tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

@@ -11,6 +11,7 @@ Majors changes:
   RAID0 and RAID1 devices.
 - Refactor complete user/group management (code, services & WebGUI).
 - Add scheduled reboot feature.
+- Add 'System/Advanced/Cron' WebGUI to administrate additional cron jobs.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
