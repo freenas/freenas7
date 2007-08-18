@@ -102,9 +102,6 @@ if ($_POST) {
 	if (($_POST['password']) && ($_POST['password'] != $_POST['password2'])) {
 		$input_errors[] = gettext("The passwords do not match.");
 	}
-	if ($_POST['language'] && !preg_match("/^[a-zA-Z]*$/", $_POST['language'])) {
-		$input_errors[] = gettext("You must select a valid language.");
-	}
 
 	$t = (int)$_POST['timeupdateinterval'];
 	if (($t < 0) || (($t > 0) && ($t < 6)) || ($t > 1440)) {
@@ -268,8 +265,8 @@ if ($_POST) {
       <td width="22%" valign="top" class="vncell"><?=gettext("Language");?></td>
       <td width="78%" class="vtable">
         <select name="language" id="language">
-    			<?php foreach ($g_languages as $language => $value): ?>
-    			<option value="<?=htmlspecialchars($language);?>" <?php if ($language == $pconfig['language']) echo "selected"; ?>><?=gettext($language);?></option>
+    			<?php foreach ($g_languages as $langk => $langv): ?>
+    			<option value="<?=$langk;?>" <?php if ($langk === $pconfig['language']) echo "selected";?>><?=gettext($langv['desc']);?></option>
 	    		<?php endforeach; ?>
     		</select>
       </td>

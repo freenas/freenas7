@@ -59,24 +59,24 @@ $g = array(
 
 /* Available languages/locales */
 $g_languages = array (
-	"Bulgarian" => "bg_BG.UTF8",
-	"Dutch" => "nl_BE.ISO8859-1",
-	"English" => "en_US.ISO8859-1",
-	"French" => "fr_FR.UTF8",
-	"German" => "de_DE.ISO8859-1",
-	"Greek" => "el_GR.UTF-8",
-	"Italian" => "it_IT.ISO8859-1",
-	"Japanese" => "ja_JP.UTF8",
-	"Romanian" => "ro_RO.ISO8859-1",
-	"Russian" => "ru_RU.UTF8",
-	"SimplifiedChinese" => "zh_CN.UTF8",
-	"Spanish" => "es_ES.ISO8859-1",
-	"TraditionalChinese" => "zh_TW.UTF8",
-	"Slovenian" => "sl_SI.UTF-8",
-	"Portuguese" => "pt_PT.UTF-8",
-	"Polish" => "pl_PL.UTF-8",
-	"Hungarian" => "hu_HU.UTF-8",
-	"Norwegian Bokmal" => "no_NB.UTF-8"
+	"bg"    => array("locale" => "bg_BG.UTF8", "desc" => "Bulgarian"),
+	"zh_CN" => array("locale" => "zh_CN.UTF8", "desc" => "Chinese (Simplified)"),
+	"zh_TW" => array("locale" => "zh_TW.UTF8", "desc" => "Chinese (Traditional)"),
+	"nl_BE" => array("locale" => "nl_BE.ISO8859-1", "desc" => "Dutch"),
+	"en_US" => array("locale" => "en_US.ISO8859-1", "desc" => "English"),
+	"fr"    => array("locale" => "fr_FR.UTF8", "desc" => "French"),
+	"de"    => array("locale" => "de_DE.ISO8859-1", "desc" => "German"),
+	"el_GR" => array("locale" => "el_GR.UTF-8", "desc" => "Greek"),
+	"hu"    => array("locale" => "hu_HU.UTF-8", "desc" => "Hungarian"),
+	"it"    => array("locale" => "it_IT.ISO8859-1", "desc" => "Italian"),
+	"ja_JP" => array("locale" => "ja_JP.UTF8", "desc" => "Japanese"),
+	"no_NB" => array("locale" => "no_NB.UTF-8", "desc" => "Norwegian (Bokmal)"),
+	"pl"    => array("locale" => "pl_PL.UTF-8", "desc" => "Polish"),
+	"pt"    => array("locale" => "pt_PT.UTF-8", "desc" => "Portuguese"),
+	"ro"    => array("locale" => "ro_RO.ISO8859-1", "desc" => "Romanian"),
+	"ru"    => array("locale" => "ru_RU.UTF8", "desc" => "Russian"),
+	"sl_SI" => array("locale" => "sl_SI.UTF-8", "desc" => "Slovenian"),
+	"es"    => array("locale" => "es_ES.ISO8859-1", "desc" => "Spanish")
 );
 
 /* Supported filesystems */
