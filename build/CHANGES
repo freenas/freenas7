@@ -44,7 +44,7 @@ FreeNAS 0.685b3:
 ----------------
 
 Majors changes:
-- Update kernel sources (RELENG_6_2) via cvsup. Modified build scripts.
+- Modified build scripts.
 - Upgrade lighttpd to 1.4.16.
 
 Minors changes:
