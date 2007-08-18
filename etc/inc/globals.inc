@@ -71,7 +71,12 @@ $g_languages = array (
 	"Russian" => "ru_RU.UTF8",
 	"SimplifiedChinese" => "zh_CN.UTF8",
 	"Spanish" => "es_ES.ISO8859-1",
-	"TraditionalChinese" => "zh_TW.UTF8"
+	"TraditionalChinese" => "zh_TW.UTF8",
+	"Slovenian" => "sl_SI.UTF-8",
+	"Portuguese" => "pt_PT.UTF-8",
+	"Polish" => "pl_PL.UTF-8",
+	"Hungarian" => "hu_HU.UTF-8",
+	"Norwegian Bokmal" => "no_NB.UTF-8"
 );
 
 /* Supported filesystems */

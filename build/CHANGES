@@ -12,6 +12,7 @@ Majors changes:
 - Refactor complete user/group management (code, services & WebGUI).
 - Add scheduled reboot feature.
 - Add 'System/Advanced/Cron' WebGUI to administrate additional cron jobs.
+- Add new languages: Slovenian, Portuguese, Polish, Hungarian and Norwegian Bokmal.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
