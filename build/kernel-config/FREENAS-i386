@@ -51,6 +51,7 @@ options 	NFSSERVER		# Network Filesystem Server
 options 	NFS_ROOT		# NFS usable as /, requires NFSCLIENT
 options 	MSDOSFS			# MSDOS Filesystem
 #ADDED FOR FREENAS:
+options		MSDOSFS_LARGE	# MSDOS Filesystem for FAT32 > 128GB
 options 	CD9660			# ISO 9660 Filesystem
 options 	PROCFS			# Process filesystem (requires PSEUDOFS)
 options 	PSEUDOFS		# Pseudo-filesystem framework
