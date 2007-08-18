@@ -28,7 +28,6 @@ Bug fixs:
 Known bugs:
 - NTFS mount points are not mounted after creation, a reboot is necessary.
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
-- MSDOS filesystems can't be mounted anymore. A PR has already been send to FreeBSD.
 
 NEED TO BE TESTED:
 - IPv6: auto mode is not tested
