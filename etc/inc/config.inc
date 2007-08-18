@@ -841,6 +841,32 @@ function convert_config() {
 		$config['version'] = "2.6";
 	}
 
+	/* Convert 2.6 -> 2.7 */
+	/* Convert language setting. */ 
+	if ($config['version'] === "2.6") {
+		$language = array(
+			"Bulgarian" => "bg",
+			"Dutch" => "nl_BE",
+			"English" => "en_US",
+			"French" => "fr",
+			"German" => "de",
+			"Greek" => "el_GR",
+			"Italian" => "it",
+			"Japanese" => "ja_JP",
+			"Romanian" => "ro",
+			"Russian" => "ru",
+			"SimplifiedChinese" => "zh_CN",
+			"Spanish" => "es",
+			"TraditionalChinese" => "zh_TW"
+		);
+
+		if (array_key_exists($config['system']['language'], $language)) {
+			$config['system']['language'] = $language[$config['system']['language']];
+		}
+
+		$config['version'] = "2.7";
+	}
+
 	write_config();
 
 	if (is_booting())

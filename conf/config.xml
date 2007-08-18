@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>2.6</version>
+	<version>2.7</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -14,7 +14,7 @@
 		<timezone>Etc/UTC</timezone>
 		<time-update-interval>300</time-update-interval>
 		<timeservers>pool.ntp.org</timeservers>
-		<language>English</language>
+		<language>en_US</language>
 		<webgui>
 			<protocol>http</protocol>
 			<!--
