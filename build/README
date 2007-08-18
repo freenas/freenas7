@@ -24,6 +24,7 @@ variables with your local ones.
 Check that you have installed the following ports:
 - subversion
 - bash
+- cdrtools
 
 Start /freenas/svn/build/make.sh
 
@@ -64,6 +65,7 @@ svn/build/make.sh
 Execute all menus in '20 - Build FreeNAS from scratch advanced menu' to build your FreeNAS
 from scretch. After that use one of the following menus:
 
-10 - Create FreeNAS IMG file (rawrite to CF/USB/DD)
-11 - Create FreeNAS ISO file (need cdrtools installed)
-12 - Create FreeNAS ISO file without IMG image (need cdrtools installed)
+10 - Create 'Embedded' (IMG) file (rawrite to CF/USB/DD)
+11 - Create 'LiveCD' (ISO) file
+12 - Create 'LiveCD' (ISO) file without 'Embedded' file
+13 - Create 'Full' (TGZ) update file
