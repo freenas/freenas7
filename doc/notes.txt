@@ -1,0 +1,5 @@
+- Encrypted user passwords in config.xml:
+	It is not possible to use encrypted passwords in config.xml because
+	'smbpasswd' needs plain passwords to create its own user database.
+	For 'pw' this is no problem because it accepts md5 encrypted passwords
+	using parameter '-H'.
