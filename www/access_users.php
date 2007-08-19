@@ -50,8 +50,10 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= rc_exec_service("userdb");
-			if (isset($config['samba']['enable']))
-				rc_exec_service("smbpasswd");
+			if (isset($config['samba']['enable'])) {
+				$retval |= rc_exec_service("smbpasswd");
+				$retval |= rc_update_service("samba");
+			}
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
@@ -69,8 +71,10 @@ if ($_GET['act'] == "del") {
 		write_config();
 
 		rc_exec_service("userdb");
-		if (isset($config['samba']['enable']))
+		if (isset($config['samba']['enable'])) {
 			rc_exec_service("smbpasswd");
+			rc_update_service("samba");
+		}
 
 		touch($d_userconfdirty_path);
 		header("Location: access_users.php");
