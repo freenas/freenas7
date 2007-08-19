@@ -5,21 +5,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -37,7 +37,7 @@ $pgtitle = array(gettext("Access"),gettext("Users"));
 
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();
-	
+
 users_sort();
 
 $a_user_conf = &$config['access']['user'];
@@ -50,8 +50,10 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= rc_exec_service("userdb");
-			if (isset($config['samba']['enable']))
-				rc_exec_service("smbpasswd");
+			if (isset($config['samba']['enable'])) {
+				$retval |= rc_exec_service("smbpasswd");
+				$retval |= rc_update_service("samba");
+			}
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
@@ -69,8 +71,10 @@ if ($_GET['act'] == "del") {
 		write_config();
 
 		rc_exec_service("userdb");
-		if (isset($config['samba']['enable']))
+		if (isset($config['samba']['enable'])) {
 			rc_exec_service("smbpasswd");
+			rc_update_service("samba");
+		}
 
 		touch($d_userconfdirty_path);
 		header("Location: access_users.php");
@@ -78,7 +82,7 @@ if ($_GET['act'] == "del") {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
 		<td class="tabnavtbl">
@@ -88,7 +92,7 @@ if ($_GET['act'] == "del") {
   		</ul>
   	</td>
 	</tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
 			<form action="access_users.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg); ?>
@@ -114,7 +118,7 @@ if ($_GET['act'] == "del") {
 						</td>
 					</tr>
 				  <?php $i++; endforeach; ?>
-					<tr> 
+					<tr>
 						<td class="list" colspan="3"></td>
 						<td class="list">
 							<a href="access_users_edit.php"><img src="plus.gif" title="<?=gettext("Add user");?>" width="17" height="17" border="0"></a>
@@ -125,4 +129,4 @@ if ($_GET['act'] == "del") {
 		</td>
 	</tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
