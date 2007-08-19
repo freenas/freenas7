@@ -58,6 +58,7 @@ Bug fixs:
 - Fix bug in Access/Group WebGUI page. Group ID was lost when editing existing group.
 - Fix bug in userdb generation. User administrator privilegs were not set correct.
 - Fix problem that RAID size and status isn't displayed correct.
+- Restart 'CIFS/Samba' if users has been modified/added/deleted.
 
 FreeNAS 0.685b2:
 ----------------
