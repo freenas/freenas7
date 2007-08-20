@@ -12,7 +12,7 @@
 echo "Updating hosts."
 
 # Get interface address.
-_if=`/usr/local/bin/xml sel -t -v "//interfaces/lan/if" ${configxml_file}`
+_if=`configxml_get "//interfaces/lan/if"`
 _ipaddr=`get_ipaddr inet ${_if}`
 
 # Generate /etc/hosts file.

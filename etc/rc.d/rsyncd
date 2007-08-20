@@ -48,9 +48,7 @@ create_conf()
 		${configxml_file} > ${rsyncd_config}
 
 	# Create MOTD file.
-	_motd=`/usr/local/bin/xml sel -t -v "//rsyncd/motd" \
-		${configxml_file}`
-
+	_motd=`configxml_get "//rsyncd/motd"`
 	if [ -n "${_motd}" ]; then
 		echo "${_motd}" > ${rsyncd_motd}
 	fi

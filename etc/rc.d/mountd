@@ -41,7 +41,7 @@ create_conf()
 	_i=0
 	while [ ${_index} -gt 0 ]
 	do
-		_ipaddr=`/usr/local/bin/xml sel -t -v "//nfs/nfsnetworks[position()=${_index}]" ${configxml_file}`
+		_ipaddr=`configxml_get "//nfs/nfsnetworks[position()=${_index}]"`
 		_network=${_ipaddr%/*}
 		_subnetmask=`get_subnetmask ${_ipaddr}`
 

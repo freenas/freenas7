@@ -46,9 +46,7 @@ create_conf()
 		${configxml_file} > ${sshd_config}
 
 	# Create ssh_host_dsa_key file.
-	_privatekey=`/usr/local/bin/xml sel -t -v "//sshd/private-key" \
-		${configxml_file}`
-
+	_privatekey=`configxml_get "//sshd/private-key"`
 	if [ -n "${_privatekey}" ]; then
 		echo "${_privatekey}" > ${sshd_hostdsakey}.tmp
 		/usr/bin/uudecode -m -p -r ${sshd_hostdsakey}.tmp > ${sshd_hostdsakey}

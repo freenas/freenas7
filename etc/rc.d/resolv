@@ -55,7 +55,7 @@ if [ ! -e /etc/resolv.conf -a \
 		done
 else
 	# Update resolv.conf if DHCP is not configured. Use configuration values from config.xml.
-	_ipaddress=`/usr/local/bin/xml sel -t -v "//interfaces/lan/ipaddr" ${configxml_file}`
+	_ipaddress=`configxml_get "//interfaces/lan/ipaddr"`
 	if [ "dhcp" != "${_ipaddress}" ]; then
 		echo "Updating resolv.conf."
 

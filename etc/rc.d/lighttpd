@@ -117,9 +117,9 @@ cgi.assign = (".php" => "/usr/local/bin/php")' > ${lighttpd_conf}
 		-b \
 		${configxml_file} | /usr/bin/sed "s/&gt;/>/g" >> ${lighttpd_conf}
 
-	_protocol=`/usr/local/bin/xml sel -t -v "//system/webgui/protocol" ${configxml_file}`
-	_certificate=`/usr/local/bin/xml sel -t -v "//system/webgui/certificate" ${configxml_file}`
-	_privatekey=`/usr/local/bin/xml sel -t -v "//system/webgui/private-key" ${configxml_file}`
+	_protocol=`configxml_get "//system/webgui/protocol"`
+	_certificate=`configxml_get "//system/webgui/certificate"`
+	_privatekey=`configxml_get "//system/webgui/private-key"`
 
 	if [ "${_protocol}" = "https" ]; then
 		# Create /var/etc/cert.pem file.

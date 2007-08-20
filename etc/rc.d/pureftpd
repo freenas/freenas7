@@ -27,7 +27,7 @@ create_conf()
 	local _banner
 
 	# Create /mnt/.banner file.
-	_banner=`/usr/local/bin/xml sel -t -v "//ftp/banner" ${configxml_file}`
+	_banner=`configxml_get "//ftp/banner"`
 	if [ -z "${_banner}" ]; then
 		_productname=`cat /etc/prd.name`
 		echo "Welcome to ${_productname} FTP service" > /mnt/.banner
