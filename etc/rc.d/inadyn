@@ -28,7 +28,7 @@ create_conf()
 	local _servicetype
 
 	# Get the service type.
-	case `/usr/local/bin/xml sel -t -v "//dynamicdns/provider" ${configxml_file}` in
+	case `configxml_get "//dynamicdns/provider"` in
 		dyndns.org)
 			_servicetype="dyndns@dyndns.org";;
 		freedns.afraid.org)

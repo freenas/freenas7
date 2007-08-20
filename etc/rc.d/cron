@@ -181,7 +181,7 @@ HOME=/var/log
 			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
 			-i "all_weekdays[. != "0"]" -o "*" -b \
 			-v "concat(' ',who,' ',command)" -n \
-			${configxml_file} >> ${cron_config}
+			${configxml_file} | /usr/local/bin/xml unesc >> ${cron_config}
 	fi
 }
 

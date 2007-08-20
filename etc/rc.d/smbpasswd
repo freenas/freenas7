@@ -23,8 +23,8 @@ cat /dev/null > /var/etc/private/smbpasswd
 _usernum=`/usr/local/bin/xml sel -t -v "count(//access/user)" ${configxml_file}`
 while [ ${_usernum} -gt 0 ]
 do
-	_username=`/usr/local/bin/xml sel -t -v "//access/user[position()=${_usernum}]/login" ${configxml_file}`
-	_password=`/usr/local/bin/xml sel -t -v "//access/user[position()=${_usernum}]/password" ${configxml_file}`
+	_username=`configxml_get "//access/user[position()=${_usernum}]/login"`
+	_password=`configxml_get "//access/user[position()=${_usernum}]/password"`
 
 	(/bin/echo "${_password}"; /bin/echo "${_password}") | ${command} -s -a "${_username}" > /dev/null
 

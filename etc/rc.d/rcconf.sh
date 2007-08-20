@@ -16,7 +16,7 @@ sethostname()
 {
 	local _hostname
 
-	_hostname=`/usr/local/bin/xml sel -t -v "concat(//system/hostname,'.',//system/domain)" ${configxml_file}`
+	_hostname=`configxml_get "concat(//system/hostname,'.',//system/domain)"`
 
 	eval /usr/local/sbin/rconf attribute set hostname "${_hostname}"
 }
@@ -25,8 +25,8 @@ setifconfig()
 {
 	local _ipaddress _if _interfaces _ifconf _subnet
 
-	_ipaddress=`/usr/local/bin/xml sel -t -v "//interfaces/lan/ipaddr" ${configxml_file}`
-	_if=`/usr/local/bin/xml sel -t -v "//interfaces/lan/if" ${configxml_file}`
+	_ipaddress=`configxml_get "//interfaces/lan/ipaddr"`
+	_if=`configxml_get "//interfaces/lan/if"`
 	_if=`get_if ${_if}`
 
 	case ${_ipaddress} in
