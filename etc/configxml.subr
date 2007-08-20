@@ -14,14 +14,43 @@ configxml_root=`cat /etc/prd.name | tr '[:upper:]' '[:lower:]'`
 # $1 - XPATH expression
 configxml_isset()
 {
-	local _result
+	local _queryresult _result
 
-	_result=`/usr/local/bin/xml sel -t -v "count($1)" ${configxml_file}`
-	if [ 0 -eq ${_result} ]; then
+	debug "configxml_isset: xpath=<$1>"
+
+	# Get requested xpath
+	_queryresult=`/usr/local/bin/xml sel -t -v "count($1)" ${configxml_file}`
+	_result=$?
+
+	debug "configxml_isset: results: query=<${_queryresult}> cmd=<${_result}>"
+
+	if [ 0 -eq ${_queryresult} ]; then
 		return 1
 	else
 		return 0
 	fi
+}
+
+# configxml_get xpath
+# Get xpath from /conf/config.xml.
+# Return 0 if successful, nonzero otherwise.
+# $1 - XPATH expression
+configxml_get()
+{
+	local _queryresult _result
+
+	debug "configxml_get: xpath=<$1>"
+
+	# Get requested xpath
+	_queryresult=`/usr/local/bin/xml sel -t -v "$1" ${configxml_file} | /usr/local/bin/xml unesc`
+	_result=$?
+
+	# Output query for later processing.
+	echo ${_queryresult}
+
+	debug "configxml_get: results: query=<${_queryresult}> cmd=<${_result}>"
+
+	return ${_result}
 }
 
 # configxml_exec_query xquery
@@ -29,22 +58,14 @@ configxml_isset()
 # Return result from query is echoed.
 configxml_exec_query()
 {
-	local _tmpfile _queryresult _result
+	local _queryresult _result
 
 	debug "configxml_exec_query: query=<$@>"
 
-	# Create temporary script filename.
-	_tmpfile="/tmp/xmlquery$$"
-
-	# Create temporary script to execute xml query.
-	echo "/usr/local/bin/xml sel -t $@ ${configxml_file}" > ${_tmpfile}
-	# Change permissions to execute script.
-	chmod 0700 ${_tmpfile}
-	# Execute script and store result in variable.
-	_queryresult=`${_tmpfile}`
+	# Execute xml query.
+	_queryresult=`eval "/usr/local/bin/xml sel -t $@ ${configxml_file} | /usr/local/bin/xml unesc"`
 	_result=$?
-	# Remove temporary script.
-	rm -f ${_tmpfile}
+
 	# Output query result for later processing.
 	echo ${_queryresult}
 
