@@ -37,7 +37,7 @@ start_cmd()
 	echo "Starting ${name}."
 
 	# Iterate over all configured disks.
-	_disknum=`/usr/local/bin/xml sel -t -v "count(//iscsiinit/vdisk)" ${configxml_file}`
+	_disknum=`configxml_get_count "//iscsiinit/vdisk"`
 	while [ ${_disknum} -gt 0 ]
 	do
 		_initiatorname=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=${_disknum}]" -v initiatorname ${configxml_file}`

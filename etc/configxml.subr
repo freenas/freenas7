@@ -33,7 +33,7 @@ configxml_isset()
 
 # configxml_get xpath
 # Get xpath from /conf/config.xml.
-# Return 0 if successful, nonzero otherwise.
+# Return 0 if successful, nonzero otherwise. Return result from query is echoed.
 # $1 - XPATH expression
 configxml_get()
 {
@@ -55,7 +55,7 @@ configxml_get()
 
 # configxml_exec_query xquery
 # Execute given query.
-# Return result from query is echoed.
+# Return 0 if successful, nonzero otherwise. Return result from query is echoed.
 configxml_exec_query()
 {
 	local _queryresult _result
@@ -70,6 +70,28 @@ configxml_exec_query()
 	echo ${_queryresult}
 
 	debug "configxml_exec_query: results: query=<${_queryresult}> cmd=<${_result}>"
+
+	return ${_result}
+}
+
+# configxml_get_count xpath
+# Get number of elements.
+# Return 0 if successful, nonzero otherwise. Return result from query is echoed.
+# $1 - XPATH expression
+configxml_get_count()
+{
+	local _queryresult _result
+
+	debug "configxml_get_count: xpath=<$1>"
+
+	# Get requested xpath
+	_queryresult=`/usr/local/bin/xml sel -t -v "count($1)" ${configxml_file}`
+	_result=$?
+
+	# Output query for later processing.
+	echo ${_queryresult}
+
+	debug "configxml_get_count: results: query=<${_queryresult}> cmd=<${_result}>"
 
 	return ${_result}
 }
