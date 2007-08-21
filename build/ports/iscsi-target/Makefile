@@ -1,14 +1,21 @@
 PORTNAME=			iscsi-target
-PORTVERSION=	1.0
-PORTREVISION=	0
-PORTEPOCH=		1
+PORTVERSION=	20070815
 CATEGORIES=		net
 COMMENT=			Implementation of userland ISCSI target (derived from NetBSD)
 MAINTAINER=		votdev@gmx.de
 
-BUILD_DEPENDS=	iscsi-target:${PORTSDIR}/net/iscsi-target
-# No build is required for this port.
-NO_BUILD?=			1
+MASTER_SITES=	http://www.alistaircrooks.co.uk/src/ \
+							http://www.magnesium.net/~mdf/distfiles/
+DISTNAME=			netbsd-iscsi-${PORTVERSION}
+
+WRKSRC=						${WRKDIR}/${DISTNAME}/src
+GNU_CONFIGURE=		yes
+CONFIGURE_TARGET=	--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|-lpthread|${PTHREAD_LIBS}|' ${WRKSRC}/Makefile.in
+	@${REINPLACE_CMD} -e 's|_LDFLAGS= -pthread|_LDFLAGS= ${PTHREAD_CFLAGS}|' ${WRKSRC}/Makefile.in
+	@${REINPLACE_CMD} -e 's|_FLAGS= -pthread|_FLAGS= ${PTHREAD_CFLAGS}|' ${WRKSRC}/Makefile.in
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/net/iscsi-target/work/netbsd-iscsi-*/bin/iscsi-target ${FREENAS_ROOTFS}/usr/local/bin/

@@ -13,6 +13,7 @@ Majors changes:
 - Add scheduled reboot feature.
 - Add 'System/Advanced/Cron' WebGUI to administrate additional cron jobs.
 - Add new languages: Slovenian, Portuguese, Polish, Hungarian and Norwegian Bokmal.
+- Upgrade iSCSI Target to version 20070815.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
