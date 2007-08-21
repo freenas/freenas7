@@ -609,8 +609,8 @@ build_system() {
 echo -n '
 Bulding system from scratch
 Menu:
-1 - Create filesystem structure
-2 - Update source tree and ports collection
+1 - Update source tree and ports collection
+2 - Create filesystem structure
 3 - Build kernel
 4 - Build world
 5 - Build ports
@@ -622,8 +622,8 @@ Menu:
 > '
 		read choice
 		case $choice in
-			1)	create_rootfs;;
-			2)	update_sources;;
+			1)	update_sources;;
+			2)	create_rootfs;;
 			3)	build_kernel;;
 			4)	build_world;;
 			5)	build_ports;;
