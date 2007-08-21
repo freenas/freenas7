@@ -30,7 +30,7 @@ create_conf()
 		-v "concat('syslocation ',syslocation)" -n \
 		-v "concat('syscontact ',syscontact)" -n \
 		-v "concat('rocommunity ',rocommunity)" -n \
-		${configxml_file} > ${snmpd_config}
+		${configxml_file} | /usr/local/bin/xml unesc > ${snmpd_config}
 }
 
 load_rc_config ${name}

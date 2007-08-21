@@ -96,7 +96,7 @@ create_conf()
 			-o "_upnp._tcp. local." -n \
 			-o "1900" \
 		-b \
-		${configxml_file} >> ${mdnsresponder_config}
+		${configxml_file} | /usr/local/bin/xml unesc >> ${mdnsresponder_config}
 }
 
 load_rc_config ${name}

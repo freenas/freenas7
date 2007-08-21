@@ -50,7 +50,7 @@ create_conf()
 		-v "concat('--password ',password)" -n \
 		-i "string-length(updateperiod) > 0" -v "concat('--update_period_sec ',updateperiod)" -n -b \
 		-i "string-length(forcedupdateperiod) > 0" -v "concat('--forced_update_period ',forcedupdateperiod)" -n -b \
-		${configxml_file} > ${inadyn_config}
+		${configxml_file} | /usr/local/bin/xml unesc > ${inadyn_config}
 }
 
 load_rc_config ${name}

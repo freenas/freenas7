@@ -63,7 +63,7 @@ auth.info;authpriv.info %/var/log/system.log
 				-o "auth.info;authpriv.info @" -v "//syslogd/remote/ipaddr" -n \
 				-o "*.emerg	@" -v "//syslogd/remote/ipaddr" -n -b \
 		-b \
-		${configxml_file} >> ${syslogd_config}
+		${configxml_file} | /usr/local/bin/xml unesc >> ${syslogd_config}
 }
 
 reload_precmd()

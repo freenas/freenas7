@@ -35,12 +35,12 @@ create_conf()
 		-i "count(guest) > 0" -o "uams_guest.so" -b \
 		-i "count(local) > 0" -i "count(guest) > 0" -o "," -b -o "uams_clrtxt.so,uams_dhx.so" -b \
 		-o " -nosavepassword -defaultvol ${afpd_volumes_config} -systemvol /var/etc/AppleVolumes.default -uampath /etc/uams -guestname ftp" -n \
-		${configxml_file} > ${afpd_config}
+		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_config}
 
 	# Generate '/var/etc/AppleVolumes.default'.
 	/usr/local/bin/xml sel -t -m "//mounts/mount" \
 		-v "concat('/mnt/',sharename,' &quot;',sharename,'&quot;')" -n \
-		${configxml_file} > ${afpd_defaultvol}
+		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_defaultvol}
 }
 
 load_rc_config ${name}

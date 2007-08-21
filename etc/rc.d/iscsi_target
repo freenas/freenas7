@@ -40,7 +40,7 @@ create_conf()
 	/usr/local/bin/xml sel -t -m "//iscsitarget/vdisk" \
 		-v "concat('extent',position()-1,' /mnt/',sharename,'/iscsi_target',position()-1,' 0 ',size,'MB')" -n \
 		-v "concat('target',position()-1,' rw extent',position()-1,' ',network)" -n \
-		${configxml_file} >> ${iscsi_target_config}
+		${configxml_file} | /usr/local/bin/xml unesc >> ${iscsi_target_config}
 }
 
 load_rc_config ${name}

@@ -23,4 +23,4 @@ _ipaddr=`get_ipaddr inet ${_if}`
 	-m "//system/hosts" \
 		-i "string-length(name) > 0" -v "concat(address,' ',name)" -n -b \
 	-b \
-	${configxml_file} > /etc/hosts
+	${configxml_file} | /usr/local/bin/xml unesc > /etc/hosts

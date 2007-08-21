@@ -34,7 +34,9 @@ setifconfig()
 			_ifconf="DHCP"
 			;;
 		*)
-			_ifconf=`/usr/local/bin/xml sel -t -o "${_ipaddress}/" -v "//interfaces/lan/subnet" ${configxml_file}`
+			_ifconf=`/usr/local/bin/xml sel -t -o "${_ipaddress}/" \
+				-v "//interfaces/lan/subnet" \
+				${configxml_file} | /usr/local/bin/xml unesc`
 			;;
 	esac
 

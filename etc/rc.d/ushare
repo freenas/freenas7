@@ -42,7 +42,7 @@ start_precmd()
 		-v "concat(' --interface=',if)" \
 		-i "string-length(port) > 0" -v "concat(' --port=',port)" -b \
 		-m "//upnp/content" -v "concat(' --content=&quot;',.,'&quot;')" -b \
-		${configxml_file}`
+		${configxml_file} | /usr/local/bin/xml unesc`
 
 	command_args="${command_args} ${_command_args} >/dev/null 2>&1"
 }
