@@ -138,9 +138,8 @@ Copyright  &copy; 2002-2005 Bruce Allen.</p>
 	  <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br>
 Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 
- <p>NetBSD iSCSI-target (<a href="http://www.netbsd.org" target="_blank">http://www.netbsd.org/</a>)<br>
-	  Copyright &copy; 1994-2005 The NetBSD Foundation, Inc. All rights reserved.
-      </p>
+		<p>iSCSI-target (<a href="http://www.alistaircrooks.co.uk" target="_blank">http://www.alistaircrooks.co.uk</a>)<br>
+	  	Copyright &copy; 2006 Alistair Crooks. All rights reserved.</p>
 
     <p>dp.SyntaxHighlighter (<a href="http://www.dreamprojections.com/SyntaxHighlighter" target="_blank">http://www.dreamprojections.com/SyntaxHighlighter</a>)<br>
       Copyright &copy; 2004-2006 Alex Gorbatchev. All rights reserved.</p>    
