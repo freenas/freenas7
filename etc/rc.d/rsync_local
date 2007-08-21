@@ -10,7 +10,7 @@
 . /etc/configxml.subr
 
 # Get number of scripts to generate.
-_scriptnum=`/usr/local/bin/xml sel -t -v "count(//rsync/rsynclocal)" ${configxml_file}`
+_scriptnum=`configxml_get_count "//rsync/rsynclocal"`
 
 if [ 0 -lt ${_scriptnum} ]; then
 	echo "Generating local rsyncd cron scripts."

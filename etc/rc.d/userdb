@@ -63,7 +63,7 @@ _dhcp:*:65:65::0:0:dhcp programs:/var/empty:/usr/sbin/nologin
 " > ${masterpasswd}
 
 # Iterate over all configured users.
-_index=`/usr/local/bin/xml sel -t -v "count(//access/user)" ${configxml_file}`
+_index=`configxml_get_count "//access/user"`
 while [ ${_index} -gt 0 ]
 do
 	_cmdarg=`/usr/local/bin/xml sel -t -m "//access/user[${_index}]" \

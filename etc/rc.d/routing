@@ -50,7 +50,7 @@ create_conf()
 	# Clear /var/db/routes.db
 	cat /dev/null > /var/db/routes.db
 
-	_index=`/usr/local/bin/xml sel -t -v "count(//staticroutes/route)" ${configxml_file}`
+	_index=`configxml_get_count "//staticroutes/route"`
 	_i=0
 	while [ ${_index} -gt 0 ]
 	do

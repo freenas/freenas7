@@ -32,7 +32,7 @@ HOME=/var/log
 #" > ${cron_config}
 
 	# RSYNC client
-	_index=`/usr/local/bin/xml sel -t -v "count(//rsync/rsyncclient)" ${configxml_file}`
+	_index=`configxml_get_count "//rsync/rsyncclient"`
 	if [ 0 -lt ${_index} ]; then
 		echo "# Perform RSYNC client." >> ${cron_config}
 	fi
@@ -63,7 +63,7 @@ HOME=/var/log
 	done
 
 	# RSYNC local
-	_index=`/usr/local/bin/xml sel -t -v "count(//rsync/rsynclocal)" ${configxml_file}`
+	_index=`configxml_get_count "//rsync/rsynclocal"`
 	if [ 0 -lt ${_index} ]; then
 		echo "# Perform RSYNC local." >> ${cron_config}
 	fi
@@ -94,7 +94,7 @@ HOME=/var/log
 	done
 
 	# Scheduled shutdown
-	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//shutdown/enable)" ${configxml_file}` ]; then
+	if [ 0 -lt `configxml_get_count "//shutdown/enable"` ]; then
 		echo "# Perform scheduled shutdown." >> ${cron_config}
 		/usr/local/bin/xml sel -t -m "//shutdown" \
 			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
@@ -117,7 +117,7 @@ HOME=/var/log
 	fi
 
 	# Scheduled reboot
-	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//reboot/enable)" ${configxml_file}` ]; then
+	if [ 0 -lt `configxml_get_count "//reboot/enable"` ]; then
 		echo "# Perform scheduled reboot." >> ${cron_config}
 		/usr/local/bin/xml sel -t -m "//reboot" \
 			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
@@ -140,7 +140,7 @@ HOME=/var/log
 	fi
 
 	# Email status notification
-	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//statusreport/enable)" ${configxml_file}` ]; then
+	if [ 0 -lt `configxml_get_count "//statusreport/enable"` ]; then
 		echo "# Perform email status report." >> ${cron_config}
 		/usr/local/bin/xml sel -t -m "//statusreport" \
 			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \
@@ -163,7 +163,7 @@ HOME=/var/log
 	fi
 
 	# Additional cron jobs
-	if [ 0 -lt `/usr/local/bin/xml sel -t -v "count(//cron/job[enable])" ${configxml_file}` ]; then
+	if [ 0 -lt `configxml_get_count "//cron/job[enable]"` ]; then
 		echo "# Additional cron jobs." >> ${cron_config}
 		/usr/local/bin/xml sel -t -m "//cron/job[enable]" \
 			-i "all_mins[. = "0"]" -m minute -i "position() > 1" -o "," -b -v "." -b -b \

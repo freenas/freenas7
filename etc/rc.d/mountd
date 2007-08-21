@@ -37,7 +37,7 @@ create_conf()
 	local _index _i _ipaddr _network _subnetmask
 
 	# Create /var/etc/exports file.
-	_index=`/usr/local/bin/xml sel -t -v "count(//nfs/nfsnetworks)" ${configxml_file}`
+	_index=`configxml_get_count "//nfs/nfsnetworks"`
 	_i=0
 	while [ ${_index} -gt 0 ]
 	do

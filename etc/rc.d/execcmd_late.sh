@@ -8,7 +8,7 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
-_index=`/usr/local/bin/xml sel -t -v "count(//system/shellcmd)" ${configxml_file}`
+_index=`configxml_get_count "//system/shellcmd"`
 while [ ${_index} -gt 0 ]
 do
 	_cmd=`configxml_get "//system/shellcmd[${_index}]"`
