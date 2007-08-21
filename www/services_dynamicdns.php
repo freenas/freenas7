@@ -3,7 +3,7 @@
 /*
 	services_upnp.php
 	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
@@ -90,7 +90,7 @@ if($_POST) {
 // Get list of available interfaces.
 $a_interface = get_interface_list();
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
@@ -134,7 +134,7 @@ function enable_change(enable_change) {
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
       <td width="78%" class="vtable">
         <?=$mandfldhtml;?>
-        <input name="domainname" type="text" class="formfld" id="domainname" size="20" value="<?=htmlentities($pconfig['domainname']);?>">
+        <input name="domainname" type="text" class="formfld" id="domainname" size="40" value="<?=htmlentities($pconfig['domainname']);?>">
       </td>
     </tr>
 		<tr>
@@ -178,4 +178,4 @@ function enable_change(enable_change) {
 enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
