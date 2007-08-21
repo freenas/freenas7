@@ -45,7 +45,7 @@ create_conf()
 			-v "concat('comment = ',desc)" -n \
 			-v "concat('path = /mnt/',sharename)" -n \
 		-b \
-		${configxml_file} > ${rsyncd_config}
+		${configxml_file} | /usr/local/bin/xml unesc > ${rsyncd_config}
 
 	# Create MOTD file.
 	_motd=`configxml_get "//rsyncd/motd"`

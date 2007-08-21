@@ -57,7 +57,7 @@ create_conf()
 			-b \
 			-v "concat(ipaddr,'/',subnet)" -n \
 		-b \
-		${configxml_file} >> ${iscsi_target_config}
+		${configxml_file} | /usr/local/bin/xml unesc >> ${iscsi_target_config}
 }
 
 load_rc_config ${name}

@@ -52,7 +52,7 @@ create_conf()
 		-i "count(fxp) > 0" -o " -W" -b \
 		-i "count(keepallfiles) > 0" -o " -K" -b \
 		-i "count(permitrootlogin) = 0" -o " -u 1" -b \
-		${configxml_file}`
+		${configxml_file} | /usr/local/bin/xml unesc`
 }
 
 load_rc_config ${name}

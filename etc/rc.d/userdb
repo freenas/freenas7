@@ -39,7 +39,7 @@ echo "Generating user database(s)."
 	-m "//access/group" \
 		-v "concat(name,':*:',id,':')" -n \
 	-b \
-	 ${configxml_file} > ${group}
+	 ${configxml_file} | /usr/local/bin/xml unesc > ${group}
 
 # Clean /var/etc/passwd file
 cat /dev/null > ${passwd}
@@ -72,7 +72,7 @@ do
 		-i "count(fullshell) > 0" -o " -s /bin/tcsh" -b \
 		-i "count(fullshell) = 0" -o " -s /usr/local/bin/scponly" -b \
 		-o " -d /mnt" \
-		${configxml_file}`
+		${configxml_file} | /usr/local/bin/xml unesc`
 
 	_userpasswd=`configxml_get "//access/user[${_index}]/password"`
 

@@ -109,7 +109,7 @@ generate_nsswitch_conf()
 			-o "passwd_compat: nis" -n \
 			-o "shells: files" \
 		-b -b \
-		${configxml_file} > ${nsswitch_conf}
+		${configxml_file} | /usr/local/bin/xml unesc > ${nsswitch_conf}
 }
 
 generate_host_conf()

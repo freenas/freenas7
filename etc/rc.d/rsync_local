@@ -33,7 +33,7 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-o "/usr/local/bin/rsync -a " -i "count(opt_delete) > 0" -o "--delete --delete-after " -b -v "concat('/mnt/',source,' /mnt/',destination)" -n \
 			-o "/bin/rm -f /var/run/rsync_local-running${_i}" -n \
 			-v "concat('/usr/bin/logger -p local4.notice &quot;End of local RSYNC synchronization from ',source,' to ',destination,'&quot;')" \
-			${configxml_file} > ${_rsyncscript}
+			${configxml_file} | /usr/local/bin/xml unesc > ${_rsyncscript}
 
 		# Add exectutive right to the script.
 		/bin/chmod 0770 ${_rsyncscript}

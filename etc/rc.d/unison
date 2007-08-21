@@ -34,7 +34,9 @@ start_cmd()
 		err 1 "Can't find UNISON in ${unison_config}"
 	fi
 
-	_workdir=`/usr/local/bin/xml sel -t -m "//unison" -v "concat('/mnt/',share,'/',workdir)" ${configxml_file}`
+	_workdir=`/usr/local/bin/xml sel -t -m "//unison" \
+		-v "concat('/mnt/',share,'/',workdir)" \
+		${configxml_file} | /usr/local/bin/xml unesc`
 
 	# Create 'workdir' if necessary (Check if '//unison/makedir' is set). Use '//unison/workdir' to
 	# create directory name /mnt/xxx.

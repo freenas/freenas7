@@ -67,6 +67,6 @@ else
 			-m "//system/ipv6dnsserver" \
 				-i "string-length() > 0" -o "nameserver " -v "." -n -b \
 			-b \
-			${configxml_file} > /etc/resolv.conf
+			${configxml_file} | /usr/local/bin/xml unesc > /etc/resolv.conf
 	fi
 fi

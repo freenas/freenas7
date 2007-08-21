@@ -15,7 +15,7 @@ echo -n "Initializing idle timer/UDMA on ATA disks: "
 /usr/local/bin/xml sel -t -m "//disks/disk[type = 'IDE']" \
 	-v "concat(name,' ',udma,' ',harddiskstandby,' ',apm,' ',acoustic)" \
 	-i "position() != last()" -n -b \
-	${configxml_file} | \
+	${configxml_file} | /usr/local/bin/xml unesc | \
 	while read _name _udma _harddiskstandby _apm _acoustic; do
 		# Calculate the channel and device ids.
 		_devnum=${_name#*ad}

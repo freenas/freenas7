@@ -43,7 +43,7 @@ create_conf()
 			-i "count(permitrootlogin) > 0" -o "PermitRootLogin yes" -n -b \
 			-i "count(tcpforwarding) > 0" -o "AllowTcpForwarding yes" -n -b \
 		-b \
-		${configxml_file} > ${sshd_config}
+		${configxml_file} | /usr/local/bin/xml unesc > ${sshd_config}
 
 	# Create ssh_host_dsa_key file.
 	_privatekey=`configxml_get "//sshd/private-key"`

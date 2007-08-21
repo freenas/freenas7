@@ -201,7 +201,7 @@ create_conf()
 			-b \
 			-n \
 		-b \
-		${configxml_file} > ${samba_config}
+		${configxml_file} | /usr/local/bin/xml unesc > ${samba_config}
 }
 
 samba_start_precmd() {
@@ -251,9 +251,9 @@ samba_cmd() {
 	# Start additional processes when starting
 	if [ "${rc_arg}" = "start" ]; then
 		if [ 0 -eq ${ad_enable} ]; then
-			local _srvname=`/usr/local/bin/xml sel -t -m "//ad" -v ad_srv_name ${configxml_file}`
-			local _username=`/usr/local/bin/xml sel -t -m "//ad" -v admin_name ${configxml_file}`
-			local _password=`/usr/local/bin/xml sel -t -m "//ad" -v admin_pass ${configxml_file}`
+			local _srvname=`configxml_get "//ad/ad_srv_name"`
+			local _username=`configxml_get "//ad/admin_name"`
+			local _password=`configxml_get "//ad/admin_pass"`
 			/usr/local/bin/net rpc join -S ${_srvname} -U ${_username}%${_password}
 		fi
 	fi

@@ -115,7 +115,7 @@ cgi.assign = (".php" => "/usr/local/bin/php")' > ${lighttpd_conf}
 			-o "ssl.engine = &quot;enable&quot;" -n \
 			-o "ssl.pemfile = &quot;${lighttpd_certpem}&quot;" -n \
 		-b \
-		${configxml_file} | /usr/bin/sed "s/&gt;/>/g" >> ${lighttpd_conf}
+		${configxml_file} | /usr/local/bin/xml unesc >> ${lighttpd_conf}
 
 	_protocol=`configxml_get "//system/webgui/protocol"`
 	_certificate=`configxml_get "//system/webgui/certificate"`

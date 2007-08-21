@@ -50,7 +50,7 @@ create_conf()
 			-i "//nfs/mapall[. = 'yes']" -o "-mapall=root " -b \
 			-i "//nfs/mapall[. != 'yes']" -o "-maproot=root " -b \
 			-o "-network ${_network} -mask ${_subnetmask}" -n \
-			${configxml_file} >> ${mountd_config}
+			${configxml_file} | /usr/local/bin/xml unesc >> ${mountd_config}
 
 		_i=$(( ${_i} + 1 ))
 		_index=$(( ${_index} - 1 ))

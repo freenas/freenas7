@@ -51,7 +51,7 @@ fi
 		-o "#password   sufficient   /usr/local/lib/pam_winbind.so	debug try_first_pass" -n \
 	-b \
 	-o "password   required     pam_unix.so             no_warn try_first_pass" \
-	${configxml_file} > ${system_config}
+	${configxml_file} | /usr/local/bin/xml unesc > ${system_config}
 
 # Create /var/etc/pam.d/sshd.
 /usr/local/bin/xml sel -t \
@@ -80,7 +80,7 @@ fi
 		-o "password   sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass" -n \
 	-b \
 	-o "password   required        pam_unix.so             no_warn try_first_pass" \
-	${configxml_file} > ${sshd_config}
+	${configxml_file} | /usr/local/bin/xml unesc > ${sshd_config}
 
 # Create /var/etc/pam.d/ftp.
 /usr/local/bin/xml sel -t \
@@ -105,7 +105,7 @@ fi
 	-o "account    required        pam_unix.so" -n \
 	-n -o "# session" -n \
 	-o "session    required        pam_permit.so" \
-	${configxml_file} > ${ftp_config}
+	${configxml_file} | /usr/local/bin/xml unesc > ${ftp_config}
 
 # Create /var/etc/pam.d/login.
 /usr/local/bin/xml sel -t \
@@ -131,4 +131,4 @@ fi
 	-o "session    include         system" -n \
 	-n -o "# password" -n \
 	-o "password   include         system" \
-	${configxml_file} > ${login_config}
+	${configxml_file} | /usr/local/bin/xml unesc > ${login_config}
