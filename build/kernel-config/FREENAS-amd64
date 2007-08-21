@@ -173,7 +173,7 @@ device		agp		# support several AGP chipsets
 # Power management support (see NOTES for more options)
 #device		apm
 # Add suspend/resume support for the i8254.
-device		pmtimer
+#NOT COMPATIBLE WITH AMD64 device		pmtimer
 
 # PCCARD (PCMCIA) support
 # PCMCIA and cardbus bridge support
@@ -350,5 +350,5 @@ device		iicsmb		# smb over i2c bridge
 # Splashscreen
 device		vga				# VGA video card driver
 device		splash		# Splash screen and screen saver support
-options		VESA
+# NOT COMPATIBLE WITH AMD64 options		VESA
 options		SC_PIXEL_MODE
