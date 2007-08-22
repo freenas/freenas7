@@ -52,7 +52,7 @@ cd $MINIBSD_DIR ;
 mkdir boot ;
 mkdir boot/kernel ;
 mkdir bin ;
-mkdir cf ;
+mkdir -m 0600 cf ;
 mkdir ftmp ;
 mkdir conf.default ;
 mkdir dev ;
