@@ -40,7 +40,7 @@ create_conf()
 		-v "concat('-S ',port)" \
 		-v "concat(' -c ',numberclients)" \
 		-v "concat(' -I ',timeout)" \
-		-o " -M -B -b" \
+		-o " -M -B -b -A" \
 		-i "string-length(maxconperip) > 0" -v "concat(' -C ',maxconperip)" -b \
 		-i "count(anonymous) > 0" -i "count(localuser) = 0" -o " -e" -b -b \
 		-i "count(anonymous) = 0" -i "count(localuser) > 0" -o " -E" -b -b \
