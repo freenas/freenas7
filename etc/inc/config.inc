@@ -282,7 +282,6 @@ function write_config() {
 	global $config, $g;
 
 	config_lock();
-
 	conf_mount_rw();
 
 	if (time() > mktime(0, 0, 0, 9, 1, 2004))	/* make sure the clock settings is plausible */
@@ -293,12 +292,13 @@ function write_config() {
 
 	/* write configuration */
 	$fd = fopen("{$g['cf_conf_path']}/config.xml", "w");
-
 	if (!$fd)
 		die("Unable to open config.xml for writing in write_config()\n");
-
 	fwrite($fd, $xmlconfig);
 	fclose($fd);
+
+	// Modify file permissions.
+	@chmod("{$g['cf_conf_path']}/config.xml", 0600);
 
 	conf_mount_ro();
 
@@ -321,7 +321,6 @@ function reset_factory_defaults() {
 	global $g;
 
 	config_lock();
-
 	conf_mount_rw();
 
 	/* create conf directory, if necessary */
@@ -340,8 +339,10 @@ function reset_factory_defaults() {
 	/* copy default configuration */
 	@copy("{$g['conf_default_path']}/config.xml", "{$g['conf_path']}/config.xml");
 
-	conf_mount_ro();
+	// Modify file permissions.
+	@chmod("{$g['cf_conf_path']}/config.xml", 0600);
 
+	conf_mount_ro();
 	config_unlock();
 
 	return 0;
