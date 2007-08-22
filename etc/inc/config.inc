@@ -244,6 +244,8 @@ EOD;
 		if ($fd) {
 			fwrite($fd, serialize($config));
 			fclose($fd);
+			// Modify file permissions.
+			@chmod("{$g['tmp_path']}/config.cache", 0600);
 		}
 	}
 
@@ -308,6 +310,8 @@ function write_config() {
 	if ($fd) {
 		fwrite($fd, serialize($config));
 		fclose($fd);
+		// Modify file permissions.
+		@chmod("{$g['tmp_path']}/config.cache", 0600);
 	}
 
 	config_unlock();
