@@ -300,6 +300,9 @@ function write_config() {
 	fwrite($fd, $xmlconfig);
 	fclose($fd);
 
+	// Modify file permissions.
+	@chmod("{$g['cf_conf_path']}/config.xml", 0600);
+
 	conf_mount_ro();
 
 	/* re-read configuration */
@@ -338,6 +341,9 @@ function reset_factory_defaults() {
 
 	/* copy default configuration */
 	@copy("{$g['conf_default_path']}/config.xml", "{$g['conf_path']}/config.xml");
+
+	// Modify file permissions.
+	@chmod("{$g['cf_conf_path']}/config.xml", 0600);
 
 	conf_mount_ro();
 	config_unlock();
