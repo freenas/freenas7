@@ -886,6 +886,10 @@ function config_write_cache($data) {
 	if ($fd) {
 		fwrite($fd, serialize($data));
 		fclose($fd);
+
+		// Modify file permissions.
+		@chmod("{$g['tmp_path']}/config.cache", 0600);
+
 		$result = true;
 	}
 
