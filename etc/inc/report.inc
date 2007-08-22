@@ -86,7 +86,7 @@ class StatusReportRenderer
 
 class StatusReportRendererText extends StatusReportRenderer
 {
-	function _RenderReport(&$report,$articles) {
+	function _RenderArticle(&$report,$article) {
 		// Render article title.
 		$title = $article->GetTitle();
 		if (!empty($title)) {
