@@ -21,7 +21,6 @@ Minors changes:
 - Add attribute //samba/auxparam and //samba/share/auxparam to add auxiliary parameters.
 - Add 'Auxiliary parameters' field on CIFS/SMB page to manage auxiliary parameters.
 - Improve WebGUI workflow.
-- Add commands /usr/bin/sort and /usr/bin/uniq.
 
 Bug fixs:
 - Add missing link /etc/exports -> /var/etc/exports.
@@ -54,9 +53,9 @@ Minors changes:
 - Refactor time control used on various WebGUI pages like Rsync or scheduled shutdown.
 - Restrict file access for FTP users to /mnt only. Only root has full access now.
 - Modified file permissions for config files to 0600.
+- Add commands /usr/bin/sort, /usr/bin/uniq, /usr/bin/dirname, /usr/bin/install and /usr/bin/tee.
 
 Bug fixs:
-- Add missing binary /usr/bin/dirname, /usr/bin/install and /usr/bin/tee.
 - Fix bug in UPnP WebGUI page. Profile dropdown control is not disabled when service is disabled.
 - Fix bug in Access/Group WebGUI page. Group ID was lost when editing existing group.
 - Fix bug in userdb generation. User administrator privilegs were not set correct.
