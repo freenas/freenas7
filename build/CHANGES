@@ -21,7 +21,7 @@ Minors changes:
 - Add attribute //samba/auxparam and //samba/share/auxparam to add auxiliary parameters.
 - Add 'Auxiliary parameters' field on CIFS/SMB page to manage auxiliary parameters.
 - Improve WebGUI workflow.
-- Add missing files /usr/bin/basename, /usr/bin/dirname and /usr/bin/tee.
+- Add commands /usr/bin/sort and /usr/bin/uniq.
 
 Bug fixs:
 - Add missing link /etc/exports -> /var/etc/exports.
