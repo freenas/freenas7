@@ -309,7 +309,10 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Packages/Plugins\" \\
 
 # Creating msfroot
 create_mfsroot() {
-	echo "Generating the MFSROOT filesystem"
+	echo "======================================================================"
+	echo "===> Generating the MFSROOT filesystem"
+	echo "======================================================================"
+
 	cd $FREENAS_WORKINGDIR
 
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
@@ -317,46 +320,54 @@ create_mfsroot() {
 
 	# Setting Version type and date
 	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
-	
+
 	# Make mfsroot to have the size of the FREENAS_MFSROOT_SIZE variable
 	dd if=/dev/zero of=$FREENAS_WORKINGDIR/mfsroot bs=1M count=${FREENAS_MFSROOT_SIZE}
 	# Configure this file as a memory disk
-	mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/mfsroot -u 0
-	# Create Label on this disk
-	bsdlabel -w md0 auto
-	# format it as UFS
-	newfs ${FREENAS_NEWFS} /dev/md0c
-	# umount the /mnt directory if already used
-	umount $FREENAS_TMPDIR
-	mount /dev/md0c $FREENAS_TMPDIR
+	md=`mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/mfsroot`
+	# Create label on memory disk
+	bsdlabel -w ${md} auto
+	# Format memory disk using UFS
+	newfs ${FREENAS_NEWFS} /dev/${md}c
+	# Umount memory disk (if already used)
+	umount $FREENAS_TMPDIR >/dev/null 2>&1
+	# Mount memory disk
+	mount /dev/${md} ${FREENAS_TMPDIR}
 	cd $FREENAS_TMPDIR
 	tar -cf - -C $FREENAS_ROOTFS ./ | tar -xvpf -
+
 	cd $FREENAS_WORKINGDIR
+	# Umount memory disk
 	umount $FREENAS_TMPDIR
-	mdconfig -d -u 0
+	# Detach memory disk
+	mdconfig -d -u ${md}
+
 	gzip -9 $FREENAS_WORKINGDIR/mfsroot
 
 	return 0
 }
 
 create_image() {
-	echo "IMG: Generating $FREENAS_PRODUCTNAME IMG File (to be rawrite on CF/USB/HD)"
+	echo "======================================================================"
+	echo "===> Generating $FREENAS_PRODUCTNAME IMG File (to be rawrite on CF/USB/HD)"
+	echo "======================================================================"
+
 	[ -f image.bin ] && rm -f image.bin
 	PLATFORM="$FREENAS_ARCH-embedded"
 	echo $PLATFORM > $FREENAS_ROOTFS/etc/platform
 	IMGFILENAME="$FREENAS_PRODUCTNAME-$PLATFORM-$FREENAS_VERSION.img"
-	
-	echo "IMG: Generating tempory $FREENAS_TMPDIR folder"
+
+	echo "===> Generating tempory $FREENAS_TMPDIR folder"
 	mkdir $FREENAS_TMPDIR
 	create_mfsroot;
 	
-	echo "IMG: Creating an empty destination IMG file"
+	echo "===> Creating an empty destination IMG file"
 	dd if=/dev/zero of=$FREENAS_WORKINGDIR/image.bin bs=1M count=${FREENAS_IMG_SIZE}
-	echo "IMG: using this file as a memory disk"
+	echo "===> Using this file as a memory disk"
 	mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/image.bin -u 0
-	echo "IMG: Creating partition on this memory disk"
+	echo "===> Creating partition on this memory disk"
 	fdisk -BI -b $FREENAS_BOOTDIR/mbr /dev/md0
-	echo "IMG: Configuring FreeBSD label on this memory disk"
+	echo "===> Configuring FreeBSD label on this memory disk"
 	bsdlabel -B -w -b $FREENAS_BOOTDIR/boot /dev/md0 auto
 	bsdlabel md0 >/tmp/label.$$
 	# Replace the a: unuset by a a:4.2BSD
@@ -367,14 +378,14 @@ create_image() {
 		 sed "s/unused/4.2BSD/" >>/tmp/label.$$
 	bsdlabel -R -B md0 /tmp/label.$$
 	rm -f /tmp/label.$$
-	echo "IMG: Formatting this memory disk using UFS"
+	echo "===> Formatting this memory disk using UFS"
 	newfs ${FREENAS_NEWFS} /dev/md0a
-	echo "IMG: Mount this virtual disk on $FREENAS_TMPDIR"
+	echo "===> Mount this virtual disk on $FREENAS_TMPDIR"
 	mount /dev/md0a $FREENAS_TMPDIR
-	echo "IMG: Copying previously generated MFSROOT file to memory disk"
+	echo "===> Copying previously generated MFSROOT file to memory disk"
 	cp $FREENAS_WORKINGDIR/mfsroot.gz $FREENAS_TMPDIR
 
-	echo "Copying bootloader file(s) to memory disk"
+	echo "===> Copying bootloader file(s) to memory disk"
 	mkdir $FREENAS_TMPDIR/boot
 	mkdir $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults
 	mkdir $FREENAS_TMPDIR/conf
@@ -398,16 +409,16 @@ create_image() {
 		cp ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
 
-	echo "IMG: unmount memory disk"
+	echo "===> Unmount memory disk"
 	umount $FREENAS_TMPDIR
-	echo "IMG: Deconfigure memory disk"
+	echo "===> Detach memory disk"
 	mdconfig -d -u 0
-	echo "IMG: Compress the IMG file"
+	echo "===> Compress the IMG file"
 	gzip -9 $FREENAS_WORKINGDIR/image.bin
 	mv $FREENAS_WORKINGDIR/image.bin.gz $FREENAS_ROOTDIR/$IMGFILENAME
 
 	# Cleanup.
-	echo "Cleaning tempo file"
+	echo "===> Cleaning temporary files"
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 	[ -f $FREENAS_WORKINGDIR/image.bin ] && rm -f $FREENAS_WORKINGDIR/image.bin
@@ -432,7 +443,7 @@ create_iso () {
 	echo "$PLATFORM" > $FREENAS_ROOTFS/etc/platform
 	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
 	
-	echo "ISO: Generating tempory $FREENAS_TMPDIR folder"
+	echo "ISO: Generating temporary folder '$FREENAS_TMPDIR'"
 	mkdir $FREENAS_TMPDIR
 	create_mfsroot;
 	
@@ -566,7 +577,7 @@ update_svn() {
 }
 
 use_svn() {
-	echo "Replacing old code with SVN code"
+	echo "===> Replacing old code with SVN code"
 
 	cd $FREENAS_SVNDIR/etc
 	cp -v -p * $FREENAS_ROOTFS/etc
