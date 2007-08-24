@@ -158,7 +158,7 @@ HOME=/var/log
 			-i "all_weekdays[. = "0"]" -m weekday -i "position() > 1" -o "," -b -v "." -b -b \
 			-i "all_weekdays[. != "0"]" -o "*" -b \
 			-o " " \
-			-o "root /usr/local/bin/php /etc/mail/sendreport.php" \
+			-o "root /etc/mail/sendreport" \
 			${configxml_file} | /usr/local/bin/xml unesc >> ${cron_config}
 	fi
 

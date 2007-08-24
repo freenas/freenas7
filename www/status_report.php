@@ -36,6 +36,8 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("report.inc");
+
 $pgtitle = array(gettext("Status"), gettext("Email report"));
 
 if(!is_array($config['statusreport']))
@@ -114,21 +116,22 @@ if($_POST) {
 
 		write_config();
 
-    $retval = 0;
-		if (!file_exists($d_sysrebootreqd_path)) {
-			config_lock();
-			$retval |= rc_update_service("cron");
-			config_unlock();
-		}
-
-		$savemsg = get_std_save_message($retval);
-
-		// Send an email status report now.
 		if (stristr($_POST['Submit'], gettext("Send now"))) {
-			if (0 == $retval) {
-				$retval = mwexec("/usr/local/bin/php /etc/mail/sendreport.php");
-				$savemsg = get_std_save_message($retval);
+			// Send an email status report now.
+			$retval = @report_send_mail();
+			if (0 == $retval)
+				$savemsg = gettext("Status report successfully sent.");
+			else
+				$failmsg = gettext("Failed to send status report. Please check log files.");
+		} else {
+			// Configure cron job.
+			if (!file_exists($d_sysrebootreqd_path)) {
+				config_lock();
+				$retval = rc_update_service("cron");
+				config_unlock();
 			}
+
+			$savemsg = get_std_save_message($retval);
 		}
 	}
 }
@@ -187,8 +190,9 @@ function auth_change() {
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php if ($input_errors) print_input_errors($input_errors);?>
+<?php if ($savemsg) print_info_box($savemsg);?>
+<?php if ($failmsg) print_error_box($failmsg);?>
 <form action="status_report.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
