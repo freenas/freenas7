@@ -1,0 +1,18 @@
+--- create.c.orig	Fri Aug 24 20:35:46 2007
++++ create.c	Fri Aug 24 19:41:09 2007
+@@ -93,11 +93,11 @@
+ 		mbr = gpt_read(fd, 0LL, 1);
+ 		bzero(mbr, sizeof(*mbr));
+ 		mbr->mbr_sig = htole16(MBR_SIG);
+-		mbr->mbr_part[0].part_shd = 0xff;
+-		mbr->mbr_part[0].part_ssect = 0xff;
+-		mbr->mbr_part[0].part_scyl = 0xff;
++		mbr->mbr_part[0].part_shd = 1;
++		mbr->mbr_part[0].part_ssect = 1;
++		mbr->mbr_part[0].part_scyl = 0;
+ 		mbr->mbr_part[0].part_typ = 0xee;
+-		mbr->mbr_part[0].part_ehd = 0xff;
++		mbr->mbr_part[0].part_ehd = 0xfe;
+ 		mbr->mbr_part[0].part_esect = 0xff;
+ 		mbr->mbr_part[0].part_ecyl = 0xff;
+ 		mbr->mbr_part[0].part_start_lo = htole16(1);
