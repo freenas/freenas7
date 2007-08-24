@@ -17,7 +17,7 @@ do-build:
 		${MV} ${WRKSRC}/create.c.orig ${WRKSRC}/create.c; \
 	fi
 
-	# Patch geom eli sources.
+	# Patch gpt sources.
 	${PATCH} -f ${WRKSRC}/create.c ${FILESDIR}/create.c.diff
 
 	@${MAKE} -C ${WRKSRC}
