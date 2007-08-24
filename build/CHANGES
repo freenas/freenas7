@@ -27,8 +27,7 @@ Bug fixs:
 	> <=> &gt;
 	" <=> &quot;
 	...
-
-Known bugs:
+- Fix bug when mounting NTFS filesystems via WebGUI. A reboot to mount disks is not necessary anymore.
 
 FreeNAS 0.685b2:
 ----------------
