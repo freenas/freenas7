@@ -22,23 +22,24 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin:/usr/local/sbin
 
 export HOME PATH
 
-# Set our operating platform
+# Get operating platform
 PLATFORM=`cat /etc/platform`
 
-#If running from liveCD or embedded, mount the root (ramdisk) in Read-Write
-if [ "$PLATFORM" = "i386-liveCD" ] || [ "$PLATFORM" = "i386-embedded" ]; then
-    mount -u -o rw /dev/md0 /
-fi
-#If running from full, mount the root (/) in Read-Write
-if [ "$PLATFORM" = "i386-full" ] ; then
-    mount -u -o rw /
-fi
-
-set -T
-trap "echo 'Reboot interrupted'; exit 1" 3
+case ${PLATFORM} in
+	*)
+		# If running from liveCD or embedded, mount the root (ramdisk) in read-write.
+		mount -u -o rw /dev/md0 /;
+		;;
+	i386-full)
+		# If running from full, mount the root (/) in read-write.
+		mount -u -o rw /;
+		;;
+esac
 
 # Create directories in /var
-mkdir /var/run /var/log /var/etc /var/etc/ssh /var/db /var/log/samba /var/mount /var/etc/private /var/empty /var/etc/iscsi /var/cron /var/cron/tabs
+for dir in /var/run /var/log /var/log/samba /var/etc /var/etc/ssh /var/etc/private /var/etc/iscsi /var/db /var/mount /var/empty  /var/cron /var/cron/tabs; do
+	[ ! -d "${dir}" ] && mkdir -p ${dir} 
+done
 
 # If the file /etc/cfdevice exist (this mean 'full' release), and symlink /var/etc/cfdevice doesn't exist.. create it.
 if [ -f "/etc/cfdevice" ] && [ ! -h /var/etc/cfdevice ] ; then
@@ -52,8 +53,8 @@ fi
 
 # Make spool directorie (for afpd) if doesn't exist
 if [ ! -d "/var/spool" ]; then
-	mkdir /var/spool
-	mkdir /var/spool/lock
+	mkdir -p /var/spool
+	mkdir -p /var/spool/lock
 fi
 
 # generate circular logfiles
