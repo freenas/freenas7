@@ -26,7 +26,6 @@ Bug fixs:
 - Add missing link /etc/exports -> /var/etc/exports.
 
 Known bugs:
-- NTFS mount points are not mounted after creation, a reboot is necessary.
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
 
 NEED TO BE TESTED:
@@ -67,6 +66,7 @@ Bug fixs:
 	> <=> &gt;
 	" <=> &quot;
 	...
+- Fix bug when mounting NTFS filesystems via WebGUI. A reboot to mount disks is not necessary anymore.
 
 FreeNAS 0.685b2:
 ----------------
