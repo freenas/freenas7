@@ -31,3 +31,9 @@ if ($?prompt) then
 		bindkey -k down history-search-forward
 	endif
 endif
+
+# Display console menu (only on ttyv0).
+if ( "ttyv0" == $tty ) then
+	/etc/rc.banner
+	/etc/rc.initial
+endif

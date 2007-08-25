@@ -364,6 +364,9 @@ usr/bin/sort
 # uniq -- report or filter out repeated lines in a file
 usr/bin/uniq
 
+# login -- log into the computer
+usr/bin/login
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
@@ -435,6 +438,9 @@ libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
 # Note: Will be overwritten when openssh-portable package is activated.
 usr/libexec/sftp-server
 
+# getty -- set terminal mode
+usr/libexec/getty
+
 ####### contents of /usr/share/misc
 usr/share/misc/termcap:etc/termcap
 
@@ -467,6 +473,7 @@ boot/boot1
 etc/rc.subr
 etc/network.subr
 etc/pccard_ether
+etc/gettytab
 
 ####### contents of /etc/defaults
 etc/defaults/devfs.rules
