@@ -18,7 +18,7 @@ trap : 4
 PLATFORM=`cat /etc/platform`
 
 # redirect input/output
-exec </dev/console >/dev/console 2>/dev/console
+#exec </dev/console >/dev/console 2>/dev/console
 
 # Check if console menu is disabled.
 if configxml_isset "//system/disableconsolemenu"; then
@@ -32,10 +32,7 @@ if configxml_isset "//system/disableconsolemenu"; then
 else
 	# endless loop
 	while : ; do
-		# Change permission to the / directory
-		chmod 0711 root /
-
-		# display a cheap menu
+		# display menu
 		echo
 		echo
 		echo "Console setup"
@@ -46,7 +43,7 @@ else
 		echo "3) Reset webGUI password"
 		echo "4) Reset to factory defaults"
 		echo "5) Ping host"
-		echo "6) Shell"
+		echo "6) Exit to shell"
 		echo "7) Reboot system"
 		echo "8) PowerOff system"
 		if [ "$PLATFORM" = "i386-liveCD" ] || [ "$PLATFORM" = "amd64-liveCD" ]; then
@@ -60,7 +57,7 @@ else
 		case ${opmode} in
 			0)
 				exit && exit && logout
-        ;;
+				;;
 			1)
 				/etc/rc.initial.setports
 			 	;;
@@ -77,7 +74,7 @@ else
 				/etc/rc.initial.ping
 				;;
 			6)
-				/bin/tcsh
+				exit
 				;;
 			7)
 				/etc/rc.initial.reboot
