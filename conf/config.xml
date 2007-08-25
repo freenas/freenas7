@@ -377,11 +377,11 @@
 	<statusreport>
 		<port>25</port>
 		<subject>Status report</subject>
-		<all_mins>1</all_mins>
-		<all_hours>1</all_hours>
-		<all_days>1</all_days>
-		<all_months>1</all_months>
-		<all_weekdays>1</all_weekdays>
+		<all_mins></all_mins>
+		<all_hours></all_hours>
+		<all_days></all_days>
+		<all_months></all_months>
+		<all_weekdays></all_weekdays>
 		<minute></minute>
 		<hour></hour>
 		<day></day>
@@ -399,11 +399,11 @@
 	</statusreport>
 	<shutdown>
 		<!-- <enable/> -->
-		<all_mins>1</all_mins>
-		<all_hours>1</all_hours>
-		<all_days>1</all_days>
-		<all_months>1</all_months>
-		<all_weekdays>1</all_weekdays>
+		<all_mins></all_mins>
+		<all_hours></all_hours>
+		<all_days></all_days>
+		<all_months></all_months>
+		<all_weekdays></all_weekdays>
 		<minute></minute>
 		<hour></hour>
 		<day></day>
@@ -412,11 +412,11 @@
 	</shutdown>
 	<reboot>
 		<!-- <enable/> -->
-		<all_mins>1</all_mins>
-		<all_hours>1</all_hours>
-		<all_days>1</all_days>
-		<all_months>1</all_months>
-		<all_weekdays>1</all_weekdays>
+		<all_mins></all_mins>
+		<all_hours></all_hours>
+		<all_days></all_days>
+		<all_months></all_months>
+		<all_weekdays></all_weekdays>
 		<minute></minute>
 		<hour></hour>
 		<day></day>
@@ -428,11 +428,11 @@
 		<job> // Can be defined multiple times.
 			<enable/>
 			<desc>xxx</desc>
-			<all_mins>1</all_mins>
-			<all_hours>1</all_hours>
-			<all_days>1</all_days>
-			<all_months>1</all_months>
-			<all_weekdays>1</all_weekdays>
+			<all_mins></all_mins>
+			<all_hours></all_hours>
+			<all_days></all_days>
+			<all_months></all_months>
+			<all_weekdays></all_weekdays>
 			<minute></minute>
 			<hour></hour>
 			<day></day>
