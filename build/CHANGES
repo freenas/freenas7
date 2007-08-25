@@ -45,6 +45,10 @@ FreeNAS 0.685b3:
 Majors changes:
 - Modified build scripts.
 - Upgrade lighttpd to 1.4.16.
+- Make login procedure more FreeBSD style. Now we have 7 consoles available
+  (via Fx keys). 'root' is autologin on ttyv0. Environment is now set correct,
+	so we have a shell history. PATH is also set correct (no dumb absolute paths
+	are needed anymore).
 
 Minors changes:
 - Add link /sbin/mount_ntfs-3g and /sbin/mount_ntfs-3g to use mount -t ntfs-3g ntfs-3g /dev/xxx /mnt/xxx.
