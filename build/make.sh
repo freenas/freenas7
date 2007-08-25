@@ -271,7 +271,7 @@ add_libs() {
 build_packages() {
 	# Make sure packages directory exists.
 	[ ! -d "$FREENAS_ROOTDIR/packages" ] && mkdir -p $FREENAS_ROOTDIR/packages
-	
+
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
 	packages=$FREENAS_WORKINGDIR/packages$$
 
@@ -360,7 +360,7 @@ create_image() {
 	echo "===> Generating tempory $FREENAS_TMPDIR folder"
 	mkdir $FREENAS_TMPDIR
 	create_mfsroot;
-	
+
 	echo "===> Creating an empty destination IMG file"
 	dd if=/dev/zero of=$FREENAS_WORKINGDIR/image.bin bs=1M count=${FREENAS_IMG_SIZE}
 	echo "===> Using this file as a memory disk"
@@ -430,26 +430,26 @@ create_iso () {
 	echo "ISO: Remove old directory and file if exist"
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
-	
+
 	ISOFILENAME="$FREENAS_PRODUCTNAME-$FREENAS_ARCH-liveCD-$FREENAS_VERSION.iso"
-	
+
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Generating the $FREENAS_PRODUCTNAME Image file:"
 		create_image;
 	fi
-	
+
 	#Setting the variable for ISO image:
 	PLATFORM="$FREENAS_ARCH-liveCD"
 	echo "$PLATFORM" > $FREENAS_ROOTFS/etc/platform
 	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
-	
+
 	echo "ISO: Generating temporary folder '$FREENAS_TMPDIR'"
 	mkdir $FREENAS_TMPDIR
 	create_mfsroot;
-	
+
 	echo "ISO: Copying previously generated MFSROOT file to $FREENAS_TMPDIR"
 	cp $FREENAS_WORKINGDIR/mfsroot.gz $FREENAS_TMPDIR
-	
+
 	echo "ISO: Copying bootloader file(s) to $FREENAS_TMPDIR"
 	mkdir $FREENAS_TMPDIR/boot
 	mkdir $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults
@@ -496,29 +496,29 @@ create_iso_light() {
 
 create_full() {
 	#### Create full release ######
-	
+
 	#use SVN
 	[ -d $FREENAS_SVNDIR ] && use_svn ;
-	
-	echo "FULL: Generating $FREENAS_PRODUCTNAME tgz update file"	
-	
+
+	echo "FULL: Generating $FREENAS_PRODUCTNAME tgz update file"
+
 	PLATFORM="$FREENAS_ARCH-full"
 	echo $PLATFORM > $FREENAS_ROOTFS/etc/platform
 	FULLFILENAME="$FREENAS_PRODUCTNAME-$PLATFORM-$FREENAS_VERSION.tgz"
-	
+
 	echo "FULL: Generating tempory $FREENAS_TMPDIR folder"
 	#Clean TMP dir:
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	mkdir $FREENAS_TMPDIR
-	
+
 	# Setting Version type and date
 	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
-	
+
 	#Copying all FreeNAS rootfilesystem (including symlink) on this folder
 	cd $FREENAS_TMPDIR
 	tar -cf - -C $FREENAS_ROOTFS ./ | tar -xvpf -
 	#tar -cf - -C $FREENAS_ROOTFS ./ | tar -xvpf - -C $FREENAS_TMPDIR
-		
+
 	echo "Copying bootloader file(s) to root filesystem"
 	mkdir $FREENAS_TMPDIR/boot/defaults
 	#mkdir $FREENAS_TMPDIR/conf
@@ -541,7 +541,7 @@ create_full() {
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
-	
+
 	#Generate a loader.conf for full mode:
 	echo 'kernel="kernel"' >> $FREENAS_TMPDIR/boot/loader.conf
 	echo 'bootfile="kernel"' >> $FREENAS_TMPDIR/boot/loader.conf
@@ -550,13 +550,13 @@ create_full() {
 	echo 'splash_bmp_load="YES"' >> $FREENAS_TMPDIR/boot/loader.conf
 	echo 'bitmap_load="YES"' >> $FREENAS_TMPDIR/boot/loader.conf
 	echo 'bitmap_name="/boot/splash.bmp"' >> $FREENAS_TMPDIR/boot/loader.conf
-	
+
 	#Check that there is no /etc/fstab file! This file can be generated only during install, and must be kept
 	[ -f $FREENAS_TMPDIR/etc/fstab ] && rm -f $FREENAS_TMPDIR/etc/fstab
-	
+
 	#Check that there is no /etc/cfdevice file! This file can be generated only during install, and must be kept
 	[ -f $FREENAS_TMPDIR/etc/cfdevice ] && rm -f $FREENAS_TMPDIR/etc/cfdevice
-	
+
 	echo "FULL: tgz the directory"
 	cd $FREENAS_ROOTDIR
 	tar cvfz $FULLFILENAME -C $FREENAS_TMPDIR ./
@@ -578,6 +578,9 @@ update_svn() {
 
 use_svn() {
 	echo "===> Replacing old code with SVN code"
+
+	cp -pv ${FREENAS_SVNDIR}/root/.cshrc ${FREENAS_ROOTFS}/root
+	cp -pv ${FREENAS_SVNDIR}/root/.profile ${FREENAS_ROOTFS}/root
 
 	cd $FREENAS_SVNDIR/etc
 	cp -v -p * $FREENAS_ROOTFS/etc
