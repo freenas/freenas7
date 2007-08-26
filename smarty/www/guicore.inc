@@ -95,7 +95,6 @@ $menu['diagnostics']['menuitem'][] = array("desc" => "Factory defaults", "link" 
 $menu['diagnostics']['menuitem'][] = array("desc" => "Reboot system", "link" => "reboot.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "Shutdown system", "link" => "shutdown.php", "visible" => true);
 $menu['diagnostics']['expandable'] = true;
-$menu['diagnostics']['is_expanded_func'] = "diagnostics_is_expanded";
 
 // Generate hostname.
 $hostname = "{$config['system']['hostname']}.{$config['system']['domain']}";
