@@ -149,31 +149,7 @@ function display_menu($menu) {
 	<link href="gui.css" rel="stylesheet" type="text/css">
 </head>
 <body link="#0000CC" vlink="#0000CC" alink="#0000CC">
-<script language="javascript">
-<!--
-function showElementById(id,state) {
-	element = document.getElementById(id);
-	if ('show' == state) {
-		element.style.display = '';
-	}
-	if ('hide' == state) {
-		element.style.display = 'none';
-	}
-}
-
-function showhideMenu(tspan, tri) {
-	tspanel = document.getElementById(tspan);
-	triel = document.getElementById(tri);
-	if (tspanel.style.display == 'none') {
-		tspanel.style.display = '';
-		triel.src = "/tri_o.gif";
-	} else {
-		tspanel.style.display = 'none';
-		triel.src = "/tri_c.gif";
-	}
-}
--->
-</script>
+<script type="text/javascript" src="gui.js"></script>
 <table width="750" border="0" cellspacing="0" cellpadding="2">
   <tr valign="bottom">
     <td width="150" height="65" align="center" valign="middle">
