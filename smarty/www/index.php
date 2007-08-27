@@ -38,6 +38,10 @@ else if ($updays > 0)
 $uptimestr .= sprintf("%02d:%02d", $uphours, $upmins);
 $smarty->assign("uptime", htmlspecialchars($uptimestr));
 
+if ($config['lastchange']) {
+	$smarty->assign("lastchange", htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange'])));
+}
+
 /* Get RAM informations. */
 $raminfo = get_ram_info();
 $memusage['percentage'] = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
@@ -46,6 +50,19 @@ $smarty->assign("memusage", $memusage);
 
 exec("uptime", $result);
 $smarty->assign("loadaverages", substr(strrchr($result[0], "load averages:"),15)." <SMALL>[<A href='status_process.php'>".gettext("show process information")."</A></SMALL>]");
+
+$diskuse = get_mount_use();
+$diskusage = array();
+if (is_array($diskuse)) {
+	foreach ($diskuse as $diskusek => $diskusev) {
+		$percent_used = rtrim($diskusev['capacity'],"%");
+		$disk['name'] = htmlspecialchars($diskusek);
+		$disk['percentage'] = intval(rtrim($diskusev['capacity'],"%"));
+		$disk['caption'] = $disk['percentage'] . "% of " . $diskusev['size'] . "B";
+		$diskusage[] = $disk;
+	}
+}
+$smarty->assign("diskusage", $diskusage);
 
 $smarty->display('index.tpl');
 ?>

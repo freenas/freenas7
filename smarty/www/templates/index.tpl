@@ -45,6 +45,14 @@
       {$uptime}
     </TD>
   </TR>
+  {if $lastchange}
+  <TR>
+    <TD width="25%" class="vncellt">{gettext text="Last config change"}</TD>
+    <TD width="75%" class="listr">
+    	{$lastchange}
+    </TD>
+  </TR>
+  {/if}
   <TR>
     <TD width="25%" class="vncellt">{gettext text="Memory usage"}</TD>
     <TD width="75%" class="listr">
@@ -57,5 +65,19 @@
 			{$loadaverages}
     </TD>
   </TR>
+  <TR>
+    <TD width="25%" class="vncellt">{gettext text="Disk space usage"}</TD>
+    <TD width="75%" class="listr">
+	    <TABLE>
+	    	{if count($diskusage) > 0}
+		    	{foreach item=disk from=$diskusage}
+		    		{$disk.name} {html_progressbar percentage=$disk.percentage caption=$disk.caption}
+		    	{/foreach}
+		    {else}
+		    	{gettext text="No disk configured"}
+		    {/if}
+			</TABLE>
+		</TD>
+	</TR>  
 </TABLE>
 {include file="footer.tpl"}

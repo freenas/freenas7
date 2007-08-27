@@ -18,8 +18,8 @@
  */
 function smarty_function_html_progressbar($params, &$smarty)
 {
-	$percentage = 0;
-	$caption = '';
+	$percentage = null;
+	$caption = null;
 
 	foreach($params as $_key => $_val) {
 		switch($_key) {
@@ -30,7 +30,7 @@ function smarty_function_html_progressbar($params, &$smarty)
 		}
 	}
 
-	if (empty($percentage)) {
+	if (null === $percentage) {
 		$smarty->trigger_error("html_progressbar: missing 'percentage' parameter", E_USER_NOTICE);
 		return;
 	}
@@ -41,7 +41,7 @@ function smarty_function_html_progressbar($params, &$smarty)
 	}
 
 	$_html_result  = "<IMG src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
-	$_html_result .= "<IMG src='bar_blue.gif' height='15' width='{$percentage}' border='0' align='absmiddle'>";
+	$_html_result .= "<IMG src='bar_blue.gif' height='15' width='" . $percentage . "' border='0' align='absmiddle'>";
 	$_html_result .= "<IMG src='bar_gray.gif' height='15' width='" . (100 - $percentage) . "' border='0' align='absmiddle'>";
 	$_html_result .= "<IMG src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
 	$_html_result .= "{$caption}";
