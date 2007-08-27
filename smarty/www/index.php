@@ -40,14 +40,9 @@ $smarty->assign("uptime", htmlspecialchars($uptimestr));
 
 /* Get RAM informations. */
 $raminfo = get_ram_info();
-/* Calculate memory use percentage. */
-$memUsage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
-$memoryusage = " <IMG src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
-$memoryusage .= "<IMG src='bar_blue.gif' height='15' width='" . $memUsage . "' border='0' align='absmiddle'>";
-$memoryusage .= "<IMG src='bar_gray.gif' height='15' width='" . (100 - $memUsage) . "' border='0' align='absmiddle'>";
-$memoryusage .= "<IMG src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
-$memoryusage .= $memUsage . "% of " . round($raminfo['physical'] / 1024 / 1024) . "MB";
-$smarty->assign("memoryusage", $memoryusage);
+$memusage['percentage'] = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
+$memusage['caption'] = $memusage['percentage'] . "% of " . round($raminfo['physical'] / 1024 / 1024) . "MB";
+$smarty->assign("memusage", $memusage);
 
 exec("uptime", $result);
 $smarty->assign("loadaverages", substr(strrchr($result[0], "load averages:"),15)." <SMALL>[<A href='status_process.php'>".gettext("show process information")."</A></SMALL>]");

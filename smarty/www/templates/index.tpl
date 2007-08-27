@@ -48,7 +48,7 @@
   <TR>
     <TD width="25%" class="vncellt">{gettext text="Memory usage"}</TD>
     <TD width="75%" class="listr">
-      {$memoryusage}
+    	{html_progressbar percentage=$memusage.percentage caption=$memusage.caption}
     </TD>
   </TR>
   <TR>

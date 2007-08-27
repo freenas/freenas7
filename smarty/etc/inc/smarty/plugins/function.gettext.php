@@ -11,7 +11,7 @@
  * Type:     function<br>
  * Name:     gettext<br>
  * Purpose:  translate string<br>
- * @author   VolkerTheile <votdev@gmx.de>
+ * @author   Volker Theile <votdev@gmx.de>
  * @param array
  * @param Smarty
  */
