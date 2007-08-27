@@ -1,9 +1,8 @@
 <?php
-$navlevelsep = ": ";	/* navigation level separator string */
 $mandfldhtml = "";		/* display this before mandatory input fields */
 
 function gentitle($title) {
-	global $navlevelsep;
+	$navlevelsep = ": "; // Navigation level separator string.
 	return join($navlevelsep, $title);
 }
 
@@ -93,28 +92,21 @@ $menu['diagnostics']['menuitem'][] = array("desc" => "Factory defaults", "link" 
 $menu['diagnostics']['menuitem'][] = array("desc" => "Reboot system", "link" => "reboot.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "Shutdown system", "link" => "shutdown.php", "visible" => true);
 $menu['diagnostics']['expandable'] = true;
-$menu['diagnostics']['is_expanded_func'] = "diagnostics_is_expanded";
-
-/* Shall the diagnostics menu be expanded? */
-function diagnostics_is_expanded() {
-	global $config;
-	return (isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_") || strstr($_SERVER['SCRIPT_FILENAME'], "reboot") || strstr($_SERVER['SCRIPT_FILENAME'], "shutdown") || strstr($_SERVER['SCRIPT_FILENAME'], "exec"));
-}
+$menu['diagnostics']['is_expanded'] = isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_") || strstr($_SERVER['SCRIPT_FILENAME'], "reboot") || strstr($_SERVER['SCRIPT_FILENAME'], "shutdown") || strstr($_SERVER['SCRIPT_FILENAME'], "exec");
 
 function display_menu($menu) {
 	# Is menu expandable?
 	if ($menu['expandable']) {
 		$span_id = "span".rand(); # Create unique id.
 		$icon_id = "icon".rand(); # Create unique id.
-		if (call_user_func($menu['is_expanded_func'])) {
+		if (true === $menu['is_expanded']) {
 			echo "<li><h1><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\"><img src='/tri_o.gif' id='{$icon_id}' width='14' height='10' border='0'></a><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\">".gettext($menu['desc'])."</a></h1>\n";
 			echo "<span id='{$span_id}'>\n";
 		} else {
 			echo "<li><h1><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\"><img src='/tri_c.gif' id='{$icon_id}' width='14' height='10' border='0'></a><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\">".gettext($menu['desc'])."</a></h1>\n";
 			echo "<span id='{$span_id}' style='display: none'>\n";
 		}
-	}
-	else {
+	}	else {
 		# Display menu section description only.
 		echo "<li><h1>".gettext($menu['desc'])."</h1>\n";
 	}
