@@ -4,7 +4,9 @@
     <TD height="10" colspan="2">&nbsp;</TD>
   </TR>
   <TR align="center" valign="top">
-    <TD height="170" colspan="2"><IMG src="logobig.gif" width="520" height="149"></TD>
+    <TD height="170" colspan="2">
+    	{html_image file="logobig.gif"}
+		</TD>
   </TR>
   <TR>
     <TD colspan="2" class="listtopic">{gettext text="System information"}</TD>

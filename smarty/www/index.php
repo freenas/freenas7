@@ -4,21 +4,22 @@ $pgtitle = array("FreeNAS webGUI");
 require_once("guicore.inc");
 require_once("util.inc");
 
-$smarty->assign("hostname", "{$config['system']['hostname']}.{$config['system']['domain']}");
-$smarty->assign("version", get_product_version());
-$smarty->assign("buildtime", get_product_buildtime());
+$webgui->assign("page_title", "");
+$webgui->assign("hostname", "{$config['system']['hostname']}.{$config['system']['domain']}");
+$webgui->assign("version", get_product_version());
+$webgui->assign("buildtime", get_product_buildtime());
 
 exec("/sbin/sysctl -n kern.ostype", $ostype);
 exec("/sbin/sysctl -n kern.osrelease", $osrelease);
 exec("/sbin/sysctl -n kern.osrevision", $osrevision);
-$smarty->assign("osversion", "$ostype[0] $osrelease[0] (revison $osrevision[0])");
+$webgui->assign("osversion", "$ostype[0] $osrelease[0] (revison $osrevision[0])");
 
 $platform = htmlspecialchars($g['fullplatform']);
 exec("/sbin/sysctl -n hw.model", $cputype);
 foreach ($cputype as $cputypel) $platform .= " on " . htmlspecialchars($cputypel);
 exec("/sbin/sysctl -n hw.clockrate", $clockrate);
 $platform .= " running at $clockrate[0] MHz";
-$smarty->assign("platform", $platform);
+$webgui->assign("platform", $platform);
 
 exec("/sbin/sysctl -n kern.boottime", $boottime);
 preg_match("/sec = (\d+)/", $boottime[0], $matches);
@@ -36,20 +37,20 @@ if ($updays > 1)
 else if ($updays > 0)
 	$uptimestr .= "1 ".gettext("day").", ";
 $uptimestr .= sprintf("%02d:%02d", $uphours, $upmins);
-$smarty->assign("uptime", htmlspecialchars($uptimestr));
+$webgui->assign("uptime", htmlspecialchars($uptimestr));
 
 if ($config['lastchange']) {
-	$smarty->assign("lastchange", htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange'])));
+	$webgui->assign("lastchange", htmlspecialchars(date("D M j G:i:s T Y", $config['lastchange'])));
 }
 
 /* Get RAM informations. */
 $raminfo = get_ram_info();
 $memusage['percentage'] = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
 $memusage['caption'] = $memusage['percentage'] . "% of " . round($raminfo['physical'] / 1024 / 1024) . "MB";
-$smarty->assign("memusage", $memusage);
+$webgui->assign("memusage", $memusage);
 
 exec("uptime", $result);
-$smarty->assign("loadaverages", substr(strrchr($result[0], "load averages:"),15)." <SMALL>[<A href='status_process.php'>".gettext("show process information")."</A></SMALL>]");
+$webgui->assign("loadaverages", substr(strrchr($result[0], "load averages:"),15)." <SMALL>[<A href='status_process.php'>".gettext("show process information")."</A></SMALL>]");
 
 $diskuse = get_mount_use();
 $diskusage = array();
@@ -62,7 +63,7 @@ if (is_array($diskuse)) {
 		$diskusage[] = $disk;
 	}
 }
-$smarty->assign("diskusage", $diskusage);
+$webgui->assign("diskusage", $diskusage);
 
-$smarty->display('index.tpl');
+$webgui->display('index.tpl');
 ?>

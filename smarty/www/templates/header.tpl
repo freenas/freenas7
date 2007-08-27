@@ -9,7 +9,7 @@
 		<TABLE width="750" border="0" cellspacing="0" cellpadding="2">
 		  <TR valign="bottom">
 		    <TD width="150" height="65" align="center" valign="middle">
-		    	<strong><a href="{$top_logo_link}" target="_blank"><img src="/logo.gif" width="150" height="47" border="0"></a></strong>
+		    	<STRONG><A href="{$top_logo_link}" target="_blank"><IMG src="/logo.gif" width="150" height="47" border="0"></A></STRONG>
 				</TD>
 		    <TD height="65" bgcolor="#435370">
 					<TABLE border="0" cellspacing="0" cellpadding="0" width="100%">
@@ -30,3 +30,6 @@
 					<TABLE width="100%" border="0" cellpadding="10" cellspacing="0">
 		        <TR>
 							<TD>
+								{if !empty($page_title)}
+								<P class="pgtitle">{$page_title}</P>
+								{/if}

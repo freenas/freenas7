@@ -9,7 +9,7 @@ global $config;
 system_language_load();
 
 function gentitle($title) {
-	return join(":", gettext($title));
+	return join(": ", $title);
 }
 
 function genhtmltitle($title) {
@@ -102,15 +102,16 @@ $menu['diagnostics']['expandable'] = true;
 // Generate hostname.
 $hostname = "{$config['system']['hostname']}.{$config['system']['domain']}";
 
-$smarty = new Smarty;
-$smarty->compile_check = true;
-$smarty->force_compile = true;
-$smarty->debugging = true;
-$smarty->caching = 0;
+$webgui = new Smarty;
+$webgui->compile_check = true;
+$webgui->force_compile = true;
+$webgui->debugging = true;
+$webgui->caching = 0;
 
-$smarty->assign("title", genhtmltitle($pgtitle));
-$smarty->assign("top_logo_link", "http://www.".get_product_url());
-$smarty->assign("top_title", gettext("webGUI Configuration"));
-$smarty->assign("top_hostname", $hostname);
-$smarty->assign("nav_menu", $menu);
+$webgui->assign("title", genhtmltitle($pgtitle));
+$webgui->assign("top_logo_link", "http://www.".get_product_url());
+$webgui->assign("top_title", gettext("webGUI Configuration"));
+$webgui->assign("top_hostname", $hostname);
+$webgui->assign("nav_menu", $menu);
+$webgui->assign("page_title", gentitle($pgtitle));
 ?>
