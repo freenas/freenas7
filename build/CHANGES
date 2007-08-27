@@ -71,6 +71,7 @@ Bug fixs:
 	" <=> &quot;
 	...
 - Fix bug when mounting NTFS filesystems via WebGUI. A reboot to mount disks is not necessary anymore.
+- Fix bug in /etc/rc.d/pureftpd script. 'Max. conn. per IP' = 0 denied starting service.
 
 FreeNAS 0.685b2:
 ----------------
