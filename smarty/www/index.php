@@ -1,19 +1,56 @@
 <?php
 $pgtitle = array("FreeNAS webGUI");
 
-include("guicore.inc");
+require_once("guicore.inc");
+require_once("util.inc");
 
-$smarty->assign("FirstName",array("John","Mary","James","Henry"));
-$smarty->assign("LastName",array("Doe","Smith","Johnson","Case"));
-$smarty->assign("Class",array(array("A","B","C","D"), array("E", "F", "G", "H"),
-	  array("I", "J", "K", "L"), array("M", "N", "O", "P")));
+$smarty->assign("hostname", "{$config['system']['hostname']}.{$config['system']['domain']}");
+$smarty->assign("version", get_product_version());
+$smarty->assign("buildtime", get_product_buildtime());
 
-$smarty->assign("contacts", array(array("phone" => "1", "fax" => "2", "cell" => "3"),
-	  array("phone" => "555-4444", "fax" => "555-3333", "cell" => "760-1234")));
+exec("/sbin/sysctl -n kern.ostype", $ostype);
+exec("/sbin/sysctl -n kern.osrelease", $osrelease);
+exec("/sbin/sysctl -n kern.osrevision", $osrevision);
+$smarty->assign("osversion", "$ostype[0] $osrelease[0] (revison $osrevision[0])");
 
-$smarty->assign("option_values", array("NY","NE","KS","IA","OK","TX"));
-$smarty->assign("option_output", array("New York","Nebraska","Kansas","Iowa","Oklahoma","Texas"));
-$smarty->assign("option_selected", "NE");
+$platform = htmlspecialchars($g['fullplatform']);
+exec("/sbin/sysctl -n hw.model", $cputype);
+foreach ($cputype as $cputypel) $platform .= " on " . htmlspecialchars($cputypel);
+exec("/sbin/sysctl -n hw.clockrate", $clockrate);
+$platform .= " running at $clockrate[0] MHz";
+$smarty->assign("platform", $platform);
+
+exec("/sbin/sysctl -n kern.boottime", $boottime);
+preg_match("/sec = (\d+)/", $boottime[0], $matches);
+$boottime = $matches[1];
+$uptime = time() - $boottime;
+if ($uptime > 60)$uptime += 30;
+$updays = (int)($uptime / 86400);
+$uptime %= 86400;
+$uphours = (int)($uptime / 3600);
+$uptime %= 3600;
+$upmins = (int)($uptime / 60);
+$uptimestr = "";
+if ($updays > 1)
+	$uptimestr .= "$updays ".gettext("days").", ";
+else if ($updays > 0)
+	$uptimestr .= "1 ".gettext("day").", ";
+$uptimestr .= sprintf("%02d:%02d", $uphours, $upmins);
+$smarty->assign("uptime", htmlspecialchars($uptimestr));
+
+/* Get RAM informations. */
+$raminfo = get_ram_info();
+/* Calculate memory use percentage. */
+$memUsage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
+$memoryusage = " <IMG src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
+$memoryusage .= "<IMG src='bar_blue.gif' height='15' width='" . $memUsage . "' border='0' align='absmiddle'>";
+$memoryusage .= "<IMG src='bar_gray.gif' height='15' width='" . (100 - $memUsage) . "' border='0' align='absmiddle'>";
+$memoryusage .= "<IMG src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
+$memoryusage .= $memUsage . "% of " . round($raminfo['physical'] / 1024 / 1024) . "MB";
+$smarty->assign("memoryusage", $memoryusage);
+
+exec("uptime", $result);
+$smarty->assign("loadaverages", substr(strrchr($result[0], "load averages:"),15)." <SMALL>[<A href='status_process.php'>".gettext("show process information")."</A></SMALL>]");
 
 $smarty->display('index.tpl');
 ?>

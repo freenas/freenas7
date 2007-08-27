@@ -13,14 +13,14 @@
 							<SPAN id='{$span_id}' style='display: none'>
 						{else}
 							{* Display menu description only. *}
-							<H1>{$menu.desc}</H1>
+							<H1>{$menu.desc|gettext}</H1>
 						{/if}
 						<UL>
 						{foreach item=menuitem from=$menu.menuitem}
 							{* Is menu item visible? *}
 							{if true === $menuitem.visible}
 								{* Display menuitem. *}
-								<LI><A href="{$menuitem.link}" title="{$menuitem.desc}">{$menuitem.desc}</A></LI>
+								<LI><A href="{$menuitem.link}" title="{$menuitem.desc|gettext}">{$menuitem.desc|gettext}</A></LI>
 							{/if}
 						{/foreach}
 						</UL>

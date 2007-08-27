@@ -1,8 +1,12 @@
 <?php
-require("config.inc");
-require("smarty/Smarty.class.php");
+require_once("config.inc");
+require_once("functions.inc");
+require_once("smarty/Smarty.class.php");
 
 global $config;
+
+// Setup current language.
+system_language_load();
 
 function gentitle($title) {
 	global $navlevelsep;
