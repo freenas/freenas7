@@ -41,7 +41,7 @@ create_conf()
 		-v "concat(' -c ',numberclients)" \
 		-v "concat(' -I ',timeout)" \
 		-o " -M -B -b -A" \
-		-i "string-length(maxconperip) > 0" -v "concat(' -C ',maxconperip)" -b \
+		-i "maxconperip[. > 0]" -v "concat(' -C ',maxconperip)" -b \
 		-i "count(anonymous) > 0" -i "count(localuser) = 0" -o " -e" -b -b \
 		-i "count(anonymous) = 0" -i "count(localuser) > 0" -o " -E" -b -b \
 		-i "pasv_min_port[. != '0']" -i "pasv_max_port[. != '0']" -v "concat(' -p ',pasv_min_port,':',pasv_max_port)" -b -b \
