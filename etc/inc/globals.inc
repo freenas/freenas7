@@ -76,7 +76,8 @@ $g_languages = array (
 	"ro"    => array("locale" => "ro_RO.ISO8859-1", "desc" => "Romanian"),
 	"ru"    => array("locale" => "ru_RU.UTF8", "desc" => "Russian"),
 	"sl_SI" => array("locale" => "sl_SI.UTF-8", "desc" => "Slovenian"),
-	"es"    => array("locale" => "es_ES.ISO8859-1", "desc" => "Spanish")
+	"es"    => array("locale" => "es_ES.ISO8859-1", "desc" => "Spanish"),
+	"sv_SE" => array("locale" => "sv_SE.UTF-8", "desc" => "Swedish")
 );
 
 /* Supported filesystems */

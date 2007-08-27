@@ -86,7 +86,9 @@ $pgtitle = array(gettext("License"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Russian translator of the WebGUI</font></em><br>  
 			  		<p>Ioannis Koniaris (<a href="mailto:ikoniari@csd.auth.gr">ikoniari@csd.auth.gr</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Greek translator of the WebGUI</font></em><br>
-            <br><br>      
+            <p>Daniel Nylander (<a href="mailto:po@danielnylander.se">po@danielnylander.se</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Swedish translator of the WebGUI</font></em><br>
+            <br><br>
             <p>The following persons have contributed to FreeNAS Website:</p>
             <p>Youri Trioreau (<a href="mailto:youri.trioreau@no-log.org">youri.trioreau@no-log.org</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Webmaster</font></em><br>
