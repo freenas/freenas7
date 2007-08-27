@@ -9,8 +9,7 @@ global $config;
 system_language_load();
 
 function gentitle($title) {
-	global $navlevelsep;
-	return join($navlevelsep, $title);
+	return join(":", gettext($title));
 }
 
 function genhtmltitle($title) {

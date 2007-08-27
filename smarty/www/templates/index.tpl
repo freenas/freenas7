@@ -71,7 +71,10 @@
 	    <TABLE>
 	    	{if count($diskusage) > 0}
 		    	{foreach item=disk from=$diskusage}
-		    		{$disk.name} {html_progressbar percentage=$disk.percentage caption=$disk.caption}
+	    		<tr>
+						<td>{$disk.name}</td>
+						<td>{html_progressbar percentage=$disk.percentage caption=$disk.caption}<br></td>
+					</tr>
 		    	{/foreach}
 		    {else}
 		    	{gettext text="No disk configured"}
