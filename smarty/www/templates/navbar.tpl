@@ -9,8 +9,8 @@
 						{if true === $menu.expandable}
 							{rand var=span_id}
 							{rand var=icon_id}
-							<LI><H1><A href="javascript:showhideMenu('{$span_id}','{$icon_id}')"><IMG src='/tri_c.gif' id='{$icon_id}' width='14' height='10' border='0'></A><A href="javascript:showhideMenu('{$span_id}','{$icon_id}')">{$menu.desc}</A></H1>
-							<SPAN id='{$span_id}' style='display: none'>
+							<LI><H1><A href="javascript:showhideMenu('span{$span_id}','icon{$icon_id}')"><IMG src='/tri_c.gif' id='{$icon_id}' width='14' height='10' border='0'></A><A href="javascript:showhideMenu('span{$span_id}','icon{$icon_id}')">{$menu.desc}</A></H1>
+							<SPAN id='span{$span_id}' style='display: none'>
 						{else}
 							{* Display menu description only. *}
 							<H1>{$menu.desc|gettext}</H1>
