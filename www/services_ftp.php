@@ -81,34 +81,35 @@ if ($_POST) {
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "port numberclients maxconperip timeout"));
 		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("TCP port"),gettext("Number of clients"),gettext("Max. conn. per IP"),gettext("Timeout")));
-	}
 
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if ($_POST['enable'] && !is_port($_POST['port'])) {
-		$input_errors[] = gettext("The TCP port must be a valid port number.");
-	}
-	if ($_POST['enable'] && ((1 > $_POST['numberclients']) || (50 < $_POST['numberclients']))) {
-		$input_errors[] = gettext("The number of clients must be between 1 and 50.");
-	}
-	if ($_POST['enable'] && (0 > $_POST['maxconperip'])) {
-		$input_errors[] = gettext("The max. connection per IP must be either 0 (unlimited) or greater.");
-	}
-	if ($_POST['enable'] && !is_numericint($_POST['timeout'])) {
-		$input_errors[] = gettext("The maximum idle time be a number.");
-	}
-	if ($_POST['enable'] && ($_POST['pasv_address'])) {
-		if (!is_ipaddr($_POST['pasv_address']))
-			$input_errors[] = gettext("The pasv address must be a public IP address.");
-	}
-	if ($_POST['enable'] && ($_POST['pasv_max_port'] || $_POST['pasv_min_port'])) {
-		if (!is_port($_POST['pasv_max_port']))
-			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_max_port"));
-		if (!is_port($_POST['pasv_min_port']))
+		if (!is_port($_POST['port'])) {
+			$input_errors[] = gettext("The TCP port must be a valid port number.");
+		}
+		if ((1 > $_POST['numberclients']) || (50 < $_POST['numberclients'])) {
+			$input_errors[] = gettext("The number of clients must be between 1 and 50.");
+		}
+		if (0 > $_POST['maxconperip']) {
+			$input_errors[] = gettext("The max. connection per IP must be either 0 (unlimited) or greater.");
+		}
+		if (!is_numericint($_POST['timeout'])) {
+			$input_errors[] = gettext("The maximum idle time be a number.");
+		}
+		if ($_POST['pasv_address']) {
+			if (!is_ipaddr($_POST['pasv_address'])) {
+				$input_errors[] = gettext("The pasv address must be a public IP address.");
+			}
+		}
+		if (!("0" === $_POST['pasv_min_port']) && !is_port($_POST['pasv_min_port'])) {
 			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_min_port"));
-	}
-	if (!($_POST['anonymous']) && !($_POST['localuser'])) {
-		$input_errors[] = gettext("You must select at minium anonymous or/and local user authentication.");
+		}
+		if (!("0" === $_POST['pasv_max_port']) && !is_port($_POST['pasv_max_port'])) {
+			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_max_port"));
+		}
+		if (!($_POST['anonymous']) && !($_POST['localuser'])) {
+			$input_errors[] = gettext("You must select at minium anonymous or/and local user authentication.");
+		}
 	}
 
 	if (!$input_errors) {
@@ -224,12 +225,13 @@ function enable_change(enable_change) {
         <input name="localuser" type="checkbox" id="localuser" value="yes" <?php if ($pconfig['localuser']) echo "checked"; ?>>
         <?=gettext("Enable local user login.");?></td>
     </tr>
-        <tr>
+    <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Banner");?></td>
       <td width="78%" class="vtable">
         <textarea name="banner" cols="65" rows="7" id="banner" class="formpre"><?=htmlspecialchars($pconfig['banner']);?></textarea>
         <br>
-        <?=gettext("Greeting banner displayed by FTP when a connection first comes in.");?></td>
+        <?=gettext("Greeting banner displayed by FTP when a connection first comes in.");?>
+			</td>
     </tr>
     <tr>
       <td colspan="2" class="list" height="12"></td>
@@ -238,20 +240,19 @@ function enable_change(enable_change) {
 			<td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
 		</tr>
 		<tr id="filemask">
-						<td width="22%" valign="top" class="vncell"><?=gettext("Create mask"); ?></td>
-						<td width="78%" class="vtable">
-							<input name="filemask" type="text" class="formfld" id="filemask" size="30" value="<?=htmlspecialchars($pconfig['filemask']);?>">
-							<br><?=gettext("Use this option to override the file creation mask (077 by default).");?>
-						</td>
-					</tr>
-					<tr id="directorymask">
-						<td width="22%" valign="top" class="vncell"><?=gettext("Directory mask"); ?></td>
-						<td width="78%" class="vtable">
-							<input name="directorymask" type="text" class="formfld" id="directorymask" size="30" value="<?=htmlspecialchars($pconfig['directorymask']);?>">
-							<br><?=gettext("Use this option to override the directory creation mask (022 by default).");?>
-						</td>
-					</tr>
-	        <tr>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Create mask"); ?></td>
+			<td width="78%" class="vtable">
+				<input name="filemask" type="text" class="formfld" id="filemask" size="30" value="<?=htmlspecialchars($pconfig['filemask']);?>">
+				<br><?=gettext("Use this option to override the file creation mask (077 by default).");?>
+			</td>
+		</tr>
+		<tr id="directorymask">
+			<td width="22%" valign="top" class="vncell"><?=gettext("Directory mask"); ?></td>
+			<td width="78%" class="vtable">
+				<input name="directorymask" type="text" class="formfld" id="directorymask" size="30" value="<?=htmlspecialchars($pconfig['directorymask']);?>">
+				<br><?=gettext("Use this option to override the directory creation mask (022 by default).");?>
+			</td>
+		</tr>
     <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("FXP");?></td>
       <td width="78%" class="vtable">
