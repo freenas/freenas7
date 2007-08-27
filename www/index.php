@@ -165,10 +165,10 @@ $pgtitle_omit = true;
 						echo "<br></td></tr>";
 					}
 				} else {
-					echo gettext("No disk configured") ;
+					echo gettext("No disk configured");
 				}
 				?>
-			</table>&nbsp;
+			</table>
 		</td>
 	</tr>
 </table>
