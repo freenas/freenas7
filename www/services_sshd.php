@@ -45,6 +45,8 @@ $pconfig['permitrootlogin'] = isset($config['sshd']['permitrootlogin']);
 $pconfig['tcpforwarding'] = isset($config['sshd']['tcpforwarding']);
 $pconfig['enable'] = isset($config['sshd']['enable']);
 $pconfig['key'] = base64_decode($config['sshd']['private-key']);
+$pconfig['passwordauthentication'] = isset($config['sshd']['passwordauthentication']);
+$pconfig['pubkeyauthentication'] = isset($config['sshd']['pubkeyauthentication']);
 
 if ($_POST)
 {
@@ -78,9 +80,11 @@ if ($_POST)
 		$config['sshd']['tcpforwarding'] = $_POST['tcpforwarding'] ? true : false;
 		$config['sshd']['enable'] = $_POST['enable'] ? true : false;
 		$config['sshd']['private-key'] = base64_encode($_POST['key']);
-		
+		$config['sshd']['passwordauthentication'] = $_POST['passwordauthentication'] ? true : false;
+		$config['sshd']['pubkeyauthentication'] = $_POST['pubkeyauthentication'] ? true : false;
+
 		write_config();
-		
+
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
@@ -143,7 +147,17 @@ function enable_change(enable_change) {
         <input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
         <?=gettext("Specifies whether it is allowed to login as superuser (root) directly.");?>
     </tr>
-		<tr>
+	<tr> 
+      <td width="22%" valign="top" class="vncell"><?=gettext("Password authentication");?></td>
+      <td width="78%" class="vtable"> 
+        <input name="passwordauthentication" type="checkbox" id="passwordauthentication" value="yes" <?php if ($pconfig['passwordauthentication']) echo "checked"; ?>>
+    </tr>
+	<tr> 
+      <td width="22%" valign="top" class="vncell"><?=gettext("Pubkey authentication");?></td>
+      <td width="78%" class="vtable"> 
+        <input name="pubkeyauthentication" type="checkbox" id="pubkeyauthentication" value="yes" <?php if ($pconfig['pubkeyauthentication']) echo "checked"; ?>>
+    </tr>
+	<tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Enable TCP Forwarding");?></td>
       <td width="78%" class="vtable"> 
         <input name="tcpforwarding" type="checkbox" id="tcpforwarding" value="yes" <?php if ($pconfig['tcpforwarding']) echo "checked"; ?>>

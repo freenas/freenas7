@@ -873,6 +873,15 @@ function convert_config() {
 		$config['version'] = "2.7";
 	}
 
+	/* Convert 2.7 -> 2.8 */
+	/* Add new default sshd settings. */ 
+	if ($config['version'] === "2.7") {
+		$config['sshd']['passwordauthentication'] = true;
+		$config['sshd']['pubkeyauthentication'] = true;
+
+		$config['version'] = "2.8";
+	}
+
 	write_config();
 
 	if (is_booting())
