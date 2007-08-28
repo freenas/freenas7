@@ -874,10 +874,13 @@ function convert_config() {
 	}
 
 	/* Convert 2.7 -> 2.8 */
-	/* Add new default sshd settings. */ 
+	/* Add new default sshd settings. */
+	/* Remove useless //sshd/readonly. */
 	if ($config['version'] === "2.7") {
 		$config['sshd']['passwordauthentication'] = true;
 		$config['sshd']['pubkeyauthentication'] = true;
+
+		unset($config['sshd']['readonly']);
 
 		$config['version'] = "2.8";
 	}

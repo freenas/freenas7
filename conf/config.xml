@@ -308,16 +308,15 @@
 		-->
 	</upnp>
   <sshd>
-    <!-- <enable/> -->
-    <port>22</port>
-	<passwordauthentication/>
-	<pubkeyauthentication/>
-	<!--
-	<readonly>yes|no</readonly>
-	<permitrootlogin/>
-	<tcpforwarding/>
-	<key>xxx</key>
-	-->
+		<!-- <enable/> -->
+		<port>22</port>
+		<passwordauthentication/>
+		<pubkeyauthentication/>
+		<!--
+		<permitrootlogin/>
+		<tcpforwarding/>
+		<key>xxx</key>
+		-->
   </sshd>
 	<nfs>
     <!-- <enable/> -->

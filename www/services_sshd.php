@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	services_sshd.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-		
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -39,7 +39,6 @@ if (!is_array($config['sshd'])) {
 	$config['sshd'] = array();
 }
 
-$pconfig['readonly'] = $config['sshd']['readonly'];
 $pconfig['port'] = $config['sshd']['port'];
 $pconfig['permitrootlogin'] = isset($config['sshd']['permitrootlogin']);
 $pconfig['tcpforwarding'] = isset($config['sshd']['tcpforwarding']);
@@ -58,23 +57,22 @@ if ($_POST)
 	$reqdfieldsn = array();
 
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "readonly"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Read only")));
+		$reqdfields = array_merge($reqdfields, explode(" ", "port"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("TCP port")));
 	}
-	
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
+
 	if (($_POST['port']) && !is_port($_POST['port'])) {
 		$input_errors[] = gettext("The TCP port must be a valid port number.");
 	}
-	
+
 	if ($_POST['key']) {
 		if (!strstr($_POST['key'], "BEGIN DSA PRIVATE KEY") || !strstr($_POST['key'], "END DSA PRIVATE KEY"))
 			$input_errors[] = gettext("This key does not appear to be valid.");
 	}
-	
+
 	if (!$input_errors) {
-		$config['sshd']['readonly'] = $_POST['readonly'];	
 		$config['sshd']['port'] = $_POST['port'];
 		$config['sshd']['permitrootlogin'] = $_POST['permitrootlogin'] ? true : false;
 		$config['sshd']['tcpforwarding'] = $_POST['tcpforwarding'] ? true : false;
@@ -96,12 +94,11 @@ if ($_POST)
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
-	document.iform.readonly.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.key.disabled = endis;
 	document.iform.permitrootlogin.disabled = endis;
@@ -113,7 +110,7 @@ function enable_change(enable_change) {
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="services_sshd.php" method="post" name="iform" id="iform">
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr> 
+    <tr>
       <td colspan="2" valign="top" class="optsect_t">
 				<table border="0" cellspacing="0" cellpadding="0" width="100%">
 				  <tr>
@@ -123,43 +120,34 @@ function enable_change(enable_change) {
 				</table>
 			</td>
     </tr>
-    <tr> 
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Read only");?></td>
-      <td width="78%" class="vtable">
-				<select name="readonly" class="formfld" id="readonly">
-          <?php $types = array(gettext("Yes"),gettext("No")); $vals = explode(" ", "yes no"); $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['readonly']) echo "selected";?>> 
-          <?=htmlspecialchars($types[$j]);?>
-          </option>
-          <?php endfor; ?>
-        </select></td>
-    </tr>
-    <tr> 
+    <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
-      <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
+      <td width="78%" class="vtable">
+        <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
          <br><?=gettext("Alternate TCP port. Default is 22");?></td>
       </td>
     </tr>
-    <tr> 
+    <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Permit root login");?></td>
-      <td width="78%" class="vtable"> 
+      <td width="78%" class="vtable">
         <input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
         <?=gettext("Specifies whether it is allowed to login as superuser (root) directly.");?>
     </tr>
-	<tr> 
-      <td width="22%" valign="top" class="vncell"><?=gettext("Password authentication");?></td>
-      <td width="78%" class="vtable"> 
-        <input name="passwordauthentication" type="checkbox" id="passwordauthentication" value="yes" <?php if ($pconfig['passwordauthentication']) echo "checked"; ?>>
-    </tr>
-	<tr> 
-      <td width="22%" valign="top" class="vncell"><?=gettext("Pubkey authentication");?></td>
-      <td width="78%" class="vtable"> 
+		<tr>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Password authentication");?></td>
+			<td width="78%" class="vtable">
+				<input name="passwordauthentication" type="checkbox" id="passwordauthentication" value="yes" <?php if ($pconfig['passwordauthentication']) echo "checked"; ?>>
+				<?=gettext("Enable keyboard-interactive authentication.");?>
+		</tr>
+		<tr>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Public key authentication");?></td>
+      <td width="78%" class="vtable">
         <input name="pubkeyauthentication" type="checkbox" id="pubkeyauthentication" value="yes" <?php if ($pconfig['pubkeyauthentication']) echo "checked"; ?>>
+        <?=gettext("Public key authentication is an alternative means of identifying yourself to a login server, instead of typing a password.");?>
     </tr>
-	<tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Enable TCP Forwarding");?></td>
-      <td width="78%" class="vtable"> 
+		<tr>
+      <td width="22%" valign="top" class="vncell"><?=gettext("TCP forwarding");?></td>
+      <td width="78%" class="vtable">
         <input name="tcpforwarding" type="checkbox" id="tcpforwarding" value="yes" <?php if ($pconfig['tcpforwarding']) echo "checked"; ?>>
         <?=gettext("Permit to do SSH Tunneling.");?>
     </tr>
@@ -169,17 +157,17 @@ function enable_change(enable_change) {
     <tr>
       <td colspan="2" valign="top" class="listtopic"><?=gettext("SSH key");?></td>
     </tr>
-    <tr> 
+    <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Private Key");?></td>
-      <td width="78%" class="vtable"> 
+      <td width="78%" class="vtable">
         <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea>
-        <br> 
+        <br>
         <?=gettext("Paste a DSA PRIVATE KEY in PEM format here.");?></td>
     </tr>
-    <tr> 
+    <tr>
       <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> 
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)"> 
+      <td width="78%">
+        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
       </td>
     </tr>
   </table>
@@ -189,4 +177,4 @@ function enable_change(enable_change) {
 enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
