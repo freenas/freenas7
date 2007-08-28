@@ -14,6 +14,7 @@ Majors changes:
 - Add 'System/Advanced/Cron' WebGUI to administrate additional cron jobs.
 - Add new languages: Slovenian, Portuguese, Polish, Hungarian and Norwegian Bokmal.
 - Upgrade iSCSI Target to version 20070815.
+- Add new SSH settings to WebGUI: Password authentication and Pubkey authentication.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
