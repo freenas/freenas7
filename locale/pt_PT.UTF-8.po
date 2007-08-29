@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Rosetta-Export-Date: 2007-08-18 13:28:46+0000\n"
+"X-Rosetta-Export-Date: 2007-08-29 13:28:30+0000\n"
 
 msgid "Date"
 msgstr "Data"

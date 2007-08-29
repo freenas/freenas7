@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-08-15 14:53+0000\n"
+"PO-Revision-Date: 2007-08-22 18:57+0000\n"
 "Last-Translator: kingcharles1666 <mico@kabelfoon.nl>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
 "X-Poedit-Language: Dutch\n"
-"X-Rosetta-Export-Date: 2007-08-18 13:28:25+0000\n"
+"X-Rosetta-Export-Date: 2007-08-29 13:29:31+0000\n"
 
 msgid "Date"
 msgstr "Datum"
@@ -2408,36 +2408,38 @@ msgid "Data integrity"
 msgstr "Data integriteit"
 
 msgid "Encryption"
-msgstr ""
+msgstr "Versleuteling"
 
 msgid ""
 "Do you really want to delete this encrypted disk? All elements that still "
 "use it will become invalid (e.g. share)!"
 msgstr ""
+"Weet je zeker dat je de versleutelde schijf wilt verwijderen? Alle elementen "
+"die er gebruik van maken zullen ongeldig raken. (bijv. gedeelde map)"
 
 msgid "Create encrypted disk"
-msgstr ""
+msgstr "Creer een versleutelde schijf"
 
 msgid "Data integrity algorithm"
-msgstr ""
+msgstr "Gegevens integriteits algoritme"
 
 msgid "Encryption algorithm"
-msgstr ""
+msgstr "Versleutelings algoritme"
 
 msgid "Passphrase"
-msgstr ""
+msgstr "Wachtwoord"
 
 msgid "Passphrase don't match."
-msgstr ""
+msgstr "De wachtwoorden komen niet overeen"
 
 msgid "Init and encrypt disk"
-msgstr ""
+msgstr "initialiseer en versleutel de schijf"
 
 msgid "Disk initialization and encryption"
-msgstr ""
+msgstr "Schijf initialisatie en versleuteling"
 
 msgid "Encrypting... Please wait"
-msgstr ""
+msgstr "Versleutelen... Even geduld AUB"
 
 msgid "Attaching..."
 msgstr "Verbinden..."
@@ -2577,26 +2579,30 @@ msgid "LDAP"
 msgstr "LDAP"
 
 msgid "Password confirmation"
-msgstr ""
+msgstr "Wachtwoord-bevestiging"
 
 msgid "Remote share (source)"
-msgstr ""
+msgstr "Externe gedeelde map (bron)"
 
 msgid "Remote address"
-msgstr ""
+msgstr "Extern adres"
 
 msgid "Local share (destination)"
-msgstr ""
+msgstr "Lokale gedeelde map (bestemming)"
 
 msgid ""
 "The RSYNC client list has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
+"De RSYNC client lijst is aangepast.<br>Je moet de wijzigingen toepassen "
+"voordat ze actief worden."
 
 msgid ""
 "The RSYNC local list has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
+"De RSYNC lokale lijst is aangepast.<br>Je moet de wijzigingen toepassen "
+"voordat ze actief worden."
 
 msgid "Add RSYNC"
 msgstr "Voeg RSYNC toe"
@@ -2611,16 +2617,16 @@ msgid "Do you really want to delete this RSYNC?"
 msgstr "Bent u zeker dat u deze RSYNC wil verwijderen?"
 
 msgid "Source share"
-msgstr ""
+msgstr "Gedeelde bronmap"
 
 msgid "Destination share"
-msgstr ""
+msgstr "Gedeelde bestemmingsmap"
 
 msgid "Remote source share name"
-msgstr ""
+msgstr "Naam van de externe bronmap"
 
 msgid "Mount to use"
-msgstr ""
+msgstr "Te gebruiken aanhechtingspunt"
 
 msgid "File size"
 msgstr "Bestands grootte"
@@ -2738,12 +2744,14 @@ msgid ""
 msgstr ""
 
 msgid "DN to bind"
-msgstr ""
+msgstr "DN voor BIND"
 
 msgid ""
 "Specifies the default bind DN to use when performing ldap operations. The "
 "bind DN must be specified as a distinguished name in LDAP format."
 msgstr ""
+"Specificeerd de standaard BIND DN welke voor LDAP functies gebruikt moet "
+"worden. De BIND DN moet als LDAP formaat en volledige naam worden opgegeven."
 
 msgid "Password for DN"
 msgstr "Wachtwoord voor DN"

@@ -11,7 +11,7 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Language: Slovenian\n"
 "X-Poedit-Country: SLOVENIA\n"
-"X-Rosetta-Export-Date: 2007-07-24 06:08:43+0000\n"
+"X-Rosetta-Export-Date: 2007-08-29 13:29:01+0000\n"
 
 msgid "Date"
 msgstr "Datum"
