@@ -11,7 +11,7 @@ msgstr ""
 "X-Poedit-Language: Russian\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Rosetta-Export-Date: 2007-06-28 13:18:44+0000\n"
+"X-Rosetta-Export-Date: 2007-08-29 13:29:59+0000\n"
 
 msgid "Date"
 msgstr "Дата"
@@ -125,6 +125,7 @@ msgstr "включен"
 msgid "To"
 msgstr "К"
 
+#, fuzzy
 msgid "The"
 msgstr ""
 
