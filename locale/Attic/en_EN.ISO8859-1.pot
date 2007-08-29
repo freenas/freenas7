@@ -1,0 +1,2579 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: FreeNAS\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2007-03-27 23:28+0100\n"
+"Last-Translator: Olivier COCHARD-LABBE <olivier@freenas.org>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=iso-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED KINGDOM\n"
+
+msgid "Date"
+msgstr ""
+
+msgid "%b %d, %Y"
+msgstr ""
+
+msgid "%A, %B %d, %Y"
+msgstr ""
+
+msgid "%A, %B %d @ %H:%M:%S"
+msgstr ""
+
+msgid "%b %d, %Y - %I:%M %p"
+msgstr ""
+
+msgid "%A, %B %d, %Y - %I:%M %p"
+msgstr ""
+
+msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
+msgstr ""
+
+msgid "Sun Mon Tue Wed Thu Fri Sat"
+msgstr ""
+
+msgid ""
+"January February March April May June July August September October November "
+"December"
+msgstr ""
+
+msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+msgstr ""
+
+msgid "Time"
+msgstr ""
+
+msgid "%I:%M %p"
+msgstr ""
+
+msgid "second"
+msgstr ""
+
+msgid "seconds"
+msgstr ""
+
+msgid "minute"
+msgstr ""
+
+msgid "minutes"
+msgstr ""
+
+msgid "hour"
+msgstr ""
+
+msgid "hours"
+msgstr ""
+
+msgid "day"
+msgstr ""
+
+msgid "days"
+msgstr ""
+
+msgid "week"
+msgstr ""
+
+msgid "weeks"
+msgstr ""
+
+msgid "week days"
+msgstr ""
+
+msgid "month"
+msgstr ""
+
+msgid "months"
+msgstr ""
+
+msgid "year"
+msgstr ""
+
+msgid "years"
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "and"
+msgstr ""
+
+msgid "by"
+msgstr ""
+
+msgid "Down"
+msgstr ""
+
+msgid "No"
+msgstr ""
+
+msgid "off"
+msgstr ""
+
+msgid "OK"
+msgstr ""
+
+msgid "on"
+msgstr ""
+
+msgid "To"
+msgstr ""
+
+msgid "The"
+msgstr ""
+
+msgid "Up"
+msgstr ""
+
+msgid "URL"
+msgstr ""
+
+msgid "Yes"
+msgstr ""
+
+msgid "Activate"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Cancel"
+msgstr ""
+
+msgid "Create"
+msgstr ""
+
+msgid "Deactivate"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Edit"
+msgstr ""
+
+msgid "Enable"
+msgstr ""
+
+msgid "Help"
+msgstr ""
+
+msgid "Ignore"
+msgstr ""
+
+msgid "Login"
+msgstr ""
+
+msgid "Log out"
+msgstr ""
+
+msgid "Modify"
+msgstr ""
+
+msgid "New"
+msgstr ""
+
+msgid "Search"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Submit"
+msgstr ""
+
+msgid "Update"
+msgstr ""
+
+msgid "View"
+msgstr ""
+
+msgid "Apply changes"
+msgstr ""
+
+msgid "Warning"
+msgstr ""
+
+msgid "Load"
+msgstr ""
+
+msgid "Retry"
+msgstr ""
+
+msgid "Size"
+msgstr ""
+
+msgid "Status"
+msgstr ""
+
+msgid "Type"
+msgstr ""
+
+msgid "Configuring"
+msgstr ""
+
+msgid "Disk"
+msgstr ""
+
+msgid "Disks"
+msgstr ""
+
+msgid "Partition"
+msgstr ""
+
+msgid "File system"
+msgstr ""
+
+msgid "Description"
+msgstr ""
+
+msgid "Software RAID"
+msgstr ""
+
+msgid "Service"
+msgstr ""
+
+msgid "TCP port"
+msgstr ""
+
+msgid "Confirmation"
+msgstr ""
+
+msgid "Note"
+msgstr ""
+
+msgid "Successful"
+msgstr ""
+
+msgid "Failed"
+msgstr ""
+
+msgid "Error"
+msgstr ""
+
+msgid "Hint"
+msgstr ""
+
+msgid "The changes have been applied successfully."
+msgstr ""
+
+msgid ""
+"The changes have been saved. You must <a href=%s>reboot</a> your NAS for "
+"changes to take effect."
+msgstr ""
+
+msgid "ERROR: The changes could not be applied (error code %s)."
+msgstr ""
+
+msgid "A valid IP address must be specified."
+msgstr ""
+
+msgid "A valid network bit count must be specified."
+msgstr ""
+
+msgid "The TCP port must be a valid port number."
+msgstr ""
+
+msgid "Password don't match."
+msgstr ""
+
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select and de-select "
+"minutes, hours, days and months."
+msgstr ""
+
+msgid ""
+"UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
+"Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
+"can result in unpredictable results, file corruption, and loss of data!"
+msgstr ""
+
+msgid "Active"
+msgstr ""
+
+msgid "Inactive"
+msgstr ""
+
+msgid "Selected"
+msgstr ""
+
+msgid "System"
+msgstr ""
+
+msgid "General setup"
+msgstr ""
+
+msgid "Static routes"
+msgstr ""
+
+msgid "Firmware"
+msgstr ""
+
+msgid "Advanced"
+msgstr ""
+
+msgid "Swap"
+msgstr ""
+
+msgid "Assign"
+msgstr ""
+
+msgid "LAN"
+msgstr ""
+
+msgid "Management"
+msgstr ""
+
+msgid "Mount Point"
+msgstr ""
+
+msgid "Services"
+msgstr ""
+
+msgid "CIFS"
+msgstr ""
+
+msgid "FTP"
+msgstr ""
+
+msgid "NFS"
+msgstr ""
+
+msgid "RSYNCD"
+msgstr ""
+
+msgid "SSHD"
+msgstr ""
+
+msgid "Unison"
+msgstr ""
+
+msgid "UPnP"
+msgstr ""
+
+msgid "AFP"
+msgstr ""
+
+msgid "Access"
+msgstr ""
+
+msgid "Users and Groups"
+msgstr ""
+
+msgid "Active Directory"
+msgstr ""
+
+msgid "NIS"
+msgstr ""
+
+msgid "Radius"
+msgstr ""
+
+msgid "Process"
+msgstr ""
+
+msgid "Interfaces"
+msgstr ""
+
+msgid "Wireless"
+msgstr ""
+
+msgid "Extensions"
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+msgid "Logs"
+msgstr ""
+
+msgid "Information"
+msgstr ""
+
+msgid "Ping/Traceroute"
+msgstr ""
+
+msgid "ARP table"
+msgstr ""
+
+msgid "Edit File"
+msgstr ""
+
+msgid "Backup/Restore"
+msgstr ""
+
+msgid "Factory defaults"
+msgstr ""
+
+msgid "Reboot system"
+msgstr ""
+
+msgid "Shutdown system"
+msgstr ""
+
+msgid "Graph"
+msgstr ""
+
+msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+msgstr ""
+
+msgid "Domain"
+msgstr ""
+
+msgid "e.g. <em>mycorp.com</em>"
+msgstr ""
+
+msgid "DNS servers"
+msgstr ""
+
+msgid "IP addresses"
+msgstr ""
+
+msgid "Username"
+msgstr ""
+
+msgid ""
+"If you want to change the username for accessing the webGUI, enter it here."
+msgstr ""
+
+msgid "Password"
+msgstr ""
+
+msgid ""
+"If you want to change the password for accessing the webGUI, enter it here "
+"twice.<br>Don't use the character ':'."
+msgstr ""
+
+msgid "WebGUI protocol"
+msgstr ""
+
+msgid "WebGUI port"
+msgstr ""
+
+msgid ""
+"Enter a custom port number for the webGUI above if you want to override the "
+"default (80 for HTTP, 443 for HTTPS)."
+msgstr ""
+
+msgid "Language"
+msgstr ""
+
+msgid "Select the system language"
+msgstr ""
+
+msgid "System Time"
+msgstr ""
+
+msgid ""
+"Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
+"select one, then use Save button to update system time. (Mind seconds part "
+"will be ignored)"
+msgstr ""
+
+msgid "Time zone"
+msgstr ""
+
+msgid "Select the location closest to you."
+msgstr ""
+
+msgid "Time update interval"
+msgstr ""
+
+msgid ""
+"Minutes between network time sync.; 300\trecommended, or 0 to disable."
+msgstr ""
+
+msgid "NTP time server"
+msgstr ""
+
+msgid ""
+"Use a space to separate multiple hosts (only one required). Remember to set "
+"up at least one DNS server if you enter a host name here!"
+msgstr ""
+
+msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
+msgstr ""
+
+msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr ""
+
+msgid ""
+"A valid IP address must be specified for the primary/secondary DNS server."
+msgstr ""
+
+msgid "The username may only contain the characters a-z, A-Z and 0-9."
+msgstr ""
+
+msgid "A valid TCP/IP port must be specified for the webGUI port."
+msgstr ""
+
+msgid "The passwords do not match."
+msgstr ""
+
+msgid "You must select a valid language."
+msgstr ""
+
+msgid ""
+"The time update interval must be either 0 (disabled) or between 6 and 1440."
+msgstr ""
+
+msgid ""
+"A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr ""
+
+msgid "System information"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Version"
+msgstr ""
+
+msgid "OS Version"
+msgstr ""
+
+msgid "Platform"
+msgstr ""
+
+msgid "Uptime"
+msgstr ""
+
+msgid "Last config change"
+msgstr ""
+
+msgid "Memory usage"
+msgstr ""
+
+msgid "Load averages"
+msgstr ""
+
+msgid "show process information"
+msgstr ""
+
+msgid "Disk space usage"
+msgstr ""
+
+msgid "No disk configured"
+msgstr ""
+
+msgid "Processes"
+msgstr ""
+
+msgid "Processes information"
+msgstr ""
+
+msgid ""
+"The static route configuration has been changed.<br>You must apply the "
+"changes in order for them to take effect."
+msgstr ""
+
+msgid "Interface"
+msgstr ""
+
+msgid "Network"
+msgstr ""
+
+msgid "Edit Route"
+msgstr ""
+
+msgid "Do you really want to delete this route?"
+msgstr ""
+
+msgid "Delete Route"
+msgstr ""
+
+msgid "Add Route"
+msgstr ""
+
+msgid "A valid destination network must be specified."
+msgstr ""
+
+msgid "A valid gateway IP address must be specified."
+msgstr ""
+
+msgid "A route to this destination network already exists."
+msgstr ""
+
+msgid "Choose which interface this route applies to."
+msgstr ""
+
+msgid "Destination network"
+msgstr ""
+
+msgid "Destination network for this static route"
+msgstr ""
+
+msgid "Gateway to be used to reach the destination network"
+msgstr ""
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr ""
+
+msgid "The uploaded image file is not for this platform"
+msgstr ""
+
+msgid "Image upload failed (out of memory?)"
+msgstr ""
+
+msgid "The digital signature on this image is invalid."
+msgstr ""
+
+msgid "This image is not digitally signed."
+msgstr ""
+
+msgid "There has been an error verifying the signature on this image."
+msgstr ""
+
+msgid "The image file is corrupt"
+msgstr ""
+
+msgid "The firmware is now being installed. %s will reboot automatically."
+msgstr ""
+
+msgid "Firmware uploading is not supported on this platform."
+msgstr ""
+
+msgid ""
+"This means that the image you uploaded is not an official/supported image "
+"and may lead to unexpected behavior or security compromises. Only install "
+"images that come from sources that you trust, and make sure that the image "
+"has not been tampered with.<br><br>Do you want to install this image anyway "
+"(on your own risk)?"
+msgstr ""
+
+msgid ""
+"Click &quot;Enable firmware upload&quot; below, then choose the image file "
+"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+"process."
+msgstr ""
+
+msgid "Enable firmware upload"
+msgstr ""
+
+msgid "Disable firmware upload"
+msgstr ""
+
+msgid "Firmware image file"
+msgstr ""
+
+msgid "Upgrade firmware"
+msgstr ""
+
+msgid "You must reboot the system before you can upgrade the firmware."
+msgstr ""
+
+msgid "The TCP idle timeout must be an integer."
+msgstr ""
+
+msgid "Certificate and key must always be specified together."
+msgstr ""
+
+msgid "This certificate does not appear to be valid."
+msgstr ""
+
+msgid "This key does not appear to be valid."
+msgstr ""
+
+msgid ""
+"The options on this page are intended for use by advanced users only, and "
+"there's <strong>NO</strong> support for them."
+msgstr ""
+
+msgid "webGUI SSL certificate/key"
+msgstr ""
+
+msgid "Certificate"
+msgstr ""
+
+msgid "Paste a signed certificate in X.509 PEM format here."
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Paste an RSA private key in PEM format here."
+msgstr ""
+
+msgid "Miscellaneous"
+msgstr ""
+
+msgid "Console menu"
+msgstr ""
+
+msgid "Disable console menu"
+msgstr ""
+
+msgid "Changes to this option will take effect after a reboot."
+msgstr ""
+
+msgid "Firmware version check"
+msgstr ""
+
+msgid "Disable firmware version check"
+msgstr ""
+
+msgid "TCP idle timeout"
+msgstr ""
+
+msgid ""
+"Idle TCP connections will be removed from the state table after no packets "
+"have been received for the specified number of seconds. Don't set this too "
+"high or your state table could become full of connections that have been "
+"improperly shut down. The default is 9000 seconds (2.5 hours)."
+msgstr ""
+
+msgid "Navigation"
+msgstr ""
+
+msgid "Keep diagnostics in navigation expanded"
+msgstr ""
+
+msgid "System Beep"
+msgstr ""
+
+msgid "Disable speaker beep on startup and shutdown"
+msgstr ""
+
+msgid "S.M.A.R.T Daemon"
+msgstr ""
+
+msgid "Enable the S.M.A.R.T daemon"
+msgstr ""
+
+msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
+msgstr ""
+
+msgid "Tuning"
+msgstr ""
+
+msgid "Zeroconf"
+msgstr ""
+
+msgid "Swap file"
+msgstr ""
+
+msgid "Swap size"
+msgstr ""
+
+msgid "mount share"
+msgstr ""
+
+msgid "Mount to use for swap"
+msgstr ""
+
+msgid "Swap file size"
+msgstr ""
+
+msgid "Size in MB."
+msgstr ""
+
+msgid "Assign network ports"
+msgstr ""
+
+msgid "Port "
+msgstr ""
+
+msgid " was assigned to "
+msgstr ""
+
+msgid " interfaces:"
+msgstr ""
+
+msgid "Network port"
+msgstr ""
+
+msgid "Delete interface"
+msgstr ""
+
+msgid "Add interface"
+msgstr ""
+
+msgid ""
+"After you click &quot;Save&quot;, you must reboot %s to make the changes "
+"take effect. You may also have to do one or more of the following steps "
+"before you can access your NAS again: </span><"
+msgstr ""
+
+msgid "A valid gateway must be specified."
+msgstr ""
+
+msgid "A valid mtu size must be specified."
+msgstr ""
+
+msgid "IP address"
+msgstr ""
+
+msgid "Subnet bit count"
+msgstr ""
+
+msgid "MTU"
+msgstr ""
+
+msgid "Standard MTU is 1500, use 9000 for jumbo frame."
+msgstr ""
+
+msgid "Device polling"
+msgstr ""
+
+msgid "Enable device polling"
+msgstr ""
+
+msgid ""
+"Device polling is a technique that lets the system periodically poll network "
+"devices for new data instead of relying on interrupts. This can reduce CPU "
+"load and therefore increase throughput, at the expense of a slightly higher "
+"forwarding delay (the devices are polled 1000 times per second). Not all "
+"NICs support polling; see the m0n0wall homepage for a list of supported "
+"cards."
+msgstr ""
+
+msgid "Speed"
+msgstr ""
+
+msgid "Duplex"
+msgstr ""
+
+msgid "Enable Optional "
+msgstr ""
+
+msgid " interface"
+msgstr ""
+
+msgid "Enter a description (name) for the interface here."
+msgstr ""
+
+msgid "Static IP configuration"
+msgstr ""
+
+msgid "DHCP client configuration"
+msgstr ""
+
+msgid "General configuration"
+msgstr ""
+
+msgid "Hostname"
+msgstr ""
+
+msgid "Host"
+msgstr ""
+
+msgid ""
+"The value in this field is sent as the DHCP hostname when requesting a DHCP "
+"lease."
+msgstr ""
+
+msgid "Client Identifier"
+msgstr ""
+
+msgid ""
+"The value in this field is sent as the DHCP client identifier when "
+"requesting a DHCP lease."
+msgstr ""
+
+msgid "Calculate netmask bits"
+msgstr ""
+
+msgid ""
+"The LAN configuration has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+
+msgid "Manage"
+msgstr ""
+
+msgid "Format"
+msgstr ""
+
+msgid "Tools"
+msgstr ""
+
+msgid ""
+"The disk list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+
+msgid "Standby time"
+msgstr ""
+
+msgid "Always on"
+msgstr ""
+
+msgid "Unknown or unformatted"
+msgstr ""
+
+msgid "Edit disk"
+msgstr ""
+
+msgid "Delete disk"
+msgstr ""
+
+msgid ""
+"Do you really want to delete this disk? All elements that still use it will "
+"become invalid (e.g. share)!"
+msgstr ""
+
+msgid "Add disk"
+msgstr ""
+
+msgid "First configuration step: Add your hardrive to the disk list."
+msgstr ""
+
+msgid "This disk already exists in the disk list."
+msgstr ""
+
+msgid "UDMA mode"
+msgstr ""
+
+msgid "Hard disk standby time"
+msgstr ""
+
+msgid ""
+"Puts the hard disk into standby mode when the selected amount of time after "
+"the last access has elapsed. <em>Do not set this for CF cards.</em>"
+msgstr ""
+
+msgid "Advanced Power Management"
+msgstr ""
+
+msgid "Minimum power usage with Standby"
+msgstr ""
+
+msgid "Medium power usage with Standby"
+msgstr ""
+
+msgid "Minimum power usage without Standby"
+msgstr ""
+
+msgid "Medium power usage without Standby"
+msgstr ""
+
+msgid "Maximum performance, maximum power usage"
+msgstr ""
+
+msgid ""
+"This allows  you  to lower the power consumption of the drive, at the "
+"expense of performance.<br><em>Do not set this for CF cards.</em>"
+msgstr ""
+
+msgid "Acoustic level"
+msgstr ""
+
+msgid "Minimum performance, Minimum acoustic output"
+msgstr ""
+
+msgid "Medium acoustic output"
+msgstr ""
+
+msgid "Maximum performance, maximum acoustic output"
+msgstr ""
+
+msgid ""
+"This allows you to set how loud the drive is while it's operating.<br><em>Do "
+"not set this for CF cards.</em>"
+msgstr ""
+
+msgid "Preformatted FS"
+msgstr ""
+
+msgid "Initialize"
+msgstr ""
+
+msgid ""
+"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
+"proceeding."
+msgstr ""
+
+msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgstr ""
+
+msgid "Disk initialization details"
+msgstr ""
+
+msgid "\"fdisk: Geom not found\"is not an error message!\n"
+msgstr ""
+
+msgid ""
+"This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
+"(for others) partition and format the hard drive with the file system "
+"specified."
+msgstr ""
+
+msgid "Format disk"
+msgstr ""
+
+msgid "Do you really want to format this disk? All data will be lost!"
+msgstr ""
+
+msgid ""
+"Specify the percentage of space held back from normal users. Note that "
+"lowering the threshold can adversely affect performance and auto-"
+"defragmentation."
+msgstr ""
+
+msgid "Don't Erase MBR"
+msgstr ""
+
+msgid "Don't erase the MBR (useful for some RAID controller cards)"
+msgstr ""
+
+msgid "Send Command!"
+msgstr ""
+
+msgid "Command output:"
+msgstr ""
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr ""
+
+msgid "Unmount disk/partition"
+msgstr ""
+
+msgid ""
+"If the selected disk/partition is mounted it will be unmounted temporarily "
+"to perform selected command, otherwise the commands work in read-only "
+"mode.<br>Service disruption to users accessing this mount will occur during "
+"this process."
+msgstr ""
+
+msgid "iSCSI"
+msgstr ""
+
+msgid "iSCSI Initiator"
+msgstr ""
+
+msgid "Target IP address"
+msgstr ""
+
+msgid "IP address of the iSCSI target."
+msgstr ""
+
+msgid "Targetname"
+msgstr ""
+
+msgid "Targetname."
+msgstr ""
+
+msgid "Manage RAID"
+msgstr ""
+
+msgid "Format RAID"
+msgstr ""
+
+msgid "Volume Name"
+msgstr ""
+
+msgid ""
+"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
+"first before proceeding."
+msgstr ""
+
+msgid "Geom Vinum"
+msgstr ""
+
+msgid "Geom Mirror"
+msgstr ""
+
+msgid "Geom Stripe"
+msgstr ""
+
+msgid "Geom Concat"
+msgstr ""
+
+msgid "Geom Raid5"
+msgstr ""
+
+msgid "(unstable)"
+msgstr ""
+
+msgid "RAID"
+msgstr ""
+
+msgid ""
+"The Raid configuration has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+
+msgid "Edit RAID"
+msgstr ""
+
+msgid "Delete RAID"
+msgstr ""
+
+msgid "Add RAID"
+msgstr ""
+
+msgid ""
+"Do you really want to delete this raid volume? All elements that still use "
+"it will become invalid (e.g. share)!"
+msgstr ""
+
+msgid "You must add disks first."
+msgstr ""
+
+msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
+msgstr ""
+
+msgid "This device already exists in the raid volume list."
+msgstr ""
+
+msgid "There must be a minimum of 2 disks in a RAID 0 volume."
+msgstr ""
+
+msgid "There must be 2 disks in a RAID 1 volume."
+msgstr ""
+
+msgid "There must be a minimum of 2 disks in a RAID 5 volume."
+msgstr ""
+
+msgid "ERR Could not save RAID configuration.\n"
+msgstr ""
+
+msgid "Raid name"
+msgstr ""
+
+msgid "striping"
+msgstr ""
+
+msgid "mirroring"
+msgstr ""
+
+msgid "rotated block-interleaved parity"
+msgstr ""
+
+msgid "JBOD"
+msgstr ""
+
+msgid "Members of this volume"
+msgstr ""
+
+msgid "Software RAID information and status"
+msgstr ""
+
+msgid "Disk format UFS output:"
+msgstr ""
+
+msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
+msgstr ""
+
+msgid "Format UFS disk!"
+msgstr ""
+
+msgid "Object name"
+msgstr ""
+
+msgid "Command"
+msgstr ""
+
+msgid ""
+"1. Use these specials actions for debugging only!<br>2. There is no need of "
+"using this menu for start a RAID volume (start automaticaly)."
+msgstr ""
+
+msgid "Share Name"
+msgstr ""
+
+msgid ""
+"The mount point list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+
+msgid ""
+"Do you really want to delete this mount point? All elements that still use "
+"it will become invalid (e.g. share)!"
+msgstr ""
+
+msgid "delete mount"
+msgstr ""
+
+msgid "add mount"
+msgstr ""
+
+msgid "The description name contain invalid characters."
+msgstr ""
+
+msgid "Can't mount the system partition 1, the DATA partition is the 2."
+msgstr ""
+
+msgid "Duplicate Share Name."
+msgstr ""
+
+msgid ""
+"Select EFI GPT if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+"you select option 2 during installation on hard drive.<br>Select old "
+"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+msgstr ""
+
+msgid ""
+"You can't mount the partition '%s' where the config file is stored.<br>"
+msgstr ""
+
+msgid "Mounting..."
+msgstr ""
+
+msgid "Unmounting..."
+msgstr ""
+
+msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
+msgstr ""
+
+msgid "The Netbios name contains invalid characters."
+msgstr ""
+
+msgid "The Workgroup name contains invalid characters."
+msgstr ""
+
+msgid "The WINS server must be an IP address."
+msgstr ""
+
+msgid "The SND Buffer value must be a number."
+msgstr ""
+
+msgid "The RCV Buffer value must be a number."
+msgstr ""
+
+msgid "CIFS share"
+msgstr ""
+
+msgid "Authentication"
+msgstr ""
+
+msgid "NetBiosName"
+msgstr ""
+
+msgid "Workgroup"
+msgstr ""
+
+msgid "Workgroup to be member of."
+msgstr ""
+
+msgid "Server description. This can usually be left blank."
+msgstr ""
+
+msgid "Dos charset"
+msgstr ""
+
+msgid "Unix charset"
+msgstr ""
+
+msgid "Log Level"
+msgstr ""
+
+msgid "Local Master Browser"
+msgstr ""
+
+msgid "Allows %s to try and become a local master browser."
+msgstr ""
+
+msgid "Time server"
+msgstr ""
+
+msgid "%s advertises itself as a time server to Windows clients."
+msgstr ""
+
+msgid "WINS server"
+msgstr ""
+
+msgid "WINS Server IP address."
+msgstr ""
+
+msgid "Recycle Bin"
+msgstr ""
+
+msgid "Enable Recycle bin"
+msgstr ""
+
+msgid "This will create a recycle bin on the CIFS shares."
+msgstr ""
+
+msgid "Shares"
+msgstr ""
+
+msgid "Send Buffer Size"
+msgstr ""
+
+msgid "Size of send buffer (16384 by default)."
+msgstr ""
+
+msgid "Receive Buffer Size"
+msgstr ""
+
+msgid "Size of receive buffer (16384 by default)."
+msgstr ""
+
+msgid ""
+"The shares has been modified.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+
+msgid "Browseable"
+msgstr ""
+
+msgid "Edit share"
+msgstr ""
+
+msgid ""
+"This controls whether this share is seen in the list of available shares in "
+"a net view and in the browse list."
+msgstr ""
+
+msgid "The maximum Number of client must be a number."
+msgstr ""
+
+msgid "The max con per ip must be a number."
+msgstr ""
+
+msgid "The maximum idle time be a number."
+msgstr ""
+
+msgid "The pasv address must be a public IP address."
+msgstr ""
+
+msgid "You must select at minium anonymous or/and local user authentication."
+msgstr ""
+
+msgid "FTP Server"
+msgstr ""
+
+msgid "Number of clients"
+msgstr ""
+
+msgid "Maximum number of simultaneous clients."
+msgstr ""
+
+msgid "Max. conn. per IP"
+msgstr ""
+
+msgid "Maximum number of connections per IP address (0 = unlimited)."
+msgstr ""
+
+msgid "Timeout"
+msgstr ""
+
+msgid "Maximum idle time in minutes."
+msgstr ""
+
+msgid "Anonymous login"
+msgstr ""
+
+msgid "Enable anonymous login."
+msgstr ""
+
+msgid "Local User"
+msgstr ""
+
+msgid "Enable local user login."
+msgstr ""
+
+msgid "FXP"
+msgstr ""
+
+msgid "Enable FXP protocol."
+msgstr ""
+
+msgid ""
+"FXP allows transfers between two remote servers without any file data going "
+"to the client asking for the transfer (insecure!)."
+msgstr ""
+
+msgid "NAT mode"
+msgstr ""
+
+msgid "Force NAT mode."
+msgstr ""
+
+msgid ""
+"Enable this if your FTP server is behind a NAT box that doesn't support "
+"applicative FTP proxying."
+msgstr ""
+
+msgid "Passive IP address"
+msgstr ""
+
+msgid ""
+"Use this option to override the IP address that FTP daemon will advertise in "
+"response to the PASV command."
+msgstr ""
+
+msgid ""
+"The minimum port to allocate for PASV style data connections (0 = use any "
+"port)."
+msgstr ""
+
+msgid ""
+"The maximum port to allocate for PASV style data connections (0 = use any "
+"port)."
+msgstr ""
+
+msgid "Banner"
+msgstr ""
+
+msgid "Greeting banner displayed by FTP when a connection first comes in."
+msgstr ""
+
+msgid "A valid network must be specified."
+msgstr ""
+
+msgid "NFS Server"
+msgstr ""
+
+msgid "Map all users to root"
+msgstr ""
+
+msgid "All users will have the root privilege."
+msgstr ""
+
+msgid "Authorized"
+msgstr ""
+
+msgid "Networks"
+msgstr ""
+
+msgid "Networks Authorized"
+msgstr ""
+
+msgid "Network that is authorised to access to NFS share"
+msgstr ""
+
+msgid "The name of the exported directories are : /mnt/sharename"
+msgstr ""
+
+msgid "Server"
+msgstr ""
+
+msgid "Client"
+msgstr ""
+
+msgid "Local"
+msgstr ""
+
+msgid "Rsync Daemon"
+msgstr ""
+
+msgid "Read only"
+msgstr ""
+
+msgid "Map to user"
+msgstr ""
+
+msgid "Alternate TCP port. Default is 873"
+msgstr ""
+
+msgid "Maximum connections"
+msgstr ""
+
+msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
+msgstr ""
+
+msgid "MOTD"
+msgstr ""
+
+msgid "Message of the day."
+msgstr ""
+
+msgid "You must configure mount point first."
+msgstr ""
+
+msgid "Rsync Client Synchronization"
+msgstr ""
+
+msgid "Remote RSYNC Server"
+msgstr ""
+
+msgid "IP address of remote RSYNC server"
+msgstr ""
+
+msgid "RSYNC Options"
+msgstr ""
+
+msgid "Delete files that don't exist on sender."
+msgstr ""
+
+msgid "Shares to be synchronized"
+msgstr ""
+
+msgid "This same local share must be present on the Remote Server."
+msgstr ""
+
+msgid "Synchronization Time"
+msgstr ""
+
+msgid "You can't have the same mount point for source and destination!"
+msgstr ""
+
+msgid "Rsync Local Synchronization"
+msgstr ""
+
+msgid "Source"
+msgstr ""
+
+msgid "Source Mount Point."
+msgstr ""
+
+msgid "Destination"
+msgstr ""
+
+msgid "Destination Mount Point (backup drive)."
+msgstr ""
+
+msgid "SSH Daemon"
+msgstr ""
+
+msgid "Alternate TCP port. Default is 22"
+msgstr ""
+
+msgid "Permit root login"
+msgstr ""
+
+msgid "Enable TCP Forwarding"
+msgstr ""
+
+msgid "Permit to do SSH Tunneling."
+msgstr ""
+
+msgid ""
+"Specifies whether it is allowed to login as superuser (root) directly."
+msgstr ""
+
+msgid "SSH key"
+msgstr ""
+
+msgid "Private Key"
+msgstr ""
+
+msgid "Paste a DSA PRIVATE KEY in PEM format here."
+msgstr ""
+
+msgid "The combination of share and working directory does not exist."
+msgstr ""
+
+msgid "Unison File Synchronisation"
+msgstr ""
+
+msgid "Share"
+msgstr ""
+
+msgid "You may need enough space to duplicate all files being synced"
+msgstr ""
+
+msgid "Working Directory"
+msgstr ""
+
+msgid "Where the working files will be stored"
+msgstr ""
+
+msgid "Create work directory if it doesn't exist"
+msgstr ""
+
+msgid "UPnP A/V Media Server"
+msgstr ""
+
+msgid "UPnP friendly name."
+msgstr ""
+
+msgid "Interface to listen to."
+msgstr ""
+
+msgid "Content"
+msgstr ""
+
+msgid "Directories to be shared."
+msgstr ""
+
+msgid "No content directory to be shared."
+msgstr ""
+
+msgid "Directory"
+msgstr ""
+
+msgid "Add directory"
+msgstr ""
+
+msgid "Edit directory"
+msgstr ""
+
+msgid "Delete directory"
+msgstr ""
+
+msgid "Do you really want to delete this directory entry?"
+msgstr ""
+
+msgid "Directory to be shared."
+msgstr ""
+
+msgid "You must select at least one authentication method."
+msgstr ""
+
+msgid "AFP Server"
+msgstr ""
+
+msgid "Server Name"
+msgstr ""
+
+msgid "Enable guest access."
+msgstr ""
+
+msgid "Enable local user authentication."
+msgstr ""
+
+msgid "User"
+msgstr ""
+
+msgid "Users"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "Groups"
+msgstr ""
+
+msgid "Full Name"
+msgstr ""
+
+msgid ""
+"The User list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+
+msgid "Edit user"
+msgstr ""
+
+msgid "Delete user"
+msgstr ""
+
+msgid "Do you really want to delete this user?!"
+msgstr ""
+
+msgid "Add user"
+msgstr ""
+
+msgid "You must create a group first."
+msgstr ""
+
+msgid "The login name contains invalid characters."
+msgstr ""
+
+msgid "The login name is a reserved login name."
+msgstr ""
+
+msgid "The full name contains invalid characters."
+msgstr ""
+
+msgid "This user already exists in the user list."
+msgstr ""
+
+msgid "Unique login name of user."
+msgstr ""
+
+msgid "User full name."
+msgstr ""
+
+msgid "User password."
+msgstr ""
+
+msgid "Confirm Password"
+msgstr ""
+
+msgid "Confirm the password."
+msgstr ""
+
+msgid "Group Member"
+msgstr ""
+
+msgid "Full Shell"
+msgstr ""
+
+msgid "Give full shell to user"
+msgstr ""
+
+msgid "Administrator"
+msgstr ""
+
+msgid "Put user in the administrator group"
+msgstr ""
+
+msgid ""
+"The group list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+
+msgid "Edit group"
+msgstr ""
+
+msgid "Delete group"
+msgstr ""
+
+msgid "Do you really want to delete this group?"
+msgstr ""
+
+msgid "Add group"
+msgstr ""
+
+msgid "The Group name contains invalid characters."
+msgstr ""
+
+msgid "The Group desc contains invalid characters."
+msgstr ""
+
+msgid "This group already exists in the group list."
+msgstr ""
+
+msgid "Group name."
+msgstr ""
+
+msgid "Group description."
+msgstr ""
+
+msgid "AD server name"
+msgstr ""
+
+msgid "AD or PDC name."
+msgstr ""
+
+msgid "AD server IP"
+msgstr ""
+
+msgid "IP address of MS Active Directory server."
+msgstr ""
+
+msgid "Domain name"
+msgstr ""
+
+msgid "Domain name in old format."
+msgstr ""
+
+msgid "Administrator name"
+msgstr ""
+
+msgid "Username of a domain administrator account."
+msgstr ""
+
+msgid "Administration password"
+msgstr ""
+
+msgid "Password of domain administrator account, enter it here twice."
+msgstr ""
+
+msgid "The system is halting now. This may take one minute."
+msgstr ""
+
+msgid "Are you sure you want to shutdown the system?"
+msgstr ""
+
+msgid "Scheduled shutdown"
+msgstr ""
+
+msgid "Shutdown Time"
+msgstr ""
+
+msgid "File path"
+msgstr ""
+
+msgid "Saved file to"
+msgstr ""
+
+msgid "File not found"
+msgstr ""
+
+msgid "Rows"
+msgstr ""
+
+msgid "Cols"
+msgstr ""
+
+msgid "Highlighting"
+msgstr ""
+
+msgid "Enabled"
+msgstr ""
+
+msgid "Disabled"
+msgstr ""
+
+msgid "Execute command"
+msgstr ""
+
+msgid "The system is rebooting now. This may take one minute."
+msgstr ""
+
+msgid "Are you sure you want to reboot the system?"
+msgstr ""
+
+msgid "License"
+msgstr ""
+
+msgid "%s interface (SSID '%s')"
+msgstr ""
+
+msgid "Signal strength cache"
+msgstr ""
+
+msgid "MAC address"
+msgstr ""
+
+msgid "Signal"
+msgstr ""
+
+msgid "Noise"
+msgstr ""
+
+msgid "Quality"
+msgstr ""
+
+msgid "Associated stations"
+msgstr ""
+
+msgid "TX rates"
+msgstr ""
+
+msgid ""
+"No supported wireless interfaces were found for status display (only cards "
+"that use the wi[n] driver are supported)."
+msgstr ""
+
+msgid "%s interface"
+msgstr ""
+
+msgid "DHCP"
+msgstr ""
+
+msgid "PPPoE"
+msgstr ""
+
+msgid "PPTP"
+msgstr ""
+
+msgid "Subnet mask"
+msgstr ""
+
+msgid "Gateway"
+msgstr ""
+
+msgid "ISP DNS servers"
+msgstr ""
+
+msgid "Media"
+msgstr ""
+
+msgid "Channel"
+msgstr ""
+
+msgid "SSID"
+msgstr ""
+
+msgid "I/O packets"
+msgstr ""
+
+msgid "I/O errors"
+msgstr ""
+
+msgid "Collisions"
+msgstr ""
+
+msgid "CPU load"
+msgstr ""
+
+msgid "VLAN tag"
+msgstr ""
+
+msgid "Edit VLAN"
+msgstr ""
+
+msgid ""
+"Traceroute may take a while to complete. You may hit the Stop button on your "
+"browser at any time to see the progress of failed traceroutes."
+msgstr ""
+
+msgid "Partitions"
+msgstr ""
+
+msgid "S.M.A.R.T."
+msgstr ""
+
+msgid "ATAidle"
+msgstr ""
+
+msgid "Space Used"
+msgstr ""
+
+msgid "Mounts"
+msgstr ""
+
+msgid "MS Domain"
+msgstr ""
+
+msgid "List of detected ATA disks"
+msgstr ""
+
+msgid "List of detected SCSI disks"
+msgstr ""
+
+msgid "List of mount points"
+msgstr ""
+
+msgid "Free Space"
+msgstr ""
+
+msgid "%s will reboot after restoring the configuration."
+msgstr ""
+
+msgid "Delete ARP entry"
+msgstr ""
+
+msgid "Remove all entries from ARP table"
+msgstr ""
+
+msgid "Traffic graph"
+msgstr ""
+
+msgid "Cannot get data about interface"
+msgstr ""
+
+msgid "In"
+msgstr ""
+
+msgid "Out"
+msgstr ""
+
+msgid "Switch to"
+msgstr ""
+
+msgid "AutoScale"
+msgstr ""
+
+msgid "Follow"
+msgstr ""
+
+msgid "Graph shows last"
+msgstr ""
+
+msgid "Collecting initial data, please wait..."
+msgstr ""
+
+msgid "Enable tuning of some kernel variables"
+msgstr ""
+
+msgid ""
+"This will cause %s not to check for newer firmware versions when the <a "
+"href=%s>%s</a> page is viewed."
+msgstr ""
+
+msgid ""
+"DO NOT abort the firmware upgrade once it has started. %s will reboot "
+"automatically after storing the new firmware. The configuration will be "
+"maintained.<br>You need a minium of %d Mb RAM to perform the firmware "
+"update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+"System configuration before doing a Firmware upgrade."
+msgstr ""
+
+msgid ""
+"After you click &quot;Save&quot;, you may also have to do one or more of the "
+"following steps before you can access %s again: <ul><li>change the IP "
+"address of your computer</li><li>access the webGUI with the new IP "
+"address</li></ul>"
+msgstr ""
+
+msgid ""
+"You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
+"hard drive."
+msgstr ""
+
+msgid ""
+"This allows you to set FS type for preformated disk with data.<br><em>Leave "
+"'unformated' for unformated disk and then use <a href=%s>format "
+"menu</a>.</em>"
+msgstr ""
+
+msgid ""
+"Optional configuration step: Configuring a virtual RAID disk using your <a "
+"href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
+"before format and mount it!"
+msgstr ""
+
+msgid "The following input errors were detected"
+msgstr ""
+
+msgid ""
+"Second configuration step: Declaring the filesystem used by your <a "
+"href=%s>previously configured disk.</a>"
+msgstr ""
+
+msgid "Default is 21"
+msgstr ""
+
+msgid ""
+"<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+"href=%s>user</a> must have full Shell enabled."
+msgstr ""
+
+msgid "Last %d %s log entries"
+msgstr ""
+
+msgid "Clear log"
+msgstr ""
+
+msgid "Show log entries in reverse order (newest entries on top)"
+msgstr ""
+
+msgid "Number of log entries to show"
+msgstr ""
+
+msgid "Resolve IP addresses to hostnames"
+msgstr ""
+
+msgid ""
+"Hint: If this is checked, IP addresses in %s logs are resolved to real "
+"hostnames where possible."
+msgstr ""
+
+msgid "Warning: This can cause a huge delay in loading the %s log page!"
+msgstr ""
+
+msgid "Enable syslog'ing to remote syslog server"
+msgstr ""
+
+msgid "Remote syslog server"
+msgstr ""
+
+msgid "IP address of remote syslog server"
+msgstr ""
+
+msgid "System events"
+msgstr ""
+
+msgid "SSHD events"
+msgstr ""
+
+msgid "FTP events"
+msgstr ""
+
+msgid "RSYNCD events"
+msgstr ""
+
+msgid "SMARTD events"
+msgstr ""
+
+msgid "Daemon events"
+msgstr ""
+
+msgid ""
+"Syslog sends UDP datagrams to port 514 on the specified remote syslog "
+"server. Be sure to set syslogd on the remote server to accept syslog "
+"messages from %s."
+msgstr ""
+
+msgid "List of partition on all detected disk"
+msgstr ""
+
+msgid "List of SMART capabilities on all detected disk"
+msgstr ""
+
+msgid "List of Advanced ATA capabilities on all ATA disk"
+msgstr ""
+
+msgid "iSCSI initiator disabled"
+msgstr ""
+
+msgid "Show the list of available target Name on the iSCSI target"
+msgstr ""
+
+msgid "AD Authentication disabled"
+msgstr ""
+
+msgid "Count must be between 1 and %d"
+msgstr ""
+
+msgid "Count"
+msgstr ""
+
+msgid "Ping output"
+msgstr ""
+
+msgid "Maximum number of hops"
+msgstr ""
+
+msgid "Traceroute output"
+msgstr ""
+
+msgid ""
+"IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
+"hostnames&quot; is checked on the <a href=%s>%s</a> page."
+msgstr ""
+
+msgid ""
+"If you click 'Yes', %s will be reset to factory defaults and will reboot "
+"immediately. The entire system configuration will be overwritten. The LAN IP "
+"address will be reset to %s and the password will be set to '%s'."
+msgstr ""
+
+msgid "Are you sure you want to proceed?"
+msgstr ""
+
+msgid "The configuration has been restored. %s is now rebooting."
+msgstr ""
+
+msgid "The configuration could not be restored."
+msgstr ""
+
+msgid "The configuration could not be restored (file upload error)."
+msgstr ""
+
+msgid "webGUI Configuration"
+msgstr ""
+
+msgid "Erasing MBR and all partitions"
+msgstr ""
+
+msgid "Keeping the MBR and all partitions"
+msgstr ""
+
+msgid "Creating one partition"
+msgstr ""
+
+msgid "Initializing partition"
+msgstr ""
+
+msgid "Creating BSD label"
+msgstr ""
+
+msgid "Creating filesystem"
+msgstr ""
+
+msgid "Destroying old %s information"
+msgstr ""
+
+msgid "Done"
+msgstr ""
+
+msgid "Creating %s partition"
+msgstr ""
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr ""
+
+msgid "Power Daemon"
+msgstr ""
+
+msgid "Enable the system power control utility"
+msgstr ""
+
+msgid ""
+"The powerd utility monitors the system state and sets various power control "
+"options accordingly."
+msgstr ""
+
+msgid "Temperature"
+msgstr ""
+
+msgid "n/a"
+msgstr ""
+
+msgid "The attribute '%s' contains invalid characters."
+msgstr ""
+
+msgid "The attribute '%s' is required."
+msgstr ""
+
+msgid ""
+"The crypted disk list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+
+msgid "Data integrity"
+msgstr ""
+
+msgid "Encryption"
+msgstr ""
+
+msgid ""
+"Do you really want to delete this encrypted disk? All elements that still "
+"use it will become invalid (e.g. share)!"
+msgstr ""
+
+msgid "Create encrypted disk"
+msgstr ""
+
+msgid "Data integrity algorithm"
+msgstr ""
+
+msgid "Encryption algorithm"
+msgstr ""
+
+msgid "Passphrase"
+msgstr ""
+
+msgid "Passphrase don't match."
+msgstr ""
+
+msgid "Init and encrypt disk"
+msgstr ""
+
+msgid "Disk initialization and encryption"
+msgstr ""
+
+msgid "Encrypting... Please wait"
+msgstr ""
+
+msgid "Attaching..."
+msgstr ""
+
+msgid ""
+"This will erase ALL data on your disk!<br>Using Data integrity will reduce "
+"size of available storage and also reduce speed."
+msgstr ""
+
+msgid "Sensors"
+msgstr ""
+
+msgid "This encrypted disk is mounted, umount it before trying to detach it."
+msgstr ""
+
+msgid "You must use a passphrase to attach an encrypted disk."
+msgstr ""
+
+msgid "Encrypted disk name"
+msgstr ""
+
+msgid "Detaching..."
+msgstr ""
+
+msgid "attach"
+msgstr ""
+
+msgid "detach"
+msgstr ""
+
+msgid "Attached"
+msgstr ""
+
+msgid "Not attached"
+msgstr ""
+
+msgid "Reload page"
+msgstr ""
+
+msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
+msgstr ""
+
+msgid "Resume"
+msgstr ""
+
+msgid "Enable resume mode."
+msgstr ""
+
+msgid ""
+"Use this option to enable resuming broken transfers at the point of "
+"interruption."
+msgstr ""
+
+msgid "iSCSI Target"
+msgstr ""
+
+msgid ""
+"The iSCSI target list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+
+msgid "Do you really want to delete this target?"
+msgstr ""
+
+msgid "Delete target"
+msgstr ""
+
+msgid "Add target"
+msgstr ""
+
+msgid "Network that is authorised to access to this iSCSI target."
+msgstr ""
+
+msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
+msgstr ""
+
+msgid "FTP Server disabled"
+msgstr ""
+
+msgid "FTP users"
+msgstr ""
+
+msgid "FTP connected users"
+msgstr ""
+
+msgid "Save and Restart CIFS"
+msgstr ""
+
+msgid "Save and Restart UPnP"
+msgstr ""
+
+msgid "Save and Restart Unison"
+msgstr ""
+
+msgid "Save and Restart SSHD"
+msgstr ""
+
+msgid "Save and Restart RSYNC"
+msgstr ""
+
+msgid "Save and Restart NFS"
+msgstr ""
+
+msgid "Save and Restart FTP"
+msgstr ""
+
+msgid "Save and Restart AFP"
+msgstr ""
+
+msgid "The %s port must be a valid port number."
+msgstr ""
+
+msgid "Swap memory"
+msgstr ""
+
+msgid "No RSYNC Client configured"
+msgstr ""
+
+msgid "Detected RSYNC remote shares"
+msgstr ""
+
+msgid "Hosts"
+msgstr ""
+
+msgid "LDAP"
+msgstr ""
+
+msgid "Password confirmation"
+msgstr ""
+
+msgid "Remote share (source)"
+msgstr ""
+
+msgid "Remote address"
+msgstr ""
+
+msgid "Local share (destination)"
+msgstr ""
+
+msgid ""
+"The RSYNC client list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+
+msgid ""
+"The RSYNC local list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+
+msgid "Add RSYNC"
+msgstr ""
+
+msgid "Edit RSYNC"
+msgstr ""
+
+msgid "Delete RSYNC"
+msgstr ""
+
+msgid "Do you really want to delete this RSYNC?"
+msgstr ""
+
+msgid "Source share"
+msgstr ""
+
+msgid "Destination share"
+msgstr ""
+
+msgid "Remote source share name"
+msgstr ""
+
+msgid "Mount to use"
+msgstr ""
+
+msgid "File size"
+msgstr ""
+
+msgid "A valid size target value must be specified."
+msgstr ""
+
+msgid "Target name"
+msgstr ""
+
+msgid "Target address"
+msgstr ""
+
+msgid "Initiator name"
+msgstr ""
+
+msgid "This is for information only (not using during iSCSI negociation)."
+msgstr ""
+
+msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
+msgstr ""
+
+msgid ""
+"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+msgstr ""
+
+msgid "This the IP address or DNS name of the iSCSI target."
+msgstr ""
+
+msgid "Mount used"
+msgstr ""
+
+msgid "Balance algorithm"
+msgstr ""
+
+msgid "Select your read balance algorithm."
+msgstr ""
+
+msgid "Settings"
+msgstr ""
+
+msgid "Define an host name can be useful for NFS."
+msgstr ""
+
+msgid ""
+"The host list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+
+msgid "Edit Host"
+msgstr ""
+
+msgid "Do you really want to delete this host?"
+msgstr ""
+
+msgid "Delete Host"
+msgstr ""
+
+msgid "Add Host"
+msgstr ""
+
+msgid "The host name contain invalid characters."
+msgstr ""
+
+msgid "An host with this name already exists."
+msgstr ""
+
+msgid ""
+"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
+"."
+msgstr ""
+
+msgid "The IP address that this hostname represents."
+msgstr ""
+
+msgid "You may enter a description here for your reference."
+msgstr ""
+
+msgid "Download configuration"
+msgstr ""
+
+msgid "Restore configuration"
+msgstr ""
+
+msgid ""
+"Open a %s configuration XML file and click the button below to restore the "
+"configuration."
+msgstr ""
+
+msgid "Click this button to download the system configuration in XML format."
+msgstr ""
+
+msgid "Backup configuration"
+msgstr ""
+
+msgid "Initializing disk"
+msgstr ""
+
+msgid "Enable Zeroconf"
+msgstr ""
+
+msgid "LDAP server IP"
+msgstr ""
+
+msgid "IP address of LDAP server."
+msgstr ""
+
+msgid "Base DN"
+msgstr ""
+
+msgid ""
+"Specifies the default base DN to use when performing ldap operations. The "
+"base must be specified as a distinguished name in LDAP format."
+msgstr ""
+
+msgid "DN to bind"
+msgstr ""
+
+msgid ""
+"Specifies the default bind DN to use when performing ldap operations. The "
+"bind DN must be specified as a distinguished name in LDAP format."
+msgstr ""
+
+msgid "Password for DN"
+msgstr ""
+
+msgid "The credentials to bind with, enter it here twice."
+msgstr ""
+
+msgid "User suffix"
+msgstr ""
+
+msgid "Password suffix"
+msgstr ""
+
+msgid "Group suffix"
+msgstr ""
+
+msgid "Password encryption"
+msgstr ""
+
+msgid "Method used to store your password in your LDAP."
+msgstr ""
+
+msgid ""
+"These commands will be executed pre or post system initialization (booting)."
+msgstr ""
+
+msgid "Add command"
+msgstr ""
+
+msgid "Edit command"
+msgstr ""
+
+msgid "Delete command"
+msgstr ""
+
+msgid "Do you really want to delete this command?"
+msgstr ""
+
+msgid "Execute command pre or post system initialization (booting)."
+msgstr ""
+
+msgid "Startup"
+msgstr ""
+
+msgid "Large read/write"
+msgstr ""
+
+msgid "Enable large read/write"
+msgstr ""
+
+msgid "Use the new 64k streaming read and write variant SMB requests."
+msgstr ""
+
+msgid "Dynamic DNS"
+msgstr ""
+
+msgid "Servername"
+msgstr ""
+
+msgid "Save and Restart DynDNS"
+msgstr ""
