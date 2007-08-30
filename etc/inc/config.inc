@@ -852,13 +852,13 @@ function convert_config() {
 	if ($config['version'] === "2.6") {
 		$language = array(
 			"Bulgarian" => "bg",
-			"Dutch" => "nl_BE",
+			"Dutch" => "nl",
 			"English" => "en_US",
 			"French" => "fr",
 			"German" => "de",
-			"Greek" => "el_GR",
+			"Greek" => "el",
 			"Italian" => "it",
-			"Japanese" => "ja_JP",
+			"Japanese" => "ja",
 			"Romanian" => "ro",
 			"Russian" => "ru",
 			"SimplifiedChinese" => "zh_CN",

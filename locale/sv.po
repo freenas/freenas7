@@ -1,351 +1,345 @@
-# Hungarian translation for freenas
-# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
-# This file is distributed under the same license as the freenas package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: freenas\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-08-03 22:07+0000\n"
-"Last-Translator: Peressényi Róbert <robert@peressenyi.hu>\n"
-"Language-Team: Hungarian <hu@li.org>\n"
+"PO-Revision-Date: 2007-08-29 19:33+0000\n"
+"Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
+"Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Rosetta-Export-Date: 2007-08-04 05:28:25+0000\n"
+"X-Rosetta-Export-Date: 2007-08-30 07:58:13+0000\n"
 
 msgid "Date"
-msgstr "Dátum"
+msgstr "Datum"
 
 msgid "%b %d, %Y"
-msgstr "%Y %b %d"
+msgstr "%e %b %Y"
 
 msgid "%A, %B %d, %Y"
-msgstr "%Y %B %d, %A"
+msgstr "%A %d %B %Y"
 
 msgid "%A, %B %d @ %H:%M:%S"
-msgstr "%A, %B %d @ %H:%M:%S"
+msgstr "%A %d %B @ %H.%M.%S"
 
 msgid "%b %d, %Y - %I:%M %p"
-msgstr "%Y %b %d- %I:%M %p"
+msgstr "%d %b %Y - %H.%M"
 
 msgid "%A, %B %d, %Y - %I:%M %p"
-msgstr "%Y %B %d, %A - %I:%M %p"
+msgstr "%A %d %B %Y - %H.%M"
 
 msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
-msgstr "Vasárnap Hétfő Kedd Szerda Csütörtök Péntek Szombat"
+msgstr "Söndag Måndag Tisdag Onsdag Torsdag Fredag Lördag"
 
 msgid "Sun Mon Tue Wed Thu Fri Sat"
-msgstr "Va Hé Ke Sze Csü Pé Szo"
+msgstr "Sön Mån Tis Ons Tor Fre Lör"
 
 msgid ""
 "January February March April May June July August September October November "
 "December"
 msgstr ""
-"Január Február Március Április Május Június Július Augusztus Szeptember "
-"Október November December"
+"Januari Februari Mars April Maj Juni Juli Augusti September Oktober November "
+"December"
 
 msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
-msgstr "Jan Febr Márc Ápr Máj Jún Júl Aug Szept Okt Nov Dec"
+msgstr "Jan Feb Mar Apr Maj Jun Jul Aug Sep Okt Nov Dec"
 
 msgid "Time"
-msgstr "Idő"
+msgstr "Tid"
 
 msgid "%I:%M %p"
-msgstr "%I:%M %p"
+msgstr "%H.%M"
 
 msgid "second"
-msgstr "másodperc"
+msgstr "sekund"
 
 msgid "seconds"
-msgstr "másodperc"
+msgstr "sekunder"
 
 msgid "minute"
-msgstr "perc"
+msgstr "minut"
 
 msgid "minutes"
-msgstr "perc"
+msgstr "minuter"
 
 msgid "hour"
-msgstr "óra"
+msgstr "timme"
 
 msgid "hours"
-msgstr "óra"
+msgstr "timmar"
 
 msgid "day"
-msgstr "nap"
+msgstr "dag"
 
 msgid "days"
-msgstr "nap"
+msgstr "dagar"
 
 msgid "week"
-msgstr "hét"
+msgstr "vecka"
 
 msgid "weeks"
-msgstr "hét"
+msgstr "veckor"
 
 msgid "week days"
-msgstr "a hét napjai"
+msgstr "veckodagar"
 
 msgid "month"
-msgstr "hónap"
+msgstr "månad"
 
 msgid "months"
-msgstr "hónap"
+msgstr "månader"
 
 msgid "year"
-msgstr "év"
+msgstr "år"
 
 msgid "years"
-msgstr "év"
+msgstr "år"
 
 msgid "All"
-msgstr "Minden"
+msgstr "Alla"
 
 msgid "and"
-msgstr "és"
+msgstr "och"
 
 msgid "by"
-msgstr "írta"
+msgstr "efter"
 
 msgid "Down"
-msgstr "Le"
+msgstr "Nedåt"
 
 msgid "No"
-msgstr "Nem"
+msgstr "Nej"
 
 msgid "off"
-msgstr ""
+msgstr "av"
 
 msgid "OK"
 msgstr "OK"
 
 msgid "on"
-msgstr ""
+msgstr "på"
 
 msgid "To"
-msgstr ""
+msgstr "Till"
 
 msgid "The"
-msgstr "A(z)"
+msgstr ""
 
 msgid "Up"
-msgstr ""
+msgstr "Uppåt"
 
 msgid "URL"
 msgstr "URL"
 
 msgid "Yes"
-msgstr "Igen"
+msgstr "Ja"
 
 msgid "Activate"
-msgstr "Aktivál"
+msgstr "Aktivera"
 
 msgid "Add"
-msgstr "Hozzáadás"
+msgstr "Lägg till"
 
 msgid "Cancel"
-msgstr "Mégse"
+msgstr "Avbryt"
 
 msgid "Create"
-msgstr "Létrehoz"
+msgstr "Skapa"
 
 msgid "Deactivate"
-msgstr "Kikapcsolás"
+msgstr "Inaktivera"
 
 msgid "Delete"
-msgstr "Törlés"
+msgstr "Ta bort"
 
 msgid "Edit"
-msgstr "Szerkesztés"
+msgstr "Redigera"
 
 msgid "Enable"
-msgstr "Engedélyezés"
+msgstr "Aktivera"
 
 msgid "Help"
-msgstr "Súgó"
+msgstr "Hjälp"
 
 msgid "Ignore"
-msgstr "Kihagyás"
+msgstr "Ignorera"
 
 msgid "Login"
-msgstr "Bejelentkezés"
+msgstr "Logga in"
 
 msgid "Log out"
-msgstr "Kijelentkezés"
+msgstr "Logga ut"
 
 msgid "Modify"
-msgstr "Módosítás"
+msgstr "Ändra"
 
 msgid "New"
-msgstr "Új"
+msgstr "Ny"
 
 msgid "Search"
-msgstr "Keresés"
+msgstr "Sök"
 
 msgid "Save"
-msgstr "Mentés"
+msgstr "Spara"
 
 msgid "Submit"
-msgstr "Elküldés"
+msgstr "Skicka"
 
 msgid "Update"
-msgstr "Frissítés"
+msgstr "Uppdatera"
 
 msgid "View"
-msgstr "Nézet"
+msgstr "Visa"
 
 msgid "Apply changes"
-msgstr "Módosítások alkalmazása"
+msgstr "Verkställ ändringar"
 
 msgid "Warning"
-msgstr "Figyelmeztetés"
+msgstr "Varning"
 
 msgid "Load"
-msgstr "Betöltés"
+msgstr "Läs in"
 
 msgid "Retry"
-msgstr "Ismét"
+msgstr "Försök igen"
 
 msgid "Size"
-msgstr "Méret"
+msgstr "Storlek"
 
 msgid "Status"
-msgstr "Státusz"
+msgstr "Status"
 
 msgid "Type"
-msgstr "Típus"
+msgstr "Typ"
 
 msgid "Configuring"
-msgstr "Beállítás"
+msgstr "Konfigurering"
 
 msgid "Disk"
-msgstr "Lemez"
+msgstr "Disk"
 
 msgid "Disks"
-msgstr "Lemezek"
+msgstr "Diskar"
 
 msgid "Partition"
-msgstr "Partíció"
+msgstr "Partition"
 
 msgid "File system"
-msgstr "Fájlrendszer"
+msgstr "Filsystem"
 
 msgid "Description"
-msgstr "Leírás"
+msgstr "Beskrivning"
 
 msgid "Software RAID"
-msgstr "Szoftveres RAID"
+msgstr "Programvaru-RAID"
 
 msgid "Service"
-msgstr "Szolgáltatás"
+msgstr "Tjänst"
 
 msgid "TCP port"
-msgstr "TCP port"
+msgstr "TCP-port"
 
 msgid "Confirmation"
-msgstr "Megerősítés"
+msgstr "Bekräftelse"
 
 msgid "Note"
-msgstr "Jegyzet"
+msgstr "Observera"
 
 msgid "Successful"
-msgstr "Sikeres"
+msgstr "Lyckades"
 
 msgid "Failed"
-msgstr "Hibás"
+msgstr "Misslyckades"
 
 msgid "Error"
-msgstr "Hiba"
+msgstr "Fel"
 
 msgid "Hint"
-msgstr "Tipp"
+msgstr "Tips"
 
 msgid "The changes have been applied successfully."
-msgstr "A módosítások sikeresen végrehajtva."
+msgstr "Ändringarna har verkställts."
 
 msgid ""
 "The changes have been saved. You must <a href=%s>reboot</a> your NAS for "
 "changes to take effect."
 msgstr ""
-"A módosítás elmentve. A NAS <a href=%s>újraindítása</a> szükséges a "
-"módosítás alkalmazásához."
+"Ändringarna har sparats. Du måste <a href=%s>starta om</a> ditt NAS för att "
+"ändringarna ska bli aktiverade."
 
 msgid "ERROR: The changes could not be applied (error code %s)."
-msgstr "HIBA: A módosítások nem lettek alkalmazva (hiba kód %s)."
+msgstr "FEL: Ändringarna kunde inte verkställas (felkod %s)."
 
 msgid "A valid IP address must be specified."
-msgstr "Érvényes IP cím magdása szükséges."
+msgstr "En giltig IP-adress måste anges."
 
 msgid "A valid network bit count must be specified."
-msgstr ""
+msgstr "Ett giltigt antal nätverksbitar måste anges."
 
 msgid "The TCP port must be a valid port number."
-msgstr "A TCP portnak érvényes port számnak kell lennie."
+msgstr "TCP-porten måste vara ett giltigt portnummer."
 
 msgid "Password don't match."
-msgstr "Jelszó nem egyezik."
+msgstr "Lösenordet stämmer inte."
 
 msgid ""
 "Note: Ctrl-click (or command-click on the Mac) to select and de-select "
 "minutes, hours, days and months."
 msgstr ""
-"Megjegyzés: Ctrl-klikk (vagy command-klikk a Mac-eken) használható a percek, "
-"órák és napok kijelöléséhez, illetve annak megszüntetéséhez."
+"Observera: Ctrl+klick (eller Command+klick på Mac) för att markera och "
+"avmarkera minuter, timmar, dagar och månader."
 
 msgid ""
 "UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
 "Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
 "can result in unpredictable results, file corruption, and loss of data!"
 msgstr ""
-"Az UFS a FreeBSD (a %s alapjáúl szolgáló operációs rendszer) saját "
-"fájlrendszere. Az egyéb fájlrendszerekkel - mint FAT, FAT32, EXT2, EXT3 vagy "
-"NTFS - való kisérletezés kiszámíthatatlan eredményhez, fájl sérüléshez és "
-"adatvesztéshez vezethet."
+"UFS är det filformatet som är STANDARD för FreeBSD (det underliggande "
+"operativsystemet för %s). Försök att använda andra filformat såsom FAT, "
+"FAT32, EXT2, EXT3 eller NTFS kan resultera i oförutsedda resultat, skadade "
+"filer och att data kan gå förlorat!"
 
 msgid "Active"
-msgstr "Aktív"
+msgstr "Aktiv"
 
 msgid "Inactive"
-msgstr "Inaktív"
+msgstr "Inaktiv"
 
 msgid "Selected"
-msgstr "Kiválasztott"
+msgstr "Markerade"
 
 msgid "System"
-msgstr "Rendszer"
+msgstr "System"
 
 msgid "General setup"
-msgstr "Általános beállítás"
+msgstr "Allmän konfiguration"
 
 msgid "Static routes"
-msgstr "Statikus útvonalak"
+msgstr "Statiska vägar"
 
 msgid "Firmware"
-msgstr "Firmware"
+msgstr "Fast programvara"
 
 msgid "Advanced"
-msgstr "Haladó"
+msgstr "Avancerat"
 
 msgid "Swap"
-msgstr "Lapozó fájl"
+msgstr "Växling"
 
 msgid "Assign"
-msgstr "Hozzárendelés"
+msgstr "Tilldela"
 
 msgid "LAN"
 msgstr "LAN"
 
 msgid "Management"
-msgstr "Menedzsment"
+msgstr "Hantering"
 
 msgid "Mount Point"
-msgstr "Csatlakoztatási (mount) pont"
+msgstr "Monteringspunkt"
 
 msgid "Services"
-msgstr "Szolgáltatások"
+msgstr "Tjänster"
 
 msgid "CIFS"
 msgstr "CIFS"
@@ -369,311 +363,303 @@ msgid "UPnP"
 msgstr "UPnP"
 
 msgid "AFP"
-msgstr "AFP (Apple MacOSX)"
+msgstr "AFP"
 
 msgid "Access"
-msgstr "Hozzáférés"
+msgstr "Åtkomst"
 
 msgid "Users and Groups"
-msgstr "Felhasználók és csoportok"
+msgstr "Användare och grupper"
 
 msgid "Active Directory"
-msgstr "Címtár szolgáltatás (AD)"
+msgstr "Active Directory"
 
 msgid "NIS"
 msgstr "NIS"
 
 msgid "Radius"
-msgstr "Radius-szerver"
+msgstr "Radius"
 
 msgid "Process"
-msgstr "Folyamat"
+msgstr "Process"
 
 msgid "Interfaces"
-msgstr "Interfészek"
+msgstr "Gränssnitt"
 
 msgid "Wireless"
-msgstr "Vezeték nélküli"
+msgstr "Trådlös"
 
 msgid "Extensions"
-msgstr "Bővítmények"
+msgstr "Utökningar"
 
 msgid "Diagnostics"
-msgstr "Diagnosztika"
+msgstr "Diagnostik"
 
 msgid "Logs"
-msgstr "Naplók"
+msgstr "Loggar"
 
 msgid "Information"
-msgstr "Információ"
+msgstr "Information"
 
 msgid "Ping/Traceroute"
 msgstr "Ping/Traceroute"
 
 msgid "ARP table"
-msgstr "ARP tábla"
+msgstr "ARP-tabell"
 
 msgid "Edit File"
-msgstr "Fájl szerkesztése"
+msgstr "Redigera fil"
 
 msgid "Backup/Restore"
-msgstr "Mentés/Visszaállítás"
+msgstr "Säkerhetskopiera/Återskapa"
 
 msgid "Factory defaults"
-msgstr "Gyári értékek"
+msgstr "Fabriksinställningar"
 
 msgid "Reboot system"
-msgstr "Újraindítás"
+msgstr "Starta om systemet"
 
 msgid "Shutdown system"
-msgstr "Leállítás"
+msgstr "Stäng av systemet"
 
 msgid "Graph"
-msgstr "Grafikon"
+msgstr "Diagram"
 
 msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-msgstr "A NAS gép neve, tartomány rész nélkül<br>pl. <em>nas</em>"
+msgstr "Namnet på NAS-värden, utan domändelen<br>t.ex. <em>nas</em>"
 
 msgid "Domain"
-msgstr "Domén"
+msgstr "Domän"
 
 msgid "e.g. <em>mycorp.com</em>"
-msgstr "pl. <em>mycorp.com</em>"
+msgstr "t.ex. <em>mittforetag.se</em>"
 
 msgid "DNS servers"
-msgstr "DNS szerverek"
+msgstr "DNS-servrar"
 
 msgid "IP addresses"
-msgstr "IP címek"
+msgstr "IP-adresser"
 
 msgid "Username"
-msgstr "Felhasználónév"
+msgstr "Användarnamn"
 
 msgid ""
 "If you want to change the username for accessing the webGUI, enter it here."
 msgstr ""
-"A webfelület eléréséhez szükséges felhasználónév megváltoztatásához gépeld "
-"be itt."
+"Om du vill ändra användarnamnet för att komma åt webGUI, ange det här."
 
 msgid "Password"
-msgstr "Jelszó"
+msgstr "Lösenord"
 
 msgid ""
 "If you want to change the password for accessing the webGUI, enter it here "
 "twice.<br>Don't use the character ':'."
 msgstr ""
-"A webfelület eléréséhez szükséges jelszó megváltoztatásához gépeld be itt "
-"kétszer. Ne használd a ':' karaktert!"
+"Om du vill ändra lösenordet för att komma åt webGUI, ange det två gånger "
+"här.<br>Använd inte tecknet \":\"."
 
 msgid "WebGUI protocol"
-msgstr "Webfelület protokol"
+msgstr "Protokoll för webGUI"
 
 msgid "WebGUI port"
-msgstr "Webfelület port"
+msgstr "Port för webGUI"
 
 msgid ""
 "Enter a custom port number for the webGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
-"Adj meg egy port számot a webfelülethez, ha nem akarod az alapértelmezettet "
-"használni (80 a HTTP-hez, 443 a HTTPS-hez)."
+"Ange ett anpassat portnummer för ovanstående webGUI om du vill åsidosätta "
+"standardvärdet (80 för HTTP, 443 för HTTPS)."
 
 msgid "Language"
-msgstr "Nyelv"
+msgstr "Språk"
 
 msgid "Select the system language"
-msgstr "Válaszd ki a rendszer nyelvét."
+msgstr "Välj språk för systemet"
 
 msgid "System Time"
-msgstr "Rendszeridő"
+msgstr "Systemtid"
 
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
 "select one, then use Save button to update system time. (Mind seconds part "
 "will be ignored)"
 msgstr ""
-"Írd be a kívánt rendszer időt közvetlenül (formátum: hh/nn/éééé óó:pp) vagy "
-"az ikon segítségével jelöld ki és mentsd el. (A másodpercek figyelmen kívül "
-"lesznek hagyva)"
+"Ange önskad systemtid direkt (formatet mm/dd/åååå hh:mm) eller använd ikonen "
+"för att välja en. Tryck sedan på knappen Spara för att uppdatera "
+"systemtiden. (sekunddelen kommer att ignoreras)"
 
 msgid "Time zone"
-msgstr "Időzóna"
+msgstr "Tidszon"
 
 msgid "Select the location closest to you."
-msgstr "Válaszd ki a hozzád legközelebbi területet!"
+msgstr "Välj den plats som är närmast dig."
 
 msgid "Time update interval"
-msgstr "Idő frissítési gyakoriság"
+msgstr "Intervall för tidsuppdatering"
 
 msgid ""
 "Minutes between network time sync.; 300\trecommended, or 0 to disable."
 msgstr ""
-"Idő frissítési gyakoriság másodpercben; 300\tszükséges, vagy 0 a "
-"kikapcsoláshoz."
+"Minuter mellan tidssynkronisering över nätverket.; 300\trekommenderas eller "
+"0 för att inaktivera."
 
 msgid "NTP time server"
-msgstr "NTP idő szerver"
+msgstr "NTP-tidsserver"
 
 msgid ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
 "up at least one DNS server if you enter a host name here!"
 msgstr ""
-"Használj szóközt a címek elválasztásához (csak egy szükséges). Ne felejts el "
-"legalább egy DNS szervert beállítnai, ha itt szerver nevet használsz."
+"Använd ett blanksteg för att separera flera värdar (endast en krävs). Kom "
+"ihåg att konfigurera åtminstone en DNS-server om du anger ett värdnamn här!"
 
 msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-msgstr ""
-"Az állomásnév csak a következő karaktereket tartalmazhatja: a-z, 0-9 és '-'"
+msgstr "Värdnamnet får endast innehålla tecknen a-z, 0-9 och \"-\"."
 
 msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr ""
-"A tartomány név csak a következő karaktereket tartalmazhatja: a-z, 0-9 és '-'"
+msgstr "Domänen får endast innehålla tecknen a-z, 0-9, \"-\" och \".\"."
 
 msgid ""
 "A valid IP address must be specified for the primary/secondary DNS server."
 msgstr ""
-"Az elsődleges/másodlagos DNS szerver IP címének valódinak kell lennie."
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr ""
-"A felhasználónév csak a következő karaktereket tartalmazhatja: a-z, A-Z és 0-"
-"9"
+msgstr "Användarnamnet får endast innehålla tecknen a-z, A-Z och 0-9."
 
 msgid "A valid TCP/IP port must be specified for the webGUI port."
-msgstr "Érvényes TCP/IP port-ot kell megadni webfelület port-nak."
+msgstr ""
 
 msgid "The passwords do not match."
-msgstr "A jelszó nem egyezik."
+msgstr "Lösenorden stämmer inte överens."
 
 msgid "You must select a valid language."
-msgstr "Érvényes nyelvet kell kiválasztanod!"
+msgstr "Du måste välja ett giltigt språk."
 
 msgid ""
 "The time update interval must be either 0 (disabled) or between 6 and 1440."
 msgstr ""
-"Az idő frissítési gyakoriság 0 (kikapcsolva) vagy 6 és 1440 között lehet!"
 
 msgid ""
 "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
-"Az NTP idő szerver neve csak a következő karaktereket tartalmazhatja: a-z, 0-"
-"9 és '-'"
 
 msgid "System information"
-msgstr "Rendszerinformáció"
+msgstr "Systeminformation"
 
 msgid "Name"
-msgstr "Név"
+msgstr "Namn"
 
 msgid "Version"
-msgstr "Verzió"
+msgstr "Version"
 
 msgid "OS Version"
-msgstr "Operációs rendszer verzió"
+msgstr "Operativsystem"
 
 msgid "Platform"
-msgstr "Platform"
+msgstr "Plattform"
 
 msgid "Uptime"
-msgstr "Bekapcsolás óta eltelt idő (uptime)"
+msgstr "Upptid"
 
 msgid "Last config change"
-msgstr "Beállítás utolsó módosítása"
+msgstr "Senaste konfigurationsändring"
 
 msgid "Memory usage"
-msgstr "Memória használat"
+msgstr "Minnesanvändning"
 
 msgid "Load averages"
-msgstr "Betöltési átlagok"
+msgstr "Genomsnittlig belastning"
 
 msgid "show process information"
-msgstr "folyamat információ megjelenítése"
+msgstr "visa processinformation"
 
 msgid "Disk space usage"
-msgstr "Lemezhasználat"
+msgstr "Diskutrymmesanvändning"
 
 msgid "No disk configured"
-msgstr "Nincs lemez beállítva"
+msgstr "Ingen disk konfigurerad"
 
 msgid "Processes"
-msgstr "Folyamatok"
+msgstr "Processer"
 
 msgid "Processes information"
-msgstr "Folyamat információ"
+msgstr "Processinformation"
 
 msgid ""
 "The static route configuration has been changed.<br>You must apply the "
 "changes in order for them to take effect."
 msgstr ""
-"A statikus útvonal beállítások megváltoztak.<br>Alkalmaznod kell a "
-"változtatásokat, hogy működjenek."
+"Den statiska vägkonfigurationen har ändrats.<br>Du måste verkställa "
+"ändringarna för att de ska bli aktiverade."
 
 msgid "Interface"
-msgstr "Interfész"
+msgstr "Gränssnitt"
 
 msgid "Network"
-msgstr "Hálózat"
+msgstr "Nätverk"
 
 msgid "Edit Route"
-msgstr "Útvonal szerkesztése"
+msgstr "Redigera väg"
 
 msgid "Do you really want to delete this route?"
-msgstr "Biztos, hogy törlöd ezt az útvonalat?"
+msgstr "Vill du verkligen ta bort den här vägen?"
 
 msgid "Delete Route"
-msgstr "Útvonal törlése"
+msgstr "Ta bort väg"
 
 msgid "Add Route"
-msgstr "Útvonal hozzáadása"
+msgstr "Lägg till väg"
 
 msgid "A valid destination network must be specified."
-msgstr "Érvényes cél hálózatot kell megadni."
+msgstr "Ett giltigt målnätverk måste anges."
 
 msgid "A valid gateway IP address must be specified."
-msgstr "Érvényes átjáró IP címet kell magadni."
+msgstr ""
 
 msgid "A route to this destination network already exists."
-msgstr "Az útvonal ehhez a célhálózathoz már létezik."
+msgstr "En väg till det här målnätverket finns redan."
 
 msgid "Choose which interface this route applies to."
-msgstr "Válaszd ki, melyik interfészt alkalmazza az útvonal."
+msgstr ""
 
 msgid "Destination network"
-msgstr "Cél hálózat"
+msgstr ""
 
 msgid "Destination network for this static route"
-msgstr "Cél hálózat ehhez az útvonalhoz."
+msgstr ""
 
 msgid "Gateway to be used to reach the destination network"
-msgstr "Átjáró, mely a cél hálózat eléréséhez használatos."
+msgstr ""
 
 msgid "You may enter a description here for your reference (not parsed)."
-msgstr ""
-"Itt megadhatsz egy leírást a saját tájékoztatásodra (nemm értelmezett)."
+msgstr "Du kan ange en beskrivning här för referens (tolkas inte)."
 
 msgid "The uploaded image file is not for this platform"
-msgstr "A feltöltött lemezkép fájl nem való ehhez a platformhoz."
+msgstr "Den uppskickade avbildsfilen är inte för den här plattformen"
 
 msgid "Image upload failed (out of memory?)"
-msgstr "Lemezkép fájl feltöltési hiba (memória elfogyás?)"
+msgstr "Uppsändning av avbild misslyckades (slut på minne?)"
 
 msgid "The digital signature on this image is invalid."
-msgstr "A lemezkép fájl digitális aláírása érvénytelen."
+msgstr "Den digital signaturen för den här avbilden är ogiltig."
 
 msgid "This image is not digitally signed."
-msgstr "A lemezkép fájl digitális aláírása hiányzik."
+msgstr "Den här avbilden är inte digitalt signerat."
 
 msgid "There has been an error verifying the signature on this image."
-msgstr "Hiba történt a lemezkép aláírásának ellenőrzése közben."
+msgstr ""
+"Det inträffade ett fel vid verifiering av signaturen för den här avbilden."
 
 msgid "The image file is corrupt"
-msgstr "A lemezkép fájl hibás."
+msgstr "Avbildsfilen är skadad"
 
 msgid "The firmware is now being installed. %s will reboot automatically."
-msgstr "A firmware telepítése folyamatban. A %s automatikusan újraindul."
+msgstr ""
+"Den fasta programvaran installeras nu. %s kommer att startas om automatiskt."
 
 msgid "Firmware uploading is not supported on this platform."
-msgstr "A firmware feltöltés nem támogatott ezen a platformon."
+msgstr "Uppsändning av fast programvara stöds inte på den här plattformen."
 
 msgid ""
 "This means that the image you uploaded is not an official/supported image "
@@ -682,91 +668,90 @@ msgid ""
 "has not been tampered with.<br><br>Do you want to install this image anyway "
 "(on your own risk)?"
 msgstr ""
-"Ez azt jelenti, hogy a feltöltött lemezkép nem hivatalos/támogatott és nem "
-"várt működést vagy biztonsági kockázatot okozhat. Csak megbízható forrásból "
-"származó lemezképet használj és győződj  meg, hogy azt nem "
-"módosították.<br><br>Mindenképpen telepíted ezt a lemezképet (saját "
-"felelőségre)?"
+"Det här betyder att avbilden som du skickade upp inte är en officiell/stödd "
+"avbild och kan leda till oförväntat beteende eller säkerhetsproblem. "
+"Installera endast avbilder som kommer från källor du litar på, och försäkra "
+"dig om att avbilden inte har modifierats.<br><br>Vill du installera den här "
+"avbilden ändå (på din egen risk)?"
 
 msgid ""
 "Click &quot;Enable firmware upload&quot; below, then choose the image file "
 "to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
 "process."
 msgstr ""
-"Kattints a &quot;Firmware feltöltés engedélyezése&quot;-re, válassz ki egy "
-"lemezkép fájlt a feltöltéshez.<br>Kattints &quot;Firmware frissítése&quot;-"
-"re a frissítési folyamat megkezdéséhez."
+"Klicka på &quot;Aktivera uppskickning av fast programvara&quot; nedan, välj "
+"sedan avbildsfilen som ska skickas upp.<br>Klicka på &quot;Uppgradera den "
+"fast programvaran&quot; för att starta uppgraderingsprocessen."
 
 msgid "Enable firmware upload"
-msgstr "Firmware feltöltés engedélyezése"
+msgstr "Aktivera uppskickning av fast programvara"
 
 msgid "Disable firmware upload"
-msgstr "Firmware feltöltés letiltása"
+msgstr "Inaktivera uppskickning av fast programvara"
 
 msgid "Firmware image file"
-msgstr "Firmware lemezkép"
+msgstr "Avbildsfil för fast programvara"
 
 msgid "Upgrade firmware"
-msgstr "Firmware frissítés"
+msgstr "Uppgradera fast programvara"
 
 msgid "You must reboot the system before you can upgrade the firmware."
-msgstr "Újra kell indítani a rendszert a firmware frissítés előtt."
+msgstr ""
+"Du måste starta om systemet innan du kan uppgradera den fasta programvaran."
 
 msgid "The TCP idle timeout must be an integer."
-msgstr "A TCP várakozási időnek egész számot kell megadni."
-
-msgid "Certificate and key must always be specified together."
-msgstr "A tanusítványt és a kulcsot mindig együtt kell megadni."
-
-msgid "This certificate does not appear to be valid."
 msgstr ""
 
+msgid "Certificate and key must always be specified together."
+msgstr "Certifikat och nyckel måste alltid anges tillsammans."
+
+msgid "This certificate does not appear to be valid."
+msgstr "Certifikatet verkar inte vara giltigt."
+
 msgid "This key does not appear to be valid."
-msgstr "Ez a kulcs nem tűnik érvényesnek."
+msgstr "Den här nyckeln verkar inte vara giltig."
 
 msgid ""
 "The options on this page are intended for use by advanced users only, and "
 "there's <strong>NO</strong> support for them."
 msgstr ""
-"Az oldalon található beállítások csak haladó felhasználók számára vannak. "
-"Használatuk <strong>NEM</strong> ajánlott."
 
 msgid "webGUI SSL certificate/key"
-msgstr "webfelület SSL igazolvány/kulcs"
+msgstr "SSL-certifikat/nyckel för webGUI"
 
 msgid "Certificate"
-msgstr "Tanúsítvány"
+msgstr "Certifikat"
 
 msgid "Paste a signed certificate in X.509 PEM format here."
-msgstr "Másold ide az aláírt tanúsítványt X.509 PEM formátumban."
+msgstr "Klistra in ett signerat certifikat i X.509 PEM-format här."
 
 msgid "Key"
-msgstr "Kulcs"
+msgstr "Nyckel"
 
 msgid "Paste an RSA private key in PEM format here."
-msgstr ""
+msgstr "Klistra in en privat RSA-nyckel i PEM-format här."
 
 msgid "Miscellaneous"
-msgstr "Vegyes"
+msgstr "Diverse"
 
 msgid "Console menu"
-msgstr ""
+msgstr "Konsollmeny"
 
 msgid "Disable console menu"
-msgstr ""
+msgstr "Inaktivera konsollmeny"
 
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
-"Ezeknek a beállításoknak a módosításai újraindítás után lépnek életbe."
+"Ändringar i det här alternativet kommer att aktiveras efter en omstart."
 
 msgid "Firmware version check"
-msgstr "Firmware verzió ellenörzés"
+msgstr ""
 
 msgid "Disable firmware version check"
-msgstr "Firmware verzió ellenőrzés letiltása"
+msgstr ""
 
 msgid "TCP idle timeout"
-msgstr "TCP üresjárat időtúllépés"
+msgstr ""
 
 msgid ""
 "Idle TCP connections will be removed from the state table after no packets "
@@ -776,88 +761,85 @@ msgid ""
 msgstr ""
 
 msgid "Navigation"
-msgstr "Navigálás"
+msgstr "Navigering"
 
 msgid "Keep diagnostics in navigation expanded"
 msgstr ""
 
 msgid "System Beep"
-msgstr "Rendszersípolás"
+msgstr "Systemsignal"
 
 msgid "Disable speaker beep on startup and shutdown"
-msgstr "Rendszersípolás letíltása indulásnál és leállásnál."
+msgstr ""
 
 msgid "S.M.A.R.T Daemon"
-msgstr "S.M.A.R.T démon"
+msgstr "S.M.A.R.T-demon"
 
 msgid "Enable the S.M.A.R.T daemon"
-msgstr "S.M.A.R.T démon engedélyezése"
+msgstr "Aktivera S.M.A.R.T-demonen"
 
 msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
-msgstr "S.M.A.R.T eszköz megfigyelése a státusza naplózásával."
+msgstr "Övervaka S.M.A.R.T-enheten genom att logga dess status i loggfilen."
 
 msgid "Tuning"
-msgstr "Finomhangolás"
+msgstr "Justering"
 
 msgid "Zeroconf"
-msgstr "Zeroconf<br>konfigurációmentes hálózat"
+msgstr "Zeroconf"
 
 msgid "Swap file"
-msgstr "Lapozó fájl"
+msgstr "Växlingsfil"
 
 msgid "Swap size"
-msgstr "Lapozó mérete"
+msgstr "Växlingsstorlek"
 
 msgid "mount share"
-msgstr ""
+msgstr "montera utdelning"
 
 msgid "Mount to use for swap"
-msgstr "Csatolás a lapozó fájl használatához"
+msgstr "Montering att använda som växlingsutrymme"
 
 msgid "Swap file size"
-msgstr "Lapozó fájl mérete"
+msgstr "Storlek för växlingsfil"
 
 msgid "Size in MB."
-msgstr "Méret MB-ban."
+msgstr "Storlek i MB."
 
 msgid "Assign network ports"
-msgstr ""
+msgstr "Tilldela nätverksportar"
 
 msgid "Port "
 msgstr "Port "
 
 msgid " was assigned to "
-msgstr " ki lett jelölve a "
+msgstr " var tilldelad till "
 
 msgid " interfaces:"
-msgstr " interfészek:"
+msgstr " gränssnitt:"
 
 msgid "Network port"
-msgstr "Hálózati port"
+msgstr "Nätverksport"
 
 msgid "Delete interface"
-msgstr "Interfész törlése"
+msgstr "Ta bort gränssnitt"
 
 msgid "Add interface"
-msgstr "Interfész hozzáadása"
+msgstr "Lägg till gränssnitt"
 
 msgid ""
 "After you click &quot;Save&quot;, you must reboot %s to make the changes "
 "take effect. You may also have to do one or more of the following steps "
 "before you can access your NAS again: </span><"
 msgstr ""
-"A &quot;Mentés&quot; megnyomása után, újra kell indítani a %s -t, hogy a "
-"módosítások érvénybe lépjenek. A következő lépésekből egyet vagy többet "
-"végre kell hajtani, mielőtt újra csatlakozni tudsz a NAS-hoz: </span><"
 
 msgid "A valid gateway must be specified."
-msgstr "Érvényes átjárót kell megadni."
+msgstr "En giltig gateway måste anges."
 
 msgid "A valid mtu size must be specified."
-msgstr "Érvéyes MTU méretet kell megadni."
+msgstr "En giltig mtu-storlek måste anges."
 
 msgid "IP address"
-msgstr "IP-cím"
+msgstr "IP-adress"
 
 msgid "Subnet bit count"
 msgstr ""
@@ -866,10 +848,10 @@ msgid "MTU"
 msgstr "MTU"
 
 msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-msgstr "Az alapértelmezett MTU 1500, Jumbo Frame-hez használj 9000-t."
+msgstr ""
 
 msgid "Device polling"
-msgstr "Device polling (eszköz szavaztatás)"
+msgstr ""
 
 msgid "Enable device polling"
 msgstr ""
@@ -884,7 +866,7 @@ msgid ""
 msgstr ""
 
 msgid "Speed"
-msgstr "Sebesség"
+msgstr "Hastighet"
 
 msgid "Duplex"
 msgstr "Duplex"
@@ -893,130 +875,126 @@ msgid "Enable Optional "
 msgstr ""
 
 msgid " interface"
-msgstr " interfész"
+msgstr " gränssnitt"
 
 msgid "Enter a description (name) for the interface here."
-msgstr "Adj leírrást (nevet) az interfészhez."
+msgstr ""
 
 msgid "Static IP configuration"
-msgstr "Statikus IP beállítás"
+msgstr "Statisk IP-konfiguration"
 
 msgid "DHCP client configuration"
-msgstr "DHCP kliens beállítás"
+msgstr "Konfiguration av DHCP-klient"
 
 msgid "General configuration"
-msgstr "Általános beállítás"
+msgstr "Allmän konfiguration"
 
 msgid "Hostname"
-msgstr "Állomásnév"
+msgstr "Värdnamn"
 
 msgid "Host"
-msgstr "Állomás"
+msgstr "Värd"
 
 msgid ""
 "The value in this field is sent as the DHCP hostname when requesting a DHCP "
 "lease."
 msgstr ""
-"Ennek a mezőnek az értéke kerül elküldésre mint DHCP állomásnév DHCP bérlési "
-"kérés esetén."
+"Värdet i det här fältet skickas som DHCP-värdnamnet vid begäran om en DHCP-"
+"utlåning."
 
 msgid "Client Identifier"
-msgstr "Kliens azonosító"
+msgstr "Klientidentifierare"
 
 msgid ""
 "The value in this field is sent as the DHCP client identifier when "
 "requesting a DHCP lease."
 msgstr ""
-"Ennek a mezőnek az értéke kerül elküldésre mint DHCP kliens azonosító DHCP "
-"bérlési kérés esetén."
+"Värdet i det här fältet skickas som DHCP-klientidentifierare vid begäran om "
+"en DHCP-utlåning."
 
 msgid "Calculate netmask bits"
-msgstr ""
+msgstr "Beräkna nätmasksbitar"
 
 msgid ""
 "The LAN configuration has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
-"A LAN beállítások megváltoztak.<br>Alkalmaznod kell a változtatásokat, hogy "
-"működjenek."
+"LAN-konfigurationen har ändrats.<br>Du måste verkställa ändringarna för att "
+"de ska bli aktiverade."
 
 msgid "Manage"
-msgstr ""
+msgstr "Hantera"
 
 msgid "Format"
-msgstr "Formázás"
+msgstr "Formatera"
 
 msgid "Tools"
-msgstr "Eszközök"
+msgstr "Verktyg"
 
 msgid ""
 "The disk list has been changed.<br>You must apply the changes in order for "
 "them to take effect."
 msgstr ""
-"A lemez lista megváltozott.<br>Alkalmaznod kell a változtatásokat, hogy "
-"működjenek."
+"Disklistan har ändrats.<br>Du måste verkställa ändringarna för att de ska "
+"bli aktiverade."
 
 msgid "Standby time"
-msgstr "Készenléti idő"
+msgstr ""
 
 msgid "Always on"
-msgstr "Mindig bekapcsolva"
+msgstr "Alltid på"
 
 msgid "Unknown or unformatted"
-msgstr "Ismeretlen vagy formázatlan"
+msgstr "Okänd eller oformaterad"
 
 msgid "Edit disk"
-msgstr "Lemez módosítása"
+msgstr "Redigera disk"
 
 msgid "Delete disk"
-msgstr "Lemez eltávolítása"
+msgstr "Ta bort disk"
 
 msgid ""
 "Do you really want to delete this disk? All elements that still use it will "
 "become invalid (e.g. share)!"
 msgstr ""
-"Biztos, hogy el akarod távolítani ezt a lemezt? Minden erre hivatkozó elem "
-"érvénytelenné válik (pl.: megosztás)!"
 
 msgid "Add disk"
-msgstr "Lemez hozzáadása"
+msgstr "Lägg till disk"
 
 msgid "First configuration step: Add your hardrive to the disk list."
-msgstr "Első beállítási lépés: Add a lemez listához a merevlemezedet."
+msgstr "Första konfigurationssteget: Lägg till din hårddisk till disklistan."
 
 msgid "This disk already exists in the disk list."
-msgstr "Ez a lemez már létezik a lemez listában."
+msgstr "Den här disken finns redan i disklistan."
 
 msgid "UDMA mode"
-msgstr "UDMA mód"
+msgstr "UDMA-läge"
 
 msgid "Hard disk standby time"
-msgstr "Merevlemez készenléti idő."
+msgstr ""
 
 msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
 "the last access has elapsed. <em>Do not set this for CF cards.</em>"
 msgstr ""
-"Készenléti állapotba küldi a merevlemezt, ha a megjelölt idő eltelik az "
-"utolsó hozzáférés óta. <em>Na használd ezt a beállítást CF kártyánál.</em>"
 
 msgid "Advanced Power Management"
-msgstr "Haladó energia kezelés (APM)"
+msgstr ""
 
 msgid "Minimum power usage with Standby"
-msgstr "Minimális energiafelhasználás készenléti állapot használatával."
+msgstr ""
 
 msgid "Medium power usage with Standby"
-msgstr "Közepes energiafelhasználás készenléti állapot használatával."
+msgstr ""
 
 msgid "Minimum power usage without Standby"
-msgstr "Minimális energiafelhasználás készenléti állapot nélkül."
+msgstr ""
 
 msgid "Medium power usage without Standby"
-msgstr "Közepes energiafelhasználás készenléti állapot nélkül."
+msgstr ""
 
 msgid "Maximum performance, maximum power usage"
-msgstr "Maximális teljesítmény, maximális energiafelhasználás"
+msgstr ""
 
 msgid ""
 "This allows  you  to lower the power consumption of the drive, at the "
@@ -1024,45 +1002,45 @@ msgid ""
 msgstr ""
 
 msgid "Acoustic level"
-msgstr "Zajszint"
+msgstr ""
 
 msgid "Minimum performance, Minimum acoustic output"
-msgstr "Minimális teljesítmény, minimális zajszint"
+msgstr ""
 
 msgid "Medium acoustic output"
 msgstr ""
 
 msgid "Maximum performance, maximum acoustic output"
-msgstr "Maximális teljesítmény, maximális zajszint"
+msgstr ""
 
 msgid ""
 "This allows you to set how loud the drive is while it's operating.<br><em>Do "
 "not set this for CF cards.</em>"
 msgstr ""
-"Itt adhatod meg, hogy milyen hangos legyen a meghajtó, amikor "
-"dolgozik.<br><em>Ne használd ezt a beállítást CF kártyánál.</em>"
 
 msgid "Preformatted FS"
-msgstr "Előreformázott fájlrendszer"
+msgstr "Förformaterat filsystem"
 
 msgid "Initialize"
-msgstr ""
+msgstr "Initiera"
 
 msgid ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
 msgstr ""
-"A lemez jelenleg csatlakoztatva van! A lemez <a href=%s>ecsatlakoztatása</a> "
-"a folyamat elött."
+"Disken är monterad för tillfället! <a href=%s>Avmontera</a> den här disken "
+"först innan du fortsätter."
 
 msgid "Can't format the drive where FreeNAS configuration file is installed!"
-msgstr "Nem formázható az a lemez, amire a FreeNAS telepítve van."
+msgstr ""
+"Kan inte formatera enheten där konfigurationsfilen för FreeNAS är "
+"installerad!"
 
 msgid "Disk initialization details"
-msgstr "Lemez inicializálás részletek"
+msgstr "Detaljer för diskinitiering"
 
 msgid "\"fdisk: Geom not found\"is not an error message!\n"
-msgstr "\"fdisk: Geom nem található\" nem egy hibaüzenet!\n"
+msgstr "\"fdisk: Geom not found\" är inte ett felmeddelande!\n"
 
 msgid ""
 "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
@@ -1071,41 +1049,37 @@ msgid ""
 msgstr ""
 
 msgid "Format disk"
-msgstr "Lemez formázás"
+msgstr "Formatera disk"
 
 msgid "Do you really want to format this disk? All data will be lost!"
-msgstr "Biztos, hogy formázod ezt a lemezt? Minden adat törlődni fog!"
+msgstr ""
+"Vill du verkligen formatera den här disken? All data kommer att förloras!"
 
 msgid ""
 "Specify the percentage of space held back from normal users. Note that "
 "lowering the threshold can adversely affect performance and auto-"
 "defragmentation."
 msgstr ""
-"Határozd meg a normál felhasználótól visszatartott hely százalékát. A "
-"küszöbérték csökkentése befolyásolja az automatikus-töredezettségmentesítési "
-"folyamat lefutását."
 
 msgid "Don't Erase MBR"
-msgstr "Ne töröld az MBR-t"
+msgstr "Radera inte huvudstartsektorn (MBR)"
 
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
-msgstr "Ne töröld az MBR-t (használatos néhány RAID vezérlő kártyánál)"
+msgstr ""
 
 msgid "Send Command!"
-msgstr "Parancs küldése!"
+msgstr "Skicka kommando!"
 
 msgid "Command output:"
-msgstr "Parancs kimenet:"
+msgstr "Kommandoutmatning:"
 
 msgid ""
 "The disk is currently mounted! The mount point will be removed temporary to "
 "perform selected command."
 msgstr ""
-"A lemez jelenleg csatlakoztatva van! A csatolási pont átmenetileg törölve "
-"lesz, amíg a folyamat zajlik."
 
 msgid "Unmount disk/partition"
-msgstr "Lemez/partíció lecsatlakoztatása (unmount)"
+msgstr "Avmontera disk/partition"
 
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
@@ -1113,10 +1087,6 @@ msgid ""
 "mode.<br>Service disruption to users accessing this mount will occur during "
 "this process."
 msgstr ""
-"Ha a kiválasztott lemez/partíció csatlakoztatva (mount-olva) van, "
-"átmenetileg le lesz csatlakoztatva, amíg a kiválasztott parancs végrehajtása "
-"folyik. Ellenkező esetben a parancs csak-olvas üzemmódban fut "
-"le.<br>Szolgáltatás és hozzáférés megszakadás várható, amíg a folyamat tart."
 
 msgid "iSCSI"
 msgstr "iSCSI"
@@ -1125,47 +1095,45 @@ msgid "iSCSI Initiator"
 msgstr ""
 
 msgid "Target IP address"
-msgstr "Cél IP cím"
+msgstr ""
 
 msgid "IP address of the iSCSI target."
-msgstr "iSCSI cél IP címe"
+msgstr "IP-adress för iSCSI-målet."
 
 msgid "Targetname"
-msgstr "Cél megnevezés"
+msgstr "Målnamn"
 
 msgid "Targetname."
-msgstr "Cél megnevezés."
+msgstr "Målnamn."
 
 msgid "Manage RAID"
-msgstr "RAID kezelés"
+msgstr "Hantera RAID"
 
 msgid "Format RAID"
-msgstr "RAID formázás"
+msgstr "Formatera RAID"
 
 msgid "Volume Name"
-msgstr "Kötet név"
+msgstr "Volymnamn"
 
 msgid ""
 "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
 "first before proceeding."
 msgstr ""
-"A RAID kötet csatlakoztatva van! Töröld a <a href=%s>csatolási pontot</a> "
-"először a folytatás előtt."
 
 msgid "Geom Vinum"
-msgstr "Geom Vinum"
+msgstr ""
 
 msgid "Geom Mirror"
-msgstr "Geom tükör"
+msgstr ""
 
 msgid "Geom Stripe"
-msgstr "Geom szalag"
+msgstr ""
 
 msgid "Geom Concat"
-msgstr "Geom Concat"
+msgstr ""
 
 msgid "Geom Raid5"
-msgstr "Geom Raid5"
+msgstr ""
 
 msgid "(unstable)"
 msgstr "(instabil)"
@@ -1177,55 +1145,52 @@ msgid ""
 "The Raid configuration has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
-"A RAID beállítások megváltoztak.<br>Alkalmaznod kell a változtatásokat, hogy "
-"működjenek."
+"RAID-konfigurationen har ändrats.<br>Du måste verkställa ändringarna för att "
+"de ska bli aktiverade."
 
 msgid "Edit RAID"
-msgstr "RAID szerkesztése"
+msgstr "Redigera RAID"
 
 msgid "Delete RAID"
-msgstr "RAID törlése"
+msgstr "Ta bort RAID"
 
 msgid "Add RAID"
-msgstr "RAID hozzáadása"
+msgstr "Lägg till RAID"
 
 msgid ""
 "Do you really want to delete this raid volume? All elements that still use "
 "it will become invalid (e.g. share)!"
 msgstr ""
-"Biztos, hogy törölni akarod ezt a RAID kötetet? Minden elem, ami erre "
-"hivatkozik, érvénytelen lesz (pl: megosztás)!"
 
 msgid "You must add disks first."
-msgstr "Elöszőr lemezt kell hozzáadni."
+msgstr "Du måste lägga till diskar först."
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
-msgstr ""
-"Az eszköz név csak a következő karaktereket tartalmazhatja: a-z, A-Z, 0-9"
+msgstr "Enhetsnamnet får endast innehålla tecknen a-z, A-Z, 0-9."
 
 msgid "This device already exists in the raid volume list."
-msgstr "Ez az eszköz már létezik a RAID kötet listában."
+msgstr "Den här enheten finns redan i listan över RAID-volymer."
 
 msgid "There must be a minimum of 2 disks in a RAID 0 volume."
-msgstr "A RAID 0 kötetben minimum 2 lemeznek kell lennie."
+msgstr "Det måste minst finnas 2 diskar i en RAID 0-volym."
 
 msgid "There must be 2 disks in a RAID 1 volume."
-msgstr "A RAID 1 kötetben 2 lemeznek kell lennie."
+msgstr "Det måste finnas 2 diskar i en RAID 1-volym."
 
 msgid "There must be a minimum of 2 disks in a RAID 5 volume."
-msgstr "A RAID 5 kötetben minimum 2 lemeznek kell lennie."
+msgstr "Det måste minst finnas 2 diskar i en RAID 5-volym."
 
 msgid "ERR Could not save RAID configuration.\n"
 msgstr ""
 
 msgid "Raid name"
-msgstr "RAID neve"
+msgstr ""
 
 msgid "striping"
 msgstr ""
 
 msgid "mirroring"
-msgstr ""
+msgstr "spegling"
 
 msgid "rotated block-interleaved parity"
 msgstr ""
@@ -1234,25 +1199,26 @@ msgid "JBOD"
 msgstr "JBOD"
 
 msgid "Members of this volume"
-msgstr "A kötet elemei"
+msgstr "Medlemmar av den här volymen"
 
 msgid "Software RAID information and status"
-msgstr "Szoftver RAID információ és állapot"
+msgstr ""
 
 msgid "Disk format UFS output:"
 msgstr ""
 
 msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
-msgstr "Ez a lépés megformázza a RAID kötetet UFS-re (Unix FileSystem)."
+msgstr ""
+"Det här steget kommer att formatera RAID-volymen med Unix FileSystem (UFS)."
 
 msgid "Format UFS disk!"
-msgstr "UFS lemez formázása!"
+msgstr "Formatera UFS-disk!"
 
 msgid "Object name"
-msgstr "Objektumnév"
+msgstr "Objektnamn"
 
 msgid "Command"
-msgstr "Parancs"
+msgstr "Kommando"
 
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
@@ -1260,36 +1226,36 @@ msgid ""
 msgstr ""
 
 msgid "Share Name"
-msgstr "Megosztás neve"
+msgstr "Utdelningsnamn"
 
 msgid ""
 "The mount point list has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
-"A csatolási pont lista megváltozott.<br>Alkalmaznod kell a változtatásokat, "
-"hogy működjenek."
+"Monteringspunktlistan har ändrats.<br>Du måste verkställa ändringarna för "
+"att de ska bli aktiverade."
 
 msgid ""
 "Do you really want to delete this mount point? All elements that still use "
 "it will become invalid (e.g. share)!"
 msgstr ""
-"Biztos, hogy törlöd ezt a csatolási pontot? Minden erre hivatkozó elem "
-"érvénytelenné válik (pl.: megosztás)!"
+"Vill du verkligen ta bort den här monteringspunkten? Alla element som "
+"fortfarande använder den kommer att bli ogiltiga (t.ex. utdelningen)!"
 
 msgid "delete mount"
-msgstr "Csatolás törlése"
+msgstr "ta bort montering"
 
 msgid "add mount"
-msgstr "Csatolás hozzáadása"
+msgstr "lägg till montering"
 
 msgid "The description name contain invalid characters."
-msgstr "A leírás név érvénytelen karaktert tartalmaz."
+msgstr "Beskrivningen innehåller ogiltiga tecken."
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
-msgstr "Nem csatolható a rendszer partíció 1, az ADAT partíció a 2."
+msgstr "Kan inte montera systempartition 1, DATA-partitionen är 2."
 
 msgid "Duplicate Share Name."
-msgstr "Kettőzött megosztás név."
+msgstr "Dublett av utdelningsnamn."
 
 msgid ""
 "Select EFI GPT if you want to mount a GPT formatted drive (default method "
@@ -1302,27 +1268,24 @@ msgstr ""
 msgid ""
 "You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr ""
-"Nem csatolható fel az a partíció '%s', ahol a beállítás fájl tárolódik."
 
 msgid "Mounting..."
-msgstr "Felcsatolás..."
+msgstr "Monterar..."
 
 msgid "Unmounting..."
-msgstr "Lecsatolás..."
+msgstr "Avmonterar..."
 
 msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
 msgstr ""
-"Nem csatolható le az a lemez, ami lapozóként vagy iSCSI-célként van "
-"használva."
 
 msgid "The Netbios name contains invalid characters."
-msgstr "A Netbios név érvénytelen karaktert tartalmaz."
+msgstr ""
 
 msgid "The Workgroup name contains invalid characters."
-msgstr "A munkacsoport név érvénytelen karaktert tartalmaz."
+msgstr ""
 
 msgid "The WINS server must be an IP address."
-msgstr "A WINS szervert IP címmel kell megadni."
+msgstr ""
 
 msgid "The SND Buffer value must be a number."
 msgstr ""
@@ -1334,28 +1297,28 @@ msgid "CIFS share"
 msgstr ""
 
 msgid "Authentication"
-msgstr ""
+msgstr "Autentisering"
 
 msgid "NetBiosName"
-msgstr ""
+msgstr "NetBIOS-namn"
 
 msgid "Workgroup"
-msgstr "Munkacsoport"
+msgstr "Arbetsgrupp"
 
 msgid "Workgroup to be member of."
-msgstr ""
+msgstr "Arbetsgrupp att vara medlem av."
 
 msgid "Server description. This can usually be left blank."
-msgstr "Szerver leírás. Üresen maradhat."
+msgstr "Serverbeskrivning. Det här kan vanligtvis lämnas tomt."
 
 msgid "Dos charset"
-msgstr "Dos karakterkiosztás."
+msgstr "Dos-teckenuppsättning"
 
 msgid "Unix charset"
-msgstr "Unix karakterkiosztás."
+msgstr "Unix-teckenuppsättning"
 
 msgid "Log Level"
-msgstr "Naplózási szint"
+msgstr "Loggnivå"
 
 msgid "Local Master Browser"
 msgstr ""
@@ -1364,107 +1327,101 @@ msgid "Allows %s to try and become a local master browser."
 msgstr ""
 
 msgid "Time server"
-msgstr "Idő szerver"
+msgstr "Tidsserver"
 
 msgid "%s advertises itself as a time server to Windows clients."
-msgstr "%s hirdesse magát idő szerverként a Windows klienseknek."
+msgstr "%s annoserar ut sig själv som en tidsserver för WIndows-klienter."
 
 msgid "WINS server"
-msgstr "WINS szerver"
+msgstr "WINS-server"
 
 msgid "WINS Server IP address."
-msgstr "WINS szerver IP cím"
+msgstr "IP-adress till WINS-server"
 
 msgid "Recycle Bin"
-msgstr "Kuka"
+msgstr "Papperskorg"
 
 msgid "Enable Recycle bin"
-msgstr "Kuka használata"
+msgstr "Aktivera papperskorg"
 
 msgid "This will create a recycle bin on the CIFS shares."
-msgstr "Létre fog hozni egy Kukát a CIFS megosztásokon."
+msgstr "Det här kommer att skapa en papperskorg på CIFS-utdelningar."
 
 msgid "Shares"
-msgstr "Megosztások"
+msgstr "Utdelningar"
 
 msgid "Send Buffer Size"
-msgstr "Puffer méret küldése"
+msgstr ""
 
 msgid "Size of send buffer (16384 by default)."
-msgstr "Küldő puffer mérete (alapértelmezett: 16384)"
+msgstr ""
 
 msgid "Receive Buffer Size"
-msgstr "Fogadó puffer mérete"
+msgstr ""
 
 msgid "Size of receive buffer (16384 by default)."
-msgstr "Fogadó puffer mérete (alapértelmezett: 16384)"
+msgstr ""
 
 msgid ""
 "The shares has been modified.<br>You must apply the changes in order for "
 "them to take effect."
 msgstr ""
-"A megosztások megváltoztak.<br>Alkalmaznod kell a változtatásokat, hogy "
-"működjenek."
 
 msgid "Browseable"
-msgstr "Böngészhető"
+msgstr "Bläddringsbar"
 
 msgid "Edit share"
-msgstr "Magosztás szerkesztése"
+msgstr ""
 
 msgid ""
 "This controls whether this share is seen in the list of available shares in "
 "a net view and in the browse list."
 msgstr ""
-"Ez határozza meg, hogy a megosztás megjelenik-e a megosztások listájában (a "
-"net view parancsnál és a böngészési listában)."
 
 msgid "The maximum Number of client must be a number."
-msgstr "A kliensek maximális számának számnak kell lennie."
+msgstr ""
 
 msgid "The max con per ip must be a number."
-msgstr "Az IP-nkénti maximális kapcsolatok számának számnak kell lennie."
+msgstr ""
 
 msgid "The maximum idle time be a number."
-msgstr "A maximális várakozási időnek számnak kell lennie."
+msgstr ""
 
 msgid "The pasv address must be a public IP address."
 msgstr ""
 
 msgid "You must select at minium anonymous or/and local user authentication."
 msgstr ""
-"Legalább névtelen (anonymous) és/vagy helyi felhasználó azonosítást kell "
-"választani."
 
 msgid "FTP Server"
-msgstr ""
+msgstr "FTP-server"
 
 msgid "Number of clients"
-msgstr ""
+msgstr "Antal klienter"
 
 msgid "Maximum number of simultaneous clients."
-msgstr ""
+msgstr "Maximalt antal samtidiga klienter."
 
 msgid "Max. conn. per IP"
-msgstr ""
+msgstr "Max. anslutningar per IP"
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
-msgstr ""
+msgstr "Maximalt antal anslutningar per IP-adress (0 = obegränsat)."
 
 msgid "Timeout"
-msgstr ""
+msgstr "Tidsgräns"
 
 msgid "Maximum idle time in minutes."
-msgstr ""
+msgstr "Maximal overksam tid i minuter"
 
 msgid "Anonymous login"
-msgstr "Névtelen (Anonymous) bejelntkezés"
+msgstr "Anonym inloggning"
 
 msgid "Enable anonymous login."
-msgstr ""
+msgstr "Aktivera anonym inloggning."
 
 msgid "Local User"
-msgstr "Helyi felhasználó"
+msgstr "Lokal användare"
 
 msgid "Enable local user login."
 msgstr ""
@@ -1473,20 +1430,18 @@ msgid "FXP"
 msgstr "FXP"
 
 msgid "Enable FXP protocol."
-msgstr "FXP protokol engedélyezve."
+msgstr "Aktivera FXP-protokoll."
 
 msgid ""
 "FXP allows transfers between two remote servers without any file data going "
 "to the client asking for the transfer (insecure!)."
 msgstr ""
-"Az FXP lehetővé teszi a két távoli szerver közti adatcserét anélkül, hogy a "
-"klienstől kérnék az átvitelt."
 
 msgid "NAT mode"
-msgstr "NAT mód"
+msgstr ""
 
 msgid "Force NAT mode."
-msgstr "NAT mód kényszerítése."
+msgstr ""
 
 msgid ""
 "Enable this if your FTP server is behind a NAT box that doesn't support "
@@ -1494,7 +1449,7 @@ msgid ""
 msgstr ""
 
 msgid "Passive IP address"
-msgstr "Passzív IP cím"
+msgstr ""
 
 msgid ""
 "Use this option to override the IP address that FTP daemon will advertise in "
@@ -1512,61 +1467,62 @@ msgid ""
 msgstr ""
 
 msgid "Banner"
-msgstr ""
+msgstr "Banderoll"
 
 msgid "Greeting banner displayed by FTP when a connection first comes in."
 msgstr ""
+"Välkomstbanderoll som visas av FTP-servern när en anslutning kommer in."
 
 msgid "A valid network must be specified."
-msgstr ""
+msgstr "Ett giltig nätverk måste anges."
 
 msgid "NFS Server"
-msgstr ""
+msgstr "NFS-server"
 
 msgid "Map all users to root"
-msgstr ""
+msgstr "Mappa alla användare till root"
 
 msgid "All users will have the root privilege."
-msgstr ""
+msgstr "Alla användare kommer att ha root-behörighet."
 
 msgid "Authorized"
-msgstr ""
+msgstr "Behörig"
 
 msgid "Networks"
-msgstr "Hálózatok"
+msgstr "Nätverk"
 
 msgid "Networks Authorized"
-msgstr ""
+msgstr "Behöriga nätverk"
 
 msgid "Network that is authorised to access to NFS share"
 msgstr ""
 
 msgid "The name of the exported directories are : /mnt/sharename"
-msgstr "Az exportált könyvtárak nevei: /mnt/megosztásnév"
+msgstr ""
 
 msgid "Server"
-msgstr "Szerver"
+msgstr "Server"
 
 msgid "Client"
-msgstr "Kliens"
+msgstr "Klient"
 
 msgid "Local"
-msgstr "Helyi"
+msgstr "Lokal"
 
 msgid "Rsync Daemon"
 msgstr ""
 
 msgid "Read only"
-msgstr "Csak olvasás"
+msgstr "Skrivskyddad"
 
 msgid "Map to user"
-msgstr ""
+msgstr "Koppla till användare"
 
 msgid "Alternate TCP port. Default is 873"
 msgstr ""
 
 msgid "Maximum connections"
-msgstr ""
+msgstr "Maximalt antal anslutningar"
 
 msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
 msgstr ""
@@ -1575,13 +1531,13 @@ msgid "MOTD"
 msgstr ""
 
 msgid "Message of the day."
-msgstr ""
+msgstr "Dagens meddelande."
 
 msgid "You must configure mount point first."
-msgstr "Elsőnek a csatolási pontot kell beállítanod."
+msgstr ""
 
 msgid "Rsync Client Synchronization"
-msgstr "RSYNC kliens szinkronizáció"
+msgstr ""
 
 msgid "Remote RSYNC Server"
 msgstr ""
@@ -1590,19 +1546,19 @@ msgid "IP address of remote RSYNC server"
 msgstr ""
 
 msgid "RSYNC Options"
-msgstr ""
+msgstr "RSYNC-flaggor"
 
 msgid "Delete files that don't exist on sender."
-msgstr ""
+msgstr "Ta bort filer som inte finns hos avsändaren."
 
 msgid "Shares to be synchronized"
-msgstr ""
+msgstr "Utdelningar att synkroniseras"
 
 msgid "This same local share must be present on the Remote Server."
-msgstr "Ugyanennek a helyi megosztásnak kell léteznie a távoli szerveren."
+msgstr ""
 
 msgid "Synchronization Time"
-msgstr "Szinkronizálási idő"
+msgstr "Synkroniseringstid"
 
 msgid "You can't have the same mount point for source and destination!"
 msgstr ""
@@ -1611,44 +1567,44 @@ msgid "Rsync Local Synchronization"
 msgstr ""
 
 msgid "Source"
-msgstr ""
+msgstr "Källa"
 
 msgid "Source Mount Point."
 msgstr ""
 
 msgid "Destination"
-msgstr "Célállomás"
+msgstr "Mål"
 
 msgid "Destination Mount Point (backup drive)."
-msgstr "Célállomás csatolási pont (biztonsági mentés meghajtó)"
-
-msgid "SSH Daemon"
 msgstr ""
 
+msgid "SSH Daemon"
+msgstr "SSH-demon"
+
 msgid "Alternate TCP port. Default is 22"
-msgstr "Alternatív TCP port. Az alapértelmezett 22"
+msgstr ""
 
 msgid "Permit root login"
-msgstr "root bejelentkezés engedélyezése"
+msgstr ""
 
 msgid "Enable TCP Forwarding"
-msgstr "TCP továbbítás engedélyezése (forward)"
+msgstr ""
 
 msgid "Permit to do SSH Tunneling."
-msgstr "SSH csatorna engedélyezése"
+msgstr "Tillåt att köra SSH-tunnelering."
 
 msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
 
 msgid "SSH key"
-msgstr "SSH kulcs"
+msgstr "SSH-nyckel"
 
 msgid "Private Key"
-msgstr ""
+msgstr "Privat nyckel"
 
 msgid "Paste a DSA PRIVATE KEY in PEM format here."
-msgstr ""
+msgstr "Klistra in en PRIVAT DSA-NYCKEL i PEM-format här."
 
 msgid "The combination of share and working directory does not exist."
 msgstr ""
@@ -1657,22 +1613,22 @@ msgid "Unison File Synchronisation"
 msgstr ""
 
 msgid "Share"
-msgstr ""
+msgstr "Utdelning"
 
 msgid "You may need enough space to duplicate all files being synced"
 msgstr ""
 
 msgid "Working Directory"
-msgstr ""
+msgstr "Arbetskatalog"
 
 msgid "Where the working files will be stored"
-msgstr ""
+msgstr "Var arbetsfilerna ska lagras"
 
 msgid "Create work directory if it doesn't exist"
-msgstr "Munka könyvtár létrehozása, ha az nem létezik"
+msgstr ""
 
 msgid "UPnP A/V Media Server"
-msgstr "UPnP A/V Media szerver"
+msgstr ""
 
 msgid "UPnP friendly name."
 msgstr ""
@@ -1681,89 +1637,89 @@ msgid "Interface to listen to."
 msgstr ""
 
 msgid "Content"
-msgstr "Tartalom"
+msgstr "Innehåll"
 
 msgid "Directories to be shared."
-msgstr "Könyvtár meg lesz osztva"
+msgstr ""
 
 msgid "No content directory to be shared."
 msgstr ""
 
 msgid "Directory"
-msgstr "Könyvtár"
+msgstr "Katalog"
 
 msgid "Add directory"
-msgstr "Könyvtár hozzáadása"
+msgstr "Lägg till katalog"
 
 msgid "Edit directory"
-msgstr "Könyvtár szerkesztése"
+msgstr "Redigera katalog"
 
 msgid "Delete directory"
-msgstr ""
+msgstr "Ta bort katalog"
 
 msgid "Do you really want to delete this directory entry?"
 msgstr ""
 
 msgid "Directory to be shared."
-msgstr ""
+msgstr "Katalog att delas ut."
 
 msgid "You must select at least one authentication method."
-msgstr ""
+msgstr "Du måste välja åtminstone en autentiseringsmetod."
 
 msgid "AFP Server"
-msgstr ""
+msgstr "AFP-server"
 
 msgid "Server Name"
-msgstr ""
+msgstr "Servernamn"
 
 msgid "Enable guest access."
-msgstr ""
+msgstr "Aktivera gäståtkomst."
 
 msgid "Enable local user authentication."
-msgstr "Helyi felhasználó hitelesítés engedélyezése."
+msgstr "Aktivera lokal användarautentisering."
 
 msgid "User"
-msgstr "Felhasználó"
+msgstr "Användare"
 
 msgid "Users"
-msgstr "Felhasználók"
+msgstr "Användare"
 
 msgid "Group"
-msgstr "Csoport"
+msgstr "Grupp"
 
 msgid "Groups"
-msgstr "Csoportok"
+msgstr "Grupper"
 
 msgid "Full Name"
-msgstr "Teljes név"
+msgstr "Fullständigt namn"
 
 msgid ""
 "The User list has been changed.<br>You must apply the changes in order for "
 "them to take effect."
 msgstr ""
-"A felhasználói lista megváltozott.<br>Alkalmaznod kell a változtatásokat, "
-"hogy működjenek."
+"Användarlistan har ändrats.<br>Du måste verkställa ändringarna för att de "
+"ska bli aktiverade."
 
 msgid "Edit user"
-msgstr "Felhasználó szerkesztése"
+msgstr "Redigera användare"
 
 msgid "Delete user"
-msgstr "Felhasználó törlése"
+msgstr "Ta bort användare"
 
 msgid "Do you really want to delete this user?!"
-msgstr "Biztos, hogy törlöd ezt a felhasználót?"
+msgstr "Vill du verkligen ta bort den här användaren?!"
 
 msgid "Add user"
-msgstr ""
+msgstr "Lägg till användare"
 
 msgid "You must create a group first."
-msgstr ""
+msgstr "Du måste skapa en grupp först."
 
 msgid "The login name contains invalid characters."
-msgstr ""
+msgstr "Inloggningsnamnet innehåller ogiltiga tecken."
 
 msgid "The login name is a reserved login name."
-msgstr ""
+msgstr "Inloggningsnamnet är ett reserverat inloggningsnamn."
 
 msgid "The full name contains invalid characters."
 msgstr ""
@@ -1775,119 +1731,117 @@ msgid "Unique login name of user."
 msgstr ""
 
 msgid "User full name."
-msgstr ""
+msgstr "Användarens fullständiga namn."
 
 msgid "User password."
 msgstr ""
 
 msgid "Confirm Password"
-msgstr ""
+msgstr "Bekräfta lösenord"
 
 msgid "Confirm the password."
-msgstr "Jelszó megerősítése."
+msgstr "Bekräfta lösenordet."
 
 msgid "Group Member"
-msgstr "Csoport tagság"
+msgstr "Gruppmedlem"
 
 msgid "Full Shell"
-msgstr ""
+msgstr "Fullständigt skal"
 
 msgid "Give full shell to user"
 msgstr ""
 
 msgid "Administrator"
-msgstr "Adminisztrátor"
+msgstr "Administratör"
 
 msgid "Put user in the administrator group"
-msgstr "Felhasználó behelyezése az Adminisztrátor csoportba"
+msgstr ""
 
 msgid ""
 "The group list has been changed.<br>You must apply the changes in order for "
 "them to take effect."
 msgstr ""
-"A csoport lista megváltozott.<br>Alkalmaznod kell a változtatásokat, hogy "
-"működjenek."
 
 msgid "Edit group"
-msgstr "Csoport szerkesztése"
+msgstr "Redigera grupp"
 
 msgid "Delete group"
-msgstr "Csoport törlése"
+msgstr "Ta bort grupp"
 
 msgid "Do you really want to delete this group?"
-msgstr "Biztos, hogy törlöd ezt a csoportot?"
+msgstr ""
 
 msgid "Add group"
-msgstr ""
+msgstr "Lägg till grupp"
 
 msgid "The Group name contains invalid characters."
-msgstr ""
+msgstr "Gruppnamnet innehåller ogiltiga tecken."
 
 msgid "The Group desc contains invalid characters."
-msgstr ""
+msgstr "Gruppbeskrivningen innehåller ogiltiga tecken."
 
 msgid "This group already exists in the group list."
-msgstr ""
+msgstr "Den här gruppen finns redan i grupplistan."
 
 msgid "Group name."
-msgstr ""
+msgstr "Gruppnamn."
 
 msgid "Group description."
-msgstr ""
+msgstr "Gruppbeskrivning."
 
 msgid "AD server name"
-msgstr ""
+msgstr "Namn på AD-server"
 
 msgid "AD or PDC name."
-msgstr ""
+msgstr "AD eller PDC-namn."
 
 msgid "AD server IP"
-msgstr "AD server IP cím"
+msgstr "IP för AD-server"
 
 msgid "IP address of MS Active Directory server."
-msgstr ""
+msgstr "IP-adress för MS Active Directory-server."
 
 msgid "Domain name"
-msgstr "Tartománynév"
+msgstr "Domännamn"
 
 msgid "Domain name in old format."
-msgstr "Tartománynév régi formátumban."
+msgstr "Domännamn i gamla formatet."
 
 msgid "Administrator name"
-msgstr "Adminisztrátor neve"
+msgstr "Administratörens namn"
 
 msgid "Username of a domain administrator account."
-msgstr "A tartomány adminisztrátor fiókjának felhasználói neve."
+msgstr "Användarnamn för ett domänadministratörskonto."
 
 msgid "Administration password"
-msgstr "Adminisztrátor jelszó"
+msgstr ""
 
 msgid "Password of domain administrator account, enter it here twice."
-msgstr "A tartomány adminisztrátor fiókjának jelszavát írd be kétszer."
+msgstr ""
 
 msgid "The system is halting now. This may take one minute."
 msgstr ""
 
 msgid "Are you sure you want to shutdown the system?"
-msgstr "Biztos, hogy leállítod a rendszert?"
+msgstr ""
 
 msgid "Scheduled shutdown"
-msgstr "Időzített leállítás"
+msgstr "Schemalagd avständning"
 
 msgid "Shutdown Time"
-msgstr "Leállítás ideje"
+msgstr ""
 
 msgid "File path"
-msgstr ""
+msgstr "Filsökväg"
 
 msgid "Saved file to"
-msgstr ""
+msgstr "Sparade filen till"
 
 msgid "File not found"
-msgstr ""
+msgstr "Filen hittades inte"
 
 msgid "Rows"
-msgstr ""
+msgstr "Rader"
 
 msgid "Cols"
 msgstr ""
@@ -1896,43 +1850,43 @@ msgid "Highlighting"
 msgstr ""
 
 msgid "Enabled"
-msgstr ""
+msgstr "Aktiverad"
 
 msgid "Disabled"
-msgstr ""
+msgstr "Inaktiverad"
 
 msgid "Execute command"
-msgstr "Parancs végrehajtása"
+msgstr "Kör kommando"
 
 msgid "The system is rebooting now. This may take one minute."
-msgstr "A rendszer újraindul. Ez eltarthat pár percig."
+msgstr ""
 
 msgid "Are you sure you want to reboot the system?"
-msgstr "Biztos, hogy újra akarod indítani a rendszert?"
+msgstr "Är du säker på att du vill starta om systemet?"
 
 msgid "License"
-msgstr "Licensz"
+msgstr "Licens"
 
 msgid "%s interface (SSID '%s')"
-msgstr "%s interfész (SSID '%s')"
+msgstr ""
 
 msgid "Signal strength cache"
 msgstr ""
 
 msgid "MAC address"
-msgstr "Fizikai cím (MAC address)"
+msgstr "MAC-adress"
 
 msgid "Signal"
-msgstr "Jel"
+msgstr "Signal"
 
 msgid "Noise"
-msgstr ""
+msgstr "Störning"
 
 msgid "Quality"
-msgstr ""
+msgstr "Kvalitet"
 
 msgid "Associated stations"
-msgstr ""
+msgstr "Associerade stationer"
 
 msgid "TX rates"
 msgstr ""
@@ -1941,14 +1895,12 @@ msgid ""
 "No supported wireless interfaces were found for status display (only cards "
 "that use the wi[n] driver are supported)."
 msgstr ""
-"Nem található támogatott vezetéknélküli interfész a státusz oldal részére "
-"(csak a wi[n] meghajtót használó kártyák támogatottak)"
 
 msgid "%s interface"
-msgstr "%s interfész"
+msgstr "%s-gränssnitt"
 
 msgid "DHCP"
-msgstr ""
+msgstr "DHCP"
 
 msgid "PPPoE"
 msgstr "PPPoE"
@@ -1957,101 +1909,99 @@ msgid "PPTP"
 msgstr "PPTP"
 
 msgid "Subnet mask"
-msgstr "Alhálózati maszk"
+msgstr "Subnätmask"
 
 msgid "Gateway"
-msgstr "Átjáró"
+msgstr "Gateway"
 
 msgid "ISP DNS servers"
-msgstr "Internet szolgáltató DNS szerverei"
+msgstr ""
 
 msgid "Media"
-msgstr "Adathordozó"
+msgstr "Media"
 
 msgid "Channel"
-msgstr "Csatorna"
+msgstr "Kanal"
 
 msgid "SSID"
 msgstr "SSID"
 
 msgid "I/O packets"
-msgstr "I/O csomagok"
+msgstr "In/ut-paket"
 
 msgid "I/O errors"
-msgstr "I/O hibák"
+msgstr "In/ut-fel"
 
 msgid "Collisions"
-msgstr "Ütközések"
+msgstr "Kollisioner"
 
 msgid "CPU load"
-msgstr "CPU használat"
+msgstr "Processorbelastning"
 
 msgid "VLAN tag"
-msgstr ""
+msgstr "VLAN-tagg"
 
 msgid "Edit VLAN"
-msgstr ""
+msgstr "Redigera VLAN"
 
 msgid ""
 "Traceroute may take a while to complete. You may hit the Stop button on your "
 "browser at any time to see the progress of failed traceroutes."
 msgstr ""
-"A Traceroute eltarthat egy ideig. Bármikor lenyomhatod a böngésződ stop "
-"gombját, ha hibás Traceroute folyamatot látsz."
 
 msgid "Partitions"
-msgstr "Partíciók"
+msgstr "Partitioner"
 
 msgid "S.M.A.R.T."
-msgstr ""
+msgstr "S.M.A.R.T."
 
 msgid "ATAidle"
 msgstr ""
 
 msgid "Space Used"
-msgstr "Helyhasználat"
+msgstr "Utrymme använt"
 
 msgid "Mounts"
-msgstr "Felcsatolások (Mounts)"
+msgstr "Monteringar"
 
 msgid "MS Domain"
-msgstr "MS tartomány"
+msgstr ""
 
 msgid "List of detected ATA disks"
-msgstr "Felfedezett ATA lemezek listája"
+msgstr "Lista med upptäckta ATA-diskar"
 
 msgid "List of detected SCSI disks"
-msgstr "Felfedezett SCSI lemezek listája"
+msgstr "Lista med upptäckta SCSI-diskar"
 
 msgid "List of mount points"
-msgstr "Csatolási pontok listája"
+msgstr "Lista med monteringspunkter"
 
 msgid "Free Space"
-msgstr "Szabad terület"
+msgstr "Ledigt utrymme"
 
 msgid "%s will reboot after restoring the configuration."
-msgstr "A %s újra fog indulni a beállítások visszatöltése után."
+msgstr ""
 
 msgid "Delete ARP entry"
-msgstr "ARP bejegyzés törlése"
+msgstr ""
 
 msgid "Remove all entries from ARP table"
 msgstr ""
 
 msgid "Traffic graph"
-msgstr "Forgalom grafikon"
+msgstr "Trafikdiagram"
 
 msgid "Cannot get data about interface"
-msgstr "Nem lehet adatot venni az interfészről"
+msgstr ""
 
 msgid "In"
-msgstr ""
+msgstr "In"
 
 msgid "Out"
-msgstr ""
+msgstr "Ut"
 
 msgid "Switch to"
-msgstr ""
+msgstr "Växla till"
 
 msgid "AutoScale"
 msgstr ""
@@ -2063,17 +2013,15 @@ msgid "Graph shows last"
 msgstr ""
 
 msgid "Collecting initial data, please wait..."
-msgstr ""
+msgstr "Samlar in initial data, var god vänta..."
 
 msgid "Enable tuning of some kernel variables"
-msgstr "Néhány kernel változó finomhangolásánek engedélyezése."
+msgstr "Aktivera justering av vissa kärnvariabler"
 
 msgid ""
 "This will cause %s not to check for newer firmware versions when the <a "
 "href=%s>%s</a> page is viewed."
 msgstr ""
-"Ez azért van, mert a %s nem ellenőrzi az újabb firmware verzió megjelenését, "
-"ha a <a href=%s>%s</a> oldal van megjelenítve."
 
 msgid ""
 "DO NOT abort the firmware upgrade once it has started. %s will reboot "
@@ -2082,11 +2030,6 @@ msgid ""
 "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
 "System configuration before doing a Firmware upgrade."
 msgstr ""
-"SOHA NE SZAKÍTSD MEG a firmware frissítést, ha egyszer elkezdődött! A %s "
-"automatikusan újra fog indulni az új firmware telepítése után. A beállítások "
-"megmaradnak.<br>Szükség van minimum %d MB RAM-ra a firmware frissítés "
-"végrehajásához.<br>Erősen ajánlott <a href=%s>elmenteni</a> a beállításokat "
-"mielőtt firmware frissítést végzünk."
 
 msgid ""
 "After you click &quot;Save&quot;, you may also have to do one or more of the "
@@ -2119,9 +2062,11 @@ msgid ""
 "Second configuration step: Declaring the filesystem used by your <a "
 "href=%s>previously configured disk.</a>"
 msgstr ""
+"Andra konfigurationssteget: Ange filsystemet som används på din <a "
+"href=%s>tidigare konfigurerade disk.</a>"
 
 msgid "Default is 21"
-msgstr ""
+msgstr "Standard är 21"
 
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
@@ -2129,48 +2074,45 @@ msgid ""
 msgstr ""
 
 msgid "Last %d %s log entries"
-msgstr "Utolsó %d %s napló bejegyzés"
+msgstr "Senaste %d %s loggposterna"
 
 msgid "Clear log"
-msgstr "Napló törlése"
+msgstr "Töm logg"
 
 msgid "Show log entries in reverse order (newest entries on top)"
-msgstr ""
-"Napló bejegyzések megjelenítése fordított sorrendben (az újak vannak felül)"
+msgstr "Visa loggposter i omvänd ordning (senaste posterna överst)"
 
 msgid "Number of log entries to show"
-msgstr "Megjelenítendó napló bejegyzések száma"
+msgstr "Antal loggposter att visa"
 
 msgid "Resolve IP addresses to hostnames"
-msgstr "IP címek feloldása állomásnevekké"
+msgstr "Slå upp IP-adresser till värdnamn"
 
 msgid ""
 "Hint: If this is checked, IP addresses in %s logs are resolved to real "
 "hostnames where possible."
 msgstr ""
-"Tipp: Ha ez be van kapcsolva, az IP címek a %s naplókban állomásnevekként "
-"jelennek meg, ahol ez lehetséges."
 
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr ""
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr "Távoli napló szerver engedélyezése"
+msgstr ""
 
 msgid "Remote syslog server"
-msgstr "Távoli napló szerver"
+msgstr ""
 
 msgid "IP address of remote syslog server"
-msgstr "Távoli napló szerver IP címe"
+msgstr ""
 
 msgid "System events"
-msgstr "Rendszeresemények"
+msgstr "Systemhändelser"
 
 msgid "SSHD events"
-msgstr "SSHD események"
+msgstr ""
 
 msgid "FTP events"
-msgstr "FTP események"
+msgstr ""
 
 msgid "RSYNCD events"
 msgstr ""
@@ -2179,7 +2121,7 @@ msgid "SMARTD events"
 msgstr ""
 
 msgid "Daemon events"
-msgstr ""
+msgstr "Demonhändelser"
 
 msgid ""
 "Syslog sends UDP datagrams to port 514 on the specified remote syslog "
@@ -2188,53 +2130,48 @@ msgid ""
 msgstr ""
 
 msgid "List of partition on all detected disk"
-msgstr ""
+msgstr "Lista med partitioner på alla upptäckta diskar"
 
 msgid "List of SMART capabilities on all detected disk"
-msgstr ""
+msgstr "Lista SMART-förmågor på alla upptäckta diskar"
 
 msgid "List of Advanced ATA capabilities on all ATA disk"
-msgstr ""
+msgstr "Lista med avancerade ATA-förmågor på alla ATA-diskar"
 
 msgid "iSCSI initiator disabled"
-msgstr ""
+msgstr "iSCSI-initiator inaktiverad"
 
 msgid "Show the list of available target Name on the iSCSI target"
 msgstr ""
 
 msgid "AD Authentication disabled"
-msgstr "AD hitelesítés nem lehetséges"
-
-msgid "Count must be between 1 and %d"
 msgstr ""
 
+msgid "Count must be between 1 and %d"
+msgstr "Antal måste vara mellan 1 och %d"
+
 msgid "Count"
-msgstr "Számláló"
+msgstr "Antal"
 
 msgid "Ping output"
-msgstr "Ping kimenet"
+msgstr ""
 
 msgid "Maximum number of hops"
-msgstr "Ugrások maximális száma"
+msgstr ""
 
 msgid "Traceroute output"
-msgstr "Traceroute kimenet"
+msgstr ""
 
 msgid ""
 "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
 "hostnames&quot; is checked on the <a href=%s>%s</a> page."
 msgstr ""
-"Az IP címek állmásnevekké vannak alakítva, ha a &quot;IP címek feloldása "
-"állomásnevekké&quot; be van kapcsolva a <a href=%s>%s</a> oldalon."
 
 msgid ""
 "If you click 'Yes', %s will be reset to factory defaults and will reboot "
 "immediately. The entire system configuration will be overwritten. The LAN IP "
 "address will be reset to %s and the password will be set to '%s'."
 msgstr ""
-"Ha az 'Igen'-re kattintasz, a %s visszaállítja a gyári beállításokat és "
-"újraindul. A mostani rendszer beállítás felül lesz írva. A LAN IP cím %s "
-"lesz, az admin jelszó pedig '%s' lesz."
 
 msgid "Are you sure you want to proceed?"
 msgstr ""
@@ -2243,100 +2180,94 @@ msgid "The configuration has been restored. %s is now rebooting."
 msgstr ""
 
 msgid "The configuration could not be restored."
-msgstr ""
+msgstr "Konfigurationen kunde inte återskapas."
 
 msgid "The configuration could not be restored (file upload error)."
-msgstr ""
+msgstr "Konfigurationen kunde inte återskapas (fel vid filsändning)."
 
 msgid "webGUI Configuration"
-msgstr "webfelület beállítás"
+msgstr "Konfiguration av webGUI"
 
 msgid "Erasing MBR and all partitions"
-msgstr "MBR és az összes partíció törlése"
+msgstr "Raderar MBR och alla partitioner"
 
 msgid "Keeping the MBR and all partitions"
-msgstr "MBR és az összes partíció megtartása"
+msgstr "Behåller MBR och alla partitioner"
 
 msgid "Creating one partition"
-msgstr "Egy partíció létrehozása"
+msgstr "Skapar en partition"
 
 msgid "Initializing partition"
-msgstr ""
+msgstr "Initierar partition"
 
 msgid "Creating BSD label"
-msgstr "BSD címke létrehozása"
+msgstr "Skapar BSD-etikett"
 
 msgid "Creating filesystem"
-msgstr "Fájlrendszer létrehozása"
+msgstr "Skapar filsystem"
 
 msgid "Destroying old %s information"
-msgstr ""
+msgstr "Förstör gammal %s-information"
 
 msgid "Done"
-msgstr "Kész"
+msgstr "Färdig"
 
 msgid "Creating %s partition"
-msgstr ""
+msgstr "Skapar %s-partition"
 
 msgid "Creating filesystem with 'Soft Updates'"
 msgstr ""
 
 msgid "Power Daemon"
-msgstr "Energiafelhasználás démon"
+msgstr "Strömdemon"
 
 msgid "Enable the system power control utility"
-msgstr "A rendszer energiafelsználást irányító eszközének engedélyezése."
+msgstr ""
 
 msgid ""
 "The powerd utility monitors the system state and sets various power control "
 "options accordingly."
 msgstr ""
-"Az energia eszköz figyeli a rendszer állapotát és ennek megfelelően "
-"különféle  energia beállításokat módosít."
 
 msgid "Temperature"
-msgstr "Hőmérséklet"
+msgstr "Temperatur"
 
 msgid "n/a"
-msgstr "nem elérhető"
+msgstr ""
 
 msgid "The attribute '%s' contains invalid characters."
 msgstr ""
 
 msgid "The attribute '%s' is required."
-msgstr "A(z) '%s' tulajdonság (attribútum) szükséges."
+msgstr "Attributet \"%s\" krävs."
 
 msgid ""
 "The crypted disk list has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
-"A titkosított lemez lista megváltozott.<br>Alkalmaznod kell a "
-"változtatásokat, hogy működjenek."
 
 msgid "Data integrity"
-msgstr "Adat sértettlenség"
+msgstr "Dataintegritet"
 
 msgid "Encryption"
-msgstr "Titkosítás"
+msgstr "Kryptering"
 
 msgid ""
 "Do you really want to delete this encrypted disk? All elements that still "
 "use it will become invalid (e.g. share)!"
 msgstr ""
-"Biztos, hogy törölni akarod ezt a titkosított lemezt? Minden erre hivatkozó "
-"elem érvénytelenné válik (pl.: megosztás)!"
 
 msgid "Create encrypted disk"
-msgstr "Titkosított lemez létrhozása"
+msgstr "Skapa krypterad disk"
 
 msgid "Data integrity algorithm"
-msgstr "Adat sértettlenség ellenörző algoritmus"
+msgstr ""
 
 msgid "Encryption algorithm"
-msgstr "Titkosítási algoritmus"
+msgstr "Krypteringsalgoritm"
 
 msgid "Passphrase"
-msgstr ""
+msgstr "Lösenfras"
 
 msgid "Passphrase don't match."
 msgstr ""
@@ -2345,13 +2276,13 @@ msgid "Init and encrypt disk"
 msgstr ""
 
 msgid "Disk initialization and encryption"
-msgstr ""
+msgstr "Diskinitiering och kryptering"
 
 msgid "Encrypting... Please wait"
-msgstr ""
+msgstr "Krypterar... var god vänta"
 
 msgid "Attaching..."
-msgstr ""
+msgstr "Ansluter..."
 
 msgid ""
 "This will erase ALL data on your disk!<br>Using Data integrity will reduce "
@@ -2359,34 +2290,34 @@ msgid ""
 msgstr ""
 
 msgid "Sensors"
-msgstr "Érzékelők"
+msgstr "Sensorer"
 
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 
 msgid "You must use a passphrase to attach an encrypted disk."
-msgstr ""
+msgstr "Du måste använda en lösenfras för att ansluta en krypterad disk."
 
 msgid "Encrypted disk name"
-msgstr "Titkosított lemez neve"
+msgstr "Namn på krypterad disk"
 
 msgid "Detaching..."
-msgstr "Leválasztás..."
+msgstr "Kopplar från..."
 
 msgid "attach"
-msgstr "csatolás"
+msgstr "anslut"
 
 msgid "detach"
-msgstr "lecsatolás"
+msgstr "koppla från"
 
 msgid "Attached"
-msgstr "Csatolt"
+msgstr "Ansluten"
 
 msgid "Not attached"
-msgstr "Nem csatolt"
+msgstr ""
 
 msgid "Reload page"
-msgstr "Oldal újratöltése"
+msgstr ""
 
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr ""
@@ -2411,108 +2342,104 @@ msgid ""
 msgstr ""
 
 msgid "Do you really want to delete this target?"
-msgstr ""
+msgstr "Vill du verkligen ta bort det här målet?"
 
 msgid "Delete target"
-msgstr ""
+msgstr "Ta bort mål"
 
 msgid "Add target"
-msgstr ""
+msgstr "Lägg till mål"
 
 msgid "Network that is authorised to access to this iSCSI target."
-msgstr ""
+msgstr "Nätverk som är behörigt att komma åt det här iSCSI-målet."
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
-msgstr "Legalább 256 MB RAM szükséges a iSCSI-target használatához."
+msgstr "Du måste ha minst 256 MB RAM-minne för att använda iSCSI-mål."
 
 msgid "FTP Server disabled"
-msgstr "FTP szerver nem engedélyezett."
+msgstr "FTP-server inaktiverad"
 
 msgid "FTP users"
-msgstr "FTP felhasználó"
+msgstr "FTP-användare"
 
 msgid "FTP connected users"
-msgstr "FTP csatlakozott felhasználó"
+msgstr "Anslutna FTP-användare"
 
 msgid "Save and Restart CIFS"
-msgstr "CIFS mentése és újraindítása"
+msgstr "Spara och starta om CIFS"
 
 msgid "Save and Restart UPnP"
-msgstr "UPnP mentése és újraindítása"
+msgstr "Spara och starta om UPnP"
 
 msgid "Save and Restart Unison"
-msgstr "Unison mentése és újraindítása"
+msgstr "Spara och starta om Unison"
 
 msgid "Save and Restart SSHD"
-msgstr "SSHD mentése és újraindítása"
+msgstr "Spara och starta om SSHD"
 
 msgid "Save and Restart RSYNC"
-msgstr "RSYNC mentése és újraindítása"
+msgstr "Spara och starta om RSYNC"
 
 msgid "Save and Restart NFS"
-msgstr "NFS mentése és újraindítása"
+msgstr "Spara och starta om NFS"
 
 msgid "Save and Restart FTP"
-msgstr "FTP mentése és újraindítása"
+msgstr "Spara och starta om FTP"
 
 msgid "Save and Restart AFP"
-msgstr "AFP mentése és újraindítása"
+msgstr "Spara och starta om AFP"
 
 msgid "The %s port must be a valid port number."
-msgstr "A %s portnak valós port számnak kell lennie."
+msgstr "%s-porten måste vara ett giltigt portnummer."
 
 msgid "Swap memory"
-msgstr "Lapozó memória"
+msgstr "Växlingsminne"
 
 msgid "No RSYNC Client configured"
-msgstr "Nincs RSYNC kliens beállítva"
+msgstr "Ingen RSYNC-klient konfigurerad"
 
 msgid "Detected RSYNC remote shares"
 msgstr ""
 
 msgid "Hosts"
-msgstr "Állomásnevek (Hosts)"
+msgstr "Värdar"
 
 msgid "LDAP"
 msgstr "LDAP"
 
 msgid "Password confirmation"
-msgstr "Jelszó megerősítés"
+msgstr "Bekräfta lösenord"
 
 msgid "Remote share (source)"
-msgstr ""
+msgstr "Fjärrutdelning (källa)"
 
 msgid "Remote address"
-msgstr "Távoli cím"
+msgstr "Fjärradress"
 
 msgid "Local share (destination)"
-msgstr "Helyi megosztás (célállomás)"
+msgstr ""
 
 msgid ""
 "The RSYNC client list has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
-"A RSYNC kliens lista megváltozott.<br>Alkalmaznod kell a változtatásokat, "
-"hogy működjenek."
 
 msgid ""
 "The RSYNC local list has been changed.<br>You must apply the changes in "
 "order for them to take effect."
 msgstr ""
-"A RSYNC helyi lista megváltozott.<br>Alkalmaznod kell a változtatásokat, "
-"hogy működjenek."
 
 msgid "Add RSYNC"
-msgstr "RSYNC hozzáadása"
+msgstr "Lägg till RSYNC"
 
 msgid "Edit RSYNC"
-msgstr "RSYNC szerkesztése"
+msgstr "Redigera RSYNC"
 
 msgid "Delete RSYNC"
-msgstr "RSYNC törlése"
+msgstr "Ta bort RSYNC"
 
 msgid "Do you really want to delete this RSYNC?"
-msgstr "Biztos, hogy törlöd a RSYNC-t?"
+msgstr ""
 
 msgid "Source share"
 msgstr ""
@@ -2527,44 +2454,44 @@ msgid "Mount to use"
 msgstr ""
 
 msgid "File size"
-msgstr "Fájl méret"
+msgstr ""
 
 msgid "A valid size target value must be specified."
 msgstr ""
 
 msgid "Target name"
-msgstr ""
+msgstr "Målnamn"
 
 msgid "Target address"
-msgstr ""
+msgstr "Måladress"
 
 msgid "Initiator name"
-msgstr ""
+msgstr "Initiatornamn"
 
 msgid "This is for information only (not using during iSCSI negociation)."
 msgstr ""
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
-msgstr "A név például: iqn.2005-01.il.ac.huji.cs:valaki."
+msgstr ""
 
 msgid ""
 "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr "A név például: iqn.1994-04.org.netbsd.iscsi-target:target0."
+msgstr ""
 
 msgid "This the IP address or DNS name of the iSCSI target."
-msgstr "Az iSCSI-target neve vagy IP címe."
+msgstr ""
 
 msgid "Mount used"
 msgstr ""
 
 msgid "Balance algorithm"
-msgstr ""
+msgstr "Balansalgoritm"
 
 msgid "Select your read balance algorithm."
 msgstr ""
 
 msgid "Settings"
-msgstr "Beállítások"
+msgstr "Inställningar"
 
 msgid "Define an host name can be useful for NFS."
 msgstr ""
@@ -2573,70 +2500,65 @@ msgid ""
 "The host list has been changed.<br>You must apply the changes in order for "
 "them to take effect."
 msgstr ""
-"Az állomás lista megváltoztott.<br>Alkalmaznod kell a változtatásokat, hogy "
-"működjenek."
 
 msgid "Edit Host"
-msgstr "Állomásnév módosítása"
+msgstr "Redigera värd"
 
 msgid "Do you really want to delete this host?"
-msgstr "Biztos, hogy törlöd ezt az állomást?"
+msgstr ""
 
 msgid "Delete Host"
-msgstr "Állomás törlése"
+msgstr "Ta bort värd"
 
 msgid "Add Host"
-msgstr "Állomás hozzáadása"
+msgstr "Lägg till värd"
 
 msgid "The host name contain invalid characters."
-msgstr "Az állomásnév érvénytelen karaktert tartalmaz."
+msgstr "Värdnamnet innehåller ogiltiga tecken."
 
 msgid "An host with this name already exists."
-msgstr "Egy állomás ugyanezzel a névvel létezik már."
+msgstr "En värd med det här namnet finns redan."
 
 msgid ""
 "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
 "."
 msgstr ""
-"Az állomásnév csak a következő karaktereket tartalmazhatja: a-z, A-Z, 0-9, - "
-"és _."
+"Värdnamnet får endast innehåller tecknen a-z, A-Z och 0-9, - , _ och ."
 
 msgid "The IP address that this hostname represents."
-msgstr "Az IP cím, melyet az állomásnév takar."
+msgstr "IP-adressen som det här värdnamnet representerar."
 
 msgid "You may enter a description here for your reference."
-msgstr "Itt megadhatsz egy leírást a saját tájékoztatásodra."
+msgstr "Du kan ange en beskrivning här som referens."
 
 msgid "Download configuration"
-msgstr "Beállítások letöltése"
+msgstr "Hämta ner konfiguration"
 
 msgid "Restore configuration"
-msgstr "Beállítások visszaállítása"
+msgstr "Återskapa konfiguration"
 
 msgid ""
 "Open a %s configuration XML file and click the button below to restore the "
 "configuration."
 msgstr ""
-"Válassz ki egy %s beállítás XML fájlt és kattints a 'Beállítások "
-"visszaállítása'-ra."
 
 msgid "Click this button to download the system configuration in XML format."
-msgstr "Kattints erre a gombra a beállítások letöltéséhez XML formátumban."
+msgstr ""
 
 msgid "Backup configuration"
-msgstr "Beállítások biztonsági mentése"
+msgstr ""
 
 msgid "Initializing disk"
 msgstr ""
 
 msgid "Enable Zeroconf"
-msgstr "Zeroconf engedélyezése"
+msgstr "Aktivera Zeroconf"
 
 msgid "LDAP server IP"
-msgstr "LDAP szerver IP"
+msgstr ""
 
 msgid "IP address of LDAP server."
-msgstr "LDAP szerver IP címe."
+msgstr ""
 
 msgid "Base DN"
 msgstr ""
@@ -2655,7 +2577,7 @@ msgid ""
 msgstr ""
 
 msgid "Password for DN"
-msgstr "Jelszó a DN-hez"
+msgstr ""
 
 msgid "The credentials to bind with, enter it here twice."
 msgstr ""
@@ -2670,36 +2592,32 @@ msgid "Group suffix"
 msgstr ""
 
 msgid "Password encryption"
-msgstr "Jelszó titkosítás"
+msgstr "Lösenordskryptering"
 
 msgid "Method used to store your password in your LDAP."
-msgstr "A jelszó tárolási metódusa az LDAP-n."
+msgstr "Metod som används för att lagra ditt lösenord i LDAP-servern."
 
 msgid ""
 "These commands will be executed pre or post system initialization (booting)."
 msgstr ""
-"Ezek a parancsok a rendszerbetöltődés (boot-olás) elött vagy után fognak "
-"lefutni."
 
 msgid "Add command"
-msgstr "Parancs hozzáadása"
+msgstr "Lägg till kommando"
 
 msgid "Edit command"
-msgstr "Parancs szerkesztése"
+msgstr "Redigera kommando"
 
 msgid "Delete command"
-msgstr "Parancs törlése"
+msgstr "Ta bort kommando"
 
 msgid "Do you really want to delete this command?"
-msgstr "Biztos, hogy törlöd ezt a parancsot?"
+msgstr "Vill du verkligen ta bort det här kommandot?"
 
 msgid "Execute command pre or post system initialization (booting)."
 msgstr ""
-"Parancs futtatása a rendszerbetöltődés (boot-olás) elött vagy után.<br>Pre = "
-"elötte, Post = utána."
 
 msgid "Startup"
-msgstr "Betöltődés"
+msgstr "Uppstart"
 
 msgid "Large read/write"
 msgstr ""
@@ -2711,10 +2629,10 @@ msgid "Use the new 64k streaming read and write variant SMB requests."
 msgstr ""
 
 msgid "Dynamic DNS"
-msgstr "Dynamic DNS (változó IP címekhez)"
+msgstr "Dynamisk DNS"
 
 msgid "Servername"
-msgstr "Szervernév"
+msgstr "Servernamn"
 
 msgid "Save and Restart DynDNS"
-msgstr "DynDNS mentése és újraindítása"
+msgstr "Spara och starta om DynDNS"
