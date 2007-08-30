@@ -64,7 +64,7 @@ function system_language_load()
 {
 	global $config, $g_languages;
 
-	/* Get the language configured*/
+	/* Get the language configured. */
 	$language = $config['system']['language'];
 	$locale = $g_languages[$language]['locale'];
 	$domain = strtolower(get_product_name());
@@ -75,5 +75,16 @@ function system_language_load()
 	bindtextdomain($domain, "/usr/local/share/locale");
 	bind_textdomain_codeset($domain, $codeset);
 	textdomain($domain);
+}
+
+/* Get the codeset of the current configured language. */
+/* Return: String containing codeset of current laguage. */
+function system_get_language_codeset() {
+	global $config, $g_languages;
+
+	$language = $config['system']['language'];
+	$codeset = $g_languages[$language]['codeset'];
+
+	return $codeset;
 }
 ?>

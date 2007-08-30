@@ -59,25 +59,25 @@ $g = array(
 
 /* Available languages/locales */
 $g_languages = array (
-	"bg"    => array("locale" => "bg_BG.UTF8", "desc" => "Bulgarian"),
-	"zh_CN" => array("locale" => "zh_CN.UTF8", "desc" => "Chinese (Simplified)"),
-	"zh_TW" => array("locale" => "zh_TW.UTF8", "desc" => "Chinese (Traditional)"),
-	"nl_BE" => array("locale" => "nl_BE.ISO8859-1", "desc" => "Dutch"),
-	"en_US" => array("locale" => "en_US.ISO8859-1", "desc" => "English"),
-	"fr"    => array("locale" => "fr_FR.UTF8", "desc" => "French"),
-	"de"    => array("locale" => "de_DE.ISO8859-1", "desc" => "German"),
-	"el_GR" => array("locale" => "el_GR.UTF-8", "desc" => "Greek"),
-	"hu"    => array("locale" => "hu_HU.UTF-8", "desc" => "Hungarian"),
-	"it"    => array("locale" => "it_IT.ISO8859-1", "desc" => "Italian"),
-	"ja_JP" => array("locale" => "ja_JP.UTF8", "desc" => "Japanese"),
-	"no_NB" => array("locale" => "no_NB.UTF-8", "desc" => "Norwegian (Bokmal)"),
-	"pl"    => array("locale" => "pl_PL.UTF-8", "desc" => "Polish"),
-	"pt"    => array("locale" => "pt_PT.UTF-8", "desc" => "Portuguese"),
-	"ro"    => array("locale" => "ro_RO.ISO8859-1", "desc" => "Romanian"),
-	"ru"    => array("locale" => "ru_RU.UTF8", "desc" => "Russian"),
-	"sl_SI" => array("locale" => "sl_SI.UTF-8", "desc" => "Slovenian"),
-	"es"    => array("locale" => "es_ES.ISO8859-1", "desc" => "Spanish"),
-	"sv_SE" => array("locale" => "sv_SE.UTF-8", "desc" => "Swedish")
+	"bg"    => array("locale" => "bg_BG.UTF8", "codeset" => "UTF-8", "desc" => "Bulgarian"),
+	"zh_CN" => array("locale" => "zh_CN.UTF8", "codeset" => "UTF-8", "desc" => "Chinese (Simplified)"),
+	"zh_TW" => array("locale" => "zh_TW.UTF8", "codeset" => "UTF-8", "desc" => "Chinese (Traditional)"),
+	"nl_BE" => array("locale" => "nl_BE.ISO8859-1", "codeset" => "ISO-8859-1", "desc" => "Dutch"),
+	"en_US" => array("locale" => "en_US.ISO8859-1", "codeset" => "ISO-8859-1", "desc" => "English"),
+	"fr"    => array("locale" => "fr_FR.UTF8", "codeset" => "UTF-8", "desc" => "French"),
+	"de"    => array("locale" => "de_DE.ISO8859-1", "codeset" => "ISO-8859-1", "desc" => "German"),
+	"el_GR" => array("locale" => "el_GR.UTF-8", "codeset" => "UTF-8", "desc" => "Greek"),
+	"hu"    => array("locale" => "hu_HU.UTF-8", "codeset" => "UTF-8", "desc" => "Hungarian"),
+	"it"    => array("locale" => "it_IT.ISO8859-1", "codeset" => "ISO-8859-1", "desc" => "Italian"),
+	"ja_JP" => array("locale" => "ja_JP.UTF8", "codeset" => "UTF-8", "desc" => "Japanese"),
+	"no_NB" => array("locale" => "no_NB.UTF-8", "codeset" => "UTF-8", "desc" => "Norwegian (Bokmal)"),
+	"pl"    => array("locale" => "pl_PL.UTF-8", "codeset" => "UTF-8", "desc" => "Polish"),
+	"pt"    => array("locale" => "pt_PT.UTF-8", "codeset" => "UTF-8", "desc" => "Portuguese"),
+	"ro"    => array("locale" => "ro_RO.ISO8859-1", "codeset" => "ISO-8859-1", "desc" => "Romanian"),
+	"ru"    => array("locale" => "ru_RU.UTF8", "codeset" => "UTF-8", "desc" => "Russian"),
+	"sl_SI" => array("locale" => "sl_SI.UTF-8", "codeset" => "UTF-8", "desc" => "Slovenian"),
+	"es"    => array("locale" => "es_ES.ISO8859-1", "codeset" => "ISO-8859-1", "desc" => "Spanish"),
+	"sv_SE" => array("locale" => "sv_SE.UTF-8", "codeset" => "UTF-8", "desc" => "Swedish")
 );
 
 /* Supported filesystems */

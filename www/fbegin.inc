@@ -133,11 +133,10 @@ function display_menu($menu) {
 	}
 }
 ?>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 	<head>
 	<title><?=genhtmltitle($pgtitle);?></title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=<?=system_get_language_codeset();?>">
 	<link href="gui.css" rel="stylesheet" type="text/css">
 </head>
 <body link="#0000CC" vlink="#0000CC" alink="#0000CC">
