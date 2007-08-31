@@ -76,4 +76,16 @@ function system_language_load()
 	bind_textdomain_codeset( $domain, $codeset);
 	textdomain( $domain);
 }
+
+/* Get the codeset of the current configured language. */
+/* Return: String containing codeset of current laguage. */
+function system_get_language_codeset() {
+	global $config, $g_languages;
+
+	$language = $config['system']['language'];
+	$locale = $g_languages[$language];
+	$codeset = ltrim(strstr($locale,"."),".");
+
+	return $codeset;
+}
 ?>
