@@ -59,19 +59,19 @@ $g = array(
 
 /* Available languages/locales */
 $g_languages = array (
-	"Bulgarian" => "bg_BG.UTF8",
-	"Dutch" => "nl_BE.ISO8859-1",
-	"English" => "en_US.ISO8859-1",
-	"French" => "fr_FR.UTF8",
-	"German" => "de_DE.ISO8859-1",
+	"Bulgarian" => "bg_BG.UTF-8",
+	"Dutch" => "nl_BE.ISO-8859-1",
+	"English" => "en_US.ISO-8859-1",
+	"French" => "fr_FR.UTF-8",
+	"German" => "de_DE.ISO-8859-1",
 	"Greek" => "el_GR.UTF-8",
-	"Italian" => "it_IT.ISO8859-1",
-	"Japanese" => "ja_JP.UTF8",
-	"Romanian" => "ro_RO.ISO8859-1",
-	"Russian" => "ru_RU.UTF8",
-	"SimplifiedChinese" => "zh_CN.UTF8",
-	"Spanish" => "es_ES.ISO8859-1",
-	"TraditionalChinese" => "zh_TW.UTF8"
+	"Italian" => "it_IT.ISO-8859-1",
+	"Japanese" => "ja_JP.UTF-8",
+	"Romanian" => "ro_RO.ISO-8859-1",
+	"Russian" => "ru_RU.UTF-8",
+	"SimplifiedChinese" => "zh_CN.UTF-8",
+	"Spanish" => "es_ES.ISO-8859-1",
+	"TraditionalChinese" => "zh_TW.UTF-8"
 );
 
 /* Supported filesystems */
