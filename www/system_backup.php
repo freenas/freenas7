@@ -76,7 +76,7 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<form action="diag_backup.php" method="post" enctype="multipart/form-data">
+<form action="system_backup.php" method="post" enctype="multipart/form-data">
 	<?php if ($input_errors) print_input_errors($input_errors); ?>
 	<?php if ($savemsg) print_info_box($savemsg); ?>
   <table width="100%" border="0" cellspacing="0" cellpadding="6">

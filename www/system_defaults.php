@@ -48,7 +48,7 @@ if ($_POST) {
 ?>
 <?php include("fbegin.inc");?>
 <?php if ($rebootmsg): echo print_info_box($rebootmsg); else: ?>
-<form action="diag_defaults.php" method="post">
+<form action="system_defaults.php" method="post">
 	<p>
 		<strong>
 			<?=sprintf(gettext("If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."), get_product_name(), $g['default_ip'], $g['default_passwd']);?><br><br>

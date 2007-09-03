@@ -98,7 +98,7 @@ else
 
 <?php include("fbegin.inc");?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="diag_edit.php" method="post">
+<form action="system_edit.php" method="post">
   <div id="inputerrors"></div>
   <div id="shapeme">
     <table width="100%" cellpadding='9' cellspacing='9' bgcolor='#eeeeee'>
