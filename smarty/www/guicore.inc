@@ -1,6 +1,7 @@
 <?php
 require_once("config.inc");
 require_once("functions.inc");
+require_once("guiconfig.inc");
 require_once("smarty/Smarty.class.php");
 
 global $config;
@@ -107,6 +108,7 @@ $webgui->compile_check = true;
 $webgui->force_compile = true;
 $webgui->debugging = true;
 $webgui->caching = 0;
+$webgui->compile_dir = "/tmp";
 
 $webgui->assign("title", genhtmltitle($pgtitle));
 $webgui->assign("top_logo_link", "http://www.".get_product_url());

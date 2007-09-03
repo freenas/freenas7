@@ -31,13 +31,6 @@ if (!$pconfig['timeservers'])
 	$pconfig['timeservers'] = "pool.ntp.org";
 
 if ($_POST) {
-	$tpl_vars = $webgui->get_template_vars();
-	
-	// Anschauen
-	print_r($tpl_vars);
-
-
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
