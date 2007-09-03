@@ -209,7 +209,7 @@ function auth_change() {
 	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Outgoing mail server");?></td>
       <td width="78%" class="vtable">
         <input name="server" type="text" class="formfld" id="server" size="40" value="<?=htmlentities($pconfig['server']);?>"><br>
-        <?=gettext("Outgoing SMTP mail server address, e.g. smtp.example.com.");?>
+        <?=gettext("Outgoing SMTP mail server address, e.g. smtp.mycorp.com.");?>
       </td>
 		</tr>
 		<tr>
