@@ -132,8 +132,8 @@ if ($_POST) {
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("File size") ;?></td>
 						<td width="78%" class="vtable">
-							<?=$mandfldhtml;?><input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>"><br>
-							<?=gettext("Size in MB.") ;?>
+							<input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>"><br>
+							<?=gettext("Size in MB.");?>
 						</td>
 					</tr>
 			    <tr>

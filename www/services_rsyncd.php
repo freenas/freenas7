@@ -161,18 +161,19 @@ function enable_change(enable_change) {
 		  </option>
 		  <?php endforeach; ?>
 			</tr> 	
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
-                     <br><?=gettext("Alternate TCP port. Default is 873"); ?></td>
-                  </td>
+        <tr> 
+          <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
+          <td width="78%" class="vtable"> 
+            <input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
+						<br><?=gettext("Alternate TCP port. Default is 873"); ?>
+          </td>
 				</tr>
 				<tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Maximum connections"); ?></td>
-                  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="maxcon" type="text" class="formfld" id="maxcon" size="20" value="<?=htmlspecialchars($pconfig['maxcon']);?>"> 
-                  <br><?=gettext("Maximum number of simultaneous connections. Default is 0 (unlimited)."); ?></td>
+					<td width="22%" valign="top" class="vncellreq"><?=gettext("Maximum connections"); ?></td>
+					<td width="78%" class="vtable"> 
+						<input name="maxcon" type="text" class="formfld" id="maxcon" size="20" value="<?=htmlspecialchars($pconfig['maxcon']);?>"> 
+						<br><?=gettext("Maximum number of simultaneous connections. Default is 0 (unlimited)."); ?>
+					</td>
 				</tr>
 				<td width="22%" valign="top" class="vncell"><?=gettext("MOTD");?></td>
                   <td width="78%" class="vtable"> 

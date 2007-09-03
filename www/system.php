@@ -202,15 +202,15 @@ if ($_POST) {
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
-      <td width="78%" class="vtable"><?=$mandfldhtml;?>
-        <?=$mandfldhtml;?><input name="hostname" type="text" class="formfld" id="hostname" size="40" value="<?=htmlspecialchars($pconfig['hostname']);?>"><br>
+      <td width="78%" class="vtable">
+        <input name="hostname" type="text" class="formfld" id="hostname" size="40" value="<?=htmlspecialchars($pconfig['hostname']);?>"><br>
         <span class="vexpl"><?=gettext("Name of the NAS host, without domain part<br>e.g. <em>nas</em>");?></span>
       </td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain");?></td>
-      <td width="78%" class="vtable"><?=$mandfldhtml;?>
-        <?=$mandfldhtml;?><input name="domain" type="text" class="formfld" id="domain" size="40" value="<?=htmlspecialchars($pconfig['domain']);?>"><br>
+      <td width="78%" class="vtable">
+        <input name="domain" type="text" class="formfld" id="domain" size="40" value="<?=htmlspecialchars($pconfig['domain']);?>"><br>
         <span class="vexpl"><?=gettext("e.g. <em>mycorp.com</em>");?></span>
       </td>
     </tr>

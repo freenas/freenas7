@@ -85,7 +85,6 @@ if(!isset($do_action)) {
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Package file");?></td>
 						<td width="78%" class="vtable">
-			        <?=$mandfldhtml;?>
 							<input name="ulfile" type="file" class="formfld">
 							<br><?=gettext("Select the FreeBSD package to be installed.");?>
 						</td>

@@ -310,14 +310,14 @@ function type_change() {
 			    <tr id="filename_tr">
 			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Filename") ;?></td>
 			      <td width="78%" class="vtable">
-			        <?=$mandfldhtml;?><input name="filename" type="text" class="formfld" id="filename" size="60" value="<?=htmlspecialchars($pconfig['filename']);?>">
+			        <input name="filename" type="text" class="formfld" id="filename" size="60" value="<?=htmlspecialchars($pconfig['filename']);?>">
 							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.filename; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
 			      </td>
 			    </tr>
 					<tr>
 			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Share Name") ;?></td>
 			      <td width="78%" class="vtable">
-			        <?=$mandfldhtml;?><input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>">
+			        <input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>">
 			      </td>
 			    </tr>
 			    <tr>

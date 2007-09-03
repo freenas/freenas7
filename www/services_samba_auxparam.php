@@ -97,7 +97,6 @@ if($_POST) {
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Auxiliary parameter");?></td>
 						<td width="78%" class="vtable">
-							<?=$mandfldhtml;?>
 							<input name="auxparam" type="text" class="formfld" id="auxparam" size="60" value="<?=htmlspecialchars($pconfig['auxparam']);?>">
 							<br><?=gettext("Auxiliary parameter to be added.");?>
 						</td>

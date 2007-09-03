@@ -130,7 +130,6 @@ function enable_change(enable_change) {
 		<tr>
 			<td width="22%" valign="top" class="vncellreq"><?=gettext("Authorized");?></td>
 			<td width="78%" class="vtable">
-				<?=$mandfldhtml;?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="90%" class="listhdrr"><?=gettext("Networks");?></td>

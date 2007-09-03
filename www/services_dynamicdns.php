@@ -121,7 +121,6 @@ function enable_change(enable_change) {
     <tr>
 	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Provider");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
         <select name="provider" class="formfld" id="provider">
 					<option value="dyndns.org" <?php if ("dyndns.org" == $pconfig['provider']) echo "selected";?>>dyndns.org</option>
 					<option value="freedns.afraid.org" <?php if ("freedns.afraid.org" == $pconfig['provider']) echo "selected";?>>freedns.afraid.org</option>
@@ -133,21 +132,18 @@ function enable_change(enable_change) {
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
         <input name="domainname" type="text" class="formfld" id="domainname" size="40" value="<?=htmlentities($pconfig['domainname']);?>">
       </td>
     </tr>
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
         <input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlentities($pconfig['username']);?>">
       </td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
         <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlentities($pconfig['password']);?>">
       </td>
 		</tr>

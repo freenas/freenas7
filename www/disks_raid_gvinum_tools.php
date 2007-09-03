@@ -82,10 +82,11 @@ if (!isset($do_action))
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 			<form action="disks_raid_gvinum_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr>
+				<tr>
 				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Object name");?></td>
 				  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="object" type="text" class="formfld" id="object" size="20" value="<?=htmlspecialchars($disk);?>"></td>
+          	<input name="object" type="text" class="formfld" id="object" size="20" value="<?=htmlspecialchars($disk);?>">
+					</td>
 				</tr>
 				<tr> 
                   <td valign="top" class="vncellreq"><?=gettext("Command");?></td>

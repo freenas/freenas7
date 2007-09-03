@@ -116,13 +116,15 @@ if ($_POST) {
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
             <td valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
-            <td class="vtable"><?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>">
+            <td class="vtable">
+							<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>">
               <br><span class="vexpl"><?=gettext("The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and .");?></span>
 						</td>
           </tr>
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address");?></td>
-            <td width="78%" class="vtable"><?=$mandfldhtml;?><input name="address" type="text" class="formfld" id="address" size="20" value="<?=htmlspecialchars($pconfig['address']);?>">
+            <td width="78%" class="vtable">
+							<input name="address" type="text" class="formfld" id="address" size="20" value="<?=htmlspecialchars($pconfig['address']);?>">
 							<br><span class="vexpl"><?=gettext("The IP address that this hostname represents.");?></span>
 						</td>
           </tr>

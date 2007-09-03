@@ -110,9 +110,8 @@ function enable_change(enable_change) {
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq">Community</td>
                   <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="rocommunity" type="text" class="formfld" id="rocommunity" size="40" value="<?=htmlspecialchars($pconfig['rocommunity']);?>"> 
-                    <br>
-                    In most cases, &quot;public&quot; is used here</td>
+                    <input name="rocommunity" type="text" class="formfld" id="rocommunity" size="40" value="<?=htmlspecialchars($pconfig['rocommunity']);?>"> 
+                    <br>In most cases, &quot;public&quot; is used here</td>
                 </tr>
                 <tr> 
                   <td width="22%" valign="top">&nbsp;</td>

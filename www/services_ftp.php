@@ -185,26 +185,30 @@ function enable_change(enable_change) {
      <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port"); ?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
-       <br><?=gettext("Default is 21"); ?></td>
+        <input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
+				<br><?=gettext("Default is 21");?>
+			</td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Number of clients"); ?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="numberclients" type="text" class="formfld" id="numberclients" size="20" value="<?=htmlspecialchars($pconfig['numberclients']);?>">
-      <br><?=gettext("Maximum number of simultaneous clients."); ?></td>
+      	<input name="numberclients" type="text" class="formfld" id="numberclients" size="20" value="<?=htmlspecialchars($pconfig['numberclients']);?>">
+      	<br><?=gettext("Maximum number of simultaneous clients.");?>
+			</td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Max. conn. per IP"); ?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="maxconperip" type="text" class="formfld" id="maxconperip" size="20" value="<?=htmlspecialchars($pconfig['maxconperip']);?>">
-        <br><?=gettext("Maximum number of connections per IP address (0 = unlimited)."); ?></td>
+        <input name="maxconperip" type="text" class="formfld" id="maxconperip" size="20" value="<?=htmlspecialchars($pconfig['maxconperip']);?>">
+        <br><?=gettext("Maximum number of connections per IP address (0 = unlimited).");?>
+			</td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Timeout") ;?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="timeout" type="text" class="formfld" id="timeout" size="20" value="<?=htmlspecialchars($pconfig['timeout']);?>">
-        <br><?=gettext("Maximum idle time in minutes.") ;?></td>
+        <input name="timeout" type="text" class="formfld" id="timeout" size="20" value="<?=htmlspecialchars($pconfig['timeout']);?>">
+        <br><?=gettext("Maximum idle time in minutes.");?>
+			</td>
     </tr>
     <tr> 
 			<td width="22%" valign="top" class="vncell"><?=gettext("Permit root login");?></td>
@@ -283,14 +287,16 @@ function enable_change(enable_change) {
   	<tr>
       <td width="22%" valign="top" class="vncellbg"><?=gettext("pasv_min_port"); ?></td>
       <td width="78%" class="">
-        <?=$mandfldhtml;?><input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>">
-      <br><?=gettext("The minimum port to allocate for PASV style data connections (0 = use any port)."); ?></td>
+        <input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>">
+      	<br><?=gettext("The minimum port to allocate for PASV style data connections (0 = use any port).");?>
+			</td>
   	</tr>
   	<tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("pasv_max_port"); ?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>">
-      <br><?=gettext("The maximum port to allocate for PASV style data connections (0 = use any port)."); ?></td>
+        <input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>">
+      	<br><?=gettext("The maximum port to allocate for PASV style data connections (0 = use any port).");?>
+			</td>
   	</tr>
   	<tr>
       <td width="22%" valign="top">&nbsp;</td>

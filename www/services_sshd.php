@@ -123,8 +123,8 @@ function enable_change(enable_change) {
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
-         <br><?=gettext("Alternate TCP port. Default is 22");?></td>
+				<input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
+				<br><?=gettext("Alternate TCP port. Default is 22");?></td>
       </td>
     </tr>
     <tr>

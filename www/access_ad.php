@@ -143,32 +143,35 @@ function enable_change(enable_change) {
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server name");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="ad_srv_name" type="text" class="formfld" id="ad_srv_name" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_name']);?>">
-      <br><?=gettext("AD or PDC name.");?></td>
+        <input name="ad_srv_name" type="text" class="formfld" id="ad_srv_name" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_name']);?>">
+      	<br><?=gettext("AD or PDC name.");?>
+			</td>
 		</tr>
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server IP");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="ad_srv_ip" type="text" class="formfld" id="ad_srv_ip" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_ip']);?>">
-      <br><?=gettext("IP address of MS Active Directory server.");?></td>
+        <input name="ad_srv_ip" type="text" class="formfld" id="ad_srv_ip" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_ip']);?>">
+      	<br><?=gettext("IP address of MS Active Directory server.");?>
+			</td>
 		</tr>
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="domain_name" type="text" class="formfld" id="domain_name" size="20" value="<?=htmlspecialchars($pconfig['domain_name']);?>"><br>
-				<?=gettext("Domain name in old format.");?></td>
+        <input name="domain_name" type="text" class="formfld" id="domain_name" size="20" value="<?=htmlspecialchars($pconfig['domain_name']);?>">
+				<br><?=gettext("Domain name in old format.");?>
+			</td>
 		</tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Administrator name");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="admin_name" type="text" class="formfld" id="admin_name" size="20" value="<?=htmlspecialchars($pconfig['admin_name']);?>"><br>
-				<?=gettext("Username of a domain administrator account.");?>
+        <input name="admin_name" type="text" class="formfld" id="admin_name" size="20" value="<?=htmlspecialchars($pconfig['admin_name']);?>">
+				<br><?=gettext("Username of a domain administrator account.");?>
 			</td>
 		</tr>
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Administration password");?></td>
       <td width="78%" class="vtable">
-      	<?=$mandfldhtml;?><input name="admin_pass" type="password" class="formfld" id="admin_pass" size="20" value="<?=htmlspecialchars($pconfig['admin_pass']);?>"><br>
+      	<input name="admin_pass" type="password" class="formfld" id="admin_pass" size="20" value="<?=htmlspecialchars($pconfig['admin_pass']);?>"><br>
 				<input name="admin_pass2" type="password" class="formfld" id="admin_pass2" size="20" value="<?=htmlspecialchars($pconfig['admin_pass2']);?>">
         &nbsp;(<?=gettext("Confirmation");?>)<br>
         <span class="vexpl"><?=gettext("Password of domain administrator account, enter it here twice.");?></span>

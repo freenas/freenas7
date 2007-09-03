@@ -150,7 +150,7 @@ if (!is_array($config['mounts']['mount'])) {
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
 	          <td width="22%" valign="top" class="vncellreq"><?=gettext("Source share");?></td>
-	          <td width="78%" class="vtable"><?=$mandfldhtml;?>
+	          <td width="78%" class="vtable">
 	            <select name="source" class="formfld" id="source">
 	              <?php foreach ($a_mount as $mountv): ?>
 	              <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $pconfig['source']) echo "selected";?>>
@@ -162,7 +162,7 @@ if (!is_array($config['mounts']['mount'])) {
 	    		</tr>
 					<tr>
 	          <td width="22%" valign="top" class="vncellreq"><?=gettext("Destination share");?></td>
-	          <td width="78%" class="vtable"><?=$mandfldhtml;?>
+	          <td width="78%" class="vtable">
 	            <select name="destination" class="formfld" id="destination">
 	              <?php foreach ($a_mount as $mountv): ?>
 	              <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $pconfig['destination']) echo "selected";?>>
@@ -175,7 +175,6 @@ if (!is_array($config['mounts']['mount'])) {
     			<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Synchronization Time");?></td>
 						<td width="78%" class="vtable">
-							<?=$mandfldhtml;?>
 							<table width=100% border cellpadding="6" cellspacing="0">
 								<tr>
 									<td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>
@@ -331,13 +330,13 @@ if (!is_array($config['mounts']['mount'])) {
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("RSYNC Options"); ?></td>
-						<td width="78%" class="vtable"><?=$mandfldhtml;?>
+						<td width="78%" class="vtable">
 							<input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
-						<td width="78%" class="vtable"><?=$mandfldhtml;?>
+						<td width="78%" class="vtable">
 							<input name="description" type="text" class="formfld" id="description" size="40" value="<?=htmlspecialchars($pconfig['description']);?>">
 						</td>
 					</tr>

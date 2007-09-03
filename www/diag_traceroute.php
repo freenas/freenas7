@@ -77,10 +77,11 @@ if (!isset($do_traceroute)) {
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 			<form action="diag_traceroute.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr>
+        <tr>
 				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Host");?></td>
 				  <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="host" type="text" class="formfld" id="host" size="20" value="<?=htmlspecialchars($host);?>"></td>
+            <input name="host" type="text" class="formfld" id="host" size="20" value="<?=htmlspecialchars($host);?>">
+					</td>
 				</tr>
 				<tr>
 				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Maximum number of hops");?></td>

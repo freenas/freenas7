@@ -120,33 +120,29 @@ if ($_POST) {
 			     <tr>
 			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Name") ;?></td>
 			      <td width="78%" class="vtable">
-			        <?=$mandfldhtml;?><input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
-							<br>
-							<?=gettext("This is for information only (not using during iSCSI negociation)."); ?>
+			        <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
+							<br><?=gettext("This is for information only (not using during iSCSI negociation)."); ?>
 			      </td>
 			    </tr>
 					<tr>
 			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Initiator name") ;?></td>
 			      <td width="78%" class="vtable">
-			        <?=$mandfldhtml;?><input name="initiatorname" type="text" class="formfld" id="initiatorname" size="40" value="<?=htmlspecialchars($pconfig['initiatorname']);?>">
-							<br>
-							<?=gettext("This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."); ?>
+			        <input name="initiatorname" type="text" class="formfld" id="initiatorname" size="40" value="<?=htmlspecialchars($pconfig['initiatorname']);?>">
+							<br><?=gettext("This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."); ?>
 			      </td>
 						</tr>
 				    <tr>
 			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Target Name") ;?></td>
 			      <td width="78%" class="vtable">
-			        <?=$mandfldhtml;?><input name="targetname" type="text" class="formfld" id="targetname" size="40" value="<?=htmlspecialchars($pconfig['targetname']);?>">
-							<br>
-							<?=gettext("This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."); ?>
+			        <input name="targetname" type="text" class="formfld" id="targetname" size="40" value="<?=htmlspecialchars($pconfig['targetname']);?>">
+							<br><?=gettext("This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."); ?>
 			      </td>
 			    </tr>
 					<tr>
 			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Target address") ;?></td>
 			      <td width="78%" class="vtable">
-			        <?=$mandfldhtml;?><input name="targetaddress" type="text" class="formfld" id="targetaddress" size="20" value="<?=htmlspecialchars($pconfig['targetaddress']);?>">
-							<br>
-							<?=gettext("This the IP address or DNS name of the iSCSI target."); ?>
+			        <input name="targetaddress" type="text" class="formfld" id="targetaddress" size="20" value="<?=htmlspecialchars($pconfig['targetaddress']);?>">
+							<br><?=gettext("This the IP address or DNS name of the iSCSI target."); ?>
 			      </td>
 			    </tr>
 			    <tr>

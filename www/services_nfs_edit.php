@@ -88,7 +88,7 @@ if($_POST) {
 	    <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorised network");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> /
+        <input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> /
         <select name="network_subnet" class="formfld" id="network_subnet">
           <?php for ($i = 32; $i >= 1; $i--):?>
           <option value="<?=$i;?>" <?php if ($i == $pconfig['network_subnet']) echo "selected";?>><?=$i;?></option>

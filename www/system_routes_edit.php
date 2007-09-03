@@ -163,7 +163,7 @@ if ($_POST) {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Destination network");?></td>
             <td width="78%" class="vtable"> 
-							<?=$mandfldhtml;?><input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> 
+							<input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> 
 							/
 							<input name="network_subnet" type="text" class="formfld" id="network_subnet" size="2" value="<?=htmlspecialchars($pconfig['network_subnet']);?>">
 							<br><span class="vexpl"><?=gettext("Destination network for this static route");?></span>
@@ -172,7 +172,7 @@ if ($_POST) {
 					<tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Gateway");?></td>
             <td width="78%" class="vtable"> 
-              <?=$mandfldhtml;?><input name="gateway" type="text" class="formfld" id="gateway" size="40" value="<?=htmlspecialchars($pconfig['gateway']);?>">
+              <input name="gateway" type="text" class="formfld" id="gateway" size="40" value="<?=htmlspecialchars($pconfig['gateway']);?>">
               <br> <span class="vexpl"><?=gettext("Gateway to be used to reach the destination network");?></span></td>
           </tr>
 					<tr>

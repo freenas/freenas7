@@ -140,26 +140,28 @@ function enable_change(enable_change) {
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("LDAP server IP");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="host_ip" type="text" class="formfld" id="host_ip" size="20" value="<?=htmlspecialchars($pconfig['host_ip']);?>">
-      <br><?=gettext("IP address of LDAP server.");?></td>
+        <input name="host_ip" type="text" class="formfld" id="host_ip" size="20" value="<?=htmlspecialchars($pconfig['host_ip']);?>">
+      	<br><?=gettext("IP address of LDAP server.");?>
+			</td>
 		</tr>
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Base DN");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="base" type="text" class="formfld" id="base" size="20" value="<?=htmlspecialchars($pconfig['base']);?>">
-      <br><?=gettext("Specifies the default base DN to use when performing ldap operations. The base must be specified as a distinguished name in LDAP format.");?></td>
+        <input name="base" type="text" class="formfld" id="base" size="20" value="<?=htmlspecialchars($pconfig['base']);?>">
+      	<br><?=gettext("Specifies the default base DN to use when performing ldap operations. The base must be specified as a distinguished name in LDAP format.");?>
+			</td>
 		</tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("DN to bind");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="binddn" type="text" class="formfld" id="binddn" size="20" value="<?=htmlspecialchars($pconfig['binddn']);?>"><br>
-				<?=gettext("Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a distinguished name in LDAP format.");?>
+        <input name="binddn" type="text" class="formfld" id="binddn" size="20" value="<?=htmlspecialchars($pconfig['binddn']);?>">
+				<br><?=gettext("Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a distinguished name in LDAP format.");?>
 			</td>
 		</tr>
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Password for DN");?></td>
       <td width="78%" class="vtable">
-      	<?=$mandfldhtml;?><input name="bindpw" type="password" class="formfld" id="bindpw" size="20" value="<?=htmlspecialchars($pconfig['bindpw']);?>"><br>
+      	<input name="bindpw" type="password" class="formfld" id="bindpw" size="20" value="<?=htmlspecialchars($pconfig['bindpw']);?>"><br>
 				<input name="bindpw2" type="password" class="formfld" id="bindpw2" size="20" value="<?=htmlspecialchars($pconfig['bindpw2']);?>">
         &nbsp;(<?=gettext("Confirmation");?>)<br>
         <span class="vexpl"><?=gettext("The credentials to bind with, enter it here twice.");?></span>
@@ -169,27 +171,28 @@ function enable_change(enable_change) {
 		  <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("User suffix");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?><input name="user_suffix" type="text" class="formfld" id="user_suffix" size="20" value="<?=htmlspecialchars($pconfig['user_suffix']);?>">
-      <br><?=gettext("user_suffix.");?></td>
+        <input name="user_suffix" type="text" class="formfld" id="user_suffix" size="20" value="<?=htmlspecialchars($pconfig['user_suffix']);?>">
+      	<br><?=gettext("user_suffix.");?>
+			</td>
 		</tr>
 		<tr>
 		  <tr>
 	      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password suffix");?></td>
 	      <td width="78%" class="vtable">
-	        <?=$mandfldhtml;?><input name="password_suffix" type="text" class="formfld" id="password_suffix" size="20" value="<?=htmlspecialchars($pconfig['password_suffix']);?>">
-	      <br><?=gettext("password_suffix.");?></td>
+	        <input name="password_suffix" type="text" class="formfld" id="password_suffix" size="20" value="<?=htmlspecialchars($pconfig['password_suffix']);?>">
+	      	<br><?=gettext("password_suffix.");?>
+				</td>
 			</tr>
 		  <tr>
 	      <td width="22%" valign="top" class="vncellreq"><?=gettext("Group suffix");?></td>
 	      <td width="78%" class="vtable">
-	        <?=$mandfldhtml;?><input name="group_suffix" type="text" class="formfld" id="group_suffix" size="20" value="<?=htmlspecialchars($pconfig['group_suffix']);?>">
+	        <input name="group_suffix" type="text" class="formfld" id="group_suffix" size="20" value="<?=htmlspecialchars($pconfig['group_suffix']);?>">
 	      	<br><?=gettext("group_suffix.");?>
 				</td>
 			</tr>
 			<tr>
 	      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password encryption"); ?></td>
 				<td width="78%" class="vtable">
-	        <?=$mandfldhtml;?>
 					<select name="pam_password" class="formfld" id="pam_password">
 		        <?php $types = explode(",", "clear,crypt,md5,nds,ad,exop"); $vals = explode(" ", "clear crypt md5 nds ad exop");?>
 		        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>

@@ -180,28 +180,24 @@ function enable_change(enable_change) {
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
 						<td width="78%" class="vtable">
-			        <?=$mandfldhtml;?>
 							<input name="desc" type="text" class="formfld" id="desc" size="60" value="<?=htmlspecialchars($pconfig['desc']);?>">
 						</td>
 					</tr>
 			  	<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Who");?></td>
 						<td width="78%" class="vtable">
-			        <?=$mandfldhtml;?>
 							<input name="who" type="text" class="formfld" id="who" size="10" value="<?=htmlspecialchars($pconfig['who']);?>">
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
 						<td width="78%" class="vtable">
-			        <?=$mandfldhtml;?>
 							<input name="command" type="text" class="formfld" id="command" size="60" value="<?=htmlspecialchars($pconfig['command']);?>">
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Schedule time");?></td>
 						<td width="78%" class="vtable">
-							<?=$mandfldhtml;?>
 							<table width=100% border cellpadding="6" cellspacing="0">
 								<tr>
 									<td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>

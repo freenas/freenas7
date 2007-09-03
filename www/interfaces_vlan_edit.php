@@ -111,7 +111,7 @@ if ($_POST) {
 				<tr>
                   <td valign="top" class="vncellreq">VLAN tag </td>
                   <td class="vtable">
-                    <?=$mandfldhtml;?><input name="tag" type="text" class="formfld" id="tag" size="6" value="<?=htmlspecialchars($pconfig['tag']);?>">
+                    <input name="tag" type="text" class="formfld" id="tag" size="6" value="<?=htmlspecialchars($pconfig['tag']);?>">
                     <br>
                     <span class="vexpl">802.1Q VLAN tag (between 1 and 4094) </span></td>
 			    </tr>

@@ -118,14 +118,12 @@ if ($_POST) {
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
 						<td width="78%" class="vtable">
-			        <?=$mandfldhtml;?>
 							<input name="command" type="text" class="formfld" id="command" size="60" value="<?=htmlspecialchars($command);?>">
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Type");?></td>
 						<td width="78%" class="vtable">
-							<?=$mandfldhtml;?>
 							<select name="type" class="formfld" id="type" <?php if ($type) echo "disabled";?>>
 								<option value="PRE" <?php if ($type == "PRE") echo "selected";?>>Pre</option>
 								<option value="POST" <?php if ($type == "POST") echo "selected";?>>Post</option>

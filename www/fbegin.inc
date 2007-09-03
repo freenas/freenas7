@@ -1,6 +1,4 @@
 <?php
-$mandfldhtml = "";		/* display this before mandatory input fields */
-
 function gentitle($title) {
 	$navlevelsep = ": "; // Navigation level separator string.
 	return join($navlevelsep, $title);

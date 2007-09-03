@@ -103,7 +103,7 @@ function enable_change(enable_change) {
 				 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Server Name") ;?></td>
                   <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="afpname" type="text" class="formfld" id="afpname" size="20" value="<?=htmlspecialchars($pconfig['afpname']);?>"> 
+                    <input name="afpname" type="text" class="formfld" id="afpname" size="20" value="<?=htmlspecialchars($pconfig['afpname']);?>"> 
                   </td>
 				</tr>
                   <tr>

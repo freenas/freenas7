@@ -126,7 +126,7 @@ function enable_change(enable_change) {
 		  <tr>
           <td width="22%" valign="top" class="vncellreq"><?=gettext("Swap file size") ;?></td>
           <td width="78%" class="vtable">
-              <?=$mandfldhtml;?><input name="swap_size" type="text" class="formfld" id="swap_size" size="30" value="<?=htmlspecialchars($pconfig['swap_size']);?>"><br>
+              <input name="swap_size" type="text" class="formfld" id="swap_size" size="30" value="<?=htmlspecialchars($pconfig['swap_size']);?>"><br>
 							<?=gettext("Size in MB.") ;?>
             </td>
           </tr>

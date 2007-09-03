@@ -218,7 +218,7 @@ function authentication_change() {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Authentication"); ?></td>
             <td width="78%" class="vtable">
-              <?=$mandfldhtml;?><select name="security" class="formfld" id="security" onchange="authentication_change()">
+              <select name="security" class="formfld" id="security" onchange="authentication_change()">
               <?php $types = explode(",", "Anonymous,Local User,Domain"); $vals = explode(" ", "share user domain");?>
               <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
                 <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>>
@@ -231,13 +231,13 @@ function authentication_change() {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("NetBiosName") ;?></td>
             <td width="78%" class="vtable">
-              <?=$mandfldhtml;?><input name="netbiosname" type="text" class="formfld" id="netbiosname" size="30" value="<?=htmlspecialchars($pconfig['netbiosname']);?>">
+              <input name="netbiosname" type="text" class="formfld" id="netbiosname" size="30" value="<?=htmlspecialchars($pconfig['netbiosname']);?>">
             </td>
           </tr>
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Workgroup") ; ?></td>
             <td width="78%" class="vtable">
-              <?=$mandfldhtml;?><input name="workgroup" type="text" class="formfld" id="workgroup" size="30" value="<?=htmlspecialchars($pconfig['workgroup']);?>">
+              <input name="workgroup" type="text" class="formfld" id="workgroup" size="30" value="<?=htmlspecialchars($pconfig['workgroup']);?>">
               <br><?=gettext("Workgroup to be member of.") ;?>
             </td>
           </tr>

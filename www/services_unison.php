@@ -141,7 +141,6 @@ function enable_change(enable_change) {
   <tr>
     <td width="22%" valign="top" class="vncellreq"><?=gettext("Share");?></td>
     <td width="78%" class="vtable">
-      <?=$mandfldhtml;?>
       <select name="share" class="formfld" id="share">
         <?php foreach ($a_mount as $mount): $tmp=$mount['sharename']; ?>
         <option value="<?=$tmp;?>"
@@ -154,8 +153,8 @@ function enable_change(enable_change) {
   <tr>
     <td width="22%" valign="top" class="vncellreq"><?=gettext("Working Directory");?></td>
     <td width="78%" class="vtable">
-      <?=$mandfldhtml;?><input name="workdir" type="text" class="formfld" id="workdir" size="20" value="<?=htmlspecialchars($pconfig['workdir']);?>">
-       <br><?=gettext("Where the working files will be stored");?>.</td>
+			<input name="workdir" type="text" class="formfld" id="workdir" size="20" value="<?=htmlspecialchars($pconfig['workdir']);?>">
+			<br><?=gettext("Where the working files will be stored");?>.</td>
     </td>
   </tr>
   <tr>

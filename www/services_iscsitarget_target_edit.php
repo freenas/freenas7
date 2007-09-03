@@ -175,7 +175,6 @@ if ($_POST) {
 					<tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorised network") ; ?></td>
 			      <td width="78%" class="vtable">
-			        <?=$mandfldhtml;?>
 							<input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>"> /
 			        <select name="subnet" class="formfld" id="subnet">
 			          <?php for ($i = 32; $i >= 1; $i--): ?>

@@ -94,20 +94,23 @@ function enable_change(enable_change) {
                  <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain");?></td>
                   <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="nis_domain" type="text" class="formfld" id="nis_domain" size="20" value="<?=htmlspecialchars($pconfig['nis_domain']);?>"> 
-                  <br><?=gettext("Enter the NIS domain name.");?></td>
+                  	<input name="nis_domain" type="text" class="formfld" id="nis_domain" size="20" value="<?=htmlspecialchars($pconfig['nis_domain']);?>"> 
+                  	<br><?=gettext("Enter the NIS domain name.");?>
+									</td>
 				</tr>
                  <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("NIS master server name");?></td>
                   <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="nis_master_name" type="text" class="formfld" id="nis_master_name" size="20" value="<?=htmlspecialchars($pconfig['nis_master_name']);?>"> 
-                  <br><?=gettext("Enter the NIS Master server hostname.");?></td>
+                    <input name="nis_master_name" type="text" class="formfld" id="nis_master_name" size="20" value="<?=htmlspecialchars($pconfig['nis_master_name']);?>"> 
+                  	<br><?=gettext("Enter the NIS Master server hostname.");?>
+									</td>
 				</tr>
                 <tr> 
                   <td width="22%" valign="top" class="vncellreq"><?=gettext("NIS slave server name");?></td>
                   <td width="78%" class="vtable"> 
-                    <?=$mandfldhtml;?><input name="nis_slave_name" type="text" class="formfld" id="nis_slave_name" size="20" value="<?=htmlspecialchars($pconfig['nis_slave_name']);?>"> 
-                  <br><?=gettext("Enter the NIS Slave server hostname.");?></td>
+                    <input name="nis_slave_name" type="text" class="formfld" id="nis_slave_name" size="20" value="<?=htmlspecialchars($pconfig['nis_slave_name']);?>"> 
+                  	<br><?=gettext("Enter the NIS Slave server hostname.");?>
+									</td>
 				</tr>
 				<tr> 
                   <td width="22%" valign="top">&nbsp;</td>

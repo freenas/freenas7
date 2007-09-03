@@ -146,7 +146,6 @@ function enable_change(enable_change) {
           <tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Shutdown Time");?></td>
 						<td width="78%" class="vtable">
-							<?=$mandfldhtml;?>
 							<table width=100% border cellpadding="6" cellspacing="0">
 								<tr>
 									<td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>

@@ -274,7 +274,7 @@ function ipv6_type_change() {
     <tr> 
       <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address"); ?></td>
       <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
+        <input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
         / 
         <select name="subnet" class="formfld" id="subnet">
           <?php for ($i = 31; $i > 0; $i--): ?>
@@ -327,7 +327,7 @@ function ipv6_type_change() {
     <tr> 
       <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv6 address"); ?></td>
       <td width="78%" class="vtable"> 
-        <?=$mandfldhtml;?><input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="30" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
+        <input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="30" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
 		 /
 		 <input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
       </td>

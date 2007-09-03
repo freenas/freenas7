@@ -142,7 +142,6 @@ function enable_change(enable_change) {
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
         <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
         <br><?=gettext("UPnP friendly name.");?>
       </td>
@@ -150,7 +149,6 @@ function enable_change(enable_change) {
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Interface");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
         <select name="interface" class="formfld" id="interface">
           <?php foreach($a_interface as $if => $ifinfo): ?>
 					<?php $ifinfo = get_interface_info($if); if($ifinfo['status'] == "up"): ?>
@@ -164,7 +162,6 @@ function enable_change(enable_change) {
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Content");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="90%" class="listhdrr"><?=gettext("Directory");?></td>

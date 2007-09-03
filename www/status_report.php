@@ -208,7 +208,6 @@ function auth_change() {
     <tr>
 	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Outgoing mail server");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
         <input name="server" type="text" class="formfld" id="server" size="40" value="<?=htmlentities($pconfig['server']);?>"><br>
         <?=gettext("Outgoing SMTP mail server address, e.g. smtp.example.com.");?>
       </td>
@@ -216,7 +215,6 @@ function auth_change() {
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
         <input name="port" type="text" class="formfld" id="port" size="10" value="<?=htmlentities($pconfig['port']);?>"><br>
         <?=gettext("The default SMTP mail server port, e.g. 25 or 587.");?>
       </td>
@@ -224,7 +222,6 @@ function auth_change() {
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Authentication");?></td>
       <td width="78%" class="vtable">
-      	<?=$mandfldhtml;?>
         <input name="auth" type="checkbox" id="auth" value="yes" <?php if ($pconfig['auth']) echo "checked"; ?> onClick="auth_change()"><br>
         <?=gettext("Use SMTP authentication.");?>
 			</td>
@@ -232,14 +229,12 @@ function auth_change() {
 		<tr id="username_tr">
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
         <input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlentities($pconfig['username']);?>">
       </td>
     </tr>
     <tr id="password_tr">
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
       <td width="78%" class="vtable">
-        <?=$mandfldhtml;?>
         <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlentities($pconfig['password']);?>"><br>
         <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
       </td>
@@ -247,7 +242,6 @@ function auth_change() {
 		<tr>
 			<td width="22%" valign="top" class="vncellreq"><?=gettext("From email");?></td>
 			<td width="78%" class="vtable">
-				<?=$mandfldhtml;?>
 				<input name="from" type="text" class="formfld" id="from" size="40" value="<?=htmlentities($pconfig['from']);?>"><br>
 				<?=gettext("Your own email address.");?>
 			</td>
@@ -255,7 +249,6 @@ function auth_change() {
 		<tr>
 			<td width="22%" valign="top" class="vncellreq"><?=gettext("To email");?></td>
 			<td width="78%" class="vtable">
-				<?=$mandfldhtml;?>
 				<input name="to" type="text" class="formfld" id="to" size="40" value="<?=htmlentities($pconfig['to']);?>"><br>
 				<?=gettext("Destination email address.");?>
 			</td>
@@ -270,7 +263,6 @@ function auth_change() {
 		<tr>
 			<td width="22%" valign="top" class="vncellreq"><?=gettext("Polling time");?></td>
 			<td width="78%" class="vtable">
-				<?=$mandfldhtml;?>
 				<table width=100% border cellpadding="6" cellspacing="0">
 					<tr>
 						<td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>
