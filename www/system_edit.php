@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-    diag_edit.php
+    system_edit.php
     Copyright (C) 2004, 2005 Scott Ullrich
     All rights reserved.
 
@@ -38,7 +38,7 @@ require("guiconfig.inc");
 
 global $g;
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Edit File"));
+$pgtitle = array(gettext("System"), gettext("Edit File"));
 
 if (($_POST['submit'] == gettext("Load")) && file_exists($_POST['savetopath']) && is_file($_POST['savetopath'])) {
 	$fd = fopen($_POST['savetopath'], "r");

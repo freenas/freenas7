@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Diagnostics"),gettext("Scheduled shutdown"));
+$pgtitle = array(gettext("System"),gettext("Shutdown"));
 
 if (!is_array($config['shutdown'])){
 	$config['shutdown'] = array();
@@ -120,8 +120,8 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="shutdown.php"><?=gettext("Shutdown system");?></a></li>
-        <li class="tabact"><a href="shutdown_sched.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Scheduled shutdown");?></a></li>
+        <li class="tabinact"><a href="shutdown.php"><?=gettext("Shutdown");?></a></li>
+        <li class="tabact"><a href="shutdown_sched.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Scheduled");?></a></li>
       </ul>
     </td>
   </tr>

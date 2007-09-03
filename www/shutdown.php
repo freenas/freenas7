@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Diagnostics"),gettext("Shutdown system"));
+$pgtitle = array(gettext("System"),gettext("Shutdown"));
 
 if ($_POST) {
 	if ($_POST['Submit'] != " " . gettext("No") . " ") {
@@ -49,8 +49,8 @@ if ($_POST) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><a href="shutdown.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Shutdown system");?></a></li>
-        <li class="tabinact"><a href="shutdown_sched.php"><?=gettext("Scheduled shutdown");?></a></li>
+        <li class="tabact"><a href="shutdown.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Shutdown");?></a></li>
+        <li class="tabinact"><a href="shutdown_sched.php"><?=gettext("Scheduled");?></a></li>
       </ul>
     </td>
   </tr>

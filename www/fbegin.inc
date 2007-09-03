@@ -13,14 +13,18 @@ function genhtmltitle($title) {
 // System
 $menu['system']['desc'] = "System";
 $menu['system']['menuitem'] = array();
-$menu['system']['menuitem'][] = array("desc" => "General setup", "link" => "system.php", "visible" => true);
-$menu['system']['menuitem'][] = array("desc" => "Static routes", "link" => "system_routes.php", "visible" => true);
-$menu['system']['menuitem'][] = array("desc" => "Hosts", "link" => "system_hosts.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "General Setup", "link" => "system.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => "Advanced", "link" => "system_advanced.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "Static Routes", "link" => "system_routes.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "Hosts", "link" => "system_hosts.php", "visible" => true);
 if ("full" === $g['platform']) {
 	$menu['system']['menuitem'][] = array("desc" => "Packages", "link" => "system_packages.php", "visible" => true);
 }
 $menu['system']['menuitem'][] = array("desc" => "Firmware", "link" => "system_firmware.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "Backup/Restore", "link" => "system_backup.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "Factory Defaults", "link" => "system_defaults.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "Reboot", "link" => "reboot.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "Shutdown", "link" => "shutdown.php", "visible" => true);
 
 // Interfaces
 $menu['interfaces']['desc'] = "Interfaces";
@@ -74,7 +78,15 @@ $menu['status']['menuitem'][] = array("desc" => "Interfaces", "link" => "status_
 $menu['status']['menuitem'][] = array("desc" => "Disks", "link" => "status_disks.php", "visible" => true);
 $menu['status']['menuitem'][] = array("desc" => "Wireless", "link" => "status_wireless.php", "visible" => true);
 $menu['status']['menuitem'][] = array("desc" => "Graph", "link" => "status_graph.php", "visible" => true);
-$menu['status']['menuitem'][] = array("desc" => "Email report", "link" => "status_report.php", "visible" => true);
+$menu['status']['menuitem'][] = array("desc" => "Email Report", "link" => "status_report.php", "visible" => true);
+
+// Advanced
+$menu['advanced']['desc'] = "Advanced";
+$menu['advanced']['menuitem'] = array();
+$menu['advanced']['menuitem'][] = array("desc" => "Command", "link" => "exec.php", "visible" => true);
+$menu['advanced']['menuitem'][] = array("desc" => "Edit File", "link" => "system_edit.php", "visible" => true);
+$menu['advanced']['expandable'] = true;
+$menu['advanced']['is_expanded'] = strstr($_SERVER['SCRIPT_FILENAME'], "exec") || strstr($_SERVER['SCRIPT_FILENAME'], "edit");
 
 // Diagnostics
 $menu['diagnostics']['desc'] = "Diagnostics";
@@ -82,15 +94,9 @@ $menu['diagnostics']['menuitem'] = array();
 $menu['diagnostics']['menuitem'][] = array("desc" => "Logs", "link" => "diag_logs.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "Information", "link" => "diag_infos.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => "Ping/Traceroute", "link" => "diag_ping.php", "visible" => true);
-$menu['diagnostics']['menuitem'][] = array("desc" => "ARP table", "link" => "diag_arp.php", "visible" => true);
-$menu['diagnostics']['menuitem'][] = array("desc" => "Command", "link" => "exec.php", "visible" => true);
-$menu['diagnostics']['menuitem'][] = array("desc" => "Edit File", "link" => "diag_edit.php", "visible" => true);
-$menu['diagnostics']['menuitem'][] = array("desc" => "Backup/Restore", "link" => "diag_backup.php", "visible" => true);
-$menu['diagnostics']['menuitem'][] = array("desc" => "Factory defaults", "link" => "diag_defaults.php", "visible" => true);
-$menu['diagnostics']['menuitem'][] = array("desc" => "Reboot system", "link" => "reboot.php", "visible" => true);
-$menu['diagnostics']['menuitem'][] = array("desc" => "Shutdown system", "link" => "shutdown.php", "visible" => true);
+$menu['diagnostics']['menuitem'][] = array("desc" => "ARP Table", "link" => "diag_arp.php", "visible" => true);
 $menu['diagnostics']['expandable'] = true;
-$menu['diagnostics']['is_expanded'] = isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_") || strstr($_SERVER['SCRIPT_FILENAME'], "reboot") || strstr($_SERVER['SCRIPT_FILENAME'], "shutdown") || strstr($_SERVER['SCRIPT_FILENAME'], "exec");
+$menu['diagnostics']['is_expanded'] = isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_");
 
 function display_menu($menu) {
 	# Is menu expandable?
@@ -188,6 +194,7 @@ function display_menu($menu) {
 							</li>
 							<?php endif;?>
 							<?=display_menu($menu['diagnostics']);?>
+							<?=display_menu($menu['advanced']);?>
 			  		</ul>
 					</td>
         </tr>

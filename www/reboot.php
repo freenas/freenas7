@@ -30,7 +30,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Reboot system"));
+$pgtitle = array(gettext("System"), gettext("Reboot"));
 
 if ($_POST) {
 	if ($_POST['Submit'] != " " . gettext("No") . " ") {
@@ -46,8 +46,8 @@ if ($_POST) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><a href="reboot.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Reboot system");?></a></li>
-        <li class="tabinact"><a href="reboot_sched.php"><?=gettext("Scheduled reboot");?></a></li>
+        <li class="tabact"><a href="reboot.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Reboot");?></a></li>
+        <li class="tabinact"><a href="reboot_sched.php"><?=gettext("Scheduled");?></a></li>
       </ul>
     </td>
   </tr>
