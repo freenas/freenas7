@@ -50,9 +50,10 @@ $pconfig['auth'] = isset($config['statusreport']['auth']);
 $pconfig['username'] = $config['statusreport']['username'];
 $pconfig['password'] = base64_decode($config['statusreport']['password']);
 $pconfig['passwordconf'] = $pconfig['password'];
-$pconfig['subject'] = $config['statusreport']['subject'];
 $pconfig['from'] = $config['statusreport']['from'];
 $pconfig['to'] = $config['statusreport']['to'];
+$pconfig['subject'] = $config['statusreport']['subject'];
+$pconfig['report'] = $config['statusreport']['report'];
 $pconfig['minute'] = $config['statusreport']['minute'];
 $pconfig['hour'] = $config['statusreport']['hour'];
 $pconfig['day'] = $config['statusreport']['day'];
@@ -100,9 +101,10 @@ if($_POST) {
 		$config['statusreport']['auth'] = $_POST['auth'] ? true : false;
 		$config['statusreport']['username'] = $_POST['username'];
 		$config['statusreport']['password'] = base64_encode($_POST['password']);
-		$config['statusreport']['subject'] = $_POST['subject'];
 		$config['statusreport']['from'] = $_POST['from'];
 		$config['statusreport']['to'] = $_POST['to'];
+		$config['statusreport']['subject'] = $_POST['subject'];
+		$config['statusreport']['report'] = $_POST['report'];
 		$config['statusreport']['minute'] = $_POST['minute'];
 		$config['statusreport']['hour'] = $_POST['hour'];
 		$config['statusreport']['day'] = $_POST['day'];
@@ -150,6 +152,14 @@ function enable_change(enable_change) {
 	document.iform.from.disabled = endis;
 	document.iform.to.disabled = endis;
 	document.iform.subject.disabled = endis;
+	document.iform.report_systeminfo.disabled = endis;
+	document.iform.report_dmesg.disabled = endis;
+	document.iform.report_systemlog.disabled = endis;
+	document.iform.report_ftplog.disabled = endis;
+	document.iform.report_rsynclog.disabled = endis;
+	document.iform.report_sshdlog.disabled = endis;
+	document.iform.report_smartdlog.disabled = endis;
+	document.iform.report_daemonlog.disabled = endis;
 	document.iform.minutes1.disabled = endis;
 	document.iform.minutes2.disabled = endis;
 	document.iform.minutes3.disabled = endis;
@@ -220,7 +230,7 @@ function auth_change() {
       </td>
     </tr>
 		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Authentication");?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
       <td width="78%" class="vtable">
         <input name="auth" type="checkbox" id="auth" value="yes" <?php if ($pconfig['auth']) echo "checked"; ?> onClick="auth_change()"><br>
         <?=gettext("Use SMTP authentication.");?>
@@ -258,6 +268,25 @@ function auth_change() {
       <td width="78%" class="vtable">
         <input name="subject" type="text" class="formfld" id="subject" size="60" value="<?=htmlentities($pconfig['subject']);?>"><br>
         <?=gettext("The subject of the email.");?>
+      </td>
+		</tr>
+		<tr>
+	    <td width="22%" valign="top" class="vncell"><?=gettext("Reports");?></td>
+      <td width="78%" class="vtable">
+      	<table>
+      		<tr>
+						<td><input name="report[]" type="checkbox" class="formfld" id="report_systeminfo" value="systeminfo" <?php if (is_array($pconfig['report']) && in_array("systeminfo", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System info");?></td>
+						<td><input name="report[]" type="checkbox" class="formfld" id="report_dmesg" value="dmesg" <?php if (is_array($pconfig['report']) && in_array("dmesg", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System message buffer");?></td>
+						<td><input name="report[]" type="checkbox" class="formfld" id="report_systemlog" value="systemlog" <?php if (is_array($pconfig['report']) && in_array("systemlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System log");?></td>
+						<td><input name="report[]" type="checkbox" class="formfld" id="report_ftplog" value="ftplog" <?php if (is_array($pconfig['report']) && in_array("ftplog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("FTP log");?></td>
+					</tr>
+					<tr>
+						<td><input name="report[]" type="checkbox" class="formfld" id="report_rsynclog" value="rsynclog" <?php if (is_array($pconfig['report']) && in_array("rsynclog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("RSYNC log");?></td>
+						<td><input name="report[]" type="checkbox" class="formfld" id="report_sshdlog" value="sshdlog" <?php if (is_array($pconfig['report']) && in_array("sshdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("SSHD log");?></td>
+						<td><input name="report[]" type="checkbox" class="formfld" id="report_smartdlog" value="smartdlog" <?php if (is_array($pconfig['report']) && in_array("smartdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("S.M.A.R.T. log");?></td>
+						<td><input name="report[]" type="checkbox" class="formfld" id="report_daemonlog" value="daemonlog" <?php if (is_array($pconfig['report']) && in_array("daemonlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("Daemon log");?></td>
+					</tr>
+        </table>
       </td>
 		</tr>
 		<tr>

@@ -261,37 +261,57 @@ function report_send_mail() {
 	global $config;
 
 	$statusreport = new StatusReport();
-	$statusreport->AddArticle(new StatusReportArticleCmd("Version","cat /etc/prd.version"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Platform","cat /etc/platform"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("System uptime","uptime"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Interfaces","/sbin/ifconfig -a"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Routing tables","netstat -nr"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Processes","ps xauww"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Swap usage","/usr/sbin/swapinfo"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Sensors","/usr/local/bin/chm -I -d 0"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("ATA disk","/sbin/atacontrol list"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("SCSI disk","/sbin/camcontrol devlist"));
-	$disklist = get_physical_disks_list();
-	foreach ($disklist as $disknamek => $disknamev) {
-		$statusreport->AddArticle(new StatusReportArticleCmd("S.M.A.R.T. [/dev/{$disknamek}]","/usr/local/sbin/smartctl -a /dev/{$disknamek}"));
+
+	if (is_array($config['statusreport']['report']) && in_array("systeminfo", $config['statusreport']['report'])) {
+		$statusreport->AddArticle(new StatusReportArticleCmd("Version","cat /etc/prd.version"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Platform","cat /etc/platform"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("System uptime","uptime"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Interfaces","/sbin/ifconfig -a"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Routing tables","netstat -nr"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Processes","ps xauww"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Swap usage","/usr/sbin/swapinfo"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Sensors","/usr/local/bin/chm -I -d 0"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("ATA disk","/sbin/atacontrol list"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("SCSI disk","/sbin/camcontrol devlist"));
+		$disklist = get_physical_disks_list();
+		foreach ($disklist as $disknamek => $disknamev) {
+			$statusreport->AddArticle(new StatusReportArticleCmd("S.M.A.R.T. [/dev/{$disknamek}]","/usr/local/sbin/smartctl -a /dev/{$disknamek}"));
+		}
+		$statusreport->AddArticle(new StatusReportArticleCmd("Geom Concat","/sbin/gconcat list"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Geom Stripe","/sbin/gstripe list"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Geom Mirror","/sbin/gmirror list"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Geom RAID5","/sbin/graid5 list"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Geom Vinum","/sbin/gvinum list"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Mount point","/sbin/mount"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Free disk space","/bin/df -h"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Encrypted disks","/sbin/geli list"));
 	}
-	$statusreport->AddArticle(new StatusReportArticleCmd("Geom Concat","/sbin/gconcat list"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Geom Stripe","/sbin/gstripe list"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Geom Mirror","/sbin/gmirror list"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Geom RAID5","/sbin/graid5 list"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Geom Vinum","/sbin/gvinum list"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Mount point","/sbin/mount"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Free disk space","/bin/df -h"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Encrypted disks","/sbin/geli list"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("dmesg","/sbin/dmesg"));
+
+	if (is_array($config['statusreport']['report']) && in_array("dmesg", $config['statusreport']['report'])) {
+		$statusreport->AddArticle(new StatusReportArticleCmd("dmesg","/sbin/dmesg"));
+	}
+
 	$numentries = $config['syslogd']['nentries'];
 	$reverse = isset($config['syslogd']['reverse']) ? "-r" : "";
-	$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} System log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail {$reverse} -n {$numentries}"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} FTP log entries","/usr/sbin/clog /var/log/ftp.log 2>&1 | tail {$reverse} -n {$numentries}"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} RSYNCD log entries","/usr/sbin/clog /var/log/rsyncd.log 2>&1 | tail {$reverse} -n {$numentries}"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} SSHD log entries","/usr/sbin/clog /var/log/sshd.log 2>&1 | tail {$reverse} -n {$numentries}"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} SMARTD log entries","/usr/sbin/clog /var/log/smartd.log 2>&1 | tail {$reverse} -n {$numentries}"));
-	$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} Daemon log entries","/usr/sbin/clog /var/log/daemon.log 2>&1 | tail {$reverse} -n {$numentries}"));
+
+	if (is_array($config['statusreport']['report']) && in_array("systemlog", $config['statusreport']['report'])) {
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} System log entries","/usr/sbin/clog /var/log/system.log 2>&1 | tail {$reverse} -n {$numentries}"));
+	}
+	if (is_array($config['statusreport']['report']) && in_array("ftplog", $config['statusreport']['report'])) {
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} FTP log entries","/usr/sbin/clog /var/log/ftp.log 2>&1 | tail {$reverse} -n {$numentries}"));
+	}
+	if (is_array($config['statusreport']['report']) && in_array("rsynclog", $config['statusreport']['report'])) {
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} RSYNCD log entries","/usr/sbin/clog /var/log/rsyncd.log 2>&1 | tail {$reverse} -n {$numentries}"));
+	}
+	if (is_array($config['statusreport']['report']) && in_array("sshdlog", $config['statusreport']['report'])) {
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} SSHD log entries","/usr/sbin/clog /var/log/sshd.log 2>&1 | tail {$reverse} -n {$numentries}"));
+	}
+	if (is_array($config['statusreport']['report']) && in_array("smartdlog", $config['statusreport']['report'])) {
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} SMARTD log entries","/usr/sbin/clog /var/log/smartd.log 2>&1 | tail {$reverse} -n {$numentries}"));
+	}
+	if (is_array($config['statusreport']['report']) && in_array("daemonlog", $config['statusreport']['report'])) {
+		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} Daemon log entries","/usr/sbin/clog /var/log/daemon.log 2>&1 | tail {$reverse} -n {$numentries}"));
+	}
 
 	$mail = new PHPMailer();
 	$mail->IsSMTP();

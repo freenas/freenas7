@@ -102,6 +102,8 @@ function enable_change(enable_change) {
 	document.iform.port.disabled = endis;
 	document.iform.key.disabled = endis;
 	document.iform.permitrootlogin.disabled = endis;
+	document.iform.passwordauthentication.disabled = endis;
+	document.iform.pubkeyauthentication.disabled = endis;
 	document.iform.tcpforwarding.disabled = endis;
 }
 //-->

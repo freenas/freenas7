@@ -394,6 +394,14 @@
 		<day></day>
 		<month></month>
 		<weekday></weekday>
+		<report>systeminfo</report>
+		<report>dmesg</report>
+		<report>systemlog</report>
+		<report>ftplog</report>
+		<report>rsynclog</report>
+		<report>sshdlog</report>
+		<report>smartdlog</report>
+		<report>daemonlog</report>
 		<!--
 		<enable/>
 		<server>mail.xxx.xxx</server>
