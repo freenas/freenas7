@@ -46,7 +46,7 @@ if ($_POST) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><a href="reboot.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Reboot");?></a></li>
+        <li class="tabact"><a href="reboot.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Now");?></a></li>
         <li class="tabinact"><a href="reboot_sched.php"><?=gettext("Scheduled");?></a></li>
       </ul>
     </td>
