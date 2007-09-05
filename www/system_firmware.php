@@ -173,7 +173,7 @@ print_info_box($sig_warning);
 <input name="sig_no" type="submit" class="formbtn" id="sig_no" value=" No ">
 </form>
 <?php else: ?>
-<?php if (!file_exists($d_firmwarelock_path)): ?>
+<?php if (!file_exists($d_firmwarelock_path)):?>
 <p><?=gettext("Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.");?></p>
 <form action="system_firmware.php" method="post" enctype="multipart/form-data">
   <table>
@@ -185,7 +185,7 @@ print_info_box($sig_warning);
 				<?php else: ?>
 				<input name="Submit" id="Disable" type="submit" class="formbtn" value="<?=gettext("Disable firmware upload");?>">
 				<br><br>
-				<strong><?=gettext("Firmware image file");?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld">
+				<strong><?=gettext("Firmware image file");?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld" size="40">
 				<br><br>
 				<input name="Submit" id="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>">
 				<?php endif; else: ?>
@@ -202,5 +202,5 @@ print_info_box($sig_warning);
     </tr>
   </table>
 </form>
-<?php endif; endif; ?>
+<?php endif; endif;?>
 <?php include("fend.inc");?>
