@@ -110,12 +110,16 @@ function iscsitarget_checkusage($name,$skipdevice = "") {
 
 	$result = false;
 
-	foreach($config['iscsitarget']['device'] as $device) {
-		if (!empty($skipdevice) && ($device['name'] === $skipdevice)) continue;
-		foreach($device['storage'] as $storage) {
-			if ($storage === $name) {
-				$result = true;
-				break;
+	if (is_array($config['iscsitarget']['device'])) {
+		foreach($config['iscsitarget']['device'] as $device) {
+			if (!empty($skipdevice) && ($device['name'] === $skipdevice)) continue;
+			if (is_array($device['storage'])) {
+				foreach($device['storage'] as $storage) {
+					if ($storage === $name) {
+						$result = true;
+						break;
+					}
+				}
 			}
 		}
 	}
