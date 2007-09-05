@@ -45,7 +45,6 @@ $pconfig['tcpforwarding'] = isset($config['sshd']['tcpforwarding']);
 $pconfig['enable'] = isset($config['sshd']['enable']);
 $pconfig['key'] = base64_decode($config['sshd']['private-key']);
 $pconfig['passwordauthentication'] = isset($config['sshd']['passwordauthentication']);
-$pconfig['pubkeyauthentication'] = isset($config['sshd']['pubkeyauthentication']);
 
 if ($_POST)
 {
@@ -79,7 +78,6 @@ if ($_POST)
 		$config['sshd']['enable'] = $_POST['enable'] ? true : false;
 		$config['sshd']['private-key'] = base64_encode($_POST['key']);
 		$config['sshd']['passwordauthentication'] = $_POST['passwordauthentication'] ? true : false;
-		$config['sshd']['pubkeyauthentication'] = $_POST['pubkeyauthentication'] ? true : false;
 
 		write_config();
 
@@ -103,7 +101,6 @@ function enable_change(enable_change) {
 	document.iform.key.disabled = endis;
 	document.iform.permitrootlogin.disabled = endis;
 	document.iform.passwordauthentication.disabled = endis;
-	document.iform.pubkeyauthentication.disabled = endis;
 	document.iform.tcpforwarding.disabled = endis;
 }
 //-->
@@ -141,12 +138,6 @@ function enable_change(enable_change) {
 				<input name="passwordauthentication" type="checkbox" id="passwordauthentication" value="yes" <?php if ($pconfig['passwordauthentication']) echo "checked"; ?>>
 				<?=gettext("Enable keyboard-interactive authentication.");?>
 		</tr>
-		<tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Public key authentication");?></td>
-      <td width="78%" class="vtable">
-        <input name="pubkeyauthentication" type="checkbox" id="pubkeyauthentication" value="yes" <?php if ($pconfig['pubkeyauthentication']) echo "checked"; ?>>
-        <?=gettext("Public key authentication is an alternative means of identifying yourself to a login server, instead of typing a password.");?>
-    </tr>
 		<tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("TCP forwarding");?></td>
       <td width="78%" class="vtable">
