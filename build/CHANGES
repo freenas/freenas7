@@ -40,8 +40,8 @@ Help needed:
 - Need help for adding LDAP authentication feature:
 Major services can be easly authenticated using PAM-LDAP, but for Samba too is harder.
 
-FreeNAS 0.685b3:
-----------------
+FreeNAS 0.685RC1:
+-----------------
 
 Majors changes:
 - Modified build scripts.
@@ -59,6 +59,7 @@ Minors changes:
 - Restrict file access for FTP users to /mnt only. Only root has full access now.
 - Modified file permissions for config files to 0600.
 - Add commands /usr/bin/sort, /usr/bin/uniq, /usr/bin/dirname, /usr/bin/install and /usr/bin/tee.
+- Add Patch for new hardware rev of D-Link DGE-528T PCI card
 
 Bug fixs:
 - Fix bug in UPnP WebGUI page. Profile dropdown control is not disabled when service is disabled.
