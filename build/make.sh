@@ -325,7 +325,7 @@ create_mfsroot() {
 	# Configure this file as a memory disk
 	md=`mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/mfsroot`
 	# Create label on memory disk
-	bsdlabel -w ${md} auto
+	bsdlabel -m ${FREENAS_ARCH} -w ${md} auto
 	# Format memory disk using UFS
 	newfs ${FREENAS_NEWFS} /dev/${md}c
 	# Umount memory disk (if already used)
@@ -368,15 +368,13 @@ create_image() {
 	echo "===> Creating partition on this memory disk"
 	fdisk -BI -b $FREENAS_BOOTDIR/mbr ${md}
 	echo "===> Configuring FreeBSD label on this memory disk"
-	bsdlabel -w -B -b $FREENAS_BOOTDIR/boot ${md} auto
-	bsdlabel ${md} >/tmp/label.$$
+	bsdlabel -m ${FREENAS_ARCH} -w -B -b ${FREENAS_BOOTDIR}/boot ${md} auto
 	# Replace the a: unuset by a a:4.2BSD
 	#Replacing c: with a: is a trick, when this file is apply, this line is ignored
 	bsdlabel ${md} |
 		 sed "s/c:/a:/" |
-		 sed "s/unused/4.2BSD/" >/tmp/label.$$
-	bsdlabel -R -B -b $FREENAS_BOOTDIR/boot ${md} /tmp/label.$$
-	rm -f /tmp/label.$$
+		 sed "s/unused/4.2BSD/" > ${FREENAS_WORKINGDIR}/bsdlabel.$$
+	bsdlabel -m ${FREENAS_ARCH} -R -B -b ${FREENAS_BOOTDIR}/boot ${md} ${FREENAS_WORKINGDIR}/bsdlabel.$$
 	bsdlabel ${md}
 	echo "===> Formatting this memory disk using UFS"
 	newfs ${FREENAS_NEWFS} /dev/${md}a
@@ -422,6 +420,7 @@ create_image() {
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 	[ -f $FREENAS_WORKINGDIR/image.bin ] && rm -f $FREENAS_WORKINGDIR/image.bin
+	[ -f $FREENAS_WORKINGDIR/bsdlabel.$$ ] && rm -f $FREENAS_WORKINGDIR/bsdlabel.$$
 
 	return 0
 }
