@@ -1,7 +1,7 @@
 PATCH=	FreeBSD-6.2-wol-2007-08-30.diff
 
 install:
-	-@if [ ! -e /usr/src/sbin/ifconfig ]; then \
+	-@if [ ! -e /usr/src/sbin/ifconfig.orig ]; then \
 		cp -r /usr/src/sbin/ifconfig /usr/src/sbin/ifconfig.orig; \
 		cp -r /usr/src/sys/dev/nve /usr/src/sys/dev/nve.orig; \
 		cp -r /usr/src/sys/net /usr/src/sys/net.orig; \
