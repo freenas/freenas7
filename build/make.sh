@@ -364,6 +364,7 @@ create_image() {
 	dd if=/dev/zero of=$FREENAS_WORKINGDIR/image.bin bs=1M count=${FREENAS_IMG_SIZE}
 	echo "===> Use IMG as a memory disk"
 	md=`mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/image.bin`
+	diskinfo -v ${md}
 	echo "===> Creating partition on this memory disk"
 	fdisk -BI -b $FREENAS_BOOTDIR/mbr ${md}
 	echo "===> Configuring FreeBSD label on this memory disk"
