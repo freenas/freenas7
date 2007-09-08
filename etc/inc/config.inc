@@ -206,7 +206,7 @@ if (!$noparseconfig) {
 					reset_factory_defaults();
 
 					echo "No XML configuration file found - using factory defaults.\n";
-					echo "Make sure that the configuration floppy disk with the conf/config.xml\n";
+					echo "Make sure that the configuration floppy disk or USB with the config.xml\n";
 					echo "file is inserted. If it isn't, your configuration changes will be lost\n";
 					echo "on reboot.\n";
 				} else {
