@@ -15,6 +15,7 @@ Majors changes:
 - Add new languages: Slovenian, Portuguese, Polish, Hungarian and Norwegian Bokmal.
 - Upgrade iSCSI Target to version 20070815.
 - Add new SSH settings to WebGUI: Password authentication.
+- Add WOL patch for some NIC (http://stsp.name/wol/)
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
