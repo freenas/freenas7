@@ -111,6 +111,8 @@ case $1 in
 			echo "Upgrade Done - rebooting system..."
 			/usr/bin/logger "Upgrade Done - rebooting system..."
 			/sbin/shutdown -r now > /dev/null 2>&1
+		else
+			exit 1
 		fi
 		;;
 
