@@ -37,7 +37,7 @@ export FREENAS_OBJDIRPREFIX
 FREENAS_URL=$(cat $FREENAS_SVNDIR/etc/prd.url)
 FREENAS_BOOTDIR="$FREENAS_ROOTDIR/bootloader"
 FREENAS_TMPDIR="/tmp/freenastmp"
-FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.685b"
+FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.685"
 
 # Path where to find Makefile includes
 FREENAS_MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
@@ -325,7 +325,7 @@ create_mfsroot() {
 	# Configure this file as a memory disk
 	md=`mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/mfsroot`
 	# Create label on memory disk
-	bsdlabel -w ${md} auto
+	bsdlabel -m ${FREENAS_ARCH} -w ${md} auto
 	# Format memory disk using UFS
 	newfs ${FREENAS_NEWFS} /dev/${md}c
 	# Umount memory disk (if already used)
@@ -368,15 +368,13 @@ create_image() {
 	echo "===> Creating partition on this memory disk"
 	fdisk -BI -b $FREENAS_BOOTDIR/mbr ${md}
 	echo "===> Configuring FreeBSD label on this memory disk"
-	bsdlabel -w -B -b $FREENAS_BOOTDIR/boot ${md} auto
-	bsdlabel ${md} >/tmp/label.$$
+	bsdlabel -m ${FREENAS_ARCH} -w -B -b ${FREENAS_BOOTDIR}/boot ${md} auto
 	# Replace the a: unuset by a a:4.2BSD
 	#Replacing c: with a: is a trick, when this file is apply, this line is ignored
 	bsdlabel ${md} |
 		 sed "s/c:/a:/" |
-		 sed "s/unused/4.2BSD/" >/tmp/label.$$
-	bsdlabel -R -B -b $FREENAS_BOOTDIR/boot ${md} /tmp/label.$$
-	rm -f /tmp/label.$$
+		 sed "s/unused/4.2BSD/" > ${FREENAS_WORKINGDIR}/bsdlabel.$$
+	bsdlabel -m ${FREENAS_ARCH} -R -B -b ${FREENAS_BOOTDIR}/boot ${md} ${FREENAS_WORKINGDIR}/bsdlabel.$$
 	bsdlabel ${md}
 	echo "===> Formatting this memory disk using UFS"
 	newfs ${FREENAS_NEWFS} /dev/${md}a
@@ -422,6 +420,7 @@ create_image() {
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 	[ -f $FREENAS_WORKINGDIR/image.bin ] && rm -f $FREENAS_WORKINGDIR/image.bin
+	[ -f $FREENAS_WORKINGDIR/bsdlabel.$$ ] && rm -f $FREENAS_WORKINGDIR/bsdlabel.$$
 
 	return 0
 }
@@ -478,7 +477,7 @@ create_iso () {
 	fi
 
 	echo "ISO: Generating the ISO file"
-	mkisofs -b "boot/cdboot" -no-emul-boot -c "boot/boot.catalog" -d -r -A "${FREENAS_PRODUCTNAME} CD-ROM image" -publisher "${FREENAS_URL}" -p "Olivier Cochard-Labbe" -V "${FREENAS_PRODUCTNAME}_cd" -o "${FREENAS_ROOTDIR}/${ISOFILENAME}" ${FREENAS_TMPDIR}
+	mkisofs -b "boot/cdboot" -no-emul-boot -boot-load-size 4 -c "boot/boot.catalog" -d -r -A "${FREENAS_PRODUCTNAME} CD-ROM image" -publisher "${FREENAS_URL}" -p "Olivier Cochard-Labbe" -V "${FREENAS_PRODUCTNAME}_cd" -o "${FREENAS_ROOTDIR}/${ISOFILENAME}" ${FREENAS_TMPDIR}
 	[ 0 != $? ] && return 1 # successful?
 
 	echo "ISO: Cleaning tempo file"
