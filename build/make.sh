@@ -46,9 +46,12 @@ FREENAS_MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
 FREENAS_MFSROOT_SIZE="45"
-# Size in MB f the IMG file, that include zipped MFS Root filesystem image plus
-# bootloader and kernel.
-FREENAS_IMG_SIZE="23"
+# IMG media size in 512 bytes sectors. It includes the zipped MFS root
+# filesystem image plus bootloader and kernel. (24117248 bytes => 23MB)
+FREENAS_IMG_SIZE=47104
+# Media geometry, only relevant if bios doesn't understand LBA.
+FREENAS_IMG_SECTS=32
+FREENAS_IMG_HEADS=16
 # 'newfs' parameters.
 FREENAS_NEWFS="-b 4096 -f 512 -i 8192 -U -o space -m 0"
 # FREENAS_NEWFS="-b 8192 -f 1024 -o space -m 0"
@@ -361,19 +364,20 @@ create_image() {
 	create_mfsroot;
 
 	echo "===> Creating an empty IMG file"
-	dd if=/dev/zero of=$FREENAS_WORKINGDIR/image.bin bs=1M count=${FREENAS_IMG_SIZE}
+	dd if=/dev/zero of=${FREENAS_WORKINGDIR}/image.bin bs=${FREENAS_IMG_SECTS}b count=`expr ${FREENAS_IMG_SIZE} / ${FREENAS_IMG_SECTS}`
 	echo "===> Use IMG as a memory disk"
-	md=`mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/image.bin`
+	md=`mdconfig -a -t vnode -f ${FREENAS_WORKINGDIR}/image.bin -x ${FREENAS_IMG_SECTS} -y ${FREENAS_IMG_HEADS}`
 	diskinfo -v ${md}
 	echo "===> Creating partition on this memory disk"
 	fdisk -BI -b $FREENAS_BOOTDIR/mbr ${md}
 	echo "===> Configuring FreeBSD label on this memory disk"
-	bsdlabel -m ${FREENAS_ARCH} -w -B -b ${FREENAS_BOOTDIR}/boot ${md} auto
-	# Replace the a: unuset by a a:4.2BSD
-	#Replacing c: with a: is a trick, when this file is apply, this line is ignored
-	bsdlabel ${md} |
-		 sed "s/c:/a:/" |
-		 sed "s/unused/4.2BSD/" > ${FREENAS_WORKINGDIR}/bsdlabel.$$
+	echo "
+# /dev/${md}:
+8 partitions:
+#        size   offset    fstype   [fsize bsize bps/cpg]
+  a:    ${FREENAS_IMG_SIZE}        0    unused        0     0
+  c:    *            *    unused        0     0         # "raw" part, don't edit
+" > ${FREENAS_WORKINGDIR}/bsdlabel.$$
 	bsdlabel -m ${FREENAS_ARCH} -R -B -b ${FREENAS_BOOTDIR}/boot ${md} ${FREENAS_WORKINGDIR}/bsdlabel.$$
 	bsdlabel ${md}
 	echo "===> Formatting this memory disk using UFS"
