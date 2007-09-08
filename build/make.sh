@@ -360,27 +360,26 @@ create_image() {
 	mkdir $FREENAS_TMPDIR
 	create_mfsroot;
 
-	echo "===> Creating an empty destination IMG file"
+	echo "===> Creating an empty IMG file"
 	dd if=/dev/zero of=$FREENAS_WORKINGDIR/image.bin bs=1M count=${FREENAS_IMG_SIZE}
-	echo "===> Using this file as a memory disk"
-	mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/image.bin -u 0
+	echo "===> Use IMG as a memory disk"
+	md=`mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/image.bin`
 	echo "===> Creating partition on this memory disk"
-	fdisk -BI -b $FREENAS_BOOTDIR/mbr /dev/md0
+	fdisk -BI -b $FREENAS_BOOTDIR/mbr ${md}
 	echo "===> Configuring FreeBSD label on this memory disk"
-	bsdlabel -B -w -b $FREENAS_BOOTDIR/boot /dev/md0 auto
-	bsdlabel md0 >/tmp/label.$$
+	bsdlabel -w -B -b $FREENAS_BOOTDIR/boot ${md} auto
+	bsdlabel ${md} >/tmp/label.$$
 	# Replace the a: unuset by a a:4.2BSD
 	#Replacing c: with a: is a trick, when this file is apply, this line is ignored
-	bsdlabel md0 |
-		 egrep unused |
+	bsdlabel ${md} |
 		 sed "s/c:/a:/" |
-		 sed "s/unused/4.2BSD/" >>/tmp/label.$$
-	bsdlabel -R -B md0 /tmp/label.$$
+		 sed "s/unused/4.2BSD/" >/tmp/label.$$
+	bsdlabel -R -B -b $FREENAS_BOOTDIR/boot ${md} /tmp/label.$$
 	rm -f /tmp/label.$$
 	echo "===> Formatting this memory disk using UFS"
-	newfs ${FREENAS_NEWFS} /dev/md0a
+	newfs ${FREENAS_NEWFS} /dev/${md}a
 	echo "===> Mount this virtual disk on $FREENAS_TMPDIR"
-	mount /dev/md0a $FREENAS_TMPDIR
+	mount /dev/${md}a $FREENAS_TMPDIR
 	echo "===> Copying previously generated MFSROOT file to memory disk"
 	cp $FREENAS_WORKINGDIR/mfsroot.gz $FREENAS_TMPDIR
 
@@ -411,7 +410,7 @@ create_image() {
 	echo "===> Unmount memory disk"
 	umount $FREENAS_TMPDIR
 	echo "===> Detach memory disk"
-	mdconfig -d -u 0
+	mdconfig -d -u ${md}
 	echo "===> Compress the IMG file"
 	gzip -9 $FREENAS_WORKINGDIR/image.bin
 	mv $FREENAS_WORKINGDIR/image.bin.gz $FREENAS_ROOTDIR/$IMGFILENAME
