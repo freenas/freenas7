@@ -377,6 +377,7 @@ create_image() {
 		 sed "s/unused/4.2BSD/" >/tmp/label.$$
 	bsdlabel -R -B -b $FREENAS_BOOTDIR/boot ${md} /tmp/label.$$
 	rm -f /tmp/label.$$
+	bsdlabel ${md}
 	echo "===> Formatting this memory disk using UFS"
 	newfs ${FREENAS_NEWFS} /dev/${md}a
 	echo "===> Mount this virtual disk on $FREENAS_TMPDIR"
