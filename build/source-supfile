@@ -48,7 +48,7 @@
 #
 # IMPORTANT: Change the next line to use one of the CVSup mirror sites
 # listed at http://www.freebsd.org/doc/handbook/mirrors.html.
-*default host=cvsup.FreeBSD.org
+*default host=cvsup5.FreeBSD.org
 *default base=/var/db
 *default prefix=/usr
 *default release=cvs tag=RELENG_6_2
