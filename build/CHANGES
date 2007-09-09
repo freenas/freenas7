@@ -4,6 +4,7 @@ FreeNAS 0.685:
 --------------
 
 Majors changes:
+- Upgrade fusefs-ntfs to 1.826
 
 Minors changes:
 
