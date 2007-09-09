@@ -23,6 +23,8 @@ Minors changes:
 - Add attribute //samba/auxparam and //samba/share/auxparam to add auxiliary parameters.
 - Add 'Auxiliary parameters' field on CIFS/SMB page to manage auxiliary parameters.
 - Improve WebGUI workflow.
+- Add ability to define full path of Samba share, not only to choose from a list of defined
+  mount points.
 
 Bug fixs:
 - Add missing link /etc/exports -> /var/etc/exports.

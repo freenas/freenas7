@@ -135,22 +135,18 @@ if($_POST) {
 			      </td>
 			    </tr>
 			    <tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Path/Mount point"); ?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Path"); ?></td>
 						<td width="78%" class="vtable">
-							<select name="path" class="formfld" id="path">
-							  <?php foreach ($a_mount as $mountv): ?>
-							  <option value="<?="/mnt/{$mountv['sharename']}";?>" <?php if ("/mnt/{$mountv['sharename']}" === "{$pconfig['path']}") echo "selected";?>>
-							  <?php echo "/mnt/{$mountv['sharename']}";?>
-							  </option>
-					  		<?php endforeach; ?>
-					  	</select>
+							<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>">
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+							<?=gettext("Path to be shared. Mount points are located in directory /mnt.");?>
 					  </td>
 					</tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Browseable");?></td>
 			      <td width="78%" class="vtable">
 			      	<input name="browseable" type="checkbox" id="browseable" value="yes" <?php if ($pconfig['browseable']) echo "checked"; ?>>
-			      	<?=gettext("Set browseable");?><span class="vexpl"><br>
+			      	<?=gettext("Set browseable");?><br>
 			        <?=gettext("This controls whether this share is seen in the list of available shares in a net view and in the browse list.");?>
 			      </td>
 			    </tr>
