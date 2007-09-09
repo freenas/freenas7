@@ -138,8 +138,8 @@ if($_POST) {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Path"); ?></td>
 						<td width="78%" class="vtable">
 							<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
-							<?=gettext("Path to be shared. Mount points are located in directory /mnt.");?>
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+							<?=gettext("Path to be shared.");?>
 					  </td>
 					</tr>
 			    <tr>
