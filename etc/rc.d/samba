@@ -199,6 +199,12 @@ create_conf()
 			-m "auxparam" \
 				-v "." -n \
 			-b \
+			-i "string-length(hostsallow) > 0" \
+				-v "concat('hosts allow = ',hostsallow)" -n \
+			-b \
+			-i "string-length(hostsdeny) > 0" \
+				-v "concat('hosts deny = ',hostsdeny)" -n \
+			-b \
 			-n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${samba_config}

@@ -885,6 +885,17 @@ function convert_config() {
 		$config['version'] = "2.8";
 	}
 
+	/* Convert 2.8 -> 2.9 */
+	/* Add //samba/share/hostallow and //samba/share/hostdeny. */
+	if ($config['version'] === "2.8") {
+		for ($i = 0; isset($config['samba']['share'][$i]); $i++) {
+			$config['samba']['share'][$i]['hostsallow'] = "ALL";
+			$config['samba']['share'][$i]['hostsdeny'] = "ALL";
+		}
+
+		$config['version'] = "2.9";
+	}
+
 	write_config();
 
 	if (is_booting())

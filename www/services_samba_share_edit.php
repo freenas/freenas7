@@ -3,7 +3,7 @@
 /*
 	services_samba_share_edit.php
 	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
@@ -62,6 +62,8 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['browseable'] = isset($a_share[$id]['browseable']);
 	$pconfig['inheritpermissions'] = isset($a_share[$id]['inheritpermissions']);
 	$pconfig['recyclebin'] = isset($a_share[$id]['recyclebin']);
+	$pconfig['hostsallow'] = $a_share[$id]['hostsallow'];
+	$pconfig['hostsdeny'] = $a_share[$id]['hostsdeny'];
 } else {
 	$pconfig['name'] = "";
 	$pconfig['path'] = "";
@@ -69,6 +71,8 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['browseable'] = true;
 	$pconfig['inheritpermissions'] = true;
 	$pconfig['recyclebin'] = false;
+	$pconfig['hostsallow'] = "ALL";
+	$pconfig['hostsdeny'] = "ALL";
 }
 
 if($_POST) {
@@ -92,7 +96,8 @@ if($_POST) {
 		$share['comment'] = $_POST['comment'];
 		$share['browseable'] = $_POST['browseable'] ? true : false;
 		$share['inheritpermissions'] = $_POST['inheritpermissions'] ? true : false;
-		$share['recyclebin'] = $_POST['recyclebin'] ? true : false;
+		$share['hostsallow'] = $_POST['hostsallow'];
+		$share['hostsdeny'] = $_POST['hostsdeny'];
 
 		if (isset($id) && $a_share[$id])
 			$a_share[$id] = $share;
@@ -164,6 +169,20 @@ if($_POST) {
 			        <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked"; ?>>
 			        <?=gettext("Enable recycle bin");?><br>
 			        <span class="vexpl"><?=gettext("This will create a recycle bin on the share.");?></span>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Hosts allow");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="hostsallow" type="text" class="formfld" id="hostsallow" size="60" value="<?=htmlspecialchars($pconfig['hostsallow']);?>"><br/>
+			        <?=gettext("This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this share. Use the keyword ALL to permit access for everyone. Leave this field empty to disable this setting.");?>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Hosts deny");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="hostsdeny" type="text" class="formfld" id="hostsdeny" size="60" value="<?=htmlspecialchars($pconfig['hostsdeny']);?>"><br/>
+			        <?=gettext("This parameter is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to disable this setting.");?>
 			      </td>
 			    </tr>
 			    <tr>

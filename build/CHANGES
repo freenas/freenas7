@@ -16,6 +16,7 @@ Majors changes:
 - Upgrade iSCSI Target to version 20070815.
 - Add new SSH settings to WebGUI: Password authentication.
 - Add WOL patch for some NIC (http://stsp.name/wol/)
+- Add 'Hosts allow' and 'Hosts deny' fields on Samba share configuration page.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
