@@ -129,23 +129,23 @@ $pgtitle_omit = true;
 				/* Calculate memory use percentage. */
         $memUsage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
 
-        echo " <img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
+        echo "<img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
         echo "<img src='bar_blue.gif' height='15' width='" . $memUsage . "' border='0' align='absmiddle'>";
         echo "<img src='bar_gray.gif' height='15' width='" . (100 - $memUsage) . "' border='0' align='absmiddle'>";
         echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
-        echo $memUsage . "% of " . round($raminfo['physical'] / 1024 / 1024) . "MB";
+        echo sprintf(gettext("%d%% of %dMB"), $memUsage, round($raminfo['physical'] / 1024 / 1024));
       ?>
     </td>
   </tr>
-  <tr>
-    <?
-       echo '<td width="25%" class="vncellt">'.gettext("Load averages").'</td>';
-        echo '<td width="75%" class="listr">';
-        exec("uptime", $result); echo substr(strrchr($result[0], "load averages:"),15)." <small>[<a href='status_process.php'>".gettext("show process information")."</a></small>]";
-     ?>
+	<tr>
+  	<td width="25%" class="vncellt"><?=gettext("Load averages");?></td>
+		<td width="75%" class="listr">
+			<?
+			exec("uptime", $result); echo substr(strrchr($result[0], "load averages:"),15)." <small>[<a href='status_process.php'>".gettext("show process information")."</a></small>]";
+			?>
     </td>
   </tr>
-    <tr>
+	<tr>
     <td width="25%" class="vncellt"><?=gettext("Disk space usage");?></td>
     <td width="75%" class="listr">
 	    <table>
@@ -157,11 +157,15 @@ $pgtitle_omit = true;
 						echo htmlspecialchars($diskusek);
 						echo "</td><td>";
 						$percent_used = rtrim($diskusev['capacity'],"%");
-						echo " <img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
-						echo "<img src='bar_blue.gif' height='15' width='" . $percent_used . "' border='0' align='absmiddle'>";
-						echo "<img src='bar_gray.gif' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle'>";
+
+						$tooltip_used = sprintf(gettext("%sB used of %sB"), $diskusev['used'], $diskusev['size']);
+						$tooltip_available = sprintf(gettext("%sB available of %sB"), $diskusev['avail'], $diskusev['size']);
+
+						echo "<img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
+						echo "<img src='bar_blue.gif' height='15' width='" . $percent_used . "' border='0' align='absmiddle' title='" . $tooltip_used . "'>";
+						echo "<img src='bar_gray.gif' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle' title='" . $tooltip_available . "'>";
 						echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
-						echo $percent_used . "% of " . $diskusev['size'] . "B";
+						echo sprintf(gettext("%s of %sB"), $diskusev['capacity'], $diskusev['size']);
 						echo "<br></td></tr>";
 					}
 				} else {
