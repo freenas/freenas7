@@ -35,12 +35,12 @@ console	none				unknown	off secure
 ttyv0	"/usr/libexec/getty autologin"		cons25	on  secure
 # Virtual terminals
 ttyv1	"/usr/libexec/getty Pc"		cons25	on  secure
-ttyv2	"/usr/libexec/getty Pc"		cons25	on  secure
-ttyv3	"/usr/libexec/getty Pc"		cons25	on  secure
-ttyv4	"/usr/libexec/getty Pc"		cons25	on  secure
-ttyv5	"/usr/libexec/getty Pc"		cons25	on  secure
-ttyv6	"/usr/libexec/getty Pc"		cons25	on  secure
-ttyv7	"/usr/libexec/getty Pc"		cons25	on  secure
+ttyv2	"/usr/libexec/getty Pc"		cons25	off  secure
+ttyv3	"/usr/libexec/getty Pc"		cons25	off  secure
+ttyv4	"/usr/libexec/getty Pc"		cons25	off  secure
+ttyv5	"/usr/libexec/getty Pc"		cons25	off  secure
+ttyv6	"/usr/libexec/getty Pc"		cons25	off  secure
+ttyv7	"/usr/libexec/getty Pc"		cons25	off  secure
 ttyv8	"/usr/X11R6/bin/xdm -nodaemon"	xterm	off secure
 # Serial terminals
 # The 'dialup' keyword identifies dialin lines to login, fingerd etc.
