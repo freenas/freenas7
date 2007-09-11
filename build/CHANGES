@@ -18,6 +18,7 @@ Majors changes:
 - Add WOL patch for some NIC (http://stsp.name/wol/)
 - Add 'Hosts allow' and 'Hosts deny' settings on Samba shares WebGUI page.
 - Add 'chroot everyone' setting on FTP WebGUI page (Thanks to Francois Allard).
+- Upgrade lighttpd to 1.4.18.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
