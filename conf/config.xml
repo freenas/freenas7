@@ -233,7 +233,7 @@
 		-->
 	</samba>
 	<ftp>
-	<!-- <enable/> -->
+		<!-- <enable/> -->
 		<numberclients>5</numberclients>
 		<maxconperip>2</maxconperip>
 		<timeout>5</timeout>
@@ -245,6 +245,7 @@
 		<pasv_address></pasv_address>
 		<directorymask>022</directorymask>
 		<filemask>077</filemask>
+		<chrooteveryone/>
 	</ftp>
 	<afp>
 		<!-- <enable/> -->

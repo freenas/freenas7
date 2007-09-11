@@ -61,14 +61,13 @@ if ($config['ftp']['directorymask']) {
 } else {
 	$pconfig['directorymask'] = "022";
 }
-		
-$pconfig[''] = $config['ftp'][''];
-$pconfig[''] = $config['ftp'][''];
+
 $pconfig['banner'] = $config['ftp']['banner'];
 $pconfig['natmode'] = isset($config['ftp']['natmode']);
 $pconfig['fxp'] = isset($config['ftp']['fxp']);
 $pconfig['keepallfiles'] = isset($config['ftp']['keepallfiles']);
 $pconfig['permitrootlogin'] = isset($config['ftp']['permitrootlogin']);
+$pconfig['chrooteveryone'] = isset($config['ftp']['chrooteveryone']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -129,6 +128,7 @@ if ($_POST) {
 		$config['ftp']['natmode'] = $_POST['natmode'] ? true : false;
 		$config['ftp']['keepallfiles'] = $_POST['keepallfiles'] ? true : false;
 		$config['ftp']['permitrootlogin'] = $_POST['permitrootlogin'] ? true : false;
+		$config['ftp']['chrooteveryone'] = $_POST['chrooteveryone'] ? true : false;
 		$config['ftp']['enable'] = $_POST['enable'] ? true : false;
 
 		write_config();
@@ -144,7 +144,7 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
@@ -165,6 +165,7 @@ function enable_change(enable_change) {
 	document.iform.pasv_address.disabled = endis;
 	document.iform.filemask.disabled = endis;
 	document.iform.directorymask.disabled = endis;
+	document.iform.chrooteveryone.disabled = endis;
 }
 //-->
 </script>
@@ -210,7 +211,7 @@ function enable_change(enable_change) {
         <br><?=gettext("Maximum idle time in minutes.");?>
 			</td>
     </tr>
-    <tr> 
+    <tr>
 			<td width="22%" valign="top" class="vncell"><?=gettext("Permit root login");?></td>
 			<td width="78%" class="vtable">
 				<input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
@@ -229,7 +230,7 @@ function enable_change(enable_change) {
         <input name="localuser" type="checkbox" id="localuser" value="yes" <?php if ($pconfig['localuser']) echo "checked"; ?>>
         <?=gettext("Enable local user login.");?></td>
     </tr>
-    <tr>
+		<tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Banner");?></td>
       <td width="78%" class="vtable">
         <textarea name="banner" cols="65" rows="7" id="banner" class="formpre"><?=htmlspecialchars($pconfig['banner']);?></textarea>
@@ -279,6 +280,13 @@ function enable_change(enable_change) {
         <?=gettext("Use this option to enable resuming broken transfers at the point of interruption.");?></span></td>
     </tr>
     <tr>
+			<td width="22%" valign="top" class="vncell"><?=gettext("chroot everyone");?></td>
+			<td width="78%" class="vtable">
+				<input name="chrooteveryone" type="checkbox" id="chrooteveryone" value="yes" <?php if ($pconfig['chrooteveryone']) echo "checked"; ?>>
+				<?=gettext("chroot() everyone, but root.");?>
+			</td>
+		</tr>
+    <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Passive IP address"); ?></td>
       <td width="78%" class="vtable">
         <input name="pasv_address" type="text" class="formfld" id="pasv_address" size="20" value="<?=htmlspecialchars($pconfig['pasv_address']);?>">
@@ -311,4 +319,4 @@ function enable_change(enable_change) {
 enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

@@ -887,11 +887,14 @@ function convert_config() {
 
 	/* Convert 2.8 -> 2.9 */
 	/* Add //samba/share/hostallow and //samba/share/hostdeny. */
+	/* Add //ftp/chrooteveryone. */
 	if ($config['version'] === "2.8") {
 		for ($i = 0; isset($config['samba']['share'][$i]); $i++) {
 			$config['samba']['share'][$i]['hostsallow'] = "ALL";
 			$config['samba']['share'][$i]['hostsdeny'] = "ALL";
 		}
+
+		$config['ftp']['chrooteveryone'] = true;
 
 		$config['version'] = "2.9";
 	}
