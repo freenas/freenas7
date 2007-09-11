@@ -143,23 +143,22 @@ build_world() {
 create_rootfs() {
 	$FREENAS_SVNDIR/build/freenas-create-rootfs.sh -f $FREENAS_ROOTFS
 
-  # Configuring platform variable
+	# Configuring platform variable
 	echo $FREENAS_VERSION > $FREENAS_ROOTFS/etc/prd.version
-	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
 
-  # Config file: config.xml
-  cd $FREENAS_ROOTFS/conf.default/
-  cp -v $FREENAS_SVNDIR/conf/config.xml .
+	# Config file: config.xml
+	cd $FREENAS_ROOTFS/conf.default/
+	cp -v $FREENAS_SVNDIR/conf/config.xml .
 
-  # Compress zoneinfo data, exclude some useless files.
-  mkdir $FREENAS_TMPDIR
-  echo "Factory" > $FREENAS_TMPDIR/zoneinfo.exlude
+	# Compress zoneinfo data, exclude some useless files.
+	mkdir $FREENAS_TMPDIR
+	echo "Factory" > $FREENAS_TMPDIR/zoneinfo.exlude
 	echo "posixrules" >> $FREENAS_TMPDIR/zoneinfo.exlude
 	echo "zone.tab" >> $FREENAS_TMPDIR/zoneinfo.exlude
 	tar -c -v -f - -X $FREENAS_TMPDIR/zoneinfo.exlude -C /usr/share/zoneinfo/ . | gzip -cv > $FREENAS_ROOTFS/usr/share/zoneinfo.tgz
 	rm $FREENAS_TMPDIR/zoneinfo.exlude
 
-  return 0
+	return 0
 }
 
 # Actions before building kernel (e.g. install special/additional drivers).
@@ -320,8 +319,8 @@ create_mfsroot() {
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 	[ -d $FREENAS_SVNDIR ] && use_svn ;
 
-	# Setting Version type and date
-	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
+	# Set build time.
+	date > ${FREENAS_ROOTFS}/etc/prd.version.buildtime
 
 	# Make mfsroot to have the size of the FREENAS_MFSROOT_SIZE variable
 	dd if=/dev/zero of=$FREENAS_WORKINGDIR/mfsroot bs=1M count=${FREENAS_MFSROOT_SIZE}
@@ -354,10 +353,17 @@ create_image() {
 	echo "===> Generating $FREENAS_PRODUCTNAME IMG File (to be rawrite on CF/USB/HD)"
 	echo "======================================================================"
 
+	# Cleanup.
 	[ -f image.bin ] && rm -f image.bin
-	PLATFORM="$FREENAS_ARCH-embedded"
-	echo $PLATFORM > $FREENAS_ROOTFS/etc/platform
-	IMGFILENAME="$FREENAS_PRODUCTNAME-$PLATFORM-$FREENAS_VERSION.img"
+
+	# Set platform information.
+	PLATFORM="${FREENAS_ARCH}-embedded"
+	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
+
+	# Set build time.
+	date > ${FREENAS_ROOTFS}/etc/prd.version.buildtime
+
+	IMGFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.img"
 
 	echo "===> Generating tempory $FREENAS_TMPDIR folder"
 	mkdir $FREENAS_TMPDIR
@@ -430,21 +436,23 @@ create_image() {
 }
 
 create_iso () {
-	echo "ISO: Remove old directory and file if exist"
+	# Cleanup.
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 
-	ISOFILENAME="$FREENAS_PRODUCTNAME-$FREENAS_ARCH-liveCD-$FREENAS_VERSION.iso"
+	ISOFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-liveCD-${FREENAS_VERSION}.iso"
 
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Generating the $FREENAS_PRODUCTNAME Image file:"
 		create_image;
 	fi
 
-	#Setting the variable for ISO image:
-	PLATFORM="$FREENAS_ARCH-liveCD"
-	echo "$PLATFORM" > $FREENAS_ROOTFS/etc/platform
-	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
+	# Set platform information.
+	PLATFORM="${FREENAS_ARCH}-liveCD"
+	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
+
+	# Set build time.
+	date > ${FREENAS_ROOTFS}/etc/prd.version.buildtime
 
 	echo "ISO: Generating temporary folder '$FREENAS_TMPDIR'"
 	mkdir $FREENAS_TMPDIR
@@ -498,16 +506,14 @@ create_iso_light() {
 }
 
 create_full() {
-	#### Create full release ######
-
-	#use SVN
 	[ -d $FREENAS_SVNDIR ] && use_svn ;
 
 	echo "FULL: Generating $FREENAS_PRODUCTNAME tgz update file"
 
-	PLATFORM="$FREENAS_ARCH-full"
-	echo $PLATFORM > $FREENAS_ROOTFS/etc/platform
-	FULLFILENAME="$FREENAS_PRODUCTNAME-$PLATFORM-$FREENAS_VERSION.tgz"
+	PLATFORM="${FREENAS_ARCH}-full"
+	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
+
+	FULLFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.tgz"
 
 	echo "FULL: Generating tempory $FREENAS_TMPDIR folder"
 	#Clean TMP dir:
@@ -515,7 +521,7 @@ create_full() {
 	mkdir $FREENAS_TMPDIR
 
 	# Setting Version type and date
-	date > $FREENAS_ROOTFS/etc/prd.version.buildtime
+	date > ${FREENAS_ROOTFS}/etc/prd.version.buildtime
 
 	#Copying all FreeNAS rootfilesystem (including symlink) on this folder
 	cd $FREENAS_TMPDIR
