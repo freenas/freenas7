@@ -63,16 +63,15 @@ case $1 in
 		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
 
+		echo
+		echo "Firmware upgrade in progress. Please wait..."
+
 		# Check if firmware file exist
 		if [ ! -r $2 ]; then
-			echo
-			echo "Upgrade Error: Firmware file does not exist."
-			/usr/bin/logger "Upgrade Error: Firmware file does not exist."
+			echo "Error: Firmware file does not exist."
+			/usr/bin/logger "upgrade: ERROR: Firmware file does not exist."
 			exit 1
 		fi
-
-		echo
-		echo "Firmware upgrade in progress..."
 
 		# backup config
 		mkdir /tmp/configbak
@@ -87,11 +86,11 @@ case $1 in
 			/usr/bin/gzip -cd -S "" $2 | /bin/dd of=/dev/${CFDEVICE} > /dev/null 2>&1
 			result=$?
 			if [ 0 != ${result} ]; then # successful?
-				echo "Uprade Error: Failed to dd firmware image on '/dev/${CFDEVICE}'!"
-				/usr/bin/logger "Uprade Error: Failed to dd firmware image on '/dev/${CFDEVICE}'!"
+				echo "Error: Failed to dd firmware image on '/dev/${CFDEVICE}'!"
+				/usr/bin/logger "upgrade: ERROR: Failed to dd firmware image on '/dev/${CFDEVICE}'!"
 			else
-				echo "Upgrade: Image installed successful."
-				/usr/bin/logger "Upgrade: Image installed successful."
+				echo "Firmware installed successful."
+				/usr/bin/logger "upgrade: Firmware installed successful."
 			fi
 		fi
 
@@ -108,8 +107,7 @@ case $1 in
 
 		# Reboot system if upgrade was successful.
 		if [ 0 -eq ${result} ]; then
-			echo "Upgrade Done - rebooting system..."
-			/usr/bin/logger "Upgrade Done - rebooting system..."
+			echo "Rebooting system..."
 			/sbin/shutdown -r now > /dev/null 2>&1
 		else
 			exit 1
@@ -123,14 +121,16 @@ case $1 in
 		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
 
+		echo
+		echo "Firmware upgrade in progress. Please wait..."
+
 		# Check if firmware file exist
 		if [ ! -r $2 ]; then
-			echo "Upgrade Error: Firmware file does not exist."
-			/usr/bin/logger "Upgrade Error: Firmware file does not exist."
+			echo "Error: Firmware file does not exist."
+			/usr/bin/logger "upgrade: ERROR: Firmware file does not exist."
 			exit 1
 		fi
 
-		echo "Firmware upgrade in progress..."
 		# Extract and start pre-upgrade script
 		#Actually (0.685b) this script are not used... but peraps one day
 		tar zxvf $2 --include etc/preupgrade.sh -C /ftmp
@@ -167,9 +167,8 @@ case $1 in
 			/ftmp/etc/postupgrade.sh
 		fi
 
-		echo "Upgrade Done - rebooting system..."
-		/usr/bin/logger "Upgrade Done - rebooting system..."
-
+		echo "Firmware installed successful."
+		echo "Rebooting system..."
 		/sbin/shutdown -r now > /dev/null 2>&1
 		;;
 esac
