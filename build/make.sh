@@ -316,9 +316,6 @@ create_mfsroot() {
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 	[ -d $FREENAS_SVNDIR ] && use_svn ;
 
-	# Set build time.
-	date > ${FREENAS_ROOTFS}/etc/prd.version.buildtime
-
 	# Make mfsroot to have the size of the FREENAS_MFSROOT_SIZE variable
 	dd if=/dev/zero of=$FREENAS_WORKINGDIR/mfsroot bs=1M count=${FREENAS_MFSROOT_SIZE}
 	# Configure this file as a memory disk
@@ -447,9 +444,6 @@ create_iso () {
 	PLATFORM="${FREENAS_ARCH}-liveCD"
 	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
 
-	# Set build time.
-	date > ${FREENAS_ROOTFS}/etc/prd.version.buildtime
-
 	echo "ISO: Generating temporary folder '$FREENAS_TMPDIR'"
 	mkdir $FREENAS_TMPDIR
 	create_mfsroot;
@@ -506,6 +500,7 @@ create_full() {
 
 	echo "FULL: Generating $FREENAS_PRODUCTNAME tgz update file"
 
+	# Set platform information.
 	PLATFORM="${FREENAS_ARCH}-full"
 	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
 
@@ -515,9 +510,6 @@ create_full() {
 	#Clean TMP dir:
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	mkdir $FREENAS_TMPDIR
-
-	# Setting Version type and date
-	date > ${FREENAS_ROOTFS}/etc/prd.version.buildtime
 
 	#Copying all FreeNAS rootfilesystem (including symlink) on this folder
 	cd $FREENAS_TMPDIR
