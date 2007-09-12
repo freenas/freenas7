@@ -172,6 +172,12 @@ $pgtitle = array(gettext("Status"), gettext("Interfaces"));
       </tr>
       <?php endif; ?>
       <tr>
+        <td width="22%" class="vncellt"><?=gettext("MTU");?></td>
+        <td width="78%" class="listr">
+          <?=htmlspecialchars($ifinfo['mtu']);?>
+        </td>
+      </tr>
+      <tr>
         <td width="22%" class="vncellt"><?=gettext("I/O packets");?></td>
         <td width="78%" class="listr">
           <?=htmlspecialchars($ifinfo['inpkts'] . "/" . $ifinfo['outpkts'] . " (" . format_bytes($ifinfo['inbytes']) . "/" . format_bytes($ifinfo['outbytes']) . ")");?>

@@ -10,6 +10,7 @@ Majors changes:
 Minors changes:
 - Display used and available disk space as tooltip for mount points on system information (index.php) page.
 - Reduce number of virtual consoles to ttyv0 and ttyv1.
+- Display 'MTU' on interfaces status page.
 
 Bug fixs:
 

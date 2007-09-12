@@ -57,7 +57,11 @@ $pconfig['gateway'] = get_defaultgateway();
 $pconfig['ipv6gateway'] = get_ipv6defaultgateway();
 $pconfig['dhcphostname'] = $config['system']['hostname'] . "." . $config['system']['domain'];
 $pconfig['dhcpclientidentifier'] = get_macaddr($lancfg['if']);
-$pconfig['mtu'] = $lancfg['mtu'];
+
+// Get the current configured MTU.
+$ifinfo = get_interface_info($lancfg['if']);
+$pconfig['mtu'] = $ifinfo['mtu'];
+
 $pconfig['media'] = $lancfg['media'];
 $pconfig['mediaopt'] = $lancfg['mediaopt'];
 $pconfig['polling'] = isset($lancfg['polling']);
