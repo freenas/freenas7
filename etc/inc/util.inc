@@ -1500,6 +1500,7 @@ function array_search_ex($needle, $haystack, $key)
 //		[hwif] => re0
 //		[if] => re0
 //		[status] => up
+//    [mtu] = 1500
 //		[macaddr] => 00:0e:2e:0a:62:75
 //		[inpkts] => 367
 //		[inerrs] => 0
@@ -1534,6 +1535,7 @@ function get_interface_info($if) {
 	}
 
 	if (!strstr($ifinfo['if'],'tun')) {
+		$ifinfo['mtu'] = $linkinfo[1];
 		$ifinfo['macaddr'] = $linkinfo[3];
 		$ifinfo['inpkts'] = $linkinfo[4];
 		$ifinfo['inerrs'] = $linkinfo[5];
