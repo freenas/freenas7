@@ -27,7 +27,6 @@ Minors changes:
 - Improve WebGUI workflow.
 - Add ability to define full path of Samba share, not only to choose from a list of defined
   mount points.
-- Display 'MTU' on interfaces status page.
 
 Bug fixs:
 - Add missing link /etc/exports -> /var/etc/exports.
@@ -56,6 +55,7 @@ Majors changes:
 Minors changes:
 - Display used and available disk space as tooltip for mount points on system information (index.php) page.
 - Reduce number of virtual consoles to ttyv0 and ttyv1.
+- Display 'MTU' on interfaces status page.
 
 FreeNAS 0.685RC1:
 -----------------

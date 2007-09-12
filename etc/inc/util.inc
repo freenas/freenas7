@@ -1500,7 +1500,7 @@ function array_search_ex($needle, $haystack, $key)
 //		[hwif] => re0
 //		[if] => re0
 //		[status] => up
-//    [mtu] = 1500
+//		[mtu] = 1500
 //		[macaddr] => 00:0e:2e:0a:62:75
 //		[inpkts] => 367
 //		[inerrs] => 0
