@@ -69,8 +69,12 @@ fi
 	-b \
 	-o "auth       required        pam_unix.so             no_warn try_first_pass" -n \
 	-n -o "# account" -n \
+	-o "account    required        pam_login_access.so" -n \
 	-i "count(//ad/enable) > 0" \
 		-o "account    sufficient		/usr/local/lib/pam_winbind.so" -n \
+	-b \
+	-i "count(//ldap/enable) > 0" \
+		-o "account    sufficient     /usr/local/lib/pam_ldap.so    ignore_authinfo_unavail" -n \
 	-b \
 	-o "account    required        pam_unix.so" -n \
 	-n -o "# session" -n \
@@ -101,6 +105,9 @@ fi
 	-i "count(//ad/enable) > 0" \
 		-o "account    sufficient	/usr/local/lib/pam_winbind.so" -n \
 	-b \
+	-i "count(//ldap/enable) > 0" \
+		-o "account    sufficient     /usr/local/lib/pam_ldap.so    ignore_authinfo_unavail" -n \
+	-b \
 	-o "account    required        pam_login_access.so" -n \
 	-o "account    required        pam_unix.so" -n \
 	-n -o "# session" -n \
@@ -124,6 +131,9 @@ fi
 	-n -o "# account" -n \
 	-i "count(//ad/enable) > 0" \
 		-o "account    sufficient	/usr/local/lib/pam_winbind.so" -n \
+	-b \
+	-i "count(//ldap/enable) > 0" \
+		-o "account    sufficient     /usr/local/lib/pam_ldap.so    ignore_authinfo_unavail" -n \
 	-b \
 	-o "account    requisite       pam_securetty.so" -n \
 	-o "account    include         system" -n \

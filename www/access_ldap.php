@@ -196,7 +196,7 @@ function enable_change(enable_change) {
 					<select name="pam_password" class="formfld" id="pam_password">
 		        <?php $types = explode(",", "clear,crypt,md5,nds,ad,exop"); $vals = explode(" ", "clear crypt md5 nds ad exop");?>
 		        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-		          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>>
+		          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['pam_password']) echo "selected";?>>
 		          <?=htmlspecialchars($types[$j]);?>
 		          </option>
 		        <?php endfor; ?>
