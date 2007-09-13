@@ -36,6 +36,7 @@ create_conf()
 		-o "Protocol 2" -n \
 		-o "UseDNS no" -n \
 		-o "Subsystem       sftp    /usr/libexec/sftp-server" -n \
+		-o "ChallengeResponseAuthentication no" -n \
 		-m "//sshd" \
 			-i "count(port) > 0" -v "concat('Port ',port)" -n -b \
 			-i "count(permitrootlogin) > 0" -o "PermitRootLogin yes" -n -b \
