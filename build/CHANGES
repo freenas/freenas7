@@ -49,7 +49,7 @@ FreeNAS 0.685:
 --------------
 
 Majors changes:
-- Upgrade fusefs-ntfs to 1.826.
+- Upgrade fusefs-ntfs to 1.913.
 - Upgrade lighttpd to 1.4.18.
 
 Minors changes:
