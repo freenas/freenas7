@@ -61,6 +61,7 @@ if (isset($id) && $a_user[$id]) {
 	$pconfig['primarygroup'] = $a_user[$id]['primarygroup'];
 	$pconfig['fullshell'] = isset($a_user[$id]['fullshell']);
 	$pconfig['admin'] = isset($a_user[$id]['admin']);
+	$pconfig['homedir'] = $a_user[$id]['homedir'];
 }
 
 if ($_POST) {
@@ -114,6 +115,7 @@ if ($_POST) {
 		$users['fullshell'] = $_POST['fullshell'] ? true : false;
 		$users['admin'] = $_POST['admin'] ? true : false;
 		$users['primarygroup'] = $_POST['primarygroup'];
+		$users['homedir'] = $_POST['homedir'];
 
 		if (isset($id) && $a_user[$id]) {
 			$users['id'] = $_POST['userid'];
@@ -157,16 +159,16 @@ if ($_POST) {
             <td width="78%" class="vtable">
               <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>">
               <br><?=gettext("Unique login name of user.") ;?>
-			</td>
+            </td>
 	       </tr>
 	       <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Full Name") ;?></td>
             <td width="78%" class="vtable">
               <input name="fullname" type="text" class="formfld" id="fullname" size="20" value="<?=htmlspecialchars($pconfig['fullname']);?>">
               <br><?=gettext("User full name.") ;?>
-			</td>
-			</tr>
-			<tr>
+            </td>
+          </tr>
+          <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Password") ;?></td>
             <td width="78%" class="vtable">
               <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
@@ -184,6 +186,13 @@ if ($_POST) {
 							</select>
 						</td>
 					</tr>
+					<tr>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Home directory") ;?></td>
+            <td width="78%" class="vtable">
+              <input name="homedir" type="text" class="formfld" id="homedir" size="60" value="<?=htmlspecialchars($pconfig['homedir']);?>"><br>
+              <?=gettext("Enter the path to the home directory of that user. Make sure that this path exists and is always mounted at startup. Leave this field empty to use default path /mnt.");?>
+            </td>
+          </tr>
 					<tr>
 					  <td width="22%" valign="top" class="vncell"><?=gettext("Full Shell") ;?></td>
 					  <td width="78%" class="vtable">
