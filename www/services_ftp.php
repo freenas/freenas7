@@ -273,11 +273,11 @@ function enable_change(enable_change) {
         <?=gettext("Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying.");?></span></td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Resume");?></td>
+      <td width="22%" valign="top" class="vncell"><?=gettext("Keep all files");?></td>
       <td width="78%" class="vtable">
         <input name="keepallfiles" type="checkbox" id="keepallfiles" value="yes" <?php if ($pconfig['keepallfiles']) echo "checked"; ?>>
-        <?=gettext("Enable resume mode.");?><span class="vexpl"><br>
-        <?=gettext("Use this option to enable resuming broken transfers at the point of interruption.");?></span></td>
+        <?=gettext("Allow users to resume and upload files, but NOT to delete or rename them. Directories can be removed, but only if they are empty. However, overwriting existing files is still allowed.");?>
+      </td>
     </tr>
     <tr>
 			<td width="22%" valign="top" class="vncell"><?=gettext("chroot everyone");?></td>
