@@ -188,7 +188,10 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Drivers\" \\
 	rm $tempfile
 
 	for driver in $(cat $drivers | tr -d '"'); do
-		echo "======================================================================"
+    echo
+		echo "--------------------------------------------------------------"
+		echo ">>> Adding driver: ${driver}"
+		echo "--------------------------------------------------------------"
 		cd $FREENAS_SVNDIR/build/drivers/$driver
 		make -I ${FREENAS_MKINCLUDESDIR} install
 		[ 0 != $? ] && return 1 # successful?
@@ -298,7 +301,10 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Packages/Plugins\" \\
 	rm $tempfile
 
 	for package in $(cat $packages | tr -d '"'); do
-		echo "======================================================================"
+		echo
+		echo "--------------------------------------------------------------"
+		echo ">>> Building package: ${package}"
+		echo "--------------------------------------------------------------"
 		cd $FREENAS_SVNDIR/build/packages/$package
 		make -I ${FREENAS_MKINCLUDESDIR} clean package
 		[ 0 != $? ] && return 1 # successful?
@@ -310,9 +316,9 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Packages/Plugins\" \\
 
 # Creating msfroot
 create_mfsroot() {
-	echo "======================================================================"
-	echo "===> Generating the MFSROOT filesystem"
-	echo "======================================================================"
+	echo "--------------------------------------------------------------"
+	echo ">>> Generating the MFSROOT filesystem"
+	echo "--------------------------------------------------------------"
 
 	cd $FREENAS_WORKINGDIR
 
@@ -346,9 +352,9 @@ create_mfsroot() {
 }
 
 create_image() {
-	echo "======================================================================"
-	echo "===> Generating $FREENAS_PRODUCTNAME IMG File (to be rawrite on CF/USB/HD)"
-	echo "======================================================================"
+	echo "--------------------------------------------------------------"
+	echo ">>> Generating ${FREENAS_PRODUCTNAME} IMG File (to be rawrite on CF/USB/HD)"
+	echo "--------------------------------------------------------------"
 
 	# Cleanup.
 	[ -f image.bin ] && rm -f image.bin
@@ -705,7 +711,10 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Ports\" \\
 	rm $tempfile
 
 	for port in $(cat $ports | tr -d '"'); do
-		echo "======================================================================"
+		echo
+		echo "--------------------------------------------------------------"
+		echo ">>> ${choice}ing port: ${port}"
+		echo "--------------------------------------------------------------"
 		cd $FREENAS_SVNDIR/build/ports/$port
 		if [ "$choice" == "build" ]; then
 			# Build port.
