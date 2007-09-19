@@ -105,6 +105,7 @@ defCmdT("System uptime","uptime");
 defCmdT("Interfaces","/sbin/ifconfig -a");
 defCmdT("Routing tables","netstat -nr");
 defCmdT("Processes","ps xauww");
+defCmdT("Memory","top -b 0|grep Mem");
 defCmdT("swap use","/usr/sbin/swapinfo");
 defCmdT("ATA disk","/sbin/atacontrol list");
 defCmdT("SCSI disk","/sbin/camcontrol devlist");
