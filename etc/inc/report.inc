@@ -293,6 +293,7 @@ function report_send_mail() {
 	}
 
 	$numentries = $config['syslogd']['nentries'];
+	if (!$numentries) { $numentries = 50; } // Use default value if setting is not available.
 	$reverse = isset($config['syslogd']['reverse']) ? "-r" : "";
 
 	if (is_array($config['statusreport']['report']) && in_array("systemlog", $config['statusreport']['report'])) {

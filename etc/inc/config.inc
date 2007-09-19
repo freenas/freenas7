@@ -888,6 +888,7 @@ function convert_config() {
 	/* Convert 2.8 -> 2.9 */
 	/* Add //samba/share/hostallow and //samba/share/hostdeny. */
 	/* Add //ftp/chrooteveryone. */
+	/* Check if //syslogd/nentries is set. */
 	if ($config['version'] === "2.8") {
 		for ($i = 0; isset($config['samba']['share'][$i]); $i++) {
 			$config['samba']['share'][$i]['hostsallow'] = "ALL";
@@ -895,6 +896,10 @@ function convert_config() {
 		}
 
 		$config['ftp']['chrooteveryone'] = true;
+
+		if (!$config['syslogd']['nentries']) {
+			$config['syslogd']['nentries'] = 50;
+		}
 
 		$config['version'] = "2.9";
 	}
