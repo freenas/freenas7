@@ -14,12 +14,12 @@ powerd_enable=${powerd_enable:-"NO"}
 name="powerd"
 rcvar=`set_rcvar`
 command="/usr/sbin/${name}"
-command_args="-a adaptive -b adaptive"
 stop_postcmd=powerd_poststop
 
 powerd_poststop()
 {
-	/sbin/sysctl dev.cpu.0.freq=`/sbin/sysctl -n dev.cpu.0.freq_levels | /usr/bin/sed -e 's:/.*::'` > /dev/null
+	sysctl dev.cpu.0.freq=`sysctl -n dev.cpu.0.freq_levels |
+	    sed -e 's:/.*::'` > /dev/null
 }
 
 load_rc_config $name
