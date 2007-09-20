@@ -108,19 +108,19 @@ if ($_POST) {
 	switch($_POST['type']) {
 		case "disk":
 			$reqdfields = explode(" ", "mdisk partition fstype sharename");
-			$reqdfieldsn = array(gettext("Disk"), gettext("Partition"), gettext("File system"), gettext("Share Name"));
+			$reqdfieldsn = array(gettext("Disk"), gettext("Partition"), gettext("File system"), gettext("Name"));
 			break;
 
 		case "iso":
 			$reqdfields = explode(" ", "filename sharename");
-			$reqdfieldsn = array(gettext("Filename"), gettext("Share Name"));
+			$reqdfieldsn = array(gettext("Filename"), gettext("Name"));
 			break;
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['sharename'] && !is_validsharename($_POST['sharename']))) {
-		$input_errors[] = gettext("The share name may only consist of the characters a-z, A-Z, 0-9, _ , -.");
+		$input_errors[] = gettext("The name may only consist of the characters a-z, A-Z, 0-9, _ , -.");
 	}
 
 	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
@@ -173,7 +173,7 @@ if ($_POST) {
 		}
 
 		if (($_POST['sharename']) && ($mount['sharename'] == $_POST['sharename'])) {
-			$input_errors[] = gettext("Duplicate Share Name.");
+			$input_errors[] = gettext("Duplicate name.");
 			break;
 		}
 	}
@@ -315,7 +315,7 @@ function type_change() {
 			      </td>
 			    </tr>
 					<tr>
-			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Share Name") ;?></td>
+			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Name") ;?></td>
 			      <td width="78%" class="vtable">
 			        <input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>">
 			      </td>
