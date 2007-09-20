@@ -18,6 +18,7 @@ set path = (/sbin /bin /usr/sbin /usr/bin /usr/local/sbin /usr/local/bin $HOME/b
 
 setenv	PAGER	more
 setenv	BLOCKSIZE	K
+setenv	EDITOR nano
 
 if ($?prompt) then
 	# An interactive shell -- set some stuff up

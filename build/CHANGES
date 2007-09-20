@@ -60,6 +60,7 @@ Minors changes:
 - Reduce number of virtual consoles to ttyv0 and ttyv1.
 - Display 'MTU' on interfaces status page.
 - Rename 'Resume' to 'Keep all files' option on FTP WebGUI page. Also update option description text.
+- Use nano as default editor. Thanks to Carsten Hammer.
 
 Bug fixs:
 - Fix bug in Mount Point WebGUI page when using file system 'CD/DVD'.
