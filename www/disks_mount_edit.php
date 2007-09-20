@@ -95,9 +95,11 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['fstype'] = $a_mount[$id]['fstype'];
 	$pconfig['sharename'] = $a_mount[$id]['sharename'];
 	$pconfig['desc'] = $a_mount[$id]['desc'];
+	$pconfig['readonly'] = isset($a_mount[$id]['readonly']);
 } else {
 	$pconfig['type'] = "disk";
 	$pconfig['partition'] = "p1";
+	$pconfig['readonly'] = false;
 }
 
 if ($_POST) {
@@ -188,6 +190,7 @@ if ($_POST) {
 				$mount['partition'] = $_POST['partition'];
 				$mount['fstype'] = $_POST['fstype'];
 				$mount['fullname'] = "{$mount['mdisk']}{$mount['partition']}";
+				$mount['readonly'] = $_POST['readonly'] ? true : false;
 				break;
 
 			case "iso":
@@ -224,6 +227,7 @@ function type_change() {
       showElementById('partition_tr','show');
       showElementById('fstype_tr','show');
       showElementById('filename_tr','hide');
+      showElementById('readonly_tr','show');
       break;
 
     case 1: /* ISO */
@@ -231,6 +235,7 @@ function type_change() {
       showElementById('partition_tr','hide');
       showElementById('fstype_tr','hide');
       showElementById('filename_tr','show');
+      showElementById('readonly_tr','hide');
       break;
   }
 }
@@ -308,22 +313,30 @@ function type_change() {
 			      </td>
 			    </tr>
 			    <tr id="filename_tr">
-			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Filename") ;?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Filename") ;?></td>
 			      <td width="78%" class="vtable">
 			        <input name="filename" type="text" class="formfld" id="filename" size="60" value="<?=htmlspecialchars($pconfig['filename']);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.filename; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.filename; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
 			      </td>
 			    </tr>
 					<tr>
-			     <td width="22%" valign="top" class="vncellreq"><?=gettext("Name") ;?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Name") ;?></td>
 			      <td width="78%" class="vtable">
 			        <input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>">
 			      </td>
 			    </tr>
 			    <tr>
-			     <td width="22%" valign="top" class="vncell"><?=gettext("Description") ;?></td>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Description") ;?></td>
 			      <td width="78%" class="vtable">
 							<input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>">
+			      </td>
+			    </tr>
+			    <tr id="readonly_tr">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Read only") ;?></td>
+			      <td width="78%" class="vtable">
+							<input name="readonly" type="checkbox" id="readonly" value="yes" <?php if ($pconfig['readonly']) echo "checked"; ?>>
+							<?=gettext("The file system is to be mounted read-only.");?><br/>
+							<?=gettext("Mount the file system read-only (even the super-user may not write it).");?><br/>
 			      </td>
 			    </tr>
 			    <tr>

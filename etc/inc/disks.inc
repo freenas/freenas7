@@ -146,11 +146,14 @@ function disks_mount($mount)
 			break;
 	}
 
+	/* Check if filesystem should be mounted read-only. */
+	$readonly = (isset($mount['readonly'])) ? "-r" : "";
+
 	/* Check the fileystem only if there is a problem. */
 	/* This part is too stupid: I must read the FreeBSD start script for use the same intelligent method for checking hard drive */
 	switch ($mount['fstype']) {
 		case "ufs":
-			$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t ufs -o acls {$readonly} {$devname} '{$mountname}'");
 			if (0 == $result) {
 				write_log("Device {$devname} mounted using UFS on '{$mountname}'");
 				$result = 0;
@@ -159,7 +162,7 @@ function disks_mount($mount)
 				// Do a filesystem check.
 				mwexec("/sbin/fsck -y -t ufs {$devname}");
 				// Retry to mount the partition.
-				$result = mwexec("/sbin/mount -t ufs -o acls {$devname} '{$mountname}'");
+				$result = mwexec("/sbin/mount -t ufs -o acls {$readonly} {$devname} '{$mountname}'");
 				if (0 == $result) {
 					write_log("Device {$devname} mounted using UFS on '{$mountname}'");
 					$result = 0;
@@ -172,7 +175,7 @@ function disks_mount($mount)
 			break;
 
 		case "msdosfs":
-			$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$devname} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$readonly} {$devname} '{$mountname}'");
 			if (0 == $result) {
 				write_log("Device {$devname} mounted using FAT on '{$mountname}'");
 				$result = 0;
@@ -181,7 +184,7 @@ function disks_mount($mount)
 				// Do a filesystem check.
 				mwexec("/sbin/fsck -y -t msdosfs {$devname}");
 				// Retry to mount the partition.
-				$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$devname} '{$mountname}'");
+				$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$readonly} {$devname} '{$mountname}'");
 				if (0 == $result) {
 					write_log("Device {$devname} mounted using FAT on '{$mountname}'");
 					$result = 0;
@@ -208,7 +211,7 @@ function disks_mount($mount)
 		case "ntfs":
 			// Load the kernel fuse module.
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
-			$result = mwexec("/sbin/mount -t ntfs-3g -o force {$devname} '{$mountname}'"); // default options: silent,allow_other
+			$result = mwexec("/sbin/mount -t ntfs-3g -o force {$readonly} {$devname} '{$mountname}'"); // default options: silent,allow_other
 			if (0 == $result) {
 				write_log("Disk {$devname} mounted using NTFS on '{$mountname}'");
 				$result = 0;
@@ -220,7 +223,7 @@ function disks_mount($mount)
 			break;
 
 		case "ext2fs":
-			$result = mwexec("/sbin/mount -t ext2fs {$devname} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t ext2fs {$readonly} {$devname} '{$mountname}'");
 			if (0 == $result)	{
 				write_log("Disk {$devname} mounted using EXT2 on '{$mountname}'");
 				$result = 0;
@@ -229,7 +232,7 @@ function disks_mount($mount)
 				// Do a filesystem check.
 				mwexec("/usr/local/sbin/e2fsck -f -p {$devname}");
 				// Retry to mount the partition.
-				$result = mwexec("/sbin/mount -t ext2fs {$devname} '{$mountname}'");
+				$result = mwexec("/sbin/mount -t ext2fs {$readonly} {$devname} '{$mountname}'");
 				if (0 == $result) {
 					write_log("Disk {$devname} mounted using EXT2 on '{$mountname}'");
 					$result = 0;
