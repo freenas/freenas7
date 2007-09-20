@@ -233,8 +233,8 @@ function install_harddrive_image($harddrive)
 	write_console("Installation...\n");
 	mwexec("/bin/mkdir /destdisk");
 	mwexec("/sbin/mount /dev/{$harddrive}s1a /destdisk");
-	//mwexec("cd /tutu");
-	write_console("Copying system file on this hardrive\n");
+
+	write_console("Copying system files to disk {$harddrive}.\n");
 	mwexec("/usr/bin/tar --exclude /destdisk --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C /destdisk");
 	mwexec("/bin/mkdir /destdisk/var");
 	mwexec("/bin/mkdir /destdisk/dev");
@@ -265,11 +265,10 @@ EOD;
 	fwrite($fd, $loaderconf);
 	fclose($fd);
 
-	//Re-configuring the release type
-
+	// Set the release type.
 	$fd = fopen("/destdisk/etc/platform", "w");
 	if (!$fd) {
-		write_console("Error: Can't open etc/platform in install_harddrive_image().\n");
+		write_console("Error: Failed to create '/etc/platform'.\n");
 		return 1;
 	}
 
@@ -440,7 +439,7 @@ function install_fdisk($harddrive,$size)
 	// Create fdisk config file (fdisk.conf).
 	$fd = fopen("{$g['varetc_path']}/fdisk.conf", "w");
 	if (!$fd) {
-		write_console("Error: Failed to create {$g['varetc_path']}/fdisk.conf.\n");
+		write_console("Error: Failed to create '{$g['varetc_path']}/fdisk.conf'.\n");
 		return 1;
 	}
 
