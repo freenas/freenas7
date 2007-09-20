@@ -220,8 +220,7 @@ if ($_POST) {
 <script language="JavaScript">
 <!--
 function type_change() {
-  switch(document.iform.type.selectedIndex)
-  {
+  switch(document.iform.type.selectedIndex) {
     case 0: /* Disk */
       showElementById('mdisk_tr','show');
       showElementById('partition_tr','show');
@@ -237,6 +236,14 @@ function type_change() {
       showElementById('filename_tr','show');
       showElementById('readonly_tr','hide');
       break;
+  }
+}
+
+function fstype_change() {
+	switch(document.iform.fstype.selectedIndex) {
+		case 0: /* UFS */
+			document.iform.partition.selectedIndex = 0;
+			break;
   }
 }
 // -->
@@ -303,7 +310,7 @@ function type_change() {
 			    <tr id="fstype_tr">
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("File system") ;?></td>
 			      <td class="vtable">
-			        <select name="fstype" class="formfld" id="fstype">
+			        <select name="fstype" class="formfld" id="fstype" onchange="fstype_change()">
 			          <option value="ufs" <?php if ($pconfig['fstype'] == "ufs") echo "selected"; ?>>UFS</option>
 			          <option value="msdosfs" <?php if ($pconfig['fstype'] == "msdosfs") echo "selected"; ?>>FAT</option>
 			          <option value="cd9660" <?php if ($pconfig['fstype'] == "cd9669") echo "selected"; ?>>CD/DVD</option>
