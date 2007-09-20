@@ -125,7 +125,7 @@ if ($_GET['act'] == "retry")
           <tr>
             <td width="20%" class="listhdrr"><?=gettext("Disk"); ?></td>
             <td width="5%" class="listhdrr"><?=gettext("File system"); ?></td>
-            <td width="20%" class="listhdrr"><?=gettext("Share Name") ;?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Name") ;?></td>
             <td width="25%" class="listhdrr"><?=gettext("Description") ;?></td>
             <td width="20%" class="listhdr"><?=gettext("Status") ;?></td>
             <td width="10%" class="list"></td>
