@@ -48,8 +48,8 @@ Help needed:
 - Need help for adding LDAP authentication feature:
 Major services can be easly authenticated using PAM-LDAP, but for Samba too is harder.
 
-FreeNAS 0.685:
---------------
+FreeNAS 0.685RC2:
+-----------------
 
 Majors changes:
 - Upgrade fusefs-ntfs to 1.913.
