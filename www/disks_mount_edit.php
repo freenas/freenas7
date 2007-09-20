@@ -244,6 +244,10 @@ function fstype_change() {
 		case 0: /* UFS */
 			document.iform.partition.selectedIndex = 0;
 			break;
+
+		case 2: /* CD/DVD */
+			document.iform.partition.selectedIndex = 5;
+			break;
   }
 }
 // -->
@@ -292,17 +296,17 @@ function fstype_change() {
 					<tr id="partition_tr">
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Partition") ; ?></td>
 			      <td class="vtable">
-			        <select name="partition" class="formfld" id="partition">
-					  		<option value="p1" <?php if ($pconfig['partition'] == "p1") echo "selected"; ?>>EFI GPT</option>
-			          <option value="s1" <?php if ($pconfig['partition'] == "s1") echo "selected"; ?>>1</option>
-			          <option value="s2" <?php if ($pconfig['partition'] == "s2") echo "selected"; ?>>2</option>
-			          <option value="s3" <?php if ($pconfig['partition'] == "s3") echo "selected"; ?>>3</option>
-			          <option value="s4" <?php if ($pconfig['partition'] == "s4") echo "selected"; ?>>4</option>
-			          <option value=" " <?php if ($pconfig['partition'] == " ") echo "selected"; ?>>CD/DVD</option>
-			          <option value="gmirror" <?php if ($pconfig['partition'] == "gmirror") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - gmirror</option>
-			          <option value="graid5" <?php if ($pconfig['partition'] == "graid5") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - graid5</option>
-			          <option value="gvinum" <?php if ($pconfig['partition'] == "gvinum") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - gvinum</option>
-			        </select>
+							<select name="partition" class="formfld" id="partition">
+								<option value="p1" <?php if ($pconfig['partition'] === "p1") echo "selected"; ?>>EFI GPT</option>
+								<option value="s1" <?php if ($pconfig['partition'] === "s1") echo "selected"; ?>>1</option>
+								<option value="s2" <?php if ($pconfig['partition'] === "s2") echo "selected"; ?>>2</option>
+								<option value="s3" <?php if ($pconfig['partition'] === "s3") echo "selected"; ?>>3</option>
+								<option value="s4" <?php if ($pconfig['partition'] === "s4") echo "selected"; ?>>4</option>
+								<option value=" " <?php if (empty($pconfig['partition'])) echo "selected"; ?>>CD/DVD</option>
+								<option value="gmirror" <?php if ($pconfig['partition'] === "gmirror") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - gmirror</option>
+								<option value="graid5" <?php if ($pconfig['partition'] === "graid5") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - graid5</option>
+								<option value="gvinum" <?php if ($pconfig['partition'] === "gvinum") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - gvinum</option>
+							</select>
 							<br>
 							<?=gettext("Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release") ;?>
 			      </td>
@@ -310,13 +314,13 @@ function fstype_change() {
 			    <tr id="fstype_tr">
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("File system") ;?></td>
 			      <td class="vtable">
-			        <select name="fstype" class="formfld" id="fstype" onchange="fstype_change()">
-			          <option value="ufs" <?php if ($pconfig['fstype'] == "ufs") echo "selected"; ?>>UFS</option>
-			          <option value="msdosfs" <?php if ($pconfig['fstype'] == "msdosfs") echo "selected"; ?>>FAT</option>
-			          <option value="cd9660" <?php if ($pconfig['fstype'] == "cd9669") echo "selected"; ?>>CD/DVD</option>
-			          <option value="ntfs" <?php if ($pconfig['fstype'] == "ntfs") echo "selected"; ?>>NTFS</option>
-			          <option value="ext2fs" <?php if ($pconfig['fstype'] == "ext2fs") echo "selected"; ?>>EXT2</option>
-			        </select>
+							<select name="fstype" class="formfld" id="fstype" onchange="fstype_change()">
+								<option value="ufs" <?php if ($pconfig['fstype'] === "ufs") echo "selected"; ?>>UFS</option>
+								<option value="msdosfs" <?php if ($pconfig['fstype'] === "msdosfs") echo "selected"; ?>>FAT</option>
+								<option value="cd9660" <?php if ($pconfig['fstype'] === "cd9660") echo "selected"; ?>>CD/DVD</option>
+								<option value="ntfs" <?php if ($pconfig['fstype'] === "ntfs") echo "selected"; ?>>NTFS</option>
+								<option value="ext2fs" <?php if ($pconfig['fstype'] === "ext2fs") echo "selected"; ?>>EXT2</option>
+							</select>
 			      </td>
 			    </tr>
 			    <tr id="filename_tr">
