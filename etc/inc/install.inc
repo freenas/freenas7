@@ -86,7 +86,10 @@ function install_init_halfdisk($harddrive)
 {
 	/* Part of install process: Initialize the destination disk with 2 partitions */
 	/* Create two partitions, the first as 32MB */
-	install_fdisk($harddrive,32);
+	if (1 == install_fdisk($harddrive,32)) {
+		write_console("Error: Failed to create partitions!\n");
+		return 1;
+	}
 
 	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$harddrive}")) {
 		write_console("Error: Can't fdisk the destination drive '{$harddrive}'!\n");
@@ -139,7 +142,10 @@ function install_init_harddrive($harddrive)
 {
 	/* Part of install process: Initialize the destination disk with 2 partitions */
 	/* Create two partitions, the first as 128MB */
-	install_fdisk($harddrive,128);
+	if (1 == install_fdisk($harddrive,128)) {
+		write_console("Error: Failed to create partitions!\n");
+		return 1;
+	}
 
 	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$harddrive}")) {
 		write_console("Error: Can't fdisk the destination drive '{$harddrive}'!\n");
@@ -417,6 +423,12 @@ function install_fdisk($harddrive,$size)
 	// Get disk informations.
 	$diskinfo = disks_get_diskinfo($harddrive);
 
+	// Check available disk space.
+	if ($diskinfo['mediasize_mbytes'] <= $size) {
+		write_console("Error: Not enough space available on disk {$diskinfo['name']}.\n");
+		return 1;
+	}
+
 	// Setting partition size to $size (in MB).
 	$part1_size_mbytes = $size;
 	$part1_size_bytes = $part1_size_mbytes * 1024 * 1024;
@@ -428,7 +440,7 @@ function install_fdisk($harddrive,$size)
 	// Create fdisk config file (fdisk.conf).
 	$fd = fopen("{$g['varetc_path']}/fdisk.conf", "w");
 	if (!$fd) {
-		write_console("Error: Can't open fdisk.conf in install_fdisk().\n");
+		write_console("Error: Failed to create {$g['varetc_path']}/fdisk.conf.\n");
 		return 1;
 	}
 
