@@ -14,6 +14,7 @@ Minors changes:
 - Rename 'Resume' to 'Keep all files' option on FTP WebGUI page. Also update option description text.
 
 Bug fixs:
+- Fix bug in Mount Point WebGUI page when using file system 'CD/DVD'.
 
 FreeNAS 0.685RC1:
 -----------------
