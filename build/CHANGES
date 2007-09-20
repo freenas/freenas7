@@ -63,6 +63,7 @@ Minors changes:
 
 Bug fixs:
 - Fix bug in Mount Point WebGUI page when using file system 'CD/DVD'.
+- Fix bug when booting 'full' installation.
 
 FreeNAS 0.685RC1:
 -----------------

@@ -26,13 +26,13 @@ export HOME PATH
 PLATFORM=`cat /etc/platform`
 
 case ${PLATFORM} in
-	*)
-		# If running from liveCD or embedded, mount the root (ramdisk) in read-write.
-		mount -u -o rw /dev/md0 /;
-		;;
 	i386-full)
 		# If running from full, mount the root (/) in read-write.
 		mount -u -o rw /;
+		;;
+	*)
+		# If running from liveCD or embedded, mount the root (ramdisk) in read-write.
+		mount -u -o rw /dev/md0 /;
 		;;
 esac
 
