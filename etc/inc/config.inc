@@ -904,6 +904,23 @@ function convert_config() {
 		$config['version'] = "2.9";
 	}
 
+	/* Convert 2.9 -> 3.0 */
+	/* Move //system/earlyshellcmd -> //rc/preinit/cmd */
+	/* Move //system/shellcmd -> //rc/postinit/cmd */
+	if ($config['version'] === "2.9") {
+		for ($i = 0; isset($config['system']['earlyshellcmd'][$i]); $i++) {
+			$config['rc']['preinit']['cmd'][] = $config['system']['earlyshellcmd'][$i];
+			unset($config['system']['earlyshellcmd'][$i]);
+		}
+
+		for ($i = 0; isset($config['system']['shellcmd'][$i]); $i++) {
+			$config['rc']['postinit']['cmd'][] = $config['system']['shellcmd'][$i];
+			unset($config['system']['shellcmd'][$i]);
+		}
+
+		$config['version'] = "3.0";
+	}
+
 	write_config();
 
 	if (is_booting())

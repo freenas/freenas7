@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	system_advanced_rcstartup_edit.php
+	system_advanced_rc_edit.php
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
@@ -45,21 +45,27 @@ if (isset($_POST['id']))
 if (isset($_POST['type']))
 	$type = $_POST['type'];
 
-$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Startup"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Command scripts"),isset($id)?gettext("Edit"):gettext("Add"));
 
-if (!is_array($config['system']['earlyshellcmd']))
-	$config['system']['earlyshellcmd'] = array();
+if (!is_array($config['rc']['preinit']['cmd']))
+	$config['rc']['preinit']['cmd'] = array();
 
-if (!is_array($config['system']['shellcmd']))
-	$config['system']['shellcmd'] = array();
+if (!is_array($config['rc']['postinit']['cmd']))
+	$config['rc']['postinit']['cmd'] = array();
+
+if (!is_array($config['rc']['shutdown']['cmd']))
+	$config['rc']['shutdown']['cmd'] = array();
 
 if (isset($id) && isset($type)) {
 	switch($type) {
-		case "PRE":
-			$command = $config['system']['earlyshellcmd'][$id];
+		case "PREINIT":
+			$command = $config['rc']['preinit']['cmd'][$id];
 			break;
-		case "POST":
-			$command = $config['system']['shellcmd'][$id];
+		case "POSTINIT":
+			$command = $config['rc']['postinit']['cmd'][$id];
+			break;
+		case "SHUTDOWN":
+			$command = $config['rc']['shutdown']['cmd'][$id];
 			break;
 	}
 }
@@ -77,11 +83,14 @@ if ($_POST) {
 		$type = $_POST['type'];
 
 		switch($type) {
-			case "PRE":
-				$a_cmd = &$config['system']['earlyshellcmd'];
+			case "PREINIT":
+				$a_cmd = &$config['rc']['preinit']['cmd'];
 				break;
-			case "POST":
-				$a_cmd = &$config['system']['shellcmd'];
+			case "POSTINIT":
+				$a_cmd = &$config['rc']['postinit']['cmd'];
+				break;
+			case "SHUTDOWN":
+				$a_cmd = &$config['rc']['shutdown']['cmd'];
 				break;
 		}
 
@@ -92,7 +101,7 @@ if ($_POST) {
 
 		write_config();
 
-		header("Location: system_advanced_rcstartup.php");
+		header("Location: system_advanced_rc.php");
 		exit;
 	}
 }
@@ -105,14 +114,14 @@ if ($_POST) {
       <ul id="tabnav">
       	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
       	<li class="tabinact"><a href="system_advanced_swap.php"><?=gettext("Swap");?></a></li>
-        <li class="tabact"><a href="system_advanced_rcstartup.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Startup");?></a></li>
+        <li class="tabact"><a href="system_advanced_rc.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Command scripts");?></a></li>
         <li class="tabinact"><a href="system_advanced_cron.php"><?=gettext("Cron");?></a></li>
       </ul>
     </td>
   </tr>
   <tr>
     <td class="tabcont">
-			<form action="system_advanced_rcstartup_edit.php" method="post" name="iform" id="iform">
+			<form action="system_advanced_rc_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
@@ -125,10 +134,11 @@ if ($_POST) {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Type");?></td>
 						<td width="78%" class="vtable">
 							<select name="type" class="formfld" id="type" <?php if ($type) echo "disabled";?>>
-								<option value="PRE" <?php if ($type == "PRE") echo "selected";?>>Pre</option>
-								<option value="POST" <?php if ($type == "POST") echo "selected";?>>Post</option>
-							</select>
-							<br><?=gettext("Execute command pre or post system initialization (booting).");?>
+								<option value="PREINIT" <?php if ($type === "PREINIT") echo "selected";?>>PreInit</option>
+								<option value="POSTINIT" <?php if ($type === "POSTINIT") echo "selected";?>>PostInit</option>
+								<option value="SHUTDOWN" <?php if ($type === "SHUTDOWN") echo "selected";?>>Shutdown</option>
+							</select><br/>
+							<?=gettext("Execute command pre or post system initialization (booting) or before system shutdown.");?>
 						</td>
 					</tr>
 			    <tr>

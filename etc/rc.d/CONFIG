@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # PROVIDE: CONFIG
-# REQUIRE: execcmd_early rcconf system_init
+# REQUIRE: execcmd_preinit rcconf system_init
 # BEFORE: NETWORKING NETWORK
 
 #	This is a dummy dependency.

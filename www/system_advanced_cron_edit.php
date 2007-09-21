@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	system_advanced_rcstartup_edit.php
+	system_advanced_cron_edit.php
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
@@ -157,7 +157,7 @@ function enable_change(enable_change) {
       <ul id="tabnav">
       	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
       	<li class="tabinact"><a href="system_advanced_swap.php"><?=gettext("Swap");?></a></li>
-      	<li class="tabinact"><a href="system_advanced_rcstartup.php"><?=gettext("Startup");?></a></li>
+      	<li class="tabinact"><a href="system_advanced_rc.php"><?=gettext("Command scripts");?></a></li>
         <li class="tabact"><a href="system_advanced_cron.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Cron");?></a></li>
       </ul>
     </td>

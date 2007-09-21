@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>2.9</version>
+	<version>3.0</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -30,8 +30,6 @@
 		<!--
 		<disableconsolemenu/>
 		<disablefirmwarecheck/>
-		<shellcmd></shellcmd> // Can be defined multiple times.
-		<earlyshellcmd></earlyshellcmd> // Can be defined multiple times.
 		<disablebeep/>
 		<tune/>
 		<smart/>
@@ -461,4 +459,21 @@
 		</job>
 		-->
 	</cron>
+	<rc>
+		<preinit>
+			<!--
+			<cmd></cmd> // Can be defined multiple times.
+			-->
+		</preinit>
+		<postinit>
+			<!--
+			<cmd></cmd> // Can be defined multiple times.
+			-->
+		</postinit>
+		<shutdown>
+			<!--
+			<cmd></cmd> // Can be defined multiple times.
+			-->
+		</shutdown>
+	</rc>
 </freenas>
