@@ -324,9 +324,18 @@
 	</nfs>
 	<snmpd>
 		<!-- <enable/> -->
-		<syslocation></syslocation>
-		<syscontact></syscontact>
-		<rocommunity>public</rocommunity>
+		<location></location>
+		<contact></contact>
+		<read>public</read>
+		<!-- <trapenable/> -->
+		<traphost>localhost</traphost>
+		<trapport>162</trapport>
+		<trap></trap>
+		<modules>
+			<mibii/>
+			<netgraph/>
+			<hostres/>
+		</modules>
 	</snmpd>
 	<diag>
 		<ipv6nat>

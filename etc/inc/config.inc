@@ -905,8 +905,9 @@ function convert_config() {
 	}
 
 	/* Convert 2.9 -> 3.0 */
-	/* Move //system/earlyshellcmd -> //rc/preinit/cmd */
-	/* Move //system/shellcmd -> //rc/postinit/cmd */
+	/* Rename //system/earlyshellcmd -> //rc/preinit/cmd */
+	/* Rename //system/shellcmd -> //rc/postinit/cmd */
+	/* Rename //snmpd/rocommunity -> //snmpd/read */
 	if ($config['version'] === "2.9") {
 		for ($i = 0; isset($config['system']['earlyshellcmd'][$i]); $i++) {
 			$config['rc']['preinit']['cmd'][] = $config['system']['earlyshellcmd'][$i];
@@ -917,6 +918,12 @@ function convert_config() {
 			$config['rc']['postinit']['cmd'][] = $config['system']['shellcmd'][$i];
 			unset($config['system']['shellcmd'][$i]);
 		}
+
+		$config['snmpd']['mibii'] = true;
+		$config['snmpd']['netgraph'] = true;
+		$config['snmpd']['hostres'] = true;
+		$config['snmpd']['read'] = $config['snmpd']['rocommunity'];
+		unset($config['snmpd']['rocommunity']);
 
 		$config['version'] = "3.0";
 	}

@@ -142,7 +142,7 @@ function rc_update_service($name) {
 // Update /etc/rc.conf file.
 // Check if KEYWORD 'RCVAR' is defined (e.g. '# RCVAR: xxxx').
 function rc_update_rcconf($name,$state) {
-	$data = file_get_contents("/etc/rc.d/$name");
+	$data = @file_get_contents("/etc/rc.d/$name");
 	$search = "/RCVAR: (.*)/";
 	if (!preg_match($search, $data, $rcvar)) {
 		return 0;
@@ -160,7 +160,7 @@ function rc_update_rcconf($name,$state) {
 function rc_is_service_enabled($name) {
 	global $g;
 
-	$data = file_get_contents("/etc/rc.d/$name");
+	$data = @file_get_contents("/etc/rc.d/$name");
 	$search = "/XQUERY: (.*)/";
 	if (!preg_match($search, $data, $xquery)) {
 		return 0;

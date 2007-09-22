@@ -430,6 +430,9 @@ usr/sbin/mtree
 # diskinfo -- get information about disk device
 usr/sbin/diskinfo
 
+# bsnmpd -- simple and extensible SNMP daemon
+usr/sbin/bsnmpd
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
@@ -453,6 +456,11 @@ usr/share/locale/UTF-8/*
 ####### contents of /usr/lib
 # PAM libraries
 usr/lib/pam_*.so.3
+
+# SNMP modules
+usr/lib/snmp_hostres.so*
+usr/lib/snmp_mibII.so*
+usr/lib/snmp_netgraph.so*
 
 ####### contents of /lib/geom
 # GEOM tools

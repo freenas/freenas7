@@ -20,7 +20,8 @@ Majors changes:
 - Add 'chroot everyone' setting on FTP WebGUI page (Thanks to Francois Allard).
 - Add 'Home directory' support in user management (Thanks to Francois Allard).
 - Refactor 'System/Advanced/Startup'. Renamed to 'System/Advanced/Command scripts'. Add ability to define
-  scripts executed before system shutdown. 
+  scripts executed before system shutdown.
+- Add SNMP service support.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
