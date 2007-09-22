@@ -2,8 +2,8 @@
 # Copyright (c) 2007 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
-# PROVIDE: snmpd
-# REQUIRE: NETWORKING
+# PROVIDE: bsnmpd
+# REQUIRE: NETWORKING syslogd
 # KEYWORD: nojail
 # XQUERY: -i "count(//snmpd/enable) > 0" -o "0" -b
 # RCVAR: snmpd
@@ -11,7 +11,7 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
-name="snmpd"
+name="bsnmpd"
 rcvar=`set_rcvar`
 
 # Custom commands
@@ -20,7 +20,7 @@ start_precmd="create_conf"
 # Defaults
 snmpd_enable=${snmpd_enable:-"NO"}
 snmpd_config=${snmpd_config:-"/var/etc/${name}.conf"}
-pidfile="/var/run/${name}.pid"
+pidfile="/var/run/snmpd.pid"
 command="/usr/sbin/${name}"
 command_args="-c ${snmpd_config} -P ${pidfile}"
 
