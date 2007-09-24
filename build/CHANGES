@@ -68,6 +68,7 @@ Minors changes:
 Bug fixs:
 - Fix bug in Mount Point WebGUI page when using file system 'CD/DVD'.
 - Fix bug when booting 'full' installation.
+- Cleanup /var/run during boot process, otherwise sysreboot.reqd won't be removed.
 
 FreeNAS 0.685RC1:
 -----------------
