@@ -5,6 +5,7 @@
 #
 
 # PROVIDE: dmesg
+# REQUIRE: cleanvar
 # BEFORE: DAEMON
 # KEYWORD: Daemon nojail
 
