@@ -39,7 +39,7 @@ purgedir()
 				[ -S "$file" -a "$file" = "logpriv" ] && continue
 				[ ."$file" = .. -o ."$file" = ... ] && continue
 				# Skip over *.hints files
-				[ 0 -gt `expr \"$file\" : \".*.hints\"` ] && continue
+				[ `expr \"$file\" : \".*.hints\"` -gt 0 ] && continue
 				if [ -d "$file" -a ! -L "$file" ]
 				then
 					purgedir "$file"
