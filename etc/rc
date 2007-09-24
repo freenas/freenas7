@@ -77,7 +77,7 @@ if [ ! -h "/var/tmp" ]; then
 	ln -s /ftmp /var/tmp
 fi
 
-# Run ldconfig
+# Configure the shared library cache.
 /sbin/ldconfig -elf /usr/lib /usr/local/lib /lib
 
 # Let the other functions know we're booting.
