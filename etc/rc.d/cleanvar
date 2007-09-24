@@ -2,6 +2,10 @@
 #
 # $FreeBSD: src/etc/rc.d/cleanvar,v 1.8.2.2 2006/01/17 06:37:48 dougb Exp $
 #
+# Modified by Volker Theile (votdev@gmx.de)
+# Changes:
+# - Skip over *.hints files, otherwise 'xml' cmd fails.
+#
 
 # PROVIDE: cleanvar
 # REQUIRE: mountcritlocal
@@ -34,6 +38,8 @@ purgedir()
 				[ -S "$file" -a "$file" = "log" ] && continue
 				[ -S "$file" -a "$file" = "logpriv" ] && continue
 				[ ."$file" = .. -o ."$file" = ... ] && continue
+				# Skip over *.hints files
+				[ 0 -gt `expr \"$file\" : \".*.hints\"` ] && continue
 				if [ -d "$file" -a ! -L "$file" ]
 				then
 					purgedir "$file"
