@@ -45,7 +45,7 @@ FREENAS_MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
 # Size in MB of the MFS Root filesystem that will include all FreeBSD binary
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
-FREENAS_MFSROOT_SIZE="45"
+FREENAS_MFSROOT_SIZE="46"
 # IMG media size in 512 bytes sectors. It includes the zipped MFS root
 # filesystem image plus bootloader and kernel. (24117248 bytes => 23MB)
 FREENAS_IMG_SIZE=47104

@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: lighttpd
-# REQUIRE: DAEMON
+# REQUIRE: htpasswd DAEMON
 # KEYWORD: shutdown
 
 . /etc/rc.subr
