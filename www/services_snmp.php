@@ -161,13 +161,15 @@ function enable_change(enable_change) {
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("System location");?></td>
       <td width="78%" class="vtable">
-        <input name="location" type="text" class="formfld" id="location" size="40" value="<?=htmlspecialchars($pconfig['location']);?>">
+        <input name="location" type="text" class="formfld" id="location" size="40" value="<?=htmlspecialchars($pconfig['location']);?>"><br/>
+        <?=gettext("Location information, e.g. physical location of this system: 'Floor of building, Room xyz'.");?>
       </td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("System contact");?></td>
       <td width="78%" class="vtable">
-        <input name="contact" type="text" class="formfld" id="contact" size="40" value="<?=htmlspecialchars($pconfig['contact']);?>">
+        <input name="contact" type="text" class="formfld" id="contact" size="40" value="<?=htmlspecialchars($pconfig['contact']);?>"><br/>
+        <?=gettext("Contact information, e.g. name or email of the person responsible for this system: 'admin@email.address'.");?>
       </td>
     </tr>
     <tr>
@@ -231,7 +233,7 @@ function enable_change(enable_change) {
 			<td width="78%" class="vtable">
 				<input name="mibii" type="checkbox" id="mibii" value="yes" <?php if ($pconfig['mibii']) echo "checked"; ?>><?=gettext("MibII");?><br/>
 				<input name="netgraph" type="checkbox" id="netgraph" value="yes" <?php if ($pconfig['netgraph']) echo "checked"; ?>><?=gettext("Netgraph");?><br/>
-				<input name="hostres" type="checkbox" id="hostres" value="yes" <?php if ($pconfig['hostres']) echo "checked"; ?>><?=gettext("Host Resources");?>
+				<input name="hostres" type="checkbox" id="hostres" value="yes" <?php if ($pconfig['hostres']) echo "checked"; ?>><?=gettext("Host resources");?>
 			</td>
 		</tr>
     <tr>
