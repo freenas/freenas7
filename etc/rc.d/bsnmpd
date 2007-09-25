@@ -26,12 +26,21 @@ command_args="-c ${snmpd_config} -p ${pidfile}"
 
 create_conf()
 {
+	# Get some system informations.
+	hw_machine=`/sbin/sysctl -n hw.machine`
+	hw_model=`/sbin/sysctl -n hw.model`
+	hw_clockrate=`/sbin/sysctl -n hw.clockrate`
+	kern_ostype=`/sbin/sysctl -n kern.ostype`
+	kern_osrelease=`/sbin/sysctl -n kern.osrelease`
+	kern_osrevision=`/sbin/sysctl -n kern.osrevision`
+
 	/usr/local/bin/xml sel -t -m "//snmpd" \
 		-o "# Set some common variables" -n \
 		-v "concat('host := ',//system/hostname,'.',//system/domain)" -n \
 		-v "concat('location := &quot;',location,'&quot;')" -n \
 		-v "concat('contact := &quot;',contact,'&quot;')" -n \
 		-o "system := 1 # FreeBSD" -n \
+		-o "description := &quot;Hardware: ${hw_machine} ${hw_model} running at ${hw_clockrate} Software: ${kern_ostype} ${kern_osrelease} (revision ${kern_osrevision})&quot;" -n \
 		-v "concat('read := &quot;',read,'&quot;')" -n \
 		-i "count(trapenable) > 0" \
 			-n \
@@ -68,8 +77,10 @@ create_conf()
 		-o "sysContact = \$(contact)" -n \
 		-o "sysLocation = \$(location)" -n \
 		-o "sysObjectId = 1.3.6.1.4.1.12325.1.1.2.1.\$(system)" -n \
+		-o "sysDescr = \$(description)" -n \
 		-n \
 		-o "snmpEnableAuthenTraps = 2" -n \
+		-n \
 		-i "count(modules/mibii) > 0" \
 			-o "# Load MIB-2 module" -n \
 			-o "begemotSnmpdModulePath.&quot;mibII&quot; = &quot;/usr/lib/snmp_mibII.so&quot;" -n \
@@ -77,6 +88,8 @@ create_conf()
 		-i "count(modules/netgraph) > 0" \
 			-o "# Netgraph module" -n \
 			-o "begemotSnmpdModulePath.&quot;netgraph&quot; = &quot;/usr/lib/snmp_netgraph.so&quot;" -n \
+			-o "%netgraph" -n \
+			-o "begemotNgControlNodeName = &quot;snmpd&quot;" -n \
 		-b \
 		-i "count(modules/hostres) > 0" \
 			-o "# Host resources module snmp_hostres(3)." -n \

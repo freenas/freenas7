@@ -55,7 +55,7 @@ if ($_POST) {
 	/* input validation */
 	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "location contact read");
-		$reqdfieldsn = array(gettext("System location"),gettext("System contact"),gettext("Community"));
+		$reqdfieldsn = array(gettext("Location"),gettext("Contact"),gettext("Community"));
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
@@ -159,14 +159,14 @@ function enable_change(enable_change) {
 			</td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("System location");?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Location");?></td>
       <td width="78%" class="vtable">
         <input name="location" type="text" class="formfld" id="location" size="40" value="<?=htmlspecialchars($pconfig['location']);?>"><br/>
         <?=gettext("Location information, e.g. physical location of this system: 'Floor of building, Room xyz'.");?>
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("System contact");?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("Contact");?></td>
       <td width="78%" class="vtable">
         <input name="contact" type="text" class="formfld" id="contact" size="40" value="<?=htmlspecialchars($pconfig['contact']);?>"><br/>
         <?=gettext("Contact information, e.g. name or email of the person responsible for this system: 'admin@email.address'.");?>
@@ -179,7 +179,6 @@ function enable_change(enable_change) {
         <?=gettext("In most cases, 'public' is used here.");?>
 			</td>
     </tr>
-
 		<tr>
 			<td colspan="2" class="list" height="12"></td>
 		</tr>

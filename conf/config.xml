@@ -333,8 +333,10 @@
 		<trap></trap>
 		<modules>
 			<mibii/>
+			<!--
 			<netgraph/>
 			<hostres/>
+			-->
 		</modules>
 	</snmpd>
 	<diag>

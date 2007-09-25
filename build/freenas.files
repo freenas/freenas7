@@ -455,12 +455,12 @@ usr/share/locale/UTF-8/*
 
 ####### contents of /usr/lib
 # PAM libraries
-usr/lib/pam_*.so.3
+usr/lib/pam_*.so.*
 
 # SNMP modules
-usr/lib/snmp_hostres.so*
-usr/lib/snmp_mibII.so*
-usr/lib/snmp_netgraph.so*
+usr/lib/snmp_hostres.so.*:usr/lib/snmp_hostres.so
+usr/lib/snmp_mibII.so.*:usr/lib/snmp_mibII.so
+usr/lib/snmp_netgraph.so.*:usr/lib/snmp_netgraph.so
 
 ####### contents of /lib/geom
 # GEOM tools

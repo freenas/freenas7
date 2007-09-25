@@ -169,6 +169,7 @@ if ($_POST) {
 			$retval |= rc_exec_service("timezone");
  			$retval |= rc_update_service("msntp");
  			$retval |= rc_update_service("mdnsresponder");
+ 			$retval |= rc_update_service("bsnmpd");
 			config_unlock();
 		}
 
