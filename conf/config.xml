@@ -293,12 +293,6 @@
 	<nfs>
     <!-- <enable/> -->
 	</nfs>
-	<snmpd>
-		<!-- <enable/> -->
-		<syslocation></syslocation>
-		<syscontact></syscontact>
-		<rocommunity>public</rocommunity>
-	</snmpd>
 	<diag>
 		<ipv6nat>
 			<!-- <enable/> -->
