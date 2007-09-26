@@ -290,7 +290,8 @@ function enable_change(enable_change) {
       <td width="22%" valign="top" class="vncell"><?=gettext("Passive IP address"); ?></td>
       <td width="78%" class="vtable">
         <input name="pasv_address" type="text" class="formfld" id="pasv_address" size="20" value="<?=htmlspecialchars($pconfig['pasv_address']);?>">
-        <br><?=gettext("Use this option to override the IP address that FTP daemon will advertise in response to the PASV command."); ?></td>
+        <br><?=gettext("Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the server is behind a masquerading (NAT) box that doesn't properly handle stateful FTP masquerading, put the ip address of that box here. If you have a dynamic IP address, you can put the public host name of your gateway, that will be resolved every time a new client will connect.");?>
+			</td>
   	</tr>
   	<tr>
       <td width="22%" valign="top" class="vncellbg"><?=gettext("pasv_min_port"); ?></td>
