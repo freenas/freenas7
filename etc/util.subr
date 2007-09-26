@@ -96,3 +96,11 @@ is_validip()
 
 	return 1
 }
+
+# get_product_name
+# Get the product name.
+#	Return product name string.
+get_product_name()
+{
+	echo $(cat /etc/prd.name)
+}
