@@ -69,6 +69,7 @@ Bug fixs:
 - Fix bug in Mount Point WebGUI page when using file system 'CD/DVD'.
 - Fix bug when booting 'full' installation.
 - Cleanup /var/run during boot process, otherwise sysreboot.reqd won't be removed.
+- Fix bug in /etc/rc.d/afpd script. Thanks to fred0.
 
 FreeNAS 0.685RC1:
 -----------------
