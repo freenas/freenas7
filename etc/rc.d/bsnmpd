@@ -82,20 +82,31 @@ create_conf()
 		-o "snmpEnableAuthenTraps = 2" -n \
 		-n \
 		-i "count(modules/mibii) > 0" \
+			-o "#" -n \
 			-o "# Load MIB-2 module" -n \
+			-o "#" -n \
 			-o "begemotSnmpdModulePath.&quot;mibII&quot; = &quot;/usr/lib/snmp_mibII.so&quot;" -n \
+			-n \
 		-b \
 		-i "count(modules/netgraph) > 0" \
+			-o "#" -n \
 			-o "# Netgraph module" -n \
+			-o "#" -n \
 			-o "begemotSnmpdModulePath.&quot;netgraph&quot; = &quot;/usr/lib/snmp_netgraph.so&quot;" -n \
+			-n \
 			-o "%netgraph" -n \
 			-o "begemotNgControlNodeName = &quot;snmpd&quot;" -n \
+			-n \
 		-b \
 		-i "count(modules/hostres) > 0" \
+			-o "#" -n \
 			-o "# Host resources module snmp_hostres(3)." -n \
 			-o "# This requires the mibII module." -n \
+			-o "#" -n \
 			-o "begemotSnmpdModulePath.&quot;hostres&quot; = &quot;/usr/lib/snmp_hostres.so&quot;" -n \
+			-n \
 		-b \
+		-n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${snmpd_config}
 }
 
