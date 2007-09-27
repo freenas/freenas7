@@ -186,7 +186,7 @@ function enable_change(enable_change) {
       <td colspan="2" valign="top" class="optsect_t">
 				<table border="0" cellspacing="0" cellpadding="0" width="100%">
 				  <tr>
-						<td class="optsect_s"><strong><?=gettext("SNMP Traps");?></strong></td>
+						<td class="optsect_s"><strong><?=gettext("Traps");?></strong></td>
 						<td align="right" class="optsect_s">
 							<input name="trapenable" type="checkbox" value="yes" <?php if ($pconfig['trapenable']) echo "checked"; ?> onClick="enable_change(this)"> <strong><?=gettext("Enable");?></strong>
 						</td>
