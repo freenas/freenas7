@@ -482,6 +482,7 @@ etc/rc.subr
 etc/network.subr
 etc/pccard_ether
 etc/gettytab
+etc/usbd.conf
 
 ####### contents of /etc/defaults
 etc/defaults/devfs.rules
