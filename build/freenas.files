@@ -247,6 +247,9 @@ sbin/camcontrol
 # rcorder -- print a dependency ordering of interdependent files
 sbin/rcorder
 
+# md5, sha1, sha256, rmd160 -- calculate a message-digest fingerprint
+sbin/md5:sbin/sha1:sbin/sha256:sbin/rmd160
+
 ####### contents of /usr/bin
 
 # awk - pattern-directed scanning and processing language
