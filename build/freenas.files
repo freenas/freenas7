@@ -250,6 +250,9 @@ sbin/rcorder
 # md5, sha1, sha256, rmd160 -- calculate a message-digest fingerprint
 sbin/md5:sbin/sha1:sbin/sha256:sbin/rmd160
 
+# geli -- control utility for cryptographic GEOM class
+sbin/geli
+
 ####### contents of /usr/bin
 
 # awk - pattern-directed scanning and processing language
@@ -479,6 +482,10 @@ boot/mbr
 boot/boot
 boot/boot0
 boot/boot1
+
+####### contents of /boot/kernel
+# Kernel modules
+boot/kernel/geom_eli.ko
 
 ####### contents of /etc
 etc/rc.subr
