@@ -22,6 +22,7 @@ Majors changes:
 - Refactor 'System/Advanced/Startup'. Renamed to 'System/Advanced/Command scripts'. Add ability to define
   scripts executed before system shutdown.
 - Add SNMP service support.
+- Change GELI disk encryption code. Use keyfiles instead of passphrases.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.

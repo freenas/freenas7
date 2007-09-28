@@ -3,7 +3,7 @@
 /*
 	disks_crypt_tools.php
 	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
@@ -61,11 +61,11 @@ if ($_POST) {
 	unset($do_action);
 
 	/* input validation */
-	$reqdfields = explode(" ", "fullname action");
+	$reqdfields = explode(" ", "disk action");
 	$reqdfieldsn = array(gettext("Disk Name"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	$mount_fullname=$_POST['fullname']."s1";
+	$mount_fullname=$_POST['disk']."s1";
 	if (disks_ismounted_ex($mount_fullname,"fullname") && ($_POST['action']== "detach")) {
 		$input_errors[] = gettext("This encrypted disk is mounted, umount it before trying to detach it.");
 	}
@@ -78,7 +78,8 @@ if ($_POST) {
 	if(!$input_errors)
 	{
 		$do_action = true;
-		$gelifullname = $_POST['fullname'];
+		$id = array_search_ex($_GET['disk'], $a_geli, "fullname");
+  	$disk = $a_geli[$id];
 		$passphrase = $_POST['password'];
 		$action = $_POST['action'];
 	}
@@ -86,15 +87,14 @@ if ($_POST) {
 if(!isset($do_action))
 {
 	$do_action = false;
-	$gelifullname = '';
+	$disk = array();
 	$passphrase = '';
 	$action = '';
 }
 
 if(isset($_GET['disk'])) {
-  $disk = $_GET['disk'];
-  $id = array_search_ex($disk, $a_geli, "name");
-  $gelifullname = $a_geli[$id]['fullname'];
+  $id = array_search_ex($_GET['disk'], $a_geli, "name");
+  $disk = $a_geli[$id];
 }
 if(isset($_GET['action'])) {
   $action = $_GET['action'];
@@ -119,7 +119,7 @@ if(isset($_GET['action'])) {
           <tr>
             <td valign="top" class="vncellreq"><?=gettext("Encrypted disk name");?></td>
             <td class="vtable">
-              <select name="fullname" class="formfld" id="fullname">
+              <select name="disk" class="formfld" id="disk">
                 <?php foreach ($a_geli as $geliv): ?>
 									<option value="<?=$geliv['fullname'];?>" <?php if ($geliv['name'] == $geliname) echo "selected";?>><?php echo htmlspecialchars($geliv['name'] . ": " .$geliv['size'] . " (" . $geliv['desc'] . ")");?>
                 <?php endforeach; ?>
@@ -160,7 +160,7 @@ if(isset($_GET['action'])) {
 
 							/* Search if a mount point use this geli disk. */
 							$id = false ;
-		          $id = array_search_ex($gelifullname, $a_mount, "mdisk");
+		          $id = array_search_ex($disk['fullname'], $a_mount, "mdisk");
 		          /* if found, get the mount data */
 							if ($id !== false) {
 								$mount = $a_mount[$id];
@@ -169,12 +169,13 @@ if(isset($_GET['action'])) {
               switch($action)
               {
                 case "attach":
-                  echo(sprintf(gettext("Attaching device '%s'."), $gelifullname) . "<br>");
-                  $result = disks_geli_attach($gelifullname,$passphrase);
+                  echo(sprintf(gettext("Attaching device '%s'."), $disk) . "<br>");
+                  $result = disks_geli_attach($disk['name'], $passphrase, true);
                   break;
                 case "detach":
-                	echo(sprintf(gettext("Detaching device '%s'."), $gelifullname) . "<br>");
-                  $result = disks_geli_detach($gelifullname);
+                	echo(sprintf(gettext("Detaching device '%s'."), $disk) . "<br>");
+                  $result = disks_geli_detach($disk['fullname']);
+                  echo(((0 == $result) ? gettext("Done") : gettext("Failed")) . ".");
                   break;
                 case "list":
                 	system("/sbin/geli list");
@@ -183,9 +184,6 @@ if(isset($_GET['action'])) {
                 	system("/sbin/geli status");
                 	break;
               }
-
-              /* Display result */
-              echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
 
 							/* When attaching the disk, then also mount it. */
 							if ((0 == $result) && ("attach" === $action) && ($mount)) {

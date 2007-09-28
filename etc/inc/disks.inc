@@ -102,7 +102,7 @@ function disks_mount($mount)
 	$mountname = "/mnt/{$mount['sharename']}";
 
 	// Changing the PHP file creation mask to 0777
-	$oldumask = umask(0);  
+	$oldumask = umask(0);
 
 	// Create one directory for each device under /mnt.
 	if (! @mkdir($mountname, 0777)) {
@@ -987,6 +987,24 @@ function disks_raid_graid5_delete($raidname)
 	return 0;
 }
 
+// Initialize disk using geli.
+// Return 0 if successful, 1 if error
+function disks_geli_init($disk, $aalgo, $ealgo, $passphrase, $verbose = false)
+{
+	$param = "";
+	$result = 1;
+
+	// Add additional parameters.
+	if (true === $verbose) $param .= " -v";
+	if (0 !== strcmp($aalgo,"none")) $param .= " -a {$aalgo}";
+	if (!empty($ealgo)) $param .= " -e {$ealgo}";
+
+	// Init disk using encrypted passphrase as key.
+	system("/sbin/sha256 -q -s {$passphrase} | /sbin/geli init {$param} -P -K - {$disk}", $result);
+
+	return $result;
+}
+
 // Check the status of a geli encrypted disk
 // Return 0 if successful, 1 if error
 function disks_geli_check($gelifullname)
@@ -998,29 +1016,27 @@ function disks_geli_check($gelifullname)
 	return $result;
 }
 
-// Attach a geli encrypted disk
+// Attach a geli encrypted disk.
 // Return 0 if successful, 1 if error
-function disks_geli_attach($gelifullname,$passphrase,$verbose = false)
+function disks_geli_attach($disk, $passphrase, $verbose = false)
 {
+	$param = "";
 	$result = 1;
 
-	// Remove the 4 last character ".eli" of $gelifullanme
-	$gelifullname = rtrim($gelifullname,".eli");
+	// Add additional parameters.
+	if (true === $verbose) $param .= " -v";
 
-	if (false == $verbose) {
-		$result = mwexec("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli attach -t {$gelifullname}");
-	} else {
-		$result = mwexec("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli attach -t -v {$gelifullname}");
-	}
+	// Attach disk using encrypted passphrase as key.
+	system("/sbin/sha256 -q -s {$passphrase} | /sbin/geli attach -d {$param} -p -k - {$disk}", $result);
 
 	return $result;
 }
 
-// Detach a geli encrypted disk
+// Detach a geli encrypted disk.
 // Return 0 if successful, 1 if error
-function disks_geli_detach($gelifullname)
+function disks_geli_detach($disk)
 {
-	$result = mwexec("/sbin/geli detach {$gelifullname}");
+	$result = mwexec("/sbin/geli detach {$disk}");
 	return $result;
 }
 

@@ -299,19 +299,12 @@ if (!isset($do_crypt)) {
 							ob_end_flush();
 
 							// Initialize and encrypt the disk.
-							echo gettext("Encrypting... Please wait")."!\n";
-							if (0 == strcmp($aalgo,"none")) {
-								system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init -t -v -e {$ealgo} {$disk}");
-							}
-							else {
-								system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init -t -v -a {$aalgo} -e {$ealgo} {$disk}");
-							}
+							echo gettext("Encrypting... Please wait") . "!<br/>";
+							disks_geli_init($disk, $aalgo, $ealgo, $passphrase, true);
 
 							// Attach the disk.
-							echo(sprintf(gettext("Attaching device '%s'."), $disk) . "<br>");
-							$gelifullname = "{$disk}.eli";
-							$result = disks_geli_attach($gelifullname,$passphrase,true);
-							echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
+							echo(sprintf(gettext("Attaching device '%s'."), $disk) . "<br/>");
+							disks_geli_attach($disk, $passphrase, true);
 
 							echo('</pre>');
 						}
