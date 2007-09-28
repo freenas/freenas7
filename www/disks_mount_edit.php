@@ -346,8 +346,7 @@ function fstype_change() {
 						<td width="22%" valign="top" class="vncell"><?=gettext("Read only") ;?></td>
 			      <td width="78%" class="vtable">
 							<input name="readonly" type="checkbox" id="readonly" value="yes" <?php if ($pconfig['readonly']) echo "checked"; ?>>
-							<?=gettext("The file system is to be mounted read-only.");?><br/>
-							<?=gettext("Mount the file system read-only (even the super-user may not write it).");?><br/>
+							<?=gettext("Mount the file system read-only (even the super-user may not write it).");?>
 			      </td>
 			    </tr>
 			    <tr>
