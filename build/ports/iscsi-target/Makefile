@@ -1,5 +1,5 @@
 PORTNAME=			iscsi-target
-PORTVERSION=	20070815
+PORTVERSION=	20070925
 CATEGORIES=		net
 COMMENT=			Implementation of userland ISCSI target (derived from NetBSD)
 MAINTAINER=		votdev@gmx.de
