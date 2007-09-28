@@ -467,7 +467,7 @@ usr/lib/snmp_netgraph.so.*:usr/lib/snmp_netgraph.so
 
 ####### contents of /lib/geom
 # GEOM tools
-lib/geom/*
+lib/geom/geom_*.so
 
 ####### contents of /etc/ssh
 # moduli -- system moduli file
@@ -479,10 +479,6 @@ boot/mbr
 boot/boot
 boot/boot0
 boot/boot1
-
-####### contents of /boot/kernel
-# Kernel modules
-boot/kernel/geom_eli.ko
 
 ####### contents of /etc
 etc/rc.subr
