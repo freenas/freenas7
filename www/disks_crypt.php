@@ -162,7 +162,7 @@ if ($_GET['act'] == "del")
 			header("Location: disks_crypt.php");
 			exit;
 		} else {
-			$errormsg[] = gettext("This volume must be detached before to be killed");
+			$errormsg[] = gettext("The volume must be detached before it can be deleted.");
 		}
 	}
 }

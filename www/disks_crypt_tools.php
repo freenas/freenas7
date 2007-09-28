@@ -169,13 +169,17 @@ if(isset($_GET['action'])) {
               switch($action)
               {
                 case "attach":
-                  echo(sprintf(gettext("Attaching device '%s'."), $disk) . "<br>");
+                  echo(sprintf(gettext("Attaching device '%s'."), $disk['fullname']) . "<br>");
                   $result = disks_geli_attach($disk['name'], $passphrase, true);
                   break;
                 case "detach":
-                	echo(sprintf(gettext("Detaching device '%s'."), $disk) . "<br>");
-                  $result = disks_geli_detach($disk['fullname']);
-                  echo(((0 == $result) ? gettext("Done") : gettext("Failed")) . ".");
+                	echo(sprintf(gettext("Detaching device '%s'."), $disk['fullname']) . "<br>");
+                	if (disks_ismounted($mount)) {
+                		echo(gettext("Device is mounted, umount it first before detaching.") ."<br>");
+									} else {
+										$result = disks_geli_detach($disk['fullname']);
+                  	echo(((0 == $result) ? gettext("Done") : gettext("Failed")) . ".");
+									}
                   break;
                 case "list":
                 	system("/sbin/geli list");

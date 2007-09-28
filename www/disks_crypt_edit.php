@@ -313,8 +313,14 @@ if (!isset($do_crypt)) {
 					</tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
-			        </strong></span><?=gettext("This will erase ALL data on your disk!<br>Using Data integrity will reduce size of available storage and also reduce speed.");?></span>
+			      <td width="78%">
+							<span class="vexpl">
+								<span class="red"><strong><?=gettext("Warning");?>:<br></strong></span>
+								<?=gettext("This will erase ALL data on your disk!");?>
+								/*
+								<br><?=gettext("Using data integrity will reduce size of available storage and also reduce speed.");?>
+								*/
+							</span>
 			      </td>
 			    </tr>
 			  </table>
