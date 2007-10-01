@@ -165,7 +165,7 @@ function action_change() {
 							<input name="oldpassphrase" type="password" class="formfld" id="oldpassphrase" size="20">
 						</td>
 					</tr>
-          <tr id="passphrase_tr">
+          <tr id="passphrase_tr" style="display: none">
 						<td width="22%" valign="top" class="vncellreq"><?=htmlentities(gettext("Passphrase"));?></td>
 						<td width="78%" class="vtable">
 							<input name="passphrase" type="password" class="formfld" id="passphrase" size="20">
