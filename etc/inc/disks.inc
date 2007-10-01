@@ -1048,7 +1048,7 @@ function disks_geli_detach($provider, $verbose = false)
 	return $result;
 }
 
-// Kill (destroy) a geli encrypted volume
+// Kill (destroy) a geli encrypted volume.
 // Return 0 if successful, 1 if error
 function disks_geli_kill($provider)
 {
@@ -1071,6 +1071,34 @@ function disks_geli_detach_all()
 
 	foreach($a_geli as $geli) {
 		$result |= disks_geli_detach($geli['name']) ;
+	}
+
+	return $result;
+}
+
+// Change or setup (if not yet initialized) selected key.
+// The passphrase can always be changed: for an attached provider and
+// a detached provider. When a provider is attached, the user does not
+// have to provide an old passphrase.
+// provider: Name of the provider, e.g. da0, ad3, ...
+// oldpassphrase: Old passphrase
+// passphrase: New passphrase
+// verbose: Display additional informations
+// Return 0 if successful, 1 if error
+function disks_geli_setkey($provider, $oldpassphrase, $passphrase, $verbose = false)
+{
+	$param = "-t";
+	$result = 1;
+
+	// Add additional parameters.
+	if (true == $verbose) $param .= " -v";
+
+	if (0 == disks_geli_check("/dev/{$provider}.eli")) {
+		// Provider is already attached.
+		system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli setkey {$param} {$provider} 2>&1", $result);
+	} else {
+		// Provider has not already been attached.
+		system("(/bin/echo {$oldpassphrase}; /bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli setkey {$param} {$provider} 2>&1", $result);
 	}
 
 	return $result;

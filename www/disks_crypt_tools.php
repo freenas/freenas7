@@ -153,9 +153,7 @@ function action_change() {
 							<select name="action" class="formfld" id="action" onchange="action_change()">
                 <option value="attach" <?php if ($pconfig['action'] == "attach") echo "selected"; ?>>attach</option>
                 <option value="detach" <?php if ($pconfig['action'] == "detach") echo "selected"; ?>>detach</option>
-                <!-- Is not suppored at the moment. Only useable when using keys.
 								<option value="setkey" <?php if ($pconfig['action'] == "setkey") echo "selected"; ?>>setkey</option>
-								-->
                 <option value="list" <?php if ($pconfig['action'] == "list") echo "selected"; ?>>list</option>
                 <option value="status" <?php if ($pconfig['action'] == "status") echo "selected"; ?>>status</option>
 							</select>
@@ -225,7 +223,7 @@ function action_change() {
 									// Get GEOM Eli configuration.
 									$id = array_search_ex($pconfig['disk'], $a_geli, "fullname");
 									$geli = $a_geli[$id];
-									disks_geli_setkey($geli['name'], $pconfig['oldpassphrase'], $pconfig['passphrase']);
+									disks_geli_setkey($geli['name'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
                 	break;
 
                 case "list":
