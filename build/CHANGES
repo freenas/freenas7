@@ -58,7 +58,8 @@ Majors changes:
 - Upgrade fusefs-ntfs to 1.913.
 - Upgrade lighttpd to 1.4.18.
 - Upgrade netbsd-iscsi (iscsi-target) to 20070925.
-- Refactor GEOM-Eli implementation + WebGUI. Now it is possible to add existing encrypted disks.
+- Refactor GEOM-Eli implementation + WebGUI. Now it is possible to add existing encrypted disks
+  and change passwords for a encrypted disk.
 
 Minors changes:
 - Display used and available disk space as tooltip for mount points on system information (index.php) page.
