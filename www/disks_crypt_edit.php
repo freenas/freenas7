@@ -92,7 +92,7 @@ if ($config['system']['webgui']['protocol'] == "http") {
 if ($_POST) {
 	unset($input_errors);
 	unset($errormsg);
-	unset($do_crypt);
+	unset($do_action);
 
 	$pconfig = $_POST;
 
@@ -115,8 +115,9 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$do_crypt = true;
+		$do_action = true;
 		$geli = array();
+		$init = $_POST['init'] ? true : false;
 		$disk = $_POST['disk'];
 		//Remove aalgo value: doesn't work
 		// $aalgo = $geli['aalgo'] = $_POST['aalgo'];
@@ -130,10 +131,10 @@ if ($_POST) {
 		/* Check if disk is mounted. */
 		if(disks_ismounted_ex($disk,"fullname")) {
 			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
-			$do_crypt = false;
+			$do_action = false;
 		}
 
-		if ($do_crypt) {
+		if ($do_action) {
 			/* Get the id of the disk array entry. */
 			$NotFound = 1;
 			$id = array_search_ex($disk, $a_disk, "fullname");
@@ -203,13 +204,14 @@ if ($_POST) {
 			}
 
 			$a_geli[] = $geli;
-			touch($d_gelidirty_path);
+
 			write_config();
 		}
 	}
 }
-if (!isset($do_crypt)) {
-	$do_crypt = false;
+if (!isset($do_action)) {
+	$do_action = false;
+	$init = false;
 	$disk = '';
 	$type = '';
 	$aalgo = '';
@@ -284,45 +286,41 @@ if (!isset($do_crypt)) {
 				      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)
 				    </td>
 					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Initialize");?></td>
+			      <td width="78%" class="vtable">
+							<input name="init" type="checkbox" id="init" value="yes" <?php if (true == $init) echo "checked"; ?>>
+							<?=gettext("Initialize and encrypt disk. This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk.");?>
+			      </td>
+			    </tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Init and encrypt disk");?>" onclick="return confirm('<?=gettext("Do you really want to initialize and encrypt this disk? All data will be lost!");?>')">
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
 			      </td>
 			    </tr>
 					<tr>
 						<td valign="top" colspan="2">
-						<? if ($do_crypt)
-						{
-							echo("<strong>".gettext("Disk initialization and encryption").":</strong>");
+						<? if ($do_action) {
+							echo("<strong>" . gettext("Command output:") . "</strong>");
 							echo('<pre>');
 							ob_end_flush();
 
-							// Initialize and encrypt the disk.
-							echo gettext("Encrypting... Please wait") . "!<br/>";
-							disks_geli_init($disk, $aalgo, $ealgo, $passphrase, true);
+							if (true == $init) {
+								// Initialize and encrypt the disk.
+								echo gettext("Encrypting... Please wait") . "!<br/>";
+								disks_geli_init($disk, $aalgo, $ealgo, $passphrase, true);
+							}
 
 							// Attach the disk.
-							echo(sprintf(gettext("Attaching device '%s'."), $disk) . "<br/>");
-							disks_geli_attach($disk, $passphrase, true);
+							echo(sprintf(gettext("Attaching provider '%s'."), $geli['name']) . "<br/>");
+							disks_geli_attach($geli['name'], $passphrase, true);
 
 							echo('</pre>');
 						}
 						?>
 						</td>
 					</tr>
-			    <tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-							<span class="vexpl">
-								<span class="red"><strong><?=gettext("Warning");?>:<br></strong></span>
-								<?=gettext("This will erase ALL data on your disk!");?>
-								/*
-								<br><?=gettext("Using data integrity will reduce size of available storage and also reduce speed.");?>
-								*/
-							</span>
-			      </td>
-			    </tr>
 			  </table>
 			</form>
 		</td>

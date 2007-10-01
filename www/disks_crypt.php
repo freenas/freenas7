@@ -48,9 +48,7 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			/*config_lock();
-			config_unlock();
-			*/
+			// Nothing to do here at the moment.
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
@@ -59,6 +57,7 @@ if ($_POST) {
 		}
 	}
 }
+
 if ($_GET['act'] == "del")
 {
 	if ($a_geli[$_GET['id']]) {
@@ -158,7 +157,7 @@ if ($_GET['act'] == "del")
 			// Del the geli volume on the config file
 			unset($a_geli[$_GET['id']]);
 			write_config();
-			touch($d_gelidirty_path);
+
 			header("Location: disks_crypt.php");
 			exit;
 		} else {
@@ -166,6 +165,7 @@ if ($_GET['act'] == "del")
 		}
 	}
 }
+
 if ($_GET['act'] == "ret")
 {
 	if ($a_mount[$_GET['id']]) {
@@ -222,6 +222,7 @@ if ($_GET['act'] == "ret")
               ?>&nbsp;
             </td>
             <td valign="middle" nowrap class="list">
+							<a href="disks_crypt_tools.php?disk=<?=$geli['fullname'];?>&action=setkey"><img src="e.gif" title="Change password" width="17" height="17" border="0"></a>&nbsp;
               <a href="disks_crypt.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this encrypted volume? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Kill encrypted volume"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>

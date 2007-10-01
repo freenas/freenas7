@@ -58,7 +58,7 @@ if ($config['system']['webgui']['protocol'] == "http") {
 
 if ($_POST) {
 	unset($input_errors);
-	unset($do_action);
+	unset($pconfig['do_action']);
 
 	/* input validation */
 	$reqdfields = explode(" ", "disk action");
@@ -70,37 +70,57 @@ if ($_POST) {
 		$input_errors[] = gettext("This encrypted disk is mounted, umount it before trying to detach it.");
 	}
 
-	/* Check for a password if 'attach' mode */
-	if ($_POST['password']=="" && $_POST['action']== "attach") 	{
-			$input_errors[] = gettext("You must use a passphrase to attach an encrypted disk.");
+	/* Check for a passphrase if 'attach' mode */
+	if (empty($_POST['passphrase']) && $_POST['action'] === "attach") {
+		$input_errors[] = gettext("You must use a passphrase to attach an encrypted disk.");
 	}
 
-	if(!$input_errors)
-	{
-		$do_action = true;
-		$id = array_search_ex($_GET['disk'], $a_geli, "fullname");
-  	$disk = $a_geli[$id];
-		$passphrase = $_POST['password'];
-		$action = $_POST['action'];
+	if(!$input_errors) {
+		$pconfig['do_action'] = true;
+		$pconfig['action'] = $_POST['action'];
+		$pconfig['disk'] = $_POST['disk'];
+		$pconfig['oldpassphrase'] = $_POST['oldpassphrase'];
+		$pconfig['passphrase'] = $_POST['passphrase'];
 	}
 }
-if(!isset($do_action))
-{
-	$do_action = false;
-	$disk = array();
-	$passphrase = '';
-	$action = '';
+
+if(!isset($pconfig['do_action'])) {
+	$pconfig['do_action'] = false;
+	$pconfig['action'] = "";
+	$pconfig['disk'] = "";
+	$pconfig['oldpassphrase'] = "";
+	$pconfig['passphrase'] = "";
 }
 
 if(isset($_GET['disk'])) {
-  $id = array_search_ex($_GET['disk'], $a_geli, "name");
-  $disk = $a_geli[$id];
+  $pconfig['disk'] = $_GET['disk'];
 }
+
 if(isset($_GET['action'])) {
-  $action = $_GET['action'];
+  $pconfig['action'] = $_GET['action'];
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function action_change() {
+	switch(document.iform.action.value) {
+		case "attach":
+			showElementById('passphrase_tr','show');
+			showElementById('oldpassphrase_tr','hide');
+			break;
+		case "setkey":
+			showElementById('passphrase_tr','show');
+			showElementById('oldpassphrase_tr','show');
+			break;
+		default:
+			showElementById('passphrase_tr','hide');
+			showElementById('oldpassphrase_tr','hide');
+			break;
+	}
+}
+//-->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
@@ -121,29 +141,36 @@ if(isset($_GET['action'])) {
             <td class="vtable">
               <select name="disk" class="formfld" id="disk">
                 <?php foreach ($a_geli as $geliv): ?>
-									<option value="<?=$geliv['fullname'];?>" <?php if ($geliv['name'] == $geliname) echo "selected";?>><?php echo htmlspecialchars($geliv['name'] . ": " .$geliv['size'] . " (" . $geliv['desc'] . ")");?>
+								<option value="<?=$geliv['fullname'];?>" <?php if ($geliv['fullname'] === $pconfig['disk']) echo "selected";?>><?php echo htmlspecialchars($geliv['name'] . ": " .$geliv['size'] . " (" . $geliv['desc'] . ")");?>
                 <?php endforeach; ?>
                 </option>
               </select>
             </td>
       		</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=htmlentities(gettext("Passphrase"));?></td>
-						<td width="78%" class="vtable">
-							<input name="password" type="password" class="formfld" id="password" size="20">
-						</td>
-					</tr>
           <tr>
             <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
             <td class="vtable">
-							<select name="action" class="formfld" id="action">
-                <option value="attach" <?php if ($action == "attach") echo "selected"; ?>>attach</option>
-                <option value="detach" <?php if ($action == "detach") echo "selected"; ?>>detach</option>
-                <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
-                <option value="status" <?php if ($action == "status") echo "selected"; ?>>status</option>
+							<select name="action" class="formfld" id="action" onchange="action_change()">
+                <option value="attach" <?php if ($pconfig['action'] == "attach") echo "selected"; ?>>attach</option>
+                <option value="detach" <?php if ($pconfig['action'] == "detach") echo "selected"; ?>>detach</option>
+                <option value="setkey" <?php if ($pconfig['action'] == "setkey") echo "selected"; ?>>setkey</option>
+                <option value="list" <?php if ($pconfig['action'] == "list") echo "selected"; ?>>list</option>
+                <option value="status" <?php if ($pconfig['action'] == "status") echo "selected"; ?>>status</option>
 							</select>
             </td>
           </tr>
+          <tr id="oldpassphrase_tr">
+						<td width="22%" valign="top" class="vncellreq"><?=htmlentities(gettext("Old passphrase"));?></td>
+						<td width="78%" class="vtable">
+							<input name="oldpassphrase" type="password" class="formfld" id="oldpassphrase" size="20">
+						</td>
+					</tr>
+          <tr id="passphrase_tr">
+						<td width="22%" valign="top" class="vncellreq"><?=htmlentities(gettext("Passphrase"));?></td>
+						<td width="78%" class="vtable">
+							<input name="passphrase" type="password" class="formfld" id="passphrase" size="20">
+						</td>
+					</tr>
   				<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
@@ -152,50 +179,61 @@ if(isset($_GET['action'])) {
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">
-    				<?php if($do_action)
-    				{
+    				<?php if ($pconfig['do_action']) {
     				  echo("<strong>" . gettext("Command output:") . "</strong><br>");
     					echo('<pre>');
     					ob_end_flush();
 
-							/* Search if a mount point use this geli disk. */
-							$id = false ;
-		          $id = array_search_ex($disk['fullname'], $a_mount, "mdisk");
-		          /* if found, get the mount data */
-							if ($id !== false) {
-								$mount = $a_mount[$id];
-							}
-
-              switch($action)
-              {
+              switch($pconfig['action']) {
                 case "attach":
-                  echo(sprintf(gettext("Attaching device '%s'."), $disk['fullname']) . "<br>");
-                  $result = disks_geli_attach($disk['name'], $passphrase, true);
-                  break;
                 case "detach":
-                	echo(sprintf(gettext("Detaching device '%s'."), $disk['fullname']) . "<br>");
-                	if (disks_ismounted($mount)) {
-                		echo(gettext("Device is mounted, umount it first before detaching.") ."<br>");
-									} else {
-										$result = disks_geli_detach($disk['fullname']);
-                  	echo(((0 == $result) ? gettext("Done") : gettext("Failed")) . ".");
+                	// Get GEOM Eli configuration.
+									$id = array_search_ex($pconfig['disk'], $a_geli, "fullname");
+									$geli = $a_geli[$id];
+
+									// Search if a mount point use this GEOM Eli disk.
+									$id = array_search_ex($geli['fullname'], $a_mount, "mdisk");
+									// If found, get the mount point configuration.
+									if ($id !== false) $mount = $a_mount[$id];
+
+									switch($pconfig['action']) {
+                		case "attach":
+ 		                  $result = disks_geli_attach($geli['name'], $pconfig['passphrase'], true);
+		                  // When attaching the disk, then also mount it.
+											if ((0 == $result) && is_array($mount)) {
+												echo("<br>" . gettext("Mounting device.") . "<br>");
+												$result = disks_mount($mount);
+												echo((0 == $result) ? gettext("Successful.") : gettext("Failed."));
+											}
+		                  break;
+
+		                case "detach":
+		                	// Check if disk is mounted.
+		                	if (disks_ismounted($mount)) {
+		                		echo gettext("Device is mounted, umount it first before detaching.") ."<br>";
+											} else {
+												$result = disks_geli_detach($geli['name'], true);
+												echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
+											}
+		                  break;
 									}
                   break;
+
+								case "setkey":
+									// Get GEOM Eli configuration.
+									$id = array_search_ex($pconfig['disk'], $a_geli, "fullname");
+									$geli = $a_geli[$id];
+									disks_geli_setkey($geli['name'], $pconfig['oldpassphrase'], $pconfig['passphrase']);
+                	break;
+
                 case "list":
                 	system("/sbin/geli list");
                 	break;
+
                 case "status":
                 	system("/sbin/geli status");
                 	break;
               }
-
-							/* When attaching the disk, then also mount it. */
-							if ((0 == $result) && ("attach" === $action) && ($mount)) {
-								echo("<br>" . gettext("Mounting device.") . "<br>");
-								$result = disks_mount($mount);
-								/* Display result */
-								echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
-							}
 
 							echo('</pre>');
 						}
@@ -206,4 +244,9 @@ if(isset($_GET['action'])) {
     </form>
   </td></tr>
 </table>
+<script language="JavaScript">
+<!--
+action_change();
+//-->
+</script>
 <?php include("fend.inc");?>

@@ -987,20 +987,31 @@ function disks_raid_graid5_delete($raidname)
 	return 0;
 }
 
-// Initialize disk using geli.
+// Generate a key. 
+// Return key as string.
+function disks_geli_genkey($passphrase)
+{
+	exec("/sbin/sha256 -q -s {$passphrase}", $rawdata);
+	return $rawdata[0];
+}
+
+// Initialize provider which needs to be encrypted.
 // Return 0 if successful, 1 if error
-function disks_geli_init($disk, $aalgo, $ealgo, $passphrase, $verbose = false)
+function disks_geli_init($provider, $aalgo, $ealgo, $passphrase, $verbose = false)
 {
 	$param = "";
 	$result = 1;
 
 	// Add additional parameters.
-	if (true === $verbose) $param .= " -v";
+	if (true == $verbose) $param .= " -v";
 	if (0 !== strcmp($aalgo,"none")) $param .= " -a {$aalgo}";
 	if (!empty($ealgo)) $param .= " -e {$ealgo}";
 
+	// Create key.
+	$key = disks_geli_genkey($passphrase);
+
 	// Init disk using encrypted passphrase as key.
-	system("/sbin/sha256 -q -s {$passphrase} | /sbin/geli init {$param} -P -K - {$disk}", $result);
+	system("echo {$key} | /sbin/geli init {$param} -P -K - {$provider} 2>&1", $result);
 
 	return $result;
 }
@@ -1016,27 +1027,54 @@ function disks_geli_check($gelifullname)
 	return $result;
 }
 
-// Attach a geli encrypted disk.
+// Attach the given provider. The master key will be decrypted
+// using the given passphrase/keyfile and a new GEOM provider
+// will be created using the given provider's name with an ".eli"
+// suffix.
 // Return 0 if successful, 1 if error
-function disks_geli_attach($disk, $passphrase, $verbose = false)
+function disks_geli_attach($provider, $passphrase, $verbose = false)
 {
 	$param = "";
 	$result = 1;
 
 	// Add additional parameters.
-	if (true === $verbose) $param .= " -v";
+	if (true == $verbose) $param .= " -v";
+
+	// Create key.
+	$key = disks_geli_genkey($passphrase);
 
 	// Attach disk using encrypted passphrase as key.
-	system("/sbin/sha256 -q -s {$passphrase} | /sbin/geli attach -d {$param} -p -k - {$disk}", $result);
+	system("echo {$key} | /sbin/geli attach -d {$param} -p -k - {$provider} 2>&1", $result);
+
+	return $result;
+}
+
+// Detach the given providers, which means remove the devfs entry
+// and clear the keys from memory.
+// Return 0 if successful, 1 if error
+function disks_geli_detach($provider, $verbose = false)
+{
+	if (true == $verbose)
+		$result = system("/sbin/geli detach {$provider} 2>&1", $result);
+	else
+		$result = mwexec("/sbin/geli detach {$provider}");
 
 	return $result;
 }
 
 // Detach a geli encrypted disk.
 // Return 0 if successful, 1 if error
-function disks_geli_detach($disk)
+function disks_geli_setkey($provider, $oldpassphrase, $passphrase)
 {
-	$result = mwexec("/sbin/geli detach {$disk}");
+	// Create key.
+	$oldkey = disks_geli_genkey($oldpassphrase);
+	$key = disks_geli_genkey($passphrase);
+
+	mwexec("echo {$oldkey} > /tmp/passphrase.old");
+	mwexec("echo {$key} > /tmp/passphrase.new");
+	system("/sbin/geli setkey -v -p -P -k /tmp/passphrase.old -K /tmp/passphrase.new {$provider} 2>&1", $result);
+	mwexec("/bin/rm -f /tmp/passphrase.old /tmp/passphrase.new");
+
 	return $result;
 }
 
@@ -1052,17 +1090,17 @@ function disks_geli_kill($gelifullname)
 // Return 0 if successful, 1 if error
 function disks_geli_detach_all()
 {
-	global $g, $config;
+	global $config;
 
 	$result = 0;
 
 	if (!is_array($config['geli']['vdisk']))
-	$config['geli']['vdisk'] = array();
+		$config['geli']['vdisk'] = array();
 
 	$a_geli = &$config['geli']['vdisk'];
 
 	foreach($a_geli as $geli) {
-		$result |= disks_geli_detach($geli['fullname']) ;
+		$result |= disks_geli_detach($geli['name']) ;
 	}
 
 	return $result;
