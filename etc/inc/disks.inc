@@ -999,7 +999,7 @@ function disks_geli_genkey($passphrase)
 // Return 0 if successful, 1 if error
 function disks_geli_init($provider, $aalgo, $ealgo, $passphrase, $verbose = false)
 {
-	$param = "";
+	$param = "-t";
 	$result = 1;
 
 	// Add additional parameters.
@@ -1007,11 +1007,8 @@ function disks_geli_init($provider, $aalgo, $ealgo, $passphrase, $verbose = fals
 	if (0 !== strcmp($aalgo,"none")) $param .= " -a {$aalgo}";
 	if (!empty($ealgo)) $param .= " -e {$ealgo}";
 
-	// Create key.
-	$key = disks_geli_genkey($passphrase);
-
-	// Init disk using encrypted passphrase as key.
-	system("echo {$key} | /sbin/geli init {$param} -P -K - {$provider} 2>&1", $result);
+	// Init disk.
+	system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init {$param} {$provider} 2>&1", $result);
 
 	return $result;
 }
@@ -1034,17 +1031,14 @@ function disks_geli_check($gelifullname)
 // Return 0 if successful, 1 if error
 function disks_geli_attach($provider, $passphrase, $verbose = false)
 {
-	$param = "";
+	$param = "-d -t";
 	$result = 1;
 
 	// Add additional parameters.
 	if (true == $verbose) $param .= " -v";
 
-	// Create key.
-	$key = disks_geli_genkey($passphrase);
-
-	// Attach disk using encrypted passphrase as key.
-	system("echo {$key} | /sbin/geli attach -d {$param} -p -k - {$provider} 2>&1", $result);
+	// Attach disk.
+	system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli attach {$param} {$provider} 2>&1", $result);
 
 	return $result;
 }
@@ -1080,9 +1074,9 @@ function disks_geli_setkey($provider, $oldpassphrase, $passphrase)
 
 // Kill (destroy) a geli encrypted volume
 // Return 0 if successful, 1 if error
-function disks_geli_kill($gelifullname)
+function disks_geli_kill($provider)
 {
-	$result=mwexec("/sbin/geli kill {$gelifullname}");
+	$result = mwexec("/sbin/geli kill {$provider}");
 	return $result;
 }
 
