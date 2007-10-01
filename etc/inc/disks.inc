@@ -984,6 +984,24 @@ function disks_raid_graid5_delete($raidname)
 	return 0;
 }
 
+// Initialize provider which needs to be encrypted.
+// Return 0 if successful, 1 if error
+function disks_geli_init($provider, $aalgo, $ealgo, $passphrase, $verbose = false)
+{
+	$param = "-t";
+	$result = 1;
+
+	// Add additional parameters.
+	if (true == $verbose) $param .= " -v";
+	if (0 !== strcmp($aalgo,"none")) $param .= " -a {$aalgo}";
+	if (!empty($ealgo)) $param .= " -e {$ealgo}";
+
+	// Init disk.
+	system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init {$param} {$provider} 2>&1", $result);
+
+	return $result;
+}
+
 // Check the status of a geli encrypted disk
 // Return 0 if successful, 1 if error
 function disks_geli_check($gelifullname)
@@ -995,37 +1013,43 @@ function disks_geli_check($gelifullname)
 	return $result;
 }
 
-// Attach a geli encrypted disk
+// Attach the given provider. The master key will be decrypted
+// using the given passphrase/keyfile and a new GEOM provider
+// will be created using the given provider's name with an ".eli"
+// suffix.
 // Return 0 if successful, 1 if error
-function disks_geli_attach($gelifullname,$passphrase,$verbose = false)
+function disks_geli_attach($provider, $passphrase, $verbose = false)
 {
+	$param = "-d -t";
 	$result = 1;
 
-	// Remove the 4 last character ".eli" of $gelifullanme
-	$gelifullname = rtrim($gelifullname,".eli");
+	// Add additional parameters.
+	if (true == $verbose) $param .= " -v";
 
-	if (false == $verbose) {
-		$result = mwexec("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli attach -t {$gelifullname}");
-	} else {
-		$result = mwexec("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli attach -t -v {$gelifullname}");
-	}
+	// Attach disk.
+	system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli attach {$param} {$provider} 2>&1", $result);
 
 	return $result;
 }
 
-// Detach a geli encrypted disk
+// Detach the given providers, which means remove the devfs entry
+// and clear the keys from memory.
 // Return 0 if successful, 1 if error
-function disks_geli_detach($gelifullname)
+function disks_geli_detach($provider, $verbose = false)
 {
-	$result = mwexec("/sbin/geli detach {$gelifullname}");
+	if (true == $verbose)
+		$result = system("/sbin/geli detach {$provider} 2>&1", $result);
+	else
+		$result = mwexec("/sbin/geli detach {$provider}");
+
 	return $result;
 }
 
 // Kill (destroy) a geli encrypted volume
 // Return 0 if successful, 1 if error
-function disks_geli_kill($gelifullname)
+function disks_geli_kill($provider)
 {
-	$result=mwexec("/sbin/geli kill {$gelifullname}");
+	$result = mwexec("/sbin/geli kill {$provider}");
 	return $result;
 }
 
