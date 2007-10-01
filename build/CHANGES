@@ -22,7 +22,6 @@ Majors changes:
 - Refactor 'System/Advanced/Startup'. Renamed to 'System/Advanced/Command scripts'. Add ability to define
   scripts executed before system shutdown.
 - Add SNMP service support.
-- Change GELI disk encryption code. Use keyfiles instead of passphrases.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
@@ -59,6 +58,7 @@ Majors changes:
 - Upgrade fusefs-ntfs to 1.913.
 - Upgrade lighttpd to 1.4.18.
 - Upgrade netbsd-iscsi (iscsi-target) to 20070925.
+- Refactor GEOM-Eli implementation + WebGUI. Now it is possible to add existing encrypted disks.
 
 Minors changes:
 - Display used and available disk space as tooltip for mount points on system information (index.php) page.
