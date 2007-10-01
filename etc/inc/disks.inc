@@ -987,14 +987,6 @@ function disks_raid_graid5_delete($raidname)
 	return 0;
 }
 
-// Generate a key. 
-// Return key as string.
-function disks_geli_genkey($passphrase)
-{
-	exec("/sbin/sha256 -q -s {$passphrase}", $rawdata);
-	return $rawdata[0];
-}
-
 // Initialize provider which needs to be encrypted.
 // Return 0 if successful, 1 if error
 function disks_geli_init($provider, $aalgo, $ealgo, $passphrase, $verbose = false)
@@ -1052,22 +1044,6 @@ function disks_geli_detach($provider, $verbose = false)
 		$result = system("/sbin/geli detach {$provider} 2>&1", $result);
 	else
 		$result = mwexec("/sbin/geli detach {$provider}");
-
-	return $result;
-}
-
-// Detach a geli encrypted disk.
-// Return 0 if successful, 1 if error
-function disks_geli_setkey($provider, $oldpassphrase, $passphrase)
-{
-	// Create key.
-	$oldkey = disks_geli_genkey($oldpassphrase);
-	$key = disks_geli_genkey($passphrase);
-
-	mwexec("echo {$oldkey} > /tmp/passphrase.old");
-	mwexec("echo {$key} > /tmp/passphrase.new");
-	system("/sbin/geli setkey -v -p -P -k /tmp/passphrase.old -K /tmp/passphrase.new {$provider} 2>&1", $result);
-	mwexec("/bin/rm -f /tmp/passphrase.old /tmp/passphrase.new");
 
 	return $result;
 }
