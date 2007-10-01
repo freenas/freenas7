@@ -153,13 +153,15 @@ function action_change() {
 							<select name="action" class="formfld" id="action" onchange="action_change()">
                 <option value="attach" <?php if ($pconfig['action'] == "attach") echo "selected"; ?>>attach</option>
                 <option value="detach" <?php if ($pconfig['action'] == "detach") echo "selected"; ?>>detach</option>
-                <option value="setkey" <?php if ($pconfig['action'] == "setkey") echo "selected"; ?>>setkey</option>
+                <!-- Is not suppored at the moment. Only useable when using keys.
+								<option value="setkey" <?php if ($pconfig['action'] == "setkey") echo "selected"; ?>>setkey</option>
+								-->
                 <option value="list" <?php if ($pconfig['action'] == "list") echo "selected"; ?>>list</option>
                 <option value="status" <?php if ($pconfig['action'] == "status") echo "selected"; ?>>status</option>
 							</select>
             </td>
           </tr>
-          <tr id="oldpassphrase_tr">
+          <tr id="oldpassphrase_tr" style="display: none">
 						<td width="22%" valign="top" class="vncellreq"><?=htmlentities(gettext("Old passphrase"));?></td>
 						<td width="78%" class="vtable">
 							<input name="oldpassphrase" type="password" class="formfld" id="oldpassphrase" size="20">

@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Create"));
+$pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Add"));
 
 if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
