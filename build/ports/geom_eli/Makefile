@@ -1,7 +1,7 @@
 PORTNAME=			geom_eli
 PORTVERSION=	1.0
 PORTREVISION=	0
-PORTEPOCH=		3
+PORTEPOCH=		4
 CATEGORIES=		sysutils
 COMMENT=			GEOM Eli filesystem encryption
 MAINTAINER=		votdev@gmx.de
@@ -19,11 +19,7 @@ do-build:
 	@${MAKE} -C ${WRKSRC}
 
 do-install:
-	# Install kernel module.
-	@${CP} -pv ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/geom/geom_eli/geom_eli.ko ${FREENAS_ROOTFS}/boot/kernel
-
 	# Install application.
-	@${LN} -f -v -s /sbin/geom ${FREENAS_ROOTFS}/sbin/geli
 	@${CP} -pv /usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
 
 pre-clean:
