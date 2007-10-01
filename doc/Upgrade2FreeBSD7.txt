@@ -1,5 +1,6 @@
 The following has to be done when upgrading to FreeBSD 7.0:
 
+- Update GEOM Eli sources (STDIN patch).
 - Update/Adapt rc.d scripts (there are new scripts in FreeBSD)
 - Update /build/kernel-config/source-supfile
 	*default release=cvs tag=RELENG_7
