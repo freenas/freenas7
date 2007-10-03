@@ -10,7 +10,7 @@ DISTNAME=						php-${PORTVERSION:S/.r/RC/}
 DISTFILES=					${DISTNAME}${EXTRACT_SUFX}:release
 USE_BZIP2=					yes
 
-USE_AUTOTOOLS=		autoconf:259
+USE_AUTOTOOLS=		autoconf:261
 USE_GETOPT_LONG=	yes
 USE_GNOME=				libxml2
 
