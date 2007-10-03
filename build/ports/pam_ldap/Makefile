@@ -1,5 +1,5 @@
 PORTNAME=			pam_ldap
-PORTVERSION=	1.0
+PORTVERSION=	1.8.2
 CATEGORIES=		security
 COMMENT=			A pam module for authenticating with LDAP
 MAINTAINER=		votdev@gmx.de
