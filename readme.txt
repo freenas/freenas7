@@ -90,6 +90,7 @@ New config:
 			<name>xxx</name>
 			<devicename>xxx</devicename> // Device name, e.g. /dev/stripe/RAID0, /dev/da0.eli or /dev/da1.eli
 			<type>gvinum|gmirror|gconcat|gstripe|graid5|geli</type> // Type of virtual disk
+			<fstype>ufs|ufsgpt|ext2|msdos|...</fstype>
 			// Additional attributes, depending on 'type'. They are only added for the specific type.
 			// geli:
 			<aalgo>none</aalgo>
