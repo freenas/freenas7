@@ -253,6 +253,8 @@ if ($_POST) {
 				/* Set new filesystem type. */
  				$a_gvinum[$id]['fstype'] = $type;
 				$NotFound = 0;
+			} else {
+				$id = array_search_ex($disk, $a_geli, "fullname");
 			}
 			
 			/* geli */
