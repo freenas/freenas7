@@ -8,7 +8,10 @@ BUILD_DEPENDS=	e2fsprogs:${PORTSDIR}/sysutils/e2fsprogs
 # No build is required for this port.
 NO_BUILD?=			1
 
-NLS=on
+post-patch:
+# Copy options file
+	@${MKDIR} -v /var/db/ports/${PORTNAME}
+	@${CP} -pv ${FILESDIR}/${PORTNAME}-options /var/db/ports/${PORTNAME}/options
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/e2fsck/e2fsck ${FREENAS_ROOTFS}/usr/local/sbin
