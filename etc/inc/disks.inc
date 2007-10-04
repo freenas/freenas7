@@ -1023,7 +1023,7 @@ function disks_geli_check($gelifullname)
 // Return 0 if successful, 1 if error
 function disks_geli_attach($provider, $passphrase, $verbose = false)
 {
-	$param = "-d -t";
+	$param = "-t";
 	$result = 1;
 
 	// Add additional parameters.
