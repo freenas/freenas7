@@ -361,7 +361,9 @@ function disks_ismounted_ex($var,$key)
 	foreach ($amountlist as $amountk => $amountv) {
 		switch ($key) {
 			case "mdisk":
-				// Must found the $val (e.g. ad0) in result $mdisk (e.g. ad0s1).
+			case "fullname":
+				// Must found the $val (e.g. ad0) in 'mdisk' (e.g. ad0s1).
+				// Must found the $val (e.g. /dev/ad1) in 'fullname' (e.g. /dev/ad1s1).
 				if (false !== strpos($amountv[$key], $var)) {
 					$result = 1;
 					break;
