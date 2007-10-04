@@ -226,6 +226,8 @@ build_kernel() {
 				# Copy kernel configuration.
 				cd /sys/${FREENAS_ARCH}/conf;
 				cp -f $FREENAS_SVNDIR/build/kernel-config/${FREENAS_KERNCONF} .;
+				# Clean object directory.
+				rm -f -r ${FREENAS_OBJDIRPREFIX};
 				# Compiling and compressing the kernel.
 				cd /usr/src;
 				env MAKEOBJDIRPREFIX=${FREENAS_OBJDIRPREFIX} make buildkernel KERNCONF=${FREENAS_KERNCONF};
