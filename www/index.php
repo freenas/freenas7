@@ -10,7 +10,7 @@
   Based on m0n0wall (http://m0n0.ch/wall)
   Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
   All rights reserved.
-	
+
   Redistribution and use in source and binary forms, with or without
   modification, are permitted provided that the following conditions are met:
 
@@ -37,7 +37,7 @@ require("guiconfig.inc");
 $pgtitle = array(get_product_name()." webGUI");
 $pgtitle_omit = true;
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr align="center" valign="top">
     <td height="10" colspan="2">&nbsp;</td>
@@ -63,7 +63,7 @@ $pgtitle_omit = true;
   <tr>
     <td width="25%" valign="top" class="vncellt"><?=gettext("OS Version");?></td>
     <td width="75%" class="listr">
-      <? 
+      <?
         exec("/sbin/sysctl -n kern.ostype", $ostype);
         exec("/sbin/sysctl -n kern.osrelease", $osrelease);
         exec("/sbin/sysctl -n kern.osrevision", $osrevision);
@@ -151,7 +151,7 @@ $pgtitle_omit = true;
 	    <table>
 	      <?php
 	      $diskuse = get_mount_use();
-	      if ($diskuse !=0) {
+	      if (is_array($diskuse) && (0 < count($diskuse))) {
 					foreach ($diskuse as $diskusek => $diskusev) {
 						echo "<tr><td>";
 						echo htmlspecialchars($diskusek);
@@ -176,4 +176,4 @@ $pgtitle_omit = true;
 		</td>
 	</tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
