@@ -159,7 +159,7 @@ if(isset($_GET['action'])) {
               }
 
               /* Display result */
-              echo((0 == $result) ? gettext("Successful") : gettext("Failed"));
+              echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
 
     					echo('</pre>');
     				}
