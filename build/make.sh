@@ -56,7 +56,7 @@ fi
 # filesystem image plus bootloader and kernel. ( 49254400 bytes => 25MB)
 if [ $FREENAS_ARCH="amd64" ] ; then
  echo "AMD arch detected, increasing the Size of MFS Root file"
- FREENAS_IMG_SIZE=51200
+ FREENAS_IMG_SIZE=57344
 else
  FREENAS_IMG_SIZE=51200
 fi

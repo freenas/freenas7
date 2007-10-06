@@ -32,6 +32,7 @@ Minors changes:
 - Add ability to define full path of Samba share, not only to choose from a list of defined
   mount points.
 - Add ability to mount a file system read-only.
+- Fix a bug when compiling FreeNAS on a FreeBSD 6.2 system with X11 installed
 
 Bug fixs:
 - Add missing link /etc/exports -> /var/etc/exports.
