@@ -4,7 +4,7 @@
 # http://www.ultradesic.com
 # E-Mail Contact: minibsd@ultradesic.com
 #
-# Adapted for FreeNAS by Olivier Cochard-Labbé (http://www.freenas.org)
+# Adapted for FreeNAS by Olivier Cochard-Labbe (http://www.freenas.org)
 # Modified by Volker Theile (votdev@gmx.de)
 
 MINIBSD_DIR=${FREENAS_ROOTFS};
@@ -117,3 +117,5 @@ ln -s /var/etc/ldap.conf usr/local/etc/nss_ldap.conf
 ln -s /var/etc/ldap.conf etc/ldap.conf
 ln -s /var/etc/ldap.secret usr/local/etc/ldap.secret
 ln -s /var/etc/nsswitch.conf etc/nsswitch.conf
+#Patch needed when generating on FreeBSD with X11/xorg:
+ln -s /usr/local usr/X11R6
