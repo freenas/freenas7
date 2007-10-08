@@ -142,9 +142,9 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors);?>
-<?php if ($savemsg) print_info_box($savemsg);?>
 <form action="services_snmp.php" method="post" name="iform" id="iform">
+	<?php if ($input_errors) print_input_errors($input_errors);?>
+	<?php if ($savemsg) print_info_box($savemsg);?>
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
       <td colspan="2" valign="top" class="optsect_t">
