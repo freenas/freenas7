@@ -188,10 +188,10 @@ if ($_POST) {
 			    </tr>
 			    <tr>
 						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_device[$id]))?gettext("Save"):gettext("Add")?>">
-						<?php if (isset($id) && $a_iscsitarget_device[$id]): ?>
+						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_target[$id]))?gettext("Save"):gettext("Add")?>">
+						<?php if (isset($id) && $a_iscsitarget_target[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
-						<?php endif; ?>
+						<?php endif;?>
 						</td>
 					</tr>
 					<tr>
