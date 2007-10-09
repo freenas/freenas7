@@ -96,6 +96,8 @@ if ($_POST) {
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
+	var endis = !(document.iform.enable.checked || enable_change);
+
 	if (enable_change.name == "trapenable") {
 			if (enable_change.checked == true) {
 				document.iform.traphost.disabled = false;
@@ -106,38 +108,22 @@ function enable_change(enable_change) {
 				document.iform.trapport.disabled = true;
 				document.iform.trap.disabled = true;
 			}
-	}
+	} else {
+		document.iform.location.disabled = endis;
+		document.iform.contact.disabled = endis;
+		document.iform.read.disabled = endis;
+		document.iform.mibii.disabled = endis;
+		document.iform.netgraph.disabled = endis;
+		document.iform.hostres.disabled = endis;
+		document.iform.trapenable.disabled = endis;
 
-	if (document.iform.enable.checked == true) {
-		document.iform.location.disabled = false;
-		document.iform.contact.disabled = false;
-		document.iform.read.disabled = false;
-		document.iform.trapenable.disabled = false;
-
-		if (document.iform.trapenable.checked == true) {
-			document.iform.traphost.disabled = false;
-			document.iform.trapport.disabled = false;
-			document.iform.trap.disabled = false;
-		} else {
-			document.iform.traphost.disabled = true;
-			document.iform.trapport.disabled = true;
-			document.iform.trap.disabled = true;
+		if (document.iform.enable.checked == true) {
+			endis = !(document.iform.trapenable.checked || enable_change);
 		}
 
-		document.iform.mibii.disabled = false;
-		document.iform.netgraph.disabled = false;
-		document.iform.hostres.disabled = false;
-	} else {
-		document.iform.location.disabled = true;
-		document.iform.contact.disabled = true;
-		document.iform.read.disabled = true;
-		document.iform.trapenable.disabled = true;
-		document.iform.traphost.disabled = true;
-		document.iform.trapport.disabled = true;
-		document.iform.trap.disabled = true;
-		document.iform.mibii.disabled = true;
-		document.iform.netgraph.disabled = true;
-		document.iform.hostres.disabled = true;
+		document.iform.traphost.disabled = endis;
+		document.iform.trapport.disabled = endis;
+		document.iform.trap.disabled = endis;
 	}
 }
 //-->
@@ -152,7 +138,7 @@ function enable_change(enable_change) {
 				  <tr>
 						<td class="optsect_s"><strong><?=gettext("Simple Network Management Protocol");?></strong></td>
 						<td align="right" class="optsect_s">
-							<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(this)"> <strong><?=gettext("Enable");?></strong>
+							<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
 						</td>
 					</tr>
 				</table>
@@ -245,7 +231,7 @@ function enable_change(enable_change) {
 </form>
 <script language="JavaScript">
 <!--
-enable_change(this);
+enable_change(false);
 //-->
 </script>
 <?php include("fend.inc");?>
