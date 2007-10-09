@@ -60,8 +60,6 @@ if [ $FREENAS_ARCH == "amd64" ]; then
 else
 	FREENAS_IMG_SIZE=51200
 fi
-
-FREENAS_IMG_SIZE=51200
 # Media geometry, only relevant if bios doesn't understand LBA.
 FREENAS_IMG_SECTS=32
 FREENAS_IMG_HEADS=16
