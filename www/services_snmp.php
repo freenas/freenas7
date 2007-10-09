@@ -2,7 +2,7 @@
 <?php
 /*
 	services_snmp.php
-	part of m0n0wall (http://m0n0.ch/wall)
+	part of m0n0wall (http://m0n0.ch/wall) and pfSense (http://www.pfsense.org)
 
 	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
