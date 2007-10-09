@@ -832,7 +832,7 @@ function convert_config() {
 	/* Convert 2.5 -> 2.6 */
 	/* Remove useless //access/userid and //access/groupid. */
 	/* Remove useless //access/user/usergroup. */
-	/* Rename //access/user/usergroupid to //access/user/group. */ 
+	/* Rename //access/user/usergroupid to //access/user/group. */
 	if ($config['version'] === "2.5") {
 		for ($i = 0; isset($config['access']['user'][$i]); $i++) {
 			$config['access']['user'][$i]['primarygroup'] = $config['access']['user'][$i]['usergroupid'];
@@ -848,7 +848,7 @@ function convert_config() {
 	}
 
 	/* Convert 2.6 -> 2.7 */
-	/* Convert language setting. */ 
+	/* Convert language setting. */
 	if ($config['version'] === "2.6") {
 		$language = array(
 			"Bulgarian" => "bg",
@@ -926,6 +926,17 @@ function convert_config() {
 		unset($config['snmpd']['rocommunity']);
 
 		$config['version'] = "3.0";
+	}
+
+	/* Convert 3.0 -> 3.1 */
+	/* Append file name to path. */
+	if ($config['version'] === "3.0") {
+		for ($i = 0; isset($config['iscsitarget']['extent'][$i]); $i++) {
+			$extent = &$config['iscsitarget']['extent'][$i];
+			$extent['path'] = $extent['path'] . "/" . $extent['name'];
+		}
+
+		$config['version'] = "3.1";
 	}
 
 	write_config();

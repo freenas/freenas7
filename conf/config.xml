@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>3.0</version>
+	<version>3.1</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -169,7 +169,7 @@
 		<!--
 		<extent>
 			<name>xxx</name>
-			<path>xxx</path> // Directory where file is stored.
+			<path>xxx</path> // File path (/mnt/sharename/extent/extent0) or device name (/dev/ad1).
 			<size>xxx</size> // Size in MB.
 		</extent>
 		<device>

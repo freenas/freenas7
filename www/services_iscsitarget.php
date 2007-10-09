@@ -121,7 +121,7 @@ if ($_GET['act'] == "del") {
 				  <?php $i = 0; foreach($a_iscsitarget_extent as $extent): ?>
 	        <tr>
 	          <td class="listr"><?=htmlspecialchars($extent['name']);?>&nbsp;</td>
-						<td class="listr"><?php echo htmlspecialchars($extent['path'])."{$extent['name']}";?>&nbsp;</td>
+						<td class="listr"><?php echo htmlspecialchars($extent['path']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($extent['size']);?> MB&nbsp;</td>
 	          <td valign="middle" nowrap class="list">
 	          	<a href="services_iscsitarget_extent_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" width="17" height="17" border="0"></a>
