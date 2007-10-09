@@ -99,15 +99,11 @@ function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 
 	if (enable_change.name == "trapenable") {
-			if (enable_change.checked == true) {
-				document.iform.traphost.disabled = false;
-				document.iform.trapport.disabled = false;
-				document.iform.trap.disabled = false;
-			} else {
-				document.iform.traphost.disabled = true;
-				document.iform.trapport.disabled = true;
-				document.iform.trap.disabled = true;
-			}
+		endis = !enable_change.checked;
+
+		document.iform.traphost.disabled = endis;
+		document.iform.trapport.disabled = endis;
+		document.iform.trap.disabled = endis;
 	} else {
 		document.iform.location.disabled = endis;
 		document.iform.contact.disabled = endis;
