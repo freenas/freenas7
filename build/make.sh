@@ -45,20 +45,20 @@ FREENAS_MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
 # Size in MB of the MFS Root filesystem that will include all FreeBSD binary
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
-if [ $FREENAS_ARCH="amd64" ] ; then
- echo "AMD arch detected, increasing the Size of MFS Root file"
- FREENAS_MFSROOT_SIZE="50"
+if [ $FREENAS_ARCH == "amd64" ]; then
+	echo "AMD arch detected, increasing the Size of MFS Root file"
+	FREENAS_MFSROOT_SIZE="50"
 else
-  FREENAS_MFSROOT_SIZE="48"
+	FREENAS_MFSROOT_SIZE="48"
 fi
 
 # IMG media size in 512 bytes sectors. It includes the zipped MFS root
 # filesystem image plus bootloader and kernel. ( 49254400 bytes => 25MB)
-if [ $FREENAS_ARCH="amd64" ] ; then
- echo "AMD arch detected, increasing the Size of MFS Root file"
- FREENAS_IMG_SIZE=57344
+if [ $FREENAS_ARCH == "amd64" ]; then
+	echo "AMD arch detected, increasing the Size of MFS Root file"
+	FREENAS_IMG_SIZE=57344
 else
- FREENAS_IMG_SIZE=51200
+	FREENAS_IMG_SIZE=51200
 fi
 
 FREENAS_IMG_SIZE=51200
