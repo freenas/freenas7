@@ -7,13 +7,13 @@ Majors changes:
 - Add 'System/Packages' WebGUI page to administrate packages (only available in 'full' install mode).
 - Add email status report.
 - Add 'Status/Report' WebGUI page to administrate email status report.
+- Upgrade iSCSI Target to version 20070925.
 - Update 'iSCSI Target' WebGUI + services. Now it is possible to expand existing targets and define
-  RAID0 and RAID1 devices.
+  RAID0 and RAID1 devices. It is also possible to use disk devices as extents.
 - Refactor complete user/group management (code, services & WebGUI).
 - Add scheduled reboot feature.
 - Add 'System/Advanced/Cron' WebGUI to administrate additional cron jobs.
 - Add new languages: Slovenian, Portuguese, Polish, Hungarian and Norwegian Bokmal.
-- Upgrade iSCSI Target to version 20070815.
 - Add new SSH settings to WebGUI: Password authentication.
 - Add WOL patch for some NIC (http://stsp.name/wol/)
 - Add 'Hosts allow' and 'Hosts deny' settings on Samba shares WebGUI page.
