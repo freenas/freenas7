@@ -53,6 +53,7 @@ mkdir boot ;
 mkdir boot/kernel ;
 mkdir bin ;
 mkdir cf ;
+mkdir cf/conf ;
 mkdir ftmp ;
 mkdir conf.default ;
 mkdir dev ;
