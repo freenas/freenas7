@@ -56,28 +56,44 @@ if (is_booting()) {
 	/* check if there's already an fstab ('full' release booting?) */
 	if (!file_exists("{$g['etc_path']}/fstab")) {
 		if (stristr($g['platform'], "liveCD")) 	{
-			echo "Booting from liveCD: Looking for configuration file on floppy or USB\n";
-			/* Config is on floppy disk/USB stick for CD-ROM version */
+			echo "Booting from {$g['platform']}.\n";
+			echo "Looking for configuration file on floppy or USB:.";
+
+			// Config is on floppy disk/USB stick for CD-ROM version per default.
 			$cfgdevice = $cfgpartition = "fd0";
 			$cfgfstype = "msdos";
 
-			/* Check if there is a USB device available. */
-			if (ereg("da0", exec("/sbin/sysctl kern.disks")) == true) {
-				/* Try to mount device. */
-				if (mwexec("/sbin/mount -r -t msdos /dev/da0s1 {$g['cf_path']}") == 0) {
-					$cfgdevice = "da0";
-					$cfgpartition = $cfgdevice . "s1";
+			// Get all disks detected by the kernel.
+			$disks = explode(" ", exec("/sbin/sysctl kern.disks"));
+			foreach ($disks as $disk) {
+				echo ".";
 
-					/* Unmount device. */
-					mwexec("/sbin/umount -f /dev/{$cfgpartition}");
-				} else if (mwexec("/sbin/mount -r -t msdos /dev/da0 {$g['cf_path']}") == 0){
-					$cfgdevice = "da0";
-					$cfgpartition = $cfgdevice ;
+				// Only process USB (SCSI) devices.
+				if (FALSE === ereg("da[0-9]+", $disk))
+					continue;
 
-					/* Unmount device. */
+				$umount = false;
+
+				// Try to mount device.
+				if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk}s1 {$g['cf_path']}")) {
+					$cfgdevice = $disk;
+					$cfgpartition = "{$cfgdevice}s1";
+					$umount = true;
+				} else if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk} {$g['cf_path']}")) {
+					$cfgdevice = $disk;
+					$cfgpartition = $cfgdevice;
+					$umount = true;
+				}
+
+				// Umount device if necessary and exit foreach loop.
+				if (true == $umount) {
 					mwexec("/sbin/umount -f /dev/{$cfgpartition}");
+					break;
 				}
 			}
+
+			echo "\n";
+			echo "Using device=/dev/{$cfgpartition} type={$cfgfstype} to store configuration.\n";
 		} else {
 			/* probe kernel known disks until we find one with config.xml */
 			$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
@@ -94,7 +110,7 @@ if (is_booting()) {
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "s1";
 						$cfgfstype = "ufs";
-						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}\n";
+						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}.\n";
 					}
 
 					mwexec("/sbin/umount -f {$g['cf_path']}");
@@ -111,7 +127,7 @@ if (is_booting()) {
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "a";
 						$cfgfstype = "ufs";
-						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}\n";
+						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}.\n";
 					}
 
 					mwexec("/sbin/umount -f {$g['cf_path']}");
@@ -131,15 +147,13 @@ if (is_booting()) {
 				if (strstr($mountdisk, "md"))
 					continue;
 				/* Search on slice 1 for msdos OS */
-				if (mwexec("/sbin/mount -r -t msdos /dev/{$mountdisk}s1 {$g['cf_path']}") == 0)
-				{
-					if (file_exists("{$g['cf_conf_path']}/config.xml"))
-					{
+				if (mwexec("/sbin/mount -r -t msdos /dev/{$mountdisk}s1 {$g['cf_path']}") == 0) {
+					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 						/* found it */
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "s1";
 						$cfgfstype = "msdos";
-						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}\n";
+						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}.\n";
 					}
 
 					mwexec("/sbin/umount -f {$g['cf_path']}");
