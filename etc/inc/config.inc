@@ -146,9 +146,9 @@ if (is_booting()) {
 			echo <<<EOD
 
 *******************************************************************************
-* FATAL ERROR                                                                 *
-* The device that contains the configuration file (config.xml) could not be   *
-* found. {$productname} cannot continue booting.                                     *
+FATAL ERROR!
+The device that contains the configuration file (config.xml) could not be 
+found. {$productname} cannot continue booting.
 *******************************************************************************
 
 EOD;
@@ -192,15 +192,20 @@ if (!$noparseconfig) {
 		if (!file_exists("{$g['conf_path']}/config.xml")) {
 			if (is_booting()) {
 				if (stristr($g['platform'], "liveCD")) {
-					/* try copying the default config. to the floppy */
+					// Try copying the default config.xml to the floppy disk/USB stick.
 					reset_factory_defaults();
 
+					echo "*******************************************************************************\n";
 					echo "No XML configuration file found - using factory defaults.\n";
 					echo "Make sure that the configuration floppy disk or USB with the config.xml\n";
 					echo "file is inserted. If it isn't, your configuration changes will be lost\n";
 					echo "on reboot.\n";
+					echo "*******************************************************************************\n";
 				} else {
+					echo "*******************************************************************************\n";
 					echo "XML configuration file not found. {$productname} cannot continue booting.\n";
+					echo "*******************************************************************************\n";
+
 					mwexec("/sbin/halt");
 					exit;
 				}
@@ -223,11 +228,11 @@ if (!$noparseconfig) {
 				echo <<<EOD
 
 *******************************************************************************
-* WARNING!                                                                    *
-* The current configuration has been created with a newer version of {$productname}  *
-* than this one! This can lead to serious misbehavior and even security       *
-* holes! You are urged to either upgrade to a newer version of {$productname} or     *
-* revert to the default configuration immediately!                            *
+WARNING!
+The current configuration has been created with a newer version of {$productname}
+than this one! This can lead to serious misbehavior and even security
+holes! You are urged to either upgrade to a newer version of {$productname} or
+revert to the default configuration immediately!
 *******************************************************************************
 
 EOD;
