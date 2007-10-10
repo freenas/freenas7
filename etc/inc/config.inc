@@ -93,7 +93,7 @@ if (is_booting()) {
 			}
 
 			echo "\n";
-			echo "Using device=/dev/{$cfgpartition} type={$cfgfstype} to store configuration.\n";
+			echo "Using device=/dev/{$cfgpartition} fstype={$cfgfstype} to store configuration.\n";
 		} else {
 			/* probe kernel known disks until we find one with config.xml */
 			$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
@@ -110,7 +110,7 @@ if (is_booting()) {
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "s1";
 						$cfgfstype = "ufs";
-						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}.\n";
+						echo "Found configuration on device=/dev/{$cfgpartition} fstype={$cfgfstype}.\n";
 					}
 
 					mwexec("/sbin/umount -f {$g['cf_path']}");
@@ -127,7 +127,7 @@ if (is_booting()) {
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "a";
 						$cfgfstype = "ufs";
-						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}.\n";
+						echo "Found configuration on device=/dev/{$cfgpartition} fstype={$cfgfstype}.\n";
 					}
 
 					mwexec("/sbin/umount -f {$g['cf_path']}");
@@ -153,7 +153,7 @@ if (is_booting()) {
 						$cfgdevice = $mountdisk;
 						$cfgpartition = $cfgdevice . "s1";
 						$cfgfstype = "msdos";
-						echo "Found configuration on device=/dev/{$cfgpartition} type={$cfgfstype}.\n";
+						echo "Found configuration on device=/dev/{$cfgpartition} fstype={$cfgfstype}.\n";
 					}
 
 					mwexec("/sbin/umount -f {$g['cf_path']}");
