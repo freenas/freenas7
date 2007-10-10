@@ -55,117 +55,94 @@ if (is_booting()) {
 
 	/* check if there's already an fstab ('full' release booting?) */
 	if (!file_exists("{$g['etc_path']}/fstab")) {
-		if (stristr($g['platform'], "liveCD")) 	{
-			echo "Booting from {$g['platform']}.\n";
-			echo "Looking for configuration file on floppy or USB:.";
+		echo "Booting platform: {$g['platform']}\n";
+		echo "Looking for configuration file:";
 
-			// Config is on floppy disk/USB stick for CD-ROM version per default.
+		// Get list of kernel known disks.
+		$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
+		$found = false;
+
+		if (stristr($g['platform'], "liveCD")) {
+			// Config is on floppy disk/USB stick for LiveCD version per default.
 			$cfgdevice = $cfgpartition = "fd0";
 			$cfgfstype = "msdos";
 
-			// Get all disks detected by the kernel.
-			$disks = explode(" ", exec("/sbin/sysctl kern.disks"));
-			foreach ($disks as $disk) {
-				echo ".";
+			// Display progress...
+			echo " fd0";
 
-				// Only process USB (SCSI) devices.
-				if (FALSE === ereg("da[0-9]+", $disk))
+			// Check if there is any USB device that can be used.
+			foreach ($disks as $disk) {
+				// Skip non USB (SCSI) device. The filesystem type must be MSDOS.
+				if (FALSE === ereg("da[0-9]*", $disk))
 					continue;
 
-				$umount = false;
+				// Display progress...
+				echo " {$disk}";
 
 				// Try to mount device.
 				if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk}s1 {$g['cf_path']}")) {
 					$cfgdevice = $disk;
 					$cfgpartition = "{$cfgdevice}s1";
-					$umount = true;
+					$found = true;
 				} else if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk} {$g['cf_path']}")) {
 					$cfgdevice = $disk;
 					$cfgpartition = $cfgdevice;
-					$umount = true;
+					$found = true;
 				}
 
-				// Umount device if necessary and exit foreach loop.
-				if (true == $umount) {
+				// Unmount device if necessary and exit foreach loop.
+				if (true == $found) {
 					mwexec("/sbin/umount -f /dev/{$cfgpartition}");
 					break;
 				}
 			}
 
+			// Display device information that is used to store the configuration.
 			echo "\n";
 			echo "Using device=/dev/{$cfgpartition} fstype={$cfgfstype} to store configuration.\n";
 		} else {
-			/* probe kernel known disks until we find one with config.xml */
-			$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
-			foreach ($disks as $mountdisk) {
-				/* skip mfs mounted filesystems */
-				if (strstr($mountdisk, "md")) {
+			// Probe kernel known disks until we find one with config.xml.
+			foreach ($disks as $disk) {
+				// Skip mfs mounted filesystems.
+				if (TRUE === ereg("md[0-9]*", $disk))
 					continue;
-				}
 
-				/* Search on slice 1 for OS installed on disk with install script*/
-				if (mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$g['cf_path']}") == 0) 	{
+				// Display progress...
+				echo " {$disk}";
+
+				// Try to mount device.
+				if (0 == mwexec("/sbin/mount -r /dev/{$disk}s1 {$g['cf_path']}")) { // Search on slice 1 (UFS).
 					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
-						/* found it */
-						$cfgdevice = $mountdisk;
-						$cfgpartition = $cfgdevice . "s1";
+						$cfgdevice = $disk;
+						$cfgpartition = "{$cfgdevice}s1";
 						$cfgfstype = "ufs";
-						echo "Found configuration on device=/dev/{$cfgpartition} fstype={$cfgfstype}.\n";
+						$found = true;
 					}
-
-					mwexec("/sbin/umount -f {$g['cf_path']}");
-
-					if ($cfgdevice) {
-						break;
-					}
-				}
-
-				/* Search on partition 'a' for OS IMG image written on disk */
-				if (mwexec("/sbin/mount -r /dev/{$mountdisk}a {$g['cf_path']}") == 0) 	{
+				} else if (0 == mwexec("/sbin/mount -r /dev/{$disk}a {$g['cf_path']}")) { // Search on partition 'a'.
 					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
-						/* found it */
-						$cfgdevice = $mountdisk;
-						$cfgpartition = $cfgdevice . "a";
+						$cfgdevice = $disk;
+						$cfgpartition = "{$cfgdevice}a";
 						$cfgfstype = "ufs";
-						echo "Found configuration on device=/dev/{$cfgpartition} fstype={$cfgfstype}.\n";
-					}
-
-					mwexec("/sbin/umount -f {$g['cf_path']}");
-
-					if ($cfgdevice) {
-						break;
+						$found = true;
 					}
 				}
+
+				// Unmount device if necessary and exit foreach loop.
+				if (true == $found) {
+					mwexec("/sbin/umount -f {$g['cf_path']}");
+					break;
+				}
+			}
+
+			// Display device information where configuration is found.
+			echo "\n";
+			if (true == $found) {
+				echo "Found configuration on device=/dev/{$cfgpartition} fstype={$cfgfstype}.\n";
 			}
 		}
 
 		if (!$cfgdevice) {
-			/* no config found on ufs partitions, now search msdos partitions */
-			$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
-			foreach ($disks as $mountdisk) {
-				/* skip mfs mounted filesystems */
-				if (strstr($mountdisk, "md"))
-					continue;
-				/* Search on slice 1 for msdos OS */
-				if (mwexec("/sbin/mount -r -t msdos /dev/{$mountdisk}s1 {$g['cf_path']}") == 0) {
-					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
-						/* found it */
-						$cfgdevice = $mountdisk;
-						$cfgpartition = $cfgdevice . "s1";
-						$cfgfstype = "msdos";
-						echo "Found configuration on device=/dev/{$cfgpartition} fstype={$cfgfstype}.\n";
-					}
-
-					mwexec("/sbin/umount -f {$g['cf_path']}");
-
-					if ($cfgdevice)
-						break;
-				}
-			}
-		}
-
-		if (!$cfgdevice) {
-			/* no device found, print an error and die */
+			// No device found, print an error and die.
 			echo <<<EOD
 
 *******************************************************************************
@@ -180,24 +157,23 @@ EOD;
 			exit;
 		}
 
-		/* write device name to a file for rc.firmware */
+		// Write device name to a file (used by rc.firmware for example).
 		$fd = fopen("{$g['varetc_path']}/cfdevice", "w");
 		if ($fd) {
-			fwrite($fd, $cfgpartition . "\n");
+			fwrite($fd, "{$cfgpartition}\n");
 			fclose($fd);
 		}
 
-		/* write out an fstab */
+		// Write out an fstab.
 		$fd = fopen("{$g['etc_path']}/fstab", "w");
 		if ($fd) {
 			$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
-
 			fwrite($fd, $fstab);
 			fclose($fd);
 		}
 	}
 
-	/* mount all filesystems */
+	// Mount all filesystems.
 	mwexec("/sbin/mount -a");
 }
 
