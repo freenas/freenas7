@@ -195,16 +195,20 @@ if (!$noparseconfig) {
 					// Try copying the default config.xml to the floppy disk/USB stick.
 					reset_factory_defaults();
 
+					echo "\n";
 					echo "*******************************************************************************\n";
 					echo "No XML configuration file found - using factory defaults.\n";
 					echo "Make sure that the configuration floppy disk or USB with the config.xml\n";
 					echo "file is inserted. If it isn't, your configuration changes will be lost\n";
 					echo "on reboot.\n";
 					echo "*******************************************************************************\n";
+					echo "\n";
 				} else {
+					echo "\n";
 					echo "*******************************************************************************\n";
 					echo "XML configuration file not found. {$productname} cannot continue booting.\n";
 					echo "*******************************************************************************\n";
+					echo "\n";
 
 					mwexec("/sbin/halt");
 					exit;
