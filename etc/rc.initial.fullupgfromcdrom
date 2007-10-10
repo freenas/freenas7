@@ -124,7 +124,7 @@
 	echo "$cfgdevice\n";
 
 	do 	{
-		echo "\nIs this is correct ? (y/n): ";
+		echo "\nIs this is correct? (y/n): ";
 		$valid = chop(fgets($fp));
 		if ($valid === "n") {
 			exit(0);
