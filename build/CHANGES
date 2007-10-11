@@ -45,6 +45,7 @@ Minors changes:
 - Modified file permissions for config files to 0600.
 - Add commands /usr/bin/sort, /usr/bin/uniq, /usr/bin/dirname, /usr/bin/install and /usr/bin/tee.
 - Add Patch for new hardware rev of D-Link DGE-528T PCI card
+- Remove Samba 'ReadAhead' setting because this is not supported on FreeBSD.
 
 Bug fixs:
 - Fix bug in UPnP WebGUI page. Profile dropdown control is not disabled when service is disabled.
