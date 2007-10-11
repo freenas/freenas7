@@ -79,7 +79,7 @@ if (is_booting()) {
 				// Display progress...
 				echo " {$disk}";
 
-				// Try to mount device.
+				// Try to mount device using file system MSDOS (FAT16/32).
 				if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk}s1 {$g['cf_path']}")) {
 					$cfgdevice = $disk;
 					$cfgpartition = "{$cfgdevice}s1";
@@ -110,8 +110,8 @@ if (is_booting()) {
 				// Display progress...
 				echo " {$disk}";
 
-				// Try to mount device.
-				if (0 == mwexec("/sbin/mount -r /dev/{$disk}s1 {$g['cf_path']}")) { // Search on slice 1 (UFS).
+				// Try to mount device using file system UFS.
+				if (0 == mwexec("/sbin/mount -r /dev/{$disk}s1 {$g['cf_path']}")) { // Search on slice 1.
 					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 						$cfgdevice = $disk;
 						$cfgpartition = "{$cfgdevice}s1";
@@ -198,7 +198,7 @@ if (!$noparseconfig) {
 					echo "\n";
 					echo "*******************************************************************************\n";
 					echo "No XML configuration file found - using factory defaults.\n";
-					echo "Make sure that the configuration floppy disk or USB with the config.xml\n";
+					echo "Make sure that the configuration floppy disk or USB stick with the config.xml\n";
 					echo "file is inserted. If it isn't, your configuration changes will be lost\n";
 					echo "on reboot.\n";
 					echo "*******************************************************************************\n";
@@ -233,10 +233,10 @@ if (!$noparseconfig) {
 
 *******************************************************************************
 WARNING!
-The current configuration has been created with a newer version of {$productname}
-than this one! This can lead to serious misbehavior and even security
-holes! You are urged to either upgrade to a newer version of {$productname} or
-revert to the default configuration immediately!
+The current configuration has been created with a newer version of
+{$productname} than this one! This can lead to serious misbehavior and
+even security holes! You are urged to either upgrade to a newer version of
+{$productname} or revert to the default configuration immediately!
 *******************************************************************************
 
 EOD;
