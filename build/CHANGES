@@ -22,6 +22,7 @@ Majors changes:
 - Refactor 'System/Advanced/Startup'. Renamed to 'System/Advanced/Command scripts'. Add ability to define
   scripts executed before system shutdown.
 - Add SNMP service support.
+- Upgrade Samba to 3.0.26a
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.

@@ -96,6 +96,7 @@ if($_POST) {
 		$share['comment'] = $_POST['comment'];
 		$share['browseable'] = $_POST['browseable'] ? true : false;
 		$share['inheritpermissions'] = $_POST['inheritpermissions'] ? true : false;
+		$share['recyclebin'] = $_POST['recyclebin'] ? true : false;
 		$share['hostsallow'] = $_POST['hostsallow'];
 		$share['hostsdeny'] = $_POST['hostsdeny'];
 

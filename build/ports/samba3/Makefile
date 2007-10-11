@@ -26,9 +26,8 @@ AUTOCONF_ARGS=		-I${WRKSRC} -I${WRKSRC}/lib/replace
 
 WRKSRC=						${WRKDIR}/${DISTNAME}/source
 
-CONFIGURE_ARGS+=	--without-cups \
+CONFIGURE_ARGS+=	--disable-cups \
 									--with-ads \
-									--disable-cups \
 									--with-pam \
 									--with-ldapsam \
 									--with-winbind \
