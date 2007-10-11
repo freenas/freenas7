@@ -66,7 +66,6 @@ $pconfig['rcvbuf'] = $config['samba']['rcvbuf'];
 $pconfig['enable'] = isset($config['samba']['enable']);
 $pconfig['largereadwrite'] = isset($config['samba']['largereadwrite']);
 $pconfig['easupport'] = isset($config['samba']['easupport']);
-$pconfig['readahead'] = isset($config['samba']['readahead']);
 $pconfig['createmask'] = $config['samba']['createmask'];
 $pconfig['directorymask'] = $config['samba']['directorymask'];
 
@@ -109,7 +108,6 @@ if ($_POST) {
 		$config['samba']['rcvbuf'] = $_POST['rcvbuf'];
 		$config['samba']['largereadwrite'] = $_POST['largereadwrite'] ? true : false;
 		$config['samba']['easupport'] = $_POST['easupport'] ? true : false;
-		$config['samba']['readahead'] = $_POST['readahead'] ? true : false;
 		if (!empty($_POST['createmask']))
 			$config['samba']['createmask'] = $_POST['createmask'];
 		else
@@ -167,7 +165,6 @@ function enable_change(enable_change) {
 	document.iform.security.disabled = endis;
 	document.iform.largereadwrite.disabled = endis;
 	document.iform.easupport.disabled = endis;
-	document.iform.readahead.disabled = true;
 	document.iform.createmask.disabled = endis;
 	document.iform.directorymask.disabled = endis;
 }
@@ -365,14 +362,6 @@ function authentication_change() {
               <?=gettext("Use the new 64k streaming read and write varient SMB requests introduced with Windows 2000.");?></span>
             </td>
           </tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("ReadAhead");?></td>
-						<td width="78%" class="vtable">
-							<input name="readahead" type="checkbox" id="readahead" value="yes" <?php if ($pconfig['readahead']) echo "checked"; ?>>
-							<?=gettext("Enable pipe-lined read support");?><span class="vexpl"><br>
-							<?=gettext("Improved performance when transferring files via Vista client");?></span>
-						</td>
-					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("EA support");?></td>
 						<td width="78%" class="vtable">

@@ -190,9 +190,6 @@ create_conf()
 				-o "recycle:keeptree = yes" -n \
 				-o "recycle:versions = yes" -n \
 			-b \
-			-i "count(//samba/readahead) > 0" \
-				-o "vfs objects = readahead" -n \
-			-b \
 			-i "count(//afp/enable) > 0" \
 				-o "#vfs objects = netatalk" -n \
 			-b \

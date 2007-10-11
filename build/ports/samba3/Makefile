@@ -67,7 +67,6 @@ do-install:
 	@${CP} -pv ${WRKSRC}/po/*.* ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}
 	@${CP} -pv ${WRKSRC}/bin/recycle.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/netatalk.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
-	@${CP} -pv $(WRKSRC)/bin/readahead.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv ${WRKSRC}/bin/rid.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_smbpass.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}
