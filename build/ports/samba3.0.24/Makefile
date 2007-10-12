@@ -1,7 +1,7 @@
 PORTNAME=			samba
 PORTVERSION=	3.0.24
 PORTREVISION=	0
-PORTEPOCH=		1
+PORTEPOCH=		2
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
 MAINTAINER=		votdev@gmx.de
@@ -24,9 +24,8 @@ AUTOCONF_ARGS=		-I${WRKSRC} -I${WRKSRC}/lib/replace
 
 WRKSRC=						${WRKDIR}/${DISTNAME}/source
 
-CONFIGURE_ARGS+=	--without-cups \
+CONFIGURE_ARGS+=	--disable-cups \
 									--with-ads \
-									--disable-cups \
 									--with-pam \
 									--with-ldapsam \
 									--with-winbind \
@@ -41,7 +40,8 @@ CONFIGURE_ARGS+=	--without-cups \
 									--with-pammodulesdir="${SAMBA_LIBDIR}" \
 									--with-syslog \
 									--with-ldap \
-									--with-libiconv="${LOCALBASE}"
+									--with-libiconv="${LOCALBASE}" \
+									--with-sendfile-support
 #									--with-acl-support
 
 do-install:
