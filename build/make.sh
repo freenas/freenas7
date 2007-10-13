@@ -49,7 +49,7 @@ if [ $FREENAS_ARCH == "amd64" ]; then
 	echo "AMD arch detected, increasing the Size of MFS Root file"
 	FREENAS_MFSROOT_SIZE="50"
 else
-	FREENAS_MFSROOT_SIZE="48"
+	FREENAS_MFSROOT_SIZE="49"
 fi
 
 # IMG media size in 512 bytes sectors. It includes the zipped MFS root

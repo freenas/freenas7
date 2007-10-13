@@ -43,6 +43,12 @@ if (!is_array($config['samba'])) {
 	$config['samba'] = array();
 }
 
+#LDAP take priority over MS ActiveDirectory (FreeNAS choicee), then disable AD:
+if (!is_array($config['ad'])) {
+	$config['ad'] = array();
+}
+
+
 $pconfig['enable'] = isset($config['ldap']['enable']);
 $pconfig['hostname'] = $config['ldap']['hostname'];
 $pconfig['base'] = $config['ldap']['base'];
@@ -63,7 +69,7 @@ if ($_POST) {
 
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "hostname base binddn bindpw user_suffix password_suffix group_suffix"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("LDAP server IP"),gettext("Base DN"),gettext("DN to bind"),gettext("Password for DN"),gettext("User suffix"),gettext("Password suffix"),gettext("Group suffix")));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("LDAP server name or IP"),gettext("Base DN"),gettext("DN to bind"),gettext("Password for DN"),gettext("User suffix"),gettext("Password suffix"),gettext("Group suffix")));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -84,6 +90,13 @@ if ($_POST) {
 		$config['ldap']['group_suffix'] = $_POST['group_suffix'];
 		$config['ldap']['pam_password'] = $_POST['pam_password'];
 
+		// Disable AD
+		 if ($config['ldap']['enable'])
+                {
+                        $config['samba']['security'] = "user";
+			$config['ad']['enable'] = false ;
+                }
+
 		write_config();
 
 		$retval = 0;
@@ -92,6 +105,7 @@ if ($_POST) {
 			rc_exec_service("pam");
 			rc_exec_service("ldap");
 			rc_start_service("nsswitch");
+			rc_update_service("samba");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);

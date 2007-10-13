@@ -24,10 +24,12 @@ if configxml_isset //ldap/enable; then
 		-v "concat('uri ldap://',hostname)" -n \
 		-v "concat('base ',base)" -n \
 		-v "concat('rootbinddn ',binddn)" -n \
-		-v "concat('#nss_base_passwd ',password_suffix,'?one')" -n \
-		-v "concat('#nss_base_group ',group_suffix,'?one')" -n \
-		-v "concat('pam_password ',pam_password)" \
+		-v "concat('nss_base_passwd ',password_suffix,'?one')" -n \
+		-v "concat('nss_base_group ',group_suffix,'?one')" -n \
+		-v "concat('pam_password ',pam_password)" -n \
 		-o "pam_ldap_attribute	uid" -n \
+		-o "bind_policy soft" -n \
+		-o "bind_timelimit 5" \
 		${configxml_file} | /usr/local/bin/xml unesc > ${ldap_config}
 
 	echo "Generating ldap.secret."

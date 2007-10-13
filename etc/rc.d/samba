@@ -37,6 +37,15 @@ samba_piddir="${samba_piddir=/var/run}"
 configxml_isset //ad/enable
 ad_enable=$?
 
+# Check if 'LDAP' is enabled?
+configxml_isset //ldap/enable
+ldap_enable=$?
+
+# Disable AD if LDAP enabled:
+if [ 0 -eq ${ldap_enable} ]; then
+	ad_enable=1
+fi
+
 # Setup dependent variables
 if [ -n "${rcvar}" ] && checkyesno "${rcvar}"; then
     nmbd_enable="${nmbd_enable=YES}"
@@ -158,6 +167,18 @@ create_conf()
 		-i "//samba/security[. = 'user']" \
 			-o "passdb backend = smbpasswd" -n \
 		-b \
+		-i "count(//ldap/enable) > 0" \
+			-v "concat('passdb backend = ldapsam:ldap://',//ldap/hostname)" -n \
+			-v "concat('ldap admin dn = ',//ldap/binddn)" -n \
+			-v "concat('ldap suffix = ',//ldap/base)" -n \
+			-v "concat('ldap user suffix = ',//ldap/user_suffix)" -n \
+			-v "concat('ldap group suffix = ',//ldap/group_suffix)" -n \
+			-o "security = user" -n \
+			-o "ldap replication sleep = 1000" -n \
+			-o "ldap passwd sync = true" -n \
+			-o "ldapsam:trusted = true" -n \
+			-o "ldap ssl = no" -n \
+		-b \
 		-m "//samba/auxparam" \
 			-v "." -n \
 		-b \
@@ -259,6 +280,11 @@ samba_cmd() {
 			local _password=`configxml_get "//ad/admin_pass"`
 			/usr/local/bin/net rpc join -S ${_srvname} -U ${_username}%${_password}
 		fi
+ 		if [ 0 -eq ${ldap_enable} ]; then
+                        local _password=`configxml_get "//ldap/bindpw"`
+                        /usr/local/bin/smbpasswd -w ${_password}
+                fi
+
 	fi
 
 	# Apply to all the daemons

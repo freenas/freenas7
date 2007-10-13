@@ -79,6 +79,7 @@ fi
 	-o "account    required        pam_unix.so" -n \
 	-n -o "# session" -n \
 	-o "session    required        pam_permit.so" -n \
+	-o "session required /usr/local/lib/pam_mkhomedir.so" -n \
 	-n -o "# password" -n \
 	-i "count(//ad/enable) > 0" \
 		-o "password   sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass" -n \
@@ -111,7 +112,8 @@ fi
 	-o "account    required        pam_login_access.so" -n \
 	-o "account    required        pam_unix.so" -n \
 	-n -o "# session" -n \
-	-o "session    required        pam_permit.so" \
+	-o "session    required        pam_permit.so" -n \
+	-o "session required /usr/local/lib/pam_mkhomedir.so" -n \
 	${configxml_file} | /usr/local/bin/xml unesc > ${ftp_config}
 
 # Create /var/etc/pam.d/login.
