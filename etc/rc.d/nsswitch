@@ -171,12 +171,10 @@ nsswitch_start()
 		convert_host_conf /etc/host.conf /etc/nsswitch.conf
 	fi
 
-	# Generate default nsswitch.conf if none exists
+	# Generate nsswitch.conf (replace the old if allready exist)
 	#
-	if [ ! -f "/etc/nsswitch.conf" ]; then
-		echo 'Generating nsswitch.conf.'
-		generate_nsswitch_conf /etc/nsswitch.conf
-	fi
+	echo 'Generating nsswitch.conf.'
+	generate_nsswitch_conf /etc/nsswitch.conf
 
 	# Generate host.conf for compatibility
 	#

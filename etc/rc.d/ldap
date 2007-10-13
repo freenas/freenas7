@@ -21,12 +21,13 @@ ldap_secret=${ldap_secret:-"/var/etc/ldap.secret"}
 if configxml_isset //ldap/enable; then
 	echo "Generating ldap.conf."
 	/usr/local/bin/xml sel -t -m "//ldap" \
-		-v "concat('uri ldap://',host_ip)" -n \
+		-v "concat('uri ldap://',hostname)" -n \
 		-v "concat('base ',base)" -n \
 		-v "concat('rootbinddn ',binddn)" -n \
 		-v "concat('#nss_base_passwd ',password_suffix,'?one')" -n \
 		-v "concat('#nss_base_group ',group_suffix,'?one')" -n \
-		-v "concat('#pam_password ',pam_password)" \
+		-v "concat('pam_password ',pam_password)" \
+		-o "pam_ldap_attribute	uid" -n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${ldap_config}
 
 	echo "Generating ldap.secret."

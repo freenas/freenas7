@@ -44,7 +44,7 @@ if (!is_array($config['samba'])) {
 }
 
 $pconfig['enable'] = isset($config['ldap']['enable']);
-$pconfig['host_ip'] = $config['ldap']['host_ip'];
+$pconfig['hostname'] = $config['ldap']['hostname'];
 $pconfig['base'] = $config['ldap']['base'];
 $pconfig['binddn'] = $config['ldap']['binddn'];
 $pconfig['bindpw2'] = $pconfig['bindpw'] = $config['ldap']['bindpw'];
@@ -62,15 +62,11 @@ if ($_POST) {
 	$reqdfieldsn = array();
 
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "host_ip base binddn bindpw user_suffix password_suffix group_suffix"));
+		$reqdfields = array_merge($reqdfields, explode(" ", "hostname base binddn bindpw user_suffix password_suffix group_suffix"));
 		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("LDAP server IP"),gettext("Base DN"),gettext("DN to bind"),gettext("Password for DN"),gettext("User suffix"),gettext("Password suffix"),gettext("Group suffix")));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-	if ($_POST['enable'] && !is_ipaddr($_POST['host_ip'])){
-  	$input_errors[] = gettext("A valid IP address must be specified.");
-  }
 
   if (($_POST['bindpw'] != $_POST['bindpw2'])) {
 		$input_errors[] = gettext("Password don't match.");
@@ -79,7 +75,7 @@ if ($_POST) {
 	if (!$input_errors)
 	{
 		$config['ldap']['enable'] = $_POST['enable'] ? true : false;
-		$config['ldap']['host_ip'] = $_POST['host_ip'];
+		$config['ldap']['hostname'] = $_POST['hostname'];
 		$config['ldap']['base'] = $_POST['base'];
 		$config['ldap']['binddn'] = $_POST['binddn'];
 		$config['ldap']['bindpw'] = $_POST['bindpw'];
@@ -109,7 +105,7 @@ function enable_change(enable_change) {
 	var endis;
 
 	endis = !(document.iform.enable.checked || enable_change);
-	document.iform.host_ip.disabled = endis;
+	document.iform.hostname.disabled = endis;
 	document.iform.base.disabled = endis;
 	document.iform.binddn.disabled = endis;
 	document.iform.bindpw.disabled = endis;
@@ -138,24 +134,24 @@ function enable_change(enable_change) {
 			</td>
     </tr>
 		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("LDAP server IP");?></td>
+      <td width="22%" valign="top" class="vncellreq"><?=gettext("LDAP server name");?></td>
       <td width="78%" class="vtable">
-        <input name="host_ip" type="text" class="formfld" id="host_ip" size="20" value="<?=htmlspecialchars($pconfig['host_ip']);?>">
-      	<br><?=gettext("IP address of LDAP server.");?>
+        <input name="hostname" type="text" class="formfld" id="hostname" size="20" value="<?=htmlspecialchars($pconfig['hostname']);?>">
+      	<br><?=gettext("Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory for TLS");?>
 			</td>
 		</tr>
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Base DN");?></td>
       <td width="78%" class="vtable">
         <input name="base" type="text" class="formfld" id="base" size="20" value="<?=htmlspecialchars($pconfig['base']);?>">
-      	<br><?=gettext("Specifies the default base DN to use when performing ldap operations. The base must be specified as a distinguished name in LDAP format.");?>
+      	<br><?=gettext("Specifies the default base DN to use when performing ldap operations, example: dc=example,dc=com");?>
 			</td>
 		</tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("DN to bind");?></td>
       <td width="78%" class="vtable">
         <input name="binddn" type="text" class="formfld" id="binddn" size="20" value="<?=htmlspecialchars($pconfig['binddn']);?>">
-				<br><?=gettext("Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a distinguished name in LDAP format.");?>
+				<br><?=gettext("Specifies the default bind DN to use when performing ldap operations, example:cn=administrator,dc=example,dc=com ");?>
 			</td>
 		</tr>
 		<tr>
@@ -172,7 +168,7 @@ function enable_change(enable_change) {
       <td width="22%" valign="top" class="vncellreq"><?=gettext("User suffix");?></td>
       <td width="78%" class="vtable">
         <input name="user_suffix" type="text" class="formfld" id="user_suffix" size="20" value="<?=htmlspecialchars($pconfig['user_suffix']);?>">
-      	<br><?=gettext("user_suffix.");?>
+      	<br><?=gettext("user_suffix, example: ou=users,dc=example,dc=com");?>
 			</td>
 		</tr>
 		<tr>
@@ -180,14 +176,14 @@ function enable_change(enable_change) {
 	      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password suffix");?></td>
 	      <td width="78%" class="vtable">
 	        <input name="password_suffix" type="text" class="formfld" id="password_suffix" size="20" value="<?=htmlspecialchars($pconfig['password_suffix']);?>">
-	      	<br><?=gettext("password_suffix.");?>
+	      	<br><?=gettext("password_suffix, example: ou=users,dc=example,dc=com");?>
 				</td>
 			</tr>
 		  <tr>
 	      <td width="22%" valign="top" class="vncellreq"><?=gettext("Group suffix");?></td>
 	      <td width="78%" class="vtable">
 	        <input name="group_suffix" type="text" class="formfld" id="group_suffix" size="20" value="<?=htmlspecialchars($pconfig['group_suffix']);?>">
-	      	<br><?=gettext("group_suffix.");?>
+	      	<br><?=gettext("group_suffix, example: ou=groups,dc=example,dc=com");?>
 				</td>
 			</tr>
 			<tr>
