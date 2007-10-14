@@ -5,6 +5,7 @@ FreeNAS 0.686b (unreleased):
 
 Majors changes:
 - Add 'System/Packages' WebGUI page to administrate packages (only available in 'full' install mode).
+- Add LDAP Authentication: Thanks to Andreas Neth and David Rush for their help
 - Add email status report.
 - Add 'Status/Report' WebGUI page to administrate email status report.
 - Upgrade iSCSI Target to version 20070925.

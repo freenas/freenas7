@@ -111,6 +111,7 @@ ln -s /var/etc/ssh/ssh_host_dsa_key etc/ssh/ssh_host_dsa_key
 ln -s /var/etc/pam.d/ftp etc/pam.d/ftp
 ln -s /var/etc/pam.d/ftp etc/pam.d/pure-ftpd
 ln -s /var/etc/pam.d/sshd etc/pam.d/sshd
+ln -s /var/etc/pam.d/netatalk etc/pam.d/netatalk
 ln -s /var/etc/pam.d/login etc/pam.d/login
 ln -s /var/etc/pam.d/system etc/pam.d/system
 ln -s /var/etc/ldap.conf usr/local/etc/ldap.conf
