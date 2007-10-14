@@ -31,10 +31,10 @@ create_conf()
 	/usr/local/bin/xml sel -t -m "//afp" \
 		-i "string-length(afpname) > 0" -v "concat('&quot;',afpname,'&quot;')" -b \
 		-i "string-length(afpname) = 0" -o "-" -b \
-		-o " -transall -uamlist " \
+		-o " -noddp -uamlist " \
 		-i "count(guest) > 0" -o "uams_guest.so" -b \
 		-i "count(local) > 0" -i "count(guest) > 0" -o "," -b -o "uams_clrtxt.so,uams_dhx.so" -b \
-		-o " -noddp -nosavepassword -defaultvol ${afpd_volumes_config} -systemvol /var/etc/AppleVolumes.default -uampath /etc/uams -guestname &quot;ftp&quot;" -n \
+		-o " -nosavepassword -defaultvol ${afpd_volumes_config} -systemvol /var/etc/AppleVolumes.default -uampath /etc/uams -guestname &quot;ftp&quot;" -n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_config}
 
 	# Generate '/var/etc/AppleVolumes.default'.
