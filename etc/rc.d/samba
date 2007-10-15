@@ -34,10 +34,12 @@ samba_lockdir="${samba_lockdir=/var/run}"
 samba_piddir="${samba_piddir=/var/run}"
 
 # Check if 'Active Directory' is enabled?
-ad_enable=`configxml_isset //ad/enable`
+configxml_isset //ad/enable
+ad_enable=$?
 
 # Check if 'LDAP' is enabled?
-ldap_enable=`configxml_isset //ldap/enable`
+configxml_isset //ldap/enable
+ldap_enable=$?
 
 # Disable AD if LDAP enabled:
 if [ 0 -eq ${ldap_enable} ]; then
