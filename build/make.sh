@@ -47,9 +47,9 @@ FREENAS_MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
 # to a RAM disk at FreeNAS startup.
 if [ $FREENAS_ARCH == "amd64" ]; then
 	echo "AMD arch detected, increasing the Size of MFS Root file"
-	FREENAS_MFSROOT_SIZE="50"
+	FREENAS_MFSROOT_SIZE="54"
 else
-	FREENAS_MFSROOT_SIZE="49"
+	FREENAS_MFSROOT_SIZE="50"
 fi
 
 # IMG media size in 512 bytes sectors. It includes the zipped MFS root

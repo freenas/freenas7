@@ -23,7 +23,8 @@ echo "      - Create MBR partition 2, using UFS, for DATA"
 echo "      - Easiest to customize and support plugin"
 echo "4) Upgrade existing installed 'embedded' release from CDROM"
 echo "5) Upgrade existing installed 'full' release from CDROM"
-echo "6) Return to main menu"
+echo "6) Upgrande and convert a 'full' release to an 'embedded'"
+echo "7) Return to main menu"
 echo
 read -p "Enter a number: " opmode
 
@@ -45,6 +46,9 @@ case ${opmode} in
 	/etc/rc.initial.fullupgfromcdrom
 	;;
 6)
+        /etc/rc.initial.full2emb
+        ;;
+7)
 	/etc/rc.initial
 	;;
 esac
