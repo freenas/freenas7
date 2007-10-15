@@ -171,7 +171,7 @@ nsswitch_start()
 		convert_host_conf /etc/host.conf /etc/nsswitch.conf
 	fi
 
-	# Generate nsswitch.conf (replace the old if allready exist)
+	# Generate nsswitch.conf (replace the old if already exist)
 	#
 	echo 'Generating nsswitch.conf.'
 	generate_nsswitch_conf /etc/nsswitch.conf

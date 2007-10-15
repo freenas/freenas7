@@ -48,7 +48,6 @@ if (!is_array($config['ad'])) {
 	$config['ad'] = array();
 }
 
-
 $pconfig['enable'] = isset($config['ldap']['enable']);
 $pconfig['hostname'] = $config['ldap']['hostname'];
 $pconfig['base'] = $config['ldap']['base'];
@@ -78,8 +77,7 @@ if ($_POST) {
 		$input_errors[] = gettext("Password don't match.");
 	}
 
-	if (!$input_errors)
-	{
+	if (!$input_errors) {
 		$config['ldap']['enable'] = $_POST['enable'] ? true : false;
 		$config['ldap']['hostname'] = $_POST['hostname'];
 		$config['ldap']['base'] = $_POST['base'];
@@ -91,11 +89,10 @@ if ($_POST) {
 		$config['ldap']['pam_password'] = $_POST['pam_password'];
 
 		// Disable AD
-		 if ($config['ldap']['enable'])
-                {
-                        $config['samba']['security'] = "user";
+		if ($config['ldap']['enable']) {
+			$config['samba']['security'] = "user";
 			$config['ad']['enable'] = false ;
-                }
+		}
 
 		write_config();
 
@@ -116,9 +113,7 @@ if ($_POST) {
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
-	var endis;
-
-	endis = !(document.iform.enable.checked || enable_change);
+	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.hostname.disabled = endis;
 	document.iform.base.disabled = endis;
 	document.iform.binddn.disabled = endis;
@@ -220,9 +215,9 @@ function enable_change(enable_change) {
       </td>
     </tr>
 		<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"><span class="red"><strong><?=gettext("Help Needed!");?>:</strong></span><br><?php echo sprintf( gettext("LDAP authentication feature is not implemented: If you know how to use PAM to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome."));?></td>
-					</tr>
+			<td width="22%" valign="top">&nbsp;</td>
+			<td width="78%"><span class="red"><strong><?=gettext("Help Needed!");?>:</strong></span><br><?php echo sprintf( gettext("LDAP authentication feature is not implemented: If you know how to use PAM to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome."));?></td>
+		</tr>
   </table>
 </form>
 <script language="JavaScript">

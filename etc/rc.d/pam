@@ -80,7 +80,7 @@ fi
 	-o "account    required        pam_unix.so" -n \
 	-n -o "# session" -n \
 	-o "session    required        pam_permit.so" -n \
-	-o "session required /usr/local/lib/pam_mkhomedir.so" -n \
+	-o "session    required        /usr/local/lib/pam_mkhomedir.so" -n \
 	-n -o "# password" -n \
 	-i "count(//ad/enable) > 0" \
 		-o "password   sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass" -n \
@@ -114,37 +114,37 @@ fi
 	-o "account    required        pam_unix.so" -n \
 	-n -o "# session" -n \
 	-o "session    required        pam_permit.so" -n \
-	-o "session required /usr/local/lib/pam_mkhomedir.so" -n \
+	-o "session    required        /usr/local/lib/pam_mkhomedir.so" -n \
 	${configxml_file} | /usr/local/bin/xml unesc > ${ftp_config}
 
 # Create /var/etc/pam.d/netatalk.
 /usr/local/bin/xml sel -t \
-        -o "# PAM configuration for the netatalk (AFP) service" -n \
-        -n \
-        -o "# auth" -n \
-        -o "auth       required        pam_nologin.so          no_warn" -n \
-        -o "auth       sufficient      pam_opie.so             no_warn no_fake_prompts" -n \
-        -o "auth       requisite       pam_opieaccess.so       no_warn allow_local" -n \
-        -i "count(//ad/enable) > 0" \
-                -o "auth       sufficient      /usr/local/lib/pam_winbind.so	debug try_first_pass" -n \
-        -b \
-        -i "count(//ldap/enable) > 0" \
-                -o "auth       sufficient      /usr/local/lib/pam_ldap.so	no_warn try_first_pass" -n \
-        -b \
-        -o "auth       required        pam_unix.so             no_warn try_first_pass" -n \
-        -n -o "# account" -n \
-        -i "count(//ad/enable) > 0" \
-                -o "account    sufficient       /usr/local/lib/pam_winbind.so" -n \
-        -b \
-        -i "count(//ldap/enable) > 0" \
-                -o "account    sufficient     /usr/local/lib/pam_ldap.so    ignore_authinfo_unavail" -n \
-        -b \
-        -o "account    required        pam_login_access.so" -n \
-        -o "account    required        pam_unix.so" -n \
-        -n -o "# session" -n \
-        -o "session    required        pam_permit.so" -n \
-        -o "session required /usr/local/lib/pam_mkhomedir.so" -n \
-        ${configxml_file} | /usr/local/bin/xml unesc > ${netatalk_config}
+	-o "# PAM configuration for the netatalk (AFP) service" -n \
+	-n \
+	-o "# auth" -n \
+	-o "auth       required        pam_nologin.so          no_warn" -n \
+	-o "auth       sufficient      pam_opie.so             no_warn no_fake_prompts" -n \
+	-o "auth       requisite       pam_opieaccess.so       no_warn allow_local" -n \
+	-i "count(//ad/enable) > 0" \
+		-o "auth       sufficient      /usr/local/lib/pam_winbind.so	debug try_first_pass" -n \
+	-b \
+	-i "count(//ldap/enable) > 0" \
+		-o "auth       sufficient      /usr/local/lib/pam_ldap.so	no_warn try_first_pass" -n \
+	-b \
+	-o "auth       required        pam_unix.so             no_warn try_first_pass" -n \
+	-n -o "# account" -n \
+	-i "count(//ad/enable) > 0" \
+		-o "account    sufficient       /usr/local/lib/pam_winbind.so" -n \
+	-b \
+	-i "count(//ldap/enable) > 0" \
+		-o "account    sufficient     /usr/local/lib/pam_ldap.so    ignore_authinfo_unavail" -n \
+	-b \
+	-o "account    required        pam_login_access.so" -n \
+	-o "account    required        pam_unix.so" -n \
+	-n -o "# session" -n \
+	-o "session    required        pam_permit.so" -n \
+	-o "session    required        /usr/local/lib/pam_mkhomedir.so" -n \
+	${configxml_file} | /usr/local/bin/xml unesc > ${netatalk_config}
 
 # Create /var/etc/pam.d/login.
 /usr/local/bin/xml sel -t \

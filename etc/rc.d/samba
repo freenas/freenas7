@@ -34,12 +34,10 @@ samba_lockdir="${samba_lockdir=/var/run}"
 samba_piddir="${samba_piddir=/var/run}"
 
 # Check if 'Active Directory' is enabled?
-configxml_isset //ad/enable
-ad_enable=$?
+ad_enable=`configxml_isset //ad/enable`
 
 # Check if 'LDAP' is enabled?
-configxml_isset //ldap/enable
-ldap_enable=$?
+ldap_enable=`configxml_isset //ldap/enable`
 
 # Disable AD if LDAP enabled:
 if [ 0 -eq ${ldap_enable} ]; then
@@ -281,10 +279,9 @@ samba_cmd() {
 			/usr/local/bin/net rpc join -S ${_srvname} -U ${_username}%${_password}
 		fi
  		if [ 0 -eq ${ldap_enable} ]; then
-                        local _password=`configxml_get "//ldap/bindpw"`
-                        /usr/local/bin/smbpasswd -w ${_password}
-                fi
-
+			local _password=`configxml_get "//ldap/bindpw"`
+			/usr/local/bin/smbpasswd -w ${_password}
+		fi
 	fi
 
 	# Apply to all the daemons
