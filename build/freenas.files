@@ -407,6 +407,9 @@ usr/sbin/traceroute
 # wicontrol -- configure Lucent, Intersil, and Atheros wireless devices
 usr/sbin/wicontrol
 
+# wpa_supplicant -- WPA/802.11i Supplicant for wireless network devices
+usr/sbin/wpa_supplicant
+
 # NFS server tools
 usr/sbin/mountd
 usr/sbin/nfsd
