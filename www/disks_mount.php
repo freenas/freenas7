@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Mount Point"));
+$pgtitle = array(gettext("Disks"),gettext("Mount Point"),gettext("Management"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
