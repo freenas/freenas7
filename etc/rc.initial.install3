@@ -90,7 +90,7 @@ EOD;
 	}
 
 	if(install_mount_cd($cdrom)) {
-		echo "\nMeet a problem for mounting the CDROM.\n";
+		echo "\nThere was a problem while mounting the CDROM.\n";
 		exit(0);
 	}
 
@@ -108,7 +108,7 @@ EOD;
 
 	$installharddrive = "$harddrive" . "s1";
 	if(install_harddrive_image($harddrive)) {
-		echo "\nMeet a problem during file copying.\n";
+		echo "\nThere was a problem while copying files.\n";
 		install_unmount_cd();
 		exit(0);
 	}

@@ -8,14 +8,14 @@
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -38,7 +38,7 @@
 
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
-	
+
 	$is_full=0;
 
 	/* Search where the config file is installed*/
@@ -46,21 +46,20 @@
 
 	$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 	foreach ($disks as $mountdisk) {
-		/* skip mfs mounted filesystems */
-		if (strstr($mountdisk, "md"))
+		/* Skip mfs mounted filesystems. */
+		if (TRUE === ereg("md[0-9]*", $mountdisk))
 			continue;
 
 		/* Search on slice 1 for OS installed on disk with install script*/
 		if (mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$g['cf_path']}") == 0) 	{
 			if (file_exists("{$g['cf_conf_path']}/config.xml")) 	{
-				/* found it */
 				$cfgdevice = $mountdisk;
 				$cfgpartition = $cfgdevice . "s1";
 				$cfgfstype = "ufs";
 				$slice=1;
 				$not_found=0;
 			}
-			
+
 			if (file_exists("{$g['cf_path']}/libexec/ld-elf.so.1")) {
 				/* Embedded release confirmed */
 				$is_full=1;
@@ -71,20 +70,19 @@
 			if ($cfgdevice)
 				break;
 		}
-
 	}
-	
+
 	if ($not_found) {
 		echo "No configuration found!\n";
 		exit(0);
 	}
-	
+
 	if (!$is_full) {
-		echo "No Full release found!\n";
+		echo "No 'full' release found!\n";
 		exit(0);
 	}
 
-	echo "{$productname} Upgrande and Convert full release to embedded\n";
+	echo "{$productname} Upgrande and convert 'full' release to 'embedded'.\n";
 	echo "\nHere is the list of detected CDROM:\n";
 
 	foreach ($cdlist as $cdromk =>$cdromv) 	{
@@ -111,34 +109,32 @@
 	} while ($valid != "y" );
 
 	if(install_mount_cd($cdrom)) {
-		echo "\nMeet a problem for mounting the CDROM.\n";
+		echo "\nThere was a problem while mounting the CDROM.\n";
 		exit(0);
 	}
 
 	if(install_backupconfig($cfgpartition)) {
-		echo "\nMeet a problem for backuping configuration file.\n";
+		echo "\nThere was a problem during configuration file backup.\n";
 		exit(0);
 	}
-	
-	 /* Must install on ad0s1 if installed on partition 1, but install on ad0
- if installed on ad0a */
-        if ($slice) {
-                if(install_dd_image($cfgpartition)) {
-                        echo "\nMeet a problem during file copying.\n";
-                        install_unmount_cd();
-                        exit(0);
-                }
-        }
-        else {
-               echo "\nFull release detected, but no slice detected !?!.\n";
-               install_unmount_cd();
-               exit(0);
-                }
+
+	/* Must install on ad0s1 if installed on partition 1, but install on ad0 if installed on ad0a */
+	if ($slice) {
+		if(install_dd_image($cfgpartition)) {
+			echo "\nThere was a problem while copying files.\n";
+			install_unmount_cd();
+			exit(0);
+		}
+	} else {
+		echo "\n'Full' release detected, but no slice detected !?!.\n";
+		install_unmount_cd();
+		exit(0);
+	}
 
 	if(install_restoreconfig($cfgpartition)) {
-		echo "\nMeet a problem for restoring configuration file.\n";
+		echo "\nThere was a problem while restoring configuration file.\n";
 		exit(0);
-	}	
+	}
 
 	install_unmount_cd();
 

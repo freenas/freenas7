@@ -46,14 +46,13 @@
 
 	$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 	foreach ($disks as $mountdisk) {
-		/* skip mfs mounted filesystems */
-		if (strstr($mountdisk, "md"))
+		/* Skip mfs mounted filesystems. */
+		if (TRUE === ereg("md[0-9]*", $mountdisk))
 			continue;
 
 		/* Search on slice 1 for OS installed on disk with install script*/
 		if (mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$g['cf_path']}") == 0) 	{
 			if (file_exists("{$g['cf_conf_path']}/config.xml")) 	{
-				/* found it */
 				$cfgdevice = $mountdisk;
 				$cfgpartition = $cfgdevice . "s1";
 				$cfgfstype = "ufs";
@@ -101,7 +100,7 @@
 	}
 	
 	if (!$is_full) {
-		echo "No Full release found!\n";
+		echo "No 'full' release found!\n";
 		exit(0);
 	}
 
@@ -132,23 +131,23 @@
 	} while ($valid != "y" );
 
 	if(install_mount_cd($cdrom)) {
-		echo "\nMeet a problem for mounting the CDROM.\n";
+		echo "\nThere was a problem while mounting the CDROM.\n";
 		exit(0);
 	}
 
 	if(install_backupconfig($cfgpartition)) {
-		echo "\nMeet a problem for backuping configuration file.\n";
+		echo "\nThere was a problem during configuration file backup.\n";
 		exit(0);
 	}
 	
 	if(install_upgrade_full($cfgdevice)) {
-		echo "\nMeet a problem during file copying.\n";
+		echo "\nThere was a problem while copying files.\n";
 		install_unmount_cd();
 		exit(0);
 	}
 
 	if(install_restoreconfig($cfgpartition)) {
-		echo "\nMeet a problem for restoring configuration file.\n";
+		echo "\nThere was a problem while restoring configuration file.\n";
 		exit(0);
 	}	
 
