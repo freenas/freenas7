@@ -143,7 +143,7 @@ if ($_POST) {
 			if ($id !== false) {
 				/* Set new filesystem type. */
  				$a_disk[$id]['fstype'] = $type;
-				$geli['name'] = $a_disk[$id]['name'];
+				$geli['name'] = $a_disk[$id]['fullname'];
 				$geli['size'] = $a_disk[$id]['size'];
 				$NotFound = 0;
 			} else {
@@ -154,7 +154,7 @@ if ($_POST) {
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_gmirror[$id]['fstype'] = $type;
-				$geli['name'] = $a_gmirror[$id]['name'];
+				$geli['name'] = $a_gmirror[$id]['fullname'];
 				$geli['size'] = $a_gmirror[$id]['size'];
 				$NotFound = 0;
 			} else {
@@ -165,7 +165,7 @@ if ($_POST) {
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_gstripe[$id]['fstype'] = $type;
-				$geli['name'] = $a_gstripe[$id]['name'];
+				$geli['name'] = $a_gstripe[$id]['fullname'];
 				$geli['size'] = $a_gstripe[$id]['size'];
 				$NotFound = 0;
 			} else {
@@ -176,7 +176,7 @@ if ($_POST) {
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_gconcat[$id]['fstype'] = $type;
-				$geli['name'] = $a_gconcat[$id]['name'];
+				$geli['name'] = $a_gconcat[$id]['fullname'];
 				$geli['size'] = $a_gconcat[$id]['size'];
 				$NotFound = 0;
 			} else {
@@ -187,7 +187,7 @@ if ($_POST) {
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_graid5[$id]['fstype'] = $type;
-				$geli['name'] = $a_graid5[$id]['name'];
+				$geli['name'] = $a_graid5[$id]['fullname'];
 				$geli['size'] = $a_graid5[$id]['size'];
 				$NotFound = 0;
 			} else {
@@ -198,7 +198,7 @@ if ($_POST) {
 			if (($id !== false) && $NotFound) {
 				/* Set new filesystem type. */
  				$a_gvinum[$id]['fstype'] = $type;
- 				$geli['name'] = $a_gvinum[$id]['name'];
+ 				$geli['name'] = $a_gvinum[$id]['fullname'];
 				$geli['size'] = $a_gvinum[$id]['size'];
 				$NotFound = 0;
 			}
