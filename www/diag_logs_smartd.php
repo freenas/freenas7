@@ -34,7 +34,7 @@
 require("guiconfig.inc");
 require("diag_logs.inc");
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"), gettext("SMARTD"));
 
 $nentries = $config['syslogd']['nentries'];
 if (!$nentries)

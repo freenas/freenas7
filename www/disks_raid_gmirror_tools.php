@@ -35,7 +35,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Mirror"), gettext("Edit"));
+$pgtitle = array(gettext("Disks"), gettext("Geom Mirror"), gettext("Tools"));
 
 if (!is_array($config['gmirror']['vdisk']))
 	$config['gmirror']['vdisk'] = array();

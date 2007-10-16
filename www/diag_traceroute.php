@@ -30,7 +30,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Ping/Traceroute"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Traceroute"));
 
 define('MAX_TTL', 64);
 define('DEFAULT_TTL', 18);

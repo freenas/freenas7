@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Access"),gettext("Users"),gettext("Groups"));
+$pgtitle = array(gettext("Access"),gettext("Groups"));
 
 if (!is_array($config['access']['group']))
 	$config['access']['group'] = array();

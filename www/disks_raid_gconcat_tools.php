@@ -35,7 +35,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Concat"), gettext("Edit"));
+$pgtitle = array(gettext("Disks"), gettext("Geom Concat"), gettext("Tools"));
 
 if (!is_array($config['gconcat']['vdisk']))
 	$config['gconcat']['vdisk'] = array();

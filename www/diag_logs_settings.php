@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Logs"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"), gettext("Settings"));
 
 $pconfig['reverse']  = isset($config['syslogd']['reverse']);
 $pconfig['nentries'] = $config['syslogd']['nentries'];

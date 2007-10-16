@@ -35,7 +35,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("Edit"));
+$pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("Tools"));
 
 if (!is_array($config['graid5']['vdisk']))
 	$config['graid5']['vdisk'] = array();

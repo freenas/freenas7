@@ -32,7 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
-$pgtitle = array(gettext("Diagnostics"), gettext("Information"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("S.M.A.R.T."));
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">

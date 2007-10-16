@@ -35,7 +35,7 @@
 
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Stripe"), gettext("RAID"));
+$pgtitle = array(gettext("Disks"), gettext("Geom Stripe"), gettext("Information"));
 
 ?>
 <?php include("fbegin.inc"); ?>

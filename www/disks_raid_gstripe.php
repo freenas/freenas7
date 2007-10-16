@@ -34,7 +34,7 @@
 require("guiconfig.inc");
 require("disks_raid.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Stripe"), gettext("RAID"));
+$pgtitle = array(gettext("Disks"), gettext("Geom Stripe"), gettext("Manage RAID"));
 
 if (!is_array($config['gstripe']['vdisk']))
 	$config['gstripe']['vdisk'] = array();

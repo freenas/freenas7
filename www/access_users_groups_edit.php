@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Access"),gettext("Users"),gettext("Groups"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Access"),gettext("Groups"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['access']['group']))
 	$config['access']['group'] = array();

@@ -32,7 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
-$pgtitle = array(gettext("Diagnostics"), gettext("Information"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("MS Domain"));
 
 if (!is_array($config['ad']))
 {

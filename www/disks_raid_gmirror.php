@@ -34,7 +34,7 @@
 require("guiconfig.inc");
 require("disks_raid.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Mirror"), gettext("RAID"));
+$pgtitle = array(gettext("Disks"), gettext("Geom Mirror"), gettext("Manage RAID"));
 
 if (!is_array($config['gmirror']['vdisk']))
 	$config['gmirror']['vdisk'] = array();

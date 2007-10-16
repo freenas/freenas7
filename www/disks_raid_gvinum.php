@@ -34,7 +34,7 @@
 require("guiconfig.inc");
 require("disks_raid.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Geom Vinum"),gettext("RAID"));
+$pgtitle = array(gettext("Disks"),gettext("Geom Vinum"),gettext("Manage RAID"));
 
 if (!is_array($config['gvinum']['vdisk']))
 	$config['gvinum']['vdisk'] = array();

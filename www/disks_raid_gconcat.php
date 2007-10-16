@@ -34,7 +34,7 @@
 require("guiconfig.inc");
 require("disks_raid.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Concat"), gettext("RAID"));
+$pgtitle = array(gettext("Disks"), gettext("Geom Concat"), gettext("Manage RAID"));
 
 if (!is_array($config['gconcat']['vdisk']))
 	$config['gconcat']['vdisk'] = array();

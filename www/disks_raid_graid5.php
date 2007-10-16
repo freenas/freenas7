@@ -34,7 +34,7 @@
 require("guiconfig.inc");
 require("disks_raid.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("RAID"));
+$pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("Manage RAID"));
 
 if (!is_array($config['graid5']['vdisk']))
 	$config['graid5']['vdisk'] = array();

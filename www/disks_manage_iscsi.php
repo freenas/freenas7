@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Management"));
+$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("iSCSI Initiator"));
 
 if (!is_array($config['iscsiinit']['vdisk']))
 	$config['iscsiinit']['vdisk'] = array();

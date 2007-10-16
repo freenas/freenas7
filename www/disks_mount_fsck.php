@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Tools"));
+$pgtitle = array(gettext("Disks"),gettext("Mount Point"),gettext("Fsck"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();

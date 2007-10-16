@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Ping/Traceroute"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Ping"));
 
 define('MAX_COUNT', 10);
 define('DEFAULT_COUNT', 3);

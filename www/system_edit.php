@@ -38,7 +38,7 @@ require("guiconfig.inc");
 
 global $g;
 
-$pgtitle = array(gettext("System"), gettext("Edit File"));
+$pgtitle = array(gettext("Advanced"), gettext("Edit File"));
 
 if (($_POST['submit'] == gettext("Load")) && file_exists($_POST['savetopath']) && is_file($_POST['savetopath'])) {
 	$fd = fopen($_POST['savetopath'], "r");

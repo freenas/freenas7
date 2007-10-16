@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Vinum"), gettext("Edit"));
+$pgtitle = array(gettext("Disks"), gettext("Geom Vinum"), gettext("Tools"));
 
 if ($_POST) {
 	unset($input_errors);
