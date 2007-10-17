@@ -98,7 +98,7 @@ if ($_GET['act'] == "del")
 
 			/* Get the id of the disk array entry. */
 			$NotFound = 1;
-			$id = array_search_ex($disk, $a_disk, "name");
+			$id = array_search_ex($disk, $a_disk, "fullname");
 
 			/* disk */
 			if ($id !== false) {
@@ -106,7 +106,7 @@ if ($_GET['act'] == "del")
  				$a_disk[$id]['fstype']="";
 				$NotFound = 0;
 			} else {
-				$id = array_search_ex($disk, $a_gmirror, "name");
+				$id = array_search_ex($disk, $a_gmirror, "fullname");
 			}
 
 			/* gmirror */
@@ -115,7 +115,7 @@ if ($_GET['act'] == "del")
  				$a_gmirror[$id]['fstype']="";
 				$NotFound = 0;
 			} else {
-				$id = array_search_ex($disk, $a_gstripe, "name");
+				$id = array_search_ex($disk, $a_gstripe, "fullname");
 			}
 
 			/* gstripe */
@@ -124,7 +124,7 @@ if ($_GET['act'] == "del")
  				$a_gstripe[$id]['fstype']="";
 				$NotFound = 0;
 			} else {
-				$id = array_search_ex($disk, $a_gconcat, "name");
+				$id = array_search_ex($disk, $a_gconcat, "fullname");
 			}
 
 			/* gconcat */
@@ -134,7 +134,7 @@ if ($_GET['act'] == "del")
 
 				$NotFound = 0;
 			} else {
-				$id = array_search_ex($disk, $a_graid5, "name");
+				$id = array_search_ex($disk, $a_graid5, "fullname");
 			}
 
 			/* graid5 */
@@ -143,7 +143,7 @@ if ($_GET['act'] == "del")
  				$a_graid5[$id]['fstype']="";
 				$NotFound = 0;
 			} else {
-				$id = array_search_ex($disk, $a_gvinum, "name");
+				$id = array_search_ex($disk, $a_gvinum, "fullname");
 			}
 
 			/* gvinum */
