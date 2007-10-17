@@ -39,6 +39,7 @@ Minors changes:
 - Add wpa_supplicant binaries (actually not supported from the webgui)
 - Add 'du' tool
 - Add Davicom DM910 USB Ethernet driver
+- Update 3Ware drivers to 9.4.1.3
 
 Bug fixs:
 - Add missing link /etc/exports -> /var/etc/exports.

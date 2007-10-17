@@ -1,4 +1,4 @@
-ARCHIVE=	FreeBSD-6.x-driver-source-9.4.0.1.tgz
+ARCHIVE=	driver-freebsd_6x-9.4.1.3.tgz
 SRCDIR=	${FREENAS_WORKINGDIR}/twa
 
 install:	clean
