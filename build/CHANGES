@@ -38,6 +38,7 @@ Minors changes:
 - Fix a bug when compiling FreeNAS on a FreeBSD 6.2 system with X11 installed
 - Add wpa_supplicant binaries (actually not supported from the webgui)
 - Add 'du' tool
+- Add Davicom DM910 USB Ethernet driver
 
 Bug fixs:
 - Add missing link /etc/exports -> /var/etc/exports.
