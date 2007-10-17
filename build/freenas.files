@@ -258,6 +258,9 @@ usr/bin/awk
 # chgrp - change group
 usr/bin/chgrp
 
+# du - Display file usage: Usefull for checking disk space
+usr/bin/du
+
 # fstat -- identify active files . Fuse mount use fstat
 usr/bin/fstat
 
