@@ -40,7 +40,7 @@ create_conf()
 	/usr/local/bin/xml sel -t \
 		-o "# extents" -n \
 		-m "//iscsitarget/extent" \
-			-v "concat(name,' ',path,' 0 ',size,'MB')" -n \
+			-v "concat(name,' ',path,name,' 0 ',size,'MB')" -n \
 		-b \
 		-n -o "# devices" -n \
 		-m "//iscsitarget/device" \
