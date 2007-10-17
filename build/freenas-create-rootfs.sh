@@ -120,4 +120,4 @@ ln -s /var/etc/ldap.conf etc/ldap.conf
 ln -s /var/etc/ldap.secret usr/local/etc/ldap.secret
 ln -s /var/etc/nsswitch.conf etc/nsswitch.conf
 #Patch needed when generating on FreeBSD with X11/xorg:
-ln -s /usr/local usr/X11R6
+ln -s local usr/X11R6
