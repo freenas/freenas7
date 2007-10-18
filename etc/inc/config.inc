@@ -33,7 +33,6 @@
 require_once("globals.inc");
 require_once("util.inc");
 require_once("xmlparse.inc");
-require_once("system.inc");
 
 /* Get product information */
 $productname = get_product_name();
@@ -221,7 +220,7 @@ if (!$noparseconfig) {
 		}
 
 		/* Load configuration file into array. */
-		$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj'], system_get_language_codeset());
+		$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
 		if (false === $config) {
 			echo "Error: Failed to load '{$g['conf_path']}/config.xml' file. {$productname} cannot continue booting.\n";
 			mwexec("/sbin/halt");
@@ -291,7 +290,7 @@ function write_config() {
 	}
 
 	/* generate configuration XML */
-	$xmlconfig = dump_xml_config($config, $g['xml_rootobj'], system_get_language_codeset());
+	$xmlconfig = dump_xml_config($config, $g['xml_rootobj']);
 
 	/* write configuration */
 	$fd = fopen("{$g['cf_conf_path']}/config.xml", "w");
@@ -306,7 +305,7 @@ function write_config() {
 	conf_mount_ro();
 
 	/* re-read configuration */
-	$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj'], system_get_language_codeset());
+	$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
 
 	/* write config cache */
 	$result = config_write_cache($config);

@@ -88,6 +88,14 @@ if($_POST) {
 	$reqdfieldst = explode(" ", "string string");
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
+	if (($_POST['name'] && !is_validsharename($_POST['name']))) {
+		$input_errors[] = sprintf(gettext("The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."), gettext("Name"));
+	}
+
+	if (($_POST['comment'] && !is_validdesc($_POST['comment']))) {
+		$input_errors[] = sprintf(gettext("The attribute '%s' contains invalid characters."), gettext("Comment"));
+	}
+
 	if(!$input_errors) {
 		$share = array();
 
