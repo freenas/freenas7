@@ -120,11 +120,11 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['sharename'] && !is_validsharename($_POST['sharename']))) {
-		$input_errors[] = gettext("The name may only consist of the characters a-z, A-Z, 0-9, _ , -.");
+		$input_errors[] = sprintf(gettext("The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."), gettext("Name"));
 	}
 
 	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
-		$input_errors[] = gettext("The description name contain invalid characters.");
+		$input_errors[] = sprintf(gettext("The attribute '%s' contains invalid characters."), gettext("Description"));
 	}
 
 	// Do some 'disk' specific checks.
