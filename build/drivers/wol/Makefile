@@ -12,8 +12,5 @@ install:
 
 	@patch -p0 -d /usr/src < ${.CURDIR}/files/${PATCH}
 
-	#@cd /usr/src
-	#@make includes
-	#@cd /usr/src/sbin/ifconfig
-	#@make clean obj
-	#@make && make install
+	@cd /usr/src; make includes
+	@cd /usr/src/sbin/ifconfig; make clean obj; make && make install
