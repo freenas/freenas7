@@ -1,5 +1,5 @@
 # http://stsp.name/wol
-PATCH=	FreeBSD-6.2-wol-2007-08-30.diff
+PATCH=	FreeBSD-6.2-wol-2007-10-14.diff
 
 install:
 	# Create backup.
