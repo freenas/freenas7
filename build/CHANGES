@@ -45,6 +45,7 @@ Bug fixs:
 - Add missing link /etc/exports -> /var/etc/exports.
 - Set //syslogd/nentries to 50 (by default) in config.xml if it is not set. Causes errors in status report.
 - Recyle bin setting was not stored when it was activated for a Samba share.
+- Handle special characters in config.xml (e.g. צהü).
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
