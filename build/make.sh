@@ -183,7 +183,7 @@ pre_build_kernel() {
 	# Create list of available packages.
 	echo "#! /bin/sh
 $DIALOG --title \"$FREENAS_PRODUCTNAME - Drivers\" \\
---checklist \"Select the drivers you want to add.\" 21 75 14 \\" > $tempfile
+--checklist \"Select the drivers you want to add. Make sure you have clean/origin kernel sources (via cvsup) to apply patches successful.\" 22 75 14 \\" > $tempfile
 
 	for s in $FREENAS_SVNDIR/build/drivers/*; do
 		[ ! -d "$s" ] && continue
@@ -218,7 +218,7 @@ build_kernel() {
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
 
 	# Choose what to do.
-	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install kernel" --checklist "Please select whether you want to build or install the kernel. Make sure you have updated the kernel sources via cvsup." 11 75 3 \
+	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 3 \
 		"prebuild" "Install additional drivers" OFF \
 		"build" "Build kernel" OFF \
 		"install" "Install kernel + modules" ON 2> $tempfile
