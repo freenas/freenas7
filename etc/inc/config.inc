@@ -221,7 +221,7 @@ if (!$noparseconfig) {
 		}
 
 		/* Load configuration file into array. */
-		$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj'], system_get_language_codeset());
+		$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
 		if (false === $config) {
 			echo "Error: Failed to load '{$g['conf_path']}/config.xml' file. {$productname} cannot continue booting.\n";
 			mwexec("/sbin/halt");
@@ -306,7 +306,7 @@ function write_config() {
 	conf_mount_ro();
 
 	/* re-read configuration */
-	$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj'], system_get_language_codeset());
+	$config = parse_xml_config("{$g['conf_path']}/config.xml", $g['xml_rootobj']);
 
 	/* write config cache */
 	$result = config_write_cache($config);

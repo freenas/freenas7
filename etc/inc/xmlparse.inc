@@ -114,7 +114,7 @@ function cData($parser, $data) {
 	}
 }
 
-function parse_xml_config($cffile, $rootobj, $encoding) {
+function parse_xml_config($cffile, $rootobj) {
 	global $depth, $curpath, $config, $havedata, $listtags;
 
 	$config = array();
@@ -126,11 +126,20 @@ function parse_xml_config($cffile, $rootobj, $encoding) {
 
 	xml_set_element_handler($xml_parser, "startElement", "endElement");
 	xml_set_character_data_handler($xml_parser, "cdata");
-	xml_parser_set_option($xml_parser, XML_OPTION_TARGET_ENCODING, $encoding);
 
 	if (!($fp = fopen($cffile, "r"))) {
 		die("Error: could not open XML input\n");
 	}
+
+	// Detect and set output character encoding. Default output encoding is UTF-8.
+	$data = fread($fp, 4096);
+	if (preg_match('/<?xml.*encoding=[\'"](.*?)[\'"].*?>/m', $data, $m)) {
+	  $encoding = strtoupper($m[1]);
+	  xml_parser_set_option($xml_parser, XML_OPTION_TARGET_ENCODING, $encoding);
+	}
+
+	// Set position to file origin.
+	fseek($fp, 0, SEEK_SET);
 
 	while ($data = fread($fp, 4096)) {
 		if (!xml_parse($xml_parser, $data, feof($fp))) {
