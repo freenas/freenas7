@@ -114,7 +114,7 @@ function cData($parser, $data) {
 	}
 }
 
-function parse_xml_config($cffile, $rootobj) {
+function parse_xml_config($cffile, $rootobj, $encoding) {
 	global $depth, $curpath, $config, $havedata, $listtags;
 
 	$config = array();
@@ -126,6 +126,7 @@ function parse_xml_config($cffile, $rootobj) {
 
 	xml_set_element_handler($xml_parser, "startElement", "endElement");
 	xml_set_character_data_handler($xml_parser, "cdata");
+	xml_parser_set_option($xml_parser, XML_OPTION_TARGET_ENCODING, $encoding);
 
 	if (!($fp = fopen($cffile, "r"))) {
 		die("Error: could not open XML input\n");
@@ -194,8 +195,8 @@ function dump_xml_config_sub($arr, $indent) {
 	return $xmlconfig;
 }
 
-function dump_xml_config($arr, $rootobj) {
-	$xmlconfig = "<?xml version=\"1.0\"?>\n";
+function dump_xml_config($arr, $rootobj, $encoding) {
+	$xmlconfig = "<?xml version=\"1.0\" encoding=\"{$encoding}\"?>\n";
 	$xmlconfig .= "<$rootobj>\n";
 	$xmlconfig .= dump_xml_config_sub($arr, 1);
 	$xmlconfig .= "</$rootobj>\n";
