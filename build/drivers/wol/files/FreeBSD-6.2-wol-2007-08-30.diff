@@ -2,17 +2,9 @@ Index: sbin/ifconfig/Makefile
 ===================================================================
 RCS file: /usr/ncvs/src/sbin/ifconfig/Makefile,v
 retrieving revision 1.29
-retrieving revision 1.29.10962.1
-diff -u -r1.29 -r1.29.10962.1
+diff -u -r1.29 Makefile
 --- sbin/ifconfig/Makefile	5 Jun 2005 03:32:51 -0000	1.29
-+++ sbin/ifconfig/Makefile	14 Oct 2007 14:59:03 -0000	1.29.10962.1
-@@ -1,5 +1,5 @@
- #	From: @(#)Makefile	8.1 (Berkeley) 6/5/93
--# $FreeBSD: src/sbin/ifconfig/Makefile,v 1.29 2005/06/05 03:32:51 thompsa Exp $
-+# $FreeBSD: src/sbin/ifconfig/Makefile,v 1.29.10962.1 2007/10/14 14:59:03 stsp Exp $
- 
- PROG=	ifconfig
- 
++++ sbin/ifconfig/Makefile	6 May 2006 11:08:41 -0000
 @@ -28,6 +28,8 @@
  
  SRCS+=	ifbridge.c		# bridge support
@@ -26,42 +18,30 @@ Index: sbin/ifconfig/ifconfig.8
 ===================================================================
 RCS file: /usr/ncvs/src/sbin/ifconfig/ifconfig.8,v
 retrieving revision 1.95.2.17
-retrieving revision 1.95.2.17.10962.2
-diff -u -r1.95.2.17 -r1.95.2.17.10962.2
+diff -u -r1.95.2.17 ifconfig.8
 --- sbin/ifconfig/ifconfig.8	3 Nov 2006 09:14:24 -0000	1.95.2.17
-+++ sbin/ifconfig/ifconfig.8	14 Oct 2007 21:25:21 -0000	1.95.2.17.10962.2
-@@ -26,7 +26,7 @@
- .\" SUCH DAMAGE.
- .\"
- .\"     From: @(#)ifconfig.8	8.3 (Berkeley) 1/5/94
--.\" $FreeBSD: src/sbin/ifconfig/ifconfig.8,v 1.95.2.17 2006/11/03 09:14:24 trhodes Exp $
-+.\" $FreeBSD: src/sbin/ifconfig/ifconfig.8,v 1.95.2.17.10962.2 2007/10/14 21:25:21 stsp Exp $
- .\"
- .Dd October 9, 2006
- .Dt IFCONFIG 8
-@@ -939,6 +939,29 @@
++++ sbin/ifconfig/ifconfig.8	13 Jan 2007 12:18:33 -0000
+@@ -939,6 +939,27 @@
  If that is the case, then the first four keys
  (1-4) will be the standard temporary keys and any others will be adaptor
  specific keys such as permanent keys stored in NVRAM.
 +.It Cm wakeon Ar events
 +Enable Wake On Lan support, if available. The 
 +.Ar events
-+argument is a comma seperated list of events that shall
-+wake the system up. The set of valid events is
++argument is a comma seperated list of package types that shall
++trigger wake events. The set of valid package types is
 +.Dq Li unicast ,
 +.Dq Li multicast ,
 +.Dq Li broadcast ,
-+.Dq Li magi ,
 +and
-+.Dq Li link .
-+These enable wake on reception of unicast, multicast, broadcast
-+and packets, of a Magic Packet(tm) and on link state change
-+(e.g. a cable plugged in or removed from the network card), respectively.
-+Not all drivers support all types of events.
-+For Magic Packets(tm), a SecureOn password, if supported, can be be
-+enabled using the
++.Dq Li magic .
++These enable wake on unicast, multicast, broadcast and Magic Packet(tm),
++respectively.
++A SecureOn password, if supported, can be be enabled using the
 +.Dq Li sopasswd:<password> 
 +event.
++SecureOn passwords only work in combination with
++.Dq Li magic .
 +The password must consist of 12 hexadecimal digits.
 +.It Fl wakeon
 +Disable Wake On Lan.
@@ -69,7 +49,7 @@ diff -u -r1.95.2.17 -r1.95.2.17.10962.2
  .It Cm wme
  Enable Wireless Multimedia Extensions (WME) support, if available,
  for the specified interface.
-@@ -946,7 +969,6 @@
+@@ -946,7 +967,6 @@
  efficient communication of realtime and multimedia data.
  To disable WME support, use
  .Fl wme .
@@ -82,12 +62,12 @@ Index: sbin/ifconfig/ifwol.c
 RCS file: sbin/ifconfig/ifwol.c
 diff -N sbin/ifconfig/ifwol.c
 --- /dev/null	1 Jan 1970 00:00:00 -0000
-+++ sbin/ifconfig/ifwol.c	14 Oct 2007 21:25:21 -0000	1.1.10962.2
-@@ -0,0 +1,232 @@
++++ sbin/ifconfig/ifwol.c	20 Oct 2006 10:29:10 -0000
+@@ -0,0 +1,229 @@
 +/* $Id$ */
 +
 +/*
-+ * Copyright (c) 2005, 2006, 2007 Stefan Sperling <stsp@stsp.name>
++ * Copyright (c) 2005 Stefan Sperling.
 + * All rights reserved.
 + *
 + * Redistribution and use in source and binary forms, with or without
@@ -189,8 +169,6 @@ diff -N sbin/ifconfig/ifwol.c
 +		if (events & IFWOL_ENABLE_SOPASSWD)
 +			printf("[SecureOn password]");
 +	}
-+	if (events & IFWOL_WAKE_ON_LINK)
-+		printf(" link");
 +}
 +
 +/*
@@ -241,10 +219,9 @@ diff -N sbin/ifconfig/ifwol.c
 +		else if (strncmp(opt, "sopasswd:", strlen("sopasswd:")) == 0) {
 +			wol_events |= IFWOL_ENABLE_SOPASSWD;
 +			parse_sopasswd(opt + strlen("sopasswd:"), wolopts->ifwol_sopasswd);
-+		} else if (strcmp(opt, "link") == 0)
-+			wol_events |= IFWOL_WAKE_ON_LINK;
-+		else
++		} else {
 +			errx(EX_USAGE, "unknown wake event %s", opt);
++		}
 +	}
 +	free(opt);
 +	wolopts->ifwol_events = wol_events;
@@ -320,19 +297,9 @@ Index: sys/dev/nve/if_nve.c
 ===================================================================
 RCS file: /usr/ncvs/src/sys/dev/nve/if_nve.c,v
 retrieving revision 1.7.2.11
-retrieving revision 1.7.2.11.10962.1
-diff -u -r1.7.2.11 -r1.7.2.11.10962.1
+diff -u -r1.7.2.11 if_nve.c
 --- sys/dev/nve/if_nve.c	13 Sep 2006 15:15:57 -0000	1.7.2.11
-+++ sys/dev/nve/if_nve.c	14 Oct 2007 14:59:09 -0000	1.7.2.11.10962.1
-@@ -72,7 +72,7 @@
-  */
- 
- #include <sys/cdefs.h>
--__FBSDID("$FreeBSD: src/sys/dev/nve/if_nve.c,v 1.7.2.11 2006/09/13 15:15:57 jhb Exp $");
-+__FBSDID("$FreeBSD: src/sys/dev/nve/if_nve.c,v 1.7.2.11.10962.1 2007/10/14 14:59:09 stsp Exp $");
- 
- #include <sys/param.h>
- #include <sys/systm.h>
++++ sys/dev/nve/if_nve.c	30 Aug 2007 11:38:57 -0000
 @@ -177,6 +177,10 @@
  static NV_SINT32 nve_oslockrelease(PNV_VOID, NV_SINT32, PNV_VOID);
  static PNV_VOID  nve_osreturnbufvirt(PNV_VOID, PNV_VOID);
@@ -467,19 +434,9 @@ Index: sys/dev/nve/if_nvereg.h
 ===================================================================
 RCS file: /usr/ncvs/src/sys/dev/nve/if_nvereg.h,v
 retrieving revision 1.3.2.2.2.1
-retrieving revision 1.3.2.2.2.1.10962.1
-diff -u -r1.3.2.2.2.1 -r1.3.2.2.2.1.10962.1
+diff -u -r1.3.2.2.2.1 if_nvereg.h
 --- sys/dev/nve/if_nvereg.h	7 Dec 2006 22:28:52 -0000	1.3.2.2.2.1
-+++ sys/dev/nve/if_nvereg.h	14 Oct 2007 14:59:10 -0000	1.3.2.2.2.1.10962.1
-@@ -25,7 +25,7 @@
-  * SUCH DAMAGE.
-  *
-  * $Id: if_nvreg.h,v 1.6 2004/08/12 14:00:05 q Exp $
-- * $FreeBSD: src/sys/dev/nve/if_nvereg.h,v 1.3.2.2.2.1 2006/12/07 22:28:52 jhb Exp $
-+ * $FreeBSD: src/sys/dev/nve/if_nvereg.h,v 1.3.2.2.2.1.10962.1 2007/10/14 14:59:10 stsp Exp $
-  */
-  
- #ifndef _IF_NVEREG_H_
++++ sys/dev/nve/if_nvereg.h	13 Jan 2007 12:21:03 -0000
 @@ -69,6 +69,8 @@
  #define	NVE_DEBUG_MII		0x0100
  #define	NVE_DEBUG_ALL		0xFFFF
@@ -502,19 +459,9 @@ Index: sys/net/if.c
 ===================================================================
 RCS file: /usr/ncvs/src/sys/net/if.c,v
 retrieving revision 1.234.2.17
-retrieving revision 1.234.2.17.10962.1
-diff -u -r1.234.2.17 -r1.234.2.17.10962.1
+diff -u -r1.234.2.17 if.c
 --- sys/net/if.c	6 Oct 2006 20:26:05 -0000	1.234.2.17
-+++ sys/net/if.c	14 Oct 2007 14:59:12 -0000	1.234.2.17.10962.1
-@@ -27,7 +27,7 @@
-  * SUCH DAMAGE.
-  *
-  *	@(#)if.c	8.5 (Berkeley) 1/9/95
-- * $FreeBSD: src/sys/net/if.c,v 1.234.2.17 2006/10/06 20:26:05 andre Exp $
-+ * $FreeBSD: src/sys/net/if.c,v 1.234.2.17.10962.1 2007/10/14 14:59:12 stsp Exp $
-  */
- 
- #include "opt_compat.h"
++++ sys/net/if.c	13 Jan 2007 12:23:17 -0000
 @@ -1461,6 +1461,7 @@
  	case SIOCSLIFPHYADDR:
  	case SIOCSIFMEDIA:
@@ -536,19 +483,9 @@ Index: sys/net/if.h
 ===================================================================
 RCS file: /usr/ncvs/src/sys/net/if.h,v
 retrieving revision 1.96.2.4
-retrieving revision 1.96.2.4.10962.2
-diff -u -r1.96.2.4 -r1.96.2.4.10962.2
+diff -u -r1.96.2.4 if.h
 --- sys/net/if.h	15 Feb 2006 03:37:15 -0000	1.96.2.4
-+++ sys/net/if.h	14 Oct 2007 21:25:41 -0000	1.96.2.4.10962.2
-@@ -27,7 +27,7 @@
-  * SUCH DAMAGE.
-  *
-  *	@(#)if.h	8.1 (Berkeley) 6/10/93
-- * $FreeBSD: src/sys/net/if.h,v 1.96.2.4 2006/02/15 03:37:15 ps Exp $
-+ * $FreeBSD: src/sys/net/if.h,v 1.96.2.4.10962.2 2007/10/14 21:25:41 stsp Exp $
-  */
- 
- #ifndef _NET_IF_H_
++++ sys/net/if.h	5 May 2006 23:05:57 -0000
 @@ -254,6 +254,28 @@
  #define	IFAN_DEPARTURE	1	/* interface departure */
  
@@ -557,7 +494,7 @@ diff -u -r1.96.2.4 -r1.96.2.4.10962.2
 + */
 +struct if_wolopts {
 +	uint32_t	ifwol_supported;/* indicates wol capabilities */
-+	uint32_t 	ifwol_events;	/* wake events configured by user */
++	uint32_t 	ifwol_events;	/* indicates desired wake events */
 +
 +	/* Supported wake on lan events.
 +	 * A given device may not support all of these,
@@ -570,7 +507,7 @@ diff -u -r1.96.2.4 -r1.96.2.4.10962.2
 +#define	IFWOL_WAKE_ON_BROADCAST	0x08
 +#define	IFWOL_WAKE_ON_MAGIC	0x10 /* wake on Magic Packet(tm) */
 +#define	IFWOL_ENABLE_SOPASSWD	0x20 /* whether to set SecureOn password */
-+#define IFWOL_WAKE_ON_LINK	0x40 /* wake on link (PHY) status change */
++
 +	u_char	ifwol_sopasswd[6]; /* SecureOn password */
 +};
 +
@@ -598,19 +535,9 @@ Index: sys/pci/if_sis.c
 ===================================================================
 RCS file: /usr/ncvs/src/sys/pci/if_sis.c,v
 retrieving revision 1.132.2.7
-retrieving revision 1.132.2.7.10962.1
-diff -u -r1.132.2.7 -r1.132.2.7.10962.1
+diff -u -r1.132.2.7 if_sis.c
 --- sys/pci/if_sis.c	17 Mar 2006 21:30:57 -0000	1.132.2.7
-+++ sys/pci/if_sis.c	14 Oct 2007 14:59:13 -0000	1.132.2.7.10962.1
-@@ -32,7 +32,7 @@
-  */
- 
- #include <sys/cdefs.h>
--__FBSDID("$FreeBSD: src/sys/pci/if_sis.c,v 1.132.2.7 2006/03/17 21:30:57 glebius Exp $");
-+__FBSDID("$FreeBSD: src/sys/pci/if_sis.c,v 1.132.2.7.10962.1 2007/10/14 14:59:13 stsp Exp $");
- 
- /*
-  * SiS 900/SiS 7016 fast ethernet PCI NIC driver. Datasheets are
++++ sys/pci/if_sis.c	5 May 2006 23:05:57 -0000
 @@ -126,6 +126,10 @@
  static void sis_startl(struct ifnet *);
  static void sis_stop(struct sis_softc *);
@@ -959,19 +886,9 @@ Index: sys/pci/if_sisreg.h
 ===================================================================
 RCS file: /usr/ncvs/src/sys/pci/if_sisreg.h,v
 retrieving revision 1.33.2.1
-retrieving revision 1.33.2.1.10962.1
-diff -u -r1.33.2.1 -r1.33.2.1.10962.1
+diff -u -r1.33.2.1 if_sisreg.h
 --- sys/pci/if_sisreg.h	29 Sep 2005 18:52:21 -0000	1.33.2.1
-+++ sys/pci/if_sisreg.h	14 Oct 2007 14:59:13 -0000	1.33.2.1.10962.1
-@@ -29,7 +29,7 @@
-  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
-  * THE POSSIBILITY OF SUCH DAMAGE.
-  *
-- * $FreeBSD: src/sys/pci/if_sisreg.h,v 1.33.2.1 2005/09/29 18:52:21 jhb Exp $
-+ * $FreeBSD: src/sys/pci/if_sisreg.h,v 1.33.2.1.10962.1 2007/10/14 14:59:13 stsp Exp $
-  */
- 
- /*
++++ sys/pci/if_sisreg.h	6 May 2006 10:59:50 -0000
 @@ -77,6 +77,7 @@
  /* NS DP83815/6 registers */
  #define NS_IHR			0x1C
@@ -1010,19 +927,9 @@ Index: sys/pci/if_vr.c
 ===================================================================
 RCS file: /usr/ncvs/src/sys/pci/if_vr.c,v
 retrieving revision 1.104.2.6
-retrieving revision 1.104.2.6.10962.1
-diff -u -r1.104.2.6 -r1.104.2.6.10962.1
+diff -u -r1.104.2.6 if_vr.c
 --- sys/pci/if_vr.c	17 Mar 2006 21:30:57 -0000	1.104.2.6
-+++ sys/pci/if_vr.c	14 Oct 2007 14:59:13 -0000	1.104.2.6.10962.1
-@@ -31,7 +31,7 @@
-  */
- 
- #include <sys/cdefs.h>
--__FBSDID("$FreeBSD: src/sys/pci/if_vr.c,v 1.104.2.6 2006/03/17 21:30:57 glebius Exp $");
-+__FBSDID("$FreeBSD: src/sys/pci/if_vr.c,v 1.104.2.6.10962.1 2007/10/14 14:59:13 stsp Exp $");
- 
- /*
-  * VIA Rhine fast ethernet PCI NIC driver
++++ sys/pci/if_vr.c	13 Jun 2007 22:38:52 -0000
 @@ -169,6 +169,10 @@
  static int vr_list_rx_init(struct vr_softc *);
  static int vr_list_tx_init(struct vr_softc *);
@@ -1176,19 +1083,9 @@ Index: sys/pci/if_vrreg.h
 ===================================================================
 RCS file: /usr/ncvs/src/sys/pci/if_vrreg.h,v
 retrieving revision 1.22.2.1
-retrieving revision 1.22.2.1.10962.1
-diff -u -r1.22.2.1 -r1.22.2.1.10962.1
+diff -u -r1.22.2.1 if_vrreg.h
 --- sys/pci/if_vrreg.h	8 Nov 2005 16:05:56 -0000	1.22.2.1
-+++ sys/pci/if_vrreg.h	14 Oct 2007 14:59:13 -0000	1.22.2.1.10962.1
-@@ -29,7 +29,7 @@
-  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
-  * THE POSSIBILITY OF SUCH DAMAGE.
-  *
-- * $FreeBSD: src/sys/pci/if_vrreg.h,v 1.22.2.1 2005/11/08 16:05:56 jhb Exp $
-+ * $FreeBSD: src/sys/pci/if_vrreg.h,v 1.22.2.1.10962.1 2007/10/14 14:59:13 stsp Exp $
-  */
- 
- /*
++++ sys/pci/if_vrreg.h	13 Jun 2007 22:38:19 -0000
 @@ -283,6 +283,21 @@
  #define VR_STICKHW_WOL_STS	0x08
  #define VR_STICKHW_LEGWOL_ENB	0x80
@@ -1241,19 +1138,9 @@ Index: sys/pci/if_xl.c
 ===================================================================
 RCS file: /usr/ncvs/src/sys/pci/if_xl.c,v
 retrieving revision 1.190.2.10
-retrieving revision 1.190.2.10.10962.2
-diff -u -r1.190.2.10 -r1.190.2.10.10962.2
+diff -u -r1.190.2.10 if_xl.c
 --- sys/pci/if_xl.c	17 Aug 2006 00:13:07 -0000	1.190.2.10
-+++ sys/pci/if_xl.c	14 Oct 2007 21:25:51 -0000	1.190.2.10.10962.2
-@@ -31,7 +31,7 @@
-  */
- 
- #include <sys/cdefs.h>
--__FBSDID("$FreeBSD: src/sys/pci/if_xl.c,v 1.190.2.10 2006/08/17 00:13:07 yongari Exp $");
-+__FBSDID("$FreeBSD: src/sys/pci/if_xl.c,v 1.190.2.10.10962.2 2007/10/14 21:25:51 stsp Exp $");
- 
- /*
-  * 3Com 3c90x Etherlink XL PCI NIC driver
++++ sys/pci/if_xl.c	14 Jun 2007 11:22:46 -0000
 @@ -249,6 +249,9 @@
  static void xl_shutdown(device_t);
  static int xl_suspend(device_t);
@@ -1264,36 +1151,12 @@ diff -u -r1.190.2.10 -r1.190.2.10.10962.2
  
  #ifdef DEVICE_POLLING
  static void xl_poll(struct ifnet *ifp, enum poll_cmd cmd, int count);
-@@ -1226,6 +1229,7 @@
- 	int			media;
- 	int			unit, error = 0, rid, res;
- 	uint16_t		did;
-+	uint16_t		pwrmgmtcap;
- 
- 	sc = device_get_softc(dev);
- 	unit = device_get_unit(dev);
-@@ -1474,6 +1478,15 @@
- 	else
- 		sc->xl_type = XL_TYPE_90X;
- 
-+	/* Figure out whether the chip at hand supports wake on lan. */
-+	if (sc->xl_caps & XL_CAPS_PWRMGMT) {
-+		pwrmgmtcap = pci_read_config(dev, XL_PCI_PWRMGMTCAP, 2);
-+		 /* Flag the card as WOL-capable if it supports
-+		  * PME# assertion from D3hot power state. */
-+		if (pwrmgmtcap & XL_PME_SUPPORT_FROM_D3hot)
-+			sc->xl_flags |= XL_FLAG_SUPPORTS_WOL;
-+	}
-+
- 	/* Set the TX start threshold for best performance. */
- 	sc->xl_tx_thresh = XL_MIN_FRAMELEN;
- 
-@@ -3218,6 +3231,25 @@
+@@ -3218,6 +3221,25 @@
  			ifp->if_hwassist = 0;
  		XL_UNLOCK(sc);
  		break;
 +	case SIOCGIFWOLSUPP:
-+		if (sc->xl_flags & XL_FLAG_SUPPORTS_WOL)
++		if (sc->xl_type == XL_TYPE_905B)
 +			ifr->ifr_wolopts.ifwol_supported =
 +			    XL_SUPPORTED_WOL_EVENTS;
 +		else
@@ -1314,7 +1177,7 @@ diff -u -r1.190.2.10 -r1.190.2.10.10962.2
  	default:
  		error = ether_ioctl(ifp, command, data);
  		break;
-@@ -3348,6 +3380,7 @@
+@@ -3348,6 +3370,7 @@
  	XL_LOCK(sc);
  	xl_reset(sc);
  	xl_stop(sc);
@@ -1322,7 +1185,7 @@ diff -u -r1.190.2.10 -r1.190.2.10.10962.2
  	XL_UNLOCK(sc);
  }
  
-@@ -3384,3 +3417,91 @@
+@@ -3384,3 +3407,85 @@
  
  	return (0);
  }
@@ -1349,7 +1212,7 @@ diff -u -r1.190.2.10 -r1.190.2.10.10962.2
 +{
 +	XL_LOCK_ASSERT(sc);
 +
-+	if (! sc->xl_flags & XL_FLAG_SUPPORTS_WOL)
++	if (sc->xl_type != XL_TYPE_905B)
 +		return ENOTSUP;
 +
 +	if (wolopts->ifwol_events == IFWOL_DISABLE)
@@ -1377,60 +1240,44 @@ diff -u -r1.190.2.10 -r1.190.2.10.10962.2
 +
 +	XL_LOCK_ASSERT(sc);
 +
-+	/* If the card isn't WOL-capable, bail out. */
-+	if (! sc->xl_flags & XL_FLAG_SUPPORTS_WOL)
++	if (sc->xl_type != XL_TYPE_905B)
 +		return;
 +	
-+	/* Check whether any wake on lan events have been configured
-+	 * by the user. */
++	/* Check whether any wake on lan events have been set. */
 +	if (sc->xl_wol_events == 0)
 +		return;
-+
-+	/* Disable interrupts. The data sheet says interrupts need
-+	 * to be disabled before wake events are configured. */
-+	CSR_WRITE_2(sc, XL_COMMAND, XL_CMD_INTR_ENB|0);
 +
 +	/* Configure wake on lan events. */
 +	XL_SEL_WIN(7);
 +	if (sc->xl_wol_events & IFWOL_WAKE_ON_MAGIC)
 +		CSR_WRITE_2(sc, XL_W7_BM_WOL, XL_WAKE_ON_MAGIC);
-+	if (sc->xl_wol_events & IFWOL_WAKE_ON_LINK)
-+		CSR_WRITE_2(sc, XL_W7_BM_WOL, XL_WAKE_ON_LINK);
 +	
-+	/* Configure the receive filter to accept WOL packets.
-+	 * We want to receive any kind of packet. */
++	/* Configure the recieve filter to accept WOL packets.
++	 * We want to recieve everything. */
 +	XL_SEL_WIN(5);
 +	rxfilt = CSR_READ_1(sc, XL_W5_RX_FILTER);
 +	CSR_WRITE_1(sc, XL_W5_RX_FILTER,
 +	    rxfilt | XL_RXFILTER_INDIVIDUAL | XL_RXFILTER_ALLMULTI
 +	    | XL_RXFILTER_BROADCAST | XL_RXFILTER_ALLFRAMES);
 +
-+	/* Make sure receiver is enabled. */
++	/* Make sure reciever is enabled. */
 +	CSR_WRITE_2(sc, XL_COMMAND, XL_CMD_RX_ENABLE);
 +
-+	/* Make sure power management is enabled and set the card
-+	 * into D3hot power state, so it stays active after system shutdown. */
++	/* Make sure power management is enabled. */
 +	config = pci_read_config(dev, XL_PCI_PWRMGMTCTRL, 2);
-+	config |= XL_PME_EN | XL_PSTATE_D3;
 +	pci_write_config(dev, XL_PCI_PWRMGMTCTRL, config | XL_PME_EN, 2);
++
++	/* Set appropriate power state, so the card stays active
++	 * after system shutdown. */
++	(void)pci_set_powerstate(dev, PCI_POWERSTATE_D3);
 +}
 Index: sys/pci/if_xlreg.h
 ===================================================================
 RCS file: /usr/ncvs/src/sys/pci/if_xlreg.h,v
 retrieving revision 1.55.2.1
-retrieving revision 1.55.2.1.10962.2
-diff -u -r1.55.2.1 -r1.55.2.1.10962.2
+diff -u -r1.55.2.1 if_xlreg.h
 --- sys/pci/if_xlreg.h	26 Aug 2005 14:46:22 -0000	1.55.2.1
-+++ sys/pci/if_xlreg.h	14 Oct 2007 21:25:52 -0000	1.55.2.1.10962.2
-@@ -29,7 +29,7 @@
-  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
-  * THE POSSIBILITY OF SUCH DAMAGE.
-  *
-- * $FreeBSD: src/sys/pci/if_xlreg.h,v 1.55.2.1 2005/08/26 14:46:22 jhb Exp $
-+ * $FreeBSD: src/sys/pci/if_xlreg.h,v 1.55.2.1.10962.2 2007/10/14 21:25:52 stsp Exp $
-  */
- 
- #define XL_EE_READ	0x0080	/* read, 5 bit address */
++++ sys/pci/if_xlreg.h	13 Jun 2007 23:12:49 -0000
 @@ -408,6 +408,7 @@
  #define XL_W7_BM_LEN		0x06
  #define XL_W7_BM_STATUS		0x0B
@@ -1439,15 +1286,7 @@ diff -u -r1.55.2.1 -r1.55.2.1.10962.2
  
  /*
   * bus master control registers
-@@ -576,6 +577,7 @@
- #define XL_FLAG_NO_XCVR_PWR		0x0080
- #define XL_FLAG_USE_MMIO		0x0100
- #define	XL_FLAG_NO_MMIO			0x0200
-+#define	XL_FLAG_SUPPORTS_WOL		0x0400
- 
- #define XL_NO_XCVR_PWR_MAGICBITS	0x0900
- 
-@@ -611,6 +613,7 @@
+@@ -611,6 +612,7 @@
  #ifdef DEVICE_POLLING
  	int			rxcycles;
  #endif
@@ -1455,39 +1294,21 @@ diff -u -r1.55.2.1 -r1.55.2.1.10962.2
  };
  
  #define XL_LOCK(_sc)		mtx_lock(&(_sc)->xl_mtx)
-@@ -739,3 +742,15 @@
+@@ -739,3 +741,7 @@
  #ifndef IFM_10_FL
  #define IFM_10_FL	13		/* 10baseFL - Fiber */
  #endif
 +
-+/* Bits in the XL_PCI_PWRMGMTCAP register */
-+#define XL_PME_SUPPORT_FROM_D0		0x0800
-+#define XL_PME_SUPPORT_FROM_D1		0x1000
-+#define XL_PME_SUPPORT_FROM_D2		0x2000
-+#define XL_PME_SUPPORT_FROM_D3hot	0x4000
-+#define XL_PME_SUPPORT_FROM_D3cold	0x8000
-+
 +#define	XL_WAKE_ON_MAGIC	0x0002
-+#define	XL_WAKE_ON_LINK		0x0004
 +#define	XL_SUPPORTED_WOL_EVENTS	IFWOL_WAKE_ON_MAGIC
 +
 Index: sys/sys/sockio.h
 ===================================================================
 RCS file: /usr/ncvs/src/sys/sys/sockio.h,v
 retrieving revision 1.28.2.1
-retrieving revision 1.28.2.1.10962.1
-diff -u -r1.28.2.1 -r1.28.2.1.10962.1
+diff -u -r1.28.2.1 sockio.h
 --- sys/sys/sockio.h	15 Feb 2006 03:37:15 -0000	1.28.2.1
-+++ sys/sys/sockio.h	14 Oct 2007 14:59:13 -0000	1.28.2.1.10962.1
-@@ -27,7 +27,7 @@
-  * SUCH DAMAGE.
-  *
-  *	@(#)sockio.h	8.1 (Berkeley) 3/28/94
-- * $FreeBSD: src/sys/sys/sockio.h,v 1.28.2.1 2006/02/15 03:37:15 ps Exp $
-+ * $FreeBSD: src/sys/sys/sockio.h,v 1.28.2.1.10962.1 2007/10/14 14:59:13 stsp Exp $
-  */
- 
- #ifndef _SYS_SOCKIO_H_
++++ sys/sys/sockio.h	30 Aug 2007 11:53:27 -0000
 @@ -117,4 +117,11 @@
  #define	SIOCIFDESTROY	 _IOW('i', 121, struct ifreq)	/* destroy clone if */
  #define	SIOCIFGCLONERS	_IOWR('i', 120, struct if_clonereq) /* get cloners */
