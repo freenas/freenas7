@@ -274,7 +274,7 @@ function is_validpassword($password) {
 	return true;
 }
 
-/* returns true if $login is a valid share name (alphanum,dot, _ , -)*/
+/* returns true if $sharename is a valid share name (alphanum, dot, _ , -)*/
 function is_validsharename($sharename) {
 	if (!is_string($sharename))
 		return false;
