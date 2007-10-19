@@ -15,4 +15,4 @@ install:	clean
 	@cp -pv ${SRCDIR}/tw_* /sys/dev/twa
 
 clean:
-	@rm -f -r $(SRCDIR)
+	@rm -f -r ${SRCDIR}
