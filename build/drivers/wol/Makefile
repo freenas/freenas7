@@ -1,4 +1,4 @@
-PATCH=	FreeBSD-6.2-wol-2007-08-30.diff
+PATCH=	FreeBSD-6.2-wol-2007-10-14.diff
 
 install:
 	# Create backup.
@@ -12,8 +12,8 @@ install:
 
 	@patch -p0 -d /usr/src < ${.CURDIR}/files/${PATCH}
 
-	@cd /usr/src
-	@make includes
-	@cd /usr/src/sbin/ifconfig
-	@make clean obj
-	@make && make install
+	#@cd /usr/src
+	#@make includes
+	#@cd /usr/src/sbin/ifconfig
+	#@make clean obj
+	#@make && make install
