@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Swap file"));
+$pgtitle = array(gettext("System"),gettext("Swap file"));
 
 $pconfig['swap_enable'] = isset($config['system']['swap_enable']);
 $pconfig['swap_mountname'] = $config['system']['swap_mountname'];
@@ -89,7 +89,7 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-				<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
+				<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced Setup");?></a></li>
 				<li class="tabinact"><a href="system_proxy.php"><?=gettext("Proxy");?></a></li>
 				<li class="tabact"><a href="system_swap.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Swap");?></a></li>
 				<li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>

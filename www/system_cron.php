@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Cron"));
+$pgtitle = array(gettext("System"),gettext("Cron"));
 
 if (!is_array($config['cron']['job']))
 	$config['cron']['job'] = array();
@@ -76,7 +76,7 @@ if ($_GET['act'] == "del") {
 	<tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-      	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
+      	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced Setup");?></a></li>
       	<li class="tabinact"><a href="system_proxy.php"><?=gettext("Proxy");?></a></li>
       	<li class="tabinact"><a href="system_swap.php"><?=gettext("Swap");?></a></li>
       	<li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>

@@ -45,7 +45,7 @@ if (isset($_POST['id']))
 if (isset($_POST['type']))
 	$type = $_POST['type'];
 
-$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Command scripts"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("System"),gettext("Command scripts"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['rc']['preinit']['cmd']))
 	$config['rc']['preinit']['cmd'] = array();
@@ -111,7 +111,7 @@ if ($_POST) {
 	<tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-      	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
+      	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced Setup");?></a></li>
       	<li class="tabinact"><a href="system_proxy.php"><?=gettext("Proxy");?></a></li>
       	<li class="tabinact"><a href="system_swap.php"><?=gettext("Swap");?></a></li>
         <li class="tabact"><a href="system_rc.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Command scripts");?></a></li>

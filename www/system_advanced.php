@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Advanced"));
+$pgtitle = array(gettext("System"),gettext("Advanced Setup"));
 
 $pconfig['cert'] = base64_decode($config['system']['webgui']['certificate']);
 $pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
@@ -105,7 +105,7 @@ if ($_POST) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><a href="system_advanced.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Advanced");?></a></li>
+        <li class="tabact"><a href="system_advanced.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Advanced Setup");?></a></li>
         <li class="tabinact"><a href="system_proxy.php"><?=gettext("Proxy");?></a></li>
         <li class="tabinact"><a href="system_swap.php"><?=gettext("Swap");?></a></li>
         <li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
