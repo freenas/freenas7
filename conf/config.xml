@@ -37,7 +37,25 @@
 		<swap_mountname></swap_mountname>
 		<swap_size></swap_size>
 		<swap_enable/>
-		 -->
+		-->
+		<proxy>
+			<http>
+				<!-- <enable/> -->
+				<address>proxy</address>
+				<port>8080</port>
+				<!-- <auth/> -->
+				<user></user>
+				<password></password>
+			</http>
+			<ftp>
+				<!-- <enable/> -->
+				<address>proxy</address>
+				<port>8080</port>
+				<!-- <auth/> -->
+				<user></user>
+				<password></password>
+			</ftp>
+		</proxy>
 	</system>
 	<interfaces>
 		<lan>

@@ -70,7 +70,10 @@ if ($_POST) {
 
 	$reqdfields = explode(" ", "login fullname password passwordconf primarygroup");
 	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Password"),gettext("Password confirmation"),gettext("Primary Group"));
+	$reqdfieldst = explode(" ", "string string password string numeric");
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	/* Check for valid login name */
 	if (($_POST['login'] && !is_validlogin($_POST['login']))) {
@@ -100,11 +103,6 @@ if ($_POST) {
 	/* Check for a password mismatch */
 	if ($_POST['password'] != $_POST['passwordconf']) {
 			$input_errors[] = gettext("Password don't match.");
-	}
-
-	/* Check for valid password  */
-	if (($_POST['password'] && !is_validpassword($_POST['password']))) {
-		$input_errors[] = gettext("The password contain the illegal : character");
 	}
 
 	if (!$input_errors) {

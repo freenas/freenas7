@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	system_advanced_swap.php
+	system_swap.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
@@ -85,23 +85,23 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them.");?></p>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
 				<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
-				<li class="tabact"><a href="system_advanced_swap.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Swap");?></a></li>
-				<li class="tabinact"><a href="system_advanced_rc.php"><?=gettext("Command scripts");?></a></li>
-				<li class="tabinact"><a href="system_advanced_cron.php"><?=gettext("Cron");?></a></li>
+				<li class="tabinact"><a href="system_proxy.php"><?=gettext("Proxy");?></a></li>
+				<li class="tabact"><a href="system_swap.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Swap");?></a></li>
+				<li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
+				<li class="tabinact"><a href="system_cron.php"><?=gettext("Cron");?></a></li>
       </ul>
     </td>
   </tr>
   <tr>
     <td class="tabcont">
-			<form action="system_advanced_swap.php" method="post" name="iform" id="iform">
+			<form action="system_swap.php" method="post" name="iform" id="iform">
+				<?php if ($input_errors) print_input_errors($input_errors); ?>
+				<?php if ($savemsg) print_info_box($savemsg); ?>
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
             <td colspan="2" valign="top" class="optsect_t">

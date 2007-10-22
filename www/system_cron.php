@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	system_advanced_cron.php
+	system_cron.php
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
@@ -66,27 +66,27 @@ if ($_GET['act'] == "del") {
 		unset($a_cron[$_GET['id']]);
 		write_config();
 		touch($d_cronconfdirty_path);
-		header("Location: system_advanced_cron.php");
+		header("Location: system_cron.php");
 		exit;
 	}
 }
 ?>
 <?php include("fbegin.inc");?>
-<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them.");?></p>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
       	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
-      	<li class="tabinact"><a href="system_advanced_swap.php"><?=gettext("Swap");?></a></li>
-      	<li class="tabinact"><a href="system_advanced_rc.php"><?=gettext("Command scripts");?></a></li>
-        <li class="tabact"><a href="system_advanced_cron.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Cron");?></a></li>
+      	<li class="tabinact"><a href="system_proxy.php"><?=gettext("Proxy");?></a></li>
+      	<li class="tabinact"><a href="system_swap.php"><?=gettext("Swap");?></a></li>
+      	<li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
+        <li class="tabact"><a href="system_cron.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Cron");?></a></li>
       </ul>
     </td>
   </tr>
   <tr>
     <td class="tabcont">
-    	<form action="system_advanced_cron.php" method="post">
+    	<form action="system_cron.php" method="post">
     		<?php if ($savemsg) print_info_box($savemsg);?>
 	    	<?php if (file_exists($d_cronconfdirty_path)): ?><p>
 	      <?php print_info_box_np(gettext("The cron job list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
@@ -107,14 +107,14 @@ if ($_GET['act'] == "del") {
 	          <td class="listr"><?=htmlspecialchars($job['command']);?>&nbsp;</td>
 	          <td class="listbg"><?=(isset($job['enable'])) ? gettext("Yes") : gettext("No");?>&nbsp;</td>
 	          <td valign="middle" nowrap class="list">
-							<a href="system_advanced_cron_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit job");?>" width="17" height="17" border="0"></a>
-							<a href="system_advanced_cron.php?act=del&type=device&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this cron job?");?>')"><img src="x.gif" title="<?=gettext("Delete job");?>" width="17" height="17" border="0"></a>
+							<a href="system_cron_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit job");?>" width="17" height="17" border="0"></a>
+							<a href="system_cron.php?act=del&type=device&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this cron job?");?>')"><img src="x.gif" title="<?=gettext("Delete job");?>" width="17" height="17" border="0"></a>
 	          </td>
 	        </tr>
 	        <?php $i++; endforeach;?>
 	        <tr>
 	          <td class="list" colspan="4"></td>
-	          <td class="list"><a href="system_advanced_cron_edit.php"><img src="plus.gif" title="<?=gettext("Add job");?>" width="17" height="17" border="0"></a></td>
+	          <td class="list"><a href="system_cron_edit.php"><img src="plus.gif" title="<?=gettext("Add job");?>" width="17" height="17" border="0"></a></td>
 	        </tr>
 	      </table>
 			</form>

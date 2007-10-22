@@ -152,6 +152,9 @@ function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfie
 				case 'port': 				$valid = is_port($postdata[$reqdfields[$i]]);
 														$message = sprintf( gettext("The attribute '%s' is an invalid port number."), $reqdfieldsn[$i]);
 														break;
+				case 'password':		$valid = is_validpassword($postdata[$reqdfields[$i]]);
+														$message = sprintf( gettext("The attribute '%s' contains the illegal character ':' and is no valid password."), $reqdfieldsn[$i]);
+														break;
 			}
 			if (!$valid) {
 				$input_errors[] = $message;
