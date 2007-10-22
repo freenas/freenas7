@@ -50,14 +50,14 @@ $pconfig['http_enable'] = isset($config['system']['proxy']['http']['enable']);
 $pconfig['http_address'] = $config['system']['proxy']['http']['address'];
 $pconfig['http_port'] = $config['system']['proxy']['http']['port'];
 $pconfig['http_auth'] = isset($config['system']['proxy']['http']['auth']);
-$pconfig['http_user'] = $config['system']['proxy']['http']['user'];
+$pconfig['http_username'] = $config['system']['proxy']['http']['username'];
 $pconfig['http_password'] = $config['system']['proxy']['http']['password'];
 
 $pconfig['ftp_enable'] = isset($config['system']['proxy']['ftp']['enable']);
 $pconfig['ftp_address'] = $config['system']['proxy']['ftp']['address'];
 $pconfig['ftp_port'] = $config['system']['proxy']['ftp']['port'];
 $pconfig['ftp_auth'] = isset($config['system']['proxy']['ftp']['auth']);
-$pconfig['ftp_user'] = $config['system']['proxy']['ftp']['user'];
+$pconfig['ftp_username'] = $config['system']['proxy']['ftp']['username'];
 $pconfig['ftp_password'] = $config['system']['proxy']['ftp']['password'];
 
 if ($_POST) {
@@ -74,7 +74,7 @@ if ($_POST) {
 		$reqdfieldst = array_merge($reqdfieldst,array("string","numeric"));
 
 		if ($_POST['http_auth']) {
-			$reqdfields = array_merge($reqdfields, explode(" ", "http_user http_password"));
+			$reqdfields = array_merge($reqdfields, explode(" ", "http_username http_password"));
 			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("User"),gettext("Password")));
 			$reqdfieldst = array_merge($reqdfieldst,array("string","password"));
 		}
@@ -86,7 +86,7 @@ if ($_POST) {
 		$reqdfieldst = array_merge($reqdfieldst,array("string","numeric"));
 
 		if ($_POST['ftp_auth']) {
-			$reqdfields = array_merge($reqdfields, explode(" ", "ftp_user ftp_password"));
+			$reqdfields = array_merge($reqdfields, explode(" ", "ftp_username ftp_password"));
 			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("User"),gettext("Password")));
 			$reqdfieldst = array_merge($reqdfieldst,array("string","password"));
 		}
@@ -106,14 +106,14 @@ if ($_POST) {
 		$config['system']['proxy']['http']['address'] = $pconfig['http_address'];
 		$config['system']['proxy']['http']['port'] = $pconfig['http_port'];
 		$config['system']['proxy']['http']['auth'] = $pconfig['http_auth'] ? true : false;
-		$config['system']['proxy']['http']['user'] = $pconfig['http_user'];
+		$config['system']['proxy']['http']['username'] = $pconfig['http_username'];
 		$config['system']['proxy']['http']['password'] = $pconfig['http_password'];
 
 		$config['system']['proxy']['ftp']['enable'] = $pconfig['ftp_enable'] ? true : false;
 		$config['system']['proxy']['ftp']['address'] = $pconfig['ftp_address'];
 		$config['system']['proxy']['ftp']['port'] = $pconfig['ftp_port'];
 		$config['system']['proxy']['ftp']['auth'] = $pconfig['ftp_auth'] ? true : false;
-		$config['system']['proxy']['ftp']['user'] = $pconfig['ftp_user'];
+		$config['system']['proxy']['ftp']['username'] = $pconfig['ftp_username'];
 		$config['system']['proxy']['ftp']['password'] = $pconfig['ftp_password'];
 
 		write_config();
@@ -136,28 +136,28 @@ function enable_change(enable_change) {
 		document.iform.http_address.disabled = endis;
 		document.iform.http_port.disabled = endis;
 		document.iform.http_auth.disabled = endis;
-		document.iform.http_user.disabled = endis;
+		document.iform.http_username.disabled = endis;
 		document.iform.http_password.disabled = endis;
 	} else if (enable_change.name == "ftp_enable") {
 		var endis = !enable_change.checked;
 		document.iform.ftp_address.disabled = endis;
 		document.iform.ftp_port.disabled = endis;
 		document.iform.ftp_auth.disabled = endis;
-		document.iform.ftp_user.disabled = endis;
+		document.iform.ftp_username.disabled = endis;
 		document.iform.ftp_password.disabled = endis;
 	} else {
 		var endis = !(document.iform.http_enable.checked || enable_change);
 		document.iform.http_address.disabled = endis;
 		document.iform.http_port.disabled = endis;
 		document.iform.http_auth.disabled = endis;
-		document.iform.http_user.disabled = endis;
+		document.iform.http_username.disabled = endis;
 		document.iform.http_password.disabled = endis;
 
 		endis = !(document.iform.ftp_enable.checked || enable_change);
 		document.iform.ftp_address.disabled = endis;
 		document.iform.ftp_port.disabled = endis;
 		document.iform.ftp_auth.disabled = endis;
-		document.iform.ftp_user.disabled = endis;
+		document.iform.ftp_username.disabled = endis;
 		document.iform.ftp_password.disabled = endis;
 	}
 }
@@ -165,24 +165,24 @@ function enable_change(enable_change) {
 function proxy_auth_change() {
 	switch(document.iform.http_auth.checked) {
 		case false:
-      showElementById('http_user_tr','hide');
+      showElementById('http_username_tr','hide');
   		showElementById('http_password_tr','hide');
       break;
 
     case true:
-      showElementById('http_user_tr','show');
+      showElementById('http_username_tr','show');
   		showElementById('http_password_tr','show');
       break;
 	}
 
 	switch(document.iform.ftp_auth.checked) {
 		case false:
-      showElementById('ftp_user_tr','hide');
+      showElementById('ftp_username_tr','hide');
   		showElementById('ftp_password_tr','hide');
       break;
 
     case true:
-      showElementById('ftp_user_tr','show');
+      showElementById('ftp_username_tr','show');
   		showElementById('ftp_password_tr','show');
       break;
 	}
@@ -236,10 +236,10 @@ function proxy_auth_change() {
 			        <?=gettext("Login is required.");?>
 						</td>
 			    </tr>
-			    <tr id="http_user_tr">
+			    <tr id="http_username_tr">
 				    <td width="22%" valign="top" class="vncellreq"><?=gettext("User");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="http_user" type="text" class="formfld" id="http_user" size="20" value="<?=htmlentities($pconfig['http_user']);?>">
+			        <input name="http_username" type="text" class="formfld" id="http_username" size="20" value="<?=htmlentities($pconfig['http_username']);?>">
 			      </td>
 					</tr>
 					<tr id="http_password_tr">
@@ -280,10 +280,10 @@ function proxy_auth_change() {
 			        <?=gettext("Login is required.");?>
 						</td>
 			    </tr>
-			    <tr id="ftp_user_tr">
+			    <tr id="ftp_username_tr">
 				    <td width="22%" valign="top" class="vncellreq"><?=gettext("User");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="ftp_user" type="text" class="formfld" id="ftp_user" size="20" value="<?=htmlentities($pconfig['ftp_user']);?>">
+			        <input name="ftp_username" type="text" class="formfld" id="ftp_username" size="20" value="<?=htmlentities($pconfig['ftp_username']);?>">
 			      </td>
 					</tr>
 					<tr id="ftp_password_tr">

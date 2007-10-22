@@ -44,7 +44,7 @@
 				<address>proxy</address>
 				<port>8080</port>
 				<!-- <auth/> -->
-				<user></user>
+				<username></username>
 				<password></password>
 			</http>
 			<ftp>
@@ -52,7 +52,7 @@
 				<address>proxy</address>
 				<port>8080</port>
 				<!-- <auth/> -->
-				<user></user>
+				<username></username>
 				<password></password>
 			</ftp>
 		</proxy>
