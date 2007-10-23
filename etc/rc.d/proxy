@@ -13,7 +13,7 @@
 
 # Defaults
 cshrc_config=${cshrc_config:-"/root/.cshrc"}
-cshrc_config_tmp=${cshrc_config_tmp:-"/tmp/.cshrc"}
+cshrc_config_tmp=${cshrc_config_tmp:-"/tmp/.cshrc$$"}
 
 # remove string
 # Remove given string from file.
