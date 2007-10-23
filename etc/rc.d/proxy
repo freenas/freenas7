@@ -19,7 +19,7 @@ cshrc_config_tmp=${cshrc_config_tmp:-"/tmp/.cshrc"}
 # Remove given string from file.
 remove() {
 	if [ -e ${cshrc_config} ]; then
-		/usr/bin/sed "/^.*${1}=.*/d" ${cshrc_config} > ${cshrc_config_tmp}
+		/usr/bin/sed "/^.*${1}.*/d" ${cshrc_config} > ${cshrc_config_tmp}
 		/bin/mv -f ${cshrc_config_tmp} ${cshrc_config}
 	fi
 }
