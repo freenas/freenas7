@@ -117,13 +117,7 @@ if ($_POST) {
 		$config['system']['proxy']['ftp']['password'] = $pconfig['ftp_password'];
 
 		write_config();
-
-		$retval = 0;
-		if (!file_exists($d_sysrebootreqd_path)) {
-			config_lock();
-			config_unlock();
-		}
-		$savemsg = get_std_save_message($retval);
+		touch($d_sysrebootreqd_path);
 	}
 }
 ?>
@@ -206,6 +200,7 @@ function proxy_auth_change() {
     	<form action="system_proxy.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
+				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			  	<tr>
             <td colspan="2" valign="top" class="optsect_t">
