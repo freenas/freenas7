@@ -25,6 +25,7 @@ Majors changes:
 - Add SNMP service support.
 - Upgrade Samba to 3.0.26a
 - Permit to convert a 'full' release to an 'embedded' (from the CDROM)
+- Add proxy support (WebGUI: 'System/Advanced/Proxy').
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
