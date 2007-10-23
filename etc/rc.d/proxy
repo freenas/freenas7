@@ -13,33 +13,22 @@
 
 # Defaults
 cshrc_config=${cshrc_config:-"/root/.cshrc"}
-cshrc_config_tmp=${cshrc_config_tmp:-"/tmp/.cshrc$$"}
 
-# remove string
-# Remove given string from file.
-remove() {
-	if [ -e ${cshrc_config} ]; then
-		/usr/bin/sed "/^.*${1}.*/d" ${cshrc_config} > ${cshrc_config_tmp}
-		/bin/mv -f ${cshrc_config_tmp} ${cshrc_config}
-	fi
-}
-
-# Remove proxy settings.
-remove "HTTP_PROXY"
-remove "HTTP_PROXY_AUTH"
-remove "FTP_PROXY"
-remove "FTP_PROXY_AUTH"
+# Remove proxy settings (HTTP_PROXY, HTTP_PROXY_AUTH, FTP_PROXY and FTP_PROXY_AUTH).
+if [ -e ${cshrc_config} ]; then
+	/usr/bin/sed -i "" '/^.*[HTTP|FTP]_PROXY[_AUTH]*.*$/d' ${cshrc_config}
+fi
 
 # Set proxy settings.
 /usr/local/bin/xml sel -t \
 	-m "//system/proxy/http" \
-		-i "count(enable) > 0" -n -v "concat('setenv HTTP_PROXY &quot;',address,':',port,'&quot;')" -n \
-			-i "count(auth) > 0" -v "concat('setenv HTTP_PROXY_AUTH &quot;basic:*:',username,':',password,'&quot;')" -b \
+		-i "count(enable) > 0" -n -v "concat('setenv HTTP_PROXY &quot;',address,':',port,'&quot;')" \
+			-i "count(auth) > 0" -n -v "concat('setenv HTTP_PROXY_AUTH &quot;basic:*:',username,':',password,'&quot;')" -b \
 		-b \
 	-b \
 	-m "//system/proxy/ftp" \
-		-i "count(enable) > 0" -n -v "concat('setenv FTP_PROXY &quot;',address,':',port,'&quot;')" -n \
-			-i "count(auth) > 0" -v "concat('setenv FTP_PROXY_AUTH &quot;basic:*:',username,':',password,'&quot;')" -b \
+		-i "count(enable) > 0" -n -v "concat('setenv FTP_PROXY &quot;',address,':',port,'&quot;')" \
+			-i "count(auth) > 0" -n -v "concat('setenv FTP_PROXY_AUTH &quot;basic:*:',username,':',password,'&quot;')" -b \
 		-b \
 	-b \
 	${configxml_file} | /usr/local/bin/xml unesc >> ${cshrc_config}

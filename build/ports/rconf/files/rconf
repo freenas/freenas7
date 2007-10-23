@@ -14,7 +14,6 @@ version="0.1.6"
 type=${1}
 action=${2}
 rc_config=${rc_config:-"/etc/rc.conf"}
-rc_config_tmp=${rc_config_tmp:-"/tmp/rc$$.conf"}
 
 usage() {
 cat << FOO
@@ -52,8 +51,7 @@ FOO
 # Remove given string from file.
 remove() {
 	if [ -e ${rc_config} ]; then
-		/usr/bin/sed "/^${1}=.*/d" ${rc_config} > ${rc_config_tmp}
-		/bin/mv -f ${rc_config_tmp} ${rc_config}
+		/usr/bin/sed -i "" "/^${1}=.*/d" ${rc_config}
 	fi
 }
 
