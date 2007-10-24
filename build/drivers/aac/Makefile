@@ -5,8 +5,9 @@ install:	clean
 	@mkdir -pv ${SRCDIR}
 	@tar -xvf ${.CURDIR}/files/${ARCHIVE} -C ${SRCDIR}
 
-	@if [ ! -e "/sys/dev/aac.orig" ]; then \
-    cp -pvR /sys/dev/aac /sys/dev/aac.orig; \
+# Create backup.
+	-@if [ ! -e /sys/dev/aac.orig ]; then \
+		cp -pvR /sys/dev/aac /sys/dev/aac.orig; \
 	fi
 
 	@cp -pv $(SRCDIR)/aac.c /sys/dev/aac
@@ -21,3 +22,8 @@ install:	clean
 
 clean:
 	@rm -f -r ${SRCDIR}
+
+	-@if [ -e /sys/dev/aac.orig ]; then \
+		rm -rfv /sys/dev/aac; \
+		mv -fv /sys/dev/aac.orig /sys/dev/aac; \
+	fi
