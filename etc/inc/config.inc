@@ -939,6 +939,20 @@ function convert_config() {
 		$config['version'] = "3.1";
 	}
 
+	/* Convert 3.1 -> 3.2 */
+	/* Modify NTP settings. */
+	if ($config['version'] === "3.1") {
+		$config['system']['ntp']['timeservers'] = $config['system']['timeservers'];
+		$config['system']['ntp']['updateinterval'] = $config['system']['time-update-interval'];
+		if ("0" !== $config['system']['time-update-interval'])
+			$config['system']['ntp']['enable'] = true;
+
+		unset($config['system']['time-update-interval']);
+		unset($config['system']['timeservers']);
+
+		$config['version'] = "3.2";
+	}
+
 	write_config();
 
 	if (is_booting())

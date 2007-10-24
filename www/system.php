@@ -41,26 +41,28 @@ $pconfig['domain'] = $config['system']['domain'];
 list($pconfig['dns1'],$pconfig['dns2']) = get_ipv4dnsserver();
 list($pconfig['ipv6dns1'],$pconfig['ipv6dns2']) = get_ipv6dnsserver();
 $pconfig['username'] = $config['system']['username'];
-if (!$pconfig['username'])
-	$pconfig['username'] = "admin";
 $pconfig['webguiproto'] = $config['system']['webgui']['protocol'];
-if (!$pconfig['webguiproto'])
-	$pconfig['webguiproto'] = "http";
 $pconfig['webguiport'] = $config['system']['webgui']['port'];
 $pconfig['language'] = $config['system']['language'];
 $pconfig['timezone'] = $config['system']['timezone'];
-$pconfig['timeupdateinterval'] = $config['system']['time-update-interval'];
-$pconfig['timeservers'] = $config['system']['timeservers'];
+$pconfig['ntp_enable'] = isset($config['system']['ntp']['enable']);
+$pconfig['ntp_timeservers'] = $config['system']['ntp']['timeservers'];
+$pconfig['ntp_updateinterval'] = $config['system']['ntp']['updateinterval'];
 $pconfig['language'] = $config['system']['language'];
+
+// Set default values if necessary.
 if (!$pconfig['language'])
 	$pconfig['language'] = "English";
-
-if (!isset($pconfig['timeupdateinterval']))
-	$pconfig['timeupdateinterval'] = 300;
 if (!$pconfig['timezone'])
 	$pconfig['timezone'] = "Etc/UTC";
-if (!$pconfig['timeservers'])
-	$pconfig['timeservers'] = "pool.ntp.org";
+if (!$pconfig['webguiproto'])
+	$pconfig['webguiproto'] = "http";
+if (!$pconfig['username'])
+	$pconfig['username'] = "admin";
+if (!$pconfig['ntp_timeservers'])
+	$pconfig['ntp_timeservers'] = "pool.ntp.org";
+if (!isset($pconfig['ntp_updateinterval']))
+	$pconfig['ntp_updateinterval'] = 300;
 
 function is_timezone($elt) {
 	return !preg_match("/\/$/", $elt);
@@ -75,8 +77,13 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	$reqdfields = split(" ", "hostname domain username");
+	$reqdfields = explode(" ", "hostname domain username");
 	$reqdfieldsn = array(gettext("Hostname"),gettext("Domain"),gettext("Username"));
+
+	if (isset($_POST['ntp_enable'])) {
+		$reqdfields = array_merge($reqdfields, explode(" ", "ntp_timeservers ntp_updateinterval"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("NTP time server"),gettext("Time update interval")));
+	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -103,14 +110,16 @@ if ($_POST) {
 		$input_errors[] = gettext("The passwords do not match.");
 	}
 
-	$t = (int)$_POST['timeupdateinterval'];
-	if (($t < 0) || (($t > 0) && ($t < 6)) || ($t > 1440)) {
-		$input_errors[] = gettext("The time update interval must be either 0 (disabled) or between 6 and 1440.");
-	}
-
-	foreach (explode(' ', $_POST['timeservers']) as $ts) {
-		if (!is_domain($ts)) {
-			$input_errors[] = gettext("A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'.");
+	if (isset($_POST['ntp_enable'])) {
+		$t = (int)$_POST['ntp_updateinterval'];
+		if (($t < 0) || (($t > 0) && ($t < 6)) || ($t > 1440)) {
+			$input_errors[] = gettext("The time update interval must be either between 6 and 1440.");
+		}
+	
+		foreach (explode(' ', $_POST['ntp_timeservers']) as $ts) {
+			if (!is_domain($ts)) {
+				$input_errors[] = gettext("A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'.");
+			}
 		}
 	}
 
@@ -124,8 +133,9 @@ if ($_POST) {
 		$config['system']['webgui']['port'] = $pconfig['webguiport'];
 		$config['system']['language'] = $_POST['language'];
 		$config['system']['timezone'] = $_POST['timezone'];
-		$config['system']['timeservers'] = strtolower($_POST['timeservers']);
-		$config['system']['time-update-interval'] = $_POST['timeupdateinterval'];
+		$config['system']['ntp']['enable'] = $_POST['ntp_enable'] ? true : false;
+		$config['system']['ntp']['timeservers'] = strtolower($_POST['ntp_timeservers']);
+		$config['system']['ntp']['updateinterval'] = $_POST['ntp_updateinterval'];
 
 		unset($config['system']['dnsserver']);
 		// Only store IPv4 DNS servers when using static IPv4.
@@ -195,11 +205,20 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
+<?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function ntp_change(enable_change) {
+	var endis = !(document.iform.ntp_enable.checked || enable_change);
+	document.iform.ntp_timeservers.disabled = endis;
+	document.iform.ntp_updateinterval.disabled = endis;
+}
+//-->
+</script>
 <script language="JavaScript" src="datetimepicker.js"></script>
 <form action="system.php" method="post" name="iform" id="iform">
+	<?php if ($input_errors) print_input_errors($input_errors);?>
+	<?php if ($savemsg) print_info_box($savemsg);?>
   <table width="100%" border="0" cellpadding="6" cellspacing="0">
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
@@ -272,14 +291,6 @@ if ($_POST) {
     		</select>
       </td>
     </tr>
-		<tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("System Time");?></td>
-      <td width="78%" class="vtable">
-			  <input name="systime" id="systime" type="text" size="20">
-			  <a href="javascript:NewCal('systime','mmddyyyy',true,24)"><img src="cal.gif" width="16" height="16" border="0" align="top" alt="<?=gettext("Pick a date");?>"></a><br>
-        <span class="vexpl"><?=gettext("Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select one, then use Save button to update system time. (Mind seconds part will be ignored)");?></span>
-			</td>
-    </tr>
     <tr>
       <td width="22%" valign="top" class="vncell"><?=gettext("Time zone");?></td>
       <td width="78%" class="vtable">
@@ -294,19 +305,34 @@ if ($_POST) {
       </td>
     </tr>
     <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Time update interval");?></td>
-      <td width="78%" class="vtable">
-        <input name="timeupdateinterval" type="text" class="formfld" id="timeupdateinterval" size="20" value="<?=htmlspecialchars($pconfig['timeupdateinterval']);?>"><br>
-        <span class="vexpl"><?=gettext("Minutes between network time sync.; 300	recommended, or 0 to disable.");?></span>
-      </td>
+			<td width="22%" valign="top" class="vncell"><?=gettext("System Time");?></td>
+			<td width="78%" class="vtable">
+				<input name="systime" id="systime" type="text" size="20">
+				<a href="javascript:NewCal('systime','mmddyyyy',true,24)"><img src="cal.gif" width="16" height="16" border="0" align="top" alt="<?=gettext("Pick a date");?>"></a><br>
+				<span class="vexpl"><?=gettext("Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select one, then use Save button to update system time. (Mind seconds part will be ignored)");?></span>
+			</td>
     </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("NTP time server");?></td>
-      <td width="78%" class="vtable">
-        <input name="timeservers" type="text" class="formfld" id="timeservers" size="40" value="<?=htmlspecialchars($pconfig['timeservers']);?>"><br>
-        <span class="vexpl"><?=gettext("Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!");?></span>
-      </td>
-    </tr>
+		<tr>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Enable NTP");?></td>
+			<td width="78%" class="vtable">
+				<input name="ntp_enable" type="checkbox" id="ntp_enable" value="yes" <?php if ($pconfig['ntp_enable']) echo "checked";?> onClick="ntp_change(false)">
+				<span class="vexpl"><?=gettext("Use the specified NTP server.");?></span>
+			</td>
+		</tr>
+		<tr>
+			<td width="22%" valign="top" class="vncell"><?=gettext("NTP time server");?></td>
+			<td width="78%" class="vtable">
+				<input name="ntp_timeservers" type="text" class="formfld" id="ntp_timeservers" size="40" value="<?=htmlspecialchars($pconfig['ntp_timeservers']);?>"><br>
+				<span class="vexpl"><?=gettext("Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!");?></span>
+			</td>
+		</tr>
+		<tr>
+			<td width="22%" valign="top" class="vncell"><?=gettext("Time update interval");?></td>
+			<td width="78%" class="vtable">
+				<input name="ntp_updateinterval" type="text" class="formfld" id="ntp_updateinterval" size="20" value="<?=htmlspecialchars($pconfig['ntp_updateinterval']);?>"><br>
+				<span class="vexpl"><?=gettext("Minutes between network time sync.");?></span>
+			</td>
+		</tr>
     <tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
@@ -315,4 +341,9 @@ if ($_POST) {
     </tr>
   </table>
 </form>
-<?php include("fend.inc"); ?>
+<script language="JavaScript">
+<!--
+ntp_change(false);
+//-->
+</script>
+<?php include("fend.inc");?>

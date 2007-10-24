@@ -92,24 +92,15 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
-function enable_change(enable_over) {
-	if (document.iform.enable.checked || enable_over) {
-		document.iform.ipaddr.disabled = 0;
-		document.iform.sshd.disabled = 0;
-		document.iform.system.disabled = 0;
-		document.iform.ftp.disabled = 0;
-		document.iform.rsyncd.disabled = 0;
-		document.iform.smartd.disabled = 0;
-		document.iform.daemon.disabled = 0;
-	} else {
-		document.iform.ipaddr.disabled = 1;
-		document.iform.sshd.disabled = 1;
-		document.iform.system.disabled = 1;
-		document.iform.ftp.disabled = 1;
-		document.iform.rsyncd.disabled = 1;
-		document.iform.smartd.disabled = 1;
-		document.iform.daemon.disabled = 1;
-	}
+function enable_change(enable_change) {
+	var endis = !(document.iform.enable.checked || enable_change);
+	document.iform.ipaddr.disabled = endis;
+	document.iform.sshd.disabled = endis;
+	document.iform.system.disabled = endis;
+	document.iform.ftp.disabled = endis;
+	document.iform.rsyncd.disabled = endis;
+	document.iform.smartd.disabled = endis;
+	document.iform.daemon.disabled = endis;
 }
 // -->
 </script>
