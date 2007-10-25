@@ -81,6 +81,7 @@ Minors changes:
 - Rename 'Resume' to 'Keep all files' option on FTP WebGUI page. Also update option description text.
 - Use nano as default editor. Thanks to Carsten Hammer.
 - Remove Samba 'ReadAhead' setting because this is not supported on FreeBSD.
+- Refresh RAID information pages automatically every 5 seconds to display progress (e.g. when creating or rebuilding RAID).
 
 Bug fixs:
 - Fix bug in Mount Point WebGUI page when using file system 'CD/DVD'.
