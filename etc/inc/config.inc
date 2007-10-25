@@ -943,9 +943,12 @@ function convert_config() {
 	/* Modify NTP settings. */
 	if ($config['version'] === "3.1") {
 		$config['system']['ntp']['timeservers'] = $config['system']['timeservers'];
-		$config['system']['ntp']['updateinterval'] = $config['system']['time-update-interval'];
-		if ("0" !== $config['system']['time-update-interval'])
+		if ("0" !== $config['system']['time-update-interval']) {
 			$config['system']['ntp']['enable'] = true;
+			$config['system']['ntp']['updateinterval'] = $config['system']['time-update-interval'];
+		}	else {
+			$config['system']['ntp']['updateinterval'] = 300;
+		}
 
 		unset($config['system']['time-update-interval']);
 		unset($config['system']['timeservers']);
