@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_raid_gconcat_info.php
-	
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
@@ -32,21 +32,21 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Geom Concat"), gettext("Information"));
+$pgrefresh = 5; // Refresh every 5 seconds.
 
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabact"><a href="disks_raid_gconcat.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("JBOD");?></a></li>
 	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("RAID 0"); ?> </a></li>
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("RAID 1"); ?></a></li>
-	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("RAID 5"); ?></a></li> 
-	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?></a></li> 
+	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("RAID 5"); ?></a></li>
+	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?></a></li>
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
@@ -56,22 +56,19 @@ $pgtitle = array(gettext("Disks"), gettext("Geom Concat"), gettext("Information"
 	<li class="tabact"><a href="disks_raid_gconcat_info.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Information");?></a></li>
   </ul>
   </td></tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
-<?php
-
-    
-echo "<pre>";
-
-echo "<strong>" . gettext("Software RAID information and status") . "</strong><br>";
-	exec("/sbin/gconcat list",$rawdata);
-	foreach ($rawdata as $line)
-	{
-          echo htmlspecialchars($line) . "<br>";
-	}
-	unset ($line);
-echo "</pre>";
-?>
-
-</td></tr></table>
-<?php include("fend.inc"); ?>
+			<?php
+			echo "<pre>";
+			echo "<strong>" . gettext("Software RAID information and status") . "</strong><br>";
+			exec("/sbin/gconcat list",$rawdata);
+			foreach ($rawdata as $line) {
+				echo htmlspecialchars($line) . "<br>";
+			}
+			unset ($line);
+			echo "</pre>";
+			?>
+		</td>
+	</tr>
+</table>
+<?php include("fend.inc");?>

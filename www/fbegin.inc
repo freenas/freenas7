@@ -142,6 +142,9 @@ function display_menu($menu) {
 	<head>
 	<title><?=genhtmltitle($pgtitle);?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?=system_get_language_codeset();?>">
+	<?php if ($pgrefresh):?>
+	<meta http-equiv="refresh" content="<?=$pgrefresh;?>">
+	<?php endif;?>
 	<link href="gui.css" rel="stylesheet" type="text/css">
 </head>
 <body link="#0000CC" vlink="#0000CC" alink="#0000CC">

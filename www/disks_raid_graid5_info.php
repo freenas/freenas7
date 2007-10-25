@@ -32,13 +32,13 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("Information"));
+$pgrefresh = 5; // Refresh every 5 seconds.
 
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr><td class="tabnavtbl">
   <ul id="tabnav">
@@ -58,17 +58,17 @@ $pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("Information")
   </td></tr>
   <tr> 
     <td class="tabcont">
-<?php
-echo "<pre>";
-echo "<strong>" . gettext("Software RAID information and status") . "</strong><br>";
-	exec("/sbin/graid5 list",$rawdata);
-	foreach ($rawdata as $line)
-	{
-          echo htmlspecialchars($line) . "<br>";
-	}
-	unset ($line);
-echo "</pre>";
-?>
-
-</td></tr></table>
-<?php include("fend.inc"); ?>
+			<?php
+			echo "<pre>";
+			echo "<strong>" . gettext("Software RAID information and status") . "</strong><br>";
+			exec("/sbin/graid5 list",$rawdata);
+			foreach ($rawdata as $line) {
+				echo htmlspecialchars($line) . "<br>";
+			}
+			unset ($line);
+			echo "</pre>";
+			?>
+		</td>
+	</tr>
+</table>
+<?php include("fend.inc");?>
