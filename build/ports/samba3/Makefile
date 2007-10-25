@@ -1,7 +1,7 @@
 PORTNAME=			samba
 PORTVERSION=	3.0.26a
 PORTREVISION=	0
-PORTEPOCH=		2
+PORTEPOCH=		3
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
 MAINTAINER=		votdev@gmx.de
@@ -65,7 +65,6 @@ do-install:
 
 	@${CP} -pv ${WRKSRC}/bin/CP*.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/charset
 	@${CP} -pv ${WRKSRC}/codepages/*.dat ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}
-	@${CP} -pv ${WRKSRC}/po/*.* ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}
 	@${CP} -pv ${WRKSRC}/bin/recycle.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv $(WRKSRC)/bin/netatalk.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/vfs
 	@${CP} -pv ${WRKSRC}/bin/rid.so ${FREENAS_ROOTFS}${SAMBA_MODULEDIR}/idmap
