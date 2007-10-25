@@ -13,7 +13,7 @@ function genhtmltitle($title) {
 // System
 $menu['system']['desc'] = "System";
 $menu['system']['menuitem'] = array();
-$menu['system']['menuitem'][] = array("desc" => "General Setup", "link" => "system.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => "General", "link" => "system.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => "Advanced", "link" => "system_advanced.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => "Static Routes", "link" => "system_routes.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => "Hosts", "link" => "system_hosts.php", "visible" => true);
