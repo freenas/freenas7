@@ -239,6 +239,9 @@ function ntp_change(enable_change) {
 			      </td>
 			    </tr>
 			    <tr>
+						<td colspan="2" class="list" height="12"></td>
+			    </tr>
+			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("IPv4 DNS servers");?></td>
 			      <td width="78%" class="vtable">
 							<?php $dns_ctrl_disabled = ("dhcp" == $config['interfaces']['lan']['ipaddr']) ? "disabled" : "";?>
@@ -255,6 +258,9 @@ function ntp_change(enable_change) {
 							<input name="ipv6dns2" type="text" class="formfld" id="ipv6dns2" size="20" value="<?=htmlspecialchars($pconfig['ipv6dns2']);?>" <?=$dns_ctrl_disabled;?>><br>
 							<span class="vexpl"><?=gettext("IPv6 addresses");?><br>
 			      </td>
+			    </tr>
+			    <tr>
+						<td colspan="2" class="list" height="12"></td>
 			    </tr>
 			    <tr>
 			      <td valign="top" class="vncell"><?=gettext("Username");?></td>
@@ -287,6 +293,9 @@ function ntp_change(enable_change) {
 			    		</select>
 			      </td>
 			    </tr>
+					<tr>
+						<td colspan="2" class="list" height="12"></td>
+					</tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Time zone");?></td>
 			      <td width="78%" class="vtable">
