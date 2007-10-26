@@ -228,14 +228,14 @@ function ntp_change(enable_change) {
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="hostname" type="text" class="formfld" id="hostname" size="40" value="<?=htmlspecialchars($pconfig['hostname']);?>"><br>
-			        <span class="vexpl"><?=gettext("Name of the NAS host, without domain part<br>e.g. <em>nas</em>");?></span>
+			        <span class="vexpl"><?=sprintf(gettext("Name of the NAS host, without domain part e.g. %s."), "<em>" . strtolower(get_product_name()) ."</em>");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="domain" type="text" class="formfld" id="domain" size="40" value="<?=htmlspecialchars($pconfig['domain']);?>"><br>
-			        <span class="vexpl"><?=gettext("e.g. <em>mycorp.com</em>");?></span>
+			        <span class="vexpl"><?=sprintf(gettext("e.g. %s"), "<em>com, local</em>");?></span>
 			      </td>
 			    </tr>
 			    <tr>
@@ -266,7 +266,7 @@ function ntp_change(enable_change) {
 			      <td valign="top" class="vncell"><?=gettext("Username");?></td>
 			      <td class="vtable">
 			        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=$pconfig['username'];?>"><br>
-			        <span class="vexpl"><?=gettext("If you want to change the username for accessing the webGUI, enter it here.");?></span>
+			        <span class="vexpl"><?=gettext("If you want to change the username for accessing the WebGUI, enter it here.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
@@ -280,7 +280,7 @@ function ntp_change(enable_change) {
 			      <td valign="top" class="vncell"><?=gettext("WebGUI port");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="webguiport" type="text" class="formfld" id="webguiport" size="20" value="<?=htmlspecialchars($pconfig['webguiport']);?>"><br>
-			        <span class="vexpl"><?=gettext("Enter a custom port number for the webGUI above if you want to override the default (80 for HTTP, 443 for HTTPS).");?></span>
+			        <span class="vexpl"><?=gettext("Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS).");?></span>
 			      </td>
 			    </tr>
 			    <tr>
