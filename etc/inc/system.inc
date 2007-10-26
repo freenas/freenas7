@@ -84,6 +84,9 @@ function system_get_language_codeset() {
 	$language = $config['system']['language'];
 	$codeset = $g_languages[$language]['codeset'];
 
+	if (empty($codeset))
+		$codeset = "ISO-8859-1"; // Set default codeset.
+
 	return $codeset;
 }
 ?>
