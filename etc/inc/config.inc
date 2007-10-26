@@ -868,6 +868,8 @@ function convert_config() {
 
 		if (array_key_exists($config['system']['language'], $language)) {
 			$config['system']['language'] = $language[$config['system']['language']];
+		} else {
+			$config['system']['language'] = "en_US"; // Set default language.
 		}
 
 		$config['version'] = "2.7";
