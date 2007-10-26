@@ -154,11 +154,11 @@ function display_menu($menu) {
     <td width="150" height="65" align="center" valign="middle">
 			<strong><a href="http://www.<?=get_product_url();?>" target="_blank"><img src="/logo.gif" width="150" height="47" border="0"></a></strong>
 		</td>
-    <td height="65" bgcolor="#435370">
+    <td height="65" class="pgheader">
 			<table border="0" cellspacing="0" cellpadding="0" width="100%">
 				<tr>
 					<td align="left" valign="bottom">
-						<span class="tfrtitle">&nbsp;<?=gettext("webGUI Configuration");?></span>
+						<span class="pgheadertext">&nbsp;<?=gettext("webGUI Configuration");?></span>
 					</td>
 			  	<td align="right" valign="bottom">
 						<span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
@@ -168,7 +168,7 @@ function display_menu($menu) {
 		</td>
 	</tr>
   <tr valign="top">
-    <td width="150" bgcolor="#9D9D9D">
+    <td width="150" class="pgnavbar">
 			<table width="100%" border="0" cellpadding="6" cellspacing="0">
         <tr>
           <td>
