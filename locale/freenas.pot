@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-09-10 06:54+0000\n"
+"PO-Revision-Date: 2007-10-26 12:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,10 @@ msgid " interfaces:"
 msgstr ""
 
 msgid " was assigned to "
+msgstr ""
+
+#, php-format
+msgid "%d%% of %dMB"
 msgstr ""
 
 #, php-format
@@ -28,7 +32,19 @@ msgid "%s interface (SSID '%s')"
 msgstr ""
 
 #, php-format
+msgid "%s of %sB"
+msgstr ""
+
+#, php-format
 msgid "%s will reboot after restoring the configuration."
+msgstr ""
+
+#, php-format
+msgid "%sB available of %sB"
+msgstr ""
+
+#, php-format
+msgid "%sB used of %sB"
 msgstr ""
 
 msgid "(unstable)"
@@ -41,7 +57,7 @@ msgstr ""
 msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
 msgstr ""
 
-msgid "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
+msgid "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 
 msgid "A route to this destination network already exists."
@@ -194,6 +210,9 @@ msgstr ""
 msgid "Add user"
 msgstr ""
 
+msgid "Address"
+msgstr ""
+
 msgid "Administration password"
 msgstr ""
 
@@ -207,6 +226,9 @@ msgid "Advanced"
 msgstr ""
 
 msgid "Advanced Power Management"
+msgstr ""
+
+msgid "Advanced Setup"
 msgstr ""
 
 msgid "Advanced settings"
@@ -227,6 +249,9 @@ msgid "All users will have the root privilege."
 msgstr ""
 
 msgid "Allow clients to attempt to store OS/2 style extended attributes on a share."
+msgstr ""
+
+msgid "Allow users to resume and upload files, but NOT to delete or rename them. Directories can be removed, but only if they are empty. However, overwriting existing files is still allowed."
 msgstr ""
 
 #, php-format
@@ -273,7 +298,7 @@ msgid "Attached"
 msgstr ""
 
 #, php-format
-msgid "Attaching device '%s'."
+msgid "Attaching provider '%s'."
 msgstr ""
 
 msgid "Authentication"
@@ -384,7 +409,13 @@ msgstr ""
 msgid "Command output:"
 msgstr ""
 
+msgid "Command scripts"
+msgstr ""
+
 msgid "Comment"
+msgstr ""
+
+msgid "Community"
 msgstr ""
 
 msgid "Compliant profile to be used."
@@ -397,6 +428,12 @@ msgid "Confirmation"
 msgstr ""
 
 msgid "Console menu"
+msgstr ""
+
+msgid "Contact"
+msgstr ""
+
+msgid "Contact information, e.g. name or email of the person responsible for this system: 'admin@email.address'."
 msgstr ""
 
 msgid "Content"
@@ -545,14 +582,13 @@ msgstr ""
 msgid "Destination share"
 msgstr ""
 
-#, php-format
-msgid "Detaching device '%s'."
-msgstr ""
-
 msgid "Detected RSYNC remote shares"
 msgstr ""
 
 msgid "Device"
+msgstr ""
+
+msgid "Device is mounted, umount it first before detaching."
 msgstr ""
 
 msgid "Device name"
@@ -604,12 +640,6 @@ msgid "Disk"
 msgstr ""
 
 msgid "Disk Name"
-msgstr ""
-
-msgid "Disk initialization and encryption"
-msgstr ""
-
-msgid "Disk initialization details"
 msgstr ""
 
 msgid "Disk space usage"
@@ -678,9 +708,6 @@ msgstr ""
 msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
 
-msgid "Do you really want to initialize and encrypt this disk? All data will be lost!"
-msgstr ""
-
 msgid "Do you really want to uninstall this package?"
 msgstr ""
 
@@ -699,6 +726,9 @@ msgstr ""
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr ""
 
+msgid "Done."
+msgstr ""
+
 msgid "Dos charset"
 msgstr ""
 
@@ -708,7 +738,7 @@ msgstr ""
 msgid "Duplex"
 msgstr ""
 
-msgid "Duplicate Share Name."
+msgid "Duplicate name."
 msgstr ""
 
 msgid "Dynamic DNS"
@@ -789,6 +819,9 @@ msgstr ""
 msgid "Enable FXP protocol."
 msgstr ""
 
+msgid "Enable NTP"
+msgstr ""
+
 msgid "Enable Zeroconf"
 msgstr ""
 
@@ -825,13 +858,7 @@ msgstr ""
 msgid "Enable permission inheritance"
 msgstr ""
 
-msgid "Enable pipe-lined read support"
-msgstr ""
-
 msgid "Enable recycle bin"
-msgstr ""
-
-msgid "Enable resume mode."
 msgstr ""
 
 msgid "Enable syslog'ing to remote syslog server"
@@ -885,6 +912,15 @@ msgstr ""
 msgid "Enter the NIS domain name."
 msgstr ""
 
+msgid "Enter the path to the home directory of that user. Make sure that this path exists and is always mounted at startup. Leave this field empty to use default path /mnt."
+msgstr ""
+
+msgid "Enter the port to send the traps to (default 162)."
+msgstr ""
+
+msgid "Enter trap host name."
+msgstr ""
+
 msgid "Error"
 msgstr ""
 
@@ -895,7 +931,7 @@ msgstr ""
 msgid "Execute command"
 msgstr ""
 
-msgid "Execute command pre or post system initialization (booting)."
+msgid "Execute command pre or post system initialization (booting) or before system shutdown."
 msgstr ""
 
 msgid "Extensions"
@@ -911,6 +947,9 @@ msgid "Extents must be defined before they can be used, and extents cannot be us
 msgstr ""
 
 msgid "FTP"
+msgstr ""
+
+msgid "FTP Proxy"
 msgstr ""
 
 msgid "FTP Server"
@@ -949,6 +988,9 @@ msgstr ""
 msgid "Failed to send status report. Please check log files."
 msgstr ""
 
+msgid "Failed."
+msgstr ""
+
 msgid "File"
 msgstr ""
 
@@ -956,6 +998,10 @@ msgid "File not found"
 msgstr ""
 
 msgid "File path"
+msgstr ""
+
+#, php-format
+msgid "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."
 msgstr ""
 
 msgid "File size"
@@ -991,6 +1037,9 @@ msgstr ""
 msgid "Force NAT mode."
 msgstr ""
 
+msgid "Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the server is behind a masquerading (NAT) box that doesn't properly handle stateful FTP masquerading, put the ip address of that box here. If you have a dynamic IP address, you can put the public host name of your gateway, that will be resolved every time a new client will connect."
+msgstr ""
+
 msgid "Forced update period"
 msgstr ""
 
@@ -1024,7 +1073,10 @@ msgstr ""
 msgid "Gateway to be used to reach the destination network"
 msgstr ""
 
-msgid "General setup"
+msgid "General"
+msgstr ""
+
+msgid "General Setup"
 msgstr ""
 
 msgid "Geom Concat"
@@ -1069,6 +1121,9 @@ msgstr ""
 msgid "Groups"
 msgstr ""
 
+msgid "HTTP Proxy"
+msgstr ""
+
 msgid "Hard disk standby time"
 msgstr ""
 
@@ -1085,13 +1140,28 @@ msgstr ""
 msgid "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
 msgstr ""
 
+msgid "Home directory"
+msgstr ""
+
 msgid "Host"
+msgstr ""
+
+msgid "Host resources"
 msgstr ""
 
 msgid "Hostname"
 msgstr ""
 
+msgid "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory for TLS"
+msgstr ""
+
 msgid "Hosts"
+msgstr ""
+
+msgid "Hosts allow"
+msgstr ""
+
+msgid "Hosts deny"
 msgstr ""
 
 msgid "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -1107,9 +1177,6 @@ msgid "I/O packets"
 msgstr ""
 
 msgid "IP address"
-msgstr ""
-
-msgid "IP address of LDAP server."
 msgstr ""
 
 msgid "IP address of MS Active Directory server."
@@ -1174,7 +1241,7 @@ msgstr ""
 msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
 msgstr ""
 
-msgid "If you want to change the password for accessing the webGUI, enter it here twice.<br>Don't use the character ':'."
+msgid "If you want to change the password for accessing the WebGUI, enter it here twice."
 msgstr ""
 
 msgid "If you want to change the username for accessing the webGUI, enter it here."
@@ -1183,10 +1250,10 @@ msgstr ""
 msgid "Image upload failed (out of memory?)"
 msgstr ""
 
-msgid "Improved performance when transferring files via Vista client"
+msgid "In"
 msgstr ""
 
-msgid "In"
+msgid "In most cases, 'public' is used here."
 msgstr ""
 
 msgid "Information"
@@ -1195,7 +1262,10 @@ msgstr ""
 msgid "Inherit permissions"
 msgstr ""
 
-msgid "Init and encrypt disk"
+msgid "Initialize"
+msgstr ""
+
+msgid "Initialize and encrypt disk. This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
 msgstr ""
 
 msgid "Initiator name"
@@ -1222,6 +1292,9 @@ msgstr ""
 msgid "January February March April May June July August September October November December"
 msgstr ""
 
+msgid "Keep all files"
+msgstr ""
+
 msgid "Keep diagnostics in navigation expanded"
 msgstr ""
 
@@ -1240,11 +1313,13 @@ msgstr ""
 msgid "LDAP"
 msgstr ""
 
-#, php-format
 msgid "LDAP authentication feature is not implemented: If you know how to use PAM to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome."
 msgstr ""
 
-msgid "LDAP server IP"
+msgid "LDAP server name"
+msgstr ""
+
+msgid "LDAP server name or IP"
 msgstr ""
 
 msgid "Language"
@@ -1305,10 +1380,19 @@ msgstr ""
 msgid "Local shares to be synchronized"
 msgstr ""
 
+msgid "Location"
+msgstr ""
+
+msgid "Location information, e.g. physical location of this system: 'Floor of building, Room xyz'."
+msgstr ""
+
 msgid "Log Level"
 msgstr ""
 
 msgid "Login"
+msgstr ""
+
+msgid "Login is required."
 msgstr ""
 
 msgid "Logs"
@@ -1389,6 +1473,9 @@ msgstr ""
 msgid "Method used to store your password in your LDAP."
 msgstr ""
 
+msgid "MibII"
+msgstr ""
+
 msgid "Minimum free space"
 msgstr ""
 
@@ -1401,16 +1488,22 @@ msgstr ""
 msgid "Minimum power usage without Standby"
 msgstr ""
 
-msgid "Minutes between network time sync.; 300\trecommended, or 0 to disable."
+msgid "Minutes between network time sync."
 msgstr ""
 
 msgid "Miscellaneous"
+msgstr ""
+
+msgid "Modules"
 msgstr ""
 
 msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
 msgstr ""
 
 msgid "Mount Point"
+msgstr ""
+
+msgid "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
 
 msgid "Mount to use for swap"
@@ -1455,10 +1548,16 @@ msgstr ""
 msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
 msgstr ""
 
+msgid "Name of the server. If this field is left empty the default server is specified."
+msgstr ""
+
 msgid "Navigation"
 msgstr ""
 
 msgid "NetBiosName"
+msgstr ""
+
+msgid "Netgraph"
 msgstr ""
 
 msgid "Network"
@@ -1524,6 +1623,12 @@ msgstr ""
 msgid "Object name"
 msgstr ""
 
+msgid "Old passphrase"
+msgstr ""
+
+msgid "Old password"
+msgstr ""
+
 #, php-format
 msgid "Open a %s configuration XML file and click the button below to restore the configuration."
 msgstr ""
@@ -1586,6 +1691,9 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
+msgid "Password (confirmed)"
+msgstr ""
+
 msgid "Password authentication"
 msgstr ""
 
@@ -1622,9 +1730,6 @@ msgstr ""
 msgid "Path to be shared."
 msgstr ""
 
-msgid "Path where extent file will be created."
-msgstr ""
-
 msgid "Permit root login"
 msgstr ""
 
@@ -1643,9 +1748,6 @@ msgstr ""
 msgid "Ping winbindd to see if it is alive:"
 msgstr ""
 
-msgid "Ping/Traceroute"
-msgstr ""
-
 msgid "Platform"
 msgstr ""
 
@@ -1658,13 +1760,13 @@ msgstr ""
 msgid "Port "
 msgstr ""
 
-msgid "Post"
+msgid "PostInit"
 msgstr ""
 
 msgid "Power Daemon"
 msgstr ""
 
-msgid "Pre"
+msgid "PreInit"
 msgstr ""
 
 msgid "Prefix"
@@ -1689,6 +1791,9 @@ msgid "Profile"
 msgstr ""
 
 msgid "Provider"
+msgstr ""
+
+msgid "Proxy"
 msgstr ""
 
 msgid "Put user in the administrator group"
@@ -1742,9 +1847,6 @@ msgstr ""
 msgid "Read only"
 msgstr ""
 
-msgid "ReadAhead"
-msgstr ""
-
 msgid "Reboot"
 msgstr ""
 
@@ -1790,9 +1892,6 @@ msgstr ""
 msgid "Results for net rpc testjoin:"
 msgstr ""
 
-msgid "Resume"
-msgstr ""
-
 msgid "Retry"
 msgstr ""
 
@@ -1815,6 +1914,12 @@ msgid "SMARTD"
 msgstr ""
 
 msgid "SMARTD events"
+msgstr ""
+
+msgid "SNMP"
+msgstr ""
+
+msgid "SNMP Modules"
 msgstr ""
 
 msgid "SSH Daemon"
@@ -1941,6 +2046,9 @@ msgstr ""
 msgid "Signal strength cache"
 msgstr ""
 
+msgid "Simple Network Management Protocol"
+msgstr ""
+
 msgid "Size"
 msgstr ""
 
@@ -1965,10 +2073,10 @@ msgstr ""
 msgid "Space Used"
 msgstr ""
 
-msgid "Specifies the default base DN to use when performing ldap operations. The base must be specified as a distinguished name in LDAP format."
+msgid "Specifies the default base DN to use when performing ldap operations, example: dc=example,dc=com"
 msgstr ""
 
-msgid "Specifies the default bind DN to use when performing ldap operations. The bind DN must be specified as a distinguished name in LDAP format."
+msgid "Specifies the default bind DN to use when performing ldap operations, example:cn=administrator,dc=example,dc=com "
 msgstr ""
 
 msgid "Specifies whether it is allowed to login as superuser (root) directly."
@@ -1984,9 +2092,6 @@ msgid "Standard MTU is 1500, use 9000 for jumbo frame."
 msgstr ""
 
 msgid "Standby time"
-msgstr ""
-
-msgid "Startup"
 msgstr ""
 
 msgid "Static routes"
@@ -2011,6 +2116,9 @@ msgid "Subnet mask"
 msgstr ""
 
 msgid "Successful"
+msgstr ""
+
+msgid "Successful."
 msgstr ""
 
 msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
@@ -2142,8 +2250,12 @@ msgstr ""
 msgid "The attribute '%s' contains invalid characters and is no valid workgroup name."
 msgstr ""
 
-#, c-format
+#, c-format, php-format
 msgid "The attribute '%s' contains invalid characters."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' contains the illegal character ':' and is no valid password."
 msgstr ""
 
 #, c-format
@@ -2172,6 +2284,10 @@ msgstr ""
 
 #, c-format
 msgid "The attribute '%s' is required."
+msgstr ""
+
+#, php-format
+msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
 msgstr ""
 
 #, c-format
@@ -2205,6 +2321,9 @@ msgstr ""
 msgid "The configuration has been restored. %s is now rebooting."
 msgstr ""
 
+msgid "The confimed password does not match. Please ensure the passwords match exactly."
+msgstr ""
+
 msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
@@ -2215,9 +2334,6 @@ msgid "The cron job list has been changed.<br>You must apply the changes in orde
 msgstr ""
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
-msgstr ""
-
-msgid "The description name contain invalid characters."
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
@@ -2294,13 +2410,13 @@ msgstr ""
 msgid "The number of clients must be between 1 and 50."
 msgstr ""
 
-msgid "The options on this page are intended for use by advanced users only, and there's <strong>NO</strong> support for them."
+msgid "The old password is not correct."
 msgstr ""
 
 msgid "The package list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
-msgid "The password contain the illegal : character"
+msgid "The password contains the illegal character ':'."
 msgstr ""
 
 msgid "The passwords do not match."
@@ -2313,9 +2429,6 @@ msgid "The permissions on new files and directories are normally governed by cre
 msgstr ""
 
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
-msgstr ""
-
-msgid "The share name may only consist of the characters a-z, A-Z, 0-9, _ , -."
 msgstr ""
 
 msgid "The shares has been modified.<br>You must apply the changes in order for them to take effect."
@@ -2339,7 +2452,7 @@ msgstr ""
 msgid "The system is rebooting now. This may take one minute."
 msgstr ""
 
-msgid "The time update interval must be either 0 (disabled) or between 6 and 1440."
+msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
 msgid "The uploaded image file is not for this platform"
@@ -2352,6 +2465,9 @@ msgid "The value in this field is sent as the DHCP client identifier when reques
 msgstr ""
 
 msgid "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
+msgstr ""
+
+msgid "The volume must be detached before it can be deleted."
 msgstr ""
 
 msgid "There must be 2 disks in a RAID 1 volume."
@@ -2369,7 +2485,7 @@ msgstr ""
 msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr ""
 
-msgid "These commands will be executed pre or post system initialization (booting)."
+msgid "These commands will be executed pre or post system initialization (booting) or before system shutdown."
 msgstr ""
 
 msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"
@@ -2424,6 +2540,12 @@ msgstr ""
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr ""
 
+msgid "This parameter is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to disable this setting."
+msgstr ""
+
+msgid "This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this share. Use the keyword ALL to permit access for everyone. Leave this field empty to disable this setting."
+msgstr ""
+
 msgid "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified."
 msgstr ""
 
@@ -2433,17 +2555,11 @@ msgstr ""
 msgid "This user already exists in the user list."
 msgstr ""
 
-msgid "This volume must be detached before to be killed"
-msgstr ""
-
 #, php-format
 msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
 msgstr ""
 
 msgid "This will create a recycle bin on the share."
-msgstr ""
-
-msgid "This will erase ALL data on your disk!<br>Using Data integrity will reduce size of available storage and also reduce speed."
 msgstr ""
 
 msgid "Time server"
@@ -2481,6 +2597,21 @@ msgid "Traceroute output"
 msgstr ""
 
 msgid "Traffic graph"
+msgstr ""
+
+msgid "Trap host"
+msgstr ""
+
+msgid "Trap port"
+msgstr ""
+
+msgid "Trap string"
+msgstr ""
+
+msgid "Trap string."
+msgstr ""
+
+msgid "Traps"
 msgstr ""
 
 msgid "Tuning"
@@ -2554,10 +2685,7 @@ msgstr ""
 msgid "Use the new 64k streaming read and write varient SMB requests introduced with Windows 2000."
 msgstr ""
 
-msgid "Use this option to enable resuming broken transfers at the point of interruption."
-msgstr ""
-
-msgid "Use this option to override the IP address that FTP daemon will advertise in response to the PASV command."
+msgid "Use the specified NTP server."
 msgstr ""
 
 msgid "Use this option to override the directory creation mask (022 by default)."
@@ -2716,6 +2844,12 @@ msgstr ""
 msgid "built on"
 msgstr ""
 
+msgid "chroot everyone"
+msgstr ""
+
+msgid "chroot() everyone, but root."
+msgstr ""
+
 msgid "day"
 msgstr ""
 
@@ -2731,7 +2865,7 @@ msgstr ""
 msgid "e.g. <em>mycorp.com</em>"
 msgstr ""
 
-msgid "group_suffix."
+msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 msgstr ""
 
 msgid "hours"
@@ -2758,7 +2892,7 @@ msgstr ""
 msgid "n/a"
 msgstr ""
 
-msgid "password_suffix."
+msgid "password_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
 
 msgid "pasv_max_port"
@@ -2782,7 +2916,7 @@ msgstr ""
 msgid "striping"
 msgstr ""
 
-msgid "user_suffix."
+msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
 
 msgid "webGUI Configuration"
