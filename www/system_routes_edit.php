@@ -84,9 +84,9 @@ if ($_POST) {
 	
 	if ($_POST['gateway'] && $_POST['network']) {
 		if (is_ipv4addr($_POST['gateway']) && !is_ipv4addr($_POST['network'])) {
-			$input_errors[] = gettext("You must the same IP type for network and gateway.");
+			$input_errors[] = gettext("You must enter the same IP type for network and gateway.");
 		} else if (is_ipv6addr($_POST['gateway']) && !is_ipv6addr($_POST['network'])) {
-			$input_errors[] = gettext("IP type mistmatch for network and gateway.");
+			$input_errors[] = gettext("IP type mismatch for network and gateway.");
 		}
 	}
 	
