@@ -96,12 +96,22 @@ ul#navigation h1 {
 	font-size: 13px;
 	margin: 0 0 0 0;
 }
+* html ul#navigation h1 { /* Fix for IE */
+	color: #FFFFFF;
+	font-size: 13px;
+	margin: 0 0 0 -3em;
+}
 ul#navigation li {
 	list-style: none;
 	text-decoration: none;
 }
 ul#navigation li ul {
 	margin: 0 0 0 1em;
+	padding: 0;
+	text-decoration: none;
+}
+* html ul#navigation li ul { /* Fix for IE */
+	margin: 0 0 0 -2em;
 	padding: 0;
 	text-decoration: none;
 }
