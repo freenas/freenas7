@@ -401,7 +401,7 @@ create_image() {
 # /dev/${md}:
 8 partitions:
 #        size   offset    fstype   [fsize bsize bps/cpg]
-  a:    ${FREENAS_IMG_SIZE}        0    unused        0     0
+  a:    ${FREENAS_IMG_SIZE}        0    4.2BSD        0     0
   c:    *            *    unused        0     0         # "raw" part, don't edit
 " > ${FREENAS_WORKINGDIR}/bsdlabel.$$
 	bsdlabel -m ${FREENAS_ARCH} -R -B -b ${FREENAS_BOOTDIR}/boot ${md} ${FREENAS_WORKINGDIR}/bsdlabel.$$
