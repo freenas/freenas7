@@ -21,7 +21,7 @@ while : ; do
 	echo "      - Easiest to customize and support plugin"
 	echo "4) Upgrade existing installed 'embedded' release from CDROM"
 	echo "5) Upgrade existing installed 'full' release from CDROM"
-	echo "6) Upgrade and convert a 'full' release to an 'embedded'"
+	echo "6) Upgrade and convert 'full' release to 'embedded'"
 	echo "7) Return to main menu"
 	echo
 	read -p "Enter a number: " opmode

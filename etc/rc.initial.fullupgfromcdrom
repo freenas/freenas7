@@ -8,14 +8,14 @@
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -38,7 +38,13 @@
 
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
-	
+
+	echo <<<EOD
+
+{$productname} upgrade from CDROM.
+
+EOD;
+
 	$is_full=0;
 
 	/* Search where the config file is installed*/
@@ -59,7 +65,7 @@
 				$slice=1;
 				$not_found=0;
 			}
-			
+
 			if (file_exists("{$g['cf_path']}/libexec/ld-elf.so.1")) {
 				/* Embedded release confirmed */
 				$is_full=1;
@@ -81,7 +87,7 @@
 				$slice=0;
 				$not_found=0;
 			}
-			
+
 			if (file_exists("{$g['cf_path']}/libexec/ld-elf.so.1")) {
 				/* Embedded release confirmed */
 				$is_full=1;
@@ -93,12 +99,12 @@
 				break;
 		}
 	}
-	
+
 	if ($not_found) {
 		echo "No configuration found!\n";
 		exit(0);
 	}
-	
+
 	if (!$is_full) {
 		echo "No 'full' release found!\n";
 		exit(0);
@@ -108,7 +114,6 @@
 		echo "Failed to detect any CDROM.\n";
 		exit(0);
 	} else {
-		echo "{$productname} upgrade from CDROM.\n";
 		echo "\nHere is the list of detected CDROM(s):\n";
 	}
 
@@ -144,7 +149,7 @@
 		echo "\nThere was a problem during configuration file backup.\n";
 		exit(0);
 	}
-	
+
 	if(install_upgrade_full($cfgdevice)) {
 		echo "\nThere was a problem while copying files.\n";
 		install_unmount_cd();
@@ -154,7 +159,7 @@
 	if(install_restoreconfig($cfgpartition)) {
 		echo "\nThere was a problem while restoring configuration file.\n";
 		exit(0);
-	}	
+	}
 
 	install_unmount_cd();
 

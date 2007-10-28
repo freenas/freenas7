@@ -39,6 +39,12 @@
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
 
+	echo <<<EOD
+
+{$productname} upgrade and convert 'full' release to 'embedded'.
+
+EOD;
+
 	$is_full=0;
 
 	/* Search where the config file is installed*/
@@ -86,7 +92,6 @@
 		echo "Failed to detect any CDROM.\n";
 		exit(0);
 	} else {
-		echo "{$productname} upgrade and convert 'full' release to 'embedded'.\n";
 		echo "\nHere is the list of detected CDROM(s):\n";
 	}
 

@@ -45,7 +45,7 @@
 
 	echo <<<EOD
 
-{$productname} "Full" installer (not for flash device).
+{$productname} 'full' installer (not for flash device).
 
 WARNING: There will be some limitations:
 1. This will erase ALL your partitions and data on the destination disk
