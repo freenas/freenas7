@@ -7,52 +7,48 @@
 
 # endless loop
 while : ; do
+	echo
+	echo "Install"
+	echo "*******"
+	echo "1) Install 'embedded' release on flash device: Create 1 UFS partition"
+	echo "2) Install 'embedded' release on hard drive:"
+	echo "      - Create MBR partition 1, 64MB size for FreeNAS"
+	echo "      - Create MBR partition 2, using UFS, for DATA"
+	echo "      - Use a RAM drive for limit read/write access to the flash device"
+	echo "3) Install 'full' release on hard drive:"
+	echo "      - Create MBR partition 1, 128MB size for FreeNAS"
+	echo "      - Create MBR partition 2, using UFS, for DATA"
+	echo "      - Easiest to customize and support plugin"
+	echo "4) Upgrade existing installed 'embedded' release from CDROM"
+	echo "5) Upgrade existing installed 'full' release from CDROM"
+	echo "6) Upgrade and convert a 'full' release to an 'embedded'"
+	echo "7) Return to main menu"
+	echo
+	read -p "Enter a number: " opmode
 
-# display a cheap menu
-echo
-echo "Install"
-echo "*******"
-echo "1) Install 'embedded' release on flash device: Create 1 UFS partition"
-echo "2) Install 'embedded' release on hard drive:"
-echo "      - Create MBR partition 1, 64MB size for FreeNAS"
-echo "      - Create MBR partition 2, using UFS, for DATA"
-echo "      - Use a RAM drive for limit read/write access to the flash device"
-echo "3) Install 'full' release on hard drive:"
-echo "      - Create MBR partition 1, 128MB size for FreeNAS"
-echo "      - Create MBR partition 2, using UFS, for DATA"
-echo "      - Easiest to customize and support plugin"
-echo "4) Upgrade existing installed 'embedded' release from CDROM"
-echo "5) Upgrade existing installed 'full' release from CDROM"
-echo "6) Upgrande and convert a 'full' release to an 'embedded'"
-echo "7) Return to main menu"
-echo
-read -p "Enter a number: " opmode
-
-# see what the user has chosen
-case ${opmode} in
-1)
-	/etc/rc.initial.install1
- 	;;
-2)
-	/etc/rc.initial.install2
- 	;;
-3)
-	/etc/rc.initial.install3
-	;;
-4)
-	/etc/rc.initial.embupgfromcdrom
-	;;
-5)
-	/etc/rc.initial.fullupgfromcdrom
-	;;
-6)
-        /etc/rc.initial.full2emb
-        ;;
-7)
-	/etc/rc.initial
-	;;
-esac
-
+	case ${opmode} in
+		1)
+			/etc/rc.initial.install1
+		 	;;
+		2)
+			/etc/rc.initial.install2
+		 	;;
+		3)
+			/etc/rc.initial.install3
+			;;
+		4)
+			/etc/rc.initial.embupgfromcdrom
+			;;
+		5)
+			/etc/rc.initial.fullupgfromcdrom
+			;;
+		6)
+			/etc/rc.initial.full2emb
+			;;
+		7)
+			/etc/rc.initial
+			;;
+	esac
 done
 
 fi
