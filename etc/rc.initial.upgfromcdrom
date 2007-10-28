@@ -40,7 +40,7 @@
 	$disklist = get_physical_disks_list();
 
 	/* Search where the config file is installed*/
-	$not_found=1;
+	$not_found = 1;
 
 	$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 	foreach ($disks as $mountdisk) {
@@ -51,15 +51,12 @@
 		/* Search on slice 1 for OS installed on disk with install script*/
 		if (mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$g['cf_path']}") == 0) 	{
 			if (file_exists("{$g['cf_conf_path']}/config.xml")) 	{
-				/* found it */
 				$cfgdevice = $mountdisk;
 				$cfgpartition = $cfgdevice . "s1";
 				$cfgfstype = "ufs";
-				$slice=1;
-				$not_found=0;
+				$slice = 1;
+				$not_found = 0;
 			}
-
-			mwexec("/sbin/umount -f {$g['cf_path']}");
 
 			if ($cfgdevice)
 				break;
@@ -68,15 +65,12 @@
 		/* Search on partition 'a' for OS IMG image written on disk */
 		if (mwexec("/sbin/mount -r /dev/{$mountdisk}a {$g['cf_path']}") == 0) {
 			if (file_exists("{$g['cf_conf_path']}/config.xml")) {
-				/* found it */
 				$cfgdevice = $mountdisk;
 				$cfgpartition = $cfgdevice . "a";
 				$cfgfstype = "ufs";
-				$slice=0;
-				$not_found=0;
+				$slice = 0;
+				$not_found = 0;
 			}
-
-			mwexec("/sbin/umount -f {$g['cf_path']}");
 
 			if ($cfgdevice)
 				break;
@@ -111,13 +105,16 @@
 	echo "\n{$productname} has been detected on disk:\n";
 	echo "$cfgdevice\n";
 
-	do 	{
+	do {
 		echo "\nIs this is correct ? (y/n): ";
 		$valid = chop(fgets($fp));
 		if ($valid === "n") {
 			exit(0);
 		}
 	} while ($valid != "y" );
+
+	/* Umount configuration device. */
+	mwexec("/sbin/umount -f {$g['cf_path']}");
 
 	if(install_mount_cd($cdrom)) {
 		echo "\nMeet a problem for mounting the CDROM.\n";

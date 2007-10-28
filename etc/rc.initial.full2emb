@@ -45,10 +45,9 @@
 
 EOD;
 
-	$is_full=0;
-
-	/* Search where the config file is installed*/
-	$not_found=1;
+	/* Search where the config file is installed. */
+	$is_full = 0;
+	$not_found = 1;
 
 	$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 	foreach ($disks as $mountdisk) {
@@ -62,16 +61,13 @@ EOD;
 				$cfgdevice = $mountdisk;
 				$cfgpartition = $cfgdevice . "s1";
 				$cfgfstype = "ufs";
-				$slice=1;
-				$not_found=0;
+				$slice = 1;
+				$not_found = 0;
 			}
 
 			if (file_exists("{$g['cf_path']}/libexec/ld-elf.so.1")) {
-				/* Embedded release confirmed */
-				$is_full=1;
+				$is_full = 1;
 			}
-
-			mwexec("/sbin/umount -f {$g['cf_path']}");
 
 			if ($cfgdevice)
 				break;
@@ -110,13 +106,16 @@ EOD;
 	echo "\n{$productname} has been detected on disk:\n";
 	echo "$cfgdevice\n";
 
-	do 	{
+	do {
 		echo "\nIs this is correct? (y/n): ";
 		$valid = chop(fgets($fp));
 		if ($valid === "n") {
 			exit(0);
 		}
 	} while ($valid != "y" );
+
+	/* Umount configuration device. */
+	mwexec("/sbin/umount -f {$g['cf_path']}");
 
 	if(install_mount_cd($cdrom)) {
 		echo "\nThere was a problem while mounting the CDROM.\n";
