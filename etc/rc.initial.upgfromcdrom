@@ -97,7 +97,7 @@
 	do {
 		echo "\nEnter the name of the CD-ROM drive: ";
 		$cdrom = chop(fgets($fp));
-		if ($cdrom === "") {
+		if (empty($cdrom)) {
 			exit(0);
 		}
 	} while (!is_validaliasname($cdrom));
@@ -111,7 +111,7 @@
 		if ($valid === "n") {
 			exit(0);
 		}
-	} while ($valid != "y" );
+	} while ($valid != "y");
 
 	/* Umount configuration device. */
 	mwexec("/sbin/umount -f {$g['cf_path']}");

@@ -71,7 +71,7 @@ EOD;
 	do {
 		echo "\nEnter the name of the CD-ROM drive: ";
 		$cdrom = chop(fgets($fp));
-		if ($cdrom === "") {
+		if (empty($cdrom)) {
 			exit(0);
 		}
 	} while (!is_validaliasname($cdrom));
@@ -85,7 +85,7 @@ EOD;
 	do {
 		echo "\nEnter the name of the Hard Drive: ";
 		$harddrive = chop(fgets($fp));
-		if ($harddrive === "") {
+		if (empty($harddrive)) {
 			exit(0);
 		}
 	} while (!is_validaliasname($harddrive));

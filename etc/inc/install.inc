@@ -84,9 +84,8 @@ function install_unmount_cd()
    Called by install script. Return 0 if OK, 1 if not. */
 function install_init_halfdisk($harddrive)
 {
-	/* Part of install process: Initialize the destination disk with 2 partitions */
-	/* Create two partitions, the first as 32MB */
-	if (1 == install_fdisk($harddrive,32)) {
+	/* Initialize the destination disk with 2 partitions, the first with 32MB of size. */
+	if (1 == install_fdisk($harddrive, 32)) {
 		write_console("Error: Failed to create partitions!\n");
 		return 1;
 	}
@@ -138,11 +137,14 @@ function install_init_halfdisk($harddrive)
 	return 0;
 }
 
-function install_init_harddrive($harddrive)
+// Install to harddrive with 2 partition.
+// $harddrive - Disk name (e.g. ad0)
+// $size - Partition 1 size in MB
+// Return 0 if successful, otherwise 1
+function install_init_harddrive($harddrive, $size)
 {
-	/* Part of install process: Initialize the destination disk with 2 partitions */
-	/* Create two partitions, the first as 128MB */
-	if (1 == install_fdisk($harddrive,128)) {
+	/* Initialize the destination disk with 2 partitions. */
+	if (1 == install_fdisk($harddrive, $size)) {
 		write_console("Error: Failed to create partitions!\n");
 		return 1;
 	}
@@ -410,12 +412,11 @@ function install_restoreconfig($disk)
 	return 0;
 }
 
-// Initialise HARD DRIVE for installation (creating 2 partition).
-//Function need two parameters:
-// - disk name (e.g. ad0)
-// - disk size in MB
-// Return 0 if successful, 1 if error
-function install_fdisk($harddrive,$size)
+// Initialise harddrive. Use given size for partition 1, use the rest for partition 2.
+// $harddrive - Disk name (e.g. ad0)
+// $size - Partition 1 size in MB
+// Return 0 if successful, otherwise 1
+function install_fdisk($harddrive, $size)
 {
 	global $g;
 

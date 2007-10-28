@@ -35,6 +35,9 @@
 	require_once("functions.inc");
 	require_once("install.inc");
 
+	/* Minimum size of partition 1 (used for OS) */
+	$minpart1size = 64;
+
 	/* Get product information */
 	$productname = get_product_name();
 
@@ -68,7 +71,7 @@ EOD;
 	do {
 		echo "\nEnter the name of the CD-ROM drive: ";
 		$cdrom = chop(fgets($fp));
-		if ($cdrom === "") {
+		if (empty($cdrom)) {
 			exit(0);
 		}
 	} while (!is_validaliasname($cdrom));
@@ -82,7 +85,7 @@ EOD;
 	do {
 		echo "\nEnter the name of the hard drive: ";
 		$harddrive = chop(fgets($fp));
-		if ($harddrive === "") {
+		if (empty($harddrive)) {
 			exit(0);
 		}
 	} while (!is_validaliasname($harddrive));
@@ -94,12 +97,20 @@ EOD;
 		exit(0);
 	}
 
+	do {
+		echo sprintf("\nEnter the size for OS partition in MB (min %dMB): ", $minpart1size);
+		$partition1size = chop(fgets($fp));
+		if (empty($part1size)) {
+			exit(0);
+		}
+	} while ($minpart1size > $part1size);
+
 	if(install_mount_cd($cdrom)) {
 		echo "\nThere was a problem while mounting the CDROM.\n";
 		exit(0);
 	}
 
-	if(install_init_harddrive($harddrive)) {
+	if(install_init_harddrive($harddrive, $part1size)) {
 		echo "\nThere was a problem during initializing the destination disk.\n";
 		install_unmount_cd();
 		exit(0);

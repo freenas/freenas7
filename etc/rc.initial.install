@@ -16,7 +16,7 @@ while : ; do
 	echo "      - Create MBR partition 2, using UFS, for DATA"
 	echo "      - Use a RAM drive for limit read/write access to the flash device"
 	echo "3) Install 'full' release on hard drive:"
-	echo "      - Create MBR partition 1, 128MB size for FreeNAS"
+	echo "      - Create MBR partition 1, customizable size (min. 64MB) for FreeNAS"
 	echo "      - Create MBR partition 2, using UFS, for DATA"
 	echo "      - Easiest to customize and support plugin"
 	echo "4) Upgrade existing installed 'embedded' release from CDROM"
