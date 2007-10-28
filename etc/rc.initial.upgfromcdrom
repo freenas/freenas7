@@ -88,8 +88,13 @@
 		exit(0);
 	}	
 
-	echo "{$productname} upgrade from CDROM\n";
-	echo "\nHere is the list of detected CDROM:\n";
+	if (0 == count($cdlist)) {
+		echo "Failed to detect any CDROM.\n";
+		exit(0);
+	} else {
+		echo "{$productname} upgrade from CDROM.\n";
+		echo "\nHere is the list of detected CDROM(s):\n";
+	}
 
 	foreach ($cdlist as $cdromk =>$cdromv) 	{
 		echo "$cdromk (desc: {$cdromv['desc']})\n";

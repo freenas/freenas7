@@ -52,9 +52,14 @@ WARNING: There will be some limitations:
 2. You can't install {$productname} if it's already installed on this disk
    (use upgrade from WebGUI or Console)
 
-Here is the list of detected CDROM(s):
-
 EOD;
+
+	if (0 == count($cdlist)) {
+		echo "\nFailed to detect any CDROM.\n";
+		exit(0);
+	} else {
+		echo "\nHere is the list of detected CDROM(s):\n";
+	}
 
 	foreach ($cdlist as $cdromk =>$cdromv) {
 		echo "$cdromk (desc: {$cdromv['desc']})\n";
