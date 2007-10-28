@@ -457,9 +457,9 @@ EOD;
 	fclose($fd);
 
 	// Fdisk the disk.
-	mwexec("/sbin/fdisk -f {$g['varetc_path']}/fdisk.conf /dev/{$harddrive}");
+	$result = mwexec("/sbin/fdisk -f {$g['varetc_path']}/fdisk.conf /dev/{$harddrive}");
 
-	return 0;
+	return $result;
 }
 
 // Create disk label.
