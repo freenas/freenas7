@@ -412,12 +412,12 @@ function install_restoreconfig($disk)
 
 // Initialise HARD DRIVE for installation (creating 2 partition).
 //Function need two parameters:
-// - disk name ((ad0)
+// - disk name (e.g. ad0)
 // - disk size in MB
 // Return 0 if successful, 1 if error
 function install_fdisk($harddrive,$size)
 {
-	global $config, $g;
+	global $g;
 
 	// Get disk informations.
 	$diskinfo = disks_get_diskinfo($harddrive);
@@ -457,9 +457,9 @@ EOD;
 	fclose($fd);
 
 	// Fdisk the disk.
-	mwexec("/sbin/fdisk -f {$g['varetc_path']}/fdisk.conf /dev/{$harddrive}");
+	$result = mwexec("/sbin/fdisk -f {$g['varetc_path']}/fdisk.conf /dev/{$harddrive}");
 
-	return 0;
+	return $result;
 }
 
 // Create disk label.
