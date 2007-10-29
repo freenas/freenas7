@@ -153,7 +153,7 @@ function install_dd_image($harddrive)
 
 	/* Part of install process: dd image file on the destination disk */
 	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
-	write_console("Installation...\n");
+	write_console("Installing system image on disk {$harddrive}.\n");
 	$imgfilename=get_product_name(). "-{$g['arch']}-embedded.gz";
 	if (mwexec("/usr/bin/gzip -cd /mnt/cdrom/{$imgfilename} | /bin/dd of=/dev/{$harddrive} > /dev/null 2>&1")) {
 		write_console("Error: Failed to dd image on '/dev/{$harddrive}'!\n");
@@ -171,11 +171,10 @@ function install_harddrive_image($harddrive)
 
 	/* Part of install process: dd image file on the destination disk */
 	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
-	write_console("Installation...\n");
 	mwexec("/bin/mkdir /destdisk");
 	mwexec("/sbin/mount /dev/{$harddrive}s1a /destdisk");
 
-	write_console("Copying system files to disk {$harddrive}.\n");
+	write_console("Installing system files on disk {$harddrive}s1.\n");
 	mwexec("/usr/bin/tar --exclude /destdisk --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C /destdisk");
 	mwexec("/bin/mkdir /destdisk/var");
 	mwexec("/bin/mkdir /destdisk/dev");
