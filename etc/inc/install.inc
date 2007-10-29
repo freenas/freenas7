@@ -80,68 +80,11 @@ function install_unmount_cd()
 	return $result;
 }
 
-/* Create to partition on the destination hard drive.
-   Called by install script. Return 0 if OK, 1 if not. */
-function install_init_halfdisk($harddrive)
-{
-	/* Initialize the destination disk with 2 partitions, the first with 32MB of size. */
-	if (1 == install_fdisk($harddrive, 32)) {
-		write_console("Error: Failed to create partitions!\n");
-		return 1;
-	}
-
-	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$harddrive}")) {
-		write_console("Error: Can't fdisk the destination drive '{$harddrive}'!\n");
-		return 1;
-	}
-
-	/* Must wait that the /dev is upatded with the new information */
-	write_console("Waiting for system update...");
-	$devtotest="/dev/{$harddrive}s2";
-	$i=0;
-	while (!file_exists($devtotest)) {
-		sleep(1);
-		write_console(".");
-		$i++;
-		if ($i==20) {
-			write_console("\nSystem not updated after 20 seconds!\n");
-			return 1;
-		}
-	}
-	write_console("\n");
-
-	write_console("Creating BSD label...\n");
-	if (mwexec("/sbin/bsdlabel -B -w -b /boot/boot {$harddrive}s1 auto")) {
-		write_console("Error: Failed to label '{$harddrive}s1'!\n");
-		return 1;
-	}
-	if (mwexec("/sbin/bsdlabel -w {$harddrive}s2 auto")) {
-		write_console("Error: Failed to label '{$harddrive}s2'!\n");
-		return 1;
-	}
-
-	write_console("Modify BSD label information...\n");
-	install_bsdlabel($harddrive, "s1", "4.2BSD");
-	install_bsdlabel($harddrive, "s2", "4.2BSD");
-
-	write_console("Creating filesystem...\n");
-	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s1")) {
-		write_console("Error: Failed to create filesystem on '/dev/{$harddrive}s1'!\n");
-		return 1;
-	}
-	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s2")) {
-		write_console("Error: Failed to create filesystem on '/dev/{$harddrive}s2'!\n");
-		return 1;
-	}
-
-	return 0;
-}
-
-// Install to harddrive with 2 partition.
+// Create two partitions on the destination hard drive.
 // $harddrive - Disk name (e.g. ad0)
 // $size - Partition 1 size in MB
 // Return 0 if successful, otherwise 1
-function install_init_harddrive($harddrive, $size)
+function install_init2partdisk($harddrive, $size)
 {
 	/* Initialize the destination disk with 2 partitions. */
 	if (1 == install_fdisk($harddrive, $size)) {
@@ -154,7 +97,7 @@ function install_init_harddrive($harddrive, $size)
 		return 1;
 	}
 
-	/* Must wait that the /dev is upatded with the new information */
+	/* Must wait until /dev is updated with the new disk partition information. */
 	write_console("Waiting for system update...");
 	$devtotest="/dev/{$harddrive}s2";
 	$i=0;
@@ -162,36 +105,42 @@ function install_init_harddrive($harddrive, $size)
 		sleep(1);
 		write_console(".");
 		$i++;
-		if ($i==20) {
-			write_console(" System not updated after 20 seconds!\n");
+		if (20 == $i) {
+			write_console("\nError: System not updated! Failed to find partition '{$devtotest}'.\n");
 			return 1;
 		}
 	}
 	write_console("\n");
 
-	write_console("Creating BSD label...\n");
+	/* Create and modify disk label. */
+	write_console("Creating BSD label on disk partition:");
+	write_console(" {$harddrive}s1");
 	if (mwexec("/sbin/bsdlabel -B -w -b /boot/boot {$harddrive}s1 auto")) {
 		write_console("Error: Failed to label '{$harddrive}s1'!\n");
 		return 1;
 	}
+	write_console(" {$harddrive}s2");
 	if (mwexec("/sbin/bsdlabel -w {$harddrive}s2 auto")) {
 		write_console("Error: Failed to label '{$harddrive}s2'!\n");
 		return 1;
 	}
-
-	write_console("Modify BSD label information...\n");
+	write_console("\nModify BSD label information.\n");
 	install_bsdlabel($harddrive, "s1", "4.2BSD");
 	install_bsdlabel($harddrive, "s2", "4.2BSD");
 
-	write_console("Creating filesystem(s)...\n");
-	if (mwexec("/sbin/newfs /dev/{$harddrive}s1")) {
-		write_console("Error: Failed to create filesystem on '/dev/{$harddrive}s1'!\n");
+	/* Create filesystems. */
+	write_console("Creating filesystem:");
+	write_console(" {$harddrive}s1");
+	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s1")) {
+		write_console("\nError: Failed to create filesystem on '/dev/{$harddrive}s1'!\n");
 		return 1;
 	}
-	if (mwexec("/sbin/newfs /dev/{$harddrive}s2")) {
-		write_console("Error: Failed to create filesystem on '/dev/{$harddrive}s2'!\n");
+	write_console(" {$harddrive}s2");
+	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s2")) {
+		write_console("\nError: Failed to create filesystem on '/dev/{$harddrive}s2'!\n");
 		return 1;
 	}
+	write_console("\n");
 
 	return 0;
 }
@@ -208,25 +157,6 @@ function install_dd_image($harddrive)
 	$imgfilename=get_product_name(). "-{$g['arch']}-embedded.gz";
 	if (mwexec("/usr/bin/gzip -cd /mnt/cdrom/{$imgfilename} | /bin/dd of=/dev/{$harddrive} > /dev/null 2>&1")) {
 		write_console("Error: Failed to dd image on '/dev/{$harddrive}'!\n");
-		return 1;
-	}
-
-	return 0;
-}
-
-/* Format the two partitions for 'full' install.
-   Called by install script. Return 0 if OK, 1 if not. */
-function install_format_full($harddrive)
-{
-	write_console("Creating filesystem(s)...\n");
-
-	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s1a")) {
-		write_console("Error: Failed to create filesystem on '/dev/{$harddrive}s1a'!\n");
-		return 1;
-	}
-
-	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s2")) {
-		write_console("Error: Failed to create filesystem on '/dev/{$harddrive}s2'!\n");
 		return 1;
 	}
 

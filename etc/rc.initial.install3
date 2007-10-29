@@ -35,7 +35,7 @@
 	require_once("functions.inc");
 	require_once("install.inc");
 
-	/* Minimum size of partition 1 (used for OS) */
+	/* Minimum size of partition 1 (used for OS). */
 	$minpart1size = 64;
 
 	/* Get product information */
@@ -110,19 +110,12 @@ EOD;
 		exit(0);
 	}
 
-	if(install_init_harddrive($harddrive, $part1size)) {
+	if(install_init2partdisk($harddrive, $part1size)) {
 		echo "\nThere was a problem during initializing the destination disk.\n";
 		install_unmount_cd();
 		exit(0);
 	}
 
-	if(install_format_full($harddrive)) {
-		echo "\nThere was a problem during formatting the destination disk.\n";
-		install_unmount_cd();
-		exit(0);
-	}
-
-	$installharddrive = "$harddrive" . "s1";
 	if(install_harddrive_image($harddrive)) {
 		echo "\nThere was a problem while copying files.\n";
 		install_unmount_cd();
@@ -133,8 +126,17 @@ EOD;
 
 	echo <<<EOD
 
-{$productname} has been installed on $harddrive.
+{$productname} has been installed on {$harddrive}s1.
 You can now remove the CD-ROM and reboot the PC.
+
+To use the DATA partition:
+1. Add the disk {$harddrive} on the 'Disks: Management' page.
+2. Add the mount point on the 'Disks: Mount Point' page.
+   Use the following parameters:
+   Disk {$harddrive}, Partition 2, Filesystem UFS
+
+DO NOT format the {$harddrive} drive! The DATA partition has been
+formated for you as part of the installation!
 
 Press ENTER to continue.
 
