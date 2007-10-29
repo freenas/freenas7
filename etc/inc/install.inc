@@ -183,7 +183,7 @@ function install_init_harddrive($harddrive, $size)
 	install_bsdlabel($harddrive, "s1", "4.2BSD");
 	install_bsdlabel($harddrive, "s2", "4.2BSD");
 
-	write_console("Creating filesystem...\n");
+	write_console("Creating filesystem(s)...\n");
 	if (mwexec("/sbin/newfs /dev/{$harddrive}s1")) {
 		write_console("Error: Failed to create filesystem on '/dev/{$harddrive}s1'!\n");
 		return 1;
@@ -214,15 +214,24 @@ function install_dd_image($harddrive)
 	return 0;
 }
 
-/* Format the two partitions for 'full' install */
+/* Format the two partitions for 'full' install.
+   Called by install script. Return 0 if OK, 1 if not. */
 function install_format_full($harddrive)
 {
-	write_console("Formatting {$harddrive}s1a\n");
-	$result = mwexec("/sbin/newfs -U {$harddrive}s1a");
-	$result |= mwexec("/sbin/newfs -U {$harddrive}s2");
-	return $result;
-}
+	write_console("Creating filesystem(s)...\n");
 
+	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s1a")) {
+		write_console("Error: Failed to create filesystem on '/dev/{$harddrive}s1a'!\n");
+		return 1;
+	}
+
+	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s2")) {
+		write_console("Error: Failed to create filesystem on '/dev/{$harddrive}s2'!\n");
+		return 1;
+	}
+
+	return 0;
+}
 
 /* Install FreeNAS on the destination harddrive.
    Called by install script. Return 0 if OK, 1 if not. */
