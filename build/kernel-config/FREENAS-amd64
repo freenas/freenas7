@@ -54,7 +54,6 @@ options		MSDOSFS_LARGE	# MSDOS Filesystem for FAT32 > 128GB
 options 	CD9660			# ISO 9660 Filesystem
 options 	PROCFS			# Process filesystem (requires PSEUDOFS)
 options 	PSEUDOFS		# Pseudo-filesystem framework
-options 	GEOM_GPT		# GUID Partition Tables.
 options 	COMPAT_43		# Needed by COMPAT_LINUX32
 options 	COMPAT_IA32		# Compatible with i386 binaries
 options 	COMPAT_FREEBSD4		# Compatible with FreeBSD4
@@ -323,8 +322,10 @@ device		speaker
 device		crypto
 device		cryptodev
 
-# GELI filesystem encryption
-options		GEOM_ELI
+# GEOM classes
+options 	GEOM_GPT		# GUID Partition Tables.
+options		GEOM_ELI		# GELI filesystem encryption
+options		GEOM_LABEL	# Providers labelization.
 
 # The cpufreq(4) driver provides support for non-ACPI CPU frequency control
 device		cpufreq
@@ -353,6 +354,3 @@ device		vga				# VGA video card driver
 device		splash		# Splash screen and screen saver support
 # NOT COMPATIBLE WITH AMD64 options		VESA
 options		SC_PIXEL_MODE
-
-# Providers labelization.
-options		GEOM_LABEL
