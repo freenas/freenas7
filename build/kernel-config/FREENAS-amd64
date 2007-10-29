@@ -353,3 +353,6 @@ device		vga				# VGA video card driver
 device		splash		# Splash screen and screen saver support
 # NOT COMPATIBLE WITH AMD64 options		VESA
 options		SC_PIXEL_MODE
+
+# Providers labelization.
+options		GEOM_LABEL
