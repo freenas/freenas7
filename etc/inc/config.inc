@@ -51,12 +51,14 @@ if (file_exists("{$g['etc_path']}/platform")) {
 }
 
 if (is_booting()) {
-	/* find the device where config.xml resides and write out an fstab */
+	/* Find the device where config.xml resides and write out an fstab */
 	unset($cfgdevice);
+
+	/* Display platform type. */
+	echo "Booting platform: {$g['platform']}\n";
 
 	/* check if there's already an fstab ('full' release booting?) */
 	if (!file_exists("{$g['etc_path']}/fstab")) {
-		echo "Booting platform: {$g['platform']}\n";
 		echo "Looking for configuration file:";
 
 		// Get list of kernel known disks.
