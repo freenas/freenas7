@@ -99,7 +99,7 @@ EOD;
 
 	do {
 		echo sprintf("\nEnter the size for OS partition in MB (min %dMB): ", $minpart1size);
-		$partition1size = chop(fgets($fp));
+		$part1size = chop(fgets($fp));
 		if (empty($part1size)) {
 			exit(0);
 		}
