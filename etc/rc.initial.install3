@@ -135,7 +135,7 @@ To use the DATA partition:
    Use the following parameters:
    Disk {$harddrive}, Partition 2, Filesystem UFS
 
-DO NOT format the {$harddrive} drive! The DATA partition has been
+DO NOT format the drive {$harddrive}! The DATA partition has been
 formated for you as part of the installation!
 
 Press ENTER to continue.
