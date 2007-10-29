@@ -324,6 +324,7 @@ device		cryptodev
 
 # GEOM classes
 options 	GEOM_GPT		# GUID Partition Tables.
+options		GEOM_ELI		# GELI filesystem encryption
 options		GEOM_LABEL	# Providers labelization.
 
 # The cpufreq(4) driver provides support for non-ACPI CPU frequency control
