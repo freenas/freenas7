@@ -185,12 +185,6 @@ function install_harddrive_image($harddrive)
 	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* /destdisk/boot/kernel");
 
 	// Generate new loader.conf file
-	$fd = fopen("/destdisk/boot/loader.conf", "w");
-	if (!$fd) {
-		write_console("Error: Can't open boot/loader.conf in install_harddrive_image().\n");
-		return 1;
-	}
-
 	$loaderconf .= <<<EOD
 kernel="kernel"
 bootfile="kernel"
@@ -202,59 +196,49 @@ bitmap_name="/boot/splash.bmp"
 
 EOD;
 
-	fwrite($fd, $loaderconf);
-	fclose($fd);
-
-	// Set the release type.
-	$fd = fopen("/destdisk/etc/platform", "w");
-	if (!$fd) {
-		write_console("Error: Failed to create '/etc/platform'.\n");
+	if (false === file_put_contents("/destdisk/boot/loader.conf", $loaderconf)) {
+		write_console("Error: Failed to create '/boot/loader.conf'.\n");
 		return 1;
 	}
 
+	// Set the release type.
 	$platform .= <<<EOD
 {$g['arch']}-full
 
 EOD;
 
-	fwrite($fd, $platform);
-	fclose($fd);
+	if (false === file_put_contents("/destdisk/etc/platform", $platform)) {
+		write_console("Error: Failed to create '/etc/platform'.\n");
+		return 1;
+	}
 
 	//Unzipping the Kernel
 	mwexec("/usr/bin/gzip -d /destdisk/boot/kernel/kernel.gz");
 
 	//Generating the FSTAB
-	$fd = fopen("/destdisk/etc/fstab", "w");
-	if (!$fd) {
-		write_console("Error: Can't open fstab in install_harddrive_image().\n");
-		return 1;
-	}
-
 	$fstab .= <<<EOD
 # Device                Mountpoint      FStype  Options         Dump    Pass#
 /dev/{$harddrive}s1a             /       ufs     rw              1       1
 
 EOD;
 
-	fwrite($fd, $fstab);
-	fclose($fd);
-	
+	if (false === file_put_contents("/destdisk/etc/fstab", $fstab)) {
+		write_console("Error: Failed to create '/etc/fstab'.\n");
+		return 1;
+	}
+
 	// Generating the /etc/cfdevice (this file is linked in /var/etc at bootup)
 	// This file (more exatly /var/etc/cfdevice) is used by the firmware and mount check
 	// This file is normally generated with 'liveCD' and 'embedded' during startup, but need to be created during install of 'full'
-
-	$fd = fopen("/destdisk/etc/cfdevice", "w");
-	if (!$fd) {
-		write_console("Error: Can't open etc/cfdevice in install_harddrive_image().\n");
-		return 1;
-	}
 	$cfdevice .= <<<EOD
 {$harddrive}s1a
 
 EOD;
 
-	fwrite($fd, $cfdevice);
-	fclose($fd);
+	if (false === file_put_contents("/destdisk/etc/cfdevice", $cfdevice)) {
+		write_console("Error: Failed to create '/etc/cfdevice'.\n");
+		return 1;
+	}
 
 	//unmounting destination disk
 	mwexec("/sbin/umount /destdisk");
@@ -376,12 +360,6 @@ function install_fdisk($harddrive, $size)
 	$part2_size_sectors = $diskinfo['mediasize_sectors'] - $part1_size_sectors;
 
 	// Create fdisk config file (fdisk.conf).
-	$fd = fopen("{$g['varetc_path']}/fdisk.conf", "w");
-	if (!$fd) {
-		write_console("Error: Failed to create '{$g['varetc_path']}/fdisk.conf'.\n");
-		return 1;
-	}
-
 	$fdiskconf .= <<<EOD
 g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}
 p 1 165 1 $part1_size_sectors
@@ -392,8 +370,10 @@ a 1
 
 EOD;
 
-	fwrite($fd, $fdiskconf);
-	fclose($fd);
+	if (false === file_put_contents("{$g['varetc_path']}/fdisk.conf", $fdiskconf)) {
+		write_console("Error: Failed to create '{$g['varetc_path']}/fdisk.conf'.\n");
+		return 1;
+	}
 
 	// Fdisk the disk.
 	$result = mwexec("/sbin/fdisk -f {$g['varetc_path']}/fdisk.conf /dev/{$harddrive}");
