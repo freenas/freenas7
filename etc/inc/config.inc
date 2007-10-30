@@ -54,18 +54,18 @@ if (is_booting()) {
 	/* Find the device where config.xml resides and write out an fstab */
 	unset($cfgdevice);
 
-	/* Display platform type. */
-	echo "Booting platform: {$g['platform']}\n";
-
 	/* check if there's already an fstab ('full' release booting?) */
 	if (!file_exists("{$g['etc_path']}/fstab")) {
+		/* Display platform type. */
+		echo "Booting platform: {$g['platform']}\n";
+
 		echo "Looking for configuration file:";
 
 		// Get list of kernel known disks.
 		$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 		$found = false;
 
-		if (stristr($g['platform'], "liveCD")) {
+		if (stristr($g['platform'], "livecd")) {
 			// Config is on floppy disk/USB stick for LiveCD version per default.
 			$cfgdevice = $cfgpartition = "fd0";
 			$cfgfstype = "msdos";

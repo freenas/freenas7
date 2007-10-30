@@ -33,8 +33,8 @@
 require_once("functions.inc");
 require_once("util.inc");
 
-/* Mount the CDROM return 0 if OK, 1 if error.
-   Called by install script. Return 0 if OK, 1 if not. */
+// Mount the CDROM.
+// Return 0 if successful, otherwise 1
 function install_mount_cd($cdrom)
 {
 	write_console("\nCreating mount point for the CDROM...\n");
@@ -61,8 +61,8 @@ function install_mount_cd($cdrom)
 	return 0;
 }
 
-/* Unmount CDROM and destination disk.
-   Called by install script. Return 0 if OK, 1 if not. */
+// Unmount CDROM.
+// Return 0 if successful, otherwise 1
 function install_unmount_cd()
 {
 	$result = 0;
@@ -112,21 +112,19 @@ function install_init2partdisk($harddrive, $size)
 	}
 	write_console("\n");
 
-	/* Create and modify disk label. */
+	/* Create disk label. */
 	write_console("Creating BSD label on disk partition:");
 	write_console(" {$harddrive}s1");
-	if (mwexec("/sbin/bsdlabel -B -w -b /boot/boot {$harddrive}s1 auto")) {
+	if (install_bsdlabel("{$harddrive}s1")) {
 		write_console("Error: Failed to label '{$harddrive}s1'!\n");
 		return 1;
 	}
 	write_console(" {$harddrive}s2");
-	if (mwexec("/sbin/bsdlabel -w {$harddrive}s2 auto")) {
+	if (install_bsdlabel("{$harddrive}s2")) {
 		write_console("Error: Failed to label '{$harddrive}s2'!\n");
 		return 1;
 	}
-	write_console("\nModify BSD label information.\n");
-	install_bsdlabel($harddrive, "s1", "4.2BSD");
-	install_bsdlabel($harddrive, "s2", "4.2BSD");
+	write_console("\n");
 
 	/* Create filesystems. */
 	write_console("Creating filesystem:");
@@ -145,8 +143,8 @@ function install_init2partdisk($harddrive, $size)
 	return 0;
 }
 
-/* Install the IMG on the destination harddrive.
-   Called by install script. Return 0 if OK, 1 if not. */
+// Install the IMG on the destination harddrive.
+// Return 0 if successful, otherwise 1
 function install_dd_image($harddrive)
 {
 	global $g;
@@ -163,8 +161,8 @@ function install_dd_image($harddrive)
 	return 0;
 }
 
-/* Install FreeNAS on the destination harddrive.
-   Called by install script. Return 0 if OK, 1 if not. */
+// Install FreeNAS on the destination harddrive.
+// Return 0 if successful, otherwise 1
 function install_harddrive_image($harddrive)
 {
 	global $g;
@@ -246,38 +244,37 @@ EOD;
 	return 0;
 }
 
-/* Upfrade a FreeNAS 'full' releaseon the destination harddrive.
-   Called by install script. Return 0 if OK, 1 if not. */
+// Upgrade a FreeNAS 'full' releaseon the destination harddrive.
+// Return 0 if successful, otherwise 1
 function install_upgrade_full($harddrive)
 {
 	global $g;
 
-	
 	write_console("Upgrading...\n");
-	
+
 	mwexec("/bin/mkdir /destdisk");
 	mwexec("/sbin/mount /dev/{$harddrive}s1a /destdisk");
-	
+
 	// Start pre-upgrade script
 	mwexec("/etc/preupgrade.sh");
-	
+
 	// Install upgrade
 	mwexec("/usr/bin/tar --exclude /destdisk --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C /destdisk");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/* /destdisk/boot");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* /destdisk/boot/defaults");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* /destdisk/boot/kernel");
-	
+
 	// Start post-upgrade script
 	mwexec("/etc/postupgrade.sh");
-	
+
 	//unmounting destination disk
 	mwexec("/sbin/umount /destdisk");
 
 	return 0;
 }
 
-/* Backup the configuration file on the hard drive/CF and unmount this drive
-   Called by install script. Return 0 if OK, 1 if not. */
+// Backup the configuration file on the hard drive/CF and unmount this drive.
+// Return 0 if successful, otherwise 1
 function install_backupconfig($disk)
 {
 	/* Creating tempo directory for the config file*/
@@ -382,38 +379,52 @@ EOD;
 }
 
 // Create disk label.
-// Return none
-function install_bsdlabel($harddrive,$partition,$type)
+// Return 0 if successful, otherwise 1
+function install_bsdlabel($harddrive)
 {
-	global $config, $g;
+	global $g;
 
-	// Generating BSD Label table
-	passthru("/sbin/bsdlabel {$harddrive}{$partition} > {$g['tmp_path']}/label.tmp");
+	// Do a automatic label first.
+	if (mwexec("/sbin/bsdlabel -w -B {$harddrive}")) {
+		write_console("Error: Failed to write standard label.\n");
+		return 1;
+	}
 
-	// put this file on a array
-	$tableau = file("{$g['tmp_path']}/label.tmp");
+	// Read the label to manipulate it.
+	exec("/sbin/bsdlabel {$harddrive} > {$g['tmp_path']}/label.tmp", $output, $result);
+	if ($result) {
+		write_console("Error: Failed to backup label.\n");
+		return 1;
+	}
 
-	// Open this file in add mode
-	$handle = fopen("{$g['tmp_path']}/label.tmp", 'a');
+	// Put the file conent into an array.
+	$label = file("{$g['tmp_path']}/label.tmp");
 
-	while(list(,$val) = each($tableau)) {
-		// If the line contain the word "unused"
-		// Why did I replace 'a' with 'c' ? Must found the URL where I found this information
+	// Open this file in add mode.
+	$fd = fopen("{$g['tmp_path']}/label.tmp", 'a');
+
+	while(list(,$val) = each($label)) {
 		if (ereg ("unused",$val)) {
-			// Replacing c: by a:
-			// Why ??? Must found the web page where I see this method
-			$val = ereg_replace ("c:","a:", $val);
+			$val = ereg_replace("c:", "a:", $val);
 			// Peplacing unused by $type
-			$val = ereg_replace ("unused",$type, $val);
+			$val = ereg_replace("unused", "4.2BSD", $val);
 			// Adding this line add the end of the file
-			fwrite($handle, $val);
+			fwrite($fd, $val);
 		}
 	}
 
 	// Closing file
-	fclose($handle);
+	fclose($fd);
 
-	// Injecting this new partition table
-	passthru("/sbin/bsdlabel -R -B {$harddrive}{$partition} {$g['tmp_path']}/label.tmp");
+	// Injecting modified label.
+	if (mwexec("/sbin/bsdlabel -R -B {$harddrive} {$g['tmp_path']}/label.tmp")) {
+		write_console("Error: Failed to write modified label.\n");
+		return 1;
+	}
+
+	// Cleanup.
+	unlink("{$g['tmp_path']}/label.tmp");
+
+	return 0;
 }
 ?>
