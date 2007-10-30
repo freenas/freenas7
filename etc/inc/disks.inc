@@ -1125,7 +1125,7 @@ function disks_format($disk,$type,$notinitmbr,$minspace)
 			system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
 			// Create filesystem
 			echo gettext("Creating filesystem with 'Soft Updates'").":\n";
-			system("/sbin/newfs -m $minspace -U " . escapeshellarg($disk) . "p1");
+			system("/sbin/newfs -m {$minspace} -U " . escapeshellarg("{$disk}p1"));
 			echo gettext("Done")."!\n";
 			break;
 		case "softraid":
@@ -1140,10 +1140,10 @@ function disks_format($disk,$type,$notinitmbr,$minspace)
 			system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
 			// Initialize the partition
 			echo gettext("Initializing partition")."\n";
-			system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+			system("/bin/dd if=/dev/zero of=" . escapeshellarg("{$disk}s1") . " bs=32k count=16");
 			// Create filesystem
 			echo gettext("Creating filesystem").":\n";
-			system("/sbin/newfs_msdos -F 32 " . escapeshellarg($disk) . "s1");
+			system("/sbin/newfs_msdos -F 32 " . escapeshellarg("{$disk}s1"));
 			echo "Done!\n";
 			break;
 		case "ext2":
@@ -1152,10 +1152,10 @@ function disks_format($disk,$type,$notinitmbr,$minspace)
 			system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
 			// Initialize the partition
 			echo gettext("Initializing partition")."\n";
-			system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . "s1 bs=32k count=16");
+			system("/bin/dd if=/dev/zero of=" . escapeshellarg("{$disk}s1") . " bs=32k count=16");
 			// Create filesystem
 			echo gettext("Creating filesystem").":\n";
-			system("/usr/local/sbin/mke2fs " . escapeshellarg($disk) . "s1");
+			system("/usr/local/sbin/mke2fs " . escapeshellarg("{$disk}s1"));
 			echo "Done!\n";
 			break;
 	}

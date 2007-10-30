@@ -37,7 +37,7 @@ require_once("util.inc");
 // Return 0 if successful, otherwise 1
 function install_mount_cd($cdrom)
 {
-	write_console("\nCreating mount point for the CDROM...\n");
+	write_console("\nCreating mount point for the CDROM.\n");
 
 	if (is_dir("/mnt/cdrom")) {
 		write_console("Error: Temporary directory /mnt/cdrom for CDROM already exists!\n");
@@ -51,7 +51,7 @@ function install_mount_cd($cdrom)
 	}
 
 	/* Monting the CDROM */
-	write_console("Mounting CDROM...\n");
+	write_console("Mounting CDROM.\n");
 	if (mwexec("/sbin/mount_cd9660 /dev/{$cdrom} /mnt/cdrom")) {
 		write_console("Error: Failed to mount device {$cdrom}!\n");
 		@rmdir ("/mnt/cdrom");
@@ -67,7 +67,7 @@ function install_unmount_cd()
 {
 	$result = 0;
 
-	write_console("Unmount CDROM...\n");
+	write_console("Unmount CDROM.\n");
 
 	/* Unmounting cdrom */
 	if (mwexec("/sbin/umount /mnt/cdrom")) {
@@ -250,7 +250,7 @@ function install_upgrade_full($harddrive)
 {
 	global $g;
 
-	write_console("Upgrading...\n");
+	write_console("Upgrading installed OS.\n");
 
 	mwexec("/bin/mkdir /destdisk");
 	mwexec("/sbin/mount /dev/{$harddrive}s1a /destdisk");
