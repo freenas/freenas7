@@ -1108,54 +1108,70 @@ function disks_geli_setkey($provider, $oldpassphrase, $passphrase, $verbose = fa
 
 // Format disk.
 // Return none
-function disks_format($disk,$type,$notinitmbr,$minspace)
+function disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel)
 {
 	if (!$notinitmbr) {
 		echo gettext("Erasing MBR and all partitions").".\n";
-		system("dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=32k count=640");
+		system("dd if=/dev/zero of={$disk} bs=32k count=640");
 	}
 
 	switch ($type) {
 		case "ufsgpt":
 			// Create GPT partition table
 			echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
-			system("/sbin/gpt destroy " . escapeshellarg($disk));
+			system("/sbin/gpt destroy {$disk}");
 			echo sprintf(gettext("Creating %s partition"), "GPT").":\n";
-			system("/sbin/gpt create -f " . escapeshellarg($disk));
-			system("/sbin/gpt add -t ufs " . escapeshellarg($disk));
+			system("/sbin/gpt create -f {$disk}");
+			system("/sbin/gpt add -t ufs {$disk}");
+
 			// Create filesystem
 			echo gettext("Creating filesystem with 'Soft Updates'").":\n";
-			system("/sbin/newfs -m {$minspace} -U " . escapeshellarg("{$disk}p1"));
+			$param = "-U";
+			if (!empty($volumelabel))
+				$param .= " -L " . escapeshellarg($volumelabel);
+			if (!empty($minspace))
+				$param .= " -m {$minspace}";
+			system("/sbin/newfs {$param} {$disk}p1");
 			echo gettext("Done")."!\n";
 			break;
+
 		case "softraid":
-			// Initialise the disk
-			echo gettext("Initializing disk").".\n";
-			system("/bin/dd if=/dev/zero of=" . escapeshellarg($disk) . " bs=1m count=16");
+			// Initialise disk
+			echo gettext("Formating disk").".\n";
+			system("/bin/dd if=/dev/zero of={$disk} bs=1m count=16");
 			echo gettext("Done")."!\n";
 			break;
+
 		case "msdos":
 			// Initialize disk
-			echo gettext("Creating one partition").":\n";
-			system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+			echo gettext("Creating partition").":\n";
+			system("/sbin/fdisk -I -v {$disk}");
+
 			// Initialize the partition
-			echo gettext("Initializing partition")."\n";
-			system("/bin/dd if=/dev/zero of=" . escapeshellarg("{$disk}s1") . " bs=32k count=16");
+			echo gettext("Initializing partition").".\n";
+			system("/bin/dd if=/dev/zero of={$disk}s1 bs=32k count=16");
+
 			// Create filesystem
 			echo gettext("Creating filesystem").":\n";
-			system("/sbin/newfs_msdos -F 32 " . escapeshellarg("{$disk}s1"));
+			$param = "-F 32";
+			if (!empty($volumelabel))
+				$param .= " -L " . escapeshellarg($volumelabel);
+			system("/sbin/newfs_msdos {$param} {$disk}s1");
 			echo "Done!\n";
 			break;
+
 		case "ext2":
 			// Initialize disk
-			echo gettext("Creating one partition").":\n";
-			system("/sbin/fdisk -I -b /boot/mbr " . escapeshellarg($disk));
+			echo gettext("Creating partition").":\n";
+			system("/sbin/fdisk -I -v {$disk}");
+
 			// Initialize the partition
-			echo gettext("Initializing partition")."\n";
-			system("/bin/dd if=/dev/zero of=" . escapeshellarg("{$disk}s1") . " bs=32k count=16");
+			echo gettext("Initializing partition").".\n";
+			system("/bin/dd if=/dev/zero of={$disk}s1 bs=32k count=16");
+
 			// Create filesystem
 			echo gettext("Creating filesystem").":\n";
-			system("/usr/local/sbin/mke2fs " . escapeshellarg("{$disk}s1"));
+			system("/usr/local/sbin/mke2fs {$disk}s1");
 			echo "Done!\n";
 			break;
 	}

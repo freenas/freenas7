@@ -187,6 +187,7 @@ if ($_POST) {
 		$type = $_POST['type'];
 		$minspace = $_POST['minspace'];
 		$notinitmbr= $_POST['notinitmbr'];
+		$volumelabel = $_POST['volumelabel'];
 
 		/* Check if disk is mounted. */ 
 		if(disks_ismounted_ex($disk,"fullname")) {
@@ -277,6 +278,7 @@ if (!isset($do_format)) {
 	$disk = '';
 	$type = '';
 	$minspace = '';
+	$volumelabel = '';
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -300,9 +302,15 @@ function fstype_change() {
 	switch(document.iform.type.value) {
 		case "ufsgpt":
 			showElementById('minspace_tr','show');
+			showElementById('volumelabel_tr','show');
+			break;
+		case "msdos":
+			showElementById('minspace_tr','hide');
+			showElementById('volumelabel_tr','show');
 			break;
 		default:
 			showElementById('minspace_tr','hide');
+			showElementById('volumelabel_tr','hide');
 			break;
 	}
 }
@@ -335,6 +343,12 @@ function fstype_change() {
 	       </select>
 	    </td>
 		</tr>
+		<tr id="volumelabel_tr">
+			<td width="22%" valign="top" class="vncell"><?=gettext("Volume label");?></td>
+			<td width="78%" class="vtable">
+				<input name="volumelabel" type="text" class="formfld" id="volumelabel" size="20" value="<?=htmlspecialchars($volumelabel);?>">
+			</td>
+		</tr>
 		<tr id="minspace_tr">
 			<td width="22%" valign="top" class="vncell"><?=gettext("Minimum free space") ; ?></td>
 			<td width="78%" class="vtable">
@@ -366,7 +380,7 @@ function fstype_change() {
 				echo("<strong>" . gettext("Command output:") . "</strong>");
 				echo('<pre>');
 				ob_end_flush();
-				disks_format($disk,$type,$notinitmbr,$minspace);
+				disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel);
 				echo('</pre>');
 			}
 			?>
