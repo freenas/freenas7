@@ -277,31 +277,35 @@ function install_upgrade_full($harddrive)
 // Return 0 if successful, otherwise 1
 function install_backupconfig($disk)
 {
-	/* Creating tempo directory for the config file*/
-	if (mwexec("/bin/mkdir /tmp/configbak")) {
-		write_console("Error: Can't create /tmp/configbak!\n");
+	write_console("Backup configuration.\n");
+
+	/* Creating temporary directory for the configuration file. */
+	if (mwexec("/bin/mkdir -p /tmp/confbackup")) {
+		write_console("Error: Failed to create '/tmp/confbackup'!\n");
 		return 1;
 	}
 
-	if (mwexec("/bin/mkdir /tmp/installdrive")) {
-		write_console("Error: Can't create /tmp/installdrive!\n");
+	/* Creating temporary directory for the disk containing the configuration file. */
+	if (mwexec("/bin/mkdir -p /mnt/{$disk}_backup")) {
+		write_console("Error: Failed to create '/mnt/{$disk}_backup'!\n");
 		return 1;
 	}
-	/* mounting the drive to be upgraded */
-	if (mwexec("/sbin/mount /dev/{$disk} /tmp/installdrive")) {
-		write_console("Error: Can't mount the drive to be upgraded!\n");
+
+	/* Mount the drive to be upgraded (readonly mode). */
+	if (mwexec("/sbin/mount -r /dev/{$disk} /mnt/{$disk}_backup")) {
+		write_console("Error: Failed to mount '/dev/{$disk}'!\n");
 		$result = 1;
 	}
 
-	/* Backuping the config file */
-	if (mwexec("cp -p /tmp/installdrive/conf/* /tmp/configbak")) {
-		write_console("Error: Can't backup the config file!\n");
+	/* Backup the configuration file. */
+	if (mwexec("cp -p /mnt/{$disk}_backup/conf/config.xml /tmp/confbackup")) {
+		write_console("Error: Failed to backup the configuration file!\n");
 		return 1;
 	}
 
-	/* unmounting the drive to be upgraded */
-	if (mwexec("/sbin/umount -f /dev/{$disk}")) {
-		write_console("Error: Can't unmount the drive to be upgraded during config backup process!\n");
+	/* Unmount the drive to be upgraded. */
+	if (mwexec("/sbin/umount -f /mnt/{$disk}_backup")) {
+		write_console("Error: Failed to umount '/mnt/{$disk}_backup'!\n");
 		$result = 1;
 	}
 
@@ -310,21 +314,29 @@ function install_backupconfig($disk)
 
 function install_restoreconfig($disk)
 {
-	/* Mount the upgraded drive in RW mode */
-	if (mwexec("/sbin/mount /dev/{$disk} /tmp/installdrive")) {
-		write_console("Error: Can't mount the drive just upgraded in RW mode!\n");
+	write_console("Restore configuration.\n");
+
+	/* Mount the drive to be upgraded. */
+	if (mwexec("/sbin/mount /dev/{$disk} /mnt/{$disk}_backup")) {
+		write_console("Error: Failed to mount '/dev/{$disk}'!\n");
 		$result = 1;
 	}
 
-	/* Restoring the config file*/
-	if (mwexec("cp -p /tmp/configbak/* /tmp/installdrive/conf")) {
-		write_console("Error: Can't restore the config file!\n");
+	/* Restore the configuration file. */
+	if (mwexec("cp -p /tmp/confbackup/config.xml /mnt/{$disk}_backup/conf")) {
+		write_console("Error: Failed to restore the configuration file!\n");
 		return 1;
 	}
 
-	/* unmount the upgraded drive */
-	if (mwexec("/sbin/umount -f /dev/{$disk}")) {
-		write_console("Error: Can't unmount the drive just upgraded!\n");
+	/* Unmount the upgraded drive. */
+	if (mwexec("/sbin/umount -f /mnt/{$disk}_backup")) {
+		write_console("Error: Failed to umount '/mnt/{$disk}_backup'!\n");
+		$result = 1;
+	}
+
+	/* Cleanup */
+	if (mwexec("/bin/rm -f -r /mnt/{$disk}_backup /tmp/confbackup")) {
+		write_console("Error: Failed to remove temporary backup data!\n");
 		$result = 1;
 	}
 
