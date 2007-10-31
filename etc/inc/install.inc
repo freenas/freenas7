@@ -37,23 +37,23 @@ require_once("util.inc");
 // Return 0 if successful, otherwise 1
 function install_mount_cd($cdrom)
 {
-	write_console("\nCreating mount point for the CDROM.\n");
+	write_console("Mount CDROM.\n");
 
+	// Check if there already exists directory used to mount CDROM.
 	if (is_dir("/mnt/cdrom")) {
-		write_console("Error: Temporary directory /mnt/cdrom for CDROM already exists!\n");
+		write_console("Error: Temporary directory '/mnt/cdrom' for CDROM already exists!\n");
 		return 1;
 	}
 
 	/* Creating tempo directory for cdrom */
-	if (mwexec("/bin/mkdir /mnt/cdrom")) {
-		write_console("Error: Can't create temporary directory /mnt/cdrom!\n");
+	if (mwexec("/bin/mkdir -p /mnt/cdrom")) {
+		write_console("Error: Failed to create directory '/mnt/cdrom'!\n");
 		return 1;
 	}
 
 	/* Monting the CDROM */
-	write_console("Mounting CDROM.\n");
 	if (mwexec("/sbin/mount_cd9660 /dev/{$cdrom} /mnt/cdrom")) {
-		write_console("Error: Failed to mount device {$cdrom}!\n");
+		write_console("Error: Failed to mount device '{$cdrom}'!\n");
 		@rmdir ("/mnt/cdrom");
 		return 1;
 	}
@@ -113,7 +113,7 @@ function install_init2partdisk($harddrive, $size)
 	write_console("\n");
 
 	/* Create disk label. */
-	write_console("Creating BSD label on disk partition:");
+	write_console("Create BSD label on disk partition:");
 	write_console(" {$harddrive}s1");
 	if (install_bsdlabel("{$harddrive}s1")) {
 		write_console("Error: Failed to label '{$harddrive}s1'!\n");
@@ -127,7 +127,7 @@ function install_init2partdisk($harddrive, $size)
 	write_console("\n");
 
 	/* Create filesystems. */
-	write_console("Creating filesystem:");
+	write_console("Create filesystem:");
 	write_console(" {$harddrive}s1");
 	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s1")) {
 		write_console("\nError: Failed to create filesystem on '/dev/{$harddrive}s1'!\n");
@@ -252,7 +252,7 @@ function install_upgrade_full($harddrive)
 {
 	global $g;
 
-	write_console("Upgrading installed OS.\n");
+	write_console("Upgrade installed OS.\n");
 
 	$mntpath = "/mnt/{$harddrive}_install";
 
@@ -299,7 +299,7 @@ function install_backupconfig($disk)
 
 	/* Mount the drive to be upgraded (readonly mode). */
 	if (mwexec("/sbin/mount -r /dev/{$disk} /mnt/{$disk}_backup")) {
-		write_console("Error: Failed to mount '/dev/{$disk}'!\n");
+		write_console("Error: Failed to mount device '{$disk}'!\n");
 		$result = 1;
 	}
 
@@ -324,7 +324,7 @@ function install_restoreconfig($disk)
 
 	/* Mount the drive to be upgraded. */
 	if (mwexec("/sbin/mount /dev/{$disk} /mnt/{$disk}_backup")) {
-		write_console("Error: Failed to mount '/dev/{$disk}'!\n");
+		write_console("Error: Failed to mount device '{$disk}'!\n");
 		$result = 1;
 	}
 
