@@ -167,20 +167,21 @@ function install_harddrive_image($harddrive)
 {
 	global $g;
 
-	/* Part of install process: dd image file on the destination disk */
-	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
-	mwexec("/bin/mkdir /destdisk");
-	mwexec("/sbin/mount /dev/{$harddrive}s1a /destdisk");
+	$mntpath = "/mnt/{$harddrive}_install";
+
+	// Mount disk used to install OS.
+	mwexec("/bin/mkdir -p {$mntpath}");
+	mwexec("/sbin/mount /dev/{$harddrive}s1a {$mntpath}");
 
 	write_console("Installing system files on disk {$harddrive}s1.\n");
-	mwexec("/usr/bin/tar --exclude /destdisk --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C /destdisk");
-	mwexec("/bin/mkdir /destdisk/var");
-	mwexec("/bin/mkdir /destdisk/dev");
-	mwexec("/bin/mkdir /destdisk/mnt");
-	mwexec("/bin/mkdir /destdisk/boot/defaults");
-	mwexec("/bin/cp -v /mnt/cdrom/boot/* /destdisk/boot");
-	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* /destdisk/boot/defaults");
-	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* /destdisk/boot/kernel");
+	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
+	mwexec("/bin/mkdir {$mntpath}/var");
+	mwexec("/bin/mkdir {$mntpath}/dev");
+	mwexec("/bin/mkdir {$mntpath}/mnt");
+	mwexec("/bin/mkdir {$mntpath}/boot/defaults");
+	mwexec("/bin/cp -v /mnt/cdrom/boot/* {$mntpath}/boot");
+	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* {$mntpath}/boot/defaults");
+	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* {$mntpath}/boot/kernel");
 
 	// Generate new loader.conf file
 	$loaderconf .= <<<EOD
@@ -194,7 +195,7 @@ bitmap_name="/boot/splash.bmp"
 
 EOD;
 
-	if (false === file_put_contents("/destdisk/boot/loader.conf", $loaderconf)) {
+	if (false === file_put_contents("{$mntpath}/boot/loader.conf", $loaderconf)) {
 		write_console("Error: Failed to create '/boot/loader.conf'.\n");
 		return 1;
 	}
@@ -205,13 +206,13 @@ EOD;
 
 EOD;
 
-	if (false === file_put_contents("/destdisk/etc/platform", $platform)) {
+	if (false === file_put_contents("{$mntpath}/etc/platform", $platform)) {
 		write_console("Error: Failed to create '/etc/platform'.\n");
 		return 1;
 	}
 
 	//Unzipping the Kernel
-	mwexec("/usr/bin/gzip -d /destdisk/boot/kernel/kernel.gz");
+	mwexec("/usr/bin/gzip -d {$mntpath}/boot/kernel/kernel.gz");
 
 	//Generating the FSTAB
 	$fstab .= <<<EOD
@@ -220,7 +221,7 @@ EOD;
 
 EOD;
 
-	if (false === file_put_contents("/destdisk/etc/fstab", $fstab)) {
+	if (false === file_put_contents("{$mntpath}/etc/fstab", $fstab)) {
 		write_console("Error: Failed to create '/etc/fstab'.\n");
 		return 1;
 	}
@@ -233,13 +234,14 @@ EOD;
 
 EOD;
 
-	if (false === file_put_contents("/destdisk/etc/cfdevice", $cfdevice)) {
+	if (false === file_put_contents("{$mntpath}/etc/cfdevice", $cfdevice)) {
 		write_console("Error: Failed to create '/etc/cfdevice'.\n");
 		return 1;
 	}
 
-	//unmounting destination disk
-	mwexec("/sbin/umount /destdisk");
+	// Umount destination disk.
+	mwexec("/sbin/umount {$mntpath}");
+	mwexec("/bin/rm -f {$mntpath}");
 
 	return 0;
 }
@@ -252,23 +254,27 @@ function install_upgrade_full($harddrive)
 
 	write_console("Upgrading installed OS.\n");
 
-	mwexec("/bin/mkdir /destdisk");
-	mwexec("/sbin/mount /dev/{$harddrive}s1a /destdisk");
+	$mntpath = "/mnt/{$harddrive}_install";
 
-	// Start pre-upgrade script
+	// Mount disk used by OS.
+	mwexec("/bin/mkdir -p {$mntpath}");
+	mwexec("/sbin/mount /dev/{$harddrive}s1a {$mntpath}");
+
+	// Start pre-upgrade script.
 	mwexec("/etc/preupgrade.sh");
 
-	// Install upgrade
-	mwexec("/usr/bin/tar --exclude /destdisk --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C /destdisk");
-	mwexec("/bin/cp -v /mnt/cdrom/boot/* /destdisk/boot");
-	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* /destdisk/boot/defaults");
-	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* /destdisk/boot/kernel");
+	// Upgrade OS.
+	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
+	mwexec("/bin/cp -v /mnt/cdrom/boot/* {$mntpath}/boot");
+	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* {$mntpath}/boot/defaults");
+	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* {$mntpath}/boot/kernel");
 
-	// Start post-upgrade script
+	// Start post-upgrade script.
 	mwexec("/etc/postupgrade.sh");
 
-	//unmounting destination disk
-	mwexec("/sbin/umount /destdisk");
+	// Umount destination disk.
+	mwexec("/sbin/umount {$mntpath}");
+	mwexec("/bin/rm -f {$mntpath}");
 
 	return 0;
 }
