@@ -129,9 +129,9 @@ if ($_POST) {
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Disk");?></td>
 						<td width="78%" class="vtable">
-							<select name="name" class="formfld" id="name">
+							<select name="name" class="formfld" id="name" <?php if (isset($id)) echo "disabled";?>>
 							  <?php foreach ($disklist as $diski => $diskv): ?>
 							  <option value="<?=$diski;?>" <?php if ($diski == $pconfig['name']) echo "selected";?>><?php echo htmlspecialchars($diski . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
 					  		<?php endforeach; ?>
@@ -193,7 +193,7 @@ if ($_POST) {
 					<tr> 
 						<td width="22%" valign="top" class="vncell"><?=gettext("Preformatted FS"); ?></td>
 						<td width="78%" class="vtable"> 
-							<select name="fstype" class="formfld">
+							<select name="fstype" class="formfld" <?php if (isset($id)) echo "disabled";?>>
 							<?php $fstlist = get_fstype_list(); ?>
 							<?php foreach ($fstlist as $fstval => $fstname): ?>
 								<option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=gettext($fstname);?></option>
