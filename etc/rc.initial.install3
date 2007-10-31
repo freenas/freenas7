@@ -98,12 +98,14 @@ EOD;
 	}
 
 	do {
-		echo sprintf("\nEnter the size for OS partition in MB (min %dMB): ", $minpart1size);
+		echo sprintf("Enter the size for OS partition in MB (min %dMB): ", $minpart1size);
 		$part1size = chop(fgets($fp));
 		if (empty($part1size)) {
 			exit(0);
 		}
 	} while ($minpart1size > $part1size);
+
+	echo "\n";
 
 	if(install_mount_cd($cdrom)) {
 		echo "\nThere was a problem while mounting the CDROM.\n";

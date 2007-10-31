@@ -86,19 +86,15 @@ function install_unmount_cd()
 // Return 0 if successful, otherwise 1
 function install_init2partdisk($harddrive, $size)
 {
+	write_console("Initialze disk '{$harddrive}:'.\n");
+
 	/* Initialize the destination disk with 2 partitions. */
-	if (1 == install_fdisk($harddrive, $size)) {
+	if (1 == install_fdisk2partdisk($harddrive, $size)) {
 		write_console("Error: Failed to create partitions!\n");
 		return 1;
 	}
 
-	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$harddrive}")) {
-		write_console("Error: Can't fdisk the destination drive '{$harddrive}'!\n");
-		return 1;
-	}
-
 	/* Must wait until /dev is updated with the new disk partition information. */
-	write_console("Waiting for system update...");
 	$devtotest="/dev/{$harddrive}s2";
 	$i=0;
 	while (!file_exists($devtotest)) {
@@ -110,7 +106,6 @@ function install_init2partdisk($harddrive, $size)
 			return 1;
 		}
 	}
-	write_console("\n");
 
 	/* Create disk label. */
 	write_console("Create BSD label on disk partition:");
@@ -349,13 +344,15 @@ function install_restoreconfig($disk)
 	return 0;
 }
 
-// Initialise harddrive. Use given size for partition 1, use the rest for partition 2.
+// Initialize harddrive. Use given size for partition 1, use the rest for partition 2.
 // $harddrive - Disk name (e.g. ad0)
 // $size - Partition 1 size in MB
 // Return 0 if successful, otherwise 1
-function install_fdisk($harddrive, $size)
+function install_fdisk2partdisk($harddrive, $size)
 {
 	global $g;
+
+	write_console("Create slice table.\n");
 
 	// Get disk informations.
 	$diskinfo = disks_get_diskinfo($harddrive);
@@ -385,15 +382,26 @@ a 1
 
 EOD;
 
-	if (false === file_put_contents("{$g['varetc_path']}/fdisk.conf", $fdiskconf)) {
+	if (false === file_put_contents("{$g['tmp_path']}/fdisk.conf", $fdiskconf)) {
 		write_console("Error: Failed to create '{$g['varetc_path']}/fdisk.conf'.\n");
 		return 1;
 	}
 
-	// Fdisk the disk.
-	$result = mwexec("/sbin/fdisk -f {$g['varetc_path']}/fdisk.conf /dev/{$harddrive}");
+	// Set slice values.
+	if (mwexec("/sbin/fdisk -f {$g['tmp_path']}/fdisk.conf {$harddrive}")) {
+		write_console("Error: Failed to set slice values on disk '{$harddrive}'.\n");
+		return 1;
+	}
 
-	return $result;
+	write_console("Install boot code.\n");
+
+	// Reinitialize the boot code contained in sector 0 of the disk.	
+	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$harddrive}")) {
+		write_console("Error: Failed to reinitialize the boot code on disk '{$harddrive}'!\n");
+		return 1;
+	}
+
+	return 0;
 }
 
 // Create disk label.
@@ -404,14 +412,14 @@ function install_bsdlabel($harddrive)
 
 	// Do a automatic label first.
 	if (mwexec("/sbin/bsdlabel -w -B {$harddrive}")) {
-		write_console("Error: Failed to write standard label.\n");
+		write_console("\nError: Failed to write standard label.\n");
 		return 1;
 	}
 
 	// Read the label to manipulate it.
 	exec("/sbin/bsdlabel {$harddrive} > {$g['tmp_path']}/label.tmp", $output, $result);
 	if ($result) {
-		write_console("Error: Failed to backup label.\n");
+		write_console("\nError: Failed to backup label.\n");
 		return 1;
 	}
 
@@ -436,7 +444,7 @@ function install_bsdlabel($harddrive)
 
 	// Injecting modified label.
 	if (mwexec("/sbin/bsdlabel -R -B {$harddrive} {$g['tmp_path']}/label.tmp")) {
-		write_console("Error: Failed to write modified label.\n");
+		write_console("\nError: Failed to write modified label.\n");
 		return 1;
 	}
 

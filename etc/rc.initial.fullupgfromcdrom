@@ -52,11 +52,11 @@ EOD;
 	$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 	foreach ($disks as $mountdisk) {
 		/* Skip mfs mounted filesystems. */
-		if (TRUE === ereg("md[0-9]*", $mountdisk))
+		if (0 < ereg("md[0-9]*", $mountdisk))
 			continue;
 
-		/* Search on slice 1 for OS installed on disk with install script*/
-		if (mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$g['cf_path']}") == 0) 	{
+		/* Search on slice 1 for OS installed on disk with install script. */
+		if (0 == mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$g['cf_path']}")) {
 			if (file_exists("{$g['cf_conf_path']}/config.xml")) 	{
 				$cfgdevice = $mountdisk;
 				$cfgpartition = $cfgdevice . "s1";
@@ -65,7 +65,9 @@ EOD;
 				$not_found = 0;
 			}
 
-			if (file_exists("{$g['cf_path']}/libexec/ld-elf.so.1")) {
+			// Check install mode.
+			$platform = chop(file_get_contents("{$g['cf_path']}{$g['etc_path']}/platform"));
+			if (FALSE !== ereg("^.*-full", $platform)) {
 				$is_full = 1;
 			}
 
