@@ -66,8 +66,7 @@ EOD;
 			}
 
 			// Check install mode.
-			$platform = chop(file_get_contents("{$g['cf_path']}{$g['etc_path']}/platform"));
-			if (FALSE !== ereg("^.*-embedded", $platform)) {
+			if (file_exists("{$g['cf_path']}/mfsroot.gz")) {
 				$is_embedded = 1;
 			}
 
@@ -85,6 +84,7 @@ EOD;
 				$not_found = 0;
 			}
 
+			// Check install mode.
 			if (file_exists("{$g['cf_path']}/mfsroot.gz")) {
 				$is_embedded = 1;
 			}

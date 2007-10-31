@@ -86,7 +86,7 @@ function install_unmount_cd()
 // Return 0 if successful, otherwise 1
 function install_init2partdisk($harddrive, $size)
 {
-	write_console("Initialze disk '{$harddrive}:'.\n");
+	write_console("Initialze disk '{$harddrive}':\n");
 
 	/* Initialize the destination disk with 2 partitions. */
 	if (1 == install_fdisk2partdisk($harddrive, $size)) {

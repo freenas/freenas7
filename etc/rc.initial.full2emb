@@ -66,7 +66,7 @@ EOD;
 			}
 
 			// Check install mode.
-			$platform = chop(file_get_contents("{$g['cf_path']}{$g['etc_path']}/platform"));
+			$platform = chop(@file_get_contents("{$g['cf_path']}{$g['etc_path']}/platform"));
 			if (FALSE !== ereg("^.*-full", $platform)) {
 				$is_full = 1;
 			}
@@ -115,6 +115,8 @@ EOD;
 			exit(0);
 		}
 	} while ($valid != "y");
+
+	echo "\n";
 
 	/* Umount configuration device. */
 	mwexec("/sbin/umount -f {$g['cf_path']}");
