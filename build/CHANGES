@@ -1,7 +1,7 @@
 ################ History Change logs ##############
 
-FreeNAS 0.686b (unreleased):
-----------------------------
+FreeNAS 0.686b1:
+----------------
 
 Majors changes:
 - Add 'System/Packages' WebGUI page to administrate packages (only available in 'full' install mode).
@@ -16,17 +16,19 @@ Majors changes:
 - Add 'System/Advanced/Cron' WebGUI to administrate additional cron jobs.
 - Add new languages: Slovenian, Portuguese, Polish, Hungarian and Norwegian Bokmal.
 - Add new SSH settings to WebGUI: Password authentication.
-- Add WOL patch for some NIC (http://stsp.name/wol/)
+- Add WOL patch for some NIC (http://stsp.name/wol/).
 - Add 'Hosts allow' and 'Hosts deny' settings on Samba shares WebGUI page.
 - Add 'chroot everyone' setting on FTP WebGUI page (Thanks to Francois Allard).
 - Add 'Home directory' support in user management (Thanks to Francois Allard).
 - Refactor 'System/Advanced/Startup'. Renamed to 'System/Advanced/Command scripts'. Add ability to define
   scripts executed before system shutdown.
 - Add SNMP service support.
-- Upgrade Samba to 3.0.26a
+- Upgrade Samba to 3.0.26a.
 - Permit to convert a 'full' release to an 'embedded' (from the CDROM)
 - Add proxy support (WebGUI: 'System/Advanced/Proxy').
 - Add volume label support when formating disks.
+- Modified boot image file system parameter to support USB booting on a greater number of systems.
+  Maybe some booting problems with LiveCD are also solved.
 
 Minors changes:
 - Rename CIFS to CIFS/SMB for better understanding.
@@ -37,11 +39,11 @@ Minors changes:
 - Add ability to define full path of Samba share, not only to choose from a list of defined
   mount points.
 - Add ability to mount a file system read-only.
-- Fix a bug when compiling FreeNAS on a FreeBSD 6.2 system with X11 installed
-- Add wpa_supplicant binaries (actually not supported from the webgui)
-- Add 'du' tool
-- Add Davicom DM910 USB Ethernet driver
-- Update 3Ware drivers to 9.4.1.3
+- Fix a bug when compiling FreeNAS on a FreeBSD 6.2 system with X11 installed.
+- Add wpa_supplicant binaries (actually not supported from the webgui).
+- Add 'du' tool.
+- Add Davicom DM910 USB Ethernet driver.
+- Update 3Ware drivers to 9.4.1.3.
 - Customizable size for OS partition (1) in 'full' install mode.
 
 Bug fixs:
