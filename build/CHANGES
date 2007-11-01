@@ -4,6 +4,13 @@ FreeNAS 0.686b1:
 ----------------
 
 Majors changes:
+- Upgrade fusefs-ntfs to 1.1004.
+- Upgrade lighttpd to 1.4.18.
+- Upgrade netbsd-iscsi (iscsi-target) to 20070925.
+- Refactor GEOM-Eli implementation + WebGUI. Now it is possible to add existing encrypted disks
+  and change passwords for a encrypted disk.
+- Improve device detection for configuration storage when booting from LiveCD.
+- Update zoneinfo files.
 - Add 'System/Packages' WebGUI page to administrate packages (only available in 'full' install mode).
 - Add LDAP Authentication: Thanks to Andreas Neth and David Rush for their help
 - Add email status report.
@@ -31,6 +38,13 @@ Majors changes:
   Maybe some booting problems with LiveCD are also solved.
 
 Minors changes:
+- Display used and available disk space as tooltip for mount points on system information (index.php) page.
+- Reduce number of virtual consoles to ttyv0 and ttyv1.
+- Display 'MTU' on interfaces status page.
+- Rename 'Resume' to 'Keep all files' option on FTP WebGUI page. Also update option description text.
+- Use nano as default editor. Thanks to Carsten Hammer.
+- Remove Samba 'ReadAhead' setting because this is not supported on FreeBSD.
+- Refresh RAID information pages automatically every 5 seconds to display progress (e.g. when creating or rebuilding RAID).
 - Rename CIFS to CIFS/SMB for better understanding.
 - Upgrade dp.SyntaxHighlighter to 1.5.
 - Add attribute //samba/auxparam and //samba/share/auxparam to add auxiliary parameters.
@@ -47,6 +61,11 @@ Minors changes:
 - Customizable size for OS partition (1) in 'full' install mode.
 
 Bug fixs:
+- Fix bug in Mount Point WebGUI page when using file system 'CD/DVD'.
+- Fix bug when booting 'full' installation.
+- Cleanup /var/run during boot process, otherwise sysreboot.reqd won't be removed.
+- Fix bug in /etc/rc.d/afpd script. Thanks to fred0.
+- Fix bug in userdb generation. User administrator privilegs were not set correct after a reboot.
 - Add missing link /etc/exports -> /var/etc/exports.
 - Set //syslogd/nentries to 50 (by default) in config.xml if it is not set. Causes errors in status report.
 - Recyle bin setting was not stored when it was activated for a Samba share.
