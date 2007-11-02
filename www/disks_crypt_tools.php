@@ -160,13 +160,13 @@ function action_change() {
             </td>
           </tr>
           <tr id="oldpassphrase_tr" style="display: none">
-						<td width="22%" valign="top" class="vncellreq"><?=htmlentities(gettext("Old passphrase"));?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Old passphrase"));?></td>
 						<td width="78%" class="vtable">
 							<input name="oldpassphrase" type="password" class="formfld" id="oldpassphrase" size="20">
 						</td>
 					</tr>
           <tr id="passphrase_tr" style="display: none">
-						<td width="22%" valign="top" class="vncellreq"><?=htmlentities(gettext("Passphrase"));?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Passphrase"));?></td>
 						<td width="78%" class="vtable">
 							<input name="passphrase" type="password" class="formfld" id="passphrase" size="20">
 						</td>

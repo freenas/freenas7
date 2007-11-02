@@ -295,7 +295,7 @@ if (!is_array($config['mounts']['mount'])) {
 												<td valign=top>
 													<select multiple size="12" name="month[]" id="months">
 														<?php $i = 1; foreach ($a_months as $month):?>
-														<option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array("$i", $pconfig['month'])) echo "selected";?>><?=htmlentities($month);?></option>
+														<option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array("$i", $pconfig['month'])) echo "selected";?>><?=htmlspecialchars($month);?></option>
 														<?php $i++; endforeach;?>
 													</select>
 												</td>

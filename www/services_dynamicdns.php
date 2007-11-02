@@ -132,32 +132,32 @@ function enable_change(enable_change) {
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
       <td width="78%" class="vtable">
-        <input name="domainname" type="text" class="formfld" id="domainname" size="40" value="<?=htmlentities($pconfig['domainname']);?>">
+        <input name="domainname" type="text" class="formfld" id="domainname" size="40" value="<?=htmlspecialchars($pconfig['domainname']);?>">
       </td>
     </tr>
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
       <td width="78%" class="vtable">
-        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlentities($pconfig['username']);?>">
+        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>">
       </td>
     </tr>
     <tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
       <td width="78%" class="vtable">
-        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlentities($pconfig['password']);?>">
+        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
       </td>
 		</tr>
 		<tr>
 			<td width="22%" valign="top" class="vncell"><?=gettext("Update period");?></td>
 			<td width="78%" class="vtable">
-				<input name="updateperiod" type="text" class="formfld" id="updateperiod" size="20" value="<?=htmlentities($pconfig['updateperiod']);?>">
+				<input name="updateperiod" type="text" class="formfld" id="updateperiod" size="20" value="<?=htmlspecialchars($pconfig['updateperiod']);?>">
 				<br><?=gettext("How often the IP is checked. The period is in seconds (max. is 10 days).");?>
 			</td>
 		</tr>
 		<tr>
 			<td width="22%" valign="top" class="vncell"><?=gettext("Forced update period");?></td>
 			<td width="78%" class="vtable">
-				<input name="forcedupdateperiod" type="text" class="formfld" id="forcedupdateperiod" size="20" value="<?=htmlentities($pconfig['forcedupdateperiod']);?>">
+				<input name="forcedupdateperiod" type="text" class="formfld" id="forcedupdateperiod" size="20" value="<?=htmlspecialchars($pconfig['forcedupdateperiod']);?>">
 				<br><?=gettext("How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days).");?>
 			</td>
 		</tr>

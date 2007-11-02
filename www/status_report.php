@@ -218,14 +218,14 @@ function auth_change() {
     <tr>
 	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Outgoing mail server");?></td>
       <td width="78%" class="vtable">
-        <input name="server" type="text" class="formfld" id="server" size="40" value="<?=htmlentities($pconfig['server']);?>"><br>
+        <input name="server" type="text" class="formfld" id="server" size="40" value="<?=htmlspecialchars($pconfig['server']);?>"><br>
         <?=gettext("Outgoing SMTP mail server address, e.g. smtp.mycorp.com.");?>
       </td>
 		</tr>
 		<tr>
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
       <td width="78%" class="vtable">
-        <input name="port" type="text" class="formfld" id="port" size="10" value="<?=htmlentities($pconfig['port']);?>"><br>
+        <input name="port" type="text" class="formfld" id="port" size="10" value="<?=htmlspecialchars($pconfig['port']);?>"><br>
         <?=gettext("The default SMTP mail server port, e.g. 25 or 587.");?>
       </td>
     </tr>
@@ -239,34 +239,34 @@ function auth_change() {
 		<tr id="username_tr">
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
       <td width="78%" class="vtable">
-        <input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlentities($pconfig['username']);?>">
+        <input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
       </td>
     </tr>
     <tr id="password_tr">
       <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
       <td width="78%" class="vtable">
-        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlentities($pconfig['password']);?>"><br>
+        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
         <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
       </td>
 		</tr>
 		<tr>
 			<td width="22%" valign="top" class="vncellreq"><?=gettext("From email");?></td>
 			<td width="78%" class="vtable">
-				<input name="from" type="text" class="formfld" id="from" size="40" value="<?=htmlentities($pconfig['from']);?>"><br>
+				<input name="from" type="text" class="formfld" id="from" size="40" value="<?=htmlspecialchars($pconfig['from']);?>"><br>
 				<?=gettext("Your own email address.");?>
 			</td>
 		</tr>
 		<tr>
 			<td width="22%" valign="top" class="vncellreq"><?=gettext("To email");?></td>
 			<td width="78%" class="vtable">
-				<input name="to" type="text" class="formfld" id="to" size="40" value="<?=htmlentities($pconfig['to']);?>"><br>
+				<input name="to" type="text" class="formfld" id="to" size="40" value="<?=htmlspecialchars($pconfig['to']);?>"><br>
 				<?=gettext("Destination email address.");?>
 			</td>
 		</tr>
 		<tr>
 	    <td width="22%" valign="top" class="vncell"><?=gettext("Subject");?></td>
       <td width="78%" class="vtable">
-        <input name="subject" type="text" class="formfld" id="subject" size="60" value="<?=htmlentities($pconfig['subject']);?>"><br>
+        <input name="subject" type="text" class="formfld" id="subject" size="60" value="<?=htmlspecialchars($pconfig['subject']);?>"><br>
         <?=gettext("The subject of the email.");?>
       </td>
 		</tr>
@@ -412,7 +412,7 @@ function auth_change() {
 									<td valign=top>
 										<select multiple size="12" name="month[]" id="months">
 											<?php $i = 1; foreach ($a_months as $month):?>
-											<option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array("$i", $pconfig['month'])) echo "selected";?>><?=htmlentities($month);?></option>
+											<option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array("$i", $pconfig['month'])) echo "selected";?>><?=htmlspecialchars($month);?></option>
 											<?php $i++; endforeach;?>
 										</select>
 									</td>

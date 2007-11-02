@@ -234,13 +234,13 @@ function proxy_auth_change() {
 			    <tr id="http_username_tr">
 				    <td width="22%" valign="top" class="vncellreq"><?=gettext("User");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="http_username" type="text" class="formfld" id="http_username" size="20" value="<?=htmlentities($pconfig['http_username']);?>">
+			        <input name="http_username" type="text" class="formfld" id="http_username" size="20" value="<?=htmlspecialchars($pconfig['http_username']);?>">
 			      </td>
 					</tr>
 					<tr id="http_password_tr">
 				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="http_password" type="password" class="formfld" id="http_password" size="20" value="<?=htmlentities($pconfig['http_password']);?>">
+			        <input name="http_password" type="password" class="formfld" id="http_password" size="20" value="<?=htmlspecialchars($pconfig['http_password']);?>">
 			      </td>
 					</tr>
 					<tr>
@@ -278,13 +278,13 @@ function proxy_auth_change() {
 			    <tr id="ftp_username_tr">
 				    <td width="22%" valign="top" class="vncellreq"><?=gettext("User");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="ftp_username" type="text" class="formfld" id="ftp_username" size="20" value="<?=htmlentities($pconfig['ftp_username']);?>">
+			        <input name="ftp_username" type="text" class="formfld" id="ftp_username" size="20" value="<?=htmlspecialchars($pconfig['ftp_username']);?>">
 			      </td>
 					</tr>
 					<tr id="ftp_password_tr">
 				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="ftp_password" type="password" class="formfld" id="ftp_password" size="20" value="<?=htmlentities($pconfig['ftp_password']);?>">
+			        <input name="ftp_password" type="password" class="formfld" id="ftp_password" size="20" value="<?=htmlspecialchars($pconfig['ftp_password']);?>">
 			      </td>
 					</tr>
 			    <tr>

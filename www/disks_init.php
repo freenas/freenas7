@@ -389,8 +389,8 @@ function fstype_change() {
 		<tr>
       <td width="22%" valign="top">&nbsp;</td>
       <td width="78%">
-				<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br></strong></span><?=htmlentities(gettext("This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified."));?><br><br>
-				<?php echo htmlentities(sprintf(gettext("UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name()));?></span>
+				<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br></strong></span><?=gettext("This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified.");?><br><br>
+				<?php echo sprintf(gettext("UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></span>
 			</td>
 		</tr>
 	</table>

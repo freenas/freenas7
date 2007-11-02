@@ -130,7 +130,7 @@ else
       <td valign="top" class="label">
 	      <div style="background: #eeeeee;" id="textareaitem">
           <!-- NOTE: The opening *and* the closing textarea tag must be on the same line. -->
-	        <textarea style="width: 98%; margin: 7px;" class="<?php echo $language; ?>:showcolumns" rows="<?php echo $rows; ?>" cols="<?php echo $cols; ?>" name="code"><?php echo htmlentities($content); ?></textarea>
+	        <textarea style="width: 98%; margin: 7px;" class="<?php echo $language; ?>:showcolumns" rows="<?php echo $rows; ?>" cols="<?php echo $cols; ?>" name="code"><?php echo htmlspecialchars($content);?></textarea>
 	      </div>
       </td>
     </tr>

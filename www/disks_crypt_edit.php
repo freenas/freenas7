@@ -280,7 +280,7 @@ if (!isset($do_action)) {
 			      </td>
 			    </tr>
 					<tr>
-				    <td width="22%" valign="top" class="vncellreq"><?=htmlentities(gettext("Passphrase"));?></td>
+				    <td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Passphrase"));?></td>
 				    <td width="78%" class="vtable">
 				      <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
 				      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)
