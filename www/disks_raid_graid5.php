@@ -141,7 +141,7 @@ if ($_GET['act'] == "del") {
 						echo gettext("Configuring");
 					else
 						{
-						echo "{$raidstatus[$tempo]['desc']}";
+						echo "{$raidstatus[$tempo]['state']}";
 						}
 						?>&nbsp;
                   </td>

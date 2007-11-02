@@ -525,7 +525,7 @@ function get_sraid_disks_list()
 //[volumename] => Array
 //    (
 //        [type] => gvinum
-//        [desc] => UP
+//        [state] => UP
 //        [size] => 6149 MB
 //        [name] => VolumeName
 //        [fullname] => /dev/gvinum/VolumeName
@@ -549,7 +549,7 @@ function get_gvinum_disks_list()
 		$disklist[$diskname]['name'] = $diskname;
 		$disklist[$diskname]['fullname'] = "/dev/gvinum/" . $diskname;
 		$disklist[$diskname]['type'] = "gvinum";
-		$disklist[$diskname]['desc'] = $aline[3];
+		$disklist[$diskname]['state'] = $aline[3];
 
 		/* Get diskinfo to get disk size */
 		$diskinfo = disks_get_diskinfo($disklist[$diskname]['fullname']);
@@ -564,7 +564,7 @@ function get_gvinum_disks_list()
 //    (
 //        [type] => gmirror
 //        [name] => volumename
-//        [desc] => COMPLETE
+//        [state] => COMPLETE
 //        [size] => 6149M
 //        [fullname] => /dev/mirror/volumename
 //    )
@@ -602,7 +602,7 @@ function get_gmirror_disks_list()
 		// look for this output:
 		// State: COMPLETE
 		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
-			$disklist[$diskname]['desc'] = $aline[1];
+			$disklist[$diskname]['state'] = $aline[1];
 
 			// init the check variable for the next RAID volume
 			$foundname = 0 ;
@@ -617,7 +617,7 @@ function get_gmirror_disks_list()
 //[volumename] => Array
 //    (
 //        [type] => gconcat
-//        [desc] => COMPLETE
+//        [state] => COMPLETE
 //        [size] => 6149M
 //        [name] => concat1
 //        [fullname] => /dev/concat/concat1
@@ -656,7 +656,7 @@ function get_gconcat_disks_list()
 		// look for this output:
 		// State: UP
 		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
-			$disklist[$diskname]['desc'] = $aline[1];
+			$disklist[$diskname]['state'] = $aline[1];
 
 			// init the check variable for the next RAID volume
 			$foundname = 0 ;
@@ -671,7 +671,7 @@ function get_gconcat_disks_list()
 //[volumename] => Array
 //    (
 //        [type] => gstripe
-//        [desc] => COMPLETE
+//        [state] => COMPLETE
 //        [size] => 6149M
 //        [name] => raid0
 //        [fullname] => /dev/stripe/raid0
@@ -710,7 +710,7 @@ function get_gstripe_disks_list()
 		// look for this output:
 		// State: UP
 		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
-			$disklist[$diskname]['desc'] = $aline[1];
+			$disklist[$diskname]['state'] = $aline[1];
 
 			// init the check variable for the next RAID volume
 			$foundname = 0 ;
@@ -725,7 +725,7 @@ function get_gstripe_disks_list()
 //[volumename] => Array
 //    (
 //        [type] => graid5
-//        [desc] => COMPLETE
+//        [state] => COMPLETE
 //        [size] => 6149M
 //        [name] => BIG1
 //        [fullname] => /dev/raid5/BIG1
@@ -764,7 +764,7 @@ function get_graid5_disks_list()
 		// look for this output:
 		// State: COMPLETE
 		if ( (strcmp($aline[0],"State:") == 0) && $foundname) {
-			$disklist[$diskname]['desc'] = $aline[1];
+			$disklist[$diskname]['state'] = $aline[1];
 
 			// init the check variable for the next RAID volume
 			$foundname = 0 ;

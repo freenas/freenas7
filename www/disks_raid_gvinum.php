@@ -138,7 +138,7 @@ if ($_GET['act'] == "del") {
 							if ($raidconfiguring) {
 								echo gettext("Configuring");
 							} else {
-								echo $raidstatus[$raid['name']]['desc'];
+								echo $raidstatus[$raid['name']]['state'];
 							}
 							?>
 							&nbsp;

@@ -89,7 +89,7 @@ function get_disk_temp($diskname) {
 		<td class="listr"><?=htmlspecialchars($diskv['size']);?></td>
 		<td class="listr"><?=htmlspecialchars(gettext("Software RAID"));?>&nbsp;</td>
 		<td class="listr"><?php echo get_disk_temp($disk);?>&nbsp;</td>
-		<td class="listbg"><?=htmlspecialchars($diskv['desc']);?>&nbsp;</td>
+		<td class="listbg"><?=htmlspecialchars($diskv['state']);?>&nbsp;</td>
 	</tr>
 	<?php endforeach; ?>
 	<?php endif; ?>
