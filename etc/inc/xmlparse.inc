@@ -121,6 +121,7 @@ function parse_xml_config($cffile, $rootobj) {
 	$curpath = array();
 	$depth = 0;
 	$havedata = 0;
+	$encoding = "UTF-8"; // PHP default.
 
 	$xml_parser = xml_parser_create();
 
@@ -154,10 +155,21 @@ function parse_xml_config($cffile, $rootobj) {
 		die("XML error: no $rootobj object found!\n");
 	}
 
+	// Remember encoding.
+	$config[$rootobj]['encoding'] = $encoding;
+
 	return $config[$rootobj];
 }
 
-function dump_xml_config_sub($arr, $indent) {
+// Dump configuration.
+// $arr - Array to be dumped
+// $indent - Number of indent
+// $in_charset - The input charset, e.g. ISO-8859-1
+// $out_charset - The output charset, e.g. UTF-8
+// A charset conversion may appear when switching from a ISO-8859-1 language
+// (e.g. English) to a UTF-8 one (e.g. French). If this is not done
+// we will get an parser error.
+function dump_xml_config_sub($arr, $indent, $in_charset, $out_charset) {
 	global $listtags;
 
 	$xmlconfig = "";
@@ -170,7 +182,7 @@ function dump_xml_config_sub($arr, $indent) {
 					if (is_array($cval)) {
 						$xmlconfig .= str_repeat("\t", $indent);
 						$xmlconfig .= "<$ent>\n";
-						$xmlconfig .= dump_xml_config_sub($cval, $indent + 1);
+						$xmlconfig .= dump_xml_config_sub($cval, $indent + 1, $in_charset, $out_charset);
 						$xmlconfig .= str_repeat("\t", $indent);
 						$xmlconfig .= "</$ent>\n";
 					} else {
@@ -179,14 +191,14 @@ function dump_xml_config_sub($arr, $indent) {
 							($cval === ""))
 							$xmlconfig .= "<$ent/>\n";
 						else if (!is_bool($cval))
-							$xmlconfig .= "<$ent>" . htmlspecialchars($cval) . "</$ent>\n";
+							$xmlconfig .= "<$ent>" . htmlspecialchars(iconv($in_charset, $out_charset, $cval)) . "</$ent>\n";
 					}
 				}
 			} else {
 				/* it's an array */
 				$xmlconfig .= str_repeat("\t", $indent);
 				$xmlconfig .= "<$ent>\n";
-				$xmlconfig .= dump_xml_config_sub($val, $indent + 1);
+				$xmlconfig .= dump_xml_config_sub($val, $indent + 1, $in_charset, $out_charset);
 				$xmlconfig .= str_repeat("\t", $indent);
 				$xmlconfig .= "</$ent>\n";
 			}
@@ -196,7 +208,7 @@ function dump_xml_config_sub($arr, $indent) {
 				$xmlconfig .= "<$ent/>\n";
 			} else if (!is_bool($val)) {
 				$xmlconfig .= str_repeat("\t", $indent);
-				$xmlconfig .= "<$ent>" . htmlspecialchars($val) . "</$ent>\n";
+				$xmlconfig .= "<$ent>" . htmlspecialchars(iconv($in_charset, $out_charset, $val)) . "</$ent>\n";
 			}
 		}
 	}
@@ -207,7 +219,7 @@ function dump_xml_config_sub($arr, $indent) {
 function dump_xml_config($arr, $rootobj, $encoding) {
 	$xmlconfig = "<?xml version=\"1.0\" encoding=\"{$encoding}\"?>\n";
 	$xmlconfig .= "<$rootobj>\n";
-	$xmlconfig .= dump_xml_config_sub($arr, 1);
+	$xmlconfig .= dump_xml_config_sub($arr, 1, $arr['encoding'], $encoding);
 	$xmlconfig .= "</$rootobj>\n";
 
 	return $xmlconfig;
