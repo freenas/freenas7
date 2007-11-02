@@ -529,6 +529,7 @@ function get_sraid_disks_list()
 //        [size] => 6149 MB
 //        [name] => VolumeName
 //        [fullname] => /dev/gvinum/VolumeName
+//        [desc] => Software RAID
 //    )
 function get_gvinum_disks_list()
 {
@@ -549,6 +550,7 @@ function get_gvinum_disks_list()
 		$disklist[$diskname]['name'] = $diskname;
 		$disklist[$diskname]['fullname'] = "/dev/gvinum/" . $diskname;
 		$disklist[$diskname]['type'] = "gvinum";
+		$disklist[$diskname]['desc'] = "Software RAID";
 		$disklist[$diskname]['state'] = $aline[3];
 
 		/* Get diskinfo to get disk size */
@@ -567,6 +569,7 @@ function get_gvinum_disks_list()
 //        [state] => COMPLETE
 //        [size] => 6149M
 //        [fullname] => /dev/mirror/volumename
+//        [desc] => Software RAID
 //    )
 function get_gmirror_disks_list()
 {
@@ -589,6 +592,7 @@ function get_gmirror_disks_list()
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['fullname'] = "/dev/mirror/" . $diskname;
 			$disklist[$diskname]['type'] = "gmirror";
+			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['fullname']);
@@ -621,6 +625,7 @@ function get_gmirror_disks_list()
 //        [size] => 6149M
 //        [name] => concat1
 //        [fullname] => /dev/concat/concat1
+//        [desc] => Software RAID
 //    )
 function get_gconcat_disks_list()
 {
@@ -643,6 +648,7 @@ function get_gconcat_disks_list()
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['fullname'] = "/dev/concat/" . $diskname;
 			$disklist[$diskname]['type'] = "gconcat";
+			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['fullname']);
@@ -675,6 +681,7 @@ function get_gconcat_disks_list()
 //        [size] => 6149M
 //        [name] => raid0
 //        [fullname] => /dev/stripe/raid0
+//        [desc] => Software RAID
 //    )
 function get_gstripe_disks_list()
 {
@@ -697,6 +704,7 @@ function get_gstripe_disks_list()
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['fullname'] = "/dev/stripe/" . $diskname;
 			$disklist[$diskname]['type'] = "gstripe";
+			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['fullname']);
@@ -729,6 +737,7 @@ function get_gstripe_disks_list()
 //        [size] => 6149M
 //        [name] => BIG1
 //        [fullname] => /dev/raid5/BIG1
+//        [desc] => Software RAID
 //    )
 function get_graid5_disks_list()
 {
@@ -751,6 +760,7 @@ function get_graid5_disks_list()
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['fullname'] = "/dev/raid5/" . $diskname;
 			$disklist[$diskname]['type'] = "graid5";
+			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['fullname']);
