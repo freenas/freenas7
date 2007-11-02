@@ -39,11 +39,8 @@ if (isset($_POST['id']))
 
 $pgtitle = array(gettext("Disks"),gettext("Management"),gettext("Disk"),isset($id)?gettext("Edit"):gettext("Add"));
 
-/* get disk list (without CDROM) */
-//$disklist = get_physical_disks_list();
-
-/* get All disk list (with CDROM) */
-$disklist = array_merge((array)get_physical_disks_list(),(array)get_cdrom_list());
+// Get all disks (including CDROM).
+$disklist = array_merge((array)get_physical_disks_list(), (array)get_cdrom_list());
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
