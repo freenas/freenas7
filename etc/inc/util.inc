@@ -524,7 +524,7 @@ function get_sraid_disks_list()
 // Get list of software gvinum RAID disks.
 //[volumename] => Array
 //    (
-//        [type] => Software RAID - gvinum
+//        [type] => gvinum
 //        [desc] => UP
 //        [size] => 6149 MB
 //        [name] => VolumeName
@@ -548,7 +548,7 @@ function get_gvinum_disks_list()
 		$disklist[$diskname] = array();
 		$disklist[$diskname]['name'] = $diskname;
 		$disklist[$diskname]['fullname'] = "/dev/gvinum/" . $diskname;
-		$disklist[$diskname]['type'] = "Software RAID - gvinum";
+		$disklist[$diskname]['type'] = "gvinum";
 		$disklist[$diskname]['desc'] = $aline[3];
 
 		/* Get diskinfo to get disk size */
@@ -562,7 +562,7 @@ function get_gvinum_disks_list()
 // Get list of software gmirror RAID disks.
 //[volumename] => Array
 //    (
-//        [type] => Software RAID - gmirror
+//        [type] => gmirror
 //        [name] => volumename
 //        [desc] => COMPLETE
 //        [size] => 6149M
@@ -588,7 +588,7 @@ function get_gmirror_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['fullname'] = "/dev/mirror/" . $diskname;
-			$disklist[$diskname]['type'] = "Software RAID - gmirror";
+			$disklist[$diskname]['type'] = "gmirror";
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['fullname']);
@@ -616,7 +616,7 @@ function get_gmirror_disks_list()
 // Get list of software gconcat RAID disks.
 //[volumename] => Array
 //    (
-//        [type] => Software RAID - gconcat
+//        [type] => gconcat
 //        [desc] => COMPLETE
 //        [size] => 6149M
 //        [name] => concat1
@@ -642,7 +642,7 @@ function get_gconcat_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['fullname'] = "/dev/concat/" . $diskname;
-			$disklist[$diskname]['type'] = "Software RAID - gconcat";
+			$disklist[$diskname]['type'] = "gconcat";
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['fullname']);
@@ -670,7 +670,7 @@ function get_gconcat_disks_list()
 // Get list of software gstripe RAID disks.
 //[volumename] => Array
 //    (
-//        [type] => Software RAID - gstripe
+//        [type] => gstripe
 //        [desc] => COMPLETE
 //        [size] => 6149M
 //        [name] => raid0
@@ -696,7 +696,7 @@ function get_gstripe_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['fullname'] = "/dev/stripe/" . $diskname;
-			$disklist[$diskname]['type'] = "Software RAID - gstripe";
+			$disklist[$diskname]['type'] = "gstripe";
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['fullname']);
@@ -724,7 +724,7 @@ function get_gstripe_disks_list()
 // Get list of software graid5 RAID disks.
 //[volumename] => Array
 //    (
-//        [type] => Software RAID - graid5
+//        [type] => graid5
 //        [desc] => COMPLETE
 //        [size] => 6149M
 //        [name] => BIG1
@@ -750,7 +750,7 @@ function get_graid5_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['fullname'] = "/dev/raid5/" . $diskname;
-			$disklist[$diskname]['type'] = "Software RAID - graid5";
+			$disklist[$diskname]['type'] = "graid5";
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['fullname']);
