@@ -9,7 +9,7 @@ Minors changes:
 
 Bug fixs:
 - Fix xml parser bug when switching language, e.g. English (ISO-8859-1) to Bulgarian (UTF-8).
-- Fix bug in function get_mount_use(). Now mount points containing whitespace characters are displayed on index.php.
+- Fix bug in function get_mount_usage(). Now mount points containing whitespace characters are displayed on index.php.
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.

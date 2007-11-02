@@ -456,7 +456,6 @@ function get_mounts_list()
 
 		// Get the sharename.
 		$amountpath = explode("/", $mountpath);
-		$sharename = $amountpath[2];
 
 		$amountlist[$i]['mp'] = $mountpath;
 		$amountlist[$i]['mdisk'] = $devicename;
@@ -469,20 +468,20 @@ function get_mounts_list()
 	return $amountlist;
 }
 
-// Return list of mounted use
+// Get usage informations of mount points.
 // example: Array
-//	[mount_point_name] => Array
+// [mount_point_name] => Array
 //      (
 //        [capacity] => 48%
 //        [used] => 2.4G
 //        [avail] => 2.6G
 //        [size] => 5.4G
 //      )
-function get_mount_use()
+function get_mount_usage()
 {
 	global $config;
 
-	exec("/bin/df -h",$rawdata);
+	exec("/bin/df -h", $rawdata);
 
 	$result = array();
 

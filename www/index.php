@@ -150,7 +150,7 @@ $pgtitle_omit = true;
     <td width="75%" class="listr">
 	    <table>
 	      <?php
-	      $diskuse = get_mount_use();
+	      $diskuse = get_mount_usage();
 	      if (is_array($diskuse) && (0 < count($diskuse))) {
 					foreach ($diskuse as $diskusek => $diskusev) {
 						echo "<tr><td>";
