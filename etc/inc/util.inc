@@ -484,32 +484,32 @@ function get_mount_use()
 
 	exec("/bin/df -h",$rawdata);
 
-	$result=array();
+	$result = array();
 
 	foreach ($rawdata as $line) {
-		/* separe the line by space*/
-		$aline = preg_split("/[\s,]+/", $line);
+		if (0 == preg_match("/^(\S+)\s+(\S+)\s+(\S+)\s+(\S+)\s+(\d+%)\s+(.+)/", $line, $aline))
+			continue;
 
-		$tmp=explode("/",chop($aline[5]));
-		$mounted_on=$tmp[2];
-		$capacity = chop($aline[4]);
-		$avail = chop($aline[3]);
-		$used = chop($aline[2]);
-		$size = chop($aline[1]);
+		$filesystem = chop($aline[1]);
+		$size = chop($aline[2]);
+		$used = chop($aline[3]);
+		$avail = chop($aline[4]);
+		$capacity = chop($aline[5]);
+		$mounted_on = chop($aline[6]);
 
-		if (is_array($config['mounts']['mount'])) 	{
+		if (is_array($config['mounts']['mount'])) {
 			foreach ($config['mounts']['mount'] as $mountcfg) {
-				if (strcmp($mounted_on,$mountcfg['sharename']) == 0) {
+				if (0 == strcmp($mounted_on, "/mnt/{$mountcfg['sharename']}")) {
 					$result[$mounted_on] = array();
-					$result[$mounted_on]['capacity']=$capacity;
-					$result[$mounted_on]['avail']=$avail;
-					$result[$mounted_on]['used']=$used;
-					$result[$mounted_on]['size']=$size;
+					$result[$mounted_on]['capacity'] = $capacity;
+					$result[$mounted_on]['avail'] = $avail;
+					$result[$mounted_on]['used'] = $used;
+					$result[$mounted_on]['size'] = $size;
 				}
 			}
-		}
-		else
+		} else {
 			return 0;
+		}
 	}
 
 	return $result;
