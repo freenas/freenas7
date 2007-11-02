@@ -403,7 +403,7 @@ function config_unlock() {
 
 // Convert the config file.
 // Return 0 if successful, otherwise 1
-function convert_config() {
+function config_upgrade() {
 	global $config, $g;
 
 	if ($config['version'] == $g['latest_config'])

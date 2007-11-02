@@ -39,5 +39,5 @@
 	require_once("config.inc");
 	
 	// Convert configuration, if necessary.
-	convert_config();
+	config_upgrade();
 ?>
