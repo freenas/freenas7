@@ -82,7 +82,7 @@ if ($_GET['act'] == "del") {
 		<td class="listlr"><?=htmlspecialchars($raid['name']);?></td>
 		<td class="listr"><?=htmlspecialchars($raid['type']);?></td>
 		<td class="listr"><?=htmlspecialchars($raid['size']);?></td>
-		<td class="listbg"><?=htmlspecialchars($raid['desc']);?></td>
+		<td class="listbg"><?=htmlspecialchars($raid['state']);?></td>
 		<td valign="middle" nowrap class="list"> <a href="disks_raid_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RAID");?>" width="17" height="17" border="0"></a>&nbsp;<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Delete RAID");?>" width="17" height="17" border="0"></a></td>
 	</tr>
 	<?php $i++; endforeach;?>
