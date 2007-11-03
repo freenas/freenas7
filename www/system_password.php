@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Password"));
+$pgtitle = array(gettext("System"),gettext("General"),gettext("Password"));
 
 if ($_POST) {
 	unset($input_errors);
