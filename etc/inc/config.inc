@@ -51,19 +51,18 @@ if (file_exists("{$g['etc_path']}/platform")) {
 }
 
 if (is_booting()) {
-	/* Find the device where config.xml resides and write out an fstab */
+	// Find the device where config.xml resides and write out an fstab.
 	unset($cfgdevice);
 
-	/* check if there's already an fstab ('full' release booting?) */
+	// Check if there's already an fstab ('full' release booting?).
 	if (!file_exists("{$g['etc_path']}/fstab")) {
-		/* Display platform type. */
+		// Display platform type.
 		echo "Booting platform: {$g['platform']}\n";
 
 		echo "Looking for configuration file:";
 
 		// Get list of kernel known disks.
 		$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
-		$found = false;
 
 		if (stristr($g['platform'], "livecd")) {
 			// Config is on floppy disk/USB stick for LiveCD version per default.
@@ -75,6 +74,8 @@ if (is_booting()) {
 
 			// Check if there is any USB device that can be used.
 			foreach ($disks as $disk) {
+				$found = false;
+
 				// Skip non USB (SCSI) device. The filesystem type must be MSDOS.
 				if (FALSE === ereg("da[0-9]*", $disk))
 					continue;
@@ -95,7 +96,7 @@ if (is_booting()) {
 
 				// Unmount device if necessary and exit foreach loop.
 				if (true == $found) {
-					mwexec("/sbin/umount -f /dev/{$cfgpartition}");
+					mwexec("/sbin/umount -f {$g['cf_path']}");
 					break;
 				}
 			}
@@ -119,27 +120,28 @@ if (is_booting()) {
 						$cfgdevice = $disk;
 						$cfgpartition = "{$cfgdevice}s1";
 						$cfgfstype = "ufs";
-						$found = true;
 					}
+					// Umount device.
+					mwexec("/sbin/umount -f {$g['cf_path']}");
 				} else if (0 == mwexec("/sbin/mount -r /dev/{$disk}a {$g['cf_path']}")) { // Search on partition 'a'.
 					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 						$cfgdevice = $disk;
 						$cfgpartition = "{$cfgdevice}a";
 						$cfgfstype = "ufs";
-						$found = true;
 					}
+					// Umount device.
+					mwexec("/sbin/umount -f {$g['cf_path']}");
 				}
 
-				// Unmount device if necessary and exit foreach loop.
-				if (true == $found) {
-					mwexec("/sbin/umount -f {$g['cf_path']}");
+				// Device found, exit.
+				if ($cfgdevice) {
 					break;
 				}
 			}
 
 			// Display device information where configuration is found.
 			echo "\n";
-			if (true == $found) {
+			if ($cfgdevice) {
 				echo "Found configuration on device=/dev/{$cfgpartition} fstype={$cfgfstype}.\n";
 			}
 		}
