@@ -754,7 +754,7 @@ function config_upgrade() {
 	}
 
 	/* Convert 2.1 -> 2.2 */
-	/* Add //samba/share and remove useless //samba/xxx attributes.
+	/* Add //samba/share and remove useless //samba/xxx attributes. */
 	if ($config['version'] === "2.1") {
 		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
 			$share = array();
