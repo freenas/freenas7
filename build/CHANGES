@@ -6,6 +6,7 @@ FreeNAS 0.686b2:
 Majors changes:
 
 Minors changes:
+- 'dd' destination disks and partitions during install process.
 
 Bug fixs:
 - Fix xml parser bug when switching language, e.g. English (ISO-8859-1) to Bulgarian (UTF-8).

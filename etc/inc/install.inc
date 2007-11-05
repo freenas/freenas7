@@ -387,9 +387,15 @@ EOD;
 		return 1;
 	}
 
+	// Completely wipe any prior information on the disk.
+	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$harddrive} bs=512 count=32")) {
+		write_console("Error: Failed to wipe any prior information on the disk '{$harddrive}'.\n");
+		return 1;
+	}
+
 	// Set slice values.
 	if (mwexec("/sbin/fdisk -f {$g['tmp_path']}/fdisk.conf {$harddrive}")) {
-		write_console("Error: Failed to set slice values on disk '{$harddrive}'.\n");
+		write_console("Error: Failed to set partitions on the disk '{$harddrive}'.\n");
 		return 1;
 	}
 
@@ -409,6 +415,12 @@ EOD;
 function install_bsdlabel($harddrive)
 {
 	global $g;
+
+	// Completely wipe any prior information on the partition.
+	if (mwexec("/bin/dd if=/dev/zero of=/dev/{$harddrive} bs=512 count=32")) {
+		write_console("Error: Failed to wipe any prior information on the partition '{$harddrive}'.\n");
+		return 1;
+	}
 
 	// Do a automatic label first.
 	if (mwexec("/sbin/bsdlabel -w -B {$harddrive}")) {
