@@ -217,9 +217,16 @@ function dump_xml_config_sub($arr, $indent, $in_charset, $out_charset) {
 }
 
 function dump_xml_config($arr, $rootobj, $encoding) {
+	// Set in/out encoding.
+	$in_charset = $arr['encoding'];
+	$out_charset = $encoding;
+
+	// Do not dump temporary encoding attribute.
+	unset($arr['encoding']);
+
 	$xmlconfig = "<?xml version=\"1.0\" encoding=\"{$encoding}\"?>\n";
 	$xmlconfig .= "<$rootobj>\n";
-	$xmlconfig .= dump_xml_config_sub($arr, 1, $arr['encoding'], $encoding);
+	$xmlconfig .= dump_xml_config_sub($arr, 1, $in_charset, $out_charset);
 	$xmlconfig .= "</$rootobj>\n";
 
 	return $xmlconfig;
