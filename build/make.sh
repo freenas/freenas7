@@ -64,7 +64,7 @@ fi
 FREENAS_IMG_SECTS=32
 FREENAS_IMG_HEADS=16
 # 'newfs' parameters.
-FREENAS_NEWFS="-b 8192 -f 1024 -U -o space -m 0"
+FREENAS_NEWFS="-U -o space -m 0"
 
 # Options:
 # Support bootmenu
