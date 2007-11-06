@@ -131,6 +131,14 @@ if (is_booting()) {
 					}
 					// Umount device.
 					mwexec("/sbin/umount -f {$g['cf_path']}");
+				} else if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk}s1 {$g['cf_path']}")) { // Search on slice 1 (msdos file system, e.g. USB stick).
+					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
+						$cfgdevice = $disk;
+						$cfgpartition = "{$cfgdevice}s1";
+						$cfgfstype = "msdos";
+					}
+					// Umount device.
+					mwexec("/sbin/umount -f {$g['cf_path']}");
 				}
 
 				// Device found, exit.
