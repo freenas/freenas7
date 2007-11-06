@@ -75,7 +75,7 @@ $statusreport->AddArticle(new StatusReportArticleCmd("Last 200 system log entrie
 $statusreport->AddArticle(new StatusReportArticleCmd("/conf","ls /conf"));
 $statusreport->AddArticle(new StatusReportArticleCmd("/var/etc","ls /var/etc"));
 $statusreport->AddArticle(new StatusReportArticleCmd("/var/run","ls /var/run"));
-$statusreport->AddArticle(new StatusReportArticleCmd("config.xml","/usr/local/bin/xml ed -P -u \"*/password\" -v \"xxxxx\" /conf/config.xml"));
+$statusreport->AddArticle(new StatusReportArticleCmd("config.xml","/usr/local/bin/xml ed -P -u \"//*/password\" -v \"xxxxx\" /conf/config.xml"));
 
 // Generate status report.
 echo $statusreport->Generate();
