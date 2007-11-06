@@ -83,7 +83,7 @@ case $1 in
 		# dd image onto card
 		result=1
 		if [ -r $2 ]; then
-			/usr/bin/gzip -cd -S "" $2 | /bin/dd of=/dev/${CFDEVICE} > /dev/null 2>&1
+			/usr/bin/gzip -cd -S "" $2 | /bin/dd of=/dev/${CFDEVICE} bs=16k > /dev/null 2>&1
 			result=$?
 			if [ 0 != ${result} ]; then # successful?
 				echo "Error: Failed to dd firmware image on '/dev/${CFDEVICE}'!"

@@ -154,7 +154,7 @@ function install_dd_image($harddrive)
 	// It's perhaps this brut method 'dd' that create some problem with BIOS configured on LBA or not mode....
 	write_console("Installing system image on disk {$harddrive}.\n");
 	$imgfilename=get_product_name(). "-{$g['arch']}-embedded.gz";
-	if (mwexec("/usr/bin/gzip -cd /mnt/cdrom/{$imgfilename} | /bin/dd of=/dev/{$harddrive} > /dev/null 2>&1")) {
+	if (mwexec("/usr/bin/gzip -cd /mnt/cdrom/{$imgfilename} | /bin/dd of=/dev/{$harddrive} bs=16k > /dev/null 2>&1")) {
 		write_console("Error: Failed to dd image on '/dev/{$harddrive}'!\n");
 		return 1;
 	}
