@@ -82,7 +82,7 @@ EOD;
 	echo "Here is the list of detected disks:\n";
 
 	foreach ($disklist as $diskk => $diskv) {
-		echo "$diskk (desc: {$diskv['desc']})\n";
+		echo "$diskk (size: {$diskv['size']} desc: {$diskv['desc']})\n";
 	}
 
 	do {
