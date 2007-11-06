@@ -124,12 +124,12 @@ function install_init2partdisk($harddrive, $size)
 	/* Create filesystems. */
 	write_console("Create filesystem:");
 	write_console(" {$harddrive}s1");
-	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s1")) {
+	if (mwexec("/sbin/newfs -L Genesis -U /dev/{$harddrive}s1")) {
 		write_console("\nError: Failed to create filesystem on '/dev/{$harddrive}s1'!\n");
 		return 1;
 	}
 	write_console(" {$harddrive}s2");
-	if (mwexec("/sbin/newfs -U /dev/{$harddrive}s2")) {
+	if (mwexec("/sbin/newfs -L Data -U /dev/{$harddrive}s2")) {
 		write_console("\nError: Failed to create filesystem on '/dev/{$harddrive}s2'!\n");
 		return 1;
 	}
