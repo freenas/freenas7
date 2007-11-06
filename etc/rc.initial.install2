@@ -68,7 +68,7 @@ EOD;
 	}
 
 	foreach ($cdlist as $cdromk =>$cdromv) {
-		echo "$cdromk (desc: {$cdromv['desc']})\n";
+		echo "$cdromk: <{$cdromv['desc']}>\n";
 	}
 
 	do {
@@ -82,7 +82,7 @@ EOD;
 	echo "Here is the list of detected disks:\n";
 
 	foreach ($disklist as $diskk => $diskv) {
-		echo "$diskk (size: {$diskv['size']} desc: {$diskv['desc']})\n";
+		echo "$diskk: {$diskv['size']} <{$diskv['desc']}>\n";
 	}
 
 	do {

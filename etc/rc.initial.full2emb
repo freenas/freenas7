@@ -94,7 +94,7 @@ EOD;
 	}
 
 	foreach ($cdlist as $cdromk =>$cdromv) 	{
-		echo "$cdromk (desc: {$cdromv['desc']})\n";
+		echo "$cdromk: <{$cdromv['desc']}>\n";
 	}
 
 	do {
