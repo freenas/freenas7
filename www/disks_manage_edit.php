@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	disks_manage_edit.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -62,7 +62,7 @@ if (isset($id) && $a_disk[$id]) {
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
-		
+
 	/* check for name conflicts */
 	foreach ($a_disk as $disk) {
 		if (isset($id) && ($a_disk[$id]) && ($a_disk[$id] === $disk))
@@ -76,14 +76,14 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$disks = array();
-		
+
 		$devname = $_POST['name'];
 		$devharddiskstandby = $_POST['harddiskstandby'];
 		$harddiskacoustic = $_POST['acoustic'];
 		$harddiskapm  = $_POST['apm'];
 		$harddiskudma  = $_POST['udma'];
 		$harddiskfstype = $_POST['fstype'];
-		
+
 		$disks['name'] = $devname;
 		$disks['fullname'] = "/dev/$devname";
 		$disks['harddiskstandby'] = $devharddiskstandby ;
@@ -110,32 +110,40 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function enable_change(enable_change) {
+	document.iform.name.disabled = !enable_change;
+	document.iform.fstype.disabled = !enable_change;
+}
+// -->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
 		<td class="tabnavtbl">
-  		<ul id="tabnav">
+			<ul id="tabnav">
 				<li class="tabact"><a href="disks_manage.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Management");?></a></li>
 				<li class="tabinact"><a href="disks_manage_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
-  		</ul>
-  	</td>
+			</ul>
+		</td>
 	</tr>
-  <tr>
-    <td class="tabcont">
+	<tr>
+		<td class="tabcont">
 			<form action="disks_manage_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Disk");?></td>
 						<td width="78%" class="vtable">
-							<select name="name" class="formfld" id="name" <?php if (isset($id)) echo "disabled";?>>
+							<select name="name" class="formfld" id="name">
 							  <?php foreach ($disklist as $diski => $diskv): ?>
 							  <option value="<?=$diski;?>" <?php if ($diski == $pconfig['name']) echo "selected";?>><?php echo htmlspecialchars($diski . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
 					  		<?php endforeach; ?>
 					  	</select>
 					  </td>
 					</tr>
-					<tr> 
+					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("UDMA mode"); ?></td>
 						<td width="78%" class="vtable">
 							<select name="udma" class="formfld" id="udma">
@@ -148,9 +156,9 @@ if ($_POST) {
 							<?=gettext("You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."); ?>
 						</td>
 					</tr>
-					<tr> 
+					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Hard disk standby time"); ?></td>
-						<td width="78%" class="vtable"> 
+						<td width="78%" class="vtable">
 							<select name="harddiskstandby" class="formfld">
 							<?php $sbvals = array(0=>gettext("Always on"), 5=>"5 ".gettext("minutes"), 10=>"10 ".gettext("minutes"), 20=>"20 ".gettext("minutes"), 30=>"30 ".gettext("minutes"), 60=>"60 ".gettext("minutes"));?>
 							<?php foreach ($sbvals as $sbval => $sbname): ?>
@@ -161,9 +169,9 @@ if ($_POST) {
 							<?=gettext("Puts the hard disk into standby mode when the selected amount of time after the last access has elapsed. <em>Do not set this for CF cards.</em>") ;?>
 						</td>
 					</tr>
-					<tr> 
+					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Advanced Power Management"); ?></td>
-						<td width="78%" class="vtable"> 
+						<td width="78%" class="vtable">
 							<select name="apm" class="formfld">
 							<?php $apmvals = array(0=>gettext("Disabled"),1=>gettext("Minimum power usage with Standby"),64=>gettext("Medium power usage with Standby"),128=>gettext("Minimum power usage without Standby"),192=>gettext("Medium power usage without Standby"),254=>gettext("Maximum performance, maximum power usage"));?>
 							<?php foreach ($apmvals as $apmval => $apmname): ?>
@@ -174,9 +182,9 @@ if ($_POST) {
 							<?=gettext("This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"); ?>
 						</td>
 					</tr>
-					<tr> 
+					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Acoustic level"); ?></td>
-						<td width="78%" class="vtable"> 
+						<td width="78%" class="vtable">
 							<select name="acoustic" class="formfld">
 							<?php $acvals = array(0=>gettext("Disabled"),1=>gettext("Minimum performance, Minimum acoustic output"),64=>gettext("Medium acoustic output"),127=>gettext("Maximum performance, maximum acoustic output"));?>
 							<?php foreach ($acvals as $acval => $acname): ?>
@@ -187,10 +195,10 @@ if ($_POST) {
 							<?=gettext("This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"); ?>
 						</td>
 					</tr>
-					<tr> 
+					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Preformatted FS"); ?></td>
-						<td width="78%" class="vtable"> 
-							<select name="fstype" class="formfld" <?php if (isset($id)) echo "disabled";?>>
+						<td width="78%" class="vtable">
+							<select name="fstype" class="formfld">
 							<?php $fstlist = get_fstype_list(); ?>
 							<?php foreach ($fstlist as $fstval => $fstname): ?>
 								<option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=gettext($fstname);?></option>
@@ -200,9 +208,9 @@ if ($_POST) {
 							<?php echo sprintf( gettext("This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"), "disks_init.php"); ?>
 						</td>
 					</tr>
-					<tr> 
+					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>"> 
+						<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
 						<?php if (isset($id) && $a_disk[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 						<?php endif; ?>
@@ -213,4 +221,10 @@ if ($_POST) {
 		</td>
 	</tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php if (isset($id) && $a_disk[$id]):?>
+<script language="JavaScript">
+<!-- Disable controls that should not be modified anymore in edit mode. -->
+enable_change(false);
+</script>
+<?php endif;?>
+<?php include("fend.inc");?>
