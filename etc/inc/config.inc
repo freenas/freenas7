@@ -131,19 +131,47 @@ if (is_booting()) {
 					}
 					// Umount device.
 					mwexec("/sbin/umount -f {$g['cf_path']}");
-				} else if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk}s1 {$g['cf_path']}")) { // Search on slice 1 (msdos file system, e.g. USB stick).
-					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
-						$cfgdevice = $disk;
-						$cfgpartition = "{$cfgdevice}s1";
-						$cfgfstype = "msdos";
-					}
-					// Umount device.
-					mwexec("/sbin/umount -f {$g['cf_path']}");
 				}
 
 				// Device found, exit.
 				if ($cfgdevice) {
 					break;
+				}
+			}
+
+			if (!$cfgdevice) {
+				// Check if there is any USB device that can be used.
+				foreach ($disks as $disk) {
+					// Skip non USB (SCSI) device. The filesystem type must be MSDOS.
+					if (FALSE === ereg("da[0-9]*", $disk))
+						continue;
+	
+					// Display progress...
+					echo " {$disk}";
+
+					// Try to mount device using file system MSDOS (FAT16/32).
+					if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk}s1 {$g['cf_path']}")) {
+						if (file_exists("{$g['cf_conf_path']}/config.xml")) {
+							$cfgdevice = $disk;
+							$cfgpartition = "{$cfgdevice}s1";
+							$cfgfstype = "msdos";
+						}
+						// Umount device.
+						mwexec("/sbin/umount -f {$g['cf_path']}");
+					} else if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk} {$g['cf_path']}")) {
+						if (file_exists("{$g['cf_conf_path']}/config.xml")) {
+							$cfgdevice = $disk;
+							$cfgpartition = $cfgdevice;
+							$cfgfstype = "msdos";
+						}
+						// Umount device.
+						mwexec("/sbin/umount -f {$g['cf_path']}");
+					}
+
+					// Device found, exit.
+					if ($cfgdevice) {
+						break;
+					}
 				}
 			}
 
