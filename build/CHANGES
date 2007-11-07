@@ -16,7 +16,6 @@ Bug fixs:
   unreachable CIFS/Samba shares, ...
 - Fix bug in disk management. After modifying a disk (e.g. change UDMA mode) configuration was corrupted.
 - Enable usage of USB stick to store configuration in non LiveCD scenario.
-- Fix bug in mount code. Mounting NTFS disks successfully now.
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.

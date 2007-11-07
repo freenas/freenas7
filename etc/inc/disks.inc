@@ -132,13 +132,7 @@ function disks_mount($mount)
 
 	switch($mount['type']) {
 		case "disk":
-			switch ($mount['fstype']) {
-				case "ntfs":	$devname = $mount['mdisk'];
-											break;
-
-				default:			$devname = $mount['fullname'];
-											break;
-			}
+			$devname = $mount['fullname'];
 			break;
 
 		case "iso":
