@@ -1143,9 +1143,28 @@ function disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel)
 			break;
 
 		case "msdos":
+			// Get disk informations.
+			$diskinfo = disks_get_diskinfo($disk);
+
+			// Create fdisk config file (fdisk.conf).
+			$fdiskconf .= <<<EOD
+g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}
+p 1 11 1 {$diskinfo['mediasize_sectors']}
+p 2 0 0 0
+p 3 0 0 0
+p 4 0 0 0
+a 1
+
+EOD;
+
+			if (false === file_put_contents("{$g['tmp_path']}/fdisk.conf", $fdiskconf)) {
+				echo("Error: Failed to create '{$g['tmp_path']}/fdisk.conf'.\n");
+				break;
+			}
+
 			// Initialize disk
 			echo gettext("Creating partition").":\n";
-			system("/sbin/fdisk -I -v {$disk}");
+			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk}");
 
 			// Initialize the partition
 			echo gettext("Initializing partition").".\n";
@@ -1158,12 +1177,35 @@ function disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel)
 				$param .= " -L " . escapeshellarg($volumelabel);
 			system("/sbin/newfs_msdos {$param} {$disk}s1");
 			echo "Done!\n";
+
+			// Cleanup
+			@unlink("{$g['tmp_path']}/fdisk.conf");
+
 			break;
 
 		case "ext2":
+			// Get disk informations.
+			$diskinfo = disks_get_diskinfo($disk);
+
+			// Create fdisk config file (fdisk.conf).
+			$fdiskconf .= <<<EOD
+g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}
+p 1 131 1 {$diskinfo['mediasize_sectors']}
+p 2 0 0 0
+p 3 0 0 0
+p 4 0 0 0
+a 1
+
+EOD;
+
+			if (false === file_put_contents("{$g['tmp_path']}/fdisk.conf", $fdiskconf)) {
+				echo("Error: Failed to create '{$g['tmp_path']}/fdisk.conf'.\n");
+				break;
+			}
+
 			// Initialize disk
 			echo gettext("Creating partition").":\n";
-			system("/sbin/fdisk -I -v {$disk}");
+			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk}");
 
 			// Initialize the partition
 			echo gettext("Initializing partition").".\n";
@@ -1171,8 +1213,15 @@ function disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel)
 
 			// Create filesystem
 			echo gettext("Creating filesystem").":\n";
-			system("/usr/local/sbin/mke2fs {$disk}s1");
+			$param = "";
+			if (!empty($volumelabel))
+				$param .= " -L " . escapeshellarg($volumelabel);
+			system("/usr/local/sbin/mke2fs {$param} {$disk}s1");
 			echo "Done!\n";
+
+			// Cleanup
+			@unlink("{$g['tmp_path']}/fdisk.conf");
+
 			break;
 	}
 }

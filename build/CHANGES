@@ -4,6 +4,8 @@ FreeNAS 0.686b2:
 ----------------
 
 Majors changes:
+- Set correct sysid when formating disks with FAT32(0x0b) and EXT2(0x83).
+- Enable user to set volume label when formating disk using EXT2.
 
 Minors changes:
 - 'dd' destination disks and partitions during install process.

@@ -304,6 +304,7 @@ function fstype_change() {
 			showElementById('minspace_tr','show');
 			showElementById('volumelabel_tr','show');
 			break;
+		case "ext2":
 		case "msdos":
 			showElementById('minspace_tr','hide');
 			showElementById('volumelabel_tr','show');
