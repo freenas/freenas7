@@ -100,7 +100,7 @@ $a_graid5 = &$config['graid5']['vdisk'];
 $a_gvinum = &$config['gvinum']['vdisk'];
 $a_geli = &$config['geli']['vdisk'];
 
-$a_alldisk = get_all_conf_disks_list();
+$a_alldisk = get_conf_all_disks_list();
 
 if ($_POST) {
 	unset($input_errors);
@@ -197,7 +197,7 @@ if ($_POST) {
 			}
 
 			/* Update list of configured disks. */
-			$a_alldisk = get_all_conf_disks_list();
+			$a_alldisk = get_conf_all_disks_list();
 
 			/* Write configuration. */
 			write_config();

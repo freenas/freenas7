@@ -45,7 +45,7 @@ if (!is_array($config['mounts']['mount']))
 mount_sort();
 
 $a_mount = &$config['mounts']['mount'];
-$a_disk = get_all_conf_disks_list();
+$a_disk = get_conf_all_disks_list();
 
 /* Load the cfdevice file*/
 $filename=$g['varetc_path']."/cfdevice";

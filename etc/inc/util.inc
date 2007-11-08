@@ -1723,14 +1723,14 @@ function is_booting() {
 	return file_exists("/var/etc/booting");
 }
 
-// Get list of physical configured disks.
-function get_physical_conf_disks_list() {
+// Get list of configured physical disks.
+function get_conf_physical_disks_list() {
 	global $config;
 	return $config['disks']['disk'];
 }
 
 // Get list of configured Software RAID disks. 
-function get_sraid_conf_disks_list() {
+function get_conf_sraid_disks_list() {
 	global $config;
 
 	$a_vdisk = array();
@@ -1750,7 +1750,7 @@ function get_sraid_conf_disks_list() {
 }
 
 // Get list of configured encrypted disks. 
-function get_encryped_conf_disks_list() {
+function get_conf_encryped_disks_list() {
 	global $config;
 
 	$a_vdisk = array();
@@ -1763,19 +1763,19 @@ function get_encryped_conf_disks_list() {
 
 // Get a list of all configured disks (real and virtual, e.g. SoftRAID or GEli encrypted).
 // Physical disks used by any virtual disk is filtered out.
-function get_all_conf_disks_list() {
+function get_conf_all_disks_list() {
 	global $config;
 
 	$a_disk = array();
 
 	// Get list of physical disks.
-	$a_physicaldisk = get_physical_conf_disks_list();
+	$a_physicaldisk = get_conf_physical_disks_list();
 
 	// Get list of Software RAID disks.
-	$a_sraiddisk = get_sraid_conf_disks_list();
+	$a_sraiddisk = get_conf_sraid_disks_list();
 
 	// Get list of encrypted disks.
-	$a_encrypteddisk = get_encryped_conf_disks_list();
+	$a_encrypteddisk = get_conf_encryped_disks_list();
 
 	// First add physical disks if they are not used by a virtual disk.
 	foreach ($a_physicaldisk as $disk) {
