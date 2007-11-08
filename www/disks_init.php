@@ -93,8 +93,6 @@ $cfdevice = "/dev/" . $cfdevice;
 
 /* Get disk configurations. */
 $a_disk = &$config['disks']['disk'];
-// b_disk must not be a link to the real configuration because used disk will be removed
-$b_disk = $config['disks']['disk'];
 $a_gconcat = &$config['gconcat']['vdisk'];
 $a_gmirror = &$config['gmirror']['vdisk'];
 $a_gstripe = &$config['gstripe']['vdisk'];
@@ -102,74 +100,7 @@ $a_graid5 = &$config['graid5']['vdisk'];
 $a_gvinum = &$config['gvinum']['vdisk'];
 $a_geli = &$config['geli']['vdisk'];
 
-// SECTION THAT REMOVE DISKS THAT ARE USED IN SOFTWARE RAID
-if (is_array($config['gconcat']['vdisk'])) {
-	foreach ($a_gconcat as $gconc_tofind) {
-		foreach ($gconc_tofind['diskr'] as $disk_used) {
-			$id = array_search_ex($disk_used, $b_disk, "fullname");
-			if ($id !== false) {
-				/* Remove used drive */
-				unset($b_disk[$id]);
-			}
-		}
-		unset ($disk_used);
-	}
-}
-
-if (is_array($config['gmirror']['vdisk'])) {
-	foreach ($a_gmirror as $gmirror_tofind) {
-		foreach ($gmirror_tofind['diskr'] as $disk_used) {
-			$id = array_search_ex($disk_used, $b_disk, "fullname");
-			if ($id !== false) {
-				/* Remove used drive */
-				unset($b_disk[$id]);
-			}
-		}
-		unset ($disk_used);
-	}
-}
-
-if (is_array($config['gstripe']['vdisk'])) {
-	foreach ($a_gstripe as $gstripe_tofind) {
-		foreach ($gstripe_tofind['diskr'] as $disk_used) {
-			$id = array_search_ex($disk_used, $b_disk, "fullname");
-			if ($id !== false) {
-				/* Remove used drive */
-				unset($b_disk[$id]);
-			}
-		}
-		unset ($disk_used);
-	}
-}
-
-if (is_array($config['graid5']['vdisk'])) {
-	foreach ($a_graid5 as $graid5_tofind) {
-		foreach ($graid5_tofind['diskr'] as $disk_used) {
-			$id = array_search_ex($disk_used, $b_disk, "fullname");
-			if ($id !== false) {
-				/* Remove used drive */
-				unset($b_disk[$id]);
-			}
-		}
-		unset ($disk_used);
-	}
-}
-
-if (is_array($config['gvinum']['vdisk'])) {
-	foreach ($a_gvinum as $gvinum_tofind) {
-		foreach ($gvinum_tofind['diskr'] as $disk_used) {
-			$id = array_search_ex($disk_used, $b_disk, "fullname");
-			if ($id !== false) {
-				/* Remove used drive */
-				unset($b_disk[$id]);
-			}
-		}
-		unset ($disk_used);
-	}
-}
-
-// Now creating the full disk table (using the cleanned real disk)
-$a_alldisk = array_merge($b_disk,$a_gconcat,$a_gmirror,$a_gstripe,$a_graid5,$a_gvinum,$a_geli);
+$a_alldisk = get_all_conf_disks_list();
 
 if ($_POST) {
 	unset($input_errors);
@@ -189,7 +120,7 @@ if ($_POST) {
 		$notinitmbr= $_POST['notinitmbr'];
 		$volumelabel = $_POST['volumelabel'];
 
-		/* Check if disk is mounted. */ 
+		/* Check if disk is mounted. */
 		if(disks_ismounted_ex($disk,"fullname")) {
 			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
 			$do_format = false;
@@ -265,8 +196,8 @@ if ($_POST) {
 				$NotFound = 0;
 			}
 
-			/* Update $a_alldisks array. */
-			$a_alldisk = array_merge($b_disk,$a_gconcat,$a_gmirror,$a_gstripe,$a_graid5,$a_gvinum,$a_geli);
+			/* Update list of configured disks. */
+			$a_alldisk = get_all_conf_disks_list();
 
 			/* Write configuration. */
 			write_config();
