@@ -44,43 +44,8 @@ if (!is_array($config['mounts']['mount']))
 
 mount_sort();
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
-
-disks_sort();
-
-if (!is_array($config['gvinum']['vdisk']))
-	$config['gvinum']['vdisk'] = array();
-
-gvinum_sort();
-
-if (!is_array($config['gmirror']['vdisk']))
-	$config['gmirror']['vdisk'] = array();
-
-gmirror_sort();
-
-if (!is_array($config['gconcat']['vdisk']))
-	$config['gconcat']['vdisk'] = array();
-
-gconcat_sort();
-
-if (!is_array($config['gstripe']['vdisk']))
-	$config['gstripe']['vdisk'] = array();
-
-gstripe_sort();
-
-if (!is_array($config['graid5']['vdisk']))
-	$config['graid5']['vdisk'] = array();
-
-graid5_sort();
-
-if (!is_array($config['geli']['vdisk']))
-	$config['geli']['vdisk'] = array();
-
-geli_sort();
-
 $a_mount = &$config['mounts']['mount'];
-$a_disk = array_merge($config['disks']['disk'],$config['gvinum']['vdisk'],$config['gmirror']['vdisk'],$config['gconcat']['vdisk'],$config['gstripe']['vdisk'],$config['graid5']['vdisk'],$config['geli']['vdisk']);
+$a_disk = get_all_conf_disks_list();
 
 /* Load the cfdevice file*/
 $filename=$g['varetc_path']."/cfdevice";
@@ -156,7 +121,7 @@ if ($_POST) {
 		$identifier[] = fgets($fp, 6);
 		fclose($fp);
 
-		if (FALSE === array_search('CD001', $identifier) && FALSE === array_search('CDROM', $identifier)) {
+		if (false === array_search('CD001', $identifier) && FALSE === array_search('CDROM', $identifier)) {
 			$input_errors[] = gettext("Selected file isn't an valid ISO file.");
 		}
 	}
@@ -281,16 +246,13 @@ function fstype_change() {
 			    <tr id="mdisk_tr">
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
 			      <td class="vtable">
-			    	 <select name="mdisk" class="formfld" id="mdisk">
-			    	  <?php foreach ($a_disk as $disk): ?>
-								<?php if ((strcmp($disk['fstype'],"softraid")==0) || (strcmp($disk['fstype'],"geli")==0)): ?>
-			    			<?php continue; ?>
-			    			<?php endif; ?>
-			    				<option value="<?=$disk['fullname'];?>" <?php if ($pconfig['mdisk'] == $disk['fullname']) echo "selected";?>>
-			    				<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
-			    				</option>
-			    		  <?php endforeach; ?>
-			    		</select>
+							<select name="mdisk" class="formfld" id="mdisk">
+								<?php foreach ($a_disk as $disk):?>
+								<option value="<?=$disk['fullname'];?>" <?php if ($pconfig['mdisk'] == $disk['fullname']) echo "selected";?>>
+								<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
+								</option>
+								<?php endforeach;?>
+							</select>
 			      </td>
 			    </tr>
 					<tr id="partition_tr">

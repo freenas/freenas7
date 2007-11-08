@@ -1729,13 +1729,12 @@ function get_physical_conf_disks_list() {
 	return $config['disks']['disk'];
 }
 
-// Get list of virtual configured disks. 
-function get_virtual_conf_disks_list() {
+// Get list of configured Software RAID disks. 
+function get_sraid_conf_disks_list() {
 	global $config;
 
 	$a_vdisk = array();
 
-	// Get all virtual disks.
 	if (is_array($config['gvinum']['vdisk']))
 		$a_vdisk = array_merge($a_vdisk, $config['gvinum']['vdisk']);
 	if (is_array($config['gmirror']['vdisk']))
@@ -1746,34 +1745,71 @@ function get_virtual_conf_disks_list() {
 		$a_vdisk = array_merge($a_vdisk, $config['gstripe']['vdisk']);
 	if (is_array($config['graid5']['vdisk']))
 		$a_vdisk = array_merge($a_vdisk, $config['graid5']['vdisk']);
+
+	return $a_vdisk;
+}
+
+// Get list of configured encrypted disks. 
+function get_encryped_conf_disks_list() {
+	global $config;
+
+	$a_vdisk = array();
+
 	if (is_array($config['geli']['vdisk']))
-		$a_vdisk = array_merge($a_vdisk, $config['geli']['vdisk']);
+		$a_vdisk = $config['geli']['vdisk'];
 
 	return $a_vdisk;
 }
 
 // Get a list of all configured disks (real and virtual, e.g. SoftRAID or GEli encrypted).
+// Physical disks used by any virtual disk is filtered out.
 function get_all_conf_disks_list() {
 	global $config;
 
 	$a_disk = array();
 
-	// Get list of virtual disks.
-	$a_vdisk = get_virtual_conf_disks_list();
+	// Get list of physical disks.
+	$a_physicaldisk = get_physical_conf_disks_list();
+
+	// Get list of Software RAID disks.
+	$a_sraiddisk = get_sraid_conf_disks_list();
+
+	// Get list of encrypted disks.
+	$a_encrypteddisk = get_encryped_conf_disks_list();
 
 	// First add physical disks if they are not used by a virtual disk.
-	foreach (get_physical_conf_disks_list() as $disk) {
-		foreach ($a_vdisk as $vdisk) {
+	foreach ($a_physicaldisk as $disk) {
+		$unused = true;
+
+		// Check Software RAID's.
+		foreach ($a_sraiddisk as $vdisk) {
 			if (is_array($vdisk['diskr'])) {
-				if (false === array_search($disk['fullname'], $vdisk['diskr'])) {
-					$a_disk[] = $disk;
+				if (false !== array_search($disk['fullname'], $vdisk['diskr'])) {
+					$unused = false;
+					break;
 				}
 			}
 		}
+
+		// Check encrypted disks.
+		foreach ($a_encrypteddisk as $vdisk) {
+			if (0 == strcmp($disk['fullname'], $vdisk['name'])) {
+				$unused = false;
+				break;
+			}
+		}
+
+		// Append physical disk if it is not used by any virtual disk.
+		if(true === $unused) {
+			$a_disk[] = $disk;
+		}
 	}
 
-	// Finally add virtual disks.
-	$a_disk = array_merge($a_disk, $a_vdisk);
+	// Add configured Software RAID disks.
+	$a_disk = array_merge($a_disk, $a_sraiddisk);
+
+	// Add configured encrypted disks.
+	$a_disk = array_merge($a_disk, $a_encrypteddisk);
 
 	return $a_disk;
 }
