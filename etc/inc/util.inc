@@ -1722,4 +1722,59 @@ function is_booting() {
 	global $g;
 	return file_exists("/var/etc/booting");
 }
+
+// Get list of physical configured disks.
+function get_physical_conf_disks_list() {
+	global $config;
+	return $config['disks']['disk'];
+}
+
+// Get list of virtual configured disks. 
+function get_virtual_conf_disks_list() {
+	global $config;
+
+	$a_vdisk = array();
+
+	// Get all virtual disks.
+	if (is_array($config['gvinum']['vdisk']))
+		$a_vdisk = array_merge($a_vdisk, $config['gvinum']['vdisk']);
+	if (is_array($config['gmirror']['vdisk']))
+		$a_vdisk = array_merge($a_vdisk, $config['gmirror']['vdisk']);
+	if (is_array($config['gconcat']['vdisk']))
+		$a_vdisk = array_merge($a_vdisk, $config['gconcat']['vdisk']);
+	if (is_array($config['gstripe']['vdisk']))
+		$a_vdisk = array_merge($a_vdisk, $config['gstripe']['vdisk']);
+	if (is_array($config['graid5']['vdisk']))
+		$a_vdisk = array_merge($a_vdisk, $config['graid5']['vdisk']);
+	if (is_array($config['geli']['vdisk']))
+		$a_vdisk = array_merge($a_vdisk, $config['geli']['vdisk']);
+
+	return $a_vdisk;
+}
+
+// Get a list of all configured disks (real and virtual, e.g. SoftRAID or GEli encrypted).
+function get_all_conf_disks_list() {
+	global $config;
+
+	$a_disk = array();
+
+	// Get list of virtual disks.
+	$a_vdisk = get_virtual_conf_disks_list();
+
+	// First add physical disks if they are not used by a virtual disk.
+	foreach (get_physical_conf_disks_list() as $disk) {
+		foreach ($a_vdisk as $vdisk) {
+			if (is_array($vdisk['diskr'])) {
+				if (false === array_search($disk['fullname'], $vdisk['diskr'])) {
+					$a_disk[] = $disk;
+				}
+			}
+		}
+	}
+
+	// Finally add virtual disks.
+	$a_disk = array_merge($a_disk, $a_vdisk);
+
+	return $a_disk;
+}
 ?>

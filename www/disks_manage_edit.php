@@ -39,8 +39,8 @@ if (isset($_POST['id']))
 
 $pgtitle = array(gettext("Disks"),gettext("Management"),gettext("Disk"),isset($id)?gettext("Edit"):gettext("Add"));
 
-// Get all disks (including CDROM).
-$disklist = array_merge((array)get_physical_disks_list(), (array)get_cdrom_list());
+// Get all physical disks including CDROM.
+$a_phy_disk = array_merge((array)get_physical_disks_list(), (array)get_cdrom_list());
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
@@ -91,9 +91,9 @@ if ($_POST) {
 		if ($harddiskfstype) $disks['fstype'] = $harddiskfstype ;
 		$disks['apm'] = $harddiskapm ;
 		$disks['udma'] = $harddiskudma ;
-		$disks['type'] = $disklist[$devname]['type'];
-		$disks['desc'] = $disklist[$devname]['desc'];
-		$disks['size'] = $disklist[$devname]['size'];
+		$disks['type'] = $a_phy_disk[$devname]['type'];
+		$disks['desc'] = $a_phy_disk[$devname]['desc'];
+		$disks['size'] = $a_phy_disk[$devname]['size'];
 
 		if (isset($id) && $a_disk[$id])
 			$a_disk[$id] = $disks;
@@ -137,10 +137,12 @@ function enable_change(enable_change) {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Disk");?></td>
 						<td width="78%" class="vtable">
 							<select name="name" class="formfld" id="name">
-							  <?php foreach ($disklist as $diski => $diskv): ?>
-							  <option value="<?=$diski;?>" <?php if ($diski == $pconfig['name']) echo "selected";?>><?php echo htmlspecialchars($diski . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
-					  		<?php endforeach; ?>
-					  	</select>
+								<?php foreach ($a_phy_disk as $diskk => $diskv): ?>
+								<?php // Do not display disks that are already configured. (Create mode);?>
+								<?php if (!isset($id) && (false !== array_search_ex($diskk,$a_disk,"name"))) continue;?>
+								<option value="<?=$diskk;?>" <?php if ($diskk == $pconfig['name']) echo "selected";?>><?php echo htmlspecialchars($diskk . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
+								<?php endforeach; ?>
+							</select>
 					  </td>
 					</tr>
 					<tr>
