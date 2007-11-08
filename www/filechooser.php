@@ -104,14 +104,11 @@ class FileChooser
 		// Sort files.
 		$files = $this->sort_files($files);
 
-    // Display address bar.
-    echo $this->address_bar($path);
+    // Display navigation bar.
+    echo $this->navigation_bar($path);
 
 		// Display file list.
 		echo $this->file_list($dir, $files);
-
-    // Display command bar.
-		echo $this->command_bar();
 	}
 
   function make_file_array($dir)
@@ -485,34 +482,19 @@ class FileChooser
 		return $row;
 	}
 
-  function address_bar($path)
+  function navigation_bar($path)
 	{
     $ret .= <<<EOD
 
 		<tr>
-		  <form method="get" action="?">
-		  	<td class="addrbar">
-	        <input name="p" value="{$path}" type="text">
+		  <form method="get" action="?" onSubmit="onSubmit();" onReset="onReset();">
+		  	<td class="navbar">
+	        <input class="input" name="p" value="{$path}" type="text">
+	      	<input class="button" type="reset" value="Cancel">
+	      	<input class="button" type="submit" value="Ok">
 		    </td>
 		  </form>
 	  </tr>
-
-EOD;
-    return $ret;
-  }
-
-	function command_bar()
-	{
-    $ret = <<<EOD
-
-    <tr>
-    	<form method="get" onSubmit="onSubmit();" onReset="onReset();">
-	    	<td class="cmdbar">
-	    	  <input type="submit" value="Ok">
-	      	<input type="reset" value="Cancel">
-	      </td>
-      </form>
-    </tr>
 
 EOD;
     return $ret;
@@ -562,11 +544,10 @@ EOD;
 /* footer row */
 .filechooser .filelist table tr.footer td { border:0; font-weight:bold; }
 
-/* Address and command bar */
-.filechooser .addrbar { background-color: #eee; padding: 6px 9px; text-align:right; border-left:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee; border-spacing:0; height: 20px }
-.filechooser .addrbar input { width:100%; }
-.filechooser .cmdbar { background-color: #eee; border-top: 1px solid #fff; text-align: right; height: 40px }
-.filechooser .cmdbar input { background-color: #eee; font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; width: 60px; height: 22px; }
+/* Navigation bar */
+.filechooser .navbar { background-color: #eee; padding: 6px 9px; text-align:left; border-left:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee; border-spacing:0; height: 20px }
+.filechooser .navbar .input { position:absolute; width:75%; }
+.filechooser .navbar .button { position:relative; float:right; }
 </style>
 <script class="javascript">
 function onSubmit()
