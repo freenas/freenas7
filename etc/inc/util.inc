@@ -28,6 +28,7 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+require_once("array.inc");
 
 /* kill a process by pid file */
 function killbypid($pidfile) {
@@ -1480,28 +1481,6 @@ function get_fstype_shortdesc($fstype) {
   return $shortdesc;
 }
 
-/* Search in a multidimensional array */
-function array_search_ex($needle, $haystack, $key)
-{
-  foreach($haystack as $haystackval => $value) {
-    $found = false;
-    if(is_array($needle) && is_array($key)) {
-      foreach($needle as $n => $needlev) {
-        $found = ($value[$key[$n]] == $needlev);
-        if(false == $found) {
-          break;
-        }
-      }
-    } else {
-      $found = ($value[$key] == $needle);
-    }
-    if(true == $found) {
-      return $haystackval;
-    }
-  }
-  return false;
-}
-
 // Get interface informations.
 // $if - Interface name (e.g. re0, ...)
 // Result: Array
@@ -1831,27 +1810,5 @@ function get_conf_all_disks_list() {
 	$a_disk = array_merge($a_disk, $a_encrypteddisk);
 
 	return $a_disk;
-}
-
-// Sort an array by values using a user-defined key.
-// Returns TRUE on success or FALSE on failure.
-function array_sort_key(array &$array, $key)
-{
-	global $_key;
-
-	// Declare local compare function.
-	if(!function_exists(array_sort_key_cmp)) {
-		function array_sort_key_cmp($a, $b) {
-			global $_key;
-			return strcmp($a[$_key], $b[$_key]);
-		}
-	}
-
-	// Sort array. Set key used my compare function. Finally unset useless global variable.
-	$_key = $key;
-	$result = usort($array, "array_sort_key_cmp");
-	unset($_key);
-
-	return $result;
 }
 ?>
