@@ -34,66 +34,24 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Format"));
+$pgtitle = array(gettext("Disks"), gettext("Format"));
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
-
-if (!is_array($config['gconcat']['vdisk']))
-	$config['gconcat']['vdisk'] = array();
-
-if (!is_array($config['gmirror']['vdisk']))
-	$config['gmirror']['vdisk'] = array();
-
-if (!is_array($config['graid5']['vdisk']))
-	$config['graid5']['vdisk'] = array();
-
-if (!is_array($config['gstripe']['vdisk']))
-	$config['gstripe']['vdisk'] = array();
-
-if (!is_array($config['gvinum']['vdisk']))
-	$config['gvinum']['vdisk'] = array();
-
-if (!is_array($config['geli']['vdisk']))
-	$config['geli']['vdisk'] = array();
-
-array_sort_key($config['disks']['disk'], "name");
-array_sort_key($config['gconcat']['vdisk'], "name");
-array_sort_key($config['gmirror']['vdisk'], "name");
-array_sort_key($config['graid5']['vdisk'], "name");
-array_sort_key($config['gstripe']['vdisk'], "name");
-array_sort_key($config['gvinum']['vdisk'], "name");
-array_sort_key($config['geli']['vdisk'], "fullname");
-
-/* Get all fstype supported by FreeNAS. */
+// Get list of all supported file systems.
 $a_fst = get_fstype_list();
-// Remove NTFS: can't format on NTFS under FreeNAS
-unset($a_fst['ntfs']);
-// Remove geli
-unset($a_fst['geli']);
-// Remove cd9660: can't format a CD/DVD !
-unset($a_fst['cd9660']);
-// Remove the first blank line 'unknown'
-$a_fst = array_slice($a_fst, 1);
-// Remove old UFS type: Now FreeNAS will impose only one UFS type: GPT/EFI with softupdate
-unset($a_fst['ufs']);
+unset($a_fst['ntfs']); // Remove NTFS: can't format on NTFS under FreeNAS
+unset($a_fst['geli']); // Remove geli
+unset($a_fst['cd9660']); // Remove cd9660: can't format a CD/DVD !
+$a_fst = array_slice($a_fst, 1); // Remove the first blank line 'unknown'
+unset($a_fst['ufs']); // Remove old UFS type: Now FreeNAS will impose only one UFS type: GPT/EFI with softupdate
 unset($a_fst['ufs_no_su']);
 unset($a_fst['ufsgpt_no_su']);
 
-/* Load the cfdevice file for found the disk where FreeNAS is installed*/
+// Load the /var/etc/cfdevice file to find out on which disk the OS is installed.
 $filename=$g['varetc_path']."/cfdevice";
 $cfdevice = trim(file_get_contents($filename));
 $cfdevice = "/dev/" . $cfdevice;
 
-/* Get disk configurations. */
-$a_disk = &$config['disks']['disk'];
-$a_gconcat = &$config['gconcat']['vdisk'];
-$a_gmirror = &$config['gmirror']['vdisk'];
-$a_gstripe = &$config['gstripe']['vdisk'];
-$a_graid5 = &$config['graid5']['vdisk'];
-$a_gvinum = &$config['gvinum']['vdisk'];
-$a_geli = &$config['geli']['vdisk'];
-
+// Get list of all configured disks (physical and virtual).
 $a_alldisk = get_conf_all_disks_list();
 
 if ($_POST) {
@@ -114,87 +72,24 @@ if ($_POST) {
 		$notinitmbr= $_POST['notinitmbr'];
 		$volumelabel = $_POST['volumelabel'];
 
-		/* Check if disk is mounted. */
-		if(disks_ismounted_ex($disk,"fullname")) {
-			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
+		// Check whether disk is mounted.
+		if(disks_ismounted_ex($disk, "fullname")) {
+			$errormsg = sprintf(gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
 			$do_format = false;
 		}
 
 		if (strstr ($cfdevice,$disk)) {
-			$input_errors[] = gettext("Can't format the drive where FreeNAS configuration file is installed!");
+			$input_errors[] = gettext("Can't format the OS origin disk!");
 		}
 
 		if ($do_format) {
-			/* Get the id of the disk array entry. */
-			$NotFound = 1;
-			$id = array_search_ex($disk, $a_disk, "fullname");
+			// Set new file system type attribute ('fstype') in configuration.
+			set_conf_disk_fstype($disk, $type);
 
-			/* disk */
-			if ($id !== false) {
-				/* Set new filesystem type. */
- 				$a_disk[$id]['fstype'] = $type;
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gmirror, "fullname");
-			}
-
-			/* gmirror */
-			if (($id !== false) && $NotFound) {
-				/* Set new filesystem type. */
- 				$a_gmirror[$id]['fstype'] = $type;
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gstripe, "fullname");
-			}
-
-			/* gstripe */
-			if (($id !== false) && $NotFound) {
-				/* Set new filesystem type. */
- 				$a_gstripe[$id]['fstype'] = $type;
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gconcat, "fullname");
-			}
-
-			/* gconcat */
-			if (($id !== false) && $NotFound) {
-				/* Set new filesystem type. */
- 				$a_gconcat[$id]['fstype'] = $type;
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_graid5, "fullname");
-			}
-
-			/* graid5 */
-			if (($id !== false) && $NotFound) {
-				/* Set new filesystem type. */
- 				$a_graid5[$id]['fstype'] = $type;
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gvinum, "fullname");
-			}
-
-			/* gvinum */
-			if (($id !== false) && $NotFound) {
-				/* Set new filesystem type. */
- 				$a_gvinum[$id]['fstype'] = $type;
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_geli, "fullname");
-			}
-
-			/* geli */
-			if (($id !== false) && $NotFound) {
-				/* Set new filesystem type. */
- 				$a_geli[$id]['fstype'] = $type;
-				$NotFound = 0;
-			}
-
-			/* Update list of configured disks. */
-			$a_alldisk = get_conf_all_disks_list();
-
-			/* Write configuration. */
 			write_config();
+
+			// Update list of configured disks.
+			$a_alldisk = get_conf_all_disks_list();
 		}
 	}
 }

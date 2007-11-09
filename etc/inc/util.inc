@@ -1811,4 +1811,35 @@ function get_conf_all_disks_list() {
 
 	return $a_disk;
 }
+
+// Set the given file system type in configuration.
+// Return 0 if successful, otherwise 1.
+function set_conf_disk_fstype($disk, $fstype)
+{
+	global $config;
+
+	$result = 1;
+	$diskconf = array('disks'   => array('disk',  'fullname'),
+										'gconcat' => array('vdisk', 'fullname'),
+										'gmirror' => array('vdisk', 'fullname'),
+										'graid5'  => array('vdisk', 'fullname'),
+										'gstripe' => array('vdisk', 'fullname'),
+										'gvinum'  => array('vdisk', 'fullname'),
+										'geli'    => array('vdisk', 'name'));
+
+	while (list($key, $val) = each($diskconf)) {
+		if (!is_array($config[$key][$val[0]]))
+			continue;
+//	echo "Searching array \$config['$key']['$val[0]'] using key $val[1]\n";
+		$id = array_search_ex($disk, $config[$key][$val[0]], $val[1]);
+		if ($id !== false) {
+			$config[$key][$val[0]][$id]['fstype'] = $fstype;
+			$result = 0;
+//		echo "Set \$config['$key']['$val[0]'][$id]['fstype'] = $fstype\n";
+			break;
+		}
+	}
+
+	return $result;
+}
 ?>

@@ -62,100 +62,15 @@ if ($_GET['act'] == "del")
 {
 	if ($a_geli[$_GET['id']]) {
 		if(disks_geli_check($a_geli[$_GET['id']]['fullname'])) {
-			// Killl encrypted volume
+			// Kill encrypted volume.
 			disks_geli_kill($a_geli[$_GET['id']]['fullname']);
-			/*Remove the 'geli' fstype of the original disk
-			BEGIN OF A COPY/PAST of the disks_crypt_edit.php file
-			The should be a more clean way */
 
-			$disk = $a_geli[$_GET['id']]['name'];
+			// Reset disk file system type attribute ('fstype') in configuration.
+			set_conf_disk_fstype($a_geli[$_GET['id']]['name'], "");
 
-			if (!is_array($config['disks']['disk']))
-				$config['disks']['disk'] = array();
-
-			if (!is_array($config['gconcat']['vdisk']))
-				$config['gconcat']['vdisk'] = array();
-
-			if (!is_array($config['gmirror']['vdisk']))
-				$config['gmirror']['vdisk'] = array();
-
-			if (!is_array($config['graid5']['vdisk']))
-				$config['graid5']['vdisk'] = array();
-
-			if (!is_array($config['gstripe']['vdisk']))
-				$config['gstripe']['vdisk'] = array();
-
-			if (!is_array($config['gvinum']['vdisk']))
-				$config['gvinum']['vdisk'] = array();
-
-			/* Get disk configurations. */
-			$a_disk = &$config['disks']['disk'];
-			$a_gconcat = &$config['gconcat']['vdisk'];
-			$a_gmirror = &$config['gmirror']['vdisk'];
-			$a_gstripe = &$config['gstripe']['vdisk'];
-			$a_graid5 = &$config['graid5']['vdisk'];
-			$a_gvinum = &$config['gvinum']['vdisk'];
-
-			/* Get the id of the disk array entry. */
-			$NotFound = 1;
-			$id = array_search_ex($disk, $a_disk, "fullname");
-
-			/* disk */
-			if ($id !== false) {
-				/* Delete the filesystem type. */
- 				$a_disk[$id]['fstype']="";
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gmirror, "fullname");
-			}
-
-			/* gmirror */
-			if (($id !== false) && $NotFound) {
-				/* Delete the filesystem type. */
- 				$a_gmirror[$id]['fstype']="";
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gstripe, "fullname");
-			}
-
-			/* gstripe */
-			if (($id !== false) && $NotFound) {
-				/* Delete the filesystem type. */
- 				$a_gstripe[$id]['fstype']="";
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gconcat, "fullname");
-			}
-
-			/* gconcat */
-			if (($id !== false) && $NotFound) {
-				/* Delete the filesystem type. */
- 				$a_gconcat[$id]['fstype']="";
-
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_graid5, "fullname");
-			}
-
-			/* graid5 */
-			if (($id !== false) && $NotFound) {
-				/* Delete the filesystem type. */
- 				$a_graid5[$id]['fstype']="";
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gvinum, "fullname");
-			}
-
-			/* gvinum */
-			if (($id !== false) && $NotFound) {
-				/* Delete the filesystem type. */
- 				$a_gvinum[$id]['fstype']="";
-				$NotFound = 0;
-			}
-
-			/* End of COPY/PAST */
-			// Del the geli volume on the config file
+			// Delete geli volume in configuration.
 			unset($a_geli[$_GET['id']]);
+
 			write_config();
 
 			header("Location: disks_crypt.php");

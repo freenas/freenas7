@@ -35,50 +35,23 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Add"));
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
-
-if (!is_array($config['gconcat']['vdisk']))
-	$config['gconcat']['vdisk'] = array();
-
-if (!is_array($config['gmirror']['vdisk']))
-	$config['gmirror']['vdisk'] = array();
-
-if (!is_array($config['graid5']['vdisk']))
-	$config['graid5']['vdisk'] = array();
-
-if (!is_array($config['gstripe']['vdisk']))
-	$config['gstripe']['vdisk'] = array();
-
-if (!is_array($config['gvinum']['vdisk']))
-	$config['gvinum']['vdisk'] = array();
-
 if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
 
-array_sort_key($config['disks']['disk'], "name");
-array_sort_key($config['gconcat']['vdisk'], "name");
-array_sort_key($config['gmirror']['vdisk'], "name");
-array_sort_key($config['graid5']['vdisk'], "name");
-array_sort_key($config['gstripe']['vdisk'], "name");
-array_sort_key($config['gvinum']['vdisk'], "name");
 array_sort_key($config['geli']['vdisk'], "fullname");
 
-/* Get disk configurations. */
-$a_disk = &$config['disks']['disk'];
-$a_gconcat = &$config['gconcat']['vdisk'];
-$a_gmirror = &$config['gmirror']['vdisk'];
-$a_gstripe = &$config['gstripe']['vdisk'];
-$a_graid5 = &$config['graid5']['vdisk'];
-$a_gvinum = &$config['gvinum']['vdisk'];
 $a_geli = &$config['geli']['vdisk'];
-$a_alldisk = array_merge($a_disk,$a_gconcat,$a_gmirror,$a_gstripe,$a_graid5,$a_gvinum);
 
-if (!sizeof($a_disk)) {
+// Get list of all configured disks (physical and virtual).
+$a_alldisk = get_conf_all_disks_list();
+
+// Check whether there are disks configured, othersie display a error message.
+if (!count($a_alldisk)) {
 	$nodisk_errors[] = gettext("You must add disks first.");
 }
 
-if ($config['system']['webgui']['protocol'] == "http") {
+// Check if protocol is HTTPS, otherwise display a warning message.
+if ("http" === $config['system']['webgui']['protocol']) {
 	$nohttps_errors = gettext("You should use HTTPS as WebGUI protocol for sending passphrase.");
 }
 
@@ -87,116 +60,52 @@ if ($_POST) {
 	unset($errormsg);
 	unset($do_action);
 
-	$pconfig = $_POST;
-
-	/* Check for duplicate disks */
-	foreach ($a_geli as $gelival) {
-		if ($gelival['fullname'] == $_POST['disk'].".eli") {
-			$input_errors[] = gettext("This disk already exists in the disk list.");
-			break;
-		}
-	}
-
-	/* input validation */
+	// Input validation.
   $reqdfields = explode(" ", "disk ealgo password passwordconf");
   $reqdfieldsn = array(gettext("Disk"),gettext("Encryption algorithm"),gettext("Passphrase"),gettext("Passphrase"));
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-  /* Check for a password mismatch */
-	if ($_POST['password']!=$_POST['passwordconf']) 	{
-			$input_errors[] = gettext("Passphrase don't match.");
+	// Check for duplicate disks.
+	if (array_search_ex("{$_POST['disk']}.eli", $a_geli, "fullname")) {
+		$input_errors[] = gettext("This disk already exists in the disk list.");
+	}
+
+	// Check for a password mismatch.
+	if ($_POST['password'] !== $_POST['passwordconf']) {
+		$input_errors[] = gettext("Passphrase don't match.");
 	}
 
 	if (!$input_errors) {
 		$do_action = true;
-		$geli = array();
+
 		$init = $_POST['init'] ? true : false;
 		$disk = $_POST['disk'];
-		//Remove aalgo value: doesn't work
-		// $aalgo = $geli['aalgo'] = $_POST['aalgo'];
-		$aalgo = $geli['aalgo'] = "none";
-		$ealgo = $geli['ealgo'] = $_POST['ealgo'];
-		$geli['fullname'] = "$disk" . ".eli";
-		$geli['desc'] = "Encrypted disk";
+		$aalgo = "none";
+		$ealgo = $_POST['ealgo'];
 		$passphrase = $_POST['password'];
-		$type = "geli";
 
-		/* Check if disk is mounted. */
-		if(disks_ismounted_ex($disk,"fullname")) {
+		// Check whether disk is mounted.
+		if (disks_ismounted_ex($disk, "fullname")) {
 			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
 			$do_action = false;
 		}
 
 		if ($do_action) {
-			/* Get the id of the disk array entry. */
-			$NotFound = 1;
-			$id = array_search_ex($disk, $a_disk, "fullname");
+			// Get disk information.
+			$diskinfo = disks_get_diskinfo($disk);
 
-			/* disk */
-			if ($id !== false) {
-				/* Set new filesystem type. */
- 				$a_disk[$id]['fstype'] = $type;
-				$geli['name'] = $a_disk[$id]['fullname'];
-				$geli['size'] = $a_disk[$id]['size'];
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gmirror, "fullname");
-			}
-
-			/* gmirror */
-			if (($id !== false) && $NotFound) {
-				/* Set new filesystem type. */
- 				$a_gmirror[$id]['fstype'] = $type;
-				$geli['name'] = $a_gmirror[$id]['fullname'];
-				$geli['size'] = $a_gmirror[$id]['size'];
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gstripe, "fullname");
-			}
-
-			/* gstripe */
-			if (($id !== false) && $NotFound) {
-				/* Set new filesystem type. */
- 				$a_gstripe[$id]['fstype'] = $type;
-				$geli['name'] = $a_gstripe[$id]['fullname'];
-				$geli['size'] = $a_gstripe[$id]['size'];
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gconcat, "fullname");
-			}
-
-			/* gconcat */
-			if (($id !== false) && $NotFound) {
-				/* Set new filesystem type. */
- 				$a_gconcat[$id]['fstype'] = $type;
-				$geli['name'] = $a_gconcat[$id]['fullname'];
-				$geli['size'] = $a_gconcat[$id]['size'];
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_graid5, "fullname");
-			}
-
-			/* graid5 */
-			if (($id !== false) && $NotFound) {
-				/* Set new filesystem type. */
- 				$a_graid5[$id]['fstype'] = $type;
-				$geli['name'] = $a_graid5[$id]['fullname'];
-				$geli['size'] = $a_graid5[$id]['size'];
-				$NotFound = 0;
-			} else {
-				$id = array_search_ex($disk, $a_gvinum, "fullname");
-			}
-
-			/* gvinum */
-			if (($id !== false) && $NotFound) {
-				/* Set new filesystem type. */
- 				$a_gvinum[$id]['fstype'] = $type;
- 				$geli['name'] = $a_gvinum[$id]['fullname'];
-				$geli['size'] = $a_gvinum[$id]['size'];
-				$NotFound = 0;
-			}
+			$geli = array();
+			$geli['name'] = $disk;
+			$geli['fullname'] = "{$disk}.eli";
+			$geli['desc'] = "Encrypted disk";
+			$geli['size'] = "{$diskinfo['mediasize_mbytes']}MB";
+			$geli['aalgo'] = $aalgo;
+			$geli['ealgo'] = $ealgo;
 
 			$a_geli[] = $geli;
+
+			// Set new file system type attribute ('fstype') in configuration.
+			set_conf_disk_fstype($disk, "geli");
 
 			write_config();
 		}
@@ -206,7 +115,6 @@ if (!isset($do_action)) {
 	$do_action = false;
 	$init = false;
 	$disk = '';
-	$type = '';
 	$aalgo = '';
 	$ealgo = '';
 	$passphrase = '';
@@ -237,7 +145,7 @@ if (!isset($do_action)) {
 							<?php if (strcmp($diskval['size'],"NA") == 0) continue; ?>
 			    			<?php if ((strcmp($diskval['fstype'],"softraid")==0)) continue;?>
 							<?php if ((strcmp($diskval['fstype'],"geli")==0)) continue;?>
-			   				<option value="<?=$diskval['fullname'];?>" <?php if ($pconfig['disk'] == $diskval['fullname']) echo "selected";?>>
+			   				<option value="<?=$diskval['fullname'];?>" <?php if ($disk === $diskval['fullname']) echo "selected";?>>
 			   				<?php echo htmlspecialchars($diskval['name'] . ": " .$diskval['size'] . " (" . $diskval['desc'] . ")");	?>
 			   				</option>
 			    		<?php endforeach; ?>
@@ -250,33 +158,33 @@ if (!isset($do_action)) {
 						<td valign="top" class="vncellreq"><?=gettext("Data integrity algorithm");?></td>
 			      <td class="vtable">
 			        <select name="aalgo" class="formfld" id="aalgo">
-								<option value="none" <?php if ($pconfig['aalgo'] == "none") echo "selected"; ?>>none</option>
-			          <option value="HMAC/MD5" <?php if ($pconfig['aalgo'] == "HMAC/MD5") echo "selected"; ?>>HMAC/MD5</option>
-			          <option value="HMAC/SHA1" <?php if ($pconfig['aalgo'] == "HMAC/SHA1") echo "selected"; ?>>HMAC/SHA1</option>
-			          <option value="HMAC/RIPEMD160" <?php if ($pconfig['aalgo'] == "HMAC/RIPEMD160") echo "selected"; ?>>HMAC/RIPEMD160</option>
-			          <option value="HMAC/SHA256" <?php if ($pconfig['aalgo'] == "HMAC/SHA256") echo "selected"; ?>>HMAC/SHA256</option>
-			          <option value="HMAC/SHA384" <?php if ($pconfig['aalgo'] == "HMAC/SHA384") echo "selected"; ?>>HMAC/SHA384</option>
-			          <option value="HMAC/SHA512" <?php if ($pconfig['aalgo'] == "HMAC/SHA512") echo "selected"; ?>>HMAC/SHA512</option>
+								<option value="none" <?php if ($aalgo === "none") echo "selected"; ?>>none</option>
+			          <option value="HMAC/MD5" <?php if ($aalgo === "HMAC/MD5") echo "selected"; ?>>HMAC/MD5</option>
+			          <option value="HMAC/SHA1" <?php if ($aalgo === "HMAC/SHA1") echo "selected"; ?>>HMAC/SHA1</option>
+			          <option value="HMAC/RIPEMD160" <?php if ($aalgo === "HMAC/RIPEMD160") echo "selected"; ?>>HMAC/RIPEMD160</option>
+			          <option value="HMAC/SHA256" <?php if ($aalgo === "HMAC/SHA256") echo "selected"; ?>>HMAC/SHA256</option>
+			          <option value="HMAC/SHA384" <?php if ($aalgo === "HMAC/SHA384") echo "selected"; ?>>HMAC/SHA384</option>
+			          <option value="HMAC/SHA512" <?php if ($aalgo === "HMAC/SHA512") echo "selected"; ?>>HMAC/SHA512</option>
 			        </select>
 			      </td>
 			    </tr>
 					*/
 					?>
 			    <tr>
-			      <td valign="top" class="vncellreq"><?=gettext("Encryption algorithm") ;?></td>
+			      <td valign="top" class="vncellreq"><?=gettext("Encryption algorithm");?></td>
 			      <td class="vtable">
 			        <select name="ealgo" class="formfld" id="ealgo">
-			          <option value="AES" <?php if ($pconfig['ealgo'] == "AES") echo "selected"; ?>>AES</option>
-			          <option value="Blowfish" <?php if ($pconfig['ealgo'] == "Blowfish") echo "selected"; ?>>Blowfish</option>
-			          <option value="3DES" <?php if ($pconfig['ealgo'] == "3DES") echo "selected"; ?>>3DES</option>
+			          <option value="AES" <?php if ($ealgo === "AES") echo "selected"; ?>>AES</option>
+			          <option value="Blowfish" <?php if ($ealgo === "Blowfish") echo "selected"; ?>>Blowfish</option>
+			          <option value="3DES" <?php if ($ealgo === "3DES") echo "selected"; ?>>3DES</option>
 			        </select>
 			      </td>
 			    </tr>
 					<tr>
 				    <td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Passphrase"));?></td>
 				    <td width="78%" class="vtable">
-				      <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
-				      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)
+				      <input name="password" type="password" class="formfld" id="password" size="20" value=""><br>
+				      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="">&nbsp;(<?=gettext("Confirmation");?>)
 				    </td>
 					</tr>
 					<tr>
