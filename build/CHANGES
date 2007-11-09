@@ -8,6 +8,7 @@ Majors changes:
 - Enable user to set volume label when formating disk using EXT2.
 - Refactor disk initialization/encryption PHP code && WebGUI.
 - Upgrade PHPMailer to 2.0.0 rc1.
+- Upgrade PHP to 5.2.5.
 
 Minors changes:
 - 'dd' destination disks and partitions during install process.
