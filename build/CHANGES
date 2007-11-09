@@ -9,6 +9,7 @@ Majors changes:
 - Refactor disk initialization/encryption PHP code && WebGUI.
 - Upgrade PHPMailer to 2.0.0 rc1.
 - Upgrade PHP to 5.2.5.
+- Upgrade netbsd-iscsi (iscsi-target) to 20071025.
 
 Minors changes:
 - 'dd' destination disks and partitions during install process.
