@@ -111,6 +111,7 @@ if ($_POST) {
 		}
 	}
 }
+
 if (!isset($do_action)) {
 	$do_action = false;
 	$init = false;

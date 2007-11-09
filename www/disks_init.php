@@ -59,7 +59,7 @@ if ($_POST) {
 	unset($errormsg);
 	unset($do_format);
 
-	/* input validation */
+	// Input validation.
 	$reqdfields = explode(" ", "disk type");
 	$reqdfieldsn = array(gettext("Disk"),gettext("Type"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -73,12 +73,12 @@ if ($_POST) {
 		$volumelabel = $_POST['volumelabel'];
 
 		// Check whether disk is mounted.
-		if(disks_ismounted_ex($disk, "fullname")) {
+		if (disks_ismounted_ex($disk, "fullname")) {
 			$errormsg = sprintf(gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
 			$do_format = false;
 		}
 
-		if (strstr ($cfdevice,$disk)) {
+		if (strstr($cfdevice, $disk)) {
 			$input_errors[] = gettext("Can't format the OS origin disk!");
 		}
 
@@ -93,6 +93,7 @@ if ($_POST) {
 		}
 	}
 }
+
 if (!isset($do_format)) {
 	$do_format = false;
 	$disk = '';
@@ -101,7 +102,7 @@ if (!isset($do_format)) {
 	$volumelabel = '';
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
 function disk_change() {

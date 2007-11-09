@@ -58,15 +58,17 @@ if ($_POST) {
 	}
 }
 
-if ($_GET['act'] == "del")
-{
+if ($_GET['act'] == "del") {
 	if ($a_geli[$_GET['id']]) {
-		if(disks_geli_check($a_geli[$_GET['id']]['fullname'])) {
+		$name = $a_geli[$_GET['id']]['name'];
+		$fullname = $a_geli[$_GET['id']]['fullname'];
+
+		if (disks_geli_check($fullname)) {
 			// Kill encrypted volume.
-			disks_geli_kill($a_geli[$_GET['id']]['fullname']);
+			disks_geli_kill($fullname);
 
 			// Reset disk file system type attribute ('fstype') in configuration.
-			set_conf_disk_fstype($a_geli[$_GET['id']]['name'], "");
+			set_conf_disk_fstype($name, "");
 
 			// Delete geli volume in configuration.
 			unset($a_geli[$_GET['id']]);
