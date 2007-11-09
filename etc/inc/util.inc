@@ -1839,6 +1839,7 @@ function array_sort_key(array &$array, $key)
 {
 	global $_key;
 
+	// Declare local compare function.
 	if(!function_exists(array_sort_key_cmp)) {
 		function array_sort_key_cmp($a, $b) {
 			global $_key;
@@ -1846,7 +1847,11 @@ function array_sort_key(array &$array, $key)
 		}
 	}
 
+	// Sort array. Set key used my compare function. Finally unset useless global variable.
 	$_key = $key;
-	return usort($array, "array_sort_key_cmp");
+	$result = usort($array, "array_sort_key_cmp");
+	unset($_key);
+
+	return $result;
 }
 ?>
