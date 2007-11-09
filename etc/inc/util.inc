@@ -62,21 +62,21 @@ function gen_subnet($ipaddr, $bits) {
 	// STILL NOT READY FOR IPv6
 	else if (is_ipv6addr($ipaddr))
 		return long2ip6(ip2long6($ipaddr) & gen_subnet_mask_long6($bits));
-		
+
 }
 
 function ip2long6($ip)   {
     if (substr_count($ip, '::'))     {
         $ip = str_replace('::', str_repeat(':0000', 8 - substr_count($ip, ':')) . ':', $ip) ;
     }
-           
+
     $ip = explode(':', $ip) ;
-       
+
     $r_ip = '' ;
     foreach ($ip as $v)    {
         $r_ip .= str_pad(base_convert($v, 16, 2), 16, 0, STR_PAD_LEFT) ;
     }
-           
+
     return base_convert($r_ip, 2, 10) ;
 }
 
@@ -99,13 +99,13 @@ function long2ip6($long) {
 function gen_subnet_max($ipaddr, $bits) {
 	if (!is_ipaddr($ipaddr) || !is_numeric($bits))
 		return "";
-	
+
 	if (is_ipv4addr($ipaddr))
 		return long2ip(ip2long($ipaddr) | ~gen_subnet_mask_long($bits));
 	// STILL NOT READY FOR IPv6
 	else if (is_ipv6addr($ipaddr))
 		return long2ip6(ip2long6($ipaddr) | ~gen_subnet_mask_long6($bits));
-	
+
 }
 
 /* returns a IPv4 subnet mask (long given a bit count) */
@@ -151,7 +151,7 @@ function is_numericint($arg) {
 
 /* returns true if $ipaddr is a valid IPv4 OR IPv6 address */
 function is_ipaddr($ipaddr) {
-	
+
 	if  (filter_var($ipaddr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4)) {
 		$result = true ;
 	} else if (filter_var($ipaddr, FILTER_VALIDATE_IP, FILTER_FLAG_IPV6)) {
@@ -159,7 +159,7 @@ function is_ipaddr($ipaddr) {
 	} else {
 		$result = false ;
 	}
-	
+
 	return $result;
 }
 
@@ -200,9 +200,9 @@ function is_subnet($subnet) {
 	if (!is_string($subnet)) {
 		$result = false ;
 	}
-	
+
 	list($hp,$np) = explode('/', $subnet);
-	
+
 	if (!is_ipaddr($hp)) {
 		$result = false ;
 	}
@@ -1726,37 +1726,56 @@ function is_booting() {
 // Get list of configured physical disks.
 function get_conf_physical_disks_list() {
 	global $config;
+
+	array_sort_key($config['disks']['disk'], "name");
+
 	return $config['disks']['disk'];
 }
 
-// Get list of configured Software RAID disks. 
+// Get list of configured Software RAID disks.
 function get_conf_sraid_disks_list() {
 	global $config;
 
 	$a_vdisk = array();
 
-	if (is_array($config['gvinum']['vdisk']))
+	if (is_array($config['gvinum']['vdisk'])) {
+		array_sort_key($config['gvinum']['vdisk'], "name");
 		$a_vdisk = array_merge($a_vdisk, $config['gvinum']['vdisk']);
-	if (is_array($config['gmirror']['vdisk']))
+  }
+
+	if (is_array($config['gmirror']['vdisk'])) {
+		array_sort_key($config['gmirror']['vdisk'], "name");
 		$a_vdisk = array_merge($a_vdisk, $config['gmirror']['vdisk']);
-	if (is_array($config['gconcat']['vdisk']))
+  }
+
+	if (is_array($config['gconcat']['vdisk'])) {
+		array_sort_key($config['gconcat']['vdisk'], "name");
 		$a_vdisk = array_merge($a_vdisk, $config['gconcat']['vdisk']);
-	if (is_array($config['gstripe']['vdisk']))
+  }
+
+	if (is_array($config['gstripe']['vdisk'])) {
+		array_sort_key($config['gstripe']['vdisk'], "name");
 		$a_vdisk = array_merge($a_vdisk, $config['gstripe']['vdisk']);
-	if (is_array($config['graid5']['vdisk']))
+  }
+
+	if (is_array($config['graid5']['vdisk'])) {
+		array_sort_key($config['graid5']['vdisk'], "name");
 		$a_vdisk = array_merge($a_vdisk, $config['graid5']['vdisk']);
+  }
 
 	return $a_vdisk;
 }
 
-// Get list of configured encrypted disks. 
+// Get list of configured encrypted disks.
 function get_conf_encryped_disks_list() {
 	global $config;
 
 	$a_vdisk = array();
 
-	if (is_array($config['geli']['vdisk']))
+	if (is_array($config['geli']['vdisk'])) {
+		array_sort_key($config['geli']['vdisk'], "fullname");
 		$a_vdisk = $config['geli']['vdisk'];
+	}
 
 	return $a_vdisk;
 }
@@ -1812,5 +1831,20 @@ function get_conf_all_disks_list() {
 	$a_disk = array_merge($a_disk, $a_encrypteddisk);
 
 	return $a_disk;
+}
+
+// Sort an array by values using a user-defined key.
+// Returns TRUE on success or FALSE on failure.
+function array_sort_key(array &$array, $key)
+{
+  global $_key;
+
+  function _cmp($a, $b) {
+    global $_key;
+		return strcmp($a[$_key], $b[$_key]);
+	}
+
+  $_key = $key;
+  return usort($array, "_cmp");
 }
 ?>
