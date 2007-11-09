@@ -39,37 +39,31 @@ $pgtitle = array(gettext("Disks"),gettext("Format"));
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
 
-disks_sort();
-
 if (!is_array($config['gconcat']['vdisk']))
 	$config['gconcat']['vdisk'] = array();
-
-gconcat_sort();
 
 if (!is_array($config['gmirror']['vdisk']))
 	$config['gmirror']['vdisk'] = array();
 
-gmirror_sort();
-
 if (!is_array($config['graid5']['vdisk']))
 	$config['graid5']['vdisk'] = array();
-
-graid5_sort();
 
 if (!is_array($config['gstripe']['vdisk']))
 	$config['gstripe']['vdisk'] = array();
 
-gstripe_sort();
-
 if (!is_array($config['gvinum']['vdisk']))
 	$config['gvinum']['vdisk'] = array();
-
-gvinum_sort();
 
 if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
 
-geli_sort();
+array_sort_key($config['disks']['disk'], "name");
+array_sort_key($config['gconcat']['vdisk'], "name");
+array_sort_key($config['gmirror']['vdisk'], "name");
+array_sort_key($config['graid5']['vdisk'], "name");
+array_sort_key($config['gstripe']['vdisk'], "name");
+array_sort_key($config['gvinum']['vdisk'], "name");
+array_sort_key($config['geli']['vdisk'], "fullname");
 
 /* Get all fstype supported by FreeNAS. */
 $a_fst = get_fstype_list();

@@ -38,7 +38,7 @@ $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Management"));
 if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
 
-geli_sort();
+array_sort_key($config['geli']['vdisk'], "fullname");
 
 $a_geli = &$config['geli']['vdisk'];
 

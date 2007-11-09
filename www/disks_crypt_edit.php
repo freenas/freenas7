@@ -35,42 +35,34 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Add"));
 
-if (!is_array($config['geli']['vdisk']))
-	$config['geli']['vdisk'] = array();
-
-geli_sort();
-
-$a_geli = &$config['geli']['vdisk'];
-
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
-
-disks_sort();
 
 if (!is_array($config['gconcat']['vdisk']))
 	$config['gconcat']['vdisk'] = array();
 
-gconcat_sort();
-
 if (!is_array($config['gmirror']['vdisk']))
 	$config['gmirror']['vdisk'] = array();
-
-gmirror_sort();
 
 if (!is_array($config['graid5']['vdisk']))
 	$config['graid5']['vdisk'] = array();
 
-graid5_sort();
-
 if (!is_array($config['gstripe']['vdisk']))
 	$config['gstripe']['vdisk'] = array();
-
-gstripe_sort();
 
 if (!is_array($config['gvinum']['vdisk']))
 	$config['gvinum']['vdisk'] = array();
 
-gvinum_sort();
+if (!is_array($config['geli']['vdisk']))
+	$config['geli']['vdisk'] = array();
+
+array_sort_key($config['disks']['disk'], "name");
+array_sort_key($config['gconcat']['vdisk'], "name");
+array_sort_key($config['gmirror']['vdisk'], "name");
+array_sort_key($config['graid5']['vdisk'], "name");
+array_sort_key($config['gstripe']['vdisk'], "name");
+array_sort_key($config['gvinum']['vdisk'], "name");
+array_sort_key($config['geli']['vdisk'], "fullname");
 
 /* Get disk configurations. */
 $a_disk = &$config['disks']['disk'];
@@ -79,6 +71,7 @@ $a_gmirror = &$config['gmirror']['vdisk'];
 $a_gstripe = &$config['gstripe']['vdisk'];
 $a_graid5 = &$config['graid5']['vdisk'];
 $a_gvinum = &$config['gvinum']['vdisk'];
+$a_geli = &$config['geli']['vdisk'];
 $a_alldisk = array_merge($a_disk,$a_gconcat,$a_gmirror,$a_gstripe,$a_graid5,$a_gvinum);
 
 if (!sizeof($a_disk)) {

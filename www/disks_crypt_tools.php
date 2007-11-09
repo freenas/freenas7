@@ -41,14 +41,14 @@ $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Tools"));
 if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
 
-geli_sort();
+array_sort_key($config['geli']['vdisk'], "fullname");
 
 $a_geli = &$config['geli']['vdisk'];
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-mount_sort();
+array_sort_key($config['mounts']['mount'], "mdisk");
 
 $a_mount = &$config['mounts']['mount'];
 

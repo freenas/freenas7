@@ -1837,14 +1837,16 @@ function get_conf_all_disks_list() {
 // Returns TRUE on success or FALSE on failure.
 function array_sort_key(array &$array, $key)
 {
-  global $_key;
+	global $_key;
 
-  function _cmp($a, $b) {
-    global $_key;
-		return strcmp($a[$_key], $b[$_key]);
+	if(!function_exists(array_sort_key_cmp)) {
+		function array_sort_key_cmp($a, $b) {
+			global $_key;
+			return strcmp($a[$_key], $b[$_key]);
+		}
 	}
 
-  $_key = $key;
-  return usort($array, "_cmp");
+	$_key = $key;
+	return usort($array, "array_sort_key_cmp");
 }
 ?>

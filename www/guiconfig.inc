@@ -342,16 +342,6 @@ function graid5_sort() {
 	usort($config['graid5']['vdisk'], "graid5cmp");
 }
 
-function geli_sort() {
-	global $g, $config;
-
-	function gelicmp($a, $b) {
-		return strcmp($a['fullname'], $b['fullname']);
-	}
-
-	usort($config['geli']['vdisk'], "gelicmp");
-}
-
 function iscsiinit_sort() {
 	global $g, $config;
 
