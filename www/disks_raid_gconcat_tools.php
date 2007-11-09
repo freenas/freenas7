@@ -40,7 +40,8 @@ $pgtitle = array(gettext("Disks"), gettext("Geom Concat"), gettext("Tools"));
 if (!is_array($config['gconcat']['vdisk']))
 	$config['gconcat']['vdisk'] = array();
 
-gconcat_sort();
+array_sort_key($config['gconcat']['vdisk'], "name");
+
 $a_raid = &$config['gconcat']['vdisk'];
 
 if ($_POST) {

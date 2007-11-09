@@ -39,7 +39,8 @@ $pgtitle = array(gettext("Disks"),gettext("Geom Vinum"),gettext("Manage RAID"));
 if (!is_array($config['gvinum']['vdisk']))
 	$config['gvinum']['vdisk'] = array();
 
-gvinum_sort();
+array_sort_key($config['gvinum']['vdisk'], "name");
+
 $a_raid = &$config['gvinum']['vdisk'];
 
 if ($_POST) {

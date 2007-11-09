@@ -38,7 +38,7 @@ $pgtitle = array(gettext("Disks"),gettext("Management"),gettext("iSCSI Initiator
 if (!is_array($config['iscsiinit']['vdisk']))
 	$config['iscsiinit']['vdisk'] = array();
 
-iscsiinit_sort();
+array_sort_key($config['iscsiinit']['vdisk'], "name");
 
 $a_iscsiinit = &$config['iscsiinit']['vdisk'];
 

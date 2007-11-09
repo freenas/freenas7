@@ -37,19 +37,14 @@ $pgtitle = array(gettext("Services"),gettext("RSYNCD"),gettext("Server"));
 
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();
-	
-users_sort();
+
+array_sort_key($config['access']['user'], "login");
 
 $a_user = &$config['access']['user'];
 
 if (!is_array($config['rsync'])) {
 	$config['rsync'] = array();
 }
-
-if (!is_array($config['mounts']['mount']))
-	$config['mounts']['mount'] = array();
-
-mount_sort();
 
 $pconfig['readonly'] = $config['rsyncd']['readonly'];
 $pconfig['port'] = $config['rsyncd']['port'];

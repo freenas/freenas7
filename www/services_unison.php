@@ -107,7 +107,7 @@ if ($_POST) {
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-mount_sort();
+array_sort_key($config['mounts']['mount'], "mdisk");
 
 $a_mount = &$config['mounts']['mount'];
 ?>

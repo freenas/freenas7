@@ -42,7 +42,8 @@ $pgtitle = array(gettext("System"),gettext("Static routes"),isset($id)?gettext("
 if (!is_array($config['staticroutes']['route']))
 	$config['staticroutes']['route'] = array();
 
-staticroutes_sort();
+array_sort_key($config['staticroutes']['route'], "network");
+
 $a_routes = &$config['staticroutes']['route'];
 
 if (isset($id) && $a_routes[$id]) {

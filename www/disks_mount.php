@@ -38,7 +38,7 @@ $pgtitle = array(gettext("Disks"),gettext("Mount Point"),gettext("Management"));
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-mount_sort();
+array_sort_key($config['mounts']['mount'], "mdisk");
 
 $a_mount = &$config['mounts']['mount'];
 

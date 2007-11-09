@@ -42,12 +42,12 @@ $pgtitle = array(gettext("Access"),gettext("Users"),isset($id)?gettext("Edit"):g
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();
 
-users_sort();
+array_sort_key($config['access']['user'], "login");
 
 if (!is_array($config['access']['group']))
 	$nogroup_errors[] = gettext("You must create a group first.");
 else
-	groups_sort();
+	array_sort_key($config['access']['group'], "name");
 
 $a_user = &$config['access']['user'];
 $a_group = &$config['access']['group'];

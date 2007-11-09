@@ -40,7 +40,8 @@ $pgtitle = array(gettext("Disks"), gettext("Geom Mirror"), gettext("Tools"));
 if (!is_array($config['gmirror']['vdisk']))
 	$config['gmirror']['vdisk'] = array();
 
-gmirror_sort();
+array_sort_key($config['gmirror']['vdisk'], "name");
+
 $a_raid = &$config['gmirror']['vdisk'];
 
 if ($_POST) {

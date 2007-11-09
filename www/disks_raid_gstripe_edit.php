@@ -42,11 +42,7 @@ $pgtitle = array(gettext("Disks"),gettext("RAID"),isset($id)?gettext("Edit"):get
 if (!is_array($config['gstripe']['vdisk']))
 	$config['gstripe']['vdisk'] = array();
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
-
-gstripe_sort();
-disks_sort();
+array_sort_key($config['gstripe']['vdisk'], "name");
 
 $a_raid = &$config['gstripe']['vdisk'];
 $a_disk = get_fstype_disks_list("softraid");

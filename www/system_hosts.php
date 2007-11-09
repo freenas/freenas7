@@ -39,7 +39,7 @@ $pgtitle = array(gettext("System"), gettext("Hosts"));
 if (!is_array($config['system']['hosts']))
 	$config['system']['hosts'] = array();
 
-hosts_sort();
+array_sort_key($config['system']['hosts'], "name");
 
 $a_hosts = &$config['system']['hosts'];
 

@@ -42,11 +42,7 @@ $pgtitle = array(gettext("Disks"),gettext("RAID"),isset($id)?gettext("Edit"):get
 if (!is_array($config['gvinum']['vdisk']))
 	$config['gvinum']['vdisk'] = array();
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
-
-gvinum_sort();
-disks_sort();
+array_sort_key($config['gvinum']['vdisk'], "name");
 
 $a_raid = &$config['gvinum']['vdisk'];
 $a_disk = get_fstype_disks_list("softraid");

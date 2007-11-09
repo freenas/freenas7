@@ -37,8 +37,8 @@ $pgtitle = array(gettext("Access"),gettext("Groups"));
 
 if (!is_array($config['access']['group']))
 	$config['access']['group'] = array();
-	
-groups_sort();
+
+array_sort_key($config['access']['group'], "name");
 
 $a_group_conf = &$config['access']['group'];
 

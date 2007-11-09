@@ -38,7 +38,7 @@ $pgtitle = array(gettext("Status"), gettext("Disks"));
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
 	
-disks_sort();
+array_sort_key($config['disks']['disk'], "name");
 
 $raidstatus=get_sraid_disks_list();
 $a_disk_conf = &$config['disks']['disk'];

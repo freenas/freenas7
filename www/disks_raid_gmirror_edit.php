@@ -42,11 +42,7 @@ $pgtitle = array(gettext("Disks"),gettext("RAID"),isset($id)?gettext("Edit"):get
 if (!is_array($config['gmirror']['vdisk']))
 	$config['gmirror']['vdisk'] = array();
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
-
-gmirror_sort();
-disks_sort();
+array_sort_key($config['gmirror']['vdisk'], "name");
 
 $a_raid = &$config['gmirror']['vdisk'];
 $all_raid = array_merge((array)$config['graid5']['vdisk'],(array)$config['gmirror']['vdisk'],(array)$config['gvinum']['vdisk'],(array)$config['gstripe']['vdisk'],(array)$config['gconcat']['vdisk']);

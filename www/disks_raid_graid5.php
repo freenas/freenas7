@@ -39,7 +39,8 @@ $pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("Manage RAID")
 if (!is_array($config['graid5']['vdisk']))
 	$config['graid5']['vdisk'] = array();
 
-graid5_sort();
+array_sort_key($config['graid5']['vdisk'], "name");
+
 $a_raid = &$config['graid5']['vdisk'];
 
 if ($_POST) {

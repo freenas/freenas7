@@ -40,7 +40,8 @@ $pgtitle = array(gettext("Disks"), gettext("Geom Stripe"), gettext("Tools"));
 if (!is_array($config['gstripe']['vdisk']))
 	$config['gstripe']['vdisk'] = array();
 
-gstripe_sort();
+array_sort_key($config['gstripe']['vdisk'], "name");
+
 $a_raid = &$config['gstripe']['vdisk'];
 
 if ($_POST) {

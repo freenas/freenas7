@@ -42,7 +42,7 @@ $pgtitle = array(gettext("Access"),gettext("Groups"),isset($id)?gettext("Edit"):
 if (!is_array($config['access']['group']))
 	$config['access']['group'] = array();
 
-groups_sort();
+array_sort_key($config['access']['group'], "name");
 
 $a_group = &$config['access']['group'];
 

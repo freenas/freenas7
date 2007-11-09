@@ -45,7 +45,7 @@ $a_phy_disk = array_merge((array)get_physical_disks_list(), (array)get_cdrom_lis
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
 
-disks_sort();
+array_sort_key($config['disks']['disk'], "name");
 
 $a_disk = &$config['disks']['disk'];
 

@@ -38,7 +38,7 @@ $pgtitle = array(gettext("Access"),gettext("Users"));
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();
 
-users_sort();
+array_sort_key($config['access']['user'], "login");
 
 $a_user = &$config['access']['user'];
 

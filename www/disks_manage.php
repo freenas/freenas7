@@ -37,8 +37,8 @@ $pgtitle = array(gettext("Disks"),gettext("Management"));
 
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
-	
-disks_sort();
+
+array_sort_key($config['disks']['disk'], "name");
 
 $a_disk_conf = &$config['disks']['disk'];
 

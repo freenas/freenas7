@@ -48,8 +48,8 @@ if (!is_array($config['iscsitarget']['extent']))
 if (!is_array($config['iscsitarget']['device']))
 	$config['iscsitarget']['device'] = array();
 
-iscsitargetextent_sort();
-iscsitargetdevice_sort();
+array_sort_key($config['iscsitarget']['extent'], "name");
+array_sort_key($config['iscsitarget']['device'], "name");
 
 $a_iscsitarget_extent = &$config['iscsitarget']['extent'];
 $a_iscsitarget_device = &$config['iscsitarget']['device'];

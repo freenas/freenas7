@@ -45,12 +45,11 @@ $pgtitle = array(gettext("Services"),gettext("CIFS/SMB"),gettext("Share"),isset(
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-mount_sort();
-
 if(!is_array($config['samba']['share']))
 	$config['samba']['share'] = array();
 
-share_sort();
+array_sort_key($config['mounts']['mount'], "mdisk");
+array_sort_key($config['samba']['share'], "name");
 
 $a_mount = &$config['mounts']['mount'];
 $a_share = &$config['samba']['share'];

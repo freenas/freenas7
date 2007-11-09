@@ -45,7 +45,8 @@ $pgtitle = array(gettext("Services"),gettext("iSCSI Target"),gettext("Extent"),i
 if (!is_array($config['iscsitarget']['extent']))
 	$config['iscsitarget']['extent'] = array();
 
-iscsitargetextent_sort();
+array_sort_key($config['iscsitarget']['extent'], "name");
+
 $a_iscsitarget_extent = &$config['iscsitarget']['extent'];
 
 if (isset($id) && $a_iscsitarget_extent[$id]) {

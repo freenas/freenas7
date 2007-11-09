@@ -36,7 +36,7 @@
 if(!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-mount_sort();
+array_sort_key($config['mounts']['mount'], "mdisk");
 
 // This function checks if the given RAID volume is mounted.
 // Return 0 if not, 1 if yes.
