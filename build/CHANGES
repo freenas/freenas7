@@ -7,6 +7,7 @@ Majors changes:
 - Set correct sysid when formating disks with FAT32(0x0b) and EXT2(0x83).
 - Enable user to set volume label when formating disk using EXT2.
 - Refactor disk initialization/encryption PHP code && WebGUI.
+- Upgrade PHPMailer to 2.0.0 rc1.
 
 Minors changes:
 - 'dd' destination disks and partitions during install process.
