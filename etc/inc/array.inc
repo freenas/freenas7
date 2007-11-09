@@ -35,8 +35,7 @@
 */
 
 // Search in a multidimensional array.
-function array_search_ex($needle, $haystack, $key)
-{
+function array_search_ex($needle, $haystack, $key) {
   foreach($haystack as $haystackval => $value) {
     $found = false;
     if(is_array($needle) && is_array($key)) {
@@ -60,13 +59,12 @@ function array_search_ex($needle, $haystack, $key)
 // Returns TRUE on success or FALSE on failure.
 // array - The array to sort
 // key - the key used as sort criteria
-function array_sort_key(array &$array, $key)
-{
+function array_sort_key(array &$array, $key) {
 	global $_key;
 
 	// Declare local compare function.
-	if(!function_exists(array_sort_key_cmp)) {
-		function array_sort_key_cmp($a, $b) {
+	if(!function_exists(_array_sort_key_cmp)) {
+		function _array_sort_key_cmp($a, $b) {
 			global $_key;
 			return strcmp($a[$_key], $b[$_key]);
 		}
@@ -74,7 +72,7 @@ function array_sort_key(array &$array, $key)
 
 	// Sort array. Set key used my compare function. Finally unset useless global variable.
 	$_key = $key;
-	$result = usort($array, "array_sort_key_cmp");
+	$result = usort($array, "_array_sort_key_cmp");
 	unset($_key);
 
 	return $result;
