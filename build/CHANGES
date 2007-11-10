@@ -26,6 +26,7 @@ Bug fixs:
 - Enable usage of USB stick to store configuration in non LiveCD scenario.
 
 Known bugs:
+- It is not possible to format a SoftRAID disk with MSDOS.
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
 
 NEED TO BE TESTED:

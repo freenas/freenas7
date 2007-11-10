@@ -1117,14 +1117,13 @@ function disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel)
 
 	switch ($type) {
 		case "ufsgpt":
-			// Create GPT partition table
-			echo sprintf(gettext("Destroying old %s information"), "GPT").":\n";
-			system("/sbin/gpt destroy {$disk}");
-			echo sprintf(gettext("Creating %s partition"), "GPT").":\n";
+			// Create GPT partition table.
+			echo gettext("Creating partition").":\n";
+			system("/sbin/gpt destroy {$disk}"); // Destroy old GTP partition.
 			system("/sbin/gpt create -f {$disk}");
 			system("/sbin/gpt add -t ufs {$disk}");
 
-			// Create filesystem
+			// Create filesystem.
 			echo gettext("Creating filesystem with 'Soft Updates'").":\n";
 			$param = "-U";
 			if (!empty($volumelabel))
@@ -1132,19 +1131,23 @@ function disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel)
 			if (!empty($minspace))
 				$param .= " -m {$minspace}";
 			system("/sbin/newfs {$param} {$disk}p1");
-			echo gettext("Done")."!\n";
 			break;
 
 		case "softraid":
-			// Initialise disk
+			// Initialise disk.
 			echo gettext("Formating disk").".\n";
 			system("/bin/dd if=/dev/zero of={$disk} bs=1m count=16");
-			echo gettext("Done")."!\n";
 			break;
 
 		case "msdos":
 			// Get disk informations.
 			$diskinfo = disks_get_diskinfo($disk);
+
+			// Check if required data is available. CHS aren't available via 'diskinfo'
+			// for SoftRAID's, so we need to get them using 'fdisk'.
+			if (empty($diskinfo['cylinders']) || empty($diskinfo['heads']) || empty($diskinfo['sectors'])) {
+				disks_get_chs_info($disk, $diskinfo);
+			} 
 
 			// Create fdisk config file (fdisk.conf).
 			$fdiskconf .= <<<EOD
@@ -1162,21 +1165,20 @@ EOD;
 				break;
 			}
 
-			// Initialize disk
+			// Initialize disk.
 			echo gettext("Creating partition").":\n";
 			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk}");
 
-			// Initialize the partition
+			// Initialize the partition.
 			echo gettext("Initializing partition").".\n";
 			system("/bin/dd if=/dev/zero of={$disk}s1 bs=32k count=16");
 
-			// Create filesystem
+			// Create filesystem.
 			echo gettext("Creating filesystem").":\n";
 			$param = "-F 32";
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
 			system("/sbin/newfs_msdos {$param} {$disk}s1");
-			echo "Done!\n";
 
 			// Cleanup
 			@unlink("{$g['tmp_path']}/fdisk.conf");
@@ -1186,6 +1188,12 @@ EOD;
 		case "ext2":
 			// Get disk informations.
 			$diskinfo = disks_get_diskinfo($disk);
+
+			// Check if required data is available. CHS aren't available via 'diskinfo'
+			// for SoftRAID's, so we need to get them using 'fdisk'.
+			if (empty($diskinfo['cylinders']) || empty($diskinfo['heads']) || empty($diskinfo['sectors'])) {
+				disks_get_chs_info($disk, $diskinfo);
+			} 
 
 			// Create fdisk config file (fdisk.conf).
 			$fdiskconf .= <<<EOD
@@ -1203,27 +1211,28 @@ EOD;
 				break;
 			}
 
-			// Initialize disk
+			// Initialize disk.
 			echo gettext("Creating partition").":\n";
 			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk}");
 
-			// Initialize the partition
+			// Initialize the partition.
 			echo gettext("Initializing partition").".\n";
 			system("/bin/dd if=/dev/zero of={$disk}s1 bs=32k count=16");
 
-			// Create filesystem
+			// Create filesystem.
 			echo gettext("Creating filesystem").":\n";
 			$param = "";
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
 			system("/usr/local/sbin/mke2fs {$param} {$disk}s1");
-			echo "Done!\n";
 
 			// Cleanup
 			@unlink("{$g['tmp_path']}/fdisk.conf");
 
 			break;
 	}
+
+	echo gettext("Done")."!\n";
 }
 
 // File system consistency check and interactive repair.
@@ -1340,5 +1349,29 @@ function disks_get_diskinfo($disk)
 	$result[sectors] = chop($diskinfo[6]);
 
 	return $result;
+}
+
+// Get cylinders/heads/sectors from disk.
+// $info - Array containing CHS informations.
+//         [1] => Array
+//         (
+// 	          [cylinders] => 10158
+//            [heads] => 16
+//            [sectors] => 63
+//         )
+// Return 0 if successful, 1 if error.
+function disks_get_chs_info($disk, &$info)
+{
+	exec("/sbin/fdisk -t {$disk}", $rawdata);
+
+	// Parse string: cylinders=77826 heads=255 sectors/track=63 (16065 blks/cyl).
+	if (0 == preg_match("/.+cylinders=(\d+) heads=(\d+) sectors\/track=(\d+) .+/", implode($rawdata), $chs))
+		return 1;
+
+	$info['cylinders'] = $chs[1];
+	$info['heads'] = $chs[2];
+	$info['sectors'] = $chs[3];
+
+	return 0;
 }
 ?>
