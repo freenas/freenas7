@@ -1106,9 +1106,9 @@ function disks_geli_setkey($provider, $oldpassphrase, $passphrase, $verbose = fa
 	return $result;
 }
 
-// Format disk.
+// Format disk. Error and warning messages are redirected to stdout.
 // Return none
-function disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel)
+function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 {
 	if (!$notinitmbr) {
 		echo gettext("Erasing MBR and all partitions").".\n";
@@ -1119,9 +1119,9 @@ function disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel)
 		case "ufsgpt":
 			// Create GPT partition table.
 			echo gettext("Creating partition").":\n";
-			system("/sbin/gpt destroy {$disk}"); // Destroy old GTP partition.
-			system("/sbin/gpt create -f {$disk}");
-			system("/sbin/gpt add -t ufs {$disk}");
+			system("/sbin/gpt destroy {$disk} 2>&1"); // Destroy old GTP partition.
+			system("/sbin/gpt create -f {$disk} 2>&1");
+			system("/sbin/gpt add -t ufs {$disk} 2>&1");
 
 			// Create filesystem.
 			echo gettext("Creating filesystem with 'Soft Updates'").":\n";
@@ -1130,7 +1130,7 @@ function disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel)
 				$param .= " -L " . escapeshellarg($volumelabel);
 			if (!empty($minspace))
 				$param .= " -m {$minspace}";
-			system("/sbin/newfs {$param} {$disk}p1");
+			system("/sbin/newfs {$param} {$disk}p1 2>&1");
 			break;
 
 		case "softraid":
@@ -1167,7 +1167,7 @@ EOD;
 
 			// Initialize disk.
 			echo gettext("Creating partition").":\n";
-			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk}");
+			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk} 2>&1");
 
 			// Initialize the partition.
 			echo gettext("Initializing partition").".\n";
@@ -1178,7 +1178,7 @@ EOD;
 			$param = "-F 32";
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
-			system("/sbin/newfs_msdos {$param} {$disk}s1");
+			system("/sbin/newfs_msdos {$param} {$disk}s1 2>&1");
 
 			// Cleanup
 			@unlink("{$g['tmp_path']}/fdisk.conf");
@@ -1213,7 +1213,7 @@ EOD;
 
 			// Initialize disk.
 			echo gettext("Creating partition").":\n";
-			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk}");
+			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk} 2>&1");
 
 			// Initialize the partition.
 			echo gettext("Initializing partition").".\n";
@@ -1224,7 +1224,7 @@ EOD;
 			$param = "";
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
-			system("/usr/local/sbin/mke2fs {$param} {$disk}s1");
+			system("/usr/local/sbin/mke2fs {$param} {$disk}s1 2>&1");
 
 			// Cleanup
 			@unlink("{$g['tmp_path']}/fdisk.conf");
