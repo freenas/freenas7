@@ -25,8 +25,10 @@ Bug fixs:
 - Fix bug in disk management. After modifying a disk (e.g. change UDMA mode) configuration was corrupted.
 - Enable usage of USB stick to store configuration in non LiveCD scenario.
 
-Known bugs:
+Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS.
+
+Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
 
 NEED TO BE TESTED:
