@@ -102,7 +102,7 @@ if(isset($_GET['action'])) {
 			<form action="disks_mount_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
-            <td valign="top" class="vncellreq"><?=gettext("Share Name");?></td>
+            <td valign="top" class="vncellreq"><?=gettext("Mount point");?></td>
             <td class="vtable">
               <select name="sharename" class="formfld" id="sharename">
                 <?php foreach ($a_mount as $mountv): ?>
