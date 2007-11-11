@@ -382,34 +382,6 @@ function disks_ismounted_ex($var,$key)
 	return $result;
 }
 
-// This option check if the configured disk is online (detected by the system).
-// $disk - Disk array
-//    (
-//        [type] => IDE
-//        [desc] => QUANTUM FIREBALL EX6.4A/A0A.0D00
-//        [size] => 6149MB
-//        [name] => ad0
-//        [fullname] => /dev/ad0
-//    )
-// Return: "MISSING", disk isn't detected by OS
-//         "ONLINE", disk is online
-function disks_status($disk)
-{
-	$result = "MISSING";
-
-	// Get list of detected disks (ATA,SCSI,CDROM,...).
-	$adetectedlist = array_merge((array)get_physical_disks_list(),(array)get_cdrom_list());
-
-	foreach ($adetectedlist as $detectedv) {
-		if (0 == strcmp($detectedv['name'], $disk['name'])) {
-			$result = "ONLINE";
-			break;
-		}
-	}
-
-	return $result;
-}
-
 // Configure, create and start gvinum volume.
 // Return 0 if successful, 1 if error
 function disks_raid_gvinum_configure()
@@ -1007,17 +979,6 @@ function disks_geli_init($provider, $aalgo, $ealgo, $passphrase, $verbose = fals
 	return $result;
 }
 
-// Check the status of a geli encrypted disk
-// Return 0 if successful, 1 if error
-function disks_geli_check($gelifullname)
-{
-	$result = 1;
-	if (file_exists($gelifullname)) {
-		$result = 0;
-	}
-	return $result;
-}
-
 // Attach the given provider. The master key will be decrypted
 // using the given passphrase/keyfile and a new GEOM provider
 // will be created using the given provider's name with an ".eli"
@@ -1095,7 +1056,7 @@ function disks_geli_setkey($provider, $oldpassphrase, $passphrase, $verbose = fa
 	// Add additional parameters.
 	if (true == $verbose) $param .= " -v";
 
-	if (0 == disks_geli_check("/dev/{$provider}.eli")) {
+	if (0 == disks_exists("/dev/{$provider}.eli")) {
 		// Provider is already attached.
 		system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli setkey {$param} {$provider} 2>&1", $result);
 	} else {
@@ -1147,7 +1108,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			// for SoftRAID's, so we need to get them using 'fdisk'.
 			if (empty($diskinfo['cylinders']) || empty($diskinfo['heads']) || empty($diskinfo['sectors'])) {
 				disks_get_chs_info($disk, $diskinfo);
-			} 
+			}
 
 			// Create fdisk config file (fdisk.conf).
 			$fdiskconf .= <<<EOD
@@ -1193,7 +1154,7 @@ EOD;
 			// for SoftRAID's, so we need to get them using 'fdisk'.
 			if (empty($diskinfo['cylinders']) || empty($diskinfo['heads']) || empty($diskinfo['sectors'])) {
 				disks_get_chs_info($disk, $diskinfo);
-			} 
+			}
 
 			// Create fdisk config file (fdisk.conf).
 			$fdiskconf .= <<<EOD
@@ -1373,5 +1334,16 @@ function disks_get_chs_info($disk, &$info)
 	$info['sectors'] = $chs[3];
 
 	return 0;
+}
+
+// Check if given disk is available.
+// $disk - e.g. /dev/ad4, /dev/ad2.eli
+// Return 0 if yes, 1 if no.
+function disks_exists($disk)
+{
+	if (file_exists($disk)) {
+		return 0;
+	}
+	return 1;
 }
 ?>

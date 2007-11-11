@@ -63,7 +63,7 @@ if ($_GET['act'] == "del") {
 		$name = $a_geli[$_GET['id']]['name'];
 		$fullname = $a_geli[$_GET['id']]['fullname'];
 
-		if (disks_geli_check($fullname)) {
+		if (disks_exists($fullname)) {
 			// Kill encrypted volume.
 			disks_geli_kill($fullname);
 
@@ -129,8 +129,7 @@ if ($_GET['act'] == "ret")
               if (file_exists($d_gelidirty_path)) {
                 echo(gettext("Configuring"));
               } else {
-                $stat = disks_geli_check($geli['fullname']);
-                if(1 == $stat) {
+                if(disks_exists($geli['fullname'])) {
                   echo("<a href=\"disks_crypt_tools.php?disk={$geli['fullname']}&action=attach\">" . gettext("Not attached") . "</a>");
                 } else {
                   echo(gettext("Attached"));

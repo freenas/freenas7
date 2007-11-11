@@ -146,11 +146,11 @@ function fstype_change() {
       <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
       <td class="vtable">
         <select name="disk" class="formfld" id="disk" onchange="disk_change()">
-          <?php foreach ($a_alldisk as $diskv): ?>
-					<?php if (strcmp($diskv['size'],"NA") == 0) continue; ?>
-					<?php if (strcmp($diskv['fstype'],"geli") == 0) continue; ?>
-					<?php if (disks_geli_check($diskv['fullname'])) continue; ?>
-          <option value="<?=$diskv['fullname'];?>" <?php if ($diskv['fullname'] == $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
+        	<option value=""><?=gettext("Must choose one");?></option>
+          <?php foreach ($a_alldisk as $diskv):?>
+					<?php if (0 == strcmp($diskv['size'],"NA")) continue;?>
+					<?php if (1 == disks_exists($diskv['fullname'])) continue;?>
+          <option value="<?=$diskv['fullname'];?>" <?php if ($diskv['fullname'] === $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
           <?php endforeach; ?>
         </select>
       </td>
@@ -168,7 +168,8 @@ function fstype_change() {
 		<tr id="volumelabel_tr">
 			<td width="22%" valign="top" class="vncell"><?=gettext("Volume label");?></td>
 			<td width="78%" class="vtable">
-				<input name="volumelabel" type="text" class="formfld" id="volumelabel" size="20" value="<?=htmlspecialchars($volumelabel);?>">
+				<input name="volumelabel" type="text" class="formfld" id="volumelabel" size="20" value="<?=htmlspecialchars($volumelabel);?>"><br/>
+				<?=gettext("Volume label of the new file system.");?>
 			</td>
 		</tr>
 		<tr id="minspace_tr">

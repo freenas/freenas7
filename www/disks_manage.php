@@ -103,8 +103,8 @@ if ($_GET['act'] == "del") {
 					<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
 					<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
 					<td class="listr"><?php if($disk['harddiskstandby']) { $value=$disk['harddiskstandby']; echo $value; } else { echo gettext("Always on"); }?>&nbsp;</td>
-					<td class="listr"><?=($disk['fstype'])?get_fstype_shortdesc($disk['fstype']):gettext("Unknown or unformatted")?>&nbsp;</td>           
-					<td class="listbg"><?php echo gettext(disks_status($disk));?>&nbsp;</td>           
+					<td class="listr"><?=($disk['fstype']) ? get_fstype_shortdesc($disk['fstype']) : gettext("Unknown or unformatted")?>&nbsp;</td>           
+					<td class="listbg"><?=(0 == disks_exists($disk['fullname'])) ? gettext("ONLINE") : gettext("MISSING");?>&nbsp;</td>           
 					<td valign="middle" nowrap class="list"> <a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" width="17" height="17" border="0"></a>&nbsp;<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" width="17" height="17" border="0"></a></td>
 				</tr>
 				<?php $i++; endforeach; ?>
