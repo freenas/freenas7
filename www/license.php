@@ -175,5 +175,5 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com" target="_blank">http://www.pfsense.com/</a>)<br>
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
     </p>
-		<p>Some of the software used are under the <a href="gpl-license.txt">GPL license</a>, <a href="lgpl-license.txt">LGPL license</a> and <a href="php-license.txt">PHP license</a>.</p>
+		<p>Some of the software used are under the <a href="gpl-license.txt">GPL</a>, <a href="lgpl-license.txt">LGPL</a> and <a href="php-license.txt">PHP</a> license.</p>
 <?php include("fend.inc"); ?>
