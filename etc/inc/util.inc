@@ -1779,7 +1779,8 @@ function get_conf_encryped_disks_list() {
 }
 
 // Get a list of all configured disks (real and virtual, e.g. SoftRAID or GEli encrypted).
-// Physical disks used by any virtual disk is filtered out.
+// Physical disks used by any virtual disk is filtered out. Also virtual disks itself are
+// filtered if they are used by another virtual disk.
 function get_conf_all_disks_list() {
 	global $config;
 
@@ -1835,7 +1836,7 @@ function get_conf_all_disks_list() {
 			}
 		}
 
-		// Append physical disk if it is not used by any virtual disk.
+		// Append virtual disk if it is not used by any other virtual disk.
 		if(true === $unused) {
 			$a_disk[] = $disk;
 		}
