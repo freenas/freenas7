@@ -105,6 +105,7 @@ if(isset($_GET['action'])) {
             <td valign="top" class="vncellreq"><?=gettext("Mount point");?></td>
             <td class="vtable">
               <select name="sharename" class="formfld" id="sharename">
+              	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_mount as $mountv): ?>
                 <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $sharename) echo "selected";?>>
                 <?php if ("disk" === $mountv['type']): ?>

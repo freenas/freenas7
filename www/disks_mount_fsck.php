@@ -88,6 +88,7 @@ if (!isset($do_action)) {
             <td valign="top" class="vncellreq"><?=gettext("Disk");?></td>
             <td class="vtable">
               <select name="disk" class="formfld" id="disk">
+              	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_mount as $mount): ?>
 								<?php if (strcmp($mount['fstype'],"cd9660") == 0) continue; ?>
                 <option value="<?=$mount['fullname'];?>"<?php if ($mount['fullname'] == $disk) echo "selected";?>>

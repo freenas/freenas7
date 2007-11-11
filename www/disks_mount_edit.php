@@ -247,6 +247,7 @@ function fstype_change() {
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
 			      <td class="vtable">
 							<select name="mdisk" class="formfld" id="mdisk">
+								<option value=""><?=gettext("Must choose one");?></option>
 								<?php foreach ($a_disk as $disk):?>
 								<option value="<?=$disk['fullname'];?>" <?php if ($pconfig['mdisk'] == $disk['fullname']) echo "selected";?>>
 								<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>

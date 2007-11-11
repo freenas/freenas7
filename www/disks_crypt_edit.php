@@ -142,10 +142,11 @@ if (!isset($do_action)) {
 			      <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
 			      <td class="vtable">
 							<select name="disk" class="formfld" id="disk">
-							<?php foreach ($a_alldisk as $diskval): ?>
-							<?php if (strcmp($diskval['size'],"NA") == 0) continue; ?>
-			    			<?php if ((strcmp($diskval['fstype'],"softraid")==0)) continue;?>
-							<?php if ((strcmp($diskval['fstype'],"geli")==0)) continue;?>
+								<option value=""><?=gettext("Must choose one");?></option>
+								<?php foreach ($a_alldisk as $diskval): ?>
+								<?php if (0 == strcmp($diskval['size'], "NA")) continue;?>
+			    			<?php if (0 == strcmp($diskval['fstype'], "softraid")) continue;?>
+								<?php if (0 == strcmp($diskval['fstype'], "geli")) continue;?>
 			   				<option value="<?=$diskval['fullname'];?>" <?php if ($disk === $diskval['fullname']) echo "selected";?>>
 			   				<?php echo htmlspecialchars($diskval['name'] . ": " .$diskval['size'] . " (" . $diskval['desc'] . ")");	?>
 			   				</option>

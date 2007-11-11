@@ -140,6 +140,7 @@ function action_change() {
             <td valign="top" class="vncellreq"><?=gettext("Encrypted disk name");?></td>
             <td class="vtable">
               <select name="disk" class="formfld" id="disk">
+              	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_geli as $geliv): ?>
 								<option value="<?=$geliv['fullname'];?>" <?php if ($geliv['fullname'] === $pconfig['disk']) echo "selected";?>><?php echo htmlspecialchars($geliv['name'] . ": " .$geliv['size'] . " (" . $geliv['desc'] . ")");?>
                 <?php endforeach; ?>

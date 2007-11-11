@@ -117,12 +117,13 @@ function raid_change() {
                <tr> 
       <td valign="top" class="vncellreq"><?=gettext("Volume Name"); ?></td>
       <td class="vtable">           
-    	 <select name="raid" class="formfld" id="raid" onchange="raid_change()">
-    	  <?php foreach ($a_raid as $raidvol): ?>
-    				<option value="<?=$raidvol['name'];?>" <?php if ($pconfig['raid'] == $raid['name']) echo "selected";?>> 
-    				<?php echo htmlspecialchars($raidvol['name']);	?>
-    				</option>
-    		  <?php endforeach; ?>
+				<select name="raid" class="formfld" id="raid" onchange="raid_change()">
+					<option value=""><?=gettext("Must choose one");?></option>
+					<?php foreach ($a_raid as $raidvol):?>
+					<option value="<?=$raidvol['name'];?>" <?php if ($pconfig['raid'] == $raid['name']) echo "selected";?>> 
+					<?php echo htmlspecialchars($raidvol['name']);	?>
+					</option>
+					<?php endforeach;?>
     		</select>
       </td>
     </tr>
