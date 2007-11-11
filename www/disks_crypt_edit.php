@@ -143,14 +143,14 @@ if (!isset($do_action)) {
 			      <td class="vtable">
 							<select name="disk" class="formfld" id="disk">
 								<option value=""><?=gettext("Must choose one");?></option>
-								<?php foreach ($a_alldisk as $diskval): ?>
-								<?php if (0 == strcmp($diskval['size'], "NA")) continue;?>
-			    			<?php if (0 == strcmp($diskval['fstype'], "softraid")) continue;?>
-								<?php if (0 == strcmp($diskval['fstype'], "geli")) continue;?>
-			   				<option value="<?=$diskval['fullname'];?>" <?php if ($disk === $diskval['fullname']) echo "selected";?>>
-			   				<?php echo htmlspecialchars($diskval['name'] . ": " .$diskval['size'] . " (" . $diskval['desc'] . ")");	?>
-			   				</option>
-			    		<?php endforeach; ?>
+								<?php foreach ($a_alldisk as $diskv):?>
+								<?php if (0 == strcmp($diskv['class'], "geli")) continue;?>
+								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
+								<?php if (1 == disks_exists($diskv['fullname'])) continue;?>
+								<option value="<?=$diskv['fullname'];?>" <?php if ($disk === $diskv['fullname']) echo "selected";?>>
+								<?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");	?>
+								</option>
+								<?php endforeach;?>
 			    		</select>
 			      </td>
 			    </tr>

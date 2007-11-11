@@ -146,12 +146,12 @@ function fstype_change() {
       <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
       <td class="vtable">
         <select name="disk" class="formfld" id="disk" onchange="disk_change()">
-        	<option value=""><?=gettext("Must choose one");?></option>
-          <?php foreach ($a_alldisk as $diskv):?>
-					<?php if (0 == strcmp($diskv['size'],"NA")) continue;?>
+					<option value=""><?=gettext("Must choose one");?></option>
+					<?php foreach ($a_alldisk as $diskv):?>
+					<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
 					<?php if (1 == disks_exists($diskv['fullname'])) continue;?>
-          <option value="<?=$diskv['fullname'];?>" <?php if ($diskv['fullname'] === $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
-          <?php endforeach; ?>
+					<option value="<?=$diskv['fullname'];?>" <?php if ($diskv['fullname'] === $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
+					<?php endforeach;?>
         </select>
       </td>
 		</tr>

@@ -1706,9 +1706,16 @@ function is_booting() {
 function get_conf_physical_disks_list() {
 	global $config;
 
-	array_sort_key($config['disks']['disk'], "name");
+	$a_physicaldisk = array();
 
-	return $config['disks']['disk'];
+	if (is_array($config['disks']['disk'])) {
+		array_sort_key($config['disks']['disk'], "name");
+		$a_disks = $config['disks']['disk'];
+		foreach ($a_disks as &$disk) { $disk['class'] = "physical"; } // Set disk type.
+		$a_physicaldisk = array_merge($a_physicaldisk, $a_disks);
+  }
+
+	return $a_physicaldisk;
 }
 
 // Get list of configured Software RAID disks.
@@ -1719,27 +1726,37 @@ function get_conf_sraid_disks_list() {
 
 	if (is_array($config['gvinum']['vdisk'])) {
 		array_sort_key($config['gvinum']['vdisk'], "name");
-		$a_vdisk = array_merge($a_vdisk, $config['gvinum']['vdisk']);
+		$a_gvinum = $config['gvinum']['vdisk'];
+		foreach ($a_gvinum as &$vdisk) { $vdisk['class'] = "gvinum"; } // Set disk type.
+		$a_vdisk = array_merge($a_vdisk, $a_gvinum);
   }
 
 	if (is_array($config['gmirror']['vdisk'])) {
 		array_sort_key($config['gmirror']['vdisk'], "name");
-		$a_vdisk = array_merge($a_vdisk, $config['gmirror']['vdisk']);
+		$a_gmirror = $config['gmirror']['vdisk'];
+		foreach ($a_gmirror as &$vdisk) { $vdisk['class'] = "gmirror"; } // Set disk type.
+		$a_vdisk = array_merge($a_vdisk, $a_gmirror);
   }
 
 	if (is_array($config['gconcat']['vdisk'])) {
 		array_sort_key($config['gconcat']['vdisk'], "name");
-		$a_vdisk = array_merge($a_vdisk, $config['gconcat']['vdisk']);
+		$a_gconcat = $config['gconcat']['vdisk'];
+		foreach ($a_gconcat as &$vdisk) { $vdisk['class'] = "gconcat"; } // Set disk type.
+		$a_vdisk = array_merge($a_vdisk, $a_gconcat);
   }
 
 	if (is_array($config['gstripe']['vdisk'])) {
 		array_sort_key($config['gstripe']['vdisk'], "name");
-		$a_vdisk = array_merge($a_vdisk, $config['gstripe']['vdisk']);
+		$a_gstripe = $config['gstripe']['vdisk'];
+		foreach ($a_gstripe as &$vdisk) { $vdisk['class'] = "gstripe"; } // Set disk type.
+		$a_vdisk = array_merge($a_vdisk, $a_gstripe);
   }
 
 	if (is_array($config['graid5']['vdisk'])) {
 		array_sort_key($config['graid5']['vdisk'], "name");
-		$a_vdisk = array_merge($a_vdisk, $config['graid5']['vdisk']);
+		$a_graid5 = $config['graid5']['vdisk'];
+		foreach ($a_graid5 as &$vdisk) { $vdisk['class'] = "graid5"; } // Set disk type.
+		$a_vdisk = array_merge($a_vdisk, $a_graid5);
   }
 
 	return $a_vdisk;
@@ -1753,7 +1770,9 @@ function get_conf_encryped_disks_list() {
 
 	if (is_array($config['geli']['vdisk'])) {
 		array_sort_key($config['geli']['vdisk'], "fullname");
-		$a_vdisk = $config['geli']['vdisk'];
+		$a_geli = $config['geli']['vdisk'];
+		foreach ($a_geli as &$vdisk) { $vdisk['class'] = "geli"; } // Set disk type.
+		$a_vdisk = array_merge($a_vdisk, $a_geli);
 	}
 
 	return $a_vdisk;
@@ -1803,8 +1822,24 @@ function get_conf_all_disks_list() {
 		}
 	}
 
-	// Add configured Software RAID disks.
-	$a_disk = array_merge($a_disk, $a_sraiddisk);
+	// Add configured Software RAID disks. Check if they are not used by a
+	// virtual disk itself.
+	foreach ($a_sraiddisk as $disk) {
+		$unused = true;
+
+		// Check encrypted disks.
+		foreach ($a_encrypteddisk as $vdisk) {
+			if (0 == strcmp($disk['fullname'], $vdisk['name'])) {
+				$unused = false;
+				break;
+			}
+		}
+
+		// Append physical disk if it is not used by any virtual disk.
+		if(true === $unused) {
+			$a_disk[] = $disk;
+		}
+	}
 
 	// Add configured encrypted disks.
 	$a_disk = array_merge($a_disk, $a_encrypteddisk);
