@@ -998,6 +998,28 @@ function config_upgrade() {
 		$config['version'] = "3.2";
 	}
 
+	/* Convert 3.2 -> 3.3 */
+	/* Rename attribute //disks/disk/fullname, //gxxx/vdisk/fullname to devicespecialfile. */
+	if ($config['version'] === "3.2") {
+		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
+			if (isset($config['disks']['disk'][$i]['fullname'])) {
+				$config['disks']['disk'][$i]['devicespecialfile'] = $config['disks']['disk'][$i]['fullname'];
+				unset($config['disks']['disk'][$i]['fullname']);
+			}
+		}
+
+		foreach (explode(" ", "gconcat gmirror graid5 gstripe gvinum geli") as $class) {
+			for ($i = 0; isset($config[$class]['vdisk'][$i]); $i++) {
+				if (isset($config[$class]['vdisk'][$i]['fullname'])) {
+					$config[$class]['vdisk'][$i]['devicespecialfile'] = $config[$class]['vdisk'][$i]['fullname'];
+					unset($config[$class]['vdisk'][$i]['fullname']);
+				}
+			}
+		}
+
+		$config['version'] = "3.3";
+	}
+
 	write_config();
 
 	if (is_booting())

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>3.2</version>
+	<version>3.3</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -126,7 +126,7 @@
 		<!--
 		<disk>
 			<name>xxx</name>
-			<fullname>/dev/xxx</fullname>
+			<devicespecialfile>/dev/xxx</devicespecialfile>
 			<harddiskstandby>0</harddiskstandby>
 			<acoustic>0</acoustic>
 			<apm>0</apm>
@@ -146,7 +146,7 @@
 			<diskr>/dev/xxx</diskr>
 			<diskr>/dev/xxx</diskr>
 			<desc>xxx</desc>
-			<fullname>/dev/xxx</fullname>
+			<devicespecialfile>/dev/xxx</devicespecialfile>
 			<fstype>xxx</fstype>
 		</vdisk>
 		-->
