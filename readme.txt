@@ -89,9 +89,9 @@ New config:
 		<vdisk>
 			<name>xxx</name>
 			<devicename>xxx</devicename> // Device name, e.g. /dev/stripe/RAID0, /dev/da0.eli or /dev/da1.eli
-			<type>gvinum|gmirror|gconcat|gstripe|graid5|geli</type> // Type of virtual disk
+			<class>gvinum|gmirror|gconcat|gstripe|graid5|geli</class> // Class of virtual disk
 			<fstype>ufs|ufsgpt|ext2|msdos|...</fstype>
-			// Additional attributes, depending on 'type'. They are only added for the specific type.
+			// Additional attributes, depending on 'class'. They are only added for the specific class.
 			// geli:
 			<aalgo>none</aalgo>
 			<ealgo>AES</ealgo>
@@ -100,4 +100,34 @@ New config:
 			<diskr>/dev/da0</diskr>
 			<diskr>/dev/da1</diskr>
 		</vdisk>
+	</disks>
+
+
+Alternative solution: (The preferred one from votdev)
+---------------------
+
+	<disks>
+		<disk>
+			<name>xxx</name> // da0 RAID0
+			<devicename>xxx</devicename> // Device name, e.g. /dev/ad0 /dev/stripe/RAID0, /dev/da0.eli or /dev/da1.eli
+			<class>physical|gvinum|gmirror|gconcat|gstripe|graid5|geli</class> // Class of disk
+			<size>150000</size> // Size on MBytes.
+			<desc>QUANTUM FIREBALL EX6.4A/A0A.0D00</desc>
+			<fstype>ufs|ufsgpt|ext2|msdos|...</fstype> // File system
+
+			// Additional attributes, depending on 'class'. They are only added for the specific class.
+			// physical:
+			<harddiskstandby>0</harddiskstandby>
+			<acoustic>0</acoustic>
+			<apm>0</apm>
+			<udma>auto</udma>
+			<type>IDE|SCSI</type>
+			// geli:
+			<aalgo>none</aalgo>
+			<ealgo>AES</ealgo>
+			// gstripe:
+			<type>0</type>
+			<device>/dev/da0</device>
+			<device>/dev/da1</device>
+		</disk>
 	</disks>
