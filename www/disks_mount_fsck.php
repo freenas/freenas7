@@ -43,7 +43,7 @@ if (!is_array($config['mounts']['mount']))
 
 array_sort_key($config['mounts']['mount'], "mdisk");
 
-$a_mount = &$config['mounts']['mount'];
+$a_mount = $config['mounts']['mount'];
 
 if ($_POST) {
 	unset($input_errors);
@@ -68,7 +68,7 @@ if (!isset($do_action)) {
 	$umount = false;
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
@@ -89,18 +89,18 @@ if (!isset($do_action)) {
             <td class="vtable">
               <select name="disk" class="formfld" id="disk">
               	<option value=""><?=gettext("Must choose one");?></option>
-                <?php foreach ($a_mount as $mount): ?>
-								<?php if (strcmp($mount['fstype'],"cd9660") == 0) continue; ?>
-                <option value="<?=$mount['fullname'];?>"<?php if ($mount['fullname'] == $disk) echo "selected";?>>
-                <?php echo htmlspecialchars($mount['sharename'] . ": " .$mount['fullname']);?>
-                <?php endforeach; ?>
+                <?php foreach ($a_mount as $mountv):?>
+								<?php if (strcmp($mountv['fstype'],"cd9660") == 0) continue;?>
+                <option value="<?=$mountv['fullname'];?>"<?php if ($mountv['fullname'] == $disk) echo "selected";?>>
+                <?php echo htmlspecialchars($mountv['sharename'] . ": " .$mountv['fullname']);?>
+                <?php endforeach;?>
                 </option>
               </select>
             </td>
       		</tr>
-          <tr> 
+          <tr>
             <td width="22%" valign="top" class="vncell"></td>
-            <td width="78%" class="vtable"> 
+            <td width="78%" class="vtable">
               <input name="umount" type="checkbox" id="umount" value="yes" <?php if ($umount) echo "checked"; ?>>
               <strong><?=gettext("Unmount disk/partition");?></strong><span class="vexpl"><br>
               <?=gettext("If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process.");?></span>
@@ -133,4 +133,4 @@ if (!isset($do_action)) {
   	</td>
 	</tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

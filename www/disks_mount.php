@@ -5,21 +5,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -89,10 +89,10 @@ if ($_GET['act'] == "retry")
 	if ($a_mount[$_GET['id']]) {
 		if (0 == disks_mount($a_mount[$_GET['id']])) {
 			rc_update_service("samba");
-			rc_update_service("rpcbind");
-			rc_update_service("mountd");
-			rc_update_service("nfsd");
-			rc_update_service("nfslocking");
+			rc_update_service("rpcbind");    // !!! Do not
+			rc_update_service("mountd");     // !!! change
+			rc_update_service("nfsd");       // !!! this
+			rc_update_service("nfslocking"); // !!! order
 			rc_update_service("rsyncd");
 			rc_update_service("afpd");
 		}
@@ -101,7 +101,7 @@ if ($_GET['act'] == "retry")
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <?php if($errormsg) print_input_errors($errormsg);?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
@@ -113,30 +113,30 @@ if ($_GET['act'] == "retry")
       </ul>
     </td>
   </tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
       <form action="disks_mount.php" method="post">
-        <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (file_exists($d_mountdirty_path)): ?><p>
+        <?php if ($savemsg) print_info_box($savemsg);?>
+        <?php if (file_exists($d_mountdirty_path)):?><p>
         <?php print_info_box_np(gettext("The mount point list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
         <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
-        <?php endif; ?>
+        <?php endif;?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-            <td width="20%" class="listhdrr"><?=gettext("Disk"); ?></td>
-            <td width="5%" class="listhdrr"><?=gettext("File system"); ?></td>
-            <td width="20%" class="listhdrr"><?=gettext("Name") ;?></td>
-            <td width="25%" class="listhdrr"><?=gettext("Description") ;?></td>
-            <td width="20%" class="listhdr"><?=gettext("Status") ;?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Disk");?></td>
+            <td width="5%" class="listhdrr"><?=gettext("File system");?></td>
+            <td width="20%" class="listhdrr"><?=gettext("Name");?></td>
+            <td width="25%" class="listhdrr"><?=gettext("Description");?></td>
+            <td width="20%" class="listhdr"><?=gettext("Status");?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($a_mount as $mount): ?>
+  			  <?php $i = 0; foreach($a_mount as $mount):?>
           <tr>
-          	<?php if ("disk" === $mount['type']): ?>
+          	<?php if ("disk" === $mount['type']):?>
             <td class="listlr"><?=htmlspecialchars($mount['fullname']);?>&nbsp;</td>
-            <?php else: ?>
+            <?php else:?>
             <td class="listlr"><?=htmlspecialchars($mount['filename']);?>&nbsp;</td>
-            <?php endif; ?>
+            <?php endif;?>
             <td class="listr"><?=htmlspecialchars($mount['fstype']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount['sharename']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount['desc']);?>&nbsp;</td>
@@ -154,14 +154,14 @@ if ($_GET['act'] == "retry")
               ?>&nbsp;
             </td>
             <td valign="middle" nowrap class="list">
-            	<?php if ("disk" === $mount['type']): ?>
+            	<?php if ("disk" === $mount['type']):?>
               <a href="disks_mount_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit mount" width="17" height="17" border="0"></a>&nbsp;
-              <?php endif; ?>
+              <?php endif;?>
               <a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("delete mount"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>
-          <?php $i++; endforeach; ?>
-          <tr> 
+          <?php $i++; endforeach;?>
+          <tr>
             <td class="list" colspan="5"></td>
             <td class="list"><a href="disks_mount_edit.php"><img src="plus.gif" title="<?=gettext("add mount");?>" width="17" height="17" border="0"></a></td>
           </tr>
@@ -172,4 +172,4 @@ if ($_GET['act'] == "retry")
     </td>
   </tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

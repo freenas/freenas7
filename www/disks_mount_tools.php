@@ -43,7 +43,7 @@ if (!is_array($config['mounts']['mount']))
 
 array_sort_key($config['mounts']['mount'], "mdisk");
 
-$a_mount = &$config['mounts']['mount'];
+$a_mount = $config['mounts']['mount'];
 
 if ($_POST) {
 	unset($input_errors);
@@ -54,7 +54,7 @@ if ($_POST) {
 	$reqdfields = explode(" ", "sharename action");
 	$reqdfieldsn = array(gettext("Share Name"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
+
 	if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $_POST['sharename'])) {
 		$errormsg[] = gettext("The swap file is using this mount point.");
   }
@@ -77,14 +77,13 @@ if(!isset($do_action))
 if(isset($_GET['disk'])) {
   $disk = $_GET['disk'];
   $id = array_search_ex($disk, $a_mount, "mdisk");
-  
   $sharename = $a_mount[$id]['sharename'];
 }
 if(isset($_GET['action'])) {
   $action = $_GET['action'];
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <?php if($errormsg) print_input_errors($errormsg);?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
@@ -96,9 +95,9 @@ if(isset($_GET['action'])) {
       </ul>
     </td>
   </tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
-      <?php if ($input_errors) print_input_errors($input_errors); ?>
+      <?php if ($input_errors) print_input_errors($input_errors);?>
 			<form action="disks_mount_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
@@ -106,21 +105,21 @@ if(isset($_GET['action'])) {
             <td class="vtable">
               <select name="sharename" class="formfld" id="sharename">
               	<option value=""><?=gettext("Must choose one");?></option>
-                <?php foreach ($a_mount as $mountv): ?>
+                <?php foreach ($a_mount as $mountv):?>
                 <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $sharename) echo "selected";?>>
-                <?php if ("disk" === $mountv['type']): ?>
+                <?php if ("disk" === $mountv['type']):?>
                 <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
-                <?php else: ?>
+                <?php else:?>
                 <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("File") . ": " . $mountv['filename']. ")");?>
-                <?php endif; ?>
+                <?php endif;?>
                 </option>
-                <?php endforeach; ?>
+                <?php endforeach;?>
               </select>
             </td>
       		</tr>
           <tr>
             <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
-            <td class="vtable"> 
+            <td class="vtable">
               <select name="action" class="formfld" id="action">
                 <option value="mount" <?php if ($action == "mount") echo "selected"; ?>>mount</option>
                 <option value="umount" <?php if ($action == "umount") echo "selected"; ?>>umount</option>
@@ -142,7 +141,7 @@ if(isset($_GET['action'])) {
     					ob_end_flush();
 
     					/* Get the id of the mount array entry. */
-						
+
 		          $id = array_search_ex($sharename, $a_mount, "sharename");
 		          /* Get the mount data. */
               $mount = $a_mount[$id];
@@ -172,4 +171,4 @@ if(isset($_GET['action'])) {
 	<p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?php echo sprintf(gettext("You can't unmount a drive used by swap file or iSCSI-target file!"), get_product_name());?></p>
   </td></tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
