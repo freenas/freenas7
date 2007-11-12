@@ -11,8 +11,7 @@ Majors changes:
 - Upgrade PHP to 5.2.5.
 - Upgrade netbsd-iscsi (iscsi-target) to 20071025.
 - Add GNU General Public License (GPL), GNU Lesser General Public License (LGPL),
-  OpenLDAP Public License, Apple Public Source License and PHP License text
-	(located in /usr/local/www).
+  Apple Public Source License and PHP License text (located in /usr/local/www).
 
 Minors changes:
 - 'dd' destination disks and partitions during install process.
