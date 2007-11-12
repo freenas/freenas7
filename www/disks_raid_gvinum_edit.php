@@ -54,7 +54,7 @@ if (!sizeof($a_disk)) {
 
 if (isset($id) && $a_raid[$id]) {
 	$pconfig['name'] = $a_raid[$id]['name'];
-	$pconfig['fullname'] = $a_raid[$id]['fullname'];
+	$pconfig['devicespecialfile'] = $a_raid[$id]['devicespecialfile'];
 	$pconfig['type'] = $a_raid[$id]['type'];
 	$pconfig['diskr'] = $a_raid[$id]['diskr'];
 }
@@ -107,7 +107,7 @@ if ($_POST) {
 		$raid['type'] = $_POST['type'];
 		$raid['diskr'] = $_POST['diskr'];
 		$raid['desc'] = "Software gvinum RAID {$_POST['type']}";
-		$raid['fullname'] = "/dev/gvinum/{$raid['name']}";
+		$raid['devicespecialfile'] = "/dev/gvinum/{$raid['name']}";
 
 		if (isset($id) && $a_raid[$id])
 			$a_raid[$id] = $raid;
@@ -183,14 +183,14 @@ if ($_POST) {
 			          $r_name="";
 					/* Check if disk is allready used */
 					foreach($all_raid as $raid) {
-			            		if (in_array($diskv['fullname'],(array)$raid['diskr'])) {
+			            		if (in_array($diskv['devicespecialfile'],(array)$raid['diskr'])) {
 			              		$r_name=$raid['name'];
 			              		if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
 			              			break;
 			            	}
 			          }
-			          echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[fullname]'".
-			               ((is_array($pconfig['diskr']) && in_array($diskv['fullname'],$pconfig['diskr']))?" checked":"").
+			          echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[devicespecialfile]'".
+			               ((is_array($pconfig['diskr']) && in_array($diskv['devicespecialfile'],$pconfig['diskr']))?" checked":"").
 			               ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
 			          $i++;
 			        }

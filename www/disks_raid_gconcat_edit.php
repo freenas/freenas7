@@ -56,7 +56,7 @@ if (isset($id) && $a_raid[$id]) {
 	$pconfig['name'] = $a_raid[$id]['name'];
 	$pconfig['type'] = $a_raid[$id]['type'];
 	$pconfig['diskr'] = $a_raid[$id]['diskr'];
-	$pconfig['fullname'] = $a_raid[$id]['fullname'];
+	$pconfig['devicespecialfile'] = $a_raid[$id]['devicespecialfile'];
 }
 
 if ($_POST) {
@@ -94,7 +94,7 @@ if ($_POST) {
 		$raid['type'] = "JBOD";
 		$raid['diskr'] = $_POST['diskr'];
 		$raid['desc'] = "Software gconcat JBOD";
-		$raid['fullname'] = "/dev/concat/{$raid['name']}";
+		$raid['devicespecialfile'] = "/dev/concat/{$raid['name']}";
 
 		if (isset($id) && $a_raid[$id])
 			$a_raid[$id] = $raid;
@@ -165,14 +165,14 @@ if ($_POST) {
 			        foreach ($a_disk as $diskv) {
 			          $r_name="";
 			          foreach($all_raid as $raid) {
-			            if (in_array($diskv['fullname'],(array)$raid['diskr'])) {
+			            if (in_array($diskv['devicespecialfile'],(array)$raid['diskr'])) {
 			              $r_name=$raid['name'];
 			              if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
 			              break;
 			            }
 			          }
-			          echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[fullname]'".
-			               ((is_array($pconfig['diskr']) && in_array($diskv['fullname'],$pconfig['diskr']))?" checked":"").
+			          echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[devicespecialfile]'".
+			               ((is_array($pconfig['diskr']) && in_array($diskv['devicespecialfile'],$pconfig['diskr']))?" checked":"").
 			               ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
 			          $i++;
 			        }

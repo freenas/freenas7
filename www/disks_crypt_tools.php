@@ -41,7 +41,7 @@ $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Tools"));
 if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
 
-array_sort_key($config['geli']['vdisk'], "fullname");
+array_sort_key($config['geli']['vdisk'], "devicespecialfile");
 
 $a_geli = &$config['geli']['vdisk'];
 
@@ -66,7 +66,7 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	$mount_fullname=$_POST['disk']."s1";
-	if (disks_ismounted_ex($mount_fullname,"fullname") && ($_POST['action']== "detach")) {
+	if (disks_ismounted_ex($mount_fullname,"fullname") && ($_POST['action'] === "detach")) {
 		$input_errors[] = gettext("This encrypted disk is mounted, umount it before trying to detach it.");
 	}
 
@@ -142,7 +142,7 @@ function action_change() {
               <select name="disk" class="formfld" id="disk">
               	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_geli as $geliv): ?>
-								<option value="<?=$geliv['fullname'];?>" <?php if ($geliv['fullname'] === $pconfig['disk']) echo "selected";?>><?php echo htmlspecialchars($geliv['name'] . ": " .$geliv['size'] . " (" . $geliv['desc'] . ")");?>
+								<option value="<?=$geliv['devicespecialfile'];?>" <?php if ($geliv['devicespecialfile'] === $pconfig['disk']) echo "selected";?>><?php echo htmlspecialchars($geliv['name'] . ": " .$geliv['size'] . " (" . $geliv['desc'] . ")");?>
                 <?php endforeach; ?>
                 </option>
               </select>
@@ -189,7 +189,7 @@ function action_change() {
                 case "attach":
                 case "detach":
                 	// Get GEOM Eli configuration.
-									$id = array_search_ex($pconfig['disk'], $a_geli, "fullname");
+									$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
 									$geli = $a_geli[$id];
 
 									// Search if a mount point use this GEOM Eli disk.
@@ -222,7 +222,7 @@ function action_change() {
 
 								case "setkey":
 									// Get GEOM Eli configuration.
-									$id = array_search_ex($pconfig['disk'], $a_geli, "fullname");
+									$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
 									$geli = $a_geli[$id];
 									disks_geli_setkey($geli['name'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
                 	break;

@@ -79,7 +79,7 @@ function get_disk_temp($diskname) {
 		<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
 		<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
 		<td class="listr"><?php echo get_disk_temp($disk);?>&nbsp;</td>
-		<td class="listbg"><?=(0 == disks_exists($disk['fullname'])) ? gettext("ONLINE") : gettext("MISSING");?>&nbsp;</td>
+		<td class="listbg"><?=(0 == disks_exists($disk['devicespecialfile'])) ? gettext("ONLINE") : gettext("MISSING");?>&nbsp;</td>
 	</tr>
 	<?php endforeach; ?>
   <?php if (isset($raidstatus)): ?>

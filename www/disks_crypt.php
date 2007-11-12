@@ -38,7 +38,7 @@ $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Management"));
 if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
 
-array_sort_key($config['geli']['vdisk'], "fullname");
+array_sort_key($config['geli']['vdisk'], "devicespecialfile");
 
 $a_geli = &$config['geli']['vdisk'];
 
@@ -61,11 +61,11 @@ if ($_POST) {
 if ($_GET['act'] == "del") {
 	if ($a_geli[$_GET['id']]) {
 		$name = $a_geli[$_GET['id']]['name'];
-		$fullname = $a_geli[$_GET['id']]['fullname'];
+		$devicespecialfile = $a_geli[$_GET['id']]['devicespecialfile'];
 
-		if (disks_exists($fullname)) {
+		if (disks_exists($devicespecialfile)) {
 			// Kill encrypted volume.
-			disks_geli_kill($fullname);
+			disks_geli_kill($devicespecialfile);
 
 			// Reset disk file system type attribute ('fstype') in configuration.
 			set_conf_disk_fstype($name, "");
@@ -129,8 +129,8 @@ if ($_GET['act'] == "ret")
               if (file_exists($d_gelidirty_path)) {
                 echo(gettext("Configuring"));
               } else {
-                if(disks_exists($geli['fullname'])) {
-                  echo("<a href=\"disks_crypt_tools.php?disk={$geli['fullname']}&action=attach\">" . gettext("Not attached") . "</a>");
+                if(disks_exists($geli['devicespecialfile'])) {
+                  echo("<a href=\"disks_crypt_tools.php?disk={$geli['devicespecialfile']}&action=attach\">" . gettext("Not attached") . "</a>");
                 } else {
                   echo(gettext("Attached"));
                 }
@@ -138,7 +138,7 @@ if ($_GET['act'] == "ret")
               ?>&nbsp;
             </td>
             <td valign="middle" nowrap class="list">
-							<a href="disks_crypt_tools.php?disk=<?=$geli['fullname'];?>&action=setkey"><img src="e.gif" title="Change password" width="17" height="17" border="0"></a>&nbsp;
+							<a href="disks_crypt_tools.php?disk=<?=$geli['devicespecialfile'];?>&action=setkey"><img src="e.gif" title="Change password" width="17" height="17" border="0"></a>&nbsp;
               <a href="disks_crypt.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this encrypted volume? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Kill encrypted volume"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>

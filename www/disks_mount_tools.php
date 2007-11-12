@@ -68,17 +68,15 @@ if ($_POST) {
 if(!isset($do_action))
 {
 	$do_action = false;
-	$fullname = '';
 	$action = '';
 }
 
-// URL GET from the disks_manage_init.php page:
-// we get the $disk value, must found the $fullname now
 if(isset($_GET['disk'])) {
   $disk = $_GET['disk'];
   $id = array_search_ex($disk, $a_mount, "mdisk");
   $sharename = $a_mount[$id]['sharename'];
 }
+
 if(isset($_GET['action'])) {
   $action = $_GET['action'];
 }

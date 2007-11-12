@@ -108,7 +108,7 @@ if (!isset($do_format)) {
 function disk_change() {
   switch(document.iform.disk.value) {
     <?php foreach ($a_alldisk as $diskv): ?>
-		case "<?=$diskv['fullname'];?>":
+		case "<?=$diskv['devicespecialfile'];?>":
 		  <?php $i = 0;?>
       <?php foreach ($a_fst as $fstval => $fstname): ?>
         document.iform.type.options[<?=$i++;?>].selected = <?php if($diskv['fstype'] == $fstval){echo "true";}else{echo "false";};?>;
@@ -149,8 +149,8 @@ function fstype_change() {
 					<option value=""><?=gettext("Must choose one");?></option>
 					<?php foreach ($a_alldisk as $diskv):?>
 					<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
-					<?php if (1 == disks_exists($diskv['fullname'])) continue;?>
-					<option value="<?=$diskv['fullname'];?>" <?php if ($diskv['fullname'] === $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
+					<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
+					<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($diskv['devicespecialfile'] === $disk) echo "selected";?>><?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");?></option>
 					<?php endforeach;?>
         </select>
       </td>

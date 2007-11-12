@@ -56,7 +56,7 @@ if (isset($id) && $a_disk[$id]) {
 	$pconfig['fstype'] = $a_disk[$id]['fstype'];
 	$pconfig['apm'] = $a_disk[$id]['apm'];
 	$pconfig['udma'] = $a_disk[$id]['udma'];
-	$pconfig['fullname'] = $a_disk[$id]['fullname'];
+	$pconfig['devicespecialfile'] = $a_disk[$id]['devicespecialfile'];
 }
 
 if ($_POST) {
@@ -85,7 +85,7 @@ if ($_POST) {
 		$harddiskfstype = $_POST['fstype'];
 
 		$disks['name'] = $devname;
-		$disks['fullname'] = "/dev/$devname";
+		$disks['devicespecialfile'] = "/dev/{$devname}";
 		$disks['harddiskstandby'] = $devharddiskstandby ;
 		$disks['acoustic'] = $harddiskacoustic ;
 		if ($harddiskfstype) $disks['fstype'] = $harddiskfstype ;

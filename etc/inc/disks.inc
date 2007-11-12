@@ -949,7 +949,7 @@ function disks_raid_graid5_delete($raidname)
 		if ($a_raid['name'] === $raidname) 	{
 			foreach ($a_raid['diskr'] as $disk){
 				// Get the name of the provider.
-				$id = array_search_ex($disk, $config['disks']['disk'], "fullname");
+				$id = array_search_ex($disk, $config['disks']['disk'], "devicespecialfile");
 				$provider = $config['disks']['disk'][$id]['name'];
 				// Remove provider.
 				mwexec("/sbin/graid5 remove {$raidname} {$provider}");

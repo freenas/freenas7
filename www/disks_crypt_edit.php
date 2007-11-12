@@ -38,7 +38,7 @@ $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Add"));
 if (!is_array($config['geli']['vdisk']))
 	$config['geli']['vdisk'] = array();
 
-array_sort_key($config['geli']['vdisk'], "fullname");
+array_sort_key($config['geli']['vdisk'], "devicespecialfile");
 
 $a_geli = &$config['geli']['vdisk'];
 
@@ -66,7 +66,7 @@ if ($_POST) {
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	// Check for duplicate disks.
-	if (array_search_ex("{$_POST['disk']}.eli", $a_geli, "fullname")) {
+	if (array_search_ex("{$_POST['disk']}.eli", $a_geli, "devicespecialfile")) {
 		$input_errors[] = gettext("This disk already exists in the disk list.");
 	}
 
@@ -96,7 +96,7 @@ if ($_POST) {
 
 			$geli = array();
 			$geli['name'] = $disk;
-			$geli['fullname'] = "{$disk}.eli";
+			$geli['devicespecialfile'] = "{$disk}.eli";
 			$geli['desc'] = "Encrypted disk";
 			$geli['size'] = "{$diskinfo['mediasize_mbytes']}MB";
 			$geli['aalgo'] = $aalgo;
@@ -146,8 +146,8 @@ if (!isset($do_action)) {
 								<?php foreach ($a_alldisk as $diskv):?>
 								<?php if (0 == strcmp($diskv['class'], "geli")) continue;?>
 								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
-								<?php if (1 == disks_exists($diskv['fullname'])) continue;?>
-								<option value="<?=$diskv['fullname'];?>" <?php if ($disk === $diskv['fullname']) echo "selected";?>>
+								<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
+								<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($disk === $diskv['devicespecialfile']) echo "selected";?>>
 								<?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");	?>
 								</option>
 								<?php endforeach;?>
