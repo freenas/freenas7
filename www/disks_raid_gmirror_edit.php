@@ -91,7 +91,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$raid = array();
-		$raid['name'] = $_POST['name'];
+		$raid['name'] = substr($_POST['name'], 0, 15); // Make sure name is only 15 chars long (GEOM limitation).
 		$raid['balance'] = $_POST['balance'];
 		$raid['type'] = 1;
 		$raid['diskr'] = $_POST['diskr'];
