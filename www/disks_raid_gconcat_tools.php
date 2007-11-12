@@ -80,11 +80,10 @@ function raid_change() {
  {
   <?php foreach ($a_raid as $raidv): ?>
     case "<?=$raidv['name'];?>":
-      <?php foreach($raidv['diskr'] as $diskn => $diskrv): ?>
+      <?php foreach($raidv['device'] as $devicen => $devicev): ?>
          if(document.all) // MS IE workaround.
             next = document.iform.disk.length;
-         document.iform.disk.add(new Option("<?=$diskrv;?>","<?=$diskrv;?>",false,
-<?php if("{$diskrv}" == $disk){echo "true";}else{echo "false";};?>), next);
+         document.iform.disk.add(new Option("<?=$devicev;?>","<?=$devicev;?>",false,<?php if("{$devicev}" == $disk){echo "true";}else{echo "false";};?>), next);
        <?php endforeach; ?>
        break;
      <?php endforeach; ?>

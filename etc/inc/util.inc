@@ -1801,8 +1801,8 @@ function get_conf_all_disks_list() {
 
 		// Check Software RAID's.
 		foreach ($a_sraiddisk as $vdisk) {
-			if (is_array($vdisk['diskr'])) {
-				if (false !== array_search($disk['devicespecialfile'], $vdisk['diskr'])) {
+			if (is_array($vdisk['device'])) {
+				if (false !== array_search($disk['devicespecialfile'], $vdisk['device'])) {
 					$unused = false;
 					break;
 				}

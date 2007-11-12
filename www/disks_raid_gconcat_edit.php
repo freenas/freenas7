@@ -55,7 +55,7 @@ if (!sizeof($a_disk)) {
 if (isset($id) && $a_raid[$id]) {
 	$pconfig['name'] = $a_raid[$id]['name'];
 	$pconfig['type'] = $a_raid[$id]['type'];
-	$pconfig['diskr'] = $a_raid[$id]['diskr'];
+	$pconfig['device'] = $a_raid[$id]['device'];
 	$pconfig['devicespecialfile'] = $a_raid[$id]['devicespecialfile'];
 }
 
@@ -85,14 +85,14 @@ if ($_POST) {
 	}
 
 	/* check the number of RAID disk for volume */
-	if (count($_POST['diskr']) < 2)
+	if (count($_POST['device']) < 2)
 		$input_errors[] = gettext("There must be a minimum of 2 disks in a JBOD.");
 
 	if (!$input_errors) {
 		$raid = array();
 		$raid['name'] = substr($_POST['name'], 0, 15); // Make sure name is only 15 chars long (GEOM limitation).
 		$raid['type'] = "JBOD";
-		$raid['diskr'] = $_POST['diskr'];
+		$raid['device'] = $_POST['device'];
 		$raid['desc'] = "Software gconcat JBOD";
 		$raid['devicespecialfile'] = "/dev/concat/{$raid['name']}";
 
@@ -165,14 +165,14 @@ if ($_POST) {
 			        foreach ($a_disk as $diskv) {
 			          $r_name="";
 			          foreach($all_raid as $raid) {
-			            if (in_array($diskv['devicespecialfile'],(array)$raid['diskr'])) {
+			            if (in_array($diskv['devicespecialfile'], (array)$raid['device'])) {
 			              $r_name=$raid['name'];
 			              if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
 			              break;
 			            }
 			          }
-			          echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[devicespecialfile]'".
-			               ((is_array($pconfig['diskr']) && in_array($diskv['devicespecialfile'],$pconfig['diskr']))?" checked":"").
+			          echo "<input name='device[]' id='$i' type='checkbox' value='$diskv[devicespecialfile]'".
+			               ((is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))?" checked":"").
 			               ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
 			          $i++;
 			        }

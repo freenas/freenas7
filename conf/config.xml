@@ -143,8 +143,8 @@
 		<vdisk>
 			<name>xxx</name>
 			<type>0</type>
-			<diskr>/dev/xxx</diskr>
-			<diskr>/dev/xxx</diskr>
+			<device>/dev/xxx</device>
+			<device>/dev/xxx</device>
 			<desc>xxx</desc>
 			<devicespecialfile>/dev/xxx</devicespecialfile>
 			<fstype>xxx</fstype>

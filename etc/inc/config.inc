@@ -999,7 +999,8 @@ function config_upgrade() {
 	}
 
 	/* Convert 3.2 -> 3.3 */
-	/* Rename attribute //disks/disk/fullname, //gxxx/vdisk/fullname to devicespecialfile. */
+	/* Rename //disks/disk/fullname, //gxxx/vdisk/fullname to devicespecialfile. */
+	/* Rename //gxxx/vdisk/diskr to device. */
 	if ($config['version'] === "3.2") {
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			if (isset($config['disks']['disk'][$i]['fullname'])) {
@@ -1013,6 +1014,10 @@ function config_upgrade() {
 				if (isset($config[$class]['vdisk'][$i]['fullname'])) {
 					$config[$class]['vdisk'][$i]['devicespecialfile'] = $config[$class]['vdisk'][$i]['fullname'];
 					unset($config[$class]['vdisk'][$i]['fullname']);
+				}
+				if (isset($config[$class]['vdisk'][$i]['diskr'])) {
+					$config[$class]['vdisk'][$i]['device'] = $config[$class]['vdisk'][$i]['diskr'];
+					unset($config[$class]['vdisk'][$i]['diskr']);
 				}
 			}
 		}

@@ -56,7 +56,7 @@ if (isset($id) && $a_raid[$id]) {
 	$pconfig['name'] = $a_raid[$id]['name'];
 	$pconfig['devicespecialfile'] = $a_raid[$id]['devicespecialfile'];
 	$pconfig['type'] = $a_raid[$id]['type'];
-	$pconfig['diskr'] = $a_raid[$id]['diskr'];
+	$pconfig['device'] = $a_raid[$id]['device'];
 }
 
 if ($_POST) {
@@ -88,15 +88,15 @@ if ($_POST) {
 	switch ($_POST['type'])
 	{
 		case 0:
-			if (count($_POST['diskr']) < 2)
+			if (count($_POST['device']) < 2)
 				$input_errors[] = gettext("There must be a minimum of 2 disks in a RAID 0 volume.");
 			break;
 		case 1:
-			if (count($_POST['diskr']) != 2)
+			if (count($_POST['device']) != 2)
 				$input_errors[] = gettext("There must be 2 disks in a RAID 1 volume.");
 			break;
 		case 5:
-			if (count($_POST['diskr']) < 3)
+			if (count($_POST['device']) < 3)
 				$input_errors[] = gettext("There must be a minimum of 3 disks in a RAID 5 volume.");
 			break;
 	}
@@ -105,7 +105,7 @@ if ($_POST) {
 		$raid = array();
 		$raid['name'] = substr($_POST['name'], 0, 15); // Make sure name is only 15 chars long (GEOM limitation).
 		$raid['type'] = $_POST['type'];
-		$raid['diskr'] = $_POST['diskr'];
+		$raid['device'] = $_POST['device'];
 		$raid['desc'] = "Software gvinum RAID {$_POST['type']}";
 		$raid['devicespecialfile'] = "/dev/gvinum/{$raid['name']}";
 
@@ -183,14 +183,14 @@ if ($_POST) {
 			          $r_name="";
 					/* Check if disk is allready used */
 					foreach($all_raid as $raid) {
-			            		if (in_array($diskv['devicespecialfile'],(array)$raid['diskr'])) {
+			            		if (in_array($diskv['devicespecialfile'], (array)$raid['device'])) {
 			              		$r_name=$raid['name'];
 			              		if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
 			              			break;
 			            	}
 			          }
-			          echo "<input name='diskr[]' id='$i' type='checkbox' value='$diskv[devicespecialfile]'".
-			               ((is_array($pconfig['diskr']) && in_array($diskv['devicespecialfile'],$pconfig['diskr']))?" checked":"").
+			          echo "<input name='device[]' id='$i' type='checkbox' value='$diskv[devicespecialfile]'".
+			               ((is_array($pconfig['device']) && in_array($diskv['devicespecialfile'],$pconfig['device']))?" checked":"").
 			               ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
 			          $i++;
 			        }
