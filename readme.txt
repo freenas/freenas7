@@ -109,7 +109,7 @@ Alternative solution: (The preferred one from votdev)
 <disks>
 	<disk>
 		<name>xxx</name> // da0 RAID0
-		<devicename>xxx</devicename> // Device name, e.g. /dev/ad0 /dev/stripe/RAID0, /dev/da0.eli or /dev/da1.eli
+		<devicespecialfile>xxx</devicespecialfile> // Device name, e.g. /dev/ad0 /dev/stripe/RAID0, /dev/da0.eli or /dev/da1.eli
 		<class>physical|gvinum|gmirror|gconcat|gstripe|graid5|geli</class> // Class of disk
 		<size>150000</size> // Size on MBytes.
 		<desc>QUANTUM FIREBALL EX6.4A/A0A.0D00</desc>
