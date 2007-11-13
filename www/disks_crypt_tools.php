@@ -194,12 +194,13 @@ function action_change() {
 
 									// Search if a mount point use this GEOM Eli disk.
 									$id = array_search_ex($geli['devicespecialfile'], $a_mount, "mdisk");
+
 									// If found, get the mount point configuration.
 									if ($id !== false) $mount = $a_mount[$id];
 
 									switch($pconfig['action']) {
                 		case "attach":
- 		                  $result = disks_geli_attach($geli['name'], $pconfig['passphrase'], true);
+ 		                  $result = disks_geli_attach($geli['device'][0], $pconfig['passphrase'], true);
 		                  // When attaching the disk, then also mount it.
 											if ((0 == $result) && is_array($mount)) {
 												echo("<br>" . gettext("Mounting device.") . "<br>");
@@ -213,7 +214,7 @@ function action_change() {
 		                	if (disks_ismounted($mount)) {
 		                		echo gettext("Device is mounted, umount it first before detaching.") ."<br>";
 											} else {
-												$result = disks_geli_detach($geli['name'], true);
+												$result = disks_geli_detach($geli['devicespecialfile'], true);
 												echo((0 == $result) ? gettext("Done.") : gettext("Failed."));
 											}
 		                  break;

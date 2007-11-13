@@ -79,7 +79,7 @@ if ($_POST) {
 		$do_action = true;
 
 		$init = $_POST['init'] ? true : false;
-		$disk = $_POST['disk'];
+		$disk = $a_alldisk[$_POST['disk']]['devicespecialfile'];
 		$aalgo = "none";
 		$ealgo = $_POST['ealgo'];
 		$passphrase = $_POST['password'];
@@ -95,8 +95,8 @@ if ($_POST) {
 			$diskinfo = disks_get_diskinfo($disk);
 
 			$geli = array();
-			$geli['name'] = $disk;
-			$geli['device'] = "/dev/{$disk}";
+			$geli['name'] = $a_alldisk[$_POST['disk']]['name'];
+			$geli['device'] = $a_alldisk[$_POST['disk']]['devicespecialfile'];
 			$geli['devicespecialfile'] = "{$geli['device']}.eli";
 			$geli['desc'] = "Encrypted disk";
 			$geli['size'] = "{$diskinfo['mediasize_mbytes']}MB";
@@ -144,11 +144,12 @@ if (!isset($do_action)) {
 			      <td class="vtable">
 							<select name="disk" class="formfld" id="disk">
 								<option value=""><?=gettext("Must choose one");?></option>
-								<?php foreach ($a_alldisk as $diskv):?>
+								<?php $i = -1; foreach ($a_alldisk as $diskv):?>
+								<?php ++$i;?>
 								<?php if (0 == strcmp($diskv['class'], "geli")) continue;?>
 								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
 								<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
-								<option value="<?=$diskv['name'];?>" <?php if ($disk === $diskv['name']) echo "selected";?>>
+								<option value="<?=$i;?>" <?php if ($disk === $diskv['devicespecialfile']) echo "selected";?>>
 								<?php echo htmlspecialchars("{$diskv['name']}: {$diskv['size']} ({$diskv['desc']})");?>
 								</option>
 								<?php endforeach;?>
@@ -212,13 +213,13 @@ if (!isset($do_action)) {
 
 							if (true == $init) {
 								// Initialize and encrypt the disk.
-								echo gettext("Encrypting... Please wait") . "!<br/>";
-								disks_geli_init($disk, $aalgo, $ealgo, $passphrase, true);
+								echo sprintf(gettext("Encrypting '%s'... Please wait") . "!<br/>", $geli['device']);
+								disks_geli_init($geli['device'], $aalgo, $ealgo, $passphrase, true);
 							}
 
 							// Attach the disk.
-							echo(sprintf(gettext("Attaching provider '%s'."), $geli['name']) . "<br/>");
-							disks_geli_attach($geli['name'], $passphrase, true);
+							echo(sprintf(gettext("Attaching provider '%s'."), $geli['device']) . "<br/>");
+							disks_geli_attach($geli['device'], $passphrase, true);
 
 							echo('</pre>');
 						}
