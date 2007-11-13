@@ -48,11 +48,11 @@ $a_geli = &$config['geli']['vdisk'];
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-array_sort_key($config['mounts']['mount'], "mdisk");
+array_sort_key($config['mounts']['mount'], "devicespecialfile");
 
 $a_mount = &$config['mounts']['mount'];
 
-if ($config['system']['webgui']['protocol'] == "http") {
+if ($config['system']['webgui']['protocol'] === "http") {
 	$nohttps_errors = gettext("You should use HTTPS as WebGUI protocol for sending passphrase.");
 }
 

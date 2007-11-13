@@ -56,7 +56,7 @@ if (!is_array($config['rsync'])) {
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-array_sort_key($config['mounts']['mount'], "mdisk");
+array_sort_key($config['mounts']['mount'], "devicespecialfile");
 
 $a_mount = &$config['mounts']['mount'];
 $a_rsyncclient = &$config['rsync']['rsyncclient'];

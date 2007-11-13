@@ -48,7 +48,7 @@ if (!is_array($config['mounts']['mount']))
 if(!is_array($config['samba']['share']))
 	$config['samba']['share'] = array();
 
-array_sort_key($config['mounts']['mount'], "mdisk");
+array_sort_key($config['mounts']['mount'], "devicespecialfile");
 array_sort_key($config['samba']['share'], "name");
 
 $a_mount = &$config['mounts']['mount'];

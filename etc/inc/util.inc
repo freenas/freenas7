@@ -434,25 +434,25 @@ function get_mounts_list()
 		$aline = explode("\t", $line);
 
 		// Get device path.
-		$devicepath = chop($aline[0]);
+		$devicespecialfile = chop($aline[0]);
 
 		// Get the mount path.
 		$mountpath = chop($aline[1]);
 
 		// Ignore various mount points.
-		if (("/dev/md0" === $devicepath) || ("devfs" === $devicepath) ||
-				("/dev/fd0" === $devicepath) || ($g['cf_path'] === $mountpath))
+		if (("/dev/md0" === $devicespecialfile) || ("devfs" === $devicespecialfile) ||
+				("/dev/fd0" === $devicespecialfile) || ($g['cf_path'] === $mountpath))
 			continue;
 
 		// Get the complete name /dev/devicename.
-		$adevicepath = explode("/", $devicepath);
-		$devicename = $adevicepath[2];
+		$adevicespecialfile = explode("/", $devicespecialfile);
+		$devicename = $adevicespecialfile[2];
 
 		// Test if it's a gvinum, gmirror, gconcat or gstripe device.
 		if ((strcmp($devicename,"gvinum") == 0) ||
 				(strcmp($devicename,"mirror") == 0) || (strcmp($devicename,"concat") == 0) ||
 				(strcmp($devicename,"stripe") == 0) || (strcmp($devicename,"raid5") == 0)) {
-			$devicename = $adevicepath[3];
+			$devicename = $adevicespecialfile[3];
 		}
 
 		// Get the sharename.
@@ -460,7 +460,7 @@ function get_mounts_list()
 
 		$amountlist[$i]['mp'] = $mountpath;
 		$amountlist[$i]['mdisk'] = $devicename;
-		$amountlist[$i]['devicespecialfile'] = $devicepath;
+		$amountlist[$i]['devicespecialfile'] = $devicespecialfile;
 		$amountlist[$i]['sharename'] = $amountpath[2];
 
 		$i++;

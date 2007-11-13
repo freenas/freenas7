@@ -268,7 +268,9 @@ function disks_umount($mount)
 
 		foreach ($amountlist as $amountk => $amountv) {
 			if (0 == strcmp($amountv['sharename'], $mount['sharename'])) {
-				$mdunit = substr($amountv['mdisk'], 2); // Remove 'md' to get unit id.
+				// Extract memory disk unit id.
+				preg_match("/^\/dev\/md(\d+)$/", $amountv['devicespecialfile'], $matches);
+				$mdunit = $matches[1];
 				break;
 			}
 		}

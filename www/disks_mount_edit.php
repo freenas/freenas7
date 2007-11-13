@@ -42,7 +42,7 @@ $pgtitle = array(gettext("Disks"),gettext("Mount Point"),isset($id)?gettext("Edi
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-array_sort_key($config['mounts']['mount'], "mdisk");
+array_sort_key($config['mounts']['mount'], "devicespecialfile");
 
 $a_mount = &$config['mounts']['mount'];
 $a_disk = get_conf_all_disks_list();

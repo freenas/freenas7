@@ -42,7 +42,7 @@ $pconfig['swap_size'] = $config['system']['swap_size'];
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-array_sort_key($config['mounts']['mount'], "mdisk");
+array_sort_key($config['mounts']['mount'], "devicespecialfile");
 
 $a_mount = &$config['mounts']['mount'];
 
