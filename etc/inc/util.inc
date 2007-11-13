@@ -1855,23 +1855,23 @@ function set_conf_disk_fstype($disk, $fstype)
 	global $config;
 
 	$result = 1;
-	$diskconf = array('disks'   => array('disk',  'devicespecialfile'),
-										'gconcat' => array('vdisk', 'devicespecialfile'),
-										'gmirror' => array('vdisk', 'devicespecialfile'),
-										'graid5'  => array('vdisk', 'devicespecialfile'),
-										'gstripe' => array('vdisk', 'devicespecialfile'),
-										'gvinum'  => array('vdisk', 'devicespecialfile'),
-										'geli'    => array('vdisk', 'devicespecialfile'));
+	$diskconf = array("disks"   => "disk",
+										"gconcat" => "vdisk",
+										"gmirror" => "vdisk",
+										"graid5"  => "vdisk",
+										"gstripe" => "vdisk",
+										"gvinum"  => "vdisk",
+										"geli"    => "vdisk");
 
 	while (list($key, $val) = each($diskconf)) {
-		if (!is_array($config[$key][$val[0]]))
+		if (!is_array($config[$key][$val]))
 			continue;
-//	echo "Searching array \$config['$key']['$val[0]'] using key $val[1]\n";
-		$id = array_search_ex($disk, $config[$key][$val[0]], $val[1]);
+//	echo "Searching array \$config['$key']['$val'] using key 'devicespecialfile'\n";
+		$id = array_search_ex($disk, $config[$key][$val], "devicespecialfile");
 		if ($id !== false) {
-			$config[$key][$val[0]][$id]['fstype'] = $fstype;
+			$config[$key][$val][$id]['fstype'] = $fstype;
 			$result = 0;
-//		echo "Set \$config['$key']['$val[0]'][$id]['fstype'] = $fstype\n";
+//		echo "Set \$config['$key']['$val'][$id]['fstype'] = $fstype\n";
 			break;
 		}
 	}
