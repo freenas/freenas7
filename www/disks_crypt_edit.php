@@ -96,7 +96,8 @@ if ($_POST) {
 
 			$geli = array();
 			$geli['name'] = $disk;
-			$geli['devicespecialfile'] = "{$disk}.eli";
+			$geli['device'] = "/dev/{$disk}";
+			$geli['devicespecialfile'] = "{$geli['device']}.eli";
 			$geli['desc'] = "Encrypted disk";
 			$geli['size'] = "{$diskinfo['mediasize_mbytes']}MB";
 			$geli['aalgo'] = $aalgo;
@@ -105,7 +106,7 @@ if ($_POST) {
 			$a_geli[] = $geli;
 
 			// Set new file system type attribute ('fstype') in configuration.
-			set_conf_disk_fstype($disk, "geli");
+			set_conf_disk_fstype($geli['device'], "geli");
 
 			write_config();
 		}
@@ -147,8 +148,8 @@ if (!isset($do_action)) {
 								<?php if (0 == strcmp($diskv['class'], "geli")) continue;?>
 								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
 								<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
-								<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($disk === $diskv['devicespecialfile']) echo "selected";?>>
-								<?php echo htmlspecialchars($diskv['name'] . ": " .$diskv['size'] . " (" . $diskv['desc'] . ")");	?>
+								<option value="<?=$diskv['name'];?>" <?php if ($disk === $diskv['name']) echo "selected";?>>
+								<?php echo htmlspecialchars("{$diskv['name']}: {$diskv['size']} ({$diskv['desc']})");?>
 								</option>
 								<?php endforeach;?>
 			    		</select>

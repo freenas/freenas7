@@ -999,8 +999,10 @@ function config_upgrade() {
 	}
 
 	/* Convert 3.2 -> 3.3 */
-	/* Rename //disks/disk/fullname, //gxxx/vdisk/fullname to devicespecialfile. */
-	/* Rename //gxxx/vdisk/diskr to device. */
+	/* Rename attribute //disks/disk/fullname and //gxxx/vdisk/fullname to devicespecialfile. */
+	/* Rename attribute //gxxx/vdisk/diskr to device. */
+	/* Modify attribute //geli/vdisk/name content. */
+	/* Add attribute //geli/vdisk/device. */
 	if ($config['version'] === "3.2") {
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			if (isset($config['disks']['disk'][$i]['fullname'])) {
@@ -1019,6 +1021,12 @@ function config_upgrade() {
 					$config[$class]['vdisk'][$i]['device'] = $config[$class]['vdisk'][$i]['diskr'];
 					unset($config[$class]['vdisk'][$i]['diskr']);
 				}
+			}
+
+			// GEli special handling.
+			if ("geli" === $class) {
+				$config[$class]['vdisk'][$i]['device'] = $config[$class]['vdisk'][$i]['name'];
+				$config[$class]['vdisk'][$i]['name'] = str_replace("/dev/", "", $config[$class]['vdisk'][$i]['name']);
 			}
 		}
 

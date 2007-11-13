@@ -100,8 +100,8 @@ if ($_POST) {
 			$input_errors[] = gettext("EFI/GPT partition can be use with UFS only.");
 		}
 
-		$device=$_POST['mdisk'].$_POST['partition'];
-		if ($device == $cfdevice ) {
+		$device = "{$_POST['mdisk']}{$_POST['partition']}";
+		if ($device === $cfdevice) {
 			$input_errors[] = gettext("Can't mount the system partition 1, the DATA partition is the 2.");
 		}
 	}
@@ -121,7 +121,7 @@ if ($_POST) {
 		$identifier[] = fgets($fp, 6);
 		fclose($fp);
 
-		if (false === array_search('CD001', $identifier) && FALSE === array_search('CDROM', $identifier)) {
+		if (false === array_search('CD001', $identifier) && false === array_search('CDROM', $identifier)) {
 			$input_errors[] = gettext("Selected file isn't an valid ISO file.");
 		}
 	}
@@ -133,13 +133,13 @@ if ($_POST) {
 
 		if ("disk" === $_POST['type']) {
 			// Check for duplicate mount point
-			if (($mount['mdisk'] == $_POST['mdisk']) && ($mount['partition'] == $_POST['partition'])) {
+			if (($mount['mdisk'] === $_POST['mdisk']) && ($mount['partition'] === $_POST['partition'])) {
 				$input_errors[] = gettext("This disk/partition is already configured.");
 				break;
 			}
 		}
 
-		if (($_POST['sharename']) && ($mount['sharename'] == $_POST['sharename'])) {
+		if (($_POST['sharename']) && ($mount['sharename'] === $_POST['sharename'])) {
 			$input_errors[] = gettext("Duplicate name.");
 			break;
 		}
@@ -237,7 +237,7 @@ function fstype_change() {
 			      <td width="78%" class="vtable">
 			  			<select name="type" class="formfld" id="type" onchange="type_change()">
 			          <?php $opts = array(gettext("Disk"), gettext("ISO")); $vals = explode(" ", "disk iso"); $i = 0;
-								foreach ($opts as $opt): ?>
+								foreach ($opts as $opt):?>
 			          <option <?php if ($vals[$i] === $pconfig['type']) echo "selected";?> value="<?=$vals[$i++];?>"><?=htmlspecialchars($opt);?></option>
 			          <?php endforeach; ?>
 			        </select>
@@ -249,8 +249,8 @@ function fstype_change() {
 							<select name="mdisk" class="formfld" id="mdisk">
 								<option value=""><?=gettext("Must choose one");?></option>
 								<?php foreach ($a_disk as $disk):?>
-								<option value="<?=$disk['devicespecialfile'];?>" <?php if ($pconfig['mdisk'] === $disk['devicespecialfile']) echo "selected";?>>
-								<?php echo htmlspecialchars($disk['name'] . ": " .$disk['size'] . " (" . $disk['desc'] . ")");	?>
+								<option value="<?=$disk['devicespecialfile'];?>" <?php if ($pconfig['devicespecialfile'] === $disk['devicespecialfile']) echo "selected";?>>
+								<?php echo htmlspecialchars("{$disk['name']}: {$disk['size']} ({$disk['desc']})");?>
 								</option>
 								<?php endforeach;?>
 							</select>

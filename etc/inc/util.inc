@@ -1769,7 +1769,7 @@ function get_conf_encryped_disks_list() {
 	$a_vdisk = array();
 
 	if (is_array($config['geli']['vdisk'])) {
-		array_sort_key($config['geli']['vdisk'], "devicespecialfile");
+		array_sort_key($config['geli']['vdisk'], "name");
 		$a_geli = $config['geli']['vdisk'];
 		foreach ($a_geli as &$vdisk) { $vdisk['class'] = "geli"; } // Set disk type.
 		$a_vdisk = array_merge($a_vdisk, $a_geli);
@@ -1811,7 +1811,7 @@ function get_conf_all_disks_list() {
 
 		// Check encrypted disks.
 		foreach ($a_encrypteddisk as $vdisk) {
-			if (0 == strcmp($disk['devicespecialfile'], $vdisk['name'])) {
+			if (false !== array_search($disk['devicespecialfile'], $vdisk['device'])) {
 				$unused = false;
 				break;
 			}
@@ -1830,7 +1830,7 @@ function get_conf_all_disks_list() {
 
 		// Check encrypted disks.
 		foreach ($a_encrypteddisk as $vdisk) {
-			if (0 == strcmp($disk['devicespecialfile'], $vdisk['name'])) {
+			if (false !== array_search($disk['devicespecialfile'], $vdisk['device'])) {
 				$unused = false;
 				break;
 			}
@@ -1861,7 +1861,7 @@ function set_conf_disk_fstype($disk, $fstype)
 										'graid5'  => array('vdisk', 'devicespecialfile'),
 										'gstripe' => array('vdisk', 'devicespecialfile'),
 										'gvinum'  => array('vdisk', 'devicespecialfile'),
-										'geli'    => array('vdisk', 'name'));
+										'geli'    => array('vdisk', 'devicespecialfile'));
 
 	while (list($key, $val) = each($diskconf)) {
 		if (!is_array($config[$key][$val[0]]))
