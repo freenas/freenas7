@@ -32,7 +32,6 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
-require("disks_raid.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Geom Mirror"), gettext("Manage RAID"));
 
@@ -67,7 +66,8 @@ $raidstatus=get_gmirror_disks_list();
 if ($_GET['act'] == "del") {
 	unset($errormsg);
 	if ($a_raid[$_GET['id']]) {
-		if(0 == disks_raid_check_mount($a_raid[$_GET['id']])) {
+		// Check if disk is mounted.
+		if(0 == disks_ismounted_ex($a_raid[$_GET['id']]['devicespecialfile'], "devicespecialfile")) {
 			$raidname=$a_raid[$_GET['id']]['name'];
 			disks_raid_gmirror_delete($raidname);
 			unset($a_raid[$_GET['id']]);

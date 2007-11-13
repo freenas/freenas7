@@ -301,7 +301,8 @@ function disks_umount($mount)
 }
 
 // Advanced unmount the specified mount point without using the sharename,
-// e.g. used when the 'sharename' has been modified/changed. Use the device name instead.
+// e.g. used when the 'sharename' has been modified/changed. Use the device
+// special file (e.g. /dev/ad1p1) instead.
 // Return 0 if successful, 1 if error
 function disks_umount_ex($mount)
 {
