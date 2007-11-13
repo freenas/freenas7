@@ -858,10 +858,12 @@ function disks_raid_gvinum_delete($raidname)
 
 	mwexec("/sbin/gvinum rm -r {$raidname}");
 
-	foreach ($config['gvinum']['vdisk'] as $a_raid) {
-		if ($a_raid['name'] === $raidname) {
-			foreach ($a_raid['device'] as $disk){
-				mwexec("/sbin/gvinum rm -r disk_{$disk}");
+	if (is_array($config['gvinum']['vdisk'])) {
+		foreach ($config['gvinum']['vdisk'] as $a_raid) {
+			if ($a_raid['name'] === $raidname) {
+				foreach ($a_raid['device'] as $disk){
+					mwexec("/sbin/gvinum rm -r disk_{$disk}");
+				}
 			}
 		}
 	}
@@ -879,10 +881,12 @@ function disks_raid_gmirror_delete($raidname)
 	mwexec("/sbin/gmirror stop {$raidname}");
 
 	// Clear the gmirror information on the hard drive
-	foreach ($config['gmirror']['vdisk'] as $a_raid) {
-		if ($a_raid['name'] === $raidname) {
-			foreach ($a_raid['device'] as $disk) {
-				mwexec("/sbin/gmirror clear {$disk}");
+	if (is_array($config['gmirror']['vdisk'])) {
+		foreach ($config['gmirror']['vdisk'] as $a_raid) {
+			if ($a_raid['name'] === $raidname) {
+				foreach ($a_raid['device'] as $disk) {
+					mwexec("/sbin/gmirror clear {$disk}");
+				}
 			}
 		}
 	}
@@ -900,12 +904,14 @@ function disks_raid_gconcat_delete($raidname)
 	mwexec("/sbin/gconcat stop {$raidname}");
 
 	// Clear the gconcat information on the hard drive
-	foreach ($config['gconcat']['vdisk'] as $a_raid) {
-		if ($a_raid['name'] === $raidname) {
-			foreach ($a_raid['device'] as $disk) {
-				mwexec("/sbin/gconcat clear {$disk}");
+	if (is_array($config['gconcat']['vdisk'])) {
+		foreach ($config['gconcat']['vdisk'] as $a_raid) {
+			if ($a_raid['name'] === $raidname) {
+				foreach ($a_raid['device'] as $disk) {
+					mwexec("/sbin/gconcat clear {$disk}");
+				}
+				mwexec("/sbin/gconcat destroy {$raidname}");
 			}
-			mwexec("/sbin/gconcat destroy {$raidname}");
 		}
 	}
 
@@ -922,12 +928,14 @@ function disks_raid_gstripe_delete($raidname)
 	mwexec("/sbin/gstripe stop {$raidname}");
 
 	// Clear the gconcat information on the hard drive
-	foreach ($config['gstripe']['vdisk'] as $a_raid) {
-		if ($a_raid['name'] === $raidname) {
-			foreach ($a_raid['device'] as $disk) {
-				mwexec("/sbin/gstripe clear {$disk}");
+	if (is_array($config['gstripe']['vdisk'])) {
+		foreach ($config['gstripe']['vdisk'] as $a_raid) {
+			if ($a_raid['name'] === $raidname) {
+				foreach ($a_raid['device'] as $disk) {
+					mwexec("/sbin/gstripe clear {$disk}");
+				}
+				mwexec("/sbin/gstripe destroy {$raidname}");
 			}
-			mwexec("/sbin/gstripe destroy {$raidname}");
 		}
 	}
 
@@ -948,16 +956,18 @@ function disks_raid_graid5_delete($raidname)
 	//sleep(2);
 
 	// Clear the graid5 information on the hard drive
-	foreach ($config['graid5']['vdisk'] as $a_raid) {
-		if ($a_raid['name'] === $raidname) {
-			foreach ($a_raid['device'] as $disk){
-				// Get the name of the provider.
-				$id = array_search_ex($disk, $config['disks']['disk'], "devicespecialfile");
-				$provider = $config['disks']['disk'][$id]['name'];
-				// Remove provider.
-				mwexec("/sbin/graid5 remove {$raidname} {$provider}");
+	if (is_array($config['graid5']['vdisk'])) {
+		foreach ($config['graid5']['vdisk'] as $a_raid) {
+			if ($a_raid['name'] === $raidname) {
+				foreach ($a_raid['device'] as $disk){
+					// Get the name of the provider.
+					$id = array_search_ex($disk, $config['disks']['disk'], "devicespecialfile");
+					$provider = $config['disks']['disk'][$id]['name'];
+					// Remove provider.
+					mwexec("/sbin/graid5 remove {$raidname} {$provider}");
+				}
+				mwexec("/sbin/graid5 destroy {$raidname}");
 			}
-			mwexec("/sbin/graid5 destroy {$raidname}");
 		}
 	}
 
