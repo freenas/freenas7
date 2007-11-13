@@ -72,9 +72,9 @@ if(!isset($do_action))
 }
 
 if(isset($_GET['disk'])) {
-  $disk = $_GET['disk'];
-  $id = array_search_ex($disk, $a_mount, "mdisk");
-  $sharename = $a_mount[$id]['sharename'];
+	$disk = $_GET['disk'];
+	$id = array_search_ex($disk, $a_mount, "devicespecialfile");
+	$sharename = $a_mount[$id]['sharename'];
 }
 
 if(isset($_GET['action'])) {
@@ -104,7 +104,7 @@ if(isset($_GET['action'])) {
               <select name="sharename" class="formfld" id="sharename">
               	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_mount as $mountv):?>
-                <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $sharename) echo "selected";?>>
+                <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] === $sharename) echo "selected";?>>
                 <?php if ("disk" === $mountv['type']):?>
                 <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
                 <?php else:?>
@@ -139,7 +139,6 @@ if(isset($_GET['action'])) {
     					ob_end_flush();
 
     					/* Get the id of the mount array entry. */
-
 		          $id = array_search_ex($sharename, $a_mount, "sharename");
 		          /* Get the mount data. */
               $mount = $a_mount[$id];
