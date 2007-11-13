@@ -1017,16 +1017,17 @@ function config_upgrade() {
 					$config[$class]['vdisk'][$i]['devicespecialfile'] = $config[$class]['vdisk'][$i]['fullname'];
 					unset($config[$class]['vdisk'][$i]['fullname']);
 				}
+
 				if (isset($config[$class]['vdisk'][$i]['diskr'])) {
 					$config[$class]['vdisk'][$i]['device'] = $config[$class]['vdisk'][$i]['diskr'];
 					unset($config[$class]['vdisk'][$i]['diskr']);
 				}
-			}
 
-			// GEli special handling.
-			if ("geli" === $class) {
-				$config[$class]['vdisk'][$i]['device'] = $config[$class]['vdisk'][$i]['name'];
-				$config[$class]['vdisk'][$i]['name'] = str_replace("/dev/", "", $config[$class]['vdisk'][$i]['name']);
+				// GEli special handling.
+				if ("geli" === $class) {
+					$config[$class]['vdisk'][$i]['device'] = $config[$class]['vdisk'][$i]['name'];
+					$config[$class]['vdisk'][$i]['name'] = str_replace("/dev/", "", $config[$class]['vdisk'][$i]['name']);
+				}
 			}
 		}
 
