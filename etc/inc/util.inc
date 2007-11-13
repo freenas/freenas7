@@ -417,7 +417,7 @@ function get_interface_list() {
 //	    (
 //        [mp] => /mnt/sharename
 //        [mdisk] => ad0s1
-//        [fullname] => /dev/ad0s1
+//        [devicespecialfile] => /dev/ad0s1
 //        [sharename] => sharename
 //      )
 function get_mounts_list()
@@ -460,7 +460,7 @@ function get_mounts_list()
 
 		$amountlist[$i]['mp'] = $mountpath;
 		$amountlist[$i]['mdisk'] = $devicename;
-		$amountlist[$i]['fullname'] = $devicepath;
+		$amountlist[$i]['devicespecialfile'] = $devicepath;
 		$amountlist[$i]['sharename'] = $amountpath[2];
 
 		$i++;

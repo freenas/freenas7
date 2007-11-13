@@ -218,7 +218,7 @@
 			// 'disk' attributes:
 			<mdisk>/dev/xxx</mdisk>
 			<partition>xxx</partition>
-			<fullname>/dev/xxx</fullname>
+			<devicespecialfile>/dev/xxx</devicespecialfile>
 			// 'iso' attributes:
 			<filename>xxx</filename>
 		</mount>

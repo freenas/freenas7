@@ -65,8 +65,8 @@ if ($_POST) {
 	$reqdfieldsn = array(gettext("Disk Name"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	$mount_fullname=$_POST['disk']."s1";
-	if (disks_ismounted_ex($mount_fullname,"fullname") && ($_POST['action'] === "detach")) {
+	$devicespecialfile = $_POST['disk']."s1";
+	if (disks_ismounted_ex($devicespecialfile ,"devicespecialfile") && ($_POST['action'] === "detach")) {
 		$input_errors[] = gettext("This encrypted disk is mounted, umount it before trying to detach it.");
 	}
 
@@ -193,7 +193,7 @@ function action_change() {
 									$geli = $a_geli[$id];
 
 									// Search if a mount point use this GEOM Eli disk.
-									$id = array_search_ex($geli['fullname'], $a_mount, "mdisk");
+									$id = array_search_ex($geli['devicespecialfile'], $a_mount, "mdisk");
 									// If found, get the mount point configuration.
 									if ($id !== false) $mount = $a_mount[$id];
 

@@ -47,8 +47,8 @@ function disks_raid_check_mount($raid) {
 	/* Get mount data. */
 	$id = array_search_ex($raid['devicespecialfile'], $config['mounts']['mount'], "mdisk");
 	if( false !== $id) {
-		$mountfullname = $config['mounts']['mount'][$id]['fullname'];
-		$result = disks_ismounted_ex($mountfullname,"fullname");
+		$devicespecialfile = $config['mounts']['mount'][$id]['devicespecialfile'];
+		$result = disks_ismounted_ex($devicespecialfile, "devicespecialfile");
 	}
 
 	return $result;

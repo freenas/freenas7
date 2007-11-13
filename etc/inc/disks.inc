@@ -122,7 +122,7 @@ function disks_mount($mount)
 	if (is_booting()) {
 		if (is_array($config['geli']['vdisk'])) {
 			$a_geli = $config['geli']['vdisk'];
-			if (array_search_ex($mount['mdisk'], $a_geli, "fullname")) {
+			if (array_search_ex($mount['mdisk'], $a_geli, "devicespecialfile")) {
 				write_console("\nSkip mounting {$mount['sharename']}: Passphrase needed.");
 				write_log("Passphrase needed for '{$mountname}'");
 				return 0;
@@ -132,7 +132,7 @@ function disks_mount($mount)
 
 	switch($mount['type']) {
 		case "disk":
-			$devname = $mount['fullname'];
+			$devicespecialfile = $mount['devicespecialfile'];
 			break;
 
 		case "iso":
@@ -142,7 +142,7 @@ function disks_mount($mount)
 				write_log("Error: Failed to create memory disk for '{$mount['filename']}'");
 				return 1;
 			}
-			$devname = "/dev/{$mdid[0]}";
+			$devicespecialfile = "/dev/{$mdid[0]}";
 			break;
 	}
 
@@ -153,57 +153,57 @@ function disks_mount($mount)
 	/* This part is too stupid: I must read the FreeBSD start script for use the same intelligent method for checking hard drive */
 	switch ($mount['fstype']) {
 		case "ufs":
-			$result = mwexec("/sbin/mount -t ufs -o acls {$readonly} {$devname} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t ufs -o acls {$readonly} {$devicespecialfile} '{$mountname}'");
 			if (0 == $result) {
-				write_log("Device {$devname} mounted using UFS on '{$mountname}'");
+				write_log("Device {$devicespecialfile} mounted using UFS on '{$mountname}'");
 				$result = 0;
 			} else {
-				write_log("Error: Failed to detect disk {$devname}, starting a UFS fsck");
+				write_log("Error: Failed to detect disk {$devicespecialfile}, starting a UFS fsck");
 				// Do a filesystem check.
-				mwexec("/sbin/fsck -y -t ufs {$devname}");
+				mwexec("/sbin/fsck -y -t ufs {$devicespecialfile}");
 				// Retry to mount the partition.
-				$result = mwexec("/sbin/mount -t ufs -o acls {$readonly} {$devname} '{$mountname}'");
+				$result = mwexec("/sbin/mount -t ufs -o acls {$readonly} {$devicespecialfile} '{$mountname}'");
 				if (0 == $result) {
-					write_log("Device {$devname} mounted using UFS on '{$mountname}'");
+					write_log("Device {$devicespecialfile} mounted using UFS on '{$mountname}'");
 					$result = 0;
 				} else {
 					@rmdir("{$mountname}");
-					write_log("Error: Failed to mount {$devname} using UFS");
+					write_log("Error: Failed to mount {$devicespecialfile} using UFS");
 					$result = 1;
 				}
 			}
 			break;
 
 		case "msdosfs":
-			$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$readonly} {$devname} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$readonly} {$devicespecialfile} '{$mountname}'");
 			if (0 == $result) {
-				write_log("Device {$devname} mounted using FAT on '{$mountname}'");
+				write_log("Device {$devicespecialfile} mounted using FAT on '{$mountname}'");
 				$result = 0;
 			} else {
-				write_log("Error: Failed to detect disk {$devname}, starting a FAT fsck");
+				write_log("Error: Failed to detect disk {$devicespecialfile}, starting a FAT fsck");
 				// Do a filesystem check.
-				mwexec("/sbin/fsck -y -t msdosfs {$devname}");
+				mwexec("/sbin/fsck -y -t msdosfs {$devicespecialfile}");
 				// Retry to mount the partition.
-				$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$readonly} {$devname} '{$mountname}'");
+				$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$readonly} {$devicespecialfile} '{$mountname}'");
 				if (0 == $result) {
-					write_log("Device {$devname} mounted using FAT on '{$mountname}'");
+					write_log("Device {$devicespecialfile} mounted using FAT on '{$mountname}'");
 					$result = 0;
 				} else {
 					@rmdir("{$mountname}");
-					write_log("Error: Failed to mount {$devname} using FAT");
+					write_log("Error: Failed to mount {$devicespecialfile} using FAT");
 					$result = 1;
 				}
 			}
 			break;
 
 		case "cd9660":
-			$result = mwexec("/sbin/mount -t cd9660 {$devname} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t cd9660 {$devicespecialfile} '{$mountname}'");
 			if (0 == $result) {
-				write_log("Device {$devname} mounted as CD/DVD on '{$mountname}'");
+				write_log("Device {$devicespecialfile} mounted as CD/DVD on '{$mountname}'");
 				$result = 0;
 			} else {
 				@rmdir("{$mountname}");
-				write_log("Error: Failed to mount {$devname} as CD/DVD");
+				write_log("Error: Failed to mount {$devicespecialfile} as CD/DVD");
 				$result = 1;
 			}
 			break;
@@ -211,34 +211,34 @@ function disks_mount($mount)
 		case "ntfs":
 			// Load the kernel fuse module.
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
-			$result = mwexec("/sbin/mount -t ntfs-3g -o force {$readonly} {$devname} '{$mountname}'"); // default options: silent,allow_other
+			$result = mwexec("/sbin/mount -t ntfs-3g -o force {$readonly} {$devicespecialfile} '{$mountname}'"); // default options: silent,allow_other
 			if (0 == $result) {
-				write_log("Disk {$devname} mounted using NTFS on '{$mountname}'");
+				write_log("Disk {$devicespecialfile} mounted using NTFS on '{$mountname}'");
 				$result = 0;
 			} else {
 				@rmdir("{$mountname}");
-				write_log("Error: Failed to mount {$devname} using NTFS.");
+				write_log("Error: Failed to mount {$devicespecialfile} using NTFS.");
 				$result = 1;
 			}
 			break;
 
 		case "ext2fs":
-			$result = mwexec("/sbin/mount -t ext2fs {$readonly} {$devname} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t ext2fs {$readonly} {$devicespecialfile} '{$mountname}'");
 			if (0 == $result) {
-				write_log("Disk {$devname} mounted using EXT2 on '{$mountname}'");
+				write_log("Disk {$devicespecialfile} mounted using EXT2 on '{$mountname}'");
 				$result = 0;
 			} else {
-				write_log("Error: Failed to detect disk {$devname}, starting a e2fsck");
+				write_log("Error: Failed to detect disk {$devicespecialfile}, starting a e2fsck");
 				// Do a filesystem check.
-				mwexec("/usr/local/sbin/e2fsck -f -p {$devname}");
+				mwexec("/usr/local/sbin/e2fsck -f -p {$devicespecialfile}");
 				// Retry to mount the partition.
-				$result = mwexec("/sbin/mount -t ext2fs {$readonly} {$devname} '{$mountname}'");
+				$result = mwexec("/sbin/mount -t ext2fs {$readonly} {$devicespecialfile} '{$mountname}'");
 				if (0 == $result) {
-					write_log("Disk {$devname} mounted using EXT2 on '{$mountname}'");
+					write_log("Disk {$devicespecialfile} mounted using EXT2 on '{$mountname}'");
 					$result = 0;
 				} else {
 					@rmdir("{$mountname}");
-					write_log("Error: Can't mount {$devname} using EXT2");
+					write_log("Error: Can't mount {$devicespecialfile} using EXT2");
 					$result = 1;
 				}
 			}
@@ -307,7 +307,7 @@ function disks_umount_ex($mount)
 	$amountlist = get_mounts_list();
 
 	foreach ($amountlist as $amountk => $amountv) {
-		if (0 == strcmp($amountv['fullname'], $mount['fullname'])) {
+		if (0 == strcmp($amountv['devicespecialfile'], $mount['devicespecialfile'])) {
 			$mountname = $amountv['mp'];
 			break;
 		}
@@ -338,16 +338,16 @@ function disks_ismounted($mount)
 {
 	// MUST CHECK IF IT'S NTFS filesystem.
 	if (0 == strcmp($mount['fstype'],"ntfs")) {
-		return disks_ismounted_ex($mount['sharename'],"sharename");
+		return disks_ismounted_ex($mount['sharename'], "sharename");
 	} else {
-		return disks_ismounted_ex($mount['fullname'],"fullname");
+		return disks_ismounted_ex($mount['devicespecialfile'], "devicespecialfile");
 	}
 }
 
 // Check if mount point is mounted.
 // $var - The attribute value to search for
 // $key - The attribute name to search for
-// e.g.:  disks_ismounted_ex("/dev/ad0s1","fullname");
+// e.g.:  disks_ismounted_ex("/dev/ad0s1","devicespecialfile");
 //        disks_ismounted_ex("data","sharename");
 //        disks_ismounted_ex("ad0","mdisk");
 // Return 0 if not mounted, otherwise 1
@@ -361,9 +361,9 @@ function disks_ismounted_ex($var,$key)
 	foreach ($amountlist as $amountk => $amountv) {
 		switch ($key) {
 			case "mdisk":
-			case "fullname":
+			case "devicespecialfile":
 				// Must found the $val (e.g. ad0) in 'mdisk' (e.g. ad0s1).
-				// Must found the $val (e.g. /dev/ad1) in 'fullname' (e.g. /dev/ad1s1).
+				// Must found the $val (e.g. /dev/ad1) in 'devicespecialfile' (e.g. /dev/ad1s1).
 				if (false !== strpos($amountv[$key], $var)) {
 					$result = 1;
 					break;
@@ -1211,7 +1211,7 @@ function disks_fsck($device,$umount = false)
 		return 1;
 
 	// Get the id of the disk.
-	$id = array_search_ex($device, $config['mounts']['mount'], "fullname");
+	$id = array_search_ex($device, $config['mounts']['mount'], "devicespecialfile");
 
 	// Get the mount configuration.
 	$mount = $config['mounts']['mount'][$id];

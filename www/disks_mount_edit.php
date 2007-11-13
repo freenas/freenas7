@@ -56,7 +56,7 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['type'] = $a_mount[$id]['type'];
 	$pconfig['mdisk'] = $a_mount[$id]['mdisk'];
 	$pconfig['partition'] = $a_mount[$id]['partition'];
-	$pconfig['fullname'] = $a_mount[$id]['fullname'];
+	$pconfig['devicespecialfile'] = $a_mount[$id]['devicespecialfile'];
 	$pconfig['fstype'] = $a_mount[$id]['fstype'];
 	$pconfig['sharename'] = $a_mount[$id]['sharename'];
 	$pconfig['desc'] = $a_mount[$id]['desc'];
@@ -154,7 +154,7 @@ if ($_POST) {
 				$mount['mdisk'] = $_POST['mdisk'];
 				$mount['partition'] = $_POST['partition'];
 				$mount['fstype'] = $_POST['fstype'];
-				$mount['fullname'] = "{$mount['mdisk']}{$mount['partition']}";
+				$mount['devicespecialfile'] = "{$mount['mdisk']}{$mount['partition']}";
 				$mount['readonly'] = $_POST['readonly'] ? true : false;
 				break;
 

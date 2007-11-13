@@ -73,7 +73,7 @@ if ($_POST) {
 		$volumelabel = $_POST['volumelabel'];
 
 		// Check whether disk is mounted.
-		if (disks_ismounted_ex($disk, "fullname")) {
+		if (disks_ismounted_ex($disk, "devicespecialfile")) {
 			$errormsg = sprintf(gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
 			$do_format = false;
 		}

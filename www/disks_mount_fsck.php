@@ -91,8 +91,8 @@ if (!isset($do_action)) {
               	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_mount as $mountv):?>
 								<?php if (strcmp($mountv['fstype'],"cd9660") == 0) continue;?>
-                <option value="<?=$mountv['fullname'];?>"<?php if ($mountv['fullname'] == $disk) echo "selected";?>>
-                <?php echo htmlspecialchars($mountv['sharename'] . ": " .$mountv['fullname']);?>
+                <option value="<?=$mountv['devicespecialfile'];?>"<?php if ($mountv['devicespecialfile'] === $disk) echo "selected";?>>
+                <?php echo htmlspecialchars($mountv['sharename'] . ": " . $mountv['devicespecialfile']);?>
                 <?php endforeach;?>
                 </option>
               </select>
