@@ -393,19 +393,19 @@ function disks_raid_gvinum_configure()
 
 	/* Generate the raid.conf file */
 	if ($config['gvinum']['vdisk']) {
-		foreach ($config['gvinum']['vdisk'] as $a_raid_conf) {
-			if (file_exists($g['varrun_path'] . "/raid.conf.dirty") && !in_array("{$a_raid_conf['name']}\n",file($g['varrun_path'] . "/raid.conf.dirty")))
+		foreach ($config['gvinum']['vdisk'] as $vdiskv) {
+			if (file_exists($g['varrun_path'] . "/raid.conf.dirty") && !in_array("{$vdiskv['name']}\n",file($g['varrun_path'] . "/raid.conf.dirty")))
 				continue;
 
 			/* generate raid.conf */
-			$fd = fopen("{$g['varetc_path']}/raid-{$a_raid_conf['name']}.conf", "w");
+			$fd = fopen("{$g['varetc_path']}/raid-{$vdiskv['name']}.conf", "w");
 			if (!$fd) {
 				write_console("Error: Failed to open raid.conf in services_raid_configure().\n");
 				return 1;
 			}
 
 			$raidconf="";
-			foreach ($a_raid_conf['device'] as $devicek => $devicev) {
+			foreach ($vdiskv['device'] as $devicek => $devicev) {
 				$raidconf .= <<<EOD
 drive disk_{$devicev} device {$devicev}
 
@@ -413,16 +413,16 @@ EOD;
 			}
 
 			$raidconf .= <<<EOD
-volume {$a_raid_conf['name']}
+volume {$vdiskv['name']}
 
 EOD;
-			switch ($a_raid_conf['type']) {
+			switch ($vdiskv['type']) {
 					case "0":
 						$raidconf .= <<<EOD
 plex org striped 256k
 
 EOD;
-						foreach ($a_raid_conf['device'] as $devicek => $devicev) {
+						foreach ($vdiskv['device'] as $devicek => $devicev) {
 							/* Get the disksize */
 							$disksize=get_disks_size($devicev);
 							/* Remove the ending 'B' in 'MB' */
@@ -438,7 +438,7 @@ EOD;
 						}
 						break;
 					case "1":
-						foreach ($a_raid_conf['device'] as $devicek => $devicev) {
+						foreach ($vdiskv['device'] as $devicek => $devicev) {
 							$raidconf .= <<<EOD
 plex org concat
 
@@ -464,7 +464,7 @@ EOD;
 plex org raid5 256k
 
 EOD;
-						foreach ($a_raid_conf['device'] as $devicek => $devicev) {
+						foreach ($vdiskv['device'] as $devicek => $devicev) {
 							/* Get the disksize */
 							$disksize=get_disks_size($devicev);
 							/* Remove the ending 'B' in 'MB' */
@@ -485,15 +485,15 @@ EOD;
 			fclose($fd);
 
 			/* Create each volume */
-			mwexec("/sbin/gvinum create {$g['varetc_path']}/raid-{$a_raid_conf['name']}.conf");
+			mwexec("/sbin/gvinum create {$g['varetc_path']}/raid-{$vdiskv['name']}.conf");
 		}
 
 		/* start each volume */
-		foreach ($config['gvinum']['vdisk'] as $a_raid_conf) {
+		foreach ($config['gvinum']['vdisk'] as $vdiskv) {
 			exec("/sbin/gvinum lv $raidname", $rawdata);
 			if (strpos($rawdata[0],"State: up" )>= 0)
 				continue;
-			mwexec("/sbin/gvinum start {$a_raid_conf['name']}");
+			mwexec("/sbin/gvinum start {$vdiskv['name']}");
 		}
 	}
 
@@ -510,10 +510,10 @@ function disks_raid_gmirror_configure()
 		// Load gmirror
 		mwexec("/sbin/gmirror load");
 
-		foreach ($config['gmirror']['vdisk'] as $a_raid_conf) {
+		foreach ($config['gmirror']['vdisk'] as $vdiskv) {
 			/* Create each volume */
-			$cmd = "/sbin/gmirror label -b {$a_raid_conf['balance']} {$a_raid_conf['name']} ";
-			foreach ($a_raid_conf['device'] as $devicek => $devicev) {
+			$cmd = "/sbin/gmirror label -b {$vdiskv['balance']} {$vdiskv['name']} ";
+			foreach ($vdiskv['device'] as $devicek => $devicev) {
 				$cmd .= "{$devicev} ";
 			}
 			mwexec($cmd);
@@ -533,10 +533,10 @@ function disks_raid_gconcat_configure()
 		// Load gconcat
 		mwexec("/sbin/gconcat load");
 
-		foreach ($config['gconcat']['vdisk'] as $a_raid_conf) {
+		foreach ($config['gconcat']['vdisk'] as $vdiskv) {
 			/* Create each volume */
-			$cmd = "/sbin/gconcat label {$a_raid_conf['name']} ";
-			foreach ($a_raid_conf['device'] as $devicek => $devicev) {
+			$cmd = "/sbin/gconcat label {$vdiskv['name']} ";
+			foreach ($vdiskv['device'] as $devicek => $devicev) {
 				$cmd .= "{$devicev} ";
 			}
 			mwexec($cmd);
@@ -556,10 +556,10 @@ function disks_raid_gstripe_configure()
 		// Load gstripe
 		mwexec("/sbin/gstripe load");
 
-		foreach ($config['gstripe']['vdisk'] as $a_raid_conf) {
+		foreach ($config['gstripe']['vdisk'] as $vdiskv) {
 			/* Create each volume */
-			$cmd = "/sbin/gstripe label {$a_raid_conf['name']} ";
-			foreach ($a_raid_conf['device'] as $devicek => $devicev) {
+			$cmd = "/sbin/gstripe label {$vdiskv['name']} ";
+			foreach ($vdiskv['device'] as $devicek => $devicev) {
 				$cmd .= "{$devicev} ";
 			}
 			mwexec($cmd);
@@ -579,10 +579,10 @@ function disks_raid_graid5_configure()
 		// Load graid5
 		mwexec("/sbin/graid5 load");
 
-		foreach ($config['graid5']['vdisk'] as $a_raid_conf) {
+		foreach ($config['graid5']['vdisk'] as $vdiskv) {
 			/* Create each volume */
-			$cmd = "/sbin/graid5 label -s 131072 {$a_raid_conf['name']} ";
-			foreach ($a_raid_conf['device'] as $devicek => $devicev) {
+			$cmd = "/sbin/graid5 label -s 131072 {$vdiskv['name']} ";
+			foreach ($vdiskv['device'] as $devicek => $devicev) {
 				$cmd .= "{$devicev} ";
 			}
 			mwexec($cmd);
@@ -615,19 +615,13 @@ function disks_raid_start()
 // Return 0 if successful, 1 if error
 function disks_raid_gvinum_start()
 {
-	global $config, $g;
+	global $config;
 
-	if ($config['gvinum']['vdisk']) {
-		if (is_booting())
-			write_console("Start gvinum raid... ");
-
-		/* start each volume */
-		foreach ($config['gvinum']['vdisk'] as $a_raid_conf) {
-			mwexec("/sbin/gvinum start {$a_raid_conf['name']}");
+	if (is_array($config['gvinum']['vdisk'])) {
+		/* Start each volume. */
+		foreach ($config['gvinum']['vdisk'] as $vdiskv) {
+			mwexec("/sbin/gvinum start {$vdiskv['name']}");
 		}
-
-		if (is_booting())
-			write_console("done\n");
 	}
 
 	return 0;
@@ -637,18 +631,10 @@ function disks_raid_gvinum_start()
 // Return 0 if successful, 1 if error
 function disks_raid_gmirror_start()
 {
-	global $config, $g;
+	global $config;
 
-	/* Start Geom mirror */
-	if ($config['gmirror']['vdisk']) {
-		if (is_booting())
-			write_console("Start gmirror raid... ");
-
-		// Load geom mirror module
+	if (is_array($config['gmirror']['vdisk'])) {
 		mwexec("/sbin/gmirror load");
-
-		if (is_booting())
-			write_console("done\n");
 	}
 
 	return 0;
@@ -658,18 +644,10 @@ function disks_raid_gmirror_start()
 // Return 0 if successful, 1 if error
 function disks_raid_gconcat_start()
 {
-	global $config, $g;
+	global $config;
 
-	/* Start Geom concat */
-	if ($config['gconcat']['vdisk']) {
-		if (is_booting())
-			write_console("Start gconcat raid... ");
-
-		// Load geom concat module
+	if (is_array($config['gconcat']['vdisk'])) {
 		mwexec("/sbin/gconcat load");
-
-		if (is_booting())
-			write_console("done\n");
 	}
 
 	return 0;
@@ -679,18 +657,10 @@ function disks_raid_gconcat_start()
 // Return 0 if successful, 1 if error
 function disks_raid_gstripe_start()
 {
-	global $config, $g;
+	global $config;
 
-	/* Start Geom stripe */
-	if ($config['gstripe']['vdisk']) {
-		if (is_booting())
-			write_console("Start gstripe raid... ");
-
-		// Load geom stripe module
+	if (is_array($config['gstripe']['vdisk'])) {
 		mwexec("/sbin/gstripe load");
-
-		if (is_booting())
-			write_console("done\n");
 	}
 
 	return 0;
@@ -700,23 +670,13 @@ function disks_raid_gstripe_start()
 // Return 0 if successful, 1 if error
 function disks_raid_graid5_start()
 {
-	global $config, $g;
+	global $config;
 
-	/* Start Geom RAID5 */
-	if ($config['graid5']['vdisk']) {
-		if (is_booting())
-			write_console("Start graid5 raid... ");
-
-		// Load geom raid5 module
+	if (is_array($config['graid5']['vdisk'])) {
 		mwexec("/sbin/graid5 load");
 
 		//Tune graid5
 		disks_raid_graid5_tune();
-
-		if (is_booting()) {
-			write_console("done\n");
-		}
-
 	}
 
 	return 0;
@@ -770,10 +730,9 @@ function disks_raid_gvinum_stop()
 {
 	global $config;
 
-	/* Stop geom vinum */
-	if ($config['gvinum']['vdisk']) {
-		foreach ($config['gvinum']['vdisk'] as $a_raid_conf) {
-			mwexec("/sbin/gvinum stop {$a_raid_conf['name']}");
+	if (is_array($config['gvinum']['vdisk'])) {
+		foreach ($config['gvinum']['vdisk'] as $vdiskv) {
+			mwexec("/sbin/gvinum stop {$vdiskv['name']}");
 		}
 	}
 
@@ -786,10 +745,9 @@ function disks_raid_gmirror_stop()
 {
 	global $config;
 
-	/* Stop geom mirror */
-	if ($config['gmirror']['vdisk']) {
-		foreach ($config['gmirror']['vdisk'] as $a_raid_conf) {
-			mwexec("/sbin/gmirror stop {$a_raid_conf['name']}");
+	if (is_array($config['gmirror']['vdisk'])) {
+		foreach ($config['gmirror']['vdisk'] as $vdiskv) {
+			mwexec("/sbin/gmirror stop {$vdiskv['name']}");
 		}
 	}
 
@@ -802,10 +760,9 @@ function disks_raid_gconcat_stop()
 {
 	global $config;
 
-	/* Stop geom concat */
-	if ($config['gconcat']['vdisk']) {
-		foreach ($config['gconcat']['vdisk'] as $a_raid_conf) {
-			mwexec("/sbin/gconcat stop {$a_raid_conf['name']}");
+	if (is_array($config['gconcat']['vdisk'])) {
+		foreach ($config['gconcat']['vdisk'] as $vdiskv) {
+			mwexec("/sbin/gconcat stop {$vdiskv['name']}");
 		}
 	}
 
@@ -818,10 +775,9 @@ function disks_raid_gstripe_stop()
 {
 	global $config;
 
-	/* Stop geom stripe */
-	if ($config['gstripe']['vdisk']) {
-		foreach ($config['gstripe']['vdisk'] as $a_raid_conf) {
-			mwexec("/sbin/gstripe stop {$a_raid_conf['name']}");
+	if (is_array($config['gstripe']['vdisk'])) {
+		foreach ($config['gstripe']['vdisk'] as $vdiskv) {
+			mwexec("/sbin/gstripe stop {$vdiskv['name']}");
 		}
 	}
 
@@ -834,10 +790,9 @@ function disks_raid_graid5_stop()
 {
 	global $config;
 
-	/* Stop geom raid5 */
-	if ($config['graid5']['vdisk']) {
-		foreach ($config['graid5']['vdisk'] as $a_raid_conf) {
-			mwexec("/sbin/graid5 stop {$a_raid_conf['name']}");
+	if (is_array($config['graid5']['vdisk'])) {
+		foreach ($config['graid5']['vdisk'] as $vdiskv) {
+			mwexec("/sbin/graid5 stop {$vdiskv['name']}");
 		}
 	}
 
