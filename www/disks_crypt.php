@@ -60,7 +60,7 @@ if ($_POST) {
 
 if ($_GET['act'] == "del") {
 	if ($a_geli[$_GET['id']]) {
-		$name = $a_geli[$_GET['id']]['name'];
+		$device = $a_geli[$_GET['id']]['device'][0];
 		$devicespecialfile = $a_geli[$_GET['id']]['devicespecialfile'];
 
 		if (disks_exists($devicespecialfile)) {
@@ -68,7 +68,7 @@ if ($_GET['act'] == "del") {
 			disks_geli_kill($devicespecialfile);
 
 			// Reset disk file system type attribute ('fstype') in configuration.
-			set_conf_disk_fstype($name, "");
+			set_conf_disk_fstype($device, "");
 
 			// Delete geli volume in configuration.
 			unset($a_geli[$_GET['id']]);

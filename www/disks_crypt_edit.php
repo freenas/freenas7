@@ -47,18 +47,20 @@ $a_alldisk = get_conf_all_disks_list();
 
 // Check whether there are disks configured, othersie display a error message.
 if (!count($a_alldisk)) {
-	$nodisk_errors[] = gettext("You must add disks first.");
+	$nodisks_error = gettext("You must add disks first.");
 }
 
 // Check if protocol is HTTPS, otherwise display a warning message.
 if ("http" === $config['system']['webgui']['protocol']) {
-	$nohttps_errors = gettext("You should use HTTPS as WebGUI protocol for sending passphrase.");
+	$nohttps_error = gettext("You should use HTTPS as WebGUI protocol for sending passphrase.");
 }
 
 if ($_POST) {
 	unset($input_errors);
 	unset($errormsg);
-	unset($do_action);
+	unset($pconfig['action']);
+
+	$pconfig = $_POST;
 
 	// Input validation.
   $reqdfields = explode(" ", "disk ealgo password passwordconf");
@@ -76,50 +78,50 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$do_action = true;
-
-		$init = $_POST['init'] ? true : false;
-		$disk = $a_alldisk[$_POST['disk']]['devicespecialfile'];
-		$aalgo = "none";
-		$ealgo = $_POST['ealgo'];
-		$passphrase = $_POST['password'];
+		$pconfig['action'] = true;
+		$pconfig['init'] = $_POST['init'] ? true : false;
+		$pconfig['name'] = $a_alldisk[$_POST['disk']]['name']; // e.g. da2
+		$pconfig['devicespecialfile'] = $a_alldisk[$_POST['disk']]['devicespecialfile']; // e.g. /dev/da2
+		$pconfig['aalgo'] = "none";
 
 		// Check whether disk is mounted.
-		if (disks_ismounted_ex($disk, "devicespecialfile")) {
-			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$disk}&action=umount");
-			$do_action = false;
+		if (disks_ismounted_ex($pconfig['devicespecialfile'], "devicespecialfile")) {
+			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$pconfig['devicespecialfile']}&action=umount");
+			$pconfig['action'] = false;
 		}
 
-		if ($do_action) {
+		if ($pconfig['action']) {
+			// Set new file system type attribute ('fstype') in configuration.
+			set_conf_disk_fstype($pconfig['devicespecialfile'], "geli");
+
 			// Get disk information.
-			$diskinfo = disks_get_diskinfo($disk);
+			$diskinfo = disks_get_diskinfo($pconfig['devicespecialfile']);
 
 			$geli = array();
-			$geli['name'] = $a_alldisk[$_POST['disk']]['name'];
-			$geli['device'] = $a_alldisk[$_POST['disk']]['devicespecialfile'];
+			$geli['name'] = $pconfig['name'];
+			$geli['device'] = $pconfig['devicespecialfile'];
 			$geli['devicespecialfile'] = "{$geli['device']}.eli";
 			$geli['desc'] = "Encrypted disk";
 			$geli['size'] = "{$diskinfo['mediasize_mbytes']}MB";
-			$geli['aalgo'] = $aalgo;
-			$geli['ealgo'] = $ealgo;
+			$geli['aalgo'] = $pconfig['aalgo'];
+			$geli['ealgo'] = $pconfig['ealgo'];
 
 			$a_geli[] = $geli;
-
-			// Set new file system type attribute ('fstype') in configuration.
-			set_conf_disk_fstype($geli['device'], "geli");
 
 			write_config();
 		}
 	}
 }
 
-if (!isset($do_action)) {
-	$do_action = false;
-	$init = false;
-	$disk = '';
-	$aalgo = '';
-	$ealgo = '';
-	$passphrase = '';
+if (!isset($pconfig['action'])) {
+	$pconfig['action'] = false;
+	$pconfig['init'] = false;
+	$pconfig['disk'] = 0;
+	$pconfig['aalgo'] = "";
+	$pconfig['ealgo'] = "";
+	$pconfig['passphrase'] = "";
+	$pconfig['name'] = "";
+	$pconfig['devicespecialfile'] = "";
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -135,12 +137,13 @@ if (!isset($do_action)) {
   <tr>
     <td class="tabcont">
 			<form action="disks_crypt_edit.php" method="post" name="iform" id="iform">
-				<?php if ($nodisk_errors) print_input_errors($nodisk_errors); ?>
-				<?php if ($nohttps_errors) print_error_box($nohttps_errors); ?>
-				<?php if ($input_errors) print_input_errors($input_errors); ?>
+				<?php if ($nohttps_error) print_error_box($nohttps_error);?>
+				<?php if ($nodisks_error) print_error_box($nodisks_error);?>
+				<?php if ($errormsg) print_error_box($errormsg);?>
+				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			    <tr>
-			      <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
+			      <td valign="top" class="vncellreq"><?=gettext("Disk");?></td>
 			      <td class="vtable">
 							<select name="disk" class="formfld" id="disk">
 								<option value=""><?=gettext("Must choose one");?></option>
@@ -149,7 +152,7 @@ if (!isset($do_action)) {
 								<?php if (0 == strcmp($diskv['class'], "geli")) continue;?>
 								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
 								<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
-								<option value="<?=$i;?>" <?php if ($disk === $diskv['devicespecialfile']) echo "selected";?>>
+								<option value="<?=$i;?>" <?php if ($pconfig['disk'] == $i) echo "selected";?>>
 								<?php echo htmlspecialchars("{$diskv['name']}: {$diskv['size']} ({$diskv['desc']})");?>
 								</option>
 								<?php endforeach;?>
@@ -162,13 +165,13 @@ if (!isset($do_action)) {
 						<td valign="top" class="vncellreq"><?=gettext("Data integrity algorithm");?></td>
 			      <td class="vtable">
 			        <select name="aalgo" class="formfld" id="aalgo">
-								<option value="none" <?php if ($aalgo === "none") echo "selected"; ?>>none</option>
-			          <option value="HMAC/MD5" <?php if ($aalgo === "HMAC/MD5") echo "selected"; ?>>HMAC/MD5</option>
-			          <option value="HMAC/SHA1" <?php if ($aalgo === "HMAC/SHA1") echo "selected"; ?>>HMAC/SHA1</option>
-			          <option value="HMAC/RIPEMD160" <?php if ($aalgo === "HMAC/RIPEMD160") echo "selected"; ?>>HMAC/RIPEMD160</option>
-			          <option value="HMAC/SHA256" <?php if ($aalgo === "HMAC/SHA256") echo "selected"; ?>>HMAC/SHA256</option>
-			          <option value="HMAC/SHA384" <?php if ($aalgo === "HMAC/SHA384") echo "selected"; ?>>HMAC/SHA384</option>
-			          <option value="HMAC/SHA512" <?php if ($aalgo === "HMAC/SHA512") echo "selected"; ?>>HMAC/SHA512</option>
+								<option value="none" <?php if ($pconfig['aalgo'] === "none") echo "selected"; ?>>none</option>
+			          <option value="HMAC/MD5" <?php if ($pconfig['aalgo'] === "HMAC/MD5") echo "selected"; ?>>HMAC/MD5</option>
+			          <option value="HMAC/SHA1" <?php if ($pconfig['aalgo'] === "HMAC/SHA1") echo "selected"; ?>>HMAC/SHA1</option>
+			          <option value="HMAC/RIPEMD160" <?php if ($pconfig['aalgo'] === "HMAC/RIPEMD160") echo "selected"; ?>>HMAC/RIPEMD160</option>
+			          <option value="HMAC/SHA256" <?php if ($pconfig['aalgo'] === "HMAC/SHA256") echo "selected"; ?>>HMAC/SHA256</option>
+			          <option value="HMAC/SHA384" <?php if ($pconfig['aalgo'] === "HMAC/SHA384") echo "selected"; ?>>HMAC/SHA384</option>
+			          <option value="HMAC/SHA512" <?php if ($pconfig['aalgo'] === "HMAC/SHA512") echo "selected"; ?>>HMAC/SHA512</option>
 			        </select>
 			      </td>
 			    </tr>
@@ -178,9 +181,9 @@ if (!isset($do_action)) {
 			      <td valign="top" class="vncellreq"><?=gettext("Encryption algorithm");?></td>
 			      <td class="vtable">
 			        <select name="ealgo" class="formfld" id="ealgo">
-			          <option value="AES" <?php if ($ealgo === "AES") echo "selected"; ?>>AES</option>
-			          <option value="Blowfish" <?php if ($ealgo === "Blowfish") echo "selected"; ?>>Blowfish</option>
-			          <option value="3DES" <?php if ($ealgo === "3DES") echo "selected"; ?>>3DES</option>
+			          <option value="AES" <?php if ($pconfig['ealgo'] === "AES") echo "selected"; ?>>AES</option>
+			          <option value="Blowfish" <?php if ($pconfig['ealgo'] === "Blowfish") echo "selected"; ?>>Blowfish</option>
+			          <option value="3DES" <?php if ($pconfig['ealgo'] === "3DES") echo "selected"; ?>>3DES</option>
 			        </select>
 			      </td>
 			    </tr>
@@ -194,7 +197,7 @@ if (!isset($do_action)) {
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Initialize");?></td>
 			      <td width="78%" class="vtable">
-							<input name="init" type="checkbox" id="init" value="yes" <?php if (true == $init) echo "checked"; ?>>
+							<input name="init" type="checkbox" id="init" value="yes" <?php if (true === $pconfig['init']) echo "checked"; ?>>
 							<?=gettext("Initialize and encrypt disk. This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk.");?>
 			      </td>
 			    </tr>
@@ -206,20 +209,20 @@ if (!isset($do_action)) {
 			    </tr>
 					<tr>
 						<td valign="top" colspan="2">
-						<? if ($do_action) {
+						<? if ($pconfig['action']) {
 							echo("<strong>" . gettext("Command output:") . "</strong>");
 							echo('<pre>');
 							ob_end_flush();
 
-							if (true == $init) {
+							if (true === $pconfig['init']) {
 								// Initialize and encrypt the disk.
-								echo sprintf(gettext("Encrypting '%s'... Please wait") . "!<br/>", $geli['device']);
-								disks_geli_init($geli['device'], $aalgo, $ealgo, $passphrase, true);
+								echo sprintf(gettext("Encrypting '%s'... Please wait") . "!<br/>", $pconfig['devicespecialfile']);
+								disks_geli_init($pconfig['devicespecialfile'], $pconfig['aalgo'], $pconfig['ealgo'], $pconfig['passphrase'], true);
 							}
 
 							// Attach the disk.
-							echo(sprintf(gettext("Attaching provider '%s'."), $geli['device']) . "<br/>");
-							disks_geli_attach($geli['device'], $passphrase, true);
+							echo(sprintf(gettext("Attaching provider '%s'."), $pconfig['devicespecialfile']) . "<br/>");
+							disks_geli_attach($pconfig['devicespecialfile'], $pconfig['passphrase'], true);
 
 							echo('</pre>');
 						}

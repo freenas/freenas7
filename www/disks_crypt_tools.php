@@ -53,12 +53,12 @@ array_sort_key($config['mounts']['mount'], "devicespecialfile");
 $a_mount = &$config['mounts']['mount'];
 
 if ($config['system']['webgui']['protocol'] === "http") {
-	$nohttps_errors = gettext("You should use HTTPS as WebGUI protocol for sending passphrase.");
+	$nohttps_error = gettext("You should use HTTPS as WebGUI protocol for sending passphrase.");
 }
 
 if ($_POST) {
 	unset($input_errors);
-	unset($pconfig['do_action']);
+	unset($pconfig['action']);
 
 	/* input validation */
 	$reqdfields = explode(" ", "disk action");
@@ -76,7 +76,7 @@ if ($_POST) {
 	}
 
 	if(!$input_errors) {
-		$pconfig['do_action'] = true;
+		$pconfig['action'] = true;
 		$pconfig['action'] = $_POST['action'];
 		$pconfig['disk'] = $_POST['disk'];
 		$pconfig['oldpassphrase'] = $_POST['oldpassphrase'];
@@ -84,8 +84,8 @@ if ($_POST) {
 	}
 }
 
-if(!isset($pconfig['do_action'])) {
-	$pconfig['do_action'] = false;
+if(!isset($pconfig['action'])) {
+	$pconfig['action'] = false;
 	$pconfig['action'] = "";
 	$pconfig['disk'] = "";
 	$pconfig['oldpassphrase'] = "";
@@ -132,7 +132,7 @@ function action_change() {
   </tr>
   <tr>
     <td class="tabcont">
-    	<?php if ($nohttps_errors) print_error_box($nohttps_errors); ?>
+    	<?php if ($nohttps_error) print_error_box($nohttps_error); ?>
       <?php if ($input_errors) print_input_errors($input_errors); ?>
 			<form action="disks_crypt_tools.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -180,7 +180,7 @@ function action_change() {
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">
-    				<?php if ($pconfig['do_action']) {
+    				<?php if ($pconfig['action']) {
     				  echo("<strong>" . gettext("Command output:") . "</strong><br>");
     					echo('<pre>');
     					ob_end_flush();
