@@ -45,15 +45,14 @@ if ($_POST) {
 	$reqdfieldsn = array(gettext("Command"),gettext("Object name"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (!$input_errors)
-	{
+	if (!$input_errors) {
 		$do_action = true;
 		$action = $_POST['action'];
 		$object = $_POST['object'];
 	}
 }
-if (!isset($do_action))
-{
+
+if (!isset($do_action)) {
 	$do_action = false;
 	$action = '';
 	$object = '';
@@ -109,43 +108,34 @@ if (!isset($do_action))
 				</tr>
 				<tr>
 				<td valign="top" colspan="2">
-				<? if ($do_action)
-				{
+				<?php if ($do_action) {
 					echo("<strong>" . gettext("Command output:") . "</strong><br>");
 					echo('<pre>');
 					ob_end_flush();
-					
-					switch ($action)
-					{
-					case "remove":					
-						/* Remove recursivly object */
-						system("/sbin/gvinum rm -r " . escapeshellarg($object));
-						break;
-					case "start":
-						/* Start object */
-						system("/sbin/gvinum start " . escapeshellarg($object));
-						break;
-					case "rebuild":
-						/* Rebuild RAID 5 parity */
-						system("/sbin/gvinum rebuildparity " . escapeshellarg($object));
-						break;
-					case "list":
-						/* Disaply a detailed list of object */
-						system("/sbin/gvinum list " . escapeshellarg($object));
-						break;
-					case "forceup":					
-						/* Force object state up */
-						system("/sbin/gvinum setstate -f up " . escapeshellarg($object));
-						break;
-					case "saveconfig":					
-						/* Save config */
-						system("/sbin/gvinum saveconfig");
-						break;
+
+					switch ($action) {
+						case "start":
+							disks_geom_cmd("vinum", "start", $object, true);
+							break;
+						case "rebuild":
+							disks_geom_cmd("vinum", "rebuildparity", $object, true);
+							break;
+						case "list":
+							disks_geom_cmd("vinum", "list", $object, true);
+							break;
+						case "remove":					
+							disks_geom_cmd("vinum", "rm -r", $object, true);
+							break;
+						case "forceup":					
+							disks_geom_cmd("vinum", "setstate -f up", $object, true);
+							break;
+						case "saveconfig":					
+							disks_geom_cmd("vinum", "saveconfig", "", true);
+							break;
 					}
-					
+
 					echo('</pre>');
-				}
-				?>
+				};?>
 				</td>
 				</tr>
 			</table>

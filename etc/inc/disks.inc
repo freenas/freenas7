@@ -599,9 +599,6 @@ function disks_raid_graid5_configure()
 // Return 0 if successful, 1 if error
 function disks_raid_start()
 {
-	/* WARNING:  Must change this code for advanced RAID configuration ex: RAID1+0
-	Geom RAID volume must be started in 'intelligent' sort, for RAID1+0, gmirror must
-	be started before gstripe, etc... */
 	disks_raid_gvinum_start();
 	disks_raid_gmirror_start();
 	disks_raid_gstripe_start();
@@ -711,10 +708,6 @@ function disks_raid_graid5_tune()
 // Return 0 if successful, 1 if error
 function disks_raid_stop()
 {
-	/* WARNING:  Must change this code for advanced RAID configuration ex: RAID1+0
-	Geom RAID volume must be started in 'intelligent' sort, for RAID1+0, gmirror must
-	be started before gstripe, etc... */
-
 	disks_raid_gvinum_stop();
 	disks_raid_graid5_stop();
 	disks_raid_gstripe_stop();
@@ -1313,5 +1306,28 @@ function disks_exists($disk)
 		return 0;
 	}
 	return 1;
+}
+
+// Wrapper to execute geom commands.
+// $class   - Name of geom class (e.g. stripe, mirror, vinum, raid5, ...)
+// $command - Command to execute (e.g. list, status, load, activate, ...).
+//            The commands depend on the GEOM class.
+// $param   - The command parameter.
+// $verbose - Display command results or hide them.
+// Return 0 if successful, 1 if error.
+function disks_geom_cmd($class, $command, $param, $verbose = false)
+{
+	$result = 1;
+
+	$cmd = "/sbin/geom {$class} {$command} {$param}";
+
+	if (true === $verbose) {
+		$cmd .= " 2>&1"; // Redirect error message to stdout.
+		system($cmd, $result);
+	}	else {
+		$result = mwexec($cmd);
+	}
+
+	return $result;
 }
 ?>

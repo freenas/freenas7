@@ -45,7 +45,7 @@ if (!is_array($config['gconcat']['vdisk']))
 array_sort_key($config['gconcat']['vdisk'], "name");
 
 $a_raid = &$config['gconcat']['vdisk'];
-$all_raid = array_merge((array)$config['graid5']['vdisk'],(array)$config['gmirror']['vdisk'],(array)$config['gvinum']['vdisk'],(array)$config['gstripe']['vdisk'],(array)$config['gconcat']['vdisk']);
+$all_raid = get_conf_sraid_disks_list();
 $a_disk = get_fstype_disks_list("softraid");
 
 if (!sizeof($a_disk)) {

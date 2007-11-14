@@ -53,42 +53,43 @@ if ($_POST) {
 	$reqdfieldsn = array(gettext("Command"),gettext("Volume Name"),gettext("Disk"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-	if (!$input_errors)
-	{
+	if (!$input_errors) {
 		$do_action = true;
 		$action = $_POST['action'];
 		$raid = $_POST['raid'];
 		$disk = $_POST['disk'];
 	}
 }
-if (!isset($do_action))
-{
+
+if (!isset($do_action)) {
 	$do_action = false;
 	$action = '';
 	$object = '';
+	$raid = '';
+	$disk = '';
 }
 ?>
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
 function raid_change() {
- var next = null;
- // Remove all entries from partition combobox.
- document.iform.disk.length = 0;
- // Insert entries for disk combobox.
- switch(document.iform.raid.value)
- {
-  <?php foreach ($a_raid as $raidv): ?>
+	var next = null;
+	// Remove all entries from partition combobox.
+	document.iform.disk.length = 0;
+	// Insert entries for disk combobox.
+	switch(document.iform.raid.value) {
+		<?php foreach ($a_raid as $raidv): ?>
     case "<?=$raidv['name'];?>":
       <?php foreach($raidv['device'] as $devicen => $devicev): ?>
-         if(document.all) // MS IE workaround.
-            next = document.iform.disk.length;
-         document.iform.disk.add(new Option("<?=$devicev;?>","<?=$devicev;?>",false,<?php if("{$devicev}" == $disk){echo "true";}else{echo "false";};?>), next);
-       <?php endforeach; ?>
-       break;
-     <?php endforeach; ?>
-   }
- }
+				<?php $name = str_replace("/dev/","",$devicev);?>
+				if(document.all) // MS IE workaround.
+					next = document.iform.disk.length;
+				document.iform.disk.add(new Option("<?=$name;?>","<?=$name;?>",false,<?php if($name === $disk){echo "true";}else{echo "false";};?>), next);
+				<?php endforeach; ?>
+				break;
+     <?php endforeach;?>
+	}
+}
 // -->
 </script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -118,9 +119,9 @@ function raid_change() {
       <td class="vtable">           
 				<select name="raid" class="formfld" id="raid" onchange="raid_change()">
 	    	 	<option value=""><?=gettext("Must choose one");?></option>
-	    	  <?php foreach ($a_raid as $raidvol):?>
-	    		<option value="<?=$raidvol['name'];?>" <?php if ($pconfig['raid'] == $raid['name']) echo "selected";?>> 
-	    		<?php echo htmlspecialchars($raidvol['name']);	?>
+	    	  <?php foreach ($a_raid as $raidv):?>
+	    		<option value="<?=$raidv['name'];?>" <?php if ($raid === $raidv['name']) echo "selected";?>> 
+	    		<?php echo htmlspecialchars($raidv['name']);	?>
 	    		</option>
 	    		<?php endforeach;?>
 				</select>
@@ -139,6 +140,7 @@ function raid_change() {
                       <option value="status" <?php if ($action == "status") echo "selected"; ?>>status</option>
                       <option value="clear" <?php if ($action == "clear") echo "selected"; ?>>clear</option>
                       <option value="stop" <?php if ($action == "stop") echo "selected"; ?>>stop</option>
+                      <option value="dump" <?php if ($action == "dump") echo "selected"; ?>>dump</option>
                      </select>
                   </td>
                 </tr>
@@ -150,27 +152,31 @@ function raid_change() {
 				</tr>
 				<tr>
 				<td valign="top" colspan="2">
-				<? if ($do_action)
-				{
+				<?php if ($do_action) {
 					echo("<strong>" . gettext("Command output:") . "</strong><br>");
 					echo('<pre>');
 					ob_end_flush();
-					
-					//Remove the first 5 character of the diskname: /dev/
-					$smalldisk = substr($disk, 5);
-					
-					
-					if (strcmp($action,"dump") == 0 || strcmp($action,"clear") == 0 ) {
-						$cmd = "/sbin/gstripe $action " . escapeshellarg($smalldisk);
-					} else {
-						$cmd = "/sbin/gstripe $action " . escapeshellarg($raid);
+
+					switch ($action) {
+						case "list":					
+							disks_geom_cmd("stripe", "list", $raid, true);
+							break;
+						case "status":					
+							disks_geom_cmd("stripe", "status", $raid, true);
+							break;
+						case "clear":					
+							disks_geom_cmd("stripe", "clear -v", $disk, true);
+							break;
+						case "stop":					
+							disks_geom_cmd("stripe", "stop -v", $raid, true);
+							break;
+						case "dump":					
+							disks_geom_cmd("stripe", "dump", $disk, true);
+							break;
 					}
 
-					
-					system($cmd);
 					echo('</pre>');
-				}
-				?>
+				};?>
 				</td>
 				</tr>
 			</table>

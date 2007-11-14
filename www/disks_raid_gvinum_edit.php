@@ -45,8 +45,8 @@ if (!is_array($config['gvinum']['vdisk']))
 array_sort_key($config['gvinum']['vdisk'], "name");
 
 $a_raid = &$config['gvinum']['vdisk'];
+$all_raid = get_conf_sraid_disks_list();
 $a_disk = get_fstype_disks_list("softraid");
-$all_raid = array_merge((array)$config['graid5']['vdisk'],(array)$config['gmirror']['vdisk'],(array)$config['gvinum']['vdisk'],(array)$config['gstripe']['vdisk'],(array)$config['gconcat']['vdisk']);
 
 if (!sizeof($a_disk)) {
 	$nodisk_errors[] = gettext("You must add disks first.");

@@ -1828,6 +1828,16 @@ function get_conf_all_disks_list() {
 	foreach ($a_sraiddisk as $disk) {
 		$unused = true;
 
+		// Check Software RAID's.
+		foreach ($a_sraiddisk as $vdisk) {
+			if (is_array($vdisk['device'])) {
+				if (false !== array_search($disk['devicespecialfile'], $vdisk['device'])) {
+					$unused = false;
+					break;
+				}
+			}
+		}
+
 		// Check encrypted disks.
 		foreach ($a_encrypteddisk as $vdisk) {
 			if (false !== array_search($disk['devicespecialfile'], $vdisk['device'])) {
