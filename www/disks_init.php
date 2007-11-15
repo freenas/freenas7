@@ -52,7 +52,7 @@ $cfdevice = trim(file_get_contents($filename));
 $cfdevice = "/dev/" . $cfdevice;
 
 // Get list of all configured disks (physical and virtual).
-$a_alldisk = get_conf_all_disks_list();
+$a_alldisk = get_conf_all_disks_list_filtered();
 
 if ($_POST) {
 	unset($input_errors);
@@ -89,7 +89,7 @@ if ($_POST) {
 			write_config();
 
 			// Update list of configured disks.
-			$a_alldisk = get_conf_all_disks_list();
+			$a_alldisk = get_conf_all_disks_list_filtered();
 		}
 	}
 }

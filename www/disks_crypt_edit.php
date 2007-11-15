@@ -43,7 +43,7 @@ array_sort_key($config['geli']['vdisk'], "devicespecialfile");
 $a_geli = &$config['geli']['vdisk'];
 
 // Get list of all configured disks (physical and virtual).
-$a_alldisk = get_conf_all_disks_list();
+$a_alldisk = get_conf_all_disks_list_filtered();
 
 // Check whether there are disks configured, othersie display a error message.
 if (!count($a_alldisk)) {

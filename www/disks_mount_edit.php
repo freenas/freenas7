@@ -45,7 +45,9 @@ if (!is_array($config['mounts']['mount']))
 array_sort_key($config['mounts']['mount'], "devicespecialfile");
 
 $a_mount = &$config['mounts']['mount'];
-$a_disk = get_conf_all_disks_list();
+
+// Get list of all configured disks (physical and virtual).
+$a_disk = get_conf_all_disks_list_filtered();
 
 /* Load the cfdevice file*/
 $filename=$g['varetc_path']."/cfdevice";
