@@ -999,11 +999,17 @@ function config_upgrade() {
 	}
 
 	/* Convert 3.2 -> 3.3 */
+	/* Rename attribute //mounts/mount/fullname to devicespecialfile. */
 	/* Rename attribute //disks/disk/fullname and //gxxx/vdisk/fullname to devicespecialfile. */
 	/* Rename attribute //gxxx/vdisk/diskr to device. */
 	/* Modify attribute //geli/vdisk/name content. */
 	/* Add attribute //geli/vdisk/device. */
 	if ($config['version'] === "3.2") {
+		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
+			$config['mounts']['mount'][$i]['devicespecialfile'] = $config['mounts']['mount'][$i]['fullname'];
+			unset($config['mounts']['mount'][$i]['fullname']);
+		}
+
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			if (isset($config['disks']['disk'][$i]['fullname'])) {
 				$config['disks']['disk'][$i]['devicespecialfile'] = $config['disks']['disk'][$i]['fullname'];

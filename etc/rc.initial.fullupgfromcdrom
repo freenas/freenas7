@@ -164,7 +164,7 @@ EOD;
 
 	echo <<<EOD
 
-{$productname} installed on $cfdevice has been upgraded.
+{$productname} installed on {$cfdevice} has been upgraded.
 You can now remove the CD-ROM and reboot the PC.
 
 Press ENTER to continue.

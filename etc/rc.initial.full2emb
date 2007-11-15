@@ -153,7 +153,7 @@ EOD;
 
 	echo <<<EOD
 
-{$productname} installed on $cfdevice has been converted/upgraded.
+{$productname} installed on {$cfgpartition} has been converted/upgraded.
 You can now remove the CD-ROM and reboot the PC.
 
 Press ENTER to continue.
