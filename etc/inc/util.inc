@@ -1036,20 +1036,6 @@ function get_all_disks_list()
 	return $disklist;
 }
 
-/* Return size of the disk */
-function get_disks_size($diskname)
-{
-	$disklist = get_physical_disks_list();
-	$disksize = 0;
-
-	foreach ($disklist as $diskk => $diskv) {
-		if (strcmp($diskk,$diskname) == 0)
-			$disksize=$diskv['size'];
-	}
-
-	return $disksize;
-}
-
 /* wrapper for exec() */
 function mwexec($command) {
 	global $g;

@@ -424,11 +424,9 @@ plex org striped 256k
 EOD;
 						foreach ($vdiskv['device'] as $devicek => $devicev) {
 							/* Get the disksize */
-							$disksize=get_disks_size($devicev);
-							/* Remove the ending 'B' in 'MB' */
-							$disksize=rtrim($disksize, 'B');
+							$diskinfo=disks_get_diskinfo($devicev);
 							/* $raidconf .= <<<EOD
-sd length {$disksize} drive disk_{$devicev}
+sd length {$diskinfo['mediasize_mbytes']}M drive disk_{$devicev}
 
 EOD; */
 							$raidconf .= <<<EOD
@@ -444,11 +442,9 @@ plex org concat
 
 EOD;
 							/* Get the disksize */
-							$disksize=get_disks_size($devicev);
-							/* Remove the ending 'B' in 'MB' */
-							$disksize=rtrim($disksize, 'B');
+							$diskinfo=disks_get_diskinfo($devicev);
 							/* $raidconf .= <<<EOD
-sd length {$disksize} drive disk_{$devicev}
+sd length {$diskinfo['mediasize_mbytes']}M drive disk_{$devicev}
 
 EOD; */
 
@@ -466,11 +462,9 @@ plex org raid5 256k
 EOD;
 						foreach ($vdiskv['device'] as $devicek => $devicev) {
 							/* Get the disksize */
-							$disksize=get_disks_size($devicev);
-							/* Remove the ending 'B' in 'MB' */
-							$disksize=rtrim($disksize, 'B');
+							$diskinfo=disks_get_diskinfo($devicev);
 							/* $raidconf .= <<<EOD
-sd length {$disksize} drive disk_{$devicev}
+sd length {$diskinfo['mediasize_mbytes']}M drive disk_{$devicev}
 
 EOD; */
 
