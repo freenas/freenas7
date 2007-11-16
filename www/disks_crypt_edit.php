@@ -63,7 +63,7 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	// Input validation.
-  $reqdfields = explode(" ", "disk ealgo password passwordconf");
+  $reqdfields = explode(" ", "disk ealgo passphrase passphraseconf");
   $reqdfieldsn = array(gettext("Disk"),gettext("Encryption algorithm"),gettext("Passphrase"),gettext("Passphrase"));
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -72,8 +72,8 @@ if ($_POST) {
 		$input_errors[] = gettext("This disk already exists in the disk list.");
 	}
 
-	// Check for a password mismatch.
-	if ($_POST['password'] !== $_POST['passwordconf']) {
+	// Check for a passphrase mismatch.
+	if ($_POST['passphrase'] !== $_POST['passphraseconf']) {
 		$input_errors[] = gettext("Passphrase don't match.");
 	}
 
@@ -190,8 +190,8 @@ if (!isset($pconfig['do_action'])) {
 					<tr>
 				    <td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Passphrase"));?></td>
 				    <td width="78%" class="vtable">
-				      <input name="password" type="password" class="formfld" id="password" size="20" value=""><br>
-				      <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="">&nbsp;(<?=gettext("Confirmation");?>)
+				      <input name="passphrase" type="password" class="formfld" id="passphrase" size="20" value=""><br>
+				      <input name="passphraseconf" type="password" class="formfld" id="passphraseconf" size="20" value="">&nbsp;(<?=gettext("Confirmation");?>)
 				    </td>
 					</tr>
 					<tr>
