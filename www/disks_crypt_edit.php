@@ -58,7 +58,7 @@ if ("http" === $config['system']['webgui']['protocol']) {
 if ($_POST) {
 	unset($input_errors);
 	unset($errormsg);
-	unset($pconfig['action']);
+	unset($pconfig['do_action']);
 
 	$pconfig = $_POST;
 
@@ -78,7 +78,7 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$pconfig['action'] = true;
+		$pconfig['do_action'] = true;
 		$pconfig['init'] = $_POST['init'] ? true : false;
 		$pconfig['name'] = $a_alldisk[$_POST['disk']]['name']; // e.g. da2
 		$pconfig['devicespecialfile'] = $a_alldisk[$_POST['disk']]['devicespecialfile']; // e.g. /dev/da2
@@ -87,10 +87,10 @@ if ($_POST) {
 		// Check whether disk is mounted.
 		if (disks_ismounted_ex($pconfig['devicespecialfile'], "devicespecialfile")) {
 			$errormsg = sprintf( gettext("The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."), "disks_mount_tools.php?disk={$pconfig['devicespecialfile']}&action=umount");
-			$pconfig['action'] = false;
+			$pconfig['do_action'] = false;
 		}
 
-		if ($pconfig['action']) {
+		if ($pconfig['do_action']) {
 			// Set new file system type attribute ('fstype') in configuration.
 			set_conf_disk_fstype($pconfig['devicespecialfile'], "geli");
 
@@ -113,8 +113,8 @@ if ($_POST) {
 	}
 }
 
-if (!isset($pconfig['action'])) {
-	$pconfig['action'] = false;
+if (!isset($pconfig['do_action'])) {
+	$pconfig['do_action'] = false;
 	$pconfig['init'] = false;
 	$pconfig['disk'] = 0;
 	$pconfig['aalgo'] = "";
@@ -209,7 +209,7 @@ if (!isset($pconfig['action'])) {
 			    </tr>
 					<tr>
 						<td valign="top" colspan="2">
-						<? if ($pconfig['action']) {
+						<? if ($pconfig['do_action']) {
 							echo("<strong>" . gettext("Command output:") . "</strong>");
 							echo('<pre>');
 							ob_end_flush();

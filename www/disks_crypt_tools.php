@@ -58,7 +58,7 @@ if ($config['system']['webgui']['protocol'] === "http") {
 
 if ($_POST) {
 	unset($input_errors);
-	unset($pconfig['action']);
+	unset($pconfig['do_action']);
 
 	/* input validation */
 	$reqdfields = explode(" ", "disk action");
@@ -76,7 +76,7 @@ if ($_POST) {
 	}
 
 	if(!$input_errors) {
-		$pconfig['action'] = true;
+		$pconfig['do_action'] = true;
 		$pconfig['action'] = $_POST['action'];
 		$pconfig['disk'] = $_POST['disk'];
 		$pconfig['oldpassphrase'] = $_POST['oldpassphrase'];
@@ -85,7 +85,7 @@ if ($_POST) {
 }
 
 if(!isset($pconfig['action'])) {
-	$pconfig['action'] = false;
+	$pconfig['do_action'] = false;
 	$pconfig['action'] = "";
 	$pconfig['disk'] = "";
 	$pconfig['oldpassphrase'] = "";
@@ -181,7 +181,7 @@ function action_change() {
   				</tr>
   				<tr>
     				<td valign="top" colspan="2">
-    				<?php if ($pconfig['action']) {
+    				<?php if ($pconfig['do_action']) {
     				  echo("<strong>" . gettext("Command output:") . "</strong><br>");
     					echo('<pre>');
     					ob_end_flush();
