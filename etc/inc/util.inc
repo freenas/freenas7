@@ -1826,7 +1826,7 @@ function get_conf_disks_filtered_ex($key, $pattern) {
 
 	if (is_array($a_disk)) {
 		foreach ($a_disk as $disk) {
-			if (0 == strcmp($disk[$key], $pattern)) {
+			if (1 <= preg_match("/{$pattern}/", $disk[$key])) {
 				$result[] = $disk;
 			}
 		}
