@@ -46,7 +46,7 @@ array_sort_key($config['gmirror']['vdisk'], "name");
 
 $a_raid = &$config['gmirror']['vdisk'];
 $all_raid = get_conf_sraid_disks_list();
-$a_disk = get_fstype_disks_list("softraid");
+$a_disk = get_conf_disks_filtered_ex("fstype", "softraid");
 
 if (!sizeof($a_disk)) {
 	$nodisk_errors[] = gettext("You must add disks first.");

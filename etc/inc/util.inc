@@ -1391,37 +1391,6 @@ function get_ipv6defaultgateway() {
 	return $result;
 }
 
-// Get list of disks from given type of filesystem.
-// Return list containing disks of specified filesystem type
-function get_fstype_disks_list($fstype) {
-	global $config;
-
-	$result = array();
-
-	// Scan all physical disk */
-	if (is_array($config['disks']['disk'])) {
-		foreach ($config['disks']['disk'] as $disk) {
-			if (strcmp($disk['fstype'],$fstype) == 0) {
-				$result[] = $disk;
-			}
-   	}
- 	}
-
-	// Scan all vdisk volumes.
-	$avdisktype = explode(" ","gmirror gconcat gstripe gvinum graid5 geli");
-	foreach ($avdisktype as $vdisktypev) {
-		if (is_array($config[$vdisktypev]['vdisk'])) {
-			foreach ($config[$vdisktypev]['vdisk'] as $disk) {
-				if (0 == strcmp($disk['fstype'],$fstype)) {
-					$result[] = $disk;
-				}
-			}
-		}
-	}
-
-	return $result;
-}
-
 /* Get list of supported filesystem types */
 function get_fstype_list() {
 	global $g_filesystems;
@@ -1842,6 +1811,28 @@ function get_conf_all_disks_list_filtered() {
 	$a_disk = array_merge($a_disk, $a_encrypteddisk);
 
 	return $a_disk;
+}
+
+// Get a filtered list of configured disks (real and virtual, e.g. SoftRAID or GEli encrypted).
+// List is filtered by given key and value.
+// $key - Key used to filter (e.g. fstype, devicespecialfile or name)
+// $pattern - pattern used for filtering (e.g. key=fstype pattern=softraid)
+// Return list containing disks matching filter criterias.
+function get_conf_disks_filtered_ex($key, $pattern) {
+	$result = array();
+
+	// Get all configured disks.
+	$a_disk = array_merge(get_conf_physical_disks_list(), get_conf_sraid_disks_list(), get_conf_encryped_disks_list());
+
+	if (is_array($a_disk)) {
+		foreach ($a_disk as $disk) {
+			if (0 == strcmp($disk[$key], $pattern)) {
+				$result[] = $disk;
+			}
+		}
+	}
+
+	return $result;
 }
 
 // Set the given file system type in configuration.
