@@ -153,7 +153,7 @@ if (!isset($pconfig['action'])) {
 								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
 								<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
 								<option value="<?=$i;?>" <?php if ($pconfig['disk'] == $i) echo "selected";?>>
-								<?php echo htmlspecialchars("{$diskv['name']}: {$diskv['size']} ({$diskv['desc']})");?>
+								<?php $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); echo htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})");?>
 								</option>
 								<?php endforeach;?>
 			    		</select>

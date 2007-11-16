@@ -250,9 +250,9 @@ function fstype_change() {
 			      <td class="vtable">
 							<select name="mdisk" class="formfld" id="mdisk">
 								<option value=""><?=gettext("Must choose one");?></option>
-								<?php foreach ($a_disk as $disk):?>
-								<option value="<?=$disk['devicespecialfile'];?>" <?php if ($pconfig['devicespecialfile'] === $disk['devicespecialfile']) echo "selected";?>>
-								<?php echo htmlspecialchars("{$disk['name']}: {$disk['size']} ({$disk['desc']})");?>
+								<?php foreach ($a_disk as $diskv):?>
+								<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($pconfig['devicespecialfile'] === $diskv['devicespecialfile']) echo "selected";?>>
+								<?php $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); echo htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})");?>
 								</option>
 								<?php endforeach;?>
 							</select>

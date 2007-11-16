@@ -141,10 +141,11 @@ function action_change() {
             <td class="vtable">
               <select name="disk" class="formfld" id="disk">
               	<option value=""><?=gettext("Must choose one");?></option>
-                <?php foreach ($a_geli as $geliv): ?>
-								<option value="<?=$geliv['devicespecialfile'];?>" <?php if ($geliv['devicespecialfile'] === $pconfig['disk']) echo "selected";?>><?php echo htmlspecialchars($geliv['name'] . ": " .$geliv['size'] . " (" . $geliv['desc'] . ")");?>
-                <?php endforeach; ?>
+                <?php foreach ($a_geli as $geliv):?>
+								<option value="<?=$geliv['devicespecialfile'];?>" <?php if ($geliv['devicespecialfile'] === $pconfig['disk']) echo "selected";?>>
+								<?php echo htmlspecialchars("{$geliv['name']}: {$geliv['size']} ({$geliv['desc']})");?>
                 </option>
+                <?php endforeach;?>
               </select>
             </td>
       		</tr>
