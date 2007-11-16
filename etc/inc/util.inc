@@ -1859,15 +1859,15 @@ function set_conf_disk_fstype($disk, $fstype)
 										"gvinum"  => "vdisk",
 										"geli"    => "vdisk");
 
-	while (list($key, $val) = each($diskconf)) {
-		if (!is_array($config[$key][$val]))
+	while (list($class, $val) = each($diskconf)) {
+		if (!is_array($config[$class][$val]))
 			continue;
-//	echo "Searching array \$config['$key']['$val'] using key 'devicespecialfile'\n";
-		$id = array_search_ex($disk, $config[$key][$val], "devicespecialfile");
+//	echo "Searching array \$config['$class']['$val'] using key 'devicespecialfile'\n";
+		$id = array_search_ex($disk, $config[$class][$val], "devicespecialfile");
 		if ($id !== false) {
-			$config[$key][$val][$id]['fstype'] = $fstype;
+			$config[$class][$val][$id]['fstype'] = $fstype;
 			$result = 0;
-//		echo "Set \$config['$key']['$val'][$id]['fstype'] = $fstype\n";
+//		echo "Set \$config['$class']['$val'][$id]['fstype'] = $fstype\n";
 			break;
 		}
 	}
