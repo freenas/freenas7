@@ -8,10 +8,10 @@
 
 ####### contents of /bin
 
-## Test: condition evaluation utility
+## Test -- condition evaluation utility
 bin/[:bin/test
 
-##  cat -- concatenate and print files
+## cat -- concatenate and print files
 bin/cat
 
 ## chmod -- change file modes
@@ -20,7 +20,7 @@ bin/chmod
 ## cp -- copy files
 bin/cp
 
-## tcsh - C shell with file name completion and command line editing
+## tcsh -- C shell with file name completion and command line editing
 bin/csh:bin/tcsh
 
 ## date -- display or set date and time
@@ -29,16 +29,16 @@ bin/date
 ## dd -- convert and copy a file
 bin/dd
 
-##  df -- display free disk space
+## df -- display free disk space
 bin/df
 
 ## echo -- write arguments to the standard output
 bin/echo
 
-##  expr -- evaluate expression
+## expr -- evaluate expression
 bin/expr
 
-##  hostname -- set or print name of current host system
+## hostname -- set or print name of current host system
 bin/hostname
 
 ## kill -- terminate or signal a process
@@ -50,26 +50,26 @@ bin/link:bin/ln
 ## ls -- list directory contents
 bin/ls
 
-##  mkdir -- make directories
+## mkdir -- make directories
 bin/mkdir
 
-##  mv -- move files
+## mv -- move files
 bin/mv
 
 ## pax -- read and write file archives and copy directory hierarchies
-#bin/pax
+bin/pax
 
-##ps -- process status
+## ps -- process status
 bin/ps
 
-##pwd -- return working directory name
+## pwd -- return working directory name
 #Prevent WinSCP to Generate Error message
 bin/pwd:bin/realpath
 
 ## rm, unlink -- remove directory entries
 bin/rm:bin/unlink
 
-##sh -- command interpreter (shell)
+## sh -- command interpreter (shell)
 bin/sh
 
 ## sleep -- suspend execution for an interval of time
@@ -85,13 +85,13 @@ bin/sync
 bin/kenv
 
 ####### contents of /sbin
-# adjkerntz -- adjust local time CMOS clock to reflect time zone changes and keep current timezone offset for the kernel
+## adjkerntz -- adjust local time CMOS clock to reflect time zone changes and keep current timezone offset for the kernel
 sbin/adjkerntz
 
 ## bsdlabel -- read and write disk pack label
 sbin/bsdlabel
 
-##devfs -- DEVFS control (NEW from FreeBSD 5.2, replace the )
+## devfs -- DEVFS control (NEW from FreeBSD 5.2, replace the )
 sbin/devfs
 
 ## dhclient -- Dynamic Host Configuration Protocol (DHCP) client
@@ -106,7 +106,7 @@ sbin/dmesg
 ## reboot, halt, fastboot, fasthalt -- stopping and restarting the system
 sbin/fastboot:sbin/fasthalt:sbin/halt:sbin/reboot
 
-##  fdisk -- PC slice table maintenance utility
+## fdisk -- PC slice table maintenance utility
 sbin/fdisk
 
 ## fsck -- file system consistency check and interactive repair
@@ -115,13 +115,13 @@ sbin/fsck
 ## fsck -- UFS,FFS 4.2BSD file system consistency check and interactive repair
 sbin/fsck_ufs:sbin/fsck_ffs:sbin/fsck_4.2bsd
 
-## fsck -- DOS/WINDOWS file system consistency check and interactive repair
+## fsck_msdosfs -- DOS/WINDOWS file system consistency check and interactive repair
 sbin/fsck_msdosfs
 
 ## geom -- universal control utility for GEOM classes
 sbin/geom:sbin/gconcat:sbin/gmirror:sbin/gnop:sbin/gstripe:sbin/geli:sbin/glabel
 
-# Growfs -- grow size of an existing ufs file system
+## growfs -- grow size of an existing ufs file system
 sbin/growfs
 
 ## gpt -- Manipulate GUID partition tables
@@ -148,7 +148,7 @@ sbin/kldunload
 ## ldconfig -- configure the shared library cache
 sbin/ldconfig
 
-# mdconfig -- configure and enable memory disks
+## mdconfig -- configure and enable memory disks
 sbin/mdconfig
 
 ## mknod -- build special file
@@ -157,7 +157,7 @@ sbin/mknod
 ## mount -- mount file systems
 sbin/mount
 
-## mount_std, mount_devfs, mount_fdescfs, mount_linprocfs, mount_procfs -- mount ``standard'' file systems
+## mount_std, mount_devfs, mount_fdescfs, mount_linprocfs, mount_procfs -- mount "standard'' file systems
 sbin/mount_devfs:sbin/mount_fdescfs:sbin/mount_linprocfs:sbin/mount_procfs:sbin/mount_std:
 
 ## mdmfs, mount_mfs -- configure and mount an in-memory file system using the md(4) driver
@@ -182,7 +182,7 @@ sbin/mount_nfs
 sbin/mount_nfs4
 
 ## mount_ntfs -- mount NTFS file system: Replaced by NTFS-3G
-#sbin/mount_ntfs
+sbin/mount_ntfs
 
 ## mount_ext2fs -- mount ext2fs file system
 sbin/mount_ext2fs
@@ -197,7 +197,7 @@ sbin/mount_reiserfs
 sbin/mount_udf
 
 ## natd -- Network Address Translation daemon
-#sbin/natd
+sbin/natd
 
 ## newsfs -- construct a new UFS1/UFS2 file system
 sbin/newfs
@@ -205,22 +205,22 @@ sbin/newfs
 ## newsfs -- construct a FAT (16/32) file system
 sbin/newfs_msdos
 
-##nologin -- politely refuse a login
+## nologin -- politely refuse a login
 sbin/nologin
 
 ## ping -- send ICMP ECHO_REQUEST packets to network hosts
 sbin/ping
 
-## ping -- -- send ICMPv6 ECHO_REQUEST packets to network hosts
+## ping6 -- send ICMPv6 ECHO_REQUEST packets to network hosts
 sbin/ping6
 
 ## route -- manually manipulate the routing tables
 sbin/route
 
-##  shutdown -- close down the system at a given time
+## shutdown -- close down the system at a given time
 sbin/shutdown
 
-##sysctl -- get or set kernel state
+## sysctl -- get or set kernel state
 sbin/sysctl
 
 ## swapon - Enable swap
@@ -232,48 +232,48 @@ sbin/swapoff
 ## pstat, swapinfo -- display system data structures
 usr/sbin/pstat:usr/sbin/swapinfo
 
-##tunefs -- tune up an existing file system
+## tunefs -- tune up an existing file system
 sbin/tunefs
 
 ## umount -- unmount file systems
 sbin/umount
 
-# atacontrol: manage IDE disk
+## atacontrol -- manage IDE disk
 sbin/atacontrol
 
-# camcontrol: manage SCSI disk
+## camcontrol -- manage SCSI disk
 sbin/camcontrol
 
-# rcorder -- print a dependency ordering of interdependent files
+## rcorder -- print a dependency ordering of interdependent files
 sbin/rcorder
 
-# md5, sha1, sha256, rmd160 -- calculate a message-digest fingerprint
+## md5, sha1, sha256, rmd160 -- calculate a message-digest fingerprint
 sbin/md5:sbin/sha1:sbin/sha256:sbin/rmd160
 
 ####### contents of /usr/bin
 
-# awk - pattern-directed scanning and processing language
+## awk -- pattern-directed scanning and processing language
 usr/bin/awk
 
-# chgrp - change group
+## chgrp -- change group
 usr/bin/chgrp
 
-# du - Display file usage: Usefull for checking disk space
+## du -- Display file usage: Usefull for checking disk space
 usr/bin/du
 
-# fstat -- identify active files . Fuse mount use fstat
+## fstat -- identify active files . Fuse mount use fstat
 usr/bin/fstat
 
-## FTP/HTTP download tools
+## fetch -- FTP/HTTP download tools
 usr/bin/fetch
 
-## This utility prevent WinSCP to display error message
+## groups -- This utility prevent WinSCP to display error message
 usr/bin/groups
 
-## gzip, gunzip, zcat, gzcat - compress or expand files
+## gzip, gunzip, zcat, gzcat -- compress or expand files
 usr/bin/gzip:usr/bin/gunzip:usr/bin/zcat:usr/bin/gzcat
 
-## id - displays the user and group names and numeric IDs, of the calling process
+## id -- displays the user and group names and numeric IDs, of the calling process
 usr/bin/id
 
 ## killall -- kill processes by name
@@ -282,7 +282,7 @@ usr/bin/killall
 ## logger -- make entries in the system log
 usr/bin/logger
 
-##  netstat -- show network status
+## netstat -- show network status
 usr/bin/netstat
 
 ## nohup -- invoke a utility immune to hangups
@@ -294,10 +294,10 @@ usr/bin/passwd
 ## su -- substitute user identity
 usr/bin/su
 
-##scp -- secure copy (remote file copy program)
+## scp -- secure copy (remote file copy program)
 usr/bin/scp
 
-##ssh -- secure Shell Client (used for RSYNC and Unison over SSH)
+## ssh -- secure Shell Client (used for RSYNC and Unison over SSH)
 # Note: Will be overwritten when openssh-portable package is activated.
 usr/bin/ssh
 
@@ -307,7 +307,7 @@ usr/bin/tail
 ## tar -- manipulate tape archives
 usr/bin/tar
 
-## top - display and update information about the top cpu processes
+## top -- display and update information about the top cpu processes
 usr/bin/top
 
 ## touch -- create/change file access and modification times
@@ -316,22 +316,22 @@ usr/bin/touch
 ## uptime -- show how long system has been running
 usr/bin/uptime:usr/bin/w
 
-## ldd - list dynamic object dependencies
+## ldd -- list dynamic object dependencies
 usr/bin/ldd
 
-## stat - display file status
+## stat -- display file status
 usr/bin/stat:usr/bin/readlink
 
-## less, more - display content
+## less, more -- display content
 usr/bin/less:usr/bin/more
 
-## grep, egrep, fgrep, zgrep, zegrep, zfgrep, bzgrep, bzegrep, bzfgrep - print lines matching a pattern
+## grep, egrep, fgrep, zgrep, zegrep, zfgrep, bzgrep, bzegrep, bzfgrep -- print lines matching a pattern
 usr/bin/grep:usr/bin/egrep:usr/bin/fgrep:usr/bin/zgrep:usr/bin/zegrep:usr/bin/zfgrep:usr/bin/bzgrep:usr/bin/bzegrep:usr/bin/bzfgrep
 
-## find - walk a file hierarchy
+## find -- walk a file hierarchy
 usr/bin/find
 
-## uname - display information about the system
+## uname -- display information about the system
 usr/bin/uname
 
 ## env -- set environment and execute command, or print environment
@@ -358,19 +358,19 @@ usr/bin/basename:usr/bin/dirname
 ## tee -- pipe fitting
 usr/bin/tee
 
-# sed -- stream editor
+## sed -- stream editor
 usr/bin/sed
 
-# wall -- write a message to users (repuired by shutdown)
+## wall -- write a message to users (repuired by shutdown)
 usr/bin/wall
 
-# sort - sort lines of text files
+## sort -- sort lines of text files
 usr/bin/sort
 
-# uniq -- report or filter out repeated lines in a file
+## uniq -- report or filter out repeated lines in a file
 usr/bin/uniq
 
-# login -- log into the computer
+## login -- log into the computer
 usr/bin/login
 
 ####### contents of /usr/sbin
@@ -389,7 +389,7 @@ usr/sbin/chown
 ##chroot -- change root directory
 usr/sbin/chroot
 
-## cron - The scheduler
+## cron -- Task scheduler
 usr/sbin/cron
 
 ## powerd -- System power control utility
@@ -404,16 +404,16 @@ usr/sbin/pwd_mkdb
 ## rtsold -- router solicitation daemon
 usr/sbin/rtsold:sbin/rtsol
 
-##  traceroute - print the route packets take to network host
+##  traceroute -- print the route packets take to network host
 usr/sbin/traceroute
 
-# wicontrol -- configure Lucent, Intersil, and Atheros wireless devices
+## wicontrol -- configure Lucent, Intersil, and Atheros wireless devices
 usr/sbin/wicontrol
 
-# wpa_supplicant -- WPA/802.11i Supplicant for wireless network devices
+## wpa_supplicant -- WPA/802.11i Supplicant for wireless network devices
 usr/sbin/wpa_supplicant
 
-# NFS server tools
+## NFS server tools
 usr/sbin/mountd
 usr/sbin/nfsd
 usr/sbin/rpcbind
@@ -424,22 +424,22 @@ usr/sbin/rpc.statd
 # Note: Will be overwritten when openssh-portable package is activated.
 usr/sbin/sshd
 
-# pkg_add -- a utility for installing software package distributions
+## pkg_add -- a utility for installing software package distributions
 usr/sbin/pkg_add
 
-# pkg_info -- dump out information for packages
+## pkg_info -- dump out information for packages
 usr/sbin/pkg_info
 
-# pkg_delete -- a utility for deleting previously installed software package distributions
+## pkg_delete -- a utility for deleting previously installed software package distributions
 usr/sbin/pkg_delete
 
-# mtree -- map a directory hierarchy (required by pkg_add)
+## mtree -- map a directory hierarchy (required by pkg_add)
 usr/sbin/mtree
 
-# diskinfo -- get information about disk device
+## diskinfo -- get information about disk device
 usr/sbin/diskinfo
 
-# bsnmpd -- simple and extensible SNMP daemon
+## bsnmpd -- simple and extensible SNMP daemon
 usr/sbin/bsnmpd
 
 ####### contents of /usr/libexec
@@ -450,7 +450,7 @@ libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
 # Note: Will be overwritten when openssh-portable package is activated.
 usr/libexec/sftp-server
 
-# getty -- set terminal mode
+## getty -- set terminal mode
 usr/libexec/getty
 
 ####### contents of /usr/share/misc
