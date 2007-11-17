@@ -216,6 +216,9 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Drivers\" \\
 build_kernel() {
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
 
+	# Make sure kernel directory exists.
+	[ ! -d "${FREENAS_ROOTFS}/boot/kernel" ] && mkdir -p ${FREENAS_ROOTFS}/boot/kernel
+
 	# Choose what to do.
 	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 3 \
 		"prebuild" "Install additional drivers" OFF \
