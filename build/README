@@ -7,7 +7,7 @@ Licence: BSD
 1. Files and directories listing
 2. How to generate an FreeNAS ISO or IMG  file
 3. Building FreeNAS with the latest sources
-4. History changes log
+4. Building kernel
 
 ================================
 1. Files and directories listing
@@ -71,7 +71,7 @@ from scretch. After that use one of the following menus:
 13 - Create 'Full' (TGZ) update file
 
 =================================
-4.0 Building kernel
+4. Building kernel
 
 Before building the kernel it is recommended to delete the directory /usr/src completely.
 After that run the build scripts and update the kernel sources via cvsup + freebsd-update.
