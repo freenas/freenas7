@@ -69,3 +69,11 @@ from scretch. After that use one of the following menus:
 11 - Create 'LiveCD' (ISO) file
 12 - Create 'LiveCD' (ISO) file without 'Embedded' file
 13 - Create 'Full' (TGZ) update file
+
+=================================
+4.0 Building kernel
+
+Before building the kernel it is recommended to delete the directory /usr/src completely.
+After that run the build scripts and update the kernel sources via cvsup + freebsd-update.
+Continue building using the 'Build kernel' menu in the build script.
+ 
