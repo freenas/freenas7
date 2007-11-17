@@ -13,7 +13,6 @@ Majors changes:
 - Upgrade netbsd-iscsi (iscsi-target) to 20071025.
 - Add GNU General Public License (GPL), GNU Lesser General Public License (LGPL),
   Apple Public Source License and PHP License text (located in /usr/local/www).
-- Upgrade Samba to 3.0.27.
 
 Minors changes:
 - 'dd' destination disks and partitions during install process.
