@@ -15,12 +15,12 @@ stop_cmd=":"
 
 fsck_start()
 {
-	local _result
-
-	eval /etc/rc.d.php/${name}
-	_result=$?
-
-	return ${_result}
+	if [ "$autoboot" = no ]; then
+		echo "Fast boot: skipping disk checks."
+	elif [ "$autoboot" = yes ]; then
+		echo "Starting file system checks:"
+		eval /etc/rc.d.php/${name}
+	fi
 }
 
 load_rc_config ${name}

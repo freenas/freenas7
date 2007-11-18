@@ -40,8 +40,6 @@ global $config;
 /* Start RAID configuration, otherwise GEOM classes aren't available. */
 disks_raid_start();
 
-write_console("Starting file system checks:\n");
-
 // Check if there exits any mounts.
 if(is_array($config['mounts']['mount'])) {
 	foreach($config['mounts']['mount'] as $mountv) {
