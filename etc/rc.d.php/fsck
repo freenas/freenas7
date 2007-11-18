@@ -1,7 +1,7 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-	mountcritlocal - script to mount all configured filesystems
+	fsck - script to check configured file systems.
 
 	Copyright (c) 2007 Volker Theile (votdev@gmx.de)
 	All rights reserved.
@@ -31,11 +31,23 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	require_once("config.inc");
-	require_once("functions.inc");
+require_once("config.inc");
+require_once("functions.inc");
+require_once("util.inc");
 
-	/* Mount the disks */
-	disks_mount_all();
+global $config;
 
-	return 0;
+/* Start RAID configuration, otherwise GEOM classes aren't available. */
+disks_raid_start();
+
+write_console("Starting file system checks:\n");
+
+// Check if there exits any mounts.
+if(is_array($config['mounts']['mount'])) {
+	foreach($config['mounts']['mount'] as $mountv) {
+		system("/sbin/fsck -F -p -t {$mountv['fstype']} {$mountv['devicespecialfile']}");
+  }
+}
+
+return 0;
 ?>

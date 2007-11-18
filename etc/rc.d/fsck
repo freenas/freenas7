@@ -1,0 +1,27 @@
+#!/bin/sh
+# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: fsck
+# REQUIRE: CONFIG
+# BEFORE:  mountcritlocal
+# KEYWORD: nojail
+
+. /etc/rc.subr
+
+name="fsck"
+start_cmd="fsck_start"
+stop_cmd=":"
+
+fsck_start()
+{
+	local _result
+
+	eval /etc/rc.d.php/${name}
+	_result=$?
+
+	return ${_result}
+}
+
+load_rc_config ${name}
+run_rc_command "$1"

@@ -5,6 +5,7 @@ FreeNAS 0.686b3:
 
 Majors changes:
 - Revert Samba to 3.0.24 because of transfer problems (misc. warnings in log).
+- Add file system check support during boot process.
 
 Minors changes:
 
