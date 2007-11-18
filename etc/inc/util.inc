@@ -473,6 +473,7 @@ function get_mounts_list()
 // example: Array
 // [mount_point_name] => Array
 //      (
+//        [filesystem] => /dev/ad0a
 //        [capacity] => 48%
 //        [used] => 2.4G
 //        [avail] => 2.6G
@@ -501,6 +502,7 @@ function get_mount_usage()
 			foreach ($config['mounts']['mount'] as $mountcfg) {
 				if (0 == strcmp($mounted_on, "/mnt/{$mountcfg['sharename']}")) {
 					$result[$mounted_on] = array();
+					$result[$mounted_on]['filesystem'] = $filesystem;
 					$result[$mounted_on]['capacity'] = $capacity;
 					$result[$mounted_on]['avail'] = $avail;
 					$result[$mounted_on]['used'] = $used;

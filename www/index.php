@@ -154,7 +154,8 @@ $pgtitle_omit = true;
 	      if (is_array($diskuse) && (0 < count($diskuse))) {
 					foreach ($diskuse as $diskusek => $diskusev) {
 						echo "<tr><td>";
-						echo htmlspecialchars($diskusek);
+						$index = array_search_ex($diskusev['filesystem'], $config['mounts']['mount'], "devicespecialfile");
+						echo htmlspecialchars($config['mounts']['mount'][$index]['desc']);
 						echo "</td><td>";
 						$percent_used = rtrim($diskusev['capacity'],"%");
 
