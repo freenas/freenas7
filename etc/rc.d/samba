@@ -85,7 +85,6 @@ create_conf()
 		-v "concat('netbios name = ',//samba/netbiosname)" -n \
 		-v "concat('workgroup = ',//samba/workgroup)" -n \
 		-v "concat('server string = ',//samba/serverdesc)" -n \
-		-o "load printers = no" -n \
 		-v "concat('security = ',//samba/security)" -n \
 		-o "dns proxy = no" -n \
 		-o "# Settings to enhance performance:" -n \
