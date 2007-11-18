@@ -126,8 +126,8 @@ if [ 0 != $opt_a ]; then
 fi
 
 # Copy kernel.
-if [ -e "${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/kernel.gz" ] ; then
-  cp ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/kernel.gz $MINIBSD_DIR/kernel
+if [ -e "${FREENAS_WORKINGDIR}/kernel.gz" ] ; then
+  cp ${FREENAS_WORKINGDIR}/kernel.gz $MINIBSD_DIR/kernel
 else
   echo "=> ERROR: File kernel.gz does not exist!";
   exit 1;

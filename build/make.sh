@@ -247,7 +247,7 @@ build_kernel() {
 				# Compiling and compressing the kernel.
 				cd /usr/src;
 				env MAKEOBJDIRPREFIX=${FREENAS_OBJDIRPREFIX} make buildkernel KERNCONF=${FREENAS_KERNCONF};
-				gzip -v -f -9 ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/kernel;;
+				gzip -c -v -f -9 ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/kernel > ${FREENAS_WORKINGDIR}/kernel.gz;;
 			install)
 				# Installing the modules.
 				cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules;
