@@ -6,7 +6,9 @@ CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
 MAINTAINER=		votdev@gmx.de
 
-MASTER_SITES=	http://us3.samba.org/samba/ftp/stable/
+MASTER_SITES=				${MASTER_SITE_SAMBA}
+MASTER_SITE_SUBDIR=	. old-versions rc pre
+DISTNAME=						${PORTNAME}-${PORTVERSION:S/.p/pre/:S/.r/rc/}
 
 SAMBA_LOGFILEBASE=		/var/log/samba
 SAMBA_PIDDIR=					/var/run
