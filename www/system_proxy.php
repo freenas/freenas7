@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Proxy"));
+$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Proxy"));
 
 if (!is_array($config['system']['proxy']['http'])) {
 	$config['system']['proxy']['http'] = array();
@@ -228,7 +228,7 @@ function proxy_auth_change() {
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="http_auth" type="checkbox" id="http_auth" value="yes" <?php if ($pconfig['http_auth']) echo "checked";?> onClick="proxy_auth_change()">
-			        <?=gettext("Login is required.");?>
+			        <?=gettext("If Login is required.");?>
 						</td>
 			    </tr>
 			    <tr id="http_username_tr">
@@ -272,7 +272,7 @@ function proxy_auth_change() {
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="ftp_auth" type="checkbox" id="ftp_auth" value="yes" <?php if ($pconfig['ftp_auth']) echo "checked";?> onClick="proxy_auth_change()">
-			        <?=gettext("Login is required.");?>
+			        <?=gettext("If Login is required.");?>
 						</td>
 			    </tr>
 			    <tr id="ftp_username_tr">

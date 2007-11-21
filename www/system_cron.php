@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Cron"));
+$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Cron"));
 
 if (!is_array($config['cron']['job']))
 	$config['cron']['job'] = array();

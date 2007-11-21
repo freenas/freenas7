@@ -45,7 +45,7 @@ if (isset($_POST['id']))
 if (isset($_POST['type']))
 	$type = $_POST['type'];
 
-$pgtitle = array(gettext("System"),gettext("Command scripts"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Command scripts"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['rc']['preinit']['cmd']))
 	$config['rc']['preinit']['cmd'] = array();

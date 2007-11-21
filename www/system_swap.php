@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Swap file"));
+$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Swap file"));
 
 $pconfig['swap_enable'] = isset($config['system']['swap_enable']);
 $pconfig['swap_mountname'] = $config['system']['swap_mountname'];

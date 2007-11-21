@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Command scripts"));
+$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Command scripts"));
 
 if (!is_array($config['rc']['preinit']['cmd']))
 	$config['rc']['preinit']['cmd'] = array();

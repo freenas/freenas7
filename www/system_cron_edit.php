@@ -40,7 +40,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("System"),gettext("Cron"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Cron"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['cron']['job']))
 	$config['cron']['job'] = array();
