@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>3.3</version>
+	<version>3.4</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -233,6 +233,7 @@
 		<localmaster>yes</localmaster>
 		<rcvbuf>16384</rcvbuf>
 		<sndbuf>16384</sndbuf>
+		<storedosattributes/>
 		<!--
 		// createmask and directorymask can be used to overwrite default values when security=share
 		<createmask>0666</createmask>

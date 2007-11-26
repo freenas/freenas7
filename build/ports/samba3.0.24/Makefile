@@ -43,8 +43,8 @@ CONFIGURE_ARGS+=	--disable-cups \
 									--with-syslog \
 									--with-ldap \
 									--with-libiconv="${LOCALBASE}" \
-									--with-sendfile-support
-#									--with-acl-support
+									--with-sendfile-support \
+									--with-acl-support
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbd ${FREENAS_ROOTFS}/usr/local/sbin

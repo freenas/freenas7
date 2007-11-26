@@ -184,17 +184,17 @@ function display_menu($menu) {
 							if (is_dir("{$g['www_path']}/ext")):
 							?>
 							<li><h1><?=gettext("Extensions");?></h1>
-							<?php
-							$dh = @opendir("{$g['www_path']}/ext");
-							if ($dh) {
-								while (($extd = readdir($dh)) !== false) {
-									if (($extd === ".") || ($extd === ".."))
-										continue;
-									@include("{$g['www_path']}/ext/" . $extd . "/menu.inc");
-								}
-								closedir($dh);
-							}
-							?>
+							<ul>
+								<?php $dh = @opendir("{$g['www_path']}/ext");
+								if ($dh) {
+									while (($extd = readdir($dh)) !== false) {
+										if (($extd === ".") || ($extd === ".."))
+											continue;
+										@include("{$g['www_path']}/ext/" . $extd . "/menu.inc");
+									}
+									closedir($dh);
+								}?>
+							</ul>
 							</li>
 							<?php endif;?>
 							<?=display_menu($menu['diagnostics']);?>

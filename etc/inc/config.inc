@@ -1040,6 +1040,14 @@ function config_upgrade() {
 		$config['version'] = "3.3";
 	}
 
+	/* Convert 3.3 -> 3.4 */
+	/* Add attribute //samba/storedosattributes. */
+	if ($config['version'] === "3.3") {
+		$config['samba']['storedosattributes'] = true;
+
+		$config['version'] = "3.4";
+	}
+
 	write_config();
 
 	if (is_booting())

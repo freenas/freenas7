@@ -66,6 +66,7 @@ $pconfig['rcvbuf'] = $config['samba']['rcvbuf'];
 $pconfig['enable'] = isset($config['samba']['enable']);
 $pconfig['largereadwrite'] = isset($config['samba']['largereadwrite']);
 $pconfig['easupport'] = isset($config['samba']['easupport']);
+$pconfig['storedosattributes'] = isset($config['samba']['storedosattributes']);
 $pconfig['createmask'] = $config['samba']['createmask'];
 $pconfig['directorymask'] = $config['samba']['directorymask'];
 
@@ -108,6 +109,7 @@ if ($_POST) {
 		$config['samba']['rcvbuf'] = $_POST['rcvbuf'];
 		$config['samba']['largereadwrite'] = $_POST['largereadwrite'] ? true : false;
 		$config['samba']['easupport'] = $_POST['easupport'] ? true : false;
+		$config['samba']['storedosattributes'] = $_POST['storedosattributes'] ? true : false;
 		if (!empty($_POST['createmask']))
 			$config['samba']['createmask'] = $_POST['createmask'];
 		else
@@ -165,6 +167,7 @@ function enable_change(enable_change) {
 	document.iform.security.disabled = endis;
 	document.iform.largereadwrite.disabled = endis;
 	document.iform.easupport.disabled = endis;
+	document.iform.storedosattributes.disabled = endis;
 	document.iform.createmask.disabled = endis;
 	document.iform.directorymask.disabled = endis;
 }
@@ -371,6 +374,13 @@ function authentication_change() {
 						</td>
 					</tr>
 					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Store DOS attributes");?></td>
+						<td width="78%" class="vtable">
+							<input name="storedosattributes" type="checkbox" id="storedosattributes" value="yes" <?php if ($pconfig['storedosattributes']) echo "checked"; ?>>
+							<span class="vexpl"><?=gettext("If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory.");?></span>
+						</td>
+					</tr>
+					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Auxiliary parameters");?></td>
 						<td width="78%" class="vtable">
 							<table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -398,6 +408,7 @@ function authentication_change() {
 									</td>
 								</tr>
 							</table>
+							<?=gettext("This parameters will be added to [global] in smb.conf.");?>
 						</td>
 					</tr>
   				<tr>
