@@ -1,6 +1,10 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
-# All rights reserved.
+#
+# $NetBSD: fsck,v 1.2 2001/06/18 06:42:35 lukem Exp $
+# $FreeBSD: src/etc/rc.d/fsck,v 1.10 2004/10/07 13:55:25 mtm Exp $
+#
+# Modified by Volker Theile (votdev@gmx.de)
+#
 
 # PROVIDE: fsck
 # REQUIRE: CONFIG
@@ -8,18 +12,99 @@
 # KEYWORD: nojail
 
 . /etc/rc.subr
+. /etc/configxml.subr
 
 name="fsck"
 start_cmd="fsck_start"
 stop_cmd=":"
 
+stop_boot()
+{
+	#	Terminate the process (which may include the parent /etc/rc)
+	#	if booting directly to multiuser mode.
+	#
+	if [ "$autoboot" = yes ]; then
+		kill -TERM $$
+	fi
+	exit 1
+}
+
 fsck_start()
 {
+	# Initialize disks.
+	eval /etc/rc.d.php/disks_init
+
 	if [ "$autoboot" = no ]; then
 		echo "Fast boot: skipping disk checks."
+	elif [ ! -r /etc/fstab ]; then
+		echo "Warning! No /etc/fstab: skipping disk checks."
 	elif [ "$autoboot" = yes ]; then
+		# During fsck ignore SIGQUIT
+		trap : 3
+
 		echo "Starting file system checks:"
-		eval /etc/rc.d.php/${name}
+
+		# Process all configured mounts.
+		/usr/local/bin/xml sel -t -m "//mounts/mount[fstype = 'ufs' or fstype = 'msdosfs']" \
+			-v "concat(fstype,' ',devicespecialfile,' ',mdisk)" \
+			-i "position() != last()" -n -b \
+			${configxml_file} | /usr/local/bin/xml unesc | \
+		while read _fstype _devicespecialfile _mdisk; do
+			# Skip encrypted disks.
+			_encrypted=`configxml_get_count "//geli/vdisk[devicespecialfile = '${_mdisk}']"`
+			if [ 0 -lt ${_encrypted} ]; then
+				continue
+			fi
+
+			if checkyesno background_fsck; then
+				fsck -F -p -t ${_fstype} ${_devicespecialfile}
+			else
+				fsck -p -t ${_fstype} ${_devicespecialfile}
+			fi
+
+			case $? in
+			0)
+				# Force background check.
+				fsck -B -p -t ${_fstype} ${_devicespecialfile};;
+			2)
+				stop_boot
+				;;
+			4)
+				echo "Rebooting..."
+				reboot
+				echo "Reboot failed; help!"
+				stop_boot
+				;;
+			8)
+				if checkyesno fsck_y_enable; then
+					echo "File system preen failed, trying fsck -y."
+					fsck -y -t ${_fstype} ${_devicespecialfile}
+					case $? in
+					0)
+						;;
+					*)
+					echo "Automatic file system check failed; help!"
+						stop_boot
+						;;
+					esac
+				else
+					echo "Automatic file system check failed; help!"
+					stop_boot
+				fi
+				;;
+			12)
+				echo "Boot interrupted."
+				stop_boot
+				;;
+			130)
+				stop_boot
+				;;
+			*)
+				echo "Unknown error; help!"
+				stop_boot
+				;;
+			esac
+		done
 	fi
 }
 
