@@ -11,6 +11,7 @@ Majors changes:
 - Upgrade Adaptec AACRAID driver to v5.2.0 Build 15317.
 
 Minors changes:
+- Added command '/usr/bin/nice'.
 
 Bug fixs:
 - Fix bug in formating of the extension menu. Thanks to James Patterson. 

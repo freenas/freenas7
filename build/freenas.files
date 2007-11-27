@@ -367,6 +367,9 @@ usr/bin/uniq
 ## login -- log into the computer
 usr/bin/login
 
+## nice -- execute a utility at an altered scheduling priority
+usr/bin/nice
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
