@@ -64,8 +64,7 @@ fsck_start()
 
 			case $? in
 			0)
-				# Force background check.
-				fsck -B -p -t ${_fstype} ${_devicespecialfile};;
+				;;
 			2)
 				stop_boot
 				;;
