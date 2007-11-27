@@ -8,6 +8,7 @@ Majors changes:
 - Add file system check support during boot process.
 - Add attribute 'Store DOS attributes' to Samba/CIFS WebGUI. It will be enabled by default. Thanks to pascal666.
 - Modify idmap syntax in smb.conf. Thanks to Zythan.
+- Upgrade Adaptec AACRAID driver to v5.2.0 Build 15317.
 
 Minors changes:
 

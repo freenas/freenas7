@@ -18,7 +18,7 @@ clean:
 
 	@rm -fv /usr/src/sys/pci/a100.*
 
-	-@if [ -e /usr/src/sys/conf/files.orig ]; then \
-		rm -fv /usr/src/sys/conf/files; \
-		mv -fv /usr/src/sys/conf/files.orig /usr/src/sys/conf/files; \
-	fi
+#	-@if [ -e /usr/src/sys/conf/files.orig ]; then \
+#		rm -fv /usr/src/sys/conf/files; \
+#		mv -fv /usr/src/sys/conf/files.orig /usr/src/sys/conf/files; \
+#	fi
