@@ -18,7 +18,7 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|_FLAGS= -pthread|_FLAGS= ${PTHREAD_CFLAGS}|' ${WRKSRC}/Makefile.in
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${WRKDIR}/netbsd-iscsi-*/bin/iscsi-target ${FREENAS_ROOTFS}/usr/local/bin/
+	@${INSTALL_PROGRAM} -v ${WRKDIR}/netbsd-iscsi-*/src/iscsi-target ${FREENAS_ROOTFS}/usr/local/bin
 
 	@${MKDIR} ${FREENAS_ROOTFS}/etc/iscsi
 	@${LN} -s -f -v /var/etc/iscsi/auths ${FREENAS_ROOTFS}/etc/iscsi/auths
