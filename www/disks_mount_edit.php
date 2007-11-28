@@ -251,7 +251,7 @@ function fstype_change() {
 							<select name="mdisk" class="formfld" id="mdisk">
 								<option value=""><?=gettext("Must choose one");?></option>
 								<?php foreach ($a_disk as $diskv):?>
-								<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($pconfig['devicespecialfile'] === $diskv['devicespecialfile']) echo "selected";?>>
+								<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($pconfig['mdisk'] === $diskv['devicespecialfile']) echo "selected";?>>
 								<?php $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); echo htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})");?>
 								</option>
 								<?php endforeach;?>
