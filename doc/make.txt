@@ -1,1 +1,0 @@
-make makesum -I /usr/local/freenas/svn/build/mk/
