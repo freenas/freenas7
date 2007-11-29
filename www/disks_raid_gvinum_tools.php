@@ -4,7 +4,7 @@
 	disks_raid_gvinum_tools.php
 	
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2007 Olivier Cochard-LabbÃ© <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -95,7 +95,7 @@ if (!isset($do_action)) {
                       <option value="rebuild" <?php if ($action == "rebuild") echo "selected"; ?>>rebuild parity</option>
                       <option value="list" <?php if ($action == "list") echo "selected"; ?>>list</option>
                       <option value="remove" <?php if ($action == "remove") echo "selected"; ?>>remove</option>
-                      <option value="forceup" <?php if ($action == "forceup") echo "selected"; ?>>Force State to UP</option>
+                      <option value="forceup" <?php if ($action == "forceup") echo "selected"; ?>>force state to UP</option>
                       <option value="saveconfig" <?php if ($action == "saveconfig") echo "selected"; ?>>saveconfig</option>
                      </select>
                   </td>
@@ -113,24 +113,26 @@ if (!isset($do_action)) {
 					echo('<pre>');
 					ob_end_flush();
 
+					// Function disks_geom_cmd() can't be used. That's because gvinum can't be accessed
+					// via 'geom vinum xxx'.
 					switch ($action) {
 						case "start":
-							disks_geom_cmd("vinum", "start", $object, true);
+							system("/sbin/gvinum start {$object} 2>&1");
 							break;
 						case "rebuild":
-							disks_geom_cmd("vinum", "rebuildparity", $object, true);
+							system("/sbin/gvinum rebuildparity {$object} 2>&1");
 							break;
 						case "list":
-							disks_geom_cmd("vinum", "list", $object, true);
+							system("/sbin/gvinum list {$object} 2>&1");
 							break;
 						case "remove":					
-							disks_geom_cmd("vinum", "rm -r", $object, true);
+							system("/sbin/gvinum rm -r {$object} 2>&1");
 							break;
 						case "forceup":					
-							disks_geom_cmd("vinum", "setstate -f up", $object, true);
+							system("/sbin/gvinum setstate -f up {$object} 2>&1");
 							break;
 						case "saveconfig":					
-							disks_geom_cmd("vinum", "saveconfig", "", true);
+							system("/sbin/gvinum saveconfig 2>&1");
 							break;
 					}
 
