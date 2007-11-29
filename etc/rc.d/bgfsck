@@ -30,6 +30,11 @@ bgfsck_start ()
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
 	while read _fstype _devicespecialfile _mdisk; do
+		# Check if block device exists.
+		if [ ! -e "${_devicespecialfile}" ]; then
+			continue
+		fi
+
 		# Skip encrypted disks.
 		_encrypted=`configxml_get_count "//geli/vdisk[devicespecialfile = '${_mdisk}']"`
 		if [ 0 -lt ${_encrypted} ]; then
