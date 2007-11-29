@@ -14,6 +14,7 @@ Majors changes:
 Minors changes:
 - Added command '/usr/bin/nice'.
 - Send hostname only on DHCP request. See http://sourceforge.net/forum/forum.php?thread_id=1879462&forum_id=507590.
+- Fix bugs in GVinum tools page.
 
 Bug fixs:
 - Fix bug in formating of the extension menu. Thanks to James Patterson. 
