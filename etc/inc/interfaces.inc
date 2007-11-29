@@ -361,7 +361,7 @@ function interfaces_dhcp_configure($if)
     }
 
     $macaddr = get_macaddr($if);
-    $hostname = "{$config['system']['hostname']}.{$config['system']['domain']}";
+    $hostname = "{$config['system']['hostname']}";
 
     $dhclientconf = <<<EOD
 send dhcp-client-identifier "{$macaddr}";
