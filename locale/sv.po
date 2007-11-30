@@ -1,468 +1,1206 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-08-29 19:33+0000\n"
-"Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
+"Report-Msgid-Bugs-To:  \n"
+"POT-Creation-Date: 2007-10-26 12:54+0000\n"
+"PO-Revision-Date: 2007-09-20 23:51+0000\n"
+"Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Rosetta-Export-Date: 2007-08-30 07:58:13+0000\n"
+"X-Launchpad-Export-Date: 2007-11-30 05:57+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
 
-msgid "Date"
-msgstr "Datum"
+#~ msgid "Sun Mon Tue Wed Thu Fri Sat"
+#~ msgstr "Sön Mån Tis Ons Tor Fre Lör"
 
-msgid "%b %d, %Y"
-msgstr "%e %b %Y"
+#~ msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+#~ msgstr "Jan Feb Mar Apr Maj Jun Jul Aug Sep Okt Nov Dec"
 
-msgid "%A, %B %d, %Y"
-msgstr "%A %d %B %Y"
+#~ msgid "Time"
+#~ msgstr "Tid"
 
-msgid "%A, %B %d @ %H:%M:%S"
-msgstr "%A %d %B @ %H.%M.%S"
+#~ msgid "%I:%M %p"
+#~ msgstr "%H.%M"
 
-msgid "%b %d, %Y - %I:%M %p"
-msgstr "%d %b %Y - %H.%M"
+#~ msgid "second"
+#~ msgstr "sekund"
 
-msgid "%A, %B %d, %Y - %I:%M %p"
-msgstr "%A %d %B %Y - %H.%M"
+#~ msgid "minute"
+#~ msgstr "minut"
 
-msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
-msgstr "Söndag Måndag Tisdag Onsdag Torsdag Fredag Lördag"
+#~ msgid "hour"
+#~ msgstr "timme"
 
-msgid "Sun Mon Tue Wed Thu Fri Sat"
-msgstr "Sön Mån Tis Ons Tor Fre Lör"
+#~ msgid "week"
+#~ msgstr "vecka"
+
+#~ msgid "weeks"
+#~ msgstr "veckor"
+
+#~ msgid "month"
+#~ msgstr "månad"
+
+#~ msgid "year"
+#~ msgstr "år"
+
+#~ msgid "years"
+#~ msgstr "år"
+
+#~ msgid "and"
+#~ msgstr "och"
+
+#~ msgid "off"
+#~ msgstr "av"
+
+#~ msgid "on"
+#~ msgstr "på"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "Cancel"
+#~ msgstr "Avbryt"
+
+#~ msgid "Deactivate"
+#~ msgstr "Inaktivera"
+
+#~ msgid "Delete"
+#~ msgstr "Ta bort"
+
+#~ msgid "Help"
+#~ msgstr "Hjälp"
+
+#~ msgid "Ignore"
+#~ msgstr "Ignorera"
+
+#~ msgid "Log out"
+#~ msgstr "Logga ut"
+
+#~ msgid "Modify"
+#~ msgstr "Ändra"
+
+#~ msgid "New"
+#~ msgstr "Ny"
+
+#~ msgid "Search"
+#~ msgstr "Sök"
+
+#~ msgid "Submit"
+#~ msgstr "Skicka"
+
+#~ msgid "Update"
+#~ msgstr "Uppdatera"
+
+#~ msgid "View"
+#~ msgstr "Visa"
+
+#~ msgid "Service"
+#~ msgstr "Tjänst"
+
+#~ msgid "Active"
+#~ msgstr "Aktiv"
+
+#~ msgid "Inactive"
+#~ msgstr "Inaktiv"
+
+#~ msgid "General setup"
+#~ msgstr "Allmän konfiguration"
+
+#~ msgid "CIFS"
+#~ msgstr "CIFS"
+
+#~ msgid "Users and Groups"
+#~ msgstr "Användare och grupper"
+
+#~ msgid "Radius"
+#~ msgstr "Radius"
+
+#~ msgid "Process"
+#~ msgstr "Process"
+
+#~ msgid "Ping/Traceroute"
+#~ msgstr "Ping/Traceroute"
+
+#~ msgid "Reboot system"
+#~ msgstr "Starta om systemet"
+
+#~ msgid "Shutdown system"
+#~ msgstr "Stäng av systemet"
+
+#~ msgid "Graph"
+#~ msgstr "Diagram"
+
+#~ msgid "DNS servers"
+#~ msgstr "DNS-servrar"
+
+#~ msgid "IP addresses"
+#~ msgstr "IP-adresser"
+
+#~ msgid "Select the system language"
+#~ msgstr "Välj språk för systemet"
+
+#~ msgid "You must select a valid language."
+#~ msgstr "Du måste välja ett giltigt språk."
+
+#~ msgid " interface"
+#~ msgstr " gränssnitt"
+
+#~ msgid "Static IP configuration"
+#~ msgstr "Statisk IP-konfiguration"
+
+#~ msgid "General configuration"
+#~ msgstr "Allmän konfiguration"
+
+#~ msgid "Manage"
+#~ msgstr "Hantera"
+
+#~ msgid "iSCSI"
+#~ msgstr "iSCSI"
+
+#~ msgid "Targetname"
+#~ msgstr "Målnamn"
+
+#~ msgid "Targetname."
+#~ msgstr "Målnamn."
+
+#~ msgid "Format RAID"
+#~ msgstr "Formatera RAID"
+
+#~ msgid "Recycle Bin"
+#~ msgstr "Papperskorg"
+
+#~ msgid "Enable Recycle bin"
+#~ msgstr "Aktivera papperskorg"
+
+#~ msgid "Source"
+#~ msgstr "Källa"
+
+#~ msgid "Destination"
+#~ msgstr "Mål"
+
+#~ msgid "Confirm Password"
+#~ msgstr "Bekräfta lösenord"
+
+#~ msgid "Confirm the password."
+#~ msgstr "Bekräfta lösenordet."
+
+#~ msgid "Group Member"
+#~ msgstr "Gruppmedlem"
+
+#~ msgid "Creating one partition"
+#~ msgstr "Skapar en partition"
+
+#~ msgid "Initializing partition"
+#~ msgstr "Initierar partition"
+
+#~ msgid "Creating BSD label"
+#~ msgstr "Skapar BSD-etikett"
+
+#~ msgid "Creating filesystem"
+#~ msgstr "Skapar filsystem"
+
+#~ msgid "Done"
+#~ msgstr "Färdig"
+
+#, c-format
+#~ msgid "Creating %s partition"
+#~ msgstr "Skapar %s-partition"
+
+#~ msgid "Create encrypted disk"
+#~ msgstr "Skapa krypterad disk"
+
+#~ msgid "Save and Restart UPnP"
+#~ msgstr "Spara och starta om UPnP"
+
+#~ msgid "Save and Restart Unison"
+#~ msgstr "Spara och starta om Unison"
+
+#~ msgid "Save and Restart SSHD"
+#~ msgstr "Spara och starta om SSHD"
+
+#~ msgid "Save and Restart RSYNC"
+#~ msgstr "Spara och starta om RSYNC"
+
+#~ msgid "Save and Restart NFS"
+#~ msgstr "Spara och starta om NFS"
+
+#~ msgid "Save and Restart FTP"
+#~ msgstr "Spara och starta om FTP"
+
+#~ msgid "Save and Restart AFP"
+#~ msgstr "Spara och starta om AFP"
+
+#~ msgid "Save and Restart CIFS"
+#~ msgstr "Spara och starta om CIFS"
+
+#~ msgid "Edit command"
+#~ msgstr "Redigera kommando"
+
+#~ msgid "Startup"
+#~ msgstr "Uppstart"
+
+#~ msgid "Servername"
+#~ msgstr "Servernamn"
+
+#~ msgid "Save and Restart DynDNS"
+#~ msgstr "Spara och starta om DynDNS"
+
+msgid " interfaces:"
+msgstr " gränssnitt:"
+
+msgid " was assigned to "
+msgstr " var tilldelad till "
+
+#, php-format
+msgid "%d%% of %dMB"
+msgstr ""
+
+#, php-format
+msgid "%s advertises itself as a time server to Windows clients."
+msgstr "%s annonserar ut sig själv som en tidsserver för WIndows-klienter."
+
+#, php-format
+msgid "%s interface"
+msgstr "%s-gränssnitt"
+
+#, php-format
+msgid "%s interface (SSID '%s')"
+msgstr "%s-gränssnitt (SSID \"%s\")"
+
+#, php-format
+msgid "%s of %sB"
+msgstr ""
+
+#, php-format
+msgid "%s will reboot after restoring the configuration."
+msgstr "%s kommer att starta om efter att konfigurationen återskapats"
+
+#, php-format
+msgid "%sB available of %sB"
+msgstr ""
+
+#, php-format
+msgid "%sB used of %sB"
+msgstr ""
+
+msgid "(unstable)"
+msgstr "(instabil)"
 
 msgid ""
-"January February March April May June July August September October November "
-"December"
-msgstr ""
-"Januari Februari Mars April Maj Juni Juli Augusti September Oktober November "
-"December"
-
-msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
-msgstr "Jan Feb Mar Apr Maj Jun Jul Aug Sep Okt Nov Dec"
-
-msgid "Time"
-msgstr "Tid"
-
-msgid "%I:%M %p"
-msgstr "%H.%M"
-
-msgid "second"
-msgstr "sekund"
-
-msgid "seconds"
-msgstr "sekunder"
-
-msgid "minute"
-msgstr "minut"
-
-msgid "minutes"
-msgstr "minuter"
-
-msgid "hour"
-msgstr "timme"
-
-msgid "hours"
-msgstr "timmar"
-
-msgid "day"
-msgstr "dag"
-
-msgid "days"
-msgstr "dagar"
-
-msgid "week"
-msgstr "vecka"
-
-msgid "weeks"
-msgstr "veckor"
-
-msgid "week days"
-msgstr "veckodagar"
-
-msgid "month"
-msgstr "månad"
-
-msgid "months"
-msgstr "månader"
-
-msgid "year"
-msgstr "år"
-
-msgid "years"
-msgstr "år"
-
-msgid "All"
-msgstr "Alla"
-
-msgid "and"
-msgstr "och"
-
-msgid "by"
-msgstr "efter"
-
-msgid "Down"
-msgstr "Nedåt"
-
-msgid "No"
-msgstr "Nej"
-
-msgid "off"
-msgstr "av"
-
-msgid "OK"
-msgstr "OK"
-
-msgid "on"
-msgstr "på"
-
-msgid "To"
-msgstr "Till"
-
-msgid "The"
+"1. Use these specials actions for debugging only!<br>2. There is no need of "
+"using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
 
-msgid "Up"
-msgstr "Uppåt"
-
-msgid "URL"
-msgstr "URL"
-
-msgid "Yes"
-msgstr "Ja"
-
-msgid "Activate"
-msgstr "Aktivera"
-
-msgid "Add"
-msgstr "Lägg till"
-
-msgid "Cancel"
-msgstr "Avbryt"
-
-msgid "Create"
-msgstr "Skapa"
-
-msgid "Deactivate"
-msgstr "Inaktivera"
-
-msgid "Delete"
-msgstr "Ta bort"
-
-msgid "Edit"
-msgstr "Redigera"
-
-msgid "Enable"
-msgstr "Aktivera"
-
-msgid "Help"
-msgstr "Hjälp"
-
-msgid "Ignore"
-msgstr "Ignorera"
-
-msgid "Login"
-msgstr "Logga in"
-
-msgid "Log out"
-msgstr "Logga ut"
-
-msgid "Modify"
-msgstr "Ändra"
-
-msgid "New"
-msgstr "Ny"
-
-msgid "Search"
-msgstr "Sök"
-
-msgid "Save"
-msgstr "Spara"
-
-msgid "Submit"
-msgstr "Skicka"
-
-msgid "Update"
-msgstr "Uppdatera"
-
-msgid "View"
-msgstr "Visa"
-
-msgid "Apply changes"
-msgstr "Verkställ ändringar"
-
-msgid "Warning"
-msgstr "Varning"
-
-msgid "Load"
-msgstr "Läs in"
-
-msgid "Retry"
-msgstr "Försök igen"
-
-msgid "Size"
-msgstr "Storlek"
-
-msgid "Status"
-msgstr "Status"
-
-msgid "Type"
-msgstr "Typ"
-
-msgid "Configuring"
-msgstr "Konfigurering"
-
-msgid "Disk"
-msgstr "Disk"
-
-msgid "Disks"
-msgstr "Diskar"
-
-msgid "Partition"
-msgstr "Partition"
-
-msgid "File system"
-msgstr "Filsystem"
-
-msgid "Description"
-msgstr "Beskrivning"
-
-msgid "Software RAID"
-msgstr "Programvaru-RAID"
-
-msgid "Service"
-msgstr "Tjänst"
-
-msgid "TCP port"
-msgstr "TCP-port"
-
-msgid "Confirmation"
-msgstr "Bekräftelse"
-
-msgid "Note"
-msgstr "Observera"
-
-msgid "Successful"
-msgstr "Lyckades"
-
-msgid "Failed"
-msgstr "Misslyckades"
-
-msgid "Error"
-msgstr "Fel"
-
-msgid "Hint"
-msgstr "Tips"
-
-msgid "The changes have been applied successfully."
-msgstr "Ändringarna har verkställts."
+#, php-format
+msgid ""
+"<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+"href=%s>user</a> must have full Shell enabled."
+msgstr ""
 
 msgid ""
-"The changes have been saved. You must <a href=%s>reboot</a> your NAS for "
-"changes to take effect."
+"A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
-"Ändringarna har sparats. Du måste <a href=%s>starta om</a> ditt NAS för att "
-"ändringarna ska bli aktiverade."
 
-msgid "ERROR: The changes could not be applied (error code %s)."
-msgstr "FEL: Ändringarna kunde inte verkställas (felkod %s)."
+msgid "A route to this destination network already exists."
+msgstr "En väg till det här målnätverket finns redan."
 
 msgid "A valid IP address must be specified."
 msgstr "En giltig IP-adress måste anges."
 
+msgid ""
+"A valid IPv4 address must be specified for the primary/secondary DNS server."
+msgstr ""
+
+msgid "A valid IPv4 address must be specified."
+msgstr "En giltig IPv4-adress måste anges"
+
+msgid "A valid IPv4 network bit count must be specified."
+msgstr "Ett giltigt bitantal för IPv4-nätverk måste anges"
+
+msgid "A valid IPv6 Gateway address must be specified."
+msgstr ""
+
+msgid ""
+"A valid IPv6 address must be specified for the primary/secondary DNS server."
+msgstr ""
+
+msgid "A valid IPv6 address must be specified."
+msgstr "En giltig IPv6-adress måste anges"
+
+msgid "A valid IPv6 prefix must be specified."
+msgstr "Ett giltigt IPv6-prefix måste anges"
+
+msgid "A valid TCP/IP port must be specified for the webGUI port."
+msgstr "En giltig TCP/IP-port måste anges för webGUI-porten."
+
+msgid "A valid destination network must be specified."
+msgstr "Ett giltigt målnätverk måste anges."
+
+msgid "A valid gateway IP address must be specified."
+msgstr ""
+
+msgid "A valid mtu size must be specified."
+msgstr "En giltig mtu-storlek måste anges."
+
+msgid "A valid network bit count (1-32) must be specified."
+msgstr "Ett giltigt bitantal (1-32) för nätverket måste anges."
+
 msgid "A valid network bit count must be specified."
 msgstr "Ett giltigt antal nätverksbitar måste anges."
 
-msgid "The TCP port must be a valid port number."
-msgstr "TCP-porten måste vara ett giltigt portnummer."
+msgid "A valid network must be specified."
+msgstr "Ett giltig nätverk måste anges."
 
-msgid "Password don't match."
-msgstr "Lösenordet stämmer inte."
+msgid "A valid prefix (1-128) must be specified."
+msgstr "Ett giltigt prefix (1-128) måste anges."
 
-msgid ""
-"Note: Ctrl-click (or command-click on the Mac) to select and de-select "
-"minutes, hours, days and months."
+msgid "AD Authentication disabled"
 msgstr ""
-"Observera: Ctrl+klick (eller Command+klick på Mac) för att markera och "
-"avmarkera minuter, timmar, dagar och månader."
 
-msgid ""
-"UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
-"Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
-"can result in unpredictable results, file corruption, and loss of data!"
-msgstr ""
-"UFS är det filformatet som är STANDARD för FreeBSD (det underliggande "
-"operativsystemet för %s). Försök att använda andra filformat såsom FAT, "
-"FAT32, EXT2, EXT3 eller NTFS kan resultera i oförutsedda resultat, skadade "
-"filer och att data kan gå förlorat!"
+msgid "AD or PDC name."
+msgstr "AD eller PDC-namn."
 
-msgid "Active"
-msgstr "Aktiv"
+msgid "AD server IP"
+msgstr "IP för AD-server"
 
-msgid "Inactive"
-msgstr "Inaktiv"
-
-msgid "Selected"
-msgstr "Markerade"
-
-msgid "System"
-msgstr "System"
-
-msgid "General setup"
-msgstr "Allmän konfiguration"
-
-msgid "Static routes"
-msgstr "Statiska vägar"
-
-msgid "Firmware"
-msgstr "Fast programvara"
-
-msgid "Advanced"
-msgstr "Avancerat"
-
-msgid "Swap"
-msgstr "Växling"
-
-msgid "Assign"
-msgstr "Tilldela"
-
-msgid "LAN"
-msgstr "LAN"
-
-msgid "Management"
-msgstr "Hantering"
-
-msgid "Mount Point"
-msgstr "Monteringspunkt"
-
-msgid "Services"
-msgstr "Tjänster"
-
-msgid "CIFS"
-msgstr "CIFS"
-
-msgid "FTP"
-msgstr "FTP"
-
-msgid "NFS"
-msgstr "NFS"
-
-msgid "RSYNCD"
-msgstr "RSYNCD"
-
-msgid "SSHD"
-msgstr "SSHD"
-
-msgid "Unison"
-msgstr "Unison"
-
-msgid "UPnP"
-msgstr "UPnP"
+msgid "AD server name"
+msgstr "Namn på AD-server"
 
 msgid "AFP"
 msgstr "AFP"
 
-msgid "Access"
-msgstr "Åtkomst"
-
-msgid "Users and Groups"
-msgstr "Användare och grupper"
-
-msgid "Active Directory"
-msgstr "Active Directory"
-
-msgid "NIS"
-msgstr "NIS"
-
-msgid "Radius"
-msgstr "Radius"
-
-msgid "Process"
-msgstr "Process"
-
-msgid "Interfaces"
-msgstr "Gränssnitt"
-
-msgid "Wireless"
-msgstr "Trådlös"
-
-msgid "Extensions"
-msgstr "Utökningar"
-
-msgid "Diagnostics"
-msgstr "Diagnostik"
-
-msgid "Logs"
-msgstr "Loggar"
-
-msgid "Information"
-msgstr "Information"
-
-msgid "Ping/Traceroute"
-msgstr "Ping/Traceroute"
+msgid "AFP Server"
+msgstr "AFP-server"
 
 msgid "ARP table"
 msgstr "ARP-tabell"
 
-msgid "Edit File"
-msgstr "Redigera fil"
+msgid "ATAidle"
+msgstr ""
+
+msgid "Access"
+msgstr "Åtkomst"
+
+msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
+msgstr "Åtkomlig via \"http://ip_address:port/web/ushare.html\"."
+
+msgid "Accessiblity test to MS domain"
+msgstr "Tillgänglighetstest till MS-domän"
+
+msgid "Acoustic level"
+msgstr "Akustisk nivå"
+
+msgid "Activate"
+msgstr "Aktivera"
+
+msgid "Active Directory"
+msgstr "Active Directory"
+
+msgid "Add"
+msgstr "Lägg till"
+
+msgid "Add Host"
+msgstr "Lägg till värd"
+
+msgid "Add RAID"
+msgstr "Lägg till RAID"
+
+msgid "Add RSYNC"
+msgstr "Lägg till RSYNC"
+
+msgid "Add Route"
+msgstr "Lägg till väg"
+
+msgid "Add command"
+msgstr "Lägg till kommando"
+
+msgid "Add device"
+msgstr "Lägg till enhet"
+
+msgid "Add directory"
+msgstr "Lägg till katalog"
+
+msgid "Add disk"
+msgstr "Lägg till disk"
+
+msgid "Add extent"
+msgstr ""
+
+msgid "Add group"
+msgstr "Lägg till grupp"
+
+msgid "Add initiator"
+msgstr ""
+
+msgid "Add interface"
+msgstr "Lägg till gränssnitt"
+
+msgid "Add job"
+msgstr "Lägg till jobb"
+
+msgid "Add network"
+msgstr "Lägg till nätverk"
+
+msgid "Add parameter"
+msgstr "Lägg till parameter"
+
+msgid "Add share"
+msgstr "Lägg till utdelning"
+
+msgid "Add target"
+msgstr "Lägg till mål"
+
+msgid "Add user"
+msgstr "Lägg till användare"
+
+msgid "Address"
+msgstr ""
+
+msgid "Administration password"
+msgstr "Administrationslösenord"
+
+msgid "Administrator"
+msgstr "Administratör"
+
+msgid "Administrator name"
+msgstr "Administratörens namn"
+
+msgid "Advanced"
+msgstr "Avancerat"
+
+msgid "Advanced Power Management"
+msgstr "Avancerad strömhantering (APM)"
+
+msgid "Advanced Setup"
+msgstr ""
+
+msgid "Advanced settings"
+msgstr "Avancerade inställningar"
+
+#, php-format
+msgid ""
+"After you click &quot;Save&quot;, you may also have to do one or more of the "
+"following steps before you can access %s again: <ul><li>change the IP "
+"address of your computer</li><li>access the webGUI with the new IP "
+"address</li></ul>"
+msgstr ""
+
+#, php-format
+msgid ""
+"After you click &quot;Save&quot;, you must reboot %s to make the changes "
+"take effect. You may also have to do one or more of the following steps "
+"before you can access your NAS again: </span></p><ul><li><span "
+"class='vexpl'>change the IP address of your computer</span></li><li><span "
+"class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+msgstr ""
+
+msgid "All"
+msgstr "Alla"
+
+msgid "All users will have the root privilege."
+msgstr "Alla användare kommer att ha root-behörighet."
+
+msgid ""
+"Allow clients to attempt to store OS/2 style extended attributes on a share."
+msgstr ""
+
+msgid ""
+"Allow users to resume and upload files, but NOT to delete or rename them. "
+"Directories can be removed, but only if they are empty. However, overwriting "
+"existing files is still allowed."
+msgstr ""
+
+#, php-format
+msgid "Allows %s to try and become a local master browser."
+msgstr ""
+
+msgid "Alternate TCP port. Default is 22"
+msgstr "Alternativ TCP-port. Standard är 22"
+
+msgid "Alternate TCP port. Default is 873"
+msgstr "Alternativ TCP-port. Standard är 873"
+
+msgid "Always on"
+msgstr "Alltid på"
+
+msgid "An host with this name already exists."
+msgstr "En värd med det här namnet finns redan."
+
+msgid "Anonymous login"
+msgstr "Anonym inloggning"
+
+msgid "Apply changes"
+msgstr "Verkställ ändringar"
+
+msgid "Are you sure you want to proceed?"
+msgstr "Är du säker på att du vill fortsätta?"
+
+msgid "Are you sure you want to reboot the system?"
+msgstr "Är du säker på att du vill starta om systemet?"
+
+msgid "Are you sure you want to shutdown the system?"
+msgstr "Är du säker på att du vill stänga av systemet?"
+
+msgid "Assign network ports"
+msgstr "Tilldela nätverksportar"
+
+msgid "Associated stations"
+msgstr "Associerade stationer"
+
+msgid ""
+"At the highest level, a target is what is presented to the initiator, and is "
+"made up of one or more devices, and/or one or more extents."
+msgstr ""
+
+msgid "Attached"
+msgstr "Ansluten"
+
+#, php-format
+msgid "Attaching provider '%s'."
+msgstr ""
+
+msgid "Authentication"
+msgstr "Autentisering"
+
+msgid "Authorised network"
+msgstr "Behörigt nätverk"
+
+msgid "Authorized"
+msgstr "Behörig"
+
+msgid "AutoScale"
+msgstr ""
+
+msgid "Auxiliary parameter"
+msgstr ""
+
+msgid "Auxiliary parameter to be added."
+msgstr ""
+
+msgid "Auxiliary parameters"
+msgstr ""
+
+msgid "Backup configuration"
+msgstr "Säkerhetskopiera konfiguration"
 
 msgid "Backup/Restore"
 msgstr "Säkerhetskopiera/Återskapa"
 
-msgid "Factory defaults"
-msgstr "Fabriksinställningar"
+msgid "Balance algorithm"
+msgstr "Balansalgoritm"
 
-msgid "Reboot system"
-msgstr "Starta om systemet"
+msgid "Banner"
+msgstr "Banderoll"
 
-msgid "Shutdown system"
-msgstr "Stäng av systemet"
+msgid "Base DN"
+msgstr ""
 
-msgid "Graph"
-msgstr "Diagram"
+msgid "Browseable"
+msgstr "Bläddringsbar"
 
-msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-msgstr "Namnet på NAS-värden, utan domändelen<br>t.ex. <em>nas</em>"
+msgid "CIFS/SMB"
+msgstr "CIFS/SMB"
+
+msgid "CPU"
+msgstr "CPU"
+
+msgid "CPU load"
+msgstr "Processorbelastning"
+
+msgid "Calculate netmask bits"
+msgstr "Beräkna nätmasksbitar"
+
+msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgstr ""
+"Kan inte formatera enheten där konfigurationsfilen för FreeNAS är "
+"installerad!"
+
+msgid "Can't mount the system partition 1, the DATA partition is the 2."
+msgstr "Kan inte montera systempartition 1, DATA-partitionen är 2."
+
+msgid "Cannot get data about interface"
+msgstr "Kan inte få data om gränssnittet"
+
+msgid "Certificate"
+msgstr "Certifikat"
+
+msgid "Certificate and key must always be specified together."
+msgstr "Certifikat och nyckel måste alltid anges tillsammans."
+
+msgid "Changes to this option will take effect after a reboot."
+msgstr ""
+"Ändringar i det här alternativet kommer att aktiveras efter en omstart."
+
+msgid "Channel"
+msgstr "Kanal"
+
+msgid "Check shared secret:"
+msgstr ""
+
+msgid "Choose which interface this route applies to."
+msgstr ""
+
+msgid "Clear log"
+msgstr "Töm logg"
+
+msgid ""
+"Click &quot;Enable firmware upload&quot; below, then choose the image file "
+"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+"process."
+msgstr ""
+"Klicka på &quot;Aktivera uppskickning av fast programvara&quot; nedan, välj "
+"sedan avbildsfilen som ska skickas upp.<br>Klicka på &quot;Uppgradera den "
+"fast programvaran&quot; för att starta uppgraderingsprocessen."
+
+msgid "Click this button to download the system configuration in XML format."
+msgstr ""
+
+msgid "Client"
+msgstr "Klient"
+
+msgid "Client Identifier"
+msgstr "Klientidentifierare"
+
+msgid "Collecting initial data, please wait..."
+msgstr "Samlar in initial data, var god vänta..."
+
+msgid "Collisions"
+msgstr "Kollisioner"
+
+msgid "Cols"
+msgstr "Kolumner"
+
+msgid "Command"
+msgstr "Kommando"
+
+msgid "Command output:"
+msgstr "Kommandoutmatning:"
+
+msgid "Command scripts"
+msgstr ""
+
+msgid "Comment"
+msgstr "Kommentar"
+
+msgid "Community"
+msgstr ""
+
+msgid "Compliant profile to be used."
+msgstr ""
+
+msgid "Configuring"
+msgstr "Konfigurering"
+
+msgid "Confirmation"
+msgstr "Bekräftelse"
+
+msgid "Console menu"
+msgstr "Konsollmeny"
+
+msgid "Contact"
+msgstr ""
+
+msgid ""
+"Contact information, e.g. name or email of the person responsible for this "
+"system: 'admin@email.address'."
+msgstr ""
+
+msgid "Content"
+msgstr "Innehåll"
+
+msgid "Control web page"
+msgstr ""
+
+msgid "Count"
+msgstr "Antal"
+
+#, php-format
+msgid "Count must be between 1 and %d"
+msgstr "Antal måste vara mellan 1 och %d"
+
+msgid "Create"
+msgstr "Skapa"
+
+msgid "Create encrypted volume"
+msgstr "Skapa krypterad volym"
+
+msgid "Create mask"
+msgstr "Skapa mask"
+
+msgid "Create work directory if it doesn't exist"
+msgstr "Skapa arbetskatalog om den inte redan finns"
+
+msgid "Cron"
+msgstr "Cron"
+
+msgid "Cron job"
+msgstr "Cron-jobb"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "DLNA"
+msgstr "DLNA"
+
+msgid "DN to bind"
+msgstr ""
+
+#, php-format
+msgid ""
+"DO NOT abort the firmware upgrade once it has started. %s will reboot "
+"automatically after storing the new firmware. The configuration will be "
+"maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+"update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+"System configuration before doing a Firmware upgrade."
+msgstr ""
+
+msgid "Daemon"
+msgstr "Demon"
+
+msgid "Daemon events"
+msgstr "Demonhändelser"
+
+msgid "Daemon log"
+msgstr ""
+
+msgid "Data integrity"
+msgstr "Dataintegritet"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Default"
+msgstr "Standard"
+
+msgid "Default is 21"
+msgstr "Standard är 21"
+
+msgid "Defining a hostname can be useful for NFS."
+msgstr "Definiera ett värdnamn kan vara användbart för NFS."
+
+msgid "Delete ARP entry"
+msgstr "Ta bort ARP-post"
+
+msgid "Delete Host"
+msgstr "Ta bort värd"
+
+msgid "Delete RAID"
+msgstr "Ta bort RAID"
+
+msgid "Delete RSYNC"
+msgstr "Ta bort RSYNC"
+
+msgid "Delete Route"
+msgstr "Ta bort väg"
+
+msgid "Delete command"
+msgstr "Ta bort kommando"
+
+msgid "Delete device"
+msgstr "Ta bort enhet"
+
+msgid "Delete directory"
+msgstr "Ta bort katalog"
+
+msgid "Delete disk"
+msgstr "Ta bort disk"
+
+msgid "Delete extent"
+msgstr ""
+
+msgid "Delete files that don't exist on sender."
+msgstr "Ta bort filer som inte finns hos avsändaren."
+
+msgid "Delete group"
+msgstr "Ta bort grupp"
+
+msgid "Delete initiator"
+msgstr ""
+
+msgid "Delete interface"
+msgstr "Ta bort gränssnitt"
+
+msgid "Delete job"
+msgstr "Ta bort jobb"
+
+msgid "Delete network"
+msgstr "Ta bort nätverk"
+
+msgid "Delete parameter"
+msgstr "Ta bort parameter"
+
+msgid "Delete share"
+msgstr "Ta bort utdelning"
+
+msgid "Delete target"
+msgstr "Ta bort mål"
+
+msgid "Delete user"
+msgstr "Ta bort användare"
+
+msgid "Description"
+msgstr "Beskrivning"
+
+msgid "Destination email address."
+msgstr ""
+
+msgid "Destination network"
+msgstr ""
+
+msgid "Destination network bit count"
+msgstr ""
+
+msgid "Destination network for this static route"
+msgstr ""
+
+msgid "Destination share"
+msgstr ""
+
+msgid "Detected RSYNC remote shares"
+msgstr ""
+
+msgid "Device"
+msgstr "Enhet"
+
+msgid "Device is mounted, umount it first before detaching."
+msgstr ""
+
+msgid "Device name"
+msgstr "Enhetsnamn"
+
+msgid "Device polling"
+msgstr ""
+
+msgid ""
+"Device polling is a technique that lets the system periodically poll network "
+"devices for new data instead of relying on interrupts. This can reduce CPU "
+"load and therefore increase throughput, at the expense of a slightly higher "
+"forwarding delay (the devices are polled 1000 times per second). Not all "
+"NICs support polling."
+msgstr ""
+
+msgid ""
+"Device polling is a technique that lets the system periodically poll network "
+"devices for new data instead of relying on interrupts. This can reduce CPU "
+"load and therefore increase throughput, at the expense of a slightly higher "
+"forwarding delay (the devices are polled 1000 times per second). Not all "
+"NICs support polling; see the m0n0wall homepage for a list of supported "
+"cards."
+msgstr ""
+
+msgid ""
+"Devices are used to combine extents or other devices. Extents and devices "
+"must be defined before they can be used, and they cannot be used more than "
+"once."
+msgstr ""
+
+msgid "Diagnostics"
+msgstr "Diagnostik"
+
+msgid "Directories to be shared."
+msgstr "Kataloger att delas ut."
+
+msgid "Directory"
+msgstr "Katalog"
+
+msgid "Directory mask"
+msgstr "Katalogmask"
+
+msgid "Directory to be shared."
+msgstr "Katalog att delas ut."
+
+msgid "Disable console menu"
+msgstr "Inaktivera konsollmeny"
+
+msgid "Disable firmware upload"
+msgstr "Inaktivera uppskickning av fast programvara"
+
+msgid "Disable firmware version check"
+msgstr ""
+
+msgid "Disable speaker beep on startup and shutdown"
+msgstr ""
+
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+msgid "Disk"
+msgstr "Disk"
+
+msgid "Disk Name"
+msgstr "Disknamn"
+
+msgid "Disk space usage"
+msgstr "Diskutrymmesanvändning"
+
+msgid "Disks"
+msgstr "Diskar"
+
+msgid "Do you really want to delete this RSYNC?"
+msgstr "Vill du verkligen ta bort denna RSYNC?"
+
+msgid "Do you really want to delete this command?"
+msgstr "Vill du verkligen ta bort det här kommandot?"
+
+msgid "Do you really want to delete this cron job?"
+msgstr "Vill du verkligen ta bort detta cron-jobb?"
+
+msgid "Do you really want to delete this device?"
+msgstr "Vill du verkligen ta bort denna enhet?"
+
+msgid "Do you really want to delete this directory entry?"
+msgstr "Vill du verkligen ta bort denna katalogpost?"
+
+msgid ""
+"Do you really want to delete this disk? All elements that still use it will "
+"become invalid (e.g. share)!"
+msgstr ""
+
+msgid ""
+"Do you really want to delete this encrypted volume? All elements that still "
+"use it will become invalid (e.g. share)!"
+msgstr ""
+
+msgid "Do you really want to delete this extent?"
+msgstr ""
+
+msgid "Do you really want to delete this group?"
+msgstr "Vill du verkligen ta bort denna grupp?"
+
+msgid "Do you really want to delete this host?"
+msgstr "Vill du verkligen ta bort denna värd?"
+
+msgid ""
+"Do you really want to delete this initiator? All elements that still use it "
+"will become invalid (e.g. share)!"
+msgstr ""
+
+msgid ""
+"Do you really want to delete this mount point? All elements that still use "
+"it will become invalid (e.g. share)!"
+msgstr ""
+"Vill du verkligen ta bort den här monteringspunkten? Alla element som "
+"fortfarande använder den kommer att bli ogiltiga (t.ex. utdelningen)!"
+
+msgid "Do you really want to delete this network entry?"
+msgstr "Vill du verkligen ta bort denna nätverkspost?"
+
+msgid "Do you really want to delete this parameter?"
+msgstr "Vill du verkligen ta bort denna parameter?"
+
+msgid ""
+"Do you really want to delete this raid volume? All elements that still use "
+"it will become invalid (e.g. share)!"
+msgstr ""
+
+msgid "Do you really want to delete this route?"
+msgstr "Vill du verkligen ta bort den här vägen?"
+
+msgid "Do you really want to delete this share?"
+msgstr "Vill du verkligen ta bort denna utdelning?"
+
+msgid "Do you really want to delete this target?"
+msgstr "Vill du verkligen ta bort det här målet?"
+
+msgid "Do you really want to delete this user?"
+msgstr "Vill du verkligen ta bort denna användare?"
+
+msgid "Do you really want to format this disk? All data will be lost!"
+msgstr ""
+"Vill du verkligen formatera den här disken? All data kommer att förloras!"
+
+msgid "Do you really want to uninstall this package?"
+msgstr "Vill du verkligen avinstallera detta paketet?"
 
 msgid "Domain"
 msgstr "Domän"
 
-msgid "e.g. <em>mycorp.com</em>"
-msgstr "t.ex. <em>mittforetag.se</em>"
+msgid "Domain name"
+msgstr "Domännamn"
 
-msgid "DNS servers"
-msgstr "DNS-servrar"
+msgid "Domain name in old format."
+msgstr "Domännamn i gamla formatet."
 
-msgid "IP addresses"
-msgstr "IP-adresser"
+msgid "Don't Erase MBR"
+msgstr "Radera inte huvudstartsektorn (MBR)"
 
-msgid "Username"
-msgstr "Användarnamn"
+msgid "Don't erase the MBR (useful for some RAID controller cards)"
+msgstr ""
+
+msgid "Done."
+msgstr ""
+
+msgid "Dos charset"
+msgstr "Dos-teckenuppsättning"
+
+msgid "Download configuration"
+msgstr "Hämta ner konfiguration"
+
+msgid "Duplex"
+msgstr "Duplex"
+
+msgid "Duplicate name."
+msgstr ""
+
+msgid "Dynamic DNS"
+msgstr "Dynamisk DNS"
+
+msgid "EA support"
+msgstr ""
+
+msgid "EFI/GPT partition can be use with UFS only."
+msgstr ""
+
+msgid "ERR Could not save RAID configuration.\n"
+msgstr ""
+
+msgid "Edit"
+msgstr "Redigera"
+
+msgid "Edit File"
+msgstr "Redigera fil"
+
+msgid "Edit Host"
+msgstr "Redigera värd"
+
+msgid "Edit RAID"
+msgstr "Redigera RAID"
+
+msgid "Edit RSYNC"
+msgstr "Redigera RSYNC"
+
+msgid "Edit Route"
+msgstr "Redigera väg"
+
+msgid "Edit VLAN"
+msgstr "Redigera VLAN"
+
+msgid "Edit device"
+msgstr "Redigera enhet"
+
+msgid "Edit directory"
+msgstr "Redigera katalog"
+
+msgid "Edit disk"
+msgstr "Redigera disk"
+
+msgid "Edit extent"
+msgstr ""
+
+msgid "Edit group"
+msgstr "Redigera grupp"
+
+msgid "Edit initiator"
+msgstr ""
+
+msgid "Edit job"
+msgstr "Redigera jobb"
+
+msgid "Edit network"
+msgstr "Redigera nätverk"
+
+msgid "Edit parameter"
+msgstr "Redigera parameter"
+
+msgid "Edit share"
+msgstr "Redigera utdelning"
+
+msgid "Edit target"
+msgstr "Redigera mål"
+
+msgid "Edit user"
+msgstr "Redigera användare"
+
+msgid "Email report"
+msgstr ""
+
+msgid "Enable"
+msgstr "Aktivera"
+
+msgid "Enable FXP protocol."
+msgstr "Aktivera FXP-protokoll."
+
+msgid "Enable NTP"
+msgstr ""
+
+msgid "Enable Zeroconf"
+msgstr "Aktivera Zeroconf"
+
+msgid "Enable anonymous login."
+msgstr "Aktivera anonym inloggning."
+
+msgid "Enable control web page."
+msgstr ""
+
+msgid "Enable device polling"
+msgstr ""
+
+msgid "Enable extended attribute support"
+msgstr ""
+
+msgid "Enable firmware upload"
+msgstr "Aktivera uppskickning av fast programvara"
+
+msgid "Enable guest access."
+msgstr "Aktivera gäståtkomst."
+
+msgid "Enable keyboard-interactive authentication."
+msgstr ""
+
+msgid "Enable large read/write"
+msgstr ""
+
+msgid "Enable local user authentication."
+msgstr "Aktivera lokal användarautentisering."
+
+msgid "Enable local user login."
+msgstr ""
+
+msgid "Enable permission inheritance"
+msgstr ""
+
+msgid "Enable recycle bin"
+msgstr "Aktivera papperskorg"
+
+msgid "Enable syslog'ing to remote syslog server"
+msgstr ""
+
+msgid "Enable the S.M.A.R.T daemon"
+msgstr "Aktivera S.M.A.R.T-demonen"
+
+msgid "Enable the system power control utility"
+msgstr ""
 
 msgid ""
-"If you want to change the username for accessing the webGUI, enter it here."
+"Enable this if your FTP server is behind a NAT box that doesn't support "
+"applicative FTP proxying."
 msgstr ""
-"Om du vill ändra användarnamnet för att komma åt webGUI, ange det här."
 
-msgid "Password"
-msgstr "Lösenord"
+msgid "Enable tuning of some kernel variables"
+msgstr "Aktivera justering av vissa kärnvariabler"
+
+msgid "Enabled"
+msgstr "Aktiverad"
+
+msgid "Encrypted disk name"
+msgstr "Namn på krypterad disk"
+
+msgid "Encrypting... Please wait"
+msgstr "Krypterar... var god vänta"
+
+msgid "Encryption"
+msgstr "Kryptering"
+
+msgid "Encryption algorithm"
+msgstr "Krypteringsalgoritm"
 
 msgid ""
-"If you want to change the password for accessing the webGUI, enter it here "
-"twice.<br>Don't use the character ':'."
+"Enter a custom port number for the HTTP server if you want to override the "
+"default (49152). Only dynamic or private ports can be used (from 49152 "
+"through 65535)."
 msgstr ""
-"Om du vill ändra lösenordet för att komma åt webGUI, ange det två gånger "
-"här.<br>Använd inte tecknet \":\"."
-
-msgid "WebGUI protocol"
-msgstr "Protokoll för webGUI"
-
-msgid "WebGUI port"
-msgstr "Port för webGUI"
 
 msgid ""
 "Enter a custom port number for the webGUI above if you want to override the "
@@ -471,14 +1209,8 @@ msgstr ""
 "Ange ett anpassat portnummer för ovanstående webGUI om du vill åsidosätta "
 "standardvärdet (80 för HTTP, 443 för HTTPS)."
 
-msgid "Language"
-msgstr "Språk"
-
-msgid "Select the system language"
-msgstr "Välj språk för systemet"
-
-msgid "System Time"
-msgstr "Systemtid"
+msgid "Enter a description (name) for the interface here."
+msgstr "Ange en beskrivning (namn) för gränssnittet här."
 
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
@@ -489,102 +1221,1694 @@ msgstr ""
 "för att välja en. Tryck sedan på knappen Spara för att uppdatera "
 "systemtiden. (sekunddelen kommer att ignoreras)"
 
-msgid "Time zone"
-msgstr "Tidszon"
-
-msgid "Select the location closest to you."
-msgstr "Välj den plats som är närmast dig."
-
-msgid "Time update interval"
-msgstr "Intervall för tidsuppdatering"
-
-msgid ""
-"Minutes between network time sync.; 300\trecommended, or 0 to disable."
-msgstr ""
-"Minuter mellan tidssynkronisering över nätverket.; 300\trekommenderas eller "
-"0 för att inaktivera."
-
-msgid "NTP time server"
-msgstr "NTP-tidsserver"
-
-msgid ""
-"Use a space to separate multiple hosts (only one required). Remember to set "
-"up at least one DNS server if you enter a host name here!"
-msgstr ""
-"Använd ett blanksteg för att separera flera värdar (endast en krävs). Kom "
-"ihåg att konfigurera åtminstone en DNS-server om du anger ett värdnamn här!"
-
-msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-msgstr "Värdnamnet får endast innehålla tecknen a-z, 0-9 och \"-\"."
-
-msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr "Domänen får endast innehålla tecknen a-z, 0-9, \"-\" och \".\"."
-
-msgid ""
-"A valid IP address must be specified for the primary/secondary DNS server."
+msgid "Enter the NIS Master server hostname."
 msgstr ""
 
-msgid "The username may only contain the characters a-z, A-Z and 0-9."
-msgstr "Användarnamnet får endast innehålla tecknen a-z, A-Z och 0-9."
-
-msgid "A valid TCP/IP port must be specified for the webGUI port."
+msgid "Enter the NIS Slave server hostname."
 msgstr ""
 
-msgid "The passwords do not match."
-msgstr "Lösenorden stämmer inte överens."
-
-msgid "You must select a valid language."
-msgstr "Du måste välja ett giltigt språk."
-
-msgid ""
-"The time update interval must be either 0 (disabled) or between 6 and 1440."
+msgid "Enter the NIS domain name."
 msgstr ""
 
 msgid ""
-"A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
+"Enter the path to the home directory of that user. Make sure that this path "
+"exists and is always mounted at startup. Leave this field empty to use "
+"default path /mnt."
 msgstr ""
 
-msgid "System information"
-msgstr "Systeminformation"
+msgid "Enter the port to send the traps to (default 162)."
+msgstr ""
 
-msgid "Name"
-msgstr "Namn"
+msgid "Enter trap host name."
+msgstr ""
 
-msgid "Version"
-msgstr "Version"
+msgid "Error"
+msgstr "Fel"
 
-msgid "OS Version"
-msgstr "Operativsystem"
+#, c-format
+msgid "Error: The changes could not be applied (error code %s)."
+msgstr "Fel: Ändringarna kunde inte verkställas (felkod %s)."
 
-msgid "Platform"
-msgstr "Plattform"
+msgid "Execute command"
+msgstr "Kör kommando"
 
-msgid "Uptime"
-msgstr "Upptid"
+msgid ""
+"Execute command pre or post system initialization (booting) or before system "
+"shutdown."
+msgstr ""
+
+msgid "Extensions"
+msgstr "Utökningar"
+
+msgid "Extent"
+msgstr ""
+
+msgid "Extent name"
+msgstr ""
+
+msgid ""
+"Extents must be defined before they can be used, and extents cannot be used "
+"more than once."
+msgstr ""
+
+msgid "FTP"
+msgstr "FTP"
+
+msgid "FTP Proxy"
+msgstr ""
+
+msgid "FTP Server"
+msgstr "FTP-server"
+
+msgid "FTP Server disabled"
+msgstr "FTP-server inaktiverad"
+
+msgid "FTP connected users"
+msgstr "Anslutna FTP-användare"
+
+msgid "FTP events"
+msgstr "FTP-händelser"
+
+msgid "FTP log"
+msgstr "FTP-logg"
+
+msgid "FTP users"
+msgstr "FTP-användare"
+
+msgid "FXP"
+msgstr "FXP"
+
+msgid ""
+"FXP allows transfers between two remote servers without any file data going "
+"to the client asking for the transfer (insecure!)."
+msgstr ""
+
+msgid "Factory defaults"
+msgstr "Fabriksinställningar"
+
+msgid "Failed"
+msgstr "Misslyckades"
+
+msgid "Failed to create in-memory file system."
+msgstr ""
+
+msgid "Failed to send status report. Please check log files."
+msgstr ""
+
+msgid "Failed."
+msgstr ""
+
+msgid "File"
+msgstr "Fil"
+
+msgid "File not found"
+msgstr "Filen hittades inte"
+
+msgid "File path"
+msgstr "Filsökväg"
+
+#, php-format
+msgid ""
+"File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
+"used as extent."
+msgstr ""
+
+msgid "File size"
+msgstr "Filstorlek"
+
+msgid "File system"
+msgstr "Filsystem"
+
+msgid "Filename"
+msgstr "Filnamn"
+
+msgid "Firmware"
+msgstr "Fast programvara"
+
+msgid "Firmware image file"
+msgstr "Avbildsfil för fast programvara"
+
+msgid "Firmware uploading is not supported on this platform."
+msgstr "Uppsändning av fast programvara stöds inte på den här plattformen."
+
+msgid "Firmware version check"
+msgstr ""
+
+msgid "First configuration step: Add your harddrive to the disk list."
+msgstr "Första konfigurationssteget: Lägg till din hårddisk till disklistan."
+
+msgid "Flags"
+msgstr "Flaggor"
+
+msgid "Follow"
+msgstr "Följ"
+
+msgid "Force NAT mode."
+msgstr "Tvinga NAT-läge."
+
+msgid ""
+"Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
+"server is behind a masquerading (NAT) box that doesn't properly handle "
+"stateful FTP masquerading, put the ip address of that box here. If you have "
+"a dynamic IP address, you can put the public host name of your gateway, that "
+"will be resolved every time a new client will connect."
+msgstr ""
+
+msgid "Forced update period"
+msgstr ""
+
+msgid "Format"
+msgstr "Formatera"
+
+msgid "Format disk"
+msgstr "Formatera disk"
+
+msgid "Free Space"
+msgstr "Ledigt utrymme"
+
+msgid "From e-mail"
+msgstr ""
+
+msgid "From email"
+msgstr ""
+
+msgid "Fsck"
+msgstr "Fsck"
+
+msgid "Full Name"
+msgstr "Fullständigt namn"
+
+msgid "Full Shell"
+msgstr "Fullständigt skal"
+
+msgid "Gateway"
+msgstr "Gateway"
+
+msgid "Gateway to be used to reach the destination network"
+msgstr ""
+
+msgid "General"
+msgstr ""
+
+msgid "General Setup"
+msgstr ""
+
+msgid "Geom Concat"
+msgstr ""
+
+msgid "Geom Mirror"
+msgstr ""
+
+msgid "Geom Raid5"
+msgstr ""
+
+msgid "Geom Stripe"
+msgstr ""
+
+msgid "Geom Vinum"
+msgstr ""
+
+msgid "Give full shell to user"
+msgstr ""
+
+msgid "Global Configuration"
+msgstr "Allmän konfiguration"
+
+msgid "Graph shows last"
+msgstr ""
+
+msgid "Greeting banner displayed by FTP when a connection first comes in."
+msgstr ""
+"Välkomstbanderoll som visas av FTP-servern när en anslutning kommer in."
+
+msgid "Group"
+msgstr "Grupp"
+
+msgid "Group description."
+msgstr "Gruppbeskrivning."
+
+msgid "Group name."
+msgstr "Gruppnamn."
+
+msgid "Group suffix"
+msgstr "Gruppändelse"
+
+msgid "Groups"
+msgstr "Grupper"
+
+msgid "HTTP Proxy"
+msgstr ""
+
+msgid "Hard disk standby time"
+msgstr ""
+
+msgid "Help Needed!"
+msgstr "Hjälp behövs!"
+
+msgid "Highlighting"
+msgstr ""
+
+msgid "Hint"
+msgstr "Tips"
+
+#, php-format
+msgid ""
+"Hint: If this is checked, IP addresses in %s logs are resolved to real "
+"hostnames where possible."
+msgstr ""
+
+msgid "Home directory"
+msgstr ""
+
+msgid "Host"
+msgstr "Värd"
+
+msgid "Host resources"
+msgstr ""
+
+msgid "Hostname"
+msgstr "Värdnamn"
+
+msgid ""
+"Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
+"for TLS"
+msgstr ""
+
+msgid "Hosts"
+msgstr "Värdar"
+
+msgid "Hosts allow"
+msgstr ""
+
+msgid "Hosts deny"
+msgstr ""
+
+msgid ""
+"How often the IP is checked. The period is in seconds (max. is 10 days)."
+msgstr ""
+
+msgid ""
+"How often the IP is updated even if it is not changed. The period is in "
+"seconds (max. is 10 days)."
+msgstr ""
+
+msgid "I/O errors"
+msgstr "In/ut-fel"
+
+msgid "I/O packets"
+msgstr "In/ut-paket"
+
+msgid "IP address"
+msgstr "IP-adress"
+
+msgid "IP address of MS Active Directory server."
+msgstr "IP-adress för MS Active Directory-server."
+
+msgid "IP address of remote RSYNC server"
+msgstr ""
+
+msgid "IP address of remote syslog server"
+msgstr ""
+
+#, php-format
+msgid ""
+"IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
+"hostnames&quot; is checked on the <a href=%s>%s</a> page."
+msgstr ""
+
+msgid "IP type mistmatch for network and gateway."
+msgstr ""
+
+msgid "IPv4 Configuration"
+msgstr "IPv4-konfiguration"
+
+msgid "IPv4 DNS servers"
+msgstr "IPv4 DNS-servrar"
+
+msgid "IPv4 Gateway"
+msgstr ""
+
+msgid "IPv4 address"
+msgstr "IPv4-adress"
+
+msgid "IPv4 addresses"
+msgstr "IPv4-adresser"
+
+msgid "IPv6 Configuration"
+msgstr "IPv6-konfiguration"
+
+msgid "IPv6 DNS servers"
+msgstr "IPv6 DNS-servrar"
+
+msgid "IPv6 Gateway"
+msgstr ""
+
+msgid "IPv6 Prefix"
+msgstr ""
+
+msgid "IPv6 address"
+msgstr "IPv6-adress"
+
+msgid "IPv6 addresses"
+msgstr "IPv6-adresser"
+
+msgid "ISO"
+msgstr "ISO"
+
+msgid "ISP DNS servers"
+msgstr ""
+
+msgid ""
+"If the selected disk/partition is mounted it will be unmounted temporarily "
+"to perform selected command, otherwise the commands work in read-only "
+"mode.<br>Service disruption to users accessing this mount will occur during "
+"this process."
+msgstr ""
+
+#, php-format
+msgid ""
+"If you click 'Yes', %s will be reset to factory defaults and will reboot "
+"immediately. The entire system configuration will be overwritten. The LAN IP "
+"address will be reset to %s and the password will be set to '%s'."
+msgstr ""
+
+msgid ""
+"If you want to change the password for accessing the WebGUI, enter it here "
+"twice."
+msgstr ""
+
+msgid ""
+"If you want to change the username for accessing the webGUI, enter it here."
+msgstr ""
+"Om du vill ändra användarnamnet för att komma åt webGUI, ange det här."
+
+msgid "Image upload failed (out of memory?)"
+msgstr "Uppsändning av avbild misslyckades (slut på minne?)"
+
+msgid "In"
+msgstr "In"
+
+msgid "In most cases, 'public' is used here."
+msgstr ""
+
+msgid "Information"
+msgstr "Information"
+
+msgid "Inherit permissions"
+msgstr ""
+
+msgid "Initialize"
+msgstr "Initiera"
+
+msgid ""
+"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
+"use this option if you want to add an existing encrypted disk."
+msgstr ""
+
+msgid "Initiator name"
+msgstr "Initiatornamn"
+
+msgid "Install"
+msgstr "Installera"
+
+msgid "Install package"
+msgstr "Installera paket"
+
+msgid "Interface"
+msgstr "Gränssnitt"
+
+msgid "Interface to listen to."
+msgstr "Gränssnitt att lyssna på."
+
+msgid "Interfaces"
+msgstr "Gränssnitt"
+
+msgid "JBOD"
+msgstr "JBOD"
+
+msgid ""
+"January February March April May June July August September October November "
+"December"
+msgstr ""
+"Januari Februari Mars April Maj Juni Juli Augusti September Oktober November "
+"December"
+
+msgid "Keep all files"
+msgstr ""
+
+msgid "Keep diagnostics in navigation expanded"
+msgstr ""
+
+msgid "Key"
+msgstr "Nyckel"
+
+msgid "Kill encrypted volume"
+msgstr "Döda krypterad volym"
+
+msgid "LAN"
+msgstr "LAN"
+
+msgid "LAN net"
+msgstr ""
+
+msgid "LDAP"
+msgstr "LDAP"
+
+msgid ""
+"LDAP authentication feature is not implemented: If you know how to use PAM "
+"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
+"server... Your patchs are welcome."
+msgstr ""
+
+msgid "LDAP server name"
+msgstr ""
+
+msgid "LDAP server name or IP"
+msgstr ""
+
+msgid "Language"
+msgstr "Språk"
+
+msgid "Large read/write"
+msgstr ""
+
+#, php-format
+msgid "Last %d %s log entries"
+msgstr "Senaste %d %s loggposterna"
 
 msgid "Last config change"
 msgstr "Senaste konfigurationsändring"
 
-msgid "Memory usage"
-msgstr "Minnesanvändning"
+msgid "License"
+msgstr "Licens"
+
+msgid "List of Advanced ATA capabilities on all ATA disk"
+msgstr "Lista med avancerade ATA-förmågor på alla ATA-diskar"
+
+msgid "List of SMART capabilities on all detected disk"
+msgstr "Lista SMART-förmågor på alla upptäckta diskar"
+
+msgid "List of detected ATA disks"
+msgstr "Lista med upptäckta ATA-diskar"
+
+msgid "List of detected SCSI disks"
+msgstr "Lista med upptäckta SCSI-diskar"
+
+msgid "List of mount points"
+msgstr "Lista med monteringspunkter"
+
+msgid "List of partition on all detected disk"
+msgstr "Lista med partitioner på alla upptäckta diskar"
+
+msgid "Load"
+msgstr "Läs in"
 
 msgid "Load averages"
 msgstr "Genomsnittlig belastning"
 
-msgid "show process information"
-msgstr "visa processinformation"
+msgid "Local"
+msgstr "Lokal"
 
-msgid "Disk space usage"
-msgstr "Diskutrymmesanvändning"
+msgid "Local Master Browser"
+msgstr ""
+
+msgid "Local User"
+msgstr "Lokal användare"
+
+msgid "Local share"
+msgstr ""
+
+msgid "Local share (destination)"
+msgstr ""
+
+msgid "Local shares to be synchronized"
+msgstr ""
+
+msgid "Location"
+msgstr ""
+
+msgid ""
+"Location information, e.g. physical location of this system: 'Floor of "
+"building, Room xyz'."
+msgstr ""
+
+msgid "Log Level"
+msgstr "Loggnivå"
+
+msgid "Login"
+msgstr "Logga in"
+
+msgid "Login is required."
+msgstr ""
+
+msgid "Logs"
+msgstr "Loggar"
+
+msgid "MAC address"
+msgstr "MAC-adress"
+
+msgid "MOTD"
+msgstr "Dagens meddelande"
+
+msgid "MS Domain"
+msgstr "MS-domän"
+
+msgid "MTU"
+msgstr "MTU"
+
+msgid "Manage RAID"
+msgstr "Hantera RAID"
+
+msgid "Management"
+msgstr "Hantering"
+
+msgid "Map all users to root"
+msgstr "Mappa alla användare till root"
+
+msgid "Map to user"
+msgstr "Koppla till användare"
+
+msgid "Max. conn. per IP"
+msgstr "Max. anslutningar per IP"
+
+msgid "Maximum connections"
+msgstr "Maximalt antal anslutningar"
+
+msgid "Maximum idle time in minutes."
+msgstr "Maximal overksam tid i minuter"
+
+msgid "Maximum number of connections per IP address (0 = unlimited)."
+msgstr "Maximalt antal anslutningar per IP-adress (0 = obegränsat)."
+
+msgid "Maximum number of hops"
+msgstr ""
+
+msgid "Maximum number of simultaneous clients."
+msgstr "Maximalt antal samtidiga klienter."
+
+msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
+msgstr ""
+
+msgid "Maximum performance, maximum acoustic output"
+msgstr ""
+
+msgid "Maximum performance, maximum power usage"
+msgstr ""
+
+msgid "Media"
+msgstr "Media"
+
+msgid "Medium acoustic output"
+msgstr ""
+
+msgid "Medium power usage with Standby"
+msgstr ""
+
+msgid "Medium power usage without Standby"
+msgstr ""
+
+msgid "Members of this volume"
+msgstr "Medlemmar av den här volymen"
+
+msgid "Memory usage"
+msgstr "Minnesanvändning"
+
+msgid "Message of the day."
+msgstr "Dagens meddelande."
+
+msgid "Method used to store your password in your LDAP."
+msgstr "Metod som används för att lagra ditt lösenord i LDAP-servern."
+
+msgid "MibII"
+msgstr ""
+
+msgid "Minimum free space"
+msgstr ""
+
+msgid "Minimum performance, Minimum acoustic output"
+msgstr ""
+
+msgid "Minimum power usage with Standby"
+msgstr ""
+
+msgid "Minimum power usage without Standby"
+msgstr ""
+
+msgid "Minutes between network time sync."
+msgstr ""
+
+msgid "Miscellaneous"
+msgstr "Diverse"
+
+msgid "Modules"
+msgstr ""
+
+msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
+msgstr "Övervaka S.M.A.R.T-enheten genom att logga dess status i loggfilen."
+
+msgid "Mount Point"
+msgstr "Monteringspunkt"
+
+msgid ""
+"Mount the file system read-only (even the super-user may not write it)."
+msgstr ""
+
+msgid "Mount to use for swap"
+msgstr "Montering att använda som växlingsutrymme"
+
+msgid "Mounting device."
+msgstr ""
+
+msgid "Mounting..."
+msgstr "Monterar..."
+
+msgid "Mounts"
+msgstr "Monteringar"
+
+msgid "NAT mode"
+msgstr ""
+
+msgid "NFS"
+msgstr "NFS"
+
+msgid "NFS Server"
+msgstr "NFS-server"
+
+msgid "NIS"
+msgstr "NIS"
+
+msgid "NIS Authentication"
+msgstr ""
+
+msgid "NIS master server name"
+msgstr ""
+
+msgid "NIS slave server name"
+msgstr ""
+
+msgid "NTP time server"
+msgstr "NTP-tidsserver"
+
+msgid "Name"
+msgstr "Namn"
+
+msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+msgstr "Namnet på NAS-värden, utan domändelen<br>t.ex. <em>nas</em>"
+
+msgid ""
+"Name of the server. If this field is left empty the default server is "
+"specified."
+msgstr ""
+
+msgid "Navigation"
+msgstr "Navigering"
+
+msgid "NetBiosName"
+msgstr "NetBIOS-namn"
+
+msgid "Netgraph"
+msgstr ""
+
+msgid "Network"
+msgstr "Nätverk"
+
+msgid "Network port"
+msgstr "Nätverksport"
+
+msgid "Network that is authorised to access to NFS share"
+msgstr ""
+
+msgid "Network that is authorised to access to this iSCSI target."
+msgstr "Nätverk som är behörigt att komma åt det här iSCSI-målet."
+
+msgid "Networks"
+msgstr "Nätverk"
+
+msgid "Networks authorized."
+msgstr ""
+
+msgid "No"
+msgstr "Nej"
+
+msgid "No RSYNC Client configured"
+msgstr "Ingen RSYNC-klient konfigurerad"
 
 msgid "No disk configured"
 msgstr "Ingen disk konfigurerad"
+
+msgid ""
+"No supported wireless interfaces were found for status display (only cards "
+"that use the wi[n] driver are supported)."
+msgstr ""
+
+msgid "Noise"
+msgstr "Störning"
+
+msgid "Not attached"
+msgstr ""
+
+msgid "Note"
+msgstr "Observera"
+
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select and de-select "
+"minutes, hours, days and months."
+msgstr ""
+"Observera: Ctrl+klick (eller Command+klick på Mac) för att markera och "
+"avmarkera minuter, timmar, dagar och månader."
+
+msgid "Now"
+msgstr ""
+
+msgid "Number of clients"
+msgstr "Antal klienter"
+
+msgid "Number of log entries to show"
+msgstr "Antal loggposter att visa"
+
+msgid "Number of log entries to show must be between 5 and 1000."
+msgstr ""
+
+msgid "OK"
+msgstr "OK"
+
+msgid "OS Version"
+msgstr "Operativsystem"
+
+msgid "Object name"
+msgstr "Objektnamn"
+
+msgid "Old passphrase"
+msgstr ""
+
+msgid "Old password"
+msgstr ""
+
+#, php-format
+msgid ""
+"Open a %s configuration XML file and click the button below to restore the "
+"configuration."
+msgstr ""
+
+#, php-format
+msgid ""
+"Optional configuration step: Configuring a virtual RAID disk using your <a "
+"href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
+"format and mount it!"
+msgstr ""
+
+msgid "Out"
+msgstr "Ut"
+
+msgid "Outgoing SMTP mail server address, e.g. smtp.mycorp.com."
+msgstr ""
+
+msgid "Outgoing mail server"
+msgstr ""
+
+msgid "PPPoE"
+msgstr "PPPoE"
+
+msgid "PPTP"
+msgstr "PPTP"
+
+msgid "PPTP clients"
+msgstr ""
+
+msgid "Package Name"
+msgstr ""
+
+msgid "Package file"
+msgstr ""
+
+msgid "Package is already installed."
+msgstr ""
+
+msgid "Package upload failed (out of memory?)"
+msgstr ""
+
+msgid "Packages"
+msgstr ""
+
+msgid "Parameter"
+msgstr ""
+
+msgid "Partition"
+msgstr "Partition"
+
+msgid "Partitions"
+msgstr "Partitioner"
+
+msgid "Passive IP address"
+msgstr ""
+
+msgid "Passphrase"
+msgstr "Lösenfras"
+
+msgid "Passphrase don't match."
+msgstr ""
+
+msgid "Password"
+msgstr "Lösenord"
+
+msgid "Password (confirmed)"
+msgstr ""
+
+msgid "Password authentication"
+msgstr ""
+
+msgid "Password confirmation"
+msgstr "Bekräfta lösenord"
+
+msgid "Password don't match."
+msgstr "Lösenordet stämmer inte."
+
+msgid "Password encryption"
+msgstr "Lösenordskryptering"
+
+msgid "Password for DN"
+msgstr ""
+
+msgid "Password of domain administrator account, enter it here twice."
+msgstr ""
+
+msgid "Password suffix"
+msgstr ""
+
+msgid "Paste a DSA PRIVATE KEY in PEM format here."
+msgstr "Klistra in en PRIVAT DSA-NYCKEL i PEM-format här."
+
+msgid "Paste a signed certificate in X.509 PEM format here."
+msgstr "Klistra in ett signerat certifikat i X.509 PEM-format här."
+
+msgid "Paste an RSA private key in PEM format here."
+msgstr "Klistra in en privat RSA-nyckel i PEM-format här."
+
+msgid "Path"
+msgstr ""
+
+msgid "Path to be shared."
+msgstr ""
+
+msgid "Permit root login"
+msgstr ""
+
+msgid "Permit to do SSH Tunneling."
+msgstr "Tillåt att köra SSH-tunnelering."
+
+msgid "Pick a date"
+msgstr ""
+
+msgid "Ping"
+msgstr ""
+
+msgid "Ping output"
+msgstr ""
+
+msgid "Ping winbindd to see if it is alive:"
+msgstr ""
+
+msgid "Platform"
+msgstr "Plattform"
+
+msgid "Polling time"
+msgstr ""
+
+msgid "Port"
+msgstr ""
+
+msgid "Port "
+msgstr "Port "
+
+msgid "PostInit"
+msgstr ""
+
+msgid "Power Daemon"
+msgstr "Strömdemon"
+
+msgid "PreInit"
+msgstr ""
+
+msgid "Prefix"
+msgstr ""
+
+msgid "Preformatted FS"
+msgstr "Förformaterat filsystem"
+
+msgid "Primary Group"
+msgstr ""
+
+msgid "Private Key"
+msgstr "Privat nyckel"
 
 msgid "Processes"
 msgstr "Processer"
 
 msgid "Processes information"
 msgstr "Processinformation"
+
+msgid "Profile"
+msgstr ""
+
+msgid "Provider"
+msgstr ""
+
+msgid "Proxy"
+msgstr ""
+
+msgid "Put user in the administrator group"
+msgstr ""
+
+msgid ""
+"Puts the hard disk into standby mode when the selected amount of time after "
+"the last access has elapsed. <em>Do not set this for CF cards.</em>"
+msgstr ""
+
+msgid "Quality"
+msgstr "Kvalitet"
+
+msgid "RAID"
+msgstr "RAID"
+
+msgid "RAID 0"
+msgstr ""
+
+msgid "RAID 0 (stripping)"
+msgstr ""
+
+msgid "RAID 1"
+msgstr ""
+
+msgid "RAID 1 (mirroring)"
+msgstr ""
+
+msgid "RAID 5"
+msgstr ""
+
+msgid "RSYNC"
+msgstr ""
+
+msgid "RSYNC Client"
+msgstr ""
+
+msgid "RSYNC Options"
+msgstr "RSYNC-flaggor"
+
+msgid "RSYNC log"
+msgstr ""
+
+msgid "RSYNCD"
+msgstr "RSYNCD"
+
+msgid "RSYNCD events"
+msgstr ""
+
+msgid "Raid name"
+msgstr ""
+
+msgid "Read only"
+msgstr "Skrivskyddad"
+
+msgid "Reboot"
+msgstr ""
+
+msgid "Receive Buffer Size"
+msgstr ""
+
+msgid "Recycle bin"
+msgstr ""
+
+msgid "Reload page"
+msgstr ""
+
+msgid "Remote RSYNC Server"
+msgstr ""
+
+msgid "Remote address"
+msgstr "Fjärradress"
+
+msgid "Remote share (source)"
+msgstr "Fjärrutdelning (källa)"
+
+msgid "Remote share name"
+msgstr ""
+
+msgid "Remote source share name"
+msgstr ""
+
+msgid "Remote syslog server"
+msgstr ""
+
+msgid "Remove all entries from ARP table"
+msgstr ""
+
+msgid "Reports"
+msgstr ""
+
+msgid "Resolve IP addresses to hostnames"
+msgstr "Slå upp IP-adresser till värdnamn"
+
+msgid "Restore configuration"
+msgstr "Återskapa konfiguration"
+
+msgid "Results for net rpc testjoin:"
+msgstr ""
+
+msgid "Retry"
+msgstr "Försök igen"
+
+msgid "Rows"
+msgstr "Rader"
+
+msgid "Rsync Daemon"
+msgstr ""
+
+msgid "S.M.A.R.T Daemon"
+msgstr "S.M.A.R.T-demon"
+
+msgid "S.M.A.R.T."
+msgstr "S.M.A.R.T."
+
+msgid "S.M.A.R.T. log"
+msgstr ""
+
+msgid "SMARTD"
+msgstr ""
+
+msgid "SMARTD events"
+msgstr ""
+
+msgid "SNMP"
+msgstr ""
+
+msgid "SNMP Modules"
+msgstr ""
+
+msgid "SSH Daemon"
+msgstr "SSH-demon"
+
+msgid "SSH key"
+msgstr "SSH-nyckel"
+
+msgid "SSHD"
+msgstr "SSHD"
+
+msgid "SSHD events"
+msgstr ""
+
+msgid "SSHD log"
+msgstr ""
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "Save"
+msgstr "Spara"
+
+msgid "Save and Restart"
+msgstr ""
+
+msgid "Saved file to"
+msgstr "Sparade filen till"
+
+msgid "Schedule time"
+msgstr ""
+
+msgid "Scheduled"
+msgstr ""
+
+msgid "Scheduled reboot"
+msgstr ""
+
+msgid "Scheduled shutdown"
+msgstr "Schemalagd avständning"
+
+#, php-format
+msgid ""
+"Second configuration step: Declaring the filesystem used by your <a "
+"href=%s>previously configured disk.</a>"
+msgstr ""
+"Andra konfigurationssteget: Ange filsystemet som används på din <a "
+"href=%s>tidigare konfigurerade disk.</a>"
+
+msgid ""
+"Select EFI GPT if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+"you select option 2 during installation on hard drive.<br>Select old "
+"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+msgstr ""
+
+msgid "Select the FreeBSD package to be installed."
+msgstr ""
+
+msgid "Select the location closest to you."
+msgstr "Välj den plats som är närmast dig."
+
+msgid "Select your read balance algorithm."
+msgstr ""
+
+msgid "Selected"
+msgstr "Markerade"
+
+msgid "Selected file isn't an valid ISO file."
+msgstr ""
+
+msgid "Send Buffer Size"
+msgstr ""
+
+msgid "Send Command!"
+msgstr "Skicka kommando!"
+
+msgid "Send now"
+msgstr ""
+
+msgid "Sensors"
+msgstr "Sensorer"
+
+msgid "Server"
+msgstr "Server"
+
+msgid "Server Name"
+msgstr "Servernamn"
+
+msgid "Server address"
+msgstr ""
+
+msgid "Server description. This can usually be left blank."
+msgstr "Serverbeskrivning. Det här kan vanligtvis lämnas tomt."
+
+msgid "Server port"
+msgstr ""
+
+msgid "Services"
+msgstr "Tjänster"
+
+msgid "Set browseable"
+msgstr ""
+
+msgid "Settings"
+msgstr "Inställningar"
+
+msgid "Share"
+msgstr "Utdelning"
+
+msgid "Share Name"
+msgstr "Utdelningsnamn"
+
+msgid "Shares"
+msgstr "Utdelningar"
+
+msgid "Show log entries in reverse order (newest entries on top)"
+msgstr "Visa loggposter i omvänd ordning (senaste posterna överst)"
+
+msgid ""
+"Show the list of available target name on all configured iSCSI targets"
+msgstr ""
+
+msgid "Shutdown"
+msgstr ""
+
+msgid "Shutdown Time"
+msgstr ""
+
+msgid "Signal"
+msgstr "Signal"
+
+msgid "Signal strength cache"
+msgstr ""
+
+msgid "Simple Network Management Protocol"
+msgstr ""
+
+msgid "Size"
+msgstr "Storlek"
+
+msgid "Size in MB."
+msgstr "Storlek i MB."
+
+msgid "Size of receive buffer (16384 by default)."
+msgstr ""
+
+msgid "Size of send buffer (16384 by default)."
+msgstr ""
+
+msgid "Software RAID"
+msgstr "Programvaru-RAID"
+
+msgid "Software RAID information and status"
+msgstr ""
+
+msgid "Source share"
+msgstr ""
+
+msgid "Space Used"
+msgstr "Utrymme använt"
+
+msgid ""
+"Specifies the default base DN to use when performing ldap operations, "
+"example: dc=example,dc=com"
+msgstr ""
+
+msgid ""
+"Specifies the default bind DN to use when performing ldap operations, "
+"example:cn=administrator,dc=example,dc=com "
+msgstr ""
+
+msgid ""
+"Specifies whether it is allowed to login as superuser (root) directly."
+msgstr ""
+
+msgid ""
+"Specify the percentage of space held back from normal users. Note that "
+"lowering the threshold can adversely affect performance and auto-"
+"defragmentation."
+msgstr ""
+
+msgid "Speed"
+msgstr "Hastighet"
+
+msgid "Standard MTU is 1500, use 9000 for jumbo frame."
+msgstr ""
+
+msgid "Standby time"
+msgstr ""
+
+msgid "Static routes"
+msgstr "Statiska vägar"
+
+msgid "Status"
+msgstr "Status"
+
+msgid "Status report successfully sent."
+msgstr ""
+
+msgid "Storage"
+msgstr ""
+
+msgid "Subject"
+msgstr ""
+
+msgid "Subnet bit count"
+msgstr ""
+
+msgid "Subnet mask"
+msgstr "Subnätmask"
+
+msgid "Successful"
+msgstr "Lyckades"
+
+msgid "Successful."
+msgstr ""
+
+msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
+msgstr "Söndag Måndag Tisdag Onsdag Torsdag Fredag Lördag"
+
+msgid "Swap"
+msgstr "Växling"
+
+msgid "Swap Status"
+msgstr ""
+
+msgid "Swap disabled"
+msgstr ""
+
+msgid "Swap file"
+msgstr "Växlingsfil"
+
+msgid "Swap file size"
+msgstr "Storlek för växlingsfil"
+
+msgid "Swap memory"
+msgstr "Växlingsminne"
+
+msgid "Switch to"
+msgstr "Växla till"
+
+msgid "Synchronization Time"
+msgstr "Synkroniseringstid"
+
+#, php-format
+msgid ""
+"Syslog sends UDP datagrams to port 514 on the specified remote syslog "
+"server. Be sure to set syslogd on the remote server to accept syslog "
+"messages from %s."
+msgstr ""
+
+msgid "System"
+msgstr "System"
+
+msgid "System Beep"
+msgstr "Systemsignal"
+
+msgid "System Time"
+msgstr "Systemtid"
+
+msgid "System events"
+msgstr "Systemhändelser"
+
+msgid "System info"
+msgstr ""
+
+msgid "System information"
+msgstr "Systeminformation"
+
+msgid "System log"
+msgstr ""
+
+msgid "System message buffer"
+msgstr ""
+
+msgid "TCP forwarding"
+msgstr ""
+
+msgid "TCP port"
+msgstr "TCP-port"
+
+msgid "TX rates"
+msgstr ""
+
+msgid "Target"
+msgstr ""
+
+msgid "Target Name"
+msgstr ""
+
+msgid "Target address"
+msgstr "Måladress"
+
+msgid "Target name"
+msgstr "Målnamn"
+
+msgid "Temperature"
+msgstr "Temperatur"
+
+#, php-format
+msgid "The %s port must be a valid port number."
+msgstr "%s-porten måste vara ett giltigt portnummer."
+
+msgid "The Group desc contains invalid characters."
+msgstr "Gruppbeskrivningen innehåller ogiltiga tecken."
+
+msgid "The Group name contains invalid characters."
+msgstr "Gruppnamnet innehåller ogiltiga tecken."
+
+msgid "The IP address that this hostname represents."
+msgstr "IP-adressen som det här värdnamnet representerar."
+
+msgid ""
+"The LAN configuration has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+"LAN-konfigurationen har ändrats.<br>Du måste verkställa ändringarna för att "
+"de ska bli aktiverade."
+
+#, php-format
+msgid ""
+"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
+"first before proceeding."
+msgstr ""
+
+msgid ""
+"The RSYNC client list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+
+msgid ""
+"The RSYNC local list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+
+msgid ""
+"The Raid configuration has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+"RAID-konfigurationen har ändrats.<br>Du måste verkställa ändringarna för att "
+"de ska bli aktiverade."
+
+msgid "The TCP idle timeout must be an integer."
+msgstr ""
+
+msgid "The TCP port must be a valid port number."
+msgstr "TCP-porten måste vara ett giltigt portnummer."
+
+msgid ""
+"The User list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+"Användarlistan har ändrats.<br>Du måste verkställa ändringarna för att de "
+"ska bli aktiverade."
+
+#, c-format
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid domain name."
+msgstr ""
+
+#, c-format
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid host name."
+msgstr ""
+
+#, c-format
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid workgroup "
+"name."
+msgstr ""
+
+#, c-format, php-format
+msgid "The attribute '%s' contains invalid characters."
+msgstr ""
+
+#, c-format
+msgid ""
+"The attribute '%s' contains the illegal character ':' and is no valid "
+"password."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' is an invalid port number."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' is invalid."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' is no valid IP address."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' is no valid MAC address."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' is no valid file mode mask."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' is no valid subnet mask."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' is required."
+msgstr "Attributet \"%s\" krävs."
+
+#, php-format
+msgid ""
+"The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' must be a number."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' must be a string."
+msgstr ""
+
+msgid "The changes have been applied successfully."
+msgstr "Ändringarna har verkställts."
+
+#, c-format
+msgid ""
+"The changes have been saved. You have to <a href=%s>reboot</a> the system "
+"for the changes to take effect."
+msgstr ""
+
+msgid "The combination of share and working directory does not exist."
+msgstr ""
+
+msgid "The configuration could not be restored (file upload error)."
+msgstr "Konfigurationen kunde inte återskapas (fel vid filsändning)."
+
+msgid "The configuration could not be restored."
+msgstr "Konfigurationen kunde inte återskapas."
+
+msgid ""
+"The configuration has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
+
+#, php-format
+msgid "The configuration has been restored. %s is now rebooting."
+msgstr ""
+
+msgid ""
+"The confimed password does not match. Please ensure the passwords match "
+"exactly."
+msgstr ""
+
+msgid ""
+"The content directory list has been changed.<br>You must apply the changes "
+"in order for them to take effect."
+msgstr ""
+
+msgid "The credentials to bind with, enter it here twice."
+msgstr ""
+
+msgid ""
+"The cron job list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
+
+msgid "The default SMTP mail server port, e.g. 25 or 587."
+msgstr ""
+
+msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
+msgstr "Enhetsnamnet får endast innehålla tecknen a-z, A-Z, 0-9."
+
+#, php-format
+msgid ""
+"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
+"proceeding."
+msgstr ""
+"Disken är monterad för tillfället! <a href=%s>Avmontera</a> den här disken "
+"först innan du fortsätter."
+
+msgid ""
+"The disk list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+"Disklistan har ändrats.<br>Du måste verkställa ändringarna för att de ska "
+"bli aktiverade."
+
+msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr "Domänen får endast innehålla tecknen a-z, 0-9, \"-\" och \".\"."
+
+msgid ""
+"The encrypted volume list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+
+#, php-format
+msgid "The firmware is now being installed. %s will reboot automatically."
+msgstr ""
+"Den fasta programvaran installeras nu. %s kommer att startas om automatiskt."
+
+msgid "The following input errors were detected"
+msgstr ""
+
+msgid "The full name contains invalid characters."
+msgstr ""
+
+msgid ""
+"The host list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+
+msgid "The host name contain invalid characters."
+msgstr "Värdnamnet innehåller ogiltiga tecken."
+
+msgid ""
+"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
+"."
+msgstr ""
+"Värdnamnet får endast innehåller tecknen a-z, A-Z och 0-9, - , _ och ."
+
+msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
+msgstr "Värdnamnet får endast innehålla tecknen a-z, 0-9 och \"-\"."
+
+msgid ""
+"The iSCSI disk list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
+
+msgid ""
+"The iSCSI target list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+
+msgid "The image file is corrupt"
+msgstr "Avbildsfilen är skadad"
+
+msgid "The login name contains invalid characters."
+msgstr "Inloggningsnamnet innehåller ogiltiga tecken."
+
+msgid "The login name is a reserved login name."
+msgstr "Inloggningsnamnet är ett reserverat inloggningsnamn."
+
+msgid "The max. connection per IP must be either 0 (unlimited) or greater."
+msgstr ""
+
+msgid "The maximum idle time be a number."
+msgstr ""
+
+msgid ""
+"The maximum port to allocate for PASV style data connections (0 = use any "
+"port)."
+msgstr ""
+
+msgid ""
+"The minimum port to allocate for PASV style data connections (0 = use any "
+"port)."
+msgstr ""
+
+msgid ""
+"The mount point list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+"Monteringspunktlistan har ändrats.<br>Du måste verkställa ändringarna för "
+"att de ska bli aktiverade."
+
+msgid "The name of the exported directories are: /mnt/sharename"
+msgstr ""
+
+msgid "The number of clients must be between 1 and 50."
+msgstr ""
+
+msgid "The old password is not correct."
+msgstr ""
+
+msgid ""
+"The package list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
+
+msgid "The password contains the illegal character ':'."
+msgstr ""
+
+msgid "The passwords do not match."
+msgstr "Lösenorden stämmer inte överens."
+
+msgid "The pasv address must be a public IP address."
+msgstr ""
+
+msgid ""
+"The permissions on new files and directories are normally governed by create "
+"mask and directory mask but the inherit permissions parameter overrides "
+"this. This can be particularly useful on systems with many users to allow a "
+"single share to be used flexibly by each user."
+msgstr ""
+
+msgid ""
+"The powerd utility monitors the system state and sets various power control "
+"options accordingly."
+msgstr ""
+
+msgid ""
+"The shares has been modified.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
 
 msgid ""
 "The static route configuration has been changed.<br>You must apply the "
@@ -593,73 +2917,117 @@ msgstr ""
 "Den statiska vägkonfigurationen har ändrats.<br>Du måste verkställa "
 "ändringarna för att de ska bli aktiverade."
 
-msgid "Interface"
-msgstr "Gränssnitt"
-
-msgid "Network"
-msgstr "Nätverk"
-
-msgid "Edit Route"
-msgstr "Redigera väg"
-
-msgid "Do you really want to delete this route?"
-msgstr "Vill du verkligen ta bort den här vägen?"
-
-msgid "Delete Route"
-msgstr "Ta bort väg"
-
-msgid "Add Route"
-msgstr "Lägg till väg"
-
-msgid "A valid destination network must be specified."
-msgstr "Ett giltigt målnätverk måste anges."
-
-msgid "A valid gateway IP address must be specified."
+msgid "The subject of the email."
 msgstr ""
 
-msgid "A route to this destination network already exists."
-msgstr "En väg till det här målnätverket finns redan."
-
-msgid "Choose which interface this route applies to."
+msgid "The swap file is using this mount point."
 msgstr ""
 
-msgid "Destination network"
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take one minute."
 msgstr ""
 
-msgid "Destination network for this static route"
+msgid "The system is halting now. This may take one minute."
 msgstr ""
 
-msgid "Gateway to be used to reach the destination network"
+msgid "The system is rebooting now. This may take one minute."
 msgstr ""
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "Du kan ange en beskrivning här för referens (tolkas inte)."
+msgid "The time update interval must be either between 6 and 1440."
+msgstr ""
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Den uppskickade avbildsfilen är inte för den här plattformen"
 
-msgid "Image upload failed (out of memory?)"
-msgstr "Uppsändning av avbild misslyckades (slut på minne?)"
+msgid "The username may only contain the characters a-z, A-Z and 0-9."
+msgstr "Användarnamnet får endast innehålla tecknen a-z, A-Z och 0-9."
 
-msgid "The digital signature on this image is invalid."
-msgstr "Den digital signaturen för den här avbilden är ogiltig."
-
-msgid "This image is not digitally signed."
-msgstr "Den här avbilden är inte digitalt signerat."
-
-msgid "There has been an error verifying the signature on this image."
+msgid ""
+"The value in this field is sent as the DHCP client identifier when "
+"requesting a DHCP lease."
 msgstr ""
-"Det inträffade ett fel vid verifiering av signaturen för den här avbilden."
+"Värdet i det här fältet skickas som DHCP-klientidentifierare vid begäran om "
+"en DHCP-utlåning."
 
-msgid "The image file is corrupt"
-msgstr "Avbildsfilen är skadad"
-
-msgid "The firmware is now being installed. %s will reboot automatically."
+msgid ""
+"The value in this field is sent as the DHCP hostname when requesting a DHCP "
+"lease."
 msgstr ""
-"Den fasta programvaran installeras nu. %s kommer att startas om automatiskt."
+"Värdet i det här fältet skickas som DHCP-värdnamnet vid begäran om en DHCP-"
+"utlåning."
 
-msgid "Firmware uploading is not supported on this platform."
-msgstr "Uppsändning av fast programvara stöds inte på den här plattformen."
+msgid "The volume must be detached before it can be deleted."
+msgstr ""
+
+msgid "There must be 2 disks in a RAID 1 volume."
+msgstr "Det måste finnas 2 diskar i en RAID 1-volym."
+
+msgid "There must be a minimum of 2 disks in a JBOD."
+msgstr ""
+
+msgid "There must be a minimum of 2 disks in a RAID 0 volume."
+msgstr "Det måste minst finnas 2 diskar i en RAID 0-volym."
+
+msgid "There must be a minimum of 2 disks in a RAID 5 volume."
+msgstr "Det måste minst finnas 2 diskar i en RAID 5-volym."
+
+msgid "There must be a minimum of 3 disks in a RAID 5 volume."
+msgstr ""
+
+msgid ""
+"These commands will be executed pre or post system initialization (booting) "
+"or before system shutdown."
+msgstr ""
+
+msgid ""
+"This allows  you  to lower the power consumption of the drive, at the "
+"expense of performance.<br><em>Do not set this for CF cards.</em>"
+msgstr ""
+
+#, php-format
+msgid ""
+"This allows you to set FS type for preformated disk with data.<br><em>Leave "
+"'unformated' for unformated disk and then use <a href=%s>format "
+"menu</a>.</em>"
+msgstr ""
+
+msgid ""
+"This allows you to set how loud the drive is while it's operating.<br><em>Do "
+"not set this for CF cards.</em>"
+msgstr ""
+
+msgid "This certificate does not appear to be valid."
+msgstr "Certifikatet verkar inte vara giltigt."
+
+msgid ""
+"This controls whether this share is seen in the list of available shares in "
+"a net view and in the browse list."
+msgstr ""
+
+msgid "This couple targetname/targetaddress already exists in the disk list."
+msgstr ""
+
+msgid "This device already exists in the raid volume list."
+msgstr "Den här enheten finns redan i listan över RAID-volymer."
+
+msgid "This disk already exists in the disk list."
+msgstr "Den här disken finns redan i disklistan."
+
+msgid "This disk/partition is already configured."
+msgstr ""
+
+msgid "This encrypted disk is mounted, umount it before trying to detach it."
+msgstr ""
+
+msgid "This group already exists in the group list."
+msgstr "Den här gruppen finns redan i grupplistan."
+
+msgid "This is for information only (not using during iSCSI negociation)."
+msgstr ""
+
+msgid "This key does not appear to be valid."
+msgstr "Den här nyckeln verkar inte vara giltig."
 
 msgid ""
 "This means that the image you uploaded is not an official/supported image "
@@ -674,373 +3042,30 @@ msgstr ""
 "dig om att avbilden inte har modifierats.<br><br>Vill du installera den här "
 "avbilden ändå (på din egen risk)?"
 
-msgid ""
-"Click &quot;Enable firmware upload&quot; below, then choose the image file "
-"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
-"process."
-msgstr ""
-"Klicka på &quot;Aktivera uppskickning av fast programvara&quot; nedan, välj "
-"sedan avbildsfilen som ska skickas upp.<br>Klicka på &quot;Uppgradera den "
-"fast programvaran&quot; för att starta uppgraderingsprocessen."
-
-msgid "Enable firmware upload"
-msgstr "Aktivera uppskickning av fast programvara"
-
-msgid "Disable firmware upload"
-msgstr "Inaktivera uppskickning av fast programvara"
-
-msgid "Firmware image file"
-msgstr "Avbildsfil för fast programvara"
-
-msgid "Upgrade firmware"
-msgstr "Uppgradera fast programvara"
-
-msgid "You must reboot the system before you can upgrade the firmware."
-msgstr ""
-"Du måste starta om systemet innan du kan uppgradera den fasta programvaran."
-
-msgid "The TCP idle timeout must be an integer."
-msgstr ""
-
-msgid "Certificate and key must always be specified together."
-msgstr "Certifikat och nyckel måste alltid anges tillsammans."
-
-msgid "This certificate does not appear to be valid."
-msgstr "Certifikatet verkar inte vara giltigt."
-
-msgid "This key does not appear to be valid."
-msgstr "Den här nyckeln verkar inte vara giltig."
-
-msgid ""
-"The options on this page are intended for use by advanced users only, and "
-"there's <strong>NO</strong> support for them."
-msgstr ""
-
-msgid "webGUI SSL certificate/key"
-msgstr "SSL-certifikat/nyckel för webGUI"
-
-msgid "Certificate"
-msgstr "Certifikat"
-
-msgid "Paste a signed certificate in X.509 PEM format here."
-msgstr "Klistra in ett signerat certifikat i X.509 PEM-format här."
-
-msgid "Key"
-msgstr "Nyckel"
-
-msgid "Paste an RSA private key in PEM format here."
-msgstr "Klistra in en privat RSA-nyckel i PEM-format här."
-
-msgid "Miscellaneous"
-msgstr "Diverse"
-
-msgid "Console menu"
-msgstr "Konsollmeny"
-
-msgid "Disable console menu"
-msgstr "Inaktivera konsollmeny"
-
-msgid "Changes to this option will take effect after a reboot."
-msgstr ""
-"Ändringar i det här alternativet kommer att aktiveras efter en omstart."
-
-msgid "Firmware version check"
-msgstr ""
-
-msgid "Disable firmware version check"
-msgstr ""
-
-msgid "TCP idle timeout"
+msgid "This name already exists in the disk list."
 msgstr ""
 
 msgid ""
-"Idle TCP connections will be removed from the state table after no packets "
-"have been received for the specified number of seconds. Don't set this too "
-"high or your state table could become full of connections that have been "
-"improperly shut down. The default is 9000 seconds (2.5 hours)."
+"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 msgstr ""
 
-msgid "Navigation"
-msgstr "Navigering"
-
-msgid "Keep diagnostics in navigation expanded"
-msgstr ""
-
-msgid "System Beep"
-msgstr "Systemsignal"
-
-msgid "Disable speaker beep on startup and shutdown"
-msgstr ""
-
-msgid "S.M.A.R.T Daemon"
-msgstr "S.M.A.R.T-demon"
-
-msgid "Enable the S.M.A.R.T daemon"
-msgstr "Aktivera S.M.A.R.T-demonen"
-
-msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
-msgstr "Övervaka S.M.A.R.T-enheten genom att logga dess status i loggfilen."
-
-msgid "Tuning"
-msgstr "Justering"
-
-msgid "Zeroconf"
-msgstr "Zeroconf"
-
-msgid "Swap file"
-msgstr "Växlingsfil"
-
-msgid "Swap size"
-msgstr "Växlingsstorlek"
-
-msgid "mount share"
-msgstr "montera utdelning"
-
-msgid "Mount to use for swap"
-msgstr "Montering att använda som växlingsutrymme"
-
-msgid "Swap file size"
-msgstr "Storlek för växlingsfil"
-
-msgid "Size in MB."
-msgstr "Storlek i MB."
-
-msgid "Assign network ports"
-msgstr "Tilldela nätverksportar"
-
-msgid "Port "
-msgstr "Port "
-
-msgid " was assigned to "
-msgstr " var tilldelad till "
-
-msgid " interfaces:"
-msgstr " gränssnitt:"
-
-msgid "Network port"
-msgstr "Nätverksport"
-
-msgid "Delete interface"
-msgstr "Ta bort gränssnitt"
-
-msgid "Add interface"
-msgstr "Lägg till gränssnitt"
-
-msgid ""
-"After you click &quot;Save&quot;, you must reboot %s to make the changes "
-"take effect. You may also have to do one or more of the following steps "
-"before you can access your NAS again: </span><"
-msgstr ""
-
-msgid "A valid gateway must be specified."
-msgstr "En giltig gateway måste anges."
-
-msgid "A valid mtu size must be specified."
-msgstr "En giltig mtu-storlek måste anges."
-
-msgid "IP address"
-msgstr "IP-adress"
-
-msgid "Subnet bit count"
-msgstr ""
-
-msgid "MTU"
-msgstr "MTU"
-
-msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-msgstr ""
-
-msgid "Device polling"
-msgstr ""
-
-msgid "Enable device polling"
+msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr ""
 
 msgid ""
-"Device polling is a technique that lets the system periodically poll network "
-"devices for new data instead of relying on interrupts. This can reduce CPU "
-"load and therefore increase throughput, at the expense of a slightly higher "
-"forwarding delay (the devices are polled 1000 times per second). Not all "
-"NICs support polling; see the m0n0wall homepage for a list of supported "
-"cards."
-msgstr ""
-
-msgid "Speed"
-msgstr "Hastighet"
-
-msgid "Duplex"
-msgstr "Duplex"
-
-msgid "Enable Optional "
-msgstr ""
-
-msgid " interface"
-msgstr " gränssnitt"
-
-msgid "Enter a description (name) for the interface here."
-msgstr ""
-
-msgid "Static IP configuration"
-msgstr "Statisk IP-konfiguration"
-
-msgid "DHCP client configuration"
-msgstr "Konfiguration av DHCP-klient"
-
-msgid "General configuration"
-msgstr "Allmän konfiguration"
-
-msgid "Hostname"
-msgstr "Värdnamn"
-
-msgid "Host"
-msgstr "Värd"
-
-msgid ""
-"The value in this field is sent as the DHCP hostname when requesting a DHCP "
-"lease."
-msgstr ""
-"Värdet i det här fältet skickas som DHCP-värdnamnet vid begäran om en DHCP-"
-"utlåning."
-
-msgid "Client Identifier"
-msgstr "Klientidentifierare"
-
-msgid ""
-"The value in this field is sent as the DHCP client identifier when "
-"requesting a DHCP lease."
-msgstr ""
-"Värdet i det här fältet skickas som DHCP-klientidentifierare vid begäran om "
-"en DHCP-utlåning."
-
-msgid "Calculate netmask bits"
-msgstr "Beräkna nätmasksbitar"
-
-msgid ""
-"The LAN configuration has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"LAN-konfigurationen har ändrats.<br>Du måste verkställa ändringarna för att "
-"de ska bli aktiverade."
-
-msgid "Manage"
-msgstr "Hantera"
-
-msgid "Format"
-msgstr "Formatera"
-
-msgid "Tools"
-msgstr "Verktyg"
-
-msgid ""
-"The disk list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-"Disklistan har ändrats.<br>Du måste verkställa ändringarna för att de ska "
-"bli aktiverade."
-
-msgid "Standby time"
-msgstr ""
-
-msgid "Always on"
-msgstr "Alltid på"
-
-msgid "Unknown or unformatted"
-msgstr "Okänd eller oformaterad"
-
-msgid "Edit disk"
-msgstr "Redigera disk"
-
-msgid "Delete disk"
-msgstr "Ta bort disk"
-
-msgid ""
-"Do you really want to delete this disk? All elements that still use it will "
-"become invalid (e.g. share)!"
-msgstr ""
-
-msgid "Add disk"
-msgstr "Lägg till disk"
-
-msgid "First configuration step: Add your hardrive to the disk list."
-msgstr "Första konfigurationssteget: Lägg till din hårddisk till disklistan."
-
-msgid "This disk already exists in the disk list."
-msgstr "Den här disken finns redan i disklistan."
-
-msgid "UDMA mode"
-msgstr "UDMA-läge"
-
-msgid "Hard disk standby time"
+"This parameter is a comma, space, or tab delimited set of host which are NOT "
+"permitted to access this share. Where the lists conflict, the allow list "
+"takes precedence. In the event that it is necessary to deny all by default, "
+"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
+"to the hosts allow parameter those hosts that should be permitted access. "
+"Leave this field empty to disable this setting."
 msgstr ""
 
 msgid ""
-"Puts the hard disk into standby mode when the selected amount of time after "
-"the last access has elapsed. <em>Do not set this for CF cards.</em>"
+"This parameter is a comma, space, or tab delimited set of hosts which are "
+"permitted to access this share. Use the keyword ALL to permit access for "
+"everyone. Leave this field empty to disable this setting."
 msgstr ""
-
-msgid "Advanced Power Management"
-msgstr ""
-
-msgid "Minimum power usage with Standby"
-msgstr ""
-
-msgid "Medium power usage with Standby"
-msgstr ""
-
-msgid "Minimum power usage without Standby"
-msgstr ""
-
-msgid "Medium power usage without Standby"
-msgstr ""
-
-msgid "Maximum performance, maximum power usage"
-msgstr ""
-
-msgid ""
-"This allows  you  to lower the power consumption of the drive, at the "
-"expense of performance.<br><em>Do not set this for CF cards.</em>"
-msgstr ""
-
-msgid "Acoustic level"
-msgstr ""
-
-msgid "Minimum performance, Minimum acoustic output"
-msgstr ""
-
-msgid "Medium acoustic output"
-msgstr ""
-
-msgid "Maximum performance, maximum acoustic output"
-msgstr ""
-
-msgid ""
-"This allows you to set how loud the drive is while it's operating.<br><em>Do "
-"not set this for CF cards.</em>"
-msgstr ""
-
-msgid "Preformatted FS"
-msgstr "Förformaterat filsystem"
-
-msgid "Initialize"
-msgstr "Initiera"
-
-msgid ""
-"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
-"proceeding."
-msgstr ""
-"Disken är monterad för tillfället! <a href=%s>Avmontera</a> den här disken "
-"först innan du fortsätter."
-
-msgid "Can't format the drive where FreeNAS configuration file is installed!"
-msgstr ""
-"Kan inte formatera enheten där konfigurationsfilen för FreeNAS är "
-"installerad!"
-
-msgid "Disk initialization details"
-msgstr "Detaljer för diskinitiering"
-
-msgid "\"fdisk: Geom not found\"is not an error message!\n"
-msgstr "\"fdisk: Geom not found\" är inte ett felmeddelande!\n"
 
 msgid ""
 "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
@@ -1048,584 +3073,108 @@ msgid ""
 "specified."
 msgstr ""
 
-msgid "Format disk"
-msgstr "Formatera disk"
-
-msgid "Do you really want to format this disk? All data will be lost!"
+msgid "This the IP address or DNS name of the iSCSI target."
 msgstr ""
-"Vill du verkligen formatera den här disken? All data kommer att förloras!"
 
+msgid "This user already exists in the user list."
+msgstr ""
+
+#, php-format
 msgid ""
-"Specify the percentage of space held back from normal users. Note that "
-"lowering the threshold can adversely affect performance and auto-"
-"defragmentation."
+"This will cause %s not to check for newer firmware versions when the <a "
+"href=%s>%s</a> page is viewed."
 msgstr ""
 
-msgid "Don't Erase MBR"
-msgstr "Radera inte huvudstartsektorn (MBR)"
-
-msgid "Don't erase the MBR (useful for some RAID controller cards)"
-msgstr ""
-
-msgid "Send Command!"
-msgstr "Skicka kommando!"
-
-msgid "Command output:"
-msgstr "Kommandoutmatning:"
-
-msgid ""
-"The disk is currently mounted! The mount point will be removed temporary to "
-"perform selected command."
-msgstr ""
-
-msgid "Unmount disk/partition"
-msgstr "Avmontera disk/partition"
-
-msgid ""
-"If the selected disk/partition is mounted it will be unmounted temporarily "
-"to perform selected command, otherwise the commands work in read-only "
-"mode.<br>Service disruption to users accessing this mount will occur during "
-"this process."
-msgstr ""
-
-msgid "iSCSI"
-msgstr "iSCSI"
-
-msgid "iSCSI Initiator"
-msgstr ""
-
-msgid "Target IP address"
-msgstr ""
-
-msgid "IP address of the iSCSI target."
-msgstr "IP-adress för iSCSI-målet."
-
-msgid "Targetname"
-msgstr "Målnamn"
-
-msgid "Targetname."
-msgstr "Målnamn."
-
-msgid "Manage RAID"
-msgstr "Hantera RAID"
-
-msgid "Format RAID"
-msgstr "Formatera RAID"
-
-msgid "Volume Name"
-msgstr "Volymnamn"
-
-msgid ""
-"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
-"first before proceeding."
-msgstr ""
-
-msgid "Geom Vinum"
-msgstr ""
-
-msgid "Geom Mirror"
-msgstr ""
-
-msgid "Geom Stripe"
-msgstr ""
-
-msgid "Geom Concat"
-msgstr ""
-
-msgid "Geom Raid5"
-msgstr ""
-
-msgid "(unstable)"
-msgstr "(instabil)"
-
-msgid "RAID"
-msgstr "RAID"
-
-msgid ""
-"The Raid configuration has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"RAID-konfigurationen har ändrats.<br>Du måste verkställa ändringarna för att "
-"de ska bli aktiverade."
-
-msgid "Edit RAID"
-msgstr "Redigera RAID"
-
-msgid "Delete RAID"
-msgstr "Ta bort RAID"
-
-msgid "Add RAID"
-msgstr "Lägg till RAID"
-
-msgid ""
-"Do you really want to delete this raid volume? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr ""
-
-msgid "You must add disks first."
-msgstr "Du måste lägga till diskar först."
-
-msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
-msgstr "Enhetsnamnet får endast innehålla tecknen a-z, A-Z, 0-9."
-
-msgid "This device already exists in the raid volume list."
-msgstr "Den här enheten finns redan i listan över RAID-volymer."
-
-msgid "There must be a minimum of 2 disks in a RAID 0 volume."
-msgstr "Det måste minst finnas 2 diskar i en RAID 0-volym."
-
-msgid "There must be 2 disks in a RAID 1 volume."
-msgstr "Det måste finnas 2 diskar i en RAID 1-volym."
-
-msgid "There must be a minimum of 2 disks in a RAID 5 volume."
-msgstr "Det måste minst finnas 2 diskar i en RAID 5-volym."
-
-msgid "ERR Could not save RAID configuration.\n"
-msgstr ""
-
-msgid "Raid name"
-msgstr ""
-
-msgid "striping"
-msgstr ""
-
-msgid "mirroring"
-msgstr "spegling"
-
-msgid "rotated block-interleaved parity"
-msgstr ""
-
-msgid "JBOD"
-msgstr "JBOD"
-
-msgid "Members of this volume"
-msgstr "Medlemmar av den här volymen"
-
-msgid "Software RAID information and status"
-msgstr ""
-
-msgid "Disk format UFS output:"
-msgstr ""
-
-msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
-msgstr ""
-"Det här steget kommer att formatera RAID-volymen med Unix FileSystem (UFS)."
-
-msgid "Format UFS disk!"
-msgstr "Formatera UFS-disk!"
-
-msgid "Object name"
-msgstr "Objektnamn"
-
-msgid "Command"
-msgstr "Kommando"
-
-msgid ""
-"1. Use these specials actions for debugging only!<br>2. There is no need of "
-"using this menu for start a RAID volume (start automaticaly)."
-msgstr ""
-
-msgid "Share Name"
-msgstr "Utdelningsnamn"
-
-msgid ""
-"The mount point list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"Monteringspunktlistan har ändrats.<br>Du måste verkställa ändringarna för "
-"att de ska bli aktiverade."
-
-msgid ""
-"Do you really want to delete this mount point? All elements that still use "
-"it will become invalid (e.g. share)!"
-msgstr ""
-"Vill du verkligen ta bort den här monteringspunkten? Alla element som "
-"fortfarande använder den kommer att bli ogiltiga (t.ex. utdelningen)!"
-
-msgid "delete mount"
-msgstr "ta bort montering"
-
-msgid "add mount"
-msgstr "lägg till montering"
-
-msgid "The description name contain invalid characters."
-msgstr "Beskrivningen innehåller ogiltiga tecken."
-
-msgid "Can't mount the system partition 1, the DATA partition is the 2."
-msgstr "Kan inte montera systempartition 1, DATA-partitionen är 2."
-
-msgid "Duplicate Share Name."
-msgstr "Dublett av utdelningsnamn."
-
-msgid ""
-"Select EFI GPT if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
-"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select old "
-"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
-msgstr ""
-
-msgid ""
-"You can't mount the partition '%s' where the config file is stored.<br>"
-msgstr ""
-
-msgid "Mounting..."
-msgstr "Monterar..."
-
-msgid "Unmounting..."
-msgstr "Avmonterar..."
-
-msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
-msgstr ""
-
-msgid "The Netbios name contains invalid characters."
-msgstr ""
-
-msgid "The Workgroup name contains invalid characters."
-msgstr ""
-
-msgid "The WINS server must be an IP address."
-msgstr ""
-
-msgid "The SND Buffer value must be a number."
-msgstr ""
-
-msgid "The RCV Buffer value must be a number."
-msgstr ""
-
-msgid "CIFS share"
-msgstr ""
-
-msgid "Authentication"
-msgstr "Autentisering"
-
-msgid "NetBiosName"
-msgstr "NetBIOS-namn"
-
-msgid "Workgroup"
-msgstr "Arbetsgrupp"
-
-msgid "Workgroup to be member of."
-msgstr "Arbetsgrupp att vara medlem av."
-
-msgid "Server description. This can usually be left blank."
-msgstr "Serverbeskrivning. Det här kan vanligtvis lämnas tomt."
-
-msgid "Dos charset"
-msgstr "Dos-teckenuppsättning"
-
-msgid "Unix charset"
-msgstr "Unix-teckenuppsättning"
-
-msgid "Log Level"
-msgstr "Loggnivå"
-
-msgid "Local Master Browser"
-msgstr ""
-
-msgid "Allows %s to try and become a local master browser."
+msgid "This will create a recycle bin on the share."
 msgstr ""
 
 msgid "Time server"
 msgstr "Tidsserver"
 
-msgid "%s advertises itself as a time server to Windows clients."
-msgstr "%s annoserar ut sig själv som en tidsserver för WIndows-klienter."
+msgid "Time update interval"
+msgstr "Intervall för tidsuppdatering"
 
-msgid "WINS server"
-msgstr "WINS-server"
-
-msgid "WINS Server IP address."
-msgstr "IP-adress till WINS-server"
-
-msgid "Recycle Bin"
-msgstr "Papperskorg"
-
-msgid "Enable Recycle bin"
-msgstr "Aktivera papperskorg"
-
-msgid "This will create a recycle bin on the CIFS shares."
-msgstr "Det här kommer att skapa en papperskorg på CIFS-utdelningar."
-
-msgid "Shares"
-msgstr "Utdelningar"
-
-msgid "Send Buffer Size"
-msgstr ""
-
-msgid "Size of send buffer (16384 by default)."
-msgstr ""
-
-msgid "Receive Buffer Size"
-msgstr ""
-
-msgid "Size of receive buffer (16384 by default)."
-msgstr ""
-
-msgid ""
-"The shares has been modified.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-
-msgid "Browseable"
-msgstr "Bläddringsbar"
-
-msgid "Edit share"
-msgstr ""
-
-msgid ""
-"This controls whether this share is seen in the list of available shares in "
-"a net view and in the browse list."
-msgstr ""
-
-msgid "The maximum Number of client must be a number."
-msgstr ""
-
-msgid "The max con per ip must be a number."
-msgstr ""
-
-msgid "The maximum idle time be a number."
-msgstr ""
-
-msgid "The pasv address must be a public IP address."
-msgstr ""
-
-msgid "You must select at minium anonymous or/and local user authentication."
-msgstr ""
-
-msgid "FTP Server"
-msgstr "FTP-server"
-
-msgid "Number of clients"
-msgstr "Antal klienter"
-
-msgid "Maximum number of simultaneous clients."
-msgstr "Maximalt antal samtidiga klienter."
-
-msgid "Max. conn. per IP"
-msgstr "Max. anslutningar per IP"
-
-msgid "Maximum number of connections per IP address (0 = unlimited)."
-msgstr "Maximalt antal anslutningar per IP-adress (0 = obegränsat)."
+msgid "Time zone"
+msgstr "Tidszon"
 
 msgid "Timeout"
 msgstr "Tidsgräns"
 
-msgid "Maximum idle time in minutes."
-msgstr "Maximal overksam tid i minuter"
-
-msgid "Anonymous login"
-msgstr "Anonym inloggning"
-
-msgid "Enable anonymous login."
-msgstr "Aktivera anonym inloggning."
-
-msgid "Local User"
-msgstr "Lokal användare"
-
-msgid "Enable local user login."
+msgid "To e-mail"
 msgstr ""
 
-msgid "FXP"
-msgstr "FXP"
+msgid "To email"
+msgstr ""
 
-msgid "Enable FXP protocol."
-msgstr "Aktivera FXP-protokoll."
-
+#, php-format
 msgid ""
-"FXP allows transfers between two remote servers without any file data going "
-"to the client asking for the transfer (insecure!)."
+"To increase CIFS performance try the following:<br>- Enable 'Large "
+"read/write' switch<br>- Enable '<a href='%s'>Tuning</a>' switch<br>- "
+"Increase <a href='%s'>MTU</a>"
 msgstr ""
 
-msgid "NAT mode"
-msgstr ""
+msgid "Tools"
+msgstr "Verktyg"
 
-msgid "Force NAT mode."
+msgid "Traceroute"
 msgstr ""
 
 msgid ""
-"Enable this if your FTP server is behind a NAT box that doesn't support "
-"applicative FTP proxying."
+"Traceroute may take a while to complete. You may hit the Stop button on your "
+"browser at any time to see the progress of failed traceroutes."
 msgstr ""
 
-msgid "Passive IP address"
+msgid "Traceroute output"
 msgstr ""
 
+msgid "Traffic graph"
+msgstr "Trafikdiagram"
+
+msgid "Trap host"
+msgstr ""
+
+msgid "Trap port"
+msgstr ""
+
+msgid "Trap string"
+msgstr ""
+
+msgid "Trap string."
+msgstr ""
+
+msgid "Traps"
+msgstr ""
+
+msgid "Tuning"
+msgstr "Justering"
+
+msgid "Type"
+msgstr "Typ"
+
+msgid "UDMA mode"
+msgstr "UDMA-läge"
+
+#, php-format
 msgid ""
-"Use this option to override the IP address that FTP daemon will advertise in "
-"response to the PASV command."
+"UFS and variants are the NATIVE file format for FreeBSD (the underlying OS "
+"of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, "
+"or NTFS can result in unpredictable results, file corruption, and loss of "
+"data!"
 msgstr ""
 
+#, php-format
 msgid ""
-"The minimum port to allocate for PASV style data connections (0 = use any "
-"port)."
+"UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
+"Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
+"can result in unpredictable results, file corruption, and loss of data!"
 msgstr ""
+"UFS är det filformatet som är STANDARD för FreeBSD (det underliggande "
+"operativsystemet för %s). Försök att använda andra filformat såsom FAT, "
+"FAT32, EXT2, EXT3 eller NTFS kan resultera i oförutsedda resultat, skadade "
+"filer och att data kan gå förlorat!"
 
-msgid ""
-"The maximum port to allocate for PASV style data connections (0 = use any "
-"port)."
-msgstr ""
-
-msgid "Banner"
-msgstr "Banderoll"
-
-msgid "Greeting banner displayed by FTP when a connection first comes in."
-msgstr ""
-"Välkomstbanderoll som visas av FTP-servern när en anslutning kommer in."
-
-msgid "A valid network must be specified."
-msgstr "Ett giltig nätverk måste anges."
-
-msgid "NFS Server"
-msgstr "NFS-server"
-
-msgid "Map all users to root"
-msgstr "Mappa alla användare till root"
-
-msgid "All users will have the root privilege."
-msgstr "Alla användare kommer att ha root-behörighet."
-
-msgid "Authorized"
-msgstr "Behörig"
-
-msgid "Networks"
-msgstr "Nätverk"
-
-msgid "Networks Authorized"
-msgstr "Behöriga nätverk"
-
-msgid "Network that is authorised to access to NFS share"
-msgstr ""
-
-msgid "The name of the exported directories are : /mnt/sharename"
-msgstr ""
-
-msgid "Server"
-msgstr "Server"
-
-msgid "Client"
-msgstr "Klient"
-
-msgid "Local"
-msgstr "Lokal"
-
-msgid "Rsync Daemon"
-msgstr ""
-
-msgid "Read only"
-msgstr "Skrivskyddad"
-
-msgid "Map to user"
-msgstr "Koppla till användare"
-
-msgid "Alternate TCP port. Default is 873"
-msgstr ""
-
-msgid "Maximum connections"
-msgstr "Maximalt antal anslutningar"
-
-msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
-msgstr ""
-
-msgid "MOTD"
-msgstr ""
-
-msgid "Message of the day."
-msgstr "Dagens meddelande."
-
-msgid "You must configure mount point first."
-msgstr ""
-
-msgid "Rsync Client Synchronization"
-msgstr ""
-
-msgid "Remote RSYNC Server"
-msgstr ""
-
-msgid "IP address of remote RSYNC server"
-msgstr ""
-
-msgid "RSYNC Options"
-msgstr "RSYNC-flaggor"
-
-msgid "Delete files that don't exist on sender."
-msgstr "Ta bort filer som inte finns hos avsändaren."
-
-msgid "Shares to be synchronized"
-msgstr "Utdelningar att synkroniseras"
-
-msgid "This same local share must be present on the Remote Server."
-msgstr ""
-
-msgid "Synchronization Time"
-msgstr "Synkroniseringstid"
-
-msgid "You can't have the same mount point for source and destination!"
-msgstr ""
-
-msgid "Rsync Local Synchronization"
-msgstr ""
-
-msgid "Source"
-msgstr "Källa"
-
-msgid "Source Mount Point."
-msgstr ""
-
-msgid "Destination"
-msgstr "Mål"
-
-msgid "Destination Mount Point (backup drive)."
-msgstr ""
-
-msgid "SSH Daemon"
-msgstr "SSH-demon"
-
-msgid "Alternate TCP port. Default is 22"
-msgstr ""
-
-msgid "Permit root login"
-msgstr ""
-
-msgid "Enable TCP Forwarding"
-msgstr ""
-
-msgid "Permit to do SSH Tunneling."
-msgstr "Tillåt att köra SSH-tunnelering."
-
-msgid ""
-"Specifies whether it is allowed to login as superuser (root) directly."
-msgstr ""
-
-msgid "SSH key"
-msgstr "SSH-nyckel"
-
-msgid "Private Key"
-msgstr "Privat nyckel"
-
-msgid "Paste a DSA PRIVATE KEY in PEM format here."
-msgstr "Klistra in en PRIVAT DSA-NYCKEL i PEM-format här."
-
-msgid "The combination of share and working directory does not exist."
-msgstr ""
-
-msgid "Unison File Synchronisation"
-msgstr ""
-
-msgid "Share"
-msgstr "Utdelning"
-
-msgid "You may need enough space to duplicate all files being synced"
-msgstr ""
-
-msgid "Working Directory"
-msgstr "Arbetskatalog"
-
-msgid "Where the working files will be stored"
-msgstr "Var arbetsfilerna ska lagras"
-
-msgid "Create work directory if it doesn't exist"
-msgstr ""
+msgid "UPnP"
+msgstr "UPnP"
 
 msgid "UPnP A/V Media Server"
 msgstr ""
@@ -1633,102 +3182,76 @@ msgstr ""
 msgid "UPnP friendly name."
 msgstr ""
 
-msgid "Interface to listen to."
-msgstr ""
-
-msgid "Content"
-msgstr "Innehåll"
-
-msgid "Directories to be shared."
-msgstr ""
-
-msgid "No content directory to be shared."
-msgstr ""
-
-msgid "Directory"
-msgstr "Katalog"
-
-msgid "Add directory"
-msgstr "Lägg till katalog"
-
-msgid "Edit directory"
-msgstr "Redigera katalog"
-
-msgid "Delete directory"
-msgstr "Ta bort katalog"
-
-msgid "Do you really want to delete this directory entry?"
-msgstr ""
-
-msgid "Directory to be shared."
-msgstr "Katalog att delas ut."
-
-msgid "You must select at least one authentication method."
-msgstr "Du måste välja åtminstone en autentiseringsmetod."
-
-msgid "AFP Server"
-msgstr "AFP-server"
-
-msgid "Server Name"
-msgstr "Servernamn"
-
-msgid "Enable guest access."
-msgstr "Aktivera gäståtkomst."
-
-msgid "Enable local user authentication."
-msgstr "Aktivera lokal användarautentisering."
-
-msgid "User"
-msgstr "Användare"
-
-msgid "Users"
-msgstr "Användare"
-
-msgid "Group"
-msgstr "Grupp"
-
-msgid "Groups"
-msgstr "Grupper"
-
-msgid "Full Name"
-msgstr "Fullständigt namn"
-
-msgid ""
-"The User list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-"Användarlistan har ändrats.<br>Du måste verkställa ändringarna för att de "
-"ska bli aktiverade."
-
-msgid "Edit user"
-msgstr "Redigera användare"
-
-msgid "Delete user"
-msgstr "Ta bort användare"
-
-msgid "Do you really want to delete this user?!"
-msgstr "Vill du verkligen ta bort den här användaren?!"
-
-msgid "Add user"
-msgstr "Lägg till användare"
-
-msgid "You must create a group first."
-msgstr "Du måste skapa en grupp först."
-
-msgid "The login name contains invalid characters."
-msgstr "Inloggningsnamnet innehåller ogiltiga tecken."
-
-msgid "The login name is a reserved login name."
-msgstr "Inloggningsnamnet är ett reserverat inloggningsnamn."
-
-msgid "The full name contains invalid characters."
-msgstr ""
-
-msgid "This user already exists in the user list."
+msgid "Uninstall package"
 msgstr ""
 
 msgid "Unique login name of user."
 msgstr ""
+
+msgid "Unison"
+msgstr "Unison"
+
+msgid "Unison File Synchronisation"
+msgstr ""
+
+msgid "Unix charset"
+msgstr "Unix-teckenuppsättning"
+
+msgid "Unknown or unformatted"
+msgstr "Okänd eller oformaterad"
+
+msgid "Unmount disk/partition"
+msgstr "Avmontera disk/partition"
+
+msgid "Unmounting..."
+msgstr "Avmonterar..."
+
+msgid "Up"
+msgstr "Uppåt"
+
+msgid "Update period"
+msgstr ""
+
+msgid "Upgrade firmware"
+msgstr "Uppgradera fast programvara"
+
+msgid "Uptime"
+msgstr "Upptid"
+
+msgid "Use SMTP authentication."
+msgstr ""
+
+msgid ""
+"Use a space to separate multiple hosts (only one required). Remember to set "
+"up at least one DNS server if you enter a host name here!"
+msgstr ""
+"Använd ett blanksteg för att separera flera värdar (endast en krävs). Kom "
+"ihåg att konfigurera åtminstone en DNS-server om du anger ett värdnamn här!"
+
+msgid ""
+"Use the new 64k streaming read and write varient SMB requests introduced "
+"with Windows 2000."
+msgstr ""
+
+msgid "Use the specified NTP server."
+msgstr ""
+
+msgid ""
+"Use this option to override the directory creation mask (022 by default)."
+msgstr ""
+
+msgid ""
+"Use this option to override the directory creation mask (0777 by default)."
+msgstr ""
+
+msgid "Use this option to override the file creation mask (0666 by default)."
+msgstr ""
+
+msgid "Use this option to override the file creation mask (077 by default)."
+msgstr ""
+
+msgid "User"
+msgstr "Användare"
 
 msgid "User full name."
 msgstr "Användarens fullständiga namn."
@@ -1736,306 +3259,76 @@ msgstr "Användarens fullständiga namn."
 msgid "User password."
 msgstr ""
 
-msgid "Confirm Password"
-msgstr "Bekräfta lösenord"
-
-msgid "Confirm the password."
-msgstr "Bekräfta lösenordet."
-
-msgid "Group Member"
-msgstr "Gruppmedlem"
-
-msgid "Full Shell"
-msgstr "Fullständigt skal"
-
-msgid "Give full shell to user"
+msgid "User suffix"
 msgstr ""
 
-msgid "Administrator"
-msgstr "Administratör"
-
-msgid "Put user in the administrator group"
-msgstr ""
-
-msgid ""
-"The group list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-
-msgid "Edit group"
-msgstr "Redigera grupp"
-
-msgid "Delete group"
-msgstr "Ta bort grupp"
-
-msgid "Do you really want to delete this group?"
-msgstr ""
-
-msgid "Add group"
-msgstr "Lägg till grupp"
-
-msgid "The Group name contains invalid characters."
-msgstr "Gruppnamnet innehåller ogiltiga tecken."
-
-msgid "The Group desc contains invalid characters."
-msgstr "Gruppbeskrivningen innehåller ogiltiga tecken."
-
-msgid "This group already exists in the group list."
-msgstr "Den här gruppen finns redan i grupplistan."
-
-msgid "Group name."
-msgstr "Gruppnamn."
-
-msgid "Group description."
-msgstr "Gruppbeskrivning."
-
-msgid "AD server name"
-msgstr "Namn på AD-server"
-
-msgid "AD or PDC name."
-msgstr "AD eller PDC-namn."
-
-msgid "AD server IP"
-msgstr "IP för AD-server"
-
-msgid "IP address of MS Active Directory server."
-msgstr "IP-adress för MS Active Directory-server."
-
-msgid "Domain name"
-msgstr "Domännamn"
-
-msgid "Domain name in old format."
-msgstr "Domännamn i gamla formatet."
-
-msgid "Administrator name"
-msgstr "Administratörens namn"
+msgid "Username"
+msgstr "Användarnamn"
 
 msgid "Username of a domain administrator account."
 msgstr "Användarnamn för ett domänadministratörskonto."
 
-msgid "Administration password"
-msgstr ""
-
-msgid "Password of domain administrator account, enter it here twice."
-msgstr ""
-
-msgid "The system is halting now. This may take one minute."
-msgstr ""
-
-msgid "Are you sure you want to shutdown the system?"
-msgstr ""
-
-msgid "Scheduled shutdown"
-msgstr "Schemalagd avständning"
-
-msgid "Shutdown Time"
-msgstr ""
-
-msgid "File path"
-msgstr "Filsökväg"
-
-msgid "Saved file to"
-msgstr "Sparade filen till"
-
-msgid "File not found"
-msgstr "Filen hittades inte"
-
-msgid "Rows"
-msgstr "Rader"
-
-msgid "Cols"
-msgstr ""
-
-msgid "Highlighting"
-msgstr ""
-
-msgid "Enabled"
-msgstr "Aktiverad"
-
-msgid "Disabled"
-msgstr "Inaktiverad"
-
-msgid "Execute command"
-msgstr "Kör kommando"
-
-msgid "The system is rebooting now. This may take one minute."
-msgstr ""
-
-msgid "Are you sure you want to reboot the system?"
-msgstr "Är du säker på att du vill starta om systemet?"
-
-msgid "License"
-msgstr "Licens"
-
-msgid "%s interface (SSID '%s')"
-msgstr ""
-
-msgid "Signal strength cache"
-msgstr ""
-
-msgid "MAC address"
-msgstr "MAC-adress"
-
-msgid "Signal"
-msgstr "Signal"
-
-msgid "Noise"
-msgstr "Störning"
-
-msgid "Quality"
-msgstr "Kvalitet"
-
-msgid "Associated stations"
-msgstr "Associerade stationer"
-
-msgid "TX rates"
-msgstr ""
-
-msgid ""
-"No supported wireless interfaces were found for status display (only cards "
-"that use the wi[n] driver are supported)."
-msgstr ""
-
-msgid "%s interface"
-msgstr "%s-gränssnitt"
-
-msgid "DHCP"
-msgstr "DHCP"
-
-msgid "PPPoE"
-msgstr "PPPoE"
-
-msgid "PPTP"
-msgstr "PPTP"
-
-msgid "Subnet mask"
-msgstr "Subnätmask"
-
-msgid "Gateway"
-msgstr "Gateway"
-
-msgid "ISP DNS servers"
-msgstr ""
-
-msgid "Media"
-msgstr "Media"
-
-msgid "Channel"
-msgstr "Kanal"
-
-msgid "SSID"
-msgstr "SSID"
-
-msgid "I/O packets"
-msgstr "In/ut-paket"
-
-msgid "I/O errors"
-msgstr "In/ut-fel"
-
-msgid "Collisions"
-msgstr "Kollisioner"
-
-msgid "CPU load"
-msgstr "Processorbelastning"
+msgid "Users"
+msgstr "Användare"
 
 msgid "VLAN tag"
 msgstr "VLAN-tagg"
 
-msgid "Edit VLAN"
-msgstr "Redigera VLAN"
+msgid "Version"
+msgstr "Version"
+
+msgid "Volume Name"
+msgstr "Volymnamn"
+
+msgid "WAN address"
+msgstr ""
+
+msgid "WINS Server IP address."
+msgstr "IP-adress till WINS-server"
+
+msgid "WINS server"
+msgstr "WINS-server"
+
+msgid "Warning"
+msgstr "Varning"
+
+#, php-format
+msgid "Warning: This can cause a huge delay in loading the %s log page!"
+msgstr ""
+
+msgid "WebGUI port"
+msgstr "Port för webGUI"
+
+msgid "WebGUI protocol"
+msgstr "Protokoll för webGUI"
+
+msgid "Where the working files will be stored"
+msgstr "Var arbetsfilerna ska lagras"
+
+msgid "Who"
+msgstr ""
+
+msgid "Wireless"
+msgstr "Trådlös"
+
+msgid "Workgroup"
+msgstr "Arbetsgrupp"
+
+msgid "Workgroup to be member of."
+msgstr "Arbetsgrupp att vara medlem av."
+
+msgid "Working Directory"
+msgstr "Arbetskatalog"
+
+msgid "XboX 360"
+msgstr ""
+
+msgid "Yes"
+msgstr "Ja"
 
 msgid ""
-"Traceroute may take a while to complete. You may hit the Stop button on your "
-"browser at any time to see the progress of failed traceroutes."
-msgstr ""
-
-msgid "Partitions"
-msgstr "Partitioner"
-
-msgid "S.M.A.R.T."
-msgstr "S.M.A.R.T."
-
-msgid "ATAidle"
-msgstr ""
-
-msgid "Space Used"
-msgstr "Utrymme använt"
-
-msgid "Mounts"
-msgstr "Monteringar"
-
-msgid "MS Domain"
-msgstr ""
-
-msgid "List of detected ATA disks"
-msgstr "Lista med upptäckta ATA-diskar"
-
-msgid "List of detected SCSI disks"
-msgstr "Lista med upptäckta SCSI-diskar"
-
-msgid "List of mount points"
-msgstr "Lista med monteringspunkter"
-
-msgid "Free Space"
-msgstr "Ledigt utrymme"
-
-msgid "%s will reboot after restoring the configuration."
-msgstr ""
-
-msgid "Delete ARP entry"
-msgstr ""
-
-msgid "Remove all entries from ARP table"
-msgstr ""
-
-msgid "Traffic graph"
-msgstr "Trafikdiagram"
-
-msgid "Cannot get data about interface"
-msgstr ""
-
-msgid "In"
-msgstr "In"
-
-msgid "Out"
-msgstr "Ut"
-
-msgid "Switch to"
-msgstr "Växla till"
-
-msgid "AutoScale"
-msgstr ""
-
-msgid "Follow"
-msgstr ""
-
-msgid "Graph shows last"
-msgstr ""
-
-msgid "Collecting initial data, please wait..."
-msgstr "Samlar in initial data, var god vänta..."
-
-msgid "Enable tuning of some kernel variables"
-msgstr "Aktivera justering av vissa kärnvariabler"
-
-msgid ""
-"This will cause %s not to check for newer firmware versions when the <a "
-"href=%s>%s</a> page is viewed."
-msgstr ""
-
-msgid ""
-"DO NOT abort the firmware upgrade once it has started. %s will reboot "
-"automatically after storing the new firmware. The configuration will be "
-"maintained.<br>You need a minium of %d Mb RAM to perform the firmware "
-"update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-"System configuration before doing a Firmware upgrade."
-msgstr ""
-
-msgid ""
-"After you click &quot;Save&quot;, you may also have to do one or more of the "
-"following steps before you can access %s again: <ul><li>change the IP "
-"address of your computer</li><li>access the webGUI with the new IP "
-"address</li></ul>"
+"You can also install a package via SSH or console using the the pkg_add "
+"command.<br>Example: pkg_add -r packagename"
 msgstr ""
 
 msgid ""
@@ -2043,596 +3336,150 @@ msgid ""
 "hard drive."
 msgstr ""
 
+#, php-format
 msgid ""
-"This allows you to set FS type for preformated disk with data.<br><em>Leave "
-"'unformated' for unformated disk and then use <a href=%s>format "
-"menu</a>.</em>"
+"You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr ""
 
-msgid ""
-"Optional configuration step: Configuring a virtual RAID disk using your <a "
-"href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
-"before format and mount it!"
+#, php-format
+msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
 msgstr ""
 
-msgid "The following input errors were detected"
+msgid "You have to define some 'Extent' objects first."
 msgstr ""
 
-msgid ""
-"Second configuration step: Declaring the filesystem used by your <a "
-"href=%s>previously configured disk.</a>"
-msgstr ""
-"Andra konfigurationssteget: Ange filsystemet som används på din <a "
-"href=%s>tidigare konfigurerade disk.</a>"
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr "Du kan ange en beskrivning här för referens (tolkas inte)."
 
-msgid "Default is 21"
-msgstr "Standard är 21"
+msgid "You may enter a description here for your reference."
+msgstr "Du kan ange en beskrivning här som referens."
 
-msgid ""
-"<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
-"href=%s>user</a> must have full Shell enabled."
+msgid "You may need enough space to duplicate all files being synced"
 msgstr ""
 
-msgid "Last %d %s log entries"
-msgstr "Senaste %d %s loggposterna"
+msgid "You must add disks first."
+msgstr "Du måste lägga till diskar först."
 
-msgid "Clear log"
-msgstr "Töm logg"
-
-msgid "Show log entries in reverse order (newest entries on top)"
-msgstr "Visa loggposter i omvänd ordning (senaste posterna överst)"
-
-msgid "Number of log entries to show"
-msgstr "Antal loggposter att visa"
-
-msgid "Resolve IP addresses to hostnames"
-msgstr "Slå upp IP-adresser till värdnamn"
-
-msgid ""
-"Hint: If this is checked, IP addresses in %s logs are resolved to real "
-"hostnames where possible."
+msgid "You must configure mount point first."
 msgstr ""
 
-msgid "Warning: This can cause a huge delay in loading the %s log page!"
+msgid "You must create a group first."
+msgstr "Du måste skapa en grupp först."
+
+msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
 msgstr ""
 
-msgid "Enable syslog'ing to remote syslog server"
+msgid "You must reboot the system before you can upgrade the firmware."
+msgstr ""
+"Du måste starta om systemet innan du kan uppgradera den fasta programvaran."
+
+msgid "You must select at least one authentication method."
+msgstr "Du måste välja åtminstone en autentiseringsmetod."
+
+msgid "You must select at minium anonymous or/and local user authentication."
 msgstr ""
 
-msgid "Remote syslog server"
-msgstr ""
-
-msgid "IP address of remote syslog server"
-msgstr ""
-
-msgid "System events"
-msgstr "Systemhändelser"
-
-msgid "SSHD events"
-msgstr ""
-
-msgid "FTP events"
-msgstr ""
-
-msgid "RSYNCD events"
-msgstr ""
-
-msgid "SMARTD events"
-msgstr ""
-
-msgid "Daemon events"
-msgstr "Demonhändelser"
-
-msgid ""
-"Syslog sends UDP datagrams to port 514 on the specified remote syslog "
-"server. Be sure to set syslogd on the remote server to accept syslog "
-"messages from %s."
-msgstr ""
-
-msgid "List of partition on all detected disk"
-msgstr "Lista med partitioner på alla upptäckta diskar"
-
-msgid "List of SMART capabilities on all detected disk"
-msgstr "Lista SMART-förmågor på alla upptäckta diskar"
-
-msgid "List of Advanced ATA capabilities on all ATA disk"
-msgstr "Lista med avancerade ATA-förmågor på alla ATA-diskar"
-
-msgid "iSCSI initiator disabled"
-msgstr "iSCSI-initiator inaktiverad"
-
-msgid "Show the list of available target Name on the iSCSI target"
-msgstr ""
-
-msgid "AD Authentication disabled"
-msgstr ""
-
-msgid "Count must be between 1 and %d"
-msgstr "Antal måste vara mellan 1 och %d"
-
-msgid "Count"
-msgstr "Antal"
-
-msgid "Ping output"
-msgstr ""
-
-msgid "Maximum number of hops"
-msgstr ""
-
-msgid "Traceroute output"
-msgstr ""
-
-msgid ""
-"IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-"hostnames&quot; is checked on the <a href=%s>%s</a> page."
-msgstr ""
-
-msgid ""
-"If you click 'Yes', %s will be reset to factory defaults and will reboot "
-"immediately. The entire system configuration will be overwritten. The LAN IP "
-"address will be reset to %s and the password will be set to '%s'."
-msgstr ""
-
-msgid "Are you sure you want to proceed?"
-msgstr ""
-
-msgid "The configuration has been restored. %s is now rebooting."
-msgstr ""
-
-msgid "The configuration could not be restored."
-msgstr "Konfigurationen kunde inte återskapas."
-
-msgid "The configuration could not be restored (file upload error)."
-msgstr "Konfigurationen kunde inte återskapas (fel vid filsändning)."
-
-msgid "webGUI Configuration"
-msgstr "Konfiguration av webGUI"
-
-msgid "Erasing MBR and all partitions"
-msgstr "Raderar MBR och alla partitioner"
-
-msgid "Keeping the MBR and all partitions"
-msgstr "Behåller MBR och alla partitioner"
-
-msgid "Creating one partition"
-msgstr "Skapar en partition"
-
-msgid "Initializing partition"
-msgstr "Initierar partition"
-
-msgid "Creating BSD label"
-msgstr "Skapar BSD-etikett"
-
-msgid "Creating filesystem"
-msgstr "Skapar filsystem"
-
-msgid "Destroying old %s information"
-msgstr "Förstör gammal %s-information"
-
-msgid "Done"
-msgstr "Färdig"
-
-msgid "Creating %s partition"
-msgstr "Skapar %s-partition"
-
-msgid "Creating filesystem with 'Soft Updates'"
-msgstr ""
-
-msgid "Power Daemon"
-msgstr "Strömdemon"
-
-msgid "Enable the system power control utility"
-msgstr ""
-
-msgid ""
-"The powerd utility monitors the system state and sets various power control "
-"options accordingly."
-msgstr ""
-
-msgid "Temperature"
-msgstr "Temperatur"
-
-msgid "n/a"
-msgstr ""
-
-msgid "The attribute '%s' contains invalid characters."
-msgstr ""
-
-msgid "The attribute '%s' is required."
-msgstr "Attributet \"%s\" krävs."
-
-msgid ""
-"The crypted disk list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-
-msgid "Data integrity"
-msgstr "Dataintegritet"
-
-msgid "Encryption"
-msgstr "Kryptering"
-
-msgid ""
-"Do you really want to delete this encrypted disk? All elements that still "
-"use it will become invalid (e.g. share)!"
-msgstr ""
-
-msgid "Create encrypted disk"
-msgstr "Skapa krypterad disk"
-
-msgid "Data integrity algorithm"
-msgstr ""
-
-msgid "Encryption algorithm"
-msgstr "Krypteringsalgoritm"
-
-msgid "Passphrase"
-msgstr "Lösenfras"
-
-msgid "Passphrase don't match."
-msgstr ""
-
-msgid "Init and encrypt disk"
-msgstr ""
-
-msgid "Disk initialization and encryption"
-msgstr "Diskinitiering och kryptering"
-
-msgid "Encrypting... Please wait"
-msgstr "Krypterar... var god vänta"
-
-msgid "Attaching..."
-msgstr "Ansluter..."
-
-msgid ""
-"This will erase ALL data on your disk!<br>Using Data integrity will reduce "
-"size of available storage and also reduce speed."
-msgstr ""
-
-msgid "Sensors"
-msgstr "Sensorer"
-
-msgid "This encrypted disk is mounted, umount it before trying to detach it."
+msgid "You must the same IP type for network and gateway."
 msgstr ""
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "Du måste använda en lösenfras för att ansluta en krypterad disk."
 
-msgid "Encrypted disk name"
-msgstr "Namn på krypterad disk"
-
-msgid "Detaching..."
-msgstr "Kopplar från..."
-
-msgid "attach"
-msgstr "anslut"
-
-msgid "detach"
-msgstr "koppla från"
-
-msgid "Attached"
-msgstr "Ansluten"
-
-msgid "Not attached"
-msgstr ""
-
-msgid "Reload page"
-msgstr ""
-
 msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
 msgstr ""
 
-msgid "Resume"
+msgid "Your own email address."
 msgstr ""
 
-msgid "Enable resume mode."
+msgid "Zeroconf"
+msgstr "Zeroconf"
+
+msgid "add mount"
+msgstr "lägg till montering"
+
+msgid "built on"
 msgstr ""
 
-msgid ""
-"Use this option to enable resuming broken transfers at the point of "
-"interruption."
+msgid "chroot everyone"
+msgstr ""
+
+msgid "chroot() everyone, but root."
+msgstr ""
+
+msgid "day"
+msgstr "dag"
+
+msgid "days"
+msgstr "dagar"
+
+msgid "delete mount"
+msgstr "ta bort montering"
+
+msgid "desc"
+msgstr ""
+
+msgid "e.g. <em>mycorp.com</em>"
+msgstr "t.ex. <em>mittforetag.se</em>"
+
+msgid "group_suffix, example: ou=groups,dc=example,dc=com"
+msgstr ""
+
+msgid "hours"
+msgstr "timmar"
+
+msgid "iSCSI Initiator"
 msgstr ""
 
 msgid "iSCSI Target"
 msgstr ""
 
-msgid ""
-"The iSCSI target list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
+msgid "iSCSI initiator disabled"
+msgstr "iSCSI-initiator inaktiverad"
+
+msgid "minutes"
+msgstr "minuter"
+
+msgid "mirroring"
+msgstr "spegling"
+
+msgid "months"
+msgstr "månader"
+
+msgid "n/a"
 msgstr ""
 
-msgid "Do you really want to delete this target?"
-msgstr "Vill du verkligen ta bort det här målet?"
-
-msgid "Delete target"
-msgstr "Ta bort mål"
-
-msgid "Add target"
-msgstr "Lägg till mål"
-
-msgid "Network that is authorised to access to this iSCSI target."
-msgstr "Nätverk som är behörigt att komma åt det här iSCSI-målet."
-
-msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
-msgstr "Du måste ha minst 256 MB RAM-minne för att använda iSCSI-mål."
-
-msgid "FTP Server disabled"
-msgstr "FTP-server inaktiverad"
-
-msgid "FTP users"
-msgstr "FTP-användare"
-
-msgid "FTP connected users"
-msgstr "Anslutna FTP-användare"
-
-msgid "Save and Restart CIFS"
-msgstr "Spara och starta om CIFS"
-
-msgid "Save and Restart UPnP"
-msgstr "Spara och starta om UPnP"
-
-msgid "Save and Restart Unison"
-msgstr "Spara och starta om Unison"
-
-msgid "Save and Restart SSHD"
-msgstr "Spara och starta om SSHD"
-
-msgid "Save and Restart RSYNC"
-msgstr "Spara och starta om RSYNC"
-
-msgid "Save and Restart NFS"
-msgstr "Spara och starta om NFS"
-
-msgid "Save and Restart FTP"
-msgstr "Spara och starta om FTP"
-
-msgid "Save and Restart AFP"
-msgstr "Spara och starta om AFP"
-
-msgid "The %s port must be a valid port number."
-msgstr "%s-porten måste vara ett giltigt portnummer."
-
-msgid "Swap memory"
-msgstr "Växlingsminne"
-
-msgid "No RSYNC Client configured"
-msgstr "Ingen RSYNC-klient konfigurerad"
-
-msgid "Detected RSYNC remote shares"
+msgid "password_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
 
-msgid "Hosts"
-msgstr "Värdar"
+msgid "pasv_max_port"
+msgstr "pasv_max_port"
 
-msgid "LDAP"
-msgstr "LDAP"
+msgid "pasv_min_port"
+msgstr "pasv_min_port"
 
-msgid "Password confirmation"
-msgstr "Bekräfta lösenord"
-
-msgid "Remote share (source)"
-msgstr "Fjärrutdelning (källa)"
-
-msgid "Remote address"
-msgstr "Fjärradress"
-
-msgid "Local share (destination)"
+msgid "rotated block-interleaved parity"
 msgstr ""
 
-msgid ""
-"The RSYNC client list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
+msgid "rw"
+msgstr "rw"
+
+msgid "seconds"
+msgstr "sekunder"
+
+msgid "show process information"
+msgstr "visa processinformation"
+
+msgid "striping"
 msgstr ""
 
-msgid ""
-"The RSYNC local list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
+msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
 
-msgid "Add RSYNC"
-msgstr "Lägg till RSYNC"
+msgid "webGUI Configuration"
+msgstr "webGUI Konfiguration"
 
-msgid "Edit RSYNC"
-msgstr "Redigera RSYNC"
+msgid "webGUI SSL certificate/key"
+msgstr "SSL-certifikat/nyckel för webGUI"
 
-msgid "Delete RSYNC"
-msgstr "Ta bort RSYNC"
-
-msgid "Do you really want to delete this RSYNC?"
-msgstr ""
-
-msgid "Source share"
-msgstr ""
-
-msgid "Destination share"
-msgstr ""
-
-msgid "Remote source share name"
-msgstr ""
-
-msgid "Mount to use"
-msgstr ""
-
-msgid "File size"
-msgstr ""
-
-msgid "A valid size target value must be specified."
-msgstr ""
-
-msgid "Target name"
-msgstr "Målnamn"
-
-msgid "Target address"
-msgstr "Måladress"
-
-msgid "Initiator name"
-msgstr "Initiatornamn"
-
-msgid "This is for information only (not using during iSCSI negociation)."
-msgstr ""
-
-msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
-msgstr ""
-
-msgid ""
-"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
-msgstr ""
-
-msgid "This the IP address or DNS name of the iSCSI target."
-msgstr ""
-
-msgid "Mount used"
-msgstr ""
-
-msgid "Balance algorithm"
-msgstr "Balansalgoritm"
-
-msgid "Select your read balance algorithm."
-msgstr ""
-
-msgid "Settings"
-msgstr "Inställningar"
-
-msgid "Define an host name can be useful for NFS."
-msgstr ""
-
-msgid ""
-"The host list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-
-msgid "Edit Host"
-msgstr "Redigera värd"
-
-msgid "Do you really want to delete this host?"
-msgstr ""
-
-msgid "Delete Host"
-msgstr "Ta bort värd"
-
-msgid "Add Host"
-msgstr "Lägg till värd"
-
-msgid "The host name contain invalid characters."
-msgstr "Värdnamnet innehåller ogiltiga tecken."
-
-msgid "An host with this name already exists."
-msgstr "En värd med det här namnet finns redan."
-
-msgid ""
-"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
-"."
-msgstr ""
-"Värdnamnet får endast innehåller tecknen a-z, A-Z och 0-9, - , _ och ."
-
-msgid "The IP address that this hostname represents."
-msgstr "IP-adressen som det här värdnamnet representerar."
-
-msgid "You may enter a description here for your reference."
-msgstr "Du kan ange en beskrivning här som referens."
-
-msgid "Download configuration"
-msgstr "Hämta ner konfiguration"
-
-msgid "Restore configuration"
-msgstr "Återskapa konfiguration"
-
-msgid ""
-"Open a %s configuration XML file and click the button below to restore the "
-"configuration."
-msgstr ""
-
-msgid "Click this button to download the system configuration in XML format."
-msgstr ""
-
-msgid "Backup configuration"
-msgstr ""
-
-msgid "Initializing disk"
-msgstr ""
-
-msgid "Enable Zeroconf"
-msgstr "Aktivera Zeroconf"
-
-msgid "LDAP server IP"
-msgstr ""
-
-msgid "IP address of LDAP server."
-msgstr ""
-
-msgid "Base DN"
-msgstr ""
-
-msgid ""
-"Specifies the default base DN to use when performing ldap operations. The "
-"base must be specified as a distinguished name in LDAP format."
-msgstr ""
-
-msgid "DN to bind"
-msgstr ""
-
-msgid ""
-"Specifies the default bind DN to use when performing ldap operations. The "
-"bind DN must be specified as a distinguished name in LDAP format."
-msgstr ""
-
-msgid "Password for DN"
-msgstr ""
-
-msgid "The credentials to bind with, enter it here twice."
-msgstr ""
-
-msgid "User suffix"
-msgstr ""
-
-msgid "Password suffix"
-msgstr ""
-
-msgid "Group suffix"
-msgstr ""
-
-msgid "Password encryption"
-msgstr "Lösenordskryptering"
-
-msgid "Method used to store your password in your LDAP."
-msgstr "Metod som används för att lagra ditt lösenord i LDAP-servern."
-
-msgid ""
-"These commands will be executed pre or post system initialization (booting)."
-msgstr ""
-
-msgid "Add command"
-msgstr "Lägg till kommando"
-
-msgid "Edit command"
-msgstr "Redigera kommando"
-
-msgid "Delete command"
-msgstr "Ta bort kommando"
-
-msgid "Do you really want to delete this command?"
-msgstr "Vill du verkligen ta bort det här kommandot?"
-
-msgid "Execute command pre or post system initialization (booting)."
-msgstr ""
-
-msgid "Startup"
-msgstr "Uppstart"
-
-msgid "Large read/write"
-msgstr ""
-
-msgid "Enable large read/write"
-msgstr ""
-
-msgid "Use the new 64k streaming read and write variant SMB requests."
-msgstr ""
-
-msgid "Dynamic DNS"
-msgstr "Dynamisk DNS"
-
-msgid "Servername"
-msgstr "Servernamn"
-
-msgid "Save and Restart DynDNS"
-msgstr "Spara och starta om DynDNS"
+msgid "week days"
+msgstr "veckodagar"
