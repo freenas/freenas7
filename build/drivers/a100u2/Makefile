@@ -16,7 +16,7 @@ install:	clean
 clean:
 	@rm -f -r ${SRCDIR}
 
-	@rm -fv /usr/src/sys/pci/a100.*
+#	@rm -fv /usr/src/sys/pci/a100.*
 
 #	-@if [ -e /usr/src/sys/conf/files.orig ]; then \
 #		rm -fv /usr/src/sys/conf/files; \
