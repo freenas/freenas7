@@ -32,3 +32,5 @@ msgstr \"\"
 
 cat ${OUTPUTDIR}/${OUTPUT} >>${OUTPUTDIR}/${OUTPUT}.tmp
 mv -f ${OUTPUTDIR}/${OUTPUT}.tmp ${OUTPUTDIR}/${OUTPUT}
+
+echo "==> Translation file created: ${OUTPUTDIR}/${OUTPUT}"
