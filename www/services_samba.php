@@ -377,6 +377,7 @@ function authentication_change() {
 						<td width="22%" valign="top" class="vncell"><?=gettext("Store DOS attributes");?></td>
 						<td width="78%" class="vtable">
 							<input name="storedosattributes" type="checkbox" id="storedosattributes" value="yes" <?php if ($pconfig['storedosattributes']) echo "checked"; ?>>
+							<?=gettext("Enable store DOS attributes");?><span class="vexpl"><br>
 							<span class="vexpl"><?=gettext("If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory.");?></span>
 						</td>
 					</tr>
