@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-10-26 12:19+0000\n"
+"PO-Revision-Date: 2007-11-30 06:48+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -352,7 +352,7 @@ msgstr ""
 msgid "Calculate netmask bits"
 msgstr ""
 
-msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgid "Can't format the OS origin disk!"
 msgstr ""
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
@@ -861,6 +861,9 @@ msgstr ""
 msgid "Enable recycle bin"
 msgstr ""
 
+msgid "Enable store DOS attributes"
+msgstr ""
+
 msgid "Enable syslog'ing to remote syslog server"
 msgstr ""
 
@@ -882,7 +885,8 @@ msgstr ""
 msgid "Encrypted disk name"
 msgstr ""
 
-msgid "Encrypting... Please wait"
+#, php-format
+msgid "Encrypting '%s'... Please wait"
 msgstr ""
 
 msgid "Encryption"
@@ -894,7 +898,7 @@ msgstr ""
 msgid "Enter a custom port number for the HTTP server if you want to override the default (49152). Only dynamic or private ports can be used (from 49152 through 65535)."
 msgstr ""
 
-msgid "Enter a custom port number for the webGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
+msgid "Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
 
 msgid "Enter a description (name) for the interface here."
@@ -1192,7 +1196,7 @@ msgstr ""
 msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
 msgstr ""
 
-msgid "IP type mistmatch for network and gateway."
+msgid "IP type mismatch for network and gateway."
 msgstr ""
 
 msgid "IPv4 Configuration"
@@ -1234,7 +1238,13 @@ msgstr ""
 msgid "ISP DNS servers"
 msgstr ""
 
+msgid "If Login is required."
+msgstr ""
+
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
+msgstr ""
+
+msgid "If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory."
 msgstr ""
 
 #, php-format
@@ -1244,7 +1254,7 @@ msgstr ""
 msgid "If you want to change the password for accessing the WebGUI, enter it here twice."
 msgstr ""
 
-msgid "If you want to change the username for accessing the webGUI, enter it here."
+msgid "If you want to change the username for accessing the WebGUI, enter it here."
 msgstr ""
 
 msgid "Image upload failed (out of memory?)"
@@ -1392,13 +1402,13 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
-msgid "Login is required."
-msgstr ""
-
 msgid "Logs"
 msgstr ""
 
 msgid "MAC address"
+msgstr ""
+
+msgid "MISSING"
 msgstr ""
 
 msgid "MOTD"
@@ -1503,6 +1513,9 @@ msgstr ""
 msgid "Mount Point"
 msgstr ""
 
+msgid "Mount point"
+msgstr ""
+
 msgid "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
 
@@ -1516,6 +1529,9 @@ msgid "Mounting..."
 msgstr ""
 
 msgid "Mounts"
+msgstr ""
+
+msgid "Must choose one"
 msgstr ""
 
 msgid "NAT mode"
@@ -1545,7 +1561,8 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+#, php-format
+msgid "Name of the NAS host, without domain part e.g. %s."
 msgstr ""
 
 msgid "Name of the server. If this field is left empty the default server is specified."
@@ -1615,6 +1632,9 @@ msgid "Number of log entries to show must be between 5 and 1000."
 msgstr ""
 
 msgid "OK"
+msgstr ""
+
+msgid "ONLINE"
 msgstr ""
 
 msgid "OS Version"
@@ -2106,6 +2126,9 @@ msgstr ""
 msgid "Storage"
 msgstr ""
 
+msgid "Store DOS attributes"
+msgstr ""
+
 msgid "Subject"
 msgstr ""
 
@@ -2546,6 +2569,9 @@ msgstr ""
 msgid "This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this share. Use the keyword ALL to permit access for everyone. Leave this field empty to disable this setting."
 msgstr ""
 
+msgid "This parameters will be added to [global] in smb.conf."
+msgstr ""
+
 msgid "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified."
 msgstr ""
 
@@ -2730,6 +2756,12 @@ msgstr ""
 msgid "Volume Name"
 msgstr ""
 
+msgid "Volume label"
+msgstr ""
+
+msgid "Volume label of the new file system."
+msgstr ""
+
 msgid "WAN address"
 msgstr ""
 
@@ -2811,6 +2843,9 @@ msgstr ""
 msgid "You must create a group first."
 msgstr ""
 
+msgid "You must enter the same IP type for network and gateway."
+msgstr ""
+
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
 msgstr ""
 
@@ -2821,9 +2856,6 @@ msgid "You must select at least one authentication method."
 msgstr ""
 
 msgid "You must select at minium anonymous or/and local user authentication."
-msgstr ""
-
-msgid "You must the same IP type for network and gateway."
 msgstr ""
 
 msgid "You must use a passphrase to attach an encrypted disk."
@@ -2862,7 +2894,8 @@ msgstr ""
 msgid "desc"
 msgstr ""
 
-msgid "e.g. <em>mycorp.com</em>"
+#, php-format
+msgid "e.g. %s"
 msgstr ""
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
