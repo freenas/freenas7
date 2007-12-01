@@ -25,8 +25,8 @@ start_cmd()
 	/sbin/sysctl net.inet.tcp.recvspace=65536
 	/sbin/sysctl net.inet.udp.recvspace=65536
 	/sbin/sysctl net.inet.udp.maxdgram=57344
-	/sbin/sysctl net.local.stream.recvspace=65535
-	/sbin/sysctl net.local.stream.sendspace=65535
+	/sbin/sysctl net.local.stream.recvspace=65536
+	/sbin/sysctl net.local.stream.sendspace=65536
 	/sbin/sysctl kern.ipc.maxsockbuf=2097152
 	/sbin/sysctl kern.ipc.somaxconn=8192
 	/sbin/sysctl kern.ipc.nmbclusters=32768
