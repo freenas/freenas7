@@ -8,6 +8,7 @@ COMMENT=			Implementation of userland ISCSI target (derived from NetBSD)
 MAINTAINER=		votdev@gmx.de
 
 MASTER_SITES=	http://www.alistaircrooks.co.uk/src/ \
+							ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/ \
 							http://www.magnesium.net/~mdf/distfiles/
 DISTNAME=			netbsd-iscsi-${PORTVERSION}
 
