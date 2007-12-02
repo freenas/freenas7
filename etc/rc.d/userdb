@@ -59,8 +59,7 @@ nobody:*:65534:65534::0:0:Unprivileged user:/nonexistent:/usr/sbin/nologin
 ftp:*:21:50::0:0:FTP user:/mnt:/sbin/nologin
 man:*:9:9::0:0:Mister Man Pages:/usr/share/man:/usr/sbin/nologin
 sshd:*:22:22::0:0:Secure Shell Daemon:/var/empty:/usr/sbin/nologin
-_dhcp:*:65:65::0:0:dhcp programs:/var/empty:/usr/sbin/nologin
-" > ${masterpasswd}
+_dhcp:*:65:65::0:0:dhcp programs:/var/empty:/usr/sbin/nologin" > ${masterpasswd}
 
 # Generate the /var/etc/passwd, pwd.db and spwd.db files.
 /usr/sbin/pwd_mkdb -p -d /var/etc ${masterpasswd} > /dev/null 2>&1
@@ -71,7 +70,7 @@ while [ ${_index} -gt 0 ]
 do
 	_cmdarg=`/usr/local/bin/xml sel -t -m "//access/user[${_index}]" \
 		-v "concat('-n ',login,' -u ',id,' -g ',primarygroup,' -c &quot;',fullname,'&quot;')" \
-		-i "count(admin) > 0" -o " -G 0" -b \
+		-i "count(admin) > 0" -o " -G 0,1000" -b \
 		-i "count(fullshell) > 0" -o " -s /bin/tcsh" -b \
 		-i "count(fullshell) = 0" -o " -s /usr/local/bin/scponly" -b \
 		-i "string-length(homedir) = 0" -o " -d /mnt" -b \

@@ -19,7 +19,8 @@ Minors changes:
 - Add misc patches to Samba 3.0.26a.
 
 Bug fixs:
-- Fix bug in extension menu formating code. Thanks to James Patterson. 
+- Fix bug in extension menu formating code. Thanks to James Patterson.
+- Admin users are now added to the admin group (GID 1000). Patch done by Gerard Hickey.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS.
