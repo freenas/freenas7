@@ -75,55 +75,67 @@ if ($_POST) {
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
-	var endis;
-
-	endis = !(document.iform.enable.checked || enable_change);
+	var endis = !(document.iform.enable.checked || enable_change);
   document.iform.afpname.disabled = endis;
 	document.iform.guest.disabled = endis;
 	document.iform.local.disabled = endis;
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors);?>
-<?php if ($savemsg) print_info_box($savemsg);?>
-<form action="services_afp.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-	  <tr>
-	    <td colspan="2" valign="top" class="optsect_t">
-				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+        <li class="tabact"><a href="services_afp.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Server");?></a></li>
+        <li class="tabinact"><a href="services_afp_share.php"><?=gettext("Shares");?></a></li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td class="tabcont">
+			<form action="services_afp.php" method="post" name="iform" id="iform">
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+				  <tr>
+				    <td colspan="2" valign="top" class="optsect_t">
+							<table border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr>
+									<td class="optsect_s"><strong><?=gettext("AFP Server");?></strong></td>
+									<td align="right" class="optsect_s">
+										<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
+									</td>
+								</tr>
+							</table>
+						</td>
+				  </tr>
 					<tr>
-						<td class="optsect_s"><strong><?=gettext("AFP Server");?></strong></td>
-						<td align="right" class="optsect_s">
-							<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Server Name") ;?></td>
+						<td width="78%" class="vtable">
+							<input name="afpname" type="text" class="formfld" id="afpname" size="30" value="<?=htmlspecialchars($pconfig['afpname']);?>"><br/>
+							<?=gettext("Name of the server. If this field is left empty the default server is specified.");?><br>
 						</td>
 					</tr>
-				</table>
-			</td>
-	  </tr>
-		<tr>
-			<td width="22%" valign="top" class="vncell"><?=gettext("Server Name") ;?></td>
-			<td width="78%" class="vtable">
-				<input name="afpname" type="text" class="formfld" id="afpname" size="30" value="<?=htmlspecialchars($pconfig['afpname']);?>"><br/>
-				<?=gettext("Name of the server. If this field is left empty the default server is specified.");?><br>
-			</td>
-		</tr>
-		<tr>
-			<td width="22%" valign="top" class="vncell"><strong><?=gettext("Authentication");?><strong></td>
-			<td width="78%" class="vtable">
-				<input name="guest" id="guest" type="checkbox" value="yes" <?php if ($pconfig['guest']) echo "checked"; ?>>
-				<?=gettext("Enable guest access.");?></br>
-				<input name="local" id="local" type="checkbox" value="yes" <?php if ($pconfig['local']) echo "checked"; ?>>
-				<?=gettext("Enable local user authentication.");?>
-			</td>
-		</tr>
-		<tr>
-	    <td width="22%" valign="top">&nbsp;</td>
-	    <td width="78%">
-	      <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-	    </td>
-	  </tr>
-  </table>
-</form>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><strong><?=gettext("Authentication");?><strong></td>
+						<td width="78%" class="vtable">
+							<input name="guest" id="guest" type="checkbox" value="yes" <?php if ($pconfig['guest']) echo "checked"; ?>>
+							<?=gettext("Enable guest access.");?></br>
+							<input name="local" id="local" type="checkbox" value="yes" <?php if ($pconfig['local']) echo "checked"; ?>>
+							<?=gettext("Enable local user authentication.");?>
+						</td>
+					</tr>
+					<tr>
+				    <td width="22%" valign="top">&nbsp;</td>
+				    <td width="78%">
+				      <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+				    </td>
+				  </tr>
+			  </table>
+			</form>
+		</td>
+  </tr>
+</table>
 <script language="JavaScript">
 <!--
 enable_change(false);

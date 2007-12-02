@@ -10,6 +10,7 @@ Majors changes:
 - Upgrade Adaptec AACRAID driver to v5.2.0 Build 15317.
 - Upgrade WOL patch to version from 25.11.2007.
 - Upgrade netbsd-iscsi (iscsi-target) to 20071122.
+- Add AFP share support. Thanks to Gerard Hickey.
 
 Minors changes:
 - Add command '/usr/bin/nice'.

@@ -4,21 +4,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -73,6 +73,7 @@ $d_nfsconfdirty_path = $g['varrun_path'] . "/nfs.conf.dirty";
 $d_landirty_path = $g['varrun_path'] . "/lan.dirty";
 $d_packagesconfdirty_path = $g['varrun_path'] . "/packages.conf.dirty";
 $d_cronconfdirty_path = $g['varrun_path'] . "/cron.conf.dirty";
+$d_afpconfdirty_path = $g['varrun_path'] . "/afp.conf.dirty";
 
 if (file_exists($d_firmwarelock_path)) {
 	if (!$d_isfwfile) {
@@ -93,18 +94,18 @@ $tcpflags = array("fin", "syn", "rst", "psh", "ack", "urg");
 $fwupplatforms = array('net45xx', 'net48xx', 'embedded', 'wrap', 'full');
 
 function do_input_validation($postdata, $reqdfields, $reqdfieldsn, $input_errors) {
-	/* check for bad control characters */	
+	/* check for bad control characters */
 	foreach ($postdata as $pn => $pd) {
 		if (is_string($pd) && preg_match("/[\\x00-\\x08\\x0b\\x0c\\x0e-\\x1f]/", $pd)) {
 			$input_errors[] = sprintf( gettext("The attribute '%s' contains invalid characters."), $pn);
 		}
 	}
-	
+
 	for ($i = 0; $i < count($reqdfields); $i++) {
 		if (!isset($postdata[$reqdfields[$i]]) || ($postdata[$reqdfields[$i]] === "")) {
 			$input_errors[] = sprintf( gettext("The attribute '%s' is required."), $reqdfieldsn[$i]);
 		}
-	}	
+	}
 }
 
 /* Validate attribute type. */
@@ -167,7 +168,7 @@ function print_input_errors($input_errors) {
 	echo "<p><table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
 	echo "<tr><td bgcolor=\"#A12A2A\" width=\"36\" align=\"center\" valign=\"top\"><img src=\"/err.gif\" width=\"28\" height=\"32\"></td>\n";
 	echo "<td bgcolor=\"#FFD9D1\" style=\"padding-left: 8px; padding-top: 6px\">";
-	
+
 	echo "<span class=\"errmsg\"><p>".gettext("The following input errors were detected").":<ul>\n";
 	foreach ($input_errors as $ierr) {
 		echo "<li>" . $ierr . "</li>\n";

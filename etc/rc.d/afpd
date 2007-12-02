@@ -21,7 +21,8 @@ start_precmd="create_conf"
 # Defaults
 afpd_enable=${afpd_enable:-"NO"}
 afpd_config=${afpd_config:-"/var/etc/${name}.conf"}
-afpd_defaultvol=${afpd_defaultvol:-"/var/etc/AppleVolumes.default"}
+afpd_avdefault=${afpd_avdefault:-"/var/etc/AppleVolumes.default"}
+afpd_avsystem=${afpd_avsystem:-"/var/etc/AppleVolumes.system"}
 command="/usr/local/sbin/${name}"
 command_args="-F ${afpd_config}"
 
@@ -33,14 +34,34 @@ create_conf()
 		-i "string-length(afpname) = 0" -o "-" -b \
 		-o " -noddp -uamlist " \
 		-i "count(guest) > 0" -o "uams_guest.so" -b \
-		-i "count(local) > 0" -i "count(guest) > 0" -o "," -b -o "uams_clrtxt.so,uams_dhx.so" -b \
-		-o " -nosavepassword -defaultvol ${afpd_volumes_config} -systemvol /var/etc/AppleVolumes.default -uampath /etc/uams -guestname &quot;ftp&quot;" -n \
+		-i "count(local) > 0" -i "count(guest) > 0" -o "," -b -o "uams_clrtxt.so,uams_randnum.so,uams_dhx_passwd.so,uams_dhx.so" -b \
+		-o " -nosavepassword -defaultvol /var/etc/AppleVolumes.default -systemvol /var/etc/AppleVolumes.system -uservol -uampath /etc/uams -guestname &quot;ftp&quot;" -n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_config}
 
-	# Generate '/var/etc/AppleVolumes.default'.
+	# Generate '/var/etc/AppleVolumes.system'.
 	/usr/local/bin/xml sel -t -m "//mounts/mount" \
-		-v "concat('/mnt/',sharename,' &quot;',sharename,'&quot;')" -n \
-		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_defaultvol}
+		-v "concat('/mnt/',sharename,' &quot;',sharename,'&quot; ')" \
+		-o "options:usedots" \
+		-o "allow:@admin" \
+		-n \
+		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_avsystem}
+
+	# Generate /var/etc/AppleVolumes.default
+	/usr/local/bin/xml sel -t -m "//afp/share" \
+		-v "concat(path, ' &quot;', name, '&quot; ')" \
+		-i "string-length(volpasswd) > 0" -v "concat('password:', volpasswd, ' ')" -b \
+		-i "not(casefold[. = 'none'])" -v "concat('casefold:', casefold, ' ')" -b \
+		-i "string-length(volcharset) > 0" -v "concat('volcharset:', volcharset, ' ')" -b \
+		-o "options:usedots" \
+		-i "count(mswindows) > 0" -o ",mswindows" -b \
+		-i "count(noadouble) > 0" -o ",noadouble" -b \
+		-o " " \
+		-i "string-length(allow) > 0" -v "concat('allow:', allow, ' ')" -b \
+		-i "string-length(deny) > 0" -v "concat('deny:', deny, ' ')" -b \
+		-i "string-length(rolist) > 0" -v "concat('rolist:', rolist, ' ')" -b \
+		-i "string-length(rwlist) > 0" -v "concat('rwlist:', rwlist, ' ')" -b \
+		-n \
+		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_avdefault}
 }
 
 load_rc_config ${name}

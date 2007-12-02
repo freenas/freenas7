@@ -60,6 +60,8 @@ $pgtitle = array(gettext("License"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added FAT support for config file and auto detection of NIC name</font></em><br>
               <p>Dan Merschi (<a href="mailto:freenas@bcapro.com">freenas@bcapro.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Created core implementation of email status report.</font></em><br>
+              <p>Gerard Hickey (<a href="mailto:hickey@kinetic-compute.com">hickey@kinetic-compute.com</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Patches for userdb script & AFP shares.</font></em><br>
             <br><br>
             <p>The following persons have contributed to FreeNAS documentation project:</p>
             <p>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br>
