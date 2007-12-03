@@ -153,9 +153,9 @@ if ($_POST) {
 			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Flags"); ?></td>
 			      <td width="78%" class="vtable">
 			  			<select name="flags" class="formfld" id="flags">
-			          <?php $opts = array(gettext("rw")); $vals = explode(" ", "rw"); $i = 0;
+			          <?php $opts = array("rw", "ro"); $vals = array("rw", "ro"); $i = 0;
 								foreach ($opts as $opt): ?>
-			          <option <?php if ($vals[$i] === $pconfig['flags']) echo "selected";?> value="<?=$vals[$i++];?>"><?=htmlspecialchars($opt);?></option>
+			          <option <?php if ($vals[$i] === $pconfig['flags']) echo "selected";?> value="<?=$vals[$i++];?>"><?=htmlspecialchars(gettext($opt));?></option>
 			          <?php endforeach; ?>
 			        </select>
 			      </td>

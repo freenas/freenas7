@@ -18,6 +18,7 @@ Minors changes:
 - Fix bugs in GVinum tools page.
 - Update translation files. Thanks to all translators supporting FreeNAS.
 - Add misc patches to Samba 3.0.26a.
+- Add 'ro' (read only) flag for iscsi targets.
 
 Bug fixs:
 - Fix bug in extension menu formating code. Thanks to James Patterson.
