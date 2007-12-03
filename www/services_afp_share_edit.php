@@ -126,12 +126,12 @@ if($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="services_afp.php"><?=gettext("Server") ;?></a></li>
+        <li class="tabinact"><a href="services_afp.php"><?=gettext("Settings");?></a></li>
         <li class="tabact"><a href="services_afp_share.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Shares");?></a></li>
       </ul>
     </td>
