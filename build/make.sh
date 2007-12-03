@@ -373,6 +373,12 @@ create_image() {
 	echo ">>> Generating ${FREENAS_PRODUCTNAME} IMG File (to be rawrite on CF/USB/HD)"
 	echo "--------------------------------------------------------------"
 
+	# Check if rootfs (contining OS image) exists.
+	if [ ! -d "$FREENAS_ROOTFS" ]; then
+		echo "==> Error: ${FREENAS_ROOTFS} does not exist."
+		return 1
+	fi
+
 	# Cleanup.
 	[ -f image.bin ] && rm -f image.bin
 
@@ -456,6 +462,12 @@ create_image() {
 }
 
 create_iso () {
+	# Check if rootfs (contining OS image) exists.
+	if [ ! -d "$FREENAS_ROOTFS" ]; then
+		echo "==> Error: ${FREENAS_ROOTFS} does not exist."
+		return 1
+	fi
+
 	# Cleanup.
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
