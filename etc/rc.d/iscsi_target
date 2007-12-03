@@ -2,7 +2,7 @@
 
 # PROVIDE: iscsi_target
 # REQUIRE: NETWORKING
-# XQUERY: -i "count(//iscsitarget/target) > 0" -o "0" -b
+# XQUERY: -i "count(//iscsitarget/enable) > 0" -o "0" -b
 # RCVAR: iscsi_target
 
 . /etc/rc.subr

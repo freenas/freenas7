@@ -194,15 +194,6 @@ if ($_POST) {
 						<?php endif;?>
 						</td>
 					</tr>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<span class="vexpl">
-								<span class="red"><strong><?=gettext("Information"); ?>:</strong></span><br>
-								<?php echo gettext("At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents.");?>
-							</span>
-						</td>
-			    </tr>
 			  </table>
 			</form>
 		</td>

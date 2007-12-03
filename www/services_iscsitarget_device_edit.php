@@ -182,15 +182,6 @@ function iscsitarget_checkusage($name,$skipdevice = "") {
 						<?php endif; ?>
 						</td>
 					</tr>
-					<tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%">
-							<span class="vexpl">
-								<span class="red"><strong><?=gettext("Information"); ?>:</strong></span><br>
-								<?php echo gettext("Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once.");?>
-							</span>
-						</td>
-			    </tr>
 			  </table>
 			</form>
 		</td>

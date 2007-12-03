@@ -505,7 +505,6 @@ function config_upgrade() {
 	/* convert 1.2 -> 1.3 */
 	/* change the FTP anonymous and local user authentication YES/NO value to right/flase type */
 	if ($config['version'] === "1.2") {
-
 		if ($config['ftp']['anonymous'] === "YES")
 			$config['ftp']['anonymous'] = true;
 		else
@@ -616,8 +615,8 @@ function config_upgrade() {
 			unset($config['iscsi']['enable']);
 			unset($config['iscsi']['targetaddress']);
 			unset($config['iscsi']['targetname']);
-
 		}
+
 		/* Convert 'rsyncclient' part
 		Special note: rsyncclient is now an array, then the xml parse will create an array.
 		We must use an array
@@ -633,7 +632,6 @@ function config_upgrade() {
 			}
 
 			foreach ($config['rsyncclient'][0]['sharetosync'] as $sharek => $sharev) 	{
-
 				$rsyncclient = array();
 				$rsyncclient['opt_delete'] = isset($config['rsyncclient'][0]['opt_delete']);
 				$rsyncclient['rsyncserverip'] = $config['rsyncclient'][0]['rsyncserverip'];
@@ -662,7 +660,6 @@ function config_upgrade() {
 			unset ($config['rsyncclient']);
 		}
 		if (isset($config['rsync_local']['enable'])) {
-
 			if (!is_array($config['rsync'])) {
 				$config['rsync'] = array();
 				if (!is_array($config['rsync']['rsynclocal'])) {
@@ -1046,6 +1043,15 @@ function config_upgrade() {
 		$config['samba']['storedosattributes'] = true;
 
 		$config['version'] = "3.4";
+	}
+
+	/* Convert 3.4 -> 3.5 */
+	/* Add attribute //iscsitarget/enable if //iscsitarget/target's exists. */
+	if ($config['version'] === "3.4") {
+		if (0 < count($config['iscsitarget']['target']))
+			$config['iscsitarget']['enable'] = true;
+
+		$config['version'] = "3.5";
 	}
 
 	write_config();
