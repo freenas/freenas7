@@ -1,5 +1,5 @@
 #
-# GENERIC -- Generic kernel configuration file for FreeBSD/amd64
+# GENERIC -- Generic kernel configuration file for FreeBSD/i386
 #
 # For more information on this file, please read the handbook section on
 # Kernel Configuration Files:
@@ -16,7 +16,7 @@
 # If you are in doubt as to the purpose or necessity of a line, check first
 # in NOTES.
 #
-# $FreeBSD: src/sys/amd64/conf/GENERIC,v 1.439.2.14 2006/10/09 18:41:36 simon Exp $
+# $FreeBSD: src/sys/i386/conf/GENERIC,v 1.429.2.13 2006/10/09 18:41:36 simon Exp $
 
 machine		amd64
 cpu		HAMMER
@@ -25,17 +25,9 @@ ident		FREENAS
 # To statically compile in device wiring instead of /boot/device.hints
 #hints		"GENERIC.hints"		# Default places to look for devices.
 
-#FREENAS#makeoptions	DEBUG=-g		# Build kernel with gdb(1) debug symbols
+#makeoptions	DEBUG=-g		# Build kernel with gdb(1) debug symbols
 
-#FREENAS ADD lines:
-options		NO_SWAPPING
-options 	DEVICE_POLLING
-options		HZ=1000
-options     SMP				# Symmetric MultiProcessor Kernel
-
-#FREENAS inverse
-options 	SCHED_ULE		# ULE scheduler
-#options 	SCHED_4BSD		# 4BSD scheduler
+options 	SCHED_4BSD		# 4BSD scheduler
 options 	PREEMPTION		# Enable kernel thread preemption
 options 	INET			# InterNETworking
 options 	INET6			# IPv6 communications protocols
@@ -47,20 +39,16 @@ options 	MD_ROOT			# MD is a potential root device
 options 	NFSCLIENT		# Network Filesystem Client
 options 	NFSSERVER		# Network Filesystem Server
 options 	NFS_ROOT		# NFS usable as /, requires NFSCLIENT
-options 	NTFS			# NT File System
 options 	MSDOSFS			# MSDOS Filesystem
-#ADDED FOR FREENAS:
-options		MSDOSFS_LARGE	# MSDOS Filesystem for FAT32 > 128GB
 options 	CD9660			# ISO 9660 Filesystem
 options 	PROCFS			# Process filesystem (requires PSEUDOFS)
 options 	PSEUDOFS		# Pseudo-filesystem framework
-options 	COMPAT_43		# Needed by COMPAT_LINUX32
-options 	COMPAT_IA32		# Compatible with i386 binaries
+options 	GEOM_GPT		# GUID Partition Tables.
+options 	COMPAT_43		# Compatible with BSD 4.3 [KEEP THIS!]
 options 	COMPAT_FREEBSD4		# Compatible with FreeBSD4
 options 	COMPAT_FREEBSD5		# Compatible with FreeBSD5
-#FREENAS#options 	COMPAT_LINUX32		# Compatible with i386 linux binaries 
 options 	SCSI_DELAY=5000		# Delay (in ms) before probing SCSI
-#FREENAS#options 	KTRACE			# ktrace(1) support
+#options 	KTRACE			# ktrace(1) support
 options 	SYSVSHM			# SYSV-style shared memory
 options 	SYSVMSG			# SYSV-style message queues
 options 	SYSVSEM			# SYSV-style semaphores
@@ -68,17 +56,10 @@ options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
 options 	KBD_INSTALL_CDEV	# install a CDEV entry in /dev
 options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
 
-#FreeNAS include ACPI in the kernel:
-device		acpi			# acpi -- Advanced Configuration and Power Management support
-
-# Workarounds for some known-to-be-broken chipsets (nVidia nForce3-Pro150)
-device		atpic			# 8259A compatability
-
-# Linux 32-bit ABI support
-#FREENAS#options 	LINPROCFS		# Cannot be a module yet.
+#device		apic			# I/O APIC
 
 # Bus support.
-device		acpi
+#device		eisa
 device		pci
 
 # Floppy drives
@@ -94,16 +75,16 @@ device		atapist		# ATAPI tape drives
 options 	ATA_STATIC_ID	# Static device numbering
 
 # SCSI Controllers
+device		ahb		# EISA AHA1742 family
 device		ahc		# AHA2940 and onboard AIC7xxx devices
-#FREENAS#options 	AHC_REG_PRETTY_PRINT	# Print register bitfields in debug
+options 	AHC_REG_PRETTY_PRINT	# Print register bitfields in debug
 					# output.  Adds ~128k to driver.
 device		ahd		# AHA39320/29320 and onboard AIC79xx devices
-#FREENAS#options 	AHD_REG_PRETTY_PRINT	# Print register bitfields in debug
+options 	AHD_REG_PRETTY_PRINT	# Print register bitfields in debug
 					# output.  Adds ~215k to driver.
 device		amd		# AMD 53C974 (Tekram DC-390(T))
 device		isp		# Qlogic family
-#FREENAS Remove comment:
-device 	ispfw		# Firmware for QLogic HBAs- normally a module
+#device 	ispfw		# Firmware for QLogic HBAs- normally a module
 device		mpt		# LSI-Logic MPT-Fusion
 #device		ncr		# NCR/Symbios Logic
 device		sym		# NCR/Symbios Logic (newer chipsets + those of `ncr')
@@ -111,16 +92,13 @@ device		trm		# Tekram DC395U/UW/F DC315U adapters
 
 device		adv		# Advansys SCSI adapters
 device		adw		# Advansys wide SCSI adapters
+device		aha		# Adaptec 154x SCSI adapters
 device		aic		# Adaptec 15[012]x SCSI adapters, AIC-6[23]60.
 device		bt		# Buslogic/Mylex MultiMaster SCSI adapters
 
-#FREENAS ADD?
 device		ncv		# NCR 53C500
 device		nsp		# Workbit Ninja SCSI-3
 device		stg		# TMC 18C30/18C50
-
-#FREENAS ADD SPECIAL DRIVERSAdding special IOI-A100U2W drivers:
-device		ihb		# IOI-A100U2W drivers
 
 # SCSI peripherals
 device		scbus		# SCSI bus (required for SCSI)
@@ -134,6 +112,7 @@ device		ses		# SCSI Environmental Services (and SAF-TE)
 # RAID controllers interfaced to the SCSI subsystem
 device		amr		# AMI MegaRAID
 device		arcmsr		# Areca SATA II RAID
+#device		asr		# DPT SmartRAID V, VI and Adaptec SCSI RAID
 device		ciss		# Compaq Smart RAID 5*
 device		dpt		# DPT Smartcache III, IV - See NOTES for options
 device		hptmv		# Highpoint RocketRAID 182x
@@ -149,30 +128,34 @@ device		aacp		# SCSI passthrough for aac (requires CAM)
 device		ida		# Compaq Smart RAID
 device		mfi		# LSI MegaRAID SAS
 device		mlx		# Mylex DAC960 family
-#XXX pointer/int warnings
 #device		pst		# Promise Supertrak SX6000
 device		twe		# 3ware ATA RAID
 
 # atkbdc0 controls both the keyboard and the PS/2 mouse
 device		atkbdc		# AT keyboard controller
 device		atkbd		# AT keyboard
-device		psm		# PS/2 mouse
+#device		psm		# PS/2 mouse
 
 device		kbdmux		# keyboard multiplexer
 
 device		vga		# VGA video card driver
 
-#FreeNAS#device		splash		# Splash screen and screen saver support
+device		splash		# Splash screen and screen saver support
 
 # syscons is the default console driver, resembling an SCO console
 device		sc
+
+# Enable this for the pcvt (VT220 compatible) console driver
+#device		vt
+#options 	XSERVER		# support for X server on a vt console
+#options 	FAT_CURSOR	# start with block cursor
 
 device		agp		# support several AGP chipsets
 
 # Power management support (see NOTES for more options)
 #device		apm
 # Add suspend/resume support for the i8254.
-#NOT COMPATIBLE WITH AMD64 device		pmtimer
+#device		pmtimer
 
 # PCCARD (PCMCIA) support
 # PCMCIA and cardbus bridge support
@@ -186,8 +169,8 @@ device		sio		# 8250, 16[45]50 based serial ports
 # Parallel port
 device		ppc
 device		ppbus		# Parallel port bus (required)
-#FreeNAS#device		lpt		# Printer
-#FreeNAS#device		plip		# TCP/IP over parallel
+#device		lpt		# Printer
+#device		plip		# TCP/IP over parallel
 device		ppi		# Parallel port interface device
 #device		vpo		# Requires scbus and da
 
@@ -214,15 +197,14 @@ device		fxp		# Intel EtherExpress PRO/100B (82557, 82558)
 device		lge		# Level 1 LXT1001 gigabit Ethernet
 device		nge		# NatSemi DP83820 gigabit Ethernet
 device		nve		# nVidia nForce MCP on-board Ethernet Networking
-#FREENAS: Repalce pcn with le driver. Cause explain here: http://ivoras.sharanet.org/freebsd/vmware.html
-#device		pcn		# AMD Am79C97x PCI 10/100(precedence over 'lnc')
-device		le		# AMD Am7900 LANCE and Am79C9xx PCnet Ethernet interface driver
+#device		pcn		# AMD Am79C97x PCI 10/100(precedence over 'lnc') Replace pcn with le driver. Cause explain here: http://ivoras.sharanet.org/freebsd/vmware.html
 device		re		# RealTek 8139C+/8169/8169S/8110S
 device		rl		# RealTek 8129/8139
 device		sf		# Adaptec AIC-6915 (``Starfire'')
 device		sis		# Silicon Integrated Systems SiS 900/SiS 7016
 device		sk		# SysKonnect SK-984x & SK-982x gigabit Ethernet
 device		ste		# Sundance ST201 (D-Link DFE-550TX)
+#device		stge		# Sundance/Tamarack TC9021 gigabit Ethernet
 device		ti		# Alteon Networks Tigon I/II gigabit Ethernet
 device		tl		# Texas Instruments ThunderLAN
 device		tx		# SMC EtherPower II (83c170 ``EPIC'')
@@ -238,8 +220,8 @@ device		ed		# NE[12]000, SMC Ultra, 3c503, DS8390 cards
 device		ex		# Intel EtherExpress Pro/10 and Pro/10+
 device		ep		# Etherlink III based cards
 device		fe		# Fujitsu MB8696x based cards
-# XXX kvtop brokenness, pointer/int warnings
-#device		lnc		# NE2100, NE32-VL Lance Ethernet cards
+device		ie		# EtherExpress 8/16, 3C507, StarLAN 10 etc.
+device		lnc		# NE2100, NE32-VL Lance Ethernet cards
 device		sn		# SMC's 9000 series of Ethernet chips
 device		xe		# Xircom pccard Ethernet
 
@@ -255,27 +237,19 @@ device		ath_rate_sample	# SampleRate tx rate control for ath
 device		awi		# BayStack 660 and others
 device		ral		# Ralink Technology RT2500 wireless NICs.
 device		wi		# WaveLAN/Intersil/Symbol 802.11 wireless NICs.
-
-#FREENAS ADD special Wifi 
-device 		firmware
-device          wlan_acl
-device          wlan_tkip
-device          wlan_xauth
-# FREENAS add Intel wifi support
-device		iwi
-device		ipw
+#device		wl		# Older non 802.11 Wavelan wireless NIC.
 
 # Pseudo devices.
 device		loop		# Network loopback
 device		random		# Entropy device
 device		ether		# Ethernet support
-#FREENAS#device		sl		# Kernel SLIP
-#FREENAS#device		ppp		# Kernel PPP
-#FREENAS#device		tun		# Packet tunnel.
+#device		sl		# Kernel SLIP
+#device		ppp		# Kernel PPP
+#device		tun		# Packet tunnel.
 device		pty		# Pseudo-ttys (telnet etc)
 device		md		# Memory "disks"
-#FREENAS#device		gif		# IPv6 and IPv4 tunneling
-#FREENAS#device		faith		# IPv6-to-IPv4 relaying (translation)
+#device		gif		# IPv6 and IPv4 tunneling
+#device		faith		# IPv6-to-IPv4 relaying (translation)
 
 # The `bpf' device enables the Berkeley Packet Filter.
 # Be aware of the administrative consequences of enabling this!
@@ -291,12 +265,12 @@ device		usb		# USB Bus (required)
 device		ugen		# Generic
 device		uhid		# "Human Interface Devices"
 device		ukbd		# Keyboard
-#FREENAS#device		ulpt		# Printer
+#device		ulpt		# Printer
 device		umass		# Disks/Mass storage - Requires scbus and da
-#FREENAS#device		ums		# Mouse
+#device		ums		# Mouse
 device		ural		# Ralink Technology RT2500USB wireless NICs
-#FREENAS#device		urio		# Diamond Rio 500 MP3 player
-#FREENAS#device		uscanner	# Scanners
+#device		urio		# Diamond Rio 500 MP3 player
+#device		uscanner	# Scanners
 # USB Ethernet, requires miibus
 device		aue		# ADMtek USB Ethernet
 device		axe		# ASIX Electronics USB Ethernet
@@ -304,34 +278,63 @@ device		cdce		# Generic USB over Ethernet
 device		cue		# CATC USB Ethernet
 device		kue		# Kawasaki LSI USB Ethernet
 device		rue		# RealTek RTL8150 USB Ethernet
-device          udav            # Davicom DM910 USB Ethernet driver
 
 # FireWire support
 device		firewire	# FireWire bus code
 device		sbp		# SCSI over FireWire (Requires scbus and da)
-#FREENAS#device		fwe		# Ethernet over FireWire (non-standard!)
-#FreeNAS add fwip:
-device		fwip		# Ethernet over FireWire (standard)
+#device		fwe		# Ethernet over FireWire (non-standard!)
 
 #####################################################################
 # FREENAS
 #####################################################################
+options		NO_SWAPPING
+options 	DEVICE_POLLING
+options		HZ=1000
+options   SMP						# Symmetric MultiProcessor Kernel
+options		MSDOSFS_LARGE	# MSDOS Filesystem for FAT32 > 128GB
 device		speaker
 
-# Hardware crypto acceleration
-device		crypto
-device		cryptodev
+# Splashscreen
+#options		VESA
+options		SC_PIXEL_MODE
 
-# GEOM classes
-options 	GEOM_GPT		# GUID Partition Tables.
-options		GEOM_ELI		# GELI filesystem encryption
-options		GEOM_LABEL	# Providers labelization.
+# Power management support (see NOTES for more options)
+device		acpi			# acpi -- Advanced Configuration and Power Management support
 
 # The cpufreq(4) driver provides support for non-ACPI CPU frequency control
 device		cpufreq
 
+# SCSI Controllers
+device		ihb				# IOI-A100U2W drivers
+
+# PCI Ethernet NICs.
+device		le				# AMD Am7900 LANCE and Am79C9xx PCnet Ethernet interface driver
+
+# Wireless NIC cards
+device		firmware
+device		wlan_acl
+device		wlan_tkip
+device		wlan_xauth
+device		iwi
+device		ipw
+
+# USB support
+device		udav			# Davicom DM910 USB Ethernet driver
+
+# FireWire support
+device		fwip			# Ethernet over FireWire (standard)
+
+# Hardware crypto acceleration
+device		crypto
+device		cryptodev
+device		padlock
+
+# GEOM classes
+options		GEOM_ELI		# GELI filesystem encryption
+options		GEOM_LABEL	# Providers labelization.
+
 # SMB bus
-device		smbus		# Bus support, required for smb below.
+device		smbus			# Bus support, required for smb below.
 device		intpm
 device		alpm
 device		ichsmb
@@ -349,8 +352,6 @@ device		ic
 device		iic
 device		iicsmb		# smb over i2c bridge
 
-# Splashscreen
-device		vga				# VGA video card driver
-device		splash		# Splash screen and screen saver support
-# NOT COMPATIBLE WITH AMD64 options		VESA
-options		SC_PIXEL_MODE
+options 	COMPAT_IA32		# Compatible with i386 binaries
+
+device		atpic					# 8259A compatability. Workarounds for some known-to-be-broken chipsets (nVidia nForce3-Pro150)
