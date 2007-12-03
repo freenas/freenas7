@@ -1,8 +1,5 @@
-# 02.12.2007: Do not update to 20071122 because it contains a bug when using
-# a disk device (e.g. /dev/ad3) as extent.
-
 PORTNAME=			iscsi-target
-PORTVERSION=	20071025
+PORTVERSION=	20071130
 CATEGORIES=		net
 COMMENT=			Implementation of userland ISCSI target (derived from NetBSD)
 MAINTAINER=		votdev@gmx.de
@@ -22,7 +19,7 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|_FLAGS= -pthread|_FLAGS= ${PTHREAD_CFLAGS}|' ${WRKSRC}/Makefile.in
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${WRKDIR}/netbsd-iscsi-*/bin/iscsi-target ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKDIR}/netbsd-iscsi-*/src/iscsi-target ${FREENAS_ROOTFS}/usr/local/bin
 
 	@${MKDIR} ${FREENAS_ROOTFS}/etc/iscsi
 	@${LN} -s -f -v /var/etc/iscsi/auths ${FREENAS_ROOTFS}/etc/iscsi/auths

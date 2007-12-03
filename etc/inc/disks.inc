@@ -367,7 +367,7 @@ function disks_ismounted_ex($var,$key)
 			case "devicespecialfile":
 				// Must found the $val (e.g. ad0) in 'mdisk' (e.g. ad0s1).
 				// Must found the $val (e.g. /dev/ad1) in 'devicespecialfile' (e.g. /dev/ad1s1).
-				if (false !== strpos($amountv[$key], $var)) {
+				if (false !== strstr($amountv[$key], $var)) {
 					$result = 1;
 					break;
 				}
