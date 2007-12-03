@@ -128,7 +128,7 @@ function enable_change(enable_change) {
       </td>
     </tr>
 		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Authorized");?></td>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("Authorized networks");?></td>
 			<td width="78%" class="vtable">
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
