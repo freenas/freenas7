@@ -1308,15 +1308,21 @@ function disks_exists($disk)
 //            The commands depend on the GEOM class.
 // $param   - The command parameter.
 // $verbose - Display command results or hide them.
+// $stderr  - Redirect stderr to stdout to display error messages too.
 // Return 0 if successful, 1 if error.
-function disks_geom_cmd($class, $command, $param, $verbose = false)
+function disks_geom_cmd($class, $command, $param, $verbose = false, $stderr = true)
 {
 	$result = 1;
 
-	$cmd = "/sbin/geom {$class} {$command} {$param}";
+	if ("vinum" !== $class)
+		$cmd = "/sbin/geom {$class} {$command} {$param}";
+	else
+		$cmd = "/sbin/gvinum {$command} {$param}"; // gvinum can't be executed via geom.
 
 	if (true === $verbose) {
-		$cmd .= " 2>&1"; // Redirect error message to stdout.
+		if (true === $stderr)
+			$cmd .= " 2>&1"; // Redirect error message to stdout.
+
 		system($cmd, $result);
 	}	else {
 		$result = mwexec($cmd);

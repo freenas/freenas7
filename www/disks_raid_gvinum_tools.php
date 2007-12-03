@@ -117,22 +117,22 @@ if (!isset($do_action)) {
 					// via 'geom vinum xxx'.
 					switch ($action) {
 						case "start":
-							system("/sbin/gvinum start {$object} 2>&1");
+							disks_geom_cmd("vinum", "start", $object, true);
 							break;
 						case "rebuild":
-							system("/sbin/gvinum rebuildparity {$object} 2>&1");
+							disks_geom_cmd("vinum", "rebuildparity", $object, true);
 							break;
 						case "list":
-							system("/sbin/gvinum list {$object} 2>&1");
+							disks_geom_cmd("vinum", "list", $object, true);
 							break;
 						case "remove":					
-							system("/sbin/gvinum rm -r {$object} 2>&1");
+							disks_geom_cmd("vinum", "rm", "-r {$object}", true);
 							break;
 						case "forceup":					
-							system("/sbin/gvinum setstate -f up {$object} 2>&1");
+							disks_geom_cmd("vinum", "setstate", "-f up {$object}", true);
 							break;
 						case "saveconfig":					
-							system("/sbin/gvinum saveconfig 2>&1");
+							disks_geom_cmd("vinum", "saveconfig", "", true);
 							break;
 					}
 

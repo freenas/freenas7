@@ -57,41 +57,12 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Softwa
     <td class="tabcont">
       <?php
       echo "<pre>";
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Mirror") . ":</strong><br><br>";
-      exec("/sbin/gmirror list",$rawdata);
-      foreach ($rawdata as $line) {
-        echo htmlspecialchars($line) . "<br>";
-      }
-      unset ($line);
-      unset ($rawdata);
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Vinum") . ":</strong><br><br>";
-      exec("/sbin/gvinum list",$rawdata);
-      foreach ($rawdata as $line) 	{
-        echo htmlspecialchars($line) . "<br>";
-      }
-		unset ($line);
-      unset ($rawdata);
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Concat") . ":</strong><br><br>";
-      exec("/sbin/gconcat list",$rawdata);
-      foreach ($rawdata as $line) 	{
-        echo htmlspecialchars($line) . "<br>";
-      }
-       unset ($line);
-      unset ($rawdata);
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Stripe") . ":</strong><br><br>";
-      exec("/sbin/gstripe list",$rawdata);
-      foreach ($rawdata as $line) 	{
-        echo htmlspecialchars($line) . "<br>";
-      }
-      unset ($line);
-      unset ($rawdata);
-      echo "<strong>" . gettext("Software RAID") . " - " . gettext("Geom Raid5") . ":</strong><br><br>";
-      exec("/sbin/graid5 list",$rawdata);
-      foreach ($rawdata as $line) 	{
-        echo htmlspecialchars($line) . "<br>";
+			foreach (explode(" ", "concat mirror raid5 stripe vinum") as $class) {
+	    	echo "<strong>GEOM {$class}:</strong><br><br>";
+	    	disks_geom_cmd($class, "list", "", true, false);
       }
       echo "</pre>";
-      ?>
+			?>
     </td>
   </tr>
 </table>
