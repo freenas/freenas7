@@ -103,51 +103,38 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-		<td class="tabnavtbl">
-  		<ul id="tabnav">
-				<li class="tabact"><a href="services_iscsitarget.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Target");?></a></li>
-  		</ul>
-  	</td>
-	</tr>
-  <tr>
-    <td class="tabcont">
-			<form action="services_iscsitarget_extent_edit.php" method="post" name="iform" id="iform">
-				<?php if ($input_errors) print_input_errors($input_errors); ?>
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Extent name");?></td>
-						<td width="78%" class="vtable">
-							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" readonly>
-					  </td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Path");?></td>
-						<td width="78%" class="vtable">
-							<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
-							<br><?php echo sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."), $pconfig['name']);?>
-					  </td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("File size") ;?></td>
-						<td width="78%" class="vtable">
-							<input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>"><br>
-							<?=gettext("Size in MB.");?>
-						</td>
-					</tr>
-			    <tr>
-						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_extent[$id]))?gettext("Save"):gettext("Add")?>">
-						<?php if (isset($id) && $a_iscsitarget_extent[$id]): ?>
-							<input name="id" type="hidden" value="<?=$id;?>">
-						<?php endif; ?>
-						</td>
-					</tr>
-			  </table>
-			</form>
-		</td>
-	</tr>
-</table>
+<form action="services_iscsitarget_extent_edit.php" method="post" name="iform" id="iform">
+	<?php if ($input_errors) print_input_errors($input_errors); ?>
+  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+  	<tr>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("Extent name");?></td>
+			<td width="78%" class="vtable">
+				<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" readonly>
+		  </td>
+		</tr>
+		<tr>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("Path");?></td>
+			<td width="78%" class="vtable">
+				<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>">
+				<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+				<br><?php echo sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."), $pconfig['name']);?>
+		  </td>
+		</tr>
+		<tr>
+			<td width="22%" valign="top" class="vncellreq"><?=gettext("File size") ;?></td>
+			<td width="78%" class="vtable">
+				<input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>"><br>
+				<?=gettext("Size in MB.");?>
+			</td>
+		</tr>
+    <tr>
+			<td width="22%" valign="top">&nbsp;</td>
+			<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_extent[$id]))?gettext("Save"):gettext("Add")?>">
+			<?php if (isset($id) && $a_iscsitarget_extent[$id]): ?>
+				<input name="id" type="hidden" value="<?=$id;?>">
+			<?php endif; ?>
+			</td>
+		</tr>
+  </table>
+</form>
 <?php include("fend.inc");?>
