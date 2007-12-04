@@ -139,83 +139,89 @@ function fstype_change() {
 //-->
 </script>
 <form action="disks_init.php" method="post" name="iform" id="iform">
-<?php if($input_errors) print_input_errors($input_errors);?>
-<?php if($errormsg) print_error_box($errormsg);?>
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-      <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
-      <td class="vtable">
-        <select name="disk" class="formfld" id="disk" onchange="disk_change()">
-					<option value=""><?=gettext("Must choose one");?></option>
-					<?php foreach ($a_alldisk as $diskv):?>
-					<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
-					<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
-					<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($diskv['devicespecialfile'] === $disk) echo "selected";?>>
-					<?php $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); echo htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})");?>
-					</option>
-					<?php endforeach;?>
-        </select>
-      </td>
-		</tr>
-		<tr>
-	    <td valign="top" class="vncellreq"><?=gettext("File system"); ?></td>
-	    <td class="vtable">
-	      <select name="type" class="formfld" id="type" onchange="fstype_change()">
-	        <?php foreach ($a_fst as $fstval => $fstname): ?>
-	        <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
-	        <?php endforeach; ?>
-	       </select>
-	    </td>
-		</tr>
-		<tr id="volumelabel_tr">
-			<td width="22%" valign="top" class="vncell"><?=gettext("Volume label");?></td>
-			<td width="78%" class="vtable">
-				<input name="volumelabel" type="text" class="formfld" id="volumelabel" size="20" value="<?=htmlspecialchars($volumelabel);?>"><br/>
-				<?=gettext("Volume label of the new file system.");?>
-			</td>
-		</tr>
-		<tr id="minspace_tr">
-			<td width="22%" valign="top" class="vncell"><?=gettext("Minimum free space") ; ?></td>
-			<td width="78%" class="vtable">
-				<select name="minspace" class="formfld" id="minspace">
-				<?php $types = explode(",", "8,7,6,5,4,3,2,1"); $vals = explode(" ", "8 7 6 5 4 3 2 1");?>
-				<?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-					<option value="<?=$vals[$j];?>"><?=htmlspecialchars($types[$j]);?></option>
-				<?php endfor; ?>
-				</select>
-				<br><?=gettext("Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation.") ;?>
-			</td>
-		</tr>
-    <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Don't Erase MBR"); ?></td>
-      <td width="78%" class="vtable">
-        <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes">
-        <?=gettext("Don't erase the MBR (useful for some RAID controller cards)");?>
-			</td>
-	  </tr>
-		<tr>
-		  <td width="22%" valign="top">&nbsp;</td>
-		  <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Format disk");?>" onclick="return confirm('<?=gettext("Do you really want to format this disk? All data will be lost!");?>')">
-		  </td>
-		</tr>
-		<tr>
-			<td valign="top" colspan="2">
-			<? if ($do_format) {
-				echo("<strong>" . gettext("Command output:") . "</strong>");
-				echo('<pre>');
-				ob_end_flush();
-				disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel);
-				echo('</pre>');
-			}
-			?>
-			</td>
-		</tr>
-		<tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-				<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br></strong></span><?=gettext("This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified.");?><br><br>
-				<?php echo sprintf(gettext("UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></span>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+				<?php if($input_errors) print_input_errors($input_errors);?>
+				<?php if($errormsg) print_error_box($errormsg);?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr>
+			      <td valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
+			      <td class="vtable">
+			        <select name="disk" class="formfld" id="disk" onchange="disk_change()">
+								<option value=""><?=gettext("Must choose one");?></option>
+								<?php foreach ($a_alldisk as $diskv):?>
+								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
+								<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
+								<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($diskv['devicespecialfile'] === $disk) echo "selected";?>>
+								<?php $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); echo htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})");?>
+								</option>
+								<?php endforeach;?>
+			        </select>
+			      </td>
+					</tr>
+					<tr>
+				    <td valign="top" class="vncellreq"><?=gettext("File system"); ?></td>
+				    <td class="vtable">
+				      <select name="type" class="formfld" id="type" onchange="fstype_change()">
+				        <?php foreach ($a_fst as $fstval => $fstname): ?>
+				        <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
+				        <?php endforeach; ?>
+				       </select>
+				    </td>
+					</tr>
+					<tr id="volumelabel_tr">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Volume label");?></td>
+						<td width="78%" class="vtable">
+							<input name="volumelabel" type="text" class="formfld" id="volumelabel" size="20" value="<?=htmlspecialchars($volumelabel);?>"><br/>
+							<?=gettext("Volume label of the new file system.");?>
+						</td>
+					</tr>
+					<tr id="minspace_tr">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Minimum free space") ; ?></td>
+						<td width="78%" class="vtable">
+							<select name="minspace" class="formfld" id="minspace">
+							<?php $types = explode(",", "8,7,6,5,4,3,2,1"); $vals = explode(" ", "8 7 6 5 4 3 2 1");?>
+							<?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+								<option value="<?=$vals[$j];?>"><?=htmlspecialchars($types[$j]);?></option>
+							<?php endfor; ?>
+							</select>
+							<br><?=gettext("Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation.") ;?>
+						</td>
+					</tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Don't Erase MBR"); ?></td>
+			      <td width="78%" class="vtable">
+			        <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes">
+			        <?=gettext("Don't erase the MBR (useful for some RAID controller cards)");?>
+						</td>
+				  </tr>
+					<tr>
+					  <td width="22%" valign="top">&nbsp;</td>
+					  <td width="78%">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Format disk");?>" onclick="return confirm('<?=gettext("Do you really want to format this disk? All data will be lost!");?>')">
+					  </td>
+					</tr>
+					<tr>
+						<td valign="top" colspan="2">
+						<? if ($do_format) {
+							echo("<strong>" . gettext("Command output:") . "</strong>");
+							echo('<pre>');
+							ob_end_flush();
+							disks_format($disk,$type,$notinitmbr,$minspace,$volumelabel);
+							echo('</pre>');
+						}
+						?>
+						</td>
+					</tr>
+					<tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%">
+							<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br></strong></span><?=gettext("This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified.");?><br><br>
+							<?php echo sprintf(gettext("UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></span>
+						</td>
+					</tr>
+				</table>
 			</td>
 		</tr>
 	</table>

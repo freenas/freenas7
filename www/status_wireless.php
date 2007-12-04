@@ -94,82 +94,88 @@ for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
 		$ifdescrs['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
 }
 if (count($ifdescrs) > 0): ?>
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <?php
-    foreach ($ifdescrs as $ifdescr => $ifname):
-      $ifinfo = get_wireless_info($ifdescr);
-  ?>
-  <?php if ($i): ?>
-    <tr>
-      <td colspan="8" class="list" height="12"></td>
-    </tr>
-    <?php endif; ?>
-    <tr>
-      <td colspan="2" class="listtopic">
-        <?=sprintf(gettext("%s interface (SSID '%s')"), htmlspecialchars($ifname), htmlspecialchars($config['interfaces'][$ifdescr]['wireless']['ssid']));?>
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellt"><?=gettext("Signal strength cache");?></td>
-      <td width="78%" class="listrpad">
-        <table width="100%" border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td width="30%" class="listhdrr"><?=gettext("MAC address");?></td>
-            <td width="25%" class="listhdrr"><?=gettext("IP address");?></td>
-            <td width="15%" class="listhdrr"><?=gettext("Signal");?></td>
-            <td width="15%" class="listhdrr"><?=gettext("Noise");?></td>
-            <td width="15%" class="listhdr"><?=gettext("Quality");?></td>
-          </tr>
-          <?php foreach ($ifinfo['sscache'] as $ss): ?>
-          <tr>
-            <td class="listlr">
-              <?=htmlspecialchars($ss['mac']);?>
-            </td>
-            <td class="listr">
-              <?=htmlspecialchars($ss['ipaddr']);?>
-            </td>
-            <td class="listr">
-              <?=htmlspecialchars($ss['sig']);?>
-            </td>
-            <td class="listr">
-              <?=htmlspecialchars($ss['noise']);?>
-            </td>
-            <td class="listr">
-              <?=htmlspecialchars($ss['qual']);?>
-            </td>
-          </tr>
-          <?php endforeach; ?>
-        </table></td>
-    </tr>
-    <?php if ($ifinfo['aslist']): ?>
-    <tr>
-      <td width="22%" valign="top" class="vncellt"><?=gettext("Associated stations");?></td>
-      <td width="78%" class="listrpad">
-        <table width="100%" border="0" cellpadding="0" cellspacing="0">
-          <tr>
-            <td width="40%" class="listhdrr"><?=gettext("MAC address");?></td>
-            <td width="40%" class="listhdrr"><?=gettext("TX rates");?></td>
-            <td width="20%" class="listhdrr"><?=gettext("Signal");?></td>
-          </tr>
-          <?php foreach ($ifinfo['aslist'] as $as): ?>
-          <tr>
-            <td class="listlr">
-              <?=htmlspecialchars($as['mac']);?>
-            </td>
-            <td class="listr">
-              <?=htmlspecialchars($as['rates']);?>
-            </td>
-            <td class="listr">
-              <?=htmlspecialchars($as['sig']);?>
-            </td>
-          </tr>
-          <?php endforeach; ?>
-        </table>
-      </td>
-    </tr>
-    <?php endif; ?>
-    <?php $i++; endforeach; ?>
-  </table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+			  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+			  <?php
+			    foreach ($ifdescrs as $ifdescr => $ifname):
+			      $ifinfo = get_wireless_info($ifdescr);
+			  ?>
+			  <?php if ($i): ?>
+			    <tr>
+			      <td colspan="8" class="list" height="12"></td>
+			    </tr>
+			    <?php endif; ?>
+			    <tr>
+			      <td colspan="2" class="listtopic">
+			        <?=sprintf(gettext("%s interface (SSID '%s')"), htmlspecialchars($ifname), htmlspecialchars($config['interfaces'][$ifdescr]['wireless']['ssid']));?>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellt"><?=gettext("Signal strength cache");?></td>
+			      <td width="78%" class="listrpad">
+			        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+			          <tr>
+			            <td width="30%" class="listhdrr"><?=gettext("MAC address");?></td>
+			            <td width="25%" class="listhdrr"><?=gettext("IP address");?></td>
+			            <td width="15%" class="listhdrr"><?=gettext("Signal");?></td>
+			            <td width="15%" class="listhdrr"><?=gettext("Noise");?></td>
+			            <td width="15%" class="listhdr"><?=gettext("Quality");?></td>
+			          </tr>
+			          <?php foreach ($ifinfo['sscache'] as $ss): ?>
+			          <tr>
+			            <td class="listlr">
+			              <?=htmlspecialchars($ss['mac']);?>
+			            </td>
+			            <td class="listr">
+			              <?=htmlspecialchars($ss['ipaddr']);?>
+			            </td>
+			            <td class="listr">
+			              <?=htmlspecialchars($ss['sig']);?>
+			            </td>
+			            <td class="listr">
+			              <?=htmlspecialchars($ss['noise']);?>
+			            </td>
+			            <td class="listr">
+			              <?=htmlspecialchars($ss['qual']);?>
+			            </td>
+			          </tr>
+			          <?php endforeach; ?>
+			        </table></td>
+			    </tr>
+			    <?php if ($ifinfo['aslist']): ?>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellt"><?=gettext("Associated stations");?></td>
+			      <td width="78%" class="listrpad">
+			        <table width="100%" border="0" cellpadding="0" cellspacing="0">
+			          <tr>
+			            <td width="40%" class="listhdrr"><?=gettext("MAC address");?></td>
+			            <td width="40%" class="listhdrr"><?=gettext("TX rates");?></td>
+			            <td width="20%" class="listhdrr"><?=gettext("Signal");?></td>
+			          </tr>
+			          <?php foreach ($ifinfo['aslist'] as $as): ?>
+			          <tr>
+			            <td class="listlr">
+			              <?=htmlspecialchars($as['mac']);?>
+			            </td>
+			            <td class="listr">
+			              <?=htmlspecialchars($as['rates']);?>
+			            </td>
+			            <td class="listr">
+			              <?=htmlspecialchars($as['sig']);?>
+			            </td>
+			          </tr>
+			          <?php endforeach; ?>
+			        </table>
+			      </td>
+			    </tr>
+			    <?php endif; ?>
+			    <?php $i++; endforeach; ?>
+			  </table>
+			</td>
+		</tr>
+	</table>
 <?php else: ?>
   <strong><?=gettext("No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported).");?></strong>
 <?php endif; ?>

@@ -54,9 +54,7 @@ if ($_GET['act'] == "del") {
 	}
 }
 $resolve = isset($config['syslogd']['resolve']);
-?>
-<?php include("fbegin.inc"); ?>
-<?php
+
 $fp = @fopen("{$g['vardb_path']}/dhcpd.leases","r");
 if ($fp) {
 	$return = array();
@@ -195,37 +193,42 @@ function getHostName($mac,$ip)
 	else
 		return "&nbsp;";
 }
-
 ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td class="listhdrr"><?=gettext("IP address");?></td>
-    <td class="listhdrr"><?=gettext("MAC address");?></td>
-    <td class="listhdrr"><?=gettext("Hostname");?></td>
-    <td class="listhdr"><?=gettext("Interface");?></td>
-    <td class="list"></td>
-  </tr>
-  <?php $i = 0; foreach ($data as $entry): ?>
-  <tr>
-    <td class="listlr"><?=$entry['ip'];?></td>
-    <td class="listr"><?=$entry['mac'];?></td>
-    <td class="listr"><?=getHostName($entry['mac'], $entry['ip']);?>&nbsp;</td>
-    <td class="listr"><?=$hwif[$entry['interface']];?>&nbsp;</td>
-    <td valign="middle" nowrap class="list"><a href="diag_arp.php?act=del&id=<?=$entry['ip'];?>"><img src="x.gif" title="<?=gettext("Delete ARP entry");?>" width="17" height="17" border="0"></a></td>
-  </tr>
-  <?php $i++; endforeach; ?>
-  <tr> 
-    <td></td>
-  </tr> 
-  <tr> 
-    <td class="list" colspan="4"></td>
-    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="<?=gettext("Remove all entries from ARP table");?>" width="17" height="17" border="0"></a></td>
-  </tr>
-  <tr>
-    <td colspan="4">
-      <span class="vexpl"><span class="red"><strong><?=gettext("Hint");?>:<br></strong></span><?php echo sprintf(gettext("IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."), "diag_logs_settings.php", gettext("Diagnostics").":".gettext("Logs"));?></span>
-    </td>
-  </tr>
+    <td class="tabcont">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			  <tr>
+			    <td class="listhdrr"><?=gettext("IP address");?></td>
+			    <td class="listhdrr"><?=gettext("MAC address");?></td>
+			    <td class="listhdrr"><?=gettext("Hostname");?></td>
+			    <td class="listhdr"><?=gettext("Interface");?></td>
+			    <td class="list"></td>
+			  </tr>
+			  <?php $i = 0; foreach ($data as $entry): ?>
+			  <tr>
+			    <td class="listlr"><?=$entry['ip'];?></td>
+			    <td class="listr"><?=$entry['mac'];?></td>
+			    <td class="listr"><?=getHostName($entry['mac'], $entry['ip']);?>&nbsp;</td>
+			    <td class="listr"><?=$hwif[$entry['interface']];?>&nbsp;</td>
+			    <td valign="middle" nowrap class="list"><a href="diag_arp.php?act=del&id=<?=$entry['ip'];?>"><img src="x.gif" title="<?=gettext("Delete ARP entry");?>" width="17" height="17" border="0"></a></td>
+			  </tr>
+			  <?php $i++; endforeach; ?>
+			  <tr> 
+			    <td></td>
+			  </tr> 
+			  <tr> 
+			    <td class="list" colspan="4"></td>
+			    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="<?=gettext("Remove all entries from ARP table");?>" width="17" height="17" border="0"></a></td>
+			  </tr>
+			  <tr>
+			    <td colspan="4">
+			      <span class="vexpl"><span class="red"><strong><?=gettext("Hint");?>:<br></strong></span><?php echo sprintf(gettext("IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."), "diag_logs_settings.php", gettext("Diagnostics").":".gettext("Logs"));?></span>
+			    </td>
+			  </tr>
+			</table>
+		</td>
+	</tr>
 </table>
-
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

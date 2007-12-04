@@ -125,105 +125,111 @@ function enable_change(enable_change) {
 //-->
 </script>
 <form action="services_snmp.php" method="post" name="iform" id="iform">
-	<?php if ($input_errors) print_input_errors($input_errors);?>
-	<?php if ($savemsg) print_info_box($savemsg);?>
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-      <td colspan="2" valign="top" class="optsect_t">
-				<table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr>
-						<td class="optsect_s"><strong><?=gettext("Simple Network Management Protocol");?></strong></td>
-						<td align="right" class="optsect_s">
-							<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr>
+			      <td colspan="2" valign="top" class="optsect_t">
+							<table border="0" cellspacing="0" cellpadding="0" width="100%">
+							  <tr>
+									<td class="optsect_s"><strong><?=gettext("Simple Network Management Protocol");?></strong></td>
+									<td align="right" class="optsect_s">
+										<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
+									</td>
+								</tr>
+							</table>
 						</td>
-					</tr>
-				</table>
-			</td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Location");?></td>
-      <td width="78%" class="vtable">
-        <input name="location" type="text" class="formfld" id="location" size="40" value="<?=htmlspecialchars($pconfig['location']);?>"><br/>
-        <?=gettext("Location information, e.g. physical location of this system: 'Floor of building, Room xyz'.");?>
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Contact");?></td>
-      <td width="78%" class="vtable">
-        <input name="contact" type="text" class="formfld" id="contact" size="40" value="<?=htmlspecialchars($pconfig['contact']);?>"><br/>
-        <?=gettext("Contact information, e.g. name or email of the person responsible for this system: 'admin@email.address'.");?>
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Community");?></td>
-      <td width="78%" class="vtable">
-        <input name="read" type="text" class="formfld" id="read" size="40" value="<?=htmlspecialchars($pconfig['read']);?>"><br/>
-        <?=gettext("In most cases, 'public' is used here.");?>
-			</td>
-    </tr>
-		<tr>
-			<td colspan="2" class="list" height="12"></td>
-		</tr>
-		<tr>
-      <td colspan="2" valign="top" class="optsect_t">
-				<table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr>
-						<td class="optsect_s"><strong><?=gettext("Traps");?></strong></td>
-						<td align="right" class="optsect_s">
-							<input name="trapenable" type="checkbox" value="yes" <?php if ($pconfig['trapenable']) echo "checked"; ?> onClick="enable_change(this)"> <strong><?=gettext("Enable");?></strong>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Location");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="location" type="text" class="formfld" id="location" size="40" value="<?=htmlspecialchars($pconfig['location']);?>"><br/>
+			        <?=gettext("Location information, e.g. physical location of this system: 'Floor of building, Room xyz'.");?>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Contact");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="contact" type="text" class="formfld" id="contact" size="40" value="<?=htmlspecialchars($pconfig['contact']);?>"><br/>
+			        <?=gettext("Contact information, e.g. name or email of the person responsible for this system: 'admin@email.address'.");?>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Community");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="read" type="text" class="formfld" id="read" size="40" value="<?=htmlspecialchars($pconfig['read']);?>"><br/>
+			        <?=gettext("In most cases, 'public' is used here.");?>
 						</td>
-					</tr>
-				</table>
-			</td>
-    </tr>
-		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Trap host");?></td>
-			<td width="78%" class="vtable">
-				<input name="traphost" type="text" class="formfld" id="traphost" size="40" value="<?=htmlspecialchars($pconfig['traphost']);?>"><br/>
-				<?=gettext("Enter trap host name.");?>
-			</td>
-		</tr>
-		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Trap port");?></td>
-			<td width="78%" class="vtable">
-				<input name="trapport" type="text" class="formfld" id="trapport" size="40" value="<?=$pconfig['trapport'] ? htmlspecialchars($pconfig['trapport']) : htmlspecialchars(162);?>"><br/>
-				<?=gettext("Enter the port to send the traps to (default 162).");?>
-			</td>
-		</tr>
-		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Trap string");?></td>
-			<td width="78%" class="vtable">
-				<input name="trap" type="text" class="formfld" id="trap" size="40" value="<?=htmlspecialchars($pconfig['trap']);?>"><br/>
-				<?=gettext("Trap string.");?>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2" class="list" height="12"></td>
-		</tr>
-		<tr>
-			<td colspan="2" valign="top" class="optsect_t">
-				<table border="0" cellspacing="0" cellpadding="0" width="100%">
+			    </tr>
 					<tr>
-						<td class="optsect_s"><strong><?=gettext("Modules");?></strong></td>
+						<td colspan="2" class="list" height="12"></td>
 					</tr>
-				</table>
+					<tr>
+			      <td colspan="2" valign="top" class="optsect_t">
+							<table border="0" cellspacing="0" cellpadding="0" width="100%">
+							  <tr>
+									<td class="optsect_s"><strong><?=gettext("Traps");?></strong></td>
+									<td align="right" class="optsect_s">
+										<input name="trapenable" type="checkbox" value="yes" <?php if ($pconfig['trapenable']) echo "checked"; ?> onClick="enable_change(this)"> <strong><?=gettext("Enable");?></strong>
+									</td>
+								</tr>
+							</table>
+						</td>
+			    </tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Trap host");?></td>
+						<td width="78%" class="vtable">
+							<input name="traphost" type="text" class="formfld" id="traphost" size="40" value="<?=htmlspecialchars($pconfig['traphost']);?>"><br/>
+							<?=gettext("Enter trap host name.");?>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Trap port");?></td>
+						<td width="78%" class="vtable">
+							<input name="trapport" type="text" class="formfld" id="trapport" size="40" value="<?=$pconfig['trapport'] ? htmlspecialchars($pconfig['trapport']) : htmlspecialchars(162);?>"><br/>
+							<?=gettext("Enter the port to send the traps to (default 162).");?>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Trap string");?></td>
+						<td width="78%" class="vtable">
+							<input name="trap" type="text" class="formfld" id="trap" size="40" value="<?=htmlspecialchars($pconfig['trap']);?>"><br/>
+							<?=gettext("Trap string.");?>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="list" height="12"></td>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top" class="optsect_t">
+							<table border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr>
+									<td class="optsect_s"><strong><?=gettext("Modules");?></strong></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("SNMP Modules");?></td>
+						<td width="78%" class="vtable">
+							<input name="mibii" type="checkbox" id="mibii" value="yes" <?php if ($pconfig['mibii']) echo "checked"; ?>><?=gettext("MibII");?><br/>
+							<input name="netgraph" type="checkbox" id="netgraph" value="yes" <?php if ($pconfig['netgraph']) echo "checked"; ?>><?=gettext("Netgraph");?><br/>
+							<input name="hostres" type="checkbox" id="hostres" value="yes" <?php if ($pconfig['hostres']) echo "checked"; ?>><?=gettext("Host resources");?>
+						</td>
+					</tr>
+			    <tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+			      </td>
+			    </tr>
+			  </table>
 			</td>
 		</tr>
-		<tr>
-			<td width="22%" valign="top" class="vncell"><?=gettext("SNMP Modules");?></td>
-			<td width="78%" class="vtable">
-				<input name="mibii" type="checkbox" id="mibii" value="yes" <?php if ($pconfig['mibii']) echo "checked"; ?>><?=gettext("MibII");?><br/>
-				<input name="netgraph" type="checkbox" id="netgraph" value="yes" <?php if ($pconfig['netgraph']) echo "checked"; ?>><?=gettext("Netgraph");?><br/>
-				<input name="hostres" type="checkbox" id="hostres" value="yes" <?php if ($pconfig['hostres']) echo "checked"; ?>><?=gettext("Host resources");?>
-			</td>
-		</tr>
-    <tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-      </td>
-    </tr>
-  </table>
+	</table>
 </form>
 <script language="JavaScript">
 <!--

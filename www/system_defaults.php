@@ -47,18 +47,24 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<?php if ($rebootmsg): echo print_info_box($rebootmsg); else: ?>
+<?php if ($rebootmsg): echo print_info_box($rebootmsg); else:?>
 <form action="system_defaults.php" method="post">
-	<p>
-		<strong>
-			<?=sprintf(gettext("If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."), get_product_name(), $g['default_ip'], $g['default_passwd']);?><br><br>
-			<?=gettext("Are you sure you want to proceed?");?>
-		</strong>
-	</p>
-	<p>
-		<input name="Submit" type="submit" class="formbtn" value=<?=gettext("Yes");?>>
-		<input name="Submit" type="submit" class="formbtn" value=<?=gettext("No");?>>
-	</p>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+				<p>
+					<strong>
+						<?=sprintf(gettext("If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."), get_product_name(), $g['default_ip'], $g['default_passwd']);?><br><br>
+						<?=gettext("Are you sure you want to proceed?");?>
+					</strong>
+				</p>
+				<p>
+					<input name="Submit" type="submit" class="formbtn" value=<?=gettext("Yes");?>>
+					<input name="Submit" type="submit" class="formbtn" value=<?=gettext("No");?>>
+				</p>
+			</td>
+		</tr>
+	</table>
 </form>
-<?php endif; ?>
+<?php endif;?>
 <?php include("fend.inc");?>

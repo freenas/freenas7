@@ -82,29 +82,35 @@ if($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
 <form action="services_nfs_edit.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-	    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorised network");?></td>
-      <td width="78%" class="vtable">
-        <input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> /
-        <select name="network_subnet" class="formfld" id="network_subnet">
-          <?php for ($i = 32; $i >= 1; $i--):?>
-          <option value="<?=$i;?>" <?php if ($i == $pconfig['network_subnet']) echo "selected";?>><?=$i;?></option>
-          <?php endfor;?>
-        </select><br>
-        <span class="vexpl"><?=gettext("Network that is authorised to access to NFS share");?></span>
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top">&nbsp;</td>
-			<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_nfs[$id]))?gettext("Save"):gettext("Add")?>">
-        <?php if(isset($id)): ?>
-        <input name="id" type="hidden" value="<?=$id;?>">
-        <?php endif; ?>
-      </td>
-    </tr>
-  </table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+	    	<?php if ($input_errors) print_input_errors($input_errors);?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+				    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorised network");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> /
+			        <select name="network_subnet" class="formfld" id="network_subnet">
+			          <?php for ($i = 32; $i >= 1; $i--):?>
+			          <option value="<?=$i;?>" <?php if ($i == $pconfig['network_subnet']) echo "selected";?>><?=$i;?></option>
+			          <?php endfor;?>
+			        </select><br>
+			        <span class="vexpl"><?=gettext("Network that is authorised to access to NFS share");?></span>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+						<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_nfs[$id]))?gettext("Save"):gettext("Add")?>">
+			        <?php if(isset($id)): ?>
+			        <input name="id" type="hidden" value="<?=$id;?>">
+			        <?php endif; ?>
+			      </td>
+			    </tr>
+			  </table>
+			</td>
+		</tr>
+	</table>
 </form>
 <?php include("fend.inc");?>

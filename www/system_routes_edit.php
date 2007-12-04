@@ -133,13 +133,6 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-		<td class="tabnavtbl">
-  		<ul id="tabnav">
-				<li class="tabact"><a href="system_routes.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Static routes");?></a></li>
-  		</ul>
-  	</td>
-	</tr>
-  <tr>
     <td class="tabcont">
       <form action="system_routes_edit.php" method="post" name="iform" id="iform">
       	<?php if ($input_errors) print_input_errors($input_errors); ?>

@@ -77,35 +77,41 @@ if ($_POST) {
 ?>
 <?php include("fbegin.inc");?>
 <form action="system_backup.php" method="post" enctype="multipart/form-data">
-	<?php if ($input_errors) print_input_errors($input_errors); ?>
-	<?php if ($savemsg) print_info_box($savemsg); ?>
-  <table width="100%" border="0" cellspacing="0" cellpadding="6">
-    <tr>
-      <td colspan="2" class="listtopic"><?=gettext("Backup configuration");?></td>
-    </tr>
-    <tr>
-      <td width="22%" valign="baseline" class="vncell">&nbsp;</td>
-      <td width="78%" class="vtable">
-				<?=gettext("Click this button to download the system configuration in XML format.");?><br><br>
-				<input name="Submit" type="submit" class="formbtn" id="download" value="<?=gettext("Download configuration");?>">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+				<?php if ($input_errors) print_input_errors($input_errors); ?>
+				<?php if ($savemsg) print_info_box($savemsg); ?>
+			  <table width="100%" border="0" cellspacing="0" cellpadding="6">
+			    <tr>
+			      <td colspan="2" class="listtopic"><?=gettext("Backup configuration");?></td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="baseline" class="vncell">&nbsp;</td>
+			      <td width="78%" class="vtable">
+							<?=gettext("Click this button to download the system configuration in XML format.");?><br><br>
+							<input name="Submit" type="submit" class="formbtn" id="download" value="<?=gettext("Download configuration");?>">
+						</td>
+			    </tr>
+			    <tr>
+			      <td colspan="2" class="list" height="12"></td>
+			    </tr>
+			    <tr>
+			      <td colspan="2" class="listtopic"><?=gettext("Restore configuration");?></td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="baseline" class="vncell">&nbsp;</td>
+			      <td width="78%" class="vtable">
+							<?php echo sprintf(gettext("Open a %s configuration XML file and click the button below to restore the configuration."), get_product_name());?><br><br>
+							<strong><span class="red"><?=gettext("Note");?>:</span></strong><br>
+							<?php echo sprintf(gettext("%s will reboot after restoring the configuration."), get_product_name());?><br><br>
+							<input name="conffile" type="file" class="formfld" id="conffile" size="40"><br><br>
+							<input name="Submit" type="submit" class="formbtn" id="restore" value="<?=gettext("Restore configuration");?>">
+			      </td>
+			    </tr>
+			  </table>
 			</td>
-    </tr>
-    <tr>
-      <td colspan="2" class="list" height="12"></td>
-    </tr>
-    <tr>
-      <td colspan="2" class="listtopic"><?=gettext("Restore configuration");?></td>
-    </tr>
-    <tr>
-      <td width="22%" valign="baseline" class="vncell">&nbsp;</td>
-      <td width="78%" class="vtable">
-				<?php echo sprintf(gettext("Open a %s configuration XML file and click the button below to restore the configuration."), get_product_name());?><br><br>
-				<strong><span class="red"><?=gettext("Note");?>:</span></strong><br>
-				<?php echo sprintf(gettext("%s will reboot after restoring the configuration."), get_product_name());?><br><br>
-				<input name="conffile" type="file" class="formfld" id="conffile" size="40"><br><br>
-				<input name="Submit" type="submit" class="formbtn" id="restore" value="<?=gettext("Restore configuration");?>">
-      </td>
-    </tr>
-  </table>
+		</tr>
+	</table>
 </form>
 <?php include("fend.inc");?>

@@ -169,151 +169,157 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="services_ftp.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-      <td colspan="2" valign="top" class="optsect_t">
-        <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr>
-            <td class="optsect_s"><strong><?=gettext("FTP Server");?></strong></td>
-				    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable"); ?></strong></td>
-          </tr>
-				</table>
-      </td>
-    </tr>
-     <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port"); ?></td>
-      <td width="78%" class="vtable">
-        <input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
-				<br><?=gettext("Default is 21");?>
-			</td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Number of clients"); ?></td>
-      <td width="78%" class="vtable">
-      	<input name="numberclients" type="text" class="formfld" id="numberclients" size="20" value="<?=htmlspecialchars($pconfig['numberclients']);?>">
-      	<br><?=gettext("Maximum number of simultaneous clients.");?>
-			</td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Max. conn. per IP"); ?></td>
-      <td width="78%" class="vtable">
-        <input name="maxconperip" type="text" class="formfld" id="maxconperip" size="20" value="<?=htmlspecialchars($pconfig['maxconperip']);?>">
-        <br><?=gettext("Maximum number of connections per IP address (0 = unlimited).");?>
-			</td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Timeout") ;?></td>
-      <td width="78%" class="vtable">
-        <input name="timeout" type="text" class="formfld" id="timeout" size="20" value="<?=htmlspecialchars($pconfig['timeout']);?>">
-        <br><?=gettext("Maximum idle time in minutes.");?>
-			</td>
-    </tr>
-    <tr>
-			<td width="22%" valign="top" class="vncell"><?=gettext("Permit root login");?></td>
-			<td width="78%" class="vtable">
-				<input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
-				<?=gettext("Specifies whether it is allowed to login as superuser (root) directly.");?>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+	    	<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr>
+			      <td colspan="2" valign="top" class="optsect_t">
+			        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+							  <tr>
+			            <td class="optsect_s"><strong><?=gettext("FTP Server");?></strong></td>
+							    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable"); ?></strong></td>
+			          </tr>
+							</table>
+			      </td>
+			    </tr>
+			     <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port"); ?></td>
+			      <td width="78%" class="vtable">
+			        <input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
+							<br><?=gettext("Default is 21");?>
+						</td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Number of clients"); ?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="numberclients" type="text" class="formfld" id="numberclients" size="20" value="<?=htmlspecialchars($pconfig['numberclients']);?>">
+			      	<br><?=gettext("Maximum number of simultaneous clients.");?>
+						</td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Max. conn. per IP"); ?></td>
+			      <td width="78%" class="vtable">
+			        <input name="maxconperip" type="text" class="formfld" id="maxconperip" size="20" value="<?=htmlspecialchars($pconfig['maxconperip']);?>">
+			        <br><?=gettext("Maximum number of connections per IP address (0 = unlimited).");?>
+						</td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Timeout") ;?></td>
+			      <td width="78%" class="vtable">
+			        <input name="timeout" type="text" class="formfld" id="timeout" size="20" value="<?=htmlspecialchars($pconfig['timeout']);?>">
+			        <br><?=gettext("Maximum idle time in minutes.");?>
+						</td>
+			    </tr>
+			    <tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Permit root login");?></td>
+						<td width="78%" class="vtable">
+							<input name="permitrootlogin" type="checkbox" id="permitrootlogin" value="yes" <?php if ($pconfig['permitrootlogin']) echo "checked"; ?>>
+							<?=gettext("Specifies whether it is allowed to login as superuser (root) directly.");?>
+						</td>
+					</tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Anonymous login");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="anonymous" type="checkbox" id="anonymous" value="yes" <?php if ($pconfig['anonymous']) echo "checked"; ?>>
+			        <?=gettext("Enable anonymous login.");?></td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Local User");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="localuser" type="checkbox" id="localuser" value="yes" <?php if ($pconfig['localuser']) echo "checked"; ?>>
+			        <?=gettext("Enable local user login.");?></td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Banner");?></td>
+			      <td width="78%" class="vtable">
+			        <textarea name="banner" cols="65" rows="7" id="banner" class="formpre"><?=htmlspecialchars($pconfig['banner']);?></textarea>
+			        <br>
+			        <?=gettext("Greeting banner displayed by FTP when a connection first comes in.");?>
+						</td>
+			    </tr>
+			    <tr>
+			      <td colspan="2" class="list" height="12"></td>
+			    </tr>
+					<tr>
+						<td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
+					</tr>
+					<tr id="filemask">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Create mask"); ?></td>
+						<td width="78%" class="vtable">
+							<input name="filemask" type="text" class="formfld" id="filemask" size="30" value="<?=htmlspecialchars($pconfig['filemask']);?>">
+							<br><?=gettext("Use this option to override the file creation mask (077 by default).");?>
+						</td>
+					</tr>
+					<tr id="directorymask">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Directory mask"); ?></td>
+						<td width="78%" class="vtable">
+							<input name="directorymask" type="text" class="formfld" id="directorymask" size="30" value="<?=htmlspecialchars($pconfig['directorymask']);?>">
+							<br><?=gettext("Use this option to override the directory creation mask (022 by default).");?>
+						</td>
+					</tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("FXP");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="fxp" type="checkbox" id="fxp" value="yes" <?php if ($pconfig['fxp']) echo "checked"; ?>>
+			        <?=gettext("Enable FXP protocol.");?><span class="vexpl"><br>
+			        <?=gettext("FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!).");?></span></td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("NAT mode");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="natmode" type="checkbox" id="natmode" value="yes" <?php if ($pconfig['natmode']) echo "checked"; ?>>
+			        <?=gettext("Force NAT mode.");?><span class="vexpl"><br>
+			        <?=gettext("Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying.");?></span></td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Keep all files");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="keepallfiles" type="checkbox" id="keepallfiles" value="yes" <?php if ($pconfig['keepallfiles']) echo "checked"; ?>>
+			        <?=gettext("Allow users to resume and upload files, but NOT to delete or rename them. Directories can be removed, but only if they are empty. However, overwriting existing files is still allowed.");?>
+			      </td>
+			    </tr>
+			    <tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("chroot everyone");?></td>
+						<td width="78%" class="vtable">
+							<input name="chrooteveryone" type="checkbox" id="chrooteveryone" value="yes" <?php if ($pconfig['chrooteveryone']) echo "checked"; ?>>
+							<?=gettext("chroot() everyone, but root.");?>
+						</td>
+					</tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Passive IP address"); ?></td>
+			      <td width="78%" class="vtable">
+			        <input name="pasv_address" type="text" class="formfld" id="pasv_address" size="20" value="<?=htmlspecialchars($pconfig['pasv_address']);?>">
+			        <br><?=gettext("Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the server is behind a masquerading (NAT) box that doesn't properly handle stateful FTP masquerading, put the ip address of that box here. If you have a dynamic IP address, you can put the public host name of your gateway, that will be resolved every time a new client will connect.");?>
+						</td>
+			  	</tr>
+			  	<tr>
+			      <td width="22%" valign="top" class="vncellbg"><?=gettext("pasv_min_port"); ?></td>
+			      <td width="78%" class="">
+			        <input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>">
+			      	<br><?=gettext("The minimum port to allocate for PASV style data connections (0 = use any port).");?>
+						</td>
+			  	</tr>
+			  	<tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("pasv_max_port"); ?></td>
+			      <td width="78%" class="vtable">
+			        <input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>">
+			      	<br><?=gettext("The maximum port to allocate for PASV style data connections (0 = use any port).");?>
+						</td>
+			  	</tr>
+			  	<tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+			      </td>
+			    </tr>
+			  </table>
 			</td>
 		</tr>
-    <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Anonymous login");?></td>
-      <td width="78%" class="vtable">
-        <input name="anonymous" type="checkbox" id="anonymous" value="yes" <?php if ($pconfig['anonymous']) echo "checked"; ?>>
-        <?=gettext("Enable anonymous login.");?></td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Local User");?></td>
-      <td width="78%" class="vtable">
-        <input name="localuser" type="checkbox" id="localuser" value="yes" <?php if ($pconfig['localuser']) echo "checked"; ?>>
-        <?=gettext("Enable local user login.");?></td>
-    </tr>
-		<tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Banner");?></td>
-      <td width="78%" class="vtable">
-        <textarea name="banner" cols="65" rows="7" id="banner" class="formpre"><?=htmlspecialchars($pconfig['banner']);?></textarea>
-        <br>
-        <?=gettext("Greeting banner displayed by FTP when a connection first comes in.");?>
-			</td>
-    </tr>
-    <tr>
-      <td colspan="2" class="list" height="12"></td>
-    </tr>
-		<tr>
-			<td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
-		</tr>
-		<tr id="filemask">
-			<td width="22%" valign="top" class="vncell"><?=gettext("Create mask"); ?></td>
-			<td width="78%" class="vtable">
-				<input name="filemask" type="text" class="formfld" id="filemask" size="30" value="<?=htmlspecialchars($pconfig['filemask']);?>">
-				<br><?=gettext("Use this option to override the file creation mask (077 by default).");?>
-			</td>
-		</tr>
-		<tr id="directorymask">
-			<td width="22%" valign="top" class="vncell"><?=gettext("Directory mask"); ?></td>
-			<td width="78%" class="vtable">
-				<input name="directorymask" type="text" class="formfld" id="directorymask" size="30" value="<?=htmlspecialchars($pconfig['directorymask']);?>">
-				<br><?=gettext("Use this option to override the directory creation mask (022 by default).");?>
-			</td>
-		</tr>
-    <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("FXP");?></td>
-      <td width="78%" class="vtable">
-        <input name="fxp" type="checkbox" id="fxp" value="yes" <?php if ($pconfig['fxp']) echo "checked"; ?>>
-        <?=gettext("Enable FXP protocol.");?><span class="vexpl"><br>
-        <?=gettext("FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!).");?></span></td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("NAT mode");?></td>
-      <td width="78%" class="vtable">
-        <input name="natmode" type="checkbox" id="natmode" value="yes" <?php if ($pconfig['natmode']) echo "checked"; ?>>
-        <?=gettext("Force NAT mode.");?><span class="vexpl"><br>
-        <?=gettext("Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying.");?></span></td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Keep all files");?></td>
-      <td width="78%" class="vtable">
-        <input name="keepallfiles" type="checkbox" id="keepallfiles" value="yes" <?php if ($pconfig['keepallfiles']) echo "checked"; ?>>
-        <?=gettext("Allow users to resume and upload files, but NOT to delete or rename them. Directories can be removed, but only if they are empty. However, overwriting existing files is still allowed.");?>
-      </td>
-    </tr>
-    <tr>
-			<td width="22%" valign="top" class="vncell"><?=gettext("chroot everyone");?></td>
-			<td width="78%" class="vtable">
-				<input name="chrooteveryone" type="checkbox" id="chrooteveryone" value="yes" <?php if ($pconfig['chrooteveryone']) echo "checked"; ?>>
-				<?=gettext("chroot() everyone, but root.");?>
-			</td>
-		</tr>
-    <tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Passive IP address"); ?></td>
-      <td width="78%" class="vtable">
-        <input name="pasv_address" type="text" class="formfld" id="pasv_address" size="20" value="<?=htmlspecialchars($pconfig['pasv_address']);?>">
-        <br><?=gettext("Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the server is behind a masquerading (NAT) box that doesn't properly handle stateful FTP masquerading, put the ip address of that box here. If you have a dynamic IP address, you can put the public host name of your gateway, that will be resolved every time a new client will connect.");?>
-			</td>
-  	</tr>
-  	<tr>
-      <td width="22%" valign="top" class="vncellbg"><?=gettext("pasv_min_port"); ?></td>
-      <td width="78%" class="">
-        <input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>">
-      	<br><?=gettext("The minimum port to allocate for PASV style data connections (0 = use any port).");?>
-			</td>
-  	</tr>
-  	<tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("pasv_max_port"); ?></td>
-      <td width="78%" class="vtable">
-        <input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>">
-      	<br><?=gettext("The maximum port to allocate for PASV style data connections (0 = use any port).");?>
-			</td>
-  	</tr>
-  	<tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-      </td>
-    </tr>
-  </table>
+	</table>
 </form>
 <script language="JavaScript">
 <!--

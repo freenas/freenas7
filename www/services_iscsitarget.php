@@ -102,132 +102,138 @@ if ($_GET['act'] == "del") {
 ?>
 <?php include("fbegin.inc");?>
 <form action="services_iscsitarget.php" method="post">
-  <?php if ($savemsg) print_info_box($savemsg);?>
-  <?php if (file_exists($d_iscsitargetdirty_path)): ?><p>
-  <?php print_info_box_np(gettext("The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
-  <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
-  <?php endif;?>
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-      <td colspan="2" valign="top" class="optsect_t">
-        <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr>
-            <td class="optsect_s"><strong><?=gettext("iSCSI Target");?></strong></td>
-				    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked";?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
-          </tr>
-				</table>
-      </td>
-    </tr>
-    <tr>
-    	<td width="22%" valign="top" class="vncell"><?=gettext("Extent");?></td>
-			<td width="78%" class="vtable">
-	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	        <tr>
-						<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
-						<td width="50%" class="listhdrr"><?=gettext("Path");?></td>
-						<td width="20%" class="listhdrr"><?=gettext("Size");?></td>
-						<td width="10%" class="list"></td>
-	        </tr>
-				  <?php $i = 0; foreach($a_iscsitarget_extent as $extent): ?>
-	        <tr>
-	          <td class="listlr"><?=htmlspecialchars($extent['name']);?>&nbsp;</td>
-						<td class="listr"><?php echo htmlspecialchars($extent['path']);?>&nbsp;</td>
-						<td class="listr"><?=htmlspecialchars($extent['size']);?> MB&nbsp;</td>
-	          <td valign="middle" nowrap class="list">
-	          	<a href="services_iscsitarget_extent_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" width="17" height="17" border="0"></a>
-	            <a href="services_iscsitarget.php?act=del&type=extent&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this extent?");?>')"><img src="x.gif" title="<?=gettext("Delete extent");?>" width="17" height="17" border="0"></a>
-	          </td>
-	        </tr>
-	        <?php $i++; endforeach;?>
-	        <tr>
-	          <td class="list" colspan="3"></td>
-	          <td class="list"><a href="services_iscsitarget_extent_edit.php"><img src="plus.gif" title="<?=gettext("Add extent");?>" width="17" height="17" border="0"></a></td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+			  <?php if ($savemsg) print_info_box($savemsg);?>
+			  <?php if (file_exists($d_iscsitargetdirty_path)): ?><p>
+			  <?php print_info_box_np(gettext("The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+			  <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+			  <?php endif;?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr>
+			      <td colspan="2" valign="top" class="optsect_t">
+			        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+							  <tr>
+			            <td class="optsect_s"><strong><?=gettext("iSCSI Target");?></strong></td>
+							    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked";?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
+			          </tr>
+							</table>
+			      </td>
 			    </tr>
-				</table>
-				<?=gettext("Extents must be defined before they can be used, and extents cannot be used more than once.");?>
-			</td>
-		</tr>
-    <tr>
-    	<td width="22%" valign="top" class="vncell"><?=gettext("Device");?></td>
-			<td width="78%" class="vtable">
-	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	        <tr>
-						<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
-						<td width="5%" class="listhdrr"><?=gettext("Type");?></td>
-						<td width="65%" class="listhdrr"><?=gettext("Storage");?></td>
-						<td width="10%" class="list"></td>
-	        </tr>
-				  <?php $i = 0; foreach($a_iscsitarget_device as $device):?>
-	        <tr>
-	          <td class="listlr"><?=htmlspecialchars($device['name']);?>&nbsp;</td>
-	          <td class="listr"><?=htmlspecialchars($device['type']);?>&nbsp;</td>
-						<td class="listr">
-							<?php foreach($device['storage'] as $storage):?>
-							<?=htmlspecialchars($storage);?>&nbsp;
-							<?php endforeach;?>
-							&nbsp;
+			    <tr>
+			    	<td width="22%" valign="top" class="vncell"><?=gettext("Extent");?></td>
+						<td width="78%" class="vtable">
+				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+				        <tr>
+									<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
+									<td width="50%" class="listhdrr"><?=gettext("Path");?></td>
+									<td width="20%" class="listhdrr"><?=gettext("Size");?></td>
+									<td width="10%" class="list"></td>
+				        </tr>
+							  <?php $i = 0; foreach($a_iscsitarget_extent as $extent): ?>
+				        <tr>
+				          <td class="listlr"><?=htmlspecialchars($extent['name']);?>&nbsp;</td>
+									<td class="listr"><?php echo htmlspecialchars($extent['path']);?>&nbsp;</td>
+									<td class="listr"><?=htmlspecialchars($extent['size']);?> MB&nbsp;</td>
+				          <td valign="middle" nowrap class="list">
+				          	<a href="services_iscsitarget_extent_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit extent");?>" width="17" height="17" border="0"></a>
+				            <a href="services_iscsitarget.php?act=del&type=extent&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this extent?");?>')"><img src="x.gif" title="<?=gettext("Delete extent");?>" width="17" height="17" border="0"></a>
+				          </td>
+				        </tr>
+				        <?php $i++; endforeach;?>
+				        <tr>
+				          <td class="list" colspan="3"></td>
+				          <td class="list"><a href="services_iscsitarget_extent_edit.php"><img src="plus.gif" title="<?=gettext("Add extent");?>" width="17" height="17" border="0"></a></td>
+						    </tr>
+							</table>
+							<?=gettext("Extents must be defined before they can be used, and extents cannot be used more than once.");?>
 						</td>
-	          <td valign="middle" nowrap class="list">
-	          	<a href="services_iscsitarget_device_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit device");?>" width="17" height="17" border="0"></a>
-	            <a href="services_iscsitarget.php?act=del&type=device&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this device?");?>')"><img src="x.gif" title="<?=gettext("Delete device");?>" width="17" height="17" border="0"></a>
-	          </td>
-	        </tr>
-	        <?php $i++; endforeach;?>
-	        <tr>
-	          <td class="list" colspan="3"></td>
-	          <td class="list"><a href="services_iscsitarget_device_edit.php"><img src="plus.gif" title="<?=gettext("Add device");?>" width="17" height="17" border="0"></a></td>
-			    </tr>
-				</table>
-				<?=gettext("Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once.");?>
-			</td>
-		</tr>
-    <tr>
-    	<td width="22%" valign="top" class="vncell"><?=gettext("Target");?></td>
-			<td width="78%" class="vtable">
-	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	        <tr>
-						<td width="40%" class="listhdrr"><?=gettext("Name");?></td>
-						<td width="5%" class="listhdrr"><?=gettext("Flags");?></td>
-						<td width="25%" class="listhdrr"><?=gettext("Storage");?></td>
-						<td width="20%" class="listhdrr"><?=gettext("Network");?></td>
-						<td width="10%" class="list"></td>
-	        </tr>
-				  <?php $i = 0; foreach($a_iscsitarget_target as $target): ?>
-	        <tr>
-						<td class="listlr">iqn.1994-04.org.netbsd.iscsi-target:<?=htmlspecialchars($target['name']);?>&nbsp;</td>
-						<td class="listr"><?=htmlspecialchars($target['flags']);?>&nbsp;</td>
-						<td class="listr">
-							<?php foreach($target['storage'] as $storage):?>
-							<?=htmlspecialchars($storage);?>&nbsp;
-							<?php endforeach;?>
-							&nbsp;
+					</tr>
+			    <tr>
+			    	<td width="22%" valign="top" class="vncell"><?=gettext("Device");?></td>
+						<td width="78%" class="vtable">
+				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+				        <tr>
+									<td width="20%" class="listhdrr"><?=gettext("Name");?></td>
+									<td width="5%" class="listhdrr"><?=gettext("Type");?></td>
+									<td width="65%" class="listhdrr"><?=gettext("Storage");?></td>
+									<td width="10%" class="list"></td>
+				        </tr>
+							  <?php $i = 0; foreach($a_iscsitarget_device as $device):?>
+				        <tr>
+				          <td class="listlr"><?=htmlspecialchars($device['name']);?>&nbsp;</td>
+				          <td class="listr"><?=htmlspecialchars($device['type']);?>&nbsp;</td>
+									<td class="listr">
+										<?php foreach($device['storage'] as $storage):?>
+										<?=htmlspecialchars($storage);?>&nbsp;
+										<?php endforeach;?>
+										&nbsp;
+									</td>
+				          <td valign="middle" nowrap class="list">
+				          	<a href="services_iscsitarget_device_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit device");?>" width="17" height="17" border="0"></a>
+				            <a href="services_iscsitarget.php?act=del&type=device&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this device?");?>')"><img src="x.gif" title="<?=gettext("Delete device");?>" width="17" height="17" border="0"></a>
+				          </td>
+				        </tr>
+				        <?php $i++; endforeach;?>
+				        <tr>
+				          <td class="list" colspan="3"></td>
+				          <td class="list"><a href="services_iscsitarget_device_edit.php"><img src="plus.gif" title="<?=gettext("Add device");?>" width="17" height="17" border="0"></a></td>
+						    </tr>
+							</table>
+							<?=gettext("Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once.");?>
 						</td>
-	          <td class="listr"><?=htmlspecialchars($target['ipaddr'])."/".htmlspecialchars($target['subnet']);?>&nbsp;</td>
-	          <td valign="middle" nowrap class="list">
-	          	<a href="services_iscsitarget_target_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit target");?>" width="17" height="17" border="0"></a>
-	            <a href="services_iscsitarget.php?act=del&type=target&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this target?");?>')"><img src="x.gif" title="<?=gettext("Delete target");?>" width="17" height="17" border="0"></a>
-	          </td>
-	        </tr>
-	        <?php $i++; endforeach;?>
-	        <tr>
-	          <td class="list" colspan="4"></td>
-	          <td class="list"><a href="services_iscsitarget_target_edit.php"><img src="plus.gif" title="<?=gettext("Add target");?>" width="17" height="17" border="0"></a></td>
+					</tr>
+			    <tr>
+			    	<td width="22%" valign="top" class="vncell"><?=gettext("Target");?></td>
+						<td width="78%" class="vtable">
+				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+				        <tr>
+									<td width="40%" class="listhdrr"><?=gettext("Name");?></td>
+									<td width="5%" class="listhdrr"><?=gettext("Flags");?></td>
+									<td width="25%" class="listhdrr"><?=gettext("Storage");?></td>
+									<td width="20%" class="listhdrr"><?=gettext("Network");?></td>
+									<td width="10%" class="list"></td>
+				        </tr>
+							  <?php $i = 0; foreach($a_iscsitarget_target as $target): ?>
+				        <tr>
+									<td class="listlr">iqn.1994-04.org.netbsd.iscsi-target:<?=htmlspecialchars($target['name']);?>&nbsp;</td>
+									<td class="listr"><?=htmlspecialchars($target['flags']);?>&nbsp;</td>
+									<td class="listr">
+										<?php foreach($target['storage'] as $storage):?>
+										<?=htmlspecialchars($storage);?>&nbsp;
+										<?php endforeach;?>
+										&nbsp;
+									</td>
+				          <td class="listr"><?=htmlspecialchars($target['ipaddr'])."/".htmlspecialchars($target['subnet']);?>&nbsp;</td>
+				          <td valign="middle" nowrap class="list">
+				          	<a href="services_iscsitarget_target_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit target");?>" width="17" height="17" border="0"></a>
+				            <a href="services_iscsitarget.php?act=del&type=target&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this target?");?>')"><img src="x.gif" title="<?=gettext("Delete target");?>" width="17" height="17" border="0"></a>
+				          </td>
+				        </tr>
+				        <?php $i++; endforeach;?>
+				        <tr>
+				          <td class="list" colspan="4"></td>
+				          <td class="list"><a href="services_iscsitarget_target_edit.php"><img src="plus.gif" title="<?=gettext("Add target");?>" width="17" height="17" border="0"></a></td>
+						    </tr>
+							</table>
+							<?=gettext("At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents.");?>
+						</td>
+					</tr>
+					<tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+			      </td>
 			    </tr>
+					<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+							<span class="red"><strong><?=gettext("Note");?>:</strong></span><br>
+							<?=gettext("You must have a minimum of 256MB of RAM for using iSCSI target.");?>
+						</td>
+					</tr>
 				</table>
-				<?=gettext("At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents.");?>
-			</td>
-		</tr>
-		<tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-      </td>
-    </tr>
-		<tr>
-			<td width="22%" valign="top">&nbsp;</td>
-			<td width="78%">
-				<span class="red"><strong><?=gettext("Note");?>:</strong></span><br>
-				<?=gettext("You must have a minimum of 256MB of RAM for using iSCSI target.");?>
 			</td>
 		</tr>
 	</table>

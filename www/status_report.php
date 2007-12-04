@@ -200,257 +200,263 @@ function auth_change() {
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors);?>
-<?php if ($savemsg) print_info_box($savemsg);?>
-<?php if ($failmsg) print_error_box($failmsg);?>
 <form action="status_report.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-      <td colspan="2" valign="top" class="optsect_t">
-  		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-  		  <tr>
-          <td class="optsect_s"><strong><?=gettext("Email report");?></strong></td>
-  			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
-        </tr>
-  		  </table>
-      </td>
-    </tr>
-    <tr>
-	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Outgoing mail server");?></td>
-      <td width="78%" class="vtable">
-        <input name="server" type="text" class="formfld" id="server" size="40" value="<?=htmlspecialchars($pconfig['server']);?>"><br>
-        <?=gettext("Outgoing SMTP mail server address, e.g. smtp.mycorp.com.");?>
-      </td>
-		</tr>
-		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
-      <td width="78%" class="vtable">
-        <input name="port" type="text" class="formfld" id="port" size="10" value="<?=htmlspecialchars($pconfig['port']);?>"><br>
-        <?=gettext("The default SMTP mail server port, e.g. 25 or 587.");?>
-      </td>
-    </tr>
-		<tr>
-      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
-      <td width="78%" class="vtable">
-        <input name="auth" type="checkbox" id="auth" value="yes" <?php if ($pconfig['auth']) echo "checked"; ?> onClick="auth_change()"><br>
-        <?=gettext("Use SMTP authentication.");?>
-			</td>
-    </tr>
-		<tr id="username_tr">
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
-      <td width="78%" class="vtable">
-        <input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
-      </td>
-    </tr>
-    <tr id="password_tr">
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
-      <td width="78%" class="vtable">
-        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
-        <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
-      </td>
-		</tr>
-		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("From email");?></td>
-			<td width="78%" class="vtable">
-				<input name="from" type="text" class="formfld" id="from" size="40" value="<?=htmlspecialchars($pconfig['from']);?>"><br>
-				<?=gettext("Your own email address.");?>
-			</td>
-		</tr>
-		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("To email");?></td>
-			<td width="78%" class="vtable">
-				<input name="to" type="text" class="formfld" id="to" size="40" value="<?=htmlspecialchars($pconfig['to']);?>"><br>
-				<?=gettext("Destination email address.");?>
-			</td>
-		</tr>
-		<tr>
-	    <td width="22%" valign="top" class="vncell"><?=gettext("Subject");?></td>
-      <td width="78%" class="vtable">
-        <input name="subject" type="text" class="formfld" id="subject" size="60" value="<?=htmlspecialchars($pconfig['subject']);?>"><br>
-        <?=gettext("The subject of the email.");?>
-      </td>
-		</tr>
-		<tr>
-	    <td width="22%" valign="top" class="vncell"><?=gettext("Reports");?></td>
-      <td width="78%" class="vtable">
-      	<table>
-      		<tr>
-						<td><input name="report[]" type="checkbox" class="formfld" id="report_systeminfo" value="systeminfo" <?php if (is_array($pconfig['report']) && in_array("systeminfo", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System info");?></td>
-						<td><input name="report[]" type="checkbox" class="formfld" id="report_dmesg" value="dmesg" <?php if (is_array($pconfig['report']) && in_array("dmesg", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System message buffer");?></td>
-						<td><input name="report[]" type="checkbox" class="formfld" id="report_systemlog" value="systemlog" <?php if (is_array($pconfig['report']) && in_array("systemlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System log");?></td>
-						<td><input name="report[]" type="checkbox" class="formfld" id="report_ftplog" value="ftplog" <?php if (is_array($pconfig['report']) && in_array("ftplog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("FTP log");?></td>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+    		<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
+				<?php if ($failmsg) print_error_box($failmsg);?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr>
+			      <td colspan="2" valign="top" class="optsect_t">
+			  		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+			  		  <tr>
+			          <td class="optsect_s"><strong><?=gettext("Email report");?></strong></td>
+			  			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
+			        </tr>
+			  		  </table>
+			      </td>
+			    </tr>
+			    <tr>
+				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Outgoing mail server");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="server" type="text" class="formfld" id="server" size="40" value="<?=htmlspecialchars($pconfig['server']);?>"><br>
+			        <?=gettext("Outgoing SMTP mail server address, e.g. smtp.mycorp.com.");?>
+			      </td>
 					</tr>
 					<tr>
-						<td><input name="report[]" type="checkbox" class="formfld" id="report_rsynclog" value="rsynclog" <?php if (is_array($pconfig['report']) && in_array("rsynclog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("RSYNC log");?></td>
-						<td><input name="report[]" type="checkbox" class="formfld" id="report_sshdlog" value="sshdlog" <?php if (is_array($pconfig['report']) && in_array("sshdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("SSHD log");?></td>
-						<td><input name="report[]" type="checkbox" class="formfld" id="report_smartdlog" value="smartdlog" <?php if (is_array($pconfig['report']) && in_array("smartdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("S.M.A.R.T. log");?></td>
-						<td><input name="report[]" type="checkbox" class="formfld" id="report_daemonlog" value="daemonlog" <?php if (is_array($pconfig['report']) && in_array("daemonlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("Daemon log");?></td>
-					</tr>
-        </table>
-      </td>
-		</tr>
-		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Polling time");?></td>
-			<td width="78%" class="vtable">
-				<table width=100% border cellpadding="6" cellspacing="0">
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="port" type="text" class="formfld" id="port" size="10" value="<?=htmlspecialchars($pconfig['port']);?>"><br>
+			        <?=gettext("The default SMTP mail server port, e.g. 25 or 587.");?>
+			      </td>
+			    </tr>
 					<tr>
-						<td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>
-						<td class="optsect_t"><b class="optsect_s"><?=gettext("hours");?></b></td>
-						<td class="optsect_t"><b class="optsect_s"><?=gettext("days");?></b></td>
-						<td class="optsect_t"><b class="optsect_s"><?=gettext("months");?></b></td>
-						<td class="optsect_t"><b class="optsect_s"><?=gettext("week days");?></b></td>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="auth" type="checkbox" id="auth" value="yes" <?php if ($pconfig['auth']) echo "checked"; ?> onClick="auth_change()"><br>
+			        <?=gettext("Use SMTP authentication.");?>
+						</td>
+			    </tr>
+					<tr id="username_tr">
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
+			      </td>
+			    </tr>
+			    <tr id="password_tr">
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
+			        <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
+			      </td>
 					</tr>
-					<tr bgcolor=#cccccc>
-						<td valign=top>
-							<input type="radio" name="all_mins" id="all_mins1" value="1" <?php if (1 == $pconfig['all_mins']) echo "checked";?>>
-							<?=gettext("All");?><br>
-							<input type="radio" name="all_mins" id="all_mins2" value="0" <?php if (1 != $pconfig['all_mins']) echo "checked";?>>
-							<?=gettext("Selected");?> ..<br>
-							<table>
-								<tr>
-									<td valign=top>
-										<select multiple size="12" name="minute[]" id="minutes1">
-											<?php for ($i = 0; $i <= 11; $i++):?>
-											<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-											<?php endfor;?>
-										</select>
-									</td>
-									<td valign=top>
-										<select multiple size="12" name="minute[]" id="minutes2">
-											<?php for ($i = 12; $i <= 23; $i++):?>
-											<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-											<?php endfor;?>
-										</select>
-									</td>
-									<td valign=top>
-										<select multiple size="12" name="minute[]" id="minutes3">
-											<?php for ($i = 24; $i <= 35; $i++):?>
-											<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-											<?php endfor;?>
-										</select>
-									</td>
-									<td valign=top>
-										<select multiple size="12" name="minute[]" id="minutes4">
-											<?php for ($i = 36; $i <= 47; $i++):?>
-											<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-											<?php endfor;?>
-										</select>
-									</td>
-									<td valign=top>
-										<select multiple size="12" name="minute[]" id="minutes5">
-											<?php for ($i = 48; $i <= 59; $i++):?>
-											<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-											<?php endfor;?>
-										</select>
-									</td>
-								</tr>
-							</table>
-							<br>
-						</td>
-						<td valign=top>
-							<input type="radio" name="all_hours" id="all_hours1" value="1" <?php if (1 == $pconfig['all_hours']) echo "checked";?>>
-							<?=gettext("All");?><br>
-							<input type="radio" name="all_hours" id="all_hours2" value="0" <?php if (1 != $pconfig['all_hours']) echo "checked";?>>
-							<?=gettext("Selected");?> ..<br>
-							<table>
-								<tr>
-									<td valign=top>
-										<select multiple size="12" name="hour[]" id="hours1">
-											<?php for ($i = 0; $i <= 11; $i++):?>
-											<option value="<?=$i;?>" <?php if (is_array($pconfig['hour']) && in_array("$i", $pconfig['hour'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-											<?php endfor;?>
-										</select>
-									</td>
-									<td valign=top>
-										<select multiple size="12" name="hour[]" id="hours2">
-											<?php for ($i = 12; $i <= 23; $i++):?>
-											<option value="<?=$i;?>" <?php if (is_array($pconfig['hour']) && in_array("$i", $pconfig['hour'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-											<?php endfor;?>
-										</select>
-									</td>
-								</tr>
-							</table>
-						</td>
-						<td valign=top>
-							<input type="radio" name="all_days" id="all_days1" value="1" <?php if (1 == $pconfig['all_days']) echo "checked";?>>
-							<?=gettext("All");?><br>
-							<input type="radio" name="all_days" id="all_days2" value="0" <?php if (1 != $pconfig['all_days']) echo "checked";?>>
-							<?=gettext("Selected");?> ..<br>
-							<table>
-								<tr>
-									<td valign=top>
-										<select multiple size="12" name="day[]" id="days1">
-											<?php for ($i = 0; $i <= 12; $i++):?>
-											<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array("$i", $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-											<?php endfor;?>
-										</select>
-									</td>
-									<td valign=top>
-										<select multiple size="12" name="day[]" id="days2">
-											<?php for ($i = 13; $i <= 24; $i++):?>
-											<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array("$i", $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-											<?php endfor;?>
-										</select>
-									</td>
-									<td valign=top>
-										<select multiple size="7" name="day[]" id="days3">
-											<?php for ($i = 25; $i <= 31; $i++):?>
-											<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array("$i", $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-											<?php endfor;?>
-										</select>
-									</td>
-								</tr>
-							</table>
-						</td>
-						<td valign=top>
-							<input type="radio" name="all_months" id="all_months1" value="1" <?php if (1 == $pconfig['all_months']) echo "checked";?>>
-							<?=gettext("All");?><br>
-							<input type="radio" name="all_months" id="all_months2" value="0" <?php if (1 != $pconfig['all_months']) echo "checked";?>>
-							<?=gettext("Selected");?> ..<br>
-							<table>
-								<tr>
-									<td valign=top>
-										<select multiple size="12" name="month[]" id="months">
-											<?php $i = 1; foreach ($a_months as $month):?>
-											<option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array("$i", $pconfig['month'])) echo "selected";?>><?=htmlspecialchars($month);?></option>
-											<?php $i++; endforeach;?>
-										</select>
-									</td>
-								</tr>
-							</table>
-						</td>
-						<td valign=top>
-							<input type="radio" name="all_weekdays" id="all_weekdays1" value="1" <?php if (1 == $pconfig['all_weekdays']) echo "checked";?>>
-							<?=gettext("All");?><br>
-							<input type="radio" name="all_weekdays" id="all_weekdays2" value="0" <?php if (1 != $pconfig['all_weekdays']) echo "checked";?>>
-							<?=gettext("Selected");?> ..<br>
-							<table>
-								<tr>
-									<td valign=top>
-										<select multiple size="7" name="weekday[]" id="weekdays">
-											<?php $i = 0; foreach ($a_weekdays as $day):?>
-											<option value="<?=$i;?>" <?php if (isset($pconfig['weekday']) && in_array("$i", $pconfig['weekday'])) echo "selected";?>><?=$day;?></option>
-											<?php $i++; endforeach;?>
-										</select>
-									</td>
-								</tr>
-							</table>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("From email");?></td>
+						<td width="78%" class="vtable">
+							<input name="from" type="text" class="formfld" id="from" size="40" value="<?=htmlspecialchars($pconfig['from']);?>"><br>
+							<?=gettext("Your own email address.");?>
 						</td>
 					</tr>
-					<tr bgcolor=#cccccc>
-						<td colspan=5>
-							<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.");?>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("To email");?></td>
+						<td width="78%" class="vtable">
+							<input name="to" type="text" class="formfld" id="to" size="40" value="<?=htmlspecialchars($pconfig['to']);?>"><br>
+							<?=gettext("Destination email address.");?>
+						</td>
+					</tr>
+					<tr>
+				    <td width="22%" valign="top" class="vncell"><?=gettext("Subject");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="subject" type="text" class="formfld" id="subject" size="60" value="<?=htmlspecialchars($pconfig['subject']);?>"><br>
+			        <?=gettext("The subject of the email.");?>
+			      </td>
+					</tr>
+					<tr>
+				    <td width="22%" valign="top" class="vncell"><?=gettext("Reports");?></td>
+			      <td width="78%" class="vtable">
+			      	<table>
+			      		<tr>
+									<td><input name="report[]" type="checkbox" class="formfld" id="report_systeminfo" value="systeminfo" <?php if (is_array($pconfig['report']) && in_array("systeminfo", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System info");?></td>
+									<td><input name="report[]" type="checkbox" class="formfld" id="report_dmesg" value="dmesg" <?php if (is_array($pconfig['report']) && in_array("dmesg", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System message buffer");?></td>
+									<td><input name="report[]" type="checkbox" class="formfld" id="report_systemlog" value="systemlog" <?php if (is_array($pconfig['report']) && in_array("systemlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("System log");?></td>
+									<td><input name="report[]" type="checkbox" class="formfld" id="report_ftplog" value="ftplog" <?php if (is_array($pconfig['report']) && in_array("ftplog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("FTP log");?></td>
+								</tr>
+								<tr>
+									<td><input name="report[]" type="checkbox" class="formfld" id="report_rsynclog" value="rsynclog" <?php if (is_array($pconfig['report']) && in_array("rsynclog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("RSYNC log");?></td>
+									<td><input name="report[]" type="checkbox" class="formfld" id="report_sshdlog" value="sshdlog" <?php if (is_array($pconfig['report']) && in_array("sshdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("SSHD log");?></td>
+									<td><input name="report[]" type="checkbox" class="formfld" id="report_smartdlog" value="smartdlog" <?php if (is_array($pconfig['report']) && in_array("smartdlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("S.M.A.R.T. log");?></td>
+									<td><input name="report[]" type="checkbox" class="formfld" id="report_daemonlog" value="daemonlog" <?php if (is_array($pconfig['report']) && in_array("daemonlog", $pconfig['report'])):?>checked<?php endif;?>><?=gettext("Daemon log");?></td>
+								</tr>
+			        </table>
+			      </td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Polling time");?></td>
+						<td width="78%" class="vtable">
+							<table width=100% border cellpadding="6" cellspacing="0">
+								<tr>
+									<td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>
+									<td class="optsect_t"><b class="optsect_s"><?=gettext("hours");?></b></td>
+									<td class="optsect_t"><b class="optsect_s"><?=gettext("days");?></b></td>
+									<td class="optsect_t"><b class="optsect_s"><?=gettext("months");?></b></td>
+									<td class="optsect_t"><b class="optsect_s"><?=gettext("week days");?></b></td>
+								</tr>
+								<tr bgcolor=#cccccc>
+									<td valign=top>
+										<input type="radio" name="all_mins" id="all_mins1" value="1" <?php if (1 == $pconfig['all_mins']) echo "checked";?>>
+										<?=gettext("All");?><br>
+										<input type="radio" name="all_mins" id="all_mins2" value="0" <?php if (1 != $pconfig['all_mins']) echo "checked";?>>
+										<?=gettext("Selected");?> ..<br>
+										<table>
+											<tr>
+												<td valign=top>
+													<select multiple size="12" name="minute[]" id="minutes1">
+														<?php for ($i = 0; $i <= 11; $i++):?>
+														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+														<?php endfor;?>
+													</select>
+												</td>
+												<td valign=top>
+													<select multiple size="12" name="minute[]" id="minutes2">
+														<?php for ($i = 12; $i <= 23; $i++):?>
+														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+														<?php endfor;?>
+													</select>
+												</td>
+												<td valign=top>
+													<select multiple size="12" name="minute[]" id="minutes3">
+														<?php for ($i = 24; $i <= 35; $i++):?>
+														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+														<?php endfor;?>
+													</select>
+												</td>
+												<td valign=top>
+													<select multiple size="12" name="minute[]" id="minutes4">
+														<?php for ($i = 36; $i <= 47; $i++):?>
+														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+														<?php endfor;?>
+													</select>
+												</td>
+												<td valign=top>
+													<select multiple size="12" name="minute[]" id="minutes5">
+														<?php for ($i = 48; $i <= 59; $i++):?>
+														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+														<?php endfor;?>
+													</select>
+												</td>
+											</tr>
+										</table>
+										<br>
+									</td>
+									<td valign=top>
+										<input type="radio" name="all_hours" id="all_hours1" value="1" <?php if (1 == $pconfig['all_hours']) echo "checked";?>>
+										<?=gettext("All");?><br>
+										<input type="radio" name="all_hours" id="all_hours2" value="0" <?php if (1 != $pconfig['all_hours']) echo "checked";?>>
+										<?=gettext("Selected");?> ..<br>
+										<table>
+											<tr>
+												<td valign=top>
+													<select multiple size="12" name="hour[]" id="hours1">
+														<?php for ($i = 0; $i <= 11; $i++):?>
+														<option value="<?=$i;?>" <?php if (is_array($pconfig['hour']) && in_array("$i", $pconfig['hour'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+														<?php endfor;?>
+													</select>
+												</td>
+												<td valign=top>
+													<select multiple size="12" name="hour[]" id="hours2">
+														<?php for ($i = 12; $i <= 23; $i++):?>
+														<option value="<?=$i;?>" <?php if (is_array($pconfig['hour']) && in_array("$i", $pconfig['hour'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+														<?php endfor;?>
+													</select>
+												</td>
+											</tr>
+										</table>
+									</td>
+									<td valign=top>
+										<input type="radio" name="all_days" id="all_days1" value="1" <?php if (1 == $pconfig['all_days']) echo "checked";?>>
+										<?=gettext("All");?><br>
+										<input type="radio" name="all_days" id="all_days2" value="0" <?php if (1 != $pconfig['all_days']) echo "checked";?>>
+										<?=gettext("Selected");?> ..<br>
+										<table>
+											<tr>
+												<td valign=top>
+													<select multiple size="12" name="day[]" id="days1">
+														<?php for ($i = 0; $i <= 12; $i++):?>
+														<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array("$i", $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+														<?php endfor;?>
+													</select>
+												</td>
+												<td valign=top>
+													<select multiple size="12" name="day[]" id="days2">
+														<?php for ($i = 13; $i <= 24; $i++):?>
+														<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array("$i", $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+														<?php endfor;?>
+													</select>
+												</td>
+												<td valign=top>
+													<select multiple size="7" name="day[]" id="days3">
+														<?php for ($i = 25; $i <= 31; $i++):?>
+														<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array("$i", $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
+														<?php endfor;?>
+													</select>
+												</td>
+											</tr>
+										</table>
+									</td>
+									<td valign=top>
+										<input type="radio" name="all_months" id="all_months1" value="1" <?php if (1 == $pconfig['all_months']) echo "checked";?>>
+										<?=gettext("All");?><br>
+										<input type="radio" name="all_months" id="all_months2" value="0" <?php if (1 != $pconfig['all_months']) echo "checked";?>>
+										<?=gettext("Selected");?> ..<br>
+										<table>
+											<tr>
+												<td valign=top>
+													<select multiple size="12" name="month[]" id="months">
+														<?php $i = 1; foreach ($a_months as $month):?>
+														<option value="<?=$i;?>" <?php if (isset($pconfig['month']) && in_array("$i", $pconfig['month'])) echo "selected";?>><?=htmlspecialchars($month);?></option>
+														<?php $i++; endforeach;?>
+													</select>
+												</td>
+											</tr>
+										</table>
+									</td>
+									<td valign=top>
+										<input type="radio" name="all_weekdays" id="all_weekdays1" value="1" <?php if (1 == $pconfig['all_weekdays']) echo "checked";?>>
+										<?=gettext("All");?><br>
+										<input type="radio" name="all_weekdays" id="all_weekdays2" value="0" <?php if (1 != $pconfig['all_weekdays']) echo "checked";?>>
+										<?=gettext("Selected");?> ..<br>
+										<table>
+											<tr>
+												<td valign=top>
+													<select multiple size="7" name="weekday[]" id="weekdays">
+														<?php $i = 0; foreach ($a_weekdays as $day):?>
+														<option value="<?=$i;?>" <?php if (isset($pconfig['weekday']) && in_array("$i", $pconfig['weekday'])) echo "selected";?>><?=$day;?></option>
+														<?php $i++; endforeach;?>
+													</select>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+								<tr bgcolor=#cccccc>
+									<td colspan=5>
+										<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.");?>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+							&nbsp;
+							<input name="Submit" id="sendnow" type="submit" class="formbtn" value="<?=gettext("Send now");?>">
 						</td>
 					</tr>
 				</table>
-			</td>
-		</tr>
-		<tr>
-			<td width="22%" valign="top">&nbsp;</td>
-			<td width="78%">
-				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-				&nbsp;
-				<input name="Submit" id="sendnow" type="submit" class="formbtn" value="<?=gettext("Send now");?>">
 			</td>
 		</tr>
 	</table>

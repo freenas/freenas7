@@ -64,34 +64,40 @@ function get_disk_temp($diskname) {
 	return $temperature;
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="5%" class="listhdrr"><?=gettext("Disk");?></td>
-    <td width="5%" class="listhdrr"><?=gettext("Size");?></td>
-    <td width="60%" class="listhdrr"><?=gettext("Description");?></td>
-    <td width="10%" class="listhdrr"><?=gettext("Temperature");?></td>
-    <td width="10%" class="listhdrr"><?=gettext("Status");?></td>
-	</tr>
-	<?php foreach ($a_disk_conf as $disk): ?>
-	<tr>
-		<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
-		<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
-		<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
-		<td class="listr"><?php echo get_disk_temp($disk);?>&nbsp;</td>
-		<td class="listbg"><?=(0 == disks_exists($disk['devicespecialfile'])) ? gettext("ONLINE") : gettext("MISSING");?>&nbsp;</td>
-	</tr>
-	<?php endforeach; ?>
-  <?php if (isset($raidstatus)): ?>
-	<?php foreach ($raidstatus as $diskk => $diskv): ?>
-	<tr>
-		<td class="listlr"><?=htmlspecialchars($diskk);?></td>
-		<td class="listr"><?=htmlspecialchars($diskv['size']);?></td>
-		<td class="listr"><?=htmlspecialchars(gettext("Software RAID"));?>&nbsp;</td>
-		<td class="listr"><?php echo get_disk_temp($disk);?>&nbsp;</td>
-		<td class="listbg"><?=htmlspecialchars($diskv['state']);?>&nbsp;</td>
-	</tr>
-	<?php endforeach; ?>
-	<?php endif; ?>
-</table>
-<?php include("fend.inc"); ?>
+    <td class="tabcont">
+			<table width="100%" border="0" cellpadding="0" cellspacing="0">
+			  <tr>
+			    <td width="5%" class="listhdrr"><?=gettext("Disk");?></td>
+			    <td width="5%" class="listhdrr"><?=gettext("Size");?></td>
+			    <td width="60%" class="listhdrr"><?=gettext("Description");?></td>
+			    <td width="10%" class="listhdrr"><?=gettext("Temperature");?></td>
+			    <td width="10%" class="listhdrr"><?=gettext("Status");?></td>
+				</tr>
+				<?php foreach ($a_disk_conf as $disk): ?>
+				<tr>
+					<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
+					<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
+					<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
+					<td class="listr"><?php echo get_disk_temp($disk);?>&nbsp;</td>
+					<td class="listbg"><?=(0 == disks_exists($disk['devicespecialfile'])) ? gettext("ONLINE") : gettext("MISSING");?>&nbsp;</td>
+				</tr>
+				<?php endforeach; ?>
+			  <?php if (isset($raidstatus)): ?>
+				<?php foreach ($raidstatus as $diskk => $diskv): ?>
+				<tr>
+					<td class="listlr"><?=htmlspecialchars($diskk);?></td>
+					<td class="listr"><?=htmlspecialchars($diskv['size']);?></td>
+					<td class="listr"><?=htmlspecialchars(gettext("Software RAID"));?>&nbsp;</td>
+					<td class="listr"><?php echo get_disk_temp($disk);?>&nbsp;</td>
+					<td class="listbg"><?=htmlspecialchars($diskv['state']);?>&nbsp;</td>
+				</tr>
+				<?php endforeach; ?>
+				<?php endif; ?>
+			</table>
+			</td>
+		</tr>
+	</table>
+<?php include("fend.inc");?>

@@ -124,70 +124,76 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="access_ad.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-      <td colspan="2" valign="top" class="optsect_t">
-			  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr>
-						<td class="optsect_s"><strong><?=gettext("Active Directory");?></strong></td>
-				  	<td align="right" class="optsect_s">
-							<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+	    	<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr>
+			      <td colspan="2" valign="top" class="optsect_t">
+						  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+							  <tr>
+									<td class="optsect_s"><strong><?=gettext("Active Directory");?></strong></td>
+							  	<td align="right" class="optsect_s">
+										<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
+									</td>
+								</tr>
+						  </table>
+						</td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server name");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="ad_srv_name" type="text" class="formfld" id="ad_srv_name" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_name']);?>">
+			      	<br><?=gettext("AD or PDC name.");?>
 						</td>
 					</tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server IP");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="ad_srv_ip" type="text" class="formfld" id="ad_srv_ip" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_ip']);?>">
+			      	<br><?=gettext("IP address of MS Active Directory server.");?>
+						</td>
+					</tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="domain_name" type="text" class="formfld" id="domain_name" size="20" value="<?=htmlspecialchars($pconfig['domain_name']);?>">
+							<br><?=gettext("Domain name in old format.");?>
+						</td>
+					</tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Administrator name");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="admin_name" type="text" class="formfld" id="admin_name" size="20" value="<?=htmlspecialchars($pconfig['admin_name']);?>">
+							<br><?=gettext("Username of a domain administrator account.");?>
+						</td>
+					</tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Administration password");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="admin_pass" type="password" class="formfld" id="admin_pass" size="20" value="<?=htmlspecialchars($pconfig['admin_pass']);?>"><br>
+							<input name="admin_pass2" type="password" class="formfld" id="admin_pass2" size="20" value="<?=htmlspecialchars($pconfig['admin_pass2']);?>">
+			        &nbsp;(<?=gettext("Confirmation");?>)<br>
+			        <span class="vexpl"><?=gettext("Password of domain administrator account, enter it here twice.");?></span>
+						</td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+			      </td>
+			    </tr>
 			  </table>
 			</td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server name");?></td>
-      <td width="78%" class="vtable">
-        <input name="ad_srv_name" type="text" class="formfld" id="ad_srv_name" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_name']);?>">
-      	<br><?=gettext("AD or PDC name.");?>
-			</td>
 		</tr>
-		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server IP");?></td>
-      <td width="78%" class="vtable">
-        <input name="ad_srv_ip" type="text" class="formfld" id="ad_srv_ip" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_ip']);?>">
-      	<br><?=gettext("IP address of MS Active Directory server.");?>
-			</td>
-		</tr>
-		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
-      <td width="78%" class="vtable">
-        <input name="domain_name" type="text" class="formfld" id="domain_name" size="20" value="<?=htmlspecialchars($pconfig['domain_name']);?>">
-				<br><?=gettext("Domain name in old format.");?>
-			</td>
-		</tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Administrator name");?></td>
-      <td width="78%" class="vtable">
-        <input name="admin_name" type="text" class="formfld" id="admin_name" size="20" value="<?=htmlspecialchars($pconfig['admin_name']);?>">
-				<br><?=gettext("Username of a domain administrator account.");?>
-			</td>
-		</tr>
-		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Administration password");?></td>
-      <td width="78%" class="vtable">
-      	<input name="admin_pass" type="password" class="formfld" id="admin_pass" size="20" value="<?=htmlspecialchars($pconfig['admin_pass']);?>"><br>
-				<input name="admin_pass2" type="password" class="formfld" id="admin_pass2" size="20" value="<?=htmlspecialchars($pconfig['admin_pass2']);?>">
-        &nbsp;(<?=gettext("Confirmation");?>)<br>
-        <span class="vexpl"><?=gettext("Password of domain administrator account, enter it here twice.");?></span>
-			</td>
-    </tr>
-		<tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
-      </td>
-    </tr>
-  </table>
+	</table>
 </form>
 <script language="JavaScript">
 <!--
 enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

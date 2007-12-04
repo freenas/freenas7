@@ -104,70 +104,76 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="services_dynamicdns.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-      <td colspan="2" valign="top" class="optsect_t">
-  		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-  		  <tr>
-          <td class="optsect_s"><strong><?=gettext("Dynamic DNS");?></strong></td>
-  			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
-        </tr>
-  		  </table>
-      </td>
-    </tr>
-    <tr>
-	    <td width="22%" valign="top" class="vncellreq"><?=gettext("Provider");?></td>
-      <td width="78%" class="vtable">
-        <select name="provider" class="formfld" id="provider">
-					<option value="dyndns.org" <?php if ("dyndns.org" == $pconfig['provider']) echo "selected";?>>dyndns.org</option>
-					<option value="freedns.afraid.org" <?php if ("freedns.afraid.org" == $pconfig['provider']) echo "selected";?>>freedns.afraid.org</option>
-					<option value="zoneedit.com" <?php if ("zoneedit.com" == $pconfig['provider']) echo "selected";?>>zoneedit.com</option>
-					<option value="no-ip.com" <?php if ("no-ip.com" == $pconfig['provider']) echo "selected";?>>no-ip.com</option>
-        </select>
-      </td>
-		</tr>
-		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
-      <td width="78%" class="vtable">
-        <input name="domainname" type="text" class="formfld" id="domainname" size="40" value="<?=htmlspecialchars($pconfig['domainname']);?>">
-      </td>
-    </tr>
-		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
-      <td width="78%" class="vtable">
-        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>">
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
-      <td width="78%" class="vtable">
-        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
-      </td>
-		</tr>
-		<tr>
-			<td width="22%" valign="top" class="vncell"><?=gettext("Update period");?></td>
-			<td width="78%" class="vtable">
-				<input name="updateperiod" type="text" class="formfld" id="updateperiod" size="20" value="<?=htmlspecialchars($pconfig['updateperiod']);?>">
-				<br><?=gettext("How often the IP is checked. The period is in seconds (max. is 10 days).");?>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+	    	<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr>
+			      <td colspan="2" valign="top" class="optsect_t">
+			  		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+			  		  <tr>
+			          <td class="optsect_s"><strong><?=gettext("Dynamic DNS");?></strong></td>
+			  			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
+			        </tr>
+			  		  </table>
+			      </td>
+			    </tr>
+			    <tr>
+				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Provider");?></td>
+			      <td width="78%" class="vtable">
+			        <select name="provider" class="formfld" id="provider">
+								<option value="dyndns.org" <?php if ("dyndns.org" == $pconfig['provider']) echo "selected";?>>dyndns.org</option>
+								<option value="freedns.afraid.org" <?php if ("freedns.afraid.org" == $pconfig['provider']) echo "selected";?>>freedns.afraid.org</option>
+								<option value="zoneedit.com" <?php if ("zoneedit.com" == $pconfig['provider']) echo "selected";?>>zoneedit.com</option>
+								<option value="no-ip.com" <?php if ("no-ip.com" == $pconfig['provider']) echo "selected";?>>no-ip.com</option>
+			        </select>
+			      </td>
+					</tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="domainname" type="text" class="formfld" id="domainname" size="40" value="<?=htmlspecialchars($pconfig['domainname']);?>">
+			      </td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>">
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
+			      </td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Update period");?></td>
+						<td width="78%" class="vtable">
+							<input name="updateperiod" type="text" class="formfld" id="updateperiod" size="20" value="<?=htmlspecialchars($pconfig['updateperiod']);?>">
+							<br><?=gettext("How often the IP is checked. The period is in seconds (max. is 10 days).");?>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Forced update period");?></td>
+						<td width="78%" class="vtable">
+							<input name="forcedupdateperiod" type="text" class="formfld" id="forcedupdateperiod" size="20" value="<?=htmlspecialchars($pconfig['forcedupdateperiod']);?>">
+							<br><?=gettext("How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days).");?>
+						</td>
+					</tr>
+			    <tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+			      </td>
+			    </tr>
+			  </table>
 			</td>
 		</tr>
-		<tr>
-			<td width="22%" valign="top" class="vncell"><?=gettext("Forced update period");?></td>
-			<td width="78%" class="vtable">
-				<input name="forcedupdateperiod" type="text" class="formfld" id="forcedupdateperiod" size="20" value="<?=htmlspecialchars($pconfig['forcedupdateperiod']);?>">
-				<br><?=gettext("How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days).");?>
-			</td>
-		</tr>
-    <tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-      </td>
-    </tr>
-  </table>
+	</table>
 </form>
 <script language="JavaScript">
 <!--

@@ -96,79 +96,85 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="services_nfs.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-      <td colspan="2" valign="top" class="optsect_t">
-        <table border="0" cellspacing="0" cellpadding="0" width="100%">
-          <tr>
-            <td class="optsect_s"><strong><?=gettext("NFS Server"); ?></strong></td>
-            <td align="right" class="optsect_s">
-              <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable") ;?></strong>
-            </td>
-          </tr>
-        </table>
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Map all users to root"); ?></td>
-      <td width="78%" class="vtable">
-        <select name="mapall" class="formfld" id="mapall">
-        <?php $types = array(gettext("Yes"),gettext("No"));?>
-        <?php $vals = explode(" ", "yes no");?>
-        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mapall']) echo "selected";?>>
-          <?=htmlspecialchars($types[$j]);?>
-          </option>
-        <?php endfor; ?>
-        </select><br>
-        <?=gettext("All users will have the root privilege.") ;?>
-      </td>
-    </tr>
-		<tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Authorized networks");?></td>
-			<td width="78%" class="vtable">
-				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+	    	<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr>
+			      <td colspan="2" valign="top" class="optsect_t">
+			        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+			          <tr>
+			            <td class="optsect_s"><strong><?=gettext("NFS Server"); ?></strong></td>
+			            <td align="right" class="optsect_s">
+			              <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable") ;?></strong>
+			            </td>
+			          </tr>
+			        </table>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Map all users to root"); ?></td>
+			      <td width="78%" class="vtable">
+			        <select name="mapall" class="formfld" id="mapall">
+			        <?php $types = array(gettext("Yes"),gettext("No"));?>
+			        <?php $vals = explode(" ", "yes no");?>
+			        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+			          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mapall']) echo "selected";?>>
+			          <?=htmlspecialchars($types[$j]);?>
+			          </option>
+			        <?php endfor; ?>
+			        </select><br>
+			        <?=gettext("All users will have the root privilege.") ;?>
+			      </td>
+			    </tr>
 					<tr>
-						<td width="90%" class="listhdrr"><?=gettext("Networks");?></td>
-						<td width="10%" class="list"></td>
-					</tr>
-					<?php if (is_array($config['nfs']['nfsnetworks'])):?>
-					<?php $i = 0; foreach($config['nfs']['nfsnetworks'] as $nfsnetworksv): ?>
-					<tr>
-						<td class="listlr"><?=htmlspecialchars($nfsnetworksv);?> &nbsp;</td>
-						<td valign="middle" nowrap class="list">
-							<?php if(isset($config['nfs']['enable'])): ?>
-							<a href="services_nfs_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit network");?>" width="17" height="17" border="0"></a>&nbsp;
-							<a href="services_nfs.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this network entry?");?>')"><img src="x.gif" title="<?=gettext("Delete network"); ?>" width="17" height="17" border="0"></a>
-							<?php endif; ?>
-						</td>
-					</tr>
-					<?php $i++; endforeach; ?>
-					<?php endif;?>
-					<tr>
-						<td class="list" colspan="1"></td>
-						<td class="list">
-							<a href="services_nfs_edit.php"><img src="plus.gif" title="<?=gettext("Add network");?>" width="17" height="17" border="0"></a>
-						</td>
-					</tr>
-        </table>
-        <?=gettext("Networks authorized.");?>
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-      </td>
-    </tr>
-    <tr>
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("The name of the exported directories are: /mnt/sharename");?></td>
-    </tr>
-  </table>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Authorized networks");?></td>
+						<td width="78%" class="vtable">
+							<table width="100%" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td width="90%" class="listhdrr"><?=gettext("Networks");?></td>
+									<td width="10%" class="list"></td>
+								</tr>
+								<?php if (is_array($config['nfs']['nfsnetworks'])):?>
+								<?php $i = 0; foreach($config['nfs']['nfsnetworks'] as $nfsnetworksv): ?>
+								<tr>
+									<td class="listlr"><?=htmlspecialchars($nfsnetworksv);?> &nbsp;</td>
+									<td valign="middle" nowrap class="list">
+										<?php if(isset($config['nfs']['enable'])): ?>
+										<a href="services_nfs_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit network");?>" width="17" height="17" border="0"></a>&nbsp;
+										<a href="services_nfs.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this network entry?");?>')"><img src="x.gif" title="<?=gettext("Delete network"); ?>" width="17" height="17" border="0"></a>
+										<?php endif; ?>
+									</td>
+								</tr>
+								<?php $i++; endforeach; ?>
+								<?php endif;?>
+								<tr>
+									<td class="list" colspan="1"></td>
+									<td class="list">
+										<a href="services_nfs_edit.php"><img src="plus.gif" title="<?=gettext("Add network");?>" width="17" height="17" border="0"></a>
+									</td>
+								</tr>
+			        </table>
+			        <?=gettext("Networks authorized.");?>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("The name of the exported directories are: /mnt/sharename");?></td>
+			    </tr>
+			  </table>
+			</td>
+		</tr>
+	</table>
 </form>
 <script language="JavaScript">
 <!--

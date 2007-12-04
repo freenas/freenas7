@@ -69,25 +69,31 @@ if($_POST) {
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
 <form action="services_upnp_edit.php" method="post" name="iform" id="iform">
-  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Content");?></td>
-      <td width="78%" class="vtable">
-				<input name="content" type="text" class="formfld" id="content" size="60" value="<?=htmlspecialchars($config['upnp']['content'][$id]);?>">
-				<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.content; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
-				<br><?=gettext("Directory to be shared.");?>
-      </td>
-    </tr>
-    <tr> 
-      <td width="22%" valign="top">&nbsp;</td>
-      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=isset($id)?gettext("Save"):gettext("Add")?>"> 
-        <?php if(isset($id)): ?>
-        <input name="id" type="hidden" value="<?=$id;?>"> 
-        <?php endif; ?>
-      </td>
-    </tr>
-  </table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+	    	<?php if ($input_errors) print_input_errors($input_errors); ?>
+			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr>
+			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Content");?></td>
+			      <td width="78%" class="vtable">
+							<input name="content" type="text" class="formfld" id="content" size="60" value="<?=htmlspecialchars($config['upnp']['content'][$id]);?>">
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.content; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+							<br><?=gettext("Directory to be shared.");?>
+			      </td>
+			    </tr>
+			    <tr> 
+			      <td width="22%" valign="top">&nbsp;</td>
+			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=isset($id)?gettext("Save"):gettext("Add")?>"> 
+			        <?php if(isset($id)): ?>
+			        <input name="id" type="hidden" value="<?=$id;?>"> 
+			        <?php endif; ?>
+			      </td>
+			    </tr>
+			  </table>
+			</td>
+		</tr>
+	</table>
 </form>
 <?php include("fend.inc"); ?>

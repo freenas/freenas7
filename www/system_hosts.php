@@ -74,13 +74,6 @@ if ($_GET['act'] == "del") {
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-		<td class="tabnavtbl">
-  		<ul id="tabnav">
-				<li class="tabact"><a href="system_hosts.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Hosts");?></a></li>
-  		</ul>
-  	</td>
-	</tr>
-  <tr>
     <td class="tabcont">
 			<form action="system_hosts.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg); ?>

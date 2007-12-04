@@ -126,106 +126,112 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="access_ldap.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-    <tr>
-      <td colspan="2" valign="top" class="optsect_t">
-			  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr>
-						<td class="optsect_s"><strong><?=gettext("LDAP");?></strong></td>
-				  	<td align="right" class="optsect_s">
-							<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+	    	<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+			    <tr>
+			      <td colspan="2" valign="top" class="optsect_t">
+						  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+							  <tr>
+									<td class="optsect_s"><strong><?=gettext("LDAP");?></strong></td>
+							  	<td align="right" class="optsect_s">
+										<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
+									</td>
+								</tr>
+						  </table>
+						</td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("LDAP server name");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="hostname" type="text" class="formfld" id="hostname" size="20" value="<?=htmlspecialchars($pconfig['hostname']);?>">
+			      	<br><?=gettext("Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory for TLS");?>
+						</td>
+					</tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Base DN");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="base" type="text" class="formfld" id="base" size="20" value="<?=htmlspecialchars($pconfig['base']);?>">
+			      	<br><?=gettext("Specifies the default base DN to use when performing ldap operations, example: dc=example,dc=com");?>
+						</td>
+					</tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("DN to bind");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="binddn" type="text" class="formfld" id="binddn" size="20" value="<?=htmlspecialchars($pconfig['binddn']);?>">
+							<br><?=gettext("Specifies the default bind DN to use when performing ldap operations, example:cn=administrator,dc=example,dc=com ");?>
+						</td>
+					</tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password for DN");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="bindpw" type="password" class="formfld" id="bindpw" size="20" value="<?=htmlspecialchars($pconfig['bindpw']);?>"><br>
+							<input name="bindpw2" type="password" class="formfld" id="bindpw2" size="20" value="<?=htmlspecialchars($pconfig['bindpw2']);?>">
+			        &nbsp;(<?=gettext("Confirmation");?>)<br>
+			        <span class="vexpl"><?=gettext("The credentials to bind with, enter it here twice.");?></span>
+						</td>
+			    </tr>
+					<tr>
+					  <tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("User suffix");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="user_suffix" type="text" class="formfld" id="user_suffix" size="20" value="<?=htmlspecialchars($pconfig['user_suffix']);?>">
+			      	<br><?=gettext("user_suffix, example: ou=users,dc=example,dc=com");?>
+						</td>
+					</tr>
+					<tr>
+					  <tr>
+				      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password suffix");?></td>
+				      <td width="78%" class="vtable">
+				        <input name="password_suffix" type="text" class="formfld" id="password_suffix" size="20" value="<?=htmlspecialchars($pconfig['password_suffix']);?>">
+				      	<br><?=gettext("password_suffix, example: ou=users,dc=example,dc=com");?>
+							</td>
+						</tr>
+					  <tr>
+				      <td width="22%" valign="top" class="vncellreq"><?=gettext("Group suffix");?></td>
+				      <td width="78%" class="vtable">
+				        <input name="group_suffix" type="text" class="formfld" id="group_suffix" size="20" value="<?=htmlspecialchars($pconfig['group_suffix']);?>">
+				      	<br><?=gettext("group_suffix, example: ou=groups,dc=example,dc=com");?>
+							</td>
+						</tr>
+						<tr>
+				      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password encryption"); ?></td>
+							<td width="78%" class="vtable">
+								<select name="pam_password" class="formfld" id="pam_password">
+					        <?php $types = explode(",", "clear,crypt,md5,nds,ad,exop"); $vals = explode(" ", "clear crypt md5 nds ad exop");?>
+					        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+					          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['pam_password']) echo "selected";?>>
+					          <?=htmlspecialchars($types[$j]);?>
+					          </option>
+					        <?php endfor; ?>
+				        </select>
+							  <br><?=gettext("Method used to store your password in your LDAP.");?>
+							</td>
+						</tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+			      </td>
+			    </tr>
+					<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+							<span class="red"><strong><?=gettext("Help Needed!");?>:</strong></span>
+							<br><?php echo gettext("LDAP authentication feature is not implemented: If you know how to use PAM to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome.");?>
 						</td>
 					</tr>
 			  </table>
 			</td>
-    </tr>
-		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("LDAP server name");?></td>
-      <td width="78%" class="vtable">
-        <input name="hostname" type="text" class="formfld" id="hostname" size="20" value="<?=htmlspecialchars($pconfig['hostname']);?>">
-      	<br><?=gettext("Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory for TLS");?>
-			</td>
 		</tr>
-		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Base DN");?></td>
-      <td width="78%" class="vtable">
-        <input name="base" type="text" class="formfld" id="base" size="20" value="<?=htmlspecialchars($pconfig['base']);?>">
-      	<br><?=gettext("Specifies the default base DN to use when performing ldap operations, example: dc=example,dc=com");?>
-			</td>
-		</tr>
-    <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("DN to bind");?></td>
-      <td width="78%" class="vtable">
-        <input name="binddn" type="text" class="formfld" id="binddn" size="20" value="<?=htmlspecialchars($pconfig['binddn']);?>">
-				<br><?=gettext("Specifies the default bind DN to use when performing ldap operations, example:cn=administrator,dc=example,dc=com ");?>
-			</td>
-		</tr>
-		<tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password for DN");?></td>
-      <td width="78%" class="vtable">
-      	<input name="bindpw" type="password" class="formfld" id="bindpw" size="20" value="<?=htmlspecialchars($pconfig['bindpw']);?>"><br>
-				<input name="bindpw2" type="password" class="formfld" id="bindpw2" size="20" value="<?=htmlspecialchars($pconfig['bindpw2']);?>">
-        &nbsp;(<?=gettext("Confirmation");?>)<br>
-        <span class="vexpl"><?=gettext("The credentials to bind with, enter it here twice.");?></span>
-			</td>
-    </tr>
-		<tr>
-		  <tr>
-      <td width="22%" valign="top" class="vncellreq"><?=gettext("User suffix");?></td>
-      <td width="78%" class="vtable">
-        <input name="user_suffix" type="text" class="formfld" id="user_suffix" size="20" value="<?=htmlspecialchars($pconfig['user_suffix']);?>">
-      	<br><?=gettext("user_suffix, example: ou=users,dc=example,dc=com");?>
-			</td>
-		</tr>
-		<tr>
-		  <tr>
-	      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password suffix");?></td>
-	      <td width="78%" class="vtable">
-	        <input name="password_suffix" type="text" class="formfld" id="password_suffix" size="20" value="<?=htmlspecialchars($pconfig['password_suffix']);?>">
-	      	<br><?=gettext("password_suffix, example: ou=users,dc=example,dc=com");?>
-				</td>
-			</tr>
-		  <tr>
-	      <td width="22%" valign="top" class="vncellreq"><?=gettext("Group suffix");?></td>
-	      <td width="78%" class="vtable">
-	        <input name="group_suffix" type="text" class="formfld" id="group_suffix" size="20" value="<?=htmlspecialchars($pconfig['group_suffix']);?>">
-	      	<br><?=gettext("group_suffix, example: ou=groups,dc=example,dc=com");?>
-				</td>
-			</tr>
-			<tr>
-	      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password encryption"); ?></td>
-				<td width="78%" class="vtable">
-					<select name="pam_password" class="formfld" id="pam_password">
-		        <?php $types = explode(",", "clear,crypt,md5,nds,ad,exop"); $vals = explode(" ", "clear crypt md5 nds ad exop");?>
-		        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-		          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['pam_password']) echo "selected";?>>
-		          <?=htmlspecialchars($types[$j]);?>
-		          </option>
-		        <?php endfor; ?>
-	        </select>
-				  <br><?=gettext("Method used to store your password in your LDAP.");?>
-				</td>
-			</tr>
-			<td width="22%" valign="top">&nbsp;</td>
-			<td width="78%">
-        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
-      </td>
-    </tr>
-		<tr>
-			<td width="22%" valign="top">&nbsp;</td>
-			<td width="78%">
-				<span class="red"><strong><?=gettext("Help Needed!");?>:</strong></span>
-				<br><?php echo gettext("LDAP authentication feature is not implemented: If you know how to use PAM to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome.");?>
-			</td>
-		</tr>
-  </table>
+	</table>
 </form>
 <script language="JavaScript">
 <!--
 enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>

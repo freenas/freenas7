@@ -124,57 +124,63 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
 <form action="services_unison.php" method="post" name="iform" id="iform">
-<table width="100%" border="0" cellpadding="6" cellspacing="0">
-  <tr>
-    <td colspan="2" valign="top" class="optsect_t">
-		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-		  <tr>
-        <td class="optsect_s"><strong><?=gettext("Unison File Synchronisation");?></strong></td>
-			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
-      </tr>
-		  </table>
-    </td>
-  </tr>
-  <tr>
-    <td width="22%" valign="top" class="vncellreq"><?=gettext("Share");?></td>
-    <td width="78%" class="vtable">
-      <select name="share" class="formfld" id="share">
-        <?php foreach ($a_mount as $mount): $tmp=$mount['sharename']; ?>
-        <option value="<?=$tmp;?>"
-        <?php if ($tmp == $pconfig['share']) echo "selected";?>><?=$tmp?></option>
-        <?php endforeach; ?>
-      </select>
-      <br><?=gettext("You may need enough space to duplicate all files being synced");?>.</td>
-    </td>
-  </tr>
-  <tr>
-    <td width="22%" valign="top" class="vncellreq"><?=gettext("Working Directory");?></td>
-    <td width="78%" class="vtable">
-			<input name="workdir" type="text" class="formfld" id="workdir" size="20" value="<?=htmlspecialchars($pconfig['workdir']);?>">
-			<br><?=gettext("Where the working files will be stored");?>.</td>
-    </td>
-  </tr>
-  <tr>
-    <td width="22%" valign="top" class="vncellreq"><?=gettext("Create");?></td>
-    <td width="78%" class="vtable">
-      <input name="makedir" type="checkbox" id="makedir" value="yes" <?php if ($pconfig['makedir']) echo "checked"; ?>>
-      <?=gettext("Create work directory if it doesn't exist");?><span class="vexpl"><br>
-    </td>
-  </tr>
-  <tr>
-    <td width="22%" valign="top">&nbsp;</td>
-    <td width="78%">
-      <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-    </td>
-  </tr>
-  <tr>
-    <td width="22%" valign="top">&nbsp;</td>
-    <td width="78%"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."), "services_sshd.php", "access_users.php");?></td>
-  </tr>
-  </table>
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	  <tr>
+	    <td class="tabcont">
+				<?php if ($input_errors) print_input_errors($input_errors); ?>
+				<?php if ($savemsg) print_info_box($savemsg); ?>	    
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+				  <tr>
+				    <td colspan="2" valign="top" class="optsect_t">
+						  <table border="0" cellspacing="0" cellpadding="0" width="100%">
+						  <tr>
+				        <td class="optsect_s"><strong><?=gettext("Unison File Synchronisation");?></strong></td>
+							  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
+				      </tr>
+						  </table>
+				    </td>
+				  </tr>
+				  <tr>
+				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Share");?></td>
+				    <td width="78%" class="vtable">
+				      <select name="share" class="formfld" id="share">
+				        <?php foreach ($a_mount as $mount): $tmp=$mount['sharename']; ?>
+				        <option value="<?=$tmp;?>"
+				        <?php if ($tmp == $pconfig['share']) echo "selected";?>><?=$tmp?></option>
+				        <?php endforeach; ?>
+				      </select>
+				      <br><?=gettext("You may need enough space to duplicate all files being synced");?>.</td>
+				    </td>
+				  </tr>
+				  <tr>
+				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Working Directory");?></td>
+				    <td width="78%" class="vtable">
+							<input name="workdir" type="text" class="formfld" id="workdir" size="20" value="<?=htmlspecialchars($pconfig['workdir']);?>">
+							<br><?=gettext("Where the working files will be stored");?>.</td>
+				    </td>
+				  </tr>
+				  <tr>
+				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Create");?></td>
+				    <td width="78%" class="vtable">
+				      <input name="makedir" type="checkbox" id="makedir" value="yes" <?php if ($pconfig['makedir']) echo "checked"; ?>>
+				      <?=gettext("Create work directory if it doesn't exist");?><span class="vexpl"><br>
+				    </td>
+				  </tr>
+				  <tr>
+				    <td width="22%" valign="top">&nbsp;</td>
+				    <td width="78%">
+				      <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+				    </td>
+				  </tr>
+				  <tr>
+				    <td width="22%" valign="top">&nbsp;</td>
+				    <td width="78%"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."), "services_sshd.php", "access_users.php");?></td>
+				  </tr>
+				</table>
+			</td>
+		</tr>
+	</table>
 </form>
 <script language="JavaScript">
 <!--
