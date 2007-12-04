@@ -187,52 +187,41 @@ function change_netmask_bits() {
 }
 
 function type_change() {
-  switch(document.iform.type.selectedIndex)
-  {
+  switch(document.iform.type.selectedIndex) {
 		case 0: /* Static */
-		  /* use current ip address as default */
-      document.iform.ipaddr.value = "<?=htmlspecialchars(get_ipaddr($lancfg['if']))?>";
-
-      document.iform.ipaddr.disabled = 0;
-    	document.iform.subnet.disabled = 0;
-      document.iform.gateway.disabled = 0;
-
-      showElementById('dhcpclientidentifier_tr','hide');
-      showElementById('dhcphostname_tr','hide');
-
-      break;
+			document.iform.ipaddr.disabled = 0;
+			document.iform.subnet.disabled = 0;
+			document.iform.gateway.disabled = 0;
+			
+			showElementById('dhcpclientidentifier_tr','hide');
+			showElementById('dhcphostname_tr','hide');
+			
+			break;
 
     case 1: /* DHCP */
-      document.iform.ipaddr.disabled = 1;
-		document.iform.subnet.disabled = 1;
-      document.iform.gateway.disabled = 1;
-
-      showElementById('dhcpclientidentifier_tr','show');
-      showElementById('dhcphostname_tr','show');
-
-      break;
+			document.iform.ipaddr.disabled = 1;
+			document.iform.subnet.disabled = 1;
+			document.iform.gateway.disabled = 1;
+			
+			showElementById('dhcpclientidentifier_tr','show');
+			showElementById('dhcphostname_tr','show');
+			
+			break;
   }
 }
 function ipv6_type_change() {
-  switch(document.iform.ipv6type.selectedIndex)
-  {
+  switch(document.iform.ipv6type.selectedIndex) {
 		case 0: /* Static */
-		  /* use current ip address as default */
-		  /* comment this line, because function get_ipv6addr use the local IPv6 address*/
-      /*document.iform.ipv6addr.value = "<?=htmlspecialchars(get_ipv6addr($lancfg['if']))?>"; */
-
-      document.iform.ipv6addr.disabled = 0;
-	  document.iform.ipv6subnet.disabled = 0;
-      document.iform.ipv6gateway.disabled = 0;
-
-      break;
+			document.iform.ipv6addr.disabled = 0;
+			document.iform.ipv6subnet.disabled = 0;
+			document.iform.ipv6gateway.disabled = 0;
+			break;
 
     case 1: /* Autoconfigure */
-      document.iform.ipv6addr.disabled = 1;
-	  document.iform.ipv6subnet.disabled = 1;
-      document.iform.ipv6gateway.disabled = 1;
-
-      break;
+			document.iform.ipv6addr.disabled = 1;
+			document.iform.ipv6subnet.disabled = 1;
+			document.iform.ipv6gateway.disabled = 1;
+			break;
   }
 }
 // -->

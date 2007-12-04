@@ -11,6 +11,7 @@ Majors changes:
 - Upgrade WOL patch to version from 25.11.2007.
 - Add AFP share support. Thanks to Gerard Hickey.
 - Upgrade netbsd-iscsi (iscsi-target) to 20071130.
+- Fix bug when setting static IP for LAN via WebGUI. 
 
 Minors changes:
 - Add command '/usr/bin/nice'.
