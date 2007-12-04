@@ -1048,7 +1048,7 @@ function config_upgrade() {
 	/* Convert 3.4 -> 3.5 */
 	/* Add attribute //iscsitarget/enable if //iscsitarget/target's exists. */
 	if ($config['version'] === "3.4") {
-		if (0 < count($config['iscsitarget']['target']))
+		if (isset($config['iscsitarget']['target']))
 			$config['iscsitarget']['enable'] = true;
 
 		$config['version'] = "3.5";
