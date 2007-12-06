@@ -156,7 +156,7 @@ if ($_POST) {
 				$mount['mdisk'] = $_POST['mdisk'];
 				$mount['partition'] = $_POST['partition'];
 				$mount['fstype'] = $_POST['fstype'];
-				$mount['devicespecialfile'] = "{$mount['mdisk']}{$mount['partition']}";
+				$mount['devicespecialfile'] = trim("{$mount['mdisk']}{$mount['partition']}");
 				$mount['readonly'] = $_POST['readonly'] ? true : false;
 				break;
 
@@ -235,7 +235,7 @@ function fstype_change() {
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			  	<tr>
-			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
+			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type");?></td>
 			      <td width="78%" class="vtable">
 			  			<select name="type" class="formfld" id="type" onchange="type_change()">
 			          <?php $opts = array(gettext("Disk"), gettext("ISO")); $vals = explode(" ", "disk iso"); $i = 0;
@@ -246,7 +246,7 @@ function fstype_change() {
 			      </td>
 			    </tr>
 			    <tr id="mdisk_tr">
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Disk"); ?></td>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Disk");?></td>
 			      <td class="vtable">
 							<select name="mdisk" class="formfld" id="mdisk">
 								<option value=""><?=gettext("Must choose one");?></option>
@@ -259,56 +259,53 @@ function fstype_change() {
 			      </td>
 			    </tr>
 					<tr id="partition_tr">
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Partition") ; ?></td>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Partition");?></td>
 			      <td class="vtable">
 							<select name="partition" class="formfld" id="partition">
-								<option value="p1" <?php if ($pconfig['partition'] === "p1") echo "selected"; ?>>EFI GPT</option>
-								<option value="s1" <?php if ($pconfig['partition'] === "s1") echo "selected"; ?>>1</option>
-								<option value="s2" <?php if ($pconfig['partition'] === "s2") echo "selected"; ?>>2</option>
-								<option value="s3" <?php if ($pconfig['partition'] === "s3") echo "selected"; ?>>3</option>
-								<option value="s4" <?php if ($pconfig['partition'] === "s4") echo "selected"; ?>>4</option>
-								<option value=" " <?php if (empty($pconfig['partition'])) echo "selected"; ?>>CD/DVD</option>
-								<option value="gmirror" <?php if ($pconfig['partition'] === "gmirror") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - gmirror</option>
-								<option value="graid5" <?php if ($pconfig['partition'] === "graid5") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - graid5</option>
-								<option value="gvinum" <?php if ($pconfig['partition'] === "gvinum") echo "selected"; ?>>old <?=gettext("Software RAID") ;?> - gvinum</option>
+								<option value="p1" <?php if ($pconfig['partition'] === "p1") echo "selected";?>>EFI GPT</option>
+								<option value="s1" <?php if ($pconfig['partition'] === "s1") echo "selected";?>>1</option>
+								<option value="s2" <?php if ($pconfig['partition'] === "s2") echo "selected";?>>2</option>
+								<option value="s3" <?php if ($pconfig['partition'] === "s3") echo "selected";?>>3</option>
+								<option value="s4" <?php if ($pconfig['partition'] === "s4") echo "selected";?>>4</option>
+								<option value=" " <?php if (empty($pconfig['partition'])) echo "selected";?>><?=gettext("CD/DVD or Old Software RAID");?></option>
 							</select>
 							<br>
-							<?=gettext("Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release") ;?>
+							<?=gettext("Select 'EFI GPT' if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select 'Old software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS release.");?>
 			      </td>
 			    </tr>
 			    <tr id="fstype_tr">
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("File system") ;?></td>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("File system");?></td>
 			      <td class="vtable">
 							<select name="fstype" class="formfld" id="fstype" onchange="fstype_change()">
-								<option value="ufs" <?php if ($pconfig['fstype'] === "ufs") echo "selected"; ?>>UFS</option>
-								<option value="msdosfs" <?php if ($pconfig['fstype'] === "msdosfs") echo "selected"; ?>>FAT</option>
-								<option value="cd9660" <?php if ($pconfig['fstype'] === "cd9660") echo "selected"; ?>>CD/DVD</option>
-								<option value="ntfs" <?php if ($pconfig['fstype'] === "ntfs") echo "selected"; ?>>NTFS</option>
-								<option value="ext2fs" <?php if ($pconfig['fstype'] === "ext2fs") echo "selected"; ?>>EXT2</option>
+								<option value="ufs" <?php if ($pconfig['fstype'] === "ufs") echo "selected";?>>UFS</option>
+								<option value="msdosfs" <?php if ($pconfig['fstype'] === "msdosfs") echo "selected";?>>FAT</option>
+								<option value="cd9660" <?php if ($pconfig['fstype'] === "cd9660") echo "selected";?>>CD/DVD</option>
+								<option value="ntfs" <?php if ($pconfig['fstype'] === "ntfs") echo "selected";?>>NTFS</option>
+								<option value="ext2fs" <?php if ($pconfig['fstype'] === "ext2fs") echo "selected";?>>EXT2</option>
 							</select>
 			      </td>
 			    </tr>
 			    <tr id="filename_tr">
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Filename") ;?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Filename");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="filename" type="text" class="formfld" id="filename" size="60" value="<?=htmlspecialchars($pconfig['filename']);?>">
 							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.filename; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
 			      </td>
 			    </tr>
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Name") ;?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>">
 			      </td>
 			    </tr>
 			    <tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Description") ;?></td>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
 			      <td width="78%" class="vtable">
 							<input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>">
 			      </td>
 			    </tr>
 			    <tr id="readonly_tr">
-						<td width="22%" valign="top" class="vncell"><?=gettext("Read only") ;?></td>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Read only");?></td>
 			      <td width="78%" class="vtable">
 							<input name="readonly" type="checkbox" id="readonly" value="yes" <?php if ($pconfig['readonly']) echo "checked"; ?>>
 							<?=gettext("Mount the file system read-only (even the super-user may not write it).");?>
@@ -324,7 +321,7 @@ function fstype_change() {
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
+			      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br>
 			        </strong></span><?=sprintf(gettext("You can't mount the partition '%s' where the config file is stored.<br>"),htmlspecialchars($cfdevice));?></span>
 							<p><span class="vexpl"><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></p>
 			      </td>
