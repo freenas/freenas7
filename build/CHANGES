@@ -12,6 +12,7 @@ Majors changes:
 - Add AFP share support. Thanks to Gerard Hickey.
 - Upgrade netbsd-iscsi (iscsi-target) to 20071130.
 - Fix bug when setting static IP for LAN via WebGUI.
+- Upgrade PHPMailer to 2.0.0.
 
 Minors changes:
 - Add command '/usr/bin/nice'.
