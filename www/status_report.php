@@ -235,8 +235,8 @@ function auth_change() {
 					<tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="auth" type="checkbox" id="auth" value="yes" <?php if ($pconfig['auth']) echo "checked"; ?> onClick="auth_change()"><br>
-			        <?=gettext("Use SMTP authentication.");?>
+			        <input name="auth" type="checkbox" id="auth" value="yes" <?php if ($pconfig['auth']) echo "checked"; ?> onClick="auth_change()">
+			        <span class="vexpl"><?=gettext("Use SMTP authentication.");?></span>
 						</td>
 			    </tr>
 					<tr id="username_tr">
