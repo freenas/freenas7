@@ -2,10 +2,8 @@
 <?php
 require_once("globals.inc");
 require_once("functions.inc");
-require_once("util.inc");
 
 /* Umount all disks. */
-write_console("Unmounting local file systems.");
 disks_umount_all();
 
 /* Detach all encrypted disks. */
