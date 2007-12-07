@@ -13,6 +13,7 @@ Majors changes:
 - Upgrade netbsd-iscsi (iscsi-target) to 20071130.
 - Fix bug when setting static IP for LAN via WebGUI.
 - Upgrade PHPMailer to 2.0.0.
+- Modify rsync client/local WebGUI to define individual source/destination paths.
 
 Minors changes:
 - Add command '/usr/bin/nice'.

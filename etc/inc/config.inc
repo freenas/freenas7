@@ -1054,6 +1054,22 @@ function config_upgrade() {
 		$config['version'] = "3.5";
 	}
 
+	/* Convert 3.5 -> 3.6 */
+	/* Convert attribute //rsync/rsyncclient/localshare. */
+	/* Convert attribute //rsync/rsynclocal/source and //rsync/rsynclocal/destination. */
+	if ($config['version'] === "3.5") {
+		for ($i = 0; isset($config['rsync']['rsyncclient'][$i]); $i++) {
+			$config['rsync']['rsyncclient'][$i]['localshare'] = "/mnt/" . $config['rsync']['rsyncclient'][$i]['localshare'];
+		}
+
+		for ($i = 0; isset($config['rsync']['rsynclocal'][$i]); $i++) {
+			$config['rsync']['rsynclocal'][$i]['source'] = "/mnt/" . $config['rsync']['rsynclocal'][$i]['source'];
+			$config['rsync']['rsynclocal'][$i]['destination'] = "/mnt/" . $config['rsync']['rsynclocal'][$i]['destination'];
+		}
+
+		$config['version'] = "3.6";
+	}
+
 	write_config();
 
 	if (is_booting())

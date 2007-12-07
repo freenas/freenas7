@@ -24,7 +24,7 @@ if [ 0 -lt ${_scriptnum} ]; then
 		# Generate the shell script that is used by cron.
 		/usr/local/bin/xml sel -t -m "//rsync/rsyncclient[position()=${_scriptnum}]" \
 			-o "#!/bin/sh" -n \
-			-v "concat('/usr/bin/logger -p local4.notice &quot;Start of remote RSYNC synchronization from share ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" -n \
+			-v "concat('/usr/bin/logger -p local4.notice &quot;Start of remote RSYNC synchronization from ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" -n \
 			-o "if [ -r /var/run/rsync_client-running${_i} ]; then" -n \
 			-o "/usr/bin/logger -p local4.notice &quot;Previous client synchronization still running... exiting&quot;" -n \
 			-o "exit" -n \
@@ -35,13 +35,13 @@ if [ 0 -lt ${_scriptnum} ]; then
 				-o "--delete --delete-after " \
 			-b \
 			-i "contains(rsyncserverip,'.')" \
-				-v "concat('rsync://',rsyncserverip,'/',remoteshare,' /mnt/',localshare)" -n \
+				-v "concat('&quot;rsync://',rsyncserverip,'/',remoteshare,'&quot; &quot;',localshare,'&quot;')" -n \
 			-b \
 			-i "contains(rsyncserverip,':')" \
-				-v "concat('rsync://\\[',rsyncserverip,'\\]/',remoteshare,' /mnt/',localshare)" -n \
+				-v "concat('&quot;rsync://\\[',rsyncserverip,'\\]/',remoteshare,'&quot; &quot;',localshare,'&quot;')" -n \
 			-b \
 			-o "/bin/rm -f /var/run/rsync_client-running${_i}" -n \
-			-v "concat('/usr/bin/logger -p local4.notice &quot;End of remote RSYNC synchronization from share ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" \
+			-v "concat('/usr/bin/logger -p local4.notice &quot;End of remote RSYNC synchronization from ',remoteshare,' on ',rsyncserverip,' to ',localshare,'&quot;')" \
 			${configxml_file} | /usr/local/bin/xml unesc > ${_rsyncscript}
 
 		# Add exectutive right to the script.

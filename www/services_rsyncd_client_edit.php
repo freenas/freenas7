@@ -43,22 +43,13 @@ $pgtitle = array(gettext("Services"),gettext("RSYNC"),gettext("Client"),isset($i
 /* Global arrays. */
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
 $a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Friday Saturday"));
-$a_mount = array();
 
-if (!is_array($config['rsync'])) {
+if (!is_array($config['rsync']))
 	$config['rsync'] = array();
-	if (!is_array($config['rsync']['rsyncclient']))
-		$config['rsync']['rsyncclient'] = array();
-} else if (!is_array($config['rsync']['rsyncclient'])) {
+
+if (!is_array($config['rsync']['rsyncclient']))
 	$config['rsync']['rsyncclient'] = array();
-}
 
-if (!is_array($config['mounts']['mount']))
-	$config['mounts']['mount'] = array();
-
-array_sort_key($config['mounts']['mount'], "devicespecialfile");
-
-$a_mount = &$config['mounts']['mount'];
 $a_rsyncclient = &$config['rsync']['rsyncclient'];
 
 if (isset($id) && $a_rsyncclient[$id]) {
@@ -87,65 +78,61 @@ if (isset($id) && $a_rsyncclient[$id]) {
 	$pconfig['all_weekdays'] = 1;
 }
 
-if (!is_array($config['mounts']['mount'])) {
-	$nodisk_errors[] = gettext("You must configure mount point first.");
-} else {
-	if ($_POST) {
-		unset($input_errors);
-		unset($errormsg);
+if ($_POST) {
+	unset($input_errors);
+	unset($errormsg);
 
-		$pconfig = $_POST;
+	$pconfig = $_POST;
 
-		/* input validation */
-		$reqdfields = explode(" ", "rsyncserverip localshare remoteshare");
-		$reqdfieldsn = array(gettext("Remote RSYNC Server"),gettext("Local shares to be synchronized"),gettext("Remote share name"));
-		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	/* input validation */
+	$reqdfields = explode(" ", "rsyncserverip localshare remoteshare");
+	$reqdfieldsn = array(gettext("Remote RSYNC Server"),gettext("Local shares to be synchronized"),gettext("Remote share name"));
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-		if (!is_ipaddr($_POST['rsyncserverip'])){
-			$input_errors[] = gettext("A valid IP address must be specified.");
-		}
+	if (!is_ipaddr($_POST['rsyncserverip'])){
+		$input_errors[] = gettext("A valid IP address must be specified.");
+	}
 
-		if (!$input_errors) {
-			$rsyncclient = array();
+	if (!$input_errors) {
+		$rsyncclient = array();
 
-			$rsyncclient['opt_delete'] = $_POST['opt_delete'] ? true : false;;
-			$rsyncclient['rsyncserverip'] = $_POST['rsyncserverip'];
-			$rsyncclient['minute'] = $_POST['minute'];
-			$rsyncclient['hour'] = $_POST['hour'];
-			$rsyncclient['day'] = $_POST['day'];
-			$rsyncclient['month'] = $_POST['month'];
-			$rsyncclient['weekday'] = $_POST['weekday'];
-			$rsyncclient['localshare'] = $_POST['localshare'];
-			$rsyncclient['remoteshare'] = $_POST['remoteshare'];
-			$rsyncclient['all_mins'] = $_POST['all_mins'];
-			$rsyncclient['all_hours'] = $_POST['all_hours'];
-			$rsyncclient['all_days'] = $_POST['all_days'];
-			$rsyncclient['all_months'] = $_POST['all_months'];
-			$rsyncclient['all_weekdays'] = $_POST['all_weekdays'];
-			$rsyncclient['description'] = $_POST['description'];
+		$rsyncclient['opt_delete'] = $_POST['opt_delete'] ? true : false;;
+		$rsyncclient['rsyncserverip'] = $_POST['rsyncserverip'];
+		$rsyncclient['minute'] = $_POST['minute'];
+		$rsyncclient['hour'] = $_POST['hour'];
+		$rsyncclient['day'] = $_POST['day'];
+		$rsyncclient['month'] = $_POST['month'];
+		$rsyncclient['weekday'] = $_POST['weekday'];
+		$rsyncclient['localshare'] = $_POST['localshare'];
+		$rsyncclient['remoteshare'] = $_POST['remoteshare'];
+		$rsyncclient['all_mins'] = $_POST['all_mins'];
+		$rsyncclient['all_hours'] = $_POST['all_hours'];
+		$rsyncclient['all_days'] = $_POST['all_days'];
+		$rsyncclient['all_months'] = $_POST['all_months'];
+		$rsyncclient['all_weekdays'] = $_POST['all_weekdays'];
+		$rsyncclient['description'] = $_POST['description'];
 
-			if (isset($id) && $a_rsyncclient[$id])
-				$a_rsyncclient[$id] = $rsyncclient;
-			else
-				$a_rsyncclient[] = $rsyncclient;
-			touch($d_rsyncclientdirty_path);
+		if (isset($id) && $a_rsyncclient[$id])
+			$a_rsyncclient[$id] = $rsyncclient;
+		else
+			$a_rsyncclient[] = $rsyncclient;
 
-			write_config();
+		touch($d_rsyncclientdirty_path);
+		write_config();
 
-			header("Location: services_rsyncd_client.php");
-			exit;
-		}
+		header("Location: services_rsyncd_client.php");
+		exit;
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Server") ;?></a></li>
-				<li class="tabact"><a href="services_rsyncd_client.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Client") ;?></a></li>
-				<li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local") ;?></a></li>
+				<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Server");?></a></li>
+				<li class="tabact"><a href="services_rsyncd_client.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Client");?></a></li>
+				<li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local");?></a></li>
 			</ul>
 		</td>
 	</tr>
@@ -157,14 +144,10 @@ if (!is_array($config['mounts']['mount'])) {
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Local share");?></td>
 						<td width="78%" class="vtable">
-							<select name="localshare" class="formfld" id="localshare">
-								<?php foreach ($a_mount as $mountv): ?>
-								<option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $pconfig['localshare']) echo "selected";?>>
-								<?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
-								</option>
-								<?php endforeach; ?>
-							</select>
-						</td>
+							<input name="localshare" type="text" class="formfld" id="localshare" size="60" value="<?=htmlspecialchars($pconfig['localshare']);?>">
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.localshare; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+							<span class="vexpl"><?=gettext("Path to be shared.");?></span>
+					  </td>
 					</tr>
 			    <tr>
 						<td width="22%" valign="top" class="vncellreq"><strong><?=gettext("Remote RSYNC Server");?><strong></td>
@@ -174,7 +157,7 @@ if (!is_array($config['mounts']['mount'])) {
 						</td>
 					</tr>
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Remote source share name") ;?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Remote source share name");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="remoteshare" type="text" class="formfld" id="remoteshare" size="20" value="<?=htmlspecialchars($pconfig['remoteshare']);?>">
 			      </td>

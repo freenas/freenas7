@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>3.5</version>
+	<version>3.6</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -271,7 +271,7 @@
 	<afp>
 		<!-- <enable/> -->
 	</afp>
-	<rsyncd>
+	<rsync>
 		<!-- <enable/> -->
 		<readonly>no</readonly>
 		<port>873</port>
@@ -279,8 +279,8 @@
 		<!--
 		<rsynclocal>
 			<opt_delete/>
-			<source>xxx</source>
-			<destination>xxx</destination>
+			<source>xxx</source> // e.g. /mnt/data
+			<destination>xxx</destination> // e.g. /mnt/backup
 			<description>xxx</description>
 			<all_mins></all_mins>
 			<all_hours></all_hours>
@@ -296,7 +296,7 @@
 		<rsyncclient>
 			<opt_delete/>
 			<rsyncserverip>xxx</rsyncserverip>
-			<localshare>xxx</localshare>
+			<localshare>xxx</localshare> // e.g. /mnt/data
 			<remoteshare>xxx</remoteshare>
 			<description>xxx</description>
 			<all_mins></all_mins>

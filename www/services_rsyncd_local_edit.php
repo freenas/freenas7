@@ -43,22 +43,13 @@ $pgtitle = array(gettext("Services"),gettext("RSYNC"),gettext("Local"),isset($id
 /* Global arrays. */
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
 $a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Friday Saturday"));
-$a_mount = array();
 
-if (!is_array($config['rsync'])) {
+if (!is_array($config['rsync']))
 	$config['rsync'] = array();
-	if (!is_array($config['rsync']['rsynclocal']))
-		$config['rsync']['rsynclocal'] = array();
-} else if (!is_array($config['rsync']['rsynclocal'])) {
+
+if (!is_array($config['rsync']['rsynclocal']))
 	$config['rsync']['rsynclocal'] = array();
-}
 
-if (!is_array($config['mounts']['mount']))
-	$config['mounts']['mount'] = array();
-
-array_sort_key($config['mounts']['mount'], "devicespecialfile");
-
-$a_mount = &$config['mounts']['mount'];
 $a_rsynclocal = &$config['rsync']['rsynclocal'];
 
 if (isset($id) && $a_rsynclocal[$id]) {
@@ -86,60 +77,56 @@ if (isset($id) && $a_rsynclocal[$id]) {
 	$pconfig['all_weekdays'] = 1;
 }
 
-if (!is_array($config['mounts']['mount'])) {
-	$nodisk_errors[] = gettext("You must configure mount point first.");
-} else {
-	if ($_POST) {
-		unset($input_errors);
-		unset($errormsg);
+if ($_POST) {
+	unset($input_errors);
+	unset($errormsg);
 
-		$pconfig = $_POST;
+	$pconfig = $_POST;
 
-		/* input validation */
-		$reqdfields = explode(" ", "source destination");
-		$reqdfieldsn = array(gettext("Source share"),gettext("Destination share"));
-		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	/* input validation */
+	$reqdfields = explode(" ", "source destination");
+	$reqdfieldsn = array(gettext("Source share"),gettext("Destination share"));
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
-		if (!$input_errors) {
-			$rsynclocal = array();
+	if (!$input_errors) {
+		$rsynclocal = array();
 
-			$rsynclocal['opt_delete'] = $_POST['opt_delete'] ? true : false;;
-			$rsynclocal['minute'] = $_POST['minute'];
-			$rsynclocal['hour'] = $_POST['hour'];
-			$rsynclocal['day'] = $_POST['day'];
-			$rsynclocal['month'] = $_POST['month'];
-			$rsynclocal['weekday'] = $_POST['weekday'];
-			$rsynclocal['source'] = $_POST['source'];
-			$rsynclocal['destination'] = $_POST['destination'];
-			$rsynclocal['all_mins'] = $_POST['all_mins'];
-			$rsynclocal['all_hours'] = $_POST['all_hours'];
-			$rsynclocal['all_days'] = $_POST['all_days'];
-			$rsynclocal['all_months'] = $_POST['all_months'];
-			$rsynclocal['all_weekdays'] = $_POST['all_weekdays'];
-			$rsynclocal['description'] = $_POST['description'];
+		$rsynclocal['opt_delete'] = $_POST['opt_delete'] ? true : false;;
+		$rsynclocal['minute'] = $_POST['minute'];
+		$rsynclocal['hour'] = $_POST['hour'];
+		$rsynclocal['day'] = $_POST['day'];
+		$rsynclocal['month'] = $_POST['month'];
+		$rsynclocal['weekday'] = $_POST['weekday'];
+		$rsynclocal['source'] = $_POST['source'];
+		$rsynclocal['destination'] = $_POST['destination'];
+		$rsynclocal['all_mins'] = $_POST['all_mins'];
+		$rsynclocal['all_hours'] = $_POST['all_hours'];
+		$rsynclocal['all_days'] = $_POST['all_days'];
+		$rsynclocal['all_months'] = $_POST['all_months'];
+		$rsynclocal['all_weekdays'] = $_POST['all_weekdays'];
+		$rsynclocal['description'] = $_POST['description'];
 
-			if (isset($id) && $a_rsynclocal[$id])
-				$a_rsynclocal[$id] = $rsynclocal;
-			else
-				$a_rsynclocal[] = $rsynclocal;
-			touch($d_rsynclocaldirty_path);
+		if (isset($id) && $a_rsynclocal[$id])
+			$a_rsynclocal[$id] = $rsynclocal;
+		else
+			$a_rsynclocal[] = $rsynclocal;
 
-			write_config();
+		touch($d_rsynclocaldirty_path);
+		write_config();
 
-			header("Location: services_rsyncd_local.php");
-			exit;
-		}
+		header("Location: services_rsyncd_local.php");
+		exit;
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Server") ;?></a></li>
-				<li class="tabinact"><a href="services_rsyncd_client.php"><?=gettext("Client") ;?></a></li>
-				<li class="tabact"><a href="services_rsyncd_local.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Local") ;?></a></li>
+				<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Server");?></a></li>
+				<li class="tabinact"><a href="services_rsyncd_client.php"><?=gettext("Client");?></a></li>
+				<li class="tabact"><a href="services_rsyncd_local.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Local");?></a></li>
 			</ul>
 		</td>
 	</tr>
@@ -148,30 +135,20 @@ if (!is_array($config['mounts']['mount'])) {
 			<form action="services_rsyncd_local_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?><table width="100%" border="0" cellpadding="0" cellspacing="0">
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<tr>
-	          <td width="22%" valign="top" class="vncellreq"><?=gettext("Source share");?></td>
-	          <td width="78%" class="vtable">
-	            <select name="source" class="formfld" id="source">
-	              <?php foreach ($a_mount as $mountv): ?>
-	              <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $pconfig['source']) echo "selected";?>>
-	              <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
-	              </option>
-	              <?php endforeach; ?>
-	            </select>
-	          </td>
-	    		</tr>
-					<tr>
-	          <td width="22%" valign="top" class="vncellreq"><?=gettext("Destination share");?></td>
-	          <td width="78%" class="vtable">
-	            <select name="destination" class="formfld" id="destination">
-	              <?php foreach ($a_mount as $mountv): ?>
-	              <option value="<?=$mountv['sharename'];?>"<?php if ($mountv['sharename'] == $pconfig['destination']) echo "selected";?>>
-	              <?php echo htmlspecialchars($mountv['sharename'] . " (" . gettext("Disk") . ": " . $mountv['mdisk'] . " " . gettext("Partition") . ": " . $mountv['partition'] . ")");?>
-	              </option>
-	              <?php endforeach; ?>
-	            </select>
-          	</td>
-    			</tr>
+	    		<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Source share");?></td>
+						<td width="78%" class="vtable">
+							<input name="source" type="text" class="formfld" id="source" size="60" value="<?=htmlspecialchars($pconfig['source']);?>">
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.source; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+					  </td>
+					</tr>
+    			<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Destination share");?></td>
+						<td width="78%" class="vtable">
+							<input name="destination" type="text" class="formfld" id="destination" size="60" value="<?=htmlspecialchars($pconfig['destination']);?>">
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.destination; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+					  </td>
+					</tr>
     			<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Synchronization Time");?></td>
 						<td width="78%" class="vtable">
