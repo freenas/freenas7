@@ -33,17 +33,26 @@ create_conf()
 	/usr/local/bin/xml sel -t -m "//rsyncd" \
 		-v "concat('read only = ',readonly)" -n \
 		-o "syslog facility = local4" -n \
-		-o "list = yes" -n \
+		-o "list = no" -n \
 		-v "concat('port = ',port)" -n \
 		-o "pid file = ${pidfile}" -n \
 		-i "string-length(maxcon) > 0" -v "concat('max connections = ',maxcon)" -n -b \
 		-i "string-length(motd) > 0" -o "motd file = ${rsyncd_motd}" -n -b \
 		-i "count(rsyncd_user) > 0" -v "concat('uid = ',rsyncd_user)" -n -b \
 		-i "count(rsyncd_user) = 0" -o "uid = ftp" -n -o "gid = ftp" -n -b \
-		-m "//mounts/mount" \
-			-n -v "concat('[',sharename,']')" -n \
-			-v "concat('comment = ',desc)" -n \
-			-v "concat('path = /mnt/',sharename)" -n \
+		-m "share" \
+			-n \
+			-v "concat('[', name, ']')" -n \
+			-v "concat('comment = ', comment)" -n \
+			-v "concat('path = ', path)" -n \
+			-i "count(browseable) > 0" -o "list = true" -n -b \
+			-i "string-length(maxconnections) > 0" -v "concat('max connections = ', maxconnections)" -n -b \
+			-i "rwmode[. = 'ro']" -o "read only = true" -n -b \
+			-i "rwmode[. = 'wo']" -o "write only = true" -n -b \
+			-i "string-length(hostallow) > 0" \
+				-v "concat('host allow = ', hostallow)" -n -b \
+			-i "string-length(hostdeny) > 0" \
+				-v "concat('host deny = ', hostdeny)" -n -b \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${rsyncd_config}
 

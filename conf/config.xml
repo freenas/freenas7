@@ -269,13 +269,46 @@
 		<chrooteveryone/>
 	</ftp>
 	<afp>
-		<!-- <enable/> -->
+		<!--
+		<enable/>
+		<guest/>
+		<local/>
+		<afpname>xxx</afpname>
+		<share>
+			<name>xxx</name>
+			<path>/mnt/xxx</path>
+			<comment>xxx</comment>
+			<volpasswd/>
+			<casefold>tolower|toupper|xlatelower</casefold>
+			<volcharset>UTF8|UTF8-MAC|ISO-8859-15|...</volcharset>
+			<allow/>
+			<deny/>
+			<rolist/>
+			<rwlist/>
+		</share>
+		-->
 	</afp>
-	<rsync>
+	<rsyncd>
 		<!-- <enable/> -->
 		<readonly>no</readonly>
 		<port>873</port>
 		<maxcon>0</maxcon>
+		<rsyncd_user>ftp</rsyncd_user>
+		<motd/>
+		<!--
+		<share>
+			<name>xxx</name>
+			<path>/mnt/xxx</path>
+			<comment>xxx</comment>
+			<browseable/>
+			<rwmode>ro|rw|wo</rwmode>
+			<maxconnections>10</maxconnections>
+			<hostsallow>ALL<hostsallow> // Comma, space, or tab delimited set of hosts which are permitted to access a service.
+			<hostsdeny>ALL<hostsdeny> // Hosts listed here are NOT permitted to access a services. Where the lists conflict, the allow list takes precedence.
+		</share>
+		-->
+	</rsyncd>
+	<rsync>
 		<!--
 		<rsynclocal>
 			<opt_delete/>
@@ -311,7 +344,7 @@
 			<weekday></weekday>
 		</rsyncclient>
 		-->
-	</rsyncd>
+	</rsync>
 	<unison>
     <!--
 		<enable/>

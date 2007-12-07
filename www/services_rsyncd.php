@@ -112,80 +112,94 @@ function enable_change(enable_change) {
 <?php if ($input_errors) print_input_errors($input_errors); ?>
 <?php if ($savemsg) print_info_box($savemsg); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-	<li class="tabact"><a href="services_rsyncd.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Server") ;?></a></li>
-    <li class="tabinact"><a href="services_rsyncd_client.php"><?=gettext("Client") ;?></a></li>
-    <li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local") ;?></a></li>
-  </ul>
-  </td></tr>
-  <tr> 
-    <td class="tabcont">
-            <form action="services_rsyncd.php" method="post" name="iform" id="iform">
-              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-                <tr> 
-                  <td colspan="2" valign="top" class="optsect_t">
-				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-				  <tr><td class="optsect_s"><strong><?=gettext("Rsync Daemon"); ?></strong></td>
-				  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td></tr>
-				  </table></td>
-                </tr>
-                <tr> 
-                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Read only");?></td>
-                  <td width="78%" class="vtable">
-					<select name="readonly" class="formfld" id="readonly">
-                      <?php $types = array(gettext("Yes"),gettext("No"));
-					        $vals = explode(" ", "yes no");
-					  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['readonly']) echo "selected";?>> 
-                      <?=htmlspecialchars($types[$j]);?>
-                      </option>
-                      <?php endfor; ?>
-                    </select></td>
-				</tr>
-				  <tr>			  		
-			<td valign="top" class="vncellreq"><?=gettext("Map to user");?></td>
-	<td class="vtable"> 
-		<select name="rsyncd_user" class="formfld" id="rsyncd_user">
-		<option value="ftp"<?php if ($pconfig['rsyncd_user'] == "ftp") echo "selected";?>> 
-		  <?php echo htmlspecialchars("guest"); ?>
-		  <?php foreach ($a_user as $user): ?>
-		  <option value="<?=$user['login'];?>"<?php if ($user['login'] == $pconfig['rsyncd_user']) echo "selected";?>> 
-		  <?php echo htmlspecialchars($user['login']);				  
-		  ?>
-		  </option>
-		  <?php endforeach; ?>
-			</tr> 	
-        <tr> 
-          <td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
-          <td width="78%" class="vtable"> 
-            <input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
-						<br><?=gettext("Alternate TCP port. Default is 873"); ?>
-          </td>
-				</tr>
-				<tr> 
-					<td width="22%" valign="top" class="vncellreq"><?=gettext("Maximum connections"); ?></td>
-					<td width="78%" class="vtable"> 
-						<input name="maxcon" type="text" class="formfld" id="maxcon" size="20" value="<?=htmlspecialchars($pconfig['maxcon']);?>"> 
-						<br><?=gettext("Maximum number of simultaneous connections. Default is 0 (unlimited)."); ?>
-					</td>
-				</tr>
-				<td width="22%" valign="top" class="vncell"><?=gettext("MOTD");?></td>
-                  <td width="78%" class="vtable"> 
-                    <textarea name="motd" cols="65" rows="7" id="motd" class="formpre"><?=htmlspecialchars($pconfig['motd']);?></textarea>
-                    <br> 
-                    <?=gettext("Message of the day.");?></td>
-                </tr>
-				<tr> 
-                  <td width="22%" valign="top">&nbsp;</td>
-                  <td width="78%"> 
-                    <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)"> 
-                  </td>
-                </tr>
-                </table>
-</form>
-	</td>
-  </tr>
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabact"><a href="services_rsyncd.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Server");?></a></li>
+				<li class="tabinact"><a href="services_rsyncd_client.php"><?=gettext("Client");?></a></li>
+				<li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local");?></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabact"><a href="services_rsyncd.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Settings");?></a></li>
+				<li class="tabinact"><a href="services_rsyncd_share.php"><?=gettext("Shares");?></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr> 
+		<td class="tabcont">
+			<form action="services_rsyncd.php" method="post" name="iform" id="iform">
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<tr> 
+						<td colspan="2" valign="top" class="optsect_t">
+							<table border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr>
+									<td class="optsect_s"><strong><?=gettext("Rsync Daemon");?></strong></td>
+				  				<td align="right" class="optsect_s">
+										<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong>
+									</td>
+								</tr>
+				  		</table>
+						</td>
+					</tr>
+					<tr> 
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Read only");?></td>
+						<td width="78%" class="vtable">
+							<select name="readonly" class="formfld" id="readonly">
+								<?php $types = array(gettext("Yes"),gettext("No")); $vals = explode(" ", "yes no");?>
+								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
+								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['readonly']) echo "selected";?>> 
+								<?=htmlspecialchars($types[$j]);?>
+								</option>
+								<?php endfor;?>
+							</select>
+						</td>
+					</tr>
+					<tr>			  		
+						<td valign="top" class="vncellreq"><?=gettext("Map to user");?></td>
+						<td class="vtable"> 
+							<select name="rsyncd_user" class="formfld" id="rsyncd_user">
+								<option value="ftp"<?php if ("ftp" === $pconfig['rsyncd_user']) echo "selected";?>><?=gettext("Guest");?></option>
+								<?php foreach ($a_user as $user):?>
+								<option value="<?=$user['login'];?>"<?php if ($user['login'] === $pconfig['rsyncd_user']) echo "selected";?>><?php echo htmlspecialchars($user['login']);?></option>
+								<?php endforeach;?>
+							</select>
+						</td>
+					</tr>
+					<tr> 
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
+						<td width="78%" class="vtable"> 
+							<input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
+							<br><?=gettext("Alternate TCP port. Default is 873");?>
+						</td>
+					</tr>
+					<tr> 
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Maximum connections"); ?></td>
+						<td width="78%" class="vtable"> 
+							<input name="maxcon" type="text" class="formfld" id="maxcon" size="20" value="<?=htmlspecialchars($pconfig['maxcon']);?>"> 
+							<br><?=gettext("Maximum number of simultaneous connections. Default is 0 (unlimited).");?>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("MOTD");?></td>
+						<td width="78%" class="vtable"> 
+							<textarea name="motd" cols="65" rows="7" id="motd" class="formpre"><?=htmlspecialchars($pconfig['motd']);?></textarea><br/> 
+							<?=gettext("Message of the day.");?>
+						</td>
+					</tr>
+					<tr> 
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%"> 
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)"> 
+						</td>
+					</tr>
+				</table>
+			</form>
+		</td>
+	</tr>
 </table>
 <script language="JavaScript">
 <!--

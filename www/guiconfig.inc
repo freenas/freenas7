@@ -74,6 +74,7 @@ $d_landirty_path = $g['varrun_path'] . "/lan.dirty";
 $d_packagesconfdirty_path = $g['varrun_path'] . "/packages.conf.dirty";
 $d_cronconfdirty_path = $g['varrun_path'] . "/cron.conf.dirty";
 $d_afpconfdirty_path = $g['varrun_path'] . "/afp.conf.dirty";
+$d_rsyncdconfdirty_path = $g['varrun_path'] . "/rsyncd.conf.dirty";
 
 if (file_exists($d_firmwarelock_path)) {
 	if (!$d_isfwfile) {

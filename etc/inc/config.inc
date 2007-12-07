@@ -145,7 +145,7 @@ if (is_booting()) {
 					// Skip non USB (SCSI) device. The filesystem type must be MSDOS.
 					if (FALSE === ereg("da[0-9]*", $disk))
 						continue;
-	
+
 					// Display progress...
 					echo " {$disk}";
 
@@ -188,7 +188,7 @@ if (is_booting()) {
 
 *******************************************************************************
 FATAL ERROR!
-The device that contains the configuration file (config.xml) could not be 
+The device that contains the configuration file (config.xml) could not be
 found. {$productname} cannot continue booting.
 *******************************************************************************
 
@@ -1055,9 +1055,24 @@ function config_upgrade() {
 	}
 
 	/* Convert 3.5 -> 3.6 */
+	/* Configure current mount points as rsyncd shares. */
 	/* Convert attribute //rsync/rsyncclient/localshare. */
 	/* Convert attribute //rsync/rsynclocal/source and //rsync/rsynclocal/destination. */
 	if ($config['version'] === "3.5") {
+		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
+			$share = array();
+			$share['name'] = $config['mounts']['mount'][$i]['sharename'];
+			$share['path'] = "/mnt/" . $config['mounts']['mount'][$i]['sharename'];
+			$share['comment'] = $config['mounts']['mount'][$i]['desc'];
+			$share['browseable'] = true;
+			$share['rwmode'] = "ro";
+			$share['maxconnections'] = "10";
+			$share['hostsallow'] = "ALL";
+			$share['hostsdeny'] = "ALL";
+
+			$config['rsyncd']['share'][] = $share;
+		}
+
 		for ($i = 0; isset($config['rsync']['rsyncclient'][$i]); $i++) {
 			$config['rsync']['rsyncclient'][$i]['localshare'] = "/mnt/" . $config['rsync']['rsyncclient'][$i]['localshare'];
 		}

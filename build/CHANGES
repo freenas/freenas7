@@ -14,6 +14,8 @@ Majors changes:
 - Fix bug when setting static IP for LAN via WebGUI.
 - Upgrade PHPMailer to 2.0.0.
 - Modify rsync client/local WebGUI to define individual source/destination paths.
+- Modify rsync server WebGUI and rc-script. Now it is possible to manage rsync shares. Thanks to
+  Gerard Hickey for sending core code.
 
 Minors changes:
 - Add command '/usr/bin/nice'.
