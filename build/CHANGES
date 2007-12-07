@@ -11,7 +11,6 @@ Majors changes:
 - Upgrade WOL patch to version from 25.11.2007.
 - Add AFP share support. Thanks to Gerard Hickey.
 - Upgrade netbsd-iscsi (iscsi-target) to 20071130.
-- Fix bug when setting static IP for LAN via WebGUI.
 - Upgrade PHPMailer to 2.0.0.
 - Modify rsync client/local WebGUI to define individual source/destination paths.
 - Modify rsync server WebGUI and rc-script. Now it is possible to manage rsync shares. Thanks to
@@ -20,7 +19,6 @@ Majors changes:
 Minors changes:
 - Add command '/usr/bin/nice'.
 - Send hostname only on DHCP request. See http://sourceforge.net/forum/forum.php?thread_id=1879462&forum_id=507590.
-- Fix bugs in GVinum tools page.
 - Update translation files. Thanks to all translators supporting FreeNAS.
 - Add misc patches to Samba 3.0.26a.
 - Modify iscsi-target WebGUI.
@@ -30,6 +28,8 @@ Bug fixs:
 - Fix bug in extension menu formating code. Thanks to James Patterson.
 - Admin users are now added to the admin group (GID 1000). Patch done by Gerard Hickey.
 - Fix bug in mount configuration WebGUI for older gvinum/gmirror/gconcat software RAIDs.
+- Fix bugs in GVinum tools page.
+- Fix bug when setting static IP for LAN via WebGUI.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS.
