@@ -34,17 +34,6 @@ require_once("functions.inc");
 require_once("util.inc");
 require_once("rc.inc");
 
-function system_stop_common() {
-	/* Umount all disk s*/
-	disks_umount_all();
-
-	/* Detach all encrypted disks */
-	disks_geli_detach_all();
-
-	/* Stop all raid disks */
-	disks_raid_stop();
-}
-
 function system_reboot() {
 	// Initiate halt. Everything will be done automatically
 	// in /etc/rc.shutdown by executing rc-init scripts in
