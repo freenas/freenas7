@@ -97,6 +97,11 @@ if($_POST) {
 	$reqdfieldst = explode(" ", "string string");
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
+	// Verify that the share password is not more than 8 characters.
+	if (strlen($_POST['volpasswd']) > 8) {
+	    $input_errors[] = gettext("Share passwords can not be more than 8 characters.");
+	}
+
 	if(!$input_errors) {
 		$share = array();
 
@@ -121,7 +126,7 @@ if($_POST) {
 		touch($d_afpconfdirty_path);
 		write_config();
 
-    header("Location: services_afp_share.php");
+		header("Location: services_afp_share.php");
 		exit;
 	}
 }

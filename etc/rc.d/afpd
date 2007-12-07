@@ -40,15 +40,14 @@ create_conf()
 
 	# Generate '/var/etc/AppleVolumes.system'.
 	/usr/local/bin/xml sel -t -m "//mounts/mount" \
-		-v "concat('/mnt/',sharename,' &quot;',sharename,'&quot; ')" \
-		-o "options:usedots" \
-		-o "allow:@admin" \
+		-v "concat('&quot;/mnt/',sharename,'&quot; &quot;',sharename,'&quot; ')" \
+		-o "options:usedots allow:@admin" \
 		-n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_avsystem}
 
 	# Generate /var/etc/AppleVolumes.default
 	/usr/local/bin/xml sel -t -m "//afp/share" \
-		-v "concat(path, ' &quot;', name, '&quot; ')" \
+		-v "concat('&quot;',path,'&quot; &quot;',name,'&quot; ')" \
 		-i "string-length(volpasswd) > 0" -v "concat('password:', volpasswd, ' ')" -b \
 		-i "not(casefold[. = 'none'])" -v "concat('casefold:', casefold, ' ')" -b \
 		-i "string-length(volcharset) > 0" -v "concat('volcharset:', volcharset, ' ')" -b \
