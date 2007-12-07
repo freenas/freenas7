@@ -45,6 +45,7 @@ $pconfig['tcpforwarding'] = isset($config['sshd']['tcpforwarding']);
 $pconfig['enable'] = isset($config['sshd']['enable']);
 $pconfig['key'] = base64_decode($config['sshd']['private-key']);
 $pconfig['passwordauthentication'] = isset($config['sshd']['passwordauthentication']);
+$pconfig['compression'] = $config['sshd']['compression'];
 
 if ($_POST)
 {
@@ -78,7 +79,7 @@ if ($_POST)
 		$config['sshd']['enable'] = $_POST['enable'] ? true : false;
 		$config['sshd']['private-key'] = base64_encode($_POST['key']);
 		$config['sshd']['passwordauthentication'] = $_POST['passwordauthentication'] ? true : false;
-
+		$config['sshd']['compression'] = $_POST['compression'] ? true : false;
 		write_config();
 
 		$retval = 0;
@@ -102,6 +103,7 @@ function enable_change(enable_change) {
 	document.iform.permitrootlogin.disabled = endis;
 	document.iform.passwordauthentication.disabled = endis;
 	document.iform.tcpforwarding.disabled = endis;
+	document.iform.compression.disabled = endis;
 }
 //-->
 </script>
@@ -141,11 +143,17 @@ function enable_change(enable_change) {
 							<input name="passwordauthentication" type="checkbox" id="passwordauthentication" value="yes" <?php if ($pconfig['passwordauthentication']) echo "checked"; ?>>
 							<?=gettext("Enable keyboard-interactive authentication.");?>
 					</tr>
-					<tr>
+			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("TCP forwarding");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="tcpforwarding" type="checkbox" id="tcpforwarding" value="yes" <?php if ($pconfig['tcpforwarding']) echo "checked"; ?>>
 			        <?=gettext("Permit to do SSH Tunneling.");?>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Compression");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="compression" type="checkbox" id="compression" value="yes" <?php if ($pconfig['compression']) echo "checked"; ?>>
+			        <?=gettext("Enable compression.");?>
 			    </tr>
 					<tr>
 						<td colspan="2" class="list" height="12"></td>
