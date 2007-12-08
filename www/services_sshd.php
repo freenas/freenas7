@@ -45,7 +45,7 @@ $pconfig['tcpforwarding'] = isset($config['sshd']['tcpforwarding']);
 $pconfig['enable'] = isset($config['sshd']['enable']);
 $pconfig['key'] = base64_decode($config['sshd']['private-key']);
 $pconfig['passwordauthentication'] = isset($config['sshd']['passwordauthentication']);
-$pconfig['compression'] = $config['sshd']['compression'];
+$pconfig['compression'] = isset($config['sshd']['compression']);
 
 if ($_POST)
 {
@@ -153,7 +153,7 @@ function enable_change(enable_change) {
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Compression");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="compression" type="checkbox" id="compression" value="yes" <?php if ($pconfig['compression']) echo "checked"; ?>>
-			        <?=gettext("Enable compression.");?>
+			        <?=gettext("Enable compression. Useful for Internet transfer only.");?>
 			    </tr>
 					<tr>
 						<td colspan="2" class="list" height="12"></td>
