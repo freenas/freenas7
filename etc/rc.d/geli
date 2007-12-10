@@ -1,0 +1,46 @@
+#!/bin/sh
+# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: disks
+# REQUIRE: initrandom
+# BEFORE:  mountcritlocal
+# KEYWORD: nojail
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+name="geli"
+start_cmd=":"
+stop_cmd="geli_stop"
+
+# Creates a list of providers for GELI encryption.
+geli_make_list()
+{
+	local _devices
+
+	_devices=`/usr/local/bin/xml sel -t -m "//geli/vdisk" \
+		-v devicespecialfile -n \
+		${configxml_file} | /usr/local/bin/xml unesc |
+		while read _provider; do
+			_provider=${_provider#/dev/}
+			_provider=${_provider%.eli}
+			echo "${_provider} "
+		done`
+
+	echo $_devices
+}
+
+geli_stop()
+{
+	devices=`geli_make_list`
+
+	for provider in ${devices}; do
+		if [ -e "/dev/${provider}.eli" ]; then
+			geli detach "${provider}"
+		fi
+	done
+}
+
+load_rc_config $name
+run_rc_command "$1"

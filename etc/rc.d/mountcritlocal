@@ -7,10 +7,11 @@
 # KEYWORD: nojail
 
 . /etc/rc.subr
+. /etc/configxml.subr
 
 name="mountcritlocal"
 start_cmd="mountcritlocal_start"
-stop_cmd=":"
+stop_cmd="mountcritlocal_stop"
 
 mountcritlocal_start()
 {
@@ -25,6 +26,16 @@ mountcritlocal_start()
 	echo '.'
 
 	return ${_result}
+}
+
+mountcritlocal_stop()
+{
+	/usr/local/bin/xml sel -t -m "//mounts/mount" \
+		-v devicespecialfile -n \
+		${configxml_file} | /usr/local/bin/xml unesc |
+		while read _devicespecialfile; do
+			umount "${_devicespecialfile}" 2>/dev/null
+		done
 }
 
 load_rc_config ${name}
