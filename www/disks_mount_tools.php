@@ -74,8 +74,9 @@ if(!isset($do_action))
 if(isset($_GET['disk'])) {
 	$disk = $_GET['disk'];
 	$id = array_search_ex($disk, $a_mount, "mdisk");
-	if (!empty($id))
+	if (false !== $id) {
 		$sharename = $a_mount[$id]['sharename'];
+	}
 }
 
 if(isset($_GET['action'])) {
