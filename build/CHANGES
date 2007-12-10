@@ -15,6 +15,7 @@ Majors changes:
 - Modify rsync client/local WebGUI to define individual source/destination paths.
 - Modify rsync server WebGUI and rc-script. Now it is possible to manage rsync shares. Thanks to
   Gerard Hickey for sending core code.
+- Modify rc scripts. Mount points and GEli providers will be detached correctly during shutdown process.
 
 Minors changes:
 - Add command '/usr/bin/nice'.
