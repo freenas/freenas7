@@ -959,9 +959,9 @@ function disks_geli_attach($provider, $passphrase, $verbose = false)
 function disks_geli_detach($provider, $verbose = false)
 {
 	if (true == $verbose)
-		$result = system("/sbin/geli detach -f {$provider} 2>&1", $result);
+		$result = system("/sbin/geli detach {$provider} 2>&1", $result);
 	else
-		$result = mwexec("/sbin/geli detach -f {$provider}");
+		$result = mwexec("/sbin/geli detach {$provider}");
 
 	return $result;
 }
@@ -984,7 +984,7 @@ function disks_geli_detach_all()
 
 	if (is_array($config['geli']['vdisk'])) {
 		foreach($config['geli']['vdisk'] as $geli) {
-			$result |= disks_geli_detach($geli['name']) ;
+			$result |= disks_geli_detach($geli['devicespecialfile']) ;
 		}
 	}
 
