@@ -23,6 +23,7 @@ Minors changes:
 - Add misc patches to Samba 3.0.26a.
 - Modify iscsi-target WebGUI.
 - Add 'ro' (read only) flag for iscsi targets.
+- Add 'compression' checkbox to enable/disable it for SSH.
 
 Bug fixs:
 - Fix bug in extension menu formating code. Thanks to James Patterson.
