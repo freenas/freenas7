@@ -5,7 +5,7 @@
 # PROVIDE: disks
 # REQUIRE: initrandom
 # BEFORE:  mountcritlocal
-# KEYWORD: nojail
+# KEYWORD: nojail shutdown
 
 . /etc/rc.subr
 . /etc/configxml.subr
