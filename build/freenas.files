@@ -494,3 +494,6 @@ etc/usbd.conf
 etc/defaults/devfs.rules
 etc/defaults/pccard.conf
 etc/defaults/rc.conf
+
+####### contents of /etc/rc.d
+etc/rc.d/initrandom
