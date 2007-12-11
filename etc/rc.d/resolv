@@ -26,6 +26,8 @@
 #
 # $FreeBSD: /repoman/r/ncvs/src/etc/rc.d/resolv,v 1.37 2007/06/02 05:24:39 dougb Exp $
 #
+# Modified by Volker Theile (votdev@gmx.de)
+#
 
 # PROVIDE: resolv
 # REQUIRE: netif

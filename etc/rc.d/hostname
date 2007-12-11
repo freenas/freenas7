@@ -25,6 +25,8 @@
 #
 # $FreeBSD: src/etc/rc.d/hostname,v 1.8 2004/10/07 13:55:25 mtm Exp $
 #
+# Modified by Volker Theile (votdev@gmx.de)
+#
 
 # PROVIDE: hostname
 # REQUIRE: mountcritlocal
