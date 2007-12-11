@@ -79,7 +79,7 @@ if ($_GET['act'] == "del") {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
@@ -112,44 +112,39 @@ if ($_GET['act'] == "del") {
 				<?php endif; ?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="25%" class="listhdrr"><?=gettext("Volume Name"); ?></td>
-						<td width="25%" class="listhdrr"><?=gettext("Type"); ?></td>
-						<td width="20%" class="listhdrr"><?=gettext("Size"); ?></td>
-						<td width="20%" class="listhdrr"><?=gettext("Status"); ?></td>
+						<td width="25%" class="listhdrr"><?=gettext("Volume Name");?></td>
+						<td width="25%" class="listhdrr"><?=gettext("Type");?></td>
+						<td width="20%" class="listhdrr"><?=gettext("Size");?></td>
+						<td width="20%" class="listhdrr"><?=gettext("Status");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
+					<?php $raidstatus = get_gvinum_disks_list();?>
 					<?php $i = 0; foreach ($a_raid as $raid):?>
+					<?php
+          $size = gettext("Unknown");
+          $status = gettext("Stopped");
+					$configuring = file_exists($d_raidconfdirty_path) && in_array($raid['name']."\n",file($d_raidconfdirty_path));
+          if (true == $configuring) {
+          	$size = gettext("Configuring");
+          	$status = gettext("Configuring");
+          } else {
+          	if (is_array($raidstatus) && array_key_exists($raid['name'], $raidstatus)) {
+          		$size = $raidstatus[$raid['name']]['size'];
+          		$status = $raidstatus[$raid['name']]['state'];
+						}
+					}
+          ?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($raid['name']);?></td>
 						<td class="listr"><?=htmlspecialchars($raid['type']);?></td>
-						<td class="listr">
-							<?php
-							$raidstatus = get_gvinum_disks_list();
-							$raidconfiguring = file_exists($d_raidconfdirty_path) && in_array($raid['name']."\n", file($d_raidconfdirty_path));
-							if ($raidconfiguring) {
-								echo gettext("Configuring");
-							} else {
-								echo $raidstatus[$raid['name']]['size'];
-							}
-							?>
-							&nbsp;
-						</td>
-						<td class="listbg">
-							<?php
-							if ($raidconfiguring) {
-								echo gettext("Configuring");
-							} else {
-								echo $raidstatus[$raid['name']]['state'];
-							}
-							?>
-							&nbsp;
-						</td>
+						<td class="listr"><?=$size;?>&nbsp;</td>
+						<td class="listbg"><?=$status;?>&nbsp;</td>
 						<td valign="middle" nowrap class="list">
 							<a href="disks_raid_gvinum_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RAID"); ?>" width="17" height="17" border="0"></a>&nbsp;
 							<a href="disks_raid_gvinum.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" width="17" height="17" border="0"></a>
 						</td>
 					</tr>
-					<?php $i++; endforeach; ?>
+					<?php $i++; endforeach;?>
 					<tr>
 						<td class="list" colspan="4"></td>
 						<td class="list">

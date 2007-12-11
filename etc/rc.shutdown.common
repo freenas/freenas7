@@ -1,6 +1,6 @@
 #!/usr/local/bin/php -f
 <?php
-require_once("globals.inc");
+require_once("config.inc");
 require_once("functions.inc");
 
 /* Stop all RAID systems. */
