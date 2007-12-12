@@ -16,5 +16,9 @@ post-patch:
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/e2fsck/e2fsck ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/misc/mke2fs ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/fsck_ext2fs ${FREENAS_ROOTFS}/usr/local/sbin
+
+	@${LN} -s -f -v /usr/local/sbin/e2fsck ${FREENAS_ROOTFS}/sbin/e2fsck
+	@${LN} -s -f -v /usr/local/sbin/fsck_ext2fs ${FREENAS_ROOTFS}/sbin/fsck_ext2fs
 
 .include "bsd.freenas.mk"
