@@ -40,15 +40,15 @@ function array_search_ex($needle, $haystack, $key) {
     $found = false;
     if(is_array($needle) && is_array($key)) {
       foreach($needle as $n => $needlev) {
-        $found = ($value[$key[$n]] == $needlev);
-        if(false == $found) {
+        $found = ($value[$key[$n]] === $needlev);
+        if(false === $found) {
           break;
         }
       }
     } else {
-      $found = ($value[$key] == $needle);
+      $found = ($value[$key] === $needle);
     }
-    if(true == $found) {
+    if(true === $found) {
       return $haystackval;
     }
   }

@@ -25,7 +25,7 @@ bgfsck_start ()
 	fi
 	echo "${bgfsck_msg}."
 
-	/usr/local/bin/xml sel -t -m "//mounts/mount[fstype = 'ufs' or fstype = 'msdosfs']" \
+	/usr/local/bin/xml sel -t -m "//mounts/mount[fstype = 'ufs' or fstype = 'msdosfs' or fstype = 'ext2fs']" \
 		-v "concat(fstype,' ',devicespecialfile,' ',mdisk)" \
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \

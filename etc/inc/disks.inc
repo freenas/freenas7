@@ -1132,6 +1132,8 @@ function disks_fsck($device,$umount = false)
 
 	// Get the id of the disk.
 	$id = array_search_ex($device, $config['mounts']['mount'], "devicespecialfile");
+	if (false === $id)
+		return 1;
 
 	// Get the mount configuration.
 	$mount = $config['mounts']['mount'][$id];
@@ -1146,12 +1148,11 @@ function disks_fsck($device,$umount = false)
 	}
 
 	switch($mount['fstype']) {
-		case "":
-		case "ufs":
-			system("/sbin/fsck -t ufs -y -f " . escapeshellarg($device));
+		case "cd9660":
+		case "ntfs":
 			break;
-		case "msdosfs":
-			system("/sbin/fsck -t msdos -y -f " . escapeshellarg($device));
+		default:
+			system("/sbin/fsck -t {$mount['fstype']} -y -f " . escapeshellarg($device));
 			break;
 	}
 
