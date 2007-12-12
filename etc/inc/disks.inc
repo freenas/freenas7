@@ -121,10 +121,8 @@ function disks_mount($mount)
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
 	if (is_booting()) {
 		if (is_array($config['geli']['vdisk'])) {
-			$a_geli = $config['geli']['vdisk'];
-			if (array_search_ex($mount['mdisk'], $a_geli, "devicespecialfile")) {
-				write_console("\nSkip mounting {$mount['sharename']}: Passphrase needed.");
-				write_log("Passphrase needed for '{$mountname}'");
+			if (array_search_ex($mount['mdisk'], $config['geli']['vdisk'], "devicespecialfile")) {
+				write_log("Skip mounting '{$mount['sharename']}': Passphrase needed for '{$mountname}'.");
 				return 0;
 			}
 		}
@@ -158,19 +156,9 @@ function disks_mount($mount)
 				write_log("Device {$devicespecialfile} mounted using UFS on '{$mountname}'");
 				$result = 0;
 			} else {
-				write_log("Error: Failed to detect disk {$devicespecialfile}, starting a UFS fsck");
-				// Do a filesystem check.
-				mwexec("/sbin/fsck -y -t ufs {$devicespecialfile}");
-				// Retry to mount the partition.
-				$result = mwexec("/sbin/mount -t ufs -o acls {$readonly} {$devicespecialfile} '{$mountname}'");
-				if (0 == $result) {
-					write_log("Device {$devicespecialfile} mounted using UFS on '{$mountname}'");
-					$result = 0;
-				} else {
-					@rmdir("{$mountname}");
-					write_log("Error: Failed to mount {$devicespecialfile} using UFS");
-					$result = 1;
-				}
+				@rmdir($mountname);
+				write_log("Error: Failed to mount {$devicespecialfile} using UFS");
+				$result = 1;
 			}
 			break;
 
@@ -180,19 +168,9 @@ function disks_mount($mount)
 				write_log("Device {$devicespecialfile} mounted using FAT on '{$mountname}'");
 				$result = 0;
 			} else {
-				write_log("Error: Failed to detect disk {$devicespecialfile}, starting a FAT fsck");
-				// Do a filesystem check.
-				mwexec("/sbin/fsck -y -t msdosfs {$devicespecialfile}");
-				// Retry to mount the partition.
-				$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$readonly} {$devicespecialfile} '{$mountname}'");
-				if (0 == $result) {
-					write_log("Device {$devicespecialfile} mounted using FAT on '{$mountname}'");
-					$result = 0;
-				} else {
-					@rmdir("{$mountname}");
-					write_log("Error: Failed to mount {$devicespecialfile} using FAT");
-					$result = 1;
-				}
+				@rmdir($mountname);
+				write_log("Error: Failed to mount {$devicespecialfile} using FAT");
+				$result = 1;
 			}
 			break;
 
@@ -202,7 +180,7 @@ function disks_mount($mount)
 				write_log("Device {$devicespecialfile} mounted as CD/DVD on '{$mountname}'");
 				$result = 0;
 			} else {
-				@rmdir("{$mountname}");
+				@rmdir($mountname);
 				write_log("Error: Failed to mount {$devicespecialfile} as CD/DVD");
 				$result = 1;
 			}
@@ -216,8 +194,8 @@ function disks_mount($mount)
 				write_log("Disk {$devicespecialfile} mounted using NTFS on '{$mountname}'");
 				$result = 0;
 			} else {
-				@rmdir("{$mountname}");
-				write_log("Error: Failed to mount {$devicespecialfile} using NTFS.");
+				@rmdir($mountname);
+				write_log("Error: Failed to mount {$devicespecialfile} using NTFS");
 				$result = 1;
 			}
 			break;
@@ -228,19 +206,9 @@ function disks_mount($mount)
 				write_log("Disk {$devicespecialfile} mounted using EXT2 on '{$mountname}'");
 				$result = 0;
 			} else {
-				write_log("Error: Failed to detect disk {$devicespecialfile}, starting a e2fsck");
-				// Do a filesystem check.
-				mwexec("/usr/local/sbin/e2fsck -f -p {$devicespecialfile}");
-				// Retry to mount the partition.
-				$result = mwexec("/sbin/mount -t ext2fs {$readonly} {$devicespecialfile} '{$mountname}'");
-				if (0 == $result) {
-					write_log("Disk {$devicespecialfile} mounted using EXT2 on '{$mountname}'");
-					$result = 0;
-				} else {
-					@rmdir("{$mountname}");
-					write_log("Error: Can't mount {$devicespecialfile} using EXT2");
-					$result = 1;
-				}
+				@rmdir("{$mountname}");
+				write_log("Error: Failed to mount {$devicespecialfile} using EXT2");
+				$result = 1;
 			}
 			break;
 	}
