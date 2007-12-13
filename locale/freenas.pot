@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-11-30 06:48+0000\n"
+"PO-Revision-Date: 2007-12-13 09:55+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -138,6 +138,9 @@ msgstr ""
 msgid "Access"
 msgstr ""
 
+msgid "Access Mode"
+msgstr ""
+
 msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
 msgstr ""
 
@@ -245,7 +248,16 @@ msgstr ""
 msgid "All"
 msgstr ""
 
+msgid "All mounted volumes are automatically shared and restricted to only allow administrators to connect. The volumes will not show up in the list of shares."
+msgstr ""
+
+msgid "All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."
+msgstr ""
+
 msgid "All users will have the root privilege."
+msgstr ""
+
+msgid "Allow"
 msgstr ""
 
 msgid "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -254,8 +266,14 @@ msgstr ""
 msgid "Allow users to resume and upload files, but NOT to delete or rename them. Directories can be removed, but only if they are empty. However, overwriting existing files is still allowed."
 msgstr ""
 
+msgid "Allows  certain  users and groups to have read/write access to a share. This follows the allow option format."
+msgstr ""
+
 #, php-format
 msgid "Allows %s to try and become a local master browser."
+msgstr ""
+
+msgid "Allows certain users and groups to have read-only  access  to  a share. This follows the allow option format."
 msgstr ""
 
 msgid "Alternate TCP port. Default is 22"
@@ -307,7 +325,7 @@ msgstr ""
 msgid "Authorised network"
 msgstr ""
 
-msgid "Authorized"
+msgid "Authorized networks"
 msgstr ""
 
 msgid "AutoScale"
@@ -340,6 +358,9 @@ msgstr ""
 msgid "Browseable"
 msgstr ""
 
+msgid "CD/DVD or Old Software RAID"
+msgstr ""
+
 msgid "CIFS/SMB"
 msgstr ""
 
@@ -359,6 +380,9 @@ msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr ""
 
 msgid "Cannot get data about interface"
+msgstr ""
+
+msgid "Case Folding"
 msgstr ""
 
 msgid "Certificate"
@@ -419,6 +443,12 @@ msgid "Community"
 msgstr ""
 
 msgid "Compliant profile to be used."
+msgstr ""
+
+msgid "Compression"
+msgstr ""
+
+msgid "Compression is worth using if your connection is slow. The efficiency of the compression depends on the type of the file, and varies widely. Useful for internet transfer only."
 msgstr ""
 
 msgid "Configuring"
@@ -564,6 +594,9 @@ msgstr ""
 msgid "Delete user"
 msgstr ""
 
+msgid "Deny"
+msgstr ""
+
 msgid "Description"
 msgstr ""
 
@@ -646,6 +679,9 @@ msgid "Disk space usage"
 msgstr ""
 
 msgid "Disks"
+msgstr ""
+
+msgid "Do not create .AppleDouble directory"
 msgstr ""
 
 msgid "Do you really want to delete this RSYNC?"
@@ -822,10 +858,16 @@ msgstr ""
 msgid "Enable NTP"
 msgstr ""
 
+msgid "Enable Windows filename restrictions"
+msgstr ""
+
 msgid "Enable Zeroconf"
 msgstr ""
 
 msgid "Enable anonymous login."
+msgstr ""
+
+msgid "Enable compression."
 msgstr ""
 
 msgid "Enable control web page."
@@ -1123,6 +1165,9 @@ msgid "Group suffix"
 msgstr ""
 
 msgid "Groups"
+msgstr ""
+
+msgid "Guest"
 msgstr ""
 
 msgid "HTTP Proxy"
@@ -1435,6 +1480,9 @@ msgstr ""
 msgid "Max. conn. per IP"
 msgstr ""
 
+msgid "Maximum Connections"
+msgstr ""
+
 msgid "Maximum connections"
 msgstr ""
 
@@ -1596,6 +1644,9 @@ msgid "Networks authorized."
 msgstr ""
 
 msgid "No"
+msgstr ""
+
+msgid "No AppleDouble Directory"
 msgstr ""
 
 msgid "No RSYNC Client configured"
@@ -1864,7 +1915,16 @@ msgstr ""
 msgid "Raid name"
 msgstr ""
 
+msgid "Read Only Access"
+msgstr ""
+
 msgid "Read only"
+msgstr ""
+
+msgid "Read/Write"
+msgstr ""
+
+msgid "Read/Write Access"
 msgstr ""
 
 msgid "Reboot"
@@ -1985,7 +2045,7 @@ msgstr ""
 msgid "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
 msgstr ""
 
-msgid "Select EFI GPT if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select old software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+msgid "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select 'Old software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS release."
 msgstr ""
 
 msgid "Select the FreeBSD package to be installed."
@@ -2036,13 +2096,28 @@ msgstr ""
 msgid "Set browseable"
 msgstr ""
 
+msgid "Set browseable."
+msgstr ""
+
+msgid "Set share password."
+msgstr ""
+
 msgid "Settings"
 msgstr ""
 
 msgid "Share"
 msgstr ""
 
+msgid "Share Character Set"
+msgstr ""
+
 msgid "Share Name"
+msgstr ""
+
+msgid "Share Password"
+msgstr ""
+
+msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
 msgid "Shares"
@@ -2099,6 +2174,9 @@ msgstr ""
 msgid "Specifies the default bind DN to use when performing ldap operations, example:cn=administrator,dc=example,dc=com "
 msgstr ""
 
+msgid "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, etc."
+msgstr ""
+
 msgid "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
 
@@ -2121,6 +2199,9 @@ msgid "Status"
 msgstr ""
 
 msgid "Status report successfully sent."
+msgstr ""
+
+msgid "Stopped"
 msgstr ""
 
 msgid "Storage"
@@ -2221,6 +2302,9 @@ msgid "Target name"
 msgstr ""
 
 msgid "Temperature"
+msgstr ""
+
+msgid "The  deny  option specifies users and groups who are not allowed access to the share. It follows the same  format  as  the  allow option."
 msgstr ""
 
 #, php-format
@@ -2524,6 +2608,18 @@ msgstr ""
 msgid "This certificate does not appear to be valid."
 msgstr ""
 
+msgid "This controls how the case of filenames are viewed and stored."
+msgstr ""
+
+msgid "This controls the access a remote host has to this share."
+msgstr ""
+
+msgid "This controls the access to this share with an access password."
+msgstr ""
+
+msgid "This controls whether the .AppleDouble directory gets created unless absolutely needed. This option should not be used if files are access mostly by Mac computers."
+msgstr ""
+
 msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
 msgstr ""
 
@@ -2540,6 +2636,9 @@ msgid "This disk/partition is already configured."
 msgstr ""
 
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
+msgstr ""
+
+msgid "This forces filenames to be restricted to the character set used by Windows. This is <em>not</em> recommended for shares used principally by Mac computers."
 msgstr ""
 
 msgid "This group already exists in the group list."
@@ -2561,6 +2660,9 @@ msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 msgstr ""
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
+msgstr ""
+
+msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 msgstr ""
 
 msgid "This parameter is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to disable this setting."
@@ -2611,6 +2713,9 @@ msgid "To increase CIFS performance try the following:<br>- Enable 'Large read/w
 msgstr ""
 
 msgid "Tools"
+msgstr ""
+
+msgid "Total number of connections allowed to this share."
 msgstr ""
 
 msgid "Traceroute"
@@ -2679,6 +2784,9 @@ msgid "Unison File Synchronisation"
 msgstr ""
 
 msgid "Unix charset"
+msgstr ""
+
+msgid "Unknown"
 msgstr ""
 
 msgid "Unknown or unformatted"
@@ -2790,6 +2898,9 @@ msgstr ""
 msgid "Who"
 msgstr ""
 
+msgid "Windows Filename Restrictions"
+msgstr ""
+
 msgid "Wireless"
 msgstr ""
 
@@ -2800,6 +2911,9 @@ msgid "Workgroup to be member of."
 msgstr ""
 
 msgid "Working Directory"
+msgstr ""
+
+msgid "Write only"
 msgstr ""
 
 msgid "XboX 360"
@@ -2835,9 +2949,6 @@ msgid "You may need enough space to duplicate all files being synced"
 msgstr ""
 
 msgid "You must add disks first."
-msgstr ""
-
-msgid "You must configure mount point first."
 msgstr ""
 
 msgid "You must create a group first."
@@ -2935,9 +3046,6 @@ msgid "pasv_min_port"
 msgstr ""
 
 msgid "rotated block-interleaved parity"
-msgstr ""
-
-msgid "rw"
 msgstr ""
 
 msgid "seconds"
