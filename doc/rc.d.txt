@@ -1,3 +1,4 @@
 !!! ATTENTION !!!
-Please take care about the script execution order when changing or adding new scripts.
+- Please take care about the script execution order when changing or adding new scripts.
+- Don't forget to set file properties 'svn:executable *'.
 !!! ATTENTION !!!
