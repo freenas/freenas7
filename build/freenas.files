@@ -496,8 +496,5 @@ etc/defaults/pccard.conf
 etc/defaults/rc.conf
 
 ####### contents of /etc/rc.d
-etc/rc.d/initrandom
-etc/rc.d/dmesg
-etc/rc.d/SERVERS
 etc/rc.d/LOGIN
 etc/rc.d/local

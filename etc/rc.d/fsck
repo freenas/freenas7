@@ -7,7 +7,7 @@
 #
 
 # PROVIDE: fsck
-# REQUIRE: CONFIG
+# REQUIRE: localswap
 # BEFORE:  mountcritlocal
 # KEYWORD: nojail
 

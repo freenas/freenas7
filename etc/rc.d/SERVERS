@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# $NetBSD: SERVERS,v 1.9 2002/03/22 04:33:57 thorpej Exp $
+# $FreeBSD: src/etc/rc.d/SERVERS,v 1.5.2.2 2006/04/23 15:29:11 delphij Exp $
+#
+# Modified by Volker Theile (votdev@gmx.de)
+
+# PROVIDE: SERVERS
+
+#	This is a dummy dependency, for early-start servers relying on
+#	some basic configuration.
