@@ -4,6 +4,7 @@
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
+# - Remove REQUIRE: var
 # - Skip over *.hints files, otherwise 'xml' cmd fails.
 #
 
