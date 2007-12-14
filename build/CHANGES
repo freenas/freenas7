@@ -25,6 +25,7 @@ Minors changes:
 - Modify iscsi-target WebGUI.
 - Add 'ro' (read only) flag for iscsi targets.
 - Add 'compression' checkbox to enable/disable it for SSH.
+- Add ushare mime patch to fix avi playback on X360. Also add video support for avc and hdmov and audio support for 3gp and flac.
 
 Bug fixs:
 - Fix bug in extension menu formating code. Thanks to James Patterson.
