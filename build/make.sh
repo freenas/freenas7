@@ -747,12 +747,12 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Ports\" \\
 		cd $FREENAS_SVNDIR/build/ports/$port
 		if [ "$choice" == "build" ]; then
 			# Build port.
-			make -I ${FREENAS_MKINCLUDESDIR} clean build
+			make clean build
 		elif [ "$choice" == "install" ]; then
 			# Delete cookie first, otherwise Makefile will skip this step.
 			rm -f ./work/.install_done.*
 			# Install port.
-			env NO_PKG_REGISTER=1 make -I ${FREENAS_MKINCLUDESDIR} install
+			env NO_PKG_REGISTER=1 make install
 		fi
 		[ 0 != $? ] && return 1 # successful?
 	done

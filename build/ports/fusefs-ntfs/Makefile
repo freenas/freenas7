@@ -6,12 +6,18 @@ CATEGORIES=		sysutils
 COMMENT=			Mount NTFS partitions and disk images
 MAINTAINER=		votdev@gmx.de
 
+# No files are needed to be fetched.
+DISTFILES?=
+# No build is required for this port.
+NO_BUILD?=	yes
+# Don't register a port installation as a package.
+NO_PKG_REGISTER?=	yes
+# Set default target to execute when a port is calling a dependency.
+DEPENDS_TARGET=
+
 BUILD_DEPENDS=	fusefs-ntfs:${PORTSDIR}/sysutils/fusefs-ntfs \
 								fusefs-kmod:${PORTSDIR}/sysutils/fusefs-kmod \
 								fusefs-libs:${PORTSDIR}/sysutils/fusefs-libs
-# No build is required for this port.
-NO_BUILD?=			1
-DISTFILES?=
 
 post-patch:
 # Copy fusefs options file

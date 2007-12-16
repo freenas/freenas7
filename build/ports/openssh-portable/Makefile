@@ -6,9 +6,16 @@ CATEGORIES=		security
 COMMENT=			The portable version of OpenBSD's OpenSSH
 MAINTAINER=		votdev@gmx.de
 
-BUILD_DEPENDS=	openssh-portable:${PORTSDIR}/security/openssh-portable
+# No files are needed to be fetched.
+DISTFILES?=
 # No build is required for this port.
-NO_BUILD?=			1
+NO_BUILD?=	yes
+# Don't register a port installation as a package.
+NO_PKG_REGISTER?=	yes
+# Set default target to execute when a port is calling a dependency.
+DEPENDS_TARGET=
+
+BUILD_DEPENDS=	openssh-portable:${PORTSDIR}/security/openssh-portable
 
 post-patch:
 # Copy openssh options file
@@ -26,4 +33,4 @@ do-install:
 	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/etc/ssh
 	@${LN} -fsv /etc/ssh/moduli ${FREENAS_ROOTFS}/usr/local/etc/ssh/moduli
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

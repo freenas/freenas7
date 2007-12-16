@@ -6,11 +6,18 @@ CATEGORIES=		net
 COMMENT=			A straightforward SNTP daemon/utility
 MAINTAINER=		votdev@gmx.de
 
-BUILD_DEPENDS=	msntp:${PORTSDIR}/net/msntp
+# No files are needed to be fetched.
+DISTFILES?=
 # No build is required for this port.
-NO_BUILD?=			1
+NO_BUILD?=	yes
+# Don't register a port installation as a package.
+NO_PKG_REGISTER?=	yes
+# Set default target to execute when a port is calling a dependency.
+DEPENDS_TARGET=
+
+BUILD_DEPENDS=	msntp:${PORTSDIR}/net/msntp
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/net/msntp/work/msntp*/msntp ${FREENAS_ROOTFS}/usr/local/bin
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

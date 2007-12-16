@@ -2,17 +2,17 @@ PORTNAME=				rconf
 PORTVERSION=		1.0
 PORTREVISION=		0
 CATEGORIES=			sysutils
-
-MAINTAINER=			votdev@gmx.de
 COMMENT=				Command-line tool to manage content of rc.conf
+MAINTAINER=			votdev@gmx.de
 
-NO_BUILD=		yes
-NO_WRKSUBDIR=		yes
+# No files are needed to be fetched.
+DISTFILES?=
+# No build is required for this port.
+NO_BUILD?=	yes
 
-DISTFILES=
-PLIST_FILES=	sbin/${PORTNAME}
+NO_WRKSUBDIR=	yes
 
 do-install:
 	${INSTALL_SCRIPT} ${FILESDIR}/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/sbin/
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

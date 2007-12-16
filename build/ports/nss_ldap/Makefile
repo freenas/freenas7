@@ -4,11 +4,18 @@ CATEGORIES=		net
 COMMENT=			RFC 2307 NSS module
 MAINTAINER=		votdev@gmx.de
 
-BUILD_DEPENDS=	nss_ldap:${PORTSDIR}/net/nss_ldap
+# No files are needed to be fetched.
+DISTFILES?=
 # No build is required for this port.
-NO_BUILD?=			1
+NO_BUILD?=	yes
+# Don't register a port installation as a package.
+NO_PKG_REGISTER?=	yes
+# Set default target to execute when a port is calling a dependency.
+DEPENDS_TARGET=
+
+BUILD_DEPENDS=	nss_ldap:${PORTSDIR}/net/nss_ldap
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/net/nss_ldap/work/nss_ldap-*/nss_ldap.so ${FREENAS_ROOTFS}/usr/local/lib/nss_ldap.so.1
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

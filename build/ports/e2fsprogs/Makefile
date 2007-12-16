@@ -4,10 +4,16 @@ CATEGORIES=		sysutils
 COMMENT=			Utilities to manipulate ext2/ext3 filesystems
 MAINTAINER=		votdev@gmx.de
 
-BUILD_DEPENDS=	e2fsprogs:${PORTSDIR}/sysutils/e2fsprogs
-# No build is required for this port.
-NO_BUILD?=			1
+# No files are needed to be fetched.
 DISTFILES?=
+# No build is required for this port.
+NO_BUILD?=	yes
+# Don't register a port installation as a package.
+NO_PKG_REGISTER?=	yes
+# Set default target to execute when a port is calling a dependency.
+DEPENDS_TARGET=
+
+BUILD_DEPENDS=	e2fsprogs:${PORTSDIR}/sysutils/e2fsprogs
 
 post-patch:
 # Copy options file

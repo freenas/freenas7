@@ -4,9 +4,16 @@ CATEGORIES=		textproc
 COMMENT=			Command line XML toolkit
 MAINTAINER=		votdev@gmx.de
 
-BUILD_DEPENDS=	xml:${PORTSDIR}/textproc/xmlstarlet
+# No files are needed to be fetched.
+DISTFILES?=
 # No build is required for this port.
-NO_BUILD?=			1
+NO_BUILD?=	yes
+# Don't register a port installation as a package.
+NO_PKG_REGISTER?=	yes
+# Set default target to execute when a port is calling a dependency.
+DEPENDS_TARGET=
+
+BUILD_DEPENDS=	xml:${PORTSDIR}/textproc/xmlstarlet
 
 post-patch:
 # Copy libxslt options file
@@ -16,4 +23,4 @@ post-patch:
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/textproc/xmlstarlet/work/xmlstarlet-*/src/xml ${FREENAS_ROOTFS}/usr/local/bin
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

@@ -4,12 +4,19 @@ CATEGORIES=		sysutils
 COMMENT=			Utilities to manipulaite NTFS filesystems
 MAINTAINER=		FreeNAS team
 
-BUILD_DEPENDS=	ntfsprogs:${PORTSDIR}/sysutils/ntfsprogs
+# No files are needed to be fetched.
+DISTFILES?=
 # No build is required for this port.
-NO_BUILD?=			1
+NO_BUILD?=	yes
+# Don't register a port installation as a package.
+NO_PKG_REGISTER?=	yes
+# Set default target to execute when a port is calling a dependency.
+DEPENDS_TARGET=
+
+BUILD_DEPENDS=	ntfsprogs:${PORTSDIR}/sysutils/ntfsprogs
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/ntfsprogs/work/ntfsprogs-*/ntfsprogs/.libs/ntfsfix ${FREENAS_ROOTFS}/usr/local/bin
 	@${CP} -pv ${PORTSDIR}/sysutils/ntfsprogs/work/ntfsprogs-*/libntfs/.libs/libntfs.so.9 ${FREENAS_ROOTFS}/usr/local/lib/libntfs.so.9
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>
