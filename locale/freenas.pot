@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-12-13 09:55+0000\n"
+"PO-Revision-Date: 2007-12-16 12:46+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -2046,6 +2046,9 @@ msgid "Second configuration step: Declaring the filesystem used by your <a href=
 msgstr ""
 
 msgid "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select 'Old software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS release."
+msgstr ""
+
+msgid "Select mount point where to create the swap file."
 msgstr ""
 
 msgid "Select the FreeBSD package to be installed."
