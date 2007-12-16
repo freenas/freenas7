@@ -120,14 +120,15 @@ function enable_change(enable_change) {
 				  <?php foreach ($a_mount as $mount): ?>
 				  <option value="<?=$mount['sharename'];?>" <?php if ($mount['sharename'] == $pconfig['swap_mountname']) echo "selected";?>><?php echo htmlspecialchars($mount['sharename']);?></option>
 		  		<?php endforeach; ?>
-		  	</select>
+		  	</select><br/>
+		  	<span class="vexpl"><?=gettext("Select mount point where to create the swap file.");?></span>
 		  </td>
 		</tr>
 		  <tr>
           <td width="22%" valign="top" class="vncellreq"><?=gettext("Swap file size") ;?></td>
           <td width="78%" class="vtable">
               <input name="swap_size" type="text" class="formfld" id="swap_size" size="30" value="<?=htmlspecialchars($pconfig['swap_size']);?>"><br>
-							<?=gettext("Size in MB.") ;?>
+							<span class="vexpl"><?=gettext("Size in MB.");?></span>
             </td>
           </tr>
    				<tr>
