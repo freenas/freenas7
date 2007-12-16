@@ -11,7 +11,8 @@ NO_BUILD?=	yes
 # Don't register a port installation as a package.
 NO_PKG_REGISTER?=	yes
 # Set default target to execute when a port is calling a dependency.
-DEPENDS_TARGET=
+ALWAYS_BUILD_DEPENDS=	yes
+DEPENDS_TARGET=	clean build
 
 BUILD_DEPENDS=	pam_ldap:${PORTSDIR}/security/pam_ldap
 
