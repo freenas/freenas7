@@ -752,7 +752,7 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Ports\" \\
 			# Delete cookie first, otherwise Makefile will skip this step.
 			rm -f ./work/.install_done.*
 			# Install port.
-			make -I ${FREENAS_MKINCLUDESDIR} install
+			env NO_PKG_REGISTER=1 make -I ${FREENAS_MKINCLUDESDIR} install
 		fi
 		[ 0 != $? ] && return 1 # successful?
 	done
