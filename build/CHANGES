@@ -11,6 +11,7 @@ Bug fixs:
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS.
+- It is not possible to encrypt a disk partition, only complete disks are supported.
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
