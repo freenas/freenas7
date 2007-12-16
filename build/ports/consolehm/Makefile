@@ -1,23 +1,21 @@
 PORTNAME=			consolehm
-PORTVERSION=	1.31
-PORTREVISION=	1
+PORTVERSION=	1.0
 CATEGORIES=		sysutils
 COMMENT=			Console based hardware monitor
 MAINTAINER=		votdev@gmx.de
 
-MASTER_SITES=				${MASTER_SITE_LOCAL}
-MASTER_SITE_SUBDIR=	fenner
+# No files are needed to be fetched.
+DISTFILES?=
+# No build is required for this port.
+NO_BUILD?=	yes
+# Don't register a port installation as a package.
+NO_PKG_REGISTER?=	yes
+# Set default target to execute when a port is calling a dependency.
+DEPENDS_TARGET=
 
-WRKSRC=					${WRKDIR}/consolehm/consolehm
-GNU_CONFIGURE=	yes
-
-.include <bsd.port.pre.mk>
-
-.if ${ARCH} == "ia64" || ${ARCH} == "sparc64"
-BROKEN=		"Does not compile on ia64 or sparc64"
-.endif
+BUILD_DEPENDS=	consolehm:${PORTSDIR}/sysutils/consolehm
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/chm ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/consolehm/work/consolehm*/consolehm/chm ${FREENAS_ROOTFS}/usr/local/bin
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>
