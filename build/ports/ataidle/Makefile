@@ -1,14 +1,13 @@
 PORTNAME=			ataidle
 PORTVERSION=	1.0
+PORTREVISION=	1
 CATEGORIES=		sysutils
 COMMENT=			Utility to set spindown timeout for ATA drives
 MAINTAINER=		votdev@gmx.de
 
-BUILD_DEPENDS=	ataidle:${PORTSDIR}/sysutils/ataidle
-# No build is required for this port.
-NO_BUILD?=			1
+MASTER_SITES=	http://www.cran.org.uk/bruce/software/
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/ataidle/work/ataidle*/ataidle ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/ataidle ${FREENAS_ROOTFS}/usr/local/sbin
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

@@ -4,12 +4,18 @@ CATEGORIES=		sysutils
 COMMENT=			Adaptec SCSI RAID administration tool
 MAINTAINER=		votdev@gmx.de
 
-BUILD_DEPENDS=	aaccli:${PORTSDIR}/sysutils/aaccli
-# No build is required for this port.
-NO_BUILD?=			1
+MASTER_SITES=	http://download.adaptec.com/raid/ccu/freebsd/
+DISTNAME=			5400s_fbsd_cli_v10
+
+USE_ZIP=					yes
+RESTRICTED=				May not be redistributed in binary form
+NO_CDROM=					yes
+IA32_BINARY_PORT=	yes
+NO_BUILD=					yes
+NO_WRKSUBDIR=			yes
 
 do-install:
-	@${TAR} -zxf ${PORTSDIR}/sysutils/aaccli/work/aaccli-*.tgz -C ${PORTSDIR}/sysutils/aaccli/work
-	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/aaccli/work/bin/aaccli ${FREENAS_ROOTFS}/usr/local/bin
+	@${TAR} -zxf ${WRKSRC}/${PKGNAME}_${PORTREVISION}.tgz -C ${WRKSRC}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/aaccli ${FREENAS_ROOTFS}/usr/local/bin
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>
