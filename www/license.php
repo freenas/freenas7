@@ -61,7 +61,7 @@ $pgtitle = array(gettext("License"));
               <p>Dan Merschi (<a href="mailto:freenas@bcapro.com">freenas@bcapro.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Created core implementation of email status report.</font></em><br>
               <p>Gerard Hickey (<a href="mailto:hickey@kinetic-compute.com">hickey@kinetic-compute.com</a>)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Patches for userdb script & AFP shares.</font></em><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Patches for userdb script & AFP/Rsync shares.</font></em><br>
             <br><br>
             <p>The following persons have contributed to FreeNAS documentation project:</p>
             <p>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br>
