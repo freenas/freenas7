@@ -4,6 +4,8 @@ CATEGORIES=		sysutils
 COMMENT=			GEOM RAID5 filesystem
 MAINTAINER=		votdev@gmx.de
 
+DISTFILES?=
+
 do-build:
 	@${TAR} -zxvf ${FILESDIR}/geom_raid5.tbz -C /usr/src
 
@@ -25,4 +27,4 @@ do-install:
 	@${LN} -f -v -s /sbin/geom ${FREENAS_ROOTFS}/sbin/graid5
 	@${CP} -pv /usr/src/sbin/geom/class/raid5/geom_raid5.so ${FREENAS_ROOTFS}/lib/geom
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

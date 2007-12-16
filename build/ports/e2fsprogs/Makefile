@@ -7,6 +7,7 @@ MAINTAINER=		votdev@gmx.de
 BUILD_DEPENDS=	e2fsprogs:${PORTSDIR}/sysutils/e2fsprogs
 # No build is required for this port.
 NO_BUILD?=			1
+DISTFILES?=
 
 post-patch:
 # Copy options file
@@ -21,4 +22,4 @@ do-install:
 	@${LN} -s -f -v /usr/local/sbin/e2fsck ${FREENAS_ROOTFS}/sbin/e2fsck
 	@${LN} -s -f -v /usr/local/sbin/fsck_ext2fs ${FREENAS_ROOTFS}/sbin/fsck_ext2fs
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

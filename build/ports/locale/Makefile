@@ -4,6 +4,8 @@ CATEGORIES=		lang
 COMMENT=			Language packages for FreeNAS
 MAINTAINER=		votdev@gmx.de
 
+DISTFILES?=
+
 do-build:
 # Translate *po files to *.mo.
 	@for i in $$(ls ${FREENAS_SVNDIR}/locale/*.po); do \

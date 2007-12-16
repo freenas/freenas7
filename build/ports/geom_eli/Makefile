@@ -6,6 +6,7 @@ CATEGORIES=		sysutils
 COMMENT=			GEOM Eli filesystem encryption
 MAINTAINER=		votdev@gmx.de
 
+DISTFILES?=
 WRKSRC=	/usr/src/sbin/geom/class/eli
 
 do-build:
@@ -25,4 +26,4 @@ do-install:
 pre-clean:
 	@${MAKE} -C ${WRKSRC} clean
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

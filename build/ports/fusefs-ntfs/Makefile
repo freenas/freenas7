@@ -11,6 +11,7 @@ BUILD_DEPENDS=	fusefs-ntfs:${PORTSDIR}/sysutils/fusefs-ntfs \
 								fusefs-libs:${PORTSDIR}/sysutils/fusefs-libs
 # No build is required for this port.
 NO_BUILD?=			1
+DISTFILES?=
 
 post-patch:
 # Copy fusefs options file
@@ -32,4 +33,4 @@ do-install:
 	@${LN} -s -f -v /usr/local/bin/ntfs-3g ${FREENAS_ROOTFS}/sbin/mount_ntfs
 	@${LN} -s -f -v /usr/local/bin/ntfs-3g ${FREENAS_ROOTFS}/sbin/mount_ntfs-3g
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>
