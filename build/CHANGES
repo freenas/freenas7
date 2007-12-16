@@ -1,5 +1,30 @@
 ################ History Change logs ##############
 
+FreeNAS 0.686:
+--------------
+
+Majors changes:
+
+Minors changes:
+
+Bug fixs:
+
+Permanent restrictions:
+- It is not possible to format a SoftRAID disk with MSDOS.
+
+Known bugs:
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
+
+NEED TO BE TESTED:
+- IPv6: auto mode is not tested
+- All services using IPv6 address (NFS, FTP, etc...)
+- netatalk VFS samba module (automatically enabled when netatalk started) crash samba when acces to share
+- Need to write a online-test procedure
+
+Help needed:
+- Need help for adding LDAP authentication feature:
+Major services can be easly authenticated using PAM-LDAP, but for Samba too is harder.
+
 FreeNAS 0.686b3:
 ----------------
 
@@ -39,16 +64,6 @@ Permanent restrictions:
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
-
-NEED TO BE TESTED:
-- IPv6: auto mode is not tested
-- All services using IPv6 address (NFS, FTP, etc...)
-- netatalk VFS samba module (automatically enabled when netatalk started) crash samba when acces to share
-- Need to write a online-test procedure
-
-Help needed:
-- Need help for adding LDAP authentication feature:
-Major services can be easly authenticated using PAM-LDAP, but for Samba too is harder.
 
 FreeNAS 0.686b2:
 ----------------
