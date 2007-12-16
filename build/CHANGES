@@ -4,6 +4,7 @@ FreeNAS 0.686:
 --------------
 
 Majors changes:
+- Refactor port makefiles.
 
 Minors changes:
 
