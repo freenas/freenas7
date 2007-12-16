@@ -29,4 +29,4 @@ do-install:
 
 	@cd ${FREENAS_ROOTFS}/etc/uams && ${LN} -fsv uams_passwd.so uams_clrtxt.so && ${LN} -fsv uams_dhx_passwd.so uams_dhx.so
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

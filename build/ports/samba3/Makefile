@@ -78,4 +78,4 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_winbind.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_winbind.so.1
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_wins.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_wins.so.1
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

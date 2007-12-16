@@ -18,4 +18,4 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/pure-ftpd ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/pure-ftpwho ${FREENAS_ROOTFS}/usr/local/sbin
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

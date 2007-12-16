@@ -22,4 +22,4 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/ushare ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_SCRIPT} ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

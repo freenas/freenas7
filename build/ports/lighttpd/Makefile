@@ -38,4 +38,4 @@ do-install:
 	@${CP} -pv ${WRKSRC}/src/.libs/mod_webdav.so ${FREENAS_ROOTFS}/usr/local/lib/lighttpd
 	@${LN} -f -v -s /usr/local/lib/lighttpd/mod_webdav.so ${FREENAS_ROOTFS}/usr/local/lib/mod_webdav.so
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

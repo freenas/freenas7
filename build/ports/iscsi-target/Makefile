@@ -26,4 +26,4 @@ do-install:
 	@${LN} -s -f -v /var/etc/iscsi/passwd ${FREENAS_ROOTFS}/etc/iscsi/passwd
 	@${LN} -s -f -v /var/etc/iscsi/targets ${FREENAS_ROOTFS}/etc/iscsi/targets
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

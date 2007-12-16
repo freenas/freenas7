@@ -24,4 +24,4 @@ post-patch:
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/unison ${FREENAS_ROOTFS}/usr/local/bin
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>

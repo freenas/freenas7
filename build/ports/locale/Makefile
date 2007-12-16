@@ -17,4 +17,4 @@ do-build:
 do-install:
 	@${CP} -vp -r ${WRKSRC}/* ${FREENAS_ROOTFS}/usr/local/share/locale
 
-.include "bsd.freenas.mk"
+.include <bsd.port.mk>
