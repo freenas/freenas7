@@ -9,6 +9,7 @@ Majors changes:
 
 Minors changes:
 - Disable firmware upgrade via WebGUI for 'full' installations. Use the 'full' upgrade option from LiveCD instead.
+- Changed boot splashscreen and WebGUI logo images.
 
 Bug fixs:
 - Fix bug in 'full' upgrade/install routine (LiveCD).
