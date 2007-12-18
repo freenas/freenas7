@@ -113,7 +113,7 @@ EOD;
 
 	echo <<<EOD
 
-{$productname} has been installed on $harddrive.
+{$productname} has been installed on {$harddrive}.
 You can now remove the CD-ROM and reboot the PC.
 
 Press ENTER to continue.
