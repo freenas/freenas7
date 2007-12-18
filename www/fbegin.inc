@@ -20,7 +20,9 @@ $menu['system']['menuitem'][] = array("desc" => "Hosts", "link" => "system_hosts
 if ("full" === $g['platform']) {
 	$menu['system']['menuitem'][] = array("desc" => "Packages", "link" => "system_packages.php", "visible" => true);
 }
-$menu['system']['menuitem'][] = array("desc" => "Firmware", "link" => "system_firmware.php", "visible" => true);
+if ("full" !== $g['platform']) {
+	$menu['system']['menuitem'][] = array("desc" => "Firmware", "link" => "system_firmware.php", "visible" => true);
+}
 $menu['system']['menuitem'][] = array("desc" => "Backup/Restore", "link" => "system_backup.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => "Factory Defaults", "link" => "system_defaults.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => "Reboot", "link" => "reboot.php", "visible" => true);

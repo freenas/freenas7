@@ -172,14 +172,18 @@ function install_harddrive_image($harddrive)
 
 	// Mount disk used to install OS.
 	mwexec("/bin/mkdir -p {$mntpath}");
-	mwexec("/sbin/mount /dev/{$harddrive}s1a {$mntpath}");
+	if (mwexec("/sbin/mount /dev/{$harddrive}s1a {$mntpath}")) {
+		write_console("Error: Failed to mount '/dev/{$harddrive}s1a'!\n");
+		return 1;
+	}
 
+	// Install system files.
 	write_console("Installing system files on disk {$harddrive}s1.\n");
 	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
-	mwexec("/bin/mkdir {$mntpath}/var");
-	mwexec("/bin/mkdir {$mntpath}/dev");
-	mwexec("/bin/mkdir {$mntpath}/mnt");
-	mwexec("/bin/mkdir {$mntpath}/boot/defaults");
+	mwexec("/bin/mkdir -p {$mntpath}/var");
+	mwexec("/bin/mkdir -p {$mntpath}/dev");
+	mwexec("/bin/mkdir -p {$mntpath}/mnt");
+	mwexec("/bin/mkdir -p {$mntpath}/boot/defaults");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/* {$mntpath}/boot");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* {$mntpath}/boot/defaults");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* {$mntpath}/boot/kernel");
@@ -212,10 +216,10 @@ EOD;
 		return 1;
 	}
 
-	//Unzipping the Kernel
+	// Unzipping the kernel.
 	mwexec("/usr/bin/gzip -d {$mntpath}/boot/kernel/kernel.gz");
 
-	//Generating the FSTAB
+	// Generating the /etc/fstab.
 	$fstab .= <<<EOD
 # Device                Mountpoint      FStype  Options         Dump    Pass#
 /dev/{$harddrive}s1a             /       ufs     rw              1       1
@@ -257,21 +261,48 @@ function install_upgrade_full($harddrive)
 
 	$mntpath = "/mnt/{$harddrive}_install";
 
-	// Mount disk used by OS.
+	// Mount disk used to install OS.
 	mwexec("/bin/mkdir -p {$mntpath}");
-	mwexec("/sbin/mount /dev/{$harddrive}s1a {$mntpath}");
+	if (mwexec("/sbin/mount /dev/{$harddrive}s1a {$mntpath}")) {
+		write_console("Error: Failed to mount '/dev/{$harddrive}s1a'!\n");
+		return 1;
+	}
 
-	// Start pre-upgrade script.
-	mwexec("/etc/preupgrade.sh");
+	// Backup system files.
+	write_console("Backup system configuration files.\n");
 
-	// Upgrade OS.
+	$sysbackup = "/tmp/sysbackup";
+	if (mwexec("/bin/mkdir -p {$sysbackup}")) {
+		write_console("Error: Failed to create '{$sysbackup}'!\n");
+		return 1;
+	}
+
+	mwexec("cp -p {$mntpath}/boot/loader.conf {$sysbackup}");
+	mwexec("cp -p {$mntpath}/etc/platform {$sysbackup}");
+	mwexec("cp -p {$mntpath}/etc/fstab {$sysbackup}");
+	mwexec("cp -p {$mntpath}/etc/cfdevice {$sysbackup}");
+
+	// Install system files.
+	write_console("Installing system files on disk {$harddrive}s1.\n");
 	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
+	mwexec("/bin/mkdir -p {$mntpath}/var");
+	mwexec("/bin/mkdir -p {$mntpath}/dev");
+	mwexec("/bin/mkdir -p {$mntpath}/mnt");
+	mwexec("/bin/mkdir -p {$mntpath}/boot/defaults");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/* {$mntpath}/boot");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* {$mntpath}/boot/defaults");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* {$mntpath}/boot/kernel");
 
-	// Start post-upgrade script.
-	mwexec("/etc/postupgrade.sh");
+	// Unzipping the kernel.
+	mwexec("/usr/bin/gzip -d {$mntpath}/boot/kernel/kernel.gz");
+
+	// Restore system files.
+	write_console("Restore system configuration files.\n");
+
+	mwexec("cp -p {$sysbackup}/loader.conf {$mntpath}/boot");
+	mwexec("cp -p {$sysbackup}/platform {$mntpath}/etc");
+	mwexec("cp -p {$sysbackup}/fstab {$mntpath}/etc");
+	mwexec("cp -p {$sysbackup}/cfdevice {$mntpath}/etc");
 
 	// Umount destination disk.
 	mwexec("/sbin/umount {$mntpath}");

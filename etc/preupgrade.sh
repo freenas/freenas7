@@ -1,3 +1,0 @@
-#!/bin/sh
-#This script is used before to upgrade the full release
-#eg: Fixing special bugs, etc...

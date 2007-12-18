@@ -131,14 +131,6 @@ case $1 in
 			exit 1
 		fi
 
-		# Extract and start pre-upgrade script
-		#Actually (0.685b) this script are not used... but peraps one day
-		tar zxvf $2 --include etc/preupgrade.sh -C /ftmp
-		if [ -f /ftmp/etc/preupgrade.sh ]; then
-			echo "Starting Pre-upgrade script."
-			/ftmp/etc/preupgrade.sh
-		fi
-
 		#DO NOT OVERRIDE LIBRARY IN USE: lib/libc.so.6
 		#WARNING: The library files name are related to the FreeNAS release to be upgraded
 		#Must add a switch (case) here depending of the version number being upgraded ?
@@ -158,14 +150,6 @@ case $1 in
 		#How to override lib/libc.so.6 ? And, Is overrided this file is needed ?
 
 		#Need to be added: List of old files to be deleted (is necessary?)
-
-		# Extract and start post-upgrade script
-		# Actually (0.685b) this script are not used... but peraps one day
-		tar zxvf $2 --include etc/postupgrade.sh -C /ftmp
-		if [ -f /ftmp/etc/postupgrade.sh ]; then
-			echo "Starting Post-upgrade script."
-			/ftmp/etc/postupgrade.sh
-		fi
 
 		echo "Firmware installed successful."
 		echo "Rebooting system..."
