@@ -8,10 +8,10 @@ Majors changes:
 - Upgrade netbsd-iscsi (iscsi-target) to 20071209.
 
 Minors changes:
-- Disable firmware upgrade via WebGUI. Use the upgrade option from LiveCD.
+- Disable firmware upgrade via WebGUI for 'full' installations. Use the 'full' upgrade option from LiveCD instead.
 
 Bug fixs:
-- Fix bug in 'full' upgrade from LiveCD.
+- Fix bug in 'full' upgrade/install routine (LiveCD).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
