@@ -277,10 +277,10 @@ function install_upgrade_full($harddrive)
 		return 1;
 	}
 
-	mwexec("cp -p {$mntpath}/boot/loader.conf {$sysbackup}");
-	mwexec("cp -p {$mntpath}/etc/platform {$sysbackup}");
-	mwexec("cp -p {$mntpath}/etc/fstab {$sysbackup}");
-	mwexec("cp -p {$mntpath}/etc/cfdevice {$sysbackup}");
+	mwexec("/bin/cp -p {$mntpath}/boot/loader.conf {$sysbackup}");
+	mwexec("/bin/cp -p {$mntpath}/etc/platform {$sysbackup}");
+	mwexec("/bin/cp -p {$mntpath}/etc/fstab {$sysbackup}");
+	mwexec("/bin/cp -p {$mntpath}/etc/cfdevice {$sysbackup}");
 
 	// Install system files.
 	write_console("Installing system files on disk {$harddrive}s1.\n");
@@ -299,10 +299,10 @@ function install_upgrade_full($harddrive)
 	// Restore system files.
 	write_console("Restore system configuration files.\n");
 
-	mwexec("cp -p {$sysbackup}/loader.conf {$mntpath}/boot");
-	mwexec("cp -p {$sysbackup}/platform {$mntpath}/etc");
-	mwexec("cp -p {$sysbackup}/fstab {$mntpath}/etc");
-	mwexec("cp -p {$sysbackup}/cfdevice {$mntpath}/etc");
+	mwexec("/bin/cp -p {$sysbackup}/loader.conf {$mntpath}/boot");
+	mwexec("/bin/cp -p {$sysbackup}/platform {$mntpath}/etc");
+	mwexec("/bin/cp -p {$sysbackup}/fstab {$mntpath}/etc");
+	mwexec("/bin/cp -p {$sysbackup}/cfdevice {$mntpath}/etc");
 
 	// Umount destination disk.
 	mwexec("/sbin/umount {$mntpath}");
@@ -438,7 +438,7 @@ EOD;
 
 	write_console("Install boot code.\n");
 
-	// Reinitialize the boot code contained in sector 0 of the disk.	
+	// Reinitialize the boot code contained in sector 0 of the disk.
 	if (mwexec("(/bin/echo y; /bin/echo y) | /sbin/fdisk -B -b /boot/mbr {$harddrive}")) {
 		write_console("Error: Failed to reinitialize the boot code on disk '{$harddrive}'!\n");
 		return 1;
