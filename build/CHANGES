@@ -5,7 +5,7 @@ FreeNAS 0.686:
 
 Majors changes:
 - Refactor port makefiles.
-- Upgrade netbsd-iscsi (iscsi-target) to 20071209.
+- Upgrade netbsd-iscsi (iscsi-target) to 20071218.
 
 Minors changes:
 - Disable firmware upgrade via WebGUI for 'full' installations. Use the 'full' upgrade option from LiveCD instead.

@@ -1,5 +1,5 @@
 PORTNAME=			iscsi-target
-PORTVERSION=	20071209
+PORTVERSION=	20071218
 CATEGORIES=		net
 COMMENT=			Implementation of userland ISCSI target (derived from NetBSD)
 MAINTAINER=		votdev@gmx.de
@@ -14,8 +14,6 @@ DISTNAME=			netbsd-iscsi-${PORTVERSION}
 WRKSRC=						${WRKDIR}/${DISTNAME}/src
 GNU_CONFIGURE=		yes
 CONFIGURE_TARGET=	--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
-
-CFLAGS+=	-DHAVE_CONFIG_H
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|-lpthread|${PTHREAD_LIBS}|' ${WRKSRC}/Makefile.in
