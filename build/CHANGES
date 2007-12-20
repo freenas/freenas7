@@ -13,6 +13,7 @@ Minors changes:
 
 Bug fixs:
 - Fix bug in 'full' upgrade/install routine (LiveCD).
+- Do not delete log files during boot process on 'full' installations.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
