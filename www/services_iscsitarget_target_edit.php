@@ -84,7 +84,7 @@ if (isset($id) && $a_iscsitarget_target[$id]) {
 	$pconfig['storage'] = "";
 	$pconfig['network'] = "";
 	$pconfig['ipaddr'] = "";
-	$pconfig['subnet'] = "";
+	$pconfig['subnet'] = "24";
 }
 
 if ($_POST) {
