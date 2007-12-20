@@ -439,6 +439,9 @@ usr/sbin/diskinfo
 ## bsnmpd -- simple and extensible SNMP daemon
 usr/sbin/bsnmpd
 
+## newsyslog -- maintain system log files to manageable sizes
+usr/sbin/newsyslog
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
