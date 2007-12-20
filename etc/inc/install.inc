@@ -39,22 +39,18 @@ function install_mount_cd($cdrom)
 {
 	write_console("Mount CDROM.\n");
 
-	// Check if there already exists directory used to mount CDROM.
-	if (is_dir("/mnt/cdrom")) {
-		write_console("Error: Temporary directory '/mnt/cdrom' for CDROM already exists!\n");
+	$mntpath = "/mnt/cdrom";
+
+	// Creating temporary directory to mount CDROM.
+	if (1 == mwexec("/bin/mkdir -p {$mntpath}")) {
+		write_console("Error: Failed to create directory '{$mntpath}'!\n");
 		return 1;
 	}
 
-	/* Creating tempo directory for cdrom */
-	if (mwexec("/bin/mkdir -p /mnt/cdrom")) {
-		write_console("Error: Failed to create directory '/mnt/cdrom'!\n");
-		return 1;
-	}
-
-	/* Monting the CDROM */
-	if (mwexec("/sbin/mount_cd9660 /dev/{$cdrom} /mnt/cdrom")) {
+	// Mounting the CDROM.
+	if (1 == mwexec("/sbin/mount_cd9660 /dev/{$cdrom} {$mntpath}")) {
 		write_console("Error: Failed to mount device '{$cdrom}'!\n");
-		@rmdir ("/mnt/cdrom");
+		@rmdir($mntpath);
 		return 1;
 	}
 
@@ -65,17 +61,18 @@ function install_mount_cd($cdrom)
 // Return 0 if successful, otherwise 1
 function install_unmount_cd()
 {
-	$result = 0;
-
 	write_console("Unmount CDROM.\n");
 
-	/* Unmounting cdrom */
-	if (mwexec("/sbin/umount /mnt/cdrom")) {
+	$result = 0;
+	$mntpath = "/mnt/cdrom";
+
+	// Unmount CDROM.
+	if (1 == mwexec("/sbin/umount {$mntpath}")) {
 		$result = 1;
 	}
 
-	// Remove tempo directory
-	@rmdir ("/mnt/cdrom");
+	// Remove temporary mount directory.
+	@rmdir($mntpath);
 
 	return $result;
 }
@@ -171,7 +168,7 @@ function install_harddrive_image($harddrive)
 	// Mount disk used to install OS.
 	$mntpath = "/mnt/{$harddrive}_install";
 	mwexec("/bin/mkdir -p {$mntpath}");
-	if (mwexec("/sbin/mount /dev/{$harddrive}s1a {$mntpath}")) {
+	if (1 == mwexec("/sbin/mount /dev/{$harddrive}s1a {$mntpath}")) {
 		write_console("Error: Failed to mount '/dev/{$harddrive}s1a'!\n");
 		return 1;
 	}
@@ -243,8 +240,8 @@ EOD;
 		return 1;
 	}
 
-	// Cleanup.
-	mwexec("/sbin/umount {$mntpath}");
+	// Unmount disk containing OS.
+	mwexec("/sbin/umount -f {$mntpath}");
 	mwexec("/bin/rm -f {$mntpath}");
 
 	return 0;
@@ -261,7 +258,7 @@ function install_upgrade_full($harddrive)
 	// Mount disk used to install OS.
 	$mntpath = "/mnt/{$harddrive}_install";
 	mwexec("/bin/mkdir -p {$mntpath}");
-	if (mwexec("/sbin/mount /dev/{$harddrive}s1a {$mntpath}")) {
+	if (1 == mwexec("/sbin/mount /dev/{$harddrive}s1a {$mntpath}")) {
 		write_console("Error: Failed to mount '/dev/{$harddrive}s1a'!\n");
 		return 1;
 	}
@@ -291,16 +288,16 @@ function install_upgrade_full($harddrive)
 
 	// Restore system files.
 	write_console("Restore system configuration files.\n");
-
 	mwexec("/bin/cp -p {$sysbackup}/loader.conf {$mntpath}/boot");
 	mwexec("/bin/cp -p {$sysbackup}/platform {$mntpath}/etc");
 	mwexec("/bin/cp -p {$sysbackup}/fstab {$mntpath}/etc");
 	mwexec("/bin/cp -p {$sysbackup}/cfdevice {$mntpath}/etc");
 
-	// Cleanup.
-	mwexec("/sbin/umount {$sysbackup}");
-	mwexec("/sbin/umount {$mntpath}");
+	// Cleanup system backup files.
 	mwexec("/bin/rm -f {$sysbackup}");
+
+	// Unmount disk containing OS.
+	mwexec("/sbin/umount -f {$mntpath}");
 	mwexec("/bin/rm -f {$mntpath}");
 
 	return 0;
@@ -313,33 +310,33 @@ function install_backupconfig($disk)
 	write_console("Backup configuration.\n");
 
 	/* Creating temporary directory for the configuration file. */
-	if (mwexec("/bin/mkdir -p /tmp/confbackup")) {
+	if (1 == mwexec("/bin/mkdir -p /tmp/confbackup")) {
 		write_console("Error: Failed to create '/tmp/confbackup'!\n");
 		return 1;
 	}
 
 	/* Creating temporary directory for the disk containing the configuration file. */
-	if (mwexec("/bin/mkdir -p /mnt/{$disk}_backup")) {
+	if (1 == mwexec("/bin/mkdir -p /mnt/{$disk}_backup")) {
 		write_console("Error: Failed to create '/mnt/{$disk}_backup'!\n");
 		return 1;
 	}
 
 	/* Mount the drive to be upgraded (readonly mode). */
-	if (mwexec("/sbin/mount -r /dev/{$disk} /mnt/{$disk}_backup")) {
+	if (1 == mwexec("/sbin/mount -r /dev/{$disk} /mnt/{$disk}_backup")) {
 		write_console("Error: Failed to mount device '{$disk}'!\n");
-		$result = 1;
+		return 1;
 	}
 
 	/* Backup the configuration file. */
-	if (mwexec("cp -p /mnt/{$disk}_backup/conf/config.xml /tmp/confbackup")) {
+	if (1 == mwexec("cp -p /mnt/{$disk}_backup/conf/config.xml /tmp/confbackup")) {
 		write_console("Error: Failed to backup the configuration file!\n");
 		return 1;
 	}
 
 	/* Unmount the drive to be upgraded. */
-	if (mwexec("/sbin/umount -f /mnt/{$disk}_backup")) {
+	if (1 == mwexec("/sbin/umount -f /mnt/{$disk}_backup")) {
 		write_console("Error: Failed to umount '/mnt/{$disk}_backup'!\n");
-		$result = 1;
+		return 1;
 	}
 
 	return 0;
@@ -350,27 +347,27 @@ function install_restoreconfig($disk)
 	write_console("Restore configuration.\n");
 
 	/* Mount the drive to be upgraded. */
-	if (mwexec("/sbin/mount /dev/{$disk} /mnt/{$disk}_backup")) {
+	if (1 == mwexec("/sbin/mount /dev/{$disk} /mnt/{$disk}_backup")) {
 		write_console("Error: Failed to mount device '{$disk}'!\n");
-		$result = 1;
+		return 1;
 	}
 
 	/* Restore the configuration file. */
-	if (mwexec("cp -p /tmp/confbackup/config.xml /mnt/{$disk}_backup/conf")) {
+	if (1 == mwexec("cp -p /tmp/confbackup/config.xml /mnt/{$disk}_backup/conf")) {
 		write_console("Error: Failed to restore the configuration file!\n");
 		return 1;
 	}
 
 	/* Unmount the upgraded drive. */
-	if (mwexec("/sbin/umount -f /mnt/{$disk}_backup")) {
+	if (1 == mwexec("/sbin/umount -f /mnt/{$disk}_backup")) {
 		write_console("Error: Failed to umount '/mnt/{$disk}_backup'!\n");
-		$result = 1;
+		return 1;
 	}
 
 	/* Cleanup */
-	if (mwexec("/bin/rm -f -r /mnt/{$disk}_backup /tmp/confbackup")) {
+	if (1 == mwexec("/bin/rm -f -r /mnt/{$disk}_backup /tmp/confbackup")) {
 		write_console("Error: Failed to remove temporary backup data!\n");
-		$result = 1;
+		return 1;
 	}
 
 	return 0;

@@ -126,7 +126,7 @@ EOD;
 	} while (!is_validaliasname($cdrom));
 
 	echo "\n{$productname} has been detected on disk:\n";
-	echo "$cfgdevice\n";
+	echo "{$cfgdevice}\n";
 
 	do {
 		echo "\nIs this is correct? (y/n): ";
@@ -146,6 +146,7 @@ EOD;
 
 	if(install_backupconfig($cfgpartition)) {
 		echo "\nThere was a problem during configuration file backup.\n";
+		install_unmount_cd();
 		exit(0);
 	}
 
@@ -157,6 +158,7 @@ EOD;
 
 	if(install_restoreconfig($cfgpartition)) {
 		echo "\nThere was a problem while restoring configuration file.\n";
+		install_unmount_cd();
 		exit(0);
 	}
 

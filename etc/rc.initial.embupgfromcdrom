@@ -144,6 +144,7 @@ EOD;
 
 	if(install_backupconfig($cfgpartition)) {
 		echo "\nThere was a problem during configuration file backup.\n";
+		install_unmount_cd();
 		exit(0);
 	}
 
@@ -164,6 +165,7 @@ EOD;
 
 	if(install_restoreconfig($cfgpartition)) {
 		echo "\nThere was a problem while restoring configuration file.\n";
+		install_unmount_cd();
 		exit(0);
 	}
 
