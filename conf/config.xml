@@ -273,13 +273,14 @@
 		<enable/>
 		<guest/>
 		<local/>
+		<noddp/>
 		<afpname>xxx</afpname>
 		<share>
 			<name>xxx</name>
 			<path>/mnt/xxx</path>
 			<comment>xxx</comment>
 			<volpasswd/>
-			<casefold>tolower|toupper|xlatelower</casefold>
+			<casefold>tolower|toupper|xlatelower|xlateupper</casefold>
 			<volcharset>UTF8|UTF8-MAC|ISO-8859-15|...</volcharset>
 			<allow/>
 			<deny/>

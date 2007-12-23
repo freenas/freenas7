@@ -159,7 +159,7 @@ if($_POST) {
 			      </td>
 			    </tr>
 			    <tr>
-				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Path"); ?></td>
+				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Path");?></td>
 				  <td width="78%" class="vtable">
 				  	<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>">
 				  	<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
@@ -193,12 +193,12 @@ if($_POST) {
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Case Folding");?></td>
 			      <td width="78%" class="vtable">
-		      	  <select name="casefold" size="1" id="casefold">
-			            <option value="none" <?php if ($pconfig['casefold'] == 'none') echo "selected"; ?>>No case folding
-                      <option value="tolower" <?php if ($pconfig['casefold'] == 'tolower') echo "selected"; ?>>Lowercases names in both directions
-                      <option value="toupper" <?php if ($pconfig['casefold'] == 'toupper') echo "selected"; ?>>Uppercases names in both directions
-                      <option value="xlatelower" <?php if ($pconfig['casefold'] == 'xlatelower') echo "selected"; ?>>Client sees lowercase, server sees uppercase
-			            <option value="xlateupper" <?php if ($pconfig['casefold'] == 'xlateupper') echo "selected"; ?>>Client sees uppercase, server sees lowercase
+		      	        <select name="casefold" size="1" id="casefold">
+			          <option value="none" <?php if ($pconfig['casefold'] === "none") echo "selected";?>><?=gettext("No case folding");?></option>
+                                  <option value="tolower" <?php if ($pconfig['casefold'] === "tolower") echo "selected";?>><?=gettext("Lowercases names in both directions");?></option>
+                                  <option value="toupper" <?php if ($pconfig['casefold'] === "toupper") echo "selected";?>><?=gettext("Uppercases names in both directions");?></option>
+                                  <option value="xlatelower" <?php if ($pconfig['casefold'] === "xlatelower") echo "selected";?>><?=gettext("Client sees lowercase, server sees uppercase");?></option>
+                                  <option value="xlateupper" <?php if ($pconfig['casefold'] === "xlateupper") echo "selected";?>><?=gettext("Client sees uppercase, server sees lowercase");?></option>
 			        </select><br/>
 			        <?=gettext("This controls how the case of filenames are viewed and stored.");?>
 			      </td>

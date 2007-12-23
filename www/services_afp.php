@@ -43,6 +43,7 @@ $pconfig['enable'] = isset($config['afp']['enable']);
 $pconfig['afpname'] = $config['afp']['afpname'];
 $pconfig['guest'] = isset($config['afp']['guest']);
 $pconfig['local'] = isset($config['afp']['local']);
+$pconfig['noddp'] = isset($config['afp']['noddp']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -54,9 +55,10 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$config['afp']['enable'] = $_POST['enable'] ? true : false;
+		$config['afp']['afpname'] = $_POST['afpname'];
 		$config['afp']['guest'] = $_POST['guest'] ? true : false;
 		$config['afp']['local'] = $_POST['local'] ? true : false;
-		$config['afp']['afpname'] = $_POST['afpname'];
+		$config['afp']['noddp'] = $_POST['noddp'] ? true : false;
 
 		write_config();
 
@@ -76,9 +78,10 @@ if ($_POST) {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
-  document.iform.afpname.disabled = endis;
+	document.iform.afpname.disabled = endis;
 	document.iform.guest.disabled = endis;
 	document.iform.local.disabled = endis;
+	document.iform.noddp.disabled = endis;
 }
 //-->
 </script>
@@ -110,7 +113,7 @@ function enable_change(enable_change) {
 						</td>
 				  </tr>
 					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Server Name") ;?></td>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Server Name");?></td>
 						<td width="78%" class="vtable">
 							<input name="afpname" type="text" class="formfld" id="afpname" size="30" value="<?=htmlspecialchars($pconfig['afpname']);?>"><br/>
 							<?=gettext("Name of the server. If this field is left empty the default server is specified.");?><br>
@@ -119,10 +122,17 @@ function enable_change(enable_change) {
 					<tr>
 						<td width="22%" valign="top" class="vncell"><strong><?=gettext("Authentication");?><strong></td>
 						<td width="78%" class="vtable">
-							<input name="guest" id="guest" type="checkbox" value="yes" <?php if ($pconfig['guest']) echo "checked"; ?>>
+							<input name="guest" id="guest" type="checkbox" value="yes" <?php if ($pconfig['guest']) echo "checked";?>>
 							<?=gettext("Enable guest access.");?></br>
-							<input name="local" id="local" type="checkbox" value="yes" <?php if ($pconfig['local']) echo "checked"; ?>>
+							<input name="local" id="local" type="checkbox" value="yes" <?php if ($pconfig['local']) echo "checked";?>>
 							<?=gettext("Enable local user authentication.");?>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><strong><?=gettext("DDP");?><strong></td>
+						<td width="78%" class="vtable">
+							<input name="noddp" id="noddp" type="checkbox" value="yes" <?php if ($pconfig['noddp']) echo "checked";?>>
+							<?=gettext("Disable AFP-over-Appletalk to prevent DDP connections.");?></br>
 						</td>
 					</tr>
 					<tr>
