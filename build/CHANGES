@@ -10,6 +10,7 @@ Majors changes:
 Minors changes:
 - Disable firmware upgrade via WebGUI for 'full' installations. Use the 'full' upgrade mode from LiveCD instead.
 - Changed boot splashscreen and WebGUI logo images.
+- Try to fix AFP Time Machine problem.
 
 Bug fixs:
 - Fix bug in 'full' upgrade/install routine (LiveCD).
