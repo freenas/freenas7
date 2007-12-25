@@ -5,6 +5,7 @@ FreeNAS 0.687b1:
 
 Majors changes:
 - Upgrade Samba to 3.0.28.
+- Enhance WebGUI + rc-script to define additional group memberships for user accounts.
 
 Minors changes:
 

@@ -44,13 +44,8 @@ if (!is_array($config['access']['user']))
 
 array_sort_key($config['access']['user'], "login");
 
-if (!is_array($config['access']['group']))
-	$nogroup_errors[] = gettext("You must create a group first.");
-else
-	array_sort_key($config['access']['group'], "name");
-
 $a_user = &$config['access']['user'];
-$a_group = &$config['access']['group'];
+$a_group = get_group_list();
 
 if (isset($id) && $a_user[$id]) {
 	$pconfig['login'] = $a_user[$id]['login'];
@@ -59,6 +54,7 @@ if (isset($id) && $a_user[$id]) {
 	$pconfig['passwordconf'] = $pconfig['password'];
 	$pconfig['userid'] = $a_user[$id]['id'];
 	$pconfig['primarygroup'] = $a_user[$id]['primarygroup'];
+	$pconfig['group'] = $a_user[$id]['group'];
 	$pconfig['fullshell'] = isset($a_user[$id]['fullshell']);
 	$pconfig['admin'] = isset($a_user[$id]['admin']);
 	$pconfig['homedir'] = $a_user[$id]['homedir'];
@@ -75,7 +71,7 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-	/* Check for valid login name */
+	// Check for valid login name.
 	if (($_POST['login'] && !is_validlogin($_POST['login']))) {
 		$input_errors[] = gettext("The login name contains invalid characters.");
 	}
@@ -84,12 +80,12 @@ if ($_POST) {
 		$input_errors[] = gettext("The login name is a reserved login name.");
 	}
 
-	/* Check for valid Full name */
+	// Check for valid Full name.
 	if (($_POST['fullname'] && !is_validdesc($_POST['fullname']))) {
 		$input_errors[] = gettext("The full name contains invalid characters.");
 	}
 
-	/* check for name conflicts */
+	// Check for name conflicts.
 	foreach ($a_user as $user) {
 		if (isset($id) && ($a_user[$id]) && ($a_user[$id] == $user))
 			continue;
@@ -100,7 +96,7 @@ if ($_POST) {
 		}
 	}
 
-	/* Check for a password mismatch */
+	// Check for a password mismatch.
 	if ($_POST['password'] != $_POST['passwordconf']) {
 			$input_errors[] = gettext("Password don't match.");
 	}
@@ -113,6 +109,7 @@ if ($_POST) {
 		$users['fullshell'] = $_POST['fullshell'] ? true : false;
 		$users['admin'] = $_POST['admin'] ? true : false;
 		$users['primarygroup'] = $_POST['primarygroup'];
+		$users['group'] = $_POST['group'];
 		$users['homedir'] = $_POST['homedir'];
 
 		if (isset($id) && $a_user[$id]) {
@@ -139,7 +136,7 @@ if ($_POST) {
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-	<td class="tabnavtbl">
+		<td class="tabnavtbl">
   		<ul id="tabnav">
 			<li class="tabact"><a href="access_users.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Users");?></a></li>
     		<li class="tabinact"><a href="access_users_groups.php"><?=gettext("Groups");?></a></li>
@@ -153,56 +150,68 @@ if ($_POST) {
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Login") ;?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Login");?></td>
             <td width="78%" class="vtable">
               <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>">
-              <br><?=gettext("Unique login name of user.") ;?>
+              <br><?=gettext("Unique login name of user.");?>
             </td>
 	       </tr>
 	       <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Full Name") ;?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Full Name");?></td>
             <td width="78%" class="vtable">
               <input name="fullname" type="text" class="formfld" id="fullname" size="20" value="<?=htmlspecialchars($pconfig['fullname']);?>">
-              <br><?=gettext("User full name.") ;?>
+              <br><?=gettext("User full name.");?>
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Password") ;?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
             <td width="78%" class="vtable">
               <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
               <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
-              <?=gettext("User password.") ;?>
+              <?=gettext("User password.");?>
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Primary Group") ;?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("Primary group");?></td>
             <td width="78%" class="vtable">
 							<select name="primarygroup" class="formfld" id="primarygroup">
-								<?php foreach ($a_group as $group): ?>
-								<option value="<?=$group['id'];?>" <?php if ($group['id'] === $pconfig['primarygroup']) echo "selected";?>><?php echo htmlspecialchars($group['name']);?></option>
-								<?php endforeach; ?>
-							</select>
+								<?php foreach ($a_group as $groupk => $groupv):?>
+								<option value="<?=$groupv;?>" <?php if ("{$groupv}" === $pconfig['primarygroup']) echo "selected";?>><?=htmlspecialchars($groupk);?></option>
+								<?php endforeach;?>
+							</select></br>
+							<?=gettext("Set the account's primary group to the given group.");?>
 						</td>
 					</tr>
 					<tr>
-            <td width="22%" valign="top" class="vncell"><?=gettext("Home directory") ;?></td>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Additional group");?></td>
+            <td width="78%" class="vtable">
+							<select multiple size="12" name="group[]" id="group">
+								<?php foreach ($a_group as $groupk => $groupv):?>
+								<option value="<?=$groupv;?>" <?php if (is_array($pconfig['group']) && in_array("{$groupv}", $pconfig['group'])) echo "selected";?>><?=htmlspecialchars($groupk);?></option>
+								<?php endforeach;?>
+							</select></br>
+							<?=gettext("Set additional group memberships for this account.");?>
+						</td>
+					</tr>
+					<tr>
+            <td width="22%" valign="top" class="vncell"><?=gettext("Home directory");?></td>
             <td width="78%" class="vtable">
               <input name="homedir" type="text" class="formfld" id="homedir" size="60" value="<?=htmlspecialchars($pconfig['homedir']);?>"><br>
               <?=gettext("Enter the path to the home directory of that user. Make sure that this path exists and is always mounted at startup. Leave this field empty to use default path /mnt.");?>
             </td>
           </tr>
 					<tr>
-					  <td width="22%" valign="top" class="vncell"><?=gettext("Full Shell") ;?></td>
+					  <td width="22%" valign="top" class="vncell"><?=gettext("Shell access");?></td>
 					  <td width="78%" class="vtable">
 					  	<input name="fullshell" type="checkbox" value="yes" <?php if ($pconfig['fullshell']) echo "checked"; ?> onClick="enable_change(false)">
-							<?=gettext("Give full shell to user");?>
+							<?=gettext("Give full shell access to user.");?>
 						</td>
 				  </tr>
 					<tr>
-					  <td width="22%" valign="top" class="vncell"><?=gettext("Administrator") ;?></td>
+					  <td width="22%" valign="top" class="vncell"><?=gettext("Administrator");?></td>
 					  <td width="78%" class="vtable">
 						  <input name="admin" type="checkbox" value="yes" <?php if ($pconfig['admin']) echo "checked"; ?> onClick="enable_change(false)">
-							<?=gettext("Put user in the administrator group");?>
+							<?=gettext("Put user in the administrator group.");?>
 						</td>
           </tr>
           <tr>

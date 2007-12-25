@@ -1867,4 +1867,25 @@ function set_conf_disk_fstype($disk, $fstype)
 
 	return $result;
 }
+
+// Get list of available groups from /etc/group.
+// Result:
+//	Array (
+//		[wheel] => 0
+//		[sshd] => 22
+//		[www] => 80
+//		[nobody] => 65534
+//		[admin] => 1000
+//		...
+//	)
+function get_group_list() {
+	$grouplist = array();
+
+	preg_match_all("/(\S+):\*:(\d+):.*\n/", @file_get_contents("/etc/group"), $matches, PREG_SET_ORDER);
+	foreach ($matches as $group) {
+		$grouplist[$group[1]] = $group[2];
+	}
+
+	return $grouplist;
+}
 ?>
