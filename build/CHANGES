@@ -4,6 +4,7 @@ FreeNAS 0.687b1:
 ----------------
 
 Majors changes:
+- Upgrade Samba to 3.0.28.
 
 Minors changes:
 

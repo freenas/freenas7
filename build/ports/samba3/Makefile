@@ -1,5 +1,5 @@
 PORTNAME=			samba
-PORTVERSION=	3.0.26a
+PORTVERSION=	3.0.28
 PORTREVISION=	1
 PORTEPOCH=		3
 CATEGORIES=		net
@@ -17,10 +17,6 @@ SAMBA_CONFIGDIR=			/var/etc
 SAMBA_LOCKDIR=				/var/run
 SAMBA_LIBDIR=					/usr/local/lib
 SAMBA_MODULEDIR=			${SAMBA_LIBDIR}/samba
-
-PATCH_SITES=			http://us1.samba.org/samba/ftp/patches/security/	
-PATCHFILES=				samba-3.0.26a-CVE-2007-4572.patch samba-3.0.26a-CVE-2007-5398.patch
-PATCH_DIST_STRIP=	-p2
 
 USE_ICONV=				yes
 GNU_CONFIGURE=		yes
