@@ -71,6 +71,9 @@ do
 	_cmdarg=`/usr/local/bin/xml sel -t -m "//access/user[${_index}]" \
 		-v "concat('-n ',login,' -u ',id,' -g ',primarygroup,' -c &quot;',fullname,'&quot;')" \
 		-i "count(admin) > 0" -o " -G 0,1000" -b \
+		-m "group" \
+			-v "concat(',',.)" \
+		-b \
 		-i "count(fullshell) > 0" -o " -s /bin/tcsh" -b \
 		-i "count(fullshell) = 0" -o " -s /usr/local/bin/scponly" -b \
 		-i "string-length(homedir) = 0" -o " -d /mnt" -b \
