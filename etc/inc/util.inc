@@ -1886,6 +1886,10 @@ function get_group_list() {
 		$grouplist[$group[1]] = $group[2];
 	}
 
+	// Sort array.
+	if (is_array($grouplist))
+		ksort($grouplist);
+
 	return $grouplist;
 }
 ?>

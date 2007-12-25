@@ -109,7 +109,8 @@ if ($_GET['act'] == "del") {
 						</td>
 					</tr>
 					<?php $i++; endforeach;?>
-					<?php foreach ($a_group as $groupk):?>
+					<?php foreach ($a_group as $groupk => $groupv):?>
+					<?php if (false !== array_search_ex($groupv, $a_group_conf, "id")) continue; // Do not display user defined groups twice. ?>
 					<tr>
 						<td class="listlr"><?=$groupk;?>&nbsp;</td>
 						<td class="listr"><?=gettext("System");?>&nbsp;</td>
