@@ -288,49 +288,6 @@ add_libs() {
   return 0
 }
 
-# Build packages/plugins.
-build_packages() {
-	# Make sure packages directory exists.
-	[ ! -d "$FREENAS_ROOTDIR/packages" ] && mkdir -p $FREENAS_ROOTDIR/packages
-
-	tempfile=$FREENAS_WORKINGDIR/tmp$$
-	packages=$FREENAS_WORKINGDIR/packages$$
-
-	# Create list of available packages.
-	echo "#! /bin/sh
-$DIALOG --title \"$FREENAS_PRODUCTNAME - Packages/Plugins\" \\
---checklist \"Select the packages/plugins you want to build.\" 21 75 14 \\" > $tempfile
-
-	for s in $FREENAS_SVNDIR/build/packages/*; do
-		[ ! -d "$s" ] && continue
-		package=`basename $s`
-		desc=`cat $s/pkg-descr`
-		state=`cat $s/pkg-state`
-		echo "\"$package\" \"$desc\" $state \\" >> $tempfile
-	done
-
-	# Display list of available packages.
-	sh $tempfile 2> $packages
-	if [ 0 != $? ]; then # successful?
-		rm $tempfile
-		return 1
-	fi
-	rm $tempfile
-
-	for package in $(cat $packages | tr -d '"'); do
-		echo
-		echo "--------------------------------------------------------------"
-		echo ">>> Building package: ${package}"
-		echo "--------------------------------------------------------------"
-		cd $FREENAS_SVNDIR/build/packages/$package
-		make -I ${FREENAS_MKINCLUDESDIR} clean package
-		[ 0 != $? ] && return 1 # successful?
-	done
-	rm $packages
-
-	return 0;
-}
-
 # Creating msfroot
 create_mfsroot() {
 	echo "--------------------------------------------------------------"
@@ -667,7 +624,6 @@ Menu:
 6 - Build bootloader
 7 - Add necessary libraries
 8 - Modify file permissions
-9 - Build packages
 * - Quit
 > '
 		read choice
@@ -687,7 +643,6 @@ Menu:
 					$FREENAS_SVNDIR/build/freenas-create-bootdir.sh $opt $FREENAS_BOOTDIR;;
 			7)	add_libs;;
 			8)	$FREENAS_SVNDIR/build/freenas-modify-permissions.sh $FREENAS_ROOTFS;;
-			9)	build_packages;;
 			*)	main;;
 		esac
 		[ 0 == $? ] && echo "=> Successful" || echo "=> Failed"
