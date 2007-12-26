@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Access"),gettext("Users"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Access"), gettext("Users"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();
@@ -76,7 +76,7 @@ if ($_POST) {
 		$input_errors[] = gettext("The login name contains invalid characters.");
 	}
 
-	if (($_POST['login'] && in_array($_POST['login'],$reservedlogin))) {
+	if (($_POST['login'] && in_array($_POST['login'], $reservedlogin))) {
 		$input_errors[] = gettext("The login name is a reserved login name.");
 	}
 
@@ -98,7 +98,12 @@ if ($_POST) {
 
 	// Check for a password mismatch.
 	if ($_POST['password'] != $_POST['passwordconf']) {
-			$input_errors[] = gettext("Password don't match.");
+		$input_errors[] = gettext("Password don't match.");
+	}
+
+	// Check if primary group is also selected in additional group.
+	if (is_array($_POST['group']) && in_array($_POST['primarygroup'], $_POST['group'])) {
+		$input_errors[] = gettext("Primary group is also selected in additional group.");
 	}
 
 	if (!$input_errors) {
