@@ -59,7 +59,6 @@ if (isset($id) && $a_iscsitarget_extent[$id]) {
 	$a_id = array();
 	foreach($a_iscsitarget_extent as $extent)
 		$a_id[] = (int)str_replace("extent", "", $extent['name']); // Extract ID.
-	asort($a_id); // Sort array.
 	while (true === in_array($extentid, $a_id))
 		$extentid += 1;
 
