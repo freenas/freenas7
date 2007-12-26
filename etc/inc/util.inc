@@ -1882,13 +1882,14 @@ function get_group_list() {
 	$grouplist = array();
 
 	preg_match_all("/(\S+):\*:(\d+):.*\n/", @file_get_contents("/etc/group"), $matches, PREG_SET_ORDER);
-	foreach ($matches as $group) {
-		$grouplist[$group[1]] = $group[2];
-	}
 
-	// Sort array.
-	if (is_array($grouplist))
+	if (is_array($matches)) {
+		foreach ($matches as $group) {
+			$grouplist[$group[1]] = $group[2];
+		}
+
 		ksort($grouplist);
+	}
 
 	return $grouplist;
 }
