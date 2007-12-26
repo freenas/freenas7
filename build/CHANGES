@@ -10,6 +10,7 @@ Majors changes:
 Minors changes:
 
 Bug fixs:
+- Calculating iSCSI extent IDs fails for numbers > 10.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

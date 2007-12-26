@@ -3,7 +3,7 @@
 /*
 	services_iscsitarget_extent_edit.php
 	Copyright © 2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
@@ -56,12 +56,12 @@ if (isset($id) && $a_iscsitarget_extent[$id]) {
 } else {
 	// Find next unused ID.
 	$extentid = 0;
-	foreach($a_iscsitarget_extent as $extent) {
-		if (str_replace("extent","",$extent['name']) == $extentid)
-			$extentid += 1;
-		else
-			break;
-	}
+	$a_id = array();
+	foreach($a_iscsitarget_extent as $extent)
+		$a_id[] = (int)str_replace("extent", "", $extent['name']); // Extract ID.
+	asort($a_id); // Sort array.
+	while (true === in_array($extentid, $a_id))
+		$extentid += 1;
 
 	$pconfig['name'] = "extent{$extentid}";
 	$pconfig['path'] = "";
@@ -74,13 +74,13 @@ if ($_POST) {
 
 	$pconfig = $_POST;
 
-	/* Input validation. */
-  $reqdfields = explode(" ", "path size");
-  $reqdfieldsn = array(gettext("Path"),gettext("File size"));
-  $reqdfieldst = explode(" ", "string numeric");
-
-  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-  do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+	// Input validation.
+	$reqdfields = explode(" ", "path size");
+	$reqdfieldsn = array(gettext("Path"),gettext("File size"));
+	$reqdfieldst = explode(" ", "string numeric");
+	
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	if (!$input_errors) {
 		$iscsitarget_extent = array();
@@ -102,18 +102,18 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <form action="services_iscsitarget_extent_edit.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-	    <td class="tabcont">
-				<?php if ($input_errors) print_input_errors($input_errors); ?>
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<tr>
+		<tr>
+			<td class="tabcont">
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Extent name");?></td>
 						<td width="78%" class="vtable">
 							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" readonly>
-					  </td>
+						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Path");?></td>
@@ -121,24 +121,24 @@ if ($_POST) {
 							<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>">
 							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
 							<br><?php echo sprintf(gettext("File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."), $pconfig['name']);?>
-					  </td>
+						</td>
 					</tr>
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("File size") ;?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("File size");?></td>
 						<td width="78%" class="vtable">
 							<input name="size" type="text" class="formfld" id="size" size="10" value="<?=htmlspecialchars($pconfig['size']);?>"><br>
 							<?=gettext("Size in MB.");?>
 						</td>
 					</tr>
-			    <tr>
+					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_extent[$id]))?gettext("Save"):gettext("Add")?>">
-						<?php if (isset($id) && $a_iscsitarget_extent[$id]): ?>
+						<?php if (isset($id) && $a_iscsitarget_extent[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
-						<?php endif; ?>
+						<?php endif;?>
 						</td>
 					</tr>
-			  </table>
+				</table>
 			</td>
 		</tr>
 	</table>
