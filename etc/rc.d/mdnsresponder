@@ -94,7 +94,8 @@ create_conf()
 		-i "count(//upnp/enable) > 0" \
 			-v "concat(//system/hostname,' UPnP Service')" -n \
 			-o "_upnp._tcp. local." -n \
-			-o "1900" \
+			-i "string-length(//upnp/port) > 0" -v "//upnp/port" -b \
+			-i "string-length(//upnp/port) = 0" -o "49152" -b \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc >> ${mdnsresponder_config}
 }
