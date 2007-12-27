@@ -26,8 +26,10 @@ mediatomb_pidfile=${mediatomb_pidfile-"/var/run/${name}.pid"}
 mediatomb_share=${mediatomb_share-"/usr/local/share/${name}"}
 pidfile="${mediatomb_pidfile}"
 
-# Create config directory.
-mkdir -p ${mediatomb_cfgdir}
+# Ensure that config directory exists.
+if [ ! -e ${mediatomb_cfgdir} ]; then
+	/bin/mkdir -p ${mediatomb_cfgdir}
+fi
 
 # Create config file.
 _name=`configxml_get "//upnp/name"`
