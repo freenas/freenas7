@@ -111,7 +111,7 @@ if ($_POST) {
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Extent name");?></td>
 						<td width="78%" class="vtable">
-							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" readonly>
+							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly";?>>
 						</td>
 					</tr>
 					<tr>

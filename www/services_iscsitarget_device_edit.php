@@ -65,12 +65,11 @@ if (isset($id) && $a_iscsitarget_device[$id]) {
 } else {
 	// Find next unused ID.
 	$deviceid = 0;
-	foreach($a_iscsitarget_device as $device) {
-		if (str_replace("device","",$device['name']) == $deviceid)
-			$deviceid += 1;
-		else
-			break;
-	}
+	$a_id = array();
+	foreach($a_iscsitarget_extent as $extent)
+		$a_id[] = (int)str_replace("device", "", $extent['name']); // Extract ID.
+	while (true === in_array($deviceid, $a_id))
+		$deviceid += 1;
 
 	$pconfig['name'] = "device{$deviceid}";
 	$pconfig['type'] = "RAID0";
@@ -138,7 +137,7 @@ function iscsitarget_checkusage($name,$skipdevice = "") {
 			  	<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Device name");?></td>
 						<td width="78%" class="vtable">
-							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" readonly>
+							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly";?>>
 					  </td>
 					</tr>
 					<tr>

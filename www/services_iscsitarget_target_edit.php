@@ -72,12 +72,11 @@ if (isset($id) && $a_iscsitarget_target[$id]) {
 } else {
 	// Find next unused ID.
 	$targetid = 0;
-	foreach($a_iscsitarget_target as $target) {
-		if (str_replace("target","",$target['name']) == $targetid)
-			$targetid += 1;
-		else
-			break;
-	}
+	$a_id = array();
+	foreach($a_iscsitarget_extent as $extent)
+		$a_id[] = (int)str_replace("target", "", $extent['name']); // Extract ID.
+	while (true === in_array($targetid, $a_id))
+		$targetid += 1;
 
 	$pconfig['name'] = "target{$targetid}";
 	$pconfig['flags'] = "rw";
@@ -139,7 +138,7 @@ if ($_POST) {
 			  	<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Device name");?></td>
 						<td width="78%" class="vtable">
-							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" readonly>
+							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly";?>>
 					  </td>
 					</tr>
 					<tr>
