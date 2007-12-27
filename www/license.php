@@ -149,8 +149,8 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
     <p>dp.SyntaxHighlighter (<a href="http://www.dreamprojections.com/SyntaxHighlighter" target="_blank">http://www.dreamprojections.com/SyntaxHighlighter</a>)<br>
       Copyright &copy; 2004-2006 Alex Gorbatchev. All rights reserved.</p>    
 
-    <p>uShare UPnP A/V Media Server (<a href="http://ushare.geexbox.org" target="_blank">http://ushare.geexbox.org</a>)<br>
-      Copyright &copy; 2005-2006 Benjamin Zores. All rights reserved.</p>
+    <p>MediaTomb UPnP AV MediaServer (<a href="http://mediatomb.cc" target="_blank">http://mediatomb.cc</a>)<br>
+      Copyright &copy; 2005-2007 Gena Batyan, Sergey Bostandzhyan and Leonhard Wimmer.</p>
 	  
 	 <p>NTFS-3G driver (<a href="http://www.ntfs-3g.org" target="_blank">http://www.ntfs-3g.org/</a>)<br>
       from Szabolcs Szakacsits.</p>

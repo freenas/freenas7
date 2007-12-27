@@ -29,6 +29,6 @@
     SUBDIR += scponly
     SUBDIR += smartmontools
     SUBDIR += unison
-    SUBDIR += ushare
+    SUBDIR += mediatomb
 
 .include <bsd.port.subdir.mk>
