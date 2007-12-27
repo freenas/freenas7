@@ -1,7 +1,7 @@
 PORTNAME=			mediatomb
 PORTVERSION=	0.10.0
 CATEGORIES=		net multimedia
-COMMENT=			UPnP AV MediaServer
+COMMENT=			UPnP A/V MediaServer
 MAINTAINER=		votdev@gmx.de
 
 MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
