@@ -1085,6 +1085,14 @@ function config_upgrade() {
 		$config['version'] = "3.6";
 	}
 
+	/* Convert 3.6 -> 3.7 */
+	/* Remove attribute //upnp/profile. */
+	if ($config['version'] === "3.6") {
+		unset($config['upnp']['profile']);
+
+		$config['version'] = "3.7";
+	}
+
 	write_config();
 
 	if (is_booting())

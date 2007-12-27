@@ -3,7 +3,7 @@
 /*
 	services_upnp.php
 	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
@@ -50,8 +50,8 @@ $pconfig['enable'] = isset($config['upnp']['enable']);
 $pconfig['name'] = $config['upnp']['name'];
 $pconfig['if'] = $config['upnp']['if'];
 $pconfig['port'] = $config['upnp']['port'];
-$pconfig['profile'] = $config['upnp']['profile'];
 $pconfig['web'] = isset($config['upnp']['web']);
+$pconfig['home'] = $config['upnp']['home'];
 
 /* Set name to configured hostname if it is not set */
 if(!$pconfig['name'])
@@ -64,8 +64,8 @@ if($_POST) {
 
 	/* input validation */
 	if($_POST['enable']) {
-		$reqdfields = explode(" ", "name interface");
-		$reqdfieldsn = array(gettext("Name"), gettext("Interface"));
+		$reqdfields = explode(" ", "name interface home");
+		$reqdfieldsn = array(gettext("Name"), gettext("Interface"), gettext("Home directory"));
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
@@ -75,15 +75,15 @@ if($_POST) {
 		$config['upnp']['name'] = $_POST['name'];
 		$config['upnp']['if'] = $_POST['interface'];
 		$config['upnp']['port'] = $_POST['port'];
-		$config['upnp']['profile'] = $_POST['profile'];
 		$config['upnp']['web'] = $_POST['web'] ? true : false;
+		$config['upnp']['home'] = $_POST['home'];
 
 		write_config();
 
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_update_service("ushare");
+			$retval |= rc_update_service("mediatomb");
 			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
@@ -117,7 +117,8 @@ function enable_change(enable_change) {
 	document.iform.interface.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.web.disabled = endis;
-	document.iform.profile.disabled = endis;
+	document.iform.home.disabled = endis;
+	document.iform.browse.disabled = endis;
 }
 //-->
 </script>
@@ -163,6 +164,14 @@ function enable_change(enable_change) {
 			      </td>
 			    </tr>
 			    <tr>
+			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Home directory");?></td>
+			      <td width="78%" class="vtable">
+							<input name="home" type="text" class="formfld" id="home" size="60" value="<?=htmlspecialchars($pconfig['home']);?>">
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.home; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+							<br><?=gettext("Server home - the server will search for the data that it needs relative to this directory - basically for the content database file. The bookmark file will also be generated in that directory.");?>
+			      </td>
+			    </tr>
+			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Content");?></td>
 			      <td width="78%" class="vtable">
 			        <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -201,25 +210,11 @@ function enable_change(enable_change) {
 						</td>
 					</tr>
 					<tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Profile"); ?></td>
-			      <td width="78%" class="vtable">
-			        <select name="profile" class="formfld" id="profile">
-			        <?php $types = array(gettext("Default"),gettext("XboX 360"),gettext("DLNA")); $vals = explode(" ", "default xbox dlna");?>
-			        <?php $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-			          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['profile']) echo "selected";?>>
-			          <?=htmlspecialchars($types[$j]);?>
-			          </option>
-			        <?php endfor; ?>
-			        </select>
-			        <br/><?=gettext("Compliant profile to be used.");?>
-			      </td>
-			    </tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Control web page");?></td>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Web user interface");?></td>
 						<td width="78%" class="vtable">
 							<input name="web" type="checkbox" id="web" value="yes" <?php if ($pconfig['web']) echo "checked"; ?>>
-							<?=gettext("Enable control web page.");?>
-							<br><?=gettext("Accessible through 'http://ip_address:port/web/ushare.html'.");?>
+							<?=gettext("Enable web user interface.");?>
+							<br><?=gettext("Accessible through 'http://ip_address:port'.");?>
 						</td>
 					</tr>
 			    <tr>

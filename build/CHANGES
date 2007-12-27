@@ -6,8 +6,7 @@ FreeNAS 0.687b1:
 Majors changes:
 - Upgrade Samba to 3.0.28.
 - Enhance WebGUI + rc-script to define additional group memberships for user accounts.
-
-Minors changes:
+- Replace uShare UPnP Mediaserver with MediaTomb 0.10.0.
 
 Bug fixs:
 - Calculating iSCSI extent IDs fails for numbers > 10.

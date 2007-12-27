@@ -1,0 +1,67 @@
+#!/bin/sh
+# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: mediatomb
+# REQUIRE: DAEMON
+# KEYWORD: shutdown
+# XQUERY: -i "count(//upnp/enable) > 0" -o "0" -b
+# RCVAR: mediatomb
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+name="mediatomb"
+rcvar=`set_rcvar`
+
+# Defaults
+mediatomb_enable=${mediatomb_enable-"NO"}
+mediatomb_mtuser=${mediatomb_mtuser-"root"}
+mediatomb_mtgroup=${mediatomb_mtgroup-"wheel"}
+mediatomb_cfgdir=${mediatomb_cfgdir-"/var/etc/${name}"}
+mediatomb_config=${mediatomb_config-"${mediatomb_cfgdir}/config.xml"}
+mediatomb_flags=${mediatomb_flags-""}
+mediatomb_logfile=${mediatomb_logfile-"/var/log/${name}.log"}
+mediatomb_pidfile=${mediatomb_pidfile-"/var/run/${name}.pid"}
+mediatomb_share=${mediatomb_share-"/usr/local/share/${name}"}
+pidfile="${mediatomb_pidfile}"
+
+# Create config directory.
+mkdir ${mediatomb_cfgdir}
+
+# Create config file.
+_name=`configxml_get "//upnp/name"`
+_home=`configxml_get "//upnp/home"`
+
+echo '<?xml version="1.0" encoding="UTF-8"?>' > ${mediatomb_config}
+echo '<config xmlns="http://mediatomb.cc/0.10.0/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mediatomb.cc/0.10.0/config http://mediatomb.cc/0.10.0/config.xsd">' >> ${mediatomb_config}
+echo '<server>' >> ${mediatomb_config}
+if configxml_isset "//upnp/web"; then
+	echo '<ui>' >> ${mediatomb_config}
+else
+	echo '<ui enabled="no">' >> ${mediatomb_config}
+fi
+echo '<accounts enabled="no" session-timeout="30"/>' >> ${mediatomb_config}
+echo '</ui>' >> ${mediatomb_config}
+echo "<name>${_name}</name>" >> ${mediatomb_config}
+echo "<home>${_home}</home>" >> ${mediatomb_config}
+echo "<webroot>${mediatomb_share}/web</webroot>" >> ${mediatomb_config}
+echo '<storage driver="sqlite3">' >> ${mediatomb_config}
+echo '<database-file>mediatomb.db</database-file>' >> ${mediatomb_config}
+echo '</storage>' >> ${mediatomb_config}
+echo '</server>' >> ${mediatomb_config}
+echo '</config>' >> ${mediatomb_config}
+
+# Create command args line.
+_command_args=`/usr/local/bin/xml sel -t -m "//upnp" \
+	-v "concat(' --home=',home)" \
+	-v "concat(' --interface=',if)" \
+	-i "string-length(port) > 0" -v "concat(' --port=',port)" -b \
+	-m "content" -v "concat(' --add=&quot;',.,'&quot;')" -b \
+	${configxml_file} | /usr/local/bin/xml unesc`
+
+command="/usr/local/bin/${name}"
+command_args="--daemon --cfgdir ${mediatomb_cfgdir} --config ${mediatomb_config} --logfile ${mediatomb_logfile} --user ${mediatomb_mtuser} --group ${mediatomb_mtgroup} --pidfile ${mediatomb_pidfile} ${_command_args}"
+
+load_rc_config ${name}
+run_rc_command "$1"
