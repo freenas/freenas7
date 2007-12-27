@@ -65,7 +65,7 @@ if($_POST) {
 	/* input validation */
 	if($_POST['enable']) {
 		$reqdfields = explode(" ", "name interface home");
-		$reqdfieldsn = array(gettext("Name"), gettext("Interface"), gettext("Home directory"));
+		$reqdfieldsn = array(gettext("Name"), gettext("Interface"), gettext("Database directory"));
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
@@ -164,11 +164,11 @@ function enable_change(enable_change) {
 			      </td>
 			    </tr>
 			    <tr>
-			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Home directory");?></td>
+			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Database directory");?></td>
 			      <td width="78%" class="vtable">
 							<input name="home" type="text" class="formfld" id="home" size="60" value="<?=htmlspecialchars($pconfig['home']);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.home; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
-							<br><?=gettext("Server home - the server will search for the data that it needs relative to this directory - basically for the content database file. The bookmark file will also be generated in that directory.");?>
+							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.home; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \></br>
+							<?=gettext("Location where the content database file will be stored. The bookmark file will also be generated in that directory.");?>
 			      </td>
 			    </tr>
 			    <tr>
@@ -184,13 +184,13 @@ function enable_change(enable_change) {
 								<tr>
 									<td class="listlr"><?=htmlspecialchars($contentv);?> &nbsp;</td>
 									<td valign="middle" nowrap class="list">
-										<?php if(isset($config['upnp']['enable'])): ?>
+										<?php if(isset($config['upnp']['enable'])):?>
 										<a href="services_upnp_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit directory");?>" width="17" height="17" border="0"></a>&nbsp;
 										<a href="services_upnp.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this directory entry?");?>')"><img src="x.gif" title="<?=gettext("Delete directory"); ?>" width="17" height="17" border="0"></a>
 										<?php endif; ?>
 									</td>
 								</tr>
-								<?php $i++; endforeach; ?>
+								<?php $i++; endforeach;?>
 								<?php endif;?>
 								<tr>
 									<td class="list" colspan="1"></td>
@@ -205,8 +205,8 @@ function enable_change(enable_change) {
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Port");?></td>
 						<td width="78%" class="vtable">
-							<input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
-							<br><?=gettext("Enter a custom port number for the HTTP server if you want to override the default (49152). Only dynamic or private ports can be used (from 49152 through 65535).");?>
+							<input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"></br>
+							<?=gettext("Enter a custom port number for the HTTP server if you want to override the default (49152). Only dynamic or private ports can be used (from 49152 through 65535).");?>
 						</td>
 					</tr>
 					<tr>
