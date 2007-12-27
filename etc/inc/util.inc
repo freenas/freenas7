@@ -1617,6 +1617,12 @@ function get_product_version() {
 	return chop(file_get_contents("{$g['etc_path']}/prd.version"));
 }
 
+/* Get the product revision */
+function get_product_revision() {
+	global $g;
+	return chop(file_get_contents("{$g['etc_path']}/prd.revision"));
+}
+
 /* Get the product version */
 function get_product_buildtime() {
 	global $g;

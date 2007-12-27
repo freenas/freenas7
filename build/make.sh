@@ -18,6 +18,7 @@ FREENAS_SVNDIR="$FREENAS_ROOTDIR/svn"
 FREENAS_WORLD=""
 FREENAS_PRODUCTNAME=$(cat $FREENAS_SVNDIR/etc/prd.name)
 FREENAS_VERSION=$(cat $FREENAS_SVNDIR/etc/prd.version)
+FREENAS_REVISION=$(svn info ${FREENAS_SVNDIR} | grep Revision | awk '{print $2}')
 FREENAS_ARCH=$(uname -p)
 FREENAS_KERNCONF="$(echo ${FREENAS_PRODUCTNAME} | tr '[:lower:]' '[:upper:]')-${FREENAS_ARCH}"
 FREENAS_OBJDIRPREFIX="/usr/obj/$(echo ${FREENAS_PRODUCTNAME} | tr '[:upper:]' '[:lower:]')"
@@ -157,7 +158,7 @@ create_rootfs() {
 	$FREENAS_SVNDIR/build/freenas-create-rootfs.sh -f $FREENAS_ROOTFS
 
 	# Configuring platform variable
-	echo $FREENAS_VERSION > $FREENAS_ROOTFS/etc/prd.version
+	echo ${FREENAS_VERSION} > ${FREENAS_ROOTFS}/etc/prd.version
 
 	# Config file: config.xml
 	cd $FREENAS_ROOTFS/conf.default/
@@ -346,7 +347,10 @@ create_image() {
 	# Set build time.
 	date > ${FREENAS_ROOTFS}/etc/prd.version.buildtime
 
-	IMGFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.img"
+	# Set revision.
+	echo ${FREENAS_REVISION} > ${FREENAS_ROOTFS}/etc/prd.revision
+
+	IMGFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.${FREENAS_REVISION}.img"
 
 	echo "===> Generating tempory $FREENAS_TMPDIR folder"
 	mkdir $FREENAS_TMPDIR
@@ -429,7 +433,7 @@ create_iso () {
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 
-	ISOFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-liveCD-${FREENAS_VERSION}.iso"
+	ISOFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-liveCD-${FREENAS_VERSION}.${FREENAS_REVISION}.iso"
 
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Generating the $FREENAS_PRODUCTNAME Image file:"
@@ -439,6 +443,9 @@ create_iso () {
 	# Set platform information.
 	PLATFORM="${FREENAS_ARCH}-liveCD"
 	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
+
+	# Set revision.
+	echo ${FREENAS_REVISION} > ${FREENAS_ROOTFS}/etc/prd.revision
 
 	echo "ISO: Generating temporary folder '$FREENAS_TMPDIR'"
 	mkdir $FREENAS_TMPDIR
@@ -499,6 +506,9 @@ create_full() {
 	# Set platform information.
 	PLATFORM="${FREENAS_ARCH}-full"
 	echo $PLATFORM > ${FREENAS_ROOTFS}/etc/platform
+
+	# Set revision.
+	echo ${FREENAS_REVISION} > ${FREENAS_ROOTFS}/etc/prd.revision
 
 	FULLFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.tgz"
 
