@@ -83,7 +83,7 @@ if($_POST) {
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_update_service("mediatomb");
+			$retval |= rc_update_service("mediatomb.sh");
 			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}

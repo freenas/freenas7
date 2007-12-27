@@ -40,7 +40,7 @@ post-patch:
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/build/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/bin
-	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}.sh
 
 	-@${MKDIR} ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/js
 	-@${MKDIR} ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web
