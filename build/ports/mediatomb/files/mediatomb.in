@@ -27,7 +27,7 @@ mediatomb_share=${mediatomb_share-"/usr/local/share/${name}"}
 pidfile="${mediatomb_pidfile}"
 
 # Create config directory.
-mkdir ${mediatomb_cfgdir}
+mkdir -p ${mediatomb_cfgdir}
 
 # Create config file.
 _name=`configxml_get "//upnp/name"`
