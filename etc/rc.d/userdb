@@ -4,6 +4,7 @@
 
 # PROVIDE: userdb
 # BEFORE: CONFIG
+# REQUIRE: system_init
 
 . /etc/rc.subr
 . /etc/configxml.subr
