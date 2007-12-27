@@ -7,6 +7,7 @@ Majors changes:
 - Upgrade Samba to 3.0.28.
 - Enhance WebGUI + rc-script to define additional group memberships for user accounts.
 - Replace uShare UPnP Mediaserver with MediaTomb 0.10.0.
+  You have to reconfigure the UPnP service to get working properly.
 
 Bug fixs:
 - Calculating iSCSI extent IDs fails for numbers > 10.
