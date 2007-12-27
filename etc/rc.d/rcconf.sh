@@ -3,8 +3,8 @@
 # All rights reserved.
 
 # PROVIDE: rcconf
-# REQUIRE: system_init
 # BEFORE: CONFIG
+# REQUIRE: SYSTEMINIT
 
 . /etc/rc.subr
 . /etc/util.subr

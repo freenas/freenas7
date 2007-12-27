@@ -2,8 +2,6 @@
 # Copyright (c) 2007 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
-# PROVIDE: CONFIG
-# REQUIRE: SYSTEMINIT
-# BEFORE: NETWORKING NETWORK
+# PROVIDE: SYSTEMINIT
 
 #	This is a dummy dependency.

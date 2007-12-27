@@ -4,7 +4,7 @@
 
 # PROVIDE: ldap
 # BEFORE: CONFIG
-# REQUIRE: system_init
+# REQUIRE: SYSTEMINIT
 
 #
 # Configure LDAP modules
