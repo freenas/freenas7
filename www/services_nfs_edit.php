@@ -49,7 +49,12 @@ sort($config['nfs']['nfsnetworks']);
 
 $a_nfs = &$config['nfs']['nfsnetworks'];
 
-list($pconfig['network'],$pconfig['network_subnet']) = explode('/', $a_nfs[$id]);
+if (isset($id) && $a_nfs[$id]) {
+	list($pconfig['network'], $pconfig['network_subnet']) = explode('/', $a_nfs[$id]);
+} else {
+	$pconfig['network'] = "";
+	$pconfig['network_subnet'] = "24";
+}
 
 if($_POST) {
 	unset($input_errors);
