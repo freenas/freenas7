@@ -47,9 +47,16 @@ fsck_start()
 		# Process all configured mounts.
 		/usr/local/bin/xml sel -t -m "//mounts/mount[fstype = 'ufs' or fstype = 'msdosfs' or fstype = 'ext2fs']" \
 			-v "concat(fstype,' ',devicespecialfile,' ',mdisk)" \
+			-i "count(fsck) > 0" -o " 1" -b \
+			-i "count(fsck) = 0" -o " 0" -b \
 			-i "position() != last()" -n -b \
 			${configxml_file} | /usr/local/bin/xml unesc | \
-		while read _fstype _devicespecialfile _mdisk; do
+		while read _fstype _devicespecialfile _mdisk _fsck; do
+			# Check if fsck is enabled.
+			if [ "0" = "${_fsck}" ]; then
+				continue
+			fi
+
 			# Check if block device exists.
 			if [ ! -e "${_devicespecialfile}" ]; then
 				continue

@@ -63,10 +63,13 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['sharename'] = $a_mount[$id]['sharename'];
 	$pconfig['desc'] = $a_mount[$id]['desc'];
 	$pconfig['readonly'] = isset($a_mount[$id]['readonly']);
+	$pconfig['fsck'] = isset($a_mount[$id]['fsck']);
+	
 } else {
 	$pconfig['type'] = "disk";
 	$pconfig['partition'] = "p1";
 	$pconfig['readonly'] = false;
+	$pconfig['fsck'] = true;
 }
 
 if ($_POST) {
@@ -158,6 +161,7 @@ if ($_POST) {
 				$mount['fstype'] = $_POST['fstype'];
 				$mount['devicespecialfile'] = trim("{$mount['mdisk']}{$mount['partition']}");
 				$mount['readonly'] = $_POST['readonly'] ? true : false;
+				$mount['fsck'] = $_POST['fsck'] ? true : false;
 				break;
 
 			case "iso":
@@ -194,6 +198,7 @@ function type_change() {
       showElementById('fstype_tr','show');
       showElementById('filename_tr','hide');
       showElementById('readonly_tr','show');
+      showElementById('fsck_tr','show');
       break;
 
     case 1: /* ISO */
@@ -202,6 +207,7 @@ function type_change() {
       showElementById('fstype_tr','hide');
       showElementById('filename_tr','show');
       showElementById('readonly_tr','hide');
+      showElementById('fsck_tr','hide');
       break;
   }
 }
@@ -270,7 +276,7 @@ function fstype_change() {
 								<option value=" " <?php if (empty($pconfig['partition'])) echo "selected";?>><?=gettext("CD/DVD or Old Software RAID");?></option>
 							</select>
 							<br>
-							<?=gettext("Select 'EFI GPT' if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select 'Old software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS release.");?>
+							<span class="vexpl"><?=gettext("Select 'EFI GPT' if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select 'Old software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS release.");?></span>
 			      </td>
 			    </tr>
 			    <tr id="fstype_tr">
@@ -311,6 +317,14 @@ function fstype_change() {
 							<?=gettext("Mount the file system read-only (even the super-user may not write it).");?>
 			      </td>
 			    </tr>
+			    <tr id="fsck_tr">
+						<td width="22%" valign="top" class="vncell"><?=gettext("File system check");?></td>
+			      <td width="78%" class="vtable">
+							<input name="fsck" type="checkbox" id="fsck" value="yes" <?php if ($pconfig['fsck']) echo "checked"; ?>>
+							<?=gettext("Enable foreground file system consistency check during boot process.");?></br>
+							<span class="vexpl"><?=gettext("Nevertheless a asynchronously background file system check will be started at the end of the boot process.");?></span>
+			      </td>
+			    </tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>">
@@ -323,7 +337,7 @@ function fstype_change() {
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br>
 			        </strong></span><?=sprintf(gettext("You can't mount the partition '%s' where the config file is stored.<br>"),htmlspecialchars($cfdevice));?></span>
-							<p><span class="vexpl"><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></p>
+							<p><span class="vexpl"><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></span></p>
 			      </td>
 			    </tr>
 			  </table>

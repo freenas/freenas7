@@ -220,6 +220,8 @@
 			<mdisk>/dev/xxx</mdisk>
 			<partition>xxx</partition>
 			<devicespecialfile>/dev/xxx</devicespecialfile>
+			</readonly> // Mount file system readonly.
+			</fsck> // Enable/disable foreground file system consistency check during boot process.
 			// 'iso' attributes:
 			<filename>xxx</filename>
 		</mount>
