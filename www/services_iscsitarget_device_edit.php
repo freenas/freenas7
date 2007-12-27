@@ -66,7 +66,7 @@ if (isset($id) && $a_iscsitarget_device[$id]) {
 	// Find next unused ID.
 	$deviceid = 0;
 	$a_id = array();
-	foreach($a_iscsitarget_extent as $extent)
+	foreach($a_iscsitarget_device as $extent)
 		$a_id[] = (int)str_replace("device", "", $extent['name']); // Extract ID.
 	while (true === in_array($deviceid, $a_id))
 		$deviceid += 1;

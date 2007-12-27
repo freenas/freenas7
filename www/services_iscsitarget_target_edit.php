@@ -73,7 +73,7 @@ if (isset($id) && $a_iscsitarget_target[$id]) {
 	// Find next unused ID.
 	$targetid = 0;
 	$a_id = array();
-	foreach($a_iscsitarget_extent as $extent)
+	foreach($a_iscsitarget_target as $extent)
 		$a_id[] = (int)str_replace("target", "", $extent['name']); // Extract ID.
 	while (true === in_array($targetid, $a_id))
 		$targetid += 1;
