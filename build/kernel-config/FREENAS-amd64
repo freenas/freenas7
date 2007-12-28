@@ -16,7 +16,7 @@
 # If you are in doubt as to the purpose or necessity of a line, check first
 # in NOTES.
 #
-# $FreeBSD: src/sys/i386/conf/GENERIC,v 1.429.2.13 2006/10/09 18:41:36 simon Exp $
+# $FreeBSD: src/sys/i386/conf/GENERIC,v 1.429.2.14 2007/03/27 02:33:00 yongari Exp $
 
 machine		amd64
 cpu		HAMMER
@@ -195,9 +195,10 @@ device		bge		# Broadcom BCM570xx Gigabit Ethernet
 device		dc		# DEC/Intel 21143 and various workalikes
 device		fxp		# Intel EtherExpress PRO/100B (82557, 82558)
 device		lge		# Level 1 LXT1001 gigabit Ethernet
+device		msk		# Marvell/SysKonnect Yukon II Gigabit Ethernet
 device		nge		# NatSemi DP83820 gigabit Ethernet
 device		nve		# nVidia nForce MCP on-board Ethernet Networking
-#device		pcn		# AMD Am79C97x PCI 10/100(precedence over 'lnc') Replace pcn with le driver. Cause explain here: http://ivoras.sharanet.org/freebsd/vmware.html
+device		pcn		# AMD Am79C97x PCI 10/100(precedence over 'lnc')
 device		re		# RealTek 8139C+/8169/8169S/8110S
 device		rl		# RealTek 8129/8139
 device		sf		# Adaptec AIC-6915 (``Starfire'')
@@ -291,7 +292,6 @@ options		NO_SWAPPING
 options 	DEVICE_POLLING
 options		HZ=1000
 options   SMP						# Symmetric MultiProcessor Kernel
-options		MSDOSFS_LARGE	# MSDOS Filesystem for FAT32 > 128GB
 device		speaker
 
 # Splashscreen

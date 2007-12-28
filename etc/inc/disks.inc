@@ -661,9 +661,6 @@ function disks_raid_graid5_tune()
 	} else {
 		write_log("Detected >= 512MB of RAM... No need to optimize RAM usage for graid5");
 	}
-
-	// Modify ATA timeout to 15 seconds.
-	mwexec('sysctl hw.ata.to=15');
 }
 
 // Stop all geom RAID volumes.

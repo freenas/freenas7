@@ -154,10 +154,11 @@ function interfaces_lan_configure()
 		$result |= rc_restart_service("pureftpd");
 
 		/* Restart NFS */
-		$result |= rc_update_service("rpcbind");    // !!! Do not
-		$result |= rc_update_service("mountd");     // !!! change
-		$result |= rc_update_service("nfsd");       // !!! this
-		$result |= rc_update_service("nfslocking"); // !!! order
+		$retval |= rc_update_service("rpcbind"); // !!! Do
+		$retval |= rc_update_service("mountd");  // !!! not
+		$retval |= rc_update_service("nfsd");    // !!! change
+		$retval |= rc_update_service("statd");   // !!! this
+		$retval |= rc_update_service("lockd");   // !!! order
 
 		/* Restart AFP */
 		$result |= rc_restart_service("afpd");

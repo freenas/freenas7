@@ -1,5 +1,5 @@
---- geom_eli.c.orig	Tue Jun  5 06:39:05 2007
-+++ geom_eli.c	Tue Jun  5 06:25:17 2007
+--- geom_eli.c.orig	2007-02-03 16:09:10.000000000 +0000
++++ geom_eli.c	2007-12-28 13:28:49.000000000 +0000
 @@ -73,13 +73,15 @@
  static void eli_restore(struct gctl_req *req);
  static void eli_clear(struct gctl_req *req);
@@ -100,11 +100,10 @@
  					continue;
  				}
  				bzero(buf2, sizeof(buf2));
-@@ -1227,4 +1236,42 @@
- 		eli_metadata_dump(&md);
+@@ -1240,3 +1249,41 @@
  		printf("\n");
  	}
-+}
+ }
 +
 +static char *
 +eli_get_passwd(struct gctl_req *req, const char *prompt, char *buf, size_t bufsiz)
@@ -142,4 +141,4 @@
 +	}
 +
 +	return buf;
- }
++}
