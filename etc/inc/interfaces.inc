@@ -168,10 +168,10 @@ function interfaces_lan_configure()
 		/* Restart RSYNC */
 		$result |= rc_update_service("rsyncd");
 
-		/* Restart uShare */
-		$result |= rc_restart_service("ushare");
+		/* Restart UPnP */
+		$result |= rc_restart_service("mediatomb.sh");
 
-		/* Restart mdnsresponder (Zeroconf/Bonjour) */
+		/* Restart mdnsresponder (Zeroconf/Apple Bonjour) */
 		$result |= rc_restart_service("mdnsresponder");
 	}
 
