@@ -9,7 +9,7 @@
 #
 
 # PROVIDE: cleanvar
-# REQUIRE: mountcritlocal
+# REQUIRE: FILESYSTEMS
 
 . /etc/rc.subr
 
