@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2007-10-26 12:54+0000\n"
+"POT-Creation-Date: 2007-12-16 16:18+0000\n"
 "PO-Revision-Date: 2007-10-27 16:18+0000\n"
 "Last-Translator: Baikuan Hsu <chicworks@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2007-11-30 05:57+0000\n"
+"X-Launchpad-Export-Date: 2007-12-28 19:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: China\n"
 "X-Poedit-Language: Chinese\n"
@@ -198,6 +198,12 @@ msgstr ""
 #~ msgid "Graph"
 #~ msgstr "图表"
 
+#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+#~ msgstr "NAS的主机名称，不包含网域<br>例如: <em>nas</em>"
+
+#~ msgid "e.g. <em>mycorp.com</em>"
+#~ msgstr "例： <em>mycompany.com</em>"
+
 #~ msgid "DNS servers"
 #~ msgstr "DNS伺服器"
 
@@ -205,9 +211,18 @@ msgstr ""
 #~ msgstr "请输入IP位置"
 
 #~ msgid ""
+#~ "If you want to change the username for accessing the webGUI, enter it here."
+#~ msgstr "变更网页介面的帐号。"
+
+#~ msgid ""
 #~ "If you want to change the password for accessing the webGUI, enter it here "
 #~ "twice.<br>Don't use the character ':'."
 #~ msgstr "变更网页介面的密码（两次）<br>不要使用以下的字元 ':'。"
+
+#~ msgid ""
+#~ "Enter a custom port number for the webGUI above if you want to override the "
+#~ "default (80 for HTTP, 443 for HTTPS)."
+#~ msgstr "输入自行设定的网页管理介面连接埠(80: HTTP, 443: HTTPS)。"
 
 #~ msgid "Select the system language"
 #~ msgstr "选择网页管理介面显示语言"
@@ -336,6 +351,17 @@ msgstr ""
 #~ msgid "Duplicate Share Name."
 #~ msgstr "输入了存在的分享名称。"
 
+#~ msgid ""
+#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select old "
+#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+#~ msgstr ""
+#~ "如果你想要掛载 GPT 格式的磁碟（0.684之后的预设格式化选项），请选择 EFI GPT。<br>如果是要掛载 UFS 或 Software "
+#~ "RAID 格式化的磁碟请选择 1。<br>如果是要掛载系统磁碟分隔为两区中的资料磁碟，请选择 2。<br>如果你要掛载 0.682 之前 FreeNAS "
+#~ "格式化之磁碟，请选择 old software gmirror/graid5/gvinum。"
+
 #~ msgid "The Netbios name contains invalid characters."
 #~ msgstr "Netbios名称输入了无效的字元。"
 
@@ -376,6 +402,9 @@ msgstr ""
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "输出的目錄名称是：/mnt/sharename"
+
+#~ msgid "You must configure mount point first."
+#~ msgstr "请先设定掛载点。"
 
 #~ msgid "Rsync Client Synchronization"
 #~ msgstr "Rsync本地端档案同步"
@@ -499,6 +528,9 @@ msgstr ""
 
 #~ msgid "Disk initialization and encryption"
 #~ msgstr "磁碟初始化与加密"
+
+#~ msgid "Encrypting... Please wait"
+#~ msgstr "加密中...请稍等"
 
 #~ msgid "Attaching..."
 #~ msgstr "连接中..."
@@ -733,6 +765,9 @@ msgstr "ATAidle"
 msgid "Access"
 msgstr "存取权限"
 
+msgid "Access Mode"
+msgstr ""
+
 msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
 msgstr "通过'http://ip_address:port/web/ushare.html'存取。"
 
@@ -855,8 +890,22 @@ msgstr ""
 msgid "All"
 msgstr "所有"
 
+msgid ""
+"All mounted volumes are automatically shared and restricted to only allow "
+"administrators to connect. The volumes will not show up in the list of "
+"shares."
+msgstr ""
+
+msgid ""
+"All shares use the option 'usedots' thus making the filenames .Parent and "
+"anything beginning with .Apple illegal."
+msgstr ""
+
 msgid "All users will have the root privilege."
 msgstr "让所有的使用者都有root权限。"
+
+msgid "Allow"
+msgstr ""
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -868,9 +917,19 @@ msgid ""
 "existing files is still allowed."
 msgstr ""
 
+msgid ""
+"Allows  certain  users and groups to have read/write access to a share. This "
+"follows the allow option format."
+msgstr ""
+
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr "允许%s尝试成为local master browser。"
+
+msgid ""
+"Allows certain users and groups to have read-only  access  to  a share. This "
+"follows the allow option format."
+msgstr ""
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "更改TCP端口。默认为22"
@@ -923,8 +982,8 @@ msgstr "认证方式"
 msgid "Authorised network"
 msgstr "通过认证的网络"
 
-msgid "Authorized"
-msgstr "通过认证"
+msgid "Authorized networks"
+msgstr ""
 
 msgid "AutoScale"
 msgstr "AutoScale"
@@ -956,6 +1015,9 @@ msgstr "基本 DN"
 msgid "Browseable"
 msgstr "提供浏览"
 
+msgid "CD/DVD or Old Software RAID"
+msgstr ""
+
 msgid "CIFS/SMB"
 msgstr ""
 
@@ -968,14 +1030,17 @@ msgstr "CPU负载"
 msgid "Calculate netmask bits"
 msgstr "计算掩码比特值"
 
-msgid "Can't format the drive where FreeNAS configuration file is installed!"
-msgstr "不能包含FreeNAS配置文件的磁盘格式化！"
+msgid "Can't format the OS origin disk!"
+msgstr ""
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "不能挂载系统分区(第1区)，资料分区为第2区。"
 
 msgid "Cannot get data about interface"
 msgstr "不能从界面获取数据"
+
+msgid "Case Folding"
+msgstr ""
 
 msgid "Certificate"
 msgstr "证书"
@@ -1039,6 +1104,15 @@ msgid "Community"
 msgstr ""
 
 msgid "Compliant profile to be used."
+msgstr ""
+
+msgid "Compression"
+msgstr ""
+
+msgid ""
+"Compression is worth using if your connection is slow. The efficiency of the "
+"compression depends on the type of the file, and varies widely. Useful for "
+"internet transfer only."
 msgstr ""
 
 msgid "Configuring"
@@ -1191,6 +1265,9 @@ msgstr "刪除目标"
 msgid "Delete user"
 msgstr "刪除使用者"
 
+msgid "Deny"
+msgstr ""
+
 msgid "Description"
 msgstr "描述"
 
@@ -1291,6 +1368,9 @@ msgstr "磁碟空间"
 
 msgid "Disks"
 msgstr "磁碟"
+
+msgid "Do not create .AppleDouble directory"
+msgstr ""
 
 msgid "Do you really want to delete this RSYNC?"
 msgstr "确定要刪除这个RSYNC设定吗？"
@@ -1476,11 +1556,17 @@ msgstr "开啟FXP协定支援。"
 msgid "Enable NTP"
 msgstr ""
 
+msgid "Enable Windows filename restrictions"
+msgstr ""
+
 msgid "Enable Zeroconf"
 msgstr "开啟 Zeroconf"
 
 msgid "Enable anonymous login."
 msgstr "是否开啟匿名登入"
+
+msgid "Enable compression."
+msgstr ""
 
 msgid "Enable control web page."
 msgstr ""
@@ -1515,6 +1601,9 @@ msgstr ""
 msgid "Enable recycle bin"
 msgstr ""
 
+msgid "Enable store DOS attributes"
+msgstr ""
+
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "开啟 syslog'ing 写入远端 syslog 伺服器"
 
@@ -1538,8 +1627,9 @@ msgstr "启用"
 msgid "Encrypted disk name"
 msgstr "加密磁碟名称"
 
-msgid "Encrypting... Please wait"
-msgstr "加密中...请稍等"
+#, php-format
+msgid "Encrypting '%s'... Please wait"
+msgstr ""
 
 msgid "Encryption"
 msgstr "加密方式"
@@ -1554,9 +1644,9 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Enter a custom port number for the webGUI above if you want to override the "
+"Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
-msgstr "输入自行设定的网页管理介面连接埠(80: HTTP, 443: HTTPS)。"
+msgstr ""
 
 msgid "Enter a description (name) for the interface here."
 msgstr "在此输入你对这个网路介面的描述文字。"
@@ -1802,6 +1892,9 @@ msgstr "群组词缀"
 msgid "Groups"
 msgstr "群组"
 
+msgid "Guest"
+msgstr ""
+
 msgid "HTTP Proxy"
 msgstr ""
 
@@ -1882,7 +1975,7 @@ msgid ""
 "hostnames&quot; is checked on the <a href=%s>%s</a> page."
 msgstr "如果<a href=%s>%s</a>页面內， &quot;将IP解析成主机名称&quot;的选项有开啟，IP 位置会解析成主机名称。"
 
-msgid "IP type mistmatch for network and gateway."
+msgid "IP type mismatch for network and gateway."
 msgstr ""
 
 msgid "IPv4 Configuration"
@@ -1924,12 +2017,23 @@ msgstr ""
 msgid "ISP DNS servers"
 msgstr "ISP DNS伺服器"
 
+msgid "If Login is required."
+msgstr ""
+
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
 "to perform selected command, otherwise the commands work in read-only "
 "mode.<br>Service disruption to users accessing this mount will occur during "
 "this process."
 msgstr "如果选择的磁碟/磁区正在掛载中，系统会将磁碟暂时卸载以进行指令，期间可能或有暂时性的服务中断。否则指令只能在唯读模式下运作。"
+
+msgid ""
+"If this parameter is set, Samba attempts to first read DOS attributes "
+"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
+"before mapping DOS attributes to UNIX permission bits. When set, DOS "
+"attributes will be stored onto an extended attribute in the UNIX filesystem, "
+"associated with the file or directory."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -1945,8 +2049,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"If you want to change the username for accessing the webGUI, enter it here."
-msgstr "变更网页介面的帐号。"
+"If you want to change the username for accessing the WebGUI, enter it here."
+msgstr ""
 
 msgid "Image upload failed (out of memory?)"
 msgstr "映像档上传失败(记忆体不足？)"
@@ -2102,14 +2206,14 @@ msgstr "记錄档层级"
 msgid "Login"
 msgstr "登入"
 
-msgid "Login is required."
-msgstr ""
-
 msgid "Logs"
 msgstr "记錄档"
 
 msgid "MAC address"
 msgstr "MAC位置"
+
+msgid "MISSING"
+msgstr ""
 
 msgid "MOTD"
 msgstr "MOTD"
@@ -2134,6 +2238,9 @@ msgstr "对应到本地使用者"
 
 msgid "Max. conn. per IP"
 msgstr "相同IP的连線数目"
+
+msgid "Maximum Connections"
+msgstr ""
 
 msgid "Maximum connections"
 msgstr "连線数目上線"
@@ -2213,6 +2320,9 @@ msgstr "透过记錄档监控S.M.A.R.T装置。"
 msgid "Mount Point"
 msgstr "挂载点"
 
+msgid "Mount point"
+msgstr ""
+
 msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
@@ -2228,6 +2338,9 @@ msgstr "掛载中..."
 
 msgid "Mounts"
 msgstr "掛载点"
+
+msgid "Must choose one"
+msgstr ""
 
 msgid "NAT mode"
 msgstr "NAT模式"
@@ -2256,8 +2369,9 @@ msgstr "NTP时间伺服器"
 msgid "Name"
 msgstr "名称"
 
-msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-msgstr "NAS的主机名称，不包含网域<br>例如: <em>nas</em>"
+#, php-format
+msgid "Name of the NAS host, without domain part e.g. %s."
+msgstr ""
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -2293,6 +2407,9 @@ msgstr ""
 
 msgid "No"
 msgstr "否"
+
+msgid "No AppleDouble Directory"
+msgstr ""
 
 msgid "No RSYNC Client configured"
 msgstr "尚无RSYNC客戶端设定"
@@ -2333,6 +2450,9 @@ msgstr ""
 
 msgid "OK"
 msgstr "OK"
+
+msgid "ONLINE"
+msgstr ""
 
 msgid "OS Version"
 msgstr "作业系统版本"
@@ -2568,8 +2688,17 @@ msgstr "RSYNCD事件"
 msgid "Raid name"
 msgstr "Raid名称"
 
+msgid "Read Only Access"
+msgstr ""
+
 msgid "Read only"
 msgstr "只读"
+
+msgid "Read/Write"
+msgstr ""
+
+msgid "Read/Write Access"
+msgstr ""
 
 msgid "Reboot"
 msgstr ""
@@ -2692,15 +2821,16 @@ msgid ""
 msgstr "规划的第二步：选择<a href=%s>刚才设定的磁碟</a>所使用之档案系统"
 
 msgid ""
-"Select EFI GPT if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
 "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select old "
-"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+"you select option 2 during installation on hard drive.<br>Select 'Old "
+"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+"release."
 msgstr ""
-"如果你想要掛载 GPT 格式的磁碟（0.684之后的预设格式化选项），请选择 EFI GPT。<br>如果是要掛载 UFS 或 Software "
-"RAID 格式化的磁碟请选择 1。<br>如果是要掛载系统磁碟分隔为两区中的资料磁碟，请选择 2。<br>如果你要掛载 0.682 之前 FreeNAS "
-"格式化之磁碟，请选择 old software gmirror/graid5/gvinum。"
+
+msgid "Select mount point where to create the swap file."
+msgstr ""
 
 msgid "Select the FreeBSD package to be installed."
 msgstr ""
@@ -2750,14 +2880,29 @@ msgstr "服务"
 msgid "Set browseable"
 msgstr ""
 
+msgid "Set browseable."
+msgstr ""
+
+msgid "Set share password."
+msgstr ""
+
 msgid "Settings"
 msgstr "设定"
 
 msgid "Share"
 msgstr "分享"
 
+msgid "Share Character Set"
+msgstr ""
+
 msgid "Share Name"
 msgstr "分享名称"
+
+msgid "Share Password"
+msgstr ""
+
+msgid "Share passwords can not be more than 8 characters."
+msgstr ""
 
 msgid "Shares"
 msgstr ""
@@ -2819,6 +2964,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
+"etc."
+msgstr ""
+
+msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr "指定超级使用者 (root)是否可以透过SSH直接登入。"
 
@@ -2846,7 +2996,13 @@ msgstr "状态"
 msgid "Status report successfully sent."
 msgstr ""
 
+msgid "Stopped"
+msgstr ""
+
 msgid "Storage"
+msgstr ""
+
+msgid "Store DOS attributes"
 msgstr ""
 
 msgid "Subject"
@@ -2946,6 +3102,11 @@ msgstr "目标名称"
 
 msgid "Temperature"
 msgstr "溫度"
+
+msgid ""
+"The  deny  option specifies users and groups who are not allowed access to "
+"the share. It follows the same  format  as  the  allow option."
+msgstr ""
 
 #, php-format
 msgid "The %s port must be a valid port number."
@@ -3326,6 +3487,21 @@ msgstr "用来控制磁碟的运转噪音程度。<br><em>CF卡请勿选用。</
 msgid "This certificate does not appear to be valid."
 msgstr "这个验证似乎是无效的。"
 
+msgid "This controls how the case of filenames are viewed and stored."
+msgstr ""
+
+msgid "This controls the access a remote host has to this share."
+msgstr ""
+
+msgid "This controls the access to this share with an access password."
+msgstr ""
+
+msgid ""
+"This controls whether the .AppleDouble directory gets created unless "
+"absolutely needed. This option should not be used if files are access mostly "
+"by Mac computers."
+msgstr ""
+
 msgid ""
 "This controls whether this share is seen in the list of available shares in "
 "a net view and in the browse list."
@@ -3345,6 +3521,12 @@ msgstr ""
 
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "这个加密磁碟正在掛载中，在卸除之前请先将其卸载。"
+
+msgid ""
+"This forces filenames to be restricted to the character set used by Windows. "
+"This is <em>not</em> recommended for shares used principally by Mac "
+"computers."
+msgstr ""
 
 msgid "This group already exists in the group list."
 msgstr "这个群组已经建立过了。"
@@ -3376,6 +3558,12 @@ msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr ""
 
 msgid ""
+"This option allows the users and groups that access a share to be specified. "
+"Users and groups are specified, delimited by commas. Groups are designated "
+"by a @ prefix."
+msgstr ""
+
+msgid ""
 "This parameter is a comma, space, or tab delimited set of host which are NOT "
 "permitted to access this share. Where the lists conflict, the allow list "
 "takes precedence. In the event that it is necessary to deny all by default, "
@@ -3388,6 +3576,9 @@ msgid ""
 "This parameter is a comma, space, or tab delimited set of hosts which are "
 "permitted to access this share. Use the keyword ALL to permit access for "
 "everyone. Leave this field empty to disable this setting."
+msgstr ""
+
+msgid "This parameters will be added to [global] in smb.conf."
 msgstr ""
 
 msgid ""
@@ -3438,6 +3629,9 @@ msgstr ""
 
 msgid "Tools"
 msgstr "工具"
+
+msgid "Total number of connections allowed to this share."
+msgstr ""
 
 msgid "Traceroute"
 msgstr ""
@@ -3517,6 +3711,9 @@ msgstr "Unison 档案同步机制"
 
 msgid "Unix charset"
 msgstr "Unix字元编码"
+
+msgid "Unknown"
+msgstr ""
 
 msgid "Unknown or unformatted"
 msgstr "未知/未格式化"
@@ -3599,6 +3796,12 @@ msgstr "版本"
 msgid "Volume Name"
 msgstr "Volume名称"
 
+msgid "Volume label"
+msgstr ""
+
+msgid "Volume label of the new file system."
+msgstr ""
+
 msgid "WAN address"
 msgstr ""
 
@@ -3627,6 +3830,9 @@ msgstr "选择工作档案要储存的位置"
 msgid "Who"
 msgstr ""
 
+msgid "Windows Filename Restrictions"
+msgstr ""
+
 msgid "Wireless"
 msgstr "无線网路"
 
@@ -3638,6 +3844,9 @@ msgstr "选择将要加入的工作群组"
 
 msgid "Working Directory"
 msgstr "工作目錄"
+
+msgid "Write only"
+msgstr ""
 
 msgid "XboX 360"
 msgstr ""
@@ -3679,11 +3888,11 @@ msgstr "确定你有足夠的空间来复制所有将要同步的档案"
 msgid "You must add disks first."
 msgstr "请先加入磁碟。"
 
-msgid "You must configure mount point first."
-msgstr "请先设定掛载点。"
-
 msgid "You must create a group first."
 msgstr "你必须先建立一个群组。"
+
+msgid "You must enter the same IP type for network and gateway."
+msgstr ""
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
 msgstr ""
@@ -3696,9 +3905,6 @@ msgstr "请至少选择一种认证方式。"
 
 msgid "You must select at minium anonymous or/and local user authentication."
 msgstr "请至少选择 匿名/本地使用者 认证。"
-
-msgid "You must the same IP type for network and gateway."
-msgstr ""
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "连结加密磁碟之前请输入一个加密金钥。"
@@ -3737,8 +3943,9 @@ msgstr "刪除掛载点"
 msgid "desc"
 msgstr ""
 
-msgid "e.g. <em>mycorp.com</em>"
-msgstr "例： <em>mycompany.com</em>"
+#, php-format
+msgid "e.g. %s"
+msgstr ""
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 msgstr ""
@@ -3778,9 +3985,6 @@ msgstr ""
 
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
-
-msgid "rw"
-msgstr ""
 
 msgid "seconds"
 msgstr "秒"

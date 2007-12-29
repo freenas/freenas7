@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2007-10-26 12:54+0000\n"
+"POT-Creation-Date: 2007-12-16 16:18+0000\n"
 "PO-Revision-Date: 2007-06-27 08:35+0000\n"
 "Last-Translator: Boris <protoblade@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2007-11-30 05:57+0000\n"
+"X-Launchpad-Export-Date: 2007-12-28 19:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #~ msgid "%b %d, %Y"
@@ -131,8 +131,20 @@ msgstr ""
 #~ msgid "Graph"
 #~ msgstr "Графика"
 
+#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+#~ msgstr "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+
+#~ msgid "e.g. <em>mycorp.com</em>"
+#~ msgstr "e.g. <em>mycorp.com</em>"
+
 #~ msgid "DNS servers"
 #~ msgstr "DNS Сървъри"
+
+#~ msgid ""
+#~ "If you want to change the username for accessing the webGUI, enter it here."
+#~ msgstr ""
+#~ "Ако искате да смените потребителското име за достъп до webGUI, въведете го "
+#~ "тук."
 
 #~ msgid ""
 #~ "If you want to change the password for accessing the webGUI, enter it here "
@@ -140,6 +152,13 @@ msgstr ""
 #~ msgstr ""
 #~ "Ако искате да смените паролата за достъп до webGUI, въведете я тук 2 "
 #~ "пъти.<br>не използвайте символа ':'."
+
+#~ msgid ""
+#~ "Enter a custom port number for the webGUI above if you want to override the "
+#~ "default (80 for HTTP, 443 for HTTPS)."
+#~ msgstr ""
+#~ "Enter a custom port number for the webGUI above if you want to override the "
+#~ "default (80 for HTTP, 443 for HTTPS)."
 
 #~ msgid "Select the system language"
 #~ msgstr "Изберете системен език"
@@ -202,6 +221,10 @@ msgstr ""
 #~ msgid " interface"
 #~ msgstr " интерфейс"
 
+#~ msgid "Can't format the drive where FreeNAS configuration file is installed!"
+#~ msgstr ""
+#~ "Can't format the drive where FreeNAS configuration file is installed!"
+
 #~ msgid "\"fdisk: Geom not found\"is not an error message!\n"
 #~ msgstr "\"fdisk: Geom not found\"is not an error message!\n"
 
@@ -236,6 +259,19 @@ msgstr ""
 
 #~ msgid "Duplicate Share Name."
 #~ msgstr "Duplicate Share Name."
+
+#~ msgid ""
+#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select old "
+#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+#~ msgstr ""
+#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select old "
+#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
 
 #~ msgid "CIFS share"
 #~ msgstr "CIFS share"
@@ -366,6 +402,9 @@ msgstr ""
 
 #~ msgid "Disk initialization and encryption"
 #~ msgstr "инициализиране и криптиране на диска"
+
+#~ msgid "Encrypting... Please wait"
+#~ msgstr "Криптиране... Моля почакайте"
 
 #~ msgid "Attaching..."
 #~ msgstr "Закачане..."
@@ -597,6 +636,9 @@ msgstr "ATAidle"
 msgid "Access"
 msgstr "Достъп"
 
+msgid "Access Mode"
+msgstr ""
+
 msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
 msgstr ""
 
@@ -717,8 +759,22 @@ msgstr ""
 msgid "All"
 msgstr "Всички"
 
+msgid ""
+"All mounted volumes are automatically shared and restricted to only allow "
+"administrators to connect. The volumes will not show up in the list of "
+"shares."
+msgstr ""
+
+msgid ""
+"All shares use the option 'usedots' thus making the filenames .Parent and "
+"anything beginning with .Apple illegal."
+msgstr ""
+
 msgid "All users will have the root privilege."
 msgstr "всички потребители ще имат администраторски права,"
+
+msgid "Allow"
+msgstr ""
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -730,9 +786,19 @@ msgid ""
 "existing files is still allowed."
 msgstr ""
 
+msgid ""
+"Allows  certain  users and groups to have read/write access to a share. This "
+"follows the allow option format."
+msgstr ""
+
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr "Allows %s to try and become a local master browser."
+
+msgid ""
+"Allows certain users and groups to have read-only  access  to  a share. This "
+"follows the allow option format."
+msgstr ""
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Alternate TCP port. Default is 22"
@@ -785,8 +851,8 @@ msgstr "Идентификация"
 msgid "Authorised network"
 msgstr ""
 
-msgid "Authorized"
-msgstr "разрешен"
+msgid "Authorized networks"
+msgstr ""
 
 msgid "AutoScale"
 msgstr "AutoScale"
@@ -818,6 +884,9 @@ msgstr "Базов индекс"
 msgid "Browseable"
 msgstr "отварящ се"
 
+msgid "CD/DVD or Old Software RAID"
+msgstr ""
+
 msgid "CIFS/SMB"
 msgstr ""
 
@@ -830,15 +899,17 @@ msgstr "натоварване на процесора"
 msgid "Calculate netmask bits"
 msgstr "изчисли мрежовата маска"
 
-msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgid "Can't format the OS origin disk!"
 msgstr ""
-"Can't format the drive where FreeNAS configuration file is installed!"
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr "Can't mount the system partition 1, the DATA partition is the 2."
 
 msgid "Cannot get data about interface"
 msgstr "Не мога да взема информация за интерфейса"
+
+msgid "Case Folding"
+msgstr ""
 
 msgid "Certificate"
 msgstr "Сертификат"
@@ -905,6 +976,15 @@ msgid "Community"
 msgstr ""
 
 msgid "Compliant profile to be used."
+msgstr ""
+
+msgid "Compression"
+msgstr ""
+
+msgid ""
+"Compression is worth using if your connection is slow. The efficiency of the "
+"compression depends on the type of the file, and varies widely. Useful for "
+"internet transfer only."
 msgstr ""
 
 msgid "Configuring"
@@ -1059,6 +1139,9 @@ msgstr "Изтрий целта"
 msgid "Delete user"
 msgstr "изтрий потребителя"
 
+msgid "Deny"
+msgstr ""
+
 msgid "Description"
 msgstr "Описание"
 
@@ -1162,6 +1245,9 @@ msgstr "Заето място на диска"
 
 msgid "Disks"
 msgstr "Дискове"
+
+msgid "Do not create .AppleDouble directory"
+msgstr ""
 
 msgid "Do you really want to delete this RSYNC?"
 msgstr "Do you really want to delete this RSYNC?"
@@ -1355,11 +1441,17 @@ msgstr "позволи FXP протолола"
 msgid "Enable NTP"
 msgstr ""
 
+msgid "Enable Windows filename restrictions"
+msgstr ""
+
 msgid "Enable Zeroconf"
 msgstr "Позволи Zeroconf"
 
 msgid "Enable anonymous login."
 msgstr "позволи анонимен вход"
+
+msgid "Enable compression."
+msgstr ""
 
 msgid "Enable control web page."
 msgstr ""
@@ -1394,6 +1486,9 @@ msgstr ""
 msgid "Enable recycle bin"
 msgstr ""
 
+msgid "Enable store DOS attributes"
+msgstr ""
+
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Enable syslog'ing to remote syslog server"
 
@@ -1419,8 +1514,9 @@ msgstr "Позволи"
 msgid "Encrypted disk name"
 msgstr "Криприрано име на диска"
 
-msgid "Encrypting... Please wait"
-msgstr "Криптиране... Моля почакайте"
+#, php-format
+msgid "Encrypting '%s'... Please wait"
+msgstr ""
 
 msgid "Encryption"
 msgstr "Криптиране"
@@ -1435,11 +1531,9 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Enter a custom port number for the webGUI above if you want to override the "
+"Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
-"Enter a custom port number for the webGUI above if you want to override the "
-"default (80 for HTTP, 443 for HTTPS)."
 
 msgid "Enter a description (name) for the interface here."
 msgstr "Enter a description (name) for the interface here."
@@ -1689,6 +1783,9 @@ msgstr "Group suffix"
 msgid "Groups"
 msgstr "Групи"
 
+msgid "Guest"
+msgstr ""
+
 msgid "HTTP Proxy"
 msgstr ""
 
@@ -1773,7 +1870,7 @@ msgstr ""
 "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
 "hostnames&quot; is checked on the <a href=%s>%s</a> page."
 
-msgid "IP type mistmatch for network and gateway."
+msgid "IP type mismatch for network and gateway."
 msgstr ""
 
 msgid "IPv4 Configuration"
@@ -1815,6 +1912,9 @@ msgstr ""
 msgid "ISP DNS servers"
 msgstr "ISP DNS сървъри"
 
+msgid "If Login is required."
+msgstr ""
+
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
 "to perform selected command, otherwise the commands work in read-only "
@@ -1825,6 +1925,14 @@ msgstr ""
 "to perform selected command, otherwise the commands work in read-only "
 "mode.<br>Service disruption to users accessing this mount will occur during "
 "this process."
+
+msgid ""
+"If this parameter is set, Samba attempts to first read DOS attributes "
+"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
+"before mapping DOS attributes to UNIX permission bits. When set, DOS "
+"attributes will be stored onto an extended attribute in the UNIX filesystem, "
+"associated with the file or directory."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -1842,10 +1950,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"If you want to change the username for accessing the webGUI, enter it here."
+"If you want to change the username for accessing the WebGUI, enter it here."
 msgstr ""
-"Ако искате да смените потребителското име за достъп до webGUI, въведете го "
-"тук."
 
 msgid "Image upload failed (out of memory?)"
 msgstr "Качването се провали (Недостиг на памет?)"
@@ -2003,14 +2109,14 @@ msgstr "ниво на логване"
 msgid "Login"
 msgstr "Вписване"
 
-msgid "Login is required."
-msgstr ""
-
 msgid "Logs"
 msgstr "Логове"
 
 msgid "MAC address"
 msgstr "MAC адрес"
+
+msgid "MISSING"
+msgstr ""
 
 msgid "MOTD"
 msgstr "MOTD"
@@ -2035,6 +2141,9 @@ msgstr "Map to user"
 
 msgid "Max. conn. per IP"
 msgstr "максимум конекции към IP"
+
+msgid "Maximum Connections"
+msgstr ""
 
 msgid "Maximum connections"
 msgstr "максимален брой връзки"
@@ -2116,6 +2225,9 @@ msgstr ""
 msgid "Mount Point"
 msgstr "Място за монтиране"
 
+msgid "Mount point"
+msgstr ""
+
 msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
@@ -2131,6 +2243,9 @@ msgstr "Монтиране..."
 
 msgid "Mounts"
 msgstr "Монтирани"
+
+msgid "Must choose one"
+msgstr ""
 
 msgid "NAT mode"
 msgstr "NAT опция"
@@ -2159,8 +2274,9 @@ msgstr "NTP времеви сървър"
 msgid "Name"
 msgstr "Име"
 
-msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-msgstr "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+#, php-format
+msgid "Name of the NAS host, without domain part e.g. %s."
+msgstr ""
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -2196,6 +2312,9 @@ msgstr ""
 
 msgid "No"
 msgstr "Не"
+
+msgid "No AppleDouble Directory"
+msgstr ""
 
 msgid "No RSYNC Client configured"
 msgstr "No RSYNC Client configured"
@@ -2240,6 +2359,9 @@ msgstr ""
 
 msgid "OK"
 msgstr "Да"
+
+msgid "ONLINE"
+msgstr ""
 
 msgid "OS Version"
 msgstr "ОС Версия"
@@ -2479,8 +2601,17 @@ msgstr "RSYNCD събития"
 msgid "Raid name"
 msgstr "Име на Raid"
 
+msgid "Read Only Access"
+msgstr ""
+
 msgid "Read only"
 msgstr "Само за четене"
+
+msgid "Read/Write"
+msgstr ""
+
+msgid "Read/Write Access"
+msgstr ""
 
 msgid "Reboot"
 msgstr ""
@@ -2605,17 +2736,16 @@ msgstr ""
 "href=%s>previously configured disk.</a>"
 
 msgid ""
-"Select EFI GPT if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
 "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select old "
-"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+"you select option 2 during installation on hard drive.<br>Select 'Old "
+"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+"release."
 msgstr ""
-"Select EFI GPT if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
-"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select old "
-"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+
+msgid "Select mount point where to create the swap file."
+msgstr ""
 
 msgid "Select the FreeBSD package to be installed."
 msgstr ""
@@ -2665,14 +2795,29 @@ msgstr "Услуги"
 msgid "Set browseable"
 msgstr ""
 
+msgid "Set browseable."
+msgstr ""
+
+msgid "Set share password."
+msgstr ""
+
 msgid "Settings"
 msgstr "Натройки"
 
 msgid "Share"
 msgstr "Споделен"
 
+msgid "Share Character Set"
+msgstr ""
+
 msgid "Share Name"
 msgstr "Share Name"
+
+msgid "Share Password"
+msgstr ""
+
+msgid "Share passwords can not be more than 8 characters."
+msgstr ""
 
 msgid "Shares"
 msgstr "споделени папки"
@@ -2734,6 +2879,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
+"etc."
+msgstr ""
+
+msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
 "Specifies whether it is allowed to login as superuser (root) directly."
@@ -2765,7 +2915,13 @@ msgstr "Състояние"
 msgid "Status report successfully sent."
 msgstr ""
 
+msgid "Stopped"
+msgstr ""
+
 msgid "Storage"
+msgstr ""
+
+msgid "Store DOS attributes"
 msgstr ""
 
 msgid "Subject"
@@ -2867,6 +3023,11 @@ msgstr "Target name"
 
 msgid "Temperature"
 msgstr "Температура"
+
+msgid ""
+"The  deny  option specifies users and groups who are not allowed access to "
+"the share. It follows the same  format  as  the  allow option."
+msgstr ""
 
 #, php-format
 msgid "The %s port must be a valid port number."
@@ -3290,6 +3451,21 @@ msgstr ""
 msgid "This certificate does not appear to be valid."
 msgstr "This certificate does not appear to be valid."
 
+msgid "This controls how the case of filenames are viewed and stored."
+msgstr ""
+
+msgid "This controls the access a remote host has to this share."
+msgstr ""
+
+msgid "This controls the access to this share with an access password."
+msgstr ""
+
+msgid ""
+"This controls whether the .AppleDouble directory gets created unless "
+"absolutely needed. This option should not be used if files are access mostly "
+"by Mac computers."
+msgstr ""
+
 msgid ""
 "This controls whether this share is seen in the list of available shares in "
 "a net view and in the browse list."
@@ -3310,6 +3486,12 @@ msgstr ""
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 "Този криптиран диск е монтиран , демонтирайте го преди да го разкачате ."
+
+msgid ""
+"This forces filenames to be restricted to the character set used by Windows. "
+"This is <em>not</em> recommended for shares used principally by Mac "
+"computers."
+msgstr ""
 
 msgid "This group already exists in the group list."
 msgstr "Тази група вече съществува в листа с групите."
@@ -3345,6 +3527,12 @@ msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid ""
+"This option allows the users and groups that access a share to be specified. "
+"Users and groups are specified, delimited by commas. Groups are designated "
+"by a @ prefix."
+msgstr ""
+
+msgid ""
 "This parameter is a comma, space, or tab delimited set of host which are NOT "
 "permitted to access this share. Where the lists conflict, the allow list "
 "takes precedence. In the event that it is necessary to deny all by default, "
@@ -3357,6 +3545,9 @@ msgid ""
 "This parameter is a comma, space, or tab delimited set of hosts which are "
 "permitted to access this share. Use the keyword ALL to permit access for "
 "everyone. Leave this field empty to disable this setting."
+msgstr ""
+
+msgid "This parameters will be added to [global] in smb.conf."
 msgstr ""
 
 msgid ""
@@ -3412,6 +3603,9 @@ msgstr ""
 
 msgid "Tools"
 msgstr "Инструменти"
+
+msgid "Total number of connections allowed to this share."
+msgstr ""
 
 msgid "Traceroute"
 msgstr ""
@@ -3494,6 +3688,9 @@ msgstr "Unison File Synchronisation"
 
 msgid "Unix charset"
 msgstr "Unix charset"
+
+msgid "Unknown"
+msgstr ""
 
 msgid "Unknown or unformatted"
 msgstr "непознат и неформатиран"
@@ -3578,6 +3775,12 @@ msgstr "Версия"
 msgid "Volume Name"
 msgstr "Име на диск"
 
+msgid "Volume label"
+msgstr ""
+
+msgid "Volume label of the new file system."
+msgstr ""
+
 msgid "WAN address"
 msgstr ""
 
@@ -3606,6 +3809,9 @@ msgstr "Where the working files will be stored"
 msgid "Who"
 msgstr ""
 
+msgid "Windows Filename Restrictions"
+msgstr ""
+
 msgid "Wireless"
 msgstr "Безжичен"
 
@@ -3617,6 +3823,9 @@ msgstr "член на Работна група"
 
 msgid "Working Directory"
 msgstr "Working Directory"
+
+msgid "Write only"
+msgstr ""
 
 msgid "XboX 360"
 msgstr ""
@@ -3661,11 +3870,11 @@ msgstr "You may need enough space to duplicate all files being synced"
 msgid "You must add disks first."
 msgstr "трябва първо да добавите диск"
 
-msgid "You must configure mount point first."
-msgstr "трябва да конфигурирате първо точчката за монтиране"
-
 msgid "You must create a group first."
 msgstr "Трябва да създадете първо група."
+
+msgid "You must enter the same IP type for network and gateway."
+msgstr ""
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
 msgstr ""
@@ -3679,9 +3888,6 @@ msgstr "You must select at least one authentication method."
 msgid "You must select at minium anonymous or/and local user authentication."
 msgstr ""
 "You must select at minium anonymous or/and local user authentication."
-
-msgid "You must the same IP type for network and gateway."
-msgstr ""
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "Трябва да използвате секретна фраза за да закачите криптиран диск."
@@ -3720,8 +3926,9 @@ msgstr "изтрий точката за монтиране"
 msgid "desc"
 msgstr ""
 
-msgid "e.g. <em>mycorp.com</em>"
-msgstr "e.g. <em>mycorp.com</em>"
+#, php-format
+msgid "e.g. %s"
+msgstr ""
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 msgstr ""
@@ -3761,9 +3968,6 @@ msgstr ""
 
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
-
-msgid "rw"
-msgstr ""
 
 msgid "seconds"
 msgstr "секунди"

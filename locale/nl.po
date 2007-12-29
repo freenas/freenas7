@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2007-10-26 12:54+0000\n"
+"POT-Creation-Date: 2007-12-16 16:18+0000\n"
 "PO-Revision-Date: 2007-10-19 09:00+0000\n"
 "Last-Translator: Youri Trioreau <shango@no-log.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2007-11-30 05:57+0000\n"
+"X-Launchpad-Export-Date: 2007-12-28 19:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -155,6 +155,12 @@ msgstr ""
 #~ msgid "Graph"
 #~ msgstr "Grafiek"
 
+#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+#~ msgstr "Naam van de NAS host, zonder het domein gedeelte<br>b.v. <em>nas"
+
+#~ msgid "e.g. <em>mycorp.com</em>"
+#~ msgstr "b.v. <em>mijndomein.com</em>"
+
 #~ msgid "DNS servers"
 #~ msgstr "DNS servers"
 
@@ -286,6 +292,9 @@ msgstr ""
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr ""
 #~ "De namen van de ge&euml;xporteerde mappen zijn van de vorm: /mnt/mapnaam"
+
+#~ msgid "You must configure mount point first."
+#~ msgstr "Je moet eerst een koppelingspunt instellen."
 
 #~ msgid "Rsync Client Synchronization"
 #~ msgstr "RSYNC client synchronisatie"
@@ -489,6 +498,9 @@ msgstr "ATAidle"
 msgid "Access"
 msgstr "Toegang"
 
+msgid "Access Mode"
+msgstr ""
+
 msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
 msgstr "Toegangelijk vanuit 'http://ip_address:port/web/ushare.html'."
 
@@ -609,8 +621,22 @@ msgstr ""
 msgid "All"
 msgstr "Alle"
 
+msgid ""
+"All mounted volumes are automatically shared and restricted to only allow "
+"administrators to connect. The volumes will not show up in the list of "
+"shares."
+msgstr ""
+
+msgid ""
+"All shares use the option 'usedots' thus making the filenames .Parent and "
+"anything beginning with .Apple illegal."
+msgstr ""
+
 msgid "All users will have the root privilege."
 msgstr "Alle gebruikers zullen root-privilleges hebben."
+
+msgid "Allow"
+msgstr ""
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -624,9 +650,19 @@ msgid ""
 "existing files is still allowed."
 msgstr ""
 
+msgid ""
+"Allows  certain  users and groups to have read/write access to a share. This "
+"follows the allow option format."
+msgstr ""
+
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr "Dit staat %s toe om te proberen locale hoofd browser te worden."
+
+msgid ""
+"Allows certain users and groups to have read-only  access  to  a share. This "
+"follows the allow option format."
+msgstr ""
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Alternatieve TCP poort. Standaard 22"
@@ -682,8 +718,8 @@ msgstr "Legitimatie"
 msgid "Authorised network"
 msgstr "Geautoriseerd netwerk"
 
-msgid "Authorized"
-msgstr "Geauthoriseerd"
+msgid "Authorized networks"
+msgstr ""
 
 msgid "AutoScale"
 msgstr "AutoSchaling"
@@ -716,6 +752,9 @@ msgstr "Basis DN"
 msgid "Browseable"
 msgstr "Verkenbaar"
 
+msgid "CD/DVD or Old Software RAID"
+msgstr ""
+
 msgid "CIFS/SMB"
 msgstr "CIFS/SMB"
 
@@ -728,10 +767,8 @@ msgstr "CPU belasting"
 msgid "Calculate netmask bits"
 msgstr "Bereken de netmask bits"
 
-msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgid "Can't format the OS origin disk!"
 msgstr ""
-"Kan de schijf waar het FreeNAS configuratie bestand is opgeslagen niet "
-"formatteren!"
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr ""
@@ -739,6 +776,9 @@ msgstr ""
 
 msgid "Cannot get data about interface"
 msgstr "Kan geen informatie over de interface verkrijgen"
+
+msgid "Case Folding"
+msgstr ""
 
 msgid "Certificate"
 msgstr "Certificaat"
@@ -808,6 +848,15 @@ msgstr ""
 
 msgid "Compliant profile to be used."
 msgstr "Voldoenend profiel om te gebruiken:"
+
+msgid "Compression"
+msgstr ""
+
+msgid ""
+"Compression is worth using if your connection is slow. The efficiency of the "
+"compression depends on the type of the file, and varies widely. Useful for "
+"internet transfer only."
+msgstr ""
 
 msgid "Configuring"
 msgstr "Configureren"
@@ -959,6 +1008,9 @@ msgstr "Verwijder doel"
 msgid "Delete user"
 msgstr "Gebruiker verwijderen"
 
+msgid "Deny"
+msgstr ""
+
 msgid "Description"
 msgstr "Omschrijving"
 
@@ -1067,6 +1119,9 @@ msgstr "Gebruikte schijfruimte"
 
 msgid "Disks"
 msgstr "Schijven"
+
+msgid "Do not create .AppleDouble directory"
+msgstr ""
 
 msgid "Do you really want to delete this RSYNC?"
 msgstr "Bent u zeker dat u deze RSYNC wil verwijderen?"
@@ -1264,11 +1319,17 @@ msgstr "Het FXP protocol activeren."
 msgid "Enable NTP"
 msgstr ""
 
+msgid "Enable Windows filename restrictions"
+msgstr ""
+
 msgid "Enable Zeroconf"
 msgstr "Activeer Zeroconf"
 
 msgid "Enable anonymous login."
 msgstr "Anonieme aanmelding activeren."
+
+msgid "Enable compression."
+msgstr ""
 
 msgid "Enable control web page."
 msgstr "Webbeheer pagina activeren"
@@ -1303,6 +1364,9 @@ msgstr "Permissie overerving activeren"
 msgid "Enable recycle bin"
 msgstr "Prullenbak activeren"
 
+msgid "Enable store DOS attributes"
+msgstr ""
+
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Enable syslog'ing to remote syslog server"
 
@@ -1328,8 +1392,9 @@ msgstr "Geactiveerd"
 msgid "Encrypted disk name"
 msgstr "Naam van de versleutelde schijf"
 
-msgid "Encrypting... Please wait"
-msgstr "Versleutelen... Even geduld AUB"
+#, php-format
+msgid "Encrypting '%s'... Please wait"
+msgstr ""
 
 msgid "Encryption"
 msgstr "Versleuteling"
@@ -1347,12 +1412,9 @@ msgstr ""
 "49152 t/m 65535)."
 
 msgid ""
-"Enter a custom port number for the webGUI above if you want to override the "
+"Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
-"Vul hier een eigen poortnummer in voor bovenstaande webinterface, indien je "
-"geen gebruik wenst te maken van de standaard poorten (80 voor HTTP, 443 voor "
-"HTTPS)."
 
 msgid "Enter a description (name) for the interface here."
 msgstr "Geef hier een omschrijving (naam) voor de interface."
@@ -1609,6 +1671,9 @@ msgstr "Groep achtervoegsel"
 msgid "Groups"
 msgstr "Groepen"
 
+msgid "Guest"
+msgstr ""
+
 msgid "HTTP Proxy"
 msgstr ""
 
@@ -1697,8 +1762,8 @@ msgstr ""
 "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
 "hostnames&quot; is checked on the <a href=%s>%s</a> page."
 
-msgid "IP type mistmatch for network and gateway."
-msgstr "IP type klopt niet voor het netwerk en gateway"
+msgid "IP type mismatch for network and gateway."
+msgstr ""
 
 msgid "IPv4 Configuration"
 msgstr "IPv4 Configuratie"
@@ -1739,6 +1804,9 @@ msgstr "ISO"
 msgid "ISP DNS servers"
 msgstr "ISP DNS servers"
 
+msgid "If Login is required."
+msgstr ""
+
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
 "to perform selected command, otherwise the commands work in read-only "
@@ -1749,6 +1817,14 @@ msgstr ""
 "ontkoppeld worden om het gekozen commando uit te voeren, anders werken de "
 "commando's slechts in 'alleen-lezen' modus.<br>Gebruikers kunnen tijdens dit "
 "proces geen gebruik maken van de schijf/partitie."
+
+msgid ""
+"If this parameter is set, Samba attempts to first read DOS attributes "
+"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
+"before mapping DOS attributes to UNIX permission bits. When set, DOS "
+"attributes will be stored onto an extended attribute in the UNIX filesystem, "
+"associated with the file or directory."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -1766,10 +1842,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"If you want to change the username for accessing the webGUI, enter it here."
+"If you want to change the username for accessing the WebGUI, enter it here."
 msgstr ""
-"Geef hier de gebruikersnaam voor toegang tot de webinterface op, indien je "
-"deze wilt veranderen."
 
 msgid "Image upload failed (out of memory?)"
 msgstr "Het inlezen van het image bestand is mislukt (te weinig geheugen?)"
@@ -1927,14 +2001,14 @@ msgstr "Log niveau"
 msgid "Login"
 msgstr "Aanmelden"
 
-msgid "Login is required."
-msgstr ""
-
 msgid "Logs"
 msgstr "Logboeken"
 
 msgid "MAC address"
 msgstr "MAC adres"
+
+msgid "MISSING"
+msgstr ""
 
 msgid "MOTD"
 msgstr "BVDD"
@@ -1959,6 +2033,9 @@ msgstr "Linken naar gebruiker"
 
 msgid "Max. conn. per IP"
 msgstr "Max. aant. conn. per IP"
+
+msgid "Maximum Connections"
+msgstr ""
 
 msgid "Maximum connections"
 msgstr "Maximum aantal verbindingen"
@@ -2042,6 +2119,9 @@ msgstr ""
 msgid "Mount Point"
 msgstr "Aanhechtings punt:"
 
+msgid "Mount point"
+msgstr ""
+
 msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
@@ -2057,6 +2137,9 @@ msgstr "Bezig met koppelen..."
 
 msgid "Mounts"
 msgstr "Koppelingen"
+
+msgid "Must choose one"
+msgstr ""
 
 msgid "NAT mode"
 msgstr "NAT modus"
@@ -2085,8 +2168,9 @@ msgstr "NTP tijd server"
 msgid "Name"
 msgstr "Naam"
 
-msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-msgstr "Naam van de NAS host, zonder het domein gedeelte<br>b.v. <em>nas"
+#, php-format
+msgid "Name of the NAS host, without domain part e.g. %s."
+msgstr ""
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -2123,6 +2207,9 @@ msgstr "Geauthoriseerde netwerken"
 
 msgid "No"
 msgstr "Nee"
+
+msgid "No AppleDouble Directory"
+msgstr ""
 
 msgid "No RSYNC Client configured"
 msgstr "Geen RSYNC Client geconfigureerd"
@@ -2168,6 +2255,9 @@ msgstr "Aantal logregels moet tussen de 5 en 1000 zijn."
 
 msgid "OK"
 msgstr "OK"
+
+msgid "ONLINE"
+msgstr ""
 
 msgid "OS Version"
 msgstr "OS Versie"
@@ -2411,8 +2501,17 @@ msgstr "RSYNCD gebeurtenissen"
 msgid "Raid name"
 msgstr "RAID naam"
 
+msgid "Read Only Access"
+msgstr ""
+
 msgid "Read only"
 msgstr "Alleen lezen"
+
+msgid "Read/Write"
+msgstr ""
+
+msgid "Read/Write Access"
+msgstr ""
 
 msgid "Reboot"
 msgstr "Herstarten"
@@ -2537,18 +2636,16 @@ msgstr ""
 "href=%s>previously configured disk.</a>"
 
 msgid ""
-"Select EFI GPT if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
 "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select old "
-"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+"you select option 2 during installation on hard drive.<br>Select 'Old "
+"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+"release."
 msgstr ""
-"Kies EFI GPT wanneer je een GPT geformatteerde schijf (standaard methode "
-"sinds 0.684b) wilt koppelen.<br>Kies 1 voor het aankoppelen van een UFS "
-"geformatterde schijf of software RAID volume na 0.683b.<br>Kies 2 voor het "
-"koppelen van de DATA partitie als je ook optie 2 bij de installatie van de "
-"systeem software hebt gekozen.<br>Kies de oude software "
-"gmirror/graid5/gvinum voor een volume aangemaakt met een oude FreeNAS versie."
+
+msgid "Select mount point where to create the swap file."
+msgstr ""
 
 msgid "Select the FreeBSD package to be installed."
 msgstr "Selecteer het FreeBSD pakket dat dient te worden geïnstalleerd."
@@ -2598,14 +2695,29 @@ msgstr "Diensten"
 msgid "Set browseable"
 msgstr "Zet verkenbaar"
 
+msgid "Set browseable."
+msgstr ""
+
+msgid "Set share password."
+msgstr ""
+
 msgid "Settings"
 msgstr "Instellingen"
 
 msgid "Share"
 msgstr "Gedeelde map"
 
+msgid "Share Character Set"
+msgstr ""
+
 msgid "Share Name"
 msgstr "Naam gedeelde map"
+
+msgid "Share Password"
+msgstr ""
+
+msgid "Share passwords can not be more than 8 characters."
+msgstr ""
 
 msgid "Shares"
 msgstr "Gedeelde mappen"
@@ -2669,6 +2781,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
+"etc."
+msgstr ""
+
+msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
 "Instelling die bepaalt of het is toegestaan om rechtstreeks als Superuser "
@@ -2701,8 +2818,14 @@ msgstr "Status"
 msgid "Status report successfully sent."
 msgstr "Status rapport succesvol verstuurd."
 
+msgid "Stopped"
+msgstr ""
+
 msgid "Storage"
 msgstr "Opslag"
+
+msgid "Store DOS attributes"
+msgstr ""
 
 msgid "Subject"
 msgstr "Onderwerp"
@@ -2803,6 +2926,11 @@ msgstr "Doel naam"
 
 msgid "Temperature"
 msgstr "Temperatuur"
+
+msgid ""
+"The  deny  option specifies users and groups who are not allowed access to "
+"the share. It follows the same  format  as  the  allow option."
+msgstr ""
 
 #, php-format
 msgid "The %s port must be a valid port number."
@@ -3245,6 +3373,21 @@ msgstr ""
 msgid "This certificate does not appear to be valid."
 msgstr "Dit certificaat is ongeldig."
 
+msgid "This controls how the case of filenames are viewed and stored."
+msgstr ""
+
+msgid "This controls the access a remote host has to this share."
+msgstr ""
+
+msgid "This controls the access to this share with an access password."
+msgstr ""
+
+msgid ""
+"This controls whether the .AppleDouble directory gets created unless "
+"absolutely needed. This option should not be used if files are access mostly "
+"by Mac computers."
+msgstr ""
+
 msgid ""
 "This controls whether this share is seen in the list of available shares in "
 "a net view and in the browse list."
@@ -3269,6 +3412,12 @@ msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 "De versleutelde schijf is aangekoppeld, ontkoppel de schijf alvorens hem af "
 "te melden."
+
+msgid ""
+"This forces filenames to be restricted to the character set used by Windows. "
+"This is <em>not</em> recommended for shares used principally by Mac "
+"computers."
+msgstr ""
 
 msgid "This group already exists in the group list."
 msgstr "Deze groep bestaat al in de groepenlijst."
@@ -3306,6 +3455,12 @@ msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "Deze naam is een voobeeld: iqn.2005-01.il.ac.huji.cs:iemand."
 
 msgid ""
+"This option allows the users and groups that access a share to be specified. "
+"Users and groups are specified, delimited by commas. Groups are designated "
+"by a @ prefix."
+msgstr ""
+
+msgid ""
 "This parameter is a comma, space, or tab delimited set of host which are NOT "
 "permitted to access this share. Where the lists conflict, the allow list "
 "takes precedence. In the event that it is necessary to deny all by default, "
@@ -3318,6 +3473,9 @@ msgid ""
 "This parameter is a comma, space, or tab delimited set of hosts which are "
 "permitted to access this share. Use the keyword ALL to permit access for "
 "everyone. Leave this field empty to disable this setting."
+msgstr ""
+
+msgid "This parameters will be added to [global] in smb.conf."
 msgstr ""
 
 msgid ""
@@ -3373,6 +3531,9 @@ msgstr ""
 
 msgid "Tools"
 msgstr "Hulpmiddelen"
+
+msgid "Total number of connections allowed to this share."
+msgstr ""
 
 msgid "Traceroute"
 msgstr "Traceroute"
@@ -3462,6 +3623,9 @@ msgstr "Unison bestandssynchronisatie"
 
 msgid "Unix charset"
 msgstr "UNIX karakterset"
+
+msgid "Unknown"
+msgstr ""
 
 msgid "Unknown or unformatted"
 msgstr "Onbekend of niet geformatteerd"
@@ -3557,6 +3721,12 @@ msgstr "Versie"
 msgid "Volume Name"
 msgstr "Volumenaam"
 
+msgid "Volume label"
+msgstr ""
+
+msgid "Volume label of the new file system."
+msgstr ""
+
 msgid "WAN address"
 msgstr "WAN adres"
 
@@ -3585,6 +3755,9 @@ msgstr "Plaats waar de werkbestanden zullen bewaard worden."
 msgid "Who"
 msgstr "Wie"
 
+msgid "Windows Filename Restrictions"
+msgstr ""
+
 msgid "Wireless"
 msgstr "Draadloos"
 
@@ -3596,6 +3769,9 @@ msgstr "Werkgroep waarvan lid."
 
 msgid "Working Directory"
 msgstr "Werkfolder"
+
+msgid "Write only"
+msgstr ""
 
 msgid "XboX 360"
 msgstr "XboX 360"
@@ -3649,11 +3825,11 @@ msgstr ""
 msgid "You must add disks first."
 msgstr "Je moet eerst schijven toevoegen."
 
-msgid "You must configure mount point first."
-msgstr "Je moet eerst een koppelingspunt instellen."
-
 msgid "You must create a group first."
 msgstr "Je moet eerst een groep aanmaken."
+
+msgid "You must enter the same IP type for network and gateway."
+msgstr ""
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
 msgstr ""
@@ -3669,9 +3845,6 @@ msgstr "Je moet minstens &euml;&euml;n aanmeldingsmethode kiezen."
 msgid "You must select at minium anonymous or/and local user authentication."
 msgstr ""
 "Je moet minstens een anonieme- en/of lokale gebruikersaanmelding selecteren."
-
-msgid "You must the same IP type for network and gateway."
-msgstr "U moet hetzelfde IP type voor netwerk en gateway gebruiken."
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "Een wachtwoord is nodig om een versleutelde schijf aan te melden."
@@ -3710,8 +3883,9 @@ msgstr "aanhechtingspunt verwijderen"
 msgid "desc"
 msgstr "omschr"
 
-msgid "e.g. <em>mycorp.com</em>"
-msgstr "b.v. <em>mijndomein.com</em>"
+#, php-format
+msgid "e.g. %s"
+msgstr ""
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 msgstr ""
@@ -3751,9 +3925,6 @@ msgstr "pasv_min_port"
 
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
-
-msgid "rw"
-msgstr "rw"
 
 msgid "seconds"
 msgstr "seconden"

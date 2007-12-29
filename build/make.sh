@@ -339,6 +339,7 @@ create_image() {
 
 	# Cleanup.
 	[ -f image.bin ] && rm -f image.bin
+	[ -f image.bin.gz ] && rm -f image.bin.gz
 
 	# Set platform information.
 	PLATFORM="${FREENAS_ARCH}-embedded"
@@ -410,7 +411,7 @@ create_image() {
 	mdconfig -d -u ${md}
 	echo "===> Compress the IMG file"
 	gzip -9 $FREENAS_WORKINGDIR/image.bin
-	mv $FREENAS_WORKINGDIR/image.bin.gz $FREENAS_ROOTDIR/$IMGFILENAME
+	cp $FREENAS_WORKINGDIR/image.bin.gz $FREENAS_ROOTDIR/$IMGFILENAME
 
 	# Cleanup.
 	echo "===> Cleaning temporary files"
@@ -478,7 +479,7 @@ create_iso () {
 
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file to $FREENAS_TMPDIR"
-		cp $FREENAS_ROOTDIR/$FREENAS_PRODUCTNAME-$FREENAS_ARCH-embedded-$FREENAS_VERSION.img $FREENAS_TMPDIR/$FREENAS_PRODUCTNAME-$FREENAS_ARCH-embedded.gz
+		cp ${FREENAS_WORKINGDIR}/image.bin.gz ${FREENAS_TMPDIR}/${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-embedded.gz
 	fi
 
 	echo "ISO: Generating the ISO file"

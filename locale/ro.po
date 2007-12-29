@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2007-10-26 12:54+0000\n"
-"PO-Revision-Date: 2007-11-27 12:25+0000\n"
+"POT-Creation-Date: 2007-12-16 16:18+0000\n"
+"PO-Revision-Date: 2007-12-22 16:38+0000\n"
 "Last-Translator: Laurentiu Florin BUBUIANU <laurb@tvriasi.ro>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2007-11-30 05:57+0000\n"
+"X-Launchpad-Export-Date: 2007-12-28 19:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -162,6 +162,12 @@ msgstr ""
 #~ msgid "Graph"
 #~ msgstr "Graphic"
 
+#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+#~ msgstr "Numele sistemului NAS, fara domeniu<br>ex. <em>nas</em>"
+
+#~ msgid "e.g. <em>mycorp.com</em>"
+#~ msgstr "ex. <em>mycorp.com</em>"
+
 #~ msgid "DNS servers"
 #~ msgstr "Servere DNS"
 
@@ -169,11 +175,24 @@ msgstr ""
 #~ msgstr "Adrese IP"
 
 #~ msgid ""
+#~ "If you want to change the username for accessing the webGUI, enter it here."
+#~ msgstr ""
+#~ "Daca doriti sa schimbati numele sub care veti accesa Interfa Web, "
+#~ "introduceti-l aici."
+
+#~ msgid ""
 #~ "If you want to change the password for accessing the webGUI, enter it here "
 #~ "twice.<br>Don't use the character ':'."
 #~ msgstr ""
 #~ "Daca doriti sa schimbati parola de acces pentru Interfa Web, introduceti-o "
 #~ "aici de doua ori pentru verificare.<br>Nu folositi caracterul ':'."
+
+#~ msgid ""
+#~ "Enter a custom port number for the webGUI above if you want to override the "
+#~ "default (80 for HTTP, 443 for HTTPS)."
+#~ msgstr ""
+#~ "Introduceti aici un port de acces Interfata Web daca vreti sa-l schimbati pe "
+#~ "cel implicit (80 pentru HTTP, 443 pentru HTTPS)."
 
 #~ msgid "Select the system language"
 #~ msgstr "Selectati limba sistem"
@@ -320,6 +339,20 @@ msgstr ""
 #~ msgstr "Nume Partajare Duplicat."
 
 #~ msgid ""
+#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select old "
+#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+#~ msgstr ""
+#~ "Selectati EFI GPT daca doriti sa montati un disc in format GPT (formatul "
+#~ "implicit incepind cu versiunea 0.684b).<br>Selectati 1 pentru discuri in "
+#~ "format UFS sau volume RAID create incepind cu versiunea  0.683b.<br>Selectat "
+#~ "2 pentru montarea partitiei DATA daca ati selectat optiunea 2 in timpul "
+#~ "instalarii pe disc.<br>Selectati vechiul format software "
+#~ "gmirror/graid5/gvinum pentru volume create cu versiuni mai vechi de FreeNAS."
+
+#~ msgid ""
 #~ "1. You can't mount the partition '%s' where the config file is stored.<br>2. "
 #~ "FreeBSD NTFS has lots of bugs."
 #~ msgstr ""
@@ -369,6 +402,9 @@ msgstr ""
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "Numele directorului exportat: /mnt/sharename"
+
+#~ msgid "You must configure mount point first."
+#~ msgstr "Trebuie sa configurati un punct de montare mai intii."
 
 #~ msgid "Rsync Client Synchronization"
 #~ msgstr "Sincronizare Rsync Client"
@@ -489,6 +525,9 @@ msgstr ""
 
 #~ msgid "Disk initialization and encryption"
 #~ msgstr "Initializarea si criptarea discului"
+
+#~ msgid "Encrypting... Please wait"
+#~ msgstr "Criptare... Va rugam asteptati"
 
 #~ msgid "Attaching..."
 #~ msgstr "Atasare..."
@@ -768,6 +807,9 @@ msgstr "ATAidle"
 msgid "Access"
 msgstr "Acces"
 
+msgid "Access Mode"
+msgstr ""
+
 msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
 msgstr "Accesibil la 'http://adresa_ip:port/web/ushare.html'."
 
@@ -895,8 +937,22 @@ msgstr ""
 msgid "All"
 msgstr "Toate"
 
+msgid ""
+"All mounted volumes are automatically shared and restricted to only allow "
+"administrators to connect. The volumes will not show up in the list of "
+"shares."
+msgstr ""
+
+msgid ""
+"All shares use the option 'usedots' thus making the filenames .Parent and "
+"anything beginning with .Apple illegal."
+msgstr ""
+
 msgid "All users will have the root privilege."
 msgstr "Toti utilizatorii vor avea privilegii de root."
+
+msgid "Allow"
+msgstr "Permite"
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -907,10 +963,29 @@ msgid ""
 "Directories can be removed, but only if they are empty. However, overwriting "
 "existing files is still allowed."
 msgstr ""
+"Permite utilizatorilor sa continue incarcarea fisierelor (resume), dar FARA "
+"posibilitatea de stergere sau redenumire fisiere. Directoarele pot fi sterse "
+"doar daca sint goale. Oricum, suprascrierea fisierelor este permisa."
+
+#, fuzzy
+msgid ""
+"Allows  certain  users and groups to have read/write access to a share. This "
+"follows the allow option format."
+msgstr ""
+"Permite anumitor utilizatori/grupuri sa scrie/citeasca pe share. Se "
+"folosessc optiuni in format 'allow'."
 
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr "Permite sistemului %s sa devina un Master Browser local."
+
+#, fuzzy
+msgid ""
+"Allows certain users and groups to have read-only  access  to  a share. This "
+"follows the allow option format."
+msgstr ""
+"Permite anumitor utilizatori/grupuri sa scrie/citeasca pe share. Se "
+"folosessc optiuni in format 'allow'."
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Port Alternativ TCP. Implicit este 22"
@@ -966,8 +1041,8 @@ msgstr "Autentificare"
 msgid "Authorised network"
 msgstr "Retea Autorizata"
 
-msgid "Authorized"
-msgstr "Autorizat"
+msgid "Authorized networks"
+msgstr "Retele autorizate."
 
 msgid "AutoScale"
 msgstr "AutoScalare"
@@ -999,6 +1074,10 @@ msgstr "DN baza"
 msgid "Browseable"
 msgstr "Vizibil"
 
+#, fuzzy
+msgid "CD/DVD or Old Software RAID"
+msgstr "CD/DVD sau Old Software RAID"
+
 msgid "CIFS/SMB"
 msgstr "CIFS/SMB"
 
@@ -1011,9 +1090,8 @@ msgstr "Incarcare CPU"
 msgid "Calculate netmask bits"
 msgstr "Calcul Biti Masca Retea"
 
-msgid "Can't format the drive where FreeNAS configuration file is installed!"
-msgstr ""
-"Discul in care este pastrata configuratia FreeNAS nu poate fi formatat!"
+msgid "Can't format the OS origin disk!"
+msgstr "Nu se poate formata discul sistem!"
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr ""
@@ -1021,6 +1099,9 @@ msgstr ""
 
 msgid "Cannot get data about interface"
 msgstr "Nicio informatie disponibila despre interfata"
+
+msgid "Case Folding"
+msgstr ""
 
 msgid "Certificate"
 msgstr "Certificat"
@@ -1091,6 +1172,15 @@ msgstr "Comunitate"
 
 msgid "Compliant profile to be used."
 msgstr "Profilul folosit implicit."
+
+msgid "Compression"
+msgstr "Compresie"
+
+msgid ""
+"Compression is worth using if your connection is slow. The efficiency of the "
+"compression depends on the type of the file, and varies widely. Useful for "
+"internet transfer only."
+msgstr ""
 
 msgid "Configuring"
 msgstr "Configurare"
@@ -1249,6 +1339,9 @@ msgstr "Stergere destinatie"
 msgid "Delete user"
 msgstr "Stergere utilizator"
 
+msgid "Deny"
+msgstr "Respinge"
+
 msgid "Description"
 msgstr "Descriere"
 
@@ -1274,7 +1367,7 @@ msgid "Device"
 msgstr "Dispozitiv"
 
 msgid "Device is mounted, umount it first before detaching."
-msgstr ""
+msgstr "Dispozitivul este inca montat, demontati-l inainte de detasare."
 
 msgid "Device name"
 msgstr "Nume dispozitiv"
@@ -1361,6 +1454,9 @@ msgstr "Utilizare spatiu disc"
 
 msgid "Disks"
 msgstr "Discuri"
+
+msgid "Do not create .AppleDouble directory"
+msgstr "Nu creea directorul .AppleDouble"
 
 msgid "Do you really want to delete this RSYNC?"
 msgstr "Doriti sa stergeti acest RSYNC?"
@@ -1473,7 +1569,7 @@ msgid "Duplex"
 msgstr "Duplex"
 
 msgid "Duplicate name."
-msgstr ""
+msgstr "Nume existent deja."
 
 msgid "Dynamic DNS"
 msgstr "DNS Dynamic"
@@ -1556,11 +1652,17 @@ msgstr "Activare protocol FXP."
 msgid "Enable NTP"
 msgstr "Activeaza NTP"
 
+msgid "Enable Windows filename restrictions"
+msgstr ""
+
 msgid "Enable Zeroconf"
 msgstr "Activare Zeroconf"
 
 msgid "Enable anonymous login."
 msgstr "Activare login in mod anonymous."
+
+msgid "Enable compression."
+msgstr ""
 
 msgid "Enable control web page."
 msgstr "Activare pagina de Control"
@@ -1595,6 +1697,9 @@ msgstr "Activare permisiuni ierarhice"
 msgid "Enable recycle bin"
 msgstr "Activare Cos"
 
+msgid "Enable store DOS attributes"
+msgstr "Activare salvare atribute DOS"
+
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Activare trimitere mesaje syslog catre server-ul remote syslog"
 
@@ -1620,8 +1725,9 @@ msgstr "Activat"
 msgid "Encrypted disk name"
 msgstr "Nume disc criptat"
 
-msgid "Encrypting... Please wait"
-msgstr "Criptare... Va rugam asteptati"
+#, php-format
+msgid "Encrypting '%s'... Please wait"
+msgstr "Criptare '%s\"... Asteptati"
 
 msgid "Encryption"
 msgstr "Criptare"
@@ -1639,11 +1745,11 @@ msgstr ""
 "(49152-65535)."
 
 msgid ""
-"Enter a custom port number for the webGUI above if you want to override the "
+"Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
-"Introduceti aici un port de acces Interfata Web daca vreti sa-l schimbati pe "
-"cel implicit (80 pentru HTTP, 443 pentru HTTPS)."
+"Introduceti un numar de port pentru accesul la Interfata Web (implicit "
+"portul 80 pentru HTTP, 443 pentru HTTPS)"
 
 msgid "Enter a description (name) for the interface here."
 msgstr "Scurta descriere a interfetei (numele)."
@@ -1670,6 +1776,9 @@ msgid ""
 "exists and is always mounted at startup. Leave this field empty to use "
 "default path /mnt."
 msgstr ""
+"Introduceti calea catre directorul alocat utilizatorului. Verificati ca "
+"aceasta cale sa existe si sa fie intotdeauna montata la pornire. Lasati "
+"acest cimp gol pentru calea implicita \"/mnt\"."
 
 msgid "Enter the port to send the traps to (default 162)."
 msgstr ""
@@ -1714,7 +1823,7 @@ msgid "FTP"
 msgstr "FTP"
 
 msgid "FTP Proxy"
-msgstr ""
+msgstr "Proxy FTP"
 
 msgid "FTP Server"
 msgstr "Server FTP"
@@ -1773,6 +1882,8 @@ msgid ""
 "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
 "used as extent."
 msgstr ""
+"calea fisierului (ex. /mnt/sharename/extent/%s) sau numele dispozitivului "
+"(ex. /dev/ad1) folosit ca extensie."
 
 msgid "File size"
 msgstr "Dimensiune fisier"
@@ -1896,6 +2007,9 @@ msgstr "Sufix grup"
 msgid "Groups"
 msgstr "Grupuri"
 
+msgid "Guest"
+msgstr "Oaspete"
+
 msgid "HTTP Proxy"
 msgstr "Proxy HTTP"
 
@@ -1926,7 +2040,7 @@ msgid "Host"
 msgstr "Sistem"
 
 msgid "Host resources"
-msgstr ""
+msgstr "Resurse Adresa"
 
 msgid "Hostname"
 msgstr "Nume Sistem"
@@ -1935,15 +2049,17 @@ msgid ""
 "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
 "for TLS"
 msgstr ""
+"Numele sau adresa IP a serverului LDAP. Atentie: Utilizarea numelui este "
+"obligatorie pentru TLS"
 
 msgid "Hosts"
 msgstr "Sisteme"
 
 msgid "Hosts allow"
-msgstr ""
+msgstr "Adrese permise"
 
 msgid "Hosts deny"
-msgstr ""
+msgstr "Adrese blocate"
 
 msgid ""
 "How often the IP is checked. The period is in seconds (max. is 10 days)."
@@ -1984,8 +2100,8 @@ msgstr ""
 "Adresele IP vor fi afisate ca Nume Sistem daca &quot;Conversie Adresa IP in  "
 "Nume Sistem&quot; este activata in pagina <a href=%s>%s</a>."
 
-msgid "IP type mistmatch for network and gateway."
-msgstr "Adrese IP incorecte pentru retea si pentru gateway."
+msgid "IP type mismatch for network and gateway."
+msgstr "Adresa IP difera pentru retea si pentru gateway."
 
 msgid "IPv4 Configuration"
 msgstr "Configuratie IPv4"
@@ -2026,6 +2142,9 @@ msgstr "ISO"
 msgid "ISP DNS servers"
 msgstr "Server DNS ISP"
 
+msgid "If Login is required."
+msgstr "Daca e nevoie de Autentificare."
+
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
 "to perform selected command, otherwise the commands work in read-only "
@@ -2034,6 +2153,14 @@ msgid ""
 msgstr ""
 "Daca discul/partitia selectata este montat va fi de-montat momentan pentru "
 "efectuarea comenzii, altfel comanda va fi rulata doar in modul citire."
+
+msgid ""
+"If this parameter is set, Samba attempts to first read DOS attributes "
+"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
+"before mapping DOS attributes to UNIX permission bits. When set, DOS "
+"attributes will be stored onto an extended attribute in the UNIX filesystem, "
+"associated with the file or directory."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -2049,12 +2176,12 @@ msgid ""
 "If you want to change the password for accessing the WebGUI, enter it here "
 "twice."
 msgstr ""
+"Daca doriti sa schimbati adresa de acces Interfata Web, introduceti-o aici."
 
 msgid ""
-"If you want to change the username for accessing the webGUI, enter it here."
+"If you want to change the username for accessing the WebGUI, enter it here."
 msgstr ""
-"Daca doriti sa schimbati numele sub care veti accesa Interfa Web, "
-"introduceti-l aici."
+"Daca doriti sa schimbati numele de acces Interfata Web, introduceti-l aici."
 
 msgid "Image upload failed (out of memory?)"
 msgstr "Eroare la incarcarea imaginii (memorie insuficienta?)"
@@ -2223,14 +2350,14 @@ msgstr "Nivel Jurnal"
 msgid "Login"
 msgstr "Login"
 
-msgid "Login is required."
-msgstr "Autentificarea este necesara"
-
 msgid "Logs"
 msgstr "Jurnale"
 
 msgid "MAC address"
 msgstr "Adresa MAC"
+
+msgid "MISSING"
+msgstr "LIPSA"
 
 msgid "MOTD"
 msgstr "MOTD"
@@ -2255,6 +2382,9 @@ msgstr "Mapare Utilizator"
 
 msgid "Max. conn. per IP"
 msgstr "Conex. Max pe IP"
+
+msgid "Maximum Connections"
+msgstr "Numar maxim de conexiuni"
 
 msgid "Maximum connections"
 msgstr "Numar Maxim Conexiuni"
@@ -2335,9 +2465,12 @@ msgstr "Monitorizare dispozitiv S.M.A.R.T cu jurnalizare."
 msgid "Mount Point"
 msgstr "Punct Montare"
 
+msgid "Mount point"
+msgstr "Punct Montare"
+
 msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
-msgstr ""
+msgstr "Montare sistem fisiere Read-Only (Doar Citire)."
 
 msgid "Mount to use for swap"
 msgstr "Punct montare pentru swap"
@@ -2350,6 +2483,9 @@ msgstr "Montare..."
 
 msgid "Mounts"
 msgstr "Montari"
+
+msgid "Must choose one"
+msgstr "Trebuie selectat unul"
 
 msgid "NAT mode"
 msgstr "Mod NAT"
@@ -2378,8 +2514,9 @@ msgstr "Server NTP"
 msgid "Name"
 msgstr "Nume"
 
-msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-msgstr "Numele sistemului NAS, fara domeniu<br>ex. <em>nas</em>"
+#, php-format
+msgid "Name of the NAS host, without domain part e.g. %s."
+msgstr "Numele sistemului NAS, fara domeniu ex. %s."
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -2395,7 +2532,7 @@ msgid "NetBiosName"
 msgstr "Nume NetBios"
 
 msgid "Netgraph"
-msgstr ""
+msgstr "Netgraph"
 
 msgid "Network"
 msgstr "Retea"
@@ -2417,6 +2554,9 @@ msgstr "Retele autorizate."
 
 msgid "No"
 msgstr "Nu"
+
+msgid "No AppleDouble Directory"
+msgstr ""
 
 msgid "No RSYNC Client configured"
 msgstr "Niciun client RSYNC configurat"
@@ -2462,6 +2602,9 @@ msgstr "Numarul intrarilor din log trebuie sa fie in intervalul 5 si 1000"
 msgid "OK"
 msgstr "OK"
 
+msgid "ONLINE"
+msgstr "Activ"
+
 msgid "OS Version"
 msgstr "Versiune OS"
 
@@ -2469,10 +2612,10 @@ msgid "Object name"
 msgstr "Nume obiect"
 
 msgid "Old passphrase"
-msgstr ""
+msgstr "Fraza Control veche"
 
 msgid "Old password"
-msgstr ""
+msgstr "Parola veche"
 
 #, php-format
 msgid ""
@@ -2547,7 +2690,7 @@ msgid "Password"
 msgstr "Parola"
 
 msgid "Password (confirmed)"
-msgstr ""
+msgstr "Parola (confirmare)"
 
 msgid "Password authentication"
 msgstr "Autentificare"
@@ -2706,8 +2849,18 @@ msgstr "Evenimente RSYNCD"
 msgid "Raid name"
 msgstr "Nume Raid"
 
+#, fuzzy
+msgid "Read Only Access"
+msgstr "Doar citire"
+
 msgid "Read only"
 msgstr "Doar citire"
+
+msgid "Read/Write"
+msgstr "Citire/Scriere"
+
+msgid "Read/Write Access"
+msgstr ""
 
 msgid "Reboot"
 msgstr "Repornire"
@@ -2833,18 +2986,16 @@ msgstr ""
 "configurat anterior<a href=%s></a>."
 
 msgid ""
-"Select EFI GPT if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
 "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select old "
-"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+"you select option 2 during installation on hard drive.<br>Select 'Old "
+"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+"release."
 msgstr ""
-"Selectati EFI GPT daca doriti sa montati un disc in format GPT (formatul "
-"implicit incepind cu versiunea 0.684b).<br>Selectati 1 pentru discuri in "
-"format UFS sau volume RAID create incepind cu versiunea  0.683b.<br>Selectat "
-"2 pentru montarea partitiei DATA daca ati selectat optiunea 2 in timpul "
-"instalarii pe disc.<br>Selectati vechiul format software "
-"gmirror/graid5/gvinum pentru volume create cu versiuni mai vechi de FreeNAS."
+
+msgid "Select mount point where to create the swap file."
+msgstr "Selecteaza mount-ul unde se va crea fisierul 'swap'"
 
 msgid "Select the FreeBSD package to be installed."
 msgstr "Selectati pachetul FreeBSD de instalat."
@@ -2894,14 +3045,29 @@ msgstr "Servicii"
 msgid "Set browseable"
 msgstr "Activare Rasfoire"
 
+msgid "Set browseable."
+msgstr ""
+
+msgid "Set share password."
+msgstr ""
+
 msgid "Settings"
 msgstr "Setari"
 
 msgid "Share"
 msgstr "Partajare"
 
+msgid "Share Character Set"
+msgstr ""
+
 msgid "Share Name"
 msgstr "Nume Share"
+
+msgid "Share Password"
+msgstr ""
+
+msgid "Share passwords can not be more than 8 characters."
+msgstr ""
 
 msgid "Shares"
 msgstr "Partajari"
@@ -2956,11 +3122,19 @@ msgstr "Spatiu Utilizat"
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
 "example: dc=example,dc=com"
-msgstr ""
+msgstr "Specifica baza DN pentru operatii LDAP, exemplu: dc=example, dc=com"
 
+#, fuzzy
 msgid ""
 "Specifies the default bind DN to use when performing ldap operations, "
 "example:cn=administrator,dc=example,dc=com "
+msgstr ""
+"Specifica principalul  DN care va fi utilizat pentru operatiile LDAP, "
+"exemplu:cn=administrator,dc=example,dc=com "
+
+msgid ""
+"Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
+"etc."
 msgstr ""
 
 msgid ""
@@ -2996,8 +3170,14 @@ msgstr "Stare"
 msgid "Status report successfully sent."
 msgstr "Raportul de stare a fost trimis cu succes."
 
+msgid "Stopped"
+msgstr "Oprit"
+
 msgid "Storage"
 msgstr "Spatiu"
+
+msgid "Store DOS attributes"
+msgstr "Salvare atribute DOS"
 
 msgid "Subject"
 msgstr "Subiect"
@@ -3098,6 +3278,11 @@ msgstr "Nume Destinatie"
 msgid "Temperature"
 msgstr "Temperatura"
 
+msgid ""
+"The  deny  option specifies users and groups who are not allowed access to "
+"the share. It follows the same  format  as  the  allow option."
+msgstr ""
+
 #, php-format
 msgid "The %s port must be a valid port number."
 msgstr "Valoare incorecta pentru portul %s"
@@ -3185,6 +3370,7 @@ msgid ""
 "The attribute '%s' contains the illegal character ':' and is no valid "
 "password."
 msgstr ""
+"Atributul '%s' contine caracterul ilegal ':' si nu este o parola valida."
 
 #, c-format
 msgid "The attribute '%s' is an invalid port number."
@@ -3217,7 +3403,7 @@ msgstr "Atributul '%s' este necesar."
 #, php-format
 msgid ""
 "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
-msgstr ""
+msgstr "Atributul '%s' poate contine doar caracterele a-z, A-Z, 0-9, _ , -."
 
 #, c-format
 msgid "The attribute '%s' must be a number."
@@ -3261,7 +3447,7 @@ msgstr "Configuratia a fost refacuta. %s va reporni acum."
 msgid ""
 "The confimed password does not match. Please ensure the passwords match "
 "exactly."
-msgstr ""
+msgstr "Parolele nu coincid. Reintroduceti parolele!"
 
 msgid ""
 "The content directory list has been changed.<br>You must apply the changes "
@@ -3391,7 +3577,7 @@ msgid "The number of clients must be between 1 and 50."
 msgstr "Numarul clientilor trebuie sa fie intre 1 si 50."
 
 msgid "The old password is not correct."
-msgstr ""
+msgstr "Parola veche incorecta."
 
 msgid ""
 "The package list has been changed.<br>You must apply the changes in order "
@@ -3401,7 +3587,7 @@ msgstr ""
 "pentru ca acestea sa devina active."
 
 msgid "The password contains the illegal character ':'."
-msgstr ""
+msgstr "Parola nu poate contine caracterul ':'."
 
 msgid "The passwords do not match."
 msgstr "Parolele nu coincid."
@@ -3459,7 +3645,7 @@ msgid "The system is rebooting now. This may take one minute."
 msgstr "Sistemul va reporni acum. Dureza aproximativ 1 minut."
 
 msgid "The time update interval must be either between 6 and 1440."
-msgstr ""
+msgstr "Timpul pentru actualizare trebuie sa fie intre 6 si 1440"
 
 msgid "The uploaded image file is not for this platform"
 msgstr "Imaginea sistem incarcata nu este pentru aceasta platforma"
@@ -3481,7 +3667,7 @@ msgstr ""
 "Acesta valoare este trimisa ca Nume Sistem DHCP cind se cere o alocare DHCP."
 
 msgid "The volume must be detached before it can be deleted."
-msgstr ""
+msgstr "Volumul trebuie detasat pentru a putea fi sters."
 
 msgid "There must be 2 disks in a RAID 1 volume."
 msgstr "Sint necesare cel putin 2 discuri pentru un RAID 1."
@@ -3532,6 +3718,21 @@ msgstr ""
 msgid "This certificate does not appear to be valid."
 msgstr "Acest certificat nu este valid."
 
+msgid "This controls how the case of filenames are viewed and stored."
+msgstr ""
+
+msgid "This controls the access a remote host has to this share."
+msgstr ""
+
+msgid "This controls the access to this share with an access password."
+msgstr ""
+
+msgid ""
+"This controls whether the .AppleDouble directory gets created unless "
+"absolutely needed. This option should not be used if files are access mostly "
+"by Mac computers."
+msgstr ""
+
 msgid ""
 "This controls whether this share is seen in the list of available shares in "
 "a net view and in the browse list."
@@ -3553,6 +3754,12 @@ msgstr "Acest disc/partitie a fost deja configurat(a)."
 
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "Discul criptat este montat, demontati-l inainte de a-l detasa."
+
+msgid ""
+"This forces filenames to be restricted to the character set used by Windows. "
+"This is <em>not</em> recommended for shares used principally by Mac "
+"computers."
+msgstr ""
 
 msgid "This group already exists in the group list."
 msgstr "Acest grup exista deja."
@@ -3587,6 +3794,12 @@ msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "Exemplu: iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid ""
+"This option allows the users and groups that access a share to be specified. "
+"Users and groups are specified, delimited by commas. Groups are designated "
+"by a @ prefix."
+msgstr ""
+
+msgid ""
 "This parameter is a comma, space, or tab delimited set of host which are NOT "
 "permitted to access this share. Where the lists conflict, the allow list "
 "takes precedence. In the event that it is necessary to deny all by default, "
@@ -3600,6 +3813,10 @@ msgid ""
 "permitted to access this share. Use the keyword ALL to permit access for "
 "everyone. Leave this field empty to disable this setting."
 msgstr ""
+
+#, fuzzy
+msgid "This parameters will be added to [global] in smb.conf."
+msgstr "Acesti parametri vor fi introdusi in smb.conf [global]."
 
 msgid ""
 "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
@@ -3656,6 +3873,10 @@ msgstr ""
 
 msgid "Tools"
 msgstr "Unelte"
+
+#, fuzzy
+msgid "Total number of connections allowed to this share."
+msgstr "Numarul total de conexiuni permis pentru acest share"
 
 msgid "Traceroute"
 msgstr "Ruta"
@@ -3743,6 +3964,9 @@ msgstr "Sincronizare Sistem Fisiere Unison"
 
 msgid "Unix charset"
 msgstr "Caractere Unix"
+
+msgid "Unknown"
+msgstr "Necunoscut"
 
 msgid "Unknown or unformatted"
 msgstr "Necunoscut sau neformatat"
@@ -3834,6 +4058,12 @@ msgstr "Versiune"
 msgid "Volume Name"
 msgstr "Nume Volum"
 
+msgid "Volume label"
+msgstr "Nume volum"
+
+msgid "Volume label of the new file system."
+msgstr "Numele volumului pentru noul sistem de fisiere."
+
 msgid "WAN address"
 msgstr "Adresa WAN"
 
@@ -3864,6 +4094,9 @@ msgstr "Unde sint stocate fisierele de lucru"
 msgid "Who"
 msgstr "Cine"
 
+msgid "Windows Filename Restrictions"
+msgstr ""
+
 msgid "Wireless"
 msgstr "Wireless"
 
@@ -3875,6 +4108,9 @@ msgstr "Membru al Workgroup-ului."
 
 msgid "Working Directory"
 msgstr "Director de Lucru"
+
+msgid "Write only"
+msgstr "Doar scriere"
 
 msgid "XboX 360"
 msgstr "XboX 360"
@@ -3925,11 +4161,11 @@ msgstr ""
 msgid "You must add disks first."
 msgstr "Trebuia sa adaugati discul mai intii."
 
-msgid "You must configure mount point first."
-msgstr "Trebuie sa configurati un punct de montare mai intii."
-
 msgid "You must create a group first."
 msgstr "Trebuie creat un grup mai intii."
+
+msgid "You must enter the same IP type for network and gateway."
+msgstr "Trebuie folosit acelasi IP pentru retea si pentru gateway."
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
 msgstr "Aveti nevoie de minim 256MB RAM pentru utilizare iSCSI."
@@ -3944,10 +4180,6 @@ msgstr "Trebuie sa selectati cel putin o metoda de autentificare."
 msgid "You must select at minium anonymous or/and local user authentication."
 msgstr ""
 "Trebuie sa selectati cel putin modul anonymous cu autentificare locala."
-
-msgid "You must the same IP type for network and gateway."
-msgstr ""
-"Trebuie sa introduceti acelasi tip de IP pentru retea si pentru gateway."
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr ""
@@ -3971,10 +4203,11 @@ msgid "built on"
 msgstr "inclus"
 
 msgid "chroot everyone"
-msgstr ""
+msgstr "chroot pentru fiecare"
 
+#, fuzzy
 msgid "chroot() everyone, but root."
-msgstr ""
+msgstr "Limeteaza accesul utilizatorilor la directorul \"home\""
 
 msgid "day"
 msgstr "zi"
@@ -3988,11 +4221,12 @@ msgstr "stergere punct montare"
 msgid "desc"
 msgstr "desc"
 
-msgid "e.g. <em>mycorp.com</em>"
-msgstr "ex. <em>mycorp.com</em>"
+#, php-format
+msgid "e.g. %s"
+msgstr "ex. %s"
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
-msgstr ""
+msgstr "sufix grupului, ex.: ou=groups, dc=exemplu, dc=com"
 
 msgid "hours"
 msgstr "ore"
@@ -4019,7 +4253,7 @@ msgid "n/a"
 msgstr "n/a"
 
 msgid "password_suffix, example: ou=users,dc=example,dc=com"
-msgstr ""
+msgstr "sufix parolei, ex.: ou=utilizatori, dc=exemplu, dc=com"
 
 msgid "pasv_max_port"
 msgstr "port_max_pasiv"
@@ -4029,9 +4263,6 @@ msgstr "port_min_pasiv"
 
 msgid "rotated block-interleaved parity"
 msgstr "paritate intretesere blocuri"
-
-msgid "rw"
-msgstr "rw"
 
 msgid "seconds"
 msgstr "secunde"
@@ -4043,7 +4274,7 @@ msgid "striping"
 msgstr "striping"
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
-msgstr ""
+msgstr "sufix utilizator, ex.: ou=utilizatori, dc=exemplu, dc=com"
 
 msgid "webGUI Configuration"
 msgstr "Configuratie Interfata Web"

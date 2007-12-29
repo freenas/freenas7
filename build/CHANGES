@@ -1,6 +1,6 @@
 ################ History Change logs ##############
 
-FreeNAS 0.687b1:
+FreeNAS 0.686.1:
 ----------------
 
 Majors changes:
@@ -11,7 +11,7 @@ Majors changes:
 
 Minors changes:
 - Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
-- Add checkbox in 'Mount Point' WebGUI to enable/disable foreground file system consistency check during boot process.
+- Add checkbox in 'Mount Point' WebGUI to enable/disable foreground/background file system consistency check during boot process.
 
 Bug fixs:
 - Calculating iSCSI extent IDs fails for numbers > 10.

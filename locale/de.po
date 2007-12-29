@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2007-10-26 12:54+0000\n"
-"PO-Revision-Date: 2007-11-28 13:57+0000\n"
+"POT-Creation-Date: 2007-12-16 16:18+0000\n"
+"PO-Revision-Date: 2007-12-19 02:50+0000\n"
 "Last-Translator: votdev <votdev@gmx.de>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2007-11-30 05:57+0000\n"
+"X-Launchpad-Export-Date: 2007-12-28 19:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -178,6 +178,12 @@ msgstr ""
 #~ msgid "Graph"
 #~ msgstr "Graph"
 
+#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+#~ msgstr "Name des NAS Host, ohne Domain<br>z.B. <em>nas</em>"
+
+#~ msgid "e.g. <em>mycorp.com</em>"
+#~ msgstr "z.B. <em>mycorp.com</em>"
+
 #~ msgid "DNS servers"
 #~ msgstr "DNS Server"
 
@@ -185,11 +191,24 @@ msgstr ""
 #~ msgstr "IP Addresse"
 
 #~ msgid ""
+#~ "If you want to change the username for accessing the webGUI, enter it here."
+#~ msgstr ""
+#~ "Wenn Sie den Benutzernamen für die WebGUI ändern möchten, tragen Sie ihn "
+#~ "hier ein."
+
+#~ msgid ""
 #~ "If you want to change the password for accessing the webGUI, enter it here "
 #~ "twice.<br>Don't use the character ':'."
 #~ msgstr ""
 #~ "Wenn Sie den Benutzernamen für die WebGUI ändern möchten, tragen Sie ihn "
 #~ "hier nochmals ein.<br>Bitte kein ':' benutzen."
+
+#~ msgid ""
+#~ "Enter a custom port number for the webGUI above if you want to override the "
+#~ "default (80 for HTTP, 443 for HTTPS)."
+#~ msgstr ""
+#~ "Tragen Sie einen Port für die WebGUI ein, wenn Sie den Standardport "
+#~ "verändern wollen (80 für HTTP, 443 für HTTPS)."
 
 #~ msgid "Select the system language"
 #~ msgstr "Wählen Sie die Systemsprache"
@@ -284,6 +303,11 @@ msgstr ""
 #~ "Erster Bearbeitungsschritt: Fügen Sie ihre Festplatte zur Festplatteliste "
 #~ "hinzu."
 
+#~ msgid "Can't format the drive where FreeNAS configuration file is installed!"
+#~ msgstr ""
+#~ "Die Partition, auf der die Datei mit den FreeNAS-Einstellungen gespeichert "
+#~ "ist, kann nicht formatiert werden."
+
 #~ msgid "Disk initialization details"
 #~ msgstr "Festplatteninitialisierungseigenschaften"
 
@@ -345,6 +369,19 @@ msgstr ""
 #~ msgstr "Freigabenname duplizieren."
 
 #~ msgid ""
+#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select old "
+#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+#~ msgstr ""
+#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select old "
+#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+
+#~ msgid ""
 #~ "1. You can't mount the partition '%s' where the config file is stored.<br>2. "
 #~ "FreeBSD NTFS has lots of bugs."
 #~ msgstr ""
@@ -396,6 +433,9 @@ msgstr ""
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr ""
 #~ "Die Namenskonvention für exportierte Verzeichnisse: /mnt/Freigabenname"
+
+#~ msgid "You must configure mount point first."
+#~ msgstr "Es muss zuerst ein 'Mount Point' konfiguriert werden."
 
 #~ msgid "Rsync Client Synchronization"
 #~ msgstr "Rsync Client Synchronisation"
@@ -637,6 +677,9 @@ msgstr ""
 #~ msgid "Do you really want to delete this user?!"
 #~ msgstr "Wollen Sie diesen Benutzer wirklich löschen?"
 
+#~ msgid "Authorized"
+#~ msgstr "autorisiert"
+
 #~ msgid "Networks Authorized"
 #~ msgstr "autorisierte Netzwerke"
 
@@ -817,6 +860,9 @@ msgstr "ATAidle"
 msgid "Access"
 msgstr "Zugriff"
 
+msgid "Access Mode"
+msgstr "Zugriffsmodus"
+
 msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
 msgstr "Erreichbar unter 'http://ip_adresse:port/web/ushare.html'."
 
@@ -943,8 +989,27 @@ msgstr ""
 msgid "All"
 msgstr "Alle"
 
+msgid ""
+"All mounted volumes are automatically shared and restricted to only allow "
+"administrators to connect. The volumes will not show up in the list of "
+"shares."
+msgstr ""
+"Alle gemounteten Partitionen werden automatisch freigegeben und der Zugriff "
+"auf Administratoren beschränkt. Die Partitionen werden nicht in der Liste "
+"für Benutzer freigegebener Partitionen erscheinen."
+
+msgid ""
+"All shares use the option 'usedots' thus making the filenames .Parent and "
+"anything beginning with .Apple illegal."
+msgstr ""
+"Alle Freigaben benutzen die Option 'usedots', welche die Dateinamen .Parent "
+"und alles andere das mit .Apple anfängt unzulässig macht."
+
 msgid "All users will have the root privilege."
 msgstr "Alle Benutzer erhalten Administratorrechte."
+
+msgid "Allow"
+msgstr "Erlauben"
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -958,9 +1023,23 @@ msgstr ""
 "Erlaube Benutzern Dateien fortzusetzen oder zu uploaden, aber NICHT sie zu "
 "löschen oder umzubenennen."
 
+msgid ""
+"Allows  certain  users and groups to have read/write access to a share. This "
+"follows the allow option format."
+msgstr ""
+"Gibt bestimmten Benutzern und Benutzergruppen lese/schreib-Zugriff auf eine "
+"Freigabe. Diese Zuordnung folgt dem Erlaubt-Optionsformat."
+
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr "Versucht %s als 'Local Master Browser' einzurichten."
+
+msgid ""
+"Allows certain users and groups to have read-only  access  to  a share. This "
+"follows the allow option format."
+msgstr ""
+"Gibt bestimmten Benutzern und Benutzergruppen ein Nur-lese-Recht an einer "
+"Freigabe. Diese Zuordnung folgt dem Erlaubt-Optionsformat."
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Alternativer TCP Port (Standard: 22)."
@@ -999,6 +1078,9 @@ msgid ""
 "At the highest level, a target is what is presented to the initiator, and is "
 "made up of one or more devices, and/or one or more extents."
 msgstr ""
+"Auf der höchsten Ebene ist ein Ziel das, was dem Initiator angezeigt wird. "
+"Es besteht aus einem oder mehreren Geräten und/oder einem oder mehreren "
+"Extents."
 
 msgid "Attached"
 msgstr "Hinzugefügt"
@@ -1013,8 +1095,8 @@ msgstr "Authentifizierung"
 msgid "Authorised network"
 msgstr "Zugelassenes Netzwerk"
 
-msgid "Authorized"
-msgstr "autorisiert"
+msgid "Authorized networks"
+msgstr "Autorisierte Netzwerke"
 
 msgid "AutoScale"
 msgstr "Autom. Skalierung"
@@ -1046,6 +1128,9 @@ msgstr "Base DN"
 msgid "Browseable"
 msgstr "Sichtbar"
 
+msgid "CD/DVD or Old Software RAID"
+msgstr "CD/DVD oder altes Software RAID"
+
 msgid "CIFS/SMB"
 msgstr "CIFS/SMB"
 
@@ -1058,10 +1143,10 @@ msgstr "CPU-Auslastung"
 msgid "Calculate netmask bits"
 msgstr "Berechne Subnetzmaske"
 
-msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgid "Can't format the OS origin disk!"
 msgstr ""
-"Die Partition, auf der die Datei mit den FreeNAS-Einstellungen gespeichert "
-"ist, kann nicht formatiert werden."
+"Die Festplatte die das Betriebssystem beinhaltet kann nicht formatiert "
+"werden."
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr ""
@@ -1070,6 +1155,9 @@ msgstr ""
 
 msgid "Cannot get data about interface"
 msgstr "Kann von der Schnittstelle keine Daten erfassen"
+
+msgid "Case Folding"
+msgstr "Gross-/Kleinschreibung erzwingen"
 
 msgid "Certificate"
 msgstr "Zertifikat"
@@ -1137,6 +1225,18 @@ msgstr "Gemeinschaft"
 
 msgid "Compliant profile to be used."
 msgstr "Zu benutzendes, kompatibles Profil."
+
+msgid "Compression"
+msgstr "Komprimierungs-Stufe"
+
+msgid ""
+"Compression is worth using if your connection is slow. The efficiency of the "
+"compression depends on the type of the file, and varies widely. Useful for "
+"internet transfer only."
+msgstr ""
+"Die Anwendung der Kompression empfiehlt sich bei langsamer Verbindung. Die "
+"Effektivität der Komprimierung hängt vom Dateityp ab und variiert breit. "
+"Empfiehlt sich ausschliesslich beim Internettransfer."
 
 msgid "Configuring"
 msgstr "Konfiguriere"
@@ -1295,6 +1395,9 @@ msgstr "Lösche Target"
 msgid "Delete user"
 msgstr "Lösche Benutzer"
 
+msgid "Deny"
+msgstr "Verweigern"
+
 msgid "Description"
 msgstr "Beschreibung"
 
@@ -1410,6 +1513,9 @@ msgstr "Festplattenauslastung"
 
 msgid "Disks"
 msgstr "Festplatten"
+
+msgid "Do not create .AppleDouble directory"
+msgstr "Lege kein .AppleDouble - Verzeichnis an."
 
 msgid "Do you really want to delete this RSYNC?"
 msgstr "Wollen Sie die RSYNC-Verbindung wirklich löschen?"
@@ -1608,11 +1714,17 @@ msgstr "Aktiviere FXP-Protokoll."
 msgid "Enable NTP"
 msgstr "Aktiviere NTP"
 
+msgid "Enable Windows filename restrictions"
+msgstr "Windows-Dateinamenbeschränkung einschalten"
+
 msgid "Enable Zeroconf"
 msgstr "Aktiviere Zeroconf"
 
 msgid "Enable anonymous login."
 msgstr "Aktiviere anonymen Zugriff"
+
+msgid "Enable compression."
+msgstr "Datenkomprimierung einschalten."
 
 msgid "Enable control web page."
 msgstr "Statuswebseite aktivieren"
@@ -1647,6 +1759,9 @@ msgstr "Aktiviere Rechtevererbung"
 msgid "Enable recycle bin"
 msgstr "Papierkorb aktivieren"
 
+msgid "Enable store DOS attributes"
+msgstr "Aktiviere Speicherung der DOS-Attribute"
+
 msgid "Enable syslog'ing to remote syslog server"
 msgstr ""
 "Aktiviere das Schreiben des Systemlogs auf einen entfernten Server 'Remote "
@@ -1674,8 +1789,9 @@ msgstr "Aktiviert"
 msgid "Encrypted disk name"
 msgstr "Name der verschlüsselten Festplatte"
 
-msgid "Encrypting... Please wait"
-msgstr "Verschlüsseln... Bitte warten"
+#, php-format
+msgid "Encrypting '%s'... Please wait"
+msgstr "Verschlüssele '%s'... Bitte warten"
 
 msgid "Encryption"
 msgstr "Verschlüsselung"
@@ -1693,11 +1809,11 @@ msgstr ""
 "Ports können benutzt werden (von 49152 bis 65535)"
 
 msgid ""
-"Enter a custom port number for the webGUI above if you want to override the "
+"Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
-"Tragen Sie einen Port für die WebGUI ein, wenn Sie den Standardport "
-"verändern wollen (80 für HTTP, 443 für HTTPS)."
+"Geben Sie hier eine neue Portnummer für die Web-basierte Benutzeroberfläche "
+"an, um die Standardportadresse (80 für HTTP, 443 für HTTPS) zu ändern."
 
 msgid "Enter a description (name) for the interface here."
 msgstr "Geben Sie eine Beschreibung (Name) für die Schnittstelle ein."
@@ -1966,6 +2082,9 @@ msgstr "Gruppensuffix"
 msgid "Groups"
 msgstr "Gruppen"
 
+msgid "Guest"
+msgstr "Gast"
+
 msgid "HTTP Proxy"
 msgstr "HTTP-Proxy"
 
@@ -2056,8 +2175,8 @@ msgstr ""
 "IP-Adressen werden als Hostnamen beim Aktivieren von &quot;IP-Adressen als "
 "Hostnamen auflösen&quot; auf <a href=%s>%s</a> Seite aufgelöst."
 
-msgid "IP type mistmatch for network and gateway."
-msgstr "IP-Typ für Netzwerk und Gateway stimmt nicht überein."
+msgid "IP type mismatch for network and gateway."
+msgstr "IP-Protokolle vom Netzwerk und Gateway passen nicht zusammen."
 
 msgid "IPv4 Configuration"
 msgstr "IPv4 Einstellungen"
@@ -2098,6 +2217,9 @@ msgstr "ISO"
 msgid "ISP DNS servers"
 msgstr "ISP DNS Server"
 
+msgid "If Login is required."
+msgstr "Falls Login erforderlich sein sollte."
+
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
 "to perform selected command, otherwise the commands work in read-only "
@@ -2108,6 +2230,20 @@ msgstr ""
 "kurzzeitig ausgehängt, um den ausgewählten Befehl auszuführen. Sonst "
 "arbeiten die Befehle im read-only-Modus.<br>Dies führt zu einer kurzzeitigen "
 "Unterbrechung für Benutzer, die gerade auf die gemounteten Daten zugreifen."
+
+msgid ""
+"If this parameter is set, Samba attempts to first read DOS attributes "
+"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
+"before mapping DOS attributes to UNIX permission bits. When set, DOS "
+"attributes will be stored onto an extended attribute in the UNIX filesystem, "
+"associated with the file or directory."
+msgstr ""
+"Bei der Auswahl dieses Parameters versucht Samba, zunächst DOS-Attribute "
+"(SYSTEM, HIDDEN, ARCHIVE oder READ-ONLY) von einem 'filesystem extended "
+"attribute' zu lesen, bevor DOS-Attribute zu UNIX-Dateiberechtigungen "
+"zugeordnet werden. Wenn ausgewählt, dann werden DOS-Attribute der Datei oder "
+"dem Verzeichnis zugewiesen in einem 'extended attribute' im UNIX-Dateisystem "
+"gespeichert."
 
 #, php-format
 msgid ""
@@ -2128,10 +2264,10 @@ msgstr ""
 "geben Sie es hier zweimal ein."
 
 msgid ""
-"If you want to change the username for accessing the webGUI, enter it here."
+"If you want to change the username for accessing the WebGUI, enter it here."
 msgstr ""
-"Wenn Sie den Benutzernamen für die WebGUI ändern möchten, tragen Sie ihn "
-"hier ein."
+"Wenn Sie den Benutzernamen für die Web-basierte Benutzeroberfläche ändern "
+"möchten, geben Sie ihn hier ein."
 
 msgid "Image upload failed (out of memory?)"
 msgstr "Image-Upload fehlgeschlagen (zuwenig Speicher?)"
@@ -2298,14 +2434,14 @@ msgstr "Log Level"
 msgid "Login"
 msgstr "Anmelden"
 
-msgid "Login is required."
-msgstr "Login ist erforderlich."
-
 msgid "Logs"
 msgstr "Log Daten"
 
 msgid "MAC address"
 msgstr "MAC Addresse"
+
+msgid "MISSING"
+msgstr "FEHLT"
 
 msgid "MOTD"
 msgstr "MOTD"
@@ -2330,6 +2466,9 @@ msgstr "Bilde auf den Benutzer ab"
 
 msgid "Max. conn. per IP"
 msgstr "Max. Anzahl Verb. einer IP"
+
+msgid "Maximum Connections"
+msgstr "Maximale gleichzeitige Verbindungen"
 
 msgid "Maximum connections"
 msgstr "Max. Verbindungen"
@@ -2414,6 +2553,9 @@ msgstr ""
 msgid "Mount Point"
 msgstr "Mount Verzeichnis"
 
+msgid "Mount point"
+msgstr "Einhängepunkt"
+
 msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
@@ -2431,6 +2573,9 @@ msgstr "Mounting..."
 
 msgid "Mounts"
 msgstr "Mounts"
+
+msgid "Must choose one"
+msgstr "Es muss eines ausgewählt sein"
 
 msgid "NAT mode"
 msgstr "NAT Mode"
@@ -2459,8 +2604,9 @@ msgstr "NTP Zeit Server"
 msgid "Name"
 msgstr "Name"
 
-msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-msgstr "Name des NAS Host, ohne Domain<br>z.B. <em>nas</em>"
+#, php-format
+msgid "Name of the NAS host, without domain part e.g. %s."
+msgstr "Name des NAS-Host, ohne den Domänennamen z.B. %s."
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -2498,6 +2644,9 @@ msgstr "Authorisierte Netze"
 
 msgid "No"
 msgstr "Nein"
+
+msgid "No AppleDouble Directory"
+msgstr "Kein .AppleDouble - Verzeichnis"
 
 msgid "No RSYNC Client configured"
 msgstr "Kein RSYNC Client eingerichtet"
@@ -2543,6 +2692,9 @@ msgstr ""
 
 msgid "OK"
 msgstr "OK"
+
+msgid "ONLINE"
+msgstr "ONLINE"
 
 msgid "OS Version"
 msgstr "Betriebssystemversion"
@@ -2786,8 +2938,17 @@ msgstr "RSYNCD Ereignisse"
 msgid "Raid name"
 msgstr "RAID Name"
 
+msgid "Read Only Access"
+msgstr "Nur-lese-Zugriff"
+
 msgid "Read only"
 msgstr "Nur lesen"
+
+msgid "Read/Write"
+msgstr "Lesen/Schreiben"
+
+msgid "Read/Write Access"
+msgstr "Lese-schreib-Zugriff"
 
 msgid "Reboot"
 msgstr "Reboot"
@@ -2912,17 +3073,22 @@ msgstr ""
 "href=%s>zuvor konfigurierten Festplatte.</a>"
 
 msgid ""
-"Select EFI GPT if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
 "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select old "
-"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+"you select option 2 during installation on hard drive.<br>Select 'Old "
+"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+"release."
 msgstr ""
-"Select EFI GPT if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
-"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select old "
-"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+"Wähle 'EFI GPT' für das Einbinden eines GPT-formatierten Laufwerkes "
+"(Standard seit 0.684b).<br>Wähle 1 für UFS -formatierte Laufwerke oder für "
+"unter 0.683b erstellte Software RAID - Volumes.<br>Wähle 2 für das Einbinden "
+"der Datenpartition, falls du bei der Installation von FreeNAS auf Festplatte "
+"die Option 2 ausgewählt hattest.<br>Wähle 'Old software RAID' für unter "
+"älteren FreeNAS-Versionen erstellte gmirror/graid5/gvinum Volumes."
+
+msgid "Select mount point where to create the swap file."
+msgstr "Wählen Sie den Einhängpunkt wo die Swap Datei erzeugt werden soll."
 
 msgid "Select the FreeBSD package to be installed."
 msgstr "Das zu installierende FreeBSD Package auswählen."
@@ -2972,14 +3138,29 @@ msgstr "Dienste"
 msgid "Set browseable"
 msgstr "Durchsuchbar machen"
 
+msgid "Set browseable."
+msgstr "Setze auf Durchsuchbar."
+
+msgid "Set share password."
+msgstr "Setze Passwort für Freigabe."
+
 msgid "Settings"
 msgstr "Einstellungen"
 
 msgid "Share"
 msgstr "Freigabe"
 
+msgid "Share Character Set"
+msgstr "Zeichencodierung der Freigabe"
+
 msgid "Share Name"
 msgstr "Freigaben Name"
+
+msgid "Share Password"
+msgstr "Passwort für die Freigabe"
+
+msgid "Share passwords can not be more than 8 characters."
+msgstr "Passwort für die Freigabe kann nicht länger als 8 Zeichen sein."
 
 msgid "Shares"
 msgstr "Freigaben"
@@ -3048,6 +3229,13 @@ msgstr ""
 "example:cn=administrator,dc=example,dc=com "
 
 msgid ""
+"Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
+"etc."
+msgstr ""
+"Gibt an, in welcher Zeichencodierung die Freigabe betrieben wird. Zum "
+"Beispiel UTF8, UTF8-MAC, ISO-8859-15, usw."
+
+msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
 "Gibt an, ob es dem Administrator (root) erlaubt ist, sich direkt einzuloggen."
@@ -3079,8 +3267,14 @@ msgstr "Status"
 msgid "Status report successfully sent."
 msgstr "Statusreport wurde erfolgreich versandt."
 
+msgid "Stopped"
+msgstr "Gestoppt"
+
 msgid "Storage"
 msgstr "Datenträger"
+
+msgid "Store DOS attributes"
+msgstr "DOS-Atrribute speichern"
 
 msgid "Subject"
 msgstr "Betreff"
@@ -3181,6 +3375,14 @@ msgstr "Zielname"
 
 msgid "Temperature"
 msgstr "Temperatur"
+
+msgid ""
+"The  deny  option specifies users and groups who are not allowed access to "
+"the share. It follows the same  format  as  the  allow option."
+msgstr ""
+"Diese Verbotsoption legt fest, das bestimmte Benutzer und Benutzergruppen "
+"keinen Zugriff auf die Freigabe bekommen. Es folgt dem gleichen Format wie "
+"die Erlaubnisoption."
 
 #, php-format
 msgid "The %s port must be a valid port number."
@@ -3647,6 +3849,31 @@ msgstr ""
 msgid "This certificate does not appear to be valid."
 msgstr "Dieses Zertifikat scheint nicht gültig zu sein."
 
+msgid "This controls how the case of filenames are viewed and stored."
+msgstr ""
+"Diese Option legt fest, wie die Groß-Kleinschreibung der Dateinamen "
+"gehandhabt wird."
+
+msgid "This controls the access a remote host has to this share."
+msgstr ""
+"Diese Option legt fest, ob und wie weit ein entfernter Rechner auf die "
+"Freigabe zugreifen kann."
+
+msgid "This controls the access to this share with an access password."
+msgstr ""
+"Diese Option legt die Ferfügbarkeit auf die Freigabe mit einem "
+"Freigabepasswort fest."
+
+msgid ""
+"This controls whether the .AppleDouble directory gets created unless "
+"absolutely needed. This option should not be used if files are access mostly "
+"by Mac computers."
+msgstr ""
+"Dies legt fest, ob das .AppleDouble - Verzeichnis angelegt werden soll, "
+"außer wenn es absolut notwendig ist. Diese Einstellung sollte nicht "
+"verwendet werden, wenn Dateien hauptsächlich von Mac Computern aus "
+"aufgerufen werden."
+
 msgid ""
 "This controls whether this share is seen in the list of available shares in "
 "a net view and in the browse list."
@@ -3672,6 +3899,15 @@ msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 "Diese verschlüsselte Festplatte ist eingebunden (gemountet); vor dem "
 "Entfernen ist diese zu entbinden (unmount)"
+
+msgid ""
+"This forces filenames to be restricted to the character set used by Windows. "
+"This is <em>not</em> recommended for shares used principally by Mac "
+"computers."
+msgstr ""
+"Dies erzwingt die Verwendungen von Windows-Zeichensätzen für Dateinamen. Es "
+"ist <em>nicht</em> für Freigaben empfohlen, welche hauptsächlich von Mac "
+"Computern aus genutzt werden."
 
 msgid "This group already exists in the group list."
 msgstr "Diese Gruppe gibt es bereits."
@@ -3707,6 +3943,15 @@ msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "Beispielname: iqn.2005-01.il.ac.huji.cs:somebody."
 
 msgid ""
+"This option allows the users and groups that access a share to be specified. "
+"Users and groups are specified, delimited by commas. Groups are designated "
+"by a @ prefix."
+msgstr ""
+"Diese Einstellung erlaubt die Angabe von Benutzern und Gruppen, die auf eine "
+"Freigabe zugreifen dürfen. Benutzer und Gruppen werden durch Komma getrennt "
+"angegeben. Gruppen werden durch ein vorangestelltes @ gekennzeichnet."
+
+msgid ""
 "This parameter is a comma, space, or tab delimited set of host which are NOT "
 "permitted to access this share. Where the lists conflict, the allow list "
 "takes precedence. In the event that it is necessary to deny all by default, "
@@ -3731,6 +3976,11 @@ msgstr ""
 "und gibt die Hosts an, die auf diese Freigabe zugreifen dürfen. Benutzen Sie "
 "das Schlüsselwort ALL, um den Zugang für jeden zu erlauben. Ist das Feld "
 "leer, wird der Parameter ignoriert."
+
+msgid "This parameters will be added to [global] in smb.conf."
+msgstr ""
+"Diese Parameter werden zu Unterabschnitt [global] in der smb.conf "
+"hinzugefügt."
 
 msgid ""
 "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
@@ -3788,6 +4038,11 @@ msgstr ""
 
 msgid "Tools"
 msgstr "Tools"
+
+msgid "Total number of connections allowed to this share."
+msgstr ""
+"Maximale Anzahl der erlaubten, gleichzeitigen Verbindungen zu dieser "
+"Freigabe."
 
 msgid "Traceroute"
 msgstr "Traceroute (Verfolgung)"
@@ -3876,6 +4131,9 @@ msgstr "Unison Datei Synchronisation"
 
 msgid "Unix charset"
 msgstr "Unix charset"
+
+msgid "Unknown"
+msgstr "Unbekannt"
 
 msgid "Unknown or unformatted"
 msgstr "Unbekannt oder nicht formatiert"
@@ -3970,6 +4228,12 @@ msgstr "Version"
 msgid "Volume Name"
 msgstr "Volume Name"
 
+msgid "Volume label"
+msgstr "Datenträgeretikett (Volume label)"
+
+msgid "Volume label of the new file system."
+msgstr "Datenträgeretikett (Volume label) des neuen Dateisystems."
+
 msgid "WAN address"
 msgstr "WAN Adresse"
 
@@ -4000,6 +4264,9 @@ msgstr "Hier werden die Arbeitsdaten abgelegt"
 msgid "Who"
 msgstr "Wer"
 
+msgid "Windows Filename Restrictions"
+msgstr "Windows-Dateinamenbeschränkungen"
+
 msgid "Wireless"
 msgstr "Drahtlos"
 
@@ -4011,6 +4278,9 @@ msgstr "Arbeitsgruppenzugehörigkeit."
 
 msgid "Working Directory"
 msgstr "Arbeitsverzeichnis"
+
+msgid "Write only"
+msgstr "Nur-schreib-Zugriff"
 
 msgid "XboX 360"
 msgstr "XboX 360"
@@ -4062,11 +4332,11 @@ msgstr ""
 msgid "You must add disks first."
 msgstr "Die Festplatten müssen zuerst hinzugefügt werden."
 
-msgid "You must configure mount point first."
-msgstr "Es muss zuerst ein 'Mount Point' konfiguriert werden."
-
 msgid "You must create a group first."
 msgstr "Zuerst eine Gruppe einrichten."
+
+msgid "You must enter the same IP type for network and gateway."
+msgstr "Sie müssen den selben IP Typ für Netzwek und Gateway eingeben."
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
 msgstr ""
@@ -4082,9 +4352,6 @@ msgstr "Sie müssen mind. eine Authentifizierungsmethode auswählen."
 msgid "You must select at minium anonymous or/and local user authentication."
 msgstr ""
 "Mindestens einen Nutzer 'anonymous' und/oder einen lokalen Benutzer angeben."
-
-msgid "You must the same IP type for network and gateway."
-msgstr "Network und Gateway müssen den selben IP-Typ haben."
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr ""
@@ -4125,8 +4392,9 @@ msgstr "MountPoint löschen"
 msgid "desc"
 msgstr "Beschreibung"
 
-msgid "e.g. <em>mycorp.com</em>"
-msgstr "z.B. <em>mycorp.com</em>"
+#, php-format
+msgid "e.g. %s"
+msgstr "z.B. %s"
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 msgstr "group_suffix, example: ou=groups,dc=example,dc=com"
@@ -4166,9 +4434,6 @@ msgstr "pasv_min_port"
 
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
-
-msgid "rw"
-msgstr "rw"
 
 msgid "seconds"
 msgstr "Sekunden"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2007-10-26 12:54+0000\n"
+"POT-Creation-Date: 2007-12-16 16:18+0000\n"
 "PO-Revision-Date: 2007-11-19 13:46+0000\n"
 "Last-Translator: Youri Trioreau <youri.trioreau@no-log.org>\n"
 "Language-Team: FreeNAS team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2007-11-30 05:57+0000\n"
+"X-Launchpad-Export-Date: 2007-12-28 19:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -154,6 +154,9 @@ msgstr "ATA mirovanje"
 msgid "Access"
 msgstr "Dostop"
 
+msgid "Access Mode"
+msgstr ""
+
 msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
 msgstr ""
 
@@ -273,8 +276,22 @@ msgstr ""
 msgid "All"
 msgstr "Vse"
 
+msgid ""
+"All mounted volumes are automatically shared and restricted to only allow "
+"administrators to connect. The volumes will not show up in the list of "
+"shares."
+msgstr ""
+
+msgid ""
+"All shares use the option 'usedots' thus making the filenames .Parent and "
+"anything beginning with .Apple illegal."
+msgstr ""
+
 msgid "All users will have the root privilege."
 msgstr "Vsi uporabniki bodo imeli root pravice."
+
+msgid "Allow"
+msgstr ""
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -286,9 +303,19 @@ msgid ""
 "existing files is still allowed."
 msgstr ""
 
+msgid ""
+"Allows  certain  users and groups to have read/write access to a share. This "
+"follows the allow option format."
+msgstr ""
+
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr "Dovoli %s, da poizkuša postati glavni lokalni brskalnik."
+
+msgid ""
+"Allows certain users and groups to have read-only  access  to  a share. This "
+"follows the allow option format."
+msgstr ""
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "Alternativna TCP vrata. Privzeta so 22."
@@ -341,8 +368,8 @@ msgstr "Overjanje"
 msgid "Authorised network"
 msgstr ""
 
-msgid "Authorized"
-msgstr "Avtorizirano"
+msgid "Authorized networks"
+msgstr ""
 
 msgid "AutoScale"
 msgstr "AvtoSkala"
@@ -374,6 +401,9 @@ msgstr "Base DN"
 msgid "Browseable"
 msgstr "Brskalno"
 
+msgid "CD/DVD or Old Software RAID"
+msgstr ""
+
 msgid "CIFS/SMB"
 msgstr ""
 
@@ -386,10 +416,8 @@ msgstr "CPE Obremenitev"
 msgid "Calculate netmask bits"
 msgstr "Preračunaj omrežne bite"
 
-msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgid "Can't format the OS origin disk!"
 msgstr ""
-"Formatiranje trdega diska ni mogoče tam kjer imate nameščene konfiguracijske "
-"datoteke FreeNAS-a!"
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
 msgstr ""
@@ -397,6 +425,9 @@ msgstr ""
 
 msgid "Cannot get data about interface"
 msgstr "Ne morem pridobiti podatkov o vmesniku"
+
+msgid "Case Folding"
+msgstr ""
 
 msgid "Certificate"
 msgstr "Certifikat"
@@ -462,6 +493,15 @@ msgid "Community"
 msgstr ""
 
 msgid "Compliant profile to be used."
+msgstr ""
+
+msgid "Compression"
+msgstr ""
+
+msgid ""
+"Compression is worth using if your connection is slow. The efficiency of the "
+"compression depends on the type of the file, and varies widely. Useful for "
+"internet transfer only."
 msgstr ""
 
 msgid "Configuring"
@@ -614,6 +654,9 @@ msgstr "Odstrani cilj"
 msgid "Delete user"
 msgstr "Odstrani uporabnika"
 
+msgid "Deny"
+msgstr ""
+
 msgid "Description"
 msgstr "Opis"
 
@@ -718,6 +761,9 @@ msgstr "Uporaba diska"
 
 msgid "Disks"
 msgstr "Diski"
+
+msgid "Do not create .AppleDouble directory"
+msgstr ""
 
 msgid "Do you really want to delete this RSYNC?"
 msgstr "Res želite odstraniti ta RSYNC?"
@@ -909,11 +955,17 @@ msgstr "Omogoči FXP protokol."
 msgid "Enable NTP"
 msgstr ""
 
+msgid "Enable Windows filename restrictions"
+msgstr ""
+
 msgid "Enable Zeroconf"
 msgstr "Omogoči Zeroconf"
 
 msgid "Enable anonymous login."
 msgstr "Omogoči anonimne prijave."
+
+msgid "Enable compression."
+msgstr ""
 
 msgid "Enable control web page."
 msgstr ""
@@ -948,6 +1000,9 @@ msgstr ""
 msgid "Enable recycle bin"
 msgstr ""
 
+msgid "Enable store DOS attributes"
+msgstr ""
+
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Omogoči sistemski dnevnik na oddaljeni syslog strežnik"
 
@@ -972,8 +1027,9 @@ msgstr "Omogočen"
 msgid "Encrypted disk name"
 msgstr "Ime šifriranega pogona"
 
-msgid "Encrypting... Please wait"
-msgstr "Šifriranje... Prosim počakajte"
+#, php-format
+msgid "Encrypting '%s'... Please wait"
+msgstr ""
 
 msgid "Encryption"
 msgstr "Šifriranje"
@@ -988,11 +1044,9 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Enter a custom port number for the webGUI above if you want to override the "
+"Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
-"Če želite spremeniti število vrat na katerih se odziva spletni vmesnik, jih "
-"vnestite tukaj. Privzete vrednosti so 80 za HTTP in 443 za HTTPS."
 
 msgid "Enter a description (name) for the interface here."
 msgstr "Tukaj vnesite opis (ime) vmesnika."
@@ -1243,6 +1297,9 @@ msgstr "Pripona skupine"
 msgid "Groups"
 msgstr "Skupine"
 
+msgid "Guest"
+msgstr ""
+
 msgid "HTTP Proxy"
 msgstr ""
 
@@ -1328,7 +1385,7 @@ msgstr ""
 "&quot;Zamenjaj IP naslove z imeni gostiteljev&quot;, na <a href=%s>%s</a> "
 "strani."
 
-msgid "IP type mistmatch for network and gateway."
+msgid "IP type mismatch for network and gateway."
 msgstr ""
 
 msgid "IPv4 Configuration"
@@ -1370,6 +1427,9 @@ msgstr ""
 msgid "ISP DNS servers"
 msgstr "ISP DNS strežniki"
 
+msgid "If Login is required."
+msgstr ""
+
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
 "to perform selected command, otherwise the commands work in read-only "
@@ -1380,6 +1440,14 @@ msgstr ""
 "začasno odklopljen. Drugače se bo ukaz izvršil v bralnem načinu.<br>Med "
 "izvajanjem ukaza bodo imeli uporabniki, ki dostopajo do sistema, moten "
 "dostop."
+
+msgid ""
+"If this parameter is set, Samba attempts to first read DOS attributes "
+"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
+"before mapping DOS attributes to UNIX permission bits. When set, DOS "
+"attributes will be stored onto an extended attribute in the UNIX filesystem, "
+"associated with the file or directory."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -1397,10 +1465,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"If you want to change the username for accessing the webGUI, enter it here."
+"If you want to change the username for accessing the WebGUI, enter it here."
 msgstr ""
-"Če želite spremeniti uporabniško ime za dostop do spletnega vmesnika, ga "
-"vnesite tukaj."
 
 msgid "Image upload failed (out of memory?)"
 msgstr "Napaka pri nalaganju slike (premalo spomina?)"
@@ -1558,14 +1624,14 @@ msgstr "Nivo dnevnika"
 msgid "Login"
 msgstr "Prijava"
 
-msgid "Login is required."
-msgstr ""
-
 msgid "Logs"
 msgstr "Dnevniki"
 
 msgid "MAC address"
 msgstr "MAC naslov"
+
+msgid "MISSING"
+msgstr ""
 
 msgid "MOTD"
 msgstr "Sporočilo dneva"
@@ -1590,6 +1656,9 @@ msgstr "Dodeli uporabniku"
 
 msgid "Max. conn. per IP"
 msgstr "Največje število povezav na IP"
+
+msgid "Maximum Connections"
+msgstr ""
 
 msgid "Maximum connections"
 msgstr "Največje število povezav"
@@ -1671,6 +1740,9 @@ msgstr ""
 msgid "Mount Point"
 msgstr "Točka priklopa"
 
+msgid "Mount point"
+msgstr ""
+
 msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
@@ -1686,6 +1758,9 @@ msgstr "Priklapljanje..."
 
 msgid "Mounts"
 msgstr "Priklopi"
+
+msgid "Must choose one"
+msgstr ""
 
 msgid "NAT mode"
 msgstr "NAT način"
@@ -1714,8 +1789,9 @@ msgstr "NTP časovni strežnik"
 msgid "Name"
 msgstr "Ime"
 
-msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-msgstr "Ime NAS gostitelja, brez domenskega dela <br>npr. <em>nas</em>"
+#, php-format
+msgid "Name of the NAS host, without domain part e.g. %s."
+msgstr ""
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -1751,6 +1827,9 @@ msgstr ""
 
 msgid "No"
 msgstr "Ne"
+
+msgid "No AppleDouble Directory"
+msgstr ""
 
 msgid "No RSYNC Client configured"
 msgstr "Določen ni nobeden RSYNC odjemalec"
@@ -1795,6 +1874,9 @@ msgstr ""
 
 msgid "OK"
 msgstr "Vredu"
+
+msgid "ONLINE"
+msgstr ""
 
 msgid "OS Version"
 msgstr "Verzija OS"
@@ -2034,8 +2116,17 @@ msgstr "RSYNCD dogodki"
 msgid "Raid name"
 msgstr "RAID ime"
 
+msgid "Read Only Access"
+msgstr ""
+
 msgid "Read only"
 msgstr "Samo za branje"
+
+msgid "Read/Write"
+msgstr ""
+
+msgid "Read/Write Access"
+msgstr ""
 
 msgid "Reboot"
 msgstr ""
@@ -2160,17 +2251,16 @@ msgstr ""
 "href=%s>prej določenem pogonu.</a>"
 
 msgid ""
-"Select EFI GPT if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
 "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select old "
-"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+"you select option 2 during installation on hard drive.<br>Select 'Old "
+"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+"release."
 msgstr ""
-"Če želite priklopiti GPT formatiran pogon (privzeta metoda od 0.684b) "
-"izberite EFI GPT.<br>Za UFS formatiran pogon ali programski RAID, izberite "
-"1.<br>Za priklop PODATKOVNE particije, če ste med namestitvijo na trdi disk "
-"izbrali možnost 2, izberite 2.<br>Če ste ustvarili pogone s strarejšo "
-"FreeNAS različico, izberite programski gmirror/graid5/gvinum."
+
+msgid "Select mount point where to create the swap file."
+msgstr ""
 
 msgid "Select the FreeBSD package to be installed."
 msgstr ""
@@ -2220,14 +2310,29 @@ msgstr "Storitve"
 msgid "Set browseable"
 msgstr ""
 
+msgid "Set browseable."
+msgstr ""
+
+msgid "Set share password."
+msgstr ""
+
 msgid "Settings"
 msgstr "Nastavitve"
 
 msgid "Share"
 msgstr "Deljeni vir"
 
+msgid "Share Character Set"
+msgstr ""
+
 msgid "Share Name"
 msgstr "Ime deljene mape"
+
+msgid "Share Password"
+msgstr ""
+
+msgid "Share passwords can not be more than 8 characters."
+msgstr ""
 
 msgid "Shares"
 msgstr "Mape v skupni rabi"
@@ -2289,6 +2394,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
+"etc."
+msgstr ""
+
+msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
 "Določuje, če je dovoljena neposredna prijava super uporabnika (root)."
@@ -2319,7 +2429,13 @@ msgstr "Status"
 msgid "Status report successfully sent."
 msgstr ""
 
+msgid "Stopped"
+msgstr ""
+
 msgid "Storage"
+msgstr ""
+
+msgid "Store DOS attributes"
 msgstr ""
 
 msgid "Subject"
@@ -2421,6 +2537,11 @@ msgstr "Ime cilja"
 
 msgid "Temperature"
 msgstr "Temperatura"
+
+msgid ""
+"The  deny  option specifies users and groups who are not allowed access to "
+"the share. It follows the same  format  as  the  allow option."
+msgstr ""
 
 #, php-format
 msgid "The %s port must be a valid port number."
@@ -2843,6 +2964,21 @@ msgstr ""
 msgid "This certificate does not appear to be valid."
 msgstr "Zgleda, da ta certifikat ni veljaven."
 
+msgid "This controls how the case of filenames are viewed and stored."
+msgstr ""
+
+msgid "This controls the access a remote host has to this share."
+msgstr ""
+
+msgid "This controls the access to this share with an access password."
+msgstr ""
+
+msgid ""
+"This controls whether the .AppleDouble directory gets created unless "
+"absolutely needed. This option should not be used if files are access mostly "
+"by Mac computers."
+msgstr ""
+
 msgid ""
 "This controls whether this share is seen in the list of available shares in "
 "a net view and in the browse list."
@@ -2864,6 +3000,12 @@ msgstr ""
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 "Ta šifriran pogon je priklopljen, preden ga izvlecete, ga morate opdklopiti."
+
+msgid ""
+"This forces filenames to be restricted to the character set used by Windows. "
+"This is <em>not</em> recommended for shares used principally by Mac "
+"computers."
+msgstr ""
 
 msgid "This group already exists in the group list."
 msgstr "Skupina že obstaja."
@@ -2897,6 +3039,12 @@ msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "To ime je za primer: iqn.2005-01.il.ac.huji.cs:nekdo."
 
 msgid ""
+"This option allows the users and groups that access a share to be specified. "
+"Users and groups are specified, delimited by commas. Groups are designated "
+"by a @ prefix."
+msgstr ""
+
+msgid ""
 "This parameter is a comma, space, or tab delimited set of host which are NOT "
 "permitted to access this share. Where the lists conflict, the allow list "
 "takes precedence. In the event that it is necessary to deny all by default, "
@@ -2909,6 +3057,9 @@ msgid ""
 "This parameter is a comma, space, or tab delimited set of hosts which are "
 "permitted to access this share. Use the keyword ALL to permit access for "
 "everyone. Leave this field empty to disable this setting."
+msgstr ""
+
+msgid "This parameters will be added to [global] in smb.conf."
 msgstr ""
 
 msgid ""
@@ -2963,6 +3114,9 @@ msgstr ""
 
 msgid "Tools"
 msgstr "Orodja"
+
+msgid "Total number of connections allowed to this share."
+msgstr ""
 
 msgid "Traceroute"
 msgstr ""
@@ -3047,6 +3201,9 @@ msgstr "Unison datotečna sinhronizacija"
 msgid "Unix charset"
 msgstr "Unix kodna tabela"
 
+msgid "Unknown"
+msgstr ""
+
 msgid "Unknown or unformatted"
 msgstr "Neznan ali neformatiran"
 
@@ -3130,6 +3287,12 @@ msgstr "Različica"
 msgid "Volume Name"
 msgstr "Ime polja"
 
+msgid "Volume label"
+msgstr ""
+
+msgid "Volume label of the new file system."
+msgstr ""
+
 msgid "WAN address"
 msgstr ""
 
@@ -3158,6 +3321,9 @@ msgstr "Kjer bodo shranjene delovne datoteke"
 msgid "Who"
 msgstr ""
 
+msgid "Windows Filename Restrictions"
+msgstr ""
+
 msgid "Wireless"
 msgstr "Brezžično"
 
@@ -3169,6 +3335,9 @@ msgstr "Član katere delovne skupine naj bo."
 
 msgid "Working Directory"
 msgstr "Delovna mapa"
+
+msgid "Write only"
+msgstr ""
 
 msgid "XboX 360"
 msgstr ""
@@ -3217,11 +3386,11 @@ msgstr ""
 msgid "You must add disks first."
 msgstr "Prvo morate dodati diske."
 
-msgid "You must configure mount point first."
-msgstr "Prvo morate določiti priklopno točko."
-
 msgid "You must create a group first."
 msgstr "Prvo morate ustvariti skupino."
+
+msgid "You must enter the same IP type for network and gateway."
+msgstr ""
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
 msgstr ""
@@ -3236,9 +3405,6 @@ msgid "You must select at minium anonymous or/and local user authentication."
 msgstr ""
 "Izbrati morate pri najmanjši anonimni in/ali lokalni uporabniški "
 "avtentikaciji."
-
-msgid "You must the same IP type for network and gateway."
-msgstr ""
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "Za pliklop šifriranega pogona, morate uporabiti geslo."
@@ -3276,8 +3442,9 @@ msgstr "odstrani t. priklopa"
 msgid "desc"
 msgstr ""
 
-msgid "e.g. <em>mycorp.com</em>"
-msgstr "npr. <em>mojepodjetje.com</em>"
+#, php-format
+msgid "e.g. %s"
+msgstr ""
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 msgstr ""
@@ -3317,9 +3484,6 @@ msgstr ""
 
 msgid "rotated block-interleaved parity"
 msgstr "rotirajoča pariteta blok-prepletanje"
-
-msgid "rw"
-msgstr ""
 
 msgid "seconds"
 msgstr "sekund"

@@ -151,6 +151,7 @@ if ($_POST) {
 							<span class="vexpl"><?=gettext("Changes to this option will take effect after a reboot.");?></span>
 			      </td>
 			    </tr>
+			    <?php if ("full" !== $g['platform']):?>
 			    <tr>
 			      <td valign="top" class="vncell"><?=gettext("Firmware version check");?></td>
 			      <td class="vtable">
@@ -159,6 +160,7 @@ if ($_POST) {
 							<span class="vexpl"><?php echo sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), get_product_name(), "system_firmware.php", gettext("System").": ".gettext("Firmware"));?></span>
 			      </td>
 			    </tr>
+			    <?php endif;?>
 					<tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Navigation");?></td>
 			      <td width="78%" class="vtable">
