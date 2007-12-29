@@ -8,7 +8,7 @@ Majors changes:
   - WOL kernel patch has to be removed because there is currently no patch available for this version.
   - ATA timeout patch has been removed.
   - Add msk (Marvell/SysKonnect Yukon II Gigabit Ethernet) network driver.
-  - Add pcn	(AMD Am79C97x PCI 10/100 (precedence over 'lnc')= network driver.
+  - Add pcn	(AMD Am79C97x PCI 10/100 (precedence over 'lnc')) network driver.
 - Upgrade Samba to 3.0.28.
 - Enhance WebGUI + rc-script to define additional group memberships for user accounts.
 - Replace uShare UPnP Mediaserver with MediaTomb 0.10.0.
