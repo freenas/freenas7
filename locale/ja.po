@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2007-10-26 12:54+0000\n"
+"POT-Creation-Date: 2007-12-16 16:18+0000\n"
 "PO-Revision-Date: 2007-04-05 14:26+0000\n"
 "Last-Translator: Hiroyuki Seino <seichan@seichan.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2007-11-30 05:57+0000\n"
+"X-Launchpad-Export-Date: 2007-12-28 19:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -173,6 +173,12 @@ msgstr ""
 #~ msgid "Graph"
 #~ msgstr "グラフ"
 
+#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+#~ msgstr "ドメインパートを除いた NAS ホスト名<br>例) <em>nas</em>"
+
+#~ msgid "e.g. <em>mycorp.com</em>"
+#~ msgstr "例) <em>micorp.com</em>"
+
 #~ msgid "DNS servers"
 #~ msgstr "DNS サーバ"
 
@@ -180,9 +186,19 @@ msgstr ""
 #~ msgstr "IP アドレス"
 
 #~ msgid ""
+#~ "If you want to change the username for accessing the webGUI, enter it here."
+#~ msgstr "WebUI にアクセスするユーザ名を変更したい場合，ここに入力して下さい．"
+
+#~ msgid ""
 #~ "If you want to change the password for accessing the webGUI, enter it here "
 #~ "twice.<br>Don't use the character ':'."
 #~ msgstr "WebUI にアクセスする為のパスワードを変更したい場合，ここに 2回入力して下さい．<br> ':' は使わないで下さい．"
+
+#~ msgid ""
+#~ "Enter a custom port number for the webGUI above if you want to override the "
+#~ "default (80 for HTTP, 443 for HTTPS)."
+#~ msgstr ""
+#~ "デフォルトの  (HTTP 80番，HTTPS 443番ポート) を変更したい場合，WebUI の為のカスタムポート番号を入力して下さい．"
 
 #~ msgid "Select the system language"
 #~ msgstr "システム言語を選択"
@@ -321,6 +337,19 @@ msgstr ""
 #~ msgstr "共有名の複製．"
 
 #~ msgid ""
+#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select old "
+#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+#~ msgstr ""
+#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select old "
+#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+
+#~ msgid ""
 #~ "1. You can't mount the partition '%s' where the config file is stored.<br>2. "
 #~ "FreeBSD NTFS has lots of bugs."
 #~ msgstr ""
@@ -367,6 +396,9 @@ msgstr ""
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "エクスポートされるディレクトリ名は次のようになります : /mnt/sharename"
+
+#~ msgid "You must configure mount point first."
+#~ msgstr "最初にマウントポイントを設定して下さい．"
 
 #~ msgid "Rsync Client Synchronization"
 #~ msgstr "Rsync クライアント同期"
@@ -490,6 +522,9 @@ msgstr ""
 
 #~ msgid "Disk initialization and encryption"
 #~ msgstr "ディスクの初期化と暗号化を行います"
+
+#~ msgid "Encrypting... Please wait"
+#~ msgstr "暗号化中... 少々お待ち下さい"
 
 #~ msgid "Attaching..."
 #~ msgstr "接続中..."
@@ -704,6 +739,9 @@ msgstr "ATAidle"
 msgid "Access"
 msgstr "アクセス"
 
+msgid "Access Mode"
+msgstr ""
+
 msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
 msgstr ""
 
@@ -823,8 +861,22 @@ msgstr ""
 msgid "All"
 msgstr "全て"
 
+msgid ""
+"All mounted volumes are automatically shared and restricted to only allow "
+"administrators to connect. The volumes will not show up in the list of "
+"shares."
+msgstr ""
+
+msgid ""
+"All shares use the option 'usedots' thus making the filenames .Parent and "
+"anything beginning with .Apple illegal."
+msgstr ""
+
 msgid "All users will have the root privilege."
 msgstr "全てのユーザが root 権限を持ちます．"
+
+msgid "Allow"
+msgstr ""
 
 msgid ""
 "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -836,9 +888,19 @@ msgid ""
 "existing files is still allowed."
 msgstr ""
 
+msgid ""
+"Allows  certain  users and groups to have read/write access to a share. This "
+"follows the allow option format."
+msgstr ""
+
 #, php-format
 msgid "Allows %s to try and become a local master browser."
 msgstr "%s がローカルマスタブラウザの選出に参加する事を可能にします．"
+
+msgid ""
+"Allows certain users and groups to have read-only  access  to  a share. This "
+"follows the allow option format."
+msgstr ""
 
 msgid "Alternate TCP port. Default is 22"
 msgstr "代わりの TCP ポート．デフォルトは 22．"
@@ -891,7 +953,7 @@ msgstr "認証"
 msgid "Authorised network"
 msgstr "許可するネットワーク"
 
-msgid "Authorized"
+msgid "Authorized networks"
 msgstr ""
 
 msgid "AutoScale"
@@ -924,6 +986,9 @@ msgstr ""
 msgid "Browseable"
 msgstr "ブラウズ可能"
 
+msgid "CD/DVD or Old Software RAID"
+msgstr ""
+
 msgid "CIFS/SMB"
 msgstr ""
 
@@ -936,7 +1001,7 @@ msgstr "CPU 負荷"
 msgid "Calculate netmask bits"
 msgstr "ネットワークビットマスクの計算"
 
-msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgid "Can't format the OS origin disk!"
 msgstr ""
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
@@ -944,6 +1009,9 @@ msgstr "システムパーティション 1 はマウント出来ません, デ�
 
 msgid "Cannot get data about interface"
 msgstr "インタフェースのデータを取得出来ません"
+
+msgid "Case Folding"
+msgstr ""
 
 msgid "Certificate"
 msgstr "証明書"
@@ -1009,6 +1077,15 @@ msgid "Community"
 msgstr ""
 
 msgid "Compliant profile to be used."
+msgstr ""
+
+msgid "Compression"
+msgstr ""
+
+msgid ""
+"Compression is worth using if your connection is slow. The efficiency of the "
+"compression depends on the type of the file, and varies widely. Useful for "
+"internet transfer only."
 msgstr ""
 
 msgid "Configuring"
@@ -1161,6 +1238,9 @@ msgstr "ターゲットの削除"
 msgid "Delete user"
 msgstr "ユーザの削除"
 
+msgid "Deny"
+msgstr ""
+
 msgid "Description"
 msgstr "概要"
 
@@ -1262,6 +1342,9 @@ msgstr "ディスク使用率"
 
 msgid "Disks"
 msgstr "ディスクs"
+
+msgid "Do not create .AppleDouble directory"
+msgstr ""
 
 msgid "Do you really want to delete this RSYNC?"
 msgstr "本当にこの RSYNC を削除しても宜しいですか?"
@@ -1447,11 +1530,17 @@ msgstr "FXP プロトコルを有効にする．"
 msgid "Enable NTP"
 msgstr ""
 
+msgid "Enable Windows filename restrictions"
+msgstr ""
+
 msgid "Enable Zeroconf"
 msgstr ""
 
 msgid "Enable anonymous login."
 msgstr "匿名ログインを有効にする．"
+
+msgid "Enable compression."
+msgstr ""
 
 msgid "Enable control web page."
 msgstr ""
@@ -1486,6 +1575,9 @@ msgstr ""
 msgid "Enable recycle bin"
 msgstr ""
 
+msgid "Enable store DOS attributes"
+msgstr ""
+
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "リモートの syslog サーバへのロギングを有効にする"
 
@@ -1509,8 +1601,9 @@ msgstr "有効"
 msgid "Encrypted disk name"
 msgstr "暗号化ディスク名"
 
-msgid "Encrypting... Please wait"
-msgstr "暗号化中... 少々お待ち下さい"
+#, php-format
+msgid "Encrypting '%s'... Please wait"
+msgstr ""
 
 msgid "Encryption"
 msgstr "暗号化"
@@ -1525,10 +1618,9 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Enter a custom port number for the webGUI above if you want to override the "
+"Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
-"デフォルトの  (HTTP 80番，HTTPS 443番ポート) を変更したい場合，WebUI の為のカスタムポート番号を入力して下さい．"
 
 msgid "Enter a description (name) for the interface here."
 msgstr "ここにインタフェースの概要 (名前) を入力して下さい．"
@@ -1776,6 +1868,9 @@ msgstr ""
 msgid "Groups"
 msgstr "グループ"
 
+msgid "Guest"
+msgstr ""
+
 msgid "HTTP Proxy"
 msgstr ""
 
@@ -1858,7 +1953,7 @@ msgstr ""
 "&quot;IP アドレスをホスト名に解決する&quot; が <a href=%s>%s</a> ページでチェックされている場合，IP "
 "アドレスはホスト名に解決されます．"
 
-msgid "IP type mistmatch for network and gateway."
+msgid "IP type mismatch for network and gateway."
 msgstr ""
 
 msgid "IPv4 Configuration"
@@ -1900,6 +1995,9 @@ msgstr ""
 msgid "ISP DNS servers"
 msgstr "ISP DNS サーバ"
 
+msgid "If Login is required."
+msgstr ""
+
 msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
 "to perform selected command, otherwise the commands work in read-only "
@@ -1908,6 +2006,14 @@ msgid ""
 msgstr ""
 "選択されたディスク/パーティションがマウント済みの場合，選択したコマンドを実行することで一時的にアンマウントされ，そうでない場合，読み込み専用モードで動作"
 "します．<br>この処理中に，このマウントへアクセスしているユーザへのサービスが中断される事があります．"
+
+msgid ""
+"If this parameter is set, Samba attempts to first read DOS attributes "
+"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
+"before mapping DOS attributes to UNIX permission bits. When set, DOS "
+"attributes will be stored onto an extended attribute in the UNIX filesystem, "
+"associated with the file or directory."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -1924,8 +2030,8 @@ msgid ""
 msgstr ""
 
 msgid ""
-"If you want to change the username for accessing the webGUI, enter it here."
-msgstr "WebUI にアクセスするユーザ名を変更したい場合，ここに入力して下さい．"
+"If you want to change the username for accessing the WebGUI, enter it here."
+msgstr ""
 
 msgid "Image upload failed (out of memory?)"
 msgstr "イメージアップロードが失敗しました (メモリをオーバー?)．"
@@ -2081,14 +2187,14 @@ msgstr "ログレベル"
 msgid "Login"
 msgstr "ログイン"
 
-msgid "Login is required."
-msgstr ""
-
 msgid "Logs"
 msgstr "ログ"
 
 msgid "MAC address"
 msgstr "MAC アドレス"
+
+msgid "MISSING"
+msgstr ""
 
 msgid "MOTD"
 msgstr "MOTD"
@@ -2113,6 +2219,9 @@ msgstr "ユーザのマッピング"
 
 msgid "Max. conn. per IP"
 msgstr "IP 毎の最大接続数"
+
+msgid "Maximum Connections"
+msgstr ""
 
 msgid "Maximum connections"
 msgstr "最大接続数"
@@ -2192,6 +2301,9 @@ msgstr "S.M.A.R.T デバイスの監視ステータスをログファイルに�
 msgid "Mount Point"
 msgstr "マウントポイント"
 
+msgid "Mount point"
+msgstr ""
+
 msgid ""
 "Mount the file system read-only (even the super-user may not write it)."
 msgstr ""
@@ -2207,6 +2319,9 @@ msgstr "マウント中..."
 
 msgid "Mounts"
 msgstr "マウント"
+
+msgid "Must choose one"
+msgstr ""
 
 msgid "NAT mode"
 msgstr "NAT モード"
@@ -2235,8 +2350,9 @@ msgstr "NTP サーバ"
 msgid "Name"
 msgstr "名前"
 
-msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-msgstr "ドメインパートを除いた NAS ホスト名<br>例) <em>nas</em>"
+#, php-format
+msgid "Name of the NAS host, without domain part e.g. %s."
+msgstr ""
 
 msgid ""
 "Name of the server. If this field is left empty the default server is "
@@ -2272,6 +2388,9 @@ msgstr ""
 
 msgid "No"
 msgstr "No"
+
+msgid "No AppleDouble Directory"
+msgstr ""
 
 msgid "No RSYNC Client configured"
 msgstr "設定された RSYNC クライアントはありません"
@@ -2313,6 +2432,9 @@ msgstr ""
 
 msgid "OK"
 msgstr "OK"
+
+msgid "ONLINE"
+msgstr ""
 
 msgid "OS Version"
 msgstr "OS バージョン"
@@ -2549,8 +2671,17 @@ msgstr "RSYNCD イベント"
 msgid "Raid name"
 msgstr "Raid 名"
 
+msgid "Read Only Access"
+msgstr ""
+
 msgid "Read only"
 msgstr "読み込み専用"
+
+msgid "Read/Write"
+msgstr ""
+
+msgid "Read/Write Access"
+msgstr ""
 
 msgid "Reboot"
 msgstr ""
@@ -2673,17 +2804,16 @@ msgid ""
 msgstr "2番目の設定ステップ: <a href=%s>先立って設定されたディスク</a> に対して使用するファイルシステムを選択します．"
 
 msgid ""
-"Select EFI GPT if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
 "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select old "
-"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+"you select option 2 during installation on hard drive.<br>Select 'Old "
+"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+"release."
 msgstr ""
-"Select EFI GPT if you want to mount a GPT formatted drive (default method "
-"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
-"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
-"you select option 2 during installation on hard drive.<br>Select old "
-"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+
+msgid "Select mount point where to create the swap file."
+msgstr ""
 
 msgid "Select the FreeBSD package to be installed."
 msgstr ""
@@ -2733,14 +2863,29 @@ msgstr "サービス"
 msgid "Set browseable"
 msgstr ""
 
+msgid "Set browseable."
+msgstr ""
+
+msgid "Set share password."
+msgstr ""
+
 msgid "Settings"
 msgstr ""
 
 msgid "Share"
 msgstr "共有"
 
+msgid "Share Character Set"
+msgstr ""
+
 msgid "Share Name"
 msgstr "共有名"
+
+msgid "Share Password"
+msgstr ""
+
+msgid "Share passwords can not be more than 8 characters."
+msgstr ""
 
 msgid "Shares"
 msgstr ""
@@ -2802,6 +2947,11 @@ msgid ""
 msgstr ""
 
 msgid ""
+"Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
+"etc."
+msgstr ""
+
+msgid ""
 "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr "直接スーぱユーザ (root) がログイン可能かを選択します．"
 
@@ -2829,7 +2979,13 @@ msgstr "ステータス"
 msgid "Status report successfully sent."
 msgstr ""
 
+msgid "Stopped"
+msgstr ""
+
 msgid "Storage"
+msgstr ""
+
+msgid "Store DOS attributes"
 msgstr ""
 
 msgid "Subject"
@@ -2930,6 +3086,11 @@ msgstr "ターゲット名"
 
 msgid "Temperature"
 msgstr "温度"
+
+msgid ""
+"The  deny  option specifies users and groups who are not allowed access to "
+"the share. It follows the same  format  as  the  allow option."
+msgstr ""
 
 #, php-format
 msgid "The %s port must be a valid port number."
@@ -3312,6 +3473,21 @@ msgstr "オペレーション中のドライブの騒音レベルを設定する
 msgid "This certificate does not appear to be valid."
 msgstr "この証明書は有効ではありません．"
 
+msgid "This controls how the case of filenames are viewed and stored."
+msgstr ""
+
+msgid "This controls the access a remote host has to this share."
+msgstr ""
+
+msgid "This controls the access to this share with an access password."
+msgstr ""
+
+msgid ""
+"This controls whether the .AppleDouble directory gets created unless "
+"absolutely needed. This option should not be used if files are access mostly "
+"by Mac computers."
+msgstr ""
+
 msgid ""
 "This controls whether this share is seen in the list of available shares in "
 "a net view and in the browse list."
@@ -3331,6 +3507,12 @@ msgstr ""
 
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "この暗号化ディスクはマウントされています．取り外す前にアンマウントして下さい．"
+
+msgid ""
+"This forces filenames to be restricted to the character set used by Windows. "
+"This is <em>not</em> recommended for shares used principally by Mac "
+"computers."
+msgstr ""
 
 msgid "This group already exists in the group list."
 msgstr "グループは既にグループリストに存在しています．"
@@ -3363,6 +3545,12 @@ msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr ""
 
 msgid ""
+"This option allows the users and groups that access a share to be specified. "
+"Users and groups are specified, delimited by commas. Groups are designated "
+"by a @ prefix."
+msgstr ""
+
+msgid ""
 "This parameter is a comma, space, or tab delimited set of host which are NOT "
 "permitted to access this share. Where the lists conflict, the allow list "
 "takes precedence. In the event that it is necessary to deny all by default, "
@@ -3375,6 +3563,9 @@ msgid ""
 "This parameter is a comma, space, or tab delimited set of hosts which are "
 "permitted to access this share. Use the keyword ALL to permit access for "
 "everyone. Leave this field empty to disable this setting."
+msgstr ""
+
+msgid "This parameters will be added to [global] in smb.conf."
 msgstr ""
 
 msgid ""
@@ -3425,6 +3616,9 @@ msgstr ""
 
 msgid "Tools"
 msgstr "ツール"
+
+msgid "Total number of connections allowed to this share."
+msgstr ""
 
 msgid "Traceroute"
 msgstr ""
@@ -3506,6 +3700,9 @@ msgstr "Unison ファイル同期"
 
 msgid "Unix charset"
 msgstr "Unix 文字セット"
+
+msgid "Unknown"
+msgstr ""
 
 msgid "Unknown or unformatted"
 msgstr "不明又は未フォーマット"
@@ -3589,6 +3786,12 @@ msgstr "バージョン"
 msgid "Volume Name"
 msgstr "ボリューム名"
 
+msgid "Volume label"
+msgstr ""
+
+msgid "Volume label of the new file system."
+msgstr ""
+
 msgid "WAN address"
 msgstr ""
 
@@ -3617,6 +3820,9 @@ msgstr "作業ファイルが保存される場所"
 msgid "Who"
 msgstr ""
 
+msgid "Windows Filename Restrictions"
+msgstr ""
+
 msgid "Wireless"
 msgstr "無線"
 
@@ -3628,6 +3834,9 @@ msgstr "参加しているワークグループ．"
 
 msgid "Working Directory"
 msgstr "作業ディレクトリ"
+
+msgid "Write only"
+msgstr ""
 
 msgid "XboX 360"
 msgstr ""
@@ -3669,11 +3878,11 @@ msgstr "同期する全てのファイルを複製する為に十分なスペー
 msgid "You must add disks first."
 msgstr "始めにディスクを追加して下さい．"
 
-msgid "You must configure mount point first."
-msgstr "最初にマウントポイントを設定して下さい．"
-
 msgid "You must create a group first."
 msgstr "最初にグループを作成して下さい．"
+
+msgid "You must enter the same IP type for network and gateway."
+msgstr ""
 
 msgid "You must have a minimum of 256MB of RAM for using iSCSI target."
 msgstr ""
@@ -3686,9 +3895,6 @@ msgstr "少なくとも 1つの認証方法を選択して下さい．"
 
 msgid "You must select at minium anonymous or/and local user authentication."
 msgstr "少なくとも匿名 又は/且つ ローカルユーザ認証を選択しなければなりません．"
-
-msgid "You must the same IP type for network and gateway."
-msgstr ""
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "暗号化ディスクを接続する為に，パスフレーズを使用する必要があります．"
@@ -3726,8 +3932,9 @@ msgstr "マウントの削除"
 msgid "desc"
 msgstr ""
 
-msgid "e.g. <em>mycorp.com</em>"
-msgstr "例) <em>micorp.com</em>"
+#, php-format
+msgid "e.g. %s"
+msgstr ""
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 msgstr ""
@@ -3767,9 +3974,6 @@ msgstr ""
 
 msgid "rotated block-interleaved parity"
 msgstr "ブロックインタリーブパリティのローテーション"
-
-msgid "rw"
-msgstr ""
 
 msgid "seconds"
 msgstr "秒"
