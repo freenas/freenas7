@@ -350,7 +350,7 @@ create_image() {
 	# Set revision.
 	echo ${FREENAS_REVISION} > ${FREENAS_ROOTFS}/etc/prd.revision
 
-	IMGFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.${FREENAS_REVISION}.img"
+	IMGFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.img"
 
 	echo "===> Generating tempory $FREENAS_TMPDIR folder"
 	mkdir $FREENAS_TMPDIR
@@ -433,7 +433,7 @@ create_iso () {
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 
-	ISOFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-liveCD-${FREENAS_VERSION}.${FREENAS_REVISION}.iso"
+	ISOFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-liveCD-${FREENAS_VERSION}.iso"
 
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Generating the $FREENAS_PRODUCTNAME Image file:"
