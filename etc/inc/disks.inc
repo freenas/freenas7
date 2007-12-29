@@ -997,7 +997,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 		case "ufsgpt":
 			// Create GPT partition table.
 			echo gettext("Creating partition").":\n";
-			system("/sbin/gpt destroy {$disk} 2>&1"); // Destroy old GTP partition.
+			system("/sbin/gpt destroy {$disk} 1>/dev/null 2>&1"); // Destroy old GTP partition.
 			system("/sbin/gpt create -f {$disk} 2>&1");
 			system("/sbin/gpt add -t ufs {$disk} 2>&1");
 
