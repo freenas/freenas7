@@ -59,8 +59,6 @@ create_conf()
 
 mountd_precmd()
 {
-	create_conf
-
 	if ! checkyesno rpcbind_enable  && \
 	    ! /etc/rc.d/rpcbind forcestatus 1>/dev/null 2>&1
 	then
@@ -82,6 +80,9 @@ mountd_precmd()
 	( umask 022 ; > /var/db/mountdtab )
 	return 0
 }
+
+# Create required config file.
+create_conf
 
 load_rc_config ${name}
 run_rc_command "$1"
