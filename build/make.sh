@@ -169,7 +169,8 @@ create_rootfs() {
 	echo "Factory" > $FREENAS_TMPDIR/zoneinfo.exlude
 	echo "posixrules" >> $FREENAS_TMPDIR/zoneinfo.exlude
 	echo "zone.tab" >> $FREENAS_TMPDIR/zoneinfo.exlude
-	tar -c -v -f - -X $FREENAS_TMPDIR/zoneinfo.exlude -C /usr/share/zoneinfo/ . | gzip -cv > $FREENAS_ROOTFS/usr/share/zoneinfo.tgz
+	#tar -c -v -f - -X $FREENAS_TMPDIR/zoneinfo.exlude -C /usr/share/zoneinfo/ . | gzip -cv > $FREENAS_ROOTFS/usr/share/zoneinfo.tgz
+	cd /usr/share/zoneinfo && tar -c -v -f - -X ${FREENAS_TMPDIR}/zoneinfo.exlude * | gzip -cv > ${FREENAS_ROOTFS}/usr/share/zoneinfo.tgz
 	rm $FREENAS_TMPDIR/zoneinfo.exlude
 
 	return 0
