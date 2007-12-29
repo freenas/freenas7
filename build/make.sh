@@ -339,6 +339,7 @@ create_image() {
 
 	# Cleanup.
 	[ -f image.bin ] && rm -f image.bin
+	[ -f image.bin.gz ] && rm -f image.bin.gz
 
 	# Set platform information.
 	PLATFORM="${FREENAS_ARCH}-embedded"
@@ -350,7 +351,7 @@ create_image() {
 	# Set revision.
 	echo ${FREENAS_REVISION} > ${FREENAS_ROOTFS}/etc/prd.revision
 
-	IMGFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.img"
+	IMGFILENAME="${FREENAS_PRODUCTNAME}-${PLATFORM}-${FREENAS_VERSION}.${FREENAS_REVISION}.img"
 
 	echo "===> Generating tempory $FREENAS_TMPDIR folder"
 	mkdir $FREENAS_TMPDIR
@@ -410,7 +411,7 @@ create_image() {
 	mdconfig -d -u ${md}
 	echo "===> Compress the IMG file"
 	gzip -9 $FREENAS_WORKINGDIR/image.bin
-	mv $FREENAS_WORKINGDIR/image.bin.gz $FREENAS_ROOTDIR/$IMGFILENAME
+	cp $FREENAS_WORKINGDIR/image.bin.gz $FREENAS_ROOTDIR/$IMGFILENAME
 
 	# Cleanup.
 	echo "===> Cleaning temporary files"
@@ -433,7 +434,7 @@ create_iso () {
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 
-	ISOFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-liveCD-${FREENAS_VERSION}.iso"
+	ISOFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-liveCD-${FREENAS_VERSION}.${FREENAS_REVISION}.iso"
 
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Generating the $FREENAS_PRODUCTNAME Image file:"
@@ -478,7 +479,7 @@ create_iso () {
 
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file to $FREENAS_TMPDIR"
-		cp $FREENAS_ROOTDIR/$FREENAS_PRODUCTNAME-$FREENAS_ARCH-embedded-$FREENAS_VERSION.img $FREENAS_TMPDIR/$FREENAS_PRODUCTNAME-$FREENAS_ARCH-embedded.gz
+		cp ${FREENAS_WORKINGDIR}/image.bin.gz ${FREENAS_TMPDIR}/${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-embedded.gz
 	fi
 
 	echo "ISO: Generating the ISO file"
