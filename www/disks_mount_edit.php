@@ -321,8 +321,7 @@ function fstype_change() {
 						<td width="22%" valign="top" class="vncell"><?=gettext("File system check");?></td>
 			      <td width="78%" class="vtable">
 							<input name="fsck" type="checkbox" id="fsck" value="yes" <?php if ($pconfig['fsck']) echo "checked"; ?>>
-							<?=gettext("Enable foreground file system consistency check during boot process.");?></br>
-							<span class="vexpl"><?=gettext("Nevertheless a asynchronously background file system check will be started at the end of the boot process.");?></span>
+							<?=gettext("Enable foreground/background file system consistency check during boot process.");?>
 			      </td>
 			    </tr>
 			    <tr>
