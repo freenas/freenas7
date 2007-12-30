@@ -49,10 +49,10 @@ create_conf()
 			-i "string-length(maxconnections) > 0" -v "concat('max connections = ', maxconnections)" -n -b \
 			-i "rwmode[. = 'ro']" -o "read only = true" -n -b \
 			-i "rwmode[. = 'wo']" -o "write only = true" -n -b \
-			-i "string-length(hostallow) > 0" \
-				-v "concat('host allow = ', hostallow)" -n -b \
-			-i "string-length(hostdeny) > 0" \
-				-v "concat('host deny = ', hostdeny)" -n -b \
+			-i "string-length(hostsallow) > 0" \
+				-v "concat('hosts allow = ', hostsallow)" -n -b \
+			-i "string-length(hostsdeny) > 0" \
+				-v "concat('hosts deny = ', hostsdeny)" -n -b \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${rsyncd_config}
 

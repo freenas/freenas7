@@ -9,18 +9,6 @@ Majors changes:
   - ATA timeout patch has been removed.
   - Add msk (Marvell/SysKonnect Yukon II Gigabit Ethernet) network driver.
   - Add pcn	(AMD Am79C97x PCI 10/100 (precedence over 'lnc')) network driver.
-- Upgrade Samba to 3.0.28.
-- Enhance WebGUI + rc-script to define additional group memberships for user accounts.
-- Replace uShare UPnP Mediaserver with MediaTomb 0.10.0.
-  You have to reconfigure the UPnP service to get working properly.
-
-Minors changes:
-- Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
-- Add checkbox in 'Mount Point' WebGUI to enable/disable foreground/background file system consistency check during boot process.
-
-Bug fixs:
-- Calculating iSCSI extent IDs fails for numbers > 10.
-- Promote correct UPnP port via ZeroConf/Apple Bonjour.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
@@ -38,6 +26,31 @@ NEED TO BE TESTED:
 Help needed:
 - Need help for adding LDAP authentication feature:
 Major services can be easly authenticated using PAM-LDAP, but for Samba too is harder.
+
+FreeNAS 0.686.1:
+----------------
+
+Majors changes:
+- Upgrade Samba to 3.0.28.
+- Enhance WebGUI + rc-script to define additional group memberships for user accounts.
+- Replace uShare UPnP Mediaserver with MediaTomb 0.10.0.
+  You have to reconfigure the UPnP service to get working properly.
+
+Minors changes:
+- Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
+- Add checkbox in 'Mount Point' WebGUI to enable/disable foreground/background file system consistency check during boot process.
+
+Bug fixs:
+- Calculating iSCSI extent IDs fails for numbers > 10.
+- Promote correct UPnP port via ZeroConf/Apple Bonjour.
+- Fix bug in rsyncd rc-script which prevents service to be started.
+
+Permanent restrictions:
+- It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
+- It is not possible to encrypt a disk partition, only complete disks are supported.
+
+Known bugs:
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
 
 FreeNAS 0.686:
 --------------
