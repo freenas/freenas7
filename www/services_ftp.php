@@ -106,8 +106,8 @@ if ($_POST) {
 		if (!("0" === $_POST['pasv_max_port']) && !is_port($_POST['pasv_max_port'])) {
 			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_max_port"));
 		}
-		if (!($_POST['anonymous']) && !($_POST['localuser'])) {
-			$input_errors[] = gettext("You must select at minium anonymous or/and local user authentication.");
+		if ($_POST['anonymous'] && $_POST['localuser']) {
+			$input_errors[] = gettext("You can't enable 'Anonymous users only' and 'Local users only' authentication simultaneously.");
 		}
 	}
 
@@ -222,16 +222,16 @@ function enable_change(enable_change) {
 						</td>
 					</tr>
 			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Anonymous login");?></td>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Anonymous users only");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="anonymous" type="checkbox" id="anonymous" value="yes" <?php if ($pconfig['anonymous']) echo "checked"; ?>>
-			        <?=gettext("Enable anonymous login.");?></td>
+							<?=gettext("Only allow anonymous users. Use this on a public FTP site with no remote FTP access to real accounts.");?></td>
 			    </tr>
 			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Local User");?></td>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Local users only");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="localuser" type="checkbox" id="localuser" value="yes" <?php if ($pconfig['localuser']) echo "checked"; ?>>
-			        <?=gettext("Enable local user login.");?></td>
+			        <?=gettext("Only allow authenticated users. Anonymous logins are prohibited.");?></td>
 			    </tr>
 					<tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Banner");?></td>

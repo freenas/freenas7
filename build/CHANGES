@@ -44,6 +44,7 @@ Bug fixs:
 - Calculating iSCSI extent IDs fails for numbers > 10.
 - Promote correct UPnP port via ZeroConf/Apple Bonjour.
 - Fix bug in rsyncd rc-script. Hosts allow/deny were not set correct.
+- Fix bug in FTP service. It was possible to select 'Anonymous login only' and 'Local users only' simultaneously which is impossible.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

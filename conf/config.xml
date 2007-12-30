@@ -261,8 +261,6 @@
 		<maxconperip>2</maxconperip>
 		<timeout>5</timeout>
 		<port>21</port>
-		<anonymous/>
-		<localuser/>
 		<pasv_max_port>0</pasv_max_port>
 		<pasv_min_port>0</pasv_min_port>
 		<pasv_address></pasv_address>
