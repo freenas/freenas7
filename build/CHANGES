@@ -16,7 +16,7 @@ Minors changes:
 Bug fixs:
 - Calculating iSCSI extent IDs fails for numbers > 10.
 - Promote correct UPnP port via ZeroConf/Apple Bonjour.
-- Fix bug in rsyncd.conf file which prevents service to be started.
+- Fix bug in rsyncd rc-script which prevents service to be started.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
