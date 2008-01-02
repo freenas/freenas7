@@ -193,7 +193,8 @@ if ($_POST) {
 								<option value="<?=$groupv;?>" <?php if (is_array($pconfig['group']) && in_array("{$groupv}", $pconfig['group'])) echo "selected";?>><?=htmlspecialchars($groupk);?></option>
 								<?php endforeach;?>
 							</select></br>
-							<?=gettext("Set additional group memberships for this account.");?>
+							<?=gettext("Set additional group memberships for this account.");?></br>
+							<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and deselect groups.");?>
 						</td>
 					</tr>
 					<tr>
