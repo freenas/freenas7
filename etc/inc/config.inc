@@ -2,7 +2,7 @@
 /*
 	config.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -1094,15 +1094,15 @@ function config_upgrade() {
 	}
 
 	/* Convert 3.7 -> 3.8 */
-	/* Remove attribute //access/user/admin and add //access/user/group['admin'] if set. */
+	/* Remove attribute //access/user/admin and add //access/user/group['1000'] if set. */
 	/* Remove attribute //ftp/anonymous. */
 	/* Remove attribute //ftp/localuser. */
 	/* Remove attribute //rsyncd/readonly. */
 	if ($config['version'] === "3.7") {
 		for ($i = 0; isset($config['access']['user'][$i]); $i++) {
 			if (isset($config['access']['user'][$i]['admin'])) {
-				if (false === in_array("admin", $config['access']['user'][$i]['group'])) {
-					$config['access']['user'][$i]['group'][] = "admin";
+				if (false === in_array("1000", $config['access']['user'][$i]['group'])) {
+					$config['access']['user'][$i]['group'][] = "1000";
 				}
 				unset($config['access']['user'][$i]['admin']);
 			}
