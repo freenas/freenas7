@@ -434,7 +434,6 @@
 			<fullname>xxx</fullname>
 			<password>xxx</password>
 			<fullshell/>
-			<admin/>
 		</user>
 		<group>
 			<id>xxx</id>
