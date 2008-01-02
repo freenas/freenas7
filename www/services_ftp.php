@@ -44,8 +44,8 @@ $pconfig['port'] = $config['ftp']['port'];
 $pconfig['numberclients'] = $config['ftp']['numberclients'];
 $pconfig['maxconperip'] = $config['ftp']['maxconperip'];
 $pconfig['timeout'] = $config['ftp']['timeout'];
-$pconfig['anonymous'] = isset($config['ftp']['anonymous']);
-$pconfig['localuser'] = isset($config['ftp']['localuser']);
+$pconfig['anonymousonly'] = isset($config['ftp']['anonymousonly']);
+$pconfig['localusersonly'] = isset($config['ftp']['localusersonly']);
 $pconfig['pasv_max_port'] = $config['ftp']['pasv_max_port'];
 $pconfig['pasv_min_port'] = $config['ftp']['pasv_min_port'];
 $pconfig['pasv_address'] = $config['ftp']['pasv_address'];
@@ -106,8 +106,8 @@ if ($_POST) {
 		if (!("0" === $_POST['pasv_max_port']) && !is_port($_POST['pasv_max_port'])) {
 			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_max_port"));
 		}
-		if ($_POST['anonymous'] && $_POST['localuser']) {
-			$input_errors[] = gettext("You can't enable 'Anonymous users only' and 'Local users only' authentication simultaneously.");
+		if ($_POST['anonymousonly'] && $_POST['localusersonly']) {
+			$input_errors[] = gettext("It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously.");
 		}
 	}
 
@@ -116,8 +116,8 @@ if ($_POST) {
 		$config['ftp']['maxconperip'] = $_POST['maxconperip'];
 		$config['ftp']['timeout'] = $_POST['timeout'];
 		$config['ftp']['port'] = $_POST['port'];
-		$config['ftp']['anonymous'] = $_POST['anonymous'] ? true : false;
-		$config['ftp']['localuser'] = $_POST['localuser'] ? true : false;
+		$config['ftp']['anonymousonly'] = $_POST['anonymousonly'] ? true : false;
+		$config['ftp']['localusersonly'] = $_POST['localusersonly'] ? true : false;
 		$config['ftp']['pasv_max_port'] = $_POST['pasv_max_port'];
 		$config['ftp']['pasv_min_port'] = $_POST['pasv_min_port'];
 		$config['ftp']['pasv_address'] = $_POST['pasv_address'];
@@ -154,8 +154,8 @@ function enable_change(enable_change) {
 	document.iform.permitrootlogin.disabled = endis;
 	document.iform.numberclients.disabled = endis;
 	document.iform.maxconperip.disabled = endis;
-	document.iform.anonymous.disabled = endis;
-	document.iform.localuser.disabled = endis;
+	document.iform.anonymousonly.disabled = endis;
+	document.iform.localusersonly.disabled = endis;
 	document.iform.banner.disabled = endis;
 	document.iform.fxp.disabled = endis;
 	document.iform.natmode.disabled = endis;
@@ -224,13 +224,13 @@ function enable_change(enable_change) {
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Anonymous users only");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="anonymous" type="checkbox" id="anonymous" value="yes" <?php if ($pconfig['anonymous']) echo "checked"; ?>>
+			        <input name="anonymousonly" type="checkbox" id="anonymousonly" value="yes" <?php if ($pconfig['anonymousonly']) echo "checked"; ?>>
 							<?=gettext("Only allow anonymous users. Use this on a public FTP site with no remote FTP access to real accounts.");?></td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Local users only");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="localuser" type="checkbox" id="localuser" value="yes" <?php if ($pconfig['localuser']) echo "checked"; ?>>
+			        <input name="localusersonly" type="checkbox" id="localusersonly" value="yes" <?php if ($pconfig['localusersonly']) echo "checked"; ?>>
 			        <?=gettext("Only allow authenticated users. Anonymous logins are prohibited.");?></td>
 			    </tr>
 					<tr>
