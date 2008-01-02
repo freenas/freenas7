@@ -45,6 +45,7 @@ if (!is_array($config['access']['group']))
 array_sort_key($config['access']['group'], "name");
 
 $a_group = &$config['access']['group'];
+$a_group_system = get_group_list();
 
 if (isset($id) && $a_group[$id]) {
 	$pconfig['groupid'] = $a_group[$id]['id'];
@@ -62,22 +63,16 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['name'] && !is_domain($_POST['name']))) {
-		$input_errors[] = gettext("The Group name contains invalid characters.");
+		$input_errors[] = gettext("The group name contains invalid characters.");
 	}
 
 	if (($_POST['desc'] && !is_validdesc($_POST['desc']))) {
-		$input_errors[] = gettext("The Group desc contains invalid characters.");
+		$input_errors[] = gettext("The group description contains invalid characters.");
 	}
 
 	/* check for name conflicts */
-	foreach ($a_group as $group) {
-		if (isset($id) && ($a_group[$id]) && ($a_group[$id] == $group))
-			continue;
-
-		if ($group['name'] === $_POST['name']) {
-			$input_errors[] = gettext("This group already exists in the group list.");
-			break;
-		}
+	if (is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system)) {
+		$input_errors[] = gettext("This group already exists in the group list.");
 	}
 
 	if (!$input_errors) {
