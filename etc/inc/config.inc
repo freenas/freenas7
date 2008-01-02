@@ -1097,6 +1097,7 @@ function config_upgrade() {
 	/* Remove attribute //access/user/admin and add //access/user/group['admin'] if set. */
 	/* Remove attribute //ftp/anonymous. */
 	/* Remove attribute //ftp/localuser. */
+	/* Remove attribute //rsyncd/readonly. */
 	if ($config['version'] === "3.7") {
 		for ($i = 0; isset($config['access']['user'][$i]); $i++) {
 			if (isset($config['access']['user'][$i]['admin'])) {
@@ -1109,6 +1110,8 @@ function config_upgrade() {
 
 		unset($config['ftp']['anonymous']);
 		unset($config['ftp']['localuser']);
+
+		unset($config['rsyncd']['readonly']);
 
 		$config['version'] = "3.8";
 	}

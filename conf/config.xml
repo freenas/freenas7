@@ -295,7 +295,6 @@
 	</afp>
 	<rsyncd>
 		<!-- <enable/> -->
-		<readonly>no</readonly>
 		<port>873</port>
 		<maxcon>0</maxcon>
 		<rsyncd_user>ftp</rsyncd_user>

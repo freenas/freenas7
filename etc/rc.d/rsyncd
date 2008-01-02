@@ -31,7 +31,6 @@ create_conf()
 
 	# Create rsyncd.conf file.
 	/usr/local/bin/xml sel -t -m "//rsyncd" \
-		-v "concat('read only = ',readonly)" -n \
 		-o "syslog facility = local4" -n \
 		-o "list = no" -n \
 		-v "concat('port = ',port)" -n \
