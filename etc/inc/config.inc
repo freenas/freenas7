@@ -1087,8 +1087,13 @@ function config_upgrade() {
 
 	/* Convert 3.6 -> 3.7 */
 	/* Remove attribute //upnp/profile. */
+	/* Remove attribute //access/user/admin. */
 	if ($config['version'] === "3.6") {
 		unset($config['upnp']['profile']);
+
+		for ($i = 0; isset($config['access']['user'][$i]); $i++) {
+			unset($config['access']['user'][$i]['admin']);
+		}
 
 		$config['version'] = "3.7";
 	}

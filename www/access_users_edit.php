@@ -56,7 +56,6 @@ if (isset($id) && $a_user[$id]) {
 	$pconfig['primarygroup'] = $a_user[$id]['primarygroup'];
 	$pconfig['group'] = $a_user[$id]['group'];
 	$pconfig['fullshell'] = isset($a_user[$id]['fullshell']);
-	$pconfig['admin'] = isset($a_user[$id]['admin']);
 	$pconfig['homedir'] = $a_user[$id]['homedir'];
 }
 
@@ -112,7 +111,6 @@ if ($_POST) {
 		$users['fullname'] = $_POST['fullname'];
 		$users['password'] = $_POST['password'];
 		$users['fullshell'] = $_POST['fullshell'] ? true : false;
-		$users['admin'] = $_POST['admin'] ? true : false;
 		$users['primarygroup'] = $_POST['primarygroup'];
 		$users['group'] = $_POST['group'];
 		$users['homedir'] = $_POST['homedir'];
@@ -212,13 +210,6 @@ if ($_POST) {
 							<?=gettext("Give full shell access to user.");?>
 						</td>
 				  </tr>
-					<tr>
-					  <td width="22%" valign="top" class="vncell"><?=gettext("Administrator");?></td>
-					  <td width="78%" class="vtable">
-						  <input name="admin" type="checkbox" value="yes" <?php if ($pconfig['admin']) echo "checked"; ?> onClick="enable_change(false)">
-							<?=gettext("Put user in the administrator group.");?>
-						</td>
-          </tr>
           <tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>">
