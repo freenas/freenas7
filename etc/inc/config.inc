@@ -1093,9 +1093,11 @@ function config_upgrade() {
 
 		for ($i = 0; isset($config['access']['user'][$i]); $i++) {
 			if (isset($config['access']['user'][$i]['admin'])) {
-				$config['access']['user'][$i]['group'][] = "admin";
+				if (false === in_array("admin", $config['access']['user'][$i]['group'])) {
+					$config['access']['user'][$i]['group'][] = "admin";
+				}
 				unset($config['access']['user'][$i]['admin']);
-			}			
+			}
 		}
 
 		$config['version'] = "3.7";
