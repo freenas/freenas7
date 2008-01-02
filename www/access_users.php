@@ -41,6 +41,7 @@ if (!is_array($config['access']['user']))
 array_sort_key($config['access']['user'], "login");
 
 $a_user = &$config['access']['user'];
+$a_group = get_group_list();
 
 if ($_POST) {
 	$pconfig = $_POST;
@@ -111,14 +112,7 @@ if ($_GET['act'] == "del") {
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($user['login']);?>&nbsp;</td>
 						<td class="listr"><?=htmlspecialchars($user['fullname']);?>&nbsp;</td>
-						<td class="listbg">
-							<?php foreach ($config['access']['group'] as $group):?>
-								<?php if ($group['id'] == $user['primarygroup']):?>
-								<?=htmlspecialchars($group['name']);?>
-								<?php endif;?>
-							<?php endforeach;?>
-							&nbsp;
-						</td>
+						<td class="listbg"><?=array_search($user['primarygroup'], $a_group);?>&nbsp;</td>
 						<td valign="middle" nowrap class="list">
 							<a href="access_users_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit user");?>" width="17" height="17" border="0"></a>&nbsp;
 							<a href="access_users.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this user?");?>')"><img src="x.gif" title="<?=gettext("Delete user");?>" width="17" height="17" border="0"></a>
