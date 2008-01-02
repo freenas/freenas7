@@ -52,7 +52,7 @@ echo '<storage driver="sqlite3">' >> ${mediatomb_config}
 echo '<database-file>mediatomb.db</database-file>' >> ${mediatomb_config}
 echo '</storage>' >> ${mediatomb_config}
 echo '</server>' >> ${mediatomb_config}
-echo '<import hidden-files="no">' >> >> ${mediatomb_config}
+echo '<import hidden-files="no">' >> ${mediatomb_config}
 echo '<scripting script-charset="UTF-8">' >> ${mediatomb_config}
 echo '<common-script>/usr/local/share/mediatomb/js/common.js</common-script>' >> ${mediatomb_config}
 echo '<playlist-script>/usr/local/share/mediatomb/js/playlists.js</playlist-script>' >> ${mediatomb_config}
