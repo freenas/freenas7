@@ -1087,10 +1087,17 @@ function config_upgrade() {
 
 	/* Convert 3.6 -> 3.7 */
 	/* Remove attribute //upnp/profile. */
-	/* Remove attribute //access/user/admin and add //access/user/group['admin'] if set. */
 	if ($config['version'] === "3.6") {
 		unset($config['upnp']['profile']);
 
+		$config['version'] = "3.7";
+	}
+
+	/* Convert 3.7 -> 3.8 */
+	/* Remove attribute //access/user/admin and add //access/user/group['admin'] if set. */
+	/* Remove attribute //ftp/anonymous. */
+	/* Remove attribute //ftp/localuser. */
+	if ($config['version'] === "3.7") {
 		for ($i = 0; isset($config['access']['user'][$i]); $i++) {
 			if (isset($config['access']['user'][$i]['admin'])) {
 				if (false === in_array("admin", $config['access']['user'][$i]['group'])) {
@@ -1100,7 +1107,10 @@ function config_upgrade() {
 			}
 		}
 
-		$config['version'] = "3.7";
+		unset($config['ftp']['anonymous']);
+		unset($config['ftp']['localuser']);
+
+		$config['version'] = "3.8";
 	}
 
 	write_config();
