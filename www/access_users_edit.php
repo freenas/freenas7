@@ -114,7 +114,8 @@ if ($_POST) {
 		$users['password'] = $_POST['password'];
 		$users['fullshell'] = $_POST['fullshell'] ? true : false;
 		$users['primarygroup'] = $_POST['primarygroup'];
-		$users['group'] = $_POST['group'];
+		if (is_array($_POST['group']))
+			$users['group'] = $_POST['group'];
 		$users['homedir'] = $_POST['homedir'];
 
 		if (isset($id) && $a_user[$id]) {
