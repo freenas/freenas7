@@ -267,6 +267,10 @@
 		<directorymask>022</directorymask>
 		<filemask>077</filemask>
 		<chrooteveryone/>
+		<!--
+		<anonymousonly/>
+		<localusersonly/>
+		-->
 	</ftp>
 	<afp>
 		<!--

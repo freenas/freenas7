@@ -42,8 +42,8 @@ create_conf()
 		-v "concat(' -I ',timeout)" \
 		-o " -M -B -b" \
 		-i "maxconperip[. > 0]" -v "concat(' -C ',maxconperip)" -b \
-		-i "count(anonymous) > 0" -i "count(localuser) = 0" -o " -e" -b -b \
-		-i "count(anonymous) = 0" -i "count(localuser) > 0" -o " -E" -b -b \
+		-i "count(anonymousonly) > 0" -o " -e" -b \
+		-i "count(localusersonly) > 0" -o " -E" -b \
 		-i "pasv_min_port[. != '0']" -i "pasv_max_port[. != '0']" -v "concat(' -p ',pasv_min_port,':',pasv_max_port)" -b -b \
 		-i "string-length(filemask) > 0" -i "string-length(directorymask) > 0" -v "concat(' -U ',filemask,':',directorymask)" -b -b \
 		-i "string-length(filemask) = 0" -i "string-length(directorymask) = 0" -o " -U 077:022" -b -b \
