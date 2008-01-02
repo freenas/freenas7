@@ -46,7 +46,6 @@ if (!is_array($config['rsync'])) {
 	$config['rsync'] = array();
 }
 
-$pconfig['readonly'] = $config['rsyncd']['readonly'];
 $pconfig['port'] = $config['rsyncd']['port'];
 $pconfig['motd'] = $config['rsyncd']['motd'];
 $pconfig['maxcon'] = $config['rsyncd']['maxcon'];
@@ -62,8 +61,8 @@ if ($_POST) {
 	$reqdfieldsn = array();
 
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "readonly port"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Read only"),gettext("TCP port")));
+		$reqdfields = array_merge($reqdfields, explode(" ", "port maxcon"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("TCP port"), gettext("Maximum connections")));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -76,7 +75,6 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$config['rsyncd']['readonly'] = $_POST['readonly'];	
 		$config['rsyncd']['port'] = $_POST['port'];
 		$config['rsyncd']['motd'] = $_POST['motd'];
 		$config['rsyncd']['maxcon'] = $_POST['maxcon'];
@@ -101,7 +99,6 @@ if ($_POST) {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
-	document.iform.readonly.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.motd.disabled = endis;
 	document.iform.maxcon.disabled = endis;
@@ -143,19 +140,6 @@ function enable_change(enable_change) {
 									</td>
 								</tr>
 				  		</table>
-						</td>
-					</tr>
-					<tr> 
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Read only");?></td>
-						<td width="78%" class="vtable">
-							<select name="readonly" class="formfld" id="readonly">
-								<?php $types = array(gettext("Yes"),gettext("No")); $vals = explode(" ", "yes no");?>
-								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['readonly']) echo "selected";?>> 
-								<?=htmlspecialchars($types[$j]);?>
-								</option>
-								<?php endfor;?>
-							</select>
 						</td>
 					</tr>
 					<tr>			  		
