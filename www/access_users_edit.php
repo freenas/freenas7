@@ -194,7 +194,7 @@ if ($_POST) {
 								<?php endforeach;?>
 							</select></br>
 							<?=gettext("Set additional group memberships for this account.");?></br>
-							<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and de-select groups.");?>
+							<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and deselect groups.");?>
 						</td>
 					</tr>
 					<tr>
