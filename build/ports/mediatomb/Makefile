@@ -24,7 +24,6 @@ CONFIGURE_ARGS=		--with-search="${LOCALBASE}" \
 									--disable-libmagic \
 									--disable-mysql \
 									--disable-libextractor \
-									--disable-taglib \
 									--disable-libjs \
 									--disable-libexif \
 									--disable-tombdebug
