@@ -2,7 +2,7 @@
 /*
 	util.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -1885,13 +1885,18 @@ function set_conf_disk_fstype($disk, $fstype)
 //		...
 //	)
 function get_group_list() {
+	// List of groups to filter from result list.
+	$filterlist = array("_dhcp", "_pflogd");
+
 	$grouplist = array();
 
 	preg_match_all("/(\S+):\*:(\d+):.*\n/", @file_get_contents("/etc/group"), $matches, PREG_SET_ORDER);
 
 	if (is_array($matches)) {
 		foreach ($matches as $group) {
-			$grouplist[$group[1]] = $group[2];
+			if (false === in_array($group[1], $filterlist)) {
+				$grouplist[$group[1]] = $group[2];
+			}
 		}
 
 		ksort($grouplist);
