@@ -60,11 +60,6 @@ echo '<virtual-layout type="builtin">' >> ${mediatomb_config}
 echo '<import-script>/usr/local/share/mediatomb/js/import.js</import-script>' >> ${mediatomb_config}
 echo '</virtual-layout>' >> ${mediatomb_config}
 echo '</scripting>' >> ${mediatomb_config}
-echo '<autoscan>' >> ${mediatomb_config}
-/usr/local/bin/xml sel -t -m "//upnp/content" \
-	-v "concat('&lt;directory location=&quot;',.,'&quot; mode=&quot;timed&quot; interval=&quot;1800&quot; level=&quot;full&quot; recursive=&quot;yes&quot; hidden-files=&quot;no&quot;/&gt;')" \
-	${configxml_file} | /usr/local/bin/xml unesc >> ${mediatomb_config}
-echo '</autoscan>' >> ${mediatomb_config}
 echo '<mappings>' >> ${mediatomb_config}
 echo '<extension-mimetype ignore-unknown="no">' >> ${mediatomb_config}
 echo '<map from="flac" to="audio/x-flac"/>' >> ${mediatomb_config}
@@ -104,6 +99,7 @@ _command_args=`/usr/local/bin/xml sel -t -m "//upnp" \
 	-v "concat(' --home=',home)" \
 	-v "concat(' --interface=',if)" \
 	-i "string-length(port) > 0" -v "concat(' --port=',port)" -b \
+	-m "content" -v "concat(' --add=&quot;',.,'&quot;')" -b \
 	${configxml_file} | /usr/local/bin/xml unesc`
 
 command="/usr/local/bin/${name}"
