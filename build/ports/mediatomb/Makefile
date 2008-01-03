@@ -8,7 +8,7 @@ MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
 MASTER_SITE_SUBDIR=	${PORTNAME}
 
 LIB_DEPENDS+=			sqlite3:${PORTSDIR}/databases/sqlite3 \
-									id3:${PORTSDIR}/audio/id3lib
+									tag:${PORTSDIR}/audio/taglib
 
 GNU_CONFIGURE=		yes
 LDFLAGS+=					${PTHREAD_LIBS}
@@ -18,9 +18,8 @@ CONFIGURE_ARGS=		--with-search="${LOCALBASE}" \
 									--enable-sqlite3 \
 									--with-sqlite3-h="${LOCALBASE}/include" \
 									--with-sqlite3-libs="${LOCALBASE}/lib" \
-									--enable-id3lib \
-									--with-id3lib-h="${LOCALBASE}/include" \
-									--with-id3lib-libs="${LOCALBASE}/lib" \
+									--enable-taglib \
+									--disable-id3lib \
 									--disable-libmagic \
 									--disable-mysql \
 									--disable-libextractor \
