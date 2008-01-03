@@ -19,6 +19,7 @@ CONFIGURE_ARGS=		--with-search="${LOCALBASE}" \
 									--with-sqlite3-h="${LOCALBASE}/include" \
 									--with-sqlite3-libs="${LOCALBASE}/lib" \
 									--enable-taglib \
+									--with-taglib-cfg="${LOCALBASE}/bin/taglib-config" \
 									--disable-id3lib \
 									--disable-libmagic \
 									--disable-mysql \
