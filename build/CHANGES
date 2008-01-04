@@ -35,6 +35,8 @@ Majors changes:
 - Enhance WebGUI + rc-script to define additional group memberships for user accounts.
 - Replace uShare UPnP Mediaserver with MediaTomb 0.10.0.
   You have to reconfigure the UPnP service to get working properly.
+- Increase mfsroot size to 64mb for embedded version. So hopefully the OS has enough memory for logfiles,...
+  Especially with Samba tbd files, which increases rapidely with a huge number of users accessing the system.
 
 Minors changes:
 - Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
