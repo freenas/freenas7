@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: mediatomb
@@ -14,6 +14,10 @@
 name="mediatomb"
 rcvar=`set_rcvar`
 
+# Custom commands
+start_precmd="start_precmd"
+stop_postcmd="stop_postcmd"
+
 # Defaults
 mediatomb_enable=${mediatomb_enable-"NO"}
 mediatomb_mtuser=${mediatomb_mtuser-"root"}
@@ -25,85 +29,104 @@ mediatomb_logfile=${mediatomb_logfile-"/var/log/${name}.log"}
 mediatomb_pidfile=${mediatomb_pidfile-"/var/run/${name}.pid"}
 mediatomb_share=${mediatomb_share-"/usr/local/share/${name}"}
 pidfile="${mediatomb_pidfile}"
-
-# Ensure that config directory exists.
-if [ ! -e ${mediatomb_cfgdir} ]; then
-	/bin/mkdir -p ${mediatomb_cfgdir}
-fi
-
-# Create config file.
-_name=`configxml_get "//upnp/name"`
-_home=`configxml_get "//upnp/home"`
-
-echo '<?xml version="1.0" encoding="UTF-8"?>' > ${mediatomb_config}
-echo '<config xmlns="http://mediatomb.cc/0.10.0/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mediatomb.cc/0.10.0/config http://mediatomb.cc/0.10.0/config.xsd">' >> ${mediatomb_config}
-echo '<server>' >> ${mediatomb_config}
-if configxml_isset "//upnp/web"; then
-	echo '<ui>' >> ${mediatomb_config}
-else
-	echo '<ui enabled="no">' >> ${mediatomb_config}
-fi
-echo '<accounts enabled="no" session-timeout="30"/>' >> ${mediatomb_config}
-echo '</ui>' >> ${mediatomb_config}
-echo "<name>${_name}</name>" >> ${mediatomb_config}
-echo "<home>${_home}</home>" >> ${mediatomb_config}
-echo "<webroot>${mediatomb_share}/web</webroot>" >> ${mediatomb_config}
-echo '<storage driver="sqlite3">' >> ${mediatomb_config}
-echo '<database-file>mediatomb.db</database-file>' >> ${mediatomb_config}
-echo '</storage>' >> ${mediatomb_config}
-echo '</server>' >> ${mediatomb_config}
-echo '<import hidden-files="no">' >> ${mediatomb_config}
-echo '<scripting script-charset="UTF-8">' >> ${mediatomb_config}
-echo '<common-script>/usr/local/share/mediatomb/js/common.js</common-script>' >> ${mediatomb_config}
-echo '<playlist-script>/usr/local/share/mediatomb/js/playlists.js</playlist-script>' >> ${mediatomb_config}
-echo '<virtual-layout type="builtin">' >> ${mediatomb_config}
-echo '<import-script>/usr/local/share/mediatomb/js/import.js</import-script>' >> ${mediatomb_config}
-echo '</virtual-layout>' >> ${mediatomb_config}
-echo '</scripting>' >> ${mediatomb_config}
-echo '<mappings>' >> ${mediatomb_config}
-echo '<extension-mimetype ignore-unknown="no">' >> ${mediatomb_config}
-echo '<map from="flac" to="audio/x-flac"/>' >> ${mediatomb_config}
-echo '<map from="mp3" to="audio/mpeg"/>' >> ${mediatomb_config}
-echo '<map from="ogg" to="application/ogg"/>' >> ${mediatomb_config}
-echo '<map from="asf" to="video/x-ms-asf"/>' >> ${mediatomb_config}
-echo '<map from="asx" to="video/x-ms-asf"/>' >> ${mediatomb_config}
-echo '<map from="wma" to="audio/x-ms-wma"/>' >> ${mediatomb_config}
-echo '<map from="wax" to="audio/x-ms-wax"/>' >> ${mediatomb_config}
-echo '<map from="wmv" to="video/x-ms-wmv"/>' >> ${mediatomb_config}
-echo '<map from="wvx" to="video/x-ms-wvx"/>' >> ${mediatomb_config}
-echo '<map from="wm" to="video/x-ms-wm"/>' >> ${mediatomb_config}
-echo '<map from="wmx" to="video/x-ms-wmx"/>' >> ${mediatomb_config}
-echo '<map from="m3u" to="audio/x-mpegurl"/>' >> ${mediatomb_config}
-echo '<map from="pls" to="audio/x-scpls"/>' >> ${mediatomb_config}
-echo '</extension-mimetype>' >> ${mediatomb_config}
-echo '<mimetype-upnpclass>' >> ${mediatomb_config}
-echo '<map from="audio/*" to="object.item.audioItem.musicTrack"/>' >> ${mediatomb_config}
-echo '<map from="application/ogg" to="object.item.audioItem.musicTrack"/>' >> ${mediatomb_config}
-echo '<map from="video/*" to="object.item.videoItem"/>' >> ${mediatomb_config}
-echo '<map from="image/*" to="object.item.imageItem"/>' >> ${mediatomb_config}
-echo '</mimetype-upnpclass>' >> ${mediatomb_config}
-echo '<mimetype-contenttype>' >> ${mediatomb_config}
-echo '<treat mimetype="audio/mpeg" as="mp3"/>' >> ${mediatomb_config}
-echo '<treat mimetype="application/ogg" as="ogg"/>' >> ${mediatomb_config}
-echo '<treat mimetype="audio/x-flac" as="flac"/>' >> ${mediatomb_config}
-echo '<treat mimetype="image/jpeg" as="jpg"/>' >> ${mediatomb_config}
-echo '<treat mimetype="audio/x-mpegurl" as="playlist"/>' >> ${mediatomb_config}
-echo '<treat mimetype="audio/x-scpls" as="playlist"/>' >> ${mediatomb_config}
-echo '</mimetype-contenttype>' >> ${mediatomb_config}
-echo '</mappings>' >> ${mediatomb_config}
-echo '</import>' >> ${mediatomb_config}
-echo '</config>' >> ${mediatomb_config}
-
-# Create command args line.
-_command_args=`/usr/local/bin/xml sel -t -m "//upnp" \
-	-v "concat(' --home=',home)" \
-	-v "concat(' --interface=',if)" \
-	-i "string-length(port) > 0" -v "concat(' --port=',port)" -b \
-	-m "content" -v "concat(' --add=&quot;',.,'&quot;')" -b \
-	${configxml_file} | /usr/local/bin/xml unesc`
-
 command="/usr/local/bin/${name}"
-command_args="--daemon --cfgdir ${mediatomb_cfgdir} --config ${mediatomb_config} --logfile ${mediatomb_logfile} --user ${mediatomb_mtuser} --group ${mediatomb_mtgroup} --pidfile ${mediatomb_pidfile} ${_command_args}"
+command_args="--daemon --cfgdir ${mediatomb_cfgdir} --config ${mediatomb_config} --logfile ${mediatomb_logfile} --user ${mediatomb_mtuser} --group ${mediatomb_mtgroup} --pidfile ${mediatomb_pidfile}"
+
+start_precmd()
+{
+	local _if _command_args
+
+	# Get interface used for uPnP.
+	_if=`configxml_get "//upnp/if"`
+	
+	# Setup a multicast route for UPnP messages.
+	/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface ${_if}
+	
+	# Ensure that config directory exists.
+	if [ ! -e ${mediatomb_cfgdir} ]; then
+		/bin/mkdir -p ${mediatomb_cfgdir}
+	fi
+	
+	# Create config file.
+	_name=`configxml_get "//upnp/name"`
+	_home=`configxml_get "//upnp/home"`
+	
+	echo '<?xml version="1.0" encoding="UTF-8"?>' > ${mediatomb_config}
+	echo '<config xmlns="http://mediatomb.cc/0.10.0/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mediatomb.cc/0.10.0/config http://mediatomb.cc/0.10.0/config.xsd">' >> ${mediatomb_config}
+	echo '<server>' >> ${mediatomb_config}
+	if configxml_isset "//upnp/web"; then
+		echo '<ui>' >> ${mediatomb_config}
+	else
+		echo '<ui enabled="no">' >> ${mediatomb_config}
+	fi
+	echo '<accounts enabled="no" session-timeout="30"/>' >> ${mediatomb_config}
+	echo '</ui>' >> ${mediatomb_config}
+	echo "<name>${_name}</name>" >> ${mediatomb_config}
+	echo "<home>${_home}</home>" >> ${mediatomb_config}
+	echo "<webroot>${mediatomb_share}/web</webroot>" >> ${mediatomb_config}
+	echo '<storage driver="sqlite3">' >> ${mediatomb_config}
+	echo '<database-file>mediatomb.db</database-file>' >> ${mediatomb_config}
+	echo '</storage>' >> ${mediatomb_config}
+	echo '<protocolInfo extend="yes"/>' >> ${mediatomb_config} # Adds specific tags to the protocolInfo attribute, this is required to enable MP3 and MPEG4 playback on Playstation 3.
+	echo '</server>' >> ${mediatomb_config}
+	echo '<import hidden-files="no">' >> ${mediatomb_config}
+	echo '<scripting script-charset="UTF-8">' >> ${mediatomb_config}
+	echo '<common-script>/usr/local/share/mediatomb/js/common.js</common-script>' >> ${mediatomb_config}
+	echo '<playlist-script>/usr/local/share/mediatomb/js/playlists.js</playlist-script>' >> ${mediatomb_config}
+	echo '<virtual-layout type="builtin">' >> ${mediatomb_config}
+	echo '<import-script>/usr/local/share/mediatomb/js/import.js</import-script>' >> ${mediatomb_config}
+	echo '</virtual-layout>' >> ${mediatomb_config}
+	echo '</scripting>' >> ${mediatomb_config}
+	echo '<mappings>' >> ${mediatomb_config}
+	echo '<extension-mimetype ignore-unknown="no">' >> ${mediatomb_config}
+	echo '<map from="flac" to="audio/x-flac"/>' >> ${mediatomb_config}
+	echo '<map from="mp3" to="audio/mpeg"/>' >> ${mediatomb_config}
+	echo '<map from="ogg" to="application/ogg"/>' >> ${mediatomb_config}
+	echo '<map from="asf" to="video/x-ms-asf"/>' >> ${mediatomb_config}
+	echo '<map from="asx" to="video/x-ms-asf"/>' >> ${mediatomb_config}
+	echo '<map from="wma" to="audio/x-ms-wma"/>' >> ${mediatomb_config}
+	echo '<map from="wax" to="audio/x-ms-wax"/>' >> ${mediatomb_config}
+	echo '<map from="wmv" to="video/x-ms-wmv"/>' >> ${mediatomb_config}
+	echo '<map from="wvx" to="video/x-ms-wvx"/>' >> ${mediatomb_config}
+	echo '<map from="wm" to="video/x-ms-wm"/>' >> ${mediatomb_config}
+	echo '<map from="wmx" to="video/x-ms-wmx"/>' >> ${mediatomb_config}
+	echo '<map from="m3u" to="audio/x-mpegurl"/>' >> ${mediatomb_config}
+	echo '<map from="pls" to="audio/x-scpls"/>' >> ${mediatomb_config}
+	echo '</extension-mimetype>' >> ${mediatomb_config}
+	echo '<mimetype-upnpclass>' >> ${mediatomb_config}
+	echo '<map from="audio/*" to="object.item.audioItem.musicTrack"/>' >> ${mediatomb_config}
+	echo '<map from="application/ogg" to="object.item.audioItem.musicTrack"/>' >> ${mediatomb_config}
+	echo '<map from="video/*" to="object.item.videoItem"/>' >> ${mediatomb_config}
+	echo '<map from="image/*" to="object.item.imageItem"/>' >> ${mediatomb_config}
+	echo '</mimetype-upnpclass>' >> ${mediatomb_config}
+	echo '<mimetype-contenttype>' >> ${mediatomb_config}
+	echo '<treat mimetype="audio/mpeg" as="mp3"/>' >> ${mediatomb_config}
+	echo '<treat mimetype="application/ogg" as="ogg"/>' >> ${mediatomb_config}
+	echo '<treat mimetype="audio/x-flac" as="flac"/>' >> ${mediatomb_config}
+	echo '<treat mimetype="image/jpeg" as="jpg"/>' >> ${mediatomb_config}
+	echo '<treat mimetype="audio/x-mpegurl" as="playlist"/>' >> ${mediatomb_config}
+	echo '<treat mimetype="audio/x-scpls" as="playlist"/>' >> ${mediatomb_config}
+	echo '</mimetype-contenttype>' >> ${mediatomb_config}
+	echo '</mappings>' >> ${mediatomb_config}
+	echo '</import>' >> ${mediatomb_config}
+	echo '</config>' >> ${mediatomb_config}
+	
+	# Create command args line.
+	_command_args=`/usr/local/bin/xml sel -t -m "//upnp" \
+		-v "concat(' --home=',home)" \
+		-v "concat(' --interface=',if)" \
+		-i "string-length(port) > 0" -v "concat(' --port=',port)" -b \
+		-m "content" -v "concat(' --add=&quot;',.,'&quot;')" -b \
+		${configxml_file} | /usr/local/bin/xml unesc`
+
+	command_args="${command_args} ${_command_args}"
+}
+
+stop_postcmd()
+{
+	# Delete multicast route.
+	/sbin/route delete -net 239.0.0.0 >/dev/null 2>&1
+}
 
 load_rc_config ${name}
 run_rc_command "$1"
