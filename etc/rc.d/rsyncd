@@ -31,6 +31,7 @@ create_conf()
 
 	# Create rsyncd.conf file.
 	/usr/local/bin/xml sel -t -m "//rsyncd" \
+		-o "read only = no" -n \
 		-o "syslog facility = local4" -n \
 		-o "list = no" -n \
 		-v "concat('port = ',port)" -n \
@@ -38,7 +39,6 @@ create_conf()
 		-i "string-length(maxcon) > 0" -v "concat('max connections = ',maxcon)" -n -b \
 		-i "string-length(motd) > 0" -o "motd file = ${rsyncd_motd}" -n -b \
 		-i "count(rsyncd_user) > 0" -v "concat('uid = ',rsyncd_user)" -n -b \
-		-i "count(rsyncd_user) = 0" -o "uid = ftp" -n -o "gid = ftp" -n -b \
 		-m "share" \
 			-n \
 			-v "concat('[', name, ']')" -n \
