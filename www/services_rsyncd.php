@@ -3,7 +3,7 @@
 /*
 	services_rsyncd.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -48,7 +48,6 @@ if (!is_array($config['rsync'])) {
 
 $pconfig['port'] = $config['rsyncd']['port'];
 $pconfig['motd'] = $config['rsyncd']['motd'];
-$pconfig['maxcon'] = $config['rsyncd']['maxcon'];
 $pconfig['rsyncd_user'] = $config['rsyncd']['rsyncd_user'];
 $pconfig['enable'] = isset($config['rsyncd']['enable']);
 
@@ -61,8 +60,8 @@ if ($_POST) {
 	$reqdfieldsn = array();
 
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "port maxcon"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("TCP port"), gettext("Maximum connections")));
+		$reqdfields = array_merge($reqdfields, explode(" ", "port"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("TCP port")));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -70,14 +69,11 @@ if ($_POST) {
 	if ($_POST['enable']) {
 		if (!is_port($_POST['port']))
 			$input_errors[] = gettext("The TCP port must be a valid port number.");
-		else if (!is_numericint($_POST['maxcon']))
-			$input_errors[] = _SRVRYNCD_MSGVALIDMAXCON;
 	}
 
 	if (!$input_errors) {
 		$config['rsyncd']['port'] = $_POST['port'];
 		$config['rsyncd']['motd'] = $_POST['motd'];
-		$config['rsyncd']['maxcon'] = $_POST['maxcon'];
 		$config['rsyncd']['enable'] = $_POST['enable'] ? true : false;
 		$config['rsyncd']['rsyncd_user'] = $_POST['rsyncd_user'];
 		
@@ -101,7 +97,6 @@ function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.port.disabled = endis;
 	document.iform.motd.disabled = endis;
-	document.iform.maxcon.disabled = endis;
 	document.iform.rsyncd_user.disabled = endis;
 }
 //-->
@@ -158,13 +153,6 @@ function enable_change(enable_change) {
 						<td width="78%" class="vtable"> 
 							<input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
 							<br><?=gettext("Alternate TCP port. Default is 873");?>
-						</td>
-					</tr>
-					<tr> 
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Maximum connections"); ?></td>
-						<td width="78%" class="vtable"> 
-							<input name="maxcon" type="text" class="formfld" id="maxcon" size="20" value="<?=htmlspecialchars($pconfig['maxcon']);?>"> 
-							<br><?=gettext("Maximum number of simultaneous connections. Default is 0 (unlimited).");?>
 						</td>
 					</tr>
 					<tr>

@@ -296,19 +296,20 @@
 	<rsyncd>
 		<!-- <enable/> -->
 		<port>873</port>
-		<maxcon>0</maxcon>
 		<rsyncd_user>ftp</rsyncd_user>
 		<motd/>
 		<!--
+		<auxparam></auxparam> // Can be defined multiple times.
 		<share>
 			<name>xxx</name>
 			<path>/mnt/xxx</path>
 			<comment>xxx</comment>
 			<browseable/>
 			<rwmode>ro|rw|wo</rwmode>
-			<maxconnections>10</maxconnections>
+			<maxconnections>0</maxconnections>
 			<hostsallow>ALL<hostsallow> // Comma, space, or tab delimited set of hosts which are permitted to access a service.
 			<hostsdeny>ALL<hostsdeny> // Hosts listed here are NOT permitted to access a services. Where the lists conflict, the allow list takes precedence.
+			<auxparam></auxparam> // Can be defined multiple times.
 		</share>
 		-->
 	</rsyncd>
