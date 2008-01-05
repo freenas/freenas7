@@ -35,9 +35,10 @@ create_conf()
 		-o "list = no" -n \
 		-v "concat('port = ',port)" -n \
 		-o "pid file = ${pidfile}" -n \
-		-i "string-length(maxcon) > 0" -v "concat('max connections = ',maxcon)" -n -b \
 		-i "string-length(motd) > 0" -o "motd file = ${rsyncd_motd}" -n -b \
 		-i "count(rsyncd_user) > 0" -v "concat('uid = ',rsyncd_user)" -n -b \
+		-m "auxparam" \
+			-v "." -n -b \
 		-m "share" \
 			-n \
 			-v "concat('[',name,']')" -n \
@@ -45,13 +46,15 @@ create_conf()
 			-v "concat('path = ',path)" -n \
 			-i "count(browseable) > 0" -o "list = true" -n -b \
 			-i "string-length(maxconnections) > 0" -v "concat('max connections = ',maxconnections)" -n -b \
-			-o "read only = false" -n \
+			-i "rwmode[. = 'rw']" -o "read only = false" -n -b \
 			-i "rwmode[. = 'ro']" -o "read only = true" -n -b \
 			-i "rwmode[. = 'wo']" -o "write only = true" -n -b \
 			-i "string-length(hostsallow) > 0" \
 				-v "concat('hosts allow = ',hostsallow)" -n -b \
 			-i "string-length(hostsdeny) > 0" \
 				-v "concat('hosts deny = ',hostsdeny)" -n -b \
+			-m "auxparam" \
+				-v "." -n -b \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${rsyncd_config}
 

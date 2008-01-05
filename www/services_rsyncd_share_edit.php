@@ -2,11 +2,11 @@
 <?php
 /*
 	services_rsyncd_share_edit.php
-	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -68,8 +68,8 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['path'] = "";
 	$pconfig['comment'] = "";
 	$pconfig['browseable'] = true;
-	$pconfig['rwmode'] = 'ro';
-	$pconfig['maxconnections'] = 10;
+	$pconfig['rwmode'] = "rw";
+	$pconfig['maxconnections'] = "0";
 	$pconfig['hostsallow'] = "ALL";
 	$pconfig['hostsdeny'] = "ALL";
 }
@@ -137,7 +137,7 @@ if($_POST) {
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			  	<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Module name");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="name" type="text" class="formfld" id="name" size="30" value="<?=htmlspecialchars($pconfig['name']);?>">
 			      </td>
@@ -165,7 +165,7 @@ if($_POST) {
 			      </td>
 			    </tr>
 			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Access Mode");?></td>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Access mode");?></td>
 			      <td width="78%" class="vtable">
 			        <select name="rwmode" size="1" id="rwmode">
 		            <option value="ro" <?php if ("ro" === $pconfig['rwmode']) echo "selected";?>><?=gettext("Read only");?></option>
@@ -176,10 +176,10 @@ if($_POST) {
 			      </td>
 			    </tr>
 			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Maximum Connections");?></td>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Maximum connections");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="maxconnections" type="text" id="maxconnections" size="5" value="<?=htmlspecialchars($pconfig['maxconnections']);?>"><br/>
-			        <span class="vexpl"><?=gettext("Total number of connections allowed to this share.");?></span>
+			        <span class="vexpl"><?=gettext("Maximum number of simultaneous connections. Default is 0 (unlimited).");?></span>
 			      </td>
 			    </tr>
 			    <tr>
