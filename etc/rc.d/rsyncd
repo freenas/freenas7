@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: rsyncd
@@ -31,7 +31,6 @@ create_conf()
 
 	# Create rsyncd.conf file.
 	/usr/local/bin/xml sel -t -m "//rsyncd" \
-		-o "read only = no" -n \
 		-o "syslog facility = local4" -n \
 		-o "list = no" -n \
 		-v "concat('port = ',port)" -n \
@@ -41,17 +40,18 @@ create_conf()
 		-i "count(rsyncd_user) > 0" -v "concat('uid = ',rsyncd_user)" -n -b \
 		-m "share" \
 			-n \
-			-v "concat('[', name, ']')" -n \
-			-v "concat('comment = ', comment)" -n \
-			-v "concat('path = ', path)" -n \
+			-v "concat('[',name,']')" -n \
+			-v "concat('comment = ',comment)" -n \
+			-v "concat('path = ',path)" -n \
 			-i "count(browseable) > 0" -o "list = true" -n -b \
-			-i "string-length(maxconnections) > 0" -v "concat('max connections = ', maxconnections)" -n -b \
+			-i "string-length(maxconnections) > 0" -v "concat('max connections = ',maxconnections)" -n -b \
+			-o "read only = false" -n \
 			-i "rwmode[. = 'ro']" -o "read only = true" -n -b \
 			-i "rwmode[. = 'wo']" -o "write only = true" -n -b \
 			-i "string-length(hostsallow) > 0" \
-				-v "concat('hosts allow = ', hostsallow)" -n -b \
+				-v "concat('hosts allow = ',hostsallow)" -n -b \
 			-i "string-length(hostsdeny) > 0" \
-				-v "concat('hosts deny = ', hostsdeny)" -n -b \
+				-v "concat('hosts deny = ',hostsdeny)" -n -b \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${rsyncd_config}
 
