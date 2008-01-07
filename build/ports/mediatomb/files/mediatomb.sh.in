@@ -40,7 +40,7 @@ start_precmd()
 	_if=`configxml_get "//upnp/if"`
 	
 	# Setup a multicast route for UPnP messages.
-	/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface ${_if}
+	/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface ${_if} >/dev/null 2>&1
 	
 	# Ensure that config directory exists.
 	if [ ! -e ${mediatomb_cfgdir} ]; then
