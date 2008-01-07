@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	services_rsyncd.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-		
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -55,20 +55,14 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
-	$reqdfields = array();
-	$reqdfieldsn = array();
-
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "port"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("TCP port")));
-	}
+		// Input validation.
+		$reqdfields = explode(" ", "rsyncd_user port");
+		$reqdfieldsn = array(gettext("Map to user"), gettext("TCP port"));
+		$reqdfieldst = explode(" ", "string port");
 
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	
-	if ($_POST['enable']) {
-		if (!is_port($_POST['port']))
-			$input_errors[] = gettext("The TCP port must be a valid port number.");
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
 	if (!$input_errors) {
@@ -76,9 +70,9 @@ if ($_POST) {
 		$config['rsyncd']['motd'] = $_POST['motd'];
 		$config['rsyncd']['enable'] = $_POST['enable'] ? true : false;
 		$config['rsyncd']['rsyncd_user'] = $_POST['rsyncd_user'];
-		
+
 		write_config();
-		
+
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
@@ -90,7 +84,7 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
@@ -121,11 +115,11 @@ function enable_change(enable_change) {
 			</ul>
 		</td>
 	</tr>
-	<tr> 
+	<tr>
 		<td class="tabcont">
 			<form action="services_rsyncd.php" method="post" name="iform" id="iform">
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<tr> 
+					<tr>
 						<td colspan="2" valign="top" class="optsect_t">
 							<table border="0" cellspacing="0" cellpadding="0" width="100%">
 								<tr>
@@ -137,9 +131,9 @@ function enable_change(enable_change) {
 				  		</table>
 						</td>
 					</tr>
-					<tr>			  		
+					<tr>
 						<td valign="top" class="vncellreq"><?=gettext("Map to user");?></td>
-						<td class="vtable"> 
+						<td class="vtable">
 							<select name="rsyncd_user" class="formfld" id="rsyncd_user">
 								<option value="ftp"<?php if ("ftp" === $pconfig['rsyncd_user']) echo "selected";?>><?=gettext("Guest");?></option>
 								<?php foreach ($a_user as $user):?>
@@ -148,24 +142,24 @@ function enable_change(enable_change) {
 							</select>
 						</td>
 					</tr>
-					<tr> 
+					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("TCP port");?></td>
-						<td width="78%" class="vtable"> 
-							<input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"> 
+						<td width="78%" class="vtable">
+							<input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>">
 							<br><?=gettext("Alternate TCP port. Default is 873");?>
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("MOTD");?></td>
-						<td width="78%" class="vtable"> 
-							<textarea name="motd" cols="65" rows="7" id="motd" class="formpre"><?=htmlspecialchars($pconfig['motd']);?></textarea><br/> 
+						<td width="78%" class="vtable">
+							<textarea name="motd" cols="65" rows="7" id="motd" class="formpre"><?=htmlspecialchars($pconfig['motd']);?></textarea><br/>
 							<?=gettext("Message of the day.");?>
 						</td>
 					</tr>
-					<tr> 
+					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"> 
-							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)"> 
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
 						</td>
 					</tr>
 				</table>
@@ -178,4 +172,4 @@ function enable_change(enable_change) {
 enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
