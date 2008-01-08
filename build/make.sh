@@ -170,17 +170,17 @@ create_rootfs() {
 	return 0
 }
 
-# Actions before building kernel (e.g. install special/additional drivers).
+# Actions before building kernel (e.g. install special/additional kernel patches).
 pre_build_kernel() {
 	tempfile=$FREENAS_WORKINGDIR/tmp$$
-	drivers=$FREENAS_WORKINGDIR/drivers$$
+	patches=$FREENAS_WORKINGDIR/patches$$
 
 	# Create list of available packages.
 	echo "#! /bin/sh
-$DIALOG --title \"$FREENAS_PRODUCTNAME - Drivers\" \\
---checklist \"Select the drivers you want to add. Make sure you have clean/origin kernel sources (via cvsup) to apply patches successful.\" 22 75 14 \\" > $tempfile
+$DIALOG --title \"$FREENAS_PRODUCTNAME - Kernel patches\" \\
+--checklist \"Select the patches you want to add. Make sure you have clean/origin kernel sources (via cvsup) to apply patches successful.\" 22 75 14 \\" > $tempfile
 
-	for s in $FREENAS_SVNDIR/build/drivers/*; do
+	for s in $FREENAS_SVNDIR/build/kernel-patches/*; do
 		[ ! -d "$s" ] && continue
 		package=`basename $s`
 		desc=`cat $s/pkg-descr`
@@ -188,24 +188,24 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Drivers\" \\
 		echo "\"$package\" \"$desc\" $state \\" >> $tempfile
 	done
 
-	# Display list of available drivers.
-	sh $tempfile 2> $drivers
+	# Display list of available kernel patches.
+	sh $tempfile 2> $patches
 	if [ 0 != $? ]; then # successful?
 		rm $tempfile
 		return 1
 	fi
 	rm $tempfile
 
-	for driver in $(cat $drivers | tr -d '"'); do
+	for patch in $(cat $patches | tr -d '"'); do
     echo
 		echo "--------------------------------------------------------------"
-		echo ">>> Adding driver: ${driver}"
+		echo ">>> Adding kernel patch: ${patch}"
 		echo "--------------------------------------------------------------"
-		cd $FREENAS_SVNDIR/build/drivers/$driver
+		cd $FREENAS_SVNDIR/build/kernel-patches/$patch
 		make -I ${FREENAS_MKINCLUDESDIR} install
 		[ 0 != $? ] && return 1 # successful?
 	done
-	rm $drivers
+	rm $patches
 }
 
 # Building the kernel
@@ -217,7 +217,7 @@ build_kernel() {
 
 	# Choose what to do.
 	$DIALOG --title "$FREENAS_PRODUCTNAME - Build/Install kernel" --checklist "Please select whether you want to build or install the kernel." 10 75 3 \
-		"prebuild" "Install additional drivers" OFF \
+		"prebuild" "Apply kernel patches" OFF \
 		"build" "Build kernel" OFF \
 		"install" "Install kernel + modules" ON 2> $tempfile
 	if [ 0 != $? ]; then # successful?
@@ -231,7 +231,7 @@ build_kernel() {
 	for choice in $(echo $choices | tr -d '"'); do
 		case $choice in
 			prebuild)
-				# Adding specials drivers.
+				# Apply kernel patches.
 				pre_build_kernel;
 				[ 0 != $? ] && return 1;; # successful?
 			build)
