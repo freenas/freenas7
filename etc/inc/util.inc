@@ -1038,8 +1038,10 @@ function get_all_disks_list()
 	return $disklist;
 }
 
-/* wrapper for exec() */
-function mwexec($command) {
+// Wrapper for exec().
+// $command - Command to be executed.
+// $logerr - Write error messages to log file.
+function mwexec($command, $logerr = false) {
 	global $g;
 
 	if ($g['debug']) {
@@ -1047,7 +1049,15 @@ function mwexec($command) {
 			echo "mwexec(): $command\n";
 		passthru($command, $retval);
 	} else {
-		exec("$command > /dev/null 2>&1", $oarr, $retval);
+		$redirect = ">/dev/null 2>&1";
+
+		if (true === $logerr)
+			$redirect = "2>&1 >/dev/null";
+
+		exec("{$command} {$redirect}", $output, $retval);
+		if ((true === $logerr) && (is_array($output))) {
+			write_log(implode($output));
+		}
 	}
 
 	return $retval;
