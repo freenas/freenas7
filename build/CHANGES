@@ -37,6 +37,7 @@ Majors changes:
   You have to reconfigure the UPnP service to get working properly.
 - Increase mfsroot size to 54mb for embedded version. So hopefully the OS has enough memory for logfiles,...
   Especially with Samba tbd files, which increases rapidely with a huge number of users accessing the system.
+- Add kernel patch to support ATi IXP600/700 PATA/SATA.
 
 Minors changes:
 - Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
