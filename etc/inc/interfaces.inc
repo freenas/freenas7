@@ -2,7 +2,7 @@
 /*
 	interfaces.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -67,7 +67,7 @@ function interfaces_lan_configure()
 
 	/* MAC spoofing? */
 	if ($lancfg['spoofmac']) {
-		mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " link " . escapeshellarg($lancfg['spoofmac']));
+		mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " link " . escapeshellarg($lancfg['spoofmac']), true);
 	}
 
 	/* media */
@@ -88,7 +88,7 @@ function interfaces_lan_configure()
 			$cmd .= " mtu ". escapeshellarg($lancfg['mtu']);
 		}
 
-		mwexec($cmd);
+		mwexec($cmd, true);
 	}
 
 	switch ($lancfg['ipaddr']) {
@@ -219,8 +219,7 @@ function interfaces_optional_configure_if($opti)
 
 		/* MAC spoofing? */
 		if ($optcfg['spoofmac'])
-			mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) .
-				" link " . escapeshellarg($optcfg['spoofmac']));
+			mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " link " . escapeshellarg($optcfg['spoofmac']), true);
 
 		/* media */
 		if ($optcfg['media'] || $optcfg['mediaopt'] || $optcfg['polling'] || $optcfg['mtu']) {
@@ -240,7 +239,7 @@ function interfaces_optional_configure_if($opti)
 				$cmd .= " mtu ". escapeshellarg($optcfg['mtu']);
 			}
 
-			mwexec($cmd);
+			mwexec($cmd, true);
 		}
 
 		switch ($optcfg['ipaddr']) {
@@ -345,7 +344,7 @@ function interfaces_wireless_configure($if, $wlcfg)
 
 	$ifcargs .= "up";
 
-	mwexec("/sbin/ifconfig " . $ifcargs);
+	mwexec("/sbin/ifconfig {$ifcargs}", true);
 
 	return 0;
 }
