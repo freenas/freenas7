@@ -1,7 +1,7 @@
 PORTNAME=			fusefs-ntfs
 PORTVERSION=	1.0
 PORTREVISION=	0
-PORTEPOCH=		5
+PORTEPOCH=		6
 CATEGORIES=		sysutils
 COMMENT=			Mount NTFS partitions and disk images
 MAINTAINER=		votdev@gmx.de
@@ -30,6 +30,8 @@ post-patch:
 	@${CP} -pv ${FILESDIR}/fusefs-ntfs-options /var/db/ports/fusefs-ntfs/options
 
 do-install:
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/fusefs.in ${FREENAS_ROOTFS}/etc/rc.d/fusefs
+
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/fusefs-kmod/work/fuse4bsd*/mount_fusefs/mount_fusefs ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/fusefs-ntfs/work/ntfs-3g*/src/.libs/ntfs-3g ${FREENAS_ROOTFS}/usr/local/bin
 
