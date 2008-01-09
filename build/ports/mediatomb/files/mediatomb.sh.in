@@ -95,9 +95,11 @@ start_precmd()
 	echo '<map from="mpg" to="video/mpeg"/>' >> ${mediatomb_config}
 	echo '<map from="MPG" to="video/mpeg"/>' >> ${mediatomb_config}
 	echo '<map from="mpeg" to="video/mpeg"/>' >> ${mediatomb_config}
+	echo '<map from="jpg" to="image/jpeg"/>' >> ${mediatomb_config}
 	echo '<map from="jpeg" to="image/jpeg"/>' >> ${mediatomb_config}
 	echo '<map from="gif" to="image/gif"/>' >> ${mediatomb_config}
 	echo '<map from="png" to="image/png"/>' >> ${mediatomb_config}
+	echo '<map from="m2v" to="video/mpeg"/>' >> ${mediatomb_config}
 	echo '<map from="m4v" to="video/mp4"/>' >> ${mediatomb_config}
 	echo '<map from="mp4" to="video/mp4"/>' >> ${mediatomb_config}
 	echo '</extension-mimetype>' >> ${mediatomb_config}
