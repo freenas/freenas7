@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2007-12-16 12:46+0000\n"
+"PO-Revision-Date: 2008-01-09 07:49+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -138,10 +138,10 @@ msgstr ""
 msgid "Access"
 msgstr ""
 
-msgid "Access Mode"
+msgid "Access mode"
 msgstr ""
 
-msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
+msgid "Accessible through 'http://ip_address:port'."
 msgstr ""
 
 msgid "Accessiblity test to MS domain"
@@ -213,13 +213,13 @@ msgstr ""
 msgid "Add user"
 msgstr ""
 
+msgid "Additional group"
+msgstr ""
+
 msgid "Address"
 msgstr ""
 
 msgid "Administration password"
-msgstr ""
-
-msgid "Administrator"
 msgstr ""
 
 msgid "Administrator name"
@@ -288,7 +288,7 @@ msgstr ""
 msgid "An host with this name already exists."
 msgstr ""
 
-msgid "Anonymous login"
+msgid "Anonymous users only"
 msgstr ""
 
 msgid "Apply changes"
@@ -418,6 +418,12 @@ msgstr ""
 msgid "Client Identifier"
 msgstr ""
 
+msgid "Client sees lowercase, server sees uppercase"
+msgstr ""
+
+msgid "Client sees uppercase, server sees lowercase"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr ""
 
@@ -442,9 +448,6 @@ msgstr ""
 msgid "Community"
 msgstr ""
 
-msgid "Compliant profile to be used."
-msgstr ""
-
 msgid "Compression"
 msgstr ""
 
@@ -467,9 +470,6 @@ msgid "Contact information, e.g. name or email of the person responsible for thi
 msgstr ""
 
 msgid "Content"
-msgstr ""
-
-msgid "Control web page"
 msgstr ""
 
 msgid "Count"
@@ -497,10 +497,10 @@ msgstr ""
 msgid "Cron job"
 msgstr ""
 
-msgid "DHCP"
+msgid "DDP"
 msgstr ""
 
-msgid "DLNA"
+msgid "DHCP"
 msgstr ""
 
 msgid "DN to bind"
@@ -522,10 +522,10 @@ msgstr ""
 msgid "Data integrity"
 msgstr ""
 
-msgid "Date"
+msgid "Database directory"
 msgstr ""
 
-msgid "Default"
+msgid "Date"
 msgstr ""
 
 msgid "Default is 21"
@@ -652,6 +652,9 @@ msgid "Directory mask"
 msgstr ""
 
 msgid "Directory to be shared."
+msgstr ""
+
+msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr ""
 
 msgid "Disable console menu"
@@ -864,13 +867,7 @@ msgstr ""
 msgid "Enable Zeroconf"
 msgstr ""
 
-msgid "Enable anonymous login."
-msgstr ""
-
 msgid "Enable compression."
-msgstr ""
-
-msgid "Enable control web page."
 msgstr ""
 
 msgid "Enable device polling"
@@ -880,6 +877,9 @@ msgid "Enable extended attribute support"
 msgstr ""
 
 msgid "Enable firmware upload"
+msgstr ""
+
+msgid "Enable foreground/background file system consistency check during boot process."
 msgstr ""
 
 msgid "Enable guest access."
@@ -892,9 +892,6 @@ msgid "Enable large read/write"
 msgstr ""
 
 msgid "Enable local user authentication."
-msgstr ""
-
-msgid "Enable local user login."
 msgstr ""
 
 msgid "Enable permission inheritance"
@@ -919,6 +916,9 @@ msgid "Enable this if your FTP server is behind a NAT box that doesn't support a
 msgstr ""
 
 msgid "Enable tuning of some kernel variables"
+msgstr ""
+
+msgid "Enable web user interface."
 msgstr ""
 
 msgid "Enabled"
@@ -1056,6 +1056,9 @@ msgstr ""
 msgid "File system"
 msgstr ""
 
+msgid "File system check"
+msgstr ""
+
 msgid "Filename"
 msgstr ""
 
@@ -1110,9 +1113,6 @@ msgstr ""
 msgid "Full Name"
 msgstr ""
 
-msgid "Full Shell"
-msgstr ""
-
 msgid "Gateway"
 msgstr ""
 
@@ -1140,7 +1140,7 @@ msgstr ""
 msgid "Geom Vinum"
 msgstr ""
 
-msgid "Give full shell to user"
+msgid "Give full shell access to user."
 msgstr ""
 
 msgid "Global Configuration"
@@ -1341,6 +1341,9 @@ msgstr ""
 msgid "Interfaces"
 msgstr ""
 
+msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
+msgstr ""
+
 msgid "JBOD"
 msgstr ""
 
@@ -1423,9 +1426,6 @@ msgstr ""
 msgid "Local Master Browser"
 msgstr ""
 
-msgid "Local User"
-msgstr ""
-
 msgid "Local share"
 msgstr ""
 
@@ -1435,10 +1435,16 @@ msgstr ""
 msgid "Local shares to be synchronized"
 msgstr ""
 
+msgid "Local users only"
+msgstr ""
+
 msgid "Location"
 msgstr ""
 
 msgid "Location information, e.g. physical location of this system: 'Floor of building, Room xyz'."
+msgstr ""
+
+msgid "Location where the content database file will be stored. The bookmark file will also be generated in that directory."
 msgstr ""
 
 msgid "Log Level"
@@ -1448,6 +1454,9 @@ msgid "Login"
 msgstr ""
 
 msgid "Logs"
+msgstr ""
+
+msgid "Lowercases names in both directions"
 msgstr ""
 
 msgid "MAC address"
@@ -1478,9 +1487,6 @@ msgid "Map to user"
 msgstr ""
 
 msgid "Max. conn. per IP"
-msgstr ""
-
-msgid "Maximum Connections"
 msgstr ""
 
 msgid "Maximum connections"
@@ -1550,6 +1556,9 @@ msgid "Minutes between network time sync."
 msgstr ""
 
 msgid "Miscellaneous"
+msgstr ""
+
+msgid "Module name"
 msgstr ""
 
 msgid "Modules"
@@ -1652,6 +1661,9 @@ msgstr ""
 msgid "No RSYNC Client configured"
 msgstr ""
 
+msgid "No case folding"
+msgstr ""
+
 msgid "No disk configured"
 msgstr ""
 
@@ -1668,6 +1680,9 @@ msgid "Note"
 msgstr ""
 
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
+msgstr ""
+
+msgid "Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
 msgstr ""
 
 msgid "Now"
@@ -1698,6 +1713,12 @@ msgid "Old passphrase"
 msgstr ""
 
 msgid "Old password"
+msgstr ""
+
+msgid "Only allow anonymous users. Use this on a public FTP site with no remote FTP access to real accounts."
+msgstr ""
+
+msgid "Only allow authenticated users. Anonymous logins are prohibited."
 msgstr ""
 
 #, php-format
@@ -1849,6 +1870,12 @@ msgstr ""
 msgid "Primary Group"
 msgstr ""
 
+msgid "Primary group"
+msgstr ""
+
+msgid "Primary group is also selected in additional group."
+msgstr ""
+
 msgid "Private Key"
 msgstr ""
 
@@ -1858,16 +1885,10 @@ msgstr ""
 msgid "Processes information"
 msgstr ""
 
-msgid "Profile"
-msgstr ""
-
 msgid "Provider"
 msgstr ""
 
 msgid "Proxy"
-msgstr ""
-
-msgid "Put user in the administrator group"
 msgstr ""
 
 msgid "Puts the hard disk into standby mode when the selected amount of time after the last access has elapsed. <em>Do not set this for CF cards.</em>"
@@ -2096,6 +2117,9 @@ msgstr ""
 msgid "Services"
 msgstr ""
 
+msgid "Set additional group memberships for this account."
+msgstr ""
+
 msgid "Set browseable"
 msgstr ""
 
@@ -2103,6 +2127,9 @@ msgid "Set browseable."
 msgstr ""
 
 msgid "Set share password."
+msgstr ""
+
+msgid "Set the account's primary group to the given group."
 msgstr ""
 
 msgid "Settings"
@@ -2124,6 +2151,9 @@ msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
 msgid "Shares"
+msgstr ""
+
+msgid "Shell access"
 msgstr ""
 
 msgid "Show log entries in reverse order (newest entries on top)"
@@ -2314,12 +2344,6 @@ msgstr ""
 msgid "The %s port must be a valid port number."
 msgstr ""
 
-msgid "The Group desc contains invalid characters."
-msgstr ""
-
-msgid "The Group name contains invalid characters."
-msgstr ""
-
 msgid "The IP address that this hostname represents."
 msgstr ""
 
@@ -2470,6 +2494,12 @@ msgid "The following input errors were detected"
 msgstr ""
 
 msgid "The full name contains invalid characters."
+msgstr ""
+
+msgid "The group description contains invalid characters."
+msgstr ""
+
+msgid "The group name contains invalid characters."
 msgstr ""
 
 msgid "The host list has been changed.<br>You must apply the changes in order for them to take effect."
@@ -2718,9 +2748,6 @@ msgstr ""
 msgid "Tools"
 msgstr ""
 
-msgid "Total number of connections allowed to this share."
-msgstr ""
-
 msgid "Traceroute"
 msgstr ""
 
@@ -2810,6 +2837,9 @@ msgstr ""
 msgid "Upgrade firmware"
 msgstr ""
 
+msgid "Uppercases names in both directions"
+msgstr ""
+
 msgid "Uptime"
 msgstr ""
 
@@ -2889,6 +2919,9 @@ msgstr ""
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr ""
 
+msgid "Web user interface"
+msgstr ""
+
 msgid "WebGUI port"
 msgstr ""
 
@@ -2917,9 +2950,6 @@ msgid "Working Directory"
 msgstr ""
 
 msgid "Write only"
-msgstr ""
-
-msgid "XboX 360"
 msgstr ""
 
 msgid "Yes"
@@ -2954,9 +2984,6 @@ msgstr ""
 msgid "You must add disks first."
 msgstr ""
 
-msgid "You must create a group first."
-msgstr ""
-
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
@@ -2967,9 +2994,6 @@ msgid "You must reboot the system before you can upgrade the firmware."
 msgstr ""
 
 msgid "You must select at least one authentication method."
-msgstr ""
-
-msgid "You must select at minium anonymous or/and local user authentication."
 msgstr ""
 
 msgid "You must use a passphrase to attach an encrypted disk."
