@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-01-09 07:49+0000\n"
+"PO-Revision-Date: 2008-01-10 18:07+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -130,9 +130,6 @@ msgid "AFP Server"
 msgstr ""
 
 msgid "ARP table"
-msgstr ""
-
-msgid "ATAidle"
 msgstr ""
 
 msgid "Access"
@@ -684,7 +681,13 @@ msgstr ""
 msgid "Disks"
 msgstr ""
 
+msgid "Disks (ATA)"
+msgstr ""
+
 msgid "Do not create .AppleDouble directory"
+msgstr ""
+
+msgid "Do not set this for CF cards."
 msgstr ""
 
 msgid "Do you really want to delete this RSYNC?"
@@ -1393,13 +1396,17 @@ msgstr ""
 msgid "Last config change"
 msgstr ""
 
+#, php-format
+msgid "Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."
+msgstr ""
+
 msgid "License"
 msgstr ""
 
-msgid "List of Advanced ATA capabilities on all ATA disk"
+msgid "List of SMART capabilities on all detected disk"
 msgstr ""
 
-msgid "List of SMART capabilities on all detected disk"
+msgid "List of advanced ATA capabilities on all ATA disk"
 msgstr ""
 
 msgid "List of detected ATA disks"
@@ -1864,7 +1871,7 @@ msgstr ""
 msgid "Prefix"
 msgstr ""
 
-msgid "Preformatted FS"
+msgid "Preformatted file system"
 msgstr ""
 
 msgid "Primary Group"
@@ -1891,7 +1898,7 @@ msgstr ""
 msgid "Proxy"
 msgstr ""
 
-msgid "Puts the hard disk into standby mode when the selected amount of time after the last access has elapsed. <em>Do not set this for CF cards.</em>"
+msgid "Puts the hard disk into standby mode when the selected amount of time after the last hard disk access has been elapsed."
 msgstr ""
 
 msgid "Quality"
@@ -2628,14 +2635,16 @@ msgstr ""
 msgid "These commands will be executed pre or post system initialization (booting) or before system shutdown."
 msgstr ""
 
-msgid "This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"
+msgid "This allows you to lower the power consumption of the drive, at the expense of performance."
 msgstr ""
 
-#, php-format
-msgid "This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"
+msgid "This allows you to set how loud the drive is while it's operating."
 msgstr ""
 
-msgid "This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"
+msgid "This allows you to set the file system for preformatted hard disks containing data."
+msgstr ""
+
+msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
 msgstr ""
 
 msgid "This certificate does not appear to be valid."
@@ -2760,6 +2769,9 @@ msgstr ""
 msgid "Traffic graph"
 msgstr ""
 
+msgid "Transfer mode"
+msgstr ""
+
 msgid "Trap host"
 msgstr ""
 
@@ -2779,9 +2791,6 @@ msgid "Tuning"
 msgstr ""
 
 msgid "Type"
-msgstr ""
-
-msgid "UDMA mode"
 msgstr ""
 
 #, php-format
@@ -2956,9 +2965,6 @@ msgid "Yes"
 msgstr ""
 
 msgid "You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"
-msgstr ""
-
-msgid "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."
 msgstr ""
 
 #, php-format
