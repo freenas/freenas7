@@ -169,7 +169,7 @@ function enable_change(enable_change) {
 							<?php endforeach; ?>
 							</select>
 							<br>
-							<?=gettext("Puts the hard disk into standby mode when the selected amount of time after the last access has elapsed. <em>Do not set this for CF cards.</em>") ;?>
+							<?=gettext("Puts the hard disk into standby mode when the selected amount of time after the last hard disk access has been elapsed.");?> <em><?=gettext("Do not set this for CF cards.");?></em>
 						</td>
 					</tr>
 					<tr>
@@ -182,7 +182,7 @@ function enable_change(enable_change) {
 							<?php endforeach; ?>
 							</select>
 							<br>
-							<?=gettext("This allows you to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"); ?>
+							<?=gettext("This allows you to lower the power consumption of the drive, at the expense of performance.");?> <em><?=gettext("Do not set this for CF cards.");?></em>
 						</td>
 					</tr>
 					<tr>
@@ -195,11 +195,11 @@ function enable_change(enable_change) {
 							<?php endforeach; ?>
 							</select>
 							<br>
-							<?=gettext("This allows you to set how loud the drive is while it's operating.<br><em>Do not set this for CF cards.</em>"); ?>
+							<?=gettext("This allows you to set how loud the drive is while it's operating.");?> <em><?=gettext("Do not set this for CF cards.");?></em>
 						</td>
 					</tr>
 					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Preformatted FS"); ?></td>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Preformatted file system"); ?></td>
 						<td width="78%" class="vtable">
 							<select name="fstype" class="formfld">
 							<?php $fstlist = get_fstype_list(); ?>
@@ -207,8 +207,8 @@ function enable_change(enable_change) {
 								<option value="<?=$fstval;?>" <?php if($pconfig['fstype'] == $fstval) echo 'selected';?>><?=gettext($fstname);?></option>
 							<?php endforeach; ?>
 							</select>
-							<br>
-							<?php echo sprintf( gettext("This allows you to set FS type for preformated disk with data.<br><em>Leave 'unformated' for unformated disk and then use <a href=%s>format menu</a>.</em>"), "disks_init.php"); ?>
+							<br/>
+							<?=gettext("This allows you to set the file system for preformatted hard disks containing data.");?> <?php echo sprintf(gettext("Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."), "Unformated", "disks_init.php");?>
 						</td>
 					</tr>
 					<tr>
