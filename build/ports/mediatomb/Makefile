@@ -27,7 +27,7 @@ CONFIGURE_ARGS=		--with-search="${LOCALBASE}" \
 									--disable-libjs \
 									--disable-libexif \
 									--disable-tombdebug \
-									--enable-mrreg-service
+									--enable-protocolinfo-extension
 CONFIGURE_ENV=		PTHREAD_LIBS="${PTHREAD_LIBS}" \
 									PTHREAD_CFLAGS="${PTHREAD_CFLAGS}" \
 									LDFLAGS="${LDFLAGS}" \
