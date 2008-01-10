@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	diag_infos_ataidle.php
+	diag_infos_ata.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
@@ -32,7 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
-$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("ATAidle"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks (ATA)"));
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -40,9 +40,9 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("ATAidl
 		<td class="tabnavtbl">
 			<ul id="tabnav">
 				<li class="tabinact"><a href="diag_infos.php"><?=gettext("Disks");?></a></li>
+				<li class="tabact"><a href="diag_infos_ata.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Disks (ATA)");?></a></li>
 				<li class="tabinact"><a href="diag_infos_part.php"><?=gettext("Partitions");?></a></li>
 				<li class="tabinact"><a href="diag_infos_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
-				<li class="tabact"><a href="diag_infos_ataidle.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("ATAidle");?></a></li>
 				<li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
 				<li class="tabinact"><a href="diag_infos_mount.php"><?=gettext("Mounts");?></a></li>
 				<li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
@@ -57,12 +57,13 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("ATAidl
 	</tr>
 	<tr>
     <td class="tabcont">
-    	<pre><strong><?=gettext("List of Advanced ATA capabilities on all ATA disk");?>:</strong>
+    	<pre><strong><?=gettext("List of advanced ATA capabilities on all ATA disk");?>:</strong>
       <?php
       $disklist = get_ata_disks_list();
       foreach ($disklist as $disknamek => $disknamev) {
-      	/* Found the channel and device number from the /dev name. */
-      	/* Divise the number by 2, the interger is the channel number, the rest is the device. */
+      	// Display device name and channel informations. 
+      	// Found the channel and device number from the /dev name.
+      	// Divise the number by 2, the interger is the channel number, the rest is the device.
       	$value = intval(trim($disknamek, "ad"));
       	$channel = $value / 2;
       	$channel = intval($channel);
@@ -73,6 +74,12 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("ATAidl
 				echo gettext("Channel") . ":		{$channel}<br/>";
 				echo gettext("Device") . ":			{$device}<br/>";
 
+				// Display DMA mode.
+				$dmamode = trim(preg_replace("/current mode = /", "", exec("/sbin/atacontrol mode {$disknamek}")));
+
+				echo gettext("DMA mode") . ":		{$dmamode}<br/>";
+
+				// Display more informations.
       	exec("/usr/local/sbin/ataidle {$channel} {$device}", $rawdata);
       	array_shift($rawdata);
       	array_shift($rawdata);

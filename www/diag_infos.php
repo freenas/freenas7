@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	diag_infos.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -34,25 +34,27 @@
 require("guiconfig.inc");
 $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks"));
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-    <li class="tabact"><a href="diag_infos.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Disks");?></a></li>
-    <li class="tabinact"><a href="diag_infos_part.php"><?=gettext("Partitions");?></a></li>
-    <li class="tabinact"><a href="diag_infos_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
-    <li class="tabinact"><a href="diag_infos_ataidle.php"><?=gettext("ATAidle");?></a></li>
-    <li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
-    <li class="tabinact"><a href="diag_infos_mount.php"><?=gettext("Mounts");?></a></li>
-    <li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
-    <li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
-    <li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
-	<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
-	<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
-	<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP users");?></a></li>
-	<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
-  </ul>
-  </td></tr>
+  <tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabact"><a href="diag_infos.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Disks");?></a></li>
+				<li class="tabinact"><a href="diag_infos_ata.php"><?=gettext("Disks (ATA)");?></a></li>
+				<li class="tabinact"><a href="diag_infos_part.php"><?=gettext("Partitions");?></a></li>
+				<li class="tabinact"><a href="diag_infos_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
+				<li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
+				<li class="tabinact"><a href="diag_infos_mount.php"><?=gettext("Mounts");?></a></li>
+				<li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
+				<li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
+				<li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
+				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
+				<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
+				<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP users");?></a></li>
+				<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
+			</ul>
+		</td>
+	</tr>
   <tr>
     <td class="tabcont">
       <?php
@@ -73,4 +75,4 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks"
     </td>
   </tr>
 </table>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
