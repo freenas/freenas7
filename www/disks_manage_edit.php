@@ -3,7 +3,7 @@
 /*
 	disks_manage_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -55,7 +55,7 @@ if (isset($id) && $a_disk[$id]) {
 	$pconfig['acoustic'] = $a_disk[$id]['acoustic'];
 	$pconfig['fstype'] = $a_disk[$id]['fstype'];
 	$pconfig['apm'] = $a_disk[$id]['apm'];
-	$pconfig['udma'] = $a_disk[$id]['udma'];
+	$pconfig['transfermode'] = $a_disk[$id]['transfermode'];
 	$pconfig['devicespecialfile'] = $a_disk[$id]['devicespecialfile'];
 }
 
@@ -75,22 +75,16 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$disks = array();
-
 		$devname = $_POST['name'];
-		$devharddiskstandby = $_POST['harddiskstandby'];
-		$harddiskacoustic = $_POST['acoustic'];
-		$harddiskapm  = $_POST['apm'];
-		$harddiskudma  = $_POST['udma'];
-		$harddiskfstype = $_POST['fstype'];
 
+		$disks = array();
 		$disks['name'] = $devname;
 		$disks['devicespecialfile'] = "/dev/{$devname}";
-		$disks['harddiskstandby'] = $devharddiskstandby ;
-		$disks['acoustic'] = $harddiskacoustic ;
-		if ($harddiskfstype) $disks['fstype'] = $harddiskfstype ;
-		$disks['apm'] = $harddiskapm ;
-		$disks['udma'] = $harddiskudma ;
+		$disks['harddiskstandby'] = $_POST['harddiskstandby'];
+		$disks['acoustic'] = $_POST['acoustic'];
+		if ($_POST['fstype']) $disks['fstype'] = $_POST['fstype'];
+		$disks['apm'] = $_POST['apm'];
+		$disks['transfermode'] = $_POST['transfermode'];
 		$disks['type'] = $a_phy_disk[$devname]['type'];
 		$disks['desc'] = $a_phy_disk[$devname]['desc'];
 		$disks['size'] = $a_phy_disk[$devname]['size'];
@@ -146,16 +140,16 @@ function enable_change(enable_change) {
 					  </td>
 					</tr>
 					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("UDMA mode"); ?></td>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Transfer mode"); ?></td>
 						<td width="78%" class="vtable">
-							<select name="udma" class="formfld" id="udma">
-							<?php $types = explode(",", "Auto,UDMA-33,UDMA-66,UDMA-100,UDMA-133"); $vals = explode(" ", "auto UDMA2 UDMA4 UDMA5 UDMA6");
+							<select name="transfermode" class="formfld" id="transfermode">
+							<?php $types = explode(",", "Auto,PIO-0,PIO-1,PIO-2,PIO-3,PIO-4,WDMA-2,UDMA-33,UDMA-66,UDMA-100,UDMA-133"); $vals = explode(" ", "auto PIO0 PIO1 PIO2 PIO3 PIO4 WDMA2 UDMA2 UDMA4 UDMA5 UDMA6");
 							$j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['udma']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
+								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['transfermode']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
 							<?php endfor; ?>
 							</select>
 							<br>
-							<?=gettext("You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your hard drive."); ?>
+							<?=gettext("You can force PIO/UDMA mode if you have 'UDMA_ERROR.... LBA' message with your IDE/ATA hard drive."); ?>
 						</td>
 					</tr>
 					<tr>

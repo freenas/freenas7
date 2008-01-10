@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: ataidle
@@ -13,18 +13,18 @@ echo -n "Initializing idle timer/UDMA on ATA disks: "
 
 # Process all configured IDE disks.
 /usr/local/bin/xml sel -t -m "//disks/disk[type = 'IDE']" \
-	-v "concat(name,' ',udma,' ',harddiskstandby,' ',apm,' ',acoustic)" \
+	-v "concat(name,' ',transfermode,' ',harddiskstandby,' ',apm,' ',acoustic)" \
 	-i "position() != last()" -n -b \
 	${configxml_file} | /usr/local/bin/xml unesc | \
-	while read _name _udma _harddiskstandby _apm _acoustic; do
+	while read _name _transfermode _harddiskstandby _apm _acoustic; do
 		# Calculate the channel and device ids.
 		_devnum=${_name#*ad}
 		_channel=$(( ${_devnum} / 2 ))
 		_device=$(( ${_devnum} % 2 ))
 
 		# If UDMA mode is forced, launch atacontrol.
-		if [ "auto" != "${_udma}" ]; then
-			/sbin/atacontrol mode ${_name} ${_udma} > /dev/null 2>&1
+		if [ "auto" != "${_transfermode}" ]; then
+			/sbin/atacontrol mode ${_name} ${_transfermode} > /dev/null 2>&1
 		fi
 
 		# Set command args.

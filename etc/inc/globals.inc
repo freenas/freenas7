@@ -2,7 +2,7 @@
 /*
   globals.inc
  	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -50,7 +50,7 @@ $g = array(
     "www_path" => "/usr/local/www",
     "xml_rootobj" => "freenas",
     "debug" => false,
-    "latest_config" => "3.8",
+    "latest_config" => "3.9",
     "nopccard_platforms" => array("wrap", "net48xx"),
     "wireless_regex" => "/^(wi|ath|an|awi|ral|iwi|ipw|ural)/",
     "default_passwd" => "freenas",
