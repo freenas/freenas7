@@ -77,7 +77,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks 
 				// Display DMA mode.
 				$dmamode = trim(preg_replace("/current mode = /", "", exec("/sbin/atacontrol mode {$disknamek}")));
 
-				echo gettext("DMA mode") . ":		{$dmamode}<br/>";
+				echo gettext("Transfer mode") . ":		{$dmamode}<br/>";
 
 				// Display more informations.
       	exec("/usr/local/sbin/ataidle {$channel} {$device}", $rawdata);

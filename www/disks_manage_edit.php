@@ -57,6 +57,13 @@ if (isset($id) && $a_disk[$id]) {
 	$pconfig['apm'] = $a_disk[$id]['apm'];
 	$pconfig['transfermode'] = $a_disk[$id]['transfermode'];
 	$pconfig['devicespecialfile'] = $a_disk[$id]['devicespecialfile'];
+} else {
+	$pconfig['name'] = "";
+	$pconfig['transfermode'] = "auto";
+	$pconfig['harddiskstandby'] = "0";
+	$pconfig['apm'] = "0";
+	$pconfig['acoustic'] = "0";
+	$pconfig['fstype'] = "";
 }
 
 if ($_POST) {
@@ -143,7 +150,7 @@ function enable_change(enable_change) {
 						<td width="22%" valign="top" class="vncell"><?=gettext("Transfer mode"); ?></td>
 						<td width="78%" class="vtable">
 							<select name="transfermode" class="formfld" id="transfermode">
-							<?php $types = explode(",", "Auto,PIO-0,PIO-1,PIO-2,PIO-3,PIO-4,WDMA-2,UDMA-33,UDMA-66,UDMA-100,UDMA-133"); $vals = explode(" ", "auto PIO0 PIO1 PIO2 PIO3 PIO4 WDMA2 UDMA2 UDMA4 UDMA5 UDMA6");
+							<?php $types = explode(",", "Auto,PIO0,PIO1,PIO2,PIO3,PIO4,WDMA2,UDMA-33,UDMA-66,UDMA-100,UDMA-133"); $vals = explode(" ", "auto PIO0 PIO1 PIO2 PIO3 PIO4 WDMA2 UDMA2 UDMA4 UDMA5 UDMA6");
 							$j = 0; for ($j = 0; $j < count($vals); $j++): ?>
 								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['transfermode']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
 							<?php endfor; ?>
