@@ -156,7 +156,7 @@ function enable_change(enable_change) {
 							<?php endfor; ?>
 							</select>
 							<br>
-							<?=gettext("You can force PIO/UDMA mode if you have 'UDMA_ERROR.... LBA' message with your IDE/ATA hard drive."); ?>
+							<?=gettext("This allows you to set the transfer mode for ATA/IDE hard drives.");?>
 						</td>
 					</tr>
 					<tr>
@@ -182,7 +182,7 @@ function enable_change(enable_change) {
 							<?php endforeach; ?>
 							</select>
 							<br>
-							<?=gettext("This allows  you  to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"); ?>
+							<?=gettext("This allows you to lower the power consumption of the drive, at the expense of performance.<br><em>Do not set this for CF cards.</em>"); ?>
 						</td>
 					</tr>
 					<tr>
