@@ -33,8 +33,10 @@ FreeNAS 0.686.1:
 Majors changes:
 - Upgrade Samba to 3.0.28.
 - Enhance WebGUI + rc-script to define additional group memberships for user accounts.
-- Replace uShare UPnP Mediaserver with MediaTomb 0.10.0.
-  You have to reconfigure the UPnP service to get working properly. XBox 360 seems not to be supported, sorry.
+- Replace uShare UPnP Mediaserver with MediaTomb 0.10.0. This has been done because ushare's latest version
+  fails to build on FreeBSD, also new version requires external libs for DLNA support which is not ported
+  to FreeBSD right at the moment.
+  You have to reconfigure the UPnP service to get working properly. XBox 360 is not supported, sorry.
 - Increase mfsroot size to 54mb for embedded version. So hopefully the OS has enough memory for logfiles,...
   Especially with Samba tbd files, which increases rapidely with a huge number of users accessing the system.
 - Add kernel patch to support ATi IXP600/700 PATA/SATA.
