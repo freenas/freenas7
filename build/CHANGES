@@ -45,6 +45,7 @@ Minors changes:
 - Add checkbox in 'Mount Point' WebGUI to enable/disable foreground/background file system consistency check during boot process.
 - Remove 'Read only' checkbox from rsyncd settings page (WebGUI). Access mode can be defined per share.
 - Autoselect 'Selected' checkbox in time selection control (minutes/hours/days/months/weekdays) e.g. when configuring scheduled reboot.
+- Add ability to select PIO modes for IDE/ATA disks on 'Disks: Management: Disk: Edit' WebGUI page.
 
 Bug fixs:
 - Calculating iSCSI extent IDs fails for numbers > 10.

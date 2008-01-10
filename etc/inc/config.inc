@@ -1118,6 +1118,19 @@ function config_upgrade() {
 		$config['version'] = "3.8";
 	}
 
+	/* Convert 3.8 -> 3.9 */
+	/* Rename attribute //disks/disk/udma -> //disks/disk/transfermode. */
+	if ($config['version'] === "3.8") {
+		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
+			if (isset($config['disks']['disk'][$i]['udma'])) {
+				$config['disks']['disk'][$i]['transfermode'] = $config['disks']['disk'][$i]['udma'];
+				unset($config['disks']['disk'][$i]['udma']);
+			}
+		}
+
+		$config['version'] = "3.9";
+	}
+
 	write_config();
 
 	if (is_booting())
