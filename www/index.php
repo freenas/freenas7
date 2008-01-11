@@ -57,7 +57,7 @@ $pgtitle_omit = true;
   <tr>
     <td width="25%" valign="top" class="vncellt"><?=gettext("Version");?></td>
     <td width="75%" class="listr">
-      <strong><?=get_product_version();?></strong> (revison <?=get_product_revision();?>)</br>
+      <strong><?=get_product_version();?></strong> (revision <?=get_product_revision();?>)</br>
 			<?=gettext("built on");?> <?=get_product_buildtime();?>
     </td>
   </tr>
@@ -68,7 +68,7 @@ $pgtitle_omit = true;
         exec("/sbin/sysctl -n kern.ostype", $ostype);
         exec("/sbin/sysctl -n kern.osrelease", $osrelease);
         exec("/sbin/sysctl -n kern.osrevision", $osrevision);
-        echo("$ostype[0] $osrelease[0] (revison $osrevision[0])");
+        echo("$ostype[0] $osrelease[0] (revision $osrevision[0])");
       ?>
     </td>
   </tr>
