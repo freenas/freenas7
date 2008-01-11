@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	services_rsyncd_share_edit.php
+	services_rsyncd_module_edit.php
 	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
@@ -40,34 +40,34 @@ $id = $_GET['id'];
 if(isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Services"), gettext("RSYNCD"), gettext("Share"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Services"), gettext("RSYNCD"), gettext("Module"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
 
-if(!is_array($config['rsyncd']['share']))
-	$config['rsyncd']['share'] = array();
+if(!is_array($config['rsyncd']['module']))
+	$config['rsyncd']['module'] = array();
 
 array_sort_key($config['mounts']['mount'], "devicespecialfile");
-array_sort_key($config['rsyncd']['share'], "name");
+array_sort_key($config['rsyncd']['module'], "name");
 
 $a_mount = &$config['mounts']['mount'];
-$a_share = &$config['rsyncd']['share'];
+$a_module = &$config['rsyncd']['module'];
 
-if (isset($id) && $a_share[$id]) {
-	$pconfig['name'] = $a_share[$id]['name'];
-	$pconfig['path'] = $a_share[$id]['path'];
-	$pconfig['comment'] = $a_share[$id]['comment'];
-	$pconfig['browseable'] = isset($a_share[$id]['browseable']);
-	$pconfig['rwmode'] = $a_share[$id]['rwmode'];
-	$pconfig['maxconnections'] = $a_share[$id]['maxconnections'];
-	$pconfig['hostsallow'] = $a_share[$id]['hostsallow'];
-	$pconfig['hostsdeny'] = $a_share[$id]['hostsdeny'];
+if (isset($id) && $a_module[$id]) {
+	$pconfig['name'] = $a_module[$id]['name'];
+	$pconfig['path'] = $a_module[$id]['path'];
+	$pconfig['comment'] = $a_module[$id]['comment'];
+	$pconfig['list'] = isset($a_module[$id]['list']);
+	$pconfig['rwmode'] = $a_module[$id]['rwmode'];
+	$pconfig['maxconnections'] = $a_module[$id]['maxconnections'];
+	$pconfig['hostsallow'] = $a_module[$id]['hostsallow'];
+	$pconfig['hostsdeny'] = $a_module[$id]['hostsdeny'];
 } else {
 	$pconfig['name'] = "";
 	$pconfig['path'] = "";
 	$pconfig['comment'] = "";
-	$pconfig['browseable'] = true;
+	$pconfig['list'] = true;
 	$pconfig['rwmode'] = "rw";
 	$pconfig['maxconnections'] = "0";
 	$pconfig['hostsallow'] = "ALL";
@@ -88,26 +88,26 @@ if($_POST) {
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	if(!$input_errors) {
-		$share = array();
+		$module = array();
 
-		$share['name'] = $_POST['name'];
-		$share['path'] = $_POST['path'];
-		$share['comment'] = $_POST['comment'];
-		$share['browseable'] = $_POST['browseable'] ? true : false;
-		$share['rwmode'] = $_POST['rwmode'];
-		$share['maxconnections'] = $_POST['maxconnections'];
-		$share['hostsallow'] = $_POST['hostsallow'];
-		$share['hostsdeny'] = $_POST['hostsdeny'];
+		$module['name'] = $_POST['name'];
+		$module['path'] = $_POST['path'];
+		$module['comment'] = $_POST['comment'];
+		$module['list'] = $_POST['list'] ? true : false;
+		$module['rwmode'] = $_POST['rwmode'];
+		$module['maxconnections'] = $_POST['maxconnections'];
+		$module['hostsallow'] = $_POST['hostsallow'];
+		$module['hostsdeny'] = $_POST['hostsdeny'];
 
-		if (isset($id) && $a_share[$id])
-			$a_share[$id] = $share;
+		if (isset($id) && $a_module[$id])
+			$a_module[$id] = $module;
 		else
-			$a_share[] = $share;
+			$a_module[] = $module;
 
 		touch($d_rsyncdconfdirty_path);
 		write_config();
 
-    header("Location: services_rsyncd_share.php");
+    header("Location: services_rsyncd_module.php");
 		exit;
 	}
 }
@@ -127,17 +127,17 @@ if($_POST) {
 		<td class="tabnavtbl">
 			<ul id="tabnav">
 				<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Settings");?></a></li>
-				<li class="tabact"><a href="services_rsyncd_share.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Shares");?></a></li>
+				<li class="tabact"><a href="services_rsyncd_module.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Modules");?></a></li>
 			</ul>
 		</td>
 	</tr>
   <tr>
     <td class="tabcont">
-			<form action="services_rsyncd_share_edit.php" method="post" name="iform" id="iform">
+			<form action="services_rsyncd_module_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			  	<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Module name");?></td>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="name" type="text" class="formfld" id="name" size="30" value="<?=htmlspecialchars($pconfig['name']);?>">
 			      </td>
@@ -157,11 +157,11 @@ if($_POST) {
 				  </td>
 				</tr>
 			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Browseable");?></td>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("List");?></td>
 			      <td width="78%" class="vtable">
-			      	<input name="browseable" type="checkbox" id="browseable" value="yes" <?php if ($pconfig['browseable']) echo "checked"; ?>>
-			      	<?=gettext("Set browseable.");?><br/>
-			        <span class="vexpl"><?=gettext("This controls whether this share is seen in the list of available shares in a net view and in the browse list.");?></span>
+			      	<input name="list" type="checkbox" id="list" value="yes" <?php if ($pconfig['list']) echo "checked"; ?>>
+			      	<?=gettext("Enable module listing.");?><br/>
+			        <span class="vexpl"><?=gettext("This option determines if this module should be listed when the client asks for a listing of available modules. By setting this to false you can create hidden modules.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
@@ -172,7 +172,7 @@ if($_POST) {
 		            <option value="rw" <?php if ("rw" === $pconfig['rwmode']) echo "selected";?>><?=gettext("Read/Write");?></option>
 		            <option value="wo" <?php if ("wo" === $pconfig['rwmode']) echo "selected";?>><?=gettext("Write only");?></option>
 			        </select><br/>
-			        <span class="vexpl"><?=gettext("This controls the access a remote host has to this share.");?></span>
+			        <span class="vexpl"><?=gettext("This controls the access a remote host has to this module.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
@@ -186,20 +186,20 @@ if($_POST) {
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Hosts allow");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="hostsallow" type="text" class="formfld" id="hostsallow" size="60" value="<?=htmlspecialchars($pconfig['hostsallow']);?>"><br/>
-			        <span class="vexpl"><?=gettext("This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this share. Use the keyword ALL to permit access for everyone. Leave this field empty to disable this setting.");?></span>
+			        <span class="vexpl"><?=gettext("This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this module. Use the keyword ALL to permit access for everyone. Leave this field empty to disable this setting.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Hosts deny");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="hostsdeny" type="text" class="formfld" id="hostsdeny" size="60" value="<?=htmlspecialchars($pconfig['hostsdeny']);?>"><br/>
-			        <span class="vexpl"><?=gettext("This parameter is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to disable this setting.");?></span>
+			        <span class="vexpl"><?=gettext("This parameter is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to disable this setting.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_share[$id]))?gettext("Save"):gettext("Add")?>">
-			        <?php if (isset($id) && $a_share[$id]):?>
+			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_module[$id]))?gettext("Save"):gettext("Add")?>">
+			        <?php if (isset($id) && $a_module[$id]):?>
 			        <input name="id" type="hidden" value="<?=$id;?>">
 			        <?php endif;?>
 			      </td>

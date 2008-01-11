@@ -79,7 +79,7 @@ if ($_POST) {
 
 	/* input validation */
 	$reqdfields = explode(" ", "rsyncserverip localshare remoteshare");
-	$reqdfieldsn = array(gettext("Remote RSYNC Server"),gettext("Local shares to be synchronized"),gettext("Remote share name"));
+	$reqdfieldsn = array(gettext("Remote RSYNC Server"),gettext("Local shares to be synchronized"),gettext("Remote module name"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (!is_ipaddr($_POST['rsyncserverip'])){
@@ -157,7 +157,7 @@ function set_selected(name) {
 						</td>
 					</tr>
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Remote source share name");?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Remote module name");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="remoteshare" type="text" class="formfld" id="remoteshare" size="20" value="<?=htmlspecialchars($pconfig['remoteshare']);?>">
 			      </td>

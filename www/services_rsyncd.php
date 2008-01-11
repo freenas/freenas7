@@ -111,7 +111,7 @@ function enable_change(enable_change) {
 		<td class="tabnavtbl">
 			<ul id="tabnav">
 				<li class="tabact"><a href="services_rsyncd.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Settings");?></a></li>
-				<li class="tabinact"><a href="services_rsyncd_share.php"><?=gettext("Shares");?></a></li>
+				<li class="tabinact"><a href="services_rsyncd_module.php"><?=gettext("Modules");?></a></li>
 			</ul>
 		</td>
 	</tr>

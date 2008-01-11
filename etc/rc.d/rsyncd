@@ -39,12 +39,12 @@ create_conf()
 		-i "count(rsyncd_user) > 0" -v "concat('uid = ',rsyncd_user)" -n -b \
 		-m "auxparam" \
 			-v "." -n -b \
-		-m "share" \
+		-m "module" \
 			-n \
 			-v "concat('[',name,']')" -n \
 			-v "concat('comment = ',comment)" -n \
 			-v "concat('path = ',path)" -n \
-			-i "count(browseable) > 0" -o "list = true" -n -b \
+			-i "count(list) > 0" -o "list = true" -n -b \
 			-i "string-length(maxconnections) > 0" -v "concat('max connections = ',maxconnections)" -n -b \
 			-i "rwmode[. = 'rw']" -o "read only = false" -n -b \
 			-i "rwmode[. = 'ro']" -o "read only = true" -n -b \
