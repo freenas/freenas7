@@ -15,7 +15,7 @@ Permanent restrictions:
 - It is not possible to encrypt a disk partition, only complete disks are supported.
 
 Known bugs:
-- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be override by the IPv4 DNS server.
 
 NEED TO BE TESTED:
 - IPv6: auto mode is not tested
@@ -41,6 +41,7 @@ Majors changes:
   Especially with Samba tbd files, which increases rapidely with a huge number of users accessing the system.
 - Add kernel patch to support ATi IXP600/700 PATA/SATA.
 - Switch back to SCHED_ULE scheduler.
+- Upgrade 3ware serial ATA RAID controller driver to 9.4.2 (http://www.3ware.com/download/Escalade9650SE-Series/9.4.2/9.4.2_Release_Notes_Web.pdf).
 
 Minors changes:
 - Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
@@ -61,7 +62,7 @@ Permanent restrictions:
 - It is not possible to encrypt a disk partition, only complete disks are supported.
 
 Known bugs:
-- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be override by the IPv4 DNS server.
 
 FreeNAS 0.686:
 --------------
@@ -85,7 +86,7 @@ Permanent restrictions:
 - It is not possible to encrypt a disk partition, only complete disks are supported.
 
 Known bugs:
-- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be override by the IPv4 DNS server.
 
 FreeNAS 0.686b3:
 ----------------
@@ -125,7 +126,7 @@ Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
 
 Known bugs:
-- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be override by the IPv4 DNS server.
 
 FreeNAS 0.686b2:
 ----------------
@@ -159,7 +160,7 @@ Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS.
 
 Known bugs:
-- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be override by the IPv4 DNS server.
 
 FreeNAS 0.686b1:
 ----------------
@@ -395,7 +396,7 @@ Bug fixs:
 
 Known bugs:
 - NTFS mount points are not mounted after creation, a reboot is necessary.
-- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be ovverride by the IPv4 DNS server.
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be override by the IPv4 DNS server.
 
 FreeNAS 0.684b:
 ---------------
