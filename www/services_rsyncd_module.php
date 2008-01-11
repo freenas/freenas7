@@ -110,7 +110,8 @@ if ($_GET['act'] == "del") {
           	<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
             <td width="35%" class="listhdrr"><?=gettext("Path");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Comment");?></td>
-            <td width="20%" class="listhdrr"><?=gettext("List");?></td>
+            <td width="10%" class="listhdrr"><?=gettext("List");?></td>
+            <td width="10%" class="listhdrr"><?=gettext("Access mode");?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_module as $modulev):?>
@@ -119,6 +120,7 @@ if ($_GET['act'] == "del") {
             <td class="listr"><?=htmlspecialchars($modulev['path']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($modulev['comment']);?>&nbsp;</td>
             <td class="listbg"><?=htmlspecialchars(isset($modulev['list'])?gettext("Yes"):gettext("No"));?></td>
+            <td class="listbg"><?=htmlspecialchars($modulev['rwmode']);?>&nbsp;</td>
             <td valign="middle" nowrap class="list">
               <?php if(isset($config['rsyncd']['enable'])):?>
               <a href="services_rsyncd_module_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit module");?>" width="17" height="17" border="0"></a>
@@ -129,7 +131,7 @@ if ($_GET['act'] == "del") {
           <?php $i++; endforeach;?>
           <?php if(isset($config['rsyncd']['enable'])):?>
           <tr>
-            <td class="list" colspan="4"></td>
+            <td class="list" colspan="5"></td>
             <td class="list"><a href="services_rsyncd_module_edit.php"><img src="plus.gif" title="<?=gettext("Add module");?>" width="17" height="17" border="0"></a></td>
           </tr>
           <?php endif;?>
