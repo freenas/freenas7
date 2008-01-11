@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	services_rsyncd_share.php
+	services_rsyncd_module.php
 	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
@@ -36,14 +36,14 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"), gettext("RSYNCD"), gettext("Shares"));
+$pgtitle = array(gettext("Services"), gettext("RSYNCD"), gettext("Modules"));
 
-if(!is_array($config['rsyncd']['share']))
-	$config['rsyncd']['share'] = array();
+if(!is_array($config['rsyncd']['module']))
+	$config['rsyncd']['module'] = array();
 
-array_sort_key($config['rsyncd']['share'], "name");
+array_sort_key($config['rsyncd']['module'], "name");
 
-$a_share = &$config['rsyncd']['share'];
+$a_module = &$config['rsyncd']['module'];
 
 if($_POST) {
 	$pconfig = $_POST;
@@ -67,13 +67,13 @@ if($_POST) {
 }
 
 if ($_GET['act'] == "del") {
-	if ($a_share[$_GET['id']]) {
-		unset($a_share[$_GET['id']]);
+	if ($a_module[$_GET['id']]) {
+		unset($a_module[$_GET['id']]);
 
 		write_config();
 		touch($d_rsyncdconfdirty_path);
 
-		header("Location: services_rsyncd_share.php");
+		header("Location: services_rsyncd_module.php");
 		exit;
 	}
 }
@@ -93,36 +93,36 @@ if ($_GET['act'] == "del") {
 		<td class="tabnavtbl">
 			<ul id="tabnav">
 				<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Settings");?></a></li>
-				<li class="tabact"><a href="services_rsyncd_share.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Shares");?></a></li>
+				<li class="tabact"><a href="services_rsyncd_module.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Modules");?></a></li>
 			</ul>
 		</td>
 	</tr>
   <tr>
     <td class="tabcont">
-      <form action="services_rsyncd_share.php" method="post">
+      <form action="services_rsyncd_module.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg);?>
         <?php if (file_exists($d_rsyncdconfdirty_path)):?><p>
-        <?php print_info_box_np(gettext("The shares has been modified.<br>You must apply the changes in order for them to take effect."));?><br>
+        <?php print_info_box_np(gettext("The modules has been modified.<br>You must apply the changes in order for them to take effect."));?><br>
         <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
         <?php endif;?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
-          	<td width="15%" class="listhdrr"><?=gettext("Module name");?></td>
+          	<td width="15%" class="listhdrr"><?=gettext("Name");?></td>
             <td width="35%" class="listhdrr"><?=gettext("Path");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Comment");?></td>
-            <td width="20%" class="listhdrr"><?=gettext("Browseable");?></td>
+            <td width="20%" class="listhdrr"><?=gettext("List");?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($a_share as $sharev):?>
+  			  <?php $i = 0; foreach($a_module as $modulev):?>
           <tr>
-            <td class="listr"><?=htmlspecialchars($sharev['name']);?>&nbsp;</td>
-            <td class="listr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
-            <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
-            <td class="listbg"><?=htmlspecialchars(isset($sharev['browseable'])?gettext("Yes"):gettext("No"));?></td>
+            <td class="listr"><?=htmlspecialchars($modulev['name']);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($modulev['path']);?>&nbsp;</td>
+            <td class="listr"><?=htmlspecialchars($modulev['comment']);?>&nbsp;</td>
+            <td class="listbg"><?=htmlspecialchars(isset($modulev['list'])?gettext("Yes"):gettext("No"));?></td>
             <td valign="middle" nowrap class="list">
               <?php if(isset($config['rsyncd']['enable'])):?>
-              <a href="services_rsyncd_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" width="17" height="17" border="0"></a>
-              <a href="services_rsyncd_share.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" width="17" height="17" border="0"></a>
+              <a href="services_rsyncd_module_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit module");?>" width="17" height="17" border="0"></a>
+              <a href="services_rsyncd_module.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this module?");?>')"><img src="x.gif" title="<?=gettext("Delete module");?>" width="17" height="17" border="0"></a>
               <?php endif;?>
             </td>
           </tr>
@@ -130,7 +130,7 @@ if ($_GET['act'] == "del") {
           <?php if(isset($config['rsyncd']['enable'])):?>
           <tr>
             <td class="list" colspan="4"></td>
-            <td class="list"><a href="services_rsyncd_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" width="17" height="17" border="0"></a></td>
+            <td class="list"><a href="services_rsyncd_module_edit.php"><img src="plus.gif" title="<?=gettext("Add module");?>" width="17" height="17" border="0"></a></td>
           </tr>
           <?php endif;?>
         </table>

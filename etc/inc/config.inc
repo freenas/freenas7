@@ -1120,7 +1120,6 @@ function config_upgrade() {
 
 	/* Convert 3.8 -> 3.9 */
 	/* Rename attribute //disks/disk/udma -> //disks/disk/transfermode. */
-	/* Add attribute //statusreport/security. */
 	if ($config['version'] === "3.8") {
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			if (isset($config['disks']['disk'][$i]['udma'])) {
@@ -1129,9 +1128,35 @@ function config_upgrade() {
 			}
 		}
 
+		$config['version'] = "3.9";
+	}
+
+	/* Convert 3.9 -> 4.0 */
+	/* Add attribute //statusreport/security. */
+	/* Rename attributes //rsyncd/share to //rsyncd/module. */
+	/* Rename attributes //rsyncd/share/browseable to //rsyncd/module/list. */
+	if ($config['version'] === "3.9") {
 		$config['statusreport']['security'] = "none";
 
-		$config['version'] = "3.9";
+		for ($i = 0; isset($config['rsyncd']['share'][$i]); $i++) {
+			$module = array();
+			$module['name'] = $config['rsyncd']['share'][$i]['name'];
+			$module['path'] = $config['rsyncd']['share'][$i]['path'];
+			$module['comment'] = $config['rsyncd']['share'][$i]['comment'];
+			$module['rwmode'] = $config['rsyncd']['share'][$i]['rwmode'];
+			$module['maxconnections'] = $config['rsyncd']['share'][$i]['maxconnections'];
+			$module['hostsallow'] = $config['rsyncd']['share'][$i]['hostsallow'];
+			$module['hostsdeny'] = $config['rsyncd']['share'][$i]['hostsdeny'];
+			$module['auxparam'] = $config['rsyncd']['share'][$i]['auxparam'];
+			if (isset($config['rsyncd']['share'][$i]['browseable']))
+				$module['list'] = true;
+
+			$config['rsyncd']['module'][] = $module;
+
+			unset($config['rsyncd']['share'][$i]);
+		}
+
+		$config['version'] = "4.0";
 	}
 
 	write_config();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>3.9</version>
+	<version>4.0</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -300,17 +300,17 @@
 		<motd/>
 		<!--
 		<auxparam></auxparam> // Can be defined multiple times.
-		<share>
+		<module>
 			<name>xxx</name>
 			<path>/mnt/xxx</path>
 			<comment>xxx</comment>
-			<browseable/>
+			<list/>
 			<rwmode>ro|rw|wo</rwmode>
 			<maxconnections>0</maxconnections>
 			<hostsallow>ALL<hostsallow> // Comma, space, or tab delimited set of hosts which are permitted to access a service.
 			<hostsdeny>ALL<hostsdeny> // Hosts listed here are NOT permitted to access a services. Where the lists conflict, the allow list takes precedence.
 			<auxparam></auxparam> // Can be defined multiple times.
-		</share>
+		</module>
 		-->
 	</rsyncd>
 	<rsync>

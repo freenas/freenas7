@@ -4,7 +4,7 @@
 	functions to parse/dump configuration files in XML format
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -41,7 +41,7 @@ $listtags = explode(" ", "key dnsserver winsserver disk vdisk diskr sharetosync 
 	"servernat nfsnetworks passthrumac allowedip mount vlan domainoverrides " .
 	"minute hour day month weekday content rsyncclient rsynclocal package " .
 	"ipv6dnsserver share auxparam extent device target storage group job report " .
-	"cmd");
+	"cmd module");
 
 function startElement($parser, $name, $attrs) {
 	global $depth, $curpath, $config, $havedata, $listtags;
