@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: rsync_client
@@ -8,6 +8,9 @@
 
 . /etc/rc.subr
 . /etc/configxml.subr
+
+# Defaults
+rsync_logfile=${rsync_logfile:-"/var/log/${name}.log"}
 
 # Get number of scripts to generate.
 _scriptnum=`configxml_get_count "//rsync/rsyncclient"`
@@ -30,7 +33,7 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-o "exit" -n \
 			-o "fi" -n \
 			-o "/usr/bin/touch /var/run/rsync_client-running${_i}" -n \
-			-o "/usr/local/bin/rsync -rtz " \
+			-o "/usr/local/bin/rsync -rtz --log-file=${rsync_logfile} " \
 			-i "count(opt_delete) > 0" \
 				-o "--delete --delete-after " \
 			-b \
