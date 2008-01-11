@@ -483,6 +483,8 @@
 		<from>freenas@xxx.xxx</from>
 		<to>xxx@xxx.xxx</to>
 		-->
+		<!-- Security: 'none|tls|ssl' -->
+		<security>none</security>
 	</statusreport>
 	<shutdown>
 		<!-- <enable/> -->
