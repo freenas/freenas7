@@ -67,7 +67,7 @@ $pgtitle_omit = true;
         exec("/sbin/sysctl -n kern.ostype", $ostype);
         exec("/sbin/sysctl -n kern.osrelease", $osrelease);
         exec("/sbin/sysctl -n kern.osrevision", $osrevision);
-        echo("$ostype[0] $osrelease[0] (revison $osrevision[0])");
+        echo("$ostype[0] $osrelease[0] (revision $osrevision[0])");
       ?>
     </td>
   </tr>
