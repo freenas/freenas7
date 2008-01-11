@@ -1,11 +1,11 @@
 <?php
 /*
 	report.inc
-	Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+	Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -333,6 +333,11 @@ function report_send_mail() {
 		$mail->SMTPAuth = true;
 		$mail->Username = $config['statusreport']['username'];
 		$mail->Password = base64_decode($config['statusreport']['password']);
+	}
+
+	// Enable TLS/SSL SMTP support if set.
+	if ("none" !== $config['statusreport']['security']) {
+		$mail->SMTPSecure = $config['statusreport']['security'];
 	}
 
 	// Create report.

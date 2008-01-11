@@ -47,6 +47,7 @@ $pconfig['enable'] = isset($config['statusreport']['enable']);
 $pconfig['server'] = $config['statusreport']['server'];
 $pconfig['port'] = $config['statusreport']['port'];
 $pconfig['auth'] = isset($config['statusreport']['auth']);
+$pconfig['security'] = $config['statusreport']['security'];
 $pconfig['username'] = $config['statusreport']['username'];
 $pconfig['password'] = base64_decode($config['statusreport']['password']);
 $pconfig['passwordconf'] = $pconfig['password'];
@@ -75,9 +76,9 @@ if($_POST) {
 
 	/* Input validation. */
 	if($_POST['enable']) {
-		$reqdfields = explode(" ", "server port from to");
-		$reqdfieldsn = array(gettext("Server address"), gettext("Server port"), gettext("From e-mail"), gettext("To e-mail"));
-		$reqdfieldst = explode(" ", "string numeric string string");
+		$reqdfields = explode(" ", "server port from to security");
+		$reqdfieldsn = array(gettext("Server address"), gettext("Server port"), gettext("From e-mail"), gettext("To e-mail"), gettext("Security"));
+		$reqdfieldst = explode(" ", "string numeric string string string");
 
 		if ($_POST['auth']) {
 			$reqdfields = array_merge($reqdfields,array("username", "password"));
@@ -99,6 +100,7 @@ if($_POST) {
 		$config['statusreport']['server'] = $_POST['server'];
 		$config['statusreport']['port'] = $_POST['port'];
 		$config['statusreport']['auth'] = $_POST['auth'] ? true : false;
+		$config['statusreport']['security'] = $_POST['security'];
 		$config['statusreport']['username'] = $_POST['username'];
 		$config['statusreport']['password'] = base64_encode($_POST['password']);
 		$config['statusreport']['from'] = $_POST['from'];
@@ -150,6 +152,7 @@ function enable_change(enable_change) {
 	document.iform.server.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.auth.disabled = endis;
+	document.iform.security.disabled = endis;
 	document.iform.username.disabled = endis;
 	document.iform.password.disabled = endis;
 	document.iform.passwordconf.disabled = endis;
@@ -255,6 +258,17 @@ function auth_change() {
 			        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
 			        <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
 			      </td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Security") ; ?></td>
+						<td width="78%" class="vtable">
+							<select name="security" class="formfld" id="security">
+								<?php $types = explode(" ", "None SSL TLS"); $vals = explode(" ", "none ssl tls");?>
+								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
+								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
+								<?php endfor;?>
+							</select>
+						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("From email");?></td>

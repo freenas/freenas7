@@ -1120,6 +1120,7 @@ function config_upgrade() {
 
 	/* Convert 3.8 -> 3.9 */
 	/* Rename attribute //disks/disk/udma -> //disks/disk/transfermode. */
+	/* Add attribute //statusreport/security. */
 	if ($config['version'] === "3.8") {
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			if (isset($config['disks']['disk'][$i]['udma'])) {
@@ -1127,6 +1128,8 @@ function config_upgrade() {
 				unset($config['disks']['disk'][$i]['udma']);
 			}
 		}
+
+		$config['statusreport']['security'] = "none";
 
 		$config['version'] = "3.9";
 	}
