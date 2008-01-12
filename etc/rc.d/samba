@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: nmbd smbd winbindd
@@ -130,7 +130,10 @@ create_conf()
 		-b \
 		-v "concat('local master = ',//samba/localmaster)" -n \
 		-v "concat('time server = ',//samba/timesrv)" -n \
-		-o "guest account = ftp" -n \
+		-v "concat('guest account = ',//samba/guestaccount)" -n \
+		-i "count(nullpasswords) > 0" \
+			-o "null passwords = yes" -n \
+		-b \
 		-o "display charset = UTF-8" -n \
 		-o "max log size = 10" -n \
 		-o "syslog only = yes" -n \
@@ -234,6 +237,8 @@ create_conf()
 }
 
 samba_start_precmd() {
+	create_conf
+
 	# XXX: Never delete winbindd_idmap, winbindd_cache and group_mapping
 	if [ -n "${samba_lockdir}" -a -d "${samba_lockdir}" ]; then
 		echo -n "Removing stale Samba tdb files: "
@@ -302,8 +307,5 @@ samba_cmd() {
 		/etc/rc.d/smbpasswd
 	fi
 }
-
-# Create required config file.
-create_conf
 
 run_rc_command "$1"

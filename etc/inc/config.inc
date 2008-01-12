@@ -1132,10 +1132,12 @@ function config_upgrade() {
 	}
 
 	/* Convert 3.9 -> 4.0 */
+	/* Add attribute //samba/guestaccount. */
 	/* Add attribute //statusreport/security. */
 	/* Rename attributes //rsyncd/share to //rsyncd/module. */
 	/* Rename attributes //rsyncd/share/browseable to //rsyncd/module/list. */
 	if ($config['version'] === "3.9") {
+		$config['samba']['guestaccount'] = "ftp";
 		$config['statusreport']['security'] = "none";
 
 		for ($i = 0; isset($config['rsyncd']['share'][$i]); $i++) {

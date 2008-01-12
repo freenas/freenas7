@@ -3,7 +3,7 @@
 /*
 	services_samba.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -69,6 +69,8 @@ $pconfig['easupport'] = isset($config['samba']['easupport']);
 $pconfig['storedosattributes'] = isset($config['samba']['storedosattributes']);
 $pconfig['createmask'] = $config['samba']['createmask'];
 $pconfig['directorymask'] = $config['samba']['directorymask'];
+$pconfig['guestaccount'] = $config['samba']['guestaccount'];
+$pconfig['nullpasswords'] = isset($config['samba']['nullpasswords']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -80,16 +82,16 @@ if ($_POST) {
 	$reqdfieldst = array();
 
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "security netbiosname workgroup localmaster");
-		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"),gettext("Local Master Browser"));
+		$reqdfields = explode(" ", "security netbiosname workgroup localmaster guestaccount");
+		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"),gettext("Local Master Browser"),gettext("Guest account"));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "netbiosname workgroup winssrv sndbuf rcvbuf createmask directorymask");
-		$reqdfieldsn = array(gettext("NetBiosName"),gettext("Workgroup"),gettext("WINS server"),gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"));
-		$reqdfieldst = explode(" ", "domain workgroup ipaddr numericint numericint filemode filemode");
+		$reqdfields = explode(" ", "netbiosname workgroup winssrv sndbuf rcvbuf createmask directorymask guestaccount");
+		$reqdfieldsn = array(gettext("NetBiosName"),gettext("Workgroup"),gettext("WINS server"),gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"),gettext("Guest acount"));
+		$reqdfieldst = explode(" ", "domain workgroup ipaddr numericint numericint filemode filemode string");
 	}
 
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -118,6 +120,8 @@ if ($_POST) {
 			$config['samba']['directorymask'] = $_POST['directorymask'];
 		else
 			unset($config['samba']['directorymask']);
+		$config['samba']['guestaccount'] = $_POST['guestaccount'];
+		$config['samba']['nullpasswords'] = $_POST['nullpasswords'] ? true : false;
 		$config['samba']['enable'] = $_POST['enable'] ? true : false;
 
 		write_config();
@@ -170,6 +174,8 @@ function enable_change(enable_change) {
 	document.iform.storedosattributes.disabled = endis;
 	document.iform.createmask.disabled = endis;
 	document.iform.directorymask.disabled = endis;
+	document.iform.guestaccount.disabled = endis;
+	document.iform.nullpasswords.disabled = endis;
 }
 
 function authentication_change() {
@@ -329,6 +335,13 @@ function authentication_change() {
 			    <tr>
 			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
 			    </tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Guest account");?></td>
+						<td width="78%" class="vtable">
+							<input name="guestaccount" type="text" class="formfld" id="guestaccount" size="30" value="<?=htmlspecialchars($pconfig['guestaccount']);?>">
+							<br/><?=gettext("This is the username ('ftp' by default) which will be used for access to services which are specified as guest. Whatever privileges this user has will be available to any client connecting to the guest service. This user must exist in the password file, but does not require a valid login.");?>
+						</td>
+					</tr>
 					<tr id="createmask_tr">
 						<td width="22%" valign="top" class="vncell"><?=gettext("Create mask"); ?></td>
 						<td width="78%" class="vtable">
@@ -379,6 +392,13 @@ function authentication_change() {
 							<input name="storedosattributes" type="checkbox" id="storedosattributes" value="yes" <?php if ($pconfig['storedosattributes']) echo "checked"; ?>>
 							<?=gettext("Enable store DOS attributes");?><span class="vexpl"><br>
 							<span class="vexpl"><?=gettext("If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Null passwords");?></td>
+						<td width="78%" class="vtable">
+							<input name="nullpasswords" type="checkbox" id="nullpasswords" value="yes" <?php if ($pconfig['nullpasswords']) echo "checked"; ?>>
+							<?=gettext("Allow client access to accounts that have null passwords.");?>
 						</td>
 					</tr>
 					<tr>
