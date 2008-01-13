@@ -9,6 +9,8 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
+name="rsync_client"
+
 # Defaults
 rsync_logfile=${rsync_logfile:-"/var/log/${name}.log"}
 
