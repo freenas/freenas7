@@ -1,6 +1,6 @@
 PORTNAME=			ataidle
-PORTVERSION=	1.0
-PORTREVISION=	1
+PORTVERSION=	2.1
+PORTREVISION=	0
 CATEGORIES=		sysutils
 COMMENT=			Utility to set spindown timeout for ATA drives
 MAINTAINER=		votdev@gmx.de
