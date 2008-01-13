@@ -3,7 +3,7 @@
 /*
 	access_users_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -65,9 +65,9 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	$reqdfields = explode(" ", "login fullname password passwordconf primarygroup");
-	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Password"),gettext("Password confirmation"),gettext("Primary Group"));
-	$reqdfieldst = explode(" ", "string string password string numeric");
+	$reqdfields = explode(" ", "login fullname primarygroup");
+	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Primary Group"));
+	$reqdfieldst = explode(" ", "string string numeric");
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: userdb
@@ -80,12 +80,13 @@ do
 		-i "count(fullshell) = 0" -o " -s /usr/local/bin/scponly" -b \
 		-i "string-length(homedir) = 0" -o " -d /mnt" -b \
 		-i "string-length(homedir) > 0" -v "concat(' -d ',homedir)" -b \
+		-i "string-length(password) > 0" -o " -h 0" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	_userpasswd=`configxml_get "//access/user[${_index}]/password"`
 
 	# Add user.
-	eval "(/bin/echo '${_userpasswd}') | /usr/sbin/pw add user -q -h 0 -V /var/etc ${_cmdarg}"
+	eval "(/bin/echo '${_userpasswd}') | /usr/sbin/pw add user -q -V /var/etc ${_cmdarg}"
 
 	_index=$(( ${_index} - 1 ))
 done
