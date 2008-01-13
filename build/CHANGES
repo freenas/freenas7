@@ -43,6 +43,7 @@ Majors changes:
 - Add kernel patch to support ATi IXP600/700 PATA/SATA.
 - Switch back to SCHED_ULE scheduler.
 - Upgrade 3ware serial ATA RAID controller driver to 9.4.2 (http://www.3ware.com/download/Escalade9650SE-Series/9.4.2/9.4.2_Release_Notes_Web.pdf).
+- Allow creation of users with empty passwords.
 
 Minors changes:
 - Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
