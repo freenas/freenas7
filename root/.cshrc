@@ -10,6 +10,7 @@ alias j		jobs -l
 alias la	ls -a
 alias lf	ls -FA
 alias ll	ls -lA
+alias rmdir	rm -d
 
 # A righteous umask
 umask 22
