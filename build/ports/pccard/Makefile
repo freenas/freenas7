@@ -14,7 +14,12 @@ do-build:
 	@${MAKE} -C /usr/src/usr.sbin/pccard/pccardd
 
 do-install:
-	@${INSTALL_PROGRAM} -v /usr/src/usr.sbin/pccard/pccardc/pccardc ${FREENAS_ROOTFS}/usr/sbin
-	@${INSTALL_PROGRAM} -v /usr/src/usr.sbin/pccard/pccardd/pccardd ${FREENAS_ROOTFS}/usr/sbin
+	
+	 -@if [ -f /usr/src/usr.sbin/pccard/pccardc/pccardc ]; then \
+	    @${INSTALL_PROGRAM} -v /usr/src/usr.sbin/pccard/pccardc/pccardc ${FREENAS_ROOTFS}/usr/sbin; \
+	else
+	    @${INSTALL_PROGRAM} -v /usr/obj/usr/src/usr.sbin/pccard/pccardc/pccardc ${FREENAS_ROOTFS}/usr/sbin; \
+	fi
+	@${INSTALL_PROGRAM} -v /usr/src/usr.sbin/pccard/pccardd/pccardd ${FREENAS_ROOTFS}/usr/sbin; \
 
 .include <bsd.port.mk>
