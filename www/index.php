@@ -3,7 +3,7 @@
 /*
   index.php
   part of FreeNAS (http://www.freenas.org)
-  Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+  Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
   All rights reserved.
   Improved by Stefan Hendricks (info@henmedia.de)
 
@@ -68,7 +68,7 @@ $pgtitle_omit = true;
         exec("/sbin/sysctl -n kern.ostype", $ostype);
         exec("/sbin/sysctl -n kern.osrelease", $osrelease);
         exec("/sbin/sysctl -n kern.osrevision", $osrevision);
-        echo("$ostype[0] $osrelease[0] (revison $osrevision[0])");
+        echo("$ostype[0] $osrelease[0] (revision $osrevision[0])");
       ?>
     </td>
   </tr>
