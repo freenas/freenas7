@@ -21,7 +21,12 @@ do-build:
 
 do-install:
 	# Install application.
-	@${CP} -pv /usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
+
+	-@if [ -f /usr/src/sbin/geom/class/eli/geom_eli.so ]; then \
+		@${CP} -pv /usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom; \
+	else
+		@${CP} -pv /usr/obj/usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom; \
+	fi
 
 pre-clean:
 	@${MAKE} -C ${WRKSRC} clean
