@@ -569,8 +569,12 @@ create_full() {
 
 # Update subversion sources.
 update_svn() {
+	# Update sources from repository.
 	cd $FREENAS_ROOTDIR
 	svn co $FREENAS_SVNURL svn
+
+	# Update revision number.
+	FREENAS_REVISION=$(svn info ${FREENAS_SVNDIR} | grep Revision | awk '{print $2}')
 
 	return 0
 }
