@@ -130,10 +130,9 @@ create_conf()
 		-b \
 		-v "concat('local master = ',//samba/localmaster)" -n \
 		-v "concat('time server = ',//samba/timesrv)" -n \
-		-v "concat('guest account = ',//samba/guestaccount)" -n \
-		-i "count(nullpasswords) > 0" \
-			-o "null passwords = yes" -n \
-		-b \
+		-i "string-length(//samba/guestaccount) > 0" -v "concat('guest account = ',//samba/guestaccount)" -n -b \
+		-i "string-length(//samba/guestaccount) = 0" -o "guest account = ftp" -n -b \
+		-i "count(nullpasswords) > 0" -o "null passwords = yes" -n -b \
 		-o "display charset = UTF-8" -n \
 		-o "max log size = 10" -n \
 		-o "syslog only = yes" -n \
