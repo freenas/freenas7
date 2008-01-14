@@ -9,19 +9,14 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
-echo -n "Initializing idle timer/UDMA on ATA disks: "
+echo -n "Initializing Acoustic/Standby/APM/UDMA on ATA disks: "
 
 # Process all configured IDE disks.
 /usr/local/bin/xml sel -t -m "//disks/disk[type = 'IDE']" \
-	-v "concat(name,' ',transfermode,' ',harddiskstandby,' ',apm,' ',acoustic)" \
+	-v "concat(name,' ',devicespecialfile,'' ',transfermode,' ',harddiskstandby,' ',apm,' ',acoustic)" \
 	-i "position() != last()" -n -b \
 	${configxml_file} | /usr/local/bin/xml unesc | \
-	while read _name _transfermode _harddiskstandby _apm _acoustic; do
-		# Calculate the channel and device ids.
-		_devnum=${_name#*ad}
-		_channel=$(( ${_devnum} / 2 ))
-		_device=$(( ${_devnum} % 2 ))
-
+	while read _name _devicespecialfile _transfermode _harddiskstandby _apm _acoustic; do
 		# If UDMA mode is forced, launch atacontrol.
 		if [ "auto" != "${_transfermode}" ]; then
 			/sbin/atacontrol mode ${_name} ${_transfermode} > /dev/null 2>&1
@@ -42,7 +37,7 @@ echo -n "Initializing idle timer/UDMA on ATA disks: "
 			_cmdargs="${_cmdargs} -S ${_harddiskstandby}"
 		fi
 
-		/usr/local/sbin/ataidle ${_cmdargs} ${_channel} ${_device} > /dev/null 2>&1
+		/usr/local/sbin/ataidle ${_cmdargs} ${_devicespecialfile} > /dev/null 2>&1
 
 		# Print out some disk informations.
 		echo -n "${_name} "
