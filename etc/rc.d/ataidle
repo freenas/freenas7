@@ -13,7 +13,7 @@ echo -n "Initializing Acoustic/Standby/APM/UDMA on ATA disks: "
 
 # Process all configured IDE disks.
 /usr/local/bin/xml sel -t -m "//disks/disk[type = 'IDE']" \
-	-v "concat(name,' ',devicespecialfile,'' ',transfermode,' ',harddiskstandby,' ',apm,' ',acoustic)" \
+	-v "concat(name,' ',devicespecialfile,' ',transfermode,' ',harddiskstandby,' ',apm,' ',acoustic)" \
 	-i "position() != last()" -n -b \
 	${configxml_file} | /usr/local/bin/xml unesc | \
 	while read _name _devicespecialfile _transfermode _harddiskstandby _apm _acoustic; do
