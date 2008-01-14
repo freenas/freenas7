@@ -104,7 +104,6 @@ if ($_POST) {
 		touch($d_diskdirty_path);
 
 		write_config();
-		rc_exec_service("ataidle");
 
 		header("Location: disks_manage.php");
 		exit;
