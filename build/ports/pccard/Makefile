@@ -15,9 +15,9 @@ do-build:
 
 do-install:
 	
-	 -@if [ -f /usr/src/usr.sbin/pccard/pccardc/pccardc ]; then \
+	-@if [ -f /usr/src/usr.sbin/pccard/pccardc/pccardc ]; then \
 	    @${INSTALL_PROGRAM} -v /usr/src/usr.sbin/pccard/pccardc/pccardc ${FREENAS_ROOTFS}/usr/sbin; \
-	else
+	else \
 	    @${INSTALL_PROGRAM} -v /usr/obj/usr/src/usr.sbin/pccard/pccardc/pccardc ${FREENAS_ROOTFS}/usr/sbin; \
 	fi
 	@${INSTALL_PROGRAM} -v /usr/src/usr.sbin/pccard/pccardd/pccardd ${FREENAS_ROOTFS}/usr/sbin; \
