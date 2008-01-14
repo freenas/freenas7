@@ -60,33 +60,23 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks 
     	<pre><strong><?=gettext("List of advanced ATA capabilities on all ATA disk");?>:</strong>
       <?php
       $disklist = get_ata_disks_list();
-      foreach ($disklist as $disknamek => $disknamev) {
-      	// Display device name and channel informations. 
-      	// Found the channel and device number from the /dev name.
-      	// Divise the number by 2, the interger is the channel number, the rest is the device.
-      	$value = intval(trim($disknamek, "ad"));
-      	$channel = $value / 2;
-      	$channel = intval($channel);
-      	$device = $value % 2;
-
+			foreach ($disklist as $diskv) {
+				$name = $diskv['name'];
+				$device = $diskv['devicespecialfile'];
+				$dmamode = trim(preg_replace("/current mode = /", "", exec("/sbin/atacontrol mode {$name}")));
+				
 				echo "<br/>";
-				echo gettext("Device name") . ":		{$disknamek}<br/>";
-				echo gettext("Channel") . ":		{$channel}<br/>";
-				echo gettext("Device") . ":			{$device}<br/>";
-
-				// Display DMA mode.
-				$dmamode = trim(preg_replace("/current mode = /", "", exec("/sbin/atacontrol mode {$disknamek}")));
-
+				echo gettext("Device name") . ":		{$name}<br/>";
 				echo gettext("Transfer mode") . ":		{$dmamode}<br/>";
-
+				
 				// Display more informations.
-      	exec("/usr/local/sbin/ataidle {$channel} {$device}", $rawdata);
-      	array_shift($rawdata);
-      	array_shift($rawdata);
-      	foreach ($rawdata as $line) {
-          echo htmlspecialchars($line) . "<br/>";
-      	}
-      	unset ($rawdata);
+				exec("/usr/local/sbin/ataidle {$device}", $rawdata);
+				array_shift($rawdata);
+				array_shift($rawdata);
+				foreach ($rawdata as $line) {
+				echo htmlspecialchars($line) . "<br/>";
+				}
+				unset ($rawdata);
       }
       ?>
       </pre>
