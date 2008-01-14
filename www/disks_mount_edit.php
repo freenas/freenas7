@@ -3,7 +3,7 @@
 /*
 	disks_mount_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -273,6 +273,8 @@ function fstype_change() {
 								<option value="s2" <?php if ($pconfig['partition'] === "s2") echo "selected";?>>2</option>
 								<option value="s3" <?php if ($pconfig['partition'] === "s3") echo "selected";?>>3</option>
 								<option value="s4" <?php if ($pconfig['partition'] === "s4") echo "selected";?>>4</option>
+								<option value="s5" <?php if ($pconfig['partition'] === "s5") echo "selected";?>>5</option>
+								<option value="s6" <?php if ($pconfig['partition'] === "s6") echo "selected";?>>6</option>
 								<option value=" " <?php if (empty($pconfig['partition'])) echo "selected";?>><?=gettext("CD/DVD or Old Software RAID");?></option>
 							</select>
 							<br>
