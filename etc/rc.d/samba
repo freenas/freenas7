@@ -236,8 +236,6 @@ create_conf()
 }
 
 samba_start_precmd() {
-	create_conf
-
 	# XXX: Never delete winbindd_idmap, winbindd_cache and group_mapping
 	if [ -n "${samba_lockdir}" -a -d "${samba_lockdir}" ]; then
 		echo -n "Removing stale Samba tdb files: "
@@ -306,5 +304,8 @@ samba_cmd() {
 		/etc/rc.d/smbpasswd
 	fi
 }
+
+# Create required config file.
+create_conf
 
 run_rc_command "$1"
