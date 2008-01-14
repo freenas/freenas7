@@ -83,39 +83,38 @@ if ($_GET['act'] == "del") {
   <tr>
     <td class="tabcont">
 			<form action="disks_manage.php" method="post">
-			<?php if ($savemsg) print_info_box($savemsg); ?>
-			<?php if (file_exists($d_diskdirty_path)): ?><p>
-			<?php print_info_box_np(gettext("The disk list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
-			<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
-			<?php endif; ?>
-			<table width="100%" border="0" cellpadding="0" cellspacing="0">
-				<tr>
-					<td width="5%" class="listhdrr"><?=gettext("Disk"); ?></td>
-					<td width="5%" class="listhdrr"><?=gettext("Size"); ?></td>
-					<td width="50%" class="listhdrr"><?=gettext("Description"); ?></td>
-					<td width="10%" class="listhdrr"><?=gettext("Standby time"); ?></td>
-					<td width="10%" class="listhdrr"><?=gettext("File system"); ?></td>
-					<td width="10%" class="listhdrr"><?=gettext("Status"); ?></td>
-					<td width="10%" class="list"></td>
-				</tr>
-			  <?php $i = 0; foreach ($a_disk_conf as $disk): ?>
-				<tr>
-					<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
-					<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
-					<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
-					<td class="listr"><?php if($disk['harddiskstandby']) { $value=$disk['harddiskstandby']; echo $value; } else { echo gettext("Always on"); }?>&nbsp;</td>
-					<td class="listr"><?=($disk['fstype']) ? get_fstype_shortdesc($disk['fstype']) : gettext("Unknown or unformatted")?>&nbsp;</td>
-					<td class="listbg"><?=(0 == disks_exists($disk['devicespecialfile'])) ? gettext("ONLINE") : gettext("MISSING");?>&nbsp;</td>
-					<td valign="middle" nowrap class="list"> <a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" width="17" height="17" border="0"></a>&nbsp;<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" width="17" height="17" border="0"></a></td>
-				</tr>
-				<?php $i++; endforeach; ?>
-				<tr>
-					<td class="list" colspan="6"></td>
-					<td class="list"> <a href="disks_manage_edit.php"><img src="plus.gif" title="<?=gettext("Add disk"); ?>" width="17" height="17" border="0"></a></td>
-				</tr>
-			</table>
-		</form>
-		<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("First configuration step: Add your harddrive to the disk list.");?></p>
+				<?php if ($savemsg) print_info_box($savemsg); ?>
+				<?php if (file_exists($d_diskdirty_path)): ?><p>
+				<?php print_info_box_np(gettext("The disk list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+				<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+				<?php endif; ?>
+				<table width="100%" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td width="5%" class="listhdrr"><?=gettext("Disk"); ?></td>
+						<td width="5%" class="listhdrr"><?=gettext("Size"); ?></td>
+						<td width="50%" class="listhdrr"><?=gettext("Description"); ?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Standby time"); ?></td>
+						<td width="10%" class="listhdrr"><?=gettext("File system"); ?></td>
+						<td width="10%" class="listhdrr"><?=gettext("Status"); ?></td>
+						<td width="10%" class="list"></td>
+					</tr>
+				  <?php $i = 0; foreach ($a_disk_conf as $disk):?>
+					<tr>
+						<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
+						<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
+						<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
+						<td class="listr"><?php if($disk['harddiskstandby']) { $value=$disk['harddiskstandby']; echo $value; } else { echo gettext("Always on"); }?>&nbsp;</td>
+						<td class="listr"><?=($disk['fstype']) ? get_fstype_shortdesc($disk['fstype']) : gettext("Unknown or unformatted")?>&nbsp;</td>
+						<td class="listbg"><?=(0 == disks_exists($disk['devicespecialfile'])) ? gettext("ONLINE") : gettext("MISSING");?>&nbsp;</td>
+						<td valign="middle" nowrap class="list"> <a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" width="17" height="17" border="0"></a>&nbsp;<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" width="17" height="17" border="0"></a></td>
+					</tr>
+					<?php $i++; endforeach;?>
+					<tr>
+						<td class="list" colspan="6"></td>
+						<td class="list"> <a href="disks_manage_edit.php"><img src="plus.gif" title="<?=gettext("Add disk"); ?>" width="17" height="17" border="0"></a></td>
+					</tr>
+				</table>
+			</form>
 		</td>
 	</tr>
 </table>

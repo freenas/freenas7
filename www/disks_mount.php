@@ -3,7 +3,7 @@
 /*
 	disks_mount.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -53,11 +53,10 @@ if ($_POST) {
 			$retval |= rc_update_service("samba");
 			$retval |= rc_update_service("rsyncd");
 			$retval |= rc_update_service("afpd");
-			$retval |= rc_update_service("rpcbind"); // !!! Do
-			$retval |= rc_update_service("mountd");  // !!! not
-			$retval |= rc_update_service("nfsd");    // !!! change
-			$retval |= rc_update_service("statd");   // !!! this
-			$retval |= rc_update_service("lockd");   // !!! order
+			$retval |= rc_update_service("rpcbind");    // !!! Do not
+			$retval |= rc_update_service("mountd");     // !!! change
+			$retval |= rc_update_service("nfsd");       // !!! this
+			$retval |= rc_update_service("nfslocking"); // !!! order
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
@@ -168,7 +167,6 @@ if ($_GET['act'] == "retry")
           </tr>
         </table>
       </form>
-      <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"), "disks_manage.php");?></p>
       <p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?php echo sprintf(gettext("UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></p>
     </td>
   </tr>
