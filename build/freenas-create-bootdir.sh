@@ -93,12 +93,9 @@ fi
 
 # Generate the loader.conf file using by bootloader
 echo "Generate $MINIBSD_DIR/loader.conf"
-echo 'mfsroot_load="YES"
-mfsroot_type="mfs_root"
-mfsroot_name="/mfsroot"
-#Reduce Kernel timer frequency for better performace in Virtual environement
-#explanation here: http://ivoras.sharanet.org/freebsd/vmware.html
-kern.hz="100"' > $MINIBSD_DIR/loader.conf
+echo 'mfsroot_load="YES"' > $MINIBSD_DIR/loader.conf
+echo 'mfsroot_type="mfs_root"' >> $MINIBSD_DIR/loader.conf
+echo 'mfsroot_name="/mfsroot"' >> $MINIBSD_DIR/loader.conf
 # Enable bootsplash?
 if [ 0 != $opt_b ]; then
 	echo 'splash_bmp_load="YES"' >> $MINIBSD_DIR/loader.conf
