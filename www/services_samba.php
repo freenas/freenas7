@@ -82,16 +82,16 @@ if ($_POST) {
 	$reqdfieldst = array();
 
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "security netbiosname workgroup localmaster guestaccount");
-		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"),gettext("Local Master Browser"),gettext("Guest account"));
+		$reqdfields = explode(" ", "security netbiosname workgroup localmaster");
+		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"),gettext("Local Master Browser"));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "netbiosname workgroup winssrv sndbuf rcvbuf createmask directorymask guestaccount");
-		$reqdfieldsn = array(gettext("NetBiosName"),gettext("Workgroup"),gettext("WINS server"),gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"),gettext("Guest acount"));
-		$reqdfieldst = explode(" ", "domain workgroup ipaddr numericint numericint filemode filemode string");
+		$reqdfields = explode(" ", "netbiosname workgroup winssrv sndbuf rcvbuf createmask directorymask");
+		$reqdfieldsn = array(gettext("NetBiosName"),gettext("Workgroup"),gettext("WINS server"),gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"));
+		$reqdfieldst = explode(" ", "domain workgroup ipaddr numericint numericint filemode filemode");
 	}
 
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -120,7 +120,10 @@ if ($_POST) {
 			$config['samba']['directorymask'] = $_POST['directorymask'];
 		else
 			unset($config['samba']['directorymask']);
-		$config['samba']['guestaccount'] = $_POST['guestaccount'];
+		if (!empty($_POST['guestaccount']))
+			$config['samba']['guestaccount'] = $_POST['guestaccount'];
+		else
+			unset($config['samba']['guestaccount']);
 		$config['samba']['nullpasswords'] = $_POST['nullpasswords'] ? true : false;
 		$config['samba']['enable'] = $_POST['enable'] ? true : false;
 
@@ -336,10 +339,10 @@ function authentication_change() {
 			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced settings");?></td>
 			    </tr>
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Guest account");?></td>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Guest account");?></td>
 						<td width="78%" class="vtable">
 							<input name="guestaccount" type="text" class="formfld" id="guestaccount" size="30" value="<?=htmlspecialchars($pconfig['guestaccount']);?>">
-							<br/><?=gettext("This is the username ('ftp' by default) which will be used for access to services which are specified as guest. Whatever privileges this user has will be available to any client connecting to the guest service. This user must exist in the password file, but does not require a valid login.");?>
+							<br/><?=gettext("Use this option to override the username ('ftp' by default) which will be used for access to services which are specified as guest. Whatever privileges this user has will be available to any client connecting to the guest service. This user must exist in the password file, but does not require a valid login.");?>
 						</td>
 					</tr>
 					<tr id="createmask_tr">
