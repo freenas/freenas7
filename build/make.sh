@@ -275,7 +275,7 @@ add_libs() {
 
 	# Copy identified libs.
 	for i in $(sort -u /tmp/lib.list); do
-		cp -vp ${FREENAS_WORLD}${i} ${FREENAS_ROOTFS}$(echo $i | rev | cut -d '/' -f 2- | rev)
+		install -c -s -v ${FREENAS_WORLD}${i} ${FREENAS_ROOTFS}$(echo $i | rev | cut -d '/' -f 2- | rev)
 	done
 
 	# Cleanup.
