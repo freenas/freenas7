@@ -1,5 +1,7 @@
 PORTNAME=			geom_raid5
 PORTVERSION=	1.0
+PORTREVISION=	0
+PORTEPOCH=		1
 CATEGORIES=		sysutils
 COMMENT=			GEOM RAID5 filesystem
 MAINTAINER=		votdev@gmx.de
@@ -25,6 +27,6 @@ do-install:
 
 	# Install application.
 	@${LN} -f -v -s /sbin/geom ${FREENAS_ROOTFS}/sbin/graid5
-	@${CP} -pv /usr/src/sbin/geom/class/raid5/geom_raid5.so ${FREENAS_ROOTFS}/lib/geom
+	@${INSTALL_PROGRAM} -v /usr/src/sbin/geom/class/raid5/geom_raid5.so ${FREENAS_ROOTFS}/lib/geom
 
 .include <bsd.port.mk>
