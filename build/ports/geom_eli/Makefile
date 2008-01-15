@@ -1,34 +1,27 @@
 PORTNAME=			geom_eli
 PORTVERSION=	1.0
 PORTREVISION=	0
-PORTEPOCH=		4
+PORTEPOCH=		5
 CATEGORIES=		sysutils
 COMMENT=			GEOM Eli filesystem encryption
 MAINTAINER=		votdev@gmx.de
 
 DISTFILES?=
-WRKSRC=	/usr/src/sbin/geom/class/eli
 
 do-build:
-	-@if [ -e ${WRKSRC}/geom_eli.c.orig ]; then \
-		${MV} ${WRKSRC}/geom_eli.c.orig ${WRKSRC}/geom_eli.c; \
+	-@if [ -e /usr/src/sbin/geom/class/eli/geom_eli.c.orig ]; then \
+		${MV} /usr/src/sbin/geom/class/eli/geom_eli.c.orig /usr/src/sbin/geom/class/eli/geom_eli.c; \
 	fi
 
 	# Patch geom eli sources.
-	${PATCH} -f ${WRKSRC}/geom_eli.c ${FILESDIR}/geom_eli.c.diff
+	${PATCH} -f /usr/src/sbin/geom/class/eli/geom_eli.c ${FILESDIR}/geom_eli.c.diff
 
-	@${MAKE} -C ${WRKSRC}
+	@cd /usr/src/sbin/geom/class/eli; make clean obj; make && make install
 
 do-install:
-	# Install application.
-
-	-@if [ -f /usr/src/sbin/geom/class/eli/geom_eli.so ]; then \
-		@${CP} -pv /usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom; \
-	else \
-		@${CP} -pv /usr/obj/usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom; \
-	fi
+	@${INSTALL_PROGRAM} -v /usr/obj/usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom
 
 pre-clean:
-	@${MAKE} -C ${WRKSRC} clean
+	@cd /usr/src/sbin/geom/class/eli; make clean obj
 
 .include <bsd.port.mk>
