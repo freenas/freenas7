@@ -240,6 +240,17 @@ function auth_change() {
 			      </td>
 			    </tr>
 					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Security");?></td>
+						<td width="78%" class="vtable">
+							<select name="security" class="formfld" id="security">
+								<?php $types = explode(" ", "None SSL TLS"); $vals = explode(" ", "none ssl tls");?>
+								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
+								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
+								<?php endfor;?>
+							</select>
+						</td>
+					</tr>
+					<tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="auth" type="checkbox" id="auth" value="yes" <?php if ($pconfig['auth']) echo "checked"; ?> onClick="auth_change()">
@@ -258,17 +269,6 @@ function auth_change() {
 			        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
 			        <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
 			      </td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Security") ; ?></td>
-						<td width="78%" class="vtable">
-							<select name="security" class="formfld" id="security">
-								<?php $types = explode(" ", "None SSL TLS"); $vals = explode(" ", "none ssl tls");?>
-								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
-								<?php endfor;?>
-							</select>
-						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("From email");?></td>
