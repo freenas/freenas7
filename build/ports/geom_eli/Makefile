@@ -16,7 +16,7 @@ do-build:
 	# Patch geom eli sources.
 	${PATCH} -f /usr/src/sbin/geom/class/eli/geom_eli.c ${FILESDIR}/geom_eli.c.diff
 
-	@cd /usr/src/sbin/geom/class/eli; make clean obj; make && make install
+	@cd /usr/src/sbin/geom/class/eli; make clean obj; make
 
 do-install:
 	@${INSTALL_PROGRAM} -v /usr/obj/usr/src/sbin/geom/class/eli/geom_eli.so ${FREENAS_ROOTFS}/lib/geom

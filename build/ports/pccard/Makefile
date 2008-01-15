@@ -10,8 +10,8 @@ MAINTAINER=		votdev@gmx.de
 DISTFILES?=
 
 do-build:
-	@cd /usr/src/usr.sbin/pccard/pccardc; make clean obj; make && make install
-	@cd /usr/src/usr.sbin/pccard/pccardd; make clean obj; make && make install
+	@cd /usr/src/usr.sbin/pccard/pccardc; make clean obj; make
+	@cd /usr/src/usr.sbin/pccard/pccardd; make clean obj; make
 
 do-install:
 	@${INSTALL_PROGRAM} -v /usr/obj/usr/src/usr.sbin/pccard/pccardc/pccardc ${FREENAS_ROOTFS}/usr/sbin
