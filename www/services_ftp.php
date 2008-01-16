@@ -3,7 +3,7 @@
 /*
 	services_ftp.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -68,6 +68,9 @@ $pconfig['fxp'] = isset($config['ftp']['fxp']);
 $pconfig['keepallfiles'] = isset($config['ftp']['keepallfiles']);
 $pconfig['permitrootlogin'] = isset($config['ftp']['permitrootlogin']);
 $pconfig['chrooteveryone'] = isset($config['ftp']['chrooteveryone']);
+$pconfig['tls'] = $config['ftp']['tls'];
+$pconfig['privatekey'] = $config['ftp']['privatekey'];
+$pconfig['certificate'] = $config['ftp']['certificate'];
 
 if ($_POST) {
 	unset($input_errors);
@@ -129,6 +132,9 @@ if ($_POST) {
 		$config['ftp']['keepallfiles'] = $_POST['keepallfiles'] ? true : false;
 		$config['ftp']['permitrootlogin'] = $_POST['permitrootlogin'] ? true : false;
 		$config['ftp']['chrooteveryone'] = $_POST['chrooteveryone'] ? true : false;
+		$config['ftp']['tls'] = $_POST['tls'];
+		$config['ftp']['privatekey'] = base64_encode($_POST['privatekey']);
+		$config['ftp']['certificate'] = base64_encode($_POST['certificate']);
 		$config['ftp']['enable'] = $_POST['enable'] ? true : false;
 
 		write_config();
@@ -166,6 +172,23 @@ function enable_change(enable_change) {
 	document.iform.filemask.disabled = endis;
 	document.iform.directorymask.disabled = endis;
 	document.iform.chrooteveryone.disabled = endis;
+	document.iform.tls.disabled = endis;
+	document.iform.privatekey.disabled = endis;
+	document.iform.certificate.disabled = endis;
+}
+
+function tls_change() {
+	switch(document.iform.tls.selectedIndex) {
+		case 0:
+			showElementById('privatekey_tr','hide');
+			showElementById('certificate_tr','hide');
+			break;
+
+		default:
+			showElementById('privatekey_tr','show');
+			showElementById('certificate_tr','show');
+			break;
+	}
 }
 //-->
 </script>
@@ -311,6 +334,32 @@ function enable_change(enable_change) {
 						</td>
 			  	</tr>
 			  	<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("SSL/TLS");?></td>
+						<td width="78%" class="vtable">
+							<select name="tls" class="formfld" id="tls" onchange="tls_change()">
+								<?php $types = array(gettext("Disable"),gettext("TLS + cleartext"),gettext("Enforce TLS")); $vals = explode(" ", "0 1 2");?>
+								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
+								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] === $pconfig['tls']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
+								<?php endfor;?>
+							</select><br/>
+							<span class="vexpl"><?=gettext("Use SSL/TLS encryption layer.");?></span>
+						</td>
+					</tr>
+					<tr id="privatekey_tr">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Private key");?></td>
+						<td width="78%" class="vtable">
+							<textarea name="privatekey" cols="65" rows="7" id="privatekey" class="formpre"><?=htmlspecialchars($pconfig['privatekey']);?></textarea></br>
+							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
+						</td>
+					</tr>  	
+					<tr id="certificate_tr">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Certificate");?></td>
+						<td width="78%" class="vtable">
+							<textarea name="certificate" cols="65" rows="7" id="certificate" class="formpre"><?=htmlspecialchars($pconfig['certificate']);?></textarea></br>
+							<span class="vexpl"><?=gettext("Paste a signed certificate in X.509 PEM format here.");?></span>
+						</td>
+					</tr>
+			  	<tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
 			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
@@ -324,6 +373,7 @@ function enable_change(enable_change) {
 <script language="JavaScript">
 <!--
 enable_change(false);
+tls_change();
 //-->
 </script>
 <?php include("fend.inc");?>

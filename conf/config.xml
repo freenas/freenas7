@@ -269,9 +269,13 @@
 		<directorymask>022</directorymask>
 		<filemask>077</filemask>
 		<chrooteveryone/>
+		<tls>0</tls>
+		<privatekey></privatekey>
+		<certificate></certificate>
 		<!--
 		<anonymousonly/>
 		<localusersonly/>
+		<tls>0:no TLS|1:TLS+cleartext|2:enforce TLS</tls>
 		-->
 	</ftp>
 	<afp>
