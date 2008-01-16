@@ -54,7 +54,7 @@ Minors changes:
 - Remove 'Read only' checkbox from rsyncd settings page (WebGUI). Access mode can be defined per share.
 - Autoselect 'Selected' checkbox in time selection control (minutes/hours/days/months/weekdays) e.g. when configuring scheduled reboot.
 - Add ability to select PIO modes for IDE/ATA disks on 'Disks: Management: Disk: Edit' WebGUI page.
-- Enable logging for local/client rsync jobs (to /var/log/rsync_xxx.log). It is not possible to access log files via WebGUI.
+- Enable logging for local/client rsync jobs (to /var/log/rsync_xxx.log). It is possible to access log files via WebGUI/Advanced/Edit File page.
 
 Bug fixs:
 - Calculating iSCSI extent IDs fails for numbers > 10.
