@@ -69,7 +69,7 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['type'] = "disk";
 	$pconfig['partition'] = "p1";
 	$pconfig['readonly'] = false;
-	$pconfig['fsck'] = true;
+	$pconfig['fsck'] = false;
 }
 
 if ($_POST) {
