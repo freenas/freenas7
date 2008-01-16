@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_mount_tools.php
-	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -167,7 +167,7 @@ if(isset($_GET['action'])) {
   				</tr>
 			 </table>
     </form>
-	<p><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br><?php echo sprintf(gettext("You can't unmount a drive used by swap file or iSCSI-target file!"), get_product_name());?></p>
+		<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!");?></p>
   </td></tr>
 </table>
 <?php include("fend.inc");?>
