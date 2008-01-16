@@ -12,7 +12,8 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-rfc2640 \
 									--with-largefile \
 									--with-pam \
-									--with-ftpwho
+									--with-ftpwho \
+									--with-tls
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/pure-ftpd ${FREENAS_ROOTFS}/usr/local/sbin
