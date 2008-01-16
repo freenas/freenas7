@@ -2,11 +2,11 @@
 <?php
 /*
 	services_upnp.php
-	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -52,6 +52,7 @@ $pconfig['if'] = $config['upnp']['if'];
 $pconfig['port'] = $config['upnp']['port'];
 $pconfig['web'] = isset($config['upnp']['web']);
 $pconfig['home'] = $config['upnp']['home'];
+$pconfig['profile'] = $config['upnp']['profile'];
 
 /* Set name to configured hostname if it is not set */
 if(!$pconfig['name'])
@@ -71,12 +72,13 @@ if($_POST) {
 	}
 
 	if(!$input_errors) {
-    $config['upnp']['enable'] = $_POST['enable'] ? true : false;
+		$config['upnp']['enable'] = $_POST['enable'] ? true : false;
 		$config['upnp']['name'] = $_POST['name'];
 		$config['upnp']['if'] = $_POST['interface'];
 		$config['upnp']['port'] = $_POST['port'];
 		$config['upnp']['web'] = $_POST['web'] ? true : false;
 		$config['upnp']['home'] = $_POST['home'];
+		$config['upnp']['profile'] = $_POST['profile'];
 
 		write_config();
 
@@ -119,6 +121,7 @@ function enable_change(enable_change) {
 	document.iform.web.disabled = endis;
 	document.iform.home.disabled = endis;
 	document.iform.browse.disabled = endis;
+	document.iform.profile.disabled = endis;
 }
 //-->
 </script>
@@ -207,6 +210,20 @@ function enable_change(enable_change) {
 						<td width="78%" class="vtable">
 							<input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"></br>
 							<?=gettext("Enter a custom port number for the HTTP server if you want to override the default (49152). Only dynamic or private ports can be used (from 49152 through 65535).");?>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Profile");?></td>
+						<td width="78%" class="vtable">
+							<select name="profile" class="formfld" id="profile">
+								<?php $types = array(gettext("Default"),gettext("Sony Playstation 3"),gettext("Telegent TG100")); $vals = explode(" ", "default ps3 tg100");?>
+								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
+								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['profile']) echo "selected";?>>
+								<?=htmlspecialchars($types[$j]);?>
+								</option>
+								<?php endfor;?>
+							</select><br/>
+							<span class="vexpl"><?=gettext("Compliant profile to be used.");?></span>
 						</td>
 					</tr>
 					<tr>

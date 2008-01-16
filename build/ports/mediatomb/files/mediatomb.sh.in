@@ -34,7 +34,7 @@ command_args="--daemon --cfgdir ${mediatomb_cfgdir} --config ${mediatomb_config}
 
 start_precmd()
 {
-	local _if _command_args
+	local _if _name _home _profile _command_args
 
 	# Get interface used for uPnP.
 	_if=`configxml_get "//upnp/if"`
@@ -50,6 +50,7 @@ start_precmd()
 	# Create config file.
 	_name=`configxml_get "//upnp/name"`
 	_home=`configxml_get "//upnp/home"`
+	_profile=`configxml_get "//upnp/profile"`
 
 	echo '<?xml version="1.0" encoding="UTF-8"?>' > ${mediatomb_config}
 	echo '<config xmlns="http://mediatomb.cc/0.10.0/config" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mediatomb.cc/0.10.0/config http://mediatomb.cc/0.10.0/config.xsd">' >> ${mediatomb_config}
@@ -67,7 +68,12 @@ start_precmd()
 	echo '<storage driver="sqlite3">' >> ${mediatomb_config}
 	echo '<database-file>mediatomb.db</database-file>' >> ${mediatomb_config}
 	echo '</storage>' >> ${mediatomb_config}
-	echo '<protocolInfo extend="yes"/>' >> ${mediatomb_config} # Adds specific tags to the protocolInfo attribute, this is required to enable MP3 and MPEG4 playback on Playstation 3.
+	if [ "ps3" = "${_profile}" ]; then 		
+		echo '<protocolInfo extend="yes"/>' >> ${mediatomb_config} # Adds specific tags to the protocolInfo attribute, this is required to enable MP3 and MPEG4 playback on Playstation 3.
+	fi
+	if [ "tg100" = "${_profile}" ]; then 		
+		echo '<upnp-string-limit>101</upnp-string-limit>' >> ${mediatomb_config} # The Telegent TG100 client has a problem browsing containers, where item titles exceed 101 characters.
+	fi
 	echo '</server>' >> ${mediatomb_config}
 	echo '<import hidden-files="no">' >> ${mediatomb_config}
 	echo '<scripting script-charset="UTF-8">' >> ${mediatomb_config}

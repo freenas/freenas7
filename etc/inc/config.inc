@@ -1161,6 +1161,14 @@ function config_upgrade() {
 		$config['version'] = "4.0";
 	}
 
+	/* Convert 4.0 -> 4.1 */
+	/* Add attribute //upnp/profile. */
+	if ($config['version'] === "4.0") {
+		$config['upnp']['profile'] = "default";
+
+		$config['version'] = "4.1";
+	}
+
 	write_config();
 
 	if (is_booting())
