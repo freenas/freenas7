@@ -2,7 +2,7 @@
 #
 # /etc/rc
 #part of FreeNAS (http://www.freenas.org)
-#Copyright (C) 2005-2006 Olivier Cochard <cochard@gmail.com>.
+#Copyright (C) 2005-2008 Olivier Cochard <cochard@gmail.com>.
 #All rights reserved.
 #
 #Based on m0n0wall (http://m0n0.ch/wall)
@@ -37,7 +37,7 @@ case ${PLATFORM} in
 esac
 
 # Create directories in /var
-for dir in /var/run /var/log /var/log/samba /var/etc /var/etc/ssh /var/etc/private /var/etc/iscsi /var/db /var/mount /var/empty  /var/cron /var/cron/tabs; do
+for dir in /var/run /var/log /var/log/samba /var/etc /var/etc/ssh /var/etc/ssl/private /var/etc/private /var/etc/iscsi /var/db /var/mount /var/empty  /var/cron /var/cron/tabs; do
 	[ ! -d "${dir}" ] && mkdir -p ${dir} 
 done
 

@@ -8,7 +8,7 @@ MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
 MASTER_SITE_SUBDIR=	pureftpd
 USE_BZIP2=					yes
 
-PUREFTPD_CERTFILE=	/var/etc/ssl/private/pureftpd.pem
+PUREFTPD_CERTFILE=	/var/etc/ssl/private/pure-ftpd.pem
 
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-rfc2640 \

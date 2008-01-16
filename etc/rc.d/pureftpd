@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: pureftpd
@@ -19,12 +19,13 @@ start_precmd="create_conf"
 
 # Defaults
 pureftpd_enable=${pureftpd_enable:-"NO"}
+pureftpd_certfile=${pureftpd_certfile:-"/var/etc/ssl/private/pure-ftpd.pem"}
 command="/usr/local/sbin/pure-ftpd"
 pidfile="/var/run/pure-ftpd.pid"
 
 create_conf()
 {
-	local _banner
+	local _banner _productname _tls _certificate _privatekey
 
 	# Create /mnt/.banner file.
 	_banner=`configxml_get "//ftp/banner"`
@@ -40,6 +41,7 @@ create_conf()
 		-v "concat('-S ',port)" \
 		-v "concat(' -c ',numberclients)" \
 		-v "concat(' -I ',timeout)" \
+		-v "concat(' -Y ',tls)" \
 		-o " -M -B -b" \
 		-i "maxconperip[. > 0]" -v "concat(' -C ',maxconperip)" -b \
 		-i "count(anonymousonly) > 0" -o " -e" -b \
@@ -54,6 +56,28 @@ create_conf()
 		-i "count(permitrootlogin) = 0" -o " -u 1" -b \
 		-i "count(chrooteveryone) > 0" -o " -A" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
+
+	# Create SSL/TLS certificate.
+	_tls=`configxml_get "//ftp/tls"`
+	if [ "0" != "${_tls}" ]; then
+		_certificate=`configxml_get "//ftp/certificate"`
+		_privatekey=`configxml_get "//ftp/privatekey"`
+
+		# Create /var/etc/ssl/private/pure-ftpd.pem file.
+		if [ -n "${_certificate}" -a -n "${_privatekey}" ]; then
+			_tmpfile=/tmp/pure-ftpd$$.tmp
+
+			echo "${_certificate}" > ${_tmpfile}
+			/usr/bin/uudecode -m -p -r ${_tmpfile} > ${pureftpd_certfile}
+			echo "" >> ${pureftpd_certfile}
+			echo "${_privatekey}" > ${_tmpfile}
+			/usr/bin/uudecode -m -p -r ${_tmpfile} >> ${pureftpd_certfile}
+
+			/bin/chmod 0600 ${pureftpd_certfile}
+
+			/bin/rm -f ${_tmpfile}
+		fi
+	fi
 }
 
 load_rc_config ${name}
