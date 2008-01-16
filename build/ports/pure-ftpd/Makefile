@@ -8,12 +8,15 @@ MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
 MASTER_SITE_SUBDIR=	pureftpd
 USE_BZIP2=					yes
 
+PUREFTPD_CERTFILE=	/var/etc/ssl/private/pureftpd.pem
+
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-rfc2640 \
 									--with-largefile \
 									--with-pam \
 									--with-ftpwho \
-									--with-tls
+									--with-tls \
+									--with-certfile="${PUREFTPD_CERTFILE}"
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/pure-ftpd ${FREENAS_ROOTFS}/usr/local/sbin

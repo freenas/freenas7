@@ -1163,8 +1163,14 @@ function config_upgrade() {
 
 	/* Convert 4.0 -> 4.1 */
 	/* Add attribute //upnp/profile. */
+	/* Add attribute //ftp/tls. */
+	/* Add attribute //ftp/certificate. */
+	/* Add attribute //ftp/privatekey. */
 	if ($config['version'] === "4.0") {
 		$config['upnp']['profile'] = "default";
+		$config['ftp']['tls'] = "0";
+		$config['ftp']['certificate'] = "";
+		$config['ftp']['privatekey'] = "";
 
 		$config['version'] = "4.1";
 	}
