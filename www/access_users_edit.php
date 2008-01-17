@@ -58,7 +58,7 @@ if (isset($id) && $a_user[$id]) {
 	$pconfig['fullshell'] = isset($a_user[$id]['fullshell']);
 	$pconfig['homedir'] = $a_user[$id]['homedir'];
 } else {
-	$pconfig['primarygroup'] = $a_group['ftp'];
+	$pconfig['primarygroup'] = $a_group['guest'];
 }
 
 if ($_POST) {
