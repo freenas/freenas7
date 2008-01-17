@@ -15,7 +15,7 @@ name="pureftpd"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="create_conf"
+start_precmd="start_precmd"
 
 # Defaults
 pureftpd_enable=${pureftpd_enable:-"NO"}
@@ -23,7 +23,7 @@ pureftpd_certfile=${pureftpd_certfile:-"/var/etc/ssl/private/pure-ftpd.pem"}
 command="/usr/local/sbin/pure-ftpd"
 pidfile="/var/run/pure-ftpd.pid"
 
-create_conf()
+start_precmd()
 {
 	local _banner _productname _tls _certificate _privatekey
 
@@ -35,27 +35,6 @@ create_conf()
 	else
 		echo ${_banner} > /mnt/.banner
 	fi
-
-	# Set command args.
-	command_args=`/usr/local/bin/xml sel -t -m "/${configxml_root}/ftp" \
-		-v "concat('-S ',port)" \
-		-v "concat(' -c ',numberclients)" \
-		-v "concat(' -I ',timeout)" \
-		-v "concat(' -Y ',tls)" \
-		-o " -M -B -b" \
-		-i "maxconperip[. > 0]" -v "concat(' -C ',maxconperip)" -b \
-		-i "count(anonymousonly) > 0" -o " -e" -b \
-		-i "count(localusersonly) > 0" -o " -E" -b \
-		-i "pasv_min_port[. != '0']" -i "pasv_max_port[. != '0']" -v "concat(' -p ',pasv_min_port,':',pasv_max_port)" -b -b \
-		-i "string-length(filemask) > 0" -i "string-length(directorymask) > 0" -v "concat(' -U ',filemask,':',directorymask)" -b -b \
-		-i "string-length(filemask) = 0" -i "string-length(directorymask) = 0" -o " -U 077:022" -b -b \
-		-i "string-length(pasv_address) > 0" -v "concat(' -P ',pasv_address)" -b \
-		-i "count(natmode) > 0" -o " -N" -b \
-		-i "count(fxp) > 0" -o " -W" -b \
-		-i "count(keepallfiles) > 0" -o " -K" -b \
-		-i "count(permitrootlogin) = 0" -o " -u 1" -b \
-		-i "count(chrooteveryone) > 0" -o " -A" -b \
-		${configxml_file} | /usr/local/bin/xml unesc`
 
 	# Create SSL/TLS certificate.
 	_tls=`configxml_get "//ftp/tls"`
@@ -79,6 +58,27 @@ create_conf()
 			/bin/rm -f ${_tmpfile}
 		fi
 	fi
+
+	# Set command args.
+	command_args=`/usr/local/bin/xml sel -t -m "/${configxml_root}/ftp" \
+		-v "concat('-S ',port)" \
+		-v "concat(' -c ',numberclients)" \
+		-v "concat(' -I ',timeout)" \
+		-v "concat(' -Y ',tls)" \
+		-o " -M -B -b" \
+		-i "maxconperip[. > 0]" -v "concat(' -C ',maxconperip)" -b \
+		-i "count(anonymousonly) > 0" -o " -e" -b \
+		-i "count(localusersonly) > 0" -o " -E" -b \
+		-i "pasv_min_port[. != '0']" -i "pasv_max_port[. != '0']" -v "concat(' -p ',pasv_min_port,':',pasv_max_port)" -b -b \
+		-i "string-length(filemask) > 0" -i "string-length(directorymask) > 0" -v "concat(' -U ',filemask,':',directorymask)" -b -b \
+		-i "string-length(filemask) = 0" -i "string-length(directorymask) = 0" -o " -U 077:022" -b -b \
+		-i "string-length(pasv_address) > 0" -v "concat(' -P ',pasv_address)" -b \
+		-i "count(natmode) > 0" -o " -N" -b \
+		-i "count(fxp) > 0" -o " -W" -b \
+		-i "count(keepallfiles) > 0" -o " -K" -b \
+		-i "count(permitrootlogin) = 0" -o " -u 1" -b \
+		-i "count(chrooteveryone) > 0" -o " -A" -b \
+		${configxml_file} | /usr/local/bin/xml unesc`
 }
 
 load_rc_config ${name}
