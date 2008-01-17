@@ -72,6 +72,7 @@ create_conf()
 			echo "" >> ${pureftpd_certfile}
 			echo "${_privatekey}" > ${_tmpfile}
 			/usr/bin/uudecode -m -p -r ${_tmpfile} >> ${pureftpd_certfile}
+			echo "" >> ${pureftpd_certfile}
 
 			/bin/chmod 0600 ${pureftpd_certfile}
 

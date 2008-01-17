@@ -69,20 +69,22 @@ $pconfig['keepallfiles'] = isset($config['ftp']['keepallfiles']);
 $pconfig['permitrootlogin'] = isset($config['ftp']['permitrootlogin']);
 $pconfig['chrooteveryone'] = isset($config['ftp']['chrooteveryone']);
 $pconfig['tls'] = $config['ftp']['tls'];
-$pconfig['privatekey'] = $config['ftp']['privatekey'];
-$pconfig['certificate'] = $config['ftp']['certificate'];
+$pconfig['privatekey'] = base64_decode($config['ftp']['privatekey']);
+$pconfig['certificate'] = base64_decode($config['ftp']['certificate']);
 
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
-	$reqdfields = array();
-	$reqdfieldsn = array();
-
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "port numberclients maxconperip timeout"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("TCP port"),gettext("Number of clients"),gettext("Max. conn. per IP"),gettext("Timeout")));
+		// Input validation.
+		$reqdfields = explode(" ", "port numberclients maxconperip timeout");
+		$reqdfieldsn = array(gettext("TCP port"), gettext("Number of clients"), gettext("Max. conn. per IP"), gettext("Timeout"));
+
+		if ("0" != $_POST['tls']) {
+			$reqdfields = array_merge($reqdfields, explode(" ", "privatekey certificate"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Private key"), gettext("Certificate")));
+		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -346,14 +348,14 @@ function tls_change() {
 						</td>
 					</tr>
 					<tr id="privatekey_tr">
-						<td width="22%" valign="top" class="vncell"><?=gettext("Private key");?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Private key");?></td>
 						<td width="78%" class="vtable">
 							<textarea name="privatekey" cols="65" rows="7" id="privatekey" class="formpre"><?=htmlspecialchars($pconfig['privatekey']);?></textarea></br>
 							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
 						</td>
 					</tr>  	
 					<tr id="certificate_tr">
-						<td width="22%" valign="top" class="vncell"><?=gettext("Certificate");?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Certificate");?></td>
 						<td width="78%" class="vtable">
 							<textarea name="certificate" cols="65" rows="7" id="certificate" class="formpre"><?=htmlspecialchars($pconfig['certificate']);?></textarea></br>
 							<span class="vexpl"><?=gettext("Paste a signed certificate in X.509 PEM format here.");?></span>
