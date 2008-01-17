@@ -314,28 +314,29 @@ function tls_change() {
 							<?=gettext("chroot() everyone, but root.");?>
 						</td>
 					</tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Passive IP address"); ?></td>
-			      <td width="78%" class="vtable">
-			        <input name="pasv_address" type="text" class="formfld" id="pasv_address" size="20" value="<?=htmlspecialchars($pconfig['pasv_address']);?>">
-			        <br><?=gettext("Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the server is behind a masquerading (NAT) box that doesn't properly handle stateful FTP masquerading, put the ip address of that box here. If you have a dynamic IP address, you can put the public host name of your gateway, that will be resolved every time a new client will connect.");?>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Passive IP address");?></td>
+						<td width="78%" class="vtable">
+							<input name="pasv_address" type="text" class="formfld" id="pasv_address" size="20" value="<?=htmlspecialchars($pconfig['pasv_address']);?>">
+							<br><?=gettext("Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the server is behind a masquerading (NAT) box that doesn't properly handle stateful FTP masquerading, put the ip address of that box here. If you have a dynamic IP address, you can put the public host name of your gateway, that will be resolved every time a new client will connect.");?>
 						</td>
-			  	</tr>
-			  	<tr>
-			      <td width="22%" valign="top" class="vncellbg"><?=gettext("pasv_min_port"); ?></td>
-			      <td width="78%" class="">
-			        <input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>">
-			      	<br><?=gettext("The minimum port to allocate for PASV style data connections (0 = use any port).");?>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellbg"><?=gettext("Passive mode ports");?></td>
+						<td width="78%" class="">
+							<input name="pasv_min_port" type="text" class="formfld" id="pasv_min_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_min_port']);?>"><br/>
+							<span class="vexpl"><?=gettext("The minimum port to allocate for PASV style data connections (0 = use any port).");?></span>
 						</td>
-			  	</tr>
-			  	<tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("pasv_max_port"); ?></td>
-			      <td width="78%" class="vtable">
-			        <input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>">
-			      	<br><?=gettext("The maximum port to allocate for PASV style data connections (0 = use any port).");?>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell">&nbsp;</td>
+						<td width="78%" class="vtable">
+							<input name="pasv_max_port" type="text" class="formfld" id="pasv_max_port" size="20" value="<?=htmlspecialchars($pconfig['pasv_max_port']);?>"><br/>
+							<span class="vexpl"><?=gettext("The maximum port to allocate for PASV style data connections (0 = use any port).");?></span><br/><br/>
+							<span class="vexpl"><?=gettext("Only ports in the range min. port to max. port inclusive are used for passive-mode downloads. This is especially useful if the server is behind a firewall without FTP connection tracking. Use high ports (40000-50000 for instance), where no regular server should be listening.");?></span>			      	
 						</td>
-			  	</tr>
-			  	<tr>
+					</tr>
+					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("SSL/TLS");?></td>
 						<td width="78%" class="vtable">
 							<select name="tls" class="formfld" id="tls" onchange="tls_change()">
