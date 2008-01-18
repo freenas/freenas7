@@ -161,8 +161,8 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
       Copyright &copy; 1994-2006 Theodore Ts'o. All rights reserved.
 		</p>
 
-		<p>INADYN - Simple Dynamic DNS client (<a href="http://inadyn-mt.sourceforge.net/" target="_blank">http://inadyn-mt.sourceforge.net/</a>)<br>
-      from Bryan Hoover (bhoover@wecs.com).</p>
+		<p>INADYN - Simple Dynamic DNS client (<a href="http://inadyn.ina-tech.net" target="_blank">http://inadyn.ina-tech.net</a>)<br>
+      Copyright &copy; 2003-2004 Narcis Ilisei. All rights reserved.</p>
 
 		<p>XMLStarlet Command Line XML Toolkit (<a href="http://xmlstar.sourceforge.net" target="_blank">http://xmlstar.sourceforge.net</a>)<br>
       Copyright (c) 2002 Mikhail Grushinskiy. All rights reserved.</p>
