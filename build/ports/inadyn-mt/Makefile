@@ -13,9 +13,6 @@ USE_DOS2UNIX=	yes
 USE_GMAKE=		yes
 MAKEFILE=			makefile
 
-post-patch:
-	@${REINPLACE_CMD} -e 's|gcc|$$\(CC\)|g' ${WRKSRC}/makefile
-
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/linux/inadyn ${FREENAS_ROOTFS}/usr/local/bin
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/inadyn.in ${FREENAS_ROOTFS}/etc/rc.d/inadyn
