@@ -48,7 +48,7 @@ Majors changes:
 - Remove 'kern.hz="100"' from /boot/loader.conf. VMWare users which require this setting have to install in 'full' mode and edit loader.conf by hand.
   Also see http://www.freebsd.org/doc/en/books/handbook/virtualization-guest.html for some tipps.
 - Add SSL/TLS support to FTP service.
-- Replace inadyn 1.96.2 dynamic DNS service with inadyn-mt 02.01.13.
+- Add OpenDNS support to 'Dynamic DNS' service.
 
 Minors changes:
 - Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
