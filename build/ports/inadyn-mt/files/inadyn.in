@@ -15,7 +15,7 @@ name="inadyn"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="create_conf"
+start_precmd="start_precmd"
 
 # Defaults
 inadyn_enable=${inadyn_enable:-"NO"}
@@ -23,34 +23,34 @@ inadyn_config=${inadyn_config:-"/var/etc/${name}.conf"}
 command="/usr/local/bin/${name}"
 command_args="--input_file ${inadyn_config}"
 
-create_conf()
+start_precmd()
 {
-	local _servicetype
-
 	# Get the service type.
 	case `configxml_get "//dynamicdns/provider"` in
 		dyndns.org)
-			_servicetype="dyndns@dyndns.org";;
+			echo '--dyndns_system dyndns@dyndns.org' > ${inadyn_config};;
 		freedns.afraid.org)
-			_servicetype="default@freedns.afraid.org";;
+			echo '--dyndns_system default@freedns.afraid.org' > ${inadyn_config};;
 		zoneedit.com)
-			_servicetype="default@zoneedit.com";;
+			echo '--dyndns_system default@zoneedit.com' > ${inadyn_config};;
 		no-ip.com)
-			_servicetype="default@no-ip.com";;
+			echo '--dyndns_system default@no-ip.com' > ${inadyn_config};;
+		opendns.com)
+			echo '--secure' > ${inadyn_config};
+			echo '--dyndns_server_name updates.opendns.com' >> ${inadyn_config};
+			echo '--dyndns_server_url /nic/update?' >> ${inadyn_config};;
 		*)
-			_servicetype="";;		
 	esac
 
 	/usr/local/bin/xml sel -t -m "//dynamicdns" \
 		-o "--background" -n \
 		-o "--syslog" -n \
-		-o "--dyndns_system ${_servicetype}" -n \
 		-v "concat('--alias ',domainname)" -n \
 		-v "concat('--username ',username)" -n \
 		-v "concat('--password ',password)" -n \
 		-i "string-length(updateperiod) > 0" -v "concat('--update_period_sec ',updateperiod)" -n -b \
 		-i "string-length(forcedupdateperiod) > 0" -v "concat('--forced_update_period ',forcedupdateperiod)" -n -b \
-		${configxml_file} | /usr/local/bin/xml unesc > ${inadyn_config}
+		${configxml_file} | /usr/local/bin/xml unesc >> ${inadyn_config}
 }
 
 load_rc_config ${name}
