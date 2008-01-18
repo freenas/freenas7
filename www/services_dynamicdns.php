@@ -125,17 +125,19 @@ function enable_change(enable_change) {
 				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Provider");?></td>
 			      <td width="78%" class="vtable">
 			        <select name="provider" class="formfld" id="provider">
-								<option value="dyndns.org" <?php if ("dyndns.org" == $pconfig['provider']) echo "selected";?>>dyndns.org</option>
-								<option value="freedns.afraid.org" <?php if ("freedns.afraid.org" == $pconfig['provider']) echo "selected";?>>freedns.afraid.org</option>
-								<option value="zoneedit.com" <?php if ("zoneedit.com" == $pconfig['provider']) echo "selected";?>>zoneedit.com</option>
-								<option value="no-ip.com" <?php if ("no-ip.com" == $pconfig['provider']) echo "selected";?>>no-ip.com</option>
+								<option value="dyndns.org" <?php if ("dyndns.org" === $pconfig['provider']) echo "selected";?>>dyndns.org</option>
+								<option value="freedns.afraid.org" <?php if ("freedns.afraid.org" === $pconfig['provider']) echo "selected";?>>freedns.afraid.org</option>
+								<option value="zoneedit.com" <?php if ("zoneedit.com" === $pconfig['provider']) echo "selected";?>>zoneedit.com</option>
+								<option value="no-ip.com" <?php if ("no-ip.com" === $pconfig['provider']) echo "selected";?>>no-ip.com</option>
+								<option value="opendns.com" <?php if ("opendns.com" === $pconfig['provider']) echo "selected";?>>opendns.com</option>
 			        </select>
 			      </td>
 					</tr>
 					<tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="domainname" type="text" class="formfld" id="domainname" size="40" value="<?=htmlspecialchars($pconfig['domainname']);?>">
+			        <input name="domainname" type="text" class="formfld" id="domainname" size="40" value="<?=htmlspecialchars($pconfig['domainname']);?>"><br/>
+							<span class="vexpl"><?=gettext("Alias host name.");?></span>
 			      </td>
 			    </tr>
 					<tr>
