@@ -1,13 +1,12 @@
 #!/usr/local/bin/php
 <?php
 /*
-	diag_infos_swap.php
+	diag_infos_sockets.php
+	Copyright © 2008 Volker Theile (votdev@gmx.de)
+  All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
-	All rights reserved.
-
-	Based on m0n0wall (http://m0n0.ch/wall)
-	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -32,11 +31,11 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
-$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Swap"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Sockets"));
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-	<tr>
+  <tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
 				<li class="tabinact"><a href="diag_infos.php"><?=gettext("Disks");?></a></li>
@@ -48,31 +47,17 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Swap")
 				<li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
 				<li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
-				<li class="tabact"><a href="diag_infos_swap.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Swap");?></a></li>
+				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
 				<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP users");?></a></li>
 				<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
-				<li class="tabinact"><a href="diag_infos_sockets.php"><?=gettext("Sockets");?></a></li>
+				<li class="tabact"><a href="diag_infos_sockets.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Sockets");?></a></li>
 			</ul>
 		</td>
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-      if (!isset($config['system']['swap_enable'])) {
-      	echo "<strong>".gettext("Swap disabled")."</strong><br><br>";
-      } else {
-      	echo "<pre>";
-      	echo "<strong>".gettext("Swap Status").":</strong><br><br>";
-      	exec("/usr/sbin/swapinfo",$rawdata);
-      	foreach ($rawdata as $line) {
-      		echo htmlspecialchars($line) . "<br>";
-      	}
-      	unset ($rawdata);
-      	echo "<br>";
-      	echo "</pre>";
-      }
-      ?>
+    	<pre><?php system("netstat -Aa");?></pre>
     </td>
   </tr>
 </table>

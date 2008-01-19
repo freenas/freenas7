@@ -2,7 +2,7 @@
 <?php
 /*
 	diag_infos_ftpd.php
-	Copyright © 2008 Volker Theile (votdev@gmx.de)
+	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -55,6 +55,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("FTP us
 				<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
 				<li class="tabact"><a href="diag_infos_ftpd.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("FTP users");?></a></li>
 				<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
+				<li class="tabinact"><a href="diag_infos_sockets.php"><?=gettext("Sockets");?></a></li>
 			</ul>
 		</td>
 	</tr>
