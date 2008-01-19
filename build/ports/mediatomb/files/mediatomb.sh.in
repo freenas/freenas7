@@ -111,7 +111,13 @@ start_precmd()
 	echo '<map from="m2v" to="video/mpeg"/>' >> ${mediatomb_config}
 	echo '<map from="m4v" to="video/mp4"/>' >> ${mediatomb_config}
 	echo '<map from="mp4" to="video/mp4"/>' >> ${mediatomb_config}
-	echo '<map from="avi" to="video/x-divx"/>' >> ${mediatomb_config}
+	if [ "PS3" = "${_profile}" ]; then
+		echo '<map from="avi" to="video/divx"/>' >> ${mediatomb_config}
+	else if [ "ZyXEL_DMA1000" = "${_profile}" ]; then
+		echo '<map from="avi" to="video/avi"/>' >> ${mediatomb_config}
+	else
+		echo '<map from="avi" to="video/x-divx"/>' >> ${mediatomb_config}
+	fi
 	echo '</extension-mimetype>' >> ${mediatomb_config}
 	echo '<mimetype-upnpclass>' >> ${mediatomb_config}
 	echo '<map from="audio/*" to="object.item.audioItem.musicTrack"/>' >> ${mediatomb_config}
