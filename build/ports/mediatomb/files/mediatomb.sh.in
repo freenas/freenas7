@@ -68,11 +68,14 @@ start_precmd()
 	echo '<storage driver="sqlite3">' >> ${mediatomb_config}
 	echo '<database-file>mediatomb.db</database-file>' >> ${mediatomb_config}
 	echo '</storage>' >> ${mediatomb_config}
-	if [ "ps3" = "${_profile}" ]; then 		
+	if [ "PS3" = "${_profile}" ]; then 		
 		echo '<protocolInfo extend="yes"/>' >> ${mediatomb_config} # Adds specific tags to the protocolInfo attribute, this is required to enable MP3 and MPEG4 playback on Playstation 3.
 	fi
-	if [ "tg100" = "${_profile}" ]; then 		
+	if [ "Telegent_TG100" = "${_profile}" ]; then 		
 		echo '<upnp-string-limit>101</upnp-string-limit>' >> ${mediatomb_config} # The Telegent TG100 client has a problem browsing containers, where item titles exceed 101 characters.
+	fi
+	if [ "ZyXEL_DMA1000" = "${_profile}" ]; then 		
+		echo '<alive>600</alive>' >> ${mediatomb_config} # Incresing the alive interval seems to solve the “Failed to retrieve list” error.
 	fi
 	echo '</server>' >> ${mediatomb_config}
 	echo '<import hidden-files="no">' >> ${mediatomb_config}
