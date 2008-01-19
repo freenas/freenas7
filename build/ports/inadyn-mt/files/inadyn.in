@@ -25,24 +25,16 @@ command_args="--input_file ${inadyn_config}"
 
 start_precmd()
 {
-	# Get the service type.
-	case `configxml_get "//dynamicdns/provider"` in
-		dyndns.org)
-			echo '--dyndns_system dyndns@dyndns.org' > ${inadyn_config};;
-		freedns.afraid.org)
-			echo '--dyndns_system default@freedns.afraid.org' > ${inadyn_config};;
-		zoneedit.com)
-			echo '--dyndns_system default@zoneedit.com' > ${inadyn_config};;
-		no-ip.com)
-			echo '--dyndns_system default@no-ip.com' > ${inadyn_config};;
-		opendns.com)
-			echo '--secure' > ${inadyn_config};
-			echo '--dyndns_server_name updates.opendns.com' >> ${inadyn_config};
-			echo '--dyndns_server_url /nic/update?' >> ${inadyn_config};;
-		*)
-	esac
-
 	/usr/local/bin/xml sel -t -m "//dynamicdns" \
+		-i "provider[. = 'dyndns.org']" -o "--dyndns_system dyndns@dyndns.org" -n -b \
+		-i "provider[. = 'freedns.afraid.org']" -o "--dyndns_system default@freedns.afraid.org" -n -b \
+		-i "provider[. = 'zoneedit.com']" -o "--dyndns_system default@zoneedit.com" -n -b \
+		-i "provider[. = 'no-ip.com']" -o "--dyndns_system default@no-ip.com" -n -b \
+		-i "provider[. = 'opendns.com']" \
+			-o "--secure" -n \
+			-o "--dyndns_server_name updates.opendns.com" -n \
+			-o "--dyndns_server_url /nic/update?" -n \
+		-b \
 		-o "--background" -n \
 		-o "--syslog" -n \
 		-v "concat('--alias ',domainname)" -n \
@@ -50,7 +42,7 @@ start_precmd()
 		-v "concat('--password ',password)" -n \
 		-i "string-length(updateperiod) > 0" -v "concat('--update_period_sec ',updateperiod)" -n -b \
 		-i "string-length(forcedupdateperiod) > 0" -v "concat('--forced_update_period ',forcedupdateperiod)" -n -b \
-		${configxml_file} | /usr/local/bin/xml unesc >> ${inadyn_config}
+		${configxml_file} | /usr/local/bin/xml unesc > ${inadyn_config}
 }
 
 load_rc_config ${name}

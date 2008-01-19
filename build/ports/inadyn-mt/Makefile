@@ -14,7 +14,7 @@ USE_GMAKE=		yes
 MAKEFILE=			makefile
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/linux/inadyn ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/linux/inadyn_advanced ${FREENAS_ROOTFS}/usr/local/bin/inadyn
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/inadyn.in ${FREENAS_ROOTFS}/etc/rc.d/inadyn
 
 .include <bsd.port.mk>
