@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-01-10 18:07+0000\n"
+"PO-Revision-Date: 2008-01-19 11:43+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -129,6 +129,9 @@ msgstr ""
 msgid "AFP Server"
 msgstr ""
 
+msgid "ARP Table"
+msgstr ""
+
 msgid "ARP table"
 msgstr ""
 
@@ -195,6 +198,9 @@ msgstr ""
 msgid "Add job"
 msgstr ""
 
+msgid "Add module"
+msgstr ""
+
 msgid "Add network"
 msgstr ""
 
@@ -242,6 +248,9 @@ msgstr ""
 msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr ""
 
+msgid "Alias host name."
+msgstr ""
+
 msgid "All"
 msgstr ""
 
@@ -255,6 +264,9 @@ msgid "All users will have the root privilege."
 msgstr ""
 
 msgid "Allow"
+msgstr ""
+
+msgid "Allow client access to accounts that have null passwords."
 msgstr ""
 
 msgid "Allow clients to attempt to store OS/2 style extended attributes on a share."
@@ -445,6 +457,9 @@ msgstr ""
 msgid "Community"
 msgstr ""
 
+msgid "Compliant profile to be used."
+msgstr ""
+
 msgid "Compression"
 msgstr ""
 
@@ -525,6 +540,9 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
+msgid "Default"
+msgstr ""
+
 msgid "Default is 21"
 msgstr ""
 
@@ -574,6 +592,9 @@ msgid "Delete interface"
 msgstr ""
 
 msgid "Delete job"
+msgstr ""
+
+msgid "Delete module"
 msgstr ""
 
 msgid "Delete network"
@@ -651,6 +672,9 @@ msgstr ""
 msgid "Directory to be shared."
 msgstr ""
 
+msgid "Disable"
+msgstr ""
+
 msgid "Disable AFP-over-Appletalk to prevent DDP connections."
 msgstr ""
 
@@ -721,6 +745,9 @@ msgid "Do you really want to delete this host?"
 msgstr ""
 
 msgid "Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!"
+msgstr ""
+
+msgid "Do you really want to delete this module?"
 msgstr ""
 
 msgid "Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!"
@@ -837,6 +864,9 @@ msgstr ""
 msgid "Edit job"
 msgstr ""
 
+msgid "Edit module"
+msgstr ""
+
 msgid "Edit network"
 msgstr ""
 
@@ -850,6 +880,9 @@ msgid "Edit target"
 msgstr ""
 
 msgid "Edit user"
+msgstr ""
+
+msgid "Email Report"
 msgstr ""
 
 msgid "Email report"
@@ -897,6 +930,9 @@ msgstr ""
 msgid "Enable local user authentication."
 msgstr ""
 
+msgid "Enable module listing."
+msgstr ""
+
 msgid "Enable permission inheritance"
 msgstr ""
 
@@ -938,6 +974,9 @@ msgid "Encryption"
 msgstr ""
 
 msgid "Encryption algorithm"
+msgstr ""
+
+msgid "Enforce TLS"
 msgstr ""
 
 msgid "Enter a custom port number for the HTTP server if you want to override the default (49152). Only dynamic or private ports can be used (from 49152 through 65535)."
@@ -1025,6 +1064,9 @@ msgstr ""
 msgid "FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!)."
 msgstr ""
 
+msgid "Factory Defaults"
+msgstr ""
+
 msgid "Factory defaults"
 msgstr ""
 
@@ -1075,9 +1117,6 @@ msgid "Firmware uploading is not supported on this platform."
 msgstr ""
 
 msgid "Firmware version check"
-msgstr ""
-
-msgid "First configuration step: Add your harddrive to the disk list."
 msgstr ""
 
 msgid "Flags"
@@ -1149,6 +1188,9 @@ msgstr ""
 msgid "Global Configuration"
 msgstr ""
 
+msgid "Graph"
+msgstr ""
+
 msgid "Graph shows last"
 msgstr ""
 
@@ -1171,6 +1213,9 @@ msgid "Groups"
 msgstr ""
 
 msgid "Guest"
+msgstr ""
+
+msgid "Guest account"
 msgstr ""
 
 msgid "HTTP Proxy"
@@ -1403,6 +1448,9 @@ msgstr ""
 msgid "License"
 msgstr ""
 
+msgid "List"
+msgstr ""
+
 msgid "List of SMART capabilities on all detected disk"
 msgstr ""
 
@@ -1565,7 +1613,7 @@ msgstr ""
 msgid "Miscellaneous"
 msgstr ""
 
-msgid "Module name"
+msgid "Module"
 msgstr ""
 
 msgid "Modules"
@@ -1695,6 +1743,9 @@ msgstr ""
 msgid "Now"
 msgstr ""
 
+msgid "Null passwords"
+msgstr ""
+
 msgid "Number of clients"
 msgstr ""
 
@@ -1726,6 +1777,9 @@ msgid "Only allow anonymous users. Use this on a public FTP site with no remote 
 msgstr ""
 
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
+msgstr ""
+
+msgid "Only ports in the range min. port to max. port inclusive are used for passive-mode downloads. This is especially useful if the server is behind a firewall without FTP connection tracking. Use high ports (40000-50000 for instance), where no regular server should be listening."
 msgstr ""
 
 #, php-format
@@ -1781,6 +1835,9 @@ msgstr ""
 msgid "Passive IP address"
 msgstr ""
 
+msgid "Passive mode ports"
+msgstr ""
+
 msgid "Passphrase"
 msgstr ""
 
@@ -1794,9 +1851,6 @@ msgid "Password (confirmed)"
 msgstr ""
 
 msgid "Password authentication"
-msgstr ""
-
-msgid "Password confirmation"
 msgstr ""
 
 msgid "Password don't match."
@@ -1823,6 +1877,9 @@ msgstr ""
 msgid "Paste an RSA private key in PEM format here."
 msgstr ""
 
+msgid "Paste an private key in PEM format here."
+msgstr ""
+
 msgid "Path"
 msgstr ""
 
@@ -1845,6 +1902,9 @@ msgid "Ping output"
 msgstr ""
 
 msgid "Ping winbindd to see if it is alive:"
+msgstr ""
+
+msgid "Ping/Traceroute"
 msgstr ""
 
 msgid "Platform"
@@ -1886,10 +1946,19 @@ msgstr ""
 msgid "Private Key"
 msgstr ""
 
+msgid "Private key"
+msgstr ""
+
+msgid "Process"
+msgstr ""
+
 msgid "Processes"
 msgstr ""
 
 msgid "Processes information"
+msgstr ""
+
+msgid "Profile"
 msgstr ""
 
 msgid "Provider"
@@ -1973,13 +2042,10 @@ msgstr ""
 msgid "Remote address"
 msgstr ""
 
-msgid "Remote share (source)"
+msgid "Remote module (source)"
 msgstr ""
 
-msgid "Remote share name"
-msgstr ""
-
-msgid "Remote source share name"
+msgid "Remote module name"
 msgstr ""
 
 msgid "Remote syslog server"
@@ -2048,6 +2114,9 @@ msgstr ""
 msgid "SSID"
 msgstr ""
 
+msgid "SSL/TLS"
+msgstr ""
+
 msgid "Save"
 msgstr ""
 
@@ -2069,8 +2138,7 @@ msgstr ""
 msgid "Scheduled shutdown"
 msgstr ""
 
-#, php-format
-msgid "Second configuration step: Declaring the filesystem used by your <a href=%s>previously configured disk.</a>"
+msgid "Security"
 msgstr ""
 
 msgid "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select 'Old software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS release."
@@ -2128,9 +2196,6 @@ msgid "Set additional group memberships for this account."
 msgstr ""
 
 msgid "Set browseable"
-msgstr ""
-
-msgid "Set browseable."
 msgstr ""
 
 msgid "Set share password."
@@ -2202,6 +2267,12 @@ msgstr ""
 msgid "Software RAID information and status"
 msgstr ""
 
+msgid "Sony Playstation 3"
+msgstr ""
+
+msgid "Source directory to be synchronized."
+msgstr ""
+
 msgid "Source share"
 msgstr ""
 
@@ -2230,6 +2301,9 @@ msgid "Standard MTU is 1500, use 9000 for jumbo frame."
 msgstr ""
 
 msgid "Standby time"
+msgstr ""
+
+msgid "Static Routes"
 msgstr ""
 
 msgid "Static routes"
@@ -2326,6 +2400,9 @@ msgstr ""
 msgid "TCP port"
 msgstr ""
 
+msgid "TLS + cleartext"
+msgstr ""
+
 msgid "TX rates"
 msgstr ""
 
@@ -2338,7 +2415,13 @@ msgstr ""
 msgid "Target address"
 msgstr ""
 
+msgid "Target directory."
+msgstr ""
+
 msgid "Target name"
+msgstr ""
+
+msgid "Telegent TG100"
 msgstr ""
 
 msgid "Temperature"
@@ -2548,6 +2631,9 @@ msgstr ""
 msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
 msgstr ""
 
+msgid "The modules has been modified.<br>You must apply the changes in order for them to take effect."
+msgstr ""
+
 msgid "The mount point list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
@@ -2653,7 +2739,7 @@ msgstr ""
 msgid "This controls how the case of filenames are viewed and stored."
 msgstr ""
 
-msgid "This controls the access a remote host has to this share."
+msgid "This controls the access a remote host has to this module."
 msgstr ""
 
 msgid "This controls the access to this share with an access password."
@@ -2707,7 +2793,16 @@ msgstr ""
 msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
 msgstr ""
 
+msgid "This option determines if this module should be listed when the client asks for a listing of available modules. By setting this to false you can create hidden modules."
+msgstr ""
+
+msgid "This parameter is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to disable this setting."
+msgstr ""
+
 msgid "This parameter is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to disable this setting."
+msgstr ""
+
+msgid "This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this module. Use the keyword ALL to permit access for everyone. Leave this field empty to disable this setting."
 msgstr ""
 
 msgid "This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this share. Use the keyword ALL to permit access for everyone. Leave this field empty to disable this setting."
@@ -2855,6 +2950,9 @@ msgstr ""
 msgid "Use SMTP authentication."
 msgstr ""
 
+msgid "Use SSL/TLS encryption layer."
+msgstr ""
+
 msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
 msgstr ""
 
@@ -2876,6 +2974,9 @@ msgstr ""
 msgid "Use this option to override the file creation mask (077 by default)."
 msgstr ""
 
+msgid "Use this option to override the username ('ftp' by default) which will be used for access to services which are specified as guest. Whatever privileges this user has will be available to any client connecting to the guest service. This user must exist in the password file, but does not require a valid login."
+msgstr ""
+
 msgid "User"
 msgstr ""
 
@@ -2895,6 +2996,9 @@ msgid "Username of a domain administrator account."
 msgstr ""
 
 msgid "Users"
+msgstr ""
+
+msgid "Users and Groups"
 msgstr ""
 
 msgid "VLAN tag"
@@ -2971,8 +3075,7 @@ msgstr ""
 msgid "You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr ""
 
-#, php-format
-msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
+msgid "You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"
 msgstr ""
 
 msgid "You have to define some 'Extent' objects first."
@@ -3012,6 +3115,9 @@ msgid "Your own email address."
 msgstr ""
 
 msgid "Zeroconf"
+msgstr ""
+
+msgid "ZyXEL DMA-1000"
 msgstr ""
 
 msgid "add mount"
