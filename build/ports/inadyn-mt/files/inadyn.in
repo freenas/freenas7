@@ -30,6 +30,8 @@ start_precmd()
 		-i "provider[. = 'freedns.afraid.org']" -o "--dyndns_system default@freedns.afraid.org" -n -b \
 		-i "provider[. = 'zoneedit.com']" -o "--dyndns_system default@zoneedit.com" -n -b \
 		-i "provider[. = 'no-ip.com']" -o "--dyndns_system default@no-ip.com" -n -b \
+		-i "provider[. = 'easydns.com']" -o "--dyndns_system default@easydns.com" -n -b \
+		-i "provider[. = '3322.org']" -o "--dyndns_system dyndns@3322.org" -n -b \
 		-i "provider[. = 'opendns.com']" \
 			-o "--secure" -n \
 			-o "--dyndns_server_name updates.opendns.com" -n \

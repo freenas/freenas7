@@ -2,11 +2,11 @@
 <?php
 /*
 	services_upnp.php
-	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -129,6 +129,8 @@ function enable_change(enable_change) {
 								<option value="freedns.afraid.org" <?php if ("freedns.afraid.org" === $pconfig['provider']) echo "selected";?>>freedns.afraid.org</option>
 								<option value="zoneedit.com" <?php if ("zoneedit.com" === $pconfig['provider']) echo "selected";?>>zoneedit.com</option>
 								<option value="no-ip.com" <?php if ("no-ip.com" === $pconfig['provider']) echo "selected";?>>no-ip.com</option>
+								<option value="easydns.com" <?php if ("easydns.com" === $pconfig['provider']) echo "selected";?>>easydns.com</option>
+								<option value="3322.org" <?php if ("3322.org" === $pconfig['provider']) echo "selected";?>>3322.org</option>
 								<option value="opendns.com" <?php if ("opendns.com" === $pconfig['provider']) echo "selected";?>>opendns.com</option>
 			        </select>
 			      </td>
