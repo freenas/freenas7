@@ -49,7 +49,7 @@ Majors changes:
   Also see http://www.freebsd.org/doc/en/books/handbook/virtualization-guest.html for some tipps.
 - Add SSL/TLS support to FTP service.
 - Use inadyn-mt instead of inadyn dynamic DNS client.
-- Add easyDNS.com, 3322.org and OpenDNS.com support to 'Dynamic DNS' service.
+- Add easyDNS.com and 3322.org support to 'Dynamic DNS' service.
 
 Minors changes:
 - Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.

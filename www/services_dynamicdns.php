@@ -131,7 +131,6 @@ function enable_change(enable_change) {
 								<option value="no-ip.com" <?php if ("no-ip.com" === $pconfig['provider']) echo "selected";?>>no-ip.com</option>
 								<option value="easydns.com" <?php if ("easydns.com" === $pconfig['provider']) echo "selected";?>>easydns.com</option>
 								<option value="3322.org" <?php if ("3322.org" === $pconfig['provider']) echo "selected";?>>3322.org</option>
-								<option value="opendns.com" <?php if ("opendns.com" === $pconfig['provider']) echo "selected";?>>opendns.com</option>
 			        </select>
 			      </td>
 					</tr>
