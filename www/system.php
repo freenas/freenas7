@@ -3,7 +3,7 @@
 /*
 	system.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	Set time function added by Paul Wheels (pwheels@users.sourceforge.net)
 
@@ -68,7 +68,7 @@ function is_timezone($elt) {
 	return !preg_match("/\/$/", $elt);
 }
 
-exec('/usr/bin/tar -tzf /usr/share/zoneinfo.tgz', $timezonelist);
+exec('/usr/bin/tar -tf /usr/share/zoneinfo.tgz -W strip-components=1', $timezonelist);
 $timezonelist = array_filter($timezonelist, 'is_timezone');
 sort($timezonelist);
 
@@ -300,11 +300,9 @@ function ntp_change(enable_change) {
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Time zone");?></td>
 			      <td width="78%" class="vtable">
 			        <select name="timezone" id="timezone">
-			          <?php foreach ($timezonelist as $value): ?>
-			            <option value="<?=htmlspecialchars($value);?>" <?php if ($value == $pconfig['timezone']) echo "selected"; ?>>
-			            <?=htmlspecialchars($value);?>
-			            </option>
-			          <?php endforeach; ?>
+			          <?php foreach ($timezonelist as $value):?>
+								<option value="<?=htmlspecialchars($value);?>" <?php if ($value === $pconfig['timezone']) echo "selected";?>><?=htmlspecialchars($value);?></option>
+								<?php endforeach;?>
 			        </select><br>
 			        <span class="vexpl"><?=gettext("Select the location closest to you.");?></span>
 			      </td>
