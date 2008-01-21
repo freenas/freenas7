@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: timezone
@@ -14,4 +14,4 @@ if [ -z ${_timezone} ]; then
 	_timezone="Etc/UTC"
 fi
 
-/usr/bin/tar xzfO /usr/share/zoneinfo.tgz "${_timezone}" > /etc/localtime
+/usr/bin/tar -xOf /usr/share/zoneinfo.tgz "${_timezone}" > /etc/localtime
