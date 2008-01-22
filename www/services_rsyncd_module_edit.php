@@ -70,8 +70,8 @@ if (isset($id) && $a_module[$id]) {
 	$pconfig['list'] = true;
 	$pconfig['rwmode'] = "rw";
 	$pconfig['maxconnections'] = "0";
-	$pconfig['hostsallow'] = "ALL";
-	$pconfig['hostsdeny'] = "ALL";
+	$pconfig['hostsallow'] = "";
+	$pconfig['hostsdeny'] = "";
 }
 
 if($_POST) {
@@ -186,7 +186,7 @@ if($_POST) {
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Hosts allow");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="hostsallow" type="text" class="formfld" id="hostsallow" size="60" value="<?=htmlspecialchars($pconfig['hostsallow']);?>"><br/>
-			        <span class="vexpl"><?=gettext("This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this module. Use the keyword ALL to permit access for everyone. Leave this field empty to disable this setting.");?></span>
+			        <span class="vexpl"><?=gettext("This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this module. You can specify the hosts by name or IP number. Leave this field empty to disable this setting.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
