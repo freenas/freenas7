@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-01-19 11:43+0000\n"
+"PO-Revision-Date: 2008-01-22 12:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1200,6 +1200,9 @@ msgstr ""
 msgid "Group"
 msgstr ""
 
+msgid "Group ID"
+msgstr ""
+
 msgid "Group description."
 msgstr ""
 
@@ -2261,6 +2264,9 @@ msgstr ""
 msgid "Size of send buffer (16384 by default)."
 msgstr ""
 
+msgid "Sockets"
+msgstr ""
+
 msgid "Software RAID"
 msgstr ""
 
@@ -2796,16 +2802,23 @@ msgstr ""
 msgid "This option determines if this module should be listed when the client asks for a listing of available modules. By setting this to false you can create hidden modules."
 msgstr ""
 
-msgid "This parameter is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to disable this setting."
+msgid "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
 msgstr ""
 
-msgid "This parameter is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to disable this setting."
+msgid "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
 msgstr ""
 
-msgid "This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this module. Use the keyword ALL to permit access for everyone. Leave this field empty to disable this setting."
+msgid "This option is a comma, space, or tab delimited set of hosts which are permitted to access this module. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
 msgstr ""
 
-msgid "This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this share. Use the keyword ALL to permit access for everyone. Leave this field empty to disable this setting."
+msgid "This option is a comma, space, or tab delimited set of hosts which are permitted to access this share. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
+msgstr ""
+
+msgid "This option specifies the group name or group ID that file transfers to and from that module should take place. Leave this field empty to use default settings."
+msgstr ""
+
+#, php-format
+msgid "This option specifies the user name or user ID that file transfers to and from that module should take place. In combination with the '%s' option this determines what file permissions are available. Leave this field empty to use default settings."
 msgstr ""
 
 msgid "This parameters will be added to [global] in smb.conf."
@@ -2978,6 +2991,9 @@ msgid "Use this option to override the username ('ftp' by default) which will be
 msgstr ""
 
 msgid "User"
+msgstr ""
+
+msgid "User ID"
 msgstr ""
 
 msgid "User full name."
