@@ -2,11 +2,11 @@
 <?php
 /*
 	status.php
-	Copyright © 2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -40,6 +40,7 @@ require("report.inc");
 $statusreport = new StatusReport();
 $statusreport->IsHTML(true);
 $statusreport->AddArticle(new StatusReportArticleCmd("Version","cat /etc/prd.version"));
+$statusreport->AddArticle(new StatusReportArticleCmd("Revision","cat /etc/prd.revision"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Platform","cat /etc/platform"));
 $statusreport->AddArticle(new StatusReportArticleCmd("System uptime","uptime"));
 $statusreport->AddArticle(new StatusReportArticleCmd("dmesg","/sbin/dmesg"));

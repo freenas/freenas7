@@ -264,6 +264,7 @@ function report_send_mail() {
 
 	if (is_array($config['statusreport']['report']) && in_array("systeminfo", $config['statusreport']['report'])) {
 		$statusreport->AddArticle(new StatusReportArticleCmd("Version","cat /etc/prd.version"));
+		$statusreport->AddArticle(new StatusReportArticleCmd("Revision","cat /etc/prd.revision"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("Platform","cat /etc/platform"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("System uptime","uptime"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("Interfaces","/sbin/ifconfig -a"));
