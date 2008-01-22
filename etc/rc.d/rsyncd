@@ -49,10 +49,10 @@ create_conf()
 			-i "rwmode[. = 'rw']" -o "read only = false" -n -b \
 			-i "rwmode[. = 'ro']" -o "read only = true" -n -b \
 			-i "rwmode[. = 'wo']" -o "write only = true" -n -b \
-			-i "string-length(hostsallow) > 0" \
-				-v "concat('hosts allow = ',hostsallow)" -n -b \
-			-i "string-length(hostsdeny) > 0" \
-				-v "concat('hosts deny = ',hostsdeny)" -n -b \
+			-i "string-length(hostsallow) > 0" -v "concat('hosts allow = ',hostsallow)" -n -b \
+			-i "string-length(hostsdeny) > 0" -v "concat('hosts deny = ',hostsdeny)" -n -b \
+			-i "string-length(uid) > 0" -v "concat('uid = ',uid)" -n -b \
+			-i "string-length(gid) > 0" -v "concat('gid = ',gid)" -n -b \
 			-m "auxparam" \
 				-v "." -n -b \
 		-b \

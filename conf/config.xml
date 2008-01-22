@@ -313,8 +313,10 @@
 			<list/>
 			<rwmode>ro|rw|wo</rwmode>
 			<maxconnections>0</maxconnections>
-			<hostsallow>ALL<hostsallow> // Comma, space, or tab delimited set of hosts which are permitted to access a service.
-			<hostsdeny>ALL<hostsdeny> // Hosts listed here are NOT permitted to access a services. Where the lists conflict, the allow list takes precedence.
+			<uid></uid>
+			<gid></gid>
+			<hostsallow></hostsallow> // Comma, space, or tab delimited set of hosts which are permitted to access a service.
+			<hostsdeny></hostsdeny> // Hosts listed here are NOT permitted to access a services. Where the lists conflict, the allow list takes precedence.
 			<auxparam></auxparam> // Can be defined multiple times.
 		</module>
 		-->

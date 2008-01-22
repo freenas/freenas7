@@ -63,6 +63,8 @@ if (isset($id) && $a_module[$id]) {
 	$pconfig['maxconnections'] = $a_module[$id]['maxconnections'];
 	$pconfig['hostsallow'] = $a_module[$id]['hostsallow'];
 	$pconfig['hostsdeny'] = $a_module[$id]['hostsdeny'];
+	$pconfig['uid'] = $a_module[$id]['uid'];
+	$pconfig['gid'] = $a_module[$id]['gid'];
 } else {
 	$pconfig['name'] = "";
 	$pconfig['path'] = "";
@@ -72,6 +74,8 @@ if (isset($id) && $a_module[$id]) {
 	$pconfig['maxconnections'] = "0";
 	$pconfig['hostsallow'] = "";
 	$pconfig['hostsdeny'] = "";
+	$pconfig['uid'] = "";
+	$pconfig['gid'] = "";
 }
 
 if($_POST) {
@@ -98,6 +102,8 @@ if($_POST) {
 		$module['maxconnections'] = $_POST['maxconnections'];
 		$module['hostsallow'] = $_POST['hostsallow'];
 		$module['hostsdeny'] = $_POST['hostsdeny'];
+		$module['uid'] = $_POST['uid'];
+		$module['gid'] = $_POST['gid'];
 
 		if (isset($id) && $a_module[$id])
 			$a_module[$id] = $module;
@@ -183,17 +189,31 @@ if($_POST) {
 			      </td>
 			    </tr>
 			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("User ID");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="uid" type="text" class="formfld" id="uid" size="60" value="<?=htmlspecialchars($pconfig['uid']);?>"><br/>
+			        <span class="vexpl"><?=sprintf(gettext("This option specifies the user name or user ID that file transfers to and from that module should take place. In combination with the '%s' option this determines what file permissions are available. Leave this field empty to use default settings."), gettext("Group ID"));?></span>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Group ID");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="gid" type="text" class="formfld" id="gid" size="60" value="<?=htmlspecialchars($pconfig['gid']);?>"><br/>
+			        <span class="vexpl"><?=gettext("This option specifies the group name or group ID that file transfers to and from that module should take place. Leave this field empty to use default settings.");?></span>
+			      </td>
+			    </tr>
+			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Hosts allow");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="hostsallow" type="text" class="formfld" id="hostsallow" size="60" value="<?=htmlspecialchars($pconfig['hostsallow']);?>"><br/>
-			        <span class="vexpl"><?=gettext("This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this module. You can specify the hosts by name or IP number. Leave this field empty to disable this setting.");?></span>
+			        <span class="vexpl"><?=gettext("This option is a comma, space, or tab delimited set of hosts which are permitted to access this module. You can specify the hosts by name or IP number. Leave this field empty to disable this setting.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Hosts deny");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="hostsdeny" type="text" class="formfld" id="hostsdeny" size="60" value="<?=htmlspecialchars($pconfig['hostsdeny']);?>"><br/>
-			        <span class="vexpl"><?=gettext("This parameter is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to disable this setting.");?></span>
+			        <span class="vexpl"><?=gettext("This option is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to disable this setting.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
