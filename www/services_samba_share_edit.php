@@ -2,11 +2,11 @@
 <?php
 /*
 	services_samba_share_edit.php
-	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -70,8 +70,8 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['browseable'] = true;
 	$pconfig['inheritpermissions'] = true;
 	$pconfig['recyclebin'] = false;
-	$pconfig['hostsallow'] = "ALL";
-	$pconfig['hostsdeny'] = "ALL";
+	$pconfig['hostsallow'] = "";
+	$pconfig['hostsdeny'] = "";
 }
 
 if($_POST) {
@@ -175,7 +175,7 @@ if($_POST) {
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Hosts allow");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="hostsallow" type="text" class="formfld" id="hostsallow" size="60" value="<?=htmlspecialchars($pconfig['hostsallow']);?>"><br/>
-			        <?=gettext("This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this share. Use the keyword ALL to permit access for everyone. Leave this field empty to disable this setting.");?>
+			        <?=gettext("This parameter is a comma, space, or tab delimited set of hosts which are permitted to access this share. You can specify the hosts by name or IP number. Leave this field empty to disable this setting.");?>
 			      </td>
 			    </tr>
 			    <tr>
