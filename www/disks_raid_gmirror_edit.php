@@ -172,34 +172,39 @@ if ($_POST) {
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Members of this volume");?></td>
 			      <td width="78%" class="vtable">
-			      <?
-			        $i=0;
-			        $disable_script="";
+			      <?php if (isset($id)) {
+			      	foreach ($pconfig['device'] as $devicek => $devicev) {
+			      		foreach ($a_disk as $diskv) {
+			      			if ($diskv['devicespecialfile'] === $devicev) {
+			      				echo "<input name='device[]' id='{$devicek}' type='checkbox' value='{$diskv[devicespecialfile]}' checked>{$diskv[name]} ({$diskv[size]}, {$diskv[desc]})<br>\n";
+			      				break;
+									}
+			      		}
+							}
+						} else {
+			        $i = 0;
 			        foreach ($a_disk as $diskv) {
-			          $r_name="";
-			          foreach($all_raid as $raid) {
+			        	$display = true;
+			        	foreach($all_raid as $raid) {
 			            if (in_array($diskv['devicespecialfile'], (array)$raid['device'])) {
-			              $r_name=$raid['name'];
-			              if ($r_name!=$pconfig['name']) $disable_script.="document.getElementById($i).disabled=1;\n";
+			              $display = false;
 			              break;
 			            }
 			          }
-			          echo "<input name='device[]' id='$i' type='checkbox' value='$diskv[devicespecialfile]'".
-			               ((is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))?" checked":"").
-			               (isset($id)?" disabled" : "").
-			               ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
+			          if (true !== $display)
+			          	continue;
+			          echo "<input name='device[]' id='$i' type='checkbox' value='$diskv[devicespecialfile]'" . ((is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))?" checked":"") . ">$diskv[name] ($diskv[size], $diskv[desc])<br>\n";
 			          $i++;
 			        }
-			        if ($disable_script) echo "<script language='javascript'><!--\n$disable_script--></script>\n";
-			      ?>
-			      <?php if (0 == $i):?>&nbsp;<?php endif;?>
+			        if (0 == $i) echo "&nbsp;";
+			      }?>
 						</td>
 			    </tr>
 			    <?php if (!isset($id)):?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
-							<input name="id" type="hidden" value="<?=$id;?>">
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
 						</td>
 					</tr>
 					<?php endif;?>
