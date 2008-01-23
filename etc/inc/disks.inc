@@ -2,7 +2,7 @@
 /*
 	disks.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -357,7 +357,7 @@ function disks_ismounted_ex($var,$key)
 // Return 0 if successful, 1 if error
 function disks_raid_gvinum_configure($vdisk)
 {
-	global $config, $g;
+	global $g;
 
 	/* Generate the raid.conf file */
 	if (is_array($vdisk)) {
@@ -456,8 +456,6 @@ EOD;
 // Return 0 if successful, 1 if error
 function disks_raid_gmirror_configure($vdisk)
 {
-	global $config;
-
 	$result = 1;
 
 	if (is_array($vdisk)) {
@@ -479,8 +477,6 @@ function disks_raid_gmirror_configure($vdisk)
 // Return 0 if successful, 1 if error
 function disks_raid_gconcat_configure($vdisk)
 {
-	global $config;
-
 	$result = 1;
 
 	if (is_array($vdisk)) {
@@ -502,8 +498,6 @@ function disks_raid_gconcat_configure($vdisk)
 // Return 0 if successful, 1 if error
 function disks_raid_gstripe_configure($vdisk)
 {
-	global $config;
-
 	$result = 1;
 
 	if (is_array($vdisk)) {
@@ -525,8 +519,6 @@ function disks_raid_gstripe_configure($vdisk)
 // Return 0 if successful, 1 if error
 function disks_raid_graid5_configure($vdisk)
 {
-	global $config;
-
 	$result = 1;
 
 	if (is_array($vdisk)) {
