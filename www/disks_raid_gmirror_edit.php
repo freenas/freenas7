@@ -74,12 +74,9 @@ if ($_POST) {
 		$input_errors[] = gettext("The device name may only consist of the characters a-z, A-Z, 0-9.");
 	}
 
-	/* check for name conflicts */
-	foreach ($a_raid as $raid) {
-		if (isset($id) && ($a_raid[$id]) && ($a_raid[$id] === $raid))
-			continue;
-
-		if ($raid['name'] == $_POST['name']) {
+	// Check for duplicate name.
+	foreach ($all_raid as $raid) {
+		if ($raid['name'] === $_POST['name']) {
 			$input_errors[] = gettext("This device already exists in the raid volume list.");
 			break;
 		}

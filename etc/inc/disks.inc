@@ -163,7 +163,7 @@ function disks_mount($mount)
 			break;
 
 		case "msdosfs":
-			$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777,large {$readonly} {$devicespecialfile} '{$mountname}'");
+			$result = mwexec("/sbin/mount -t msdosfs -o -u=ftp,-g=ftp,-m=777 {$readonly} {$devicespecialfile} '{$mountname}'");
 			if (0 == $result) {
 				write_log("Device {$devicespecialfile} mounted using FAT on '{$mountname}'");
 				$result = 0;
@@ -355,108 +355,98 @@ function disks_ismounted_ex($var,$key)
 
 // Configure, create and start gvinum volume.
 // Return 0 if successful, 1 if error
-function disks_raid_gvinum_configure()
+function disks_raid_gvinum_configure($vdisk)
 {
 	global $config, $g;
 
 	/* Generate the raid.conf file */
-	if ($config['gvinum']['vdisk']) {
-		foreach ($config['gvinum']['vdisk'] as $vdiskv) {
-			if (file_exists($g['varrun_path'] . "/raid.conf.dirty") && !in_array("{$vdiskv['name']}\n",file($g['varrun_path'] . "/raid.conf.dirty")))
-				continue;
+	if (is_array($vdisk)) {
+		/* generate raid.conf */
+		$fd = fopen("{$g['varetc_path']}/raid-{$vdisk['name']}.conf", "w");
+		if (!$fd) {
+			write_console("Error: Failed to open raid.conf in services_raid_configure().\n");
+			return 1;
+		}
 
-			/* generate raid.conf */
-			$fd = fopen("{$g['varetc_path']}/raid-{$vdiskv['name']}.conf", "w");
-			if (!$fd) {
-				write_console("Error: Failed to open raid.conf in services_raid_configure().\n");
-				return 1;
-			}
-
-			$raidconf="";
-			foreach ($vdiskv['device'] as $devicek => $devicev) {
-				$raidconf .= <<<EOD
+		$raidconf="";
+		foreach ($vdisk['device'] as $devicek => $devicev) {
+			$raidconf .= <<<EOD
 drive disk_{$devicev} device {$devicev}
 
 EOD;
-			}
+		}
 
-			$raidconf .= <<<EOD
-volume {$vdiskv['name']}
+		$raidconf .= <<<EOD
+volume {$vdisk['name']}
 
 EOD;
-			switch ($vdiskv['type']) {
-					case "0":
-						$raidconf .= <<<EOD
+		switch ($vdisk['type']) {
+				case "0":
+					$raidconf .= <<<EOD
 plex org striped 256k
 
 EOD;
-						foreach ($vdiskv['device'] as $devicek => $devicev) {
-							/* Get the disksize */
-							$diskinfo=disks_get_diskinfo($devicev);
-							/* $raidconf .= <<<EOD
+					foreach ($vdisk['device'] as $devicek => $devicev) {
+						/* Get the disksize */
+						$diskinfo=disks_get_diskinfo($devicev);
+						/* $raidconf .= <<<EOD
 sd length {$diskinfo['mediasize_mbytes']}M drive disk_{$devicev}
 
 EOD; */
-							$raidconf .= <<<EOD
+						$raidconf .= <<<EOD
 sd length 0 drive disk_{$devicev}
 
 EOD;
-						}
-						break;
-					case "1":
-						foreach ($vdiskv['device'] as $devicek => $devicev) {
-							$raidconf .= <<<EOD
+					}
+					break;
+				case "1":
+					foreach ($vdisk['device'] as $devicek => $devicev) {
+						$raidconf .= <<<EOD
 plex org concat
 
 EOD;
-							/* Get the disksize */
-							$diskinfo=disks_get_diskinfo($devicev);
-							/* $raidconf .= <<<EOD
+						/* Get the disksize */
+						$diskinfo=disks_get_diskinfo($devicev);
+						/* $raidconf .= <<<EOD
 sd length {$diskinfo['mediasize_mbytes']}M drive disk_{$devicev}
 
 EOD; */
 
-							$raidconf .= <<<EOD
+						$raidconf .= <<<EOD
 sd length 0 drive disk_{$devicev}
 
 EOD;
-						}
+					}
 
-						break;
-					case "5":
-					$raidconf .= <<<EOD
+					break;
+				case "5":
+				$raidconf .= <<<EOD
 plex org raid5 256k
 
 EOD;
-						foreach ($vdiskv['device'] as $devicek => $devicev) {
-							/* Get the disksize */
-							$diskinfo=disks_get_diskinfo($devicev);
-							/* $raidconf .= <<<EOD
+					foreach ($vdisk['device'] as $devicek => $devicev) {
+						/* Get the disksize */
+						$diskinfo=disks_get_diskinfo($devicev);
+						/* $raidconf .= <<<EOD
 sd length {$diskinfo['mediasize_mbytes']}M drive disk_{$devicev}
 
 EOD; */
 
-							$raidconf .= <<<EOD
+						$raidconf .= <<<EOD
 sd length 0 drive disk_{$devicev}
 
 EOD;
-						}
-						break;
-			}
-			fwrite($fd, $raidconf);
-			fclose($fd);
-
-			/* Create each volume */
-			mwexec("/sbin/gvinum create {$g['varetc_path']}/raid-{$vdiskv['name']}.conf");
+					}
+					break;
 		}
+		fwrite($fd, $raidconf);
+		fclose($fd);
 
-		/* start each volume */
-		foreach ($config['gvinum']['vdisk'] as $vdiskv) {
-			exec("/sbin/gvinum lv $raidname", $rawdata);
-			if (strpos($rawdata[0],"State: up" )>= 0)
-				continue;
-			mwexec("/sbin/gvinum start {$vdiskv['name']}");
-		}
+		// Create volume.
+		mwexec("/sbin/gvinum create {$g['varetc_path']}/raid-{$vdisk['name']}.conf");
+
+		// Start volume.
+		mwexec("/sbin/gvinum start {$vdisk['name']}");
 	}
 
 	return 0;
@@ -464,97 +454,97 @@ EOD;
 
 // Configure, create and start gmirror volume.
 // Return 0 if successful, 1 if error
-function disks_raid_gmirror_configure()
+function disks_raid_gmirror_configure($vdisk)
 {
 	global $config;
 
-	if ($config['gmirror']['vdisk']) {
-		// Load gmirror
+	$result = 1;
+
+	if (is_array($vdisk)) {
+		// Load kernel module.
 		mwexec("/sbin/gmirror load");
 
-		foreach ($config['gmirror']['vdisk'] as $vdiskv) {
-			/* Create each volume */
-			$cmd = "/sbin/gmirror label -b {$vdiskv['balance']} {$vdiskv['name']} ";
-			foreach ($vdiskv['device'] as $devicek => $devicev) {
-				$cmd .= "{$devicev} ";
-			}
-			mwexec($cmd);
+		// Create volume.
+		$cmd = "/sbin/gmirror label -b {$vdisk['balance']} {$vdisk['name']} ";
+		foreach ($vdisk['device'] as $devicek => $devicev) {
+			$cmd .= "{$devicev} ";
 		}
+		$result = mwexec($cmd);
 	}
 
-	return 0;
+	return $result;
 }
 
 // Configure, create and start gconcat volume.
 // Return 0 if successful, 1 if error
-function disks_raid_gconcat_configure()
+function disks_raid_gconcat_configure($vdisk)
 {
 	global $config;
 
-	if ($config['gconcat']['vdisk']) {
-		// Load gconcat
+	$result = 1;
+
+	if (is_array($vdisk)) {
+		// Load kernel module.
 		mwexec("/sbin/gconcat load");
 
-		foreach ($config['gconcat']['vdisk'] as $vdiskv) {
-			/* Create each volume */
-			$cmd = "/sbin/gconcat label {$vdiskv['name']} ";
-			foreach ($vdiskv['device'] as $devicek => $devicev) {
-				$cmd .= "{$devicev} ";
-			}
-			mwexec($cmd);
+		// Create volume.
+		$cmd = "/sbin/gconcat label {$vdisk['name']} ";
+		foreach ($vdisk['device'] as $devicek => $devicev) {
+			$cmd .= "{$devicev} ";
 		}
+		$result = mwexec($cmd);
 	}
 
-	return 0;
+	return $result;
 }
 
 // Configure, create and start gstripe volume.
 // Return 0 if successful, 1 if error
-function disks_raid_gstripe_configure()
+function disks_raid_gstripe_configure($vdisk)
 {
 	global $config;
 
-	if ($config['gstripe']['vdisk']) {
-		// Load gstripe
+	$result = 1;
+
+	if (is_array($vdisk)) {
+		// Load kernel module.
 		mwexec("/sbin/gstripe load");
 
-		foreach ($config['gstripe']['vdisk'] as $vdiskv) {
-			/* Create each volume */
-			$cmd = "/sbin/gstripe label {$vdiskv['name']} ";
-			foreach ($vdiskv['device'] as $devicek => $devicev) {
-				$cmd .= "{$devicev} ";
-			}
-			mwexec($cmd);
+		// Create volume.
+		$cmd = "/sbin/gstripe label {$vdisk['name']} ";
+		foreach ($vdisk['device'] as $devicek => $devicev) {
+			$cmd .= "{$devicev} ";
 		}
+		$result = mwexec($cmd);
 	}
 
-	return 0;
+	return $result;
 }
 
 // Configure, create and start graid5 volume.
 // Return 0 if successful, 1 if error
-function disks_raid_graid5_configure()
+function disks_raid_graid5_configure($vdisk)
 {
 	global $config;
 
-	if ($config['graid5']['vdisk']) {
-		// Load graid5
+	$result = 1;
+
+	if (is_array($vdisk)) {
+		// Load kernel module.
 		mwexec("/sbin/graid5 load");
 
-		foreach ($config['graid5']['vdisk'] as $vdiskv) {
-			/* Create each volume */
-			$cmd = "/sbin/graid5 label -s 131072 {$vdiskv['name']} ";
-			foreach ($vdiskv['device'] as $devicek => $devicev) {
-				$cmd .= "{$devicev} ";
-			}
-			mwexec($cmd);
+		// Create volume.
+		$cmd = "/sbin/graid5 label -s 131072 {$vdisk['name']} ";
+		foreach ($vdisk['device'] as $devicek => $devicev) {
+			$cmd .= "{$devicev} ";
 		}
+		$result = mwexec($cmd);
 
 		//Tune graid5
 		disks_raid_graid5_tune();
 	}
 
-	return 0;
+	return $result;
 }
 
 // Start all geom RAID volumes.
@@ -661,6 +651,9 @@ function disks_raid_graid5_tune()
 	} else {
 		write_log("Detected >= 512MB of RAM... No need to optimize RAM usage for graid5");
 	}
+
+	// Modify ATA timeout to 15 seconds.
+	mwexec('sysctl hw.ata.to=15');
 }
 
 // Stop all geom RAID volumes.
