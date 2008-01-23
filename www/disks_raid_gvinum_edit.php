@@ -111,15 +111,18 @@ if ($_POST) {
 		else
 			$a_raid[] = $raid;
 
-   	$fd = @fopen("$d_raidconfdirty_path", "a");
-   	if (!$fd) {
-   		echo gettext("ERR Could not save RAID configuration.\n");
-   		exit(0);
-   	}
-   	fwrite($fd, "$raid[name]\n");
-   	fclose($fd);
+   	write_config();
 
-		write_config();
+		if ($_POST['init']) {
+			$fd = @fopen($d_raidconfdirty_path, "a");
+			if ($fd) {
+				fwrite($fd, "{$raid[name]}\n");
+				fclose($fd);
+			}
+		} else {
+			// Start already configured disks.
+			disks_raid_gvinum_start();
+		}
 
 		header("Location: disks_raid_gvinum.php");
 		exit;
@@ -202,6 +205,13 @@ if ($_POST) {
 						</td>
 			    </tr>
 			    <?php if (!isset($id)):?>
+			    <tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Initialize");?></td>
+			      <td width="78%" class="vtable">
+							<input name="init" type="checkbox" id="init" value="yes" <?php if (true === $pconfig['init']) echo "checked"; ?>>
+							<?=gettext("Initialize RAID. This will erase ALL data on all selected disk! Do not use this option if you want to add an existing RAID.");?>
+			      </td>
+			    </tr>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
