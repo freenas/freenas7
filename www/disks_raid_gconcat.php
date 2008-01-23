@@ -48,10 +48,11 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			config_lock();
-			$retval |= disks_raid_gconcat_configure();
-			config_unlock();
-			write_config();
+			foreach ($a_raid as $raidv) {
+				if (file_exists($d_raidconfdirty_path) && in_array($raidv['name']."\n", file($d_raidconfdirty_path))) {
+					$retval |= disks_raid_gconcat_configure($raidv);
+				}
+			}
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
