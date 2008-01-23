@@ -3,7 +3,7 @@
 /*
 	disks_raid_gvinum.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -66,11 +66,9 @@ if ($_GET['act'] == "del") {
 	if ($a_raid[$_GET['id']]) {
 		// Check if disk is mounted.
 		if(0 == disks_ismounted_ex($a_raid[$_GET['id']]['devicespecialfile'], "devicespecialfile")) {
-			$raidname=$a_raid[$_GET['id']]['name'];
-			disks_raid_gvinum_delete($raidname);
+			disks_raid_gvinum_delete($a_raid[$_GET['id']]['name']);
 			unset($a_raid[$_GET['id']]);
 			write_config();
-			touch($d_raidconfdirty_path);
 			header("Location: disks_raid_gvinum.php");
 			exit;
 		} else {
