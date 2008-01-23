@@ -3,7 +3,7 @@
 /*
 	disks_raid_graid5_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -173,6 +173,7 @@ if ($_POST) {
 			          }
 			          echo "<input name='device[]' id='$i' type='checkbox' value='$diskv[devicespecialfile]'".
 			               ((is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))?" checked":"").
+			               (isset($id)?" disabled" : "").
 			               ">$diskv[name] ($diskv[size], $diskv[desc])".(($r_name)?" - assigned to $r_name":"")."</option><br>\n";
 			          $i++;
 			        }
@@ -181,14 +182,14 @@ if ($_POST) {
 			      <?php if (0 == $i):?>&nbsp;<?php endif;?>
 						</td>
 			    </tr>
-			    <tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>">
-			        <?php if (isset($id) && $a_raid[$id]): ?>
-			        <input name="id" type="hidden" value="<?=$id;?>">
-			        <?php endif; ?>
-			      </td>
-			    </tr>
+			    <?php if (!isset($id)):?>
+					<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Add");?>">
+							<input name="id" type="hidden" value="<?=$id;?>">
+						</td>
+					</tr>
+					<?php endif;?>
 			  </table>
 			</form>
 		</td>
