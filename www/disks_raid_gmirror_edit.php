@@ -161,7 +161,7 @@ if ($_POST) {
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Balance algorithm"); ?></td>
 			      <td width="78%" class="vtable">
-			        <select name="balance" class="formfld">
+			        <select name="balance" class="formfld" <?php if(isset($id)) echo "disabled";?>>
 			        <?php $balvals = array("round-robin"=>"Round-robin read","split"=>"Split request", "load"=>"Read from lowest load"); ?>
 			        <?php foreach ($balvals as $balval => $balname): ?>
 			          <option value="<?=$balval;?>" <?php if($pconfig['balance'] == $balval) echo 'selected';?>><?=htmlspecialchars($balname);?></option>
@@ -176,7 +176,7 @@ if ($_POST) {
 			      	foreach ($pconfig['device'] as $devicek => $devicev) {
 			      		foreach ($a_disk as $diskv) {
 			      			if ($diskv['devicespecialfile'] === $devicev) {
-			      				echo "<input name='device[]' id='{$devicek}' type='checkbox' value='{$diskv[devicespecialfile]}' checked>{$diskv[name]} ({$diskv[size]}, {$diskv[desc]})<br>\n";
+			      				echo "<input name='device[]' id='{$devicek}' type='checkbox' value='{$diskv[devicespecialfile]}' checked disabled>{$diskv[name]} ({$diskv[size]}, {$diskv[desc]})<br>\n";
 			      				break;
 									}
 			      		}

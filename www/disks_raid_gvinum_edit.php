@@ -166,7 +166,7 @@ if ($_POST) {
 			    <tr>
 			      <td valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
 			      <td width="78%" class="vtable">
-			        <select name="type" class="formfld" id="type">
+			        <select name="type" class="formfld" id="type" <?php if(isset($id)) echo "disabled";?>>
 			          <option value="0" <?php if ($pconfig['type'] == 0) echo "selected"; ?>>RAID 0 (<?=gettext("striping");?>)</option>
 			          <option value="1" <?php if ($pconfig['type'] == 1) echo "selected"; ?>>RAID 1 (<?=gettext("mirroring"); ?>)</option>
 			          <option value="5" <?php if ($pconfig['type'] == 5) echo "selected"; ?>>RAID 5 (<?=gettext("rotated block-interleaved parity"); ?>)</option>
@@ -180,7 +180,7 @@ if ($_POST) {
 			      	foreach ($pconfig['device'] as $devicek => $devicev) {
 			      		foreach ($a_disk as $diskv) {
 			      			if ($diskv['devicespecialfile'] === $devicev) {
-			      				echo "<input name='device[]' id='{$devicek}' type='checkbox' value='{$diskv[devicespecialfile]}' checked>{$diskv[name]} ({$diskv[size]}, {$diskv[desc]})<br>\n";
+			      				echo "<input name='device[]' id='{$devicek}' type='checkbox' value='{$diskv[devicespecialfile]}' checked disabled>{$diskv[name]} ({$diskv[size]}, {$diskv[desc]})<br>\n";
 			      				break;
 									}
 			      		}

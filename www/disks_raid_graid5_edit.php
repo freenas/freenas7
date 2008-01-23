@@ -163,7 +163,7 @@ if ($_POST) {
 			      	foreach ($pconfig['device'] as $devicek => $devicev) {
 			      		foreach ($a_disk as $diskv) {
 			      			if ($diskv['devicespecialfile'] === $devicev) {
-			      				echo "<input name='device[]' id='{$devicek}' type='checkbox' value='{$diskv[devicespecialfile]}' checked>{$diskv[name]} ({$diskv[size]}, {$diskv[desc]})<br>\n";
+			      				echo "<input name='device[]' id='{$devicek}' type='checkbox' value='{$diskv[devicespecialfile]}' checked disabled>{$diskv[name]} ({$diskv[size]}, {$diskv[desc]})<br>\n";
 			      				break;
 									}
 			      		}
