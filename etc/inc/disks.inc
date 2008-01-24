@@ -354,189 +354,234 @@ function disks_ismounted_ex($var,$key)
 }
 
 // Configure, create and start gvinum volume.
+// $name - Name of the RAID to be configured.
 // Return 0 if successful, 1 if error
-function disks_raid_gvinum_configure($vdisk)
+function disks_raid_gvinum_configure($name)
 {
-	global $g;
+	global $g, $config;
 
-	/* Generate the raid.conf file */
-	if (is_array($vdisk)) {
-		/* generate raid.conf */
-		$fd = fopen("{$g['varetc_path']}/raid-{$vdisk['name']}.conf", "w");
-		if (!$fd) {
-			write_console("Error: Failed to open raid.conf in services_raid_configure().\n");
-			return 1;
-		}
+	if (!is_array($config['gvinum']['vdisk']))
+		return 1;
 
-		$raidconf="";
-		foreach ($vdisk['device'] as $devicek => $devicev) {
-			$raidconf .= <<<EOD
+	$index = array_search_ex($name, $config['gvinum']['vdisk'], "name");
+	if (false === $index)
+		return 1;
+
+	$vdisk = $config['gvinum']['vdisk'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+
+	// Generate the raid.conf file.
+	$fd = fopen("{$g['varetc_path']}/raid-{$vdisk['name']}.conf", "w");
+	if (!$fd) {
+		write_console("Error: Failed to open raid.conf in services_raid_configure().\n");
+		return 1;
+	}
+
+	$raidconf="";
+	foreach ($vdisk['device'] as $devicek => $devicev) {
+		$raidconf .= <<<EOD
 drive disk_{$devicev} device {$devicev}
 
 EOD;
-		}
+	}
 
-		$raidconf .= <<<EOD
+	$raidconf .= <<<EOD
 volume {$vdisk['name']}
 
 EOD;
-		switch ($vdisk['type']) {
-				case "0":
-					$raidconf .= <<<EOD
+	switch ($vdisk['type']) {
+			case "0":
+				$raidconf .= <<<EOD
 plex org striped 256k
 
 EOD;
-					foreach ($vdisk['device'] as $devicek => $devicev) {
-						/* Get the disksize */
-						$diskinfo=disks_get_diskinfo($devicev);
-						/* $raidconf .= <<<EOD
+				foreach ($vdisk['device'] as $devicek => $devicev) {
+					/* Get the disksize */
+					$diskinfo=disks_get_diskinfo($devicev);
+					/* $raidconf .= <<<EOD
 sd length {$diskinfo['mediasize_mbytes']}M drive disk_{$devicev}
 
 EOD; */
-						$raidconf .= <<<EOD
+					$raidconf .= <<<EOD
 sd length 0 drive disk_{$devicev}
 
 EOD;
-					}
-					break;
-				case "1":
-					foreach ($vdisk['device'] as $devicek => $devicev) {
-						$raidconf .= <<<EOD
+				}
+				break;
+			case "1":
+				foreach ($vdisk['device'] as $devicek => $devicev) {
+					$raidconf .= <<<EOD
 plex org concat
 
 EOD;
-						/* Get the disksize */
-						$diskinfo=disks_get_diskinfo($devicev);
-						/* $raidconf .= <<<EOD
+					/* Get the disksize */
+					$diskinfo=disks_get_diskinfo($devicev);
+					/* $raidconf .= <<<EOD
 sd length {$diskinfo['mediasize_mbytes']}M drive disk_{$devicev}
 
 EOD; */
 
-						$raidconf .= <<<EOD
+					$raidconf .= <<<EOD
 sd length 0 drive disk_{$devicev}
 
 EOD;
-					}
+				}
 
-					break;
-				case "5":
-				$raidconf .= <<<EOD
+				break;
+			case "5":
+			$raidconf .= <<<EOD
 plex org raid5 256k
 
 EOD;
-					foreach ($vdisk['device'] as $devicek => $devicev) {
-						/* Get the disksize */
-						$diskinfo=disks_get_diskinfo($devicev);
-						/* $raidconf .= <<<EOD
+				foreach ($vdisk['device'] as $devicek => $devicev) {
+					/* Get the disksize */
+					$diskinfo=disks_get_diskinfo($devicev);
+					/* $raidconf .= <<<EOD
 sd length {$diskinfo['mediasize_mbytes']}M drive disk_{$devicev}
 
 EOD; */
 
-						$raidconf .= <<<EOD
+					$raidconf .= <<<EOD
 sd length 0 drive disk_{$devicev}
 
 EOD;
-					}
-					break;
-		}
-		fwrite($fd, $raidconf);
-		fclose($fd);
-
-		// Create volume.
-		mwexec("/sbin/gvinum create {$g['varetc_path']}/raid-{$vdisk['name']}.conf");
-
-		// Start volume.
-		mwexec("/sbin/gvinum start {$vdisk['name']}");
+				}
+				break;
 	}
+	fwrite($fd, $raidconf);
+	fclose($fd);
+
+	// Create volume.
+	mwexec("/sbin/gvinum create {$g['varetc_path']}/raid-{$vdisk['name']}.conf");
+
+	// Start volume.
+	mwexec("/sbin/gvinum start {$vdisk['name']}");
 
 	return 0;
 }
 
 // Configure, create and start gmirror volume.
+// $name - Name of the RAID to be configured.
 // Return 0 if successful, 1 if error
-function disks_raid_gmirror_configure($vdisk)
+function disks_raid_gmirror_configure($name)
 {
-	$result = 1;
+	global $config;
 
-	if (is_array($vdisk)) {
-		// Load kernel module.
-		mwexec("/sbin/gmirror load");
+	if (!is_array($config['gmirror']['vdisk']))
+		return 1;
 
-		// Create volume.
-		$cmd = "/sbin/gmirror label -b {$vdisk['balance']} {$vdisk['name']} ";
-		foreach ($vdisk['device'] as $devicek => $devicev) {
-			$cmd .= "{$devicev} ";
-		}
-		$result = mwexec($cmd);
+	$index = array_search_ex($name, $config['gmirror']['vdisk'], "name");
+	if (false === $index)
+		return 1;
+
+	$vdisk = $config['gmirror']['vdisk'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+
+	// Load kernel module.
+	mwexec("/sbin/gmirror load");
+
+	// Create volume.
+	$cmd = "/sbin/gmirror label -b {$vdisk['balance']} {$vdisk['name']} ";
+	foreach ($vdisk['device'] as $devicek => $devicev) {
+		$cmd .= "{$devicev} ";
 	}
 
-	return $result;
+	return mwexec($cmd);
 }
 
 // Configure, create and start gconcat volume.
+// $name - Name of the RAID to be configured.
 // Return 0 if successful, 1 if error
-function disks_raid_gconcat_configure($vdisk)
+function disks_raid_gconcat_configure($name)
 {
-	$result = 1;
+	global $config;
 
-	if (is_array($vdisk)) {
-		// Load kernel module.
-		mwexec("/sbin/gconcat load");
+	if (!is_array($config['gconcat']['vdisk']))
+		return 1;
 
-		// Create volume.
-		$cmd = "/sbin/gconcat label {$vdisk['name']} ";
-		foreach ($vdisk['device'] as $devicek => $devicev) {
-			$cmd .= "{$devicev} ";
-		}
-		$result = mwexec($cmd);
+	$index = array_search_ex($name, $config['gconcat']['vdisk'], "name");
+	if (false === $index)
+		return 1;
+
+	$vdisk = $config['gconcat']['vdisk'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+
+	// Load kernel module.
+	mwexec("/sbin/gconcat load");
+
+	// Create volume.
+	$cmd = "/sbin/gconcat label {$vdisk['name']} ";
+	foreach ($vdisk['device'] as $devicek => $devicev) {
+		$cmd .= "{$devicev} ";
 	}
 
-	return $result;
+	return mwexec($cmd);
 }
 
 // Configure, create and start gstripe volume.
+// $name - Name of the RAID to be configured.
 // Return 0 if successful, 1 if error
-function disks_raid_gstripe_configure($vdisk)
+function disks_raid_gstripe_configure($name)
 {
-	$result = 1;
+	global $config;
 
-	if (is_array($vdisk)) {
-		// Load kernel module.
-		mwexec("/sbin/gstripe load");
+	if (!is_array($config['gstripe']['vdisk']))
+		return 1;
 
-		// Create volume.
-		$cmd = "/sbin/gstripe label {$vdisk['name']} ";
-		foreach ($vdisk['device'] as $devicek => $devicev) {
-			$cmd .= "{$devicev} ";
-		}
-		$result = mwexec($cmd);
+	$index = array_search_ex($name, $config['gstripe']['vdisk'], "name");
+	if (false === $index)
+		return 1;
+
+	$vdisk = $config['gstripe']['vdisk'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+
+	// Load kernel module.
+	mwexec("/sbin/gstripe load");
+
+	// Create volume.
+	$cmd = "/sbin/gstripe label {$vdisk['name']} ";
+	foreach ($vdisk['device'] as $devicek => $devicev) {
+		$cmd .= "{$devicev} ";
 	}
 
-	return $result;
+	return mwexec($cmd);
 }
 
 // Configure, create and start graid5 volume.
+// $name - Name of the RAID to be configured.
 // Return 0 if successful, 1 if error
-function disks_raid_graid5_configure($vdisk)
+function disks_raid_graid5_configure($name)
 {
-	$result = 1;
+	global $config;
 
-	if (is_array($vdisk)) {
-		// Load kernel module.
-		mwexec("/sbin/graid5 load");
+	if (!is_array($config['graid5']['vdisk']))
+		return 1;
 
-		// Create volume.
-		$cmd = "/sbin/graid5 label -s 131072 {$vdisk['name']} ";
-		foreach ($vdisk['device'] as $devicek => $devicev) {
-			$cmd .= "{$devicev} ";
-		}
-		$result = mwexec($cmd);
+	$index = array_search_ex($name, $config['graid5']['vdisk'], "name");
+	if (false === $index)
+		return 1;
 
-		//Tune graid5
-		disks_raid_graid5_tune();
+	$vdisk = $config['graid5']['vdisk'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+
+	// Load kernel module.
+	mwexec("/sbin/graid5 load");
+
+	// Tune system.
+	disks_raid_graid5_tune();
+
+	// Create volume.
+	$cmd = "/sbin/graid5 label -s 131072 {$vdisk['name']} ";
+	foreach ($vdisk['device'] as $devicek => $devicev) {
+		$cmd .= "{$devicev} ";
 	}
 
-	return $result;
+	return mwexec($cmd);
 }
 
 // Start all geom RAID volumes.
@@ -737,131 +782,157 @@ function disks_raid_graid5_stop()
 }
 
 // Delete geom gvinum volume given in parameter.
+// $name - Name of the RAID to be deleted.
 // Return 0 if successful, 1 if error
-function disks_raid_gvinum_delete($raidname)
+function disks_raid_gvinum_delete($name)
 {
 	global $config;
 
-	exec("/sbin/gvinum lv {$raidname}", $rawdata);
+	if (!is_array($config['gvinum']['vdisk']))
+		return 1;
 
+	$index = array_search_ex($name, $config['gvinum']['vdisk'], "name");
+	if (false === $index)
+		return 1;
+
+	$vdisk = $config['gvinum']['vdisk'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+
+	exec("/sbin/gvinum lv {$name}", $rawdata);
 	if (strpos($rawdata[0],"State: up") === false) {
 		return 0;
 	}
 
-	mwexec("/sbin/gvinum rm -r {$raidname}");
+	mwexec("/sbin/gvinum rm -r {$name}");
 
-	if (is_array($config['gvinum']['vdisk'])) {
-		foreach ($config['gvinum']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] === $raidname) {
-				foreach ($a_raid['device'] as $disk){
-					mwexec("/sbin/gvinum rm -r disk_{$disk}");
-				}
-			}
-		}
+	foreach ($vdisk['device'] as $device){
+		mwexec("/sbin/gvinum rm -r disk_{$device}");
 	}
 
 	return 0;
 }
 
 // Delete geom mirror volume given in parameter.
+// $name - Name of the RAID to be deleted.
 // Return 0 if successful, 1 if error
-function disks_raid_gmirror_delete($raidname)
+function disks_raid_gmirror_delete($name)
 {
 	global $config;
 
-	// Stop the volume
-	mwexec("/sbin/gmirror stop {$raidname}");
+	if (!is_array($config['gmirror']['vdisk']))
+		return 1;
 
-	// Clear the gmirror information on the hard drive
-	if (is_array($config['gmirror']['vdisk'])) {
-		foreach ($config['gmirror']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] === $raidname) {
-				foreach ($a_raid['device'] as $disk) {
-					mwexec("/sbin/gmirror clear {$disk}");
-				}
-			}
-		}
+	$index = array_search_ex($name, $config['gmirror']['vdisk'], "name");
+	if (false === $index)
+		return 1;
+
+	$vdisk = $config['gmirror']['vdisk'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+
+	// Stop the volume.
+	mwexec("/sbin/gmirror stop {$name}");
+
+	// Clear the gmirror information on the hard drive.
+	foreach ($vdisk['device'] as $device) {
+		mwexec("/sbin/gmirror clear {$device}");
 	}
 
 	return 0;
 }
 
 // Delete geom concat volume given in parameter.
+// $name - Name of the RAID to be deleted.
 // Return 0 if successful, 1 if error
-function disks_raid_gconcat_delete($raidname)
+function disks_raid_gconcat_delete($name)
 {
 	global $config;
 
-	// Stop the volume
-	mwexec("/sbin/gconcat stop {$raidname}");
+	if (!is_array($config['gconcat']['vdisk']))
+		return 1;
 
-	// Clear the gconcat information on the hard drive
-	if (is_array($config['gconcat']['vdisk'])) {
-		foreach ($config['gconcat']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] === $raidname) {
-				foreach ($a_raid['device'] as $disk) {
-					mwexec("/sbin/gconcat clear {$disk}");
-				}
-				mwexec("/sbin/gconcat destroy {$raidname}");
-			}
-		}
+	$index = array_search_ex($name, $config['gconcat']['vdisk'], "name");
+	if (false === $index)
+		return 1;
+
+	$vdisk = $config['gconcat']['vdisk'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+
+	// Stop the volume.
+	mwexec("/sbin/gconcat stop {$name}");
+
+	// Clear the gconcat information on the hard drive.
+	foreach ($vdisk['device'] as $device) {
+		mwexec("/sbin/gconcat clear {$device}");
 	}
+	mwexec("/sbin/gconcat destroy {$name}");
 
 	return 0;
 }
 
 // Delete geom stripe volume given in parameter.
+// $name - Name of the RAID to be deleted.
 // Return 0 if successful, 1 if error
-function disks_raid_gstripe_delete($raidname)
+function disks_raid_gstripe_delete($name)
 {
 	global $config;
 
-	// Stop the volume
-	mwexec("/sbin/gstripe stop {$raidname}");
+	if (!is_array($config['gstripe']['vdisk']))
+		return 1;
 
-	// Clear the gconcat information on the hard drive
-	if (is_array($config['gstripe']['vdisk'])) {
-		foreach ($config['gstripe']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] === $raidname) {
-				foreach ($a_raid['device'] as $disk) {
-					mwexec("/sbin/gstripe clear {$disk}");
-				}
-				mwexec("/sbin/gstripe destroy {$raidname}");
-			}
-		}
+	$index = array_search_ex($name, $config['gstripe']['vdisk'], "name");
+	if (false === $index)
+		return 1;
+
+	$vdisk = $config['gstripe']['vdisk'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+
+	// Stop the volume
+	mwexec("/sbin/gstripe stop {$name}");
+
+	// Clear the gconcat information on the hard drive.
+	foreach ($vdisk['device'] as $device) {
+		mwexec("/sbin/gstripe clear {$device}");
 	}
+	mwexec("/sbin/gstripe destroy {$name}");
 
 	return 0;
 }
 
 // Delete geom raid5 volume given in parameter.
+// $name - Name of the RAID to be deleted.
 // Return 0 if successful, 1 if error
-function disks_raid_graid5_delete($raidname)
+function disks_raid_graid5_delete($name)
 {
 	global $config;
 
+	if (!is_array($config['graid5']['vdisk']))
+		return 1;
+
+	$index = array_search_ex($name, $config['graid5']['vdisk'], "name");
+	if (false === $index)
+		return 1;
+
+	$vdisk = $config['graid5']['vdisk'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+
 	// Stop the volume
-	// Arne Woerner Advice: Don't stop the volume before deleting it.
-	// mwexec("/sbin/graid5 stop {$raidname}");
+	// Arne Woerner advice: Don't stop the volume before deleting it.
+	// mwexec("/sbin/graid5 stop {$name}");
 
-	// The volume can disapear a few second after stop
-	//sleep(2);
-
-	// Clear the graid5 information on the hard drive
-	if (is_array($config['graid5']['vdisk'])) {
-		foreach ($config['graid5']['vdisk'] as $a_raid) {
-			if ($a_raid['name'] === $raidname) {
-				foreach ($a_raid['device'] as $disk){
-					// Get the name of the provider.
-					$id = array_search_ex($disk, $config['disks']['disk'], "devicespecialfile");
-					$provider = $config['disks']['disk'][$id]['name'];
-					// Remove provider.
-					mwexec("/sbin/graid5 remove {$raidname} {$provider}");
-				}
-				mwexec("/sbin/graid5 destroy {$raidname}");
-			}
-		}
+	// Clear the graid5 information on the hard drive.
+	foreach ($vdisk['device'] as $device){
+		// Get the name of the provider.
+		$id = array_search_ex($device, $config['disks']['disk'], "devicespecialfile");
+		$provider = $config['disks']['disk'][$id]['name'];
+		// Remove provider.
+		mwexec("/sbin/graid5 remove {$name} {$provider}");
 	}
+	mwexec("/sbin/graid5 destroy {$name}");
 
 	return 0;
 }
