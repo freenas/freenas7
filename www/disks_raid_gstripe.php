@@ -50,7 +50,7 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			foreach ($a_raid as $raidv) {
 				if (is_modified($raidv['name'])) {
-					$retval |= disks_raid_gstripe_configure($raidv);
+					$retval |= disks_raid_gstripe_configure($raidv['name']);
 				}
 			}
 		}
