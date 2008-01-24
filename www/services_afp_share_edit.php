@@ -2,11 +2,11 @@
 <?php
 /*
 	services_afp_share_edit.php
-	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -61,27 +61,43 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['path'] = $a_share[$id]['path'];
 	$pconfig['comment'] = $a_share[$id]['comment'];
 	$pconfig['volpasswd'] = $a_share[$id]['volpasswd'];
-	$pconfig['mswindows'] = isset($a_share[$id]['mswindows']);
-	$pconfig['noadouble'] = isset($a_share[$id]['noadouble']);
 	$pconfig['casefold'] = $a_share[$id]['casefold'];
 	$pconfig['volcharset'] = $a_share[$id]['volcharset'];
 	$pconfig['allow'] = $a_share[$id]['allow'];
 	$pconfig['deny'] = $a_share[$id]['deny'];
 	$pconfig['rolist'] = $a_share[$id]['rolist'];
 	$pconfig['rwlist'] = $a_share[$id]['rwlist'];
+	$pconfig['cachecnid'] = isset($a_share[$id]['options']['cachecnid']);
+	$pconfig['crlf'] = isset($a_share[$id]['options']['crlf']);
+	$pconfig['mswindows'] = isset($a_share[$id]['options']['mswindows']);
+	$pconfig['noadouble'] = isset($a_share[$id]['options']['noadouble']);
+	$pconfig['nodev'] = isset($a_share[$id]['options']['nodev']);
+	$pconfig['nofileid'] = isset($a_share[$id]['options']['nofileid']);
+	$pconfig['nohex'] = isset($a_share[$id]['options']['nohex']);
+	$pconfig['prodos'] = isset($a_share[$id]['options']['prodos']);
+	$pconfig['nostat'] = isset($a_share[$id]['options']['nostat']);
+	$pconfig['upriv'] = isset($a_share[$id]['options']['upriv']);
 } else {
 	$pconfig['name'] = "";
 	$pconfig['path'] = "";
 	$pconfig['comment'] = "";
 	$pconfig['volpasswd'] = '';
-	$pconfig['mswindows'] = false;
-	$pconfig['noadouble'] = false;
 	$pconfig['casefold'] = 'none';
 	$pconfig['volcharset'] = 'UTF8';
 	$pconfig['allow'] = '';
 	$pconfig['deny'] = '';
 	$pconfig['rolist'] = '';
 	$pconfig['rwlist'] = '';
+	$pconfig['cachecnid'] = false;
+	$pconfig['crlf'] = false;
+	$pconfig['mswindows'] = false;
+	$pconfig['noadouble'] = false;
+	$pconfig['nodev'] = false;
+	$pconfig['nofileid'] = false;
+	$pconfig['nohex'] = false;
+	$pconfig['prodos'] = false;
+	$pconfig['nostat'] = false;
+	$pconfig['upriv'] = false;
 }
 
 if($_POST) {
@@ -109,14 +125,22 @@ if($_POST) {
 		$share['path'] = $_POST['path'];
 		$share['comment'] = $_POST['comment'];
 		$share['volpasswd'] = $_POST['volpasswd'];
-		$share['mswindows'] = $_POST['mswindows'] ? true : false;
-		$share['noadouble'] = $_POST['noadouble'] ? true : false;
 		$share['casefold'] = $_POST['casefold'];
 		$share['volcharset'] = $_POST['volcharset'];
 		$share['allow'] = $_POST['allow'];
 		$share['deny'] = $_POST['deny'];
 		$share['rolist'] = $_POST['rolist'];
 		$share['rwlist'] = $_POST['rwlist'];
+		$share['options']['cachecnid'] = $_POST['cachecnid'] ? true : false;
+		$share['options']['crlf'] = $_POST['crlf'] ? true : false;
+		$share['options']['mswindows'] = $_POST['mswindows'] ? true : false;
+		$share['options']['noadouble'] = $_POST['noadouble'] ? true : false;
+		$share['options']['nodev'] = $_POST['nodev'] ? true : false;
+		$share['options']['nofileid'] = $_POST['nofileid'] ? true : false;
+		$share['options']['nohex'] = $_POST['nohex'] ? true : false;
+		$share['options']['prodos'] = $_POST['prodos'] ? true : false;
+		$share['options']['nostat'] = $_POST['nostat'] ? true : false;
+		$share['options']['upriv'] = $_POST['upriv'] ? true : false;
 
 		if (isset($id) && $a_share[$id])
 			$a_share[$id] = $share;
@@ -175,35 +199,6 @@ if($_POST) {
 			      </td>
 			    </tr>
 			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Windows Filename Restrictions");?></td>
-			      <td width="78%" class="vtable">
-			      	<input name="mswindows" type="checkbox" id="mswindows" value="yes" <?php if ($pconfig['mswindows']) echo "checked"; ?>>
-			      	<?=gettext("Enable Windows filename restrictions");?><br>
-			        <?=gettext("This forces filenames to be restricted to the character set used by Windows. This is <em>not</em> recommended for shares used principally by Mac computers.");?>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("No AppleDouble Directory");?></td>
-			      <td width="78%" class="vtable">
-			      	<input name="noadouble" type="checkbox" id="noadouble" value="yes" <?php if ($pconfig['noadouble']) echo "checked"; ?>>
-			      	<?=gettext("Do not create .AppleDouble directory");?><br>
-			        <?=gettext("This controls whether the .AppleDouble directory gets created unless absolutely needed. This option should not be used if files are access mostly by Mac computers.");?>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Case Folding");?></td>
-			      <td width="78%" class="vtable">
-		      	        <select name="casefold" size="1" id="casefold">
-			          <option value="none" <?php if ($pconfig['casefold'] === "none") echo "selected";?>><?=gettext("No case folding");?></option>
-                                  <option value="tolower" <?php if ($pconfig['casefold'] === "tolower") echo "selected";?>><?=gettext("Lowercases names in both directions");?></option>
-                                  <option value="toupper" <?php if ($pconfig['casefold'] === "toupper") echo "selected";?>><?=gettext("Uppercases names in both directions");?></option>
-                                  <option value="xlatelower" <?php if ($pconfig['casefold'] === "xlatelower") echo "selected";?>><?=gettext("Client sees lowercase, server sees uppercase");?></option>
-                                  <option value="xlateupper" <?php if ($pconfig['casefold'] === "xlateupper") echo "selected";?>><?=gettext("Client sees uppercase, server sees lowercase");?></option>
-			        </select><br/>
-			        <?=gettext("This controls how the case of filenames are viewed and stored.");?>
-			      </td>
-			    </tr>
-			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Share Character Set");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="volcharset" type="text" class="formfld" id="volcharset" size="16" value="<?=htmlspecialchars($pconfig['volcharset']);?>"><br>
@@ -236,6 +231,95 @@ if($_POST) {
 			      <td width="78%" class="vtable">
 			        <input name="rwlist" type="text" class="formfld" id="rwlist" size="60" value="<?=htmlspecialchars($pconfig['rwlist']);?>"><br/>
 			        <?=gettext("Allows  certain  users and groups to have read/write access to a share. This follows the allow option format.");?>
+			      </td>
+			    </tr>
+					<tr>
+			      <td colspan="2" class="list" height="12"></td>
+			    </tr>
+			    <tr>
+			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced Options");?></td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Case Folding");?></td>
+			      <td width="78%" class="vtable">
+							<select name="casefold" size="1" id="casefold">
+			          <option value="none" <?php if ($pconfig['casefold'] === "none") echo "selected";?>><?=gettext("No case folding");?></option>
+								<option value="tolower" <?php if ($pconfig['casefold'] === "tolower") echo "selected";?>><?=gettext("Lowercases names in both directions");?></option>
+								<option value="toupper" <?php if ($pconfig['casefold'] === "toupper") echo "selected";?>><?=gettext("Uppercases names in both directions");?></option>
+								<option value="xlatelower" <?php if ($pconfig['casefold'] === "xlatelower") echo "selected";?>><?=gettext("Client sees lowercase, server sees uppercase");?></option>
+								<option value="xlateupper" <?php if ($pconfig['casefold'] === "xlateupper") echo "selected";?>><?=gettext("Client sees uppercase, server sees lowercase");?></option>
+			        </select><br/>
+			        <span class="vexpl"><?=gettext("This controls how the case of filenames are viewed and stored.");?></span>
+			      </td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("cachecnid");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="cachecnid" type="checkbox" id="cachecnid" value="yes" <?php if ($pconfig['cachecnid']) echo "checked";?>>
+			        <span class="vexpl"><?=gettext("If set afpd uses the ID information stored in AppleDouble V2 header files to reduce database load. Don't set this option if the volume is modified by non AFP clients (NFS/SMB/local).");?></span>
+			      </td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("crlf");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="crlf" type="checkbox" id="crlf" value="yes" <?php if ($pconfig['crlf']) echo "checked";?>>
+			        <span class="vexpl"><?=gettext("Enables crlf translation for TEXT files, automatically converting macintosh line breaks into Unix ones. Use of this option might be dangerous since some older programs store binary data files as type 'TEXT' when saving and switch the filetype in a second step. Afpd will potentially destroy such files when 'erroneously' changing bytes in order to do line break translation.");?></span>
+			      </td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("mswindows");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="mswindows" type="checkbox" id="mswindows" value="yes" <?php if ($pconfig['mswindows']) echo "checked";?>>
+			        <span class="vexpl"><?=gettext("This forces filenames to be restricted to the character set used by Windows. This is not recommended for shares used principally by Mac computers.");?></span>
+			      </td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("noadouble");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="noadouble" type="checkbox" id="noadouble" value="yes" <?php if ($pconfig['noadouble']) echo "checked";?>>
+			        <span class="vexpl"><?=gettext("This controls whether the .AppleDouble directory gets created unless absolutely needed. This option should not be used if files are access mostly by Mac computers.");?></span>
+			      </td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("nodev");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="nodev" type="checkbox" id="nodev" value="yes" <?php if ($pconfig['nodev']) echo "checked";?>>
+			        <span class="vexpl"><?=gettext("Always use 0 for device number, helps when the device number is not constant across a reboot, cluster, ...");?></span>
+			      </td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("nofileid");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="nofileid" type="checkbox" id="nofileid" value="yes" <?php if ($pconfig['nofileid']) echo "checked";?>>
+			        <span class="vexpl"><?=gettext("Don't advertise createfileid, resolveid, deleteid calls.");?></span>
+			      </td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("nohex");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="nohex" type="checkbox" id="nohex" value="yes" <?php if ($pconfig['nohex']) echo "checked";?>>
+			        <span class="vexpl"><?=gettext("Disables :hex translations for anything except dot files. This option makes the '/' character illegal.");?></span>
+			      </td>
+			    </tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("prodos");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="prodos" type="checkbox" id="prodos" value="yes" <?php if ($pconfig['prodos']) echo "checked";?>>
+			        <span class="vexpl"><?=gettext("Provides compatibility with Apple II clients.");?></span>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("nostat");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="nostat" type="checkbox" id="nostat" value="yes" <?php if ($pconfig['nostat']) echo "checked";?>>
+			        <span class="vexpl"><?=gettext("Don't stat volume path when enumerating volumes list, useful for automounting or volumes created by a preexec script.");?></span>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("upriv");?></td>
+			      <td width="78%" class="vtable">
+			      	<input name="upriv" type="checkbox" id="upriv" value="yes" <?php if ($pconfig['upriv']) echo "checked";?>>
+			        <span class="vexpl"><?=gettext("Use AFP3 unix privileges.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
