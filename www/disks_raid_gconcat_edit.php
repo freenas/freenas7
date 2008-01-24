@@ -189,7 +189,8 @@ if ($_POST) {
 						<td width="22%" valign="top" class="vncell"><?=gettext("Initialize");?></td>
 			      <td width="78%" class="vtable">
 							<input name="init" type="checkbox" id="init" value="yes" <?php if (true === $pconfig['init']) echo "checked"; ?>>
-							<?=gettext("Initialize RAID. This will erase ALL data on all selected disk! Do not use this option if you want to add an existing RAID.");?>
+							<?=gettext("Create and initialize RAID.");?><br/>
+							<span class="vexpl"><?=gettext("This will erase ALL data on the selected disks! Do not use this option if you want to add an already existing RAID again.");?></span>
 			      </td>
 			    </tr>
 					<tr>
