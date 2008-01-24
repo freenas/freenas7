@@ -1088,7 +1088,8 @@ function config_upgrade() {
 	/* Convert 3.6 -> 3.7 */
 	/* Remove attribute //upnp/profile. */
 	if ($config['version'] === "3.6") {
-		unset($config['upnp']['profile']);
+		if (isset($config['upnp']['profile']))
+			unset($config['upnp']['profile']);
 
 		$config['version'] = "3.7";
 	}
@@ -1109,11 +1110,15 @@ function config_upgrade() {
 			}
 		}
 
-		unset($config['ftp']['anonymous']);
-		unset($config['ftp']['localuser']);
+		if (isset($config['ftp']['anonymous']))
+			unset($config['ftp']['anonymous']);
+		if (isset($config['ftp']['localuser']))
+			unset($config['ftp']['localuser']);
 
-		unset($config['rsyncd']['maxcon']);
-		unset($config['rsyncd']['readonly']);
+		if (isset($config['rsyncd']['maxcon']))
+			unset($config['rsyncd']['maxcon']);
+		if (isset($config['rsyncd']['readonly']))
+			unset($config['rsyncd']['readonly']);
 
 		$config['version'] = "3.8";
 	}
