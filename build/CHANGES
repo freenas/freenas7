@@ -60,6 +60,7 @@ Minors changes:
 - Enable logging for local/client rsync jobs (to /var/log/rsync_xxx.log). It is possible to access log files via WebGUI/Advanced/Edit File page.
 - Add 'User ID' and 'Group ID' option to RSYNC module configurations.
 - Improved software RAID creation/administration via WebGUI.
+- Add additional options (e.g. cachecnid, upriv, ...) for AFPd shares.
 
 Bug fixs:
 - Calculating iSCSI extent IDs fails for numbers > 10.

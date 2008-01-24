@@ -1175,6 +1175,24 @@ function config_upgrade() {
 		$config['version'] = "4.1";
 	}
 
+	/* Convert 4.1 -> 4.2 */
+	/* Move attribute //afp/share/mswindows to //afp/share/options/mswindows. */
+	/* Move attribute //afp/share/noadouble to //afp/share/options/noadouble. */
+	if ($config['version'] === "4.1") {
+		for ($i = 0; isset($config['afp']['share'][$i]); $i++) {
+			if (isset($config['afp']['share'][$i]['mswindows'])) {
+				$config['afp']['share'][$i]['options']['mswindows'] = true;
+				unset($config['afp']['share'][$i]['mswindows']);
+			}
+			if (isset($config['afp']['share'][$i]['noadouble'])) {
+				$config['afp']['share'][$i]['options']['noadouble'] = true;
+				unset($config['afp']['share'][$i]['noadouble']);
+			}
+		}
+
+		$config['version'] = "4.2";
+	}
+
 	write_config();
 
 	if (is_booting())

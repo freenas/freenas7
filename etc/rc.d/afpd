@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: afpd
@@ -53,8 +53,9 @@ create_conf()
 		-i "not(casefold[. = 'none'])" -v "concat('casefold:',casefold,' ')" -b \
 		-i "string-length(volcharset) > 0" -v "concat('volcharset:',volcharset,' ')" -b \
 		-o "options:usedots" \
-		-i "count(mswindows) > 0" -o ",mswindows" -b \
-		-i "count(noadouble) > 0" -o ",noadouble" -b \
+		-m "options/*" \
+			-v "concat(',',local-name())" \
+		-b \
 		-o " " \
 		-i "string-length(allow) > 0" -v "concat('allow:',allow,' ')" -b \
 		-i "string-length(deny) > 0" -v "concat('deny:',deny,' ')" -b \
