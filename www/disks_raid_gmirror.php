@@ -49,15 +49,15 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			foreach ($a_raid as $raidv) {
-				if (file_exists($d_raidconfdirty_path) && in_array($raidv['name']."\n", file($d_raidconfdirty_path))) {
+				if (is_modified($raidv['name'])) {
 					$retval |= disks_raid_gmirror_configure($raidv);
 				}
 			}
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_raidconfdirty_path))
-				unlink($d_raidconfdirty_path);
+			if (file_exists($d_raid_gmirror_confdirty_path))
+				unlink($d_raid_gmirror_confdirty_path);
 		}
 	}
 }
@@ -76,6 +76,11 @@ if ($_GET['act'] == "del") {
 			$errormsg = sprintf( gettext("The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."), "disks_mount.php");
 		}
 	}
+}
+
+function is_modified($name) {
+	global $d_raid_gmirror_confdirty_path;
+	return (file_exists($d_raid_gmirror_confdirty_path) && in_array("{$name}\n", file($d_raid_gmirror_confdirty_path)));
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -105,7 +110,7 @@ if ($_GET['act'] == "del") {
 			<form action="disks_raid_gmirror.php" method="post">
 				<?php if ($errormsg) print_error_box($errormsg); ?>
 				<?php if ($savemsg) print_info_box($savemsg); ?>
-				<?php if (file_exists($d_raidconfdirty_path)): ?><p>
+				<?php if (file_exists($d_raid_gmirror_confdirty_path)): ?><p>
 				<?php print_info_box_np(gettext("The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
 				<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes"); ?>"></p>
 				<?php endif; ?>
@@ -122,8 +127,7 @@ if ($_GET['act'] == "del") {
 					<?php
           $size = gettext("Unknown");
           $status = gettext("Stopped");
-					$configuring = file_exists($d_raidconfdirty_path) && in_array($raid['name']."\n",file($d_raidconfdirty_path));
-          if (true == $configuring) {
+					if (true === is_modified($raid['name'])) {
           	$size = gettext("Configuring");
           	$status = gettext("Configuring");
           } else {

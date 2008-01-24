@@ -103,11 +103,8 @@ if ($_POST) {
 		write_config();
 
 		if ($_POST['init']) {
-			$fd = @fopen($d_raidconfdirty_path, "a");
-			if ($fd) {
-				fwrite($fd, "{$raid[name]}\n");
-				fclose($fd);
-			}
+			// Mark new added RAID to be configured.
+			file_put_contents($d_raid_gmirror_confdirty_path, "{$raid[name]}\n", FILE_APPEND | FILE_TEXT);
 		} else {
 			// Start already configured disks.
 			disks_raid_gmirror_start();
