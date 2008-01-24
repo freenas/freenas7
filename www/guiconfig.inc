@@ -2,7 +2,7 @@
 /*
 	guiconfig.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -63,7 +63,11 @@ $d_iscsiinitdirty_path = $g['varrun_path'] . "/iscsiinit.dirty";
 $d_iscsitargetdirty_path = $g['varrun_path'] . "/iscsitarget.dirty";
 $d_rsyncclientdirty_path = $g['varrun_path'] . "/rsyncclient.dirty";
 $d_rsynclocaldirty_path = $g['varrun_path'] . "/rsynclocal.dirty";
-$d_raidconfdirty_path = $g['varrun_path'] . "/raid.conf.dirty";
+$d_raid_graid5_confdirty_path = $g['varrun_path'] . "/raid_graid5.conf.dirty";
+$d_raid_gmirror_confdirty_path = $g['varrun_path'] . "/raid_gmirror.conf.dirty";
+$d_raid_gconcat_confdirty_path = $g['varrun_path'] . "/raid_gconcat.conf.dirty";
+$d_raid_gvinum_confdirty_path = $g['varrun_path'] . "/raid_gvinum.conf.dirty";
+$d_raid_gstripe_confdirty_path = $g['varrun_path'] . "/raid_gstripe.conf.dirty";
 $d_userconfdirty_path = $g['varrun_path'] . "/user.conf.dirty";
 $d_groupconfdirty_path = $g['varrun_path'] . "/group.conf.dirty";
 $d_smbconfdirty_path = $g['varrun_path'] . "/smb.conf.dirty";
