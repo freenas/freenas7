@@ -1046,7 +1046,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 {
 	if (!$notinitmbr) {
 		echo gettext("Erasing MBR and all partitions").".\n";
-		system("dd if=/dev/zero of={$disk} bs=32k count=640");
+		system("/bin/dd if=/dev/zero of={$disk} bs=32k count=640");
 	}
 
 	switch ($type) {
