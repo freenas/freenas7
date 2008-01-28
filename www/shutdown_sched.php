@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Shutdown"));
+$pgtitle = array(gettext("System"), gettext("Shutdown"), gettext("Scheduled"));
 
 if (!is_array($config['shutdown'])){
 	$config['shutdown'] = array();
