@@ -16,7 +16,7 @@ PATCH_STRIP=		-p1
 CONFIGURE_ARGS+=	--enable-passwd-compat
 
 # define if you want to enable rsync compatibility.
-BUILD_DEPENDS+=		rsync:./../rsync
+BUILD_DEPENDS+=		rsync:${.CURDIR}/../rsync
 RUN_DEPENDS+=			${BUILD_DEPENDS}
 CONFIGURE_ARGS+=	--enable-rsync-compat
 
