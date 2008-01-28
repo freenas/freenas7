@@ -1077,11 +1077,9 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			// Get disk informations.
 			$diskinfo = disks_get_diskinfo($disk);
 
-			// Check if required data is available. CHS aren't available via 'diskinfo'
-			// for SoftRAID's, so we need to get them using 'fdisk'.
-			if (empty($diskinfo['cylinders']) || empty($diskinfo['heads']) || empty($diskinfo['sectors'])) {
-				disks_get_chs_info($disk, $diskinfo);
-			}
+			// Get valid CHS informations. 'diskinfo' gets values from harddisk firmware that
+			// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63). 
+			disks_get_chs_info($disk, $diskinfo);
 
 			// Create fdisk config file (fdisk.conf).
 			$fdiskconf .= <<<EOD
@@ -1123,11 +1121,9 @@ EOD;
 			// Get disk informations.
 			$diskinfo = disks_get_diskinfo($disk);
 
-			// Check if required data is available. CHS aren't available via 'diskinfo'
-			// for SoftRAID's, so we need to get them using 'fdisk'.
-			if (empty($diskinfo['cylinders']) || empty($diskinfo['heads']) || empty($diskinfo['sectors'])) {
-				disks_get_chs_info($disk, $diskinfo);
-			}
+			// Get valid CHS informations. 'diskinfo' gets values from harddisk firmware that
+			// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63). 
+			disks_get_chs_info($disk, $diskinfo);
 
 			// Create fdisk config file (fdisk.conf).
 			$fdiskconf .= <<<EOD
@@ -1297,6 +1293,9 @@ function disks_get_diskinfo($disk)
 // Return 0 if successful, 1 if error.
 function disks_get_chs_info($disk, &$info)
 {
+	if (!is_array($info))
+		return 1;
+
 	exec("/sbin/fdisk -t {$disk}", $rawdata);
 
 	// Parse string: cylinders=77826 heads=255 sectors/track=63 (16065 blks/cyl).

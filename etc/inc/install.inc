@@ -2,7 +2,7 @@
 /*
 	system.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -385,6 +385,10 @@ function install_fdisk2partdisk($harddrive, $size)
 
 	// Get disk informations.
 	$diskinfo = disks_get_diskinfo($harddrive);
+
+	// Get valid CHS informations. 'diskinfo' gets values from harddisk firmware that
+	// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63). 
+	disks_get_chs_info($harddrive, $diskinfo);
 
 	// Check available disk space.
 	if ($diskinfo['mediasize_mbytes'] <= $size) {
