@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Status"), gettext("Traffic graph"));
+$pgtitle = array(gettext("Status"), gettext("Graph"),gettext("Traffic graph"));
 
 $curif = "lan";
 if ($_GET['if'])
