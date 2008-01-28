@@ -113,7 +113,7 @@ start_precmd()
 	echo '<map from="mp4" to="video/mp4"/>' >> ${mediatomb_config}
 	if [ "PS3" = "${_profile}" ]; then
 		echo '<map from="avi" to="video/divx"/>' >> ${mediatomb_config}
-	elif [ "ZyXEL_DMA1000" = "${_profile}" ]; then
+	elif [ "ZyXEL_DMA1000" = "${_profile}" -o "Helios_X3000" = "${_profile}" ]; then
 		echo '<map from="avi" to="video/avi"/>' >> ${mediatomb_config}
 	else
 		echo '<map from="avi" to="video/x-divx"/>' >> ${mediatomb_config}
