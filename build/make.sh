@@ -704,24 +704,43 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Ports\" \\
 	fi
 	rm $tempfile
 
-	for port in $(cat $ports | tr -d '"'); do
-		echo
-		echo "--------------------------------------------------------------"
-		echo ">>> ${choice}ing port: ${port}"
-		echo "--------------------------------------------------------------"
-		cd $FREENAS_SVNDIR/build/ports/$port
-		if [ "$choice" == "build" ]; then
-			# Build port.
-			make clean build
-		elif [ "$choice" == "install" ]; then
-			# Delete cookie first, otherwise Makefile will skip this step.
-			rm -f ./work/.install_done.*
-			# Install port.
-			env NO_PKG_REGISTER=1 make install
-		fi
-		[ 0 != $? ] && return 1 # successful?
-	done
-	rm $ports
+	case ${choice} in
+		build)
+			# Clean ports.
+			echo;
+			echo "--------------------------------------------------------------";
+			echo ">>> Cleaning ports.";
+			echo "--------------------------------------------------------------";
+			for port in $(cat ${ports} | tr -d '"'); do
+				cd ${FREENAS_SVNDIR}/build/ports/${port};
+				make clean;
+			done;
+			# Build ports.
+			for port in $(cat $ports | tr -d '"'); do
+				echo;
+				echo "--------------------------------------------------------------";
+				echo ">>> Building port: ${port}";
+				echo "--------------------------------------------------------------";
+				cd ${FREENAS_SVNDIR}/build/ports/${port};
+				make build;
+				[ 0 != $? ] && return 1; # successful?
+			done;
+			;;
+		install)
+			for port in $(cat ${ports} | tr -d '"'); do
+				echo;
+				echo "--------------------------------------------------------------";
+				echo ">>> Installing port: ${port}";
+				echo "--------------------------------------------------------------";
+				cd ${FREENAS_SVNDIR}/build/ports/${port};
+				# Delete cookie first, otherwise Makefile will skip this step.
+				rm -f ./work/.install_done.*;
+				env NO_PKG_REGISTER=1 make install;
+				[ 0 != $? ] && return 1; # successful?
+			done;
+			;;
+	esac
+	rm ${ports}
 
   return 0
 }
