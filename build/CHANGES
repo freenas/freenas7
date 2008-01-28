@@ -8,7 +8,7 @@ Majors changes:
   - WOL kernel patch has to be removed because there is currently no patch available for this version.
   - ATA timeout patch has been removed.
   - Add msk (Marvell/SysKonnect Yukon II Gigabit Ethernet) network driver.
-  - Add pcn	(AMD Am79C97x PCI 10/100 (precedence over 'lnc')) network driver.
+  - Add pcn (AMD Am79C97x PCI 10/100 (precedence over 'lnc')) network driver.
 - Remove 'kern.hz="500"' from /boot/loader.conf. With FreeBSD 6.3 it is set to 100 by default.
 
 Permanent restrictions:
