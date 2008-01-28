@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Shutdown"));
+$pgtitle = array(gettext("System"),gettext("Shutdown"), gettext("Now"));
 
 if ($_POST) {
 	if ($_POST['Submit'] != " " . gettext("No") . " ") {
