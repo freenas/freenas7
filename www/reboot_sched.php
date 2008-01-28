@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Reboot"));
+$pgtitle = array(gettext("System"),gettext("Reboot"), gettext("Scheduled"));
 
 if (!is_array($config['reboot'])){
 	$config['reboot'] = array();
@@ -297,7 +297,7 @@ function enable_change(enable_change) {
 								</tr>
 								<tr bgcolor=#cccccc>
 									<td colspan=5>
-										<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months.");?>
+										<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select or de-select minutes, hours, days and months.");?>
 									</td>
 								</tr>
 							</table>
