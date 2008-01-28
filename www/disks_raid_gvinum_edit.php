@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Disks"),gettext("RAID"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("Geom Vinum"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['gvinum']['vdisk']))
 	$config['gvinum']['vdisk'] = array();

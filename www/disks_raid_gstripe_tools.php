@@ -35,7 +35,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Stripe"), gettext("Tools"));
+$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID0"), gettext("Tools"));
 
 if (!is_array($config['gstripe']['vdisk']))
 	$config['gstripe']['vdisk'] = array();

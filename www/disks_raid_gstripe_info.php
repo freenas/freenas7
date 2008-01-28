@@ -34,7 +34,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Stripe"), gettext("Information"));
+$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID0"), gettext("Information"));
 $pgrefresh = 5; // Refresh every 5 seconds.
 
 ?>

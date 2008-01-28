@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Geom Raid5"), gettext("Manage RAID"));
+$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID5"), gettext("Manage RAID"));
 
 if (!is_array($config['graid5']['vdisk']))
 	$config['graid5']['vdisk'] = array();
@@ -151,7 +151,9 @@ function is_modified($name) {
         </table>
       </form>
 			<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"), "disks_manage.php", "COMPLETE");?></span></p>
-		</td>
+			<br>
+			<p><span class="vexpl"><span class="red"><strong><?=gettext("Info");?>:</strong></span><br><?=gettext("FreeNAS use Geom gRaid5 to create RAID5 arrays.");?>
+			</td>
 	</tr>
 </table>
 <?php include("fend.inc");?>
