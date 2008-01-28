@@ -12,11 +12,12 @@ MASTER_SITE_SUBDIR=	rsync
 GNU_CONFIGURE=		yes
 CONFIGURE_ARGS+=	--with-rsyncd-conf=/var/etc
 
+# Install on host system too, otherwise depending ports fail during ./configure process (e.g. scponly).
+FORCE_PKG_REGISTER=	yes
+
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/rsync ${FREENAS_ROOTFS}/usr/local/bin
-
-	# Install on host system too, otherwise depending ports fail during ./configure process (e.g. scponly). 
-	FORCE_PKG_REGISTER=	yes
+# Install on host system too, otherwise depending ports fail during ./configure process (e.g. scponly). 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/rsync ${PREFIX}/bin
 
 .include <bsd.port.mk>
