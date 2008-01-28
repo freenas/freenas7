@@ -2,11 +2,11 @@
 <?php
 /*
 	services_afp_share.php
-	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -125,8 +125,7 @@ if ($_GET['act'] == "del") {
         </table>
       </form>
       <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
-			<?php echo gettext("All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal.");?><br/><br/>
-      <?php echo gettext("All mounted volumes are automatically shared and restricted to only allow administrators to connect. The volumes will not show up in the list of shares.");?>
+			<?php echo gettext("All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal.");?>
 			</p>
     </td>
   </tr>

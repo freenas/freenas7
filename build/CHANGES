@@ -9,6 +9,7 @@ Majors changes:
   - ATA timeout patch has been removed.
   - Add msk (Marvell/SysKonnect Yukon II Gigabit Ethernet) network driver.
   - Add pcn	(AMD Am79C97x PCI 10/100 (precedence over 'lnc')) network driver.
+- Remove 'kern.hz="500"' from /boot/loader.conf. With FreeBSD 6.3 it is set to 100 by default.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
@@ -45,8 +46,9 @@ Majors changes:
 - Upgrade 3ware serial ATA RAID controller driver to 9.4.2 (http://www.3ware.com/download/Escalade9650SE-Series/9.4.2/9.4.2_Release_Notes_Web.pdf).
 - Allow creation of users with empty passwords.
 - Upgrade ATAidle to 2.3.
-- Remove 'kern.hz="100"' from /boot/loader.conf. VMWare users which require this setting have to install in 'full' mode and edit loader.conf by hand.
-  Also see http://www.freebsd.org/doc/en/books/handbook/virtualization-guest.html for some tipps.
+- Set 'kern.hz="500"' in /boot/loader.conf for better system and media streaming performance. Thanks to Eyn Ergy for testing.
+  VMWare users which require this setting have to install in 'full' mode and edit loader.conf by hand.
+  See http://ivoras.sharanet.org/freebsd/vmware.html or http://www.freebsd.org/doc/en/books/handbook/virtualization-guest.html for some tipps.
 - Add SSL/TLS support to FTP service.
 - Use inadyn-mt instead of inadyn dynamic DNS client.
 - Add easyDNS.com and 3322.org support to 'Dynamic DNS' service.
