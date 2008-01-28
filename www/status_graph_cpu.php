@@ -30,7 +30,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Status"), gettext("CPU load"));
+$pgtitle = array(gettext("Status"), gettext("Graph"), gettext("CPU load"));
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
