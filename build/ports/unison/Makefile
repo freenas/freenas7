@@ -19,7 +19,7 @@ MAKE_ARGS+=	UISTYLE=text
 post-patch:
 # Copy ocaml options file
 	@${MKDIR} -v /var/db/ports/ocaml
-	@${CP} -pv ${FILESDIR}/ocaml-options /var/db/ports/ocaml/options
+	@${CP} -pv ${FILESDIR}/ocaml-options.in /var/db/ports/ocaml/options
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/unison ${FREENAS_ROOTFS}/usr/local/bin
