@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Advanced Setup"));
+$pgtitle = array(gettext("System"), gettext("Advanced"), gettext("Advanced Setup"));
 
 $pconfig['cert'] = base64_decode($config['system']['webgui']['certificate']);
 $pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
