@@ -16,7 +16,7 @@ USE_GMAKE=	yes
 MAKE_ARGS=	CFLAGS=""
 MAKE_ARGS+=	UISTYLE=text
 
-post-patch:
+pre-everything::
 # Copy ocaml options file
 	@${MKDIR} -v /var/db/ports/ocaml
 	@${CP} -pv ${FILESDIR}/ocaml-options.in /var/db/ports/ocaml/options
