@@ -16,6 +16,9 @@ USE_GMAKE=	yes
 MAKE_ARGS=	CFLAGS=""
 MAKE_ARGS+=	UISTYLE=text
 
+# Install on host system too, otherwise depending ports fail during ./configure process (e.g. scponly).
+FORCE_PKG_REGISTER=	yes
+
 pre-everything::
 # Copy ocaml options file
 	@${MKDIR} -v /var/db/ports/ocaml
@@ -23,5 +26,7 @@ pre-everything::
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/unison ${FREENAS_ROOTFS}/usr/local/bin
+# Install on host system too, otherwise depending ports fail during ./configure process (e.g. scponly). 
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/unison ${PREFIX}/bin
 
 .include <bsd.port.mk>

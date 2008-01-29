@@ -20,6 +20,11 @@ BUILD_DEPENDS+=		rsync:${.CURDIR}/../rsync
 RUN_DEPENDS+=			${BUILD_DEPENDS}
 CONFIGURE_ARGS+=	--enable-rsync-compat
 
+# define if you want to enable unison compatibility.
+BUILD_DEPENDS+=		unison:${.CURDIR}/../unison
+RUN_DEPENDS+=			${BUILD_DEPENDS}
+CONFIGURE_ARGS+=	--enable-unison-compat
+
 # define if you want to enable vanilla scp compatibility.
 CONFIGURE_ARGS+=	--enable-scp-compat
 
