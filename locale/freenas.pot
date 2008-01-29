@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-01-24 08:01+0000\n"
+"PO-Revision-Date: 2008-01-29 09:44+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -231,6 +231,9 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
+msgid "Advanced Options"
+msgstr ""
+
 msgid "Advanced Power Management"
 msgstr ""
 
@@ -252,9 +255,6 @@ msgid "Alias host name."
 msgstr ""
 
 msgid "All"
-msgstr ""
-
-msgid "All mounted volumes are automatically shared and restricted to only allow administrators to connect. The volumes will not show up in the list of shares."
 msgstr ""
 
 msgid "All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."
@@ -292,6 +292,9 @@ msgid "Alternate TCP port. Default is 873"
 msgstr ""
 
 msgid "Always on"
+msgstr ""
+
+msgid "Always use 0 for device number, helps when the device number is not constant across a reboot, cluster, ..."
 msgstr ""
 
 msgid "An host with this name already exists."
@@ -696,6 +699,9 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
+msgid "Disables :hex translations for anything except dot files. This option makes the '/' character illegal."
+msgstr ""
+
 msgid "Disk"
 msgstr ""
 
@@ -709,9 +715,6 @@ msgid "Disks"
 msgstr ""
 
 msgid "Disks (ATA)"
-msgstr ""
-
-msgid "Do not create .AppleDouble directory"
 msgstr ""
 
 msgid "Do not set this for CF cards."
@@ -795,7 +798,13 @@ msgstr ""
 msgid "Don't Erase MBR"
 msgstr ""
 
+msgid "Don't advertise createfileid, resolveid, deleteid calls."
+msgstr ""
+
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
+msgstr ""
+
+msgid "Don't stat volume path when enumerating volumes list, useful for automounting or volumes created by a preexec script."
 msgstr ""
 
 msgid "Done."
@@ -897,9 +906,6 @@ msgstr ""
 msgid "Enable NTP"
 msgstr ""
 
-msgid "Enable Windows filename restrictions"
-msgstr ""
-
 msgid "Enable Zeroconf"
 msgstr ""
 
@@ -961,6 +967,9 @@ msgid "Enable web user interface."
 msgstr ""
 
 msgid "Enabled"
+msgstr ""
+
+msgid "Enables crlf translation for TEXT files, automatically converting macintosh line breaks into Unix ones. Use of this option might be dangerous since some older programs store binary data files as type 'TEXT' when saving and switch the filetype in a second step. Afpd will potentially destroy such files when 'erroneously' changing bytes in order to do line break translation."
 msgstr ""
 
 msgid "Encrypted disk name"
@@ -1143,6 +1152,18 @@ msgstr ""
 msgid "Free Space"
 msgstr ""
 
+msgid "FreeNAS use Geom Concat to create JBOD arrays."
+msgstr ""
+
+msgid "FreeNAS use Geom Mirror to create RAID1 arrays."
+msgstr ""
+
+msgid "FreeNAS use Geom Stripe to create RAID0 arrays."
+msgstr ""
+
+msgid "FreeNAS use Geom gRaid5 to create RAID5 arrays."
+msgstr ""
+
 msgid "From e-mail"
 msgstr ""
 
@@ -1165,18 +1186,6 @@ msgid "General"
 msgstr ""
 
 msgid "General Setup"
-msgstr ""
-
-msgid "Geom Concat"
-msgstr ""
-
-msgid "Geom Mirror"
-msgstr ""
-
-msgid "Geom Raid5"
-msgstr ""
-
-msgid "Geom Stripe"
 msgstr ""
 
 msgid "Geom Vinum"
@@ -1225,6 +1234,9 @@ msgid "HTTP Proxy"
 msgstr ""
 
 msgid "Hard disk standby time"
+msgstr ""
+
+msgid "Helios X3000"
 msgstr ""
 
 msgid "Help Needed!"
@@ -1337,6 +1349,9 @@ msgstr ""
 msgid "If Login is required."
 msgstr ""
 
+msgid "If set afpd uses the ID information stored in AppleDouble V2 header files to reduce database load. Don't set this option if the volume is modified by non AFP clients (NFS/SMB/local)."
+msgstr ""
+
 msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
 msgstr ""
 
@@ -1360,6 +1375,9 @@ msgid "In"
 msgstr ""
 
 msgid "In most cases, 'public' is used here."
+msgstr ""
+
+msgid "Info"
 msgstr ""
 
 msgid "Information"
@@ -1713,9 +1731,6 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-msgid "No AppleDouble Directory"
-msgstr ""
-
 msgid "No RSYNC Client configured"
 msgstr ""
 
@@ -1741,6 +1756,9 @@ msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select mi
 msgstr ""
 
 msgid "Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
+msgstr ""
+
+msgid "Note: Ctrl-click (or command-click on the Mac) to select or de-select minutes, hours, days and months."
 msgstr ""
 
 msgid "Now"
@@ -1967,6 +1985,9 @@ msgstr ""
 msgid "Provider"
 msgstr ""
 
+msgid "Provides compatibility with Apple II clients."
+msgstr ""
+
 msgid "Proxy"
 msgstr ""
 
@@ -1974,9 +1995,6 @@ msgid "Puts the hard disk into standby mode when the selected amount of time aft
 msgstr ""
 
 msgid "Quality"
-msgstr ""
-
-msgid "RAID"
 msgstr ""
 
 msgid "RAID 0"
@@ -1992,6 +2010,15 @@ msgid "RAID 1 (mirroring)"
 msgstr ""
 
 msgid "RAID 5"
+msgstr ""
+
+msgid "RAID0"
+msgstr ""
+
+msgid "RAID1"
+msgstr ""
+
+msgid "RAID5"
 msgstr ""
 
 msgid "RSYNC"
@@ -2772,7 +2799,7 @@ msgstr ""
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr ""
 
-msgid "This forces filenames to be restricted to the character set used by Windows. This is <em>not</em> recommended for shares used principally by Mac computers."
+msgid "This forces filenames to be restricted to the character set used by Windows. This is not recommended for shares used principally by Mac computers."
 msgstr ""
 
 msgid "This group already exists in the group list."
@@ -2963,6 +2990,9 @@ msgstr ""
 msgid "Uptime"
 msgstr ""
 
+msgid "Use AFP3 unix privileges."
+msgstr ""
+
 msgid "Use SMTP authentication."
 msgstr ""
 
@@ -3066,9 +3096,6 @@ msgstr ""
 msgid "Who"
 msgstr ""
 
-msgid "Windows Filename Restrictions"
-msgstr ""
-
 msgid "Wireless"
 msgstr ""
 
@@ -3145,10 +3172,16 @@ msgstr ""
 msgid "built on"
 msgstr ""
 
+msgid "cachecnid"
+msgstr ""
+
 msgid "chroot everyone"
 msgstr ""
 
 msgid "chroot() everyone, but root."
+msgstr ""
+
+msgid "crlf"
 msgstr ""
 
 msgid "day"
@@ -3191,7 +3224,25 @@ msgstr ""
 msgid "months"
 msgstr ""
 
+msgid "mswindows"
+msgstr ""
+
 msgid "n/a"
+msgstr ""
+
+msgid "noadouble"
+msgstr ""
+
+msgid "nodev"
+msgstr ""
+
+msgid "nofileid"
+msgstr ""
+
+msgid "nohex"
+msgstr ""
+
+msgid "nostat"
 msgstr ""
 
 msgid "password_suffix, example: ou=users,dc=example,dc=com"
@@ -3201,6 +3252,9 @@ msgid "pasv_max_port"
 msgstr ""
 
 msgid "pasv_min_port"
+msgstr ""
+
+msgid "prodos"
 msgstr ""
 
 msgid "rotated block-interleaved parity"
@@ -3213,6 +3267,9 @@ msgid "show process information"
 msgstr ""
 
 msgid "striping"
+msgstr ""
+
+msgid "upriv"
 msgstr ""
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
