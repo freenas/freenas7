@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-01-29 09:44+0000\n"
+"PO-Revision-Date: 2008-01-29 13:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -33,6 +33,10 @@ msgstr ""
 
 #, php-format
 msgid "%s of %sB"
+msgstr ""
+
+#, php-format
+msgid "%s uses %s to create %s arrays."
 msgstr ""
 
 #, php-format
@@ -1150,18 +1154,6 @@ msgid "Format disk"
 msgstr ""
 
 msgid "Free Space"
-msgstr ""
-
-msgid "FreeNAS use Geom Concat to create JBOD arrays."
-msgstr ""
-
-msgid "FreeNAS use Geom Mirror to create RAID1 arrays."
-msgstr ""
-
-msgid "FreeNAS use Geom Stripe to create RAID0 arrays."
-msgstr ""
-
-msgid "FreeNAS use Geom gRaid5 to create RAID5 arrays."
 msgstr ""
 
 msgid "From e-mail"
@@ -3054,6 +3046,9 @@ msgid "VLAN tag"
 msgstr ""
 
 msgid "Version"
+msgstr ""
+
+msgid "View license"
 msgstr ""
 
 msgid "Volume Name"
