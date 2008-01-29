@@ -252,7 +252,9 @@ build_kernel() {
 				cp -v -p ./geom/geom_concat/geom_concat.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_mirror/geom_mirror.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_nop/geom_nop.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./ext2fs/ext2fs.ko $FREENAS_ROOTFS/boot/kernel;;
+				cp -v -p ./ext2fs/ext2fs.ko $FREENAS_ROOTFS/boot/kernel;
+				cp -v -p ./if_tap/if_tap.ko $FREENAS_ROOTFS/boot/kernel;
+				cp -v -p ./if_tun/if_tun.ko $FREENAS_ROOTFS/boot/kernel;;
   	esac
   done
 

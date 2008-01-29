@@ -63,6 +63,7 @@ Minors changes:
 - Add 'User ID' and 'Group ID' option to RSYNC module configurations.
 - Improved software RAID creation/administration via WebGUI.
 - Add additional options (e.g. cachecnid, upriv, ...) for AFPd shares.
+- Add if_tap.ko and if_tun.ko kernel modules for tun/tap pseudo device support (required by OpenVPN).
 
 Bug fixs:
 - Calculating iSCSI extent IDs fails for numbers > 10.
