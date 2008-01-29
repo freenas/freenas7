@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# $FreeBSD: src/etc/rc.d/devd,v 1.7.2.3 2006/09/26 02:15:15 brooks Exp $
+#
+# Modified by Volker Theile (votdev@gmx.de)
+# Changes:
+# - Remove req: network_ipv6
+# - Remove bef: mountcritremote
+#
+
+# PROVIDE: devd
+# REQUIRE: netif
+# BEFORE: NETWORKING
+# KEYWORD: nojail
+
+. /etc/rc.subr
+
+name="devd"
+rcvar=`set_rcvar`
+command="/sbin/${name}"
+
+load_rc_config $name
+run_rc_command "$1"
+
+# If devd is disabled, turn it off in the kernel to avoid memory leaks.
+if ! checkyesno ${rcvar}; then
+    sysctl hw.bus.devctl_disable=1
+fi
