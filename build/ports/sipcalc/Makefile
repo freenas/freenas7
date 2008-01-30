@@ -1,22 +1,15 @@
 PORTNAME=			sipcalc
-PORTVERSION=	1.0
+PORTVERSION=	1.1.4
 CATEGORIES=		net-mgmt ipv6
 COMMENT=			Sipcalc is an IP subnet calculator with IPv6 support
 MAINTAINER=		votdev@gmx.de
 
-# No files are needed to be fetched.
-DISTFILES?=
-# No build is required for this port.
-NO_BUILD?=	yes
-# Don't register a port installation as a package.
-NO_PKG_REGISTER?=	yes
-# Set default target to execute when a port is calling a dependency.
-ALWAYS_BUILD_DEPENDS=	yes
-DEPENDS_TARGET=	clean build
+MASTER_SITES=	http://www.routemeister.net/projects/sipcalc/files/
 
-BUILD_DEPENDS=	sipcalc:${PORTSDIR}/net-mgmt/sipcalc
+USE_GETOPT_LONG=	yes
+GNU_CONFIGURE=		yes
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${PORTSDIR}/net-mgmt/sipcalc/work/sipcalc-*/src/sipcalc ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/sipcalc ${FREENAS_ROOTFS}/usr/local/bin
 
 .include <bsd.port.mk>
