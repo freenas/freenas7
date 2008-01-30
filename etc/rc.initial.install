@@ -2,7 +2,7 @@
 
 # /etc/rc.initial
 # part of FreeNAS (http://www.freenas.org)
-# Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>
+# Copyright (C) 2005-2008 Olivier Cochard-LabbÃ© <olivier@freenas.org>
 # All rights reserved.
 
 # endless loop
@@ -10,15 +10,17 @@ while : ; do
 	echo
 	echo "Install"
 	echo "*******"
-	echo "1) Install 'embedded' release on flash device: Create 1 UFS partition"
-	echo "2) Install 'embedded' release on hard drive:"
-	echo "      - Create MBR partition 1, 32MB size for FreeNAS"
-	echo "      - Create MBR partition 2, using UFS, for DATA"
-	echo "      - Use a RAM drive for limit read/write access to the flash device"
+	echo "1) Install 'embedded' release on hard drive/flash/USB device:"
+	echo "   - Create 1 partition for OS image"
+	echo "   - Uses a RAM drive to limit read/write access to the device"
+	echo "2) Install 'embedded' release on hard drive/flash/USB device:"
+	echo "   - Create MBR partition 1, using UFS, 32MB size for OS"
+	echo "   - Create MBR partition 2, using UFS, for DATA"
+	echo "   - Uses a RAM drive to limit read/write access to the device"
 	echo "3) Install 'full' release on hard drive:"
-	echo "      - Create MBR partition 1, customizable size (min. 64MB) for FreeNAS"
-	echo "      - Create MBR partition 2, using UFS, for DATA"
-	echo "      - Easiest to customize and support plugin"
+	echo "   - Create MBR partition 1, using UFS, customizable size (min. 64MB) for OS"
+	echo "   - Create MBR partition 2, using UFS, for DATA"
+	echo "   - Easy to customize (e.g. install additional FreeBSD packages)"
 	echo "4) Upgrade existing installed 'embedded' release from CDROM"
 	echo "5) Upgrade existing installed 'full' release from CDROM"
 	echo "6) Upgrade and convert 'full' release to 'embedded'"
@@ -46,7 +48,7 @@ while : ; do
 			/etc/rc.initial.full2emb
 			;;
 		7)
-			/etc/rc.initial
+			exit 0
 			;;
 	esac
 done
