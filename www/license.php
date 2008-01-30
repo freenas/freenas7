@@ -146,8 +146,8 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 		<p>iSCSI-target (<a href="http://www.alistaircrooks.co.uk" target="_blank">http://www.alistaircrooks.co.uk</a>)<br>
 	  	Copyright &copy; 2006 Alistair Crooks. All rights reserved.</p>
 
-    <p>dp.SyntaxHighlighter (<a href="http://www.dreamprojections.com/SyntaxHighlighter" target="_blank">http://www.dreamprojections.com/SyntaxHighlighter</a>)<br>
-      Copyright &copy; 2004-2006 Alex Gorbatchev. All rights reserved.</p>    
+    <p>dp.SyntaxHighlighter (<a href="http://code.google.com/p/syntaxhighlighter" target="_blank">http://code.google.com/p/syntaxhighlighter</a>)<br>
+      Copyright &copy; 2004-2007 Alex Gorbatchev. All rights reserved.</p>    
 
     <p>MediaTomb UPnP A/V MediaServer (<a href="http://mediatomb.cc" target="_blank">http://mediatomb.cc</a>)<br>
       Copyright &copy; 2005-2007 Gena Batyan, Sergey Bostandzhyan and Leonhard Wimmer.</p>
