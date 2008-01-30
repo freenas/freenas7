@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("RSYNCD"),gettext("Server"));
+$pgtitle = array(gettext("Services"),gettext("RSYNCD"),gettext("Server"), gettext("Settings"));
 
 if (!is_array($config['access']['user']))
 	$config['access']['user'] = array();

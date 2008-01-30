@@ -36,7 +36,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"), gettext("RSYNCD"), gettext("Modules"));
+$pgtitle = array(gettext("Services"), gettext("RSYNCD"), gettext("Server"), gettext("Modules"));
 
 if(!is_array($config['rsyncd']['module']))
 	$config['rsyncd']['module'] = array();
