@@ -4,7 +4,7 @@ FreeNAS 0.687b1:
 ----------------
 
 Majors changes:
-- Upgrade to FreeBSD 6.3RC1. Because of this there are some changes:
+- Upgrade to FreeBSD 6.3. Because of this there are some changes:
   - WOL kernel patch has to be removed because there is currently no patch available for this version.
   - ATA timeout patch has been removed.
   - Add msk (Marvell/SysKonnect Yukon II Gigabit Ethernet) network driver.
