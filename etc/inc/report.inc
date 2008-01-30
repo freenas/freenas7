@@ -325,7 +325,7 @@ function report_send_mail() {
 	$mail->Host = $config['statusreport']['server'];
 	$mail->Port = $config['statusreport']['port'];
 	$mail->From = $config['statusreport']['from'];
-	$mail->FromName = get_product_name() . " status";
+	$mail->FromName = get_product_name();
 	$mail->Subject = $config['statusreport']['subject'];
 	$mail->AddAddress($config['statusreport']['to']);
 
