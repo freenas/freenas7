@@ -290,13 +290,15 @@ device		sbp		# SCSI over FireWire (Requires scbus and da)
 # FREENAS
 #####################################################################
 options		NO_SWAPPING
-options 	DEVICE_POLLING
-options		HZ=1000
 options   SMP						# Symmetric MultiProcessor Kernel
 device		speaker
 
+# Networking options
+options		DEVICE_POLLING
+options		HZ=1000
+
 # Splashscreen
-#options		VESA
+#options	VESA
 options		SC_PIXEL_MODE
 
 # Power management support (see NOTES for more options)
@@ -318,6 +320,8 @@ device		wlan_tkip
 device		wlan_xauth
 device		iwi
 device		ipw
+
+device		lagg			# Link aggregation interface
 
 # USB support
 device		udav			# Davicom DM910 USB Ethernet driver
