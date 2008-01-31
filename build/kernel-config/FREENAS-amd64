@@ -16,7 +16,7 @@
 # If you are in doubt as to the purpose or necessity of a line, check first
 # in NOTES.
 #
-# $FreeBSD: src/sys/i386/conf/GENERIC,v 1.429.2.14 2007/03/27 02:33:00 yongari Exp $
+# $FreeBSD: src/sys/i386/conf/GENERIC,v 1.429.2.14.2.1 2007/12/15 06:32:32 scottl Exp $
 
 machine		amd64
 cpu		HAMMER
@@ -27,8 +27,8 @@ ident		FREENAS
 
 #makeoptions	DEBUG=-g		# Build kernel with gdb(1) debug symbols
 
-options 	SCHED_ULE			# ULE scheduler
-#options 	SCHED_4BSD		# 4BSD scheduler
+#options 	SCHED_ULE			# ULE scheduler
+options 	SCHED_4BSD		# 4BSD scheduler
 options 	PREEMPTION		# Enable kernel thread preemption
 options 	INET			# InterNETworking
 options 	INET6			# IPv6 communications protocols
@@ -57,10 +57,10 @@ options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
 options 	KBD_INSTALL_CDEV	# install a CDEV entry in /dev
 options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
 
-#device		apic			# I/O APIC
+device		apic			# I/O APIC
 
 # Bus support.
-#device		eisa
+device		eisa
 device		pci
 
 # Floppy drives
@@ -113,10 +113,11 @@ device		ses		# SCSI Environmental Services (and SAF-TE)
 # RAID controllers interfaced to the SCSI subsystem
 device		amr		# AMI MegaRAID
 device		arcmsr		# Areca SATA II RAID
-#device		asr		# DPT SmartRAID V, VI and Adaptec SCSI RAID
+device		asr		# DPT SmartRAID V, VI and Adaptec SCSI RAID
 device		ciss		# Compaq Smart RAID 5*
 device		dpt		# DPT Smartcache III, IV - See NOTES for options
 device		hptmv		# Highpoint RocketRAID 182x
+device		hptrr		# Highpoint RocketRAID 17xx, 22xx, 23xx, 25xx
 device		rr232x		# Highpoint RocketRAID 232x
 device		iir		# Intel Integrated RAID
 device		ips		# IBM (Adaptec) ServeRAID
@@ -129,7 +130,7 @@ device		aacp		# SCSI passthrough for aac (requires CAM)
 device		ida		# Compaq Smart RAID
 device		mfi		# LSI MegaRAID SAS
 device		mlx		# Mylex DAC960 family
-#device		pst		# Promise Supertrak SX6000
+device		pst		# Promise Supertrak SX6000
 device		twe		# 3ware ATA RAID
 
 # atkbdc0 controls both the keyboard and the PS/2 mouse
@@ -156,7 +157,7 @@ device		agp		# support several AGP chipsets
 # Power management support (see NOTES for more options)
 #device		apm
 # Add suspend/resume support for the i8254.
-#device		pmtimer
+device		pmtimer
 
 # PCCARD (PCMCIA) support
 # PCMCIA and cardbus bridge support
@@ -206,7 +207,7 @@ device		sf		# Adaptec AIC-6915 (``Starfire'')
 device		sis		# Silicon Integrated Systems SiS 900/SiS 7016
 device		sk		# SysKonnect SK-984x & SK-982x gigabit Ethernet
 device		ste		# Sundance ST201 (D-Link DFE-550TX)
-#device		stge		# Sundance/Tamarack TC9021 gigabit Ethernet
+device		stge		# Sundance/Tamarack TC9021 gigabit Ethernet
 device		ti		# Alteon Networks Tigon I/II gigabit Ethernet
 device		tl		# Texas Instruments ThunderLAN
 device		tx		# SMC EtherPower II (83c170 ``EPIC'')
@@ -289,6 +290,7 @@ device		sbp		# SCSI over FireWire (Requires scbus and da)
 #####################################################################
 # FREENAS
 #####################################################################
+options 	COMPAT_IA32		# Compatible with i386 binaries
 options		NO_SWAPPING
 options   SMP						# Symmetric MultiProcessor Kernel
 device		speaker
@@ -298,7 +300,7 @@ options		DEVICE_POLLING
 options		HZ=1000
 
 # Splashscreen
-#options	VESA
+options		VESA
 options		SC_PIXEL_MODE
 
 # Power management support (see NOTES for more options)
@@ -356,7 +358,3 @@ device		iicbb
 device		ic
 device		iic
 device		iicsmb		# smb over i2c bridge
-
-options 	COMPAT_IA32		# Compatible with i386 binaries
-
-device		atpic					# 8259A compatability. Workarounds for some known-to-be-broken chipsets (nVidia nForce3-Pro150)
