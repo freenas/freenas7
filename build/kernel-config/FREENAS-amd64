@@ -289,14 +289,16 @@ device		sbp		# SCSI over FireWire (Requires scbus and da)
 # FREENAS
 #####################################################################
 options		NO_SWAPPING
-options 	DEVICE_POLLING
-options		HZ=1000
 options   SMP						# Symmetric MultiProcessor Kernel
 options		MSDOSFS_LARGE	# MSDOS Filesystem for FAT32 > 128GB
 device		speaker
 
+# Networking options
+options		DEVICE_POLLING
+options		HZ=1000
+
 # Splashscreen
-#options		VESA
+#options	VESA
 options		SC_PIXEL_MODE
 
 # Power management support (see NOTES for more options)
