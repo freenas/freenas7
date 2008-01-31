@@ -55,6 +55,7 @@ Majors changes:
 - Use inadyn-mt instead of inadyn dynamic DNS client.
 - Add easyDNS.com and 3322.org support to 'Dynamic DNS' service.
 - Upgrade dp.SyntaxHighlighter to 1.5.1.
+- Fix install problem "Error: Failed to set partitions on the disk 'xxx'".
 
 Minors changes:
 - Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
