@@ -238,7 +238,7 @@ function enable_change(enable_change) {
 											<tr>
 												<td valign=top>
 													<select multiple size="12" name="day[]" id="days1" onchange="set_selected('all_days')">
-														<?php for ($i = 0; $i <= 12; $i++):?>
+														<?php for ($i = 1; $i <= 12; $i++):?>
 														<option value="<?=$i;?>" <?php if (is_array($pconfig['day']) && in_array("$i", $pconfig['day'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
 														<?php endfor;?>
 													</select>
