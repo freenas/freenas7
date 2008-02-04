@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-01-29 13:35+0000\n"
+"PO-Revision-Date: 2008-02-04 09:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1400,6 +1400,10 @@ msgid "Interface to listen to."
 msgstr ""
 
 msgid "Interfaces"
+msgstr ""
+
+#, php-format
+msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr ""
 
 msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
