@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: netif
@@ -7,6 +7,7 @@
 # KEYWORD: nojail
 
 . /etc/rc.subr
+. /etc/configxml.subr
 
 name="network"
 start_cmd="start_cmd"
@@ -15,12 +16,20 @@ stop_cmd=":"
 start_cmd()
 {
 	local _result
+	
+	# Enable polling if enabled.
+	if configxml_isset //interfaces/*/polling; then
+		sysctl kern.polling.enable=1
+	else
+		sysctl kern.polling.enable=0
+	fi
+
 	# Bring up network interfaces.
 	eval /etc/rc.d.php/netif
 	_result=$?
 
 	# Display interfaces configured by this script
-	/sbin/ifconfig
+	ifconfig
 
 	return ${_result}
 }

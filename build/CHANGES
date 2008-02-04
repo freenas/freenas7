@@ -77,6 +77,7 @@ Bug fixs:
   Please check your configuration and reconfigure your FTP service if necessary.
 - Do not display warning message "The attribute 'Domain name' contains invalid characters and is no valid domain name." anymore because
   this stops configuring provider FreeDNS.
+- Set 'sysctl kern.polling.enable=1' if network interface device polling is activated.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
