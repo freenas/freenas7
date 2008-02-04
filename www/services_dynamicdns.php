@@ -62,7 +62,7 @@ if($_POST) {
 
 		$reqdfields = array_merge($reqdfields, explode(" ", "updateperiod forcedupdateperiod"));
 		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Update period"),gettext("Forced update period")));
-		$reqdfieldst = explode(" ", "string domain string string numeric numeric");
+		$reqdfieldst = explode(" ", "string string string string numeric numeric");
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
