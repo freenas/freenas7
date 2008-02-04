@@ -75,6 +75,8 @@ Bug fixs:
 - Fix bug in rsyncd rc-script. Hosts allow/deny were not set correct. Also fix client error message 'ERROR: module is read only'.
 - Fix bug in FTP service. It was possible to select 'Anonymous login only' and 'Local users only' simultaneously which is impossible.
   Please check your configuration and reconfigure your FTP service if necessary.
+- Do not display warning message "The attribute 'Domain name' contains invalid characters and is no valid domain name." anymore because
+  this stops configuring provider FreeDNS.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
