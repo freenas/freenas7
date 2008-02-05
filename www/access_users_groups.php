@@ -3,7 +3,7 @@
 /*
 	access_users.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -66,8 +66,6 @@ if ($_GET['act'] == "del") {
 		unset($a_group_conf[$_GET['id']]);
 
 		write_config();
-
-		rc_exec_service("userdb");
 
 		touch($d_groupconfdirty_path);
 		header("Location: access_users_groups.php");

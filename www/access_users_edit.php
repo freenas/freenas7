@@ -122,11 +122,7 @@ if ($_POST) {
 			$users['id'] = $_POST['userid'];
 			$a_user[$id] = $users;
 		} else {
-			// Get next user id.
-			exec("/usr/sbin/pw nextuser", $output);
-			$output = explode(":", $output[0]);
-
-			$users['id'] = $output[0];
+			$users['id'] = get_nextuser_id();
 			$a_user[] = $users;
 		}
 
@@ -137,6 +133,29 @@ if ($_POST) {
 		header("Location: access_users.php");
 		exit;
 	}
+}
+
+// Get next user id.
+// Return next free user id.
+function get_nextuser_id() {
+	global $config;
+
+	// Get next free user id.
+	exec("/usr/sbin/pw nextuser", $output);
+	$output = explode(":", $output[0]);
+	$id = $output[0];
+
+	// Check if id is already in usage. If the user did not press the 'Apply'
+	// button 'pw' did not recognize that there are already several new users
+	// configured because the user db is not updated until 'Apply' is pressed.
+	$a_user = $config['access']['user'];
+	if (false !== array_search_ex($id, $a_user, "id")) {
+		do {
+			$id++; // Increase id until a unused one is found.
+		} while (false !== array_search_ex($id, $a_user, "id")); 
+	}
+
+	return $id;
 }
 ?>
 <?php include("fbegin.inc");?>
