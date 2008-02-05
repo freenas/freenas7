@@ -3,7 +3,7 @@
 /*
 	access_users.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -70,12 +70,6 @@ if ($_GET['act'] == "del") {
 		unset($a_user[$_GET['id']]);
 
 		write_config();
-
-		rc_exec_service("userdb");
-		if (isset($config['samba']['enable'])) {
-			rc_exec_service("smbpasswd");
-			rc_update_service("samba");
-		}
 
 		touch($d_userconfdirty_path);
 		header("Location: access_users.php");
