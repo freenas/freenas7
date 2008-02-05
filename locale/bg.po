@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2007-12-16 16:18+0000\n"
+"POT-Creation-Date: 2008-02-04 08:09+0000\n"
 "PO-Revision-Date: 2007-06-27 08:35+0000\n"
 "Last-Translator: Boris <protoblade@gmail.com>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2007-12-28 19:16+0000\n"
+"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #~ msgid "%b %d, %Y"
@@ -116,20 +116,11 @@ msgstr ""
 #~ msgid "CIFS"
 #~ msgstr "CIFS"
 
-#~ msgid "Users and Groups"
-#~ msgstr "Потребители и Групи"
-
-#~ msgid "Ping/Traceroute"
-#~ msgstr "Ping/Traceroute"
-
 #~ msgid "Reboot system"
 #~ msgstr "Рестартирай системата"
 
 #~ msgid "Shutdown system"
 #~ msgstr "Изключи системата"
-
-#~ msgid "Graph"
-#~ msgstr "Графика"
 
 #~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
 #~ msgstr "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
@@ -221,6 +212,30 @@ msgstr ""
 #~ msgid " interface"
 #~ msgstr " интерфейс"
 
+#~ msgid "UDMA mode"
+#~ msgstr "UDMA mode"
+
+#~ msgid ""
+#~ "Puts the hard disk into standby mode when the selected amount of time after "
+#~ "the last access has elapsed. <em>Do not set this for CF cards.</em>"
+#~ msgstr ""
+#~ "Puts the hard disk into standby mode when the selected amount of time after "
+#~ "the last access has elapsed. <em>Do not set this for CF cards.</em>"
+
+#~ msgid ""
+#~ "This allows  you  to lower the power consumption of the drive, at the "
+#~ "expense of performance.<br><em>Do not set this for CF cards.</em>"
+#~ msgstr ""
+#~ "This allows  you  to lower the power consumption of the drive, at the "
+#~ "expense of performance.<br><em>Do not set this for CF cards.</em>"
+
+#~ msgid ""
+#~ "This allows you to set how loud the drive is while it's operating.<br><em>Do "
+#~ "not set this for CF cards.</em>"
+#~ msgstr ""
+#~ "This allows you to set how loud the drive is while it's operating.<br><em>Do "
+#~ "not set this for CF cards.</em>"
+
 #~ msgid "Can't format the drive where FreeNAS configuration file is installed!"
 #~ msgstr ""
 #~ "Can't format the drive where FreeNAS configuration file is installed!"
@@ -240,6 +255,24 @@ msgstr ""
 
 #~ msgid "Target IP address"
 #~ msgstr "Target IP address"
+
+#~ msgid "Geom Mirror"
+#~ msgstr "Geom Mirror"
+
+#~ msgid "Geom Stripe"
+#~ msgstr "Geom Stripe"
+
+#~ msgid "Geom Concat"
+#~ msgstr "Geom Concat"
+
+#~ msgid "Geom Raid5"
+#~ msgstr "Geom Raid5"
+
+#~ msgid "RAID"
+#~ msgstr "RAID"
+
+#~ msgid "ERR Could not save RAID configuration.\n"
+#~ msgstr "ERR Could not save RAID configuration.\n"
 
 #~ msgid "Disk format UFS output:"
 #~ msgstr "Disk format UFS output:"
@@ -273,8 +306,16 @@ msgstr ""
 #~ "you select option 2 during installation on hard drive.<br>Select old "
 #~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
 
+#, php-format
+#~ msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
+#~ msgstr "You can't unmount a drive used by swap file or iSCSI-target file!"
+
 #~ msgid "CIFS share"
 #~ msgstr "CIFS share"
+
+#~ msgid "You must select at minium anonymous or/and local user authentication."
+#~ msgstr ""
+#~ "You must select at minium anonymous or/and local user authentication."
 
 #~ msgid ""
 #~ "Use this option to override the IP address that FTP daemon will advertise in "
@@ -310,18 +351,42 @@ msgstr ""
 #~ msgid "No content directory to be shared."
 #~ msgstr "No content directory to be shared."
 
+#~ msgid "You must create a group first."
+#~ msgstr "Трябва да създадете първо група."
+
 #~ msgid "Confirm Password"
 #~ msgstr "Потвърди паролата"
 
 #~ msgid "Confirm the password."
 #~ msgstr "Потвърди паролата."
 
+#~ msgid "Full Shell"
+#~ msgstr "Пълен достъп"
+
+#~ msgid "Give full shell to user"
+#~ msgstr "Дай пълен достъп на потребителя"
+
+#~ msgid "Administrator"
+#~ msgstr "Администратор"
+
+#~ msgid "Put user in the administrator group"
+#~ msgstr "Добави потребителя в административната група"
+
 #~ msgid ""
 #~ "The group list has been changed.<br>You must apply the changes in order for "
 #~ "them to take effect."
 #~ msgstr ""
 #~ "The group list has been changed.<br>You must apply the changes in order for "
 #~ "them to take effect."
+
+#~ msgid "The Group name contains invalid characters."
+#~ msgstr "Името на групата съдържа невалидни символи."
+
+#~ msgid "The Group desc contains invalid characters."
+#~ msgstr "Описанието на групата съдържа невалидни символи."
+
+#~ msgid "ATAidle"
+#~ msgstr "ATAidle"
 
 #~ msgid ""
 #~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
@@ -337,6 +402,23 @@ msgstr ""
 #~ "System configuration before doing a Firmware upgrade."
 
 #~ msgid ""
+#~ "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
+#~ "hard drive."
+#~ msgstr ""
+#~ "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
+#~ "hard drive."
+
+#, php-format
+#~ msgid ""
+#~ "This allows you to set FS type for preformated disk with data.<br><em>Leave "
+#~ "'unformated' for unformated disk and then use <a href=%s>format "
+#~ "menu</a>.</em>"
+#~ msgstr ""
+#~ "This allows you to set FS type for preformated disk with data.<br><em>Leave "
+#~ "'unformated' for unformated disk and then use <a href=%s>format "
+#~ "menu</a>.</em>"
+
+#~ msgid ""
 #~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
 #~ "href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
 #~ "before format and mount it!"
@@ -344,6 +426,17 @@ msgstr ""
 #~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
 #~ "href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
 #~ "before format and mount it!"
+
+#, php-format
+#~ msgid ""
+#~ "Second configuration step: Declaring the filesystem used by your <a "
+#~ "href=%s>previously configured disk.</a>"
+#~ msgstr ""
+#~ "Second configuration step: Declaring the filesystem used by your <a "
+#~ "href=%s>previously configured disk.</a>"
+
+#~ msgid "List of Advanced ATA capabilities on all ATA disk"
+#~ msgstr "List of Advanced ATA capabilities on all ATA disk"
 
 #~ msgid "Show the list of available target Name on the iSCSI target"
 #~ msgstr "Show the list of available target Name on the iSCSI target"
@@ -427,6 +520,15 @@ msgstr ""
 
 #~ msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
 #~ msgstr "You must have a minimum of 256MB of RAM for using iSCSI-target."
+
+#~ msgid "Password confirmation"
+#~ msgstr "Потвърждение с парола"
+
+#~ msgid "Remote share (source)"
+#~ msgstr "Отдалечен дял (source)"
+
+#~ msgid "Remote source share name"
+#~ msgstr "Remote source share name"
 
 #~ msgid "Mount to use"
 #~ msgstr "Mount to use"
@@ -520,6 +622,10 @@ msgstr "%s интерфейс (SSID '%s')"
 
 #, php-format
 msgid "%s of %sB"
+msgstr ""
+
+#, php-format
+msgid "%s uses %s to create %s arrays."
 msgstr ""
 
 #, php-format
@@ -627,19 +733,19 @@ msgstr ""
 "Copy text   \t\n"
 "AFP сърър"
 
+msgid "ARP Table"
+msgstr ""
+
 msgid "ARP table"
 msgstr "ARP таблица"
-
-msgid "ATAidle"
-msgstr "ATAidle"
 
 msgid "Access"
 msgstr "Достъп"
 
-msgid "Access Mode"
+msgid "Access mode"
 msgstr ""
 
-msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
+msgid "Accessible through 'http://ip_address:port'."
 msgstr ""
 
 msgid "Accessiblity test to MS domain"
@@ -696,6 +802,9 @@ msgstr "добави интерфейс"
 msgid "Add job"
 msgstr ""
 
+msgid "Add module"
+msgstr ""
+
 msgid "Add network"
 msgstr ""
 
@@ -711,20 +820,23 @@ msgstr "Добави цел"
 msgid "Add user"
 msgstr "Добавяне на потребител"
 
+msgid "Additional group"
+msgstr ""
+
 msgid "Address"
 msgstr ""
 
 msgid "Administration password"
 msgstr "Парола на администратора"
 
-msgid "Administrator"
-msgstr "Администратор"
-
 msgid "Administrator name"
 msgstr "Имв на администратора"
 
 msgid "Advanced"
 msgstr "Разширен"
+
+msgid "Advanced Options"
+msgstr ""
 
 msgid "Advanced Power Management"
 msgstr "Управление на захранването"
@@ -756,14 +868,11 @@ msgid ""
 "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr ""
 
+msgid "Alias host name."
+msgstr ""
+
 msgid "All"
 msgstr "Всички"
-
-msgid ""
-"All mounted volumes are automatically shared and restricted to only allow "
-"administrators to connect. The volumes will not show up in the list of "
-"shares."
-msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -774,6 +883,9 @@ msgid "All users will have the root privilege."
 msgstr "всички потребители ще имат администраторски права,"
 
 msgid "Allow"
+msgstr ""
+
+msgid "Allow client access to accounts that have null passwords."
 msgstr ""
 
 msgid ""
@@ -809,11 +921,16 @@ msgstr "Alternate TCP port. Default is 873"
 msgid "Always on"
 msgstr "винаги включен"
 
+msgid ""
+"Always use 0 for device number, helps when the device number is not constant "
+"across a reboot, cluster, ..."
+msgstr ""
+
 msgid "An host with this name already exists."
 msgstr "An host with this name already exists."
 
-msgid "Anonymous login"
-msgstr "анонимен вход"
+msgid "Anonymous users only"
+msgstr ""
 
 msgid "Apply changes"
 msgstr "Прилагане на промените"
@@ -951,6 +1068,12 @@ msgstr "Клиент"
 msgid "Client Identifier"
 msgstr "идентификатор на клиента"
 
+msgid "Client sees lowercase, server sees uppercase"
+msgstr ""
+
+msgid "Client sees uppercase, server sees lowercase"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Collecting initial data, please wait..."
 
@@ -1007,9 +1130,6 @@ msgstr ""
 msgid "Content"
 msgstr "Съдържание"
 
-msgid "Control web page"
-msgstr ""
-
 msgid "Count"
 msgstr "Броене"
 
@@ -1019,6 +1139,9 @@ msgstr "Бройката тряба да е мождъ 1 и %d"
 
 msgid "Create"
 msgstr "Създай"
+
+msgid "Create and initialize RAID."
+msgstr ""
 
 msgid "Create encrypted volume"
 msgstr ""
@@ -1035,11 +1158,11 @@ msgstr ""
 msgid "Cron job"
 msgstr ""
 
+msgid "DDP"
+msgstr ""
+
 msgid "DHCP"
 msgstr "DHCP"
-
-msgid "DLNA"
-msgstr ""
 
 msgid "DN to bind"
 msgstr "DN to bind"
@@ -1064,6 +1187,9 @@ msgstr ""
 
 msgid "Data integrity"
 msgstr "Data integrity"
+
+msgid "Database directory"
+msgstr ""
 
 msgid "Date"
 msgstr "дата"
@@ -1122,6 +1248,9 @@ msgid "Delete interface"
 msgstr "изтрий интерфейса"
 
 msgid "Delete job"
+msgstr ""
+
+msgid "Delete module"
 msgstr ""
 
 msgid "Delete network"
@@ -1219,6 +1348,12 @@ msgstr ""
 msgid "Directory to be shared."
 msgstr "папка която да бъде споделена"
 
+msgid "Disable"
+msgstr ""
+
+msgid "Disable AFP-over-Appletalk to prevent DDP connections."
+msgstr ""
+
 msgid "Disable console menu"
 msgstr "Забрани конзолното меню"
 
@@ -1234,6 +1369,11 @@ msgstr "забрани Системния звънец при пускане и 
 msgid "Disabled"
 msgstr "Забрани"
 
+msgid ""
+"Disables :hex translations for anything except dot files. This option makes "
+"the '/' character illegal."
+msgstr ""
+
 msgid "Disk"
 msgstr "Диск"
 
@@ -1246,7 +1386,10 @@ msgstr "Заето място на диска"
 msgid "Disks"
 msgstr "Дискове"
 
-msgid "Do not create .AppleDouble directory"
+msgid "Disks (ATA)"
+msgstr ""
+
+msgid "Do not set this for CF cards."
 msgstr ""
 
 msgid "Do you really want to delete this RSYNC?"
@@ -1288,6 +1431,9 @@ msgstr "Do you really want to delete this host?"
 msgid ""
 "Do you really want to delete this initiator? All elements that still use it "
 "will become invalid (e.g. share)!"
+msgstr ""
+
+msgid "Do you really want to delete this module?"
 msgstr ""
 
 msgid ""
@@ -1342,8 +1488,16 @@ msgstr "Domain name in old format."
 msgid "Don't Erase MBR"
 msgstr "не изтривай MBR"
 
+msgid "Don't advertise createfileid, resolveid, deleteid calls."
+msgstr ""
+
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr "не изтривай MBR (полезно за някой RAID контролери)"
+
+msgid ""
+"Don't stat volume path when enumerating volumes list, useful for "
+"automounting or volumes created by a preexec script."
+msgstr ""
 
 msgid "Done."
 msgstr ""
@@ -1368,9 +1522,6 @@ msgstr ""
 
 msgid "EFI/GPT partition can be use with UFS only."
 msgstr ""
-
-msgid "ERR Could not save RAID configuration.\n"
-msgstr "ERR Could not save RAID configuration.\n"
 
 msgid "Edit"
 msgstr "Редакция"
@@ -1414,6 +1565,9 @@ msgstr ""
 msgid "Edit job"
 msgstr ""
 
+msgid "Edit module"
+msgstr ""
+
 msgid "Edit network"
 msgstr ""
 
@@ -1429,6 +1583,9 @@ msgstr ""
 msgid "Edit user"
 msgstr "Помени потребителя"
 
+msgid "Email Report"
+msgstr ""
+
 msgid "Email report"
 msgstr ""
 
@@ -1441,19 +1598,10 @@ msgstr "позволи FXP протолола"
 msgid "Enable NTP"
 msgstr ""
 
-msgid "Enable Windows filename restrictions"
-msgstr ""
-
 msgid "Enable Zeroconf"
 msgstr "Позволи Zeroconf"
 
-msgid "Enable anonymous login."
-msgstr "позволи анонимен вход"
-
 msgid "Enable compression."
-msgstr ""
-
-msgid "Enable control web page."
 msgstr ""
 
 msgid "Enable device polling"
@@ -1464,6 +1612,11 @@ msgstr ""
 
 msgid "Enable firmware upload"
 msgstr "Позволи качването на firmware"
+
+msgid ""
+"Enable foreground/background file system consistency check during boot "
+"process."
+msgstr ""
 
 msgid "Enable guest access."
 msgstr "позволи вход за гости"
@@ -1477,8 +1630,8 @@ msgstr "Enable large read/write"
 msgid "Enable local user authentication."
 msgstr "позволи идентификация за локални потребители"
 
-msgid "Enable local user login."
-msgstr "позволи вход за локален потребител"
+msgid "Enable module listing."
+msgstr ""
 
 msgid "Enable permission inheritance"
 msgstr ""
@@ -1508,8 +1661,19 @@ msgstr ""
 msgid "Enable tuning of some kernel variables"
 msgstr "Enable tuning of some kernel variables"
 
+msgid "Enable web user interface."
+msgstr ""
+
 msgid "Enabled"
 msgstr "Позволи"
+
+msgid ""
+"Enables crlf translation for TEXT files, automatically converting macintosh "
+"line breaks into Unix ones. Use of this option might be dangerous since some "
+"older programs store binary data files as type 'TEXT' when saving and switch "
+"the filetype in a second step. Afpd will potentially destroy such files when "
+"'erroneously' changing bytes in order to do line break translation."
+msgstr ""
 
 msgid "Encrypted disk name"
 msgstr "Криприрано име на диска"
@@ -1523,6 +1687,9 @@ msgstr "Криптиране"
 
 msgid "Encryption algorithm"
 msgstr "алгоритъм за криптиране"
+
+msgid "Enforce TLS"
+msgstr ""
 
 msgid ""
 "Enter a custom port number for the HTTP server if you want to override the "
@@ -1631,6 +1798,9 @@ msgstr ""
 "FXP allows transfers between two remote servers without any file data going "
 "to the client asking for the transfer (insecure!)."
 
+msgid "Factory Defaults"
+msgstr ""
+
 msgid "Factory defaults"
 msgstr "Фабрични настройки"
 
@@ -1667,6 +1837,9 @@ msgstr "Размер на файла"
 msgid "File system"
 msgstr "Файлова система"
 
+msgid "File system check"
+msgstr ""
+
 msgid "Filename"
 msgstr ""
 
@@ -1681,9 +1854,6 @@ msgstr "Firmware uploading is not supported on this platform."
 
 msgid "Firmware version check"
 msgstr "проверка на версията на фирмуера"
-
-msgid "First configuration step: Add your harddrive to the disk list."
-msgstr ""
 
 msgid "Flags"
 msgstr ""
@@ -1726,9 +1896,6 @@ msgstr ""
 msgid "Full Name"
 msgstr "Пълно име"
 
-msgid "Full Shell"
-msgstr "Пълен достъп"
-
 msgid "Gateway"
 msgstr "Шлюз"
 
@@ -1741,26 +1908,17 @@ msgstr ""
 msgid "General Setup"
 msgstr ""
 
-msgid "Geom Concat"
-msgstr "Geom Concat"
-
-msgid "Geom Mirror"
-msgstr "Geom Mirror"
-
-msgid "Geom Raid5"
-msgstr "Geom Raid5"
-
-msgid "Geom Stripe"
-msgstr "Geom Stripe"
-
 msgid "Geom Vinum"
 msgstr "Geom Vinum"
 
-msgid "Give full shell to user"
-msgstr "Дай пълен достъп на потребителя"
+msgid "Give full shell access to user."
+msgstr ""
 
 msgid "Global Configuration"
 msgstr ""
+
+msgid "Graph"
+msgstr "Графика"
 
 msgid "Graph shows last"
 msgstr "Graph shows last"
@@ -1770,6 +1928,9 @@ msgstr "Greeting banner displayed by FTP when a connection first comes in."
 
 msgid "Group"
 msgstr "Група"
+
+msgid "Group ID"
+msgstr ""
 
 msgid "Group description."
 msgstr "Описание на групата."
@@ -1786,11 +1947,17 @@ msgstr "Групи"
 msgid "Guest"
 msgstr ""
 
+msgid "Guest account"
+msgstr ""
+
 msgid "HTTP Proxy"
 msgstr ""
 
 msgid "Hard disk standby time"
 msgstr "време за стендбай режим на харддиска"
+
+msgid "Helios X3000"
+msgstr ""
 
 msgid "Help Needed!"
 msgstr ""
@@ -1916,6 +2083,12 @@ msgid "If Login is required."
 msgstr ""
 
 msgid ""
+"If set afpd uses the ID information stored in AppleDouble V2 header files to "
+"reduce database load. Don't set this option if the volume is modified by non "
+"AFP clients (NFS/SMB/local)."
+msgstr ""
+
+msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
 "to perform selected command, otherwise the commands work in read-only "
 "mode.<br>Service disruption to users accessing this mount will occur during "
@@ -1962,6 +2135,9 @@ msgstr "Входен"
 msgid "In most cases, 'public' is used here."
 msgstr ""
 
+msgid "Info"
+msgstr ""
+
 msgid "Information"
 msgstr "Информация"
 
@@ -1993,6 +2169,15 @@ msgstr "Interface to listen to."
 
 msgid "Interfaces"
 msgstr "Интерфейси"
+
+#, php-format
+msgid "Invalid port! Port number must be in the range from %d to %d."
+msgstr ""
+
+msgid ""
+"It is impossible to enable 'Anonymous users only' and 'Local users only' "
+"authentication simultaneously."
+msgstr ""
 
 msgid "JBOD"
 msgstr "JBOD"
@@ -2050,14 +2235,23 @@ msgstr "последни %d %s позиции в дневника"
 msgid "Last config change"
 msgstr "Последна конфигурационна промяна"
 
+#, php-format
+msgid ""
+"Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
+"menu."
+msgstr ""
+
 msgid "License"
 msgstr "Лицензно споразумение"
 
-msgid "List of Advanced ATA capabilities on all ATA disk"
-msgstr "List of Advanced ATA capabilities on all ATA disk"
+msgid "List"
+msgstr ""
 
 msgid "List of SMART capabilities on all detected disk"
 msgstr "List of SMART capabilities on all detected disk"
+
+msgid "List of advanced ATA capabilities on all ATA disk"
+msgstr ""
 
 msgid "List of detected ATA disks"
 msgstr "Лист на АТА дисковете"
@@ -2083,9 +2277,6 @@ msgstr "Локален"
 msgid "Local Master Browser"
 msgstr "Local Master Browser"
 
-msgid "Local User"
-msgstr "локален потребител"
-
 msgid "Local share"
 msgstr ""
 
@@ -2093,6 +2284,9 @@ msgid "Local share (destination)"
 msgstr "Локален дял (дестинация)"
 
 msgid "Local shares to be synchronized"
+msgstr ""
+
+msgid "Local users only"
 msgstr ""
 
 msgid "Location"
@@ -2103,6 +2297,11 @@ msgid ""
 "building, Room xyz'."
 msgstr ""
 
+msgid ""
+"Location where the content database file will be stored. The bookmark file "
+"will also be generated in that directory."
+msgstr ""
+
 msgid "Log Level"
 msgstr "ниво на логване"
 
@@ -2111,6 +2310,9 @@ msgstr "Вписване"
 
 msgid "Logs"
 msgstr "Логове"
+
+msgid "Lowercases names in both directions"
+msgstr ""
 
 msgid "MAC address"
 msgstr "MAC адрес"
@@ -2141,9 +2343,6 @@ msgstr "Map to user"
 
 msgid "Max. conn. per IP"
 msgstr "максимум конекции към IP"
-
-msgid "Maximum Connections"
-msgstr ""
 
 msgid "Maximum connections"
 msgstr "максимален брой връзки"
@@ -2214,6 +2413,9 @@ msgstr ""
 
 msgid "Miscellaneous"
 msgstr "Други настройки"
+
+msgid "Module"
+msgstr ""
 
 msgid "Modules"
 msgstr ""
@@ -2313,11 +2515,11 @@ msgstr ""
 msgid "No"
 msgstr "Не"
 
-msgid "No AppleDouble Directory"
-msgstr ""
-
 msgid "No RSYNC Client configured"
 msgstr "No RSYNC Client configured"
+
+msgid "No case folding"
+msgstr ""
 
 msgid "No disk configured"
 msgstr "Няма конфигуриран диск"
@@ -2345,7 +2547,19 @@ msgstr ""
 "Note: Ctrl-click (or command-click on the Mac) to select and de-select "
 "minutes, hours, days and months."
 
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
+msgstr ""
+
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+"minutes, hours, days and months."
+msgstr ""
+
 msgid "Now"
+msgstr ""
+
+msgid "Null passwords"
 msgstr ""
 
 msgid "Number of clients"
@@ -2373,6 +2587,21 @@ msgid "Old passphrase"
 msgstr ""
 
 msgid "Old password"
+msgstr ""
+
+msgid ""
+"Only allow anonymous users. Use this on a public FTP site with no remote FTP "
+"access to real accounts."
+msgstr ""
+
+msgid "Only allow authenticated users. Anonymous logins are prohibited."
+msgstr ""
+
+msgid ""
+"Only ports in the range min. port to max. port inclusive are used for "
+"passive-mode downloads. This is especially useful if the server is behind a "
+"firewall without FTP connection tracking. Use high ports (40000-50000 for "
+"instance), where no regular server should be listening."
 msgstr ""
 
 #, php-format
@@ -2435,6 +2664,9 @@ msgstr "Дялове"
 msgid "Passive IP address"
 msgstr "пасивен IP адрес"
 
+msgid "Passive mode ports"
+msgstr ""
+
 msgid "Passphrase"
 msgstr "Парола"
 
@@ -2449,9 +2681,6 @@ msgstr ""
 
 msgid "Password authentication"
 msgstr ""
-
-msgid "Password confirmation"
-msgstr "Потвърждение с парола"
 
 msgid "Password don't match."
 msgstr "паролата не съвпада."
@@ -2477,6 +2706,9 @@ msgstr "Paste a signed certificate in X.509 PEM format here."
 msgid "Paste an RSA private key in PEM format here."
 msgstr "Paste an RSA private key in PEM format here."
 
+msgid "Paste an private key in PEM format here."
+msgstr ""
+
 msgid "Path"
 msgstr ""
 
@@ -2500,6 +2732,9 @@ msgstr "Ping output"
 
 msgid "Ping winbindd to see if it is alive:"
 msgstr ""
+
+msgid "Ping/Traceroute"
+msgstr "Ping/Traceroute"
 
 msgid "Platform"
 msgstr "Платформа"
@@ -2525,14 +2760,26 @@ msgstr ""
 msgid "Prefix"
 msgstr ""
 
-msgid "Preformatted FS"
-msgstr "Преформатирана Файлова система"
+msgid "Preformatted file system"
+msgstr ""
 
 msgid "Primary Group"
 msgstr ""
 
+msgid "Primary group"
+msgstr ""
+
+msgid "Primary group is also selected in additional group."
+msgstr ""
+
 msgid "Private Key"
 msgstr "частен ключ"
+
+msgid "Private key"
+msgstr ""
+
+msgid "Process"
+msgstr "Процес"
 
 msgid "Processes"
 msgstr "Процеси"
@@ -2546,24 +2793,19 @@ msgstr ""
 msgid "Provider"
 msgstr ""
 
+msgid "Provides compatibility with Apple II clients."
+msgstr ""
+
 msgid "Proxy"
 msgstr ""
 
-msgid "Put user in the administrator group"
-msgstr "Добави потребителя в административната група"
-
 msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
-"the last access has elapsed. <em>Do not set this for CF cards.</em>"
+"the last hard disk access has been elapsed."
 msgstr ""
-"Puts the hard disk into standby mode when the selected amount of time after "
-"the last access has elapsed. <em>Do not set this for CF cards.</em>"
 
 msgid "Quality"
 msgstr "Качество"
-
-msgid "RAID"
-msgstr "RAID"
 
 msgid "RAID 0"
 msgstr ""
@@ -2578,6 +2820,15 @@ msgid "RAID 1 (mirroring)"
 msgstr ""
 
 msgid "RAID 5"
+msgstr ""
+
+msgid "RAID0"
+msgstr ""
+
+msgid "RAID1"
+msgstr ""
+
+msgid "RAID5"
 msgstr ""
 
 msgid "RSYNC"
@@ -2631,14 +2882,11 @@ msgstr "отданечен RSYNC сървър"
 msgid "Remote address"
 msgstr "Отдалечен адрес"
 
-msgid "Remote share (source)"
-msgstr "Отдалечен дял (source)"
-
-msgid "Remote share name"
+msgid "Remote module (source)"
 msgstr ""
 
-msgid "Remote source share name"
-msgstr "Remote source share name"
+msgid "Remote module name"
+msgstr ""
 
 msgid "Remote syslog server"
 msgstr "отдалечен системен дневник"
@@ -2706,6 +2954,9 @@ msgstr ""
 msgid "SSID"
 msgstr "SSID"
 
+msgid "SSL/TLS"
+msgstr ""
+
 msgid "Save"
 msgstr "Запази"
 
@@ -2727,13 +2978,8 @@ msgstr ""
 msgid "Scheduled shutdown"
 msgstr "Предвидено изключване"
 
-#, php-format
-msgid ""
-"Second configuration step: Declaring the filesystem used by your <a "
-"href=%s>previously configured disk.</a>"
+msgid "Security"
 msgstr ""
-"Second configuration step: Declaring the filesystem used by your <a "
-"href=%s>previously configured disk.</a>"
 
 msgid ""
 "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
@@ -2792,13 +3038,16 @@ msgstr ""
 msgid "Services"
 msgstr "Услуги"
 
+msgid "Set additional group memberships for this account."
+msgstr ""
+
 msgid "Set browseable"
 msgstr ""
 
-msgid "Set browseable."
+msgid "Set share password."
 msgstr ""
 
-msgid "Set share password."
+msgid "Set the account's primary group to the given group."
 msgstr ""
 
 msgid "Settings"
@@ -2821,6 +3070,9 @@ msgstr ""
 
 msgid "Shares"
 msgstr "споделени папки"
+
+msgid "Shell access"
+msgstr ""
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr "Show log entries in reverse order (newest entries on top)"
@@ -2856,11 +3108,20 @@ msgstr "Size of receive buffer (16384 by default)."
 msgid "Size of send buffer (16384 by default)."
 msgstr "Size of send buffer (16384 by default)."
 
+msgid "Sockets"
+msgstr ""
+
 msgid "Software RAID"
 msgstr "Софтуерен RAID"
 
 msgid "Software RAID information and status"
 msgstr "Информация и статус на RAID"
+
+msgid "Sony Playstation 3"
+msgstr ""
+
+msgid "Source directory to be synchronized."
+msgstr ""
 
 msgid "Source share"
 msgstr "Source share"
@@ -2905,6 +3166,9 @@ msgstr "стандартния MTU е 1500 , използвайте 9000 за ju
 
 msgid "Standby time"
 msgstr "Standby time"
+
+msgid "Static Routes"
+msgstr ""
 
 msgid "Static routes"
 msgstr "Статични пътища"
@@ -3006,6 +3270,9 @@ msgstr ""
 msgid "TCP port"
 msgstr "ТCP порт"
 
+msgid "TLS + cleartext"
+msgstr ""
+
 msgid "TX rates"
 msgstr "TX rates"
 
@@ -3018,8 +3285,14 @@ msgstr ""
 msgid "Target address"
 msgstr "Target address"
 
+msgid "Target directory."
+msgstr ""
+
 msgid "Target name"
 msgstr "Target name"
+
+msgid "Telegent TG100"
+msgstr ""
 
 msgid "Temperature"
 msgstr "Температура"
@@ -3032,12 +3305,6 @@ msgstr ""
 #, php-format
 msgid "The %s port must be a valid port number."
 msgstr "The %s port must be a valid port number."
-
-msgid "The Group desc contains invalid characters."
-msgstr "Описанието на групата съдържа невалидни символи."
-
-msgid "The Group name contains invalid characters."
-msgstr "Името на групата съдържа невалидни символи."
 
 msgid "The IP address that this hostname represents."
 msgstr "The IP address that this hostname represents."
@@ -3242,6 +3509,12 @@ msgstr "The following input errors were detected"
 msgid "The full name contains invalid characters."
 msgstr "Пълното име съдържа невалидни символи."
 
+msgid "The group description contains invalid characters."
+msgstr ""
+
+msgid "The group name contains invalid characters."
+msgstr ""
+
 msgid ""
 "The host list has been changed.<br>You must apply the changes in order for "
 "them to take effect."
@@ -3302,6 +3575,11 @@ msgid ""
 msgstr ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
 "port)."
+
+msgid ""
+"The modules has been modified.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
 
 msgid ""
 "The mount point list has been changed.<br>You must apply the changes in "
@@ -3425,28 +3703,20 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This allows  you  to lower the power consumption of the drive, at the "
-"expense of performance.<br><em>Do not set this for CF cards.</em>"
+"This allows you to lower the power consumption of the drive, at the expense "
+"of performance."
 msgstr ""
-"This allows  you  to lower the power consumption of the drive, at the "
-"expense of performance.<br><em>Do not set this for CF cards.</em>"
 
-#, php-format
-msgid ""
-"This allows you to set FS type for preformated disk with data.<br><em>Leave "
-"'unformated' for unformated disk and then use <a href=%s>format "
-"menu</a>.</em>"
+msgid "This allows you to set how loud the drive is while it's operating."
 msgstr ""
-"This allows you to set FS type for preformated disk with data.<br><em>Leave "
-"'unformated' for unformated disk and then use <a href=%s>format "
-"menu</a>.</em>"
 
 msgid ""
-"This allows you to set how loud the drive is while it's operating.<br><em>Do "
-"not set this for CF cards.</em>"
+"This allows you to set the file system for preformatted hard disks "
+"containing data."
 msgstr ""
-"This allows you to set how loud the drive is while it's operating.<br><em>Do "
-"not set this for CF cards.</em>"
+
+msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
+msgstr ""
 
 msgid "This certificate does not appear to be valid."
 msgstr "This certificate does not appear to be valid."
@@ -3454,7 +3724,7 @@ msgstr "This certificate does not appear to be valid."
 msgid "This controls how the case of filenames are viewed and stored."
 msgstr ""
 
-msgid "This controls the access a remote host has to this share."
+msgid "This controls the access a remote host has to this module."
 msgstr ""
 
 msgid "This controls the access to this share with an access password."
@@ -3489,8 +3759,7 @@ msgstr ""
 
 msgid ""
 "This forces filenames to be restricted to the character set used by Windows. "
-"This is <em>not</em> recommended for shares used principally by Mac "
-"computers."
+"This is not recommended for shares used principally by Mac computers."
 msgstr ""
 
 msgid "This group already exists in the group list."
@@ -3533,18 +3802,53 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This parameter is a comma, space, or tab delimited set of host which are NOT "
+"This option determines if this module should be listed when the client asks "
+"for a listing of available modules. By setting this to false you can create "
+"hidden modules."
+msgstr ""
+
+msgid ""
+"This option is a comma, space, or tab delimited set of host which are NOT "
+"permitted to access this module. Where the lists conflict, the allow list "
+"takes precedence. In the event that it is necessary to deny all by default, "
+"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
+"to the hosts allow parameter those hosts that should be permitted access. "
+"Leave this field empty to use default settings."
+msgstr ""
+
+msgid ""
+"This option is a comma, space, or tab delimited set of host which are NOT "
 "permitted to access this share. Where the lists conflict, the allow list "
 "takes precedence. In the event that it is necessary to deny all by default, "
 "use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
 "to the hosts allow parameter those hosts that should be permitted access. "
-"Leave this field empty to disable this setting."
+"Leave this field empty to use default settings."
 msgstr ""
 
 msgid ""
-"This parameter is a comma, space, or tab delimited set of hosts which are "
-"permitted to access this share. Use the keyword ALL to permit access for "
-"everyone. Leave this field empty to disable this setting."
+"This option is a comma, space, or tab delimited set of hosts which are "
+"permitted to access this module. You can specify the hosts by name or IP "
+"number. Leave this field empty to use default settings."
+msgstr ""
+
+msgid ""
+"This option is a comma, space, or tab delimited set of hosts which are "
+"permitted to access this share. You can specify the hosts by name or IP "
+"number. Leave this field empty to use default settings."
+msgstr ""
+
+msgid ""
+"This option specifies the group name or group ID that file transfers to and "
+"from that module should take place. Leave this field empty to use default "
+"settings."
+msgstr ""
+
+#, php-format
+msgid ""
+"This option specifies the user name or user ID that file transfers to and "
+"from that module should take place. In combination with the '%s' option this "
+"determines what file permissions are available. Leave this field empty to "
+"use default settings."
 msgstr ""
 
 msgid "This parameters will be added to [global] in smb.conf."
@@ -3576,6 +3880,11 @@ msgstr ""
 msgid "This will create a recycle bin on the share."
 msgstr ""
 
+msgid ""
+"This will erase ALL data on the selected disks! Do not use this option if "
+"you want to add an already existing RAID again."
+msgstr ""
+
 msgid "Time server"
 msgstr "Time server"
 
@@ -3604,9 +3913,6 @@ msgstr ""
 msgid "Tools"
 msgstr "Инструменти"
 
-msgid "Total number of connections allowed to this share."
-msgstr ""
-
 msgid "Traceroute"
 msgstr ""
 
@@ -3622,6 +3928,9 @@ msgstr "Traceroute output"
 
 msgid "Traffic graph"
 msgstr "Графика на трафика"
+
+msgid "Transfer mode"
+msgstr ""
 
 msgid "Trap host"
 msgstr ""
@@ -3643,9 +3952,6 @@ msgstr "Настройки"
 
 msgid "Type"
 msgstr "Тип:"
-
-msgid "UDMA mode"
-msgstr "UDMA mode"
 
 #, php-format
 msgid ""
@@ -3710,10 +4016,19 @@ msgstr ""
 msgid "Upgrade firmware"
 msgstr "Поднови firmware-а"
 
+msgid "Uppercases names in both directions"
+msgstr ""
+
 msgid "Uptime"
 msgstr "Време на непрекъсната работа"
 
+msgid "Use AFP3 unix privileges."
+msgstr ""
+
 msgid "Use SMTP authentication."
+msgstr ""
+
+msgid "Use SSL/TLS encryption layer."
 msgstr ""
 
 msgid ""
@@ -3745,8 +4060,19 @@ msgstr ""
 msgid "Use this option to override the file creation mask (077 by default)."
 msgstr ""
 
+msgid ""
+"Use this option to override the username ('ftp' by default) which will be "
+"used for access to services which are specified as guest. Whatever "
+"privileges this user has will be available to any client connecting to the "
+"guest service. This user must exist in the password file, but does not "
+"require a valid login."
+msgstr ""
+
 msgid "User"
 msgstr "потребител"
+
+msgid "User ID"
+msgstr ""
 
 msgid "User full name."
 msgstr "Пълно име."
@@ -3766,11 +4092,17 @@ msgstr "Потребителско име за администраторски�
 msgid "Users"
 msgstr "Потребители"
 
+msgid "Users and Groups"
+msgstr "Потребители и Групи"
+
 msgid "VLAN tag"
 msgstr "VLAN tag"
 
 msgid "Version"
 msgstr "Версия"
+
+msgid "View license"
+msgstr ""
 
 msgid "Volume Name"
 msgstr "Име на диск"
@@ -3797,6 +4129,9 @@ msgstr "Внимания"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "Warning: This can cause a huge delay in loading the %s log page!"
 
+msgid "Web user interface"
+msgstr ""
+
 msgid "WebGUI port"
 msgstr "WebGUI порт"
 
@@ -3807,9 +4142,6 @@ msgid "Where the working files will be stored"
 msgstr "Where the working files will be stored"
 
 msgid "Who"
-msgstr ""
-
-msgid "Windows Filename Restrictions"
 msgstr ""
 
 msgid "Wireless"
@@ -3827,9 +4159,6 @@ msgstr "Working Directory"
 msgid "Write only"
 msgstr ""
 
-msgid "XboX 360"
-msgstr ""
-
 msgid "Yes"
 msgstr "Да"
 
@@ -3838,22 +4167,16 @@ msgid ""
 "command.<br>Example: pkg_add -r packagename"
 msgstr ""
 
-msgid ""
-"You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
-"hard drive."
-msgstr ""
-"You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
-"hard drive."
-
 #, php-format
 msgid ""
 "You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr ""
 "You can't mount the partition '%s' where the config file is stored.<br>"
 
-#, php-format
-msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
-msgstr "You can't unmount a drive used by swap file or iSCSI-target file!"
+msgid ""
+"You can't unmount a drive which is used by swap file, a iSCSI-target file or "
+"any other running process!"
+msgstr ""
 
 msgid "You have to define some 'Extent' objects first."
 msgstr ""
@@ -3870,9 +4193,6 @@ msgstr "You may need enough space to duplicate all files being synced"
 msgid "You must add disks first."
 msgstr "трябва първо да добавите диск"
 
-msgid "You must create a group first."
-msgstr "Трябва да създадете първо група."
-
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
@@ -3884,10 +4204,6 @@ msgstr "трябва да рестартирате системата преди
 
 msgid "You must select at least one authentication method."
 msgstr "You must select at least one authentication method."
-
-msgid "You must select at minium anonymous or/and local user authentication."
-msgstr ""
-"You must select at minium anonymous or/and local user authentication."
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "Трябва да използвате секретна фраза за да закачите криптиран диск."
@@ -3902,16 +4218,25 @@ msgstr ""
 msgid "Zeroconf"
 msgstr "Zeroconf"
 
+msgid "ZyXEL DMA-1000"
+msgstr ""
+
 msgid "add mount"
 msgstr "добави точка за монтиране"
 
 msgid "built on"
 msgstr ""
 
+msgid "cachecnid"
+msgstr ""
+
 msgid "chroot everyone"
 msgstr ""
 
 msgid "chroot() everyone, but root."
+msgstr ""
+
+msgid "crlf"
 msgstr ""
 
 msgid "day"
@@ -3954,8 +4279,26 @@ msgstr "mirroring"
 msgid "months"
 msgstr "месеци"
 
+msgid "mswindows"
+msgstr ""
+
 msgid "n/a"
 msgstr "няма"
+
+msgid "noadouble"
+msgstr ""
+
+msgid "nodev"
+msgstr ""
+
+msgid "nofileid"
+msgstr ""
+
+msgid "nohex"
+msgstr ""
+
+msgid "nostat"
+msgstr ""
 
 msgid "password_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
@@ -3964,6 +4307,9 @@ msgid "pasv_max_port"
 msgstr ""
 
 msgid "pasv_min_port"
+msgstr ""
+
+msgid "prodos"
 msgstr ""
 
 msgid "rotated block-interleaved parity"
@@ -3977,6 +4323,9 @@ msgstr "Покажи информация за процесите"
 
 msgid "striping"
 msgstr "striping"
+
+msgid "upriv"
+msgstr ""
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""

@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2007-12-16 16:18+0000\n"
+"POT-Creation-Date: 2008-02-04 08:09+0000\n"
 "PO-Revision-Date: 2007-10-27 16:18+0000\n"
 "Last-Translator: Baikuan Hsu <chicworks@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2007-12-28 19:16+0000\n"
+"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: China\n"
 "X-Poedit-Language: Chinese\n"
@@ -177,26 +177,14 @@ msgstr ""
 #~ msgid "CIFS"
 #~ msgstr "CIFS"
 
-#~ msgid "Users and Groups"
-#~ msgstr "使用者/群组"
-
 #~ msgid "Radius"
 #~ msgstr "Radius"
-
-#~ msgid "Process"
-#~ msgstr "处理程序"
-
-#~ msgid "Ping/Traceroute"
-#~ msgstr "Ping/Traceroute"
 
 #~ msgid "Reboot system"
 #~ msgstr "重新开机"
 
 #~ msgid "Shutdown system"
 #~ msgstr "关机"
-
-#~ msgid "Graph"
-#~ msgstr "图表"
 
 #~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
 #~ msgstr "NAS的主机名称，不包含网域<br>例如: <em>nas</em>"
@@ -297,6 +285,27 @@ msgstr ""
 #~ msgid "First configuration step: Add your hardrive to the disk list."
 #~ msgstr "规划的第一步：新增你的硬碟到磁碟表中。"
 
+#~ msgid "UDMA mode"
+#~ msgstr "UDMA模式"
+
+#~ msgid ""
+#~ "Puts the hard disk into standby mode when the selected amount of time after "
+#~ "the last access has elapsed. <em>Do not set this for CF cards.</em>"
+#~ msgstr "设定在多久时间之后，如果沒有存取动作便将硬碟切換至待命模式。<em>CF卡请勿选用。</em>"
+
+#~ msgid ""
+#~ "This allows  you  to lower the power consumption of the drive, at the "
+#~ "expense of performance.<br><em>Do not set this for CF cards.</em>"
+#~ msgstr "用来控制磁碟的电源消耗，相反的会失去一些效能。<br><em>CF卡请勿选用。</em>"
+
+#~ msgid ""
+#~ "This allows you to set how loud the drive is while it's operating.<br><em>Do "
+#~ "not set this for CF cards.</em>"
+#~ msgstr "用来控制磁碟的运转噪音程度。<br><em>CF卡请勿选用。</em>"
+
+#~ msgid "Preformatted FS"
+#~ msgstr "已存在之档案系统"
+
 #~ msgid "Disk initialization details"
 #~ msgstr "磁碟初始化系统资讯"
 
@@ -331,6 +340,24 @@ msgstr ""
 #~ msgid "Format RAID"
 #~ msgstr "格式化RAID"
 
+#~ msgid "Geom Mirror"
+#~ msgstr "Geom Mirror"
+
+#~ msgid "Geom Stripe"
+#~ msgstr "Geom Stripe"
+
+#~ msgid "Geom Concat"
+#~ msgstr "Geom Concat"
+
+#~ msgid "Geom Raid5"
+#~ msgstr "Geom Raid5"
+
+#~ msgid "RAID"
+#~ msgstr "RAID"
+
+#~ msgid "ERR Could not save RAID configuration.\n"
+#~ msgstr "错误！不能储存 RAID 设定值。\n"
+
 #~ msgid "Disk format UFS output:"
 #~ msgstr "UFS格式化结果输出："
 
@@ -361,6 +388,10 @@ msgstr ""
 #~ "如果你想要掛载 GPT 格式的磁碟（0.684之后的预设格式化选项），请选择 EFI GPT。<br>如果是要掛载 UFS 或 Software "
 #~ "RAID 格式化的磁碟请选择 1。<br>如果是要掛载系统磁碟分隔为两区中的资料磁碟，请选择 2。<br>如果你要掛载 0.682 之前 FreeNAS "
 #~ "格式化之磁碟，请选择 old software gmirror/graid5/gvinum。"
+
+#, php-format
+#~ msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
+#~ msgstr "你不能卸载有 Swap 或 iSCSI 档案的目标"
 
 #~ msgid "The Netbios name contains invalid characters."
 #~ msgstr "Netbios名称输入了无效的字元。"
@@ -394,6 +425,21 @@ msgstr ""
 
 #~ msgid "The max con per ip must be a number."
 #~ msgstr "相同IP的连線数目必须是一个数字。"
+
+#~ msgid "You must select at minium anonymous or/and local user authentication."
+#~ msgstr "请至少选择 匿名/本地使用者 认证。"
+
+#~ msgid "Anonymous login"
+#~ msgstr "匿名登入"
+
+#~ msgid "Enable anonymous login."
+#~ msgstr "是否开啟匿名登入"
+
+#~ msgid "Local User"
+#~ msgstr "本机使用者"
+
+#~ msgid "Enable local user login."
+#~ msgstr "是否开啟本机使用者登入"
 
 #~ msgid ""
 #~ "Use this option to override the IP address that FTP daemon will advertise in "
@@ -439,6 +485,9 @@ msgstr ""
 #~ msgid "No content directory to be shared."
 #~ msgstr "No content directory to be shared."
 
+#~ msgid "You must create a group first."
+#~ msgstr "你必须先建立一个群组。"
+
 #~ msgid "Confirm Password"
 #~ msgstr "确认密码"
 
@@ -448,10 +497,28 @@ msgstr ""
 #~ msgid "Group Member"
 #~ msgstr "群组成员"
 
+#~ msgid "Full Shell"
+#~ msgstr "Shell权限"
+
+#~ msgid "Give full shell to user"
+#~ msgstr "让这个使用者可以使用shell。"
+
+#~ msgid "Put user in the administrator group"
+#~ msgstr "将使用者加入管理者群组"
+
 #~ msgid ""
 #~ "The group list has been changed.<br>You must apply the changes in order for "
 #~ "them to take effect."
 #~ msgstr "群组列表已经变更。<br>套用变更之后才会生效。"
+
+#~ msgid "The Group name contains invalid characters."
+#~ msgstr "群组名称內有无效的字元。"
+
+#~ msgid "The Group desc contains invalid characters."
+#~ msgstr "群组描述內有无效的字元。"
+
+#~ msgid "ATAidle"
+#~ msgstr "ATAidle"
 
 #~ msgid ""
 #~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
@@ -464,12 +531,35 @@ msgstr ""
 #~ "%dMB 的记忆体才能顺利执行此动作。<br>強烈的建议使用者，进行韧体升级之前请先<a href=%s>备份</a>系统设定组态。"
 
 #~ msgid ""
+#~ "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
+#~ "hard drive."
+#~ msgstr "如果显示「UDMA_ERROR.... LBA」的讯息，你可以手动选取UDMA的模式。"
+
+#, php-format
+#~ msgid ""
+#~ "This allows you to set FS type for preformated disk with data.<br><em>Leave "
+#~ "'unformated' for unformated disk and then use <a href=%s>format "
+#~ "menu</a>.</em>"
+#~ msgstr ""
+#~ "如果新增已经包含资料的硬碟，请选择其原本的档案系统格式就可以获取其中的资料。<br><em>还沒有规划档案格式的磁碟机请选择「尚未格式化」，之后再进入<a"
+#~ " href=%s>格式化工具。</a>选单。</em>"
+
+#~ msgid ""
 #~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
 #~ "href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
 #~ "before format and mount it!"
 #~ msgstr ""
 #~ "选择性的规划步骤：利用你<a "
 #~ "href='%s'>刚才设定的磁碟</a>来建立一个新的RAID磁碟。<br>请等待「%s」的状态出现之后再进行格式化与掛载的动作！"
+
+#, php-format
+#~ msgid ""
+#~ "Second configuration step: Declaring the filesystem used by your <a "
+#~ "href=%s>previously configured disk.</a>"
+#~ msgstr "规划的第二步：选择<a href=%s>刚才设定的磁碟</a>所使用之档案系统"
+
+#~ msgid "List of Advanced ATA capabilities on all ATA disk"
+#~ msgstr "列出所有ATA磁碟的ATA功能"
 
 #~ msgid "Show the list of available target Name on the iSCSI target"
 #~ msgstr "列出iSCSI內可用的目标名称"
@@ -586,6 +676,15 @@ msgstr ""
 #~ msgid "Save and Restart AFP"
 #~ msgstr "储存並重新啟动 AFP"
 
+#~ msgid "Password confirmation"
+#~ msgstr "密码确认"
+
+#~ msgid "Remote share (source)"
+#~ msgstr "远端分享(来源)"
+
+#~ msgid "Remote source share name"
+#~ msgstr "远端来源名称"
+
 #~ msgid "Mount to use"
 #~ msgstr "使用的掛载点"
 
@@ -654,6 +753,10 @@ msgid "%s of %sB"
 msgstr ""
 "Copy text   \t\n"
 "%sB中的%s"
+
+#, php-format
+msgid "%s uses %s to create %s arrays."
+msgstr ""
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -756,20 +859,20 @@ msgstr "AFP"
 msgid "AFP Server"
 msgstr "AFP服务器"
 
+msgid "ARP Table"
+msgstr ""
+
 msgid "ARP table"
 msgstr "ARP表"
-
-msgid "ATAidle"
-msgstr "ATAidle"
 
 msgid "Access"
 msgstr "存取权限"
 
-msgid "Access Mode"
+msgid "Access mode"
 msgstr ""
 
-msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
-msgstr "通过'http://ip_address:port/web/ushare.html'存取。"
+msgid "Accessible through 'http://ip_address:port'."
+msgstr ""
 
 msgid "Accessiblity test to MS domain"
 msgstr "到MS域名的存取测试"
@@ -825,6 +928,9 @@ msgstr "添加界面"
 msgid "Add job"
 msgstr "添加任务"
 
+msgid "Add module"
+msgstr ""
+
 msgid "Add network"
 msgstr "添加网络"
 
@@ -840,21 +946,23 @@ msgstr "添加目标"
 msgid "Add user"
 msgstr "添加用户"
 
+msgid "Additional group"
+msgstr ""
+
 msgid "Address"
 msgstr "地址"
 
 msgid "Administration password"
 msgstr "管理员密码"
 
-#, fuzzy
-msgid "Administrator"
-msgstr "管理员"
-
 msgid "Administrator name"
 msgstr "管理员名称"
 
 msgid "Advanced"
 msgstr "高级设置"
+
+msgid "Advanced Options"
+msgstr ""
 
 msgid "Advanced Power Management"
 msgstr "高级电源管理"
@@ -887,14 +995,11 @@ msgstr ""
 "><span class='vexpl'>改变你的电脑的IP地址</span></li><li><span "
 "class='vexpl'>用新的IP地址进入网页界面</span></li></ul>"
 
+msgid "Alias host name."
+msgstr ""
+
 msgid "All"
 msgstr "所有"
-
-msgid ""
-"All mounted volumes are automatically shared and restricted to only allow "
-"administrators to connect. The volumes will not show up in the list of "
-"shares."
-msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -905,6 +1010,9 @@ msgid "All users will have the root privilege."
 msgstr "让所有的使用者都有root权限。"
 
 msgid "Allow"
+msgstr ""
+
+msgid "Allow client access to accounts that have null passwords."
 msgstr ""
 
 msgid ""
@@ -940,11 +1048,16 @@ msgstr "更改TCP端口。默认为873"
 msgid "Always on"
 msgstr "总是开启"
 
+msgid ""
+"Always use 0 for device number, helps when the device number is not constant "
+"across a reboot, cluster, ..."
+msgstr ""
+
 msgid "An host with this name already exists."
 msgstr "已经有一个相同的主机名称存在了。"
 
-msgid "Anonymous login"
-msgstr "匿名登入"
+msgid "Anonymous users only"
+msgstr ""
 
 msgid "Apply changes"
 msgstr "应用更改"
@@ -1079,6 +1192,12 @@ msgstr "客戶端"
 msgid "Client Identifier"
 msgstr "DHCP识別值"
 
+msgid "Client sees lowercase, server sees uppercase"
+msgstr ""
+
+msgid "Client sees uppercase, server sees lowercase"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "Collecting initial data, please wait..."
 
@@ -1135,9 +1254,6 @@ msgstr ""
 msgid "Content"
 msgstr "內容"
 
-msgid "Control web page"
-msgstr ""
-
 msgid "Count"
 msgstr ""
 
@@ -1147,6 +1263,9 @@ msgstr "Count必需介於 1 与 %d"
 
 msgid "Create"
 msgstr "建立"
+
+msgid "Create and initialize RAID."
+msgstr ""
 
 msgid "Create encrypted volume"
 msgstr ""
@@ -1163,11 +1282,11 @@ msgstr ""
 msgid "Cron job"
 msgstr ""
 
+msgid "DDP"
+msgstr ""
+
 msgid "DHCP"
 msgstr "DHCP"
-
-msgid "DLNA"
-msgstr ""
 
 msgid "DN to bind"
 msgstr "欲 Bind 之网域名称"
@@ -1192,6 +1311,9 @@ msgstr ""
 
 msgid "Data integrity"
 msgstr "资料完整性"
+
+msgid "Database directory"
+msgstr ""
 
 msgid "Date"
 msgstr "日期"
@@ -1248,6 +1370,9 @@ msgid "Delete interface"
 msgstr "刪除介面"
 
 msgid "Delete job"
+msgstr ""
+
+msgid "Delete module"
 msgstr ""
 
 msgid "Delete network"
@@ -1342,6 +1467,12 @@ msgstr ""
 msgid "Directory to be shared."
 msgstr "分享的目录"
 
+msgid "Disable"
+msgstr ""
+
+msgid "Disable AFP-over-Appletalk to prevent DDP connections."
+msgstr ""
+
 msgid "Disable console menu"
 msgstr "关闭console选单"
 
@@ -1357,6 +1488,11 @@ msgstr "关闭系统於开/关机时的提示声响"
 msgid "Disabled"
 msgstr "已禁用"
 
+msgid ""
+"Disables :hex translations for anything except dot files. This option makes "
+"the '/' character illegal."
+msgstr ""
+
 msgid "Disk"
 msgstr "磁碟"
 
@@ -1369,7 +1505,10 @@ msgstr "磁碟空间"
 msgid "Disks"
 msgstr "磁碟"
 
-msgid "Do not create .AppleDouble directory"
+msgid "Disks (ATA)"
+msgstr ""
+
+msgid "Do not set this for CF cards."
 msgstr ""
 
 msgid "Do you really want to delete this RSYNC?"
@@ -1409,6 +1548,9 @@ msgstr "确定要刪除这个主机资讯吗？"
 msgid ""
 "Do you really want to delete this initiator? All elements that still use it "
 "will become invalid (e.g. share)!"
+msgstr ""
+
+msgid "Do you really want to delete this module?"
 msgstr ""
 
 msgid ""
@@ -1457,8 +1599,16 @@ msgstr "网域名称(in old format)"
 msgid "Don't Erase MBR"
 msgstr "不要刪除MBR"
 
+msgid "Don't advertise createfileid, resolveid, deleteid calls."
+msgstr ""
+
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr "保留原本的MBR (某些RAID控制卡需要)"
+
+msgid ""
+"Don't stat volume path when enumerating volumes list, useful for "
+"automounting or volumes created by a preexec script."
+msgstr ""
 
 msgid "Done."
 msgstr ""
@@ -1483,9 +1633,6 @@ msgstr ""
 
 msgid "EFI/GPT partition can be use with UFS only."
 msgstr ""
-
-msgid "ERR Could not save RAID configuration.\n"
-msgstr "错误！不能储存 RAID 设定值。\n"
 
 msgid "Edit"
 msgstr "编辑"
@@ -1529,6 +1676,9 @@ msgstr ""
 msgid "Edit job"
 msgstr ""
 
+msgid "Edit module"
+msgstr ""
+
 msgid "Edit network"
 msgstr ""
 
@@ -1544,6 +1694,9 @@ msgstr ""
 msgid "Edit user"
 msgstr "编辑使用者"
 
+msgid "Email Report"
+msgstr ""
+
 msgid "Email report"
 msgstr ""
 
@@ -1556,19 +1709,10 @@ msgstr "开啟FXP协定支援。"
 msgid "Enable NTP"
 msgstr ""
 
-msgid "Enable Windows filename restrictions"
-msgstr ""
-
 msgid "Enable Zeroconf"
 msgstr "开啟 Zeroconf"
 
-msgid "Enable anonymous login."
-msgstr "是否开啟匿名登入"
-
 msgid "Enable compression."
-msgstr ""
-
-msgid "Enable control web page."
 msgstr ""
 
 msgid "Enable device polling"
@@ -1579,6 +1723,11 @@ msgstr ""
 
 msgid "Enable firmware upload"
 msgstr "开啟韧体升级功能"
+
+msgid ""
+"Enable foreground/background file system consistency check during boot "
+"process."
+msgstr ""
 
 msgid "Enable guest access."
 msgstr "Guest可以登入。"
@@ -1592,8 +1741,8 @@ msgstr ""
 msgid "Enable local user authentication."
 msgstr "啟用本地端使用者可以登入。"
 
-msgid "Enable local user login."
-msgstr "是否开啟本机使用者登入"
+msgid "Enable module listing."
+msgstr ""
 
 msgid "Enable permission inheritance"
 msgstr ""
@@ -1621,8 +1770,19 @@ msgstr "如果你的FTP伺服器是架设在NAT的环境之下，请开啟这个
 msgid "Enable tuning of some kernel variables"
 msgstr "开啟系统核心的参数微调"
 
+msgid "Enable web user interface."
+msgstr ""
+
 msgid "Enabled"
 msgstr "启用"
+
+msgid ""
+"Enables crlf translation for TEXT files, automatically converting macintosh "
+"line breaks into Unix ones. Use of this option might be dangerous since some "
+"older programs store binary data files as type 'TEXT' when saving and switch "
+"the filetype in a second step. Afpd will potentially destroy such files when "
+"'erroneously' changing bytes in order to do line break translation."
+msgstr ""
 
 msgid "Encrypted disk name"
 msgstr "加密磁碟名称"
@@ -1636,6 +1796,9 @@ msgstr "加密方式"
 
 msgid "Encryption algorithm"
 msgstr "加密演算法"
+
+msgid "Enforce TLS"
+msgstr ""
 
 msgid ""
 "Enter a custom port number for the HTTP server if you want to override the "
@@ -1740,6 +1903,9 @@ msgid ""
 "to the client asking for the transfer (insecure!)."
 msgstr "FXP是支援两个远端伺服器互传档案的通讯协定。(有安全疑虑！)."
 
+msgid "Factory Defaults"
+msgstr ""
+
 msgid "Factory defaults"
 msgstr "回到原始预设值"
 
@@ -1776,6 +1942,9 @@ msgstr "档案大小"
 msgid "File system"
 msgstr "档案系统"
 
+msgid "File system check"
+msgstr ""
+
 msgid "Filename"
 msgstr ""
 
@@ -1790,9 +1959,6 @@ msgstr "此系统並不支援韧体上传功能。."
 
 msgid "Firmware version check"
 msgstr "韧体版本检查"
-
-msgid "First configuration step: Add your harddrive to the disk list."
-msgstr ""
 
 msgid "Flags"
 msgstr ""
@@ -1835,9 +2001,6 @@ msgstr ""
 msgid "Full Name"
 msgstr "全名"
 
-msgid "Full Shell"
-msgstr "Shell权限"
-
 msgid "Gateway"
 msgstr "闸道"
 
@@ -1850,26 +2013,17 @@ msgstr ""
 msgid "General Setup"
 msgstr ""
 
-msgid "Geom Concat"
-msgstr "Geom Concat"
-
-msgid "Geom Mirror"
-msgstr "Geom Mirror"
-
-msgid "Geom Raid5"
-msgstr "Geom Raid5"
-
-msgid "Geom Stripe"
-msgstr "Geom Stripe"
-
 msgid "Geom Vinum"
 msgstr "Geom Vinum"
 
-msgid "Give full shell to user"
-msgstr "让这个使用者可以使用shell。"
+msgid "Give full shell access to user."
+msgstr ""
 
 msgid "Global Configuration"
 msgstr ""
+
+msgid "Graph"
+msgstr "图表"
 
 msgid "Graph shows last"
 msgstr "Graph shows last"
@@ -1879,6 +2033,9 @@ msgstr "当使用者刚连接上FTP所显示的讯息。"
 
 msgid "Group"
 msgstr "群组"
+
+msgid "Group ID"
+msgstr ""
 
 msgid "Group description."
 msgstr "群组描述文字。"
@@ -1895,11 +2052,17 @@ msgstr "群组"
 msgid "Guest"
 msgstr ""
 
+msgid "Guest account"
+msgstr ""
+
 msgid "HTTP Proxy"
 msgstr ""
 
 msgid "Hard disk standby time"
 msgstr "硬碟待命时间"
+
+msgid "Helios X3000"
+msgstr ""
 
 msgid "Help Needed!"
 msgstr ""
@@ -2021,6 +2184,12 @@ msgid "If Login is required."
 msgstr ""
 
 msgid ""
+"If set afpd uses the ID information stored in AppleDouble V2 header files to "
+"reduce database load. Don't set this option if the volume is modified by non "
+"AFP clients (NFS/SMB/local)."
+msgstr ""
+
+msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
 "to perform selected command, otherwise the commands work in read-only "
 "mode.<br>Service disruption to users accessing this mount will occur during "
@@ -2061,6 +2230,9 @@ msgstr "In"
 msgid "In most cases, 'public' is used here."
 msgstr ""
 
+msgid "Info"
+msgstr ""
+
 msgid "Information"
 msgstr "资讯"
 
@@ -2092,6 +2264,15 @@ msgstr "要使用的网路介面"
 
 msgid "Interfaces"
 msgstr "网路介面"
+
+#, php-format
+msgid "Invalid port! Port number must be in the range from %d to %d."
+msgstr ""
+
+msgid ""
+"It is impossible to enable 'Anonymous users only' and 'Local users only' "
+"authentication simultaneously."
+msgstr ""
 
 msgid "JBOD"
 msgstr "JBOD"
@@ -2147,14 +2328,23 @@ msgstr "最后 %d 笔 %s 记錄资料"
 msgid "Last config change"
 msgstr "上次设定时间"
 
+#, php-format
+msgid ""
+"Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
+"menu."
+msgstr ""
+
 msgid "License"
 msgstr "License"
 
-msgid "List of Advanced ATA capabilities on all ATA disk"
-msgstr "列出所有ATA磁碟的ATA功能"
+msgid "List"
+msgstr ""
 
 msgid "List of SMART capabilities on all detected disk"
 msgstr "列出所有磁碟可用的SMART功能"
+
+msgid "List of advanced ATA capabilities on all ATA disk"
+msgstr ""
 
 msgid "List of detected ATA disks"
 msgstr "已侦测到的ATA磁碟"
@@ -2180,9 +2370,6 @@ msgstr "本地端"
 msgid "Local Master Browser"
 msgstr "Local Master Browser"
 
-msgid "Local User"
-msgstr "本机使用者"
-
 msgid "Local share"
 msgstr ""
 
@@ -2190,6 +2377,9 @@ msgid "Local share (destination)"
 msgstr "本地端分享(目标)"
 
 msgid "Local shares to be synchronized"
+msgstr ""
+
+msgid "Local users only"
 msgstr ""
 
 msgid "Location"
@@ -2200,6 +2390,11 @@ msgid ""
 "building, Room xyz'."
 msgstr ""
 
+msgid ""
+"Location where the content database file will be stored. The bookmark file "
+"will also be generated in that directory."
+msgstr ""
+
 msgid "Log Level"
 msgstr "记錄档层级"
 
@@ -2208,6 +2403,9 @@ msgstr "登入"
 
 msgid "Logs"
 msgstr "记錄档"
+
+msgid "Lowercases names in both directions"
+msgstr ""
 
 msgid "MAC address"
 msgstr "MAC位置"
@@ -2238,9 +2436,6 @@ msgstr "对应到本地使用者"
 
 msgid "Max. conn. per IP"
 msgstr "相同IP的连線数目"
-
-msgid "Maximum Connections"
-msgstr ""
 
 msgid "Maximum connections"
 msgstr "连線数目上線"
@@ -2310,6 +2505,9 @@ msgstr ""
 
 msgid "Miscellaneous"
 msgstr "杂项设定"
+
+msgid "Module"
+msgstr ""
 
 msgid "Modules"
 msgstr ""
@@ -2408,11 +2606,11 @@ msgstr ""
 msgid "No"
 msgstr "否"
 
-msgid "No AppleDouble Directory"
-msgstr ""
-
 msgid "No RSYNC Client configured"
 msgstr "尚无RSYNC客戶端设定"
+
+msgid "No case folding"
+msgstr ""
 
 msgid "No disk configured"
 msgstr "尚未加入磁碟"
@@ -2436,7 +2634,19 @@ msgid ""
 "minutes, hours, days and months."
 msgstr "提示：使用Ctrl+滑鼠左键(Mac：command+滑鼠主键)就可以复选项目。"
 
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
+msgstr ""
+
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+"minutes, hours, days and months."
+msgstr ""
+
 msgid "Now"
+msgstr ""
+
+msgid "Null passwords"
 msgstr ""
 
 msgid "Number of clients"
@@ -2464,6 +2674,21 @@ msgid "Old passphrase"
 msgstr ""
 
 msgid "Old password"
+msgstr ""
+
+msgid ""
+"Only allow anonymous users. Use this on a public FTP site with no remote FTP "
+"access to real accounts."
+msgstr ""
+
+msgid "Only allow authenticated users. Anonymous logins are prohibited."
+msgstr ""
+
+msgid ""
+"Only ports in the range min. port to max. port inclusive are used for "
+"passive-mode downloads. This is especially useful if the server is behind a "
+"firewall without FTP connection tracking. Use high ports (40000-50000 for "
+"instance), where no regular server should be listening."
 msgstr ""
 
 #, php-format
@@ -2524,6 +2749,9 @@ msgstr "磁区"
 msgid "Passive IP address"
 msgstr "被动式IP位置"
 
+msgid "Passive mode ports"
+msgstr ""
+
 msgid "Passphrase"
 msgstr "加密金钥"
 
@@ -2538,9 +2766,6 @@ msgstr ""
 
 msgid "Password authentication"
 msgstr ""
-
-msgid "Password confirmation"
-msgstr "密码确认"
 
 msgid "Password don't match."
 msgstr "密码不相同"
@@ -2566,6 +2791,9 @@ msgstr "请在此贴上X.509 PEM格式的验证码。"
 msgid "Paste an RSA private key in PEM format here."
 msgstr "请在此贴上一个PEM格式的RSA私钥。"
 
+msgid "Paste an private key in PEM format here."
+msgstr ""
+
 msgid "Path"
 msgstr ""
 
@@ -2589,6 +2817,9 @@ msgstr "Ping结果输出"
 
 msgid "Ping winbindd to see if it is alive:"
 msgstr ""
+
+msgid "Ping/Traceroute"
+msgstr "Ping/Traceroute"
 
 msgid "Platform"
 msgstr "硬体平台"
@@ -2614,14 +2845,26 @@ msgstr ""
 msgid "Prefix"
 msgstr ""
 
-msgid "Preformatted FS"
-msgstr "已存在之档案系统"
+msgid "Preformatted file system"
+msgstr ""
 
 msgid "Primary Group"
 msgstr ""
 
+msgid "Primary group"
+msgstr ""
+
+msgid "Primary group is also selected in additional group."
+msgstr ""
+
 msgid "Private Key"
 msgstr "私钥"
+
+msgid "Private key"
+msgstr ""
+
+msgid "Process"
+msgstr "处理程序"
 
 msgid "Processes"
 msgstr "程序列表"
@@ -2635,22 +2878,19 @@ msgstr ""
 msgid "Provider"
 msgstr ""
 
+msgid "Provides compatibility with Apple II clients."
+msgstr ""
+
 msgid "Proxy"
 msgstr ""
 
-msgid "Put user in the administrator group"
-msgstr "将使用者加入管理者群组"
-
 msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
-"the last access has elapsed. <em>Do not set this for CF cards.</em>"
-msgstr "设定在多久时间之后，如果沒有存取动作便将硬碟切換至待命模式。<em>CF卡请勿选用。</em>"
+"the last hard disk access has been elapsed."
+msgstr ""
 
 msgid "Quality"
 msgstr "品质"
-
-msgid "RAID"
-msgstr "RAID"
 
 msgid "RAID 0"
 msgstr ""
@@ -2665,6 +2905,15 @@ msgid "RAID 1 (mirroring)"
 msgstr ""
 
 msgid "RAID 5"
+msgstr ""
+
+msgid "RAID0"
+msgstr ""
+
+msgid "RAID1"
+msgstr ""
+
+msgid "RAID5"
 msgstr ""
 
 msgid "RSYNC"
@@ -2718,14 +2967,11 @@ msgstr "远端的RSYNC伺服器"
 msgid "Remote address"
 msgstr "远端位置"
 
-msgid "Remote share (source)"
-msgstr "远端分享(来源)"
-
-msgid "Remote share name"
+msgid "Remote module (source)"
 msgstr ""
 
-msgid "Remote source share name"
-msgstr "远端来源名称"
+msgid "Remote module name"
+msgstr ""
 
 msgid "Remote syslog server"
 msgstr "远端 syslog 伺服器"
@@ -2793,6 +3039,9 @@ msgstr ""
 msgid "SSID"
 msgstr "SSID"
 
+msgid "SSL/TLS"
+msgstr ""
+
 msgid "Save"
 msgstr "储存"
 
@@ -2814,11 +3063,8 @@ msgstr ""
 msgid "Scheduled shutdown"
 msgstr "排程关机"
 
-#, php-format
-msgid ""
-"Second configuration step: Declaring the filesystem used by your <a "
-"href=%s>previously configured disk.</a>"
-msgstr "规划的第二步：选择<a href=%s>刚才设定的磁碟</a>所使用之档案系统"
+msgid "Security"
+msgstr ""
 
 msgid ""
 "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
@@ -2877,13 +3123,16 @@ msgstr ""
 msgid "Services"
 msgstr "服务"
 
+msgid "Set additional group memberships for this account."
+msgstr ""
+
 msgid "Set browseable"
 msgstr ""
 
-msgid "Set browseable."
+msgid "Set share password."
 msgstr ""
 
-msgid "Set share password."
+msgid "Set the account's primary group to the given group."
 msgstr ""
 
 msgid "Settings"
@@ -2905,6 +3154,9 @@ msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
 msgid "Shares"
+msgstr ""
+
+msgid "Shell access"
 msgstr ""
 
 msgid "Show log entries in reverse order (newest entries on top)"
@@ -2941,11 +3193,20 @@ msgstr "接收缓冲区的大小(预设为16384)."
 msgid "Size of send buffer (16384 by default)."
 msgstr "传送缓冲区的大小(预设为16384)."
 
+msgid "Sockets"
+msgstr ""
+
 msgid "Software RAID"
 msgstr "软体RAID"
 
 msgid "Software RAID information and status"
 msgstr "软体RAID资讯与状态"
+
+msgid "Sony Playstation 3"
+msgstr ""
+
+msgid "Source directory to be synchronized."
+msgstr ""
 
 msgid "Source share"
 msgstr "来源位置"
@@ -2986,6 +3247,9 @@ msgstr "标準MTU是1500，输入9000则适用於大笔资料的传输。"
 
 msgid "Standby time"
 msgstr "进入待命时间"
+
+msgid "Static Routes"
+msgstr ""
 
 msgid "Static routes"
 msgstr "靜态路由"
@@ -3085,6 +3349,9 @@ msgstr ""
 msgid "TCP port"
 msgstr "TCP port"
 
+msgid "TLS + cleartext"
+msgstr ""
+
 msgid "TX rates"
 msgstr "TX速率"
 
@@ -3097,8 +3364,14 @@ msgstr ""
 msgid "Target address"
 msgstr ""
 
+msgid "Target directory."
+msgstr ""
+
 msgid "Target name"
 msgstr "目标名称"
+
+msgid "Telegent TG100"
+msgstr ""
 
 msgid "Temperature"
 msgstr "溫度"
@@ -3111,12 +3384,6 @@ msgstr ""
 #, php-format
 msgid "The %s port must be a valid port number."
 msgstr "请给 %s 输入一个有效的连接埠。"
-
-msgid "The Group desc contains invalid characters."
-msgstr "群组描述內有无效的字元。"
-
-msgid "The Group name contains invalid characters."
-msgstr "群组名称內有无效的字元。"
 
 msgid "The IP address that this hostname represents."
 msgstr "主机名称所代表的 IP 位置"
@@ -3305,6 +3572,12 @@ msgstr "侦测到以下的输入错误"
 msgid "The full name contains invalid characters."
 msgstr "全名包含无效的字元。"
 
+msgid "The group description contains invalid characters."
+msgstr ""
+
+msgid "The group name contains invalid characters."
+msgstr ""
+
 msgid ""
 "The host list has been changed.<br>You must apply the changes in order for "
 "them to take effect."
@@ -3355,6 +3628,11 @@ msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
 "port)."
 msgstr "被动式连線埠的区段起点(0 = 不限制)"
+
+msgid ""
+"The modules has been modified.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
 
 msgid ""
 "The mount point list has been changed.<br>You must apply the changes in "
@@ -3466,23 +3744,20 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This allows  you  to lower the power consumption of the drive, at the "
-"expense of performance.<br><em>Do not set this for CF cards.</em>"
-msgstr "用来控制磁碟的电源消耗，相反的会失去一些效能。<br><em>CF卡请勿选用。</em>"
-
-#, php-format
-msgid ""
-"This allows you to set FS type for preformated disk with data.<br><em>Leave "
-"'unformated' for unformated disk and then use <a href=%s>format "
-"menu</a>.</em>"
+"This allows you to lower the power consumption of the drive, at the expense "
+"of performance."
 msgstr ""
-"如果新增已经包含资料的硬碟，请选择其原本的档案系统格式就可以获取其中的资料。<br><em>还沒有规划档案格式的磁碟机请选择「尚未格式化」，之后再进入<a"
-" href=%s>格式化工具。</a>选单。</em>"
+
+msgid "This allows you to set how loud the drive is while it's operating."
+msgstr ""
 
 msgid ""
-"This allows you to set how loud the drive is while it's operating.<br><em>Do "
-"not set this for CF cards.</em>"
-msgstr "用来控制磁碟的运转噪音程度。<br><em>CF卡请勿选用。</em>"
+"This allows you to set the file system for preformatted hard disks "
+"containing data."
+msgstr ""
+
+msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
+msgstr ""
 
 msgid "This certificate does not appear to be valid."
 msgstr "这个验证似乎是无效的。"
@@ -3490,7 +3765,7 @@ msgstr "这个验证似乎是无效的。"
 msgid "This controls how the case of filenames are viewed and stored."
 msgstr ""
 
-msgid "This controls the access a remote host has to this share."
+msgid "This controls the access a remote host has to this module."
 msgstr ""
 
 msgid "This controls the access to this share with an access password."
@@ -3524,8 +3799,7 @@ msgstr "这个加密磁碟正在掛载中，在卸除之前请先将其卸载。
 
 msgid ""
 "This forces filenames to be restricted to the character set used by Windows. "
-"This is <em>not</em> recommended for shares used principally by Mac "
-"computers."
+"This is not recommended for shares used principally by Mac computers."
 msgstr ""
 
 msgid "This group already exists in the group list."
@@ -3564,18 +3838,53 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This parameter is a comma, space, or tab delimited set of host which are NOT "
+"This option determines if this module should be listed when the client asks "
+"for a listing of available modules. By setting this to false you can create "
+"hidden modules."
+msgstr ""
+
+msgid ""
+"This option is a comma, space, or tab delimited set of host which are NOT "
+"permitted to access this module. Where the lists conflict, the allow list "
+"takes precedence. In the event that it is necessary to deny all by default, "
+"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
+"to the hosts allow parameter those hosts that should be permitted access. "
+"Leave this field empty to use default settings."
+msgstr ""
+
+msgid ""
+"This option is a comma, space, or tab delimited set of host which are NOT "
 "permitted to access this share. Where the lists conflict, the allow list "
 "takes precedence. In the event that it is necessary to deny all by default, "
 "use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
 "to the hosts allow parameter those hosts that should be permitted access. "
-"Leave this field empty to disable this setting."
+"Leave this field empty to use default settings."
 msgstr ""
 
 msgid ""
-"This parameter is a comma, space, or tab delimited set of hosts which are "
-"permitted to access this share. Use the keyword ALL to permit access for "
-"everyone. Leave this field empty to disable this setting."
+"This option is a comma, space, or tab delimited set of hosts which are "
+"permitted to access this module. You can specify the hosts by name or IP "
+"number. Leave this field empty to use default settings."
+msgstr ""
+
+msgid ""
+"This option is a comma, space, or tab delimited set of hosts which are "
+"permitted to access this share. You can specify the hosts by name or IP "
+"number. Leave this field empty to use default settings."
+msgstr ""
+
+msgid ""
+"This option specifies the group name or group ID that file transfers to and "
+"from that module should take place. Leave this field empty to use default "
+"settings."
+msgstr ""
+
+#, php-format
+msgid ""
+"This option specifies the user name or user ID that file transfers to and "
+"from that module should take place. In combination with the '%s' option this "
+"determines what file permissions are available. Leave this field empty to "
+"use default settings."
 msgstr ""
 
 msgid "This parameters will be added to [global] in smb.conf."
@@ -3600,6 +3909,11 @@ msgid ""
 msgstr "这会让 %s 在浏览<a href=%s>%s</a>页面时不检查新版的韧体。"
 
 msgid "This will create a recycle bin on the share."
+msgstr ""
+
+msgid ""
+"This will erase ALL data on the selected disks! Do not use this option if "
+"you want to add an already existing RAID again."
 msgstr ""
 
 msgid "Time server"
@@ -3630,9 +3944,6 @@ msgstr ""
 msgid "Tools"
 msgstr "工具"
 
-msgid "Total number of connections allowed to this share."
-msgstr ""
-
 msgid "Traceroute"
 msgstr ""
 
@@ -3646,6 +3957,9 @@ msgstr "Traceroute结果输出"
 
 msgid "Traffic graph"
 msgstr "流量图表"
+
+msgid "Transfer mode"
+msgstr ""
 
 msgid "Trap host"
 msgstr ""
@@ -3667,9 +3981,6 @@ msgstr "微调"
 
 msgid "Type"
 msgstr "类別"
-
-msgid "UDMA mode"
-msgstr "UDMA模式"
 
 #, php-format
 msgid ""
@@ -3733,10 +4044,19 @@ msgstr ""
 msgid "Upgrade firmware"
 msgstr "韧体升级"
 
+msgid "Uppercases names in both directions"
+msgstr ""
+
 msgid "Uptime"
 msgstr "啟动时间"
 
+msgid "Use AFP3 unix privileges."
+msgstr ""
+
 msgid "Use SMTP authentication."
+msgstr ""
+
+msgid "Use SSL/TLS encryption layer."
 msgstr ""
 
 msgid ""
@@ -3766,8 +4086,19 @@ msgstr ""
 msgid "Use this option to override the file creation mask (077 by default)."
 msgstr ""
 
+msgid ""
+"Use this option to override the username ('ftp' by default) which will be "
+"used for access to services which are specified as guest. Whatever "
+"privileges this user has will be available to any client connecting to the "
+"guest service. This user must exist in the password file, but does not "
+"require a valid login."
+msgstr ""
+
 msgid "User"
 msgstr "使用者"
+
+msgid "User ID"
+msgstr ""
 
 msgid "User full name."
 msgstr "使用者的全名"
@@ -3787,11 +4118,17 @@ msgstr "请在此设定管理者的帐号。"
 msgid "Users"
 msgstr "使用者"
 
+msgid "Users and Groups"
+msgstr "使用者/群组"
+
 msgid "VLAN tag"
 msgstr "VLAN标签"
 
 msgid "Version"
 msgstr "版本"
+
+msgid "View license"
+msgstr ""
 
 msgid "Volume Name"
 msgstr "Volume名称"
@@ -3818,6 +4155,9 @@ msgstr "警告"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "注意：读取 %s 记錄档可能会再成很大的延迟！"
 
+msgid "Web user interface"
+msgstr ""
+
 msgid "WebGUI port"
 msgstr "网页介面连接埠"
 
@@ -3828,9 +4168,6 @@ msgid "Where the working files will be stored"
 msgstr "选择工作档案要储存的位置"
 
 msgid "Who"
-msgstr ""
-
-msgid "Windows Filename Restrictions"
 msgstr ""
 
 msgid "Wireless"
@@ -3848,9 +4185,6 @@ msgstr "工作目錄"
 msgid "Write only"
 msgstr ""
 
-msgid "XboX 360"
-msgstr ""
-
 msgid "Yes"
 msgstr "是"
 
@@ -3859,19 +4193,15 @@ msgid ""
 "command.<br>Example: pkg_add -r packagename"
 msgstr ""
 
-msgid ""
-"You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
-"hard drive."
-msgstr "如果显示「UDMA_ERROR.... LBA」的讯息，你可以手动选取UDMA的模式。"
-
 #, php-format
 msgid ""
 "You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr "你不可以掛载含有'%s'设定档的磁区。<br>"
 
-#, php-format
-msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
-msgstr "你不能卸载有 Swap 或 iSCSI 档案的目标"
+msgid ""
+"You can't unmount a drive which is used by swap file, a iSCSI-target file or "
+"any other running process!"
+msgstr ""
 
 msgid "You have to define some 'Extent' objects first."
 msgstr ""
@@ -3888,9 +4218,6 @@ msgstr "确定你有足夠的空间来复制所有将要同步的档案"
 msgid "You must add disks first."
 msgstr "请先加入磁碟。"
 
-msgid "You must create a group first."
-msgstr "你必须先建立一个群组。"
-
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
@@ -3902,9 +4229,6 @@ msgstr "系统必须重新开机才能开啟韧体升级功能。"
 
 msgid "You must select at least one authentication method."
 msgstr "请至少选择一种认证方式。"
-
-msgid "You must select at minium anonymous or/and local user authentication."
-msgstr "请至少选择 匿名/本地使用者 认证。"
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "连结加密磁碟之前请输入一个加密金钥。"
@@ -3919,16 +4243,25 @@ msgstr ""
 msgid "Zeroconf"
 msgstr "ZeroConf"
 
+msgid "ZyXEL DMA-1000"
+msgstr ""
+
 msgid "add mount"
 msgstr "新增掛载点"
 
 msgid "built on"
 msgstr ""
 
+msgid "cachecnid"
+msgstr ""
+
 msgid "chroot everyone"
 msgstr ""
 
 msgid "chroot() everyone, but root."
+msgstr ""
+
+msgid "crlf"
 msgstr ""
 
 msgid "day"
@@ -3971,8 +4304,26 @@ msgstr "mirroring"
 msgid "months"
 msgstr "月"
 
+msgid "mswindows"
+msgstr ""
+
 msgid "n/a"
 msgstr "无资料"
+
+msgid "noadouble"
+msgstr ""
+
+msgid "nodev"
+msgstr ""
+
+msgid "nofileid"
+msgstr ""
+
+msgid "nohex"
+msgstr ""
+
+msgid "nostat"
+msgstr ""
 
 msgid "password_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
@@ -3981,6 +4332,9 @@ msgid "pasv_max_port"
 msgstr ""
 
 msgid "pasv_min_port"
+msgstr ""
+
+msgid "prodos"
 msgstr ""
 
 msgid "rotated block-interleaved parity"
@@ -3994,6 +4348,9 @@ msgstr "显示处理程序"
 
 msgid "striping"
 msgstr "striping"
+
+msgid "upriv"
+msgstr ""
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
