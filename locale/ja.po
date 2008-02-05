@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2007-12-16 16:18+0000\n"
+"POT-Creation-Date: 2008-02-04 08:09+0000\n"
 "PO-Revision-Date: 2007-04-05 14:26+0000\n"
 "Last-Translator: Hiroyuki Seino <seichan@seichan.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2007-12-28 19:16+0000\n"
+"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -152,26 +152,14 @@ msgstr ""
 #~ msgid "CIFS"
 #~ msgstr "CIFS"
 
-#~ msgid "Users and Groups"
-#~ msgstr "ユーザとグループ"
-
 #~ msgid "Radius"
 #~ msgstr "Radius"
-
-#~ msgid "Process"
-#~ msgstr "プロセス"
-
-#~ msgid "Ping/Traceroute"
-#~ msgstr "Ping/Traceroute"
 
 #~ msgid "Reboot system"
 #~ msgstr "リブート"
 
 #~ msgid "Shutdown system"
 #~ msgstr "シャットダウン"
-
-#~ msgid "Graph"
-#~ msgstr "グラフ"
 
 #~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
 #~ msgstr "ドメインパートを除いた NAS ホスト名<br>例) <em>nas</em>"
@@ -279,6 +267,28 @@ msgstr ""
 #~ msgid "First configuration step: Add your hardrive to the disk list."
 #~ msgstr "初期設定ステップ: ハードディスクをディスクリストに追加して下さい．"
 
+#~ msgid "UDMA mode"
+#~ msgstr "UDMA モード"
+
+#~ msgid ""
+#~ "Puts the hard disk into standby mode when the selected amount of time after "
+#~ "the last access has elapsed. <em>Do not set this for CF cards.</em>"
+#~ msgstr ""
+#~ "最後のアクセスの後，選択された時間を経過した際に，ハードディスクを待機モードにします．<em>これを CF カードに設定しないで下さい．</em>"
+
+#~ msgid ""
+#~ "This allows  you  to lower the power consumption of the drive, at the "
+#~ "expense of performance.<br><em>Do not set this for CF cards.</em>"
+#~ msgstr "これは，性能の犠牲においてドライブの電力消費量を下げる事が出来ます．<br><em>これを CFカードに設定してはいけません．</em>"
+
+#~ msgid ""
+#~ "This allows you to set how loud the drive is while it's operating.<br><em>Do "
+#~ "not set this for CF cards.</em>"
+#~ msgstr "オペレーション中のドライブの騒音レベルを設定する事が出来ます．<em>これを CFカードに設定してはいけません．</em>"
+
+#~ msgid "Preformatted FS"
+#~ msgstr "FS のプリフォーマット"
+
 #~ msgid "Disk initialization details"
 #~ msgstr "ディスク初期化の詳細"
 
@@ -313,6 +323,24 @@ msgstr ""
 
 #~ msgid "Format RAID"
 #~ msgstr "RAID のフォーマット"
+
+#~ msgid "Geom Mirror"
+#~ msgstr "Geom ミラー"
+
+#~ msgid "Geom Stripe"
+#~ msgstr "Geom ストライプ"
+
+#~ msgid "Geom Concat"
+#~ msgstr "Geom Concat"
+
+#~ msgid "Geom Raid5"
+#~ msgstr "Geom Raid5"
+
+#~ msgid "RAID"
+#~ msgstr "RAID"
+
+#~ msgid "ERR Could not save RAID configuration.\n"
+#~ msgstr "エラー: RAID 設定を保存する事が出来ませんでした．\n"
 
 #~ msgid "Disk format UFS output:"
 #~ msgstr "ディスクの UFS フォーマット出力:"
@@ -389,6 +417,21 @@ msgstr ""
 #~ msgid "The max con per ip must be a number."
 #~ msgstr "1IP あたりの最大接続数は数字で指定して下さい．"
 
+#~ msgid "You must select at minium anonymous or/and local user authentication."
+#~ msgstr "少なくとも匿名 又は/且つ ローカルユーザ認証を選択しなければなりません．"
+
+#~ msgid "Anonymous login"
+#~ msgstr "匿名ログイン"
+
+#~ msgid "Enable anonymous login."
+#~ msgstr "匿名ログインを有効にする．"
+
+#~ msgid "Local User"
+#~ msgstr "ローカルユーザ"
+
+#~ msgid "Enable local user login."
+#~ msgstr "ローカルユーザのログインを有効にする．"
+
 #~ msgid ""
 #~ "Use this option to override the IP address that FTP daemon will advertise in "
 #~ "response to the PASV command."
@@ -433,6 +476,9 @@ msgstr ""
 #~ msgid "No content directory to be shared."
 #~ msgstr "共有されるコンテンツがディレクトリに存在しません．"
 
+#~ msgid "You must create a group first."
+#~ msgstr "最初にグループを作成して下さい．"
+
 #~ msgid "Confirm Password"
 #~ msgstr "パスワードの確認"
 
@@ -442,10 +488,31 @@ msgstr ""
 #~ msgid "Group Member"
 #~ msgstr "グループメンバ"
 
+#~ msgid "Full Shell"
+#~ msgstr "完全なシェル"
+
+#~ msgid "Give full shell to user"
+#~ msgstr "ユーザに完全なシェルを提供"
+
+#~ msgid "Administrator"
+#~ msgstr "Administrator"
+
+#~ msgid "Put user in the administrator group"
+#~ msgstr "Put user in the administrator group"
+
 #~ msgid ""
 #~ "The group list has been changed.<br>You must apply the changes in order for "
 #~ "them to take effect."
 #~ msgstr "グループリストが変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
+
+#~ msgid "The Group name contains invalid characters."
+#~ msgstr "グループ名に不正な文字が使用されています．"
+
+#~ msgid "The Group desc contains invalid characters."
+#~ msgstr "グループの説明に不正な文字が使用されています．"
+
+#~ msgid "ATAidle"
+#~ msgstr "ATAidle"
 
 #~ msgid ""
 #~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
@@ -459,12 +526,36 @@ msgstr ""
 #~ "が必要です．<br>アップグレードの前にシステム構成の <a href=%s>Backup</a> を行う事を強く推奨します．"
 
 #~ msgid ""
+#~ "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
+#~ "hard drive."
+#~ msgstr "ハードディスクを使用中 'UDMA_ERROR.... LBA' メッセージが表示された場合，UDMA モードを強制させる事が可能です．"
+
+#, php-format
+#~ msgid ""
+#~ "This allows you to set FS type for preformated disk with data.<br><em>Leave "
+#~ "'unformated' for unformated disk and then use <a href=%s>format "
+#~ "menu</a>.</em>"
+#~ msgstr ""
+#~ "This allows you to set FS type for preformated disk with "
+#~ "data.<br><em>フォーマットしないディスクに 'unformated' を選択してから <a href=%s>format menu</a> "
+#~ "を使用して下さい．</em>"
+
+#~ msgid ""
 #~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
 #~ "href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
 #~ "before format and mount it!"
 #~ msgstr ""
 #~ "オプションの設定ステップ: <a href='%s'>先立って設定されたディスク</a> を使用して仮想 RAID "
 #~ "ディスクを設定します．<br>フォーマット及びマウントの前にステータスが '%s' する事を確認して下さい!"
+
+#, php-format
+#~ msgid ""
+#~ "Second configuration step: Declaring the filesystem used by your <a "
+#~ "href=%s>previously configured disk.</a>"
+#~ msgstr "2番目の設定ステップ: <a href=%s>先立って設定されたディスク</a> に対して使用するファイルシステムを選択します．"
+
+#~ msgid "List of Advanced ATA capabilities on all ATA disk"
+#~ msgstr "検出された ATA ディスクの全ての高度な ATA 能力の一覧"
 
 #~ msgid "Show the list of available target Name on the iSCSI target"
 #~ msgstr "iSCSI ターゲットとして有効なターゲット名の一覧を表示"
@@ -578,6 +669,15 @@ msgstr ""
 #~ msgid "Save and Restart AFP"
 #~ msgstr "AFP の保存と再起動"
 
+#~ msgid "Password confirmation"
+#~ msgstr "パスワードの確認"
+
+#~ msgid "Remote share (source)"
+#~ msgstr "リモート共有 (接続元)"
+
+#~ msgid "Remote source share name"
+#~ msgstr "リモートソース共有名"
+
 #~ msgid "Mount to use"
 #~ msgstr "マウントして利用"
 
@@ -625,6 +725,10 @@ msgstr "%s インタフェース (SSID '%s')"
 
 #, php-format
 msgid "%s of %sB"
+msgstr ""
+
+#, php-format
+msgid "%s uses %s to create %s arrays."
 msgstr ""
 
 #, php-format
@@ -730,19 +834,19 @@ msgstr "AFP"
 msgid "AFP Server"
 msgstr "AFP サーバ"
 
+msgid "ARP Table"
+msgstr ""
+
 msgid "ARP table"
 msgstr "ARP テーブル"
-
-msgid "ATAidle"
-msgstr "ATAidle"
 
 msgid "Access"
 msgstr "アクセス"
 
-msgid "Access Mode"
+msgid "Access mode"
 msgstr ""
 
-msgid "Accessible through 'http://ip_address:port/web/ushare.html'."
+msgid "Accessible through 'http://ip_address:port'."
 msgstr ""
 
 msgid "Accessiblity test to MS domain"
@@ -799,6 +903,9 @@ msgstr "インタフェースの追加"
 msgid "Add job"
 msgstr ""
 
+msgid "Add module"
+msgstr ""
+
 msgid "Add network"
 msgstr ""
 
@@ -814,20 +921,23 @@ msgstr "ターゲットの追加"
 msgid "Add user"
 msgstr "ユーザの追加"
 
+msgid "Additional group"
+msgstr ""
+
 msgid "Address"
 msgstr ""
 
 msgid "Administration password"
 msgstr "管理者パスワード"
 
-msgid "Administrator"
-msgstr "Administrator"
-
 msgid "Administrator name"
 msgstr "管理者名"
 
 msgid "Advanced"
 msgstr "高度な設定"
+
+msgid "Advanced Options"
+msgstr ""
 
 msgid "Advanced Power Management"
 msgstr "高度な電源管理"
@@ -858,14 +968,11 @@ msgid ""
 "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr ""
 
+msgid "Alias host name."
+msgstr ""
+
 msgid "All"
 msgstr "全て"
-
-msgid ""
-"All mounted volumes are automatically shared and restricted to only allow "
-"administrators to connect. The volumes will not show up in the list of "
-"shares."
-msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -876,6 +983,9 @@ msgid "All users will have the root privilege."
 msgstr "全てのユーザが root 権限を持ちます．"
 
 msgid "Allow"
+msgstr ""
+
+msgid "Allow client access to accounts that have null passwords."
 msgstr ""
 
 msgid ""
@@ -911,11 +1021,16 @@ msgstr "代わりの TCP ポート．デフォルトは 873"
 msgid "Always on"
 msgstr "常にオン"
 
+msgid ""
+"Always use 0 for device number, helps when the device number is not constant "
+"across a reboot, cluster, ..."
+msgstr ""
+
 msgid "An host with this name already exists."
 msgstr ""
 
-msgid "Anonymous login"
-msgstr "匿名ログイン"
+msgid "Anonymous users only"
+msgstr ""
 
 msgid "Apply changes"
 msgstr "変更の適用"
@@ -1052,6 +1167,12 @@ msgstr "クライアント"
 msgid "Client Identifier"
 msgstr "クライアント識別子"
 
+msgid "Client sees lowercase, server sees uppercase"
+msgstr ""
+
+msgid "Client sees uppercase, server sees lowercase"
+msgstr ""
+
 msgid "Collecting initial data, please wait..."
 msgstr "初期データを収集しています．お待ち下さい..."
 
@@ -1108,9 +1229,6 @@ msgstr ""
 msgid "Content"
 msgstr "コンテンツ"
 
-msgid "Control web page"
-msgstr ""
-
 msgid "Count"
 msgstr ""
 
@@ -1120,6 +1238,9 @@ msgstr "カウントは 1 から %d の間である必要があります"
 
 msgid "Create"
 msgstr "作成"
+
+msgid "Create and initialize RAID."
+msgstr ""
 
 msgid "Create encrypted volume"
 msgstr ""
@@ -1136,11 +1257,11 @@ msgstr ""
 msgid "Cron job"
 msgstr ""
 
+msgid "DDP"
+msgstr ""
+
 msgid "DHCP"
 msgstr "DHCP"
-
-msgid "DLNA"
-msgstr ""
 
 msgid "DN to bind"
 msgstr ""
@@ -1165,6 +1286,9 @@ msgstr ""
 
 msgid "Data integrity"
 msgstr "データの完全性"
+
+msgid "Database directory"
+msgstr ""
 
 msgid "Date"
 msgstr "日時"
@@ -1221,6 +1345,9 @@ msgid "Delete interface"
 msgstr "インタフェースの削除"
 
 msgid "Delete job"
+msgstr ""
+
+msgid "Delete module"
 msgstr ""
 
 msgid "Delete network"
@@ -1316,6 +1443,12 @@ msgstr ""
 msgid "Directory to be shared."
 msgstr "共有されるディレクトリ．"
 
+msgid "Disable"
+msgstr ""
+
+msgid "Disable AFP-over-Appletalk to prevent DDP connections."
+msgstr ""
+
 msgid "Disable console menu"
 msgstr "コンソールメニューを無効にする"
 
@@ -1331,6 +1464,11 @@ msgstr "スタートアップとシャットダウン時のスピーカービー
 msgid "Disabled"
 msgstr "無効"
 
+msgid ""
+"Disables :hex translations for anything except dot files. This option makes "
+"the '/' character illegal."
+msgstr ""
+
 msgid "Disk"
 msgstr "ディスク"
 
@@ -1343,7 +1481,10 @@ msgstr "ディスク使用率"
 msgid "Disks"
 msgstr "ディスクs"
 
-msgid "Do not create .AppleDouble directory"
+msgid "Disks (ATA)"
+msgstr ""
+
+msgid "Do not set this for CF cards."
 msgstr ""
 
 msgid "Do you really want to delete this RSYNC?"
@@ -1383,6 +1524,9 @@ msgstr ""
 msgid ""
 "Do you really want to delete this initiator? All elements that still use it "
 "will become invalid (e.g. share)!"
+msgstr ""
+
+msgid "Do you really want to delete this module?"
 msgstr ""
 
 msgid ""
@@ -1431,8 +1575,16 @@ msgstr "古い書式のドメイン名"
 msgid "Don't Erase MBR"
 msgstr "MBR を消去しない"
 
+msgid "Don't advertise createfileid, resolveid, deleteid calls."
+msgstr ""
+
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr "MBR を消去しない (いくつかの RAID コントローラカードで有用です)"
+
+msgid ""
+"Don't stat volume path when enumerating volumes list, useful for "
+"automounting or volumes created by a preexec script."
+msgstr ""
 
 msgid "Done."
 msgstr ""
@@ -1457,9 +1609,6 @@ msgstr ""
 
 msgid "EFI/GPT partition can be use with UFS only."
 msgstr ""
-
-msgid "ERR Could not save RAID configuration.\n"
-msgstr "エラー: RAID 設定を保存する事が出来ませんでした．\n"
 
 msgid "Edit"
 msgstr "編集"
@@ -1503,6 +1652,9 @@ msgstr ""
 msgid "Edit job"
 msgstr ""
 
+msgid "Edit module"
+msgstr ""
+
 msgid "Edit network"
 msgstr ""
 
@@ -1518,6 +1670,9 @@ msgstr ""
 msgid "Edit user"
 msgstr "ユーザの編集"
 
+msgid "Email Report"
+msgstr ""
+
 msgid "Email report"
 msgstr ""
 
@@ -1530,19 +1685,10 @@ msgstr "FXP プロトコルを有効にする．"
 msgid "Enable NTP"
 msgstr ""
 
-msgid "Enable Windows filename restrictions"
-msgstr ""
-
 msgid "Enable Zeroconf"
 msgstr ""
 
-msgid "Enable anonymous login."
-msgstr "匿名ログインを有効にする．"
-
 msgid "Enable compression."
-msgstr ""
-
-msgid "Enable control web page."
 msgstr ""
 
 msgid "Enable device polling"
@@ -1553,6 +1699,11 @@ msgstr ""
 
 msgid "Enable firmware upload"
 msgstr "ファームウェアアップロードを許可"
+
+msgid ""
+"Enable foreground/background file system consistency check during boot "
+"process."
+msgstr ""
 
 msgid "Enable guest access."
 msgstr "ゲストアクセスを許可．"
@@ -1566,8 +1717,8 @@ msgstr ""
 msgid "Enable local user authentication."
 msgstr "ローカルユーザ認証を許可．"
 
-msgid "Enable local user login."
-msgstr "ローカルユーザのログインを有効にする．"
+msgid "Enable module listing."
+msgstr ""
 
 msgid "Enable permission inheritance"
 msgstr ""
@@ -1595,8 +1746,19 @@ msgstr "FXP サーバが適応する FTP プロキシをサポートしない NA
 msgid "Enable tuning of some kernel variables"
 msgstr "いくつかのカーネル変数のチューニングを許可する"
 
+msgid "Enable web user interface."
+msgstr ""
+
 msgid "Enabled"
 msgstr "有効"
+
+msgid ""
+"Enables crlf translation for TEXT files, automatically converting macintosh "
+"line breaks into Unix ones. Use of this option might be dangerous since some "
+"older programs store binary data files as type 'TEXT' when saving and switch "
+"the filetype in a second step. Afpd will potentially destroy such files when "
+"'erroneously' changing bytes in order to do line break translation."
+msgstr ""
 
 msgid "Encrypted disk name"
 msgstr "暗号化ディスク名"
@@ -1610,6 +1772,9 @@ msgstr "暗号化"
 
 msgid "Encryption algorithm"
 msgstr "暗号化アルゴリズム"
+
+msgid "Enforce TLS"
+msgstr ""
 
 msgid ""
 "Enter a custom port number for the HTTP server if you want to override the "
@@ -1716,6 +1881,9 @@ msgid ""
 msgstr ""
 "FXP は，転送を要求するクライアントにどんなファイル/データも通る事無く，2つのリモートサーバ間で転送を許可します (セキュアではありません!)．"
 
+msgid "Factory Defaults"
+msgstr ""
+
 msgid "Factory defaults"
 msgstr "工場出荷設定"
 
@@ -1752,6 +1920,9 @@ msgstr "ファイルサイズ"
 msgid "File system"
 msgstr "ファイルシステム"
 
+msgid "File system check"
+msgstr ""
+
 msgid "Filename"
 msgstr ""
 
@@ -1766,9 +1937,6 @@ msgstr "ファームウェアアップロードはこのプラットフォーム
 
 msgid "Firmware version check"
 msgstr "ファームウェアバージョンチェック"
-
-msgid "First configuration step: Add your harddrive to the disk list."
-msgstr ""
 
 msgid "Flags"
 msgstr ""
@@ -1811,9 +1979,6 @@ msgstr ""
 msgid "Full Name"
 msgstr "フルネーム"
 
-msgid "Full Shell"
-msgstr "完全なシェル"
-
 msgid "Gateway"
 msgstr "ゲートウェイ"
 
@@ -1826,26 +1991,17 @@ msgstr ""
 msgid "General Setup"
 msgstr ""
 
-msgid "Geom Concat"
-msgstr "Geom Concat"
-
-msgid "Geom Mirror"
-msgstr "Geom ミラー"
-
-msgid "Geom Raid5"
-msgstr "Geom Raid5"
-
-msgid "Geom Stripe"
-msgstr "Geom ストライプ"
-
 msgid "Geom Vinum"
 msgstr "Geom Vinum"
 
-msgid "Give full shell to user"
-msgstr "ユーザに完全なシェルを提供"
+msgid "Give full shell access to user."
+msgstr ""
 
 msgid "Global Configuration"
 msgstr ""
+
+msgid "Graph"
+msgstr "グラフ"
 
 msgid "Graph shows last"
 msgstr "最後のグラフを表示"
@@ -1855,6 +2011,9 @@ msgstr "FTP 接続の際に最初に表示される挨拶のバナー．"
 
 msgid "Group"
 msgstr "グループ"
+
+msgid "Group ID"
+msgstr ""
 
 msgid "Group description."
 msgstr "グループの説明"
@@ -1871,11 +2030,17 @@ msgstr "グループ"
 msgid "Guest"
 msgstr ""
 
+msgid "Guest account"
+msgstr ""
+
 msgid "HTTP Proxy"
 msgstr ""
 
 msgid "Hard disk standby time"
 msgstr "ハードディスクスタンバイ時間"
+
+msgid "Helios X3000"
+msgstr ""
 
 msgid "Help Needed!"
 msgstr ""
@@ -1999,6 +2164,12 @@ msgid "If Login is required."
 msgstr ""
 
 msgid ""
+"If set afpd uses the ID information stored in AppleDouble V2 header files to "
+"reduce database load. Don't set this option if the volume is modified by non "
+"AFP clients (NFS/SMB/local)."
+msgstr ""
+
+msgid ""
 "If the selected disk/partition is mounted it will be unmounted temporarily "
 "to perform selected command, otherwise the commands work in read-only "
 "mode.<br>Service disruption to users accessing this mount will occur during "
@@ -2042,6 +2213,9 @@ msgstr "入力"
 msgid "In most cases, 'public' is used here."
 msgstr ""
 
+msgid "Info"
+msgstr ""
+
 msgid "Information"
 msgstr "情報"
 
@@ -2073,6 +2247,15 @@ msgstr "待ち受けるインタフェース．"
 
 msgid "Interfaces"
 msgstr "インタフェース"
+
+#, php-format
+msgid "Invalid port! Port number must be in the range from %d to %d."
+msgstr ""
+
+msgid ""
+"It is impossible to enable 'Anonymous users only' and 'Local users only' "
+"authentication simultaneously."
+msgstr ""
 
 msgid "JBOD"
 msgstr "JBOD"
@@ -2128,14 +2311,23 @@ msgstr "Last %d %s log entries"
 msgid "Last config change"
 msgstr "最終設定変更日"
 
+#, php-format
+msgid ""
+"Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
+"menu."
+msgstr ""
+
 msgid "License"
 msgstr "ライセンス"
 
-msgid "List of Advanced ATA capabilities on all ATA disk"
-msgstr "検出された ATA ディスクの全ての高度な ATA 能力の一覧"
+msgid "List"
+msgstr ""
 
 msgid "List of SMART capabilities on all detected disk"
 msgstr "検出されたディスクの全ての SMART 能力の一覧"
+
+msgid "List of advanced ATA capabilities on all ATA disk"
+msgstr ""
 
 msgid "List of detected ATA disks"
 msgstr "認識中の ATA ディスクのリスト"
@@ -2161,9 +2353,6 @@ msgstr "ローカル"
 msgid "Local Master Browser"
 msgstr "ローカルマスタブラウザ"
 
-msgid "Local User"
-msgstr "ローカルユーザ"
-
 msgid "Local share"
 msgstr ""
 
@@ -2171,6 +2360,9 @@ msgid "Local share (destination)"
 msgstr "ローカル共有 (接続先)"
 
 msgid "Local shares to be synchronized"
+msgstr ""
+
+msgid "Local users only"
 msgstr ""
 
 msgid "Location"
@@ -2181,6 +2373,11 @@ msgid ""
 "building, Room xyz'."
 msgstr ""
 
+msgid ""
+"Location where the content database file will be stored. The bookmark file "
+"will also be generated in that directory."
+msgstr ""
+
 msgid "Log Level"
 msgstr "ログレベル"
 
@@ -2189,6 +2386,9 @@ msgstr "ログイン"
 
 msgid "Logs"
 msgstr "ログ"
+
+msgid "Lowercases names in both directions"
+msgstr ""
 
 msgid "MAC address"
 msgstr "MAC アドレス"
@@ -2219,9 +2419,6 @@ msgstr "ユーザのマッピング"
 
 msgid "Max. conn. per IP"
 msgstr "IP 毎の最大接続数"
-
-msgid "Maximum Connections"
-msgstr ""
 
 msgid "Maximum connections"
 msgstr "最大接続数"
@@ -2291,6 +2488,9 @@ msgstr ""
 
 msgid "Miscellaneous"
 msgstr "雑多なもの"
+
+msgid "Module"
+msgstr ""
 
 msgid "Modules"
 msgstr ""
@@ -2389,11 +2589,11 @@ msgstr ""
 msgid "No"
 msgstr "No"
 
-msgid "No AppleDouble Directory"
-msgstr ""
-
 msgid "No RSYNC Client configured"
 msgstr "設定された RSYNC クライアントはありません"
+
+msgid "No case folding"
+msgstr ""
 
 msgid "No disk configured"
 msgstr "ディスクが設定されていません"
@@ -2418,7 +2618,19 @@ msgid ""
 "minutes, hours, days and months."
 msgstr "注意: Ctrl を押しながらクリック (Mac は command を押しながらクリック) する事で分，時，日，月を複数選択出来ます．"
 
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
+msgstr ""
+
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+"minutes, hours, days and months."
+msgstr ""
+
 msgid "Now"
+msgstr ""
+
+msgid "Null passwords"
 msgstr ""
 
 msgid "Number of clients"
@@ -2446,6 +2658,21 @@ msgid "Old passphrase"
 msgstr ""
 
 msgid "Old password"
+msgstr ""
+
+msgid ""
+"Only allow anonymous users. Use this on a public FTP site with no remote FTP "
+"access to real accounts."
+msgstr ""
+
+msgid "Only allow authenticated users. Anonymous logins are prohibited."
+msgstr ""
+
+msgid ""
+"Only ports in the range min. port to max. port inclusive are used for "
+"passive-mode downloads. This is especially useful if the server is behind a "
+"firewall without FTP connection tracking. Use high ports (40000-50000 for "
+"instance), where no regular server should be listening."
 msgstr ""
 
 #, php-format
@@ -2506,6 +2733,9 @@ msgstr "パーティション"
 msgid "Passive IP address"
 msgstr "パッシブ IP アドレス"
 
+msgid "Passive mode ports"
+msgstr ""
+
 msgid "Passphrase"
 msgstr "パスフレーズ"
 
@@ -2520,9 +2750,6 @@ msgstr ""
 
 msgid "Password authentication"
 msgstr ""
-
-msgid "Password confirmation"
-msgstr "パスワードの確認"
 
 msgid "Password don't match."
 msgstr "パスワードが一致しません．"
@@ -2548,6 +2775,9 @@ msgstr "ここにサインされた X.509 PEM フォーマットの証明書を�
 msgid "Paste an RSA private key in PEM format here."
 msgstr "ここに PEM フォーマットの RSA 秘密鍵をペーストして下さい．"
 
+msgid "Paste an private key in PEM format here."
+msgstr ""
+
 msgid "Path"
 msgstr ""
 
@@ -2571,6 +2801,9 @@ msgstr "Ping 出力"
 
 msgid "Ping winbindd to see if it is alive:"
 msgstr ""
+
+msgid "Ping/Traceroute"
+msgstr "Ping/Traceroute"
 
 msgid "Platform"
 msgstr "プラットフォーム"
@@ -2596,14 +2829,26 @@ msgstr ""
 msgid "Prefix"
 msgstr ""
 
-msgid "Preformatted FS"
-msgstr "FS のプリフォーマット"
+msgid "Preformatted file system"
+msgstr ""
 
 msgid "Primary Group"
 msgstr ""
 
+msgid "Primary group"
+msgstr ""
+
+msgid "Primary group is also selected in additional group."
+msgstr ""
+
 msgid "Private Key"
 msgstr "秘密鍵"
+
+msgid "Private key"
+msgstr ""
+
+msgid "Process"
+msgstr "プロセス"
 
 msgid "Processes"
 msgstr "プロセス"
@@ -2617,23 +2862,19 @@ msgstr ""
 msgid "Provider"
 msgstr ""
 
+msgid "Provides compatibility with Apple II clients."
+msgstr ""
+
 msgid "Proxy"
 msgstr ""
 
-msgid "Put user in the administrator group"
-msgstr "Put user in the administrator group"
-
 msgid ""
 "Puts the hard disk into standby mode when the selected amount of time after "
-"the last access has elapsed. <em>Do not set this for CF cards.</em>"
+"the last hard disk access has been elapsed."
 msgstr ""
-"最後のアクセスの後，選択された時間を経過した際に，ハードディスクを待機モードにします．<em>これを CF カードに設定しないで下さい．</em>"
 
 msgid "Quality"
 msgstr "品質"
-
-msgid "RAID"
-msgstr "RAID"
 
 msgid "RAID 0"
 msgstr ""
@@ -2648,6 +2889,15 @@ msgid "RAID 1 (mirroring)"
 msgstr ""
 
 msgid "RAID 5"
+msgstr ""
+
+msgid "RAID0"
+msgstr ""
+
+msgid "RAID1"
+msgstr ""
+
+msgid "RAID5"
 msgstr ""
 
 msgid "RSYNC"
@@ -2701,14 +2951,11 @@ msgstr "リモート RSYNC サーバ"
 msgid "Remote address"
 msgstr "リモートアドレス"
 
-msgid "Remote share (source)"
-msgstr "リモート共有 (接続元)"
-
-msgid "Remote share name"
+msgid "Remote module (source)"
 msgstr ""
 
-msgid "Remote source share name"
-msgstr "リモートソース共有名"
+msgid "Remote module name"
+msgstr ""
 
 msgid "Remote syslog server"
 msgstr "リモート syslog サーバ"
@@ -2776,6 +3023,9 @@ msgstr ""
 msgid "SSID"
 msgstr "SSID"
 
+msgid "SSL/TLS"
+msgstr ""
+
 msgid "Save"
 msgstr "セーブ"
 
@@ -2797,11 +3047,8 @@ msgstr ""
 msgid "Scheduled shutdown"
 msgstr "シャットダウンスケジュール"
 
-#, php-format
-msgid ""
-"Second configuration step: Declaring the filesystem used by your <a "
-"href=%s>previously configured disk.</a>"
-msgstr "2番目の設定ステップ: <a href=%s>先立って設定されたディスク</a> に対して使用するファイルシステムを選択します．"
+msgid "Security"
+msgstr ""
 
 msgid ""
 "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
@@ -2860,13 +3107,16 @@ msgstr ""
 msgid "Services"
 msgstr "サービス"
 
+msgid "Set additional group memberships for this account."
+msgstr ""
+
 msgid "Set browseable"
 msgstr ""
 
-msgid "Set browseable."
+msgid "Set share password."
 msgstr ""
 
-msgid "Set share password."
+msgid "Set the account's primary group to the given group."
 msgstr ""
 
 msgid "Settings"
@@ -2888,6 +3138,9 @@ msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
 msgid "Shares"
+msgstr ""
+
+msgid "Shell access"
 msgstr ""
 
 msgid "Show log entries in reverse order (newest entries on top)"
@@ -2924,11 +3177,20 @@ msgstr "受信バッファのサイズ (デフォルトは 16384)．"
 msgid "Size of send buffer (16384 by default)."
 msgstr "送信バッファのサイズ (デフォルトは 16384)．"
 
+msgid "Sockets"
+msgstr ""
+
 msgid "Software RAID"
 msgstr "ソフトウェア RAID"
 
 msgid "Software RAID information and status"
 msgstr "ソフトウェア RAID の情報とステータス"
+
+msgid "Sony Playstation 3"
+msgstr ""
+
+msgid "Source directory to be synchronized."
+msgstr ""
 
 msgid "Source share"
 msgstr "接続元共有"
@@ -2969,6 +3231,9 @@ msgstr "通常の MTU は 1500 で，ジャンボフレームでは 9000 を使�
 
 msgid "Standby time"
 msgstr "スタンバイ時間"
+
+msgid "Static Routes"
+msgstr ""
 
 msgid "Static routes"
 msgstr "静的ルート"
@@ -3069,6 +3334,9 @@ msgstr ""
 msgid "TCP port"
 msgstr "TCP ポート"
 
+msgid "TLS + cleartext"
+msgstr ""
+
 msgid "TX rates"
 msgstr "TX レート"
 
@@ -3081,8 +3349,14 @@ msgstr ""
 msgid "Target address"
 msgstr ""
 
+msgid "Target directory."
+msgstr ""
+
 msgid "Target name"
 msgstr "ターゲット名"
+
+msgid "Telegent TG100"
+msgstr ""
 
 msgid "Temperature"
 msgstr "温度"
@@ -3095,12 +3369,6 @@ msgstr ""
 #, php-format
 msgid "The %s port must be a valid port number."
 msgstr "%s ポートは有効なポート番号である必要があります．"
-
-msgid "The Group desc contains invalid characters."
-msgstr "グループの説明に不正な文字が使用されています．"
-
-msgid "The Group name contains invalid characters."
-msgstr "グループ名に不正な文字が使用されています．"
 
 msgid "The IP address that this hostname represents."
 msgstr ""
@@ -3290,6 +3558,12 @@ msgstr "以下の入力エラーが検出されました"
 msgid "The full name contains invalid characters."
 msgstr "フルネームに不正な文字が使用されています．"
 
+msgid "The group description contains invalid characters."
+msgstr ""
+
+msgid "The group name contains invalid characters."
+msgstr ""
+
 msgid ""
 "The host list has been changed.<br>You must apply the changes in order for "
 "them to take effect."
@@ -3340,6 +3614,11 @@ msgid ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
 "port)."
 msgstr "PASV スタイルのデータ接続に割り当てる最小のポート (0 = いずれかのポート)．"
+
+msgid ""
+"The modules has been modified.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
 
 msgid ""
 "The mount point list has been changed.<br>You must apply the changes in "
@@ -3451,24 +3730,20 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This allows  you  to lower the power consumption of the drive, at the "
-"expense of performance.<br><em>Do not set this for CF cards.</em>"
-msgstr "これは，性能の犠牲においてドライブの電力消費量を下げる事が出来ます．<br><em>これを CFカードに設定してはいけません．</em>"
-
-#, php-format
-msgid ""
-"This allows you to set FS type for preformated disk with data.<br><em>Leave "
-"'unformated' for unformated disk and then use <a href=%s>format "
-"menu</a>.</em>"
+"This allows you to lower the power consumption of the drive, at the expense "
+"of performance."
 msgstr ""
-"This allows you to set FS type for preformated disk with "
-"data.<br><em>フォーマットしないディスクに 'unformated' を選択してから <a href=%s>format menu</a> "
-"を使用して下さい．</em>"
+
+msgid "This allows you to set how loud the drive is while it's operating."
+msgstr ""
 
 msgid ""
-"This allows you to set how loud the drive is while it's operating.<br><em>Do "
-"not set this for CF cards.</em>"
-msgstr "オペレーション中のドライブの騒音レベルを設定する事が出来ます．<em>これを CFカードに設定してはいけません．</em>"
+"This allows you to set the file system for preformatted hard disks "
+"containing data."
+msgstr ""
+
+msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
+msgstr ""
 
 msgid "This certificate does not appear to be valid."
 msgstr "この証明書は有効ではありません．"
@@ -3476,7 +3751,7 @@ msgstr "この証明書は有効ではありません．"
 msgid "This controls how the case of filenames are viewed and stored."
 msgstr ""
 
-msgid "This controls the access a remote host has to this share."
+msgid "This controls the access a remote host has to this module."
 msgstr ""
 
 msgid "This controls the access to this share with an access password."
@@ -3510,8 +3785,7 @@ msgstr "この暗号化ディスクはマウントされています．取り外
 
 msgid ""
 "This forces filenames to be restricted to the character set used by Windows. "
-"This is <em>not</em> recommended for shares used principally by Mac "
-"computers."
+"This is not recommended for shares used principally by Mac computers."
 msgstr ""
 
 msgid "This group already exists in the group list."
@@ -3551,18 +3825,53 @@ msgid ""
 msgstr ""
 
 msgid ""
-"This parameter is a comma, space, or tab delimited set of host which are NOT "
+"This option determines if this module should be listed when the client asks "
+"for a listing of available modules. By setting this to false you can create "
+"hidden modules."
+msgstr ""
+
+msgid ""
+"This option is a comma, space, or tab delimited set of host which are NOT "
+"permitted to access this module. Where the lists conflict, the allow list "
+"takes precedence. In the event that it is necessary to deny all by default, "
+"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
+"to the hosts allow parameter those hosts that should be permitted access. "
+"Leave this field empty to use default settings."
+msgstr ""
+
+msgid ""
+"This option is a comma, space, or tab delimited set of host which are NOT "
 "permitted to access this share. Where the lists conflict, the allow list "
 "takes precedence. In the event that it is necessary to deny all by default, "
 "use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
 "to the hosts allow parameter those hosts that should be permitted access. "
-"Leave this field empty to disable this setting."
+"Leave this field empty to use default settings."
 msgstr ""
 
 msgid ""
-"This parameter is a comma, space, or tab delimited set of hosts which are "
-"permitted to access this share. Use the keyword ALL to permit access for "
-"everyone. Leave this field empty to disable this setting."
+"This option is a comma, space, or tab delimited set of hosts which are "
+"permitted to access this module. You can specify the hosts by name or IP "
+"number. Leave this field empty to use default settings."
+msgstr ""
+
+msgid ""
+"This option is a comma, space, or tab delimited set of hosts which are "
+"permitted to access this share. You can specify the hosts by name or IP "
+"number. Leave this field empty to use default settings."
+msgstr ""
+
+msgid ""
+"This option specifies the group name or group ID that file transfers to and "
+"from that module should take place. Leave this field empty to use default "
+"settings."
+msgstr ""
+
+#, php-format
+msgid ""
+"This option specifies the user name or user ID that file transfers to and "
+"from that module should take place. In combination with the '%s' option this "
+"determines what file permissions are available. Leave this field empty to "
+"use default settings."
 msgstr ""
 
 msgid "This parameters will be added to [global] in smb.conf."
@@ -3587,6 +3896,11 @@ msgid ""
 msgstr "%s が <a href=%s>%s</a> を訪れての新しいファームウェアのバージョンチェックをしません．"
 
 msgid "This will create a recycle bin on the share."
+msgstr ""
+
+msgid ""
+"This will erase ALL data on the selected disks! Do not use this option if "
+"you want to add an already existing RAID again."
 msgstr ""
 
 msgid "Time server"
@@ -3617,9 +3931,6 @@ msgstr ""
 msgid "Tools"
 msgstr "ツール"
 
-msgid "Total number of connections allowed to this share."
-msgstr ""
-
 msgid "Traceroute"
 msgstr ""
 
@@ -3635,6 +3946,9 @@ msgstr "Traceroute 出力"
 
 msgid "Traffic graph"
 msgstr "トラフィックグラフ"
+
+msgid "Transfer mode"
+msgstr ""
 
 msgid "Trap host"
 msgstr ""
@@ -3656,9 +3970,6 @@ msgstr "チューニング"
 
 msgid "Type"
 msgstr "タイプ"
-
-msgid "UDMA mode"
-msgstr "UDMA モード"
 
 #, php-format
 msgid ""
@@ -3722,10 +4033,19 @@ msgstr ""
 msgid "Upgrade firmware"
 msgstr "ファームウェアアップグレード"
 
+msgid "Uppercases names in both directions"
+msgstr ""
+
 msgid "Uptime"
 msgstr "稼働時間"
 
+msgid "Use AFP3 unix privileges."
+msgstr ""
+
 msgid "Use SMTP authentication."
+msgstr ""
+
+msgid "Use SSL/TLS encryption layer."
 msgstr ""
 
 msgid ""
@@ -3756,8 +4076,19 @@ msgstr ""
 msgid "Use this option to override the file creation mask (077 by default)."
 msgstr ""
 
+msgid ""
+"Use this option to override the username ('ftp' by default) which will be "
+"used for access to services which are specified as guest. Whatever "
+"privileges this user has will be available to any client connecting to the "
+"guest service. This user must exist in the password file, but does not "
+"require a valid login."
+msgstr ""
+
 msgid "User"
 msgstr "ユーザ"
+
+msgid "User ID"
+msgstr ""
 
 msgid "User full name."
 msgstr "ユーザのフルネーム．"
@@ -3777,11 +4108,17 @@ msgstr "ドメイン管理者アカウントのユーザ名"
 msgid "Users"
 msgstr "ユーザ"
 
+msgid "Users and Groups"
+msgstr "ユーザとグループ"
+
 msgid "VLAN tag"
 msgstr "VLAN タグ"
 
 msgid "Version"
 msgstr "バージョン"
+
+msgid "View license"
+msgstr ""
 
 msgid "Volume Name"
 msgstr "ボリューム名"
@@ -3808,6 +4145,9 @@ msgstr "警告"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "警告: これは %s ログページのロードの際に大幅な遅延が起こる事があります!"
 
+msgid "Web user interface"
+msgstr ""
+
 msgid "WebGUI port"
 msgstr "WebGUI ポート"
 
@@ -3818,9 +4158,6 @@ msgid "Where the working files will be stored"
 msgstr "作業ファイルが保存される場所"
 
 msgid "Who"
-msgstr ""
-
-msgid "Windows Filename Restrictions"
 msgstr ""
 
 msgid "Wireless"
@@ -3838,9 +4175,6 @@ msgstr "作業ディレクトリ"
 msgid "Write only"
 msgstr ""
 
-msgid "XboX 360"
-msgstr ""
-
 msgid "Yes"
 msgstr "Yes"
 
@@ -3849,18 +4183,14 @@ msgid ""
 "command.<br>Example: pkg_add -r packagename"
 msgstr ""
 
-msgid ""
-"You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
-"hard drive."
-msgstr "ハードディスクを使用中 'UDMA_ERROR.... LBA' メッセージが表示された場合，UDMA モードを強制させる事が可能です．"
-
 #, php-format
 msgid ""
 "You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr ""
 
-#, php-format
-msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
+msgid ""
+"You can't unmount a drive which is used by swap file, a iSCSI-target file or "
+"any other running process!"
 msgstr ""
 
 msgid "You have to define some 'Extent' objects first."
@@ -3878,9 +4208,6 @@ msgstr "同期する全てのファイルを複製する為に十分なスペー
 msgid "You must add disks first."
 msgstr "始めにディスクを追加して下さい．"
 
-msgid "You must create a group first."
-msgstr "最初にグループを作成して下さい．"
-
 msgid "You must enter the same IP type for network and gateway."
 msgstr ""
 
@@ -3892,9 +4219,6 @@ msgstr "ファームウェアのアップデートの前にシステムをリブ
 
 msgid "You must select at least one authentication method."
 msgstr "少なくとも 1つの認証方法を選択して下さい．"
-
-msgid "You must select at minium anonymous or/and local user authentication."
-msgstr "少なくとも匿名 又は/且つ ローカルユーザ認証を選択しなければなりません．"
 
 msgid "You must use a passphrase to attach an encrypted disk."
 msgstr "暗号化ディスクを接続する為に，パスフレーズを使用する必要があります．"
@@ -3908,16 +4232,25 @@ msgstr ""
 msgid "Zeroconf"
 msgstr "Zeroconf"
 
+msgid "ZyXEL DMA-1000"
+msgstr ""
+
 msgid "add mount"
 msgstr "マウントの追加"
 
 msgid "built on"
 msgstr ""
 
+msgid "cachecnid"
+msgstr ""
+
 msgid "chroot everyone"
 msgstr ""
 
 msgid "chroot() everyone, but root."
+msgstr ""
+
+msgid "crlf"
 msgstr ""
 
 msgid "day"
@@ -3960,8 +4293,26 @@ msgstr "ミラーリング"
 msgid "months"
 msgstr "月"
 
+msgid "mswindows"
+msgstr ""
+
 msgid "n/a"
 msgstr "n/a"
+
+msgid "noadouble"
+msgstr ""
+
+msgid "nodev"
+msgstr ""
+
+msgid "nofileid"
+msgstr ""
+
+msgid "nohex"
+msgstr ""
+
+msgid "nostat"
+msgstr ""
 
 msgid "password_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
@@ -3970,6 +4321,9 @@ msgid "pasv_max_port"
 msgstr ""
 
 msgid "pasv_min_port"
+msgstr ""
+
+msgid "prodos"
 msgstr ""
 
 msgid "rotated block-interleaved parity"
@@ -3983,6 +4337,9 @@ msgstr "プロセス情報の表示"
 
 msgid "striping"
 msgstr "ストライピング"
+
+msgid "upriv"
+msgstr ""
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
