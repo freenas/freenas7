@@ -175,7 +175,7 @@ function install_harddrive_image($harddrive)
 
 	// Install system files.
 	write_console("Installing system files on disk {$harddrive}s1.\n");
-	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
+	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var --exclude /tmp -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
 	mwexec("/bin/mkdir -p {$mntpath}/var");
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
 	mwexec("/bin/mkdir -p {$mntpath}/mnt");
@@ -275,7 +275,7 @@ function install_upgrade_full($harddrive)
 
 	// Install system files.
 	write_console("Installing system files on disk {$harddrive}s1.\n");
-	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
+	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var --exclude /tmp -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
 	mwexec("/bin/mkdir -p {$mntpath}/var");
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
 	mwexec("/bin/mkdir -p {$mntpath}/mnt");
