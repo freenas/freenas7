@@ -309,7 +309,7 @@ function install_upgrade_full($harddrive)
 function install_backupconfig($disk)
 {
 	global $g;
-	
+
 	$tmp_cf_bak = "/tmp/cf_bak";
 	$mnt_cf_disk = "/mnt/inst_{$disk}";
 
@@ -398,7 +398,7 @@ function install_fdisk2partdisk($harddrive, $size)
 	$diskinfo = disks_get_diskinfo($harddrive);
 
 	// Get valid CHS informations. 'diskinfo' gets values from harddisk firmware that
-	// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63). 
+	// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63).
 	disks_get_chs_info($harddrive, $diskinfo);
 
 	// Check available disk space.
@@ -508,5 +508,103 @@ function install_bsdlabel($harddrive)
 	unlink("{$g['tmp_path']}/label.tmp");
 
 	return 0;
+}
+
+// Detect device where the OS is installed.
+// $mode [in] - Search for 'embedded' or 'full' installation.
+// $info [out] - Array (
+//		[device] => ad0
+//		[partition] => s1
+//		[fstype] => ufs
+//	)
+// Return 0 if successful, otherwise 1
+function install_detect_installation($mode, &$info) {
+	global $g;
+
+	$result = 1;
+	$info = array();
+
+	echo "Try to detect installation...\n";
+
+	// Create temporary mount point.
+	$mnt_cf_disk = "/mnt/inst_cf_tmp";
+	mwexec("/bin/mkdir -p {$mnt_cf_disk}");
+
+	// Scan all disks detected from kernel.
+	$adisk = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
+	foreach ($adisk as $diskv) {
+		// Skip mfs mounted filesystems.
+		if (0 < ereg("md[0-9]*", $diskv))
+			continue;
+
+		// Search on slice 1 for OS installed on disk with install script.
+		if (0 == mwexec("/sbin/mount -r /dev/{$diskv}s1 {$mnt_cf_disk}")) {
+			// Check if configuration file exists.
+			if (file_exists("{$mnt_cf_disk}{$g['cf_conf_path']}/config.xml")) {
+				$info['device'] = $diskv;
+				$info['partition'] = "s1";
+				$info['fstype'] = "ufs";
+			}
+
+			// Check install mode.
+			switch ($mode) {
+				case 'embedded':
+					if (file_exists("{$mnt_cf_disk}/mfsroot.gz")) {
+						$result = 0;
+					}
+					break;
+
+				case 'full':
+					$platform = chop(@file_get_contents("{$mnt_cf_disk}{$g['etc_path']}/platform"));
+					if (FALSE !== ereg("^.*-full", $platform)) {
+						$result = 0;
+					}
+					break;
+			}
+
+			// Umount device.
+			mwexec("/sbin/umount {$mnt_cf_disk}");
+
+			if (0 == $result)
+				break;
+		}
+
+		// Search on partition 'a' for OS IMG image written on disk.
+		if (mwexec("/sbin/mount -r /dev/{$diskv}a {$mnt_cf_disk}") == 0) {
+			// Check if configuration file exists.
+			if (file_exists("{$mnt_cf_disk}{$g['cf_conf_path']}/config.xml")) {
+				$info['device'] = $diskv;
+				$info['partition'] = "a";
+				$info['fstype'] = "ufs";
+			}
+
+			// Check install mode.
+			switch ($mode) {
+				case 'embedded':
+					if (file_exists("{$mnt_cf_disk}/mfsroot.gz")) {
+						$result = 0;
+					}
+					break;
+
+				case 'full':
+					$platform = chop(@file_get_contents("{$mnt_cf_disk}{$g['etc_path']}/platform"));
+					if (FALSE !== ereg("^.*-full", $platform)) {
+						$result = 0;
+					}
+					break;
+			}
+
+			// Umount device.
+			mwexec("/sbin/umount {$mnt_cf_disk}");
+
+			if (0 == $result)
+				break;
+		}
+	}
+
+	// Cleanup.
+	mwexec("/bin/rm -f -r {$mnt_cf_disk}");
+
+	return $result;
 }
 ?>
