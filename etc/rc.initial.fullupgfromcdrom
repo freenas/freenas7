@@ -3,7 +3,7 @@
 /*
 	rc.initial.fullupgfromcdrom
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -39,13 +39,11 @@
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
 
-	echo <<<EOD
-
-{$productname} upgrade from CDROM.
-
-EOD;
+	echo "\n{$productname} upgrade from CDROM.\n";
 
 	/* Search where the config file is installed. */
+	echo "\nSearching configuration...\n";
+
 	$is_full = 0;
 	$not_found = 1;
 
@@ -71,6 +69,9 @@ EOD;
 				$is_full = 1;
 			}
 
+			// Umount device.
+			mwexec("/sbin/umount {$g['cf_path']}");
+
 			if ($cfgdevice)
 				break;
 		}
@@ -91,6 +92,9 @@ EOD;
 				$is_full = 1;
 			}
 
+			// Umount device.
+			mwexec("/sbin/umount {$g['cf_path']}");
+
 			if ($cfgdevice)
 				break;
 		}
@@ -105,6 +109,16 @@ EOD;
 		echo "No 'full' release found!\n";
 		exit(0);
 	}
+
+	echo "{$productname} has been detected on device '{$cfgdevice}'.\n";
+
+	do {
+		echo "Is this is correct? (y/n): ";
+		$valid = chop(fgets($fp));
+		if ($valid === "n") {
+			exit(0);
+		}
+	} while ($valid != "y");
 
 	if (0 == count($cdlist)) {
 		echo "Failed to detect any CDROM.\n";
@@ -124,20 +138,6 @@ EOD;
 			exit(0);
 		}
 	} while (!is_validaliasname($cdrom));
-
-	echo "\n{$productname} has been detected on disk:\n";
-	echo "{$cfgdevice}\n";
-
-	do {
-		echo "\nIs this is correct? (y/n): ";
-		$valid = chop(fgets($fp));
-		if ($valid === "n") {
-			exit(0);
-		}
-	} while ($valid != "y");
-
-	/* Umount configuration device. */
-	mwexec("/sbin/umount -f {$g['cf_path']}");
 
 	if(install_mount_cd($cdrom)) {
 		echo "\nThere was a problem while mounting the CDROM.\n";
@@ -166,8 +166,8 @@ EOD;
 
 	echo <<<EOD
 
-{$productname} installed on {$cfgdevice} has been upgraded.
-You can now remove the CD-ROM and reboot the PC.
+{$productname} installed on device '{$cfgdevice}' has been upgraded.
+You can remove the CD-ROM and reboot the PC now.
 
 Press ENTER to continue.
 

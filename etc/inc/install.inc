@@ -241,7 +241,7 @@ EOD;
 	}
 
 	// Unmount disk containing OS.
-	mwexec("/sbin/umount -f {$mntpath}");
+	mwexec("/sbin/umount {$mntpath}");
 	mwexec("/bin/rm -f {$mntpath}");
 
 	return 0;
@@ -297,7 +297,7 @@ function install_upgrade_full($harddrive)
 	mwexec("/bin/rm -f {$sysbackup}");
 
 	// Unmount disk containing OS.
-	mwexec("/sbin/umount -f {$mntpath}");
+	mwexec("/sbin/umount {$mntpath}");
 	mwexec("/bin/rm -f {$mntpath}");
 
 	return 0;
@@ -334,7 +334,7 @@ function install_backupconfig($disk)
 	}
 
 	/* Unmount the drive to be upgraded. */
-	if (1 == mwexec("/sbin/umount -f /mnt/{$disk}_backup")) {
+	if (1 == mwexec("/sbin/umount /mnt/{$disk}_backup")) {
 		write_console("Error: Failed to umount '/mnt/{$disk}_backup'!\n");
 		return 1;
 	}
@@ -359,7 +359,7 @@ function install_restoreconfig($disk)
 	}
 
 	/* Unmount the upgraded drive. */
-	if (1 == mwexec("/sbin/umount -f /mnt/{$disk}_backup")) {
+	if (1 == mwexec("/sbin/umount /mnt/{$disk}_backup")) {
 		write_console("Error: Failed to umount '/mnt/{$disk}_backup'!\n");
 		return 1;
 	}
