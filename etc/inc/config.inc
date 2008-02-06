@@ -96,7 +96,7 @@ if (is_booting()) {
 
 				// Unmount device if necessary and exit foreach loop.
 				if (true == $found) {
-					mwexec("/sbin/umount -f {$g['cf_path']}");
+					mwexec("/sbin/umount {$g['cf_path']}");
 					break;
 				}
 			}
@@ -122,7 +122,7 @@ if (is_booting()) {
 						$cfgfstype = "ufs";
 					}
 					// Umount device.
-					mwexec("/sbin/umount -f {$g['cf_path']}");
+					mwexec("/sbin/umount {$g['cf_path']}");
 				} else if (0 == mwexec("/sbin/mount -r /dev/{$disk}a {$g['cf_path']}")) { // Search on partition 'a'.
 					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 						$cfgdevice = $disk;
@@ -130,7 +130,7 @@ if (is_booting()) {
 						$cfgfstype = "ufs";
 					}
 					// Umount device.
-					mwexec("/sbin/umount -f {$g['cf_path']}");
+					mwexec("/sbin/umount {$g['cf_path']}");
 				}
 
 				// Device found, exit.
@@ -157,7 +157,7 @@ if (is_booting()) {
 							$cfgfstype = "msdos";
 						}
 						// Umount device.
-						mwexec("/sbin/umount -f {$g['cf_path']}");
+						mwexec("/sbin/umount {$g['cf_path']}");
 					} else if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk} {$g['cf_path']}")) {
 						if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 							$cfgdevice = $disk;
@@ -165,7 +165,7 @@ if (is_booting()) {
 							$cfgfstype = "msdos";
 						}
 						// Umount device.
-						mwexec("/sbin/umount -f {$g['cf_path']}");
+						mwexec("/sbin/umount {$g['cf_path']}");
 					}
 
 					// Device found, exit.
