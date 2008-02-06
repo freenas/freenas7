@@ -36,7 +36,7 @@ else
 		echo
 		echo
 		echo "Console setup"
-		echo "*************"
+		echo "-------------"
 		#echo "0) Logout (SSH only)"
 		echo "1) Assign Interfaces"
 		echo "2) Set LAN IP address"

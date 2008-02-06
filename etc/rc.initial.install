@@ -9,7 +9,7 @@
 while : ; do
 	echo
 	echo "Install"
-	echo "*******"
+	echo "-------"
 	echo "1) Install 'embedded' release on hard drive/flash/USB device:"
 	echo "   - Create 1 partition for OS image"
 	echo "   - Uses a RAM drive to limit read/write access to the device"
