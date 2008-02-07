@@ -3,7 +3,7 @@
 /*
 	rc.initial.install3
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -48,7 +48,7 @@
 
 	echo <<<EOD
 
-{$productname} 'full' installer (not for flash device).
+{$productname} 'full' installer (not for flash devices).
 
 WARNING: There will be some limitations:
 1. This will erase ALL your partitions and data on the destination disk
@@ -69,7 +69,7 @@ EOD;
 	}
 
 	do {
-		echo "\nEnter the name of the CD-ROM drive: ";
+		echo "\nEnter the name of the CDROM drive: ";
 		$cdrom = chop(fgets($fp));
 		if (empty($cdrom)) {
 			exit(0);
@@ -130,7 +130,7 @@ EOD;
 	echo <<<EOD
 
 {$productname} has been installed on {$harddrive}s1.
-You can now remove the CD-ROM and reboot the PC.
+You can now remove the CDROM and reboot the PC.
 
 To use the DATA partition:
 1. Add the disk {$harddrive} on the 'Disks: Management' page.

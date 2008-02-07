@@ -42,19 +42,19 @@
 	echo "\n{$productname} convert and upgrade 'full' installation to 'embedded'.\n\n";
 
 	// Search where the config file is installed.
-	if (0 != install_detect_installation("full", $info)) {
+	if (0 != install_detect_installation("full", $devinfo)) {
 		echo "No 'full' installation detected!\n";
 		exit(0);
 	}
 
-	if ("a" === $info['partition']) {
+	if ("a" === $devinfo['partition']) {
 		echo "A 'full' installation has been detected, but on invalid slice.\n";
-		echo "Converting to 'embedded' is impossible. Please backup your configuration\n";
+		echo "Convertion to 'embedded' is impossible. Please backup your configuration via WebGUI\n";
 		echo "and reinstall as 'embedded'.";
 		exit(0);
 	}
 
-	echo "{$productname} has been detected on device '{$info['device']}'.\n";
+	echo "{$productname} has been detected on device '{$devinfo['device']}'.\n";
 
 	do {
 		echo "Is this is correct? (y/n): ";
@@ -76,7 +76,7 @@
 	}
 
 	do {
-		echo "\nEnter the name of the CD-ROM drive: ";
+		echo "\nEnter the name of the CDROM drive: ";
 		$cdrom = chop(fgets($fp));
 		if (empty($cdrom)) {
 			exit(0);
@@ -90,19 +90,19 @@
 		exit(0);
 	}
 
-	if (install_backupconfig("{$info['device']}{$info['partition']}")) {
+	if (install_backup_config("{$devinfo['device']}{$devinfo['partition']}")) {
 		echo "\nThere was a problem during configuration file backup.\n";
 		install_unmount_cd();
 		exit(0);
 	}
 
-	if (install_dd_image("{$info['device']}{$info['partition']}")) {
+	if (install_dd_image("{$devinfo['device']}{$devinfo['partition']}")) {
 		echo "\nThere was a problem while copying files.\n";
 		install_unmount_cd();
 		exit(0);
 	}
 
-	if (install_restoreconfig("{$info['device']}{$info['partition']}")) {
+	if (install_restore_config("{$devinfo['device']}{$devinfo['partition']}")) {
 		echo "\nThere was a problem while restoring configuration file.\n";
 		install_unmount_cd();
 		exit(0);
@@ -112,8 +112,8 @@
 
 	echo <<<EOD
 
-{$productname} installed on device '{$info['device']}{$info['partition']}' has been converted/upgraded.
-You can remove the CD-ROM and reboot the PC now.
+{$productname} installed on device '{$devinfo['device']}{$devinfo['partition']}' has been converted and upgraded.
+You can remove the CDROM and reboot the PC now.
 
 Press ENTER to continue.
 

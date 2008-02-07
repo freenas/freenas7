@@ -306,7 +306,7 @@ function install_upgrade_full($harddrive)
 
 // Backup the configuration file on the hard drive/CF and unmount this drive.
 // Return 0 if successful, otherwise 1
-function install_backupconfig($disk)
+function install_backup_config($disk)
 {
 	global $g;
 
@@ -334,7 +334,7 @@ function install_backupconfig($disk)
 	}
 
 	/* Backup the configuration file. */
-	if (1 == mwexec("/bin/cp -p {$mnt_cf_disk}{$g['cf_conf_path']}/config.xml {$tmp_cf_bak}")) {
+	if (1 == mwexec("/bin/cp -p {$mnt_cf_disk}/conf/config.xml {$tmp_cf_bak}")) {
 		write_console("Error: Failed to backup the configuration file!\n");
 		return 1;
 	}
@@ -348,7 +348,7 @@ function install_backupconfig($disk)
 	return 0;
 }
 
-function install_restoreconfig($disk)
+function install_restore_config($disk)
 {
 	global $g;
 
@@ -364,7 +364,7 @@ function install_restoreconfig($disk)
 	}
 
 	/* Restore the configuration file. */
-	if (1 == mwexec("/bin/cp -p {$tmp_cf_bak}/config.xml {$mnt_cf_disk}{$g['cf_conf_path']}")) {
+	if (1 == mwexec("/bin/cp -p {$tmp_cf_bak}/config.xml {$mnt_cf_disk}/conf")) {
 		write_console("Error: Failed to restore the configuration file!\n");
 		return 1;
 	}
@@ -512,17 +512,16 @@ function install_bsdlabel($harddrive)
 
 // Detect device where the OS is installed.
 // $mode [in] - Search for 'embedded' or 'full' installation.
-// $info [out] - Array (
+// $devinfo [out] - Array (
 //		[device] => ad0
 //		[partition] => s1
-//		[fstype] => ufs
 //	)
 // Return 0 if successful, otherwise 1
-function install_detect_installation($mode, &$info) {
+function install_detect_installation($mode, &$devinfo) {
 	global $g;
 
 	$result = 1;
-	$info = array();
+	$devinfo = array();
 
 	echo "Try to detect installation...\n";
 
@@ -541,9 +540,8 @@ function install_detect_installation($mode, &$info) {
 		if (0 == mwexec("/sbin/mount -r /dev/{$diskv}s1 {$mnt_cf_disk}")) {
 			// Check if configuration file exists.
 			if (file_exists("{$mnt_cf_disk}{$g['cf_conf_path']}/config.xml")) {
-				$info['device'] = $diskv;
-				$info['partition'] = "s1";
-				$info['fstype'] = "ufs";
+				$devinfo['device'] = $diskv;
+				$devinfo['partition'] = "s1";
 			}
 
 			// Check install mode.
@@ -573,9 +571,8 @@ function install_detect_installation($mode, &$info) {
 		if (mwexec("/sbin/mount -r /dev/{$diskv}a {$mnt_cf_disk}") == 0) {
 			// Check if configuration file exists.
 			if (file_exists("{$mnt_cf_disk}{$g['cf_conf_path']}/config.xml")) {
-				$info['device'] = $diskv;
-				$info['partition'] = "a";
-				$info['fstype'] = "ufs";
+				$devinfo['device'] = $diskv;
+				$devinfo['partition'] = "a";
 			}
 
 			// Check install mode.
