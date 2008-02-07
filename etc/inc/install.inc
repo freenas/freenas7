@@ -165,8 +165,9 @@ function install_harddrive_image($harddrive)
 {
 	global $g;
 
-	// Mount disk used to install OS.
 	$mntpath = "/mnt/inst_{$harddrive}";
+
+	// Mount disk used to install OS.
 	mwexec("/bin/mkdir -p {$mntpath}");
 	if (1 == mwexec("/sbin/mount /dev/{$harddrive}s1a {$mntpath}")) {
 		write_console("Error: Failed to mount '/dev/{$harddrive}s1a'!\n");
@@ -179,6 +180,7 @@ function install_harddrive_image($harddrive)
 	mwexec("/bin/mkdir -p {$mntpath}/var");
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
 	mwexec("/bin/mkdir -p {$mntpath}/mnt");
+	mwexec("/bin/mkdir -p {$mntpath}/tmp");
 	mwexec("/bin/mkdir -p {$mntpath}/boot/defaults");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/* {$mntpath}/boot");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* {$mntpath}/boot/defaults");
@@ -279,6 +281,7 @@ function install_upgrade_full($harddrive)
 	mwexec("/bin/mkdir -p {$mntpath}/var");
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
 	mwexec("/bin/mkdir -p {$mntpath}/mnt");
+	mwexec("/bin/mkdir -p {$mntpath}/tmp");
 	mwexec("/bin/mkdir -p {$mntpath}/boot/defaults");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/* {$mntpath}/boot");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* {$mntpath}/boot/defaults");
