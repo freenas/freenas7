@@ -39,83 +39,15 @@
 	$cdlist = get_cdrom_list();
 	$disklist = get_physical_disks_list();
 
-	echo "\n{$productname} upgrade from CDROM.\n";
+	echo "\n{$productname} upgrade from CDROM.\n\n";
 
-	/* Search where the config file is installed. */
-	echo "\nSearching configuration...\n";
-
-	$is_embedded = 0;
-	$not_found = 1;
-
-	$mnt_cf_disk = "/mnt/inst_cf_tmp";
-	mwexec("/bin/mkdir -p {$mnt_cf_disk}");
-
-	$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
-	foreach ($disks as $mountdisk) {
-		/* Skip mfs mounted filesystems. */
-		if (0 < ereg("md[0-9]*", $mountdisk))
-			continue;
-
-		/* Search on slice 1 for OS installed on disk with install script. */
-		if (0 == mwexec("/sbin/mount -r /dev/{$mountdisk}s1 {$mnt_cf_disk}")) {
-			// Check if configuration file exists.
-			if (file_exists("{$mnt_cf_disk}{$g['cf_conf_path']}/config.xml")) {
-				$cfgdevice = $mountdisk;
-				$cfgpartition = $cfgdevice . "s1";
-				$cfgfstype = "ufs";
-				$slice = 1;
-				$not_found = 0;
-			}
-
-			// Check install mode.
-			if (file_exists("{$mnt_cf_disk}/mfsroot.gz")) {
-				$is_embedded = 1;
-			}
-
-			// Umount device.
-			mwexec("/sbin/umount -f {$mnt_cf_disk}");
-
-			if ($cfgdevice)
-				break;
-		}
-
-		/* Search on partition 'a' for OS IMG image written on disk */
-		if (mwexec("/sbin/mount -r /dev/{$mountdisk}a {$mnt_cf_disk}") == 0) {
-			// Check if configuration file exists.
-			if (file_exists("{$mnt_cf_disk}{$g['cf_conf_path']}/config.xml")) {
-				$cfgdevice = $mountdisk;
-				$cfgpartition = $cfgdevice . "a";
-				$cfgfstype = "ufs";
-				$slice = 0;
-				$not_found = 0;
-			}
-
-			// Check install mode.
-			if (file_exists("{$mnt_cf_disk}/mfsroot.gz")) {
-				$is_embedded = 1;
-			}
-
-			// Umount device.
-			mwexec("/sbin/umount -f {$mnt_cf_disk}");
-
-			if ($cfgdevice)
-				break;
-		}
-	}
-
-	mwexec("/bin/rm -f -r {$mnt_cf_disk}");
-
-	if ($not_found) {
-		echo "No configuration found!\n";
+	// Search where the config file is installed.
+	if (0 != install_detect_installation("embedded", $devinfo)) {
+		echo "No 'embedded' installation detected!\n";
 		exit(0);
 	}
 
-	if (!$is_embedded) {
-		echo "No 'embedded' installation found!\n";
-		exit(0);
-	}
-
-	echo "{$productname} has been detected on device '{$cfgdevice}'.\n";
+	echo "{$productname} has been detected on device '{$devinfo['device']}'.\n";
 
 	do {
 		echo "Is this is correct? (y/n): ";
@@ -137,7 +69,7 @@
 	}
 
 	do {
-		echo "\nEnter the name of the CD-ROM drive: ";
+		echo "\nEnter the name of the CDROM drive: ";
 		$cdrom = chop(fgets($fp));
 		if (empty($cdrom)) {
 			exit(0);
@@ -146,33 +78,33 @@
 
 	echo "\n";
 
-	if(install_mount_cd($cdrom)) {
+	if (install_mount_cd($cdrom)) {
 		echo "\nThere was a problem while mounting the CDROM.\n";
 		exit(0);
 	}
 
-	if(install_backupconfig($cfgpartition)) {
+	if (install_backup_config("{$devinfo['device']}{$devinfo['partition']}")) {
 		echo "\nThere was a problem during configuration file backup.\n";
 		install_unmount_cd();
 		exit(0);
 	}
 
 	/* Must install on ad0s1 if installed on partition 1, but install on ad0 if installed on ad0a */
-	if ($slice) {
-		if(install_dd_image($cfgpartition)) {
+	if ("s1" === $devinfo['partition']) {
+		if (install_dd_image("{$devinfo['device']}{$devinfo['partition']}")) {
 			echo "\nThere was a problem while copying files.\n";
 			install_unmount_cd();
 			exit(0);
 		}
 	}	else {
-		if(install_dd_image($cfgdevice)) {
+		if (install_dd_image($devinfo['device'])) {
 			echo "\nThere was a problem while copying files.\n";
 			install_unmount_cd();
 			exit(0);
 		}
 	}
 
-	if(install_restoreconfig($cfgpartition)) {
+	if (install_restore_config("{$devinfo['device']}{$devinfo['partition']}")) {
 		echo "\nThere was a problem while restoring configuration file.\n";
 		install_unmount_cd();
 		exit(0);
@@ -182,8 +114,8 @@
 
 	echo <<<EOD
 
-{$productname} installed on device '{$cfgpartition}' has been upgraded.
-You can remove the CD-ROM and reboot the PC now.
+{$productname} installed on device '{$devinfo['device']}{$devinfo['partition']}' has been upgraded.
+You can remove the CDROM and reboot the PC now.
 
 Press ENTER to continue.
 
