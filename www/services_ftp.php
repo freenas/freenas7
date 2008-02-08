@@ -91,26 +91,27 @@ if ($_POST) {
 		if (!is_port($_POST['port'])) {
 			$input_errors[] = gettext("The TCP port must be a valid port number.");
 		}
+
 		if ((1 > $_POST['numberclients']) || (50 < $_POST['numberclients'])) {
 			$input_errors[] = gettext("The number of clients must be between 1 and 50.");
 		}
+
 		if (0 > $_POST['maxconperip']) {
 			$input_errors[] = gettext("The max. connection per IP must be either 0 (unlimited) or greater.");
 		}
+
 		if (!is_numericint($_POST['timeout'])) {
 			$input_errors[] = gettext("The maximum idle time be a number.");
 		}
-		if ($_POST['pasv_address']) {
-			if (!is_ipaddr($_POST['pasv_address'])) {
-				$input_errors[] = gettext("The pasv address must be a public IP address.");
-			}
-		}
+
 		if (!("0" === $_POST['pasv_min_port']) && !is_port($_POST['pasv_min_port'])) {
 			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_min_port"));
 		}
+
 		if (!("0" === $_POST['pasv_max_port']) && !is_port($_POST['pasv_max_port'])) {
 			$input_errors[] = sprintf(gettext("The %s port must be a valid port number."), gettext("pasv_max_port"));
 		}
+
 		if ($_POST['anonymousonly'] && $_POST['localusersonly']) {
 			$input_errors[] = gettext("It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously.");
 		}
