@@ -122,19 +122,15 @@ if ($_GET['act'] == "del") {
             <td class="listbg"><?=htmlspecialchars(isset($modulev['list'])?gettext("Yes"):gettext("No"));?></td>
             <td class="listbg"><?=htmlspecialchars($modulev['rwmode']);?>&nbsp;</td>
             <td valign="middle" nowrap class="list">
-              <?php if(isset($config['rsyncd']['enable'])):?>
               <a href="services_rsyncd_module_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit module");?>" width="17" height="17" border="0"></a>
               <a href="services_rsyncd_module.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this module?");?>')"><img src="x.gif" title="<?=gettext("Delete module");?>" width="17" height="17" border="0"></a>
-              <?php endif;?>
             </td>
           </tr>
           <?php $i++; endforeach;?>
-          <?php if(isset($config['rsyncd']['enable'])):?>
           <tr>
             <td class="list" colspan="5"></td>
             <td class="list"><a href="services_rsyncd_module_edit.php"><img src="plus.gif" title="<?=gettext("Add module");?>" width="17" height="17" border="0"></a></td>
           </tr>
-          <?php endif;?>
         </table>
       </form>
     </td>

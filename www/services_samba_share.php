@@ -2,11 +2,11 @@
 <?php
 /*
 	services_samba_share.php
-	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -111,19 +111,15 @@ if ($_GET['act'] == "del") {
             <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
             <td class="listbg"><?=htmlspecialchars(isset($sharev['browseable'])?gettext("Yes"):gettext("No"));?></td>
             <td valign="middle" nowrap class="list">
-              <?php if(isset($config['samba']['enable'])):?>
               <a href="services_samba_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" width="17" height="17" border="0"></a>
               <a href="services_samba_share.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" width="17" height="17" border="0"></a>
-              <?php endif;?>
             </td>
           </tr>
           <?php $i++; endforeach;?>
-          <?php if(isset($config['samba']['enable'])):?>
           <tr> 
             <td class="list" colspan="4"></td>
             <td class="list"><a href="services_samba_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" width="17" height="17" border="0"></a></td>
           </tr>
-          <?php endif;?>
         </table>
       </form>
     </td>
