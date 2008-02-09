@@ -54,11 +54,11 @@ if ($_POST) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-			$retval |= rc_update_service("rpcbind"); // !!! Do
-			$retval |= rc_update_service("mountd");  // !!! not
-			$retval |= rc_update_service("nfsd");    // !!! change
-			$retval |= rc_update_service("statd");   // !!! this
-			$retval |= rc_update_service("lockd");   // !!! order
+		$retval |= rc_update_service("rpcbind"); // !!! Do
+		$retval |= rc_update_service("mountd");  // !!! not
+		$retval |= rc_update_service("nfsd");    // !!! change
+		$retval |= rc_update_service("statd");   // !!! this
+		$retval |= rc_update_service("lockd");   // !!! order
 		$retval |= rc_update_service("mdnsresponder");
 		config_unlock();
 	}
@@ -84,14 +84,6 @@ if ("del" === $_GET['act']) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
-<!--
-function enable_change(enable_change) {
-	var endis = !(document.iform.enable.checked || enable_change);
-  document.iform.mapall.disabled = endis;
-}
-//-->
-</script>
 <form action="services_nfs.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
@@ -119,28 +111,26 @@ function enable_change(enable_change) {
 						<td width="78%" class="vtable">
 					    <table width="100%" border="0" cellpadding="0" cellspacing="0">
 					      <tr>
-					        <td width="45%" class="listhdrr"><?=gettext("Path");?></td>
-					        <td width="45%" class="listhdrr"><?=gettext("Comment");?></td>
+					        <td width="30%" class="listhdrr"><?=gettext("Path");?></td>
+					        <td width="30%" class="listhdrr"><?=gettext("Network");?></td>
+					        <td width="30%" class="listhdrr"><?=gettext("Comment");?></td>
 					        <td width="10%" class="list"></td>
 					      </tr>
 							  <?php $i = 0; foreach ($a_share as $sharev):?>
 					      <tr>
 					        <td class="listr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
+					        <td class="listr"><?=htmlspecialchars($sharev['network']);?>&nbsp;</td>
 					        <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
 					        <td valign="middle" nowrap class="list">
-					          <?php if(isset($config['nfsd']['enable'])):?>
 					          <a href="services_nfs_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" width="17" height="17" border="0"></a>
 					          <a href="services_nfs.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" width="17" height="17" border="0"></a>
-					          <?php endif;?>
 					        </td>
 					      </tr>
 					      <?php $i++; endforeach;?>
-					      <?php if (isset($config['nfsd']['enable'])):?>
 					      <tr>
-					        <td class="list" colspan="2"></td>
+					        <td class="list" colspan="3"></td>
 					        <td class="list"><a href="services_nfs_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" width="17" height="17" border="0"></a></td>
 					      </tr>
-					      <?php endif;?>
 					    </table>
 					  </td>
 					</tr>
@@ -155,9 +145,4 @@ function enable_change(enable_change) {
 		</tr>
 	</table>
 </form>
-<script language="JavaScript">
-<!--
-enable_change(false);
-//-->
-</script>
 <?php include("fend.inc");?>
