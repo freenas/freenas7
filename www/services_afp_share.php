@@ -109,19 +109,15 @@ if ($_GET['act'] == "del") {
             <td class="listr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
             <td valign="middle" nowrap class="list">
-              <?php if(isset($config['afp']['enable'])):?>
               <a href="services_afp_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" width="17" height="17" border="0"></a>
               <a href="services_afp_share.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" width="17" height="17" border="0"></a>
-              <?php endif;?>
             </td>
           </tr>
           <?php $i++; endforeach;?>
-          <?php if (isset($config['afp']['enable'])):?>
           <tr>
             <td class="list" colspan="3"></td>
             <td class="list"><a href="services_afp_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" width="17" height="17" border="0"></a></td>
           </tr>
-          <?php endif;?>
         </table>
       </form>
       <p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
