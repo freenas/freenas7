@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 #
 # Service types definition: http://www.dns-sd.org/ServiceTypes.html
@@ -72,10 +72,10 @@ create_conf()
 			-v "//sshd/port" -n \
 			-n \
 		-b \
-		-i "count(//ftp/enable) > 0" \
+		-i "count(//ftpd/enable) > 0" \
 			-v "concat(//system/hostname,' FTP Service')" -n \
 			-o "_ftp._tcp. local." -n \
-			-v "//ftp/port" -n \
+			-v "//ftpd/port" -n \
 			-n \
 		-b \
 		-i "count(//samba/enable) > 0" \

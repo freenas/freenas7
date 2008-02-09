@@ -1198,6 +1198,15 @@ function config_upgrade() {
 		$config['version'] = "4.2";
 	}
 
+	/* Convert 4.2 -> 4.3 */
+	/* Rename attribute //ftp to //ftpd. */
+	if ($config['version'] === "4.2") {
+		$config['ftpd'] = $config['ftp'];
+		unset($config['ftp']);
+
+		$config['version'] = "4.3";
+	}
+
 	write_config();
 
 	if (is_booting())

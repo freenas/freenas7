@@ -35,42 +35,42 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"), gettext("FTP"));
 
-if (!is_array($config['ftp'])) {
-	$config['ftp'] = array();
+if (!is_array($config['ftpd'])) {
+	$config['ftpd'] = array();
 }
 
-$pconfig['enable'] = isset($config['ftp']['enable']);
-$pconfig['port'] = $config['ftp']['port'];
-$pconfig['numberclients'] = $config['ftp']['numberclients'];
-$pconfig['maxconperip'] = $config['ftp']['maxconperip'];
-$pconfig['timeout'] = $config['ftp']['timeout'];
-$pconfig['anonymousonly'] = isset($config['ftp']['anonymousonly']);
-$pconfig['localusersonly'] = isset($config['ftp']['localusersonly']);
-$pconfig['pasv_max_port'] = $config['ftp']['pasv_max_port'];
-$pconfig['pasv_min_port'] = $config['ftp']['pasv_min_port'];
-$pconfig['pasv_address'] = $config['ftp']['pasv_address'];
+$pconfig['enable'] = isset($config['ftpd']['enable']);
+$pconfig['port'] = $config['ftpd']['port'];
+$pconfig['numberclients'] = $config['ftpd']['numberclients'];
+$pconfig['maxconperip'] = $config['ftpd']['maxconperip'];
+$pconfig['timeout'] = $config['ftpd']['timeout'];
+$pconfig['anonymousonly'] = isset($config['ftpd']['anonymousonly']);
+$pconfig['localusersonly'] = isset($config['ftpd']['localusersonly']);
+$pconfig['pasv_max_port'] = $config['ftpd']['pasv_max_port'];
+$pconfig['pasv_min_port'] = $config['ftpd']['pasv_min_port'];
+$pconfig['pasv_address'] = $config['ftpd']['pasv_address'];
 
-if ($config['ftp']['filemask']) {
-	$pconfig['filemask'] = $config['ftp']['filemask'];
+if ($config['ftpd']['filemask']) {
+	$pconfig['filemask'] = $config['ftpd']['filemask'];
 } else {
 	$pconfig['filemask'] = "077";
 }
 
-if ($config['ftp']['directorymask']) {
-	$pconfig['directorymask'] = $config['ftp']['directorymask'];
+if ($config['ftpd']['directorymask']) {
+	$pconfig['directorymask'] = $config['ftpd']['directorymask'];
 } else {
 	$pconfig['directorymask'] = "022";
 }
 
-$pconfig['banner'] = $config['ftp']['banner'];
-$pconfig['natmode'] = isset($config['ftp']['natmode']);
-$pconfig['fxp'] = isset($config['ftp']['fxp']);
-$pconfig['keepallfiles'] = isset($config['ftp']['keepallfiles']);
-$pconfig['permitrootlogin'] = isset($config['ftp']['permitrootlogin']);
-$pconfig['chrooteveryone'] = isset($config['ftp']['chrooteveryone']);
-$pconfig['tls'] = $config['ftp']['tls'];
-$pconfig['privatekey'] = base64_decode($config['ftp']['privatekey']);
-$pconfig['certificate'] = base64_decode($config['ftp']['certificate']);
+$pconfig['banner'] = $config['ftpd']['banner'];
+$pconfig['natmode'] = isset($config['ftpd']['natmode']);
+$pconfig['fxp'] = isset($config['ftpd']['fxp']);
+$pconfig['keepallfiles'] = isset($config['ftpd']['keepallfiles']);
+$pconfig['permitrootlogin'] = isset($config['ftpd']['permitrootlogin']);
+$pconfig['chrooteveryone'] = isset($config['ftpd']['chrooteveryone']);
+$pconfig['tls'] = $config['ftpd']['tls'];
+$pconfig['privatekey'] = base64_decode($config['ftpd']['privatekey']);
+$pconfig['certificate'] = base64_decode($config['ftpd']['certificate']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -118,27 +118,27 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$config['ftp']['numberclients'] = $_POST['numberclients'];
-		$config['ftp']['maxconperip'] = $_POST['maxconperip'];
-		$config['ftp']['timeout'] = $_POST['timeout'];
-		$config['ftp']['port'] = $_POST['port'];
-		$config['ftp']['anonymousonly'] = $_POST['anonymousonly'] ? true : false;
-		$config['ftp']['localusersonly'] = $_POST['localusersonly'] ? true : false;
-		$config['ftp']['pasv_max_port'] = $_POST['pasv_max_port'];
-		$config['ftp']['pasv_min_port'] = $_POST['pasv_min_port'];
-		$config['ftp']['pasv_address'] = $_POST['pasv_address'];
-		$config['ftp']['banner'] = $_POST['banner'];
-		$config['ftp']['filemask'] = $_POST['filemask'];
-		$config['ftp']['directorymask'] = $_POST['directorymask'];
-		$config['ftp']['fxp'] = $_POST['fxp'] ? true : false;
-		$config['ftp']['natmode'] = $_POST['natmode'] ? true : false;
-		$config['ftp']['keepallfiles'] = $_POST['keepallfiles'] ? true : false;
-		$config['ftp']['permitrootlogin'] = $_POST['permitrootlogin'] ? true : false;
-		$config['ftp']['chrooteveryone'] = $_POST['chrooteveryone'] ? true : false;
-		$config['ftp']['tls'] = $_POST['tls'];
-		$config['ftp']['privatekey'] = base64_encode($_POST['privatekey']);
-		$config['ftp']['certificate'] = base64_encode($_POST['certificate']);
-		$config['ftp']['enable'] = $_POST['enable'] ? true : false;
+		$config['ftpd']['numberclients'] = $_POST['numberclients'];
+		$config['ftpd']['maxconperip'] = $_POST['maxconperip'];
+		$config['ftpd']['timeout'] = $_POST['timeout'];
+		$config['ftpd']['port'] = $_POST['port'];
+		$config['ftpd']['anonymousonly'] = $_POST['anonymousonly'] ? true : false;
+		$config['ftpd']['localusersonly'] = $_POST['localusersonly'] ? true : false;
+		$config['ftpd']['pasv_max_port'] = $_POST['pasv_max_port'];
+		$config['ftpd']['pasv_min_port'] = $_POST['pasv_min_port'];
+		$config['ftpd']['pasv_address'] = $_POST['pasv_address'];
+		$config['ftpd']['banner'] = $_POST['banner'];
+		$config['ftpd']['filemask'] = $_POST['filemask'];
+		$config['ftpd']['directorymask'] = $_POST['directorymask'];
+		$config['ftpd']['fxp'] = $_POST['fxp'] ? true : false;
+		$config['ftpd']['natmode'] = $_POST['natmode'] ? true : false;
+		$config['ftpd']['keepallfiles'] = $_POST['keepallfiles'] ? true : false;
+		$config['ftpd']['permitrootlogin'] = $_POST['permitrootlogin'] ? true : false;
+		$config['ftpd']['chrooteveryone'] = $_POST['chrooteveryone'] ? true : false;
+		$config['ftpd']['tls'] = $_POST['tls'];
+		$config['ftpd']['privatekey'] = base64_encode($_POST['privatekey']);
+		$config['ftpd']['certificate'] = base64_encode($_POST['certificate']);
+		$config['ftpd']['enable'] = $_POST['enable'] ? true : false;
 
 		write_config();
 
