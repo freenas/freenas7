@@ -3,7 +3,7 @@
 /*
 	access_users_groups_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -51,6 +51,10 @@ if (isset($id) && $a_group[$id]) {
 	$pconfig['groupid'] = $a_group[$id]['id'];
 	$pconfig['name'] = $a_group[$id]['name'];
 	$pconfig['desc'] = $a_group[$id]['desc'];
+} else {
+	$pconfig['groupid'] = get_nextgroup_id();
+	$pconfig['name'] = "";
+	$pconfig['desc'] = "";
 }
 
 if ($_POST) {
@@ -70,25 +74,31 @@ if ($_POST) {
 		$input_errors[] = gettext("The group description contains invalid characters.");
 	}
 
-	/* check for name conflicts */
-	if (is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system)) {
+	// Check for name conflicts. Only check if group is created.
+	if (!isset($id) && is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system)) {
 		$input_errors[] = gettext("This group already exists in the group list.");
+	}
+
+	// Validate ID range. Only check if group is created.
+	if (!isset($id) && (intval($_POST['groupid']) < 1001)) {
+		$input_errors[] = gettext("The group ID must be > 1001.");
+	}
+
+	// Validate if ID is unique. Only check if user is created.
+	if (!isset($id) && (false !== array_search_ex($_POST['groupid'], $a_group, "id"))) {
+		$input_errors[] = gettext("The unique group ID is already used.");
 	}
 
 	if (!$input_errors) {
 		$groups = array();
 
+		$groups['id'] = $_POST['groupid'];
 		$groups['name'] = $_POST['name'];
 		$groups['desc'] = $_POST['desc'];
 
 		if (isset($id) && $a_group[$id]) {
-			$groups['id'] = $_POST['groupid'];
 			$a_group[$id] = $groups;
 		} else {
-			// Get next group id.
-			exec("/usr/sbin/pw groupnext", $output);
-
-			$groups['id'] = $output[0];
 			$a_group[] = $groups;
 		}
 
@@ -99,6 +109,29 @@ if ($_POST) {
 		header("Location: access_users_groups.php");
 		exit;
 	}
+}
+
+// Get next group id.
+// Return next free user id.
+function get_nextgroup_id() {
+	global $config;
+
+	// Get next free user id.
+	exec("/usr/sbin/pw groupnext", $output);
+	$output = explode(":", $output[0]);
+	$id = $output[0];
+
+	// Check if id is already in usage. If the user did not press the 'Apply'
+	// button 'pw' did not recognize that there are already several new users
+	// configured because the user db is not updated until 'Apply' is pressed.
+	$a_group = $config['access']['group'];
+	if (false !== array_search_ex($id, $a_group, "id")) {
+		do {
+			$id++; // Increase id until a unused one is found.
+		} while (false !== array_search_ex($id, $a_group, "id")); 
+	}
+
+	return $id;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -119,15 +152,22 @@ if ($_POST) {
 		      <tr>
 		        <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 		        <td width="78%" class="vtable">
-		          <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>"><br>
-							<?=gettext("Group name.");?>
+		          <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly";?>><br>
+							<span class="vexpl"><?=gettext("Group name.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Group ID");?></td>
+						<td width="78%" class="vtable">
+							<input name="groupid" type="text" class="formfld" id="groupid" size="20" value="<?=htmlspecialchars($pconfig['groupid']);?>" <?php if (isset($id)) echo "readonly";?>></br>
+							<span class="vexpl"><?=gettext("Unique group numeric id.");?></span>
 						</td>
 					</tr>
 					<tr>
 		        <td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
 		        <td width="78%" class="vtable">
 		          <input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"><br>
-							<?=gettext("Group description.");?>
+							<span class="vexpl"><?=gettext("Group description.");?></span>
 						</td>
 					</tr>
 					<tr>
@@ -135,7 +175,6 @@ if ($_POST) {
 		        <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>">
 		          <?php if (isset($id) && $a_group[$id]):?>
 		          <input name="id" type="hidden" value="<?=$id;?>">
-		          <input name="groupid" type="hidden" value="<?=$pconfig['groupid'];?>">
 		          <?php endif;?>
 		        </td>
 		      </tr>
