@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>4.2</version>
+	<version>4.3</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -257,7 +257,7 @@
 		</share>
 		-->
 	</samba>
-	<ftp>
+	<ftpd>
 		<!-- <enable/> -->
 		<numberclients>5</numberclients>
 		<maxconperip>2</maxconperip>
@@ -277,7 +277,7 @@
 		<localusersonly/>
 		<tls>0:no TLS|1:TLS+cleartext|2:enforce TLS</tls>
 		-->
-	</ftp>
+	</ftpd>
 	<afp>
 		<!--
 		<enable/>

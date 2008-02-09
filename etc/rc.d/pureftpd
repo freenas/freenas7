@@ -5,7 +5,7 @@
 # PROVIDE: pureftpd
 # REQUIRE: DAEMON
 # KEYWORD: shutdown
-# XQUERY: -i "count(//ftp/enable) > 0" -o "0" -b
+# XQUERY: -i "count(//ftpd/enable) > 0" -o "0" -b
 # RCVAR: pureftpd
 
 . /etc/rc.subr
@@ -28,7 +28,7 @@ start_precmd()
 	local _banner _productname _tls _certificate _privatekey
 
 	# Create /mnt/.banner file.
-	_banner=`configxml_get "//ftp/banner"`
+	_banner=`configxml_get "//ftpd/banner"`
 	if [ -z "${_banner}" ]; then
 		_productname=`cat /etc/prd.name`
 		echo "Welcome to ${_productname} FTP service" > /mnt/.banner
@@ -37,10 +37,10 @@ start_precmd()
 	fi
 
 	# Create SSL/TLS certificate.
-	_tls=`configxml_get "//ftp/tls"`
+	_tls=`configxml_get "//ftpd/tls"`
 	if [ "0" != "${_tls}" ]; then
-		_certificate=`configxml_get "//ftp/certificate"`
-		_privatekey=`configxml_get "//ftp/privatekey"`
+		_certificate=`configxml_get "//ftpd/certificate"`
+		_privatekey=`configxml_get "//ftpd/privatekey"`
 
 		# Create /var/etc/ssl/private/pure-ftpd.pem file.
 		if [ -n "${_certificate}" -a -n "${_privatekey}" ]; then

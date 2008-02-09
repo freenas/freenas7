@@ -62,7 +62,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("FTP us
   <tr>
     <td class="tabcont">
       <?php
-	   if (!isset($config['ftp']['enable'])) {
+	   if (!isset($config['ftpd']['enable'])) {
       	echo "<strong>".gettext("FTP Server disabled")."</strong><br><br>";
       } else {
 		echo("<pre>");
