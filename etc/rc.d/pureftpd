@@ -60,7 +60,7 @@ start_precmd()
 	fi
 
 	# Set command args.
-	command_args=`/usr/local/bin/xml sel -t -m "/${configxml_root}/ftp" \
+	command_args=`/usr/local/bin/xml sel -t -m "//ftpd" \
 		-v "concat('-S ',port)" \
 		-v "concat(' -c ',numberclients)" \
 		-v "concat(' -I ',timeout)" \
