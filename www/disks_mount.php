@@ -53,10 +53,11 @@ if ($_POST) {
 			$retval |= rc_update_service("samba");
 			$retval |= rc_update_service("rsyncd");
 			$retval |= rc_update_service("afpd");
-			$retval |= rc_update_service("rpcbind");    // !!! Do not
-			$retval |= rc_update_service("mountd");     // !!! change
-			$retval |= rc_update_service("nfsd");       // !!! this
-			$retval |= rc_update_service("nfslocking"); // !!! order
+			$retval |= rc_update_service("rpcbind"); // !!! Do
+			$retval |= rc_update_service("mountd");  // !!! not
+			$retval |= rc_update_service("nfsd");    // !!! change
+			$retval |= rc_update_service("statd");   // !!! this
+			$retval |= rc_update_service("lockd");   // !!! order
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
@@ -89,10 +90,11 @@ if ($_GET['act'] == "retry")
 	if ($a_mount[$_GET['id']]) {
 		if (0 == disks_mount($a_mount[$_GET['id']])) {
 			rc_update_service("samba");
-			rc_update_service("rpcbind");    // !!! Do not
-			rc_update_service("mountd");     // !!! change
-			rc_update_service("nfsd");       // !!! this
-			rc_update_service("nfslocking"); // !!! order
+			rc_update_service("rpcbind"); // !!! Do
+			rc_update_service("mountd");  // !!! not
+			rc_update_service("nfsd");    // !!! change
+			rc_update_service("statd");   // !!! this
+			rc_update_service("lockd");   // !!! order
 			rc_update_service("rsyncd");
 			rc_update_service("afpd");
 		}

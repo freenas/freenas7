@@ -3,7 +3,7 @@
 /*
 	services_nfs.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -54,10 +54,11 @@ if ($_POST) {
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
 		config_lock();
-		$retval |= rc_update_service("rpcbind");    // !!! Do not
-		$retval |= rc_update_service("mountd");     // !!! change
-		$retval |= rc_update_service("nfsd");       // !!! this
-		$retval |= rc_update_service("nfslocking"); // !!! order
+			$retval |= rc_update_service("rpcbind"); // !!! Do
+			$retval |= rc_update_service("mountd");  // !!! not
+			$retval |= rc_update_service("nfsd");    // !!! change
+			$retval |= rc_update_service("statd");   // !!! this
+			$retval |= rc_update_service("lockd");   // !!! order
 		$retval |= rc_update_service("mdnsresponder");
 		config_unlock();
 	}
