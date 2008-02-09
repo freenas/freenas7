@@ -42,12 +42,12 @@ if(isset($_POST['id']))
 
 $pgtitle = array(gettext("Services"), gettext("NFS"), isset($id) ? gettext("Edit") : gettext("Add"));
 
-if(!is_array($config['nfs']['share']))
-	$config['nfs']['share'] = array();
+if(!is_array($config['nfsd']['share']))
+	$config['nfsd']['share'] = array();
 
-array_sort_key($config['nfs']['share'], "path");
+array_sort_key($config['nfsd']['share'], "path");
 
-$a_share = &$config['nfs']['share'];
+$a_share = &$config['nfsd']['share'];
 
 if (isset($id) && $a_share[$id]) {
 	$pconfig['path'] = $a_share[$id]['path'];
@@ -161,6 +161,7 @@ if($_POST) {
 			      <td width="22%" valign="top" class="vncell"><?=gettext("All dirs");?></td>
 			      <td width="78%" class="vtable">
 			      	<input name="alldirs" type="checkbox" id="alldirs" value="yes" <?php if ($pconfig['alldirs']) echo "checked";?>>
+			      	<span class="vexpl"><?=gettext("Share all sub directories.");?></span>
 			      </td>
 			    </tr>
 			    <tr>

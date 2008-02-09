@@ -35,25 +35,25 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"),gettext("NFS"));
 
-if(!is_array($config['nfs']['share']))
-	$config['nfs']['share'] = array();
+if(!is_array($config['nfsd']['share']))
+	$config['nfsd']['share'] = array();
 
-array_sort_key($config['nfs']['share'], "path");
+array_sort_key($config['nfsd']['share'], "path");
 
-$a_share = &$config['nfs']['share'];
+$a_share = &$config['nfsd']['share'];
 
-$pconfig['enable'] = isset($config['nfs']['enable']);
+$pconfig['enable'] = isset($config['nfsd']['enable']);
 
 if ($_POST) {
 	$pconfig = $_POST;
 
-	$config['nfs']['enable'] = $_POST['enable'] ? true : false;
+	$config['nfsd']['enable'] = $_POST['enable'] ? true : false;
 
 	write_config();
 
 	$retval = 0;
 	if (!file_exists($d_sysrebootreqd_path)) {
-	  config_lock();
+		config_lock();
 		$retval |= rc_update_service("rpcbind");    // !!! Do not
 		$retval |= rc_update_service("mountd");     // !!! change
 		$retval |= rc_update_service("nfsd");       // !!! this
@@ -97,59 +97,59 @@ function enable_change(enable_change) {
 	    <td class="tabcont">
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (file_exists($d_nfsconfdirty_path)):?><p>
-        <?php print_info_box_np(gettext("The NFS export list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
-        <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
-        <?php endif;?>
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr>
-			      <td colspan="2" valign="top" class="optsect_t">
-			        <table border="0" cellspacing="0" cellpadding="0" width="100%">
-			          <tr>
-			            <td class="optsect_s"><strong><?=gettext("NFS Server"); ?></strong></td>
-			            <td align="right" class="optsect_s">
-			              <input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable") ;?></strong>
-			            </td>
-			          </tr>
-			        </table>
-			      </td>
-			    </tr>
-			    <tr>
-			    	<td width="22%" valign="top" class="vncell"><?=gettext("Exports");?></td>
+				<?php print_info_box_np(gettext("The NFS export list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+				<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+				<?php endif;?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<tr>
+						<td colspan="2" valign="top" class="optsect_t">
+							<table border="0" cellspacing="0" cellpadding="0" width="100%">
+								<tr>
+									<td class="optsect_s"><strong><?=gettext("NFS Server"); ?></strong></td>
+									<td align="right" class="optsect_s">
+										<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable") ;?></strong>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Exports");?></td>
 						<td width="78%" class="vtable">
-    			    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                  <td width="45%" class="listhdrr"><?=gettext("Path");?></td>
-                  <td width="45%" class="listhdrr"><?=gettext("Comment");?></td>
-                  <td width="10%" class="list"></td>
-                </tr>
-        			  <?php $i = 0; foreach ($a_share as $sharev):?>
-                <tr>
-                  <td class="listr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
-                  <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
-                  <td valign="middle" nowrap class="list">
-                    <?php if(isset($config['nfs']['enable'])):?>
-                    <a href="services_nfs_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" width="17" height="17" border="0"></a>
-                    <a href="services_nfs.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" width="17" height="17" border="0"></a>
-                    <?php endif;?>
-                  </td>
-                </tr>
-                <?php $i++; endforeach;?>
-                <?php if (isset($config['nfs']['enable'])):?>
-                <tr>
-                  <td class="list" colspan="2"></td>
-                  <td class="list"><a href="services_nfs_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" width="17" height="17" border="0"></a></td>
-                </tr>
-                <?php endif;?>
-              </table>
-            </td>
-          </tr>
-			    <tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-			      </td>
-			    </tr>
-			  </table>
+					    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+					      <tr>
+					        <td width="45%" class="listhdrr"><?=gettext("Path");?></td>
+					        <td width="45%" class="listhdrr"><?=gettext("Comment");?></td>
+					        <td width="10%" class="list"></td>
+					      </tr>
+							  <?php $i = 0; foreach ($a_share as $sharev):?>
+					      <tr>
+					        <td class="listr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
+					        <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
+					        <td valign="middle" nowrap class="list">
+					          <?php if(isset($config['nfsd']['enable'])):?>
+					          <a href="services_nfs_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" width="17" height="17" border="0"></a>
+					          <a href="services_nfs.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" width="17" height="17" border="0"></a>
+					          <?php endif;?>
+					        </td>
+					      </tr>
+					      <?php $i++; endforeach;?>
+					      <?php if (isset($config['nfsd']['enable'])):?>
+					      <tr>
+					        <td class="list" colspan="2"></td>
+					        <td class="list"><a href="services_nfs_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" width="17" height="17" border="0"></a></td>
+					      </tr>
+					      <?php endif;?>
+					    </table>
+					  </td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+						</td>
+					</tr>
+				</table>
 			</td>
 		</tr>
 	</table>
