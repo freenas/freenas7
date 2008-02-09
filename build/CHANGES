@@ -69,7 +69,8 @@ Minors changes:
 - Improved software RAID creation/administration via WebGUI.
 - Add additional options (e.g. cachecnid, upriv, ...) for AFPd shares.
 - Add if_tap.ko and if_tun.ko kernel modules for tun/tap pseudo device support (required by OpenVPN).
-- Enable to set host name or IP address in 'Passive IP address' edit field on FTP service WebGUI page.  
+- Enable to set host name or IP address in 'Passive IP address' edit field on FTP service WebGUI page.
+- Enable user to modify user/group ID when creating a new user/group.
 
 Bug fixs:
 - Calculating iSCSI extent IDs fails for numbers > 10.

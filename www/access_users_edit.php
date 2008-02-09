@@ -59,6 +59,7 @@ if (isset($id) && $a_user[$id]) {
 	$pconfig['homedir'] = $a_user[$id]['homedir'];
 } else {
 	$pconfig['primarygroup'] = $a_group['guest'];
+	$pconfig['userid'] = get_nextuser_id();
 }
 
 if ($_POST) {
@@ -107,6 +108,16 @@ if ($_POST) {
 		$input_errors[] = gettext("Primary group is also selected in additional group.");
 	}
 
+	// Validate ID range. Only check if user is created.
+	if (!isset($id) && (intval($_POST['userid']) < 1001)) {
+		$input_errors[] = gettext("The user ID must be > 1001.");
+	}
+
+	// Validate if ID is unique. Only check if user is created.
+	if (!isset($id) && (false !== array_search_ex($_POST['userid'], $a_user, "id"))) {
+		$input_errors[] = gettext("The unique user ID is already used.");
+	}
+
 	if (!$input_errors) {
 		$users = array();
 		$users['login'] = $_POST['login'];
@@ -117,12 +128,11 @@ if ($_POST) {
 		if (is_array($_POST['group']))
 			$users['group'] = $_POST['group'];
 		$users['homedir'] = $_POST['homedir'];
+		$users['id'] = $_POST['userid'];
 
 		if (isset($id) && $a_user[$id]) {
-			$users['id'] = $_POST['userid'];
 			$a_user[$id] = $users;
 		} else {
-			$users['id'] = get_nextuser_id();
 			$a_user[] = $users;
 		}
 
@@ -177,15 +187,15 @@ function get_nextuser_id() {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Login");?></td>
             <td width="78%" class="vtable">
-              <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>">
-              <br><?=gettext("Unique login name of user.");?>
+              <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>"></br>
+							<span class="vexpl"><?=gettext("Unique login name of user.");?></span>
             </td>
 	       </tr>
 	       <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Full Name");?></td>
             <td width="78%" class="vtable">
-              <input name="fullname" type="text" class="formfld" id="fullname" size="20" value="<?=htmlspecialchars($pconfig['fullname']);?>">
-              <br><?=gettext("User full name.");?>
+              <input name="fullname" type="text" class="formfld" id="fullname" size="20" value="<?=htmlspecialchars($pconfig['fullname']);?>"></br>
+							<span class="vexpl"><?=gettext("User full name.");?></span>
             </td>
           </tr>
           <tr>
@@ -193,9 +203,16 @@ function get_nextuser_id() {
             <td width="78%" class="vtable">
               <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
               <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
-              <?=gettext("User password.");?>
+              <span class="vexpl"><?=gettext("User password.");?></span>
             </td>
           </tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("User ID");?></td>
+						<td width="78%" class="vtable">
+							<input name="userid" type="text" class="formfld" id="userid" size="20" value="<?=htmlspecialchars($pconfig['userid']);?>" <?php if (isset($id)) echo "readonly";?>></br>
+							<span class="vexpl"><?=gettext("Unique user numeric id.");?></span>
+						</td>
+					</tr>
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Primary group");?></td>
             <td width="78%" class="vtable">
@@ -204,7 +221,7 @@ function get_nextuser_id() {
 								<option value="<?=$groupv;?>" <?php if ("{$groupv}" === $pconfig['primarygroup']) echo "selected";?>><?=htmlspecialchars($groupk);?></option>
 								<?php endforeach;?>
 							</select></br>
-							<?=gettext("Set the account's primary group to the given group.");?>
+							<span class="vexpl"><?=gettext("Set the account's primary group to the given group.");?></span>
 						</td>
 					</tr>
 					<tr>
@@ -215,22 +232,22 @@ function get_nextuser_id() {
 								<option value="<?=$groupv;?>" <?php if (is_array($pconfig['group']) && in_array("{$groupv}", $pconfig['group'])) echo "selected";?>><?=htmlspecialchars($groupk);?></option>
 								<?php endforeach;?>
 							</select></br>
-							<?=gettext("Set additional group memberships for this account.");?></br>
-							<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and deselect groups.");?>
+							<span class="vexpl"><?=gettext("Set additional group memberships for this account.");?></br>
+							<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and deselect groups.");?></span>
 						</td>
 					</tr>
 					<tr>
             <td width="22%" valign="top" class="vncell"><?=gettext("Home directory");?></td>
             <td width="78%" class="vtable">
               <input name="homedir" type="text" class="formfld" id="homedir" size="60" value="<?=htmlspecialchars($pconfig['homedir']);?>"><br>
-              <?=gettext("Enter the path to the home directory of that user. Make sure that this path exists and is always mounted at startup. Leave this field empty to use default path /mnt.");?>
+              <span class="vexpl"><?=gettext("Enter the path to the home directory of that user. Make sure that this path exists and is always mounted at startup. Leave this field empty to use default path /mnt.");?></span>
             </td>
           </tr>
 					<tr>
 					  <td width="22%" valign="top" class="vncell"><?=gettext("Shell access");?></td>
 					  <td width="78%" class="vtable">
 					  	<input name="fullshell" type="checkbox" value="yes" <?php if ($pconfig['fullshell']) echo "checked"; ?> onClick="enable_change(false)">
-							<?=gettext("Give full shell access to user.");?>
+							<span class="vexpl"><?=gettext("Give full shell access to user.");?></span>
 						</td>
 				  </tr>
           <tr>
@@ -238,7 +255,6 @@ function get_nextuser_id() {
             <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id))?gettext("Save"):gettext("Add");?>">
 							<?php if (isset($id) && $a_user[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
-							<input name="userid" type="hidden" value="<?=$pconfig['userid'];?>">
 							<?php endif;?>
             </td>
           </tr>
