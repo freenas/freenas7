@@ -84,12 +84,12 @@ create_conf()
 			-o "139" -n \
 			-n \
 		-b \
-		-i "count(//nfs/enable) > 0" \
-			-m "//mounts/mount" \
+		-i "count(//nfsd/enable) > 0" \
+			-m "//nfsd/share" \
 				-v "concat(//system/hostname,' NFS Service')" -n \
 				-o "_nfs._tcp. local." -n \
 				-o "2049" -n \
-				-v "concat('path=/mnt/',sharename)" -n \
+				-v "concat('path=',path)" -n \
 				-n \
 			-b \
 		-b \

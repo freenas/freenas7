@@ -35,19 +35,19 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Services"),gettext("NFS"));
 
-if(!is_array($config['nfs']['share']))
-	$config['nfs']['share'] = array();
+if(!is_array($config['nfsd']['share']))
+	$config['nfsd']['share'] = array();
 
-array_sort_key($config['nfs']['share'], "path");
+array_sort_key($config['nfsd']['share'], "path");
 
-$a_share = &$config['nfs']['share'];
+$a_share = &$config['nfsd']['share'];
 
-$pconfig['enable'] = isset($config['nfs']['enable']);
+$pconfig['enable'] = isset($config['nfsd']['enable']);
 
 if ($_POST) {
 	$pconfig = $_POST;
 
-	$config['nfs']['enable'] = $_POST['enable'] ? true : false;
+	$config['nfsd']['enable'] = $_POST['enable'] ? true : false;
 
 	write_config();
 
@@ -127,14 +127,14 @@ function enable_change(enable_change) {
 					        <td class="listr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
 					        <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
 					        <td valign="middle" nowrap class="list">
-					          <?php if(isset($config['nfs']['enable'])):?>
+					          <?php if(isset($config['nfsd']['enable'])):?>
 					          <a href="services_nfs_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" width="17" height="17" border="0"></a>
 					          <a href="services_nfs.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" width="17" height="17" border="0"></a>
 					          <?php endif;?>
 					        </td>
 					      </tr>
 					      <?php $i++; endforeach;?>
-					      <?php if (isset($config['nfs']['enable'])):?>
+					      <?php if (isset($config['nfsd']['enable'])):?>
 					      <tr>
 					        <td class="list" colspan="2"></td>
 					        <td class="list"><a href="services_nfs_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" width="17" height="17" border="0"></a></td>

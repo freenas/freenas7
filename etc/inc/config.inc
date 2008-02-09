@@ -1200,9 +1200,27 @@ function config_upgrade() {
 
 	/* Convert 4.2 -> 4.3 */
 	/* Rename attribute //ftp to //ftpd. */
+	/* Convert //nfs configuration to new share architecture. */
 	if ($config['version'] === "4.2") {
 		$config['ftpd'] = $config['ftp'];
 		unset($config['ftp']);
+
+		$config['nfsd']['enable'] = isset($config['nfs']['enable']);
+
+		for ($i = 0; isset($config['nfs']['nfsnetworks'][$i]); $i++) {
+			for ($k = 0; isset($config['mounts']['mount'][$k]); $k++) {
+				$share = array();
+				$share['path'] = "/mnt/" . $config['mounts']['mount'][$k]['sharename'];
+				$share['mapall'] = $config['nfs']['mapall'];
+				$share['network'] = $config['nfs']['nfsnetworks'][$i];
+				$share['comment'] = $config['mounts']['mount'][$k]['desc'];
+				$share['options']['alldirs'] = true;
+
+				$config['nfsd']['share'][] = $share;
+			}
+		}
+
+		unset($config['nfs']);
 
 		$config['version'] = "4.3";
 	}

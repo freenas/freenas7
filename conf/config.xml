@@ -402,9 +402,22 @@
 		<key>xxx</key>
 		-->
   </sshd>
-	<nfs>
-    <!-- <enable/> -->
-	</nfs>
+	<nfsd>
+		<!--
+		<enable/>
+		<share>
+			<path>/mnt/xxx</path>
+			<mapall>yes|no</mapall>
+			<network>192.168.178.0/24</network>
+			<comment>xxx</comment>
+			<options>
+				<alldirs/>
+				<ro/>
+				<quiet/>
+			</options>
+		</share>
+		-->
+	</nfsd>
 	<snmpd>
 		<!-- <enable/> -->
 		<location></location>
