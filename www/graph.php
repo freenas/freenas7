@@ -1,9 +1,9 @@
 <?php
 /*
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-LabbÃ© <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
@@ -70,8 +70,11 @@ $error_text = gettext("Cannot get data about interface") . " $ifnum";
 $height=100;            //SVG internal height : do not modify
 $width=200;             //SVG internal width : do not modify
 
+$encoding = system_get_language_codeset();
+
 /********* Graph DATA **************/
-print('<?xml version="1.0" encoding="iso-8859-1"?>' . "\n");?>
+echo "<?xml version=\"1.0\" encoding=\"{$encoding}\"?>\n";
+?>
 <svg width="100%" height="100%" viewBox="0 0 <?=$width?> <?=$height?>" preserveAspectRatio="none" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" onload="init(evt)">
   <g id="graph">
     <rect id="bg" x1="0" y1="0" width="100%" height="100%" <?=$attribs['bg']?>/>

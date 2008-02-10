@@ -1,8 +1,13 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-	graph_cpu.php
-	part of m0n0wall (http://m0n0.ch/wall)
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	All rights reserved.
+
+	Based on m0n0wall (http://m0n0.ch/wall)
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
+	All rights reserved.
 
 	Copyright (C) 2004-2005 T. Lechat <dev@lechat.org> and Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
@@ -53,9 +58,12 @@ $error_text = "Cannot get CPU load";
 $height=100;		//SVG internal height : do not modify
 $width=200;		//SVG internal width : do not modify
 
+$encoding = system_get_language_codeset();
+
 /********* Graph DATA **************/
 header("Content-type: image/svg+xml");
-print('<?xml version="1.0" encoding="iso-8859-1"?>' . "\n");?>
+echo "<?xml version=\"1.0\" encoding=\"{$encoding}\"?>\n";
+?>
 <svg width="100%" height="100%" viewBox="0 0 <?=$width?> <?=$height?>" preserveAspectRatio="none" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" onload="init(evt)">
   <g id="graph">
     <rect id="bg" x1="0" y1="0" width="100%" height="100%" <?=$attribs['bg']?>/>
