@@ -1,62 +1,35 @@
-#!/usr/local/bin/php -f
-<?php
-/*
-	rc.initial.ping
-	
-	part of m0n0wall (http://neon1.net/m0n0wall)
-	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
-	All rights reserved.
-	Modified for FreeNAS (http://www.freenas.org) by Olivier Cochard-Labbe <olivier@freenas.org>
+#!/bin/sh
+#
+# rc.initial.ping
+# Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
+#
+# part of FreeNAS (http://www.freenas.org)
+# Copyright (C) 2005-2008 Olivier Cochard <cochard@gmail.com>.
+# All rights reserved.
 
-	Redistribution and use in source and binary forms, with or without
-	modification, are permitted provided that the following conditions are met:
-	
-	1. Redistributions of source code must retain the above copyright notice,
-	   this list of conditions and the following disclaimer.
-	
-	2. Redistributions in binary form must reproduce the above copyright
-	   notice, this list of conditions and the following disclaimer in the
-	   documentation and/or other materials provided with the distribution.
-	
-	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
-	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
-	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
-	OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-	POSSIBILITY OF SUCH DAMAGE.
-*/
-require_once("config.inc");
-require_once("util.inc");
-require_once("tui.inc");
+. /etc/util.subr
 
-# Display dialog.
-$result = tui_display_input("Enter a host name or IP address", 50, 8, $value);
+tmpfile=`tmpfile 2>/dev/null` || tmpfile=/tmp/tui$$
+trap "rm -f $tmpfile" 0 1 2 5 15
 
-if (0 == $result) {
-	$fp = fopen('php://stdin', 'r');
+/usr/local/bin/cdialog --clear --inputbox "Enter a host name or IP address." 8 50 2> $tmpfile
 
-	if (is_ipv4addr($value)) {
-		echo "IPv4 address detected...\n";
-		passthru("/sbin/ping -c 3 -n " . escapeshellarg($value));
-		echo "\nPress ENTER to continue.\n";
-		fgets($fp);
-	} else if (is_ipv6addr($value)) {
-		echo "IPv6 address detected...\n";
-		passthru("/sbin/ping6 -c 3 -n " . escapeshellarg($value));
-		echo "\nPress ENTER to continue.\n";
-		fgets($fp);
-	} else {
-		echo "Hostname supposed, trying IPv4 and IPv6 ping...\n";
-		passthru("/sbin/ping -c 3 -n " . escapeshellarg($value));
-		passthru("/sbin/ping6 -c 3 -n " . escapeshellarg($value));
-		echo "\nPress ENTER to continue.\n";
-		fgets($fp);
-	}
+retval=$?
+value=`cat $tmpfile`
 
-	fclose($fp);
-}
-?>
+if [ 0 -eq ${retval} ]; then
+	if [ ! `is_validip inet ${value}` ]; then
+		echo "IPv4 address detected..."
+		ping -c 3 -n ${value}
+	elif [ ! `is_validip inet6 ${value}` ]; then
+		echo "IPv6 address detected..."
+		ping6 -c 3 -n ${value}
+	else
+		echo "Hostname supposed, trying IPv4 and IPv6 ping..."
+		ping -c 3 -n ${value}
+		ping6 -c 3 -n ${value}
+	fi
+
+	echo
+	read -p "Press ENTER to continue." value
+fi
