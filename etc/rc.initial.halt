@@ -1,26 +1,21 @@
 #!/bin/sh
 #
 # rc.initial.halt
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 #
 # part of FreeNAS (http://www.freenas.org)
-# Copyright (C) 2005-2007 Olivier Cochard <cochard@gmail.com>.
+# Copyright (C) 2005-2008 Olivier Cochard <cochard@gmail.com>.
 # All rights reserved.
 
-. /etc/util.subr
+# Display dialog.
+cdialog --yesno "Do you really want to shutdown the system?" 5 46
 
-productname=`get_product_name`
-
-echo
-echo "${productname} will be halted and the power is turned off. This may take one minute."
-while [ true ]
-do
-	echo -n "Do you want to proceed (y/n)? "
-	_choice=$(head -n 1)
-	case ${_choice} in
-		[yY])	echo "${productname} is halting now.";
-					/sbin/shutdown -p now >/dev/null;
-					break;;
-		[nN])	break;;
-	esac
-done
+case $? in
+	0)
+		/sbin/shutdown -p now >/dev/null;
+		;;
+	1)
+		;;
+	255)
+		;;
+esac
