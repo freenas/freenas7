@@ -1,0 +1,93 @@
+#!/bin/sh
+
+# /etc/rc.initial
+# part of m0n0wall (http://neon1.net/m0n0wall)
+# Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
+# All rights reserved.
+# Modified for FreeNAS (http://www.freenas.org) by Olivier Cochard-Labbe <olivier@freenas.org>
+# Somes lines on this file are taken from pfSense (http://www.pfsense.com/) by Scott Ullrich
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+# make sure the user can't kill us by pressing Ctrl-C
+trap : 2
+trap : 3
+trap : 4
+
+# Set our operating platform
+PLATFORM=`cat /etc/platform`
+
+# Check if console menu is disabled.
+if configxml_isset "//system/disableconsolemenu"; then
+	while : ; do
+		echo
+		echo
+		echo "*** Console menu disabled. ***"
+		echo
+		read tmp
+	done
+else
+	tempfile=/tmp/menu$$
+
+	# endless loop
+	while : ; do
+		# display menu
+		if [ "$PLATFORM" = "i386-liveCD" ] || [ "$PLATFORM" = "amd64-liveCD" ]; then
+			cdialog --clear --nocancel --menu "Console setup" 20 60 9 \
+				"1" "Assign interfaces" \
+				"2" "Set LAN IP address" \
+				"3" "Reset WebGUI password" \
+				"4" "Reset to factory defaults" \
+				"5" "Ping host" \
+				"6" "Shell" \
+				"7" "Reboot system" \
+				"8" "Shutdown system" \
+				"9" "Install/Upgrade to an hard drive/flash device, etc." 2> $tempfile
+		else
+			cdialog --clear --nocancel --menu "Console setup" 15 40 8 \
+				"1" "Assign interfaces" \
+				"2" "Set LAN IP address" \
+				"3" "Reset WebGUI password" \
+				"4" "Reset to factory defaults" \
+				"5" "Ping host" \
+				"6" "Shell" \
+				"7" "Reboot system" \
+				"8" "Shutdown system" 2> $tempfile
+		fi
+
+		choice=`cat $tempfile`
+		case ${choice} in
+			0)
+				exit && exit && logout
+				;;
+			1)
+				/etc/rc.initial.setports
+			 	;;
+			2)
+				/etc/rc.initial.setlanip
+			 	;;
+			3)
+				/etc/rc.initial.password
+				;;
+			4)
+				/etc/rc.initial.defaults
+				;;
+			5)
+				/etc/rc.initial.ping
+				;;
+			6)
+				exit
+				;;
+			7)
+				/etc/rc.initial.reboot
+				;;
+			8)
+				/etc/rc.initial.halt
+				;;
+			9)
+				/etc/rc.initial.install
+				;;
+		esac
+	done
+fi
