@@ -247,7 +247,7 @@ function authentication_change() {
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Workgroup") ; ?></td>
             <td width="78%" class="vtable">
               <input name="workgroup" type="text" class="formfld" id="workgroup" size="30" value="<?=htmlspecialchars($pconfig['workgroup']);?>">
-              <br><?=gettext("Workgroup to be member of.") ;?>
+              <br><?=gettext("Workgroup to be member of.(maximum 15 characters)") ;?>
             </td>
           </tr>
           <tr>
