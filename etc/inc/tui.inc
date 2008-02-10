@@ -59,28 +59,34 @@ function tui_display_message($text, $width, $height) {
 // Returns 0 if ok has been pressed or 255 if aborted via ESC.
 function tui_display_input($text, $width, $height, &$value) {
 	$tmpfile = "/tmp/tui" . rand();
-	passthru("/usr/local/bin/cdialog --clear --inputbox \"{$text}\" {$height} {$width} \"{$value}\" &1</dev/console 2>{$tmpfile}", $retval);
+	passthru("/usr/local/bin/cdialog --input-fd 2 --output-fd 1 --clear --inputbox \"{$text}\" {$height} {$width} \"{$value}\" 1>{$tmpfile}", $retval);
 	$value = @file_get_contents($tmpfile);
 	@unlink($tmpfile);
 	return $retval;
 }
 
 // Display a menu.
-// $title - The menu title
-// $width - Width of the menu
-// $height - Height of the menu
+// $title - The dialog title
+// $width - Width of the dialog
+// $height - Height of the dialog
+// $menuheight - Height of the menu
 // $amenuitem - The menu item array => Array
 // (
 // 	[tag]  => "x"
 // 	[item] => "xy zxy yxz"
 // )
-function tui_display_menu($title, $width, $height, $amenuitem) {
-	$menuheight = sizeof($amenuitem);
-	$cmd = "/usr/local/bin/cdialog --menu {$title} {$height} {$width} {$menuheight}";
+// $value [out] - Contains the selected item tag.
+// Returns 0 if ok has been pressed or 255 if aborted via ESC.
+function tui_display_menu($title, $width, $height, $menuheight, $amenuitem, &$value) {
+	$tmpfile = "/tmp/tui" . rand();
+	$cmd = "/usr/local/bin/cdialog --input-fd 2 --output-fd 1 --clear --menu \"{$title}\" {$height} {$width} {$menuheight}";
 	foreach($amenuitem as $menuitemv) {
 		$cmd .= " \"{$menuitemv['tag']}\" \"{$menuitemv['item']}\"";
 	}
+	$cmd .= " 1>{$tmpfile}";
 	passthru($cmd, $retval);
+	$value = @file_get_contents($tmpfile);
+	@unlink($tmpfile);
 	return $retval;
 }
 ?>
