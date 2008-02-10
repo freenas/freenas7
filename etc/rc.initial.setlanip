@@ -3,7 +3,7 @@
 /*
 	rc.initial.setlanip
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -31,162 +31,166 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	/* parse the configuration and include all functions used below */
-	require_once("config.inc");
-	require_once("functions.inc");
-	require_once("util.inc");
-	require_once("rc.inc");
+require_once("config.inc");
+require_once("functions.inc");
+require_once("util.inc");
+require_once("rc.inc");
+require_once("tui.inc");
 
-	$fp = fopen('php://stdin', 'r');
-
-	echo "\nDo you want to use DHCP for IPv4? (y/n) ";
-
-	if (strcasecmp(chop(fgets($fp)), "y") == 0) {
-		$config['interfaces']['lan']['ipaddr'] = "dhcp";
-	} else {
-		do {
-			echo "\nEnter new LAN IPv4 address (press 'Enter' to abort): ";
-			$lanip = chop(fgets($fp));
-			if ($lanip === "") {
-				exit(0);
-			}
-		} while (!is_ipv4addr($lanip));
-
-		echo "\nSubnet masks are entered as bit counts (as in CIDR notation) in " . get_product_name() . ".\n";
-		echo "e.g. 255.255.255.0 = 24\n";
-		echo "     255.255.0.0   = 16\n";
-		echo "     255.0.0.0     = 8\n\n";
-
-		do {
-			echo "Enter new LAN subnet bit count (press 'Enter' to use 24): ";
-			$lanbits = chop(fgets($fp));
-			if ($lanbits === "") {
-				$lanbits = 24;
-			}
-		} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 32))) == false);
-
-		$config['interfaces']['lan']['ipaddr'] = $lanip;
-		$config['interfaces']['lan']['subnet'] = $lanbits;
-
-		do {
-			echo "Enter IPv4 default gateway (press 'Enter' to skip): ";
-			$gatewayip = chop(fgets($fp));
-			if ($gatewayip === "") {
-				break;
-			}
-		} while (!is_ipv4addr($gatewayip));
-
-		if ($gatewayip) {
-			$config['interfaces']['lan']['gateway'] = $gatewayip;
+$result = tui_display_yesno("Do you want to use DHCP?", 30, 5);
+if (0 == $result) {
+	$config['interfaces']['lan']['ipaddr'] = "dhcp";
+} else if (255 == $result) {
+	exit(0);
+} else {
+	$lanip = $config['interfaces']['lan']['ipaddr'];
+	if ("dhcp" === $lanip)
+		$lanip = get_ipaddr($config['interfaces']['lan']['if']);
+	do {
+		$result = tui_display_input("Enter new LAN IPv4 address.", 35, 8, $lanip);
+		if (0 != $result) {
+			exit(0);
 		}
+	} while (!is_ipv4addr($lanip));
 
-		do {
-			echo "Enter DNS IPv4 address (press 'Enter' to skip): ";
-			$dnsserverip = chop(fgets($fp));
-			if ($dnsserverip === "") {
-				break;
-			}
-		} while (!is_ipv4addr($dnsserverip));
-
-		if ($dnsserverip) {
-			$config['system']['dnsserver'] = $dnsserverip;
+	$lanbits = $config['interfaces']['lan']['subnet'];
+	do {
+		$result = tui_display_input("Enter new LAN subnet mask. Subnet masks are entered as bit counts (as in CIDR notation).\n\ne.g. 255.255.255.0 = 24\n     255.255.0.0 = 16\n     255.0.0.0 = 8", 68, 13, $lanbits);
+		if (0 != $result) {
+			exit(0);
 		}
+	} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 32))) == false);
+
+	$gatewayip = $config['interfaces']['lan']['gateway'];
+	do {
+		$result = tui_display_input("Enter IPv4 default gateway.", 35, 8, $gatewayip);
+		if (0 != $result) {
+			exit(0);
+		}
+		if ("" === $gatewayip) {
+				break;
+		}
+	} while (!is_ipv4addr($gatewayip));
+
+	$dnsserverip = implode(" ", $config['system']['dnsserver']);
+	do {
+		$result = tui_display_input("Enter DNS IPv4 address.", 35, 8, $dnsserverip);
+		if (0 != $result) {
+			exit(0);
+		}
+		if ("" === $dnsserverip) {
+			break;
+		}
+	} while (!is_ipv4addr($dnsserverip));
+
+	$config['interfaces']['lan']['ipaddr'] = $lanip;
+	$config['interfaces']['lan']['subnet'] = $lanbits;
+	$config['interfaces']['lan']['gateway'] = $gatewayip;
+	$config['system']['dnsserver'] = explode(" ", $dnsserverip);
+}
+
+$result = tui_display_yesno("Do you want to use AutoConfiguration for IPv6?", 50, 5);
+if (0 == $result) {
+	$config['interfaces']['lan']['ipv6addr'] = "auto";
+} else if (255 == $result) {
+	exit(0);
+} else {
+	$lanip = $config['interfaces']['lan']['ipv6addr'];
+	if ("auto" === $lanip)
+		$lanip = get_ipv6addr($config['interfaces']['lan']['if']);
+	do {
+		$result = tui_display_input("Enter new LAN IPv6 address.", 35, 8, $lanip);
+		if (0 != $result) {
+			exit(0);
+		}
+	} while (!is_ipv6addr($lanip));
+
+	if (isset($config['interfaces']['lan']['ipv6subnet']))
+		$lanbits = $config['interfaces']['lan']['ipv6subnet'];
+	else
+		$lanbits = 64;
+	do {
+		$result = tui_display_input("Enter prefix.", 35, 8, $lanbits);
+		if (0 != $result) {
+			exit(0);
+		}
+	} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))) == false);
+
+	$gatewayip = $config['interfaces']['lan']['gateway'];
+	do {
+		$result = tui_display_input("Enter IPv6 default gateway.", 35, 8, $gatewayip);
+		if (0 != $result) {
+			exit(0);
+		}
+		if ("" === $gatewayip) {
+				break;
+		}
+	} while (!is_ipv6addr($gatewayip));
+
+	$dnsserverip = implode(" ", $config['system']['ipv6dnsserver']);
+	do {
+		$result = tui_display_input("Enter DNS IPv6 address.", 35, 8, $dnsserverip);
+		if (0 != $result) {
+			exit(0);
+		}
+		if ("" === $dnsserverip) {
+			break;
+		}
+	} while (!is_ipv6addr($dnsserverip));
+
+	$config['interfaces']['lan']['ipv6addr'] = $lanip;
+	$config['interfaces']['lan']['ipv6subnet'] = $lanbits;
+	$config['interfaces']['lan']['ipv6gateway'] = $gatewayip;
+	$config['system']['ipv6dnsserver'] = explode(" ", $dnsserverip);
+}
+
+if ("https" === $config['system']['webgui']['protocol']) {
+	$result = tui_display_yesno("Do you want to revert to HTTP as the WebGUI protocol?", 40, 8);
+	if (0 == $result) {
+		$config['system']['webgui']['protocol'] = "http";
 	}
+}
 
-	echo "\nDo you want to use AutoConfiguration for IPv6? (y/n) ";
+// Store configuration changes.
+write_config();
 
-	if (strcasecmp(chop(fgets($fp)), "y") == 0) {
-		$config['interfaces']['lan']['ipv6addr'] = "auto";
-	} else {
-		do {
-			echo "\nEnter new LAN IPv6 address (press 'Enter' to abort): ";
-			$lanipv6 = chop(fgets($fp));
-			if ($lanipv6 === "") {
-				exit(0);
-			}
-		} while (!is_ipv6addr($lanipv6));
+// Initialize interface.
+write_console("Initializing interface. Please wait...");
+interfaces_lan_configure();
 
-		do {
-			echo "Enter Prefix (press 'Enter' to use 64): ";
-			$lanbitsv6 = chop(fgets($fp));
-			if ($lanbitsv6 === "") {
-				$lanbitsv6 = 64;
-			}
-		} while (filter_var($lanbitsv6, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))) == false);
+// Get current IP.
+$lanipv4 = get_ipaddr($config['interfaces']['lan']['if']);
+$lanipv6 = get_ipv6addr($config['interfaces']['lan']['if']);
 
-	$config['interfaces']['lan']['ipv6addr'] = $lanipv6;
-	$config['interfaces']['lan']['ipv6subnet'] = $lanbitsv6;
+unset($laninfo);
+if ("dhcp" === $config['interfaces']['lan']['ipaddr'])
+	$laninfov4 = "$lanipv4";
+else
+	$laninfov4 = "$lanipv4/{$config['interfaces']['lan']['subnet']}";
 
-		do {
-			echo "Enter IPv6 default gateway (press 'Enter' to skip): ";
-			$gatewayipv6 = chop(fgets($fp));
-			if ($gatewayipv6 === "") {
-				break;
-			}
-		} while (!is_ipv6addr($gatewayipv6));
+unset($laninfov6);
+if ("auto" === $config['interfaces']['lan']['ipv6addr'])
+  $laninfov6 = "$lanipv6";
+else
+  $laninfov6 = "$lanipv6/{$config['interfaces']['lan']['ipv6subnet']}";
 
-		if ($gatewayipv6) {
-			$config['interfaces']['lan']['ipv6gateway'] = $gatewayipv6;
-		}
+echo <<<EOD
 
-		do {
-			echo "Enter DNS IPv6 address (press 'Enter' to skip): ";
-			$dnsserveripv6 = chop(fgets($fp));
-			if ($dnsserveripv6 === "") {
-				break;
-			}
-		} while (!is_ipv6addr($dnsserveripv6));
-
-		if ($dnsserveripv6) {
-			$config['system']['ipv6dnsserver'] = $dnsserveripv6;
-		}
-	}
-
-	$proto = "http";
-	if ($config['system']['webgui']['protocol'] == "https") {
-		echo "\nDo you want to revert to HTTP as the webGUI protocol? (y/n) ";
-		if (strcasecmp(chop(fgets($fp)), "y") == 0)
-			$config['system']['webgui']['protocol'] = "http";
-		else
-			$proto = "https";
-	}
-
-	write_config();
-
-	interfaces_lan_configure();
-
-  /* Get current IP */
-  $if = $config['interfaces']['lan']['if'];
-  $lanipv4 = get_ipaddr($if);
-  $lanipv6 = get_ipv6addr($if);
-
-  unset($laninfo);
-  if ($config['interfaces']['lan']['ipaddr'] === "dhcp")
-    $laninfov4 = "$lanipv4";
-  else
-    $laninfov4 = "$lanipv4/$lanbits";
-
-  unset($laninfov6);
-  if ($config['interfaces']['lan']['ipv6addr'] === "auto")
-    $laninfov6 = "$lanipv6";
-  else
-    $laninfov6 = "$lanipv6/$lanbitsv6";
-
-	echo <<<EOD
 
 The LAN IP address has been set to:
 - IPv4: $laninfov4
 - IPv6: $laninfov6
 
-You can now access the webGUI by opening the following URL
-in your browser:
+You can now access the WebGUI using the following URL:
 
-$proto://$lanipv4/
-$proto://[$lanipv6]/
+{$config['system']['webgui']['protocol']}://$lanipv4
+{$config['system']['webgui']['protocol']}://[$lanipv6]
 
 Press ENTER to continue.
 
 EOD;
 
+	$fp = fopen('php://stdin', 'r');
 	fgets($fp);
+	fclose($fp);
 ?>
