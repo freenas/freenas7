@@ -29,36 +29,34 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+require_once("config.inc");
+require_once("util.inc");
+require_once("tui.inc");
 
-	/* parse the configuration and include all functions used below */
-	require_once("config.inc");
-	require_once("functions.inc");
-	
+# Display dialog.
+$result = tui_display_input("Enter a host name or IP address", 50, 8, $value);
+
+if (0 == $result) {
 	$fp = fopen('php://stdin', 'r');
-	
-	echo "\nEnter a host name or IP address: ";
 
-	$pinghost = chop(fgets($fp));
-	
-	if (is_ipv4addr($pinghost)) {
-		echo "\n";
+	if (is_ipv4addr($value)) {
 		echo "IPv4 address detected...\n";
-		passthru("/sbin/ping -c 3 -n " . escapeshellarg($pinghost));
+		passthru("/sbin/ping -c 3 -n " . escapeshellarg($value));
 		echo "\nPress ENTER to continue.\n";
 		fgets($fp);
-	} else if (is_ipv6addr($pinghost)) {
-		echo "\n";
+	} else if (is_ipv6addr($value)) {
 		echo "IPv6 address detected...\n";
-		passthru("/sbin/ping6 -c 3 -n " . escapeshellarg($pinghost));
+		passthru("/sbin/ping6 -c 3 -n " . escapeshellarg($value));
 		echo "\nPress ENTER to continue.\n";
 		fgets($fp);
 	} else {
-		echo "\n";
 		echo "Hostname supposed, trying IPv4 and IPv6 ping...\n";
-		passthru("/sbin/ping -c 3 -n " . escapeshellarg($pinghost));
-		passthru("/sbin/ping6 -c 3 -n " . escapeshellarg($pinghost));
+		passthru("/sbin/ping -c 3 -n " . escapeshellarg($value));
+		passthru("/sbin/ping6 -c 3 -n " . escapeshellarg($value));
 		echo "\nPress ENTER to continue.\n";
 		fgets($fp);
 	}
-	
+
+	fclose($fp);
+}
 ?>

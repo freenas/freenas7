@@ -3,7 +3,7 @@
 /*
 	rc.initial.defaults
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -31,36 +31,23 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	/* don't parse the config so we can restore in case it's broken */
-	$noparseconfig = 1;
+// Don't parse the config so we can restore in case it's broken.
+$noparseconfig = 1;
 
-	/* parse the configuration and include all functions used below */
-	require_once("config.inc");
-	require_once("functions.inc");
+require_once("config.inc");
+require_once("functions.inc");
+require_once("util.inc");
+require_once("tui.inc");
 
-	/* Get product information */
-	$productname = get_product_name();
+// Get product information.
+$productname = get_product_name();
 
-	$fp = fopen('php://stdin', 'r');
-	
-	echo <<<EOD
-	
-You are about to reset {$productname} to factory defaults.
-{$productname} will reboot after resetting the configuration.
+# Display dialog.
+$result = tui_display_yesno("You are about to reset {$productname} to factory defaults. System will reboot after resetting the configuration.\n\nDo you want to proceed?", 60, 8);
 
-Do you want to proceed? (y/n) 
-EOD;
-
-	if (strcasecmp(chop(fgets($fp)), "y") == 0) {
-		
-		reset_factory_defaults();
-		
-		echo <<<EOD
-
-{$productname} is rebooting now.
-
-EOD;
-	
-		system_reboot();
-	}
+if (0 == $result) {
+	reset_factory_defaults();
+	write_console("{$productname} is rebooting now.");
+	system_reboot();
+}
 ?>
