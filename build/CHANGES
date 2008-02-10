@@ -82,6 +82,7 @@ Bug fixs:
   this stops configuring provider FreeDNS.
 - Fix bug in user management. When creating several users without pressing the 'Apply' button the user id was
   not updated, this means all new users have the same user id.
+- Fix encoding bug in graphs (WebGUI). Thanks to Jonas Svensson.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
