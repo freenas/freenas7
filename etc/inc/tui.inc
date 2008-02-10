@@ -59,7 +59,7 @@ function tui_display_message($text, $width, $height) {
 // Returns 0 if ok has been pressed or 255 if aborted via ESC.
 function tui_display_input($text, $width, $height, &$value) {
 	$tmpfile = "/tmp/tui" . rand();
-	passthru("/usr/local/bin/cdialog --clear --inputbox \"{$text}\" {$height} {$width} \"{$value}\" 2>{$tmpfile}", $retval);
+	passthru("/usr/local/bin/cdialog --clear --inputbox \"{$text}\" {$height} {$width} \"{$value}\" &1</dev/console 2>{$tmpfile}", $retval);
 	$value = @file_get_contents($tmpfile);
 	@unlink($tmpfile);
 	return $retval;
