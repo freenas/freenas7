@@ -65,7 +65,7 @@ $cdlist = get_cdrom_list();
 $disklist = get_physical_disks_list();
 
 if (0 == count($cdlist)) {
-	write_console("Failed to detect any CDROM.");
+	tui_wait_keypress("Failed to detect any CDROM.");
 	exit(0);
 }
 
@@ -95,7 +95,7 @@ if (0 != $result)
 
 // Check if destination drive is mounted.
 if (disks_ismounted_ex($harddrive, "mdisk")) {
-	write_console("The destination drive is already in usage!\n");
+	tui_wait_keypress("The destination drive is already in usage!");
 	exit(0);
 }
 
@@ -109,19 +109,19 @@ do {
 } while ($minpart1size > $part1size);
 
 if (install_mount_cd($cdrom)) {
-	write_console("There was a problem while mounting the CDROM.\n");
+	tui_wait_keypress("There was a problem while mounting the CDROM.");
 	exit(0);
 }
 
 if (install_init2partdisk($harddrive, $part1size)) {
-	write_console("There was a problem during initializing the destination disk.\n");
 	install_unmount_cd();
+	tui_wait_keypress("There was a problem during initializing the destination disk.");
 	exit(0);
 }
 
 if (install_harddrive_image($harddrive)) {
-	write_console("There was a problem while copying files.\n");
 	install_unmount_cd();
+	tui_wait_keypress("There was a problem while copying files.");
 	exit(0);
 }
 
@@ -142,12 +142,6 @@ To use the DATA partition:
 DO NOT format the drive {$harddrive}! The DATA partition has been
 formated for you as part of the installation!
 
-Press ENTER to continue.
-
 EOD;
-write_console($text);
-
-$fp = fopen('php://stdin', 'r');
-fgets($fp);
-fclose($fp);
+tui_wait_keypress($text);
 ?>
