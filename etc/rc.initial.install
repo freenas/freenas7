@@ -10,13 +10,13 @@ trap "rm -f $tmpfile" 0 1 2 5 15
 
 # Endless loop
 while : ; do
-	cdialog --clear --title "Install & Upgrade" --menu "" 12 74 6 \
-		"1" "Install 'embedded' release on HDD/Flash/USB" \
-		"2" "Install 'embedded' release on HDD/Flash/USB + data partition" \
-		"3" "Install 'full' release on HDD + data partition" \
-		"4" "Upgrade 'embedded' installation from CDROM" \
-		"5" "Upgrade 'full' installation from CDROM" \
-		"6" "Upgrade and convert 'full' installation to 'embedded'" 2> $tmpfile
+	cdialog --clear --title "Install & Upgrade" --menu "" 12 66 6 \
+		"1" "Install 'embedded' OS on HDD/Flash/USB" \
+		"2" "Install 'embedded' OS on HDD/Flash/USB + data partition" \
+		"3" "Install 'full' OS on HDD + data partition" \
+		"4" "Upgrade 'embedded' OS from CDROM" \
+		"5" "Upgrade 'full' OS from CDROM" \
+		"6" "Upgrade and convert 'full' OS to 'embedded'" 2> $tmpfile
 
 	if [ 0 -ne $? ]; then
 		exit 0;
