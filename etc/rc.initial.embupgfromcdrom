@@ -27,92 +27,92 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	require_once("config.inc");
-	require_once("functions.inc");
-	require_once("install.inc");
+require_once("config.inc");
+require_once("functions.inc");
+require_once("install.inc");
+require_once("util.inc");
+require_once("tui.inc");
 
-	/* Get product information */
-	$productname = get_product_name();
+// Get product information.
+$productname = get_product_name();
 
-	$fp = fopen('php://stdin', 'r');
+// Display informations.
+$text = <<<EOD
 
-	$cdlist = get_cdrom_list();
-	$disklist = get_physical_disks_list();
+{$productname} upgrade from CDROM.
 
-	echo "\n{$productname} upgrade from CDROM.\n\n";
+This will upgrade your current installation to the latest version.
 
-	// Search where the config file is installed.
-	if (0 != install_detect_installation("embedded", $devinfo)) {
-		echo "No 'embedded' installation detected!\n";
-		exit(0);
-	}
+EOD;
+$result = tui_display_message($text, 70, 9);
 
-	echo "{$productname} has been detected on device '{$devinfo['device']}'.\n";
+// Search where the config file is installed.
+if (0 != install_detect_installation("embedded", $devinfo)) {
+	write_console("No 'embedded' installation detected!\n");
+	exit(0);
+}
 
-	do {
-		echo "Is this is correct? (y/n): ";
-		$valid = chop(fgets($fp));
-		if ($valid === "n") {
-			exit(0);
-		}
-	} while ($valid != "y");
+$result = tui_display_yesno("{$productname} has been detected on device '{$devinfo['device']}'.\n\nIs this is correct?", 50, 8);
+if (0 != $result)
+	exit(0);
 
-	if (0 == count($cdlist)) {
-		echo "Failed to detect any CDROM.\n";
-		exit(0);
-	} else {
-		echo "\nHere is the list of detected CDROM(s):\n";
-	}
+// Detect hardware.
+$cdlist = get_cdrom_list();
+$disklist = get_physical_disks_list();
 
-	foreach ($cdlist as $cdromk =>$cdromv) 	{
-		echo "$cdromk: <{$cdromv['desc']}>\n";
-	}
+if (0 == count($cdlist)) {
+	write_console("Failed to detect any CDROM.");
+	exit(0);
+}
 
-	do {
-		echo "\nEnter the name of the CDROM drive: ";
-		$cdrom = chop(fgets($fp));
-		if (empty($cdrom)) {
-			exit(0);
-		}
-	} while (!is_validaliasname($cdrom));
+// Display installation medias.
+$amenuitem = array();
+foreach ($cdlist as $cdromk => $cdromv) {
+	$menuitem = array();
+	$menuitem['tag'] = $cdromk;
+	$menuitem['item'] = $cdromv['desc'];
+	$amenuitem[] = $menuitem;
+}
+$result = tui_display_menu("Choose the installation media.", 60, 10, 6, $amenuitem, $cdrom);
+if (0 != $result)
+	exit(0);
 
-	echo "\n";
+if (install_mount_cd($cdrom)) {
+	write_console("There was a problem while mounting the CDROM.\n");
+	exit(0);
+}
 
-	if (install_mount_cd($cdrom)) {
-		echo "\nThere was a problem while mounting the CDROM.\n";
-		exit(0);
-	}
-
-	if (install_backup_config("{$devinfo['device']}{$devinfo['partition']}")) {
-		echo "\nThere was a problem during configuration file backup.\n";
-		install_unmount_cd();
-		exit(0);
-	}
-
-	/* Must install on ad0s1 if installed on partition 1, but install on ad0 if installed on ad0a */
-	if ("s1" === $devinfo['partition']) {
-		if (install_dd_image("{$devinfo['device']}{$devinfo['partition']}")) {
-			echo "\nThere was a problem while copying files.\n";
-			install_unmount_cd();
-			exit(0);
-		}
-	}	else {
-		if (install_dd_image($devinfo['device'])) {
-			echo "\nThere was a problem while copying files.\n";
-			install_unmount_cd();
-			exit(0);
-		}
-	}
-
-	if (install_restore_config("{$devinfo['device']}{$devinfo['partition']}")) {
-		echo "\nThere was a problem while restoring configuration file.\n";
-		install_unmount_cd();
-		exit(0);
-	}
-
+if (install_backup_config("{$devinfo['device']}{$devinfo['partition']}")) {
+	write_console("There was a problem during configuration file backup.\n");
 	install_unmount_cd();
+	exit(0);
+}
 
-	echo <<<EOD
+// Must install on ad0s1 if installed on partition 1, but install on ad0 if installed on ad0a.
+if ("s1" === $devinfo['partition']) {
+	if (install_dd_image("{$devinfo['device']}{$devinfo['partition']}")) {
+		write_console("There was a problem while copying files.\n");
+		install_unmount_cd();
+		exit(0);
+	}
+}	else {
+	if (install_dd_image($devinfo['device'])) {
+		write_console("There was a problem while copying files.\n");
+		install_unmount_cd();
+		exit(0);
+	}
+}
+
+if (install_restore_config("{$devinfo['device']}{$devinfo['partition']}")) {
+	write_console("There was a problem while restoring configuration file.\n");
+	install_unmount_cd();
+	exit(0);
+}
+
+install_unmount_cd();
+
+// Display final message.
+$text = <<<EOD
 
 {$productname} installed on device '{$devinfo['device']}{$devinfo['partition']}' has been upgraded.
 You can remove the CDROM and reboot the PC now.
@@ -120,6 +120,9 @@ You can remove the CDROM and reboot the PC now.
 Press ENTER to continue.
 
 EOD;
+write_console($text);
 
-	fgets($fp);
+$fp = fopen('php://stdin', 'r');
+fgets($fp);
+fclose($fp);
 ?>

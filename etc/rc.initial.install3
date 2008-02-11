@@ -31,103 +31,98 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	require_once("config.inc");
-	require_once("functions.inc");
-	require_once("install.inc");
+require_once("config.inc");
+require_once("functions.inc");
+require_once("install.inc");
+require_once("util.inc");
+require_once("tui.inc");
 
-	/* Minimum size of partition 1 (used for OS). */
-	$minpart1size = 64;
+// Minimum size of partition 1 (used for OS).
+$minpart1size = 64;
 
-	/* Get product information */
-	$productname = get_product_name();
+// Get product information.
+$productname = get_product_name();
 
-	$fp = fopen('php://stdin', 'r');
-
-	$cdlist = get_cdrom_list();
-	$disklist = get_physical_disks_list();
-
-	echo <<<EOD
+// Display informations.
+$text = <<<EOD
 
 {$productname} 'full' installer (not for flash devices).
 
 WARNING: There will be some limitations:
-1. This will erase ALL your partitions and data on the destination disk
-2. You can't install {$productname} if it's already installed on this disk
-   (use upgrade from WebGUI or Console)
+1. This will erase ALL partitions and data on the destination disk
 
 EOD;
+$result = tui_display_message($text, 74, 10);
 
-	if (0 == count($cdlist)) {
-		echo "\nFailed to detect any CDROM.\n";
+// Detect hardware.
+$cdlist = get_cdrom_list();
+$disklist = get_physical_disks_list();
+
+if (0 == count($cdlist)) {
+	write_console("Failed to detect any CDROM.");
+	exit(0);
+}
+
+// Display installation medias.
+$amenuitem = array();
+foreach ($cdlist as $cdromk => $cdromv) {
+	$menuitem = array();
+	$menuitem['tag'] = $cdromk;
+	$menuitem['item'] = $cdromv['desc'];
+	$amenuitem[] = $menuitem; 
+}
+$result = tui_display_menu("Choose the installation media.", 60, 10, 6, $amenuitem, $cdrom);
+if (0 != $result)
+	exit(0);
+
+// Display destination medias.
+$amenuitem = array();
+foreach ($disklist as $diskk => $diskv) {
+	$menuitem = array();
+	$menuitem['tag'] = $diskk;
+	$menuitem['item'] = "{$diskv['size']} <{$diskv['desc']}>";
+	$amenuitem[] = $menuitem; 
+}
+$result = tui_display_menu("Choose the destination media.", 60, 14, 10, $amenuitem, $harddrive);
+if (0 != $result)
+	exit(0);
+
+// Check if destination drive is mounted.
+if (disks_ismounted_ex($harddrive, "mdisk")) {
+	write_console("The destination drive is already in usage!\n");
+	exit(0);
+}
+
+// Get customized destination media size.
+$text = sprintf("Enter the size for OS partition in MB (min %dMB): ", $minpart1size);
+do {
+	$part1size = $minpart1size;
+	$result = tui_display_input($text, 60, 8, $part1size);
+	if (0 != $result)
 		exit(0);
-	} else {
-		echo "\nHere is the list of detected CDROM(s):\n";
-	}
+} while ($minpart1size > $part1size);
 
-	foreach ($cdlist as $cdromk =>$cdromv) {
-		echo "$cdromk: <{$cdromv['desc']}>\n";
-	}
+if (install_mount_cd($cdrom)) {
+	write_console("There was a problem while mounting the CDROM.\n");
+	exit(0);
+}
 
-	do {
-		echo "\nEnter the name of the CDROM drive: ";
-		$cdrom = chop(fgets($fp));
-		if (empty($cdrom)) {
-			exit(0);
-		}
-	} while (!is_validaliasname($cdrom));
-
-	echo "\nHere is the list of detected disk:\n";
-
-	foreach ($disklist as $diskk => $diskv) {
-		echo "$diskk: {$diskv['size']} <{$diskv['desc']}>\n";
-	}
-
-	do {
-		echo "\nEnter the name of the hard drive: ";
-		$harddrive = chop(fgets($fp));
-		if (empty($harddrive)) {
-			exit(0);
-		}
-	} while (!is_validaliasname($harddrive));
-
-	/* check if destination drive is mounted */
-	if (disks_ismounted_ex($harddrive,"mdisk")) {
-		echo "\nThe destination drive is already in usage!";
-		echo "\nPress ENTER to continue.";
-		fgets($fp);
-		exit(0);
-	}
-
-	do {
-		echo sprintf("Enter the size for OS partition in MB (min %dMB): ", $minpart1size);
-		$part1size = chop(fgets($fp));
-		if (empty($part1size)) {
-			exit(0);
-		}
-	} while ($minpart1size > $part1size);
-
-	echo "\n";
-
-	if(install_mount_cd($cdrom)) {
-		echo "\nThere was a problem while mounting the CDROM.\n";
-		exit(0);
-	}
-
-	if(install_init2partdisk($harddrive, $part1size)) {
-		echo "\nThere was a problem during initializing the destination disk.\n";
-		install_unmount_cd();
-		exit(0);
-	}
-
-	if(install_harddrive_image($harddrive)) {
-		echo "\nThere was a problem while copying files.\n";
-		install_unmount_cd();
-		exit(0);
-	}
-
+if (install_init2partdisk($harddrive, $part1size)) {
+	write_console("There was a problem during initializing the destination disk.\n");
 	install_unmount_cd();
+	exit(0);
+}
 
-	echo <<<EOD
+if (install_harddrive_image($harddrive)) {
+	write_console("There was a problem while copying files.\n");
+	install_unmount_cd();
+	exit(0);
+}
+
+install_unmount_cd();
+
+// Display final message.
+$text = <<<EOD
 
 {$productname} has been installed on {$harddrive}s1.
 You can now remove the CDROM and reboot the PC.
@@ -144,6 +139,9 @@ formated for you as part of the installation!
 Press ENTER to continue.
 
 EOD;
+write_console($text);
 
-	fgets($fp);
+$fp = fopen('php://stdin', 'r');
+fgets($fp);
+fclose($fp);
 ?>
