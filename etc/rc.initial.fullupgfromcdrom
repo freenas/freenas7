@@ -42,7 +42,9 @@ $text = <<<EOD
 This will upgrade your current installation to the latest version.
 
 EOD;
-$result = tui_display_message("{$productname} upgrade", $text, 70, 9);
+$result = tui_display_message_ex("{$productname} upgrade", $text, 70, 7);
+if (0 != $result)
+	exit(0);
 
 // Search where the config file is installed.
 if (0 != install_detect_installation("full", $devinfo)) {
