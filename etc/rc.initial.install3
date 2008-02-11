@@ -52,7 +52,7 @@ WARNING: There will be some limitations:
 1. This will erase ALL partitions and data on the destination disk
 
 EOD;
-$result = tui_display_message($text, 74, 10);
+$result = tui_display_message("{$productname} installation", $text, 74, 10);
 
 // Detect hardware.
 $cdlist = get_cdrom_list();
@@ -71,7 +71,7 @@ foreach ($cdlist as $cdromk => $cdromv) {
 	$menuitem['item'] = $cdromv['desc'];
 	$amenuitem[] = $menuitem; 
 }
-$result = tui_display_menu("Choose the installation media.", 60, 10, 6, $amenuitem, $cdrom);
+$result = tui_display_menu("Choose installation media", "Select CD/DVD drive for installation.", 60, 10, 6, $amenuitem, $cdrom);
 if (0 != $result)
 	exit(0);
 
@@ -83,7 +83,7 @@ foreach ($disklist as $diskk => $diskv) {
 	$menuitem['item'] = "{$diskv['size']} <{$diskv['desc']}>";
 	$amenuitem[] = $menuitem; 
 }
-$result = tui_display_menu("Choose the destination media.", 60, 14, 10, $amenuitem, $harddrive);
+$result = tui_display_menu("Choose destination media", "Select media where {$productname} OS should be installed.", 60, 14, 10, $amenuitem, $harddrive);
 if (0 != $result)
 	exit(0);
 

@@ -39,12 +39,10 @@ $productname = get_product_name();
 // Display informations.
 $text = <<<EOD
 
-{$productname} upgrade from CDROM.
-
 This will upgrade your current installation to the latest version.
 
 EOD;
-$result = tui_display_message($text, 70, 9);
+$result = tui_display_message("{$productname} upgrade", $text, 70, 9);
 
 // Search where the config file is installed.
 if (0 != install_detect_installation("embedded", $devinfo)) {
@@ -73,7 +71,7 @@ foreach ($cdlist as $cdromk => $cdromv) {
 	$menuitem['item'] = $cdromv['desc'];
 	$amenuitem[] = $menuitem;
 }
-$result = tui_display_menu("Choose the installation media.", 60, 10, 6, $amenuitem, $cdrom);
+$result = tui_display_menu("Choose installation media", "Select CD/DVD drive for installation.", 60, 10, 6, $amenuitem, $cdrom);
 if (0 != $result)
 	exit(0);
 

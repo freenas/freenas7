@@ -42,12 +42,13 @@ function tui_display_yesno($text, $width, $height) {
 }
 
 // Display a message box.
+// $title - The dialog title
 // $text - The dialog text
 // $width - Width of the dialog
 // $height - Height of the dialog
 // Returns 0 if ok has been pressed or 255 if aborted via ESC.
-function tui_display_message($text, $width, $height) {
-	passthru("/usr/local/bin/cdialog --clear --msgbox \"{$text}\" {$height} {$width}", $retval);
+function tui_display_message($title, $text, $width, $height) {
+	passthru("/usr/local/bin/cdialog --clear --title \"{$title}\" --msgbox \"{$text}\" {$height} {$width}", $retval);
 	return $retval;
 }
 
@@ -67,6 +68,7 @@ function tui_display_input($text, $width, $height, &$value) {
 
 // Display a menu.
 // $title - The dialog title
+// $menutitle - The menu title
 // $width - Width of the dialog
 // $height - Height of the dialog
 // $menuheight - Height of the menu
@@ -77,9 +79,9 @@ function tui_display_input($text, $width, $height, &$value) {
 // )
 // $value [out] - Contains the selected item tag.
 // Returns 0 if ok has been pressed or 255 if aborted via ESC.
-function tui_display_menu($title, $width, $height, $menuheight, $amenuitem, &$value) {
+function tui_display_menu($title, $menutitle, $width, $height, $menuheight, $amenuitem, &$value) {
 	$tmpfile = "/tmp/tui" . rand();
-	$cmd = "/usr/local/bin/cdialog --input-fd 2 --output-fd 1 --clear --menu \"{$title}\" {$height} {$width} {$menuheight}";
+	$cmd = "/usr/local/bin/cdialog --input-fd 2 --output-fd 1 --clear --title \"{$title}\" --menu \"{$menutitle}\" {$height} {$width} {$menuheight}";
 	foreach($amenuitem as $menuitemv) {
 		$cmd .= " \"{$menuitemv['tag']}\" \"{$menuitemv['item']}\"";
 	}
