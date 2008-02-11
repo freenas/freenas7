@@ -46,16 +46,19 @@ $productname = get_product_name();
 // Display informations.
 $text = <<<EOD
 
-{$productname} 'embedded' installer for hard-drive.
+{$productname} 'embedded' installer for HDD.
 
-There will be created two partitions on the boot disk, partition 1 for
-the {$productname} OS and partition 2 for DATA.
+- Create MBR partition 1, using UFS, 32MB size for OS image
+- Create MBR partition 2, using UFS, for DATA
+- Uses a RAM disk to limit read/write access to the device
 
 WARNING: There will be some limitations:
 1. This will erase ALL partitions and data on the destination disk
 
 EOD;
-$result = tui_display_message("{$productname} installation", $text, 74, 13);
+$result = tui_display_message_ex("{$productname} installation", $text, 74, 14);
+if (0 != $result)
+	exit(0);
 
 // Detect hardware.
 $cdlist = get_cdrom_list();

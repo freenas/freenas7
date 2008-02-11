@@ -43,7 +43,10 @@ $productname = get_product_name();
 // Display informations.
 $text = <<<EOD
 
-{$productname} 'embedded' installer for flash device or hard-drive.
+{$productname} 'embedded' installer for Flash device or HDD.
+
+- Create 1 partition for OS image
+- Uses a RAM disk to limit read/write access to the device
 
 WARNING: There will be some limitations:
 1. This will erase ALL partitions and data on the destination disk
@@ -53,7 +56,9 @@ Install on USB key is the prefered way:
 It saves you an IDE or SCSI channel for more hard drives.
 
 EOD;
-$result = tui_display_message("{$productname} installation", $text, 74, 14);
+$result = tui_display_message_ex("{$productname} installation", $text, 74, 17);
+if (0 != $result)
+	exit(0);
 
 // Detect hardware.
 $cdlist = get_cdrom_list();
