@@ -5,30 +5,25 @@
 # Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>
 # All rights reserved.
 
-# endless loop
-while : ; do
-	echo
-	echo "Install"
-	echo "-------"
-	echo "1) Install 'embedded' release on hard drive/flash/USB device:"
-	echo "   - Create 1 partition for OS image"
-	echo "   - Uses a RAM drive to limit read/write access to the device"
-	echo "2) Install 'embedded' release on hard drive/flash/USB device:"
-	echo "   - Create MBR partition 1, using UFS, 32MB size for OS"
-	echo "   - Create MBR partition 2, using UFS, for DATA"
-	echo "   - Uses a RAM drive to limit read/write access to the device"
-	echo "3) Install 'full' release on hard drive:"
-	echo "   - Create MBR partition 1, using UFS, customizable size (min. 64MB) for OS"
-	echo "   - Create MBR partition 2, using UFS, for DATA"
-	echo "   - Easy to customize (e.g. install additional FreeBSD packages)"
-	echo "4) Upgrade existing installed 'embedded' release from CDROM"
-	echo "5) Upgrade existing installed 'full' release from CDROM"
-	echo "6) Upgrade and convert 'full' release to 'embedded'"
-	echo "7) Return to main menu"
-	echo
-	read -p "Enter a number: " opmode
+tmpfile=`tmpfile 2>/dev/null` || tmpfile=/tmp/tui$$
+trap "rm -f $tmpfile" 0 1 2 5 15
 
-	case ${opmode} in
+# Endless loop
+while : ; do
+	cdialog --clear --title "Install" --menu "" 12 74 6 \
+		"1" "Install 'embedded' release on HDD/Flash/USB" \
+		"2" "Install 'embedded' release on HDD/Flash/USB + data partition" \
+		"3" "Install 'full' release on HDD + data partition" \
+		"4" "Upgrade 'embedded' installation from CDROM" \
+		"5" "Upgrade 'full' installation from CDROM" \
+		"6" "Upgrade and convert 'full' release to 'embedded'" 2> $tmpfile
+
+	if [ 0 -ne $? ]; then
+		exit 0;
+	fi
+
+	choice=`cat ${tmpfile}`
+	case ${choice} in
 		1)
 			/etc/rc.initial.install1
 		 	;;
@@ -46,9 +41,6 @@ while : ; do
 			;;
 		6)
 			/etc/rc.initial.full2emb
-			;;
-		7)
-			exit 0
 			;;
 	esac
 done

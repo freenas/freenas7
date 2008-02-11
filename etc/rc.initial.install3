@@ -46,13 +46,19 @@ $productname = get_product_name();
 // Display informations.
 $text = <<<EOD
 
-{$productname} 'full' installer (not for flash devices).
+{$productname} 'full' installer for HDD.
+
+- Create MBR partition 1, using UFS, customizable size for OS
+- Create MBR partition 2, using UFS, for DATA
+- Easy to customize (e.g. install additional FreeBSD packages)
 
 WARNING: There will be some limitations:
 1. This will erase ALL partitions and data on the destination disk
 
 EOD;
-$result = tui_display_message("{$productname} installation", $text, 74, 10);
+$result = tui_display_message_ex("{$productname} installation", $text, 74, 14);
+if (0 != $result)
+	exit(0);
 
 // Detect hardware.
 $cdlist = get_cdrom_list();

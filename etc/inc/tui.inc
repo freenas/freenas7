@@ -52,6 +52,17 @@ function tui_display_message($title, $text, $width, $height) {
 	return $retval;
 }
 
+// Display a message box.
+// $title - The dialog title
+// $text - The dialog text
+// $width - Width of the dialog
+// $height - Height of the dialog
+// Returns 0 if OK, 1 if Cancel or 255 if aborted via ESC.
+function tui_display_message_ex($title, $text, $width, $height) {
+	passthru("/usr/local/bin/cdialog --clear --yes-label \"OK\" --no-label \"Cancel\" --title \"{$title}\" --yesno \"{$text}\" {$height} {$width}", $retval);
+	return $retval;
+}
+
 // Display a input box.
 // $text - The dialog text
 // $width - Width of the dialog
