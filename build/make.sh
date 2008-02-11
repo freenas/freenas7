@@ -586,6 +586,7 @@ use_svn() {
 
 	cp -pv ${FREENAS_SVNDIR}/root/.cshrc ${FREENAS_ROOTFS}/root
 	cp -pv ${FREENAS_SVNDIR}/root/.profile ${FREENAS_ROOTFS}/root
+	cp -pv ${FREENAS_SVNDIR}/root/.dialogrc ${FREENAS_ROOTFS}/root
 
 	cd $FREENAS_SVNDIR/etc
 	cp -v -p * $FREENAS_ROOTFS/etc
