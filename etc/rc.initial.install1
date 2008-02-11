@@ -53,7 +53,7 @@ Install on USB key is the prefered way:
 It saves you an IDE or SCSI channel for more hard drives.
 
 EOD;
-$result = tui_display_message($text, 70, 14);
+$result = tui_display_message($text, 74, 14);
 
 // Detect hardware.
 $cdlist = get_cdrom_list();
@@ -70,7 +70,7 @@ foreach ($cdlist as $cdromk => $cdromv) {
 	$menuitem = array();
 	$menuitem['tag'] = $cdromk;
 	$menuitem['item'] = $cdromv['desc'];
-	$amenuitem[] = $menuitem; 
+	$amenuitem[] = $menuitem;
 }
 $result = tui_display_menu("Choose the installation media.", 60, 10, 6, $amenuitem, $cdrom);
 if (0 != $result)
@@ -82,7 +82,7 @@ foreach ($disklist as $diskk => $diskv) {
 	$menuitem = array();
 	$menuitem['tag'] = $diskk;
 	$menuitem['item'] = "{$diskv['size']} <{$diskv['desc']}>";
-	$amenuitem[] = $menuitem; 
+	$amenuitem[] = $menuitem;
 }
 $result = tui_display_menu("Choose the destination media.", 60, 14, 10, $amenuitem, $harddrive);
 if (0 != $result)

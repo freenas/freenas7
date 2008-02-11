@@ -542,7 +542,7 @@ function install_detect_installation($mode, &$devinfo) {
 		// Search on slice 1 for OS installed on disk with install script.
 		if (0 == mwexec("/sbin/mount -r /dev/{$diskv}s1 {$mnt_cf_disk}")) {
 			// Check if configuration file exists.
-			if (file_exists("{$mnt_cf_disk}{$g['cf_conf_path']}/config.xml")) {
+			if (file_exists("{$mnt_cf_disk}/conf/config.xml")) {
 				$devinfo['device'] = $diskv;
 				$devinfo['partition'] = "s1";
 			}
@@ -573,7 +573,7 @@ function install_detect_installation($mode, &$devinfo) {
 		// Search on partition 'a' for OS IMG image written on disk.
 		if (mwexec("/sbin/mount -r /dev/{$diskv}a {$mnt_cf_disk}") == 0) {
 			// Check if configuration file exists.
-			if (file_exists("{$mnt_cf_disk}{$g['cf_conf_path']}/config.xml")) {
+			if (file_exists("{$mnt_cf_disk}/conf/config.xml")) {
 				$devinfo['device'] = $diskv;
 				$devinfo['partition'] = "a";
 			}

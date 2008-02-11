@@ -31,99 +31,92 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	require_once("config.inc");
-	require_once("functions.inc");
-	require_once("install.inc");
+require_once("config.inc");
+require_once("functions.inc");
+require_once("install.inc");
+require_once("util.inc");
+require_once("tui.inc");
 
-	/* Size of partition 1 (used for OS). */
-	$part1size = 32;
+// Default size of partition 1 (used for OS).
+$part1size = 32;
 
-	/* Get product information */
-	$productname = get_product_name();
+// Get product information.
+$productname = get_product_name();
 
-	$fp = fopen('php://stdin', 'r');
+// Display informations.
+$text = <<<EOD
 
-	$cdlist = get_cdrom_list();
-	$disklist = get_physical_disks_list();
-
-	echo <<<EOD
-
-{$productname} "Embedded" installer for hard-drive.
+{$productname} 'embedded' installer for hard-drive.
 
 There will be created two partitions on the boot disk, partition 1 for
 the {$productname} OS and partition 2 for DATA.
 
 WARNING: There will be some limitations:
-1. This will erase ALL your partitions and data on the destination disk
-2. You can't install {$productname} if it's already installed on this disk
-   (use upgrade from WebGUI or Console)
+1. This will erase ALL partitions and data on the destination disk
 
 EOD;
+$result = tui_display_message($text, 74, 13);
 
-	if (0 == count($cdlist)) {
-		echo "\nFailed to detect any CDROM.\n";
-		exit(0);
-	} else {
-		echo "\nHere is the list of detected CDROM(s):\n";
-	}
+// Detect hardware.
+$cdlist = get_cdrom_list();
+$disklist = get_physical_disks_list();
 
-	foreach ($cdlist as $cdromk =>$cdromv) {
-		echo "$cdromk: <{$cdromv['desc']}>\n";
-	}
+if (0 == count($cdlist)) {
+	write_console("Failed to detect any CDROM.");
+	exit(0);
+}
 
-	do {
-		echo "\nEnter the name of the CDROM drive: ";
-		$cdrom = chop(fgets($fp));
-		if (empty($cdrom)) {
-			exit(0);
-		}
-	} while (!is_validaliasname($cdrom));
+// Display installation medias.
+$amenuitem = array();
+foreach ($cdlist as $cdromk => $cdromv) {
+	$menuitem = array();
+	$menuitem['tag'] = $cdromk;
+	$menuitem['item'] = $cdromv['desc'];
+	$amenuitem[] = $menuitem; 
+}
+$result = tui_display_menu("Choose the installation media.", 60, 10, 6, $amenuitem, $cdrom);
+if (0 != $result)
+	exit(0);
 
-	echo "Here is the list of detected disks:\n";
+// Display destination medias.
+$amenuitem = array();
+foreach ($disklist as $diskk => $diskv) {
+	$menuitem = array();
+	$menuitem['tag'] = $diskk;
+	$menuitem['item'] = "{$diskv['size']} <{$diskv['desc']}>";
+	$amenuitem[] = $menuitem; 
+}
+$result = tui_display_menu("Choose the destination media.", 60, 14, 10, $amenuitem, $harddrive);
+if (0 != $result)
+	exit(0);
 
-	foreach ($disklist as $diskk => $diskv) {
-		echo "$diskk: {$diskv['size']} <{$diskv['desc']}>\n";
-	}
+// Check if destination drive is mounted.
+if (disks_ismounted_ex($harddrive, "mdisk")) {
+	write_console("The destination drive is already in usage!\n");
+	exit(0);
+}
 
-	do {
-		echo "\nEnter the name of the Hard Drive: ";
-		$harddrive = chop(fgets($fp));
-		if (empty($harddrive)) {
-			exit(0);
-		}
-	} while (!is_validaliasname($harddrive));
+if (install_mount_cd($cdrom)) {
+	write_console("There was a problem while mounting the CDROM.\n");
+	exit(0);
+}
 
-	/* check if destination drive is mounted */
-	if (disks_ismounted_ex($harddrive,"mdisk")) {
-		echo "\nThe destination drive is already in usage!";
-		echo "\nPress ENTER to continue.";
-		fgets($fp);
-		exit(0);
-	}
-
-	echo "\n";
-
-	if(install_mount_cd($cdrom)) {
-		echo "\nThere was a problem while mounting the CDROM.\n";
-		fgets($fp);
-		exit(0);
-	}
-
-	if(install_init2partdisk($harddrive, $part1size)) {
-		echo "\nThere was a problem during initializing the destination disk.\n";
-		install_unmount_cd();
-		exit(0);
-	}
-
-	if(install_dd_image("{$harddrive}s1")) {
-		echo "\nThere was a problem while copying files.\n";
-		install_unmount_cd();
-		exit(0);
-	}
-
+if (install_init2partdisk($harddrive, $part1size)) {
+	write_console("There was a problem during initializing the destination disk.\n");
 	install_unmount_cd();
+	exit(0);
+}
 
-	echo <<<EOD
+if (install_dd_image("{$harddrive}s1")) {
+	write_console("There was a problem while copying files.\n");
+	install_unmount_cd();
+	exit(0);
+}
+
+install_unmount_cd();
+
+// Display final message.
+$text = <<<EOD
 
 {$productname} has been installed on {$harddrive}s1.
 You can now remove the CDROM and reboot the PC.
@@ -140,6 +133,9 @@ formated for you as part of the installation!
 Press ENTER to continue.
 
 EOD;
+write_console($text);
 
-	fgets($fp);
+$fp = fopen('php://stdin', 'r');
+fgets($fp);
+fclose($fp);
 ?>
