@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-02-04 09:39+0000\n"
+"PO-Revision-Date: 2008-02-11 17:29+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -205,9 +205,6 @@ msgstr ""
 msgid "Add module"
 msgstr ""
 
-msgid "Add network"
-msgstr ""
-
 msgid "Add parameter"
 msgstr ""
 
@@ -259,6 +256,9 @@ msgid "Alias host name."
 msgstr ""
 
 msgid "All"
+msgstr ""
+
+msgid "All dirs"
 msgstr ""
 
 msgid "All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."
@@ -339,9 +339,6 @@ msgid "Authentication"
 msgstr ""
 
 msgid "Authorised network"
-msgstr ""
-
-msgid "Authorized networks"
 msgstr ""
 
 msgid "AutoScale"
@@ -607,9 +604,6 @@ msgstr ""
 msgid "Delete module"
 msgstr ""
 
-msgid "Delete network"
-msgstr ""
-
 msgid "Delete parameter"
 msgstr ""
 
@@ -763,9 +757,6 @@ msgstr ""
 msgid "Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!"
 msgstr ""
 
-msgid "Do you really want to delete this network entry?"
-msgstr ""
-
 msgid "Do you really want to delete this parameter?"
 msgstr ""
 
@@ -878,9 +869,6 @@ msgid "Edit job"
 msgstr ""
 
 msgid "Edit module"
-msgstr ""
-
-msgid "Edit network"
 msgstr ""
 
 msgid "Edit parameter"
@@ -1033,6 +1021,9 @@ msgid "Execute command"
 msgstr ""
 
 msgid "Execute command pre or post system initialization (booting) or before system shutdown."
+msgstr ""
+
+msgid "Exports"
 msgstr ""
 
 msgid "Extensions"
@@ -1378,6 +1369,9 @@ msgstr ""
 msgid "Inherit permissions"
 msgstr ""
 
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
+
 msgid "Initialize"
 msgstr ""
 
@@ -1709,19 +1703,16 @@ msgstr ""
 msgid "Network"
 msgstr ""
 
+msgid "Network mask"
+msgstr ""
+
 msgid "Network port"
 msgstr ""
 
-msgid "Network that is authorised to access to NFS share"
+msgid "Network that is authorised to access the NFS share."
 msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
-msgstr ""
-
-msgid "Networks"
-msgstr ""
-
-msgid "Networks authorized."
 msgstr ""
 
 msgid "No"
@@ -1927,6 +1918,9 @@ msgstr ""
 msgid "Platform"
 msgstr ""
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr ""
 
@@ -1991,6 +1985,9 @@ msgid "Puts the hard disk into standby mode when the selected amount of time aft
 msgstr ""
 
 msgid "Quality"
+msgstr ""
+
+msgid "Quiet"
 msgstr ""
 
 msgid "RAID 0"
@@ -2245,6 +2242,9 @@ msgstr ""
 msgid "Share Password"
 msgstr ""
 
+msgid "Share all sub directories."
+msgstr ""
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
@@ -2306,6 +2306,9 @@ msgid "Source share"
 msgstr ""
 
 msgid "Space Used"
+msgstr ""
+
+msgid "Specifies that the file system should be exported read-only."
 msgstr ""
 
 msgid "Specifies the default base DN to use when performing ldap operations, example: dc=example,dc=com"
@@ -2469,6 +2472,9 @@ msgstr ""
 msgid "The LAN configuration has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
+msgid "The NFS export list has been changed.<br>You must apply the changes in order for them to take effect."
+msgstr ""
+
 #, php-format
 msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
 msgstr ""
@@ -2615,6 +2621,9 @@ msgstr ""
 msgid "The full name contains invalid characters."
 msgstr ""
 
+msgid "The group ID must be > 1001."
+msgstr ""
+
 msgid "The group description contains invalid characters."
 msgstr ""
 
@@ -2666,9 +2675,6 @@ msgstr ""
 msgid "The mount point list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr ""
-
 msgid "The number of clients must be between 1 and 50."
 msgstr ""
 
@@ -2682,9 +2688,6 @@ msgid "The password contains the illegal character ':'."
 msgstr ""
 
 msgid "The passwords do not match."
-msgstr ""
-
-msgid "The pasv address must be a public IP address."
 msgstr ""
 
 msgid "The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user."
@@ -2717,7 +2720,16 @@ msgstr ""
 msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
+msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique user ID is already used."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
+msgstr ""
+
+msgid "The user ID must be > 1001."
 msgstr ""
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
@@ -2947,7 +2959,13 @@ msgstr ""
 msgid "Uninstall package"
 msgstr ""
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
+msgstr ""
+
+msgid "Unique user numeric id."
 msgstr ""
 
 msgid "Unison"
@@ -3101,7 +3119,7 @@ msgstr ""
 msgid "Workgroup"
 msgstr ""
 
-msgid "Workgroup to be member of."
+msgid "Workgroup to be member of.(maximum 15 characters)"
 msgstr ""
 
 msgid "Working Directory"
