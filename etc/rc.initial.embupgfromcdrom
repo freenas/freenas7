@@ -48,7 +48,7 @@ if (0 != $result)
 
 // Search where the config file is installed.
 if (0 != install_detect_installation("embedded", $devinfo)) {
-	write_console("No 'embedded' installation detected!\n");
+	tui_wait_keypress("No 'embedded' installation detected!");
 	exit(0);
 }
 
@@ -61,7 +61,7 @@ $cdlist = get_cdrom_list();
 $disklist = get_physical_disks_list();
 
 if (0 == count($cdlist)) {
-	write_console("Failed to detect any CDROM.");
+	tui_wait_keypress("Failed to detect any CDROM.");
 	exit(0);
 }
 
@@ -78,34 +78,34 @@ if (0 != $result)
 	exit(0);
 
 if (install_mount_cd($cdrom)) {
-	write_console("There was a problem while mounting the CDROM.\n");
+	tui_wait_keypress("There was a problem while mounting the CDROM.");
 	exit(0);
 }
 
 if (install_backup_config("{$devinfo['device']}{$devinfo['partition']}")) {
-	write_console("There was a problem during configuration file backup.\n");
 	install_unmount_cd();
+	tui_wait_keypress("There was a problem during configuration file backup.");
 	exit(0);
 }
 
 // Must install on ad0s1 if installed on partition 1, but install on ad0 if installed on ad0a.
 if ("s1" === $devinfo['partition']) {
 	if (install_dd_image("{$devinfo['device']}{$devinfo['partition']}")) {
-		write_console("There was a problem while copying files.\n");
 		install_unmount_cd();
+		tui_wait_keypress("There was a problem while copying files.");
 		exit(0);
 	}
 }	else {
 	if (install_dd_image($devinfo['device'])) {
-		write_console("There was a problem while copying files.\n");
 		install_unmount_cd();
+		tui_wait_keypress("There was a problem while copying files.");
 		exit(0);
 	}
 }
 
 if (install_restore_config("{$devinfo['device']}{$devinfo['partition']}")) {
-	write_console("There was a problem while restoring configuration file.\n");
 	install_unmount_cd();
+	tui_wait_keypress("There was a problem while restoring configuration file.");
 	exit(0);
 }
 
@@ -117,12 +117,6 @@ $text = <<<EOD
 {$productname} installed on device '{$devinfo['device']}{$devinfo['partition']}' has been upgraded.
 You can remove the CDROM and reboot the PC now.
 
-Press ENTER to continue.
-
 EOD;
-write_console($text);
-
-$fp = fopen('php://stdin', 'r');
-fgets($fp);
-fclose($fp);
+tui_wait_keypress($text);
 ?>

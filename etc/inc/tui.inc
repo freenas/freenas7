@@ -102,4 +102,14 @@ function tui_display_menu($title, $menutitle, $width, $height, $menuheight, $ame
 	@unlink($tmpfile);
 	return $retval;
 }
+
+// Wait until user has pressed 'RETURN'.
+function tui_wait_keypress($message = "") {
+	if (!empty($message))
+		write_console("$message\n");
+	write_console("\nPress ENTER to continue.");
+	$fp = fopen('php://stdin', 'r');
+	fgets($fp);
+	fclose($fp);
+}
 ?>

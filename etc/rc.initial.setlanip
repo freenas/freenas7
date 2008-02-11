@@ -186,11 +186,7 @@ You can now access the WebGUI using the following URL:
 {$config['system']['webgui']['protocol']}://$lanipv4
 {$config['system']['webgui']['protocol']}://[$lanipv6]
 
-Press ENTER to continue.
-
 EOD;
 
-	$fp = fopen('php://stdin', 'r');
-	fgets($fp);
-	fclose($fp);
+tui_wait_keypress();
 ?>
