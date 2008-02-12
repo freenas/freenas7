@@ -97,22 +97,23 @@ if($_POST) {
 		touch($d_nfsconfdirty_path);
 		write_config();
 
-		header("Location: services_nfs.php");
+		header("Location: services_nfs_share.php");
 		exit;
 	}
 }
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td class="tabnavtbl">
-      <ul id="tabnav">
-        <li class="tabinact"><a href="services_nfs.php"><?=gettext("Settings");?></a></li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td class="tabcont">
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabinact"><a href="services_nfs.php"><?=gettext("Settings");?></a></li>
+				<li class="tabact"><a href="services_nfs_share.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Shares");?></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="tabcont">
 			<form action="services_nfs_share_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">

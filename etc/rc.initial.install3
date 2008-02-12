@@ -141,7 +141,7 @@ To use the DATA partition:
 
 DO NOT format the drive {$harddrive}! The DATA partition has been
 formated for you as part of the installation!
-
 EOD;
+
 tui_wait_keypress($text);
 ?>

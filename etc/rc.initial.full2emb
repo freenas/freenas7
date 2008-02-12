@@ -112,7 +112,7 @@ $text = <<<EOD
 
 {$productname} installed on device '{$devinfo['device']}{$devinfo['partition']}' has been converted and upgraded.
 You can remove the CDROM and reboot the PC now.
-
 EOD;
+
 tui_wait_keypress($text);
 ?>

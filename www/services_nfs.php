@@ -85,18 +85,6 @@ if ($_POST) {
 		}
 	}
 }
-
-if ("del" === $_GET['act']) {
-	if ($a_share[$_GET['id']]) {
-		unset($a_share[$_GET['id']]);
-
-		write_config();
-		touch($d_nfsconfdirty_path);
-
-		header("Location: services_nfs.php");
-		exit;
-	}
-}
 ?>
 <?php include("fbegin.inc");?>
 <script language="JavaScript">
@@ -107,10 +95,18 @@ function enable_change(enable_change) {
 }
 //-->
 </script>
-<form action="services_nfs.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-	    <td class="tabcont">
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabact"><a href="services_nfs.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Settings");?></a></li>
+				<li class="tabinact"><a href="services_nfs_share.php"><?=gettext("Shares");?></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="tabcont">
+			<form action="services_nfs.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (file_exists($d_nfsconfdirty_path)):?><p>
@@ -131,34 +127,6 @@ function enable_change(enable_change) {
 						</td>
 					</tr>
 					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Exports");?></td>
-						<td width="78%" class="vtable">
-					    <table width="100%" border="0" cellpadding="0" cellspacing="0">
-					      <tr>
-					        <td width="30%" class="listhdrr"><?=gettext("Path");?></td>
-					        <td width="30%" class="listhdrr"><?=gettext("Network");?></td>
-					        <td width="30%" class="listhdrr"><?=gettext("Comment");?></td>
-					        <td width="10%" class="list"></td>
-					      </tr>
-							  <?php $i = 0; foreach ($a_share as $sharev):?>
-					      <tr>
-					        <td class="listr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
-					        <td class="listr"><?=htmlspecialchars($sharev['network']);?>&nbsp;</td>
-					        <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
-					        <td valign="middle" nowrap class="list">
-					          <a href="services_nfs_share_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit share");?>" width="17" height="17" border="0"></a>
-					          <a href="services_nfs.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this share?");?>')"><img src="x.gif" title="<?=gettext("Delete share");?>" width="17" height="17" border="0"></a>
-					        </td>
-					      </tr>
-					      <?php $i++; endforeach;?>
-					      <tr>
-					        <td class="list" colspan="3"></td>
-					        <td class="list"><a href="services_nfs_share_edit.php"><img src="plus.gif" title="<?=gettext("Add share");?>" width="17" height="17" border="0"></a></td>
-					      </tr>
-					    </table>
-					  </td>
-					</tr>
-					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Number of servers");?></td>
 						<td width="78%" class="vtable">
 							<input name="numproc" type="text" class="formfld" id="numproc" size="5" value="<?=htmlspecialchars($pconfig['numproc']);?>"></br>
@@ -172,10 +140,10 @@ function enable_change(enable_change) {
 						</td>
 					</tr>
 				</table>
-			</td>
-		</tr>
-	</table>
-</form>
+			</form>
+		</td>
+	</tr>
+</table>
 <script language="JavaScript">
 <!--
 enable_change(false);
