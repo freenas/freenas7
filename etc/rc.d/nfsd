@@ -13,10 +13,14 @@
 # RCVAR: nfs_server
 
 . /etc/rc.subr
+. /etc/configxml.subr
 
 name="nfsd"
 rcvar=`set_rcvar nfs_server`
 command="/usr/sbin/${name}"
+
+# Customize number of server processes/daemons.
+nfs_server_flags=`/usr/local/bin/xml sel -t -v "concat('-u -t -n ',//nfsd/numproc)" ${configxml_file} | /usr/local/bin/xml unesc`
 
 load_rc_config $name
 command_args="${nfs_server_flags}"
@@ -25,7 +29,7 @@ sig_stop="USR1"
 
 nfsd_precmd()
 {
-	if ! /sbin/sysctl vfs.nfsrv >/dev/null 2>&1; then
+	if ! sysctl vfs.nfsrv >/dev/null 2>&1; then
 		force_depend nfsserver || return 1
 	fi
 
@@ -43,7 +47,7 @@ nfsd_precmd()
 
 	if checkyesno nfs_reserved_port_only; then
 		echo 'NFS on reserved port only=YES'
-		/sbin/sysctl vfs.nfsrv.nfs_privport=1 > /dev/null
+		sysctl vfs.nfsrv.nfs_privport=1 > /dev/null
 	fi
 	return 0
 }

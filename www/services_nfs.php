@@ -43,11 +43,13 @@ array_sort_key($config['nfsd']['share'], "path");
 $a_share = &$config['nfsd']['share'];
 
 $pconfig['enable'] = isset($config['nfsd']['enable']);
+$pconfig['numproc'] = $config['nfsd']['numproc'];
 
 if ($_POST) {
 	$pconfig = $_POST;
 
 	$config['nfsd']['enable'] = $_POST['enable'] ? true : false;
+	$config['nfsd']['numproc'] = $_POST['numproc'];
 
 	write_config();
 
@@ -84,6 +86,14 @@ if ("del" === $_GET['act']) {
 }
 ?>
 <?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function enable_change(enable_change) {
+	var endis = !(document.iform.enable.checked || enable_change);
+	document.iform.numproc.disabled = endis;
+}
+//-->
+</script>
 <form action="services_nfs.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
@@ -135,6 +145,13 @@ if ("del" === $_GET['act']) {
 					  </td>
 					</tr>
 					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Number of servers");?></td>
+						<td width="78%" class="vtable">
+							<input name="numproc" type="text" class="formfld" id="numproc" size="5" value="<?=htmlspecialchars($pconfig['numproc']);?>"></br>
+							<span class="vexpl"><?=gettext("Specifies how many servers to create.");?></span>
+						</td>
+					</tr>
+					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
 							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
@@ -145,4 +162,9 @@ if ("del" === $_GET['act']) {
 		</tr>
 	</table>
 </form>
+<script language="JavaScript">
+<!--
+enable_change(false);
+//-->
+</script>
 <?php include("fend.inc");?>
