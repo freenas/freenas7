@@ -97,7 +97,7 @@ if($_POST) {
 		touch($d_nfsconfdirty_path);
 		write_config();
 
-		header("Location: services_nfs.php");
+		header("Location: services_nfs_share.php");
 		exit;
 	}
 }
@@ -107,7 +107,8 @@ if($_POST) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="services_nfs.php"><?=gettext("Settings");?></a></li>
+				<li class="tabinact"><a href="services_nfs.php"><?=gettext("Settings");?></a></li>
+				<li class="tabact"><a href="services_nfs_share.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Shares");?></a></li>
       </ul>
     </td>
   </tr>
