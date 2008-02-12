@@ -135,13 +135,13 @@ $pgtitle = array(gettext("License"));
         All rights reserved.</p>
       
 	  <p>ataidle (<a href="http://www.cran.org.uk/bruce/software/ataidle.php" target="_blank">http://www.cran.org.uk/bruce/software/ataidle.php</a>)<br>
-Copyright  &copy; 2004-2005 Bruce Cran &lt;bruce@cran.org.uk&gt;. All rights reserved.</p>
+			Copyright &copy; 2004-2005 Bruce Cran &lt;bruce@cran.org.uk&gt;. All rights reserved.</p>
 
 	  <p>smartmontools (<a href="http://smartmontools.sourceforge.net" target="_blank">http://smartmontools.sourceforge.net</a>)<br>
-Copyright  &copy; 2002-2005 Bruce Allen.</p>
+			Copyright &copy; 2002-2005 Bruce Allen.</p>
 
 	  <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br>
-Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
+			Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 
 		<p>iSCSI-target (<a href="http://www.alistaircrooks.co.uk" target="_blank">http://www.alistaircrooks.co.uk</a>)<br>
 	  	Copyright &copy; 2006 Alistair Crooks. All rights reserved.</p>
@@ -166,14 +166,17 @@ Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
 			Inadyn-mt Copyright &copy; 2007 Bryan Hoover (bhoover@wecs.com).</p>
 
 		<p>XMLStarlet Command Line XML Toolkit (<a href="http://xmlstar.sourceforge.net" target="_blank">http://xmlstar.sourceforge.net</a>)<br>
-      Copyright (c) 2002 Mikhail Grushinskiy. All rights reserved.</p>
+      Copyright &copy; 2002 Mikhail Grushinskiy. All rights reserved.</p>
 
 		<p>sipcalc (<a href="http://www.routemeister.net/projects/sipcalc" target="_blank">http://www.routemeister.net/projects/sipcalc</a>)<br>
-      Copyright (c) 2003 Simon Ekstrand. All rights reserved.</p>
+      Copyright &copy; 2003 Simon Ekstrand. All rights reserved.</p>
       
     <p>PHPMailer (<a href="http://phpmailer.sourceforge.net/" target="_blank">http://phpmailer.sourceforge.net/</a>)<br>
-      Copyright (c) Brent R. Matzelle (author), Patrice Fournier, Chris Ryan, Cem Hurturk, Tom Klingenberg, Jaime Bozza.<br>
+      Copyright &copy; Brent R. Matzelle (author), Patrice Fournier, Chris Ryan, Cem Hurturk, Tom Klingenberg, Jaime Bozza.<br>
 			All rights reserved.</p>
+
+		<p>cdialog - Display simple dialog boxes from shell scripts (<a href="http://invisible-island.net/dialog" target="_blank">http://invisible-island.net/dialog</a>)<br>
+      Copyright &copy; 2000-2006,2007 Thomas E. Dickey.</p>
 
 	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com" target="_blank">http://www.pfsense.com/</a>)<br>
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
