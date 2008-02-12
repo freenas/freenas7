@@ -1225,6 +1225,14 @@ function config_upgrade() {
 		$config['version'] = "4.3";
 	}
 
+	/* Convert 4.3 -> 4.4 */
+	/* Add attribute //nfsd/numproc. */
+	if ($config['version'] === "4.3") {
+		$config['nfsd']['numproc'] = "4";
+
+		$config['version'] = "4.4";
+	}
+
 	write_config();
 
 	if (is_booting())
