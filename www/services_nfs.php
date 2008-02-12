@@ -46,30 +46,43 @@ $pconfig['enable'] = isset($config['nfsd']['enable']);
 $pconfig['numproc'] = $config['nfsd']['numproc'];
 
 if ($_POST) {
+	unset($input_errors);
+
 	$pconfig = $_POST;
 
-	$config['nfsd']['enable'] = $_POST['enable'] ? true : false;
-	$config['nfsd']['numproc'] = $_POST['numproc'];
+	if ($_POST['enable']) {
+		$reqdfields = explode(" ", "numproc");
+		$reqdfieldsn = array(gettext("Number of servers"));
+		$reqdfieldst = explode(" ", "numeric");
 
-	write_config();
-
-	$retval = 0;
-	if (!file_exists($d_sysrebootreqd_path)) {
-		config_lock();
-		$retval |= rc_update_service("rpcbind"); // !!! Do
-		$retval |= rc_update_service("mountd");  // !!! not
-		$retval |= rc_update_service("nfsd");    // !!! change
-		$retval |= rc_update_service("statd");   // !!! this
-		$retval |= rc_update_service("lockd");   // !!! order
-		$retval |= rc_update_service("mdnsresponder");
-		config_unlock();
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
-	$savemsg = get_std_save_message($retval);
+	if(!$input_errors) {
+		$config['nfsd']['enable'] = $_POST['enable'] ? true : false;
+		$config['nfsd']['numproc'] = $_POST['numproc'];
 
-	if (0 == $retval) {
-		if (file_exists($d_nfsconfdirty_path))
-			unlink($d_nfsconfdirty_path);
+		write_config();
+
+		$retval = 0;
+		if (!file_exists($d_sysrebootreqd_path)) {
+			config_lock();
+			$retval |= rc_update_service("rpcbind"); // !!! Do
+			$retval |= rc_update_service("mountd");  // !!! not
+			$retval |= rc_update_service("nfsd");    // !!! change
+			$retval |= rc_update_service("statd");   // !!! this
+			$retval |= rc_update_service("lockd");   // !!! order
+			$retval |= rc_update_service("mdnsresponder");
+			config_unlock();
+		}
+
+		$savemsg = get_std_save_message($retval);
+
+		if (0 == $retval) {
+			if (file_exists($d_nfsconfdirty_path))
+				unlink($d_nfsconfdirty_path);
+		}
 	}
 }
 
@@ -98,6 +111,7 @@ function enable_change(enable_change) {
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
 	    <td class="tabcont">
+				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if (file_exists($d_nfsconfdirty_path)):?><p>
 				<?php print_info_box_np(gettext("The NFS export list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
