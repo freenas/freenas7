@@ -71,7 +71,9 @@ do-install:
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_smbpass.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/pam_winbind.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_winbind.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_winbind.so.1
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_wins.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_wins.so.1
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_winbind.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/nsswitch/nss_wins.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}
+	@${LN} -f -v -s ${SAMBA_LIBDIR}/nss_winbind.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_winbind.so.1
+	@${LN} -f -v -s ${SAMBA_LIBDIR}/nss_wins.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_wins.so.1
 
 .include <bsd.port.mk>
