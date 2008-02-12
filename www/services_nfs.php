@@ -162,7 +162,7 @@ function enable_change(enable_change) {
 						<td width="22%" valign="top" class="vncell"><?=gettext("Number of servers");?></td>
 						<td width="78%" class="vtable">
 							<input name="numproc" type="text" class="formfld" id="numproc" size="5" value="<?=htmlspecialchars($pconfig['numproc']);?>"></br>
-							<span class="vexpl"><?=gettext("Specifies how many servers to create.");?></span>
+							<span class="vexpl"><?=gettext("Specifies how many servers to create.");?> <?=gettext("There should be enough to handle the maximum level of concurrency from its clients, typically four to six.");?></span>
 						</td>
 					</tr>
 					<tr>
