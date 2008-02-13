@@ -402,7 +402,7 @@ function install_fdisk2partdisk($harddrive, $size)
 
 	// Get valid CHS informations. 'diskinfo' gets values from harddisk firmware that
 	// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63).
-	disks_get_chs_info($harddrive, $diskinfo);
+	disk_sanitize_bios_geom($diskinfo);
 
 	// Check available disk space.
 	if ($diskinfo['mediasize_mbytes'] <= $size) {
