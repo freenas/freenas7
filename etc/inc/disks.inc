@@ -1079,7 +1079,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 
 			// Get valid CHS informations. 'diskinfo' gets values from harddisk firmware that
 			// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63). 
-			disks_get_chs_info($disk, $diskinfo);
+			disk_sanitize_bios_geom($diskinfo);
 
 			// Create fdisk config file (fdisk.conf).
 			$fdiskconf .= <<<EOD
@@ -1123,7 +1123,7 @@ EOD;
 
 			// Get valid CHS informations. 'diskinfo' gets values from harddisk firmware that
 			// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63). 
-			disks_get_chs_info($disk, $diskinfo);
+			disk_sanitize_bios_geom($diskinfo);
 
 			// Create fdisk config file (fdisk.conf).
 			$fdiskconf .= <<<EOD
@@ -1347,5 +1347,48 @@ function disks_geom_cmd($class, $command, $param, $verbose = false, $stderr = tr
 	}
 
 	return $result;
+}
+
+// Calculate valid cylinders/heads/sectors.
+// Code taken from FreeBSD kernel /src/lib/libdisk/change.c.
+// $info [in|out] - Array containing CHS informations.
+//                 [1] => Array
+//                 (
+// 	                 [name] => ad0
+// 	                 [sectorsize]  => 512
+// 	                 [mediasize_bytes]  => 5242503168
+// 	                 [mediasize_mbytes]  => 4999
+// 	                 [mediasize_sectors]  => 10239264
+// 	                 [cylinders] => 10158
+// 	                 [heads] => 16
+// 	                 [sectors] => 63
+//                 )
+// Return: None
+function disk_sanitize_bios_geom(&$info) {
+	$sane = 1;
+
+	if ($info['cylinders'] > 1024)
+		$sane = 0;
+	if ($info['heads'] > 16)
+		$sane = 0;
+	if ($info['sectors'] > 63)
+		$sane = 0;
+	if ($info['cylinders'] * $info['heads'] * $info['sectors'] != $info['mediasize_sectors'])
+		$sane = 0;
+	if (0 != $sane)
+		return;
+
+	// First try something that IDE can handle.
+	$info['sectors'] = 63;
+	$info['heads'] = 16;
+	$info['cylinders'] = intval($info['mediasize_sectors'] / ($info['sectors'] * $info['heads']));
+
+	if ($info['cylinders'] < 1024)
+		return;
+
+	// Hmm, try harder...
+	// Assume standard SCSI parameter.
+	$info['heads'] = 255;
+	$info['cylinders'] = intval($info['mediasize_sectors'] / ($info['sectors'] * $info['heads']));
 }
 ?>
