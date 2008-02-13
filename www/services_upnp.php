@@ -71,7 +71,7 @@ if($_POST) {
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
 
-	if ((49152 > $_POST['port']) || (65535 < $_POST['port'])) {
+	if ($_POST['port'] && ((49152 > $_POST['port']) || (65535 < $_POST['port']))) {
 		$input_errors[] = sprintf(gettext("Invalid port! Port number must be in the range from %d to %d."), 49152, 65535);
 	}
 
