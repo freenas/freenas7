@@ -2,7 +2,7 @@
 /*
 	system.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -77,5 +77,84 @@ function system_get_language_codeset() {
 		$codeset = "ISO-8859-1"; // Set default codeset.
 
 	return $codeset;
+}
+
+// Get list of available groups from /etc/group.
+// Result:
+//	Array (
+//		[wheel] => 0
+//		[sshd] => 22
+//		[www] => 80
+//		[nobody] => 65534
+//		[admin] => 1000
+//		...
+//	)
+function system_get_group_list() {
+	// List of groups to filter from result list.
+	$filterlist = array("_dhcp", "_pflogd");
+
+	$grouplist = array();
+
+	preg_match_all("/(\S+):\*:(\d+):.*\n/", @file_get_contents("/etc/group"), $matches, PREG_SET_ORDER);
+
+	if (is_array($matches)) {
+		foreach ($matches as $group) {
+			if (false === in_array($group[1], $filterlist)) {
+				$grouplist[$group[1]] = $group[2];
+			}
+		}
+
+		ksort($grouplist);
+	}
+
+	return $grouplist;
+}
+
+// Get list of available users from /etc/master.passwd.
+// Result:
+//  Array (
+//    [test] => Array ( [name] => test
+//                      [password] => $1$yuQLaTPN$lkwYlZEB7B8n85flXPkHd0
+//                      [uid] => 1001
+//                      [gid] => 1001
+//                      [class] => 
+//                      [change] => 0 
+//                      [expire] => 0 
+//                      [gecos] => test 
+//                      [home_dir] => /mnt 
+//                      [shell] => /usr/local/bin/scponly
+//                    )
+//    [root] => ...
+//    [toor] => ..
+//    [daemon] => ...
+//    [operator] => ...
+//    ...
+//  )
+function system_get_user_list() {
+	$userlist = array();
+
+	foreach (explode("\n", @file_get_contents("/etc/master.passwd")) as $userinfov) {
+		if (empty($userinfov))
+			continue;
+
+		// Extract user informations.
+		$userinfo = explode(":", $userinfov);
+
+		$user = array();
+		$user['name'] = $userinfo[0];
+		$user['password'] = $userinfo[1];
+		$user['uid'] = $userinfo[2];
+		$user['gid'] = $userinfo[3];
+		$user['class'] = $userinfo[4];
+		$user['change'] = $userinfo[5];
+		$user['expire'] = $userinfo[6];
+		$user['gecos'] = $userinfo[7];
+		$user['home_dir'] = $userinfo[8];
+		$user['shell'] = $userinfo[9];
+		
+		$userlist[$user['name']] = $user;
+	}
+
+	return $userlist;
 }
 ?>

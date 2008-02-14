@@ -41,7 +41,7 @@ if (!is_array($config['access']['user']))
 array_sort_key($config['access']['user'], "login");
 
 $a_user = &$config['access']['user'];
-$a_group = get_group_list();
+$a_group = system_get_group_list();
 
 if ($_POST) {
 	$pconfig = $_POST;

@@ -40,7 +40,7 @@ if (!is_array($config['access']['group']))
 
 array_sort_key($config['access']['group'], "name");
 
-$a_group = get_group_list();
+$a_group = system_get_group_list();
 $a_group_conf = &$config['access']['group'];
 
 if ($_POST) {

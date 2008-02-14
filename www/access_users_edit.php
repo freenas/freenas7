@@ -45,7 +45,8 @@ if (!is_array($config['access']['user']))
 array_sort_key($config['access']['user'], "login");
 
 $a_user = &$config['access']['user'];
-$a_group = get_group_list();
+$a_user_system = system_get_user_list();
+$a_group = system_get_group_list();
 
 if (isset($id) && $a_user[$id]) {
 	$pconfig['login'] = $a_user[$id]['login'];
@@ -87,15 +88,10 @@ if ($_POST) {
 		$input_errors[] = gettext("The full name contains invalid characters.");
 	}
 
-	// Check for name conflicts.
-	foreach ($a_user as $user) {
-		if (isset($id) && ($a_user[$id]) && ($a_user[$id] == $user))
-			continue;
-
-		if ($user['login'] === $_POST['login']) {
-			$input_errors[] = gettext("This user already exists in the user list.");
-			break;
-		}
+	// Check for name conflicts. Only check if user is created.
+	if (!isset($id) && (is_array($a_user_system) && array_key_exists($_POST['login'], $a_user_system) ||
+		false !== array_search_ex($_POST['login'], $a_user, "login"))) {
+		$input_errors[] = gettext("This user already exists in the user list.");
 	}
 
 	// Check for a password mismatch.
@@ -153,16 +149,16 @@ function get_nextuser_id() {
 	// Get next free user id.
 	exec("/usr/sbin/pw nextuser", $output);
 	$output = explode(":", $output[0]);
-	$id = $output[0];
+	$id = intval($output[0]);
 
 	// Check if id is already in usage. If the user did not press the 'Apply'
 	// button 'pw' did not recognize that there are already several new users
 	// configured because the user db is not updated until 'Apply' is pressed.
 	$a_user = $config['access']['user'];
-	if (false !== array_search_ex($id, $a_user, "id")) {
+	if (false !== array_search_ex(strval($id), $a_user, "id")) {
 		do {
 			$id++; // Increase id until a unused one is found.
-		} while (false !== array_search_ex($id, $a_user, "id")); 
+		} while (false !== array_search_ex(strval($id), $a_user, "id")); 
 	}
 
 	return $id;
@@ -187,7 +183,7 @@ function get_nextuser_id() {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Login");?></td>
             <td width="78%" class="vtable">
-              <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>"></br>
+              <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>"  <?php if (isset($id)) echo "readonly";?>></br>
 							<span class="vexpl"><?=gettext("Unique login name of user.");?></span>
             </td>
 	       </tr>

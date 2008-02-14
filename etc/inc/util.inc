@@ -1883,35 +1883,4 @@ function set_conf_disk_fstype($disk, $fstype)
 
 	return $result;
 }
-
-// Get list of available groups from /etc/group.
-// Result:
-//	Array (
-//		[wheel] => 0
-//		[sshd] => 22
-//		[www] => 80
-//		[nobody] => 65534
-//		[admin] => 1000
-//		...
-//	)
-function get_group_list() {
-	// List of groups to filter from result list.
-	$filterlist = array("_dhcp", "_pflogd");
-
-	$grouplist = array();
-
-	preg_match_all("/(\S+):\*:(\d+):.*\n/", @file_get_contents("/etc/group"), $matches, PREG_SET_ORDER);
-
-	if (is_array($matches)) {
-		foreach ($matches as $group) {
-			if (false === in_array($group[1], $filterlist)) {
-				$grouplist[$group[1]] = $group[2];
-			}
-		}
-
-		ksort($grouplist);
-	}
-
-	return $grouplist;
-}
 ?>

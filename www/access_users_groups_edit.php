@@ -45,7 +45,7 @@ if (!is_array($config['access']['group']))
 array_sort_key($config['access']['group'], "name");
 
 $a_group = &$config['access']['group'];
-$a_group_system = get_group_list();
+$a_group_system = system_get_group_list();
 
 if (isset($id) && $a_group[$id]) {
 	$pconfig['groupid'] = $a_group[$id]['id'];
@@ -75,7 +75,8 @@ if ($_POST) {
 	}
 
 	// Check for name conflicts. Only check if group is created.
-	if (!isset($id) && is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system)) {
+	if (!isset($id) && (is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system) ||
+		false !== array_search_ex($_POST['name'], $a_group, "name"))) {
 		$input_errors[] = gettext("This group already exists in the group list.");
 	}
 
@@ -119,16 +120,16 @@ function get_nextgroup_id() {
 	// Get next free user id.
 	exec("/usr/sbin/pw groupnext", $output);
 	$output = explode(":", $output[0]);
-	$id = $output[0];
+	$id = intval($output[0]);
 
 	// Check if id is already in usage. If the user did not press the 'Apply'
 	// button 'pw' did not recognize that there are already several new users
 	// configured because the user db is not updated until 'Apply' is pressed.
 	$a_group = $config['access']['group'];
-	if (false !== array_search_ex($id, $a_group, "id")) {
+	if (false !== array_search_ex(strval($id), $a_group, "id")) {
 		do {
 			$id++; // Increase id until a unused one is found.
-		} while (false !== array_search_ex($id, $a_group, "id")); 
+		} while (false !== array_search_ex(strval($id), $a_group, "id")); 
 	}
 
 	return $id;
