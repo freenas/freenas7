@@ -11,6 +11,7 @@ Majors changes:
 - Remove 'kern.hz="500"' from /boot/loader.conf. With FreeBSD 6.3 it is set to 100 by default.
 - Add 'lagg' link aggregation and link failover interface support (kernel).
 - Switch back to SCHED_4BSD scheduler.
+- Upgrade inadyn-mt to 02.11.87.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
