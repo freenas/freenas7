@@ -439,6 +439,15 @@ usr/sbin/diskinfo
 ## bsnmpd -- simple and extensible SNMP daemon
 usr/sbin/bsnmpd
 
+## nfsd -- remote NFS server
+usr/sbin/nfsd
+
+## mountd -- service remote NFS mount requests
+usr/sbin/mountd
+
+## rpcbind -- universal addresses to RPC program number mapper
+usr/sbin/rpcbind
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
