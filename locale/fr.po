@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-04 08:09+0000\n"
-"PO-Revision-Date: 2008-01-28 15:03+0000\n"
+"POT-Creation-Date: 2008-02-11 17:06+0000\n"
+"PO-Revision-Date: 2008-02-14 19:05+0000\n"
 "Last-Translator: Régis Caubet <caubet.r@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
+"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -443,6 +443,9 @@ msgstr ""
 #~ msgid "CIFS share"
 #~ msgstr "Partage CIFS"
 
+#~ msgid "Workgroup to be member of."
+#~ msgstr "Groupe de travail auquel rattacher le NAS."
+
 #~ msgid "Recycle Bin"
 #~ msgstr "Corbeille"
 
@@ -457,6 +460,9 @@ msgstr ""
 
 #~ msgid "The max con per ip must be a number."
 #~ msgstr "Le nombre maximum de connexions par IP doit être un entier."
+
+#~ msgid "The pasv address must be a public IP address."
+#~ msgstr "L'adresse pasv doit être une adresse IP publique."
 
 #~ msgid "You must select at minium anonymous or/and local user authentication."
 #~ msgstr ""
@@ -480,6 +486,9 @@ msgstr ""
 #~ msgstr ""
 #~ "Utilisez cette option pour outrepasser l'adresse IP que le serveur FTP "
 #~ "envoie en réponse aux commandes PASV."
+
+#~ msgid "Network that is authorised to access to NFS share"
+#~ msgstr "Réseau autorisé à accéder au partage NFS"
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "Le nom de partage exporté est du type : /mnt/partage"
@@ -972,6 +981,9 @@ msgstr ""
 #~ msgid "Authorized"
 #~ msgstr "Autorisations"
 
+#~ msgid "Networks"
+#~ msgstr "Réseaux"
+
 #~ msgid "Networks Authorized"
 #~ msgstr "Réseaux autorisés"
 
@@ -1145,7 +1157,7 @@ msgid "AFP Server"
 msgstr "Serveur AFP"
 
 msgid "ARP Table"
-msgstr ""
+msgstr "Table ARP"
 
 msgid "ARP table"
 msgstr "Table ARP"
@@ -1216,9 +1228,6 @@ msgstr "Ajouter une tache"
 msgid "Add module"
 msgstr "Ajout module"
 
-msgid "Add network"
-msgstr "Ajouter réseau"
-
 msgid "Add parameter"
 msgstr "Ajouter paramètre"
 
@@ -1247,7 +1256,7 @@ msgid "Advanced"
 msgstr "Configuration avancée"
 
 msgid "Advanced Options"
-msgstr ""
+msgstr "Options avancées"
 
 msgid "Advanced Power Management"
 msgstr "Gestion d'énergie avancée"
@@ -1292,6 +1301,9 @@ msgstr ""
 
 msgid "All"
 msgstr "Tous"
+
+msgid "All dirs"
+msgstr "Tous les répertoires"
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -1402,9 +1414,6 @@ msgstr "Authentification"
 
 msgid "Authorised network"
 msgstr "R&eacute;seau autoris&eacute;"
-
-msgid "Authorized networks"
-msgstr "Réseau autorisés"
 
 msgid "AutoScale"
 msgstr "Echelle auto"
@@ -1692,9 +1701,6 @@ msgstr "Supprimer la tâche"
 msgid "Delete module"
 msgstr "Supprimer module"
 
-msgid "Delete network"
-msgstr "Supprimer réseau"
-
 msgid "Delete parameter"
 msgstr "Supprimer paramètre"
 
@@ -1894,9 +1900,6 @@ msgstr ""
 "Voulez-vous vraiment supprimer ce point de montage? Tous les éléments "
 "l'utilisant seront invalidés!"
 
-msgid "Do you really want to delete this network entry?"
-msgstr "Voulez vous réellement supprimer cette entrée réseau?"
-
 msgid "Do you really want to delete this parameter?"
 msgstr "Voulez vous réellement supprimer ce paramètre?"
 
@@ -2017,9 +2020,6 @@ msgstr "Modifier la tache"
 
 msgid "Edit module"
 msgstr "Editer module"
-
-msgid "Edit network"
-msgstr "Edition réseau"
 
 msgid "Edit parameter"
 msgstr "Editer paramêtre"
@@ -2216,6 +2216,9 @@ msgstr ""
 "Exécuter une commande avant ou après l'initialisation ou avant l'arrêt du "
 "système."
 
+msgid "Exports"
+msgstr "Exports"
+
 msgid "Extensions"
 msgstr "Extensions"
 
@@ -2388,7 +2391,7 @@ msgid "Geom Vinum"
 msgstr "Geom Vinum"
 
 msgid "Give full shell access to user."
-msgstr ""
+msgstr "Donner l'accès complet au shell à cet utilisateur"
 
 msgid "Global Configuration"
 msgstr "Configuration globale"
@@ -2434,7 +2437,7 @@ msgid "Hard disk standby time"
 msgstr "Délai de mise en veille du disque"
 
 msgid "Helios X3000"
-msgstr ""
+msgstr "Helios X3000"
 
 #, fuzzy
 msgid "Help Needed!"
@@ -2625,13 +2628,16 @@ msgid "In most cases, 'public' is used here."
 msgstr "Dans la plupart des cas, 'public' est utilisé ici."
 
 msgid "Info"
-msgstr ""
+msgstr "Info"
 
 msgid "Information"
 msgstr "Information"
 
 msgid "Inherit permissions"
 msgstr "Héritage des permissions"
+
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
 
 msgid "Initialize"
 msgstr "Initialiser"
@@ -2664,7 +2670,7 @@ msgstr "Interfaces"
 
 #, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
-msgstr ""
+msgstr "Port invalide! Le numéro de port doit être compris entre %d et %d."
 
 msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
@@ -3005,20 +3011,17 @@ msgstr "Netgraph"
 msgid "Network"
 msgstr "Réseau"
 
+msgid "Network mask"
+msgstr "Masque de sous-réseau"
+
 msgid "Network port"
 msgstr "Carte réseau"
 
-msgid "Network that is authorised to access to NFS share"
+msgid "Network that is authorised to access the NFS share."
 msgstr "Réseau autorisé à accéder au partage NFS"
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "Réseau autorisé à accéder à cette cible iSCSI."
-
-msgid "Networks"
-msgstr "Réseaux"
-
-msgid "Networks authorized."
-msgstr "Réseaux authorisés."
 
 msgid "No"
 msgstr "Non"
@@ -3178,7 +3181,7 @@ msgid "Passive IP address"
 msgstr "Adresse IP passive"
 
 msgid "Passive mode ports"
-msgstr ""
+msgstr "Ports en mode passif"
 
 msgid "Passphrase"
 msgstr "Phrase de passe"
@@ -3252,6 +3255,9 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Plateforme"
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr "Intervalle de sondage"
 
@@ -3274,13 +3280,13 @@ msgid "Prefix"
 msgstr "Préfixe"
 
 msgid "Preformatted file system"
-msgstr ""
+msgstr "Système de fichiers préformaté"
 
 msgid "Primary Group"
 msgstr "Groupe primaire"
 
 msgid "Primary group"
-msgstr ""
+msgstr "Groupe principal"
 
 msgid "Primary group is also selected in additional group."
 msgstr ""
@@ -3307,7 +3313,7 @@ msgid "Provider"
 msgstr "Fournisseur"
 
 msgid "Provides compatibility with Apple II clients."
-msgstr ""
+msgstr "Permets la compatibilité avec les clients Apple II"
 
 msgid "Proxy"
 msgstr "Proxy"
@@ -3319,6 +3325,9 @@ msgstr ""
 
 msgid "Quality"
 msgstr "Qualité"
+
+msgid "Quiet"
+msgstr "Silencieux"
 
 msgid "RAID 0"
 msgstr "RAID 0"
@@ -3336,13 +3345,13 @@ msgid "RAID 5"
 msgstr "RAID 5"
 
 msgid "RAID0"
-msgstr ""
+msgstr "RAID0"
 
 msgid "RAID1"
-msgstr ""
+msgstr "RAID1"
 
 msgid "RAID5"
-msgstr ""
+msgstr "RAID5"
 
 msgid "RSYNC"
 msgstr "RSYNC"
@@ -3583,6 +3592,9 @@ msgstr "Nom du partage"
 msgid "Share Password"
 msgstr "Partager le mot de passe"
 
+msgid "Share all sub directories."
+msgstr "Partager tous les sous-répertoires"
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr "Les mot de passe de partage ne peuvent faire plus de 8 caractères."
 
@@ -3590,7 +3602,7 @@ msgid "Shares"
 msgstr "Partages"
 
 msgid "Shell access"
-msgstr ""
+msgstr "Accès au shell"
 
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr ""
@@ -3632,7 +3644,7 @@ msgid "Size of send buffer (16384 by default)."
 msgstr "Taille du tampon d'envoi (16384 par défaut)."
 
 msgid "Sockets"
-msgstr ""
+msgstr "Sockets"
 
 msgid "Software RAID"
 msgstr "RAID logiciel"
@@ -3644,13 +3656,16 @@ msgid "Sony Playstation 3"
 msgstr "Sony Playstation 3"
 
 msgid "Source directory to be synchronized."
-msgstr ""
+msgstr "Répertoire source à synchroniser"
 
 msgid "Source share"
 msgstr "Partage source"
 
 msgid "Space Used"
 msgstr "Occupation des disques"
+
+msgid "Specifies that the file system should be exported read-only."
+msgstr ""
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -3696,7 +3711,7 @@ msgid "Standby time"
 msgstr "Délai de mise en veille"
 
 msgid "Static Routes"
-msgstr ""
+msgstr "Routes statiques"
 
 msgid "Static routes"
 msgstr "Routes statiques"
@@ -3708,7 +3723,7 @@ msgid "Status report successfully sent."
 msgstr "Rapport d'état envoyé avec succès."
 
 msgid "Stopped"
-msgstr ""
+msgstr "Arrêté"
 
 msgid "Storage"
 msgstr "Stockage"
@@ -3845,6 +3860,11 @@ msgid ""
 msgstr ""
 "La configuration LAN a changé.<br>Vous devez appliquer les changements pour "
 "qu'ils prennent effet."
+
+msgid ""
+"The NFS export list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -4059,6 +4079,9 @@ msgstr "Les erreurs suivantes ont été détectées"
 msgid "The full name contains invalid characters."
 msgstr "Le nom complet contient un caractère invalide."
 
+msgid "The group ID must be > 1001."
+msgstr ""
+
 msgid "The group description contains invalid characters."
 msgstr "La description du groupe contient des caractères invalides."
 
@@ -4141,9 +4164,6 @@ msgstr ""
 "La liste des points de montage a été modifiée.<br>Vous devez appliquer les "
 "changements pour qu'ils prennent effet."
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr "Le nom de partage exporté est du type : /mnt/partage"
-
 msgid "The number of clients must be between 1 and 50."
 msgstr "Le nombre de clients doit être contenu entre 1 et 50."
 
@@ -4162,9 +4182,6 @@ msgstr "Le mot de passe contient le caractère invalide ':'."
 
 msgid "The passwords do not match."
 msgstr "Les mots de passe ne correspondent pas."
-
-msgid "The pasv address must be a public IP address."
-msgstr "L'adresse pasv doit être une adresse IP publique."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -4220,8 +4237,17 @@ msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 "L'intervalle de temps de mise à jour doit être contenue entre 6 et 1440."
 
+msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique user ID is already used."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "Le fichier image chargé n'est pas valide pour cette plateforme"
+
+msgid "The user ID must be > 1001."
+msgstr ""
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr ""
@@ -4565,8 +4591,14 @@ msgstr "Nom UPnP."
 msgid "Uninstall package"
 msgstr "Désinstallation paquet"
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
 msgstr "Identifiant unique d'un utilisateur."
+
+msgid "Unique user numeric id."
+msgstr ""
 
 msgid "Unison"
 msgstr "Unison"
@@ -4744,8 +4776,8 @@ msgstr "Sans-fil"
 msgid "Workgroup"
 msgstr "Groupe de travail"
 
-msgid "Workgroup to be member of."
-msgstr "Groupe de travail auquel rattacher le NAS."
+msgid "Workgroup to be member of.(maximum 15 characters)"
+msgstr ""
 
 msgid "Working Directory"
 msgstr "Répertoire de travail"
@@ -4831,7 +4863,7 @@ msgid "built on"
 msgstr "Compilé le"
 
 msgid "cachecnid"
-msgstr ""
+msgstr "cachecnid"
 
 msgid "chroot everyone"
 msgstr "Emprisonner (chroot) tout le monde"
@@ -4840,7 +4872,7 @@ msgid "chroot() everyone, but root."
 msgstr "Emprisonner (chroot) tout le monde, sauf root."
 
 msgid "crlf"
-msgstr ""
+msgstr "crlf"
 
 msgid "day"
 msgstr "jour"
@@ -4883,25 +4915,25 @@ msgid "months"
 msgstr "mois"
 
 msgid "mswindows"
-msgstr ""
+msgstr "mswindows"
 
 msgid "n/a"
 msgstr "n/a"
 
 msgid "noadouble"
-msgstr ""
+msgstr "noadouble"
 
 msgid "nodev"
-msgstr ""
+msgstr "nodev"
 
 msgid "nofileid"
-msgstr ""
+msgstr "nofileid"
 
 msgid "nohex"
-msgstr ""
+msgstr "nohex"
 
 msgid "nostat"
-msgstr ""
+msgstr "nostat"
 
 msgid "password_suffix, example: ou=users,dc=example,dc=com"
 msgstr "password_suffix, exemple: ou=utilisateurs,dc=exemple,dc=com"
@@ -4913,7 +4945,7 @@ msgid "pasv_min_port"
 msgstr "pasv_min_port"
 
 msgid "prodos"
-msgstr ""
+msgstr "prodos"
 
 #, fuzzy
 msgid "rotated block-interleaved parity"
@@ -4929,7 +4961,7 @@ msgid "striping"
 msgstr "striping"
 
 msgid "upriv"
-msgstr ""
+msgstr "upriv"
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr "user_suffix, exemple: ou=utilisateurs,dc=exemple,dc=com"

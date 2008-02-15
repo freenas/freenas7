@@ -30,14 +30,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-04 08:09+0000\n"
+"POT-Creation-Date: 2008-02-11 17:06+0000\n"
 "PO-Revision-Date: 2007-10-27 16:18+0000\n"
 "Last-Translator: Baikuan Hsu <chicworks@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
+"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: China\n"
 "X-Poedit-Language: Chinese\n"
@@ -411,6 +411,9 @@ msgstr ""
 #~ msgid "CIFS share"
 #~ msgstr "CIFS分享"
 
+#~ msgid "Workgroup to be member of."
+#~ msgstr "选择将要加入的工作群组"
+
 #~ msgid "Recycle Bin"
 #~ msgstr "资源回收桶"
 
@@ -425,6 +428,9 @@ msgstr ""
 
 #~ msgid "The max con per ip must be a number."
 #~ msgstr "相同IP的连線数目必须是一个数字。"
+
+#~ msgid "The pasv address must be a public IP address."
+#~ msgstr "被动式IP位置必须是一个对外的IP。"
 
 #~ msgid "You must select at minium anonymous or/and local user authentication."
 #~ msgstr "请至少选择 匿名/本地使用者 认证。"
@@ -445,6 +451,9 @@ msgstr ""
 #~ "Use this option to override the IP address that FTP daemon will advertise in "
 #~ "response to the PASV command."
 #~ msgstr "FTP伺服器的被动式连線IP位置。"
+
+#~ msgid "Network that is authorised to access to NFS share"
+#~ msgstr "设定可以使用NFS分享的网路区段"
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "输出的目錄名称是：/mnt/sharename"
@@ -931,9 +940,6 @@ msgstr "添加任务"
 msgid "Add module"
 msgstr ""
 
-msgid "Add network"
-msgstr "添加网络"
-
 msgid "Add parameter"
 msgstr "添加参数"
 
@@ -1000,6 +1006,9 @@ msgstr ""
 
 msgid "All"
 msgstr "所有"
+
+msgid "All dirs"
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -1094,9 +1103,6 @@ msgstr "认证方式"
 
 msgid "Authorised network"
 msgstr "通过认证的网络"
-
-msgid "Authorized networks"
-msgstr ""
 
 msgid "AutoScale"
 msgstr "AutoScale"
@@ -1375,9 +1381,6 @@ msgstr ""
 msgid "Delete module"
 msgstr ""
 
-msgid "Delete network"
-msgstr ""
-
 msgid "Delete parameter"
 msgstr ""
 
@@ -1558,9 +1561,6 @@ msgid ""
 "it will become invalid (e.g. share)!"
 msgstr "确定要刪除这个掛载点吗？所有使用此掛载点的元件都会失效！(例：分享)"
 
-msgid "Do you really want to delete this network entry?"
-msgstr ""
-
 msgid "Do you really want to delete this parameter?"
 msgstr ""
 
@@ -1677,9 +1677,6 @@ msgid "Edit job"
 msgstr ""
 
 msgid "Edit module"
-msgstr ""
-
-msgid "Edit network"
 msgstr ""
 
 msgid "Edit parameter"
@@ -1855,6 +1852,9 @@ msgstr "执行指令"
 msgid ""
 "Execute command pre or post system initialization (booting) or before system "
 "shutdown."
+msgstr ""
+
+msgid "Exports"
 msgstr ""
 
 msgid "Extensions"
@@ -2239,6 +2239,9 @@ msgstr "资讯"
 msgid "Inherit permissions"
 msgstr ""
 
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
+
 msgid "Initialize"
 msgstr "初始化"
 
@@ -2588,20 +2591,17 @@ msgstr ""
 msgid "Network"
 msgstr "目标网段"
 
+msgid "Network mask"
+msgstr ""
+
 msgid "Network port"
 msgstr "网路卡"
 
-msgid "Network that is authorised to access to NFS share"
-msgstr "设定可以使用NFS分享的网路区段"
+msgid "Network that is authorised to access the NFS share."
+msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "设定可以使用iSCSI目标的网路区段"
-
-msgid "Networks"
-msgstr ""
-
-msgid "Networks authorized."
-msgstr ""
 
 msgid "No"
 msgstr "否"
@@ -2824,6 +2824,9 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "硬体平台"
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr ""
 
@@ -2891,6 +2894,9 @@ msgstr ""
 
 msgid "Quality"
 msgstr "品质"
+
+msgid "Quiet"
+msgstr ""
 
 msgid "RAID 0"
 msgstr ""
@@ -3150,6 +3156,9 @@ msgstr "分享名称"
 msgid "Share Password"
 msgstr ""
 
+msgid "Share all sub directories."
+msgstr ""
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
@@ -3213,6 +3222,9 @@ msgstr "来源位置"
 
 msgid "Space Used"
 msgstr "使用空间"
+
+msgid "Specifies that the file system should be exported read-only."
+msgstr ""
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -3393,6 +3405,11 @@ msgid ""
 "order for them to take effect."
 msgstr "区域网路设定已经变更。<br>套用之后才会生效。"
 
+msgid ""
+"The NFS export list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
+
 #, php-format
 msgid ""
 "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
@@ -3572,6 +3589,9 @@ msgstr "侦测到以下的输入错误"
 msgid "The full name contains invalid characters."
 msgstr "全名包含无效的字元。"
 
+msgid "The group ID must be > 1001."
+msgstr ""
+
 msgid "The group description contains invalid characters."
 msgstr ""
 
@@ -3639,9 +3659,6 @@ msgid ""
 "order for them to take effect."
 msgstr "掛载点已经变更。<br>套用之后才会生效。"
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr ""
-
 msgid "The number of clients must be between 1 and 50."
 msgstr ""
 
@@ -3658,9 +3675,6 @@ msgstr ""
 
 msgid "The passwords do not match."
 msgstr "您输入的密码不相符。"
-
-msgid "The pasv address must be a public IP address."
-msgstr "被动式IP位置必须是一个对外的IP。"
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3704,8 +3718,17 @@ msgstr "系统重新啟动中，可能需要一分钟的时间..."
 msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
+msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique user ID is already used."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "上传之映像档並不适用於这个系统"
+
+msgid "The user ID must be > 1001."
+msgstr ""
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr "帐号只能包含以下字元 a-z, A-Z, 0-9。"
@@ -4011,8 +4034,14 @@ msgstr "UPnP friendly name."
 msgid "Uninstall package"
 msgstr ""
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
 msgstr "用来登入的使用者帐号"
+
+msgid "Unique user numeric id."
+msgstr ""
 
 msgid "Unison"
 msgstr "Unison"
@@ -4176,8 +4205,8 @@ msgstr "无線网路"
 msgid "Workgroup"
 msgstr "工作群组"
 
-msgid "Workgroup to be member of."
-msgstr "选择将要加入的工作群组"
+msgid "Workgroup to be member of.(maximum 15 characters)"
+msgstr ""
 
 msgid "Working Directory"
 msgstr "工作目錄"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-04 08:09+0000\n"
+"POT-Creation-Date: 2008-02-11 17:06+0000\n"
 "PO-Revision-Date: 2007-11-19 13:46+0000\n"
 "Last-Translator: Youri Trioreau <youri.trioreau@no-log.org>\n"
 "Language-Team: FreeNAS team\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
+"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SLOVENIA\n"
 "X-Poedit-Language: Slovenian\n"
@@ -221,9 +221,6 @@ msgstr ""
 msgid "Add module"
 msgstr ""
 
-msgid "Add network"
-msgstr ""
-
 msgid "Add parameter"
 msgstr ""
 
@@ -288,6 +285,9 @@ msgstr ""
 
 msgid "All"
 msgstr "Vse"
+
+msgid "All dirs"
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -381,9 +381,6 @@ msgid "Authentication"
 msgstr "Overjanje"
 
 msgid "Authorised network"
-msgstr ""
-
-msgid "Authorized networks"
 msgstr ""
 
 msgid "AutoScale"
@@ -666,9 +663,6 @@ msgstr ""
 msgid "Delete module"
 msgstr ""
 
-msgid "Delete network"
-msgstr ""
-
 msgid "Delete parameter"
 msgstr ""
 
@@ -857,9 +851,6 @@ msgstr ""
 "ALi res želite odstraniti ot točko priklopa? Vsi elementi, ki jo "
 "uporabljajo, ne bodo več veljavni (npr. deljene mape)!"
 
-msgid "Do you really want to delete this network entry?"
-msgstr ""
-
 msgid "Do you really want to delete this parameter?"
 msgstr ""
 
@@ -978,9 +969,6 @@ msgid "Edit job"
 msgstr ""
 
 msgid "Edit module"
-msgstr ""
-
-msgid "Edit network"
 msgstr ""
 
 msgid "Edit parameter"
@@ -1159,6 +1147,9 @@ msgstr "Izvedi"
 msgid ""
 "Execute command pre or post system initialization (booting) or before system "
 "shutdown."
+msgstr ""
+
+msgid "Exports"
 msgstr ""
 
 msgid "Extensions"
@@ -1557,6 +1548,9 @@ msgstr "Informacije"
 msgid "Inherit permissions"
 msgstr ""
 
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
+
 msgid "Initialize"
 msgstr "Vpelji"
 
@@ -1910,20 +1904,17 @@ msgstr ""
 msgid "Network"
 msgstr "Omrežje"
 
+msgid "Network mask"
+msgstr ""
+
 msgid "Network port"
 msgstr "Omrežna vrata"
 
-msgid "Network that is authorised to access to NFS share"
-msgstr "Omrežje z dovoljenjem za dostop do NFS map v skupni rabi"
+msgid "Network that is authorised to access the NFS share."
+msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "Omrežje z dovoljenjem za dostop do tega iSCSI cilja."
-
-msgid "Networks"
-msgstr "Omrežja"
-
-msgid "Networks authorized."
-msgstr ""
 
 msgid "No"
 msgstr "Ne"
@@ -2152,6 +2143,9 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Platforma"
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr ""
 
@@ -2219,6 +2213,9 @@ msgstr ""
 
 msgid "Quality"
 msgstr "Kvaliteta"
+
+msgid "Quiet"
+msgstr ""
 
 msgid "RAID 0"
 msgstr ""
@@ -2478,6 +2475,9 @@ msgstr "Ime deljene mape"
 msgid "Share Password"
 msgstr ""
 
+msgid "Share all sub directories."
+msgstr ""
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
@@ -2541,6 +2541,9 @@ msgstr "Izorni deljeni vir"
 
 msgid "Space Used"
 msgstr "Zasedeno"
+
+msgid "Specifies that the file system should be exported read-only."
+msgstr ""
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -2727,6 +2730,11 @@ msgid ""
 msgstr ""
 "Nastavitve za LAN so bile spremenjene.<br>Če želite, da te spremembe začnejo "
 "veljati, jih morate uveljaviti."
+
+msgid ""
+"The NFS export list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -2922,6 +2930,9 @@ msgstr "Odkrite so bile sledeče vhodne napake"
 msgid "The full name contains invalid characters."
 msgstr "Polno ime vsebuje neveljavne karakterje."
 
+msgid "The group ID must be > 1001."
+msgstr ""
+
 msgid "The group description contains invalid characters."
 msgstr ""
 
@@ -3000,9 +3011,6 @@ msgstr ""
 "Seznam priklopnih točk se je spremenil.<br>Če želite, da te spremembe "
 "začnejo veljati, jih morate uveljaviti."
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr ""
-
 msgid "The number of clients must be between 1 and 50."
 msgstr ""
 
@@ -3019,9 +3027,6 @@ msgstr ""
 
 msgid "The passwords do not match."
 msgstr "Gesli se ne ujemata."
-
-msgid "The pasv address must be a public IP address."
-msgstr "Naslov mora biti veljaven javni IP naslov."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3071,8 +3076,17 @@ msgstr "Sistem se ponovno zaganja. Lahko traja kakšno minuto."
 msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
+msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique user ID is already used."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "Slika za nadgradnjo ni za to platformo"
+
+msgid "The user ID must be > 1001."
+msgstr ""
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr ""
@@ -3393,8 +3407,14 @@ msgstr "UPnp prijazno ime."
 msgid "Uninstall package"
 msgstr ""
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
 msgstr "Unikatno prijavno ime uporabnika."
+
+msgid "Unique user numeric id."
+msgstr ""
 
 msgid "Unison"
 msgstr "Unison"
@@ -3560,8 +3580,8 @@ msgstr "Brezžično"
 msgid "Workgroup"
 msgstr "Delovna skupina"
 
-msgid "Workgroup to be member of."
-msgstr "Član katere delovne skupine naj bo."
+msgid "Workgroup to be member of.(maximum 15 characters)"
+msgstr ""
 
 msgid "Working Directory"
 msgstr "Delovna mapa"

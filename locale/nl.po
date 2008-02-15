@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-04 08:09+0000\n"
+"POT-Creation-Date: 2008-02-11 17:06+0000\n"
 "PO-Revision-Date: 2007-10-19 09:00+0000\n"
 "Last-Translator: Youri Trioreau <shango@no-log.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
+"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -282,6 +282,9 @@ msgstr ""
 #~ msgid "CIFS share"
 #~ msgstr "Gedeelde map"
 
+#~ msgid "Workgroup to be member of."
+#~ msgstr "Werkgroep waarvan lid."
+
 #~ msgid "Recycle Bin"
 #~ msgstr "Prullenmand"
 
@@ -293,6 +296,9 @@ msgstr ""
 
 #~ msgid "The max con per ip must be a number."
 #~ msgstr "Het maximum aantal connecties per IP adres moet een getal zijn."
+
+#~ msgid "The pasv address must be a public IP address."
+#~ msgstr "Het pasv adres moet een publiek IP adres zijn."
 
 #~ msgid "Anonymous login"
 #~ msgstr "Anonieme aanmelding"
@@ -635,9 +641,6 @@ msgstr "Taak toevoegen"
 msgid "Add module"
 msgstr ""
 
-msgid "Add network"
-msgstr "Voeg netwerk toe"
-
 msgid "Add parameter"
 msgstr "voeg parameter toe."
 
@@ -703,6 +706,9 @@ msgstr ""
 
 msgid "All"
 msgstr "Alle"
+
+msgid "All dirs"
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -802,9 +808,6 @@ msgstr "Legitimatie"
 
 msgid "Authorised network"
 msgstr "Geautoriseerd netwerk"
-
-msgid "Authorized networks"
-msgstr ""
 
 msgid "AutoScale"
 msgstr "AutoSchaling"
@@ -1090,9 +1093,6 @@ msgstr "Verwijder taak"
 msgid "Delete module"
 msgstr ""
 
-msgid "Delete network"
-msgstr "Verwijder netwerk"
-
 msgid "Delete parameter"
 msgstr "Verwijder parameter"
 
@@ -1289,9 +1289,6 @@ msgstr ""
 "Weet je zeker dat je dit koppelpunt wilt verwijderen? Alle elementen die er "
 "gebruik van maken zullen ongeldig worden (bv gedeelde mappen)!"
 
-msgid "Do you really want to delete this network entry?"
-msgstr "Wilt u deze netwerktoegang echt verwijderen?"
-
 msgid "Do you really want to delete this parameter?"
 msgstr "Wilt u deze parameter echt verwijderen?"
 
@@ -1413,9 +1410,6 @@ msgstr "Bewerk taak"
 
 msgid "Edit module"
 msgstr ""
-
-msgid "Edit network"
-msgstr "Bewerk netwerk"
 
 msgid "Edit parameter"
 msgstr "Bewerk parameter"
@@ -1598,6 +1592,9 @@ msgstr "Commando uitvoeren"
 msgid ""
 "Execute command pre or post system initialization (booting) or before system "
 "shutdown."
+msgstr ""
+
+msgid "Exports"
 msgstr ""
 
 msgid "Extensions"
@@ -2003,6 +2000,9 @@ msgstr "Informatie"
 msgid "Inherit permissions"
 msgstr "Overerf permissies"
 
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
+
 msgid "Initialize"
 msgstr "Initialiseer"
 
@@ -2358,21 +2358,17 @@ msgstr ""
 msgid "Network"
 msgstr "Netwerk"
 
+msgid "Network mask"
+msgstr ""
+
 msgid "Network port"
 msgstr "Netwerk poort"
 
-msgid "Network that is authorised to access to NFS share"
+msgid "Network that is authorised to access the NFS share."
 msgstr ""
-"Netwerk dat geautoriseerd is om toegang te krijgen tot de gedeelde NFS mappen"
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "Toegelaten netwerk om dit iSCSI doel te gebruiken."
-
-msgid "Networks"
-msgstr "Netwerken"
-
-msgid "Networks authorized."
-msgstr "Geauthoriseerde netwerken"
 
 msgid "No"
 msgstr "Nee"
@@ -2605,6 +2601,9 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Platform"
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr "Polling tiijd"
 
@@ -2672,6 +2671,9 @@ msgstr ""
 
 msgid "Quality"
 msgstr "Kwaliteit"
+
+msgid "Quiet"
+msgstr ""
 
 msgid "RAID 0"
 msgstr "RAID 0"
@@ -2931,6 +2933,9 @@ msgstr "Naam gedeelde map"
 msgid "Share Password"
 msgstr ""
 
+msgid "Share all sub directories."
+msgstr ""
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
@@ -2996,6 +3001,9 @@ msgstr "Gedeelde bronmap"
 
 msgid "Space Used"
 msgstr "Gebruikte ruimte"
+
+msgid "Specifies that the file system should be exported read-only."
+msgstr ""
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -3184,6 +3192,11 @@ msgid ""
 msgstr ""
 "De LAN instellingen zijn gewijzigd.<br>Je moet op 'toepassen' klikken "
 "voordat de wijzigingen actief worden."
+
+msgid ""
+"The NFS export list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3394,6 +3407,9 @@ msgstr "The following input errors were detected"
 msgid "The full name contains invalid characters."
 msgstr "De  volledige naam bevat ongeldige karakters."
 
+msgid "The group ID must be > 1001."
+msgstr ""
+
 msgid "The group description contains invalid characters."
 msgstr ""
 
@@ -3473,9 +3489,6 @@ msgstr ""
 "De lijst van aanhechtingspunten is gewijzigd.<br>Je moet op 'toepassen' "
 "klikken voordat de wijzigingen doorgevoerd worden."
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr "De naam van de geëxporteerde mappen zijn: /mnt/sharename"
-
 msgid "The number of clients must be between 1 and 50."
 msgstr "Het aantal clients moet tussen 1 en 50 zijn."
 
@@ -3494,9 +3507,6 @@ msgstr ""
 
 msgid "The passwords do not match."
 msgstr "De wachtwoorden komen niet overeen."
-
-msgid "The pasv address must be a public IP address."
-msgstr "Het pasv adres moet een publiek IP adres zijn."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3547,8 +3557,17 @@ msgstr "Het systeem is nu aan het herstarten. Dit kan een minuut duren."
 msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
+msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique user ID is already used."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "Het ingevoerde image bestand is ongeschikt voor dit platform"
+
+msgid "The user ID must be > 1001."
+msgstr ""
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr "De gebruikersnaam mag alleen de karakters a-z, A-Z en 0-9 bevatten."
@@ -3884,8 +3903,14 @@ msgstr "UPnP herkenbare naam."
 msgid "Uninstall package"
 msgstr "Pakket deïnstalleren"
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
 msgstr "Unieke aanmeldingsnaam van de gebruiker."
+
+msgid "Unique user numeric id."
+msgstr ""
 
 msgid "Unison"
 msgstr "Unison"
@@ -4062,8 +4087,8 @@ msgstr "Draadloos"
 msgid "Workgroup"
 msgstr "Werkgroep"
 
-msgid "Workgroup to be member of."
-msgstr "Werkgroep waarvan lid."
+msgid "Workgroup to be member of.(maximum 15 characters)"
+msgstr ""
 
 msgid "Working Directory"
 msgstr "Werkfolder"

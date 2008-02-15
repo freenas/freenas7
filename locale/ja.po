@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-04 08:09+0000\n"
+"POT-Creation-Date: 2008-02-11 17:06+0000\n"
 "PO-Revision-Date: 2007-04-05 14:26+0000\n"
 "Last-Translator: Hiroyuki Seino <seichan@seichan.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
+"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: JAPAN\n"
 "X-Poedit-Language: Japanese\n"
@@ -402,6 +402,9 @@ msgstr ""
 #~ msgid "CIFS share"
 #~ msgstr "CIFS 共有"
 
+#~ msgid "Workgroup to be member of."
+#~ msgstr "参加しているワークグループ．"
+
 #~ msgid "Recycle Bin"
 #~ msgstr "ごみ箱"
 
@@ -416,6 +419,9 @@ msgstr ""
 
 #~ msgid "The max con per ip must be a number."
 #~ msgstr "1IP あたりの最大接続数は数字で指定して下さい．"
+
+#~ msgid "The pasv address must be a public IP address."
+#~ msgstr "pasv アドレスはパブリックな IP アドレスである必要があります．"
 
 #~ msgid "You must select at minium anonymous or/and local user authentication."
 #~ msgstr "少なくとも匿名 又は/且つ ローカルユーザ認証を選択しなければなりません．"
@@ -436,6 +442,9 @@ msgstr ""
 #~ "Use this option to override the IP address that FTP daemon will advertise in "
 #~ "response to the PASV command."
 #~ msgstr "FTP デーモンが PASV コマンドのレスポンスで広告する IP アドレスを上書きしたい場合に使用します．"
+
+#~ msgid "Network that is authorised to access to NFS share"
+#~ msgstr "NFS 共有へのアクセスが許可されるネットワーク"
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "エクスポートされるディレクトリ名は次のようになります : /mnt/sharename"
@@ -906,9 +915,6 @@ msgstr ""
 msgid "Add module"
 msgstr ""
 
-msgid "Add network"
-msgstr ""
-
 msgid "Add parameter"
 msgstr ""
 
@@ -973,6 +979,9 @@ msgstr ""
 
 msgid "All"
 msgstr "全て"
+
+msgid "All dirs"
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -1067,9 +1076,6 @@ msgstr "認証"
 
 msgid "Authorised network"
 msgstr "許可するネットワーク"
-
-msgid "Authorized networks"
-msgstr ""
 
 msgid "AutoScale"
 msgstr "オートスケール"
@@ -1350,9 +1356,6 @@ msgstr ""
 msgid "Delete module"
 msgstr ""
 
-msgid "Delete network"
-msgstr ""
-
 msgid "Delete parameter"
 msgstr ""
 
@@ -1534,9 +1537,6 @@ msgid ""
 "it will become invalid (e.g. share)!"
 msgstr "本当にこのマウントポイントを削除しても宜しいですか? これを使用する全ての要素 (例: share) は無効になります!"
 
-msgid "Do you really want to delete this network entry?"
-msgstr ""
-
 msgid "Do you really want to delete this parameter?"
 msgstr ""
 
@@ -1653,9 +1653,6 @@ msgid "Edit job"
 msgstr ""
 
 msgid "Edit module"
-msgstr ""
-
-msgid "Edit network"
 msgstr ""
 
 msgid "Edit parameter"
@@ -1832,6 +1829,9 @@ msgstr "コマンド実行"
 msgid ""
 "Execute command pre or post system initialization (booting) or before system "
 "shutdown."
+msgstr ""
+
+msgid "Exports"
 msgstr ""
 
 msgid "Extensions"
@@ -2222,6 +2222,9 @@ msgstr "情報"
 msgid "Inherit permissions"
 msgstr ""
 
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
+
 msgid "Initialize"
 msgstr "初期化"
 
@@ -2571,20 +2574,17 @@ msgstr ""
 msgid "Network"
 msgstr "ネットワーク"
 
+msgid "Network mask"
+msgstr ""
+
 msgid "Network port"
 msgstr "ネットワークポート"
 
-msgid "Network that is authorised to access to NFS share"
-msgstr "NFS 共有へのアクセスが許可されるネットワーク"
+msgid "Network that is authorised to access the NFS share."
+msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "この iSCSI ターゲットに認可されているネットワーク．"
-
-msgid "Networks"
-msgstr ""
-
-msgid "Networks authorized."
-msgstr ""
 
 msgid "No"
 msgstr "No"
@@ -2808,6 +2808,9 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "プラットフォーム"
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr ""
 
@@ -2875,6 +2878,9 @@ msgstr ""
 
 msgid "Quality"
 msgstr "品質"
+
+msgid "Quiet"
+msgstr ""
 
 msgid "RAID 0"
 msgstr ""
@@ -3134,6 +3140,9 @@ msgstr "共有名"
 msgid "Share Password"
 msgstr ""
 
+msgid "Share all sub directories."
+msgstr ""
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
@@ -3197,6 +3206,9 @@ msgstr "接続元共有"
 
 msgid "Space Used"
 msgstr "使用量"
+
+msgid "Specifies that the file system should be exported read-only."
+msgstr ""
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -3378,6 +3390,11 @@ msgid ""
 "order for them to take effect."
 msgstr "LAN の構成は変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
 
+msgid ""
+"The NFS export list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
+
 #, php-format
 msgid ""
 "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
@@ -3558,6 +3575,9 @@ msgstr "以下の入力エラーが検出されました"
 msgid "The full name contains invalid characters."
 msgstr "フルネームに不正な文字が使用されています．"
 
+msgid "The group ID must be > 1001."
+msgstr ""
+
 msgid "The group description contains invalid characters."
 msgstr ""
 
@@ -3625,9 +3645,6 @@ msgid ""
 "order for them to take effect."
 msgstr "マウントポイントは変更されました．<br>変更した設定を有効にするには適用を選択して下さい．"
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr ""
-
 msgid "The number of clients must be between 1 and 50."
 msgstr ""
 
@@ -3644,9 +3661,6 @@ msgstr ""
 
 msgid "The passwords do not match."
 msgstr "パスワードが一致しません．"
-
-msgid "The pasv address must be a public IP address."
-msgstr "pasv アドレスはパブリックな IP アドレスである必要があります．"
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3690,8 +3704,17 @@ msgstr "今すぐシステムをリブートします．1分ほどかかるか�
 msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
+msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique user ID is already used."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "アップロードされたイメージファイルはこのプラットフォームの物ではありません．"
+
+msgid "The user ID must be > 1001."
+msgstr ""
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr "ユーザ名に使用出来る文字は a-z，A-Z 及び 0-9 のみです．"
@@ -4000,8 +4023,14 @@ msgstr "UPnP フレンドリ名．"
 msgid "Uninstall package"
 msgstr ""
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
 msgstr "ユーザのユニークなログイン名．"
+
+msgid "Unique user numeric id."
+msgstr ""
 
 msgid "Unison"
 msgstr "Unison"
@@ -4166,8 +4195,8 @@ msgstr "無線"
 msgid "Workgroup"
 msgstr "ワークグループ"
 
-msgid "Workgroup to be member of."
-msgstr "参加しているワークグループ．"
+msgid "Workgroup to be member of.(maximum 15 characters)"
+msgstr ""
 
 msgid "Working Directory"
 msgstr "作業ディレクトリ"

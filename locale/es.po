@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-04 08:09+0000\n"
-"PO-Revision-Date: 2008-01-24 19:05+0000\n"
+"POT-Creation-Date: 2008-02-11 17:06+0000\n"
+"PO-Revision-Date: 2008-02-06 18:46+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
+"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -370,10 +370,7 @@ msgid "Add job"
 msgstr "Agregar trabajo"
 
 msgid "Add module"
-msgstr ""
-
-msgid "Add network"
-msgstr "Agregar red"
+msgstr "Añadir módulo"
 
 msgid "Add parameter"
 msgstr "Agregar parámetro"
@@ -388,7 +385,7 @@ msgid "Add user"
 msgstr "Añadir usuario"
 
 msgid "Additional group"
-msgstr ""
+msgstr "Grupo adicional"
 
 msgid "Address"
 msgstr "Dirección"
@@ -403,7 +400,7 @@ msgid "Advanced"
 msgstr "Avanzado"
 
 msgid "Advanced Options"
-msgstr ""
+msgstr "Opciones Avanzadas"
 
 msgid "Advanced Power Management"
 msgstr "Gestion avanzada de energía"
@@ -446,6 +443,9 @@ msgstr ""
 
 msgid "All"
 msgstr "Todos"
+
+msgid "All dirs"
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -551,9 +551,6 @@ msgstr "Autentificación"
 
 msgid "Authorised network"
 msgstr "Authorised network"
-
-msgid "Authorized networks"
-msgstr "Redes autorizadas"
 
 msgid "AutoScale"
 msgstr "Escala Automática"
@@ -735,7 +732,7 @@ msgid "Create"
 msgstr "Crear"
 
 msgid "Create and initialize RAID."
-msgstr ""
+msgstr "Crear e inicializar RAID"
 
 msgid "Create encrypted volume"
 msgstr "Crear volúmen encriptado"
@@ -851,9 +848,6 @@ msgstr "Eliminar trabajo"
 
 msgid "Delete module"
 msgstr "Eliminar Módulo"
-
-msgid "Delete network"
-msgstr "Eliminar red"
 
 msgid "Delete parameter"
 msgstr "Borrar parámetro"
@@ -1058,10 +1052,6 @@ msgstr ""
 "Realmente quiere borrar este punto de montaje? Se invalidarán todos los "
 "elementos que todavía lo usen (e.j. elementos compartidos)!"
 
-#, fuzzy
-msgid "Do you really want to delete this network entry?"
-msgstr "¿Realmente quiere eliminar esta red?"
-
 msgid "Do you really want to delete this parameter?"
 msgstr "¿Realmente quiere eliminar esta parámetro?"
 
@@ -1183,9 +1173,6 @@ msgstr "Editar trabajo"
 
 msgid "Edit module"
 msgstr "Editar módulo"
-
-msgid "Edit network"
-msgstr "Editar red"
 
 msgid "Edit parameter"
 msgstr "Editar parámetro"
@@ -1375,6 +1362,9 @@ msgid ""
 msgstr ""
 "Comando a ejecutar pre o post inciailización del sistema (booteo) o antes "
 "del apagado del mismo."
+
+msgid "Exports"
+msgstr ""
 
 msgid "Extensions"
 msgstr "Extensiones"
@@ -1590,7 +1580,7 @@ msgid "Hard disk standby time"
 msgstr "Tiempo de espera de apagado del disco duro"
 
 msgid "Helios X3000"
-msgstr ""
+msgstr "Helios X3000"
 
 #, fuzzy
 msgid "Help Needed!"
@@ -1611,7 +1601,7 @@ msgstr ""
 "%s serán resueltas a nombres de máquina reales cuando sea posible."
 
 msgid "Home directory"
-msgstr ""
+msgstr "Directorio personal"
 
 msgid "Host"
 msgstr "Equipo"
@@ -1779,13 +1769,16 @@ msgid "In most cases, 'public' is used here."
 msgstr "En la mayoría de los casos, 'public' es usado aquí."
 
 msgid "Info"
-msgstr ""
+msgstr "Información"
 
 msgid "Information"
 msgstr "Información"
 
 msgid "Inherit permissions"
 msgstr "Heredar permisos"
+
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
 
 msgid "Initialize"
 msgstr "Inicializar"
@@ -1818,6 +1811,7 @@ msgstr "Interfaces"
 #, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr ""
+"¡Puerto inválido! El número de puerto debe estar en el rango de %d a %d."
 
 msgid ""
 "It is impossible to enable 'Anonymous users only' and 'Local users only' "
@@ -2151,20 +2145,17 @@ msgstr ""
 msgid "Network"
 msgstr "Red"
 
+msgid "Network mask"
+msgstr ""
+
 msgid "Network port"
 msgstr "Puerto de red"
 
-msgid "Network that is authorised to access to NFS share"
-msgstr "Red que está autorizada para acceder a un elemento compartido NFS"
+msgid "Network that is authorised to access the NFS share."
+msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "Red autorizada para acceder al destino iSCSI."
-
-msgid "Networks"
-msgstr "Redes"
-
-msgid "Networks authorized."
-msgstr "Redes autorizadas."
 
 msgid "No"
 msgstr "No"
@@ -2394,6 +2385,9 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Plataforma"
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr ""
 
@@ -2461,6 +2455,9 @@ msgstr ""
 
 msgid "Quality"
 msgstr "Calidad"
+
+msgid "Quiet"
+msgstr ""
 
 msgid "RAID 0"
 msgstr "RAID 0"
@@ -2720,6 +2717,9 @@ msgstr "Nombre del elemento compartido"
 msgid "Share Password"
 msgstr "Contraseña de recurso compartido"
 
+msgid "Share all sub directories."
+msgstr ""
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 "Las contraseñas de recursos compartidos no pueden tener más de 8 caracteres."
@@ -2785,6 +2785,9 @@ msgstr "Elemento compartido de origen"
 
 msgid "Space Used"
 msgstr "Espacio Usado"
+
+msgid "Specifies that the file system should be exported read-only."
+msgstr ""
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -2976,6 +2979,11 @@ msgid ""
 msgstr ""
 "La configuración LAN ha cambiado.<br>Debe aplicar los cambios para que "
 "surtan efecto."
+
+msgid ""
+"The NFS export list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3180,6 +3188,9 @@ msgstr "Se ha detectado los siguientes errores de entrada"
 msgid "The full name contains invalid characters."
 msgstr "El nombre completo contiene caracteres no válidos."
 
+msgid "The group ID must be > 1001."
+msgstr ""
+
 msgid "The group description contains invalid characters."
 msgstr ""
 
@@ -3261,9 +3272,6 @@ msgstr ""
 "Ha cambiado el punto de montaje.<br>Se deben aplicar los cambios para que "
 "surtan efecto."
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr "Los nombres de los directorios exportados son: /mnt/nombre"
-
 msgid "The number of clients must be between 1 and 50."
 msgstr "El número de clientes debe estar entre 1 y 50."
 
@@ -3280,9 +3288,6 @@ msgstr "La contraseña contiene el caracter ilegal ':'."
 
 msgid "The passwords do not match."
 msgstr "Las contraseñas no coinciden."
-
-msgid "The pasv address must be a public IP address."
-msgstr "La dirección pasv debe ser una dirección IP pública."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3332,8 +3337,17 @@ msgstr "El sistema va a reiniciar. Puede tardar un minuto."
 msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
+msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique user ID is already used."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "El fichero de imagen subido no es para esta plataforma"
+
+msgid "The user ID must be > 1001."
+msgstr ""
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr ""
@@ -3665,8 +3679,14 @@ msgstr "Nombre común UPnP."
 msgid "Uninstall package"
 msgstr ""
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
 msgstr "Nombre único de acceso del usuario."
+
+msgid "Unique user numeric id."
+msgstr ""
 
 msgid "Unison"
 msgstr "Unison"
@@ -3834,8 +3854,8 @@ msgstr "Red Inalámbrica"
 msgid "Workgroup"
 msgstr "Grupo de trabajo"
 
-msgid "Workgroup to be member of."
-msgstr "El grupo de trabajo al que pertenecer."
+msgid "Workgroup to be member of.(maximum 15 characters)"
+msgstr ""
 
 msgid "Working Directory"
 msgstr "Directorio de trabajo"

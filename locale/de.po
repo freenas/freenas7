@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-04 08:09+0000\n"
-"PO-Revision-Date: 2008-02-03 14:00+0000\n"
+"POT-Creation-Date: 2008-02-11 17:06+0000\n"
+"PO-Revision-Date: 2008-02-15 12:28+0000\n"
 "Last-Translator: votdev <votdev@gmx.de>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
+"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -446,6 +446,9 @@ msgstr ""
 #~ msgid "CIFS share"
 #~ msgstr "Freigabe"
 
+#~ msgid "Workgroup to be member of."
+#~ msgstr "Arbeitsgruppenzugehörigkeit."
+
 #~ msgid "Recycle Bin"
 #~ msgstr "Abfalleimer"
 
@@ -461,6 +464,9 @@ msgstr ""
 #~ msgid "The max con per ip must be a number."
 #~ msgstr ""
 #~ "Die höchste Anzahl an Verbindungen von einer IP-Adresse muss eine Zahl sein."
+
+#~ msgid "The pasv address must be a public IP address."
+#~ msgstr "Die 'pasv address' muss eine 'Public IP Address' sein."
 
 #~ msgid "You must select at minium anonymous or/and local user authentication."
 #~ msgstr ""
@@ -478,6 +484,9 @@ msgstr ""
 #~ msgstr ""
 #~ "Diese Einstellung benutzen, um die IP-Adresse zu ersetzen, die der FTP "
 #~ "Dienst normalerweise auf die PASV-Anfrage senden wird."
+
+#~ msgid "Network that is authorised to access to NFS share"
+#~ msgstr "Zugriffsberechtigtes Netzwerk auf die NFS-freigabe"
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr ""
@@ -788,6 +797,9 @@ msgstr ""
 #~ msgid "Authorized"
 #~ msgstr "autorisiert"
 
+#~ msgid "Networks"
+#~ msgstr "Netzwerke"
+
 #~ msgid "Networks Authorized"
 #~ msgstr "autorisierte Netzwerke"
 
@@ -1035,9 +1047,6 @@ msgstr "Einen Auftrag hinzufügen"
 msgid "Add module"
 msgstr "Modul hinzufügen"
 
-msgid "Add network"
-msgstr "Ein Netzwerk hinzufügen"
-
 msgid "Add parameter"
 msgstr "Einen Parameter hinzufügen"
 
@@ -1109,6 +1118,9 @@ msgstr "Ersatzname für die Freigabe."
 
 msgid "All"
 msgstr "Alle"
+
+msgid "All dirs"
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -1215,9 +1227,6 @@ msgstr "Authentifizierung"
 
 msgid "Authorised network"
 msgstr "Zugelassenes Netzwerk"
-
-msgid "Authorized networks"
-msgstr "Autorisierte Netzwerke"
 
 msgid "AutoScale"
 msgstr "Autom. Skalierung"
@@ -1513,9 +1522,6 @@ msgstr "Lösche Job"
 msgid "Delete module"
 msgstr "Modul löschen"
 
-msgid "Delete network"
-msgstr "Netzwerk löschen"
-
 msgid "Delete parameter"
 msgstr "Parameter löschen"
 
@@ -1720,9 +1726,6 @@ msgstr ""
 "Wollen Sie diesen Mountpoint wirklich löschen? Alle Elemente, die gerade "
 "darauf zugreifen, werden ungültig werden (z.B. Freigaben)"
 
-msgid "Do you really want to delete this network entry?"
-msgstr "Soll dieser Netzwerkeintrag wirklich gelöscht werden?"
-
 msgid "Do you really want to delete this parameter?"
 msgstr "Soll dieser Parameter wirklich gelöscht werden?"
 
@@ -1845,9 +1848,6 @@ msgstr "Auftrag bearbeiten"
 
 msgid "Edit module"
 msgstr "Modul bearbeiten"
-
-msgid "Edit network"
-msgstr "Netzwerk bearbeiten"
 
 msgid "Edit parameter"
 msgstr "Parameter bearbeiten"
@@ -2044,6 +2044,9 @@ msgid ""
 msgstr ""
 "Kommandos vor oder nach der Systeminitialisierung (Hochfahren) oder vor dem "
 "Herunterfahren des Systems ausführen."
+
+msgid "Exports"
+msgstr ""
 
 msgid "Extensions"
 msgstr "Erweiterungen"
@@ -2467,6 +2470,9 @@ msgstr "Informationen"
 msgid "Inherit permissions"
 msgstr "Berechtigungen vererben"
 
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
+
 msgid "Initialize"
 msgstr "Initialisierung"
 
@@ -2839,21 +2845,18 @@ msgstr "Netgraph"
 msgid "Network"
 msgstr "Netzwerk"
 
+msgid "Network mask"
+msgstr "Netzwerkmaske"
+
 msgid "Network port"
 msgstr "Netzwerkport"
 
-msgid "Network that is authorised to access to NFS share"
-msgstr "Zugriffsberechtigtes Netzwerk auf die NFS-freigabe"
+msgid "Network that is authorised to access the NFS share."
+msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr ""
 "Netzwerk, welches zum Zugriff auf dieses iSCSI-target berechtigt ist."
-
-msgid "Networks"
-msgstr "Netzwerke"
-
-msgid "Networks authorized."
-msgstr "Authorisierte Netze"
 
 msgid "No"
 msgstr "Nein"
@@ -3093,6 +3096,9 @@ msgstr "Ping / Traceroute"
 msgid "Platform"
 msgstr "Plattform"
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr "Abfragezeit"
 
@@ -3162,6 +3168,9 @@ msgstr ""
 
 msgid "Quality"
 msgstr "Qualität"
+
+msgid "Quiet"
+msgstr "Leise"
 
 msgid "RAID 0"
 msgstr "RAID 0"
@@ -3427,6 +3436,9 @@ msgstr "Freigaben Name"
 msgid "Share Password"
 msgstr "Passwort für die Freigabe"
 
+msgid "Share all sub directories."
+msgstr ""
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr "Passwort für die Freigabe kann nicht länger als 8 Zeichen sein."
 
@@ -3493,6 +3505,9 @@ msgstr "Quell - Freigabe"
 
 msgid "Space Used"
 msgstr "Benutzter Speicherplatz"
+
+msgid "Specifies that the file system should be exported read-only."
+msgstr ""
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -3689,6 +3704,11 @@ msgid ""
 msgstr ""
 "Die LAN Konfiguration hat sich geändert.<br>Zur Übernahme der Änderungen "
 "bitte bestätigen."
+
+msgid ""
+"The NFS export list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3908,6 +3928,10 @@ msgstr "Die folgenden Eingabefehler sind aufgetreten"
 msgid "The full name contains invalid characters."
 msgstr "Der vollständige Name enthält ungültige Zeichen."
 
+#, fuzzy
+msgid "The group ID must be > 1001."
+msgstr "Die Gruppen ID muss > 1001 sein."
+
 msgid "The group description contains invalid characters."
 msgstr "Diese Gruppenbeschreibung enthält ungültige Zeichen."
 
@@ -3993,9 +4017,6 @@ msgstr ""
 "Die Liste der Einbindungen (Mount Points) wurde verändert.<br>Zur Übernahme "
 "der Änderungen müssen diese bestätigt werden."
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr "Der Name der exportierten Verzeichnisse lautet: mnt/Freigabenname"
-
 msgid "The number of clients must be between 1 and 50."
 msgstr "Die Anzahl der Clients muss zwischen 1 und 50 liegen."
 
@@ -4014,9 +4035,6 @@ msgstr "Das Passwort enthält das ungültige Zeichen ':'."
 
 msgid "The passwords do not match."
 msgstr "Die Passwörter stimmen nicht überein."
-
-msgid "The pasv address must be a public IP address."
-msgstr "Die 'pasv address' muss eine 'Public IP Address' sein."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -4074,8 +4092,19 @@ msgstr ""
 msgid "The time update interval must be either between 6 and 1440."
 msgstr "Das Zeitupdateintervall mus zwischen 6 und 1440 liegen."
 
+#, fuzzy
+msgid "The unique group ID is already used."
+msgstr "Die eindeutige Gruppen ID wird schon verwendet."
+
+#, fuzzy
+msgid "The unique user ID is already used."
+msgstr "Die eindeutige Benutzer ID wird schon verwendet."
+
 msgid "The uploaded image file is not for this platform"
 msgstr "Dieses Image ist nicht für diese Plattform geeignet"
+
+msgid "The user ID must be > 1001."
+msgstr "Die Benutzer ID muss > 1001 sein."
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr ""
@@ -4443,8 +4472,14 @@ msgstr "UPnP-konformer Name."
 msgid "Uninstall package"
 msgstr "Deinstallationspaket"
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
 msgstr "Eindeutiger Loginname des Benutzers."
+
+msgid "Unique user numeric id."
+msgstr ""
 
 msgid "Unison"
 msgstr "Unison"
@@ -4622,8 +4657,8 @@ msgstr "Drahtlos"
 msgid "Workgroup"
 msgstr "Arbeitsgruppe"
 
-msgid "Workgroup to be member of."
-msgstr "Arbeitsgruppenzugehörigkeit."
+msgid "Workgroup to be member of.(maximum 15 characters)"
+msgstr ""
 
 msgid "Working Directory"
 msgstr "Arbeitsverzeichnis"
