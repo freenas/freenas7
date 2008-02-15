@@ -89,8 +89,8 @@ if ($_POST) {
 	}
 
 	// Check for name conflicts. Only check if user is created.
-	if (!isset($id) && (is_array($a_user_system) && array_key_exists($_POST['login'], $a_user_system) ||
-		false !== array_search_ex($_POST['login'], $a_user, "login"))) {
+	if ((is_array($a_user_system) && array_key_exists($_POST['login'], $a_user_system)) ||
+		(false !== array_search_ex($_POST['login'], $a_user, "login"))) {
 		$input_errors[] = gettext("This user already exists in the user list.");
 	}
 
@@ -183,29 +183,29 @@ function get_nextuser_id() {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Login");?></td>
             <td width="78%" class="vtable">
-              <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>"  <?php if (isset($id)) echo "readonly";?>></br>
+              <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>"><br/>
 							<span class="vexpl"><?=gettext("Unique login name of user.");?></span>
             </td>
 	       </tr>
 	       <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Full Name");?></td>
             <td width="78%" class="vtable">
-              <input name="fullname" type="text" class="formfld" id="fullname" size="20" value="<?=htmlspecialchars($pconfig['fullname']);?>"></br>
+              <input name="fullname" type="text" class="formfld" id="fullname" size="20" value="<?=htmlspecialchars($pconfig['fullname']);?>"><br/>
 							<span class="vexpl"><?=gettext("User full name.");?></span>
             </td>
           </tr>
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
             <td width="78%" class="vtable">
-              <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
-              <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
+              <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br/>
+              <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br/>
               <span class="vexpl"><?=gettext("User password.");?></span>
             </td>
           </tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("User ID");?></td>
 						<td width="78%" class="vtable">
-							<input name="userid" type="text" class="formfld" id="userid" size="20" value="<?=htmlspecialchars($pconfig['userid']);?>" <?php if (isset($id)) echo "readonly";?>></br>
+							<input name="userid" type="text" class="formfld" id="userid" size="20" value="<?=htmlspecialchars($pconfig['userid']);?>" <?php if (isset($id)) echo "readonly";?>><br/>
 							<span class="vexpl"><?=gettext("Unique user numeric id.");?></span>
 						</td>
 					</tr>
@@ -216,7 +216,7 @@ function get_nextuser_id() {
 								<?php foreach ($a_group as $groupk => $groupv):?>
 								<option value="<?=$groupv;?>" <?php if ("{$groupv}" === $pconfig['primarygroup']) echo "selected";?>><?=htmlspecialchars($groupk);?></option>
 								<?php endforeach;?>
-							</select></br>
+							</select><br/>
 							<span class="vexpl"><?=gettext("Set the account's primary group to the given group.");?></span>
 						</td>
 					</tr>
@@ -227,8 +227,8 @@ function get_nextuser_id() {
 								<?php foreach ($a_group as $groupk => $groupv):?>
 								<option value="<?=$groupv;?>" <?php if (is_array($pconfig['group']) && in_array("{$groupv}", $pconfig['group'])) echo "selected";?>><?=htmlspecialchars($groupk);?></option>
 								<?php endforeach;?>
-							</select></br>
-							<span class="vexpl"><?=gettext("Set additional group memberships for this account.");?></br>
+							</select><br/>
+							<span class="vexpl"><?=gettext("Set additional group memberships for this account.");?><br/>
 							<?=gettext("Note: Ctrl-click (or command-click on the Mac) to select and deselect groups.");?></span>
 						</td>
 					</tr>
