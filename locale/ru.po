@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-04 08:09+0000\n"
+"POT-Creation-Date: 2008-02-11 17:06+0000\n"
 "PO-Revision-Date: 2008-01-29 08:42+0000\n"
 "Last-Translator: Alexander Samoilov <root@lifeslice.ru>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
+"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -429,6 +429,9 @@ msgstr ""
 #~ msgid "CIFS share"
 #~ msgstr "общий ресурс CIFS"
 
+#~ msgid "Workgroup to be member of."
+#~ msgstr "Стать членом рабочей группы."
+
 #~ msgid "Recycle Bin"
 #~ msgstr "Корзина"
 
@@ -443,6 +446,9 @@ msgstr ""
 
 #~ msgid "The max con per ip must be a number."
 #~ msgstr "Макс. число соединений с одного IP должно быть числом."
+
+#~ msgid "The pasv address must be a public IP address."
+#~ msgstr "Адрес pasv должен быть публичным IP адресом."
 
 #~ msgid "You must select at minium anonymous or/and local user authentication."
 #~ msgstr ""
@@ -461,6 +467,9 @@ msgstr ""
 #~ msgstr ""
 #~ "Используйте этот параметр для замещения IP-адреса, который FTP-сервер "
 #~ "предложит в ответ на команду PASV."
+
+#~ msgid "Network that is authorised to access to NFS share"
+#~ msgstr "Сети, которым разрешено подключаться к общему ресурсу NFS"
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "Имена экспортируемых каталогов будут вида /mnt/sharename"
@@ -990,9 +999,6 @@ msgstr "Добавить задание"
 msgid "Add module"
 msgstr "Добавить модуль"
 
-msgid "Add network"
-msgstr "Добавить сеть"
-
 msgid "Add parameter"
 msgstr "Добавить параметр"
 
@@ -1065,6 +1071,9 @@ msgstr "Псевдоним имени узла"
 
 msgid "All"
 msgstr "Все"
+
+msgid "All dirs"
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -1175,10 +1184,6 @@ msgstr "Аутентификация"
 
 msgid "Authorised network"
 msgstr "Авторизованная сеть"
-
-#, fuzzy
-msgid "Authorized networks"
-msgstr "Авторизованные сети"
 
 msgid "AutoScale"
 msgstr "Автомасштаб"
@@ -1471,9 +1476,6 @@ msgstr "Удалить задание"
 msgid "Delete module"
 msgstr "Удалить модуль"
 
-msgid "Delete network"
-msgstr "Удалить сеть"
-
 msgid "Delete parameter"
 msgstr "Удалить параметр"
 
@@ -1675,9 +1677,6 @@ msgstr ""
 "Вы действительно хотите удалить эту точку монтирования? Все объекты, "
 "использующие её, станут недоступны (например, общие ресурсы)!"
 
-msgid "Do you really want to delete this network entry?"
-msgstr "Вы действительно хотите удалить эту сеть?"
-
 msgid "Do you really want to delete this parameter?"
 msgstr "Вы действительно хотите удалить этот параметр?"
 
@@ -1798,9 +1797,6 @@ msgstr "Изменить задание"
 
 msgid "Edit module"
 msgstr "Правка модуля"
-
-msgid "Edit network"
-msgstr "Изменить сеть"
 
 msgid "Edit parameter"
 msgstr "Изменить параметр"
@@ -1992,6 +1988,9 @@ msgid ""
 msgstr ""
 "Выполнить команду перед или после инициализации системы (загрузки) или перед "
 "выключением."
+
+msgid "Exports"
+msgstr ""
 
 msgid "Extensions"
 msgstr "Расширения"
@@ -2399,6 +2398,9 @@ msgstr "Информация"
 msgid "Inherit permissions"
 msgstr "Наследовать права"
 
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
+
 msgid "Initialize"
 msgstr "Инициализировать"
 
@@ -2767,20 +2769,17 @@ msgstr "Netgraph"
 msgid "Network"
 msgstr "Сеть"
 
+msgid "Network mask"
+msgstr ""
+
 msgid "Network port"
 msgstr "Сетевой порт"
 
-msgid "Network that is authorised to access to NFS share"
-msgstr "Сети, которым разрешено подключаться к общему ресурсу NFS"
+msgid "Network that is authorised to access the NFS share."
+msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "Сеть, авторизованная для доступа к этой iSCSI-цели."
-
-msgid "Networks"
-msgstr "Сети"
-
-msgid "Networks authorized."
-msgstr "Доверенные сети."
 
 msgid "No"
 msgstr "Нет"
@@ -3016,6 +3015,9 @@ msgstr "Команды Ping и Traceroute"
 msgid "Platform"
 msgstr "Платформа"
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr "Интервал опроса"
 
@@ -3083,6 +3085,9 @@ msgstr ""
 
 msgid "Quality"
 msgstr "Качество"
+
+msgid "Quiet"
+msgstr ""
 
 msgid "RAID 0"
 msgstr "Массив RAID 0"
@@ -3342,6 +3347,9 @@ msgstr "Имя общего ресурса"
 msgid "Share Password"
 msgstr "Пароль шары"
 
+msgid "Share all sub directories."
+msgstr ""
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr "Пароли для шары не могут быть больше 8 символов."
 
@@ -3405,6 +3413,9 @@ msgstr "Папка источника"
 
 msgid "Space Used"
 msgstr "Занятый объем"
+
+msgid "Specifies that the file system should be exported read-only."
+msgstr ""
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -3593,6 +3604,11 @@ msgid ""
 msgstr ""
 "Настройки локальной сети были изменены. <br>Нужно применить настройки чтобы "
 "они вступили в силу."
+
+msgid ""
+"The NFS export list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3801,6 +3817,9 @@ msgstr "Были обнаружены следующие ошибки ввода
 msgid "The full name contains invalid characters."
 msgstr "Полное имя пользователя содержит недопустимые символы."
 
+msgid "The group ID must be > 1001."
+msgstr ""
+
 msgid "The group description contains invalid characters."
 msgstr "Описание группы содержит запрещенные символы"
 
@@ -3885,9 +3904,6 @@ msgstr ""
 "Точка монтирования была изменена.<br>Вы должны применить изменения, чтобы "
 "они вступили в силу."
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr "Имя экспортируемого каталога - /mnt/sharename"
-
 msgid "The number of clients must be between 1 and 50."
 msgstr "Количество клиентов должно быть от 1 до 50."
 
@@ -3906,9 +3922,6 @@ msgstr "Пароль содержит недопустимый символ  ':'
 
 msgid "The passwords do not match."
 msgstr "Пароли не совпадают"
-
-msgid "The pasv address must be a public IP address."
-msgstr "Адрес pasv должен быть публичным IP адресом."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3964,8 +3977,17 @@ msgstr "Система перезагружается. Это может зан�
 msgid "The time update interval must be either between 6 and 1440."
 msgstr "Интервал обновления времени должен быть между 6 и 1440."
 
+msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique user ID is already used."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "Загруженный файл не для этой платформы"
+
+msgid "The user ID must be > 1001."
+msgstr ""
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr "Имя пользователя может содержать только символы a-z, A-Z и 0-9."
@@ -4306,8 +4328,14 @@ msgstr "UPnP дружественное имя"
 msgid "Uninstall package"
 msgstr "Удалить пакет"
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
 msgstr "Уникальное имя входа пользователя."
+
+msgid "Unique user numeric id."
+msgstr ""
 
 msgid "Unison"
 msgstr "Unison"
@@ -4484,8 +4512,8 @@ msgstr "Беспроводные"
 msgid "Workgroup"
 msgstr "Рабочая группа"
 
-msgid "Workgroup to be member of."
-msgstr "Стать членом рабочей группы."
+msgid "Workgroup to be member of.(maximum 15 characters)"
+msgstr ""
 
 msgid "Working Directory"
 msgstr "Рабочий каталог"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-04 08:09+0000\n"
+"POT-Creation-Date: 2008-02-11 17:06+0000\n"
 "PO-Revision-Date: 2008-01-28 15:09+0000\n"
 "Last-Translator: Raffaele Montagna <raffaello_58@hotmail.it>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
+"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-Language: Italian\n"
@@ -375,6 +375,9 @@ msgstr ""
 #~ msgid "CIFS share"
 #~ msgstr "Condivisione"
 
+#~ msgid "Workgroup to be member of."
+#~ msgstr "Workgroup del quale essere membri."
+
 #~ msgid "Recycle Bin"
 #~ msgstr "Cestino"
 
@@ -389,6 +392,9 @@ msgstr ""
 
 #~ msgid "The max con per ip must be a number."
 #~ msgstr "Max conn. per ip deve essere numerico."
+
+#~ msgid "The pasv address must be a public IP address."
+#~ msgstr "L'indirizzo pasv deve essere un indirizzo IP pubblico."
 
 #~ msgid "Anonymous login"
 #~ msgstr "Login Anonimo"
@@ -735,9 +741,6 @@ msgstr "Aggiungere lavoro"
 msgid "Add module"
 msgstr "Aggiungi modulo"
 
-msgid "Add network"
-msgstr "Aggiungere rete"
-
 msgid "Add parameter"
 msgstr "Aggiungere parametro"
 
@@ -809,6 +812,9 @@ msgstr "Secondo nome host (alias)"
 
 msgid "All"
 msgstr "Tutto"
+
+msgid "All dirs"
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -916,9 +922,6 @@ msgstr "Autenticazione"
 
 msgid "Authorised network"
 msgstr "Rete autorizzata"
-
-msgid "Authorized networks"
-msgstr "Reti autorizzate"
 
 msgid "AutoScale"
 msgstr "AutoScala"
@@ -1212,9 +1215,6 @@ msgstr "Elimina lavoro"
 msgid "Delete module"
 msgstr "Elimina modulo"
 
-msgid "Delete network"
-msgstr "Elimina rete"
-
 msgid "Delete parameter"
 msgstr "Elimina parametro"
 
@@ -1416,9 +1416,6 @@ msgstr ""
 "Si vuole realmente cancellare questo punto di mount? Tutti gli elementi che "
 "ancora lo utilizzano non saranno piu' validi (es. condivisioni)!"
 
-msgid "Do you really want to delete this network entry?"
-msgstr "Si desidera realmente cancellare questa nuova rete?"
-
 msgid "Do you really want to delete this parameter?"
 msgstr "Si desidera realmente cancellare questo parametro?"
 
@@ -1540,9 +1537,6 @@ msgstr "Modifica il lavoro"
 
 msgid "Edit module"
 msgstr "Modifica modulo"
-
-msgid "Edit network"
-msgstr "Modifica rete"
 
 msgid "Edit parameter"
 msgstr "Modifica il parametro"
@@ -1735,6 +1729,9 @@ msgid ""
 msgstr ""
 "Esegui comando prima o dopo l'inizializzazione (avvio) o prima dello "
 "spegnimento del sistema."
+
+msgid "Exports"
+msgstr ""
 
 msgid "Extensions"
 msgstr "Estensioni"
@@ -2159,6 +2156,9 @@ msgstr "Informazioni"
 msgid "Inherit permissions"
 msgstr "Ereditare i permessi"
 
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
+
 msgid "Initialize"
 msgstr "Inizializza"
 
@@ -2529,20 +2529,17 @@ msgstr "Netgraph"
 msgid "Network"
 msgstr "Rete"
 
+msgid "Network mask"
+msgstr ""
+
 msgid "Network port"
 msgstr "Porta di rete"
 
-msgid "Network that is authorised to access to NFS share"
-msgstr "Rete che e' autorizzata all'accesso alla condivisione NFS"
+msgid "Network that is authorised to access the NFS share."
+msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "Rete autorizzata ad accedere a questo target iSCSI."
-
-msgid "Networks"
-msgstr "Reti"
-
-msgid "Networks authorized."
-msgstr "Rete autorizzata."
 
 msgid "No"
 msgstr "No"
@@ -2785,6 +2782,9 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Piattaforma"
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr "Tempo di polling"
 
@@ -2854,6 +2854,9 @@ msgstr ""
 
 msgid "Quality"
 msgstr "Qualita'"
+
+msgid "Quiet"
+msgstr ""
 
 msgid "RAID 0"
 msgstr "RAID 0"
@@ -3119,6 +3122,9 @@ msgstr "Nome Condivisione"
 msgid "Share Password"
 msgstr "Password della Condivisione."
 
+msgid "Share all sub directories."
+msgstr ""
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr "Le password delle condivisioni non possono avere piu' di 8 caratteri"
 
@@ -3184,6 +3190,9 @@ msgstr "Condivisione sorgente"
 
 msgid "Space Used"
 msgstr "Spazio Utilizzato"
+
+msgid "Specifies that the file system should be exported read-only."
+msgstr ""
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -3377,6 +3386,11 @@ msgid ""
 msgstr ""
 "La configurazione della LAN e' stata cambiata.<br>E' necessario applicare le "
 "modifiche affinche' i cambiamenti abbiano effetto."
+
+msgid ""
+"The NFS export list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3595,6 +3609,9 @@ msgstr "Sono stati trovati i seguenti errori di input"
 msgid "The full name contains invalid characters."
 msgstr "Il nome completo contiene caratteri non validi."
 
+msgid "The group ID must be > 1001."
+msgstr ""
+
 msgid "The group description contains invalid characters."
 msgstr "La descrizione del gruppo contiene caratteri invalidi."
 
@@ -3679,9 +3696,6 @@ msgstr ""
 "La lista dei punti di mount e' stata cambiata.<br>E' necessario applicare le "
 "modifiche affinche' i cambiamenti abbiano effetto."
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr "I nomi delle directories esportate sono: /mnt/sharename"
-
 msgid "The number of clients must be between 1 and 50."
 msgstr "Il numero di clients deve essere compreso tra 1 e 50."
 
@@ -3700,9 +3714,6 @@ msgstr "La password contiene il carattere illegale ':'."
 
 msgid "The passwords do not match."
 msgstr "Le password non coincidono."
-
-msgid "The pasv address must be a public IP address."
-msgstr "L'indirizzo pasv deve essere un indirizzo IP pubblico."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3759,8 +3770,17 @@ msgstr "Il sistema si sta riavviando adesso. Potrebbe volerci un minuto."
 msgid "The time update interval must be either between 6 and 1440."
 msgstr "L'intervallo di aggiornamento dell'ora deve essere tra 6 e 1440."
 
+msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique user ID is already used."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "Il file immagine caricato non e' adatto a questa piattaforma"
+
+msgid "The user ID must be > 1001."
+msgstr ""
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr "Lo username puo' contenere solo i caratteri a-z, A-Z e 0-9."
@@ -4155,8 +4175,14 @@ msgstr "Nome per il server UPnP."
 msgid "Uninstall package"
 msgstr "Disintalla pacchetto"
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
 msgstr "Nome di login univoco dell'utente."
+
+msgid "Unique user numeric id."
+msgstr ""
 
 msgid "Unison"
 msgstr "Unison"
@@ -4340,8 +4366,8 @@ msgstr "Wireless"
 msgid "Workgroup"
 msgstr "Workgroup"
 
-msgid "Workgroup to be member of."
-msgstr "Workgroup del quale essere membri."
+msgid "Workgroup to be member of.(maximum 15 characters)"
+msgstr ""
 
 msgid "Working Directory"
 msgstr "Directory di Lavoro"

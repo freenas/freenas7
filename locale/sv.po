@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-04 08:09+0000\n"
+"POT-Creation-Date: 2008-02-11 17:06+0000\n"
 "PO-Revision-Date: 2007-09-20 23:51+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
+"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #~ msgid "Sun Mon Tue Wed Thu Fri Sat"
@@ -244,6 +244,9 @@ msgstr ""
 #~ msgid "Save and Restart AFP"
 #~ msgstr "Spara och starta om AFP"
 
+#~ msgid "Networks"
+#~ msgstr "Nätverk"
+
 #~ msgid "Save and Restart CIFS"
 #~ msgstr "Spara och starta om CIFS"
 
@@ -462,9 +465,6 @@ msgstr "Lägg till jobb"
 msgid "Add module"
 msgstr ""
 
-msgid "Add network"
-msgstr "Lägg till nätverk"
-
 msgid "Add parameter"
 msgstr "Lägg till parameter"
 
@@ -526,6 +526,9 @@ msgstr ""
 
 msgid "All"
 msgstr "Alla"
+
+msgid "All dirs"
+msgstr ""
 
 msgid ""
 "All shares use the option 'usedots' thus making the filenames .Parent and "
@@ -620,9 +623,6 @@ msgstr "Autentisering"
 
 msgid "Authorised network"
 msgstr "Behörigt nätverk"
-
-msgid "Authorized networks"
-msgstr ""
 
 msgid "AutoScale"
 msgstr ""
@@ -904,9 +904,6 @@ msgstr "Ta bort jobb"
 msgid "Delete module"
 msgstr ""
 
-msgid "Delete network"
-msgstr "Ta bort nätverk"
-
 msgid "Delete parameter"
 msgstr "Ta bort parameter"
 
@@ -1086,9 +1083,6 @@ msgstr ""
 "Vill du verkligen ta bort den här monteringspunkten? Alla element som "
 "fortfarande använder den kommer att bli ogiltiga (t.ex. utdelningen)!"
 
-msgid "Do you really want to delete this network entry?"
-msgstr "Vill du verkligen ta bort denna nätverkspost?"
-
 msgid "Do you really want to delete this parameter?"
 msgstr "Vill du verkligen ta bort denna parameter?"
 
@@ -1207,9 +1201,6 @@ msgstr "Redigera jobb"
 
 msgid "Edit module"
 msgstr ""
-
-msgid "Edit network"
-msgstr "Redigera nätverk"
 
 msgid "Edit parameter"
 msgstr "Redigera parameter"
@@ -1386,6 +1377,9 @@ msgstr "Kör kommando"
 msgid ""
 "Execute command pre or post system initialization (booting) or before system "
 "shutdown."
+msgstr ""
+
+msgid "Exports"
 msgstr ""
 
 msgid "Extensions"
@@ -1770,6 +1764,9 @@ msgstr "Information"
 msgid "Inherit permissions"
 msgstr ""
 
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
+
 msgid "Initialize"
 msgstr "Initiera"
 
@@ -2121,20 +2118,17 @@ msgstr ""
 msgid "Network"
 msgstr "Nätverk"
 
+msgid "Network mask"
+msgstr ""
+
 msgid "Network port"
 msgstr "Nätverksport"
 
-msgid "Network that is authorised to access to NFS share"
+msgid "Network that is authorised to access the NFS share."
 msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "Nätverk som är behörigt att komma åt det här iSCSI-målet."
-
-msgid "Networks"
-msgstr "Nätverk"
-
-msgid "Networks authorized."
-msgstr ""
 
 msgid "No"
 msgstr "Nej"
@@ -2359,6 +2353,9 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Plattform"
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr ""
 
@@ -2426,6 +2423,9 @@ msgstr ""
 
 msgid "Quality"
 msgstr "Kvalitet"
+
+msgid "Quiet"
+msgstr ""
 
 msgid "RAID 0"
 msgstr ""
@@ -2685,6 +2685,9 @@ msgstr "Utdelningsnamn"
 msgid "Share Password"
 msgstr ""
 
+msgid "Share all sub directories."
+msgstr ""
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
@@ -2748,6 +2751,9 @@ msgstr ""
 
 msgid "Space Used"
 msgstr "Utrymme använt"
+
+msgid "Specifies that the file system should be exported read-only."
+msgstr ""
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -2928,6 +2934,11 @@ msgid ""
 msgstr ""
 "LAN-konfigurationen har ändrats.<br>Du måste verkställa ändringarna för att "
 "de ska bli aktiverade."
+
+msgid ""
+"The NFS export list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3117,6 +3128,9 @@ msgstr ""
 msgid "The full name contains invalid characters."
 msgstr ""
 
+msgid "The group ID must be > 1001."
+msgstr ""
+
 msgid "The group description contains invalid characters."
 msgstr ""
 
@@ -3187,9 +3201,6 @@ msgstr ""
 "Monteringspunktlistan har ändrats.<br>Du måste verkställa ändringarna för "
 "att de ska bli aktiverade."
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr ""
-
 msgid "The number of clients must be between 1 and 50."
 msgstr ""
 
@@ -3206,9 +3217,6 @@ msgstr ""
 
 msgid "The passwords do not match."
 msgstr "Lösenorden stämmer inte överens."
-
-msgid "The pasv address must be a public IP address."
-msgstr ""
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3254,8 +3262,17 @@ msgstr ""
 msgid "The time update interval must be either between 6 and 1440."
 msgstr ""
 
+msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique user ID is already used."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "Den uppskickade avbildsfilen är inte för den här plattformen"
+
+msgid "The user ID must be > 1001."
+msgstr ""
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr "Användarnamnet får endast innehålla tecknen a-z, A-Z och 0-9."
@@ -3570,7 +3587,13 @@ msgstr ""
 msgid "Uninstall package"
 msgstr ""
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
+msgstr ""
+
+msgid "Unique user numeric id."
 msgstr ""
 
 msgid "Unison"
@@ -3737,8 +3760,8 @@ msgstr "Trådlös"
 msgid "Workgroup"
 msgstr "Arbetsgrupp"
 
-msgid "Workgroup to be member of."
-msgstr "Arbetsgrupp att vara medlem av."
+msgid "Workgroup to be member of.(maximum 15 characters)"
+msgstr ""
 
 msgid "Working Directory"
 msgstr "Arbetskatalog"

@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-04 08:09+0000\n"
+"POT-Creation-Date: 2008-02-11 17:06+0000\n"
 "PO-Revision-Date: 2008-02-01 22:17+0000\n"
 "Last-Translator: Laurentiu Florin BUBUIANU <laurb@tvriasi.ro>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-04 19:21+0000\n"
+"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: ROMANIA\n"
 "X-Poedit-Language: Romanian\n"
@@ -411,6 +411,9 @@ msgstr ""
 #~ msgid "CIFS share"
 #~ msgstr "Partajare"
 
+#~ msgid "Workgroup to be member of."
+#~ msgstr "Membru al Workgroup-ului."
+
 #~ msgid "Recycle Bin"
 #~ msgstr "Recycle Bin"
 
@@ -425,6 +428,9 @@ msgstr ""
 
 #~ msgid "The max con per ip must be a number."
 #~ msgstr "Numar maxim de conexiuni pe IP invalid."
+
+#~ msgid "The pasv address must be a public IP address."
+#~ msgstr "Adresa pasv trebuie sa fie o adresa IP publica."
 
 #~ msgid "You must select at minium anonymous or/and local user authentication."
 #~ msgstr ""
@@ -448,6 +454,9 @@ msgstr ""
 #~ msgstr ""
 #~ "Folositi aceasta optiune pentru a suprascrie adresa IP furnizata de daemon-"
 #~ "ul FTP ca raspuns la o comanda PASV."
+
+#~ msgid "Network that is authorised to access to NFS share"
+#~ msgstr "Retea autorizata pentru partajarea NFS"
 
 #~ msgid "The name of the exported directories are : /mnt/sharename"
 #~ msgstr "Numele directorului exportat: /mnt/sharename"
@@ -986,9 +995,6 @@ msgstr "Adaugare program"
 msgid "Add module"
 msgstr "Adauga modul"
 
-msgid "Add network"
-msgstr "Adaugare retea"
-
 msgid "Add parameter"
 msgstr "Adaugare parametru"
 
@@ -1061,6 +1067,9 @@ msgstr ""
 
 msgid "All"
 msgstr "Toate"
+
+msgid "All dirs"
+msgstr ""
 
 #, fuzzy
 msgid ""
@@ -1171,9 +1180,6 @@ msgstr "Autentificare"
 
 msgid "Authorised network"
 msgstr "Retea Autorizata"
-
-msgid "Authorized networks"
-msgstr "Retele autorizate."
 
 msgid "AutoScale"
 msgstr "AutoScalare"
@@ -1472,9 +1478,6 @@ msgstr "Stergere program"
 msgid "Delete module"
 msgstr "Sterge modulul"
 
-msgid "Delete network"
-msgstr "Stergere retea"
-
 msgid "Delete parameter"
 msgstr "Stergere parametru"
 
@@ -1680,9 +1683,6 @@ msgstr ""
 "Doriti sa stergeti acest punct de montare? Toate elementele asociate, chiar "
 "active, vor fi sterse (inclusiv partajarile)!"
 
-msgid "Do you really want to delete this network entry?"
-msgstr "Stergeti aceasta retea?"
-
 msgid "Do you really want to delete this parameter?"
 msgstr "Stergeti acest parametru?"
 
@@ -1803,9 +1803,6 @@ msgstr "Editare program"
 #, fuzzy
 msgid "Edit module"
 msgstr "Editeaza modulul"
-
-msgid "Edit network"
-msgstr "Editare retea"
 
 msgid "Edit parameter"
 msgstr "Editare parametru"
@@ -1996,6 +1993,9 @@ msgid ""
 msgstr ""
 "Executa comanda Pre(inainte) sau Post(dupa) initializare(boot), sau inainte "
 "de oprirea systemului."
+
+msgid "Exports"
+msgstr ""
 
 msgid "Extensions"
 msgstr "Extensii"
@@ -2401,6 +2401,9 @@ msgstr "Informatii"
 msgid "Inherit permissions"
 msgstr "Permisiuni ierarhice"
 
+msgid "Inhibit some of the syslog diagnostics for bad lines in /etc/exports."
+msgstr ""
+
 msgid "Initialize"
 msgstr "Initializare"
 
@@ -2768,20 +2771,17 @@ msgstr "Netgraph"
 msgid "Network"
 msgstr "Retea"
 
+msgid "Network mask"
+msgstr ""
+
 msgid "Network port"
 msgstr "Port retea"
 
-msgid "Network that is authorised to access to NFS share"
-msgstr "Retea autorizata pentru partajarea NFS"
+msgid "Network that is authorised to access the NFS share."
+msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "Retea autorizata pentru acces iSCSI"
-
-msgid "Networks"
-msgstr "Retele"
-
-msgid "Networks authorized."
-msgstr "Retele autorizate."
 
 msgid "No"
 msgstr "Nu"
@@ -3021,6 +3021,9 @@ msgstr "Ping/Traceroute"
 msgid "Platform"
 msgstr "Platforma"
 
+msgid "Please note that blanks in path names are not allowed."
+msgstr ""
+
 msgid "Polling time"
 msgstr "Interval verificare"
 
@@ -3096,6 +3099,9 @@ msgstr ""
 
 msgid "Quality"
 msgstr "Calitate"
+
+msgid "Quiet"
+msgstr ""
 
 msgid "RAID 0"
 msgstr "RAID 0"
@@ -3357,6 +3363,9 @@ msgstr "Nume Share"
 msgid "Share Password"
 msgstr ""
 
+msgid "Share all sub directories."
+msgstr ""
+
 msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
@@ -3421,6 +3430,9 @@ msgstr "Sursa Partajare"
 
 msgid "Space Used"
 msgstr "Spatiu Utilizat"
+
+msgid "Specifies that the file system should be exported read-only."
+msgstr ""
 
 msgid ""
 "Specifies the default base DN to use when performing ldap operations, "
@@ -3611,6 +3623,11 @@ msgid ""
 msgstr ""
 "Configuratia RETELEI a fost modificata.<br>Va trebui sa o salvati pentru a "
 "deveni activa."
+
+msgid ""
+"The NFS export list has been changed.<br>You must apply the changes in order "
+"for them to take effect."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3814,6 +3831,9 @@ msgstr "Au fost detectate urmatoarele erori"
 msgid "The full name contains invalid characters."
 msgstr "Numele complet contine caractere invalide."
 
+msgid "The group ID must be > 1001."
+msgstr ""
+
 msgid "The group description contains invalid characters."
 msgstr "Descriptia grupului contine caractere interzise."
 
@@ -3890,9 +3910,6 @@ msgstr ""
 "Lista punctelor de montare a fost schimbata.<br>Va trebui sa o salvati "
 "pentru a deveni activa."
 
-msgid "The name of the exported directories are: /mnt/sharename"
-msgstr "Numele directoarelor exportate este: /mnt/sharename"
-
 msgid "The number of clients must be between 1 and 50."
 msgstr "Numarul clientilor trebuie sa fie intre 1 si 50."
 
@@ -3911,9 +3928,6 @@ msgstr "Parola nu poate contine caracterul ':'."
 
 msgid "The passwords do not match."
 msgstr "Parolele nu coincid."
-
-msgid "The pasv address must be a public IP address."
-msgstr "Adresa pasv trebuie sa fie o adresa IP publica."
 
 msgid ""
 "The permissions on new files and directories are normally governed by create "
@@ -3967,8 +3981,17 @@ msgstr "Sistemul va reporni acum. Dureza aproximativ 1 minut."
 msgid "The time update interval must be either between 6 and 1440."
 msgstr "Timpul pentru actualizare trebuie sa fie intre 6 si 1440"
 
+msgid "The unique group ID is already used."
+msgstr ""
+
+msgid "The unique user ID is already used."
+msgstr ""
+
 msgid "The uploaded image file is not for this platform"
 msgstr "Imaginea sistem incarcata nu este pentru aceasta platforma"
+
+msgid "The user ID must be > 1001."
+msgstr ""
 
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr "Numele utilizator poate contine doar caracterele a-z, A-Z and 0-9."
@@ -4303,8 +4326,14 @@ msgstr "Nume simplu UPnP."
 msgid "Uninstall package"
 msgstr "Dezinstalare pachet"
 
+msgid "Unique group numeric id."
+msgstr ""
+
 msgid "Unique login name of user."
 msgstr "Nume unic de login utilizator."
+
+msgid "Unique user numeric id."
+msgstr ""
 
 msgid "Unison"
 msgstr "Unison"
@@ -4479,8 +4508,8 @@ msgstr "Wireless"
 msgid "Workgroup"
 msgstr "Workgroup"
 
-msgid "Workgroup to be member of."
-msgstr "Membru al Workgroup-ului."
+msgid "Workgroup to be member of.(maximum 15 characters)"
+msgstr ""
 
 msgid "Working Directory"
 msgstr "Director de Lucru"
