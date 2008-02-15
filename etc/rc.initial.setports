@@ -3,7 +3,7 @@
 /*
 	rc.initial.setports
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -31,183 +31,158 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	/* parse the configuration and include all functions used below */
-	require_once("config.inc");
-	require_once("functions.inc");
+require_once("config.inc");
+require_once("functions.inc");
+require_once("util.inc");
+require_once("tui.inc");
 
-	/* Get product information */
-	$productname = get_product_name();
+$iflist = get_interface_list();
 
-	$fp = fopen('php://stdin', 'r');
-
-	$iflist = get_interface_list();
-
-	echo <<<EOD
-
-Valid interfaces are:
-
-
-EOD;
-
-	foreach ($iflist as $iface => $ifa) {
-		echo sprintf("% -8s%s%s\n", $iface, $ifa['mac'],
-			$ifa['up'] ? "   (up)" : "");
+// Display detected interfaces.
+$text = "If you don't know the names of your interfaces, you may use auto-detection. In that case, disconnect all interfaces before you begin, and reconnect each one when prompted to do so.";
+do {
+	$amenuitem = array();
+	foreach ($iflist as $ifk => $ifv) {
+		$menuitem = array();
+		$menuitem['tag'] = $ifk;
+		$menuitem['item'] = sprintf("%s   %s", $ifv['mac'], $ifv['up'] ? "(up)" : "");
+		$amenuitem[] = $menuitem;
 	}
+	$menuitem = array();
+	$menuitem['tag'] = "auto";
+	$menuitem['item'] = "Auto-detection";
+	$amenuitem[] = $menuitem;
+	$result = tui_display_menu("Detected interfaces", $text, 70, 13, 4, $amenuitem, $lanif);
+	if (0 != $result)
+		exit(0);
 
-	echo <<<EOD
+	if ("auto" === $lanif) {
+		$lanif = autodetect_interface("LAN");
+	}
+} while (0 >= strlen($lanif));
 
-If you don't know the names of your interfaces, you may choose to use
-auto-detection. In that case, disconnect all interfaces before you begin,
-and reconnect each one when prompted to do so.
+// Optional interfaces.
+$i = 0;
+$optif = array();
+while (1) {
+	if ($optif[$i])
+		$i++;
+	$i1 = $i + 1;
+	$text = "Select the Optional {$i1} interface name, auto-detection or none to finish";
+	$amenuitem = array();
+	foreach ($iflist as $ifk => $ifv) {
+		$menuitem = array();
+		$menuitem['tag'] = $ifk;
+		$menuitem['item'] = sprintf("%s   %s", $ifv['mac'], $ifv['up'] ? "(up)" : "");
+		$amenuitem[] = $menuitem;
+	}
+	$menuitem = array();
+	$menuitem['tag'] = "auto";
+	$menuitem['item'] = "Auto-detection";
+	$amenuitem[] = $menuitem;
+	$menuitem['tag'] = "none";
+	$menuitem['item'] = "None";
+	$amenuitem[] = $menuitem;
+	$result = tui_display_menu("Detected interfaces", $text, 70, 13, 5, $amenuitem, $optif[$i]);
+	if (0 != $result)
+		exit(0);
 
-EOD;
-
-	do {
-		echo "\nEnter the LAN interface name or 'a' for auto-detection: ";
-		$lanif = chop(fgets($fp));
-		if ($lanif === "") {
-			exit(0);
-		}
-
-		if ($lanif === "a")
-			$lanif = autodetect_interface("LAN", $fp);
-		else if (!array_key_exists($lanif, $iflist)) {
-			echo "\nInvalid interface name '{$lanif}'\n";
-			unset($lanif);
-			continue;
-		}
-	} while (!$lanif);
-
-	/* optional interfaces */
-	$i = 0;
-	$optif = array();
-
-	while (1) {
-		if ($optif[$i])
-			$i++;
-		$i1 = $i + 1;
-		echo "\nEnter the Optional {$i1} interface name or 'a' for auto-detection\n" .
-			"(or nothing if finished): ";
-		$optif[$i] = chop(fgets($fp));
-
-		if ($optif[$i]) {
-			if ($optif[$i] === "a") {
-				$ad = autodetect_interface("Optional " . $i1, $fp);
-				if ($ad)
-					$optif[$i] = $ad;
-				else
-					unset($optif[$i]);
-			} else if (!array_key_exists($optif[$i], $iflist)) {
-				echo "\nInvalid interface name '{$optif[$i]}'\n";
+	if (0 < strlen($optif[$i])) {
+		if ("auto" === $optif[$i]) {
+			$ad = autodetect_interface("Optional {$i1}");
+			if ($ad)
+				$optif[$i] = $ad;
+			else
 				unset($optif[$i]);
-				continue;
-			}
-		} else {
+		} else if ("none" === $optif[$i]) {
 			unset($optif[$i]);
 			break;
 		}
 	}
+}
 
-	/* check for double assignments */
-	$ifarr = array_merge(array($lanif, $wanif), $optif);
-
-	for ($i = 0; $i < (count($ifarr)-1); $i++) {
-		for ($j = ($i+1); $j < count($ifarr); $j++) {
-			if ($ifarr[$i] == $ifarr[$j]) {
-				echo <<<EOD
-
-Error: you can't assign the same interface name twice!
-
-EOD;
-
-				exit(0);
-			}
+// Check for double assignments.
+$ifarr = array_merge(array($lanif, $wanif), $optif);
+for ($i = 0; $i < (count($ifarr)-1); $i++) {
+	for ($j = ($i+1); $j < count($ifarr); $j++) {
+		if ($ifarr[$i] == $ifarr[$j]) {
+			$text = "You can't assign the same interface twice!";
+			tui_display_message("Error", $text, 46, 5);
+			exit(0);
 		}
 	}
+}
 
-	echo <<<EOD
-
+$text = <<<EOD
 The interfaces will be assigned as follows:
 
 LAN  -> {$lanif}
 
 EOD;
+for ($i = 0; $i < count($optif); $i++) {
+	$text .= "OPT" . ($i+1) . " -> {$optif[$i]}\n";
+}
+$text .= "\nDo you want to proceed?";
+$result = tui_display_yesno($text, 47, 10);
 
-	for ($i = 0; $i < count($optif); $i++)
-	{
-		echo "OPT" . ($i+1) . " -> " . $optif[$i] . "\n";
+if (0 == $result) {
+	$config['interfaces']['lan']['if'] = $lanif;
+	if (preg_match($g['wireless_regex'], $lanif)) {
+		if (!is_array($config['interfaces']['lan']['wireless']))
+			$config['interfaces']['lan']['wireless'] = array();
+	} else {
+		unset($config['interfaces']['lan']['wireless']);
 	}
 
-echo <<<EOD
+	for ($i = 0; $i < count($optif); $i++) {
+		if (!is_array($config['interfaces']['opt' . ($i+1)]))
+			$config['interfaces']['opt' . ($i+1)] = array();
 
-{$productname} will save and apply the changes.
+		$config['interfaces']['opt' . ($i+1)]['if'] = $optif[$i];
 
-Do you want to proceed? (y/n)
-EOD;
-
-
-	if (strcasecmp(chop(fgets($fp)), "y") == 0)
-	{
-
-		$config['interfaces']['lan']['if'] = $lanif;
-		if (preg_match($g['wireless_regex'], $lanif)) {
-			if (!is_array($config['interfaces']['lan']['wireless']))
-				$config['interfaces']['lan']['wireless'] = array();
-
-	}
-	else
-	{
-			unset($config['interfaces']['lan']['wireless']);
-	}
-
-		for ($i = 0; $i < count($optif); $i++) {
-			if (!is_array($config['interfaces']['opt' . ($i+1)]))
-				$config['interfaces']['opt' . ($i+1)] = array();
-
-			$config['interfaces']['opt' . ($i+1)]['if'] = $optif[$i];
-
-			/* wireless interface? */
-			if (preg_match($g['wireless_regex'], $optif[$i])) {
-				if (!is_array($config['interfaces']['opt' . ($i+1)]['wireless']))
-					$config['interfaces']['opt' . ($i+1)]['wireless'] = array();
-			} else {
-				unset($config['interfaces']['opt' . ($i+1)]['wireless']);
-			}
-
-			unset($config['interfaces']['opt' . ($i+1)]['enable']);
-			$config['interfaces']['opt' . ($i+1)]['descr'] = "OPT" . ($i+1);
+		// Wireless interface?
+		if (preg_match($g['wireless_regex'], $optif[$i])) {
+			if (!is_array($config['interfaces']['opt' . ($i+1)]['wireless']))
+				$config['interfaces']['opt' . ($i+1)]['wireless'] = array();
+		} else {
+			unset($config['interfaces']['opt' . ($i+1)]['wireless']);
 		}
 
-		/* remove all other (old) optional interfaces */
-		for (; isset($config['interfaces']['opt' . ($i+1)]); $i++)
-			unset($config['interfaces']['opt' . ($i+1)]);
+		unset($config['interfaces']['opt' . ($i+1)]['enable']);
+		$config['interfaces']['opt' . ($i+1)]['descr'] = "OPT" . ($i+1);
+	}
 
-		write_config();
+	// Remove all other (old) optional interfaces.
+	for (; isset($config['interfaces']['opt' . ($i+1)]); $i++)
+		unset($config['interfaces']['opt' . ($i+1)]);
 
-		interfaces_lan_configure();
+	write_config();
+
+	// Initialize interface.
+	write_console("Initializing interface. Please wait...");
+	interfaces_lan_configure();
 }
 
-function autodetect_interface($ifname, $fp) {
-		$iflist_prev = get_interface_list();
-		echo <<<EOD
+function autodetect_interface($ifname) {
+	$iflist_pre = get_interface_list();
 
-Connect the {$ifname} interface now and make sure that the link is up.
-Then press ENTER to continue.
-
+	$text = <<<EOD
+Connect the {$ifname} interface now and make sure that
+the link is up.
+Press OK to continue.
 EOD;
-		fgets($fp);
-		$iflist = get_interface_list();
+	tui_display_message("", $text, 52, 7);
 
-		foreach ($iflist_prev as $ifn => $ifa) {
-			if (!$ifa['up'] && $iflist[$ifn]['up']) {
-				echo "Detected link-up on interface {$ifn}.\n";
-				return $ifn;
-			}
+	$iflist_post = get_interface_list();
+	foreach ($iflist_pre as $ifn => $ifa) {
+		if (!$ifa['up'] && $iflist_post[$ifn]['up']) {
+			tui_display_message("", "Detected link-up on interface {$ifn}.", 44, 5);
+			return $ifn;
 		}
-
-		echo "No link-up detected.\n";
-
-		return null;
 	}
 
+	tui_display_message("", "No link-up detected.", 24, 5);
+
+	return "";
+}
 ?>
