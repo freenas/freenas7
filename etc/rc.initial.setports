@@ -68,7 +68,7 @@ while (1) {
 	if ($optif[$i])
 		$i++;
 	$i1 = $i + 1;
-	$text = "Select the Optional {$i1} interface name, auto-detection or none to finish";
+	$text = "Select the Optional {$i1} interface name, auto-detection or none to finish configuration.";
 	$amenuitem = array();
 	foreach ($iflist as $ifk => $ifv) {
 		$menuitem = array();
