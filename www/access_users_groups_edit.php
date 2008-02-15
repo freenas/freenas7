@@ -75,8 +75,8 @@ if ($_POST) {
 	}
 
 	// Check for name conflicts. Only check if group is created.
-	if (!isset($id) && (is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system) ||
-		false !== array_search_ex($_POST['name'], $a_group, "name"))) {
+	if ((is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system)) ||
+		(false !== array_search_ex($_POST['name'], $a_group, "name"))) {
 		$input_errors[] = gettext("This group already exists in the group list.");
 	}
 
@@ -153,21 +153,21 @@ function get_nextgroup_id() {
 		      <tr>
 		        <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 		        <td width="78%" class="vtable">
-		          <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly";?>><br>
+		          <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>"><br/>
 							<span class="vexpl"><?=gettext("Group name.");?></span>
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Group ID");?></td>
 						<td width="78%" class="vtable">
-							<input name="groupid" type="text" class="formfld" id="groupid" size="20" value="<?=htmlspecialchars($pconfig['groupid']);?>" <?php if (isset($id)) echo "readonly";?>></br>
+							<input name="groupid" type="text" class="formfld" id="groupid" size="20" value="<?=htmlspecialchars($pconfig['groupid']);?>" <?php if (isset($id)) echo "readonly";?>><br/>
 							<span class="vexpl"><?=gettext("Unique group numeric id.");?></span>
 						</td>
 					</tr>
 					<tr>
 		        <td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
 		        <td width="78%" class="vtable">
-		          <input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"><br>
+		          <input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>"><br/>
 							<span class="vexpl"><?=gettext("Group description.");?></span>
 						</td>
 					</tr>
