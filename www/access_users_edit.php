@@ -184,7 +184,7 @@ function get_nextuser_id() {
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Login");?></td>
             <td width="78%" class="vtable">
               <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>"><br/>
-							<span class="vexpl"><?=gettext("Unique login name of user.");?></span>
+							<span class="vexpl"><?=gettext("Login name of user.");?></span>
             </td>
 	       </tr>
 	       <tr>
@@ -206,7 +206,7 @@ function get_nextuser_id() {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("User ID");?></td>
 						<td width="78%" class="vtable">
 							<input name="userid" type="text" class="formfld" id="userid" size="20" value="<?=htmlspecialchars($pconfig['userid']);?>" <?php if (isset($id)) echo "readonly";?>><br/>
-							<span class="vexpl"><?=gettext("Unique user numeric id.");?></span>
+							<span class="vexpl"><?=gettext("User numeric id.");?></span>
 						</td>
 					</tr>
           <tr>

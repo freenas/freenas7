@@ -161,7 +161,7 @@ function get_nextgroup_id() {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Group ID");?></td>
 						<td width="78%" class="vtable">
 							<input name="groupid" type="text" class="formfld" id="groupid" size="20" value="<?=htmlspecialchars($pconfig['groupid']);?>" <?php if (isset($id)) echo "readonly";?>><br/>
-							<span class="vexpl"><?=gettext("Unique group numeric id.");?></span>
+							<span class="vexpl"><?=gettext("Group numeric id.");?></span>
 						</td>
 					</tr>
 					<tr>
