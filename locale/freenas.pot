@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-02-11 17:29+0000\n"
+"PO-Revision-Date: 2008-02-15 14:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -1023,9 +1023,6 @@ msgstr ""
 msgid "Execute command pre or post system initialization (booting) or before system shutdown."
 msgstr ""
 
-msgid "Exports"
-msgstr ""
-
 msgid "Extensions"
 msgstr ""
 
@@ -1199,6 +1196,9 @@ msgid "Group description."
 msgstr ""
 
 msgid "Group name."
+msgstr ""
+
+msgid "Group numeric id."
 msgstr ""
 
 msgid "Group suffix"
@@ -1519,6 +1519,9 @@ msgstr ""
 msgid "Login"
 msgstr ""
 
+msgid "Login name of user."
+msgstr ""
+
 msgid "Logs"
 msgstr ""
 
@@ -1761,6 +1764,9 @@ msgid "Number of log entries to show"
 msgstr ""
 
 msgid "Number of log entries to show must be between 5 and 1000."
+msgstr ""
+
+msgid "Number of servers"
 msgstr ""
 
 msgid "OK"
@@ -2308,6 +2314,9 @@ msgstr ""
 msgid "Space Used"
 msgstr ""
 
+msgid "Specifies how many servers to create."
+msgstr ""
+
 msgid "Specifies that the file system should be exported read-only."
 msgstr ""
 
@@ -2759,6 +2768,9 @@ msgstr ""
 msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr ""
 
+msgid "There should be enough to handle the maximum level of concurrency from its clients, typically four to six."
+msgstr ""
+
 msgid "These commands will be executed pre or post system initialization (booting) or before system shutdown."
 msgstr ""
 
@@ -2959,15 +2971,6 @@ msgstr ""
 msgid "Uninstall package"
 msgstr ""
 
-msgid "Unique group numeric id."
-msgstr ""
-
-msgid "Unique login name of user."
-msgstr ""
-
-msgid "Unique user numeric id."
-msgstr ""
-
 msgid "Unison"
 msgstr ""
 
@@ -3044,6 +3047,9 @@ msgid "User ID"
 msgstr ""
 
 msgid "User full name."
+msgstr ""
+
+msgid "User numeric id."
 msgstr ""
 
 msgid "User password."
