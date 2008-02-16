@@ -98,15 +98,17 @@ if ($_GET['act'] == "del") {
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
 						<td width="20%" class="listhdrr"><?=gettext("User");?></td>
-						<td width="50%" class="listhdrr"><?=gettext("Full Name");?></td>
-						<td width="20%" class="listhdrr"><?=gettext("Group");?></td>
+						<td width="35%" class="listhdrr"><?=gettext("Full Name");?></td>
+						<td width="5%" class="listhdrr"><?=gettext("UID");?></td>
+						<td width="30%" class="listhdrr"><?=gettext("Group");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-					<?php $i = 0; foreach ($a_user as $user):?>
+					<?php $i = 0; foreach ($a_user as $userv):?>
 					<tr>
-						<td class="listlr"><?=htmlspecialchars($user['login']);?>&nbsp;</td>
-						<td class="listr"><?=htmlspecialchars($user['fullname']);?>&nbsp;</td>
-						<td class="listbg"><?=array_search($user['primarygroup'], $a_group);?>&nbsp;</td>
+						<td class="listlr"><?=htmlspecialchars($userv['login']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($userv['fullname']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($userv['id']);?>&nbsp;</td>
+						<td class="listr"><?=array_search($userv['primarygroup'], $a_group);?>&nbsp;</td>
 						<td valign="middle" nowrap class="list">
 							<a href="access_users_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit user");?>" width="17" height="17" border="0"></a>&nbsp;
 							<a href="access_users.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this user?");?>')"><img src="x.gif" title="<?=gettext("Delete user");?>" width="17" height="17" border="0"></a>
@@ -114,7 +116,7 @@ if ($_GET['act'] == "del") {
 					</tr>
 					<?php $i++; endforeach;?>
 					<tr>
-						<td class="list" colspan="3"></td>
+						<td class="list" colspan="4"></td>
 						<td class="list">
 							<a href="access_users_edit.php"><img src="plus.gif" title="<?=gettext("Add user");?>" width="17" height="17" border="0"></a>
 						</td>
