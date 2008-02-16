@@ -70,25 +70,21 @@ function interfaces_lan_configure()
 		mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " link " . escapeshellarg($lancfg['spoofmac']), true);
 	}
 
-	/* media */
-	if ($lancfg['media'] || $lancfg['mediaopt'] || isset($lancfg['polling']) || $lancfg['mtu'] ) 	{
-		$cmd = "/sbin/ifconfig " . escapeshellarg($lanif);
-
-		$cmd .= " media " . escapeshellarg($lancfg['media']);
-		if (0 != strcmp($lancfg['media'], "autoselect")) {
-			$cmd .= " mediaopt " . escapeshellarg($lancfg['mediaopt']);
-		}
-
-		if (isset($lancfg['polling'])) {
-			$cmd .= " polling";
-		}
-
-		if ($lancfg['mtu']) {
-			$cmd .= " mtu ". escapeshellarg($lancfg['mtu']);
-		}
-
-		mwexec($cmd, true);
+	/* Default configuration. */
+	$cmd = "/sbin/ifconfig " . escapeshellarg($lanif) . " media " . escapeshellarg($lancfg['media']);
+	if (0 != strcmp($lancfg['media'], "autoselect")) {
+		$cmd .= " mediaopt " . escapeshellarg($lancfg['mediaopt']);
 	}
+	if (isset($lancfg['polling'])) {
+		$cmd .= " polling";
+	}
+	if ($lancfg['mtu']) {
+		$cmd .= " mtu ". escapeshellarg($lancfg['mtu']);
+	}
+	if (false !== strpos($lanif, "fxp")) {
+		$cmd .= " link0";
+	}
+	mwexec($cmd, true);
 
 	switch ($lancfg['ipaddr']) {
 		case 'dhcp':
@@ -220,25 +216,21 @@ function interfaces_optional_configure_if($opti)
 		if ($optcfg['spoofmac'])
 			mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " link " . escapeshellarg($optcfg['spoofmac']), true);
 
-		/* media */
-		if ($optcfg['media'] || $optcfg['mediaopt'] || isset($optcfg['polling']) || $optcfg['mtu']) {
-			$cmd = "/sbin/ifconfig " . escapeshellarg($optcfg['if']);
-
-			$cmd .= " media " . escapeshellarg($optcfg['media']);
-			if (0 != strcmp($optcfg['media'], "autoselect")) {
-				$cmd .= " mediaopt " . escapeshellarg($optcfg['mediaopt']);
-			}
-
-			if (isset($optcfg['polling'])) {
-				$cmd .= " polling";
-			}
-
-			if ($optcfg['mtu']) {
-				$cmd .= " mtu ". escapeshellarg($optcfg['mtu']);
-			}
-
-			mwexec($cmd, true);
+		/* Default configuration. */
+		$cmd = "/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " media " . escapeshellarg($optcfg['media']);
+		if (0 != strcmp($optcfg['media'], "autoselect")) {
+			$cmd .= " mediaopt " . escapeshellarg($optcfg['mediaopt']);
 		}
+		if (isset($optcfg['polling'])) {
+			$cmd .= " polling";
+		}
+		if ($optcfg['mtu']) {
+			$cmd .= " mtu ". escapeshellarg($optcfg['mtu']);
+		}
+		if (false !== strpos($optcfg['if'], "fxp")) {
+			$cmd .= " link0";
+		}
+		mwexec($cmd, true);
 
 		switch ($optcfg['ipaddr']) {
 			case 'dhcp':
@@ -246,11 +238,7 @@ function interfaces_optional_configure_if($opti)
 				break;
 
 			default:
-				$addflags = "";
-				if (strpos($optcfg['if'], "fxp") !== false) {
-					$addflags .= " link0";
-				}
-				mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " " . escapeshellarg($optcfg['ipaddr'] . "/" . $optcfg['subnet']) . $addflags);
+				mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " " . escapeshellarg($optcfg['ipaddr'] . "/" . $optcfg['subnet']));
 				break;
 		}
 
