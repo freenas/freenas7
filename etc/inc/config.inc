@@ -1233,6 +1233,15 @@ function config_upgrade() {
 		$config['version'] = "4.4";
 	}
 
+	/* Convert 4.4 -> 4.5 */
+	/* Add attribute //interfaces/lan/media. */
+	if ($config['version'] === "4.4") {
+		if (empty($config['interfaces']['lan']['media']))
+			$config['interfaces']['lan']['media'] = "autoselect";
+
+		$config['version'] = "4.5";
+	}
+
 	write_config();
 
 	if (is_booting())

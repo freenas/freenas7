@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>4.4</version>
+	<version>4.5</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -67,7 +67,7 @@
 			<subnet>24</subnet>
 			<ipv6addr>auto</ipv6addr>
 			<ipv6subnet>64</ipv6subnet>
-			<media/>
+			<media>autoselect</media>
 			<mediaopt/>
 			<!--
 			<mtu>1500</mtu>
