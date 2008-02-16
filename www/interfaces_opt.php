@@ -5,7 +5,7 @@
 	part of FreeNAS (http://www.freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
 	
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 	
 	Redistribution and use in source and binary forms, with or without
@@ -188,6 +188,7 @@ function enable_change(enable_over) {
 
 	type_change();
 	ipv6_type_change();
+	media_change();
 }
 
 function bridge_change(enable_over) {
@@ -264,6 +265,7 @@ function type_change() {
       break;
   }
 }
+
 function ipv6_type_change() {
   switch(document.iform.ipv6type.selectedIndex)
   {
@@ -283,6 +285,18 @@ function ipv6_type_change() {
 		  document.iform.ipv6subnet.disabled = 1;
 
       break;
+  }
+}
+
+function media_change() {
+  switch(document.iform.media.value) {
+		case "autoselect":
+			showElementById('mediaopt_tr','hide');
+			break;
+
+		default:
+			showElementById('mediaopt_tr','show');
+			break;
   }
 }
 // -->
@@ -401,7 +415,7 @@ function ipv6_type_change() {
 			                 <tr> 
 			                  <td width="22%" valign="top" class="vncell"><?=gettext("Speed"); ?></td>
 			                  <td width="78%" class="vtable">
-													<select name="media" class="formfld" id="media">
+													<select name="media" class="formfld" id="media" onchange="media_change()">
 			                      <?php $types = explode(",", "autoselect,10baseT/UTP,100baseTX,1000baseTX,1000baseSX");
 								        $vals = explode(" ", "autoselect 10baseT/UTP 100baseTX 1000baseTX 1000baseSX");
 								  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
@@ -411,7 +425,7 @@ function ipv6_type_change() {
 			                      <?php endfor; ?>
 			                    </select></td>
 											</tr>
-											<tr> 
+											<tr id="mediaopt_tr">
 			                  <td width="22%" valign="top" class="vncell"><?=gettext("Duplex"); ?></td>
 			                  <td width="78%" class="vtable">
 													<select name="mediaopt" class="formfld" id="mediaopt">
