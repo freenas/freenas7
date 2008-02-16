@@ -347,7 +347,10 @@ usr/bin/uudecode:usr/bin/b64decode
 usr/bin/install
 
 ## basename, dirname -- return filename or directory portion of pathname
-usr/bin/basename:usr/bin/dirname
+usr/bin/basename
+
+## basename, dirname -- return filename or directory portion of pathname
+usr/bin/dirname
 
 ## tee -- pipe fitting
 usr/bin/tee
@@ -369,6 +372,9 @@ usr/bin/login
 
 ## nice -- execute a utility at an altered scheduling priority
 usr/bin/nice
+
+## getent -- get entries from administrative database
+usr/bin/getent
 
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
