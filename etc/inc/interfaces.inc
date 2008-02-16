@@ -37,13 +37,12 @@ require_once("rc.inc");
 function interfaces_loopback_configure()
 {
 	mwexec("/sbin/ifconfig lo0 127.0.0.1");
-
 	return 0;
 }
 
 function interfaces_lan_configure()
 {
-	global $config, $g;
+	global $config;
 
 	$result = 0;
 
@@ -53,24 +52,20 @@ function interfaces_lan_configure()
 	$lancfg = $config['interfaces']['lan'];
 	$lanif = $config['interfaces']['lan']['if'];
 
-	if (strcmp($lanif,"auto") == 0) {
+	// Get interface name.
+	if (0 == strcmp($lanif, "auto")) {
 		$lanif = get_ifname($lanif);
 		if (is_booting()) {
-			write_console("using interface $lanif\n");
+			write_console("Using interface {$lanif}\n");
 		}
 	}
 
-	/* Wireless configuration? */
+	// Wireless configuration?
 	if (is_array($lancfg['wireless'])) {
 		interfaces_wireless_configure($lanif, $lancfg['wireless']);
 	}
 
-	/* MAC spoofing? */
-	if ($lancfg['spoofmac']) {
-		mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " link " . escapeshellarg($lancfg['spoofmac']), true);
-	}
-
-	/* Default configuration. */
+	// Default configuration.
 	$cmd = "/sbin/ifconfig " . escapeshellarg($lanif) . " media " . escapeshellarg($lancfg['media']);
 	if (0 != strcmp($lancfg['media'], "autoselect")) {
 		$cmd .= " mediaopt " . escapeshellarg($lancfg['mediaopt']);
@@ -94,7 +89,7 @@ function interfaces_lan_configure()
 		default:
 			mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " " . escapeshellarg($lancfg['ipaddr'] . "/" . $lancfg['subnet']));
 
-			/* install default route */
+			// Install default route.
 			if ($lancfg['gateway']) {
 				mwexec("/sbin/route delete default");
 				mwexec("/sbin/route add default " . escapeshellarg($lancfg['gateway']));
@@ -102,12 +97,12 @@ function interfaces_lan_configure()
 			break;
 	}
 
-	/* IPv6: disallow "internal" addresses to appear on the wire. */
-	/* These two line are taken from /etc/rc.d/network_ipv6 script. */
+	// IPv6: disallow "internal" addresses to appear on the wire.
+	// These two line are taken from /etc/rc.d/network_ipv6 script.
 	mwexec("/sbin/route add -inet6 ::ffff:0.0.0.0 -prefixlen 96 ::1 -reject");
 	mwexec("/sbin/route add -inet6 ::0.0.0.0 -prefixlen 96 ::1 -reject");
 
-	/* Disable IPv6 forwarding (should already be done). */
+	// Disable IPv6 forwarding (should already be done).
 	mwexec("/sbin/sysctl net.inet6.ip6.forwarding=0");
 
 	switch ($lancfg['ipv6addr']) {
@@ -118,7 +113,7 @@ function interfaces_lan_configure()
 		default:
 			mwexec("/sbin/ifconfig " . escapeshellarg($lanif) . " inet6 alias " . escapeshellarg($lancfg['ipv6addr'] . "/" . $lancfg['ipv6subnet']));
 
-			/* install default route */
+			// Install default route.
 			if ($lancfg['ipv6gateway']) {
 				mwexec("/sbin/route delete -inet6 default");
 				mwexec("/sbin/route add -inet6 default " . escapeshellarg($lancfg['ipv6gateway']));
@@ -126,7 +121,7 @@ function interfaces_lan_configure()
 			break;
 	}
 
-	/* install multicast route (for uPnP)*/
+	// Install multicast route (for UPnP).
 	mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($lanif));
 
 	if (!is_booting()) {
@@ -149,11 +144,11 @@ function interfaces_lan_configure()
 		$result |= rc_restart_service("pureftpd");
 
 		/* Restart NFS */
-		$retval |= rc_update_service("rpcbind"); // !!! Do
-		$retval |= rc_update_service("mountd");  // !!! not
-		$retval |= rc_update_service("nfsd");    // !!! change
-		$retval |= rc_update_service("statd");   // !!! this
-		$retval |= rc_update_service("lockd");   // !!! order
+		$result |= rc_update_service("rpcbind"); // !!! Do
+		$result |= rc_update_service("mountd");  // !!! not
+		$result |= rc_update_service("nfsd");    // !!! change
+		$result |= rc_update_service("statd");   // !!! this
+		$result |= rc_update_service("lockd");   // !!! order
 
 		/* Restart AFP */
 		$result |= rc_restart_service("afpd");
@@ -176,10 +171,7 @@ function interfaces_lan_configure()
 
 function interfaces_optional_configure()
 {
-	global $config, $g;
-
-	/* Reset bridge configuration.	Interfaces will add to it. */
-	$bridgeconfig = "";
+	global $config;
 
 	for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 		interfaces_optional_configure_if($i);
@@ -195,8 +187,7 @@ function interfaces_optional_configure()
 
 function interfaces_optional_configure_if($opti)
 {
-	global $config, $g;
-	global $bridgeconfig;
+	global $config;
 
 	$optcfg = $config['interfaces']['opt' . $opti];
 
@@ -211,10 +202,6 @@ function interfaces_optional_configure_if($opti)
 		/* wireless configuration? */
 		if (is_array($optcfg['wireless']))
 			interfaces_wireless_configure($optcfg['if'], $optcfg['wireless']);
-
-		/* MAC spoofing? */
-		if ($optcfg['spoofmac'])
-			mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " link " . escapeshellarg($optcfg['spoofmac']), true);
 
 		/* Default configuration. */
 		$cmd = "/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " media " . escapeshellarg($optcfg['media']);
@@ -242,7 +229,7 @@ function interfaces_optional_configure_if($opti)
 				break;
 		}
 
-		/* install multicast route */
+		// Install multicast route.
 		mwexec("/sbin/route add -net 224.0.0.0 -interface " . escapeshellarg($optcfg['if']));
 	} else 	{
 		mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " delete down");
@@ -256,7 +243,7 @@ function interfaces_optional_configure_if($opti)
 		default:
 			mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " inet6 alias " . escapeshellarg($optcfg['ipv6addr'] . "/" . $optcfg['ipv6subnet']));
 
-			/* install default route */
+			// Install default route.
 			if ($optcfg['ipv6gateway']) {
 				mwexec("/sbin/route delete -inet6 default");
 				mwexec("/sbin/route add -inet6 default " . escapeshellarg($optcfg['ipv6gateway']));
@@ -269,7 +256,7 @@ function interfaces_optional_configure_if($opti)
 
 function interfaces_wireless_configure($if, $wlcfg)
 {
-	global $config, $g;
+	global $config;
 
 	/* wireless configuration */
 	$ifcargs = escapeshellarg($if) .
@@ -342,7 +329,7 @@ function interfaces_dhcp_configure($if)
     /* generate dhclient.conf */
     $fd = fopen("{$g['varetc_path']}/dhclient_{$if}.conf", "w");
     if (!$fd) {
-        printf("Error: Cannot open dhclient_{$if}.conf in interfaces_dhcp_configure().\n");
+        write_console("Error: Cannot open dhclient_{$if}.conf in interfaces_dhcp_configure().\n");
         return 1;
     }
 
@@ -361,9 +348,8 @@ EOD;
     fwrite($fd, $dhclientconf);
     fclose($fd);
 
-    /* fire up dhclient */
-    mwexec("/sbin/dhclient -c {$g['varetc_path']}/dhclient_{$if}.conf " .
-        escapeshellarg($if));
+    // Fire up dhclient.
+    mwexec("/sbin/dhclient -c {$g['varetc_path']}/dhclient_{$if}.conf " . escapeshellarg($if));
 
     return 0;
 }
