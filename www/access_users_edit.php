@@ -67,9 +67,9 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	$reqdfields = explode(" ", "login fullname primarygroup");
-	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Primary Group"));
-	$reqdfieldst = explode(" ", "string string numeric");
+	$reqdfields = explode(" ", "login fullname primarygroup userid");
+	$reqdfieldsn = array(gettext("Login"),gettext("Full Name"),gettext("Primary Group"),gettext("User ID"));
+	$reqdfieldst = explode(" ", "string string numeric numeric");
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -89,8 +89,8 @@ if ($_POST) {
 	}
 
 	// Check for name conflicts. Only check if user is created.
-	if ((is_array($a_user_system) && array_key_exists($_POST['login'], $a_user_system)) ||
-		(false !== array_search_ex($_POST['login'], $a_user, "login"))) {
+	if (!isset($id) && ((is_array($a_user_system) && array_key_exists($_POST['login'], $a_user_system)) ||
+		(false !== array_search_ex($_POST['login'], $a_user, "login")))) {
 		$input_errors[] = gettext("This user already exists in the user list.");
 	}
 
@@ -178,7 +178,7 @@ function get_nextuser_id() {
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Login");?></td>
             <td width="78%" class="vtable">
-              <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>"><br/>
+              <input name="login" type="text" class="formfld" id="login" size="20" value="<?=htmlspecialchars($pconfig['login']);?>" <?php if (isset($id)) echo "readonly";?>><br/>
 							<span class="vexpl"><?=gettext("Login name of user.");?></span>
             </td>
 	       </tr>

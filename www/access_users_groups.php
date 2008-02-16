@@ -93,14 +93,16 @@ if ($_GET['act'] == "del") {
 				<?php endif;?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="30%" class="listhdrr"><?=gettext("Group");?></td>
-						<td width="60%" class="listhdrr"><?=gettext("Description");?></td>
+						<td width="45%" class="listhdrr"><?=gettext("Group");?></td>
+						<td width="5%" class="listhdrr"><?=gettext("GID");?></td>
+						<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-					<?php $i = 0; foreach ($a_group_conf as $group):?>
+					<?php $i = 0; foreach ($a_group_conf as $groupv):?>
 					<tr>
-						<td class="listlr"><?=htmlspecialchars($group['name']);?>&nbsp;</td>
-						<td class="listr"><?=htmlspecialchars($group['desc']);?>&nbsp;</td>
+						<td class="listlr"><?=htmlspecialchars($groupv['name']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($groupv['id']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($groupv['desc']);?>&nbsp;</td>
 						<td valign="middle" nowrap class="list">
 							<a href="access_users_groups_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit group");?>" width="17" height="17" border="0"></a>&nbsp;
 							<a href="access_users_groups.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this group?");?>')"><img src="x.gif" title="<?=gettext("Delete group");?>" width="17" height="17" border="0"></a>
@@ -111,11 +113,12 @@ if ($_GET['act'] == "del") {
 					<?php if (false !== array_search_ex($groupv, $a_group_conf, "id")) continue; // Do not display user defined groups twice. ?>
 					<tr>
 						<td class="listlr"><?=$groupk;?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($groupv['id']);?>&nbsp;</td>
 						<td class="listr"><?=gettext("System");?>&nbsp;</td>
 					</tr>
 					<?php endforeach;?>
 					<tr>
-						<td class="list" colspan="2"></td>
+						<td class="list" colspan="3"></td>
 						<td class="list">
 							<a href="access_users_groups_edit.php"><img src="plus.gif" title="<?=gettext("Add group");?>" width="17" height="17" border="0"></a>
 						</td>

@@ -62,9 +62,12 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	$reqdfields = explode(" ", "name desc");
-	$reqdfieldsn = array(gettext("Name"),gettext("Description"));
+	$reqdfields = explode(" ", "name desc groupid");
+	$reqdfieldsn = array(gettext("Name"),gettext("Description"),gettext("Group ID"));
+	$reqdfieldst = explode(" ", "string string numeric");
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	if (($_POST['name'] && !is_domain($_POST['name']))) {
 		$input_errors[] = gettext("The group name contains invalid characters.");
@@ -75,8 +78,8 @@ if ($_POST) {
 	}
 
 	// Check for name conflicts. Only check if group is created.
-	if ((is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system)) ||
-		(false !== array_search_ex($_POST['name'], $a_group, "name"))) {
+	if (!isset($id) && ((is_array($a_group_system) && array_key_exists($_POST['name'], $a_group_system)) ||
+		(false !== array_search_ex($_POST['name'], $a_group, "name")))) {
 		$input_errors[] = gettext("This group already exists in the group list.");
 	}
 
@@ -148,7 +151,7 @@ function get_nextgroup_id() {
 		      <tr>
 		        <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 		        <td width="78%" class="vtable">
-		          <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>"><br/>
+		          <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly";?>><br/>
 							<span class="vexpl"><?=gettext("Group name.");?></span>
 						</td>
 					</tr>
