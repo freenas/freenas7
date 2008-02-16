@@ -104,11 +104,6 @@ if ($_POST) {
 		$input_errors[] = gettext("Primary group is also selected in additional group.");
 	}
 
-	// Validate ID range. Only check if user is created.
-	if (!isset($id) && (intval($_POST['userid']) < 1001)) {
-		$input_errors[] = gettext("The user ID must be > 1001.");
-	}
-
 	// Validate if ID is unique. Only check if user is created.
 	if (!isset($id) && (false !== array_search_ex($_POST['userid'], $a_user, "id"))) {
 		$input_errors[] = gettext("The unique user ID is already used.");
@@ -158,7 +153,7 @@ function get_nextuser_id() {
 	if (false !== array_search_ex(strval($id), $a_user, "id")) {
 		do {
 			$id++; // Increase id until a unused one is found.
-		} while (false !== array_search_ex(strval($id), $a_user, "id")); 
+		} while (false !== array_search_ex(strval($id), $a_user, "id"));
 	}
 
 	return $id;
