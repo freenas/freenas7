@@ -71,7 +71,7 @@ function interfaces_lan_configure()
 	}
 
 	/* media */
-	if ($lancfg['media'] || $lancfg['mediaopt'] || $lancfg['polling'] || $lancfg['mtu'] ) 	{
+	if ($lancfg['media'] || $lancfg['mediaopt'] || isset($lancfg['polling']) || $lancfg['mtu'] ) 	{
 		$cmd = "/sbin/ifconfig " . escapeshellarg($lanif);
 
 		// If not in autoselect mode, force it:
@@ -80,7 +80,7 @@ function interfaces_lan_configure()
 			$cmd .= " mediaopt " . escapeshellarg($lancfg['mediaopt']);
 		}
 
-		if ($lancfg['polling']) {
+		if (isset($lancfg['polling'])) {
 			$cmd .= " polling";
 		}
 
@@ -222,7 +222,7 @@ function interfaces_optional_configure_if($opti)
 			mwexec("/sbin/ifconfig " . escapeshellarg($optcfg['if']) . " link " . escapeshellarg($optcfg['spoofmac']), true);
 
 		/* media */
-		if ($optcfg['media'] || $optcfg['mediaopt'] || $optcfg['polling'] || $optcfg['mtu']) {
+		if ($optcfg['media'] || $optcfg['mediaopt'] || isset($optcfg['polling']) || $optcfg['mtu']) {
 			$cmd = "/sbin/ifconfig " . escapeshellarg($optcfg['if']);
 
 			// If not in autoselect mode, force it:
@@ -231,7 +231,7 @@ function interfaces_optional_configure_if($opti)
 				$cmd .= " mediaopt " . escapeshellarg($optcfg['mediaopt']);
 			}
 
-			if ($optcfg['polling']) {
+			if (isset($optcfg['polling'])) {
 				$cmd .= " polling";
 			}
 
