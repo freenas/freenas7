@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: smbpasswd
@@ -25,8 +25,11 @@ while [ ${_usernum} -gt 0 ]
 do
 	_username=`configxml_get "//access/user[position()=${_usernum}]/login"`
 	_password=`configxml_get "//access/user[position()=${_usernum}]/password"`
+	_uid=`configxml_get "//access/user[position()=${_usernum}]/id"`
 
-	(/bin/echo "${_password}"; /bin/echo "${_password}") | ${command} -s -a "${_username}" > /dev/null
+	if [ ${_uid} -ge 1001 ]; then
+		(/bin/echo "${_password}"; /bin/echo "${_password}") | ${command} -s -a "${_username}" > /dev/null
+	fi
 
 	_usernum=$(( ${_usernum} - 1 ))
 done

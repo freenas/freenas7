@@ -75,6 +75,7 @@ Minors changes:
 - Enable user to modify user/group ID when creating a new user/group.
 - Add /usr/bin/getent.
 - Remove /usr/bin/dirname link to basename and add original application. Thanks to Lars Köller.
+- Only create SMB/CIFS users with uid >= 1001. Thanks to Lars Köller.
 
 Bug fixs:
 - Calculating iSCSI extent IDs fails for numbers > 10.
