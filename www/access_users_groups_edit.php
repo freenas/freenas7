@@ -80,11 +80,6 @@ if ($_POST) {
 		$input_errors[] = gettext("This group already exists in the group list.");
 	}
 
-	// Validate ID range. Only check if group is created.
-	if (!isset($id) && (intval($_POST['groupid']) < 1001)) {
-		$input_errors[] = gettext("The group ID must be > 1001.");
-	}
-
 	// Validate if ID is unique. Only check if user is created.
 	if (!isset($id) && (false !== array_search_ex($_POST['groupid'], $a_group, "id"))) {
 		$input_errors[] = gettext("The unique group ID is already used.");
@@ -129,7 +124,7 @@ function get_nextgroup_id() {
 	if (false !== array_search_ex(strval($id), $a_group, "id")) {
 		do {
 			$id++; // Increase id until a unused one is found.
-		} while (false !== array_search_ex(strval($id), $a_group, "id")); 
+		} while (false !== array_search_ex(strval($id), $a_group, "id"));
 	}
 
 	return $id;
