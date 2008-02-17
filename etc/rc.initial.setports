@@ -68,7 +68,7 @@ while (1) {
 	if ($optif[$i])
 		$i++;
 	$i1 = $i + 1;
-	$text = "Select the Optional {$i1} interface name, auto-detection or none to finish configuration.";
+	$text = "Select the optional OPT{$i1} interface name, auto-detection or none to finish configuration.";
 	$amenuitem = array();
 	foreach ($iflist as $ifk => $ifv) {
 		$menuitem = array();
@@ -81,7 +81,7 @@ while (1) {
 	$menuitem['item'] = "Auto-detection";
 	$amenuitem[] = $menuitem;
 	$menuitem['tag'] = "none";
-	$menuitem['item'] = "None";
+	$menuitem['item'] = "Finish and exit configuration";
 	$amenuitem[] = $menuitem;
 	$result = tui_display_menu("Detected interfaces", $text, 70, 13, 5, $amenuitem, $optif[$i]);
 	if (0 != $result)
@@ -89,7 +89,7 @@ while (1) {
 
 	if (0 < strlen($optif[$i])) {
 		if ("auto" === $optif[$i]) {
-			$ad = autodetect_interface("Optional {$i1}");
+			$ad = autodetect_interface("optional OPT{$i1}");
 			if ($ad)
 				$optif[$i] = $ad;
 			else
@@ -167,8 +167,8 @@ function autodetect_interface($ifname) {
 	$iflist_pre = get_interface_list();
 
 	$text = <<<EOD
-Connect the {$ifname} interface now and make sure that
-the link is up.
+Connect the {$ifname} interface now and make
+sure that the link is up.
 Press OK to continue.
 EOD;
 	tui_display_message("", $text, 52, 7);
