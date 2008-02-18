@@ -49,7 +49,7 @@ FREENAS_MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
 FREENAS_MFSROOT_SIZE="54"
 
 # IMG media size in 512 bytes sectors. It includes the zipped MFS root
-# filesystem image plus bootloader and kernel. ( 49254400 bytes => 25MB)
+# filesystem image plus bootloader and kernel (51200 sectors => 26214400 bytes => 25MB).
 if [ $FREENAS_ARCH == "amd64" ]; then
 	echo "AMD arch detected, increasing the Size of MFS Root file"
 	FREENAS_IMG_SIZE=57344
