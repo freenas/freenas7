@@ -60,6 +60,7 @@ Majors changes:
 - Add NFS share configuration support. Allow configuration of NFS server processes.
 - Upgrade netbsd-iscsi (iscsi-target) to 20080207.
 - Upgrade fusefs-ntfs to 1.2129.
+- Upgrade e2fsprogs to 1.40.6.
 
 Minors changes:
 - Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
