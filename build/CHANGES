@@ -58,6 +58,7 @@ Majors changes:
 - Fix install problem "Error: Failed to set partitions on the disk 'xxx'".
 - Refactor OS install/upgrade.
 - Add NFS share configuration support. Allow configuration of NFS server processes.
+- Upgrade netbsd-iscsi (iscsi-target) to 20080207.
 - Upgrade fusefs-ntfs to 1.2129.
 - Upgrade e2fsprogs to 1.40.6.
 
