@@ -12,6 +12,7 @@ Majors changes:
 - Add 'lagg' link aggregation and link failover interface support (kernel).
 - Switch back to SCHED_4BSD scheduler.
 - Upgrade inadyn-mt to 02.11.87.
+- Add generic webserver service.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
@@ -59,7 +60,7 @@ Majors changes:
 - Refactor OS install/upgrade.
 - Add NFS share configuration support. Allow configuration of NFS server processes.
 - Upgrade netbsd-iscsi (iscsi-target) to 20080207.
-- Upgrade fusefs-ntfs to 1.2129.
+- Upgrade fusefs-ntfs to 1.2216.
 - Upgrade e2fsprogs to 1.40.6.
 
 Minors changes:
