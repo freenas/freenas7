@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: mountcritlocal
@@ -34,7 +34,7 @@ mountcritlocal_stop()
 		-v devicespecialfile -n \
 		${configxml_file} | /usr/local/bin/xml unesc |
 		while read _devicespecialfile; do
-			umount "${_devicespecialfile}" 2>/dev/null
+			/sbin/umount "${_devicespecialfile}" 2>/dev/null
 		done
 }
 
