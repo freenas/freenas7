@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: lighttpd
@@ -24,6 +24,7 @@ extra_commands="reload check"
 lighttpd_enable=${lighttpd_enable:-"NO"}
 lighttpd_conf=${lighttpd_conf:-"/var/etc/lighttpd.conf"}
 lighttpd_certpem=${lighttpd_certpem:-"/var/etc/cert.pem"}
+lighttpd_docroot=${lighttpd_docroot:-"/usr/local/www"}
 command=/usr/local/sbin/lighttpd
 command_args="-f ${lighttpd_conf} -m /usr/local/lib/lighttpd"
 pidfile=/var/run/lighttpd.pid
@@ -35,11 +36,12 @@ create_conf()
 	local _protocol _certificate _privatekey _tmpfile
 
 	# Create lighttpd.conf file.
-	echo 'server.modules = (
+	cat <<EOF > ${lighttpd_conf}
+server.modules = (
   "mod_access",
   "mod_auth",
   "mod_cgi" )
-server.document-root = "/usr/local/www"
+server.document-root = "${lighttpd_docroot}"
 server.errorlog-use-syslog = "enable"
 server.event-handler = "freebsd-kqueue"
 index-file.names = ( "index.php" )
@@ -98,10 +100,11 @@ mimetype.assign = (
 )
 url.access-deny = ( "~", ".inc" )
 static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
-server.pid-file = "/var/run/lighttpd.pid"
+server.pid-file = "${pidfile}"
 auth.backend = "htpasswd"
-auth.backend.htpasswd.userfile = "/usr/local/www/.htpasswd"
-cgi.assign = (".php" => "/usr/local/bin/php")' > ${lighttpd_conf}
+auth.backend.htpasswd.userfile = "${lighttpd_docroot}/.htpasswd"
+cgi.assign = (".php" => "/usr/local/bin/php")
+EOF
 
 	/usr/local/bin/xml sel -t \
 		-o "auth.require = ( &quot;/&quot; => (" -n \
