@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-11 17:06+0000\n"
-"PO-Revision-Date: 2008-02-15 12:28+0000\n"
+"POT-Creation-Date: 2008-02-15 14:09+0000\n"
+"PO-Revision-Date: 2008-02-20 18:53+0000\n"
 "Last-Translator: votdev <votdev@gmx.de>\n"
 "Language-Team: FreeNAS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
+"X-Launchpad-Export-Date: 2008-02-20 18:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: GERMANY\n"
 "X-Poedit-Language: German\n"
@@ -532,6 +532,9 @@ msgstr ""
 
 #~ msgid "You must create a group first."
 #~ msgstr "Zuerst eine Gruppe einrichten."
+
+#~ msgid "Unique login name of user."
+#~ msgstr "Eindeutiger Loginname des Benutzers."
 
 #~ msgid "Confirm Password"
 #~ msgstr "Bestätige Passwort"
@@ -2045,9 +2048,6 @@ msgstr ""
 "Kommandos vor oder nach der Systeminitialisierung (Hochfahren) oder vor dem "
 "Herunterfahren des Systems ausführen."
 
-msgid "Exports"
-msgstr ""
-
 msgid "Extensions"
 msgstr "Erweiterungen"
 
@@ -2246,6 +2246,9 @@ msgstr "Gruppenbeschreibung."
 
 msgid "Group name."
 msgstr "Gruppenname."
+
+msgid "Group numeric id."
+msgstr ""
 
 msgid "Group suffix"
 msgstr "Gruppensuffix"
@@ -2650,6 +2653,9 @@ msgstr "Log Level"
 msgid "Login"
 msgstr "Anmelden"
 
+msgid "Login name of user."
+msgstr ""
+
 msgid "Logs"
 msgstr "Log Daten"
 
@@ -2919,6 +2925,9 @@ msgstr "Anzahl der anzuzeigenden Einträge"
 msgid "Number of log entries to show must be between 5 and 1000."
 msgstr ""
 "Die Anzahl der anzuzeigenden Log-Einträge muß zwischen 5 und 1000 betragen."
+
+msgid "Number of servers"
+msgstr ""
 
 msgid "OK"
 msgstr "OK"
@@ -3506,6 +3515,9 @@ msgstr "Quell - Freigabe"
 msgid "Space Used"
 msgstr "Benutzter Speicherplatz"
 
+msgid "Specifies how many servers to create."
+msgstr ""
+
 msgid "Specifies that the file system should be exported read-only."
 msgstr ""
 
@@ -3928,7 +3940,6 @@ msgstr "Die folgenden Eingabefehler sind aufgetreten"
 msgid "The full name contains invalid characters."
 msgstr "Der vollständige Name enthält ungültige Zeichen."
 
-#, fuzzy
 msgid "The group ID must be > 1001."
 msgstr "Die Gruppen ID muss > 1001 sein."
 
@@ -4092,11 +4103,9 @@ msgstr ""
 msgid "The time update interval must be either between 6 and 1440."
 msgstr "Das Zeitupdateintervall mus zwischen 6 und 1440 liegen."
 
-#, fuzzy
 msgid "The unique group ID is already used."
 msgstr "Die eindeutige Gruppen ID wird schon verwendet."
 
-#, fuzzy
 msgid "The unique user ID is already used."
 msgstr "Die eindeutige Benutzer ID wird schon verwendet."
 
@@ -4141,6 +4150,11 @@ msgstr "Mindestens 2 Festplatten sind für ein RAID 5 notwendig."
 
 msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr "Ein RAID 5-Verbund benötigt mindestens 3 Platten."
+
+msgid ""
+"There should be enough to handle the maximum level of concurrency from its "
+"clients, typically four to six."
+msgstr ""
 
 msgid ""
 "These commands will be executed pre or post system initialization (booting) "
@@ -4472,15 +4486,6 @@ msgstr "UPnP-konformer Name."
 msgid "Uninstall package"
 msgstr "Deinstallationspaket"
 
-msgid "Unique group numeric id."
-msgstr ""
-
-msgid "Unique login name of user."
-msgstr "Eindeutiger Loginname des Benutzers."
-
-msgid "Unique user numeric id."
-msgstr ""
-
 msgid "Unison"
 msgstr "Unison"
 
@@ -4581,6 +4586,9 @@ msgstr "Benutzerkennung"
 
 msgid "User full name."
 msgstr "Vollständiger Name."
+
+msgid "User numeric id."
+msgstr ""
 
 msgid "User password."
 msgstr "Benutzerpasswort."

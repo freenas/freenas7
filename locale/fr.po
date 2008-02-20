@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-11 17:06+0000\n"
-"PO-Revision-Date: 2008-02-14 19:05+0000\n"
+"POT-Creation-Date: 2008-02-15 14:09+0000\n"
+"PO-Revision-Date: 2008-02-20 07:29+0000\n"
 "Last-Translator: Régis Caubet <caubet.r@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
+"X-Launchpad-Export-Date: 2008-02-20 18:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -533,6 +533,9 @@ msgstr ""
 
 #~ msgid "You must create a group first."
 #~ msgstr "Vious devez d'abord créer un groupe"
+
+#~ msgid "Unique login name of user."
+#~ msgstr "Identifiant unique d'un utilisateur."
 
 #~ msgid "Confirm Password"
 #~ msgstr "Confirmez le mot de passe"
@@ -2083,8 +2086,9 @@ msgstr "Activer la lecture/écriture élargie"
 msgid "Enable local user authentication."
 msgstr "Activer l'authentification locale des utilisateurs."
 
+#, fuzzy
 msgid "Enable module listing."
-msgstr ""
+msgstr "Activer le listing de module"
 
 msgid "Enable permission inheritance"
 msgstr "Activer l'héritage des permissions"
@@ -2215,9 +2219,6 @@ msgid ""
 msgstr ""
 "Exécuter une commande avant ou après l'initialisation ou avant l'arrêt du "
 "système."
-
-msgid "Exports"
-msgstr "Exports"
 
 msgid "Extensions"
 msgstr "Extensions"
@@ -2417,6 +2418,10 @@ msgstr "Description du groupe."
 
 msgid "Group name."
 msgstr "Nom du groupe."
+
+#, fuzzy
+msgid "Group numeric id."
+msgstr "Identifiant numérique du groupe"
 
 msgid "Group suffix"
 msgstr "Suffixe groupe"
@@ -2817,6 +2822,9 @@ msgstr "Niveau de journalisation"
 msgid "Login"
 msgstr "Identifiant de connexion"
 
+msgid "Login name of user."
+msgstr ""
+
 msgid "Logs"
 msgstr "Journaux"
 
@@ -3082,6 +3090,9 @@ msgstr "Nombre d'entrées du journal à afficher"
 msgid "Number of log entries to show must be between 5 and 1000."
 msgstr ""
 "Le nombre d'entrées du journal à afficher doit être compris entre 5 et 1000."
+
+msgid "Number of servers"
+msgstr ""
 
 msgid "OK"
 msgstr "OK"
@@ -3663,6 +3674,9 @@ msgstr "Partage source"
 
 msgid "Space Used"
 msgstr "Occupation des disques"
+
+msgid "Specifies how many servers to create."
+msgstr ""
 
 msgid "Specifies that the file system should be exported read-only."
 msgstr ""
@@ -4286,6 +4300,11 @@ msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr "Un volume RAID5 doit &ecirc;tre compos&eacute; d'au moins 3 disques."
 
 msgid ""
+"There should be enough to handle the maximum level of concurrency from its "
+"clients, typically four to six."
+msgstr ""
+
+msgid ""
 "These commands will be executed pre or post system initialization (booting) "
 "or before system shutdown."
 msgstr ""
@@ -4591,15 +4610,6 @@ msgstr "Nom UPnP."
 msgid "Uninstall package"
 msgstr "Désinstallation paquet"
 
-msgid "Unique group numeric id."
-msgstr ""
-
-msgid "Unique login name of user."
-msgstr "Identifiant unique d'un utilisateur."
-
-msgid "Unique user numeric id."
-msgstr ""
-
 msgid "Unison"
 msgstr "Unison"
 
@@ -4700,6 +4710,9 @@ msgstr "Identifiant de l'utilisateur"
 
 msgid "User full name."
 msgstr "Nom complet de l'utilisateur."
+
+msgid "User numeric id."
+msgstr ""
 
 msgid "User password."
 msgstr "Mot de passe."

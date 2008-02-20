@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-11 17:06+0000\n"
+"POT-Creation-Date: 2008-02-15 14:09+0000\n"
 "PO-Revision-Date: 2007-09-20 23:51+0000\n"
 "Last-Translator: Daniel Nylander <po@danielnylander.se>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
+"X-Launchpad-Export-Date: 2008-02-20 18:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #~ msgid "Sun Mon Tue Wed Thu Fri Sat"
@@ -1379,9 +1379,6 @@ msgid ""
 "shutdown."
 msgstr ""
 
-msgid "Exports"
-msgstr ""
-
 msgid "Extensions"
 msgstr "Utökningar"
 
@@ -1568,6 +1565,9 @@ msgstr "Gruppbeskrivning."
 
 msgid "Group name."
 msgstr "Gruppnamn."
+
+msgid "Group numeric id."
+msgstr ""
 
 msgid "Group suffix"
 msgstr "Gruppändelse"
@@ -1931,6 +1931,9 @@ msgstr "Loggnivå"
 msgid "Login"
 msgstr "Logga in"
 
+msgid "Login name of user."
+msgstr ""
+
 msgid "Logs"
 msgstr "Loggar"
 
@@ -2185,6 +2188,9 @@ msgid "Number of log entries to show"
 msgstr "Antal loggposter att visa"
 
 msgid "Number of log entries to show must be between 5 and 1000."
+msgstr ""
+
+msgid "Number of servers"
 msgstr ""
 
 msgid "OK"
@@ -2752,6 +2758,9 @@ msgstr ""
 msgid "Space Used"
 msgstr "Utrymme använt"
 
+msgid "Specifies how many servers to create."
+msgstr ""
+
 msgid "Specifies that the file system should be exported read-only."
 msgstr ""
 
@@ -3310,6 +3319,11 @@ msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr ""
 
 msgid ""
+"There should be enough to handle the maximum level of concurrency from its "
+"clients, typically four to six."
+msgstr ""
+
+msgid ""
 "These commands will be executed pre or post system initialization (booting) "
 "or before system shutdown."
 msgstr ""
@@ -3587,15 +3601,6 @@ msgstr ""
 msgid "Uninstall package"
 msgstr ""
 
-msgid "Unique group numeric id."
-msgstr ""
-
-msgid "Unique login name of user."
-msgstr ""
-
-msgid "Unique user numeric id."
-msgstr ""
-
 msgid "Unison"
 msgstr "Unison"
 
@@ -3686,6 +3691,9 @@ msgstr ""
 
 msgid "User full name."
 msgstr "Användarens fullständiga namn."
+
+msgid "User numeric id."
+msgstr ""
 
 msgid "User password."
 msgstr ""

@@ -4,14 +4,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ru1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-02-11 17:06+0000\n"
+"POT-Creation-Date: 2008-02-15 14:09+0000\n"
 "PO-Revision-Date: 2008-01-29 08:42+0000\n"
 "Last-Translator: Alexander Samoilov <root@lifeslice.ru>\n"
 "Language-Team: russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
+"X-Launchpad-Export-Date: 2008-02-20 18:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: RUSSIAN FEDERATION\n"
 "X-Poedit-Language: Russian\n"
@@ -515,6 +515,9 @@ msgstr ""
 
 #~ msgid "You must create a group first."
 #~ msgstr "Сначала нужно создать группу."
+
+#~ msgid "Unique login name of user."
+#~ msgstr "Уникальное имя входа пользователя."
 
 #~ msgid "Confirm Password"
 #~ msgstr "Подтверждение пароля"
@@ -1989,9 +1992,6 @@ msgstr ""
 "Выполнить команду перед или после инициализации системы (загрузки) или перед "
 "выключением."
 
-msgid "Exports"
-msgstr ""
-
 msgid "Extensions"
 msgstr "Расширения"
 
@@ -2183,6 +2183,9 @@ msgstr "Описание группы."
 
 msgid "Group name."
 msgstr "Имя группы"
+
+msgid "Group numeric id."
+msgstr ""
 
 msgid "Group suffix"
 msgstr "Суффикс группы"
@@ -2573,6 +2576,9 @@ msgstr "Степень журналирования"
 msgid "Login"
 msgstr "Вход"
 
+msgid "Login name of user."
+msgstr ""
+
 msgid "Logs"
 msgstr "Журналы"
 
@@ -2840,6 +2846,9 @@ msgstr "Количество отображаемых записей журна�
 
 msgid "Number of log entries to show must be between 5 and 1000."
 msgstr "Количество отображаемых элементов должно быть от 5 до 1000."
+
+msgid "Number of servers"
+msgstr ""
 
 msgid "OK"
 msgstr "Да"
@@ -3413,6 +3422,9 @@ msgstr "Папка источника"
 
 msgid "Space Used"
 msgstr "Занятый объем"
+
+msgid "Specifies how many servers to create."
+msgstr ""
 
 msgid "Specifies that the file system should be exported read-only."
 msgstr ""
@@ -4025,6 +4037,11 @@ msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr "В массиве RAID уровня 5 должно быть минимум 3 диска."
 
 msgid ""
+"There should be enough to handle the maximum level of concurrency from its "
+"clients, typically four to six."
+msgstr ""
+
+msgid ""
 "These commands will be executed pre or post system initialization (booting) "
 "or before system shutdown."
 msgstr ""
@@ -4328,15 +4345,6 @@ msgstr "UPnP дружественное имя"
 msgid "Uninstall package"
 msgstr "Удалить пакет"
 
-msgid "Unique group numeric id."
-msgstr ""
-
-msgid "Unique login name of user."
-msgstr "Уникальное имя входа пользователя."
-
-msgid "Unique user numeric id."
-msgstr ""
-
 msgid "Unison"
 msgstr "Unison"
 
@@ -4436,6 +4444,9 @@ msgstr ""
 
 msgid "User full name."
 msgstr "Полное имя пользователя."
+
+msgid "User numeric id."
+msgstr ""
 
 msgid "User password."
 msgstr "Пароль пользователя."

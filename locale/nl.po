@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-11 17:06+0000\n"
+"POT-Creation-Date: 2008-02-15 14:09+0000\n"
 "PO-Revision-Date: 2007-10-19 09:00+0000\n"
 "Last-Translator: Youri Trioreau <shango@no-log.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
+"X-Launchpad-Export-Date: 2008-02-20 18:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Language: Dutch\n"
 "X-Poedit-SourceCharset: iso-8859-1\n"
@@ -340,6 +340,9 @@ msgstr ""
 
 #~ msgid "You must create a group first."
 #~ msgstr "Je moet eerst een groep aanmaken."
+
+#~ msgid "Unique login name of user."
+#~ msgstr "Unieke aanmeldingsnaam van de gebruiker."
 
 #~ msgid "Confirm Password"
 #~ msgstr "Bevestig wachtwoord"
@@ -1594,9 +1597,6 @@ msgid ""
 "shutdown."
 msgstr ""
 
-msgid "Exports"
-msgstr ""
-
 msgid "Extensions"
 msgstr "Uitbreidingen"
 
@@ -1789,6 +1789,9 @@ msgstr "Groepsomschrijving."
 
 msgid "Group name."
 msgstr "Groepsnaam."
+
+msgid "Group numeric id."
+msgstr ""
 
 msgid "Group suffix"
 msgstr "Groep achtervoegsel"
@@ -2167,6 +2170,9 @@ msgstr "Log niveau"
 msgid "Login"
 msgstr "Aanmelden"
 
+msgid "Login name of user."
+msgstr ""
+
 msgid "Logs"
 msgstr "Logboeken"
 
@@ -2429,6 +2435,9 @@ msgstr "Number of log entries to show"
 
 msgid "Number of log entries to show must be between 5 and 1000."
 msgstr "Aantal logregels moet tussen de 5 en 1000 zijn."
+
+msgid "Number of servers"
+msgstr ""
 
 msgid "OK"
 msgstr "OK"
@@ -3001,6 +3010,9 @@ msgstr "Gedeelde bronmap"
 
 msgid "Space Used"
 msgstr "Gebruikte ruimte"
+
+msgid "Specifies how many servers to create."
+msgstr ""
 
 msgid "Specifies that the file system should be exported read-only."
 msgstr ""
@@ -3605,6 +3617,11 @@ msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr "Er moeten minimaal 3 schijven in een RAID 5 station."
 
 msgid ""
+"There should be enough to handle the maximum level of concurrency from its "
+"clients, typically four to six."
+msgstr ""
+
+msgid ""
 "These commands will be executed pre or post system initialization (booting) "
 "or before system shutdown."
 msgstr ""
@@ -3903,15 +3920,6 @@ msgstr "UPnP herkenbare naam."
 msgid "Uninstall package"
 msgstr "Pakket deïnstalleren"
 
-msgid "Unique group numeric id."
-msgstr ""
-
-msgid "Unique login name of user."
-msgstr "Unieke aanmeldingsnaam van de gebruiker."
-
-msgid "Unique user numeric id."
-msgstr ""
-
 msgid "Unison"
 msgstr "Unison"
 
@@ -4013,6 +4021,9 @@ msgstr ""
 
 msgid "User full name."
 msgstr "Volledige naam."
+
+msgid "User numeric id."
+msgstr ""
 
 msgid "User password."
 msgstr "Wachtwoord gebruiker."
