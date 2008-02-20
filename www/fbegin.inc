@@ -63,6 +63,7 @@ $menu['services']['menuitem'][] = array("desc" => gettext("iSCSI Target"), "link
 $menu['services']['menuitem'][] = array("desc" => gettext("UPnP"), "link" => "services_upnp.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("Dynamic DNS"), "link" => "services_dynamicdns.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("SNMP"), "link" => "services_snmp.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => gettext("Webserver"), "link" => "services_websrv.php", "visible" => true);
 
 // Access
 $menu['access']['desc'] = gettext("Access");
