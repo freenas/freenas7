@@ -29,7 +29,7 @@ Majors changes:
 - Refactor OS install/upgrade.
 - Add NFS share configuration support. Allow configuration of NFS server processes.
 - Upgrade netbsd-iscsi (iscsi-target) to 20080207.
-- Upgrade fusefs-ntfs to 1.2129.
+- Upgrade fusefs-ntfs to 1.2216.
 - Upgrade e2fsprogs to 1.40.6.
 
 Minors changes:
