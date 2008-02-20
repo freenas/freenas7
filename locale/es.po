@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-11 17:06+0000\n"
-"PO-Revision-Date: 2008-02-06 18:46+0000\n"
+"POT-Creation-Date: 2008-02-15 14:09+0000\n"
+"PO-Revision-Date: 2008-02-18 19:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-15 13:41+0000\n"
+"X-Launchpad-Export-Date: 2008-02-20 18:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -1363,9 +1363,6 @@ msgstr ""
 "Comando a ejecutar pre o post inciailización del sistema (booteo) o antes "
 "del apagado del mismo."
 
-msgid "Exports"
-msgstr ""
-
 msgid "Extensions"
 msgstr "Extensiones"
 
@@ -1560,6 +1557,9 @@ msgstr "Descripción del Grupo."
 
 msgid "Group name."
 msgstr "Nombre del Grupo."
+
+msgid "Group numeric id."
+msgstr ""
 
 msgid "Group suffix"
 msgstr "Sufijo de grupo"
@@ -1951,6 +1951,9 @@ msgstr "Nivel de registro"
 msgid "Login"
 msgstr "Iniciar Sesión"
 
+msgid "Login name of user."
+msgstr ""
+
 msgid "Logs"
 msgstr "Registros"
 
@@ -2214,6 +2217,9 @@ msgid "Number of log entries to show"
 msgstr "Número de entradas de registro a mostrar"
 
 msgid "Number of log entries to show must be between 5 and 1000."
+msgstr ""
+
+msgid "Number of servers"
 msgstr ""
 
 msgid "OK"
@@ -2785,6 +2791,9 @@ msgstr "Elemento compartido de origen"
 
 msgid "Space Used"
 msgstr "Espacio Usado"
+
+msgid "Specifies how many servers to create."
+msgstr ""
 
 msgid "Specifies that the file system should be exported read-only."
 msgstr ""
@@ -3386,6 +3395,11 @@ msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr ""
 
 msgid ""
+"There should be enough to handle the maximum level of concurrency from its "
+"clients, typically four to six."
+msgstr ""
+
+msgid ""
 "These commands will be executed pre or post system initialization (booting) "
 "or before system shutdown."
 msgstr ""
@@ -3679,15 +3693,6 @@ msgstr "Nombre común UPnP."
 msgid "Uninstall package"
 msgstr ""
 
-msgid "Unique group numeric id."
-msgstr ""
-
-msgid "Unique login name of user."
-msgstr "Nombre único de acceso del usuario."
-
-msgid "Unique user numeric id."
-msgstr ""
-
 msgid "Unison"
 msgstr "Unison"
 
@@ -3778,6 +3783,9 @@ msgstr ""
 
 msgid "User full name."
 msgstr "Nombre Completo del Usuario"
+
+msgid "User numeric id."
+msgstr ""
 
 msgid "User password."
 msgstr "Contraseña del Usuario"
@@ -3961,9 +3969,9 @@ msgstr "borrar montaje"
 msgid "desc"
 msgstr ""
 
-#, php-format
+#, fuzzy, php-format
 msgid "e.g. %s"
-msgstr ""
+msgstr "por ejemplo %s"
 
 msgid "group_suffix, example: ou=groups,dc=example,dc=com"
 msgstr ""
