@@ -84,6 +84,9 @@ bin/sync
 ## kenv -- dump or modify the kernel environment
 bin/kenv
 
+## rmdir -- remove directories
+bin/rmdir
+
 ####### contents of /sbin
 ## adjkerntz -- adjust local time CMOS clock to reflect time zone changes and keep current timezone offset for the kernel
 sbin/adjkerntz
@@ -375,6 +378,15 @@ usr/bin/nice
 
 ## getent -- get entries from administrative database
 usr/bin/getent
+
+## cut -- select portions of each line of a file
+usr/bin/cut
+
+## cmp -- compare two files
+usr/bin/cmp
+
+## diff -- find differences between two files
+usr/bin/diff
 
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
