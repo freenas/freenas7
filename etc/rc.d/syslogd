@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: syslogd
@@ -14,7 +14,7 @@ rcvar=`set_rcvar`
 
 # Defaults
 syslogd_enable=${syslogd_enable:-"NO"}
-syslogd_config=${syslogd_config:-"/var/etc/${name}.conf"}
+syslogd_config=${syslogd_config:-"/var/etc/syslog.conf"}
 pidfile="/var/run/syslog.pid"
 command="/usr/sbin/${name}"
 command_args="-f ${syslogd_config}"
