@@ -42,8 +42,11 @@ if(!is_array($config['websrv']))
 	$config['websrv'] = array();
 
 $pconfig['enable'] = isset($config['websrv']['enable']);
+$pconfig['protocol'] = $config['websrv']['protocol'];
 $pconfig['port'] = $config['websrv']['port'];
 $pconfig['documentroot'] = $config['websrv']['documentroot'];
+$pconfig['privatekey'] = $config['websrv']['privatekey'];
+$pconfig['certificate'] = $config['websrv']['certificate'];
 
 if($_POST) {
 	unset($input_errors);
@@ -55,6 +58,12 @@ if($_POST) {
 		$reqdfields = explode(" ", "port documentroot");
 		$reqdfieldsn = array(gettext("Port"), gettext("Document root"));
 		$reqdfieldst = explode(" ", "numeric string");
+
+		if ("https" === $_POST['protocol']) {
+			$reqdfields = array_merge($reqdfields, explode(" ", "privatekey certificate"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Private key"), gettext("Certificate")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string string"));
+		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -70,8 +79,11 @@ if($_POST) {
 
 	if(!$input_errors) {
 		$config['websrv']['enable'] = $_POST['enable'] ? true : false;
+		$config['websrv']['protocol'] = $_POST['protocol'];
 		$config['websrv']['port'] = $_POST['port'];
 		$config['websrv']['documentroot'] = $_POST['documentroot'];
+		$config['websrv']['privatekey'] = $_POST['privatekey'];
+		$config['websrv']['certificate'] = $_POST['certificate'];
 
 		write_config();
 
@@ -91,8 +103,25 @@ if($_POST) {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
+	document.iform.protocol.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.documentroot.disabled = endis;
+	document.iform.privatekey.disabled = endis;
+	document.iform.certificate.disabled = endis;
+}
+
+function protocol_change() {
+	switch(document.iform.protocol.selectedIndex) {
+		case 0:
+			showElementById('privatekey_tr','hide');
+			showElementById('certificate_tr','hide');
+			break;
+
+		default:
+			showElementById('privatekey_tr','show');
+			showElementById('certificate_tr','show');
+			break;
+	}
 }
 //-->
 </script>
@@ -113,6 +142,17 @@ function enable_change(enable_change) {
 			  		  </table>
 			      </td>
 			    </tr>
+			    <tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Protocol");?></td>
+						<td width="78%" class="vtable">
+							<select name="protocol" class="formfld" id="protocol" onchange="protocol_change()">
+								<?php $types = array(gettext("HTTP"),gettext("HTTPS")); $vals = explode(" ", "http https");?>
+								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
+								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] === $pconfig['protocol']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
+								<?php endfor;?>
+							</select>
+						</td>
+					</tr>
 					<tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
 			      <td width="78%" class="vtable">
@@ -128,6 +168,20 @@ function enable_change(enable_change) {
 			        <span class="vexpl"><?=gettext("Document root of the webserver.");?></span>
 			      </td>
 			    </tr>
+			    <tr id="privatekey_tr">
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Private key");?></td>
+						<td width="78%" class="vtable">
+							<textarea name="privatekey" cols="65" rows="7" id="privatekey" class="formpre"><?=htmlspecialchars($pconfig['privatekey']);?></textarea></br>
+							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
+						</td>
+					</tr>  	
+					<tr id="certificate_tr">
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Certificate");?></td>
+						<td width="78%" class="vtable">
+							<textarea name="certificate" cols="65" rows="7" id="certificate" class="formpre"><?=htmlspecialchars($pconfig['certificate']);?></textarea></br>
+							<span class="vexpl"><?=gettext("Paste a signed certificate in X.509 PEM format here.");?></span>
+						</td>
+					</tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
@@ -142,6 +196,7 @@ function enable_change(enable_change) {
 <script language="JavaScript">
 <!--
 enable_change(false);
+protocol_change();
 //-->
 </script>
 <?php include("fend.inc");?>
