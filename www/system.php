@@ -272,8 +272,12 @@ function ntp_change(enable_change) {
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("WebGUI protocol");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="webguiproto" type="radio" value="http" <?php if ($pconfig['webguiproto'] == "http") echo "checked"; ?>>HTTP &nbsp;&nbsp;&nbsp;
-			        <input type="radio" name="webguiproto" value="https" <?php if ($pconfig['webguiproto'] == "https") echo "checked"; ?>>HTTPS
+			        <select name="webguiproto" class="formfld" id="webguiproto">
+								<?php $types = array(gettext("HTTP"),gettext("HTTPS")); $vals = explode(" ", "http https");?>
+								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
+								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] === $pconfig['webguiproto']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
+								<?php endfor;?>
+							</select>
 			      </td>
 			    </tr>
 			    <tr>
