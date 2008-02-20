@@ -106,6 +106,7 @@ ln -s /var/etc/hosts etc/hosts
 ln -s /var/etc/pwd.db etc/pwd.db
 ln -s /var/etc/spwd.db etc/spwd.db
 ln -s /var/etc/crontab etc/crontab
+ln -s /var/etc/syslog.conf etc/syslog.conf
 ln -s /var/etc/ssh/sshd_config etc/ssh/sshd_config
 ln -s /var/etc/ssh/ssh_host_dsa_key etc/ssh/ssh_host_dsa_key
 ln -s /var/etc/pam.d/ftp etc/pam.d/ftp
