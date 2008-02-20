@@ -165,7 +165,7 @@ function protocol_change() {
 			      <td width="78%" class="vtable">
 			        <input name="documentroot" type="text" class="formfld" id="documentroot" size="60" value="<?=htmlspecialchars($pconfig['documentroot']);?>">
 			        <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.documentroot; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
-			        <span class="vexpl"><?=gettext("Document root of the webserver.");?></span>
+			        <span class="vexpl"><?=gettext("Document root of the webserver. Home of the web page files.");?></span>
 			      </td>
 			    </tr>
 			    <tr id="privatekey_tr">
