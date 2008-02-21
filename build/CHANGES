@@ -31,6 +31,7 @@ Majors changes:
 - Upgrade netbsd-iscsi (iscsi-target) to 20080207.
 - Upgrade fusefs-ntfs to 1.2216.
 - Upgrade e2fsprogs to 1.40.6.
+- Upgrade inadyn-mt to 02.11.88.
 
 Minors changes:
 - Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
