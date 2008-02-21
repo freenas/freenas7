@@ -11,7 +11,6 @@ Majors changes:
 - Remove 'kern.hz="500"' from /boot/loader.conf. With FreeBSD 6.3 it is set to 100 by default.
 - Add 'lagg' link aggregation and link failover interface support (kernel).
 - Switch back to SCHED_4BSD scheduler.
-- Upgrade inadyn-mt to 02.11.87.
 - Add generic webserver service.
 
 Permanent restrictions:
@@ -62,6 +61,7 @@ Majors changes:
 - Upgrade netbsd-iscsi (iscsi-target) to 20080207.
 - Upgrade fusefs-ntfs to 1.2216.
 - Upgrade e2fsprogs to 1.40.6.
+- Upgrade inadyn-mt to 02.11.88.
 
 Minors changes:
 - Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
