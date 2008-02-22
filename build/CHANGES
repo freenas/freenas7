@@ -80,7 +80,7 @@ Minors changes:
 - Remove /usr/bin/dirname link to basename and add original application. Thanks to Lars Köller.
 - Only create SMB/CIFS users with uid >= 1001. Thanks to Lars Köller.
 
-Bug fixs:
+Bug fixes:
 - Calculating iSCSI extent IDs fails for numbers > 10.
 - Promote correct UPnP port via ZeroConf/Apple Bonjour.
 - Fix bug in rsyncd rc-script. Hosts allow/deny were not set correct. Also fix client error message 'ERROR: module is read only'.
@@ -113,7 +113,7 @@ Minors changes:
 - Changed boot splashscreen and WebGUI logo images.
 - Try to fix AFP Time Machine problem.
 
-Bug fixs:
+Bug fixes:
 - Fix bug in 'full' upgrade/install routine (LiveCD).
 - Do not delete log files during boot process on 'full' installations.
 
@@ -151,7 +151,7 @@ Minors changes:
 - Add 'compression' checkbox to enable/disable it for SSH.
 - Add ushare mime patch to fix avi playback on X360. Also add video support for avc and hdmov and audio support for 3gp and flac.
 
-Bug fixs:
+Bug fixes:
 - Fix bug in extension menu formating code. Thanks to James Patterson.
 - Admin users are now added to the admin group (GID 1000). Patch done by Gerard Hickey.
 - Fix bug in mount configuration WebGUI for older gvinum/gmirror/gconcat software RAIDs.
@@ -183,7 +183,7 @@ Minors changes:
 - Modify filechooser. Now 'OK' and 'Cancel' buttons are on the top of the dialog for easier
   navigation in huge file lists.
 
-Bug fixs:
+Bug fixes:
 - Fix xml parser bug when switching language, e.g. English (ISO-8859-1) to Bulgarian (UTF-8).
 - Fix bug in function get_mount_usage(). Now mount points containing whitespace characters are displayed on index.php.
 - Fix mount bug. Mount disks using UFS without GPT successfully.
@@ -258,7 +258,7 @@ Minors changes:
 - Update 3Ware drivers to 9.4.1.3.
 - Customizable size for OS partition (1) in 'full' install mode.
 
-Bug fixs:
+Bug fixes:
 - Fix bug in Mount Point WebGUI page when using file system 'CD/DVD'.
 - Fix bug when booting 'full' installation.
 - Cleanup /var/run during boot process, otherwise sysreboot.reqd won't be removed.
@@ -291,7 +291,7 @@ Minors changes:
 - Remove Samba 'ReadAhead' setting because this is not supported on FreeBSD.
 - Refresh RAID information pages automatically every 5 seconds to display progress (e.g. when creating or rebuilding RAID).
 
-Bug fixs:
+Bug fixes:
 - Fix bug in Mount Point WebGUI page when using file system 'CD/DVD'.
 - Fix bug when booting 'full' installation.
 - Cleanup /var/run during boot process, otherwise sysreboot.reqd won't be removed.
@@ -319,7 +319,7 @@ Minors changes:
 - Add commands /usr/bin/sort, /usr/bin/uniq, /usr/bin/dirname, /usr/bin/install and /usr/bin/tee.
 - Add Patch for new hardware rev of D-Link DGE-528T PCI card
 
-Bug fixs:
+Bug fixes:
 - Fix bug in UPnP WebGUI page. Profile dropdown control is not disabled when service is disabled.
 - Fix bug in Access/Group WebGUI page. Group ID was lost when editing existing group.
 - Fix bug in userdb generation. User administrator privilegs were not set correct.
@@ -343,7 +343,7 @@ Minors changes:
   compliant profile. PS3 users should try DLNA. If the 'Default' doesn't work
   with your UPnP client, also try the DLNA compliant profile.
 
-Bug fixs:
+Bug fixes:
 - Fix bug in UPnP rc-script. There was a bug when sharing multiple directories.
 - Modified /etc/rc.d/htpasswd script to prevent creation of malformed file.
 - Modify Filechooser GUI and fix some bugs.
@@ -362,7 +362,7 @@ Bug fixs:
 FreeNAS 0.685b1:
 ----------------
 
-Bug fixs:
+Bug fixes:
 - Update WebGUI to deny using spaces in usernames.
 - Fix bug in /etc/rc.d/userdb when user fullname contains spaces.
 - Fix GELI encryption bug.
@@ -411,7 +411,7 @@ Minors changes:
 - Add netatalk patches
 - Add sed stream editor (for internal scripting)
 
-Bug fixs:
+Bug fixes:
 - Add missing winbind/smbpass pam modules
 - French accent are correclty displayed now
 - Change the SSL certificate (the previous is no more valid)
@@ -471,7 +471,7 @@ Minors changes:
 - Permit to select if a user is in the administrator group (wheel) or not 
 - Add WebGUI page (System/Advanced/Startup) to add/edit/delete commands executed pre or post system initialization (booting).  
 
-Bug fixs:
+Bug fixes:
 - Fix UPnP WebGUI bug
 - Fix bug in user & groups WebGUI.
 - FTP: Fixed: Deletion of files uploaded and owned by user was not able.
