@@ -1,6 +1,6 @@
 PORTNAME=			rsync
 PORTVERSION=	2.6.9
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=		net
 COMMENT=			A network file distribution/sync utility
 MAINTAINER=		votdev@gmx.de
@@ -10,7 +10,11 @@ MASTER_SITES=	http://rsync.samba.org/ftp/%SUBDIR%/ \
 MASTER_SITE_SUBDIR=	rsync
 
 GNU_CONFIGURE=		yes
-CONFIGURE_ARGS+=	--with-rsyncd-conf=/var/etc
+CONFIGURE_ARGS+=	--disable-debug \
+									--enable-ipv6 \
+									--with-rsyncd-conf=/var/etc
+CONFIGURE_TARGET=	--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
+PATCH_STRIP=			-p1
 
 # Install on host system too, otherwise depending ports fail during ./configure process (e.g. scponly).
 FORCE_PKG_REGISTER=	yes
