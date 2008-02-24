@@ -36,14 +36,14 @@ create_conf()
 {
 	local _protocol _port _documentroot _certificate _privatekey
 
-	# Get configuration data.
+	# Get configuration data
 	_protocol=`configxml_get "//websrv/protocol"`
 	_port=`configxml_get "//websrv/port"`
 	_documentroot=`configxml_get "//websrv/documentroot"`
 	_certificate=`configxml_get "//websrv/certificate"`
 	_privatekey=`configxml_get "//websrv/privatekey"`
 
-	# Create .conf file.
+	# Create .conf file
 	cat <<EOF > ${websrv_conf}
 server.modules = (
   "mod_access",
@@ -118,7 +118,7 @@ ssl.engine = "enable"
 ssl.pemfile = "${websrv_certpem}"
 EOF
 
-		# Create .pem file (required).
+		# Create .pem file (required)
 		if [ -n "${_certificate}" -a -n "${_privatekey}" ]; then
 			_tmpfile=/tmp/websrv$$.tmp
 
@@ -147,7 +147,7 @@ stop_postcmd()
 
 reload_precmd()
 {
-	echo "Stoping ${name} and start gracefully."
+	echo "Stopping ${name} and starting gracefully."
 }
 
 reload_postcmd()

@@ -33,10 +33,10 @@ require_once("install.inc");
 require_once("util.inc");
 require_once("tui.inc");
 
-// Get product information.
+// Get product information
 $productname = get_product_name();
 
-// Display informations.
+// Display information
 $text = <<<EOD
 
 This will upgrade your current installation to the latest version.
@@ -46,7 +46,7 @@ $result = tui_display_message_ex("{$productname} upgrade", $text, 70, 7);
 if (0 != $result)
 	exit(0);
 
-// Search where the config file is installed.
+// Search where the config file is installed
 if (0 != install_detect_installation("full", $devinfo)) {
 	tui_wait_keypress("No 'full' installation detected!");
 	exit(0);
@@ -56,7 +56,7 @@ $result = tui_display_yesno("{$productname} has been detected on device '{$devin
 if (0 != $result)
 	exit(0);
 
-// Detect hardware.
+// Detect hardware
 $cdlist = get_cdrom_list();
 $disklist = get_physical_disks_list();
 
@@ -65,7 +65,7 @@ if (0 == count($cdlist)) {
 	exit(0);
 }
 
-// Display installation medias.
+// Display installation medias
 $amenuitem = array();
 foreach ($cdlist as $cdromk => $cdromv) {
 	$menuitem = array();
@@ -102,7 +102,7 @@ if (install_restore_config("{$devinfo['device']}{$devinfo['partition']}")) {
 
 install_unmount_cd();
 
-// Display final message.
+// Display final message
 $text = <<<EOD
 
 {$productname} installed on device '{$devinfo['device']}' has been upgraded.

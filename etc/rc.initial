@@ -5,19 +5,19 @@
 # Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
 # All rights reserved.
 # Modified for FreeNAS (http://www.freenas.org) by Olivier Cochard-Labbe <olivier@freenas.org>
-# Somes lines on this file are taken from pfSense (http://www.pfsense.com/) by Scott Ullrich
+# Some lines on this file are taken from pfSense (http://www.pfsense.com/) by Scott Ullrich
 
 . /etc/rc.subr
 . /etc/configxml.subr
 
-# make sure the user can't kill us by pressing Ctrl-C
+# Make sure the user can't kill us by pressing Ctrl-C
 trap : 2
 trap : 3
 trap : 4
 # Set our operating platform
 PLATFORM=`cat /etc/platform`
 
-# redirect input/output
+# Redirect input/output
 #exec </dev/console >/dev/console 2>/dev/console
 
 # Check if console menu is disabled.
@@ -38,7 +38,7 @@ else
 		echo "Console setup"
 		echo "-------------"
 		#echo "0) Logout (SSH only)"
-		echo "1) Assign Interfaces"
+		echo "1) Assign interfaces"
 		echo "2) Set LAN IP address"
 		echo "3) Reset webGUI password"
 		echo "4) Reset to factory defaults"
@@ -47,7 +47,7 @@ else
 		echo "7) Reboot system"
 		echo "8) PowerOff system"
 		if [ "$PLATFORM" = "i386-liveCD" ] || [ "$PLATFORM" = "amd64-liveCD" ]; then
-		    echo "9) Install/Upgrade to an hard drive/flash device, etc."
+		    echo "9) Install/Upgrade to hard drive/flash device, etc."
 		fi
 
 		echo

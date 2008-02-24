@@ -12,7 +12,7 @@
 
 # Script usage:
 # rc.firmware <args> [<file>]
-# Where <args> can take theses values:
+# Where <args> can take the following values:
 # - enable: Create a 30MB ram drive in /ftmp
 # - disable: Erase ram drive
 # - upgrade <file> : Do an embedded release (IMG file) upgrade using the file <file>
@@ -57,7 +57,7 @@ case $1 in
 		;;
 
 	upgrade)
-		# wait 5 seconds before beginning
+		# Wait 5 seconds before beginning
 		sleep 5
 
 		# Redirect I/O to console.
@@ -66,18 +66,18 @@ case $1 in
 		echo
 		echo "Firmware upgrade in progress. Please wait..."
 
-		# Check if firmware file exist
+		# Check if firmware file exists
 		if [ ! -r $2 ]; then
 			echo "Error: Firmware file does not exist."
 			/usr/bin/logger "upgrade: ERROR: Firmware file does not exist."
 			exit 1
 		fi
 
-		# backup config
+		# Backup config
 		mkdir /tmp/configbak
 		cp -p /conf/* /tmp/configbak
 
-		# unmount /cf
+		# Unmount /cf
 		/sbin/umount -f /cf
 
 		# dd image onto card
@@ -94,14 +94,14 @@ case $1 in
 			fi
 		fi
 
-		# mount /cf
+		# Mount /cf read-write
 		/sbin/mount -w -o noatime /cf
 
-		# restore config
+		# Restore config
 		cp -p /tmp/configbak/* /conf
 		rm -r /tmp/configbak
 
-		# remount /cf ro
+		# Remount /cf read-only
 		/sbin/umount -f /cf
 		/sbin/mount -r /cf
 
@@ -115,7 +115,7 @@ case $1 in
 		;;
 
 	fullupgrade)
-		# wait 5 seconds before beginning
+		# Wait 5 seconds before beginning.
 		sleep 5
 
 		# Redirect I/O to console.
@@ -124,7 +124,7 @@ case $1 in
 		echo
 		echo "Firmware upgrade in progress. Please wait..."
 
-		# Check if firmware file exist
+		# Check if firmware file exists.
 		if [ ! -r $2 ]; then
 			echo "Error: Firmware file does not exist."
 			/usr/bin/logger "upgrade: ERROR: Firmware file does not exist."
@@ -134,20 +134,20 @@ case $1 in
 		#DO NOT OVERRIDE LIBRARY IN USE: lib/libc.so.6
 		#WARNING: The library files name are related to the FreeNAS release to be upgraded
 		#Must add a switch (case) here depending of the version number being upgraded ?
-		#MUST TO CLOSE ALL SERVICES before ???
-		#(FreeBSD seem to crash if replacing a library in use)
+		#MUST CLOSE ALL SERVICES before ???
+		#(FreeBSD seems to crash if replacing a library in use)
 		#ls /var/run/*.pid
 		#cat
 		#kill -9 pidnumber
 		#
-		#Warning: tar use usr/lib/libarchive.so.2 and lib/libz.so.3
+		#Warning: tar uses usr/lib/libarchive.so.2 and lib/libz.so.3
 		tar zxvf $2 --exclude usr/lib/libarchive.so.2 --exclude lib/libz.so.3 --exclude lib/libc.so.6 -C /
-		#Extract libarchive.so.2 and libz.so.3 on the /ftmp direcoty and copy it (cp doesn't use these library)
+		#Extract libarchive.so.2 and libz.so.3 to the /ftmp directory and copy them (cp doesn't use these libraries)
 		tar zxvf $2 --include usr/lib/libarchive.so.2 --include lib/libz.so.3 -C /ftmp
 		cp -p /ftmp/usr/lib/libarchive.so.2 /usr/lib/libarchive.so.2
 		cp -p /ftmp/lib/libz.so.3 /lib/libz.so.32
 
-		#How to override lib/libc.so.6 ? And, Is overrided this file is needed ?
+		#How to override lib/libc.so.6 ? And, does this file need to be overridden ?
 
 		#Need to be added: List of old files to be deleted (is necessary?)
 

@@ -21,7 +21,7 @@ do
           echo "Common Options:";
           echo "  -f    Force executing this script";
           exit 1;;
-    ?)    echo "$0: Bad option specified. Exiting...";
+    ?)    echo "$0: Unknown option. Exiting...";
           exit 1;;
   esac
 done
@@ -37,7 +37,7 @@ fi
 
 if [ 1 != $opt_f -a -d "$MINIBSD_DIR" ]; then
   echo ;
-  echo "$MINIBSD_DIR already exists. Remove the directory" ;
+  echo "$MINIBSD_DIR directory does already exist. Remove it" ;
   echo "before running this script." ;
   echo ;
   echo "Exiting..." ;

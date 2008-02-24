@@ -16,7 +16,7 @@ masterpasswd=${masterpasswd:-"/var/etc/master.passwd"}
 
 echo "Generating user database(s)."
 
-# Create the /var/etc/group file.
+# Create the /var/etc/group file
 /usr/local/bin/xml sel -t \
 	-o "wheel:*:0:root" -n \
 	-o "daemon:*:1:" -n \
@@ -45,7 +45,7 @@ echo "Generating user database(s)."
 # Clean /var/etc/passwd file
 cat /dev/null > ${passwd}
 
-# Create the /var/etc/master.passwd file.
+# Create the /var/etc/master.passwd file
 _systempasswd=`configxml_get "//system/password"`
 
 echo "root:${_systempasswd}:0:0::0:0:Charlie &:/root:/bin/tcsh
@@ -62,10 +62,10 @@ man:*:9:9::0:0:Mister Man Pages:/usr/share/man:/usr/sbin/nologin
 sshd:*:22:22::0:0:Secure Shell Daemon:/var/empty:/usr/sbin/nologin
 _dhcp:*:65:65::0:0:dhcp programs:/var/empty:/usr/sbin/nologin" > ${masterpasswd}
 
-# Generate the /var/etc/passwd, pwd.db and spwd.db files.
+# Generate the /var/etc/passwd, pwd.db and spwd.db files
 /usr/sbin/pwd_mkdb -p -d /var/etc ${masterpasswd} > /dev/null 2>&1
 
-# Iterate over all configured users.
+# Iterate over all configured users
 _index=`configxml_get_count "//access/user"`
 while [ ${_index} -gt 0 ]
 do

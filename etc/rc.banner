@@ -31,12 +31,12 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-	/* parse the configuration and include all functions used below */
+	/* Parse the configuration and include all functions used below */
 	require_once("config.inc");
 	require_once("functions.inc");
 	require_once("util.inc");
 
-	// Permit to display IP address for "auto" NIC
+	// Permit display of IP address for "auto" NIC
   $if = get_ifname($config['interfaces']['lan']['if']);
 
   $ipaddr = get_ipaddr($if);

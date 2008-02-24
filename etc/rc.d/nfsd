@@ -20,7 +20,7 @@ name="nfsd"
 rcvar=`set_rcvar nfs_server`
 command="/usr/sbin/${name}"
 
-# Customize number of server processes/daemons.
+# Customize number of server processes/daemons
 nfs_server_flags=`/usr/local/bin/xml sel -t -v "concat('-u -t -n ',//nfsd/numproc)" ${configxml_file} | /usr/local/bin/xml unesc`
 
 load_rc_config $name

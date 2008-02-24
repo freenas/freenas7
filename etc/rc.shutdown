@@ -37,8 +37,8 @@ reverse_list()
 	echo $_revlist
 }
 
-# If requested, start a watchdog timer in the background which
-# will terminate rc.shutdown if rc.shutdown doesn't complete
+# If requested, start a watchdog timer in background to
+# terminate rc.shutdown if rc.shutdown doesn't complete
 # within the specified time.
 #
 _rcshutdown_watchdog=

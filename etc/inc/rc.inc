@@ -39,7 +39,7 @@ function rc_exec_script($scriptname) {
 	return $retval;
 }
 
-// Execute rc script asynchron.
+// Execute rc script asynchronuously.
 // Return 0 if successful, otherwise 1.
 function rc_exec_script_async($scriptname) {
 	exec("nohup {$scriptname} >/dev/null 2>&1 &", $output, $retval);
@@ -94,7 +94,7 @@ function rc_restart_service($name) {
 // Stop service.
 // Return 0 if successful, otherwise 1.
 function rc_stop_service($name) {
-	// Execute script.
+	// Execute script
 	$retval = rc_exec_script("/etc/rc.d/{$name} stop");
 	if (0 == $retval) {
 		write_log("{$name} service stopped");
@@ -109,13 +109,13 @@ function rc_stop_service($name) {
 function rc_update_service($name) {
 	$retval = 0;
 
-	// Check if service is running.
+	// Check if service is running
 	$running = rc_is_service_running($name);
 
-	// Check if service is enabled.
+	// Check if service is enabled
 	$enabled = rc_is_service_enabled($name);
 
-	// Update rc.conf and execute rc script.
+	// Update rc.conf and execute rc script
 	if (0 == $enabled) {
 		rc_update_rcconf($name, "enable");
 
@@ -128,7 +128,7 @@ function rc_update_service($name) {
 				break;
 		}
 	} else {
-		// Stop service if necessary.
+		// Stop service if necessary
 		if (0 == $running) {
 			$retval = rc_stop_service($name);
 		}
@@ -148,7 +148,7 @@ function rc_update_rcconf($name,$state) {
 		return 0;
 	}
 
-	// Update /etc/rc.conf.
+	// Update /etc/rc.conf
 	$retval = mwexec("/usr/local/sbin/rconf service {$state} {$rcvar[1]}");
 
 	return $retval;
@@ -166,7 +166,7 @@ function rc_is_service_enabled($name) {
 		return 0;
 	}
 
-	// Execute query.
+	// Execute query
 	exec("/usr/local/bin/xml sel -t {$xquery[1]} {$g['conf_path']}/config.xml",$result);
 
 	return ("0" === $result[0]) ? 0 : 1;

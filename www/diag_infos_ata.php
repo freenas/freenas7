@@ -70,7 +70,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks 
 				echo gettext("Device name") . ":		{$name}<br/>";
 				echo gettext("Transfer mode") . ":		{$dmamode}<br/>";
 				
-				// Display more informations.
+				// Display more information
 				exec("/usr/local/sbin/ataidle {$device}", $rawdata);
 				array_shift($rawdata);
 				array_shift($rawdata);

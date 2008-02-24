@@ -12,10 +12,10 @@
 name="smbpasswd"
 command="/usr/local/bin/${name}"
 
-# Display message.
+# Display message
 echo "Updating smbpasswd."
 
-# Clear password database.
+# Clear password database
 cat /dev/null > /var/etc/private/smbpasswd
 
 # Generate /var/etc/private/smbpasswd Samba password database.

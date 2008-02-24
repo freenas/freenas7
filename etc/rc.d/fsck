@@ -31,7 +31,7 @@ stop_boot()
 
 fsck_start()
 {
-	# Initialize disks.
+	# Initialize disks
 	eval /etc/rc.d.php/disks_init
 
 	if [ "$autoboot" = no ]; then
@@ -52,17 +52,17 @@ fsck_start()
 			-i "position() != last()" -n -b \
 			${configxml_file} | /usr/local/bin/xml unesc | \
 		while read _fstype _devicespecialfile _mdisk _fsck; do
-			# Check if fsck is enabled.
+			# Check if fsck is enabled
 			if [ "0" = "${_fsck}" ]; then
 				continue
 			fi
 
-			# Check if block device exists.
+			# Check if block device exists
 			if [ ! -e "${_devicespecialfile}" ]; then
 				continue
 			fi
 
-			# Skip encrypted disks.
+			# Skip encrypted disks
 			_encrypted=`configxml_get_count "//geli/vdisk[devicespecialfile = '${_mdisk}']"`
 			if [ 0 -lt ${_encrypted} ]; then
 				continue

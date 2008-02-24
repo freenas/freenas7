@@ -427,35 +427,35 @@ function get_mounts_list()
 	$amountlist = array();
 	$i = 0;
 
-	// Get list of mount points.
+	// Get list of mount points
 	exec("/sbin/mount -p", $rawdata);
 
 	foreach ($rawdata as $line) {
 		$aline = explode("\t", $line);
 
-		// Get device path.
+		// Get device path
 		$devicespecialfile = chop($aline[0]);
 
-		// Get the mount path.
+		// Get the mount path
 		$mountpath = chop($aline[1]);
 
-		// Ignore various mount points.
+		// Ignore various mountpoints
 		if (("/dev/md0" === $devicespecialfile) || ("devfs" === $devicespecialfile) ||
 				("/dev/fd0" === $devicespecialfile) || ($g['cf_path'] === $mountpath))
 			continue;
 
-		// Get the complete name /dev/devicename.
+		// Get the complete name /dev/devicename
 		$adevicespecialfile = explode("/", $devicespecialfile);
 		$devicename = $adevicespecialfile[2];
 
-		// Test if it's a gvinum, gmirror, gconcat or gstripe device.
+		// Test if it's a gvinum, gmirror, gconcat or gstripe device
 		if ((strcmp($devicename,"gvinum") == 0) ||
 				(strcmp($devicename,"mirror") == 0) || (strcmp($devicename,"concat") == 0) ||
 				(strcmp($devicename,"stripe") == 0) || (strcmp($devicename,"raid5") == 0)) {
 			$devicename = $adevicespecialfile[3];
 		}
 
-		// Get the sharename.
+		// Get the sharename
 		$amountpath = explode("/", $mountpath);
 
 		$amountlist[$i]['mp'] = $mountpath;
@@ -469,7 +469,7 @@ function get_mounts_list()
 	return $amountlist;
 }
 
-// Get usage informations of mount points.
+// Get usage information of mountpoints.
 // example: Array
 // [mount_point_name] => Array
 //      (
@@ -801,7 +801,7 @@ function get_ata_disks_list()
 {
 	$disklist = array();
 
-	/******* Getting IDE disk informations *******/
+	/******* Getting IDE disk information *******/
 	exec("/sbin/atacontrol list",$rawdata);
 
 	foreach ($rawdata as $line) {
@@ -1183,7 +1183,7 @@ function ip_in_subnet($addr,$subnet) {
 	return ((ip2long($addr) & $mask) == (ip2long($ip) & $mask));
 }
 
-// Obtain MAC address given an IP address by looking at the ARP table.
+// Obtain MAC address given an IP address by looking at the ARP table
 function arp_get_mac_by_ip($ip) {
 	exec("/usr/sbin/arp -n {$ip}", $arpoutput);
 
@@ -1199,10 +1199,10 @@ function arp_get_mac_by_ip($ip) {
 	return false;
 }
 
-// Get the interface name.
+// Get the interface name
 function get_ifname($if)
 {
-  // Check if 'auto' mode is activated.
+  // Check if 'auto' mode is activated
   if ($if === "auto")   {
     $interfaces = explode(" ", exec("/sbin/ifconfig -l"));
     $if = $interfaces[0];
@@ -1211,7 +1211,7 @@ function get_ifname($if)
   return $if;
 }
 
-// Get local IPv4 address.
+// Get local IPv4 address
 function get_ipaddr($if)
 {
   $if = get_ifname($if);
@@ -1238,7 +1238,7 @@ function get_ipaddr($if)
   return $ipaddr;
 }
 
-// Get local IPv6 address.
+// Get local IPv6 address
 function get_ipv6addr($if)
 {
   $if = get_ifname($if);
@@ -1265,7 +1265,7 @@ function get_ipv6addr($if)
   return $ipaddr;
 }
 
-// Get local MAC address.
+// Get local MAC address
 function get_macaddr($if)
 {
   $if = get_ifname($if);
@@ -1448,7 +1448,7 @@ function get_fstype_shortdesc($fstype) {
   return $shortdesc;
 }
 
-// Get interface informations.
+// Get interface information.
 // $if - Interface name (e.g. re0, ...)
 // Result: Array
 //	(
@@ -1558,7 +1558,7 @@ function get_interface_info($if) {
 	return $ifinfo;
 }
 
-// Get interface informations.
+// Get interface information.
 // $iftype - interface type (e.g. lan, opt[n], ...)
 // Result: Array
 //	(
@@ -1569,12 +1569,12 @@ function get_interface_info($if) {
 function get_interface_info_ex($iftype) {
   global $config;
 
-  // Get interface informations.
+  // Get interface information
 	$ifinfo = get_interface_info($config['interfaces'][$iftype]['if']);
 
-	// Get the default gateway if necessary.
+	// Get the default gateway if necessary
 	if ($iftype === "lan") {
-		// Run netstat to determine the default IPv4 gateway.
+		// Run netstat to determine the default IPv4 gateway
 		unset($netstatrninfo);
 		exec("/usr/bin/netstat -rnf inet", $netstatrninfo);
 
@@ -1583,7 +1583,7 @@ function get_interface_info_ex($iftype) {
 				$ifinfo['gateway'] = $matches[1];
 			}
 		}
-		// Run netstat to determine the default IPv6 gateway.
+		// Run netstat to determine the default IPv6 gateway
 		unset($netstatrninfo);
 		exec("/usr/bin/netstat -rnf inet6", $netstatrninfo);
 
@@ -1639,7 +1639,7 @@ function get_product_buildtime() {
 	return chop(file_get_contents("{$g['etc_path']}/prd.version.buildtime"));
 }
 
-/* Get the RAM information. Returns an array listing the amount of memory installed in the hardware. */
+/* Get the RAM information. Returns an array listing the amount of memory installed in the hardware */
 function get_ram_info() {
 	exec("/sbin/sysctl -n vm.stats.vm.v_active_count vm.stats.vm.v_inactive_count vm.stats.vm.v_wire_count vm.stats.vm.v_cache_count vm.stats.vm.v_free_count hw.physmem", $memory);
 	exec("/sbin/sysctl -n hw.realmem", $hwmemory);
@@ -1684,7 +1684,7 @@ function get_conf_physical_disks_list() {
 	if (is_array($config['disks']['disk'])) {
 		array_sort_key($config['disks']['disk'], "name");
 		$a_disks = $config['disks']['disk'];
-		foreach ($a_disks as &$disk) { $disk['class'] = "physical"; } // Set disk type.
+		foreach ($a_disks as &$disk) { $disk['class'] = "physical"; } // Set disk type
 		$a_physicaldisk = array_merge($a_physicaldisk, $a_disks);
   }
 
@@ -1700,42 +1700,42 @@ function get_conf_sraid_disks_list() {
 	if (is_array($config['gvinum']['vdisk'])) {
 		array_sort_key($config['gvinum']['vdisk'], "name");
 		$a_gvinum = $config['gvinum']['vdisk'];
-		foreach ($a_gvinum as &$vdisk) { $vdisk['class'] = "gvinum"; } // Set disk type.
+		foreach ($a_gvinum as &$vdisk) { $vdisk['class'] = "gvinum"; } // Set disk type
 		$a_vdisk = array_merge($a_vdisk, $a_gvinum);
   }
 
 	if (is_array($config['gmirror']['vdisk'])) {
 		array_sort_key($config['gmirror']['vdisk'], "name");
 		$a_gmirror = $config['gmirror']['vdisk'];
-		foreach ($a_gmirror as &$vdisk) { $vdisk['class'] = "gmirror"; } // Set disk type.
+		foreach ($a_gmirror as &$vdisk) { $vdisk['class'] = "gmirror"; } // Set disk type
 		$a_vdisk = array_merge($a_vdisk, $a_gmirror);
   }
 
 	if (is_array($config['gconcat']['vdisk'])) {
 		array_sort_key($config['gconcat']['vdisk'], "name");
 		$a_gconcat = $config['gconcat']['vdisk'];
-		foreach ($a_gconcat as &$vdisk) { $vdisk['class'] = "gconcat"; } // Set disk type.
+		foreach ($a_gconcat as &$vdisk) { $vdisk['class'] = "gconcat"; } // Set disk type
 		$a_vdisk = array_merge($a_vdisk, $a_gconcat);
   }
 
 	if (is_array($config['gstripe']['vdisk'])) {
 		array_sort_key($config['gstripe']['vdisk'], "name");
 		$a_gstripe = $config['gstripe']['vdisk'];
-		foreach ($a_gstripe as &$vdisk) { $vdisk['class'] = "gstripe"; } // Set disk type.
+		foreach ($a_gstripe as &$vdisk) { $vdisk['class'] = "gstripe"; } // Set disk type
 		$a_vdisk = array_merge($a_vdisk, $a_gstripe);
   }
 
 	if (is_array($config['graid5']['vdisk'])) {
 		array_sort_key($config['graid5']['vdisk'], "name");
 		$a_graid5 = $config['graid5']['vdisk'];
-		foreach ($a_graid5 as &$vdisk) { $vdisk['class'] = "graid5"; } // Set disk type.
+		foreach ($a_graid5 as &$vdisk) { $vdisk['class'] = "graid5"; } // Set disk type
 		$a_vdisk = array_merge($a_vdisk, $a_graid5);
   }
 
 	return $a_vdisk;
 }
 
-// Get list of configured encrypted disks.
+// Get list of configured encrypted disks
 function get_conf_encryped_disks_list() {
 	global $config;
 
@@ -1744,7 +1744,7 @@ function get_conf_encryped_disks_list() {
 	if (is_array($config['geli']['vdisk'])) {
 		array_sort_key($config['geli']['vdisk'], "name");
 		$a_geli = $config['geli']['vdisk'];
-		foreach ($a_geli as &$vdisk) { $vdisk['class'] = "geli"; } // Set disk type.
+		foreach ($a_geli as &$vdisk) { $vdisk['class'] = "geli"; } // Set disk type
 		$a_vdisk = array_merge($a_vdisk, $a_geli);
 	}
 
@@ -1759,20 +1759,20 @@ function get_conf_all_disks_list_filtered() {
 
 	$a_disk = array();
 
-	// Get list of physical disks.
+	// Get list of physical disks
 	$a_physicaldisk = get_conf_physical_disks_list();
 
-	// Get list of Software RAID disks.
+	// Get list of Software RAID disks
 	$a_sraiddisk = get_conf_sraid_disks_list();
 
-	// Get list of encrypted disks.
+	// Get list of encrypted disks
 	$a_encrypteddisk = get_conf_encryped_disks_list();
 
-	// First add physical disks if they are not used by a virtual disk.
+	// First add physical disks if they are not used by a virtual disk
 	foreach ($a_physicaldisk as $disk) {
 		$unused = true;
 
-		// Check Software RAID's.
+		// Check Software RAID volumes
 		foreach ($a_sraiddisk as $vdisk) {
 			if (is_array($vdisk['device'])) {
 				if (false !== array_search($disk['devicespecialfile'], $vdisk['device'])) {
@@ -1782,7 +1782,7 @@ function get_conf_all_disks_list_filtered() {
 			}
 		}
 
-		// Check encrypted disks.
+		// Check encrypted disks
 		foreach ($a_encrypteddisk as $vdisk) {
 			if (false !== array_search($disk['devicespecialfile'], $vdisk['device'])) {
 				$unused = false;
@@ -1790,18 +1790,18 @@ function get_conf_all_disks_list_filtered() {
 			}
 		}
 
-		// Append physical disk if it is not used by any virtual disk.
+		// Append physical disk if not used by any virtual disk
 		if(true === $unused) {
 			$a_disk[] = $disk;
 		}
 	}
 
 	// Add configured Software RAID disks. Check if they are not used by a
-	// virtual disk itself.
+	// virtual disk itself
 	foreach ($a_sraiddisk as $disk) {
 		$unused = true;
 
-		// Check Software RAID's.
+		// Check Software RAID volumes
 		foreach ($a_sraiddisk as $vdisk) {
 			if (is_array($vdisk['device'])) {
 				if (false !== array_search($disk['devicespecialfile'], $vdisk['device'])) {
@@ -1811,7 +1811,7 @@ function get_conf_all_disks_list_filtered() {
 			}
 		}
 
-		// Check encrypted disks.
+		// Check encrypted disks
 		foreach ($a_encrypteddisk as $vdisk) {
 			if (false !== array_search($disk['devicespecialfile'], $vdisk['device'])) {
 				$unused = false;
@@ -1819,13 +1819,13 @@ function get_conf_all_disks_list_filtered() {
 			}
 		}
 
-		// Append virtual disk if it is not used by any other virtual disk.
+		// Append virtual disk if not used by any other virtual disk
 		if(true === $unused) {
 			$a_disk[] = $disk;
 		}
 	}
 
-	// Add configured encrypted disks.
+	// Add configured encrypted disks
 	$a_disk = array_merge($a_disk, $a_encrypteddisk);
 
 	return $a_disk;
@@ -1839,7 +1839,7 @@ function get_conf_all_disks_list_filtered() {
 function get_conf_disks_filtered_ex($key, $pattern) {
 	$result = array();
 
-	// Get all configured disks.
+	// Get all configured disks
 	$a_disk = array_merge(get_conf_physical_disks_list(), get_conf_sraid_disks_list(), get_conf_encryped_disks_list());
 
 	if (is_array($a_disk)) {

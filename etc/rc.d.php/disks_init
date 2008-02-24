@@ -35,7 +35,7 @@ require_once("config.inc");
 require_once("functions.inc");
 require_once("util.inc");
 
-/* Start RAID configuration, otherwise GEOM classes aren't available. */
+/* Start RAID configuration, otherwise GEOM classes aren't available */
 disks_raid_start();
 
 return 0;

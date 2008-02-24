@@ -29,7 +29,7 @@ create_conf()
 {
 	local _motd
 
-	# Create rsyncd.conf file.
+	# Create rsyncd.conf file
 	/usr/local/bin/xml sel -t -m "//rsyncd" \
 		-o "syslog facility = local4" -n \
 		-o "list = no" -n \
@@ -58,7 +58,7 @@ create_conf()
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${rsyncd_config}
 
-	# Create MOTD file.
+	# Create MOTD file
 	_motd=`configxml_get "//rsyncd/motd"`
 	if [ -n "${_motd}" ]; then
 		echo "${_motd}" > ${rsyncd_motd}

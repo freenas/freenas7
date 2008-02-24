@@ -14,12 +14,12 @@
 # Defaults
 cshrc_config=${cshrc_config:-"/root/.cshrc"}
 
-# Remove proxy settings (HTTP_PROXY, HTTP_PROXY_AUTH, FTP_PROXY and FTP_PROXY_AUTH).
+# Remove proxy settings (HTTP_PROXY, HTTP_PROXY_AUTH, FTP_PROXY and FTP_PROXY_AUTH)
 if [ -e ${cshrc_config} ]; then
 	/usr/bin/sed -i "" '/^.*[HTTP|FTP]_PROXY[_AUTH]*.*$/d' ${cshrc_config}
 fi
 
-# Set proxy settings.
+# Set proxy settings
 /usr/local/bin/xml sel -t \
 	-m "//system/proxy/http" \
 		-i "count(enable) > 0" -n -v "concat('setenv HTTP_PROXY &quot;',address,':',port,'&quot;')" \

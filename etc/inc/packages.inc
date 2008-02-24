@@ -67,7 +67,7 @@ function packages_get_installed() {
 
 // Uninstall package.
 // $pkgname - The package name or filename (e.g. xyz or xyz.tbz)
-// Return 0 if sucessful, 1 if error
+// Return 0 if successful, 1 if error
 function packages_uninstall($pkgname) {
 	// Remove '.tbz' if necessary.
 	$pkgname = basename($pkgname, ".tbz");
@@ -98,7 +98,7 @@ function packages_is_installed($pkgname) {
 
 // Install package.
 // $pkgname - The package filename to be installed (e.g. xyz.tbz)
-// Return 0 if sucessful, 1 if error
+// Return 0 if successful, 1 if error
 function packages_install($pkgname) {
 	system("/usr/sbin/pkg_add -v {$pkgname}", $result);
 	if (0 == $result) {

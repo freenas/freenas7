@@ -29,14 +29,14 @@ required_files="${mountd_config}"
 command="/usr/sbin/${name}"
 command_args="-r ${mountd_config}"
 
-# Clear existing file.
+# Clear existing file
 cat /dev/null > ${mountd_config}
 
 create_conf()
 {
 	local _index _ipaddr _network _mask
 
-	# Create /var/etc/exports file.
+	# Create /var/etc/exports file
 	_index=`configxml_get_count "//nfsd/share"`
 	while [ ${_index} -gt 0 ]
 	do

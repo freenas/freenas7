@@ -23,7 +23,7 @@ cron_config=${cron_config:-"/etc/crontab"}
 
 create_conf()
 {
-	# Create /etc/crontab.
+	# Create /etc/crontab
 	echo "SHELL=/bin/sh
 PATH=/etc:/bin:/sbin:/usr/bin:/usr/sbin
 HOME=/var/log

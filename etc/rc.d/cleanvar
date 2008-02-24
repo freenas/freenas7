@@ -56,7 +56,7 @@ purgedir()
 cleanvar_prestart()
 {
 	# These files must be removed only the first time this script is run
-	# on boot.
+	# at boot.
 	#
 	rm -f /var/run/clean_var /var/spool/lock/clean_var
 }

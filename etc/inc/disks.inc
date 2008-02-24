@@ -33,19 +33,19 @@
 require_once("functions.inc");
 
 // Mount all configured disks.
-// Return 0 if sucessful, 1 if error
+// Return 0 if successful, 1 if error
 function disks_mount_all()
 {
 	global $config, $g;
 
 	// For each device configured:
 	if (is_array($config['mounts']['mount'])) {
-		// Mount real disks first.
+		// Mount real disks first
 		foreach ($config['mounts']['mount'] as $mount) {
 			if ("disk" !== $mount['type'])
 				continue;
 
-			// Advanced umount filesystem if not in booting mode (mount edition).
+			// Advanced unmount filesystem if not in booting mode (mount edition).
 			// Background: 'disks_umount' can't be used in the case the mount point
 			// has been renamed by the user because it uses the 'sharename' (which is
 			// now the new name of the share, but we need the old name) for unmounting.
@@ -55,12 +55,12 @@ function disks_mount_all()
 			disks_mount($mount);
 		}
 
-		// Then mount ISOs.
+		// Then mount ISOs
 		foreach ($config['mounts']['mount'] as $mount) {
 			if ("iso" !== $mount['type'])
 				continue;
 
-			// Advanced umount filesystem if not in booting mode (mount edition).
+			// Advanced unmount filesystem if not in booting mode (mount edition)
 			if (!is_booting())
 				disks_umount($mount);
 
@@ -71,13 +71,13 @@ function disks_mount_all()
 	return 0;
 }
 
-// This function umount all configured mount points.
+// This function unmounts all configured mountpoints
 // Return 0 if successful, otherwise 1
 function disks_umount_all()
 {
 	global $config;
 
-	// Sync disks first.
+	// Sync disks first
 	mwexec("/bin/sync");
 
 	if (is_array($config['mounts']['mount'])) {
@@ -90,26 +90,26 @@ function disks_umount_all()
 }
 
 // Mount using the configured mount given in parameter
-// Return 0 if sucessful, 1 if error
+// Return 0 if successful, 1 if error
 function disks_mount($mount)
 {
 	global $config, $g;
 
-	// Set PATH (otherwise ntfs won't be mounted via WebGUI).
+	// Set PATH (otherwise ntfs won't be mounted via WebGUI)
 	putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
 
-	// Set mount name.
+	// Set mount name
 	$mountname = "/mnt/{$mount['sharename']}";
 
 	// Changing the PHP file creation mask to 0777
 	$oldumask = umask(0);
 
-	// Create one directory for each device under /mnt.
+	// Create one directory for each device under /mnt
 	if (! @mkdir($mountname, 0777)) {
 		write_log("Error: Can't create directory {$mountname} in disks_mount().");
 	}
 
-	// Restoring PHP file creation mask to old value.
+	// Restoring PHP file creation mask to old value
 	umask($oldumask);
 
 	// Check
@@ -117,7 +117,7 @@ function disks_mount($mount)
 		write_log("Error: Failed to change back umask in disks_mount().");
 	}
 
-	/* Mount the filesystem. */
+	/* Mount the filesystem */
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
 	if (is_booting()) {
 		if (is_array($config['geli']['vdisk'])) {
@@ -134,7 +134,7 @@ function disks_mount($mount)
 			break;
 
 		case "iso":
-			// Create memory disk. 'mdconfig' returns the ID of this disk.
+			// Create memory disk. 'mdconfig' returns the ID of this disk
 			exec("/sbin/mdconfig -a -t vnode -f '{$mount['filename']}'", $mdid, $result);
 			if (0 !== $result) {
 				write_log("Error: Failed to create memory disk for '{$mount['filename']}'");
@@ -144,7 +144,7 @@ function disks_mount($mount)
 			break;
 	}
 
-	/* Check if filesystem should be mounted read-only. */
+	/* Check if filesystem should be mounted read-only */
 	$readonly = (isset($mount['readonly'])) ? "-r" : "";
 
 	/* Check the fileystem only if there is a problem. */
@@ -187,7 +187,7 @@ function disks_mount($mount)
 			break;
 
 		case "ntfs":
-			// Load the kernel fuse module.
+			// Load the kernel FUSE module
 			mwexec("/sbin/kldload /boot/kernel/fuse.ko");
 			$result = mwexec("/sbin/mount -t ntfs-3g -o force {$readonly} {$devicespecialfile} '{$mountname}'"); // default options: silent,allow_other
 			if (0 == $result) {
@@ -215,7 +215,7 @@ function disks_mount($mount)
 
 	// Modify directory mode to 0777. Check if target directory is writable,
 	// otherwise we will get an error message.
-	// For ISO's this may be 'chmod: /mnt/xxx: Read-only file system)'.
+	// For ISO's this may be 'chmod: /mnt/xxx: Read-only file system)'
 	if (file_exists($mountname) && is_writable($mountname)) {
 		if (!@chmod($mountname, 0777)) {
 			write_log("Error: Can't reset mode 0777 on directory {$mountname}");
@@ -225,18 +225,18 @@ function disks_mount($mount)
 	return $result;
 }
 
-// Umount the specified configured mount point.
+// Unmount the specified configured mount point.
 // Return 0 is successfull, 1 if error
 function disks_umount($mount)
 {
-	// Get memory disk unit for ISOs.
+	// Get memory disk unit for ISOs
 	if ("iso" === $mount['type']) {
-		// Get current mount list.
+		// Get current mount list
 		$amountlist = get_mounts_list();
 
 		foreach ($amountlist as $amountk => $amountv) {
 			if (0 == strcmp($amountv['sharename'], $mount['sharename'])) {
-				// Extract memory disk unit id.
+				// Extract memory disk unit id
 				preg_match("/^\/dev\/md(\d+)$/", $amountv['devicespecialfile'], $matches);
 				$mdunit = $matches[1];
 				break;
@@ -244,23 +244,23 @@ function disks_umount($mount)
 		}
 	}
 
-	// Umount mount point.
+	// Unmount mount point
 	$mountname = "/mnt/{$mount['sharename']}";
 
 	if (mwexec("/sbin/umount '{$mountname}'") == 0) {
 		if(@rmdir("{$mountname}")) {
-			write_log("Sucessfull umounted '{$mountname}'");
+			write_log("Successfully unmounted '{$mountname}'");
 			$result = 0;
 		} else {
-			write_log("Error: Failed to umount '{$mountname}'");
+			write_log("Error: Failed to unmount '{$mountname}'");
 			$result = 1;
 		}
 	} else {
-		write_log("Error: Failed to umount '{$mountname}'");
+		write_log("Error: Failed to unmount '{$mountname}'");
 		$result = 1;
 	}
 
-	// Detach memory disk for ISOs.
+	// Detach memory disk for ISOs
 	if (0 == $result && "iso" === $mount['type']) {
 		$result = mwexec("/sbin/mdconfig -d -u {$mdunit}");
 	}
@@ -274,7 +274,7 @@ function disks_umount($mount)
 // Return 0 if successful, 1 if error
 function disks_umount_ex($mount)
 {
-	// Get current mount list.
+	// Get current mount list
 	$amountlist = get_mounts_list();
 
 	foreach ($amountlist as $amountk => $amountv) {
@@ -287,14 +287,14 @@ function disks_umount_ex($mount)
 	if ($mountname) {
 		if (mwexec("/sbin/umount '{$mountname}'") == 0) {
 			if(@rmdir("{$mountname}")) {
-				write_log("Sucessfull umounted '{$mountname}'");
+				write_log("Successfully unmounted '{$mountname}'");
 				$result = 0;
 			} else {
-				write_log("Error: Failed to umount '{$mountname}'");
+				write_log("Error: Failed to unmount '{$mountname}'");
 				$result = 1;
 			}
 		} else {
-			write_log("Error: Failed to umount '{$mountname}'");
+			write_log("Error: Failed to unmount '{$mountname}'");
 			$result = 1;
 		}
 	}
@@ -307,7 +307,7 @@ function disks_umount_ex($mount)
 // Return 0 if not mounted, otherwise 1
 function disks_ismounted($mount)
 {
-	// MUST CHECK IF IT'S NTFS filesystem.
+	// MUST CHECK IF IT'S NTFS filesystem
 	if (0 == strcmp($mount['fstype'],"ntfs")) {
 		return disks_ismounted_ex($mount['sharename'], "sharename");
 	} else {
@@ -315,7 +315,7 @@ function disks_ismounted($mount)
 	}
 }
 
-// Check if mount point is mounted.
+// Check if mountpoint is mounted.
 // $var - The attribute value to search for
 // $key - The attribute name to search for
 // e.g.:  disks_ismounted_ex("/dev/ad0s1","devicespecialfile");
@@ -326,15 +326,15 @@ function disks_ismounted_ex($var,$key)
 {
 	$result = 0;
 
-	// Get current mount list.
+	// Get current mount list
 	$amountlist = get_mounts_list();
 
 	foreach ($amountlist as $amountk => $amountv) {
 		switch ($key) {
 			case "mdisk":
 			case "devicespecialfile":
-				// Must found the $val (e.g. ad0) in 'mdisk' (e.g. ad0s1).
-				// Must found the $val (e.g. /dev/ad1) in 'devicespecialfile' (e.g. /dev/ad1s1).
+				// Must find the $val (e.g. ad0) in 'mdisk' (e.g. ad0s1).
+				// Must find the $val (e.g. /dev/ad1) in 'devicespecialfile' (e.g. /dev/ad1s1).
 				if (false !== strstr($amountv[$key], $var)) {
 					$result = 1;
 					break;
@@ -371,7 +371,7 @@ function disks_raid_gvinum_configure($name)
 	if (!is_array($vdisk))
 		 return 1;
 
-	// Generate the raid.conf file.
+	// Generate the raid.conf file
 	$fd = fopen("{$g['varetc_path']}/raid-{$vdisk['name']}.conf", "w");
 	if (!$fd) {
 		write_console("Error: Failed to open raid.conf in services_raid_configure().\n");
@@ -452,10 +452,10 @@ EOD;
 	fwrite($fd, $raidconf);
 	fclose($fd);
 
-	// Create volume.
+	// Create volume
 	mwexec("/sbin/gvinum create {$g['varetc_path']}/raid-{$vdisk['name']}.conf");
 
-	// Start volume.
+	// Start volume
 	mwexec("/sbin/gvinum start {$vdisk['name']}");
 
 	return 0;
@@ -479,10 +479,10 @@ function disks_raid_gmirror_configure($name)
 	if (!is_array($vdisk))
 		 return 1;
 
-	// Load kernel module.
+	// Load kernel module
 	mwexec("/sbin/gmirror load");
 
-	// Create volume.
+	// Create volume
 	$cmd = "/sbin/gmirror label -b {$vdisk['balance']} {$vdisk['name']} ";
 	foreach ($vdisk['device'] as $devicek => $devicev) {
 		$cmd .= "{$devicev} ";
@@ -509,10 +509,10 @@ function disks_raid_gconcat_configure($name)
 	if (!is_array($vdisk))
 		 return 1;
 
-	// Load kernel module.
+	// Load kernel module
 	mwexec("/sbin/gconcat load");
 
-	// Create volume.
+	// Create volume
 	$cmd = "/sbin/gconcat label {$vdisk['name']} ";
 	foreach ($vdisk['device'] as $devicek => $devicev) {
 		$cmd .= "{$devicev} ";
@@ -539,10 +539,10 @@ function disks_raid_gstripe_configure($name)
 	if (!is_array($vdisk))
 		 return 1;
 
-	// Load kernel module.
+	// Load kernel module
 	mwexec("/sbin/gstripe load");
 
-	// Create volume.
+	// Create volume
 	$cmd = "/sbin/gstripe label {$vdisk['name']} ";
 	foreach ($vdisk['device'] as $devicek => $devicev) {
 		$cmd .= "{$devicev} ";
@@ -569,13 +569,13 @@ function disks_raid_graid5_configure($name)
 	if (!is_array($vdisk))
 		 return 1;
 
-	// Load kernel module.
+	// Load kernel module
 	mwexec("/sbin/graid5 load");
 
-	// Tune system.
+	// Tune system
 	disks_raid_graid5_tune();
 
-	// Create volume.
+	// Create volume
 	$cmd = "/sbin/graid5 label -s 131072 {$vdisk['name']} ";
 	foreach ($vdisk['device'] as $devicek => $devicev) {
 		$cmd .= "{$devicev} ";
@@ -604,7 +604,7 @@ function disks_raid_gvinum_start()
 	global $config;
 
 	if (is_array($config['gvinum']['vdisk'])) {
-		/* Start each volume. */
+		/* Start each volume */
 		foreach ($config['gvinum']['vdisk'] as $vdiskv) {
 			mwexec("/sbin/gvinum start {$vdiskv['name']}");
 		}
@@ -668,13 +668,13 @@ function disks_raid_graid5_start()
 	return 0;
 }
 
-// Optimize geom raid5 RAM use.
+// Optimize geom raid5 RAM usage
 // Return none
 function disks_raid_graid5_tune()
 {
-	/* Get RAM informations. */
+	/* Get RAM information */
 	$raminfo = get_ram_info();
-	/* Calculate real RAM in MB. */
+	/* Calculate real RAM in MB */
 	$realram = round($raminfo['real'] / 1024 / 1024);
 
 	if ($realram <= 128) {
@@ -689,7 +689,7 @@ function disks_raid_graid5_tune()
 		write_log("Detected >= 512MB of RAM... No need to optimize RAM usage for graid5");
 	}
 
-	// Modify ATA timeout to 15 seconds.
+	// Modify ATA timeout to 15 seconds
 	mwexec('sysctl hw.ata.to=15');
 }
 
@@ -831,10 +831,10 @@ function disks_raid_gmirror_delete($name)
 	if (!is_array($vdisk))
 		 return 1;
 
-	// Stop the volume.
+	// Stop the volume
 	mwexec("/sbin/gmirror stop {$name}");
 
-	// Clear the gmirror information on the hard drive.
+	// Clear the gmirror information on the hard drive
 	foreach ($vdisk['device'] as $device) {
 		mwexec("/sbin/gmirror clear {$device}");
 	}
@@ -860,10 +860,10 @@ function disks_raid_gconcat_delete($name)
 	if (!is_array($vdisk))
 		 return 1;
 
-	// Stop the volume.
+	// Stop the volume
 	mwexec("/sbin/gconcat stop {$name}");
 
-	// Clear the gconcat information on the hard drive.
+	// Clear the gconcat information on the hard drive
 	foreach ($vdisk['device'] as $device) {
 		mwexec("/sbin/gconcat clear {$device}");
 	}
@@ -893,7 +893,7 @@ function disks_raid_gstripe_delete($name)
 	// Stop the volume
 	mwexec("/sbin/gstripe stop {$name}");
 
-	// Clear the gconcat information on the hard drive.
+	// Clear the gconcat information on the hard drive
 	foreach ($vdisk['device'] as $device) {
 		mwexec("/sbin/gstripe clear {$device}");
 	}
@@ -924,12 +924,12 @@ function disks_raid_graid5_delete($name)
 	// Arne Woerner advice: Don't stop the volume before deleting it.
 	// mwexec("/sbin/graid5 stop {$name}");
 
-	// Clear the graid5 information on the hard drive.
+	// Clear the graid5 information on the hard drive
 	foreach ($vdisk['device'] as $device){
-		// Get the name of the provider.
+		// Get the name of the provider
 		$id = array_search_ex($device, $config['disks']['disk'], "devicespecialfile");
 		$provider = $config['disks']['disk'][$id]['name'];
-		// Remove provider.
+		// Remove provider
 		mwexec("/sbin/graid5 remove {$name} {$provider}");
 	}
 	mwexec("/sbin/graid5 destroy {$name}");
@@ -944,12 +944,12 @@ function disks_geli_init($provider, $aalgo, $ealgo, $passphrase, $verbose = fals
 	$param = "-t";
 	$result = 1;
 
-	// Add additional parameters.
+	// Add additional parameters
 	if (true == $verbose) $param .= " -v";
 	if (0 !== strcmp($aalgo,"none")) $param .= " -a {$aalgo}";
 	if (!empty($ealgo)) $param .= " -e {$ealgo}";
 
-	// Init disk.
+	// Init disk
 	system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli init {$param} {$provider} 2>&1", $result);
 
 	return $result;
@@ -965,10 +965,10 @@ function disks_geli_attach($provider, $passphrase, $verbose = false)
 	$param = "-t";
 	$result = 1;
 
-	// Add additional parameters.
+	// Add additional parameters
 	if (true == $verbose) $param .= " -v";
 
-	// Attach disk.
+	// Attach disk
 	system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli attach {$param} {$provider} 2>&1", $result);
 
 	return $result;
@@ -995,7 +995,7 @@ function disks_geli_kill($provider)
 	return $result;
 }
 
-// Detach all geli encrypted disks
+// Detach all geli encrypted disks.
 // Return 0 if successful, 1 if error
 function disks_geli_detach_all()
 {
@@ -1019,21 +1019,21 @@ function disks_geli_detach_all()
 // provider: Name of the provider, e.g. da0, ad3, ...
 // oldpassphrase: Old passphrase
 // passphrase: New passphrase
-// verbose: Display additional informations
+// verbose: Display additional information
 // Return 0 if successful, 1 if error
 function disks_geli_setkey($provider, $oldpassphrase, $passphrase, $verbose = false)
 {
 	$param = "-t";
 	$result = 1;
 
-	// Add additional parameters.
+	// Add additional parameters
 	if (true == $verbose) $param .= " -v";
 
 	if (0 == disks_exists("/dev/{$provider}.eli")) {
-		// Provider is already attached.
+		// Provider is already attached
 		system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli setkey {$param} {$provider} 2>&1", $result);
 	} else {
-		// Provider has not already been attached.
+		// Provider has not already been attached
 		system("(/bin/echo {$oldpassphrase}; /bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli setkey {$param} {$provider} 2>&1", $result);
 	}
 
@@ -1051,13 +1051,13 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 
 	switch ($type) {
 		case "ufsgpt":
-			// Create GPT partition table.
+			// Create GPT partition table
 			echo gettext("Creating partition").":\n";
-			system("/sbin/gpt destroy {$disk} 1>/dev/null 2>&1"); // Destroy old GTP partition.
+			system("/sbin/gpt destroy {$disk} 1>/dev/null 2>&1"); // Destroy old GTP partition
 			system("/sbin/gpt create -f {$disk} 2>&1");
 			system("/sbin/gpt add -t ufs {$disk} 2>&1");
 
-			// Create filesystem.
+			// Create filesystem
 			echo gettext("Creating filesystem with 'Soft Updates'").":\n";
 			$param = "-U";
 			if (!empty($volumelabel))
@@ -1068,20 +1068,20 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			break;
 
 		case "softraid":
-			// Initialise disk.
+			// Initialize disk
 			echo gettext("Formating disk").".\n";
 			system("/bin/dd if=/dev/zero of={$disk} bs=1m count=16");
 			break;
 
 		case "msdos":
-			// Get disk informations.
+			// Get disk information
 			$diskinfo = disks_get_diskinfo($disk);
 
-			// Get valid CHS informations. 'diskinfo' gets values from harddisk firmware that
+			// Get valid CHS information. 'diskinfo' gets values from harddisk firmware that
 			// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63). 
 			disk_sanitize_bios_geom($diskinfo);
 
-			// Create fdisk config file (fdisk.conf).
+			// Create fdisk config file (fdisk.conf)
 			$fdiskconf .= <<<EOD
 g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}
 p 1 11 1 {$diskinfo['mediasize_sectors']}
@@ -1097,15 +1097,15 @@ EOD;
 				break;
 			}
 
-			// Initialize disk.
+			// Initialize disk
 			echo gettext("Creating partition").":\n";
 			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk} 2>&1");
 
-			// Initialize the partition.
+			// Initialize the partition
 			echo gettext("Initializing partition").".\n";
 			system("/bin/dd if=/dev/zero of={$disk}s1 bs=32k count=16");
 
-			// Create filesystem.
+			// Create filesystem
 			echo gettext("Creating filesystem").":\n";
 			$param = "-F 32";
 			if (!empty($volumelabel))
@@ -1118,14 +1118,14 @@ EOD;
 			break;
 
 		case "ext2":
-			// Get disk informations.
+			// Get disk information
 			$diskinfo = disks_get_diskinfo($disk);
 
-			// Get valid CHS informations. 'diskinfo' gets values from harddisk firmware that
+			// Get valid CHS information. 'diskinfo' gets values from harddisk firmware that
 			// are maybe unusable by 'fdisk' (e.g. sectors = 255, fdisk requires <= 63). 
 			disk_sanitize_bios_geom($diskinfo);
 
-			// Create fdisk config file (fdisk.conf).
+			// Create fdisk config file (fdisk.conf)
 			$fdiskconf .= <<<EOD
 g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}
 p 1 131 1 {$diskinfo['mediasize_sectors']}
@@ -1141,15 +1141,15 @@ EOD;
 				break;
 			}
 
-			// Initialize disk.
+			// Initialize disk
 			echo gettext("Creating partition").":\n";
 			system("/sbin/fdisk -v -f {$g['tmp_path']}/fdisk.conf {$disk} 2>&1");
 
-			// Initialize the partition.
+			// Initialize the partition
 			echo gettext("Initializing partition").".\n";
 			system("/bin/dd if=/dev/zero of={$disk}s1 bs=32k count=16");
 
-			// Create filesystem.
+			// Create filesystem
 			echo gettext("Creating filesystem").":\n";
 			$param = "";
 			if (!empty($volumelabel))
@@ -1175,22 +1175,22 @@ function disks_fsck($device,$umount = false)
 {
 	global $config;
 
-	// Check if there exits any mounts.
+	// Check if there exits any mounts
 	if(!is_array($config['mounts']['mount']))
 		return 1;
 
-	// Get the id of the disk.
+	// Get the id of the disk
 	$id = array_search_ex($device, $config['mounts']['mount'], "devicespecialfile");
 	if (false === $id)
 		return 1;
 
-	// Get the mount configuration.
+	// Get the mount configuration
 	$mount = $config['mounts']['mount'][$id];
 
-	// Check if disk is mounted.
+	// Check if disk is mounted
 	$ismounted = disks_ismounted($mount);
 
-	// Umount disk temporary if necessary.
+	// Unmount disk temporarily if necessary
 	if($umount && $ismounted) {
 		echo("<strong class='red'>" . gettext("Note") . ":</strong> " . gettext("The disk is currently mounted! The mount point will be removed temporary to perform selected command.") . "<br><br>");
 		disks_umount($mount);
@@ -1205,7 +1205,7 @@ function disks_fsck($device,$umount = false)
 			break;
 	}
 
-	// Remount disk again if necessary.
+	// Remount disk again if necessary
 	if($umount && $ismounted) {
 		disks_mount($mount);
 	}
@@ -1248,7 +1248,7 @@ function disks_get_partition_info($disk) {
   return $result;
 }
 
-// Get disk informations.
+// Get disk information.
 // $disk - Name of the disk (e.g. ad0)
 // Result is in the form:
 // [1] => Array
@@ -1283,7 +1283,7 @@ function disks_get_diskinfo($disk)
 }
 
 // Get cylinders/heads/sectors from disk.
-// $info - Array containing CHS informations.
+// $info - Array containing CHS information.
 //         [1] => Array
 //         (
 // 	          [cylinders] => 10158
@@ -1298,7 +1298,7 @@ function disks_get_chs_info($disk, &$info)
 
 	exec("/sbin/fdisk -t {$disk}", $rawdata);
 
-	// Parse string: cylinders=77826 heads=255 sectors/track=63 (16065 blks/cyl).
+	// Parse string: cylinders=77826 heads=255 sectors/track=63 (16065 blks/cyl)
 	if (0 == preg_match("/.+cylinders=(\d+) heads=(\d+) sectors\/track=(\d+) .+/", implode($rawdata), $chs))
 		return 1;
 
@@ -1335,11 +1335,11 @@ function disks_geom_cmd($class, $command, $param, $verbose = false, $stderr = tr
 	if ("vinum" !== $class)
 		$cmd = "/sbin/geom {$class} {$command} {$param}";
 	else
-		$cmd = "/sbin/gvinum {$command} {$param}"; // gvinum can't be executed via geom.
+		$cmd = "/sbin/gvinum {$command} {$param}"; // gvinum can't be executed via geom
 
 	if (true === $verbose) {
 		if (true === $stderr)
-			$cmd .= " 2>&1"; // Redirect error message to stdout.
+			$cmd .= " 2>&1"; // Redirect error message to stdout
 
 		system($cmd, $result);
 	}	else {
@@ -1351,7 +1351,7 @@ function disks_geom_cmd($class, $command, $param, $verbose = false, $stderr = tr
 
 // Calculate valid cylinders/heads/sectors.
 // Code taken from FreeBSD kernel /src/lib/libdisk/change.c.
-// $info [in|out] - Array containing CHS informations.
+// $info [in|out] - Array containing CHS information.
 //                 [1] => Array
 //                 (
 // 	                 [name] => ad0
@@ -1378,7 +1378,7 @@ function disk_sanitize_bios_geom(&$info) {
 	if (0 != $sane)
 		return;
 
-	// First try something that IDE can handle.
+	// First try something that IDE can handle
 	$info['sectors'] = 63;
 	$info['heads'] = 16;
 	$info['cylinders'] = intval($info['mediasize_sectors'] / ($info['sectors'] * $info['heads']));
@@ -1387,7 +1387,7 @@ function disk_sanitize_bios_geom(&$info) {
 		return;
 
 	// Hmm, try harder...
-	// Assume standard SCSI parameter.
+	// Assume standard SCSI parameter
 	$info['heads'] = 255;
 	$info['cylinders'] = intval($info['mediasize_sectors'] / ($info['sectors'] * $info['heads']));
 }

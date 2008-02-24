@@ -2,8 +2,8 @@ Howto convert PHP code into rc-init scripts:
 
 XMLStarlet is mostly used to create configuration files from services used
 in FreeNAS. Most of the config files are created in the rc-init scripts
-itself. Some services need to have a PHP wrapper script because the
-convertion from PHP code to a shell script is not done completely.
+themselves. Several services need to have a PHP wrapper script because the
+conversion from PHP code to a shell script is not done completely.
 
 Most of the already completed shell scripts have the following structure:
 
@@ -25,7 +25,7 @@ create_conf()
 The XQUERY attribute is used by the /etc/rc.d/rcconf.sh script to find out
 whether the service should be enabled or not. It is the path to the element in
 /conf/config.xml that is used for evaluation.
-The RCVAR attribute defines the name of the service. This can differ to the
+The RCVAR attribute defines the name of the service. This can differ from the
 filename. It is possible to set more than one service name.
 
 Example:
@@ -40,10 +40,9 @@ For the example above the following rc.conf entries are generated ('YES' or
 rpc_statd_enable="YES|NO"
 rpc_lockd_enable="YES|NO"
 
-This two attributes are used mostly from services that are configurable using
+These two attributes are used mostly from services that are configurable using
 the WebGUI and that are stored in the /conf/config.xml file.
-The /etc/rc.d/rcconf.sh script evaluates these settings and creates the /etc/rc.conf
-file based on the configuration.
+The /etc/rc.d/rcconf.sh script evaluates these settings and creates the /etc/rc.conf file based on the configuration.
 
 To create the services configuration file XMLStarlet is used to parse the config.xml
 file. The following examples show how to convert PHP code to shell script.
@@ -90,12 +89,12 @@ xml set -t -m "//samba" \
 	/conf/config.xml
 
 The three examples above do all exactly the same but each of them does it more
-elegant than the one before.
+elegantly than the previous one.
 A simple PHP string check can be emulated by using the 'if' command XMLStarlet
 provides (-i attribute). To do that the XPATH 'string-length' is used to check
-if the string '//samba/sndbuf' is greater than 0. A 'if' condition has to be
+if the string '//samba/sndbuf' is greater than 0. An 'if' condition has to be
 closed by the -b attribute.
-The -o attribute is used to simple give out a string. The -v attribute is used
+The -o attribute is used to simply give out a string. The -v attribute is used
 to get the value from a specified XPATH element. It is possible to use
 XPATH functions. In the third example the 'concat' function is used to format the
 output.

@@ -30,7 +30,7 @@ create_conf()
 {
 	local _privatekey
 
-	# Create sshd_config file.
+	# Create sshd_config file
 	/usr/local/bin/xml sel -t \
 		-o "SyslogFacility LOCAL3" -n \
 		-o "Protocol 2" -n \
@@ -47,7 +47,7 @@ create_conf()
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${sshd_config}
 
-	# Create ssh_host_dsa_key file.
+	# Create ssh_host_dsa_key file
 	_privatekey=`configxml_get "//sshd/private-key"`
 	if [ -n "${_privatekey}" ]; then
 		echo "${_privatekey}" > ${sshd_hostdsakey}.tmp

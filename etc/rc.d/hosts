@@ -11,11 +11,11 @@
 
 echo "Updating hosts."
 
-# Get interface address.
+# Get interface address
 _if=`configxml_get "//interfaces/lan/if"`
 _ipaddr=`get_ipaddr inet ${_if}`
 
-# Generate /etc/hosts file.
+# Generate /etc/hosts file
 /usr/local/bin/xml sel -t -m "//system" \
 	-v "concat('::1 localhost localhost.',domain)" -n \
 	-v "concat('127.0.0.1 localhost localhost.',domain)" -n \

@@ -35,7 +35,7 @@ create_conf()
 {
 	local _protocol _certificate _privatekey _tmpfile
 
-	# Create lighttpd.conf file.
+	# Create lighttpd.conf file
 	cat <<EOF > ${lighttpd_conf}
 server.modules = (
   "mod_access",
@@ -125,7 +125,7 @@ EOF
 	_privatekey=`configxml_get "//system/webgui/private-key"`
 
 	if [ "${_protocol}" = "https" ]; then
-		# Create /var/etc/cert.pem file.
+		# Create /var/etc/cert.pem file
 		if [ -n "${_certificate}" -a -n "${_privatekey}" ]; then
 			_tmpfile=/tmp/lighttpd$$.tmp
 
@@ -191,7 +191,7 @@ stop_postcmd()
 
 reload_precmd()
 {
-	echo "Stoping ${name} and start gracefully."
+	echo "Stopping ${name} and starting gracefully."
 }
 
 reload_postcmd()

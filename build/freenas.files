@@ -258,7 +258,7 @@ usr/bin/chgrp
 ## du -- Display file usage: Usefull for checking disk space
 usr/bin/du
 
-## fstat -- identify active files . Fuse mount use fstat
+## fstat -- identify active files
 usr/bin/fstat
 
 ## fetch -- FTP/HTTP download tools
@@ -285,7 +285,7 @@ usr/bin/netstat
 ## nohup -- invoke a utility immune to hangups
 usr/bin/nohup
 
-## passwd -- Change user passwd
+## passwd -- modify a user's password
 usr/bin/passwd
 
 ## su -- substitute user identity
@@ -361,7 +361,7 @@ usr/bin/tee
 ## sed -- stream editor
 usr/bin/sed
 
-## wall -- write a message to users (repuired by shutdown)
+## wall -- write a message to users (required by shutdown)
 usr/bin/wall
 
 ## sort -- sort lines of text files
@@ -404,10 +404,10 @@ usr/sbin/chown
 ##chroot -- change root directory
 usr/sbin/chroot
 
-## cron -- Task scheduler
+## cron -- daemon to execute scheduled commands (Vixie Cron)
 usr/sbin/cron
 
-## powerd -- System power control utility
+## powerd -- system power control utility
 usr/sbin/powerd
 
 ## pw -- create, remove, modify & display system users and groups
@@ -428,21 +428,29 @@ usr/sbin/wicontrol
 ## wpa_supplicant -- WPA/802.11i Supplicant for wireless network devices
 usr/sbin/wpa_supplicant
 
-## NFS server tools
+## mountd -- service remote NFS mount requests
 usr/sbin/mountd
+
+## nfsd -- remote NFS server
 usr/sbin/nfsd
+
+## rpcbind -- universal addresses to RPC program number mapper
 usr/sbin/rpcbind
+
+## rpc.lockd -- NFS file locking daemon
 usr/sbin/rpc.lockd
+
+## rpc.statd -- host status monitoring daemon
 usr/sbin/rpc.statd
 
-# sshd - Daemon program for ssh
-# Note: Will be overwritten when openssh-portable package is activated.
+## sshd -- OpenSSH SSH daemon
+## Note: Will be overwritten when openssh-portable package is activated.
 usr/sbin/sshd
 
 ## pkg_add -- a utility for installing software package distributions
 usr/sbin/pkg_add
 
-## pkg_info -- dump out information for packages
+## pkg_info -- dump out information about packages
 usr/sbin/pkg_info
 
 ## pkg_delete -- a utility for deleting previously installed software package distributions
@@ -457,20 +465,11 @@ usr/sbin/diskinfo
 ## bsnmpd -- simple and extensible SNMP daemon
 usr/sbin/bsnmpd
 
-## nfsd -- remote NFS server
-usr/sbin/nfsd
-
-## mountd -- service remote NFS mount requests
-usr/sbin/mountd
-
-## rpcbind -- universal addresses to RPC program number mapper
-usr/sbin/rpcbind
-
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
 
-# sft-server
+# sftp-server -- SFTP server subsystem
 # Note: Will be overwritten when openssh-portable package is activated.
 usr/libexec/sftp-server
 

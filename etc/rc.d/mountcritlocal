@@ -19,7 +19,7 @@ mountcritlocal_start()
 
 	echo -n 'Mounting local file systems:'
 
-	# Mount everything all configured filesystems.
+	# Mount everything all configured filesystems
 	eval /etc/rc.d.php/${name}
 	_result=$?
 

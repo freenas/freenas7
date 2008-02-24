@@ -27,7 +27,7 @@ feed_dev_random()
 
 random_start()
 {
-	# Reseed /dev/random with previously stored entropy.
+	# Reseed /dev/random with previously stored entropy
 	case ${entropy_dir} in
 	[Nn][Oo])
 		;;

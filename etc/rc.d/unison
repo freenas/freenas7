@@ -29,7 +29,7 @@ start_cmd()
 
 	echo "Configuring ${name}."
 
-	# Ensure unison workdir exists.
+	# Ensure Unison workdir exists
 	if [ 0 -eq `grep -c 'UNISON=.*' ${unison_config}` ]; then
 		err 1 "Can't find UNISON in ${unison_config}"
 	fi
@@ -39,7 +39,7 @@ start_cmd()
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	# Create 'workdir' if necessary (Check if '//unison/makedir' is set). Use '//unison/workdir' to
-	# create directory name /mnt/xxx.
+	# create directory name /mnt/xxx
 	if [ 0 -ne `configxml_get_count "//unison/makedir"` ]; then
 		if [ -n ${_workdir} -a ! -e ${_workdir} ]; then
 			/bin/mkdir ${_workdir}
@@ -47,7 +47,7 @@ start_cmd()
 		fi
 	fi
 
-	# Add workdir to login.conf UNISON environment variable.
+	# Add workdir to login.conf UNISON environment variable
 	_workdir=`echo ${_workdir} | /usr/bin/sed 's/\//\\\\\//g'`
 	/usr/bin/sed "s/UNISON=[a-zA-Z0-9/.=+-]*/UNISON=${_workdir}/" ${unison_config} > ${unison_config}.tmp
 	mv -f ${unison_config}.tmp ${unison_config}
@@ -55,7 +55,7 @@ start_cmd()
 
 status_cmd()
 {
-	# Nothing to do here, but keep empty implementation.
+	# Nothing to do here, but keep empty implementation
 }
 
 load_rc_config ${name}

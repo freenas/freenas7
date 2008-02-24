@@ -26,7 +26,7 @@ command_args="-c ${snmpd_config} -p ${pidfile}"
 
 create_conf()
 {
-	# Get some system informations.
+	# Get some system information
 	hw_machine=`/sbin/sysctl -n hw.machine`
 	hw_model=`/sbin/sysctl -n hw.model`
 	hw_clockrate=`/sbin/sysctl -n hw.clockrate`

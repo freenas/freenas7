@@ -7,7 +7,7 @@
 # Copyright (C) 2005-2008 Olivier Cochard <cochard@gmail.com>.
 # All rights reserved.
 
-# Display dialog.
+# Display dialog
 cdialog --yesno "Do you really want to shutdown the system?" 5 46
 
 case $? in

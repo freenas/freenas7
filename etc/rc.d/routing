@@ -65,7 +65,7 @@ create_conf()
 		eval route_${_name}="\"${_protocol} ${_network} ${_gateway}\""
 
 		# Store route so it can be easily removed later (if necessary).
-		# This is a stupid workaround, should be improved in future.
+		# This is a stupid workaround, should be improved some day.
 		echo ${_network} >> /var/db/routes.db
 
 		_i=$(( ${_i} + 1 ))
@@ -84,7 +84,7 @@ static_start()
 		;;
 	esac
 
-	# Setup static routes. This should be done before router discovery.
+	# Setup static routes. This should be done before router discovery
 	#
 	if [ -n "${static_routes}" ]; then
 		for i in ${static_routes}; do

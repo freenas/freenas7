@@ -45,7 +45,7 @@ setifconfig()
 
 updateservices()
 {
-	# Update rcvar's. Use settings from config.xml.
+	# Update rcvar's. Use settings from config.xml
 	for _rcscript in /etc/rc.d/*; do
 		_rcscriptname=${_rcscript#/etc/rc.d/}
 		if [ "${name}.sh" != "${_rcscriptname}" ]; then
@@ -59,7 +59,7 @@ updateservices()
 				# Execute query.
 				_queryresult=`configxml_exec_query ${_xquery}`
 
-				# Enable/disable service depending on query result.
+				# Enable/disable service depending on query result
 				if [ "0" = "${_queryresult}" ]; then
 					eval /usr/local/sbin/rconf service enable ${_rcvar}
 					debug "rcconf.sh: ${_rcscriptname} service enabled"
@@ -78,19 +78,19 @@ load_rc_config ${name}
 
 echo -n "Updating rc.conf:"
 
-# Update services.
+# Update services
 updateservices
 
-# Set hostname.
+# Set hostname
 sethostname
 
-# Set interface configuration.
+# Set interface configuration
 setifconfig
 
-# Finally do a line break.
+# Finally issue a line break
 echo
 
-# Force reloading of rc.conf file.
+# Force reloading of rc.conf file
 _rc_conf_loaded=false
 load_rc_config ${name}
 

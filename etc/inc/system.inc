@@ -137,7 +137,7 @@ function system_get_user_list() {
 		if (empty($userinfov))
 			continue;
 
-		// Extract user informations.
+		// Extract user information
 		$userinfo = explode(":", $userinfov);
 
 		$user = array();

@@ -38,7 +38,7 @@ require_once("tui.inc");
 
 $iflist = get_interface_list();
 
-// Display detected interfaces.
+// Display detected interfaces
 $text = "If you don't know the names of your interfaces, you may use auto-detection. In that case, disconnect all interfaces before you begin, and reconnect each one when prompted to do so.";
 do {
 	$amenuitem = array();
@@ -61,7 +61,7 @@ do {
 	}
 } while (0 >= strlen($lanif));
 
-// Optional interfaces.
+// Optional interfaces
 $i = 0;
 $optif = array();
 while (1) {
@@ -101,7 +101,7 @@ while (1) {
 	}
 }
 
-// Check for double assignments.
+// Check for duplicate assignments
 $ifarr = array_merge(array($lanif, $wanif), $optif);
 for ($i = 0; $i < (count($ifarr)-1); $i++) {
 	for ($j = ($i+1); $j < count($ifarr); $j++) {
@@ -152,13 +152,13 @@ if (0 == $result) {
 		$config['interfaces']['opt' . ($i+1)]['descr'] = "OPT" . ($i+1);
 	}
 
-	// Remove all other (old) optional interfaces.
+	// Remove all other (old) optional interfaces
 	for (; isset($config['interfaces']['opt' . ($i+1)]); $i++)
 		unset($config['interfaces']['opt' . ($i+1)]);
 
 	write_config();
 
-	// Initialize interface.
+	// Initialize interface
 	write_console("Initializing interface. Please wait...");
 	interfaces_lan_configure();
 }

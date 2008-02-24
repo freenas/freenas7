@@ -55,7 +55,7 @@ start_cmd()
 
 	echo "Starting ${name}."
 
-	# Create swap file if necessary.
+	# Create swap file if necessary
 	if [ ! -e ${swap_file} ]; then
 		_swap_size=`configxml_get "//system/swap_size"`
 		/bin/dd if=/dev/zero of=${swap_file} bs=1024k count=${_swap_size} >/dev/null 2>&1
@@ -63,11 +63,11 @@ start_cmd()
 		/bin/chmod 0600 ${swap_file}
 	fi
 
-	# Create block device.
+	# Create block device
 	_mdid=`/sbin/mdconfig -a -t vnode -f ${swap_file}`
 	echo ${_mdid} > ${mdidfile}
 
-	# Enable swap.
+	# Enable swap
 	/sbin/swapon "/dev/${_mdid}"
 }
 
@@ -83,19 +83,19 @@ stop_cmd()
 
 	echo "Stopping ${name}."
 
-	# Get memory disk id.
+	# Get memory disk id
 	_mdid=`cat ${mdidfile}`
 
-	# Stop swap.
+	# Stop swap
 	/sbin/swapoff "/dev/${_mdid}"
 
-	# Destroy block device.
+	# Destroy block device
 	/sbin/mdconfig -d -u ${_mdid}
 
-	# Delete swap file.
+	# Delete swap file
 	rm -f ${swap_file}
 	
-	# Cleanup.
+	# Cleanup
 	rm -f ${mdidfile}
 }
 

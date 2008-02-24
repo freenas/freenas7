@@ -36,28 +36,28 @@ case ${PLATFORM} in
 		;;
 esac
 
-# Create directories in /var
+# Create required directories in /var
 for dir in /var/run /var/log /var/log/samba /var/etc /var/etc/ssh /var/etc/ssl/private /var/etc/private /var/etc/iscsi /var/db /var/mount /var/empty  /var/cron /var/cron/tabs; do
 	[ ! -d "${dir}" ] && mkdir -p ${dir} 
 done
 
-# If the file /etc/cfdevice exist (this mean 'full' release), and symlink /var/etc/cfdevice doesn't exist.. create it.
+# If the file /etc/cfdevice exists (which means a 'full' release), and symlink /var/etc/cfdevice doesn't exist.. create it
 if [ -f "/etc/cfdevice" ] && [ ! -h /var/etc/cfdevice ] ; then
 	ln -s /etc/cfdevice /var/etc/cfdevice
 fi
 
-# If the firmware.lock file, delete it (if not, all WebGUI pages will be redirected to upgrade page)
+# If the firmware.lock file exists, delete it (if not, all WebGUI pages will be redirected to upgrade page)
 if [ -f "/etc/cfdevice" ] ; then
 	rm -f /var/run/firmware.lock
 fi
 
-# Make spool directorie (for afpd) if doesn't exist
+# Make spool directories (for afpd) if they don't exist
 if [ ! -d "/var/spool" ]; then
 	mkdir -p /var/spool
 	mkdir -p /var/spool/lock
 fi
 
-# Generate circular logfiles if necessary.
+# Generate circular logfiles if necessary
 if [ ! -e /var/log/system.log ]; then
 	clog -i -s 262144 /var/log/system.log
 fi
@@ -86,15 +86,15 @@ adjkerntz -i
 # Create an initial utmp file
 cd /var/run && cp /dev/null utmp && chmod 0644 utmp
 
-# Create symlink for lighttpd file upload if doesn't exist
+# Create symlink for lighttpd file upload if it doesn't exist
 if [ ! -h "/var/tmp" ]; then
 	ln -s /ftmp /var/tmp
 fi
 
-# Configure the shared library cache.
+# Configure the shared library cache
 /sbin/ldconfig -elf /usr/lib /usr/local/lib /lib
 
-# Let the other functions know we're booting.
+# Let the other functions know we're booting
 touch /var/etc/booting
 
 if [ "$1" = autoboot ]; then
@@ -134,7 +134,7 @@ done
 unset files local_rc
 
 # Now that disks are mounted, for each dir in $local_startup
-# search for init scripts that use the new rc.d semantics.
+# search for init scripts that use the new rc.d semantics
 #
 case ${local_startup} in
 [Nn][Oo] | '') ;;
@@ -155,7 +155,7 @@ for _rc_elem in ${files}; do
 	run_rc_script ${_rc_elem} ${_boot}
 done
 
-# Let the other functions know we've finished booting.
+# Let the other functions know we've finished booting
 rm -f /var/etc/booting > /dev/null 2>&1
 
 echo ''

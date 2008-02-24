@@ -24,9 +24,9 @@ command="/usr/local/sbin/iscontrol"
 
 start_precmd()
 {
-	# Load kernel module.
+	# Load kernel module
 	/sbin/kldload iscsi_initiator.ko > /dev/null
-	# Disable debugging.
+	# Disable debugging
 	/sbin/sysctl debug.iscsi=0 > /dev/null
 }
 
@@ -36,7 +36,7 @@ start_cmd()
 
 	echo "Starting ${name}."
 
-	# Iterate over all configured disks.
+	# Iterate over all configured disks
 	_disknum=`configxml_get_count "//iscsiinit/vdisk"`
 	while [ ${_disknum} -gt 0 ]
 	do

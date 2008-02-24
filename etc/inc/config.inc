@@ -51,39 +51,39 @@ if (file_exists("{$g['etc_path']}/platform")) {
 }
 
 if (is_booting()) {
-	// Find the device where config.xml resides and write out an fstab.
+	// Find the device where config.xml resides and write out an fstab
 	unset($cfgdevice);
 
-	// Check if there's already an fstab ('full' release booting?).
+	// Check if there's already an fstab ('full' release booting?)
 	if (!file_exists("{$g['etc_path']}/fstab")) {
 		// Display platform type.
 		echo "Booting platform: {$g['platform']}\n";
 
 		echo "Looking for configuration file:";
 
-		// Get list of kernel known disks.
+		// Get list of kernel known disks
 		$disks = explode(" ", trim(preg_replace("/kern.disks: /", "", exec("/sbin/sysctl kern.disks"))));
 
 		if (stristr($g['platform'], "livecd")) {
-			// Config is on floppy disk/USB stick for LiveCD version per default.
+			// Config is on floppy disk/USB stick for LiveCD version per default
 			$cfgdevice = $cfgpartition = "fd0";
 			$cfgfstype = "msdos";
 
 			// Display progress...
 			echo " fd0";
 
-			// Check if there is any USB device that can be used.
+			// Check if there is any USB device that can be used
 			foreach ($disks as $disk) {
 				$found = false;
 
-				// Skip non USB (SCSI) device. The filesystem type must be MSDOS.
+				// Skip non USB (SCSI) device. The filesystem type must be MSDOS
 				if (FALSE === ereg("da[0-9]*", $disk))
 					continue;
 
 				// Display progress...
 				echo " {$disk}";
 
-				// Try to mount device using file system MSDOS (FAT16/32).
+				// Try to mount device using file system MSDOS (FAT16/32)
 				if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk}s1 {$g['cf_path']}")) {
 					$cfgdevice = $disk;
 					$cfgpartition = "{$cfgdevice}s1";
@@ -94,69 +94,69 @@ if (is_booting()) {
 					$found = true;
 				}
 
-				// Unmount device if necessary and exit foreach loop.
+				// Unmount device if necessary and exit foreach loop
 				if (true == $found) {
 					mwexec("/sbin/umount -f {$g['cf_path']}");
 					break;
 				}
 			}
 
-			// Display device information that is used to store the configuration.
+			// Display device information used to store the configuration
 			echo "\n";
 			echo "Using device=/dev/{$cfgpartition} fstype={$cfgfstype} to store configuration.\n";
 		} else {
-			// Probe kernel known disks until we find one with config.xml.
+			// Probe kernel known disks until we find one with config.xml
 			foreach ($disks as $disk) {
-				// Skip mfs mounted filesystems.
+				// Skip mfs-mounted filesystems
 				if (TRUE === ereg("md[0-9]*", $disk))
 					continue;
 
 				// Display progress...
 				echo " {$disk}";
 
-				// Try to mount device using file system UFS.
-				if (0 == mwexec("/sbin/mount -r /dev/{$disk}s1 {$g['cf_path']}")) { // Search on slice 1.
+				// Try to mount device using UFS
+				if (0 == mwexec("/sbin/mount -r /dev/{$disk}s1 {$g['cf_path']}")) { // Search on slice 1
 					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 						$cfgdevice = $disk;
 						$cfgpartition = "{$cfgdevice}s1";
 						$cfgfstype = "ufs";
 					}
-					// Umount device.
+					// Unmount device
 					mwexec("/sbin/umount -f {$g['cf_path']}");
-				} else if (0 == mwexec("/sbin/mount -r /dev/{$disk}a {$g['cf_path']}")) { // Search on partition 'a'.
+				} else if (0 == mwexec("/sbin/mount -r /dev/{$disk}a {$g['cf_path']}")) { // Search on partition 'a'
 					if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 						$cfgdevice = $disk;
 						$cfgpartition = "{$cfgdevice}a";
 						$cfgfstype = "ufs";
 					}
-					// Umount device.
+					// Unmount device
 					mwexec("/sbin/umount -f {$g['cf_path']}");
 				}
 
-				// Device found, exit.
+				// Device found, exit
 				if ($cfgdevice) {
 					break;
 				}
 			}
 
 			if (!$cfgdevice) {
-				// Check if there is any USB device that can be used.
+				// Check if there is any USB device that can be used
 				foreach ($disks as $disk) {
-					// Skip non USB (SCSI) device. The filesystem type must be MSDOS.
+					// Skip non USB (SCSI) device. The filesystem type must be MSDOS
 					if (FALSE === ereg("da[0-9]*", $disk))
 						continue;
 
 					// Display progress...
 					echo " {$disk}";
 
-					// Try to mount device using file system MSDOS (FAT16/32).
+					// Try to mount device using file system MSDOS (FAT16/32)
 					if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk}s1 {$g['cf_path']}")) {
 						if (file_exists("{$g['cf_conf_path']}/config.xml")) {
 							$cfgdevice = $disk;
 							$cfgpartition = "{$cfgdevice}s1";
 							$cfgfstype = "msdos";
 						}
-						// Umount device.
+						// Unmount device
 						mwexec("/sbin/umount -f {$g['cf_path']}");
 					} else if (0 == mwexec("/sbin/mount -r -t msdos /dev/{$disk} {$g['cf_path']}")) {
 						if (file_exists("{$g['cf_conf_path']}/config.xml")) {
@@ -164,18 +164,18 @@ if (is_booting()) {
 							$cfgpartition = $cfgdevice;
 							$cfgfstype = "msdos";
 						}
-						// Umount device.
+						// Unmount device
 						mwexec("/sbin/umount -f {$g['cf_path']}");
 					}
 
-					// Device found, exit.
+					// Device found, exit
 					if ($cfgdevice) {
 						break;
 					}
 				}
 			}
 
-			// Display device information where configuration is found.
+			// Display device information where configuration is found
 			echo "\n";
 			if ($cfgdevice) {
 				echo "Found configuration on device=/dev/{$cfgpartition} fstype={$cfgfstype}.\n";
@@ -183,7 +183,7 @@ if (is_booting()) {
 		}
 
 		if (!$cfgdevice) {
-			// No device found, print an error and die.
+			// No device found, print an error and die
 			echo <<<EOD
 
 *******************************************************************************
@@ -198,14 +198,14 @@ EOD;
 			exit;
 		}
 
-		// Write device name to a file (used by rc.firmware for example).
+		// Write device name to a file (used by rc.firmware for example)
 		$fd = fopen("{$g['varetc_path']}/cfdevice", "w");
 		if ($fd) {
 			fwrite($fd, "{$cfgpartition}\n");
 			fclose($fd);
 		}
 
-		// Write out an fstab.
+		// Write out an fstab
 		$fd = fopen("{$g['etc_path']}/fstab", "w");
 		if ($fd) {
 			$fstab = "/dev/{$cfgpartition} {$g['cf_path']} {$cfgfstype} ro 1 1\n";
@@ -214,7 +214,7 @@ EOD;
 		}
 	}
 
-	// Mount all filesystems.
+	// Mount all filesystems
 	mwexec("/sbin/mount -a");
 }
 
@@ -233,7 +233,7 @@ if (!$noparseconfig) {
 		if (!file_exists("{$g['conf_path']}/config.xml")) {
 			if (is_booting()) {
 				if (stristr($g['platform'], "liveCD")) {
-					// Try copying the default config.xml to the floppy disk/USB stick.
+					// Try copying the default config.xml to the floppy disk/USB stick
 					reset_factory_defaults();
 
 					echo "\n";
@@ -275,7 +275,7 @@ if (!$noparseconfig) {
 *******************************************************************************
 WARNING!
 The current configuration has been created with a newer version of
-{$productname} than this one! This can lead to serious misbehavior and
+{$productname} than this one! This can lead to serious misbehaviour and
 even security holes! You are urged to either upgrade to a newer version of
 {$productname} or revert to the default configuration immediately!
 *******************************************************************************
@@ -340,7 +340,7 @@ function write_config() {
 	fwrite($fd, $xmlconfig);
 	fclose($fd);
 
-	// Modify file permissions.
+	// Modify file permissions
 	@chmod("{$g['cf_conf_path']}/config.xml", 0600);
 
 	conf_mount_ro();
@@ -382,7 +382,7 @@ function reset_factory_defaults() {
 	/* copy default configuration */
 	@copy("{$g['conf_default_path']}/config.xml", "{$g['conf_path']}/config.xml");
 
-	// Modify file permissions.
+	// Modify file permissions
 	@chmod("{$g['cf_conf_path']}/config.xml", 0600);
 
 	conf_mount_ro();
@@ -408,7 +408,7 @@ function config_install($conffile) {
 	return 0;
 }
 
-/* Lock configuration file, decide that the lock file is stale after 10 seconds. */
+/* Lock configuration file, decide that the lock file is stale after 10 seconds */
 function config_lock() {
 	global $g;
 
@@ -429,7 +429,7 @@ function config_lock() {
 	}
 }
 
-/* Unlock configuration file. */
+/* Unlock configuration file */
 function config_unlock() {
 	global $g;
 
@@ -490,7 +490,7 @@ function config_upgrade() {
 	}
 
 	/* convert 1.1 -> 1.2 */
-	/* change the gvnium mount point type 'sraid' to 'gvinum' */
+	/* change the gvinum mount point type 'sraid' to 'gvinum' */
 	if ($config['version'] === "1.1") {
 		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
 			if (isset($config['mounts']['mount'][$i]['partition'])) {
@@ -503,7 +503,7 @@ function config_upgrade() {
 	}
 
 	/* convert 1.2 -> 1.3 */
-	/* change the FTP anonymous and local user authentication YES/NO value to right/flase type */
+	/* change the FTP anonymous and local user authentication YES/NO value to right/false type */
 	if ($config['version'] === "1.2") {
 		if ($config['ftp']['anonymous'] === "YES")
 			$config['ftp']['anonymous'] = true;
@@ -519,7 +519,7 @@ function config_upgrade() {
 	}
 
 	/* convert 1.3 -> 1.4 */
-	/* change the gvnium disk fstype attribute 'raid' to 'gvinum' */
+	/* change the gvinum disk fstype attribute 'raid' to 'gvinum' */
 	/* change <raid> to <gvinum> */
 	if ($config['version'] === "1.3") {
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
@@ -537,7 +537,7 @@ function config_upgrade() {
 	}
 
 	/* convert 1.4 -> 1.5 */
-	/* Add [fullname] information on mount,disk, gmirror, gvinum and graid5 */
+	/* Add [fullname] information on mount, disk, gmirror, gvinum and graid5 */
 	if ($config['version'] === "1.4") {
 		/* Add fullname (/dev/ad0) under disk */
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
@@ -618,7 +618,7 @@ function config_upgrade() {
 		}
 
 		/* Convert 'rsyncclient' part
-		Special note: rsyncclient is now an array, then the xml parse will create an array.
+		Special note: rsyncclient is now an array, so the xml parse will create an array.
 		We must use an array
 		*/
 		if (isset($config['rsyncclient'][0]['enable'])) {
@@ -719,7 +719,7 @@ function config_upgrade() {
 	}
 
 	/* Convert 1.7 -> 1.8 */
-	/* Bug Fix: Forget to confert old fstype value with new one */
+	/* Bug Fix: Forget to convert old fstype value with new one */
 	/* Create bug "You must add disks first" with older configured disk */
 	/* - Change ['fstype']='gmirror' to 'softraid' */
 	/* - Change ['fstype']='gconcat' to 'softraid' */
@@ -760,7 +760,7 @@ function config_upgrade() {
 	}
 
 	/* Convert 1.9 -> 2.0 */
-	/* Add ipv6 address type */
+	/* Add IPv6 address type */
 	if ($config['version'] === "1.9") {
 		$config['interfaces']['lan']['ipv6addr']="auto";
 		$config['interfaces']['lan']['ipv6subnet']=64;
@@ -1055,7 +1055,7 @@ function config_upgrade() {
 	}
 
 	/* Convert 3.5 -> 3.6 */
-	/* Configure current mount points as rsyncd shares. */
+	/* Configure current mountpoints as rsyncd shares. */
 	/* Convert attribute //rsync/rsyncclient/localshare. */
 	/* Convert attribute //rsync/rsynclocal/source and //rsync/rsynclocal/destination. */
 	if ($config['version'] === "3.5") {
@@ -1262,7 +1262,7 @@ function config_write_cache($data) {
 		fwrite($fd, serialize($data));
 		fclose($fd);
 
-		// Modify file permissions.
+		// Modify file permissions
 		@chmod("{$g['tmp_path']}/config.cache", 0600);
 
 		$result = true;

@@ -28,7 +28,7 @@ command_args="-F ${afpd_config}"
 
 create_conf()
 {
-	# Create config file.
+	# Create config file
 	/usr/local/bin/xml sel -t -m "//afp" \
 		-i "string-length(afpname) > 0" -v "concat('&quot;',afpname,'&quot;')" -b \
 		-i "string-length(afpname) = 0" -o "-" -b \
@@ -39,7 +39,7 @@ create_conf()
 		-o " -nosavepassword -defaultvol ${afpd_avdefault} -systemvol ${afpd_avsystem} -uservol -uampath /etc/uams -guestname &quot;ftp&quot;" -n \
 		${configxml_file} | /usr/local/bin/xml unesc > ${afpd_config}
 
-	# Generate '/var/etc/AppleVolumes.system'.
+	# Generate '/var/etc/AppleVolumes.system'
 	/usr/local/bin/xml sel -t -m "//mounts/mount" \
 		-v "concat('&quot;/mnt/',sharename,'&quot; &quot;',sharename,'&quot; ')" \
 		-o "options:usedots allow:@admin" \

@@ -35,9 +35,9 @@
 	require_once("functions.inc");
 	require_once("util.inc");
 
-	// Parse the configuration and initialize $global array.
+	// Parse the configuration and initialize $global array
 	require_once("config.inc");
 	
-	// Convert configuration, if necessary.
+	// Convert configuration, if necessary
 	config_upgrade();
 ?>

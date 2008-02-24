@@ -78,7 +78,7 @@ required_dirs="${samba_lockdir}"
 
 create_conf()
 {
-	# Create smb.conf file.
+	# Create smb.conf file
 	/usr/local/bin/xml sel -t \
 		-o "[global]" -n \
 		-o "encrypt passwords = yes" -n \
@@ -291,7 +291,7 @@ samba_cmd() {
 		fi
 	fi
 
-	# Apply to all the daemons
+	# Apply to all daemons
 	for name in ${samba_daemons}; do
 		rcvar=$(set_rcvar)
 		command="/usr/local/sbin/${name}"
@@ -305,7 +305,7 @@ samba_cmd() {
 	fi
 }
 
-# Create required config file.
+# Create required config file
 create_conf
 
 run_rc_command "$1"

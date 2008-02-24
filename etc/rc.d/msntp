@@ -27,18 +27,18 @@ start_precmd()
 {
 	local _cmdarg
 
-	# Get additional command arguments from config file.
+	# Get additional command arguments from config file
 	_cmdarg=`/usr/local/bin/xml sel -t \
 		-v "concat(//system/ntp/updateinterval,' ',//system/ntp/timeservers)" \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
-	# Add additional arguments and set '&' to run in background.
+	# Add additional arguments and set '&' to run in background
 	command_args="${command_args} ${_cmdarg} &"
 }
 
 stop_postcmd()
 {
-	# Remove 'pidfile' because this is not done automatically.
+	# Remove 'pidfile' because this is not done automatically
 	rm -f ${pidfile}
 }
 

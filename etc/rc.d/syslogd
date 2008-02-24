@@ -26,7 +26,7 @@ reload_precmd="reload_precmd"
 
 load_rc_config ${name}
 
-# Check if syslog'ing to remote syslog server is disabled.
+# Check if syslog'ing to remote syslog server is disabled
 if ! configxml_isset //syslogd/remote/enable; then
 	syslogd_flags="-ss"
 	command_args="-f ${syslogd_config}"
@@ -44,7 +44,7 @@ security.* %/var/log/system.log
 auth.info;authpriv.info %/var/log/system.log
 *.emerg *" > ${syslogd_config}
 
-	# Add remote server configuration if syslog'ing to remote syslog server is enabled.
+	# Add remote server configuration if syslog'ing to remote syslog server is enabled
 	/usr/local/bin/xml sel -t \
 		-i "//syslogd/remote/enable" \
 			-i "//syslogd/remote/ftp" \
@@ -68,10 +68,10 @@ auth.info;authpriv.info %/var/log/system.log
 
 reload_precmd()
 {
-	# Clear existing file.
+	# Clear existing file
 	cat /dev/null > ${syslogd_config}
 
-	# Create configuration file.
+	# Create configuration file
 	create_conf
 }
 

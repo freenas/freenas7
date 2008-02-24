@@ -62,7 +62,7 @@ initrandom_start()
 		    | dd of=/dev/random bs=8k 2>/dev/null
 		cat /bin/ls | dd of=/dev/random bs=8k 2>/dev/null
 
-		# First pass at reseeding /dev/random.
+		# First pass at reseeding /dev/random
 		#
 		case ${entropy_file} in
 		[Nn][Oo] | '')

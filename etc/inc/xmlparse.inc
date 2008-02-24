@@ -122,7 +122,7 @@ function parse_xml_config($cffile, $rootobj) {
 	$curpath = array();
 	$depth = 0;
 	$havedata = 0;
-	$encoding = "UTF-8"; // PHP default.
+	$encoding = "UTF-8"; // PHP default
 
 	$xml_parser = xml_parser_create();
 
@@ -133,14 +133,14 @@ function parse_xml_config($cffile, $rootobj) {
 		die("Error: could not open XML input\n");
 	}
 
-	// Detect and set output character encoding. Default output encoding is UTF-8.
+	// Detect and set output character encoding. Default output encoding is UTF-8
 	$data = fread($fp, 4096);
 	if (preg_match('/<?xml.*encoding=[\'"](.*?)[\'"].*?>/m', $data, $m)) {
 	  $encoding = strtoupper($m[1]);
 	  xml_parser_set_option($xml_parser, XML_OPTION_TARGET_ENCODING, $encoding);
 	}
 
-	// Set position to file origin.
+	// Set position to file origin
 	fseek($fp, 0, SEEK_SET);
 
 	while ($data = fread($fp, 4096)) {
@@ -156,7 +156,7 @@ function parse_xml_config($cffile, $rootobj) {
 		die("XML error: no $rootobj object found!\n");
 	}
 
-	// Remember encoding.
+	// Remember encoding
 	$config[$rootobj]['encoding'] = $encoding;
 
 	return $config[$rootobj];
@@ -218,11 +218,11 @@ function dump_xml_config_sub($arr, $indent, $in_charset, $out_charset) {
 }
 
 function dump_xml_config($arr, $rootobj, $encoding) {
-	// Set in/out encoding.
+	// Set in/out encoding
 	$in_charset = $arr['encoding'];
 	$out_charset = $encoding;
 
-	// Do not dump temporary encoding attribute.
+	// Do not dump temporary encoding attribute
 	unset($arr['encoding']);
 
 	$xmlconfig = "<?xml version=\"1.0\" encoding=\"{$encoding}\"?>\n";

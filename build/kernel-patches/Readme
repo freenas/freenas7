@@ -1,7 +1,7 @@
 Kernel build howto:
 
 - Patches should be applied only once. Multiple times will fail (e.g. when
-  using patch command in Makefile).  
+  using patch command in Makefile).
 
   You can create a backup from the kernel source to revert them quickly.
   # cp -r /usr/src /usr/src.orig
@@ -11,5 +11,5 @@ Kernel build howto:
   # cd /usr
   # tar cvfz src.tar.gz ./src
 
-- If patches has been updated the kernel sources (/usr/src) have to be
+- If patches have been updated, the kernel sources (/usr/src) have to be
   resfreshed (e.g. via cvsup). After that apply all patches again.

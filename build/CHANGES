@@ -7,28 +7,29 @@ Majors changes:
 - Upgrade to FreeBSD 6.3. Because of this there are some changes:
   - WOL kernel patch has to be removed because there is currently no patch available for this version.
   - Add msk (Marvell/SysKonnect Yukon II Gigabit Ethernet) network driver.
-  - Add pcn (AMD Am79C97x PCI 10/100 (precedence over 'lnc')) network driver.
+  - Add pcn (AMD Am79C97x PCI 10/100 (with precedence over 'lnc')) network driver.
 - Remove 'kern.hz="500"' from /boot/loader.conf. With FreeBSD 6.3 it is set to 100 by default.
 - Add 'lagg' link aggregation and link failover interface support (kernel).
 - Switch back to SCHED_4BSD scheduler.
 - Add generic webserver service.
+- Complete review and typo fixes in sourcecode. Thanks to Jerome Warnier.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
 - It is not possible to encrypt a disk partition, only complete disks are supported.
 
 Known bugs:
-- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be override by the IPv4 DNS server.
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
 
-NEED TO BE TESTED:
-- IPv6: auto mode is not tested
+NEED TESTING:
+- IPv6: auto mode
 - All services using IPv6 address (NFS, FTP, etc...)
-- netatalk VFS samba module (automatically enabled when netatalk started) crash samba when acces to share
-- Need to write a online-test procedure
+- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes samba when accesing to share
+- Need to write an online-test procedure
 
 Help needed:
 - Need help for adding LDAP authentication feature:
-Major services can be easly authenticated using PAM-LDAP, but for Samba too is harder.
+Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
 FreeNAS 0.686.1:
 ----------------
@@ -37,15 +38,13 @@ Majors changes:
 - Upgrade Samba to 3.0.28.
 - Add attributes 'Guest account' and 'Null passwords' to 'Samba: Settings' advanced section in WebGUI.
 - Enhance WebGUI + rc-script to define additional group memberships for user accounts.
-- Replace uShare UPnP Mediaserver with MediaTomb 0.10.0. This has been done because ushare's latest version
-  fails to build on FreeBSD, also new version requires external libs for DLNA support which is not ported
-  to FreeBSD right at the moment.
+- Replace uShare UPnP Mediaserver with MediaTomb 0.10.0. This has been done because uShare's latest version fails to build on FreeBSD, also new version requires external libs for DLNA support which has not yet been ported to FreeBSD currently.
   You have to reconfigure the UPnP service to get working properly. XBox 360 is not supported, sorry.
 - Increase mfsroot size to 54mb for embedded version. So hopefully the OS has enough memory for logfiles,...
-  Especially with Samba tbd files, which increases rapidely with a huge number of users accessing the system.
+  Especially with Samba tbd files, which increase rapidly with a huge number of users accessing the system.
 - Add kernel patch to support ATi IXP600/700 PATA/SATA.
 - Switch back to SCHED_ULE scheduler.
-- Upgrade 3ware serial ATA RAID controller driver to 9.4.2 (http://www.3ware.com/download/Escalade9650SE-Series/9.4.2/9.4.2_Release_Notes_Web.pdf).
+- Upgrade 3Ware serial ATA RAID controller driver to 9.4.2 (http://www.3ware.com/download/Escalade9650SE-Series/9.4.2/9.4.2_Release_Notes_Web.pdf).
 - Allow creation of users with empty passwords.
 - Upgrade ATAidle to 2.3.
 - Set 'kern.hz="500"' in /boot/loader.conf for better system and media streaming performance. Thanks to Eyn Ergy for testing.
@@ -55,7 +54,7 @@ Majors changes:
 - Use inadyn-mt instead of inadyn dynamic DNS client.
 - Add easyDNS.com and 3322.org support to 'Dynamic DNS' service.
 - Upgrade dp.SyntaxHighlighter to 1.5.1.
-- Fix install problem "Error: Failed to set partitions on the disk 'xxx'".
+- Fix installation problem "Error: Failed to set partitions on the disk 'xxx'".
 - Refactor OS install/upgrade.
 - Add NFS share configuration support. Allow configuration of NFS server processes.
 - Upgrade netbsd-iscsi (iscsi-target) to 20080207.
@@ -64,7 +63,7 @@ Majors changes:
 - Upgrade inadyn-mt to 02.11.88.
 
 Minors changes:
-- Remove readonly flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
+- Remove read-only flag for iSCSI extent/device/target 'Name' field during creation. It will be readonly after creation.
 - Add checkbox in 'Mount Point' WebGUI to enable/disable foreground/background file system consistency check during boot process.
 - Remove 'Read only' checkbox from rsyncd settings page (WebGUI). Access mode can be defined per share.
 - Autoselect 'Selected' checkbox in time selection control (minutes/hours/days/months/weekdays) e.g. when configuring scheduled reboot.
@@ -75,7 +74,7 @@ Minors changes:
 - Add additional options (e.g. cachecnid, upriv, ...) for AFPd shares.
 - Add if_tap.ko and if_tun.ko kernel modules for tun/tap pseudo device support (required by OpenVPN).
 - Enable to set host name or IP address in 'Passive IP address' edit field on FTP service WebGUI page.
-- Enable user to modify user/group ID when creating a new user/group.
+- Enable user/group ID modification when creating a new user/group.
 - Add /usr/bin/getent.
 - Remove /usr/bin/dirname link to basename and add original application. Thanks to Lars Köller.
 - Only create SMB/CIFS users with uid >= 1001. Thanks to Lars Köller.
@@ -83,7 +82,7 @@ Minors changes:
 Bug fixes:
 - Calculating iSCSI extent IDs fails for numbers > 10.
 - Promote correct UPnP port via ZeroConf/Apple Bonjour.
-- Fix bug in rsyncd rc-script. Hosts allow/deny were not set correct. Also fix client error message 'ERROR: module is read only'.
+- Fix bug in rsyncd rc-script. Hosts allow/deny were not set correctly. Also fix client error message 'ERROR: module is read only'.
 - Fix bug in FTP service. It was possible to select 'Anonymous login only' and 'Local users only' simultaneously which is impossible.
   Please check your configuration and reconfigure your FTP service if necessary.
 - Do not display warning message "The attribute 'Domain name' contains invalid characters and is no valid domain name." anymore because

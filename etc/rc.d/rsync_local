@@ -14,7 +14,7 @@ name="rsync_local"
 # Defaults
 rsync_logfile=${rsync_logfile:-"/var/log/${name}.log"}
 
-# Get number of scripts to generate.
+# Get number of scripts to generate
 _scriptnum=`configxml_get_count "//rsync/rsynclocal"`
 
 if [ 0 -lt ${_scriptnum} ]; then
@@ -23,10 +23,10 @@ if [ 0 -lt ${_scriptnum} ]; then
 	_i=0
 	while [ ${_scriptnum} -gt 0 ]
 	do
-		# Set scriptname.
+		# Set scriptname
 		_rsyncscript=/var/run/rsync_local${_i}.sh
 
-		# Generate the shell script that is used by cron.
+		# Generate the shell script that is used by cron
 		/usr/local/bin/xml sel -t -m "//rsync/rsynclocal[position()=${_scriptnum}]" \
 			-o "#!/bin/sh" -n \
 			-v "concat('/usr/bin/logger -p local4.notice &quot;Start of local RSYNC from ',source,' to ',destination,'&quot;')" -n \
@@ -40,7 +40,7 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-v "concat('/usr/bin/logger -p local4.notice &quot;End of local RSYNC synchronization from ',source,' to ',destination,'&quot;')" \
 			${configxml_file} | /usr/local/bin/xml unesc > ${_rsyncscript}
 
-		# Add exectutive right to the script.
+		# Add execute right to the script
 		/bin/chmod 0770 ${_rsyncscript}
 
 		_i=$(( ${_i} + 1 ))

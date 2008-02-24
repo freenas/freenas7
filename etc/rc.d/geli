@@ -13,7 +13,7 @@ name="geli"
 start_cmd=":"
 stop_cmd="geli_stop"
 
-# Creates a list of providers for GELI encryption.
+# Creates a list of providers for GELI encryption
 geli_make_list()
 {
 	local _devices

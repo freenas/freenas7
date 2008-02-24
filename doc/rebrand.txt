@@ -4,8 +4,8 @@
   All rights reserved.
 */
 
-Rebrand 'FreeNAS'
------------------
+Rebranding 'FreeNAS'
+--------------------
 
 1. Modify the following files:
    etc/prd.copyright         - The copyright text. Used in console.
@@ -24,7 +24,7 @@ Rebrand 'FreeNAS'
    boot/splash.bmp
 
 3. Modify conf/config.xml.
-   The following attributes may have been modified:
+   The following attributes may have to be modified:
    - system/hostname
    - system/password
    - interfaces/lan/ip
