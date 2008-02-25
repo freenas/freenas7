@@ -25,7 +25,8 @@ CONFIGURE_ARGS+=	--enable-fastcgi \
 									--with-pcre-regex \
 									--with-gettext \
 									--enable-libxml \
-									--with-libxml-dir=${LOCALBASE}
+									--with-libxml-dir=${LOCALBASE} \
+									--with-config-file-path=/usr/local/etc
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php-cgi ${FREENAS_ROOTFS}/usr/local/bin/php
