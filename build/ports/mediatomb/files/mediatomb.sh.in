@@ -111,6 +111,8 @@ start_precmd()
 	echo '<map from="m2v" to="video/mpeg"/>' >> ${mediatomb_config}
 	echo '<map from="m4v" to="video/mp4"/>' >> ${mediatomb_config}
 	echo '<map from="mp4" to="video/mp4"/>' >> ${mediatomb_config}
+	echo '<map from="m4a" to="audio/mp4"/>' >> ${mediatomb_config}
+	echo '<map from="m4p" to="audio/mp4"/>' >> ${mediatomb_config}
 	if [ "PS3" = "${_profile}" ]; then
 		echo '<map from="avi" to="video/divx"/>' >> ${mediatomb_config}
 	elif [ "ZyXEL_DMA1000" = "${_profile}" -o "Helios_X3000" = "${_profile}" ]; then
