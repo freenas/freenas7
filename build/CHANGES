@@ -6,6 +6,7 @@ FreeNAS 0.686.2:
 Majors changes:
 
 Minors changes:
+- Add m4a/m4p support in MediaTomb configuration file.
 
 Bug fixes:
 - GID was not displayed correct on 'Access/Groups' WebGUI page. Thanks to Lars Köller.
