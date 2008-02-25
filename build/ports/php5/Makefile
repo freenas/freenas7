@@ -29,6 +29,6 @@ CONFIGURE_ARGS+=	--enable-fastcgi \
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/sapi/cgi/php-cgi ${FREENAS_ROOTFS}/usr/local/bin/php
-	@${CP} -pv ${FILESDIR}/php.ini ${FREENAS_ROOTFS}/usr/local/lib
+	@${CP} -pv ${FILESDIR}/php.ini ${FREENAS_ROOTFS}/usr/local/etc
 
 .include <bsd.port.mk>
