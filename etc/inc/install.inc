@@ -545,22 +545,22 @@ function install_detect_installation($mode, &$devinfo) {
 			if (file_exists("{$mnt_cf_disk}/conf/config.xml")) {
 				$devinfo['device'] = $diskv;
 				$devinfo['partition'] = "s1";
-			}
 
-			// Check install mode
-			switch ($mode) {
-				case 'embedded':
-					if (file_exists("{$mnt_cf_disk}/mfsroot.gz")) {
-						$result = 0;
-					}
-					break;
-
-				case 'full':
-					$platform = chop(@file_get_contents("{$mnt_cf_disk}{$g['etc_path']}/platform"));
-					if (FALSE !== ereg("^.*-full", $platform)) {
-						$result = 0;
-					}
-					break;
+				// Check install mode
+				switch ($mode) {
+					case 'embedded':
+						if (file_exists("{$mnt_cf_disk}/mfsroot.gz")) {
+							$result = 0;
+						}
+						break;
+	
+					case 'full':
+						$platform = chop(@file_get_contents("{$mnt_cf_disk}{$g['etc_path']}/platform"));
+						if (FALSE !== ereg("^.*-full", $platform)) {
+							$result = 0;
+						}
+						break;
+				}
 			}
 
 			// Unmount device
@@ -576,22 +576,22 @@ function install_detect_installation($mode, &$devinfo) {
 			if (file_exists("{$mnt_cf_disk}/conf/config.xml")) {
 				$devinfo['device'] = $diskv;
 				$devinfo['partition'] = "a";
-			}
 
-			// Check install mode
-			switch ($mode) {
-				case 'embedded':
-					if (file_exists("{$mnt_cf_disk}/mfsroot.gz")) {
-						$result = 0;
-					}
-					break;
-
-				case 'full':
-					$platform = chop(@file_get_contents("{$mnt_cf_disk}{$g['etc_path']}/platform"));
-					if (FALSE !== ereg("^.*-full", $platform)) {
-						$result = 0;
-					}
-					break;
+				// Check install mode
+				switch ($mode) {
+					case 'embedded':
+						if (file_exists("{$mnt_cf_disk}/mfsroot.gz")) {
+							$result = 0;
+						}
+						break;
+	
+					case 'full':
+						$platform = chop(@file_get_contents("{$mnt_cf_disk}{$g['etc_path']}/platform"));
+						if (FALSE !== ereg("^.*-full", $platform)) {
+							$result = 0;
+						}
+						break;
+				}
 			}
 
 			// Unmount device
