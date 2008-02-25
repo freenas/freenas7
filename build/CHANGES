@@ -31,6 +31,19 @@ Help needed:
 - Need help for adding LDAP authentication feature:
 Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
+FreeNAS 0.686.2:
+----------------
+
+Bug fixes:
+- GID was not displayed correct on 'Access/Groups' WebGUI page. Thanks to Lars Köller.
+
+Permanent restrictions:
+- It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
+- It is not possible to encrypt a disk partition, only complete disks are supported.
+
+Known bugs:
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be override by the IPv4 DNS server.
+
 FreeNAS 0.686.1:
 ----------------
 

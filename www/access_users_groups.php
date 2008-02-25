@@ -113,7 +113,7 @@ if ($_GET['act'] == "del") {
 					<?php if (false !== array_search_ex($groupv, $a_group_conf, "id")) continue; // Do not display user defined groups twice. ?>
 					<tr>
 						<td class="listlr"><?=$groupk;?>&nbsp;</td>
-						<td class="listr"><?=htmlspecialchars($groupv['id']);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($groupv);?>&nbsp;</td>
 						<td class="listr"><?=gettext("System");?>&nbsp;</td>
 					</tr>
 					<?php endforeach;?>
