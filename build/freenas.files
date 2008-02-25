@@ -247,6 +247,9 @@ sbin/rcorder
 ## md5, sha1, sha256, rmd160 -- calculate a message-digest fingerprint
 sbin/md5:sbin/sha1:sbin/sha256:sbin/rmd160
 
+## mksnap_ffs -- take a file system snapshot
+sbin/mksnap_ffs
+
 ####### contents of /usr/bin
 
 ## awk -- pattern-directed scanning and processing language
@@ -464,6 +467,9 @@ usr/sbin/diskinfo
 
 ## bsnmpd -- simple and extensible SNMP daemon
 usr/sbin/bsnmpd
+
+## snapinfo -- show snapshot location on UFS file systems
+usr/sbin/snapinfo
 
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
