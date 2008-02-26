@@ -179,7 +179,7 @@ function install_harddrive_image($harddrive)
 
 	// Install system files.
 	write_console("Installing system files on disk {$harddrive}s1.\n");
-	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var --exclude /tmp -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
+	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var --exclude /tmp --exclude {$g['cf_path']} -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
 	mwexec("/bin/mkdir -p {$mntpath}/var");
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
 	mwexec("/bin/mkdir -p {$mntpath}/mnt");
@@ -188,6 +188,10 @@ function install_harddrive_image($harddrive)
 	mwexec("/bin/cp -v /mnt/cdrom/boot/* {$mntpath}/boot");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* {$mntpath}/boot/defaults");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* {$mntpath}/boot/kernel");
+
+	// Install configuration file
+	mwexec("/bin/mkdir -p {$mntpath}{$g['cf_conf_path']}");
+	mwexec("/bin/cp -v {$g['conf_default_path']}/config.xml {$mntpath}{$g['conf_path']}");
 
 	// Generate new loader.conf file.
 	$loaderconf .= <<<EOD
@@ -278,7 +282,7 @@ function install_upgrade_full($harddrive)
 
 	// Install system files
 	write_console("Installing system files on disk {$harddrive}s1.\n");
-	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var --exclude /tmp -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
+	mwexec("/usr/bin/tar --exclude {$mntpath} --exclude /mnt --exclude /dev --exclude /var --exclude /tmp --exclude {$g['cf_path']} -cf - -C / ./ | tar -xvpf - -C {$mntpath}");
 	mwexec("/bin/mkdir -p {$mntpath}/var");
 	mwexec("/bin/mkdir -p {$mntpath}/dev");
 	mwexec("/bin/mkdir -p {$mntpath}/mnt");
