@@ -1,6 +1,9 @@
 <?php
 /*
-	system.inc
+	install.inc
+	Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
@@ -257,8 +260,6 @@ function install_upgrade_full($harddrive)
 
 	$mntpath = "/mnt/inst_{$harddrive}";
 	$sysbackup = "/tmp/inst_{$harddrive}_bak";
-
-	write_console("Upgrade installed OS.\n");
 
 	// Mount disk used to install OS
 	mwexec("/bin/mkdir -p {$mntpath}");
