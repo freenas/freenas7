@@ -52,7 +52,7 @@ if (0 != install_detect_installation("full", $devinfo)) {
 	exit(0);
 }
 
-$result = tui_display_yesno("{$productname} has been detected on device '{$devinfo['device']}'.\n\nIs this is correct?", 50, 7);
+$result = tui_display_yesno("{$productname} has been detected on device '{$devinfo['device']}{$devinfo['partition']}'.\n\nIs this is correct?", 50, 7);
 if (0 != $result)
 	exit(0);
 
@@ -105,7 +105,7 @@ install_unmount_cd();
 // Display final message
 $text = <<<EOD
 
-{$productname} installed on device '{$devinfo['device']}' has been upgraded.
+{$productname} installed on device '{$devinfo['device']}{$devinfo['partition']}' has been upgraded.
 You can remove the CDROM and reboot the PC now.
 EOD;
 

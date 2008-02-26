@@ -57,7 +57,7 @@ if ("a" === $devinfo['partition']) {
 	exit(0);
 }
 
-$result = tui_display_yesno("{$productname} has been detected on device '{$devinfo['device']}'.\n\nIs this is correct?", 50, 7);
+$result = tui_display_yesno("{$productname} has been detected on device '{$devinfo['device']}{$devinfo['partition']}'.\n\nIs this is correct?", 50, 7);
 if (0 != $result)
 	exit(0);
 
