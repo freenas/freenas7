@@ -30,7 +30,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Diagnostics"), gettext("ARP table"));
+$pgtitle = array(gettext("Diagnostics"), gettext("ARP tables"));
 
 $id = $_GET['id'];
 if (isset($_POST['id']))
@@ -163,8 +163,8 @@ for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
 	$ifdescrs['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
 }
 
-foreach ($ifdescrs as $key =>$interface) {
-	$hwif[$config['interfaces'][$key]['if']] = $interface;
+foreach ($ifdescrs as $key => $interface) {
+	$hwif[get_ifname($config['interfaces'][$key]['if'])] = $interface;
 }
 
 $data = array();
