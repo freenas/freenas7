@@ -24,7 +24,7 @@ if ("full" !== $g['platform']) {
 	$menu['system']['menuitem'][] = array("desc" => "Firmware", "link" => "system_firmware.php", "visible" => true);
 }
 $menu['system']['menuitem'][] = array("desc" => gettext("Backup/Restore"), "link" => "system_backup.php", "visible" => true);
-$menu['system']['menuitem'][] = array("desc" => gettext("Factory Defaults"), "link" => "system_defaults.php", "visible" => true);
+$menu['system']['menuitem'][] = array("desc" => gettext("Factory defaults"), "link" => "system_defaults.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Reboot"), "link" => "reboot.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Shutdown"), "link" => "shutdown.php", "visible" => true);
 
