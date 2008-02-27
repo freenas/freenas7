@@ -262,9 +262,49 @@ a {
 ul#tabnav {
 	font-size: 11px;
 	font-weight: bold;
-	list-style-type: none;
+	list-style: none;
 	margin: 0;
 	padding: 0;
+}
+ul#tabnav li.tabinact {
+	float:left;
+	background-color: #777777;
+	white-space: nowrap;
+	background: url("tabnav_inact_bg_left.gif") top left no-repeat;
+}
+ul#tabnav li.tabinact a {
+	color: white;
+	display: block;
+	font-weight: bold;
+	font-family: 'Arial';
+	font-size: 11px;
+	text-decoration: none;
+	vertical-align: center;
+	height: 16px;
+	float: left;
+	padding: 3px 12px 0px 10px;
+	margin: 0px 0px 0px 2px;
+	background: url("tabnav_inact_bg_right.gif") top right no-repeat;
+}
+ul#tabnav li.tabact {
+	float: left;
+	background-color: #EEEEEE;
+	white-space: nowrap;
+	background: url("tabnav_act_bg_left.gif") top left no-repeat;
+}
+ul#tabnav li.tabact a {
+	color: black;
+	display: block;
+	font-weight: bold;
+	font-family: 'Arial';
+	font-size: 11px;
+	text-decoration: none;
+	vertical-align: center;
+	height: 16px;
+	float: left;
+	padding: 3px 12px 0px 10px;
+	margin: 0px 0px 0px 2px;
+	background: url("tabnav_act_bg_right.gif") top right no-repeat;
 }
 ul#tabnav li.tabinact1 {
 	float: left;
@@ -273,34 +313,12 @@ ul#tabnav li.tabinact1 {
 	padding: 0;
 	white-space: nowrap;
 }
-ul#tabnav li.tabinact {
-	float: left;
-	border-left: 1px solid #999999;
-	background-color: #777777;
-	color: #FFFFFF;
-	padding: 0;
-	white-space: nowrap;
-}
-ul#tabnav li.tabinact a {
-	float: left;
-	display: block;
-	text-decoration: none;
-	padding: 5px 8px 5px 8px;
-	color: #FFFFFF;
-}
 ul#tabnav li.tabinact1 a {
 	float: left;
 	display: block;
 	text-decoration: none;
 	padding: 5px 8px 5px 8px;
 	color: #FFFFFF;
-}
-ul#tabnav li.tabact {
-	float: left;
-	background-color: #EEEEEE;
-	color: #000000;
-	padding: 5px 8px 5px 8px;
-	white-space: nowrap;
 }
 .tabcont {
 	background-color: #EEEEEE;
