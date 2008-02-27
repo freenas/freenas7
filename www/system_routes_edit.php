@@ -159,7 +159,11 @@ if ($_POST) {
             <td width="78%" class="vtable"> 
 							<input name="network" type="text" class="formfld" id="network" size="20" value="<?=htmlspecialchars($pconfig['network']);?>"> 
 							/
-							<input name="network_subnet" type="text" class="formfld" id="network_subnet" size="2" value="<?=htmlspecialchars($pconfig['network_subnet']);?>">
+							<select name="network_subnet" class="formfld" id="network_subnet">
+								<?php for ($i = 32; $i > 0; $i--):?>
+								<option value="<?=$i;?>" <?php if ($i == $pconfig['network_subnet']) echo "selected";?>><?=$i;?></option>
+								<?php endfor;?>
+							</select>
 							<br><span class="vexpl"><?=gettext("Destination network for this static route");?></span>
 						</td>
           </tr>

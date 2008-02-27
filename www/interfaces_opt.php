@@ -343,10 +343,10 @@ function media_change() {
 			                  <td width="78%" class="vtable"> 
 			                    <input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
 			                    /
-			                	<select name="subnet" class="formfld" id="subnet">
-								<?php for ($i = 31; $i > 0; $i--): ?>
-								<option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected"; ?>><?=$i;?></option>
-								<?php endfor; ?>
+													<select name="subnet" class="formfld" id="subnet">
+														<?php for ($i = 32; $i > 0; $i--):?>
+														<option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected";?>><?=$i;?></option>
+														<?php endfor;?>
 			                    </select>
 			                    <img name="calcnetmaskbits" src="calc.gif" title="<?=gettext("Calculate netmask bits");?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
 			                  </td>
