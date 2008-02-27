@@ -1,25 +1,25 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	diag_logs_settings.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -78,18 +78,18 @@ if ($_POST) {
 		$config['syslogd']['remote']['daemon'] = $_POST['daemon'] ? true : false;
 
 		write_config();
-		
+
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval = rc_restart_service("syslogd");
 			config_unlock();
 		}
-		$savemsg = get_std_save_message($retval);	
+		$savemsg = get_std_save_message($retval);
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
@@ -111,7 +111,7 @@ function enable_change(enable_change) {
 		<tr>
 			<td class="tabnavtbl">
 				<ul id="tabnav">
-					<li class="tabinact1"><a href="diag_logs.php"><?=gettext("System");?></a></li>
+					<li class="tabinact"><a href="diag_logs.php"><?=gettext("System");?></a></li>
 					<li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
 					<li class="tabinact"><a href="diag_logs_rsyncd.php"><?=gettext("RSYNCD");?></a></li>
 					<li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSHD");?></a></li>
@@ -121,23 +121,23 @@ function enable_change(enable_change) {
 				</ul>
 			</td>
 		</tr>
-	  <tr> 
+	  <tr>
 	    <td class="tabcont">
 		  	<table width="100%" border="0" cellpadding="6" cellspacing="0">
-	        <tr> 
+	        <tr>
 	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
 	          <td width="78%" class="vtable">
 							<input name="reverse" type="checkbox" id="reverse" value="yes" <?php if ($pconfig['reverse']) echo "checked"; ?>>
 	            <strong><?=gettext("Show log entries in reverse order (newest entries on top)");?></strong>
 						</td>
 	        </tr>
-	        <tr> 
+	        <tr>
 	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
 	          <td width="78%" class="vtable">
 							<?=gettext("Number of log entries to show");?>:
 	            <input name="nentries" id="nentries" type="text" class="formfld" size="4" value="<?=htmlspecialchars($pconfig['nentries']);?>"></td>
-	        </tr>                      
-	        <tr> 
+	        </tr>
+	        <tr>
 	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
 	          <td width="78%" class="vtable">
 							<input name="resolve" type="checkbox" id="resolve" value="yes" <?php if ($pconfig['resolve']) echo "checked"; ?>>
@@ -146,16 +146,16 @@ function enable_change(enable_change) {
 							<?php echo sprintf(gettext("Warning: This can cause a huge delay in loading the %s log page!"), get_product_name());?>
 						</td>
 	        </tr>
-	        <tr> 
+	        <tr>
 	          <td width="22%" valign="top" class="vncell">&nbsp;</td>
 	          <td width="78%" class="vtable">
 							<input name="enable" type="checkbox" id="enable" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)">
 	            <strong><?=gettext("Enable syslog'ing to remote syslog server");?></strong></td>
 	        </tr>
-	        <tr> 
+	        <tr>
 	          <td width="22%" valign="top" class="vncell"><?=gettext("Remote syslog server");?></td>
 	          <td width="78%" class="vtable">
-							<input name="ipaddr" id="ipaddr" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>"> 
+							<input name="ipaddr" id="ipaddr" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
 	            <br>
 	            <?=gettext("IP address of remote syslog server");?><br><br>
 							<input name="system" id="system" type="checkbox" value="yes" <?php if ($pconfig['system']) echo "checked"; ?>>
@@ -172,17 +172,17 @@ function enable_change(enable_change) {
 	            <?=gettext("Daemon events");?><br>
 	          </td>
 	        </tr>
-	        <tr> 
+	        <tr>
 	          <td width="22%" valign="top">&nbsp;</td>
 	          <td width="78%">
 							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)">
 						</td>
 	        </tr>
-	        <tr> 
+	        <tr>
 	          <td width="22%" valign="top">&nbsp;</td>
 	          <td width="78%">
 							<strong><span class="red"><?=gettext("Note");?>:</span></strong><br>
-	            <?php echo sprintf(gettext("Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."), get_product_name());?> 
+	            <?php echo sprintf(gettext("Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."), get_product_name());?>
 	          </td>
 	        </tr>
 	      </table>
@@ -195,4 +195,4 @@ function enable_change(enable_change) {
 enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
