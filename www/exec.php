@@ -8,7 +8,6 @@
 	(re-modified for FreeNAS by Olivier Cochard-Labbe <olivier@freenas.org>)
 	(adapted to FreeNAS GUI by Volker Theile <votdev@gmx.de>)
 */
-
 require("guiconfig.inc");
 
 $pgtitle = array(gettext("Advanced"), gettext("Execute command"));
@@ -30,25 +29,18 @@ if (($_POST['submit'] == "Download") && file_exists($_POST['dlPath'])) {
 ?>
 <?php include("fbegin.inc"); ?>
 <?php
-
 // Function: is Blank
 // Returns true or false depending on blankness of argument.
-
 function isBlank( $arg ) { return ereg( "^\s*$", $arg ); }
 
 // Function: Puts
 // Put string, Ruby-style.
-
 function puts( $arg ) { echo "$arg\n"; }
-
 ?>
 <script language="javascript">
 <!--
-
    // Create recall buffer array (of encoded strings).
-
 <?php
-
 if (isBlank( $_POST['txtRecallBuffer'] )) {
    puts( "   var arrRecallBuffer = new Array;" );
 } else {
@@ -58,7 +50,6 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
    puts( "      '" . $arrBuffer[count( $arrBuffer ) - 1] . "'" );
    puts( "   );" );
 }
-
 ?>
    // Set pointer to end of recall buffer.
    var intRecallPtr = arrRecallBuffer.length;
@@ -78,7 +69,6 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
    // Function: frmExecPlus onSubmit (event handler)
    // Builds the recall buffer from the command string on submit.
    function frmExecPlus_onSubmit( form ) {
-
       if (!isBlank(form.txtCommand.value)) {
 		  // If this command is repeat of last command, then do not store command.
 		  if (form.txtCommand.value.encode() == arrRecallBuffer[arrRecallBuffer.length-1]) { return true }
@@ -96,7 +86,6 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
    // Function: btnRecall onClick (event handler)
    // Recalls command buffer going either up or down.
    function btnRecall_onClick( form, n ) {
-
       // If nothing in recall buffer, then error.
       if (!arrRecallBuffer.length) {
          alert( 'Nothing to recall!' );
@@ -119,7 +108,6 @@ if (isBlank( $_POST['txtRecallBuffer'] )) {
    // Function: Reset onClick (event handler)
    // Resets form on reset button click event.
    function Reset_onClick( form ) {
-
       // Reset recall buffer pointer.
       intRecallPtr = arrRecallBuffer.length;
 
@@ -167,16 +155,25 @@ on your own risk!</strong></p>
 <?php endif; ?>
 <?php if ($ulmsg) echo "<p><strong>" . $ulmsg . "</strong></p>\n"; ?>
 <?php
-
 if (!isBlank($_POST['txtCommand'])) {
-   puts("<pre>");
-   puts("\$ " . htmlspecialchars($_POST['txtCommand']));
-   putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
-   putenv("SCRIPT_FILENAME=" . strtok($_POST['txtCommand'], " "));	/* PHP scripts */
-   $ph = popen($_POST['txtCommand'], "r" );
-   while ($line = fgets($ph)) echo htmlspecialchars($line);
-   pclose($ph);
-   puts("</pre>");
+	puts("<pre>");
+	puts("\$ " . htmlspecialchars($_POST['txtCommand']));
+	putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
+	putenv("SCRIPT_FILENAME=" . strtok($_POST['txtCommand'], " "));	/* PHP scripts */
+	$ph = popen($_POST['txtCommand'], "r" );
+	while ($line = fgets($ph)) echo htmlspecialchars($line);
+	pclose($ph);
+	puts("</pre>");
+}
+
+if (!isBlank($_POST['txtPHPCommand'])) {
+	puts("<pre>");
+	require_once("config.inc");
+	require_once("functions.inc");
+	require_once("util.inc");
+	require_once("rc.inc");
+	echo eval($_POST['txtPHPCommand']);
+	puts("</pre>");
 }
 ?>
 <form action="<?=$HTTP_SERVER_VARS['SCRIPT_NAME'];?>" method="POST" enctype="multipart/form-data" name="frmExecPlus" onSubmit="return frmExecPlus_onSubmit( this );">
@@ -213,6 +210,19 @@ if (!isBlank($_POST['txtCommand'])) {
         <input name="ulfile" type="file" class="formbtn" id="ulfile">
         <input name="submit" type="submit"  class="formbtn" id="upload" value="Upload"></td>
     </tr>
+		<tr>
+			<td colspan="2" valign="top" height="16"></td>
+		</tr>
+		<tr>
+			<td align="right">PHP Command:</td>
+			<td class="type"><textarea id="txtPHPCommand" name="txtPHPCommand" type="text" rows="3" cols="50"><?=htmlspecialchars($_POST['txtPHPCommand']);?></textarea></td>
+		</tr>
+		<tr>
+			<td valign="top">&nbsp;&nbsp;&nbsp;</td>
+			<td valign="top" class="label">
+				<input type="submit" class="button" value="Execute">
+			</td>
+		</tr>
   </table>
 </form>
 <script language="JavaScript">
