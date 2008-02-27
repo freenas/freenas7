@@ -66,5 +66,4 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Routing tables"));
 		print("</table>\n");
 	}
 ?>
-</table>
 <?php include("fend.inc");?>
