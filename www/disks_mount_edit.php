@@ -223,6 +223,11 @@ function fstype_change() {
 			break;
   }
 }
+
+function enable_change(enable_change) {
+	document.iform.type.disabled = !enable_change;
+	document.iform.mdisk.disabled = !enable_change;
+}
 // -->
 </script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -328,7 +333,7 @@ function fstype_change() {
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>">
+			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
 			        <?php if (isset($id) && $a_mount[$id]): ?>
 			        <input name="id" type="hidden" value="<?=$id;?>">
 			        <?php endif; ?>
@@ -349,6 +354,10 @@ function fstype_change() {
 <script language="JavaScript">
 <!--
 type_change();
+<?php if (isset($id) && $a_disk[$id]):?>
+<!-- Disable controls that should not be modified anymore in edit mode. -->
+enable_change(false);
+<?php endif;?>
 //-->
 </script>
 <?php include("fend.inc");?>
