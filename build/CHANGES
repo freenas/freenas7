@@ -14,9 +14,6 @@ Majors changes:
 - Add generic webserver service.
 - Complete review and typo fixes in sourcecode. Thanks to Jerome Warnier.
 
-Minors changes:
-- Add /usr/bin/bc - An arbitrary precision calculator language
-
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
 - It is not possible to encrypt a disk partition, only complete disks are supported.
@@ -39,6 +36,7 @@ FreeNAS 0.686.2:
 
 Minors changes:
 - Add m4a/m4p support in MediaTomb configuration file.
+- Add /usr/bin/bc - An arbitrary precision calculator language
 
 Bug fixes:
 - GID was not displayed correct on 'Access/Groups' WebGUI page. Thanks to Lars Köller.

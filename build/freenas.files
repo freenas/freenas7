@@ -391,7 +391,7 @@ usr/bin/cmp
 ## diff -- find differences between two files
 usr/bin/diff
 
-#bc -- An arbitrary precision calculator language
+## bc -- An arbitrary precision calculator language
 usr/bin/bc
 
 ####### contents of /usr/sbin
