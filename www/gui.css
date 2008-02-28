@@ -286,6 +286,20 @@ ul#tabnav li.tabinact a {
 	margin: 0px 0px 0px 2px;
 	background: url("tabnav_inact_bg_right.gif") top right no-repeat;
 }
+* html ul#tabnav li.tabinact a { /* Fix for IE */
+	color: white;
+	display: block;
+	font-weight: bold;
+	font-family: 'Arial';
+	font-size: 11px;
+	text-decoration: none;
+	vertical-align: center;
+	height: 16px;
+	float: left;
+	padding: 3px 12px 0px 10px;
+	margin: 0px 0px 0px 1px;
+	background: url("tabnav_inact_bg_right.gif") top right no-repeat;
+}
 ul#tabnav li.tabact {
 	float: left;
 	background-color: #EEEEEE;
@@ -304,6 +318,20 @@ ul#tabnav li.tabact a {
 	float: left;
 	padding: 3px 12px 0px 10px;
 	margin: 0px 0px 0px 2px;
+	background: url("tabnav_act_bg_right.gif") top right no-repeat;
+}
+* html ul#tabnav li.tabact a { /* Fix for IE */
+	color: black;
+	display: block;
+	font-weight: bold;
+	font-family: 'Arial';
+	font-size: 11px;
+	text-decoration: none;
+	vertical-align: center;
+	height: 16px;
+	float: left;
+	padding: 3px 12px 0px 10px;
+	margin: 0px 0px 0px 1px;
 	background: url("tabnav_act_bg_right.gif") top right no-repeat;
 }
 .tabcont {
