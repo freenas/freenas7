@@ -280,10 +280,10 @@ ul#tabnav li.tabinact a {
 	font-size: 11px;
 	text-decoration: none;
 	vertical-align: center;
-	height: 16px;
+	height: 19px;
 	float: left;
-	padding: 3px 12px 0px 10px;
-	margin: 0px 0px 0px 2px;
+	padding: 3px 16px 0px 10px;
+	margin: 0px 0px 0px 6px;
 	background: url("tabnav_inact_bg_right.gif") top right no-repeat;
 }
 * html ul#tabnav li.tabinact a { /* Fix for IE */
@@ -294,10 +294,10 @@ ul#tabnav li.tabinact a {
 	font-size: 11px;
 	text-decoration: none;
 	vertical-align: center;
-	height: 16px;
+	height: 19px;
 	float: left;
-	padding: 3px 12px 0px 10px;
-	margin: 0px 0px 0px 1px;
+	padding: 3px 16px 0px 10px;
+	margin: 0px 0px 0px 3px;
 	background: url("tabnav_inact_bg_right.gif") top right no-repeat;
 }
 ul#tabnav li.tabact {
@@ -314,10 +314,10 @@ ul#tabnav li.tabact a {
 	font-size: 11px;
 	text-decoration: none;
 	vertical-align: center;
-	height: 16px;
+	height: 19px;
 	float: left;
-	padding: 3px 12px 0px 10px;
-	margin: 0px 0px 0px 2px;
+	padding: 3px 16px 0px 10px;
+	margin: 0px 0px 0px 6px;
 	background: url("tabnav_act_bg_right.gif") top right no-repeat;
 }
 * html ul#tabnav li.tabact a { /* Fix for IE */
@@ -328,10 +328,10 @@ ul#tabnav li.tabact a {
 	font-size: 11px;
 	text-decoration: none;
 	vertical-align: center;
-	height: 16px;
+	height: 19px;
 	float: left;
-	padding: 3px 12px 0px 10px;
-	margin: 0px 0px 0px 1px;
+	padding: 3px 16px 0px 10px;
+	margin: 0px 0px 0px 3px;
 	background: url("tabnav_act_bg_right.gif") top right no-repeat;
 }
 .tabcont {
