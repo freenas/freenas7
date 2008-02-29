@@ -25,6 +25,9 @@ pre {
 .pgheader, .pgfooter {
 	background-color: #435370;
 }
+.pgheader {
+	background: url("header_bg.gif") top left no-repeat;
+}
 .pgheadertext {
 	font-size: 18px;
 	color: #ffffff;
