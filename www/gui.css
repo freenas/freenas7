@@ -74,10 +74,6 @@ pre {
 	font-size: 10px;
 	font-weight: bold;
 }
-.errmsg {
-	font-weight: bold;
-	color: #CC0000;
-}
 .red {
 	color: #CC0000;
 }
@@ -347,5 +343,24 @@ ul#tabnav li.tabact a {
 .label {
 	font-family: tahoma, verdana, arial, helvetica;
 	font-size: 11px;
+	font-weight: bold;
+}
+div#infobox table tr td.icon {
+	background-color: #687BA4;
+	width: 36;
+}
+div#infobox table tr td.message {
+	background-color: #D9DEE8;
+	padding-left: 8px
+}
+div#errorbox table tr td.icon {
+	background-color: #A12A2A;
+	width: 36;
+}
+div#errorbox table tr td.message {
+	color: #CC0000;
+	background-color: #FFD9D1;
+	padding-left: 8px;
+	padding-top: 6px;
 	font-weight: bold;
 }
