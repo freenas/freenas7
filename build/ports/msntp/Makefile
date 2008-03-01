@@ -12,6 +12,6 @@ CFLAGS+=			-DLOCKNAME='\"/var/run/msntp.pid\"'
 CFLAGS+=			-DSAVENAME='\"/var/db/msntp.state\"'
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${PORTSDIR}/net/msntp/work/msntp*/msntp ${FREENAS_ROOTFS}/usr/local/bin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/msntp ${FREENAS_ROOTFS}/usr/local/bin
 
 .include <bsd.port.mk>
