@@ -30,6 +30,9 @@ require("guiconfig.inc");
 $pgtitle = array(gettext("Diagnostics"), gettext("Routing tables"));
 ?>
 <?php include("fbegin.inc");?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabcont">
 <?php
 	$netstat = ($_POST['resolve'] == 'yes' ? 'netstat -rW' : 'netstat -nrW');
 	list($dummy, $internet, $internet6) = explode("\n\n", shell_exec($netstat));
@@ -38,10 +41,10 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Routing tables"));
 		$elements = ($tabindex == 0 ? 8 : 8);
 		$name = ($tabindex == 0 ? 'IPv4' : 'IPv6');
 ?>
-<table class="tabcont" width="100%" cellspacing="0" cellpadding="6" border="0">
-	<tr>
-		<td colspan="<?=$elements?>" valign="top" class="listtopic"><?=$name;?></td>
-	</tr>
+			<table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<tr>
+					<td colspan="<?=$elements?>" valign="top" class="listtopic"><?=$name;?></td>
+				</tr>
 <?
 		foreach (explode("\n", $table) as $i => $line) {
 			if ($i == 0) continue;
@@ -64,6 +67,10 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Routing tables"));
 			print("</tr>\n");
 		}
 		print("</table>\n");
+		print("<br/>\n");
 	}
 ?>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc");?>
