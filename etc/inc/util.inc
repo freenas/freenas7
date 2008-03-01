@@ -419,6 +419,7 @@ function get_interface_list() {
 //        [mdisk] => ad0s1
 //        [devicespecialfile] => /dev/ad0s1
 //        [sharename] => sharename
+//        [fsid] => 090db747f2d532ed
 //      )
 function get_mounts_list()
 {
@@ -462,6 +463,7 @@ function get_mounts_list()
 		$amountlist[$i]['mdisk'] = $devicename;
 		$amountlist[$i]['devicespecialfile'] = $devicespecialfile;
 		$amountlist[$i]['sharename'] = $amountpath[2];
+		$amountlist[$i]['fsid'] = get_mount_fsid($devicespecialfile, $mountpath);
 
 		$i++;
 	}
@@ -515,6 +517,26 @@ function get_mount_usage()
 	}
 
 	return $result;
+}
+
+// Retrieve the fsid from mount point.
+// $devicespecialfile - The device special name, e.g. /dev/ad6p1
+// $mp - Name of the mount point, e.g. /mnt/1
+// Return fsid or empty string.
+function get_mount_fsid($devicespecialfile, $mp) {
+	exec("/sbin/mount -v", $rawdata);
+	if (empty($rawdata))
+		return NULL;
+
+	foreach ($rawdata as $mountinfo) {
+		// Parse string: /dev/ad6p1 on /mnt/1 (ufs, local, soft-updates, acls, fsid 090db747f2d532ed)
+		if (0 == preg_match("/(\S+) on (\S+).+fsid (\S+).+/", $mountinfo, $info))
+			continue;
+		if (($info[1] === $devicespecialfile) && ($info[2] === $mp))
+			return $info[3];
+	}
+
+	return NULL;
 }
 
 /* Return list of ALL software volume: gvinum, gmirror */
