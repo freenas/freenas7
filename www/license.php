@@ -178,6 +178,9 @@ $pgtitle = array(gettext("License"));
 		<p>cdialog - Display simple dialog boxes from shell scripts (<a href="http://invisible-island.net/dialog" target="_blank">http://invisible-island.net/dialog</a>)<br>
       Copyright &copy; 2000-2006,2007 Thomas E. Dickey.</p>
 
+		<p>Nifty Corners Cube - Rounded corners with CSS and Javascript (<a href="http://www.html.it/articoli/niftycube/index.html" target="_blank">http://www.html.it/articoli/niftycube/index.html</a>)<br>
+      Copyright &copy; 2006 Alessandro Fulciniti (a.fulciniti@html.it).</p>
+
 	  <p>pfSense: FreeNAS use some pfSense code too (<a href="http://www.pfsense.com" target="_blank">http://www.pfsense.com/</a>)<br>
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
     </p>

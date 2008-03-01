@@ -233,7 +233,6 @@ a {
 	padding-bottom: 4px;
 }
 .listtopic {
-	border-right: 1px solid #999999;
 	font-size: 11px;
 	background-color: #435370;
 	padding-right: 16px;
@@ -244,7 +243,6 @@ a {
 	padding-bottom: 5px;
 }
 .optsect_t {
-	border-right: 1px solid #999999;
 	background-color: #435370;
 	padding-right: 6px;
 	padding-left: 6px;
@@ -268,70 +266,30 @@ ul#tabnav {
 ul#tabnav li.tabinact {
 	float:left;
 	background-color: #777777;
+	color: #FFFFFF;
+	padding: 0;
 	white-space: nowrap;
-	background: url("tabnav_inact_bg_left.gif") top left no-repeat;
 }
 ul#tabnav li.tabinact a {
-	color: white;
-	display: block;
-	font-weight: bold;
-	font-family: 'Arial';
-	font-size: 11px;
-	text-decoration: none;
-	vertical-align: center;
-	height: 17px;
 	float: left;
-	padding: 3px 16px 0px 10px;
-	margin: 0px 0px 0px 6px;
-	background: url("tabnav_inact_bg_right.gif") top right no-repeat;
-}
-* html ul#tabnav li.tabinact a { /* Fix for IE */
-	color: white;
 	display: block;
-	font-weight: bold;
-	font-family: 'Arial';
-	font-size: 11px;
 	text-decoration: none;
-	vertical-align: center;
-	height: 20px;
-	float: left;
-	padding: 3px 16px 0px 10px;
-	margin: 0px 0px 0px 3px;
-	background: url("tabnav_inact_bg_right.gif") top right no-repeat;
+	padding: 5px 8px 5px 8px;
+	color: #FFFFFF;
 }
 ul#tabnav li.tabact {
 	float: left;
 	background-color: #EEEEEE;
+	color: #000000;
+	padding: 0;
 	white-space: nowrap;
-	background: url("tabnav_act_bg_left.gif") top left no-repeat;
 }
 ul#tabnav li.tabact a {
-	color: black;
-	display: block;
-	font-weight: bold;
-	font-family: 'Arial';
-	font-size: 11px;
-	text-decoration: none;
-	vertical-align: center;
-	height: 17px;
 	float: left;
-	padding: 3px 16px 0px 10px;
-	margin: 0px 0px 0px 6px;
-	background: url("tabnav_act_bg_right.gif") top right no-repeat;
-}
-* html ul#tabnav li.tabact a { /* Fix for IE */
-	color: black;
 	display: block;
-	font-weight: bold;
-	font-family: 'Arial';
-	font-size: 11px;
 	text-decoration: none;
-	vertical-align: center;
-	height: 20px;
-	float: left;
-	padding: 3px 16px 0px 10px;
-	margin: 0px 0px 0px 3px;
-	background: url("tabnav_act_bg_right.gif") top right no-repeat;
+	padding: 5px 8px 5px 8px;
+	color: #FFFFFF;
 }
 .tabcont {
 	background-color: #EEEEEE;

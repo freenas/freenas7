@@ -617,6 +617,9 @@ use_svn() {
 	cd $FREENAS_SVNDIR/www
 	cp -v -p * $FREENAS_ROOTFS/usr/local/www
 
+	cd $FREENAS_SVNDIR/www/niftycube
+	cp -v -p * $FREENAS_ROOTFS/usr/local/www/niftycube
+
 	cd $FREENAS_SVNDIR/www/syntaxhighlighter
 	cp -v -p * $FREENAS_ROOTFS/usr/local/www/syntaxhighlighter
 

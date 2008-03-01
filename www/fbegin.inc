@@ -150,9 +150,11 @@ function display_menu($menu) {
 	<meta http-equiv="refresh" content="<?=$pgrefresh;?>">
 	<?php endif;?>
 	<link href="gui.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="gui.js"></script>
+	<script type="text/javascript" src="niftycube/niftycube.js"></script>
+	<script type="text/javascript" src="niftycube/niftylayout.js"></script>
 </head>
 <body link="#0000CC" vlink="#0000CC" alink="#0000CC">
-<script type="text/javascript" src="gui.js"></script>
 <table width="750" border="0" cellspacing="0" cellpadding="2">
   <tr valign="bottom">
     <td width="150" height="65" align="center" valign="middle">
