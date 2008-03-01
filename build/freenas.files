@@ -141,6 +141,7 @@ sbin/init
 
 ## iscontrol -- login/negotiator/control for an iSCSI initiator session
 sbin/iscontrol
+
 ## kldload -- load a file into the kernel
 sbin/kldload
 
@@ -162,17 +163,11 @@ sbin/mknod
 ## mount -- mount file systems
 sbin/mount
 
-## mount_std, mount_devfs, mount_fdescfs, mount_linprocfs, mount_procfs -- mount "standard'' file systems
-sbin/mount_devfs:sbin/mount_fdescfs:sbin/mount_linprocfs:sbin/mount_procfs:sbin/mount_std:
-
 ## mdmfs, mount_mfs -- configure and mount an in-memory file system using the md(4) driver
 sbin/mdmfs
 
 ## mount_nullfs -- mount a loopback file system sub-tree; demonstrate the use of a null file system layer
 sbin/mount_nullfs
-
-## mount_umapfs -- sample file system layer
-sbin/mount_umapfs
 
 ## mount_unionfs -- mount union file systems
 sbin/mount_unionfs
@@ -186,14 +181,8 @@ sbin/mount_nfs
 ## mount_nfs4 -- mount NFSv4 file system
 sbin/mount_nfs4
 
-## mount_ext2fs -- mount ext2fs file system
-sbin/mount_ext2fs
-
 ## mount_cd9660 -- mount CDROM file system
 sbin/mount_cd9660
-
-## mount_reiserfs -- mount ReiserFS file system
-sbin/mount_reiserfs
 
 ## mount_udf -- mount UDF file system
 sbin/mount_udf
@@ -429,9 +418,6 @@ usr/sbin/rtsold:sbin/rtsol
 
 ##  traceroute -- print the route packets take to network host
 usr/sbin/traceroute
-
-## wicontrol -- configure Lucent, Intersil, and Atheros wireless devices
-usr/sbin/wicontrol
 
 ## wpa_supplicant -- WPA/802.11i Supplicant for wireless network devices
 usr/sbin/wpa_supplicant
