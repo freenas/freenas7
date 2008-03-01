@@ -66,7 +66,8 @@ FREENAS_NEWFS="-U -o space -m 0"
 # Support bootmenu
 OPT_BOOTMENU=1
 # Support bootsplash
-OPT_BOOTSPLASH=1
+# Remove during the port to freebsd 7.0 for checking messages
+OPT_BOOTSPLASH=0
 
 # Dialog command
 DIALOG="dialog"

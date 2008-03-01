@@ -319,6 +319,9 @@ options         DEVICE_POLLING
 options         VESA
 options         SC_PIXEL_MODE
 
+# Power management support in the kernel (depreciate?)
+device		acpi		# acpi -- Advanced Configuration and Power Management support
+
 # Network drivers:
 device		arl		# Aironet Arlan 655 wireless adapters
 device          iwi		# Intel PRO/Wireless 2200BG/2225BG/2915ABG
