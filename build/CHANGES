@@ -51,6 +51,9 @@ Known bugs:
 FreeNAS 0.686.2:
 ----------------
 
+Majors changes:
+- Add ability to set a CIFS/SMB share read only.
+
 Minors changes:
 - Add m4a/m4p support in MediaTomb configuration file.
 - Add /usr/bin/bc - An arbitrary precision calculator language
