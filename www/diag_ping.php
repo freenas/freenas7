@@ -3,7 +3,7 @@
 /*
 	diag_ping.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -86,10 +86,10 @@ function get_interface_addr($ifdescr) {
 ?>
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
+	<tr>
 		<td class="tabnavtbl">
-  		<ul id="tabnav">
-				<li class="tabact"><?=gettext("Ping");?></li>
+			<ul id="tabnav">
+				<li class="tabact"><a href="diag_ping.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Ping");?></a></li>
 				<li class="tabinact"><a href="diag_traceroute.php"><?=gettext("Traceroute");?></a></li>
   		</ul>
   	</td>
