@@ -248,6 +248,7 @@
 			<name>xxx</name>
 			<path>/mnt/xxx</path>
 			<comment>xxx</comment>
+			<readonly/>
 			<browseable/>
 			<inheritpermissions/>
 			<recyclebin/>

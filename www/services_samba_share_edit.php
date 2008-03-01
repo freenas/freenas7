@@ -58,6 +58,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['name'] = $a_share[$id]['name'];
 	$pconfig['path'] = $a_share[$id]['path'];
 	$pconfig['comment'] = $a_share[$id]['comment'];
+	$pconfig['readonly'] = isset($a_share[$id]['readonly']);
 	$pconfig['browseable'] = isset($a_share[$id]['browseable']);
 	$pconfig['inheritpermissions'] = isset($a_share[$id]['inheritpermissions']);
 	$pconfig['recyclebin'] = isset($a_share[$id]['recyclebin']);
@@ -67,6 +68,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['name'] = "";
 	$pconfig['path'] = "";
 	$pconfig['comment'] = "";
+	$pconfig['readonly'] = false;
 	$pconfig['browseable'] = true;
 	$pconfig['inheritpermissions'] = true;
 	$pconfig['recyclebin'] = false;
@@ -93,6 +95,7 @@ if($_POST) {
 		$share['name'] = $_POST['name'];
 		$share['path'] = $_POST['path'];
 		$share['comment'] = $_POST['comment'];
+		$share['readonly'] = $_POST['readonly'] ? true : false;
 		$share['browseable'] = $_POST['browseable'] ? true : false;
 		$share['inheritpermissions'] = $_POST['inheritpermissions'] ? true : false;
 		$share['recyclebin'] = $_POST['recyclebin'] ? true : false;
@@ -147,6 +150,14 @@ if($_POST) {
 							<span class="vexpl"><?=gettext("Path to be shared.");?></span>
 					  </td>
 					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Read only");?></td>
+			      <td width="78%" class="vtable">
+							<input name="readonly" type="checkbox" id="readonly" value="yes" <?php if ($pconfig['readonly']) echo "checked"; ?>>
+							<?=gettext("Set read only");?><br>
+							<span class="vexpl"><?=gettext("If this parameter is set, then users may not create or modify files in the share.");?></span>
+			      </td>
+			    </tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Browseable");?></td>
 			      <td width="78%" class="vtable">
