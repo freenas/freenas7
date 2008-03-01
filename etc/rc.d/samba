@@ -194,7 +194,9 @@ create_conf()
 			-v "concat('[',name,']')" -n \
 			-v "concat('comment = ',comment)" -n \
 			-v "concat('path = ',path)" -n \
-			-o "writeable = yes" -n \
+			-i "count(readonly) = 0" \
+				-o "writeable = yes" -n \
+			-b \
 			-o "printable = no" -n \
 			-o "veto files = /.snap/" -n \
 			-o "hide dot files = yes" -n \
