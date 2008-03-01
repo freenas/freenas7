@@ -1,7 +1,34 @@
 ################ History Change logs ##############
 
-FreeNAS 0.687b1:
-----------------
+FreeNAS 0.7:
+------------
+
+Majors changes:
+- Upgrade to FreeBSD 7.0.
+
+Minors changes:
+
+Bug fixes:
+
+Permanent restrictions:
+- It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
+- It is not possible to encrypt a disk partition, only complete disks are supported.
+
+Known bugs:
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
+
+NEED TESTING:
+- IPv6: auto mode
+- All services using IPv6 address (NFS, FTP, etc...)
+- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes samba when accesing to share
+- Need to write an online-test procedure
+
+Help needed:
+- Need help for adding LDAP authentication feature:
+Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
+
+FreeNAS 0.69:
+-------------
 
 Majors changes:
 - Upgrade to FreeBSD 6.3. Because of this there are some changes:
@@ -20,16 +47,6 @@ Permanent restrictions:
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
-
-NEED TESTING:
-- IPv6: auto mode
-- All services using IPv6 address (NFS, FTP, etc...)
-- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes samba when accesing to share
-- Need to write an online-test procedure
-
-Help needed:
-- Need help for adding LDAP authentication feature:
-Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
 FreeNAS 0.686.2:
 ----------------
