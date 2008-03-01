@@ -363,3 +363,8 @@ device          iicsmb          # smb over i2c bridge
 #
 
 device          coretemp
+
+# Hardware crypto acceleration 	 
+device          crypto 	 
+device          cryptodev 	 
+device          padlock
