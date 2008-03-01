@@ -139,6 +139,8 @@ sbin/ifconfig
 ## init -- process control initialization
 sbin/init
 
+## iscontrol -- login/negotiator/control for an iSCSI initiator session
+sbin/iscontrol
 ## kldload -- load a file into the kernel
 sbin/kldload
 

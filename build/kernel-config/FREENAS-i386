@@ -61,7 +61,7 @@ options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
 options 	KBD_INSTALL_CDEV	# install a CDEV entry in /dev
 options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
 options 	STOP_NMI		# Stop CPUS using NMI instead of IPI
-options 	AUDIT			# Security event auditing
+#options 	AUDIT			# Security event auditing
 
 # To make an SMP kernel, the next two lines are needed
 options 	SMP			# Symmetric MultiProcessor Kernel
@@ -147,7 +147,7 @@ device		twe		# 3ware ATA RAID
 # atkbdc0 controls both the keyboard and the PS/2 mouse
 device		atkbdc		# AT keyboard controller
 device		atkbd		# AT keyboard
-device		psm		# PS/2 mouse
+#device		psm		# PS/2 mouse
 
 device		kbdmux		# keyboard multiplexer
 
@@ -262,7 +262,7 @@ device		ether		# Ethernet support
 #device		tun		# Packet tunnel.
 device		pty		# Pseudo-ttys (telnet etc)
 device		md		# Memory "disks"
-device		gif		# IPv6 and IPv4 tunneling
+#device		gif		# IPv6 and IPv4 tunneling
 #device		faith		# IPv6-to-IPv4 relaying (translation)
 device		firmware	# firmware assist module
 
@@ -300,8 +300,8 @@ device		firewire	# FireWire bus code
 device		sbp		# SCSI over FireWire (Requires scbus and da)
 #device		fwe		# Ethernet over FireWire (non-standard!)
 device		fwip		# IP over FireWire (RFC 2734,3146)
-device		dcons		# Dumb console driver
-device		dcons_crom	# Configuration ROM for dcons
+#device		dcons		# Dumb console driver
+#device		dcons_crom	# Configuration ROM for dcons
 
 #####################################################################
 # FREENAS
@@ -321,10 +321,14 @@ options         SC_PIXEL_MODE
 
 # Network drivers:
 device		arl		# Aironet Arlan 655 wireless adapters
-device          iwi		# Intel PRO/Wireless 2200BG/2225BG/2915ABG IEEE 802.11 adapters
+device          iwi		# Intel PRO/Wireless 2200BG/2225BG/2915ABG
 device          ipw 		# Intel PRO/Wireless 2100 IEEE 802.11 adapter
+#device		zyd		# ZyDAS ZD1211/ZD1211B USB IEEE 802.11b/g
 device		sbni		# Granch SBNI12-xx ISA and PCI adapters
 device 		wpi		# Intel 3945ABG Wireless LAN controller
+device 		cxgb 		# Chelsio T3 10 Gigabit Ethernet
+device 		gem		# ERI/GEM/GMAC Ethernet device driver
+device		nxge		# Neterion Xframe 10GbE Server/Storage
 
 # USB support
 device          udav                    # Davicom DM910 USB Ethernet driver
