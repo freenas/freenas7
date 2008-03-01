@@ -38,7 +38,7 @@ export FREENAS_OBJDIRPREFIX
 FREENAS_URL=$(cat $FREENAS_SVNDIR/etc/prd.url)
 FREENAS_BOOTDIR="$FREENAS_ROOTDIR/bootloader"
 FREENAS_TMPDIR="/tmp/freenastmp"
-FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/trunk"
+FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.69"
 
 # Path where to find Makefile includes
 FREENAS_MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
