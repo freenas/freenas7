@@ -1,7 +1,7 @@
 ################ History Change logs ##############
 
-FreeNAS 0.687b1:
-----------------
+FreeNAS 0.687:
+--------------
 
 Majors changes:
 - Upgrade to FreeBSD 6.3. Because of this there are some changes:
