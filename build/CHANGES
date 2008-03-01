@@ -57,6 +57,7 @@ Minors changes:
 
 Bug fixes:
 - GID was not displayed correct on 'Access/Groups' WebGUI page. Thanks to Lars Köller.
+- Use inadyn-mt to 02.01.13 because all newer ones causes a core dump (Bugreport has been sent).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
