@@ -51,6 +51,10 @@ Known bugs:
 FreeNAS 0.686.3:
 ----------------
 
+Majors changes:
+- Remove consolehm sensor support because it doesn't work/recognize actual hardware.
+  Will be replaced with FreeBSD 7.0 sensor framework in FreeNAS 0.7.
+
 Minors changes:
 - Add /bin/chflags.
 - Fix some WebGUI code bugs.
