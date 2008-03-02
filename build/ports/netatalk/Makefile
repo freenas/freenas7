@@ -1,15 +1,18 @@
 PORTNAME=			netatalk
 PORTVERSION=	2.0.3
-PORTREVISION=	0
+PORTREVISION=	4
 PORTEPOCH=		1
-CATEGORIES=		editors
+CATEGORIES=		net
 COMMENT=			File and print server for AppleTalk networks
 MAINTAINER=		votdev@gmx.de
 
 MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
 MASTER_SITE_SUBDIR=	netatalk
 
+USE_AUTOTOOLS=		libtool:15
 GNU_CONFIGURE=		yes
+USE_ICONV=				yes
+CONFIGURE_TARGET=	--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
 CONFIGURE_ARGS+=	--bindir=/usr/local/bin \
 									--sbindir=/usr/local/sbin \
 									--sysconfdir=/var/etc \
@@ -17,8 +20,9 @@ CONFIGURE_ARGS+=	--bindir=/usr/local/bin \
 									--enable-largefile \
 									--disable-tcp-wrappers \
 									--disable-cups \
-									--with-pam \
-									--with-uams-path=/etc/uams/
+									--with-pam=/etc/pam.d \
+									--with-uams-path=/etc/uams/ \
+									--with-libiconv=${LOCALBASE}
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/etc/afpd/afpd ${FREENAS_ROOTFS}/usr/local/sbin
