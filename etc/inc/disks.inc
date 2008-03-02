@@ -1133,7 +1133,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 
 			// Create filesystem
 			echo gettext("Creating filesystem").":\n";
-			$param = "";
+			$param = "-r 0 "; // Use revision 0 when formating EXT2 filesystems, otherwise mount_ext2fs fails (mount point disapears)
 			if (!empty($volumelabel))
 				$param .= " -L " . escapeshellarg($volumelabel);
 			system("/usr/local/sbin/mke2fs {$param} {$disk}s1 2>&1");
@@ -1397,7 +1397,7 @@ function disks_create_fdisk_configfile($type, $diskinfo, $file) {
 
 	$fdiskconf .= <<<EOD
 g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}
-p 1 {$type} 1 {$diskinfo['mediasize_sectors']}
+p 1 {$type} {$diskinfo['sectors']} {$diskinfo['mediasize_sectors']}
 p 2 0 0 0
 p 3 0 0 0
 p 4 0 0 0
