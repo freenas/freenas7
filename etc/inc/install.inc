@@ -435,7 +435,7 @@ a 1
 EOD;
 
 	if (false === file_put_contents("{$g['tmp_path']}/fdisk.conf", $fdiskconf)) {
-		write_console("Error: Failed to create '{$g['varetc_path']}/fdisk.conf'.\n");
+		write_console("Error: Failed to create '{$g['tmp_path']}/fdisk.conf'.\n");
 		return 1;
 	}
 
