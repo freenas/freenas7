@@ -49,7 +49,6 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks 
 				<li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
 				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
-				<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP users");?></a></li>
 				<li class="tabinact"><a href="diag_infos_rsync_client"><?=gettext("RSYNC Client");?></a></li>
 				<li class="tabinact"><a href="diag_infos_sockets.php"><?=gettext("Sockets");?></a></li>
@@ -70,7 +69,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks 
 				echo gettext("Device name") . ":		{$name}<br/>";
 				echo gettext("Transfer mode") . ":		{$dmamode}<br/>";
 				
-				// Display more informations.
+				// Display more information
 				exec("/usr/local/sbin/ataidle {$device}", $rawdata);
 				array_shift($rawdata);
 				array_shift($rawdata);
