@@ -6,6 +6,9 @@ FreeNAS 0.686.3:
 Majors changes:
 
 Minors changes:
+- Add /bin/chflags.
+- Fix some WebGUI code bugs.
+- Modify install menu.
 
 Bug fixes:
 
