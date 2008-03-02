@@ -1,12 +1,11 @@
 The following has to be done when upgrading to FreeBSD 7.0:
 
-- Update GEOM Eli sources (STDIN patch).
+- GEOM Eli : Update sources (STDIN patch).
+- clog : compil, but generate core dump... need to found a replacement ???
 - Update/Adapt rc.d scripts (there are new scripts in FreeBSD)
 - Update build/kernel-config/FREENAS-amd64
-- Update port: netatalk
+- netatalk : need to check why some libs are missing
 - Modify /inc/disks.inc
   - $result = mwexec("/sbin/mount -t msdosfs -o -large,-u=ftp,-g=ftp,-m=777 {$devname} '{$mountname}'");
-- Implement new sensor framework:
-coretemp ?
-
+- Implement new sensor framework: coretemp ?
 - ...
