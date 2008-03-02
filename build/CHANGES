@@ -13,6 +13,7 @@ Minors changes:
 - Modify install menu.
 
 Bug fixes:
+- Use revision 0 when formating EXT2 filesystems, otherwise mount_ext2fs fails (mount point disapears)
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
