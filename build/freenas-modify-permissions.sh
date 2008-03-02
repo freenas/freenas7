@@ -38,14 +38,14 @@ chflags -RH noschg sbin/init
 echo "libexec/ld-elf.so.1"
 chflags -RH noschg libexec/ld-elf.so.1
 
-# lib/libc.so.6
-echo "lib/libc.so.6"
-chflags -RH noschg lib/libc.so.6
+# lib/libc.so.7
+echo "lib/libc.so.7"
+chflags -RH noschg lib/libc.so.7
 
-# lib/libcrypt.so.3
-echo "lib/libcrypt.so.3"
-chflags -RH noschg lib/libcrypt.so.3
+# lib/libcrypt.so.4
+echo "lib/libcrypt.so.4"
+chflags -RH noschg lib/libcrypt.so.4
 
-# lib/libpthread.so.2
-echo "lib/libpthread.so.2"
-chflags -RH noschg lib/libpthread.so.2
+# lib/libthr.so.3
+echo "lib/libthr.so.3"
+chflags -RH noschg lib/libthr.so.3
