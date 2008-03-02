@@ -87,6 +87,9 @@ bin/kenv
 ## rmdir -- remove directories
 bin/rmdir
 
+## chflags -- change file flags
+bin/chflags
+
 ####### contents of /sbin
 ## adjkerntz -- adjust local time CMOS clock to reflect time zone changes and keep current timezone offset for the kernel
 sbin/adjkerntz

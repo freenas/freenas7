@@ -48,6 +48,21 @@ Permanent restrictions:
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
 
+FreeNAS 0.686.3:
+----------------
+
+Minors changes:
+- Add /bin/chflags.
+- Fix some WebGUI code bugs.
+- Modify install menu.
+
+Permanent restrictions:
+- It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
+- It is not possible to encrypt a disk partition, only complete disks are supported.
+
+Known bugs:
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be override by the IPv4 DNS server.
+
 FreeNAS 0.686.2:
 ----------------
 
