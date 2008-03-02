@@ -1044,6 +1044,8 @@ function disks_geli_setkey($provider, $oldpassphrase, $passphrase, $verbose = fa
 // Return none
 function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 {
+	global $g;
+
 	if (!$notinitmbr) {
 		echo gettext("Erasing MBR and all partitions").".\n";
 		system("/bin/dd if=/dev/zero of={$disk} bs=32k count=640");
@@ -1082,17 +1084,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			disk_sanitize_bios_geom($diskinfo);
 
 			// Create fdisk config file (fdisk.conf)
-			$fdiskconf .= <<<EOD
-g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}
-p 1 11 1 {$diskinfo['mediasize_sectors']}
-p 2 0 0 0
-p 3 0 0 0
-p 4 0 0 0
-a 1
-
-EOD;
-
-			if (false === file_put_contents("{$g['tmp_path']}/fdisk.conf", $fdiskconf)) {
+			if (1 == disks_create_fdisk_configfile(11, $diskinfo, "{$g['tmp_path']}/fdisk.conf")) {
 				echo("Error: Failed to create '{$g['tmp_path']}/fdisk.conf'.\n");
 				break;
 			}
@@ -1126,17 +1118,7 @@ EOD;
 			disk_sanitize_bios_geom($diskinfo);
 
 			// Create fdisk config file (fdisk.conf)
-			$fdiskconf .= <<<EOD
-g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}
-p 1 131 1 {$diskinfo['mediasize_sectors']}
-p 2 0 0 0
-p 3 0 0 0
-p 4 0 0 0
-a 1
-
-EOD;
-
-			if (false === file_put_contents("{$g['tmp_path']}/fdisk.conf", $fdiskconf)) {
+			if (1 == disks_create_fdisk_configfile(131, $diskinfo, "{$g['tmp_path']}/fdisk.conf")) {
 				echo("Error: Failed to create '{$g['tmp_path']}/fdisk.conf'.\n");
 				break;
 			}
@@ -1390,5 +1372,44 @@ function disk_sanitize_bios_geom(&$info) {
 	// Assume standard SCSI parameter
 	$info['heads'] = 255;
 	$info['cylinders'] = intval($info['mediasize_sectors'] / ($info['sectors'] * $info['heads']));
+}
+
+// Create fdisk configuration file.
+// $type - File system identified (131 for EXT2, 11 for MSDOS)
+// $diskinfo - Array
+// (
+// 	[name] => ad0
+// 	[sectorsize]  => 512
+// 	[mediasize_bytes]  => 5242503168
+// 	[mediasize_mbytes]  => 4999
+// 	[mediasize_sectors]  => 10239264
+// 	[cylinders] => 10158
+// 	[heads] => 16
+// 	[sectors] => 63
+// )
+// $file - Filename of fdisk configuration file.
+// Return 0 if successful, 1 if error.
+function disks_create_fdisk_configfile($type, $diskinfo, $file) {
+	global $g;
+
+	if (!is_array($diskinfo))
+		return 1;
+
+	$fdiskconf .= <<<EOD
+g c{$diskinfo['cylinders']} h{$diskinfo['heads']} s{$diskinfo['sectors']}
+p 1 {$type} 1 {$diskinfo['mediasize_sectors']}
+p 2 0 0 0
+p 3 0 0 0
+p 4 0 0 0
+a 1
+
+EOD;
+
+	if (false === file_put_contents($file, $fdiskconf)) {
+		write_log("Error: Failed to create '{$file}'.");
+		return 1;
+	}
+
+	return 0;
 }
 ?>
