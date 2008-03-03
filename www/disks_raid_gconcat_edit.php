@@ -118,7 +118,7 @@ if ($_POST) {
 	<tr>
 		<td class="tabnavtbl">
 		  <ul id="tabnav">
-				<li class="tabact"><a href="disks_raid_gconcat.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("JBOD");?></a></li>
+				<li class="tabact"><a href="disks_raid_gconcat.php" title="<?=gettext("Reload page");?>" ><?=gettext("JBOD");?></a></li>
 				<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("RAID 0"); ?></a></li>
 				<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("RAID 1"); ?></a></li>
 				<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("RAID 5"); ?> </a></li>
@@ -129,7 +129,7 @@ if ($_POST) {
   <tr>
 		<td class="tabnavtbl">
 		  <ul id="tabnav">
-				<li class="tabact"><a href="disks_raid_gconcat.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Manage RAID");?></a></li>
+				<li class="tabact"><a href="disks_raid_gconcat.php" title="<?=gettext("Reload page");?>" ><?=gettext("Manage RAID");?></a></li>
 				<li class="tabinact"><a href="disks_raid_gconcat_tools.php"><?=gettext("Tools"); ?></a></li>
 				<li class="tabinact"><a href="disks_raid_gconcat_info.php"><?=gettext("Information"); ?></a></li>
 		  </ul>

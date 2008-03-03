@@ -92,14 +92,14 @@ function is_modified($name) {
 				<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("RAID 0"); ?></a></li>
 				<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("RAID 1"); ?></a></li>
 				<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("RAID 5"); ?> </a></li>
-				<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?></a></li>
+				<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>" ><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?></a></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Manage RAID");?></a></li>
+				<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>" ><?=gettext("Manage RAID");?></a></li>
 				<li class="tabinact"><a href="disks_raid_gvinum_tools.php"><?=gettext("Tools"); ?></a></li>
 				<li class="tabinact"><a href="disks_raid_gvinum_info.php"><?=gettext("Information"); ?></a></li>
 			</ul>

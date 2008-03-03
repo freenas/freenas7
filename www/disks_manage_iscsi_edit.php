@@ -3,7 +3,7 @@
 /*
 	disks_manage_iscsi_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -108,7 +108,7 @@ if ($_POST) {
     <td class="tabnavtbl">
       <ul id="tabnav">
       	<li class="tabinact"><a href="disks_manage.php"><?=gettext("Management");?></a></li>
-				<li class="tabact"><a href="disks_manage_iscsi.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
+				<li class="tabact"><a href="disks_manage_iscsi.php" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
       </ul>
     </td>
   </tr>

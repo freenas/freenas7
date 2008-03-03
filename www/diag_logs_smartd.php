@@ -56,7 +56,7 @@ if ($_POST['clear'])
     <li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
     <li class="tabinact"><a href="diag_logs_rsyncd.php"><?=gettext("RSYNCD");?></a></li>
     <li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSHD");?></a></li>
-    <li class="tabact"><a href="diag_logs_smartd.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("SMARTD");?></a></li>
+    <li class="tabact"><a href="diag_logs_smartd.php" title="<?=gettext("Reload page");?>"><?=gettext("SMARTD");?></a></li>
     <li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
     <li class="tabinact"><a href="diag_logs_settings.php"><?=gettext("Settings");?></a></li>
   </ul>

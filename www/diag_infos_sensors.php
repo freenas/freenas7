@@ -52,7 +52,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Sensor
 				<li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
 				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
-				<li class="tabact"><a href="diag_infos_sensors.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Sensors");?></a></li>
+				<li class="tabact"><a href="diag_infos_sensors.php" title="<?=gettext("Reload page");?>" ><?=gettext("Sensors");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP users");?></a></li>
 				<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
 				<li class="tabinact"><a href="diag_infos_sockets.php"><?=gettext("Sockets");?></a></li>

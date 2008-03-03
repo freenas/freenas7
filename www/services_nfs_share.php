@@ -88,7 +88,7 @@ if ($_GET['act'] == "del") {
     <td class="tabnavtbl">
       <ul id="tabnav">
         <li class="tabinact"><a href="services_nfs.php"><?=gettext("Settings");?></a></li>
-        <li class="tabact"><a href="services_nfs_share.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Shares");?></a></li>
+        <li class="tabact"><a href="services_nfs_share.php" title="<?=gettext("Reload page");?>"><?=gettext("Shares");?></a></li>
       </ul>
     </td>
   </tr>

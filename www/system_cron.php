@@ -2,11 +2,11 @@
 <?php
 /*
 	system_cron.php
-	Copyright © 2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -80,7 +80,7 @@ if ($_GET['act'] == "del") {
       	<li class="tabinact"><a href="system_proxy.php"><?=gettext("Proxy");?></a></li>
       	<li class="tabinact"><a href="system_swap.php"><?=gettext("Swap");?></a></li>
       	<li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
-        <li class="tabact"><a href="system_cron.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Cron");?></a></li>
+        <li class="tabact"><a href="system_cron.php" title="<?=gettext("Reload page");?>"><?=gettext("Cron");?></a></li>
       </ul>
     </td>
   </tr>

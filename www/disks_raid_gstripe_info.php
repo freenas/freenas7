@@ -4,7 +4,7 @@
 	disks_raid_gstripe_info.php
 	
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -43,7 +43,7 @@ $pgrefresh = 5; // Refresh every 5 seconds.
 	<tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("JBOD"); ?></a></li>
-	<li class="tabact"><a href="disks_raid_gstripe.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("RAID 0");?></a></li>
+	<li class="tabact"><a href="disks_raid_gstripe.php" title="<?=gettext("Reload page");?>" ><?=gettext("RAID 0");?></a></li>
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("RAID 1"); ?></a></li>
 	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("RAID 5"); ?></a></li>
 	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?> </a></li>
@@ -53,7 +53,7 @@ $pgrefresh = 5; // Refresh every 5 seconds.
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("Manage RAID"); ?></a></li>
 	<li class="tabinact"><a href="disks_raid_gstripe_tools.php"><?=gettext("Tools"); ?></a></li>
-	<li class="tabact"><a href="disks_raid_gstripe_info.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Information");?></a></li>
+	<li class="tabact"><a href="disks_raid_gstripe_info.php" title="<?=gettext("Reload page");?>" ><?=gettext("Information");?></a></li>
   </ul>
   </td></tr>
   <tr> 

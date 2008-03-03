@@ -68,7 +68,7 @@ if (!isset($do_traceroute)) {
 		<td class="tabnavtbl">
 		  <ul id="tabnav">
 				<li class="tabinact"><a href="diag_ping.php"><?=gettext("Ping");?></a></li>
-				<li class="tabact"><a href="diag_traceroute.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Traceroute");?></a></li>
+				<li class="tabact"><a href="diag_traceroute.php" title="<?=gettext("Reload page");?>"><?=gettext("Traceroute");?></a></li>
 		  </ul>
 	  </td>
 	</tr>

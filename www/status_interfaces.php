@@ -5,7 +5,7 @@
 	part of FreeNAS (http://www.freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
 	
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without

@@ -3,7 +3,7 @@
 /*
 	services_afp.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -89,7 +89,7 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><a href="services_afp.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Settings");?></a></li>
+        <li class="tabact"><a href="services_afp.php" title="<?=gettext("Reload page");?>"><?=gettext("Settings");?></a></li>
         <li class="tabinact"><a href="services_afp_share.php"><?=gettext("Shares");?></a></li>
       </ul>
     </td>

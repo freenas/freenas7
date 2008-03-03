@@ -39,7 +39,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks"
   <tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabact"><a href="diag_infos.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Disks");?></a></li>
+				<li class="tabact"><a href="diag_infos.php" title="<?=gettext("Reload page");?>"><?=gettext("Disks");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ata.php"><?=gettext("Disks (ATA)");?></a></li>
 				<li class="tabinact"><a href="diag_infos_part.php"><?=gettext("Partitions");?></a></li>
 				<li class="tabinact"><a href="diag_infos_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>

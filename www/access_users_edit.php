@@ -164,7 +164,7 @@ function get_nextuser_id() {
   <tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">
-			<li class="tabact"><a href="access_users.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Users");?></a></li>
+			<li class="tabact"><a href="access_users.php" title="<?=gettext("Reload page");?>"><?=gettext("Users");?></a></li>
     		<li class="tabinact"><a href="access_users_groups.php"><?=gettext("Groups");?></a></li>
   		</ul>
   	</td>
