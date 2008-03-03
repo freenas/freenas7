@@ -3,7 +3,7 @@
 /*
 	status_graph.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -45,7 +45,7 @@ $ifnum = get_ifname($config['interfaces'][$curif]['if']);
   <tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">
-				<li class="tabact"><a href="status_graph.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Traffic graph");?></a></li>
+				<li class="tabact"><a href="status_graph.php" title="<?=gettext("Reload page");?>"><?=gettext("Traffic graph");?></a></li>
 				<li class="tabinact"><a href="status_graph_cpu.php"><?=gettext("CPU load");?></a></li>
   		</ul>
   	</td>

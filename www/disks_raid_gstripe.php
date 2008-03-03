@@ -88,7 +88,7 @@ function is_modified($name) {
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
 	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("JBOD"); ?></a></li>
-	<li class="tabact"><a href="disks_raid_gstripe.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("RAID 0");?></a></li>
+	<li class="tabact"><a href="disks_raid_gstripe.php" title="<?=gettext("Reload page");?>" ><?=gettext("RAID 0");?></a></li>
 	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("RAID 1"); ?></a></li>
 	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("RAID 5"); ?> </a></li>
 	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?> </a></li>
@@ -96,7 +96,7 @@ function is_modified($name) {
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact"><a href="disks_raid_gstripe.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Manage RAID");?></a></li>
+	<li class="tabact"><a href="disks_raid_gstripe.php" title="<?=gettext("Reload page");?>" ><?=gettext("Manage RAID");?></a></li>
 	<li class="tabinact"><a href="disks_raid_gstripe_tools.php"><?=gettext("Tools"); ?></a></li>
 	<li class="tabinact"><a href="disks_raid_gstripe_info.php"><?=gettext("Information"); ?></a></li>
   </ul>

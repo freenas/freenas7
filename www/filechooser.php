@@ -1,7 +1,7 @@
 <?
 /*
 	filechooser.php
-	Copyright © 2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 	
 	Parts of code are take from 'File Browser Class'

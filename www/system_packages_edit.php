@@ -2,11 +2,11 @@
 <?php
 /*
 	system_packages_edit.php
-	Copyright © 2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -72,7 +72,7 @@ if(!isset($do_action)) {
   <tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">
-				<li class="tabact"><a href="system_packages.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Packages");?></a></li>
+				<li class="tabact"><a href="system_packages.php" title="<?=gettext("Reload page");?>"><?=gettext("Packages");?></a></li>
   		</ul>
   	</td>
 	</tr>

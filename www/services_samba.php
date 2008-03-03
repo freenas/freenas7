@@ -199,7 +199,7 @@ function authentication_change() {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><a href="services_samba.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Settings");?></a></li>
+        <li class="tabact"><a href="services_samba.php" title="<?=gettext("Reload page");?>"><?=gettext("Settings");?></a></li>
 				<li class="tabinact"><a href="services_samba_share.php"><?=gettext("Shares");?></a></li>
       </ul>
     </td>

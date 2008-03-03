@@ -3,7 +3,7 @@
 /*
 	services_rsyncd_local.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -80,7 +80,7 @@ if ($_GET['act'] == "del") {
 			<ul id="tabnav">
 				<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Server") ;?></a></li>
 				<li class="tabinact"><a href="services_rsyncd_client.php"><?=gettext("Client") ;?></a></li>
-				<li class="tabact"><a href="services_rsyncd_local.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Local") ;?></a></li>
+				<li class="tabact"><a href="services_rsyncd_local.php" title="<?=gettext("Reload page");?>"><?=gettext("Local") ;?></a></li>
 			</ul>
 		</td>
 	</tr>

@@ -41,7 +41,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Partit
 			<ul id="tabnav">
 				<li class="tabinact"><a href="diag_infos.php"><?=gettext("Disks");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ata.php"><?=gettext("Disks (ATA)");?></a></li>
-				<li class="tabact"><a href="diag_infos_part.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Partitions");?></a></li>
+				<li class="tabact"><a href="diag_infos_part.php" title="<?=gettext("Reload page");?>" ><?=gettext("Partitions");?></a></li>
 				<li class="tabinact"><a href="diag_infos_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
 				<li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
 				<li class="tabinact"><a href="diag_infos_mount.php"><?=gettext("Mounts");?></a></li>

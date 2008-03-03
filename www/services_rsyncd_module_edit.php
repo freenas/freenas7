@@ -123,7 +123,7 @@ if($_POST) {
   <tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">
-				<li class="tabact"><a href="services_rsyncd.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Server");?></a></li>
+				<li class="tabact"><a href="services_rsyncd.php" title="<?=gettext("Reload page");?>"><?=gettext("Server");?></a></li>
 			  <li class="tabinact"><a href="services_rsyncd_client.php"><?=gettext("Client");?></a></li>
 			  <li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local");?></a></li>
 			</ul>
@@ -133,7 +133,7 @@ if($_POST) {
 		<td class="tabnavtbl">
 			<ul id="tabnav">
 				<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Settings");?></a></li>
-				<li class="tabact"><a href="services_rsyncd_module.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Modules");?></a></li>
+				<li class="tabact"><a href="services_rsyncd_module.php" title="<?=gettext("Reload page");?>" ><?=gettext("Modules");?></a></li>
 			</ul>
 		</td>
 	</tr>
