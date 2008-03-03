@@ -272,7 +272,6 @@ function report_send_mail() {
 		$statusreport->AddArticle(new StatusReportArticleCmd("Processes","ps xauww"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("Memory","top -b 0 | grep Mem"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("Swap usage","/usr/sbin/swapinfo"));
-		$statusreport->AddArticle(new StatusReportArticleCmd("Sensors","/usr/local/bin/chm -I -d 0"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("ATA disk","/sbin/atacontrol list"));
 		$statusreport->AddArticle(new StatusReportArticleCmd("SCSI disk","/sbin/camcontrol devlist"));
 		$disklist = get_physical_disks_list();
