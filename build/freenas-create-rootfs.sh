@@ -85,6 +85,7 @@ mkdir usr/local/share ;
 mkdir usr/local/share/locale ;
 mkdir usr/local/etc ;
 mkdir usr/local/www ;
+mkdir usr/local/www/niftycube ;
 mkdir usr/local/www/syntaxhighlighter ;
 mkdir usr/sbin ;
 mkdir usr/share ;
