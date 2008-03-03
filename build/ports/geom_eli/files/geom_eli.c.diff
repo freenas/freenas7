@@ -1,6 +1,6 @@
 --- geom_eli.c.orig	2007-05-15 22:25:16.000000000 +0200
-+++ geom_eli.c	2008-03-02 09:59:49.000000000 +0100
-@@ -73,13 +73,15 @@
++++ geom_eli.c	2008-03-03 20:25:10.000000000 +0100
+@@ -73,18 +73,20 @@
  static void eli_restore(struct gctl_req *req);
  static void eli_clear(struct gctl_req *req);
  static void eli_dump(struct gctl_req *req);
@@ -18,6 +18,12 @@
   * detach [-fl] prov ...
   * stop - alias for 'detach'
   * onetime [-d] [-a aalgo] [-e ealgo] [-l keylen] prov ...
+  * configure [-bB] prov ...
+- * setkey [-pPv] [-n keyno] [-k keyfile] [-K newkeyfile] prov
++ * setkey [-pPtv] [-n keyno] [-k keyfile] [-K newkeyfile] prov
+  * delkey [-afv] [-n keyno] prov
+  * kill [-av] [prov ...]
+  * backup [-v] prov file
 @@ -103,9 +105,10 @@
  		{ 'l', "keylen", &keylen, G_TYPE_NUMBER },
  		{ 'P', "nonewpassphrase", NULL, G_TYPE_BOOL },
@@ -38,14 +44,10 @@
  		G_OPT_SENTINEL
  	    },
  	    NULL, "- an alias for 'init'"
-@@ -125,11 +129,12 @@
- 	    {
- 		{ 'd', "detach", NULL, G_TYPE_BOOL },
+@@ -127,9 +131,10 @@
  		{ 'k', "keyfile", keyfile, G_TYPE_STRING },
--		{ 'p', "nopassphrase", NULL, G_TYPE_BOOL },
--		{ 'r', "readonly", NULL, G_TYPE_BOOL },
-+		{ 'p', "nopassphrase", NULL, G_TYPE_NONE },
-+		{ 'r', "readonly", NULL, G_TYPE_NONE },
+ 		{ 'p', "nopassphrase", NULL, G_TYPE_BOOL },
+ 		{ 'r', "readonly", NULL, G_TYPE_BOOL },
 +		{ 't', "password-from-stdin", NULL, G_TYPE_BOOL },
  		G_OPT_SENTINEL
  	    },
@@ -54,14 +56,10 @@
  	},
  	{ "detach", 0, NULL,
  	    {
-@@ -172,11 +177,12 @@
- 		{ 'k', "keyfile", keyfile, G_TYPE_STRING },
- 		{ 'K', "newkeyfile", newkeyfile, G_TYPE_STRING },
+@@ -174,9 +179,10 @@
  		{ 'n', "keyno", &keyno, G_TYPE_NUMBER },
--		{ 'p', "nopassphrase", NULL, G_TYPE_BOOL },
--		{ 'P', "nonewpassphrase", NULL, G_TYPE_BOOL },
-+		{ 'p', "nopassphrase", NULL, G_TYPE_NONE },
-+		{ 'P', "nonewpassphrase", NULL, G_TYPE_NONE },
+ 		{ 'p', "nopassphrase", NULL, G_TYPE_BOOL },
+ 		{ 'P', "nonewpassphrase", NULL, G_TYPE_BOOL },
 +		{ 't', "password-from-stdin", NULL, G_TYPE_BOOL },
  		G_OPT_SENTINEL
  	    },
