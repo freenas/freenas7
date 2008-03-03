@@ -150,7 +150,7 @@ $pgtitle = array(gettext("License"));
       Copyright &copy; 2004-2007 Alex Gorbatchev. All rights reserved.</p>    
 
     <p>MediaTomb UPnP A/V MediaServer (<a href="http://mediatomb.cc" target="_blank">http://mediatomb.cc</a>)<br>
-      Copyright &copy; 2005-2008 Gena Batyan, Sergey Bostandzhyan and Leonhard Wimmer.</p>
+      Copyright &copy; 2005-2007 Gena Batyan, Sergey Bostandzhyan and Leonhard Wimmer.</p>
 	  
 	 <p>NTFS-3G driver (<a href="http://www.ntfs-3g.org" target="_blank">http://www.ntfs-3g.org/</a>)<br>
       from Szabolcs Szakacsits.</p>
