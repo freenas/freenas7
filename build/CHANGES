@@ -54,6 +54,7 @@ FreeNAS 0.686.3:
 Majors changes:
 - Remove consolehm sensor support because it doesn't work/recognize actual hardware.
   Will be replaced with FreeBSD 7.0 sensor framework in FreeNAS 0.7.
+- WebGUI uses NiftyCubes for rounded corners with CSS and Javascript.
 
 Minors changes:
 - Add /bin/chflags.
