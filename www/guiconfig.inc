@@ -171,16 +171,24 @@ function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfie
 }
 
 function print_input_errors($input_errors) {
-	echo "<p><table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
-	echo "<tr><td bgcolor=\"#A12A2A\" width=\"36\" align=\"center\" valign=\"top\"><img src=\"/err.gif\" width=\"28\" height=\"32\"></td>\n";
-	echo "<td bgcolor=\"#FFD9D1\" style=\"padding-left: 8px; padding-top: 6px\">";
-
-	echo "<span class=\"errmsg\"><p>".gettext("The following input errors were detected").":<ul>\n";
-	foreach ($input_errors as $ierr) {
-		echo "<li>" . $ierr . "</li>\n";
+	echo "<p>\n";
+	echo "  <div id='errorbox'>\n";
+	echo "    <table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
+	echo "      <tr>\n";
+	echo "        <td class=\"icon\" align=\"center\" valign=\"top\"><img src=\"/err.gif\"></td>\n";
+	echo "        <td class=\"message\">\n";
+	echo "          <p>" . gettext("The following input errors were detected").":\n";
+	echo "            <ul>\n";
+	foreach ($input_errors as $msg) {
+		echo "              <li>{$msg}</li>\n";
 	}
-	echo "</ul></span>";
-	echo "</td></tr></table></p>";
+	echo "            </ul>\n";
+	echo "          </p>\n";
+	echo "        </td>\n";
+	echo "      </tr>\n";
+	echo "    </table>\n";
+	echo "  </div>\n";
+	echo "</p>\n";
 }
 
 function verify_gzip_file($fname) {
@@ -192,11 +200,14 @@ function verify_gzip_file($fname) {
 }
 
 function print_info_box_np($msg) {
-	echo "<table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
-	echo "<tr><td bgcolor=\"#687BA4\" align=\"center\" valign=\"top\" width=\"36\"><img src=\"/exclam.gif\" width=\"28\" height=\"32\"></td>\n";
-	echo "<td bgcolor=\"#D9DEE8\" style=\"padding-left: 8px\">";
-	echo $msg;
-	echo "</td></tr></table>";
+	echo "<div id='infobox'>\n";
+	echo "  <table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
+	echo "    <tr>\n";
+	echo "      <td class=\"icon\" align=\"center\" valign=\"top\"><img src=\"/exclam.gif\"></td>\n";
+	echo "      <td class=\"message\">{$msg}</td>\n";
+	echo "    </tr>\n";
+	echo "  </table>\n";
+	echo "</div>\n";
 }
 
 function print_info_box($msg) {
@@ -206,13 +217,14 @@ function print_info_box($msg) {
 }
 
 function print_error_box_np($msg) {
-	echo "<table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
-	echo "<tr><td bgcolor=\"#A12A2A\" width=\"36\" align=\"center\" valign=\"top\"><img src=\"/err.gif\" width=\"28\" height=\"32\"></td>\n";
-	echo "<td bgcolor=\"#FFD9D1\" style=\"padding-left: 8px; padding-top: 6px\">";
-	echo "<span class=\"errmsg\">";
-	echo $msg;
-	echo "</span>";
-	echo "</td></tr></table>";
+	echo "<div id='errorbox'>\n";
+	echo "  <table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
+	echo "    <tr>\n";
+	echo "      <td class=\"icon\" align=\"center\" valign=\"top\"><img src=\"/err.gif\"></td>\n";
+	echo "      <td class=\"message\">{$msg}</td>\n";
+	echo "    </tr>\n";
+	echo "  </table>\n";
+	echo "</div>\n";
 }
 
 function print_error_box($msg) {
