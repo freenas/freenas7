@@ -3,7 +3,7 @@
 /*
 	system_swap.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -91,7 +91,7 @@ function enable_change(enable_change) {
       <ul id="tabnav">
 				<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced Setup");?></a></li>
 				<li class="tabinact"><a href="system_proxy.php"><?=gettext("Proxy");?></a></li>
-				<li class="tabact"><a href="system_swap.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Swap");?></a></li>
+				<li class="tabact"><a href="system_swap.php" title="<?=gettext("Reload page");?>"><?=gettext("Swap");?></a></li>
 				<li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
 				<li class="tabinact"><a href="system_cron.php"><?=gettext("Cron");?></a></li>
       </ul>

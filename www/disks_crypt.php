@@ -3,7 +3,7 @@
 /*
 	disks_crypt.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -98,7 +98,7 @@ if ($_GET['act'] == "ret")
 	<tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><a href="disks_crypt.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Management");?></a></li>
+        <li class="tabact"><a href="disks_crypt.php" title="<?=gettext("Reload page");?>" ><?=gettext("Management");?></a></li>
         <li class="tabinact"><a href="disks_crypt_tools.php"><?=gettext("Tools");?></a></li>
       </ul>
     </td>

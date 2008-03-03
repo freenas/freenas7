@@ -3,7 +3,7 @@
 /*
 	diag_logs.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 	
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -52,7 +52,7 @@ if ($_POST['clear'])
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact"><a href="diag_logs.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("System");?></a></li>
+	<li class="tabact"><a href="diag_logs.php" title="<?=gettext("Reload page");?>"><?=gettext("System");?></a></li>
     <li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
     <li class="tabinact"><a href="diag_logs_rsyncd.php"><?=gettext("RSYNCD");?></a></li>
     <li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSHD");?></a></li>

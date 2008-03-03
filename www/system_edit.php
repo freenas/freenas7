@@ -6,7 +6,7 @@
     All rights reserved.
 
     Adapted for FreeNAS by Volker Theile (votdev@gmx.de)
-    Copyright © 2006-2007 Volker Theile
+    Copyright © 2006-2007-2008 Volker Theile
 
     Using dp.SyntaxHighlighter for syntax highlighting
     http://www.dreamprojections.com/SyntaxHighlighter

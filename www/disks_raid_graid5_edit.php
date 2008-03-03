@@ -121,7 +121,7 @@ if ($_POST) {
 				<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("JBOD"); ?> </a></li>
 				<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("RAID 0"); ?></a></li>
 				<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("RAID 1"); ?></a></li>
-				<li class="tabact"><a href="disks_raid_graid5.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("RAID 5");?></a></li>
+				<li class="tabact"><a href="disks_raid_graid5.php" title="<?=gettext("Reload page");?>" ><?=gettext("RAID 5");?></a></li>
 				<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?> </a></li>
 		  </ul>
 	  </td>
@@ -129,7 +129,7 @@ if ($_POST) {
   <tr>
 		<td class="tabnavtbl">
 		  <ul id="tabnav">
-				<li class="tabact"><a href="disks_raid_graid5.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Manage RAID");?></a></li>
+				<li class="tabact"><a href="disks_raid_graid5.php" title="<?=gettext("Reload page");?>" ><?=gettext("Manage RAID");?></a></li>
 				<li class="tabinact"><a href="disks_raid_graid5_tools.php"><?=gettext("Tools"); ?></a></li>
 				<li class="tabinact"><a href="disks_raid_graid5_info.php"><?=gettext("Information"); ?></a></li>
 		  </ul>

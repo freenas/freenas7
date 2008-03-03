@@ -131,7 +131,7 @@ function set_selected(name) {
 		<td class="tabnavtbl">
 			<ul id="tabnav">
 				<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Server");?></a></li>
-				<li class="tabact"><a href="services_rsyncd_client.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Client");?></a></li>
+				<li class="tabact"><a href="services_rsyncd_client.php" title="<?=gettext("Reload page");?>"><?=gettext("Client");?></a></li>
 				<li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local");?></a></li>
 			</ul>
 		</td>

@@ -139,7 +139,7 @@ function get_nextgroup_id() {
 		<td class="tabnavtbl">
   		<ul id="tabnav">
     		<li class="tabinact"><a href="access_users.php"><?=gettext("Users");?></a></li>
-    		<li class="tabact"><a href="access_users_groups.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Groups");?></a></li>
+    		<li class="tabact"><a href="access_users_groups.php" title="<?=gettext("Reload page");?>"><?=gettext("Groups");?></a></li>
   		</ul>
   	</td>
 	</tr>

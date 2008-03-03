@@ -162,7 +162,7 @@ function enable_change(enable_change) {
       	<li class="tabinact"><a href="system_proxy.php"><?=gettext("Proxy");?></a></li>
       	<li class="tabinact"><a href="system_swap.php"><?=gettext("Swap");?></a></li>
       	<li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
-        <li class="tabact"><a href="system_cron.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Cron");?></a></li>
+        <li class="tabact"><a href="system_cron.php" title="<?=gettext("Reload page");?>"><?=gettext("Cron");?></a></li>
       </ul>
     </td>
   </tr>

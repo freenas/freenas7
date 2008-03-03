@@ -2,11 +2,11 @@
 <?php
 /*
 	system_password.php
-	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2007-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -81,7 +81,7 @@ if ($_POST) {
     <td class="tabnavtbl">
       <ul id="tabnav">
       	<li class="tabinact"><a href="system.php"><?=gettext("General");?></a></li>
-      	<li class="tabact"><a href="system_password.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Password");?></a></li>
+      	<li class="tabact"><a href="system_password.php" title="<?=gettext("Reload page");?>"><?=gettext("Password");?></a></li>
       </ul>
     </td>
   </tr>

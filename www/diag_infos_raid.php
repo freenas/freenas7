@@ -45,7 +45,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Softwa
 				<li class="tabinact"><a href="diag_infos_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
 				<li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
 				<li class="tabinact"><a href="diag_infos_mount.php"><?=gettext("Mounts");?></a></li>
-				<li class="tabact"><a href="diag_infos_raid.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Software RAID");?></a></li>
+				<li class="tabact"><a href="diag_infos_raid.php" title="<?=gettext("Reload page");?>" ><?=gettext("Software RAID");?></a></li>
 				<li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
 				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>

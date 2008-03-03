@@ -2,11 +2,11 @@
 <?php
 /*
 	disks_crypt_tools.php
-	Copyright © 2006-2007 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2007-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -126,7 +126,7 @@ function action_change() {
     <td class="tabnavtbl">
       <ul id="tabnav">
         <li class="tabinact"><a href="disks_crypt.php"><?=gettext("Management");?></a></li>
-        <li class="tabact"><a href="disks_crypt_tools.php" title="<?=gettext("Reload page");?>" style="color:black"><?=gettext("Tools");?></a></li>
+        <li class="tabact"><a href="disks_crypt_tools.php" title="<?=gettext("Reload page");?>" ><?=gettext("Tools");?></a></li>
       </ul>
     </td>
   </tr>

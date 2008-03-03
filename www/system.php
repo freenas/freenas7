@@ -213,7 +213,7 @@ function ntp_change(enable_change) {
 	<tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-      	<li class="tabact"><a href="system.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("General");?></a></li>
+      	<li class="tabact"><a href="system.php" title="<?=gettext("Reload page");?>"><?=gettext("General");?></a></li>
       	<li class="tabinact"><a href="system_password.php"><?=gettext("Password");?></a></li>
       </ul>
     </td>

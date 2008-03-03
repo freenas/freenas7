@@ -3,7 +3,7 @@
 /*
 	shutdown.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2007 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -49,7 +49,7 @@ if ($_POST) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><a href="shutdown.php" style="color:black" title="<?=gettext("Reload page");?>"><?=gettext("Now");?></a></li>
+        <li class="tabact"><a href="shutdown.php" title="<?=gettext("Reload page");?>"><?=gettext("Now");?></a></li>
         <li class="tabinact"><a href="shutdown_sched.php"><?=gettext("Scheduled");?></a></li>
       </ul>
     </td>
