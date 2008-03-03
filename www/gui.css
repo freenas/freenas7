@@ -270,6 +270,14 @@ ul#tabnav li.tabinact {
 	padding: 0;
 	white-space: nowrap;
 }
+* html ul#tabnav li.tabinact { /* For IE instead of rounded corners */
+	float:left;
+	border-left: 1px solid #999999;
+	background-color: #777777;
+	color: #FFFFFF;
+	padding: 0;
+	white-space: nowrap;
+}
 ul#tabnav li.tabinact a {
 	float: left;
 	display: block;
