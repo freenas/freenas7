@@ -438,7 +438,7 @@ function get_mounts_list()
 		$devicespecialfile = chop($aline[0]);
 
 		// Get the mount path
-		$mountpath = chop($aline[1]);
+		$mountpath = chop($aline[2]);
 
 		// Ignore various mountpoints
 		if (("/dev/md0" === $devicespecialfile) || ("devfs" === $devicespecialfile) ||
