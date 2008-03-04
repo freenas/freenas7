@@ -60,6 +60,9 @@ if ($_POST){
 
 	$pconfig = $_POST;
 
+	// Validate synchronization time
+	do_input_validate_synctime($_POST, &$input_errors);
+
 	if (!$input_errors) {
 		$config['shutdown']['enable'] = $_POST['enable'] ? true : false;
 		$config['shutdown']['minute'] = $_POST['minute'];

@@ -170,6 +170,23 @@ function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfie
 	}
 }
 
+function do_input_validate_synctime($postdata, $input_errors) {
+	$data = array();
+	$data[] = array("field" => "minute", "all" => "all_mins", "text" => "minutes");
+	$data[] = array("field" => "hour", "all" => "all_hours", "text" => "hours");
+	$data[] = array("field" => "day", "all" => "all_days", "text" => "days");
+	$data[] = array("field" => "month", "all" => "all_months", "text" => "months");
+	$data[] = array("field" => "weekday", "all" => "all_weekdays", "text" => "week days");
+
+	foreach ($data as $datak => $datav) {
+		if (!$postdata[$datav['all']]) {
+			if (!isset($postdata[$datav['field']]) || empty($postdata[$datav['field']])) {
+				$input_errors[] = "You have to select at least one item for '{$datav['text']}'.";
+			}
+		}
+	}
+}
+
 function print_input_errors($input_errors) {
 	echo "<p>\n";
 	echo "  <div id='errorbox'>\n";

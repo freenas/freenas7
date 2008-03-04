@@ -62,6 +62,9 @@ if ($_POST){
 
 	$pconfig = $_POST;
 
+	// Validate synchronization time
+	do_input_validate_synctime($_POST, &$input_errors);
+
 	if (!$input_errors) {
 		$config['reboot']['enable'] = $_POST['enable'] ? true : false;
 		$config['reboot']['minute'] = $_POST['minute'];

@@ -82,6 +82,9 @@ if ($_POST) {
 	$reqdfieldsn = array(gettext("Remote RSYNC Server"),gettext("Local shares to be synchronized"),gettext("Remote module name"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
+	// Validate synchronization time
+	do_input_validate_synctime($_POST, &$input_errors);
+
 	if (!is_ipaddr($_POST['rsyncserverip'])){
 		$input_errors[] = gettext("A valid IP address must be specified.");
 	}
