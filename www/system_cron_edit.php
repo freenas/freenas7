@@ -83,9 +83,12 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* Input validation */
-  $reqdfields = explode(" ", "desc who command");
-  $reqdfieldsn = array(gettext("Description"),gettext("Who"),gettext("Command"));
-  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	$reqdfields = explode(" ", "desc who command");
+	$reqdfieldsn = array(gettext("Description"),gettext("Who"),gettext("Command"));
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+	// Validate synchronization time
+	do_input_validate_synctime($_POST, &$input_errors);
 
 	if (!$input_errors) {
 		$cronjob = array();
