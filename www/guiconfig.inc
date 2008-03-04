@@ -181,7 +181,7 @@ function do_input_validate_synctime($postdata, $input_errors) {
 	foreach ($data as $datak => $datav) {
 		if (!$postdata[$datav['all']]) {
 			if (!isset($postdata[$datav['field']]) || empty($postdata[$datav['field']])) {
-				$input_errors[] = "You have to select at least one item for '{$datav['text']}'.";
+				$input_errors[] = sprintf(gettext("You have to select at least one item for '%s'."), $datav['text']);
 			}
 		}
 	}
