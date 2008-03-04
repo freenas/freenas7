@@ -61,7 +61,9 @@ if ($_POST){
 	$pconfig = $_POST;
 
 	// Validate synchronization time
-	do_input_validate_synctime($_POST, &$input_errors);
+	if($_POST['enable']) {
+		do_input_validate_synctime($_POST, &$input_errors);
+	}
 
 	if (!$input_errors) {
 		$config['shutdown']['enable'] = $_POST['enable'] ? true : false;
@@ -135,6 +137,7 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabcont">
       <form action="shutdown_sched.php" method="post" name="iform" id="iform">
+      	<?php if ($input_errors) print_input_errors($input_errors);?>
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
             <td colspan="2" valign="top" class="optsect_t">

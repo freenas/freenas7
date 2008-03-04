@@ -142,7 +142,7 @@ function set_selected(name) {
   <tr>
     <td class="tabcont">
 			<form action="services_rsyncd_client_edit.php" method="post" name="iform" id="iform">
-				<?php if ($input_errors) print_input_errors($input_errors); ?><table width="100%" border="0" cellpadding="0" cellspacing="0">
+				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Local share");?></td>
@@ -336,7 +336,7 @@ function set_selected(name) {
 					<tr>
 	          <td width="22%" valign="top">&nbsp;</td>
 	          <td width="78%">
-	            <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+	            <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 							<?php if (isset($id) && $a_rsyncclient[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif; ?>
