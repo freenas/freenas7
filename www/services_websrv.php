@@ -47,6 +47,7 @@ $pconfig['port'] = $config['websrv']['port'];
 $pconfig['documentroot'] = $config['websrv']['documentroot'];
 $pconfig['privatekey'] = $config['websrv']['privatekey'];
 $pconfig['certificate'] = $config['websrv']['certificate'];
+$pconfig['dirlisting'] = isset($config['websrv']['dirlisting']);
 
 if($_POST) {
 	unset($input_errors);
@@ -84,6 +85,7 @@ if($_POST) {
 		$config['websrv']['documentroot'] = $_POST['documentroot'];
 		$config['websrv']['privatekey'] = $_POST['privatekey'];
 		$config['websrv']['certificate'] = $_POST['certificate'];
+		$config['websrv']['dirlisting'] = $_POST['dirlisting'] ? true : false;
 
 		write_config();
 
@@ -108,6 +110,7 @@ function enable_change(enable_change) {
 	document.iform.documentroot.disabled = endis;
 	document.iform.privatekey.disabled = endis;
 	document.iform.certificate.disabled = endis;
+	document.iform.dirlisting.disabled = endis;
 }
 
 function protocol_change() {
@@ -180,6 +183,14 @@ function protocol_change() {
 						<td width="78%" class="vtable">
 							<textarea name="certificate" cols="65" rows="7" id="certificate" class="formpre"><?=htmlspecialchars($pconfig['certificate']);?></textarea></br>
 							<span class="vexpl"><?=gettext("Paste a signed certificate in X.509 PEM format here.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Directory listing");?></td>
+						<td width="78%" class="vtable">
+							<input name="dirlisting" type="checkbox" id="dirlisting" value="yes" <?php if ($pconfig['dirlisting']) echo "checked"; ?>>
+							<?=gettext("Enable directory listing.");?><br/>
+							<span class="vexpl"><?=gettext("A directory listing is generated if a directory is requested and no index-file (index.php, index.html, index.htm or default.htm) was found in that directory.");?></span>
 						</td>
 					</tr>
 			    <tr>
