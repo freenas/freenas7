@@ -34,22 +34,26 @@ check_cmd="checkconfig"
 
 create_conf()
 {
-	local _protocol _port _documentroot _certificate _privatekey
+	local _protocol _certificate _privatekey
 
 	# Get configuration data
 	_protocol=`configxml_get "//websrv/protocol"`
-	_port=`configxml_get "//websrv/port"`
-	_documentroot=`configxml_get "//websrv/documentroot"`
 	_certificate=`configxml_get "//websrv/certificate"`
 	_privatekey=`configxml_get "//websrv/privatekey"`
 
 	# Create .conf file
-	cat <<EOF > ${websrv_conf}
+	/usr/local/bin/xml sel -t -m "//websrv" \
+		-v "concat('server.port = ',port)" -n \
+		-v "concat('server.document-root = &quot;',documentroot,'&quot;')" -n \
+		-i "count(dirlisting) > 0" \
+			-o "server.dir-listing = &quot;enable&quot;" -n \
+		-b \
+		${configxml_file} | /usr/local/bin/xml unesc > ${websrv_conf}
+
+	cat <<EOF >> ${websrv_conf}
 server.modules = (
   "mod_access",
   "mod_cgi" )
-server.port = ${_port}
-server.document-root = "${_documentroot}"
 server.errorlog-use-syslog = "enable"
 server.event-handler = "freebsd-kqueue"
 index-file.names   = ( "index.php", "index.html", "index.htm", "default.htm" )

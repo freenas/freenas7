@@ -586,4 +586,16 @@
 			-->
 		</shutdown>
 	</rc>
+	<websrv>
+		<protocol>http</protocol>
+		<port></port>
+		<documentroot></documentroot>
+		<privatekey></privatekey>
+		<certificate></certificate>
+		<!--
+		<enable/>
+		<protocol>http|https</protocol>
+		<dirlisting/>
+		-->
+	</websrv>
 </freenas>
