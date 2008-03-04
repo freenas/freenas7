@@ -2,7 +2,7 @@
 <?php
 /*
 	system_proxy.php
-	Copyright © 2006-2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
