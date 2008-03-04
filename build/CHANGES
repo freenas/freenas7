@@ -55,6 +55,8 @@ Majors changes:
 - Remove consolehm sensor support because it doesn't work/recognize actual hardware.
   Will be replaced with FreeBSD 7.0 sensor framework in FreeNAS 0.7.
 - WebGUI uses NiftyCubes for rounded corners with CSS and Javascript.
+- Validate minutes/hours/days/months/week days configuration on misc WebGUI pages
+  (e.g. scheduled shutdown/reboot, RSYNC local, ...).
 
 Minors changes:
 - Add /bin/chflags.

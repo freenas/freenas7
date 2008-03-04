@@ -81,6 +81,9 @@ if ($_POST) {
 	$reqdfieldsn = array(gettext("Source share"),gettext("Destination share"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
+	// Validate synchronization time
+	do_input_validate_synctime($_POST, &$input_errors);
+
 	if (!$input_errors) {
 		$rsynclocal = array();
 
