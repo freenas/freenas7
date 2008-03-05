@@ -10,6 +10,7 @@
 
 . /etc/rc.subr
 . /etc/configxml.subr
+. /etc/util.subr
 
 name="websrv"
 rcvar=`set_rcvar`
@@ -34,12 +35,13 @@ check_cmd="checkconfig"
 
 create_conf()
 {
-	local _protocol _certificate _privatekey
+	local _protocol _certificate _privatekey _documentroot
 
 	# Get configuration data
 	_protocol=`configxml_get "//websrv/protocol"`
 	_certificate=`configxml_get "//websrv/certificate"`
 	_privatekey=`configxml_get "//websrv/privatekey"`
+	_documentroot=`configxml_get "//websrv/documentroot"`
 
 	# Create .conf file
 	/usr/local/bin/xml sel -t -m "//websrv" \
@@ -55,6 +57,7 @@ create_conf()
 	cat <<EOF >> ${websrv_conf}
 server.modules = (
   "mod_access",
+  "mod_auth",
   "mod_cgi" )
 server.errorlog-use-syslog = "enable"
 server.event-handler = "freebsd-kqueue"
@@ -117,6 +120,39 @@ static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
 server.pid-file = "${pidfile}"
 cgi.assign = (".php" => "/usr/local/bin/php")
 EOF
+
+	# Configure authentication.
+	if configxml_isset //websrv/authentication; then
+		local _htpasswd
+		_htpasswd="${_documentroot}/.websrv_htpasswd"
+
+		# Create passwd file. Add WebGUI administrator + configured users.
+		/usr/local/bin/xml sel -t \
+			-v "concat(//system/username,':',//system/password)" \
+			${configxml_file} | /usr/local/bin/xml unesc > ${_htpasswd}
+		/usr/local/bin/xml sel -t -m "//access/user" \
+			-v "concat(login,' ',password)" \
+			-i "position() != last()" -n -b \
+			${configxml_file} | /usr/local/bin/xml unesc | \
+			while read _login _password; do
+				_password=`encrypt "${_password}"`
+				echo "${_login}:${_password}" >> ${_htpasswd}
+			done		
+		/bin/chmod 0600 ${_htpasswd}
+
+		# Add authentication configuration.
+		cat <<EOF >> ${websrv_conf}
+auth.backend = "htpasswd"
+auth.backend.htpasswd.userfile = "${_htpasswd}"
+auth.require = ( "/" =>
+	(
+		"method"  => "basic",
+		"realm"   => "Websrv",
+		"require" => "valid-user"
+	),
+)
+EOF
+	fi
 
 	if [ "${_protocol}" = "https" ]; then
 		cat <<EOF >> ${websrv_conf}

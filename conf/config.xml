@@ -595,6 +595,7 @@
 		<!--
 		<enable/>
 		<protocol>http|https</protocol>
+		<authentication/>
 		<dirlisting/>
 		-->
 	</websrv>
