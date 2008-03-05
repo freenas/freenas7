@@ -33,6 +33,30 @@ pidfile=/var/run/websrv.pid
 sig_reload="-INT"
 check_cmd="checkconfig"
 
+create_htpasswd()
+{
+	local _htpasswd _login _password
+
+	_htpasswd=$1
+
+	# Add aministrator account.
+	/usr/local/bin/xml sel -t \
+		-v "concat(//system/username,':',//system/password)" \
+		${configxml_file} | /usr/local/bin/xml unesc > ${_htpasswd}
+
+	# Add configured users. Parse /etc/master.passwd to get password.
+	# Did not find a better solution. Using PHP crypt fails when calling via WebGUI.
+	/usr/local/bin/xml sel -t -m "//access/user" \
+		-v login \
+		-i "position() != last()" -n -b \
+		${configxml_file} | /usr/local/bin/xml unesc | \
+		while read _login; do
+			_password=`/bin/cat /etc/master.passwd | /usr/bin/grep "^${_login}:*" | /usr/bin/awk '{split($0,a,":"); print a[2]}'`
+			echo "${_login}:${_password}" >> ${_htpasswd}
+		done		
+	/bin/chmod 0600 ${_htpasswd}
+}
+
 create_conf()
 {
 	local _protocol _certificate _privatekey _documentroot
@@ -123,22 +147,10 @@ EOF
 
 	# Configure authentication.
 	if configxml_isset //websrv/authentication; then
-		local _htpasswd
 		_htpasswd="${_documentroot}/.websrv_htpasswd"
 
 		# Create passwd file. Add WebGUI administrator + configured users.
-		/usr/local/bin/xml sel -t \
-			-v "concat(//system/username,':',//system/password)" \
-			${configxml_file} | /usr/local/bin/xml unesc > ${_htpasswd}
-		/usr/local/bin/xml sel -t -m "//access/user" \
-			-v "concat(login,' ',password)" \
-			-i "position() != last()" -n -b \
-			${configxml_file} | /usr/local/bin/xml unesc | \
-			while read _login _password; do
-				_password=`encrypt "${_password}"`
-				echo "${_login}:${_password}" >> ${_htpasswd}
-			done		
-		/bin/chmod 0600 ${_htpasswd}
+		create_htpasswd ${_htpasswd}
 
 		# Add authentication configuration.
 		cat <<EOF >> ${websrv_conf}

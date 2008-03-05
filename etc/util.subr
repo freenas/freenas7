@@ -104,21 +104,3 @@ get_product_name()
 {
 	echo $(cat /etc/prd.name)
 }
-
-# encrypt [string]
-# Encrypt given string.
-# Return encrypted string.
-encrypt()
-{
-	tmpfile=/tmp/encrypt$$
-	trap "rm -f $tmpfile" 0 1 2 5 15
-
-	cat <<EOF >> ${tmpfile}
-#!/usr/local/bin/php -f
-<?php
-echo crypt("$1");
-?>
-EOF
-	chmod 700 ${tmpfile}
-	eval ${tmpfile}
-}
