@@ -47,6 +47,8 @@ create_conf()
 		-v "concat('server.document-root = &quot;',documentroot,'&quot;')" -n \
 		-i "count(dirlisting) > 0" \
 			-o "server.dir-listing = &quot;enable&quot;" -n \
+			-o "dir-listing.activate = &quot;enable&quot;" -n \
+			-o "dir-listing.hide-dotfiles = &quot;enable&quot;" -n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${websrv_conf}
 
