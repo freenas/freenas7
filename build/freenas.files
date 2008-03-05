@@ -388,6 +388,9 @@ usr/bin/diff
 ## bc -- An arbitrary precision calculator language
 usr/bin/bc
 
+## enigma, crypt -- very simple file encryption
+usr/bin/enigma:usr/bin/crypt
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol

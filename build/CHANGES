@@ -59,7 +59,7 @@ Majors changes:
   (e.g. scheduled shutdown/reboot, RSYNC local, ...).
 
 Minors changes:
-- Add /bin/chflags.
+- Add /bin/chflags, /usr/bin/crypt and /usr/bin/enigma.
 - Fix some WebGUI code bugs.
 - Modify install menu.
 
