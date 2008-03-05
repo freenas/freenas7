@@ -47,6 +47,7 @@ $pconfig['port'] = $config['websrv']['port'];
 $pconfig['documentroot'] = $config['websrv']['documentroot'];
 $pconfig['privatekey'] = $config['websrv']['privatekey'];
 $pconfig['certificate'] = $config['websrv']['certificate'];
+$pconfig['authentication'] = isset($config['websrv']['authentication']);
 $pconfig['dirlisting'] = isset($config['websrv']['dirlisting']);
 
 if($_POST) {
@@ -85,6 +86,7 @@ if($_POST) {
 		$config['websrv']['documentroot'] = $_POST['documentroot'];
 		$config['websrv']['privatekey'] = $_POST['privatekey'];
 		$config['websrv']['certificate'] = $_POST['certificate'];
+		$config['websrv']['authentication'] = $_POST['authentication'] ? true : false;
 		$config['websrv']['dirlisting'] = $_POST['dirlisting'] ? true : false;
 
 		write_config();
@@ -110,6 +112,7 @@ function enable_change(enable_change) {
 	document.iform.documentroot.disabled = endis;
 	document.iform.privatekey.disabled = endis;
 	document.iform.certificate.disabled = endis;
+	document.iform.authentication.disabled = endis;
 	document.iform.dirlisting.disabled = endis;
 }
 
@@ -183,6 +186,14 @@ function protocol_change() {
 						<td width="78%" class="vtable">
 							<textarea name="certificate" cols="65" rows="7" id="certificate" class="formpre"><?=htmlspecialchars($pconfig['certificate']);?></textarea></br>
 							<span class="vexpl"><?=gettext("Paste a signed certificate in X.509 PEM format here.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
+						<td width="78%" class="vtable">
+							<input name="authentication" type="checkbox" id="authentication" value="yes" <?php if ($pconfig['authentication']) echo "checked"; ?>>
+							<?=gettext("Enable authentication.");?><br/>
+							<span class="vexpl"><?=gettext("Give only local users access to the web page.");?></span>
 						</td>
 					</tr>
 					<tr>
