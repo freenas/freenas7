@@ -94,6 +94,7 @@ if($_POST) {
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
+			$retval |= rc_exec_service("websrv_htpasswd");
 			$retval |= rc_update_service("websrv");
 			config_unlock();
 		}

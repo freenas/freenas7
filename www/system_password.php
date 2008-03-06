@@ -68,6 +68,7 @@ if ($_POST) {
 			config_lock();
 			$retval |= rc_exec_service("userdb");
 			$retval |= rc_exec_service("htpasswd");
+			$retval |= rc_exec_service("websrv_htpasswd");
 			config_unlock();
 		}
 
