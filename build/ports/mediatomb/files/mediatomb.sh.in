@@ -63,6 +63,7 @@ start_precmd()
 	echo '<accounts enabled="no" session-timeout="30"/>' >> ${mediatomb_config}
 	echo '</ui>' >> ${mediatomb_config}
 	echo "<name>${_name}</name>" >> ${mediatomb_config}
+	echo '<udn/>' >> ${mediatomb_config}
 	echo "<home>${_home}</home>" >> ${mediatomb_config}
 	echo "<webroot>${mediatomb_share}/web</webroot>" >> ${mediatomb_config}
 	echo '<storage driver="sqlite3">' >> ${mediatomb_config}
@@ -76,6 +77,13 @@ start_precmd()
 	fi
 	if [ "ZyXEL_DMA1000" = "${_profile}" ]; then 		
 		echo '<alive>600</alive>' >> ${mediatomb_config} # Incresing the alive interval seems to solve the “Failed to retrieve list” error.
+	fi
+	if [ "DLink_DSM320" = "${_profile}" ]; then
+		echo '<custom-http-headers>' >> ${mediatomb_config}
+		echo '<add header="X-User-Agent: redsonic"/>' >> ${mediatomb_config}
+		echo '</custom-http-headers>' >> ${mediatomb_config}
+		echo '<manufacturerURL>redsonic.com</manufacturerURL>' >> ${mediatomb_config}
+		echo '<modelNumber>105</modelNumber>' >> ${mediatomb_config}
 	fi
 	echo '</server>' >> ${mediatomb_config}
 	echo '<import hidden-files="no">' >> ${mediatomb_config}
@@ -101,6 +109,7 @@ start_precmd()
 	echo '<map from="wmx" to="video/x-ms-wmx"/>' >> ${mediatomb_config}
 	echo '<map from="m3u" to="audio/x-mpegurl"/>' >> ${mediatomb_config}
 	echo '<map from="pls" to="audio/x-scpls"/>' >> ${mediatomb_config}
+	echo '<map from="flv" to="video/x-flv"/>' >> ${mediatomb_config}
 	echo '<map from="mpg" to="video/mpeg"/>' >> ${mediatomb_config}
 	echo '<map from="MPG" to="video/mpeg"/>' >> ${mediatomb_config}
 	echo '<map from="mpeg" to="video/mpeg"/>' >> ${mediatomb_config}
@@ -115,7 +124,7 @@ start_precmd()
 	echo '<map from="m4p" to="audio/mp4"/>' >> ${mediatomb_config}
 	if [ "PS3" = "${_profile}" ]; then
 		echo '<map from="avi" to="video/divx"/>' >> ${mediatomb_config}
-	elif [ "ZyXEL_DMA1000" = "${_profile}" -o "Helios_X3000" = "${_profile}" ]; then
+	elif [ "ZyXEL_DMA1000" = "${_profile}" -o "Helios_X3000" = "${_profile}" -o "DLink_DSM320" = "${_profile}" ]; then
 		echo '<map from="avi" to="video/avi"/>' >> ${mediatomb_config}
 	else
 		echo '<map from="avi" to="video/x-divx"/>' >> ${mediatomb_config}
@@ -123,7 +132,6 @@ start_precmd()
 	echo '</extension-mimetype>' >> ${mediatomb_config}
 	echo '<mimetype-upnpclass>' >> ${mediatomb_config}
 	echo '<map from="audio/*" to="object.item.audioItem.musicTrack"/>' >> ${mediatomb_config}
-	echo '<map from="application/ogg" to="object.item.audioItem.musicTrack"/>' >> ${mediatomb_config}
 	echo '<map from="video/*" to="object.item.videoItem"/>' >> ${mediatomb_config}
 	echo '<map from="image/*" to="object.item.imageItem"/>' >> ${mediatomb_config}
 	echo '</mimetype-upnpclass>' >> ${mediatomb_config}
@@ -134,9 +142,13 @@ start_precmd()
 	echo '<treat mimetype="image/jpeg" as="jpg"/>' >> ${mediatomb_config}
 	echo '<treat mimetype="audio/x-mpegurl" as="playlist"/>' >> ${mediatomb_config}
 	echo '<treat mimetype="audio/x-scpls" as="playlist"/>' >> ${mediatomb_config}
+	echo '<treat mimetype="audio/x-wav" as="pcm"/>' >> ${mediatomb_config}
+	echo '<treat mimetype="video/x-msvideo" as="avi"/>' >> ${mediatomb_config}
 	echo '</mimetype-contenttype>' >> ${mediatomb_config}
 	echo '</mappings>' >> ${mediatomb_config}
 	echo '</import>' >> ${mediatomb_config}
+	echo '<transcoding enabled="no">' >> ${mediatomb_config}
+	echo '</transcoding>' >> ${mediatomb_config}
 	echo '</config>' >> ${mediatomb_config}
 
 	# Create command args line.

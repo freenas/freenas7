@@ -40,6 +40,8 @@ Majors changes:
 - Switch back to SCHED_4BSD scheduler.
 - Add generic webserver service.
 - Complete review and typo fixes in sourcecode. Thanks to Jerome Warnier.
+- Upgrade inadyn-mt to 02.11.96.
+- Upgrade mediatomb to 0.11.0. Add D-Link DSM320 profile.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
