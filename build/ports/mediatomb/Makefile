@@ -1,5 +1,5 @@
 PORTNAME=			mediatomb
-PORTVERSION=	0.10.0
+PORTVERSION=	0.11.0
 CATEGORIES=		net multimedia
 COMMENT=			UPnP A/V MediaServer
 MAINTAINER=		votdev@gmx.de
@@ -8,7 +8,8 @@ MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
 MASTER_SITE_SUBDIR=	${PORTNAME}
 
 LIB_DEPENDS+=			sqlite3:${PORTSDIR}/databases/sqlite3 \
-									tag:${PORTSDIR}/audio/taglib
+									tag:${PORTSDIR}/audio/taglib \
+									expat:${PORTSDIR}/textproc/expat2
 
 GNU_CONFIGURE=		yes
 LDFLAGS+=					${PTHREAD_LIBS}
@@ -27,7 +28,10 @@ CONFIGURE_ARGS=		--with-search="${LOCALBASE}" \
 									--disable-libjs \
 									--disable-libexif \
 									--disable-tombdebug \
-									--enable-protocolinfo-extension
+									--enable-protocolinfo-extension \
+									--disable-external-transcoding \
+									--disable-curl \
+									--disable-ffmpeg
 CONFIGURE_ENV=		PTHREAD_LIBS="${PTHREAD_LIBS}" \
 									PTHREAD_CFLAGS="${PTHREAD_CFLAGS}" \
 									LDFLAGS="${LDFLAGS}" \
@@ -123,7 +127,7 @@ do-install:
 	@${INSTALL_DATA} -v ${WRKSRC}/web/js/items.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/js
 	@${INSTALL_DATA} -v ${WRKSRC}/web/js/md5.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/js
 	@${INSTALL_DATA} -v ${WRKSRC}/web/js/nanotree.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/js
-	@${INSTALL_DATA} -v ${WRKSRC}/web/js/pngbehavior.htc ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/js
+	@${INSTALL_DATA} -v ${WRKSRC}/web/js/iepngfix.htc ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/js
 	@${INSTALL_DATA} -v ${WRKSRC}/web/js/prototype.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/js
 	@${INSTALL_DATA} -v ${WRKSRC}/web/js/tasks.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/js
 	@${INSTALL_DATA} -v ${WRKSRC}/web/js/tools.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/web/js
