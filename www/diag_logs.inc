@@ -30,22 +30,47 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-function logs_dump($logfile, $tail, $withorig = true) {
-	global $g, $config;
+function logs_get_contents($logfile, $entries, $mode) {
+	global $config;
 
-	$sor = isset($config['syslogd']['reverse']) ? "-r" : "";
+	$content = array();
 
-	exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $tail, $logarr);
+	$param = isset($config['syslogd']['reverse']) ? " -r" : "" . "-n";
 
-	foreach ($logarr as $logent) {
-		$logent = preg_split("/\s+/", $logent, 6);
+	switch ($mode) {
+		case "clog":
+			exec("/usr/sbin/clog {$logfile} | /usr/bin/tail {$param} {$entries}", $content);
+			break;
+		case "cat":
+			exec("/bin/cat {$logfile} | /usr/bin/tail {$param} {$entries}", $content);
+	}
+
+	return $content;
+}
+
+function logs_dump($logfile, $entries, $withorig = true) {
+	foreach (logs_get_contents($logfile, $entries, "clog") as $logent) {
 		echo "<tr valign=\"top\">\n";
-
 		if ($withorig) {
+			$logent = preg_split("/\s+/", $logent, 6);
 			echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";
 			echo "<td class=\"listr\">" . htmlspecialchars($logent[4] . " " . $logent[5]) . "</td>\n";
 		} else {
-			echo "<td class=\"listlr\" colspan=\"2\">" . htmlspecialchars($logent[5]) . "</td>\n";
+			echo "<td class=\"listlr\" colspan=\"2\">" . htmlspecialchars($logent) . "</td>\n";
+		}
+		echo "</tr>\n";
+	}
+}
+
+function logs_dump_ex($logfile, $entries, $columns, $withorig = true) {
+	foreach (logs_get_contents($logfile, $entries, "cat") as $logent) {
+		echo "<tr valign=\"top\">\n";
+		if ($withorig) {
+			$logent = preg_split("/\s+/", $logent, $columns);
+			echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 2))) . "</td>\n";
+			echo "<td class=\"listr\">" . htmlspecialchars($logent[2] . " " . $logent[3]) . "</td>\n";
+		} else {
+			echo "<td class=\"listlr\" colspan=\"2\">" . htmlspecialchars($logent) . "</td>\n";
 		}
 		echo "</tr>\n";
 	}
