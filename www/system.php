@@ -169,6 +169,7 @@ if ($_POST) {
 			$retval |= rc_restart_service("hostname"); // Set hostname
 			$retval |= rc_exec_service("userdb");
 			$retval |= rc_exec_service("htpasswd");
+			$retval |= rc_exec_service("websrv_htpasswd");
 			$retval |= rc_exec_service("timezone");
  			$retval |= rc_update_service("msntp");
  			$retval |= rc_update_service("mdnsresponder");
