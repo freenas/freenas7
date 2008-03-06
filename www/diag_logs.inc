@@ -31,21 +31,38 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 function logs_dump($logfile, $tail, $withorig = true) {
-	global $g, $config;
+	global $config;
 
 	$sor = isset($config['syslogd']['reverse']) ? "-r" : "";
-
-	exec("/usr/sbin/clog " . $logfile . " | tail {$sor} -n " . $tail, $logarr);
+	exec("/usr/sbin/clog {$logfile} | /usr/bin/tail {$sor} -n " . $tail, $logarr);
 
 	foreach ($logarr as $logent) {
 		$logent = preg_split("/\s+/", $logent, 6);
 		echo "<tr valign=\"top\">\n";
-
 		if ($withorig) {
 			echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 3))) . "</td>\n";
 			echo "<td class=\"listr\">" . htmlspecialchars($logent[4] . " " . $logent[5]) . "</td>\n";
 		} else {
 			echo "<td class=\"listlr\" colspan=\"2\">" . htmlspecialchars($logent[5]) . "</td>\n";
+		}
+		echo "</tr>\n";
+	}
+}
+
+function logs_dump_ex($logfile, $tail, $columns, $withorig = true) {
+	global $config;
+
+	$sor = isset($config['syslogd']['reverse']) ? "-r" : "";
+	exec("/bin/cat {$logfile} | /usr/bin/tail {$sor} -n " . $tail, $logarr);
+
+	foreach ($logarr as $logent) {
+		echo "<tr valign=\"top\">\n";
+		if ($withorig) {
+			$logent = preg_split("/\s+/", $logent, $columns);
+			echo "<td class=\"listlr\" nowrap>" . htmlspecialchars(join(" ", array_slice($logent, 0, 2))) . "</td>\n";
+			echo "<td class=\"listr\">" . htmlspecialchars($logent[2] . " " . $logent[3]) . "</td>\n";
+		} else {
+			echo "<td class=\"listlr\" colspan=\"2\">" . htmlspecialchars($logent) . "</td>\n";
 		}
 		echo "</tr>\n";
 	}
