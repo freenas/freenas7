@@ -1,7 +1,10 @@
 #!/usr/local/bin/php
 <?php
 /*
-	diag_logs_rsyncd.php
+	diag_logs_rsync_local.php
+	Copyright © 2008 Volker Theile (votdev@gmx.de)
+	All rights reserved.
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
@@ -34,17 +37,17 @@
 require("guiconfig.inc");
 require("diag_logs.inc");
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Logs"), gettext("RSYNC"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"), gettext("RSYNC"), gettext("Local"));
 
 $nentries = $config['syslogd']['nentries'];
 if (!$nentries)
 	$nentries = 50;
 
-$logfile = "/var/log/rsyncd.log";
+$logfile = "/var/log/rsync_local.log";
 
 if ($_POST['clear']) {
-	exec("/usr/sbin/clog -i -s 32768 {$logfile}");
-	header("Location: diag_logs_rsyncd.php");
+	exec("/bin/cat /dev/null > {$logfile}");
+	header("Location: diag_logs_rsync_local.php");
 	exit;
 }
 ?>
@@ -52,22 +55,22 @@ if ($_POST['clear']) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-    <li class="tabinact"><a href="diag_logs.php"><?=gettext("System");?></a></li>
-    <li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
-    <li class="tabact"><a href="diag_logs_rsyncd.php" title="<?=gettext("Reload page");?>"><?=gettext("RSYNC");?></a></li>
-    <li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSHD");?></a></li>
-    <li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("SMARTD");?></a></li>
-    <li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
-    <li class="tabinact"><a href="diag_logs_upnp.php"><?=gettext("UPnP");?></a></li>
-    <li class="tabinact"><a href="diag_logs_settings.php"><?=gettext("Settings");?></a></li>
+		<li class="tabinact"><a href="diag_logs.php"><?=gettext("System");?></a></li>
+		<li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
+		<li class="tabact"><a href="diag_logs_rsyncd.php" title="<?=gettext("Reload page");?>"><?=gettext("RSYNC");?></a></li>
+		<li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSHD");?></a></li>
+		<li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("SMARTD");?></a></li>
+		<li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
+		<li class="tabinact"><a href="diag_logs_upnp.php"><?=gettext("UPnP");?></a></li>
+		<li class="tabinact"><a href="diag_logs_settings.php"><?=gettext("Settings");?></a></li>
   </ul>
   </td></tr>
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabact"><a href="diag_logs_rsyncd.php" title="<?=gettext("Reload page");?>"><?=gettext("Server");?></a></li>
+				<li class="tabinact"><a href="diag_logs_rsyncd.php"><?=gettext("Server");?></a></li>
 				<li class="tabinact"><a href="diag_logs_rsync_client.php"><?=gettext("Client");?></a></li>
-				<li class="tabinact"><a href="diag_logs_rsync_local.php"><?=gettext("Local");?></a></li>
+				<li class="tabact"><a href="diag_logs_rsync_local.php" title="<?=gettext("Reload page");?>"><?=gettext("Local");?></a></li>
 			</ul>
 		</td>
 	</tr>
@@ -76,12 +79,12 @@ if ($_POST['clear']) {
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		  <tr>
 				<td colspan="2" class="listtopic">
-					<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("RSYNCD"));?>
+					<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("RSYNC Local"));?>
 				</td>
 		  </tr>
-		  <?php logs_dump($logfile, $nentries); ?>
+		  <?php logs_dump_ex($logfile, $nentries, 4);?>
 		</table><br/>
-		<form action="diag_logs_rsyncd.php" method="post">
+		<form action="diag_logs_rsync_local.php" method="post">
 			<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
 		</form>
 		</td>
