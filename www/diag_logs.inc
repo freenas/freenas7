@@ -35,7 +35,7 @@ function logs_get_contents($logfile, $entries, $mode) {
 
 	$content = array();
 
-	$param = isset($config['syslogd']['reverse']) ? " -r" : "" . "-n";
+	$param = (isset($config['syslogd']['reverse']) ? "-r " : "") . "-n";
 
 	switch ($mode) {
 		case "clog":
