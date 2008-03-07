@@ -56,7 +56,7 @@ class FileChooser
 		$this->cfg['startDirectory'] = "/";
 
 		// Get path if browsing a tree.
-		$path = (isset($_GET['p'])) ? $_GET['p'] : FALSE;
+		$path = (isset($_GET['p'])) ? urldecode($_GET['p']) : FALSE;
 
     // If no path is available, set it to root.
     if(!$path) {
@@ -396,7 +396,7 @@ class FileChooser
 
 				// filename
 				$row .= '<td class="nm"><a href="';
-				$row .= ($type === "fr") ? '?p='.$dir.$file['name'].'/' : '?p='.$dir.$file['name'];
+				$row .= '?p=' . urlencode("{$dir}{$file['name']}") . (($type === "fr") ? "/" : "");
 				$row .= '">'.$file['name'].'</a></td>';
 
 				// file size
@@ -432,18 +432,18 @@ class FileChooser
 
 				$row .= $this->cfg['lineNumbers'] ?
 				        '<td class="ln">&nbsp;</td>' : '';
-				$row .= '<td><a href="?N='.$N.'&amp;p='.$dir.'">Name</a></td>';
+				$row .= '<td><a href="?N='.$N.'&amp;p=' . urlencode($dir) . '">Name</a></td>';
 				$row .= $this->cfg['showFileSize'] ?
 					    '<td class="sz">
-						 <a href="?S='.$S.'&amp;p='.$dir.'">Size</a>
+						 <a href="?S='.$S.'&amp;p=' . urlencode($dir) . '">Size</a>
 						 </td>' : '';
 				$row .= $this->cfg['showFileType'] ?
 				        '<td class="tp">
-				         <a href="?T='.$T.'&amp;p='.$dir.'">Type</a>
+				         <a href="?T='.$T.'&amp;p=' . urlencode($dir) . '">Type</a>
 				         </td>' : '';
 				$row .= $this->cfg['showFileModDate'] ?
 					    '<td class="dt">
-					     <a href="?M='.$M.'&amp;p='.$dir.'">Last Modified</a>
+					     <a href="?M='.$M.'&amp;p=' . urlencode($dir) . '">Last Modified</a>
 					     </td>' : '';
 				break;
 
@@ -452,7 +452,7 @@ class FileChooser
 				$row .= $this->cfg['lineNumbers'] ?
 				        '<td class="ln">&laquo;</td>' : '';
 				$row .= '<td class="nm">
-				         <a href="?p='.$this->get_valid_parent_dir($dir).'">';
+				         <a href="?p=' . urlencode($this->get_valid_parent_dir($dir)) . '">';
 				$row .= 'Parent Directory';
 				$row .= '</a></td>';
 				$row .= $this->cfg['showFileSize'] ?
@@ -503,63 +503,66 @@ EOD;
 ?>
 <html>
   <head>
-<style type="text/css">
-.filechooser { background-color: #fff; margin: 0px; padding: 0px; }
-.filechooser table { width: 100%; height: 100%; font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; }
-.filechooser td { padding: 10px; vertical-align: top; }
-
-.filechooser .filelist table { width:100%; }
-.filechooser .filelist table tr td { padding:1px; font-size:12px; }
-.filechooser .filelist table tr.fr_odd td,
-.filechooser .filelist table tr.fr_even td,
-.filechooser .filelist table tr.fl_odd td,
-.filechooser .filelist table tr.fl_even td { height: 18px; border-top:1px solid #fff; border-bottom:1px solid #ddd; }
-.filechooser .filelist table tr.fr_odd td,
-.filechooser .filelist table tr.fl_odd td { background:#eee; }
-.filechooser .filelist a { text-decoration:none; }
-.filechooser .filelist a:hover { text-decoration:underline; }
-/* sorting row */
-.filechooser .filelist table tr.sort td { height: 18px; border: 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
-.filechooser .filelist table tr.sort a { text-decoration:none; color:#9d9d9d; }
-.filechooser .filelist table tr.sort a:hover { text-decoration:underline; }
-/* parent row */
-.filechooser .filelist table tr.parent { font-weight:bold; }
-.filechooser .filelist table tr.parent td { height: 18px; border-bottom: 1px solid #eee; text-color: #ffffff; background: #435370; }
-.filechooser .filelist table tr.parent a { text-decoration:none; color:#ffffff; }
-.filechooser .filelist table tr.parent a:hover { text-decoration:underline; }
-/* filelist rows */
-/* line number column */
-.filechooser .filelist table tr td.ln { border-left:1px solid #eee; font-weight:normal; text-align:right; padding:0 10px 0 10px; width:10px; color: #999; }
-/* filename column */
-.filechooser .filelist table tr.fr_odd td.nm,
-.filechooser .filelist table tr.fr_even td.nm { font-weight:bold; }
-.filechooser .filelist table tr.fl_odd td.nm,
-.filechooser .filelist table tr.fl_even td.nm { font-weight:normal; }
-/* size column */
-.filechooser .filelist table tr td.sz { }
-/* type column */
-.filechooser .filelist table tr td.tp { }
-/* date column */
-.filechooser .filelist table tr td.dt { border-right:1px solid #eee; }
-/* footer row */
-.filechooser .filelist table tr.footer td { border:0; font-weight:bold; }
-
-/* Navigation bar */
-.filechooser .navbar { background-color: #eee; padding: 6px 9px; text-align:left; border-left:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee; border-spacing:0; height: 20px }
-.filechooser .navbar .input { position:absolute; width:75%; }
-.filechooser .navbar .button { position:relative; float:right; }
-</style>
-<script class="javascript">
-function onSubmit()
-{
-  opener.ifield.value = document.forms[0].p.value;
-  close();
-}
-function onReset()
-{
-  close();
-}
-</script>
+  	<link href="gui.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="niftycube/niftycube.js"></script>
+		<script type="text/javascript" src="niftycube/niftylayout.js"></script>
+		<style type="text/css">
+			.filechooser { background-color: #fff; margin: 0px; padding: 0px; }
+			.filechooser table { width: 100%; height: 100%; font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; }
+			.filechooser td { padding: 10px; vertical-align: top; }
+			
+			.filechooser .filelist table { width:100%; }
+			.filechooser .filelist table tr td { padding:1px; font-size:12px; }
+			.filechooser .filelist table tr.fr_odd td,
+			.filechooser .filelist table tr.fr_even td,
+			.filechooser .filelist table tr.fl_odd td,
+			.filechooser .filelist table tr.fl_even td { height: 18px; border-top:1px solid #fff; border-bottom:1px solid #ddd; }
+			.filechooser .filelist table tr.fr_odd td,
+			.filechooser .filelist table tr.fl_odd td { background:#eee; }
+			.filechooser .filelist a { text-decoration:none; }
+			.filechooser .filelist a:hover { text-decoration:underline; }
+			/* sorting row */
+			.filechooser .filelist table tr.sort td { height: 18px; border: 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+			.filechooser .filelist table tr.sort a { text-decoration:none; color:#9d9d9d; }
+			.filechooser .filelist table tr.sort a:hover { text-decoration:underline; }
+			/* parent row */
+			.filechooser .filelist table tr.parent { font-weight:bold; }
+			.filechooser .filelist table tr.parent td { height: 18px; border-bottom: 1px solid #eee; text-color: #ffffff; background: #435370; }
+			.filechooser .filelist table tr.parent a { text-decoration:none; color:#ffffff; }
+			.filechooser .filelist table tr.parent a:hover { text-decoration:underline; }
+			/* filelist rows */
+			/* line number column */
+			.filechooser .filelist table tr td.ln { border-left:1px solid #eee; font-weight:normal; text-align:right; padding:0 10px 0 10px; width:10px; color: #999; }
+			/* filename column */
+			.filechooser .filelist table tr.fr_odd td.nm,
+			.filechooser .filelist table tr.fr_even td.nm { font-weight:bold; }
+			.filechooser .filelist table tr.fl_odd td.nm,
+			.filechooser .filelist table tr.fl_even td.nm { font-weight:normal; }
+			/* size column */
+			.filechooser .filelist table tr td.sz { }
+			/* type column */
+			.filechooser .filelist table tr td.tp { }
+			/* date column */
+			.filechooser .filelist table tr td.dt { border-right:1px solid #eee; }
+			/* footer row */
+			.filechooser .filelist table tr.footer td { border:0; font-weight:bold; }
+			
+			/* Navigation bar */
+			.filechooser .navbar { background-color: #eee; padding: 6px 9px; text-align:left; border-left:1px solid #eee; border-right:1px solid #eee; border-bottom:1px solid #eee; border-spacing:0; height: 20px }
+			.filechooser .navbar .input { position:absolute; width:75%; }
+			.filechooser .navbar .button { position:relative; float:right; }
+		</style>
+		<script class="javascript">
+			function onSubmit()
+			{
+				opener.ifield.value = document.forms[0].p.value;
+				close();
+			}
+			function onReset()
+			{
+				close();
+			}
+		</script>
   </head>
   <body class="filechooser">
   	<table cellspacing="0">
