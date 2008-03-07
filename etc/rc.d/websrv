@@ -61,7 +61,7 @@ server.modules = (
   "mod_cgi" )
 server.errorlog-use-syslog = "enable"
 server.event-handler = "freebsd-kqueue"
-index-file.names   = ( "index.php", "index.html", "index.htm", "default.htm" )
+index-file.names   = ( "index.php", "index.html", "index.htm", "index.shtml", "default.htm" )
 mimetype.assign = (
   ".pdf"     => "application/pdf",
   ".sig"     => "application/pgp-signature",
