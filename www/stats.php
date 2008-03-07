@@ -29,32 +29,8 @@
 */
 require("guiconfig.inc");
 
-function get_cpu_load() {
-	$cpuTicks1 = explode(" ", `/sbin/sysctl -n kern.cp_time`);
-	sleep(2);
-	$cpuTicks2 = explode(" ", `/sbin/sysctl -n kern.cp_time`);
-	
-	$diff = array();
-	$diff['user'] = ($cpuTicks2[0] - $cpuTicks1[0]);
-	$diff['nice'] = ($cpuTicks2[1] - $cpuTicks1[1]);
-	$diff['sys'] = ($cpuTicks2[2] - $cpuTicks1[2]);
-	$diff['intr'] = ($cpuTicks2[3] - $cpuTicks1[3]);
-	$diff['idle'] = ($cpuTicks2[4] - $cpuTicks1[4]);
-
-	$totalDiff = $diff['user'] + $diff['nice'] + $diff['sys'] + $diff['intr'] + $diff['idle'];
-	$totalused = $diff['user'] + $diff['nice'] + $diff['sys'] + $diff['intr'];
-
-  if (isset($totalused)&&$totalused <= 0) {
-    $totalused = 0.001;
-  }
-
-	$cpuUsage = floor(100 * ($totalused / $totalDiff));
-	
-	return $cpuUsage;
-}
-
 if(0 == strcmp("cpu",getenv(QUERY_STRING))) {
-  $cpuload = get_cpu_load();
+  $cpuload = system_get_cpu_usage();
   echo $cpuload;
 } else {
   $if = $_GET['if'];
