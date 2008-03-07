@@ -68,6 +68,7 @@ Minors changes:
 
 Bug fixes:
 - Use revision 0 when formating EXT2 filesystems, otherwise mount_ext2fs fails (mount point disapears)
+- Fix file chooser problem with char '&' in directory and file names.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
