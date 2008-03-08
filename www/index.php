@@ -108,7 +108,7 @@ $pgtitle_omit = true;
     <td width="75%" class="listr">
       <?php
       	/* Get RAM information */
-				$raminfo = get_ram_info();
+				$raminfo = system_get_ram_usage();
 				/* Calculate memory use percentage. */
         $memUsage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
 

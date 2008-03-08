@@ -673,7 +673,7 @@ function disks_raid_graid5_start()
 function disks_raid_graid5_tune()
 {
 	/* Get RAM information */
-	$raminfo = get_ram_info();
+	$raminfo = system_get_ram_usage();
 	/* Calculate real RAM in MB */
 	$realram = round($raminfo['real'] / 1024 / 1024);
 
