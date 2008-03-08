@@ -143,6 +143,10 @@ build_world() {
 		fi
 	done
 
+	# Generating login database
+	echo "Generating login database:"
+	cap_mkdb -v -f $FREENAS_ROOTFS/etc/login.conf $FREENAS_SVNDIR/etc/login.conf
+
 	# Cleanup
 	rm -f $FREENAS_WORKINGDIR/freenas.files
 
