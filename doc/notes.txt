@@ -17,15 +17,12 @@ Todo list for FreeNAS 0.7:
   "Volume/Storage" (name to define): One page for define all geom drive and formatting, with automating mounting (mount should be transparent to the user)
   "Share": One page for create share (directory on mount) add assing user/group permission qutas, and protocol available for this share (table with enable/edit option)
 
-
-
 - Update/Adapt rc.d scripts (there are new scripts in FreeBSD)
 - Update build/kernel-config/FREENAS-amd64
-- netatalk : need to check why some libs are missing
 - Modify /inc/disks.inc
   - $result = mwexec("/sbin/mount -t msdosfs -o -large,-u=ftp,-g=ftp,-m=777 {$devname} '{$mountname}'");
 - Implement new sensor framework: coretemp ?
-- ...
+- Geli: propose to use crypto key (without password), stored on USB key. This mean that geli drive will be mounted automatically if the usb is present during startup.
 
 
 General notes:
