@@ -183,4 +183,27 @@ function system_get_cpu_usage() {
 	
 	return $cpuUsage;
 }
+
+// Get uptime (how long system is running).
+// Return current uptime as string.
+function system_get_uptime() {
+	exec("/sbin/sysctl -n kern.boottime", $boottime);
+	preg_match("/sec = (\d+)/", $boottime[0], $matches);
+	$boottime = $matches[1];
+	$uptime = time() - $boottime;
+
+	if ($uptime > 60) $uptime += 30;
+	$updays = (int)($uptime / 86400);
+	$uptime %= 86400;
+	$uphours = (int)($uptime / 3600);
+	$uptime %= 3600;
+	$upmins = (int)($uptime / 60);
+
+	$uptimestr = "";
+	if ($updays > 1) $uptimestr .= "$updays ".gettext("days").", ";
+	else if ($updays > 0) $uptimestr .= "1 ".gettext("day").", ";
+	$uptimestr .= sprintf("%02d:%02d", $uphours, $upmins);
+
+	return $uptimestr;
+}
 ?>
