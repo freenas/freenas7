@@ -206,4 +206,20 @@ function system_get_uptime() {
 
 	return $uptimestr;
 }
+
+// Get the RAM usage/information.
+// Returns an array listing the amount of memory installed in the hardware.
+function system_get_ram_usage() {
+	exec("/sbin/sysctl -n vm.stats.vm.v_active_count vm.stats.vm.v_inactive_count vm.stats.vm.v_wire_count vm.stats.vm.v_cache_count vm.stats.vm.v_free_count hw.physmem", $memory);
+	exec("/sbin/sysctl -n hw.realmem", $hwmemory);
+
+	$raminfo = array();
+	$raminfo['real'] = $hwmemory[0];
+	$raminfo['physical'] = $memory[5];
+	$raminfo['total'] = $memory[0] + $memory[1] + $memory[2] + $memory[3] + $memory[4];
+	$raminfo['free'] = $memory[4] + $memory[1];
+	$raminfo['used'] = $raminfo['total'] - $raminfo['free'];
+
+	return $raminfo;
+}
 ?>
