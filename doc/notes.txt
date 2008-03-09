@@ -1,17 +1,5 @@
 Todo list for FreeNAS 0.7:
-- Send the core dump of clog (to be compiled with debug?) to Jeff Wheelhouse <jdw@wheelhouse.org
-- Check geli, because the first disk give this strange output:
-
-  Encrypting '/dev/ad3'... Please wait!
-  Calculating number of iterations...
-  Done, using 191504 iterations.
-  Metadata value stored on /dev/ad3.
-  Done.
-  Attaching provider '/dev/ad3'.
-  Assertion failed: (G_OPT_TYPE(opt) != 0), function parse_arguments, file /usr/src/sbin/geom/core/geom.c, line 273.
-  Abort trap (core dumped) 
-
--Try to not use gpt on graid5 device.... Need to check when gpt (disk more than 2TB) is really usefull
+- Send the core dump of clog (to be compiled with debug?) to Jeff Wheelhouse <jdw@wheelhouse.org-Try to not use gpt on geom devices.... Need to check when gpt (disk more than 2TB) is really usefull
 - Review the disk/Storage/share part:
   "Disk": One page for managing physical drive (including hardware RAID)
   "Volume/Storage" (name to define): One page for define all geom drive and formatting, with automating mounting (mount should be transparent to the user)
