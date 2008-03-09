@@ -145,7 +145,7 @@ if (!isset($do_format)) {
 					<tr>
 				    <td valign="top" class="vncellreq"><?=gettext("File system");?></td>
 				    <td class="vtable">
-				      <select name="type" class="formfld" id="type" onchange="fstype_change()">
+				      <select name="type" class="formfld" id="type" onchange="type_change()">
 				        <?php foreach ($a_fst as $fstval => $fstname): ?>
 				        <option value="<?=$fstval;?>" <?php if($type == $fstval) echo 'selected';?>><?=htmlspecialchars($fstname);?></option>
 				        <?php endforeach; ?>

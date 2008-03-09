@@ -6,7 +6,7 @@
 function disk_change() {
 	var devicespecialfile = document.iform.disk.value;
 	x_get_fs_type(devicespecialfile, update_type);
-	fstype_change();
+	type_change();
 }
 
 function update_type(value) {
@@ -18,8 +18,9 @@ function update_type(value) {
 	}
 }
 
-function fstype_change() {
-	switch(document.iform.type.value) {
+function type_change() {
+	var value = document.iform.type.value;
+	switch (value) {
 		case "ufsgpt":
 			showElementById('minspace_tr','show');
 			showElementById('volumelabel_tr','show');
