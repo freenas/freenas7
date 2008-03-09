@@ -107,9 +107,7 @@ $pgtitle_omit = true;
     <td width="25%" class="vncellt"><?=gettext("Memory usage");?></td>
     <td width="75%" class="listr">
       <?php
-      	/* Get RAM information */
-				$raminfo = system_get_ram_usage();
-				/* Calculate memory use percentage. */
+				$raminfo = system_get_ram_info();
         $memUsage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
 
         echo "<img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
