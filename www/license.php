@@ -127,8 +127,8 @@ $pgtitle = array(gettext("License"));
        <p> Apple Bonjour (<a href="http://developer.apple.com/networking/bonjour" target="_blank">http://developer.apple.com/networking/bonjour</a>)<br>
         Apple Public Source License.</p>
      
-      <p> Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd" target="_blank">http://software.wwwi.com/syslogd</a>)<br>
-        Copyright &copy; 2001 Jeff Wheelhouse (jdw@wwwi.com)</p>
+      <p> Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd/" target="_blank">http://software.wwwi.com/syslogd</a>)<br>
+        Copyright &copy; 2001 Jeff Wheelhouse (jdw@wheelhouse.org)</p>
      
       <p>msntp (<a href="http://www.hpcf.cam.ac.uk/export" target="_blank">http://www.hpcf.cam.ac.uk/export</a>)<br>
         Copyright &copy; 1996, 1997, 2000 N.M. Maclaren, University of Cambridge. 
