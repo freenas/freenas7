@@ -33,6 +33,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("sajax/sajax.php");
 
 $pgtitle = array(gettext("Disks"), gettext("Format"));
 
@@ -52,7 +53,19 @@ $cfdevice = trim(file_get_contents($filename));
 $cfdevice = "/dev/" . $cfdevice;
 
 // Get list of all configured disks (physical and virtual).
-$a_alldisk = get_conf_all_disks_list_filtered();
+$a_disk = get_conf_all_disks_list_filtered();
+
+function get_fs_type($devicespecialfile) {
+	global $a_disk;
+	$index = array_search_ex($devicespecialfile, $a_disk, "devicespecialfile");
+	if (false === $index)
+		return "";
+	return $a_disk[$index]['fstype'];
+}
+
+sajax_init();
+sajax_export("get_fs_type");
+sajax_handle_client_request();
 
 if ($_POST) {
 	unset($input_errors);
@@ -89,7 +102,7 @@ if ($_POST) {
 			write_config();
 
 			// Update list of configured disks.
-			$a_alldisk = get_conf_all_disks_list_filtered();
+			$a_disk = get_conf_all_disks_list_filtered();
 		}
 	}
 }
@@ -103,41 +116,10 @@ if (!isset($do_format)) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<script language="JavaScript">
-<!--
-function disk_change() {
-  switch(document.iform.disk.value) {
-    <?php foreach ($a_alldisk as $diskv): ?>
-		case "<?=$diskv['devicespecialfile'];?>":
-		  <?php $i = 0;?>
-      <?php foreach ($a_fst as $fstval => $fstname): ?>
-        document.iform.type.options[<?=$i++;?>].selected = <?php if($diskv['fstype'] == $fstval){echo "true";}else{echo "false";};?>;
-      <?php endforeach; ?>
-      break;
-    <?php endforeach; ?>
-  }
-  fstype_change();
-}
-
-function fstype_change() {
-	switch(document.iform.type.value) {
-		case "ufsgpt":
-			showElementById('minspace_tr','show');
-			showElementById('volumelabel_tr','show');
-			break;
-		case "ext2":
-		case "msdos":
-			showElementById('minspace_tr','hide');
-			showElementById('volumelabel_tr','show');
-			break;
-		default:
-			showElementById('minspace_tr','hide');
-			showElementById('volumelabel_tr','hide');
-			break;
-	}
-}
-//-->
+<script>
+<?php sajax_show_javascript();?>
 </script>
+<script type="text/javascript" src="javascript/disks_init.js"></script>
 <form action="disks_init.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
@@ -150,7 +132,7 @@ function fstype_change() {
 			      <td class="vtable">
 			        <select name="disk" class="formfld" id="disk" onchange="disk_change()">
 								<option value=""><?=gettext("Must choose one");?></option>
-								<?php foreach ($a_alldisk as $diskv):?>
+								<?php foreach ($a_disk as $diskv):?>
 								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
 								<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
 								<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($diskv['devicespecialfile'] === $disk) echo "selected";?>>
@@ -161,7 +143,7 @@ function fstype_change() {
 			      </td>
 					</tr>
 					<tr>
-				    <td valign="top" class="vncellreq"><?=gettext("File system"); ?></td>
+				    <td valign="top" class="vncellreq"><?=gettext("File system");?></td>
 				    <td class="vtable">
 				      <select name="type" class="formfld" id="type" onchange="fstype_change()">
 				        <?php foreach ($a_fst as $fstval => $fstname): ?>
@@ -178,7 +160,7 @@ function fstype_change() {
 						</td>
 					</tr>
 					<tr id="minspace_tr">
-						<td width="22%" valign="top" class="vncell"><?=gettext("Minimum free space") ; ?></td>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Minimum free space");?></td>
 						<td width="78%" class="vtable">
 							<select name="minspace" class="formfld" id="minspace">
 							<?php $types = explode(",", "8,7,6,5,4,3,2,1"); $vals = explode(" ", "8 7 6 5 4 3 2 1");?>
@@ -190,7 +172,7 @@ function fstype_change() {
 						</td>
 					</tr>
 			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Don't Erase MBR"); ?></td>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Don't Erase MBR");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="notinitmbr" id="notinitmbr" type="checkbox" value="yes">
 			        <?=gettext("Don't erase the MBR (useful for some RAID controller cards)");?>
