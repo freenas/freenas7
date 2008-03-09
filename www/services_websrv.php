@@ -45,8 +45,8 @@ $pconfig['enable'] = isset($config['websrv']['enable']);
 $pconfig['protocol'] = $config['websrv']['protocol'];
 $pconfig['port'] = $config['websrv']['port'];
 $pconfig['documentroot'] = $config['websrv']['documentroot'];
-$pconfig['privatekey'] = $config['websrv']['privatekey'];
-$pconfig['certificate'] = $config['websrv']['certificate'];
+$pconfig['privatekey'] = base64_decode($config['websrv']['privatekey']);
+$pconfig['certificate'] = base64_decode($config['websrv']['certificate']);
 $pconfig['authentication'] = isset($config['websrv']['authentication']);
 $pconfig['dirlisting'] = isset($config['websrv']['dirlisting']);
 
@@ -84,8 +84,8 @@ if($_POST) {
 		$config['websrv']['protocol'] = $_POST['protocol'];
 		$config['websrv']['port'] = $_POST['port'];
 		$config['websrv']['documentroot'] = $_POST['documentroot'];
-		$config['websrv']['privatekey'] = $_POST['privatekey'];
-		$config['websrv']['certificate'] = $_POST['certificate'];
+		$config['websrv']['privatekey'] = base64_encode($_POST['privatekey']);
+		$config['websrv']['certificate'] = base64_encode($_POST['certificate']);
 		$config['websrv']['authentication'] = $_POST['authentication'] ? true : false;
 		$config['websrv']['dirlisting'] = $_POST['dirlisting'] ? true : false;
 
