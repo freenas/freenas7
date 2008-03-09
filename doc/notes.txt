@@ -19,11 +19,10 @@ Todo list for FreeNAS 0.7:
 
 - Update/Adapt rc.d scripts (there are new scripts in FreeBSD)
 - Update build/kernel-config/FREENAS-amd64
-- Modify /inc/disks.inc
-  - $result = mwexec("/sbin/mount -t msdosfs -o -large,-u=ftp,-g=ftp,-m=777 {$devname} '{$mountname}'");
 - Implement new sensor framework: coretemp ?
 - Geli: propose to use crypto key (without password), stored on USB key. This mean that geli drive will be mounted automatically if the usb is present during startup.
-
+  But what happens if the NAS is on the attic or in the basement? What if we have a high secure environment, don't think somebody wants to
+	leave the keys on the USB alone to simply let them steal?  
 
 General notes:
 
