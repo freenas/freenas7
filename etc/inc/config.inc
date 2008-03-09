@@ -1246,9 +1246,21 @@ function config_upgrade() {
 	/* New Disk configuration for FreeNAS 0.7 */
 	/* Use class in the place of gconcat,gmirror,graid5,gstride,gvinum,geli disk */
 	if ($config['version'] === "4.5") {
-		/* Add class "physical" to physical disk (including hardware RAID)*/
-		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
-			$config['disks']['disk'][$i]['class'] = "physical";
+		/* Add class to physical disk that replace old type (ATA, SCSI, RAID)*/
+		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {	
+			switch ($config['disks']['disk'][$i]['type'])
+				{
+					case "IDE":
+					   $config['disks']['disk'][$i]['class'] = "ATA";
+					   break;
+					case "SCSI":
+					   $config['disks']['disk'][$i]['class'] = "SCSI";
+					   break;
+					case "RAID":
+					   $config['disks']['disk'][$i]['class'] = "RAID";
+					   break;
+				}
+			unset ($config['disks']['disk'][$i]['type']);
 		}
 		
 		/* Convert all others into disk with class attribute*/

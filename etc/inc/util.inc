@@ -549,7 +549,7 @@ function get_sraid_disks_list()
 // Get list of software gvinum RAID disks.
 //[volumename] => Array
 //    (
-//        [type] => gvinum
+//        [class] => gvinum
 //        [state] => UP
 //        [size] => 6149 MB
 //        [name] => VolumeName
@@ -574,7 +574,7 @@ function get_gvinum_disks_list()
 		$disklist[$diskname] = array();
 		$disklist[$diskname]['name'] = $diskname;
 		$disklist[$diskname]['devicespecialfile'] = "/dev/gvinum/" . $diskname;
-		$disklist[$diskname]['type'] = "gvinum";
+		$disklist[$diskname]['class'] = "gvinum";
 		$disklist[$diskname]['desc'] = "Software RAID";
 		$disklist[$diskname]['state'] = $aline[3];
 
@@ -589,7 +589,7 @@ function get_gvinum_disks_list()
 // Get list of software gmirror RAID disks.
 //[volumename] => Array
 //    (
-//        [type] => gmirror
+//        [class] => gmirror
 //        [name] => volumename
 //        [state] => COMPLETE
 //        [size] => 6149M
@@ -616,7 +616,7 @@ function get_gmirror_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/mirror/" . $diskname;
-			$disklist[$diskname]['type'] = "gmirror";
+			$disklist[$diskname]['class'] = "gmirror";
 			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
@@ -645,7 +645,7 @@ function get_gmirror_disks_list()
 // Get list of software gconcat RAID disks.
 //[volumename] => Array
 //    (
-//        [type] => gconcat
+//        [class] => gconcat
 //        [state] => COMPLETE
 //        [size] => 6149M
 //        [name] => concat1
@@ -672,7 +672,7 @@ function get_gconcat_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/concat/" . $diskname;
-			$disklist[$diskname]['type'] = "gconcat";
+			$disklist[$diskname]['class'] = "gconcat";
 			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
@@ -701,7 +701,7 @@ function get_gconcat_disks_list()
 // Get list of software gstripe RAID disks.
 //[volumename] => Array
 //    (
-//        [type] => gstripe
+//        [class] => gstripe
 //        [state] => COMPLETE
 //        [size] => 6149M
 //        [name] => raid0
@@ -728,7 +728,7 @@ function get_gstripe_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/stripe/" . $diskname;
-			$disklist[$diskname]['type'] = "gstripe";
+			$disklist[$diskname]['class'] = "gstripe";
 			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
@@ -757,7 +757,7 @@ function get_gstripe_disks_list()
 // Get list of software graid5 RAID disks.
 //[volumename] => Array
 //    (
-//        [type] => graid5
+//        [class] => graid5
 //        [state] => COMPLETE
 //        [size] => 6149M
 //        [name] => BIG1
@@ -784,7 +784,7 @@ function get_graid5_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/raid5/" . $diskname;
-			$disklist[$diskname]['type'] = "graid5";
+			$disklist[$diskname]['class'] = "graid5";
 			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
@@ -813,7 +813,7 @@ function get_graid5_disks_list()
 // Get list of ATA disks.
 //[ad0] => Array
 //    (
-//        [type] => IDE
+//        [class] => ATA
 //        [desc] => QUANTUM FIREBALL EX6.4A/A0A.0D00
 //        [size] => 6149MB
 //        [name] => ad0
@@ -841,7 +841,7 @@ function get_ata_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/" . $diskname;
-			$disklist[$diskname]['type'] = "IDE";
+			$disklist[$diskname]['class'] = "ATA";
 
 			/* Match the description witch is include between < and > */
 			preg_match("/.*\<([^>]*)>.*/",$line,$match);
@@ -859,7 +859,7 @@ function get_ata_disks_list()
 // Get list of SCSI disks.
 //[ad0] => Array
 //    (
-//        [type] => IDE
+//        [class] => SCSI
 //        [desc] => QUANTUM FIREBALL EX6.4A/A0A.0D00
 //        [size] => 6149MB
 //        [name] => ad0
@@ -887,7 +887,7 @@ function get_scsi_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/" . $diskname;
-			$disklist[$diskname]['type'] = "SCSI";
+			$disklist[$diskname]['class'] = "SCSI";
 
 			/* Match the description witch is include between < and > */
 			preg_match("/.*\<([^>]*)>.*/",$line,$match);
@@ -905,7 +905,7 @@ function get_scsi_disks_list()
 // Get list of hardware RAID disks.
 //[aacd0] => Array
 //    (
-//        [type] => RAID
+//        [class] => RAID
 //        [desc] => XYZ
 //        [size] => xxxMB
 //        [name] => aacd0
@@ -936,7 +936,7 @@ function get_hraid_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile']= "/dev/" . $diskname;
-			$disklist[$diskname]['type'] = "RAID";
+			$disklist[$diskname]['class'] = "RAID";
 
 			/* Looking for the disk description in the dmesg */
 			foreach ($rawdmesg as $dmesgline) {
@@ -967,7 +967,7 @@ function get_hraid_disks_list()
 // exemple: Array
 // [acd0] => Array
 //    (
-//        [type] => IDE
+//        [class] => ATA
 //        [desc] => TDK CDRW241040B/57S2
 //        [name] => acd0
 //        [size] => NA
@@ -997,7 +997,7 @@ function get_cdrom_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/" . $diskname;
-			$disklist[$diskname]['type'] = "IDE";
+			$disklist[$diskname]['class'] = "ATA";
 			$disklist[$diskname]['size'] = "NA";
 
 			/* Match the description witch is include between < and > */
@@ -1032,7 +1032,7 @@ function get_cdrom_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/" . $diskname;
-			$disklist[$diskname]['type'] = "SCSI";
+			$disklist[$diskname]['class'] = "SCSI";
 			$disklist[$diskname]['size'] = "NA";
 
 			/* Match the description witch is include between < and > */

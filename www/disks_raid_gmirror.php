@@ -35,12 +35,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID1"), gettext("Manage RAID"));
 
-if (!is_array($config['gmirror']['vdisk']))
-	$config['gmirror']['vdisk'] = array();
+if (!is_array($config['disks']['disk']))
+	$config['disks']['disk'] = array();
 
-array_sort_key($config['gmirror']['vdisk'], "name");
+array_sort_key($config['disks']['disk'], "name");
 
-$a_raid = &$config['gmirror']['vdisk'];
+$a_raid = &$config['disks']['disk'];
 
 if ($_POST) {
 	$pconfig = $_POST;
@@ -124,6 +124,7 @@ function is_modified($name) {
 					</tr>
 					<?php $raidstatus = get_gmirror_disks_list();?>
 					<?php $i = 0; foreach ($a_raid as $raid):?>
+					<?php if ($raid['class']=="gmirror"): ?>
 					<?php
           $size = gettext("Unknown");
           $status = gettext("Stopped");
@@ -147,6 +148,7 @@ function is_modified($name) {
 							<a href="disks_raid_gmirror.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" width="17" height="17" border="0"></a>
 						</td>
 					</tr>
+					<?php endif; ?>
 					<?php $i++; endforeach;?>
           <tr>
             <td class="list" colspan="4"></td>
