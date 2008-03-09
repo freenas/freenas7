@@ -1242,6 +1242,77 @@ function config_upgrade() {
 		$config['version'] = "4.5";
 	}
 
+	/* Convert 4.5 -> 4.6 */
+	/* New Disk configuration for FreeNAS 0.7 */
+	/* Use class in the place of gconcat,gmirror,graid5,gstride,gvinum,geli disk */
+	if ($config['version'] === "4.5") {
+		/* Add class "physical" to physical disk (including hardware RAID)*/
+		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
+			$config['disks']['disk'][$i]['class'] = "physical";
+		}
+		
+		/* Convert all others into disk with class attribute*/
+		foreach (explode(" ", "gconcat gmirror graid5 gstripe gvinum geli") as $class) {
+			for ($i = 0; isset($config[$class]['vdisk'][$i]); $i++) {
+				$disks = array();
+				$disks['class']=$class;
+
+				if (isset($config[$class]['vdisk'][$i]['name'])) {
+					$disks['name'] = $config[$class]['vdisk'][$i]['name'];
+				}
+
+				if (isset($config[$class]['vdisk'][$i]['device'])) {
+					$disks['device'] = $config[$class]['vdisk'][$i]['device'];
+				}
+
+				if (isset($config[$class]['vdisk'][$i]['devicespecialfile'])) {
+					$disks['devicespecialfile'] = $config[$class]['vdisk'][$i]['devicespecialfile'];
+				}
+
+				if (isset($config[$class]['vdisk'][$i]['desc'])) {
+					$disks['desc'] = $config[$class]['vdisk'][$i]['desc'];
+				}
+				
+				if (isset($config[$class]['vdisk'][$i]['size'])) {
+					$disks['size'] = $config[$class]['vdisk'][$i]['size'];
+				}
+				
+				if (isset($config[$class]['vdisk'][$i]['fstype'])) {
+					$disks['fstype'] = $config[$class]['vdisk'][$i]['fstype'];
+				}
+				
+				/* Geli */
+
+				if (isset($config[$class]['vdisk'][$i]['aalgo'])) {
+					$disks['aalgo'] = $config[$class]['vdisk'][$i]['aalgo'];
+				}
+
+				if (isset($config[$class]['vdisk'][$i]['ealgo'])) {
+					$disks['ealgo'] = $config[$class]['vdisk'][$i]['ealgo'];
+				}
+
+				/* gmirror */
+
+				if (isset($config[$class]['vdisk'][$i]['balance'])) {
+					$disks['balance'] = $config[$class]['vdisk'][$i]['balance'];
+				}
+
+				/* gvinum */
+
+				if (isset($config[$class]['vdisk'][$i]['type'])) {
+					$disks['type'] = $config[$class]['vdisk'][$i]['type'];
+				}
+				$config['disks']['disk'][] = $disks;
+				unset($config[$class]['vdisk'][$i]);
+
+			}
+		}
+		
+
+		$config['version'] = "4.6";
+	}
+
+
 	write_config();
 
 	if (is_booting())
