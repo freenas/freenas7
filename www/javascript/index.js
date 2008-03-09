@@ -1,7 +1,7 @@
 /*
 	index.js
 	Copyright © 2008 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
 */
 function update_controls(x) {
 	var values = x.split("|");
