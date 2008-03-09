@@ -6,7 +6,6 @@
 function disk_change() {
 	var devicespecialfile = document.iform.disk.value;
 	x_get_fs_type(devicespecialfile, update_type);
-	type_change();
 }
 
 function update_type(value) {
@@ -16,6 +15,7 @@ function update_type(value) {
 			document.iform.type.options[i].selected = true;
 		}
 	}
+	type_change();
 }
 
 function type_change() {
