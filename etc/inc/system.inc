@@ -199,17 +199,17 @@ function system_get_uptime() {
 	$uptime %= 3600;
 	$upmins = (int)($uptime / 60);
 
-	$uptimestr = "";
-	if ($updays > 1) $uptimestr .= "$updays ".gettext("days").", ";
-	else if ($updays > 0) $uptimestr .= "1 ".gettext("day").", ";
-	$uptimestr .= sprintf("%02d:%02d", $uphours, $upmins);
+	$uptime = "";
+	if ($updays > 1) $uptime .= "$updays ".gettext("days").", ";
+	else if ($updays > 0) $uptime .= "1 ".gettext("day").", ";
+	$uptime .= sprintf("%02d:%02d", $uphours, $upmins);
 
-	return $uptimestr;
+	return $uptime;
 }
 
-// Get the RAM usage/information.
+// Get the current RAM information.
 // Returns an array listing the amount of memory installed in the hardware.
-function system_get_ram_usage() {
+function system_get_ram_info() {
 	exec("/sbin/sysctl -n vm.stats.vm.v_active_count vm.stats.vm.v_inactive_count vm.stats.vm.v_wire_count vm.stats.vm.v_cache_count vm.stats.vm.v_free_count hw.physmem", $memory);
 	exec("/sbin/sysctl -n hw.realmem", $hwmemory);
 
