@@ -18,7 +18,9 @@ FREENAS_SVNDIR="$FREENAS_ROOTDIR/svn"
 FREENAS_WORLD=""
 FREENAS_PRODUCTNAME=$(cat $FREENAS_SVNDIR/etc/prd.name)
 FREENAS_VERSION=$(cat $FREENAS_SVNDIR/etc/prd.version)
-FREENAS_REVISION=$(svn info ${FREENAS_SVNDIR} | grep Revision | awk '{print $2}')
+#Use only the part of the word «vision» for «revision» because with french svn,
+#the word is «révision»
+FREENAS_REVISION=$(svn info ${FREENAS_SVNDIR} | grep "vision :" | awk '{print $3}')
 FREENAS_ARCH=$(uname -p)
 FREENAS_KERNCONF="$(echo ${FREENAS_PRODUCTNAME} | tr '[:lower:]' '[:upper:]')-${FREENAS_ARCH}"
 FREENAS_OBJDIRPREFIX="/usr/obj/$(echo ${FREENAS_PRODUCTNAME} | tr '[:upper:]' '[:lower:]')"
