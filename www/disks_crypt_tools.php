@@ -6,7 +6,7 @@
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -38,12 +38,13 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Tools"));
 
-if (!is_array($config['geli']['vdisk']))
-	$config['geli']['vdisk'] = array();
+if (!is_array($config['disks']['disk']))
+	$config['disks']['disk'] = array();
 
-array_sort_key($config['geli']['vdisk'], "devicespecialfile");
+//array_sort_key($config['geli']['vdisk'], "devicespecialfile");
+array_sort_key($config['disks']['disk'], "name");
 
-$a_geli = &$config['geli']['vdisk'];
+$a_geli = &$config['disks']['disk'];
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -142,9 +143,11 @@ function action_change() {
               <select name="disk" class="formfld" id="disk">
               	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_geli as $geliv):?>
+		<?php if ($geliv['class']== "geli"): ?>
 								<option value="<?=$geliv['devicespecialfile'];?>" <?php if ($geliv['devicespecialfile'] === $pconfig['disk']) echo "selected";?>>
 								<?php echo htmlspecialchars("{$geliv['name']}: {$geliv['size']} ({$geliv['desc']})");?>
                 </option>
+		<?php endif; ?>
                 <?php endforeach;?>
               </select>
             </td>

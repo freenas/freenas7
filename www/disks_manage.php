@@ -99,7 +99,7 @@ if ($_GET['act'] == "del") {
 						<td width="10%" class="list"></td>
 					</tr>
 				  <?php $i = 0; foreach ($a_disk_conf as $disk):?>
-						<?php if ($disk['class']== ("ATA" || "SCSI" || "RAID" )): ?>
+						<?php if (($disk['class']== "ATA") || ($disk['class']== "SCSI") || ($disk['class']== "RAID" )): ?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
 						<td class="listr"><?=htmlspecialchars($disk['size']);?></td>

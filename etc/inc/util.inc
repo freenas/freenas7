@@ -539,7 +539,7 @@ function get_mount_fsid($devicespecialfile, $mp) {
 	return NULL;
 }
 
-/* Return list of ALL software volume: gvinum, gmirror */
+/* Return list of ALL software volume: gvinum, gmirror,etc... */
 function get_sraid_disks_list()
 {
 	$disklist = array_merge((array)get_gvinum_disks_list(),(array)get_gmirror_disks_list(),(array)get_gconcat_disks_list(),(array)get_gstripe_disks_list(),(array)get_graid5_disks_list());
@@ -1689,12 +1689,14 @@ function get_conf_physical_disks_list() {
 	$a_physicaldisk = array();
 
 	if (is_array($config['disks']['disk'])) {
-		array_sort_key($config['disks']['disk'], "name");
-		$a_disks = $config['disks']['disk'];
-		foreach ($a_disks as &$disk) { $disk['class'] = "physical"; } // Set disk type
-		$a_physicaldisk = array_merge($a_physicaldisk, $a_disks);
-  }
 
+		$a_disks = $config['disks']['disk'];
+		foreach ($a_disks as $disk) {
+			if (($disk['class']) == "ATA" || ($disk['class'] == "SCSI") || ($disk['class'] == "RAID")) {
+				$a_physicaldisk[]= $disk;	
+			}
+		} 
+  	}
 	return $a_physicaldisk;
 }
 
@@ -1704,40 +1706,18 @@ function get_conf_sraid_disks_list() {
 
 	$a_vdisk = array();
 
-	if (is_array($config['gvinum']['vdisk'])) {
-		array_sort_key($config['gvinum']['vdisk'], "name");
-		$a_gvinum = $config['gvinum']['vdisk'];
-		foreach ($a_gvinum as &$vdisk) { $vdisk['class'] = "gvinum"; } // Set disk type
-		$a_vdisk = array_merge($a_vdisk, $a_gvinum);
-  }
+	if (is_array($config['disks']['disk'])) {
 
-	if (is_array($config['gmirror']['vdisk'])) {
-		array_sort_key($config['gmirror']['vdisk'], "name");
-		$a_gmirror = $config['gmirror']['vdisk'];
-		foreach ($a_gmirror as &$vdisk) { $vdisk['class'] = "gmirror"; } // Set disk type
-		$a_vdisk = array_merge($a_vdisk, $a_gmirror);
-  }
+		$a_disks = $config['disks']['disk'];
+		foreach ($a_disks as $disk) {
+			if (($disk['class']) == "gmirror" || ($disk['class'] == "graid5") || ($disk['class'] == "gvinum") || ($disk['class'] == "gstripe") || ($disk['class'] == "gconcat")) {
+				$a_vdisk[]= $disk;	
+			}
+		} 
+  	}
+	
 
-	if (is_array($config['gconcat']['vdisk'])) {
-		array_sort_key($config['gconcat']['vdisk'], "name");
-		$a_gconcat = $config['gconcat']['vdisk'];
-		foreach ($a_gconcat as &$vdisk) { $vdisk['class'] = "gconcat"; } // Set disk type
-		$a_vdisk = array_merge($a_vdisk, $a_gconcat);
-  }
-
-	if (is_array($config['gstripe']['vdisk'])) {
-		array_sort_key($config['gstripe']['vdisk'], "name");
-		$a_gstripe = $config['gstripe']['vdisk'];
-		foreach ($a_gstripe as &$vdisk) { $vdisk['class'] = "gstripe"; } // Set disk type
-		$a_vdisk = array_merge($a_vdisk, $a_gstripe);
-  }
-
-	if (is_array($config['graid5']['vdisk'])) {
-		array_sort_key($config['graid5']['vdisk'], "name");
-		$a_graid5 = $config['graid5']['vdisk'];
-		foreach ($a_graid5 as &$vdisk) { $vdisk['class'] = "graid5"; } // Set disk type
-		$a_vdisk = array_merge($a_vdisk, $a_graid5);
-  }
+	print_r($a_vdisk);
 
 	return $a_vdisk;
 }
@@ -1748,12 +1728,18 @@ function get_conf_encryped_disks_list() {
 
 	$a_vdisk = array();
 
-	if (is_array($config['geli']['vdisk'])) {
-		array_sort_key($config['geli']['vdisk'], "name");
-		$a_geli = $config['geli']['vdisk'];
-		foreach ($a_geli as &$vdisk) { $vdisk['class'] = "geli"; } // Set disk type
-		$a_vdisk = array_merge($a_vdisk, $a_geli);
-	}
+
+	if (is_array($config['disks']['disk'])) {
+
+		$a_disks = $config['disks']['disk'];
+		foreach ($a_disks as $disk) {
+			if (($disk['class']) == "geli") {
+				$a_vdisk[]= $disk;	
+			}
+		} 
+  	}
+	
+	print_r($a_vdisk);
 
 	return $a_vdisk;
 }

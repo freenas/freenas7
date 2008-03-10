@@ -120,11 +120,10 @@ function disks_mount($mount)
 	/* Mount the filesystem */
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
 	if (is_booting()) {
-		if (is_array($config['geli']['vdisk'])) {
-			if (array_search_ex($mount['mdisk'], $config['geli']['vdisk'], "devicespecialfile")) {
-				write_log("Skip mounting '{$mount['sharename']}': Passphrase needed for '{$mountname}'.");
-				return 0;
-			}
+		// If mdisk is in the form "/dev/ad1.eli", then it's an encrypted disk :
+		if(stristr($mount['mdisk'], '.eli') === TRUE) {
+			write_log("Skip mounting '{$mount['sharename']}': Passphrase needed for '{$mountname}'.");
+			return 0;
 		}
 	}
 
@@ -354,27 +353,31 @@ function disks_ismounted_ex($var,$key)
 }
 
 // Configure, create and start gvinum volume.
-// $name - Name of the RAID to be configured.
+// $name - Name of the gvinum disk to be configured.
 // Return 0 if successful, 1 if error
 function disks_raid_gvinum_configure($name)
 {
 	global $g, $config;
 
-	if (!is_array($config['gvinum']['vdisk']))
+	if (!is_array($config['disks']['disk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['gvinum']['vdisk'], "name");
-	if (false === $index)
+	$index = array_search_ex($name, $config['disks']['disk'], "name");
+	if (false === $index) {
+		write_console("Error: Disk name not found in disks_raid_gvinum_configure().\n");
 		return 1;
+	}
 
-	$vdisk = $config['gvinum']['vdisk'][$index];
-	if (!is_array($vdisk))
+	$vdisk = $config['disks']['disk'][$index];	
+	if (!is_array($vdisk)) {
+		write_console("Error: Not an array in disks_raid_gvinum_configure().\n");
 		 return 1;
+	}
 
 	// Generate the raid.conf file
 	$fd = fopen("{$g['varetc_path']}/raid-{$vdisk['name']}.conf", "w");
 	if (!$fd) {
-		write_console("Error: Failed to open raid.conf in services_raid_configure().\n");
+		write_console("Error: Failed to open raid.conf in disks_raid_gvinum_configure().\n");
 		return 1;
 	}
 
@@ -603,10 +606,13 @@ function disks_raid_gvinum_start()
 {
 	global $config;
 
-	if (is_array($config['gvinum']['vdisk'])) {
-		/* Start each volume */
-		foreach ($config['gvinum']['vdisk'] as $vdiskv) {
-			mwexec("/sbin/gvinum start {$vdiskv['name']}");
+	if (is_array($config['disks']['disk'])) {
+
+		foreach ($config['disks']['disk'] as $vdiskv) {
+			if ($vdiskv['class'] == "gvinum"); {
+				/* Start each gvinum volume */
+				mwexec("/sbin/gvinum start {$vdiskv['name']}");
+			}
 		}
 	}
 
@@ -619,8 +625,18 @@ function disks_raid_gmirror_start()
 {
 	global $config;
 
-	if (is_array($config['gmirror']['vdisk'])) {
-		mwexec("/sbin/gmirror load");
+	$found=0;
+
+	if (is_array($config['disks']['disk'])) {
+		foreach ($config['disks']['disk'] as $vdiskv) {
+			if ($vdiskv['class'] == "gmirror"); {
+				$found=1;
+				break;
+			}
+		}
+		if ($found) {
+			mwexec("/sbin/gmirror load");
+		}
 	}
 
 	return 0;
@@ -632,8 +648,18 @@ function disks_raid_gconcat_start()
 {
 	global $config;
 
-	if (is_array($config['gconcat']['vdisk'])) {
-		mwexec("/sbin/gconcat load");
+	$found=0;
+
+	if (is_array($config['disks']['disk'])) {
+		foreach ($config['disks']['disk'] as $vdiskv) {
+			if ($vdiskv['class'] == "gconcat"); {
+				$found=1;
+				break;
+			}
+		}
+		if ($found) {
+			mwexec("/sbin/gconcat load");
+		}
 	}
 
 	return 0;
@@ -645,8 +671,18 @@ function disks_raid_gstripe_start()
 {
 	global $config;
 
-	if (is_array($config['gstripe']['vdisk'])) {
-		mwexec("/sbin/gstripe load");
+	$found=0;
+
+	if (is_array($config['disks']['disk'])) {
+		foreach ($config['disks']['disk'] as $vdiskv) {
+			if ($vdiskv['class'] == "gstripe"); {
+				$found=1;
+				break;
+			}
+		}
+		if ($found) {
+			mwexec("/sbin/gstripe load");
+		}
 	}
 
 	return 0;
@@ -658,11 +694,21 @@ function disks_raid_graid5_start()
 {
 	global $config;
 
-	if (is_array($config['graid5']['vdisk'])) {
-		mwexec("/sbin/graid5 load");
 
-		//Tune graid5
-		disks_raid_graid5_tune();
+	$found=0;
+
+	if (is_array($config['disks']['disk'])) {
+		foreach ($config['disks']['disk'] as $vdiskv) {
+			if ($vdiskv['class'] == "graid5"); {
+				$found=1;
+				break;
+			}
+		}
+		if ($found) {
+			mwexec("/sbin/graid5 load");
+			//Tune graid5
+			disks_raid_graid5_tune();
+		}
 	}
 
 	return 0;
@@ -712,9 +758,11 @@ function disks_raid_gvinum_stop()
 {
 	global $config;
 
-	if (is_array($config['gvinum']['vdisk'])) {
-		foreach ($config['gvinum']['vdisk'] as $vdiskv) {
-			mwexec("/sbin/gvinum stop {$vdiskv['name']}");
+	if (is_array($config['disks']['disk'])) {
+		foreach ($config['disks']['disk'] as $vdiskv) {
+			if ($vdiskv['class'] == "gvinum"); {
+				mwexec("/sbin/gvinum stop {$vdiskv['name']}");
+			}
 		}
 	}
 
@@ -727,9 +775,11 @@ function disks_raid_gmirror_stop()
 {
 	global $config;
 
-	if (is_array($config['gmirror']['vdisk'])) {
-		foreach ($config['gmirror']['vdisk'] as $vdiskv) {
-			mwexec("/sbin/gmirror stop {$vdiskv['name']}");
+	if (is_array($config['disks']['disk'])) {
+		foreach ($config['disks']['disk'] as $vdiskv) {
+			if ($vdiskv['class'] == "gmirror"); {
+				mwexec("/sbin/gmirror stop {$vdiskv['name']}");
+			}
 		}
 	}
 
@@ -742,9 +792,11 @@ function disks_raid_gconcat_stop()
 {
 	global $config;
 
-	if (is_array($config['gconcat']['vdisk'])) {
-		foreach ($config['gconcat']['vdisk'] as $vdiskv) {
-			mwexec("/sbin/gconcat stop {$vdiskv['name']}");
+	if (is_array($config['disks']['disk'])) {
+		foreach ($config['disks']['disk'] as $vdiskv) {
+			if ($vdiskv['class'] == "gconcat"); {
+				mwexec("/sbin/gconcat stop {$vdiskv['name']}");
+			}
 		}
 	}
 
@@ -757,9 +809,11 @@ function disks_raid_gstripe_stop()
 {
 	global $config;
 
-	if (is_array($config['gstripe']['vdisk'])) {
-		foreach ($config['gstripe']['vdisk'] as $vdiskv) {
-			mwexec("/sbin/gstripe stop {$vdiskv['name']}");
+	if (is_array($config['disks']['disk'])) {
+		foreach ($config['disks']['disk'] as $vdiskv) {
+			if ($vdiskv['class'] == "gstripe"); {
+				mwexec("/sbin/gstripe stop {$vdiskv['name']}");
+			}
 		}
 	}
 
@@ -772,9 +826,11 @@ function disks_raid_graid5_stop()
 {
 	global $config;
 
-	if (is_array($config['graid5']['vdisk'])) {
-		foreach ($config['graid5']['vdisk'] as $vdiskv) {
-			mwexec("/sbin/graid5 stop {$vdiskv['name']}");
+	if (is_array($config['disks']['disk'])) {
+		foreach ($config['disks']['disk'] as $vdiskv) {
+			if ($vdiskv['class'] == "graid5"); {
+				mwexec("/sbin/graid5 stop {$vdiskv['name']}");
+			}
 		}
 	}
 
@@ -1003,9 +1059,11 @@ function disks_geli_detach_all()
 
 	$result = 0;
 
-	if (is_array($config['geli']['vdisk'])) {
-		foreach($config['geli']['vdisk'] as $geli) {
-			$result |= disks_geli_detach($geli['devicespecialfile']) ;
+	if (is_array($config['disks']['disk'])) {
+		foreach ($config['disks']['disk'] as $vdiskv) {
+			if ($vdiskv['class'] == "geli"); {
+				$result |= disks_geli_detach($vdiskv['devicespecialfile']) ;
+			}
 		}
 	}
 

@@ -18,7 +18,7 @@ geli_make_list()
 {
 	local _devices
 
-	_devices=`/usr/local/bin/xml sel -t -m "//geli/vdisk" \
+	_devices=`/usr/local/bin/xml sel -t -m "//disks/disk[class = 'geli']" \
 		-v devicespecialfile -n \
 		${configxml_file} | /usr/local/bin/xml unesc |
 		while read _provider; do
