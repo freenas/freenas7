@@ -1715,9 +1715,6 @@ function get_conf_sraid_disks_list() {
 			}
 		} 
   	}
-	
-
-	print_r($a_vdisk);
 
 	return $a_vdisk;
 }
@@ -1738,8 +1735,6 @@ function get_conf_encryped_disks_list() {
 			}
 		} 
   	}
-	
-	print_r($a_vdisk);
 
 	return $a_vdisk;
 }
