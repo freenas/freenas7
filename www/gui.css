@@ -242,6 +242,11 @@ a {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
+.listcontent {
+	padding: 0;
+	border: 0;
+	background-color: #EEEEEE;
+}
 .optsect_t {
 	background-color: #435370;
 	padding-right: 6px;
