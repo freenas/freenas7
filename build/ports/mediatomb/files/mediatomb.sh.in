@@ -95,7 +95,7 @@ start_precmd()
 	echo '</virtual-layout>' >> ${mediatomb_config}
 	echo '</scripting>' >> ${mediatomb_config}
 	echo '<mappings>' >> ${mediatomb_config}
-	echo '<extension-mimetype ignore-unknown="no">' >> ${mediatomb_config}
+	echo '<extension-mimetype ignore-unknown="no" case-sensitive="no">' >> ${mediatomb_config}
 	echo '<map from="flac" to="audio/x-flac"/>' >> ${mediatomb_config}
 	echo '<map from="mp3" to="audio/mpeg"/>' >> ${mediatomb_config}
 	echo '<map from="ogg" to="application/ogg"/>' >> ${mediatomb_config}
