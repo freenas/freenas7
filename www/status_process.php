@@ -32,10 +32,24 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("sajax/sajax.php");
 
 $pgtitle = array(gettext("Status"), gettext("Processes"));
+
+function get_top_content() {
+	exec("top -b", $result);
+	return implode("\n", $result);
+}
+
+sajax_init();
+sajax_export("get_top_content");
+sajax_handle_client_request();
 ?>
 <?php include("fbegin.inc");?>
+<script>
+<?php sajax_show_javascript();?>
+</script>
+<script type="text/javascript" src="javascript/status_process.js"></script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabcont">
@@ -45,7 +59,8 @@ $pgtitle = array(gettext("Status"), gettext("Processes"));
 			  </tr>
 			  <tr>
 			    <td class="listt">
-			      <pre><div id="content" class="content"><?php exec("top -b", $result); echo implode("\n", $result);?></div></pre>
+			    	<br/>
+			      <textarea id="content" name="content" style="padding: 0; border: 0; background-color: #EEEEEE;" cols="84" rows="30" readonly><?=get_top_content();?></textarea>
 			    </td>
 			  </tr>
 			</table>
