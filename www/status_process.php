@@ -59,8 +59,7 @@ sajax_handle_client_request();
 			  </tr>
 			  <tr>
 			    <td class="listt">
-			    	<br/>
-			      <textarea id="content" name="content" class="listcontent" cols="84" rows="30" readonly><?=get_top_content();?></textarea>
+			    	<pre><textarea id="content" name="content" class="listcontent" cols="84" rows="30" readonly><?=get_top_content();?></textarea></pre>
 			    </td>
 			  </tr>
 			</table>
