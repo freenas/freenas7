@@ -5,6 +5,18 @@ body, td, th, input, select {
 body {
 	background: #FFFFFF;
 }
+body a:active {
+	color: #0000CC;
+}
+body a:visited {
+	color: #0000CC;
+}
+body a:link {
+	color: #0000CC;
+}
+body a:hover {
+	color: #435370;
+}
 form {
 	margin: 0px;
 }
