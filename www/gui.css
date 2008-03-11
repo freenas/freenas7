@@ -2,6 +2,9 @@ body, td, th, input, select {
 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
 	font-size: 11px;
 }
+body {
+	background: #FFFFFF;
+}
 form {
 	margin: 0px;
 }
