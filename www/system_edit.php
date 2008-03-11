@@ -95,47 +95,49 @@ if($_POST['cols'] <> "")
 else
 	$cols = 66;
 ?>
-
 <?php include("fbegin.inc");?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<form action="system_edit.php" method="post">
-  <div id="inputerrors"></div>
-  <div id="shapeme">
-    <table width="100%" cellpadding='9' cellspacing='9' bgcolor='#eeeeee'>
-      <tr>
-        <td>
-          <span class="label"><?=gettext("File path"); ?>:</span>
-	        <input size="42" id="savetopath" name="savetopath" value="<?php echo $_POST['savetopath']; ?>" />
-          <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
-	        <input name="submit" type="submit" class="formbtn" id="Load" value="<?=gettext("Load");?>" />
-          <input name="submit" type="submit" class="formbtn" id="Save" value="<?=gettext("Save");?>" />
-	        <hr noshade="noshade" />
-        	<?php if($_POST['highlight'] == "no"): ?>
-          <?=gettext("Rows"); ?>: <input size="3" name="rows" value="<? echo $rows; ?>" />
-        	<?=gettext("Cols"); ?>: <input size="3" name="cols" value="<? echo $cols; ?>" />
-        	|
-        	<?php endif; ?>
-        	<?=gettext("Highlighting"); ?>:
-          <input id="highlighting_enabled" name="highlight" type="radio" value="yes" <?php if($highlight == "yes") echo " checked=\"checked\""; ?> />
-          <label for="highlighting_enabled"><?=gettext("Enabled"); ?></label>
-        	<input id="highlighting_disabled" name="highlight" type="radio" value="no"<?php if($highlight == "no") echo " checked=\"checked\""; ?> />
-          <label for="highlighting_disabled"><?=gettext("Disabled"); ?></label>
-        </td>
-      </tr>
-    </table>
-  </div>
-  <br/>
-  <table width='100%'>
-    <tr>
-      <td valign="top" class="label">
-	      <div style="background: #eeeeee;" id="textareaitem">
-          <!-- NOTE: The opening *and* the closing textarea tag must be on the same line. -->
-	        <textarea style="width: 98%; margin: 7px;" class="<?php echo $language; ?>:showcolumns" rows="<?php echo $rows; ?>" cols="<?php echo $cols; ?>" name="code"><?php echo htmlspecialchars($content);?></textarea>
-	      </div>
-      </td>
-    </tr>
-  </table>
-</form>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabcont">
+			<form action="system_edit.php" method="post">
+				<?php if ($savemsg) print_info_box($savemsg);?>
+		    <table width="100%" cellpadding='9' cellspacing='9' bgcolor='#eeeeee'>
+		      <tr>
+		        <td>
+		          <span class="label"><?=gettext("File path");?>:</span>
+			        <input size="42" id="savetopath" name="savetopath" value="<?php echo $_POST['savetopath']; ?>" />
+		          <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.savetopath; filechooser = window.open("filechooser.php?p="+escape(ifield.value), "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
+			        <input name="submit" type="submit" class="formbtn" id="Load" value="<?=gettext("Load");?>" />
+		          <input name="submit" type="submit" class="formbtn" id="Save" value="<?=gettext("Save");?>" />
+			        <hr noshade="noshade" />
+		        	<?php if($_POST['highlight'] == "no"): ?>
+		          <?=gettext("Rows"); ?>: <input size="3" name="rows" value="<? echo $rows; ?>" />
+		        	<?=gettext("Cols"); ?>: <input size="3" name="cols" value="<? echo $cols; ?>" />
+		        	|
+		        	<?php endif; ?>
+		        	<?=gettext("Highlighting"); ?>:
+		          <input id="highlighting_enabled" name="highlight" type="radio" value="yes" <?php if($highlight == "yes") echo " checked=\"checked\""; ?> />
+		          <label for="highlighting_enabled"><?=gettext("Enabled"); ?></label>
+		        	<input id="highlighting_disabled" name="highlight" type="radio" value="no"<?php if($highlight == "no") echo " checked=\"checked\""; ?> />
+		          <label for="highlighting_disabled"><?=gettext("Disabled"); ?></label>
+		        </td>
+		      </tr>
+		    </table>
+			  <br/>
+			  <table width='100%'>
+			    <tr>
+			      <td valign="top" class="label">
+				      <div style="background: #eeeeee;" id="textareaitem">
+			          <!-- NOTE: The opening *and* the closing textarea tag must be on the same line. -->
+				        <textarea style="width: 98%; margin: 7px;" class="<?php echo $language; ?>:showcolumns" rows="<?php echo $rows; ?>" cols="<?php echo $cols; ?>" name="code"><?php echo htmlspecialchars($content);?></textarea>
+				      </div>
+			      </td>
+			    </tr>
+			  </table>
+			</form>
+		</td>
+	</tr>
+</table>
 <script class="javascript" src="syntaxhighlighter/shCore.js"></script>
 <script class="javascript" src="syntaxhighlighter/shBrushCSharp.js"></script>
 <script class="javascript" src="syntaxhighlighter/shBrushPhp.js"></script>
