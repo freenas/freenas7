@@ -3,7 +3,7 @@
 /*
 	disks_raid_gstripe_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -39,23 +39,24 @@ if (isset($_POST['id']))
 
 $pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID0"),isset($id)?gettext("Edit"):gettext("Add"));
 
-if (!is_array($config['gstripe']['vdisk']))
-	$config['gstripe']['vdisk'] = array();
+if (!is_array($config['disks']['disk']))
+	$config['disks']['disk'] = array();
 
-array_sort_key($config['gstripe']['vdisk'], "name");
+array_sort_key($config['disks']['disk'], "name");
 
-$a_raid = &$config['gstripe']['vdisk'];
+$a_raid = &$config['disks']['disk'];
+
 $all_raid = get_conf_sraid_disks_list();
-$a_disk = get_conf_disks_filtered_ex("fstype", "softraid");
+$a_disk = get_conf_disks_filtered_ex("fstype", "pool");
 
 if (!sizeof($a_disk)) {
-	$nodisk_errors[] = gettext("You must add disks first.");
+	$nodisk_errors[] = gettext("You must add disks to the pool first.");
 }
 
 if (isset($id) && $a_raid[$id]) {
 	$pconfig['name'] = $a_raid[$id]['name'];
 	$pconfig['devicespecialfile'] = $a_raid[$id]['devicespecialfile'];
-	$pconfig['type'] = $a_raid[$id]['type'];
+	$pconfig['class'] = $a_raid[$id]['class'];
 	$pconfig['device'] = $a_raid[$id]['device'];
 }
 
@@ -70,25 +71,25 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['name'] && !is_validaliasname($_POST['name']))) {
-		$input_errors[] = gettext("The device name may only consist of the characters a-z, A-Z, 0-9.");
+		$input_errors[] = gettext("The disk name may only consist of the characters a-z, A-Z, 0-9.");
 	}
 
 	// Check for duplicate name.
-	foreach ($all_raid as $raid) {
+	foreach ($a_raid as $raid) {
 		if ($raid['name'] === $_POST['name']) {
-			$input_errors[] = gettext("This device already exists in the raid volume list.");
+			$input_errors[] = gettext("This disk name already exists.");
 			break;
 		}
 	}
 
 	/* check the number of RAID disk for volume */
 	if (count($_POST['device']) < 2)
-		$input_errors[] = gettext("There must be a minimum of 2 disks in a RAID 0 volume.");
+		$input_errors[] = gettext("There must be a minimum of 2 disks in a RAID 0.");
 
 	if (!$input_errors) {
 		$raid = array();
 		$raid['name'] = substr($_POST['name'], 0, 15); // Make sure name is only 15 chars long (GEOM limitation).
-		$raid['type'] = 0;
+		$raid['class'] = "gstripe";
 		$raid['device'] = $_POST['device'];
 		$raid['desc'] = "Software gstripe RAID 0";
 		$raid['devicespecialfile'] = "/dev/stripe/{$raid['name']}";

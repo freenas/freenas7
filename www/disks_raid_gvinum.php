@@ -3,7 +3,7 @@
 /*
 	disks_raid_gvinum.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -35,12 +35,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("Geom Vinum"), gettext("Manage RAID"));
 
-if (!is_array($config['gvinum']['vdisk']))
-	$config['gvinum']['vdisk'] = array();
+if (!is_array($config['disks']['disk']))
+	$config['disks']['disk'] = array();
 
-array_sort_key($config['gvinum']['vdisk'], "name");
+array_sort_key($config['disks']['disk'], "name");
 
-$a_raid = &$config['gvinum']['vdisk'];
+$a_raid = &$config['disks']['disk'];
 
 if ($_POST) {
 	$pconfig = $_POST;
@@ -49,8 +49,10 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			foreach ($a_raid as $raidv) {
-				if (is_modified($raidv['name'])) {
-					$retval |= disks_raid_gvinum_configure($raidv['name']);
+				if ($raidv['class']=="gvinum") {
+					if (is_modified($raidv['name'])) {
+						$retval |= disks_raid_gvinum_configure($raidv['name']);
+					}
 				}
 			}
 		}
@@ -124,6 +126,7 @@ function is_modified($name) {
 					</tr>
 					<?php $raidstatus = get_gvinum_disks_list();?>
 					<?php $i = 0; foreach ($a_raid as $raid):?>
+					<?php if ($raid['class']=="gvinum"): ?>
 					<?php
           $size = gettext("Unknown");
           $status = gettext("Stopped");
@@ -147,13 +150,8 @@ function is_modified($name) {
 							<a href="disks_raid_gvinum.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" width="17" height="17" border="0"></a>
 						</td>
 					</tr>
+					<?php endif; ?>
 					<?php $i++; endforeach;?>
-					<tr>
-						<td class="list" colspan="4"></td>
-						<td class="list">
-							<a href="disks_raid_gvinum_edit.php"><img src="plus.gif" title="<?=gettext("Add RAID");?>" width="17" height="17" border="0"></a>
-						</td>
-					</tr>
 				</table>
 			</form>
 			<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"), "disks_manage.php", "up");?></span></p>

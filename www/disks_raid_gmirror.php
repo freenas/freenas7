@@ -49,8 +49,10 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			foreach ($a_raid as $raidv) {
-				if (is_modified($raidv['name'])) {
-					$retval |= disks_raid_gmirror_configure($raidv['name']);
+				if ($raidv['class']=="gmirror") {
+					if (is_modified($raidv['name'])) {
+						$retval |= disks_raid_gmirror_configure($raidv['name']);
+					}
 				}
 			}
 		}

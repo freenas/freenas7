@@ -35,12 +35,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Add"));
 
-if (!is_array($config['geli']['vdisk']))
-	$config['geli']['vdisk'] = array();
+if (!is_array($config['disks']['disk']))
+	$config['disks']['disk'] = array();
 
-array_sort_key($config['geli']['vdisk'], "devicespecialfile");
+array_sort_key($config['disks']['disk'], "name");
 
-$a_geli = &$config['geli']['vdisk'];
+$a_geli = &$config['disks']['disk'];
 
 // Get list of all configured disks (physical and virtual).
 $a_alldisk = get_conf_all_disks_list_filtered();
@@ -102,6 +102,7 @@ if ($_POST) {
 			$geli['device'] = $pconfig['devicespecialfile'];
 			$geli['devicespecialfile'] = "{$geli['device']}.eli";
 			$geli['desc'] = "Encrypted disk";
+			$geli['class'] = "geli";
 			$geli['size'] = "{$diskinfo['mediasize_mbytes']}MB";
 			$geli['aalgo'] = $pconfig['aalgo'];
 			$geli['ealgo'] = $pconfig['ealgo'];
@@ -149,7 +150,7 @@ if (!isset($pconfig['do_action'])) {
 								<option value=""><?=gettext("Must choose one");?></option>
 								<?php $i = -1; foreach ($a_alldisk as $diskv):?>
 								<?php ++$i;?>
-								<?php if (0 == strcmp($diskv['class'], "geli")) continue;?>
+								<?php if ($diskv['class'] == "geli") continue;?>
 								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
 								<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
 								<option value="<?=$i;?>" <?php if ($pconfig['disk'] == $i) echo "selected";?>>

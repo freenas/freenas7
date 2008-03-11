@@ -1261,6 +1261,11 @@ function config_upgrade() {
 					   break;
 				}
 			unset ($config['disks']['disk'][$i]['type']);
+			// Convert the variable softraid to pool
+			if ($config['disks']['disk'][$i]['fstype'] == "softraid") {
+				$config['disks']['disk'][$i]['fstype'] = "pool";
+			}
+				
 		}
 		
 		/* Convert all others into disk with class attribute*/

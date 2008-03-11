@@ -1127,7 +1127,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			system("/sbin/newfs {$param} {$disk}p1 2>&1");
 			break;
 
-		case "softraid":
+		case "pool":
 			// Initialize disk
 			echo gettext("Formating disk").".\n";
 			system("/bin/dd if=/dev/zero of={$disk} bs=1m count=16");

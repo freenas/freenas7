@@ -3,7 +3,7 @@
 /*
 	disks_manage_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -54,6 +54,7 @@ if (isset($id) && $a_disk[$id]) {
 	$pconfig['harddiskstandby'] = $a_disk[$id]['harddiskstandby'];
 	$pconfig['acoustic'] = $a_disk[$id]['acoustic'];
 	$pconfig['fstype'] = $a_disk[$id]['fstype'];
+	$pconfig['class'] = $a_disk[$id]['class'];
 	$pconfig['apm'] = $a_disk[$id]['apm'];
 	$pconfig['transfermode'] = $a_disk[$id]['transfermode'];
 	$pconfig['devicespecialfile'] = $a_disk[$id]['devicespecialfile'];
@@ -95,6 +96,7 @@ if ($_POST) {
 		$disks['type'] = $a_phy_disk[$devname]['type'];
 		$disks['desc'] = $a_phy_disk[$devname]['desc'];
 		$disks['size'] = $a_phy_disk[$devname]['size'];
+		$disks['class'] = $a_phy_disk[$devname]['class'];
 
 		if (isset($id) && $a_disk[$id])
 			$a_disk[$id] = $disks;
