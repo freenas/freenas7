@@ -91,7 +91,7 @@ $g_filesystems = array(
 	"cd9660" => "CD/DVD",
 	"ntfs" => "NTFS",
 	"ext2" => "EXT2",
-	"pool" => "Pool disk",
+	"pool" => "Disk in Pool",
 	"geli" => "Encrypted"
 );
 ?>
