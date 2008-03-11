@@ -158,49 +158,55 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 }
 ?>
 <?php include("fbegin.inc");?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<?php if ($fwinfo) echo $fwinfo; ?>
-<?php if (!in_array($g['platform'], $fwupplatforms)): ?>
-<p><strong><?=gettext("Firmware uploading is not supported on this platform.");?></strong></p>
-<?php elseif ($sig_warning && !$input_errors): ?>
-<form action="system_firmware.php" method="post">
-<?php
-$sig_warning = "<strong>" . $sig_warning . "</strong><br>".gettext("This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?");
-print_info_box($sig_warning);
-?>
-<input name="sig_override" type="submit" class="formbtn" id="sig_override" value=" Yes ">
-<input name="sig_no" type="submit" class="formbtn" id="sig_no" value=" No ">
-</form>
-<?php else: ?>
-<?php if (!file_exists($d_firmwarelock_path)):?>
-<p><?=gettext("Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.");?></p>
-<form action="system_firmware.php" method="post" enctype="multipart/form-data">
-  <table>
-    <tr>
-      <td>
-        <?php if (!file_exists($d_sysrebootreqd_path)): ?>
-				<?php if (!file_exists($d_fwupenabled_path)): ?>
-				<input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=gettext("Enable firmware upload");?>">
-				<?php else: ?>
-				<input name="Submit" id="Disable" type="submit" class="formbtn" value="<?=gettext("Disable firmware upload");?>">
-				<br><br>
-				<strong><?=gettext("Firmware image file");?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld" size="40">
-				<br><br>
-				<input name="Submit" id="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>">
-				<?php endif; else: ?>
-				<strong><?=gettext("You must reboot the system before you can upgrade the firmware.");?></strong>
-				<?php endif; ?>
-      </td>
-    </tr>
-    <tr>
-      <td>
-				<br>
-				<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br>
-				<?php echo sprintf( gettext("DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."), get_product_name(), 128, "system_backup.php");?></span>
-			</td>
-    </tr>
-  </table>
-</form>
-<?php endif; endif;?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td class="tabcont">
+			<?php if ($input_errors) print_input_errors($input_errors); ?>
+			<?php if ($savemsg) print_info_box($savemsg); ?>
+			<?php if ($fwinfo) echo $fwinfo; ?>
+			<?php if (!in_array($g['platform'], $fwupplatforms)): ?>
+			<p><strong><?=gettext("Firmware uploading is not supported on this platform.");?></strong></p>
+			<?php elseif ($sig_warning && !$input_errors): ?>
+			<form action="system_firmware.php" method="post">
+			<?php
+			$sig_warning = "<strong>" . $sig_warning . "</strong><br>".gettext("This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?");
+			print_info_box($sig_warning);
+			?>
+			<input name="sig_override" type="submit" class="formbtn" id="sig_override" value=" Yes ">
+			<input name="sig_no" type="submit" class="formbtn" id="sig_no" value=" No ">
+			</form>
+			<?php else: ?>
+			<?php if (!file_exists($d_firmwarelock_path)):?>
+			<p><?=gettext("Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process.");?></p>
+			<form action="system_firmware.php" method="post" enctype="multipart/form-data">
+			  <table>
+			    <tr>
+			      <td>
+			        <?php if (!file_exists($d_sysrebootreqd_path)): ?>
+							<?php if (!file_exists($d_fwupenabled_path)): ?>
+							<input name="Submit" id="Enable" type="submit" class="formbtn" value="<?=gettext("Enable firmware upload");?>">
+							<?php else: ?>
+							<input name="Submit" id="Disable" type="submit" class="formbtn" value="<?=gettext("Disable firmware upload");?>">
+							<br><br>
+							<strong><?=gettext("Firmware image file");?> </strong>&nbsp;<input name="ulfile" type="file" class="formfld" size="40">
+							<br><br>
+							<input name="Submit" id="Upgrade" type="submit" class="formbtn" value="<?=gettext("Upgrade firmware");?>">
+							<?php endif; else: ?>
+							<strong><?=gettext("You must reboot the system before you can upgrade the firmware.");?></strong>
+							<?php endif; ?>
+			      </td>
+			    </tr>
+			    <tr>
+			      <td>
+							<br>
+							<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br>
+							<?php echo sprintf( gettext("DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."), get_product_name(), 128, "system_backup.php");?></span>
+						</td>
+			    </tr>
+			  </table>
+			</form>
+			<?php endif; endif;?>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc");?>
