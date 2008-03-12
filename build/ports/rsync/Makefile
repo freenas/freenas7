@@ -23,9 +23,10 @@ CONFIGURE_TARGET=	--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
 
 # Enable iconv support.
 USE_ICONV=				yes
-CONFIGURE_ARGS+=	--enable-iconv
-CONFIGURE_ENV=		CFLAGS="-I${LOCALBASE}/include" \
-									LIBS="-L${LOCALBASE}/lib"
+CFLAGS+=					-I${LOCALBASE}/include
+LDFLAGS+=					-L${LOCALBASE}/lib
+CONFIGURE_ENV=		CFLAGS="${CFLAGS}" \
+									LDFLAGS="${LDFLAGS}"
 
 # Install on host system too, otherwise depending ports fail during ./configure process (e.g. scponly).
 FORCE_PKG_REGISTER=	yes
