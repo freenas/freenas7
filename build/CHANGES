@@ -4,9 +4,13 @@ FreeNAS 0.7:
 ------------
 
 Majors changes:
-- Upgrade to FreeBSD 7.0.
+- Upgrade to FreeBSD 7.0
 
 Minors changes:
+
+Feature removed:
+- Formatting drive in FAT32 and EXT2 filesystem
+- Creating gvinum drive (but still support existing gvinum drive)
 
 Bug fixes:
 
