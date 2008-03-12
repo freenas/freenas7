@@ -438,7 +438,41 @@ function get_mounts_list()
 		$devicespecialfile = chop($aline[0]);
 
 		// Get the mount path
-		$mountpath = chop($aline[2]);
+		
+		// Need to manage strange result here:
+		// the $aline can have 2 forms:
+/*
+Array
+(
+    [0] => /dev/mirror/raidp1
+    [1] => /mnt/securedisk
+    [2] => 
+    [3] => ufs
+    [4] => acls
+    [5] => 
+    [6] => 2 2
+)
+
+OR:
+
+Array
+(
+    [0] => /dev/ad1.elip1
+    [1] => 
+    [2] => /mnt/toto
+    [3] => 
+    [4] => ufs
+    [5] => acls
+    [6] => 
+    [7] => 2 2
+*/
+
+		if (empty($aline[2])) {
+			$mountpath = chop($aline[1]);
+
+		} else {
+			$mountpath = chop($aline[2]);
+		}
 
 		// Ignore various mountpoints
 		if (("/dev/md0" === $devicespecialfile) || ("devfs" === $devicespecialfile) ||
@@ -450,15 +484,14 @@ function get_mounts_list()
 		$devicename = $adevicespecialfile[2];
 
 		// Test if it's a gvinum, gmirror, gconcat or gstripe device
-		if ((strcmp($devicename,"gvinum") == 0) ||
-				(strcmp($devicename,"mirror") == 0) || (strcmp($devicename,"concat") == 0) ||
-				(strcmp($devicename,"stripe") == 0) || (strcmp($devicename,"raid5") == 0)) {
+		if (($devicename == "gvinum") || ($devicename == "mirror") || ($devicename == "concat") ||
+				($devicename == "stripe") || ($devicename == "raid5")) {
 			$devicename = $adevicespecialfile[3];
+			
 		}
 
 		// Get the sharename
 		$amountpath = explode("/", $mountpath);
-
 		$amountlist[$i]['mp'] = $mountpath;
 		$amountlist[$i]['mdisk'] = $devicename;
 		$amountlist[$i]['devicespecialfile'] = $devicespecialfile;
