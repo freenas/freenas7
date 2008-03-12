@@ -471,14 +471,14 @@ function disks_raid_gmirror_configure($name)
 {
 	global $config;
 
-	if (!is_array($config['gmirror']['vdisk']))
+	if (!is_array($config['disks']['disk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['gmirror']['vdisk'], "name");
+	$index = array_search_ex($name, $config['disks']['disk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['gmirror']['vdisk'][$index];
+	$vdisk = $config['disks']['disk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -501,14 +501,14 @@ function disks_raid_gconcat_configure($name)
 {
 	global $config;
 
-	if (!is_array($config['gconcat']['vdisk']))
+	if (!is_array($config['disks']['disk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['gconcat']['vdisk'], "name");
+	$index = array_search_ex($name, $config['disks']['disk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['gconcat']['vdisk'][$index];
+	$vdisk = $config['disks']['disk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -531,14 +531,14 @@ function disks_raid_gstripe_configure($name)
 {
 	global $config;
 
-	if (!is_array($config['gstripe']['vdisk']))
+	if (!is_array($config['disks']['disk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['gstripe']['vdisk'], "name");
+	$index = array_search_ex($name, $config['disks']['disk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['gstripe']['vdisk'][$index];
+	$vdisk = $config['disks']['disk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -561,14 +561,14 @@ function disks_raid_graid5_configure($name)
 {
 	global $config;
 
-	if (!is_array($config['graid5']['vdisk']))
+	if (!is_array($config['disks']['disk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['graid5']['vdisk'], "name");
+	$index = array_search_ex($name, $config['disks']['disk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['graid5']['vdisk'][$index];
+	$vdisk = $config['disks']['disk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -844,14 +844,14 @@ function disks_raid_gvinum_delete($name)
 {
 	global $config;
 
-	if (!is_array($config['gvinum']['vdisk']))
+	if (!is_array($config['disks']['disk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['gvinum']['vdisk'], "name");
+	$index = array_search_ex($name, $config['disks']['disk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['gvinum']['vdisk'][$index];
+	$vdisk = $config['disks']['disk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -876,14 +876,14 @@ function disks_raid_gmirror_delete($name)
 {
 	global $config;
 
-	if (!is_array($config['gmirror']['vdisk']))
+	if (!is_array($config['disks']['disk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['gmirror']['vdisk'], "name");
+	$index = array_search_ex($name, $config['disks']['disk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['gmirror']['vdisk'][$index];
+	$vdisk = $config['disks']['disk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -905,14 +905,14 @@ function disks_raid_gconcat_delete($name)
 {
 	global $config;
 
-	if (!is_array($config['gconcat']['vdisk']))
+	if (!is_array($config['disks']['disk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['gconcat']['vdisk'], "name");
+	$index = array_search_ex($name, $config['disks']['disk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['gconcat']['vdisk'][$index];
+	$vdisk = $config['disks']['disk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -935,14 +935,14 @@ function disks_raid_gstripe_delete($name)
 {
 	global $config;
 
-	if (!is_array($config['gstripe']['vdisk']))
+	if (!is_array($config['disks']['disk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['gstripe']['vdisk'], "name");
+	$index = array_search_ex($name, $config['disks']['disk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['gstripe']['vdisk'][$index];
+	$vdisk = $config['disks']['disk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -965,14 +965,14 @@ function disks_raid_graid5_delete($name)
 {
 	global $config;
 
-	if (!is_array($config['graid5']['vdisk']))
+	if (!is_array($config['disks']['disk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['graid5']['vdisk'], "name");
+	$index = array_search_ex($name, $config['disks']['disk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['graid5']['vdisk'][$index];
+	$vdisk = $config['disks']['disk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
