@@ -5,13 +5,7 @@ body, td, th, input, select {
 body {
 	background: #FFFFFF;
 }
-body a:active {
-	color: #0000CC;
-}
-body a:visited {
-	color: #0000CC;
-}
-body a:link {
+body a:link, body a:active, body a:visited {
 	color: #0000CC;
 }
 body a:hover {
@@ -52,13 +46,7 @@ pre {
 	font-size: 11px;
 	color: #FFFFFF;
 }
-.pgfootertext a:active {
-	color: #FFFFFF;
-}
-.pgfootertext a:visited {
-	color: #FFFFFF;
-}
-.pgfootertext a:link {
+.pgfootertext a:link, .pgfootertext a:active, .pgfootertext a:visited {
 	color: #FFFFFF;
 }
 .pgfootertext a:hover {
