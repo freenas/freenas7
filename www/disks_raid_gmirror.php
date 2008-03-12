@@ -119,7 +119,6 @@ function is_modified($name) {
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Volume Name");?></td>
-            <td width="25%" class="listhdrr"><?=gettext("Type");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Size");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Status");?></td>
             <td width="10%" class="list"></td>
@@ -142,7 +141,6 @@ function is_modified($name) {
           ?>
           <tr>
             <td class="listlr"><?=htmlspecialchars($raid['name']);?></td>
-            <td class="listr"><?=htmlspecialchars($raid['type']);?></td>
             <td class="listr"><?=$size;?>&nbsp;</td>
             <td class="listbg"><?=$status;?>&nbsp;</td>
             <td valign="middle" nowrap class="list">
@@ -153,7 +151,7 @@ function is_modified($name) {
 					<?php endif; ?>
 					<?php $i++; endforeach;?>
           <tr>
-            <td class="list" colspan="4"></td>
+            <td class="list" colspan="3"></td>
             <td class="list"> <a href="disks_raid_gmirror_edit.php"><img src="plus.gif" title="<?=gettext("Add RAID");?>" width="17" height="17" border="0"></a></td>
 					</tr>
         </table>
