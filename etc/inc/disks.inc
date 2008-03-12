@@ -247,7 +247,7 @@ function disks_umount($mount)
 	// Unmount mount point
 	$mountname = "/mnt/{$mount['sharename']}";
 
-	if (mwexec("/sbin/umount '{$mountname}'") == 0) {
+	if (mwexec("/sbin/umount -f '{$mountname}'") == 0) {
 		if(@rmdir("{$mountname}")) {
 			write_log("Successfully unmounted '{$mountname}'");
 			$result = 0;
@@ -285,7 +285,7 @@ function disks_umount_ex($mount)
 	}
 
 	if ($mountname) {
-		if (mwexec("/sbin/umount '{$mountname}'") == 0) {
+		if (mwexec("/sbin/umount -f '{$mountname}'") == 0) {
 			if(@rmdir("{$mountname}")) {
 				write_log("Successfully unmounted '{$mountname}'");
 				$result = 0;
