@@ -4,47 +4,62 @@
 	All rights reserved.
 */
 function update_controls(x) {
-	var stats = eval('(' + x + ')');
+	var value = eval('(' + x + ')');
 
-	update_uptime(stats['uptime']);
-	update_date(stats['date']);
-	update_memusage(stats['memusage'], stats['memusagetxt']);
-	update_loadaverage(stats['loadaverage']);
-	update_cpuusage(stats['cpuusage']);
+	update_uptime(value['uptime']);
+	update_date(value['date']);
+	update_memusage(value['memusage']);
+	update_loadaverage(value['loadaverage']);
+	update_cpuusage(value['cpuusage']);
+	update_diskusage(value['diskusage']);
 }
 
 function update_date(value) {
-	if(document.getElementById("date") == null)
+	if (document.getElementById("date") == null)
 		return;
 	document.getElementById("date").value = value;
 }
 
 function update_uptime(value) {
-	if(document.getElementById("uptime") == null)
+	if (document.getElementById("uptime") == null)
 		return;
 	document.getElementById("uptime").value = value;
 }
 
 function update_memusage(value, desc) {
-	if(document.getElementById("memusage") == null)
+	if (document.getElementById("memusage") == null)
 		return;
-	document.getElementById("memusage").value = desc;
-	document.getElementById("memusageu").style.width = value + 'px';
-	document.getElementById("memusagef").style.width = (100 - value) + 'px';
+	document.getElementById("memusage").value = value.caption;
+	document.getElementById("memusageu").style.width = value.percentage + 'px';
+	document.getElementById("memusagef").style.width = (100 - value.percentage) + 'px';
 }
 
 function update_loadaverage(value) {
-	if(document.getElementById("loadaverage") == null)
+	if (document.getElementById("loadaverage") == null)
 		return;
 	document.getElementById("loadaverage").value = value;
 }
 
 function update_cpuusage(value) {
-	if(document.getElementById("cpuusage") == null)
+	if (document.getElementById("cpuusage") == null)
 		return;
 	document.getElementById("cpuusage").value = value + '%';
 	document.getElementById("cpuusageu").style.width = value + 'px';
 	document.getElementById("cpuusagef").style.width = (100 - value) + 'px';
+}
+
+function update_diskusage(value) {
+	if (value == 'undefined' || value == null)
+		return;
+	for (var i=0; i<value.length; x++) {
+		if (document.getElementById("diskusage_" + value[i].id) == null)
+			return;
+		document.getElementById("diskusage_" + value[i].id).value = value[i].caption;
+		document.getElementById("diskusageu_" + value[i].id).style.width = value[i].percentage + 'px';
+		document.getElementById("diskusageu_" + value[i].id).style.title = value[i]['tooltip'].used;
+		document.getElementById("diskusagef_" + value[i].id).style.width = (100 - value[i].percentage) + 'px';
+		document.getElementById("diskusagef_" + value[i].id).style.title = value[i]['tooltip'].available;
+	}
 }
 
 function update_callback() {
