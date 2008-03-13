@@ -39,24 +39,36 @@ $pgtitle = array(get_product_name()." webGUI");
 $pgtitle_omit = true;
 
 function update_controls() {
-	$stats['uptime'] = system_get_uptime();
-	$stats['date'] = date("D M j G:i:s T Y");
-
+	// Get uptime and date.
+	$value['uptime'] = system_get_uptime();
+	$value['date'] = date("D M j G:i:s T Y");
 	// Get RAM usage.
 	$raminfo = system_get_ram_info();
 	$percentage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
-	$stats['memusage'] = $percentage;
-	$stats['memusagetxt'] = sprintf(gettext("%d%% of %dMB"), $percentage, round($raminfo['physical'] / 1024 / 1024));
-
+	$value['memusage']['percentage'] = $percentage;
+	$value['memusage']['caption'] = sprintf(gettext("%d%% of %dMB"), $percentage, round($raminfo['physical'] / 1024 / 1024));
 	// Get load average.
 	exec("uptime", $result);
-	$stats['loadaverage'] = substr(strrchr($result[0], "load averages:"), 15);
-
-	$stats['cpuusage'] = system_get_cpu_usage();
-
-	$stats = json_encode($stats);
-
-	return $stats;
+	$value['loadaverage'] = substr(strrchr($result[0], "load averages:"), 15);
+	// Get CPU usage.
+	$value['cpuusage'] = system_get_cpu_usage();
+	// Get disk usage.
+	$diskusage = get_mount_usage();
+	if (is_array($diskusage) && (0 < count($diskusage))) {
+		foreach ($diskusage as $diskusagek => $diskusagev) {
+			$fsid = get_mount_fsid($diskusagev['filesystem'], $diskusagek);
+			$diskinfo = array();
+			$diskinfo['id'] = $fsid;
+			$diskinfo['percentage'] = rtrim($diskusagev['capacity'],"%");
+			$diskinfo['tooltip']['used'] = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
+			$diskinfo['tooltip']['available'] = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
+			$diskinfo['caption'] = sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']);
+			$value['diskusage'][] = $diskinfo;
+		}
+	}
+	// Encode data using JSON.
+	$value = json_encode($value);
+	return $value;
 }
 
 sajax_init();
@@ -183,23 +195,25 @@ sajax_handle_client_request();
 			    <td width="75%" class="listr">
 				    <table>
 				      <?php
-				      $diskuse = get_mount_usage();
-				      if (is_array($diskuse) && (0 < count($diskuse))) {
-								foreach ($diskuse as $diskusek => $diskusev) {
+				      $diskusage = get_mount_usage();
+				      if (is_array($diskusage) && (0 < count($diskusage))) {
+								foreach ($diskusage as $diskusagek => $diskusagev) {
+
 									echo "<tr><td>";
-									$index = array_search_ex($diskusev['filesystem'], $config['mounts']['mount'], "devicespecialfile");
+									$index = array_search_ex($diskusagev['filesystem'], $config['mounts']['mount'], "devicespecialfile");
 									echo htmlspecialchars($config['mounts']['mount'][$index]['desc']);
 									echo "</td><td>";
-									$percent_used = rtrim($diskusev['capacity'],"%");
-			
-									$tooltip_used = sprintf(gettext("%sB used of %sB"), $diskusev['used'], $diskusev['size']);
-									$tooltip_available = sprintf(gettext("%sB available of %sB"), $diskusev['avail'], $diskusev['size']);
+									$percent_used = rtrim($diskusagev['capacity'],"%");
+
+									$fsid = get_mount_fsid($diskusagev['filesystem'], $diskusagek);			
+									$tooltip_used = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
+									$tooltip_available = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
 			
 									echo "<img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
-									echo "<img src='bar_blue.gif' height='15' width='" . $percent_used . "' border='0' align='absmiddle' title='" . $tooltip_used . "'>";
-									echo "<img src='bar_gray.gif' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle' title='" . $tooltip_available . "'>";
+									echo "<img src='bar_blue.gif' name='diskusageu_{$fsid}' id='diskusageu_{$fsid}' height='15' width='" . $percent_used . "' border='0' align='absmiddle' title='" . $tooltip_used . "'>";
+									echo "<img src='bar_gray.gif' name='diskusagef_{$fsid}' id='diskusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle' title='" . $tooltip_available . "'>";
 									echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
-									echo sprintf(gettext("%s of %sB"), $diskusev['capacity'], $diskusev['size']);
+									echo "<input style='padding: 0; border: 0;'' size='30' name='diskusage_{$fsid}' id='diskusage_{$fsid}' value='" . sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']) . "'/>";
 									echo "<br></td></tr>";
 								}
 							} else {
