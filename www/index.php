@@ -54,7 +54,7 @@ function update_controls() {
 
 	$stats['cpuusage'] = system_get_cpu_usage();
 
-	$stats = join("|", $stats);
+	$stats = json_encode($stats);
 
 	return $stats;
 }
