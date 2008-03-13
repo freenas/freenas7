@@ -62,7 +62,7 @@ FreeNAS 0.686.3:
 ----------------
 
 Majors changes:
-- Remove consolehm sensor support because it doesn't work/recognize actual hardware.
+- Remove consolehm sensor support because it doesn't work/recognize up-to-date hardware.
   Will be replaced with FreeBSD 7.0 sensor framework in FreeNAS 0.7.
 - WebGUI uses NiftyCubes for rounded corners with CSS and Javascript.
 - Validate minutes/hours/days/months/week days configuration on misc WebGUI pages
@@ -74,7 +74,7 @@ Minors changes:
 - Modify install menu.
 
 Bug fixes:
-- Use revision 0 when formating EXT2 filesystems, otherwise mount_ext2fs fails (mount point disapears)
+- Use revision 0 when formating EXT2 filesystems, otherwise mount_ext2fs fails (mount point disappears)
 - Fix file chooser problem with char '&' in directory and file names.
 
 Permanent restrictions:
