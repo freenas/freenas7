@@ -4,18 +4,13 @@
 	All rights reserved.
 */
 function update_controls(x) {
-	var values = x.split("|");
+	var stats = eval('(' + x + ')');
 
-	for(var i=0; i<x.length; x++) {
-		if(values[i] == 'undefined' || values[i] == null)
-			return;
-	}
-
-	update_uptime(values[0]);
-	update_date(values[1]);
-	update_memusage(values[2], values[3]);
-	update_loadaverage(values[4]);
-	update_cpuusage(values[5]);
+	update_uptime(stats['uptime']);
+	update_date(stats['date']);
+	update_memusage(stats['memusage'], stats['memusagetxt']);
+	update_loadaverage(stats['loadaverage']);
+	update_cpuusage(stats['cpuusage']);
 }
 
 function update_date(value) {
