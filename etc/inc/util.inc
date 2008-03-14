@@ -1600,7 +1600,7 @@ function get_interface_info($if) {
 					if (preg_match("/^0x/", $matches[1]))
 						$ifinfo['subnet'] = long2ip(hexdec($matches[1]));
 				}
-				if (preg_match("/inet6 (\S+)/", $ici, $matches)) {
+				if (preg_match("/inet6 (\S+)%/", $ici, $matches)) {
 					$ifinfo['ipv6addr'] = $matches[1];
 				}
 				if (preg_match("/prefixlen (\S+)/", $ici, $matches)) {
