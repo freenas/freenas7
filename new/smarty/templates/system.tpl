@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="pre.tpl"}
 <FORM action="system.php" method="post" name="iform" id="iform">
   <TABLE width="100%" border="0" cellpadding="6" cellspacing="0">
     <TR>
@@ -61,4 +61,4 @@
     </TR>
   </TABLE>
 </FORM>
-{include file="footer.tpl"}
+{include file="post.tpl"}

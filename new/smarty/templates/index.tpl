@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="pre.tpl"}
 <TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
   <TR align="center" valign="top">
     <TD height="10" colspan="2">&nbsp;</TD>
@@ -85,4 +85,4 @@
 		</TD>
 	</TR>  
 </TABLE>
-{include file="footer.tpl"}
+{include file="post.tpl"}
