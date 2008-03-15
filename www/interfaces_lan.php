@@ -38,6 +38,7 @@ $lancfg = &$config['interfaces']['lan'];
 if (strcmp($lancfg['ipaddr'],"dhcp") == 0) {
 	$pconfig['type'] = "DHCP";
 	$pconfig['ipaddr'] = get_ipaddr($lancfg['if']);
+	$pconfig['subnet'] = 24;
 } else {
 	$pconfig['type'] = "Static";
 	$pconfig['ipaddr'] = $lancfg['ipaddr'];
