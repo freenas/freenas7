@@ -116,7 +116,7 @@ if ($_GET['act'] == "del") {
 			        <table border="0" cellspacing="0" cellpadding="0" width="100%">
 							  <tr>
 			            <td class="optsect_s"><strong><?=gettext("iSCSI Target");?></strong></td>
-							    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked";?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
+							    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked";?>"> <strong><?=gettext("Enable");?></strong></td>
 			          </tr>
 							</table>
 			      </td>
@@ -223,7 +223,7 @@ if ($_GET['act'] == "del") {
 					<tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>">
 			      </td>
 			    </tr>
 					<tr>
