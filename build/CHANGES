@@ -4,7 +4,7 @@ FreeNAS 0.7:
 ------------
 
 Majors changes:
-- Upgrade to FreeBSD 7.0
+- Upgrade to FreeBSD 7.0 (thanks to Nelson Silva, Alias fulgas, for the clog patch)
 
 Minors changes:
 
