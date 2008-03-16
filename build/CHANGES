@@ -48,6 +48,7 @@ Majors changes:
 - Upgrade mediatomb to 0.11.0. Add D-Link DSM320 profile.
 - Upgrade rsync to 3.0.0.
 - Upgrade smartmontools to 5.38.
+- Upgrade lighttpd to 1.4.19.
 - Use SAJAX to update misc WebGUI pages every 5 seconds to display current states
   (e.g. 'Status/System', 'Status/Processes' or 'Disks/Format').
 
