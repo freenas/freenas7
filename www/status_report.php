@@ -89,8 +89,10 @@ if($_POST) {
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-		// Validate synchronization time
-		do_input_validate_synctime($_POST, &$input_errors);
+		if (gettext("Send now") !== $_POST['Submit']) {
+			// Validate synchronization time
+			do_input_validate_synctime($_POST, &$input_errors);
+		}
 	}
 
 	/* Check for a password mismatch. */
