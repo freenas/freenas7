@@ -68,6 +68,8 @@ FreeNAS 0.686.4:
 Minors changes:
 - Set subnet mask to 24 per default if DHCP is activated, otherwise WebGUI is not accessible in
   most networks when changing from DHCP to static.
+- Do not validate sync time values when pressing 'Now' on status report page.
+- Add ability to add multiple destination email addresses on status report page (e.g. test@test,com;test2@test.com).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
