@@ -326,7 +326,9 @@ function report_send_mail() {
 	$mail->From = $config['statusreport']['from'];
 	$mail->FromName = get_product_name();
 	$mail->Subject = $config['statusreport']['subject'];
-	$mail->AddAddress($config['statusreport']['to']);
+	foreach (explode(";", $config['statusreport']['to']) as $address) {
+		$mail->AddAddress($address);
+	}
 
 	// Enable SMTH authentication if set.
 	if (isset($config['statusreport']['auth'])) {
