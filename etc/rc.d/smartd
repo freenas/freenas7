@@ -6,7 +6,7 @@
 # REQUIRE: DAEMON
 # BEFORE: LOGIN
 # KEYWORD: shutdown
-# XQUERY: -i "count(//system/smart) > 0" -o "0" -b
+# XQUERY: -i "count(//system/smart) > 0 and count(//disks/disk[smart]) > 0" -o "0" -b
 # RCVAR: smartd
 
 . /etc/rc.subr
@@ -16,7 +16,7 @@ name="smartd"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="create_conf"
+start_precmd="start_precmd"
 
 # Defaults
 smartd_enable=${smartd_enable:-"NO"}
@@ -25,14 +25,17 @@ pidfile="/var/run/${name}.pid"
 command="/usr/local/sbin/smartd"
 command_args="--configfile=${smartd_conf} --pidfile=${pidfile} --logfacility=local5"
 
-create_conf()
+start_precmd()
 {
 	local _devicespecialfile _type
+
 	# Clear existing file
 	/bin/cat /dev/null > ${smartd_conf}
 
-	/usr/local/bin/xml sel -t -m "//disks/disk" \
+	# Create configuration file
+	/usr/local/bin/xml sel -t -m "//disks/disk[smart]" \
 		-v "concat(devicespecialfile,' ',type)" \
+		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
 		while read _devicespecialfile _type; do
 			case ${_type} in
