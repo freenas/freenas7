@@ -42,7 +42,6 @@ $pconfig['disablefirmwarecheck'] = isset($config['system']['disablefirmwarecheck
 $pconfig['expanddiags'] = isset($config['system']['webgui']['expanddiags']);
 $pconfig['disablebeep'] = isset($config['system']['disablebeep']);
 $pconfig['tune_enable'] = isset($config['system']['tune']);
-$pconfig['smart_enable'] = isset($config['system']['smart']);
 $pconfig['zeroconf'] = isset($config['system']['zeroconf']);
 $pconfig['powerd'] = isset($config['system']['powerd']);
 
@@ -75,7 +74,6 @@ if ($_POST) {
 		$config['system']['disablebeep'] = $_POST['disablebeep'] ? true : false;
 		$config['system']['tune'] = $_POST['tune_enable'] ? true : false;
 		$config['system']['zeroconf'] = $_POST['zeroconf'] ? true : false;
-		$config['system']['smart'] = $_POST['smart_enable'] ? true : false;
 		$config['system']['powerd'] = $_POST['powerd'] ? true : false;
 
 		write_config();
@@ -87,7 +85,6 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_update_service("smartd");
 			$retval |= rc_update_service("powerd");
 			$retval |= rc_update_service("systune");
 			$retval |= rc_update_service("mdnsresponder");
@@ -173,14 +170,6 @@ if ($_POST) {
 			      <td width="78%" class="vtable">
 			        <input name="disablebeep" type="checkbox" id="disablebeep" value="yes" <?php if ($pconfig['disablebeep']) echo "checked";?>>
 			        <?=gettext("Disable speaker beep on startup and shutdown");?>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("S.M.A.R.T Daemon");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="smart_enable" type="checkbox" id="smart_enable" value="yes" <?php if ($pconfig['smart_enable']) echo "checked";?>>
-			        <?=gettext("Enable the S.M.A.R.T daemon");?></strong><span class="vexpl"></br>
-			        <span class="vexpl"><?=gettext("Monitor the S.M.A.R.T device by logging their status in the log file.");?></span>
 			      </td>
 			    </tr>
 			    <tr>

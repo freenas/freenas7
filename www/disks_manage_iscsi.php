@@ -73,12 +73,12 @@ if ($_GET['act'] == "del")
 }
 ?>
 <?php include("fbegin.inc"); ?>
-<?php if($errormsg) print_input_errors($errormsg);?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
       	<li class="tabinact"><a href="disks_manage.php"><?=gettext("Management");?></a></li>
+      	<li class="tabinact"><a href="disks_manage_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
 				<li class="tabact"><a href="disks_manage_iscsi.php" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
       </ul>
     </td>
@@ -94,8 +94,8 @@ if ($_GET['act'] == "del")
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Name"); ?></td>
-			<td width="25%" class="listhdrr"><?=gettext("Target name"); ?></td>
-			<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
+						<td width="25%" class="listhdrr"><?=gettext("Target name"); ?></td>
+						<td width="25%" class="listhdrr"><?=gettext("Target address"); ?></td>
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_iscsiinit as $iscsiinit): ?>
