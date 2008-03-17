@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>4.6</version>
+	<version>4.7</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -205,6 +205,7 @@
 			<browseable/>
 			<inheritpermissions/>
 			<recyclebin/>
+			<hidedotfiles/>
 			<hostsallow>xxx<hostsallow> // Comma, space, or tab delimited set of hosts which are permitted to access a service.
 			<hostsdeny>xxx<hostsdeny> // Hosts listed here are NOT permitted to access a services. Where the lists conflict, the allow list takes precedence.
 			<auxparam></auxparam> // Can be defined multiple times.

@@ -1243,13 +1243,22 @@ function config_upgrade() {
 	}
 
 	/* Convert 4.5 -> 4.6 */
+	/* Add attribute //samba/share/hidedotfiles. */
+	if ($config['version'] === "4.5") {
+		for ($i = 0; isset($config['samba']['share'][$i]); $i++) {
+			$config['samba']['share'][$i]['hidedotfiles'] = true;
+		}
+
+		$config['version'] = "4.6";
+	}
+
+	/* Convert 4.6 -> 4.7 */
 	/* New Disk configuration for FreeNAS 0.7 */
 	/* Use class in the place of gconcat,gmirror,graid5,gstride,gvinum,geli disk */
-	if ($config['version'] === "4.5") {
+	if ($config['version'] === "4.6") {
 		/* Add class to physical disk that replace old type (ATA, SCSI, RAID)*/
-		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {	
-			switch ($config['disks']['disk'][$i]['type'])
-				{
+		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
+			switch ($config['disks']['disk'][$i]['type']) {
 					case "IDE":
 					   $config['disks']['disk'][$i]['class'] = "ATA";
 					   break;
@@ -1265,9 +1274,9 @@ function config_upgrade() {
 			if ($config['disks']['disk'][$i]['fstype'] == "softraid") {
 				$config['disks']['disk'][$i]['fstype'] = "pool";
 			}
-				
+
 		}
-		
+
 		/* Convert all others into disk with class attribute*/
 		foreach (explode(" ", "gconcat gmirror graid5 gstripe gvinum geli") as $class) {
 			for ($i = 0; isset($config[$class]['vdisk'][$i]); $i++) {
@@ -1289,17 +1298,16 @@ function config_upgrade() {
 				if (isset($config[$class]['vdisk'][$i]['desc'])) {
 					$disks['desc'] = $config[$class]['vdisk'][$i]['desc'];
 				}
-				
+
 				if (isset($config[$class]['vdisk'][$i]['size'])) {
 					$disks['size'] = $config[$class]['vdisk'][$i]['size'];
 				}
-				
+
 				if (isset($config[$class]['vdisk'][$i]['fstype'])) {
 					$disks['fstype'] = $config[$class]['vdisk'][$i]['fstype'];
 				}
-				
-				/* Geli */
 
+				/* Geli */
 				if (isset($config[$class]['vdisk'][$i]['aalgo'])) {
 					$disks['aalgo'] = $config[$class]['vdisk'][$i]['aalgo'];
 				}
@@ -1309,24 +1317,20 @@ function config_upgrade() {
 				}
 
 				/* gmirror */
-
 				if (isset($config[$class]['vdisk'][$i]['balance'])) {
 					$disks['balance'] = $config[$class]['vdisk'][$i]['balance'];
 				}
 
 				/* gvinum */
-
 				if (isset($config[$class]['vdisk'][$i]['type'])) {
 					$disks['type'] = $config[$class]['vdisk'][$i]['type'];
 				}
 				$config['disks']['disk'][] = $disks;
 				unset($config[$class]['vdisk'][$i]);
-
 			}
 		}
-		
 
-		$config['version'] = "4.6";
+		$config['version'] = "4.7";
 	}
 
 

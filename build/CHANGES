@@ -52,6 +52,9 @@ Majors changes:
 - Use SAJAX to update misc WebGUI pages every 5 seconds to display current states
   (e.g. 'Status/System', 'Status/Processes' or 'Disks/Format').
 
+Minors changes:
+- Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.
+
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
 - It is not possible to encrypt a disk partition, only complete disks are supported.

@@ -62,6 +62,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['browseable'] = isset($a_share[$id]['browseable']);
 	$pconfig['inheritpermissions'] = isset($a_share[$id]['inheritpermissions']);
 	$pconfig['recyclebin'] = isset($a_share[$id]['recyclebin']);
+	$pconfig['hidedotfiles'] = isset($a_share[$id]['hidedotfiles']);
 	$pconfig['hostsallow'] = $a_share[$id]['hostsallow'];
 	$pconfig['hostsdeny'] = $a_share[$id]['hostsdeny'];
 } else {
@@ -72,6 +73,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['browseable'] = true;
 	$pconfig['inheritpermissions'] = true;
 	$pconfig['recyclebin'] = false;
+	$pconfig['hidedotfiles'] = true;
 	$pconfig['hostsallow'] = "";
 	$pconfig['hostsdeny'] = "";
 }
@@ -99,6 +101,7 @@ if($_POST) {
 		$share['browseable'] = $_POST['browseable'] ? true : false;
 		$share['inheritpermissions'] = $_POST['inheritpermissions'] ? true : false;
 		$share['recyclebin'] = $_POST['recyclebin'] ? true : false;
+		$share['hidedotfiles'] = $_POST['hidedotfiles'] ? true : false;
 		$share['hostsallow'] = $_POST['hostsallow'];
 		$share['hostsdeny'] = $_POST['hostsdeny'];
 
@@ -180,6 +183,13 @@ if($_POST) {
 			        <input name="recyclebin" type="checkbox" id="recyclebin" value="yes" <?php if ($pconfig['recyclebin']) echo "checked"; ?>>
 			        <?=gettext("Enable recycle bin");?><br>
 			        <span class="vexpl"><?=gettext("This will create a recycle bin on the share.");?></span>
+			      </td>
+			    </tr>
+			    <tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Hide dot files");?></td>
+			      <td width="78%" class="vtable">
+							<input name="hidedotfiles" type="checkbox" id="hidedotfiles" value="yes" <?php if ($pconfig['hidedotfiles']) echo "checked";?>>
+							<span class="vexpl"><?=gettext("This parameter controls whether files starting with a dot appear as hidden files.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
