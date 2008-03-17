@@ -136,6 +136,7 @@
 			<desc>xxx</desc>
 			<size>xxxMB</size>
 			<fstype>xxx</fstype>
+			<smart/>
 		</disk>
 		-->
 	</disks>

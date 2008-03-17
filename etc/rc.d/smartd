@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: smartd
@@ -9,15 +9,41 @@
 # XQUERY: -i "count(//system/smart) > 0" -o "0" -b
 # RCVAR: smartd
 
-smartd_enable=${smartd_enable:-"NO"}
-
 . /etc/rc.subr
+. /etc/configxml.subr
 
 name="smartd"
 rcvar=`set_rcvar`
+
+# Custom commands
+start_precmd="create_conf"
+
+# Defaults
+smartd_enable=${smartd_enable:-"NO"}
+smartd_conf=${smartd_conf:-"/var/etc/${name}.conf"}
 pidfile="/var/run/${name}.pid"
 command="/usr/local/sbin/smartd"
-command_args="--pidfile=${pidfile} --logfacility=local5"
+command_args="--configfile=${smartd_conf} --pidfile=${pidfile} --logfacility=local5"
+
+create_conf()
+{
+	local _devicespecialfile _type
+	# Clear existing file
+	/bin/cat /dev/null > ${smartd_conf}
+
+	/usr/local/bin/xml sel -t -m "//disks/disk" \
+		-v "concat(devicespecialfile,' ',type)" \
+		${configxml_file} | /usr/local/bin/xml unesc | \
+		while read _devicespecialfile _type; do
+			case ${_type} in
+				IDE)
+					_type="ata";;
+				SCSI)
+					_type="scsi";;
+			esac
+			echo "${_devicespecialfile} -a -d ${_type}" >> ${smartd_conf}
+		done
+}
 
 load_rc_config ${name}
 run_rc_command "$1"

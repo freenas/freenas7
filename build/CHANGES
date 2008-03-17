@@ -51,6 +51,7 @@ Majors changes:
 - Upgrade lighttpd to 1.4.19.
 - Use SAJAX to update misc WebGUI pages every 5 seconds to display current states
   (e.g. 'Status/System', 'Status/Processes' or 'Disks/Format').
+- Refactor complete S.M.A.R.T. WebGUI + services.
 
 Minors changes:
 - Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.

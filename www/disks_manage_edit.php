@@ -58,6 +58,7 @@ if (isset($id) && $a_disk[$id]) {
 	$pconfig['apm'] = $a_disk[$id]['apm'];
 	$pconfig['transfermode'] = $a_disk[$id]['transfermode'];
 	$pconfig['devicespecialfile'] = $a_disk[$id]['devicespecialfile'];
+	$pconfig['smart'] = isset($a_disk[$id]['smart']);
 } else {
 	$pconfig['name'] = "";
 	$pconfig['transfermode'] = "auto";
@@ -65,6 +66,7 @@ if (isset($id) && $a_disk[$id]) {
 	$pconfig['apm'] = "0";
 	$pconfig['acoustic'] = "0";
 	$pconfig['fstype'] = "";
+	$pconfig['smart'] = false;
 }
 
 if ($_POST) {
@@ -97,6 +99,7 @@ if ($_POST) {
 		$disks['desc'] = $a_phy_disk[$devname]['desc'];
 		$disks['size'] = $a_phy_disk[$devname]['size'];
 		$disks['class'] = $a_phy_disk[$devname]['class'];
+		$disks['smart'] = $_POST['smart'] ? true : false;
 
 		if (isset($id) && $a_disk[$id])
 			$a_disk[$id] = $disks;
@@ -200,6 +203,13 @@ function enable_change(enable_change) {
 							<?=gettext("This allows you to set how loud the drive is while it's operating.");?> <em><?=gettext("Do not set this for CF cards.");?></em>
 						</td>
 					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("S.M.A.R.T.");?></td>
+			      <td width="78%" class="vtable">
+							<input name="smart" type="checkbox" id="smart" value="yes" <?php if ($pconfig['smart']) echo "checked";?>>
+							<span class="vexpl"><?=gettext("Activate S.M.A.R.T. monitoring for this device.");?></span>
+			      </td>
+			    </tr>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Preformatted file system"); ?></td>
 						<td width="78%" class="vtable">
