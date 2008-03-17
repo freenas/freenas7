@@ -199,7 +199,12 @@ create_conf()
 			-b \
 			-o "printable = no" -n \
 			-o "veto files = /.snap/" -n \
-			-o "hide dot files = yes" -n \
+			-i "count(hidedotfiles) > 0" \
+				-o "hide dot files = yes" -n \
+			-b \
+			-i "count(hidedotfiles) = 0" \
+				-o "hide dot files = no" -n \
+			-b \
 			-i "//samba/security[. = 'share']" \
 				-o "guest ok = yes" -n \
 			-b \
