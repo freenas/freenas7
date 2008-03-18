@@ -41,6 +41,7 @@ $pgtitle = array(gettext("Disks"),gettext("Management"),gettext("S.M.A.R.T."));
 if (!is_array($config['smartd']['selftest']))
 	$config['smartd']['selftest'] = array();
 
+$a_type = array( "S" => "Short Self-Test", "L" => "Long Self-Test", "C" => "Conveyance Self-Test", "O" => "Offline Immediate Test");
 $a_selftest = &$config['smartd']['selftest'];
 
 $pconfig['enable'] = isset($config['smartd']['enable']);
@@ -122,19 +123,19 @@ function enable_change(enable_change) {
 						</td>
 				  </tr>
 				  <tr>
-			    	<td width="22%" valign="top" class="vncell"><?=gettext("Scheduled self tests");?></td>
+			    	<td width="22%" valign="top" class="vncell"><?=gettext("Scheduled self-tests");?></td>
 						<td width="78%" class="vtable">
 				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 				        <tr>
 									<td width="20%" class="listhdrr"><?=gettext("Disk");?></td>
-									<td width="20%" class="listhdrr"><?=gettext("Type");?></td>
-									<td width="50%" class="listhdrr"><?=gettext("Description");?></td>
+									<td width="30%" class="listhdrr"><?=gettext("Type");?></td>
+									<td width="40%" class="listhdrr"><?=gettext("Description");?></td>
 									<td width="10%" class="list"></td>
 				        </tr>
 							  <?php $i = 0; foreach($a_selftest as $selftest):?>
 				        <tr>
 				          <td class="listlr"><?=htmlspecialchars($selftest['devicespecialfile']);?>&nbsp;</td>
-									<td class="listr"><?=htmlspecialchars($selftest['type']);?>&nbsp;</td>
+									<td class="listr"><?=htmlspecialchars(gettext($a_type[$selftest['type']]));?>&nbsp;</td>
 									<td class="listr"><?=htmlspecialchars($selftest['desc']);?>&nbsp;</td>
 				          <td valign="middle" nowrap class="list">
 				          	<a href="disks_manage_smart_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit self-test");?>" width="17" height="17" border="0"></a>
@@ -147,6 +148,7 @@ function enable_change(enable_change) {
 				          <td class="list"><a href="disks_manage_smart_edit.php"><img src="plus.gif" title="<?=gettext("Add self-test");?>" width="17" height="17" border="0"></a></td>
 						    </tr>
 							</table>
+							<span class="vexpl"><?=gettext("Add additional scheduled self-test.");?></span>
 						</td>
 					</tr>
 				  <tr>
