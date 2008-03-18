@@ -27,7 +27,7 @@ command_args="--configfile=${smartd_conf} --pidfile=${pidfile} --logfacility=loc
 
 start_precmd()
 {
-	local _devicespecialfile _type
+	local _devicespecialfile _type _selftest
 
 	# Clear existing file
 	/bin/cat /dev/null > ${smartd_conf}
@@ -44,7 +44,53 @@ start_precmd()
 				SCSI)
 					_type="scsi";;
 			esac
-			echo "${_devicespecialfile} -a -d ${_type}" >> ${smartd_conf}
+
+			# Process scheduled self-tests.
+			_selftest=`/usr/local/bin/xml sel -t -o "-s " -m "//smartd/selftest[devicespecialfile = '${_devicespecialfile}']" \
+				-i "position() > 1" -o "|" -b \
+				-v "concat(type,'/')" \
+				-i "all_months[. = "0"]" \
+					-i "count(month) > 1" -o "(" -b \
+					-m month \
+						-i "position() > 1" -o "|" -b \
+						-v "." \
+					-b \
+					-i "count(month) > 1" -o ")" -b \
+				-b \
+				-i "all_months[. != "0"]" -o ".." -b \
+				-o "/" \
+				-i "all_days[. = "0"]" \
+					-i "count(day) > 1" -o "(" -b \
+					-m day \
+						-i "position() > 1" -o "|" -b \
+						-v "." \
+					-b \
+					-i "count(day) > 1" -o ")" -b \
+				-b \
+				-i "all_days[. != "0"]" -o ".." -b \
+				-o "/" \
+				-i "all_weekdays[. = "0"]" \
+					-i "count(weekday) > 1" -o "(" -b \
+					-m weekday \
+						-i "position() > 1" -o "|" -b \
+						-v "." \
+					-b \
+					-i "count(weekday) > 1" -o ")" -b \
+				-b \
+				-i "all_weekdays[. != "0"]" -o "." -b \
+				-o "/" \
+				-i "all_hours[. = "0"]" \
+					-i "count(hour) > 1" -o "(" -b \
+					-m hour \
+						-i "position() > 1" -o "|" -b \
+						-v "." \
+					-b \
+					-i "count(hour) > 1" -o ")" -b \
+				-b \
+				-i "all_hours[. != "0"]" -o ".." -b \
+				${configxml_file} | /usr/local/bin/xml unesc`
+
+			echo "${_devicespecialfile} -a -d ${_type} ${_selftest}" >> ${smartd_conf}
 		done
 }
 

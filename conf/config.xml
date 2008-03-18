@@ -560,12 +560,10 @@
 			<devicespecialfile>/dev/xxx</devicespecialfile>
 			<type>S|L|C|O</type>
 			<desc>xxx</desc>
-			<all_mins></all_mins>
 			<all_hours></all_hours>
 			<all_days></all_days>
 			<all_months></all_months>
 			<all_weekdays></all_weekdays>
-			<minute></minute>
 			<hour></hour>
 			<day></day>
 			<month></month>

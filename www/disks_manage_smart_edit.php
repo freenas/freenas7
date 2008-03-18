@@ -40,7 +40,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("S.M.A.R.T."),gettext("Scheduled self-test"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("S.M.A.R.T."),gettext("Scheduled Self-Test"),isset($id)?gettext("Edit"):gettext("Add"));
 
 $a_months = explode(" ",gettext("January February March April May June July August September October November December"));
 $a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Friday Saturday"));
@@ -84,18 +84,16 @@ if ($_POST) {
 	$reqdfields = explode(" ", "disk type");
 	$reqdfieldsn = array(gettext("Disk"), gettext("Type"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-	do_input_validate_synctime($_POST, &$input_errors);
+//	do_input_validate_synctime($_POST, &$input_errors);
 
 	if (!$input_errors) {
 		$selftest = array();
 		$selftest['devicespecialfile'] = $_POST['disk'];
 		$selftest['type'] = $_POST['type'];
-		$selftest['minute'] = $_POST['minute'];
 		$selftest['hour'] = $_POST['hour'];
 		$selftest['day'] = $_POST['day'];
 		$selftest['month'] = $_POST['month'];
 		$selftest['weekday'] = $_POST['weekday'];
-		$selftest['all_mins'] = $_POST['all_mins'];
 		$selftest['all_hours'] = $_POST['all_hours'];
 		$selftest['all_days'] = $_POST['all_days'];
 		$selftest['all_months'] = $_POST['all_months'];
@@ -116,6 +114,13 @@ if ($_POST) {
 }
 ?>
 <?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function enable_change(enable_change) {
+	document.iform.disk.disabled = !enable_change;
+}
+// -->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
     <td class="tabnavtbl">
@@ -139,7 +144,8 @@ if ($_POST) {
 								<?php foreach ($a_disk as $diskv):?>
 								<?php if (0 == strcmp($diskv['size'], "NA")) continue;?>
 								<?php if (1 == disks_exists($diskv['devicespecialfile'])) continue;?>
-								<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($diskv['devicespecialfile'] === $disk) echo "selected";?>>
+								<?php if (!isset($diskv['smart'])) continue;?>
+								<option value="<?=$diskv['devicespecialfile'];?>" <?php if ($diskv['devicespecialfile'] === $pconfig['devicespecialfile']) echo "selected";?>>
 								<?php $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); echo htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})");?>
 								</option>
 								<?php endforeach;?>
@@ -164,59 +170,12 @@ if ($_POST) {
 						<td width="78%" class="vtable">
 							<table width=100% border cellpadding="6" cellspacing="0">
 								<tr>
-									<td class="optsect_t"><b class="optsect_s"><?=gettext("minutes");?></b></td>
 									<td class="optsect_t"><b class="optsect_s"><?=gettext("hours");?></b></td>
 									<td class="optsect_t"><b class="optsect_s"><?=gettext("days");?></b></td>
 									<td class="optsect_t"><b class="optsect_s"><?=gettext("months");?></b></td>
 									<td class="optsect_t"><b class="optsect_s"><?=gettext("week days");?></b></td>
 								</tr>
 								<tr bgcolor=#cccccc>
-									<td valign=top>
-										<input type="radio" name="all_mins" id="all_mins1" value="1" <?php if (1 == $pconfig['all_mins']) echo "checked";?>>
-										<?=gettext("All");?><br>
-										<input type="radio" name="all_mins" id="all_mins2" value="0" <?php if (1 != $pconfig['all_mins']) echo "checked";?>>
-										<?=gettext("Selected");?> ..<br>
-										<table>
-											<tr>
-												<td valign=top>
-													<select multiple size="12" name="minute[]" id="minutes1" onchange="set_selected('all_mins')">
-														<?php for ($i = 0; $i <= 11; $i++):?>
-														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-														<?php endfor;?>
-													</select>
-												</td>
-												<td valign=top>
-													<select multiple size="12" name="minute[]" id="minutes2" onchange="set_selected('all_mins')">
-														<?php for ($i = 12; $i <= 23; $i++):?>
-														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-														<?php endfor;?>
-													</select>
-												</td>
-												<td valign=top>
-													<select multiple size="12" name="minute[]" id="minutes3" onchange="set_selected('all_mins')">
-														<?php for ($i = 24; $i <= 35; $i++):?>
-														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-														<?php endfor;?>
-													</select>
-												</td>
-												<td valign=top>
-													<select multiple size="12" name="minute[]" id="minutes4" onchange="set_selected('all_mins')">
-														<?php for ($i = 36; $i <= 47; $i++):?>
-														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-														<?php endfor;?>
-													</select>
-												</td>
-												<td valign=top>
-													<select multiple size="12" name="minute[]" id="minutes5" onchange="set_selected('all_mins')">
-														<?php for ($i = 48; $i <= 59; $i++):?>
-														<option value="<?=$i;?>" <?php if (is_array($pconfig['minute']) && in_array("$i", $pconfig['minute'])) echo "selected";?>><?=htmlspecialchars($i);?></option>
-														<?php endfor;?>
-													</select>
-												</td>
-											</tr>
-										</table>
-										<br>
-									</td>
 									<td valign=top>
 										<input type="radio" name="all_hours" id="all_hours1" value="1" <?php if (1 == $pconfig['all_hours']) echo "checked";?>>
 										<?=gettext("All");?><br>
@@ -324,10 +283,10 @@ if ($_POST) {
 					<tr>
 	          <td width="22%" valign="top">&nbsp;</td>
 	          <td width="78%">
-	            <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+	            <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_selftest[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
 							<?php if (isset($id) && $a_selftest[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
-							<?php endif; ?>
+							<?php endif;?>
 	          </td>
 	        </tr>
 	      </table>
@@ -335,4 +294,10 @@ if ($_POST) {
 		</td>
 	</tr>
 </table>
+<?php if (isset($id) && $a_selftest[$id]):?>
+<script language="JavaScript">
+<!-- Disable controls that should not be modified anymore in edit mode. -->
+enable_change(false);
+</script>
+<?php endif;?>
 <?php include("fend.inc");?>
