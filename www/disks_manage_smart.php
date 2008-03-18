@@ -38,14 +38,19 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Management"),gettext("S.M.A.R.T."));
 
-$pconfig['enable'] = isset($config['system']['smart']);
+if (!is_array($config['smartd']['selftest']))
+	$config['smartd']['selftest'] = array();
+
+$a_selftest = &$config['smartd']['selftest'];
+
+$pconfig['enable'] = isset($config['smartd']['enable']);
 
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
 	if (!$input_errors) {
-		$config['system']['smart'] = $_POST['enable'] ? true : false;
+		$config['smartd']['enable'] = $_POST['enable'] ? true : false;
 
 		write_config();
 
@@ -57,6 +62,23 @@ if ($_POST) {
 		}
 
 		$savemsg = get_std_save_message($retval);
+
+		if ($retval == 0) {
+			if (file_exists($d_smartconfdirty_path))
+				unlink($d_smartconfdirty_path);
+		}
+	}
+}
+
+if ($_GET['act'] == "del") {
+	if ($a_selftest[$_GET['id']]) {
+		unset($a_selftest[$_GET['id']]);
+
+		write_config();
+		touch($d_smartconfdirty_path);
+
+		header("Location: disks_manage_smart.php");
+		exit;
 	}
 }
 ?>
@@ -82,6 +104,10 @@ function enable_change(enable_change) {
     <td class="tabcont">
       <form action="disks_manage_smart.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg);?>
+        <?php if (file_exists($d_smartconfdirty_path)):?><p>
+        <?php print_info_box_np(gettext("The configuration has been modified.<br>You must apply the changes in order for them to take effect."));?><br>
+        <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+        <?php endif;?>
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
         	<tr>
 				    <td colspan="2" valign="top" class="optsect_t">
@@ -95,6 +121,34 @@ function enable_change(enable_change) {
 							</table>
 						</td>
 				  </tr>
+				  <tr>
+			    	<td width="22%" valign="top" class="vncell"><?=gettext("Scheduled self tests");?></td>
+						<td width="78%" class="vtable">
+				      <table width="100%" border="0" cellpadding="0" cellspacing="0">
+				        <tr>
+									<td width="20%" class="listhdrr"><?=gettext("Disk");?></td>
+									<td width="20%" class="listhdrr"><?=gettext("Type");?></td>
+									<td width="50%" class="listhdrr"><?=gettext("Description");?></td>
+									<td width="10%" class="list"></td>
+				        </tr>
+							  <?php $i = 0; foreach($a_selftest as $selftest):?>
+				        <tr>
+				          <td class="listlr"><?=htmlspecialchars($selftest['devicespecialfile']);?>&nbsp;</td>
+									<td class="listr"><?=htmlspecialchars($selftest['type']);?>&nbsp;</td>
+									<td class="listr"><?=htmlspecialchars($selftest['desc']);?>&nbsp;</td>
+				          <td valign="middle" nowrap class="list">
+				          	<a href="disks_manage_smart_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit self-test");?>" width="17" height="17" border="0"></a>
+				            <a href="disks_manage_smart.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this scheduled self-test?");?>')"><img src="x.gif" title="<?=gettext("Delete self-test");?>" width="17" height="17" border="0"></a>
+				          </td>
+				        </tr>
+				        <?php $i++; endforeach;?>
+				        <tr>
+				          <td class="list" colspan="3"></td>
+				          <td class="list"><a href="disks_manage_smart_edit.php"><img src="plus.gif" title="<?=gettext("Add self-test");?>" width="17" height="17" border="0"></a></td>
+						    </tr>
+							</table>
+						</td>
+					</tr>
 				  <tr>
 				    <td width="22%" valign="top">&nbsp;</td>
 				    <td width="78%">
