@@ -46,7 +46,9 @@ start_precmd()
 			esac
 
 			# Process scheduled self-tests.
-			_selftest=`/usr/local/bin/xml sel -t -o "-s " -m "//smartd/selftest[devicespecialfile = '${_devicespecialfile}']" \
+			# Example: -s (O/../.././(00|06|12|18)|S/../.././01|L/../../6/03)
+			_selftest=`/usr/local/bin/xml sel -t -m "//smartd/selftest[devicespecialfile = '${_devicespecialfile}']" \
+				-i "count(//smartd/selftest) > 1 and position() = 1" -o "(" -b \
 				-i "position() > 1" -o "|" -b \
 				-v "concat(type,'/')" \
 				-i "all_months[. = "0"]" \
@@ -88,7 +90,11 @@ start_precmd()
 					-i "count(hour) > 1" -o ")" -b \
 				-b \
 				-i "all_hours[. != "0"]" -o ".." -b \
+				-i "count(//smartd/selftest) > 1 and position() = last()" -o ")" -b \
 				${configxml_file} | /usr/local/bin/xml unesc`
+			if [ -n "${_selftest}" ]; then
+				_selftest="-s ${_selftest}";
+			fi
 
 			echo "${_devicespecialfile} -a -d ${_type} ${_selftest}" >> ${smartd_conf}
 		done
