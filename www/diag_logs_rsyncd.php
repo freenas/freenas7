@@ -55,8 +55,8 @@ if ($_POST['clear']) {
     <li class="tabinact"><a href="diag_logs.php"><?=gettext("System");?></a></li>
     <li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
     <li class="tabact"><a href="diag_logs_rsyncd.php" title="<?=gettext("Reload page");?>"><?=gettext("RSYNC");?></a></li>
-    <li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSHD");?></a></li>
-    <li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("SMARTD");?></a></li>
+    <li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSH");?></a></li>
+    <li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("S.M.A.R.T.");?></a></li>
     <li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
     <li class="tabinact"><a href="diag_logs_upnp.php"><?=gettext("UPnP");?></a></li>
     <li class="tabinact"><a href="diag_logs_settings.php"><?=gettext("Settings");?></a></li>
