@@ -36,6 +36,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("email.inc");
 require("report.inc");
 
 $pgtitle = array(gettext("Status"), gettext("Email report"));
@@ -44,14 +45,6 @@ if(!is_array($config['statusreport']))
 	$config['statusreport'] = array();
 
 $pconfig['enable'] = isset($config['statusreport']['enable']);
-$pconfig['server'] = $config['statusreport']['server'];
-$pconfig['port'] = $config['statusreport']['port'];
-$pconfig['auth'] = isset($config['statusreport']['auth']);
-$pconfig['security'] = $config['statusreport']['security'];
-$pconfig['username'] = $config['statusreport']['username'];
-$pconfig['password'] = base64_decode($config['statusreport']['password']);
-$pconfig['passwordconf'] = $pconfig['password'];
-$pconfig['from'] = $config['statusreport']['from'];
 $pconfig['to'] = $config['statusreport']['to'];
 $pconfig['subject'] = $config['statusreport']['subject'];
 $pconfig['report'] = $config['statusreport']['report'];
@@ -71,20 +64,13 @@ $a_weekdays = explode(" ",gettext("Sunday Monday Tuesday Wednesday Thursday Frid
 
 if($_POST) {
 	unset($input_errors);
-
 	$pconfig = $_POST;
 
 	/* Input validation. */
 	if($_POST['enable']) {
-		$reqdfields = explode(" ", "server port from to security");
-		$reqdfieldsn = array(gettext("Server address"), gettext("Server port"), gettext("From e-mail"), gettext("To e-mail"), gettext("Security"));
-		$reqdfieldst = explode(" ", "string numeric string string string");
-
-		if ($_POST['auth']) {
-			$reqdfields = array_merge($reqdfields,array("username", "password"));
-			$reqdfieldsn = array_merge($reqdfieldsn,array(gettext("Username"), gettext("Password")));
-			$reqdfieldst = array_merge($reqdfieldst,array("string","string"));
-		}
+		$reqdfields = explode(" ", "to");
+		$reqdfieldsn = array(gettext("To e-mail"));
+		$reqdfieldst = explode(" ", "string");
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -95,20 +81,8 @@ if($_POST) {
 		}
 	}
 
-	/* Check for a password mismatch. */
-	if ($_POST['auth'] && ($_POST['password'] !== $_POST['passwordconf'])) {
-		$input_errors[] = gettext("The passwords do not match.");
-	}
-
 	if(!$input_errors) {
 		$config['statusreport']['enable'] = $_POST['enable'] ? true : false;
-		$config['statusreport']['server'] = $_POST['server'];
-		$config['statusreport']['port'] = $_POST['port'];
-		$config['statusreport']['auth'] = $_POST['auth'] ? true : false;
-		$config['statusreport']['security'] = $_POST['security'];
-		$config['statusreport']['username'] = $_POST['username'];
-		$config['statusreport']['password'] = base64_encode($_POST['password']);
-		$config['statusreport']['from'] = $_POST['from'];
 		$config['statusreport']['to'] = $_POST['to'];
 		$config['statusreport']['subject'] = $_POST['subject'];
 		$config['statusreport']['report'] = $_POST['report'];
@@ -154,14 +128,6 @@ function set_selected(name) {
 
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
-	document.iform.server.disabled = endis;
-	document.iform.port.disabled = endis;
-	document.iform.auth.disabled = endis;
-	document.iform.security.disabled = endis;
-	document.iform.username.disabled = endis;
-	document.iform.password.disabled = endis;
-	document.iform.passwordconf.disabled = endis;
-	document.iform.from.disabled = endis;
 	document.iform.to.disabled = endis;
 	document.iform.subject.disabled = endis;
 	document.iform.report_systeminfo.disabled = endis;
@@ -196,26 +162,13 @@ function enable_change(enable_change) {
 	document.iform.all_weekdays2.disabled = endis;
 	document.iform.sendnow.disabled = endis;
 }
-
-function auth_change() {
-	switch(document.iform.auth.checked) {
-		case false:
-      showElementById('username_tr','hide');
-  		showElementById('password_tr','hide');
-      break;
-
-    case true:
-      showElementById('username_tr','show');
-  		showElementById('password_tr','show');
-      break;
-	}
-}
 //-->
 </script>
 <form action="status_report.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
 	    <td class="tabcont">
+	    	<?php if (0 !== email_validate_settings()) print_error_box(sprintf(gettext("Make sure you have already configured your <a href='%s'>Email</a> settings."), "system_email.php"));?>
     		<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<?php if ($failmsg) print_error_box($failmsg);?>
@@ -230,58 +183,6 @@ function auth_change() {
 			  		  </table>
 			      </td>
 			    </tr>
-			    <tr>
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Outgoing mail server");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="server" type="text" class="formfld" id="server" size="40" value="<?=htmlspecialchars($pconfig['server']);?>"><br>
-			        <span class="vexpl"><?=gettext("Outgoing SMTP mail server address, e.g. smtp.mycorp.com.");?></span>
-			      </td>
-					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="port" type="text" class="formfld" id="port" size="10" value="<?=htmlspecialchars($pconfig['port']);?>"><br>
-			        <span class="vexpl"><?=gettext("The default SMTP mail server port, e.g. 25 or 587.");?></span>
-			      </td>
-			    </tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Security");?></td>
-						<td width="78%" class="vtable">
-							<select name="security" class="formfld" id="security">
-								<?php $types = explode(" ", "None SSL TLS"); $vals = explode(" ", "none ssl tls");?>
-								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
-								<?php endfor;?>
-							</select>
-						</td>
-					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="auth" type="checkbox" id="auth" value="yes" <?php if ($pconfig['auth']) echo "checked"; ?> onClick="auth_change()">
-			        <span class="vexpl"><?=gettext("Enable SMTP authentication.");?></span>
-						</td>
-			    </tr>
-					<tr id="username_tr">
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
-			      </td>
-			    </tr>
-			    <tr id="password_tr">
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
-			        <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
-			      </td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("From email");?></td>
-						<td width="78%" class="vtable">
-							<input name="from" type="text" class="formfld" id="from" size="40" value="<?=htmlspecialchars($pconfig['from']);?>"><br>
-							<span class="vexpl"><?=gettext("Your own email address.");?></span>
-						</td>
-					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("To email");?></td>
 						<td width="78%" class="vtable">
@@ -486,7 +387,6 @@ function auth_change() {
 </form>
 <script language="JavaScript">
 <!--
-auth_change();
 enable_change(false);
 //-->
 </script>

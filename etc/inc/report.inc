@@ -32,7 +32,7 @@
 require_once("config.inc");
 require_once("util.inc");
 require_once("disks.inc");
-require_once("phpmailer/class.phpmailer.php");
+require_once("email.inc");
 
 class StatusReportArticle
 {
@@ -321,9 +321,9 @@ function report_send_mail() {
 	$mail->SetLanguage("en","/etc/inc/phpmailer/");
 	$mail->SMTPDebug = false;
 	$mail->Hostname = "{$config['system']['hostname']}.{$config['system']['domain']}";
-	$mail->Host = $config['statusreport']['server'];
-	$mail->Port = $config['statusreport']['port'];
-	$mail->From = $config['statusreport']['from'];
+	$mail->Host = $config['system']['email']['server'];
+	$mail->Port = $config['system']['email']['port'];
+	$mail->From = $config['system']['email']['from'];
 	$mail->FromName = get_product_name();
 	$mail->Subject = $config['statusreport']['subject'];
 	foreach (explode(";", $config['statusreport']['to']) as $address) {
@@ -333,12 +333,12 @@ function report_send_mail() {
 	// Enable SMTH authentication if set.
 	if (isset($config['statusreport']['auth'])) {
 		$mail->SMTPAuth = true;
-		$mail->Username = $config['statusreport']['username'];
-		$mail->Password = base64_decode($config['statusreport']['password']);
+		$mail->Username = $config['system']['email']['username'];
+		$mail->Password = base64_decode($config['system']['email']['password']);
 	}
 
 	// Enable TLS/SSL SMTP support if set.
-	if ("none" !== $config['statusreport']['security']) {
+	if ("none" !== $config['system']['email']['security']) {
 		$mail->SMTPSecure = $config['statusreport']['security'];
 	}
 

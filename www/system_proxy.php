@@ -187,7 +187,8 @@ function proxy_auth_change() {
 	<tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-      	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced Setup");?></a></li>
+      	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
+      	<li class="tabinact"><a href="system_email.php"><?=gettext("Email");?></a></li>
       	<li class="tabact"><a href="system_proxy.php" title="<?=gettext("Reload page");?>"><?=gettext("Proxy");?></a></li>
       	<li class="tabinact"><a href="system_swap.php"><?=gettext("Swap");?></a></li>
       	<li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>

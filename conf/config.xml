@@ -58,6 +58,18 @@
 				<password></password>
 			</ftp>
 		</proxy>
+		<email>
+			<server/>
+			<port>25</port>
+			<!-- Security: 'none|tls|ssl' -->
+			<security>none</security>
+			<username/>
+			<password/>
+			<from/>
+			<!--
+			<auth/>
+			-->
+		</email>
 	</system>
 	<interfaces>
 		<lan>
@@ -445,7 +457,6 @@
 		-->
 	</dynamicdns>
 	<statusreport>
-		<port>25</port>
 		<subject>Status report</subject>
 		<all_mins></all_mins>
 		<all_hours></all_hours>
@@ -467,15 +478,8 @@
 		<report>daemonlog</report>
 		<!--
 		<enable/>
-		<server>mail.xxx.xxx</server>
-		<auth/>
-		<username>xxx</username>
-		<password>xxx</password>
-		<from>freenas@xxx.xxx</from>
 		<to>xxx@xxx.xxx</to>
 		-->
-		<!-- Security: 'none|tls|ssl' -->
-		<security>none</security>
 	</statusreport>
 	<shutdown>
 		<!-- <enable/> -->
