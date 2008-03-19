@@ -1244,7 +1244,7 @@ function config_upgrade() {
 
 	/* Convert 4.5 -> 4.6 */
 	/* Add attribute //samba/share/hidedotfiles. */
-	/* Create new //smartd section.
+	/* Create new //smartd section. */
 	if ($config['version'] === "4.5") {
 		for ($i = 0; isset($config['samba']['share'][$i]); $i++) {
 			$config['samba']['share'][$i]['hidedotfiles'] = true;
