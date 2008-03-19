@@ -47,7 +47,7 @@ $statusreport->AddArticle(new StatusReportArticleCmd("dmesg","/sbin/dmesg"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Interfaces","/sbin/ifconfig -a"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Routing tables","netstat -nr"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Processes","ps xauww"));
-$statusreport->AddArticle(new StatusReportArticleCmd("Net Performances","netstat -m"));
+$statusreport->AddArticle(new StatusReportArticleCmd("Network performances","netstat -m"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Memory","top -b 0 | grep Mem"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Swap usage","/usr/sbin/swapinfo"));
 $statusreport->AddArticle(new StatusReportArticleCmd("ATA disk","/sbin/atacontrol list"));
