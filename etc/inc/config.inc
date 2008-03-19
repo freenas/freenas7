@@ -1245,6 +1245,7 @@ function config_upgrade() {
 	/* Convert 4.5 -> 4.6 */
 	/* Add attribute //samba/share/hidedotfiles. */
 	/* Create new //smartd section. */
+	/* Convert email report settings. */
 	if ($config['version'] === "4.5") {
 		for ($i = 0; isset($config['samba']['share'][$i]); $i++) {
 			$config['samba']['share'][$i]['hidedotfiles'] = true;
@@ -1252,6 +1253,22 @@ function config_upgrade() {
 
 		$config['smartd']['enable'] = isset($config['system']['smart']);
 		unset($config['system']['smart']);
+
+		$config['system']['email']['server'] = $config['statusreport']['server'];
+		$config['system']['email']['port'] = $config['statusreport']['port'];
+		$config['system']['email']['security'] = $config['statusreport']['security'];
+		if (isset($config['statusreport']['auth']))
+			$config['system']['email']['auth'] = true;
+		$config['system']['email']['username'] = $config['statusreport']['username'];
+		$config['system']['email']['password'] = $config['statusreport']['password'];
+		$config['system']['email']['from'] = $config['statusreport']['from'];
+		unset($config['statusreport']['server']);
+		unset($config['statusreport']['port']);
+		unset($config['statusreport']['security']);
+		unset($config['statusreport']['auth']);
+		unset($config['statusreport']['username']);
+		unset($config['statusreport']['password']);
+		unset($config['statusreport']['from']);
 
 		$config['version'] = "4.6";
 	}
@@ -1263,22 +1280,21 @@ function config_upgrade() {
 		/* Add class to physical disk that replace old type (ATA, SCSI, RAID)*/
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			switch ($config['disks']['disk'][$i]['type']) {
-					case "IDE":
-					   $config['disks']['disk'][$i]['class'] = "ATA";
-					   break;
-					case "SCSI":
-					   $config['disks']['disk'][$i]['class'] = "SCSI";
-					   break;
-					case "RAID":
-					   $config['disks']['disk'][$i]['class'] = "RAID";
-					   break;
-				}
+				case "IDE":
+					$config['disks']['disk'][$i]['class'] = "ATA";
+					break;
+				case "SCSI":
+					$config['disks']['disk'][$i]['class'] = "SCSI";
+					break;
+				case "RAID":
+					$config['disks']['disk'][$i]['class'] = "RAID";
+					break;
+			}
 			unset ($config['disks']['disk'][$i]['type']);
 			// Convert the variable softraid to pool
 			if ($config['disks']['disk'][$i]['fstype'] == "softraid") {
 				$config['disks']['disk'][$i]['fstype'] = "pool";
 			}
-
 		}
 
 		/* Convert all others into disk with class attribute*/
