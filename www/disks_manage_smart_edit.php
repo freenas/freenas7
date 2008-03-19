@@ -116,6 +116,10 @@ if ($_POST) {
 <?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
+function set_selected(name) {
+	document.getElementsByName(name)[1].checked = true;
+}
+
 function enable_change(enable_change) {
 	document.iform.disk.disabled = !enable_change;
 }
