@@ -6,7 +6,7 @@
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -47,6 +47,7 @@ $statusreport->AddArticle(new StatusReportArticleCmd("dmesg","/sbin/dmesg"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Interfaces","/sbin/ifconfig -a"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Routing tables","netstat -nr"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Processes","ps xauww"));
+$statusreport->AddArticle(new StatusReportArticleCmd("Net Performances","netstat -m"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Memory","top -b 0 | grep Mem"));
 $statusreport->AddArticle(new StatusReportArticleCmd("Swap usage","/usr/sbin/swapinfo"));
 $statusreport->AddArticle(new StatusReportArticleCmd("ATA disk","/sbin/atacontrol list"));
