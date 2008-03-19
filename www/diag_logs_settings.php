@@ -114,8 +114,8 @@ function enable_change(enable_change) {
 					<li class="tabinact"><a href="diag_logs.php"><?=gettext("System");?></a></li>
 					<li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
 					<li class="tabinact"><a href="diag_logs_rsyncd.php"><?=gettext("RSYNC");?></a></li>
-					<li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSHD");?></a></li>
-					<li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("SMARTD");?></a></li>
+					<li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSH");?></a></li>
+					<li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("S.M.A.R.T.");?></a></li>
 					<li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
 					<li class="tabinact"><a href="diag_logs_upnp.php"><?=gettext("UPnP");?></a></li>
 					<li class="tabact"><a href="diag_logs_settings.php" title="<?=gettext("Reload page");?>"><?=gettext("Settings");?></a></li>
@@ -164,11 +164,11 @@ function enable_change(enable_change) {
 							<input name="ftp" id="ftp" type="checkbox" value="yes" <?php if ($pconfig['ftp']) echo "checked"; ?>>
 	            <?=gettext("FTP events");?><br>
 							<input name="rsyncd" id="rsyncd" type="checkbox" value="yes" <?php if ($pconfig['rsyncd']) echo "checked"; ?>>
-	            <?=gettext("RSYNCD events");?><br>
+	            <?=gettext("RSYNC events");?><br>
 							<input name="sshd" id="sshd" type="checkbox" value="yes" <?php if ($pconfig['sshd']) echo "checked"; ?>>
-	            <?=gettext("SSHD events");?><br>
+	            <?=gettext("SSH events");?><br>
 	            <input name="smartd" id="smartd" type="checkbox" value="yes" <?php if ($pconfig['smartd']) echo "checked"; ?>>
-	            <?=gettext("SMARTD events");?><br>
+	            <?=gettext("S.M.A.R.T. events");?><br>
 	            <input name="daemon" id="daemon" type="checkbox" value="yes" <?php if ($pconfig['daemon']) echo "checked"; ?>>
 	            <?=gettext("Daemon events");?><br>
 	          </td>
