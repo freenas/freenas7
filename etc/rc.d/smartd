@@ -27,7 +27,7 @@ command_args="--configfile=${smartd_conf} --pidfile=${pidfile} --logfacility=loc
 
 start_precmd()
 {
-	local _devicespecialfile _type _selftest
+	local _devicespecialfile _type _param _selftest
 
 	# Clear existing file
 	/bin/cat /dev/null > ${smartd_conf}
@@ -38,12 +38,18 @@ start_precmd()
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
 		while read _devicespecialfile _type; do
+			_param="-a"
+
+			# Specify the type of the device.
 			case ${_type} in
 				IDE)
-					_type="ata";;
+					_param="${_param} -d ata";;
 				SCSI)
-					_type="scsi";;
+					_param="${_param} -d scsi";;
 			esac
+
+			# Be more tolerant. Try to monitor the disk even if it appears to lack SMART capabilities.
+			_param="${_param} -T permissive"
 
 			# Process scheduled self-tests.
 			# Example: -s (O/../.././(00|06|12|18)|S/../.././01|L/../../6/03)
@@ -93,10 +99,10 @@ start_precmd()
 				-i "count(//smartd/selftest) > 1 and position() = last()" -o ")" -b \
 				${configxml_file} | /usr/local/bin/xml unesc`
 			if [ -n "${_selftest}" ]; then
-				_selftest="-s ${_selftest}";
+				_param="${_param} -s ${_selftest}";
 			fi
 
-			echo "${_devicespecialfile} -a -d ${_type} ${_selftest}" >> ${smartd_conf}
+			echo "${_devicespecialfile} ${_param}" >> ${smartd_conf}
 		done
 }
 
