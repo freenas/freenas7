@@ -234,14 +234,14 @@ function auth_change() {
 				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Outgoing mail server");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="server" type="text" class="formfld" id="server" size="40" value="<?=htmlspecialchars($pconfig['server']);?>"><br>
-			        <?=gettext("Outgoing SMTP mail server address, e.g. smtp.mycorp.com.");?>
+			        <span class="vexpl"><?=gettext("Outgoing SMTP mail server address, e.g. smtp.mycorp.com.");?></span>
 			      </td>
 					</tr>
 					<tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="port" type="text" class="formfld" id="port" size="10" value="<?=htmlspecialchars($pconfig['port']);?>"><br>
-			        <?=gettext("The default SMTP mail server port, e.g. 25 or 587.");?>
+			        <span class="vexpl"><?=gettext("The default SMTP mail server port, e.g. 25 or 587.");?></span>
 			      </td>
 			    </tr>
 					<tr>
@@ -259,7 +259,7 @@ function auth_change() {
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="auth" type="checkbox" id="auth" value="yes" <?php if ($pconfig['auth']) echo "checked"; ?> onClick="auth_change()">
-			        <span class="vexpl"><?=gettext("Use SMTP authentication.");?></span>
+			        <span class="vexpl"><?=gettext("Enable SMTP authentication.");?></span>
 						</td>
 			    </tr>
 					<tr id="username_tr">
@@ -279,21 +279,21 @@ function auth_change() {
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("From email");?></td>
 						<td width="78%" class="vtable">
 							<input name="from" type="text" class="formfld" id="from" size="40" value="<?=htmlspecialchars($pconfig['from']);?>"><br>
-							<?=gettext("Your own email address.");?>
+							<span class="vexpl"><?=gettext("Your own email address.");?></span>
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("To email");?></td>
 						<td width="78%" class="vtable">
 							<input name="to" type="text" class="formfld" id="to" size="40" value="<?=htmlspecialchars($pconfig['to']);?>"><br>
-							<?=gettext("Destination email address.");?>
+							<span class="vexpl"><?=gettext("Destination email address.");?></span>
 						</td>
 					</tr>
 					<tr>
 				    <td width="22%" valign="top" class="vncell"><?=gettext("Subject");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="subject" type="text" class="formfld" id="subject" size="60" value="<?=htmlspecialchars($pconfig['subject']);?>"><br>
-			        <?=gettext("The subject of the email.");?>
+			        <span class="vexpl"><?=gettext("The subject of the email.");?></span>
 			      </td>
 					</tr>
 					<tr>
