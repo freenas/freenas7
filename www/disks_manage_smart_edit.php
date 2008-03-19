@@ -149,7 +149,8 @@ function enable_change(enable_change) {
 								<?php $diskinfo = disks_get_diskinfo($diskv['devicespecialfile']); echo htmlspecialchars("{$diskv['name']}: {$diskinfo['mediasize_mbytes']}MB ({$diskv['desc']})");?>
 								</option>
 								<?php endforeach;?>
-			        </select>
+			        </select><br/>
+			        <span class="vexpl"><?=gettext("Select a disk that is enabled for S.M.A.R.T. monitoring.");?></span>
 			      </td>
 					</tr>
 					<tr>
