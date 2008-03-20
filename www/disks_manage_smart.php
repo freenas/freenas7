@@ -45,6 +45,9 @@ $a_type = array( "S" => "Short Self-Test", "L" => "Long Self-Test", "C" => "Conv
 $a_selftest = &$config['smartd']['selftest'];
 
 $pconfig['enable'] = isset($config['smartd']['enable']);
+$pconfig['tempdiff'] = $config['smartd']['temp']['diff'];
+$pconfig['tempinfo'] = $config['smartd']['temp']['info'];
+$pconfig['tempcrit'] = $config['smartd']['temp']['crit'];
 
 if ($_POST) {
 	unset($input_errors);
@@ -52,6 +55,9 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$config['smartd']['enable'] = $_POST['enable'] ? true : false;
+		$config['smartd']['temp']['diff'] = $_POST['tempdiff'];
+		$config['smartd']['temp']['info'] = $_POST['tempinfo'];
+		$config['smartd']['temp']['crit'] = $_POST['tempcrit'];
 
 		write_config();
 
@@ -88,6 +94,9 @@ if ($_GET['act'] == "del") {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
+	document.iform.tempdiff.disabled = endis;
+	document.iform.tempinfo.disabled = endis;
+	document.iform.tempcrit.disabled = endis;
 }
 //-->
 </script>
@@ -103,7 +112,7 @@ function enable_change(enable_change) {
   </tr>
   <tr> 
     <td class="tabcont">
-      <form action="disks_manage_smart.php" method="post">
+      <form action="disks_manage_smart.php" method="post" name="iform" id="iform">
         <?php if ($savemsg) print_info_box($savemsg);?>
         <?php if (file_exists($d_smartconfdirty_path)):?><p>
         <?php print_info_box_np(gettext("The configuration has been modified.<br>You must apply the changes in order for them to take effect."));?><br>
@@ -151,6 +160,33 @@ function enable_change(enable_change) {
 							<span class="vexpl"><?=gettext("Add additional scheduled self-test.");?></span>
 						</td>
 					</tr>
+					<tr>
+						<td colspan="2" class="list" height="12"></td>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top" class="listtopic"><?=gettext("Temperature monitoring");?></td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Difference");?></td>
+						<td width="78%" class="vtable">
+							<input name="tempdiff" type="text" class="formfld" id="tempdiff" size="3" value="<?=htmlspecialchars($pconfig['tempdiff']);?>">&nbsp;&deg;C<br/>
+							<span class="vexpl"><?=gettext("Report if the temperature had changed by at least defined degrees Celsius since last report. Set to 0 to disable this report.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Informal");?></td>
+						<td width="78%" class="vtable">
+							<input name="tempinfo" type="text" class="formfld" id="tempinfo" size="3" value="<?=htmlspecialchars($pconfig['tempinfo']);?>">&nbsp;&deg;C<br/>
+							<span class="vexpl"><?=gettext("Report if the temperature is greater or equal than defined degrees Celsius. Set to 0 to disable this report.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Critical");?></td>
+						<td width="78%" class="vtable">
+							<input name="tempcrit" type="text" class="formfld" id="tempcrit" size="3" value="<?=htmlspecialchars($pconfig['tempcrit']);?>">&nbsp;&deg;C<br/>
+							<span class="vexpl"><?=gettext("Report if the temperature is greater or equal than defined degrees Celsius. Set to 0 to disable this report.");?></span>
+						</td>
+					</tr>
 				  <tr>
 				    <td width="22%" valign="top">&nbsp;</td>
 				    <td width="78%">
@@ -162,4 +198,9 @@ function enable_change(enable_change) {
 	  </td>
   </tr>
 </table>
+<script language="JavaScript">
+<!--
+enable_change(false);
+//-->
+</script>
 <?php include("fend.inc"); ?>

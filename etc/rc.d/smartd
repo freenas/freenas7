@@ -27,7 +27,7 @@ command_args="--configfile=${smartd_conf} --pidfile=${pidfile} --logfacility=loc
 
 start_precmd()
 {
-	local _devicespecialfile _type _param _selftest
+	local _devicespecialfile _type _param _tmp
 
 	# Clear existing file
 	/bin/cat /dev/null > ${smartd_conf}
@@ -53,7 +53,7 @@ start_precmd()
 
 			# Process scheduled self-tests.
 			# Example: -s (O/../.././(00|06|12|18)|S/../.././01|L/../../6/03)
-			_selftest=`/usr/local/bin/xml sel -t -m "//smartd/selftest[devicespecialfile = '${_devicespecialfile}']" \
+			_tmp=`/usr/local/bin/xml sel -t -m "//smartd/selftest[devicespecialfile = '${_devicespecialfile}']" \
 				-i "count(//smartd/selftest) > 1 and position() = 1" -o "(" -b \
 				-i "position() > 1" -o "|" -b \
 				-v "concat(type,'/')" \
@@ -98,9 +98,15 @@ start_precmd()
 				-i "all_hours[. != "0"]" -o ".." -b \
 				-i "count(//smartd/selftest) > 1 and position() = last()" -o ")" -b \
 				${configxml_file} | /usr/local/bin/xml unesc`
-			if [ -n "${_selftest}" ]; then
-				_param="${_param} -s ${_selftest}";
+			if [ -n "${_tmp}" ]; then
+				_param="${_param} -s ${_tmp}";
 			fi
+
+			# Temperature monitoring.
+			_tmp=`/usr/local/bin/xml sel -t -m "//smartd/temp" \
+				-v "concat(diff,',',info,',',crit)" \
+				${configxml_file} | /usr/local/bin/xml unesc`
+			_param="${_param} -W ${_tmp}";
 
 			echo "${_devicespecialfile} ${_param}" >> ${smartd_conf}
 		done
