@@ -1252,6 +1252,9 @@ function config_upgrade() {
 		}
 
 		$config['smartd']['enable'] = isset($config['system']['smart']);
+		$config['smartd']['temp']['diff'] = "0";
+		$config['smartd']['temp']['info'] = "0";
+		$config['smartd']['temp']['crit'] = "0";
 		unset($config['system']['smart']);
 
 		$config['system']['email']['server'] = $config['statusreport']['server'];
