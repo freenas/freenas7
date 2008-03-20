@@ -574,5 +574,10 @@
 			<weekday></weekday>
 		</selftest>
 		-->
+		<temp>
+			<diff>0</diff>
+			<info>0</info>
+			<crit>0</crit>
+		</temp>
 	</smartd>
 </freenas>
