@@ -44,6 +44,7 @@ server.modules = (
 server.document-root = "${lighttpd_docroot}"
 server.errorlog-use-syslog = "enable"
 server.event-handler = "freebsd-kqueue"
+server.max-write-idle = 1800
 index-file.names = ( "index.php" )
 mimetype.assign = (
   ".pdf"     => "application/pdf",

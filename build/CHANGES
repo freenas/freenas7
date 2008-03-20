@@ -11,6 +11,7 @@ Minors changes:
 Feature removed:
 - Formatting drive in FAT32 and EXT2 filesystem
 - Creating gvinum drive (but still support existing gvinum drive)
+- Change lighttpd server.max-write-idle to 1800 seconds (permit long fsck from the webGUI)
 
 Bug fixes:
 
