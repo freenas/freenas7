@@ -58,14 +58,18 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Softwa
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-      echo "<pre>";
-			foreach (explode(" ", "concat mirror raid5 stripe vinum") as $class) {
-	    	echo "<strong>GEOM {$class}:</strong><br><br>";
-	    	disks_geom_cmd($class, "list", "", true, false);
-      }
-      echo "</pre>";
-			?>
+    	<table width="100%" border="0">
+  			<?php foreach (explode(" ", "concat mirror raid5 stripe vinum") as $class):?>
+				<tr>
+					<td class="listtopic"><?="GEOM {$class}";?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<pre><br/><?php disks_geom_cmd($class, "list", "", true, false);?></pre>
+					</td>
+			  </tr>
+    		<?php endforeach;?>
+    	</table>
     </td>
   </tr>
 </table>

@@ -58,15 +58,16 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Space 
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-      echo "<pre>";
-      exec("/bin/df -h",$rawdata);
-      echo "<strong>" . gettext("Free Space") . ":</strong><br><br>";
-      foreach ($rawdata as $line) {
-      	echo htmlspecialchars($line) . "<br>";
-      }
-      echo "</pre>";
-      ?>
+    	<table width="100%" border="0">
+				<tr>
+					<td class="listtopic"><?=gettext("Free disk space");?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<pre><br/><?php system("/bin/df -h");?></pre>
+					</td>
+			  </tr>
+    	</table>
     </td>
   </tr>
 </table>

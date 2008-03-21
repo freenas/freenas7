@@ -33,6 +33,8 @@
 */
 require("guiconfig.inc");
 $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("S.M.A.R.T."));
+
+$a_disk = get_physical_disks_list();
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -58,19 +60,18 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("S.M.A.
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-      echo "<pre>";
-      $disklist=get_physical_disks_list();
-      echo "<strong>".gettext("List of SMART capabilities on all detected disk").":</strong><br><br>";
-      foreach ($disklist as $disknamek => $disknamev) {
-      	exec("/usr/local/sbin/smartctl -a /dev/$disknamek",$fdiskrawdata);
-      	foreach ($fdiskrawdata as $line) {
-          echo htmlspecialchars($line) . "<br>";
-      	}
-      	unset ($fdiskrawdata);
-      }
-      echo "</pre>";
-      ?>
+    	<table width="100%" border="0">
+  			<?php foreach($a_disk as $diskk => $diskv):?>
+				<tr>
+					<td class="listtopic"><?=sprintf(gettext("Device /dev/%s - %s"), $diskk, $diskv['desc']);?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<pre><br/><?php system("/usr/local/sbin/smartctl -a /dev/{$diskk}");?></pre>
+					</td>
+			  </tr>
+    		<?php endforeach;?>
+    	</table>
     </td>
   </tr>
 </table>

@@ -58,16 +58,16 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Mounts
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-      echo "<pre>";
-      echo "<strong>" . gettext("List of mount points") . ":</strong><br><br>";
-      exec("/sbin/mount",$mountrawdata);
-      foreach ($mountrawdata as $line) {
-        echo htmlspecialchars($line) . "<br>";
-      }
-      unset ($line);
-      echo "</pre>";
-      ?>
+    	<table width="100%" border="0">
+				<tr>
+					<td class="listtopic"><?=gettext("List of mount points");?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<pre><br/><?php system("/sbin/mount");?></pre>
+					</td>
+			  </tr>
+    	</table>
     </td>
   </tr>
 </table>

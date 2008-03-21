@@ -33,6 +33,8 @@
 */
 require("guiconfig.inc");
 $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks (ATA)"));
+
+$a_disk = get_ata_disks_list();
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -58,29 +60,32 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks 
 	</tr>
 	<tr>
     <td class="tabcont">
-    	<pre><strong><?=gettext("List of advanced ATA capabilities on all ATA disk");?>:</strong>
-      <?php
-      $disklist = get_ata_disks_list();
-			foreach ($disklist as $diskv) {
-				$name = $diskv['name'];
-				$device = $diskv['devicespecialfile'];
-				$dmamode = trim(preg_replace("/current mode = /", "", exec("/sbin/atacontrol mode {$name}")));
-				
-				echo "<br/>";
-				echo gettext("Device name") . ":		{$name}<br/>";
-				echo gettext("Transfer mode") . ":		{$dmamode}<br/>";
-				
-				// Display more information
-				exec("/usr/local/sbin/ataidle {$device}", $rawdata);
-				array_shift($rawdata);
-				array_shift($rawdata);
-				foreach ($rawdata as $line) {
-				echo htmlspecialchars($line) . "<br/>";
-				}
-				unset ($rawdata);
-      }
-      ?>
-      </pre>
+    	<table width="100%" border="0">
+  			<?php foreach($a_disk as $diskk => $diskv):?>
+				<tr>
+					<td class="listtopic"><?=sprintf(gettext("Device /dev/%s - %s"), $diskk, $diskv['desc']);?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<pre><br/><?php
+			    	$name = $diskv['name'];
+						$device = $diskv['devicespecialfile'];
+						$dmamode = trim(preg_replace("/current mode = /", "", exec("/sbin/atacontrol mode {$name}")));
+
+						echo gettext("Device name") . ":		{$name}<br/>";
+						echo gettext("Transfer mode") . ":		{$dmamode}<br/>";
+
+						// Display more information
+						exec("/usr/local/sbin/ataidle {$device}", $rawdata);
+						array_shift($rawdata);
+						array_shift($rawdata);
+						echo htmlspecialchars(implode("\n", $rawdata));
+						unset($rawdata);
+						?></pre>
+					</td>
+			  </tr>
+    		<?php endforeach;?>
+    	</table>
     </td>
   </tr>
 </table>

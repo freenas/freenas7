@@ -58,21 +58,24 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Disks"
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-      exec("/sbin/atacontrol list",$iderawdata);
-      echo "<pre>";
-      echo "<strong>" . gettext("List of detected ATA disks") . ":</strong><br><br>";
-      foreach ($iderawdata as $line) {
-        echo htmlspecialchars($line) . "<br>";
-      }
-      unset ($line);
-      exec("/sbin/camcontrol devlist",$scsirawdata);
-      echo "<br><strong>" . gettext("List of detected SCSI disks") . ":</strong><br><br>";
-      foreach ($scsirawdata as $line) {
-      	echo htmlspecialchars($line) . "<br>";
-      }
-      echo "</pre>";
-      ?>
+    	<table width="100%" border="0">
+				<tr>
+					<td class="listtopic"><?=gettext("List of detected ATA disks");?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<pre><br/><?php system("/sbin/atacontrol list");?></pre>
+					</td>
+			  </tr>
+			  <tr>
+					<td class="listtopic"><?=gettext("List of detected SCSI disks");?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<pre><br/><?php system("/sbin/camcontrol devlist");?></pre>
+					</td>
+			  </tr>
+    	</table>
     </td>
   </tr>
 </table>
