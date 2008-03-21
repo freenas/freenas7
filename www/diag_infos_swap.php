@@ -58,21 +58,20 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Swap")
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-      if (!isset($config['system']['swap_enable'])) {
-      	echo "<strong>".gettext("Swap disabled")."</strong><br><br>";
-      } else {
-      	echo "<pre>";
-      	echo "<strong>".gettext("Swap Status").":</strong><br><br>";
-      	exec("/usr/sbin/swapinfo",$rawdata);
-      	foreach ($rawdata as $line) {
-      		echo htmlspecialchars($line) . "<br>";
-      	}
-      	unset ($rawdata);
-      	echo "<br>";
-      	echo "</pre>";
-      }
-      ?>
+    	<table width="100%" border="0">
+				<tr>
+					<td class="listtopic"><?=gettext("Swap status");?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<?php if (!isset($config['system']['swap_enable'])):?>
+			    	<pre><br/><?=gettext("Swap disabled");?></pre>
+			    	<?php else:?>
+			    	<pre><br/><?php system("/usr/sbin/swapinfo");?></pre>
+						<?php endif;?>
+					</td>
+			  </tr>
+    	</table>
     </td>
   </tr>
 </table>

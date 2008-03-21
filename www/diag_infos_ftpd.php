@@ -61,22 +61,25 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("FTP us
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-	   if (!isset($config['ftpd']['enable'])) {
-      	echo "<strong>".gettext("FTP Server disabled")."</strong><br><br>";
-      } else {
-		echo("<pre>");
-		echo("<strong>" . gettext("FTP connected users") . ":</strong><br><br>");
-		exec("/usr/local/sbin/pure-ftpwho -W", $rawdata);
-		// remove the first line "Content-Type: text/html"
-		$rawdata = array_slice($rawdata, 1);
-		foreach($rawdata as $line) {
-			echo "$line";
-		}
-		unset ($line);
-		echo "</pre>";
-	  }
-      ?>
+    	<table width="100%" border="0">
+				<tr>
+					<td class="listtopic"><?=gettext("Connected FTP users");?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<?php if (!isset($config['ftpd']['enable'])):?>
+			    	<pre><br/><?=gettext("FTP server disabled");?></pre>
+			    	<?php else:?>
+			    	<br/>
+			    	<?php
+			    	exec("/usr/local/sbin/pure-ftpwho -W", $rawdata);
+						$rawdata = array_slice($rawdata, 1);
+						echo implode("\n", $rawdata);
+						?>
+						<?php endif;?>
+					</td>
+			  </tr>
+    	</table>
     </td>
   </tr>
 </table>

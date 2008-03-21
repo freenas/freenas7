@@ -34,10 +34,11 @@
 require("guiconfig.inc");
 $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("iSCSI Initiator"));
 
-if (!is_array($config['iscsi']))
-{
-	$config['iscsi'] = array();
+if (!is_array($config['iscsiinit']['vdisk'])) {
+	$config['iscsiinit']['vdisk'] = array();
 }
+
+$a_disk = $config['iscsiinit']['vdisk'];
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -63,26 +64,26 @@ if (!is_array($config['iscsi']))
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-	  if (!is_array($config['iscsiinit']['vdisk'])) {
-      	echo  "<strong>".gettext("iSCSI initiator disabled")."</strong><br><br>";
-      } else {
-      	echo "<pre>";
-      	echo "<strong>".gettext("Show the list of available target name on all configured iSCSI targets")."</strong><br><br>";
-		$a_iscsiinit = &$config['iscsiinit']['vdisk'];
-		foreach ($a_iscsiinit as $iscsiinit) {
-			echo "Discovered iSCSI target for {$iscsiinit['targetaddress']}";
-			echo "<br>";
-			exec("/usr/local/sbin/iscontrol -d targetaddress={$iscsiinit['targetaddress']}",$rawdata);
-
-			foreach ($rawdata as $line) {
-				echo htmlspecialchars($line) . "<br>";
-			}
-      	unset ($rawdata);
-		}
-      	echo "</pre>";
-      }
-      ?>
+    	<table width="100%" border="0">
+				<tr>
+					<td class="listtopic"><?=gettext("List of available target name on all configured iSCSI targets");?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<?php if (0 >= count($a_disk)):?>
+			    	<pre><br/><?=gettext("iSCSI initiator disabled");?></pre>
+			    	<?php else:?>
+			    	<pre><br/><?php
+			    	foreach ($a_disk as $disk) {
+			    		echo sprintf(gettext("Discovered iSCSI target for %s"), $disk['targetaddress']);
+			    		echo "<br>";
+							system("/usr/local/sbin/iscontrol -d targetaddress={$iscsiinit['targetaddress']}");
+						}
+						?></pre>
+						<?php endif;?>
+					</td>
+			  </tr>
+    	</table>
     </td>
   </tr>
 </table>
