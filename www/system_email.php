@@ -83,6 +83,9 @@ if ($_POST) {
 		$config['system']['email']['from'] = $_POST['from'];
 
 		write_config();
+
+		$retval = 0;
+		$savemsg = get_std_save_message($retval);
 	}
 }
 ?>
