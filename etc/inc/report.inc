@@ -315,39 +315,10 @@ function report_send_mail() {
 		$statusreport->AddArticle(new StatusReportArticleCmd("Last {$numentries} Daemon log entries","/usr/sbin/clog /var/log/daemon.log 2>&1 | tail {$reverse} -n {$numentries}"));
 	}
 
-	$mail = new PHPMailer();
-	$mail->IsSMTP();
-	$mail->IsHTML(false);
-	$mail->SetLanguage("en","/etc/inc/phpmailer/");
-	$mail->SMTPDebug = false;
-	$mail->Hostname = "{$config['system']['hostname']}.{$config['system']['domain']}";
-	$mail->Host = $config['system']['email']['server'];
-	$mail->Port = $config['system']['email']['port'];
-	$mail->From = $config['system']['email']['from'];
-	$mail->FromName = get_product_name();
-	$mail->Subject = $config['statusreport']['subject'];
-	foreach (explode(";", $config['statusreport']['to']) as $address) {
-		$mail->AddAddress($address);
-	}
-
-	// Enable SMTH authentication if set.
-	if (isset($config['system']['email']['auth'])) {
-		$mail->SMTPAuth = true;
-		$mail->Username = $config['system']['email']['username'];
-		$mail->Password = base64_decode($config['system']['email']['password']);
-	}
-
-	// Enable TLS/SSL SMTP support if set.
-	if ("none" !== $config['system']['email']['security']) {
-		$mail->SMTPSecure = $config['system']['email']['security'];
-	}
-
-	// Create report.
-	$mail->Body = $statusreport->Generate();
-
 	// Send email and log result.
-	if(!$mail->Send()) {
-		write_log($mail->ErrorInfo);
+	$result = email_send($config['statusreport']['to'], $config['statusreport']['subject'], $statusreport->Generate(), $error);
+	if (0 != $result) {
+		write_log($error);
 		return 1;
 	}
 
