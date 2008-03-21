@@ -30,6 +30,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require_once("config.inc");
+require_once("util.inc");
 require_once("phpmailer/class.phpmailer.php");
 
 // Checks if Email settings are valid.
@@ -44,6 +45,54 @@ function email_validate_settings() {
 
 	if (isset($email['auth']) && (empty($email['username']) || empty($email['password'])))
 		return 1;
+
+	return 0;
+}
+
+// Send an email.
+// $address - The email adress
+// $subject - The email subject
+// $message - The message
+// $error - Contains an error message if submission fails.
+// Return 0 if successful, otherwise 1.
+function email_send($address, $subject, $message, &$error) {
+	global $config;
+
+	$mail = new PHPMailer();
+	$mail->IsSMTP();
+	$mail->IsHTML(false);
+	$mail->SetLanguage("en","/etc/inc/phpmailer/");
+	$mail->SMTPDebug = false;
+	$mail->Hostname = "{$config['system']['hostname']}.{$config['system']['domain']}";
+	$mail->Host = $config['system']['email']['server'];
+	$mail->Port = $config['system']['email']['port'];
+	$mail->From = $config['system']['email']['from'];
+	$mail->FromName = get_product_name();
+	$mail->Subject = $subject;
+	foreach (explode(";", $address) as $addressv) {
+		$mail->AddAddress($addressv);
+	}
+
+	// Enable SMTH authentication if set.
+	if (isset($config['system']['email']['auth'])) {
+		$mail->SMTPAuth = true;
+		$mail->Username = $config['system']['email']['username'];
+		$mail->Password = base64_decode($config['system']['email']['password']);
+	}
+
+	// Enable TLS/SSL SMTP support if set.
+	if ("none" !== $config['system']['email']['security']) {
+		$mail->SMTPSecure = $config['system']['email']['security'];
+	}
+
+	// Create report.
+	$mail->Body = $message;
+
+	// Send email and log result.
+	if(!$mail->Send()) {
+		$error = $mail->ErrorInfo;
+		return 1;
+	}
 
 	return 0;
 }
