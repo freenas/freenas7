@@ -331,7 +331,7 @@ function report_send_mail() {
 	}
 
 	// Enable SMTH authentication if set.
-	if (isset($config['statusreport']['auth'])) {
+	if (isset($config['system']['email']['auth'])) {
 		$mail->SMTPAuth = true;
 		$mail->Username = $config['system']['email']['username'];
 		$mail->Password = base64_decode($config['system']['email']['password']);
@@ -339,7 +339,7 @@ function report_send_mail() {
 
 	// Enable TLS/SSL SMTP support if set.
 	if ("none" !== $config['system']['email']['security']) {
-		$mail->SMTPSecure = $config['statusreport']['security'];
+		$mail->SMTPSecure = $config['system']['email']['security'];
 	}
 
 	// Create report.
