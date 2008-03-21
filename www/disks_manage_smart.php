@@ -46,15 +46,15 @@ $a_selftest = &$config['smartd']['selftest'];
 
 $pconfig['enable'] = isset($config['smartd']['enable']);
 $pconfig['interval'] = $config['smartd']['interval'];
-$pconfig['tempdiff'] = $config['smartd']['temp']['diff'];
-$pconfig['tempinfo'] = $config['smartd']['temp']['info'];
-$pconfig['tempcrit'] = $config['smartd']['temp']['crit'];
+$pconfig['temp_diff'] = $config['smartd']['temp']['diff'];
+$pconfig['temp_info'] = $config['smartd']['temp']['info'];
+$pconfig['temp_crit'] = $config['smartd']['temp']['crit'];
 
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	$reqdfields = explode(" ", "interval tempdiff tempinfo tempcrit");
+	$reqdfields = explode(" ", "interval temp_diff temp_info temp_crit");
 	$reqdfieldsn = array(gettext("Check interval"), gettext("Difference"), gettext("Informal"), gettext("Critical"));
 	$reqdfieldst = explode(" ", "numericint numericint numericint numericint");
 
@@ -68,9 +68,9 @@ if ($_POST) {
 	if (!$input_errors) {
 		$config['smartd']['enable'] = $_POST['enable'] ? true : false;
 		$config['smartd']['interval'] = $_POST['interval'];
-		$config['smartd']['temp']['diff'] = $_POST['tempdiff'];
-		$config['smartd']['temp']['info'] = $_POST['tempinfo'];
-		$config['smartd']['temp']['crit'] = $_POST['tempcrit'];
+		$config['smartd']['temp']['diff'] = $_POST['temp_diff'];
+		$config['smartd']['temp']['info'] = $_POST['temp_info'];
+		$config['smartd']['temp']['crit'] = $_POST['temp_crit'];
 
 		write_config();
 
@@ -108,9 +108,9 @@ if ($_GET['act'] == "del") {
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.interval.disabled = endis;
-	document.iform.tempdiff.disabled = endis;
-	document.iform.tempinfo.disabled = endis;
-	document.iform.tempcrit.disabled = endis;
+	document.iform.temp_diff.disabled = endis;
+	document.iform.temp_info.disabled = endis;
+	document.iform.temp_crit.disabled = endis;
 }
 //-->
 </script>
@@ -162,21 +162,21 @@ function enable_change(enable_change) {
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Difference");?></td>
 						<td width="78%" class="vtable">
-							<input name="tempdiff" type="text" class="formfld" id="tempdiff" size="5" value="<?=htmlspecialchars($pconfig['tempdiff']);?>">&nbsp;&deg;C<br/>
+							<input name="temp_diff" type="text" class="formfld" id="temp_diff" size="5" value="<?=htmlspecialchars($pconfig['temp_diff']);?>">&nbsp;&deg;C<br/>
 							<span class="vexpl"><?=gettext("Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report.");?></span>
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Informal");?></td>
 						<td width="78%" class="vtable">
-							<input name="tempinfo" type="text" class="formfld" id="tempinfo" size="5" value="<?=htmlspecialchars($pconfig['tempinfo']);?>">&nbsp;&deg;C<br/>
+							<input name="temp_info" type="text" class="formfld" id="temp_info" size="5" value="<?=htmlspecialchars($pconfig['temp_info']);?>">&nbsp;&deg;C<br/>
 							<span class="vexpl"><?=gettext("Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report.");?></span>
 						</td>
 					</tr>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Critical");?></td>
 						<td width="78%" class="vtable">
-							<input name="tempcrit" type="text" class="formfld" id="tempcrit" size="5" value="<?=htmlspecialchars($pconfig['tempcrit']);?>">&nbsp;&deg;C<br/>
+							<input name="temp_crit" type="text" class="formfld" id="temp_crit" size="5" value="<?=htmlspecialchars($pconfig['temp_crit']);?>">&nbsp;&deg;C<br/>
 							<span class="vexpl"><?=gettext("Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report.");?></span>
 						</td>
 					</tr>
