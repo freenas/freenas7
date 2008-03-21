@@ -45,6 +45,7 @@ $a_type = array( "S" => "Short Self-Test", "L" => "Long Self-Test", "C" => "Conv
 $a_selftest = &$config['smartd']['selftest'];
 
 $pconfig['enable'] = isset($config['smartd']['enable']);
+$pconfig['interval'] = $config['smartd']['interval'];
 $pconfig['tempdiff'] = $config['smartd']['temp']['diff'];
 $pconfig['tempinfo'] = $config['smartd']['temp']['info'];
 $pconfig['tempcrit'] = $config['smartd']['temp']['crit'];
@@ -53,8 +54,20 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
+	$reqdfields = explode(" ", "interval tempdiff tempinfo tempcrit");
+	$reqdfieldsn = array(gettext("Check interval"), gettext("Difference"), gettext("Informal"), gettext("Critical"));
+	$reqdfieldst = explode(" ", "numericint numericint numericint numericint");
+
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+
+	if (10 > $_POST['interval']) {
+		$input_errors[] = gettext("Interval must be greater or equal than 10 seconds.");
+	}
+
 	if (!$input_errors) {
 		$config['smartd']['enable'] = $_POST['enable'] ? true : false;
+		$config['smartd']['interval'] = $_POST['interval'];
 		$config['smartd']['temp']['diff'] = $_POST['tempdiff'];
 		$config['smartd']['temp']['info'] = $_POST['tempinfo'];
 		$config['smartd']['temp']['crit'] = $_POST['tempcrit'];
@@ -94,6 +107,7 @@ if ($_GET['act'] == "del") {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
+	document.iform.interval.disabled = endis;
 	document.iform.tempdiff.disabled = endis;
 	document.iform.tempinfo.disabled = endis;
 	document.iform.tempcrit.disabled = endis;
@@ -113,6 +127,7 @@ function enable_change(enable_change) {
   <tr> 
     <td class="tabcont">
       <form action="disks_manage_smart.php" method="post" name="iform" id="iform">
+      	<?php if ($input_errors) print_input_errors($input_errors);?>
         <?php if ($savemsg) print_info_box($savemsg);?>
         <?php if (file_exists($d_smartconfdirty_path)):?><p>
         <?php print_info_box_np(gettext("The configuration has been modified.<br>You must apply the changes in order for them to take effect."));?><br>
@@ -131,6 +146,46 @@ function enable_change(enable_change) {
 							</table>
 						</td>
 				  </tr>
+				  <tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Check interval");?></td>
+						<td width="78%" class="vtable">
+							<input name="interval" type="text" class="formfld" id="interval" size="5" value="<?=htmlspecialchars($pconfig['interval']);?>"><br/>
+							<span class="vexpl"><?=gettext("Sets the interval between disk checks to N seconds. The minimum allowed value is 10.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="list" height="12"></td>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top" class="listtopic"><?=gettext("Temperature monitoring");?></td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Difference");?></td>
+						<td width="78%" class="vtable">
+							<input name="tempdiff" type="text" class="formfld" id="tempdiff" size="5" value="<?=htmlspecialchars($pconfig['tempdiff']);?>">&nbsp;&deg;C<br/>
+							<span class="vexpl"><?=gettext("Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Informal");?></td>
+						<td width="78%" class="vtable">
+							<input name="tempinfo" type="text" class="formfld" id="tempinfo" size="5" value="<?=htmlspecialchars($pconfig['tempinfo']);?>">&nbsp;&deg;C<br/>
+							<span class="vexpl"><?=gettext("Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Critical");?></td>
+						<td width="78%" class="vtable">
+							<input name="tempcrit" type="text" class="formfld" id="tempcrit" size="5" value="<?=htmlspecialchars($pconfig['tempcrit']);?>">&nbsp;&deg;C<br/>
+							<span class="vexpl"><?=gettext("Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="list" height="12"></td>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top" class="listtopic"><?=gettext("Scheduled self-tests");?></td>
+					</tr>
 				  <tr>
 			    	<td width="22%" valign="top" class="vncell"><?=gettext("Scheduled self-tests");?></td>
 						<td width="78%" class="vtable">
@@ -158,33 +213,6 @@ function enable_change(enable_change) {
 						    </tr>
 							</table>
 							<span class="vexpl"><?=gettext("Add additional scheduled self-test.");?></span>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" class="list" height="12"></td>
-					</tr>
-					<tr>
-						<td colspan="2" valign="top" class="listtopic"><?=gettext("Temperature monitoring");?></td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Difference");?></td>
-						<td width="78%" class="vtable">
-							<input name="tempdiff" type="text" class="formfld" id="tempdiff" size="3" value="<?=htmlspecialchars($pconfig['tempdiff']);?>">&nbsp;&deg;C<br/>
-							<span class="vexpl"><?=gettext("Report if the temperature had changed by at least defined degrees Celsius since last report. Set to 0 to disable this report.");?></span>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Informal");?></td>
-						<td width="78%" class="vtable">
-							<input name="tempinfo" type="text" class="formfld" id="tempinfo" size="3" value="<?=htmlspecialchars($pconfig['tempinfo']);?>">&nbsp;&deg;C<br/>
-							<span class="vexpl"><?=gettext("Report if the temperature is greater or equal than defined degrees Celsius. Set to 0 to disable this report.");?></span>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Critical");?></td>
-						<td width="78%" class="vtable">
-							<input name="tempcrit" type="text" class="formfld" id="tempcrit" size="3" value="<?=htmlspecialchars($pconfig['tempcrit']);?>">&nbsp;&deg;C<br/>
-							<span class="vexpl"><?=gettext("Report if the temperature is greater or equal than defined degrees Celsius. Set to 0 to disable this report.");?></span>
 						</td>
 					</tr>
 				  <tr>

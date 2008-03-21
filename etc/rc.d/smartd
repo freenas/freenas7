@@ -25,6 +25,12 @@ pidfile="/var/run/${name}.pid"
 command="/usr/local/sbin/smartd"
 command_args="--configfile=${smartd_conf} --pidfile=${pidfile} --logfacility=local5"
 
+# Set check interval
+_interval=`configxml_get "//smartd/interval"`
+if [ -n "${_interval}" ]; then
+	command_args="${command_args} --interval=${_interval}"
+fi
+
 start_precmd()
 {
 	local _devicespecialfile _type _param _tmp
