@@ -504,6 +504,8 @@
 		-->
 	</dynamicdns>
 	<statusreport>
+		<!-- <enable/> -->
+		<to></to>
 		<subject>Status report</subject>
 		<all_mins></all_mins>
 		<all_hours></all_hours>
@@ -523,10 +525,6 @@
 		<report>sshdlog</report>
 		<report>smartdlog</report>
 		<report>daemonlog</report>
-		<!--
-		<enable/>
-		<to>xxx@xxx.xxx</to>
-		-->
 	</statusreport>
 	<shutdown>
 		<!-- <enable/> -->
