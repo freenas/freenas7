@@ -1,5 +1,5 @@
 PORTNAME=			unison
-PORTVERSION=	2.13.16
+PORTVERSION=	2.27.57
 CATEGORIES=		net
 COMMENT=			A user-level file synchronization tool
 MAINTAINER=		votdev@gmx.de
