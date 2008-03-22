@@ -558,6 +558,7 @@
 	<smartd>
 		<!--
 		<enable/>
+		<powermode>never|sleep|standby|idle</powermode>
 		<selftest>
 			<devicespecialfile>/dev/xxx</devicespecialfile>
 			<type>S|L|C|O</type>
@@ -573,6 +574,7 @@
 		</selftest>
 		-->
 		<interval>1800</interval>
+		<powermode>never</powermode>
 		<temp>
 			<diff>0</diff>
 			<info>0</info>

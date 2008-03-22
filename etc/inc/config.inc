@@ -1253,6 +1253,7 @@ function config_upgrade() {
 
 		$config['smartd']['enable'] = isset($config['system']['smart']);
 		$config['smartd']['interval'] = "1800";
+		$config['smartd']['powermode'] = "never";
 		$config['smartd']['temp']['diff'] = "0";
 		$config['smartd']['temp']['info'] = "0";
 		$config['smartd']['temp']['crit'] = "0";
