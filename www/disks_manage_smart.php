@@ -46,6 +46,7 @@ $a_selftest = &$config['smartd']['selftest'];
 
 $pconfig['enable'] = isset($config['smartd']['enable']);
 $pconfig['interval'] = $config['smartd']['interval'];
+$pconfig['powermode'] = $config['smartd']['powermode'];
 $pconfig['temp_diff'] = $config['smartd']['temp']['diff'];
 $pconfig['temp_info'] = $config['smartd']['temp']['info'];
 $pconfig['temp_crit'] = $config['smartd']['temp']['crit'];
@@ -68,6 +69,7 @@ if ($_POST) {
 	if (!$input_errors) {
 		$config['smartd']['enable'] = $_POST['enable'] ? true : false;
 		$config['smartd']['interval'] = $_POST['interval'];
+		$config['smartd']['powermode'] = $_POST['powermode'];
 		$config['smartd']['temp']['diff'] = $_POST['temp_diff'];
 		$config['smartd']['temp']['info'] = $_POST['temp_info'];
 		$config['smartd']['temp']['crit'] = $_POST['temp_crit'];
@@ -108,6 +110,7 @@ if ($_GET['act'] == "del") {
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.interval.disabled = endis;
+	document.iform.powermode.disabled = endis;
 	document.iform.temp_diff.disabled = endis;
 	document.iform.temp_info.disabled = endis;
 	document.iform.temp_crit.disabled = endis;
@@ -151,6 +154,23 @@ function enable_change(enable_change) {
 						<td width="78%" class="vtable">
 							<input name="interval" type="text" class="formfld" id="interval" size="5" value="<?=htmlspecialchars($pconfig['interval']);?>"><br/>
 							<span class="vexpl"><?=gettext("Sets the interval between disk checks to N seconds. The minimum allowed value is 10.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Power mode");?></td>
+						<td width="78%" class="vtable">
+							<select name="powermode" class="formfld" id="powermode">
+								<?php $types = explode(" ", "Never Sleep Standby Idle"); $vals = explode(" ", "never sleep standby idle");?>
+								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
+								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['powermode']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
+								<?php endfor;?>
+							</select><br/>
+							<span class="vexpl">
+							<li><?=gettext("Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when smartd checks it.");?></li>
+							<li><?=gettext("Sleep - Check the device unless it is in SLEEP mode.");?></li>
+							<li><?=gettext("Standby - Check the device unless it is in SLEEP or STANDBY mode. In these modes most disks are not spinning, so if you want to prevent a laptop disk from spinning up each poll, this is probably what you want.");?></li>
+							<li><?=gettext("Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the IDLE state, most disks are still spinning, so this is probably not what you want.");?></li>
+							</span>
 						</td>
 					</tr>
 					<tr>

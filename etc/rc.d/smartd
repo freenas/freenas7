@@ -33,10 +33,13 @@ fi
 
 start_precmd()
 {
-	local _devicespecialfile _type _param _tmp
+	local _devicespecialfile _type _param _powermode _tmp
 
 	# Clear existing file
 	/bin/cat /dev/null > ${smartd_conf}
+
+	# Power mode
+	_powermode=`configxml_get "//smartd/powermode"`
 
 	# Create configuration file
 	/usr/local/bin/xml sel -t -m "//disks/disk[smart]" \
@@ -113,6 +116,11 @@ start_precmd()
 				-v "concat(diff,',',info,',',crit)" \
 				${configxml_file} | /usr/local/bin/xml unesc`
 			_param="${_param} -W ${_tmp}";
+
+			# Power mode
+			if [ -n "${_powermode}" ]; then
+				_param="${_param} -n ${_powermode},q";
+			fi
 
 			echo "${_devicespecialfile} ${_param}" >> ${smartd_conf}
 		done
