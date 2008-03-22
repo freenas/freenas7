@@ -34,8 +34,7 @@
 require("guiconfig.inc");
 $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("MS Domain"));
 
-if (!is_array($config['ad']))
-{
+if (!is_array($config['ad'])) {
 	$config['ad'] = array();
 }
 ?>
@@ -63,36 +62,34 @@ if (!is_array($config['ad']))
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-      if (!isset($config['ad']['enable'])) {
-      	echo "<strong>".gettext("AD Authentication disabled")."</strong><br><br>";
-      } else {
-      	echo "<pre>";
-      	echo "<strong>".gettext("Accessiblity test to MS domain").":</strong><br><br>";
-      	echo gettext("Results for net rpc testjoin:") . "<br>";
-      	exec("/usr/local/bin/net rpc testjoin",$rawdata);
-      	foreach ($rawdata as $line) {
-      		echo htmlspecialchars($line) . "<br>";
-      	}
-      	unset ($rawdata);
-      	echo "<br>";
-      	echo gettext("Ping winbindd to see if it is alive:") . "<br>";
-      	exec("/usr/local/bin/wbinfo -p",$rawdata);
-      	foreach ($rawdata as $line) {
-      		echo htmlspecialchars($line) . "<br>";
-      	}
-      	unset ($rawdata);
-      	echo "<br>";
-      	echo gettext("Check shared secret:") . "<br>";
-      	exec("/usr/local/bin/wbinfo -t",$rawdata);
-      	foreach ($rawdata as $line) {
-      		echo htmlspecialchars($line) . "<br>";
-      	}
-      	unset ($rawdata);
-      	echo "<br>";
-      	echo "</pre>";
-      }
-      ?>
+    	<table width="100%" border="0">
+				<tr>
+					<td class="listtopic"><?=gettext("MS Domain informations");?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<?php if (!isset($config['ad']['enable'])):?>
+			    	<pre><br/><?=gettext("AD authentication disabled");?></pre>
+			    	<?php else:?>
+			    	<pre><br/><?php
+						echo "<strong>".gettext("Accessiblity test to MS domain").":</strong><br><br>";
+						echo gettext("Results for net rpc testjoin:") . "<br>";
+						exec("/usr/local/bin/net rpc testjoin", $rawdata);
+						echo implode("\n", $rawdata);
+						unset($rawdata);
+						echo "<br/>" . gettext("Ping winbindd to see if it is alive:") . "<br>";
+						exec("/usr/local/bin/wbinfo -p", $rawdata);
+						echo implode("\n", $rawdata);
+						unset($rawdata);
+						echo "<br/><br/>" . gettext("Check shared secret:") . "<br>";
+						exec("/usr/local/bin/wbinfo -t", $rawdata);
+						echo implode("\n", $rawdata);
+						unset($rawdata);
+						?></pre>
+						<?php endif;?>
+					</td>
+			  </tr>
+    	</table>
     </td>
   </tr>
 </table>

@@ -57,7 +57,16 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Socket
 	</tr>
   <tr>
     <td class="tabcont">
-    	<pre><?php system("netstat -Aa");?></pre>
+    	<table width="100%" border="0">
+				<tr>
+					<td class="listtopic"><?=gettext("Sockets");?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<pre><br/><?php system("netstat -Aa");?></pre>
+					</td>
+			  </tr>
+    	</table>
     </td>
   </tr>
 </table>

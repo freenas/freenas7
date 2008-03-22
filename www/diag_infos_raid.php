@@ -65,7 +65,12 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Softwa
 				</tr>
 				<tr>
 			    <td>
-			    	<pre><br/><?php disks_geom_cmd($class, "list", "", true, false);?></pre>
+			    	<pre><br/><?php
+			    	if (0 >= count(get_conf_disks_filtered_ex("class","g{$class}")))
+			    		echo gettext("n/a");
+			    	else
+							disks_geom_cmd($class, "list", "", true, false);
+						?></pre>
 					</td>
 			  </tr>
     		<?php endforeach;?>

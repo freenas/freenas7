@@ -61,28 +61,32 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("RSYNC 
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-	   if (!is_array($config['rsync']['rsyncclient'])) {
-      	echo "<strong>".gettext("No RSYNC Client configured")."</strong><br><br>";
-      } else {
-		echo("<pre>");
-		echo("<strong>" . gettext("Detected RSYNC remote shares") . ":</strong><br><br>");
-		$i=0;
-		foreach($config['rsync']['rsyncclient'] as $rsyncclient) {
-			echo("<br>RSYNC client number $i:<br>");
-			echo("- Remote server address: {$rsyncclient['rsyncserverip']}<br>");
-			echo("- Remote share name configured : {$rsyncclient['remoteshare']}<br>");
-			echo("- Detected shares on this server: <br>");
-			exec("/usr/local/bin/rsync {$rsyncclient['rsyncserverip']}::", $rawdata);
-			foreach($rawdata as $line) {
-				echo "$line";
-				echo "<br>";
-			}
-			unset ($line);
-		}
-		echo "</pre>";
-	  }
-      ?>
+			<table width="100%" border="0">
+				<tr>
+					<td class="listtopic"><?=gettext("RSYNC Client informations");?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<?php if (!is_array($config['rsync']['rsyncclient'])):?>
+			    	<pre><br/><?=gettext("No RSYNC Client configured");?></pre>
+			    	<?php else:?>
+			    	<pre><br/><?php
+			    	echo("<strong>" . gettext("Detected RSYNC remote shares") . ":</strong><br><br>");
+						$i = 0;
+						foreach ($config['rsync']['rsyncclient'] as $rsyncclient) {
+							echo("<br>RSYNC client number $i:<br>");
+							echo("- Remote server address: {$rsyncclient['rsyncserverip']}<br>");
+							echo("- Remote share name configured : {$rsyncclient['remoteshare']}<br>");
+							echo("- Detected shares on this server: <br>");
+							exec("/usr/local/bin/rsync {$rsyncclient['rsyncserverip']}::", $rawdata);
+							echo implode("\n", $rawdata);
+							unset($rawdata);
+						}
+						?></pre>
+						<?php endif;?>
+					</td>
+			  </tr>
+    	</table>
     </td>
   </tr>
 </table>
