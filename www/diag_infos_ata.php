@@ -77,8 +77,7 @@ $a_disk = get_ata_disks_list();
 
 						// Display more information
 						exec("/usr/local/sbin/ataidle {$device}", $rawdata);
-						array_shift($rawdata);
-						array_shift($rawdata);
+						$rawdata = array_slice($rawdata, 2);
 						echo htmlspecialchars(implode("\n", $rawdata));
 						unset($rawdata);
 						?></pre>

@@ -75,6 +75,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("FTP us
 			    	exec("/usr/local/sbin/pure-ftpwho -W", $rawdata);
 						$rawdata = array_slice($rawdata, 1);
 						echo implode("\n", $rawdata);
+						unset($rawdata);
 						?>
 						<?php endif;?>
 					</td>

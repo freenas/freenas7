@@ -67,7 +67,12 @@ $a_disk = get_physical_disks_list();
 				</tr>
 				<tr>
 			    <td>
-			    	<pre><br/><?php system("/usr/local/sbin/smartctl -a /dev/{$diskk}");?></pre>
+						<pre><br/><?php
+						exec("/usr/local/sbin/smartctl -a /dev/{$diskk}", $rawdata);
+						$rawdata = array_slice($rawdata, 3);
+						echo implode("\n", $rawdata);
+						unset($rawdata);
+						?></pre>
 					</td>
 			  </tr>
     		<?php endforeach;?>
