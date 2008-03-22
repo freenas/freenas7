@@ -55,9 +55,9 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	$reqdfields = explode(" ", "interval temp_diff temp_info temp_crit");
-	$reqdfieldsn = array(gettext("Check interval"), gettext("Difference"), gettext("Informal"), gettext("Critical"));
-	$reqdfieldst = explode(" ", "numericint numericint numericint numericint");
+	$reqdfields = explode(" ", "interval powermode temp_diff temp_info temp_crit");
+	$reqdfieldsn = array(gettext("Check interval"), gettext("Power mode"), gettext("Difference"), gettext("Informal"), gettext("Critical"));
+	$reqdfieldst = explode(" ", "numericint string numericint numericint numericint");
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
