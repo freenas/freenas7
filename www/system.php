@@ -49,6 +49,8 @@ $pconfig['ntp_enable'] = isset($config['system']['ntp']['enable']);
 $pconfig['ntp_timeservers'] = $config['system']['ntp']['timeservers'];
 $pconfig['ntp_updateinterval'] = $config['system']['ntp']['updateinterval'];
 $pconfig['language'] = $config['system']['language'];
+$pconfig['certificate'] = base64_decode($config['system']['webgui']['certificate']);
+$pconfig['privatekey'] = base64_decode($config['system']['webgui']['privatekey']);
 
 // Set default values if necessary.
 if (!$pconfig['language'])
@@ -76,23 +78,26 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
+	// Input validation.
 	$reqdfields = explode(" ", "hostname domain username");
 	$reqdfieldsn = array(gettext("Hostname"),gettext("Domain"),gettext("Username"));
+	$reqdfieldst = explode(" ", "hostname domain string");
 
 	if (isset($_POST['ntp_enable'])) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "ntp_timeservers ntp_updateinterval"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("NTP time server"),gettext("Time update interval")));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("NTP time server"), gettext("Time update interval")));
+		$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string numeric"));
+	}
+
+	if ("https" === $_POST['webguiproto']) {
+		$reqdfields = array_merge($reqdfields, explode(" ", "certificate privatekey"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Certificate"), gettext("Private key")));
+		$reqdfieldst = array_merge($reqdfieldst, explode(" ", "certificate privatekey"));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-	if ($_POST['hostname'] && !is_hostname($_POST['hostname'])) {
-		$input_errors[] = gettext("The hostname may only contain the characters a-z, 0-9 and '-'.");
-	}
-	if ($_POST['domain'] && !is_domain($_POST['domain'])) {
-		$input_errors[] = gettext("The domain may only contain the characters a-z, 0-9, '-' and '.'.");
-	}
 	if (($_POST['dns1'] && !is_ipv4addr($_POST['dns1'])) || ($_POST['dns2'] && !is_ipv4addr($_POST['dns2']))) {
 		$input_errors[] = gettext("A valid IPv4 address must be specified for the primary/secondary DNS server.");
 	}
@@ -121,6 +126,9 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
+		$oldcert = $config['system']['webgui']['certificate'];
+		$oldkey = $config['system']['webgui']['privatekey'];
+
 		$config['system']['hostname'] = strtolower($_POST['hostname']);
 		$config['system']['domain'] = strtolower($_POST['domain']);
 		$oldwebguiproto = $config['system']['webgui']['protocol'];
@@ -133,6 +141,8 @@ if ($_POST) {
 		$config['system']['ntp']['enable'] = $_POST['ntp_enable'] ? true : false;
 		$config['system']['ntp']['timeservers'] = strtolower($_POST['ntp_timeservers']);
 		$config['system']['ntp']['updateinterval'] = $_POST['ntp_updateinterval'];
+		$config['system']['webgui']['certificate'] = base64_encode($_POST['certificate']);
+		$config['system']['webgui']['privatekey'] =  base64_encode($_POST['privatekey']);
 
 		unset($config['system']['dnsserver']);
 		// Only store IPv4 DNS servers when using static IPv4.
@@ -155,9 +165,14 @@ if ($_POST) {
 
 		write_config();
 
+		// Check if a reboot is required.
 		if (($oldwebguiproto != $config['system']['webgui']['protocol']) ||
-			($oldwebguiport != $config['system']['webgui']['port']))
+			($oldwebguiport != $config['system']['webgui']['port'])) {
 			touch($d_sysrebootreqd_path);
+		}
+		if (($config['system']['webgui']['certificate'] != $oldcert) || ($config['system']['webgui']['privatekey'] != $oldkey)) {
+			touch($d_sysrebootreqd_path);
+		}
 
 		$retval = 0;
 
@@ -177,7 +192,7 @@ if ($_POST) {
 			config_unlock();
 		}
 
-		if (($pconfig['systime'] != "Not Set") && ($pconfig['systime'] != "")) {
+		if (($pconfig['systime'] !== "Not Set") && ($pconfig['systime'] !== "")) {
 			$timefields = split(" ", $pconfig['systime']);
 			$dateparts = split("/", $timefields[0]);
 			$timeparts = split(":", $timefields[1]);
@@ -206,6 +221,20 @@ function ntp_change(enable_change) {
 	var endis = !(document.iform.ntp_enable.checked || enable_change);
 	document.iform.ntp_timeservers.disabled = endis;
 	document.iform.ntp_updateinterval.disabled = endis;
+}
+
+function webguiproto_change() {
+	switch(document.iform.webguiproto.selectedIndex) {
+		case 0:
+			showElementById('privatekey_tr','hide');
+			showElementById('certificate_tr','hide');
+			break;
+
+		default:
+			showElementById('privatekey_tr','show');
+			showElementById('certificate_tr','show');
+			break;
+	}
 }
 //-->
 </script>
@@ -241,7 +270,10 @@ function ntp_change(enable_change) {
 			    </tr>
 			    <tr>
 						<td colspan="2" class="list" height="12"></td>
-			    </tr>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top" class="listtopic"><?=gettext("DNS");?></td>
+					</tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("IPv4 DNS servers");?></td>
 			      <td width="78%" class="vtable">
@@ -262,7 +294,10 @@ function ntp_change(enable_change) {
 			    </tr>
 			    <tr>
 						<td colspan="2" class="list" height="12"></td>
-			    </tr>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top" class="listtopic"><?=gettext("WebGUI");?></td>
+					</tr>
 			    <tr>
 			      <td valign="top" class="vncell"><?=gettext("Username");?></td>
 			      <td class="vtable">
@@ -271,9 +306,9 @@ function ntp_change(enable_change) {
 			      </td>
 			    </tr>
 			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("WebGUI protocol");?></td>
+			      <td width="22%" valign="top" class="vncell"><?=gettext("Protocol");?></td>
 			      <td width="78%" class="vtable">
-			        <select name="webguiproto" class="formfld" id="webguiproto">
+			        <select name="webguiproto" class="formfld" id="webguiproto" onClick="webguiproto_change()">
 								<?php $types = array(gettext("HTTP"),gettext("HTTPS")); $vals = explode(" ", "http https");?>
 								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
 								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] === $pconfig['webguiproto']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
@@ -282,12 +317,26 @@ function ntp_change(enable_change) {
 			      </td>
 			    </tr>
 			    <tr>
-			      <td valign="top" class="vncell"><?=gettext("WebGUI port");?></td>
+			      <td valign="top" class="vncell"><?=gettext("Port");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="webguiport" type="text" class="formfld" id="webguiport" size="20" value="<?=htmlspecialchars($pconfig['webguiport']);?>"><br>
 			        <span class="vexpl"><?=gettext("Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS).");?></span>
 			      </td>
 			    </tr>
+			    <tr id="certificate_tr">
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Certificate");?></td>
+						<td width="78%" class="vtable">
+							<textarea name="certificate" cols="65" rows="7" id="certificate" class="formpre"><?=htmlspecialchars($pconfig['certificate']);?></textarea></br>
+							<span class="vexpl"><?=gettext("Paste a signed certificate in X.509 PEM format here.");?></span>
+						</td>
+					</tr>
+			    <tr id="privatekey_tr">
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Private key");?></td>
+						<td width="78%" class="vtable">
+							<textarea name="privatekey" cols="65" rows="7" id="privatekey" class="formpre"><?=htmlspecialchars($pconfig['privatekey']);?></textarea></br>
+							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
+						</td>
+					</tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Language");?></td>
 			      <td width="78%" class="vtable">
@@ -300,6 +349,9 @@ function ntp_change(enable_change) {
 			    </tr>
 					<tr>
 						<td colspan="2" class="list" height="12"></td>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top" class="listtopic"><?=gettext("Time");?></td>
 					</tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Time zone");?></td>
@@ -355,6 +407,7 @@ function ntp_change(enable_change) {
 <script language="JavaScript">
 <!--
 ntp_change(false);
+webguiproto_change();
 //-->
 </script>
 <?php include("fend.inc");?>

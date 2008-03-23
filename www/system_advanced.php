@@ -35,8 +35,6 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Advanced"), gettext("Advanced"));
 
-$pconfig['cert'] = base64_decode($config['system']['webgui']['certificate']);
-$pconfig['key'] = base64_decode($config['system']['webgui']['private-key']);
 $pconfig['disableconsolemenu'] = isset($config['system']['disableconsolemenu']);
 $pconfig['disablefirmwarecheck'] = isset($config['system']['disablefirmwarecheck']);
 $pconfig['expanddiags'] = isset($config['system']['webgui']['expanddiags']);
@@ -53,20 +51,8 @@ if ($_POST) {
 	if ($_POST['tcpidletimeout'] && !is_numericint($_POST['tcpidletimeout'])) {
 		$input_errors[] = gettext("The TCP idle timeout must be an integer.");
 	}
-	if (($_POST['cert'] && !$_POST['key']) || ($_POST['key'] && !$_POST['cert'])) {
-		$input_errors[] = gettext("Certificate and key must always be specified together.");
-	} else if ($_POST['cert'] && $_POST['key']) {
-		if (!strstr($_POST['cert'], "BEGIN CERTIFICATE") || !strstr($_POST['cert'], "END CERTIFICATE"))
-			$input_errors[] = gettext("This certificate does not appear to be valid.");
-		if (!strstr($_POST['key'], "BEGIN RSA PRIVATE KEY") || !strstr($_POST['key'], "END RSA PRIVATE KEY"))
-			$input_errors[] = gettext("This key does not appear to be valid.");
-	}
 
 	if (!$input_errors) {
-		$oldcert = $config['system']['webgui']['certificate'];
-		$oldkey = $config['system']['webgui']['private-key'];
-		$config['system']['webgui']['certificate'] = base64_encode($_POST['cert']);
-		$config['system']['webgui']['private-key'] = base64_encode($_POST['key']);
 		$config['system']['disableconsolemenu'] = $_POST['disableconsolemenu'] ? true : false;
 		$config['system']['disablefirmwarecheck'] = $_POST['disablefirmwarecheck'] ? true : false;
 		$config['system']['webgui']['expanddiags'] = $_POST['expanddiags'] ? true : false;
@@ -77,10 +63,6 @@ if ($_POST) {
 		$config['system']['powerd'] = $_POST['powerd'] ? true : false;
 
 		write_config();
-
-		if (($config['system']['webgui']['certificate'] != $oldcert) || ($config['system']['webgui']['private-key'] != $oldkey)) {
-			touch($d_sysrebootreqd_path);
-		}
 
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
@@ -115,26 +97,6 @@ if ($_POST) {
     <td class="tabcont">
 			<form action="system_advanced.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr>
-			      <td colspan="2" class="list" height="12"></td>
-			    </tr>
-			    <tr>
-			      <td colspan="2" valign="top" class="listtopic"><?=gettext("webGUI SSL certificate/key");?></td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Certificate");?></td>
-			      <td width="78%" class="vtable">
-			        <textarea name="cert" cols="65" rows="7" id="cert" class="formpre"><?=htmlspecialchars($pconfig['cert']);?></textarea></br>
-			        <?=gettext("Paste a signed certificate in X.509 PEM format here.");?>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Key");?></td>
-			      <td width="78%" class="vtable">
-			        <textarea name="key" cols="65" rows="7" id="key" class="formpre"><?=htmlspecialchars($pconfig['key']);?></textarea></br>
-			        <?=gettext("Paste an RSA private key in PEM format here.");?>
-			      </td>
-			    </tr>
 			    <tr>
 			      <td colspan="2" class="list" height="12"></td>
 			    </tr>
