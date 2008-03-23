@@ -95,6 +95,12 @@ if ($_POST) {
 		$reqdfieldst = array_merge($reqdfieldst, explode(" ", "certificate privatekey"));
 	}
 
+	if ($_POST['webguiport']) {
+		$reqdfields = array_merge($reqdfields, array("webguiport"));
+		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Port")));
+		$reqdfieldst = array_merge($reqdfieldst, array("port"));
+	}
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
@@ -106,10 +112,6 @@ if ($_POST) {
 	}
 	if ($_POST['username'] && !preg_match("/^[a-zA-Z0-9]*$/", $_POST['username'])) {
 		$input_errors[] = gettext("The username may only contain the characters a-z, A-Z and 0-9.");
-	}
-	if ($_POST['webguiport'] && (!is_numericint($_POST['webguiport']) ||
-			($_POST['webguiport'] < 1) || ($_POST['webguiport'] > 65535))) {
-		$input_errors[] = gettext("A valid TCP/IP port must be specified for the webGUI port.");
 	}
 
 	if (isset($_POST['ntp_enable'])) {
@@ -128,13 +130,13 @@ if ($_POST) {
 	if (!$input_errors) {
 		$oldcert = $config['system']['webgui']['certificate'];
 		$oldkey = $config['system']['webgui']['privatekey'];
+		$oldwebguiproto = $config['system']['webgui']['protocol'];
+		$oldwebguiport = $config['system']['webgui']['port'];
 
 		$config['system']['hostname'] = strtolower($_POST['hostname']);
 		$config['system']['domain'] = strtolower($_POST['domain']);
-		$oldwebguiproto = $config['system']['webgui']['protocol'];
 		$config['system']['username'] = $_POST['username'];
 		$config['system']['webgui']['protocol'] = $pconfig['webguiproto'];
-		$oldwebguiport = $config['system']['webgui']['port'];
 		$config['system']['webgui']['port'] = $pconfig['webguiport'];
 		$config['system']['language'] = $_POST['language'];
 		$config['system']['timezone'] = $_POST['timezone'];

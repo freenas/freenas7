@@ -59,18 +59,17 @@ if ($_POST)
 	if ($_POST['enable']) {
 		$reqdfields = array_merge($reqdfields, explode(" ", "port"));
 		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("TCP port")));
+		$reqdfieldst = explode(" ", "port");
+		
+		if ($_POST['key']) {
+			$reqdfields = array_merge($reqdfields, array("privatekey"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Private key")));
+			$reqdfieldst = array_merge($reqdfieldst, array("privatekey"));
+		}
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-	if (($_POST['port']) && !is_port($_POST['port'])) {
-		$input_errors[] = gettext("The TCP port must be a valid port number.");
-	}
-
-	if ($_POST['key']) {
-		if (!strstr($_POST['key'], "BEGIN DSA PRIVATE KEY") || !strstr($_POST['key'], "END DSA PRIVATE KEY"))
-			$input_errors[] = gettext("This key does not appear to be valid.");
-	}
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	if (!$input_errors) {
 		$config['sshd']['port'] = $_POST['port'];
