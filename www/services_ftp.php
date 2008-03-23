@@ -80,13 +80,16 @@ if ($_POST) {
 		// Input validation.
 		$reqdfields = explode(" ", "port numberclients maxconperip timeout");
 		$reqdfieldsn = array(gettext("TCP port"), gettext("Number of clients"), gettext("Max. conn. per IP"), gettext("Timeout"));
+		$reqdfieldst = explode(" ", "numeric numeric numeric numeric");
 
 		if ("0" != $_POST['tls']) {
-			$reqdfields = array_merge($reqdfields, explode(" ", "privatekey certificate"));
-			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Private key"), gettext("Certificate")));
+			$reqdfields = array_merge($reqdfields, explode(" ", "certificate privatekey"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Certificate"), gettext("Private key")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "certificate privatekey"));
 		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 		if (!is_port($_POST['port'])) {
 			$input_errors[] = gettext("The TCP port must be a valid port number.");

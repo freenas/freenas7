@@ -59,12 +59,12 @@ if($_POST) {
 	if($_POST['enable']) {
 		$reqdfields = explode(" ", "port documentroot");
 		$reqdfieldsn = array(gettext("Port"), gettext("Document root"));
-		$reqdfieldst = explode(" ", "numeric string");
+		$reqdfieldst = explode(" ", "port string");
 
 		if ("https" === $_POST['protocol']) {
-			$reqdfields = array_merge($reqdfields, explode(" ", "privatekey certificate"));
-			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Private key"), gettext("Certificate")));
-			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "string string"));
+			$reqdfields = array_merge($reqdfields, explode(" ", "certificate privatekey"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Certificate"), gettext("Private key")));
+			$reqdfieldst = array_merge($reqdfieldst, explode(" ", "certificate privatekey"));
 		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);

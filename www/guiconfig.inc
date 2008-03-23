@@ -164,10 +164,10 @@ function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfie
 														$message = sprintf( gettext("The attribute '%s' contains the illegal character ':' and is no valid password."), $reqdfieldsn[$i]);
 														break;
 				case 'certificate':	$valid = is_valid_certificate($postdata[$reqdfields[$i]]);
-														$message = sprintf( gettext("The attribute '%s' does not appear to be valid certificate."), $reqdfieldsn[$i]);
+														$message = sprintf( gettext("The attribute '%s' does not appear to be a valid certificate."), $reqdfieldsn[$i]);
 														break;
 				case 'privatekey':	$valid = is_valid_privatekey($postdata[$reqdfields[$i]]);
-														$message = sprintf( gettext("The attribute '%s' does not appear to be valid private key."), $reqdfieldsn[$i]);
+														$message = sprintf( gettext("The attribute '%s' does not appear to be a valid private key."), $reqdfieldsn[$i]);
 														break;
 			}
 			if (!$valid) {
