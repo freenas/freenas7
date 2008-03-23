@@ -98,9 +98,6 @@ if ($_POST) {
 			<form action="system_advanced.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			    <tr>
-			      <td colspan="2" class="list" height="12"></td>
-			    </tr>
-			    <tr>
 			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Miscellaneous");?></td>
 			    </tr>
 			    <tr>
