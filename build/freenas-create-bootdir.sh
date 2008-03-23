@@ -96,7 +96,6 @@ echo "Generate $MINIBSD_DIR/loader.conf"
 echo 'mfsroot_load="YES"' > $MINIBSD_DIR/loader.conf
 echo 'mfsroot_type="mfs_root"' >> $MINIBSD_DIR/loader.conf
 echo 'mfsroot_name="/mfsroot"' >> $MINIBSD_DIR/loader.conf
-echo 'legal.intel_ipw.license_ack=1' >> $MINIBSD_DIR/loader.conf
 # Enable bootsplash?
 if [ 0 != $opt_b ]; then
 	echo 'splash_bmp_load="YES"' >> $MINIBSD_DIR/loader.conf
@@ -116,7 +115,7 @@ if [ 0 != $opt_d ]; then
 fi
 # Enable serial console?
 if [ 0 != $opt_s ]; then
-  echo 'console="comconsole"' >> $MINIBSD_DIR/loader.conf
+  echo 'console="comconsole,vidconsole"' >> $MINIBSD_DIR/loader.conf
 fi
 # Disable ACPI?
 if [ 0 != $opt_a ]; then
