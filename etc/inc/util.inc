@@ -374,6 +374,20 @@ function is_filemode($mode) {
 	return true;
 }
 
+// Returns true if $certificate is a valid certificate.
+function is_valid_certificate($certificate) {
+	if (!strstr($certificate, "BEGIN CERTIFICATE") || !strstr($certificate, "END CERTIFICATE"))
+		return false;
+	return true;
+}
+
+// Returns true if $privatekey is a valid private key.
+function is_valid_privatekey($privatekey) {
+	if (!strstr($privatekey, "BEGIN RSA PRIVATE KEY") || !strstr($privatekey, "END RSA PRIVATE KEY"))
+		return false;
+	return true;
+}
+
 function get_interface_list() {
 	/* build interface list with netstat */
 	exec("/usr/bin/netstat -inW -f link", $linkinfo);
