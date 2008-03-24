@@ -1,12 +1,16 @@
 #!/usr/local/bin/php
 <?php
 /*
-	diag_infos_sockets.php
+	diag_infos_samba.php
 	Copyright © 2008 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	All rights reserved.
+
+	Based on m0n0wall (http://m0n0.ch/wall)
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -31,7 +35,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
-$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Sockets"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/SMB"));
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -47,24 +51,37 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Socket
 				<li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
 				<li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
-				<li class="tabinact"><a href="diag_infos_samba.php"><?=gettext("CIFS/SMB");?></a></li>
+				<li class="tabact"><a href="diag_infos_samba.php" title="<?=gettext("Reload page");?>"><?=gettext("CIFS/SMB");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP");?></a></li>
 				<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
 				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
-				<li class="tabact"><a href="diag_infos_sockets.php" title="<?=gettext("Reload page");?>"><?=gettext("Sockets");?></a></li>
+				<li class="tabinact"><a href="diag_infos_sockets.php"><?=gettext("Sockets");?></a></li>
 				<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
 			</ul>
-		</td>
+  	</td>
 	</tr>
   <tr>
     <td class="tabcont">
     	<table width="100%" border="0">
-				<tr>
-					<td class="listtopic"><?=gettext("Sockets");?></td>
+    		<tr>
+					<td class="listtopic"><?=gettext("List of shares");?></td>
 				</tr>
 				<tr>
 			    <td>
-			    	<pre><br/><?php system("/usr/bin/netstat -Aa");?></pre>
+						<pre><br/><?php system("/usr/local/bin/net -P rpc share");?></pre>
+					</td>
+			  </tr>
+				<tr>
+					<td class="listtopic"><?=gettext("List of open files");?></td>
+				</tr>
+				<tr>
+			    <td>
+						<pre><br/><?php
+						exec("/usr/local/bin/net -P rpc file", $rawdata);
+						$rawdata = array_slice($rawdata, 4);
+						echo implode("\n", $rawdata);
+						unset($rawdata);
+						?></pre>
 					</td>
 			  </tr>
     	</table>

@@ -35,7 +35,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
-$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("FTP users"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("FTP"));
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -51,11 +51,12 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("FTP us
 				<li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
 				<li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
-				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
-				<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
-				<li class="tabact"><a href="diag_infos_ftpd.php" title="<?=gettext("Reload page");?>" ><?=gettext("FTP users");?></a></li>
+				<li class="tabinact"><a href="diag_infos_samba.php"><?=gettext("CIFS/SMB");?></a></li>
+				<li class="tabact"><a href="diag_infos_ftpd.php" title="<?=gettext("Reload page");?>"><?=gettext("FTP");?></a></li>
 				<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
+				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
 				<li class="tabinact"><a href="diag_infos_sockets.php"><?=gettext("Sockets");?></a></li>
+				<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
 			</ul>
 		</td>
 	</tr>

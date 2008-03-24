@@ -51,27 +51,34 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Sensor
 				<li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
 				<li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
-				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
-				<li class="tabact"><a href="diag_infos_sensors.php" title="<?=gettext("Reload page");?>" ><?=gettext("Sensors");?></a></li>
-				<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP users");?></a></li>
+				<li class="tabinact"><a href="diag_infos_samba.php"><?=gettext("CIFS/SMB");?></a></li>
+				<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP");?></a></li>
 				<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
+				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
 				<li class="tabinact"><a href="diag_infos_sockets.php"><?=gettext("Sockets");?></a></li>
+				<li class="tabact"><a href="diag_infos_sensors.php" title="<?=gettext("Reload page");?>"><?=gettext("Sensors");?></a></li>
 			</ul>
 		</td>
 	</tr>
   <tr>
     <td class="tabcont">
-      <?php
-      echo("<pre>");
-      echo("<strong>" . gettext("Sensors") . ":</strong><br><br>");
-      exec("/usr/local/bin/chm -I -d 0 ", $rawdata);
-      $rawdata = array_slice($rawdata,4);
-      foreach($rawdata as $line) {
-				echo(str_replace( "°", "&deg;", $line)) . "<br>";
-      }
-      unset ($line);
-      echo "</pre>";
-      ?>
+    	<table width="100%" border="0">
+				<tr>
+					<td class="listtopic"><?=gettext("Sensors");?></td>
+				</tr>
+				<tr>
+			    <td>
+			    	<pre><br/><?php
+			    	exec("/usr/local/bin/chm -I -d 0 ", $rawdata);
+						$rawdata = array_slice($rawdata,4);
+						foreach($rawdata as $line) {
+							echo (str_replace("°", "&deg;", $line)) . "<br>";
+						}
+						unset($line);
+						?></pre>
+					</td>
+			  </tr>
+    	</table>
     </td>
   </tr>
 </table>

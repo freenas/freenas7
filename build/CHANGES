@@ -58,6 +58,7 @@ Majors changes:
 
 Minors changes:
 - Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.
+- Add WebGUI page 'Diagnostics: Information: CIFS/SMB' to list misc. informations about Samba (e.g. open files).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
