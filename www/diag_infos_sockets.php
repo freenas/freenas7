@@ -47,10 +47,11 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Socket
 				<li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
 				<li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
 				<li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
-				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
-				<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP users");?></a></li>
+				<li class="tabinact"><a href="diag_infos_samba.php"><?=gettext("CIFS/SMB");?></a></li>
+				<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP");?></a></li>
 				<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
-				<li class="tabact"><a href="diag_infos_sockets.php" title="<?=gettext("Reload page");?>" ><?=gettext("Sockets");?></a></li>
+				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
+				<li class="tabact"><a href="diag_infos_sockets.php" title="<?=gettext("Reload page");?>"><?=gettext("Sockets");?></a></li>
 			</ul>
 		</td>
 	</tr>
@@ -62,7 +63,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Socket
 				</tr>
 				<tr>
 			    <td>
-			    	<pre><br/><?php system("netstat -Aa");?></pre>
+			    	<pre><br/><?php system("/usr/bin/netstat -Aa");?></pre>
 					</td>
 			  </tr>
     	</table>
