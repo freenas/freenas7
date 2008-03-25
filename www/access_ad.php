@@ -55,43 +55,36 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
-	$reqdfields = array();
-	$reqdfieldsn = array();
-
+	// Input validation.
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "admin_name admin_pass ad_srv_ip"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Administrator name"),gettext("Administration password"),gettext("AD server IP")));
+		$reqdfields = explode(" ", "admin_name admin_pass ad_srv_ip");
+		$reqdfieldsn = array(gettext("Administrator name"),gettext("Administration password"),gettext("AD server IP"));
+		$reqdfieldst = explode(" ", "string string ipaddr");
+
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+
+		if (($_POST['admin_pass'] != $_POST['admin_pass2'])) {
+			$input_errors[] = gettext("Password don't match.");
+		}
 	}
 
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
-	if ($_POST['enable'] && !is_ipaddr($_POST['ad_srv_ip'])){
-  		$input_errors[] = gettext("A valid IP address must be specified.");
-  	}
-
-  	if (($_POST['admin_pass'] != $_POST['admin_pass2'])) {
-		$input_errors[] = gettext("Password don't match.");
-	}
-
-	if (!$input_errors)
-	{
+	if (!$input_errors) {
 		$config['ad']['admin_name'] = $_POST['admin_name'];
 		$config['ad']['admin_pass'] = $_POST['admin_pass'];
 		$config['ad']['ad_srv_ip'] = $_POST['ad_srv_ip'];
 		$config['ad']['ad_srv_name'] = $_POST['ad_srv_name'];
-		$config['samba']['workgroup'] = $_POST['domain_name'];
-
 		$config['ad']['enable'] = $_POST['enable'] ? true : false;
 
-		if ($config['ad']['enable'])
-		{
+		$config['samba']['workgroup'] = $_POST['domain_name'];
+
+		if ($config['ad']['enable']) {
 			$config['samba']['security'] = "domain";
 			$config['samba']['enable'] =  true;
 			$config['samba']['winssrv'] = $config['ad']['ad_srv_ip'];
-		}
-		else
+		} else {
 			$config['samba']['security'] = "user";
+		}
 
 		write_config();
 
@@ -104,6 +97,7 @@ if ($_POST) {
 			rc_update_service("samba");
 			config_unlock();
 		}
+
 		$savemsg = get_std_save_message($retval);
 	}
 }
@@ -112,9 +106,7 @@ if ($_POST) {
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
-	var endis;
-
-	endis = !(document.iform.enable.checked || enable_change);
+	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.ad_srv_name.disabled = endis;
 	document.iform.ad_srv_ip.disabled = endis;
 	document.iform.domain_name.disabled = endis;
