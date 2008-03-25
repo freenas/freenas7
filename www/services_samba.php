@@ -186,10 +186,17 @@ function authentication_change() {
 		case "share":
 			showElementById('createmask_tr','show');
 			showElementById('directorymask_tr','show');
+			showElementById('winssrv_tr','hide');
+			break;
+		case "domain":
+			showElementById('createmask_tr','hide');
+			showElementById('directorymask_tr','hide');
+			showElementById('winssrv_tr','show');
 			break;
 		default:
 			showElementById('createmask_tr','hide');
 			showElementById('directorymask_tr','hide');
+			showElementById('winssrv_tr','hide');
 			break;
 	}
 }
@@ -325,7 +332,7 @@ function authentication_change() {
               <br><?php echo sprintf(gettext("%s advertises itself as a time server to Windows clients."), get_product_name());?>
             </td>
           </tr>
-          <tr>
+          <tr id="winssrv_tr">
             <td width="22%" valign="top" class="vncell"><?=gettext("WINS server"); ?></td>
             <td width="78%" class="vtable">
               <input name="winssrv" type="text" class="formfld" id="winssrv" size="30" value="<?=htmlspecialchars($pconfig['winssrv']);?>">
