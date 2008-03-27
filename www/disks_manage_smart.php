@@ -166,7 +166,7 @@ function enable_change(enable_change) {
 								<?php endfor;?>
 							</select><br/>
 							<span class="vexpl">
-							<li><?=gettext("Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when smartd checks it.");?></li>
+							<li><?=gettext("Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked.");?></li>
 							<li><?=gettext("Sleep - Check the device unless it is in SLEEP mode.");?></li>
 							<li><?=gettext("Standby - Check the device unless it is in SLEEP or STANDBY mode. In these modes most disks are not spinning, so if you want to prevent a laptop disk from spinning up each poll, this is probably what you want.");?></li>
 							<li><?=gettext("Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the IDLE state, most disks are still spinning, so this is probably not what you want.");?></li>
