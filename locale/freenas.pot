@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-02-15 14:35+0000\n"
+"PO-Revision-Date: 2008-03-27 09:17+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -64,6 +64,9 @@ msgstr ""
 msgid "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 
+msgid "A directory listing is generated if a directory is requested and no index-file (index.php, index.html, index.htm or default.htm) was found in that directory."
+msgstr ""
+
 msgid "A route to this destination network already exists."
 msgstr ""
 
@@ -91,9 +94,6 @@ msgstr ""
 msgid "A valid IPv6 prefix must be specified."
 msgstr ""
 
-msgid "A valid TCP/IP port must be specified for the webGUI port."
-msgstr ""
-
 msgid "A valid destination network must be specified."
 msgstr ""
 
@@ -115,7 +115,7 @@ msgstr ""
 msgid "A valid prefix (1-128) must be specified."
 msgstr ""
 
-msgid "AD Authentication disabled"
+msgid "AD authentication disabled"
 msgstr ""
 
 msgid "AD or PDC name."
@@ -133,10 +133,10 @@ msgstr ""
 msgid "AFP Server"
 msgstr ""
 
-msgid "ARP Table"
+msgid "ARP Tables"
 msgstr ""
 
-msgid "ARP table"
+msgid "ARP tables"
 msgstr ""
 
 msgid "Access"
@@ -157,6 +157,9 @@ msgstr ""
 msgid "Activate"
 msgstr ""
 
+msgid "Activate S.M.A.R.T. monitoring for this device."
+msgstr ""
+
 msgid "Active Directory"
 msgstr ""
 
@@ -173,6 +176,9 @@ msgid "Add RSYNC"
 msgstr ""
 
 msgid "Add Route"
+msgstr ""
+
+msgid "Add additional scheduled self-test."
 msgstr ""
 
 msgid "Add command"
@@ -208,6 +214,9 @@ msgstr ""
 msgid "Add parameter"
 msgstr ""
 
+msgid "Add self-test"
+msgstr ""
+
 msgid "Add share"
 msgstr ""
 
@@ -236,9 +245,6 @@ msgid "Advanced Options"
 msgstr ""
 
 msgid "Advanced Power Management"
-msgstr ""
-
-msgid "Advanced Setup"
 msgstr ""
 
 msgid "Advanced settings"
@@ -401,13 +407,13 @@ msgstr ""
 msgid "Certificate"
 msgstr ""
 
-msgid "Certificate and key must always be specified together."
-msgstr ""
-
 msgid "Changes to this option will take effect after a reboot."
 msgstr ""
 
 msgid "Channel"
+msgstr ""
+
+msgid "Check interval"
 msgstr ""
 
 msgid "Check shared secret:"
@@ -476,6 +482,9 @@ msgstr ""
 msgid "Confirmation"
 msgstr ""
 
+msgid "Connected FTP users"
+msgstr ""
+
 msgid "Console menu"
 msgstr ""
 
@@ -510,10 +519,16 @@ msgstr ""
 msgid "Create work directory if it doesn't exist"
 msgstr ""
 
+msgid "Critical"
+msgstr ""
+
 msgid "Cron"
 msgstr ""
 
 msgid "Cron job"
+msgstr ""
+
+msgid "D-Link DSM320"
 msgstr ""
 
 msgid "DDP"
@@ -523,6 +538,9 @@ msgid "DHCP"
 msgstr ""
 
 msgid "DN to bind"
+msgstr ""
+
+msgid "DNS"
 msgstr ""
 
 #, php-format
@@ -607,6 +625,9 @@ msgstr ""
 msgid "Delete parameter"
 msgstr ""
 
+msgid "Delete self-test"
+msgstr ""
+
 msgid "Delete share"
 msgstr ""
 
@@ -643,6 +664,10 @@ msgstr ""
 msgid "Device"
 msgstr ""
 
+#, php-format
+msgid "Device /dev/%s - %s"
+msgstr ""
+
 msgid "Device is mounted, umount it first before detaching."
 msgstr ""
 
@@ -655,19 +680,22 @@ msgstr ""
 msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."
 msgstr ""
 
-msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling; see the m0n0wall homepage for a list of supported cards."
-msgstr ""
-
 msgid "Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once."
 msgstr ""
 
 msgid "Diagnostics"
 msgstr ""
 
+msgid "Difference"
+msgstr ""
+
 msgid "Directories to be shared."
 msgstr ""
 
 msgid "Directory"
+msgstr ""
+
+msgid "Directory listing"
 msgstr ""
 
 msgid "Directory mask"
@@ -698,6 +726,10 @@ msgid "Disabled"
 msgstr ""
 
 msgid "Disables :hex translations for anything except dot files. This option makes the '/' character illegal."
+msgstr ""
+
+#, php-format
+msgid "Discovered iSCSI target for %s"
 msgstr ""
 
 msgid "Disk"
@@ -766,6 +798,9 @@ msgstr ""
 msgid "Do you really want to delete this route?"
 msgstr ""
 
+msgid "Do you really want to delete this scheduled self-test?"
+msgstr ""
+
 msgid "Do you really want to delete this share?"
 msgstr ""
 
@@ -779,6 +814,12 @@ msgid "Do you really want to format this disk? All data will be lost!"
 msgstr ""
 
 msgid "Do you really want to uninstall this package?"
+msgstr ""
+
+msgid "Document root"
+msgstr ""
+
+msgid "Document root of the webserver. Home of the web page files."
 msgstr ""
 
 msgid "Domain"
@@ -874,6 +915,9 @@ msgstr ""
 msgid "Edit parameter"
 msgstr ""
 
+msgid "Edit self-test"
+msgstr ""
+
 msgid "Edit share"
 msgstr ""
 
@@ -881,6 +925,9 @@ msgid "Edit target"
 msgstr ""
 
 msgid "Edit user"
+msgstr ""
+
+msgid "Email"
 msgstr ""
 
 msgid "Email Report"
@@ -898,13 +945,22 @@ msgstr ""
 msgid "Enable NTP"
 msgstr ""
 
+msgid "Enable SMTP authentication."
+msgstr ""
+
 msgid "Enable Zeroconf"
+msgstr ""
+
+msgid "Enable authentication."
 msgstr ""
 
 msgid "Enable compression."
 msgstr ""
 
 msgid "Enable device polling"
+msgstr ""
+
+msgid "Enable directory listing."
 msgstr ""
 
 msgid "Enable extended attribute support"
@@ -934,6 +990,9 @@ msgstr ""
 msgid "Enable permission inheritance"
 msgstr ""
 
+msgid "Enable proxy authentication."
+msgstr ""
+
 msgid "Enable recycle bin"
 msgstr ""
 
@@ -941,9 +1000,6 @@ msgid "Enable store DOS attributes"
 msgstr ""
 
 msgid "Enable syslog'ing to remote syslog server"
-msgstr ""
-
-msgid "Enable the S.M.A.R.T daemon"
 msgstr ""
 
 msgid "Enable the system power control utility"
@@ -1044,28 +1100,19 @@ msgstr ""
 msgid "FTP Server"
 msgstr ""
 
-msgid "FTP Server disabled"
-msgstr ""
-
-msgid "FTP connected users"
-msgstr ""
-
 msgid "FTP events"
 msgstr ""
 
 msgid "FTP log"
 msgstr ""
 
-msgid "FTP users"
+msgid "FTP server disabled"
 msgstr ""
 
 msgid "FXP"
 msgstr ""
 
 msgid "FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!)."
-msgstr ""
-
-msgid "Factory Defaults"
 msgstr ""
 
 msgid "Factory defaults"
@@ -1141,10 +1188,7 @@ msgstr ""
 msgid "Format disk"
 msgstr ""
 
-msgid "Free Space"
-msgstr ""
-
-msgid "From e-mail"
+msgid "Free disk space"
 msgstr ""
 
 msgid "From email"
@@ -1154,6 +1198,9 @@ msgid "Fsck"
 msgstr ""
 
 msgid "Full Name"
+msgstr ""
+
+msgid "GID"
 msgstr ""
 
 msgid "Gateway"
@@ -1172,6 +1219,9 @@ msgid "Geom Vinum"
 msgstr ""
 
 msgid "Give full shell access to user."
+msgstr ""
+
+msgid "Give only local users access to the web page."
 msgstr ""
 
 msgid "Global Configuration"
@@ -1213,7 +1263,13 @@ msgstr ""
 msgid "Guest account"
 msgstr ""
 
+msgid "HTTP"
+msgstr ""
+
 msgid "HTTP Proxy"
+msgstr ""
+
+msgid "HTTPS"
 msgstr ""
 
 msgid "Hard disk standby time"
@@ -1223,6 +1279,9 @@ msgid "Helios X3000"
 msgstr ""
 
 msgid "Help Needed!"
+msgstr ""
+
+msgid "Hide dot files"
 msgstr ""
 
 msgid "Highlighting"
@@ -1329,7 +1388,7 @@ msgstr ""
 msgid "ISP DNS servers"
 msgstr ""
 
-msgid "If Login is required."
+msgid "Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the IDLE state, most disks are still spinning, so this is probably not what you want."
 msgstr ""
 
 msgid "If set afpd uses the ID information stored in AppleDouble V2 header files to reduce database load. Don't set this option if the volume is modified by non AFP clients (NFS/SMB/local)."
@@ -1339,6 +1398,9 @@ msgid "If the selected disk/partition is mounted it will be unmounted temporaril
 msgstr ""
 
 msgid "If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory."
+msgstr ""
+
+msgid "If this parameter is set, then users may not create or modify files in the share."
 msgstr ""
 
 #, php-format
@@ -1361,6 +1423,9 @@ msgid "In most cases, 'public' is used here."
 msgstr ""
 
 msgid "Info"
+msgstr ""
+
+msgid "Informal"
 msgstr ""
 
 msgid "Information"
@@ -1396,6 +1461,9 @@ msgstr ""
 msgid "Interfaces"
 msgstr ""
 
+msgid "Interval must be greater or equal than 10 seconds."
+msgstr ""
+
 #, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr ""
@@ -1413,9 +1481,6 @@ msgid "Keep all files"
 msgstr ""
 
 msgid "Keep diagnostics in navigation expanded"
-msgstr ""
-
-msgid "Key"
 msgstr ""
 
 msgid "Kill encrypted volume"
@@ -1462,10 +1527,7 @@ msgstr ""
 msgid "List"
 msgstr ""
 
-msgid "List of SMART capabilities on all detected disk"
-msgstr ""
-
-msgid "List of advanced ATA capabilities on all ATA disk"
+msgid "List of available target name on all configured iSCSI targets"
 msgstr ""
 
 msgid "List of detected ATA disks"
@@ -1477,7 +1539,10 @@ msgstr ""
 msgid "List of mount points"
 msgstr ""
 
-msgid "List of partition on all detected disk"
+msgid "List of open files"
+msgstr ""
+
+msgid "List of shares"
 msgstr ""
 
 msgid "Load"
@@ -1540,7 +1605,14 @@ msgstr ""
 msgid "MS Domain"
 msgstr ""
 
+msgid "MS Domain informations"
+msgstr ""
+
 msgid "MTU"
+msgstr ""
+
+#, php-format
+msgid "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr ""
 
 msgid "Manage RAID"
@@ -1633,9 +1705,6 @@ msgstr ""
 msgid "Modules"
 msgstr ""
 
-msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
-msgstr ""
-
 msgid "Mount Point"
 msgstr ""
 
@@ -1716,6 +1785,9 @@ msgid "Network that is authorised to access the NFS share."
 msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
+msgstr ""
+
+msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
 msgstr ""
 
 msgid "No"
@@ -1888,9 +1960,6 @@ msgstr ""
 msgid "Paste a signed certificate in X.509 PEM format here."
 msgstr ""
 
-msgid "Paste an RSA private key in PEM format here."
-msgstr ""
-
 msgid "Paste an private key in PEM format here."
 msgstr ""
 
@@ -1936,10 +2005,16 @@ msgstr ""
 msgid "Port "
 msgstr ""
 
+msgid "Port is already used by WebGUI."
+msgstr ""
+
 msgid "PostInit"
 msgstr ""
 
 msgid "Power Daemon"
+msgstr ""
+
+msgid "Power mode"
 msgstr ""
 
 msgid "PreInit"
@@ -1976,6 +2051,9 @@ msgid "Processes information"
 msgstr ""
 
 msgid "Profile"
+msgstr ""
+
+msgid "Protocol"
 msgstr ""
 
 msgid "Provider"
@@ -2026,16 +2104,22 @@ msgstr ""
 msgid "RSYNC Client"
 msgstr ""
 
+msgid "RSYNC Client informations"
+msgstr ""
+
+msgid "RSYNC Local"
+msgstr ""
+
 msgid "RSYNC Options"
+msgstr ""
+
+msgid "RSYNC events"
 msgstr ""
 
 msgid "RSYNC log"
 msgstr ""
 
 msgid "RSYNCD"
-msgstr ""
-
-msgid "RSYNCD events"
 msgstr ""
 
 msgid "Raid name"
@@ -2083,6 +2167,12 @@ msgstr ""
 msgid "Remove all entries from ARP table"
 msgstr ""
 
+msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
+msgstr ""
+
+msgid "Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report."
+msgstr ""
+
 msgid "Reports"
 msgstr ""
 
@@ -2098,25 +2188,25 @@ msgstr ""
 msgid "Retry"
 msgstr ""
 
+msgid "Routes"
+msgstr ""
+
+msgid "Routing tables"
+msgstr ""
+
 msgid "Rows"
 msgstr ""
 
 msgid "Rsync Daemon"
 msgstr ""
 
-msgid "S.M.A.R.T Daemon"
-msgstr ""
-
 msgid "S.M.A.R.T."
 msgstr ""
 
+msgid "S.M.A.R.T. events"
+msgstr ""
+
 msgid "S.M.A.R.T. log"
-msgstr ""
-
-msgid "SMARTD"
-msgstr ""
-
-msgid "SMARTD events"
 msgstr ""
 
 msgid "SNMP"
@@ -2125,16 +2215,19 @@ msgstr ""
 msgid "SNMP Modules"
 msgstr ""
 
+msgid "SSH"
+msgstr ""
+
 msgid "SSH Daemon"
+msgstr ""
+
+msgid "SSH events"
 msgstr ""
 
 msgid "SSH key"
 msgstr ""
 
 msgid "SSHD"
-msgstr ""
-
-msgid "SSHD events"
 msgstr ""
 
 msgid "SSHD log"
@@ -2161,7 +2254,13 @@ msgstr ""
 msgid "Scheduled"
 msgstr ""
 
+msgid "Scheduled Self-Test"
+msgstr ""
+
 msgid "Scheduled reboot"
+msgstr ""
+
+msgid "Scheduled self-tests"
 msgstr ""
 
 msgid "Scheduled shutdown"
@@ -2171,6 +2270,9 @@ msgid "Security"
 msgstr ""
 
 msgid "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select 'Old software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS release."
+msgstr ""
+
+msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr ""
 
 msgid "Select mount point where to create the swap file."
@@ -2191,6 +2293,9 @@ msgstr ""
 msgid "Selected file isn't an valid ISO file."
 msgstr ""
 
+msgid "Self-Monitoring, Analysis and Reporting Technology"
+msgstr ""
+
 msgid "Send Buffer Size"
 msgstr ""
 
@@ -2200,22 +2305,13 @@ msgstr ""
 msgid "Send now"
 msgstr ""
 
-msgid "Sensors"
-msgstr ""
-
 msgid "Server"
 msgstr ""
 
 msgid "Server Name"
 msgstr ""
 
-msgid "Server address"
-msgstr ""
-
 msgid "Server description. This can usually be left blank."
-msgstr ""
-
-msgid "Server port"
 msgstr ""
 
 msgid "Services"
@@ -2227,10 +2323,16 @@ msgstr ""
 msgid "Set browseable"
 msgstr ""
 
+msgid "Set read only"
+msgstr ""
+
 msgid "Set share password."
 msgstr ""
 
 msgid "Set the account's primary group to the given group."
+msgstr ""
+
+msgid "Sets the interval between disk checks to N seconds. The minimum allowed value is 10."
 msgstr ""
 
 msgid "Settings"
@@ -2263,7 +2365,7 @@ msgstr ""
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr ""
 
-msgid "Show the list of available target name on all configured iSCSI targets"
+msgid "Show process information"
 msgstr ""
 
 msgid "Shutdown"
@@ -2291,6 +2393,9 @@ msgid "Size of receive buffer (16384 by default)."
 msgstr ""
 
 msgid "Size of send buffer (16384 by default)."
+msgstr ""
+
+msgid "Sleep - Check the device unless it is in SLEEP mode."
 msgstr ""
 
 msgid "Sockets"
@@ -2341,6 +2446,9 @@ msgstr ""
 msgid "Standard MTU is 1500, use 9000 for jumbo frame."
 msgstr ""
 
+msgid "Standby - Check the device unless it is in SLEEP or STANDBY mode. In these modes most disks are not spinning, so if you want to prevent a laptop disk from spinning up each poll, this is probably what you want."
+msgstr ""
+
 msgid "Standby time"
 msgstr ""
 
@@ -2386,9 +2494,6 @@ msgstr ""
 msgid "Swap"
 msgstr ""
 
-msgid "Swap Status"
-msgstr ""
-
 msgid "Swap disabled"
 msgstr ""
 
@@ -2399,6 +2504,9 @@ msgid "Swap file size"
 msgstr ""
 
 msgid "Swap memory"
+msgstr ""
+
+msgid "Swap status"
 msgstr ""
 
 msgid "Switch to"
@@ -2441,6 +2549,9 @@ msgstr ""
 msgid "TCP port"
 msgstr ""
 
+msgid "TCP port to bind the server to."
+msgstr ""
+
 msgid "TLS + cleartext"
 msgstr ""
 
@@ -2466,6 +2577,9 @@ msgid "Telegent TG100"
 msgstr ""
 
 msgid "Temperature"
+msgstr ""
+
+msgid "Temperature monitoring"
 msgstr ""
 
 msgid "The  deny  option specifies users and groups who are not allowed access to the share. It follows the same  format  as  the  allow option."
@@ -2527,6 +2641,14 @@ msgid "The attribute '%s' contains the illegal character ':' and is no valid pas
 msgstr ""
 
 #, c-format
+msgid "The attribute '%s' does not appear to be a valid certificate."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' does not appear to be a valid private key."
+msgstr ""
+
+#, c-format
 msgid "The attribute '%s' is an invalid port number."
 msgstr ""
 
@@ -2585,6 +2707,9 @@ msgstr ""
 msgid "The configuration has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
+msgid "The configuration has been modified.<br>You must apply the changes in order for them to take effect."
+msgstr ""
+
 #, php-format
 msgid "The configuration has been restored. %s is now rebooting."
 msgstr ""
@@ -2614,9 +2739,6 @@ msgstr ""
 msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
-msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr ""
-
 msgid "The encrypted volume list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
@@ -2628,9 +2750,6 @@ msgid "The following input errors were detected"
 msgstr ""
 
 msgid "The full name contains invalid characters."
-msgstr ""
-
-msgid "The group ID must be > 1001."
 msgstr ""
 
 msgid "The group description contains invalid characters."
@@ -2646,9 +2765,6 @@ msgid "The host name contain invalid characters."
 msgstr ""
 
 msgid "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and ."
-msgstr ""
-
-msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
 msgstr ""
 
 msgid "The iSCSI disk list has been changed.<br>You must apply the changes in order for them to take effect."
@@ -2738,9 +2854,6 @@ msgstr ""
 msgid "The uploaded image file is not for this platform"
 msgstr ""
 
-msgid "The user ID must be > 1001."
-msgstr ""
-
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr ""
 
@@ -2786,9 +2899,6 @@ msgstr ""
 msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
 msgstr ""
 
-msgid "This certificate does not appear to be valid."
-msgstr ""
-
 msgid "This controls how the case of filenames are viewed and stored."
 msgstr ""
 
@@ -2828,9 +2938,6 @@ msgstr ""
 msgid "This is for information only (not using during iSCSI negociation)."
 msgstr ""
 
-msgid "This key does not appear to be valid."
-msgstr ""
-
 msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
 msgstr ""
 
@@ -2868,6 +2975,9 @@ msgstr ""
 msgid "This option specifies the user name or user ID that file transfers to and from that module should take place. In combination with the '%s' option this determines what file permissions are available. Leave this field empty to use default settings."
 msgstr ""
 
+msgid "This parameter controls whether files starting with a dot appear as hidden files."
+msgstr ""
+
 msgid "This parameters will be added to [global] in smb.conf."
 msgstr ""
 
@@ -2888,6 +2998,9 @@ msgid "This will create a recycle bin on the share."
 msgstr ""
 
 msgid "This will erase ALL data on the selected disks! Do not use this option if you want to add an already existing RAID again."
+msgstr ""
+
+msgid "Time"
 msgstr ""
 
 msgid "Time server"
@@ -2959,6 +3072,9 @@ msgstr ""
 msgid "UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
 msgstr ""
 
+msgid "UID"
+msgstr ""
+
 msgid "UPnP"
 msgstr ""
 
@@ -2998,6 +3114,9 @@ msgstr ""
 msgid "Update period"
 msgstr ""
 
+msgid "Updating in 5 seconds."
+msgstr ""
+
 msgid "Upgrade firmware"
 msgstr ""
 
@@ -3008,9 +3127,6 @@ msgid "Uptime"
 msgstr ""
 
 msgid "Use AFP3 unix privileges."
-msgstr ""
-
-msgid "Use SMTP authentication."
 msgstr ""
 
 msgid "Use SSL/TLS encryption layer."
@@ -3107,10 +3223,10 @@ msgstr ""
 msgid "Web user interface"
 msgstr ""
 
-msgid "WebGUI port"
+msgid "WebGUI"
 msgstr ""
 
-msgid "WebGUI protocol"
+msgid "Webserver"
 msgstr ""
 
 msgid "Where the working files will be stored"
@@ -3148,6 +3264,10 @@ msgid "You can't unmount a drive which is used by swap file, a iSCSI-target file
 msgstr ""
 
 msgid "You have to define some 'Extent' objects first."
+msgstr ""
+
+#, c-format
+msgid "You have to select at least one item for '%s'."
 msgstr ""
 
 msgid "You may enter a description here for your reference (not parsed)."
@@ -3205,9 +3325,6 @@ msgid "chroot() everyone, but root."
 msgstr ""
 
 msgid "crlf"
-msgstr ""
-
-msgid "day"
 msgstr ""
 
 msgid "days"
@@ -3286,10 +3403,10 @@ msgstr ""
 msgid "seconds"
 msgstr ""
 
-msgid "show process information"
+msgid "striping"
 msgstr ""
 
-msgid "striping"
+msgid "type"
 msgstr ""
 
 msgid "upriv"
@@ -3299,9 +3416,6 @@ msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
 
 msgid "webGUI Configuration"
-msgstr ""
-
-msgid "webGUI SSL certificate/key"
 msgstr ""
 
 msgid "week days"
