@@ -63,8 +63,10 @@ bin/pax
 bin/ps
 
 ## pwd -- return working directory name
-#Prevent WinSCP to Generate Error message
-bin/pwd:bin/realpath
+bin/pwd
+
+## realpath -- return resolved physical path
+bin/realpath
 
 ## rm, unlink -- remove directory entries
 bin/rm:bin/unlink
