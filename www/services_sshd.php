@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Services"),gettext("SSHD"));
+$pgtitle = array(gettext("Services"),gettext("SSH"));
 
 if (!is_array($config['sshd'])) {
 	$config['sshd'] = array();
