@@ -63,6 +63,16 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/S
   <tr>
     <td class="tabcont">
     	<table width="100%" border="0">
+				<?php if (!isset($config['samba']['enable'])):?>
+				<tr>
+					<td class="listtopic"><?=gettext("CIFS/SMB informations");?></td>
+				</tr>
+				<tr>
+					<td>
+						<pre><br/><?=gettext("CIFS/SMB disabled");?></pre>
+					</td>
+				</tr>
+				<?php else:?>
     		<tr>
 					<td class="listtopic"><?=gettext("List of shares");?></td>
 				</tr>
@@ -84,6 +94,7 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("CIFS/S
 						?></pre>
 					</td>
 			  </tr>
+			  <?php endif;?>
     	</table>
     </td>
   </tr>
