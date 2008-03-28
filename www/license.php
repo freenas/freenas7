@@ -137,8 +137,8 @@ $pgtitle = array(gettext("License"));
 	  <p>ataidle (<a href="http://www.cran.org.uk/bruce/software/ataidle.php" target="_blank">http://www.cran.org.uk/bruce/software/ataidle.php</a>)<br>
 			Copyright &copy; 2004-2005 Bruce Cran &lt;bruce@cran.org.uk&gt;. All rights reserved.</p>
 
-	  <p>smartmontools (<a href="http://smartmontools.sourceforge.net" target="_blank">http://smartmontools.sourceforge.net</a>)<br>
-			Copyright &copy; 2002-2005 Bruce Allen.</p>
+	  <p>smartmontools (<a href="http://sourceforge.net/projects/smartmontools" target="_blank">http://sourceforge.net/projects/smartmontools</a>)<br>
+			Copyright &copy; 2002-2008 Bruce Allen.</p>
 
 	  <p>iSCSI initiator (<a href="ftp://ftp.cs.huji.ac.il/users/danny/freebsd" target="_blank">ftp://ftp.cs.huji.ac.il/users/danny/freebsd</a>)<br>
 			Copyright &copy; 2005 Daniel Braniss (danny@cs.huji.ac.il).</p>
