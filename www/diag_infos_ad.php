@@ -60,18 +60,18 @@ if (!is_array($config['ad'])) {
 			</ul>
 		</td>
 	</tr>
-  <tr>
-    <td class="tabcont">
-    	<table width="100%" border="0">
+	<tr>
+		<td class="tabcont">
+			<table width="100%" border="0">
 				<tr>
 					<td class="listtopic"><?=gettext("MS Domain informations");?></td>
 				</tr>
 				<tr>
-			    <td>
-			    	<?php if (!isset($config['ad']['enable'])):?>
-			    	<pre><br/><?=gettext("AD authentication disabled");?></pre>
-			    	<?php else:?>
-			    	<pre><br/><?php
+					<td>
+						<?php if (!isset($config['ad']['enable'])):?>
+						<pre><br/><?=gettext("AD authentication disabled");?></pre>
+						<?php else:?>
+						<pre><br/><?php
 						echo "<strong>".gettext("Accessiblity test to MS domain").":</strong><br><br>";
 						echo gettext("Results for net rpc testjoin:") . "<br>";
 						exec("/usr/local/bin/net rpc testjoin", $rawdata);
@@ -86,11 +86,23 @@ if (!is_array($config['ad'])) {
 						echo implode("\n", $rawdata);
 						unset($rawdata);
 						?></pre>
+					</td>
+				</tr>
+				<tr>
+					<td class="listtopic"><?=gettext("List of imported users");?></td>
+				</tr>
+				<tr>
+					<td>
+						<pre><br/><?php
+						exec("/usr/local/bin/net rpc user -S {$config['ad']['ad_srv_name']} -U {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}", $rawdata);
+						echo implode("\n", $rawdata);
+						unset($rawdata);
+						?></pre>
 						<?php endif;?>
 					</td>
-			  </tr>
-    	</table>
-    </td>
-  </tr>
+				</tr>
+			</table>
+		</td>
+	</tr>
 </table>
 <?php include("fend.inc");?>
