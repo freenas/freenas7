@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: ldap
@@ -21,6 +21,7 @@ ldap_secret=${ldap_secret:-"/var/etc/ldap.secret"}
 if configxml_isset //ldap/enable; then
 	echo "Generating ldap.conf."
 	/usr/local/bin/xml sel -t -m "//ldap" \
+		-v "concat('host ',hostname)" -n \
 		-v "concat('uri ldap://',hostname)" -n \
 		-v "concat('base ',base)" -n \
 		-v "concat('rootbinddn ',binddn)" -n \
@@ -29,7 +30,8 @@ if configxml_isset //ldap/enable; then
 		-v "concat('pam_password ',pam_password)" -n \
 		-o "pam_ldap_attribute	uid" -n \
 		-o "bind_policy soft" -n \
-		-o "bind_timelimit 5" \
+		-o "bind_timelimit 5" -n \
+		-o "ldap_version 3" \
 		${configxml_file} | /usr/local/bin/xml unesc > ${ldap_config}
 
 	echo "Generating ldap.secret."
