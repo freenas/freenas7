@@ -85,6 +85,9 @@ fi
 	-i "count(//ad/enable) > 0" \
 		-o "password   sufficient	/usr/local/lib/pam_winbind.so	debug try_first_pass" -n \
 	-b \
+	-i "count(//ldap/enable) > 0" \
+		-o "password   sufficient /usr/local/lib/pam_ldap.so" -n \
+	-b \
 	-o "password   required        pam_unix.so             no_warn try_first_pass" \
 	${configxml_file} | /usr/local/bin/xml unesc > ${sshd_config}
 
