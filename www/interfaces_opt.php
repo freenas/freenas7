@@ -61,11 +61,14 @@ if ($config['interfaces']['opt' . $index]['ipv6addr'] == "auto") {
 }
 
 $pconfig['descr'] = $optcfg['descr'];
-$pconfig['mtu'] = $optcfg['mtu'];
 $pconfig['enable'] = isset($optcfg['enable']);
 $pconfig['polling'] = isset($optcfg['polling']);
 $pconfig['media'] = $optcfg['media'];
 $pconfig['mediaopt'] = $optcfg['mediaopt'];
+
+// Get the current configured MTU.
+$ifinfo = get_interface_info($optcfg['if']);
+$pconfig['mtu'] = $ifinfo['mtu'];
 
 /* Wireless interface? */
 if (isset($optcfg['wireless'])) {
