@@ -152,8 +152,6 @@ if ($_POST) {
 					unlink($d_landirty_path);
 				}
 			}
-			// Reload page to update disabled controls, otherwise they're empty.
-			header("Location: interfaces_lan.php");
 		} else {
 			touch($d_landirty_path);
 		}
@@ -190,9 +188,9 @@ function change_netmask_bits() {
 function type_change() {
   switch(document.iform.type.selectedIndex) {
 		case 0: /* Static */
-			document.iform.ipaddr.disabled = 0;
-			document.iform.subnet.disabled = 0;
-			document.iform.gateway.disabled = 0;
+			document.iform.ipaddr.readOnly = 0;
+			document.iform.subnet.readOnly = 0;
+			document.iform.gateway.readOnly = 0;
 			
 			showElementById('dhcpclientidentifier_tr','hide');
 			showElementById('dhcphostname_tr','hide');
@@ -200,9 +198,9 @@ function type_change() {
 			break;
 
     case 1: /* DHCP */
-			document.iform.ipaddr.disabled = 1;
-			document.iform.subnet.disabled = 1;
-			document.iform.gateway.disabled = 1;
+			document.iform.ipaddr.readOnly = 1;
+			document.iform.subnet.readOnly = 1;
+			document.iform.gateway.readOnly = 1;
 			
 			showElementById('dhcpclientidentifier_tr','show');
 			showElementById('dhcphostname_tr','show');
@@ -214,15 +212,15 @@ function type_change() {
 function ipv6_type_change() {
   switch(document.iform.ipv6type.selectedIndex) {
 		case 0: /* Static */
-			document.iform.ipv6addr.disabled = 0;
-			document.iform.ipv6subnet.disabled = 0;
-			document.iform.ipv6gateway.disabled = 0;
+			document.iform.ipv6addr.readOnly = 0;
+			document.iform.ipv6subnet.readOnly = 0;
+			document.iform.ipv6gateway.readOnly = 0;
 			break;
 
     case 1: /* Autoconfigure */
-			document.iform.ipv6addr.disabled = 1;
-			document.iform.ipv6subnet.disabled = 1;
-			document.iform.ipv6gateway.disabled = 1;
+			document.iform.ipv6addr.readOnly = 1;
+			document.iform.ipv6subnet.readOnly = 1;
+			document.iform.ipv6gateway.readOnly = 1;
 			break;
   }
 }
@@ -288,14 +286,14 @@ function media_change() {
 			    <tr id="dhcpclientidentifier_tr">
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Client Identifier");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" disabled>
+			        <input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" readonly>
 			        <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.");?></span>
 			      </td>
 			    </tr>
 			    <tr id="dhcphostname_tr">
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Hostname");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" disabled><br>
+			        <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" readonly><br>
 			        <span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
 			      </td>
 			    </tr>
