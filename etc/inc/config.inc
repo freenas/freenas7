@@ -239,9 +239,9 @@ if (!$noparseconfig) {
 					echo "\n";
 					echo "*******************************************************************************\n";
 					echo "No XML configuration file found - using factory defaults.\n";
-					echo "Make sure that the configuration floppy disk or USB stick with the config.xml\n";
-					echo "file is inserted. If it isn't, your configuration changes will be lost\n";
-					echo "on reboot.\n";
+					echo "Make sure that the configuration floppy disk or USB stick (MSDOS FAT formatted)\n";
+					echo "with the config.xml file is inserted. If it isn't, your configuration changes\n";
+					echo "will be lost on reboot.\n";
 					echo "*******************************************************************************\n";
 					echo "\n";
 				} else {
