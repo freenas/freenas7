@@ -2,17 +2,17 @@
 # Copyright (c) 2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
-# PROVIDE: websrv
-# REQUIRE: websrv_htpasswd DAEMON
+# PROVIDE: webdav
+# REQUIRE: DAEMON
 # KEYWORD: shutdown
-# XQUERY: -i "count(//websrv/enable) > 0" -o "0" -b
-# RCVAR: websrv
+# XQUERY: -i "count(//webdav/enable) > 0" -o "0" -b
+# RCVAR: webdav
 
 . /etc/rc.subr
 . /etc/configxml.subr
 . /etc/util.subr
 
-name="websrv"
+name="webdav"
 rcvar=`set_rcvar`
 
 # Custom commands
@@ -21,17 +21,43 @@ stop_postcmd=stop_postcmd
 restart_precmd="checkconfig"
 reload_precmd=reload_precmd
 reload_postcmd=reload_postcmd
-extra_commands="reload check"
+passwd_cmd="create_passwd"
+extra_commands="reload check passwd"
 
 # Defaults
-websrv_enable=${websrv_enable:-"NO"}
-websrv_conf=${websrv_conf:-"/var/etc/websrv.conf"}
-websrv_certpem=${websrv_certpem:-"/var/etc/websrvcert.pem"}
+webdav_enable=${webdav_enable:-"NO"}
+webdav_conf=${webdav_conf:-"/var/etc/webdav.conf"}
+webdav_certpem=${webdav_certpem:-"/var/etc/webdavcert.pem"}
 command=/usr/local/sbin/lighttpd
 command_args="-f ${websrv_conf} -m /usr/local/lib/lighttpd"
-pidfile=/var/run/websrv.pid
+pidfile=/var/run/webdav.pid
 sig_reload="-INT"
 check_cmd="checkconfig"
+
+create_passwd()
+{
+	# Defaults
+	htpasswdfile=".webdav_htpasswd"
+	htpasswd="/var/run/${htpasswdfile}"
+	
+	echo "Generating ${htpasswdfile}."
+	
+	# Generate the htpasswd file used by websrv.
+	/bin/cat /dev/null > ${htpasswd}
+
+	# Add configured users. Parse /etc/master.passwd to get password.
+	# Did not find a better solution. Using PHP crypt fails when calling via WebGUI.
+	/usr/local/bin/xml sel -t -m "//access/user" \
+		-v login \
+		-i "position() != last()" -n -b \
+		${configxml_file} | /usr/local/bin/xml unesc | \
+		while read _login; do
+			_password=`/bin/cat /etc/master.passwd | /usr/bin/grep "^${_login}:*" | /usr/bin/awk '{split($0,a,":"); print a[2]}'`
+			echo "${_login}:${_password}" >> ${htpasswd}
+		done
+	
+	/bin/chmod 0600 ${htpasswd}
+}
 
 create_conf()
 {
@@ -55,71 +81,10 @@ create_conf()
 		${configxml_file} | /usr/local/bin/xml unesc > ${websrv_conf}
 
 	cat <<EOF >> ${websrv_conf}
-server.modules = (
-  "mod_access",
-  "mod_auth",
-  "mod_cgi",
-	"mod_webdav" )
+server.modules = ( "mod_webdav" )
 server.errorlog-use-syslog = "enable"
 server.event-handler = "freebsd-kqueue"
-index-file.names   = ( "index.php", "index.html", "index.htm", "index.shtml", "default.htm" )
-mimetype.assign = (
-  ".pdf"     => "application/pdf",
-  ".sig"     => "application/pgp-signature",
-  ".spl"     => "application/futuresplash",
-  ".class"   => "application/octet-stream",
-  ".ps"      => "application/postscript",
-  ".torrent" => "application/x-bittorrent",
-  ".dvi"     => "application/x-dvi",
-  ".gz"      => "application/x-gzip",
-  ".pac"     => "application/x-ns-proxy-autoconfig",
-  ".swf"     => "application/x-shockwave-flash",
-  ".tar.gz"  => "application/x-tgz",
-  ".tgz"     => "application/x-tgz",
-  ".tar"     => "application/x-tar",
-  ".zip"     => "application/zip",
-  ".mp3"     => "audio/mpeg",
-  ".m3u"     => "audio/x-mpegurl",
-  ".wma"     => "audio/x-ms-wma",
-  ".wax"     => "audio/x-ms-wax",
-  ".ogg"     => "application/ogg",
-  ".wav"     => "audio/x-wav",
-  ".gif"     => "image/gif",
-  ".jpg"     => "image/jpeg",
-  ".jpeg"    => "image/jpeg",
-  ".png"     => "image/png",
-  ".xbm"     => "image/x-xbitmap",
-  ".xpm"     => "image/x-xpixmap",
-  ".xwd"     => "image/x-xwindowdump",
-  ".css"     => "text/css",
-  ".html"    => "text/html",
-  ".htm"     => "text/html",
-  ".js"      => "text/javascript",
-  ".asc"     => "text/plain",
-  ".c"       => "text/plain",
-  ".cpp"     => "text/plain",
-  ".log"     => "text/plain",
-  ".conf"    => "text/plain",
-  ".text"    => "text/plain",
-  ".txt"     => "text/plain",
-  ".dtd"     => "text/xml",
-  ".xml"     => "text/xml",
-  ".mpeg"    => "video/mpeg",
-  ".mpg"     => "video/mpeg",
-  ".mov"     => "video/quicktime",
-  ".qt"      => "video/quicktime",
-  ".avi"     => "video/x-msvideo",
-  ".asf"     => "video/x-ms-asf",
-  ".asx"     => "video/x-ms-asf",
-  ".wmv"     => "video/x-ms-wmv",
-  ".bz2"     => "application/x-bzip",
-  ".tbz"     => "application/x-bzip-compressed-tar",
-  ".tar.bz2" => "application/x-bzip-compressed-tar"
-)
-url.access-deny = ( "~", ".inc" )
-static-file.exclude-extensions = ( ".php", ".pl", ".fcgi" )
 server.pid-file = "${pidfile}"
-cgi.assign = (".php" => "/usr/local/bin/php")
 
 webdav.activate = "enable"
 webdav.is-readonly = "enable"
