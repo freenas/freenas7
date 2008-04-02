@@ -439,11 +439,12 @@ create_iso () {
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 
-	ISOFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-liveCD-${FREENAS_VERSION}.${FREENAS_REVISION}.iso"
-
 	if [ ! $LIGHT_ISO ]; then
+		ISOFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-liveCD-${FREENAS_VERSION}.${FREENAS_REVISION}.iso"
 		echo "ISO: Generating the $FREENAS_PRODUCTNAME Image file:"
 		create_image;
+	else
+		ISOFILENAME="${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}-liveCD-light-${FREENAS_VERSION}.${FREENAS_REVISION}.iso"
 	fi
 
 	# Set platform information.
@@ -501,6 +502,7 @@ create_iso () {
 create_iso_light() {
 	LIGHT_ISO=1
 	create_iso;
+	unset LIGHT_ISO
 	return 0
 }
 
