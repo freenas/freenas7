@@ -32,7 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
-$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("MS Domain"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("MS Active Directory"));
 
 if (!is_array($config['ad'])) {
 	$config['ad'] = array();
@@ -64,7 +64,7 @@ if (!is_array($config['ad'])) {
 		<td class="tabcont">
 			<table width="100%" border="0">
 				<tr>
-					<td class="listtopic"><?=gettext("MS Domain informations");?></td>
+					<td class="listtopic"><?=gettext("MS Active Directory informations");?></td>
 				</tr>
 				<tr>
 					<td>
@@ -72,19 +72,12 @@ if (!is_array($config['ad'])) {
 						<pre><br/><?=gettext("AD authentication disabled");?></pre>
 						<?php else:?>
 						<pre><br/><?php
-						echo "<strong>".gettext("Accessiblity test to MS domain").":</strong><br><br>";
 						echo gettext("Results for net rpc testjoin:") . "<br>";
-						exec("/usr/local/bin/net rpc testjoin", $rawdata);
-						echo implode("\n", $rawdata);
-						unset($rawdata);
+						system("/usr/local/bin/net rpc testjoin -S {$config['ad']['ad_srv_name']}");
 						echo "<br/>" . gettext("Ping winbindd to see if it is alive:") . "<br>";
-						exec("/usr/local/bin/wbinfo -p", $rawdata);
-						echo implode("\n", $rawdata);
-						unset($rawdata);
-						echo "<br/><br/>" . gettext("Check shared secret:") . "<br>";
-						exec("/usr/local/bin/wbinfo -t", $rawdata);
-						echo implode("\n", $rawdata);
-						unset($rawdata);
+						system("/usr/local/bin/wbinfo -p");
+						echo "<br/>" . gettext("Check shared secret:") . "<br>";
+						system("/usr/local/bin/wbinfo -t");
 						?></pre>
 					</td>
 				</tr>
