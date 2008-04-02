@@ -29,7 +29,7 @@ webdav_enable=${webdav_enable:-"NO"}
 webdav_conf=${webdav_conf:-"/var/etc/webdav.conf"}
 webdav_certpem=${webdav_certpem:-"/var/etc/webdavcert.pem"}
 command=/usr/local/sbin/lighttpd
-command_args="-f ${websrv_conf} -m /usr/local/lib/lighttpd"
+command_args="-f ${webdav_conf} -m /usr/local/lib/lighttpd"
 pidfile=/var/run/webdav.pid
 sig_reload="-INT"
 check_cmd="checkconfig"
@@ -64,23 +64,17 @@ create_conf()
 	local _protocol _certificate _privatekey _documentroot
 
 	# Get configuration data
-	_protocol=`configxml_get "//websrv/protocol"`
-	_certificate=`configxml_get "//websrv/certificate"`
-	_privatekey=`configxml_get "//websrv/privatekey"`
-	_documentroot=`configxml_get "//websrv/documentroot"`
+	_protocol=`configxml_get "//webdac/protocol"`
+	_certificate=`configxml_get "//webdac/certificate"`
+	_privatekey=`configxml_get "//webdav/privatekey"`
 
 	# Create .conf file
-	/usr/local/bin/xml sel -t -m "//websrv" \
+	/usr/local/bin/xml sel -t -m "//webdav" \
 		-v "concat('server.port = ',port)" -n \
-		-v "concat('server.document-root = &quot;',documentroot,'&quot;')" -n \
-		-i "count(dirlisting) > 0" \
-			-o "server.dir-listing = &quot;enable&quot;" -n \
-			-o "dir-listing.activate = &quot;enable&quot;" -n \
-			-o "dir-listing.hide-dotfiles = &quot;enable&quot;" -n \
-		-b \
-		${configxml_file} | /usr/local/bin/xml unesc > ${websrv_conf}
+		${configxml_file} | /usr/local/bin/xml unesc > ${webdav_conf}
 
-	cat <<EOF >> ${websrv_conf}
+	cat <<EOF >> ${webdav_conf}
+server.document-root = "/mnt"
 server.modules = ( "mod_webdav" )
 server.errorlog-use-syslog = "enable"
 server.event-handler = "freebsd-kqueue"
@@ -88,6 +82,13 @@ server.pid-file = "${pidfile}"
 
 webdav.activate = "enable"
 webdav.is-readonly = "enable"
+
+\$HTTP["url"] =~ "^/dav(\$|/)" {
+  webdav.activate = "enable"
+  webdav.is-readonly = "enable"
+  webdav.sqlite-db-name = "/var/run/lighttpd/lighttpd.webdav_lock.db"
+}
+
 EOF
 
 	# Configure authentication.
