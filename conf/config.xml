@@ -582,4 +582,11 @@
 			<crit>0</crit>
 		</temp>
 	</smartd>
+	<ad>
+		<!-- <enable/> -->
+		<ad_srv_name></ad_srv_name>
+		<ad_srv_ip></ad_srv_ip>
+		<admin_name>Administrator</admin_name>
+		<admin_pass></admin_pass>
+	</ad>
 </freenas>
