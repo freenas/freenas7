@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>4.8</version>
+	<version>4.9</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -584,9 +584,8 @@
 	</smartd>
 	<ad>
 		<!-- <enable/> -->
-		<ad_srv_name></ad_srv_name>
-		<ad_srv_ip></ad_srv_ip>
-		<admin_name>Administrator</admin_name>
-		<admin_pass></admin_pass>
+		<server></server>
+		<username>Administrator</username>
+		<password></password>
 	</ad>
 </freenas>

@@ -39,17 +39,11 @@ if (!is_array($config['ad'])) {
 	$config['ad'] = array();
 }
 
-if (!is_array($config['samba'])) {
-	$config['samba'] = array();
-}
-
 $pconfig['enable'] = isset($config['ad']['enable']);
-$pconfig['admin_name'] = $config['ad']['admin_name'];
-$pconfig['admin_pass'] = $config['ad']['admin_pass'];
-$pconfig['admin_pass2'] = $config['ad']['admin_pass'];
-$pconfig['ad_srv_name'] = $config['ad']['ad_srv_name'];
-$pconfig['ad_srv_ip'] = $config['ad']['ad_srv_ip'];
-$pconfig['domain_name'] = $config['samba']['workgroup'];
+$pconfig['username'] = $config['ad']['username'];
+$pconfig['password'] = $config['ad']['password'];
+$pconfig['password2'] = $config['ad']['password'];
+$pconfig['server'] = $config['ad']['server'];
 
 if ($_POST) {
 	unset($input_errors);
@@ -57,34 +51,23 @@ if ($_POST) {
 
 	// Input validation.
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "admin_name admin_pass ad_srv_ip");
-		$reqdfieldsn = array(gettext("Administrator name"),gettext("Administration password"),gettext("AD server IP"));
-		$reqdfieldst = explode(" ", "string string ipaddr");
+		$reqdfields = explode(" ", "username password");
+		$reqdfieldsn = array(gettext("Administrator name"),gettext("Administration password"));
+		$reqdfieldst = explode(" ", "string string");
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-		if (($_POST['admin_pass'] != $_POST['admin_pass2'])) {
-			$input_errors[] = gettext("Password don't match.");
+		if (($_POST['password'] !== $_POST['password2'])) {
+			$input_errors[] = gettext("The confimed password does not match. Please ensure the passwords match exactly.");
 		}
 	}
 
 	if (!$input_errors) {
-		$config['ad']['admin_name'] = $_POST['admin_name'];
-		$config['ad']['admin_pass'] = $_POST['admin_pass'];
-		$config['ad']['ad_srv_ip'] = $_POST['ad_srv_ip'];
-		$config['ad']['ad_srv_name'] = $_POST['ad_srv_name'];
+		$config['ad']['server'] = $_POST['server'];
+		$config['ad']['username'] = $_POST['username'];
+		$config['ad']['password'] = $_POST['password'];
 		$config['ad']['enable'] = $_POST['enable'] ? true : false;
-
-		$config['samba']['workgroup'] = $_POST['domain_name'];
-
-		if ($config['ad']['enable']) {
-			$config['samba']['security'] = "domain";
-			$config['samba']['enable'] =  true;
-			$config['samba']['winssrv'] = $config['ad']['ad_srv_ip'];
-		} else {
-			$config['samba']['security'] = "user";
-		}
 
 		write_config();
 
@@ -102,17 +85,15 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
-	document.iform.ad_srv_name.disabled = endis;
-	document.iform.ad_srv_ip.disabled = endis;
-	document.iform.domain_name.disabled = endis;
-	document.iform.admin_name.disabled = endis;
-	document.iform.admin_pass.disabled = endis;
-	document.iform.admin_pass2.disabled = endis;
+	document.iform.server.disabled = endis;
+	document.iform.username.disabled = endis;
+	document.iform.password.disabled = endis;
+	document.iform.password2.disabled = endis;
 }
 //-->
 </script>
@@ -138,38 +119,24 @@ function enable_change(enable_change) {
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server name");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="ad_srv_name" type="text" class="formfld" id="ad_srv_name" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_name']);?>">
-			      	<br><?=gettext("AD or PDC name.");?>
-						</td>
-					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server IP");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="ad_srv_ip" type="text" class="formfld" id="ad_srv_ip" size="20" value="<?=htmlspecialchars($pconfig['ad_srv_ip']);?>">
-			      	<br><?=gettext("IP address of MS Active Directory server.");?>
-						</td>
-					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="domain_name" type="text" class="formfld" id="domain_name" size="20" value="<?=htmlspecialchars($pconfig['domain_name']);?>">
-							<br><?=gettext("Domain name in old format.");?>
+			        <input name="server" type="text" class="formfld" id="server" size="20" value="<?=htmlspecialchars($pconfig['server']);?>">
+			      	<br/><span class="vexpl"><?=gettext("AD or PDC name. You should specify either this option or a target workgroup or a target IP address.");?></span>
 						</td>
 					</tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Administrator name");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="admin_name" type="text" class="formfld" id="admin_name" size="20" value="<?=htmlspecialchars($pconfig['admin_name']);?>">
-							<br><?=gettext("Username of a domain administrator account.");?>
+			        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>">
+							<br/><span class="vexpl"><?=gettext("Username of a domain administrator account.");?></span>
 						</td>
 					</tr>
 					<tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Administration password");?></td>
 			      <td width="78%" class="vtable">
-			      	<input name="admin_pass" type="password" class="formfld" id="admin_pass" size="20" value="<?=htmlspecialchars($pconfig['admin_pass']);?>"><br>
-							<input name="admin_pass2" type="password" class="formfld" id="admin_pass2" size="20" value="<?=htmlspecialchars($pconfig['admin_pass2']);?>">
-			        &nbsp;(<?=gettext("Confirmation");?>)<br>
-			        <span class="vexpl"><?=gettext("Password of domain administrator account, enter it here twice.");?></span>
+			      	<input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
+							<input name="password2" type="password" class="formfld" id="password2" size="20" value="<?=htmlspecialchars($pconfig['password2']);?>">
+			        &nbsp;(<?=gettext("Confirmation");?>)
+							<br/><span class="vexpl"><?=gettext("Password of domain administrator account, enter it here twice.");?></span>
 						</td>
 			    </tr>
 					<tr>

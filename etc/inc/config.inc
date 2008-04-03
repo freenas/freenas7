@@ -1294,9 +1294,23 @@ function config_upgrade() {
 	}
 
 	/* Convert 4.7 -> 4.8 */
+	/* Refactor //ad configuration. */
+	if ($config['version'] === "4.7") {
+		$config['ad']['server'] = $config['ad']['ad_srv_name'];
+		$config['ad']['username'] = $config['ad']['admin_name'];
+		$config['ad']['password'] = $config['ad']['admin_pass'];
+		unset($config['ad']['ad_srv_name']);
+		unset($config['ad']['admin_name']);
+		unset($config['ad']['admin_pass']);
+		unset($config['ad']['ad_srv_ip']);
+
+		$config['version'] = "4.8";
+	}
+
+	/* Convert 4.8 -> 4.9 */
 	/* New Disk configuration for FreeNAS 0.7 */
 	/* Use class in the place of gconcat,gmirror,graid5,gstride,gvinum,geli disk */
-	if ($config['version'] === "4.7") {
+	if ($config['version'] === "4.8") {
 		/* Add class to physical disk that replace old type (ATA, SCSI, RAID)*/
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			switch ($config['disks']['disk'][$i]['type']) {
@@ -1370,9 +1384,8 @@ function config_upgrade() {
 			}
 		}
 
-		$config['version'] = "4.8";
+		$config['version'] = "4.9";
 	}
-
 
 	write_config();
 
