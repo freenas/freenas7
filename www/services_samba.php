@@ -74,27 +74,31 @@ $pconfig['nullpasswords'] = isset($config['samba']['nullpasswords']);
 
 if ($_POST) {
 	unset($input_errors);
-
 	$pconfig = $_POST;
 
-	$reqdfields = array();
-	$reqdfieldsn = array();
-	$reqdfieldst = array();
-
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "security netbiosname workgroup localmaster");
-		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"),gettext("Local Master Browser"));
+		$reqdfields = explode(" ", "security netbiosname workgroup");
+		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"));
+		$reqdfieldst = explode(" ", "string domain workgroup");
+
+		// Add AD specific input validation.
+		if ("domain" === $_POST['security']) {
+			$reqdfields = array_merge($reqdfields, array("winssrv"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("WINS server")));
+			$reqdfieldst = array_merge($reqdfieldst, array("ipaddr"));	
+		}
+
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
-
+	// Do additional input type validation.
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "netbiosname workgroup winssrv sndbuf rcvbuf createmask directorymask");
-		$reqdfieldsn = array(gettext("NetBiosName"),gettext("Workgroup"),gettext("WINS server"),gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"));
-		$reqdfieldst = explode(" ", "domain workgroup ipaddr numericint numericint filemode filemode");
+		$reqdfields = explode(" ", "sndbuf rcvbuf createmask directorymask");
+		$reqdfieldsn = array(gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"));
+		$reqdfieldst = explode(" ", "numericint numericint filemode filemode");
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
-
-	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	if (!$input_errors) {
 		$config['samba']['netbiosname'] = $_POST['netbiosname'];
@@ -254,7 +258,7 @@ function authentication_change() {
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Workgroup") ; ?></td>
             <td width="78%" class="vtable">
               <input name="workgroup" type="text" class="formfld" id="workgroup" size="30" value="<?=htmlspecialchars($pconfig['workgroup']);?>">
-              <br><?=gettext("Workgroup to be member of.(maximum 15 characters)") ;?>
+              <br/><?=gettext("Workgroup the server will appear to be in when queried by clients (maximum 15 characters).");?>
             </td>
           </tr>
           <tr>
@@ -336,7 +340,7 @@ function authentication_change() {
             <td width="22%" valign="top" class="vncell"><?=gettext("WINS server"); ?></td>
             <td width="78%" class="vtable">
               <input name="winssrv" type="text" class="formfld" id="winssrv" size="30" value="<?=htmlspecialchars($pconfig['winssrv']);?>">
-              <br><?=gettext("WINS Server IP address."); ?>
+              <br/><?=gettext("WINS server IP address (e.g. from MS Active Directory server).");?>
             </td>
   				</tr>
           <tr>
