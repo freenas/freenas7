@@ -1298,6 +1298,8 @@ function config_upgrade() {
 	if ($config['version'] === "4.7") {
 		$config['ad']['server'] = $config['ad']['ad_srv_name'];
 		$config['ad']['username'] = $config['ad']['admin_name'];
+		if (empty($config['ad']['username']))
+			$config['ad']['username'] = "Administrator";
 		$config['ad']['password'] = $config['ad']['admin_pass'];
 		unset($config['ad']['ad_srv_name']);
 		unset($config['ad']['admin_name']);
