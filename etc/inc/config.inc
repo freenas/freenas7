@@ -1293,6 +1293,20 @@ function config_upgrade() {
 		$config['version'] = "4.7";
 	}
 
+	/* Convert 4.7 -> 4.8 */
+	/* Refactor //ad configuration. */
+	if ($config['version'] === "4.7") {
+		$config['ad']['server'] = $config['ad']['ad_srv_name'];
+		$config['ad']['username'] = $config['ad']['admin_name'];
+		$config['ad']['password'] = $config['ad']['admin_pass'];
+		unset($config['ad']['ad_srv_name']);
+		unset($config['ad']['admin_name']);
+		unset($config['ad']['admin_pass']);
+		unset($config['ad']['ad_srv_ip']);
+
+		$config['version'] = "4.8";
+	}
+
 	write_config();
 
 	if (is_booting())

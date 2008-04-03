@@ -73,7 +73,7 @@ if (!is_array($config['ad'])) {
 						<?php else:?>
 						<pre><br/><?php
 						echo gettext("Results for net rpc testjoin:") . "<br>";
-						system("/usr/local/bin/net rpc testjoin -S {$config['ad']['ad_srv_name']}");
+						system("/usr/local/bin/net rpc testjoin -S {$config['ad']['server']}");
 						echo "<br/>" . gettext("Ping winbindd to see if it is alive:") . "<br>";
 						system("/usr/local/bin/wbinfo -p");
 						echo "<br/>" . gettext("Check shared secret:") . "<br>";
@@ -87,7 +87,7 @@ if (!is_array($config['ad'])) {
 				<tr>
 					<td>
 						<pre><br/><?php
-						exec("/usr/local/bin/net rpc user -S {$config['ad']['ad_srv_name']} -U {$config['ad']['admin_name']}%{$config['ad']['admin_pass']}", $rawdata);
+						exec("/usr/local/bin/net rpc user -S {$config['ad']['server']} -U {$config['ad']['username']}%{$config['ad']['password']}", $rawdata);
 						echo implode("\n", $rawdata);
 						unset($rawdata);
 						?></pre>
