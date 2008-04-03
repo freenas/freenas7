@@ -161,11 +161,11 @@ function enable_change(enable_change) {
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Interface");?></td>
 			      <td width="78%" class="vtable">
 			        <select name="interface" class="formfld" id="interface">
-			          <?php foreach($a_interface as $if => $ifinfo): ?>
-								<?php $ifinfo = get_interface_info($if); if($ifinfo['status'] == "up"): ?>
+			          <?php foreach($a_interface as $if => $ifinfo):?>
+								<?php $ifinfo = get_interface_info($if); if (("up" == $ifinfo['status']) || ("associated" == $ifinfo['status'])):?>
 								<option value="<?=$if;?>"<?php if ($if == $pconfig['if']) echo "selected";?>><?=$if?></option>
-								<?php endif; ?>
-			          <?php endforeach; ?>
+								<?php endif;?>
+			          <?php endforeach;?>
 			        </select>
 			        <br><?=gettext("Interface to listen to.");?>
 			      </td>

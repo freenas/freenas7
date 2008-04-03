@@ -77,6 +77,7 @@ Minors changes:
   most networks when changing from DHCP to static.
 - Do not validate sync time values when pressing 'Now' on status report page.
 - Add ability to add multiple destination email addresses on status report page (e.g. test@test,com;test2@test.com).
+- Display interfaces with status 'associated' in UPnP services WebGUI, too. Thanks to sea_sbs.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
