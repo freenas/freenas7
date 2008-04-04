@@ -159,10 +159,10 @@ create_conf()
 			-o "allow trusted domains = no" -n \
 			-o "dns proxy = no" -n \
 			-o "ldap ssl = no" -n \
-			-v "concat('#idmap backend = rid:',//samba/workgroup,'=10000-20000')" -n \
-			-v "concat('idmap domains = ',//samba/workgroup)" -n \
-			-v "concat('idmap config ',//samba/workgroup,':backend = rid')" -n \
-			-v "concat('idmap config ',//samba/workgroup,':range = 10000-20000')" -n \
+			-v "concat('#idmap backend = rid:',//ad/domainname/netbios,'=10000-20000')" -n \
+			-v "concat('idmap domains = ',//ad/domainname/netbios)" -n \
+			-v "concat('idmap config ',//ad/domainname/netbios,':backend = rid')" -n \
+			-v "concat('idmap config ',//ad/domainname/netbios,':range = 10000-20000')" -n \
 			-o "idmap uid = 10000-20000" -n \
 			-o "idmap gid = 10000-20000" -n \
 			-o "winbind enum groups = yes" -n \
