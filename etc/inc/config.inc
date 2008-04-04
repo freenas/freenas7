@@ -1296,7 +1296,9 @@ function config_upgrade() {
 	/* Convert 4.7 -> 4.8 */
 	/* Refactor //ad configuration. */
 	if ($config['version'] === "4.7") {
-		$config['ad']['server'] = $config['ad']['ad_srv_name'];
+		$config['ad']['domaincontrollername'] = $config['ad']['ad_srv_name'];
+		$config['ad']['domainname']['dns'] = "";
+		$config['ad']['domainname']['netbios'] = "";
 		$config['ad']['username'] = $config['ad']['admin_name'];
 		if (empty($config['ad']['username']))
 			$config['ad']['username'] = "Administrator";

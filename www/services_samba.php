@@ -81,22 +81,14 @@ if ($_POST) {
 		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"));
 		$reqdfieldst = explode(" ", "string domain workgroup");
 
-		// Add AD specific input validation.
-		if ("domain" === $_POST['security']) {
-			$reqdfields = array_merge($reqdfields, array("winssrv"));
-			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("WINS server")));
-			$reqdfieldst = array_merge($reqdfieldst, array("ipaddr"));	
-		}
-
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
-	}
-
-	// Do additional input type validation.
-	if ($_POST['enable']) {
+	
+		// Do additional input type validation.
 		$reqdfields = explode(" ", "sndbuf rcvbuf createmask directorymask");
 		$reqdfieldsn = array(gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"));
 		$reqdfieldst = explode(" ", "numericint numericint filemode filemode");
+
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 

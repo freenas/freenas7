@@ -584,7 +584,11 @@
 	</smartd>
 	<ad>
 		<!-- <enable/> -->
-		<server></server>
+		<domaincontrollername></domaincontrollername>
+		<domainname>
+			<dns></dns>
+			<netbios></netbios>
+		</domainname>
 		<username>Administrator</username>
 		<password></password>
 	</ad>

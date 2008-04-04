@@ -57,6 +57,7 @@ Majors changes:
   (e.g. 'Status/System', 'Status/Processes' or 'Disks/Format').
 - Refactor complete S.M.A.R.T. WebGUI + services.
 - Refactor diagnostics WebGUI.
+- Refactor ActiveDirectory WebGUI + services.
 
 Minors changes:
 - Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.

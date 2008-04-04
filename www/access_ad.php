@@ -33,17 +33,23 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Access"),gettext("Active Directory"));
+$pgtitle = array(gettext("Access"), gettext("Active Directory"));
 
 if (!is_array($config['ad'])) {
 	$config['ad'] = array();
 }
 
+if (!is_array($config['samba'])) {
+	$config['samba'] = array();
+}
+
 $pconfig['enable'] = isset($config['ad']['enable']);
+$pconfig['domaincontrollername'] = $config['ad']['domaincontrollername'];
+$pconfig['domainname_dns'] = $config['ad']['domainname']['dns'];
+$pconfig['domainname_netbios'] = $config['ad']['domainname']['netbios'];
 $pconfig['username'] = $config['ad']['username'];
 $pconfig['password'] = $config['ad']['password'];
 $pconfig['password2'] = $config['ad']['password'];
-$pconfig['server'] = $config['ad']['server'];
 
 if ($_POST) {
 	unset($input_errors);
@@ -51,9 +57,9 @@ if ($_POST) {
 
 	// Input validation.
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "username password");
-		$reqdfieldsn = array(gettext("Administrator name"),gettext("Administration password"));
-		$reqdfieldst = explode(" ", "string string");
+		$reqdfields = explode(" ", "domaincontrollername domainname_dns domainname_netbios username password");
+		$reqdfieldsn = array(gettext("Domain controller name"), gettext("Domain name (DNS/Realm-Name)"), gettext("Domain name (NetBIOS-Name)"), gettext("Administrator name"), gettext("Administration password"));
+		$reqdfieldst = explode(" ", "string domain domain string string");
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
@@ -64,10 +70,18 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		$config['ad']['server'] = $_POST['server'];
+		$config['ad']['domaincontrollername'] = $_POST['domaincontrollername'];
+		$config['ad']['domainname']['dns'] = $_POST['domainname_dns'];
+		$config['ad']['domainname']['netbios'] = $_POST['domainname_netbios'];
 		$config['ad']['username'] = $_POST['username'];
 		$config['ad']['password'] = $_POST['password'];
 		$config['ad']['enable'] = $_POST['enable'] ? true : false;
+
+		if ($config['ad']['enable']) {
+			$config['samba']['enable'] = true;
+			$config['samba']['security'] = "domain";
+			$config['samba']['workgroup'] = $_POST['domainname_netbios'];
+		}
 
 		write_config();
 
@@ -90,7 +104,9 @@ if ($_POST) {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
-	document.iform.server.disabled = endis;
+	document.iform.domaincontrollername.disabled = endis;
+	document.iform.domainname_dns.disabled = endis;
+	document.iform.domainname_netbios.disabled = endis;
 	document.iform.username.disabled = endis;
 	document.iform.password.disabled = endis;
 	document.iform.password2.disabled = endis;
@@ -117,10 +133,24 @@ function enable_change(enable_change) {
 						</td>
 			    </tr>
 			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("AD server name");?></td>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain controller name");?></td>
 			      <td width="78%" class="vtable">
-			        <input name="server" type="text" class="formfld" id="server" size="20" value="<?=htmlspecialchars($pconfig['server']);?>">
-			      	<br/><span class="vexpl"><?=gettext("AD or PDC name. You should specify either this option or a target workgroup or a target IP address.");?></span>
+			        <input name="domaincontrollername" type="text" class="formfld" id="domaincontrollername" size="20" value="<?=htmlspecialchars($pconfig['domaincontrollername']);?>">
+			      	<br/><span class="vexpl"><?=gettext("AD or PDC name.");?></span>
+						</td>
+					</tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name (DNS/Realm-Name)");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="domainname_dns" type="text" class="formfld" id="domainname_dns" size="20" value="<?=htmlspecialchars($pconfig['domainname_dns']);?>">
+							<br/><span class="vexpl"><?=gettext("Domain name, e.g. example.com.");?></span>
+						</td>
+					</tr>
+					<tr>
+			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name (NetBIOS-Name)");?></td>
+			      <td width="78%" class="vtable">
+			        <input name="domainname_netbios" type="text" class="formfld" id="domainname_netbios" size="20" value="<?=htmlspecialchars($pconfig['domainname_netbios']);?>">
+							<br/><span class="vexpl"><?=gettext("Domain name in old format, e.g. EXAMPLE.");?></span>
 						</td>
 					</tr>
 			    <tr>
