@@ -287,7 +287,7 @@ samba_cmd() {
 	# Start additional processes when starting
 	if [ "${rc_arg}" = "start" ]; then
 		if [ 0 -eq ${ad_enable} ]; then
-			local _srvname=`configxml_get "//ad/server"`
+			local _srvname=`configxml_get "//ad/domaincontrollername"`
 			local _username=`configxml_get "//ad/username"`
 			local _password=`configxml_get "//ad/password"`
 			/usr/local/bin/net rpc join -S ${_srvname} -U ${_username}%${_password}
