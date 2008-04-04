@@ -78,7 +78,7 @@ if ($_POST) {
 
 	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "security netbiosname workgroup");
-		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"));
+		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBIOS name"),gettext("Workgroup"));
 		$reqdfieldst = explode(" ", "string domain workgroup");
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -241,7 +241,7 @@ function authentication_change() {
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("NetBiosName") ;?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("NetBIOS name");?></td>
             <td width="78%" class="vtable">
               <input name="netbiosname" type="text" class="formfld" id="netbiosname" size="30" value="<?=htmlspecialchars($pconfig['netbiosname']);?>">
             </td>
