@@ -83,14 +83,14 @@ if ($_POST) {
 
 	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "security netbiosname workgroup localmaster");
-		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBiosName"),gettext("Workgroup"),gettext("Local Master Browser"));
+		$reqdfieldsn = array(gettext("Authentication"),gettext("NetBIOS name"),gettext("Workgroup"),gettext("Local Master Browser"));
 	}
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "netbiosname workgroup winssrv sndbuf rcvbuf createmask directorymask");
-		$reqdfieldsn = array(gettext("NetBiosName"),gettext("Workgroup"),gettext("WINS server"),gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"));
+		$reqdfieldsn = array(gettext("NetBIOS name"),gettext("Workgroup"),gettext("WINS server"),gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"));
 		$reqdfieldst = explode(" ", "domain workgroup ipaddr numericint numericint filemode filemode");
 	}
 
@@ -238,7 +238,7 @@ function authentication_change() {
             </td>
           </tr>
           <tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("NetBiosName") ;?></td>
+            <td width="22%" valign="top" class="vncellreq"><?=gettext("NetBIOS name");?></td>
             <td width="78%" class="vtable">
               <input name="netbiosname" type="text" class="formfld" id="netbiosname" size="30" value="<?=htmlspecialchars($pconfig['netbiosname']);?>">
             </td>
