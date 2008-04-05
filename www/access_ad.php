@@ -45,8 +45,8 @@ if (!is_array($config['samba'])) {
 
 $pconfig['enable'] = isset($config['ad']['enable']);
 $pconfig['domaincontrollername'] = $config['ad']['domaincontrollername'];
-$pconfig['domainname_dns'] = $config['ad']['domainname']['dns'];
-$pconfig['domainname_netbios'] = $config['ad']['domainname']['netbios'];
+$pconfig['domainname_dns'] = $config['ad']['domainname_dns'];
+$pconfig['domainname_netbios'] = $config['ad']['domainname_netbios'];
 $pconfig['username'] = $config['ad']['username'];
 $pconfig['password'] = $config['ad']['password'];
 $pconfig['password2'] = $config['ad']['password'];
@@ -71,8 +71,8 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$config['ad']['domaincontrollername'] = $_POST['domaincontrollername'];
-		$config['ad']['domainname']['dns'] = $_POST['domainname_dns'];
-		$config['ad']['domainname']['netbios'] = $_POST['domainname_netbios'];
+		$config['ad']['domainname_dns'] = $_POST['domainname_dns'];
+		$config['ad']['domainname_netbios'] = $_POST['domainname_netbios'];
 		$config['ad']['username'] = $_POST['username'];
 		$config['ad']['password'] = $_POST['password'];
 		$config['ad']['enable'] = $_POST['enable'] ? true : false;
