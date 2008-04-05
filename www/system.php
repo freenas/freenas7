@@ -194,18 +194,15 @@ if ($_POST) {
 			config_unlock();
 		}
 
-		if (($pconfig['systime'] !== "Not Set") && ($pconfig['systime'] !== "")) {
-			$timefields = split(" ", $pconfig['systime']);
-			$dateparts = split("/", $timefields[0]);
-			$timeparts = split(":", $timefields[1]);
-			$newsystime = substr($dateparts[2],-2).substr("0".$dateparts[0],-2).substr("0".$dateparts[1],-2);
-			$newsystime = $newsystime.substr("0".$timeparts[0],-2).substr("0".$timeparts[1],-2);
-
-			// The date utility exits 0 on success, 1 if unable to set the date,
-			// and 2 if able to set the local date, but unable to set it globally.
-			$retval |= mwexec("/bin/date -n {$newsystime}");
-
-			$pconfig['systime']="Not Set";
+		if (($pconfig['systime'] !== "Not Set") && (!empty($pconfig['systime']))) {
+			$timestamp = strtotime($pconfig['systime']);
+			if (FALSE !== $timestamp) {
+				$timestamp = strftime("%g%m%d%H%M", $timestamp);
+				// The date utility exits 0 on success, 1 if unable to set the date,
+				// and 2 if able to set the local date, but unable to set it globally.
+				$retval |= mwexec("/bin/date -n {$timestamp}");
+				$pconfig['systime'] = "Not Set";
+			}
 		}
 
 		$savemsg = get_std_save_message($retval);
@@ -240,7 +237,8 @@ function webguiproto_change() {
 }
 //-->
 </script>
-<script language="JavaScript" src="datetimepicker.js"></script>
+<script language="JavaScript" src="datechooser.js"></script>
+<link rel="stylesheet" type="text/css" href="datechooser.css">
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
     <td class="tabnavtbl">
@@ -369,9 +367,10 @@ function webguiproto_change() {
 			    <tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("System Time");?></td>
 						<td width="78%" class="vtable">
-							<input name="systime" id="systime" type="text" size="20">
-							<a href="javascript:NewCal('systime','mmddyyyy',true,24)"><img src="cal.gif" width="16" height="16" border="0" align="top" alt="<?=gettext("Pick a date");?>"></a><br>
-							<span class="vexpl"><?=gettext("Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select one, then use Save button to update system time. (Mind seconds part will be ignored)");?></span>
+							<input id="systime" size="20" maxlength="20" name="systime" type="text">
+							<img src="cal.gif" onclick="showChooser(this, 'systime', 'chooserSpan', 1950, 2010, Date.patterns.Default, true);">
+							<div id="chooserSpan" class="dateChooser select-free" style="display: none; visibility: hidden; width: 160px;"></div><br/>
+							<span class="vexpl"><?=gettext("Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select it.");?></span>
 						</td>
 			    </tr>
 					<tr>
