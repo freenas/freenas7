@@ -89,6 +89,12 @@ if ($_POST) {
 		$reqdfieldsn = array(gettext("Send Buffer Size"),gettext("Receive Buffer Size"),gettext("Create mask"),gettext("Directory mask"));
 		$reqdfieldst = explode(" ", "numericint numericint filemode filemode");
 
+		if (!empty($_POST['winssrv'])) {
+			$reqdfields = explode(" ", "winssrv");
+			$reqdfieldsn = array(gettext("WINS server"));
+			$reqdfieldst = explode(" ", "ipaddr");
+		}
+
 		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
