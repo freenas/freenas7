@@ -585,10 +585,8 @@
 	<ad>
 		<!-- <enable/> -->
 		<domaincontrollername></domaincontrollername>
-		<domainname>
-			<dns></dns>
-			<netbios></netbios>
-		</domainname>
+		<domainname_dns></domainname_dns>
+		<domainname_netbios></domainname_netbios>
 		<username>Administrator</username>
 		<password></password>
 	</ad>
