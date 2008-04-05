@@ -1,8 +1,9 @@
 /*
- * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org>
+ * Copyright (C) 2004 Baron Schwartz <baron at sequent dot org> 
+ * http://www.xaprb.com/blog/2005/09/29/javascript-date-chooser
  *
  * Modified by Volker Theile (votdev@gmx.de) 04/2008.
- * 
+ *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
  * Free Software Foundation, version 2.1.
