@@ -254,6 +254,9 @@ function webguiproto_change() {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			  	<tr>
+						<td colspan="2" valign="top" class="listtopic"><?=gettext("Hostname");?></td>
+					</tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
 			      <td width="78%" class="vtable">
@@ -272,7 +275,7 @@ function webguiproto_change() {
 						<td colspan="2" class="list" height="12"></td>
 					</tr>
 					<tr>
-						<td colspan="2" valign="top" class="listtopic"><?=gettext("DNS");?></td>
+						<td colspan="2" valign="top" class="listtopic"><?=gettext("DNS settings");?></td>
 					</tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("IPv4 DNS servers");?></td>
@@ -365,7 +368,7 @@ function webguiproto_change() {
 			      </td>
 			    </tr>
 			    <tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("System Time");?></td>
+						<td width="22%" valign="top" class="vncell"><?=gettext("System time");?></td>
 						<td width="78%" class="vtable">
 							<input id="systime" size="20" maxlength="20" name="systime" type="text">
 							<img src="cal.gif" onclick="showChooser(this, 'systime', 'chooserSpan', 1950, 2010, Date.patterns.Default, true);">
