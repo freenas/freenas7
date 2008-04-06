@@ -310,6 +310,7 @@
 			<deny/>
 			<rolist/>
 			<rwlist/>
+			<dbpath>xxx<dbpath>
 			<options>
 				<cachecnid/>
 				<crlf/>
