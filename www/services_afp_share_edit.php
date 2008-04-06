@@ -67,6 +67,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['deny'] = $a_share[$id]['deny'];
 	$pconfig['rolist'] = $a_share[$id]['rolist'];
 	$pconfig['rwlist'] = $a_share[$id]['rwlist'];
+	$pconfig['dbpath'] = $a_share[$id]['dbpath'];
 	$pconfig['cachecnid'] = isset($a_share[$id]['options']['cachecnid']);
 	$pconfig['crlf'] = isset($a_share[$id]['options']['crlf']);
 	$pconfig['mswindows'] = isset($a_share[$id]['options']['mswindows']);
@@ -88,6 +89,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['deny'] = '';
 	$pconfig['rolist'] = '';
 	$pconfig['rwlist'] = '';
+	$pconfig['dbpath'] = '';
 	$pconfig['cachecnid'] = false;
 	$pconfig['crlf'] = false;
 	$pconfig['mswindows'] = false;
@@ -131,6 +133,7 @@ if($_POST) {
 		$share['deny'] = $_POST['deny'];
 		$share['rolist'] = $_POST['rolist'];
 		$share['rwlist'] = $_POST['rwlist'];
+		$share['dbpath'] = $_POST['dbpath'];
 		$share['options']['cachecnid'] = $_POST['cachecnid'] ? true : false;
 		$share['options']['crlf'] = $_POST['crlf'] ? true : false;
 		$share['options']['mswindows'] = $_POST['mswindows'] ? true : false;
@@ -183,19 +186,19 @@ if($_POST) {
 			      </td>
 			    </tr>
 			    <tr>
-				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Path");?></td>
-				  <td width="78%" class="vtable">
-				  	<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>">
-				  	<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
-				  	<?=gettext("Path to be shared.");?>
-				  </td>
-				</tr>
+					  <td width="22%" valign="top" class="vncellreq"><?=gettext("Path");?></td>
+					  <td width="78%" class="vtable">
+					  	<input name="path" type="text" class="formfld" id="path" size="60" value="<?=htmlspecialchars($pconfig['path']);?>">
+					  	<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.path; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+					  	<span class="vexpl"><?=gettext("Path to be shared.");?></span>
+					  </td>
+					</tr>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Share Password");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="volpasswd" type="text" class="formfld" id="volpasswd" size="16" value="<?=htmlspecialchars($pconfig['volpasswd']);?>">
-			        <?=gettext("Set share password.");?><span class="vexpl"><br>
-			        <?=gettext("This controls the access to this share with an access password.");?></span>
+			        <?=gettext("Set share password.");?><br/>
+			        <span class="vexpl"><?=gettext("This controls the access to this share with an access password.");?></span>
 			      </td>
 			    </tr>
 			    <tr>
@@ -252,6 +255,14 @@ if($_POST) {
 			        <span class="vexpl"><?=gettext("This controls how the case of filenames are viewed and stored.");?></span>
 			      </td>
 			    </tr>
+			    <tr>
+					  <td width="22%" valign="top" class="vncell"><?=gettext("dbpath");?></td>
+					  <td width="78%" class="vtable">
+					  	<input name="dbpath" type="text" class="formfld" id="dbpath" size="60" value="<?=htmlspecialchars($pconfig['dbpath']);?>">
+					  	<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.dbpath; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
+					  	<span class="vexpl"><?=gettext("Sets the database information to be stored in path. You have to specifiy a writable location, even if the volume is read only.");?></span>
+					  </td>
+					</tr>
 					<tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("cachecnid");?></td>
 			      <td width="78%" class="vtable">
