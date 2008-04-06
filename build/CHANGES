@@ -80,6 +80,9 @@ Minors changes:
 - Add ability to add multiple destination email addresses on status report page (e.g. test@test,com;test2@test.com).
 - Display interfaces with status 'associated' in UPnP services WebGUI, too. Thanks to sea_sbs.
 
+Bug fixes:
+- Display correct share name for mounted ISO's on initial system page (BR 1935353). Thanks to paq237.
+
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
 - It is not possible to encrypt a disk partition, only complete disks are supported.
