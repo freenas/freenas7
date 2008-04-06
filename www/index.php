@@ -53,9 +53,9 @@ function update_controls() {
 	// Get CPU usage.
 	$value['cpuusage'] = system_get_cpu_usage();
 	// Get disk usage.
-	$diskusage = get_mount_usage();
-	if (is_array($diskusage) && (0 < count($diskusage))) {
-		foreach ($diskusage as $diskusagek => $diskusagev) {
+	$a_diskusage = get_mount_usage();
+	if (is_array($a_diskusage) && (0 < count($a_diskusage))) {
+		foreach ($a_diskusage as $diskusagek => $diskusagev) {
 			$fsid = get_mount_fsid($diskusagev['filesystem'], $diskusagek);
 			$diskinfo = array();
 			$diskinfo['id'] = $fsid;
@@ -195,13 +195,13 @@ sajax_handle_client_request();
 			    <td width="75%" class="listr">
 				    <table>
 				      <?php
-				      $diskusage = get_mount_usage();
-				      if (is_array($diskusage) && (0 < count($diskusage))) {
-								foreach ($diskusage as $diskusagek => $diskusagev) {
-
+				      $a_diskusage = get_mount_usage();
+				      $a_mount = get_mounts_list();
+				      if (is_array($a_diskusage) && (0 < count($a_diskusage))) {
+								foreach ($a_diskusage as $diskusagek => $diskusagev) {
 									echo "<tr><td>";
-									$index = array_search_ex($diskusagev['filesystem'], $config['mounts']['mount'], "devicespecialfile");
-									echo htmlspecialchars($config['mounts']['mount'][$index]['desc']);
+									$index = array_search_ex($diskusagev['filesystem'], $a_mount, "devicespecialfile");
+									echo htmlspecialchars($a_mount[$index]['sharename']);
 									echo "</td><td>";
 									$percent_used = rtrim($diskusagev['capacity'],"%");
 
