@@ -35,7 +35,12 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-o "exit" -n \
 			-o "fi" -n \
 			-o "/usr/bin/touch /var/run/rsync_local-running${_i}" -n \
-			-o "/usr/local/bin/rsync -a --log-file=${rsync_logfile} " -i "count(opt_delete) > 0" -o "--delete --delete-after " -b -v "concat('&quot;',source,'&quot; &quot;',destination,'&quot;')" -n \
+			-o "/usr/local/bin/rsync -a --log-file=${rsync_logfile} " \
+			-m "options" \
+				-i "count(delete) > 0" -o "--delete --delete-after " -b \
+				-i "count(quiet) > 0" -o "--quiet " -b \
+			-b \
+			-v "concat('&quot;',source,'&quot; &quot;',destination,'&quot;')" -n \
 			-o "/bin/rm -f /var/run/rsync_local-running${_i}" -n \
 			-v "concat('/usr/bin/logger -p local4.notice &quot;End of local RSYNC synchronization from ',source,' to ',destination,'&quot;')" \
 			${configxml_file} | /usr/local/bin/xml unesc > ${_rsyncscript}

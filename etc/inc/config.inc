@@ -1312,9 +1312,30 @@ function config_upgrade() {
 	}
 
 	/* Convert 4.8 -> 4.9 */
+	/* Move //rsync/rsynclocal/opt_delete to //rsync/rsynclocal/options/delete. */
+	/* Move //rsync/rsyncclient/opt_delete to //rsync/rsyncclient/options/delete. */
+	if ($config['version'] === "4.8") {
+		for ($i = 0; isset($config['rsync']['rsyncclient'][$i]); $i++) {
+			if (isset($config['rsync']['rsyncclient'][$i]['opt_delete'])) {
+				$config['rsync']['rsyncclient'][$i]['options']['delete'] = true;
+				unset($config['rsync']['rsyncclient'][$i]['opt_delete']);
+			}
+		}
+
+		for ($i = 0; isset($config['rsync']['rsynclocal'][$i]); $i++) {
+			if (isset($config['rsync']['rsynclocal'][$i]['opt_delete'])) {
+				$config['rsync']['rsynclocal'][$i]['options']['delete'] = true;
+				unset($config['rsync']['rsynclocal'][$i]['opt_delete']);
+			}
+		}
+
+		$config['version'] = "4.9";
+	}
+
+	/* Convert 4.9 -> 5.0 */
 	/* New Disk configuration for FreeNAS 0.7 */
 	/* Use class in the place of gconcat,gmirror,graid5,gstride,gvinum,geli disk */
-	if ($config['version'] === "4.8") {
+	if ($config['version'] === "4.9") {
 		/* Add class to physical disk that replace old type (ATA, SCSI, RAID)*/
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			switch ($config['disks']['disk'][$i]['type']) {
@@ -1388,7 +1409,7 @@ function config_upgrade() {
 			}
 		}
 
-		$config['version'] = "4.9";
+		$config['version'] = "5.0";
 	}
 
 	write_config();

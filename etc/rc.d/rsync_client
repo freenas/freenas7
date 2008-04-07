@@ -36,8 +36,9 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-o "fi" -n \
 			-o "/usr/bin/touch /var/run/rsync_client-running${_i}" -n \
 			-o "/usr/local/bin/rsync -rtz --log-file=${rsync_logfile} " \
-			-i "count(opt_delete) > 0" \
-				-o "--delete --delete-after " \
+			-m "options" \
+				-i "count(delete) > 0" -o "--delete --delete-after " -b \
+				-i "count(quiet) > 0" -o "--quiet " -b \
 			-b \
 			-i "contains(rsyncserverip,'.')" \
 				-v "concat('&quot;rsync://',rsyncserverip,'/',remoteshare,'&quot; &quot;',localshare,'&quot;')" -n \
