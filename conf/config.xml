@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>4.8</version>
+	<version>4.9</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -351,7 +351,6 @@
 	<rsync>
 		<!--
 		<rsynclocal>
-			<opt_delete/>
 			<source>xxx</source> // e.g. /mnt/data
 			<destination>xxx</destination> // e.g. /mnt/backup
 			<description>xxx</description>
@@ -365,9 +364,12 @@
 			<day></day>
 			<month></month>
 			<weekday></weekday>
+			<options>
+				<delete/>
+				<quiet/>
+			</options>
 		</rsynclocal>
 		<rsyncclient>
-			<opt_delete/>
 			<rsyncserverip>xxx</rsyncserverip>
 			<localshare>xxx</localshare> // e.g. /mnt/data
 			<remoteshare>xxx</remoteshare>
@@ -382,6 +384,10 @@
 			<day></day>
 			<month></month>
 			<weekday></weekday>
+			<options>
+				<delete/>
+				<quiet/>
+			</options>
 		</rsyncclient>
 		-->
 	</rsync>

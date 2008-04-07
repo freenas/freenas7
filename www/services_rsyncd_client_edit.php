@@ -53,7 +53,6 @@ if (!is_array($config['rsync']['rsyncclient']))
 $a_rsyncclient = &$config['rsync']['rsyncclient'];
 
 if (isset($id) && $a_rsyncclient[$id]) {
-	$pconfig['opt_delete'] = isset($a_rsyncclient[$id]['opt_delete']);
 	$pconfig['rsyncserverip'] = $a_rsyncclient[$id]['rsyncserverip'];
 	$pconfig['localshare'] = $a_rsyncclient[$id]['localshare'];
 	$pconfig['remoteshare'] = $a_rsyncclient[$id]['remoteshare'];
@@ -69,6 +68,11 @@ if (isset($id) && $a_rsyncclient[$id]) {
 	$pconfig['all_months'] = $a_rsyncclient[$id]['all_months'];
 	$pconfig['all_weekdays'] = $a_rsyncclient[$id]['all_weekdays'];
 	$pconfig['description'] = $a_rsyncclient[$id]['description'];
+	$pconfig['delete'] = isset($a_rsyncclient[$id]['options']['delete']);
+	$pconfig['quiet'] = isset($a_rsyncclient[$id]['options']['quiet']);
+} else {
+	$pconfig['delete'] = false;
+	$pconfig['quiet'] = false;
 }
 
 if ($_POST) {
@@ -92,7 +96,6 @@ if ($_POST) {
 	if (!$input_errors) {
 		$rsyncclient = array();
 
-		$rsyncclient['opt_delete'] = $_POST['opt_delete'] ? true : false;;
 		$rsyncclient['rsyncserverip'] = $_POST['rsyncserverip'];
 		$rsyncclient['minute'] = $_POST['minute'];
 		$rsyncclient['hour'] = $_POST['hour'];
@@ -107,6 +110,8 @@ if ($_POST) {
 		$rsyncclient['all_months'] = $_POST['all_months'];
 		$rsyncclient['all_weekdays'] = $_POST['all_weekdays'];
 		$rsyncclient['description'] = $_POST['description'];
+		$rsyncclient['options']['delete'] = $_POST['delete'] ? true : false;
+		$rsyncclient['options']['quiet'] = $_POST['quiet'] ? true : false;
 
 		if (isset($id) && $a_rsyncclient[$id])
 			$a_rsyncclient[$id] = $rsyncclient;
@@ -322,15 +327,27 @@ function set_selected(name) {
 						</td>
 					</tr>
 					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("RSYNC Options"); ?></td>
-						<td width="78%" class="vtable">
-							<input name="opt_delete" id="opt_delete" type="checkbox" value="yes" <?php if ($pconfig['opt_delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
-						</td>
-					</tr>
-					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
 						<td width="78%" class="vtable">
 							<input name="description" type="text" class="formfld" id="description" size="40" value="<?=htmlspecialchars($pconfig['description']);?>">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="list" height="12"></td>
+					</tr>
+					<tr>
+						<td colspan="2" valign="top" class="listtopic"><?=gettext("Advanced Options");?></td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Delete");?></td>
+						<td width="78%" class="vtable">
+							<input name="delete" id="delete" type="checkbox" value="yes" <?php if ($pconfig['delete']) echo "checked"; ?>> <?=gettext("Delete files that don't exist on sender."); ?><br>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Quiet");?></td>
+						<td width="78%" class="vtable">
+							<input name="quiet" id="quiet" type="checkbox" value="yes" <?php if ($pconfig['quiet']) echo "checked"; ?>> <?=gettext("Suppress non-error messages."); ?><br>
 						</td>
 					</tr>
 					<tr>
