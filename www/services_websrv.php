@@ -2,7 +2,7 @@
 <?php
 /*
 	services_websrv.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -41,13 +41,20 @@ $pgtitle = array(gettext("Services"),gettext("Webserver"));
 if(!is_array($config['websrv']))
 	$config['websrv'] = array();
 
+if (!is_array($config['websrv']['authentication']['url']))
+	$config['websrv']['authentication']['url'] = array();
+
+array_sort_key($config['websrv']['authentication']['url'], "path");
+
+$a_authurl = &$config['websrv']['authentication']['url'];
+
 $pconfig['enable'] = isset($config['websrv']['enable']);
 $pconfig['protocol'] = $config['websrv']['protocol'];
 $pconfig['port'] = $config['websrv']['port'];
 $pconfig['documentroot'] = $config['websrv']['documentroot'];
 $pconfig['privatekey'] = base64_decode($config['websrv']['privatekey']);
 $pconfig['certificate'] = base64_decode($config['websrv']['certificate']);
-$pconfig['authentication'] = isset($config['websrv']['authentication']);
+$pconfig['authentication'] = isset($config['websrv']['authentication']['enable']);
 $pconfig['dirlisting'] = isset($config['websrv']['dirlisting']);
 
 if($_POST) {
@@ -86,7 +93,7 @@ if($_POST) {
 		$config['websrv']['documentroot'] = $_POST['documentroot'];
 		$config['websrv']['privatekey'] = base64_encode($_POST['privatekey']);
 		$config['websrv']['certificate'] = base64_encode($_POST['certificate']);
-		$config['websrv']['authentication'] = $_POST['authentication'] ? true : false;
+		$config['websrv']['authentication']['enable'] = $_POST['authentication'] ? true : false;
 		$config['websrv']['dirlisting'] = $_POST['dirlisting'] ? true : false;
 
 		write_config();
@@ -100,7 +107,20 @@ if($_POST) {
 		}
 
 		$savemsg = get_std_save_message($retval);
+
+		if(0 == $retval) {
+			if(file_exists($d_websrvconfdirty_path))
+				unlink($d_websrvconfdirty_path);
+		}
 	}
+}
+
+if($_GET['act'] === "del") {
+	unset($config['websrv']['authentication']['url'][$_GET['id']]);
+	write_config();
+	touch($d_websrvconfdirty_path);
+	header("Location: services_websrv.php");
+	exit;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -130,6 +150,18 @@ function protocol_change() {
 			break;
 	}
 }
+
+function authentication_change() {
+	switch(document.iform.authentication.checked) {
+		case false:
+			showElementById('authdirs_tr','hide');
+			break;
+
+		case true:
+			showElementById('authdirs_tr','show');
+			break;
+	}
+}
 //-->
 </script>
 <form action="services_websrv.php" method="post" name="iform" id="iform">
@@ -138,6 +170,10 @@ function protocol_change() {
 	    <td class="tabcont">
 	    	<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
+				<?php if (file_exists($d_websrvconfdirty_path)):?><p>
+					<?php print_info_box_np(gettext("The configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+					<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+				<?php endif;?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			    <tr>
 			      <td colspan="2" valign="top" class="optsect_t">
@@ -181,7 +217,7 @@ function protocol_change() {
 							<textarea name="privatekey" cols="65" rows="7" id="privatekey" class="formpre"><?=htmlspecialchars($pconfig['privatekey']);?></textarea></br>
 							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
 						</td>
-					</tr>  	
+					</tr>
 					<tr id="certificate_tr">
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Certificate");?></td>
 						<td width="78%" class="vtable">
@@ -192,9 +228,38 @@ function protocol_change() {
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
 						<td width="78%" class="vtable">
-							<input name="authentication" type="checkbox" id="authentication" value="yes" <?php if ($pconfig['authentication']) echo "checked"; ?>>
+							<input name="authentication" type="checkbox" id="authentication" value="yes" <?php if ($pconfig['authentication']) echo "checked";?> onchange="authentication_change()">
 							<?=gettext("Enable authentication.");?><br/>
 							<span class="vexpl"><?=gettext("Give only local users access to the web page.");?></span>
+						</td>
+					</tr>
+					<tr id="authdirs_tr">
+						<td width="22%" valign="top" class="vncell">&nbsp;</td>
+						<td width="78%" class="vtable">
+							<table width="100%" border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td width="45%" class="listhdrr"><?=gettext("URL");?></td>
+									<td width="45%" class="listhdrr"><?=gettext("Realm");?></td>
+									<td width="10%" class="list"></td>
+								</tr>
+								<?php $i = 0; foreach($a_authurl as $urlv):?>
+								<tr>
+									<td class="listlr"><?=htmlspecialchars($urlv['path']);?>&nbsp;</td>
+									<td class="listr"><?=htmlspecialchars($urlv['realm']);?>&nbsp;</td>
+									<td valign="middle" nowrap class="list">
+										<?php if(isset($config['websrv']['enable'])):?>
+										<a href="services_websrv_authurl.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit URL");?>" width="17" height="17" border="0"></a>&nbsp;
+										<a href="services_websrv.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this URL?");?>')"><img src="x.gif" title="<?=gettext("Delete URL");?>" width="17" height="17" border="0"></a>
+										<?php endif;?>
+									</td>
+								</tr>
+								<?php $i++; endforeach;?>
+								<tr>
+									<td class="list" colspan="2"></td>
+									<td class="list"><a href="services_websrv_authurl.php"><img src="plus.gif" title="<?=gettext("Add URL");?>" width="17" height="17" border="0"></a></td>
+								</tr>
+							</table>
+							<span class="vexpl"><?=gettext("Define directories/URL's that require authentication.");?></span>
 						</td>
 					</tr>
 					<tr>
@@ -220,6 +285,7 @@ function protocol_change() {
 <!--
 enable_change(false);
 protocol_change();
+authentication_change();
 //-->
 </script>
 <?php include("fend.inc");?>

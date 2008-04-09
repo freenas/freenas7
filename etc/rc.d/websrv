@@ -122,21 +122,27 @@ cgi.assign = (".php" => "/usr/local/bin/php")
 EOF
 
 	# Configure authentication.
-	if configxml_isset //websrv/authentication; then
+	if configxml_isset //websrv/authentication/enable; then
 		local _htpasswd="${_documentroot}/.websrv_htpasswd"
 
 		# Add authentication configuration.
 		cat <<EOF >> ${websrv_conf}
 auth.backend = "htpasswd"
 auth.backend.htpasswd.userfile = "${_htpasswd}"
-auth.require = ( "/" =>
-	(
-		"method"  => "basic",
-		"realm"   => "Websrv",
-		"require" => "valid-user"
-	),
-)
 EOF
+
+		/usr/local/bin/xml sel -t -m "//websrv/authentication" \
+			-o "auth.require = ( " \
+			-m "url" \
+				-v "concat('&quot;',path,'&quot; =&gt;')" -n\
+				-o "(" -n \
+					-o "&quot;method&quot; =&gt; &quot;basic&quot;," -n \
+					-v "concat('&quot;realm&quot; =&gt; &quot;',realm,'&quot;,')" -n \
+					-o "&quot;require&quot; =&gt; &quot;valid-user&quot;" -n \
+				-o ")," -n \
+			-b \
+			-o ")" \
+			${configxml_file} | /usr/local/bin/xml unesc >> ${websrv_conf}
 	fi
 
 	if [ "${_protocol}" = "https" ]; then
