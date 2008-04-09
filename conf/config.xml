@@ -556,10 +556,16 @@
 		<documentroot></documentroot>
 		<privatekey></privatekey>
 		<certificate></certificate>
+		<authentication>
+			<!-- <enable/> -->
+			<url>
+				<path>/</path>
+				<realm>Webserver</realm>
+			</url>
+		</authentication>
 		<!--
 		<enable/>
 		<protocol>http|https</protocol>
-		<authentication/>
 		<dirlisting/>
 		-->
 	</websrv>

@@ -58,6 +58,7 @@ Majors changes:
 - Refactor complete S.M.A.R.T. WebGUI + services.
 - Refactor diagnostics WebGUI.
 - Refactor ActiveDirectory WebGUI + services.
+- Add ability to Webserver WebGUI to configure URL's requiring authentication.
 
 Minors changes:
 - Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.

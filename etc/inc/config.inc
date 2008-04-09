@@ -1314,6 +1314,7 @@ function config_upgrade() {
 	/* Convert 4.8 -> 4.9 */
 	/* Move //rsync/rsynclocal/opt_delete to //rsync/rsynclocal/options/delete. */
 	/* Move //rsync/rsyncclient/opt_delete to //rsync/rsyncclient/options/delete. */
+	/* Refactor //websrv/authentication. */
 	if ($config['version'] === "4.8") {
 		for ($i = 0; isset($config['rsync']['rsyncclient'][$i]); $i++) {
 			if (isset($config['rsync']['rsyncclient'][$i]['opt_delete'])) {
@@ -1328,6 +1329,16 @@ function config_upgrade() {
 				unset($config['rsync']['rsynclocal'][$i]['opt_delete']);
 			}
 		}
+
+		if (isset($config['websrv']['authentication'])) {
+			unset($config['websrv']['authentication']); // Remove entry first.
+			$config['websrv']['authentication']['enable'] = true;
+		}
+
+		$url = array();
+		$url['path'] = "/";
+		$url['realm'] = "Webserver";
+		$config['websrv']['authentication']['url'][] = $url;
 
 		$config['version'] = "4.9";
 	}
