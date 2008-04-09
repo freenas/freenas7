@@ -106,7 +106,7 @@ if ($_GET['act'] == "del") {
           </tr>
   			  <?php $i = 0; foreach($a_share as $sharev):?>
           <tr>
-          	<td class="listr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
+          	<td class="listlr"><?=htmlspecialchars($sharev['path']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['name']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($sharev['comment']);?>&nbsp;</td>
             <td class="listbg"><?=htmlspecialchars(isset($sharev['browseable'])?gettext("Yes"):gettext("No"));?></td>
