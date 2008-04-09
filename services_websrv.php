@@ -130,6 +130,18 @@ function protocol_change() {
 			break;
 	}
 }
+
+function authentication_change() {
+	switch(document.iform.authentication.checked) {
+		case false:
+      showElementById('authdirs_tr','hide');
+      break;
+
+    case true:
+      showElementById('authdirs_tr','show');
+      break;
+	}
+}
 //-->
 </script>
 <form action="services_websrv.php" method="post" name="iform" id="iform">
@@ -192,14 +204,13 @@ function protocol_change() {
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
 						<td width="78%" class="vtable">
-							<input name="authentication" type="checkbox" id="authentication" value="yes" <?php if ($pconfig['authentication']) echo "checked"; ?>>
+							<input name="authentication" type="checkbox" id="authentication" value="yes" <?php if ($pconfig['authentication']) echo "checked";?> onchange="authentication_change()">
 							<?=gettext("Enable authentication.");?><br/>
 							<span class="vexpl"><?=gettext("Give only local users access to the web page.");?></span>
 						</td>
 					</tr>
-					
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Auxiliary parameters");?></td>
+					<tr id="authdirs_tr">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Directories");?></td>
 						<td width="78%" class="vtable">
 							<table width="100%" border="0" cellpadding="0" cellspacing="0">
 								<tr>
@@ -210,34 +221,25 @@ function protocol_change() {
 								<?php if (is_array($config['samba']['auxparam'])):?>
 								<?php $i = 0; foreach($config['samba']['auxparam'] as $auxparamv):?>
 								<tr>
-									<td class="listlr"><?=htmlspecialchars($auxparamv);?> &nbsp;</td>
+									<td class="listlr"><?=htmlspecialchars($auxparamv);?>&nbsp;</td>
+									<td class="listr"><?=htmlspecialchars($auxparamv);?>&nbsp;</td>
 									<td valign="middle" nowrap class="list">
 										<?php if(isset($config['samba']['enable'])):?>
-										<a href="services_samba_auxparam.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit parameter");?>" width="17" height="17" border="0"></a>&nbsp;
-										<a href="services_samba.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this parameter?");?>')"><img src="x.gif" title="<?=gettext("Delete parameter"); ?>" width="17" height="17" border="0"></a>
+										<a href="services_samba_auxparam.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit directory");?>" width="17" height="17" border="0"></a>&nbsp;
+										<a href="services_samba.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this directory?");?>')"><img src="x.gif" title="<?=gettext("Delete parameter"); ?>" width="17" height="17" border="0"></a>
 										<?php endif;?>
 									</td>
 								</tr>
 								<?php $i++; endforeach;?>
 								<?php endif;?>
-								
-								<tr>
-									<td class="listlr">
-										<input name="documentroot" type="text" class="formfld" id="documentroot" size="60" value="">
-									</td>
-									<td class="listlr">
-										<input name="documentroot" type="text" class="formfld" id="documentroot" size="40" value="">
-									</td>
-									<td class="list">
-										<a href="services_samba_auxparam.php"><img src="plus.gif" title="<?=gettext("Add parameter");?>" width="17" height="17" border="0"></a>
-									</td>
+								<tr> 
+									<td class="list" colspan="2"></td>
+									<td class="list"><a href="services_websrv_edit.php"><img src="plus.gif" title="<?=gettext("Add directory");?>" width="17" height="17" border="0"></a></td>
 								</tr>
-
 							</table>
-							<?=gettext("This parameters will be added to [global] in smb.conf.");?>
+							<span class="vexpl"><?=gettext("Define directories that require authentication.");?></span>
 						</td>
 					</tr>
-					
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Directory listing");?></td>
 						<td width="78%" class="vtable">
@@ -261,6 +263,7 @@ function protocol_change() {
 <!--
 enable_change(false);
 protocol_change();
+authentication_change();
 //-->
 </script>
 <?php include("fend.inc");?>
