@@ -59,6 +59,7 @@ Majors changes:
 - Refactor diagnostics WebGUI.
 - Refactor ActiveDirectory WebGUI + services.
 - Add ability to Webserver WebGUI to configure URL's requiring authentication.
+- Replace Adaptec SCSI RAID administration tool aaccli with arcconf.
 
 Minors changes:
 - Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.
