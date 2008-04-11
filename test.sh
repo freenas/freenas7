@@ -82,8 +82,30 @@ rm -f /tmp/label.$$
 bsdlabel ${md}
 echo "===> Formatting this memory disk using UFS"
 newfs ${FREENAS_NEWFS} /dev/${md}a
+echo "===> Mount this virtual disk on $FREENAS_TMPDIR"
+mount /dev/${md}a $FREENAS_TMPDIR
 
 # ToDo: Install grub boot loader here.
+mkdir -p $FREENAS_TMPDIR/boot/grub
+cp /usr/local/share/grub/i386-freebsd/stage1 $FREENAS_TMPDIR/boot/grub
+cp /usr/local/share/grub/i386-freebsd/stage2 $FREENAS_TMPDIR/boot/grub
+cp /usr/local/share/grub/i386-freebsd/ufs2_stage1_5 $FREENAS_TMPDIR/boot/grub
+
+cat <<EOF > $FREENAS_TMPDIR/boot/grub/device.map
+(hd0)	/dev/${md}
+EOF
+
+cat <<EOF > $FREENAS_TMPDIR/boot/grub/menu.lst
+default=0
+timeout=5
+color yellow/blue white/black
+
+title FreeNAS
+root (cd)
+kernel /boot/loader
+EOF
+
+grub --batch --device-map=$FREENAS_TMPDIR/boot/grub/device.map
 
 echo "===> Unmount memory disk"
 #umount $FREENAS_TMPDIR
