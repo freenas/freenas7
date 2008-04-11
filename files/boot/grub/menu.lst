@@ -1,0 +1,7 @@
+default 0
+timeout 5
+color yellow/blue white/black
+
+title FreeNAS
+root (hd0,0,a)
+kernel /boot/loader
