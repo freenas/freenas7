@@ -173,7 +173,7 @@ function plot_data(obj) {
 		// shift plot to left if the maximum number of plot points has been reached
 		var i = 0;
 		while (i < max_num_points) {
-		  plot_cpu[i] = plot_cpu[i+1];
+		  plot_cpu[i] = plot_cpu[++i];
 		}
 		plot_cpu.length--;
   }
