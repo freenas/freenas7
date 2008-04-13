@@ -88,6 +88,7 @@ Minors changes:
 
 Bug fixes:
 - Display correct share name for mounted ISO's on initial system page (BR 1935353). Thanks to paq237.
+- Fix CPU graph script error (BR1940372).
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
