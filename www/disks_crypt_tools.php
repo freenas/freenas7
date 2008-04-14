@@ -38,6 +38,9 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Tools"));
 
+// Omit no-cache headers because it confuses IE with file downloads.
+$omit_nocacheheaders = true;
+
 if (!is_array($config['disks']['disk']))
 	$config['disks']['disk'] = array();
 
@@ -100,6 +103,32 @@ if(isset($_GET['disk'])) {
 if(isset($_GET['action'])) {
   $pconfig['action'] = $_GET['action'];
 }
+
+if ("backup" === $pconfig['action']) {
+	// Get GEOM Eli configuration.
+	$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
+	$geli = $a_geli[$id];
+	$fn = "/var/tmp/{$geli['name']}.metadata";
+	system("/sbin/geli backup {$geli['device'][0]} {$fn}");
+	$fs = filesize($fn);
+	header("Content-Type: application/octet-stream");
+	header("Content-Disposition: attachment; filename={$geli['name']}.metadata");
+	header("Content-Length: {$fs}");
+	readfile($fn);
+	unlink($fn);
+	exit;
+}
+
+if ("restore" === $pconfig['action']) {
+	if (is_uploaded_file($_FILES['backupfile']['tmp_name'])) {
+		// Get GEOM Eli configuration.
+		$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
+		$geli = $a_geli[$id];
+		$fn = "/var/tmp/{$geli['name']}.metadata";
+		// Move the metadata backup file so PHP won't delete it.
+		move_uploaded_file($_FILES['backupfile']['tmp_name'], $fn);
+	}
+}
 ?>
 <?php include("fbegin.inc");?>
 <script language="JavaScript">
@@ -109,14 +138,22 @@ function action_change() {
 		case "attach":
 			showElementById('passphrase_tr','show');
 			showElementById('oldpassphrase_tr','hide');
+			showElementById('backupfile_tr','hide');
 			break;
 		case "setkey":
 			showElementById('passphrase_tr','show');
 			showElementById('oldpassphrase_tr','show');
+			showElementById('backupfile_tr','hide');
+			break;
+		case "restore":
+			showElementById('passphrase_tr','hide');
+			showElementById('oldpassphrase_tr','hide');
+			showElementById('backupfile_tr','show');
 			break;
 		default:
 			showElementById('passphrase_tr','hide');
 			showElementById('oldpassphrase_tr','hide');
+			showElementById('backupfile_tr','hide');
 			break;
 	}
 }
@@ -135,7 +172,7 @@ function action_change() {
     <td class="tabcont">
     	<?php if ($nohttps_error) print_error_box($nohttps_error); ?>
       <?php if ($input_errors) print_input_errors($input_errors); ?>
-			<form action="disks_crypt_tools.php" method="post" name="iform" id="iform">
+			<form action="disks_crypt_tools.php" method="post" name="iform" id="iform" enctype="multipart/form-data">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
             <td valign="top" class="vncellreq"><?=gettext("Encrypted disk name");?></td>
@@ -156,11 +193,13 @@ function action_change() {
             <td valign="top" class="vncellreq"><?=gettext("Command");?></td>
             <td class="vtable">
 							<select name="action" class="formfld" id="action" onchange="action_change()">
-                <option value="attach" <?php if ($pconfig['action'] == "attach") echo "selected"; ?>>attach</option>
-                <option value="detach" <?php if ($pconfig['action'] == "detach") echo "selected"; ?>>detach</option>
+                <option value="attach" <?php if ($pconfig['action'] === "attach") echo "selected"; ?>>attach</option>
+                <option value="detach" <?php if ($pconfig['action'] === "detach") echo "selected"; ?>>detach</option>
 								<option value="setkey" <?php if ($pconfig['action'] == "setkey") echo "selected"; ?>>setkey</option>
-                <option value="list" <?php if ($pconfig['action'] == "list") echo "selected"; ?>>list</option>
-                <option value="status" <?php if ($pconfig['action'] == "status") echo "selected"; ?>>status</option>
+                <option value="list" <?php if ($pconfig['action'] === "list") echo "selected"; ?>>list</option>
+                <option value="status" <?php if ($pconfig['action'] === "status") echo "selected"; ?>>status</option>
+                <option value="backup" <?php if ($pconfig['action'] === "backup") echo "selected"; ?>>backup</option>
+                <option value="restore" <?php if ($pconfig['action'] === "restore") echo "selected"; ?>>restore</option>
 							</select>
             </td>
           </tr>
@@ -174,6 +213,13 @@ function action_change() {
 						<td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Passphrase"));?></td>
 						<td width="78%" class="vtable">
 							<input name="passphrase" type="password" class="formfld" id="passphrase" size="20">
+						</td>
+					</tr>
+					<tr id="backupfile_tr" style="display: none">
+						<td width="22%" valign="top" class="vncellreq"><?=htmlspecialchars(gettext("Backup file"));?></td>
+						<td width="78%" class="vtable">
+							<input name="backupfile" type="file" class="formfld" size="40"><br/>
+							<span class="vexpl"><?=gettext("Restore metadata from the given file to the given provider.");?></span>
 						</td>
 					</tr>
   				<tr>
@@ -238,6 +284,19 @@ function action_change() {
 
                 case "status":
                 	system("/sbin/geli status");
+                	break;
+
+                case "restore":
+                	// Get GEOM Eli configuration.
+									$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
+									$geli = $a_geli[$id];
+									$fn = "/var/tmp/{$geli['name']}.metadata";
+									if (file_exists($fn)) {
+                		system("/sbin/geli restore -v {$fn} {$geli['devicespecialfile']}");
+                		unlink($fn);
+                	} else {
+                		echo gettext("Failed to upload metadata backup file.");
+									}
                 	break;
               }
 
