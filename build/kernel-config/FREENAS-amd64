@@ -57,7 +57,7 @@ options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
 options 	KBD_INSTALL_CDEV	# install a CDEV entry in /dev
 options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
 
-device		apic			# I/O APIC
+#device		apic			# I/O APIC
 
 # Bus support.
 device		eisa
@@ -157,7 +157,7 @@ device		agp		# support several AGP chipsets
 # Power management support (see NOTES for more options)
 #device		apm
 # Add suspend/resume support for the i8254.
-device		pmtimer
+#device		pmtimer
 
 # PCCARD (PCMCIA) support
 # PCMCIA and cardbus bridge support
@@ -334,7 +334,7 @@ device		fwip			# Ethernet over FireWire (standard)
 # Hardware crypto acceleration
 device		crypto
 device		cryptodev
-device		padlock
+#device		padlock
 
 # GEOM classes
 options		GEOM_ELI		# GELI filesystem encryption
