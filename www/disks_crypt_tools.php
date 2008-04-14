@@ -62,9 +62,8 @@ if ($config['system']['webgui']['protocol'] === "http") {
 
 if ($_POST) {
 	unset($input_errors);
-	unset($pconfig['do_action']);
 
-	/* input validation */
+	// Input validation.
 	$reqdfields = explode(" ", "disk action");
 	$reqdfieldsn = array(gettext("Disk Name"),gettext("Command"));
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -74,7 +73,7 @@ if ($_POST) {
 		$input_errors[] = gettext("This encrypted disk is mounted, umount it before trying to detach it.");
 	}
 
-	/* Check for a passphrase if 'attach' mode */
+	// Check for a passphrase if 'attach' mode.
 	if (empty($_POST['passphrase']) && $_POST['action'] === "attach") {
 		$input_errors[] = gettext("You must use a passphrase to attach an encrypted disk.");
 	}
@@ -85,6 +84,10 @@ if ($_POST) {
 		$pconfig['disk'] = $_POST['disk'];
 		$pconfig['oldpassphrase'] = $_POST['oldpassphrase'];
 		$pconfig['passphrase'] = $_POST['passphrase'];
+
+		// Get configuration.
+		$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
+		$geli = $a_geli[$id];
 	}
 }
 
@@ -105,11 +108,8 @@ if(isset($_GET['action'])) {
 }
 
 if ("backup" === $pconfig['action']) {
-	// Get GEOM Eli configuration.
-	$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
-	$geli = $a_geli[$id];
 	$fn = "/var/tmp/{$geli['name']}.metadata";
-	system("/sbin/geli backup {$geli['device'][0]} {$fn}");
+	mwexec("/sbin/geli backup {$geli['device'][0]} {$fn}");
 	$fs = filesize($fn);
 	header("Content-Type: application/octet-stream");
 	header("Content-Disposition: attachment; filename={$geli['name']}.metadata");
@@ -121,9 +121,6 @@ if ("backup" === $pconfig['action']) {
 
 if ("restore" === $pconfig['action']) {
 	if (is_uploaded_file($_FILES['backupfile']['tmp_name'])) {
-		// Get GEOM Eli configuration.
-		$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
-		$geli = $a_geli[$id];
 		$fn = "/var/tmp/{$geli['name']}.metadata";
 		// Move the metadata backup file so PHP won't delete it.
 		move_uploaded_file($_FILES['backupfile']['tmp_name'], $fn);
@@ -195,7 +192,7 @@ function action_change() {
 							<select name="action" class="formfld" id="action" onchange="action_change()">
                 <option value="attach" <?php if ($pconfig['action'] === "attach") echo "selected"; ?>>attach</option>
                 <option value="detach" <?php if ($pconfig['action'] === "detach") echo "selected"; ?>>detach</option>
-								<option value="setkey" <?php if ($pconfig['action'] == "setkey") echo "selected"; ?>>setkey</option>
+								<option value="setkey" <?php if ($pconfig['action'] === "setkey") echo "selected"; ?>>setkey</option>
                 <option value="list" <?php if ($pconfig['action'] === "list") echo "selected"; ?>>list</option>
                 <option value="status" <?php if ($pconfig['action'] === "status") echo "selected"; ?>>status</option>
                 <option value="backup" <?php if ($pconfig['action'] === "backup") echo "selected"; ?>>backup</option>
@@ -238,10 +235,6 @@ function action_change() {
               switch($pconfig['action']) {
                 case "attach":
                 case "detach":
-                	// Get GEOM Eli configuration.
-									$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
-									$geli = $a_geli[$id];
-
 									// Search if a mount point use this GEOM Eli disk.
 									$id = array_search_ex($geli['devicespecialfile'], $a_mount, "mdisk");
 
@@ -272,9 +265,6 @@ function action_change() {
                   break;
 
 								case "setkey":
-									// Get GEOM Eli configuration.
-									$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
-									$geli = $a_geli[$id];
 									disks_geli_setkey($geli['name'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
                 	break;
 
@@ -287,9 +277,6 @@ function action_change() {
                 	break;
 
                 case "restore":
-                	// Get GEOM Eli configuration.
-									$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
-									$geli = $a_geli[$id];
 									$fn = "/var/tmp/{$geli['name']}.metadata";
 									if (file_exists($fn)) {
                 		system("/sbin/geli restore -v {$fn} {$geli['devicespecialfile']}");
