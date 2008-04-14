@@ -300,7 +300,7 @@ options		DEVICE_POLLING
 options		HZ=1000
 
 # Splashscreen
-options		VESA
+#options		VESA
 options		SC_PIXEL_MODE
 
 # Power management support (see NOTES for more options)
