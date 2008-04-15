@@ -62,9 +62,9 @@ if ($_POST)
 		$reqdfieldst = explode(" ", "port");
 		
 		if ($_POST['key']) {
-			$reqdfields = array_merge($reqdfields, array("privatekey"));
+			$reqdfields = array_merge($reqdfields, array("key"));
 			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Private key")));
-			$reqdfieldst = array_merge($reqdfieldst, array("privatekey"));
+			$reqdfieldst = array_merge($reqdfieldst, array("privatedsakey"));
 		}
 	}
 
