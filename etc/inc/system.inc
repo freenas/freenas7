@@ -222,4 +222,45 @@ function system_get_ram_info() {
 
 	return $raminfo;
 }
+
+// Get the current swap information.
+// Result:
+//  Array (
+//    [device] => "/dev/ad0s2b"
+//    [total] => "20M"
+//    [used] => "0B"
+//    [avail] => "20M"
+//    [capacity] => "0%"
+//  )
+function system_get_swap_info() {
+	exec("/usr/sbin/swapinfo", $swap);
+
+	// blocks
+	$val = 512;
+	if (preg_match("/(?:Device)(?:\s+)(\d+)(?:k-blocks|-blocks)(?:\s+)(?:Used)(?:\s+)(?:Avail)(?:\s)(?:Capacity)/", $swap[0], $matches)) {
+		if ($matches[1] == 1) {
+			$val = $matches[1] * 1024;
+		} else {
+			$val = $matches[1];
+		}
+	}
+
+	array_shift($swap);
+	$swapinfo = array();
+
+	foreach ($swap as $swapv) {
+		if (preg_match("/(.*)(?:\s+)(\d+)(?:\s+)(\d+)(?:\s+)(\d+)(?:\s)(.+)/", $swapv, $matches)) {
+			$devswap = array();
+			$devswap['device']  = trim($matches[1]);
+			$devswap['total']  = decode_size(trim($matches[2])*$val);
+			$devswap['used'] = decode_size(trim($matches[3])*$val);
+			$devswap['avail'] = decode_size(trim($matches[4])*$val);
+			$devswap['capacity'] = trim($matches[5]);
+
+			$swapinfo[] = $devswap;
+		}
+	}
+
+	return $swapinfo;
+}
 ?>

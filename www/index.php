@@ -66,6 +66,21 @@ function update_controls() {
 			$value['diskusage'][] = $diskinfo;
 		}
 	}
+	// Get swap info.
+	$swapinfo = system_get_swap_info();
+	if (is_array($swapinfo) && (0 < count($swapinfo))) {
+		$id = 0;
+		foreach ($swapinfo as $swap) {
+			$id++;
+			$devswap = array();
+			$devswap['id']  = $id;
+			$devswap['percentage']  = rtrim($swap['capacity'],"%");
+			$devswap['tooltip']['used'] = sprintf(gettext("%s used of %sB"), $swap['used'], $swap['total']);
+			$devswap['tooltip']['available']  = sprintf(gettext("%s available of %sB"), $swap['avail'], $swap['total']);
+			$devswap['caption'] = sprintf(gettext("%s of %sB"), $swap['capacity'], $swap['total']);
+			$value['swapusage'][]= $devswap;
+		}
+	}
 	// Encode data using JSON.
 	$value = json_encode($value);
 	return $value;
@@ -153,7 +168,7 @@ sajax_handle_client_request();
 			    </tr>
 			  <?php endif;?>
 				<tr>
-					<td width="25%" class="vncellt">CPU usage</td>
+					<td width="25%" class="vncellt"><?=gettext("CPU usage");?></td>
 					<td width="75%" class="listr">
 						<?php
 						$percentage = 0;
@@ -179,6 +194,34 @@ sajax_handle_client_request();
 						<input style="padding: 0; border: 0;" size="30" name="memusage" id="memusage" value="<?=sprintf(gettext("%d%% of %dMB"), $percentage, round($raminfo['physical'] / 1024 / 1024));?>"/>
 			    </td>
 			  </tr>
+				<?php $swapinfo = system_get_swap_info(); if (is_array($swapinfo) && (0 < count($swapinfo))):?>
+				<tr>
+					<td width="25%" class="vncellt"><?=gettext("Swap usage");?></td>
+					<td width="75%" class="listr">
+						<table width="100%" border="0" cellspacing="0" cellpadding="1">
+							<?php
+							$fsid = 0;
+							foreach ($swapinfo as $swap) {
+								echo "<tr><td>";
+								echo htmlspecialchars($swap['device']);
+								echo "</td><td>";
+
+								$fsid++;
+								$percent_used = rtrim($swap['capacity'],"%");
+								$tooltip_used = sprintf(gettext("%sB used of %sB"), $swap['used'], $swap['total']);
+								$tooltip_available = sprintf(gettext("%sB available of %sB"), $swap['avail'], $swap['total']);
+
+								echo "<img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
+								echo "<img src='bar_blue.gif' name='swapusageu_{$fsid}' id='swapusageu_{$fsid}' height='15' width='{$percent_used}' border='0' align='absmiddle' title='{$tooltip_used}'>";
+								echo "<img src='bar_gray.gif' name='swapusagef_{$fsid}' id='swapusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle' title='{$tooltip_available}'>";
+								echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
+								echo "<input style='padding: 0; border: 0;' size='30' name='swapusage_{$fsid}' id='swapusage_{$fsid}' value='" . sprintf(gettext("%s of %sB"), $swap['capacity'], $swap['total']) . "'/>";
+								echo "<br></td></tr>";
+							}?>
+						</table>
+					</td>
+				</tr>
+				<?php endif;?>
 				<tr>
 			  	<td width="25%" class="vncellt"><?=gettext("Load averages");?></td>
 					<td width="75%" class="listr">
@@ -193,7 +236,7 @@ sajax_handle_client_request();
 				<tr>
 			    <td width="25%" class="vncellt"><?=gettext("Disk space usage");?></td>
 			    <td width="75%" class="listr">
-				    <table>
+				    <table width="100%" border="0" cellspacing="0" cellpadding="1">
 				      <?php
 				      $a_diskusage = get_mount_usage();
 				      $a_mount = get_mounts_list();
@@ -203,17 +246,17 @@ sajax_handle_client_request();
 									$index = array_search_ex($diskusagev['filesystem'], $a_mount, "devicespecialfile");
 									echo htmlspecialchars($a_mount[$index]['sharename']);
 									echo "</td><td>";
-									$percent_used = rtrim($diskusagev['capacity'],"%");
 
-									$fsid = get_mount_fsid($diskusagev['filesystem'], $diskusagek);			
+									$fsid = get_mount_fsid($diskusagev['filesystem'], $diskusagek);
+									$percent_used = rtrim($diskusagev['capacity'],"%");
 									$tooltip_used = sprintf(gettext("%sB used of %sB"), $diskusagev['used'], $diskusagev['size']);
 									$tooltip_available = sprintf(gettext("%sB available of %sB"), $diskusagev['avail'], $diskusagev['size']);
-			
+
 									echo "<img src='bar_left.gif' height='15' width='4' border='0' align='absmiddle'>";
-									echo "<img src='bar_blue.gif' name='diskusageu_{$fsid}' id='diskusageu_{$fsid}' height='15' width='" . $percent_used . "' border='0' align='absmiddle' title='" . $tooltip_used . "'>";
-									echo "<img src='bar_gray.gif' name='diskusagef_{$fsid}' id='diskusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle' title='" . $tooltip_available . "'>";
+									echo "<img src='bar_blue.gif' name='diskusageu_{$fsid}' id='diskusageu_{$fsid}' height='15' width='{$percent_used}' border='0' align='absmiddle' title='{$tooltip_used}'>";
+									echo "<img src='bar_gray.gif' name='diskusagef_{$fsid}' id='diskusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle' title='{$tooltip_available}'>";
 									echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
-									echo "<input style='padding: 0; border: 0;'' size='30' name='diskusage_{$fsid}' id='diskusage_{$fsid}' value='" . sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']) . "'/>";
+									echo "<input style='padding: 0; border: 0;' size='30' name='diskusage_{$fsid}' id='diskusage_{$fsid}' value='" . sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']) . "'/>";
 									echo "<br></td></tr>";
 								}
 							} else {
