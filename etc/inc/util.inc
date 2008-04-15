@@ -382,10 +382,21 @@ function is_valid_certificate($certificate) {
 }
 
 // Returns true if $privatekey is a valid private key.
-function is_valid_privatekey($privatekey) {
-	if (!strstr($privatekey, "BEGIN RSA PRIVATE KEY") || !strstr($privatekey, "END RSA PRIVATE KEY"))
-		return false;
-	return true;
+function is_valid_privatekey($privatekey, $type = "RSA") {
+	switch ($type) {
+		default:
+		case 'RSA':
+			if (strstr($privatekey, "BEGIN RSA PRIVATE KEY") && strstr($privatekey, "END RSA PRIVATE KEY"))
+				return true;
+			break;
+
+		case 'DSA':
+			if (strstr($privatekey, "BEGIN DSA PRIVATE KEY") && strstr($privatekey, "END DSA PRIVATE KEY"))
+				return true;
+			break;
+	}
+
+	return false;
 }
 
 function get_interface_list() {
