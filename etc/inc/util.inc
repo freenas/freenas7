@@ -1918,4 +1918,12 @@ function set_conf_disk_fstype($disk, $fstype)
 
 	return $result;
 }
+
+// Convert bytes into best unit.
+// Use FreeBSD unit suffix notation (see 'man df').
+function decode_size($bytes) {
+	$types = array('B', 'K', 'M', 'G', 'T', 'P');
+	for ($i = 0; $bytes >= 1024 && $i < (count($types) - 1); $bytes /= 1024, $i++);
+	return (round($bytes, 2) . $types[$i]);
+}
 ?>

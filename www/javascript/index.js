@@ -12,6 +12,7 @@ function update_controls(x) {
 	update_loadaverage(value['loadaverage']);
 	update_cpuusage(value['cpuusage']);
 	update_diskusage(value['diskusage']);
+	update_swapusage(value['swapusage']);
 }
 
 function update_date(value) {
@@ -51,7 +52,7 @@ function update_cpuusage(value) {
 function update_diskusage(value) {
 	if (value == 'undefined' || value == null)
 		return;
-	for (var i=0; i<value.length; x++) {
+	for (var i=0; i<value.length; i++) {
 		if (document.getElementById("diskusage_" + value[i].id) == null)
 			return;
 		document.getElementById("diskusage_" + value[i].id).value = value[i].caption;
@@ -59,6 +60,21 @@ function update_diskusage(value) {
 		document.getElementById("diskusageu_" + value[i].id).title = value[i]['tooltip'].used;
 		document.getElementById("diskusagef_" + value[i].id).style.width = (100 - value[i].percentage) + 'px';
 		document.getElementById("diskusagef_" + value[i].id).title = value[i]['tooltip'].available;
+	}
+}
+
+function update_swapusage(value) {
+	if (value == 'undefined' || value == null)
+		return;
+
+	for (var i=0; i<value.length; i++) {
+		if (document.getElementById("swapusage_" + value[i].id) == null)
+			return;
+		document.getElementById("swapusage_" + value[i].id).value = value[i].caption;
+		document.getElementById("swapusageu_" + value[i].id).style.width = value[i].percentage + 'px';
+		document.getElementById("swapusageu_" + value[i].id).title = value[i]['tooltip'].used;
+		document.getElementById("swapusagef_" + value[i].id).style.width = (100 - value[i].percentage) + 'px';
+		document.getElementById("swapusagef_" + value[i].id).title = value[i]['tooltip'].available;
 	}
 }
 
