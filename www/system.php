@@ -180,17 +180,18 @@ if ($_POST) {
 
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_exec_service("rcconf.sh"); // Update /etc/rc.conf
-			$retval |= rc_exec_service("resolv"); // Update /etc/resolv
-			$retval |= rc_exec_service("hosts"); // Update /etc/hosts
-			$retval |= rc_restart_service("hostname"); // Set hostname
+			$retval |= rc_exec_service("rcconf.sh");
+			$retval |= rc_exec_service("timezone");
+			$retval |= rc_exec_service("resolv");
+			$retval |= rc_exec_service("hosts");
+			$retval |= rc_restart_service("hostname");
 			$retval |= rc_exec_service("userdb");
 			$retval |= rc_exec_service("htpasswd");
 			$retval |= rc_exec_service("websrv_htpasswd");
-			$retval |= rc_exec_service("timezone");
  			$retval |= rc_update_service("msntp");
  			$retval |= rc_update_service("mdnsresponder");
  			$retval |= rc_update_service("bsnmpd");
+ 			$retval |= rc_update_service("cron");
 			config_unlock();
 		}
 
