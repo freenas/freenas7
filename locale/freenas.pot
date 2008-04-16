@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-03-27 09:17+0000\n"
+"PO-Revision-Date: 2008-04-16 14:13+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -24,6 +24,10 @@ msgid "%s advertises itself as a time server to Windows clients."
 msgstr ""
 
 #, php-format
+msgid "%s available of %sB"
+msgstr ""
+
+#, php-format
 msgid "%s interface"
 msgstr ""
 
@@ -33,6 +37,10 @@ msgstr ""
 
 #, php-format
 msgid "%s of %sB"
+msgstr ""
+
+#, php-format
+msgid "%s used of %sB"
 msgstr ""
 
 #, php-format
@@ -121,12 +129,6 @@ msgstr ""
 msgid "AD or PDC name."
 msgstr ""
 
-msgid "AD server IP"
-msgstr ""
-
-msgid "AD server name"
-msgstr ""
-
 msgid "AFP"
 msgstr ""
 
@@ -146,9 +148,6 @@ msgid "Access mode"
 msgstr ""
 
 msgid "Accessible through 'http://ip_address:port'."
-msgstr ""
-
-msgid "Accessiblity test to MS domain"
 msgstr ""
 
 msgid "Acoustic level"
@@ -176,6 +175,9 @@ msgid "Add RSYNC"
 msgstr ""
 
 msgid "Add Route"
+msgstr ""
+
+msgid "Add URL"
 msgstr ""
 
 msgid "Add additional scheduled self-test."
@@ -341,6 +343,9 @@ msgstr ""
 msgid "Attaching provider '%s'."
 msgstr ""
 
+msgid "Authenticate URL"
+msgstr ""
+
 msgid "Authentication"
 msgstr ""
 
@@ -360,6 +365,9 @@ msgid "Auxiliary parameters"
 msgstr ""
 
 msgid "Backup configuration"
+msgstr ""
+
+msgid "Backup file"
 msgstr ""
 
 msgid "Backup/Restore"
@@ -383,10 +391,19 @@ msgstr ""
 msgid "CIFS/SMB"
 msgstr ""
 
+msgid "CIFS/SMB disabled"
+msgstr ""
+
+msgid "CIFS/SMB informations"
+msgstr ""
+
 msgid "CPU"
 msgstr ""
 
 msgid "CPU load"
+msgstr ""
+
+msgid "CPU usage"
 msgstr ""
 
 msgid "Calculate netmask bits"
@@ -540,7 +557,7 @@ msgstr ""
 msgid "DN to bind"
 msgstr ""
 
-msgid "DNS"
+msgid "DNS settings"
 msgstr ""
 
 #, php-format
@@ -571,7 +588,13 @@ msgstr ""
 msgid "Default is 21"
 msgstr ""
 
+msgid "Define directories/URL's that require authentication."
+msgstr ""
+
 msgid "Defining a hostname can be useful for NFS."
+msgstr ""
+
+msgid "Delete"
 msgstr ""
 
 msgid "Delete ARP entry"
@@ -587,6 +610,9 @@ msgid "Delete RSYNC"
 msgstr ""
 
 msgid "Delete Route"
+msgstr ""
+
+msgid "Delete URL"
 msgstr ""
 
 msgid "Delete command"
@@ -753,6 +779,9 @@ msgstr ""
 msgid "Do you really want to delete this RSYNC?"
 msgstr ""
 
+msgid "Do you really want to delete this URL?"
+msgstr ""
+
 msgid "Do you really want to delete this command?"
 msgstr ""
 
@@ -825,10 +854,22 @@ msgstr ""
 msgid "Domain"
 msgstr ""
 
+msgid "Domain controller name"
+msgstr ""
+
 msgid "Domain name"
 msgstr ""
 
-msgid "Domain name in old format."
+msgid "Domain name (DNS/Realm-Name)"
+msgstr ""
+
+msgid "Domain name (NetBIOS-Name)"
+msgstr ""
+
+msgid "Domain name in old format, e.g. EXAMPLE."
+msgstr ""
+
+msgid "Domain name, e.g. example.com."
 msgstr ""
 
 msgid "Don't Erase MBR"
@@ -883,6 +924,9 @@ msgid "Edit RSYNC"
 msgstr ""
 
 msgid "Edit Route"
+msgstr ""
+
+msgid "Edit URL"
 msgstr ""
 
 msgid "Edit VLAN"
@@ -1045,7 +1089,7 @@ msgstr ""
 msgid "Enter a description (name) for the interface here."
 msgstr ""
 
-msgid "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select one, then use Save button to update system time. (Mind seconds part will be ignored)"
+msgid "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select it."
 msgstr ""
 
 msgid "Enter the NIS Master server hostname."
@@ -1125,6 +1169,9 @@ msgid "Failed to create in-memory file system."
 msgstr ""
 
 msgid "Failed to send status report. Please check log files."
+msgstr ""
+
+msgid "Failed to upload metadata backup file."
 msgstr ""
 
 msgid "Failed."
@@ -1333,9 +1380,6 @@ msgstr ""
 msgid "IP address"
 msgstr ""
 
-msgid "IP address of MS Active Directory server."
-msgstr ""
-
 msgid "IP address of remote RSYNC server"
 msgstr ""
 
@@ -1536,6 +1580,9 @@ msgstr ""
 msgid "List of detected SCSI disks"
 msgstr ""
 
+msgid "List of imported users"
+msgstr ""
+
 msgid "List of mount points"
 msgstr ""
 
@@ -1602,10 +1649,13 @@ msgstr ""
 msgid "MOTD"
 msgstr ""
 
-msgid "MS Domain"
+msgid "MS Active Directory"
 msgstr ""
 
-msgid "MS Domain informations"
+msgid "MS Active Directory informations"
+msgstr ""
+
+msgid "MS Domain"
 msgstr ""
 
 msgid "MTU"
@@ -1766,7 +1816,7 @@ msgstr ""
 msgid "Navigation"
 msgstr ""
 
-msgid "NetBiosName"
+msgid "NetBIOS name"
 msgstr ""
 
 msgid "Netgraph"
@@ -1948,7 +1998,7 @@ msgstr ""
 msgid "Password for DN"
 msgstr ""
 
-msgid "Password of domain administrator account, enter it here twice."
+msgid "Password of domain administrator account."
 msgstr ""
 
 msgid "Password suffix"
@@ -1966,6 +2016,9 @@ msgstr ""
 msgid "Path"
 msgstr ""
 
+msgid "Path of the URL relative to document root."
+msgstr ""
+
 msgid "Path to be shared."
 msgstr ""
 
@@ -1973,9 +2026,6 @@ msgid "Permit root login"
 msgstr ""
 
 msgid "Permit to do SSH Tunneling."
-msgstr ""
-
-msgid "Pick a date"
 msgstr ""
 
 msgid "Ping"
@@ -2110,9 +2160,6 @@ msgstr ""
 msgid "RSYNC Local"
 msgstr ""
 
-msgid "RSYNC Options"
-msgstr ""
-
 msgid "RSYNC events"
 msgstr ""
 
@@ -2135,6 +2182,9 @@ msgid "Read/Write"
 msgstr ""
 
 msgid "Read/Write Access"
+msgstr ""
+
+msgid "Realm"
 msgstr ""
 
 msgid "Reboot"
@@ -2182,6 +2232,9 @@ msgstr ""
 msgid "Restore configuration"
 msgstr ""
 
+msgid "Restore metadata from the given file to the given provider."
+msgstr ""
+
 msgid "Results for net rpc testjoin:"
 msgstr ""
 
@@ -2225,9 +2278,6 @@ msgid "SSH events"
 msgstr ""
 
 msgid "SSH key"
-msgstr ""
-
-msgid "SSHD"
 msgstr ""
 
 msgid "SSHD log"
@@ -2330,6 +2380,9 @@ msgid "Set share password."
 msgstr ""
 
 msgid "Set the account's primary group to the given group."
+msgstr ""
+
+msgid "Sets the database information to be stored in path. You have to specifiy a writable location, even if the volume is read only."
 msgstr ""
 
 msgid "Sets the interval between disk checks to N seconds. The minimum allowed value is 10."
@@ -2473,6 +2526,9 @@ msgstr ""
 msgid "Store DOS attributes"
 msgstr ""
 
+msgid "String displayed in the dialog presented to the user when accessing the URL."
+msgstr ""
+
 msgid "Subject"
 msgstr ""
 
@@ -2489,6 +2545,9 @@ msgid "Successful."
 msgstr ""
 
 msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
+msgstr ""
+
+msgid "Suppress non-error messages."
 msgstr ""
 
 msgid "Swap"
@@ -2509,6 +2568,9 @@ msgstr ""
 msgid "Swap status"
 msgstr ""
 
+msgid "Swap usage"
+msgstr ""
+
 msgid "Switch to"
 msgstr ""
 
@@ -2525,9 +2587,6 @@ msgstr ""
 msgid "System Beep"
 msgstr ""
 
-msgid "System Time"
-msgstr ""
-
 msgid "System events"
 msgstr ""
 
@@ -2541,6 +2600,9 @@ msgid "System log"
 msgstr ""
 
 msgid "System message buffer"
+msgstr ""
+
+msgid "System time"
 msgstr ""
 
 msgid "TCP forwarding"
@@ -2642,6 +2704,10 @@ msgstr ""
 
 #, c-format
 msgid "The attribute '%s' does not appear to be a valid certificate."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' does not appear to be a valid private %s key."
 msgstr ""
 
 #, c-format
@@ -2887,6 +2953,9 @@ msgstr ""
 msgid "These commands will be executed pre or post system initialization (booting) or before system shutdown."
 msgstr ""
 
+msgid "This URL is already configured."
+msgstr ""
+
 msgid "This allows you to lower the power consumption of the drive, at the expense of performance."
 msgstr ""
 
@@ -3025,6 +3094,9 @@ msgstr ""
 msgid "To increase CIFS performance try the following:<br>- Enable 'Large read/write' switch<br>- Enable '<a href='%s'>Tuning</a>' switch<br>- Increase <a href='%s'>MTU</a>"
 msgstr ""
 
+msgid "To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul>"
+msgstr ""
+
 msgid "Tools"
 msgstr ""
 
@@ -3082,6 +3154,9 @@ msgid "UPnP A/V Media Server"
 msgstr ""
 
 msgid "UPnP friendly name."
+msgstr ""
+
+msgid "URL"
 msgstr ""
 
 msgid "Uninstall package"
@@ -3207,10 +3282,10 @@ msgstr ""
 msgid "WAN address"
 msgstr ""
 
-msgid "WINS Server IP address."
+msgid "WINS server"
 msgstr ""
 
-msgid "WINS server"
+msgid "WINS server IP address (e.g. from MS Active Directory server)."
 msgstr ""
 
 msgid "Warning"
@@ -3241,7 +3316,7 @@ msgstr ""
 msgid "Workgroup"
 msgstr ""
 
-msgid "Workgroup to be member of.(maximum 15 characters)"
+msgid "Workgroup the server will appear to be in when queried by clients (maximum 15 characters)."
 msgstr ""
 
 msgid "Working Directory"
@@ -3328,6 +3403,9 @@ msgid "crlf"
 msgstr ""
 
 msgid "days"
+msgstr ""
+
+msgid "dbpath"
 msgstr ""
 
 msgid "delete mount"
