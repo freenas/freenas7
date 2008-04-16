@@ -166,7 +166,7 @@ function enable_change(enable_change) {
 			      	<input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
 							<input name="password2" type="password" class="formfld" id="password2" size="20" value="<?=htmlspecialchars($pconfig['password2']);?>">
 			        &nbsp;(<?=gettext("Confirmation");?>)
-							<br/><span class="vexpl"><?=gettext("Password of domain administrator account, enter it here twice.");?></span>
+							<br/><span class="vexpl"><?=gettext("Password of domain administrator account.");?></span>
 						</td>
 			    </tr>
 					<tr>
