@@ -211,18 +211,18 @@ function authentication_change() {
 			        <span class="vexpl"><?=gettext("Document root of the webserver. Home of the web page files.");?></span>
 			      </td>
 			    </tr>
-			    <tr id="privatekey_tr">
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Private key");?></td>
-						<td width="78%" class="vtable">
-							<textarea name="privatekey" cols="65" rows="7" id="privatekey" class="formpre"><?=htmlspecialchars($pconfig['privatekey']);?></textarea></br>
-							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
-						</td>
-					</tr>
 					<tr id="certificate_tr">
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Certificate");?></td>
 						<td width="78%" class="vtable">
 							<textarea name="certificate" cols="65" rows="7" id="certificate" class="formpre"><?=htmlspecialchars($pconfig['certificate']);?></textarea></br>
 							<span class="vexpl"><?=gettext("Paste a signed certificate in X.509 PEM format here.");?></span>
+						</td>
+					</tr>
+					<tr id="privatekey_tr">
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Private key");?></td>
+						<td width="78%" class="vtable">
+							<textarea name="privatekey" cols="65" rows="7" id="privatekey" class="formpre"><?=htmlspecialchars($pconfig['privatekey']);?></textarea></br>
+							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
 						</td>
 					</tr>
 					<tr>
