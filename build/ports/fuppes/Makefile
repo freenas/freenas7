@@ -38,6 +38,6 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/.libs/libfuppes.so.* ${FREENAS_ROOTFS}/usr/local/lib
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
 	@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/etc/${PORTNAME}
-	@${INSTALL_DATA} -v ${WRKSRC}/vfolder.cfg ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
+	@${INSTALL_DATA} -v ${FILESDIR}/vfolder.cfg ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 
 .include <bsd.port.mk>
