@@ -64,6 +64,8 @@ function logs_dump($logfile, $entries, $withorig = true) {
 
 function logs_dump_ex($logfile, $entries, $columns, $withorig = true) {
 	foreach (logs_get_contents($logfile, $entries, "cat") as $logent) {
+		if (empty($logent)) // Skip empty lines.
+			continue;
 		echo "<tr valign=\"top\">\n";
 		if ($withorig) {
 			$logent = preg_split("/\s+/", $logent, $columns);

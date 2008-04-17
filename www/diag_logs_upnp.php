@@ -39,10 +39,10 @@ $nentries = $config['syslogd']['nentries'];
 if (!$nentries)
 	$nentries = 50;
 
-if ($_POST['clear'])
-{
-	exec("/bin/cat /dev/null > /var/log/mediatomb.log");
-	// Redirect to avoid reposting form data on refresh
+$logfile = "/var/log/fuppes.log";
+
+if ($_POST['clear']) {
+	exec("/bin/cat /dev/null > {$logfile}");
 	header("Location: diag_logs_upnp.php");
 	exit;
 }
@@ -71,7 +71,7 @@ if ($_POST['clear'])
 						<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("UPnP"));?>
 					</td>
 			  </tr>
-			  <?php logs_dump_ex("/var/log/mediatomb.log", $nentries, 4);?>
+			  <?php logs_dump_ex($logfile, $nentries, 1, false);?>
 			</table><br/>
 			<form action="diag_logs_upnp.php" method="post">
 				<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">

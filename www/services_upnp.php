@@ -71,8 +71,8 @@ if($_POST) {
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
 
-	if ($_POST['port'] && ((49152 > $_POST['port']) || (65535 < $_POST['port']))) {
-		$input_errors[] = sprintf(gettext("Invalid port! Port number must be in the range from %d to %d."), 49152, 65535);
+	if ($_POST['port'] && ((1024 > $_POST['port']) || (65535 < $_POST['port']))) {
+		$input_errors[] = sprintf(gettext("Invalid port! Port number must be in the range from %d to %d."), 1024, 65535);
 	}
 
 	if(!$input_errors) {
@@ -89,7 +89,7 @@ if($_POST) {
 		$retval = 0;
 		if(!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_update_service("mediatomb.sh");
+			$retval |= rc_update_service("fuppes");
 			$retval |= rc_update_service("mdnsresponder");
 			config_unlock();
 		}
@@ -220,7 +220,7 @@ function enable_change(enable_change) {
 						<td width="22%" valign="top" class="vncell"><?=gettext("Profile");?></td>
 						<td width="78%" class="vtable">
 							<select name="profile" class="formfld" id="profile">
-								<?php $types = array(gettext("Default"),gettext("Sony Playstation 3"),gettext("Telegent TG100"),gettext("ZyXEL DMA-1000"),gettext("Helios X3000"),gettext("D-Link DSM320")); $vals = explode(" ", "default PS3 Telegent_TG100 ZyXEL_DMA1000 Helios_X3000 DLink_DSM320");?>
+								<?php $types = array(gettext("Default"),gettext("DLNA"),gettext("Sony Playstation 3"),gettext("Telegent TG100"),gettext("ZyXEL DMA-1000"),gettext("Helios X3000"),gettext("D-Link DSM320"),gettext("Microsoft XBox 360")); $vals = explode(" ", "default DLNA PS3 Telegent_TG100 ZyXEL_DMA1000 Helios_X3000 DLink_DSM320 Microsoft_XBox360");?>
 								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
 								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['profile']) echo "selected";?>>
 								<?=htmlspecialchars($types[$j]);?>

@@ -160,7 +160,7 @@ function interfaces_lan_configure()
 		$result |= rc_update_service("rsyncd");
 
 		/* Restart UPnP */
-		$result |= rc_restart_service("mediatomb.sh");
+		$result |= rc_restart_service("fuppes");
 
 		/* Restart mdnsresponder (Zeroconf/Apple Bonjour) */
 		$result |= rc_restart_service("mdnsresponder");
