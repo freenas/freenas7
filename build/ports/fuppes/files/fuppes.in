@@ -34,11 +34,12 @@ sig_stop=${sig_stop-"KILL"}
 
 start_precmd()
 {
-	local _if _port _command_args
+	local _if _port _profile _command_args
 
 	# Get interface and port used for uPnP.
 	_if=`configxml_get "//upnp/if"`
 	_port=`configxml_get "//upnp/port"`
+	_profile=`configxml_get "//upnp/profile"`
 
 	# Set default port if necessary.
 	[ -z ${_port} ] && _port="49152" # Set default port.
@@ -79,7 +80,7 @@ EOF
 <!--do NOT remove the "default" device settings-->
 <!--all new file types have to be added to the default settings-->
 <!--adding new file types just to a specific device will have no affect-->
-    <device name="default" virtual="default" enabled="true">
+    <device name="default" virtual="default" enabled="false">
 <!--specify the maximum length for file names (0 or empty = unlimited)-->
       <max_file_name_length>0</max_file_name_length>
 <!--[file|container]-->
@@ -244,7 +245,7 @@ EOF
         </file>
       </file_settings>
     </device>
-    <device name="Xbox 360" virtual="Xbox 360" enabled="false">
+    <device name="Microsoft_XBox360" virtual="Microsoft_XBox360" enabled="false">
       <user_agent>Xbox/2.0.\d+.\d+ UPnP/1.0 Xbox/2.0.\d+.\d+</user_agent>
       <user_agent>Xenon</user_agent>
       <xbox360>true</xbox360>
@@ -255,24 +256,31 @@ EOF
       <playlist_style>container</playlist_style>
       <show_childcount_in_title>true</show_childcount_in_title>
     </device>
-    <device name="Telegent TG 100" virtual="default" enabled="false">
+    <device name="Telegent_TG100" virtual="default" enabled="false">
       <user_agent>dma/1.0 \(http://www.cybertan.com.tw/\)</user_agent>
       <user_agent>UPnP/1.0 DLNADOC/1.00</user_agent>
       <playlist_style>file</playlist_style>
       <max_file_name_length>101</max_file_name_length>
     </device>
-		<device name="DLNA" virtual="default" enabled="false">
+    <device name="DLNA" virtual="default" enabled="false">
       <enable_dlna>true</enable_dlna>
+		</device>
+    <device name="ZyXEL_DMA1000" virtual="default" enabled="false">
     </device>
-		<device name="ZyXEL DMA-1000" virtual="default" enabled="false">
+    <device name="Helios_X3000" virtual="default" enabled="false">
     </device>
-    <device name="Helios X3000" virtual="default" enabled="false">
-    </device>
-    <device name="D-Link DSM320" virtual="default" enabled="false">
+    <device name="DLink_DSM320" virtual="default" enabled="false">
     </device>
   </device_settings>
 </fuppes_config>
 EOF
+
+	# Enable configured device and vfolder profile.
+	/usr/local/bin/xml edit -u "//fuppes_config/device_settings/device[@name='${_profile}']/@enabled" \
+		-v true ${fuppes_config} | /usr/local/bin/xml unesc > ${fuppes_config}
+
+	/usr/local/bin/xml edit -u "//fuppes_vfolder_config/vfolder_layout[@device='${_profile}']/@enabled" \
+		-v true ${fuppes_vfolder_config} | /usr/local/bin/xml unesc > ${fuppes_vfolder_config}
 
 	# Create command args line.
 	_command_args=`/usr/local/bin/xml sel -t -m "//upnp" \
