@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: rcconf
@@ -74,6 +74,22 @@ updateservices()
 	done
 }
 
+setoptions()
+{
+	local _option _name _value
+
+	/usr/local/bin/xml sel -t -m "//system/rcconf/auxparam" \
+		-v "." \
+		-i "position() != last()" -n -b \
+		${configxml_file} | /usr/local/bin/xml unesc | \
+		while read _option; do
+			_name=${_option%%=*}
+			_value=${_option##*=}
+	
+			eval /usr/local/sbin/rconf attribute set "${_name}" "${_value}"
+		done
+}
+
 load_rc_config ${name}
 
 echo -n "Updating rc.conf:"
@@ -86,6 +102,9 @@ sethostname
 
 # Set interface configuration
 setifconfig
+
+# Set additional options.
+setoptions
 
 # Finally issue a line break
 echo

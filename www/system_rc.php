@@ -80,6 +80,7 @@ if ($_GET['act'] == "del")
       	<li class="tabinact"><a href="system_swap.php"><?=gettext("Swap");?></a></li>
         <li class="tabact"><a href="system_rc.php" title="<?=gettext("Reload page");?>"><?=gettext("Command scripts");?></a></li>
         <li class="tabinact"><a href="system_cron.php"><?=gettext("Cron");?></a></li>
+        <li class="tabinact"><a href="system_rcconf.php"><?=gettext("rc.conf");?></a></li>
       </ul>
     </td>
   </tr>
@@ -96,8 +97,8 @@ if ($_GET['act'] == "del")
           <td class="listlr"><?=htmlspecialchars($cmd);?>&nbsp;</td>
           <td class="listbg"><?php echo(gettext("PreInit"));?>&nbsp;</td>
           <td valign="middle" nowrap class="list">
-            <a href="system_rc_edit.php?id=<?=$i;?>&type=PREINIT"><img src="e.gif" title="Edit command" width="17" height="17" border="0"></a>&nbsp;
-            <a href="system_rc.php?act=del&id=<?=$i;?>&type=PREINIT" onclick="return confirm('<?=gettext("Do you really want to delete this command?");?>')"><img src="x.gif" title="<?=gettext("Delete command"); ?>" width="17" height="17" border="0"></a>
+            <a href="system_rc_edit.php?id=<?=$i;?>&type=PREINIT"><img src="e.gif" title="<?=gettext("Edit command");?>" width="17" height="17" border="0"></a>&nbsp;
+            <a href="system_rc.php?act=del&id=<?=$i;?>&type=PREINIT" onclick="return confirm('<?=gettext("Do you really want to delete this command?");?>')"><img src="x.gif" title="<?=gettext("Delete command");?>" width="17" height="17" border="0"></a>
           </td>
         </tr>
         <?php $i++; endforeach;?>
@@ -106,8 +107,8 @@ if ($_GET['act'] == "del")
           <td class="listlr"><?=htmlspecialchars($cmd);?>&nbsp;</td>
           <td class="listbg"><?php echo(gettext("PostInit"));?>&nbsp;</td>
           <td valign="middle" nowrap class="list">
-            <a href="system_rc_edit.php?id=<?=$i;?>&type=POSTINIT"><img src="e.gif" title="Edit command" width="17" height="17" border="0"></a>&nbsp;
-            <a href="system_rc.php?act=del&id=<?=$i;?>&type=POSTINIT" onclick="return confirm('<?=gettext("Do you really want to delete this command?");?>')"><img src="x.gif" title="<?=gettext("Delete command"); ?>" width="17" height="17" border="0"></a>
+            <a href="system_rc_edit.php?id=<?=$i;?>&type=POSTINIT"><img src="e.gif" title="<?=gettext("Edit command");?>" width="17" height="17" border="0"></a>&nbsp;
+            <a href="system_rc.php?act=del&id=<?=$i;?>&type=POSTINIT" onclick="return confirm('<?=gettext("Do you really want to delete this command?");?>')"><img src="x.gif" title="<?=gettext("Delete command");?>" width="17" height="17" border="0"></a>
           </td>
         </tr>
         <?php $i++; endforeach;?>
@@ -116,8 +117,8 @@ if ($_GET['act'] == "del")
           <td class="listlr"><?=htmlspecialchars($cmd);?>&nbsp;</td>
           <td class="listbg"><?php echo(gettext("Shutdown"));?>&nbsp;</td>
           <td valign="middle" nowrap class="list">
-            <a href="system_rc_edit.php?id=<?=$i;?>&type=SHUTDOWN"><img src="e.gif" title="Edit command" width="17" height="17" border="0"></a>&nbsp;
-            <a href="system_rc.php?act=del&id=<?=$i;?>&type=SHUTDOWN" onclick="return confirm('<?=gettext("Do you really want to delete this command?");?>')"><img src="x.gif" title="<?=gettext("Delete command"); ?>" width="17" height="17" border="0"></a>
+            <a href="system_rc_edit.php?id=<?=$i;?>&type=SHUTDOWN"><img src="e.gif" title="<?=gettext("Edit command");?>" width="17" height="17" border="0"></a>&nbsp;
+            <a href="system_rc.php?act=del&id=<?=$i;?>&type=SHUTDOWN" onclick="return confirm('<?=gettext("Do you really want to delete this command?");?>')"><img src="x.gif" title="<?=gettext("Delete command");?>" width="17" height="17" border="0"></a>
           </td>
         </tr>
         <?php $i++; endforeach;?>
