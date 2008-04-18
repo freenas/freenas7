@@ -10,7 +10,7 @@
 . /etc/configxml.subr
 
 _timezone=`configxml_get "//system/timezone"`
-if [ -z ${_timezone} ]; then
+if [ -z "${_timezone}" ]; then
 	_timezone="Etc/UTC"
 fi
 
