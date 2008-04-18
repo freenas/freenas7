@@ -53,6 +53,7 @@ $pconfig['port'] = $config['upnp']['port'];
 $pconfig['web'] = isset($config['upnp']['web']);
 $pconfig['home'] = $config['upnp']['home'];
 $pconfig['profile'] = $config['upnp']['profile'];
+$pconfig['deviceip'] = $config['upnp']['deviceip'];
 
 /* Set name to configured hostname if it is not set */
 if(!$pconfig['name'])
@@ -63,12 +64,20 @@ if($_POST) {
 
 	$pconfig = $_POST;
 
-	/* input validation */
-	if($_POST['enable']) {
+	// Input validation.
+	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "name interface home");
 		$reqdfieldsn = array(gettext("Name"), gettext("Interface"), gettext("Database directory"));
+		$reqdfieldst = explode(" ", "string string string");
+
+		if ("Terratec_Noxon_iRadio" === $_POST['profile']) {
+			$reqdfields = array_merge($reqdfields, array("deviceip"));
+			$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Device IP")));
+			$reqdfieldst = array_merge($reqdfieldst, array("ipaddr"));
+		}
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 	}
 
 	if ($_POST['port'] && ((1024 > $_POST['port']) || (65535 < $_POST['port']))) {
@@ -83,6 +92,7 @@ if($_POST) {
 		$config['upnp']['web'] = $_POST['web'] ? true : false;
 		$config['upnp']['home'] = $_POST['home'];
 		$config['upnp']['profile'] = $_POST['profile'];
+		$config['upnp']['deviceip'] = $_POST['deviceip'];
 
 		write_config();
 
@@ -126,6 +136,18 @@ function enable_change(enable_change) {
 	document.iform.home.disabled = endis;
 	document.iform.browse.disabled = endis;
 	document.iform.profile.disabled = endis;
+}
+
+function profile_change() {
+	switch(document.iform.profile.value) {
+		case "Terratec_Noxon_iRadio":
+			showElementById('deviceip_tr','show');
+			break;
+
+		default:
+			showElementById('deviceip_tr','hide');
+			break;
+	}
 }
 //-->
 </script>
@@ -219,15 +241,22 @@ function enable_change(enable_change) {
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Profile");?></td>
 						<td width="78%" class="vtable">
-							<select name="profile" class="formfld" id="profile">
-								<?php $types = array(gettext("Default"),gettext("DLNA"),gettext("Sony Playstation 3"),gettext("Telegent TG100"),gettext("ZyXEL DMA-1000"),gettext("Helios X3000"),gettext("D-Link DSM320"),gettext("Microsoft XBox 360")); $vals = explode(" ", "default DLNA PS3 Telegent_TG100 ZyXEL_DMA1000 Helios_X3000 DLink_DSM320 Microsoft_XBox360");?>
+							<select name="profile" class="formfld" id="profile" onchange="profile_change()">
+								<?php $types = array(gettext("Default"),gettext("DLNA"),gettext("Sony Playstation 3"),gettext("Telegent TG100"),gettext("ZyXEL DMA-1000"),gettext("Helios X3000"),gettext("D-Link DSM320"),gettext("Microsoft XBox 360"),gettext("Terratec Noxon iRadio"),gettext("Yamaha RX-N600")); $vals = explode(" ", "default DLNA PS3 Telegent_TG100 ZyXEL_DMA1000 Helios_X3000 DLink_DSM320 Microsoft_XBox360 Terratec_Noxon_iRadio Yamaha_RXN600");?>
 								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['profile']) echo "selected";?>>
+								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] === $pconfig['profile']) echo "selected";?>>
 								<?=htmlspecialchars($types[$j]);?>
 								</option>
 								<?php endfor;?>
 							</select><br/>
 							<span class="vexpl"><?=gettext("Compliant profile to be used.");?></span>
+						</td>
+					</tr>
+					<tr id="deviceip_tr">
+						<td width="22%" valign="top" class="vncell"><?=gettext("Device IP");?></td>
+						<td width="78%" class="vtable">
+							<input name="deviceip" type="text" class="formfld" id="deviceip" size="20" value="<?=htmlspecialchars($pconfig['deviceip']);?>"></br>
+							<?=gettext("The device's IP address.");?>
 						</td>
 					</tr>
 					<tr>
@@ -251,6 +280,7 @@ function enable_change(enable_change) {
 </form>
 <script language="JavaScript">
 <!--
+profile_change();
 enable_change(false);
 //-->
 </script>

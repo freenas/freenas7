@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: fuppes
@@ -34,12 +34,13 @@ sig_stop=${sig_stop-"KILL"}
 
 start_precmd()
 {
-	local _if _port _profile _command_args
+	local _if _port _profile _deviceip _command_args
 
 	# Get interface and port used for uPnP.
 	_if=`configxml_get "//upnp/if"`
 	_port=`configxml_get "//upnp/port"`
 	_profile=`configxml_get "//upnp/profile"`
+	_deviceip=`configxml_get "//upnp/deviceip"`
 
 	# Set default port if necessary.
 	[ -z ${_port} ] && _port="49152" # Set default port.
@@ -243,14 +244,28 @@ EOF
             <http_encoding>stream</http_encoding>
           </transcode>
         </file>
+        <file ext="avi">
+          <type>VIDEO_ITEM</type>
+          <mime_type>video/x-divx</mime_type>
+        </file>
       </file_settings>
     </device>
     <device name="Microsoft_XBox360" virtual="Microsoft_XBox360" enabled="false">
       <user_agent>Xbox/2.0.\d+.\d+ UPnP/1.0 Xbox/2.0.\d+.\d+</user_agent>
       <user_agent>Xenon</user_agent>
       <xbox360>true</xbox360>
+      <show_empty_resolution>true</show_empty_resolution>
+      <description_values>
+        <friendly_name>%s %v : 1 : Windows Media Connect</friendly_name>
+        <model_name>Windows Media Connect compatible (%s)</model_name>
+        <model_number>2.0</model_number>
+      </description_values>
+      <file_settings>
+        <file ext="mp3"><type>AUDIO_ITEM_MUSIC_TRACK</type></file>
+        <file ext="jpg"><type>IMAGE_ITEM_PHOTO</type></file>
+      </file_settings>
     </device>
-    <device name="Noxon audio" virtual="default" enabled="false">
+    <device name="Terratec_Noxon_iRadio" virtual="default" enabled="false">
 <!--Please enter the address of your Noxon. Automatic detection is impossible because the Noxon does not send a "user-agent" in it's requests-->
 <!--<ip></ip>-->
       <playlist_style>container</playlist_style>
@@ -264,23 +279,55 @@ EOF
     </device>
     <device name="DLNA" virtual="default" enabled="false">
       <enable_dlna>true</enable_dlna>
-		</device>
+    </device>
     <device name="ZyXEL_DMA1000" virtual="default" enabled="false">
     </device>
     <device name="Helios_X3000" virtual="default" enabled="false">
     </device>
     <device name="DLink_DSM320" virtual="default" enabled="false">
+      <description_values>
+        <user_agent>redsonic</user_agent>
+        <manufacturer_url>redsonic.com</manufacturer_url>
+        <model_number>105</model_number>
+      </description_values>
+    </device>
+    <device name="Yamaha_RXN600" virtual="Yamaha_RXN600" enabled="false">      
+      <user_agent>YAMAHA Network Receiver</user_agent>
+      <user_agent>YAMAHA Network Receiver DLNADOC/1.00</user_agent>
+      <xbox360>false</xbox360>
+      <enable_xms_media_receiver_registrar>true</enable_xms_media_receiver_registrar>
+      <enable_url_base>false</enable_url_base>
+      <description_values>
+        <friendly_name>%s %v : MEDIASERVER: Windows Media Connect</friendly_name>
+        <manufacturer>Microsoft</manufacturer>
+        <manufacturer_url>http://www.microsoft.com/</manufacturer_url>
+        <model_name>Windows Media Connect</model_name>
+        <model_number>2.0</model_number>
+        <model_url>http://www.microsoft.com/</model_url>
+        <model_description enabled="false" />
+        <upc enabled="false" />
+        <serial_number enabled="false" />
+      </description_values>
     </device>
   </device_settings>
 </fuppes_config>
 EOF
 
 	# Enable configured device and vfolder profile.
-	/usr/local/bin/xml edit -u "//fuppes_config/device_settings/device[@name='${_profile}']/@enabled" \
-		-v true ${fuppes_config} | /usr/local/bin/xml unesc > ${fuppes_config}
+	/usr/local/bin/xml edit -P -u "//fuppes_config/device_settings/device[@name='${_profile}']/@enabled" \
+		-v true ${fuppes_config} > ${fuppes_config}.tmp
+	/bin/mv ${fuppes_config}.tmp ${fuppes_config}
 
-	/usr/local/bin/xml edit -u "//fuppes_vfolder_config/vfolder_layout[@device='${_profile}']/@enabled" \
-		-v true ${fuppes_vfolder_config} | /usr/local/bin/xml unesc > ${fuppes_vfolder_config}
+	/usr/local/bin/xml edit -P -u "//fuppes_vfolder_config/vfolder_layout[@device='${_profile}']/@enabled" \
+		-v true ${fuppes_vfolder_config} > ${fuppes_vfolder_config}.tmp
+	/bin/mv ${fuppes_vfolder_config}.tmp ${fuppes_vfolder_config}
+
+	# Set device ip.
+	if [ -n ${_deviceip} ]; then
+		/usr/local/bin/xml edit -s "//fuppes_config/device_settings/device[@name='${_profile}']" \
+			-t elem -n ip -v "${_deviceip}" ${fuppes_config} > ${fuppes_config}.tmp
+		/bin/mv ${fuppes_config}.tmp ${fuppes_config}
+	fi
 
 	# Create command args line.
 	_command_args=`/usr/local/bin/xml sel -t -m "//upnp" \
