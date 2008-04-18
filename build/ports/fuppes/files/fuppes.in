@@ -27,6 +27,7 @@ fuppes_vfolder_config=${fuppes_vfolder_config-"/usr/local/share/${name}/vfolder.
 fuppes_loglevel=${fuppes_loglevel-"1"}
 fuppes_logfile=${fuppes_logfile-"/var/log/${name}.log"}
 fuppes_port=${fuppes_port-"49152"}
+fuppes_local_charset=${fuppes_local_charset-"UTF-8"}
 
 command="/usr/local/bin/${name}d"
 command_args="--config-dir ${fuppes_configdir} --config-file ${fuppes_config} --vfolder-config-file ${fuppes_vfolder_config} --log-level ${fuppes_loglevel} --log-file ${fuppes_logfile}"
@@ -74,7 +75,7 @@ EOF
     </allowed_ips>
   </network>
   <content_directory>
-    <local_charset>UTF-8</local_charset>
+    <local_charset>${fuppes_local_charset}</local_charset>
     <use_taglib>true</use_taglib>
   </content_directory>
   <transcoding>
