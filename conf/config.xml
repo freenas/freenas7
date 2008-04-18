@@ -361,7 +361,8 @@
 		<port>xxx</port>
 		<home>xxx</home> // Directory where sqlite database is stored. The mediatomb.html bookmark file will also be generated in that directory.
 		<web/>
-		<profile>default|ps3|tg100</profile>
+		<profile>default|...</profile>
+		<deviceip>xxx.xxx.xxx.xxx<deviceip>
 		-->
 		<profile>default</profile>
 	</upnp>
