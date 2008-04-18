@@ -81,7 +81,7 @@ if($_POST) {
 	}
 
 	if ($_POST['port'] && ((1024 > $_POST['port']) || (65535 < $_POST['port']))) {
-		$input_errors[] = sprintf(gettext("Invalid port! Port number must be in the range from %d to %d."), 1024, 65535);
+		$input_errors[] = sprintf(gettext("Invalid port! Port number must be in the range from %d to %d."), 1025, 65535);
 	}
 
 	if(!$input_errors) {
@@ -235,7 +235,7 @@ function profile_change() {
 						<td width="22%" valign="top" class="vncell"><?=gettext("Port");?></td>
 						<td width="78%" class="vtable">
 							<input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"></br>
-							<?=gettext("Enter a custom port number for the HTTP server if you want to override the default (49152). Only dynamic or private ports can be used (from 49152 through 65535).");?>
+							<?=sprintf(gettext("Enter a custom port number for the HTTP server if you want to override the default (%d). Only dynamic or private ports can be used (from %d through %d)."), 49152, 1025, 65535);?>
 						</td>
 					</tr>
 					<tr>
