@@ -61,6 +61,8 @@ Majors changes:
 - Replace Adaptec SCSI RAID administration tool aaccli with arcconf.
 - Enhance 'Disks/Encryption/Tools' WebGUI to backup/restore metadata of encrypted disks.
 - Replace UPnP media player MediaTomb with Fuppes.
+- Add 'System: Advanced: rc.conf' WebGUI to add additional options to rc.conf. This is
+  useful to overwrite options used by various generic startup scripts.
 
 Minors changes:
 - Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.
