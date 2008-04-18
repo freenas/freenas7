@@ -9,6 +9,7 @@
 # RCVAR: fuppes
 
 . /etc/rc.subr
+. /etc/util.subr
 . /etc/configxml.subr
 
 name="fuppes"
@@ -34,16 +35,20 @@ sig_stop=${sig_stop-"KILL"}
 
 start_precmd()
 {
-	local _if _port _profile _deviceip _command_args
+	local _if _port _name _profile _deviceip _command_args
 
 	# Get interface and port used for uPnP.
 	_if=`configxml_get "//upnp/if"`
 	_port=`configxml_get "//upnp/port"`
+	_name=`configxml_get "//upnp/name"`
 	_profile=`configxml_get "//upnp/profile"`
 	_deviceip=`configxml_get "//upnp/deviceip"`
 
 	# Set default port if necessary.
 	[ -z ${_port} ] && _port="49152" # Set default port.
+
+	# Set default friendly name if necessary.
+	[ -z ${_name} ] && _name=`get_product_name` # Set default friendly name.
 
 	# Setup a multicast route for UPnP messages.
 	/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface ${_if} >/dev/null 2>&1
@@ -89,6 +94,9 @@ EOF
       <show_childcount_in_title>false</show_childcount_in_title>
       <enable_dlna>false</enable_dlna>
       <transcoding_release_delay>4</transcoding_release_delay>
+      <description_values>
+        <friendly_name>${_name}</friendly_name>
+      </description_values>
       <file_settings>
 <!--audio files-->
         <file ext="mp3">
@@ -326,6 +334,14 @@ EOF
 	if [ -n ${_deviceip} ]; then
 		/usr/local/bin/xml edit -s "//fuppes_config/device_settings/device[@name='${_profile}']" \
 			-t elem -n ip -v "${_deviceip}" ${fuppes_config} > ${fuppes_config}.tmp
+		/bin/mv ${fuppes_config}.tmp ${fuppes_config}
+	fi
+
+	# Enable/disable web interface.
+	if ! configxml_isset //upnp/web; then
+		# Set allowed IP to loopback to disable all external IP's.
+		/usr/local/bin/xml edit -s "//fuppes_config/network/allowed_ips" \
+			-t elem -n ip -v "127.0.0.1" ${fuppes_config} > ${fuppes_config}.tmp
 		/bin/mv ${fuppes_config}.tmp ${fuppes_config}
 	fi
 
