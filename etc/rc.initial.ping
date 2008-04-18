@@ -17,7 +17,7 @@ trap "rm -f $tmpfile" 0 1 2 5 15
 retval=$?
 value=`cat $tmpfile`
 
-[ -z ${value} ] && exit 0
+[ -z "${value}" ] && exit 0
 
 if [ 0 -eq ${retval} ]; then
 	if [ ! `is_validip inet ${value}` ]; then

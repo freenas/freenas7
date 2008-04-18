@@ -26,6 +26,7 @@ fuppes_config=${fuppes_config-"${fuppes_configdir}/${name}.cfg"}
 fuppes_vfolder_config=${fuppes_vfolder_config-"/usr/local/share/${name}/vfolder.cfg"}
 fuppes_loglevel=${fuppes_loglevel-"1"}
 fuppes_logfile=${fuppes_logfile-"/var/log/${name}.log"}
+fuppes_port=${fuppes_port-"49152"}
 
 command="/usr/local/bin/${name}d"
 command_args="--config-dir ${fuppes_configdir} --config-file ${fuppes_config} --vfolder-config-file ${fuppes_vfolder_config} --log-level ${fuppes_loglevel} --log-file ${fuppes_logfile}"
@@ -44,11 +45,11 @@ start_precmd()
 	_profile=`configxml_get "//upnp/profile"`
 	_deviceip=`configxml_get "//upnp/deviceip"`
 
-	# Set default port if necessary.
-	[ -z ${_port} ] && _port="49152" # Set default port.
+	# Set customized port.
+	[ -n "${_port}" ] && fuppes_port="${_port}"
 
 	# Set default friendly name if necessary.
-	[ -z ${_name} ] && _name=`get_product_name` # Set default friendly name.
+	[ -z "${_name}" ] && _name=`get_product_name` # Set default friendly name.
 
 	# Setup a multicast route for UPnP messages.
 	/sbin/route add -net 239.0.0.0 -netmask 255.0.0.0 -interface ${_if} >/dev/null 2>&1
@@ -68,7 +69,7 @@ EOF
   </shared_objects>
   <network>
     <interface>${_if}</interface>
-    <http_port>${_port}</http_port>
+    <http_port>${fuppes_port}</http_port>
     <allowed_ips>
     </allowed_ips>
   </network>
