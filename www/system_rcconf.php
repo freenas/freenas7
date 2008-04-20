@@ -64,6 +64,7 @@ if ($_POST) {
 if ($_GET['act'] === "del") {
 	if ($_GET['id'] === "all") {
 		foreach ($a_rcvar as $rcvark => $rcvarv) {
+			mwexec("/usr/local/sbin/rconf attribute remove {$a_rcvar[$rcvark]['name']}");
 			unset($a_rcvar[$rcvark]);
 		}
 		write_config();
@@ -72,6 +73,7 @@ if ($_GET['act'] === "del") {
 		exit;
 	} else {
 		if ($a_rcvar[$_GET['id']]) {
+			mwexec("/usr/local/sbin/rconf attribute remove {$a_rcvar[$_GET['id']]['name']}");
 			unset($a_rcvar[$_GET['id']]);
 			write_config();
 			touch($d_rcconfdirty_path);
