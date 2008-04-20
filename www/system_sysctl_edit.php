@@ -5,6 +5,8 @@
 	Copyright © 2008 Nelson Silva (nsilva@hotlap.org)
 	All rights reserved.
 
+	Modified by Volker Theile (votdev@gmx.de)
+
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
