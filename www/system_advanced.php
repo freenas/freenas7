@@ -138,6 +138,7 @@ function sysctl_tune($mode) {
 				$param = array();
 				$param['name'] = $name;
 				$param['value'] = $value;
+				$param['comment'] = gettext("System tuning");
 
 				$a_sysctlvar[] = $param;
 			}
