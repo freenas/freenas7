@@ -97,7 +97,9 @@ case ${type} in
 		case ${action} in
 			set)
 				remove "${attribute}"
-				value=${4}
+				# Shift parameters and use the rest of the given parameters as value.
+				shift 3
+				value=$*
 				echo "${attribute}=\"${value}\"" >> ${rc_config}
 				;;
 
