@@ -42,17 +42,21 @@ if (isset($_POST['id']))
 
 $pgtitle = array(gettext("System"), gettext("Advanced"), gettext("rc.conf"), isset($id) ? gettext("Edit") : gettext("Add"));
 
-if (!is_array($config['system']['rcconf']['auxparam']))
-	$config['system']['rcconf']['auxparam'] = array();
+if (!is_array($config['system']['rcconf']['param']))
+	$config['system']['rcconf']['param'] = array();
 
-sort($config['system']['rcconf']['auxparam']);
+array_sort_key($config['system']['rcconf']['param'], "name");
 
-$a_rcvar = &$config['system']['rcconf']['auxparam'];
+$a_rcvar = &$config['system']['rcconf']['param'];
 
 if (isset($id) && $a_rcvar[$id]) {
-	$pconfig['option'] = $a_rcvar[$id];
+	$pconfig['name'] = $a_rcvar[$id]['name'];
+	$pconfig['value'] = $a_rcvar[$id]['value'];
+	$pconfig['comment'] = $a_rcvar[$id]['comment'];
 } else {
-	$pconfig['option'] = "";
+	$pconfig['name'] = "";
+	$pconfig['value'] = "";
+	$pconfig['comment'] = "";
 }
 
 if ($_POST) {
@@ -60,18 +64,23 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	// Input validation.
-  $reqdfields = explode(" ", "option");
-  $reqdfieldsn = array(gettext("Option"));
-  $reqdfieldst = explode(" ", "string");
+	$reqdfields = explode(" ", "name value");
+	$reqdfieldsn = array(gettext("Option"), gettext("Value"));
+	$reqdfieldst = explode(" ", "string string");
 
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
   do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	if (!$input_errors) {
+		$param = array();
+		$param['name'] = $pconfig['name'];
+		$param['value'] = $pconfig['value'];
+		$param['comment'] = $pconfig['comment'];
+
 		if (isset($id) && $a_rcvar[$id])
-			$a_rcvar[$id] = $pconfig['option'];
+			$a_rcvar[$id] = $param;
 		else
-			$a_rcvar[] = $pconfig['option'];
+			$a_rcvar[] = $param;
 
 		write_config();
 		touch($d_rcconfdirty_path);
@@ -103,10 +112,24 @@ if ($_POST) {
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Option");?></td>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
 						<td width="78%" class="vtable">
-							<input name="option" type="text" class="formfld" id="option" size="60" value="<?=htmlspecialchars($pconfig['option']);?>"><br/>
-							<span class="vexpl"><?=gettext("Options are set with 'name=value' assignments that use 'sh' syntax.");?></span>
+							<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"><br/>
+							<span class="vexpl"><?=gettext("Name of the variable.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Value");?></td>
+						<td width="78%" class="vtable">
+							<input name="value" type="text" class="formfld" id="value" size="20" value="<?=htmlspecialchars($pconfig['value']);?>"><br/>
+							<span class="vexpl"><?=gettext("The value of the variable.");?></span>
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Comment");?></td>
+						<td width="78%" class="vtable">
+							<input name="comment" type="text" class="formfld" id="comment" size="40" value="<?=$pconfig['comment'];?>"><br/>
+							<span class="vexpl"><?=gettext("You may enter a description here for your reference.");?></span>
 						</td>
 					</tr>
 			    <tr>

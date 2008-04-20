@@ -114,23 +114,21 @@ if ($_GET['act'] === "del") {
 	          <td width="30%" class="listhdrr"><?=gettext("Comment");?></td>
 	          <td width="10%" class="list"></td>
 	        </tr>
-	        <?php if($a_sysctlvar && is_array($a_sysctlvar)): ?>
-				  <?php $i = 0; foreach($a_sysctlvar as $sysctlvarv): ?>
+				  <?php $i = 0; foreach($a_sysctlvar as $sysctlvarv):?>
 	        <tr>
 	          <td class="listlr"><?=htmlspecialchars($sysctlvarv['name']);?>&nbsp;</td>
 	          <td class="listr"><?=htmlspecialchars($sysctlvarv['value']);?>&nbsp;</td>
-	          <td class="listr"><?=$sysctlvarv['comment'];?>&nbsp;</td>
+	          <td class="listr"><?=htmlspecialchars($sysctlvarv['comment']);?>&nbsp;</td>
 	          <td valign="middle" nowrap class="list">
-	            <a href="system_sysctl_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit MIB");?>" width="17" height="17" border="0"></a>&nbsp;
+	            <a href="system_sysctl_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit MIB");?>" width="17" height="17" border="0"></a>
 	            <a href="system_sysctl.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this MIB?");?>')"><img src="x.gif" title="<?=gettext("Delete MIB");?>" width="17" height="17" border="0"></a>
 	          </td>
 	        </tr>
 	        <?php $i++; endforeach;?>
-	        <?php endif;?>
 					<tr>
 	          <td class="list" colspan="3"></td>
-	          <td class="list"><a href="system_sysctl_edit.php"><img src="plus.gif" title="<?=gettext("Add MIB");?>" width="17" height="17" border="0"></a>&nbsp;
-	          	<?php if(count($a_sysctlvar) > 0):?>
+	          <td class="list"><a href="system_sysctl_edit.php"><img src="plus.gif" title="<?=gettext("Add MIB");?>" width="17" height="17" border="0"></a>
+	          	<?php if (!empty($a_sysctlvar)):?>
 							<a href="system_sysctl.php?act=del&id=all" onclick="return confirm('<?=gettext("Do you really want to delete all MIBs?");?>')"><img src="x.gif" title="<?=gettext("Delete all MIBs");?>" width="17" height="17" border="0"></a>
 							<?php endif;?>
 						</td>

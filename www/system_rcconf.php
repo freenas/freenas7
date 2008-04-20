@@ -38,12 +38,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("System"), gettext("Advanced"), gettext("rc.conf"));
 
-if (!is_array($config['system']['rcconf']['auxparam']))
-	$config['system']['rcconf']['auxparam'] = array();
+if (!is_array($config['system']['rcconf']['param']))
+	$config['system']['rcconf']['param'] = array();
 
-sort($config['system']['rcconf']['auxparam']);
+array_sort_key($config['system']['rcconf']['param'], "name");
 
-$a_rcvar = &$config['system']['rcconf']['auxparam'];
+$a_rcvar = &$config['system']['rcconf']['param'];
 
 if ($_POST) {
 	if ($_POST['apply']) {
@@ -61,15 +61,23 @@ if ($_POST) {
 	}
 }
 
-if ($_GET['act'] == "del") {
-	if ($a_rcvar[$_GET['id']]) {
-		preg_match("/^(.*)=(.*)$/", $a_rcvar[$_GET['id']], $matches);
-		mwexec("/usr/local/sbin/rconf attribute remove {$matches[1]}");
-		unset($a_rcvar[$_GET['id']]);
+if ($_GET['act'] === "del") {
+	if ($_GET['id'] === "all") {
+		foreach ($a_rcvar as $rcvark => $rcvarv) {
+			unset($a_rcvar[$rcvark]);
+		}
 		write_config();
 		touch($d_rcconfdirty_path);
 		header("Location: system_rcconf.php");
 		exit;
+	} else {
+		if ($a_rcvar[$_GET['id']]) {
+			unset($a_rcvar[$_GET['id']]);
+			write_config();
+			touch($d_rcconfdirty_path);
+			header("Location: system_rcconf.php");
+			exit;
+		}
 	}
 }
 ?>
@@ -99,21 +107,29 @@ if ($_GET['act'] == "del") {
 	      <?php endif;?>
 	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	        <tr>
-	          <td width="90%" class="listhdrr"><?=gettext("Option");?></td>
+	          <td width="40%" class="listhdrr"><?=gettext("Variable");?></td>
+	          <td width="20%" class="listhdrr"><?=gettext("Value");?></td>
+	          <td width="30%" class="listhdrr"><?=gettext("Comment");?></td>
 	          <td width="10%" class="list"></td>
 	        </tr>
-				  <?php $i = 0; foreach($a_rcvar as $rcvarv): ?>
+				  <?php $i = 0; foreach($a_rcvar as $rcvarv):?>
 	        <tr>
-	          <td class="listlr"><?=htmlspecialchars($rcvarv);?>&nbsp;</td>
+	          <td class="listlr"><?=htmlspecialchars($rcvarv['name']);?>&nbsp;</td>
+	          <td class="listr"><?=htmlspecialchars($rcvarv['value']);?>&nbsp;</td>
+	          <td class="listr"><?=htmlspecialchars($rcvarv['comment']);?>&nbsp;</td>
 	          <td valign="middle" nowrap class="list">
-	            <a href="system_rcconf_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit option");?>" width="17" height="17" border="0"></a>&nbsp;
+	            <a href="system_rcconf_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit option");?>" width="17" height="17" border="0"></a>
 	            <a href="system_rcconf.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this option?");?>')"><img src="x.gif" title="<?=gettext("Delete option");?>" width="17" height="17" border="0"></a>
 	          </td>
 	        </tr>
 	        <?php $i++; endforeach;?>
 	        <tr>
-	          <td class="list" colspan="1"></td>
-	          <td class="list"><a href="system_rcconf_edit.php"><img src="plus.gif" title="<?=gettext("Add option");?>" width="17" height="17" border="0"></a></td>
+	          <td class="list" colspan="3"></td>
+	          <td class="list"><a href="system_rcconf_edit.php"><img src="plus.gif" title="<?=gettext("Add option");?>" width="17" height="17" border="0"></a>
+	          <?php if (!empty($a_rcvar)):?>
+						<a href="system_rcconf.php?act=del&id=all" onclick="return confirm('<?=gettext("Do you really want to delete all options?");?>')"><img src="x.gif" title="<?=gettext("Delete all options");?>" width="17" height="17" border="0"></a>
+						<?php endif;?>
+						</td>
 	        </tr>
 	      </table>
 	      <p>
