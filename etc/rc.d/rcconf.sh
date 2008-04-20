@@ -83,9 +83,9 @@ setoptions()
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
 		while read _option; do
-			_name=${_option%%=*}
-			_value=${_option##*=}
-	
+			_name=${_option%=*}
+			_value=${_option#*=}
+		
 			eval /usr/local/sbin/rconf attribute set "${_name}" "${_value}"
 		done
 }

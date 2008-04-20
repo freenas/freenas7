@@ -47,12 +47,25 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
+	// Input validation.
 	if ($_POST['tcpidletimeout'] && !is_numericint($_POST['tcpidletimeout'])) {
 		$input_errors[] = gettext("The TCP idle timeout must be an integer.");
 	}
 
 	if (!$input_errors) {
+		// Process system tuning.
+		if ($_POST['tune_enable']) {
+			sysctl_tune(1);
+		} else if (isset($config['system']['tune']) && (!$_POST['tune_enable'])) {
+			// Simply force a reboot to reset to default values.
+			// This makes programming easy :-) Also we are sure that
+			// system will use origin values (maybe default values
+			// change from one FreeBSD release to the next. This will
+			// reduce maintenance).
+			sysctl_tune(0);
+			touch($d_sysrebootreqd_path);
+		}
+
 		$config['system']['disableconsolemenu'] = $_POST['disableconsolemenu'] ? true : false;
 		$config['system']['disablefirmwarecheck'] = $_POST['disablefirmwarecheck'] ? true : false;
 		$config['system']['webgui']['expanddiags'] = $_POST['expanddiags'] ? true : false;
@@ -68,18 +81,71 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= rc_update_service("powerd");
-			$retval |= rc_update_service("systune");
 			$retval |= rc_update_service("mdnsresponder");
+			if (isset($config['system']['tune']))
+				$retval |= rc_update_service("sysctl");
 			config_unlock();
 		}
 
 		$savemsg = get_std_save_message($retval);
 	}
 }
+
+function sysctl_tune($mode) {
+	global $config;
+
+	if (!is_array($config['system']['sysctl']['param']))
+		$config['system']['sysctl']['param'] = array();
+
+	array_sort_key($config['system']['sysctl']['param'], "name");
+	$a_sysctlvar = &$config['system']['sysctl']['param'];
+
+	$a_mib = array(
+		"net.inet.tcp.delayed_ack" => 0,
+		"net.inet.tcp.sendspace" => 65536,
+		"net.inet.tcp.recvspace" => 65536,
+		"net.inet.udp.recvspace" => 65536,
+		"net.inet.udp.maxdgram" => 57344,
+		"net.local.stream.recvspace" => 65536,
+		"net.local.stream.sendspace" => 65536,
+		"kern.ipc.maxsockbuf" => 2097152,
+		"kern.ipc.somaxconn" => 8192,
+		"kern.ipc.nmbclusters" => 32768,
+		"kern.maxfiles" => 65536,
+		"kern.maxfilesperproc" => 32768,
+		"net.inet.tcp.inflight.enable" => 0,
+		"net.inet.tcp.path_mtu_discovery" => 0
+	);
+
+	switch ($mode) {
+		case 0:
+			// Remove system tune MIB's.
+			while (list($name, $value) = each($a_mib)) {
+				$id = array_search_ex($name, $a_sysctlvar, "name");
+				if (false === $id)
+					continue;
+				unset($a_sysctlvar[$id]);
+			}
+			break;
+			
+		case 1:
+			// Add system tune MIB's.
+			while (list($name, $value) = each($a_mib)) {
+				$id = array_search_ex($name, $a_sysctlvar, "name");
+				if (false !== $id)
+					continue;
+
+				$param = array();
+				$param['name'] = $name;
+				$param['value'] = $value;
+
+				$a_sysctlvar[] = $param;
+			}
+			break;
+	}
+}
 ?>
 <?php include("fbegin.inc");?>
-<?php if ($input_errors) print_input_errors($input_errors);?>
-<?php if ($savemsg) print_info_box($savemsg);?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
@@ -91,12 +157,15 @@ if ($_POST) {
         <li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
         <li class="tabinact"><a href="system_cron.php"><?=gettext("Cron");?></a></li>
         <li class="tabinact"><a href="system_rcconf.php"><?=gettext("rc.conf");?></a></li>
+        <li class="tabinact"><a href="system_sysctl.php"><?=gettext("sysctl.conf");?></a></li>
       </ul>
     </td>
   </tr>
   <tr>
     <td class="tabcont">
 			<form action="system_advanced.php" method="post" name="iform" id="iform">
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			    <tr>
 			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Miscellaneous");?></td>

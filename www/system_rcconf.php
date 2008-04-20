@@ -85,6 +85,7 @@ if ($_GET['act'] == "del") {
         <li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
         <li class="tabinact"><a href="system_cron.php"><?=gettext("Cron");?></a></li>
         <li class="tabact"><a href="system_rcconf.php" title="<?=gettext("Reload page");?>"><?=gettext("rc.conf");?></a></li>
+        <li class="tabinact"><a href="system_sysctl.php"><?=gettext("sysctl.conf");?></a></li>
       </ul>
     </td>
   </tr>
@@ -93,7 +94,7 @@ if ($_GET['act'] == "del") {
     	<form action="system_rcconf.php" method="post">
     		<?php if ($savemsg) print_info_box($savemsg);?>
 	    	<?php if (file_exists($d_rcconfdirty_path)):?><p>
-	      <?php print_info_box_np(gettext("The option list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+	      <?php print_info_box_np(gettext("The configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br/>
 	      <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
 	      <?php endif;?>
 	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
