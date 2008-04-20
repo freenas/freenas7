@@ -10,13 +10,32 @@
 # BEFORE: DAEMON
 
 . /etc/rc.subr
+. /etc/configxml.subr
 
 name="sysctl"
 stop_cmd=":"
+start_precmd="create_conf"
 start_cmd="sysctl_start"
 reload_cmd="sysctl_start"
 lastload_cmd="sysctl_start last"
 extra_commands="reload lastload"
+
+# Defaults
+sysctl_config=${sysctl_config:-"/etc/sysctl.conf"}
+
+create_conf()
+{
+	# Clear /etc/sysctl.conf
+	cat /dev/null > ${sysctl_config}
+
+	# Generate /etc/sysctl.conf
+	/usr/local/bin/xml sel -t -m "//system/sysctl/param" \
+		-i "string-length(comment) > 0" \
+			-v "concat('# ',comment)" -n \
+		-b \
+		-v "concat(name,'=',value)" -n \
+		${configxml_file} | /usr/local/bin/xml unesc >> ${sysctl_config}
+}
 
 sysctl_start()
 {

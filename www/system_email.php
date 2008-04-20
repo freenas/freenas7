@@ -118,6 +118,7 @@ function auth_change() {
       	<li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
         <li class="tabinact"><a href="system_cron.php"><?=gettext("Cron");?></a></li>
         <li class="tabinact"><a href="system_rcconf.php"><?=gettext("rc.conf");?></a></li>
+        <li class="tabinact"><a href="system_sysctl.php"><?=gettext("sysctl.conf");?></a></li>
       </ul>
     </td>
   </tr>

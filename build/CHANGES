@@ -29,8 +29,10 @@ Majors changes:
 - Replace Adaptec SCSI RAID administration tool aaccli with arcconf.
 - Enhance 'Disks/Encryption/Tools' WebGUI to backup/restore metadata of encrypted disks.
 - Replace UPnP media player MediaTomb with Fuppes.
-- Add 'System: Advanced: rc.conf' WebGUI to add additional options to rc.conf. This is
+- Add 'System: Advanced: rc.conf' WebGUI to add additional options to /etc/rc.conf. This is
   useful to overwrite options used by various generic startup scripts.
+- Added 'System: Advanced: sysctl.conf' WebGUI to add additional MIB's to /etc/sysctl.conf.
+  Thanks to Nelson Silva (nsilva@hotlap.org).
 
 Minors changes:
 - Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.
@@ -57,8 +59,8 @@ Help needed:
 - Need help for adding LDAP authentication feature:
 Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
-FreeNAS 0.686.4:
-----------------
+FreeNAS 0.686.4 (unreleased):
+-----------------------------
 
 Minors changes:
 - Set subnet mask to 24 per default if DHCP is activated, otherwise WebGUI is not accessible in

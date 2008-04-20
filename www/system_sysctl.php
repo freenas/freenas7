@@ -1,8 +1,8 @@
 #!/usr/local/bin/php
 <?php
 /*
-	system_cron.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	system_sysctl.php
+	Copyright © 2008 Nelson Silva (nsilva@hotlap.org)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -33,39 +33,31 @@
 	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
-*/
+ */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Cron"));
+$pgtitle = array(gettext("System"), gettext("Advanced"), gettext("sysctl.conf"));
 
-if (!is_array($config['cron']['job']))
-	$config['cron']['job'] = array();
+if (!is_array($config['system']['sysctl']['param']))
+	$config['system']['sysctl']['param'] = array();
 
-$a_cron = &$config['cron']['job'];
+array_sort_key($config['system']['sysctl']['param'], "name");
+
+$a_sysctlvar = &$config['system']['sysctl']['param'];
 
 if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_update_service("cron");
+			$retval |= rc_update_service("sysctl");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_cronconfdirty_path))
-				unlink($d_cronconfdirty_path);
+			if (file_exists($d_sysctldirty_path))
+				unlink($d_sysctldirty_path);
 		}
-	}
-}
-
-if ($_GET['act'] == "del") {
-	if ($a_cron[$_GET['id']]) {
-		unset($a_cron[$_GET['id']]);
-		write_config();
-		touch($d_cronconfdirty_path);
-		header("Location: system_cron.php");
-		exit;
 	}
 }
 ?>
@@ -78,48 +70,58 @@ if ($_GET['act'] == "del") {
       	<li class="tabinact"><a href="system_email.php"><?=gettext("Email");?></a></li>
       	<li class="tabinact"><a href="system_proxy.php"><?=gettext("Proxy");?></a></li>
       	<li class="tabinact"><a href="system_swap.php"><?=gettext("Swap");?></a></li>
-      	<li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
-        <li class="tabact"><a href="system_cron.php" title="<?=gettext("Reload page");?>"><?=gettext("Cron");?></a></li>
+        <li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
+        <li class="tabinact"><a href="system_cron.php"><?=gettext("Cron");?></a></li>
         <li class="tabinact"><a href="system_rcconf.php"><?=gettext("rc.conf");?></a></li>
-        <li class="tabinact"><a href="system_sysctl.php"><?=gettext("sysctl.conf");?></a></li>
+        <li class="tabact"><a href="system_sysctl.php" title="<?=gettext("Reload page");?>"><?=gettext("sysctl.conf");?></a></li>
       </ul>
     </td>
   </tr>
   <tr>
     <td class="tabcont">
-    	<form action="system_cron.php" method="post">
+    	<form action="system_sysctl.php" method="post">
     		<?php if ($savemsg) print_info_box($savemsg);?>
-	    	<?php if (file_exists($d_cronconfdirty_path)):?><p>
-	      <?php print_info_box_np(gettext("The cron job list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+	    	<?php if (file_exists($d_sysctldirty_path)):?><p>
+	      <?php print_info_box_np(gettext("The configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br/>
 	      <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
 	      <?php endif;?>
 	      <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	        <tr>
-	          <td width="35%" class="listhdrr"><?=gettext("Description");?></td>
-	          <td width="10%" class="listhdrr"><?=gettext("Who");?></td>
-	          <td width="35%" class="listhdrr"><?=gettext("Command");?></td>
-	          <td width="10%" class="listhdrr"><?=gettext("Enable");?></td>
+	          <td width="40%" class="listhdrr"><?=gettext("MIB");?></td>
+	          <td width="20%" class="listhdrr"><?=gettext("Value");?></td>
+	          <td width="30%" class="listhdrr"><?=gettext("Comment");?></td>
 	          <td width="10%" class="list"></td>
 	        </tr>
-				  <?php $i = 0; foreach($a_cron as $job):?>
+	        <?php if($a_sysctlvar && is_array($a_sysctlvar)): ?>
+				  <?php $i = 0; foreach($a_sysctlvar as $sysctlvarv): ?>
 	        <tr>
-	          <td class="listlr"><?=htmlspecialchars($job['desc']);?>&nbsp;</td>
-	          <td class="listr"><?=htmlspecialchars($job['who']);?>&nbsp;</td>
-	          <td class="listr"><?=htmlspecialchars($job['command']);?>&nbsp;</td>
-	          <td class="listbg"><?=(isset($job['enable'])) ? gettext("Yes") : gettext("No");?>&nbsp;</td>
+	          <td class="listlr"><?=htmlspecialchars($sysctlvarv['name']);?>&nbsp;</td>
+	          <td class="listr"><?=htmlspecialchars($sysctlvarv['value']);?>&nbsp;</td>
+	          <td class="listr"><?=$sysctlvarv['comment'];?>&nbsp;</td>
 	          <td valign="middle" nowrap class="list">
-							<a href="system_cron_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit job");?>" width="17" height="17" border="0"></a>
-							<a href="system_cron.php?act=del&type=device&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this cron job?");?>')"><img src="x.gif" title="<?=gettext("Delete job");?>" width="17" height="17" border="0"></a>
+	            <a href="system_sysctl_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit option");?>" width="17" height="17" border="0"></a>&nbsp;
+	            <a href="system_sysctl.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this option?");?>')"><img src="x.gif" title="<?=gettext("Delete option");?>" width="17" height="17" border="0"></a>
 	          </td>
 	        </tr>
 	        <?php $i++; endforeach;?>
-	        <tr>
-	          <td class="list" colspan="4"></td>
-	          <td class="list"><a href="system_cron_edit.php"><img src="plus.gif" title="<?=gettext("Add job");?>" width="17" height="17" border="0"></a></td>
+	        <?php endif;?>
+					<tr>
+	          <td class="list" colspan="3"></td>
+	          <td class="list"><a href="system_sysctl_edit.php"><img src="plus.gif" title="<?=gettext("Add option");?>" width="17" height="17" border="0"></a>&nbsp;
+	          	<?php if(count($a_sysctlvar) > 0):?>
+							<a href="system_sysctl.php?act=del&id=all" onclick="return confirm('<?=gettext("Do you really want to delete all options?");?>')"><img src="x.gif" title="<?=gettext("Delete all options");?>" width="17" height="17" border="0"></a>
+							<?php endif;?>
+						</td>
 	        </tr>
 	      </table>
+	      <p>
+					<span class="vexpl">
+						<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
+						<?php echo gettext("These option(s) will be added to /etc/sysctl.conf. This allow you to make changes to a running system.");?>
+					</span>
+				</p>
 			</form>
-    </td>
+	  </td>
   </tr>
 </table>
 <?php include("fend.inc");?>

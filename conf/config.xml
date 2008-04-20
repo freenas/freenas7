@@ -75,6 +75,15 @@
 			<auxparam><auxparam>
 			-->
 		</rcconf>
+		<sysctl>
+			<!--
+			<param>
+				<name>xxx<name>
+				<value>xxx<value>
+				<comment>xxx<comment>
+			</param>
+			-->
+		</sysctl>
 	</system>
 	<interfaces>
 		<lan>
