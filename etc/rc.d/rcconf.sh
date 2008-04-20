@@ -78,14 +78,14 @@ setoptions()
 {
 	local _option _name _value
 
-	/usr/local/bin/xml sel -t -m "//system/rcconf/auxparam" \
-		-v "." \
+	/usr/local/bin/xml sel -t -m "//system/rcconf/param" \
+		-v "concat(name,'=',value)" \
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
 		while read _option; do
 			_name=${_option%=*}
 			_value=${_option#*=}
-		
+
 			eval /usr/local/sbin/rconf attribute set "${_name}" "${_value}"
 		done
 }
