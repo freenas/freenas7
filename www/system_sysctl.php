@@ -60,6 +60,26 @@ if ($_POST) {
 		}
 	}
 }
+
+if ($_GET['act'] === "del") {
+	if ($_GET['id'] === "all") {
+		foreach ($a_sysctlvar as $sysctlvark => $sysctlvarv) {
+			unset($a_sysctlvar[$sysctlvark]);
+		}
+		write_config();
+		touch($d_sysctldirty_path);
+		header("Location: system_sysctl.php");
+		exit;
+	} else {
+		if ($a_sysctlvar[$_GET['id']]) {
+			unset($a_sysctlvar[$_GET['id']]);
+			write_config();
+			touch($d_sysctldirty_path);
+			header("Location: system_sysctl.php");
+			exit;
+		}
+	}
+}
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -99,17 +119,17 @@ if ($_POST) {
 	          <td class="listr"><?=htmlspecialchars($sysctlvarv['value']);?>&nbsp;</td>
 	          <td class="listr"><?=$sysctlvarv['comment'];?>&nbsp;</td>
 	          <td valign="middle" nowrap class="list">
-	            <a href="system_sysctl_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit option");?>" width="17" height="17" border="0"></a>&nbsp;
-	            <a href="system_sysctl.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this option?");?>')"><img src="x.gif" title="<?=gettext("Delete option");?>" width="17" height="17" border="0"></a>
+	            <a href="system_sysctl_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit MIB");?>" width="17" height="17" border="0"></a>&nbsp;
+	            <a href="system_sysctl.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this MIB?");?>')"><img src="x.gif" title="<?=gettext("Delete MIB");?>" width="17" height="17" border="0"></a>
 	          </td>
 	        </tr>
 	        <?php $i++; endforeach;?>
 	        <?php endif;?>
 					<tr>
 	          <td class="list" colspan="3"></td>
-	          <td class="list"><a href="system_sysctl_edit.php"><img src="plus.gif" title="<?=gettext("Add option");?>" width="17" height="17" border="0"></a>&nbsp;
+	          <td class="list"><a href="system_sysctl_edit.php"><img src="plus.gif" title="<?=gettext("Add MIB");?>" width="17" height="17" border="0"></a>&nbsp;
 	          	<?php if(count($a_sysctlvar) > 0):?>
-							<a href="system_sysctl.php?act=del&id=all" onclick="return confirm('<?=gettext("Do you really want to delete all options?");?>')"><img src="x.gif" title="<?=gettext("Delete all options");?>" width="17" height="17" border="0"></a>
+							<a href="system_sysctl.php?act=del&id=all" onclick="return confirm('<?=gettext("Do you really want to delete all MIBs?");?>')"><img src="x.gif" title="<?=gettext("Delete all MIBs");?>" width="17" height="17" border="0"></a>
 							<?php endif;?>
 						</td>
 	        </tr>
@@ -117,7 +137,7 @@ if ($_POST) {
 	      <p>
 					<span class="vexpl">
 						<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
-						<?php echo gettext("These option(s) will be added to /etc/sysctl.conf. This allow you to make changes to a running system.");?>
+						<?php echo gettext("These MIBs will be added to /etc/sysctl.conf. This allow you to make changes to a running system.");?>
 					</span>
 				</p>
 			</form>
