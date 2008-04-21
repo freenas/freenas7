@@ -263,6 +263,14 @@ function print_error_box($msg) {
 	echo "</p>";
 }
 
+function print_config_change_box() {
+	$message = gettext("Apply changes");
+	echo "<p>";
+	print_info_box_np(gettext("The configuration has been changed.<br>You must apply the changes in order for them to take effect."));
+	echo "<br/><input name=\"apply\" type=\"submit\" class=\"formbtn\" id=\"apply\" value=\"{$message}\">";
+	echo "</p>";
+}
+
 function format_bytes($bytes) {
 	if ($bytes >= 1073741824) {
 		return sprintf("%.2f GB", $bytes/1073741824);

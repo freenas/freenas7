@@ -108,10 +108,7 @@ function is_modified($name) {
 			<form action="disks_raid_graid5.php" method="post">
 				<?php if ($errormsg) print_error_box($errormsg); ?>
 				<?php if ($savemsg) print_info_box($savemsg); ?>
-				<?php if (file_exists($d_raid_graid5_confdirty_path)): ?><p>
-				<?php print_info_box_np(gettext("The configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br/>
-				<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes"); ?>"></p>
-				<?php endif; ?>
+				<?php if (file_exists($d_raid_graid5_confdirty_path)) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Volume Name");?></td>

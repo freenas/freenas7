@@ -63,10 +63,7 @@ if ($_GET['act'] == "del") {
 			<form action="system_packages.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 				<?php if ($savemsg) print_info_box($savemsg); ?>
-				<?php if (file_exists($d_packagesconfdirty_path)): ?><p>
-				<?php print_info_box_np(gettext("The configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br/>
-				<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
-				<?php endif; ?>
+				<?php if (file_exists($d_packagesconfdirty_path)) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 			    <tr>
 			      <td width="40%" class="listhdrr"><?=gettext("Package Name");?></td>
