@@ -87,7 +87,7 @@ if ($_GET['act'] == "del") {
 			<form action="disks_manage.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg); ?>
 				<?php if (file_exists($d_diskdirty_path)): ?><p>
-				<?php print_info_box_np(gettext("The disk list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+				<?php print_info_box_np(gettext("The configuration has been changed.<br>You must apply the changes in order for them to take effect."));?><br/>
 				<input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
 				<?php endif; ?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
