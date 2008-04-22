@@ -79,8 +79,8 @@ if ($_POST) {
 		$input_errors[] = sprintf(gettext("The MIB '%s' doesn't exist in sysctl."), trim($pconfig['name']));
 	}
 
-	// Check if MIB is already configured.
-	if (false !== array_search_ex(trim($pconfig['name']), $config['system']['sysctl']['param'], "name")) {
+	// Check if MIB is already configured (not in edit mode).
+	if (!isset($id) && (false !== array_search_ex(trim($pconfig['name']), $config['system']['sysctl']['param'], "name"))) {
 		$input_errors[] = sprintf(gettext("The MIB '%s' already exist."), trim($pconfig['name']));
 	}
 
@@ -123,30 +123,12 @@ if ($_POST) {
   <tr>
     <td class="tabcont">
 			<form action="system_sysctl_edit.php" method="post" name="iform" id="iform">
-				<?php if ($input_errors) print_input_errors($input_errors); ?>
+				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext("Enter a valid sysctl MIB name."), true, 40);?>
+					<?php html_inputbox("value", gettext("Value"), $pconfig['value'], gettext("A valid systctl MIB value."), true);?>
+					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
-						<td width="78%" class="vtable">
-							<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"><br/>
-							<span class="vexpl"><?=gettext("Enter a valid sysctl MIB name.");?></span>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Value");?></td>
-						<td width="78%" class="vtable">
-							<input name="value" type="text" class="formfld" id="value" size="20" value="<?=htmlspecialchars($pconfig['value']);?>"><br/>
-							<span class="vexpl"><?=gettext("A valid systctl MIB value.");?></span>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Comment");?></td>
-						<td width="78%" class="vtable">
-							<input name="comment" type="text" class="formfld" id="comment" size="40" value="<?=$pconfig['comment'];?>"><br/>
-							<span class="vexpl"><?=gettext("You may enter a description here for your reference.");?></span>
-						</td>
-					</tr>
-			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add")?>">
 			        <?php if (isset($id)):?>

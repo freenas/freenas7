@@ -2,7 +2,7 @@
 <?php
 /*
 	system_rc_edit.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -37,15 +37,14 @@
 require("guiconfig.inc");
 
 $id = $_GET['id'];
-$type = $_GET['type'];
-
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
+$type = $_GET['type'];
 if (isset($_POST['type']))
 	$type = $_POST['type'];
 
-$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Command scripts"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("System"), gettext("Advanced"), gettext("Command scripts"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!is_array($config['rc']['preinit']['cmd']))
 	$config['rc']['preinit']['cmd'] = array();
@@ -57,32 +56,37 @@ if (!is_array($config['rc']['shutdown']['cmd']))
 	$config['rc']['shutdown']['cmd'] = array();
 
 if (isset($id) && isset($type)) {
-	switch($type) {
+	$pconfig['type'] = $type;
+	switch($pconfig['type']) {
 		case "PREINIT":
-			$command = $config['rc']['preinit']['cmd'][$id];
+			$pconfig['command'] = $config['rc']['preinit']['cmd'][$id];
 			break;
 		case "POSTINIT":
-			$command = $config['rc']['postinit']['cmd'][$id];
+			$pconfig['command'] = $config['rc']['postinit']['cmd'][$id];
 			break;
 		case "SHUTDOWN":
-			$command = $config['rc']['shutdown']['cmd'][$id];
+			$pconfig['command'] = $config['rc']['shutdown']['cmd'][$id];
 			break;
 	}
+} else {
+	$pconfig['type'] = NULL;
+	$pconfig['command'] = "";
 }
 
 if ($_POST) {
 	unset($input_errors);
+	$pconfig = $_POST;
 
-	/* Input validation */
-  $reqdfields = explode(" ", "command type");
-  $reqdfieldsn = array(gettext("Command"),gettext("Type"));
-  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	// Input validation.
+	$reqdfields = explode(" ", "command type");
+	$reqdfieldsn = array(gettext("Command"), gettext("Type"));
+	$reqdfieldst = explode(" ", "string string");
+
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	if (!$input_errors) {
-		$command = $_POST['command'];
-		$type = $_POST['type'];
-
-		switch($type) {
+		switch($_POST['type']) {
 			case "PREINIT":
 				$a_cmd = &$config['rc']['preinit']['cmd'];
 				break;
@@ -95,9 +99,9 @@ if ($_POST) {
 		}
 
 		if (isset($id) && $a_cmd[$id])
-			$a_cmd[$id] = $command;
+			$a_cmd[$id] = $_POST['command'];
 		else
-			$a_cmd[] = $command;
+			$a_cmd[] = $_POST['command'];
 
 		write_config();
 
@@ -127,30 +131,15 @@ if ($_POST) {
 			<form action="system_rc_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_inputbox("command", gettext("Command"), $pconfig['command'], gettext("The command to be executed."), true, 60);?>
+					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("PREINIT" => "PreInit", "POSTINIT" => "PostInit", "SHUTDOWN" => "Shutdown"), gettext("Execute command pre or post system initialization (booting) or before system shutdown."), true, isset($pconfig['type']));?>
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
-						<td width="78%" class="vtable">
-							<input name="command" type="text" class="formfld" id="command" size="60" value="<?=htmlspecialchars($command);?>">
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Type");?></td>
-						<td width="78%" class="vtable">
-							<select name="type" class="formfld" id="type" <?php if ($type) echo "disabled";?>>
-								<option value="PREINIT" <?php if ($type === "PREINIT") echo "selected";?>>PreInit</option>
-								<option value="POSTINIT" <?php if ($type === "POSTINIT") echo "selected";?>>PostInit</option>
-								<option value="SHUTDOWN" <?php if ($type === "SHUTDOWN") echo "selected";?>>Shutdown</option>
-							</select><br/>
-							<?=gettext("Execute command pre or post system initialization (booting) or before system shutdown.");?>
-						</td>
-					</tr>
-			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id) && isset($type))?gettext("Save"):gettext("Add")?>">
-			        <?php if (isset($id) && isset($type)): ?>
+			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id) && isset($type)) ? gettext("Save") : gettext("Add")?>">
+			        <?php if (isset($id) && isset($type)):?>
 			        <input name="id" type="hidden" value="<?=$id;?>">
 			        <input name="type" type="hidden" value="<?=$type;?>">
-			        <?php endif; ?>
+			        <?php endif;?>
 			      </td>
 			    </tr>
 			  </table>
