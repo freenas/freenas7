@@ -297,4 +297,49 @@ function get_std_save_message($ok) {
 		return sprintf( gettext("Error: The changes could not be applied (error code %s)."), $ok);
 	}
 }
+
+function html_inputbox($ctrlname, $name, $value, $note, $required = false, $size = 20, $readonly = false) {
+	$class = "vncell";
+	$param = "";
+
+	if (true === $required)
+		$class = "vncellreq";
+
+	if (true === $readonly)
+		$param .= "readonly ";
+
+	echo "<tr>\n";
+	echo "  <td width='22%' valign='top' class='{$class}'>{$name}</td>\n";
+	echo "  <td width='78%' class='vtable'>\n";
+	echo "    <input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='" . htmlspecialchars($value) . "' {$param}><br/>\n";
+	echo "    <span class='vexpl'>{$note}</span>\n";
+	echo "  </td>\n";
+	echo "</tr>\n";
+}
+
+function html_combobox($ctrlname, $name, $value, $options, $note, $required = false, $readonly = false) {
+	$class = "vncell";
+	$param = "";
+
+	if (true === $required)
+		$class = "vncellreq";
+
+	if (true === $readonly)
+		$param .= "disabled ";
+
+	echo "<tr>\n";
+	echo "  <td width='22%' valign='top' class='{$class}'>{$name}</td>\n";
+	echo "  <td width='78%' class='vtable'>\n";
+	echo "    <select name='{$ctrlname}' class='formfld' id='{$ctrlname}' {$param}>\n";
+	foreach ($options as $optionk => $optionv) {
+		$optparam = "";
+		if ($value === $optionk)
+			$optparam .= "selected ";
+		echo "      <option value='{$optionk}' {$optparam}>{$optionv}</option>\n";
+	}
+	echo "    </select><br/>\n";
+	echo "    <span class='vexpl'>{$note}</span>\n";
+	echo "  </td>\n";
+	echo "</tr>\n";
+}
 ?>

@@ -111,28 +111,10 @@ if ($_POST) {
 			<form action="system_rcconf_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext("Name of the variable."), true, 40);?>
+					<?php html_inputbox("value", gettext("Value"), $pconfig['value'], gettext("The value of the variable."), true);?>
+					<?php html_inputbox("comment", gettext("Comment"), $pconfig['comment'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
-						<td width="78%" class="vtable">
-							<input name="name" type="text" class="formfld" id="name" size="40" value="<?=htmlspecialchars($pconfig['name']);?>"><br/>
-							<span class="vexpl"><?=gettext("Name of the variable.");?></span>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Value");?></td>
-						<td width="78%" class="vtable">
-							<input name="value" type="text" class="formfld" id="value" size="20" value="<?=htmlspecialchars($pconfig['value']);?>"><br/>
-							<span class="vexpl"><?=gettext("The value of the variable.");?></span>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Comment");?></td>
-						<td width="78%" class="vtable">
-							<input name="comment" type="text" class="formfld" id="comment" size="40" value="<?=$pconfig['comment'];?>"><br/>
-							<span class="vexpl"><?=gettext("You may enter a description here for your reference.");?></span>
-						</td>
-					</tr>
-			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=(isset($id)) ? gettext("Save") : gettext("Add")?>">
 			        <?php if (isset($id)):?>
