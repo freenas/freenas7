@@ -128,58 +128,13 @@ function auth_change() {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<tr>
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Outgoing mail server");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="server" type="text" class="formfld" id="server" size="40" value="<?=htmlspecialchars($pconfig['server']);?>"><br>
-			        <span class="vexpl"><?=gettext("Outgoing SMTP mail server address, e.g. smtp.mycorp.com.");?></span>
-			      </td>
-					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="port" type="text" class="formfld" id="port" size="10" value="<?=htmlspecialchars($pconfig['port']);?>"><br>
-			        <span class="vexpl"><?=gettext("The default SMTP mail server port, e.g. 25 or 587.");?></span>
-			      </td>
-			    </tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Security");?></td>
-						<td width="78%" class="vtable">
-							<select name="security" class="formfld" id="security">
-								<?php $types = explode(" ", "None SSL TLS"); $vals = explode(" ", "none ssl tls");?>
-								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['security']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
-								<?php endfor;?>
-							</select>
-						</td>
-					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="auth" type="checkbox" id="auth" value="yes" <?php if ($pconfig['auth']) echo "checked"; ?> onClick="auth_change()">
-			        <span class="vexpl"><?=gettext("Enable SMTP authentication.");?></span>
-						</td>
-			    </tr>
-					<tr id="username_tr">
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="username" type="text" class="formfld" id="username" size="40" value="<?=htmlspecialchars($pconfig['username']);?>">
-			      </td>
-			    </tr>
-			    <tr id="password_tr">
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>"><br>
-			        <input name="passwordconf" type="password" class="formfld" id="passwordconf" size="20" value="<?=htmlspecialchars($pconfig['passwordconf']);?>">&nbsp;(<?=gettext("Confirmation");?>)<br>
-			      </td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("From email");?></td>
-						<td width="78%" class="vtable">
-							<input name="from" type="text" class="formfld" id="from" size="40" value="<?=htmlspecialchars($pconfig['from']);?>"><br>
-							<span class="vexpl"><?=gettext("Your own email address.");?></span>
-						</td>
-					</tr>
+					<?php html_inputbox("server", gettext("Outgoing mail server"), $pconfig['server'], gettext("Outgoing SMTP mail server address, e.g. smtp.mycorp.com."), true, 40);?>
+					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("The default SMTP mail server port, e.g. 25 or 587."), true, 10);?>
+					<?php html_combobox("security", gettext("Security"), $pconfig['security'], array("none" => "None", "ssl" => "SSL", "tls" => "TLS"), gettext(""), true);?>
+					<?php html_checkbox("auth", gettext("Authentication"), $pconfig['auth'] ? true : false, gettext("Enable SMTP authentication."), gettext(""), false, "auth_change()");?>
+					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], gettext(""), true, 40);?>
+					<?php html_passwordbox("password", "passwordconf", gettext("Password"), $pconfig['password'], $pconfig['passwordconf'], gettext(""), true);?>
+					<?php html_inputbox("from", gettext("From email"), $pconfig['from'], gettext("Your own email address."), true, 40);?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">

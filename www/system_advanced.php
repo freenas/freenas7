@@ -171,60 +171,15 @@ function sysctl_tune($mode) {
 			    <tr>
 			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Miscellaneous");?></td>
 			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Console menu");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="disableconsolemenu" type="checkbox" id="disableconsolemenu" value="yes" <?php if ($pconfig['disableconsolemenu']) echo "checked";?>>
-			        <?=gettext("Disable console menu");?></br>
-							<span class="vexpl"><?=gettext("Changes to this option will take effect after a reboot.");?></span>
-			      </td>
-			    </tr>
+			    <?php html_checkbox("disableconsolemenu", gettext("Console menu"), $pconfig['disableconsolemenu'] ? true : false, gettext("Disable console menu"), gettext("Changes to this option will take effect after a reboot."));?>
 			    <?php if ("full" !== $g['platform']):?>
-			    <tr>
-			      <td valign="top" class="vncell"><?=gettext("Firmware version check");?></td>
-			      <td class="vtable">
-			        <input name="disablefirmwarecheck" type="checkbox" id="disablefirmwarecheck" value="yes" <?php if ($pconfig['disablefirmwarecheck']) echo "checked";?>>
-			        <?=gettext("Disable firmware version check");?></br>
-							<span class="vexpl"><?php echo sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), get_product_name(), "system_firmware.php", gettext("System").": ".gettext("Firmware"));?></span>
-			      </td>
-			    </tr>
+			    <?php html_checkbox("disablefirmwarecheck", gettext("Firmware version check"), $pconfig['disablefirmwarecheck'] ? true : false, gettext("Disable firmware version check"), sprintf(gettext("This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."), get_product_name(), "system_firmware.php", gettext("System").": ".gettext("Firmware")));?>
 			    <?php endif;?>
-					<tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Navigation");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="expanddiags" type="checkbox" id="expanddiags" value="yes" <?php if ($pconfig['expanddiags']) echo "checked";?>>
-			        <?=gettext("Keep diagnostics in navigation expanded");?>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("System Beep");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="disablebeep" type="checkbox" id="disablebeep" value="yes" <?php if ($pconfig['disablebeep']) echo "checked";?>>
-			        <?=gettext("Disable speaker beep on startup and shutdown");?>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Tuning");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="tune_enable" type="checkbox" id="tune_enable" value="yes" <?php if ($pconfig['tune_enable']) echo "checked";?>>
-			        <?=gettext("Enable tuning of some kernel variables");?>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Power Daemon");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="powerd" type="checkbox" id="powerd" value="yes" <?php if ($pconfig['powerd']) echo "checked"; ?>>
-			        <?=gettext("Enable the system power control utility");?></br>
-							<span class="vexpl"><?=gettext("The powerd utility monitors the system state and sets various power control options accordingly.");?></span>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Zeroconf");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="zeroconf" type="checkbox" id="zeroconf" value="yes" <?php if ($pconfig['zeroconf']) echo "checked";?>>
-			        <?=gettext("Enable Zeroconf");?>
-			      </td>
-			    </tr>
+			    <?php html_checkbox("expanddiags", gettext("Navigation"), $pconfig['expanddiags'] ? true : false, gettext("Keep diagnostics in navigation expanded"));?>
+			    <?php html_checkbox("disablebeep", gettext("System Beep"), $pconfig['disablebeep'] ? true : false, gettext("Disable speaker beep on startup and shutdown"));?>
+			    <?php html_checkbox("tune_enable", gettext("Tuning"), $pconfig['tune_enable'] ? true : false, gettext("Enable tuning of some kernel variables"));?>
+					<?php html_checkbox("powerd", gettext("Power Daemon"), $pconfig['powerd'] ? true : false, gettext("Enable the system power control utility"), gettext("The powerd utility monitors the system state and sets various power control options accordingly."));?>			    
+					<?php html_checkbox("zeroconf", gettext("Zeroconf"), $pconfig['zeroconf'] ? true : false, gettext("Enable Zeroconf"));?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">

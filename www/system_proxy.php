@@ -215,37 +215,11 @@ function proxy_auth_change() {
     				  </table>
             </td>
           </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Address");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="http_address" type="text" class="formfld" id="http_address" size="40" value="<?=htmlspecialchars($pconfig['http_address']);?>">
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="http_port" type="text" class="formfld" id="http_port" size="10" value="<?=htmlspecialchars($pconfig['http_port']);?>">
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="http_auth" type="checkbox" id="http_auth" value="yes" <?php if ($pconfig['http_auth']) echo "checked";?> onClick="proxy_auth_change()">
-			        <span class="vexpl"><?=gettext("Enable proxy authentication.");?></span>
-						</td>
-			    </tr>
-			    <tr id="http_username_tr">
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("User");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="http_username" type="text" class="formfld" id="http_username" size="20" value="<?=htmlspecialchars($pconfig['http_username']);?>">
-			      </td>
-					</tr>
-					<tr id="http_password_tr">
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="http_password" type="password" class="formfld" id="http_password" size="20" value="<?=htmlspecialchars($pconfig['http_password']);?>">
-			      </td>
-					</tr>
+          <?php html_inputbox("http_address", gettext("Address"), $pconfig['http_address'], gettext(""), true, 40);?>
+          <?php html_inputbox("http_port", gettext("Port"), $pconfig['http_port'], gettext(""), true, 10);?>
+					<?php html_checkbox("http_auth", gettext("Authentication"), $pconfig['http_auth'] ? true : false, gettext("Enable proxy authentication."), gettext(""), false, "proxy_auth_change()");?>
+          <?php html_inputbox("http_username", gettext("User"), $pconfig['http_username'], gettext(""), true, 20);?>
+			    <?php html_inputbox("http_password", gettext("Password"), $pconfig['http_password'], gettext(""), true, 20);?>
 					<tr>
 						<td colspan="2" class="list" height="12"></td>
 					</tr>
@@ -259,37 +233,11 @@ function proxy_auth_change() {
     				  </table>
             </td>
           </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Address");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="ftp_address" type="text" class="formfld" id="ftp_address" size="40" value="<?=htmlspecialchars($pconfig['ftp_address']);?>">
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="ftp_port" type="text" class="formfld" id="ftp_port" size="10" value="<?=htmlspecialchars($pconfig['ftp_port']);?>">
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="ftp_auth" type="checkbox" id="ftp_auth" value="yes" <?php if ($pconfig['ftp_auth']) echo "checked";?> onClick="proxy_auth_change()">
-			        <span class="vexpl"><?=gettext("Enable proxy authentication.");?></span>
-						</td>
-			    </tr>
-			    <tr id="ftp_username_tr">
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("User");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="ftp_username" type="text" class="formfld" id="ftp_username" size="20" value="<?=htmlspecialchars($pconfig['ftp_username']);?>">
-			      </td>
-					</tr>
-					<tr id="ftp_password_tr">
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="ftp_password" type="password" class="formfld" id="ftp_password" size="20" value="<?=htmlspecialchars($pconfig['ftp_password']);?>">
-			      </td>
-					</tr>
+          <?php html_inputbox("ftp_address", gettext("Address"), $pconfig['ftp_address'], gettext(""), true, 40);?>
+          <?php html_inputbox("ftp_port", gettext("Port"), $pconfig['ftp_port'], gettext(""), true, 10);?>
+          <?php html_checkbox("ftp_auth", gettext("Authentication"), $pconfig['ftp_auth'] ? true : false, gettext("Enable proxy authentication."), gettext(""), false, "proxy_auth_change()");?>
+          <?php html_inputbox("ftp_username", gettext("User"), $pconfig['ftp_username'], gettext(""), true, 20);?>
+			    <?php html_inputbox("ftp_password", gettext("Password"), $pconfig['ftp_password'], gettext(""), true, 20);?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
