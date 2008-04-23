@@ -220,9 +220,7 @@ function proxy_auth_change() {
 					<?php html_checkbox("http_auth", gettext("Authentication"), $pconfig['http_auth'] ? true : false, gettext("Enable proxy authentication."), gettext(""), false, "proxy_auth_change()");?>
           <?php html_inputbox("http_username", gettext("User"), $pconfig['http_username'], gettext(""), true, 20);?>
 			    <?php html_inputbox("http_password", gettext("Password"), $pconfig['http_password'], gettext(""), true, 20);?>
-					<tr>
-						<td colspan="2" class="list" height="12"></td>
-					</tr>
+					<?php html_separator();?>
 			    <tr>
             <td colspan="2" valign="top" class="optsect_t">
     				  <table border="0" cellspacing="0" cellpadding="0" width="100%">

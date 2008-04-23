@@ -127,10 +127,10 @@ class HTMLBaseControlJS extends HTMLBaseControl {
 	}
 }
 
-class HTMLInputBox extends HTMLBaseControl {
+class HTMLEditBox extends HTMLBaseControl {
 	var $_size = 40;
 
-	function HTMLInputBox($ctrlname, $title, $value, $description, $size) {
+	function HTMLEditBox($ctrlname, $title, $value, $description, $size) {
 		$this->SetCtrlName($ctrlname);
 		$this->SetTitle($title);
 		$this->SetDescription($description);
@@ -163,7 +163,7 @@ class HTMLInputBox extends HTMLBaseControl {
 	}
 }
 
-class HTMLPasswordBox extends HTMLInputBox {
+class HTMLPasswordBox extends HTMLEditBox {
 	var $_ctrlnameconf = "";
 	var $_valueconf = "";
 
@@ -207,6 +207,46 @@ class HTMLPasswordBox extends HTMLInputBox {
 	}
 }
 
+class HTMLTextArea extends HTMLEditBox {
+	var $_columns = 40;
+	var $_rows = 5;
+
+	function HTMLTextArea($ctrlname, $title, $value, $description, $columns, $rows) {
+		$this->SetCtrlName($ctrlname);
+		$this->SetTitle($title);
+		$this->SetValue($value);
+		$this->SetDescription($description);
+		$this->SetColumns($columns);
+		$this->SetRows($rows);
+	}
+
+	function GetColumns() {
+		return $this->_columns;
+	}
+
+	function SetColumns($columns) {
+		$this->_columns = $columns;
+	}
+
+	function GetRows() {
+		return $this->_rows;
+	}
+
+	function SetRows($rows) {
+		$this->_rows = $rows;
+	}
+
+	function RenderCtrl() {
+		$ctrlname = $this->GetCtrlName();
+		$value = htmlspecialchars($this->GetValue());
+		$columns = $this->GetColumns();
+		$rows = $this->GetRows();
+		$param = $this->GetParam();
+
+		echo "		<textarea name='{$ctrlname}' cols='{$columns}' rows='{$rows}' id='{$ctrlname}' class='formpre' {$param}>{$value}</textarea><br/>\n";
+	}
+}
+
 class HTMLCheckBox extends HTMLBaseControlJS {
 	var $_caption = "";
 
@@ -240,7 +280,7 @@ class HTMLCheckBox extends HTMLBaseControlJS {
 			$param .= "checked ";
 		$onclick = $this->GetJSonClick();
 		if (!empty($onclick))
-			$param .= " onClick='{$onclick}'";
+			$param .= "onClick='{$onclick}' ";
 		return $param;
 	}
 
@@ -254,7 +294,7 @@ class HTMLCheckBox extends HTMLBaseControlJS {
 	}
 }
 
-class HTMLComboBox extends HTMLBaseControl {
+class HTMLComboBox extends HTMLBaseControlJS {
 	var $_options = array();
 
 	function HTMLComboBox($ctrlname, $title, $value, $options, $description) {
@@ -277,6 +317,9 @@ class HTMLComboBox extends HTMLBaseControl {
 		$param = "";
 		if (true === $this->IsReadOnly())
 			$param .= "disabled ";
+		$onclick = $this->GetJSonClick();
+		if (!empty($onclick))
+			$param .= "onClick='{$onclick}' ";
 		return $param;
 	}
 
@@ -317,6 +360,31 @@ class HTMLMountComboBox extends HTMLComboBox {
 		}
 		
 		$this->SetOptions($options);
+	}
+}
+
+class HTMLSeparator extends HTMLBaseControl {
+	function HTMLSeparator() {
+	}
+
+	function Render() {
+		echo "<tr>\n";
+		echo "	<td colspan='2' class='list' height='12'></td>\n";
+		echo "</tr>\n";
+	}
+}
+
+class HTMLTitleLine extends HTMLBaseControl {
+	function HTMLTitleLine($title) {
+		$this->SetTitle($title);
+	}
+
+	function Render() {
+		$title = $this->GetTitle();
+
+		echo "<tr>\n";
+		echo "	<td colspan='2' valign='top' class='listtopic'>{$title}</td>\n";
+		echo "</tr>\n";
 	}
 }
 ?>

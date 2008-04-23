@@ -217,10 +217,18 @@ if ($_POST) {
 <?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
-function ntp_change(enable_change) {
-	var endis = !(document.iform.ntp_enable.checked || enable_change);
-	document.iform.ntp_timeservers.disabled = endis;
-	document.iform.ntp_updateinterval.disabled = endis;
+function ntp_change() {
+	switch(document.iform.ntp_enable.checked) {
+		case false:
+			showElementById('ntp_timeservers_tr','hide');
+			showElementById('ntp_updateinterval_tr','hide');
+			break;
+
+		case true:
+			showElementById('ntp_timeservers_tr','show');
+			showElementById('ntp_updateinterval_tr','show');
+			break;
+	}
 }
 
 function webguiproto_change() {
@@ -258,26 +266,10 @@ function webguiproto_change() {
 			  	<tr>
 						<td colspan="2" valign="top" class="listtopic"><?=gettext("Hostname");?></td>
 					</tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Hostname");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="hostname" type="text" class="formfld" id="hostname" size="40" value="<?=htmlspecialchars($pconfig['hostname']);?>"><br>
-			        <span class="vexpl"><?=sprintf(gettext("Name of the NAS host, without domain part e.g. %s."), "<em>" . strtolower(get_product_name()) ."</em>");?></span>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="domain" type="text" class="formfld" id="domain" size="40" value="<?=htmlspecialchars($pconfig['domain']);?>"><br>
-			        <span class="vexpl"><?=sprintf(gettext("e.g. %s"), "<em>com, local</em>");?></span>
-			      </td>
-			    </tr>
-			    <tr>
-						<td colspan="2" class="list" height="12"></td>
-					</tr>
-					<tr>
-						<td colspan="2" valign="top" class="listtopic"><?=gettext("DNS settings");?></td>
-					</tr>
+					<?php html_inputbox("hostname", gettext("Hostname"), $pconfig['hostname'], sprintf(gettext("Name of the NAS host, without domain part e.g. %s."), "<em>" . strtolower(get_product_name()) ."</em>"), true, 40);?>
+					<?php html_inputbox("domain", gettext("Domain"), $pconfig['domain'], sprintf(gettext("e.g. %s"), "<em>com, local</em>"), true, 40);?>
+					<?php html_separator();?>
+					<?php html_titleline(gettext("DNS settings"));?>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("IPv4 DNS servers");?></td>
 			      <td width="78%" class="vtable">
@@ -296,51 +288,13 @@ function webguiproto_change() {
 							<span class="vexpl"><?=gettext("IPv6 addresses");?><br>
 			      </td>
 			    </tr>
-			    <tr>
-						<td colspan="2" class="list" height="12"></td>
-					</tr>
-					<tr>
-						<td colspan="2" valign="top" class="listtopic"><?=gettext("WebGUI");?></td>
-					</tr>
-			    <tr>
-			      <td valign="top" class="vncell"><?=gettext("Username");?></td>
-			      <td class="vtable">
-			        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=$pconfig['username'];?>"><br>
-			        <span class="vexpl"><?=gettext("If you want to change the username for accessing the WebGUI, enter it here.");?></span>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Protocol");?></td>
-			      <td width="78%" class="vtable">
-			        <select name="webguiproto" class="formfld" id="webguiproto" onClick="webguiproto_change()">
-								<?php $types = array(gettext("HTTP"),gettext("HTTPS")); $vals = explode(" ", "http https");?>
-								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] === $pconfig['webguiproto']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
-								<?php endfor;?>
-							</select>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td valign="top" class="vncell"><?=gettext("Port");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="webguiport" type="text" class="formfld" id="webguiport" size="20" value="<?=htmlspecialchars($pconfig['webguiport']);?>"><br>
-			        <span class="vexpl"><?=gettext("Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS).");?></span>
-			      </td>
-			    </tr>
-			    <tr id="certificate_tr">
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Certificate");?></td>
-						<td width="78%" class="vtable">
-							<textarea name="certificate" cols="65" rows="7" id="certificate" class="formpre"><?=htmlspecialchars($pconfig['certificate']);?></textarea></br>
-							<span class="vexpl"><?=gettext("Paste a signed certificate in X.509 PEM format here.");?></span>
-						</td>
-					</tr>
-			    <tr id="privatekey_tr">
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Private key");?></td>
-						<td width="78%" class="vtable">
-							<textarea name="privatekey" cols="65" rows="7" id="privatekey" class="formpre"><?=htmlspecialchars($pconfig['privatekey']);?></textarea></br>
-							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
-						</td>
-					</tr>
+			    <?php html_separator();?>
+			    <?php html_titleline(gettext("WebGUI"));?>
+					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], gettext("If you want to change the username for accessing the WebGUI, enter it here."), false, 20);?>
+					<?php html_combobox("webguiproto", gettext("Protocol"), $pconfig['webguiproto'], array("http" => "HTTP", "https" => "HTTPS"), gettext(""), false, false, "webguiproto_change()");?>
+					<?php html_inputbox("webguiport", gettext("Port"), $pconfig['webguiport'], gettext("Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."), false, 20);?>
+					<?php html_textarea("certificate", gettext("Certificate"), $pconfig['certificate'], gettext("Paste a signed certificate in X.509 PEM format here."), true, 65, 7);?>
+					<?php html_textarea("privatekey", gettext("Private key"), $pconfig['privatekey'], gettext("Paste an private key in PEM format here."), true, 65, 7);?>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Language");?></td>
 			      <td width="78%" class="vtable">
@@ -351,12 +305,8 @@ function webguiproto_change() {
 			    		</select>
 			      </td>
 			    </tr>
-					<tr>
-						<td colspan="2" class="list" height="12"></td>
-					</tr>
-					<tr>
-						<td colspan="2" valign="top" class="listtopic"><?=gettext("Time");?></td>
-					</tr>
+					<?php html_separator();?>
+					<?php html_titleline(gettext("Time"));?>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Time zone");?></td>
 			      <td width="78%" class="vtable">
@@ -377,31 +327,13 @@ function webguiproto_change() {
 							<span class="vexpl"><?=gettext("Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select it.");?></span>
 						</td>
 			    </tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Enable NTP");?></td>
-						<td width="78%" class="vtable">
-							<input name="ntp_enable" type="checkbox" id="ntp_enable" value="yes" <?php if ($pconfig['ntp_enable']) echo "checked";?> onClick="ntp_change(false)">
-							<span class="vexpl"><?=gettext("Use the specified NTP server.");?></span>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("NTP time server");?></td>
-						<td width="78%" class="vtable">
-							<input name="ntp_timeservers" type="text" class="formfld" id="ntp_timeservers" size="40" value="<?=htmlspecialchars($pconfig['ntp_timeservers']);?>"><br>
-							<span class="vexpl"><?=gettext("Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!");?></span>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Time update interval");?></td>
-						<td width="78%" class="vtable">
-							<input name="ntp_updateinterval" type="text" class="formfld" id="ntp_updateinterval" size="20" value="<?=htmlspecialchars($pconfig['ntp_updateinterval']);?>"><br>
-							<span class="vexpl"><?=gettext("Minutes between network time sync.");?></span>
-						</td>
-					</tr>
+					<?php html_checkbox("ntp_enable", gettext("Enable NTP"), $pconfig['ntp_enable'] ? true : false, gettext("Use the specified NTP server."), gettext(""), false, "ntp_change()");?>
+					<?php html_inputbox("ntp_timeservers", gettext("NTP time server"), $pconfig['ntp_timeservers'], gettext("Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"), false, 40);?>
+					<?php html_inputbox("ntp_updateinterval", gettext("Time update interval"), $pconfig['ntp_updateinterval'], gettext("Minutes between network time sync."), false, 20);?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="ntp_change(true)">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
 			      </td>
 			    </tr>
 			  </table>
@@ -411,7 +343,7 @@ function webguiproto_change() {
 </table>
 <script language="JavaScript">
 <!--
-ntp_change(false);
+ntp_change();
 webguiproto_change();
 //-->
 </script>
