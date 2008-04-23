@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: smbpasswd
@@ -11,6 +11,11 @@
 
 name="smbpasswd"
 command="/usr/local/bin/${name}"
+
+load_rc_config $name
+
+# Defaults
+smbpasswd_minuid=${smbpasswd_minuid:-"1001"}
 
 # Display message
 echo "Updating smbpasswd."
@@ -27,7 +32,7 @@ do
 	_password=`configxml_get "//access/user[position()=${_usernum}]/password"`
 	_uid=`configxml_get "//access/user[position()=${_usernum}]/id"`
 
-	if [ ${_uid} -ge 1001 ]; then
+	if [ ${_uid} -ge ${smbpasswd_minuid} ]; then
 		(/bin/echo "${_password}"; /bin/echo "${_password}") | ${command} -s -a "${_username}" > /dev/null
 	fi
 
