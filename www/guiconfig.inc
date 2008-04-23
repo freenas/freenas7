@@ -300,7 +300,7 @@ function get_std_save_message($ok) {
 }
 
 function html_inputbox($ctrlname, $title, $value, $desc, $required = false, $size = 40, $readonly = false) {
-	$ctrl = new HTMLInputBox($ctrlname, $title, $value, $desc, $size);
+	$ctrl = new HTMLEditBox($ctrlname, $title, $value, $desc, $size);
 	$ctrl->SetRequired($required);
 	$ctrl->SetReadOnly($readonly);
 	$ctrl->Render();
@@ -313,10 +313,18 @@ function html_passwordbox($ctrlname, $ctrlnameconf, $title, $value, $valueconf, 
 	$ctrl->Render();
 }
 
-function html_combobox($ctrlname, $title, $value, $options, $desc, $required = false, $readonly = false) {
+function html_textarea($ctrlname, $title, $value, $desc, $required = false, $columns = 40, $rows = 5, $readonly = false) {
+	$ctrl = new HTMLTextArea($ctrlname, $title, $value, $desc, $columns, $rows);
+	$ctrl->SetRequired($required);
+	$ctrl->SetReadOnly($readonly);
+	$ctrl->Render();
+}
+
+function html_combobox($ctrlname, $title, $value, $options, $desc, $required = false, $readonly = false, $onclick = "") {
 	$ctrl = new HTMLComboBox($ctrlname, $title, $value, $options, $desc);
 	$ctrl->SetRequired($required);
 	$ctrl->SetReadOnly($readonly);
+	$ctrl->SetJSonClick($onclick);
 	$ctrl->Render();
 }
 
@@ -331,6 +339,16 @@ function html_checkbox($ctrlname, $title, $checked, $caption = "", $desc = "", $
 	$ctrl = new HTMLCheckBox($ctrlname, $title, $checked, $caption, $desc);
 	$ctrl->SetRequired($required);
 	$ctrl->SetJSonClick($onclick);
+	$ctrl->Render();
+}
+
+function html_separator() {
+	$ctrl = new HTMLSeparator();
+	$ctrl->Render();
+}
+
+function html_titleline($title) {
+	$ctrl = new HTMLTitleLine($title);
 	$ctrl->Render();
 }
 ?>
