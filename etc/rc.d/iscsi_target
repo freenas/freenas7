@@ -1,9 +1,10 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: iscsi_target
 # REQUIRE: NETWORKING
+# KEYWORD: shutdown
 # XQUERY: -i "count(//iscsitarget/enable) > 0" -o "0" -b
 # RCVAR: iscsi_target
 
@@ -27,10 +28,10 @@ pidfile="/var/run/iscsi-target.pid"
 
 create_conf()
 {
-	# Clear existing file.
+	# Clear existing file
 	cat /dev/null > ${iscsi_target_config}
 
-	# Create passwd and auths file if necessary.
+	# Create passwd and auths file if necessary
 	if [ ! -e ${iscsi_target_auths} ]; then
 		cat /dev/null > ${iscsi_target_auths}
 	fi
@@ -38,7 +39,7 @@ create_conf()
 		cat /dev/null > ${iscsi_target_passwd}
 	fi
 
-	# Iterate over all extent/device/target attributes.
+	# Iterate over all extent/device/target attributes
 	/usr/local/bin/xml sel -t \
 		-o "# extents" -n \
 		-m "//iscsitarget/extent" \
