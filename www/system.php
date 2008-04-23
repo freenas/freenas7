@@ -66,14 +66,6 @@ if (!$pconfig['ntp_timeservers'])
 if (!isset($pconfig['ntp_updateinterval']))
 	$pconfig['ntp_updateinterval'] = 300;
 
-function is_timezone($elt) {
-	return !preg_match("/\/$/", $elt);
-}
-
-exec('/usr/bin/tar -tf /usr/share/zoneinfo.tgz -W strip-components=1', $timezonelist);
-$timezonelist = array_filter($timezonelist, 'is_timezone');
-sort($timezonelist);
-
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
@@ -295,29 +287,10 @@ function webguiproto_change() {
 					<?php html_inputbox("webguiport", gettext("Port"), $pconfig['webguiport'], gettext("Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."), false, 20);?>
 					<?php html_textarea("certificate", gettext("Certificate"), $pconfig['certificate'], gettext("Paste a signed certificate in X.509 PEM format here."), true, 65, 7);?>
 					<?php html_textarea("privatekey", gettext("Private key"), $pconfig['privatekey'], gettext("Paste an private key in PEM format here."), true, 65, 7);?>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Language");?></td>
-			      <td width="78%" class="vtable">
-			        <select name="language" id="language">
-			    			<?php foreach ($g_languages as $langk => $langv): ?>
-			    			<option value="<?=$langk;?>" <?php if ($langk === $pconfig['language']) echo "selected";?>><?=gettext($langv['desc']);?></option>
-				    		<?php endforeach; ?>
-			    		</select>
-			      </td>
-			    </tr>
+					<?php html_languagecombobox("language", gettext("Language"), $pconfig['language'], gettext(""), false);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Time"));?>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Time zone");?></td>
-			      <td width="78%" class="vtable">
-			        <select name="timezone" id="timezone">
-			          <?php foreach ($timezonelist as $value):?>
-								<option value="<?=htmlspecialchars($value);?>" <?php if ($value === $pconfig['timezone']) echo "selected";?>><?=htmlspecialchars($value);?></option>
-								<?php endforeach;?>
-			        </select><br>
-			        <span class="vexpl"><?=gettext("Select the location closest to you.");?></span>
-			      </td>
-			    </tr>
+					<?php html_timezonecombobox("timezone", gettext("Time zone"), $pconfig['timezone'], gettext("Select the location closest to you."), false);?>
 			    <tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("System time");?></td>
 						<td width="78%" class="vtable">
