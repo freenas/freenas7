@@ -44,6 +44,7 @@ if (!$omit_nocacheheaders) {
 require_once("config.inc");
 require_once("functions.inc");
 require_once("rc.inc");
+require_once("wui.inc");
 
 /* Set the current language */
 system_language_load();
@@ -298,94 +299,38 @@ function get_std_save_message($ok) {
 	}
 }
 
-function html_inputbox($ctrlname, $name, $value, $note, $required = false, $size = 20, $readonly = false) {
-	$class = "vncell";
-	$param = "";
-
-	if (true === $required)
-		$class = "vncellreq";
-
-	if (true === $readonly)
-		$param .= "readonly ";
-
-	echo "<tr id='{$ctrlname}_tr'>\n";
-	echo "  <td width='22%' valign='top' class='{$class}'>{$name}</td>\n";
-	echo "  <td width='78%' class='vtable'>\n";
-	echo "    <input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='" . htmlspecialchars($value) . "' {$param}>\n";
-	if (!empty($note))
-		echo "    <br/><span class='vexpl'>{$note}</span>\n";
-	echo "  </td>\n";
-	echo "</tr>\n";
+function html_inputbox($ctrlname, $title, $value, $desc, $required = false, $size = 40, $readonly = false) {
+	$ctrl = new HTMLInputBox($ctrlname, $title, $value, $desc, $size);
+	$ctrl->SetRequired($required);
+	$ctrl->SetReadOnly($readonly);
+	$ctrl->Render();
 }
 
-function html_combobox($ctrlname, $name, $value, $options, $note, $required = false, $readonly = false) {
-	$class = "vncell";
-	$param = "";
-
-	if (true === $required)
-		$class = "vncellreq";
-
-	if (true === $readonly)
-		$param .= "disabled ";
-
-	echo "<tr id='{$ctrlname}_tr'>\n";
-	echo "  <td width='22%' valign='top' class='{$class}'>{$name}</td>\n";
-	echo "  <td width='78%' class='vtable'>\n";
-	echo "    <select name='{$ctrlname}' class='formfld' id='{$ctrlname}' {$param}>\n";
-	foreach ($options as $optionk => $optionv) {
-		$optparam = "";
-		if ($value === $optionk)
-			$optparam .= "selected ";
-		echo "      <option value='{$optionk}' {$optparam}>{$optionv}</option>\n";
-	}
-	echo "    </select>\n";
-	if (!empty($note))
-		echo "    <br/><span class='vexpl'>{$note}</span>\n";
-	echo "  </td>\n";
-	echo "</tr>\n";
+function html_passwordbox($ctrlname, $ctrlnameconf, $title, $value, $valueconf, $desc, $required = false, $size = 20, $readonly = false) {
+	$ctrl = new HTMLPasswordBox($ctrlname, $ctrlnameconf, $title, $value, $valueconf, $desc, $size);
+	$ctrl->SetRequired($required);
+	$ctrl->SetReadOnly($readonly);
+	$ctrl->Render();
 }
 
-function html_checkbox($ctrlname, $name, $checked, $caption = "", $note = "", $required = false, $onclick = "") {
-	$class = "vncell";
-	$param = "";
-
-	if (true === $required)
-		$class = "vncellreq";
-
-	if (true === $checked)
-		$param .= "checked ";
-
-	if (!empty($onclick))
-		$param .= " onClick='{$onclick}'";
-
-	echo "<tr id='{$ctrlname}_tr'>\n";
-	echo "  <td width='22%' valign='top' class='{$class}'>{$name}</td>\n";
-	echo "  <td width='78%' class='vtable'>\n";
-	echo "    <input name='{$ctrlname}' type='checkbox' class='formfld' id='{$ctrlname}' size='{$size}' value='yes' {$param}>&nbsp;{$caption}\n";
-	if (!empty($note))
-		echo "    <br/><span class='vexpl'>{$note}</span>\n";
-	echo "  </td>\n";
-	echo "</tr>\n";
+function html_combobox($ctrlname, $title, $value, $options, $desc, $required = false, $readonly = false) {
+	$ctrl = new HTMLComboBox($ctrlname, $title, $value, $options, $desc);
+	$ctrl->SetRequired($required);
+	$ctrl->SetReadOnly($readonly);
+	$ctrl->Render();
 }
 
-function html_passwordbox($ctrlname, $ctrlnameconf, $name, $value, $valueconf, $note, $required = false, $size = 20, $readonly = false) {
-	$class = "vncell";
-	$param = "";
+function html_mountcombobox($ctrlname, $title, $value, $desc, $required = false, $readonly = false) {
+	$ctrl = new HTMLMountComboBox($ctrlname, $title, $value, $desc);
+	$ctrl->SetRequired($required);
+	$ctrl->SetReadOnly($readonly);
+	$ctrl->Render();
+}
 
-	if (true === $required)
-		$class = "vncellreq";
-
-	if (true === $readonly)
-		$param .= "readonly ";
-
-	echo "<tr id='{$ctrlname}_tr'>\n";
-	echo "  <td width='22%' valign='top' class='{$class}'>{$name}</td>\n";
-	echo "  <td width='78%' class='vtable'>\n";
-	echo "    <input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='" . htmlspecialchars($value) . "' {$param}><br/>\n";
-	echo "    <input name='{$ctrlnameconf}' type='password' class='formfld' id='{$ctrlnameconf}' size='{$size}' value='" . htmlspecialchars($valueconf) . "' {$param}>&nbsp;(" . gettext("Confirmation") . ")\n";
-	if (!empty($note))
-		echo "    <br/><span class='vexpl'>{$note}</span>\n";
-	echo "  </td>\n";
-	echo "</tr>\n";
+function html_checkbox($ctrlname, $title, $checked, $caption = "", $desc = "", $required = false, $onclick = "") {
+	$ctrl = new HTMLCheckBox($ctrlname, $title, $checked, $caption, $desc);
+	$ctrl->SetRequired($required);
+	$ctrl->SetJSonClick($onclick);
+	$ctrl->Render();
 }
 ?>

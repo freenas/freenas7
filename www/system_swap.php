@@ -39,13 +39,6 @@ $pconfig['enable'] = isset($config['system']['swap_enable']);
 $pconfig['swap_mountname'] = $config['system']['swap_mountname'];
 $pconfig['swap_size'] = $config['system']['swap_size'];
 
-if (!is_array($config['mounts']['mount']))
-	$config['mounts']['mount'] = array();
-
-array_sort_key($config['mounts']['mount'], "devicespecialfile");
-
-$a_mount = &$config['mounts']['mount'];
-
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
@@ -117,17 +110,7 @@ function enable_change(enable_change) {
     				  </table>
             </td>
           </tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Mount to use for swap"); ?></td>
-						<td width="78%" class="vtable">
-							<select name="swap_mountname" class="formfld" id="swap_mountname">
-								<?php foreach ($a_mount as $mount):?>
-								<option value="<?=$mount['sharename'];?>" <?php if ($mount['sharename'] == $pconfig['swap_mountname']) echo "selected";?>><?php echo htmlspecialchars($mount['sharename']);?></option>
-								<?php endforeach;?>
-							</select><br/>
-							<span class="vexpl"><?=gettext("Select mount point where to create the swap file.");?></span>
-						</td>
-					</tr>
+          <?php html_mountcombobox("swap_mountname", gettext("Mount to use for swap"), $pconfig['swap_mountname'], gettext("Select mount point where to create the swap file."), true);?>
 					<?php html_inputbox("swap_size", gettext("Swap file size"), $pconfig['swap_size'], gettext("Size in MB."), true, 10);?>
    				<tr>
             <td width="22%" valign="top">&nbsp;</td>
