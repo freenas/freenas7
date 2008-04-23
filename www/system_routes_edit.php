@@ -137,23 +137,8 @@ if ($_POST) {
       <form action="system_routes_edit.php" method="post" name="iform" id="iform">
       	<?php if ($input_errors) print_input_errors($input_errors); ?>
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
-          <tr> 
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Interface");?></td>
-            <td width="78%" class="vtable">
-							<select name="interface" class="formfld">
-                <?php $interfaces = array('lan' => 'LAN');
-							  for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
-							  	$interfaces['opt' . $i] = $config['interfaces']['opt' . $i]['descr'];
-							  }
-							  foreach ($interfaces as $iface => $ifacename): ?>
-                <option value="<?=$iface;?>" <?php if ($iface == $pconfig['interface']) echo "selected"; ?>> 
-                <?=htmlspecialchars($ifacename);?>
-                </option>
-                <?php endforeach; ?>
-            	</select> <br>
-              <span class="vexpl"><?=gettext("Choose which interface this route applies to.");?></span>
-						</td>
-          </tr>
+          <?php $interfaces = array('lan' => 'LAN'); for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) { $interfaces['opt' . $i] = $config['interfaces']['opt' . $i]['descr']; }?>
+          <?php html_combobox("interface", gettext("Interface"), $pconfig['interface'], $interfaces, gettext("Choose which interface this route applies to."), true);?>
           <tr>
             <td width="22%" valign="top" class="vncellreq"><?=gettext("Destination network");?></td>
             <td width="78%" class="vtable"> 
@@ -167,25 +152,15 @@ if ($_POST) {
 							<br><span class="vexpl"><?=gettext("Destination network for this static route");?></span>
 						</td>
           </tr>
-					<tr>
-            <td width="22%" valign="top" class="vncellreq"><?=gettext("Gateway");?></td>
-            <td width="78%" class="vtable"> 
-              <input name="gateway" type="text" class="formfld" id="gateway" size="40" value="<?=htmlspecialchars($pconfig['gateway']);?>">
-              <br> <span class="vexpl"><?=gettext("Gateway to be used to reach the destination network");?></span></td>
-          </tr>
-					<tr>
-            <td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
-            <td width="78%" class="vtable"> 
-              <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
-              <br> <span class="vexpl"><?=gettext("You may enter a description here for your reference (not parsed).");?></span></td>
-          </tr>
+          <?php html_inputbox("gateway", gettext("Gateway"), $pconfig['gateway'], gettext("Gateway to be used to reach the destination network."), true, 40);?>
+          <?php html_inputbox("descr", gettext("Description"), $pconfig['descr'], gettext("You may enter a description here for your reference."), true, 40);?>
           <tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%"> 
-              <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_routes[$id]))?gettext("Save"):gettext("Add")?>">
-              <?php if (isset($id) && $a_routes[$id]): ?>
+              <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_routes[$id])) ? gettext("Save") : gettext("Add")?>">
+              <?php if (isset($id) && $a_routes[$id]):?>
               <input name="id" type="hidden" value="<?=$id;?>">
-              <?php endif; ?>
+              <?php endif;?>
             </td>
           </tr>
         </table>

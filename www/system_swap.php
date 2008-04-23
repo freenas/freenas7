@@ -33,9 +33,9 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Swap file"));
+$pgtitle = array(gettext("System"), gettext("Advanced"), gettext("Swap file"));
 
-$pconfig['swap_enable'] = isset($config['system']['swap_enable']);
+$pconfig['enable'] = isset($config['system']['swap_enable']);
 $pconfig['swap_mountname'] = $config['system']['swap_mountname'];
 $pconfig['swap_size'] = $config['system']['swap_size'];
 
@@ -48,19 +48,16 @@ $a_mount = &$config['mounts']['mount'];
 
 if ($_POST) {
 	unset($input_errors);
-
 	$pconfig = $_POST;
-	$pconfig['swap_enable'] = $_POST['enable'] ? true : false;
 
-	/* input validation */
-	$reqdfields = array();
-	$reqdfieldsn = array();
 	if ($_POST['enable']) {
-		$reqdfields = array_merge($reqdfields, explode(" ", "swap_size swap_mountname"));
-		$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Swap file size"),gettext("Mount to use for swap")));
-	}
+		$reqdfields = explode(" ", "swap_size swap_mountname");
+		$reqdfieldsn = array(gettext("Swap file size"), gettext("Mount to use for swap"));
+		$reqdfieldst = explode(" ", "numeric string");
 
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+	}
 
 	if (!$input_errors) {
 		$config['system']['swap_enable'] = $_POST['enable'] ? true : false;
@@ -69,8 +66,12 @@ if ($_POST) {
 
 		write_config();
 
-		$retval = rc_update_service("swap");
-
+		$retval = 0;
+		if (!file_exists($d_sysrebootreqd_path)) {
+			config_lock();
+			$retval |= rc_update_service("swap");
+			config_unlock();
+		}
 		$savemsg = get_std_save_message($retval);
 	}
 }
@@ -111,29 +112,23 @@ function enable_change(enable_change) {
     				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
     				    <tr>
                   <td class="optsect_s"><strong><?=gettext("Swap memory");?></strong></td>
-    				      <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['swap_enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable") ;?></strong></td>
+    				      <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable") ;?></strong></td>
                 </tr>
     				  </table>
             </td>
           </tr>
-		  <tr>
-			<td width="22%" valign="top" class="vncellreq"><?=gettext("Mount to use for swap"); ?></td>
-			<td width="78%" class="vtable">
-				<select name="swap_mountname" class="formfld" id="swap_mountname">
-				  <?php foreach ($a_mount as $mount): ?>
-				  <option value="<?=$mount['sharename'];?>" <?php if ($mount['sharename'] == $pconfig['swap_mountname']) echo "selected";?>><?php echo htmlspecialchars($mount['sharename']);?></option>
-		  		<?php endforeach; ?>
-		  	</select><br/>
-		  	<span class="vexpl"><?=gettext("Select mount point where to create the swap file.");?></span>
-		  </td>
-		</tr>
-		  <tr>
-          <td width="22%" valign="top" class="vncellreq"><?=gettext("Swap file size") ;?></td>
-          <td width="78%" class="vtable">
-              <input name="swap_size" type="text" class="formfld" id="swap_size" size="30" value="<?=htmlspecialchars($pconfig['swap_size']);?>"><br>
-							<span class="vexpl"><?=gettext("Size in MB.");?></span>
-            </td>
-          </tr>
+					<tr>
+						<td width="22%" valign="top" class="vncellreq"><?=gettext("Mount to use for swap"); ?></td>
+						<td width="78%" class="vtable">
+							<select name="swap_mountname" class="formfld" id="swap_mountname">
+								<?php foreach ($a_mount as $mount):?>
+								<option value="<?=$mount['sharename'];?>" <?php if ($mount['sharename'] == $pconfig['swap_mountname']) echo "selected";?>><?php echo htmlspecialchars($mount['sharename']);?></option>
+								<?php endforeach;?>
+							</select><br/>
+							<span class="vexpl"><?=gettext("Select mount point where to create the swap file.");?></span>
+						</td>
+					</tr>
+					<?php html_inputbox("swap_size", gettext("Swap file size"), $pconfig['swap_size'], gettext("Size in MB."), true, 10);?>
    				<tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%">
