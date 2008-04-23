@@ -200,7 +200,7 @@ class HTMLPasswordBox extends HTMLEditBox {
 		$valueconf = htmlspecialchars($this->GetValueConf());
 		$size = $this->GetSize();
 		$param = $this->GetParam();
-		$caption = gettext("Confirmation"); 
+		$caption = gettext("Confirmation");
 
 		echo "		<input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param}><br/>\n";
 		echo "    <input name='{$ctrlnameconf}' type='password' class='formfld' id='{$ctrlnameconf}' size='{$size}' value='{$valueconf}' {$param}>&nbsp;({$caption})\n";
@@ -358,7 +358,54 @@ class HTMLMountComboBox extends HTMLComboBox {
 		foreach ($config['mounts']['mount'] as $mountv) {
 			$options[$mountv['sharename']] = $mountv['sharename'];
 		}
-		
+
+		$this->SetOptions($options);
+	}
+}
+
+class HTMLTimeZoneComboBox extends HTMLComboBox {
+	function HTMLTimeZoneComboBox($ctrlname, $title, $value, $description) {
+		$this->SetCtrlName($ctrlname);
+		$this->SetTitle($title);
+		$this->SetDescription($description);
+		$this->SetValue($value);
+
+		// Get time zone data.
+		function is_timezone($elt) {
+			return !preg_match("/\/$/", $elt);
+		}
+
+		exec('/usr/bin/tar -tf /usr/share/zoneinfo.tgz -W strip-components=1', $timezonelist);
+		$timezonelist = array_filter($timezonelist, 'is_timezone');
+		sort($timezonelist);
+
+		// Generate options.
+		$options = array();
+		foreach ($timezonelist as $tzv) {
+			if (!empty($tzv)) {
+				$options[$tzv] = $tzv;
+			}
+		}
+
+		$this->SetOptions($options);
+	}
+}
+
+class HTMLLanguageComboBox extends HTMLComboBox {
+	function HTMLLanguageComboBox($ctrlname, $title, $value, $description) {
+		global $g_languages;
+
+		$this->SetCtrlName($ctrlname);
+		$this->SetTitle($title);
+		$this->SetDescription($description);
+		$this->SetValue($value);
+
+		// Generate options.
+		$options = array();
+		foreach ($g_languages as $languagek => $languagev) {
+			$options[$languagek] = gettext($languagev['desc']);
+		}
+
 		$this->SetOptions($options);
 	}
 }

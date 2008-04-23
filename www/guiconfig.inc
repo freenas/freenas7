@@ -335,6 +335,20 @@ function html_mountcombobox($ctrlname, $title, $value, $desc, $required = false,
 	$ctrl->Render();
 }
 
+function html_timezonecombobox($ctrlname, $title, $value, $desc, $required = false, $readonly = false) {
+	$ctrl = new HTMLTimeZoneComboBox($ctrlname, $title, $value, $desc);
+	$ctrl->SetRequired($required);
+	$ctrl->SetReadOnly($readonly);
+	$ctrl->Render();
+}
+
+function html_languagecombobox($ctrlname, $title, $value, $desc, $required = false, $readonly = false) {
+	$ctrl = new HTMLLanguageComboBox($ctrlname, $title, $value, $desc);
+	$ctrl->SetRequired($required);
+	$ctrl->SetReadOnly($readonly);
+	$ctrl->Render();
+}
+
 function html_checkbox($ctrlname, $title, $checked, $caption = "", $desc = "", $required = false, $onclick = "") {
 	$ctrl = new HTMLCheckBox($ctrlname, $title, $checked, $caption, $desc);
 	$ctrl->SetRequired($required);
