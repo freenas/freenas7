@@ -1,9 +1,10 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: iscsi_initiator
 # REQUIRE: NETWORKING
+# KEYWORD: shutdown
 # XQUERY: -i "count(//iscsiinit/vdisk) > 0" -o "0" -b
 # RCVAR: iscsi_initiator
 
