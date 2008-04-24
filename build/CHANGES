@@ -94,6 +94,7 @@ Minors changes:
 Bug fixes:
 - Display correct share name for mounted ISO's on initial system page (BR 1935353). Thanks to paq237.
 - Fix CPU graph script error (BR 1940372).
+- Fix initial view of the the bandwidth graph to bytes/s (BR 1948447). Thanks to Robert Eden.
 - Stop iscsi-target service on shutdown (BR 1948432). Thanks to Robert Eden.
 
 Permanent restrictions:
