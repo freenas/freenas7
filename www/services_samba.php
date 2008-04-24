@@ -144,6 +144,8 @@ if ($_POST) {
 		if(0 == $retval) {
 			if(file_exists($d_smbconfdirty_path))
 				unlink($d_smbconfdirty_path);
+			if(file_exists($d_smbshareconfdirty_path))
+				unlink($d_smbshareconfdirty_path);
 		}
 	}
 }
@@ -218,7 +220,7 @@ function authentication_change() {
       <form action="services_samba.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
-				<?php if (file_exists($d_smbconfdirty_path)) print_config_change_box();?>
+				<?php if (file_exists($d_smbconfdirty_path) || file_exists($d_smbshareconfdirty_path)) print_config_change_box();?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
           <tr>
             <td colspan="2" valign="top" class="optsect_t">
