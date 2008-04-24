@@ -290,7 +290,6 @@ device		fwe		# Ethernet over FireWire (non-standard!)
 # FREENAS
 #####################################################################
 options 	COMPAT_IA32		# Compatible with i386 binaries
-options		NO_SWAPPING
 options   SMP						# Symmetric MultiProcessor Kernel
 device		speaker
 

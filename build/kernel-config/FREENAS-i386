@@ -291,7 +291,6 @@ device		fwe		# Ethernet over FireWire (non-standard!)
 #####################################################################
 # FREENAS
 #####################################################################
-options		NO_SWAPPING
 options   SMP						# Symmetric MultiProcessor Kernel
 device		speaker
 
