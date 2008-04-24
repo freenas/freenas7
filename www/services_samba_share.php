@@ -62,6 +62,8 @@ if($_POST) {
 		if(0 == $retval) {
 			if(file_exists($d_smbshareconfdirty_path))
 				unlink($d_smbshareconfdirty_path);
+			if(file_exists($d_smbconfdirty_path))
+				unlink($d_smbconfdirty_path);
 		}
 	}
 }
@@ -92,7 +94,7 @@ if ($_GET['act'] == "del") {
     <td class="tabcont">
       <form action="services_samba_share.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
-        <?php if (file_exists($d_smbshareconfdirty_path)) print_config_change_box();?>
+        <?php if (file_exists($d_smbconfdirty_path) || file_exists($d_smbshareconfdirty_path)) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
           	<td width="30%" class="listhdrr"><?=gettext("Path");?></td>
