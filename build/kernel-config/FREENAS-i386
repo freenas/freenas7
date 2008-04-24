@@ -306,7 +306,6 @@ device		fwip		# IP over FireWire (RFC 2734,3146)
 #####################################################################
 # FREENAS
 #####################################################################
-options         NO_SWAPPING
 options		CPU_UPGRADE_HW_CACHE
 options		CPU_SUSP_HLT
 device          speaker
