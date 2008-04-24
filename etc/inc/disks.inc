@@ -1074,12 +1074,14 @@ function disks_geli_detach_all()
 // The passphrase can always be changed: for an attached provider and
 // a detached provider. When a provider is attached, the user does not
 // have to provide an old passphrase.
-// provider: Name of the provider, e.g. da0, ad3, ...
-// oldpassphrase: Old passphrase
-// passphrase: New passphrase
-// verbose: Display additional information
+// Parameter:
+// $provider: Name of the provider, e.g. da0, ad3, ...
+// $devicespecialfile: e.g. /dev/ad1.eli
+// $oldpassphrase: Old passphrase
+// $passphrase: New passphrase
+// $verbose: Display additional information
 // Return 0 if successful, 1 if error
-function disks_geli_setkey($provider, $oldpassphrase, $passphrase, $verbose = false)
+function disks_geli_setkey($provider, $devicespecialfile, $oldpassphrase, $passphrase, $verbose = false)
 {
 	$param = "-t";
 	$result = 1;
@@ -1087,7 +1089,7 @@ function disks_geli_setkey($provider, $oldpassphrase, $passphrase, $verbose = fa
 	// Add additional parameters
 	if (true == $verbose) $param .= " -v";
 
-	if (0 == disks_exists("/dev/{$provider}.eli")) {
+	if (0 == disks_exists($devicespecialfile)) {
 		// Provider is already attached
 		system("(/bin/echo {$passphrase}; /bin/echo {$passphrase}) | /sbin/geli setkey {$param} {$provider} 2>&1", $result);
 	} else {
