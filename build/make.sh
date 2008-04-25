@@ -67,6 +67,8 @@ FREENAS_NEWFS="-U -o space -m 0"
 OPT_BOOTMENU=1
 # Support bootsplash
 OPT_BOOTSPLASH=1
+# Support serial console
+OPT_SERIALCONSOLE=1
 
 # Dialog command
 DIALOG="dialog"
@@ -663,6 +665,9 @@ Menu:
 					fi;
 					if [ 0 != $OPT_BOOTSPLASH ]; then
 						opt="$opt -b"
+					fi;
+					if [ 0 != $OPT_SERIALCONSOLE ]; then
+						opt="$opt -s"
 					fi;
 					$FREENAS_SVNDIR/build/freenas-create-bootdir.sh $opt $FREENAS_BOOTDIR;;
 			7)	add_libs;;
