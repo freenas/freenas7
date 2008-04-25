@@ -265,7 +265,7 @@ function action_change() {
                   break;
 
 								case "setkey":
-									disks_geli_setkey($geli['name'], $geli['devicespecialfile'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
+									disks_geli_setkey($geli['devicespecialfile'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
                 	break;
 
                 case "list":

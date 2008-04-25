@@ -1075,16 +1075,18 @@ function disks_geli_detach_all()
 // a detached provider. When a provider is attached, the user does not
 // have to provide an old passphrase.
 // Parameter:
-// $provider: Name of the provider, e.g. da0, ad3, ...
-// $devicespecialfile: e.g. /dev/ad1.eli
+// $devicespecialfile: e.g. /dev/ad1.eli or /dev/raid5/xxx.eli
 // $oldpassphrase: Old passphrase
 // $passphrase: New passphrase
 // $verbose: Display additional information
 // Return 0 if successful, 1 if error
-function disks_geli_setkey($provider, $devicespecialfile, $oldpassphrase, $passphrase, $verbose = false)
+function disks_geli_setkey($devicespecialfile, $oldpassphrase, $passphrase, $verbose = false)
 {
 	$param = "-t";
 	$result = 1;
+
+	// Extract provider data.
+	$provider = preg_replace('/(\S+)(\.eli)/', '${1}', $devicespecialfile);
 
 	// Add additional parameters
 	if (true == $verbose) $param .= " -v";

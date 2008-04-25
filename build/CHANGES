@@ -97,6 +97,7 @@ Bug fixes:
 - Fix CPU graph script error (BR 1940372).
 - Fix initial view of the the bandwidth graph to bytes/s (BR 1948447). Thanks to Robert Eden.
 - Stop iscsi-target service on shutdown (BR 1948432). Thanks to Robert Eden.
+- Fix bug when using setkey on a encrypted RAID via WebGUI 'Disks: Encryption: Tools'.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
@@ -536,7 +537,7 @@ Bug fixes:
 - French accent are correclty displayed now
 - Change the SSL certificate (the previous is no more valid)
 - Fix script error in rc.shutdown when pressing Ctrl+halt+del key
-- Fix the "You must add disks first" message with older software RAID formatted disk 
+- Fix the "You must add disks first" message with older software RAID formatted disk
 - Fix bug in interface initialization code - the 'default' route was deleted
 - Fix Bug: Add line PubkeyAuthentication on sshd_config file
 - Fix UPnP bug - now supports blanks in directory names
@@ -588,14 +589,14 @@ Minors changes:
 - Geom mirror: Change default algorithm to round robin
 (http://www.onlamp.com/pub/a/bsd/2005/11/10/FreeBSD_Basics.html)
 - Now it is possible to store the configuration on floppy disk and USB stick when booting FreeNAS from CD.
-- Permit to select if a user is in the administrator group (wheel) or not 
-- Add WebGUI page (System/Advanced/Startup) to add/edit/delete commands executed pre or post system initialization (booting).  
+- Permit to select if a user is in the administrator group (wheel) or not
+- Add WebGUI page (System/Advanced/Startup) to add/edit/delete commands executed pre or post system initialization (booting).
 
 Bug fixes:
 - Fix UPnP WebGUI bug
 - Fix bug in user & groups WebGUI.
 - FTP: Fixed: Deletion of files uploaded and owned by user was not able.
-- FTP: Fixed PAM error (using MS AD account for example) 
+- FTP: Fixed PAM error (using MS AD account for example)
 - FTP: Disable root login by default. Can be enabled via WebGUI.
 - Fix DHCP problem
 - Try to prevent "acd0: FAILURE READ_BIG ERROR" during install from CDROM (thanks to fortinde@isers.sourceforge.net)
@@ -697,7 +698,7 @@ FreeNAS 0.68:
 - Added capability to use a config file stored on FAT partition (preparing the support of installing FreeNAS on FAT partition). Thanks to Niel Endres.
 - Added NIC name be configured with "auto" for using the first NIC found. Thanks to Niel Endres.
 - Added disk usage information on the main page
-- Added embedded text file editor (from Pfsense project) by Volker Theile 
+- Added embedded text file editor (from Pfsense project) by Volker Theile
 - Begin to customize the hidden status.php page
 - New language: Italian (thanks to Pietro Defaccio)
 - New language: German (thanks to Falk Menzel and Dominik Plaszewski)
@@ -842,7 +843,7 @@ bug fixes:
 - Fixed the asian support for CIFS share
 - Fixed some tipos in the WebGUI
 - Used a valided method for creating software RAID volume (but still same problem with software RAID 5)
-- Minors enhancement in status:system page 
+- Minors enhancement in status:system page
 
 
 FreeNAS 0.62:
