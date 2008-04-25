@@ -70,6 +70,8 @@ OPT_BOOTMENU=1
 # Support bootsplash
 # Remove during the port to freebsd 7.0 for checking messages
 OPT_BOOTSPLASH=0
+# Support serial console
+OPT_SERIALCONSOLE=1
 
 # Dialog command
 DIALOG="dialog"
@@ -671,6 +673,9 @@ Menu:
 					fi;
 					if [ 0 != $OPT_BOOTSPLASH ]; then
 						opt="$opt -b"
+					fi;
+					if [ 0 != $OPT_SERIALCONSOLE ]; then
+						opt="$opt -s"
 					fi;
 					$FREENAS_SVNDIR/build/freenas-create-bootdir.sh $opt $FREENAS_BOOTDIR;;
 			7)	add_libs;;

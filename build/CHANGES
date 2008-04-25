@@ -70,6 +70,7 @@ Minors changes:
 - Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.
 - Add WebGUI page 'Diagnostics: Information: CIFS/SMB' to list misc. informations about Samba (e.g. open files).
 - Add 'Quiet' parameter to RSYNC client/local shares to suppress non-error messages (FR 1936192).
+- Add serial console support (FR 1922687).
 
 Bug fixes:
 - Add new parameter to AFP share WebGUI to define path where to store .AppleDB files for AFP shares (BR 1932519). Thanks to Djuri Baars.
