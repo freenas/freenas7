@@ -133,7 +133,7 @@ function auth_change() {
 					<?php html_combobox("security", gettext("Security"), $pconfig['security'], array("none" => "None", "ssl" => "SSL", "tls" => "TLS"), gettext(""), true);?>
 					<?php html_checkbox("auth", gettext("Authentication"), $pconfig['auth'] ? true : false, gettext("Enable SMTP authentication."), gettext(""), false, "auth_change()");?>
 					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], gettext(""), true, 40);?>
-					<?php html_passwordbox("password", "passwordconf", gettext("Password"), $pconfig['password'], $pconfig['passwordconf'], gettext(""), true);?>
+					<?php html_passwordconfbox("password", "passwordconf", gettext("Password"), $pconfig['password'], $pconfig['passwordconf'], gettext(""), true);?>
 					<?php html_inputbox("from", gettext("From email"), $pconfig['from'], gettext("Your own email address."), true, 40);?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>

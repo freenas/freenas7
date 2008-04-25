@@ -164,10 +164,29 @@ class HTMLEditBox extends HTMLBaseControl {
 }
 
 class HTMLPasswordBox extends HTMLEditBox {
+	function HTMLPasswordBox($ctrlname, $title, $value, $description, $size) {
+		$this->SetCtrlName($ctrlname);
+		$this->SetTitle($title);
+		$this->SetValue($value);
+		$this->SetDescription($description);
+		$this->SetSize($size);
+	}
+
+	function RenderCtrl() {
+		$ctrlname = $this->GetCtrlName();
+		$value = htmlspecialchars($this->GetValue());
+		$size = $this->GetSize();
+		$param = $this->GetParam();
+
+		echo "		<input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param}><br/>\n";
+	}
+}
+
+class HTMLPasswordConfBox extends HTMLEditBox {
 	var $_ctrlnameconf = "";
 	var $_valueconf = "";
 
-	function HTMLPasswordBox($ctrlname, $ctrlnameconf, $title, $value, $valueconf, $description, $size) {
+	function HTMLPasswordConfBox($ctrlname, $ctrlnameconf, $title, $value, $valueconf, $description, $size) {
 		$this->SetCtrlName($ctrlname);
 		$this->SetCtrlNameConf($ctrlnameconf);
 		$this->SetTitle($title);
