@@ -306,8 +306,15 @@ function html_inputbox($ctrlname, $title, $value, $desc, $required = false, $siz
 	$ctrl->Render();
 }
 
-function html_passwordbox($ctrlname, $ctrlnameconf, $title, $value, $valueconf, $desc, $required = false, $size = 20, $readonly = false) {
-	$ctrl = new HTMLPasswordBox($ctrlname, $ctrlnameconf, $title, $value, $valueconf, $desc, $size);
+function html_passwordbox($ctrlname, $title, $value, $desc, $required = false, $size = 20, $readonly = false) {
+	$ctrl = new HTMLPasswordBox($ctrlname, $title, $value, $desc, $size);
+	$ctrl->SetRequired($required);
+	$ctrl->SetReadOnly($readonly);
+	$ctrl->Render();
+}
+
+function html_passwordconfbox($ctrlname, $ctrlnameconf, $title, $value, $valueconf, $desc, $required = false, $size = 20, $readonly = false) {
+	$ctrl = new HTMLPasswordConfBox($ctrlname, $ctrlnameconf, $title, $value, $valueconf, $desc, $size);
 	$ctrl->SetRequired($required);
 	$ctrl->SetReadOnly($readonly);
 	$ctrl->Render();

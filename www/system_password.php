@@ -91,22 +91,10 @@ if ($_POST) {
 			<form action="system_password.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr>
-			      <td valign="top" class="vncell"><?=gettext("Old password");?></td>
-			      <td class="vtable">
-			        <input name="password_old" type="password" class="formfld" id="password_old" size="20">
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Password");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="password_new" type="password" class="formfld" id="password_new" size="20"><br>
-			        <input name="password_confirm" type="password" class="formfld" id="password_confirm" size="20">&nbsp;(<?=gettext("Confirmation");?>)<br/>
-			        <span class="vexpl"><?=gettext("If you want to change the password for accessing the WebGUI, enter it here twice.");?></span>
-			      </td>
-			    </tr>
-			    <tr>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_passwordbox("password_old", gettext("Old password"), "", gettext(""), true);?>
+					<?php html_passwordconfbox("password_new", "password_confirm", gettext("Password"), "", "", gettext("If you want to change the password for accessing the WebGUI, enter it here twice."), true);?>
+					<tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
 			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
