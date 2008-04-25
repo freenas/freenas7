@@ -226,7 +226,7 @@ function action_change() {
 									// Get GEOM Eli configuration.
 									$id = array_search_ex($pconfig['disk'], $a_geli, "devicespecialfile");
 									$geli = $a_geli[$id];
-									disks_geli_setkey($geli['name'], $geli['devicespecialfile'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
+									disks_geli_setkey($geli['devicespecialfile'], $pconfig['oldpassphrase'], $pconfig['passphrase'], true);
                 	break;
 
                 case "list":
