@@ -71,7 +71,7 @@ OPT_BOOTMENU=1
 # Remove during the port to freebsd 7.0 for checking messages
 OPT_BOOTSPLASH=0
 # Support serial console
-OPT_SERIALCONSOLE=1
+OPT_SERIALCONSOLE=0
 
 # Dialog command
 DIALOG="dialog"
