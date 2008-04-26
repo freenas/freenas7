@@ -48,6 +48,7 @@ $pconfig['username'] = $config['dynamicdns']['username'];
 $pconfig['password'] = $config['dynamicdns']['password'];
 $pconfig['updateperiod'] = $config['dynamicdns']['updateperiod'];
 $pconfig['forcedupdateperiod'] = $config['dynamicdns']['forcedupdateperiod'];
+$pconfig['wildcard'] = isset($config['dynamicdns']['wildcard']);
 
 if($_POST) {
 	unset($input_errors);
@@ -74,6 +75,7 @@ if($_POST) {
 		$config['dynamicdns']['password'] = $_POST['password'];
 		$config['dynamicdns']['updateperiod'] = $_POST['updateperiod'];
 		$config['dynamicdns']['forcedupdateperiod'] = $_POST['forcedupdateperiod'];
+		$config['dynamicdns']['wildcard'] = $_POST['wildcard'] ? true : false;
 
 		write_config();
 
@@ -101,6 +103,21 @@ function enable_change(enable_change) {
 	document.iform.password.disabled = endis;
 	document.iform.updateperiod.disabled = endis;
 	document.iform.forcedupdateperiod.disabled = endis;
+	document.iform.wildcard.disabled = endis;
+}
+
+function provider_change() {
+	switch(document.iform.provider.value) {
+		case "dyndns.org":
+		case "3322.org":
+		case "easydns.com":
+			showElementById('wildcard_tr','show');
+			break;
+
+		default:
+			showElementById('wildcard_tr','hide');
+			break;
+	}
 }
 //-->
 </script>
@@ -121,12 +138,13 @@ function enable_change(enable_change) {
 			  		  </table>
 			      </td>
 			    </tr>
-					<?php html_combobox("provider", gettext("Provider"), $pconfig['provider'], array("dyndns.org" => "dyndns.org", "freedns.afraid.org" => "freedns.afraid.org", "zoneedit.com" => "zoneedit.com", "no-ip.com" => "no-ip.com", "easydns.com" => "easydns.com", "3322.org" => "3322.or"), gettext(""), true);?>
+					<?php html_combobox("provider", gettext("Provider"), $pconfig['provider'], array("dyndns.org" => "dyndns.org", "freedns.afraid.org" => "freedns.afraid.org", "zoneedit.com" => "zoneedit.com", "no-ip.com" => "no-ip.com", "easydns.com" => "easydns.com", "3322.org" => "3322.org"), gettext(""), true, false, "provider_change()");?>
 					<?php html_inputbox("domainname", gettext("Domain name"), $pconfig['domainname'], gettext("A host name alias. This option can appear multiple times, for each domain that has the same IP. Use a space to separate multiple alias names."), true, 40);?>
 					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], gettext(""), true, 20);?>
 					<?php html_passwordbox("password", gettext("Password"), $pconfig['password'], gettext(""), true, 20);?>
 					<?php html_inputbox("updateperiod", gettext("Update period"), $pconfig['updateperiod'], gettext("How often the IP is checked. The period is in seconds (max. is 10 days)."), true, 20);?>
-					<?php html_inputbox("forcedupdateperiod", gettext("Forced update period"), $pconfig['forcedupdateperiod'], gettext("How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days)."), true, 20);?>					
+					<?php html_inputbox("forcedupdateperiod", gettext("Forced update period"), $pconfig['forcedupdateperiod'], gettext("How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days)."), true, 20);?>
+					<?php html_checkbox("wildcard", gettext("Wildcard"), $pconfig['wildcard'] ? true : false, gettext("Enable domain wildcarding."), gettext(""), false);?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
@@ -141,6 +159,7 @@ function enable_change(enable_change) {
 <script language="JavaScript">
 <!--
 enable_change(false);
+provider_change();
 //-->
 </script>
 <?php include("fend.inc");?>
