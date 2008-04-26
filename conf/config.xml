@@ -481,6 +481,7 @@
 		<password></password>
 		<updateperiod></updateperiod>
 		<forcedupdateperiod></forcedupdateperiod>
+		<wildcard/>
 		-->
 	</dynamicdns>
 	<statusreport>
