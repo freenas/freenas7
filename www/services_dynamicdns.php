@@ -121,52 +121,12 @@ function enable_change(enable_change) {
 			  		  </table>
 			      </td>
 			    </tr>
-			    <tr>
-				    <td width="22%" valign="top" class="vncellreq"><?=gettext("Provider");?></td>
-			      <td width="78%" class="vtable">
-			        <select name="provider" class="formfld" id="provider">
-								<option value="dyndns.org" <?php if ("dyndns.org" === $pconfig['provider']) echo "selected";?>>dyndns.org</option>
-								<option value="freedns.afraid.org" <?php if ("freedns.afraid.org" === $pconfig['provider']) echo "selected";?>>freedns.afraid.org</option>
-								<option value="zoneedit.com" <?php if ("zoneedit.com" === $pconfig['provider']) echo "selected";?>>zoneedit.com</option>
-								<option value="no-ip.com" <?php if ("no-ip.com" === $pconfig['provider']) echo "selected";?>>no-ip.com</option>
-								<option value="easydns.com" <?php if ("easydns.com" === $pconfig['provider']) echo "selected";?>>easydns.com</option>
-								<option value="3322.org" <?php if ("3322.org" === $pconfig['provider']) echo "selected";?>>3322.org</option>
-			        </select>
-			      </td>
-					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="domainname" type="text" class="formfld" id="domainname" size="40" value="<?=htmlspecialchars($pconfig['domainname']);?>"><br/>
-							<span class="vexpl"><?=gettext("Alias host name.");?></span>
-			      </td>
-			    </tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Username");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="username" type="text" class="formfld" id="username" size="20" value="<?=htmlspecialchars($pconfig['username']);?>">
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Password");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="password" type="password" class="formfld" id="password" size="20" value="<?=htmlspecialchars($pconfig['password']);?>">
-			      </td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Update period");?></td>
-						<td width="78%" class="vtable">
-							<input name="updateperiod" type="text" class="formfld" id="updateperiod" size="20" value="<?=htmlspecialchars($pconfig['updateperiod']);?>">
-							<br><?=gettext("How often the IP is checked. The period is in seconds (max. is 10 days).");?>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Forced update period");?></td>
-						<td width="78%" class="vtable">
-							<input name="forcedupdateperiod" type="text" class="formfld" id="forcedupdateperiod" size="20" value="<?=htmlspecialchars($pconfig['forcedupdateperiod']);?>">
-							<br><?=gettext("How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days).");?>
-						</td>
-					</tr>
+					<?php html_combobox("provider", gettext("Provider"), $pconfig['provider'], array("dyndns.org" => "dyndns.org", "freedns.afraid.org" => "freedns.afraid.org", "zoneedit.com" => "zoneedit.com", "no-ip.com" => "no-ip.com", "easydns.com" => "easydns.com", "3322.org" => "3322.or"), gettext(""), true);?>
+					<?php html_inputbox("domainname", gettext("Domain name"), $pconfig['domainname'], gettext("A host name alias. This option can appear multiple times, for each domain that has the same IP. Use a space to separate multiple alias names."), true, 40);?>
+					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], gettext(""), true, 20);?>
+					<?php html_passwordbox("password", gettext("Password"), $pconfig['password'], gettext(""), true, 20);?>
+					<?php html_inputbox("updateperiod", gettext("Update period"), $pconfig['updateperiod'], gettext("How often the IP is checked. The period is in seconds (max. is 10 days)."), true, 20);?>
+					<?php html_inputbox("forcedupdateperiod", gettext("Forced update period"), $pconfig['forcedupdateperiod'], gettext("How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days)."), true, 20);?>					
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
