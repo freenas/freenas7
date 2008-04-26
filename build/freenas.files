@@ -219,9 +219,6 @@ sbin/sysctl
 ## swapon - Enable swap
 sbin/swapon
 
-## swapoff - Disable swap
-sbin/swapoff
-
 ## pstat, swapinfo -- display system data structures
 usr/sbin/pstat:usr/sbin/swapinfo
 
@@ -251,9 +248,6 @@ sbin/mksnap_ffs
 ## awk -- pattern-directed scanning and processing language
 usr/bin/awk
 
-## chgrp -- change group
-usr/bin/chgrp
-
 ## du -- Display file usage: Usefull for checking disk space
 usr/bin/du
 
@@ -263,14 +257,11 @@ usr/bin/fstat
 ## fetch -- FTP/HTTP download tools
 usr/bin/fetch
 
-## groups -- This utility prevent WinSCP to display error message
-usr/bin/groups
-
 ## gzip, gunzip, zcat, gzcat -- compress or expand files
 usr/bin/gzip:usr/bin/gunzip:usr/bin/zcat:usr/bin/gzcat
 
 ## id -- displays the user and group names and numeric IDs, of the calling process
-usr/bin/id
+usr/bin/id;usr/bin/groups
 
 ## killall -- kill processes by name
 usr/bin/killall
@@ -404,7 +395,7 @@ usr/sbin/arp
 usr/sbin/boot0cfg
 
 ## chown -- change file owner and group
-usr/sbin/chown
+usr/sbin/chown;usr/bin/chgrp
 
 ##chroot -- change root directory
 usr/sbin/chroot
