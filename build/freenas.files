@@ -292,7 +292,7 @@ usr/bin/ssh
 usr/bin/tail
 
 ## tar -- manipulate tape archives
-usr/bin/tar
+usr/bin/bsdtar:usr/bin/tar
 
 ## top -- display and update information about the top cpu processes
 usr/bin/top
