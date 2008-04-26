@@ -198,9 +198,6 @@ sbin/newfs
 ## newsfs -- construct a FAT (16/32) file system
 sbin/newfs_msdos
 
-## nologin -- politely refuse a login
-sbin/nologin
-
 ## ping -- send ICMP ECHO_REQUEST packets to network hosts
 sbin/ping
 
@@ -460,6 +457,9 @@ usr/sbin/bsnmpd
 
 ## snapinfo -- show snapshot location on UFS file systems
 usr/sbin/snapinfo
+
+## nologin -- politely refuse a login
+usr/sbin/nologin:sbin/nologin
 
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
