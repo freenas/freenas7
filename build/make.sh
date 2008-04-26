@@ -68,7 +68,7 @@ OPT_BOOTMENU=1
 # Support bootsplash
 OPT_BOOTSPLASH=1
 # Support serial console
-OPT_SERIALCONSOLE=1
+OPT_SERIALCONSOLE=0
 
 # Dialog command
 DIALOG="dialog"
