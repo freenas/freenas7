@@ -115,7 +115,7 @@ if [ 0 != $opt_d ]; then
 fi
 # Enable serial console?
 if [ 0 != $opt_s ]; then
-  echo 'console="comconsole,vidconsole"' >> $MINIBSD_DIR/loader.conf
+  echo 'console="vidconsole,comconsole"' >> $MINIBSD_DIR/loader.conf
 fi
 # Disable ACPI?
 if [ 0 != $opt_a ]; then
