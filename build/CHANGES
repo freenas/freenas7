@@ -45,7 +45,7 @@ Majors changes:
 - Switch back to SCHED_4BSD scheduler.
 - Add generic webserver service.
 - Complete review and typo fixes in sourcecode. Thanks to Jerome Warnier.
-- Upgrade inadyn-mt to 02.11.96.
+- Upgrade inadyn-mt to 02.11.98.
 - Upgrade rsync to 3.0.2.
 - Upgrade smartmontools to 5.38.
 - Upgrade lighttpd to 1.4.19.
