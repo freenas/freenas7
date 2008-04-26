@@ -138,7 +138,7 @@ function enable_change(enable_change) {
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Domain name");?></td>
 			      <td width="78%" class="vtable">
 			        <input name="domainname" type="text" class="formfld" id="domainname" size="40" value="<?=htmlspecialchars($pconfig['domainname']);?>"><br/>
-							<span class="vexpl"><?=gettext("Alias host name.");?></span>
+							<span class="vexpl"><?=gettext("A host name alias. This option can appear multiple times, for each domain that has the same IP. Use a space to separate multiple alias names.");?></span>
 			      </td>
 			    </tr>
 					<tr>
