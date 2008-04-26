@@ -217,7 +217,7 @@ sbin/shutdown
 sbin/sysctl
 
 ## swapon - Enable swap
-sbin/swapon
+sbin/swapon:sbin/swapoff
 
 ## pstat, swapinfo -- display system data structures
 usr/sbin/pstat:usr/sbin/swapinfo
@@ -261,7 +261,7 @@ usr/bin/fetch
 usr/bin/gzip:usr/bin/gunzip:usr/bin/zcat:usr/bin/gzcat
 
 ## id -- displays the user and group names and numeric IDs, of the calling process
-usr/bin/id;usr/bin/groups
+usr/bin/id:usr/bin/groups
 
 ## killall -- kill processes by name
 usr/bin/killall
@@ -395,7 +395,7 @@ usr/sbin/arp
 usr/sbin/boot0cfg
 
 ## chown -- change file owner and group
-usr/sbin/chown;usr/bin/chgrp
+usr/sbin/chown:usr/bin/chgrp
 
 ##chroot -- change root directory
 usr/sbin/chroot
@@ -476,10 +476,11 @@ usr/libexec/getty
 usr/share/misc/termcap:etc/termcap
 
 ####### contents of /usr/share/locale
-usr/share/locale/en_US.ISO8859-1/*
-usr/share/locale/en_US.UTF-8/*
-usr/share/locale/la_LN.US-ASCII/*
-usr/share/locale/UTF-8/*
+usr/share/locale/en_US.ISO8859-1/
+usr/share/locale/en_US.UTF-8/
+usr/share/locale/la_LN.ISO8859-1/
+usr/share/locale/la_LN.US-ASCII/
+usr/share/locale/UTF-8/
 
 ####### contents of /usr/lib
 # PAM libraries

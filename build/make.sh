@@ -137,7 +137,7 @@ build_world() {
 		fi
 
 		# Copy files from world.
-		cp -pv ${FREENAS_WORLD}/$file $(echo $file | rev | cut -d "/" -f 2- | rev)
+		cp -Rpv ${FREENAS_WORLD}/$file $(echo $file | rev | cut -d "/" -f 2- | rev)
 
 		# Deal with links
 		if [ $(echo "$i" | grep -c ":") -gt 0 ]; then
