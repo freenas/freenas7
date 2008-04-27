@@ -337,8 +337,8 @@ function interfaces_dhcp_configure($if)
     $hostname = "{$config['system']['hostname']}";
 
     $dhclientconf = <<<EOD
-send dhcp-client-identifier "{$macaddr}";
 interface "{$if}" {
+    send dhcp-client-identifier 1:$macaddr;
     send host-name "{$hostname}";
     script "/sbin/dhclient-script";
 }
