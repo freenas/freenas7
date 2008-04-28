@@ -1,13 +1,13 @@
 #!/bin/sh
 #
-# $NetBSD: sysctl,v 1.12 2002/04/29 12:10:23 lukem Exp $
-# $FreeBSD: src/etc/rc.d/sysctl,v 1.16.2.1 2006/08/10 10:44:03 glebius Exp $
+# $FreeBSD: src/etc/rc.d/sysctl,v 1.16.2.2 2008/01/28 08:22:33 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #
 
 # PROVIDE: sysctl
-# BEFORE: DAEMON
+# REQUIRE: root
+# BEFORE:  DAEMON
 
 . /etc/rc.subr
 . /etc/configxml.subr

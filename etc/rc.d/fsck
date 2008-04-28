@@ -7,7 +7,6 @@
 
 # PROVIDE: fsck
 # REQUIRE: localswap
-# BEFORE:  mountcritlocal
 # KEYWORD: nojail
 
 . /etc/rc.subr

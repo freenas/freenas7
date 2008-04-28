@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: mountcritlocal
-# REQUIRE: CONFIG
+# REQUIRE: root
 # KEYWORD: nojail shutdown
 
 . /etc/rc.subr

@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: netif
-# REQUIRE: mountcritlocal pccard sysctl
+# REQUIRE: cleanvar mountcritlocal pccard sysctl
 # KEYWORD: nojail
 
 . /etc/rc.subr

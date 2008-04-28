@@ -1,0 +1,25 @@
+#!/bin/sh
+#
+# $FreeBSD: src/etc/rc.d/root,v 1.10.2.5 2008/01/28 08:22:33 dougb Exp $
+#
+# Modified by Volker Theile (votdev@gmx.de)
+# Changes: Remove original code from root_start.
+#
+
+# PROVIDE: root
+# REQUIRE: fsck
+# KEYWORD: nojail
+
+. /etc/rc.subr
+
+name="root"
+start_cmd="root_start"
+stop_cmd=":"
+
+root_start()
+{
+	# Currently this script is used as dummy.
+}
+
+load_rc_config $name
+run_rc_command "$1"
