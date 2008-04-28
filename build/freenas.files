@@ -521,3 +521,6 @@ etc/defaults/rc.conf
 ####### contents of /etc/rc.d
 etc/rc.d/LOGIN
 etc/rc.d/local
+etc/rc.d/early.sh
+etc/rc.d/mdconfig
+etc/rc.d/ramdisk

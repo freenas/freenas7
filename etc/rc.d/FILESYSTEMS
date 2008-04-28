@@ -2,11 +2,9 @@
 #
 # $FreeBSD: src/etc/rc.d/FILESYSTEMS,v 1.2.2.2 2007/05/25 13:31:36 des Exp $
 #
-# Modified by Volker Theile (votdev@gmx.de)
-#
 
 # PROVIDE: FILESYSTEMS
-# REQUIRE: mountcritlocal
+# REQUIRE: root mountcritlocal
 
 #	This is a dummy dependency, for services which require file systems
 #	to be mounted before starting.  It also serves as the default early /
