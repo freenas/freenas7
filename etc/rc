@@ -81,15 +81,8 @@ if [ ! -e /var/log/daemon.log ]; then
 fi
 chmod 0600 /var/log/*.log
 
-adjkerntz -i
-
 # Create an initial utmp file
 cd /var/run && cp /dev/null utmp && chmod 0644 utmp
-
-# Create symlink for lighttpd file upload if it doesn't exist
-if [ ! -h "/var/tmp" ]; then
-	ln -s /ftmp /var/tmp
-fi
 
 # Configure the shared library cache
 /sbin/ldconfig -elf /usr/lib /usr/local/lib /lib
