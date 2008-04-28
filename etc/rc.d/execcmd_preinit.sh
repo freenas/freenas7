@@ -9,10 +9,11 @@
 . /etc/rc.subr
 . /etc/configxml.subr
 
-_index=`configxml_get_count "//rc/preinit/cmd"`
-while [ ${_index} -gt 0 ]
-do
-	_cmd=`configxml_get "//rc/preinit/cmd[${_index}]"`
-	eval ${_cmd}
-	_index=$(( ${_index} - 1 ))
-done
+# Execute all commands.
+/usr/local/bin/xml sel -t -m "//rc/preinit/cmd" \
+	-v "." \
+	-i "position() != last()" -n -b \
+	${configxml_file} | /usr/local/bin/xml unesc | \
+	while read _cmd; do
+		eval ${_cmd}
+	done
