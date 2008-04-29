@@ -10,7 +10,7 @@
 . /etc/configxml.subr
 
 name="geli"
-start_cmd=":"
+start_cmd="geli_start"
 stop_cmd="geli_stop"
 
 # Creates a list of providers for GELI encryption
@@ -18,7 +18,7 @@ geli_make_list()
 {
 	local _devices
 
-	_devices=`/usr/local/bin/xml sel -t -m "//disks/disk[class = 'geli']" \
+	_devices=`/usr/local/bin/xml sel -t -m "//geli/vdisk" \
 		-v devicespecialfile -n \
 		${configxml_file} | /usr/local/bin/xml unesc |
 		while read _provider; do
@@ -30,12 +30,18 @@ geli_make_list()
 	echo $_devices
 }
 
+geli_start()
+{
+	# Nothing to do here.
+}
+
 geli_stop()
 {
 	devices=`geli_make_list`
 
 	for provider in ${devices}; do
 		if [ -e "/dev/${provider}.eli" ]; then
+			umount "/dev/${provider}.eli" 2>/dev/null
 			geli detach "${provider}"
 		fi
 	done
