@@ -47,7 +47,7 @@ if [ -f "/etc/cfdevice" ] && [ ! -h /var/etc/cfdevice ] ; then
 fi
 
 # If the firmware.lock file, delete it (if not, all WebGUI pages will be redirected to upgrade page)
-if [ -f "/etc/cfdevice" ] ; then
+if [ -f "/var/run/firmware.lock" ] ; then
 	rm -f /var/run/firmware.lock
 fi
 
