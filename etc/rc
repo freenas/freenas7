@@ -51,30 +51,6 @@ if [ -f "/var/run/firmware.lock" ] ; then
 	rm -f /var/run/firmware.lock
 fi
 
-# Generate circular logfiles if necessary
-if [ ! -e /var/log/system.log ]; then
-	clog -i -s 262144 /var/log/system.log
-fi
-if [ ! -e /var/log/ftp.log ]; then
-	clog -i -s 32768 /var/log/ftp.log
-fi
-if [ ! -e /var/log/rsyncd.log ]; then
-	clog -i -s 32768 /var/log/rsyncd.log
-fi
-if [ ! -e /var/log/sshd.log ]; then
-	clog -i -s 32768 /var/log/sshd.log
-fi
-if [ ! -e /var/log/lastlog ]; then
-	clog -i -s 32768 /var/log/lastlog
-fi
-if [ ! -e /var/log/smartd.log ]; then
-	clog -i -s 32768 /var/log/smartd.log
-fi
-if [ ! -e /var/log/daemon.log ]; then
-	clog -i -s 32768 /var/log/daemon.log
-fi
-chmod 0600 /var/log/*.log
-
 # Create an initial utmp file
 cd /var/run && cp /dev/null utmp && chmod 0644 utmp
 
