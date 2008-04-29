@@ -522,6 +522,4 @@ etc/defaults/rc.conf
 etc/rc.d/LOGIN
 etc/rc.d/local
 etc/rc.d/early.sh
-etc/rc.d/mdconfig
-etc/rc.d/ramdisk
 etc/rc.d/adjkerntz
