@@ -3,8 +3,8 @@
 # All rights reserved.
 
 # PROVIDE: ldap
-# BEFORE: CONFIG
-# REQUIRE: SYSTEMINIT
+# REQUIRE: var
+# BEFORE: NETWORK
 
 #
 # Configure LDAP modules

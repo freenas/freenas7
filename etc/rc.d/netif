@@ -9,10 +9,10 @@
 . /etc/rc.subr
 
 name="network"
-start_cmd="start_cmd"
+start_cmd="network_start"
 stop_cmd=":"
 
-start_cmd()
+network_start()
 {
 	local _result
 	# Bring up network interfaces
