@@ -37,7 +37,7 @@ case ${PLATFORM} in
 esac
 
 # Create required directories in /var
-for dir in /var/run /var/log /var/log/samba /var/etc /var/etc/ssh /var/etc/ssl/private /var/etc/private /var/etc/iscsi /var/db /var/mount /var/empty  /var/cron /var/cron/tabs; do
+for dir in /var/run /var/log /var/log/samba /var/etc /var/etc/ssh /var/etc/ssl/private /var/etc/private /var/etc/iscsi /var/db /var/mount /var/empty  /var/cron /var/cron/tabs /var/spool /var/spool/lock; do
 	[ ! -d "${dir}" ] && mkdir -p ${dir} 
 done
 
@@ -47,14 +47,8 @@ if [ -f "/etc/cfdevice" ] && [ ! -h /var/etc/cfdevice ] ; then
 fi
 
 # If the firmware.lock file exists, delete it (if not, all WebGUI pages will be redirected to upgrade page)
-if [ -f "/etc/cfdevice" ] ; then
+if [ -f "/var/run/firmware.lock" ] ; then
 	rm -f /var/run/firmware.lock
-fi
-
-# Make spool directories (for afpd) if they don't exist
-if [ ! -d "/var/spool" ]; then
-	mkdir -p /var/spool
-	mkdir -p /var/spool/lock
 fi
 
 # Generate circular logfiles if necessary
