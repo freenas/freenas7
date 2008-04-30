@@ -57,13 +57,12 @@ $pconfig['certificate'] = base64_decode($config['websrv']['certificate']);
 $pconfig['authentication'] = isset($config['websrv']['authentication']['enable']);
 $pconfig['dirlisting'] = isset($config['websrv']['dirlisting']);
 
-if($_POST) {
+if ($_POST) {
 	unset($input_errors);
-
 	$pconfig = $_POST;
 
 	// Input validation.
-	if($_POST['enable']) {
+	if ($_POST['enable']) {
 		$reqdfields = explode(" ", "port documentroot");
 		$reqdfieldsn = array(gettext("Port"), gettext("Document root"));
 		$reqdfieldst = explode(" ", "port string");
@@ -86,7 +85,7 @@ if($_POST) {
 		}
 	}
 
-	if(!$input_errors) {
+	if (!$input_errors) {
 		$config['websrv']['enable'] = $_POST['enable'] ? true : false;
 		$config['websrv']['protocol'] = $_POST['protocol'];
 		$config['websrv']['port'] = $_POST['port'];
@@ -99,7 +98,7 @@ if($_POST) {
 		write_config();
 
 		$retval = 0;
-		if(!file_exists($d_sysrebootreqd_path)) {
+		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= rc_exec_service("websrv_htpasswd");
 			$retval |= rc_update_service("websrv");
@@ -108,7 +107,7 @@ if($_POST) {
 
 		$savemsg = get_std_save_message($retval);
 
-		if(0 == $retval) {
+		if (0 == $retval) {
 			if(file_exists($d_websrvconfdirty_path))
 				unlink($d_websrvconfdirty_path);
 		}
@@ -181,55 +180,13 @@ function authentication_change() {
 			        </tr>
 			  		  </table>
 			      </td>
-			    </tr>
-			    <tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Protocol");?></td>
-						<td width="78%" class="vtable">
-							<select name="protocol" class="formfld" id="protocol" onchange="protocol_change()">
-								<?php $types = array(gettext("HTTP"),gettext("HTTPS")); $vals = explode(" ", "http https");?>
-								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] === $pconfig['protocol']) echo "selected";?>><?=htmlspecialchars($types[$j]);?></option>
-								<?php endfor;?>
-							</select>
-						</td>
 					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Port");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="port" type="text" class="formfld" id="port" size="5" value="<?=htmlspecialchars($pconfig['port']);?>"><br/>
-							<span class="vexpl"><?=gettext("TCP port to bind the server to.");?></span>
-			      </td>
-			    </tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Document root");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="documentroot" type="text" class="formfld" id="documentroot" size="60" value="<?=htmlspecialchars($pconfig['documentroot']);?>">
-			        <input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.documentroot; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \><br/>
-			        <span class="vexpl"><?=gettext("Document root of the webserver. Home of the web page files.");?></span>
-			      </td>
-			    </tr>
-					<tr id="certificate_tr">
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Certificate");?></td>
-						<td width="78%" class="vtable">
-							<textarea name="certificate" cols="65" rows="7" id="certificate" class="formpre"><?=htmlspecialchars($pconfig['certificate']);?></textarea></br>
-							<span class="vexpl"><?=gettext("Paste a signed certificate in X.509 PEM format here.");?></span>
-						</td>
-					</tr>
-					<tr id="privatekey_tr">
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Private key");?></td>
-						<td width="78%" class="vtable">
-							<textarea name="privatekey" cols="65" rows="7" id="privatekey" class="formpre"><?=htmlspecialchars($pconfig['privatekey']);?></textarea></br>
-							<span class="vexpl"><?=gettext("Paste an private key in PEM format here.");?></span>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Authentication");?></td>
-						<td width="78%" class="vtable">
-							<input name="authentication" type="checkbox" id="authentication" value="yes" <?php if ($pconfig['authentication']) echo "checked";?> onchange="authentication_change()">
-							<?=gettext("Enable authentication.");?><br/>
-							<span class="vexpl"><?=gettext("Give only local users access to the web page.");?></span>
-						</td>
-					</tr>
+					<?php html_combobox("protocol", gettext("Protocol"), $pconfig['protocol'], array("http" => "HTTP", "https" => "HTTPS"), gettext(""), true, false, "protocol_change()");?>
+					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("TCP port to bind the server to."), true, 5);?>
+					<?php html_filechooser("documentroot", gettext("Document root"), $pconfig['documentroot'], gettext("Document root of the webserver. Home of the web page files."), "/mnt", true, 60);?>
+					<?php html_textarea("certificate", gettext("Certificate"), $pconfig['certificate'], gettext("Paste a signed certificate in X.509 PEM format here."), true, 65, 7);?>
+					<?php html_textarea("privatekey", gettext("Private key"), $pconfig['privatekey'], gettext("Paste an private key in PEM format here."), true, 65, 7);?>
+					<?php html_checkbox("authentication", gettext("Authentication"), $pconfig['authentication'] ? true : false, gettext("Enable authentication."), gettext("Give only local users access to the web page."), false, "authentication_change()");?>
 					<tr id="authdirs_tr">
 						<td width="22%" valign="top" class="vncell">&nbsp;</td>
 						<td width="78%" class="vtable">
@@ -259,15 +216,8 @@ function authentication_change() {
 							<span class="vexpl"><?=gettext("Define directories/URL's that require authentication.");?></span>
 						</td>
 					</tr>
+					<?php html_checkbox("dirlisting", gettext("Directory listing"), $pconfig['dirlisting'] ? true : false, gettext("Enable directory listing."), gettext("A directory listing is generated if a directory is requested and no index-file (index.php, index.html, index.htm or default.htm) was found in that directory."), false);?>
 					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Directory listing");?></td>
-						<td width="78%" class="vtable">
-							<input name="dirlisting" type="checkbox" id="dirlisting" value="yes" <?php if ($pconfig['dirlisting']) echo "checked"; ?>>
-							<?=gettext("Enable directory listing.");?><br/>
-							<span class="vexpl"><?=gettext("A directory listing is generated if a directory is requested and no index-file (index.php, index.html, index.htm or default.htm) was found in that directory.");?></span>
-						</td>
-					</tr>
-			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
 			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
