@@ -51,9 +51,6 @@ if [ -f "/var/run/firmware.lock" ] ; then
 	rm -f /var/run/firmware.lock
 fi
 
-# Create an initial utmp file
-cd /var/run && cp /dev/null utmp && chmod 0644 utmp
-
 # Configure the shared library cache
 /sbin/ldconfig -elf /usr/lib /usr/local/lib /lib
 

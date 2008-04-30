@@ -63,7 +63,7 @@ if (isset($id) && $a_share[$id]) {
 	$pconfig['network'] = "";
 	$pconfig['mask'] = "24";
 	$pconfig['comment'] = "";
-	$pconfig['alldirs'] = false;
+	$pconfig['alldirs'] = true;
 	$pconfig['readonly'] = false;
 	$pconfig['quiet'] = false;
 }
