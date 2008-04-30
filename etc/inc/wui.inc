@@ -262,7 +262,7 @@ class HTMLTextArea extends HTMLEditBox {
 		$rows = $this->GetRows();
 		$param = $this->GetParam();
 
-		echo "		<textarea name='{$ctrlname}' cols='{$columns}' rows='{$rows}' id='{$ctrlname}' class='formpre' {$param}>{$value}</textarea><br/>\n";
+		echo "		<textarea name='{$ctrlname}' cols='{$columns}' rows='{$rows}' id='{$ctrlname}' class='formpre' {$param}>{$value}</textarea>\n";
 	}
 }
 
