@@ -6,15 +6,34 @@
 # REQUIRE: LOGIN
 # KEYWORD: shutdown
 # XQUERY: -i "count(//daapd/enable) > 0" -o "0" -b
-# RCVAR: mt_daapd
+# RCVAR: mtdaapd
 
 name="mtdaapd"
-rcvar="mt_daapd_enable"
+rcvar=`set_rcvar`
 
 # Custom commands
 start_precmd="start_precmd"
 
 # Defaults
+mtdaapd_enable=${mtdaapd_enable:-"NO"}
+mtdaapd_port=${mtdaapd_port:-"3689"}
+mtdaapd_web_root=${mtdaapd_web_root:-"/usr/local/share/mt-daapd/admin-root"}
+mtdaapd_admin_pw=${mtdaapd_admin_pw:-"mt-daapd"}
+mtdaapd_db_type=${mtdaapd_db_type:-"sqlite3"}
+mtdaapd_db_parms=${mtdaapd_db_parms:-"/usr/local/var/cache/mt-daapd"}
+mtdaapd_mp3_dir=${mtdaapd_mp3_dir:-"/mnt"}
+mtdaapd_servername=${mtdaapd_servername:-"Firefly %v on %h"}
+mtdaapd_runas=${mtdaapd_runas:-"nobody"}
+mtdaapd_password=${mtdaapd_password:-"mp3"}
+mtdaapd_extensions=${mtdaapd_extensions:-".mp3,.m4a,.m4p"} 
+mtdaapd_logfile=${mtdaapd_logfile:-"/var/log/mt-daapd.log"} 
+mtdaapd_rescan_interval=${mtdaapd_rescan_interval:-"300"}
+mtdaapd_always_scan=${mtdaapd_always_scan:-"0"}
+mtdaapd_scan_type=${mtdaapd_scan_type:-"2"}
+mtdaapd_compress=${mtdaapd_compress:-"0"}
+mtdaapd_process_playlists=${mtdaapd_process_playlists:-"1"} 
+mtdaapd_process_itunes=${mtdaapd_process_itunes:-"1"}
+mtdaapd_process_m3u=${mtdaapd_process_m3u:-"1"}
 pidfile="/var/run/mt-daapd.pid"
 
 command="/usr/local/sbin/mt-daapd"

@@ -28,6 +28,9 @@ USE_AUTOTOOLS=			autoheader:261 autoconf:261:env
 
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}.sh
+
+	-@${MKDIR} ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
+	@${CP} -Rpv ${WRKSRC}/admin-root/ ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
 
 .include <bsd.port.mk>
