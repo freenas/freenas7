@@ -327,6 +327,14 @@ function html_textarea($ctrlname, $title, $value, $desc, $required = false, $col
 	$ctrl->Render();
 }
 
+function html_filechooser($ctrlname, $title, $value, $desc, $path, $required = false, $size = 60, $readonly = false) {
+	$ctrl = new HTMLFileChooser($ctrlname, $title, $value, $desc, $size);
+	$ctrl->SetRequired($required);
+	$ctrl->SetReadOnly($readonly);
+	$ctrl->SetPath($path);
+	$ctrl->Render();
+}
+
 function html_combobox($ctrlname, $title, $value, $options, $desc, $required = false, $readonly = false, $onclick = "") {
 	$ctrl = new HTMLComboBox($ctrlname, $title, $value, $options, $desc);
 	$ctrl->SetRequired($required);

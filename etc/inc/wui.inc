@@ -266,6 +266,37 @@ class HTMLTextArea extends HTMLEditBox {
 	}
 }
 
+class HTMLFileChooser extends HTMLEditBox {
+	var $_path = "";
+
+	function HTMLFileChooser($ctrlname, $title, $value, $description, $size = 60) {
+		$this->SetCtrlName($ctrlname);
+		$this->SetTitle($title);
+		$this->SetValue($value);
+		$this->SetDescription($description);
+		$this->SetSize($size);
+	}
+
+	function GetPath() {
+		return $this->_path;
+	}
+
+	function SetPath($path) {
+		$this->_path = $path;
+	}
+
+	function RenderCtrl() {
+		$ctrlname = $this->GetCtrlName();
+		$value = htmlspecialchars($this->GetValue());
+		$size = $this->GetSize();
+		$param = $this->GetParam();
+		$path = $this->GetPath();
+
+		echo "		<input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param}>\n";
+		echo "		<input name='fcbrowse' type='button' class='formbtn' id='fcbrowse' onClick='ifield = form.{$ctrlname}; filechooser = window.open(\"filechooser.php?p=\"+escape(ifield.value)+\"&sd={$path}\", \"filechooser\", \"scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300\"); filechooser.ifield = ifield; window.ifield = ifield;' value='...'\>\n";
+	}
+}
+
 class HTMLCheckBox extends HTMLBaseControlJS {
 	var $_caption = "";
 
