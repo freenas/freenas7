@@ -1,0 +1,28 @@
+#!/bin/sh
+# Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: mt-daapd
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+# XQUERY: -i "count(//daapd/enable) > 0" -o "0" -b
+# RCVAR: mt_daapd
+
+name="mtdaapd"
+rcvar="mt_daapd_enable"
+
+# Custom commands
+start_precmd="start_precmd"
+
+# Defaults
+pidfile="/var/run/mt-daapd.pid"
+
+command="/usr/local/sbin/mt-daapd"
+command_args="-c /var/etc/mt-daapd.conf"
+
+start_precmd()
+{
+}
+
+load_rc_config "$name"
+run_rc_command "$1"
