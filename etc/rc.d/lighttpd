@@ -143,7 +143,7 @@ EOF
 			/bin/rm -f ${_tmpfile}
 		fi
 
-		/bin/chmod 0600 ${lighttpd_certpem}
+		[ -e ${lighttpd_certpem} ] && /bin/chmod 0600 ${lighttpd_certpem}
 	fi
 }
 
