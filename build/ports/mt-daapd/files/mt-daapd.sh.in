@@ -5,8 +5,11 @@
 # PROVIDE: mt-daapd
 # REQUIRE: LOGIN
 # KEYWORD: shutdown
-# XQUERY: -i "count(//daapd/enable) > 0" -o "0" -b
+# XQUERY: -i "count(//daap/enable) > 0" -o "0" -b
 # RCVAR: mtdaapd
+
+. /etc/rc.subr
+. /etc/configxml.subr
 
 name="mtdaapd"
 rcvar=`set_rcvar`
@@ -16,31 +19,76 @@ start_precmd="start_precmd"
 
 # Defaults
 mtdaapd_enable=${mtdaapd_enable:-"NO"}
-mtdaapd_port=${mtdaapd_port:-"3689"}
+mtdaapd_config=${mtdaapd_config-"/var/etc/mt-daapd.conf"}
 mtdaapd_web_root=${mtdaapd_web_root:-"/usr/local/share/mt-daapd/admin-root"}
+mtdaapd_port=${mtdaapd_port:-"3689"}
 mtdaapd_admin_pw=${mtdaapd_admin_pw:-"mt-daapd"}
-mtdaapd_db_type=${mtdaapd_db_type:-"sqlite3"}
-mtdaapd_db_parms=${mtdaapd_db_parms:-"/usr/local/var/cache/mt-daapd"}
+mtdaapd_db_dir=${mtdaapd_db_dir:-"/var/db/mt-daapd"}
 mtdaapd_mp3_dir=${mtdaapd_mp3_dir:-"/mnt"}
-mtdaapd_servername=${mtdaapd_servername:-"Firefly %v on %h"}
-mtdaapd_runas=${mtdaapd_runas:-"nobody"}
+mtdaapd_servername=${mtdaapd_servername:-"mt-daapd"}
+mtdaapd_runas=${mtdaapd_runas:-"root"}
+mtdaapd_playlist=${mtdaapd_playlist:-"/usr/local/share/mt-daapd/mt-daapd.playlist"}
 mtdaapd_password=${mtdaapd_password:-"mp3"}
-mtdaapd_extensions=${mtdaapd_extensions:-".mp3,.m4a,.m4p"} 
-mtdaapd_logfile=${mtdaapd_logfile:-"/var/log/mt-daapd.log"} 
-mtdaapd_rescan_interval=${mtdaapd_rescan_interval:-"300"}
+mtdaapd_extensions=${mtdaapd_extensions:-".mp3,.m4a,.m4p"}
+mtdaapd_logfile=${mtdaapd_logfile:-"/var/log/mt-daapd.log"}
+mtdaapd_rescan_interval=${mtdaapd_rescan_interval:-"0"}
+mtdaapd_scan_type=${mtdaapd_scan_type:-"0"}
 mtdaapd_always_scan=${mtdaapd_always_scan:-"0"}
-mtdaapd_scan_type=${mtdaapd_scan_type:-"2"}
 mtdaapd_compress=${mtdaapd_compress:-"0"}
-mtdaapd_process_playlists=${mtdaapd_process_playlists:-"1"} 
-mtdaapd_process_itunes=${mtdaapd_process_itunes:-"1"}
-mtdaapd_process_m3u=${mtdaapd_process_m3u:-"1"}
+mtdaapd_process_m3u=${mtdaapd_process_m3u:-"0"}
 pidfile="/var/run/mt-daapd.pid"
 
 command="/usr/local/sbin/mt-daapd"
-command_args="-c /var/etc/mt-daapd.conf"
+command_args="-c ${mtdaapd_config}"
 
 start_precmd()
 {
+	local _port _dbdir _mp3dir _rescaninterval _alwaysscan _scantype _servername
+
+	# Get setting from configuration file.
+	_servername=`configxml_get "//daap/servername"`
+	_port=`configxml_get "//daap/port"`
+	_dbdir=`configxml_get "//daap/dbdir"`
+	_mp3dir=`configxml_get "//daap/content"`
+	_rescaninterval=`configxml_get "//daap/rescaninterval"`
+	_alwaysscan=0
+	_scantype=`configxml_get "//daap/scantype"`
+
+	if configxml_isset //daap/alwaysscan; then
+		_alwaysscan=1
+	fi
+
+	# Set default values if necessary.
+	_servername=${_servername:-"${mtdaapd_servername}"}
+	_port=${_port:-"${mtdaapd_port}"}
+	_dbdir=${_dbdir:-"${mtdaapd_db_dir}"}
+	_mp3dir=${_mp3dir:-"${mtdaapd_mp3_dir}"}
+	_rescaninterval=${_rescaninterval:-"${mtdaapd_rescan_interval}"}
+	_alwaysscan=${_alwaysscan:-"${mtdaapd_always_scan}"}
+	_scantype=${_scantype:-"${mtdaapd_scan_type}"}
+
+	# Set server name. Use product name as default.
+	[ -z "${_servername}" ] && _servername=`get_product_name`
+
+	# Create configuration file.
+	cat <<EOF > ${mtdaapd_config}
+web_root ${mtdaapd_web_root}
+port ${_port}
+admin_pw ${mtdaapd_admin_pw}
+db_dir ${_dbdir}
+mp3_dir ${_mp3dir}
+servername ${_servername}
+runas	${mtdaapd_runas}
+playlist ${mtdaapd_playlist}
+#password ${mtdaapd_password}
+extensions ${mtdaapd_extensions}
+logfile ${mtdaapd_logfile}
+rescan_interval ${_rescaninterval}
+always_scan ${_alwaysscan}
+process_m3u ${mtdaapd_process_m3u}
+scan_type ${_scantype}
+compress ${mtdaapd_compress}
+EOF
 }
 
 load_rc_config "$name"
