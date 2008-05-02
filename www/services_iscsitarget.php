@@ -101,19 +101,22 @@ if ($_GET['act'] == "del") {
 }
 ?>
 <?php include("fbegin.inc");?>
-<form action="services_iscsitarget.php" method="post">
+<form action="services_iscsitarget.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
 	    <td class="tabcont">
 			  <?php if ($savemsg) print_info_box($savemsg);?>
-			  <?php if (file_exists($d_iscsitargetdirty_path)) print_config_change_box();?>
+			  <?php if (file_exists($d_iscsitargetdirty_path)): ?><p>
+			  <?php print_info_box_np(gettext("The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."));?><br>
+			  <input name="apply" type="submit" class="formbtn" id="apply" value="<?=gettext("Apply changes");?>"></p>
+			  <?php endif;?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			    <tr>
 			      <td colspan="2" valign="top" class="optsect_t">
 			        <table border="0" cellspacing="0" cellpadding="0" width="100%">
 							  <tr>
 			            <td class="optsect_s"><strong><?=gettext("iSCSI Target");?></strong></td>
-							    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked";?>"> <strong><?=gettext("Enable");?></strong></td>
+							    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked";?>> <strong><?=gettext("Enable");?></strong></td>
 			          </tr>
 							</table>
 			      </td>
