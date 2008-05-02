@@ -101,7 +101,7 @@ if ($_GET['act'] == "del") {
 }
 ?>
 <?php include("fbegin.inc");?>
-<form action="services_iscsitarget.php" method="post">
+<form action="services_iscsitarget.php" method="post" name="iform" id="iform">
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
 	    <td class="tabcont">
@@ -116,7 +116,7 @@ if ($_GET['act'] == "del") {
 			        <table border="0" cellspacing="0" cellpadding="0" width="100%">
 							  <tr>
 			            <td class="optsect_s"><strong><?=gettext("iSCSI Target");?></strong></td>
-							    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked";?>"> <strong><?=gettext("Enable");?></strong></td>
+							    <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked";?>> <strong><?=gettext("Enable");?></strong></td>
 			          </tr>
 							</table>
 			      </td>
