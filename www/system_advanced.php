@@ -179,7 +179,7 @@ function sysctl_tune($mode) {
 			    <?php html_checkbox("disablebeep", gettext("System Beep"), $pconfig['disablebeep'] ? true : false, gettext("Disable speaker beep on startup and shutdown"));?>
 			    <?php html_checkbox("tune_enable", gettext("Tuning"), $pconfig['tune_enable'] ? true : false, gettext("Enable tuning of some kernel variables"));?>
 					<?php html_checkbox("powerd", gettext("Power Daemon"), $pconfig['powerd'] ? true : false, gettext("Enable the system power control utility"), gettext("The powerd utility monitors the system state and sets various power control options accordingly."));?>			    
-					<?php html_checkbox("zeroconf", gettext("Zeroconf"), $pconfig['zeroconf'] ? true : false, gettext("Enable Zeroconf"));?>
+					<?php html_checkbox("zeroconf", gettext("Zeroconf/Bonjour"), $pconfig['zeroconf'] ? true : false, gettext("Enable Zeroconf/Bonjour to advertise services of this device"));?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">

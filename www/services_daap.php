@@ -133,7 +133,7 @@ function enable_change(enable_change) {
 			  		  </table>
 			      </td>
 					</tr>
-					<?php html_inputbox("servername", gettext("Server name"), $pconfig['servername'], gettext("This is both the name of the server as advertised via rendezvous, and the name of the database exported via DAAP."), true, 20);?>			    
+					<?php html_inputbox("servername", gettext("Server name"), $pconfig['servername'], gettext("This is both the name of the server as advertised via Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."), true, 20);?>			    
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("Port to listen on. It is possible to use a different port. Default iTunes port is 3689."), true, 5);?>
 					<?php html_filechooser("dbdir", gettext("Database directory"), $pconfig['dbdir'], gettext("Location where the content database file will be stored."), "/mnt", true, 60);?>
 					<?php html_filechooser("content", gettext("Content"), $pconfig['content'], gettext("Location of the files to share."), "/mnt", true, 60);?>
@@ -146,6 +146,13 @@ function enable_change(enable_change) {
 			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
 			      </td>
 			    </tr>
+					<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+							<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
+							<?=sprintf(gettext("You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this server to iTunes clients."), "system_advanced.php");?>
+						</td>
+					</tr>
 			  </table>
 			</td>
 		</tr>
