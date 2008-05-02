@@ -118,6 +118,7 @@ function enable_change(enable_change) {
 					<li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("S.M.A.R.T.");?></a></li>
 					<li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
 					<li class="tabinact"><a href="diag_logs_upnp.php"><?=gettext("UPnP");?></a></li>
+					<li class="tabinact"><a href="diag_logs_daap.php"><?=gettext("DAAP");?></a></li>
 					<li class="tabact"><a href="diag_logs_settings.php" title="<?=gettext("Reload page");?>"><?=gettext("Settings");?></a></li>
 				</ul>
 			</td>

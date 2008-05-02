@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	diag_logs_upnp.php
+	diag_logs_daap.php
 	Copyright © 2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
@@ -33,17 +33,17 @@
 require("guiconfig.inc");
 require("diag_logs.inc");
 
-$pgtitle = array(gettext("Diagnostics"), gettext("Logs"), gettext("UPnP"));
+$pgtitle = array(gettext("Diagnostics"), gettext("Logs"), gettext("DAAP"));
 
 $nentries = $config['syslogd']['nentries'];
 if (!$nentries)
 	$nentries = 50;
 
-$logfile = "/var/log/fuppes.log";
+$logfile = "/var/log/mt-daapd.log";
 
 if ($_POST['clear']) {
 	exec("/bin/cat /dev/null > {$logfile}");
-	header("Location: diag_logs_upnp.php");
+	header("Location: diag_logs_daap.php");
 	exit;
 }
 ?>
@@ -58,8 +58,8 @@ if ($_POST['clear']) {
 			  <li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSH");?></a></li>
 			  <li class="tabinact"><a href="diag_logs_smartd.php"><?=gettext("S.M.A.R.T.");?></a></li>
 				<li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
-			  <li class="tabact"><a href="diag_logs_upnp.php" title="<?=gettext("Reload page");?>"><?=gettext("UPnP");?></a></li>
-			  <li class="tabinact"><a href="diag_logs_daap.php"><?=gettext("DAAP");?></a></li>
+				<li class="tabinact"><a href="diag_logs_upnp.php"><?=gettext("UPnP");?></a></li>
+			  <li class="tabact"><a href="diag_logs_daap.php" title="<?=gettext("Reload page");?>"><?=gettext("DAAP");?></a></li>
 			  <li class="tabinact"><a href="diag_logs_settings.php"><?=gettext("Settings");?></a></li>
 			</ul>
   	</td>
@@ -69,7 +69,7 @@ if ($_POST['clear']) {
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			  <tr>
 					<td colspan="2" class="listtopic">
-						<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("UPnP"));?>
+						<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("DAAP"));?>
 					</td>
 			  </tr>
 			  <?php logs_dump_ex($logfile, $nentries, 1, false);?>
