@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2006-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 #
 # Service types definition: http://www.dns-sd.org/ServiceTypes.html
@@ -41,7 +41,7 @@ create_conf()
 # For types: http://www.dns-sd.org/ServiceTypes.html" > ${mdnsresponder_config}
 
 	/usr/local/bin/xml sel -t \
-		-v "concat(//system/hostname,' WebAdmin Service')" -n \
+		-v "//system/hostname" -n \
 		-i "//system/webgui/protocol[. = 'https']" \
 			-o "_https._tcp. local." -n \
 			-i "string-length(//system/webgui/port) > 0" -v "//system/webgui/port" -n -b \
@@ -55,38 +55,38 @@ create_conf()
 		-o "path=/index.php" -n \
 		-n \
 		-i "count(//afp/enable) > 0" \
-			-v "concat(//system/hostname,' AFP Service')" -n \
+			-v "//system/hostname" -n \
 			-o "_afpovertcp._tcp. local." -n \
 			-o "548" -n \
 			-n \
 		-b \
 		-i "count(//rsyncd/enable) > 0" \
-			-v "concat(//system/hostname,' RSYNC Service')" -n \
+			-v "//system/hostname" -n \
 			-o "_rsync._tcp. local." -n \
 			-v "//rsyncd/port" -n \
 			-n \
 		-b \
 		-i "count(//sshd/enable) > 0" \
-			-v "concat(//system/hostname,' SSH Service')" -n \
+			-v "//system/hostname" -n \
 			-o "_ssh._tcp. local." -n \
 			-v "//sshd/port" -n \
 			-n \
 		-b \
 		-i "count(//ftpd/enable) > 0" \
-			-v "concat(//system/hostname,' FTP Service')" -n \
+			-v "//system/hostname" -n \
 			-o "_ftp._tcp. local." -n \
 			-v "//ftpd/port" -n \
 			-n \
 		-b \
 		-i "count(//samba/enable) > 0" \
-			-v "concat(//system/hostname,' SMB Service')" -n \
+			-v "//system/hostname" -n \
 			-o "_smb._tcp. local." -n \
 			-o "139" -n \
 			-n \
 		-b \
 		-i "count(//nfsd/enable) > 0" \
 			-m "//nfsd/share" \
-				-v "concat(//system/hostname,' NFS Service')" -n \
+				-v "//system/hostname" -n \
 				-o "_nfs._tcp. local." -n \
 				-o "2049" -n \
 				-v "concat('path=',path)" -n \
@@ -94,10 +94,17 @@ create_conf()
 			-b \
 		-b \
 		-i "count(//upnp/enable) > 0" \
-			-v "concat(//system/hostname,' UPnP Service')" -n \
+			-v "//upnp/name" -n \
 			-o "_upnp._tcp. local." -n \
-			-i "string-length(//upnp/port) > 0" -v "//upnp/port" -b \
-			-i "string-length(//upnp/port) = 0" -o "49152" -b \
+			-i "string-length(//upnp/port) > 0" -v "//upnp/port" -n -b \
+			-i "string-length(//upnp/port) = 0" -o "49152" -n -b \
+			-n \
+		-b \
+		-i "count(//daap/enable) > 0" \
+			-v "//daap/servername" -n \
+			-o "_daap._tcp. local." -n \
+			-v "//daap/port" -n \
+			-n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc >> ${mdnsresponder_config}
 }
