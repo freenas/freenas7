@@ -26,12 +26,13 @@ PATCHFILES+=				mt-daapd-0.2.4.1-cp932.patch
 PATCH_DIST_STRIP+=	-p1
 
 do-install:
-	-@${MKDIR} ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
+	-@${MKDIR} ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}.sh
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.playlist ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 
+	-@${MKDIR} ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
 	@${CP} -Rpv ${WRKSRC}/admin-root/ ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
 
 .include <bsd.port.mk>
