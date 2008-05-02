@@ -39,7 +39,7 @@ mtdaapd_process_m3u=${mtdaapd_process_m3u:-"0"}
 pidfile="/var/run/mt-daapd.pid"
 
 command="/usr/local/sbin/mt-daapd"
-command_args="-c ${mtdaapd_config}"
+command_args="-m -c ${mtdaapd_config}"
 
 start_precmd()
 {
