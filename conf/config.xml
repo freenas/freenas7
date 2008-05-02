@@ -384,6 +384,18 @@
 		-->
 		<profile>default</profile>
 	</upnp>
+	<daap>
+		<!--
+		<enable/>
+		<servername>xxx</servername>
+		<alwaysscan/>
+		-->
+		<port>3689</port>
+		<rescaninterval>0</rescaninterval>
+		<scantype>0</scantype>
+		<content></content>
+		<dbdir></dbdir>
+	</daap>
   <sshd>
 		<!-- <enable/> -->
 		<port>22</port>
