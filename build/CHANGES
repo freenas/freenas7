@@ -51,6 +51,7 @@ Majors changes:
 - Upgrade unison to 2.27.57.
 - Upgrade fusefs-ntfs/ntfs-3g to 1.2412.
 - Upgrade e2fsprogs to 1.40.9.
+- Upgrade PHP to 5.2.6.
 - Use SAJAX to update misc WebGUI pages every 5 seconds to display current states
   (e.g. 'Status/System', 'Status/Processes' or 'Disks/Format').
 - Refactor complete S.M.A.R.T. WebGUI + services.
