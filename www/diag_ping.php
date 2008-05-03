@@ -42,6 +42,7 @@ if ($_POST) {
 	// Input validation.
 	$reqdfields = explode(" ", "host count");
 	$reqdfieldsn = array(gettext("Host"), gettext("Count"));
+
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (!$input_errors) {
@@ -67,7 +68,7 @@ function get_interface_addr($ifdescr) {
 	return get_ipaddr($if);
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
@@ -82,10 +83,10 @@ function get_interface_addr($ifdescr) {
 			<form action="diag_ping.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_inputbox("host", gettext("Host"), $host, gettext(""), true, 20);?>
-					<?php html_interfacecombobox("interface", gettext("Interface"), $interface, gettext(""), true);?>
+					<?php html_inputbox("host", gettext("Host"), $host, gettext("Destination host name or IP number."), true, 20);?>
+					<?php html_interfacecombobox("interface", gettext("Interface"), $interface, gettext("Use the following IP address as the source address in outgoing packets."), true);?>
 					<?php $a_count = array(); for ($i = 1; $i <= 10; $i++) { $a_count[$i] = $i; }?>
-					<?php html_combobox("count", gettext("Count"), $count, $a_count, gettext(""), true);?>
+					<?php html_combobox("count", gettext("Count"), $count, $a_count, gettext("Stop after sending (and receiving) N packets."), true);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
