@@ -32,21 +32,15 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Diagnostics"), gettext("Traceroute"));
 
-define('MAX_TTL', 64);
-define('DEFAULT_TTL', 18);
-
 if ($_POST) {
 	unset($input_errors);
 	unset($do_traceroute);
 
-	/* input validation */
+	// Input validation.
 	$reqdfields = explode(" ", "host ttl");
-	$reqdfieldsn = explode(",", "Host,ttl");
-	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	$reqdfieldsn = array(gettext("Host"), gettext("Max. TTL"));
 
-	if (($_POST['ttl'] < 1) || ($_POST['ttl'] > MAX_TTL)) {
-		$input_errors[] = "Maximum number of hops must be between 1 and {MAX_TTL}";
-	}
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (!$input_errors) {
 		$do_traceroute = true;
@@ -55,69 +49,54 @@ if ($_POST) {
 		$resolve = $_POST['resolve'];
 	}
 }
+
 if (!isset($do_traceroute)) {
 	$do_traceroute = false;
 	$host = '';
-	$ttl = DEFAULT_TTL;
+	$ttl = 18;
 	$resolve = false;
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
+	<tr>
 		<td class="tabnavtbl">
-		  <ul id="tabnav">
+			<ul id="tabnav">
 				<li class="tabinact"><a href="diag_ping.php"><?=gettext("Ping");?></a></li>
 				<li class="tabact"><a href="diag_traceroute.php" title="<?=gettext("Reload page");?>"><?=gettext("Traceroute");?></a></li>
-		  </ul>
-	  </td>
+			</ul>
+		</td>
 	</tr>
-  <tr> 
-    <td class="tabcont">
-<?php if ($input_errors) print_input_errors($input_errors); ?>
+	<tr>
+		<td class="tabcont">
 			<form action="diag_traceroute.php" method="post" name="iform" id="iform">
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-        <tr>
-				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Host");?></td>
-				  <td width="78%" class="vtable"> 
-            <input name="host" type="text" class="formfld" id="host" size="20" value="<?=htmlspecialchars($host);?>">
-					</td>
-				</tr>
-				<tr>
-				  <td width="22%" valign="top" class="vncellreq"><?=gettext("Maximum number of hops");?></td>
-				  <td width="78%" class="vtable">
-					<select name="ttl" class="formfld" id="ttl">
-					<?php for ($i = 1; $i <= MAX_TTL; $i++): ?>
-					<option value="<?=$i;?>" <?php if ($i == $ttl) echo "selected"; ?>><?=$i;?></option>
-					<?php endfor; ?>
-					</select></td>
-				</tr>
-				  <tr> 
-					<td valign="top" class="vtable">&nbsp;</td>
-					<td class="vtable"> <input name="resolve" type="checkbox" id="resolve" value="yes" <?php if ($resolve) echo "checked"; ?>>
-					  <strong><?=gettext("Resolve IP addresses to hostnames");?></strong><br>
-					</td>
-				  </tr>
-				<tr>
-				  <td width="22%" valign="top">&nbsp;</td>
-				  <td width="78%"> 
-						<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Traceroute");?>">
-					</td>
-				</tr>
-				<tr>
-				<td valign="top" colspan="2">
-				<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.");?></p>
-				<? if ($do_traceroute) {
-					echo("<br><strong>".gettext("Traceroute output").":</strong><br>");
-					echo('<pre>');
-					ob_end_flush();
-					system("/usr/sbin/traceroute " . ($resolve ? "" : "-n ") . "-w 2 -m " . escapeshellarg($ttl) . " " . escapeshellarg($host));
-					echo('</pre>');
-				}
-				?>
-				</td>
-				</tr>
-			</table>
-</form>
-</td></tr></table>
-<?php include("fend.inc"); ?>
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_inputbox("host", gettext("Host"), $host, gettext("Destination host name or IP number."), true, 20);?>
+					<?php $a_ttl = array(); for ($i = 1; $i <= 64; $i++) { $a_ttl[$i] = $i; }?>
+					<?php html_combobox("ttl", gettext("Max. TTL"), $ttl, $a_ttl, gettext("Max. time-to-live (max. number of hops) used in outgoing probe packets."), true);?>
+					<?php html_checkbox("resolve", gettext("Resolve"), $resolve ? true : false, gettext("Resolve IP addresses to hostnames"), gettext(""), false);?>
+					<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Traceroute");?>">
+						</td>
+					</tr>
+					<tr>
+						<td valign="top" colspan="2">
+							<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.");?></p>
+							<? if ($do_traceroute) {
+								echo('<pre>');
+								ob_end_flush();
+								system("/usr/sbin/traceroute " . ($resolve ? "" : "-n ") . "-w 2 -m " . escapeshellarg($ttl) . " " . escapeshellarg($host));
+								echo('</pre>');
+							}
+							?>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</td>
+	</tr>
+</table>
+<?php include("fend.inc");?>

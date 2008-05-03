@@ -58,7 +58,7 @@ $resolve = isset($config['syslogd']['resolve']);
 $fp = @fopen("{$g['vardb_path']}/dhcpd.leases","r");
 if ($fp) {
 	$return = array();
-	
+
 	while ($line = fgets($fp)) {
 		$matches = "";
 
@@ -73,10 +73,10 @@ if ($fp) {
 			$line = "";
 			continue;
 		}
-	
+
 		if (preg_match("/(.*)#(.*)/", $line, $matches))
 			$line = $matches[0];
-	
+
 		// Tokenize lines
 		do {
 			if (preg_match("/^\s*\"([^\"]*)\"(.*)$/", $line, $matches)) {
@@ -90,17 +90,17 @@ if ($fp) {
 				$return[] = array($matches[1], 0);
 			} else
 				break;
-	
+
 		} while($line);
-	
+
 		$lines++;
 	}
-	
+
 	fclose($fp);
-	
+
 	$leases = array();
 	$i = 0;
-	
+
 	// Put everything together again
 	while ($data = array_shift($return)) {
 		if ($data[0] == "next") {
@@ -141,24 +141,24 @@ if ($fp) {
 		} else if (($data[0] == "}") && ($data[1] == 1))		// End of group
 			$i++;
 	}
-	
+
 	// Put this in an easy to use form
 	$dhcpmac = array();
 	$dhcpip = array();
-	
+
 	foreach ($leases as $value) {
-		$dhcpmac[$value['mac']] = $value['hostname'];	
-		$dhcpip[$value['ip']] = $value['hostname'];	
+		$dhcpmac[$value['mac']] = $value['hostname'];
+		$dhcpip[$value['ip']] = $value['hostname'];
 	}
-	
+
 	unset($data);
 }
 
 exec("/usr/sbin/arp -an",$rawdata);
 
-$i = 0; 
+$i = 0;
 $ifdescrs = array('lan' => 'LAN');
-						
+
 for ($j = 1; isset($config['interfaces']['opt' . $j]); $j++) {
 	$ifdescrs['opt' . $j] = $config['interfaces']['opt' . $j]['descr'];
 }
@@ -170,7 +170,7 @@ foreach ($ifdescrs as $key => $interface) {
 $data = array();
 foreach ($rawdata as $line) {
 	$elements = explode(' ',$line);
-	
+
 	if ($elements[3] != "(incomplete)") {
 		$arpent = array();
 		$arpent['ip'] = trim(str_replace(array('(',')'),'',$elements[1]));
@@ -182,12 +182,12 @@ foreach ($rawdata as $line) {
 
 function getHostName($mac, $ip) {
 	global $dhcpmac, $dhcpip, $resolve;
-	
+
 	if ($dhcpmac[$mac])
 		return $dhcpmac[$mac];
 	else if ($dhcpip[$ip])
 		return $dhcpip[$ip];
-	else if ($resolve) 
+	else if ($resolve)
 		return get_hostbyaddr($ip);
 	else
 		return "&nbsp;";
@@ -214,16 +214,16 @@ function getHostName($mac, $ip) {
 			    <td valign="middle" nowrap class="list"><a href="diag_arp.php?act=del&id=<?=$entry['ip'];?>"><img src="x.gif" title="<?=gettext("Delete ARP entry");?>" width="17" height="17" border="0"></a></td>
 			  </tr>
 			  <?php $i++; endforeach; ?>
-			  <tr> 
+			  <tr>
 			    <td></td>
-			  </tr> 
-			  <tr> 
+			  </tr>
+			  <tr>
 			    <td class="list" colspan="4"></td>
 			    <td class="list"><a href="diag_arp.php?act=del"><img src="x.gif" title="<?=gettext("Remove all entries from ARP table");?>" width="17" height="17" border="0"></a></td>
 			  </tr>
 			  <tr>
 			    <td colspan="4">
-			      <span class="vexpl"><span class="red"><strong><?=gettext("Hint");?>:<br></strong></span><?php echo sprintf(gettext("IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."), "diag_logs_settings.php", gettext("Diagnostics").":".gettext("Logs"));?></span>
+			      <span class="vexpl"><span class="red"><strong><?=gettext("Hint");?>:<br></strong></span><?php echo sprintf(gettext("IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."), "diag_logs_settings.php");?></span>
 			    </td>
 			  </tr>
 			</table>
