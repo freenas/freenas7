@@ -382,7 +382,7 @@ class HTMLComboBox extends HTMLBaseControlJS {
 		echo "    <select name='{$ctrlname}' class='formfld' id='{$ctrlname}' {$param}>\n";
 		foreach ($options as $optionk => $optionv) {
 			$optparam = "";
-			if ($value === $optionk)
+			if ($value == $optionk)
 				$optparam .= "selected ";
 			echo "      <option value='{$optionk}' {$optparam}>{$optionv}</option>\n";
 		}
@@ -454,6 +454,27 @@ class HTMLLanguageComboBox extends HTMLComboBox {
 		$options = array();
 		foreach ($g_languages as $languagek => $languagev) {
 			$options[$languagek] = gettext($languagev['desc']);
+		}
+
+		$this->SetOptions($options);
+	}
+}
+
+class HTMLInterfaceComboBox extends HTMLComboBox {
+	function HTMLInterfaceComboBox($ctrlname, $title, $value, $description) {
+		global $config;
+
+		$this->SetCtrlName($ctrlname);
+		$this->SetTitle($title);
+		$this->SetDescription($description);
+		$this->SetValue($value);
+
+		// Generate options.
+		$options = array('lan' => 'LAN');
+		for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
+			if (isset($config['interfaces']['opt' . $i]['enable']) && !$config['interfaces']['opt' . $i]['bridge']) {
+				$options['opt' . $i] = $config['interfaces']['opt' . $i]['descr'];
+			}
 		}
 
 		$this->SetOptions($options);

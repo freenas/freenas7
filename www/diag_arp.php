@@ -180,8 +180,7 @@ foreach ($rawdata as $line) {
 	}
 }
 
-function getHostName($mac,$ip)
-{
+function getHostName($mac, $ip) {
 	global $dhcpmac, $dhcpip, $resolve;
 	
 	if ($dhcpmac[$mac])
@@ -189,7 +188,7 @@ function getHostName($mac,$ip)
 	else if ($dhcpip[$ip])
 		return $dhcpip[$ip];
 	else if ($resolve) 
-		return gethostbyaddr($ip);
+		return get_hostbyaddr($ip);
 	else
 		return "&nbsp;";
 }
