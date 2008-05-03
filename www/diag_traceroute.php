@@ -86,6 +86,7 @@ if (!isset($do_traceroute)) {
 						<td valign="top" colspan="2">
 							<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?=gettext("Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes.");?></p>
 							<? if ($do_traceroute) {
+								echo("<strong>" . gettext("Command output:") . "</strong>");
 								echo('<pre>');
 								ob_end_flush();
 								system("/usr/sbin/traceroute " . ($resolve ? "" : "-n ") . "-w 2 -m " . escapeshellarg($ttl) . " " . escapeshellarg($host));
