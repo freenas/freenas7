@@ -65,7 +65,7 @@ Majors changes:
   useful to overwrite options used by various generic startup scripts.
 - Added 'System: Advanced: sysctl.conf' WebGUI to add additional MIB's to /etc/sysctl.conf.
   Thanks to Nelson Silva (nsilva@hotlap.org).
-- Added DAAP server.
+- Added DAAP server to support iTunes.
 
 Minors changes:
 - Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.
