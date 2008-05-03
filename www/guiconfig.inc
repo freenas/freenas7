@@ -364,6 +364,13 @@ function html_languagecombobox($ctrlname, $title, $value, $desc, $required = fal
 	$ctrl->Render();
 }
 
+function html_interfacecombobox($ctrlname, $title, $value, $desc, $required = false, $readonly = false) {
+	$ctrl = new HTMLInterfaceComboBox($ctrlname, $title, $value, $desc);
+	$ctrl->SetRequired($required);
+	$ctrl->SetReadOnly($readonly);
+	$ctrl->Render();
+}
+
 function html_checkbox($ctrlname, $title, $checked, $caption = "", $desc = "", $required = false, $onclick = "") {
 	$ctrl = new HTMLCheckBox($ctrlname, $title, $checked, $caption, $desc);
 	$ctrl->SetRequired($required);

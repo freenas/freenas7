@@ -1935,4 +1935,14 @@ function decode_size($bytes) {
 	for ($i = 0; $bytes >= 1024 && $i < (count($types) - 1); $bytes /= 1024, $i++);
 	return (round($bytes, 2) . $types[$i]);
 }
+
+// Get the Internet host name corresponding to a given IP address.
+// Returns the host name or the unmodified ip_address  on failure.
+function get_hostbyaddr($ip_address) {
+	exec("/usr/bin/host {$ip_address}", $rawdata);
+	if (preg_match("/^Name: (\S+)/", $rawdata[0], $matches)) {
+		return $matches[1];
+	}
+	return $ip_address;
+}
 ?>

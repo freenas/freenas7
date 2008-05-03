@@ -74,6 +74,7 @@ Minors changes:
 
 Bug fixes:
 - Add new parameter to AFP share WebGUI to define path where to store .AppleDB files for AFP shares (BR 1932519). Thanks to Djuri Baars.
+- ARP table hangs on resolve IP (BR 1940373). Thanks to Azguy987.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
