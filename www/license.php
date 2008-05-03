@@ -43,7 +43,7 @@ $pgtitle = array(gettext("License"));
             <hr size="1">
             <p>The following persons have contributed to FreeNAS code:</p>
              <p>Volker Theile (<a href="mailto:votdev@gmx.de">votdev@gmx.de</a>)<br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">FreeNAS developer team member</font></em><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">FreeNAS developer and team leader</font></em><br>
              <p>Stefan Hendricks (<a href="mailto:info@henmedia.de">info@henmedia.de</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Added some system information and processes page</font></em><br>
              <p>Mat Murdock (<a href="mailto:mmurdock@kimballequipment.com">mmurdock@kimballequipment.com</a>)<br>
@@ -97,7 +97,7 @@ $pgtitle = array(gettext("License"));
              	  <hr size="1">
       <p>FreeNAS is based upon/includes various free software packages, listed 
         below.<br>
-        The author of FreeNAS would like to thank the authors of these software 
+        The authors of FreeNAS would like to thank the authors of these software 
         packages for their efforts.</p>
       <p>FreeBSD (<a href="http://www.freebsd.org" target="_blank">http://www.freebsd.org</a>)<br>
         Copyright &copy; 1995-2007 The FreeBSD Project. All rights reserved.</p>
