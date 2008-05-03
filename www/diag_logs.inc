@@ -2,7 +2,7 @@
 /*
 	diag_logs.inc
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-LabbÃ© <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -30,6 +30,45 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+$logmenu['system'] = array("desc" => gettext("System"), "link" => "diag_logs.php");
+$logmenu['ftp'] = array("desc" => gettext("FTP"), "link" => "diag_logs_ftp.php");
+$logmenu['rsync'] = array("desc" => gettext("RSYNC"), "link" => "diag_logs_rsyncd.php", "childs" => array(
+	"server" => array("desc" => gettext("Server"), "link" => "diag_logs_rsyncd.php"),
+	"client" => array("desc" => gettext("Client"), "link" => "diag_logs_rsync_client.php"),
+	"local"  => array("desc" => gettext("Local"),  "link" => "diag_logs_rsync_local.php")));
+$logmenu['ssh'] = array("desc" => gettext("SSH"), "link" => "diag_logs_sshd.php");
+$logmenu['smart'] = array("desc" => gettext("S.M.A.R.T."), "link" => "diag_logs_smartd.php");
+$logmenu['daemon'] = array("desc" => gettext("Daemon"), "link" => "diag_logs_daemon.php");
+$logmenu['upnp'] = array("desc" => gettext("UPnP"), "link" => "diag_logs_upnp.php");
+$logmenu['daap'] = array("desc" => gettext("DAAP"), "link" => "diag_logs_daap.php");
+$logmenu['settings'] = array("desc" => gettext("Settings"), "link" => "diag_logs_settings.php");
+
+function logs_display_menu($key, $menu) {
+	$key = explode(".", $key);
+
+	echo "<tr>\n";
+	echo "  <td class='tabnavtbl'>\n";
+	echo "   <ul id='tabnav'>\n";
+	foreach ($menu as $menuk => $menuv) {
+		$class = "tabinact";
+		if ($key[0] === $menuk) {
+			$class = "tabact";
+		}
+		echo "     <li class='{$class}'><a href='{$menuv['link']}'>{$menuv['desc']}</a></li>\n";
+	}
+	echo "    </ul>\n";
+	echo "  </td>\n";
+	echo "</tr>\n";
+
+	# Display sub menu.
+	if (1 < count($key)) {
+		$menu = $menu[$key[0]]['childs'];
+		array_shift($key);
+		$key = implode(".", $key);
+		logs_display_menu($key, $menu);
+	}
+}
+
 function logs_get_contents($logfile, $entries, $mode) {
 	global $config;
 

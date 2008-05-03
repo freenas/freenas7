@@ -50,19 +50,7 @@ if ($_POST['clear'])
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr><td class="tabnavtbl">
-  <ul id="tabnav">
-    <li class="tabinact"><a href="diag_logs.php"><?=gettext("System");?></a></li>
-    <li class="tabinact"><a href="diag_logs_ftp.php"><?=gettext("FTP");?></a></li>
-    <li class="tabinact"><a href="diag_logs_rsyncd.php"><?=gettext("RSYNC");?></a></li>
-    <li class="tabinact"><a href="diag_logs_sshd.php"><?=gettext("SSH");?></a></li>
-    <li class="tabact"><a href="diag_logs_smartd.php" title="<?=gettext("Reload page");?>"><?=gettext("S.M.A.R.T.");?></a></li>
-    <li class="tabinact"><a href="diag_logs_daemon.php"><?=gettext("Daemon");?></a></li>
-		<li class="tabinact"><a href="diag_logs_upnp.php"><?=gettext("UPnP");?></a></li>
-		<li class="tabinact"><a href="diag_logs_daap.php"><?=gettext("DAAP");?></a></li>
-    <li class="tabinact"><a href="diag_logs_settings.php"><?=gettext("Settings");?></a></li>
-  </ul>
-  </td></tr>
+	<?php logs_display_menu("smart", $logmenu);?>
   <tr>
         <td class="tabcont">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
