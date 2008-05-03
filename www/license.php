@@ -3,7 +3,7 @@
 require("guiconfig.inc");
 $pgtitle = array(gettext("License")); 
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
             <p><strong>FreeNAS is Copyright &copy; 2005-2008 by Olivier Cochard-Labbe 
               (<a href="mailto:olivier@freenas.org">olivier@freenas.org</a>).<br>
               All rights reserved.</strong></p>
@@ -127,7 +127,7 @@ $pgtitle = array(gettext("License"));
        <p> Apple Bonjour (<a href="http://developer.apple.com/networking/bonjour" target="_blank">http://developer.apple.com/networking/bonjour</a>)<br>
         Apple Public Source License.</p>
      
-      <p> Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd/" target="_blank">http://software.wwwi.com/syslogd</a>)<br>
+      <p> Circular log support for FreeBSD syslogd (<a href="http://software.wwwi.com/syslogd" target="_blank">http://software.wwwi.com/syslogd</a>)<br>
         Copyright &copy; 2001 Jeff Wheelhouse (jdw@wheelhouse.org)</p>
      
       <p>msntp (<a href="http://www.hpcf.cam.ac.uk/export" target="_blank">http://www.hpcf.cam.ac.uk/export</a>)<br>
@@ -149,9 +149,12 @@ $pgtitle = array(gettext("License"));
     <p>dp.SyntaxHighlighter (<a href="http://code.google.com/p/syntaxhighlighter" target="_blank">http://code.google.com/p/syntaxhighlighter</a>)<br>
       Copyright &copy; 2004-2007 Alex Gorbatchev. All rights reserved.</p>    
 
-    <p>MediaTomb UPnP A/V MediaServer (<a href="http://mediatomb.cc" target="_blank">http://mediatomb.cc</a>)<br>
-      Copyright &copy; 2005-2007 Gena Batyan, Sergey Bostandzhyan and Leonhard Wimmer.</p>
-	  
+    <p>FUPPES - Free UPnP Entertainment Service (<a href="http://fuppes.ulrich-voelkel.de" target="_blank">http://fuppes.ulrich-voelkel.de</a>)<br>
+      Copyright &copy; 2005 - 2007 Ulrich V&ouml;lkel (u-voelkel@users.sourceforge.net).</p>
+
+		<p>mt-daapd - Multithread daapd Apple iTunes server (<a href="http://www.fireflymediaserver.org" target="_blank">http://www.fireflymediaserver.org</a>)<br>
+      Copyright &copy; 2003 Ron Pedde (ron@pedde.com).</p>
+
 	 <p>NTFS-3G driver (<a href="http://www.ntfs-3g.org" target="_blank">http://www.ntfs-3g.org/</a>)<br>
       from Szabolcs Szakacsits.</p>
 	  
@@ -176,7 +179,10 @@ $pgtitle = array(gettext("License"));
 			All rights reserved.</p>
 
 		<p>cdialog - Display simple dialog boxes from shell scripts (<a href="http://invisible-island.net/dialog" target="_blank">http://invisible-island.net/dialog</a>)<br>
-      Copyright &copy; 2000-2006,2007 Thomas E. Dickey.</p>
+      Copyright &copy; 2000-2006, 2007 Thomas E. Dickey.</p>
+
+		<p>host - An utility to query DNS servers<br>
+      Rewritten by Eric Wassenaar, Nikhef-H, (e07@nikhef.nl).</p>
 
 		<p>Nifty Corners Cube - Rounded corners with CSS and Javascript (<a href="http://www.html.it/articoli/niftycube/index.html" target="_blank">http://www.html.it/articoli/niftycube/index.html</a>)<br>
       Copyright &copy; 2006 Alessandro Fulciniti (a.fulciniti@html.it).</p>
@@ -185,4 +191,4 @@ $pgtitle = array(gettext("License"));
 	  Copyright &copy; 2004, 2005, 2006 Scott Ullrich. All rights reserved.
     </p>
 		<p>Some of the software used are under the <a href="gpl-license.txt">GNU General Public License (GPL)</a>, <a href="lgpl-license.txt">GNU Lesser General Public License (LGPL)</a>, <a href="apple-license.txt">Apple Public Source License</a> and <a href="php-license.txt">PHP License</a>.</p>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
