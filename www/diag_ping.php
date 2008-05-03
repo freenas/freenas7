@@ -96,6 +96,7 @@ function get_interface_addr($ifdescr) {
 					<tr>
 						<td valign="top" colspan="2">
 							<? if ($do_ping) {
+								echo("<strong>" . gettext("Command output:") . "</strong>");
 								echo('<pre>');
 								ob_end_flush();
 								$ifaddr = get_interface_addr($interface);
