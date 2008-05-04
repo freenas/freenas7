@@ -47,9 +47,9 @@ mtdaapd_ignore_dotfiles=${mtdaapd_ignore_dotfiles:-"1"}
 mtdaapd_concat_compilations=${mtdaapd_concat_compilations:-"0"}
 mtdaapd_follow_symlinks=${mtdaapd_follow_symlinks:-"1"}
 mtdaapd_skip_first=${mtdaapd_skip_first:-"0"}
-mtdaapd_process_playlists=${mtdaapd_process_playlists:-"0"}
-mtdaapd_process_m3u=${mtdaapd_process_m3u:-"0"}
-mtdaapd_process_itunes=${mtdaapd_process_itunes:-"0"}
+mtdaapd_process_playlists=${mtdaapd_process_playlists:-"1"}
+mtdaapd_process_m3u=${mtdaapd_process_m3u:-"1"}
+mtdaapd_process_itunes=${mtdaapd_process_itunes:-"1"}
 # 'DAAP' section
 mtdaapd_correct_order=${mtdaapd_correct_order:-"1"}
 # 'Plugins' section
