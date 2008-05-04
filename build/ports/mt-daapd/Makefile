@@ -1,5 +1,5 @@
 PORTNAME=						mt-daapd
-PORTVERSION=				1671
+PORTVERSION=				1586
 CATEGORIES=					audio
 COMMENT=						Multithread daapd yet another server for Apple iTunes
 MAINTAINER=					votdev@gmx.de
@@ -20,19 +20,19 @@ CONFIGURE_ENV=			CFLAGS="${CFLAGS} ${PTHREAD_CFLAGS}" \
 CONFIGURE_TARGET=		--build=${MACHINE_ARCH}-portbld-freebsd${OSREL}
 CONFIGURE_ARGS=			--disable-gdbm \
 										--enable-sqlite3 \
-										--enable-upnp \
-										--enable-iconv \
-										--enable-ssl \
 										--with-id3tag=${PREFIX}
 
 do-install:
 	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
+	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
+	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
 
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}.sh
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/out-daap.so ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/plugins/.libs/rsp.so ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/plugins
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.playlist ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}.sh
 
-	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
 	@${CP} -Rpv ${WRKSRC}/admin-root/ ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
 
 .include <bsd.port.mk>

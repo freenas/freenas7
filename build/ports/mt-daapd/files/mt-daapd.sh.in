@@ -31,7 +31,6 @@ mtdaapd_logfile=${mtdaapd_logfile:-"/var/log/mt-daapd.log"}
 mtdaapd_runas=${mtdaapd_runas:-"root"}
 mtdaapd_admin_pw=${mtdaapd_admin_pw:-"mt-daapd"}
 mtdaapd_password=${mtdaapd_password:-""}
-mtdaapd_compress=${mtdaapd_compress:-"0"}
 mtdaapd_truncate=${mtdaapd_truncate:-"0"}
 mtdaapd_mp3_dir=${mtdaapd_mp3_dir:-"/mnt"}
 mtdaapd_extensions=${mtdaapd_extensions:-".mp3,.m4a,.m4p"}
@@ -51,8 +50,10 @@ mtdaapd_skip_first=${mtdaapd_skip_first:-"0"}
 mtdaapd_process_playlists=${mtdaapd_process_playlists:-"0"}
 mtdaapd_process_m3u=${mtdaapd_process_m3u:-"0"}
 mtdaapd_process_itunes=${mtdaapd_process_itunes:-"0"}
-# 'Scan' section
+# 'DAAP' section
 mtdaapd_correct_order=${mtdaapd_correct_order:-"0"}
+# 'Plugins' section
+mtdaapd_plugin_dir=${mtdaapd_plugin_dir:-"/usr/local/share/mt-daapd/plugins"}
 
 command="/usr/local/sbin/mt-daapd"
 command_args="-m -c ${mtdaapd_config}"
@@ -104,7 +105,6 @@ EOF
 	fi
 
 	cat <<EOF >> ${mtdaapd_config}
-compress = ${mtdaapd_compress}
 truncate = ${mtdaapd_truncate}
 mp3_dir = ${_mp3dir}
 extensions = ${mtdaapd_extensions}
@@ -116,6 +116,7 @@ rescan_interval = ${_rescaninterval}
 always_scan = ${_alwaysscan}
 
 [plugins]
+plugin_dir = ${mtdaapd_plugin_dir}
 
 [scanning]
 case_sensitive = ${mtdaapd_case_sensitive}
@@ -128,7 +129,7 @@ process_playlists = ${mtdaapd_process_playlists}
 process_m3u = ${mtdaapd_process_m3u}
 process_itunes = ${mtdaapd_process_itunes}
 
-[scan]
+[daap]
 correct_order = ${mtdaapd_correct_order}
 EOF
 }
