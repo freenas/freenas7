@@ -50,20 +50,20 @@ if ($_POST['clear']) {
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<?php logs_display_menu("daap", $logmenu);?>
-  <tr>
+	<tr>
 		<td class="tabcont">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-			  <tr>
+				<tr>
 					<td colspan="2" class="listtopic">
 						<?php echo sprintf(gettext("Last %d %s log entries"), $nentries, gettext("DAAP"));?>
 					</td>
-			  </tr>
-			  <?php logs_dump_ex($logfile, $nentries, 1, false);?>
+				</tr>
+				<?php logs_dump_ex($logfile, $nentries, 1, false);?>
 			</table><br/>
-			<form action="diag_logs_upnp.php" method="post">
+			<form action="diag_logs_daap.php" method="post">
 				<input name="clear" type="submit" class="formbtn" value="<?=gettext("Clear log");?>">
 			</form>
 		</td>
-  </tr>
+	</tr>
 </table>
 <?php include("fend.inc");?>
