@@ -26,8 +26,11 @@ CONFIGURE_ARGS=			--disable-gdbm \
 										--with-id3tag=${PREFIX}
 
 do-install:
+	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
+
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/src/${PORTNAME} ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.sh.in ${FREENAS_ROOTFS}/etc/rc.d/${PORTNAME}.sh
+	@${INSTALL_SCRIPT} -v ${FILESDIR}/${PORTNAME}.playlist ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}
 
 	-@${MKDIR} -v ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
 	@${CP} -Rpv ${WRKSRC}/admin-root/ ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
