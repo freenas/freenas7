@@ -20,35 +20,50 @@ start_precmd="start_precmd"
 # Defaults
 mtdaapd_enable=${mtdaapd_enable:-"NO"}
 mtdaapd_config=${mtdaapd_config-"/var/etc/mt-daapd.conf"}
+pidfile="/var/run/mt-daapd.pid"
+
+# See http://wiki.fireflymediaserver.org/Config_File
+# 'General' section
+mtdaapd_servername=${mtdaapd_servername:-"Firefly %v on %h"}
 mtdaapd_web_root=${mtdaapd_web_root:-"/usr/local/share/mt-daapd/admin-root"}
 mtdaapd_port=${mtdaapd_port:-"3689"}
-mtdaapd_admin_pw=${mtdaapd_admin_pw:-"mt-daapd"}
-mtdaapd_db_dir=${mtdaapd_db_dir:-"/var/db/mt-daapd"}
-mtdaapd_mp3_dir=${mtdaapd_mp3_dir:-"/mnt"}
-mtdaapd_servername=${mtdaapd_servername:-"mt-daapd"}
-mtdaapd_runas=${mtdaapd_runas:-"root"}
-mtdaapd_playlist=${mtdaapd_playlist:-"/usr/local/share/mt-daapd/mt-daapd.playlist"}
-mtdaapd_password=${mtdaapd_password:-"mp3"}
-mtdaapd_extensions=${mtdaapd_extensions:-".mp3,.m4a,.m4p"}
 mtdaapd_logfile=${mtdaapd_logfile:-"/var/log/mt-daapd.log"}
-mtdaapd_rescan_interval=${mtdaapd_rescan_interval:-"0"}
-mtdaapd_scan_type=${mtdaapd_scan_type:-"0"}
-mtdaapd_always_scan=${mtdaapd_always_scan:-"0"}
+mtdaapd_runas=${mtdaapd_runas:-"root"}
+mtdaapd_admin_pw=${mtdaapd_admin_pw:-"mt-daapd"}
+mtdaapd_password=${mtdaapd_password:-""}
 mtdaapd_compress=${mtdaapd_compress:-"0"}
+mtdaapd_truncate=${mtdaapd_truncate:-"0"}
+mtdaapd_mp3_dir=${mtdaapd_mp3_dir:-"/mnt"}
+mtdaapd_extensions=${mtdaapd_extensions:-".mp3,.m4a,.m4p"}
+mtdaapd_db_type=${mtdaapd_db_type:-"sqlite3"}
+mtdaapd_db_parms=${mtdaapd_db_parms:-"/var/db/mt-daapd"}
+mtdaapd_scan_type=${mtdaapd_scan_type:-"0"}
+mtdaapd_rescan_interval=${mtdaapd_rescan_interval:-"0"}
+mtdaapd_always_scan=${mtdaapd_always_scan:-"0"}
+# 'Scanning' section
+mtdaapd_case_sensitive=${mtdaapd_case_sensitive:-"1"}
+mtdaapd_ignore_appledouble=${mtdaapd_ignore_appledouble:-"1"}
+mtdaapd_ignore_dotfiles=${mtdaapd_ignore_dotfiles:-"0"}
+mtdaapd_concat_compilations=${mtdaapd_concat_compilations:-"0"}
+mtdaapd_follow_symlinks=${mtdaapd_follow_symlinks:-"1"}
+mtdaapd_skip_first=${mtdaapd_skip_first:-"0"}
+mtdaapd_process_playlists=${mtdaapd_process_playlists:-"0"}
 mtdaapd_process_m3u=${mtdaapd_process_m3u:-"0"}
-pidfile="/var/run/mt-daapd.pid"
+mtdaapd_process_itunes=${mtdaapd_process_itunes:-"0"}
+# 'Scan' section
+mtdaapd_correct_order=${mtdaapd_correct_order:-"0"}
 
 command="/usr/local/sbin/mt-daapd"
 command_args="-m -c ${mtdaapd_config}"
 
 start_precmd()
 {
-	local _port _dbdir _mp3dir _rescaninterval _alwaysscan _scantype _servername
+	local _port _dbparms _mp3dir _rescaninterval _alwaysscan _scantype _servername
 
 	# Get setting from configuration file.
 	_servername=`configxml_get "//daap/servername"`
 	_port=`configxml_get "//daap/port"`
-	_dbdir=`configxml_get "//daap/dbdir"`
+	_dbparms=`configxml_get "//daap/dbdir"`
 	_mp3dir=`configxml_get "//daap/content"`
 	_rescaninterval=`configxml_get "//daap/rescaninterval"`
 	_alwaysscan=0
@@ -61,7 +76,7 @@ start_precmd()
 	# Set default values if necessary.
 	_servername=${_servername:-"${mtdaapd_servername}"}
 	_port=${_port:-"${mtdaapd_port}"}
-	_dbdir=${_dbdir:-"${mtdaapd_db_dir}"}
+	_dbparms=${_dbparms:-"${mtdaapd_db_parms}"}
 	_mp3dir=${_mp3dir:-"${mtdaapd_mp3_dir}"}
 	_rescaninterval=${_rescaninterval:-"${mtdaapd_rescan_interval}"}
 	_alwaysscan=${_alwaysscan:-"${mtdaapd_always_scan}"}
@@ -72,22 +87,47 @@ start_precmd()
 
 	# Create configuration file.
 	cat <<EOF > ${mtdaapd_config}
-web_root ${mtdaapd_web_root}
-port ${_port}
-admin_pw ${mtdaapd_admin_pw}
-db_dir ${_dbdir}
-mp3_dir ${_mp3dir}
-servername ${_servername}
-runas	${mtdaapd_runas}
-playlist ${mtdaapd_playlist}
-#password ${mtdaapd_password}
-extensions ${mtdaapd_extensions}
-logfile ${mtdaapd_logfile}
-rescan_interval ${_rescaninterval}
-always_scan ${_alwaysscan}
-process_m3u ${mtdaapd_process_m3u}
-scan_type ${_scantype}
-compress ${mtdaapd_compress}
+[general]
+servername = ${_servername}
+web_root = ${mtdaapd_web_root}
+port = ${_port}
+logfile = ${mtdaapd_logfile}
+runas	= ${mtdaapd_runas}
+admin_pw = ${mtdaapd_admin_pw}
+EOF
+
+	if [ -n ${mtdaapd_password} ]; then
+		 cat <<EOF >> ${mtdaapd_config}
+password = ${mtdaapd_password}
+EOF
+	fi
+
+	cat <<EOF >> ${mtdaapd_config}
+compress = ${mtdaapd_compress}
+truncate = ${mtdaapd_truncate}
+mp3_dir = ${_mp3dir}
+extensions = ${mtdaapd_extensions}
+db_type = ${mtdaapd_db_type}
+db_parms = ${_dbparms}
+scan_type = ${_scantype}
+rescan_interval = ${_rescaninterval}
+always_scan = ${_alwaysscan}
+
+[plugins]
+
+[scanning]
+case_sensitive = ${mtdaapd_case_sensitive}
+ignore_appledouble = ${mtdaapd_ignore_appledouble}
+ignore_dotfiles = ${mtdaapd_ignore_dotfiles}
+concat_compilations = ${mtdaapd_concat_compilations}
+follow_symlinks = ${mtdaapd_follow_symlinks}
+skip_first = ${mtdaapd_skip_first}
+process_playlists = ${mtdaapd_process_playlists}
+process_m3u = ${mtdaapd_process_m3u}
+process_itunes = ${mtdaapd_process_itunes}
+
+[scan]
+correct_order = ${mtdaapd_correct_order}
 EOF
 }
 
