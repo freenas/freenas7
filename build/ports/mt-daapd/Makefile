@@ -1,5 +1,5 @@
 PORTNAME=						mt-daapd
-PORTVERSION=				1586
+PORTVERSION=				1696
 CATEGORIES=					audio
 COMMENT=						Multithread daapd yet another server for Apple iTunes
 MAINTAINER=					votdev@gmx.de
