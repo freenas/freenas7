@@ -7,7 +7,8 @@ MAINTAINER=					votdev@gmx.de
 MASTER_SITES=				http://nightlies.mt-daapd.org/
 DISTNAME=						${PORTNAME}-svn-${PORTVERSION}
 
-LIB_DEPENDS=				sqlite3:${PORTSDIR}/databases/sqlite3 \
+LIB_DEPENDS=				gdbm.3:${PORTSDIR}/databases/gdbm \
+										sqlite3:${PORTSDIR}/databases/sqlite3 \
 										id3tag.0:${PORTSDIR}/audio/libid3tag
 
 USE_AUTOTOOLS=			autoheader:261 autoconf:261:env
