@@ -79,8 +79,5 @@ if [ -n "$_rcshutdown_watchdog" ]; then
 	kill -TERM $_rcshutdown_watchdog >/dev/null 2>&1
 fi
 
-# Insert other shutdown procedures here
-/etc/rc.shutdown.common
-
 echo '.'
 exit 0

@@ -23,9 +23,6 @@ root_cmd="fsck_start_root"
 
 fsck_start()
 {
-	# Initialize disks
-	eval /etc/rc.d.php/disks_init
-
 	if [ "$autoboot" = no ]; then
 		echo "Fast boot: skipping disk checks."
 	elif [ ! -r /etc/fstab ]; then

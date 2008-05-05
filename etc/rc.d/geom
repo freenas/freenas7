@@ -1,0 +1,86 @@
+#!/bin/sh
+# Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+
+# PROVIDE: geom
+# REQUIRE: CONFIG
+# BEFORE: disks
+# KEYWORD: nojail shutdown
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+name="geom"
+
+# Custom commands
+start_cmd="geom_start"
+stop_cmd="geom_stop"
+
+# Defaults
+geom_load_param=${geom_load_param:-""}
+geom_stop_param=${geom_stop_param:-""}
+
+geom_start()
+{
+	local _class
+
+	echo "Starting GEOM classes."
+
+	_geom_start_vinum
+	for _class in mirror stripe concat raid5; do
+		_geom_start ${_class}
+	done
+}
+
+geom_stop()
+{
+	local _class
+
+	echo "Stopping GEOM classes."
+
+	for _class in vinum mirror stripe concat raid5; do
+		_geom_stop ${_class}
+	done
+}
+
+_geom_start()
+{
+	local _class
+
+	_class=$1
+
+	if configxml_isset //g${_class}/vdisk; then
+		/sbin/geom ${_class} load ${geom_load_param} 1>/dev/null 2>/dev/null
+	fi
+}
+
+_geom_start_vinum()
+{
+	local _name
+
+	/usr/local/bin/xml sel -t -m "//gvinum/vdisk" \
+		-v "name" \
+		-i "position() != last()" -n -b \
+		${configxml_file} | /usr/local/bin/xml unesc | \
+		while read _name; do
+			/sbin/gvinum start "${_name}"
+		done
+}
+
+_geom_stop()
+{
+	local _class _name
+	
+	_class=$1
+
+	/usr/local/bin/xml sel -t -m "//g${_class}/vdisk" \
+		-v "name" \
+		-i "position() != last()" -n -b \
+		${configxml_file} | /usr/local/bin/xml unesc | \
+		while read _name; do
+			/sbin/g${_class} stop ${geom_stop_param} "${_name}"
+		done
+}
+
+load_rc_config $name
+run_rc_command "$1"
