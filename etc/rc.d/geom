@@ -22,35 +22,43 @@ geom_stop_param=${geom_stop_param:-""}
 
 geom_start()
 {
-	local _class
+	local _classes _class
+
+	_classes=$*
+	_classes=${_classes:-"vinum mirror stripe concat raid5"}
 
 	echo "Starting GEOM classes."
-
-	_geom_start_vinum
-	for _class in mirror stripe concat raid5; do
-		_geom_start ${_class}
+	for _class in ${_classes}; do
+		case ${_class} in
+			vinum)
+				_geom_start_vinum;;
+			*)
+				_geom_load ${_class};;
+		esac
 	done
 }
 
 geom_stop()
 {
-	local _class
+	local _classes _class
+
+	_classes=$*
+	_classes=${_classes:-"vinum mirror stripe concat raid5"}
 
 	echo "Stopping GEOM classes."
-
-	for _class in vinum mirror stripe concat raid5; do
+	for _class in ${_classes}; do
 		_geom_stop ${_class}
 	done
 }
 
-_geom_start()
+_geom_load()
 {
 	local _class
 
 	_class=$1
 
 	if configxml_isset //g${_class}/vdisk; then
-		/sbin/geom ${_class} load ${geom_load_param} 1>/dev/null 2>/dev/null
+		/sbin/kldstat -q -m g_${_class} || /sbin/geom ${_class} load ${geom_load_param}
 	fi
 }
 
@@ -70,7 +78,7 @@ _geom_start_vinum()
 _geom_stop()
 {
 	local _class _name
-	
+
 	_class=$1
 
 	/usr/local/bin/xml sel -t -m "//g${_class}/vdisk" \
@@ -78,9 +86,11 @@ _geom_stop()
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
 		while read _name; do
-			/sbin/g${_class} stop ${geom_stop_param} "${_name}"
+			/sbin/geom ${_class} status 1>/dev/null 2>&1 && /sbin/g${_class} stop ${geom_stop_param} "${_name}"
 		done
+
+	/sbin/kldstat -q -m g_${_class} && /sbin/geom ${_class} unload
 }
 
 load_rc_config $name
-run_rc_command "$1"
+run_rc_command "$@"
