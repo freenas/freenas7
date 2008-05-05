@@ -584,19 +584,6 @@ function disks_raid_graid5_configure($name)
 	return mwexec($cmd);
 }
 
-// Start all geom RAID volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_start()
-{
-	disks_raid_gvinum_start();
-	disks_raid_gmirror_start();
-	disks_raid_gstripe_start();
-	disks_raid_gconcat_start();
-	disks_raid_graid5_start();
-
-	return 0;
-}
-
 // Start geom vinum volumes.
 // Return 0 if successful, 1 if error
 function disks_raid_gvinum_start()
@@ -691,94 +678,6 @@ function disks_raid_graid5_tune()
 
 	// Modify ATA timeout to 15 seconds
 	mwexec('sysctl hw.ata.to=15');
-}
-
-// Stop all geom RAID volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_stop()
-{
-	disks_raid_gvinum_stop();
-	disks_raid_graid5_stop();
-	disks_raid_gstripe_stop();
-	disks_raid_gconcat_stop();
-	disks_raid_gmirror_stop();
-
-	return 0;
-}
-
-// Stop all geom gvinum volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_gvinum_stop()
-{
-	global $config;
-
-	if (is_array($config['gvinum']['vdisk'])) {
-		foreach ($config['gvinum']['vdisk'] as $vdiskv) {
-			mwexec("/sbin/gvinum stop {$vdiskv['name']}");
-		}
-	}
-
-	return 0;
-}
-
-// Stop all geom mirror volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_gmirror_stop()
-{
-	global $config;
-
-	if (is_array($config['gmirror']['vdisk'])) {
-		foreach ($config['gmirror']['vdisk'] as $vdiskv) {
-			mwexec("/sbin/gmirror stop {$vdiskv['name']}");
-		}
-	}
-
-	return 0;
-}
-
-// Stop all geom concat volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_gconcat_stop()
-{
-	global $config;
-
-	if (is_array($config['gconcat']['vdisk'])) {
-		foreach ($config['gconcat']['vdisk'] as $vdiskv) {
-			mwexec("/sbin/gconcat stop {$vdiskv['name']}");
-		}
-	}
-
-	return 0;
-}
-
-// Stop all geom stripe volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_gstripe_stop()
-{
-	global $config;
-
-	if (is_array($config['gstripe']['vdisk'])) {
-		foreach ($config['gstripe']['vdisk'] as $vdiskv) {
-			mwexec("/sbin/gstripe stop {$vdiskv['name']}");
-		}
-	}
-
-	return 0;
-}
-
-// Stop all geom raid5 volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_graid5_stop()
-{
-	global $config;
-
-	if (is_array($config['graid5']['vdisk'])) {
-		foreach ($config['graid5']['vdisk'] as $vdiskv) {
-			mwexec("/sbin/graid5 stop {$vdiskv['name']}");
-		}
-	}
-
-	return 0;
 }
 
 // Delete geom gvinum volume given in parameter.
