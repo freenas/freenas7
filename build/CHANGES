@@ -93,7 +93,7 @@ Minors changes:
 - Add ability to add multiple destination email addresses on status report page (e.g. test@test,com;test2@test.com).
 - Display interfaces with status 'associated' in UPnP services WebGUI, too. Thanks to sea_sbs.
 - Add ability to configure multiple host names for Dynamic DNS service (FR 1952020).
-- Add patch to do a file system check on root if necessary. Thanks to Nelson Silva.
+- Add patch to do a file system check on root if necessary. Thanks to Nelson Silva and Lars Köller.
 
 Bug fixes:
 - Display correct share name for mounted ISO's on initial system page (BR 1935353). Thanks to paq237.
