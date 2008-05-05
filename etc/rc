@@ -27,8 +27,11 @@ PLATFORM=`cat /etc/platform`
 
 case ${PLATFORM} in
 	i386-full)
+		# Do a fsck on root file system.
+		/etc/rc.d/fsck root;
+
 		# If running from full, mount the root (/) in read-write.
-		/sbin/mount -u -o rw / || (/sbin/fsck -fy; /sbin/mount -u -o rw /)
+		/sbin/mount -u -o rw /;
 		;;
 	*)
 		# If running from liveCD or embedded, mount the root (ramdisk) in read-write.
