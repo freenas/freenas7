@@ -39,9 +39,8 @@ geom_start()
 			*)
 				_geom_load ${_class};;
 		esac
+		geom_tune ${_class}
 	done
-
-	geom_tune
 }
 
 geom_stop()
@@ -53,7 +52,13 @@ geom_stop()
 
 	echo "Stopping GEOM devices."
 	for _class in ${_classes}; do
-		_geom_stop ${_class}
+		case ${_class} in
+			raid5)
+				_geom_stop_raid5;;
+			*)
+				_geom_stop ${_class};;
+		esac
+		_geom_unload ${_class}
 	done
 }
 
@@ -112,6 +117,27 @@ _geom_stop()
 		while read _name; do
 			/sbin/geom ${_class} status "${_name}" 1>/dev/null 2>&1 && /sbin/g${_class} stop ${geom_stop_param} "${_name}"
 		done
+}
+
+_geom_stop_raid5()
+{
+	local _name
+
+	# Stop devices.
+	/usr/local/bin/xml sel -t -m "//graid5/vdisk" \
+		-v "name" \
+		-i "position() != last()" -n -b \
+		${configxml_file} | /usr/local/bin/xml unesc | \
+		while read _name; do
+			/sbin/geom raid5 status "${_name}" 1>/dev/null 2>&1 && /sbin/graid5 destroy -y "${_name}"
+		done
+}
+
+_geom_unload()
+{
+	local _class
+
+	_class=$1
 
 	# Unload module.
 	/sbin/kldstat -q -m g_${_class} && /sbin/geom ${_class} unload
