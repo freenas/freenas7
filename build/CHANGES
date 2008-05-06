@@ -67,6 +67,7 @@ Majors changes:
 - Added 'System: Advanced: sysctl.conf' WebGUI to add additional MIB's to /etc/sysctl.conf.
   Thanks to Nelson Silva (nsilva@hotlap.org).
 - Added DAAP server to support iTunes.
+- Update GEOM raid5. Thanks to Arne Wörner.
 
 Minors changes:
 - Add ability to enable/disable 'Hide dot files' for SMB/CIFS shares.
