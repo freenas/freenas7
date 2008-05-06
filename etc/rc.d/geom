@@ -31,7 +31,7 @@ geom_start()
 	_classes=$*
 	_classes=${_classes:-"${geom_classes}"}
 
-	echo "Starting GEOM classes."
+	echo "Starting GEOM devices."
 	for _class in ${_classes}; do
 		case ${_class} in
 			vinum)
@@ -51,7 +51,7 @@ geom_stop()
 	_classes=$*
 	_classes=${_classes:-"${geom_classes}"}
 
-	echo "Stopping GEOM classes."
+	echo "Stopping GEOM devices."
 	for _class in ${_classes}; do
 		_geom_stop ${_class}
 	done
