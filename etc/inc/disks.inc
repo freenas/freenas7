@@ -482,9 +482,6 @@ function disks_raid_gmirror_configure($name)
 	if (!is_array($vdisk))
 		 return 1;
 
-	// Load kernel module
-	mwexec("/sbin/gmirror load");
-
 	// Create volume
 	$cmd = "/sbin/gmirror label -b {$vdisk['balance']} {$vdisk['name']} ";
 	foreach ($vdisk['device'] as $devicek => $devicev) {
@@ -511,9 +508,6 @@ function disks_raid_gconcat_configure($name)
 	$vdisk = $config['disks']['disk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
-
-	// Load kernel module
-	mwexec("/sbin/gconcat load");
 
 	// Create volume
 	$cmd = "/sbin/gconcat label {$vdisk['name']} ";
@@ -542,9 +536,6 @@ function disks_raid_gstripe_configure($name)
 	if (!is_array($vdisk))
 		 return 1;
 
-	// Load kernel module
-	mwexec("/sbin/gstripe load");
-
 	// Create volume
 	$cmd = "/sbin/gstripe label {$vdisk['name']} ";
 	foreach ($vdisk['device'] as $devicek => $devicev) {
@@ -572,12 +563,6 @@ function disks_raid_graid5_configure($name)
 	if (!is_array($vdisk))
 		 return 1;
 
-	// Load kernel module
-	mwexec("/sbin/graid5 load");
-
-	// Tune system
-	disks_raid_graid5_tune();
-
 	// Create volume
 	$cmd = "/sbin/graid5 label -s 131072 {$vdisk['name']} ";
 	foreach ($vdisk['device'] as $devicek => $devicev) {
@@ -585,31 +570,6 @@ function disks_raid_graid5_configure($name)
 	}
 
 	return mwexec($cmd);
-}
-
-// Optimize geom raid5 RAM usage
-// Return none
-function disks_raid_graid5_tune()
-{
-	/* Get RAM information */
-	$raminfo = system_get_ram_info();
-	/* Calculate real RAM in MB */
-	$realram = round($raminfo['real'] / 1024 / 1024);
-
-	if ($realram <= 128) {
-		write_log("Optimizing graid5 for systems with <= 128MB of RAM");
-		mwexec('sysctl kern.geom.raid5.maxwql=10');
-		mwexec('sysctl kern.geom.raid5.maxmem=1100000');
-	} else if ($realram <= 256) {
-		write_log("Optimizing graid5 for systems with <= 256MB of RAM");
-		mwexec('sysctl kern.geom.raid5.maxwql=20');
-		mwexec('sysctl kern.geom.raid5.maxmem=2000000');
-	} else {
-		write_log("Detected >= 512MB of RAM... No need to optimize RAM usage for graid5");
-	}
-
-	// Modify ATA timeout to 15 seconds
-	mwexec('sysctl hw.ata.to=15');
 }
 
 // Delete geom gvinum volume given in parameter.

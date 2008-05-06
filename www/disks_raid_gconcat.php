@@ -51,6 +51,7 @@ if ($_POST) {
 			foreach ($a_raid as $raidv) {
 				if ($raidv['class']=="gconcat") {
 					if (is_modified($raidv['name'])) {
+						$retval |= rc_exec_service("geom load concat");
 						$retval |= disks_raid_gconcat_configure($raidv['name']);
 					}
 				}
