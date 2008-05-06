@@ -6,7 +6,9 @@ MAINTAINER=		votdev@gmx.de
 
 MASTER_SITES=				${MASTER_SITE_SOURCEFORGE}
 MASTER_SITE_SUBDIR=	pureftpd
-USE_BZIP2=					yes
+
+USE_BZIP2=	yes
+USE_ICONV=	yes
 
 PUREFTPD_CERTFILE=	/var/etc/ssl/private/pure-ftpd.pem
 
