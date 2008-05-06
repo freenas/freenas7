@@ -36,6 +36,8 @@ geom_start()
 				_geom_load ${_class};;
 		esac
 	done
+
+	_geom_raid5_tune
 }
 
 geom_stop()
@@ -57,7 +59,7 @@ _geom_load()
 
 	_class=$1
 
-	if configxml_isset //g${_class}/vdisk; then
+	if configxml_isset //disks/disk/[class = 'g${_class}']; then
 		/sbin/kldstat -q -m g_${_class} || /sbin/geom ${_class} load ${geom_load_param}
 	fi
 }
@@ -66,7 +68,7 @@ _geom_start_vinum()
 {
 	local _name
 
-	/usr/local/bin/xml sel -t -m "//gvinum/vdisk" \
+	/usr/local/bin/xml sel -t -m "//disks/disk/[class = 'gvinum']" \
 		-v "name" \
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
@@ -81,7 +83,7 @@ _geom_stop()
 
 	_class=$1
 
-	/usr/local/bin/xml sel -t -m "//g${_class}/vdisk" \
+	/usr/local/bin/xml sel -t -m "//disks/disk/[class = 'g${_class}']" \
 		-v "name" \
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
@@ -90,6 +92,32 @@ _geom_stop()
 		done
 
 	/sbin/kldstat -q -m g_${_class} && /sbin/geom ${_class} unload
+}
+
+# Optimize geom raid5 RAM usage
+_geom_raid5_tune()
+{
+	local _realmem
+
+	if configxml_isset //graid5/vdisk; then
+		_realmem=`/sbin/sysctl -n hw.realmem`
+		_realmem=`expr -- ${_realmem} / 1024 / 1024`
+
+		if [ 128 -gt ${_realmem} ]; then
+			/usr/bin/logger "Optimizing graid5 for systems with <= 128MB of RAM"
+			sysctl kern.geom.raid5.maxwql=10
+			sysctl kern.geom.raid5.maxmem=1100000
+		elif [ 256 -gt ${_realmem} ]; then
+			/usr/bin/logger "Optimizing graid5 for systems with <= 256MB of RAM"
+			sysctl kern.geom.raid5.maxwql=20
+			sysctl kern.geom.raid5.maxmem=2000000
+		else
+			/usr/bin/logger "Detected >= 512MB of RAM... No need to optimize RAM usage for GEOM raid5."
+		fi
+
+		# Modify ATA timeout to 15 seconds
+		sysctl hw.ata.to=15
+	fi
 }
 
 load_rc_config $name

@@ -106,7 +106,7 @@ if ($_POST) {
 			file_put_contents($d_raid_gstripe_confdirty_path, "{$raid[name]}\n", FILE_APPEND | FILE_TEXT);
 		} else {
 			// Start already configured disks.
-			disks_raid_gstripe_start();
+			rc_exec_service("geom start stripe");
 		}
 
 		header("Location: disks_raid_gstripe.php");

@@ -106,7 +106,7 @@ if ($_POST) {
 			file_put_contents($d_raid_gconcat_confdirty_path, "{$raid[name]}\n", FILE_APPEND | FILE_TEXT);
 		} else {
 			// Start already configured disks.
-			disks_raid_gconcat_start();
+			rc_exec_service("geom start concat");
 		}
 
 		header("Location: disks_raid_gconcat.php");

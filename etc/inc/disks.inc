@@ -587,120 +587,6 @@ function disks_raid_graid5_configure($name)
 	return mwexec($cmd);
 }
 
-// Start geom vinum volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_gvinum_start()
-{
-	global $config;
-
-	if (is_array($config['disks']['disk'])) {
-
-		foreach ($config['disks']['disk'] as $vdiskv) {
-			if ($vdiskv['class'] == "gvinum"); {
-				/* Start each gvinum volume */
-				mwexec("/sbin/gvinum start {$vdiskv['name']}");
-			}
-		}
-	}
-
-	return 0;
-}
-
-// Start geom mirror volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_gmirror_start()
-{
-	global $config;
-
-	$found=0;
-
-	if (is_array($config['disks']['disk'])) {
-		foreach ($config['disks']['disk'] as $vdiskv) {
-			if ($vdiskv['class'] == "gmirror"); {
-				$found=1;
-				break;
-			}
-		}
-		if ($found) {
-			mwexec("/sbin/gmirror load");
-		}
-	}
-
-	return 0;
-}
-
-// Start geom concat volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_gconcat_start()
-{
-	global $config;
-
-	$found=0;
-
-	if (is_array($config['disks']['disk'])) {
-		foreach ($config['disks']['disk'] as $vdiskv) {
-			if ($vdiskv['class'] == "gconcat"); {
-				$found=1;
-				break;
-			}
-		}
-		if ($found) {
-			mwexec("/sbin/gconcat load");
-		}
-	}
-
-	return 0;
-}
-
-// Start geom stripe volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_gstripe_start()
-{
-	global $config;
-
-	$found=0;
-
-	if (is_array($config['disks']['disk'])) {
-		foreach ($config['disks']['disk'] as $vdiskv) {
-			if ($vdiskv['class'] == "gstripe"); {
-				$found=1;
-				break;
-			}
-		}
-		if ($found) {
-			mwexec("/sbin/gstripe load");
-		}
-	}
-
-	return 0;
-}
-
-// Start geom raid5 volumes.
-// Return 0 if successful, 1 if error
-function disks_raid_graid5_start()
-{
-	global $config;
-
-
-	$found=0;
-
-	if (is_array($config['disks']['disk'])) {
-		foreach ($config['disks']['disk'] as $vdiskv) {
-			if ($vdiskv['class'] == "graid5"); {
-				$found=1;
-				break;
-			}
-		}
-		if ($found) {
-			mwexec("/sbin/graid5 load");
-			//Tune graid5
-			disks_raid_graid5_tune();
-		}
-	}
-
-	return 0;
-}
-
 // Optimize geom raid5 RAM usage
 // Return none
 function disks_raid_graid5_tune()
@@ -712,12 +598,12 @@ function disks_raid_graid5_tune()
 
 	if ($realram <= 128) {
 		write_log("Optimizing graid5 for systems with <= 128MB of RAM");
-		mwexec('sysctl value kern.geom.raid5.maxwql=10');
-		mwexec('sysctl value kern.geom.raid5.maxmem=1100000');
+		mwexec('sysctl kern.geom.raid5.maxwql=10');
+		mwexec('sysctl kern.geom.raid5.maxmem=1100000');
 	} else if ($realram <= 256) {
 		write_log("Optimizing graid5 for systems with <= 256MB of RAM");
-		mwexec('sysctl value kern.geom.raid5.maxwql=20');
-		mwexec('sysctl value kern.geom.raid5.maxmem=2000000');
+		mwexec('sysctl kern.geom.raid5.maxwql=20');
+		mwexec('sysctl kern.geom.raid5.maxmem=2000000');
 	} else {
 		write_log("Detected >= 512MB of RAM... No need to optimize RAM usage for graid5");
 	}
