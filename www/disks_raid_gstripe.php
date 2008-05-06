@@ -50,6 +50,7 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			foreach ($a_raid as $raidv) {
 				if (is_modified($raidv['name'])) {
+					$retval |= rc_exec_service("geom load stripe");
 					$retval |= disks_raid_gstripe_configure($raidv['name']);
 				}
 			}

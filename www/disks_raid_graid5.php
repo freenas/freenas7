@@ -50,6 +50,8 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			foreach ($a_raid as $raidv) {
 				if (is_modified($raidv['name'])) {
+					$retval |= rc_exec_service("geom load raid5");
+					$retval |= rc_exec_service("geom tune raid5");
 					$retval |= disks_raid_graid5_configure($raidv['name']);
 				}
 			}
