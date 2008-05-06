@@ -225,7 +225,7 @@ function profile_change() {
 									</td>
 								</tr>
 							</table>
-							<?=gettext("Directories to be shared.");?>
+							<?=gettext("Location of the files to share.");?>
 						</td>
 					</tr>
 					<tr>
