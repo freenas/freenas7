@@ -118,7 +118,7 @@ if ($_POST) {
 			file_put_contents($d_raid_gvinum_confdirty_path, "{$raid[name]}\n", FILE_APPEND | FILE_TEXT);
 		} else {
 			// Start already configured disks.
-			disks_raid_gvinum_start();
+			rc_exec_service("geom start vinum");
 		}
 
 		header("Location: disks_raid_gvinum.php");
