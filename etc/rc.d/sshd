@@ -3,8 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: sshd
-# REQUIRE: NETWORKING
-# KEYWORD: shutdown
+# REQUIRE: LOGIN cleanvar
 # XQUERY: -i "count(//sshd/enable) > 0" -o "0" -b
 # RCVAR: sshd
 

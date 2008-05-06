@@ -3,7 +3,7 @@
 # All rights reserved.
 
 # PROVIDE: smbpasswd
-# REQUIRE: smbd
+# BEFORE: smbd
 # KEYWORD: nostart
 
 . /etc/rc.subr

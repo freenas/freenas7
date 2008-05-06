@@ -523,3 +523,4 @@ etc/rc.d/LOGIN
 etc/rc.d/local
 etc/rc.d/early.sh
 etc/rc.d/adjkerntz
+etc/rc.d/securelevel
