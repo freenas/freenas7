@@ -13,19 +13,23 @@
 name="geom"
 
 # Custom commands
+extra_commands="tune"
 start_cmd="geom_start"
 stop_cmd="geom_stop"
+tune_cmd="geom_tune"
 
 # Defaults
+geom_classes=${geom_classes:-"vinum mirror stripe concat raid5"}
 geom_load_param=${geom_load_param:-""}
 geom_stop_param=${geom_stop_param:-""}
+geom_ata_timeout=${geom_ata_timeout:-"15"}
 
 geom_start()
 {
 	local _classes _class
 
 	_classes=$*
-	_classes=${_classes:-"vinum mirror stripe concat raid5"}
+	_classes=${_classes:-"${geom_classes}"}
 
 	echo "Starting GEOM classes."
 	for _class in ${_classes}; do
@@ -37,7 +41,7 @@ geom_start()
 		esac
 	done
 
-	_geom_raid5_tune
+	geom_tune
 }
 
 geom_stop()
@@ -45,11 +49,28 @@ geom_stop()
 	local _classes _class
 
 	_classes=$*
-	_classes=${_classes:-"vinum mirror stripe concat raid5"}
+	_classes=${_classes:-"${geom_classes}"}
 
 	echo "Stopping GEOM classes."
 	for _class in ${_classes}; do
 		_geom_stop ${_class}
+	done
+}
+
+geom_tune()
+{
+	local _classes _class
+
+	_classes=$*
+	_classes=${_classes:-"${geom_classes}"}
+
+	for _class in ${_classes}; do
+		case ${_class} in
+			raid5)
+				_geom_tune_raid5;;
+			*)
+				;;
+		esac
 	done
 }
 
@@ -59,7 +80,7 @@ _geom_load()
 
 	_class=$1
 
-	if configxml_isset //disks/disk/[class = 'g${_class}']; then
+	if configxml_isset //g${_class}/vdisk; then
 		/sbin/kldstat -q -m g_${_class} || /sbin/geom ${_class} load ${geom_load_param}
 	fi
 }
@@ -68,7 +89,7 @@ _geom_start_vinum()
 {
 	local _name
 
-	/usr/local/bin/xml sel -t -m "//disks/disk/[class = 'gvinum']" \
+	/usr/local/bin/xml sel -t -m "//gvinum/vdisk" \
 		-v "name" \
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
@@ -83,19 +104,21 @@ _geom_stop()
 
 	_class=$1
 
-	/usr/local/bin/xml sel -t -m "//disks/disk/[class = 'g${_class}']" \
+	# Stop devices.
+	/usr/local/bin/xml sel -t -m "//g${_class}/vdisk" \
 		-v "name" \
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
 		while read _name; do
-			/sbin/geom ${_class} status 1>/dev/null 2>&1 && /sbin/g${_class} stop ${geom_stop_param} "${_name}"
+			/sbin/geom ${_class} status "${_name}" 1>/dev/null 2>&1 && /sbin/g${_class} stop ${geom_stop_param} "${_name}"
 		done
 
+	# Unload module.
 	/sbin/kldstat -q -m g_${_class} && /sbin/geom ${_class} unload
 }
 
 # Optimize geom raid5 RAM usage
-_geom_raid5_tune()
+_geom_tune_raid5()
 {
 	local _realmem
 
@@ -104,19 +127,19 @@ _geom_raid5_tune()
 		_realmem=`expr -- ${_realmem} / 1024 / 1024`
 
 		if [ 128 -gt ${_realmem} ]; then
-			/usr/bin/logger "Optimizing graid5 for systems with <= 128MB of RAM"
+			/usr/bin/logger "Optimizing GEOM raid5 for systems with <= 128MB of RAM."
 			sysctl kern.geom.raid5.maxwql=10
 			sysctl kern.geom.raid5.maxmem=1100000
 		elif [ 256 -gt ${_realmem} ]; then
-			/usr/bin/logger "Optimizing graid5 for systems with <= 256MB of RAM"
+			/usr/bin/logger "Optimizing GEOM raid5 for systems with <= 256MB of RAM."
 			sysctl kern.geom.raid5.maxwql=20
 			sysctl kern.geom.raid5.maxmem=2000000
 		else
 			/usr/bin/logger "Detected >= 512MB of RAM... No need to optimize RAM usage for GEOM raid5."
 		fi
 
-		# Modify ATA timeout to 15 seconds
-		sysctl hw.ata.to=15
+		# Modify ATA timeout to N seconds.
+		sysctl hw.ata.to=${geom_ata_timeout}
 	fi
 }
 
