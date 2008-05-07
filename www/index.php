@@ -41,7 +41,7 @@ $pgtitle_omit = true;
 function update_controls() {
 	// Get uptime and date.
 	$value['uptime'] = system_get_uptime();
-	$value['date'] = date("D M j G:i:s T Y");
+	exec("/bin/date", $value['date']);
 	// Get RAM usage.
 	$raminfo = system_get_ram_info();
 	$percentage = round(($raminfo['used'] * 100) / $raminfo['total'], 0);
