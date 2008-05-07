@@ -606,6 +606,9 @@ use_svn() {
 	cd $FREENAS_SVNDIR/etc/inc
 	cp -v -p * $FREENAS_ROOTFS/etc/inc
 
+	cd $FREENAS_SVNDIR/etc/install
+	cp -v -p * $FREENAS_ROOTFS/etc/install
+
 	cd $FREENAS_SVNDIR/etc/inc/phpmailer
 	cp -v -p * $FREENAS_ROOTFS/etc/inc/phpmailer
 
