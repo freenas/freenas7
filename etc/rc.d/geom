@@ -184,6 +184,8 @@ _geom_tune_raid5()
 
 	# Modify ATA timeout to N seconds.
 	sysctl hw.ata.to=${geom_ata_timeout}
+
+	return 0
 }
 
 load_rc_config $name
