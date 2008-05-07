@@ -215,11 +215,11 @@ function type_change() {
 function fstype_change() {
 	switch(document.iform.fstype.selectedIndex) {
 		case 0: /* UFS */
-			document.iform.partition.selectedIndex = 0;
+			document.iform.partition.value = "p1";
 			break;
 
 		case 2: /* CD/DVD */
-			document.iform.partition.selectedIndex = 5;
+			document.iform.partition.value = " ";
 			break;
   }
 }
