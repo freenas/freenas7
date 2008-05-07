@@ -590,7 +590,7 @@ use_svn() {
 
 	cd ${FREENAS_SVNDIR}/root && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/root
 	cd ${FREENAS_SVNDIR}/etc && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/etc
-	cd ${FREENAS_SVNDIR}/www && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/www
+	cd ${FREENAS_SVNDIR}/www && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/usr/local/www
 	cd ${FREENAS_SVNDIR}/conf && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/conf.default
 
 	return 0
