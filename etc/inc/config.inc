@@ -1344,9 +1344,18 @@ function config_upgrade() {
 	}
 
 	/* Convert 4.9 -> 5.0 */
+	/* Set default //upnp/port. */
+	if ($config['version'] === "4.9") {
+		if (!isset($config['upnp']['port']) || empty($config['upnp']['port']))
+			$config['upnp']['port'] = "49152";
+
+		$config['version'] = "5.0";
+	}
+
+	/* Convert 5.0 -> 5.1 */
 	/* New Disk configuration for FreeNAS 0.7 */
 	/* Use class in the place of gconcat,gmirror,graid5,gstride,gvinum,geli disk */
-	if ($config['version'] === "4.9") {
+	if ($config['version'] === "5.0") {
 		/* Add class to physical disk that replace old type (ATA, SCSI, RAID)*/
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			switch ($config['disks']['disk'][$i]['type']) {
@@ -1420,7 +1429,7 @@ function config_upgrade() {
 			}
 		}
 
-		$config['version'] = "5.0";
+		$config['version'] = "5.1";
 	}
 
 	write_config();

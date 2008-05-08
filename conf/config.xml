@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>5.0</version>
+	<version>5.1</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -376,12 +376,12 @@
 		<name>xxx</name>
 		<if>xxx</if>
 		<content>xxx</content>
-		<port>xxx</port>
 		<home>xxx</home> // Directory where sqlite database is stored. The mediatomb.html bookmark file will also be generated in that directory.
 		<web/>
 		<profile>default|...</profile>
 		<deviceip>xxx.xxx.xxx.xxx<deviceip>
 		-->
+		<port>49152</port>
 		<profile>default</profile>
 	</upnp>
 	<daap>
