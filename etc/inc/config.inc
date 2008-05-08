@@ -1343,6 +1343,15 @@ function config_upgrade() {
 		$config['version'] = "4.9";
 	}
 
+	/* Convert 4.9 -> 5.0 */
+	/* Set default //upnp/port. */
+	if ($config['version'] === "4.9") {
+		if (!isset($config['upnp']['port']) || empty($config['upnp']['port']))
+			$config['upnp']['port'] = "49152";
+
+		$config['version'] = "5.0";
+	}
+
 	write_config();
 
 	if (is_booting())
