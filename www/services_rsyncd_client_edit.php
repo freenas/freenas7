@@ -89,10 +89,6 @@ if ($_POST) {
 	// Validate synchronization time
 	do_input_validate_synctime($_POST, &$input_errors);
 
-	if (!is_ipaddr($_POST['rsyncserverip'])){
-		$input_errors[] = gettext("A valid IP address must be specified.");
-	}
-
 	if (!$input_errors) {
 		$rsyncclient = array();
 
@@ -161,7 +157,7 @@ function set_selected(name) {
 						<td width="22%" valign="top" class="vncellreq"><strong><?=gettext("Remote RSYNC Server");?><strong></td>
 						<td width="78%" class="vtable">
 							<input name="rsyncserverip" id="rsyncserverip" type="text" class="formfld" size="20" value="<?=htmlspecialchars($pconfig['rsyncserverip']);?>">
-							<br><?=gettext("IP address of remote RSYNC server");?><br>
+							<br><?=gettext("IP or FQDN address of remote RSYNC server.");?><br>
 						</td>
 					</tr>
 					<tr>
