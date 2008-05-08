@@ -505,4 +505,18 @@ class HTMLTitleLine extends HTMLBaseControl {
 		echo "</tr>\n";
 	}
 }
+
+class HTMLText extends HTMLBaseControl {
+	function HTMLText($ctrlname, $title, $text) {
+		$this->SetCtrlName($ctrlname);
+		$this->SetTitle($title);
+		$this->SetValue($text);
+	}
+
+	function RenderCtrl() {
+		$text = $this->GetValue();
+
+		echo "{$text}\n";
+	}
+}
 ?>

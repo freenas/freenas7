@@ -387,4 +387,9 @@ function html_titleline($title) {
 	$ctrl = new HTMLTitleLine($title);
 	$ctrl->Render();
 }
+
+function html_text($ctrlname, $title, $text) {
+	$ctrl = new HTMLText($ctrlname, $title, $text);
+	$ctrl->Render();
+}
 ?>
