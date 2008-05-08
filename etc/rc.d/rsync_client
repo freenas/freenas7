@@ -42,7 +42,7 @@ if [ 0 -lt ${_scriptnum} ]; then
 				-i "count(delete) > 0" -o "--delete --delete-after " -b \
 				-i "count(quiet) > 0" -o "--quiet " -b \
 			-b \
-			-i "contains(rsyncserverip,'.')" \
+			-i "not(contains(rsyncserverip,':'))" \
 				-v "concat('&quot;rsync://',rsyncserverip,'/',remoteshare,'&quot; &quot;',localshare,'&quot;')" -n \
 			-b \
 			-i "contains(rsyncserverip,':')" \
