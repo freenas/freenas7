@@ -389,6 +389,7 @@
 		<enable/>
 		<servername>xxx</servername>
 		<alwaysscan/>
+		<admin_pw>xxx</admin_pw>
 		-->
 		<port>3689</port>
 		<rescaninterval>0</rescaninterval>

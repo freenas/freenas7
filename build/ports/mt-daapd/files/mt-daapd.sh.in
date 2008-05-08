@@ -60,7 +60,7 @@ command_args="-m -c ${mtdaapd_config}"
 
 start_precmd()
 {
-	local _port _dbparms _mp3dir _rescaninterval _alwaysscan _scantype _servername
+	local _port _dbparms _mp3dir _rescaninterval _alwaysscan _scantype _servername _admin_pw
 
 	# Get setting from configuration file.
 	_servername=`configxml_get "//daap/servername"`
@@ -70,6 +70,7 @@ start_precmd()
 	_rescaninterval=`configxml_get "//daap/rescaninterval"`
 	_alwaysscan=0
 	_scantype=`configxml_get "//daap/scantype"`
+	_admin_pw=`configxml_get "//daap/admin_pw"`
 
 	if configxml_isset //daap/alwaysscan; then
 		_alwaysscan=1
@@ -83,6 +84,7 @@ start_precmd()
 	_rescaninterval=${_rescaninterval:-"${mtdaapd_rescan_interval}"}
 	_alwaysscan=${_alwaysscan:-"${mtdaapd_always_scan}"}
 	_scantype=${_scantype:-"${mtdaapd_scan_type}"}
+	_admin_pw=${_admin_pw:-"${mtdaapd_admin_pw}"}
 
 	# Set server name. Use product name as default.
 	[ -z "${_servername}" ] && _servername=`get_product_name`
@@ -95,7 +97,7 @@ web_root = ${mtdaapd_web_root}
 port = ${_port}
 logfile = ${mtdaapd_logfile}
 runas	= ${mtdaapd_runas}
-admin_pw = ${mtdaapd_admin_pw}
+admin_pw = ${_admin_pw}
 EOF
 
 	if [ -n ${mtdaapd_password} ]; then
