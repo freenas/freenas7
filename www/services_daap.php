@@ -136,7 +136,7 @@ function enable_change(enable_change) {
 			      </td>
 					</tr>
 					<?php html_inputbox("servername", gettext("Server name"), $pconfig['servername'], gettext("This is both the name of the server as advertised via Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."), true, 20);?>
-					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("Port to listen on. It is possible to use a different port. Default iTunes port is 3689."), true, 5);?>
+					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("Port to listen on. Default iTunes port is 3689."), true, 5);?>
 					<?php html_filechooser("dbdir", gettext("Database directory"), $pconfig['dbdir'], gettext("Location where the content database file will be stored."), "/mnt", true, 60);?>
 					<?php html_filechooser("content", gettext("Content"), $pconfig['content'], gettext("Location of the files to share."), "/mnt", true, 60);?>
 					<?php html_inputbox("rescaninterval", gettext("Rescan interval"), $pconfig['rescaninterval'], gettext("Scan file system every N seconds to see if any files have been added or removed. Set to 0 to disable background scanning. If background rescanning is disabled, a scan can still be forced from the status page of the administrative web interface."), false, 5);?>
