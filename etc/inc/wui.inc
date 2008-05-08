@@ -178,7 +178,7 @@ class HTMLPasswordBox extends HTMLEditBox {
 		$size = $this->GetSize();
 		$param = $this->GetParam();
 
-		echo "		<input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param}><br/>\n";
+		echo "		<input name='{$ctrlname}' type='password' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}' {$param}>\n";
 	}
 }
 
