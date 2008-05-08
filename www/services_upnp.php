@@ -61,14 +61,13 @@ if(!$pconfig['name'])
 
 if($_POST) {
 	unset($input_errors);
-
 	$pconfig = $_POST;
 
 	// Input validation.
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "name interface home");
-		$reqdfieldsn = array(gettext("Name"), gettext("Interface"), gettext("Database directory"));
-		$reqdfieldst = explode(" ", "string string string");
+		$reqdfields = explode(" ", "name if port home");
+		$reqdfieldsn = array(gettext("Name"), gettext("Interface"), gettext("Port"), gettext("Database directory"));
+		$reqdfieldst = explode(" ", "string string port string");
 
 		if ("Terratec_Noxon_iRadio" === $_POST['profile']) {
 			$reqdfields = array_merge($reqdfields, array("deviceip"));
@@ -87,7 +86,7 @@ if($_POST) {
 	if(!$input_errors) {
 		$config['upnp']['enable'] = $_POST['enable'] ? true : false;
 		$config['upnp']['name'] = $_POST['name'];
-		$config['upnp']['if'] = $_POST['interface'];
+		$config['upnp']['if'] = $_POST['if'];
 		$config['upnp']['port'] = $_POST['port'];
 		$config['upnp']['web'] = $_POST['web'] ? true : false;
 		$config['upnp']['home'] = $_POST['home'];
@@ -130,11 +129,10 @@ $a_interface = get_interface_list();
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
 	document.iform.name.disabled = endis;
-	document.iform.interface.disabled = endis;
+	document.iform.if.disabled = endis;
 	document.iform.port.disabled = endis;
 	document.iform.web.disabled = endis;
 	document.iform.home.disabled = endis;
-	document.iform.browse.disabled = endis;
 	document.iform.profile.disabled = endis;
 }
 
@@ -146,6 +144,18 @@ function profile_change() {
 
 		default:
 			showElementById('deviceip_tr','hide');
+			break;
+	}
+}
+
+function web_change() {
+	switch(document.iform.web.checked) {
+		case false:
+			showElementById('url_tr','hide');
+			break;
+
+		case true:
+			showElementById('url_tr','show');
 			break;
 	}
 }
@@ -169,17 +179,14 @@ function profile_change() {
 			  		  </table>
 			      </td>
 			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="name" type="text" class="formfld" id="name" size="20" value="<?=htmlspecialchars($pconfig['name']);?>">
-			        <br><?=gettext("UPnP friendly name.");?>
-			      </td>
-			    </tr>
+					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext("UPnP friendly name."), true, 20);?>
+					<!--
+					<?php html_interfacecombobox("if", gettext("Interface"), $pconfig['if'], gettext("Interface to listen to."), true);?>
+					-->
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Interface");?></td>
 			      <td width="78%" class="vtable">
-			        <select name="interface" class="formfld" id="interface">
+			        <select name="if" class="formfld" id="if">
 			          <?php foreach($a_interface as $if => $ifinfo):?>
 								<?php $ifinfo = get_interface_info($if); if (("up" == $ifinfo['status']) || ("associated" == $ifinfo['status'])):?>
 								<option value="<?=$if;?>"<?php if ($if == $pconfig['if']) echo "selected";?>><?=$if?></option>
@@ -189,14 +196,8 @@ function profile_change() {
 			        <br><?=gettext("Interface to listen to.");?>
 			      </td>
 			    </tr>
-			    <tr>
-			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Database directory");?></td>
-			      <td width="78%" class="vtable">
-							<input name="home" type="text" class="formfld" id="home" size="60" value="<?=htmlspecialchars($pconfig['home']);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.home; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \></br>
-							<?=gettext("Location where the content database file will be stored. The bookmark file will also be generated in that directory.");?>
-			      </td>
-			    </tr>
+					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], sprintf(gettext("Port to listen on. Only dynamic or private ports can be used (from %d through %d). Default port is %d."), 1025, 65535, 49152), true, 5);?>
+					<?php html_filechooser("home", gettext("Database directory"), $pconfig['home'], gettext("Location where the content database file will be stored."), "/mnt", true, 60);?>
 			    <tr>
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Content");?></td>
 			      <td width="78%" class="vtable">
@@ -228,42 +229,18 @@ function profile_change() {
 							<?=gettext("Location of the files to share.");?>
 						</td>
 					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Port");?></td>
-						<td width="78%" class="vtable">
-							<input name="port" type="text" class="formfld" id="port" size="20" value="<?=htmlspecialchars($pconfig['port']);?>"></br>
-							<?=sprintf(gettext("Enter a custom port number for the HTTP server if you want to override the default (%d). Only dynamic or private ports can be used (from %d through %d)."), 49152, 1025, 65535);?>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Profile");?></td>
-						<td width="78%" class="vtable">
-							<select name="profile" class="formfld" id="profile" onchange="profile_change()">
-								<?php $types = array(gettext("Default"),gettext("DLNA"),gettext("Sony Playstation 3"),gettext("Telegent TG100"),gettext("ZyXEL DMA-1000"),gettext("Helios X3000"),gettext("D-Link DSM320"),gettext("Microsoft XBox 360"),gettext("Terratec Noxon iRadio"),gettext("Yamaha RX-N600")); $vals = explode(" ", "default DLNA PS3 Telegent_TG100 ZyXEL_DMA1000 Helios_X3000 DLink_DSM320 Microsoft_XBox360 Terratec_Noxon_iRadio Yamaha_RXN600");?>
-								<?php $j = 0; for ($j = 0; $j < count($vals); $j++):?>
-								<option value="<?=$vals[$j];?>" <?php if ($vals[$j] === $pconfig['profile']) echo "selected";?>>
-								<?=htmlspecialchars($types[$j]);?>
-								</option>
-								<?php endfor;?>
-							</select><br/>
-							<span class="vexpl"><?=gettext("Compliant profile to be used.");?></span>
-						</td>
-					</tr>
-					<tr id="deviceip_tr">
-						<td width="22%" valign="top" class="vncell"><?=gettext("Device IP");?></td>
-						<td width="78%" class="vtable">
-							<input name="deviceip" type="text" class="formfld" id="deviceip" size="20" value="<?=htmlspecialchars($pconfig['deviceip']);?>"></br>
-							<?=gettext("The device's IP address.");?>
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Web user interface");?></td>
-						<td width="78%" class="vtable">
-							<input name="web" type="checkbox" id="web" value="yes" <?php if ($pconfig['web']) echo "checked"; ?>>
-							<?=gettext("Enable web user interface.");?>
-							<br><?=gettext("Accessible through 'http://ip_address:port'.");?>
-						</td>
-					</tr>
+					<?php html_combobox("profile", gettext("Profile"), $pconfig['profile'], array("default" => gettext("Default"), "DLNA" => "DLNA", "PS3" => "Sony Playstation 3", "Telegent_TG100" => "Telegent TG100", "ZyXEL_DMA1000" => "ZyXEL DMA-1000", "Helios_X3000" => "Helios X3000", "DLink_DSM320" => "D-Link DSM320", "Microsoft_XBox360" => "Microsoft XBox 360", "Terratec_Noxon_iRadio" => "Terratec Noxon iRadio", "Yamaha_RXN600" => "Yamaha RX-N600"), gettext("Compliant profile to be used."), true, false, "profile_change()");?>
+					<?php html_inputbox("deviceip", gettext("Device IP"), $pconfig['deviceip'], gettext("The device's IP address."), true, 20);?>
+					<?php html_separator();?>
+					<?php html_titleline(gettext("Administrative WebGUI"));?>
+					<?php html_checkbox("web", gettext("Enable"), $pconfig['web'] ? true : false, gettext("Enable web user interface."), gettext(""), false, "web_change()");?>
+					<?php
+					$if = get_ifname($pconfig['if']);
+					$ipaddr = get_ipaddr($if);
+					$url = "http://{$ipaddr}:{$pconfig['port']}";
+					$text = "<a href='{$url}' target='_blank'>{$url}</a>";
+					?>
+					<?php html_text("url", gettext("URL"), $text);?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
@@ -278,6 +255,7 @@ function profile_change() {
 <script language="JavaScript">
 <!--
 profile_change();
+web_change();
 enable_change(false);
 //-->
 </script>
