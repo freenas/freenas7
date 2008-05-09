@@ -122,8 +122,9 @@ function enable_change(enable_change) {
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
 	    <td class="tabcont">
-				<?php if ($input_errors) print_input_errors($input_errors); ?>
-				<?php if ($savemsg) print_info_box($savemsg); ?>
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
+				<?php if (!isset($config['system']['zeroconf'])) print_error_box(sprintf(gettext("You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this service to clients."), "system_advanced.php"));?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			    <tr>
 			      <td colspan="2" valign="top" class="optsect_t">
@@ -162,7 +163,7 @@ function enable_change(enable_change) {
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
 							<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
-							<?=sprintf(gettext("You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this service to iTunes clients."), "system_advanced.php");?>
+							<?=sprintf(gettext("You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this service to clients."), "system_advanced.php");?>
 						</td>
 					</tr>
 			  </table>
