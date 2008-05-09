@@ -24,10 +24,14 @@ do-build:
 
 do-install:
 	# Install kernel module.
-	@${CP} -pv /usr/src/sys/modules/geom/geom_raid5/geom_raid5.ko ${FREENAS_ROOTFS}/boot/kernel
+	@${CP} -pv /usr/obj/usr/src/sys/modules/geom/geom_raid5/geom_raid5.ko ${FREENAS_ROOTFS}/boot/kernel
 
 	# Install application.
 	@${LN} -f -v -s /sbin/geom ${FREENAS_ROOTFS}/sbin/graid5
-	@${INSTALL_PROGRAM} -v /usr/src/sbin/geom/class/raid5/geom_raid5.so ${FREENAS_ROOTFS}/lib/geom
+	@${INSTALL_PROGRAM} -v /usr/obj/usr/src/sbin/geom/class/raid5/geom_raid5.so ${FREENAS_ROOTFS}/lib/geom
+
+pre-clean:
+	@${MAKE} -C /usr/src/sys/modules/geom/geom_raid5 clean obj
+	@${MAKE} -C /usr/src/sbin/geom/class/raid5 clean obj
 
 .include <bsd.port.mk>
