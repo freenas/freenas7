@@ -52,7 +52,6 @@ Permanent restrictions:
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
-- Starting Dynamic DNS via WebGUI fails. Workaround: Reboot system after configuration or start process via '/etc/rc.d/inadyn start' on console. 
 
 NEED TESTING:
 - IPv6: auto mode
