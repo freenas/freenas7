@@ -105,6 +105,10 @@ create_conf()
 			-o "_daap._tcp. local." -n \
 			-v "//daap/port" -n \
 			-n \
+			-v "//daap/servername" -n \
+			-o "_rsp._tcp. local." -n \
+			-v "//daap/port" -n \
+			-n \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc >> ${mdnsresponder_config}
 }
