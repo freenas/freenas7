@@ -10,7 +10,8 @@ DISTNAME=						${PORTNAME}-SVN-578
 
 LIB_DEPENDS+=			sqlite3:${PORTSDIR}/databases/sqlite3 \
 									tag:${PORTSDIR}/audio/taglib \
-									pcre.0:${PORTSDIR}/devel/pcre
+									pcre.0:${PORTSDIR}/devel/pcre \
+									uuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid
 
 USE_AUTOTOOLS=		autoconf:261
 USE_GNOME=				libxml2
