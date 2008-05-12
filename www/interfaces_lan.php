@@ -81,7 +81,7 @@ if ($_POST) {
 	$reqdfieldsn = array();
 	$reqdfieldst = array();
 
-	if ($_POST['type'] == "Static")   {
+	if ($_POST['type'] === "Static") {
 		$reqdfields = explode(" ", "ipaddr subnet");
 		$reqdfieldsn = array(gettext("IP address"),gettext("Subnet bit count"));
 
@@ -93,7 +93,7 @@ if ($_POST) {
 			$input_errors[] = gettext("A valid network bit count (1-32) must be specified.");
 	}
 
-	if ($_POST['ipv6type'] == "Static")   {
+	if ($_POST['ipv6type'] === "Static") {
 		$reqdfields = array_merge($reqdfields,explode(" ", "ipv6addr ipv6subnet"));
 		$reqdfieldsn = array_merge($reqdfieldsn,array(gettext("IPv6 address"),gettext("Prefix")));
 
@@ -191,20 +191,20 @@ function type_change() {
 			document.iform.ipaddr.readOnly = 0;
 			document.iform.subnet.readOnly = 0;
 			document.iform.gateway.readOnly = 0;
-			
+
 			showElementById('dhcpclientidentifier_tr','hide');
 			showElementById('dhcphostname_tr','hide');
-			
+
 			break;
 
     case 1: /* DHCP */
 			document.iform.ipaddr.readOnly = 1;
 			document.iform.subnet.readOnly = 1;
 			document.iform.gateway.readOnly = 1;
-			
+
 			showElementById('dhcpclientidentifier_tr','show');
 			showElementById('dhcphostname_tr','show');
-			
+
 			break;
   }
 }
