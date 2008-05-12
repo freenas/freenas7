@@ -135,10 +135,8 @@
 	<!--
 	<vlans>
 		<vlan>
-			<id>0</id>
-			<ipaddr>xxx.xxx.xxx.xxx</ipaddr>
-			<subnet>32</subnet>
-			<if>re0</if>
+			<tag>x</tag>
+			<if>xxx</if>
 			<desc></desc>
 		</vlan>
 	</vlans>

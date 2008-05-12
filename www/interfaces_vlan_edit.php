@@ -42,15 +42,11 @@ if (!is_array($config['vlans']['vlan']))
 $a_vlans = &$config['vlans']['vlan'];
 
 if (isset($id) && $a_vlans[$id]) {
-	$pconfig['vlanid'] = $a_vlans[$id]['id'];
-	$pconfig['ipaddr'] = $a_vlans[$id]['ipaddr'];
-	$pconfig['subnet'] = $a_vlans[$id]['subnet'];
+	$pconfig['tag'] = $a_vlans[$id]['tag'];
 	$pconfig['if'] = $a_vlans[$id]['if'];
 	$pconfig['desc'] = $a_vlans[$id]['desc'];
 } else {
-	$pconfig['vlanid'] = get_nextvlan_id();
-	$pconfig['ipaddr'] = "";
-	$pconfig['subnet'] = 32;
+	$pconfig['tag'] = get_nextvlan_tag();
 	$pconfig['if'] = "";
 	$pconfig['desc'] = "";
 }
@@ -60,14 +56,14 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	// Input validation.
-	$reqdfields = explode(" ", "if vlanid ipaddr subnet");
-	$reqdfieldsn = array(gettext("Physical interface"), gettext("VLAN ID"), gettext("IP address"),gettext("Subnet bit count"));
-	$reqdfieldst = explode(" ", "string numeric ipaddr subnet");
+	$reqdfields = explode(" ", "if tag");
+	$reqdfieldsn = array(gettext("Physical interface"), gettext("VLAN tag"));
+	$reqdfieldst = explode(" ", "string numeric");
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-	if (($_POST['vlanid'] < '1') || ($_POST['vlanid'] > '4094')) {
+	if (($_POST['tag'] < '1') || ($_POST['tag'] > '4094')) {
 		$input_errors[] = gettext("The VLAN ID must be between 1 and 4094.");
 	}
 
@@ -75,17 +71,15 @@ if ($_POST) {
 		if (isset($id) && ($a_vlans[$id]) && ($a_vlans[$id] === $vlan))
 			continue;
 
-		if (($vlan['if'] == $_POST['if']) && ($vlan['id'] == $_POST['vlanid'])) {
-			$input_errors[] = sprintf(gettext("A VLAN with the ID %s is already defined on this interface."), $vlan['id']);
+		if (($vlan['if'] == $_POST['if']) && ($vlan['tag'] == $_POST['tag'])) {
+			$input_errors[] = sprintf(gettext("A VLAN with the tag %s is already defined on this interface."), $vlan['tag']);
 			break;
 		}
 	}
 
 	if (!$input_errors) {
 		$vlan = array();
-		$vlan['id'] = $_POST['vlanid'];
-		$vlan['ipaddr'] = $_POST['ipaddr'];
-		$vlan['subnet'] = $_POST['subnet'];
+		$vlan['tag'] = $_POST['tag'];
 		$vlan['if'] = $_POST['if'];
 		$vlan['desc'] = $_POST['desc'];
 
@@ -102,25 +96,21 @@ if ($_POST) {
 	}
 }
 
-// Get next vlan id.
-// Return next free vlan id.
-function get_nextvlan_id() {
+// Get next vlan tag.
+// Return next free vlan tag.
+function get_nextvlan_tag() {
 	global $config;
 
-	// Get next free user id.
-	$id = 1;
-
-	// Check if id is already in usage. If the user did not press the 'Apply'
-	// button 'pw' did not recognize that there are already several new users
-	// configured because the user db is not updated until 'Apply' is pressed.
+	$tag = 1;
 	$a_vlan = $config['vlans']['vlan'];
-	if (false !== array_search_ex(strval($id), $a_vlan, "id")) {
+
+	if (false !== array_search_ex(strval($tag), $a_vlan, "tag")) {
 		do {
-			$id++; // Increase id until a unused one is found.
-		} while (false !== array_search_ex(strval($id), $a_vlan, "id"));
+			$tag++; // Increase id until a unused one is found.
+		} while (false !== array_search_ex(strval($tag), $a_vlan, "tag"));
 	}
 
-	return $id;
+	return $tag;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -139,19 +129,7 @@ function get_nextvlan_id() {
 			<form action="interfaces_vlan_edit.php" method="post" name="iform" id="iform">
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php $a_if = array(); foreach (get_interface_list() as $ifk => $ifv) { $a_if[$ifk] = "{$ifk} ({$ifv['mac']})"; };?>
-					<?php html_inputbox("vlanid", gettext("VLAN ID"), $pconfig['vlanid'], gettext("802.1Q VLAN ID (between 1 and 4094)."), true, 4);?>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("IP address"); ?></td>
-						<td width="78%" class="vtable">
-							<input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
-							/
-							<select name="subnet" class="formfld" id="subnet">
-							<?php for ($i = 32; $i > 0; $i--):?>
-							<option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected";?>><?=$i;?></option>
-							<?php endfor;?>
-							</select>
-						</td>
-					</tr>
+					<?php html_inputbox("tag", gettext("VLAN tag"), $pconfig['tag'], gettext("802.1Q VLAN tag (between 1 and 4094)."), true, 4);?>
 					<?php html_combobox("if", gettext("Physical interface"), $pconfig['if'], $a_if, gettext(""), true);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 			    <tr>
