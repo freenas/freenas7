@@ -323,6 +323,7 @@ device		iwi
 device		ipw
 
 device		lagg			# Link aggregation interface
+device		vlan			# IEEE 802.1Q VLAN Support
 
 # USB support
 device		udav			# Davicom DM910 USB Ethernet driver
