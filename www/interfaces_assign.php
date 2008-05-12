@@ -159,13 +159,21 @@ if ($_GET['act'] == "add") {
 	exit;
 }
 ?>
-<?php include("fbegin.inc"); ?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0)); ?>
-<form action="interfaces_assign.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	  <tr> 
-	    <td class="tabcont">
+<?php include("fbegin.inc");?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabnavtbl">
+		  <ul id="tabnav">
+				<li class="tabact"><a href="interfaces_assign.php" title="<?=gettext("Reload page");?>"><?=gettext("Management");?></a></li>
+				<li class="tabinact"><a href="interfaces_vlan.php"><?=gettext("VLAN");?></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="tabcont">
+			<form action="interfaces_assign.php" method="post" name="iform" id="iform">
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table border="0" cellpadding="0" cellspacing="0">
 					<tr> 
 						<td class="listhdrr"><?=gettext("Interface"); ?></td>
@@ -221,8 +229,8 @@ if ($_GET['act'] == "add") {
 					<span class="red"><strong><?=gettext("Warning"); ?>:</strong></span><br>
 					<?php echo sprintf(gettext("After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"), get_product_name());?>
 				</span>
-			</td>
-		</tr>
-	</table>
-</form>
-<?php include("fend.inc"); ?>
+			</form>
+		</td>
+	</tr>
+</table>
+<?php include("fend.inc");?>
