@@ -336,6 +336,7 @@ device		nxge		# Neterion Xframe 10GbE Server/Storage
 device          udav                    # Davicom DM910 USB Ethernet driver
 
 device          lagg                    # Link aggregation interface
+device					vlan										# IEEE 802.1Q VLAN Support
 
 # GEOM classes
 options         GEOM_ELI                # GELI filesystem encryption

@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: netif
@@ -7,13 +7,23 @@
 # KEYWORD: nojail
 
 . /etc/rc.subr
+. /etc/network.subr
+. /etc/configxml.subr
 
 name="network"
 start_cmd="network_start"
 stop_cmd=":"
+cloneup_cmd="clone_up"
+clonedown_cmd="clone_down"
+cloneup_precmd="clone_conf"
+clonedown_precmd="clone_conf"
+extra_commands="cloneup clonedown"
 
 network_start()
 {
+	# Create cloned interfaces
+	clone_up
+
 	local _result
 	# Bring up network interfaces
 	eval /etc/rc.d.php/netif
@@ -23,6 +33,25 @@ network_start()
 	/sbin/ifconfig
 
 	return ${_result}
+}
+
+clone_conf()
+{
+	local _if _tag _cloned_interfaces
+
+	# Update rc.conf.
+	_cloned_interfaces=`/usr/local/bin/xml sel -t -m "//vlans/vlan" \
+		-v "concat('vlan',tag,' ')" \
+		${configxml_file} | /usr/local/bin/xml unesc`
+	eval /usr/local/sbin/rconf attribute set "cloned_interfaces" "${_cloned_interfaces}"	
+
+	/usr/local/bin/xml sel -t -m "//vlans/vlan" \
+		-v "concat(if,' ',tag)" \
+		-i "position() != last()" -n -b \
+		${configxml_file} | /usr/local/bin/xml unesc | \
+		while read _if _tag; do
+			eval /usr/local/sbin/rconf attribute set "ifconfig_vlan${_tag}" "vlan ${_tag} vlandev ${_if}"
+		done
 }
 
 load_rc_config ${name}
