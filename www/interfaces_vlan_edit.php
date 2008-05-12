@@ -30,37 +30,37 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Interfaces"), gettext("Assign network ports"), gettext("Edit VLAN"));
+$id = $_GET['id'];
+if (isset($_POST['id']))
+	$id = $_POST['id'];
+
+$pgtitle = array(gettext("Interfaces"), gettext("Management"), gettext("VLAN"), gettext("Edit"));
 
 if (!is_array($config['vlans']['vlan']))
 	$config['vlans']['vlan'] = array();
 
 $a_vlans = &$config['vlans']['vlan'];
 
-$portlist = get_interface_list();
-
-$id = $_GET['id'];
-if (isset($_POST['id']))
-	$id = $_POST['id'];
-
 if (isset($id) && $a_vlans[$id]) {
 	$pconfig['if'] = $a_vlans[$id]['if'];
 	$pconfig['tag'] = $a_vlans[$id]['tag'];
-	$pconfig['descr'] = $a_vlans[$id]['descr'];
+	$pconfig['desc'] = $a_vlans[$id]['desc'];
 }
 
 if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
+	// Input validation.
 	$reqdfields = explode(" ", "if tag");
-	$reqdfieldsn = explode(",", "Parent interface,VLAN tag");
+	$reqdfieldsn = array(gettext("Parent interface"), gettext("VLAN tag"));
+	$reqdfieldst = explode(" ", "string numeric");
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
-	if ($_POST['tag'] && (!is_numericint($_POST['tag']) || ($_POST['tag'] < '1') || ($_POST['tag'] > '4094'))) {
-		$input_errors[] = "The VLAN tag must be an integer between 1 and 4094.";
+	if (($_POST['tag'] < '1') || ($_POST['tag'] > '4094')) {
+		$input_errors[] = gettext("The VLAN tag must be between 1 and 4094.");
 	}
 
 	foreach ($a_vlans as $vlan) {
@@ -68,7 +68,7 @@ if ($_POST) {
 			continue;
 
 		if (($vlan['if'] == $_POST['if']) && ($vlan['tag'] == $_POST['tag'])) {
-			$input_errors[] = "A VLAN with the tag {$vlan['tag']} is already defined on this interface.";
+			$input_errors[] = sprintf(gettext("A VLAN with the tag %s is already defined on this interface."), $vlan['tag']);
 			break;
 		}
 	}
@@ -77,7 +77,7 @@ if ($_POST) {
 		$vlan = array();
 		$vlan['if'] = $_POST['if'];
 		$vlan['tag'] = $_POST['tag'];
-		$vlan['descr'] = $_POST['descr'];
+		$vlan['desc'] = $_POST['desc'];
 
 		if (isset($id) && $a_vlans[$id])
 			$a_vlans[$id] = $vlan;
@@ -86,57 +86,43 @@ if ($_POST) {
 
 		write_config();
 		touch($d_sysrebootreqd_path);
+
 		header("Location: interfaces_vlan.php");
 		exit;
 	}
 }
 ?>
 <?php include("fbegin.inc");?>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<form action="interfaces_vlan_edit.php" method="post" name="iform" id="iform">
-	<table width="100%" border="0" cellpadding="0" cellspacing="0">
-	  <tr>
-	    <td class="tabcont">
+<?php if ($input_errors) print_input_errors($input_errors);?>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabnavtbl">
+		  <ul id="tabnav">
+				<li class="tabinact"><a href="interfaces_assign.php"><?=gettext("Management"); ?> </a></li>
+				<li class="tabact"><a href="interfaces_vlan.php" title="<?=gettext("Reload page");?>" ><?=gettext("VLAN");?></a></li>
+			</ul>
+		</td>
+	</tr>
+  <tr>
+    <td class="tabcont">
+			<form action="interfaces_vlan_edit.php" method="post" name="iform" id="iform">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq">Parent interface</td>
-			      <td width="78%" class="vtable">
-			        <select name="if" class="formfld">
-			          <?php foreach ($portlist as $ifn => $ifinfo):?>
-			          <option value="<?=$ifn;?>" <?php if ($ifn == $pconfig['if']) echo "selected"; ?>>
-			          <?=htmlspecialchars($ifn . " (" . $ifinfo['mac'] . ")");?>
-			          </option>
-			          <?php endforeach;?>
-			        </select></td>
-			    </tr>
-					<tr>
-			      <td valign="top" class="vncellreq">VLAN tag </td>
-			      <td class="vtable">
-			        <input name="tag" type="text" class="formfld" id="tag" size="6" value="<?=htmlspecialchars($pconfig['tag']);?>">
-			        <br>
-			        <span class="vexpl">802.1Q VLAN tag (between 1 and 4094) </span>
-						</td>
-					</tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncell">Description</td>
-			      <td width="78%" class="vtable">
-			        <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
-			        <br> <span class="vexpl">You may enter a description here
-			        for your reference (not parsed).</span>
-						</td>
-			    </tr>
+					<?php $a_if = array(); foreach (get_interface_list() as $ifk => $ifv) { $a_if[$ifk] = "{$ifk} ({$ifv['mac']})"; };?>
+					<?php html_combobox("if", gettext("Parent interface"), $pconfig['if'], $a_if, gettext(""), true);?>
+					<?php html_inputbox("tag", gettext("VLAN tag"), $pconfig['tag'], gettext("802.1Q VLAN tag (between 1 and 4094)."), true, 6);?>
+					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vlans[$id])) ? gettext("Save") : gettext("Add");?>">
 			        <?php if (isset($id) && $a_vlans[$id]): ?>
 			        <input name="id" type="hidden" value="<?=$id;?>">
 			        <?php endif;?>
 			      </td>
 			    </tr>
 			  </table>
-			</td>
-		</tr>
-	</table>
-</form>
+			</form>
+		</td>
+	</tr>
+</table>
 <?php include("fend.inc");?>
