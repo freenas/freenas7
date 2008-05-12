@@ -273,6 +273,13 @@ EOF
       <file_settings>
         <file ext="mp3"><type>AUDIO_ITEM_MUSIC_TRACK</type></file>
         <file ext="jpg"><type>IMAGE_ITEM_PHOTO</type></file>
+        <file ext="avi">
+          <type>VIDEO_ITEM</type>
+          <mime_type>video/avi</mime_type>
+        </file>
+        <file ext="asf">
+          <mime_type>video/x-ms-wmv</mime_type>	
+        </file>
       </file_settings>
     </device>
     <device name="Terratec_Noxon_iRadio" virtual="default" enabled="false">

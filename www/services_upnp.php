@@ -122,6 +122,10 @@ if($_GET['act'] == "del") {
 }
 
 $a_interface = get_interface_list();
+
+// Use first interface as default if it is not set.
+if (empty($pconfig['if']) && is_array($a_interface))
+	$pconfig['if'] = key($a_interface);
 ?>
 <?php include("fbegin.inc");?>
 <script language="JavaScript">
