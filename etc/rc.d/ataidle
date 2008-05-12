@@ -17,6 +17,11 @@ echo -n "Initializing Acoustic/Standby/APM/UDMA on ATA disks: "
 	-i "position() != last()" -n -b \
 	${configxml_file} | /usr/local/bin/xml unesc | \
 	while read _name _devicespecialfile _transfermode _harddiskstandby _apm _acoustic; do
+		# Skip CD/DVD devices
+		if [ "acd" = `/bin/expr -- "${_name}" : '^\([a-zA-Z]*\).*'` ]; then
+			continue
+		fi
+
 		# If UDMA mode is forced, launch atacontrol
 		if [ "auto" != "${_transfermode}" ]; then
 			/sbin/atacontrol mode ${_name} ${_transfermode} > /dev/null 2>&1
