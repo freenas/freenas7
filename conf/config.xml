@@ -137,7 +137,7 @@
 		<vlan>
 			<tag></tag>
 			<if></if>
-			<descr></descr>
+			<desc></desc>
 		</vlan>
 	</vlans>
 	-->
