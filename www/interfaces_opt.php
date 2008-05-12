@@ -1,23 +1,23 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	interfaces_opt.php
 	part of FreeNAS (http://www.freenas.org)
 	Based on m0n0wall (http://m0n0.ch/wall)
-	
+
 	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -36,7 +36,7 @@ if ($_GET['index'])
 	$index = $_GET['index'];
 else if ($_POST['index'])
 	$index = $_POST['index'];
-	
+
 if (!$index)
 	exit;
 
@@ -77,13 +77,11 @@ if (isset($optcfg['wireless'])) {
 }
 
 if ($_POST) {
-
 	unset($input_errors);
 	$pconfig = $_POST;
 
-	/* input validation */
-	if ($_POST['enable'])
-	{
+	// Input validation.
+	if ($_POST['enable']) {
 		/* description unique? */
 		for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 			if ($i != $index) {
@@ -92,34 +90,34 @@ if ($_POST) {
 				}
 			}
 		}
-			
-	
-		if ($_POST['type'] == "Static") {
+
+		if ($_POST['type'] === "Static") {
 			$reqdfields = explode(" ", "descr ipaddr subnet");
 			$reqdfieldsn = array(gettext("Description"),gettext("IP address"),gettext("Subnet bit count"));
 
 			do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+			if (($_POST['ipaddr'] && !is_ipv4addr($_POST['ipaddr'])))
+				$input_errors[] = gettext("A valid IP address must be specified.");
+			if ($_POST['subnet'] && !filter_var($_POST['subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 32))))
+				$input_errors[] = gettext("A valid network bit count (1-32) must be specified.");
 		}
-		if ($_POST['ipv6type'] == "Static")   {
+
+		if ($_POST['ipv6type'] === "Static") {
 			$reqdfields = array_merge($reqdfields,explode(" ", "ipv6addr ipv6subnet"));
 			$reqdfieldsn = array_merge($reqdfieldsn,array(gettext("IPv6 address"),gettext("Prefix")));
-	
+
 			do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+
+			if (($_POST['ipv6addr'] && !is_ipv6addr($_POST['ipv6addr'])))
+				$input_errors[] = gettext("A valid IPv6 address must be specified.");
+			if ($_POST['ipv6subnet'] && !filter_var($_POST['ipv6subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))))
+				$input_errors[] = gettext("A valid prefix (1-128) must be specified.");
+			if (($_POST['mtu'] && !is_mtu($_POST['mtu'])))
+				$input_errors[] = gettext("A valid mtu size must be specified.");
 		}
-		
-		if (($_POST['ipaddr'] && !is_ipv4addr($_POST['ipaddr'])))
-			$input_errors[] = gettext("A valid IP address must be specified.");
-		if ($_POST['subnet'] && !filter_var($_POST['subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 32))))
-			$input_errors[] = gettext("A valid network bit count (1-32) must be specified.");
-		if (($_POST['ipv6addr'] && !is_ipv6addr($_POST['ipv6addr'])))
-			$input_errors[] = gettext("A valid IPv6 address must be specified.");
-		if ($_POST['ipv6subnet'] && !filter_var($_POST['ipv6subnet'], FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))))
-			$input_errors[] = gettext("A valid prefix (1-128) must be specified.");
-		if (($_POST['mtu'] && !is_mtu($_POST['mtu'])))
-			$input_errors[] = gettext("A valid mtu size must be specified.");
-	
 	}
-	
+
 	/* Wireless interface? */
 	if (isset($optcfg['wireless'])) {
 		$wi_input_errors = wireless_config_post();
@@ -127,7 +125,7 @@ if ($_POST) {
 			$input_errors = array_merge($input_errors, $wi_input_errors);
 		}
 	}
-	
+
 	if (!$input_errors) {
     if(strcmp($_POST['type'],"Static") == 0) {
 		$optcfg['ipaddr'] = $_POST['ipaddr'];
@@ -150,7 +148,7 @@ if ($_POST) {
 		$optcfg['mediaopt'] = $_POST['mediaopt'];
 
 		write_config();
-		
+
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
@@ -229,7 +227,7 @@ function calc_netmask_bits(ipaddr) {
             return 0;
         if (adr[0] == 0 && adr[1] == 0 && adr[2] == 0 && adr[3] == 0)
             return 0;
-		
+
 		if (adr[0] <= 127)
 			return 23;
 		else if (adr[0] <= 191)
@@ -305,15 +303,15 @@ function media_change() {
 }
 // -->
 </script>
-<?php if ($input_errors) print_input_errors($input_errors); ?>
-<?php if ($savemsg) print_info_box($savemsg); ?>
-<?php if ($optcfg['if']): ?>
+<?php if ($input_errors) print_input_errors($input_errors);?>
+<?php if ($savemsg) print_info_box($savemsg);?>
+<?php if ($optcfg['if']):?>
             <form action="interfaces_opt.php" method="post" name="iform" id="iform">
             	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 							  <tr>
 									<td class="tabcont">
 			              <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			                <tr> 
+			                <tr>
 			                  <td colspan="2" valign="top" class="optsect_t">
 			                    <table border="0" cellspacing="0" cellpadding="0" width="100%">
 			                      <tr>
@@ -323,28 +321,28 @@ function media_change() {
 			                    </table>
 			                  </td>
 			                </tr>
-			                <tr> 
+			                <tr>
 			                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Type");?></td>
 			                  <td width="78%" class="vtable">
 			                    <select name="type" class="formfld" id="type" onchange="type_change()">
 			                      <?php $opts = split(" ", "Static DHCP"); foreach ($opts as $opt): ?>
-			                      <option <?php if ($opt == $pconfig['type']) echo "selected";?>> 
+			                      <option <?php if ($opt == $pconfig['type']) echo "selected";?>>
 			                        <?=htmlspecialchars($opt);?>
 			                      </option>
 			                      <?php endforeach; ?>
 			                    </select>
 			                  </td>
 			                </tr>
-			                <tr> 
+			                <tr>
 			                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
-			                  <td width="78%" class="vtable"> 
+			                  <td width="78%" class="vtable">
 			                    <input name="descr" type="text" class="formfld" id="descr" size="40" value="<?=htmlspecialchars($pconfig['descr']);?>">
 			                    <br><span class="vexpl"><?=gettext("Enter a description (name) for the interface here.");?></span>
 			                  </td>
 			                </tr>
-			                <tr> 
+			                <tr>
 			                  <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv4 address"); ?></td>
-			                  <td width="78%" class="vtable"> 
+			                  <td width="78%" class="vtable">
 			                    <input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
 			                    /
 													<select name="subnet" class="formfld" id="subnet">
@@ -355,7 +353,7 @@ function media_change() {
 			                    <img name="calcnetmaskbits" src="calc.gif" title="<?=gettext("Calculate netmask bits");?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
 			                  </td>
 			                </tr>
-			                <tr id="dhcpclientidentifier_tr"> 
+			                <tr id="dhcpclientidentifier_tr">
 			                  <td width="22%" valign="top" class="vncellreq"><?=gettext("Client Identifier");?></td>
 			                  <td width="78%" class="vtable">
 			                    <input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars(get_macaddr($optcfg['if']));?>" readonly>
@@ -380,16 +378,16 @@ function media_change() {
 									      <td width="78%" class="vtable">
 									  			<select name="ipv6type" class="formfld" id="ipv6type" onchange="ipv6_type_change()">
 									          <?php $opts = split(" ", "Static Auto"); foreach ($opts as $opt): ?>
-									          <option <?php if ($opt == $pconfig['ipv6type']) echo "selected";?>> 
+									          <option <?php if ($opt == $pconfig['ipv6type']) echo "selected";?>>
 									            <?=htmlspecialchars($opt);?>
 									          </option>
 									          <?php endforeach; ?>
 									        </select>
 									      </td>
 									    </tr>
-									    <tr> 
+									    <tr>
 									      <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv6 address"); ?></td>
-									      <td width="78%" class="vtable"> 
+									      <td width="78%" class="vtable">
 									        <input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="30" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
 											 /
 											 <input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
@@ -404,26 +402,26 @@ function media_change() {
 			                <tr>
 			                  <td valign="top" class="vncell"><?=gettext("MTU"); ?></td>
 			                  <td class="vtable">
-													<input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>"> 
+													<input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>">
 			                  	<br><?=gettext("Standard MTU is 1500, use 9000 for jumbo frame.");?>
 			                  </td>
 			                </tr>
-											<tr> 
+											<tr>
 			                  <td width="22%" valign="top" class="vncell"><?=gettext("Device polling"); ?></td>
-			                  <td width="78%" class="vtable"> 
+			                  <td width="78%" class="vtable">
 			                    <input name="polling" type="checkbox" id="polling" value="yes" <?php if ($pconfig['polling']) echo "checked"; ?>>
 			                    <?=gettext("Enable device polling");?><br/>
 													<span class="vexpl"><?=gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling.");?></span>
 												</td>
 			                </tr>
-			                 <tr> 
+			                 <tr>
 			                  <td width="22%" valign="top" class="vncell"><?=gettext("Speed"); ?></td>
 			                  <td width="78%" class="vtable">
 													<select name="media" class="formfld" id="media" onchange="media_change()">
 			                      <?php $types = explode(",", "autoselect,10baseT/UTP,100baseTX,1000baseTX,1000baseSX");
 								        $vals = explode(" ", "autoselect 10baseT/UTP 100baseTX 1000baseTX 1000baseSX");
 								  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-			                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['media']) echo "selected";?>> 
+			                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['media']) echo "selected";?>>
 			                      <?=htmlspecialchars($types[$j]);?>
 			                      </option>
 			                      <?php endfor; ?>
@@ -436,7 +434,7 @@ function media_change() {
 			                      <?php $types = explode(",", "half-duplex,full-duplex");
 								        $vals = explode(" ", "half-duplex full-duplex");
 								  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-			                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mediaopt']) echo "selected";?>> 
+			                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mediaopt']) echo "selected";?>>
 			                      <?=htmlspecialchars($types[$j]);?>
 			                      </option>
 			                      <?php endfor; ?>
@@ -446,13 +444,13 @@ function media_change() {
 							if (isset($optcfg['wireless']))
 								wireless_config_print();
 							?>
-			                <tr> 
+			                <tr>
 			                  <td width="22%" valign="top">&nbsp;</td>
-			                  <td width="78%"> 
-			                    <input name="index" type="hidden" value="<?=$index;?>"> 
-							  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true);bridge_change(true)"> 
+			                  <td width="78%">
+			                    <input name="index" type="hidden" value="<?=$index;?>">
+							  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true);bridge_change(true)">
 			                  </td>
-			                </tr>      
+			                </tr>
 			              </table>
 			       			</td>
 								</tr>
@@ -463,7 +461,7 @@ function media_change() {
 enable_change(false);
 //-->
 </script>
-<?php else: ?>
+<?php else:?>
 <strong>Optional <?=$index;?> has been disabled because there is no OPT<?=$index;?> interface.</strong>
 <?php endif; ?>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
