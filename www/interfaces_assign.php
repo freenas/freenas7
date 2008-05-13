@@ -204,7 +204,7 @@ if ($_GET['act'] == "add") {
 							  <option value="<?=$portname;?>" <?php if ($portname == $iface['if']) echo "selected";?>>
 							  	<?php
 									if ($portinfo['isvlan']) {
-										$descr = "VLAN {$portinfo['tag']} on {$portinfo['if']}";
+										$descr = "VLAN{$portinfo['tag']} on {$portinfo['if']}";
 										if ($portinfo['descr']) {
 											$descr .= " (" . $portinfo['descr'] . ")";
 										}
