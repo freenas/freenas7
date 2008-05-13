@@ -59,6 +59,7 @@ Majors changes:
 - Refactor ActiveDirectory WebGUI + services.
 - Add ability to Webserver WebGUI to configure URL's requiring authentication.
 - Replace Adaptec SCSI RAID administration tool aaccli with arcconf.
+- Upgrade Adaptec AACRAID 32- and 64-bit driver to Ver. 5.2.0 Build 15727.
 - Enhance 'Disks/Encryption/Tools' WebGUI to backup/restore metadata of encrypted disks.
 - Replace UPnP media player MediaTomb with Fuppes.
 - Add 'System: Advanced: rc.conf' WebGUI to add additional options to /etc/rc.conf. This is
