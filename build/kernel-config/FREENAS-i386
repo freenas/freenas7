@@ -286,7 +286,7 @@ device		rue		# RealTek RTL8150 USB Ethernet
 # FireWire support
 device		firewire	# FireWire bus code
 device		sbp		# SCSI over FireWire (Requires scbus and da)
-device		fwe		# Ethernet over FireWire (non-standard!)
+#device		fwe		# Ethernet over FireWire (non-standard!)
 
 #####################################################################
 # FREENAS
