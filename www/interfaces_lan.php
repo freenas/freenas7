@@ -189,7 +189,7 @@ function type_change() {
   switch(document.iform.type.selectedIndex) {
 		case 0: /* Static */
 			document.iform.ipaddr.readOnly = 0;
-			document.iform.subnet.readOnly = 0;
+			document.iform.subnet.disabled = 0;
 			document.iform.gateway.readOnly = 0;
 
 			showElementById('dhcpclientidentifier_tr','hide');
@@ -199,7 +199,7 @@ function type_change() {
 
     case 1: /* DHCP */
 			document.iform.ipaddr.readOnly = 1;
-			document.iform.subnet.readOnly = 1;
+			document.iform.subnet.disabled = 1;
 			document.iform.gateway.readOnly = 1;
 
 			showElementById('dhcpclientidentifier_tr','show');
