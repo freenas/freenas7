@@ -204,7 +204,7 @@ function bridge_change(enable_over) {
 			endis = true;
 		}
 
-		document.iform.ipaddr.disabled = endis;
+		document.iform.ipaddr.readOnly = endis;
 		document.iform.subnet.disabled = endis;
 	}
 
@@ -215,8 +215,8 @@ function bridge_change(enable_over) {
 			endis = true;
 		}
 
-		document.iform.ipv6addr.disabled = endis;
-		document.iform.ipv6subnet.disabled = endis;
+		document.iform.ipv6addr.readOnly = endis;
+		document.iform.ipv6subnet.readOnly = endis;
 	}
 }
 
@@ -250,7 +250,7 @@ function type_change() {
 			var endis = !(document.iform.enable.checked);
 
       document.iform.ipaddr.readOnly = endis;
-    	document.iform.subnet.readOnly = endis;
+    	document.iform.subnet.disabled = endis;
 
     	showElementById('dhcpclientidentifier_tr','hide');
       showElementById('dhcphostname_tr','hide');
@@ -259,7 +259,7 @@ function type_change() {
 
     case 1: /* DHCP */
       document.iform.ipaddr.readOnly = 1;
-    	document.iform.subnet.readOnly = 1;
+    	document.iform.subnet.disabled = 1;
 
 			showElementById('dhcpclientidentifier_tr','show');
     	showElementById('dhcphostname_tr','show');
