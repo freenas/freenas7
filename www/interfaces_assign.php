@@ -1,23 +1,23 @@
 #!/usr/local/bin/php
-<?php 
+<?php
 /*
 	interfaces_assign.php
 	part of m0n0wall (http://neon1.net/m0n0wall)
 	Copyright (C) 2003-2005 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Modified for FreeNAS (http://freenas.org) by Olivier Cochard-Labbe <olivier@freenas.org>
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -41,6 +41,16 @@ $pgtitle = array(gettext("Interfaces"), gettext("Management"));
 /* get list without VLAN interfaces */
 $portlist = get_interface_list();
 
+/* add VLAN interfaces */
+if (is_array($config['vlans']['vlan']) && count($config['vlans']['vlan'])) {
+	$i = 0;
+	foreach ($config['vlans']['vlan'] as $vlan) {
+		$portlist['vlan' . $i] = $vlan;
+		$portlist['vlan' . $i]['isvlan'] = true;
+		$i++;
+	}
+}
+
 if ($_POST) {
 	unset($input_errors);
 
@@ -62,10 +72,10 @@ if ($_POST) {
 			$errstr = gettext("Port ") . $portname .
 				gettext(" was assigned to ") . count($ifnames) .
 				gettext(" interfaces:");
-				
+
 			foreach ($portifmap[$portname] as $ifn)
 				$errstr .= " " . $ifn;
-			
+
 			$input_errors[] = $errstr;
 		}
 	}
@@ -76,7 +86,7 @@ if ($_POST) {
 			if (($ifname == 'lan') || (substr($ifname, 0, 3) == 'opt')) {
 				if (!is_array($ifport)) {
 					$config['interfaces'][$ifname]['if'] = $ifport;
-					
+
 					/* check for wireless interfaces, set or clear ['wireless'] */
 					if (preg_match($g['wireless_regex'], $ifport)) {
 						if (!is_array($config['interfaces'][$ifname]['wireless']))
@@ -101,21 +111,21 @@ if ($_POST) {
 
 if ($_GET['act'] == "del") {
 	$id = $_GET['id'];
-	
+
 	unset($config['interfaces'][$id]);	/* delete the specified OPTn */
 
 	/* shift down other OPTn interfaces to get rid of holes */
 	$i = substr($id, 3); /* the number of the OPTn port being deleted */
 	$i++;
-	
+
 	/* look at the following OPTn ports */
 	while (is_array($config['interfaces']['opt' . $i])) {
 		$config['interfaces']['opt' . ($i - 1)] =
 			$config['interfaces']['opt' . $i];
-		
+
 		if ($config['interfaces']['opt' . ($i - 1)]['descr'] == "OPT" . $i)
 			$config['interfaces']['opt' . ($i - 1)]['descr'] = "OPT" . ($i - 1);
-		
+
 		unset($config['interfaces']['opt' . $i]);
 		$i++;
 	}
@@ -131,11 +141,11 @@ if ($_GET['act'] == "add") {
 	$i = 1;
 	while (is_array($config['interfaces']['opt' . $i]))
 		$i++;
-	
+
 	$newifname = 'opt' . $i;
 	$config['interfaces'][$newifname] = array();
 	$config['interfaces'][$newifname]['descr'] = "OPT" . $i;
-	
+
 	/* Find an unused port for this interface */
 	foreach ($portlist as $portname => $portinfo) {
 		$portused = false;
@@ -152,7 +162,7 @@ if ($_GET['act'] == "add") {
 			break;
 		}
 	}
-	
+
 	write_config();
 	touch($d_sysrebootreqd_path);
 	header("Location: interfaces_assign.php");
@@ -175,9 +185,9 @@ if ($_GET['act'] == "add") {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table border="0" cellpadding="0" cellspacing="0">
-					<tr> 
-						<td class="listhdrr"><?=gettext("Interface"); ?></td>
-						<td class="listhdr"><?=gettext("Network port"); ?></td>
+					<tr>
+						<td class="listhdrr"><?=gettext("Interface");?></td>
+						<td class="listhdr"><?=gettext("Network port");?></td>
 						<td class="list">&nbsp;</td>
 					</tr>
 					<?php foreach ($config['interfaces'] as $ifname => $iface):
@@ -186,47 +196,50 @@ if ($_GET['act'] == "add") {
 					else
 						$ifdescr = strtoupper($ifname);
 					?>
-					<tr> 
+					<tr>
 						<td class="listlr" valign="middle"><strong><?=$ifdescr;?></strong></td>
 					  <td valign="middle" class="listr">
 							<select name="<?=$ifname;?>" class="formfld" id="<?=$ifname;?>">
-							  <?php foreach ($portlist as $portname => $portinfo): ?>
-							  <option value="<?=$portname;?>" <?php if ($portname == $iface['if']) echo "selected";?>> 
-							  <?php if ($portinfo['isvlan']) {
-							  			$descr = "VLAN {$portinfo['tag']} on {$portinfo['if']}";
-										if ($portinfo['descr'])
+							  <?php foreach ($portlist as $portname => $portinfo):?>
+							  <option value="<?=$portname;?>" <?php if ($portname == $iface['if']) echo "selected";?>>
+							  	<?php
+									if ($portinfo['isvlan']) {
+										$descr = "VLAN {$portinfo['tag']} on {$portinfo['if']}";
+										if ($portinfo['descr']) {
 											$descr .= " (" . $portinfo['descr'] . ")";
+										}
 										echo htmlspecialchars($descr);
-									  } else
+									} else {
 										echo htmlspecialchars($portname . " (" . $portinfo['mac'] . ")");
-							  ?>
+									}
+							  	?>
 							  </option>
-							  <?php endforeach; ?>
+							  <?php endforeach;?>
 							</select>
 						</td>
-						<td valign="middle" class="list"> 
-							<?php if (($ifname != 'lan') && ($ifname != 'wan')): ?>
-							<a href="interfaces_assign.php?act=del&id=<?=$ifname;?>"><img src="x.gif" title="<?=gettext("Delete interface"); ?>" width="17" height="17" border="0"></a> 
-							<?php endif; ?>
+						<td valign="middle" class="list">
+							<?php if (($ifname != 'lan') && ($ifname != 'wan')):?>
+							<a href="interfaces_assign.php?act=del&id=<?=$ifname;?>"><img src="x.gif" title="<?=gettext("Delete interface");?>" width="17" height="17" border="0"></a>
+							<?php endif;?>
 						</td>
 					</tr>
-				  <?php endforeach; ?>
-				  <?php if (count($config['interfaces']) < count($portlist)): ?>
+				  <?php endforeach;?>
+				  <?php if (count($config['interfaces']) < count($portlist)):?>
 				  <tr>
 						<td class="list" colspan="2"></td>
 						<td class="list" nowrap>
-							<a href="interfaces_assign.php?act=add"><img src="plus.gif" title="<?=gettext("Add interface"); ?>" width="17" height="17" border="0"></a>
+							<a href="interfaces_assign.php?act=add"><img src="plus.gif" title="<?=gettext("Add interface");?>" width="17" height="17" border="0"></a>
 						</td>
 				  </tr>
-				  <?php else: ?>
+				  <?php else:?>
 				  <tr>
 					<td class="list" colspan="3" height="10"></td>
 				  </tr>
-				  <?php endif; ?>
+				  <?php endif;?>
 				</table>
 				<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>"><br><br>
 				<span class="vexpl">
-					<span class="red"><strong><?=gettext("Warning"); ?>:</strong></span><br>
+					<span class="red"><strong><?=gettext("Warning");?>:</strong></span><br>
 					<?php echo sprintf(gettext("After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"), get_product_name());?>
 				</span>
 			</form>
