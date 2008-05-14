@@ -2,7 +2,8 @@
 
 # PROVIDE: NETWORKING NETWORK
 # REQUIRE: CONFIG
-# REQUIRE: netif routing resolv hosts
+# REQUIRE: netif netoptions routing network_ipv6
+# REQUIRE: resolv
 
 #	This is a dummy dependency, for services which require networking
 #	to be operational before starting.
