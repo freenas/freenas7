@@ -1,7 +1,7 @@
 PORTNAME=			openssh-portable
 PORTVERSION=	1.0
 PORTREVISION=	0
-PORTEPOCH=		2
+PORTEPOCH=		3
 CATEGORIES=		security
 COMMENT=			The portable version of OpenBSD's OpenSSH
 MAINTAINER=		votdev@gmx.de
@@ -27,6 +27,7 @@ do-install:
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/security/openssh-portable/work/openssh-*/sshd ${FREENAS_ROOTFS}/usr/sbin
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/security/openssh-portable/work/openssh-*/ssh ${FREENAS_ROOTFS}/usr/bin
 	@${INSTALL_PROGRAM} -v ${PORTSDIR}/security/openssh-portable/work/openssh-*/sftp-server ${FREENAS_ROOTFS}/usr/libexec
+	@${INSTALL_PROGRAM} -v ${PORTSDIR}/security/openssh-portable/work/openssh-*/ssh-keygen ${FREENAS_ROOTFS}/usr/local/bin
 	@${CP} -pv ${PORTSDIR}/security/openssh-portable/work/openssh-*/moduli ${FREENAS_ROOTFS}/etc/ssh
 
 # Create link to moduli file to prevent log entry:
