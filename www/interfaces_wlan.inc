@@ -27,8 +27,7 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
-
-$wlchannels = array(1,2,3,4,5,6,7,8,9,10,11,12,13,14);
+$wlchannels = range(1, 14);
 
 function wireless_config_init() {
 	global $optcfg, $pconfig;
