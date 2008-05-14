@@ -42,7 +42,6 @@
 name="network_ipv6"
 rcvar=`set_rcvar ipv6`
 start_cmd="network_ipv6_start"
-start_precmd="update_rcconf"
 
 network_ipv6_start()
 {
@@ -172,6 +171,10 @@ update_rcconf()
 		_id=$(( ${_id} - 1 ))
 	done
 }
+
+# Update rc.conf
+# Must be done before load_rc_config.
+update_rcconf
 
 load_rc_config $name
 run_rc_command "$1"

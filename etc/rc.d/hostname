@@ -41,7 +41,6 @@
 
 name="hostname"
 start_cmd="hostname_start"
-start_precmd="update_rcconf"
 restart_cmd="hostname_restart"
 stop_cmd=":"
 
@@ -97,6 +96,10 @@ update_rcconf()
 	_hostname=`configxml_get "concat(//system/hostname,'.',//system/domain)"`
 	eval /usr/local/sbin/rconf attribute set hostname "${_hostname}"
 }
+
+# Update rc.conf
+# Must be done before load_rc_config.
+update_rcconf
 
 load_rc_config $name
 run_rc_command "$1"

@@ -248,6 +248,7 @@ update_rcconf()
 }
 
 # Update rc.conf
+# Must be done before load_rc_config.
 update_rcconf
 
 load_rc_config $name
