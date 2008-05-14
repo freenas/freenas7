@@ -28,6 +28,7 @@
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
 # - Add hostname_restart
+# - Add update_rcconf
 #
 
 # PROVIDE: hostname
@@ -36,9 +37,11 @@
 
 . /etc/rc.subr
 . /etc/network.subr
+. /etc/configxml.subr
 
 name="hostname"
 start_cmd="hostname_start"
+start_precmd="update_rcconf"
 restart_cmd="hostname_restart"
 stop_cmd=":"
 
@@ -86,6 +89,13 @@ hostname_restart()
 	# Reset hostname
 	/bin/hostname ""
 	run_rc_command start
+}
+
+update_rcconf()
+{
+	local _hostname
+	_hostname=`configxml_get "concat(//system/hostname,'.',//system/domain)"`
+	eval /usr/local/sbin/rconf attribute set hostname "${_hostname}"
 }
 
 load_rc_config $name

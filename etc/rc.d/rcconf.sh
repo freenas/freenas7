@@ -12,37 +12,6 @@
 
 name="rcconf"
 
-sethostname()
-{
-	local _hostname
-
-	_hostname=`configxml_get "concat(//system/hostname,'.',//system/domain)"`
-
-	eval /usr/local/sbin/rconf attribute set hostname "${_hostname}"
-}
-
-setifconfig()
-{
-	local _ipaddress _if _interfaces _ifconf _subnet
-
-	_ipaddress=`configxml_get "//interfaces/lan/ipaddr"`
-	_if=`configxml_get "//interfaces/lan/if"`
-	_if=`get_if ${_if}`
-
-	case ${_ipaddress} in
-		dhcp)
-			_ifconf="DHCP"
-			;;
-		*)
-			_ifconf=`/usr/local/bin/xml sel -t -o "${_ipaddress}/" \
-				-v "//interfaces/lan/subnet" \
-				${configxml_file} | /usr/local/bin/xml unesc`
-			;;
-	esac
-
-	eval /usr/local/sbin/rconf attribute set "ifconfig_${_if}" "${_ifconf}"
-}
-
 updateservices()
 {
 	# Update rcvar's. Use settings from config.xml
@@ -96,12 +65,6 @@ echo -n "Updating rc.conf:"
 
 # Update services
 updateservices
-
-# Set hostname
-sethostname
-
-# Set interface configuration
-setifconfig
 
 # Set additional options.
 setoptions
