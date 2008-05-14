@@ -42,6 +42,7 @@ $pgtitle = array(gettext("Interfaces"), gettext("Management"));
 $portlist = get_interface_list();
 
 /* add VLAN interfaces */
+/*
 if (is_array($config['vlans']['vlan']) && count($config['vlans']['vlan'])) {
 	$i = 0;
 	foreach ($config['vlans']['vlan'] as $vlan) {
@@ -50,6 +51,7 @@ if (is_array($config['vlans']['vlan']) && count($config['vlans']['vlan'])) {
 		$i++;
 	}
 }
+*/
 
 if ($_POST) {
 	unset($input_errors);
