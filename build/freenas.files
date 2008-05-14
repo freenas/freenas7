@@ -527,3 +527,5 @@ etc/rc.d/local
 etc/rc.d/early.sh
 etc/rc.d/adjkerntz
 etc/rc.d/securelevel
+etc/rc.d/dhclient
+etc/rc.d/netoptions
