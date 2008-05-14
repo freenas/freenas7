@@ -533,3 +533,4 @@ etc/rc.d/adjkerntz
 etc/rc.d/securelevel
 etc/rc.d/dhclient
 etc/rc.d/netoptions
+etc/rc.d/power_profile
