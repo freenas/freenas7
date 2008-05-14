@@ -34,6 +34,7 @@
 require_once("config.inc");
 require_once("functions.inc");
 require_once("util.inc");
+require_once("rc.inc");
 require_once("tui.inc");
 
 $iflist = get_interface_list();
@@ -160,7 +161,8 @@ if (0 == $result) {
 
 	// Initialize interface
 	write_console("Initializing interface. Please wait...");
-	interfaces_lan_configure();
+	rc_update_service("netif");
+	rc_update_service("network_ipv6");
 }
 
 function autodetect_interface($ifname) {

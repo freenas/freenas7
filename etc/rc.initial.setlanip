@@ -156,7 +156,8 @@ write_config();
 
 // Initialize interface
 write_console("Initializing interface. Please wait...");
-interfaces_lan_configure();
+rc_update_service("netif");
+rc_update_service("network_ipv6");
 
 // Get current IP.
 $lanipv4 = get_ipaddr($config['interfaces']['lan']['if']);

@@ -5,3 +5,5 @@ etc/rc.shutdown.common
 etc/rc.d.php/disk_init
 etc/rc.d/systune
 usr/local/www/datetimepicker.js
+etc/rc.d.php/netif
+etc/inc/interfaces.inc

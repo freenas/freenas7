@@ -2,7 +2,7 @@
 /*
   functions.inc
  	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2006 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2006 Olivier Cochard-LabbÃ© <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -31,7 +31,6 @@
     POSSIBILITY OF SUCH DAMAGE.
 */
 require_once("system.inc");
-require_once("interfaces.inc");
 require_once("disks.inc");
 require_once("array.inc");
 ?>
