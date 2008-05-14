@@ -34,6 +34,7 @@ require("guiconfig.inc");
 $pgtitle = array(gettext("Interfaces"), gettext("LAN"));
 
 $lancfg = &$config['interfaces']['lan'];
+$optcfg = &$config['interfaces']['lan']; // Required for WLAN.
 
 if (strcmp($lancfg['ipaddr'],"dhcp") == 0) {
 	$pconfig['type'] = "DHCP";
