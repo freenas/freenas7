@@ -12,6 +12,130 @@
 
 name="rcconf"
 
+# Set hostname
+sethostname()
+{
+	local _hostname
+
+	_hostname=`configxml_get "concat(//system/hostname,'.',//system/domain)"`
+
+	eval /usr/local/sbin/rconf attribute set hostname "${_hostname}"
+}
+
+# Set interface configuration
+setifconfig()
+{
+	local _ifn _ifconfig_args _ipaddr _gateway _cloned_interfaces _tag _id
+
+	#########################################################################
+	# IPv4
+
+	# LAN interface:
+	_ifn=`configxml_get "//interfaces/lan/if"`
+	_ifn=`get_if ${_ifn}`
+	_ifconfig_args=`/usr/local/bin/xml sel -t -m "//interfaces/lan" \
+		-i "ipaddr[. = 'dhcp']" -o "dhcp" -b \
+		-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
+		-i "media[. != 'autoselect'] and count(mediaopt) > 0" -v "concat(' media ',media,' mediaopt ',mediaopt)" -b \
+		-i "count(polling) > 0" -o " polling" -b \
+		-i "count(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
+		${configxml_file} | /usr/local/bin/xml unesc`
+
+	if [ -n "${_ifconfig_args}" ]; then
+		eval /usr/local/sbin/rconf attribute set "ifconfig_${_ifn}" "${_ifconfig_args}"
+	fi
+
+	# Set gateway.
+	_ipaddr=`configxml_get "//interfaces/lan/ipaddr"`
+	_gateway=`configxml_get "//interfaces/lan/gateway"`
+	if [ "${_ipaddr}" != "dhcp" -a -n "${_gateway}" ]; then
+		eval /usr/local/sbin/rconf attribute set "defaultrouter" "${_gateway}"
+	fi
+
+	# Cloned interfaces:
+	_cloned_interfaces=`/usr/local/bin/xml sel -t -m "//vlans/vlan" \
+		-v "concat('vlan',tag,' ')" \
+		${configxml_file} | /usr/local/bin/xml unesc`
+
+	if [ -n "${_cloned_interfaces}" ]; then
+		eval /usr/local/sbin/rconf attribute set "cloned_interfaces" "${_cloned_interfaces}"
+
+		/usr/local/bin/xml sel -t -m "//vlans/vlan" \
+			-v "concat(tag,' ',if)" \
+			-i "position() != last()" -n -b \
+			${configxml_file} | /usr/local/bin/xml unesc | \
+			while read _tag _if; do
+				eval /usr/local/sbin/rconf attribute set "ifconfig_vlan${_tag}" "vlan ${_tag} vlandev ${_if}"
+			done
+	fi
+
+	# OPT interfaces:
+	_id=`configxml_get_count "//interfaces/*[contains(name(),'opt')]"`
+	while [ ${_id} -gt 0 ]
+	do
+		if configxml_isset "//interfaces/*[name() = 'opt${_id}']/enable"; then
+			_ifn=`configxml_get "//interfaces/*[name() = 'opt${_id}']/if"`
+			_ifconfig_args=`/usr/local/bin/xml sel -t -m "//interfaces/*[name() = 'opt${_id}']" \
+				-i "ipaddr[. = 'dhcp']" -o "dhcp" -b \
+				-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
+				-i "media[. != 'autoselect'] and count(mediaopt) > 0" -v "concat(' media ',media,' mediaopt ',mediaopt)" -b \
+				-i "count(polling) > 0" -o " polling" -b \
+				-i "count(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
+				${configxml_file} | /usr/local/bin/xml unesc`
+
+			if [ -n "${_ifconfig_args}" ]; then
+				eval /usr/local/sbin/rconf attribute set "ifconfig_${_ifn}" "${_ifconfig_args}"
+			fi
+		fi
+		_id=$(( ${_id} - 1 ))
+	done
+
+	#########################################################################
+	# IPv6
+
+	# LAN interface:
+	_ifn=`configxml_get "//interfaces/lan/if"`
+	_ifn=`get_if ${_ifn}`
+	_ifconfig_args=`/usr/local/bin/xml sel -t -m "//interfaces/lan" \
+		-i "count(ipv6addr) > 0 and ipv6addr[. != 'auto']" \
+			-v "concat('inet6 alias ',ipv6addr,'/',ipv6subnet)" \
+		-b \
+		${configxml_file} | /usr/local/bin/xml unesc`
+
+	# Create ipv6_ifconfig_xxx variable only if interface is not defined as 'auto'.
+	if [ -n "${_ifconfig_args}" ]; then
+		eval /usr/local/sbin/rconf attribute set "ipv6_ifconfig_${_ifn}" "${_ifconfig_args}"
+	fi
+
+	# Set gateway.
+	_ipaddr=`configxml_get "//interfaces/lan/ipv6addr"`
+	_gateway=`configxml_get "//interfaces/lan/ipv6gateway"`
+	if [ "${_ipaddr}" != "auto" -a -n "${_gateway}" ]; then
+		eval /usr/local/sbin/rconf attribute set "ipv6_defaultrouter" "${_gateway}"
+	fi
+
+	# OPT interfaces:
+	_id=`configxml_get_count "//interfaces/*[contains(name(),'opt')]"`
+	while [ ${_id} -gt 0 ]
+	do
+		if configxml_isset "//interfaces/*[name() = 'opt${_id}']/enable"; then
+			_ifn=`configxml_get "//interfaces/*[name() = 'opt${_id}']/if"`
+			_ifconfig_args=`/usr/local/bin/xml sel -t -m "//interfaces/*[name() = 'opt${_id}']" \
+				-i "count(ipv6addr) > 0 and ipv6addr[. != 'auto']" \
+					-v "concat('inet6 alias ',ipv6addr,'/',ipv6subnet)" \
+				-b \
+				${configxml_file} | /usr/local/bin/xml unesc`
+
+			# Create ipv6_ifconfig_xxx variable only if interface is not defined as 'auto'.
+			if [ -n "${_ifconfig_args}" ]; then
+				eval /usr/local/sbin/rconf attribute set "ipv6_ifconfig_${_ifn}" "${_ifconfig_args}"
+			fi
+		fi
+		_id=$(( ${_id} - 1 ))
+	done
+}
+
+# Update services
 updateservices()
 {
 	# Update rcvar's. Use settings from config.xml
@@ -43,6 +167,7 @@ updateservices()
 	done
 }
 
+# Set additional options.
 setoptions()
 {
 	local _option _name _value
@@ -63,10 +188,9 @@ load_rc_config ${name}
 
 echo -n "Updating rc.conf:"
 
-# Update services
 updateservices
-
-# Set additional options.
+sethostname
+setifconfig
 setoptions
 
 # Finally issue a line break

@@ -52,7 +52,7 @@ $g = array(
     "debug" => false,
     "latest_config" => "5.1",
     "nopccard_platforms" => array("wrap", "net48xx"),
-    "wireless_regex" => "/^(wi|ath|an|awi|ral|iwi|ipw|ural)/",
+    "wireless_regex" => "/^(ndis|wi|ath|an|ral|ural|wai|iwi|awi|wlan)/",
     "default_passwd" => "freenas",
     "default_ip" => "192.168.1.250"
 );

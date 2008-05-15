@@ -25,6 +25,8 @@
 # $FreeBSD: src/etc/rc.d/netif,v 1.14.2.5 2007/10/25 14:36:11 mtm Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
+# Changes:
+# - Modify prereqs
 #
 
 # PROVIDE: netif
@@ -33,8 +35,6 @@
 
 . /etc/rc.subr
 . /etc/network.subr
-. /etc/util.subr
-. /etc/configxml.subr
 
 name="network"
 start_cmd="network_start"
@@ -181,75 +181,6 @@ ifn_stop()
 
 	return $cfg
 }
-
-update_rcconf()
-{
-	local _ifn _ifconfig_args _ipaddr _gateway _cloned_interfaces _tag _id
-
-	# LAN interface:
-	_ifn=`configxml_get "//interfaces/lan/if"`
-	_ifn=`get_if ${_ifn}`
-	_ifconfig_args=`/usr/local/bin/xml sel -t -m "//interfaces/lan" \
-		-i "ipaddr[. = 'dhcp']" -o "dhcp" -b \
-		-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
-		-i "media[. != 'autoselect'] and count(mediaopt) > 0" -v "concat(' media ',media,' mediaopt ',mediaopt)" -b \
-		-i "count(polling) > 0" -o " polling" -b \
-		-i "count(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
-		${configxml_file} | /usr/local/bin/xml unesc`
-
-	if [ -n "${_ifconfig_args}" ]; then
-		eval /usr/local/sbin/rconf attribute set "ifconfig_${_ifn}" "${_ifconfig_args}"
-	fi
-
-	# Set gateway.
-	_ipaddr=`configxml_get "//interfaces/lan/ipaddr"`
-	_gateway=`configxml_get "//interfaces/lan/gateway"`
-	if [ "${_ipaddr}" != "dhcp" -a -n "${_gateway}" ]; then
-		eval /usr/local/sbin/rconf attribute set "defaultrouter" "${_gateway}"
-	fi
-
-	# Cloned interfaces:
-	_cloned_interfaces=`/usr/local/bin/xml sel -t -m "//vlans/vlan" \
-		-v "concat('vlan',tag,' ')" \
-		${configxml_file} | /usr/local/bin/xml unesc`
-
-	if [ -n "${_cloned_interfaces}" ]; then
-		eval /usr/local/sbin/rconf attribute set "cloned_interfaces" "${_cloned_interfaces}"
-
-		/usr/local/bin/xml sel -t -m "//vlans/vlan" \
-			-v "concat(tag,' ',if)" \
-			-i "position() != last()" -n -b \
-			${configxml_file} | /usr/local/bin/xml unesc | \
-			while read _tag _if; do
-				eval /usr/local/sbin/rconf attribute set "ifconfig_vlan${_tag}" "vlan ${_tag} vlandev ${_if}"
-			done
-	fi
-
-	# OPT interfaces:
-	_id=`configxml_get_count "//interfaces/*[contains(name(),'opt')]"`
-	while [ ${_id} -gt 0 ]
-	do
-		if configxml_isset "//interfaces/*[name() = 'opt${_id}']/enable"; then
-			_ifn=`configxml_get "//interfaces/*[name() = 'opt${_id}']/if"`
-			_ifconfig_args=`/usr/local/bin/xml sel -t -m "//interfaces/*[name() = 'opt${_id}']" \
-				-i "ipaddr[. = 'dhcp']" -o "dhcp" -b \
-				-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
-				-i "media[. != 'autoselect'] and count(mediaopt) > 0" -v "concat(' media ',media,' mediaopt ',mediaopt)" -b \
-				-i "count(polling) > 0" -o " polling" -b \
-				-i "count(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
-				${configxml_file} | /usr/local/bin/xml unesc`
-
-			if [ -n "${_ifconfig_args}" ]; then
-				eval /usr/local/sbin/rconf attribute set "ifconfig_${_ifn}" "${_ifconfig_args}"
-			fi
-		fi
-		_id=$(( ${_id} - 1 ))
-	done
-}
-
-# Update rc.conf
-# Must be done before load_rc_config.
-update_rcconf
 
 load_rc_config $name
 run_rc_command $*

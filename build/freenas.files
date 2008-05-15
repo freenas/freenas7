@@ -534,3 +534,4 @@ etc/rc.d/securelevel
 etc/rc.d/dhclient
 etc/rc.d/netoptions
 etc/rc.d/power_profile
+etc/rc.d/network_ipv6

@@ -86,7 +86,7 @@ if ($_POST) {
 		for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 			if ($i != $index) {
 				if ($config['interfaces']['opt' . $i]['descr'] == $_POST['descr']) {
-					$input_errors[] = "An interface with the specified description already exists.";
+					$input_errors[] = gettext("An interface with the specified description already exists.");
 				}
 			}
 		}
@@ -152,8 +152,8 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
-			$retval |= rc_exec_service("netif");
-			$retval |= rc_exec_service("network_ipv6");
+			$retval |= rc_update_service("netif");
+			$retval |= rc_update_service("network_ipv6");
 			config_unlock();
 		}
 		$savemsg = get_std_save_message($retval);
