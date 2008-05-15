@@ -57,13 +57,8 @@ if (strcmp($lancfg['ipv6addr'],"auto") == 0) {
 
 $pconfig['gateway'] = get_defaultgateway();
 $pconfig['ipv6gateway'] = get_ipv6defaultgateway();
-$pconfig['dhcphostname'] = $config['system']['hostname'] . "." . $config['system']['domain'];
-$pconfig['dhcpclientidentifier'] = get_macaddr($lancfg['if']);
 
-// Get the current configured MTU.
-$ifinfo = get_interface_info($lancfg['if']);
-$pconfig['mtu'] = $ifinfo['mtu'];
-
+$pconfig['mtu'] = $lancfg['mtu'];
 $pconfig['media'] = $lancfg['media'];
 $pconfig['mediaopt'] = $lancfg['mediaopt'];
 $pconfig['polling'] = isset($lancfg['polling']);
@@ -139,25 +134,7 @@ if ($_POST) {
 		$config['interfaces']['lan']['polling'] = $_POST['polling'] ? true : false;
 
 		write_config();
-
-		if ($_POST['apply']) {
-			$retval = 0;
-			if (!file_exists($d_sysrebootreqd_path)) {
-				config_lock();
-				$retval |= rc_exec_service("rcconf.sh");
-				$retval |= rc_update_service("netif");
-				$retval |= rc_update_service("network_ipv6");
-				config_unlock();
-			}
-			$savemsg = get_std_save_message($retval);
-			if ($retval == 0) {
-				if (file_exists($d_landirty_path)) {
-					unlink($d_landirty_path);
-				}
-			}
-		} else {
-			touch($d_landirty_path);
-		}
+		touch($d_sysrebootreqd_path);
 	}
 }
 ?>
@@ -194,20 +171,12 @@ function type_change() {
 			document.iform.ipaddr.readOnly = 0;
 			document.iform.subnet.disabled = 0;
 			document.iform.gateway.readOnly = 0;
-
-			showElementById('dhcpclientidentifier_tr','hide');
-			showElementById('dhcphostname_tr','hide');
-
 			break;
 
     case 1: /* DHCP */
 			document.iform.ipaddr.readOnly = 1;
 			document.iform.subnet.disabled = 1;
 			document.iform.gateway.readOnly = 1;
-
-			showElementById('dhcpclientidentifier_tr','show');
-			showElementById('dhcphostname_tr','show');
-
 			break;
   }
 }
@@ -245,9 +214,8 @@ function media_change() {
 	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 	  <tr>
 	    <td class="tabcont">
-				<?php if ($input_errors) print_input_errors($input_errors); ?>
-				<?php if ($savemsg) print_info_box($savemsg); ?>
-				<?php if (file_exists($d_landirty_path)) print_config_change_box();?>
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			    <tr>
 			      <td colspan="2" valign="top" class="listtopic"><?=gettext("IPv4 Configuration"); ?></td>
@@ -283,26 +251,8 @@ function media_change() {
 			        <input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>">
 			      </td>
 			    </tr>
-			    <tr id="dhcpclientidentifier_tr">
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Client Identifier");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="dhcpclientidentifier" type="text" class="formfld" id="dhcpclientidentifier" size="40" value="<?=htmlspecialchars($pconfig['dhcpclientidentifier']);?>" readonly>
-			        <br><span class="vexpl"><?=gettext("The value in this field is sent as the DHCP client identifier when requesting a DHCP lease.");?></span>
-			      </td>
-			    </tr>
-			    <tr id="dhcphostname_tr">
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Hostname");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="dhcphostname" type="text" class="formfld" id="dhcphostname" size="40" value="<?=htmlspecialchars($pconfig['dhcphostname']);?>" readonly><br>
-			        <span class="vexpl"><?=gettext("The value in this field is sent as the DHCP hostname when requesting a DHCP lease.");?></span>
-			      </td>
-			    </tr>
-			    <tr>
-						<td colspan="2" class="list" height="12"></td>
-					</tr>
-					<tr>
-			      <td colspan="2" valign="top" class="listtopic"><?=gettext("IPv6 Configuration"); ?></td>
-			    </tr>
+					<?php html_separator();?>
+					<?php html_titleline(gettext("IPv6 Configuration"));?>
 			    <tr>
 			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
 			      <td width="78%" class="vtable">
@@ -319,8 +269,8 @@ function media_change() {
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv6 address"); ?></td>
 			      <td width="78%" class="vtable">
 			        <input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="30" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
-					 /
-					 <input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
+							/
+							<input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
 			      </td>
 			    </tr>
 					<tr>
@@ -329,27 +279,10 @@ function media_change() {
 			        <input name="ipv6gateway" type="text" class="formfld" id="ipv6gateway" size="20" value="<?=htmlspecialchars($pconfig['ipv6gateway']);?>">
 			      </td>
 					</tr>
-					<tr>
-						<td colspan="2" class="list" height="12"></td>
-					</tr>
-					<tr>
-			      <td colspan="2" valign="top" class="listtopic"><?=gettext("Global Configuration"); ?></td>
-			    </tr>
-			    <tr>
-			      <td valign="top" class="vncell"><?=gettext("MTU"); ?></td>
-			      <td class="vtable">
-			        <input name="mtu" type="text" class="formfld" id="mtu" size="20" value="<?=htmlspecialchars($pconfig['mtu']);?>">&nbsp;<br>
-			        <span class="vexpl"><?=gettext("Standard MTU is 1500, use 9000 for jumbo frame."); ?></span>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Device polling"); ?></td>
-			      <td width="78%" class="vtable">
-			        <input name="polling" type="checkbox" id="polling" value="yes" <?php if ($pconfig['polling']) echo "checked"; ?>>
-			        <?=gettext("Enable device polling"); ?><br>
-			        <span class="vexpl"><?=gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."); ?></span>
-			      </td>
-			    </tr>
+					<?php html_separator();?>
+					<?php html_titleline(gettext("Advanced Configuration"));?>
+					<?php html_inputbox("mtu", gettext("MTU"), $pconfig['mtu'], gettext("Standard MTU is 1500, use 9000 for jumbo frame."), false, 5);?>
+					<?php html_checkbox("polling", gettext("Device polling"), $pconfig['polling'] ? true : false, gettext("Enable device polling"), gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."), false);?>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Speed"); ?></td>
 			      <td width="78%" class="vtable">
