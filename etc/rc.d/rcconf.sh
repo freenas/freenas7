@@ -25,10 +25,7 @@ sethostname()
 # Set interface configuration
 setifconfig()
 {
-	local _ifn _ifconfig_args _ipaddr _gateway _cloned_interfaces _tag _id _network_interfaces _ipv6_network_interfaces
-
-	_network_interfaces="lo0"
-	_ipv6_network_interfaces="lo0"
+	local _ifn _ifconfig_args _ipaddr _gateway _cloned_interfaces _tag _id
 
 	#########################################################################
 	# IPv4
@@ -47,8 +44,6 @@ setifconfig()
 	if [ -n "${_ifconfig_args}" ]; then
 		eval /usr/local/sbin/rconf attribute set "ifconfig_${_ifn}" "${_ifconfig_args}"
 	fi
-
-	_network_interfaces="${_network_interfaces} ${_ifn}"
 
 	# Set gateway.
 	_ipaddr=`configxml_get "//interfaces/lan/ipaddr"`
@@ -71,7 +66,6 @@ setifconfig()
 			${configxml_file} | /usr/local/bin/xml unesc | \
 			while read _tag _if; do
 				eval /usr/local/sbin/rconf attribute set "ifconfig_vlan${_tag}" "vlan ${_tag} vlandev ${_if}"
-				_network_interfaces="${_network_interfaces} vlan${_tag}"
 			done
 	fi
 
@@ -92,16 +86,12 @@ setifconfig()
 			if [ -n "${_ifconfig_args}" ]; then
 				eval /usr/local/sbin/rconf attribute set "ifconfig_${_ifn}" "${_ifconfig_args}"
 			fi
-
-			_network_interfaces="${_network_interfaces} ${_ifn}"
 		else
 			eval /usr/local/sbin/rconf attribute remove "ifconfig_${_ifn}"
 		fi
 
 		_id=$(( ${_id} - 1 ))
 	done
-
-	eval /usr/local/sbin/rconf attribute set "network_interfaces" "${_network_interfaces}"
 
 	#########################################################################
 	# IPv6
@@ -119,8 +109,6 @@ setifconfig()
 	if [ -n "${_ifconfig_args}" ]; then
 		eval /usr/local/sbin/rconf attribute set "ipv6_ifconfig_${_ifn}" "${_ifconfig_args}"
 	fi
-
-	_ipv6_network_interfaces="${_ipv6_network_interfaces} ${_ifn}"
 
 	# Set gateway.
 	_ipaddr=`configxml_get "//interfaces/lan/ipv6addr"`
@@ -145,16 +133,12 @@ setifconfig()
 			if [ -n "${_ifconfig_args}" ]; then
 				eval /usr/local/sbin/rconf attribute set "ipv6_ifconfig_${_ifn}" "${_ifconfig_args}"
 			fi
-
-			_ipv6_network_interfaces="${_ipv6_network_interfaces} ${_ifn}"
 		else
 			eval /usr/local/sbin/rconf attribute remove "ifconfig_${_ifn}"
 		fi
 
 		_id=$(( ${_id} - 1 ))
 	done
-
-	eval /usr/local/sbin/rconf attribute set "ipv6_network_interfaces" "${_ipv6_network_interfaces}"
 }
 
 # Update services
