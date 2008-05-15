@@ -144,8 +144,9 @@ if ($_POST) {
 			$retval = 0;
 			if (!file_exists($d_sysrebootreqd_path)) {
 				config_lock();
-				$retval |= rc_exec_service("netif");
-				$retval |= rc_exec_service("network_ipv6");
+				$retval |= rc_exec_service("rcconf.sh");
+				$retval |= rc_update_service("netif");
+				$retval |= rc_update_service("network_ipv6");
 				config_unlock();
 			}
 			$savemsg = get_std_save_message($retval);
