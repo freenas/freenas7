@@ -114,6 +114,13 @@ if ($_POST) {
 if ($_GET['act'] == "del") {
 	$id = $_GET['id'];
 
+	$ifn = $config['interfaces'][$id]['if'];
+	// Stop interface.
+	rc_exec_service("netif stop {$ifn}");
+	// Remove ifconfig_xxx and ipv6_ifconfig_xxx entries.
+	mwexec("/usr/local/sbin/rconf attribute remove 'ifconfig_{$ifn}'");
+	mwexec("/usr/local/sbin/rconf attribute remove 'ipv6_ifconfig_{$ifn}'");
+
 	unset($config['interfaces'][$id]);	/* delete the specified OPTn */
 
 	/* shift down other OPTn interfaces to get rid of holes */

@@ -86,7 +86,7 @@ if ($_POST) {
 		for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 			if ($i != $index) {
 				if ($config['interfaces']['opt' . $i]['descr'] == $_POST['descr']) {
-					$input_errors[] = "An interface with the specified description already exists.";
+					$input_errors[] = gettext("An interface with the specified description already exists.");
 				}
 			}
 		}

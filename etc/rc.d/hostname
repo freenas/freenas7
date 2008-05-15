@@ -23,12 +23,9 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $FreeBSD: src/etc/rc.d/hostname,v 1.8 2004/10/07 13:55:25 mtm Exp $
+# $FreeBSD: src/etc/rc.d/hostname,v 1.8.2.2 2007/05/24 16:14:37 des Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
-# Changes:
-# - Add hostname_restart
-# - Add update_rcconf
 #
 
 # PROVIDE: hostname
@@ -37,7 +34,6 @@
 
 . /etc/rc.subr
 . /etc/network.subr
-. /etc/configxml.subr
 
 name="hostname"
 start_cmd="hostname_start"
@@ -77,7 +73,7 @@ hostname_start()
 		return
 	fi
 
-	# Allright, it is safe to invoke hostname(1) now.
+	# All right, it is safe to invoke hostname(1) now.
 	#
 	echo "Setting hostname: ${hostname}."
 	/bin/hostname "${hostname}"
@@ -89,17 +85,6 @@ hostname_restart()
 	/bin/hostname ""
 	run_rc_command start
 }
-
-update_rcconf()
-{
-	local _hostname
-	_hostname=`configxml_get "concat(//system/hostname,'.',//system/domain)"`
-	eval /usr/local/sbin/rconf attribute set hostname "${_hostname}"
-}
-
-# Update rc.conf
-# Must be done before load_rc_config.
-update_rcconf
 
 load_rc_config $name
 run_rc_command "$1"
