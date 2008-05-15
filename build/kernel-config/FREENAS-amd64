@@ -288,6 +288,7 @@ device		sbp		# SCSI over FireWire (Requires scbus and da)
 #####################################################################
 # FREENAS
 #####################################################################
+options		NO_SWAPPING
 options   SMP						# Symmetric MultiProcessor Kernel
 options		MSDOSFS_LARGE	# MSDOS Filesystem for FAT32 > 128GB
 device		speaker
