@@ -219,106 +219,46 @@ function media_change() {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr>
-			      <td colspan="2" valign="top" class="listtopic"><?=gettext("IPv4 Configuration"); ?></td>
-			    </tr>
-			    <tr>
-			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
-			      <td width="78%" class="vtable">
-			  			<select name="type" class="formfld" id="type" onchange="type_change()">
-			          <?php $opts = split(" ", "Static DHCP"); foreach ($opts as $opt): ?>
-			          <option <?php if ($opt == $pconfig['type']) echo "selected";?>>
-			            <?=htmlspecialchars($opt);?>
-			          </option>
-			          <?php endforeach; ?>
-			        </select>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address"); ?></td>
-			      <td width="78%" class="vtable">
-			        <input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
-			        /
-			        <select name="subnet" class="formfld" id="subnet">
-			          <?php for ($i = 32; $i > 0; $i--):?>
-			          <option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected";?>><?=$i;?></option>
-			          <?php endfor;?>
-			        </select>
-			        <img name="calcnetmaskbits" src="calc.gif" title="<?=gettext("Calculate netmask bits");?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
-			      </td>
-			    </tr>
-			     <tr>
-			      <td valign="top" class="vncell"><?=gettext("IPv4 Gateway"); ?></td>
-			      <td class="vtable">
-			        <input name="gateway" type="text" class="formfld" id="gateway" size="20" value="<?=htmlspecialchars($pconfig['gateway']);?>">
-			      </td>
-			    </tr>
+					<?php html_titleline(gettext("IPv4 Configuration"));?>
+					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Static" => "Static", "DHCP" => "DHCP"), gettext(""), true, false, "type_change()");?>
+					<tr>
+					  <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address");?></td>
+					  <td width="78%" class="vtable">
+					    <input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
+					    /
+					    <select name="subnet" class="formfld" id="subnet">
+					      <?php for ($i = 32; $i > 0; $i--):?>
+					      <option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected";?>><?=$i;?></option>
+					      <?php endfor;?>
+					    </select>
+					    <img name="calcnetmaskbits" src="calc.gif" title="<?=gettext("Calculate netmask bits");?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
+					  </td>
+					</tr>
+					<?php html_inputbox("gateway", gettext("Gateway"), $pconfig['gateway'], gettext(""), true, 20);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("IPv6 Configuration"));?>
-			    <tr>
-			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
-			      <td width="78%" class="vtable">
-			  			<select name="ipv6type" class="formfld" id="ipv6type" onchange="ipv6_type_change()">
-			          <?php $opts = split(" ", "Static Auto"); foreach ($opts as $opt): ?>
-			          <option <?php if ($opt == $pconfig['ipv6type']) echo "selected";?>>
-			            <?=htmlspecialchars($opt);?>
-			          </option>
-			          <?php endforeach; ?>
-			        </select>
-			      </td>
-			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("IPv6 address"); ?></td>
-			      <td width="78%" class="vtable">
-			        <input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="30" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
+					<?php html_combobox("ipv6type", gettext("Type"), $pconfig['ipv6type'], array("Static" => "Static", "Auto" => "Auto"), gettext(""), true, false, "ipv6_type_change()");?>
+					<tr>
+					  <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address");?></td>
+					  <td width="78%" class="vtable">
+					    <input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="30" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
 							/
 							<input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
-			      </td>
-			    </tr>
-					<tr>
-			      <td valign="top" class="vncell"><?=gettext("IPv6 Gateway"); ?></td>
-			      <td class="vtable">
-			        <input name="ipv6gateway" type="text" class="formfld" id="ipv6gateway" size="20" value="<?=htmlspecialchars($pconfig['ipv6gateway']);?>">
-			      </td>
+					  </td>
 					</tr>
+					<?php html_inputbox("ipv6gateway", gettext("Gateway"), $pconfig['ipv6gateway'], gettext(""), true, 20);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Advanced Configuration"));?>
 					<?php html_inputbox("mtu", gettext("MTU"), $pconfig['mtu'], gettext("Set the maximum transmission unit of the interface to n, default is interface specific. The MTU is used to limit the size of packets that are transmitted on an interface. Not all interfaces support setting the MTU, and some interfaces have range restrictions."), false, 5);?>
 					<?php html_checkbox("polling", gettext("Device polling"), $pconfig['polling'] ? true : false, gettext("Enable device polling"), gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."), false);?>
-			    <tr>
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Speed"); ?></td>
-			      <td width="78%" class="vtable">
-			        <select name="media" class="formfld" id="media" onchange="media_change()">
-			          <?php $types = explode(",", "autoselect,10baseT/UTP,100baseTX,1000baseTX,1000baseSX");
-			          $vals = explode(" ", "autoselect 10baseT/UTP 100baseTX 1000baseTX 1000baseSX");
-			          $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-			          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['media']) echo "selected";?>>
-			          <?=htmlspecialchars($types[$j]);?>
-			          </option>
-			          <?php endfor; ?>
-			        </select>
-			      </td>
-					</tr>
-					<tr id="mediaopt_tr">
-			      <td width="22%" valign="top" class="vncell"><?=gettext("Duplex"); ?></td>
-			      <td width="78%" class="vtable">
-			        <select name="mediaopt" class="formfld" id="mediaopt">
-			          <?php $types = explode(",", "half-duplex,full-duplex");
-			          $vals = explode(" ", "half-duplex full-duplex");
-			          $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
-			          <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mediaopt']) echo "selected";?>>
-			          <?=htmlspecialchars($types[$j]);?>
-			          </option>
-			          <?php endfor; ?>
-			        </select>
-			      </td>
-			    </tr>
-			    <?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>
+					<?php html_combobox("media", gettext("Type"), $pconfig['media'], array("autoselect" => "autoselect", "10baseT/UTP" => "10baseT/UTP", "100baseTX" => "100baseTX", "1000baseTX" => "1000baseTX", "1000baseSX" => "1000baseSX",), gettext(""), false, false, "media_change()");?>
+					<?php html_combobox("mediaopt", gettext("Duplex"), $pconfig['mediaopt'], array("half-duplex" => "half-duplex", "full-duplex" => "full-duplex"), gettext(""), false);?>
+					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>
 					<?php /* Wireless interface? */
 					if (isset($lancfg['wireless']))
 						wireless_config_print();
 					?>
-			    <tr>
+					<tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
 			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
