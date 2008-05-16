@@ -40,6 +40,33 @@ setifconfig()
 		-i "count(polling) > 0" -o " polling" -b \
 		-i "string-length(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
 		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
+		-m "wireless" \
+			-v "concat(' ssid ',ssid,' channel ',channel)" \
+			-i "string-length(stationname) > 0" -v "concat(' stationname ',stationname)" -b \
+			-i "count(wep/enable) > 0 and count(wep/key) > 0" \
+				-m "wep/key" \
+					-v "concat(' wepkey ',position(),':',value)" \
+					-i "count(txkey) > 0" -v "concat(' weptxkey ',position())" -b \
+				-b \
+			-b \
+			-i "count(wep/enable) = 0" -o " wepmode off" -b \
+			-i "contains('${_ifn}','ath') and string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
+			-i "mode[. = 'hostap']" \
+				-i "contains('${_ifn}','ath')" -o " -mediaopt adhoc mediaopt hostap" -b \
+				-i "contains('${_ifn}','wi')" -o " -mediaopt ibss mediaopt hostap" -b \
+			-b \
+			-i "mode[. = 'ibss'] or mode[. = 'IBSS']" \
+				-i "contains('${_ifn}','ath')" -o " -mediaopt hostap mediaopt adhoc" -b \
+				-i "contains('${_ifn}','wi')" -o " -mediaopt hostap mediaopt ibss" -b \
+				-i "contains('${_ifn}','an')" -o " mediaopt adhoc" -b \
+			-b \
+			-i "mode[. = 'bss'] or mode[. = 'IBSS']" \
+				-i "contains('${_ifn}','ath')" -o " -mediaopt hostap -mediaopt adhoc" -b \
+				-i "contains('${_ifn}','wi')" -o " -mediaopt hostap -mediaopt ibss" -b \
+				-i "contains('${_ifn}','an')" -o " -mediaopt adhoc" -b \
+			-b \
+			-o " up" \
+		-b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	if [ -n "${_ifconfig_args}" ]; then
@@ -83,8 +110,35 @@ setifconfig()
 				-i "count(polling) > 0" -o " polling" -b \
 				-i "string-length(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
 				-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
+				-m "wireless" \
+					-v "concat(' ssid ',ssid,' channel ',channel)" \
+					-i "string-length(stationname) > 0" -v "concat(' stationname ',stationname)" -b \
+					-i "count(wep/enable) > 0 and count(wep/key) > 0" \
+						-m "wep/key" \
+							-v "concat(' wepkey ',position(),':',value)" \
+							-i "count(txkey) > 0" -v "concat(' weptxkey ',position())" -b \
+						-b \
+					-b \
+					-i "count(wep/enable) = 0" -o " wepmode off" -b \
+					-i "contains('${_ifn}','ath') and string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
+					-i "mode[. = 'hostap']" \
+						-i "contains('${_ifn}','ath')" -o " -mediaopt adhoc mediaopt hostap" -b \
+						-i "contains('${_ifn}','wi')" -o " -mediaopt ibss mediaopt hostap" -b \
+					-b \
+					-i "mode[. = 'ibss'] or mode[. = 'IBSS']" \
+						-i "contains('${_ifn}','ath')" -o " -mediaopt hostap mediaopt adhoc" -b \
+						-i "contains('${_ifn}','wi')" -o " -mediaopt hostap mediaopt ibss" -b \
+						-i "contains('${_ifn}','an')" -o " mediaopt adhoc" -b \
+					-b \
+					-i "mode[. = 'bss'] or mode[. = 'IBSS']" \
+						-i "contains('${_ifn}','ath')" -o " -mediaopt hostap -mediaopt adhoc" -b \
+						-i "contains('${_ifn}','wi')" -o " -mediaopt hostap -mediaopt ibss" -b \
+						-i "contains('${_ifn}','an')" -o " -mediaopt adhoc" -b \
+					-b \
+					-o " up" \
+				-b \
 				${configxml_file} | /usr/local/bin/xml unesc`
-	
+
 			if [ -n "${_ifconfig_args}" ]; then
 				eval /usr/local/sbin/rconf attribute set "ifconfig_${_ifn}" "${_ifconfig_args}"
 			fi
@@ -130,7 +184,7 @@ setifconfig()
 					-v "concat('inet6 alias ',ipv6addr,'/',ipv6subnet)" \
 				-b \
 				${configxml_file} | /usr/local/bin/xml unesc`
-	
+
 			# Create ipv6_ifconfig_xxx variable only if interface is not defined as 'auto'.
 			if [ -n "${_ifconfig_args}" ]; then
 				eval /usr/local/sbin/rconf attribute set "ipv6_ifconfig_${_ifn}" "${_ifconfig_args}"
