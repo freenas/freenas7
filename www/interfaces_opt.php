@@ -66,6 +66,7 @@ $pconfig['mtu'] = $optcfg['mtu'];
 $pconfig['polling'] = isset($optcfg['polling']);
 $pconfig['media'] = $optcfg['media'];
 $pconfig['mediaopt'] = $optcfg['mediaopt'];
+$pconfig['extraoptions'] = $optcfg['extraoptions'];
 
 /* Wireless interface? */
 if (isset($optcfg['wireless'])) {
@@ -125,17 +126,18 @@ if ($_POST) {
 
 	if (!$input_errors) {
     if(strcmp($_POST['type'],"Static") == 0) {
-		$optcfg['ipaddr'] = $_POST['ipaddr'];
-		$optcfg['subnet'] = $_POST['subnet'];
-	} else if ($_POST['type'] == "DHCP") {
+			$optcfg['ipaddr'] = $_POST['ipaddr'];
+			$optcfg['subnet'] = $_POST['subnet'];
+		} else if ($_POST['type'] == "DHCP") {
 			$optcfg['ipaddr'] = "dhcp";
-	}
-	if(strcmp($_POST['ipv6type'],"Static") == 0) {
-		$optcfg['ipv6addr'] = $_POST['ipv6addr'];
-		$optcfg['ipv6subnet'] = $_POST['ipv6subnet'];
-	} else if (strcmp($_POST['ipv6type'],"Auto") == 0) {
-		$optcfg['ipv6addr'] = "auto";
-	}
+		}
+
+		if(strcmp($_POST['ipv6type'],"Static") == 0) {
+			$optcfg['ipv6addr'] = $_POST['ipv6addr'];
+			$optcfg['ipv6subnet'] = $_POST['ipv6subnet'];
+		} else if (strcmp($_POST['ipv6type'],"Auto") == 0) {
+			$optcfg['ipv6addr'] = "auto";
+		}
 
 		$optcfg['descr'] = $_POST['descr'];
 		$optcfg['mtu'] = $_POST['mtu'];
@@ -143,6 +145,7 @@ if ($_POST) {
 		$optcfg['polling'] = $_POST['polling'] ? true : false;
 		$optcfg['media'] = $_POST['media'];
 		$optcfg['mediaopt'] = $_POST['mediaopt'];
+		$optcfg['extraoptions'] = $_POST['extraoptions'];
 
 		write_config();
 		touch($d_sysrebootreqd_path);
@@ -156,28 +159,29 @@ $pgtitle = array(gettext("Interfaces"), "Optional $index (" . htmlspecialchars($
 <!--
 function enable_change(enable_over) {
 	var endis = !(document.iform.enable.checked || enable_over);
-
+	
 	document.iform.type.disabled = endis;
 	document.iform.ipv6type.disabled = endis;
 	document.iform.descr.disabled = endis;
 	document.iform.mtu.disabled = endis;
-  document.iform.polling.disabled = endis;
-  document.iform.media.disabled = endis;
-  document.iform.mediaopt.disabled = endis;
+	document.iform.polling.disabled = endis;
+	document.iform.media.disabled = endis;
+	document.iform.mediaopt.disabled = endis;
+	document.iform.extraoptions.disabled = endis;
 
 	if (document.iform.mode) {
-		 document.iform.standard.disabled = endis;
-		 document.iform.mode.disabled = endis;
-		 document.iform.ssid.disabled = endis;
-		 document.iform.channel.disabled = endis;
-		 document.iform.stationname.disabled = endis;
-		 document.iform.wep_enable.disabled = endis;
-		 document.iform.key1.disabled = endis;
-		 document.iform.key2.disabled = endis;
-		 document.iform.key3.disabled = endis;
-		 document.iform.key4.disabled = endis;
+		document.iform.standard.disabled = endis;
+		document.iform.mode.disabled = endis;
+		document.iform.ssid.disabled = endis;
+		document.iform.channel.disabled = endis;
+		document.iform.stationname.disabled = endis;
+		document.iform.wep_enable.disabled = endis;
+		document.iform.key1.disabled = endis;
+		document.iform.key2.disabled = endis;
+		document.iform.key3.disabled = endis;
+		document.iform.key4.disabled = endis;
 	}
-
+	
 	type_change();
 	ipv6_type_change();
 	media_change();
@@ -358,43 +362,46 @@ function media_change() {
 											</tr>
 											<?php html_separator();?>
 											<?php html_titleline(gettext("Advanced Configuration"));?>
-											<?php html_inputbox("mtu", gettext("MTU"), $pconfig['mtu'], gettext("Standard MTU is 1500, use 9000 for jumbo frame."), false, 5);?>
+											<?php html_inputbox("mtu", gettext("MTU"), $pconfig['mtu'], gettext("Set the maximum transmission unit of the interface to n, default is interface specific. The MTU is used to limit the size of packets that are transmitted on an interface. Not all interfaces support setting the MTU, and some interfaces have range restrictions."), false, 5);?>
 											<?php html_checkbox("polling", gettext("Device polling"), $pconfig['polling'] ? true : false, gettext("Enable device polling"), gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."), false);?>
 											<tr>
 			                  <td width="22%" valign="top" class="vncell"><?=gettext("Speed"); ?></td>
 			                  <td width="78%" class="vtable">
 													<select name="media" class="formfld" id="media" onchange="media_change()">
 			                      <?php $types = explode(",", "autoselect,10baseT/UTP,100baseTX,1000baseTX,1000baseSX");
-								        $vals = explode(" ", "autoselect 10baseT/UTP 100baseTX 1000baseTX 1000baseSX");
-								  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+														$vals = explode(" ", "autoselect 10baseT/UTP 100baseTX 1000baseTX 1000baseSX");
+														$j = 0; for ($j = 0; $j < count($vals); $j++): ?>
 			                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['media']) echo "selected";?>>
 			                      <?=htmlspecialchars($types[$j]);?>
 			                      </option>
 			                      <?php endfor; ?>
-			                    </select></td>
+			                    </select>
+												</td>
 											</tr>
 											<tr id="mediaopt_tr">
 			                  <td width="22%" valign="top" class="vncell"><?=gettext("Duplex"); ?></td>
 			                  <td width="78%" class="vtable">
 													<select name="mediaopt" class="formfld" id="mediaopt">
 			                      <?php $types = explode(",", "half-duplex,full-duplex");
-								        $vals = explode(" ", "half-duplex full-duplex");
-								  $j = 0; for ($j = 0; $j < count($vals); $j++): ?>
+														$vals = explode(" ", "half-duplex full-duplex");
+														$j = 0; for ($j = 0; $j < count($vals); $j++): ?>
 			                      <option value="<?=$vals[$j];?>" <?php if ($vals[$j] == $pconfig['mediaopt']) echo "selected";?>>
 			                      <?=htmlspecialchars($types[$j]);?>
 			                      </option>
 			                      <?php endfor; ?>
-			                    </select></td>
-							</tr>
-							<?php /* Wireless interface? */
-							if (isset($optcfg['wireless']))
-								wireless_config_print();
-							?>
+			                    </select>
+												</td>
+											</tr>
+											<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>
+											<?php /* Wireless interface? */
+											if (isset($optcfg['wireless']))
+												wireless_config_print();
+											?>
 			                <tr>
 			                  <td width="22%" valign="top">&nbsp;</td>
 			                  <td width="78%">
 			                    <input name="index" type="hidden" value="<?=$index;?>">
-							  <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true);bridge_change(true)">
+													<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true);bridge_change(true)">
 			                  </td>
 			                </tr>
 			              </table>
