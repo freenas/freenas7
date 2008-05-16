@@ -62,6 +62,7 @@ $pconfig['mtu'] = $lancfg['mtu'];
 $pconfig['media'] = $lancfg['media'];
 $pconfig['mediaopt'] = $lancfg['mediaopt'];
 $pconfig['polling'] = isset($lancfg['polling']);
+$pconfig['extraoptions'] = $lancfg['extraoptions'];
 
 /* Wireless interface? */
 if (isset($lancfg['wireless'])) {
@@ -113,25 +114,26 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		if(strcmp($_POST['type'],"Static") == 0) {
-			$config['interfaces']['lan']['ipaddr'] = $_POST['ipaddr'];
-			$config['interfaces']['lan']['subnet'] = $_POST['subnet'];
-			$config['interfaces']['lan']['gateway'] = $_POST['gateway'];
+			$lancfg['ipaddr'] = $_POST['ipaddr'];
+			$lancfg['subnet'] = $_POST['subnet'];
+			$lancfg['gateway'] = $_POST['gateway'];
 		} else if (strcmp($_POST['type'],"DHCP") == 0) {
-			$config['interfaces']['lan']['ipaddr'] = "dhcp";
+			$lancfg['ipaddr'] = "dhcp";
 		}
 
 		if(strcmp($_POST['ipv6type'],"Static") == 0) {
-			$config['interfaces']['lan']['ipv6addr'] = $_POST['ipv6addr'];
-			$config['interfaces']['lan']['ipv6subnet'] = $_POST['ipv6subnet'];
-			$config['interfaces']['lan']['ipv6gateway'] = $_POST['ipv6gateway'];
+			$lancfg['ipv6addr'] = $_POST['ipv6addr'];
+			$lancfg['ipv6subnet'] = $_POST['ipv6subnet'];
+			$lancfg['ipv6gateway'] = $_POST['ipv6gateway'];
 		} else if (strcmp($_POST['ipv6type'],"Auto") == 0) {
-			$config['interfaces']['lan']['ipv6addr'] = "auto";
+			$lancfg['ipv6addr'] = "auto";
 		}
 
-		$config['interfaces']['lan']['mtu'] = $_POST['mtu'];
-		$config['interfaces']['lan']['media'] = $_POST['media'];
-		$config['interfaces']['lan']['mediaopt'] = $_POST['mediaopt'];
-		$config['interfaces']['lan']['polling'] = $_POST['polling'] ? true : false;
+		$lancfg['mtu'] = $_POST['mtu'];
+		$lancfg['media'] = $_POST['media'];
+		$lancfg['mediaopt'] = $_POST['mediaopt'];
+		$lancfg['polling'] = $_POST['polling'] ? true : false;
+		$lancfg['extraoptions'] = $_POST['extraoptions'];
 
 		write_config();
 		touch($d_sysrebootreqd_path);
@@ -281,7 +283,7 @@ function media_change() {
 					</tr>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Advanced Configuration"));?>
-					<?php html_inputbox("mtu", gettext("MTU"), $pconfig['mtu'], gettext("Standard MTU is 1500, use 9000 for jumbo frame."), false, 5);?>
+					<?php html_inputbox("mtu", gettext("MTU"), $pconfig['mtu'], gettext("Set the maximum transmission unit of the interface to n, default is interface specific. The MTU is used to limit the size of packets that are transmitted on an interface. Not all interfaces support setting the MTU, and some interfaces have range restrictions."), false, 5);?>
 					<?php html_checkbox("polling", gettext("Device polling"), $pconfig['polling'] ? true : false, gettext("Enable device polling"), gettext("Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."), false);?>
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("Speed"); ?></td>
@@ -311,7 +313,7 @@ function media_change() {
 			        </select>
 			      </td>
 			    </tr>
-			    </tr>
+			    <?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>
 					<?php /* Wireless interface? */
 					if (isset($lancfg['wireless']))
 						wireless_config_print();

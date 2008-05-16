@@ -38,7 +38,8 @@ setifconfig()
 		-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
 		-i "media[. != 'autoselect'] and count(mediaopt) > 0" -v "concat(' media ',media,' mediaopt ',mediaopt)" -b \
 		-i "count(polling) > 0" -o " polling" -b \
-		-i "count(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
+		-i "string-length(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
+		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	if [ -n "${_ifconfig_args}" ]; then
@@ -80,7 +81,8 @@ setifconfig()
 				-i "ipaddr[. != 'dhcp']" -v "concat('inet ',ipaddr,'/',subnet)" -b \
 				-i "media[. != 'autoselect'] and count(mediaopt) > 0" -v "concat(' media ',media,' mediaopt ',mediaopt)" -b \
 				-i "count(polling) > 0" -o " polling" -b \
-				-i "count(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
+				-i "string-length(mtu) > 0" -v "concat(' mtu ',mtu)" -b \
+				-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 				${configxml_file} | /usr/local/bin/xml unesc`
 	
 			if [ -n "${_ifconfig_args}" ]; then
