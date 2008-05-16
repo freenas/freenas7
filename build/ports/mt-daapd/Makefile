@@ -1,5 +1,5 @@
 PORTNAME=						mt-daapd
-PORTVERSION=				1696
+PORTVERSION=				1586
 CATEGORIES=					audio
 COMMENT=						Multithread daapd yet another server for Apple iTunes
 MAINTAINER=					votdev@gmx.de
@@ -68,10 +68,6 @@ do-install:
 	@${CP} -pv ${WRKSRC}/admin-root/status.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
 	@${CP} -pv ${WRKSRC}/admin-root/thanks.html ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
 	@${CP} -pv ${WRKSRC}/admin-root/util.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
-	@${CP} -pv ${WRKSRC}/admin-root/xiph-license.html ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
-	@${CP} -pv ${WRKSRC}/admin-root/xiph-license.txt ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
-	@${CP} -pv ${WRKSRC}/admin-root/zlib-license.html ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
-	@${CP} -pv ${WRKSRC}/admin-root/zlib-license.txt ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root
 	@${CP} -pv ${WRKSRC}/admin-root/lib-js/prototype.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root/lib-js
 	@${CP} -pv ${WRKSRC}/admin-root/lib-js/rico.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root/lib-js
 	@${CP} -pv ${WRKSRC}/admin-root/lib-js/script.aculo.us/builder.js ${FREENAS_ROOTFS}/usr/local/share/${PORTNAME}/admin-root/lib-js/script.aculo.us
