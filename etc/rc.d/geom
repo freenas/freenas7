@@ -34,7 +34,7 @@ geom_start()
 
 	echo "Starting GEOM devices."
 	for _class in ${_classes}; do
-		if configxml_isset //disks/disk/[class = 'g${_class}']; then
+		if configxml_isset //disks/disk[class = 'g${_class}']; then
 			case ${_class} in
 				vinum)
 					_geom_start_vinum;;
@@ -103,7 +103,7 @@ _geom_start_vinum()
 {
 	local _name
 
-	/usr/local/bin/xml sel -t -m "//disks/disk/[class = 'gvinum']" \
+	/usr/local/bin/xml sel -t -m "//disks/disk[class = 'gvinum']" \
 		-v "name" \
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
@@ -119,7 +119,7 @@ _geom_stop()
 	_class=$1
 
 	# Stop devices.
-	/usr/local/bin/xml sel -t -m "//disks/disk/[class = 'g${_class}']" \
+	/usr/local/bin/xml sel -t -m "//disks/disk[class = 'g${_class}']" \
 		-v "name" \
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
@@ -133,7 +133,7 @@ _geom_stop_raid5()
 	local _name
 
 	# Stop devices.
-	/usr/local/bin/xml sel -t -m "//disks/disk/[class = 'graid5']" \
+	/usr/local/bin/xml sel -t -m "//disks/disk[class = 'graid5']" \
 		-v "name" \
 		-i "position() != last()" -n -b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
