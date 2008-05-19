@@ -35,7 +35,8 @@ $pgtitle = array(gettext("Interfaces"), gettext("Management"), gettext("VLAN"));
 if (!is_array($config['vlans']['vlan']))
 	$config['vlans']['vlan'] = array();
 
-$a_vlans = &$config['vlans']['vlan'] ;
+$a_vlans = &$config['vlans']['vlan'];
+array_sort_key($a_vlans, "tag");
 
 function vlan_inuse($num) {
 	global $config, $g;
@@ -59,7 +60,7 @@ if ($_GET['act'] == "del") {
 		$input_errors[] = gettext("This VLAN cannot be deleted because it is still being used as an interface.");
 	} else {
 		$vlan = $a_vlans[$_GET['id']];
-		mwexec("/usr/local/sbin/rconf attribute remove 'ifconfig_vlan{$vlan['tag']}'");
+		mwexec("/usr/local/sbin/rconf attribute remove 'ifconfig_vlan{$vlan['id']}'");
 
 		unset($a_vlans[$_GET['id']]);
 
