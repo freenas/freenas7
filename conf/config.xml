@@ -137,6 +137,7 @@
 	<!--
 	<vlans>
 		<vlan>
+			<id>xxx</id>
 			<tag>x</tag>
 			<if>xxx</if>
 			<desc></desc>

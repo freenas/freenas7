@@ -40,13 +40,16 @@ if (!is_array($config['vlans']['vlan']))
 	$config['vlans']['vlan'] = array();
 
 $a_vlans = &$config['vlans']['vlan'];
+array_sort_key($a_vlans, "tag");
 
 if (isset($id) && $a_vlans[$id]) {
+	$pconfig['vlanid'] = $a_vlans[$id]['id'];
 	$pconfig['tag'] = $a_vlans[$id]['tag'];
 	$pconfig['if'] = $a_vlans[$id]['if'];
 	$pconfig['desc'] = $a_vlans[$id]['desc'];
 } else {
-	$pconfig['tag'] = get_nextvlan_tag();
+	$pconfig['vlanid'] = get_nextvlan_id();
+	$pconfig['tag'] = 1;
 	$pconfig['if'] = "";
 	$pconfig['desc'] = "";
 }
@@ -63,22 +66,26 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
+	// Validate tag range.
 	if (($_POST['tag'] < '1') || ($_POST['tag'] > '4094')) {
 		$input_errors[] = gettext("The VLAN ID must be between 1 and 4094.");
 	}
 
-	foreach ($a_vlans as $vlan) {
-		if (isset($id) && ($a_vlans[$id]) && ($a_vlans[$id] === $vlan))
-			continue;
+	// Validate if tag is unique. Only check if not in edit mode.
+	if (!isset($id)) {
+		class InterfaceFilter {
+			function InterfaceFilter($if) { $this->if = $if; }
+			function filter($data) { return ($data['if'] === $this->if); }
+		}
 
-		if (($vlan['if'] == $_POST['if']) && ($vlan['tag'] == $_POST['tag'])) {
-			$input_errors[] = sprintf(gettext("A VLAN with the tag %s is already defined on this interface."), $vlan['tag']);
-			break;
+		if (false !== array_search_ex($_POST['tag'], array_filter($a_vlans, array(new InterfaceFilter($_POST['if']), 'filter')), "tag")) {
+			$input_errors[] = sprintf(gettext("A VLAN with the tag %s is already defined on this interface."), $_POST['tag']);
 		}
 	}
 
 	if (!$input_errors) {
 		$vlan = array();
+		$vlan['id'] = $_POST['vlanid'];
 		$vlan['tag'] = $_POST['tag'];
 		$vlan['if'] = $_POST['if'];
 		$vlan['desc'] = $_POST['desc'];
@@ -96,21 +103,19 @@ if ($_POST) {
 	}
 }
 
-// Get next vlan tag.
-// Return next free vlan tag.
-function get_nextvlan_tag() {
+function get_nextvlan_id() {
 	global $config;
 
-	$tag = 1;
+	$id = 0;
 	$a_vlan = $config['vlans']['vlan'];
 
-	if (false !== array_search_ex(strval($tag), $a_vlan, "tag")) {
+	if (false !== array_search_ex(strval($id), $a_vlan, "id")) {
 		do {
-			$tag++; // Increase tag until a unused one is found.
-		} while (false !== array_search_ex(strval($tag), $a_vlan, "tag"));
+			$id++; // Increase ID until a unused one is found.
+		} while (false !== array_search_ex(strval($id), $a_vlan, "id"));
 	}
 
-	return $tag;
+	return $id;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -136,6 +141,7 @@ function get_nextvlan_tag() {
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
 							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vlans[$id])) ? gettext("Save") : gettext("Add");?>">
+							<input name="vlanid" type="hidden" value="<?=$pconfig['vlanid'];?>">
 							<?php if (isset($id) && $a_vlans[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif;?>
