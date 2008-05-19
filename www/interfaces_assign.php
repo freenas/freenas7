@@ -42,16 +42,12 @@ $pgtitle = array(gettext("Interfaces"), gettext("Management"));
 $portlist = get_interface_list();
 
 /* add VLAN interfaces */
-/*
 if (is_array($config['vlans']['vlan']) && count($config['vlans']['vlan'])) {
-	$i = 0;
 	foreach ($config['vlans']['vlan'] as $vlan) {
-		$portlist['vlan' . $i] = $vlan;
-		$portlist['vlan' . $i]['isvlan'] = true;
-		$i++;
+		$portlist['vlan' . $vlan['id']] = $vlan;
+		$portlist['vlan' . $vlan['id']]['isvlan'] = true;
 	}
 }
-*/
 
 if ($_POST) {
 	unset($input_errors);
@@ -213,9 +209,9 @@ if ($_GET['act'] == "add") {
 							  <option value="<?=$portname;?>" <?php if ($portname == $iface['if']) echo "selected";?>>
 							  	<?php
 									if ($portinfo['isvlan']) {
-										$descr = "VLAN{$portinfo['tag']} on {$portinfo['if']}";
-										if ($portinfo['descr']) {
-											$descr .= " (" . $portinfo['descr'] . ")";
+										$descr = "vlan{$portinfo['id']} on {$portinfo['if']}";
+										if ($portinfo['desc']) {
+											$descr .= " (" . $portinfo['desc'] . ")";
 										}
 										echo htmlspecialchars($descr);
 									} else {
