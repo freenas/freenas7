@@ -89,25 +89,27 @@ if ($_GET['act'] == "del") {
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0)); ?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="20%" class="listhdrr"><?=gettext("Interface");?></td>
-						<td width="20%" class="listhdrr"><?=gettext("VLAN tag");?></td>
-						<td width="50%" class="listhdr"><?=gettext("Description");?></td>
+						<td width="20%" class="listhdrr"><?=gettext("Virtual interface");?></td>
+						<td width="20%" class="listhdrr"><?=gettext("Physical interface");?></td>
+						<td width="5%" class="listhdrr"><?=gettext("VLAN tag");?></td>
+						<td width="45%" class="listhdr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
 					<?php $i = 0; foreach ($a_vlans as $vlan):?>
 					<tr>
-						<td class="listlr"><?=htmlspecialchars($vlan['if']);?></td>
+						<td class="listlr">vlan<?=htmlspecialchars($vlan['id']);?></td>
+						<td class="listr"><?=htmlspecialchars($vlan['if']);?></td>
 						<td class="listr"><?=htmlspecialchars($vlan['tag']);?></td>
 						<td class="listbg"><?=htmlspecialchars($vlan['desc']);?>&nbsp;</td>
 						<td valign="middle" nowrap class="list"> <a href="interfaces_vlan_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit VLAN");?>" width="17" height="17" border="0"></a>&nbsp;<a href="interfaces_vlan.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this VLAN?");?>')"><img src="x.gif" title="<?=gettext("Delete VLAN");?>" width="17" height="17" border="0"></a></td>
 					</tr>
 					<?php $i++; endforeach;?>
 					<tr>
-						<td class="list" colspan="3">&nbsp;</td>
+						<td class="list" colspan="4">&nbsp;</td>
 						<td class="list"> <a href="interfaces_vlan_edit.php"><img src="plus.gif" title="<?=gettext("Add VLAN");?>" width="17" height="17" border="0"></a></td>
 					</tr>
 					<tr>
-						<td class="list" colspan="3">
+						<td class="list" colspan="4">
 							<span class="red"><strong><?=gettext("Note");?>:</strong></span><br/>
 							<?=gettext("Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do not explicitly support it, VLAN tagging will still work, but the reduced MTU may cause problems.");?>
 						</td>
