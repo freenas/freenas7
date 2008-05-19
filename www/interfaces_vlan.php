@@ -59,7 +59,7 @@ if ($_GET['act'] == "del") {
 		$input_errors[] = gettext("This VLAN cannot be deleted because it is still being used as an interface.");
 	} else {
 		$vlan = $a_vlans[$_GET['id']];
-		mwexec("/usr/local/sbin/rconf attribute remove 'ifconfig_vlan_{$vlan['if']}_{$vlan['tag']}'");
+		mwexec("/usr/local/sbin/rconf attribute remove 'ifconfig_vlan{$vlan['tag']}'");
 
 		unset($a_vlans[$_GET['id']]);
 
