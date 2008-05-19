@@ -34,7 +34,7 @@ geom_start()
 
 	echo "Starting GEOM devices."
 	for _class in ${_classes}; do
-		if configxml_isset //disks/disk[class = 'g${_class}']; then
+		if configxml_isset "//disks/disk[class = 'g${_class}']"; then
 			case ${_class} in
 				vinum)
 					_geom_start_vinum;;
