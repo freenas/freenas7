@@ -82,18 +82,18 @@ setifconfig()
 
 	# Cloned interfaces:
 	_cloned_interfaces=`/usr/local/bin/xml sel -t -m "//vlans/vlan" \
-		-v "concat('vlan',tag,' ')" \
+		-v "concat('vlan_',if,'_',tag,' ')" \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
-	if [ -n "${_cloned_interfaces}" ]; then
-		eval /usr/local/sbin/rconf attribute set "cloned_interfaces" "${_cloned_interfaces}"
+	eval /usr/local/sbin/rconf attribute set "cloned_interfaces" "${_cloned_interfaces}"
 
+	if [ -n "${_cloned_interfaces}" ]; then
 		/usr/local/bin/xml sel -t -m "//vlans/vlan" \
 			-v "concat(tag,' ',if)" \
 			-i "position() != last()" -n -b \
 			${configxml_file} | /usr/local/bin/xml unesc | \
 			while read _tag _if; do
-				eval /usr/local/sbin/rconf attribute set "ifconfig_vlan${_tag}" "vlan ${_tag} vlandev ${_if}"
+				eval /usr/local/sbin/rconf attribute set "ifconfig_vlan_${_if}_${_tag}" "vlan ${_tag} vlandev ${_if}"
 			done
 	fi
 

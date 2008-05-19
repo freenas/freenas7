@@ -129,19 +129,19 @@ function get_nextvlan_tag() {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php $a_if = array(); foreach (get_interface_list() as $ifk => $ifv) { $a_if[$ifk] = "{$ifk} ({$ifv['mac']})"; };?>
-					<?php html_inputbox("tag", gettext("VLAN tag"), $pconfig['tag'], gettext("802.1Q VLAN tag (between 1 and 4094)."), true, 4);?>
-					<?php html_combobox("if", gettext("Physical interface"), $pconfig['if'], $a_if, gettext(""), true);?>
+					<?php html_inputbox("tag", gettext("VLAN tag"), $pconfig['tag'], gettext("802.1Q VLAN tag (between 1 and 4094)."), true, 4, isset($id) ? true : false);?>
+					<?php html_combobox("if", gettext("Physical interface"), $pconfig['if'], $a_if, gettext(""), true, isset($id) ? true : false);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
-			    <tr>
-			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vlans[$id])) ? gettext("Save") : gettext("Add");?>">
-			        <?php if (isset($id) && $a_vlans[$id]): ?>
-			        <input name="id" type="hidden" value="<?=$id;?>">
-			        <?php endif;?>
-			      </td>
-			    </tr>
-			  </table>
+					<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vlans[$id])) ? gettext("Save") : gettext("Add");?>">
+							<?php if (isset($id) && $a_vlans[$id]): ?>
+							<input name="id" type="hidden" value="<?=$id;?>">
+							<?php endif;?>
+						</td>
+					</tr>
+				</table>
 			</form>
 		</td>
 	</tr>
