@@ -25,7 +25,7 @@ sethostname()
 # Set interface configuration
 setifconfig()
 {
-	local _ifn _ifconfig_args _ipaddr _gateway _cloned_interfaces _tag _id
+	local _ifn _ifconfig_args _ipaddr _gateway _cloned_interfaces _id
 
 	#########################################################################
 	# IPv4
@@ -50,7 +50,7 @@ setifconfig()
 				-b \
 			-b \
 			-i "count(wep/enable) = 0" -o " wepmode off" -b \
-			-i "contains('${_ifn}','ath') and string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
+			-i "starts-with('${_ifn}','ath') and string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
 			-i "mode[. = 'hostap']" \
 				-i "contains('${_ifn}','ath')" -o " -mediaopt adhoc mediaopt hostap" -b \
 				-i "contains('${_ifn}','wi')" -o " -mediaopt ibss mediaopt hostap" -b \
@@ -67,6 +67,19 @@ setifconfig()
 			-b \
 			-o " up" \
 		-b \
+		-i "starts-with(if,'vlan')" \
+			-m "//vinterfaces/vlan[if = '${_ifn}']" \
+				-v "concat(' vlan ',tag,' vlandev ',vlandev)" \
+			-b \
+		-b \
+		-i "starts-with(if,'lagg')" \
+			-m "//vinterfaces/lagg[if = '${_ifn}']" \
+				-v "concat(' laggproto ',laggproto)" \
+				-m "laggport" \
+					-v "concat(' laggproto ',.)" \
+				-b \
+			-b \
+		-b \
 		${configxml_file} | /usr/local/bin/xml unesc`
 
 	if [ -n "${_ifconfig_args}" ]; then
@@ -78,23 +91,6 @@ setifconfig()
 	_gateway=`configxml_get "//interfaces/lan/gateway"`
 	if [ "${_ipaddr}" != "dhcp" -a -n "${_gateway}" ]; then
 		eval /usr/local/sbin/rconf attribute set "defaultrouter" "${_gateway}"
-	fi
-
-	# Cloned interfaces:
-	_cloned_interfaces=`/usr/local/bin/xml sel -t -m "//vlans/vlan" \
-		-v "concat('vlan',id,' ')" \
-		${configxml_file} | /usr/local/bin/xml unesc`
-
-	eval /usr/local/sbin/rconf attribute set "cloned_interfaces" "${_cloned_interfaces}"
-
-	if [ -n "${_cloned_interfaces}" ]; then
-		/usr/local/bin/xml sel -t -m "//vlans/vlan" \
-			-v "concat(id,' ',tag,' ',if)" \
-			-i "position() != last()" -n -b \
-			${configxml_file} | /usr/local/bin/xml unesc | \
-			while read _id _tag _if; do
-				eval /usr/local/sbin/rconf attribute set "ifconfig_vlan${_id}" "vlan ${_tag} vlandev ${_if}"
-			done
 	fi
 
 	# OPT interfaces:
@@ -120,7 +116,7 @@ setifconfig()
 						-b \
 					-b \
 					-i "count(wep/enable) = 0" -o " wepmode off" -b \
-					-i "contains('${_ifn}','ath') and string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
+					-i "starts-with('${_ifn}','ath') and string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
 					-i "mode[. = 'hostap']" \
 						-i "contains('${_ifn}','ath')" -o " -mediaopt adhoc mediaopt hostap" -b \
 						-i "contains('${_ifn}','wi')" -o " -mediaopt ibss mediaopt hostap" -b \
@@ -137,6 +133,19 @@ setifconfig()
 					-b \
 					-o " up" \
 				-b \
+				-i "starts-with(if,'vlan')" \
+					-m "//vinterfaces/vlan[if = '${_ifn}']" \
+						-v "concat(' vlan ',tag,' vlandev ',vlandev)" \
+					-b \
+				-b \
+				-i "starts-with(if,'lagg')" \
+					-m "//vinterfaces/lagg[if = '${_ifn}']" \
+						-v "concat(' laggproto ',laggproto)" \
+						-m "laggport" \
+							-v "concat(' laggproto ',.)" \
+						-b \
+					-b \
+				-b \
 				${configxml_file} | /usr/local/bin/xml unesc`
 
 			if [ -n "${_ifconfig_args}" ]; then
@@ -148,6 +157,24 @@ setifconfig()
 
 		_id=$(( ${_id} - 1 ))
 	done
+
+	# Cloned interfaces:
+	_cloned_interfaces=`/usr/local/bin/xml sel -t -m "//vinterfaces/*" \
+		-v "concat(if,' ')" \
+		${configxml_file} | /usr/local/bin/xml unesc`
+
+	eval /usr/local/sbin/rconf attribute set "cloned_interfaces" "${_cloned_interfaces}"
+
+	# Prepare interfaces used by lagg.
+	/usr/local/bin/xml sel -t -m "//vinterfaces/lagg" \
+		-m "laggport" \
+			-v . \
+			-i "position() != last()" -n -b \
+		-b \
+		${configxml_file} | /usr/local/bin/xml unesc | \
+		while read _laggport; do
+			eval /usr/local/sbin/rconf attribute set "ifconfig_${_laggport}" "up"
+		done
 
 	#########################################################################
 	# IPv6
