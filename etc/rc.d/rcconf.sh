@@ -217,7 +217,7 @@ setifconfig()
 				eval /usr/local/sbin/rconf attribute set "ipv6_ifconfig_${_ifn}" "${_ifconfig_args}"
 			fi
 		else
-			eval /usr/local/sbin/rconf attribute remove "ifconfig_${_ifn}"
+			eval /usr/local/sbin/rconf attribute remove "ipv6_ifconfig_${_ifn}"
 		fi
 
 		_id=$(( ${_id} - 1 ))
