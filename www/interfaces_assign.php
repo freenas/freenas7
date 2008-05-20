@@ -41,11 +41,19 @@ $pgtitle = array(gettext("Interfaces"), gettext("Management"));
 /* get list without VLAN interfaces */
 $portlist = get_interface_list();
 
-/* add VLAN interfaces */
+// Add VLAN interfaces.
 if (is_array($config['vinterfaces']['vlan']) && count($config['vinterfaces']['vlan'])) {
 	foreach ($config['vinterfaces']['vlan'] as $vlanv) {
 		$portlist[$vlanv['if']] = $vlanv;
-		$portlist[$vlanv['if']]['isvlan'] = true;
+		$portlist[$vlanv['if']]['isvirtual'] = true;
+	}
+}
+
+// Add LAGG interfaces.
+if (is_array($config['vinterfaces']['lagg']) && count($config['vinterfaces']['lagg'])) {
+	foreach ($config['vinterfaces']['lagg'] as $laggv) {
+		$portlist[$laggv['if']] = $laggv;
+		$portlist[$laggv['if']]['isvirtual'] = true;
 	}
 }
 
@@ -181,6 +189,7 @@ if ($_GET['act'] == "add") {
 		  <ul id="tabnav">
 				<li class="tabact"><a href="interfaces_assign.php" title="<?=gettext("Reload page");?>"><?=gettext("Management");?></a></li>
 				<li class="tabinact"><a href="interfaces_vlan.php"><?=gettext("VLAN");?></a></li>
+				<li class="tabinact"><a href="interfaces_lagg.php"><?=gettext("LAGG");?></a></li>
 			</ul>
 		</td>
 	</tr>
@@ -208,10 +217,10 @@ if ($_GET['act'] == "add") {
 							  <?php foreach ($portlist as $portname => $portinfo):?>
 							  <option value="<?=$portname;?>" <?php if ($portname == $iface['if']) echo "selected";?>>
 							  	<?php
-									if ($portinfo['isvlan']) {
-										$descr = "{$portinfo['if']} on {$portinfo['vlandev']}";
+									if ($portinfo['isvirtual']) {
+										$descr = $portinfo['if'];
 										if ($portinfo['desc']) {
-											$descr .= " (" . $portinfo['desc'] . ")";
+											$descr .= " ({$portinfo['desc']})";
 										}
 										echo htmlspecialchars($descr);
 									} else {
