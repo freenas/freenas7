@@ -36,21 +36,23 @@ if (isset($_POST['id']))
 
 $pgtitle = array(gettext("Interfaces"), gettext("Management"), gettext("VLAN"), gettext("Edit"));
 
-if (!is_array($config['vlans']['vlan']))
-	$config['vlans']['vlan'] = array();
+if (!is_array($config['vinterfaces']['vlan']))
+	$config['vinterfaces']['vlan'] = array();
 
-$a_vlans = &$config['vlans']['vlan'];
-array_sort_key($a_vlans, "tag");
+$a_vlans = &$config['vinterfaces']['vlan'];
+array_sort_key($a_vlans, "if");
 
 if (isset($id) && $a_vlans[$id]) {
-	$pconfig['vlanid'] = $a_vlans[$id]['id'];
-	$pconfig['tag'] = $a_vlans[$id]['tag'];
+	$pconfig['enable'] = isset($a_vlans[$id]['enable']);
 	$pconfig['if'] = $a_vlans[$id]['if'];
+	$pconfig['tag'] = $a_vlans[$id]['tag'];
+	$pconfig['vlandev'] = $a_vlans[$id]['vlandev'];
 	$pconfig['desc'] = $a_vlans[$id]['desc'];
 } else {
-	$pconfig['vlanid'] = get_nextvlan_id();
+	$pconfig['enable'] = true;
+	$pconfig['if'] = "vlan" . get_nextvlan_id();
 	$pconfig['tag'] = 1;
-	$pconfig['if'] = "";
+	$pconfig['vlandev'] = "";
 	$pconfig['desc'] = "";
 }
 
@@ -59,7 +61,7 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	// Input validation.
-	$reqdfields = explode(" ", "if tag");
+	$reqdfields = explode(" ", "vlandev tag");
 	$reqdfieldsn = array(gettext("Physical interface"), gettext("VLAN tag"));
 	$reqdfieldst = explode(" ", "string numeric");
 
@@ -74,20 +76,21 @@ if ($_POST) {
 	// Validate if tag is unique. Only check if not in edit mode.
 	if (!isset($id)) {
 		class InterfaceFilter {
-			function InterfaceFilter($if) { $this->if = $if; }
-			function filter($data) { return ($data['if'] === $this->if); }
+			function InterfaceFilter($vlandev) { $this->vlandev = $vlandev; }
+			function filter($data) { return ($data['vlandev'] === $this->vlandev); }
 		}
 
-		if (false !== array_search_ex($_POST['tag'], array_filter($a_vlans, array(new InterfaceFilter($_POST['if']), 'filter')), "tag")) {
+		if (false !== array_search_ex($_POST['tag'], array_filter($a_vlans, array(new InterfaceFilter($_POST['vlandev']), 'filter')), "tag")) {
 			$input_errors[] = sprintf(gettext("A VLAN with the tag %s is already defined on this interface."), $_POST['tag']);
 		}
 	}
 
 	if (!$input_errors) {
 		$vlan = array();
-		$vlan['id'] = $_POST['vlanid'];
-		$vlan['tag'] = $_POST['tag'];
+		$vlan['enable'] = $_POST['enable'] ? true : false;
 		$vlan['if'] = $_POST['if'];
+		$vlan['tag'] = $_POST['tag'];
+		$vlan['vlandev'] = $_POST['vlandev'];
 		$vlan['desc'] = $_POST['desc'];
 
 		if (isset($id) && $a_vlans[$id])
@@ -107,12 +110,12 @@ function get_nextvlan_id() {
 	global $config;
 
 	$id = 0;
-	$a_vlan = $config['vlans']['vlan'];
+	$a_vlan = $config['vinterfaces']['vlan'];
 
-	if (false !== array_search_ex(strval($id), $a_vlan, "id")) {
+	if (false !== array_search_ex("vlan" . strval($id), $a_vlan, "if")) {
 		do {
 			$id++; // Increase ID until a unused one is found.
-		} while (false !== array_search_ex(strval($id), $a_vlan, "id"));
+		} while (false !== array_search_ex("vlan" . strval($id), $a_vlan, "if"));
 	}
 
 	return $id;
@@ -134,14 +137,15 @@ function get_nextvlan_id() {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php $a_if = array(); foreach (get_interface_list() as $ifk => $ifv) { $a_if[$ifk] = "{$ifk} ({$ifv['mac']})"; };?>
-					<?php html_inputbox("tag", gettext("VLAN tag"), $pconfig['tag'], gettext("802.1Q VLAN tag (between 1 and 4094)."), true, 4, isset($id) ? true : false);?>
-					<?php html_combobox("if", gettext("Physical interface"), $pconfig['if'], $a_if, gettext(""), true, isset($id) ? true : false);?>
+					<?php html_inputbox("tag", gettext("VLAN tag"), $pconfig['tag'], gettext("802.1Q VLAN tag (between 1 and 4094)."), true, 4);?>
+					<?php html_combobox("vlandev", gettext("Physical interface"), $pconfig['vlandev'], $a_if, gettext(""), true);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
 							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vlans[$id])) ? gettext("Save") : gettext("Add");?>">
-							<input name="vlanid" type="hidden" value="<?=$pconfig['vlanid'];?>">
+							<input name="enable" type="hidden" value="<?=$pconfig['enable'];?>">
+							<input name="if" type="hidden" value="<?=$pconfig['if'];?>">
 							<?php if (isset($id) && $a_vlans[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif;?>

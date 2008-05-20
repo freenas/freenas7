@@ -135,14 +135,23 @@
 		-->
 	</interfaces>
 	<!--
-	<vlans>
+	<vinterfaces>
 		<vlan>
-			<id>xxx</id>
-			<tag>x</tag>
-			<if>xxx</if>
-			<desc></desc>
+			<enable/>
+			<if>vlan0</if>
+			<vlandev>rl0</vlandev>
+			<tag>1...4094</tag>
+			<desc>xxx</desc>
 		</vlan>
-	</vlans>
+		<lagg>
+			<enable/>
+			<if>lagg0</if>
+			<laggproto>failover|fec|lacp|loadbalance|roundrobin|none<laggproto>
+			<laggport>re0<laggport>
+			<laggport>rl0<laggport>
+			<desc>xxx</desc>
+		</lagg>
+	</vinterfaces>
 	-->
 	<staticroutes>
 		<!--

@@ -32,22 +32,23 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Interfaces"), gettext("Management"), gettext("VLAN"));
 
-if (!is_array($config['vlans']['vlan']))
-	$config['vlans']['vlan'] = array();
+if (!is_array($config['vinterfaces']['vlan']))
+	$config['vinterfaces']['vlan'] = array();
 
-$a_vlans = &$config['vlans']['vlan'];
-array_sort_key($a_vlans, "tag");
+$a_vlans = &$config['vinterfaces']['vlan'];
+array_sort_key($a_vlans, "if");
 
-function vlan_inuse($num) {
+function vlan_inuse($ifn) {
 	global $config, $g;
 
-	if ($config['interfaces']['lan']['if'] == "vlan{$num}")
+	if ($config['interfaces']['lan']['if'] === $ifn)
 		return true;
-	if ($config['interfaces']['wan']['if'] == "vlan{$num}")
+
+	if ($config['interfaces']['wan']['if'] === $ifn)
 		return true;
 
 	for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
-		if ($config['interfaces']['opt' . $i]['if'] == "vlan{$num}")
+		if ($config['interfaces']['opt' . $i]['if'] === $ifn)
 			return true;
 	}
 
@@ -55,12 +56,13 @@ function vlan_inuse($num) {
 }
 
 if ($_GET['act'] == "del") {
+	$vlan = $a_vlans[$_GET['id']];
+
 	// Check if still in use.
-	if (vlan_inuse($_GET['id'])) {
+	if (vlan_inuse($vlan['if'])) {
 		$input_errors[] = gettext("This VLAN cannot be deleted because it is still being used as an interface.");
 	} else {
-		$vlan = $a_vlans[$_GET['id']];
-		mwexec("/usr/local/sbin/rconf attribute remove 'ifconfig_vlan{$vlan['id']}'");
+		mwexec("/usr/local/sbin/rconf attribute remove 'ifconfig_{$vlan['if']}'");
 
 		unset($a_vlans[$_GET['id']]);
 
@@ -97,8 +99,8 @@ if ($_GET['act'] == "del") {
 					</tr>
 					<?php $i = 0; foreach ($a_vlans as $vlan):?>
 					<tr>
-						<td class="listlr">vlan<?=htmlspecialchars($vlan['id']);?></td>
-						<td class="listr"><?=htmlspecialchars($vlan['if']);?></td>
+						<td class="listlr"><?=htmlspecialchars($vlan['if']);?></td>
+						<td class="listr"><?=htmlspecialchars($vlan['vlandev']);?></td>
 						<td class="listr"><?=htmlspecialchars($vlan['tag']);?></td>
 						<td class="listbg"><?=htmlspecialchars($vlan['desc']);?>&nbsp;</td>
 						<td valign="middle" nowrap class="list"> <a href="interfaces_vlan_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit VLAN");?>" width="17" height="17" border="0"></a>&nbsp;<a href="interfaces_vlan.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this VLAN?");?>')"><img src="x.gif" title="<?=gettext("Delete VLAN");?>" width="17" height="17" border="0"></a></td>
