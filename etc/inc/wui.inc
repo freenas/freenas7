@@ -519,4 +519,50 @@ class HTMLText extends HTMLBaseControl {
 		echo "{$text}\n";
 	}
 }
+
+class HTMLListBox extends HTMLBaseControlJS {
+	var $_options = array();
+
+	function HTMLListBox($ctrlname, $title, $value, $options, $description) {
+		$this->SetCtrlName($ctrlname);
+		$this->SetTitle($title);
+		$this->SetDescription($description);
+		$this->SetValue($value);
+		$this->SetOptions($options);
+	}
+
+	function GetOptions() {
+		return $this->_options;
+	}
+
+	function SetOptions($options) {
+		$this->_options = $options;
+	}
+
+	function GetParam() {
+		$param = "";
+		if (true === $this->IsReadOnly())
+			$param .= "disabled ";
+		$onclick = $this->GetJSonClick();
+		if (!empty($onclick))
+			$param .= "onClick='{$onclick}' ";
+		return $param;
+	}
+
+	function RenderCtrl() {
+		$ctrlname = $this->GetCtrlName();
+		$value = $this->GetValue();
+		$param = $this->GetParam();
+		$options = $this->GetOptions();
+
+		echo "    <select name='{$ctrlname}[]' class='formselect' multiple id='{$ctrlname}' {$param}>\n";
+		foreach ($options as $optionk => $optionv) {
+			$optparam = "";
+			if (is_array($value) && in_array($optionk, $value))
+				$optparam .= "selected ";
+			echo "      <option value='{$optionk}' {$optparam}>{$optionv}</option>\n";
+		}
+		echo "    </select>\n";
+	}
+}
 ?>
