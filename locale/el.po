@@ -1,0 +1,2851 @@
+# Greek translation for freenas
+# Copyright (c) 2007 Rosetta Contributors and Canonical Ltd 2007
+# This file is distributed under the same license as the freenas package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2007.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: freenas\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2007-08-13 16:00+0000\n"
+"Last-Translator: Ioannis Koniaris <ikoniari@csd.auth.gr>\n"
+"Language-Team: Greek <el@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Rosetta-Export-Date: 2007-08-29 13:29:26+0000\n"
+
+msgid "Date"
+msgstr "Ημερομηνία"
+
+msgid "%b %d, %Y"
+msgstr "%b %d, %Y"
+
+msgid "%A, %B %d, %Y"
+msgstr "%A, %B %d, %Y"
+
+msgid "%A, %B %d @ %H:%M:%S"
+msgstr "%A, %B %d @ %H:%M:%S"
+
+msgid "%b %d, %Y - %I:%M %p"
+msgstr "%b %d, %Y - %I:%M %p"
+
+msgid "%A, %B %d, %Y - %I:%M %p"
+msgstr "%A, %B %d, %Y - %I:%M %p"
+
+msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
+msgstr "Κυριακή Δευτέρα Τρίτη Τετάρτη Πέμπτη Παρασκευή Σάββατο"
+
+msgid "Sun Mon Tue Wed Thu Fri Sat"
+msgstr "Κυρ Δευ Τρ Τετ Πε Πα Σαβ"
+
+msgid ""
+"January February March April May June July August September October November "
+"December"
+msgstr ""
+"Ιανουάριος Φεβρουάριος Μάρτιος Απρίλιος Μάιος Ιούνιος Ιούλιος Αύγουστος "
+"Σεπτέμβριος Οκτώβριος Νοέμβριος Δεκέμβριος"
+
+msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+msgstr "Ιαν Φεβ Μαρ Απρ Μα Ιον Ιουλ Αυγ Σεπτ Οκτ Νοε Δεκ"
+
+msgid "Time"
+msgstr "Χρόνος"
+
+msgid "%I:%M %p"
+msgstr "%I:%M %p"
+
+msgid "second"
+msgstr "δευτερόλεπτο"
+
+msgid "seconds"
+msgstr "δευτερόλεπτα"
+
+msgid "minute"
+msgstr "λεπτό"
+
+msgid "minutes"
+msgstr "λεπτά"
+
+msgid "hour"
+msgstr "ώρα"
+
+msgid "hours"
+msgstr "ώρες"
+
+msgid "day"
+msgstr "ημέρα"
+
+msgid "days"
+msgstr "ημέρες"
+
+msgid "week"
+msgstr "εβδομάδα"
+
+msgid "weeks"
+msgstr "εβδομάδες"
+
+msgid "week days"
+msgstr "ημέρες εβδομάδας"
+
+msgid "month"
+msgstr "μήνας"
+
+msgid "months"
+msgstr "μήνες"
+
+msgid "year"
+msgstr "έτος"
+
+msgid "years"
+msgstr "έτη"
+
+msgid "All"
+msgstr "Όλα"
+
+msgid "and"
+msgstr "και"
+
+msgid "by"
+msgstr "ανά"
+
+msgid "Down"
+msgstr "Κάτω"
+
+msgid "No"
+msgstr "Όχι"
+
+msgid "off"
+msgstr "απενεργοποίηση"
+
+msgid "OK"
+msgstr "OK"
+
+msgid "on"
+msgstr "ενεργοποίηση"
+
+msgid "To"
+msgstr "Πρoς"
+
+msgid "The"
+msgstr "Το"
+
+msgid "Up"
+msgstr "Πάνω"
+
+msgid "URL"
+msgstr "Διεύθυνση"
+
+msgid "Yes"
+msgstr "Ναι"
+
+msgid "Activate"
+msgstr "Ενεργοποίηση"
+
+msgid "Add"
+msgstr "Προσθήκη"
+
+msgid "Cancel"
+msgstr "Άκυρο"
+
+msgid "Create"
+msgstr "Δημιουργία"
+
+msgid "Deactivate"
+msgstr "Απενεργοποίηση"
+
+msgid "Delete"
+msgstr "Διαγραφή"
+
+msgid "Edit"
+msgstr "Επεξεργασία"
+
+msgid "Enable"
+msgstr "Ενεργοποίηση"
+
+msgid "Help"
+msgstr "Βοήθεια"
+
+msgid "Ignore"
+msgstr "Παράβλεψη"
+
+msgid "Login"
+msgstr "Σύνδεση"
+
+msgid "Log out"
+msgstr "Αποσύνδεση"
+
+msgid "Modify"
+msgstr "Τροποποίηση"
+
+msgid "New"
+msgstr "Νεό"
+
+msgid "Search"
+msgstr "Αναζήτηση"
+
+msgid "Save"
+msgstr "Αποθήκευση"
+
+msgid "Submit"
+msgstr "Υποβολή"
+
+msgid "Update"
+msgstr "Ανανέωση"
+
+msgid "View"
+msgstr "Προβολή"
+
+msgid "Apply changes"
+msgstr "Εφαρμογή αλλαγών"
+
+msgid "Warning"
+msgstr "Προειδοποίηση"
+
+msgid "Load"
+msgstr "Φόρτωση"
+
+msgid "Retry"
+msgstr "Επανάληψη"
+
+msgid "Size"
+msgstr "Μέγεθος"
+
+msgid "Status"
+msgstr "Κατάσταση"
+
+msgid "Type"
+msgstr "Τύπος"
+
+msgid "Configuring"
+msgstr "Ρύθμιση"
+
+msgid "Disk"
+msgstr "Δίσκος"
+
+msgid "Disks"
+msgstr "Δίσκοι"
+
+msgid "Partition"
+msgstr "Κατάτμηση"
+
+msgid "File system"
+msgstr "Σύστημα αρχείων"
+
+msgid "Description"
+msgstr "Περιγραφή"
+
+msgid "Software RAID"
+msgstr "Software RAID"
+
+msgid "Service"
+msgstr "Υπηρεσία"
+
+msgid "TCP port"
+msgstr "Θύρα TCP"
+
+msgid "Confirmation"
+msgstr "Επιβεβαίωση"
+
+msgid "Note"
+msgstr "Σημείωση"
+
+msgid "Successful"
+msgstr "Επιτυχής"
+
+msgid "Failed"
+msgstr "Αποτυχία"
+
+msgid "Error"
+msgstr "Σφάλμα"
+
+msgid "Hint"
+msgstr "Συμβουλή"
+
+msgid "The changes have been applied successfully."
+msgstr "Οι αλλαγές εφαρμόστηκαν με επιτυχία."
+
+msgid ""
+"The changes have been saved. You must <a href=%s>reboot</a> your NAS for "
+"changes to take effect."
+msgstr ""
+"Οι αλλαγές έχουν αποθηκευτεί. Πρέπει να <a href=%s>επανεκκίνησετε</a> το NAS "
+"για να ισχύσουν οι αλλαγές."
+
+msgid "ERROR: The changes could not be applied (error code %s)."
+msgstr ""
+"ΣΦΑΛΜΑ: Οι αλλαγές ήταν αδύνατο να εφαρμοστούν (κωδικός σφάλματος %s)."
+
+msgid "A valid IP address must be specified."
+msgstr "Πρέπει να καθοριστεί μια έγκυρη διεύθυνση IP."
+
+msgid "A valid network bit count must be specified."
+msgstr "Πρέπει να καθοριστεί μια έγκυρη bit μέτρηση δικτύου."
+
+msgid "The TCP port must be a valid port number."
+msgstr "Η θύρα TCP πρέπει να είναι ένας έγκυρος αριθμός θύρας."
+
+msgid "Password don't match."
+msgstr "Οι κωδικοί δεν ταιριάζουν."
+
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select and de-select "
+"minutes, hours, days and months."
+msgstr ""
+"Σημείωση: Πατήστε Ctrl-click (ή command-click σε Mac) για να επιλέξετε ή να "
+"αποεπιλέξετε λεπτά, ώρες, ημέρες και μήνες."
+
+msgid ""
+"UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
+"Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
+"can result in unpredictable results, file corruption, and loss of data!"
+msgstr ""
+"Το UFS είναι η ΕΓΓΕΝΗΣ μορφή αρχείων για το FreeBSD (το υποκείμενο OS του "
+"%s). Η προσπάθεια χρήσης άλλων μορφών αρχείων όπως FAT, FAT32, EXT2, EXT3, ή "
+"NTFS μπορεί να έχει ως επακόλουθο απρόβλεπτα αποτελέσματα, καταστροφή "
+"αρχείων, και χάσιμο δεδομένων!"
+
+msgid "Active"
+msgstr "Ενεργό"
+
+msgid "Inactive"
+msgstr "Ανενεργό"
+
+msgid "Selected"
+msgstr "Επιλεγμένο"
+
+msgid "System"
+msgstr "Σύστημα"
+
+msgid "General setup"
+msgstr "Γενική εγκατάσταση"
+
+msgid "Static routes"
+msgstr "Στατικές διαδρομές"
+
+msgid "Firmware"
+msgstr "Firmware"
+
+msgid "Advanced"
+msgstr "Προχωρημένες"
+
+msgid "Swap"
+msgstr "Εναλλαγή"
+
+msgid "Assign"
+msgstr "Ορισμός"
+
+msgid "LAN"
+msgstr "LAN"
+
+msgid "Management"
+msgstr "Διαχείριση"
+
+msgid "Mount Point"
+msgstr "Σημείο Προσάρτησης"
+
+msgid "Services"
+msgstr "Υπηρεσίες"
+
+msgid "CIFS"
+msgstr "CIFS"
+
+msgid "FTP"
+msgstr "FTP"
+
+msgid "NFS"
+msgstr "NFS"
+
+msgid "RSYNCD"
+msgstr "RSYNCD"
+
+msgid "SSHD"
+msgstr "SSHD"
+
+msgid "Unison"
+msgstr "Unison"
+
+msgid "UPnP"
+msgstr "UPnP"
+
+msgid "AFP"
+msgstr "AFP"
+
+msgid "Access"
+msgstr "Πρόσβαση"
+
+msgid "Users and Groups"
+msgstr "Χρήστες και Ομάδες"
+
+msgid "Active Directory"
+msgstr "Ενεργός Κατάλογος"
+
+msgid "NIS"
+msgstr "NIS"
+
+msgid "Radius"
+msgstr "Ακτίνα"
+
+msgid "Process"
+msgstr "Διεργασία"
+
+msgid "Interfaces"
+msgstr "Διεπαφές"
+
+msgid "Wireless"
+msgstr "Ασύρματο"
+
+msgid "Extensions"
+msgstr "Επεκτάσεις"
+
+msgid "Diagnostics"
+msgstr "Διαγνωστικά"
+
+msgid "Logs"
+msgstr "Αρχεία καταγραφής"
+
+msgid "Information"
+msgstr "Πληροφορίες"
+
+msgid "Ping/Traceroute"
+msgstr "Ping/Traceroute"
+
+msgid "ARP table"
+msgstr "πίνακας ARP"
+
+msgid "Edit File"
+msgstr "Επεξεργασία Αρχείου"
+
+msgid "Backup/Restore"
+msgstr "Φύλαξη/Επαναφορά"
+
+msgid "Factory defaults"
+msgstr "Εργοστασιακές ρυθμίσεις"
+
+msgid "Reboot system"
+msgstr "Επανεκκίνηση συστήματος"
+
+msgid "Shutdown system"
+msgstr "Τερματισμός συστήματος"
+
+msgid "Graph"
+msgstr "Γράφημα"
+
+msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+msgstr ""
+"Όνομα του υπολογιστή NAS, χωρίς το τμήμα του τομέα<br>πχ. <em>nas</em>"
+
+msgid "Domain"
+msgstr "Τομέας"
+
+msgid "e.g. <em>mycorp.com</em>"
+msgstr "πχ. <em>mycorp.com</em>"
+
+msgid "DNS servers"
+msgstr "διακομιστές DNS"
+
+msgid "IP addresses"
+msgstr "διευθύνσεις IP"
+
+msgid "Username"
+msgstr "Όνομα χρήστη"
+
+msgid ""
+"If you want to change the username for accessing the webGUI, enter it here."
+msgstr ""
+"Αν θέλετε να αλλάξετε το όνομα χρήστη για πρόσβαση στο webGUI, εισάγετε το "
+"εδώ."
+
+msgid "Password"
+msgstr "Κωδικός"
+
+msgid ""
+"If you want to change the password for accessing the webGUI, enter it here "
+"twice.<br>Don't use the character ':'."
+msgstr ""
+"Αν θέλετε να αλλάξετε τον κωδικό για πρόσβαση στο webGUI, εισάγετε το εδώ "
+"διπλά.<br>Μη χρησιμοποιείτε το χαρακτήρα ':'."
+
+msgid "WebGUI protocol"
+msgstr "πρωτόκολλο WebGUI"
+
+msgid "WebGUI port"
+msgstr "θύρα WebGUI"
+
+msgid ""
+"Enter a custom port number for the webGUI above if you want to override the "
+"default (80 for HTTP, 443 for HTTPS)."
+msgstr ""
+"Εισάγετε ένας προσαρμοσμένο αριθμό θύρας για το webGUI παραπάνω αν θέλετε να "
+"υπερκαλύψετε τις προεπιλεγμένες (80 για HTTP, 443 για HTTPS)."
+
+msgid "Language"
+msgstr "Γλώσσα"
+
+msgid "Select the system language"
+msgstr "Επιλογή γλώσσας συστήματος"
+
+msgid "System Time"
+msgstr "Ώρα Συστήματος"
+
+msgid ""
+"Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
+"select one, then use Save button to update system time. (Mind seconds part "
+"will be ignored)"
+msgstr ""
+"Εισάγετε την επιθυμητή ώρα συστήματος άμεσα (μορφή μμ/ηη/εεε ωω:λλ) ή "
+"χρησιμοποιείστε το εικονίδιο για την επιλογή μιας, και κατόπιν "
+"χρησιμοποιείστε το κουμπί Αποθήκευση για να ανανεώσετε την ώρα συστήματος. "
+"(Μην ασχολείστε με τα δευτερόλεπτα καθώς θα παραβλεφθούν)"
+
+msgid "Time zone"
+msgstr "Ζώνη ώρας"
+
+msgid "Select the location closest to you."
+msgstr "Επιλογή κοντινότερης σε εσάς τοποθεσίας."
+
+msgid "Time update interval"
+msgstr "Μεσοδιάστημα ανανέωσης ώρας"
+
+msgid ""
+"Minutes between network time sync.; 300\trecommended, or 0 to disable."
+msgstr ""
+"Λεπτά μεταξύ των συχρονισμών ώρας δικτύου.; 300\tπροτείνεται, ή 0 για "
+"απενεργοποίηση."
+
+msgid "NTP time server"
+msgstr "διακομιστής ώρας NTP"
+
+msgid ""
+"Use a space to separate multiple hosts (only one required). Remember to set "
+"up at least one DNS server if you enter a host name here!"
+msgstr ""
+"Χρησιμοποείστε ένα κενό για να χωρίσετε πολλαπλούς υπολογιστές (μόνο ένα "
+"απαιτείται). Θυμηθείτε να ρυθμίσετε τουλάχιστον ένα διακομιστή DNS αν "
+"εισάγετε ένα όνομα υπολογιστή εδώ!"
+
+msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
+msgstr ""
+"Το όνομα υπολογιστή μπορεί να περιέχει μόνο τους χαρακτήρες a-z, 0-9 και '-'."
+
+msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr ""
+"Ο τομέας μπορεί να περιέχει μόνο τους χαρακτήρες a-z, 0-9, '-' και '.'."
+
+msgid ""
+"A valid IP address must be specified for the primary/secondary DNS server."
+msgstr ""
+"Μία έγκυρη διεύθυνση IP πρέπει να καθοριστεί για τον πρωτεύον/δευτερεύον "
+"διακομιστή DNS."
+
+msgid "The username may only contain the characters a-z, A-Z and 0-9."
+msgstr ""
+"Το όνομα χρήστη μπορεί να περιέχει μόνο τους χαρακτήρες a-z, A-Z και 0-9."
+
+msgid "A valid TCP/IP port must be specified for the webGUI port."
+msgstr "Μία έγκυρη θύρα TCP/IP πρέπει να καθοριστεί για τη θύρα webGUI."
+
+msgid "The passwords do not match."
+msgstr "Οι κωδικοί δεν ταιριάζουν."
+
+msgid "You must select a valid language."
+msgstr "Πρέπει να επιλέξετε μια έγκυρη γλώσσα."
+
+msgid ""
+"The time update interval must be either 0 (disabled) or between 6 and 1440."
+msgstr ""
+"Το μεσοδιάστημα ανανεώσεων ώρας πρέπει να είναι είτε 0 (απενεργοποιημένο) "
+"είτε ανάμεσα στο 6 και 1440."
+
+msgid ""
+"A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr ""
+"Ένας Διακομιστής Ώρας NTP μπορεί να περιέχει μόνο τους χαρακτήρες a-z, 0-9, "
+"'-' και '.'."
+
+msgid "System information"
+msgstr "Πληροφορίες συστήματος"
+
+msgid "Name"
+msgstr "Όνομα"
+
+msgid "Version"
+msgstr "Έκδοση"
+
+msgid "OS Version"
+msgstr "Έκδοση OS"
+
+msgid "Platform"
+msgstr "Πλατφόρμα"
+
+msgid "Uptime"
+msgstr "Χρόνος λειτουργίας"
+
+msgid "Last config change"
+msgstr "Τελευταία αλλαγή ρυθμίσεων"
+
+msgid "Memory usage"
+msgstr "Χρήση μνήμης"
+
+msgid "Load averages"
+msgstr "Φόρτωμα μέσων όρων"
+
+msgid "show process information"
+msgstr "εμφάνιση πληρογοριών διεργασίας"
+
+msgid "Disk space usage"
+msgstr "Χρήση χώρου δίσκου"
+
+msgid "No disk configured"
+msgstr "Δε ρυθμίστηκε δίσκος"
+
+msgid "Processes"
+msgstr "Διεργασίες"
+
+msgid "Processes information"
+msgstr "Πληροφορίες διεργασιών"
+
+msgid ""
+"The static route configuration has been changed.<br>You must apply the "
+"changes in order for them to take effect."
+msgstr ""
+"Οι ρυθμίσεις του στατικής διαδρομής έχουν αλλάξει.<br>Πρέπει να εφαρμόσετε "
+"τις αλλαγές προκειμένου να ισχύσουν."
+
+msgid "Interface"
+msgstr "Διεπαφή"
+
+msgid "Network"
+msgstr "Δίκτυο"
+
+msgid "Edit Route"
+msgstr "Επεξεργασία Διαδρομής"
+
+msgid "Do you really want to delete this route?"
+msgstr "Θέλετε πράγματι να διαγράψετε αυτήν τη διαδρομή;"
+
+msgid "Delete Route"
+msgstr "Διαγραφή Διαδρομής"
+
+msgid "Add Route"
+msgstr "Προσθήκη Διαδρομής"
+
+msgid "A valid destination network must be specified."
+msgstr "Πρέπει να καθοριστεί ένα έκγυρο δίκτυο προορισμού."
+
+msgid "A valid gateway IP address must be specified."
+msgstr "Πρέπει να καθοριστεί μία έγκυρη διεύθυνση IP πύλης."
+
+msgid "A route to this destination network already exists."
+msgstr "Μια διαδρομή προς αυτόν τον προορισμό υπάρχει ήδη."
+
+msgid "Choose which interface this route applies to."
+msgstr "Επιλέξτε με ποια διεπαφή εφαρμόζει αυτή η διαδρομή."
+
+msgid "Destination network"
+msgstr "Δίκτυο προορισμού"
+
+msgid "Destination network for this static route"
+msgstr "Δίκτυο προορισμού για αυτή τη στατική διαδρομή"
+
+msgid "Gateway to be used to reach the destination network"
+msgstr "Η πύλη που θα χρησιμοποιηθεί για να φτάσει το δίκτυο προορισμού"
+
+msgid "You may enter a description here for your reference (not parsed)."
+msgstr ""
+"Μπορείτε να εισάγετε εδώ μια περιγραφή για δικιά σας αναφορά (δεν αναλύεται)."
+
+msgid "The uploaded image file is not for this platform"
+msgstr "Η εικόνα που έχει αποσταλεί δεν είναι για αυτήν την πλατφόρμα"
+
+msgid "Image upload failed (out of memory?)"
+msgstr "Αποτυχία αποστολής εικόνας (δεν επαρκεί η μνήμη;)"
+
+msgid "The digital signature on this image is invalid."
+msgstr "Η ψηφιακή υπογραφή σε αυτή την εικόνα δεν είναι έγκυρη."
+
+msgid "This image is not digitally signed."
+msgstr "Η εικόνα δεν είναι ψηφιακά υπογεγραμμένη."
+
+msgid "There has been an error verifying the signature on this image."
+msgstr ""
+"Υπήρξε ένα σφάλμα κατά την επαλήθευση της υπογραφής σε αυτή την εικόνα."
+
+msgid "The image file is corrupt"
+msgstr "Το αρχείο εικόνας είναι κατεσταμμένο"
+
+msgid "The firmware is now being installed. %s will reboot automatically."
+msgstr "Το firmware εγκαθίσταται τώρα. Το %s θα επανεκκινηθεί αυτόματα."
+
+msgid "Firmware uploading is not supported on this platform."
+msgstr "Η αποστολή firmware δεν υποστηρίζεται σε αυτή την πλατφόρμα."
+
+msgid ""
+"This means that the image you uploaded is not an official/supported image "
+"and may lead to unexpected behavior or security compromises. Only install "
+"images that come from sources that you trust, and make sure that the image "
+"has not been tampered with.<br><br>Do you want to install this image anyway "
+"(on your own risk)?"
+msgstr ""
+"Αυτό σημαίνει ότι η εικόνα που αποστείλατε δεν είναι μια "
+"επίσημη/υποστηριζόμενη εικόνα και μπορεί να οδηγήσει σε απρόβλεπτη "
+"συμπεριφορά ή να θέσει σε κίνδυνο την ασφάλεια του συστήματος. Εγκαθιστάτε "
+"εικόνες που προέρχονται μόνο από πηγές τις οποίες εμπιστεύεστε, και "
+"σιγουρευτείτε ότι η εικόνα δεν έχει αλλοιωθεί.<br><br>Θέλετε να "
+"εγκαταστήσετε αυτή την εικόνα οπωσδήποτε (με δικό σας ρίσκο);"
+
+msgid ""
+"Click &quot;Enable firmware upload&quot; below, then choose the image file "
+"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+"process."
+msgstr ""
+"Κάντε click στο &quot;Ενεργοποίηση αποστολής firmware&quot; παρακάτω, και "
+"κατόπιν επιλέξτε το αρχείο εικόνας που θα αποσταλεί.<br>Κάντε click στο "
+"&quot;Αναβάθμιση firmware&quot; για να αρχίσετε την διαδικασία αναβάθμισης."
+
+msgid "Enable firmware upload"
+msgstr "Ενεργοποίηση αποστολής firmware"
+
+msgid "Disable firmware upload"
+msgstr "Απενεργοποίηση αποστολής firmware"
+
+msgid "Firmware image file"
+msgstr "Αρχείο εικόνας firmware"
+
+msgid "Upgrade firmware"
+msgstr "Αναβάθμιση firmware"
+
+msgid "You must reboot the system before you can upgrade the firmware."
+msgstr ""
+"Πρέπει να επανεκκινήσετε το σύστημα προτού να μπορείτε να αναβαθμίσετε το "
+"firmware."
+
+msgid "The TCP idle timeout must be an integer."
+msgstr "Το χρονικό όριο αδράνειας TCP πρέπει να είναι ένας ακέραιος αριθμός."
+
+msgid "Certificate and key must always be specified together."
+msgstr ""
+"Το πιστοποιητικό και το κλειδί πρέπει πάντα να είναι καθορισμένα μαζί."
+
+msgid "This certificate does not appear to be valid."
+msgstr "Το πιστοποιητικό δε φαίνεται να είναι έγκυρο."
+
+msgid "This key does not appear to be valid."
+msgstr "Αυτό το κλειδί φαίνεται να μην είναι έγκυρο."
+
+msgid ""
+"The options on this page are intended for use by advanced users only, and "
+"there's <strong>NO</strong> support for them."
+msgstr ""
+"Οι επιλογές σε αυτήν τη σελίδα προορίζονται για χρήση από προχωρημένους "
+"χρήστες μόνο, και δεν υπάρχει <strong>ΚΑΜΙΑ</strong> υποστήριξη για αυτές."
+
+msgid "webGUI SSL certificate/key"
+msgstr "webGUI πιστοποιητικό/κλειδί SSL"
+
+msgid "Certificate"
+msgstr "Πιστοποιητικό"
+
+msgid "Paste a signed certificate in X.509 PEM format here."
+msgstr "Επικολλήστε εδώ ένα υπογεγραμμένο πιστοποιητικό σε μορφή X.509 PEM."
+
+msgid "Key"
+msgstr "Κλειδί"
+
+msgid "Paste an RSA private key in PEM format here."
+msgstr "Επικολλήστε εδώ ένα ιδιωτικό κλειδί RSA σε μορφή PEM."
+
+msgid "Miscellaneous"
+msgstr "Διάφορα"
+
+msgid "Console menu"
+msgstr "Μενού κονσόλας"
+
+msgid "Disable console menu"
+msgstr "Απενεργοποίηση μενού κονσόλας"
+
+msgid "Changes to this option will take effect after a reboot."
+msgstr "Οι αλλαγές σε αυτή την επιλογή θα ισχύσουν μετά από επανεκκίνηση."
+
+msgid "Firmware version check"
+msgstr "Έλεγχος έκδοσης firmware"
+
+msgid "Disable firmware version check"
+msgstr "Απενεργοποίηση ελέγχου έκδοσης firmware"
+
+msgid "TCP idle timeout"
+msgstr "χρονικό όριο αδράνειας TCP"
+
+msgid ""
+"Idle TCP connections will be removed from the state table after no packets "
+"have been received for the specified number of seconds. Don't set this too "
+"high or your state table could become full of connections that have been "
+"improperly shut down. The default is 9000 seconds (2.5 hours)."
+msgstr ""
+"Οι αδρανείς συνδέσεις TCP θα αφαιρούνται από τον πίνακα κατάστασης αν δεν "
+"έχουν ληφθεί πακέτα μετά το πέρας καθορισμένου αριθμού δευτερολέπτων. Μην το "
+"θέσετε πολύ ψηλά καθώς ο πίνακας συνδέσεων μπορεί να γεμίσει με συνδέσεις "
+"που έχουν τερματιστεί λανθασμένα. Η προεπιλογή είναι 9000 δευτερόλεπτα (2,5 "
+"ώρες)."
+
+msgid "Navigation"
+msgstr "Πλοήγηση"
+
+msgid "Keep diagnostics in navigation expanded"
+msgstr "Διατήρηση των διαγνωστικών στην πλοήγηση ανεπτυγμένα"
+
+msgid "System Beep"
+msgstr "Ειδοποίηση Συστήματος"
+
+msgid "Disable speaker beep on startup and shutdown"
+msgstr ""
+"Απενεργοποίηση ηχητικής ειδοποίησης συστήματος κατά την έναρξη και τον "
+"τερματισμό"
+
+msgid "S.M.A.R.T Daemon"
+msgstr "Δαίμονας S.M.A.R.T"
+
+msgid "Enable the S.M.A.R.T daemon"
+msgstr "Ενεργοποίηση δαίμονα S.M.A.R.T"
+
+msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
+msgstr ""
+"Παρακολούθηση των συσκευών S.M.A.R.T καταγράφοντας την κατάσταση τους στο "
+"αρχείο καταγραφής."
+
+msgid "Tuning"
+msgstr "Βελτιστοποίηση"
+
+msgid "Zeroconf"
+msgstr "Zeroconf"
+
+msgid "Swap file"
+msgstr "Αρχείο swap"
+
+msgid "Swap size"
+msgstr "Μέγεθος swap"
+
+msgid "mount share"
+msgstr "κοινόχρηστη κατάτμηση"
+
+msgid "Mount to use for swap"
+msgstr "Προσάρτηση για χρήση ως swap"
+
+msgid "Swap file size"
+msgstr "Μέγεθος αρχείου swap"
+
+msgid "Size in MB."
+msgstr "Μέγεθος σε MB."
+
+msgid "Assign network ports"
+msgstr "Ορισμός θυρών δικτύου"
+
+msgid "Port "
+msgstr "Η θύρα "
+
+msgid " was assigned to "
+msgstr " έχει αντιστοιχεί σε "
+
+msgid " interfaces:"
+msgstr " διεπαφές:"
+
+msgid "Network port"
+msgstr "Θύρα δικτύου"
+
+msgid "Delete interface"
+msgstr "Διαγραφή διεπαφής"
+
+msgid "Add interface"
+msgstr "Προσθήκη διεπαφής"
+
+msgid ""
+"After you click &quot;Save&quot;, you must reboot %s to make the changes "
+"take effect. You may also have to do one or more of the following steps "
+"before you can access your NAS again: </span><"
+msgstr ""
+"Αφού κάνετε click στην &quot;Αποθήκευση&quot;, πρέπει να επανεκκίνησετε το "
+"%s προκειμένου να ισχύσουν οι αλλαγές. Μπορεί επίσης να χρειαστεί να κάνετε "
+"ένα ή περισσότερα από τα ακόλουθα βήματα πριν να μπορέσετε να έχετε πρόσβαση "
+"στο NAS σας ξανά: </span><"
+
+msgid "A valid gateway must be specified."
+msgstr "Πρέπει να καθοριστεί μια έγκυρη πύλη."
+
+msgid "A valid mtu size must be specified."
+msgstr "Πρέπει να καθοριστεί ένα έγκυρο μέγεθος mtu."
+
+msgid "IP address"
+msgstr "διεύθυνση IP"
+
+msgid "Subnet bit count"
+msgstr "Αριθμός bit υποδικτύου"
+
+msgid "MTU"
+msgstr "MTU"
+
+msgid "Standard MTU is 1500, use 9000 for jumbo frame."
+msgstr "Το στάνταρντ MTU είναι 1500, χρησιμοποιήστε 9000 για jumbo frame."
+
+msgid "Device polling"
+msgstr "Έλεγχος συσκευής"
+
+msgid "Enable device polling"
+msgstr "Ενεργοποίηση ελέγχου συσκευής"
+
+msgid ""
+"Device polling is a technique that lets the system periodically poll network "
+"devices for new data instead of relying on interrupts. This can reduce CPU "
+"load and therefore increase throughput, at the expense of a slightly higher "
+"forwarding delay (the devices are polled 1000 times per second). Not all "
+"NICs support polling; see the m0n0wall homepage for a list of supported "
+"cards."
+msgstr ""
+"Ο έλεγχος συσκευής είναι μία τεχνική που επιτρέπει στο σύστημα να ελέγχει "
+"περιοδικά τις συσκευές δικτύου για νέα δεδομένα αντί να βασίζεται στις "
+"διακοπές. Αυτό μπορεί να ελαττώσει το φόρτο της CPU και έτσι να αυξήσει τη "
+"διαμεταγωγή, με τη θυσία μιας ελαφρώς μεγαλύτερης καθυστέρησης προώθησης (οι "
+"συσκευές ελέγχονται 1000 φορές κάθε δευτερόλεπτο). Ο έλεγχος δεν "
+"υποστηρίζεται από όλα τα NICs, δείτε την ιστοσελίδα του m0n0wall για μια "
+"λίστα υποστηριζόμενων καρτών."
+
+msgid "Speed"
+msgstr "Ταχύτητα"
+
+msgid "Duplex"
+msgstr "Διπλότυπο"
+
+msgid "Enable Optional "
+msgstr "Ενεργοποίηση Προαιρετικών "
+
+msgid " interface"
+msgstr " διεπαφή"
+
+msgid "Enter a description (name) for the interface here."
+msgstr "Εισάγετε εδώ μια περιγραφή (όνομα) για τη διεπαφή."
+
+msgid "Static IP configuration"
+msgstr "Ρύθμιση στατικής IP"
+
+msgid "DHCP client configuration"
+msgstr "Ρύθμιση πελάτη DHCP"
+
+msgid "General configuration"
+msgstr "Γενικές ρυθμίσεις"
+
+msgid "Hostname"
+msgstr "Όνομα υπολογιστή"
+
+msgid "Host"
+msgstr "Υπολογιστής"
+
+msgid ""
+"The value in this field is sent as the DHCP hostname when requesting a DHCP "
+"lease."
+msgstr ""
+"Η τιμή σε αυτό το πεδίο στέλνεται ως το όνομα υπολογιστή DHCP όταν ζητείται "
+"μια DHCP lease."
+
+msgid "Client Identifier"
+msgstr "Αναγνωριστικό Πελάτη"
+
+msgid ""
+"The value in this field is sent as the DHCP client identifier when "
+"requesting a DHCP lease."
+msgstr ""
+"Η τιμή σε αυτό το πεδίο στέλνεται ως το αναγνωριστικό πελάτη DHCP όταν "
+"ζητείται μια DHCP lease."
+
+msgid "Calculate netmask bits"
+msgstr "Υπολογισμός bits μάσκας υποδικτύου"
+
+msgid ""
+"The LAN configuration has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+"Η ρυθμίσεις LAN έχουν αλλάξει.<br>Πρέπει να εφαρμόσετε τις αλλαγές "
+"προκειμένου να ισχύσουν."
+
+msgid "Manage"
+msgstr "Διαχείρiση"
+
+msgid "Format"
+msgstr "Διαμόρφωση"
+
+msgid "Tools"
+msgstr "Εργαλεία"
+
+msgid ""
+"The disk list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+"Ο δίσκος έχει αλλάξει.<br>Πρέπει να εφαρμόσετε τις αλλαγές προκειμένου να "
+"ισχύσουν."
+
+msgid "Standby time"
+msgstr "Χρόνος αναμονής"
+
+msgid "Always on"
+msgstr "Συνέχεια ενεργό"
+
+msgid "Unknown or unformatted"
+msgstr "Άγνωστο ή αδιαμόρφωτο"
+
+msgid "Edit disk"
+msgstr "Επεξεργασία δίσκου"
+
+msgid "Delete disk"
+msgstr "Διαγραφή δίσκου"
+
+msgid ""
+"Do you really want to delete this disk? All elements that still use it will "
+"become invalid (e.g. share)!"
+msgstr ""
+"Θέλετε πράγματι να διαγράψετε αυτό το δίσκο; Όλα τα στοιχεία που το "
+"χρησιμοποιούν ακόμα θα γίνουν μη έγκυρα (πχ. διαμοιρασμός)!"
+
+msgid "Add disk"
+msgstr "Προσθήκη δίσκου"
+
+msgid "First configuration step: Add your hardrive to the disk list."
+msgstr ""
+"Πρώτα βήμα ρυθμίσεων: Προσθήκη του σκληρού δίσκου σας στη λίστα δίσκων."
+
+msgid "This disk already exists in the disk list."
+msgstr "Ο δίσκος υπάρχει ήδη στη λίστα."
+
+msgid "UDMA mode"
+msgstr "λειτουργία UDMA"
+
+msgid "Hard disk standby time"
+msgstr "Χρόνος αναμονής σκληρού δίσκου"
+
+msgid ""
+"Puts the hard disk into standby mode when the selected amount of time after "
+"the last access has elapsed. <em>Do not set this for CF cards.</em>"
+msgstr ""
+"Εισάγει το σκληρό δίσκο σε κατάσταση αναμονής με το πέρας της επιλεγμένης "
+"διάρκειας χρόνου μετά την τελευταία πρόσβαση.<em>Μην το θέσετε αυτό για CF "
+"κάρτες.</em>"
+
+msgid "Advanced Power Management"
+msgstr "Προχωρημένη Διαχείριση Ενέργειας"
+
+msgid "Minimum power usage with Standby"
+msgstr "Ελάχιστη κατανάλωση ενέργειας με Αναμονή"
+
+msgid "Medium power usage with Standby"
+msgstr "Μέτρια κατανάλωση ενέργειας με Αναμονή"
+
+msgid "Minimum power usage without Standby"
+msgstr "Μέγιστη κατανάλωση ενέργειας χωρίς Αναμονή"
+
+msgid "Medium power usage without Standby"
+msgstr "Μέτρια κατανάλωση ενέργειας χωρίς Αναμονή"
+
+msgid "Maximum performance, maximum power usage"
+msgstr "Μέγιστη απόδοση, μέγιστη κατανάλωση ενέργειας"
+
+msgid ""
+"This allows  you  to lower the power consumption of the drive, at the "
+"expense of performance.<br><em>Do not set this for CF cards.</em>"
+msgstr ""
+"Αυτό σας επιτρέπει να ελαττώσετε την κατανάλωση ενέργειας του δίσκου, "
+"θυσιάζοντας την απόδοση.<br><em>Μην το θέσετε αυτό για CF κάρτες.</em>"
+
+msgid "Acoustic level"
+msgstr "Επίπεδο ακουστικής"
+
+msgid "Minimum performance, Minimum acoustic output"
+msgstr "Ελάχιστη απόδοση, Ελάχιστη ακουστική έξοδος"
+
+msgid "Medium acoustic output"
+msgstr "Μέτρια ακουστική έξοδος"
+
+msgid "Maximum performance, maximum acoustic output"
+msgstr "Μέγιστη απόδοση, μέγιστη ακουστική έξοδος"
+
+msgid ""
+"This allows you to set how loud the drive is while it's operating.<br><em>Do "
+"not set this for CF cards.</em>"
+msgstr ""
+"Αυτό σας επιτρέπει να θέσετε πόσο δυνατά είναι ο οδηγός κατά τη λειτουργία "
+"του.<br><em>Μην το θέσετε αυτό για CF κάρτες.</em>"
+
+msgid "Preformatted FS"
+msgstr "Προδιαμορφωμένο FS"
+
+msgid "Initialize"
+msgstr "Αρχικοποίηση"
+
+msgid ""
+"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
+"proceeding."
+msgstr ""
+"Ο δίσκος είναι προσαρτημένος! <a href'%s>Αποπροσαρτήστε</a> το δίσκο προτού "
+"συνεχίσετε."
+
+msgid "Can't format the drive where FreeNAS configuration file is installed!"
+msgstr ""
+"Αδυναμία διαμόρφωσης του δίσκου όπου είναι εγκατεστημένο το αρχείο ρυθμίσεων "
+"του FreeNAS!"
+
+msgid "Disk initialization details"
+msgstr "Λεπτομέρειες αρχικοποίησης δίσκου"
+
+msgid "\"fdisk: Geom not found\"is not an error message!\n"
+msgstr "Το \"fdisk: Geom not found\" δεν είναι μήνυμα σφάλματος!\n"
+
+msgid ""
+"This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
+"(for others) partition and format the hard drive with the file system "
+"specified."
+msgstr ""
+"Αυτό το βήμα θα διαγράψει όλες τις κατατμήσεις σας, θα δημιουγήσει μία "
+"GPT/EFI (για UFS) ή μία MBR (για άλλα) κατάτμηση και θα διαμορφώσει τον "
+"σκληρό δίσκο με το καθορισμένο σύστημα αρχείων."
+
+msgid "Format disk"
+msgstr "Διαμόρφωση δίσκου"
+
+msgid "Do you really want to format this disk? All data will be lost!"
+msgstr ""
+"Θέλετε σίγουρα να διαμορφώσετε αυτόν το δίσκο; Όλα τα δεδομένα θα χαθούν!"
+
+msgid ""
+"Specify the percentage of space held back from normal users. Note that "
+"lowering the threshold can adversely affect performance and auto-"
+"defragmentation."
+msgstr ""
+"Καθορισμός του ποσοστού του χώρου που θα κατακρατείται από τους κανονικούς "
+"χρήστες. Σημειώστε ότι η μείωση του κατωφλίου μπορεί να επηρεάσει αρνητικά "
+"την απόδοση και αυτο-ανασυγκρότηση."
+
+msgid "Don't Erase MBR"
+msgstr "Μη διαγραφή του MBR"
+
+msgid "Don't erase the MBR (useful for some RAID controller cards)"
+msgstr "Μη διαγραφή του MBR (χρήσιμο για κάποιες κάρτες ελεγκτών RAID)"
+
+msgid "Send Command!"
+msgstr "Αποστολή Εντολής!"
+
+msgid "Command output:"
+msgstr "Έξοδος εντολής:"
+
+msgid ""
+"The disk is currently mounted! The mount point will be removed temporary to "
+"perform selected command."
+msgstr ""
+"Ο δίσκος είναι αυτή τη στιγμή προσαρτημένος! Το σημείο προσάρτησης θα "
+"αφαιρεθεί προσωρινά για να εκτελεστεί η επιλεγμένη εντολή."
+
+msgid "Unmount disk/partition"
+msgstr "Αποπροσάρτηση δίσκου/κατάτμησης"
+
+msgid ""
+"If the selected disk/partition is mounted it will be unmounted temporarily "
+"to perform selected command, otherwise the commands work in read-only "
+"mode.<br>Service disruption to users accessing this mount will occur during "
+"this process."
+msgstr ""
+"Αν ο επιλεγμένος δίσκος/κατάτμηση είναι προσαρτημένος θα αποπροσαρτηθεί "
+"προσωρινά για να εκτελεστεί η επιλεγμένη εντολή, σε αντίθετη περίπτωση οι "
+"εντολές εκτελούνται σε λειτουργία μόνο για ανάγνωση.<br>Κατά τη διάρκεια "
+"αυτής της διεργασίας θα διακοπούν οι υπηρεσίες στους χρήστες που "
+"προσπελαύνουν το σημείο προσάρτησης."
+
+msgid "iSCSI"
+msgstr "iSCSI"
+
+msgid "iSCSI Initiator"
+msgstr "αρχικοποιητής iSCSI"
+
+msgid "Target IP address"
+msgstr "Διεύθυνση IP προορισμού"
+
+msgid "IP address of the iSCSI target."
+msgstr "Διεύθυνση IP του προορισμού iSCSI."
+
+msgid "Targetname"
+msgstr "Όνομα προορισμού"
+
+msgid "Targetname."
+msgstr "Όνομα προορισμού."
+
+msgid "Manage RAID"
+msgstr "Διαχείριση RAID"
+
+msgid "Format RAID"
+msgstr "Διαμόρφωση RAID"
+
+msgid "Volume Name"
+msgstr "Όνομα Τόμου"
+
+msgid ""
+"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
+"first before proceeding."
+msgstr ""
+"Ο τόμος RAID είναι αυτή τη στιγμή προσαρτημένος! Αφαιρέστε πρώτα το <a "
+"href=%s>σημείο προσάρτησης</a> προτού συνεχίσετε."
+
+msgid "Geom Vinum"
+msgstr "Geom Vinum"
+
+msgid "Geom Mirror"
+msgstr "Καθρεπτισμός Geom"
+
+msgid "Geom Stripe"
+msgstr "Geom Stripe"
+
+msgid "Geom Concat"
+msgstr "Geom Concat"
+
+msgid "Geom Raid5"
+msgstr "Geom Raid5"
+
+msgid "(unstable)"
+msgstr "(υπό ανάπτυξη)"
+
+msgid "RAID"
+msgstr "RAID"
+
+msgid ""
+"The Raid configuration has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+"Οι ρυθμίσεις RAID έχουν αλλάξει.<br>Πρέπει να εφαρμόσετε τις αλλαγές "
+"προκειμένου να ισχύσουν."
+
+msgid "Edit RAID"
+msgstr "Επεξεργασία RAID"
+
+msgid "Delete RAID"
+msgstr "Διαγραφή RAID"
+
+msgid "Add RAID"
+msgstr "Προσθήκη RAID"
+
+msgid ""
+"Do you really want to delete this raid volume? All elements that still use "
+"it will become invalid (e.g. share)!"
+msgstr ""
+"Θέλετε σίγουρα να διαγράψετε αυτόν τον τόμο raid; Όλα τα στοιχεία που το "
+"χρησιμοποιούν ακόμα θα μετατραπούν σε μη έγκυρα (πχ. κοινόχρηστα)!"
+
+msgid "You must add disks first."
+msgstr "Πρέπει πρώτα να προσθέσετε δίσκους."
+
+msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
+msgstr ""
+"Το όνομα συσκευής μπορεί να αποτελείται μόνο από τους χαρακτήρες a-z, A-Z, 0-"
+"9."
+
+msgid "This device already exists in the raid volume list."
+msgstr "Η συσκευή υπάρχει ήδη στη λίστα τόμων raid."
+
+msgid "There must be a minimum of 2 disks in a RAID 0 volume."
+msgstr "Πρέπει να υπάρχουν τουλάχιστον 2 δίσκοι σε έναν τόμο RAID 0."
+
+msgid "There must be 2 disks in a RAID 1 volume."
+msgstr "Πρέπει να υπάρχουν 2 δίσκοι σε έναν τόμο RAID 1."
+
+msgid "There must be a minimum of 2 disks in a RAID 5 volume."
+msgstr "Πρέπει να υπάρχουν το ελάχιστον 2 δίσκοι σε έναν τόμο RAID 5."
+
+msgid "ERR Could not save RAID configuration.\n"
+msgstr "ΣΦΑΛΜΑ Αδυναμία αποθήκευσης ρυθμίσεων RAID.\n"
+
+msgid "Raid name"
+msgstr "Όνομα raid"
+
+msgid "striping"
+msgstr "striping"
+
+msgid "mirroring"
+msgstr "καθρεπτισμός"
+
+msgid "rotated block-interleaved parity"
+msgstr "rotated block-interleaved parity"
+
+msgid "JBOD"
+msgstr "JBOD"
+
+msgid "Members of this volume"
+msgstr "Μέλη αυτού του τόμου"
+
+msgid "Software RAID information and status"
+msgstr "Πληροφορίες και κατάσταση λογισμικού RAID"
+
+msgid "Disk format UFS output:"
+msgstr "Έξοδος διαμόρφωσης δίσκου UFS:"
+
+msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
+msgstr "Αυτό το βήμα θα διαμορφώσει τον τόμο RAID στο Unix FileSystem (UFS)."
+
+msgid "Format UFS disk!"
+msgstr "Διαμόρφωση δίσκου UFS!"
+
+msgid "Object name"
+msgstr "Όνομα αντικειμένου"
+
+msgid "Command"
+msgstr "Εντολή"
+
+msgid ""
+"1. Use these specials actions for debugging only!<br>2. There is no need of "
+"using this menu for start a RAID volume (start automaticaly)."
+msgstr ""
+"1. Χρησιμοποιείστε αυτές τις ειδικές ενέργειες μόνο για αποσφαλμάτωση!<br>2. "
+"Δεν υπάρχει ανάγκη χρήσης αυτού του μενού για έναρξη ενός τόμου RAID "
+"(αυτόματη έναρξη)."
+
+msgid "Share Name"
+msgstr "Όνομα Κοινοχρήστων"
+
+msgid ""
+"The mount point list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+"Το σημείο προσάρτησης έχει αλλάξει.<br>Πρέπει να εφαρμόσετε τις αλλαγές "
+"προκειμένου να ισχύσουν."
+
+msgid ""
+"Do you really want to delete this mount point? All elements that still use "
+"it will become invalid (e.g. share)!"
+msgstr ""
+"Θέλετε σίγουρα να διαγράψετε αυτό το σημείο προσάρτησης; Όλα τα στοιχεία που "
+"το χρησιμοποιούν ακόμα θα μετατραπούν σε μη έγκυρα (πχ. κοινόχρηστα)!"
+
+msgid "delete mount"
+msgstr "διαγραφή προσάρτησης"
+
+msgid "add mount"
+msgstr "προσθήκη προσάρτησης"
+
+msgid "The description name contain invalid characters."
+msgstr "Η περιγραφή περιέχει μη έγκυρους χαρακτήρες."
+
+msgid "Can't mount the system partition 1, the DATA partition is the 2."
+msgstr ""
+"Αδυναμία προσάρτησης της κατάτμησης συστήματος 1, η κατάτμηση DATA είναι η 2."
+
+msgid "Duplicate Share Name."
+msgstr "Δημιουργία Αντιγράφου Ονόματος Κοινόχρηστου"
+
+msgid ""
+"Select EFI GPT if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+"you select option 2 during installation on hard drive.<br>Select old "
+"software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+msgstr ""
+"Επιλέξτε EFI GPT αν θέλετε να προσαρτήσετε ένα GPT διαμορφωμένο οδηγό "
+"(προεπιλεγμένη μέθοδος μετά το 0.684b).<br>Επιλέξτε 1 για UFS διαμορφωμένο "
+"οδηγό ή λογισμικό RAID δημιουργίας τόμων μετά το 0.683b.<br>Επιλέξτε 2 για "
+"προσάρτηση της κατάτμησης DATA αν επιλέξατε την επιλογή 2 κατά τη διαδικασία "
+"εγκατάστασης του σκληρού δίσκου.<br>Επιλέξτε παλαιό λογισμικό "
+"gmirror/graid5/gvinum για τόμους που δημιουργήθηκαν με παλαιές εκδόσεις του "
+"FreeNAS"
+
+msgid ""
+"You can't mount the partition '%s' where the config file is stored.<br>"
+msgstr ""
+"Δεν μπορείτε να προσαρτήσετε την κατάτμηση '%s' όπου είναι αποθηκευμένο το "
+"αρχείο ρυθμίσεων.<br>"
+
+msgid "Mounting..."
+msgstr "Προσάρτηση..."
+
+msgid "Unmounting..."
+msgstr "Αποπροσάρτηση..."
+
+msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
+msgstr ""
+"Δεν μπορείτε να αποπροσαρτήσετε έναν οδηγό που χρησιμοποιείται από αρχείο "
+"swap ή αρχείο προορισμού-iSCSI!"
+
+msgid "The Netbios name contains invalid characters."
+msgstr "Το όνομα Netbios περιέχει μη έγκυρους χαρακτήρες."
+
+msgid "The Workgroup name contains invalid characters."
+msgstr "Το όνομα Ομάδας εργασίας περιέχει μη έγκυρους χαρακτήρες."
+
+msgid "The WINS server must be an IP address."
+msgstr "Ο διακομιστής WINS πρέπει να είναι μια διεύθυνση IP."
+
+msgid "The SND Buffer value must be a number."
+msgstr "Η τιμή SND Buffer πρέπει να είναι ένας αριθμός."
+
+msgid "The RCV Buffer value must be a number."
+msgstr "Η τιμή RCV Buffer πρέπει να είναι ένας αριθμός."
+
+msgid "CIFS share"
+msgstr "κοινόχρηστα CIFS"
+
+msgid "Authentication"
+msgstr "Πιστοποίηση"
+
+msgid "NetBiosName"
+msgstr "ΌνομαNetBios"
+
+msgid "Workgroup"
+msgstr "Ομάδα εργασίας"
+
+msgid "Workgroup to be member of."
+msgstr "Ομάδα εργασίας όπου να γίνει μέλος."
+
+msgid "Server description. This can usually be left blank."
+msgstr "Περιγραφή διακομιστή. Αυτό μπορεί συνήθως να αφηθεί κενό."
+
+msgid "Dos charset"
+msgstr "σύνολο χαρακτήρων Dos"
+
+msgid "Unix charset"
+msgstr "σύνολο χαρακτήρων Unix"
+
+msgid "Log Level"
+msgstr "Επίπεδο Καταγραφής"
+
+msgid "Local Master Browser"
+msgstr "Κεντρικός Τοπικός Περιηγητής"
+
+msgid "Allows %s to try and become a local master browser."
+msgstr ""
+"Επιτρέπει στο %s να προσπαθήσει να γίνει κεντρικός τοπικός περιηγητής."
+
+msgid "Time server"
+msgstr "Διακομιστής Χρόνου"
+
+msgid "%s advertises itself as a time server to Windows clients."
+msgstr ""
+"Το %s διαφημίζει τον ευατό του ως ένα διακομιστή χρόνου για πελάτες Windows."
+
+msgid "WINS server"
+msgstr "διακομιστής WINS"
+
+msgid "WINS Server IP address."
+msgstr "Διεύθυνση IP Διακομιστή WINS."
+
+msgid "Recycle Bin"
+msgstr "Κάδος Ανακύκλωσης"
+
+msgid "Enable Recycle bin"
+msgstr "Ενεργοποίηση Κάδου Απορριμμάτων"
+
+msgid "This will create a recycle bin on the CIFS shares."
+msgstr "Αυτό θα δημιουργήσει έναν κάδο απορριμμάτων στα κοινόχρηστα CIFS."
+
+msgid "Shares"
+msgstr "Κοινόχρηστα"
+
+msgid "Send Buffer Size"
+msgstr "Μέγεθος Buffer Αποστολής"
+
+msgid "Size of send buffer (16384 by default)."
+msgstr "Μέγεθος buffer αποστολής (16384 από προεπιλογή)."
+
+msgid "Receive Buffer Size"
+msgstr "Μέγεθος Buffer Παραλαβής"
+
+msgid "Size of receive buffer (16384 by default)."
+msgstr "Μέγεθος buffer παραλαβής (16384 από προεπιλογή)."
+
+msgid ""
+"The shares has been modified.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+"Τα κοινόχρηστα έχουν τροποποιηθεί.<br>Πρέπει να εφαρμόσετε τις αλλαγές "
+"προκειμένου να ισχύσουν."
+
+msgid "Browseable"
+msgstr "Περιηγήσιμα"
+
+msgid "Edit share"
+msgstr "Επεξεργασία κοινοχρήστων"
+
+msgid ""
+"This controls whether this share is seen in the list of available shares in "
+"a net view and in the browse list."
+msgstr ""
+"Αυτό ελέγχει αν αυτά τα κοινόχρηστα θα εμφανίζονται στη λίστα των διαθέσιμων "
+"κοινοχρήστων σε προβολή ιστού δικτύου και στην λίστα περιήγησης."
+
+msgid "The maximum Number of client must be a number."
+msgstr "Ο μέγιστος Αριθμός πελατών πρέπει να είναι ένας αριθμός."
+
+msgid "The max con per ip must be a number."
+msgstr "Οι μέγ συνδ ανά ip πρέπει να είναι ένας αριθμός."
+
+msgid "The maximum idle time be a number."
+msgstr "Ο μέγιστος χρόνος αδράνειας πρέπει να είναι ένας αριθμός."
+
+msgid "The pasv address must be a public IP address."
+msgstr "Η διεύθυνση pasv πρέπει να είναι μια δημόσια διεύθυνση IP."
+
+msgid "You must select at minium anonymous or/and local user authentication."
+msgstr ""
+"Πρέπει να επιλέξετε μια ελάχιστη διάρκεια σύνδεσης για ανώνυμες ή/και "
+"τοπικές ταυτοποιήσεις."
+
+msgid "FTP Server"
+msgstr "Διακομιστής FTP"
+
+msgid "Number of clients"
+msgstr "Αριθμός πελατών"
+
+msgid "Maximum number of simultaneous clients."
+msgstr "Μέγιστος αριθμός ταυτόχρονων πελατών."
+
+msgid "Max. conn. per IP"
+msgstr "Μέγ. συνδ. ανά IP"
+
+msgid "Maximum number of connections per IP address (0 = unlimited)."
+msgstr "Μέγιστος αριθμός συνδέσεων ανά διεύθυνση IP (0 = απεριόριστες)."
+
+msgid "Timeout"
+msgstr "Χρονικό όριο"
+
+msgid "Maximum idle time in minutes."
+msgstr "Μέγιστος χρόνος αδράνειας σε λεπτά."
+
+msgid "Anonymous login"
+msgstr "Ανώνυμη σύνδεση"
+
+msgid "Enable anonymous login."
+msgstr "Ενεργοποίηση ανώνυμης σύνδεσης."
+
+msgid "Local User"
+msgstr "Τοπικός Χρήστης"
+
+msgid "Enable local user login."
+msgstr "Ενεργοποίηση σύνδεσης τοπικού χρήστη."
+
+msgid "FXP"
+msgstr "FXP"
+
+msgid "Enable FXP protocol."
+msgstr "Ενεργοποίηση πρωτοκόλλου FXP."
+
+msgid ""
+"FXP allows transfers between two remote servers without any file data going "
+"to the client asking for the transfer (insecure!)."
+msgstr ""
+"Το FXP επιτρέπει μεταφορές ανάμεσα σε δύο απομακρυσμένους διακομιστές χωρίς "
+"κανένα αρχείο δεδομένων να πηγαίνει στον πελατή ζητώντας την μεταφορά (μη "
+"ασφαλές!)."
+
+msgid "NAT mode"
+msgstr "λειτουργία NAT"
+
+msgid "Force NAT mode."
+msgstr "Εξαναγκασμός λειτουργίας NAT."
+
+msgid ""
+"Enable this if your FTP server is behind a NAT box that doesn't support "
+"applicative FTP proxying."
+msgstr ""
+"Ενεργοποιήστε το αυτό αν ο FTP διακομιστής σας τρέχει σε έναν υπολογιστή με "
+"NAT που δεν υποστηρίζει εφαρμόσιμη διαμεσολάβηση FTP proxying."
+
+msgid "Passive IP address"
+msgstr "Παθητική διεύθυνση IP"
+
+msgid ""
+"Use this option to override the IP address that FTP daemon will advertise in "
+"response to the PASV command."
+msgstr ""
+"Χρησιμοποιήστε αυτή την επιλογή για επικάλυψη της διεύθυνσης IP που ο "
+"δαίμονας FTP θα διαφημίζει ως απάντηση στην εντολή PASV."
+
+msgid ""
+"The minimum port to allocate for PASV style data connections (0 = use any "
+"port)."
+msgstr ""
+"Η ελάχιστη θύρα που θα ανατεθεί για συνδέσεις δεδομένων στυλ PASV (0 = χρήση "
+"οποιασδήποτε θύρας)"
+
+msgid ""
+"The maximum port to allocate for PASV style data connections (0 = use any "
+"port)."
+msgstr ""
+"Η μέγιστη θύρα που θα ανατεθεί για συνδέσεις δεδομένων στυλ PASV (0 = χρήση "
+"οποιασδήποτε θύρας)"
+
+msgid "Banner"
+msgstr "Λογότυπο"
+
+msgid "Greeting banner displayed by FTP when a connection first comes in."
+msgstr ""
+"Λογότυπο καλωσορίσματος που εμφανίζεται από τον FTP όταν μια γίνεται μια "
+"σύνδεση για πρώτη φορά."
+
+msgid "A valid network must be specified."
+msgstr "Πρέπει να καθοριστεί ένα έγκυρο δίκτυο."
+
+msgid "NFS Server"
+msgstr "Διακομιστής NFS"
+
+msgid "Map all users to root"
+msgstr "Αντιστοίχηση όλων των χρηστών στο root"
+
+msgid "All users will have the root privilege."
+msgstr "Όλοι οι χρήστες θα έχουν δικαιώματα root."
+
+msgid "Authorized"
+msgstr "Εξουσιοδοτημένο"
+
+msgid "Networks"
+msgstr "Δίκτυα"
+
+msgid "Networks Authorized"
+msgstr "Δίκτυα Εξουσιοδοτήθηκαν"
+
+msgid "Network that is authorised to access to NFS share"
+msgstr "Δίκτυο που είναι εξουσιοδοτημένο να προσπελαύνει τα κοινόχρηστα NFS"
+
+msgid "The name of the exported directories are : /mnt/sharename"
+msgstr "Τα ονόματα των εξαγώμενων καταλόγων είναι: /mnt/sharename"
+
+msgid "Server"
+msgstr "Διακομιστής"
+
+msgid "Client"
+msgstr "Πελάτης"
+
+msgid "Local"
+msgstr "Τοπικό"
+
+msgid "Rsync Daemon"
+msgstr "Δαίμονας Rsync"
+
+msgid "Read only"
+msgstr "Μόνο για ανάγνωση"
+
+msgid "Map to user"
+msgstr "Αντιστοίχηση σε χρήστη"
+
+msgid "Alternate TCP port. Default is 873"
+msgstr "Εναλλακτική θύρα TCP. Η προεπιλεγμένη είναι η 873"
+
+msgid "Maximum connections"
+msgstr "Μέγιστος αριθμός συνδέσεων"
+
+msgid "Maximum number of simultaneous connections. Default is 0 (unlimited)."
+msgstr ""
+"Μέγιστος αριθμός ταυτόχρονων συνδέσεων. Η προεπιλογή είναι 0 (απεριόριστες)."
+
+msgid "MOTD"
+msgstr "Μήνυμα Ημέρας"
+
+msgid "Message of the day."
+msgstr "Μήνυμα Της Ημέρας"
+
+msgid "You must configure mount point first."
+msgstr "Πρέπει πρώτα να ρυθμίσετε τα σημεία προσάρτησης."
+
+msgid "Rsync Client Synchronization"
+msgstr "Συγχρονισμός Πελάτη Rsync"
+
+msgid "Remote RSYNC Server"
+msgstr "Απομακρυσμένος Διακομιστής RSYNC"
+
+msgid "IP address of remote RSYNC server"
+msgstr "διεύθυνση IP του απομακρυσμένου διακομιστή RSYNC"
+
+msgid "RSYNC Options"
+msgstr "Επιλογές RSYNC"
+
+msgid "Delete files that don't exist on sender."
+msgstr "Διαγραφή αρχείων που δεν υπάρχουν στον αποστολέα."
+
+msgid "Shares to be synchronized"
+msgstr "Κοινόχρηστα που θα συγχρονιστούν"
+
+msgid "This same local share must be present on the Remote Server."
+msgstr ""
+"Τα ίδια τοπικά κοινόχρηστα πρέπει να είναι παρόντα στον Απομακρυσμένο "
+"Διακομιστή."
+
+msgid "Synchronization Time"
+msgstr "Χρόνος Συγχρονισμού"
+
+msgid "You can't have the same mount point for source and destination!"
+msgstr ""
+"Δεν μπορείτε να έχετε το ίδιο σημείο προσάρτησης για προέλευση και προορισμό!"
+
+msgid "Rsync Local Synchronization"
+msgstr "Τοπικός Συχρονισμός Rsync"
+
+msgid "Source"
+msgstr "Προέλευση"
+
+msgid "Source Mount Point."
+msgstr "Σημείο Προσάρτησης Προέλευσης."
+
+msgid "Destination"
+msgstr "Προορισμός"
+
+msgid "Destination Mount Point (backup drive)."
+msgstr "Σημείο Προσάρτησης Προορισμού (οδηγός φύλαξης)."
+
+msgid "SSH Daemon"
+msgstr "Δαίμονας SSH"
+
+msgid "Alternate TCP port. Default is 22"
+msgstr "Εναλλακτική θύρα TCP. Η προεπιλεγμένη είναι η 22"
+
+msgid "Permit root login"
+msgstr "Να επιτρέπεται είσοδος ως root"
+
+msgid "Enable TCP Forwarding"
+msgstr "Ενεργοποίηση Προώθησης TCP"
+
+msgid "Permit to do SSH Tunneling."
+msgstr "Να επιτρέπεται το SSH Tunneling."
+
+msgid ""
+"Specifies whether it is allowed to login as superuser (root) directly."
+msgstr ""
+"Καθορίζει αν επιτρέπεται ή όχι η σύνδεση σαν υπερχρήστης (root) άμεσα."
+
+msgid "SSH key"
+msgstr "κλειδί SSH"
+
+msgid "Private Key"
+msgstr "Ιδιωτικό Κλειδί"
+
+msgid "Paste a DSA PRIVATE KEY in PEM format here."
+msgstr "Επικολλήστε εδώ ένα ΙΔΙΩΤΙΚΟ ΚΛΕΙΔΙ DSA σε μορφή PEM."
+
+msgid "The combination of share and working directory does not exist."
+msgstr "Ο συνδυασμός κοινοχρήστων και καταλόγου εργασίας δεν υπάρχει,"
+
+msgid "Unison File Synchronisation"
+msgstr "Συγχρονισμός Αρχείου Unison"
+
+msgid "Share"
+msgstr "Κοινή χρήση"
+
+msgid "You may need enough space to duplicate all files being synced"
+msgstr ""
+"Μπορεί να χρειαστείτε αρκετό χώρο για τα αντίγραφα των αρχείων που "
+"συγχρονίζονται"
+
+msgid "Working Directory"
+msgstr "Κατάλογος Εργασίας"
+
+msgid "Where the working files will be stored"
+msgstr "Τοποθεσία αποθήκευσης αρχείων εργασίας"
+
+msgid "Create work directory if it doesn't exist"
+msgstr "Δημιουργία καταλόγου εργασίας αν δεν υπάρχει"
+
+msgid "UPnP A/V Media Server"
+msgstr "UPnP A/V Διακομιστής Πολυμέσων"
+
+msgid "UPnP friendly name."
+msgstr "φιλικό όνομα UPnP."
+
+msgid "Interface to listen to."
+msgstr "Διεπαφή που θα ανιχνεύεται."
+
+msgid "Content"
+msgstr "Περιεχόμενα"
+
+msgid "Directories to be shared."
+msgstr "Κατάλογοι που θα γίνουν κοινόχρηστοι."
+
+msgid "No content directory to be shared."
+msgstr "Δεν υπάρχει περιεχόμενο καταλόγου για να διαμοιραστεί."
+
+msgid "Directory"
+msgstr "Κατάλογος"
+
+msgid "Add directory"
+msgstr "Προσθήκη καταλόγου"
+
+msgid "Edit directory"
+msgstr "Επεξεργασία καταλόγου"
+
+msgid "Delete directory"
+msgstr "Διαγραφή καταλόγου"
+
+msgid "Do you really want to delete this directory entry?"
+msgstr "Θέλετε σίγουρα να διαγράψετε αυτή την καταχώρηση καταλόγου;"
+
+msgid "Directory to be shared."
+msgstr "Κατάλογος που θα διαμοιραστεί."
+
+msgid "You must select at least one authentication method."
+msgstr "Πρέπει να επιλέξετε τουλάχιστον μία μεθοδο ταυτοποίησης."
+
+msgid "AFP Server"
+msgstr "Διακομιστής AFP"
+
+msgid "Server Name"
+msgstr "Όνομα Διακομιστή"
+
+msgid "Enable guest access."
+msgstr "Ενεργοποίηση πρόσβασης ως επισκέπτης."
+
+msgid "Enable local user authentication."
+msgstr "Ενεργοποίηση ταυτοποίησης τοπικών χρηστών."
+
+msgid "User"
+msgstr "Χρήστης"
+
+msgid "Users"
+msgstr "Χρήστες"
+
+msgid "Group"
+msgstr "Ομάδα"
+
+msgid "Groups"
+msgstr "Ομάδες"
+
+msgid "Full Name"
+msgstr "Πλήρες Όνομα"
+
+msgid ""
+"The User list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+"Η λίστα Χρηστών έχει αλλάξει.<br>Πρέπει να εφαρμόσετε τις αλλαγές "
+"προκειμένου να ισχύσουν."
+
+msgid "Edit user"
+msgstr "Επεξεργασία χρήστη"
+
+msgid "Delete user"
+msgstr "Διαγραφή χρήστη"
+
+msgid "Do you really want to delete this user?!"
+msgstr "Θέλετε σίγουρα να διαγράψετε αυτόν το χρήστη;!"
+
+msgid "Add user"
+msgstr "Προσθήκη χρήστη"
+
+msgid "You must create a group first."
+msgstr "Πρέπει πρώτα να δημιουργήσετε μια ομάδα."
+
+msgid "The login name contains invalid characters."
+msgstr "Το όνομα σύνδεσης περιέχει μη έγκυρους χαρακτήρες."
+
+msgid "The login name is a reserved login name."
+msgstr "Το όνομα σύνδεσης είναι ένα κατειλλημένο όνομα σύνδεσης."
+
+msgid "The full name contains invalid characters."
+msgstr "Το πλήρες όνομα περιέχει μη έγκυρους χαρακτήρες."
+
+msgid "This user already exists in the user list."
+msgstr "Αυτός ο χρήστης υπάρχει ήδη στη λίστα χρηστών."
+
+msgid "Unique login name of user."
+msgstr "Μοναδικό όνομα σύνδεσης του χρήστη."
+
+msgid "User full name."
+msgstr "Πλήρες όνομα χρήστη."
+
+msgid "User password."
+msgstr "Κωδικός χρήστη."
+
+msgid "Confirm Password"
+msgstr "Επιβεβαίωση Κωδικού"
+
+msgid "Confirm the password."
+msgstr "Επιβεβαίωση του κωδικού."
+
+msgid "Group Member"
+msgstr "Μέλος Ομάδας"
+
+msgid "Full Shell"
+msgstr "Πλήρες Φλοιός"
+
+msgid "Give full shell to user"
+msgstr "Δώσε πλήρες φλοιό στο χρήστη"
+
+msgid "Administrator"
+msgstr "Διαχειριστής"
+
+msgid "Put user in the administrator group"
+msgstr "Βάλε το χρήστη στην ομάδα διαχειριστών"
+
+msgid ""
+"The group list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+"Η λίστα ομάδων έχει αλλάξει.<br>Πρέπει να εφαρμόσετε τις αλλαγές προκειμένου "
+"να ισχύσουν."
+
+msgid "Edit group"
+msgstr "Επεξεργασία ομάδας"
+
+msgid "Delete group"
+msgstr "Διαγραφή ομάδας"
+
+msgid "Do you really want to delete this group?"
+msgstr "Θέλετε σίγουρα να διαγράψετε αυτήν την ομάδα;"
+
+msgid "Add group"
+msgstr "Προσθήκη ομάδας"
+
+msgid "The Group name contains invalid characters."
+msgstr "Το όνομα Ομάδας περιέχει μη έγκυρους χαρακτήρες."
+
+msgid "The Group desc contains invalid characters."
+msgstr "Η περιγραφή Ομάδας περιέχει μη έγκυρους χαρακτήρες."
+
+msgid "This group already exists in the group list."
+msgstr "Αυτή η ομάδα υπάρχει ήδη στη λίστα ομάδων."
+
+msgid "Group name."
+msgstr "Όνομα ομάδας."
+
+msgid "Group description."
+msgstr "Περιγραφή ομάδας."
+
+msgid "AD server name"
+msgstr "όνομα διακομιστή AD"
+
+msgid "AD or PDC name."
+msgstr "όνομα AD ή PCD."
+
+msgid "AD server IP"
+msgstr "διεύθυνση IP του διακομιστή AD"
+
+msgid "IP address of MS Active Directory server."
+msgstr "διεύθυνση IP του διακομιστή Ενεργού Καταλόγου MS."
+
+msgid "Domain name"
+msgstr "Όνομα τομέα"
+
+msgid "Domain name in old format."
+msgstr "Όνομα τομέα σε παλαιά μορφή."
+
+msgid "Administrator name"
+msgstr "Όνομα διαχειριστή."
+
+msgid "Username of a domain administrator account."
+msgstr "Όνομα χρήστη ενός λογαριασμού διαχειριστή τομέα."
+
+msgid "Administration password"
+msgstr "Κωδικός διαχειριστή"
+
+msgid "Password of domain administrator account, enter it here twice."
+msgstr ""
+"Κωδικός ενός λογαριασμού διαχείρισης τομέα, εισάγετε το εδώ δύο φορές."
+
+msgid "The system is halting now. This may take one minute."
+msgstr "Το σύστημα παύει τώρα. Αυτό μπορεί να διαρκέσει ένα λεπτό."
+
+msgid "Are you sure you want to shutdown the system?"
+msgstr "Είσαστε σίγουρος ότι θέλετε να τερματίσετε το σύστημα;"
+
+msgid "Scheduled shutdown"
+msgstr "Προγραμματισμένος τερματισμός υπολογιστή"
+
+msgid "Shutdown Time"
+msgstr "Ώρα Τερματισμού"
+
+msgid "File path"
+msgstr "Διαδρομή αρχείου"
+
+msgid "Saved file to"
+msgstr "Το αρχείο αποθήκευτηκε στο"
+
+msgid "File not found"
+msgstr "Το αρχείο δε βρέθηκε"
+
+msgid "Rows"
+msgstr "Γραμμές"
+
+msgid "Cols"
+msgstr "Στήλες"
+
+msgid "Highlighting"
+msgstr "Τονισμός"
+
+msgid "Enabled"
+msgstr "Ενεργοποιημένο"
+
+msgid "Disabled"
+msgstr "Απενεργοποιημένο"
+
+msgid "Execute command"
+msgstr "Εκτέλεση εντολής"
+
+msgid "The system is rebooting now. This may take one minute."
+msgstr "Το σύστημα επανεκκινείται τώρα. Αυτό μπορεί να διαρκέσει ένα λεπτό."
+
+msgid "Are you sure you want to reboot the system?"
+msgstr "Είσαστε σίγουρος ότι θέλετε να επανεκκίνησετε το σύστημα;"
+
+msgid "License"
+msgstr "Άδεια"
+
+msgid "%s interface (SSID '%s')"
+msgstr "%s διεπαφή (SSID '%s')"
+
+msgid "Signal strength cache"
+msgstr "Cache ισχύς σήματος"
+
+msgid "MAC address"
+msgstr "διεύθυνση MAC"
+
+msgid "Signal"
+msgstr "Σήμα"
+
+msgid "Noise"
+msgstr "Θόρυβος"
+
+msgid "Quality"
+msgstr "Ποιότητα"
+
+msgid "Associated stations"
+msgstr "Συσχετιζόμενοι σταθμοί"
+
+msgid "TX rates"
+msgstr "Ρυθμοί TX"
+
+msgid ""
+"No supported wireless interfaces were found for status display (only cards "
+"that use the wi[n] driver are supported)."
+msgstr ""
+"Δε βρέθηκαν υποστηριζόμενες ασύρματες διεπαφές για προβολή κατάστασης (μόνο "
+"κάρτες που χρησιμοποιούν τον οδηγό wi[n] υποστηρίζονται)."
+
+msgid "%s interface"
+msgstr "διεπαφή %s"
+
+msgid "DHCP"
+msgstr "DHCP"
+
+msgid "PPPoE"
+msgstr "PPPoE"
+
+msgid "PPTP"
+msgstr "PPTP"
+
+msgid "Subnet mask"
+msgstr "Μάσκα υποδικτύου"
+
+msgid "Gateway"
+msgstr "Πύλη"
+
+msgid "ISP DNS servers"
+msgstr "διακομιστές ISP DNS"
+
+msgid "Media"
+msgstr "Πολυμέσα"
+
+msgid "Channel"
+msgstr "Κανάλι"
+
+msgid "SSID"
+msgstr "SSID"
+
+msgid "I/O packets"
+msgstr "πακέτα I/O"
+
+msgid "I/O errors"
+msgstr "σφάλματα I/O"
+
+msgid "Collisions"
+msgstr "Συγκρούσεις"
+
+msgid "CPU load"
+msgstr "φόρτος CPU"
+
+msgid "VLAN tag"
+msgstr "ετικέτα VLAN"
+
+msgid "Edit VLAN"
+msgstr "Επεξεργασία VLAN"
+
+msgid ""
+"Traceroute may take a while to complete. You may hit the Stop button on your "
+"browser at any time to see the progress of failed traceroutes."
+msgstr ""
+"Το traceroute μπορεί να πάρει κάποιο χρόνο μέχρι να ολοκληρωθεί. Μπορείτε να "
+"πατήσετε το κουμπί Σταμάτημα στον περιηγητή σας οποιαδήποτε στιγμή για να "
+"δείτε την πρόοδο των αποτυχημένων traceroutes."
+
+msgid "Partitions"
+msgstr "Κατατμήσεις"
+
+msgid "S.M.A.R.T."
+msgstr "S.M.A.R.T."
+
+msgid "ATAidle"
+msgstr "ATAidle"
+
+msgid "Space Used"
+msgstr "Χρησιμοποιημένος Χώρος"
+
+msgid "Mounts"
+msgstr "Προσαρτήσεις"
+
+msgid "MS Domain"
+msgstr "Τομέας MS"
+
+msgid "List of detected ATA disks"
+msgstr "Λίστα εντοπισμένων δίσκων ATA"
+
+msgid "List of detected SCSI disks"
+msgstr "Λίστα εντοπισμένων δίσκων SCSI"
+
+msgid "List of mount points"
+msgstr "Λίστα σημείων προσάρτησης"
+
+msgid "Free Space"
+msgstr "Ελεύθερος Χώρος"
+
+msgid "%s will reboot after restoring the configuration."
+msgstr "Το %s θα επανεκκινηθεί μετά την επαναφορά των ρυθμίσεων."
+
+msgid "Delete ARP entry"
+msgstr "Διαγραφή καταχώρησης ARP"
+
+msgid "Remove all entries from ARP table"
+msgstr "Αφαίρεση όλων των καταχωρήσεων από τον πίνακα ARP"
+
+msgid "Traffic graph"
+msgstr "Γράφημα κίνησης"
+
+msgid "Cannot get data about interface"
+msgstr "Αδυναμία παραλαβής δεδομένων σχετικά διεπαφή"
+
+msgid "In"
+msgstr "Μέσα"
+
+msgid "Out"
+msgstr "'Εξω"
+
+msgid "Switch to"
+msgstr "Αλλαγή σε"
+
+msgid "AutoScale"
+msgstr "Αυτόματη Κλιμάκωση"
+
+msgid "Follow"
+msgstr "Ακολούθησε"
+
+msgid "Graph shows last"
+msgstr "Εμφάνιση γραφήματος στο τέλος"
+
+msgid "Collecting initial data, please wait..."
+msgstr "Συλλογή αρχικών δεδομένων, παρακαλώ περιμένετε..."
+
+msgid "Enable tuning of some kernel variables"
+msgstr "Ενεργοποίηση βελτιστοποίησης για κάποιες μεταβλητές του πυρήνα"
+
+msgid ""
+"This will cause %s not to check for newer firmware versions when the <a "
+"href=%s>%s</a> page is viewed."
+msgstr ""
+"Αυτό θα κάνει το %s να μην ελέγχει για νεότερες εκδόσεις firmware όταν "
+"προβάλεται η σελίδα <a href=%s>%s</a>."
+
+msgid ""
+"DO NOT abort the firmware upgrade once it has started. %s will reboot "
+"automatically after storing the new firmware. The configuration will be "
+"maintained.<br>You need a minium of %d Mb RAM to perform the firmware "
+"update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+"System configuration before doing a Firmware upgrade."
+msgstr ""
+"ΜΗΝ ακυρώνετε την αναβάθμιση firmware όταν έχει αρχίσει. Το %s θα "
+"επανεκκινηθεί αυτόματα μετά την αποθήκευση του νέου firmware. Οι ρυθμίσεις "
+"θα διατηρηθούν.<br>Χρειάζεστε ένα ελάχιστο όριο %d Mb μνήμης RAM για την "
+"εκτέλεση της αναβάθμισης του firmware.<br>Συνίσταται η <a href=%s>Φύλαξη</a> "
+"των ρυθμίσεων του Συστήματος πριν από την εκτέλεση μιας αναβάθμισης του "
+"firmware."
+
+msgid ""
+"After you click &quot;Save&quot;, you may also have to do one or more of the "
+"following steps before you can access %s again: <ul><li>change the IP "
+"address of your computer</li><li>access the webGUI with the new IP "
+"address</li></ul>"
+msgstr ""
+"Μετά το click στην &quot;Αποθήκευση&quot;, μπορεί να χρειαστεί να κάνετε "
+"ακόμα ένα ή περισσότερα από τα ακόλουθα βήματα πριν να μπορέσετε να έχετε "
+"πρόσβαση στο %s ξανά: <ul><li>αλλαγή της διεύθυνσης IP του υπολογιστή "
+"σας</li><li>πρόσβαση στο webGUI με τη νέα διεύθυνση IP</li></ul>"
+
+msgid ""
+"You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
+"hard drive."
+msgstr ""
+"Μπορείτε να εξαναγκάσετε την λειτουργία UDMA αν παίρνετε το μήνυμα "
+"'UDMA_ERROR.... LBA' στο σκληρό δίσκο σας."
+
+msgid ""
+"This allows you to set FS type for preformated disk with data.<br><em>Leave "
+"'unformated' for unformated disk and then use <a href=%s>format "
+"menu</a>.</em>"
+msgstr ""
+"Αυτό σας επιτρέπει να θέσετε τον τύπο FS για προδιαμορφωμένο δίσκο με "
+"δεδομένα.<br><em>Αφήστε την επιλογή 'αδιαμόρφωτο' για αδιαμόρφωτους δίσκους "
+"και μετά χρησιμοποιήστε το <a href=%s>μενού διαμόρφωσης</a>.</em>"
+
+msgid ""
+"Optional configuration step: Configuring a virtual RAID disk using your <a "
+"href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
+"before format and mount it!"
+msgstr ""
+"Προαιρετικό βήμα ρύθμισης: Ρύθμιση ενός εικονικού δίσκου RAID "
+"χρησιμοποιώντας των <a href='%s'>προηγουμένως ρυθμισμένο σας "
+"δίσκο</a>.<br>Περιμένετε για την κατάσταση %s πριν τη διαμόρφωση και "
+"προσαρτήστε το!"
+
+msgid "The following input errors were detected"
+msgstr "Τα ακόλουθα σφάλματα εισόδου εντοπίστηκαν"
+
+msgid ""
+"Second configuration step: Declaring the filesystem used by your <a "
+"href=%s>previously configured disk.</a>"
+msgstr ""
+"Δεύτερο βήμα ρυθμίσεων: Καθορισμός του συστήματος αρχείων που χρησιμοποιηθεί "
+"από τον <a href=%s>προηγουμένως ρυθμισμένο σας δίσκο.</a>"
+
+msgid "Default is 21"
+msgstr "Η προεπιλογή είναι 21"
+
+msgid ""
+"<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+"href=%s>user</a> must have full Shell enabled."
+msgstr ""
+"Το <a href=%s>SSHD</a> πρέπει να ενεργοποιηθεί για να δουλέψει το Unison, "
+"και ο <a href=%s>user</a> πρέπει να έχει πλήρη φλοιό ενεργοποιημένο."
+
+msgid "Last %d %s log entries"
+msgstr "Τελευταίες %d καταχωρίσεις καταγραφέα %s"
+
+msgid "Clear log"
+msgstr "Καθαρισμός καταγραφέα"
+
+msgid "Show log entries in reverse order (newest entries on top)"
+msgstr ""
+"Προβολή καταχωρίσεων καταγραφέα με αντίστροφη ταξινόμηση (νεότερες "
+"καταχωρίσεις στην κορυφή)"
+
+msgid "Number of log entries to show"
+msgstr "Αριθμός καταχωρίσεων καταγραφέα που να προβληθούν"
+
+msgid "Resolve IP addresses to hostnames"
+msgstr "Επίλυση διεύθυνσεων IP σε ονόματα υπολογιστών"
+
+msgid ""
+"Hint: If this is checked, IP addresses in %s logs are resolved to real "
+"hostnames where possible."
+msgstr ""
+"Συμβουλή: Αν αυτό είναι επιλεγμένο, οι διευθύνσεις IP στις καταγραφές %s "
+"επιλύονται σε πραγματικά ονόματα υπολογιστών όταν είναι δυνατόν."
+
+msgid "Warning: This can cause a huge delay in loading the %s log page!"
+msgstr ""
+"Προειδοποίηση: Αυτό μπορεί να προκαλέσει μια τεράστια καθυστέρηση στο "
+"φόρτωμα της σελίδας του καταγραφέα %s!"
+
+msgid "Enable syslog'ing to remote syslog server"
+msgstr "Ενεργοποίηση του syslog'ing σε απομακρυσμένο διακομιστή syslog"
+
+msgid "Remote syslog server"
+msgstr "Απομακρυσμένος διακομιστής syslog"
+
+msgid "IP address of remote syslog server"
+msgstr "διεύθυνση IP του απομακρυσμένου διακομιστή syslog"
+
+msgid "System events"
+msgstr "Γεγονότα συστήματος"
+
+msgid "SSHD events"
+msgstr "γεγονότα SSHD"
+
+msgid "FTP events"
+msgstr "γεγονότα FTP"
+
+msgid "RSYNCD events"
+msgstr "γεγονότα RSYNCD"
+
+msgid "SMARTD events"
+msgstr "γεγονότα SMARTD"
+
+msgid "Daemon events"
+msgstr "γεγονότα Δαιμόνων"
+
+msgid ""
+"Syslog sends UDP datagrams to port 514 on the specified remote syslog "
+"server. Be sure to set syslogd on the remote server to accept syslog "
+"messages from %s."
+msgstr ""
+"Το Syslog στέλνει UDP datagrams στη θύρα 514 του καθορισμένου απομακρυσμένου "
+"διακομιστή syslog. Σιγουρευτείτε ότι έχετε θέσει το syslogd στον "
+"απομακρυσμένο διακομιστή να δέχεται μηνύματα syslog από το %s."
+
+msgid "List of partition on all detected disk"
+msgstr "Λίστα των κατατμήσεων σε όλους τους ανιχνευμένους δίσκους"
+
+msgid "List of SMART capabilities on all detected disk"
+msgstr "Λίστα των δυνατοτήτων SMART σε όλους τους ανιχνευμένους δίσκους"
+
+msgid "List of Advanced ATA capabilities on all ATA disk"
+msgstr "Λίστα των Προχωρημένων δηνατοτήτων ATA σε όλουςτους δίσκους ATA"
+
+msgid "iSCSI initiator disabled"
+msgstr "Ο αρχικοποιητής iSCSI απνεργοποιήθηκε"
+
+msgid "Show the list of available target Name on the iSCSI target"
+msgstr ""
+"Εμφάνιση της λίστας των διαθέσιμων Ονομάτων προορισμού στον προορισμό iSCSI"
+
+msgid "AD Authentication disabled"
+msgstr "Η ταυτοποίηση AD απενεργοποιήθηκε"
+
+msgid "Count must be between 1 and %d"
+msgstr "Ο αριθμός πρέπει να είναι μεταξύ του 1 και %d"
+
+msgid "Count"
+msgstr "Αριθμός"
+
+msgid "Ping output"
+msgstr "Έξοδος ping"
+
+msgid "Maximum number of hops"
+msgstr "Μέγιστος αριθμός hops"
+
+msgid "Traceroute output"
+msgstr "Έξοδος traceroute"
+
+msgid ""
+"IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
+"hostnames&quot; is checked on the <a href=%s>%s</a> page."
+msgstr ""
+"Οι διευθύνσεις IP επιλύονται σε ονόματα υπολογιστών αν το &quot;Επίλυση "
+"Διευθύνσεων IP σε ονόματα υπολογιστών&quot; είναι επιλεγμένο στην σελίδα <a "
+"href=%s>%s</a>."
+
+msgid ""
+"If you click 'Yes', %s will be reset to factory defaults and will reboot "
+"immediately. The entire system configuration will be overwritten. The LAN IP "
+"address will be reset to %s and the password will be set to '%s'."
+msgstr ""
+"Αν κάνετε click στο 'Ναι', το %s θα αρχικοποιηθεί στις εργοστασιακές "
+"ρυθμίσεις και θα επανεκκινηθεί αμέσως. Η συνολική ρύθμιση του συτήματος θα "
+"επικαλυφθεί. Οι διεύθυνσεις IP του LAN θα αρχικοποιηθούν σε %s και ο κωδικός "
+"θα τεθεί σε '%s'."
+
+msgid "Are you sure you want to proceed?"
+msgstr "Είσαστε βέβαιοι ότι θέλετε να προχωρήσετε;"
+
+msgid "The configuration has been restored. %s is now rebooting."
+msgstr "Οι ρυθμίσεις επαναφέρθηκαν. Το %s επανεκκινείται τώρα."
+
+msgid "The configuration could not be restored."
+msgstr "Οι ρυθμίσεις δεν ήταν δυνατό να επαναφερθούν."
+
+msgid "The configuration could not be restored (file upload error)."
+msgstr ""
+"Οι ρυθμίσεις δεν ήταν δυνατό να επαναφερθούν (σφάλμα αποστολής αρχείου)."
+
+msgid "webGUI Configuration"
+msgstr "Ρύθμιση webGUI"
+
+msgid "Erasing MBR and all partitions"
+msgstr "Διαγραφή MBR και όλων των κατατμήσεων"
+
+msgid "Keeping the MBR and all partitions"
+msgstr "Διατήρηση MBR και όλων των κατατμήσεων"
+
+msgid "Creating one partition"
+msgstr "Δημιουργία μιας κατάτμησης"
+
+msgid "Initializing partition"
+msgstr "Αρχικοποίηση κατάτμησης"
+
+msgid "Creating BSD label"
+msgstr "Δημιουργία ταμπέλας BSD"
+
+msgid "Creating filesystem"
+msgstr "Δημιουργία συστήματος αρχείων"
+
+msgid "Destroying old %s information"
+msgstr "Καταστροφή παλαιών πληροφοριών %s"
+
+msgid "Done"
+msgstr "Έτοιμο"
+
+msgid "Creating %s partition"
+msgstr "Δημιουργία κατάτμησης %s"
+
+msgid "Creating filesystem with 'Soft Updates'"
+msgstr "Δημιουργία συστήματος αρχείων με 'Ελαφρές Αναβαθμίσεις'"
+
+msgid "Power Daemon"
+msgstr "Δαίμονας Ενέργειας"
+
+msgid "Enable the system power control utility"
+msgstr "Ενεργοποίηση του εργαλείου ελέγχου ενέργειας του συστήματος"
+
+msgid ""
+"The powerd utility monitors the system state and sets various power control "
+"options accordingly."
+msgstr ""
+"Το εργαλείο ελέγχου ενέργειας παρακολουθεί την κατάσταση του συστήματος και "
+"θέτει διάφορες επιλογές ενέργειας κατάλληλα."
+
+msgid "Temperature"
+msgstr "Θερμοκρασία"
+
+msgid "n/a"
+msgstr "n/a"
+
+msgid "The attribute '%s' contains invalid characters."
+msgstr "Το χαρακτηριστικό '%s' περιέχει μη έγκυρους χαρακτήρες."
+
+msgid "The attribute '%s' is required."
+msgstr "Το χαρακτηριστικό '%s' απαιτείται."
+
+msgid ""
+"The crypted disk list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+"Ο λίστα κρυπτογραφημένων δίσκων έχει αλλάξει.<br>Πρέπει να εφαρμόσετε τις "
+"αλλαγές προκειμένου να ισχύσουν."
+
+msgid "Data integrity"
+msgstr "Ακεραιότητα δεδομένων"
+
+msgid "Encryption"
+msgstr "Κρυπτογράφηση"
+
+msgid ""
+"Do you really want to delete this encrypted disk? All elements that still "
+"use it will become invalid (e.g. share)!"
+msgstr ""
+"Θέλετε σίγουρα να διαγράψετε αυτό τον κρυπτογραφημένο δίσκο; Όλα τα στοιχεία "
+"που το χρησιμοποιούν ακόμα θα μετατραπούν σε μη έγκυρα (πχ. κοινόχρηστα!)"
+
+msgid "Create encrypted disk"
+msgstr "Δημιουργία κρυπτογραφημένου δίσκου"
+
+msgid "Data integrity algorithm"
+msgstr "Αλγόριθμος ακεραιότητας δεδομένων"
+
+msgid "Encryption algorithm"
+msgstr "Αλγόριθμος κρυπτογράφησης"
+
+msgid "Passphrase"
+msgstr "Σύνθημα"
+
+msgid "Passphrase don't match."
+msgstr "Τα συνθηματικά δεν ταιριάζουν."
+
+msgid "Init and encrypt disk"
+msgstr "Αρχικοποίηση και κρυπτογράφηση δίσκου"
+
+msgid "Disk initialization and encryption"
+msgstr "Αρχικοποίηση και κρυπτογράφηση δίσκου"
+
+msgid "Encrypting... Please wait"
+msgstr "Κρυπτογράφηση... Παρακαλώ περιμένετε"
+
+msgid "Attaching..."
+msgstr "Επισύναψη..."
+
+msgid ""
+"This will erase ALL data on your disk!<br>Using Data integrity will reduce "
+"size of available storage and also reduce speed."
+msgstr ""
+"Αυτό θα διαγράψει ΟΛΑ τα δεδομένα στο δίσκο σας!<br>Η χρήση της Ακεραιότητας "
+"Δεδομένων θα μειώσει το μέγεθος του διαθέσιμου αποθηκευτικού χώρου και θα "
+"μειώσει την ταχύτητα επίσης."
+
+msgid "Sensors"
+msgstr "Αισθητήρες"
+
+msgid "This encrypted disk is mounted, umount it before trying to detach it."
+msgstr ""
+"Αυτός ο κρυπτογραφημένος δίσκος έχει προσαρτηθεί, αποπροσαρτήστε τον πριν να "
+"προσπαθήσετε να τον αποσπάσετε."
+
+msgid "You must use a passphrase to attach an encrypted disk."
+msgstr ""
+"Πρέπει να χρησιμοποιήσετε ένα συνθηματικό για να επισυνάψετε έναν "
+"κρυπτογραφημένο δίσκο."
+
+msgid "Encrypted disk name"
+msgstr "Όνομα κρυπτογραφημένου δίσκου"
+
+msgid "Detaching..."
+msgstr "Απόσπαση..."
+
+msgid "attach"
+msgstr "επισύναψη"
+
+msgid "detach"
+msgstr "απόσπαση"
+
+msgid "Attached"
+msgstr "Συνημμένος"
+
+msgid "Not attached"
+msgstr "Μη συνημμένος"
+
+msgid "Reload page"
+msgstr "Ανανέωση σελίδας"
+
+msgid "You should use HTTPS as WebGUI protocol for sending passphrase."
+msgstr ""
+"Θα ήταν καλό θα χρησιμοποιήσετε το HTTPS ως πρωτόκολλο WebGUI για αποστολή "
+"του συνθηματικού."
+
+msgid "Resume"
+msgstr "Συνέχεια"
+
+msgid "Enable resume mode."
+msgstr "Ενεργοποίηση λειτουργίας συνέχισης."
+
+msgid ""
+"Use this option to enable resuming broken transfers at the point of "
+"interruption."
+msgstr ""
+"Χρησιμοποιήστε αυτή την επιλογή για να ενεργοποιήσετε την συνέχιση "
+"κατεστραμμένων μεταφορών από το σημείο της διακοπής τους."
+
+msgid "iSCSI Target"
+msgstr "Προορισμός iSCSI"
+
+msgid ""
+"The iSCSI target list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+"Η λίστα προορισμών iSCSI έχει αλλάξει.<br>Πρέπει να εφαρμόσετε τις αλλαγές "
+"προκειμένου να ισχύσουν."
+
+msgid "Do you really want to delete this target?"
+msgstr "Θέλετε σίγουρα να διαγράψετε αυτόν τον προορισμό;"
+
+msgid "Delete target"
+msgstr "Διαγραφή προορισμού"
+
+msgid "Add target"
+msgstr "Προσθήκη προορισμού"
+
+msgid "Network that is authorised to access to this iSCSI target."
+msgstr ""
+"Δίκτυο που είναι εξουσιοδοτημένο να προσπελαύνει αυτόν τον προορισμό iSCSI."
+
+msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
+msgstr ""
+"Πρέπει να έχετε τουλάχιστον 256MB μνήμης RAM για να χρησιμοποιήσετε τον "
+"προορισμό-iSCSI."
+
+msgid "FTP Server disabled"
+msgstr "Ο διακομισ΄της FTP απενεργοποιήθηκε"
+
+msgid "FTP users"
+msgstr "χρήστες FTP"
+
+msgid "FTP connected users"
+msgstr "συνδεδεμένοι χρήστες FTP"
+
+msgid "Save and Restart CIFS"
+msgstr "Αποθήκευση και Επανεκκίνηση CIFS"
+
+msgid "Save and Restart UPnP"
+msgstr "Αποθήκευση και Επανεκκίνηση UPnP"
+
+msgid "Save and Restart Unison"
+msgstr "Αποθήκευση και Επανεκκίνηση Unison"
+
+msgid "Save and Restart SSHD"
+msgstr "Αποθήκευση και Επανεκκίνηση SSHD"
+
+msgid "Save and Restart RSYNC"
+msgstr "Αποθήκευση και Επανεκκίνηση RSYNC"
+
+msgid "Save and Restart NFS"
+msgstr "Αποθήκευση και Επανεκκίνηση NFS"
+
+msgid "Save and Restart FTP"
+msgstr "Αποθήκευση και Επανεκκίνηση FTP"
+
+msgid "Save and Restart AFP"
+msgstr "Αποθήκευση και Επανεκκίνηση AFP"
+
+msgid "The %s port must be a valid port number."
+msgstr "Η θύρα %s πρέπει να είναι ένας έγκυρος αριθμός θύρας."
+
+msgid "Swap memory"
+msgstr "Μνήμη swap"
+
+msgid "No RSYNC Client configured"
+msgstr "Δε ρυθμίστηκε Πελάτης RSYNC"
+
+msgid "Detected RSYNC remote shares"
+msgstr "Εντοπισμένα απομακρυσμένα κοινόχρηστα RSYNC"
+
+msgid "Hosts"
+msgstr "Υπολογιστές"
+
+msgid "LDAP"
+msgstr "LDAP"
+
+msgid "Password confirmation"
+msgstr "Επιβεβαίωση κωδικού"
+
+msgid "Remote share (source)"
+msgstr "Απομακρυσμένα κοινόχρηστα (προέλευση)"
+
+msgid "Remote address"
+msgstr "Απομακρυσμένη διεύθυνση"
+
+msgid "Local share (destination)"
+msgstr "Τοπικά κοινόχρηστα (προορισμός)"
+
+msgid ""
+"The RSYNC client list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+"Ο πελάτης RSYNC έχει αλλάξει.<br>Πρέπει να εφαρμόσετε τις αλλαγές "
+"προκειμένου να ισχύσουν."
+
+msgid ""
+"The RSYNC local list has been changed.<br>You must apply the changes in "
+"order for them to take effect."
+msgstr ""
+"Η τοπική λίστα RSYNC έχει αλλάξει.<br>Πρέπει να εφαρμόσετε τις αλλαγές "
+"προκειμένου να ισχύσουν."
+
+msgid "Add RSYNC"
+msgstr "Προσθήκη RSYNC"
+
+msgid "Edit RSYNC"
+msgstr "Επεξεργασία RSYNC"
+
+msgid "Delete RSYNC"
+msgstr "Διαγραφή RSYNC"
+
+msgid "Do you really want to delete this RSYNC?"
+msgstr "Θέλετε σίγουρα να διαγράψετε αυτό το RSYNC;"
+
+msgid "Source share"
+msgstr "Κοινόχρηστα προέλευσης"
+
+msgid "Destination share"
+msgstr "Κοινόχρηστα προορισμού"
+
+msgid "Remote source share name"
+msgstr "Όνομα απομακρυσμένων κοινοχρήστων προέλευσης"
+
+msgid "Mount to use"
+msgstr "Προσάρτηση που να χρησιμοποιηθεί"
+
+msgid "File size"
+msgstr "Μέγεθος αρχείου"
+
+msgid "A valid size target value must be specified."
+msgstr "Πρέπει να καθοριστεί μια έγκυρη τιμή μεγέθους προορισμού."
+
+msgid "Target name"
+msgstr "Όνομα προορισμού"
+
+msgid "Target address"
+msgstr "Διεύθυνση προορισμού"
+
+msgid "Initiator name"
+msgstr "Όνομα αρχικοποιητή"
+
+msgid "This is for information only (not using during iSCSI negociation)."
+msgstr ""
+"Αυτό είναι μόνο για πληροφορίες (δε χρησιμοποιείται κατά τη διάρκεια της "
+"διαπραγμάτευσης iSCSI)."
+
+msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
+msgstr ""
+"Αυτό το όνομα είναι για παράδειγμα: iqn.2005-01.il.ac.huji.cs:somebody."
+
+msgid ""
+"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+msgstr ""
+"Αυτό το όνομα είναι για παράδειγμα: iqn.1994-04.org.netbsd.iscsi-"
+"target:target0."
+
+msgid "This the IP address or DNS name of the iSCSI target."
+msgstr "Αυτή είναι η διεύθυνση IP ή το όνομα DNS του προορισμού iSCSI."
+
+msgid "Mount used"
+msgstr "Χρησιμοποιημένες προσαρτήσεις"
+
+msgid "Balance algorithm"
+msgstr "Αλγόριθμος ισορροπίας"
+
+msgid "Select your read balance algorithm."
+msgstr "Επιλέξτε τον αλγόριθμο ισορροπίας ανάγνωσης."
+
+msgid "Settings"
+msgstr "Ρυθμίσεις"
+
+msgid "Define an host name can be useful for NFS."
+msgstr ""
+"Ο καθορισμός ονόματος υπολογιστή μπορεί να είναι χρήσιμος για το NFS."
+
+msgid ""
+"The host list has been changed.<br>You must apply the changes in order for "
+"them to take effect."
+msgstr ""
+"Η λίστα ονομάτων υπολογιστών έχει αλλάξει.<br>Πρέπει να εφαρμόσετε τις "
+"αλλαγές προκειμένου να ισχύσουν."
+
+msgid "Edit Host"
+msgstr "Επεξεργασία Υπολογιστή"
+
+msgid "Do you really want to delete this host?"
+msgstr "Θέλετε σίγουρα να διαγράψετε αυτόν τον υπολογιστή;"
+
+msgid "Delete Host"
+msgstr "Διαγραφή υπολογιστή"
+
+msgid "Add Host"
+msgstr "Προσθήκη Υπολογιστή"
+
+msgid "The host name contain invalid characters."
+msgstr "Το όνομα υπολογιστή περιέχει μη έγκυρους χαρακτήρες."
+
+msgid "An host with this name already exists."
+msgstr "Ένας υπολογιστής με αυτό το όνομα υπάρχει ήδη."
+
+msgid ""
+"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
+"."
+msgstr ""
+"Το όνομα υπολογιστή μπορεί να αποτελείται μόνο από τους χαρακτήρες a-z, A-Z "
+"and 0-9, - , _ και ."
+
+msgid "The IP address that this hostname represents."
+msgstr "Η διεύθυνση IP που αναπαριστά αυτό το όνομα υπολογιστή."
+
+msgid "You may enter a description here for your reference."
+msgstr "Μπορείτε να εισάγετε εδώ μια περιγραφή για δικιά σας αναφορά."
+
+msgid "Download configuration"
+msgstr "Λήψη ρυθμίσεων"
+
+msgid "Restore configuration"
+msgstr "Επαναφορά ρυθμίσεων"
+
+msgid ""
+"Open a %s configuration XML file and click the button below to restore the "
+"configuration."
+msgstr ""
+"Ανοίξτε ένα αρχείο ρυθμίσεων XML και κάντε click στο κουμπί παρακάτω για "
+"επαναφορά των ρυθμίσεων."
+
+msgid "Click this button to download the system configuration in XML format."
+msgstr ""
+"Κάντε click σε αυτό το κουμπί για να κάνετε λήψη των ρυθμίσεων του "
+"συστήματος σε μορφή XML."
+
+msgid "Backup configuration"
+msgstr "Φύλαξη ρυθμίσεων"
+
+msgid "Initializing disk"
+msgstr "Αρχικοποίηση δίσκου"
+
+msgid "Enable Zeroconf"
+msgstr "Ενεργοποίηση Zeroconf"
+
+msgid "LDAP server IP"
+msgstr "IP του διακομιστή LDAP"
+
+msgid "IP address of LDAP server."
+msgstr "διεύθυνση IP του διακομιστή LDAP."
+
+msgid "Base DN"
+msgstr "Βάση DN"
+
+msgid ""
+"Specifies the default base DN to use when performing ldap operations. The "
+"base must be specified as a distinguished name in LDAP format."
+msgstr ""
+"Καθορίζει την προεπιλεγμένη βάση DN για χρήση κατά την εκτέλεση διεργασιών "
+"ldap. Η βάση πρέπει να καθοριστεί σαν ένα διακεκριμένο όνομα σε μορφή LDAP."
+
+msgid "DN to bind"
+msgstr "DN για bind"
+
+msgid ""
+"Specifies the default bind DN to use when performing ldap operations. The "
+"bind DN must be specified as a distinguished name in LDAP format."
+msgstr ""
+"Καθορίζει το προεπιλεγμένο bind DN για χρήση κατά την εκτέλεση διεργασιών "
+"ldap. Το bind DN πρέπει να καθοριστεί σαν ένα διακεκριμένο όνομα σε μορφή "
+"LDAP."
+
+msgid "Password for DN"
+msgstr "Κωδικός για DN"
+
+msgid "The credentials to bind with, enter it here twice."
+msgstr "Τα διαπιστευτήρια για bind, εισάγετέ τα εδώ δύο φορές."
+
+msgid "User suffix"
+msgstr "Κατάληξη χρήστη"
+
+msgid "Password suffix"
+msgstr "Κατάληξη κωδικού"
+
+msgid "Group suffix"
+msgstr "Κατάληξη ομάδας"
+
+msgid "Password encryption"
+msgstr "Κρυπτογράφηση κωδικού"
+
+msgid "Method used to store your password in your LDAP."
+msgstr ""
+"Μέθοδος που χρησιμοποιείται για την αποθήκευση του κωδικού σας στο LDAP."
+
+msgid ""
+"These commands will be executed pre or post system initialization (booting)."
+msgstr ""
+"Αυτές οι εντολές θα εκτελεστούν πριν ή μετά την αρχικοποίηση του συστήματος "
+"(εκκίνηση)."
+
+msgid "Add command"
+msgstr "Προσθήκη εντολής"
+
+msgid "Edit command"
+msgstr "Επεξεργασία εντολής"
+
+msgid "Delete command"
+msgstr "Διαγραφή εντολής"
+
+msgid "Do you really want to delete this command?"
+msgstr "Θέλετε σίγουρα να διαγράψετε αυτή την εντολή;"
+
+msgid "Execute command pre or post system initialization (booting)."
+msgstr ""
+"Εκτέλεση εντολής πριν ή μετά την αρχικοποίηση του συστήματος (εκκίνηση)."
+
+msgid "Startup"
+msgstr "Εκκίνηση"
+
+msgid "Large read/write"
+msgstr "Μεγάλη ανάγνωση/εγγραφή"
+
+msgid "Enable large read/write"
+msgstr "Ενεργοποίηση μεγάλης ανάγνωσης/εγγραφής"
+
+msgid "Use the new 64k streaming read and write variant SMB requests."
+msgstr ""
+"Χρήση της νέας ροής 64k ανάγνωσης και εγγραφής των αιτημάτων παραλλαγής SMB."
+
+msgid "Dynamic DNS"
+msgstr "Δυναμικός DNS"
+
+msgid "Servername"
+msgstr "Όνομα Διακομιστή"
+
+msgid "Save and Restart DynDNS"
+msgstr "Αποθήκευση και Επανεκκίνηση DynDNS"
