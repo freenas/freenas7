@@ -40,6 +40,13 @@ class HTMLBaseControl {
 	var $_required = false;
 	var $_readonly = false;
 
+	public function HTMLBaseControl($ctrlname, $title, $value, $description) {
+		$this->SetCtrlName($ctrlname);
+		$this->SetTitle($title);
+		$this->SetDescription($description);
+		$this->SetValue($value);
+	}
+
 	function IsRequired() {
 		return $this->_required;
 	}
@@ -131,10 +138,7 @@ class HTMLEditBox extends HTMLBaseControl {
 	var $_size = 40;
 
 	function HTMLEditBox($ctrlname, $title, $value, $description, $size) {
-		$this->SetCtrlName($ctrlname);
-		$this->SetTitle($title);
-		$this->SetDescription($description);
-		$this->SetValue($value);
+		$this->HTMLBaseControl($ctrlname, $title, $value, $description);
 		$this->SetSize($size);
 	}
 
@@ -301,11 +305,8 @@ class HTMLCheckBox extends HTMLBaseControlJS {
 	var $_caption = "";
 
 	function HTMLCheckBox($ctrlname, $title, $value, $caption, $description) {
-		$this->SetCtrlName($ctrlname);
-		$this->SetTitle($title);
-		$this->SetValue($value);
+		$this->HTMLBaseControl($ctrlname, $title, $value, $description);
 		$this->SetCaption($caption);
-		$this->SetDescription($description);
 	}
 
 	function GetCaption() {
@@ -344,15 +345,22 @@ class HTMLCheckBox extends HTMLBaseControlJS {
 	}
 }
 
-class HTMLComboBox extends HTMLBaseControlJS {
+class HTMLSelectControl extends HTMLBaseControlJS {
+	var $_ctrlclass = "";
 	var $_options = array();
 
-	function HTMLComboBox($ctrlname, $title, $value, $options, $description) {
-		$this->SetCtrlName($ctrlname);
-		$this->SetTitle($title);
-		$this->SetDescription($description);
-		$this->SetValue($value);
+	function HTMLSelectControl($ctrlclass, $ctrlname, $title, $value, $options, $description) {
+		$this->HTMLBaseControl($ctrlname, $title, $value, $description);
+		$this->SetCtrlClass($ctrlclass);
 		$this->SetOptions($options);
+	}
+
+	function GetCtrlClass() {
+		return $this->_ctrlclass;
+	}
+
+	function SetCtrlClass($ctrlclass) {
+		$this->_ctrlclass = $ctrlclass;
 	}
 
 	function GetOptions() {
@@ -374,12 +382,13 @@ class HTMLComboBox extends HTMLBaseControlJS {
 	}
 
 	function RenderCtrl() {
+		$ctrlclass = $this->GetCtrlClass();
 		$ctrlname = $this->GetCtrlName();
 		$value = htmlspecialchars($this->GetValue());
 		$param = $this->GetParam();
 		$options = $this->GetOptions();
 
-		echo "    <select name='{$ctrlname}' class='formfld' id='{$ctrlname}' {$param}>\n";
+		echo "    <select name='{$ctrlname}' class='{$ctrlclass}' id='{$ctrlname}' {$param}>\n";
 		foreach ($options as $optionk => $optionv) {
 			$optparam = "";
 			if ($value == $optionk)
@@ -390,14 +399,38 @@ class HTMLComboBox extends HTMLBaseControlJS {
 	}
 }
 
+class HTMLMultiSelectControl extends HTMLSelectControl {
+	function HTMLMultiSelectControl($ctrlclass, $ctrlname, $title, $value, $options, $description) {
+		$this->HTMLSelectControl($ctrlclass, $ctrlname, $title, $value, $options, $description);
+	}
+
+	function RenderCtrl() {
+		$ctrlclass = $this->GetCtrlClass();
+		$ctrlname = $this->GetCtrlName();
+		$value = $this->GetValue();
+		$param = $this->GetParam();
+		$options = $this->GetOptions();
+
+		echo "    <select name='{$ctrlname}[]' class='{$ctrlclass}' multiple id='{$ctrlname}' {$param}>\n";
+		foreach ($options as $optionk => $optionv) {
+			$optparam = "";
+			if (is_array($value) && in_array($optionk, $value))
+				$optparam .= "selected ";
+			echo "      <option value='{$optionk}' {$optparam}>{$optionv}</option>\n";
+		}
+		echo "    </select>\n";
+	}
+}
+
+class HTMLComboBox extends HTMLSelectControl {
+	function HTMLComboBox($ctrlname, $title, $value, $options, $description) {
+		$this->HTMLSelectControl("formfld", $ctrlname, $title, $value, $options, $description);
+	}
+}
+
 class HTMLMountComboBox extends HTMLComboBox {
 	function HTMLMountComboBox($ctrlname, $title, $value, $description) {
 		global $config;
-
-		$this->SetCtrlName($ctrlname);
-		$this->SetTitle($title);
-		$this->SetDescription($description);
-		$this->SetValue($value);
 
 		// Generate options.
 		if (!is_array($config['mounts']['mount']))
@@ -409,17 +442,12 @@ class HTMLMountComboBox extends HTMLComboBox {
 			$options[$mountv['sharename']] = $mountv['sharename'];
 		}
 
-		$this->SetOptions($options);
+		$this->HTMLComboBox($ctrlname, $title, $value, $options, $description);
 	}
 }
 
 class HTMLTimeZoneComboBox extends HTMLComboBox {
 	function HTMLTimeZoneComboBox($ctrlname, $title, $value, $description) {
-		$this->SetCtrlName($ctrlname);
-		$this->SetTitle($title);
-		$this->SetDescription($description);
-		$this->SetValue($value);
-
 		// Get time zone data.
 		function is_timezone($elt) {
 			return !preg_match("/\/$/", $elt);
@@ -437,7 +465,7 @@ class HTMLTimeZoneComboBox extends HTMLComboBox {
 			}
 		}
 
-		$this->SetOptions($options);
+		$this->HTMLComboBox($ctrlname, $title, $value, $options, $description);
 	}
 }
 
@@ -445,29 +473,19 @@ class HTMLLanguageComboBox extends HTMLComboBox {
 	function HTMLLanguageComboBox($ctrlname, $title, $value, $description) {
 		global $g_languages;
 
-		$this->SetCtrlName($ctrlname);
-		$this->SetTitle($title);
-		$this->SetDescription($description);
-		$this->SetValue($value);
-
 		// Generate options.
 		$options = array();
 		foreach ($g_languages as $languagek => $languagev) {
 			$options[$languagek] = gettext($languagev['desc']);
 		}
 
-		$this->SetOptions($options);
+		$this->HTMLComboBox($ctrlname, $title, $value, $options, $description);
 	}
 }
 
 class HTMLInterfaceComboBox extends HTMLComboBox {
 	function HTMLInterfaceComboBox($ctrlname, $title, $value, $description) {
 		global $config;
-
-		$this->SetCtrlName($ctrlname);
-		$this->SetTitle($title);
-		$this->SetDescription($description);
-		$this->SetValue($value);
 
 		// Generate options.
 		$options = array('lan' => 'LAN');
@@ -477,7 +495,13 @@ class HTMLInterfaceComboBox extends HTMLComboBox {
 			}
 		}
 
-		$this->SetOptions($options);
+		$this->HTMLComboBox($ctrlname, $title, $value, $options, $description);
+	}
+}
+
+class HTMLListBox extends HTMLMultiSelectControl {
+	function HTMLListBox($ctrlname, $title, $value, $options, $description) {
+		$this->HTMLMultiSelectControl("formselect", $ctrlname, $title, $value, $options, $description);
 	}
 }
 
@@ -517,52 +541,6 @@ class HTMLText extends HTMLBaseControl {
 		$text = $this->GetValue();
 
 		echo "{$text}\n";
-	}
-}
-
-class HTMLListBox extends HTMLBaseControlJS {
-	var $_options = array();
-
-	function HTMLListBox($ctrlname, $title, $value, $options, $description) {
-		$this->SetCtrlName($ctrlname);
-		$this->SetTitle($title);
-		$this->SetDescription($description);
-		$this->SetValue($value);
-		$this->SetOptions($options);
-	}
-
-	function GetOptions() {
-		return $this->_options;
-	}
-
-	function SetOptions($options) {
-		$this->_options = $options;
-	}
-
-	function GetParam() {
-		$param = "";
-		if (true === $this->IsReadOnly())
-			$param .= "disabled ";
-		$onclick = $this->GetJSonClick();
-		if (!empty($onclick))
-			$param .= "onClick='{$onclick}' ";
-		return $param;
-	}
-
-	function RenderCtrl() {
-		$ctrlname = $this->GetCtrlName();
-		$value = $this->GetValue();
-		$param = $this->GetParam();
-		$options = $this->GetOptions();
-
-		echo "    <select name='{$ctrlname}[]' class='formselect' multiple id='{$ctrlname}' {$param}>\n";
-		foreach ($options as $optionk => $optionv) {
-			$optparam = "";
-			if (is_array($value) && in_array($optionk, $value))
-				$optparam .= "selected ";
-			echo "      <option value='{$optionk}' {$optparam}>{$optionv}</option>\n";
-		}
-		echo "    </select>\n";
 	}
 }
 ?>
