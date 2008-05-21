@@ -82,7 +82,7 @@ setifconfig()
 			-m "//vinterfaces/lagg[if = '${_ifn}']" \
 				-v "concat(' laggproto ',laggproto)" \
 				-m "laggport" \
-					-v "concat(' laggproto ',.)" \
+					-v "concat(' laggport ',.)" \
 				-b \
 			-b \
 		-b \
@@ -148,7 +148,7 @@ setifconfig()
 					-m "//vinterfaces/lagg[if = '${_ifn}']" \
 						-v "concat(' laggproto ',laggproto)" \
 						-m "laggport" \
-							-v "concat(' laggproto ',.)" \
+							-v "concat(' laggport ',.)" \
 						-b \
 					-b \
 				-b \
