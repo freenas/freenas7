@@ -181,6 +181,30 @@
 		</disk>
 		-->
 	</disks>
+	<zfs>
+		<!--
+		    <groups>
+			    <group>
+				    <name>xxx</name>
+				    <type>xxx</type>
+				    <devices>
+					    <device>xxx</device>
+				    </devices>
+				    <comment/>
+			    </group>
+		    </groups>
+		    <pools>
+			    <pool>
+				    <name>xxx</name>
+				    <groups>
+					    <group>xxx</group>
+				    </groups>
+				    <root/>
+				    <mountpoint/>
+			    </pool>
+		    </pools>
+		    -->
+	</zfs>
 	<iscsitarget>
 		<!--
 		<enable/>

@@ -1209,4 +1209,97 @@ EOD;
 
 	return 0;
 }
+
+// Configure, create and start a zpool
+// $name - Name of the pool to be configured.
+// Return 0 if successful, 1 if error
+function disks_raid_zpool_configure($name)
+{
+	global $config;
+
+	if (!is_array($config['zfs']['pools']['pool']))
+		return 1;
+		
+	$index = array_search_ex($name, $config['zfs']['pools']['pool'], "name");
+	if (false === $index)
+		return 1;
+			
+	$vdisk = $config['zfs']['pools']['pool'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+			
+	// Create pool
+	$cmd = "/sbin/zpool create {$vdisk['name']} ";
+
+	foreach ($vdisk['groups']['group'] as $group) {
+		$type = $groups[$group]['type'];
+		if($type == "mirrorz") {
+			$cmd .= "mirror ";
+		} else if($type == "spares") {
+			$cmd .= "spare ";
+		} else if($type == "raidz") {
+			$cmd .= "raidz ";
+		} else if($type == "raidz2") {
+			$cmd .= "raidz2 ";
+		}
+		$group_conf = get_conf_group($group);
+		if(is_array($group_conf['devices']['device'])) {
+			foreach($group_conf['devices']['device'] as $device) {
+				$cmd .= $device." ";
+			}
+		} else {
+			return 1;
+		}
+	}
+	return mwexec($cmd);
+}
+
+// Delete zpool given in parameter.
+// $name - Name of the pool to be deleted.
+// Return 0 if successful, 1 if error
+function disks_raid_zpool_destroy($name) {
+	global $config;
+
+	if (!is_array($config['zfs']['pools']['pool']))
+		return 1;
+
+	$index = array_search_ex($name, $config['zfs']['pools']['pool'], "name");
+	if (false === $index)
+		return 1;
+
+	$vdisk = $config['zfs']['pools']['pool'][$index];
+	if (!is_array($vdisk))
+		 return 1;
+
+	// destroy the pool
+	mwexec("/sbin/zpool destroy {$name}");
+	return 0;
+}
+
+// Wrapper to execute zpool commands.
+// $command - Command to execute (e.g. upgrade).
+// $param   - The command parameter
+// $verbose - Display command results or hide them.
+// $stderr  - Redirect stderr to stdout to display error messages too.
+// Return 0 if successful, 1 if error.
+function disks_zpool_cmd($command, $param, $verbose = false, $stderr = true, $out = false, &$output = array())
+{
+	$result = 1;
+	$cmd = "/sbin/zpool {$command} {$param}"; // gvinum can't be executed via geom
+
+	echo $cmd;
+	if (true === $verbose) {
+		if (true === $stderr) {
+			$cmd .= " 2>&1"; // Redirect error message to stdout
+		}
+		system($cmd, $result);
+	} else {
+		if(true === $out) {
+			exec($cmd, $output, $result);
+		} else {
+			$result = mwexec($cmd);
+		}
+	}
+	return $result;
+}
 ?>

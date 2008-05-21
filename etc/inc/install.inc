@@ -185,6 +185,7 @@ function install_harddrive_image($harddrive)
 	mwexec("/bin/mkdir -p {$mntpath}/mnt");
 	mwexec("/bin/mkdir -p {$mntpath}/tmp");
 	mwexec("/bin/mkdir -p {$mntpath}/boot/defaults");
+	mwexec("/bin/mkdir -p {$mntpath}/boot/zfs");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/* {$mntpath}/boot");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/defaults/* {$mntpath}/boot/defaults");
 	mwexec("/bin/cp -v /mnt/cdrom/boot/kernel/* {$mntpath}/boot/kernel");

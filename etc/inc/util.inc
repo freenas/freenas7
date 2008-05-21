@@ -1905,12 +1905,12 @@ function set_conf_disk_fstype($disk, $fstype)
 
 	$result = 1;
 	$diskconf = array("disks"   => "disk",
-										"gconcat" => "vdisk",
-										"gmirror" => "vdisk",
-										"graid5"  => "vdisk",
-										"gstripe" => "vdisk",
-										"gvinum"  => "vdisk",
-										"geli"    => "vdisk");
+				"gconcat" => "vdisk",
+				"gmirror" => "vdisk",
+				"graid5"  => "vdisk",
+				"gstripe" => "vdisk",
+				"gvinum"  => "vdisk",
+				"geli"    => "vdisk");
 
 	while (list($class, $val) = each($diskconf)) {
 		if (!is_array($config[$class][$val]))
@@ -1944,5 +1944,385 @@ function get_hostbyaddr($ip_address) {
 		return $matches[1];
 	}
 	return $ip_address;
+}
+
+/**/
+function get_conf_disks_avail()
+{
+	$result = array();
+	/* available disks => fstype = pool*/
+	$a_disk = get_conf_disks_filtered_ex("fstype", "pool");
+	if (is_array($a_disk)) {
+		/* disks on group and other sraid */
+		$devices = array_merge(get_conf_disks_all_group(), get_conf_sraid_disks_list());
+		if (is_array($devices)) {
+			foreach ($a_disk as $diskv) {
+				$found = false;
+				foreach($devices as $device) {
+					if (in_array($diskv['devicespecialfile'], $device['device'])) {
+						$found = true;
+}
+}
+				/* add only not used disks */
+				if(!$found) {
+					$result[] = get_conf_disk($diskv['devicespecialfile']);
+}
+}
+}
+}
+	return $result;
+}
+
+// Check if a sraid is on a zpool group
+// return false or
+function get_sraid_group($name)
+{
+	$a_group = get_conf_disks_all_group();
+	$a_raid = get_conf_sraid_disks_list();
+	foreach($a_group as $group) {
+		foreach($a_raid as $raid) {
+			if (in_array($raid['devicespecialfile'], $group['device'])) {
+				return $group;
+}
+}
+}
+	return false;
+}
+
+// Get every device names configured on every group
+// return 
+// Array ( 
+// 	[name] => f1 
+//	[device] => Array ( [0] => /dev/mirror/mi )
+// )
+
+function get_conf_disks_all_group()
+{
+	global $config;
+	$result = array();
+	if (is_array($config['disks']['disk'])) {
+		$a_disk = $config['disks']['disk'];
+		$a_group = get_all_conf_groups();
+		
+		foreach($a_group as $group => $g) {
+			$dev = array();
+			$dev['name'] = $g['name'];
+			foreach($g['devices']['device'] as $device) {
+				foreach($a_disk as $disk) {
+					if($disk['devicespecialfile'] == $device) {
+						$dev['device'][] = $device;
+}
+}
+}
+			$result[] = $dev;
+}
+}
+	return $result;
+}
+// Get every avail disk for groups usage
+//)
+function get_conf_disks_avail_groups()
+{
+	$result = array();
+	$a_disk = array_merge(get_conf_disks_filtered_ex("fstype", "pool"), get_conf_sraid_disks_list());
+	if (is_array($a_disk)) {
+		$devices = array_merge(get_conf_disks_all_group(), get_conf_sraid_disks_list());
+		if (is_array($devices)) {
+			foreach ($a_disk as $diskv) {
+				$found = false;
+				foreach($devices as $device) {
+					if (in_array($diskv['devicespecialfile'], $device['device'])) {
+						$found = true;
+}
+}
+				if(!$found) {
+					$result[] = get_conf_disk($diskv['devicespecialfile']);
+}
+}
+}
+}
+	return $result;
+}
+
+// Get all configured groups of disks
+//[groupname] => Array
+//    (
+//        [name] => groupname
+//        [devices]['device'] => array
+//        [type] => type
+//        [comment] => comments
+//    )
+
+function get_all_conf_groups()
+{
+	global $config;
+	$result = array();
+	if(!isset($config['zfs']['groups']) || !is_array($config['zfs']['groups']['group']))
+		return $result;
+		
+	$a_group = $config['zfs']['groups']['group'];
+	
+	foreach ($a_group as $group) {
+		$groupname = $group['name'];
+		$result[$groupname] = array();
+		$result[$groupname]['name'] = $group['name'];
+		$result[$groupname]['devices']['device'] = $group['devices']['device'];
+		$result[$groupname]['type'] = $group['type'];
+		$result[$groupname]['comment'] = $group['comment'];
+}
+	return $result;
+}
+
+// Get all configured groups of disks
+// Array
+//    (
+//        [name] => groupname
+//        [devices][device] => array
+//        [type] => type
+//        [comment] => comments
+//    )
+
+function get_conf_pool($name)
+{
+	$result = array();
+	$a_pool = get_all_conf_pools();
+	
+	if(!is_array($a_pool))
+		return $result;
+	if(empty($a_pool))
+		return $result;
+		
+	$result = $a_pool[$name];
+	
+	return $result;
+}
+
+// Get all configured groups of disks
+// Array
+//    (
+//        [name] => groupname
+//        [devices][device] => array
+//        [type] => type
+//        [comment] => comments
+//    )
+
+function get_conf_group($name)
+{
+	$result = array();
+	$a_group = get_all_conf_groups();
+	
+	if(!is_array($a_group))
+		return $result;
+	if(empty($a_group))
+		return $result;
+		
+	$result = $a_group[$name];
+	
+	return $result;
+}
+
+// Get all configured groups of disks
+// Array
+//    (
+//        [name] => groupname
+//        [devices][device] => array
+//        [type] => type
+//        [comment] => comments
+//    )
+
+function get_conf_disk($name)
+{
+	$result = array();
+	$a_disk = array_merge(get_conf_disks_filtered_ex("fstype", "pool"), get_conf_sraid_disks_list());
+	
+	if(!is_array($a_disk))
+		return $result;
+	if(empty($a_disk))
+		return $result;
+	
+	foreach($a_disk as $diskv) {
+		if($diskv['devicespecialfile'] == $name) {
+			if(isset($diskv['class'])) {
+				if($diskv['class'] == 'gmirror') {
+					$raidstatus = get_gmirror_disks_list();
+					$diskv['size'] = $raidstatus[$diskv['name']]['size'];
+} else if( $diskv['class'] == 'gvinum' ) {
+					$raidstatus = get_gvinum_disks_list();	
+					$diskv['size'] = $raidstatus[$diskv['name']]['size'];
+} else if($diskv['class'] == 'gconcat') {
+					$raidstatus = get_gconcat_disks_list();
+					$diskv['size'] = $raidstatus[$diskv['name']]['size'];
+} else if($diskv['class'] == 'gstripe') {
+					$raidstatus = get_gstripe_disks_list();
+					$diskv['size'] = $raidstatus[$diskv['name']]['size'];
+} else if($diskv['class'] == 'graid5') {
+					$raidstatus = get_graid5_disks_list();
+					$diskv['size'] = $raidstatus[$diskv['name']]['size'];
+}
+}
+			$result = $diskv;
+			break;
+}
+}
+	return $result;
+}
+
+function get_conf_disk_index($name)
+{
+	global $config;
+	$a_disk = $config['disks']['disk'];
+	
+	if (!is_array($a_disk))
+		return false;
+				
+	array_sort_key($a_disk, "name");
+	
+	$i = 0;
+	foreach($a_disk as $disk) {
+		if($disk['devicespecialfile'] == $name) {
+			return $i;
+}
+		$i++;
+}
+	return false;
+}
+// Get all configured groups of disks
+//[groupname] => Array
+//    (
+//        [name] => groupname
+//        [device] => array
+//        [type] => type
+//        [comment] => comments
+//    )
+// Get available configured groups of disks
+function get_conf_group_avail()
+{
+	$result = array();
+	$all_groups = get_all_conf_groups();
+	$all_pools = get_all_conf_pools();
+	
+	$found = false;
+	foreach($all_groups as $group => $g) {
+		$found = false;
+		foreach($all_pools as $pool => $p) {
+			foreach($p['groups']['group'] as $p_g => $p_g_n) {
+				if($g['name'] == $p_g_n) {
+					$found = true;
+}
+}
+}
+		if(!$found) {
+			$groupname = $g['name'];
+			$result[$groupname] = array();
+			$result[$groupname]['name'] = $g['name'];
+			$result[$groupname]['devices']['device'] = $g['devices']['device'];
+			$result[$groupname]['type'] = $g['type'];
+			$result[$groupname]['comment'] = $g['comment'];
+}
+}
+	return $result;
+}
+// Get the pool where group belongs to
+// returns false or
+//[poolname] => Array
+//    (
+//        [name] => groupname
+//        [groups][group] => array
+//        [root] => type
+//        [mountpoint] => mountpoint
+//        [comments] => comments
+//    )
+function get_group_pool($name)
+{
+	$all_pools = get_all_conf_pools();
+	foreach($all_pools as $pool) {
+		foreach($pool['groups']['group'] as $gn) {
+			if($name == $gn) {
+				return $pool;
+}
+}
+}
+	return false;
+}
+// Get all configured pools
+//[poolname] => Array
+//    (
+//        [name] => groupname
+//        [groups][group] => array
+//        [root] => type
+//        [mountpoint] => mountpoint
+//        [comments] => comments
+//    )
+function get_all_conf_pools()
+{
+	global $config;
+	$result = array();
+	
+	if(!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
+		return $result;
+			
+	$a_pool = $config['zfs']['pools']['pool'];
+	
+	foreach ($a_pool as $pool) {
+		$groupname = $pool['name'];
+		$result[$groupname] = array();
+		$result[$groupname]['name'] = $pool['name'];
+		$result[$groupname]['groups']['group'] = $pool['groups']['group'];
+		$result[$groupname]['root'] = $pool['type'];
+		$result[$groupname]['mountpoint'] = $pool['comment'];
+}
+	return $result;
+}
+// return the position of the pool on the array
+function get_conf_pool_index($name)
+{
+	$a_pool = get_all_conf_pools();
+	
+	if (!is_array($a_pool))
+		return false;
+				
+	array_sort_key($a_pool, "name");
+	
+	$i = 0;
+	foreach($a_pool as $pool) {
+		if($pool['name'] == $name) {
+			return $i;
+}
+		$i++;
+}
+	return false;
+}
+
+// Get list of zpools
+//[poolname] => Array
+//    (
+//        [name] => pool
+//        [size] => 4.66G
+//        [used] => 112K
+//        [avail] => 4.66G
+//        [cap] => 0%
+//        [health] => ONLINE
+//        [altroot] => -
+//    )
+function get_zfs_pool_list()
+{
+	/* Display all configured pools  */
+	exec("/sbin/zpool list -H",$rawdata);
+	
+	foreach ($rawdata as $line) {
+		/* Use space for break the line */
+		$aline = preg_split("/\s+/", $line);
+		
+		$diskname = $aline[0];
+		$disklist[$diskname] = array();
+		$disklist[$diskname]['name'] = $diskname;
+		$disklist[$diskname]['size'] = $aline[1];
+		$disklist[$diskname]['used'] = $aline[2];
+		$disklist[$diskname]['avail'] = $aline[3];
+		$disklist[$diskname]['cap'] = $aline[4];
+		$disklist[$diskname]['health'] = $aline[5];
+		$disklist[$diskname]['altroot'] = $aline[6];
+	}
+	return $disklist;
 }
 ?>
