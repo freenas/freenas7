@@ -40,7 +40,7 @@ class HTMLBaseControl {
 	var $_required = false;
 	var $_readonly = false;
 
-	public function HTMLBaseControl($ctrlname, $title, $value, $description) {
+	public function HTMLBaseControl($ctrlname, $title, $value, $description = "") {
 		$this->SetCtrlName($ctrlname);
 		$this->SetTitle($title);
 		$this->SetDescription($description);
@@ -304,7 +304,7 @@ class HTMLFileChooser extends HTMLEditBox {
 class HTMLCheckBox extends HTMLBaseControlJS {
 	var $_caption = "";
 
-	function HTMLCheckBox($ctrlname, $title, $value, $caption, $description) {
+	function HTMLCheckBox($ctrlname, $title, $value, $caption, $description = "") {
 		$this->HTMLBaseControl($ctrlname, $title, $value, $description);
 		$this->SetCaption($caption);
 	}
@@ -526,6 +526,32 @@ class HTMLTitleLine extends HTMLBaseControl {
 
 		echo "<tr>\n";
 		echo "	<td colspan='2' valign='top' class='listtopic'>{$title}</td>\n";
+		echo "</tr>\n";
+	}
+}
+
+class HTMLTitleLineCheckBox extends HTMLCheckBox {
+	function HTMLTitleLineCheckBox($ctrlname, $title, $value, $caption) {
+		$this->HTMLCheckBox($ctrlname, $title, $value, $caption);
+	}
+
+	function Render() {
+		$ctrlname = $this->GetCtrlName();
+		$caption = $this->GetCaption();
+		$title = $this->GetTitle();
+		$param = $this->GetParam();
+
+		echo "<tr>\n";
+		echo "	<td colspan='2' valign='top' class='optsect_t'>\n";
+		echo "    <table border='0' cellspacing='0' cellpadding='0' width='100%'>\n";
+		echo "      <tr>\n";
+		echo "        <td class='optsect_s'><strong>{$title}</strong></td>\n";
+		echo "        <td align='right' class='optsect_s'>\n";
+		echo "          <input name='{$ctrlname}' type='checkbox' class='formfld' id='{$ctrlname}' value='yes' {$param}><strong>{$caption}</strong>\n";
+		echo "        </td>\n";
+		echo "      </tr>\n";
+		echo "    </table>\n";
+		echo "  </td>\n";
 		echo "</tr>\n";
 	}
 }
