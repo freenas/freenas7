@@ -461,7 +461,7 @@ function get_mounts_list()
 		$devicespecialfile = chop($aline[0]);
 
 		// Get the mount path
-		
+
 		// Need to manage strange result here:
 		// the $aline can have 2 forms:
 /*
@@ -469,10 +469,10 @@ Array
 (
     [0] => /dev/mirror/raidp1
     [1] => /mnt/securedisk
-    [2] => 
+    [2] =>
     [3] => ufs
     [4] => acls
-    [5] => 
+    [5] =>
     [6] => 2 2
 )
 
@@ -481,12 +481,12 @@ OR:
 Array
 (
     [0] => /dev/ad1.elip1
-    [1] => 
+    [1] =>
     [2] => /mnt/toto
-    [3] => 
+    [3] =>
     [4] => ufs
     [5] => acls
-    [6] => 
+    [6] =>
     [7] => 2 2
 */
 
@@ -510,7 +510,7 @@ Array
 		if (($devicename == "gvinum") || ($devicename == "mirror") || ($devicename == "concat") ||
 				($devicename == "stripe") || ($devicename == "raid5")) {
 			$devicename = $adevicespecialfile[3];
-			
+
 		}
 
 		// Get the sharename
@@ -1310,9 +1310,6 @@ function get_ipaddr($if)
     }
   }
 
-  if (strcmp($ipaddr,"") == 0)
-    write_console("Failed to get IP address for interface {$if}. ");
-
   return $ipaddr;
 }
 
@@ -1337,9 +1334,6 @@ function get_ipv6addr($if)
     }
   }
 
-  if (strcmp($ipaddr,"") == 0)
-    write_console("Failed to get IPv6 address for interface {$if}. ");
-
   return $ipaddr;
 }
 
@@ -1360,10 +1354,6 @@ function get_macaddr($if)
       $macaddr = chop($alink[3]);
       break;
     }
-  }
-
-  if (strcmp($macaddr,"") == 0) {
-    write_console("Failed to get MAC address for interface {$if}. ");
   }
 
   return $macaddr;
@@ -1749,9 +1739,9 @@ function get_conf_physical_disks_list() {
 		$a_disks = $config['disks']['disk'];
 		foreach ($a_disks as $disk) {
 			if (($disk['class']) == "ATA" || ($disk['class'] == "SCSI") || ($disk['class'] == "RAID")) {
-				$a_physicaldisk[]= $disk;	
+				$a_physicaldisk[]= $disk;
 			}
-		} 
+		}
   	}
 	return $a_physicaldisk;
 }
@@ -1767,9 +1757,9 @@ function get_conf_sraid_disks_list() {
 		$a_disks = $config['disks']['disk'];
 		foreach ($a_disks as $disk) {
 			if (($disk['class']) == "gmirror" || ($disk['class'] == "graid5") || ($disk['class'] == "gvinum") || ($disk['class'] == "gstripe") || ($disk['class'] == "gconcat")) {
-				$a_vdisk[]= $disk;	
+				$a_vdisk[]= $disk;
 			}
-		} 
+		}
   	}
 
 	return $a_vdisk;
@@ -1787,9 +1777,9 @@ function get_conf_encryped_disks_list() {
 		$a_disks = $config['disks']['disk'];
 		foreach ($a_disks as $disk) {
 			if (($disk['class']) == "geli") {
-				$a_vdisk[]= $disk;	
+				$a_vdisk[]= $disk;
 			}
-		} 
+		}
   	}
 
 	return $a_vdisk;
