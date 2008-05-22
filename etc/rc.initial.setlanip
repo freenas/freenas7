@@ -37,7 +37,7 @@ require_once("util.inc");
 require_once("rc.inc");
 require_once("tui.inc");
 
-$result = tui_display_yesno("Do you want to use DHCP?", 30, 5);
+$result = tui_display_yesno("Do you want to use DHCP for this interface?", 47, 5);
 if (0 == $result) {
 	$config['interfaces']['lan']['ipaddr'] = "dhcp";
 } else if (255 == $result) {
@@ -89,59 +89,65 @@ if (0 == $result) {
 	$config['system']['dnsserver'] = explode(" ", $dnsserverip);
 }
 
-$result = tui_display_yesno("Do you want to use AutoConfiguration for IPv6?", 50, 5);
+$result = tui_display_yesno("Do you want to configuration IPv6 for this interface?", 57, 5, false);
 if (0 == $result) {
-	$config['interfaces']['lan']['ipv6addr'] = "auto";
-} else if (255 == $result) {
-	exit(0);
-} else {
-	$lanip = $config['interfaces']['lan']['ipv6addr'];
-	if ("auto" === $lanip)
-		$lanip = get_ipv6addr($config['interfaces']['lan']['if']);
-	do {
-		$result = tui_display_input("Enter new LAN IPv6 address.", 35, 8, $lanip);
-		if (0 != $result) {
-			exit(0);
-		}
-	} while (!is_ipv6addr($lanip));
-
-	if (isset($config['interfaces']['lan']['ipv6subnet']))
-		$lanbits = $config['interfaces']['lan']['ipv6subnet'];
-	else
-		$lanbits = 64;
-	do {
-		$result = tui_display_input("Enter prefix.", 35, 8, $lanbits);
-		if (0 != $result) {
-			exit(0);
-		}
-	} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))) == false);
-
-	$gatewayip = $config['interfaces']['lan']['gateway'];
-	do {
-		$result = tui_display_input("Enter IPv6 default gateway.", 35, 8, $gatewayip);
-		if (0 != $result) {
-			exit(0);
-		}
-		if ("" === $gatewayip) {
+	$result = tui_display_yesno("Do you want to enable AutoConfiguration?", 44, 5);
+	if (0 == $result) {
+		$config['interfaces']['lan']['ipv6addr'] = "auto";
+	} else if (255 == $result) {
+		exit(0);
+	} else {
+		$lanip = $config['interfaces']['lan']['ipv6addr'];
+		if ("auto" === $lanip)
+			$lanip = get_ipv6addr($config['interfaces']['lan']['if']);
+		do {
+			$result = tui_display_input("Enter new LAN IPv6 address.", 35, 8, $lanip);
+			if (0 != $result) {
+				exit(0);
+			}
+		} while (!is_ipv6addr($lanip));
+	
+		if (isset($config['interfaces']['lan']['ipv6subnet']))
+			$lanbits = $config['interfaces']['lan']['ipv6subnet'];
+		else
+			$lanbits = 64;
+		do {
+			$result = tui_display_input("Enter prefix.", 35, 8, $lanbits);
+			if (0 != $result) {
+				exit(0);
+			}
+		} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))) == false);
+	
+		$gatewayip = $config['interfaces']['lan']['gateway'];
+		do {
+			$result = tui_display_input("Enter IPv6 default gateway.", 35, 8, $gatewayip);
+			if (0 != $result) {
+				exit(0);
+			}
+			if ("" === $gatewayip) {
+					break;
+			}
+		} while (!is_ipv6addr($gatewayip));
+	
+		$dnsserverip = implode(" ", $config['system']['ipv6dnsserver']);
+		do {
+			$result = tui_display_input("Enter DNS IPv6 address.", 35, 8, $dnsserverip);
+			if (0 != $result) {
+				exit(0);
+			}
+			if ("" === $dnsserverip) {
 				break;
-		}
-	} while (!is_ipv6addr($gatewayip));
+			}
+		} while (!is_ipv6addr($dnsserverip));
 
-	$dnsserverip = implode(" ", $config['system']['ipv6dnsserver']);
-	do {
-		$result = tui_display_input("Enter DNS IPv6 address.", 35, 8, $dnsserverip);
-		if (0 != $result) {
-			exit(0);
-		}
-		if ("" === $dnsserverip) {
-			break;
-		}
-	} while (!is_ipv6addr($dnsserverip));
-
-	$config['interfaces']['lan']['ipv6addr'] = $lanip;
-	$config['interfaces']['lan']['ipv6subnet'] = $lanbits;
-	$config['interfaces']['lan']['ipv6gateway'] = $gatewayip;
-	$config['system']['ipv6dnsserver'] = explode(" ", $dnsserverip);
+		$config['interfaces']['lan']['ipv6addr'] = $lanip;
+		$config['interfaces']['lan']['ipv6subnet'] = $lanbits;
+		$config['interfaces']['lan']['ipv6gateway'] = $gatewayip;
+		$config['system']['ipv6dnsserver'] = explode(" ", $dnsserverip);
+	}
+	$config['interfaces']['lan']['ipv6_enable'] = true;
+} else {
+	$config['interfaces']['lan']['ipv6_enable'] = false;
 }
 
 if ("https" === $config['system']['webgui']['protocol']) {

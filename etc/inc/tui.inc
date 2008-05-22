@@ -36,8 +36,10 @@ require_once("util.inc");
 // $width - Width of the dialog
 // $height - Height of the dialog
 // Returns 0 if yes, 1 if no or 255 if aborted via ESC.
-function tui_display_yesno($text, $width, $height) {
-	passthru("/usr/local/bin/cdialog --clear --yesno \"{$text}\" {$height} {$width}", $retval);
+function tui_display_yesno($text, $width, $height, $defaultyes = true) {
+	$param = "";
+	if (false === $defaultyes) $param = "--defaultno";
+	passthru("/usr/local/bin/cdialog --clear {$param} --yesno \"{$text}\" {$height} {$width}", $retval);
 	return $retval;
 }
 
