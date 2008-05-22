@@ -1353,9 +1353,17 @@ function config_upgrade() {
 	}
 
 	/* Convert 5.0 -> 5.1 */
+	/* Add //interfaces/lan/enable. */
+	if ($config['version'] === "5.0") {
+		$config['interfaces']['lan']['enable'] = true;
+
+		$config['version'] = "5.1";
+	}
+
+	/* Convert 5.1 -> 5.2 */
 	/* New Disk configuration for FreeNAS 0.7 */
 	/* Use class in the place of gconcat,gmirror,graid5,gstride,gvinum,geli disk */
-	if ($config['version'] === "5.0") {
+	if ($config['version'] === "5.1") {
 		/* Add class to physical disk that replace old type (ATA, SCSI, RAID)*/
 		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
 			switch ($config['disks']['disk'][$i]['type']) {
@@ -1429,7 +1437,7 @@ function config_upgrade() {
 			}
 		}
 
-		$config['version'] = "5.1";
+		$config['version'] = "5.2";
 	}
 
 	write_config();

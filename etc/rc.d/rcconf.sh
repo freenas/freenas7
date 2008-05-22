@@ -185,6 +185,13 @@ setifconfig()
 	#########################################################################
 	# IPv6
 
+	# Enable/Disable IPv6
+	_value="NO"
+	if configxml_isset "//interfaces/*[enable]/ipv6_enable"; then
+		_value="YES"
+	fi
+	eval /usr/local/sbin/rconf attribute set "ipv6_enable" "${_value}"
+
 	# LAN interface:
 	_ifn=`configxml_get "//interfaces/lan/if"`
 	_ifn=`get_if ${_ifn}`
