@@ -1,7 +1,7 @@
 ################ History Change logs ##############
 
-FreeNAS 0.7:
-------------
+FreeNAS 0.7 (Sardaukar):
+------------------------
 
 Majors changes:
 - Upgrade to FreeBSD 7.0 (thanks to Nelson Silva, Alias fulgas, for the clog patch)
@@ -32,8 +32,8 @@ Help needed:
 - Need help for adding LDAP authentication feature:
 Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
-FreeNAS 0.69:
--------------
+FreeNAS 0.69 (Fedaykin):
+------------------------
 
 Majors changes:
 - Upgrade to FreeBSD 6.3. Because of this there are some changes:
@@ -88,7 +88,7 @@ Permanent restrictions:
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
 
-FreeNAS 0.686.4 (unreleased):
+FreeNAS 0.686.4 (Gom Jabbar):
 -----------------------------
 
 Minors changes:
@@ -107,6 +107,7 @@ Bug fixes:
 - Stop iscsi-target service on shutdown (BR 1948432). Thanks to Robert Eden.
 - Fix bug when using setkey on a encrypted RAID via WebGUI 'Disks: Encryption: Tools'.
 - Fix bug in WebGUI 'Disks: Mount Point: Edit' when configuring CD/DVD. Thanks to hvrio for reporting.
+- Fix rsyncd configuration bug when setting module to write only (BR 1968753). Thanks to Roberto Bellingeri.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
