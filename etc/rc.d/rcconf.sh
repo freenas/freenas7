@@ -30,7 +30,7 @@ setifconfig()
 	# Cleanup
 	set | grep ifconfig_ | while read _value; do
 		_value=${_value%=*}
-		eval /usr/local/sbin/rconf attribute remove "${_value%=*}"
+		eval /usr/local/sbin/rconf attribute remove "${_value}"
 	done
 
 	#########################################################################
