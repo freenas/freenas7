@@ -82,6 +82,10 @@ if (install_mount_cd($cdrom)) {
 	exit(0);
 }
 
+// Perform a file system check before upgrading
+write_console("Perfom file system check.\n");
+mwexec("/sbin/fsck -t ufs -y {$devinfo['device']}{$devinfo['partition']}");
+
 if (install_backup_config("{$devinfo['device']}{$devinfo['partition']}")) {
 	install_unmount_cd();
 	tui_wait_keypress("There was a problem during configuration file backup.");
