@@ -163,8 +163,8 @@ write_config();
 // Initialize interface
 write_console("Initializing interface. Please wait...");
 rc_exec_service("rcconf.sh");
-rc_update_service("netif");
-rc_update_service("network_ipv6");
+rc_restart_service("netif");
+rc_restart_service("network_ipv6");
 
 // Get current IP.
 $lanipv4 = get_ipaddr($config['interfaces']['lan']['if']);
