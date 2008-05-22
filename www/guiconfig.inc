@@ -388,6 +388,12 @@ function html_titleline($title) {
 	$ctrl->Render();
 }
 
+function html_titleline_checkbox($ctrlname, $title, $value, $caption, $onclick = "") {
+	$ctrl = new HTMLTitleLineCheckBox($ctrlname, $title, $value, $caption);
+	$ctrl->SetJSonClick($onclick);
+	$ctrl->Render();
+}
+
 function html_text($ctrlname, $title, $text) {
 	$ctrl = new HTMLText($ctrlname, $title, $text);
 	$ctrl->Render();

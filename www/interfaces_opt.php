@@ -293,19 +293,10 @@ function media_change() {
             	<table width="100%" border="0" cellpadding="0" cellspacing="0">
 							  <tr>
 									<td class="tabcont">
-											<?php if ($input_errors) print_input_errors($input_errors);?>
-											<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
-											<table width="100%" border="0" cellpadding="6" cellspacing="0">
-											<tr>
-											  <td colspan="2" valign="top" class="optsect_t">
-											    <table border="0" cellspacing="0" cellpadding="0" width="100%">
-											      <tr>
-											        <td class="optsect_s"><strong><?=gettext("IPv4 Configuration");?></strong></td>
-											        <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false);bridge_change(false)"><strong><?=gettext("Activate");?></strong></td>
-											      </tr>
-											    </table>
-											  </td>
-											</tr>
+										<?php if ($input_errors) print_input_errors($input_errors);?>
+										<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
+										<table width="100%" border="0" cellpadding="6" cellspacing="0">
+											<?php html_titleline_checkbox("enable", gettext("IPv4 Configuration"), $pconfig['enable'] ? true : false, gettext("Activate"), "enable_change(false);bridge_change(false)");?>
 											<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Static" => "Static", "DHCP" => "DHCP"), gettext(""), true, false, "type_change()");?>
 											<?php html_inputbox("descr", gettext("Description"), $pconfig['descr'], gettext("You may enter a description here for your reference."), true, 20);?>
 											<tr>

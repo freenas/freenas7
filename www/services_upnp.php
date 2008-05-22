@@ -173,16 +173,7 @@ function web_change() {
 				<?php if ($savemsg) print_info_box($savemsg); ?>
 				<?php if (file_exists($d_upnpconfdirty_path)) print_config_change_box();?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			    <tr>
-			      <td colspan="2" valign="top" class="optsect_t">
-			  		  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-			  		  <tr>
-			          <td class="optsect_s"><strong><?=gettext("UPnP A/V Media Server");?></strong></td>
-			  			  <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable");?></strong></td>
-			        </tr>
-			  		  </table>
-			      </td>
-			    </tr>
+			  	<?php html_titleline_checkbox("enable", gettext("UPnP A/V Media Server"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext("UPnP friendly name."), true, 20);?>
 					<!--
 					<?php html_interfacecombobox("if", gettext("Interface"), $pconfig['if'], gettext("Interface to listen to."), true);?>
