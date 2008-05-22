@@ -28,7 +28,7 @@ setifconfig()
 	local _value _ifn _ifconfig_args _ipaddr _gateway _cloned_interfaces _id
 
 	# Cleanup
-	set | grep ifconfig_ /etc/rc.conf | while read _value; do
+	set | grep ifconfig_ | while read _value; do
 		_value=${_value%=*}
 		eval /usr/local/sbin/rconf attribute remove "${_value%=*}"
 	done
