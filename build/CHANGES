@@ -68,7 +68,7 @@ Majors changes:
   Thanks to Nelson Silva (nsilva@hotlap.org).
 - Added DAAP server to support iTunes.
 - Update GEOM raid5. Thanks to Arne Wörner.
-- Refactor whole interface management code. Replace PHP code by FreeBSD rc scripts.
+- Refactor whole interface management code. Replace PHP code with FreeBSD rc scripts.
 - Add VLAN and LAGG support. 
 
 Minors changes:
