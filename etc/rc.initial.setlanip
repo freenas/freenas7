@@ -106,7 +106,7 @@ if (0 == $result) {
 				exit(0);
 			}
 		} while (!is_ipv6addr($lanip));
-	
+
 		if (isset($config['interfaces']['lan']['ipv6subnet']))
 			$lanbits = $config['interfaces']['lan']['ipv6subnet'];
 		else
@@ -117,7 +117,7 @@ if (0 == $result) {
 				exit(0);
 			}
 		} while (filter_var($lanbits, FILTER_VALIDATE_INT, array('options' => array('min_range' => 1, 'max_range' => 128))) == false);
-	
+
 		$gatewayip = $config['interfaces']['lan']['gateway'];
 		do {
 			$result = tui_display_input("Enter IPv6 default gateway.", 35, 8, $gatewayip);
@@ -128,7 +128,7 @@ if (0 == $result) {
 					break;
 			}
 		} while (!is_ipv6addr($gatewayip));
-	
+
 		$dnsserverip = implode(" ", $config['system']['ipv6dnsserver']);
 		do {
 			$result = tui_display_input("Enter DNS IPv6 address.", 35, 8, $dnsserverip);
@@ -182,19 +182,20 @@ if ("auto" === $config['interfaces']['lan']['ipv6addr'])
 else
   $laninfov6 = "$lanipv6/{$config['interfaces']['lan']['ipv6subnet']}";
 
-echo <<<EOD
-
-
-The LAN IP address has been set to:
-- IPv4: $laninfov4
-- IPv6: $laninfov6
-
-You can now access the WebGUI using the following URL:
-
-{$config['system']['webgui']['protocol']}://$lanipv4
-{$config['system']['webgui']['protocol']}://[$lanipv6]
-
-EOD;
+write_console("\n\n");
+write_console("The LAN IP address has been set to:\n");
+//write_console("\n");
+write_console("IPv4: {$laninfov4}\n");
+if (isset($config['interfaces']['lan']['ipv6_enable'])) {
+	write_console("IPv6: {$laninfov6}\n");
+}
+write_console("\n");
+write_console("You can access the WebGUI using the following URL:\n");
+//write_console("\n");
+write_console("{$config['system']['webgui']['protocol']}://{$lanipv4}\n");
+if (isset($config['interfaces']['lan']['ipv6_enable'])) {
+	write_console("{$config['system']['webgui']['protocol']}://[{$lanipv6}]\n");
+}
 
 tui_wait_keypress();
 ?>
