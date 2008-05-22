@@ -1277,9 +1277,6 @@ function get_ipaddr($if)
     }
   }
 
-  if (strcmp($ipaddr,"") == 0)
-    write_console("Failed to get IP address for interface {$if}. ");
-
   return $ipaddr;
 }
 
@@ -1304,9 +1301,6 @@ function get_ipv6addr($if)
     }
   }
 
-  if (strcmp($ipaddr,"") == 0)
-    write_console("Failed to get IPv6 address for interface {$if}. ");
-
   return $ipaddr;
 }
 
@@ -1327,10 +1321,6 @@ function get_macaddr($if)
       $macaddr = chop($alink[3]);
       break;
     }
-  }
-
-  if (strcmp($macaddr,"") == 0) {
-    write_console("Failed to get MAC address for interface {$if}. ");
   }
 
   return $macaddr;
