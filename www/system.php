@@ -141,6 +141,7 @@ if ($_POST) {
 		unset($config['system']['dnsserver']);
 		// Only store IPv4 DNS servers when using static IPv4.
 		if ("dhcp" !== $config['interfaces']['lan']['ipaddr']) {
+			unset($config['system']['dnsserver']);
 			if ($_POST['dns1'])
 				$config['system']['dnsserver'][] = $_POST['dns1'];
 			if ($_POST['dns2'])
@@ -148,6 +149,7 @@ if ($_POST) {
 		}
 		// Only store IPv6 DNS servers when using static IPv6.
 		if ("auto" !== $config['interfaces']['lan']['ipv6addr']) {
+			unset($config['system']['ipv6dnsserver']);
 			if ($_POST['ipv6dns1'])
 				$config['system']['ipv6dnsserver'][] = $_POST['ipv6dns1'];
 			if ($_POST['ipv6dns2'])
@@ -265,18 +267,18 @@ function webguiproto_change() {
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("IPv4 DNS servers");?></td>
 			      <td width="78%" class="vtable">
-							<?php $dns_ctrl_disabled = ("dhcp" == $config['interfaces']['lan']['ipaddr']) ? "disabled" : "";?>
-							<input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>" <?=$dns_ctrl_disabled;?>><br>
-							<input name="dns2" type="text" class="formfld" id="dns2" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>" <?=$dns_ctrl_disabled;?>><br>
+							<?php $readonly = ("dhcp" == $config['interfaces']['lan']['ipaddr']) ? "readonly" : "";?>
+							<input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>" <?=$readonly;?>><br>
+							<input name="dns2" type="text" class="formfld" id="dns2" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>" <?=$readonly;?>><br>
 							<span class="vexpl"><?=gettext("IPv4 addresses");?><br>
 			      </td>
 			    </tr>
 				  <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("IPv6 DNS servers");?></td>
 			      <td width="78%" class="vtable">
-							<?php $dns_ctrl_disabled = ("auto" == $config['interfaces']['lan']['ipv6addr']) ? "disabled" : "";?>
-							<input name="ipv6dns1" type="text" class="formfld" id="ipv6dns1" size="20" value="<?=htmlspecialchars($pconfig['ipv6dns1']);?>" <?=$dns_ctrl_disabled;?>><br>
-							<input name="ipv6dns2" type="text" class="formfld" id="ipv6dns2" size="20" value="<?=htmlspecialchars($pconfig['ipv6dns2']);?>" <?=$dns_ctrl_disabled;?>><br>
+							<?php $readonly = (!isset($config['interfaces']['lan']['ipv6_enable']) || ("auto" === $config['interfaces']['lan']['ipv6addr'])) ? "readonly" : "";?>
+							<input name="ipv6dns1" type="text" class="formfld" id="ipv6dns1" size="20" value="<?=htmlspecialchars($pconfig['ipv6dns1']);?>" <?=$readonly;?>><br>
+							<input name="ipv6dns2" type="text" class="formfld" id="ipv6dns2" size="20" value="<?=htmlspecialchars($pconfig['ipv6dns2']);?>" <?=$readonly;?>><br>
 							<span class="vexpl"><?=gettext("IPv6 addresses");?><br>
 			      </td>
 			    </tr>
