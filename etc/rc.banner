@@ -59,7 +59,15 @@
     Visit http://www.{$producturl} for updates.
 
     LAN IPv4 address: {$ipaddr}
+
+EOD;
+	if (isset($config['interfaces']['lan']['ipv6_enable'])) {
+		echo <<<EOD
     LAN IPv6 address: {$ipv6addr}
+
+EOD;
+	}
+echo <<<EOD
 
     Port configuration:
 
