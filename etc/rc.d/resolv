@@ -24,7 +24,7 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $FreeBSD: /repoman/r/ncvs/src/etc/rc.d/resolv,v 1.37 2007/06/02 05:24:39 dougb Exp $
+# $FreeBSD: src/etc/rc.d/resolv,v 1.35.2.3 2008/01/29 00:33:16 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #
@@ -37,8 +37,9 @@
 . /etc/configxml.subr
 
 name="resolv"
+stop_cmd=':'
 
-load_rc_config ${name}
+load_rc_config $name
 
 # if the info is available via dhcp/kenv
 # build the resolv.conf
@@ -66,8 +67,10 @@ else
 			-m "//system/dnsserver" \
 				-i "string-length() > 0" -o "nameserver " -v "." -n -b \
 			-b \
-			-m "//system/ipv6dnsserver" \
-				-i "string-length() > 0" -o "nameserver " -v "." -n -b \
+			-i "count(//interfaces/*[enable]/ipv6_enable) > 0" \
+				-m "//system/ipv6dnsserver" \
+					-i "string-length() > 0" -o "nameserver " -v "." -n -b \
+				-b \
 			-b \
 			${configxml_file} | /usr/local/bin/xml unesc > /etc/resolv.conf
 	fi
