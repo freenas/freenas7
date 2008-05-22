@@ -1352,6 +1352,14 @@ function config_upgrade() {
 		$config['version'] = "5.0";
 	}
 
+	/* Convert 5.0 -> 5.1 */
+	/* Add //interfaces/lan/enable. */
+	if ($config['version'] === "5.0") {
+		$config['interfaces']['lan']['enable'] = true;
+
+		$config['version'] = "5.1";
+	}
+
 	write_config();
 
 	if (is_booting())

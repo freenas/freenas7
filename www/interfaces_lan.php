@@ -46,6 +46,8 @@ if (strcmp($lancfg['ipaddr'],"dhcp") == 0) {
 	$pconfig['subnet'] = $lancfg['subnet'];
 }
 
+$pconfig['ipv6_enable'] = isset($lancfg['ipv6_enable']);
+
 if (strcmp($lancfg['ipv6addr'],"auto") == 0) {
 	$pconfig['ipv6type'] = "Auto";
 	$pconfig['ipv6addr'] = get_ipv6addr($lancfg['if']);
@@ -121,6 +123,8 @@ if ($_POST) {
 			$lancfg['ipaddr'] = "dhcp";
 		}
 
+		$lancfg['ipv6_enable'] = $_POST['ipv6_enable'] ? true : false;
+
 		if(strcmp($_POST['ipv6type'],"Static") == 0) {
 			$lancfg['ipv6addr'] = $_POST['ipv6addr'];
 			$lancfg['ipv6subnet'] = $_POST['ipv6subnet'];
@@ -143,6 +147,24 @@ if ($_POST) {
 <?php include("fbegin.inc");?>
 <script language="JavaScript">
 <!--
+function enable_change(enable_change) {
+	var endis = !(document.iform.ipv6_enable.checked || enable_change);
+
+	if (enable_change.name == "ipv6_enable") {
+		endis = !enable_change.checked;
+
+		document.iform.ipv6type.disabled = endis;
+		document.iform.ipv6addr.disabled = endis;
+		document.iform.ipv6subnet.disabled = endis;
+		document.iform.ipv6gateway.disabled = endis;
+	} else {
+		document.iform.ipv6type.disabled = endis;
+		document.iform.ipv6addr.disabled = endis;
+		document.iform.ipv6subnet.disabled = endis;
+		document.iform.ipv6gateway.disabled = endis;
+	}
+}
+
 /* Calculate default IPv4 netmask bits for network's class. */
 function calc_netmask_bits(ipaddr) {
     if (ipaddr.search(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) != -1) {
@@ -236,7 +258,7 @@ function media_change() {
 					</tr>
 					<?php html_inputbox("gateway", gettext("Gateway"), $pconfig['gateway'], gettext(""), true, 20);?>
 					<?php html_separator();?>
-					<?php html_titleline(gettext("IPv6 Configuration"));?>
+					<?php html_titleline_checkbox("ipv6_enable", gettext("IPv6 Configuration"), $pconfig['ipv6_enable'] ? true : false, gettext("Activate"), "enable_change(this)");?>
 					<?php html_combobox("ipv6type", gettext("Type"), $pconfig['ipv6type'], array("Static" => "Static", "Auto" => "Auto"), gettext(""), true, false, "ipv6_type_change()");?>
 					<tr>
 					  <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address");?></td>
@@ -261,7 +283,7 @@ function media_change() {
 					<tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)">
 			      </td>
 			    </tr>
 			    <tr>
@@ -280,6 +302,7 @@ function media_change() {
 type_change();
 ipv6_type_change();
 media_change();
+enable_change(false);
 //-->
 </script>
 <?php include("fend.inc");?>

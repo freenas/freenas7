@@ -51,6 +51,9 @@ if ($config['interfaces']['opt' . $index]['ipaddr'] == "dhcp") {
 	$pconfig['ipaddr'] = $optcfg['ipaddr'];
   $pconfig['subnet'] = $optcfg['subnet'];
 }
+
+$pconfig['ipv6_enable'] = isset($optcfg['ipv6_enable']);
+
 if ($config['interfaces']['opt' . $index]['ipv6addr'] == "auto") {
 	$pconfig['ipv6type'] = "Auto";
 	$pconfig['ipv6addr'] = get_ipv6addr($optcfg['if']);
@@ -132,6 +135,8 @@ if ($_POST) {
 			$optcfg['ipaddr'] = "dhcp";
 		}
 
+		$optcfg['ipv6_enable'] = $_POST['ipv6_enable'] ? true : false;
+
 		if(strcmp($_POST['ipv6type'],"Static") == 0) {
 			$optcfg['ipv6addr'] = $_POST['ipv6addr'];
 			$optcfg['ipv6subnet'] = $_POST['ipv6subnet'];
@@ -157,31 +162,46 @@ $pgtitle = array(gettext("Interfaces"), "Optional $index (" . htmlspecialchars($
 <?php include("fbegin.inc"); ?>
 <script language="JavaScript">
 <!--
-function enable_change(enable_over) {
-	var endis = !(document.iform.enable.checked || enable_over);
-	
-	document.iform.type.disabled = endis;
-	document.iform.ipv6type.disabled = endis;
-	document.iform.descr.disabled = endis;
-	document.iform.mtu.disabled = endis;
-	document.iform.polling.disabled = endis;
-	document.iform.media.disabled = endis;
-	document.iform.mediaopt.disabled = endis;
-	document.iform.extraoptions.disabled = endis;
+function enable_change(enable_change) {
+	var endis = !(document.iform.enable.checked || enable_change);
 
-	if (document.iform.mode) {
-		document.iform.standard.disabled = endis;
-		document.iform.mode.disabled = endis;
-		document.iform.ssid.disabled = endis;
-		document.iform.channel.disabled = endis;
-		document.iform.stationname.disabled = endis;
-		document.iform.wep_enable.disabled = endis;
-		document.iform.key1.disabled = endis;
-		document.iform.key2.disabled = endis;
-		document.iform.key3.disabled = endis;
-		document.iform.key4.disabled = endis;
+	if (enable_change.name == "ipv6_enable") {
+		endis = !enable_change.checked;
+
+		document.iform.ipv6type.disabled = endis;
+		document.iform.ipv6addr.disabled = endis;
+		document.iform.ipv6subnet.disabled = endis;
+	} else {
+		document.iform.type.disabled = endis;
+		document.iform.descr.disabled = endis;
+		document.iform.mtu.disabled = endis;
+		document.iform.polling.disabled = endis;
+		document.iform.media.disabled = endis;
+		document.iform.mediaopt.disabled = endis;
+		document.iform.extraoptions.disabled = endis;
+
+		if (document.iform.mode) {
+			document.iform.standard.disabled = endis;
+			document.iform.mode.disabled = endis;
+			document.iform.ssid.disabled = endis;
+			document.iform.channel.disabled = endis;
+			document.iform.stationname.disabled = endis;
+			document.iform.wep_enable.disabled = endis;
+			document.iform.key1.disabled = endis;
+			document.iform.key2.disabled = endis;
+			document.iform.key3.disabled = endis;
+			document.iform.key4.disabled = endis;
+		}
+
+		if (document.iform.enable.checked == true) {
+			endis = !(document.iform.ipv6_enable.checked || enable_change);
+		}
+
+		document.iform.ipv6type.disabled = endis;
+		document.iform.ipv6addr.disabled = endis;
+		document.iform.ipv6subnet.disabled = endis;
 	}
-	
+
 	type_change();
 	ipv6_type_change();
 	media_change();
@@ -313,7 +333,7 @@ function media_change() {
 											  </td>
 											</tr>
 											<?php html_separator();?>
-											<?php html_titleline(gettext("IPv6 Configuration"));?>
+											<?php html_titleline_checkbox("ipv6_enable", gettext("IPv6 Configuration"), $pconfig['ipv6_enable'] ? true : false, gettext("Activate"), "enable_change(this)");?>
 											<?php html_combobox("ipv6type", gettext("Type"), $pconfig['ipv6type'], array("Static" => "Static", "Auto" => "Auto"), gettext(""), true, false, "ipv6_type_change()");?>
 											<tr>
 											  <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address"); ?></td>
