@@ -2,12 +2,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-04-16 14:13+0000\n"
+"PO-Revision-Date: 2008-05-20 00:09+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid ""
+msgstr ""
 
 msgid " interfaces:"
 msgstr ""
@@ -65,6 +68,9 @@ msgstr ""
 msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
 msgstr ""
 
+msgid "802.1Q VLAN tag (between 1 and 4094)."
+msgstr ""
+
 #, php-format
 msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
 msgstr ""
@@ -72,7 +78,14 @@ msgstr ""
 msgid "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
 msgstr ""
 
+#, php-format
+msgid "A VLAN with the tag %s is already defined on this interface."
+msgstr ""
+
 msgid "A directory listing is generated if a directory is requested and no index-file (index.php, index.html, index.htm or default.htm) was found in that directory."
+msgstr ""
+
+msgid "A host name alias. This option can appear multiple times, for each domain that has the same IP. Use a space to separate multiple alias names."
 msgstr ""
 
 msgid "A route to this destination network already exists."
@@ -123,6 +136,9 @@ msgstr ""
 msgid "A valid prefix (1-128) must be specified."
 msgstr ""
 
+msgid "A valid systctl MIB value."
+msgstr ""
+
 msgid "AD authentication disabled"
 msgstr ""
 
@@ -147,9 +163,6 @@ msgstr ""
 msgid "Access mode"
 msgstr ""
 
-msgid "Accessible through 'http://ip_address:port'."
-msgstr ""
-
 msgid "Acoustic level"
 msgstr ""
 
@@ -166,6 +179,9 @@ msgid "Add"
 msgstr ""
 
 msgid "Add Host"
+msgstr ""
+
+msgid "Add MIB"
 msgstr ""
 
 msgid "Add RAID"
@@ -213,6 +229,9 @@ msgstr ""
 msgid "Add module"
 msgstr ""
 
+msgid "Add option"
+msgstr ""
+
 msgid "Add parameter"
 msgstr ""
 
@@ -237,10 +256,16 @@ msgstr ""
 msgid "Administration password"
 msgstr ""
 
+msgid "Administrative WebGUI"
+msgstr ""
+
 msgid "Administrator name"
 msgstr ""
 
 msgid "Advanced"
+msgstr ""
+
+msgid "Advanced Configuration"
 msgstr ""
 
 msgid "Advanced Options"
@@ -260,7 +285,7 @@ msgstr ""
 msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr ""
 
-msgid "Alias host name."
+msgid "Aggregation protocol"
 msgstr ""
 
 msgid "All"
@@ -306,10 +331,16 @@ msgstr ""
 msgid "Always on"
 msgstr ""
 
+msgid "Always scan"
+msgstr ""
+
 msgid "Always use 0 for device number, helps when the device number is not constant across a reboot, cluster, ..."
 msgstr ""
 
 msgid "An host with this name already exists."
+msgstr ""
+
+msgid "An interface with the specified description already exists."
 msgstr ""
 
 msgid "Anonymous users only"
@@ -325,9 +356,6 @@ msgid "Are you sure you want to reboot the system?"
 msgstr ""
 
 msgid "Are you sure you want to shutdown the system?"
-msgstr ""
-
-msgid "Assign network ports"
 msgstr ""
 
 msgid "Associated stations"
@@ -451,9 +479,6 @@ msgstr ""
 msgid "Client"
 msgstr ""
 
-msgid "Client Identifier"
-msgstr ""
-
 msgid "Client sees lowercase, server sees uppercase"
 msgstr ""
 
@@ -517,10 +542,6 @@ msgstr ""
 msgid "Count"
 msgstr ""
 
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr ""
-
 msgid "Create"
 msgstr ""
 
@@ -545,7 +566,10 @@ msgstr ""
 msgid "Cron job"
 msgstr ""
 
-msgid "D-Link DSM320"
+msgid "DAAP"
+msgstr ""
+
+msgid "DAAP Server"
 msgstr ""
 
 msgid "DDP"
@@ -603,6 +627,9 @@ msgstr ""
 msgid "Delete Host"
 msgstr ""
 
+msgid "Delete MIB"
+msgstr ""
+
 msgid "Delete RAID"
 msgstr ""
 
@@ -613,6 +640,12 @@ msgid "Delete Route"
 msgstr ""
 
 msgid "Delete URL"
+msgstr ""
+
+msgid "Delete all MIBs"
+msgstr ""
+
+msgid "Delete all options"
 msgstr ""
 
 msgid "Delete command"
@@ -648,6 +681,9 @@ msgstr ""
 msgid "Delete module"
 msgstr ""
 
+msgid "Delete option"
+msgstr ""
+
 msgid "Delete parameter"
 msgstr ""
 
@@ -672,6 +708,9 @@ msgstr ""
 msgid "Destination email address."
 msgstr ""
 
+msgid "Destination host name or IP number."
+msgstr ""
+
 msgid "Destination network"
 msgstr ""
 
@@ -694,6 +733,9 @@ msgstr ""
 msgid "Device /dev/%s - %s"
 msgstr ""
 
+msgid "Device IP"
+msgstr ""
+
 msgid "Device is mounted, umount it first before detaching."
 msgstr ""
 
@@ -713,9 +755,6 @@ msgid "Diagnostics"
 msgstr ""
 
 msgid "Difference"
-msgstr ""
-
-msgid "Directories to be shared."
 msgstr ""
 
 msgid "Directory"
@@ -776,6 +815,15 @@ msgstr ""
 msgid "Do not set this for CF cards."
 msgstr ""
 
+msgid "Do you really want to delete all MIBs?"
+msgstr ""
+
+msgid "Do you really want to delete all options?"
+msgstr ""
+
+msgid "Do you really want to delete this MIB?"
+msgstr ""
+
 msgid "Do you really want to delete this RSYNC?"
 msgstr ""
 
@@ -812,10 +860,16 @@ msgstr ""
 msgid "Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!"
 msgstr ""
 
+msgid "Do you really want to delete this interface?"
+msgstr ""
+
 msgid "Do you really want to delete this module?"
 msgstr ""
 
 msgid "Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!"
+msgstr ""
+
+msgid "Do you really want to delete this option?"
 msgstr ""
 
 msgid "Do you really want to delete this parameter?"
@@ -917,6 +971,9 @@ msgstr ""
 msgid "Edit Host"
 msgstr ""
 
+msgid "Edit MIB"
+msgstr ""
+
 msgid "Edit RAID"
 msgstr ""
 
@@ -929,7 +986,7 @@ msgstr ""
 msgid "Edit URL"
 msgstr ""
 
-msgid "Edit VLAN"
+msgid "Edit command"
 msgstr ""
 
 msgid "Edit device"
@@ -950,10 +1007,16 @@ msgstr ""
 msgid "Edit initiator"
 msgstr ""
 
+msgid "Edit interface"
+msgstr ""
+
 msgid "Edit job"
 msgstr ""
 
 msgid "Edit module"
+msgstr ""
+
+msgid "Edit option"
 msgstr ""
 
 msgid "Edit parameter"
@@ -992,7 +1055,7 @@ msgstr ""
 msgid "Enable SMTP authentication."
 msgstr ""
 
-msgid "Enable Zeroconf"
+msgid "Enable Zeroconf/Bonjour to advertise services of this device"
 msgstr ""
 
 msgid "Enable authentication."
@@ -1005,6 +1068,9 @@ msgid "Enable device polling"
 msgstr ""
 
 msgid "Enable directory listing."
+msgstr ""
+
+msgid "Enable domain wildcarding."
 msgstr ""
 
 msgid "Enable extended attribute support"
@@ -1080,13 +1146,10 @@ msgstr ""
 msgid "Enforce TLS"
 msgstr ""
 
-msgid "Enter a custom port number for the HTTP server if you want to override the default (49152). Only dynamic or private ports can be used (from 49152 through 65535)."
-msgstr ""
-
 msgid "Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
 
-msgid "Enter a description (name) for the interface here."
+msgid "Enter a valid sysctl MIB name."
 msgstr ""
 
 msgid "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select it."
@@ -1135,6 +1198,15 @@ msgstr ""
 msgid "Extents must be defined before they can be used, and extents cannot be used more than once."
 msgstr ""
 
+msgid "Extra options"
+msgstr ""
+
+msgid "Extra options to ifconfig (usually empty)."
+msgstr ""
+
+msgid "FEC (Fast EtherChannel)"
+msgstr ""
+
 msgid "FTP"
 msgstr ""
 
@@ -1175,6 +1247,9 @@ msgid "Failed to upload metadata backup file."
 msgstr ""
 
 msgid "Failed."
+msgstr ""
+
+msgid "Failover"
 msgstr ""
 
 msgid "File"
@@ -1253,7 +1328,7 @@ msgstr ""
 msgid "Gateway"
 msgstr ""
 
-msgid "Gateway to be used to reach the destination network"
+msgid "Gateway to be used to reach the destination network."
 msgstr ""
 
 msgid "General"
@@ -1269,9 +1344,6 @@ msgid "Give full shell access to user."
 msgstr ""
 
 msgid "Give only local users access to the web page."
-msgstr ""
-
-msgid "Global Configuration"
 msgstr ""
 
 msgid "Graph"
@@ -1310,19 +1382,10 @@ msgstr ""
 msgid "Guest account"
 msgstr ""
 
-msgid "HTTP"
-msgstr ""
-
 msgid "HTTP Proxy"
 msgstr ""
 
-msgid "HTTPS"
-msgstr ""
-
 msgid "Hard disk standby time"
-msgstr ""
-
-msgid "Helios X3000"
 msgstr ""
 
 msgid "Help Needed!"
@@ -1380,14 +1443,14 @@ msgstr ""
 msgid "IP address"
 msgstr ""
 
-msgid "IP address of remote RSYNC server"
-msgstr ""
-
 msgid "IP address of remote syslog server"
 msgstr ""
 
 #, php-format
-msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
+msgid "IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP addresses to hostnames&quot;</a> is enabled."
+msgstr ""
+
+msgid "IP or FQDN address of remote RSYNC server."
 msgstr ""
 
 msgid "IP type mismatch for network and gateway."
@@ -1397,12 +1460,6 @@ msgid "IPv4 Configuration"
 msgstr ""
 
 msgid "IPv4 DNS servers"
-msgstr ""
-
-msgid "IPv4 Gateway"
-msgstr ""
-
-msgid "IPv4 address"
 msgstr ""
 
 msgid "IPv4 addresses"
@@ -1530,6 +1587,12 @@ msgstr ""
 msgid "Kill encrypted volume"
 msgstr ""
 
+msgid "LACP (Link Aggregation Control Protocol)"
+msgstr ""
+
+msgid "LAGG"
+msgstr ""
+
 msgid "LAN"
 msgstr ""
 
@@ -1568,6 +1631,9 @@ msgstr ""
 msgid "License"
 msgstr ""
 
+msgid "Link Aggregation and Failover"
+msgstr ""
+
 msgid "List"
 msgstr ""
 
@@ -1598,6 +1664,9 @@ msgstr ""
 msgid "Load averages"
 msgstr ""
 
+msgid "Loadbalance"
+msgstr ""
+
 msgid "Local"
 msgstr ""
 
@@ -1622,7 +1691,10 @@ msgstr ""
 msgid "Location information, e.g. physical location of this system: 'Floor of building, Room xyz'."
 msgstr ""
 
-msgid "Location where the content database file will be stored. The bookmark file will also be generated in that directory."
+msgid "Location of the files to share."
+msgstr ""
+
+msgid "Location where the content database file will be stored."
 msgstr ""
 
 msgid "Log Level"
@@ -1641,6 +1713,9 @@ msgid "Lowercases names in both directions"
 msgstr ""
 
 msgid "MAC address"
+msgstr ""
+
+msgid "MIB"
 msgstr ""
 
 msgid "MISSING"
@@ -1677,7 +1752,13 @@ msgstr ""
 msgid "Map to user"
 msgstr ""
 
+msgid "Max. TTL"
+msgstr ""
+
 msgid "Max. conn. per IP"
+msgstr ""
+
+msgid "Max. time-to-live (max. number of hops) used in outgoing probe packets."
 msgstr ""
 
 msgid "Maximum connections"
@@ -1687,9 +1768,6 @@ msgid "Maximum idle time in minutes."
 msgstr ""
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
-msgstr ""
-
-msgid "Maximum number of hops"
 msgstr ""
 
 msgid "Maximum number of simultaneous clients."
@@ -1813,6 +1891,9 @@ msgstr ""
 msgid "Name of the server. If this field is left empty the default server is specified."
 msgstr ""
 
+msgid "Name of the variable."
+msgstr ""
+
 msgid "Navigation"
 msgstr ""
 
@@ -1856,6 +1937,12 @@ msgid "No supported wireless interfaces were found for status display (only card
 msgstr ""
 
 msgid "Noise"
+msgstr ""
+
+msgid "None"
+msgstr ""
+
+msgid "Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do not explicitly support it, VLAN tagging will still work, but the reduced MTU may cause problems."
 msgstr ""
 
 msgid "Not attached"
@@ -1920,6 +2007,9 @@ msgstr ""
 
 #, php-format
 msgid "Open a %s configuration XML file and click the button below to restore the configuration."
+msgstr ""
+
+msgid "Option"
 msgstr ""
 
 #, php-format
@@ -1998,6 +2088,9 @@ msgstr ""
 msgid "Password for DN"
 msgstr ""
 
+msgid "Password for the administrative pages."
+msgstr ""
+
 msgid "Password of domain administrator account."
 msgstr ""
 
@@ -2028,10 +2121,10 @@ msgstr ""
 msgid "Permit to do SSH Tunneling."
 msgstr ""
 
-msgid "Ping"
+msgid "Physical interface"
 msgstr ""
 
-msgid "Ping output"
+msgid "Ping"
 msgstr ""
 
 msgid "Ping winbindd to see if it is alive:"
@@ -2056,6 +2149,16 @@ msgid "Port "
 msgstr ""
 
 msgid "Port is already used by WebGUI."
+msgstr ""
+
+msgid "Port to listen on. Default iTunes port is 3689."
+msgstr ""
+
+#, php-format
+msgid "Port to listen on. Only dynamic or private ports can be used (from %d through %d). Default port is %d."
+msgstr ""
+
+msgid "Ports"
 msgstr ""
 
 msgid "PostInit"
@@ -2226,6 +2329,12 @@ msgstr ""
 msgid "Reports"
 msgstr ""
 
+msgid "Rescan interval"
+msgstr ""
+
+msgid "Resolve"
+msgstr ""
+
 msgid "Resolve IP addresses to hostnames"
 msgstr ""
 
@@ -2239,6 +2348,9 @@ msgid "Results for net rpc testjoin:"
 msgstr ""
 
 msgid "Retry"
+msgstr ""
+
+msgid "Roundrobin"
 msgstr ""
 
 msgid "Routes"
@@ -2296,6 +2408,12 @@ msgid "Save and Restart"
 msgstr ""
 
 msgid "Saved file to"
+msgstr ""
+
+msgid "Scan file system every N seconds to see if any files have been added or removed. Set to 0 to disable background scanning. If background rescanning is disabled, a scan can still be forced from the status page of the administrative web interface."
+msgstr ""
+
+msgid "Scan type"
 msgstr ""
 
 msgid "Schedule time"
@@ -2364,6 +2482,9 @@ msgstr ""
 msgid "Server description. This can usually be left blank."
 msgstr ""
 
+msgid "Server name"
+msgstr ""
+
 msgid "Services"
 msgstr ""
 
@@ -2380,6 +2501,9 @@ msgid "Set share password."
 msgstr ""
 
 msgid "Set the account's primary group to the given group."
+msgstr ""
+
+msgid "Set the maximum transmission unit of the interface to n, default is interface specific. The MTU is used to limit the size of packets that are transmitted on an interface. Not all interfaces support setting the MTU, and some interfaces have range restrictions."
 msgstr ""
 
 msgid "Sets the database information to be stored in path. You have to specifiy a writable location, even if the volume is read only."
@@ -2460,9 +2584,6 @@ msgstr ""
 msgid "Software RAID information and status"
 msgstr ""
 
-msgid "Sony Playstation 3"
-msgstr ""
-
 msgid "Source directory to be synchronized."
 msgstr ""
 
@@ -2493,12 +2614,6 @@ msgstr ""
 msgid "Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation."
 msgstr ""
 
-msgid "Speed"
-msgstr ""
-
-msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-msgstr ""
-
 msgid "Standby - Check the device unless it is in SLEEP or STANDBY mode. In these modes most disks are not spinning, so if you want to prevent a laptop disk from spinning up each poll, this is probably what you want."
 msgstr ""
 
@@ -2515,6 +2630,9 @@ msgid "Status"
 msgstr ""
 
 msgid "Status report successfully sent."
+msgstr ""
+
+msgid "Stop after sending (and receiving) N packets."
 msgstr ""
 
 msgid "Stopped"
@@ -2574,6 +2692,10 @@ msgstr ""
 msgid "Switch to"
 msgstr ""
 
+#, php-format
+msgid "Switch to %s/s"
+msgstr ""
+
 msgid "Synchronization Time"
 msgstr ""
 
@@ -2603,6 +2725,9 @@ msgid "System message buffer"
 msgstr ""
 
 msgid "System time"
+msgstr ""
+
+msgid "System tuning"
 msgstr ""
 
 msgid "TCP forwarding"
@@ -2635,9 +2760,6 @@ msgstr ""
 msgid "Target name"
 msgstr ""
 
-msgid "Telegent TG100"
-msgstr ""
-
 msgid "Temperature"
 msgstr ""
 
@@ -2654,23 +2776,16 @@ msgstr ""
 msgid "The IP address that this hostname represents."
 msgstr ""
 
-msgid "The LAN configuration has been changed.<br>You must apply the changes in order for them to take effect."
+#, php-format
+msgid "The MIB '%s' already exist."
 msgstr ""
 
-msgid "The NFS export list has been changed.<br>You must apply the changes in order for them to take effect."
+#, php-format
+msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr ""
 
 #, php-format
 msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
-msgstr ""
-
-msgid "The RSYNC client list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr ""
-
-msgid "The RSYNC local list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr ""
-
-msgid "The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
 msgid "The TCP idle timeout must be an integer."
@@ -2679,7 +2794,7 @@ msgstr ""
 msgid "The TCP port must be a valid port number."
 msgstr ""
 
-msgid "The User list has been changed.<br>You must apply the changes in order for them to take effect."
+msgid "The VLAN ID must be between 1 and 4094."
 msgstr ""
 
 #, c-format
@@ -2764,6 +2879,9 @@ msgstr ""
 msgid "The combination of share and working directory does not exist."
 msgstr ""
 
+msgid "The command to be executed."
+msgstr ""
+
 msgid "The configuration could not be restored (file upload error)."
 msgstr ""
 
@@ -2773,9 +2891,6 @@ msgstr ""
 msgid "The configuration has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
-msgid "The configuration has been modified.<br>You must apply the changes in order for them to take effect."
-msgstr ""
-
 #, php-format
 msgid "The configuration has been restored. %s is now rebooting."
 msgstr ""
@@ -2783,13 +2898,7 @@ msgstr ""
 msgid "The confimed password does not match. Please ensure the passwords match exactly."
 msgstr ""
 
-msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr ""
-
 msgid "The credentials to bind with, enter it here twice."
-msgstr ""
-
-msgid "The cron job list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
@@ -2798,14 +2907,11 @@ msgstr ""
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr ""
 
+msgid "The device's IP address."
+msgstr ""
+
 #, php-format
 msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
-msgstr ""
-
-msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr ""
-
-msgid "The encrypted volume list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
 #, php-format
@@ -2824,19 +2930,10 @@ msgstr ""
 msgid "The group name contains invalid characters."
 msgstr ""
 
-msgid "The host list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr ""
-
 msgid "The host name contain invalid characters."
 msgstr ""
 
 msgid "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and ."
-msgstr ""
-
-msgid "The iSCSI disk list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr ""
-
-msgid "The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
 msgid "The image file is corrupt"
@@ -2860,19 +2957,10 @@ msgstr ""
 msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
 msgstr ""
 
-msgid "The modules has been modified.<br>You must apply the changes in order for them to take effect."
-msgstr ""
-
-msgid "The mount point list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr ""
-
 msgid "The number of clients must be between 1 and 50."
 msgstr ""
 
 msgid "The old password is not correct."
-msgstr ""
-
-msgid "The package list has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
 msgid "The password contains the illegal character ':'."
@@ -2885,12 +2973,6 @@ msgid "The permissions on new files and directories are normally governed by cre
 msgstr ""
 
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
-msgstr ""
-
-msgid "The shares has been modified.<br>You must apply the changes in order for them to take effect."
-msgstr ""
-
-msgid "The static route configuration has been changed.<br>You must apply the changes in order for them to take effect."
 msgstr ""
 
 msgid "The subject of the email."
@@ -2923,10 +3005,7 @@ msgstr ""
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr ""
 
-msgid "The value in this field is sent as the DHCP client identifier when requesting a DHCP lease."
-msgstr ""
-
-msgid "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
+msgid "The value of the variable."
 msgstr ""
 
 msgid "The volume must be detached before it can be deleted."
@@ -2947,13 +3026,28 @@ msgstr ""
 msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr ""
 
+msgid "There must be selected a minimum of 1 interface."
+msgstr ""
+
 msgid "There should be enough to handle the maximum level of concurrency from its clients, typically four to six."
+msgstr ""
+
+msgid "These MIBs will be added to /etc/sysctl.conf. This allow you to make changes to a running system."
 msgstr ""
 
 msgid "These commands will be executed pre or post system initialization (booting) or before system shutdown."
 msgstr ""
 
+msgid "These option(s) will be added to /etc/rc.conf. This allow you to overwrite options used by various generic startup scripts."
+msgstr ""
+
+msgid "This LAGG cannot be deleted because it is still being used as an interface."
+msgstr ""
+
 msgid "This URL is already configured."
+msgstr ""
+
+msgid "This VLAN cannot be deleted because it is still being used as an interface."
 msgstr ""
 
 msgid "This allows you to lower the power consumption of the drive, at the expense of performance."
@@ -3002,6 +3096,9 @@ msgid "This forces filenames to be restricted to the character set used by Windo
 msgstr ""
 
 msgid "This group already exists in the group list."
+msgstr ""
+
+msgid "This is both the name of the server as advertised via Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
 msgstr ""
 
 msgid "This is for information only (not using during iSCSI negociation)."
@@ -3106,9 +3203,6 @@ msgstr ""
 msgid "Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
 msgstr ""
 
-msgid "Traceroute output"
-msgstr ""
-
 msgid "Traffic graph"
 msgstr ""
 
@@ -3210,6 +3304,9 @@ msgstr ""
 msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
 msgstr ""
 
+msgid "Use the following IP address as the source address in outgoing packets."
+msgstr ""
+
 msgid "Use the new 64k streaming read and write varient SMB requests introduced with Windows 2000."
 msgstr ""
 
@@ -3261,13 +3358,25 @@ msgstr ""
 msgid "Users and Groups"
 msgstr ""
 
+msgid "VLAN"
+msgstr ""
+
 msgid "VLAN tag"
+msgstr ""
+
+msgid "Value"
+msgstr ""
+
+msgid "Variable"
 msgstr ""
 
 msgid "Version"
 msgstr ""
 
 msgid "View license"
+msgstr ""
+
+msgid "Virtual interface"
 msgstr ""
 
 msgid "Volume Name"
@@ -3295,9 +3404,6 @@ msgstr ""
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr ""
 
-msgid "Web user interface"
-msgstr ""
-
 msgid "WebGUI"
 msgstr ""
 
@@ -3307,7 +3413,13 @@ msgstr ""
 msgid "Where the working files will be stored"
 msgstr ""
 
+msgid "Whether scans should be skipped if there are no users connected. This allows the drive to spin down when no users are connected."
+msgstr ""
+
 msgid "Who"
+msgstr ""
+
+msgid "Wildcard"
 msgstr ""
 
 msgid "Wireless"
@@ -3338,14 +3450,15 @@ msgstr ""
 msgid "You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"
 msgstr ""
 
+#, php-format
+msgid "You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this service to clients."
+msgstr ""
+
 msgid "You have to define some 'Extent' objects first."
 msgstr ""
 
 #, c-format
 msgid "You have to select at least one item for '%s'."
-msgstr ""
-
-msgid "You may enter a description here for your reference (not parsed)."
 msgstr ""
 
 msgid "You may enter a description here for your reference."
@@ -3378,10 +3491,7 @@ msgstr ""
 msgid "Your own email address."
 msgstr ""
 
-msgid "Zeroconf"
-msgstr ""
-
-msgid "ZyXEL DMA-1000"
+msgid "Zeroconf/Bonjour"
 msgstr ""
 
 msgid "add mount"
@@ -3409,9 +3519,6 @@ msgid "dbpath"
 msgstr ""
 
 msgid "delete mount"
-msgstr ""
-
-msgid "desc"
 msgstr ""
 
 #, php-format
@@ -3475,6 +3582,9 @@ msgstr ""
 msgid "prodos"
 msgstr ""
 
+msgid "rc.conf"
+msgstr ""
+
 msgid "rotated block-interleaved parity"
 msgstr ""
 
@@ -3482,6 +3592,9 @@ msgid "seconds"
 msgstr ""
 
 msgid "striping"
+msgstr ""
+
+msgid "sysctl.conf"
 msgstr ""
 
 msgid "type"
