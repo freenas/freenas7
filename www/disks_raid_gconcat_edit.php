@@ -154,37 +154,8 @@ if ($_POST) {
 			      <?=gettext("JBOD"); ?>
 			      </td>
 			    </tr>
-			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Members of this volume");?></td>
-			      <td width="78%" class="vtable">
-			      <?php if (isset($id)) {
-			      	foreach ($pconfig['device'] as $devicek => $devicev) {
-			      		foreach ($a_disk as $diskv) {
-			      			if ($diskv['devicespecialfile'] === $devicev) {
-			      				echo "<input name='device[]' id='{$devicek}' type='checkbox' value='{$diskv[devicespecialfile]}' checked disabled>{$diskv[name]} ({$diskv[size]}, {$diskv[desc]})<br>\n";
-			      				break;
-									}
-			      		}
-							}
-						} else {
-			        $i = 0;
-			        foreach ($a_disk as $diskv) {
-			        	$display = true;
-			        	foreach($all_raid as $raid) {
-			            if (in_array($diskv['devicespecialfile'], (array)$raid['device'])) {
-			              $display = false;
-			              break;
-			            }
-			          }
-			          if (true !== $display)
-			          	continue;
-			          echo "<input name='device[]' id='$i' type='checkbox' value='$diskv[devicespecialfile]'" . ((is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))?" checked":"") . ">$diskv[name] ($diskv[size], $diskv[desc])<br>\n";
-			          $i++;
-			        }
-			        if (0 == $i) echo "&nbsp;";
-			      }?>
-						</td>
-			    </tr>
+			    <?php $a_provider = array(); foreach ($a_disk as $diskv) { if (isset($id) && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if (!isset($id) && false !== array_search_ex($diskv['devicespecialfile'], $all_raid, "device")) { continue; } $a_provider[$diskv[devicespecialfile]] = htmlspecialchars("$diskv[name] ($diskv[size], $diskv[desc])"); }?>
+			    <?php html_listbox("device", gettext("Provider"), $pconfig['device'], $a_provider, gettext(""), true, isset($id));?>
 			    <?php if (!isset($id)):?>
 			    <tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Initialize");?></td>
