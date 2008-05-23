@@ -55,7 +55,7 @@ Majors changes:
 - Upgrade inadyn-mt to 02.12.04.
 - Use SAJAX to update misc WebGUI pages every 5 seconds to display current states
   (e.g. 'Status/System', 'Status/Processes' or 'Disks/Format').
-- Refactor complete S.M.A.R.T. WebGUI + services.
+- Refactor complete S.M.A.R.T. WebGUI + services. It is possible to receive warning emails on failure.
 - Refactor diagnostics WebGUI.
 - Refactor ActiveDirectory WebGUI + services.
 - Add ability to Webserver WebGUI to configure URL's requiring authentication.

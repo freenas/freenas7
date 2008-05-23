@@ -642,6 +642,11 @@
 			<info>0</info>
 			<crit>0</crit>
 		</temp>
+		<email>
+			<!-- <enable/> -->
+			<to></to>
+			<subject>S.M.A.R.T. report</subject>
+		</email>
 	</smartd>
 	<ad>
 		<!-- <enable/> -->

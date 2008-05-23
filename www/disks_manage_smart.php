@@ -8,21 +8,21 @@
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
-	
+
 	Based on m0n0wall (http://m0n0.ch/wall)
 	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
-	
+
 	Redistribution and use in source and binary forms, with or without
 	modification, are permitted provided that the following conditions are met:
-	
+
 	1. Redistributions of source code must retain the above copyright notice,
 	   this list of conditions and the following disclaimer.
-	
+
 	2. Redistributions in binary form must reproduce the above copyright
 	   notice, this list of conditions and the following disclaimer in the
 	   documentation and/or other materials provided with the distribution.
-	
+
 	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
 	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
 	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
@@ -50,6 +50,9 @@ $pconfig['powermode'] = $config['smartd']['powermode'];
 $pconfig['temp_diff'] = $config['smartd']['temp']['diff'];
 $pconfig['temp_info'] = $config['smartd']['temp']['info'];
 $pconfig['temp_crit'] = $config['smartd']['temp']['crit'];
+$pconfig['email_enable'] = isset($config['smartd']['email']['enable']);
+$pconfig['email_to'] = $config['smartd']['email']['to'];
+$pconfig['email_subject'] = $config['smartd']['email']['subject'];
 
 if ($_POST) {
 	unset($input_errors);
@@ -73,6 +76,9 @@ if ($_POST) {
 		$config['smartd']['temp']['diff'] = $_POST['temp_diff'];
 		$config['smartd']['temp']['info'] = $_POST['temp_info'];
 		$config['smartd']['temp']['crit'] = $_POST['temp_crit'];
+		$config['smartd']['email']['enable'] = $_POST['email_enable'] ? true : false;
+		$config['smartd']['email']['to'] = $_POST['email_to'];
+		$config['smartd']['email']['subject'] = $_POST['email_subject'];
 
 		write_config();
 
@@ -109,11 +115,27 @@ if ($_GET['act'] == "del") {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.enable.checked || enable_change);
-	document.iform.interval.disabled = endis;
-	document.iform.powermode.disabled = endis;
-	document.iform.temp_diff.disabled = endis;
-	document.iform.temp_info.disabled = endis;
-	document.iform.temp_crit.disabled = endis;
+
+	if (enable_change.name == "email_enable") {
+		endis = !enable_change.checked;
+
+		document.iform.email_to.disabled = endis;
+		document.iform.email_subject.disabled = endis;
+	} else {
+		document.iform.interval.disabled = endis;
+		document.iform.powermode.disabled = endis;
+		document.iform.temp_diff.disabled = endis;
+		document.iform.temp_info.disabled = endis;
+		document.iform.temp_crit.disabled = endis;
+		document.iform.email_enable.disabled = endis;
+
+		if (document.iform.enable.checked == true) {
+			endis = !(document.iform.email_enable.checked || enable_change);
+		}
+
+		document.iform.email_to.disabled = endis;
+		document.iform.email_subject.disabled = endis;
+	}
 }
 //-->
 </script>
@@ -127,32 +149,15 @@ function enable_change(enable_change) {
       </ul>
     </td>
   </tr>
-  <tr> 
+  <tr>
     <td class="tabcont">
       <form action="disks_manage_smart.php" method="post" name="iform" id="iform">
       	<?php if ($input_errors) print_input_errors($input_errors);?>
         <?php if ($savemsg) print_info_box($savemsg);?>
         <?php if (file_exists($d_smartconfdirty_path)) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="6" cellspacing="0">
-        	<tr>
-				    <td colspan="2" valign="top" class="optsect_t">
-							<table border="0" cellspacing="0" cellpadding="0" width="100%">
-								<tr>
-									<td class="optsect_s"><strong><?=gettext("Self-Monitoring, Analysis and Reporting Technology");?></strong></td>
-									<td align="right" class="optsect_s">
-										<input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"><strong><?=gettext("Enable");?></strong>
-									</td>
-								</tr>
-							</table>
-						</td>
-				  </tr>
-				  <tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Check interval");?></td>
-						<td width="78%" class="vtable">
-							<input name="interval" type="text" class="formfld" id="interval" size="5" value="<?=htmlspecialchars($pconfig['interval']);?>"><br/>
-							<span class="vexpl"><?=gettext("Sets the interval between disk checks to N seconds. The minimum allowed value is 10.");?></span>
-						</td>
-					</tr>
+					<?php html_titleline_checkbox("enable", gettext("Self-Monitoring, Analysis and Reporting Technology"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(this)");?>
+					<?php html_inputbox("interval", gettext("Check interval"), $pconfig['interval'], gettext("Sets the interval between disk checks to N seconds. The minimum allowed value is 10."), true, 5);?>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Power mode");?></td>
 						<td width="78%" class="vtable">
@@ -170,12 +175,8 @@ function enable_change(enable_change) {
 							</span>
 						</td>
 					</tr>
-					<tr>
-						<td colspan="2" class="list" height="12"></td>
-					</tr>
-					<tr>
-						<td colspan="2" valign="top" class="listtopic"><?=gettext("Temperature monitoring");?></td>
-					</tr>
+					<?php html_separator();?>
+					<?php html_titleline(gettext("Temperature monitoring"));?>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Difference");?></td>
 						<td width="78%" class="vtable">
@@ -197,12 +198,8 @@ function enable_change(enable_change) {
 							<span class="vexpl"><?=gettext("Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report.");?></span>
 						</td>
 					</tr>
-					<tr>
-						<td colspan="2" class="list" height="12"></td>
-					</tr>
-					<tr>
-						<td colspan="2" valign="top" class="listtopic"><?=gettext("Scheduled self-tests");?></td>
-					</tr>
+					<?php html_separator();?>
+					<?php html_titleline(gettext("Scheduled self-tests"));?>
 				  <tr>
 			    	<td width="22%" valign="top" class="vncell"><?=gettext("Scheduled self-tests");?></td>
 						<td width="78%" class="vtable">
@@ -232,20 +229,30 @@ function enable_change(enable_change) {
 							<span class="vexpl"><?=gettext("Add additional scheduled self-test.");?></span>
 						</td>
 					</tr>
-				  <tr>
-				    <td width="22%" valign="top">&nbsp;</td>
-				    <td width="78%">
-				      <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
-				    </td>
-				  </tr>
-			  </table>
-      </form>
-	  </td>
-  </tr>
+					<?php html_separator();?>
+					<?php html_titleline_checkbox("email_enable", gettext("Email report"), $pconfig['email_enable'] ? true : false, gettext("Activate"), "enable_change(this)");?>
+					<?php html_inputbox("email_to", gettext("To email"), $pconfig['email_to'], gettext("Destination email address."), true, 40);?>
+					<?php html_inputbox("email_subject", gettext("Subject"), $pconfig['email_subject'], gettext("The subject of the email."), true, 40);?>
+					<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save and Restart");?>" onClick="enable_change(true)">
+						</td>
+					</tr>
+					<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong><br/>
+						</span><?=gettext("Activate email if you want to receive a warning email if a failure or a new error has been detected, or if a S.M.A.R.T. command to a disk fails.");?></span>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</td>
+	</tr>
 </table>
 <script language="JavaScript">
 <!--
 enable_change(false);
 //-->
 </script>
-<?php include("fend.inc"); ?>
+<?php include("fend.inc");?>
