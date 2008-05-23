@@ -35,6 +35,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("email.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Management"),gettext("S.M.A.R.T."));
 
@@ -152,10 +153,11 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabcont">
       <form action="disks_manage_smart.php" method="post" name="iform" id="iform">
-      	<?php if ($input_errors) print_input_errors($input_errors);?>
-        <?php if ($savemsg) print_info_box($savemsg);?>
-        <?php if (file_exists($d_smartconfdirty_path)) print_config_change_box();?>
-        <table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<?php if (isset($pconfig['email_enable']) && (0 !== email_validate_settings())) print_error_box(sprintf(gettext("Make sure you have already configured your <a href='%s'>Email</a> settings."), "system_email.php"));?>
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if ($savemsg) print_info_box($savemsg);?>
+				<?php if (file_exists($d_smartconfdirty_path)) print_config_change_box();?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline_checkbox("enable", gettext("Self-Monitoring, Analysis and Reporting Technology"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(this)");?>
 					<?php html_inputbox("interval", gettext("Check interval"), $pconfig['interval'], gettext("Sets the interval between disk checks to N seconds. The minimum allowed value is 10."), true, 5);?>
 					<tr>
@@ -242,7 +244,7 @@ function enable_change(enable_change) {
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong><br/>
-						</span><?=gettext("Activate email if you want to receive a warning email if a failure or a new error has been detected, or if a S.M.A.R.T. command to a disk fails.");?></span>
+						</span><?=gettext("Activate email report if you want to be notified if a failure or a new error has been detected, or if a S.M.A.R.T. command to a disk fails.");?></span>
 						</td>
 					</tr>
 				</table>
