@@ -1,0 +1,18 @@
+#!/usr/local/bin/php -f
+<?php
+# smartdreport
+# Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+# All rights reserved.
+require_once("config.inc");
+require_once("util.inc");
+require_once("email.inc");
+
+$subject = "{$config['smartd']['email']['subject']} - " . getenv("SMARTD_FAILTYPE");
+$message = getenv("SMARTD_FULLMESSAGE");
+
+$result = @email_send($config['smartd']['email']['to'], $subject, $message, $error);
+if (0 != $result) {
+	write_log($error);
+	return 1;
+}
+?>

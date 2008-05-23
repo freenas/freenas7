@@ -33,13 +33,20 @@ fi
 
 start_precmd()
 {
-	local _devicespecialfile _type _param _powermode _tmp
+	local _devicespecialfile _type _param _powermode _email _tmp
 
 	# Clear existing file
 	/bin/cat /dev/null > ${smartd_conf}
 
 	# Power mode
 	_powermode=`configxml_get "//smartd/powermode"`
+
+	# Email report enabled?
+	_email=`/usr/local/bin/xml sel -t -m "//smartd/email" \
+		-i "count(enable) > 0" \
+			-v "concat('-m ',to,' -M exec /etc/mail/smartdreport.sh')" \
+		-b \
+		${configxml_file} | /usr/local/bin/xml unesc`
 
 	# Create configuration file
 	/usr/local/bin/xml sel -t -m "//disks/disk[smart]" \
@@ -120,6 +127,11 @@ start_precmd()
 			# Power mode
 			if [ -n "${_powermode}" ]; then
 				_param="${_param} -n ${_powermode},q";
+			fi
+
+			# Email report enabled?
+			if [ -n "${_email}" ]; then
+				_param="${_param} ${_email}";
 			fi
 
 			echo "${_devicespecialfile} ${_param}" >> ${smartd_conf}
