@@ -1,5 +1,5 @@
 PORTNAME=			inadyn-mt
-PORTVERSION=	02.01.13
+PORTVERSION=	02.12.04
 CATEGORIES=		dns
 COMMENT=			A simple DYNAMIC DNS client
 MAINTAINER=		votdev@gmx.de
@@ -14,7 +14,7 @@ USE_GMAKE=		yes
 MAKEFILE=			makefile
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/linux/inadyn-advanced ${FREENAS_ROOTFS}/usr/local/bin/inadyn
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/linux/inadyn-mt ${FREENAS_ROOTFS}/usr/local/bin/inadyn
 	@${INSTALL_SCRIPT} -v ${FILESDIR}/inadyn.in ${FREENAS_ROOTFS}/etc/rc.d/inadyn
 
 .include <bsd.port.mk>
