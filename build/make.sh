@@ -20,21 +20,12 @@ FREENAS_PRODUCTNAME=$(cat $FREENAS_SVNDIR/etc/prd.name)
 FREENAS_VERSION=$(cat $FREENAS_SVNDIR/etc/prd.version)
 #Use only the part of the word «vision» for «revision» because with french svn,
 #the word is «révision»
-FREENAS_REVISION=$(svn info ${FREENAS_SVNDIR} | grep "Revision:" | awk '{print $2}'
+FREENAS_REVISION=$(svn info ${FREENAS_SVNDIR} | grep "Revision:" | awk '{print $2}')
 FREENAS_ARCH=$(uname -p)
 FREENAS_KERNCONF="$(echo ${FREENAS_PRODUCTNAME} | tr '[:lower:]' '[:upper:]')-${FREENAS_ARCH}"
 FREENAS_OBJDIRPREFIX="/usr/obj/$(echo ${FREENAS_PRODUCTNAME} | tr '[:upper:]' '[:lower:]')"
 FREENAS_BOOTDIR="$FREENAS_ROOTDIR/bootloader"
 FREENAS_TMPDIR="/tmp/freenastmp"
-
-# Options:
-# Support bootmenu
-OPT_BOOTMENU=1
-# Support bootsplash
-# Remove during the port to freebsd 7.0 for checking messages
-OPT_BOOTSPLASH=0
-# Support serial console
-OPT_SERIALCONSOLE=0
 
 export FREENAS_ROOTDIR
 export FREENAS_WORKINGDIR
@@ -49,36 +40,36 @@ export FREENAS_OBJDIRPREFIX
 export FREENAS_BOOTDIR
 export FREENAS_REVISION
 export FREENAS_TMPDIR
-export OPT_BOOTMENU
-export OPT_BOOTSPLASH
-export OPT_SERIALCONSOLE
 
 # Local variables
 FREENAS_URL=$(cat $FREENAS_SVNDIR/etc/prd.url)
 FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/trunk"
 
-# Path where to find Makefile includes
-FREENAS_MKINCLUDESDIR="$FREENAS_SVNDIR/build/mk"
-
 # Size in MB of the MFS Root filesystem that will include all FreeBSD binary
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
-FREENAS_MFSROOT_SIZE="63"
+FREENAS_MFSROOT_SIZE=63
+FREENAS_IMG_SIZE=56
 
-# IMG media size in 512 bytes sectors. It includes the zipped MFS root
-# filesystem image plus bootloader and kernel (53248 sectors => 27262976 bytes => 26MB).
-if [ $FREENAS_ARCH == "amd64" ]; then
-	echo "AMD arch detected, increasing the Size of MFS Root file"
-	FREENAS_IMG_SIZE=58593
-else
-	FREENAS_IMG_SIZE=57344
-fi
-# Media geometry, only relevant if bios doesn't understand LBA.
+#Media geometry, only relevant if bios doesn't understand LBA.
+FREENAS_IMG_SIZE_SEC=`expr ${FREENAS_IMG_SIZE} \* 2048`
 FREENAS_IMG_SECTS=32
 FREENAS_IMG_HEADS=16
 # 'newfs' parameters.
 FREENAS_NEWFS="-U -o space -m 0"
 
+# Options:
+# Support bootmenu
+OPT_BOOTMENU=1
+# Support bootsplash
+# Remove during the port to freebsd 7.0 for checking messages
+OPT_BOOTSPLASH=0
+# Support serial console
+OPT_SERIALCONSOLE=0
+
+export OPT_BOOTMENU
+export OPT_BOOTSPLASH
+export OPT_SERIALCONSOLE
 # Dialog command
 DIALOG="dialog"
 
@@ -372,7 +363,7 @@ create_image() {
 	create_mfsroot;
 
 	echo "===> Creating an empty IMG file"
-	dd if=/dev/zero of=${FREENAS_WORKINGDIR}/image.bin bs=${FREENAS_IMG_SECTS}b count=`expr ${FREENAS_IMG_SIZE} / ${FREENAS_IMG_SECTS}`
+	dd if=/dev/zero of=${FREENAS_WORKINGDIR}/image.bin bs=${FREENAS_IMG_SECTS}b count=`expr ${FREENAS_IMG_SIZE_SEC} / ${FREENAS_IMG_SECTS}`
 	echo "===> Use IMG as a memory disk"
 	md=`mdconfig -a -t vnode -f ${FREENAS_WORKINGDIR}/image.bin -x ${FREENAS_IMG_SECTS} -y ${FREENAS_IMG_HEADS}`
 	diskinfo -v ${md}
@@ -383,7 +374,7 @@ create_image() {
 # /dev/${md}:
 8 partitions:
 #        size   offset    fstype   [fsize bsize bps/cpg]
-  a:    ${FREENAS_IMG_SIZE}        0    4.2BSD        0     0
+  a:    ${FREENAS_IMG_SIZE_SEC}        0    4.2BSD        0     0
   c:    *            *    unused        0     0         # "raw" part, don't edit
 " > ${FREENAS_WORKINGDIR}/bsdlabel.$$
 	bsdlabel -m ${FREENAS_ARCH} -R -B -b ${FREENAS_BOOTDIR}/boot ${md} ${FREENAS_WORKINGDIR}/bsdlabel.$$
@@ -396,9 +387,9 @@ create_image() {
 	cp $FREENAS_WORKINGDIR/mfsroot.gz $FREENAS_TMPDIR
 
 	echo "===> Copying bootloader file(s) to memory disk"
-	mkdir $FREENAS_TMPDIR/boot
-	mkdir $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
-	mkdir $FREENAS_TMPDIR/conf
+	mkdir -p $FREENAS_TMPDIR/boot
+	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
+	mkdir -p $FREENAS_TMPDIR/conf
 	cp $FREENAS_ROOTFS/conf.default/config.xml $FREENAS_TMPDIR/conf
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
 	cp $FREENAS_BOOTDIR/boot $FREENAS_TMPDIR/boot
@@ -471,8 +462,8 @@ create_iso () {
 	cp $FREENAS_WORKINGDIR/mfsroot.gz $FREENAS_TMPDIR
 
 	echo "ISO: Copying bootloader file(s) to $FREENAS_TMPDIR"
-	mkdir $FREENAS_TMPDIR/boot
-	mkdir $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
+	mkdir -p $FREENAS_TMPDIR/boot
+	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
 	cp $FREENAS_BOOTDIR/cdboot $FREENAS_TMPDIR/boot
 	cp $FREENAS_BOOTDIR/loader $FREENAS_TMPDIR/boot
@@ -540,7 +531,7 @@ create_full() {
 	#tar -cf - -C $FREENAS_ROOTFS ./ | tar -xvpf - -C $FREENAS_TMPDIR
 
 	echo "Copying bootloader file(s) to root filesystem"
-	mkdir $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
+	mkdir -p $FREENAS_TMPDIR/boot/kernel $FREENAS_TMPDIR/boot/defaults $FREENAS_TMPDIR/boot/zfs
 	#mkdir $FREENAS_TMPDIR/conf
 	cp $FREENAS_ROOTFS/conf.default/config.xml $FREENAS_TMPDIR/conf
 	cp $FREENAS_BOOTDIR/kernel/kernel.gz $FREENAS_TMPDIR/boot/kernel
