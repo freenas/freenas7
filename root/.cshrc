@@ -24,6 +24,7 @@ if ($?prompt) then
 	# An interactive shell -- set some stuff up
 	set prompt = "%m\:%~# "
 	set filec
+	set autolist
 	set history = 100
 	set savehist = 100
 	if ( $?tcsh ) then

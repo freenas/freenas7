@@ -16,7 +16,7 @@
 # Kerberos services are for Kerberos v4, and are unofficial.  Sites running
 # v5 should uncomment v5 entries and comment v4 entries.
 #
-# $FreeBSD: src/etc/services,v 1.102 2004/08/16 11:52:22 cperciva Exp $
+# $FreeBSD: src/etc/services,v 1.102.8.2 2007/05/03 22:39:24 stas Exp $
 #	From: @(#)services	5.8 (Berkeley) 5/9/91
 #
 # WELL KNOWN PORT NUMBERS
@@ -1880,6 +1880,10 @@ rkinit		2108/tcp   #Kerberos (v4) remote initialization
 rkinit		2108/udp   #Kerberos (v4) remote initialization
 ats		2201/tcp   #Advanced Training System Program
 ats		2201/udp   #Advanced Training System Program
+hpssd		2207/tcp   #HP Status and Services
+hpssd		2207/udp   #HP Status and Services
+hpiod		2208/tcp   #HP I/O Backend
+hpiod		2208/udp   #HP I/O Backend
 ivs-video	2232/tcp   #IVS Video default
 ivs-video	2232/udp   #IVS Video default
 ivsd		2241/tcp   #IVS Daemon
@@ -1917,6 +1921,8 @@ eppc		3031/tcp   #Remote AppleEvents/PPC Toolbox
 eppc		3031/udp   #Remote AppleEvents/PPC Toolbox
 NSWS		3049/tcp
 NSWS		3049/udp
+gds_db		3050/tcp   #InterBase Database Remote Protocol
+gds_db		3050/udp   #InterBase Database Remote Protocol
 sj3		3086/tcp   #SJ3 (kanji input)
 vmodem		3141/tcp
 vmodem		3141/udp
@@ -1997,12 +2003,12 @@ aol-2		5192/tcp   #AmericaOnline2
 aol-2		5192/udp   #AmericaOnline2
 aol-3		5193/tcp   #AmericaOnline3
 aol-3		5193/udp   #AmericaOnline3
-jabber-client	5222/tcp   #Jabber Client Connection
-jabber-client	5222/udp   #Jabber Client Connection
+xmpp-client	5222/tcp   #XMPP Client Connection
+xmpp-client	5222/udp   #XMPP Client Connection
 padl2sim	5236/tcp
 padl2sim	5236/udp
-jabber-server	5269/tcp   #Jabber Server Connection
-jabber-server	5269/udp   #Jabber Server Connection
+xmpp-server	5269/tcp   #XMPP Server Connection
+xmpp-server	5269/udp   #XMPP Server Connection
 hacl-hb		5300/tcp   # HA cluster heartbeat
 hacl-hb		5300/udp   # HA cluster heartbeat
 hacl-gs		5301/tcp   # HA cluster general services
@@ -2102,6 +2108,7 @@ man		9535/tcp
 man		9535/udp
 sd		9876/tcp   #Session Director
 sd		9876/udp   #Session Director
+amanda		10080/tcp  #Dump server control
 amanda		10080/udp  #Dump server control
 amandaidx	10082/tcp  #Amanda indexing
 amidxtape	10083/tcp  #Amanda tape indexing

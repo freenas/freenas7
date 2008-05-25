@@ -177,9 +177,6 @@ sbin/mdmfs
 ## mount_nullfs -- mount a loopback file system sub-tree; demonstrate the use of a null file system layer
 sbin/mount_nullfs
 
-## mount_umapfs -- sample file system layer
-sbin/mount_umapfs
-
 ## mount_unionfs -- mount union file systems
 sbin/mount_unionfs
 
@@ -197,9 +194,6 @@ sbin/mount_ext2fs
 
 ## mount_cd9660 -- mount CDROM file system
 sbin/mount_cd9660
-
-## mount_reiserfs -- mount ReiserFS file system
-sbin/mount_reiserfs
 
 ## mount_udf -- mount UDF file system
 sbin/mount_udf
@@ -526,11 +520,20 @@ boot/boot1
 
 ####### contents of /etc
 etc/rc.subr
+etc/rc.shutdown
 etc/network.subr
 etc/pccard_ether
 etc/gettytab
 etc/usbd.conf
 etc/devd.conf
+etc/devfs.conf
+etc/dhclient.conf
+etc/auth.conf
+etc/disktab
+etc/fbtab
+etc/netconfig
+etc/networks
+etc/protocols
 
 ####### contents of /etc/defaults
 etc/defaults/devfs.rules
