@@ -234,7 +234,6 @@ device		ex		# Intel EtherExpress Pro/10 and Pro/10+
 device		ep		# Etherlink III based cards
 device		fe		# Fujitsu MB8696x based cards
 device		ie		# EtherExpress 8/16, 3C507, StarLAN 10 etc.
-device		lnc		# NE2100, NE32-VL Lance Ethernet cards
 device		sn		# SMC's 9000 series of Ethernet chips
 device		xe		# Xircom pccard Ethernet
 
@@ -337,16 +336,9 @@ device		nxge		# Neterion Xframe 10GbE Server/Storage
 # SCSI Controllers
 device		ihb			# IOI-A100U2W drivers
 
-# PCI Ethernet NICs.
-device		le			# AMD Am7900 LANCE and Am79C9xx PCnet Ethernet interface driver
-
 # Wireless NIC cards
-device		firmware
 device		wlan_acl
-device		wlan_tkip
 device		wlan_xauth
-device		iwi
-device		ipw
 
 device		lagg			# Link aggregation interface
 device		vlan			# IEEE 802.1Q VLAN Support
