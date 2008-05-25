@@ -172,7 +172,7 @@ sbin/mknod
 sbin/mount
 
 ## mdmfs, mount_mfs -- configure and mount an in-memory file system using the md(4) driver
-sbin/mdmfs
+sbin/mdmfs:sbin/mount_mfs
 
 ## mount_nullfs -- mount a loopback file system sub-tree; demonstrate the use of a null file system layer
 sbin/mount_nullfs
@@ -248,6 +248,12 @@ sbin/mksnap_ffs
 
 ## devd -- device state change daemon
 sbin/devd
+
+## zfs - configures ZFS file systems
+sbin/zfs
+
+## zpool - configures ZFS storage pools
+sbin/zpool
 
 ####### contents of /usr/bin
 
@@ -506,6 +512,10 @@ usr/lib/snmp_netgraph.so.*:usr/lib/snmp_netgraph.so
 ####### contents of /lib/geom
 # GEOM tools
 lib/geom/geom_*.so
+
+# zfs tools
+lib/libzfs*.so.*
+lib/libzpool*.so.*
 
 ####### contents of /etc/ssh
 # moduli -- system moduli file

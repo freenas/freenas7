@@ -1,5 +1,5 @@
---- geom_eli.c.orig	2008-01-27 21:00:02.000000000 +0100
-+++ geom_eli.c	2008-03-03 20:33:09.000000000 +0100
+--- geom_eli.c.orig	2007-05-15 22:25:16.000000000 +0200
++++ geom_eli.c	2008-05-25 12:16:11.000000000 +0200
 @@ -73,18 +73,20 @@
  static void eli_restore(struct gctl_req *req);
  static void eli_clear(struct gctl_req *req);
@@ -26,45 +26,45 @@
   * backup [-v] prov file
 @@ -103,9 +105,10 @@
  		{ 'l', "keylen", &keylen, G_TYPE_NUMBER },
- 		{ 'P', "nonewpassphrase", NULL, G_TYPE_NONE },
+ 		{ 'P', "nonewpassphrase", NULL, G_TYPE_BOOL },
  		{ 's', "sectorsize", &sectorsize, G_TYPE_NUMBER },
-+		{ 't', "password-from-stdin", NULL, G_TYPE_NONE },
++		{ 't', "password-from-stdin", NULL, G_TYPE_BOOL },
  		G_OPT_SENTINEL
  	    },
--	    "[-bPv] [-a aalgo] [-e ealgo] [-i iterations] [-l keylen] [-K newkeyfile] [-s sectorsize] prov"
-+	    "[-bPtv] [-a aalgo] [-e ealgo] [-i iterations] [-l keylen] [-K newkeyfile] [-s sectorsize] prov"
+-	    NULL, "[-bPv] [-a aalgo] [-e ealgo] [-i iterations] [-l keylen] [-K newkeyfile] [-s sectorsize] prov"
++	    NULL, "[-bPtv] [-a aalgo] [-e ealgo] [-i iterations] [-l keylen] [-K newkeyfile] [-s sectorsize] prov"
  	},
  	{ "label", G_FLAG_VERBOSE, eli_main,
  	    {
 @@ -117,6 +120,7 @@
  		{ 'l', "keylen", &keylen, G_TYPE_NUMBER },
- 		{ 'P', "nonewpassphrase", NULL, G_TYPE_NONE },
+ 		{ 'P', "nonewpassphrase", NULL, G_TYPE_BOOL },
  		{ 's', "sectorsize", &sectorsize, G_TYPE_NUMBER },
-+		{ 't', "password-from-stdin", NULL, G_TYPE_NONE },
++		{ 't', "password-from-stdin", NULL, G_TYPE_BOOL },
  		G_OPT_SENTINEL
  	    },
- 	    "- an alias for 'init'"
+ 	    NULL, "- an alias for 'init'"
 @@ -127,9 +131,10 @@
  		{ 'k', "keyfile", keyfile, G_TYPE_STRING },
- 		{ 'p', "nopassphrase", NULL, G_TYPE_NONE },
- 		{ 'r', "readonly", NULL, G_TYPE_NONE },
-+		{ 't', "password-from-stdin", NULL, G_TYPE_NONE },
+ 		{ 'p', "nopassphrase", NULL, G_TYPE_BOOL },
+ 		{ 'r', "readonly", NULL, G_TYPE_BOOL },
++		{ 't', "password-from-stdin", NULL, G_TYPE_BOOL },
  		G_OPT_SENTINEL
  	    },
--	    "[-dprv] [-k keyfile] prov"
-+	    "[-dprtv] [-k keyfile] prov"
+-	    NULL, "[-dprv] [-k keyfile] prov"
++	    NULL, "[-dprtv] [-k keyfile] prov"
  	},
  	{ "detach", 0, NULL,
  	    {
 @@ -174,9 +179,10 @@
  		{ 'n', "keyno", &keyno, G_TYPE_NUMBER },
- 		{ 'p', "nopassphrase", NULL, G_TYPE_NONE },
- 		{ 'P', "nonewpassphrase", NULL, G_TYPE_NONE },
-+		{ 't', "password-from-stdin", NULL, G_TYPE_NONE },
+ 		{ 'p', "nopassphrase", NULL, G_TYPE_BOOL },
+ 		{ 'P', "nonewpassphrase", NULL, G_TYPE_BOOL },
++		{ 't', "password-from-stdin", NULL, G_TYPE_BOOL },
  		G_OPT_SENTINEL
  	    },
--	    "[-pPv] [-n keyno] [-i iterations] [-k keyfile] [-K newkeyfile] prov"
-+	    "[-pPtv] [-n keyno] [-i iterations] [-k keyfile] [-K newkeyfile] prov"
+-	    NULL, "[-pPv] [-n keyno] [-i iterations] [-k keyfile] [-K newkeyfile] prov"
++	    NULL, "[-pPtv] [-n keyno] [-i iterations] [-k keyfile] [-K newkeyfile] prov"
  	},
  	{ "delkey", G_FLAG_VERBOSE, eli_main,
  	    {
@@ -73,10 +73,9 @@
  		}
  		for (;;) {
 -			p = readpassphrase(
--			    new ? "Enter new passphrase:" : "Enter passphrase:",
--			    buf1, sizeof(buf1), RPP_ECHO_OFF | RPP_REQUIRE_TTY);
 +			p = eli_get_passwd(req,
-+			    new ? "Enter new passphrase: " : "Enter passphrase: ",
+ 			    new ? "Enter new passphrase:" : "Enter passphrase:",
+-			    buf1, sizeof(buf1), RPP_ECHO_OFF | RPP_REQUIRE_TTY);
 +			    buf1, sizeof(buf1));
  			if (p == NULL) {
  				bzero(buf1, sizeof(buf1));
@@ -93,12 +92,10 @@
  				if (p == NULL) {
  					bzero(buf1, sizeof(buf1));
  					gctl_error(req,
-@@ -383,7 +388,11 @@
- 	
+@@ -384,6 +389,10 @@
  				if (strcmp(buf1, buf2) != 0) {
  					bzero(buf2, sizeof(buf2));
--					fprintf(stderr, "They didn't match.\n");
-+					gctl_error(req, "Passphrases didn't match.");
+ 					fprintf(stderr, "They didn't match.\n");
 +					/* Exit immediately if reading passwords from stdin. */
 +					if (gctl_get_int(req, "password-from-stdin")) {
 +						return (NULL);
@@ -106,7 +103,7 @@
  					continue;
  				}
  				bzero(buf2, sizeof(buf2));
-@@ -1240,3 +1249,41 @@
+@@ -1244,3 +1253,41 @@
  		printf("\n");
  	}
  }

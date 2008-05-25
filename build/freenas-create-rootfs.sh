@@ -51,6 +51,8 @@ cd $MINIBSD_DIR ;
 # Create directories
 mkdir boot ;
 mkdir boot/kernel ;
+mkdir boot/defaults ;
+mkdir boot/zfs ;
 mkdir bin ;
 mkdir cf ;
 mkdir cf/conf ;
@@ -67,6 +69,7 @@ mkdir etc/pam.d ;
 mkdir etc/ssh ;
 mkdir etc/rc.d ;
 mkdir etc/rc.d.php ;
+mkdir etc/zfs ;
 mkdir lib ;
 mkdir lib/geom ;
 mkdir libexec ;
@@ -95,6 +98,7 @@ mkdir usr/share ;
 mkdir usr/share/misc ;
 mkdir usr/share/locale ;
 mkdir tmp ;
+# /var will be populated by /etc/rc and /etc/rc.d/var
 mkdir var ;
 
 # Creating symbolic links. Most of the target files will be created at runtime.
