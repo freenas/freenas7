@@ -17,6 +17,7 @@ $menu['system']['menuitem'][] = array("desc" => gettext("General"), "link" => "s
 $menu['system']['menuitem'][] = array("desc" => gettext("Advanced"), "link" => "system_advanced.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Static Routes"), "link" => "system_routes.php", "visible" => true);
 $menu['system']['menuitem'][] = array("desc" => gettext("Hosts"), "link" => "system_hosts.php", "visible" => true);
+
 if ("full" === $g['platform']) {
 	$menu['system']['menuitem'][] = array("desc" => "Packages", "link" => "system_packages.php", "visible" => true);
 }
@@ -44,7 +45,9 @@ for ($i = 1; isset($config['interfaces']['opt' . $i]); $i++) {
 $menu['disks']['desc'] = gettext("Disks");
 $menu['disks']['menuitem'] = array();
 $menu['disks']['menuitem'][] = array("desc" => gettext("Management"), "link" => "disks_manage.php", "visible" => true);
+$menu['disks']['menuitem'][] = array("desc" => gettext("iSCSI Initiator"), "link" => "disks_iscsi.php", "visible" => true);
 $menu['disks']['menuitem'][] = array("desc" => gettext("Software RAID"), "link" => "disks_raid_gmirror.php", "visible" => true);
+$menu['disks']['menuitem'][] = array("desc" => gettext("ZFS"), "link" => "disks_zfs_zpool.php", "visible" => true);
 $menu['disks']['menuitem'][] = array("desc" => gettext("Encryption"), "link" => "disks_crypt.php", "visible" => true);
 $menu['disks']['menuitem'][] = array("desc" => gettext("Format"), "link" => "disks_init.php", "visible" => true);
 $menu['disks']['menuitem'][] = array("desc" => gettext("Mount Point"), "link" => "disks_mount.php", "visible" => true);
@@ -59,7 +62,7 @@ $menu['services']['menuitem'][] = array("desc" => gettext("NFS"), "link" => "ser
 $menu['services']['menuitem'][] = array("desc" => gettext("AFP"), "link" => "services_afp.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("RSYNC"), "link" => "services_rsyncd.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("Unison"), "link" => "services_unison.php", "visible" => true);
-$menu['services']['menuitem'][] = array("desc" => gettext("iSCSI Target"), "link" => "services_iscsitarget.php", "visible" => true);
+$menu['services']['menuitem'][] = array("desc" => gettext("iSCSI target"), "link" => "services_iscsitarget.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("UPnP"), "link" => "services_upnp.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("DAAP"), "link" => "services_daap.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("Dynamic DNS"), "link" => "services_dynamicdns.php", "visible" => true);
@@ -161,7 +164,7 @@ function display_menu($menu) {
     <td width="150" height="65" align="center" valign="middle">
 			<strong><a href="http://www.<?=get_product_url();?>" target="_blank"><img src="/logo.gif" width="150" height="47" border="0"></a></strong>
 		</td>
-    <td height="65" class="pgheader">
+		<td height="65" class="pgheader">
 			<table border="0" cellspacing="0" cellpadding="0" width="100%">
 				<tr>
 					<td align="left" valign="bottom">

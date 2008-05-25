@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_manage_iscsi.php
+	services_iscsi.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("iSCSI Initiator"));
+$pgtitle = array(gettext("Disks"),gettext("iSCSI Initiator"));
 
 if (!is_array($config['iscsiinit']['vdisk']))
 	$config['iscsiinit']['vdisk'] = array();
@@ -67,7 +67,7 @@ if ($_GET['act'] == "del")
 		unset($a_iscsiinit[$_GET['id']]);
 		write_config();
 		touch($d_iscsiinitdirty_path);
-		header("Location: disks_manage_iscsi.php");
+		header("Location: disks_iscsi.php");
 		exit;
 	}
 }
@@ -75,17 +75,15 @@ if ($_GET['act'] == "del")
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
-    <td class="tabnavtbl">
-      <ul id="tabnav">
-      	<li class="tabinact"><a href="disks_manage.php"><?=gettext("Management");?></a></li>
-      	<li class="tabinact"><a href="disks_manage_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
-				<li class="tabact"><a href="disks_manage_iscsi.php" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
-      </ul>
-    </td>
+	<td class="tabnavtbl">
+		<ul id="tabnav">
+			<li class="tabact"><a href="disks_iscsi.php" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
+		</ul>
+	</td>
   </tr>
   <tr> 
     <td class="tabcont">
-      <form action="disks_manage_iscsi.php" method="post">
+      <form action="disks_iscsi.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
         <?php if (file_exists($d_iscsiinitdirty_path)) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -107,7 +105,7 @@ if ($_GET['act'] == "del")
           <?php $i++; endforeach; ?>
           <tr> 
             <td class="list" colspan="3"></td>
-            <td class="list"><a href="disks_manage_iscsi_edit.php"><img src="plus.gif" title="<?=gettext("Add initiator");?>" width="17" height="17" border="0"></a></td>
+            <td class="list"><a href="disks_iscsi_edit.php"><img src="plus.gif" title="<?=gettext("Add initiator");?>" width="17" height="17" border="0"></a></td>
 			    </tr>
         </table>
       </form>

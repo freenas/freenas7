@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_manage_iscsi_edit.php
+	services_iscsi_edit.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Disks"),gettext("Management"),gettext("iSCSI Initiator"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Disks"),gettext("iSCSI Initiator"),isset($id)?gettext("Edit"):gettext("Add"));
 
 if (!is_array($config['iscsiinit']['vdisk']))
 	$config['iscsiinit']['vdisk'] = array();
@@ -97,7 +97,7 @@ if ($_POST) {
 
 		write_config();
 
-		header("Location: disks_manage_iscsi.php");
+		header("Location: disks_iscsi.php");
 		exit;
 	}
 }
@@ -105,17 +105,15 @@ if ($_POST) {
 <?php include("fbegin.inc"); ?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 <tr>
-    <td class="tabnavtbl">
-      <ul id="tabnav">
-      	<li class="tabinact"><a href="disks_manage.php"><?=gettext("Management");?></a></li>
-      	<li class="tabinact"><a href="disks_manage_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
-				<li class="tabact"><a href="disks_manage_iscsi.php" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td class="tabcont">
-			<form action="disks_manage_iscsi_edit.php" method="post" name="iform" id="iform">
+	<td class="tabnavtbl">
+		<ul id="tabnav">
+			<li class="tabact"><a href="disks_iscsi.php" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
+		</ul>
+	</td>
+</tr>
+<tr>
+	<td class="tabcont">
+			<form action="disks_iscsi_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			     <tr>
