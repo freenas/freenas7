@@ -1,4 +1,9 @@
 #!/bin/sh
+#
+# $FreeBSD: src/etc/rc.d/NETWORKING,v 1.13.4.1 2008/01/28 07:58:31 dougb Exp $
+#
+# Modified by Volker Theile (votdev@gmx.de)
+#
 
 # PROVIDE: NETWORKING NETWORK
 # REQUIRE: CONFIG

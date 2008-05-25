@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/root,v 1.10.2.5 2008/01/28 08:22:33 dougb Exp $
+# $FreeBSD: src/etc/rc.d/root,v 1.15.4.1 2008/01/28 07:58:31 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes: Remove original code from root_start.

@@ -1,9 +1,9 @@
 #!/bin/sh
 #
-# $NetBSD: SERVERS,v 1.9 2002/03/22 04:33:57 thorpej Exp $
-# $FreeBSD: src/etc/rc.d/SERVERS,v 1.5.2.2 2006/04/23 15:29:11 delphij Exp $
+# $FreeBSD: src/etc/rc.d/SERVERS,v 1.7.4.1 2008/01/28 07:58:31 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
+#
 
 # PROVIDE: SERVERS
 

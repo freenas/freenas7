@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/fsck,v 1.10.2.2 2008/01/28 08:22:32 dougb Exp $
+# $FreeBSD: src/etc/rc.d/fsck,v 1.11.4.1 2008/01/28 07:58:31 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
@@ -161,5 +161,5 @@ fsck_start_root()
 	esac
 }
 
-load_rc_config ${name}
+load_rc_config $name
 run_rc_command "$1"

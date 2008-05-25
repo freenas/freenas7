@@ -1,7 +1,6 @@
 #!/bin/sh
 #
-# $NetBSD: dmesg,v 1.8 2002/03/22 04:33:58 thorpej Exp $
-# $FreeBSD: src/etc/rc.d/dmesg,v 1.5 2005/01/16 03:12:03 obrien Exp $
+# $FreeBSD: src/etc/rc.d/dmesg,v 1.5.14.1 2008/01/28 07:58:31 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #
@@ -9,7 +8,7 @@
 # PROVIDE: dmesg
 # REQUIRE: cleanvar
 # BEFORE: DAEMON
-# KEYWORD: Daemon nojail
+# KEYWORD: nojail
 
 . /etc/rc.subr
 

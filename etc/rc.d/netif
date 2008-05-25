@@ -22,7 +22,7 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
 # THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
-# $FreeBSD: src/etc/rc.d/netif,v 1.14.2.5 2007/10/25 14:36:11 mtm Exp $
+# $FreeBSD: src/etc/rc.d/netif,v 1.24 2007/07/25 18:08:01 jhb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
@@ -30,7 +30,7 @@
 #
 
 # PROVIDE: netif
-# REQUIRE: cleanvar mountcritlocal pccard sysctl
+# REQUIRE: cleanvar FILESYSTEMS sysctl
 # KEYWORD: nojail
 
 . /etc/rc.subr
@@ -60,6 +60,9 @@ network_start()
 
 		# Create cloned interfaces
 		clone_up
+
+		# Create Fast EtherChannel interfaces
+		fec_up
 
 		# Create IPv6<-->IPv4 tunnels
 		gif_up

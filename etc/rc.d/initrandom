@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/initrandom,v 1.5.2.1 2005/12/21 07:11:34 dougb Exp $
+# $FreeBSD: src/etc/rc.d/initrandom,v 1.5.2.2 2007/10/25 14:58:33 mtm Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:

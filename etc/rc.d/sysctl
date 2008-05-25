@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/sysctl,v 1.16.2.2 2008/01/28 08:22:33 dougb Exp $
+# $FreeBSD: src/etc/rc.d/sysctl,v 1.17.4.1 2008/01/28 07:58:31 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #

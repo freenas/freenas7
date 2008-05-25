@@ -1,7 +1,6 @@
 #!/bin/sh
 #
-# $NetBSD: nfsd,v 1.4 2001/06/16 06:13:10 lukem Exp $
-# $FreeBSD: src/etc/rc.d/nfsd,v 1.13 2004/10/07 13:55:26 mtm Exp $
+# $FreeBSD: src/etc/rc.d/nfsd,v 1.13.14.1 2008/01/28 07:58:31 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # - Add /sbin/ to sysctl calls, otherwise script execution fails via WebGUI.

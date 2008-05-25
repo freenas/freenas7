@@ -38,5 +38,5 @@ mountcritlocal_stop()
 		done
 }
 
-load_rc_config ${name}
+load_rc_config $name
 run_rc_command "$1"

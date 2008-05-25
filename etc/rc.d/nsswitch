@@ -23,13 +23,12 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 # SUCH DAMAGE.
 #
-# $FreeBSD: src/etc/rc.d/nsswitch,v 1.5.2.3 2007/10/25 14:36:11 mtm Exp $
+# $FreeBSD: src/etc/rc.d/nsswitch,v 1.12 2006/12/30 22:53:20 yar Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
 # - Add 'var' as requirement
 # - Add code to create configuration file from config.xml
-# - Force creation of configuration file
 #
 
 # PROVIDE: nsswitch
@@ -41,41 +40,11 @@
 
 name="nsswitch"
 start_cmd="nsswitch_start"
+start_precmd="generate_nsswitch_conf"
 stop_cmd=":"
-
-convert_host_conf()
-{
-    host_conf=$1; shift;
-    nsswitch_conf=$1; shift;
-
-    while read line; do
-	line=${line##[ 	]}
-	case $line in
-        hosts|local|file)
-		_nsswitch="${_nsswitch}${_nsswitch+ }files"
-		;;
-	dns|bind)
-		_nsswitch="${_nsswitch}${_nsswitch+ }dns"
-		;;
-	nis)
-		_nsswitch="${_nsswitch}${_nsswitch+ }nis"
-		;;
-	'#'*)
-		;;
-	*)
-        	printf "Warning: unrecognized line [%s]", $line > "/dev/stderr"
-		;;
-		
-	esac
-    done < $host_conf
-
-    echo "hosts: $_nsswitch" > $nsswitch_conf
-}
 
 generate_nsswitch_conf()
 {
-	nsswitch_conf=$1; shift;
-
 	/usr/local/bin/xml sel -t \
 		-i "count(//ad/enable) > 0" -i "count(//ldap/enable) = 0" \
 			-o "group: files winbind" -n \
@@ -113,7 +82,7 @@ generate_nsswitch_conf()
 			-o "passwd_compat: nis" -n \
 			-o "shells: files" \
 		-b -b \
-		${configxml_file} | /usr/local/bin/xml unesc > ${nsswitch_conf}
+		${configxml_file} | /usr/local/bin/xml unesc > /etc/nsswitch.conf
 }
 
 generate_host_conf()
@@ -145,7 +114,7 @@ generate_host_conf()
 	_sources="${_sources}${_sources:+ }$line"
     done < $nsswitch_conf
 
-    echo "# Auto-generated from nsswitch.conf, do not edit" > $host_conf
+    echo "# Auto-generated from nsswitch.conf" > $host_conf
     for _s in ${_sources}; do
 	case $_s in
 	files)
@@ -168,22 +137,6 @@ generate_host_conf()
 
 nsswitch_start()
 {
-	# Convert host.conf to nsswitch.conf if necessary
-	#
-	if [ -f "/etc/host.conf" -a ! -f "/etc/nsswitch.conf" ]; then
-		echo ''
-		echo 'Warning: /etc/host.conf is no longer used'
-		echo '  /etc/nsswitch.conf will be created for you'
-		convert_host_conf /etc/host.conf /etc/nsswitch.conf
-	fi
-
-	# Generate default nsswitch.conf if none exists
-	#
-	#if [ ! -f "/etc/nsswitch.conf" ]; then
-		echo 'Generating nsswitch.conf.'
-		generate_nsswitch_conf /etc/nsswitch.conf
-	#fi
-
 	# Generate host.conf for compatibility
 	#
 	if [ ! -f "/etc/host.conf" -o \

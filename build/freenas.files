@@ -554,3 +554,9 @@ etc/rc.d/dhclient
 etc/rc.d/netoptions
 etc/rc.d/power_profile
 etc/rc.d/network_ipv6
+etc/rc.d/auto_linklocal
+etc/rc.d/FILESYSTEMS
+etc/rc.d/ip6addrctl
+etc/rc.d/random
+etc/rc.d/swap1
+etc/rc.d/zfs

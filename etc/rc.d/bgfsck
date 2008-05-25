@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $FreeBSD: src/etc/rc.d/bgfsck,v 1.6.2.1 2005/12/15 16:46:02 obrien Exp $
+# $FreeBSD: src/etc/rc.d/bgfsck,v 1.8 2007/03/11 06:53:06 brooks Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #
@@ -19,11 +19,23 @@ stop_cmd=":"
 
 bgfsck_start ()
 {
+	if [ -z "${rc_force}" ]; then
+		background_fsck_delay=${background_fsck_delay:=0}
+	else
+		background_fsck_delay=0
+	fi
+	if [ ${background_fsck_delay} -lt 0 ]; then
+		echo "Background file system checks delayed indefinitly"
+		return 0
+	fi
+
 	bgfsck_msg='Starting background file system checks'
-	if [ ${background_fsck_delay:=0} -gt 0 ]; then
+	if [ "${background_fsck_delay}" -gt 0 ]; then
 		bgfsck_msg="${bgfsck_msg} in ${background_fsck_delay} seconds"
 	fi
-	echo "${bgfsck_msg}."
+	if [ -z "${rc_force}" ]; then
+		echo "${bgfsck_msg}."
+	fi
 
 	/usr/local/bin/xml sel -t -m "//mounts/mount[fstype = 'ufs' or fstype = 'msdosfs' or fstype = 'ext2fs']" \
 		-v "concat(fstype,' ',devicespecialfile,' ',mdisk)" \

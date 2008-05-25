@@ -1,8 +1,7 @@
 #!/bin/sh
 #
-# $NetBSD: nfslocking,v 1.6 2002/03/24 15:52:41 lukem Exp $
 # FreeBSD History: src/etc/rc.d/nfslocking,v 1.11 2004/10/07 13:55:26 mtm
-# $FreeBSD: src/etc/rc.d/lockd,v 1.18.2.1 2007/09/26 11:02:28 mtm Exp $
+# $FreeBSD: src/etc/rc.d/lockd,v 1.18.6.1 2008/01/28 07:58:31 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 # Changes:
