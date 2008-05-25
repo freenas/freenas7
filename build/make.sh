@@ -47,7 +47,7 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/trunk"
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
 FREENAS_MFSROOT_SIZE=63
-FREENAS_IMG_SIZE=28
+FREENAS_IMG_SIZE=30
 
 # Media geometry, only relevant if bios doesn't understand LBA.
 FREENAS_IMG_SIZE_SEC=`expr ${FREENAS_IMG_SIZE} \* 2048`
