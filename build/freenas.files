@@ -473,6 +473,9 @@ usr/sbin/snapinfo
 ## nologin -- politely refuse a login
 usr/sbin/nologin:sbin/nologin
 
+## ip6addrctl -- configure address selection policy for IPv6 and IPv4
+usr/sbin/ip6addrctl
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
