@@ -172,7 +172,7 @@ sbin/mount
 sbin/mount_devfs:sbin/mount_fdescfs:sbin/mount_linprocfs:sbin/mount_procfs:sbin/mount_std:
 
 ## mdmfs, mount_mfs -- configure and mount an in-memory file system using the md(4) driver
-sbin/mdmfs
+sbin/mdmfs:sbin/mount_mfs
 
 ## mount_nullfs -- mount a loopback file system sub-tree; demonstrate the use of a null file system layer
 sbin/mount_nullfs

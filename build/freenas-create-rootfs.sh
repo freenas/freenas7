@@ -50,6 +50,7 @@ cd $MINIBSD_DIR ;
 
 # Create directories
 mkdir boot ;
+mkdir boot/defaults ;
 mkdir boot/kernel ;
 mkdir bin ;
 mkdir cf ;
@@ -96,6 +97,8 @@ mkdir usr/share/misc ;
 mkdir usr/share/locale ;
 mkdir tmp ;
 mkdir var ;
+mkdir var/tmp ;
+mkdir var/run ;
 
 # Creating symbolic links. Most of the target files will be created at runtime.
 # !!! For optional ports add the required links in the port Makefile. !!!
