@@ -1,13 +1,42 @@
 #!/bin/sh
 #
-# /etc/rc
-#part of FreeNAS (http://www.freenas.org)
-#Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+# Copyright (c) 2000-2004  The FreeBSD Project
 #All rights reserved.
 #
-#Based on m0n0wall (http://m0n0.ch/wall)
-#Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
-#All rights reserved.
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+# 1. Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright
+#    notice, this list of conditions and the following disclaimer in the
+#    documentation and/or other materials provided with the distribution.
+#
+# THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
+# FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+# OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+# HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+# OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+# SUCH DAMAGE.
+#
+#	@(#)rc	5.27 (Berkeley) 6/5/91
+# $FreeBSD: src/etc/rc,v 1.340 2007/04/02 22:53:06 des Exp $
+#
+
+# System startup script run by init on autoboot
+# or after single-user.
+# Output and error are redirected to console by init,
+# and the console is the controlling terminal.
+
+# Note that almost all of the user-configurable behavior is no longer in
+# this file, but rather in /etc/defaults/rc.conf.  Please check that file
+# first before contemplating any changes here.  If you do need to change
+# this file for some reason, we would like to know about it.
 
 stty status '^T'
 
@@ -69,6 +98,10 @@ else
 	_boot="start"
 fi
 
+# Run these after determining whether we are booting diskless in order
+# to minimize the number of files that are needed on a diskless system,
+# and to make the configuration file variables available to rc itself.
+#
 . /etc/rc.subr
 echo "Loading configuration files."
 load_rc_config 'XXX'
@@ -76,7 +109,7 @@ load_rc_config 'XXX'
 skip="-s nostart"
 if [ `/sbin/sysctl -n security.jail.jailed` -eq 1 ]; then
 	skip="$skip -s nojail"
-	if [ "$early_late_divider" = "mountcritlocal" ]; then
+	if [ "$early_late_divider" = "FILESYSTEMS" ]; then
 		early_late_divider=NETWORKING
 	fi
 fi
@@ -97,7 +130,7 @@ done
 unset files local_rc
 
 # Now that disks are mounted, for each dir in $local_startup
-# search for init scripts that use the new rc.d semantics
+# search for init scripts that use the new rc.d semantics.
 #
 case ${local_startup} in
 [Nn][Oo] | '') ;;

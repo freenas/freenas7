@@ -267,7 +267,7 @@ function webguiproto_change() {
 			    <tr>
 			      <td width="22%" valign="top" class="vncell"><?=gettext("IPv4 DNS servers");?></td>
 			      <td width="78%" class="vtable">
-							<?php $readonly = ("dhcp" == $config['interfaces']['lan']['ipaddr']) ? "readonly" : "";?>
+							<?php $readonly = ("dhcp" === $config['interfaces']['lan']['ipaddr']) ? "readonly" : "";?>
 							<input name="dns1" type="text" class="formfld" id="dns1" size="20" value="<?=htmlspecialchars($pconfig['dns1']);?>" <?=$readonly;?>><br>
 							<input name="dns2" type="text" class="formfld" id="dns2" size="20" value="<?=htmlspecialchars($pconfig['dns2']);?>" <?=$readonly;?>><br>
 							<span class="vexpl"><?=gettext("IPv4 addresses");?><br>

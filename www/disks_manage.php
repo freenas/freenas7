@@ -98,7 +98,6 @@ if ($_GET['act'] == "del") {
 						<td width="10%" class="list"></td>
 					</tr>
 				  <?php $i = 0; foreach ($a_disk_conf as $disk):?>
-						<?php if (($disk['class']== "ATA") || ($disk['class']== "SCSI") || ($disk['class']== "RAID" )): ?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
 						<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
@@ -108,7 +107,6 @@ if ($_GET['act'] == "del") {
 						<td class="listbg"><?=(0 == disks_exists($disk['devicespecialfile'])) ? gettext("ONLINE") : gettext("MISSING");?>&nbsp;</td>
 						<td valign="middle" nowrap class="list"> <a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" width="17" height="17" border="0"></a>&nbsp;<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" width="17" height="17" border="0"></a></td>
 					</tr>
-						<?php endif; ?>
 					<?php $i++; endforeach;?>
 					<tr>
 						<td class="list" colspan="6"></td>

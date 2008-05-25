@@ -18,6 +18,7 @@
 #
 # $FreeBSD: src/sys/i386/conf/GENERIC,v 1.474.2.2.2.1 2008/02/06 03:24:28 scottl Exp $
 
+machine		i386
 cpu		I486_CPU
 cpu		I586_CPU
 cpu		I686_CPU
@@ -28,7 +29,7 @@ ident		FREENAS
 
 #makeoptions	DEBUG=-g		# Build kernel with gdb(1) debug symbols
 
-options 	SCHED_ULE		# ULE scheduler
+options 	SCHED_4BSD		# 4BSD scheduler
 options 	PREEMPTION		# Enable kernel thread preemption
 options 	INET			# InterNETworking
 options 	INET6			# IPv6 communications protocols
@@ -208,7 +209,7 @@ device		lge		# Level 1 LXT1001 gigabit Ethernet
 device		msk		# Marvell/SysKonnect Yukon II Gigabit Ethernet
 device		nfe		# nVidia nForce MCP on-board Ethernet
 device		nge		# NatSemi DP83820 gigabit Ethernet
-#device		nve		# nVidia nForce MCP on-board Ethernet Networking
+device		nve		# nVidia nForce MCP on-board Ethernet Networking
 device		pcn		# AMD Am79C97x PCI 10/100 (precedence over 'le')
 device		re		# RealTek 8139C+/8169/8169S/8110S
 device		rl		# RealTek 8129/8139
@@ -233,6 +234,7 @@ device		ex		# Intel EtherExpress Pro/10 and Pro/10+
 device		ep		# Etherlink III based cards
 device		fe		# Fujitsu MB8696x based cards
 device		ie		# EtherExpress 8/16, 3C507, StarLAN 10 etc.
+device		lnc		# NE2100, NE32-VL Lance Ethernet cards
 device		sn		# SMC's 9000 series of Ethernet chips
 device		xe		# Xircom pccard Ethernet
 
@@ -298,7 +300,7 @@ device		rue		# RealTek RTL8150 USB Ethernet
 # FireWire support
 device		firewire	# FireWire bus code
 device		sbp		# SCSI over FireWire (Requires scbus and da)
-#device		fwe		# Ethernet over FireWire (non-standard!)
+device		fwe		# Ethernet over FireWire (non-standard!)
 device		fwip		# IP over FireWire (RFC 2734,3146)
 #device		dcons		# Dumb console driver
 #device		dcons_crom	# Configuration ROM for dcons
@@ -308,66 +310,79 @@ device		fwip		# IP over FireWire (RFC 2734,3146)
 #####################################################################
 options		CPU_UPGRADE_HW_CACHE
 options		CPU_SUSP_HLT
-device          speaker
+device		speaker
 
 # Networking options
-options         DEVICE_POLLING
-#options         HZ=1000
+options		DEVICE_POLLING
+options		HZ=1000
 
 # Splashscreen
-options         VESA
-options         SC_PIXEL_MODE
+options		VESA
+options		SC_PIXEL_MODE
 
-# Power management support in the kernel (depreciate?)
+# Power management support (see NOTES for more options)
 device		acpi		# acpi -- Advanced Configuration and Power Management support
 
 # Network drivers:
-device		arl		# Aironet Arlan 655 wireless adapters
-device          iwi		# Intel PRO/Wireless 2200BG/2225BG/2915ABG
-device          ipw 		# Intel PRO/Wireless 2100 IEEE 802.11 adapter
-#device		zyd		# ZyDAS ZD1211/ZD1211B USB IEEE 802.11b/g
+device		arl			# Aironet Arlan 655 wireless adapters
+device		iwi			# Intel PRO/Wireless 2200BG/2225BG/2915ABG
+device		ipw 		# Intel PRO/Wireless 2100 IEEE 802.11 adapter
+#device		zyd			# ZyDAS ZD1211/ZD1211B USB IEEE 802.11b/g
 device		sbni		# Granch SBNI12-xx ISA and PCI adapters
-device 		wpi		# Intel 3945ABG Wireless LAN controller
+device 		wpi			# Intel 3945ABG Wireless LAN controller
 device 		cxgb 		# Chelsio T3 10 Gigabit Ethernet
-device 		gem		# ERI/GEM/GMAC Ethernet device driver
+device 		gem			# ERI/GEM/GMAC Ethernet device driver
 device		nxge		# Neterion Xframe 10GbE Server/Storage
 
-# USB support
-device          udav                    # Davicom DM910 USB Ethernet driver
+# SCSI Controllers
+device		ihb			# IOI-A100U2W drivers
 
-device          lagg                    # Link aggregation interface
-device					vlan										# IEEE 802.1Q VLAN Support
+# PCI Ethernet NICs.
+device		le			# AMD Am7900 LANCE and Am79C9xx PCnet Ethernet interface driver
+
+# Wireless NIC cards
+device		firmware
+device		wlan_acl
+device		wlan_tkip
+device		wlan_xauth
+device		iwi
+device		ipw
+
+device		lagg			# Link aggregation interface
+device		vlan			# IEEE 802.1Q VLAN Support
+
+# USB support
+device		udav			# Davicom DM910 USB Ethernet driver
+
+# Hardware crypto acceleration
+device		crypto
+device		cryptodev
+device		padlock
 
 # GEOM classes
-options         GEOM_ELI                # GELI filesystem encryption
+options		GEOM_ELI	# GELI filesystem encryption
 
 # SMB bus
-device          smbus                   # Bus support, required for smb below.
-device          intpm
-device          alpm
-device          ichsmb
-device          viapm
-device          amdpm
-device          amdsmb
-device          nfpm
-device          nfsmb
-device          smb
+device		smbus			# Bus support, required for smb below.
+device		intpm
+device		alpm
+device		ichsmb
+device		viapm
+device		amdpm
+device		amdsmb
+device		nfpm
+device		nfsmb
+device		smb
 
 # I2C Bus
-device          iicbus          # Bus support, required for ic/iic/iicsmb below.
-device          iicbb
-device          ic
-device          iic
-device          iicsmb          # smb over i2c bridge
+device		iicbus		# Bus support, required for ic/iic/iicsmb below.
+device		iicbb
+device		ic
+device		iic
+device		iicsmb		# smb over i2c bridge
 
 # Temperature sensors:
 #
 # coretemp: on-die sensor on Intel Core and newer CPUs
 #
-
-device          coretemp
-
-# Hardware crypto acceleration 	 
-device          crypto 	 
-device          cryptodev 	 
-device          padlock
+device		coretemp

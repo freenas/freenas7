@@ -53,7 +53,6 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Swap")
 				<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
 				<li class="tabact"><a href="diag_infos_swap.php" title="<?=gettext("Reload page");?>"><?=gettext("Swap");?></a></li>
 				<li class="tabinact"><a href="diag_infos_sockets.php"><?=gettext("Sockets");?></a></li>
-				<li class="tabinact"><a href="diag_infos_sensors.php"><?=gettext("Sensors");?></a></li>
 			</ul>
 		</td>
 	</tr>

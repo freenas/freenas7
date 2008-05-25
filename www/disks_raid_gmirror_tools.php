@@ -4,7 +4,7 @@
 	disks_raid_gmirror_tools.php
 	
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	JavaScript code are from Volker Theile
 	All rights reserved.
 	
@@ -37,12 +37,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID1"), gettext("Tools"));
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
+if (!is_array($config['gmirror']['vdisk']))
+	$config['gmirror']['vdisk'] = array();
 
-array_sort_key($config['disks']['disk'], "name");
+array_sort_key($config['gmirror']['vdisk'], "name");
 
-$a_raid = &$config['disks']['disk'];
+$a_raid = &$config['gmirror']['vdisk'];
 
 if ($_POST) {
 	unset($input_errors);
@@ -79,7 +79,6 @@ function raid_change() {
 	// Insert entries for disk combobox.
 	switch(document.iform.raid.value) {
 		<?php foreach ($a_raid as $raidv): ?>
-		<?php if ($raidv['class']=="gmirror"): ?>
     case "<?=$raidv['name'];?>":
       <?php foreach($raidv['device'] as $devicen => $devicev): ?>
 				<?php $name = str_replace("/dev/","",$devicev);?>
@@ -87,9 +86,8 @@ function raid_change() {
 					next = document.iform.disk.length;
 				document.iform.disk.add(new Option("<?=$name;?>","<?=$name;?>",false,<?php if($name === $disk){echo "true";}else{echo "false";};?>), next);
 				<?php endforeach; ?>
-				break;   
-	<?php endif; ?>	
-	<?php endforeach;?>
+				break;
+     <?php endforeach;?>
 	}
 }
 // -->
@@ -122,11 +120,9 @@ function raid_change() {
 				<select name="raid" class="formfld" id="raid" onchange="raid_change()">
 					<option value=""><?=gettext("Must choose one");?></option>
 					<?php foreach ($a_raid as $raidv):?>
-					<?php if ($raidv['class']=="gmirror"): ?>
 					<option value="<?=$raidv['name'];?>" <?php if ($raid === $raidv['name']) echo "selected";?>> 
 					<?php echo htmlspecialchars($raidv['name']);	?>
 					</option>
-					<?php endif; ?>
 					<?php endforeach;?>
     		</select>
       </td>

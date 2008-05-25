@@ -4,7 +4,7 @@
 	disks_init.php
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -46,8 +46,6 @@ $a_fst = array_slice($a_fst, 1); // Remove the first blank line 'unknown'
 unset($a_fst['ufs']); // Remove old UFS type: Now FreeNAS will impose only one UFS type: GPT/EFI with softupdate
 unset($a_fst['ufs_no_su']);
 unset($a_fst['ufsgpt_no_su']);
-unset($a_fst['msdos']); // Remove FAT32: can create problem with samba share under FreeNAS
-unset($a_fst['ext2']); // Remove EXT2: Why to use it under FreeNAS ?
 
 // Load the /var/etc/cfdevice file to find out on which disk the OS is installed.
 $filename=$g['varetc_path']."/cfdevice";
@@ -202,7 +200,7 @@ if (!isset($do_format)) {
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
 							<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br></strong></span><?=gettext("This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified.");?><br><br>
-							</span>
+							<?php echo sprintf(gettext("UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"), get_product_name());?></span>
 						</td>
 					</tr>
 				</table>

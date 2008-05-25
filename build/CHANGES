@@ -4,14 +4,11 @@ FreeNAS 0.7 (Sardaukar):
 ------------------------
 
 Majors changes:
-- Upgrade to FreeBSD 7.0 (thanks to Nelson Silva, Alias fulgas, for the clog patch)
+- Upgrade to FreeBSD 7.0.
+
+Majors changes:
 
 Minors changes:
-
-Feature removed:
-- Formatting drive in FAT32 and EXT2 filesystem
-- Creating gvinum drive (but still support existing gvinum drive)
-- Change lighttpd server.max-write-idle to 1800 seconds (permit long fsck from the webGUI)
 
 Bug fixes:
 
@@ -30,7 +27,7 @@ NEED TESTING:
 
 Help needed:
 - Need help for adding LDAP authentication feature:
-Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
+  Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
 FreeNAS 0.69 (Fedaykin):
 ------------------------

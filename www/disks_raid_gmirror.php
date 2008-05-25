@@ -3,7 +3,7 @@
 /*
 	disks_raid_gmirror.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -35,12 +35,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID1"), gettext("Manage RAID"));
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
+if (!is_array($config['gmirror']['vdisk']))
+	$config['gmirror']['vdisk'] = array();
 
-array_sort_key($config['disks']['disk'], "name");
+array_sort_key($config['gmirror']['vdisk'], "name");
 
-$a_raid = &$config['disks']['disk'];
+$a_raid = &$config['gmirror']['vdisk'];
 
 if ($_POST) {
 	$pconfig = $_POST;
@@ -49,11 +49,9 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			foreach ($a_raid as $raidv) {
-				if ($raidv['class']=="gmirror") {
-					if (is_modified($raidv['name'])) {
-						$retval |= rc_exec_service("geom load mirror");
-						$retval |= disks_raid_gmirror_configure($raidv['name']);
-					}
+				if (is_modified($raidv['name'])) {
+					$retval |= rc_exec_service("geom load mirror");
+					$retval |= disks_raid_gmirror_configure($raidv['name']);
 				}
 			}
 		}
@@ -117,13 +115,13 @@ function is_modified($name) {
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
             <td width="25%" class="listhdrr"><?=gettext("Volume Name");?></td>
+            <td width="25%" class="listhdrr"><?=gettext("Type");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Size");?></td>
             <td width="20%" class="listhdrr"><?=gettext("Status");?></td>
             <td width="10%" class="list"></td>
 					</tr>
 					<?php $raidstatus = get_gmirror_disks_list();?>
 					<?php $i = 0; foreach ($a_raid as $raid):?>
-					<?php if ($raid['class']=="gmirror"): ?>
 					<?php
           $size = gettext("Unknown");
           $status = gettext("Stopped");
@@ -139,6 +137,7 @@ function is_modified($name) {
           ?>
           <tr>
             <td class="listlr"><?=htmlspecialchars($raid['name']);?></td>
+            <td class="listr"><?=htmlspecialchars($raid['type']);?></td>
             <td class="listr"><?=$size;?>&nbsp;</td>
             <td class="listbg"><?=$status;?>&nbsp;</td>
             <td valign="middle" nowrap class="list">
@@ -146,10 +145,9 @@ function is_modified($name) {
 							<a href="disks_raid_gmirror.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" width="17" height="17" border="0"></a>
 						</td>
 					</tr>
-					<?php endif; ?>
 					<?php $i++; endforeach;?>
           <tr>
-            <td class="list" colspan="3"></td>
+            <td class="list" colspan="4"></td>
             <td class="list"> <a href="disks_raid_gmirror_edit.php"><img src="plus.gif" title="<?=gettext("Add RAID");?>" width="17" height="17" border="0"></a></td>
 					</tr>
         </table>

@@ -35,13 +35,12 @@ require("guiconfig.inc");
 
 $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Management"));
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
+if (!is_array($config['geli']['vdisk']))
+	$config['geli']['vdisk'] = array();
 
-// array_sort_key($config['geli']['vdisk'], "devicespecialfile");
-array_sort_key($config['disks']['disk'], "name");
+array_sort_key($config['geli']['vdisk'], "devicespecialfile");
 
-$a_geli = &$config['disks']['disk'];
+$a_geli = &$config['geli']['vdisk'];
 
 if ($_POST) {
 	$pconfig = $_POST;
@@ -118,7 +117,6 @@ if ($_GET['act'] == "ret")
             <td width="10%" class="list"></td>
           </tr>
   			  <?php $i = 0; foreach($a_geli as $geli): ?>
-			<?php if ($geli['class']== "geli"): ?>
           <tr>
             <td class="listlr"><?=htmlspecialchars($geli['name']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($geli['aalgo']);?>&nbsp;</td>
@@ -141,7 +139,6 @@ if ($_GET['act'] == "ret")
               <a href="disks_crypt.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this encrypted volume? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Kill encrypted volume"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>
-	<?php endif; ?>
           <?php $i++; endforeach; ?>
           <tr>
             <td class="list" colspan="4"></td>

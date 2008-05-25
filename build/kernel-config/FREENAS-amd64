@@ -16,7 +16,7 @@
 # If you are in doubt as to the purpose or necessity of a line, check first
 # in NOTES.
 #
-# $FreeBSD: src/sys/i386/conf/GENERIC,v 1.429.2.14.2.1 2007/12/15 06:32:32 scottl Exp $
+# $FreeBSD: src/sys/i386/conf/GENERIC,v 1.474.2.2.2.1 2008/02/06 03:24:28 scottl Exp $
 
 machine		amd64
 cpu		HAMMER
@@ -27,15 +27,16 @@ ident		FREENAS
 
 #makeoptions	DEBUG=-g		# Build kernel with gdb(1) debug symbols
 
-#options 	SCHED_ULE			# ULE scheduler
 options 	SCHED_4BSD		# 4BSD scheduler
 options 	PREEMPTION		# Enable kernel thread preemption
 options 	INET			# InterNETworking
 options 	INET6			# IPv6 communications protocols
+options 	SCTP			# Stream Control Transmission Protocol
 options 	FFS			# Berkeley Fast Filesystem
 options 	SOFTUPDATES		# Enable FFS soft updates support
 options 	UFS_ACL			# Support for access control lists
 options 	UFS_DIRHASH		# Improve performance on big directories
+options 	UFS_GJOURNAL		# Enable gjournal-based UFS journaling
 options 	MD_ROOT			# MD is a potential root device
 options 	NFSCLIENT		# Network Filesystem Client
 options 	NFSSERVER		# Network Filesystem Server
@@ -44,10 +45,12 @@ options 	MSDOSFS			# MSDOS Filesystem
 options 	CD9660			# ISO 9660 Filesystem
 options 	PROCFS			# Process filesystem (requires PSEUDOFS)
 options 	PSEUDOFS		# Pseudo-filesystem framework
-options 	GEOM_GPT		# GUID Partition Tables.
-options 	COMPAT_43		# Compatible with BSD 4.3 [KEEP THIS!]
+options 	GEOM_PART_GPT		# GUID Partition Tables.
+options 	GEOM_LABEL		# Provides labelization
+options 	COMPAT_43TTY		# BSD 4.3 TTY compat [KEEP THIS!]
 options 	COMPAT_FREEBSD4		# Compatible with FreeBSD4
 options 	COMPAT_FREEBSD5		# Compatible with FreeBSD5
+options 	COMPAT_FREEBSD6		# Compatible with FreeBSD6
 options 	SCSI_DELAY=5000		# Delay (in ms) before probing SCSI
 #options 	KTRACE			# ktrace(1) support
 options 	SYSVSHM			# SYSV-style shared memory
@@ -56,8 +59,15 @@ options 	SYSVSEM			# SYSV-style semaphores
 options 	_KPOSIX_PRIORITY_SCHEDULING # POSIX P1003_1B real-time extensions
 options 	KBD_INSTALL_CDEV	# install a CDEV entry in /dev
 options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
+options 	STOP_NMI		# Stop CPUS using NMI instead of IPI
+#options 	AUDIT			# Security event auditing
 
+# To make an SMP kernel, the next two lines are needed
+options 	SMP			# Symmetric MultiProcessor Kernel
 device		apic			# I/O APIC
+
+# CPU frequency control
+device		cpufreq
 
 # Bus support.
 device		eisa
@@ -84,6 +94,7 @@ device		ahd		# AHA39320/29320 and onboard AIC79xx devices
 options 	AHD_REG_PRETTY_PRINT	# Print register bitfields in debug
 					# output.  Adds ~215k to driver.
 device		amd		# AMD 53C974 (Tekram DC-390(T))
+device		hptiop		# Highpoint RocketRaid 3xxx series
 device		isp		# Qlogic family
 #device 	ispfw		# Firmware for QLogic HBAs- normally a module
 device		mpt		# LSI-Logic MPT-Fusion
@@ -118,7 +129,6 @@ device		ciss		# Compaq Smart RAID 5*
 device		dpt		# DPT Smartcache III, IV - See NOTES for options
 device		hptmv		# Highpoint RocketRAID 182x
 device		hptrr		# Highpoint RocketRAID 17xx, 22xx, 23xx, 25xx
-device		rr232x		# Highpoint RocketRAID 232x
 device		iir		# Intel Integrated RAID
 device		ips		# IBM (Adaptec) ServeRAID
 device		mly		# Mylex AcceleRAID/eXtremeRAID
@@ -147,17 +157,12 @@ device		splash		# Splash screen and screen saver support
 # syscons is the default console driver, resembling an SCO console
 device		sc
 
-# Enable this for the pcvt (VT220 compatible) console driver
-#device		vt
-#options 	XSERVER		# support for X server on a vt console
-#options 	FAT_CURSOR	# start with block cursor
-
 device		agp		# support several AGP chipsets
 
 # Power management support (see NOTES for more options)
 #device		apm
 # Add suspend/resume support for the i8254.
-device		pmtimer
+#device		pmtimer
 
 # PCCARD (PCMCIA) support
 # PCMCIA and cardbus bridge support
@@ -167,6 +172,7 @@ device		cardbus		# CardBus (32-bit) bus
 
 # Serial (COM) ports
 device		sio		# 8250, 16[45]50 based serial ports
+device		uart		# Generic UART driver
 
 # Parallel port
 device		ppc
@@ -178,13 +184,14 @@ device		ppi		# Parallel port interface device
 
 # If you've got a "dumb" serial or parallel PCI card that is
 # supported by the puc(4) glue driver, uncomment the following
-# line to enable it (connects to the sio and/or ppc drivers):
+# line to enable it (connects to sio, uart and/or ppc drivers):
 device		puc
 
 # PCI Ethernet NICs.
 device		de		# DEC/Intel DC21x4x (``Tulip'')
 device		em		# Intel PRO/1000 adapter Gigabit Ethernet Card
 device		ixgb		# Intel PRO/10GbE Ethernet Card
+device		le		# AMD Am7900 LANCE and Am79C9xx PCnet
 device		txp		# 3Com 3cR990 (``Typhoon'')
 device		vx		# 3Com 3c590, 3c595 (``Vortex'')
 
@@ -198,9 +205,10 @@ device		dc		# DEC/Intel 21143 and various workalikes
 device		fxp		# Intel EtherExpress PRO/100B (82557, 82558)
 device		lge		# Level 1 LXT1001 gigabit Ethernet
 device		msk		# Marvell/SysKonnect Yukon II Gigabit Ethernet
+device		nfe		# nVidia nForce MCP on-board Ethernet
 device		nge		# NatSemi DP83820 gigabit Ethernet
 device		nve		# nVidia nForce MCP on-board Ethernet Networking
-device		pcn		# AMD Am79C97x PCI 10/100(precedence over 'lnc')
+device		pcn		# AMD Am79C97x PCI 10/100 (precedence over 'le')
 device		re		# RealTek 8139C+/8169/8169S/8110S
 device		rl		# RealTek 8129/8139
 device		sf		# Adaptec AIC-6915 (``Starfire'')
@@ -233,6 +241,9 @@ device		wlan		# 802.11 support
 device		wlan_wep	# 802.11 WEP support
 device		wlan_ccmp	# 802.11 CCMP support
 device		wlan_tkip	# 802.11 TKIP support
+device		wlan_amrr	# AMRR transmit rate control algorithm
+device		wlan_scan_ap	# 802.11 AP mode scanning
+device		wlan_scan_sta	# 802.11 STA mode scanning
 device		an		# Aironet 4500/4800 802.11 wireless NICs.
 device		ath		# Atheros pci/cardbus NIC's
 device		ath_hal		# Atheros HAL (Hardware Access Layer)
@@ -253,6 +264,7 @@ device		pty		# Pseudo-ttys (telnet etc)
 device		md		# Memory "disks"
 #device		gif		# IPv6 and IPv4 tunneling
 #device		faith		# IPv6-to-IPv4 relaying (translation)
+device		firmware	# firmware assist module
 
 # The `bpf' device enables the Berkeley Packet Filter.
 # Be aware of the administrative consequences of enabling this!
@@ -272,6 +284,7 @@ device		ukbd		# Keyboard
 device		umass		# Disks/Mass storage - Requires scbus and da
 #device		ums		# Mouse
 device		ural		# Ralink Technology RT2500USB wireless NICs
+device		rum		# Ralink Technology RT2501USB wireless NICs
 #device		urio		# Diamond Rio 500 MP3 player
 #device		uscanner	# Scanners
 # USB Ethernet, requires miibus
@@ -285,13 +298,17 @@ device		rue		# RealTek RTL8150 USB Ethernet
 # FireWire support
 device		firewire	# FireWire bus code
 device		sbp		# SCSI over FireWire (Requires scbus and da)
-#device		fwe		# Ethernet over FireWire (non-standard!)
+device		fwe		# Ethernet over FireWire (non-standard!)
+device		fwip		# IP over FireWire (RFC 2734,3146)
+#device		dcons		# Dumb console driver
+#device		dcons_crom	# Configuration ROM for dcons
 
 #####################################################################
 # FREENAS
 #####################################################################
 options 	COMPAT_IA32		# Compatible with i386 binaries
-options   SMP						# Symmetric MultiProcessor Kernel
+options		CPU_UPGRADE_HW_CACHE
+options		CPU_SUSP_HLT
 device		speaker
 
 # Networking options
@@ -299,14 +316,22 @@ options		DEVICE_POLLING
 options		HZ=1000
 
 # Splashscreen
-options		VESA
+#options		VESA
 options		SC_PIXEL_MODE
 
 # Power management support (see NOTES for more options)
 device		acpi			# acpi -- Advanced Configuration and Power Management support
 
-# The cpufreq(4) driver provides support for non-ACPI CPU frequency control
-device		cpufreq
+# Network drivers:
+device		arl			# Aironet Arlan 655 wireless adapters
+device		iwi			# Intel PRO/Wireless 2200BG/2225BG/2915ABG
+device		ipw 		# Intel PRO/Wireless 2100 IEEE 802.11 adapter
+#device		zyd			# ZyDAS ZD1211/ZD1211B USB IEEE 802.11b/g
+device		sbni		# Granch SBNI12-xx ISA and PCI adapters
+device 		wpi			# Intel 3945ABG Wireless LAN controller
+device 		cxgb 		# Chelsio T3 10 Gigabit Ethernet
+device 		gem			# ERI/GEM/GMAC Ethernet device driver
+device		nxge		# Neterion Xframe 10GbE Server/Storage
 
 # SCSI Controllers
 device		ihb				# IOI-A100U2W drivers
@@ -328,17 +353,13 @@ device		vlan			# IEEE 802.1Q VLAN Support
 # USB support
 device		udav			# Davicom DM910 USB Ethernet driver
 
-# FireWire support
-device		fwip			# Ethernet over FireWire (standard)
-
 # Hardware crypto acceleration
 device		crypto
 device		cryptodev
-device		padlock
+#device		padlock
 
 # GEOM classes
 options		GEOM_ELI		# GELI filesystem encryption
-options		GEOM_LABEL	# Providers labelization.
 
 # SMB bus
 device		smbus			# Bus support, required for smb below.
@@ -358,3 +379,9 @@ device		iicbb
 device		ic
 device		iic
 device		iicsmb		# smb over i2c bridge
+
+# Temperature sensors:
+#
+# coretemp: on-die sensor on Intel Core and newer CPUs
+#
+device		coretemp

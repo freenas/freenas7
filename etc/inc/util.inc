@@ -461,41 +461,7 @@ function get_mounts_list()
 		$devicespecialfile = chop($aline[0]);
 
 		// Get the mount path
-
-		// Need to manage strange result here:
-		// the $aline can have 2 forms:
-/*
-Array
-(
-    [0] => /dev/mirror/raidp1
-    [1] => /mnt/securedisk
-    [2] =>
-    [3] => ufs
-    [4] => acls
-    [5] =>
-    [6] => 2 2
-)
-
-OR:
-
-Array
-(
-    [0] => /dev/ad1.elip1
-    [1] =>
-    [2] => /mnt/toto
-    [3] =>
-    [4] => ufs
-    [5] => acls
-    [6] =>
-    [7] => 2 2
-*/
-
-		if (empty($aline[2])) {
-			$mountpath = chop($aline[1]);
-
-		} else {
-			$mountpath = chop($aline[2]);
-		}
+		$mountpath = chop($aline[1]);
 
 		// Ignore various mountpoints
 		if (("/dev/md0" === $devicespecialfile) || ("devfs" === $devicespecialfile) ||
@@ -507,14 +473,15 @@ Array
 		$devicename = $adevicespecialfile[2];
 
 		// Test if it's a gvinum, gmirror, gconcat or gstripe device
-		if (($devicename == "gvinum") || ($devicename == "mirror") || ($devicename == "concat") ||
-				($devicename == "stripe") || ($devicename == "raid5")) {
+		if ((strcmp($devicename,"gvinum") == 0) ||
+				(strcmp($devicename,"mirror") == 0) || (strcmp($devicename,"concat") == 0) ||
+				(strcmp($devicename,"stripe") == 0) || (strcmp($devicename,"raid5") == 0)) {
 			$devicename = $adevicespecialfile[3];
-
 		}
 
 		// Get the sharename
 		$amountpath = explode("/", $mountpath);
+
 		$amountlist[$i]['mp'] = $mountpath;
 		$amountlist[$i]['mdisk'] = $devicename;
 		$amountlist[$i]['devicespecialfile'] = $devicespecialfile;
@@ -595,7 +562,7 @@ function get_mount_fsid($devicespecialfile, $mp) {
 	return NULL;
 }
 
-/* Return list of ALL software volume: gvinum, gmirror,etc... */
+/* Return list of ALL software volume: gvinum, gmirror */
 function get_sraid_disks_list()
 {
 	$disklist = array_merge((array)get_gvinum_disks_list(),(array)get_gmirror_disks_list(),(array)get_gconcat_disks_list(),(array)get_gstripe_disks_list(),(array)get_graid5_disks_list());
@@ -605,7 +572,7 @@ function get_sraid_disks_list()
 // Get list of software gvinum RAID disks.
 //[volumename] => Array
 //    (
-//        [class] => gvinum
+//        [type] => gvinum
 //        [state] => UP
 //        [size] => 6149 MB
 //        [name] => VolumeName
@@ -630,7 +597,7 @@ function get_gvinum_disks_list()
 		$disklist[$diskname] = array();
 		$disklist[$diskname]['name'] = $diskname;
 		$disklist[$diskname]['devicespecialfile'] = "/dev/gvinum/" . $diskname;
-		$disklist[$diskname]['class'] = "gvinum";
+		$disklist[$diskname]['type'] = "gvinum";
 		$disklist[$diskname]['desc'] = "Software RAID";
 		$disklist[$diskname]['state'] = $aline[3];
 
@@ -645,7 +612,7 @@ function get_gvinum_disks_list()
 // Get list of software gmirror RAID disks.
 //[volumename] => Array
 //    (
-//        [class] => gmirror
+//        [type] => gmirror
 //        [name] => volumename
 //        [state] => COMPLETE
 //        [size] => 6149M
@@ -672,7 +639,7 @@ function get_gmirror_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/mirror/" . $diskname;
-			$disklist[$diskname]['class'] = "gmirror";
+			$disklist[$diskname]['type'] = "gmirror";
 			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
@@ -701,7 +668,7 @@ function get_gmirror_disks_list()
 // Get list of software gconcat RAID disks.
 //[volumename] => Array
 //    (
-//        [class] => gconcat
+//        [type] => gconcat
 //        [state] => COMPLETE
 //        [size] => 6149M
 //        [name] => concat1
@@ -728,7 +695,7 @@ function get_gconcat_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/concat/" . $diskname;
-			$disklist[$diskname]['class'] = "gconcat";
+			$disklist[$diskname]['type'] = "gconcat";
 			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
@@ -757,7 +724,7 @@ function get_gconcat_disks_list()
 // Get list of software gstripe RAID disks.
 //[volumename] => Array
 //    (
-//        [class] => gstripe
+//        [type] => gstripe
 //        [state] => COMPLETE
 //        [size] => 6149M
 //        [name] => raid0
@@ -784,7 +751,7 @@ function get_gstripe_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/stripe/" . $diskname;
-			$disklist[$diskname]['class'] = "gstripe";
+			$disklist[$diskname]['type'] = "gstripe";
 			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
@@ -813,7 +780,7 @@ function get_gstripe_disks_list()
 // Get list of software graid5 RAID disks.
 //[volumename] => Array
 //    (
-//        [class] => graid5
+//        [type] => graid5
 //        [state] => COMPLETE
 //        [size] => 6149M
 //        [name] => BIG1
@@ -840,7 +807,7 @@ function get_graid5_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/raid5/" . $diskname;
-			$disklist[$diskname]['class'] = "graid5";
+			$disklist[$diskname]['type'] = "graid5";
 			$disklist[$diskname]['desc'] = "Software RAID";
 
 			/* Get diskinfo to get disk size */
@@ -869,7 +836,7 @@ function get_graid5_disks_list()
 // Get list of ATA disks.
 //[ad0] => Array
 //    (
-//        [class] => ATA
+//        [type] => IDE
 //        [desc] => QUANTUM FIREBALL EX6.4A/A0A.0D00
 //        [size] => 6149MB
 //        [name] => ad0
@@ -897,7 +864,7 @@ function get_ata_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/" . $diskname;
-			$disklist[$diskname]['class'] = "ATA";
+			$disklist[$diskname]['type'] = "IDE";
 
 			/* Match the description witch is include between < and > */
 			preg_match("/.*\<([^>]*)>.*/",$line,$match);
@@ -915,7 +882,7 @@ function get_ata_disks_list()
 // Get list of SCSI disks.
 //[ad0] => Array
 //    (
-//        [class] => SCSI
+//        [type] => IDE
 //        [desc] => QUANTUM FIREBALL EX6.4A/A0A.0D00
 //        [size] => 6149MB
 //        [name] => ad0
@@ -943,7 +910,7 @@ function get_scsi_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/" . $diskname;
-			$disklist[$diskname]['class'] = "SCSI";
+			$disklist[$diskname]['type'] = "SCSI";
 
 			/* Match the description witch is include between < and > */
 			preg_match("/.*\<([^>]*)>.*/",$line,$match);
@@ -961,7 +928,7 @@ function get_scsi_disks_list()
 // Get list of hardware RAID disks.
 //[aacd0] => Array
 //    (
-//        [class] => RAID
+//        [type] => RAID
 //        [desc] => XYZ
 //        [size] => xxxMB
 //        [name] => aacd0
@@ -992,7 +959,7 @@ function get_hraid_disks_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile']= "/dev/" . $diskname;
-			$disklist[$diskname]['class'] = "RAID";
+			$disklist[$diskname]['type'] = "RAID";
 
 			/* Looking for the disk description in the dmesg */
 			foreach ($rawdmesg as $dmesgline) {
@@ -1023,7 +990,7 @@ function get_hraid_disks_list()
 // exemple: Array
 // [acd0] => Array
 //    (
-//        [class] => ATA
+//        [type] => IDE
 //        [desc] => TDK CDRW241040B/57S2
 //        [name] => acd0
 //        [size] => NA
@@ -1053,7 +1020,7 @@ function get_cdrom_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/" . $diskname;
-			$disklist[$diskname]['class'] = "ATA";
+			$disklist[$diskname]['type'] = "IDE";
 			$disklist[$diskname]['size'] = "NA";
 
 			/* Match the description witch is include between < and > */
@@ -1088,7 +1055,7 @@ function get_cdrom_list()
 			$disklist[$diskname] = array();
 			$disklist[$diskname]['name'] = $diskname;
 			$disklist[$diskname]['devicespecialfile'] = "/dev/" . $diskname;
-			$disklist[$diskname]['class'] = "SCSI";
+			$disklist[$diskname]['type'] = "SCSI";
 			$disklist[$diskname]['size'] = "NA";
 
 			/* Match the description witch is include between < and > */
@@ -1735,14 +1702,12 @@ function get_conf_physical_disks_list() {
 	$a_physicaldisk = array();
 
 	if (is_array($config['disks']['disk'])) {
-
+		array_sort_key($config['disks']['disk'], "name");
 		$a_disks = $config['disks']['disk'];
-		foreach ($a_disks as $disk) {
-			if (($disk['class']) == "ATA" || ($disk['class'] == "SCSI") || ($disk['class'] == "RAID")) {
-				$a_physicaldisk[]= $disk;
-			}
-		}
-  	}
+		foreach ($a_disks as &$disk) { $disk['class'] = "physical"; } // Set disk type
+		$a_physicaldisk = array_merge($a_physicaldisk, $a_disks);
+  }
+
 	return $a_physicaldisk;
 }
 
@@ -1752,15 +1717,40 @@ function get_conf_sraid_disks_list() {
 
 	$a_vdisk = array();
 
-	if (is_array($config['disks']['disk'])) {
+	if (is_array($config['gvinum']['vdisk'])) {
+		array_sort_key($config['gvinum']['vdisk'], "name");
+		$a_gvinum = $config['gvinum']['vdisk'];
+		foreach ($a_gvinum as &$vdisk) { $vdisk['class'] = "gvinum"; } // Set disk type
+		$a_vdisk = array_merge($a_vdisk, $a_gvinum);
+  }
 
-		$a_disks = $config['disks']['disk'];
-		foreach ($a_disks as $disk) {
-			if (($disk['class']) == "gmirror" || ($disk['class'] == "graid5") || ($disk['class'] == "gvinum") || ($disk['class'] == "gstripe") || ($disk['class'] == "gconcat")) {
-				$a_vdisk[]= $disk;
-			}
-		}
-  	}
+	if (is_array($config['gmirror']['vdisk'])) {
+		array_sort_key($config['gmirror']['vdisk'], "name");
+		$a_gmirror = $config['gmirror']['vdisk'];
+		foreach ($a_gmirror as &$vdisk) { $vdisk['class'] = "gmirror"; } // Set disk type
+		$a_vdisk = array_merge($a_vdisk, $a_gmirror);
+  }
+
+	if (is_array($config['gconcat']['vdisk'])) {
+		array_sort_key($config['gconcat']['vdisk'], "name");
+		$a_gconcat = $config['gconcat']['vdisk'];
+		foreach ($a_gconcat as &$vdisk) { $vdisk['class'] = "gconcat"; } // Set disk type
+		$a_vdisk = array_merge($a_vdisk, $a_gconcat);
+  }
+
+	if (is_array($config['gstripe']['vdisk'])) {
+		array_sort_key($config['gstripe']['vdisk'], "name");
+		$a_gstripe = $config['gstripe']['vdisk'];
+		foreach ($a_gstripe as &$vdisk) { $vdisk['class'] = "gstripe"; } // Set disk type
+		$a_vdisk = array_merge($a_vdisk, $a_gstripe);
+  }
+
+	if (is_array($config['graid5']['vdisk'])) {
+		array_sort_key($config['graid5']['vdisk'], "name");
+		$a_graid5 = $config['graid5']['vdisk'];
+		foreach ($a_graid5 as &$vdisk) { $vdisk['class'] = "graid5"; } // Set disk type
+		$a_vdisk = array_merge($a_vdisk, $a_graid5);
+  }
 
 	return $a_vdisk;
 }
@@ -1771,16 +1761,12 @@ function get_conf_encryped_disks_list() {
 
 	$a_vdisk = array();
 
-
-	if (is_array($config['disks']['disk'])) {
-
-		$a_disks = $config['disks']['disk'];
-		foreach ($a_disks as $disk) {
-			if (($disk['class']) == "geli") {
-				$a_vdisk[]= $disk;
-			}
-		}
-  	}
+	if (is_array($config['geli']['vdisk'])) {
+		array_sort_key($config['geli']['vdisk'], "name");
+		$a_geli = $config['geli']['vdisk'];
+		foreach ($a_geli as &$vdisk) { $vdisk['class'] = "geli"; } // Set disk type
+		$a_vdisk = array_merge($a_vdisk, $a_geli);
+	}
 
 	return $a_vdisk;
 }

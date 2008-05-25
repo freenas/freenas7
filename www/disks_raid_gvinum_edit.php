@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_raid_gconcat_edit.php
+	disks_raid_gvinum_edit.php
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
@@ -37,14 +37,14 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("JBOD"),isset($id)?gettext("Edit"):gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("Geom Vinum"),isset($id)?gettext("Edit"):gettext("Add"));
 
-if (!is_array($config['gconcat']['vdisk']))
-	$config['gconcat']['vdisk'] = array();
+if (!is_array($config['gvinum']['vdisk']))
+	$config['gvinum']['vdisk'] = array();
 
-array_sort_key($config['gconcat']['vdisk'], "name");
+array_sort_key($config['gvinum']['vdisk'], "name");
 
-$a_raid = &$config['gconcat']['vdisk'];
+$a_raid = &$config['gvinum']['vdisk'];
 $all_raid = get_conf_sraid_disks_list();
 $a_disk = get_conf_disks_filtered_ex("fstype", "softraid");
 
@@ -54,9 +54,9 @@ if (!sizeof($a_disk)) {
 
 if (isset($id) && $a_raid[$id]) {
 	$pconfig['name'] = $a_raid[$id]['name'];
+	$pconfig['devicespecialfile'] = $a_raid[$id]['devicespecialfile'];
 	$pconfig['type'] = $a_raid[$id]['type'];
 	$pconfig['device'] = $a_raid[$id]['device'];
-	$pconfig['devicespecialfile'] = $a_raid[$id]['devicespecialfile'];
 }
 
 if ($_POST) {
@@ -64,8 +64,8 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-	$reqdfields = explode(" ", "name");
-	$reqdfieldsn = array(gettext("Raid name"));
+	$reqdfields = explode(" ", "name type");
+	$reqdfieldsn = array(gettext("Raid name"),gettext("Type"));
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -82,16 +82,29 @@ if ($_POST) {
 	}
 
 	/* check the number of RAID disk for volume */
-	if (count($_POST['device']) < 2)
-		$input_errors[] = gettext("There must be a minimum of 2 disks in a JBOD.");
+	switch ($_POST['type'])
+	{
+		case 0:
+			if (count($_POST['device']) < 2)
+				$input_errors[] = gettext("There must be a minimum of 2 disks in a RAID 0 volume.");
+			break;
+		case 1:
+			if (count($_POST['device']) != 2)
+				$input_errors[] = gettext("There must be 2 disks in a RAID 1 volume.");
+			break;
+		case 5:
+			if (count($_POST['device']) < 3)
+				$input_errors[] = gettext("There must be a minimum of 3 disks in a RAID 5 volume.");
+			break;
+	}
 
 	if (!$input_errors) {
 		$raid = array();
 		$raid['name'] = substr($_POST['name'], 0, 15); // Make sure name is only 15 chars long (GEOM limitation).
-		$raid['type'] = "JBOD";
+		$raid['type'] = $_POST['type'];
 		$raid['device'] = $_POST['device'];
-		$raid['desc'] = "Software gconcat JBOD";
-		$raid['devicespecialfile'] = "/dev/concat/{$raid['name']}";
+		$raid['desc'] = "Software gvinum RAID {$_POST['type']}";
+		$raid['devicespecialfile'] = "/dev/gvinum/{$raid['name']}";
 
 		if (isset($id) && $a_raid[$id])
 			$a_raid[$id] = $raid;
@@ -102,13 +115,13 @@ if ($_POST) {
 
 		if ($_POST['init']) {
 			// Mark new added RAID to be configured.
-			file_put_contents($d_raid_gconcat_confdirty_path, "{$raid[name]}\n", FILE_APPEND | FILE_TEXT);
+			file_put_contents($d_raid_gvinum_confdirty_path, "{$raid[name]}\n", FILE_APPEND | FILE_TEXT);
 		} else {
 			// Start already configured disks.
-			rc_exec_service("geom start concat");
+			rc_exec_service("geom start vinum");
 		}
 
-		header("Location: disks_raid_gconcat.php");
+		header("Location: disks_raid_gvinum.php");
 		exit;
 	}
 }
@@ -117,27 +130,27 @@ if ($_POST) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
-		  <ul id="tabnav">
-				<li class="tabact"><a href="disks_raid_gconcat.php" title="<?=gettext("Reload page");?>" ><?=gettext("JBOD");?></a></li>
+			<ul id="tabnav">
+				<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("JBOD"); ?> </a></li>
 				<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("RAID 0"); ?></a></li>
 				<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("RAID 1"); ?></a></li>
 				<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("RAID 5"); ?> </a></li>
-				<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?> </a></li>
-		  </ul>
-  	</td>
+				<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>" ><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?></a></li>
+			</ul>
+		</td>
 	</tr>
-  <tr>
+	<tr>
 		<td class="tabnavtbl">
-		  <ul id="tabnav">
-				<li class="tabact"><a href="disks_raid_gconcat.php" title="<?=gettext("Reload page");?>" ><?=gettext("Manage RAID");?></a></li>
-				<li class="tabinact"><a href="disks_raid_gconcat_tools.php"><?=gettext("Tools"); ?></a></li>
-				<li class="tabinact"><a href="disks_raid_gconcat_info.php"><?=gettext("Information"); ?></a></li>
-		  </ul>
-  	</td>
+			<ul id="tabnav">
+				<li class="tabact"><a href="disks_raid_gvinum.php" title="<?=gettext("Reload page");?>" ><?=gettext("Manage RAID");?></a></li>
+				<li class="tabinact"><a href="disks_raid_gvinum_tools.php"><?=gettext("Tools"); ?></a></li>
+				<li class="tabinact"><a href="disks_raid_gvinum_info.php"><?=gettext("Information"); ?></a></li>
+			</ul>
+		</td>
 	</tr>
   <tr>
     <td class="tabcont">
-			<form action="disks_raid_gconcat_edit.php" method="post" name="iform" id="iform">
+			<form action="disks_raid_gvinum_edit.php" method="post" name="iform" id="iform">
 				<?php if ($nodisk_errors) print_input_errors($nodisk_errors); ?>
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
@@ -148,9 +161,13 @@ if ($_POST) {
 			      </td>
 			    </tr>
 			    <tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
+			      <td valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
 			      <td width="78%" class="vtable">
-			      <?=gettext("JBOD"); ?>
+			        <select name="type" class="formfld" id="type" <?php if(isset($id)) echo "disabled";?>>
+			          <option value="0" <?php if ($pconfig['type'] == 0) echo "selected"; ?>>RAID 0 (<?=gettext("striping");?>)</option>
+			          <option value="1" <?php if ($pconfig['type'] == 1) echo "selected"; ?>>RAID 1 (<?=gettext("mirroring"); ?>)</option>
+			          <option value="5" <?php if ($pconfig['type'] == 5) echo "selected"; ?>>RAID 5 (<?=gettext("rotated block-interleaved parity"); ?>)</option>
+			        </select>
 			      </td>
 			    </tr>
 			    <?php $a_provider = array(); foreach ($a_disk as $diskv) { if (isset($id) && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if (!isset($id) && false !== array_search_ex($diskv['devicespecialfile'], $all_raid, "device")) { continue; } $a_provider[$diskv[devicespecialfile]] = htmlspecialchars("$diskv[name] ($diskv[size], $diskv[desc])"); }?>

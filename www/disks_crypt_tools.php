@@ -41,13 +41,12 @@ $pgtitle = array(gettext("Disks"),gettext("Encryption"),gettext("Tools"));
 // Omit no-cache headers because it confuses IE with file downloads.
 $omit_nocacheheaders = true;
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
+if (!is_array($config['geli']['vdisk']))
+	$config['geli']['vdisk'] = array();
 
-//array_sort_key($config['geli']['vdisk'], "devicespecialfile");
-array_sort_key($config['disks']['disk'], "name");
+array_sort_key($config['geli']['vdisk'], "devicespecialfile");
 
-$a_geli = &$config['disks']['disk'];
+$a_geli = &$config['geli']['vdisk'];
 
 if (!is_array($config['mounts']['mount']))
 	$config['mounts']['mount'] = array();
@@ -177,11 +176,9 @@ function action_change() {
               <select name="disk" class="formfld" id="disk">
               	<option value=""><?=gettext("Must choose one");?></option>
                 <?php foreach ($a_geli as $geliv):?>
-		<?php if ($geliv['class']== "geli"): ?>
 								<option value="<?=$geliv['devicespecialfile'];?>" <?php if ($geliv['devicespecialfile'] === $pconfig['disk']) echo "selected";?>>
 								<?php echo htmlspecialchars("{$geliv['name']}: {$geliv['size']} ({$geliv['desc']})");?>
                 </option>
-		<?php endif; ?>
                 <?php endforeach;?>
               </select>
             </td>

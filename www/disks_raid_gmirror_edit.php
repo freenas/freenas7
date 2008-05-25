@@ -3,7 +3,7 @@
 /*
 	disks_raid_gmirror_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -39,14 +39,14 @@ if (isset($_POST['id']))
 
 $pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID1"),isset($id)?gettext("Edit"):gettext("Add"));
 
-if (!is_array($config['disks']['disk']))
-	$config['disks']['disk'] = array();
+if (!is_array($config['gmirror']['vdisk']))
+	$config['gmirror']['vdisk'] = array();
 
-array_sort_key($config['disks']['disk'], "name");
+array_sort_key($config['gmirror']['vdisk'], "name");
 
-$a_raid = &$config['disks']['disk'];
+$a_raid = &$config['gmirror']['vdisk'];
 $all_raid = get_conf_sraid_disks_list();
-$a_disk = get_conf_disks_filtered_ex("fstype", "pool");
+$a_disk = get_conf_disks_filtered_ex("fstype", "softraid");
 
 if (!sizeof($a_disk)) {
 	$nodisk_errors[] = gettext("You must add disks first.");
@@ -55,7 +55,7 @@ if (!sizeof($a_disk)) {
 if (isset($id) && $a_raid[$id]) {
 	$pconfig['name'] = $a_raid[$id]['name'];
 	$pconfig['devicespecialfile'] = $a_raid[$id]['devicespecialfile'];
-	$pconfig['class'] = $a_raid[$id]['class'];
+	$pconfig['type'] = $a_raid[$id]['type'];
 	$pconfig['balance'] = $a_raid[$id]['balance'];
 	$pconfig['device'] = $a_raid[$id]['device'];
 }
@@ -71,26 +71,26 @@ if ($_POST) {
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
 	if (($_POST['name'] && !is_validaliasname($_POST['name']))) {
-		$input_errors[] = gettext("The disk name may only consist of the characters a-z, A-Z, 0-9.");
+		$input_errors[] = gettext("The device name may only consist of the characters a-z, A-Z, 0-9.");
 	}
 
 	// Check for duplicate name.
-	foreach ($a_raid as $raid) {
+	foreach ($all_raid as $raid) {
 		if ($raid['name'] === $_POST['name']) {
-			$input_errors[] = gettext("This disk name already exists.");
+			$input_errors[] = gettext("This device already exists in the raid volume list.");
 			break;
 		}
 	}
 
 	/* check the number of RAID disk for volume */
 	if (count($_POST['device']) != 2)
-		$input_errors[] = gettext("There must be 2 disks in a RAID 1.");
+		$input_errors[] = gettext("There must be 2 disks in a RAID 1 volume.");
 
 	if (!$input_errors) {
 		$raid = array();
 		$raid['name'] = substr($_POST['name'], 0, 15); // Make sure name is only 15 chars long (GEOM limitation).
 		$raid['balance'] = $_POST['balance'];
-		$raid['class'] = "gmirror";
+		$raid['type'] = 1;
 		$raid['device'] = $_POST['device'];
 		$raid['desc'] = "Software gmirror RAID 1";
 		$raid['devicespecialfile'] = "/dev/mirror/{$raid['name']}";

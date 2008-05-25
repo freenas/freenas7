@@ -18,9 +18,7 @@ FREENAS_SVNDIR="$FREENAS_ROOTDIR/svn"
 FREENAS_WORLD=""
 FREENAS_PRODUCTNAME=$(cat $FREENAS_SVNDIR/etc/prd.name)
 FREENAS_VERSION=$(cat $FREENAS_SVNDIR/etc/prd.version)
-#Use only the part of the word «vision» for «revision» because with french svn,
-#the word is «révision»
-FREENAS_REVISION=$(svn info ${FREENAS_SVNDIR} | grep "vision :" | awk '{print $3}')
+FREENAS_REVISION=$(svn info ${FREENAS_SVNDIR} | grep Revision | awk '{print $2}')
 FREENAS_ARCH=$(uname -p)
 FREENAS_KERNCONF="$(echo ${FREENAS_PRODUCTNAME} | tr '[:lower:]' '[:upper:]')-${FREENAS_ARCH}"
 FREENAS_OBJDIRPREFIX="/usr/obj/$(echo ${FREENAS_PRODUCTNAME} | tr '[:upper:]' '[:lower:]')"
@@ -68,8 +66,7 @@ FREENAS_NEWFS="-U -o space -m 0"
 # Support bootmenu
 OPT_BOOTMENU=1
 # Support bootsplash
-# Remove during the port to freebsd 7.0 for checking messages
-OPT_BOOTSPLASH=0
+OPT_BOOTSPLASH=1
 # Support serial console
 OPT_SERIALCONSOLE=0
 
@@ -146,10 +143,6 @@ build_world() {
 			done
 		fi
 	done
-
-	# Generating login database
-	echo "Generating login database:"
-	cap_mkdb -v -f $FREENAS_ROOTFS/etc/login.conf $FREENAS_SVNDIR/etc/login.conf
 
 	# Cleanup
 	rm -f $FREENAS_WORKINGDIR/freenas.files

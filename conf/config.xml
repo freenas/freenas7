@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- FreeNAS default system configuration -->
 <freenas>
-	<version>5.2</version>
+	<version>5.1</version>
 	<lastchange></lastchange>
 	<system>
 		<hostname>freenas</hostname>
@@ -171,7 +171,6 @@
 		<disk>
 			<name>xxx</name>
 			<devicespecialfile>/dev/xxx</devicespecialfile>
-			<class></class>
 			<harddiskstandby>0</harddiskstandby>
 			<acoustic>0</acoustic>
 			<apm>0</apm>
@@ -184,6 +183,82 @@
 		</disk>
 		-->
 	</disks>
+	<gvinum>
+		<!--
+		<vdisk>
+			<name>xxx</name>
+			<type>0</type>
+			<device>/dev/da0</device>
+			<device>/dev/da1</device>
+			<desc>Software gvinum RAID 0</desc>
+			<devicespecialfile>/dev/gvinum/xxx</devicespecialfile>
+		</vdisk>
+		-->
+	</gvinum>
+	<gmirror>
+		<!--
+		<vdisk>
+			<name>xxx</name>
+			<balance>round-robin</balance>
+			<type>1</type>
+			<device>/dev/da0</device>
+			<device>/dev/da1</device>
+			<desc>Software gmirror RAID 1</desc>
+			<devicespecialfile>/dev/mirror/xxx</devicespecialfile>
+		</vdisk>
+		-->
+	</gmirror>
+	<gconcat>
+		<!--
+		<vdisk>
+			<name>xxx</name>
+			<type>JBOD</type>
+			<device>/dev/da0</device>
+			<device>/dev/da1</device>
+			<device>/dev/da2</device>
+			<desc>Software gconcat JBOD</desc>
+			<devicespecialfile>/dev/concat/xxx</devicespecialfile>
+		</vdisk>
+		-->
+	</gconcat>
+	<gstripe>
+		<!--
+		<vdisk>
+			<name>xxx</name>
+			<type>0</type>
+			<device>/dev/da0</device>
+			<device>/dev/da1</device>
+			<desc>Software gstripe RAID 0</desc>
+			<devicespecialfile>/dev/stripe/xxx</devicespecialfile>
+		</vdisk>
+		-->
+	</gstripe>
+	<graid5>
+		<!--
+		<vdisk>
+			<name>xxx</name>
+			<type>5</type>
+			<device>/dev/da0</device>
+			<device>/dev/da1</device>
+			<device>/dev/da2</device>
+			<desc>Software graid5 RAID 5</desc>
+			<devicespecialfile>/dev/raid5/xxx</devicespecialfile>
+		</vdisk>
+		-->
+	</graid5>
+	<geli>
+		<!--
+		<vdisk>
+			<name>da0</name>
+			<device>/dev/da0</device>
+			<devicespecialfile>/dev/da0.eli</devicespecialfile>
+			<desc>Encrypted disk</desc>
+			<size>103MB</size>
+			<aalgo>none</aalgo>
+			<ealgo>AES</ealgo>
+		</vdisk>
+		-->
+	</geli>
 	<iscsitarget>
 		<!--
 		<enable/>

@@ -1,5 +1,5 @@
---- geom_eli.c.orig	2007-05-15 22:25:16.000000000 +0200
-+++ geom_eli.c	2008-03-03 20:25:10.000000000 +0100
+--- geom_eli.c.orig	2008-01-27 21:00:02.000000000 +0100
++++ geom_eli.c	2008-03-03 20:33:09.000000000 +0100
 @@ -73,18 +73,20 @@
  static void eli_restore(struct gctl_req *req);
  static void eli_clear(struct gctl_req *req);
@@ -26,45 +26,45 @@
   * backup [-v] prov file
 @@ -103,9 +105,10 @@
  		{ 'l', "keylen", &keylen, G_TYPE_NUMBER },
- 		{ 'P', "nonewpassphrase", NULL, G_TYPE_BOOL },
+ 		{ 'P', "nonewpassphrase", NULL, G_TYPE_NONE },
  		{ 's', "sectorsize", &sectorsize, G_TYPE_NUMBER },
-+		{ 't', "password-from-stdin", NULL, G_TYPE_BOOL },
++		{ 't', "password-from-stdin", NULL, G_TYPE_NONE },
  		G_OPT_SENTINEL
  	    },
--	    NULL, "[-bPv] [-a aalgo] [-e ealgo] [-i iterations] [-l keylen] [-K newkeyfile] [-s sectorsize] prov"
-+	    NULL, "[-bPtv] [-a aalgo] [-e ealgo] [-i iterations] [-l keylen] [-K newkeyfile] [-s sectorsize] prov"
+-	    "[-bPv] [-a aalgo] [-e ealgo] [-i iterations] [-l keylen] [-K newkeyfile] [-s sectorsize] prov"
++	    "[-bPtv] [-a aalgo] [-e ealgo] [-i iterations] [-l keylen] [-K newkeyfile] [-s sectorsize] prov"
  	},
  	{ "label", G_FLAG_VERBOSE, eli_main,
  	    {
 @@ -117,6 +120,7 @@
  		{ 'l', "keylen", &keylen, G_TYPE_NUMBER },
- 		{ 'P', "nonewpassphrase", NULL, G_TYPE_BOOL },
+ 		{ 'P', "nonewpassphrase", NULL, G_TYPE_NONE },
  		{ 's', "sectorsize", &sectorsize, G_TYPE_NUMBER },
-+		{ 't', "password-from-stdin", NULL, G_TYPE_BOOL },
++		{ 't', "password-from-stdin", NULL, G_TYPE_NONE },
  		G_OPT_SENTINEL
  	    },
- 	    NULL, "- an alias for 'init'"
+ 	    "- an alias for 'init'"
 @@ -127,9 +131,10 @@
  		{ 'k', "keyfile", keyfile, G_TYPE_STRING },
- 		{ 'p', "nopassphrase", NULL, G_TYPE_BOOL },
- 		{ 'r', "readonly", NULL, G_TYPE_BOOL },
-+		{ 't', "password-from-stdin", NULL, G_TYPE_BOOL },
+ 		{ 'p', "nopassphrase", NULL, G_TYPE_NONE },
+ 		{ 'r', "readonly", NULL, G_TYPE_NONE },
++		{ 't', "password-from-stdin", NULL, G_TYPE_NONE },
  		G_OPT_SENTINEL
  	    },
--	    NULL, "[-dprv] [-k keyfile] prov"
-+	    NULL, "[-dprtv] [-k keyfile] prov"
+-	    "[-dprv] [-k keyfile] prov"
++	    "[-dprtv] [-k keyfile] prov"
  	},
  	{ "detach", 0, NULL,
  	    {
 @@ -174,9 +179,10 @@
  		{ 'n', "keyno", &keyno, G_TYPE_NUMBER },
- 		{ 'p', "nopassphrase", NULL, G_TYPE_BOOL },
- 		{ 'P', "nonewpassphrase", NULL, G_TYPE_BOOL },
-+		{ 't', "password-from-stdin", NULL, G_TYPE_BOOL },
+ 		{ 'p', "nopassphrase", NULL, G_TYPE_NONE },
+ 		{ 'P', "nonewpassphrase", NULL, G_TYPE_NONE },
++		{ 't', "password-from-stdin", NULL, G_TYPE_NONE },
  		G_OPT_SENTINEL
  	    },
--	    NULL, "[-pPv] [-n keyno] [-i iterations] [-k keyfile] [-K newkeyfile] prov"
-+	    NULL, "[-pPtv] [-n keyno] [-i iterations] [-k keyfile] [-K newkeyfile] prov"
+-	    "[-pPv] [-n keyno] [-i iterations] [-k keyfile] [-K newkeyfile] prov"
++	    "[-pPtv] [-n keyno] [-i iterations] [-k keyfile] [-K newkeyfile] prov"
  	},
  	{ "delkey", G_FLAG_VERBOSE, eli_main,
  	    {
@@ -73,9 +73,10 @@
  		}
  		for (;;) {
 -			p = readpassphrase(
-+			p = eli_get_passwd(req,
- 			    new ? "Enter new passphrase:" : "Enter passphrase:",
+-			    new ? "Enter new passphrase:" : "Enter passphrase:",
 -			    buf1, sizeof(buf1), RPP_ECHO_OFF | RPP_REQUIRE_TTY);
++			p = eli_get_passwd(req,
++			    new ? "Enter new passphrase: " : "Enter passphrase: ",
 +			    buf1, sizeof(buf1));
  			if (p == NULL) {
  				bzero(buf1, sizeof(buf1));
@@ -105,7 +106,7 @@
  					continue;
  				}
  				bzero(buf2, sizeof(buf2));
-@@ -1244,3 +1253,41 @@
+@@ -1240,3 +1249,41 @@
  		printf("\n");
  	}
  }

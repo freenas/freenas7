@@ -120,10 +120,11 @@ function disks_mount($mount)
 	/* Mount the filesystem */
 	/* In booting mode, skip encrypted disk (need to enter the passphrase on the webgui) */
 	if (is_booting()) {
-		// If mdisk is in the form "/dev/ad1.eli", then it's an encrypted disk :
-		if(stristr($mount['mdisk'], '.eli') === TRUE) {
-			write_log("Skip mounting '{$mount['sharename']}': Passphrase needed for '{$mountname}'.");
-			return 0;
+		if (is_array($config['geli']['vdisk'])) {
+			if (array_search_ex($mount['mdisk'], $config['geli']['vdisk'], "devicespecialfile")) {
+				write_log("Skip mounting '{$mount['sharename']}': Passphrase needed for '{$mountname}'.");
+				return 0;
+			}
 		}
 	}
 
@@ -353,31 +354,27 @@ function disks_ismounted_ex($var,$key)
 }
 
 // Configure, create and start gvinum volume.
-// $name - Name of the gvinum disk to be configured.
+// $name - Name of the RAID to be configured.
 // Return 0 if successful, 1 if error
 function disks_raid_gvinum_configure($name)
 {
 	global $g, $config;
 
-	if (!is_array($config['disks']['disk']))
+	if (!is_array($config['gvinum']['vdisk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['disks']['disk'], "name");
-	if (false === $index) {
-		write_console("Error: Disk name not found in disks_raid_gvinum_configure().\n");
+	$index = array_search_ex($name, $config['gvinum']['vdisk'], "name");
+	if (false === $index)
 		return 1;
-	}
 
-	$vdisk = $config['disks']['disk'][$index];	
-	if (!is_array($vdisk)) {
-		write_console("Error: Not an array in disks_raid_gvinum_configure().\n");
+	$vdisk = $config['gvinum']['vdisk'][$index];
+	if (!is_array($vdisk))
 		 return 1;
-	}
 
 	// Generate the raid.conf file
 	$fd = fopen("{$g['varetc_path']}/raid-{$vdisk['name']}.conf", "w");
 	if (!$fd) {
-		write_console("Error: Failed to open raid.conf in disks_raid_gvinum_configure().\n");
+		write_console("Error: Failed to open raid.conf in services_raid_configure().\n");
 		return 1;
 	}
 
@@ -471,14 +468,14 @@ function disks_raid_gmirror_configure($name)
 {
 	global $config;
 
-	if (!is_array($config['disks']['disk']))
+	if (!is_array($config['gmirror']['vdisk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['disks']['disk'], "name");
+	$index = array_search_ex($name, $config['gmirror']['vdisk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['disks']['disk'][$index];
+	$vdisk = $config['gmirror']['vdisk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -498,14 +495,14 @@ function disks_raid_gconcat_configure($name)
 {
 	global $config;
 
-	if (!is_array($config['disks']['disk']))
+	if (!is_array($config['gconcat']['vdisk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['disks']['disk'], "name");
+	$index = array_search_ex($name, $config['gconcat']['vdisk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['disks']['disk'][$index];
+	$vdisk = $config['gconcat']['vdisk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -525,14 +522,14 @@ function disks_raid_gstripe_configure($name)
 {
 	global $config;
 
-	if (!is_array($config['disks']['disk']))
+	if (!is_array($config['gstripe']['vdisk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['disks']['disk'], "name");
+	$index = array_search_ex($name, $config['gstripe']['vdisk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['disks']['disk'][$index];
+	$vdisk = $config['gstripe']['vdisk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -552,14 +549,14 @@ function disks_raid_graid5_configure($name)
 {
 	global $config;
 
-	if (!is_array($config['disks']['disk']))
+	if (!is_array($config['graid5']['vdisk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['disks']['disk'], "name");
+	$index = array_search_ex($name, $config['graid5']['vdisk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['disks']['disk'][$index];
+	$vdisk = $config['graid5']['vdisk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -579,14 +576,14 @@ function disks_raid_gvinum_delete($name)
 {
 	global $config;
 
-	if (!is_array($config['disks']['disk']))
+	if (!is_array($config['gvinum']['vdisk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['disks']['disk'], "name");
+	$index = array_search_ex($name, $config['gvinum']['vdisk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['disks']['disk'][$index];
+	$vdisk = $config['gvinum']['vdisk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -611,14 +608,14 @@ function disks_raid_gmirror_delete($name)
 {
 	global $config;
 
-	if (!is_array($config['disks']['disk']))
+	if (!is_array($config['gmirror']['vdisk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['disks']['disk'], "name");
+	$index = array_search_ex($name, $config['gmirror']['vdisk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['disks']['disk'][$index];
+	$vdisk = $config['gmirror']['vdisk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -640,14 +637,14 @@ function disks_raid_gconcat_delete($name)
 {
 	global $config;
 
-	if (!is_array($config['disks']['disk']))
+	if (!is_array($config['gconcat']['vdisk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['disks']['disk'], "name");
+	$index = array_search_ex($name, $config['gconcat']['vdisk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['disks']['disk'][$index];
+	$vdisk = $config['gconcat']['vdisk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -670,14 +667,14 @@ function disks_raid_gstripe_delete($name)
 {
 	global $config;
 
-	if (!is_array($config['disks']['disk']))
+	if (!is_array($config['gstripe']['vdisk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['disks']['disk'], "name");
+	$index = array_search_ex($name, $config['gstripe']['vdisk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['disks']['disk'][$index];
+	$vdisk = $config['gstripe']['vdisk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -700,14 +697,14 @@ function disks_raid_graid5_delete($name)
 {
 	global $config;
 
-	if (!is_array($config['disks']['disk']))
+	if (!is_array($config['graid5']['vdisk']))
 		return 1;
 
-	$index = array_search_ex($name, $config['disks']['disk'], "name");
+	$index = array_search_ex($name, $config['graid5']['vdisk'], "name");
 	if (false === $index)
 		return 1;
 
-	$vdisk = $config['disks']['disk'][$index];
+	$vdisk = $config['graid5']['vdisk'][$index];
 	if (!is_array($vdisk))
 		 return 1;
 
@@ -794,11 +791,9 @@ function disks_geli_detach_all()
 
 	$result = 0;
 
-	if (is_array($config['disks']['disk'])) {
-		foreach ($config['disks']['disk'] as $vdiskv) {
-			if ($vdiskv['class'] == "geli"); {
-				$result |= disks_geli_detach($vdiskv['devicespecialfile']) ;
-			}
+	if (is_array($config['geli']['vdisk'])) {
+		foreach($config['geli']['vdisk'] as $geli) {
+			$result |= disks_geli_detach($geli['devicespecialfile']) ;
 		}
 	}
 
@@ -866,7 +861,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			system("/sbin/newfs {$param} {$disk}p1 2>&1");
 			break;
 
-		case "pool":
+		case "softraid":
 			// Initialize disk
 			echo gettext("Formating disk").".\n";
 			system("/bin/dd if=/dev/zero of={$disk} bs=1m count=16");
