@@ -451,17 +451,19 @@ function get_mounts_list()
 	$amountlist = array();
 	$i = 0;
 
-	// Get list of mount points
-	exec("/sbin/mount -p", $rawdata);
+	// Get list of mount points.
+	exec("/sbin/mount -v", $rawdata);
 
 	foreach ($rawdata as $line) {
-		$aline = explode("\t", $line);
+		// e.g.: /dev/ad8p1 on /mnt/xyz (ufs, local, soft-updates, acls, fsid 66ad394809fce81b)
+		if (0 == preg_match("/^(\S+) on (\S+).+fsid (\S+).+/", $line, $aline))
+			continue;
 
 		// Get device path
-		$devicespecialfile = chop($aline[0]);
+		$devicespecialfile = chop($aline[1]);
 
 		// Get the mount path
-		$mountpath = chop($aline[1]);
+		$mountpath = chop($aline[2]);
 
 		// Ignore various mountpoints
 		if (("/dev/md0" === $devicespecialfile) || ("devfs" === $devicespecialfile) ||
@@ -485,8 +487,8 @@ function get_mounts_list()
 		$amountlist[$i]['mp'] = $mountpath;
 		$amountlist[$i]['mdisk'] = $devicename;
 		$amountlist[$i]['devicespecialfile'] = $devicespecialfile;
-		$amountlist[$i]['sharename'] = $amountpath[2];
-		$amountlist[$i]['fsid'] = get_mount_fsid($devicespecialfile, $mountpath);
+		$amountlist[$i]['sharename'] = end($amountpath);
+		$amountlist[$i]['fsid'] = chop($aline[3]);
 
 		$i++;
 	}
