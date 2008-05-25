@@ -189,9 +189,6 @@ sbin/mount_nfs
 ## mount_nfs4 -- mount NFSv4 file system
 sbin/mount_nfs4
 
-## mount_ext2fs -- mount ext2fs file system
-sbin/mount_ext2fs
-
 ## mount_cd9660 -- mount CDROM file system
 sbin/mount_cd9660
 
@@ -429,9 +426,6 @@ usr/sbin/rtsold:sbin/rtsol
 
 ##  traceroute -- print the route packets take to network host
 usr/sbin/traceroute
-
-## wicontrol -- configure Lucent, Intersil, and Atheros wireless devices
-usr/sbin/wicontrol
 
 ## wpa_supplicant -- WPA/802.11i Supplicant for wireless network devices
 usr/sbin/wpa_supplicant
