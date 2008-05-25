@@ -1,0 +1,2 @@
+Create patch:
+diff -ruN src/lib/HTTP/HTTPMessage.cpp.orig src/lib/HTTP/HTTPMessage.cpp > patch-src_lib_HTTP_HTTPMessage.cpp
