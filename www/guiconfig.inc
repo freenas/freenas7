@@ -176,6 +176,9 @@ function do_input_validation_type($postdata, $reqdfields, $reqdfieldsn, $reqdfie
 				case 'privatedsakey':	$valid = is_valid_privatekey($postdata[$reqdfields[$i]], "DSA");
 															$message = sprintf( gettext("The attribute '%s' does not appear to be a valid private %s key."), $reqdfieldsn[$i], "DSA");
 															break;
+				case 'alias':					$valid = is_validaliasname($postdata[$reqdfields[$i]]);
+															$message = sprintf( gettext("The attribute '%s' may only consist of the characters a-z, A-Z, 0-9."), $reqdfieldsn[$i]);
+															break;
 			}
 			if (!$valid) {
 				$input_errors[] = $message;
