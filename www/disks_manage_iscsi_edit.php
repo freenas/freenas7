@@ -76,10 +76,13 @@ if ($_POST) {
 		}
 	}
 
-	/* input validation */
-  $reqdfields = explode(" ", "name targetname targetaddress initiatorname");
-  $reqdfieldsn = array(gettext("Name"),gettext("Target name"),gettext("Target address"),gettext("Initiator name"));
-  do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	// Input validation
+	$reqdfields = explode(" ", "name targetname targetaddress initiatorname");
+	$reqdfieldsn = array(gettext("Name"),gettext("Target name"),gettext("Target address"),gettext("Initiator name"));
+	$reqdfieldst = explode(" ", "alias string string string");
+
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	if (!$input_errors) {
 		$iscsiinit = array();
