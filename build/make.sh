@@ -192,6 +192,11 @@ $DIALOG --title \"$FREENAS_PRODUCTNAME - Kernel patches\" \\
 	fi
 	rm $tempfile
 
+	echo "Remove old patched files..."
+	for file in $(find /usr/src -name "*.orig"); do
+		rm -rv ${file}
+	done
+
 	for patch in $(cat $patches | tr -d '"'); do
     echo
 		echo "--------------------------------------------------------------"
