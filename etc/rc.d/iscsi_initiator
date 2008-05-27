@@ -26,29 +26,26 @@ command="/usr/local/sbin/iscontrol"
 start_precmd()
 {
 	# Load kernel module
-	/sbin/kldload iscsi_initiator.ko > /dev/null
+	load_kld -e iscsi_initiator -m iscsi_initiator iscsi_initiator.ko
+
 	# Disable debugging
 	/sbin/sysctl debug.iscsi=0 > /dev/null
 }
 
 start_cmd()
 {
-	local _disknum _initiatorname _targetname _targetaddress
+	local _command_args
 
 	echo "Starting ${name}."
 
 	# Iterate over all configured disks
-	_disknum=`configxml_get_count "//iscsiinit/vdisk"`
-	while [ ${_disknum} -gt 0 ]
-	do
-		_initiatorname=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=${_disknum}]" -v initiatorname ${configxml_file} | /usr/local/bin/xml unesc`
-		_targetname=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=${_disknum}]" -v targetname ${configxml_file} | /usr/local/bin/xml unesc`
-		_targetaddress=`/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk[position()=${_disknum}]" -v targetaddress ${configxml_file} | /usr/local/bin/xml unesc`
-
-		eval ${command} targetaddress=${_targetaddress} targetname=${_targetname} initiatorname=${_initiatorname} > /dev/null
-
-		_disknum=$(( ${_disknum} - 1 ))
-	done
+	/usr/local/bin/xml sel -t -m "//iscsiinit/vdisk" \
+		-v "concat('targetaddress=',targetaddress,' targetname=',targetname,' initiatorname=',initiatorname)" \
+		-i "position() != last()" -n -b \
+		${configxml_file} | /usr/local/bin/xml unesc | \
+		while read _command_args; do
+			eval ${command} ${_command_args}
+		done
 }
 
 stop_cmd()
