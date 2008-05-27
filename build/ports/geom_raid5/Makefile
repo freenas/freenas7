@@ -2,7 +2,7 @@
 PORTNAME=			geom_raid5
 PORTVERSION=	1.0
 PORTREVISION=	0
-PORTEPOCH=		1
+PORTEPOCH=		2
 CATEGORIES=		sysutils
 COMMENT=			GEOM RAID5 filesystem
 MAINTAINER=		votdev@gmx.de
@@ -31,7 +31,11 @@ do-install:
 	@${INSTALL_PROGRAM} -v /usr/obj/usr/src/sbin/geom/class/raid5/geom_raid5.so ${FREENAS_ROOTFS}/lib/geom
 
 pre-clean:
+.if exists(/usr/src/sys/modules/geom/geom_raid5)
 	@${MAKE} -C /usr/src/sys/modules/geom/geom_raid5 clean obj
+.endif
+.if exists(/usr/src/sbin/geom/class/raid5)
 	@${MAKE} -C /usr/src/sbin/geom/class/raid5 clean obj
+.endif
 
 .include <bsd.port.mk>
