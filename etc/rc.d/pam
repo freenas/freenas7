@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: pam
@@ -59,7 +59,6 @@ fi
 	-o "# PAM configuration for the sshd service" -n \
 	-n \
 	-o "# auth" -n \
-	-o "auth       required        pam_nologin.so          no_warn" -n \
 	-o "auth       sufficient      pam_opie.so             no_warn no_fake_prompts" -n \
 	-o "auth       requisite       pam_opieaccess.so       no_warn allow_local" -n \
 	-i "count(//ad/enable) > 0" \
@@ -70,6 +69,7 @@ fi
 	-b \
 	-o "auth       required        pam_unix.so             no_warn try_first_pass" -n \
 	-n -o "# account" -n \
+	-o "account    required        pam_nologin.so          no_warn" -n \
 	-o "account    required        pam_login_access.so" -n \
 	-i "count(//ad/enable) > 0" \
 		-o "account    sufficient		/usr/local/lib/pam_winbind.so" -n \
@@ -96,7 +96,6 @@ fi
 	-o "# PAM configuration for the ftpd service" -n \
 	-n \
 	-o "# auth" -n \
-	-o "auth       required        pam_nologin.so          no_warn" -n \
 	-o "auth       sufficient      pam_opie.so             no_warn no_fake_prompts" -n \
 	-o "auth       requisite       pam_opieaccess.so       no_warn allow_local" -n \
 	-i "count(//ad/enable) > 0" \
@@ -107,6 +106,7 @@ fi
 	-b \
 	-o "auth       required        pam_unix.so             no_warn try_first_pass" -n \
 	-n -o "# account" -n \
+	-o "account    required        pam_nologin.so          no_warn" -n \
 	-i "count(//ad/enable) > 0" \
 		-o "account    sufficient	/usr/local/lib/pam_winbind.so" -n \
 	-b \
@@ -125,7 +125,6 @@ fi
 	-o "# PAM configuration for the netatalk (AFP) service" -n \
 	-n \
 	-o "# auth" -n \
-	-o "auth       required        pam_nologin.so          no_warn" -n \
 	-o "auth       sufficient      pam_opie.so             no_warn no_fake_prompts" -n \
 	-o "auth       requisite       pam_opieaccess.so       no_warn allow_local" -n \
 	-i "count(//ad/enable) > 0" \
@@ -136,6 +135,7 @@ fi
 	-b \
 	-o "auth       required        pam_unix.so             no_warn try_first_pass" -n \
 	-n -o "# account" -n \
+	-o "account    required        pam_nologin.so          no_warn" -n \
 	-i "count(//ad/enable) > 0" \
 		-o "account    sufficient       /usr/local/lib/pam_winbind.so" -n \
 	-b \
@@ -154,7 +154,6 @@ fi
 	-o "# PAM configuration for the login service" -n \
 	-n \
 	-o "# auth" -n \
-	-o "auth       required        pam_nologin.so          no_warn" -n \
 	-i "count(//ad/enable) > 0" \
 		-o "auth       sufficient      /usr/local/lib/pam_winbind.so	debug try_first_pass" -n \
 	-b \
@@ -164,6 +163,7 @@ fi
 	-o "auth       sufficient      pam_self.so	no_warn" -n \
 	-o "auth       include         system" -n \
 	-n -o "# account" -n \
+	-o "account    required        pam_nologin.so          no_warn" -n \
 	-i "count(//ad/enable) > 0" \
 		-o "account    sufficient	/usr/local/lib/pam_winbind.so" -n \
 	-b \
