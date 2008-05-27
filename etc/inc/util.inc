@@ -1282,6 +1282,19 @@ function get_ipaddr($if)
   return $ipaddr;
 }
 
+// Get subnet bits.
+function get_subnet_bits($if)
+{
+	$if = get_ifname($if);
+
+	exec("/usr/local/bin/sipcalc --cidr-addr {$if}", $rawdata);
+	if (preg_match("/.+Network mask \(bits\)	- (\d+).+/", implode($rawdata), $matches)) {
+		return $matches[1];
+	}
+
+	return false;
+}
+
 // Get local IPv6 address
 function get_ipv6addr($if)
 {
