@@ -45,7 +45,7 @@ $optcfg = &$config['interfaces']['opt' . $index];
 if ($config['interfaces']['opt' . $index]['ipaddr'] == "dhcp") {
 	$pconfig['type'] = "DHCP";
 	$pconfig['ipaddr'] = get_ipaddr($optcfg['if']);
-	$pconfig['subnet'] = 24;
+	$pconfig['subnet'] = get_subnet_bits($optcfg['if']);
 } else {
 	$pconfig['type'] = "Static";
 	$pconfig['ipaddr'] = $optcfg['ipaddr'];

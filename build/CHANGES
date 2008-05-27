@@ -3,9 +3,8 @@
 FreeNAS 0.686.5 (Parmentier):
 -----------------------------
 
-Minors changes:
-
 Bug fixes:
+- Reported netmask is not correct for DHCP configuration (BR 1864839). Thanks to Petr Slansky.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
