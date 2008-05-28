@@ -92,9 +92,9 @@ if ($_POST) {
 			$input_errors[] = gettext("A valid network bit count (1-32) must be specified.");
 	}
 
-	if ($_POST['ipv6type'] === "Static") {
-		$reqdfields = array_merge($reqdfields,explode(" ", "ipv6addr ipv6subnet"));
-		$reqdfieldsn = array_merge($reqdfieldsn,array(gettext("IPv6 address"),gettext("Prefix")));
+	if ($_POST['ipv6_enable'] && ($_POST['ipv6type'] === "Static")) {
+		$reqdfields = explode(" ", "ipv6addr ipv6subnet");
+		$reqdfieldsn = array(gettext("IPv6 address"),gettext("Prefix"));
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -115,21 +115,21 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		if(strcmp($_POST['type'],"Static") == 0) {
+		if (0 == strcmp($_POST['type'],"Static")) {
 			$lancfg['ipaddr'] = $_POST['ipaddr'];
 			$lancfg['subnet'] = $_POST['subnet'];
 			$lancfg['gateway'] = $_POST['gateway'];
-		} else if (strcmp($_POST['type'],"DHCP") == 0) {
+		} else if (0 == strcmp($_POST['type'],"DHCP")) {
 			$lancfg['ipaddr'] = "dhcp";
 		}
 
 		$lancfg['ipv6_enable'] = $_POST['ipv6_enable'] ? true : false;
 
-		if(strcmp($_POST['ipv6type'],"Static") == 0) {
+		if (0 == strcmp($_POST['ipv6type'],"Static")) {
 			$lancfg['ipv6addr'] = $_POST['ipv6addr'];
 			$lancfg['ipv6subnet'] = $_POST['ipv6subnet'];
 			$lancfg['ipv6gateway'] = $_POST['ipv6gateway'];
-		} else if (strcmp($_POST['ipv6type'],"Auto") == 0) {
+		} else if (0 == strcmp($_POST['ipv6type'],"Auto")) {
 			$lancfg['ipv6addr'] = "auto";
 		}
 

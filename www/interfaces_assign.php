@@ -159,6 +159,10 @@ if ($_GET['act'] == "add") {
 	$config['interfaces'][$newifname] = array();
 	$config['interfaces'][$newifname]['descr'] = "OPT" . $i;
 
+	// Set IPv4 to 'DHCP' and IPv6 to 'Auto' per default.
+	$config['interfaces'][$newifname]['ipaddr'] = "dhcp";
+	$config['interfaces'][$newifname]['ipv6addr'] = "auto";
+
 	/* Find an unused port for this interface */
 	foreach ($portlist as $portname => $portinfo) {
 		$portused = false;
