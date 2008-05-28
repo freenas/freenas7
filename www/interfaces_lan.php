@@ -95,8 +95,8 @@ if ($_POST) {
 	}
 
 	if ($_POST['ipv6type'] === "Static") {
-		$reqdfields = array_merge($reqdfields,explode(" ", "ipv6addr ipv6subnet"));
-		$reqdfieldsn = array_merge($reqdfieldsn,array(gettext("IPv6 address"),gettext("Prefix")));
+		$reqdfields = explode(" ", "ipv6addr ipv6subnet");
+		$reqdfieldsn = array(gettext("IPv6 address"),gettext("Prefix"));
 
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -117,19 +117,19 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-		if(strcmp($_POST['type'],"Static") == 0) {
+		if (0 == strcmp($_POST['type'],"Static")) {
 			$config['interfaces']['lan']['ipaddr'] = $_POST['ipaddr'];
 			$config['interfaces']['lan']['subnet'] = $_POST['subnet'];
 			$config['interfaces']['lan']['gateway'] = $_POST['gateway'];
-		} else if (strcmp($_POST['type'],"DHCP") == 0) {
+		} else if (0 == strcmp($_POST['type'],"DHCP")) {
 			$config['interfaces']['lan']['ipaddr'] = "dhcp";
 		}
 
-		if(strcmp($_POST['ipv6type'],"Static") == 0) {
+		if (0 == strcmp($_POST['ipv6type'],"Static")) {
 			$config['interfaces']['lan']['ipv6addr'] = $_POST['ipv6addr'];
 			$config['interfaces']['lan']['ipv6subnet'] = $_POST['ipv6subnet'];
 			$config['interfaces']['lan']['ipv6gateway'] = $_POST['ipv6gateway'];
-		} else if (strcmp($_POST['ipv6type'],"Auto") == 0) {
+		} else if (0 == strcmp($_POST['ipv6type'],"Auto")) {
 			$config['interfaces']['lan']['ipv6addr'] = "auto";
 		}
 

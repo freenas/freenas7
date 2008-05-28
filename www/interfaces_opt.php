@@ -104,8 +104,8 @@ if ($_POST) {
 		}
 
 		if ($_POST['ipv6type'] === "Static") {
-			$reqdfields = array_merge($reqdfields,explode(" ", "ipv6addr ipv6subnet"));
-			$reqdfieldsn = array_merge($reqdfieldsn,array(gettext("IPv6 address"),gettext("Prefix")));
+			$reqdfields = explode(" ", "ipv6addr ipv6subnet");
+			$reqdfieldsn = array(gettext("IPv6 address"),gettext("Prefix"));
 
 			do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
@@ -127,16 +127,16 @@ if ($_POST) {
 	}
 
 	if (!$input_errors) {
-    if(strcmp($_POST['type'],"Static") == 0) {
+    if (0 == strcmp($_POST['type'],"Static")) {
 		$optcfg['ipaddr'] = $_POST['ipaddr'];
 		$optcfg['subnet'] = $_POST['subnet'];
-	} else if ($_POST['type'] == "DHCP") {
+	} else if (0 == strcmp($_POST['type'],"DHCP")) {
 			$optcfg['ipaddr'] = "dhcp";
 	}
-	if(strcmp($_POST['ipv6type'],"Static") == 0) {
+	if (0 == strcmp($_POST['ipv6type'],"Static")) {
 		$optcfg['ipv6addr'] = $_POST['ipv6addr'];
 		$optcfg['ipv6subnet'] = $_POST['ipv6subnet'];
-	} else if (strcmp($_POST['ipv6type'],"Auto") == 0) {
+	} else if (0 == strcmp($_POST['ipv6type'],"Auto")) {
 		$optcfg['ipv6addr'] = "auto";
 	}
 
