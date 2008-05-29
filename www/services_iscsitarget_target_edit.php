@@ -2,11 +2,11 @@
 <?php
 /*
 	services_iscsitarget_extent_edit.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2007-2008 Volker Theile (votdev@gmx.de)
   All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -164,20 +164,7 @@ if ($_POST) {
 				      <?php if (0 == $i && 0 == $k):?>&nbsp;<?php endif;?>
 				    </td>
 			    </tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Authorised network") ; ?></td>
-			      <td width="78%" class="vtable">
-							<input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>"> /
-			        <select name="subnet" class="formfld" id="subnet">
-			          <?php for ($i = 32; $i >= 1; $i--): ?>
-			          <option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected"; ?>>
-			          <?=$i;?>
-			          </option>
-			          <?php endfor; ?>
-			        </select><br>
-			        <span class="vexpl"><?=gettext("Network that is authorised to access to this iSCSI target.") ;?></span>
-			      </td>
-			    </tr>
+					<?php html_ipv4addrbox("ipaddr", "subnet", gettext("Authorised network"), $pconfig['ipaddr'], $pconfig['subnet'], gettext("Network that is authorised to access to this iSCSI target."), true);?>
 			    <tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_target[$id]))?gettext("Save"):gettext("Add")?>">

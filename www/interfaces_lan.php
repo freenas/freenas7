@@ -165,30 +165,6 @@ function enable_change(enable_change) {
 	}
 }
 
-/* Calculate default IPv4 netmask bits for network's class. */
-function calc_netmask_bits(ipaddr) {
-    if (ipaddr.search(/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/) != -1) {
-        var adr = ipaddr.split(/\./);
-        if (adr[0] > 255 || adr[1] > 255 || adr[2] > 255 || adr[3] > 255)
-            return "";
-        if (adr[0] == 0 && adr[1] == 0 && adr[2] == 0 && adr[3] == 0)
-            return "";
-
-		if (adr[0] <= 127)
-			return "8";
-		else if (adr[0] <= 191)
-			return "16";
-		else
-			return "24";
-    }
-    else
-      return "";
-}
-
-function change_netmask_bits() {
-	document.iform.subnet.value = calc_netmask_bits(document.iform.ipaddr.value);
-}
-
 function type_change() {
   switch(document.iform.type.selectedIndex) {
 		case 0: /* Static */
@@ -243,31 +219,12 @@ function media_change() {
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline(gettext("IPv4 Configuration"));?>
 					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Static" => "Static", "DHCP" => "DHCP"), gettext(""), true, false, "type_change()");?>
-					<tr>
-					  <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address");?></td>
-					  <td width="78%" class="vtable">
-					    <input name="ipaddr" type="text" class="formfld" id="ipaddr" size="20" value="<?=htmlspecialchars($pconfig['ipaddr']);?>">
-					    /
-					    <select name="subnet" class="formfld" id="subnet">
-					      <?php for ($i = 32; $i > 0; $i--):?>
-					      <option value="<?=$i;?>" <?php if ($i == $pconfig['subnet']) echo "selected";?>><?=$i;?></option>
-					      <?php endfor;?>
-					    </select>
-					    <img name="calcnetmaskbits" src="calc.gif" title="<?=gettext("Calculate netmask bits");?>" width="16" height="17" align="top" border="0" onclick="change_netmask_bits()" style="cursor:pointer">
-					  </td>
-					</tr>
+					<?php html_ipv4addrbox("ipaddr", "subnet", gettext("IP address"), $pconfig['ipaddr'], $pconfig['subnet'], gettext(""), true);?>
 					<?php html_inputbox("gateway", gettext("Gateway"), $pconfig['gateway'], gettext(""), true, 20);?>
 					<?php html_separator();?>
 					<?php html_titleline_checkbox("ipv6_enable", gettext("IPv6 Configuration"), $pconfig['ipv6_enable'] ? true : false, gettext("Activate"), "enable_change(this)");?>
 					<?php html_combobox("ipv6type", gettext("Type"), $pconfig['ipv6type'], array("Static" => "Static", "Auto" => "Auto"), gettext(""), true, false, "ipv6_type_change()");?>
-					<tr>
-					  <td width="22%" valign="top" class="vncellreq"><?=gettext("IP address");?></td>
-					  <td width="78%" class="vtable">
-					    <input name="ipv6addr" type="text" class="formfld" id="ipv6addr" size="30" value="<?=htmlspecialchars($pconfig['ipv6addr']);?>">
-							/
-							<input name="ipv6subnet" type="text" class="formfld" id="ipv6subnet" size="2" value="<?=htmlspecialchars($pconfig['ipv6subnet']);?>">
-					  </td>
-					</tr>
+					<?php html_ipv6addrbox("ipv6addr", "ipv6subnet", gettext("IP address"), $pconfig['ipv6addr'], $pconfig['ipv6subnet'], gettext(""), true);?>
 					<?php html_inputbox("ipv6gateway", gettext("Gateway"), $pconfig['ipv6gateway'], gettext(""), true, 20);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Advanced Configuration"));?>

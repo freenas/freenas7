@@ -301,6 +301,81 @@ class HTMLFileChooser extends HTMLEditBox {
 	}
 }
 
+class HTMLIPAddressBox extends HTMLEditBox {
+	var $_ctrlnamenetmask = "";
+	var $_valuenetmask = "";
+
+	function HTMLIPAddressBox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description) {
+		$this->SetCtrlName($ctrlname);
+		$this->SetCtrlNameNetmask($ctrlnamenetmask);
+		$this->SetTitle($title);
+		$this->SetValue($value);
+		$this->SetValueNetmask($valuenetmask);
+		$this->SetDescription($description);
+	}
+
+	function GetCtrlNameNetmask() {
+		return $this->_ctrlnamenetmask;
+	}
+
+	function SetCtrlNameNetmask($name) {
+		$this->_ctrlnamenetmask = $name;
+	}
+
+	function GetValueNetmask() {
+		return $this->_valuenetmask;
+	}
+
+	function SetValueNetmask($value) {
+		$this->_valuenetmask = $value;
+	}
+}
+
+class HTMLIPv4AddressBox extends HTMLIPAddressBox {
+	function HTMLIPv4AddressBox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description) {
+		$this->HTMLIPAddressBox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description);
+		$this->SetSize(20);
+	}
+
+	function RenderCtrl() {
+		$ctrlname = $this->GetCtrlName();
+		$ctrlnamenetmask = $this->GetCtrlNameNetmask();
+		$value = htmlspecialchars($this->GetValue());
+		$valuenetmask = htmlspecialchars($this->GetValueNetmask());
+		$size = $this->GetSize();
+
+		echo "    <input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}'>\n";
+		echo "    /\n";
+		echo "    <select name='{$ctrlnamenetmask}' class='formfld' id='{$ctrlnamenetmask}'>\n";
+		foreach (range(1, 32) as $netmask) {
+			$optparam = "";
+			if ($netmask == $valuenetmask)
+				$optparam .= "selected ";
+			echo "      <option value='{$netmask}' {$optparam}>{$netmask}</option>\n";
+		}
+		echo "    </select>\n";
+	}
+}
+
+class HTMLIPv6AddressBox extends HTMLIPAddressBox {
+	function HTMLIPv6AddressBox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description) {
+		$this->HTMLIPAddressBox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenetmask, $description);
+		$this->SetSize(30);
+	}
+
+	function RenderCtrl() {
+		$ctrlname = $this->GetCtrlName();
+		$ctrlnamenetmask = $this->GetCtrlNameNetmask();
+		$value = htmlspecialchars($this->GetValue());
+		$valuenetmask = htmlspecialchars($this->GetValueNetmask());
+		$size = $this->GetSize();
+
+		echo "    <input name='{$ctrlname}' type='text' class='formfld' id='{$ctrlname}' size='{$size}' value='{$value}'>\n";
+		echo "    /\n";
+		echo "    <input name='{$ctrlnamenetmask}' type='text' class='formfld' id='{$ctrlnamenetmask}' size='2' value='{$valuenetmask}'>\n";
+	}
+}
+
 class HTMLCheckBox extends HTMLBaseControlJS {
 	var $_caption = "";
 
