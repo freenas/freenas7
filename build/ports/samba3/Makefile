@@ -1,7 +1,7 @@
 PORTNAME=			samba
-PORTVERSION=	3.0.28
+PORTVERSION=	3.0.28a
 PORTREVISION=	1
-PORTEPOCH=		3
+PORTEPOCH=		1
 CATEGORIES=		net
 COMMENT=			A free SMB and CIFS client and server for UNIX
 MAINTAINER=		votdev@gmx.de
