@@ -589,54 +589,10 @@ update_svn() {
 use_svn() {
 	echo "===> Replacing old code with SVN code"
 
-	cp -pv ${FREENAS_SVNDIR}/root/.cshrc ${FREENAS_ROOTFS}/root
-	cp -pv ${FREENAS_SVNDIR}/root/.profile ${FREENAS_ROOTFS}/root
-	cp -pv ${FREENAS_SVNDIR}/root/.dialogrc ${FREENAS_ROOTFS}/root
-
-	cd $FREENAS_SVNDIR/etc
-	cp -v -p * $FREENAS_ROOTFS/etc
-
-	cd $FREENAS_SVNDIR/etc/inc
-	cp -v -p * $FREENAS_ROOTFS/etc/inc
-
-	cd $FREENAS_SVNDIR/etc/install
-	cp -v -p * $FREENAS_ROOTFS/etc/install
-
-	cd $FREENAS_SVNDIR/etc/inc/phpmailer
-	cp -v -p * $FREENAS_ROOTFS/etc/inc/phpmailer
-
-	cd $FREENAS_SVNDIR/etc/defaults
-	cp -v -p * $FREENAS_ROOTFS/etc/defaults
-
-	cd $FREENAS_SVNDIR/etc/mail
-	cp -v -p * $FREENAS_ROOTFS/etc/mail
-
-	cd $FREENAS_SVNDIR/etc/rc.d
-	cp -v -p * $FREENAS_ROOTFS/etc/rc.d
-
-	cd $FREENAS_SVNDIR/etc/rc.d.php
-	cp -v -p * $FREENAS_ROOTFS/etc/rc.d.php
-
-	cd $FREENAS_SVNDIR/etc/pam.d
-	cp -v -p * $FREENAS_ROOTFS/etc/pam.d
-
-	cd $FREENAS_SVNDIR/www
-	cp -v -p * $FREENAS_ROOTFS/usr/local/www
-
-	cd $FREENAS_SVNDIR/www/javascript
-	cp -v -p * $FREENAS_ROOTFS/usr/local/www/javascript
-
-	cd $FREENAS_SVNDIR/www/niftycube
-	cp -v -p * $FREENAS_ROOTFS/usr/local/www/niftycube
-
-	cd $FREENAS_SVNDIR/www/sajax
-	cp -v -p * $FREENAS_ROOTFS/usr/local/www/sajax
-
-	cd $FREENAS_SVNDIR/www/syntaxhighlighter
-	cp -v -p * $FREENAS_ROOTFS/usr/local/www/syntaxhighlighter
-
-	cd $FREENAS_SVNDIR/conf
-	cp -v -p * $FREENAS_ROOTFS/conf.default
+	cd ${FREENAS_SVNDIR}/root && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/root
+	cd ${FREENAS_SVNDIR}/etc && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/etc
+	cd ${FREENAS_SVNDIR}/www && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/usr/local/www
+	cd ${FREENAS_SVNDIR}/conf && find . \! -iregex ".*/\.svn.*" -print | cpio -pdumv ${FREENAS_ROOTFS}/conf.default
 
 	return 0
 }
