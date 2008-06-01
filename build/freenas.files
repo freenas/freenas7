@@ -562,4 +562,3 @@ etc/rc.d/FILESYSTEMS
 etc/rc.d/ip6addrctl
 etc/rc.d/random
 etc/rc.d/swap1
-etc/rc.d/zfs

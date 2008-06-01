@@ -281,6 +281,18 @@
 		</target>
 		-->
 	</iscsitarget>
+	<zfs>
+		<pools>
+			<!--
+			<pool>
+				<name>xxx</name>
+				<type>stripe|mirror|zraid|zraid1|zraid2|spare</type>
+				<device>xxx</device> // Can be defined multiple times.
+				<desc>xxx</desc>
+			</pool>
+			-->
+		</pools>
+	</zfs>
 	<mounts>
 		<!--
 		<mount>
