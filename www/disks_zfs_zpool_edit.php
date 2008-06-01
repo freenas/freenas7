@@ -115,7 +115,17 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function enable_change(enable_change) {
+	document.iform.name.disabled = !enable_change;
+	document.iform.vdevice.disabled = !enable_change;
+	document.iform.root.disabled = !enable_change;
+	document.iform.mountpoint.disabled = !enable_change;
+}
+// -->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
@@ -133,16 +143,16 @@ if ($_POST) {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext(""), true, 20, isset($id));?>
+					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext(""), true, 20);?>
 					<?php $a_device = array(); foreach ($a_vdevice as $vdevicev) { if (isset($id) && !(is_array($pconfig['vdevice']) && in_array($vdevicev['name'], $pconfig['vdevice']))) { continue; } if (!isset($id) && false !== array_search_ex($vdevicev['name'], $a_vdevice, "vdevice")) { continue; } $a_device[$vdevicev['name']] = htmlspecialchars("{$vdevicev['name']} ({$vdevicev['type']}, {$vdevicev['desc']})"); }?>
-					<?php html_listbox("vdevice", gettext("Virtual devices"), $pconfig['vdevice'], $a_device, gettext(""), true, isset($id));?>
-					<?php html_inputbox("root", gettext("Root"), $pconfig['root'], gettext("Creates the pool with an alternate root."), false, 40, isset($id));?>
-					<?php html_inputbox("mountpoint", gettext("Mount point"), $pconfig['mountpoint'], gettext("Sets the mount point for the root dataset. Default is /mnt."), false, 40, isset($id));?>
+					<?php html_listbox("vdevice", gettext("Virtual devices"), $pconfig['vdevice'], $a_device, gettext(""), true);?>
+					<?php html_inputbox("root", gettext("Root"), $pconfig['root'], gettext("Creates the pool with an alternate root."), false, 40);?>
+					<?php html_inputbox("mountpoint", gettext("Mount point"), $pconfig['mountpoint'], gettext("Sets the mount point for the root dataset. Default is /mnt."), false, 40);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vdevice[$id])) ? gettext("Save") : gettext("Add");?>">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vdevice[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
 							<?php if (isset($id) && $a_vdevice[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif;?>
@@ -153,4 +163,12 @@ if ($_POST) {
 		</td>
 	</tr>
 </table>
+<script language="JavaScript">
+<!--
+<?php if (isset($id) && $a_vdevice[$id]):?>
+<!-- Disable controls that should not be modified anymore in edit mode. -->
+enable_change(false);
+<?php endif;?>
+//-->
+</script>
 <?php include("fend.inc");?>

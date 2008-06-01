@@ -131,7 +131,16 @@ if ($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function enable_change(enable_change) {
+	document.iform.name.disabled = !enable_change;
+	document.iform.type.disabled = !enable_change;
+	document.iform.device.disabled = !enable_change;
+}
+// -->
+</script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
@@ -157,7 +166,7 @@ if ($_POST) {
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vdevice[$id])) ? gettext("Save") : gettext("Add");?>">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vdevice[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
 							<?php if (isset($id) && $a_vdevice[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif;?>
@@ -168,4 +177,12 @@ if ($_POST) {
 		</td>
 	</tr>
 </table>
+<script language="JavaScript">
+<!--
+<?php if (isset($id) && $a_vdevice[$id]):?>
+<!-- Disable controls that should not be modified anymore in edit mode. -->
+enable_change(false);
+<?php endif;?>
+//-->
+</script>
 <?php include("fend.inc");?>
