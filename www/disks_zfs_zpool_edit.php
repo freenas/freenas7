@@ -105,7 +105,7 @@ if ($_POST) {
 		else
 			$a_pool[] = $pool;
 
-   	write_config();
+		write_config();
 
 		// Mark new added pool to be configured.
 		file_put_contents($d_zpoolconfdirty_path, "{$pool[name]}\n", FILE_APPEND | FILE_TEXT);
@@ -119,26 +119,26 @@ if ($_POST) {
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
-  		<ul id="tabnav">
-  			<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><?=gettext("Virtual device");?></a></li>
+			<ul id="tabnav">
+				<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><?=gettext("Virtual device");?></a></li>
 				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><?=gettext("Manage pool");?></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><?=gettext("Information");?></a></li>
-  		</ul>
-  	</td>
+			</ul>
+		</td>
 	</tr>
-  <tr>
-    <td class="tabcont">
+	<tr>
+		<td class="tabcont">
 			<form action="disks_zfs_zpool_edit.php" method="post" name="iform" id="iform">
 				<?php if ($errormsg) print_error_box($errormsg);?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
-			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext(""), true, 20, isset($id));?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext(""), true, 20, isset($id));?>
 					<?php $a_device = array(); foreach ($a_vdevice as $vdevicev) { if (isset($id) && !(is_array($pconfig['vdevice']) && in_array($vdevicev['name'], $pconfig['vdevice']))) { continue; } if (!isset($id) && false !== array_search_ex($vdevicev['name'], $a_vdevice, "vdevice")) { continue; } $a_device[$vdevicev['name']] = htmlspecialchars("{$vdevicev['name']} ({$vdevicev['type']}, {$vdevicev['desc']})"); }?>
-			    <?php html_listbox("vdevice", gettext("Virtual devices"), $pconfig['vdevice'], $a_device, gettext(""), true, isset($id));?>
-			    <?php html_inputbox("root", gettext("Root"), $pconfig['root'], gettext("Creates the pool with an alternate root."), false, 40, isset($id));?>
-			    <?php html_inputbox("mountpoint", gettext("Mount point"), $pconfig['mountpoint'], gettext("Sets the mount point for the root dataset."), false, 40, isset($id));?>
-			  	<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
+					<?php html_listbox("vdevice", gettext("Virtual devices"), $pconfig['vdevice'], $a_device, gettext(""), true, isset($id));?>
+					<?php html_inputbox("root", gettext("Root"), $pconfig['root'], gettext("Creates the pool with an alternate root."), false, 40, isset($id));?>
+					<?php html_inputbox("mountpoint", gettext("Mount point"), $pconfig['mountpoint'], gettext("Sets the mount point for the root dataset. Default is /mnt."), false, 40, isset($id));?>
+					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
@@ -148,7 +148,7 @@ if ($_POST) {
 							<?php endif;?>
 						</td>
 					</tr>
-			  </table>
+				</table>
 			</form>
 		</td>
 	</tr>

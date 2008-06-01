@@ -84,10 +84,15 @@ function zfs_zpool_configure($name) {
 
 	// Additional parameter
 	$param = "";
+
 	if (!empty($vpool['root']))
 		$param .= "-R {$vpool['root']} ";
-	if (!empty($vpool['mountpoint']))
+
+	if (!empty($vpool['mountpoint'])) {
 		$param .= "-m {$vpool['mountpoint']} ";
+	} else {
+		$param .= "-m /mnt ";
+	}
 
 	// Create pool
 	$cmd = "/sbin/zpool create {$param} {$vpool['name']} ";
