@@ -92,6 +92,7 @@ $g_filesystems = array(
 	"ntfs" => "NTFS",
 	"ext2" => "EXT2",
 	"softraid" => "Software RAID",
-	"geli" => "Encrypted"
+	"geli" => "Encrypted",
+	"zfs" => "ZFS storage pool device"
 );
 ?>

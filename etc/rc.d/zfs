@@ -3,8 +3,6 @@
 # $FreeBSD: src/etc/rc.d/zfs,v 1.5 2007/04/22 20:55:08 pjd Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
-# Changes:
-# - Add zpool_init
 #
 
 # PROVIDE: zfs
@@ -30,7 +28,6 @@ zfs_start_jail()
 
 zfs_start_main()
 {
-	zpool_init
 	zfs volinit
 	zfs mount -a
 	zfs share -a
@@ -87,21 +84,6 @@ zfs_stop()
 	else
 		zfs_stop_main
 	fi
-}
-
-zpool_init()
-{
-	/usr/local/bin/xml sel -t -m "//zfs/pools/pool" \
-		-v "concat('-m /mnt/',name,' ',name,' ')" \
-		-i "type[. != 'stripe']" -v "concat(type,' ')" -b \
-		-m "device" \
-			-v "concat(.,' ')" \
-		-b \
-		-i "position() != last()" -n -b \
-		${configxml_file} | /usr/local/bin/xml unesc | \
-		while read _command_args; do
-			eval zpool create ${_command_args}
-		done
 }
 
 load_rc_config $name

@@ -282,12 +282,23 @@
 		-->
 	</iscsitarget>
 	<zfs>
+		<vdevices>
+			<!--
+			<vdevice>
+				<name>xxx</name>
+				<type>stripe|mirror|zraid|zraid1|zraid2|spare</type>
+				<device>xxx</device> // Can be defined multiple times.
+				<desc>xxx</desc>
+			</vdevice>
+			-->
+		</vdevices>
 		<pools>
 			<!--
 			<pool>
 				<name>xxx</name>
-				<type>stripe|mirror|zraid|zraid1|zraid2|spare</type>
-				<device>xxx</device> // Can be defined multiple times.
+				<vdevice>xxx</vdevice> // Can be defined multiple times.
+				<root>/</root>
+				<mountpoint>xxx</mountpoint>
 				<desc>xxx</desc>
 			</pool>
 			-->

@@ -862,6 +862,7 @@ function disks_format($disk, $type, $notinitmbr, $minspace, $volumelabel)
 			break;
 
 		case "softraid":
+		case "zfs":
 			// Initialize disk
 			echo gettext("Formating disk").".\n";
 			system("/bin/dd if=/dev/zero of={$disk} bs=1m count=16");

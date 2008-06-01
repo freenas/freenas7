@@ -1493,6 +1493,8 @@ function get_fstype_shortdesc($fstype) {
                           break;
     case "ext2":					$shortdesc = "EXT2";
     											break;
+		case "zfs":						$shortdesc = "ZFS storage pool device";
+    											break;
   }
 
   return $shortdesc;
@@ -1786,6 +1788,22 @@ function get_conf_encryped_disks_list() {
 	return $a_vdisk;
 }
 
+// Get list of configured ZFS virtual devices
+function get_conf_zfs_vdevice_list() {
+	global $config;
+
+	$result = array();
+
+	if (is_array($config['zfs']['vdevices']['vdevice'])) {
+		array_sort_key($config['zfs']['vdevices']['vdevice'], "name");
+		$a_vdevice = $config['zfs']['vdevices']['vdevice'];
+		foreach ($a_vdevice as &$vdevice) { $vdevice['class'] = "vdevice"; } // Set disk type
+		$result = array_merge($result, $a_vdevice);
+	}
+
+	return $result;
+}
+
 // Get a filtered list of all configured disks (real and virtual, e.g. SoftRAID or GEli encrypted).
 // Physical disks used by any virtual disk is filtered out. Also virtual disks itself are
 // filtered if they are used by another virtual disk.
@@ -1803,6 +1821,9 @@ function get_conf_all_disks_list_filtered() {
 	// Get list of encrypted disks
 	$a_encrypteddisk = get_conf_encryped_disks_list();
 
+	// Get list of ZFS virtual devices
+	$a_zfsvdevice = get_conf_zfs_vdevice_list();
+
 	// First add physical disks if they are not used by a virtual disk
 	foreach ($a_physicaldisk as $disk) {
 		$unused = true;
@@ -1819,6 +1840,14 @@ function get_conf_all_disks_list_filtered() {
 
 		// Check encrypted disks
 		foreach ($a_encrypteddisk as $vdisk) {
+			if (false !== array_search($disk['devicespecialfile'], $vdisk['device'])) {
+				$unused = false;
+				break;
+			}
+		}
+
+		// Check ZFS virtual devices
+		foreach ($a_zfsvdevice as $vdisk) {
 			if (false !== array_search($disk['devicespecialfile'], $vdisk['device'])) {
 				$unused = false;
 				break;
