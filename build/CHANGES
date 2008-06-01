@@ -75,6 +75,7 @@ Minors changes:
 - Add WebGUI page 'Diagnostics: Information: CIFS/SMB' to list misc. informations about Samba (e.g. open files).
 - Add 'Quiet' parameter to RSYNC client/local shares to suppress non-error messages (FR 1936192).
 - Add ssl-keygen (FR 1963342).
+- Allow adding a description in 'Disks: Management' (FR 1918964).
 
 Bug fixes:
 - Add new parameter to AFP share WebGUI to define path where to store .AppleDB files for AFP shares (BR 1932519). Thanks to Djuri Baars.

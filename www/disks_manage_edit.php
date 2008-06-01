@@ -58,6 +58,7 @@ if (isset($id) && $a_disk[$id]) {
 	$pconfig['transfermode'] = $a_disk[$id]['transfermode'];
 	$pconfig['devicespecialfile'] = $a_disk[$id]['devicespecialfile'];
 	$pconfig['smart'] = isset($a_disk[$id]['smart']);
+	$pconfig['desc'] = $a_disk[$id]['desc'];
 } else {
 	$pconfig['name'] = "";
 	$pconfig['transfermode'] = "auto";
@@ -66,6 +67,7 @@ if (isset($id) && $a_disk[$id]) {
 	$pconfig['acoustic'] = "0";
 	$pconfig['fstype'] = "";
 	$pconfig['smart'] = false;
+	$pconfig['desc'] = "";
 }
 
 if ($_POST) {
@@ -95,7 +97,7 @@ if ($_POST) {
 		$disks['apm'] = $_POST['apm'];
 		$disks['transfermode'] = $_POST['transfermode'];
 		$disks['type'] = $a_phy_disk[$devname]['type'];
-		$disks['desc'] = $a_phy_disk[$devname]['desc'];
+		$disks['desc'] = (empty($_POST['desc'])) ? $a_phy_disk[$devname]['desc'] : $_POST['desc'];
 		$disks['size'] = $a_phy_disk[$devname]['size'];
 		$disks['smart'] = $_POST['smart'] ? true : false;
 
@@ -149,6 +151,7 @@ function enable_change(enable_change) {
 							</select>
 					  </td>
 					</tr>
+					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Transfer mode"); ?></td>
 						<td width="78%" class="vtable">
