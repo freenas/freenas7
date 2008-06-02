@@ -91,7 +91,7 @@ function zfs_zpool_configure($name) {
 	if (!empty($vpool['mountpoint'])) {
 		$param .= "-m {$vpool['mountpoint']} ";
 	} else {
-		$param .= "-m /mnt ";
+		$param .= "-m /mnt/{$vpool['name']} ";
 	}
 
 	// Create pool
@@ -144,5 +144,30 @@ function zfs_zpool_destroy($name) {
 	mwexec("/sbin/zpool destroy {$name}");
 
 	return 0;
+}
+
+// Wrapper to execute zpool commands.
+// $command - Command to execute (e.g. upgrade).
+// $param   - The command parameter.
+// $verbose - Display command results or hide them.
+// $stderr  - Redirect stderr to stdout to display error messages too.
+// Return 0 if successful, 1 if error.
+function zfs_zpool_cmd($command, $param, $verbose = false, $stderr = true, $out = false, &$output = array()) {
+	$result = 1;
+	$cmd = "/sbin/zpool {$command} {$param}";
+
+	if (true === $verbose) {
+		if (true === $stderr)
+			$cmd .= " 2>&1"; // Redirect error message to stdout
+		system($cmd, $result);
+	}	else {
+		if (true === $out) {
+			exec($cmd, $output, $result);
+		} else {
+			$result = mwexec($cmd);
+		}
+	}
+
+	return $result;
 }
 ?>
