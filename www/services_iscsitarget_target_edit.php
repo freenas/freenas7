@@ -135,37 +135,12 @@ if ($_POST) {
 				<?php if ($errormsg) print_error_box($errormsg);?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Device name");?></td>
-						<td width="78%" class="vtable">
-							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly";?>>
-					  </td>
-					</tr>
-					<tr>
-			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Flags"); ?></td>
-			      <td width="78%" class="vtable">
-			  			<select name="flags" class="formfld" id="flags">
-			          <?php $opts = array("rw", "ro"); $vals = array("rw", "ro"); $i = 0;
-								foreach ($opts as $opt): ?>
-			          <option <?php if ($vals[$i] === $pconfig['flags']) echo "selected";?> value="<?=$vals[$i++];?>"><?=htmlspecialchars(gettext($opt));?></option>
-			          <?php endforeach; ?>
-			        </select>
-			      </td>
-			    </tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Storage");?></td>
-			      <td width="78%" class="vtable">
-				      <?php $i = 0; foreach ($a_iscsitarget_extent as $extent):?>
-							<input name="storage[]" id="<?=$i;?>" type="checkbox" value="<?=$extent['name'];?>" <?php if (is_array($pconfig['storage']) && in_array($extent['name'],$pconfig['storage'])) echo "checked";?>><?=htmlspecialchars($extent['name']);?><br>
-				      <?php $i++; endforeach;?>
-				      <?php $k = 0; foreach ($a_iscsitarget_device as $device):?>
-							<input name="storage[]" id="<?=$k;?>" type="checkbox" value="<?=$device['name'];?>" <?php if (is_array($pconfig['storage']) && in_array($device['name'],$pconfig['storage'])) echo "checked";?>><?=htmlspecialchars($device['name']);?><br>
-				      <?php $k++; endforeach;?>
-				      <?php if (0 == $i && 0 == $k):?>&nbsp;<?php endif;?>
-				    </td>
-			    </tr>
+					<?php html_inputbox("name", gettext("Target name"), $pconfig['name'], gettext(""), true, 10, isset($id));?>
+					<?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => "rw", "ro" => "ro"), gettext(""), true);?>
+					<?php $a_storage = array(); foreach ($a_iscsitarget_extent as $extentv) { if (!isset($id) && false !== array_search_ex($extentv['name'], $a_iscsitarget_target, "storage")) { continue; } $a_storage[$extentv['name']] = htmlspecialchars($extentv['name']); } foreach ($a_iscsitarget_device as $devicev) { if (!isset($id) && false !== array_search_ex($devicev['name'], $a_iscsitarget_target, "storage")) { continue; } $a_storage[$devicev['name']] = htmlspecialchars($devicev['name']); }?>
+					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, gettext(""), true);?>
 					<?php html_ipv4addrbox("ipaddr", "subnet", gettext("Authorised network"), $pconfig['ipaddr'], $pconfig['subnet'], gettext("Network that is authorised to access to this iSCSI target."), true);?>
-			    <tr>
+					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_target[$id]))?gettext("Save"):gettext("Add")?>">
 						<?php if (isset($id) && $a_iscsitarget_target[$id]):?>
@@ -173,7 +148,7 @@ if ($_POST) {
 						<?php endif;?>
 						</td>
 					</tr>
-			  </table>
+				</table>
 			</td>
 		</tr>
 	</table>
