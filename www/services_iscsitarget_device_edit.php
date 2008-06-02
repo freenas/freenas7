@@ -134,39 +134,11 @@ function iscsitarget_checkusage($name,$skipdevice = "") {
 				<?php if ($errormsg) print_error_box($errormsg);?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Device name");?></td>
-						<td width="78%" class="vtable">
-							<input name="name" type="text" class="formfld" id="name" size="10" value="<?=htmlspecialchars($pconfig['name']);?>" <?php if (isset($id)) echo "readonly";?>>
-					  </td>
-					</tr>
+					<?php html_inputbox("name", gettext("Device name"), $pconfig['name'], gettext(""), true, 10, isset($id));?>
+					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("RAID0" => gettext("RAID 0 (stripping)"), "RAID1" => gettext("RAID 1 (mirroring)")), gettext(""), true);?>
+					<?php $a_storage = array(); foreach ($a_iscsitarget_extent as $extentv) { if (true === iscsitarget_checkusage($extentv['name'], $pconfig['name'])) { continue; } $a_storage[$extentv['name']] = htmlspecialchars($extentv['name']); } foreach ($a_iscsitarget_device as $devicev) { if ($devicev['name'] === $pconfig['name']) { continue; } if (!isset($id) && (true === iscsitarget_checkusage($devicev['name']))) { continue; } $a_storage[$devicev['name']] = htmlspecialchars($devicev['name']); }?>
+					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, gettext(""), true);?>			  	
 					<tr>
-			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type"); ?></td>
-			      <td width="78%" class="vtable">
-			  			<select name="type" class="formfld" id="type">
-			          <?php $opts = array(gettext("RAID 0 (stripping)"), gettext("RAID 1 (mirroring)")); $vals = explode(" ", "RAID0 RAID1"); $i = 0;
-								foreach ($opts as $opt): ?>
-			          <option <?php if ($vals[$i] === $pconfig['type']) echo "selected";?> value="<?=$vals[$i++];?>"><?=htmlspecialchars($opt);?></option>
-			          <?php endforeach; ?>
-			        </select>
-			      </td>
-			    </tr>
-					<tr>
-			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Storage");?></td>
-			      <td width="78%" class="vtable">
-				      <?php $i = 0; foreach ($a_iscsitarget_extent as $extent):?>
-				      <?php if (true === iscsitarget_checkusage($extent['name'], $pconfig['name'])) continue;?>
-							<input name="storage[]" id="<?=$i;?>" type="checkbox" value="<?=$extent['name'];?>" <?php if (is_array($pconfig['storage']) && in_array($extent['name'],$pconfig['storage'])) echo "checked";?>><?=htmlspecialchars($extent['name']);?><br>
-				      <?php $i++; endforeach;?>
-				      <?php $k = 0; foreach ($a_iscsitarget_device as $device):?>
-				      <?php if ($device['name'] === $pconfig['name']) continue;?>
-				      <?php if (true === iscsitarget_checkusage($device['name'])) continue;?>
-							<input name="storage[]" id="<?=$k;?>" type="checkbox" value="<?=$device['name'];?>" <?php if (is_array($pconfig['storage']) && in_array($device['name'],$pconfig['storage'])) echo "checked";?>><?=htmlspecialchars($device['name']);?><br>
-				      <?php $k++; endforeach;?>
-				      <?php if ((0 == $i) && (0 == $k)):?>&nbsp;<?php endif;?>
-				    </td>
-			    </tr>
-			    <tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_device[$id]))?gettext("Save"):gettext("Add")?>">
 						<?php if (isset($id) && $a_iscsitarget_device[$id]): ?>
@@ -174,7 +146,7 @@ function iscsitarget_checkusage($name,$skipdevice = "") {
 						<?php endif; ?>
 						</td>
 					</tr>
-			  </table>
+				</table>
 			</td>
 		</tr>
 	</table>
