@@ -12,6 +12,25 @@
 
 name="rcconf"
 
+setvar()
+{
+	local _platform
+
+	# Get operating platform
+	_platform=`cat /etc/platform`
+
+	case ${_platform} in
+		i386-full)
+			;;
+		*)
+			# If running from liveCD or embedded use a memory filesystem for /var.
+			eval /usr/local/sbin/rconf attribute set varmfs "YES";
+			eval /usr/local/sbin/rconf attribute set varmfs_flags "-S -o union";
+			eval /usr/local/sbin/rconf attribute set populate_var "NO";
+			;;
+	esac
+}
+
 # Set hostname
 sethostname()
 {
@@ -291,6 +310,7 @@ load_rc_config ${name}
 echo -n "Updating rc.conf:"
 
 updateservices
+setvar
 sethostname
 setifconfig
 setoptions
