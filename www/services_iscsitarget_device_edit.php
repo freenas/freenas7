@@ -121,31 +121,31 @@ if ($_POST) {
 					$a_storage = array();
 					// Check extents
 					foreach ($a_iscsitarget_extent as $extentv) {
-						// Add mode: Only display extents that are not already used in a target or device
+						// Add mode: Only display extents that are not already used in a target or device.
 						if (!isset($id) && (false !== array_search_ex($extentv['name'], array_merge($a_iscsitarget_target, $a_iscsitarget_device), "storage"))) { continue; }
 						// Edit mode:
 						if (isset($id)) {
-							// Check if extent is already used in another target. Verify that it isn't the current processed target.
-							$index = array_search_ex($extentv['name'], array_merge($a_iscsitarget_target), "storage");
-							if ((false !== $index) && ($a_iscsitarget_target[$index]['name'] !== $pconfig['name'])) { continue; }
-							// Check if extent is already used in another device
-							if (false !== array_search_ex($extentv['name'], array_merge($a_iscsitarget_device), "storage")) { continue; }
+							// Check if extent is already used in another target.
+							if (false !== array_search_ex($extentv['name'], $a_iscsitarget_target, "storage")) { continue; }
+							// Check if extent is already used in another device. Verify that it isn't the current processed device.
+							$index = array_search_ex($extentv['name'], $a_iscsitarget_device, "storage");
+							if ((false !== $index) && ($a_iscsitarget_device[$index]['name'] !== $pconfig['name'])) { continue; }
 						}
 						$a_storage[$extentv['name']] = htmlspecialchars($extentv['name']);
 					}
 					// Check devices
 					foreach ($a_iscsitarget_device as $devicev) {
-						// Add mode: Only display devices that are not already used in a target or device
+						// Add mode: Only display devices that are not already used in a target or device.
 						if (!isset($id) && false !== array_search_ex($devicev['name'], array_merge($a_iscsitarget_target, $a_iscsitarget_device), "storage")) { continue; }
 						// Edit mode:
 						if (isset($id)) {
-							// Do not display the current device itself
+							// Do not display the current device itself.
 							if ($devicev['name'] === $pconfig['name']) { continue; }
-							// Check if device is already used in another target. Verify that it isn't the current processed target.
-							$index = array_search_ex($devicev['name'], array_merge($a_iscsitarget_device), "storage");
-							if ((false !== $index) && ($a_iscsitarget_target[$index]['name'] !== $pconfig['name'])) { continue; }
-							// Check if device is already used in another device
-							if (false !== array_search_ex($devicev['name'], array_merge($a_iscsitarget_device), "storage")) { continue; }
+							// Check if device is already used in another target.
+							if (false !== array_search_ex($devicev['name'], $a_iscsitarget_target, "storage")) { continue; }
+							// Check if device is already used in another device. Verify that it isn't the current processed device.
+							$index = array_search_ex($devicev['name'], $a_iscsitarget_device, "storage");
+							if ((false !== $index) && ($a_iscsitarget_device[$index]['name'] !== $pconfig['name'])) { continue; }
 						}
 						$a_storage[$devicev['name']] = htmlspecialchars($devicev['name']);
 					}
