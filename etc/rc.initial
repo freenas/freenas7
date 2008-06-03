@@ -23,10 +23,7 @@ PLATFORM=`cat /etc/platform`
 # Check if console menu is disabled.
 if configxml_isset "//system/disableconsolemenu"; then
 	while : ; do
-		echo
-		echo
-		echo "*** Console menu disabled. ***"
-		echo
+		printf "\n\n\33[31m%s\33[0m\n\n"  "*** Console menu disabled. ***"
 		read tmp
 	done
 else
