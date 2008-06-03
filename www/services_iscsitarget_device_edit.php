@@ -48,11 +48,16 @@ if (!is_array($config['iscsitarget']['extent']))
 if (!is_array($config['iscsitarget']['device']))
 	$config['iscsitarget']['device'] = array();
 
+if (!is_array($config['iscsitarget']['target']))
+	$config['iscsitarget']['target'] = array();
+
 array_sort_key($config['iscsitarget']['extent'], "name");
 array_sort_key($config['iscsitarget']['device'], "name");
+array_sort_key($config['iscsitarget']['extent'], "name");
 
 $a_iscsitarget_extent = &$config['iscsitarget']['extent'];
 $a_iscsitarget_device = &$config['iscsitarget']['device'];
+$a_iscsitarget_target = &$config['iscsitarget']['target'];
 
 if (!sizeof($a_iscsitarget_extent)) {
 	$errormsg = gettext("You have to define some 'Extent' objects first.");
@@ -101,30 +106,6 @@ if ($_POST) {
 		exit;
 	}
 }
-
-// Check if the extent/device storage object is already used.
-// Return true if it is used anywhere, otherwise false.
-function iscsitarget_checkusage($name,$skipdevice = "") {
-	global $config;
-
-	$result = false;
-
-	if (is_array($config['iscsitarget']['device'])) {
-		foreach($config['iscsitarget']['device'] as $device) {
-			if (!empty($skipdevice) && ($device['name'] === $skipdevice)) continue;
-			if (is_array($device['storage'])) {
-				foreach($device['storage'] as $storage) {
-					if ($storage === $name) {
-						$result = true;
-						break;
-					}
-				}
-			}
-		}
-	}
-
-	return $result;
-}
 ?>
 <?php include("fbegin.inc");?>
 <form action="services_iscsitarget_device_edit.php" method="post" name="iform" id="iform">
@@ -136,14 +117,46 @@ function iscsitarget_checkusage($name,$skipdevice = "") {
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_inputbox("name", gettext("Device name"), $pconfig['name'], gettext(""), true, 10, isset($id));?>
 					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("RAID0" => gettext("RAID 0 (stripping)"), "RAID1" => gettext("RAID 1 (mirroring)")), gettext(""), true);?>
-					<?php $a_storage = array(); foreach ($a_iscsitarget_extent as $extentv) { if (true === iscsitarget_checkusage($extentv['name'], $pconfig['name'])) { continue; } $a_storage[$extentv['name']] = htmlspecialchars($extentv['name']); } foreach ($a_iscsitarget_device as $devicev) { if ($devicev['name'] === $pconfig['name']) { continue; } if (!isset($id) && (true === iscsitarget_checkusage($devicev['name']))) { continue; } $a_storage[$devicev['name']] = htmlspecialchars($devicev['name']); }?>
-					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, gettext(""), true);?>			  	
+					<?php
+					$a_storage = array();
+					// Check extents
+					foreach ($a_iscsitarget_extent as $extentv) {
+						// Add mode: Only display extents that are not already used in a target or device
+						if (!isset($id) && (false !== array_search_ex($extentv['name'], array_merge($a_iscsitarget_target, $a_iscsitarget_device), "storage"))) { continue; }
+						// Edit mode:
+						if (isset($id)) {
+							// Check if extent is already used in another target. Verify that it isn't the current processed target.
+							$index = array_search_ex($extentv['name'], array_merge($a_iscsitarget_target), "storage");
+							if ((false !== $index) && ($a_iscsitarget_target[$index]['name'] !== $pconfig['name'])) { continue; }
+							// Check if extent is already used in another device
+							if (false !== array_search_ex($extentv['name'], array_merge($a_iscsitarget_device), "storage")) { continue; }
+						}
+						$a_storage[$extentv['name']] = htmlspecialchars($extentv['name']);
+					}
+					// Check devices
+					foreach ($a_iscsitarget_device as $devicev) {
+						// Add mode: Only display devices that are not already used in a target or device
+						if (!isset($id) && false !== array_search_ex($devicev['name'], array_merge($a_iscsitarget_target, $a_iscsitarget_device), "storage")) { continue; }
+						// Edit mode:
+						if (isset($id)) {
+							// Do not display the current device itself
+							if ($devicev['name'] === $pconfig['name']) { continue; }
+							// Check if device is already used in another target. Verify that it isn't the current processed target.
+							$index = array_search_ex($devicev['name'], array_merge($a_iscsitarget_device), "storage");
+							if ((false !== $index) && ($a_iscsitarget_target[$index]['name'] !== $pconfig['name'])) { continue; }
+							// Check if device is already used in another device
+							if (false !== array_search_ex($devicev['name'], array_merge($a_iscsitarget_device), "storage")) { continue; }
+						}
+						$a_storage[$devicev['name']] = htmlspecialchars($devicev['name']);
+					}
+					?>
+					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, gettext(""), true);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_device[$id]))?gettext("Save"):gettext("Add")?>">
-						<?php if (isset($id) && $a_iscsitarget_device[$id]): ?>
+							<?php if (isset($id) && $a_iscsitarget_device[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
-						<?php endif; ?>
+							<?php endif; ?>
 						</td>
 					</tr>
 				</table>
