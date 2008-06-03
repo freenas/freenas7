@@ -137,15 +137,45 @@ if ($_POST) {
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_inputbox("name", gettext("Target name"), $pconfig['name'], gettext(""), true, 10, isset($id));?>
 					<?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => "rw", "ro" => "ro"), gettext(""), true);?>
-					<?php $a_storage = array(); foreach ($a_iscsitarget_extent as $extentv) { if (!isset($id) && false !== array_search_ex($extentv['name'], $a_iscsitarget_target, "storage")) { continue; } $a_storage[$extentv['name']] = htmlspecialchars($extentv['name']); } foreach ($a_iscsitarget_device as $devicev) { if (!isset($id) && false !== array_search_ex($devicev['name'], $a_iscsitarget_target, "storage")) { continue; } $a_storage[$devicev['name']] = htmlspecialchars($devicev['name']); }?>
+					<?php
+					$a_storage = array();
+					// Check extents
+					foreach ($a_iscsitarget_extent as $extentv) {
+						// Add mode: Only display extents that are not already used in a target or device
+						if (!isset($id) && (false !== array_search_ex($extentv['name'], array_merge($a_iscsitarget_target, $a_iscsitarget_device), "storage"))) { continue; }
+						// Edit mode:
+						if (isset($id)) {
+							// Check if extent is already used in another target. Verify that it isn't the current processed target.
+							$index = array_search_ex($extentv['name'], array_merge($a_iscsitarget_target), "storage");
+							if ((false !== $index) && ($a_iscsitarget_target[$index]['name'] !== $pconfig['name'])) { continue; }
+							// Check if extent is already used in another device
+							if (false !== array_search_ex($extentv['name'], array_merge($a_iscsitarget_device), "storage")) { continue; }
+						}
+						$a_storage[$extentv['name']] = htmlspecialchars($extentv['name']);
+					}
+					// Check devices
+					foreach ($a_iscsitarget_device as $devicev) {
+						// Add mode: Only display devices that are not already used in a target or device
+						if (!isset($id) && false !== array_search_ex($devicev['name'], array_merge($a_iscsitarget_target, $a_iscsitarget_device), "storage")) { continue; }
+						// Edit mode:
+						if (isset($id)) {
+							// Check if device is already used in another target. Verify that it isn't the current processed target.
+							$index = array_search_ex($devicev['name'], array_merge($a_iscsitarget_device), "storage");
+							if ((false !== $index) && ($a_iscsitarget_target[$index]['name'] !== $pconfig['name'])) { continue; }
+							// Check if device is already used in another device
+							if (false !== array_search_ex($devicev['name'], array_merge($a_iscsitarget_device), "storage")) { continue; }
+						}
+						$a_storage[$devicev['name']] = htmlspecialchars($devicev['name']);
+					}
+					?>
 					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, gettext(""), true);?>
 					<?php html_ipv4addrbox("ipaddr", "subnet", gettext("Authorised network"), $pconfig['ipaddr'], $pconfig['subnet'], gettext("Network that is authorised to access to this iSCSI target."), true);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%"><input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_iscsitarget_target[$id]))?gettext("Save"):gettext("Add")?>">
-						<?php if (isset($id) && $a_iscsitarget_target[$id]):?>
+							<?php if (isset($id) && $a_iscsitarget_target[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
-						<?php endif;?>
+							<?php endif;?>
 						</td>
 					</tr>
 				</table>
