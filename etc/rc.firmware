@@ -29,9 +29,9 @@ case $1 in
 		# Use auto-unit feature to automatically select an unused device.
 		/sbin/mdmfs -s $SIZE -b 8192 -f 1024 md /ftmp > /dev/null 2>&1
 		if [ 0 != $? ]; then # successful?
-				echo
-				echo "Upgrade Error: Failed to create in-memory file system."
-				/usr/bin/logger "Upgrade Error: Failed to create in-memory file system."
+				error_msg="Upgrade Error: Failed to create in-memory file system."
+					printf "\n\33[31m%s\33[0m\n" "$error_msg"
+					/usr/bin/logger "$error_msg"
 				exit 1
 		fi
 		;;
@@ -46,9 +46,9 @@ case $1 in
 		# Umount in-memory file system.
 		/sbin/umount -f /ftmp > /dev/null 2>&1
 		if [ 0 != $? ]; then # successful?
-				echo
-				echo "Upgrade Error: Failed to umount in-memory file system."
-				/usr/bin/logger "Upgrade Error: Failed to umount in-memory file system."
+				error_msg="Upgrade Error: Failed to umount in-memory file system."
+					printf "\n\33[31m%s\33[0m\n" "$error_msg"
+					/usr/bin/logger "$error_msg"
 				exit 1
 		fi
 
@@ -63,13 +63,13 @@ case $1 in
 		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
 
-		echo
-		echo "Firmware upgrade in progress. Please wait..."
+		printf "\n\33[33m%s\33[0m\n" "Firmware upgrade in progress. Please wait..."
 
 		# Check if firmware file exists
 		if [ ! -r $2 ]; then
-			echo "Error: Firmware file does not exist."
-			/usr/bin/logger "upgrade: ERROR: Firmware file does not exist."
+			error_msg="Error: Firmware file does not exist."
+				printf "\n\33[31m%s\33[0m\n" "$error_msg"
+				/usr/bin/logger "$error_msg"
 			exit 1
 		fi
 
@@ -86,11 +86,13 @@ case $1 in
 			/usr/bin/gzip -cd -S "" $2 | /bin/dd of=/dev/${CFDEVICE} bs=16k > /dev/null 2>&1
 			result=$?
 			if [ 0 != ${result} ]; then # successful?
-				echo "Error: Failed to dd firmware image on '/dev/${CFDEVICE}'!"
-				/usr/bin/logger "upgrade: ERROR: Failed to dd firmware image on '/dev/${CFDEVICE}'!"
+				error_msg="Upgrade Error: Failed to dd firmware image on '/dev/${CFDEVICE}' ! "
+					printf "\33[31m%s\33[0m\n" "$error_msg"
+					/usr/bin/logger "$error_msg"
 			else
-				echo "Firmware installed successful."
-				/usr/bin/logger "upgrade: Firmware installed successful."
+			    ok_msg="Firmware upgrade: Firmware installed successful."
+					printf "\33[32m%s\33[0m\n" "$ok_msg"
+					/usr/bin/logger "$ok_msg"
 			fi
 		fi
 
@@ -107,7 +109,9 @@ case $1 in
 
 		# Reboot system if upgrade was successful.
 		if [ 0 -eq ${result} ]; then
-			echo "Rebooting system..."
+			ok_msg="Rebooting system..."
+				printf "\33[33m%s\33[0m\n" "$ok_msg"
+				/usr/bin/logger "$ok_msg"
 			/sbin/shutdown -r now > /dev/null 2>&1
 		else
 			exit 1
@@ -121,13 +125,13 @@ case $1 in
 		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
 
-		echo
-		echo "Firmware upgrade in progress. Please wait..."
+		printf "\33[33m%s\33[0m\n" "Firmware upgrade in progress. Please wait..."
 
 		# Check if firmware file exists.
 		if [ ! -r $2 ]; then
-			echo "Error: Firmware file does not exist."
-			/usr/bin/logger "upgrade: ERROR: Firmware file does not exist."
+			error_msg="Firmware upgrade ERROR: Firmware file does not exist."
+				printf "\33[31m%s\33[0m\n" "$error_msg"
+				/usr/bin/logger "$error_msg"
 			exit 1
 		fi
 
@@ -151,8 +155,8 @@ case $1 in
 
 		#Need to be added: List of old files to be deleted (is necessary?)
 
-		echo "Firmware installed successful."
-		echo "Rebooting system..."
+		printf "\33[32m%s\33[0m\n" "Firmware installed successful."
+		printf "\33[33m%s\33[0m\n" "Rebooting system..."
 		/sbin/shutdown -r now > /dev/null 2>&1
 		;;
 esac
