@@ -227,7 +227,7 @@ function print_input_errors($input_errors) {
 }
 
 function verify_gzip_file($fname) {
-	$returnvar = mwexec("/usr/bin/gzip -t " . escapeshellarg($fname));
+	$returnvar = mwexec("/usr/bin/gzip -t " . escapeshellarg($fname), true);
 	if ($returnvar != 0)
 		return 0;
 	else

@@ -111,7 +111,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 				} else {
 					/* move the image so PHP won't delete it */
 					rename($_FILES['ulfile']['tmp_name'], "{$g['ftmp_path']}/firmware.img");
-
+					
 					if (!verify_gzip_file("{$g['ftmp_path']}/firmware.img")) {
 						$input_errors[] = gettext("The image file is corrupt");
 						unlink("{$g['ftmp_path']}/firmware.img");
@@ -122,8 +122,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 			// Cleanup if there were errors.
 			if ($input_errors) {
 				rc_exec_script("/etc/rc.firmware disable");
-				if (file_exists($d_fwupenabled_path))
-					unlink($d_fwupenabled_path);
+				unlink_if_exists($d_fwupenabled_path);
 			}
 
 			// Upgrade firmware if there were no errors.
