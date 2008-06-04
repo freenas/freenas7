@@ -28,7 +28,7 @@ case $1 in
 		# Use auto-unit feature to automatically select an unused device.
 		/sbin/mdmfs -s $SIZE -b 8192 -f 1024 md /ftmp > /dev/null 2>&1
 		if [ 0 != $? ]; then # successful?
-			msg="Upgrade error: Failed to create in-memory file system."
+			msg="UPGRADE ERROR: Failed to create in-memory file system."
 			printf "\n\33[31m%s\33[0m\n" "${msg}"
 			/usr/bin/logger "${msg}"
 			exit 1
@@ -45,7 +45,7 @@ case $1 in
 		# Umount in-memory file system.
 		/sbin/umount -f /ftmp > /dev/null 2>&1
 		if [ 0 != $? ]; then # successful?
-			msg="Upgrade error: Failed to umount in-memory file system."
+			msg="UPGRADE ERROR: Failed to umount in-memory file system."
 			printf "\n\33[31m%s\33[0m\n" "${msg}"
 			/usr/bin/logger "${msg}"
 			exit 1
@@ -66,7 +66,7 @@ case $1 in
 
 		# Check if firmware file exists
 		if [ ! -r $2 ]; then
-			msg="Upgrade error: Firmware file does not exist."
+			msg="UPGRADE ERROR: Firmware file does not exist."
 			printf "\n\33[31m%s\33[0m\n" "${msg}"
 			/usr/bin/logger "${msg}"
 			exit 1
@@ -85,11 +85,11 @@ case $1 in
 			/usr/bin/gzip -cd -S "" $2 | /bin/dd of=/dev/${CFDEVICE} bs=16k > /dev/null 2>&1
 			result=$?
 			if [ 0 != ${result} ]; then # successful?
-				msg="Upgrade error: Failed to dd firmware image on '/dev/${CFDEVICE}' ! "
+				msg="UPGRADE ERROR: Failed to intall firmware image on '/dev/${CFDEVICE}' ! "
 				printf "\33[31m%s\33[0m\n" "${msg}"
 				/usr/bin/logger "${msg}"
 			else
-				msg="Firmware upgrade: Firmware installed successful."
+				msg="UPGRADE: Firmware installed successful."
 				printf "\33[32m%s\33[0m\n" "${msg}"
 				/usr/bin/logger "${msg}"
 			fi
@@ -128,7 +128,7 @@ case $1 in
 
 		# Check if firmware file exists.
 		if [ ! -r $2 ]; then
-			msg="Upgrade error: Firmware file does not exist."
+			msg="UPGRADE ERROR: Firmware file does not exist."
 			printf "\33[31m%s\33[0m\n" "${msg}"
 			/usr/bin/logger "${msg}"
 			exit 1
