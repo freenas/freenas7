@@ -179,19 +179,20 @@ function enable_change(enable_change) {
 		document.iform.media.disabled = endis;
 		document.iform.mediaopt.disabled = endis;
 		document.iform.extraoptions.disabled = endis;
-
-		if (document.iform.mode) {
-			document.iform.standard.disabled = endis;
-			document.iform.mode.disabled = endis;
-			document.iform.ssid.disabled = endis;
-			document.iform.channel.disabled = endis;
-			document.iform.stationname.disabled = endis;
-			document.iform.wep_enable.disabled = endis;
-			document.iform.key1.disabled = endis;
-			document.iform.key2.disabled = endis;
-			document.iform.key3.disabled = endis;
-			document.iform.key4.disabled = endis;
-		}
+<?php if (isset($optcfg['wireless'])):?>
+<?php if (strstr($optcfg['if'], "ath")):?>
+		document.iform.standard.disabled = endis;
+<?php endif;?>
+		document.iform.mode.disabled = endis;
+		document.iform.ssid.disabled = endis;
+		document.iform.channel.disabled = endis;
+		document.iform.stationname.disabled = endis;
+		document.iform.wep_enable.disabled = endis;
+		document.iform.key1.disabled = endis;
+		document.iform.key2.disabled = endis;
+		document.iform.key3.disabled = endis;
+		document.iform.key4.disabled = endis;
+<?php endif;?>
 
 		if (document.iform.enable.checked == true) {
 			endis = !(document.iform.ipv6_enable.checked || enable_change);
