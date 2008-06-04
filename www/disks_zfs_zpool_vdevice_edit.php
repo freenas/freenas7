@@ -149,6 +149,7 @@ function enable_change(enable_change) {
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><?=gettext("Manage pool");?></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><?=gettext("Tools");?></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><?=gettext("Information");?></a></li>
+				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><?=gettext("IO statistics");?></a></li>
   		</ul>
   	</td>
 	</tr>
