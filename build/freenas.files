@@ -531,7 +531,6 @@ etc/rc.shutdown
 etc/network.subr
 etc/pccard_ether
 etc/gettytab
-etc/usbd.conf
 etc/devd.conf
 etc/devfs.conf
 etc/dhclient.conf
