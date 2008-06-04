@@ -34,7 +34,7 @@
 require("guiconfig.inc");
 require("zfs.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Manage pool"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pool"));
 
 if (!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
 	$config['zfs']['pools']['pool'] = array();
@@ -89,7 +89,7 @@ $a_poolstatus = zfs_get_pool_list();
 		<td class="tabnavtbl">
   		<ul id="tabnav">
   			<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><?=gettext("Virtual device");?></a></li>
-				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><?=gettext("Manage pool");?></a></li>
+				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><?=gettext("Pool");?></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><?=gettext("Tools");?></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><?=gettext("Information");?></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><?=gettext("IO statistics");?></a></li>
