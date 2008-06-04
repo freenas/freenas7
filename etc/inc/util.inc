@@ -1103,7 +1103,9 @@ function mwexec($command, $logerr = false) {
 
 		exec("{$command} {$redirect}", $output, $retval);
 		if ((true === $logerr) && (is_array($output))) {
-			write_log(implode($output));
+			foreach( $output as $out ) {
+				write_log($out);
+			}
 		}
 	}
 

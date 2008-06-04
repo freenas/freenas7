@@ -20,6 +20,28 @@
 SIZE="40M"
 CFDEVICE=`cat /var/etc/cfdevice`
 
+backup_chflags() {
+ 	TOPROCESS="bin lib libexec sbin usr"
+ 	for files in $TOPROCESS; do
+ 		/usr/sbin/mtree -Pcp /${files} | /usr/bin/gzip -9 > /tmp/chflags.dist.${files}.gz
+ 	done
+}
+
+restore_chflags() {
+ 	TOPROCESS="bin lib libexec sbin usr"
+ 	for files in $TOPROCESS; do
+ 		cd / && /usr/bin/zcat /tmp/chflags.dist.${files}.gz | /usr/sbin/mtree -PU -p /${files}
+ 	done
+}
+
+remove_chflags() {
+ 	TOPROCESS="bin lib libexec sbin usr"
+ 	for files in $TOPROCESS; do
+ 		/bin/chflags -R noschg /${files}
+ 		/bin/chmod -R u+rw /${files}
+ 	done
+}
+
 case $1 in
 	enable)
 		# Redirect I/O to console.
@@ -58,7 +80,7 @@ case $1 in
 	upgrade)
 		# Wait 5 seconds before beginning
 		sleep 5
-
+		
 		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
 
@@ -72,6 +94,14 @@ case $1 in
 			exit 1
 		fi
 
+		/usr/bin/gzip -t $2 2>&1
+		if [ 0 != $? ]; then
+			msg="UPGRADE ERROR: Firmware file is corrupted."
+			printf "\n\33[31m%s\33[0m\n" "${msg}"
+			/usr/bin/logger "${msg}"
+			exit 1
+		fi
+		
 		# Backup config
 		mkdir /tmp/configbak
 		cp -p /conf/* /tmp/configbak
@@ -85,7 +115,7 @@ case $1 in
 			/usr/bin/gzip -cd -S "" $2 | /bin/dd of=/dev/${CFDEVICE} bs=16k > /dev/null 2>&1
 			result=$?
 			if [ 0 != ${result} ]; then # successful?
-				msg="UPGRADE ERROR: Failed to intall firmware image on '/dev/${CFDEVICE}' ! "
+				msg="UPGRADE ERROR: Failed to install firmware image on '/dev/${CFDEVICE}' ! "
 				printf "\33[31m%s\33[0m\n" "${msg}"
 				/usr/bin/logger "${msg}"
 			else
@@ -120,10 +150,10 @@ case $1 in
 	fullupgrade)
 		# Wait 5 seconds before beginning.
 		sleep 5
-
+		
 		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
-
+		
 		printf "\33[33m%s\33[0m\n" "Firmware upgrade in progress. Please wait..."
 
 		# Check if firmware file exists.
@@ -133,31 +163,52 @@ case $1 in
 			/usr/bin/logger "${msg}"
 			exit 1
 		fi
+		
+		/usr/bin/gzip -t $2 2>&1
+		if [ 0 != $? ]; then	
+			msg="UPGRADE ERROR: Firmware file is corrupted."
+			printf "\33[31m%s\33[0m\n" "${msg}"
+			/usr/bin/logger "${msg}"
+			exit 1
+		fi
 
-		#DO NOT OVERRIDE LIBRARY IN USE: lib/libc.so.6
-		#WARNING: The library files name are related to the FreeNAS release to be upgraded
-		#Must add a switch (case) here depending of the version number being upgraded ?
-		#MUST CLOSE ALL SERVICES before ???
-		#(FreeBSD seems to crash if replacing a library in use)
-		#ls /var/run/*.pid
-		#cat
-		#kill -9 pidnumber
-		#
-		#Warning: tar uses usr/lib/libarchive.so.2 and lib/libz.so.3
-		tar zxvf $2 --exclude usr/lib/libarchive.so.2 --exclude lib/libz.so.3 --exclude lib/libc.so.6 -C /
-
-		#Extract libarchive.so.2 and libz.so.3 to the /ftmp directory and copy them (cp doesn't use these libraries)
-		tar zxvf $2 --include usr/lib/libarchive.so.2 --include lib/libz.so.3 -C /ftmp
-		cp -p /ftmp/usr/lib/libarchive.so.2 /usr/lib/libarchive.so.2
-		cp -p /ftmp/lib/libz.so.3 /lib/libz.so.32
-
-		#How to override lib/libc.so.6 ? And, does this file need to be overridden ?
-
-		#Need to be added: List of old files to be deleted (is necessary?)
-
-		printf "\33[32m%s\33[0m\n" "Firmware installed successful."
-		printf "\33[33m%s\33[0m\n" "Rebooting system..."
-		/sbin/shutdown -r now > /dev/null 2>&1
+		backup_chflags
+		remove_chflags
+		
+		# backup config
+		/bin/mkdir -p /tmp/configbak
+		cp -p /conf/* /tmp/configbak 2>/dev/null
+		
+		/usr/bin/tar xzUPf $2 -C / 2>&1
+		result=$?
+		if [ 0 != ${result} ]; then # successful?
+			msg="UPGRADE ERROR: Failed to upgrade firmware!"
+			printf "\33[31m%s\33[0m\n" "${msg}"
+			/usr/bin/logger "${msg}"
+		else
+			msg="UPGRADE: Firmware installed successful."
+			printf "\33[32m%s\33[0m\n" "${msg}"
+			/usr/bin/logger "${msg}"
+		fi
+		# restore config
+		cp -p /tmp/configbak/* /conf 2>/dev/null
+		rm -r /tmp/configbak
+		# restore /etc symlinks
+		rm /etc/hosts
+		ln -s /var/etc/hosts /etc/hosts
+		
+		restore_chflags
+		
+		# Reboot system if upgrade was successful.
+		if [ 0 -eq ${result} ]; then
+			msg="Rebooting system..."
+			printf "\33[33m%s\33[0m\n" "${msg}"
+			/usr/bin/logger "${msg}"
+			/sbin/shutdown -r now > /dev/null 2>&1
+		else
+			exit 1
+		fi
+		
 		;;
 esac
 
