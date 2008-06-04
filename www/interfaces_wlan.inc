@@ -145,13 +145,12 @@ function wireless_config_print() {
                 <tr> 
                   <td valign="top" class="vncellreq">Channel</td>
                   <td class="vtable"><select name="channel" class="formfld" id="channel">
-                      <option <?php if ($pconfig['channel'] == 0) echo "selected";?> value="0">Auto</option>
-                      <?php
-					  foreach ($wlchannels as $channel): ?>
+                      <option <?php if ("any" === $pconfig['channel']) echo "selected";?> value="any">Auto</option>
+                      <?php foreach ($wlchannels as $channel):?>
                       <option <?php if ($channel == $pconfig['channel']) echo "selected";?> value="<?=$channel;?>">
                       <?=$channel;?>
                       </option>
-                      <?php endforeach; ?>
+                      <?php endforeach;?>
                     </select> <br>
                     Note: Not all channels may be supported by your card</td>
                 </tr>

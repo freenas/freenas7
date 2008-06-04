@@ -75,6 +75,7 @@ setifconfig()
 				-b \
 			-b \
 			-i "count(wep/enable) = 0" -o " wepmode off" -b \
+			-i "count(wep/enable) > 0" -o " wepmode on" -b \
 			-i "starts-with('${_ifn}','ath') and string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
 			-i "mode[. = 'hostap']" \
 				-i "contains('${_ifn}','ath')" -o " -mediaopt adhoc mediaopt hostap" -b \
@@ -141,6 +142,7 @@ setifconfig()
 						-b \
 					-b \
 					-i "count(wep/enable) = 0" -o " wepmode off" -b \
+					-i "count(wep/enable) > 0" -o " wepmode on" -b \
 					-i "starts-with('${_ifn}','ath') and string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
 					-i "mode[. = 'hostap']" \
 						-i "contains('${_ifn}','ath')" -o " -mediaopt adhoc mediaopt hostap" -b \
