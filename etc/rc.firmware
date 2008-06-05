@@ -80,7 +80,7 @@ case $1 in
 	upgrade)
 		# Wait 5 seconds before beginning
 		sleep 5
-		
+
 		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
 
@@ -94,6 +94,7 @@ case $1 in
 			exit 1
 		fi
 
+		# Test firmware file
 		/usr/bin/gzip -t $2 2>&1
 		if [ 0 != $? ]; then
 			msg="UPGRADE ERROR: Firmware file is corrupted."
@@ -101,7 +102,7 @@ case $1 in
 			/usr/bin/logger "${msg}"
 			exit 1
 		fi
-		
+
 		# Backup config
 		mkdir /tmp/configbak
 		cp -p /conf/* /tmp/configbak
@@ -150,10 +151,10 @@ case $1 in
 	fullupgrade)
 		# Wait 5 seconds before beginning.
 		sleep 5
-		
+
 		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
-		
+
 		printf "\33[33m%s\33[0m\n" "Firmware upgrade in progress. Please wait..."
 
 		# Check if firmware file exists.
@@ -163,9 +164,10 @@ case $1 in
 			/usr/bin/logger "${msg}"
 			exit 1
 		fi
-		
+
+		# Test firmware file
 		/usr/bin/gzip -t $2 2>&1
-		if [ 0 != $? ]; then	
+		if [ 0 != $? ]; then
 			msg="UPGRADE ERROR: Firmware file is corrupted."
 			printf "\33[31m%s\33[0m\n" "${msg}"
 			/usr/bin/logger "${msg}"
@@ -174,11 +176,11 @@ case $1 in
 
 		backup_chflags
 		remove_chflags
-		
+
 		# backup config
 		/bin/mkdir -p /tmp/configbak
 		cp -p /conf/* /tmp/configbak 2>/dev/null
-		
+
 		/usr/bin/tar xzUPf $2 -C / 2>&1
 		result=$?
 		if [ 0 != ${result} ]; then # successful?
@@ -190,15 +192,20 @@ case $1 in
 			printf "\33[32m%s\33[0m\n" "${msg}"
 			/usr/bin/logger "${msg}"
 		fi
+
 		# restore config
 		cp -p /tmp/configbak/* /conf 2>/dev/null
 		rm -r /tmp/configbak
+
 		# restore /etc symlinks
 		rm /etc/hosts
 		ln -s /var/etc/hosts /etc/hosts
-		
+
 		restore_chflags
-		
+
+		# Start upgrade script to remove obsolete files
+		/etc/install/upgrade.sh clean /
+
 		# Reboot system if upgrade was successful.
 		if [ 0 -eq ${result} ]; then
 			msg="Rebooting system..."
@@ -208,7 +215,7 @@ case $1 in
 		else
 			exit 1
 		fi
-		
+
 		;;
 esac
 
