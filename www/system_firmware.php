@@ -199,7 +199,7 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 			      <td>
 							<br>
 							<span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:</strong></span><br>
-							<?php echo sprintf( gettext("DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."), get_product_name(), 196, "system_backup.php");?></span>
+							<?php echo sprintf( gettext("DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."), get_product_name(), 192, "system_backup.php");?></span>
 						</td>
 			    </tr>
 			  </table>
