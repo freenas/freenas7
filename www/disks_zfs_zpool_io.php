@@ -70,10 +70,14 @@ $a_pool = $config['zfs']['pools']['pool'];
 				$cmd .= " {$a_pool[$id]['name']}";
 			}
 			exec($cmd, $rawdata);
-			foreach ($rawdata as $line) {
-				echo htmlspecialchars($line) . "<br>";
+			if (!empty($rawdata)) {
+				foreach ($rawdata as $line) {
+					echo htmlspecialchars($line) . "<br>";
+				}
+				unset($line);
+			} else {
+				echo "no pools available";
 			}
-			unset($line);
 			echo "</pre>";
 			?>
 		</td>
