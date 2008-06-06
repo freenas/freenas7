@@ -55,7 +55,7 @@ export HOME PATH
 PLATFORM=`cat /etc/platform`
 
 case ${PLATFORM} in
-	i386-full)
+	*-full)
 		# Do a fsck on root file system.
 		/etc/rc.d/fsck root;
 

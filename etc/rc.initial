@@ -14,6 +14,7 @@
 trap : 2
 trap : 3
 trap : 4
+
 # Set our operating platform
 PLATFORM=`cat /etc/platform`
 
@@ -43,9 +44,10 @@ else
 		echo "6) Shell"
 		echo "7) Reboot system"
 		echo "8) Shutdown system"
-		if [ "$PLATFORM" = "i386-liveCD" ] || [ "$PLATFORM" = "amd64-liveCD" ]; then
-		    echo "9) Install/Upgrade to hard drive/flash device, etc."
-		fi
+		case ${PLATFORM} in
+			*-live[cC][dD])
+				echo "9) Install/Upgrade to hard drive/flash device, etc.";;
+		esac
 
 		echo
 		read -p "Enter a number: " opmode
