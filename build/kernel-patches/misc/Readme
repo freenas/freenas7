@@ -1,0 +1,3 @@
+Create patch:
+cd /usr/src/sys/boot/common
+diff -ruN ufsread.c.orig ufsread.c > patch-ufsread.c.diff
