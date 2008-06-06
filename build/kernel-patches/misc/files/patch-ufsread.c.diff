@@ -1,0 +1,11 @@
+--- ufsread.c.orig	2007-11-08 22:31:53.000000000 +0100
++++ ufsread.c	2008-06-06 11:50:28.000000000 +0200
+@@ -249,7 +249,7 @@
+ 		} else if (lbn < NDADDR + NINDIR(fs)) {
+ 			n = INDIRPERVBLK(fs);
+ 			addr = DIP(di_ib[0]);
+-			u = (u_int)(lbn - NDADDR) / (n * DBPERVBLK);
++			u = (u_int)(lbn - NDADDR) / n * DBPERVBLK;
+ 			vbaddr = fsbtodb(fs, addr) + u;
+ 			if (indmap != vbaddr) {
+ 				if (dskread(indbuf, vbaddr, DBPERVBLK))
