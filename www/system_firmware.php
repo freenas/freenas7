@@ -110,8 +110,8 @@ if ($_POST && !file_exists($d_firmwarelock_path)) {
 					$input_errors[] = gettext("Image upload failed (out of memory?)");
 				} else {
 					/* move the image so PHP won't delete it */
-					rename($_FILES['ulfile']['tmp_name'], "{$g['ftmp_path']}/firmware.img");
-					
+					move_uploaded_file($_FILES['ulfile']['tmp_name'], "{$g['ftmp_path']}/firmware.img");
+
 					if (!verify_gzip_file("{$g['ftmp_path']}/firmware.img")) {
 						$input_errors[] = gettext("The image file is corrupt");
 						unlink("{$g['ftmp_path']}/firmware.img");
