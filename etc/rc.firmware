@@ -84,7 +84,7 @@ case $1 in
 		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
 
-		printf "\n\33[33m%s\33[0m\n" "Firmware upgrade in progress. Please wait..."
+		printf "\n\n\33[37m%s\33[0m\n" "Firmware upgrade in progress. Please wait..."
 
 		# Check if firmware file exists
 		if [ ! -r $2 ]; then
@@ -121,7 +121,7 @@ case $1 in
 				/usr/bin/logger "${msg}"
 			else
 				msg="UPGRADE: Firmware installed successful."
-				printf "\33[32m%s\33[0m\n" "${msg}"
+				printf "\33[37;44m%s\33[0m\n" "${msg}"
 				/usr/bin/logger "${msg}"
 			fi
 		fi
@@ -140,7 +140,7 @@ case $1 in
 		# Reboot system if upgrade was successful.
 		if [ 0 -eq ${result} ]; then
 			msg="Rebooting system..."
-			printf "\33[33m%s\33[0m\n" "${msg}"
+			printf "\33[37m%s\33[0m\n" "${msg}"
 			/usr/bin/logger "${msg}"
 			/sbin/shutdown -r now > /dev/null 2>&1
 		else
@@ -155,7 +155,7 @@ case $1 in
 		# Redirect I/O to console.
 		exec </dev/console >/dev/console 2>/dev/console
 
-		printf "\33[33m%s\33[0m\n" "Firmware upgrade in progress. Please wait..."
+		printf "\n\n\33[37m%s\33[0m\n" "Firmware upgrade in progress. Please wait..."
 
 		# Check if firmware file exists.
 		if [ ! -r $2 ]; then
@@ -189,7 +189,7 @@ case $1 in
 			/usr/bin/logger "${msg}"
 		else
 			msg="UPGRADE: Firmware installed successful."
-			printf "\33[32m%s\33[0m\n" "${msg}"
+			printf "\33[37;44m%s\33[0m\n" "${msg}"
 			/usr/bin/logger "${msg}"
 		fi
 
@@ -209,7 +209,7 @@ case $1 in
 		# Reboot system if upgrade was successful.
 		if [ 0 -eq ${result} ]; then
 			msg="Rebooting system..."
-			printf "\33[33m%s\33[0m\n" "${msg}"
+			printf "\33[37m%s\33[0m\n" "${msg}"
 			/usr/bin/logger "${msg}"
 			/sbin/shutdown -r now > /dev/null 2>&1
 		else
