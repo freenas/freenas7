@@ -300,7 +300,6 @@ options		HZ=1000
 
 # Splashscreen
 options		VESA
-options		SC_PIXEL_MODE
 
 # Power management support (see NOTES for more options)
 device		acpi			# acpi -- Advanced Configuration and Power Management support
