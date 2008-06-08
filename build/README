@@ -25,6 +25,7 @@ Check that you have installed the following ports:
 - subversion
 - bash
 - cdrtools
+- portupgrade
 
 Start /freenas/svn/build/make.sh
 
