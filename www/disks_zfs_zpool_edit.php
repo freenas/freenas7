@@ -100,15 +100,16 @@ if ($_POST) {
 		$pool['mountpoint'] = $_POST['mountpoint'];
 		$pool['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_pool[$id])
+		if (isset($id) && $a_pool[$id]) {
 			$a_pool[$id] = $pool;
-		else
+		} else {
 			$a_pool[] = $pool;
 
-		write_config();
+			// Mark new added pool to be configured.
+			file_put_contents($d_zpoolconfdirty_path, "{$pool[name]}\n", FILE_APPEND | FILE_TEXT);
+		}
 
-		// Mark new added pool to be configured.
-		file_put_contents($d_zpoolconfdirty_path, "{$pool[name]}\n", FILE_APPEND | FILE_TEXT);
+		write_config();
 
 		header("Location: disks_zfs_zpool.php");
 		exit;

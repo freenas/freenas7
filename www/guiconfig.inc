@@ -86,6 +86,7 @@ $d_websrvconfdirty_path = $g['varrun_path'] . "/websrv.conf.dirty";
 $d_rcconfdirty_path = $g['varrun_path'] . "/rc.conf.dirty";
 $d_sysctldirty_path = $g['varrun_path'] . "/sysctl.dirty";
 $d_zpoolconfdirty_path = $g['varrun_path'] . "/zpool.conf.dirty";
+$d_zfsconfdirty_path = $g['varrun_path'] . "/zfs.conf.dirty";
 
 if (file_exists($d_firmwarelock_path)) {
 	if (!$d_isfwfile) {

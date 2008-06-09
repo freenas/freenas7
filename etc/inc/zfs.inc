@@ -52,6 +52,7 @@ function zfs_get_pool_list() {
 		$aline = preg_split("/\s+/", $line);
 
 		$poolname = $aline[0];
+
 		$poollist[$poolname] = array();
 		$disklist[$poolname]['name'] = $aline[0];
 		$poollist[$poolname]['size'] = $aline[1];
@@ -78,26 +79,26 @@ function zfs_zpool_configure($name) {
 	if (false === $index)
 		return 1;
 
-	$vpool = $config['zfs']['pools']['pool'][$index];
-	if (!is_array($vpool))
+	$pool = $config['zfs']['pools']['pool'][$index];
+	if (!is_array($pool))
 		 return 1;
 
 	// Additional parameter
 	$param = "";
 
-	if (!empty($vpool['root']))
-		$param .= "-R {$vpool['root']} ";
+	if (!empty($pool['root']))
+		$param .= "-R {$pool['root']} ";
 
-	if (!empty($vpool['mountpoint'])) {
-		$param .= "-m {$vpool['mountpoint']} ";
+	if (!empty($pool['mountpoint'])) {
+		$param .= "-m {$pool['mountpoint']} ";
 	} else {
-		$param .= "-m /mnt/{$vpool['name']} ";
+		$param .= "-m /mnt/{$pool['name']} ";
 	}
 
-	// Create pool
-	$cmd = "/sbin/zpool create {$param} {$vpool['name']} ";
+	// Create the pool
+	$cmd = "/sbin/zpool create {$param} {$pool['name']} ";
 
-	foreach ($vpool['vdevice'] as $vdevicev) {
+	foreach ($pool['vdevice'] as $vdevicev) {
 		$index = array_search_ex($vdevicev, $config['zfs']['vdevices']['vdevice'], "name");
 		if (false === $index)
 			continue;
@@ -136,14 +137,12 @@ function zfs_zpool_destroy($name) {
 	if (false === $index)
 		return 1;
 
-	$vpool = $config['zfs']['pools']['pool'][$index];
-	if (!is_array($vpool))
+	$pool = $config['zfs']['pools']['pool'][$index];
+	if (!is_array($pool))
 		 return 1;
 
-	// destroy the pool
-	mwexec("/sbin/zpool destroy {$name}");
-
-	return 0;
+	// Destroy the pool
+	return mwexec("/sbin/zpool destroy {$name}");
 }
 
 // Wrapper to execute zpool commands.
@@ -169,5 +168,61 @@ function zfs_zpool_cmd($command, $param, $verbose = false, $stderr = true, $out 
 	}
 
 	return $result;
+}
+
+// Configure, create and start a dataset
+// $name - Name of the dataset to be configured.
+// Return 0 if successful, 1 if error
+function zfs_dataset_configure($name) {
+	global $config;
+
+	if (!is_array($config['zfs']['datasets']['dataset']))
+		return 1;
+
+	$index = array_search_ex($name, $config['zfs']['datasets']['dataset'], "name");
+	if (false === $index)
+		return 1;
+
+	$dataset = $config['zfs']['datasets']['dataset'][$index];
+	if (!is_array($dataset))
+		 return 1;
+
+	// Additional parameter
+	$param = "";
+
+	if (!empty($dataset['compression']))
+		$param .= "-o compression={$dataset['compression']} ";
+
+	if (!isset($dataset['canmount']))
+		$param .= "-o canmount=off ";
+
+	if (isset($dataset['readonly']))
+		$param .= "-o readonly=on ";
+
+	// Create the dataset
+	$cmd = "/sbin/zfs create {$param} {$dataset['pool'][0]}/{$dataset['name']} ";
+
+	return mwexec($cmd);
+}
+
+// Delete a dataset given in parameter.
+// $name - Name of the dataset to be deleted.
+// Return 0 if successful, 1 if error
+function zfs_dataset_destroy($name) {
+	global $config;
+
+	if (!is_array($config['zfs']['datasets']['dataset']))
+		return 1;
+
+	$index = array_search_ex($name, $config['zfs']['datasets']['dataset'], "name");
+	if (false === $index)
+		return 1;
+
+	$dataset = $config['zfs']['datasets']['dataset'][$index];
+	if (!is_array($dataset))
+		 return 1;
+
+	// Destroy the dataset
+	return mwexec("/sbin/zfs destroy {$dataset['pool'][0]}/{$dataset['name']}");
 }
 ?>

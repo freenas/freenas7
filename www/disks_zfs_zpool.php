@@ -51,7 +51,7 @@ if ($_POST) {
 
 		if (!file_exists($d_sysrebootreqd_path)) {
 			foreach ($a_pool as $poolv) {
-				if (is_modified($poolv['name'])) {
+				if (is_zfs_zpool_modified($poolv['name'])) {
 					$retval |= zfs_zpool_configure($poolv['name']);
 				}
 			}
@@ -76,7 +76,7 @@ if ($_GET['act'] === "del") {
 	}
 }
 
-function is_modified($name) {
+function is_zfs_zpool_modified($name) {
 	global $d_zpoolconfdirty_path;
 	return (file_exists($d_zpoolconfdirty_path) && in_array("{$name}\n", file($d_zpoolconfdirty_path)));
 }

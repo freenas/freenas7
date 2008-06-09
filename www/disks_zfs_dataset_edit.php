@@ -31,6 +31,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("zfs.inc");
 
 $id = $_GET['id'];
 if (isset($_POST['id']))
@@ -38,21 +39,32 @@ if (isset($_POST['id']))
 
 $pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Datasets"), gettext("Dataset"), isset($id) ? gettext("Edit") : gettext("Add"));
 
+if (!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
+	$config['zfs']['pools']['pool'] = array();
+
 if (!isset($config['zfs']['datasets']) || !is_array($config['zfs']['datasets']['dataset']))
 	$config['zfs']['datasets']['dataset'] = array();
 
+array_sort_key($config['zfs']['pools']['pool'], "name");
 array_sort_key($config['zfs']['datasets']['dataset'], "name");
 
+$a_pool = &$config['zfs']['pools']['pool'];
 $a_dataset = &$config['zfs']['datasets']['dataset'];
+
+if (!isset($id) && (!sizeof($a_pool))) {
+	$errormsg = sprintf(gettext("No configured pools. Please add new <a href=%s>pools</a> first."), "disks_zfs_zpool.php");
+}
 
 if (isset($id) && $a_dataset[$id]) {
 	$pconfig['name'] = $a_dataset[$id]['name'];
+	$pconfig['pool'] = $a_dataset[$id]['pool'][0];
 	$pconfig['compression'] = $a_dataset[$id]['compression'];
 	$pconfig['canmount'] = isset($a_dataset[$id]['canmount']);
 	$pconfig['readonly'] = isset($a_dataset[$id]['readonly']);
 	$pconfig['desc'] = $a_dataset[$id]['desc'];
 } else {
 	$pconfig['name'] = "";
+	$dataset['pool'] = "";
 	$pconfig['compression'] = "off";
 	$pconfig['canmount'] = true;
 	$pconfig['readonly'] = false;
@@ -74,15 +86,20 @@ if ($_POST) {
 	if (!$input_errors) {
 		$dataset = array();
 		$dataset['name'] = $_POST['name'];
+		$dataset['pool'] = $_POST['pool'];
 		$dataset['compression'] = $_POST['compression'];
 		$dataset['canmount'] = $_POST['canmount'] ? true : false;
 		$dataset['readonly'] = $_POST['readonly'] ? true : false;
 		$dataset['desc'] = $_POST['desc'];
 
-		if (isset($id) && $a_dataset[$id])
+		if (isset($id) && $a_dataset[$id]) {
 			$a_dataset[$id] = $dataset;
-		else
+		} else {
 			$a_dataset[] = $dataset;
+
+			// Mark new added dataset to be configured.
+			file_put_contents($d_zfsconfdirty_path, "{$dataset['pool']}/{$dataset[name]}\n", FILE_APPEND | FILE_TEXT);
+		}
 
 		write_config();
 
@@ -124,6 +141,8 @@ function enable_change(enable_change) {
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext(""), true, 20);?>
+					<?php $a_poollist = array(); foreach ($a_pool as $poolv) { $poolstatus = zfs_get_pool_list(); $poolstatus = $poolstatus[$poolv['name']]; $text = "{$poolv['name']}: {$poolstatus['size']}"; if (!empty($poolv['desc'])) { $text .= " ({$poolv['desc']})"; } $a_poollist[$poolv['name']] = htmlspecialchars($text); }?>
+					<?php html_combobox("pool", gettext("Pool"), $pconfig['pool'], $a_poollist, gettext(""), true);?>
 					<?php $a_compressionmode = array("on" => gettext("On"), "off" => gettext("Off"), "lzjb" => "lzjb", "gzip" => "gzip"); for ($n = 1; $n <= 9; $n++) { $mode = "gzip-{$n}"; $a_compressionmode[$mode] = $mode; }?>
 					<?php html_combobox("compression", gettext("Compression"), $pconfig['compression'], $a_compressionmode, gettext("Controls the compression algorithm used	for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."), true);?>
 					<?php html_checkbox("canmount", gettext("Canmount"), $pconfig['canmount'] ? true : false, gettext("If this property is disabled, the file system cannot be mounted."), gettext(""), false);?>

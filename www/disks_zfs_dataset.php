@@ -49,17 +49,23 @@ if ($_POST) {
 		$retval = 0;
 
 		if (!file_exists($d_sysrebootreqd_path)) {
+			foreach ($a_dataset as $datasetv) {
+				if (is_zfs_dataset_modified($datasetv)) {
+					$retval |= zfs_dataset_configure($datasetv['name']);
+				}
+			}
 		}
 
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			unlink_if_exists($d_zpoolconfdirty_path);
+			unlink_if_exists($d_zfsconfdirty_path);
 		}
 	}
 }
 
 if ($_GET['act'] === "del") {
 	if ($a_dataset[$_GET['id']]) {
+		zfs_dataset_destroy($a_dataset[$_GET['id']]['name']);
 		unset($a_dataset[$_GET['id']]);
 
 		write_config();
@@ -67,6 +73,11 @@ if ($_GET['act'] === "del") {
 		header("Location: disks_zfs_dataset.php");
 		exit;
 	}
+}
+
+function is_zfs_dataset_modified($dataset) {
+	global $d_zfsconfdirty_path;
+	return (file_exists($d_zfsconfdirty_path) && in_array("{$dataset['pool'][0]}/{$dataset['name']}\n", file($d_zfsconfdirty_path)));
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -91,16 +102,19 @@ if ($_GET['act'] === "del") {
     <td class="tabcont">
 			<form action="disks_zfs_dataset.php" method="post">
 				<?php if ($savemsg) print_info_box($savemsg);?>
+				<?php if (file_exists($d_zfsconfdirty_path)) print_config_change_box();?>
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table width="100%" border="0" cellpadding="0" cellspacing="0">
 					<tr>
-						<td width="45%" class="listhdrr"><?=gettext("Name");?></td>
+						<td width="20%" class="listhdrr"><?=gettext("Pool");?></td>
+						<td width="25%" class="listhdrr"><?=gettext("Name");?></td>
 						<td width="45%" class="listhdrr"><?=gettext("Description");?></td>
 						<td width="10%" class="list"></td>
 					</tr>
 					<?php $i = 0; foreach ($a_dataset as $datasetv):?>
 					<tr>
-						<td class="listlr"><?=htmlspecialchars($datasetv['name']);?>&nbsp;</td>
+						<td class="listlr"><?=htmlspecialchars($datasetv['pool'][0]);?>&nbsp;</td>
+						<td class="listr"><?=htmlspecialchars($datasetv['name']);?>&nbsp;</td>
 						<td class="listbg"><?=htmlspecialchars($datasetv['desc']);?>&nbsp;</td>
 						<td valign="middle" nowrap class="list">
 							<a href="disks_zfs_dataset_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit dataset");?>" width="17" height="17" border="0"></a>&nbsp;
@@ -109,7 +123,7 @@ if ($_GET['act'] === "del") {
 					</tr>
 					<?php $i++; endforeach;?>
 					<tr>
-						<td class="list" colspan="2"></td>
+						<td class="list" colspan="3"></td>
 						<td class="list">
 							<a href="disks_zfs_dataset_edit.php"><img src="plus.gif" title="<?=gettext("Add dataset");?>" width="17" height="17" border="0"></a>
 						</td>
