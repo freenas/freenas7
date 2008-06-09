@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Virtual device"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("Virtual device"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!isset($config['zfs']['vdevices']) || !is_array($config['zfs']['vdevices']['vdevice']))
 	$config['zfs']['vdevices']['vdevice'] = array();
@@ -142,6 +142,14 @@ function enable_change(enable_change) {
 // -->
 </script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><?=gettext("Pools");?></a></li>
+				<li class="tabinact"><a href="disks_zfs_dataset.php"><?=gettext("Datasets");?></a></li>
+			</ul>
+		</td>
+	</tr>
 	<tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">

@@ -34,7 +34,7 @@
 require("guiconfig.inc");
 require("zfs.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pool"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("Pool"));
 
 if (!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
 	$config['zfs']['pools']['pool'] = array();
@@ -85,6 +85,14 @@ $a_poolstatus = zfs_get_pool_list();
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><?=gettext("Pools");?></a></li>
+				<li class="tabinact"><a href="disks_zfs_dataset.php"><?=gettext("Datasets");?></a></li>
+			</ul>
+		</td>
+	</tr>
   <tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">

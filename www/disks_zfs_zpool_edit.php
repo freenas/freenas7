@@ -37,7 +37,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pool"), isset($id) ? gettext("Edit") : gettext("Add"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("Pool"), isset($id) ? gettext("Edit") : gettext("Add"));
 
 if (!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
 	$config['zfs']['pools']['pool'] = array();
@@ -55,12 +55,12 @@ if (!isset($id) && (!sizeof($a_vdevice))) {
 	$errormsg = sprintf(gettext("No configured virtual devices. Please add new <a href=%s>virtual device</a> first."), "disks_zfs_zpool_vdevice.php");
 }
 
-if (isset($id) && $a_vdevice[$id]) {
+if (isset($id) && $a_pool[$id]) {
 	$pconfig['name'] = $a_pool[$id]['name'];
 	$pconfig['vdevice'] = $a_pool[$id]['vdevice'];
 	$pconfig['root'] = $a_pool[$id]['root'];
 	$pconfig['mountpoint'] = $a_pool[$id]['mountpoint'];
-	$pconfig['desc'] = $a_vdevice[$id]['desc'];	
+	$pconfig['desc'] = $a_pool[$id]['desc'];	
 } else {
 	$pconfig['name'] = "";
 	$pconfig['root'] = "";
@@ -130,6 +130,14 @@ function enable_change(enable_change) {
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
+				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><?=gettext("Pools");?></a></li>
+				<li class="tabinact"><a href="disks_zfs_dataset.php"><?=gettext("Datasets");?></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
 				<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><?=gettext("Virtual device");?></a></li>
 				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><?=gettext("Pool");?></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><?=gettext("Tools");?></a></li>
@@ -149,13 +157,13 @@ function enable_change(enable_change) {
 					<?php $a_device = array(); foreach ($a_vdevice as $vdevicev) { if (isset($id) && !(is_array($pconfig['vdevice']) && in_array($vdevicev['name'], $pconfig['vdevice']))) { continue; } if (!isset($id) && false !== array_search_ex($vdevicev['name'], $a_vdevice, "vdevice")) { continue; } $a_device[$vdevicev['name']] = htmlspecialchars("{$vdevicev['name']} ({$vdevicev['type']}, {$vdevicev['desc']})"); }?>
 					<?php html_listbox("vdevice", gettext("Virtual devices"), $pconfig['vdevice'], $a_device, gettext(""), true);?>
 					<?php html_inputbox("root", gettext("Root"), $pconfig['root'], gettext("Creates the pool with an alternate root."), false, 40);?>
-					<?php html_inputbox("mountpoint", gettext("Mount point"), $pconfig['mountpoint'], gettext("Sets the mount point for the root dataset. Default is /mnt."), false, 40);?>
+					<?php html_inputbox("mountpoint", gettext("Mount point"), $pconfig['mountpoint'], gettext("Sets an alternate mount point for the root dataset. Default is /mnt."), false, 40);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
-							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_vdevice[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
-							<?php if (isset($id) && $a_vdevice[$id]):?>
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_pool[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+							<?php if (isset($id) && $a_pool[$id]):?>
 							<input name="id" type="hidden" value="<?=$id;?>">
 							<?php endif;?>
 						</td>

@@ -1,7 +1,7 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_zfs_zpool_info.php.php
+	disks_zfs_zpool_info.php
 	Copyright (c) 2008 Volker Theile (votdev@gmx.de)
 	Copyright (c) 2008 Nelson Silva
 	All rights reserved.
@@ -41,7 +41,7 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Information"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("Information"));
 $pgrefresh = 5; // Refresh every 5 seconds.
 
 if (!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
@@ -60,6 +60,14 @@ $a_vdevice = $config['zfs']['vdevices']['vdevice'];
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><?=gettext("Pools");?></a></li>
+				<li class="tabinact"><a href="disks_zfs_dataset.php"><?=gettext("Datasets");?></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="tabnavtbl">
   		<ul id="tabnav">
   			<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><?=gettext("Virtual device");?></a></li>
 				<li class="tabinact"><a href="disks_zfs_zpool.php"><?=gettext("Pool");?></a></li>
@@ -73,7 +81,7 @@ $a_vdevice = $config['zfs']['vdevices']['vdevice'];
 		<td class="tabcont">
 			<?php
 			echo "<pre>";
-			echo "<strong>" . gettext("ZFS information and status") . "</strong><br/><br/>";
+			echo "<strong>" . gettext("ZFS pool information and status") . "</strong><br/><br/>";
 			$cmd = "/sbin/zpool status -v";
 			if (isset($id) && $a_pool[$id]) {
 				$cmd .= " {$a_pool[$id]['name']}";

@@ -1,13 +1,16 @@
 #!/usr/local/bin/php
 <?php
 /*
-	disks_zfs_zpool_io.php
+	disks_zfs_dataset_info.php
 	Copyright (c) 2008 Volker Theile (votdev@gmx.de)
-	Copyright (c) 2008 Nelson Silva
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	All rights reserved.
+
+	Based on m0n0wall (http://m0n0.ch/wall)
+	Copyright (C) 2003-2006 Manuel Kasper <mk@neon1.net>.
 	All rights reserved.
 
 	Redistribution and use in source and binary forms, with or without
@@ -37,55 +40,37 @@ $id = $_GET['id'];
 if (isset($_POST['id']))
 	$id = $_POST['id'];
 
-$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Pools"), gettext("IO statistics"));
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Datasets"), gettext("Information"));
 $pgrefresh = 5; // Refresh every 5 seconds.
-
-if (!isset($config['zfs']['pools']) || !is_array($config['zfs']['pools']['pool']))
-	$config['zfs']['pools']['pool'] = array();
-
-array_sort_key($config['zfs']['pools']['pool'], "name");
-
-$a_pool = $config['zfs']['pools']['pool'];
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><?=gettext("Pools");?></a></li>
-				<li class="tabinact"><a href="disks_zfs_dataset.php"><?=gettext("Datasets");?></a></li>
+				<li class="tabinact"><a href="disks_zfs_zpool.php"><?=gettext("Pools");?></a></li>
+				<li class="tabact"><a href="disks_zfs_dataset.php" title="<?=gettext("Reload page");?>"><?=gettext("Datasets");?></a></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">
-  			<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><?=gettext("Virtual device");?></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool.php"><?=gettext("Pool");?></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool_tools.php"><?=gettext("Tools");?></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><?=gettext("Information");?></a></li>
-				<li class="tabact"><a href="disks_zfs_zpool_io.php" title="<?=gettext("Reload page");?>"><?=gettext("IO statistics");?></a></li>
+				<li class="tabinact"><a href="disks_zfs_dataset.php"><?=gettext("Dataset");?></a></li>
+				<li class="tabact"><a href="disks_zfs_dataset_info.php" title="<?=gettext("Reload page");?>"><?=gettext("Information");?></a></li>
   		</ul>
   	</td>
 	</tr>
   <tr>
-		<td class="tabcont">
+  	<td class="tabcont">
 			<?php
 			echo "<pre>";
-			echo "<strong>" . gettext("ZFS IO statistics") . "</strong><br/><br/>";
-			$cmd = "/sbin/zpool iostat -v";
-			if (isset($id) && $a_pool[$id]) {
-				$cmd .= " {$a_pool[$id]['name']}";
+			echo "<strong>" . gettext("ZFS dataset information and status") . "</strong><br/><br/>";
+			exec("/sbin/zfs list", $rawdata);
+			foreach ($rawdata as $line) {
+				echo htmlspecialchars($line) . "<br/>";
 			}
-			exec($cmd, $rawdata);
-			if (!empty($rawdata)) {
-				foreach ($rawdata as $line) {
-					echo htmlspecialchars($line) . "<br>";
-				}
-				unset($line);
-			} else {
-				echo "no pools available";
-			}
+			unset ($line);
 			echo "</pre>";
 			?>
 		</td>

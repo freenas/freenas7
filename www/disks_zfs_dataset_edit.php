@@ -1,0 +1,154 @@
+#!/usr/local/bin/php
+<?php
+/*
+	disks_zfs_dataset_edit.php
+	Copyright (c) 2008 Volker Theile (votdev@gmx.de)
+	All rights reserved.
+
+	part of FreeNAS (http://www.freenas.org)
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
+	All rights reserved.
+
+	Redistribution and use in source and binary forms, with or without
+	modification, are permitted provided that the following conditions are met:
+
+	1. Redistributions of source code must retain the above copyright notice,
+	   this list of conditions and the following disclaimer.
+
+	2. Redistributions in binary form must reproduce the above copyright
+	   notice, this list of conditions and the following disclaimer in the
+	   documentation and/or other materials provided with the distribution.
+
+	THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,
+	INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY
+	AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+	AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY,
+	OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+	SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+	INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+	CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+	POSSIBILITY OF SUCH DAMAGE.
+*/
+require("guiconfig.inc");
+
+$id = $_GET['id'];
+if (isset($_POST['id']))
+	$id = $_POST['id'];
+
+$pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Datasets"), gettext("Dataset"), isset($id) ? gettext("Edit") : gettext("Add"));
+
+if (!isset($config['zfs']['datasets']) || !is_array($config['zfs']['datasets']['dataset']))
+	$config['zfs']['datasets']['dataset'] = array();
+
+array_sort_key($config['zfs']['datasets']['dataset'], "name");
+
+$a_dataset = &$config['zfs']['datasets']['dataset'];
+
+if (isset($id) && $a_dataset[$id]) {
+	$pconfig['name'] = $a_dataset[$id]['name'];
+	$pconfig['compression'] = $a_dataset[$id]['compression'];
+	$pconfig['canmount'] = isset($a_dataset[$id]['canmount']);
+	$pconfig['readonly'] = isset($a_dataset[$id]['readonly']);
+	$pconfig['desc'] = $a_dataset[$id]['desc'];
+} else {
+	$pconfig['name'] = "";
+	$pconfig['compression'] = "off";
+	$pconfig['canmount'] = true;
+	$pconfig['readonly'] = false;
+	$pconfig['desc'] = "";
+}
+
+if ($_POST) {
+	unset($input_errors);
+	$pconfig = $_POST;
+
+	// Input validation
+	$reqdfields = explode(" ", "name");
+	$reqdfieldsn = array(gettext("Name"));
+	$reqdfieldst = explode(" ", "alias");
+
+	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
+
+	if (!$input_errors) {
+		$dataset = array();
+		$dataset['name'] = $_POST['name'];
+		$dataset['compression'] = $_POST['compression'];
+		$dataset['canmount'] = $_POST['canmount'] ? true : false;
+		$dataset['readonly'] = $_POST['readonly'] ? true : false;
+		$dataset['desc'] = $_POST['desc'];
+
+		if (isset($id) && $a_dataset[$id])
+			$a_dataset[$id] = $dataset;
+		else
+			$a_dataset[] = $dataset;
+
+		write_config();
+
+		header("Location: disks_zfs_dataset.php");
+		exit;
+	}
+}
+?>
+<?php include("fbegin.inc");?>
+<script language="JavaScript">
+<!--
+function enable_change(enable_change) {
+	document.iform.name.disabled = !enable_change;
+}
+// -->
+</script>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabinact"><a href="disks_zfs_zpool.php"><?=gettext("Pools");?></a></li>
+				<li class="tabact"><a href="disks_zfs_dataset.php" title="<?=gettext("Reload page");?>"><?=gettext("Datasets");?></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="tabnavtbl">
+			<ul id="tabnav">
+				<li class="tabact"><a href="disks_zfs_dataset.php" title="<?=gettext("Reload page");?>"><?=gettext("Dataset");?></a></li>
+				<li class="tabinact"><a href="disks_zfs_dataset_info.php"><?=gettext("Information");?></a></li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td class="tabcont">
+			<form action="disks_zfs_dataset_edit.php" method="post" name="iform" id="iform">
+				<?php if ($errormsg) print_error_box($errormsg);?>
+				<?php if ($input_errors) print_input_errors($input_errors);?>
+				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+					<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext(""), true, 20);?>
+					<?php $a_compressionmode = array("on" => gettext("On"), "off" => gettext("Off"), "lzjb" => "lzjb", "gzip" => "gzip"); for ($n = 1; $n <= 9; $n++) { $mode = "gzip-{$n}"; $a_compressionmode[$mode] = $mode; }?>
+					<?php html_combobox("compression", gettext("Compression"), $pconfig['compression'], $a_compressionmode, gettext("Controls the compression algorithm used	for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."), true);?>
+					<?php html_checkbox("canmount", gettext("Canmount"), $pconfig['canmount'] ? true : false, gettext("If this property is disabled, the file system cannot be mounted."), gettext(""), false);?>
+					<?php html_checkbox("readonly", gettext("Readonly"), $pconfig['readonly'] ? true : false, gettext("Controls whether this dataset can be modified."), gettext(""), false);?>
+					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
+					<tr>
+						<td width="22%" valign="top">&nbsp;</td>
+						<td width="78%">
+							<input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_dataset[$id])) ? gettext("Save") : gettext("Add");?>" onClick="enable_change(true)">
+							<?php if (isset($id) && $a_dataset[$id]):?>
+							<input name="id" type="hidden" value="<?=$id;?>">
+							<?php endif;?>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</td>
+	</tr>
+</table>
+<script language="JavaScript">
+<!--
+<?php if (isset($id) && $a_vdevice[$id]):?>
+<!-- Disable controls that should not be modified anymore in edit mode. -->
+enable_change(false);
+<?php endif;?>
+//-->
+</script>
+<?php include("fend.inc");?>
