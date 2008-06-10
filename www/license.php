@@ -62,6 +62,8 @@ $pgtitle = array(gettext("License"));
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Created core implementation of email status report.</font></em><br>
               <p>Gerard Hickey (<a href="mailto:hickey@kinetic-compute.com">hickey@kinetic-compute.com</a>)<br>
               &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Patches for userdb script & AFP/Rsync shares.</font></em><br>
+              <p>Nelson Silva (<a href="mailto:nelson.emanuel.silva@gmail.com">nelson.emanuel.silva@gmail.com</a>)<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;<em><font color="#666666">Add core ZFS implementation and additional code improvements.</font></em><br>
             <br><br>
             <p>The following persons have contributed to FreeNAS documentation project:</p>
             <p>Bob Jaggard (<a href="mailto:rjaggard@bigpond.com">rjaggard@bigpond.com</a>)<br>
