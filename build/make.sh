@@ -97,6 +97,8 @@ update_sources() {
 				portsnap fetch update;;
 			cvsup)
 				csup -L 2 ${FREENAS_SVNDIR}/build/source-supfile;;
+			portupgrade)
+				portupgrade -aFP;;
   	esac
   done
 
@@ -245,7 +247,7 @@ build_kernel() {
 				# Compiling and compressing the kernel.
 				cd /usr/src;
 				env MAKEOBJDIRPREFIX=${FREENAS_OBJDIRPREFIX} make buildkernel KERNCONF=${FREENAS_KERNCONF};
-				gzip -c -v -f -9 ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/kernel > ${FREENAS_WORKINGDIR}/kernel.gz;;
+				gzip -9cnv ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/kernel > ${FREENAS_WORKINGDIR}/kernel.gz;;
 			install)
 				# Installing the modules.
 				cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules;
@@ -302,13 +304,13 @@ create_mfsroot() {
 	[ -d $FREENAS_SVNDIR ] && use_svn ;
 
 	# Make mfsroot to have the size of the FREENAS_MFSROOT_SIZE variable
-	dd if=/dev/zero of=$FREENAS_WORKINGDIR/mfsroot bs=1M count=${FREENAS_MFSROOT_SIZE}
+	dd if=/dev/zero of=$FREENAS_WORKINGDIR/mfsroot bs=1k count=$(expr ${FREENAS_MFSROOT_SIZE} \* 1024)
 	# Configure this file as a memory disk
 	md=`mdconfig -a -t vnode -f $FREENAS_WORKINGDIR/mfsroot`
 	# Create label on memory disk
 	bsdlabel -m ${FREENAS_ARCH} -w ${md} auto
 	# Format memory disk using UFS
-	newfs ${FREENAS_NEWFS} /dev/${md}c
+	newfs -O1 -o space -m 0 /dev/${md}c
 	# Umount memory disk (if already used)
 	umount $FREENAS_TMPDIR >/dev/null 2>&1
 	# Mount memory disk
@@ -322,7 +324,7 @@ create_mfsroot() {
 	# Detach memory disk
 	mdconfig -d -u ${md}
 
-	gzip -9 $FREENAS_WORKINGDIR/mfsroot
+	gzip -9fnv $FREENAS_WORKINGDIR/mfsroot
 
 	return 0
 }
@@ -411,7 +413,7 @@ create_image() {
 	echo "===> Detach memory disk"
 	mdconfig -d -u ${md}
 	echo "===> Compress the IMG file"
-	gzip -9 $FREENAS_WORKINGDIR/image.bin
+	gzip -9n $FREENAS_WORKINGDIR/image.bin
 	cp $FREENAS_WORKINGDIR/image.bin.gz $FREENAS_ROOTDIR/$IMGFILENAME
 
 	# Cleanup.
