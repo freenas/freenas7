@@ -75,10 +75,8 @@ $a_dataset = &$config['zfs']['datasets']['dataset'];
 					<td>
 						<pre><br/><?php
 						exec("/sbin/zfs list", $rawdata);
-						foreach ($rawdata as $line) {
-							echo htmlspecialchars($line) . "<br/>";
-						}
-						unset ($line);
+						echo implode("\n", $rawdata);
+						unset ($rawdata);
 						?></pre>
 					</td>
 				</tr>
@@ -90,7 +88,6 @@ $a_dataset = &$config['zfs']['datasets']['dataset'];
 					<td>
 						<pre><br/><?php
 						exec("/sbin/zfs get all {$datasetv['pool'][0]}/{$datasetv['name']}", $rawdata);
-						$rawdata = array_slice($rawdata, 3);
 						echo implode("\n", $rawdata);
 						unset($rawdata);
 						?></pre>
