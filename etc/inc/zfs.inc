@@ -199,8 +199,11 @@ function zfs_dataset_configure($name) {
 	if (isset($dataset['readonly']))
 		$param .= "-o readonly=on ";
 
+	if (!empty($dataset['quota']))
+		$param .= "-o quota={$dataset['quota']} ";
+
 	// Create the dataset
-	$cmd = "/sbin/zfs create {$param} {$dataset['pool'][0]}/{$dataset['name']} ";
+	$cmd = "/sbin/zfs create {$param} {$dataset['pool'][0]}/{$dataset['name']}";
 
 	return mwexec($cmd);
 }
@@ -224,5 +227,65 @@ function zfs_dataset_destroy($name) {
 
 	// Destroy the dataset
 	return mwexec("/sbin/zfs destroy {$dataset['pool'][0]}/{$dataset['name']}");
+}
+
+// Update properties of a dataset
+// $name - Name of the dataset to be updated.
+// Return 0 if successful, 1 if error
+function zfs_dataset_properties($name) {
+	global $config;
+
+	if (!is_array($config['zfs']['datasets']['dataset']))
+		return 1;
+
+	$index = array_search_ex($name, $config['zfs']['datasets']['dataset'], "name");
+	if (false === $index)
+		return 1;
+
+	$dataset = $config['zfs']['datasets']['dataset'][$index];
+	if (!is_array($dataset))
+		 return 1;
+
+	$result = 0;
+
+	foreach (explode(" ", "compression canmount readonly quota") as $attr) {
+		$param = "";
+
+		switch ($attr) {
+			case "compression":
+				if (!empty($dataset['compression']))
+					$param = "compression={$dataset['compression']}";
+				break;
+
+			case "canmount":
+				if (!isset($dataset['canmount']))
+					$param = "canmount=off";
+				else
+					$param = "canmount=on";
+				break;
+
+			case "readonly":
+				if (isset($dataset['readonly']))
+					$param = "readonly=on";
+				else
+					$param = "readonly=off";
+				break;
+
+			case "quota":
+				if (!empty($dataset['quota']))
+					$param = "quota={$dataset['quota']}";
+				else
+					$param = "quota=none";
+				break;
+		}
+
+		// Update dataset properties
+		if (!empty($param)) {
+			$cmd = "/sbin/zfs set {$param} {$dataset['pool'][0]}/{$dataset['name']}";
+			$result |= mwexec($cmd);
+		}
+	}
+
+	return $result;
 }
 ?>

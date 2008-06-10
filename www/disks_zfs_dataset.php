@@ -50,8 +50,10 @@ if ($_POST) {
 
 		if (!file_exists($d_sysrebootreqd_path)) {
 			foreach ($a_dataset as $datasetv) {
-				if (is_zfs_dataset_modified($datasetv)) {
+				if (is_zfs_dataset_new($datasetv)) {
 					$retval |= zfs_dataset_configure($datasetv['name']);
+				} else if (is_zfs_dataset_modified($datasetv)) {
+					$retval |= zfs_dataset_properties($datasetv['name']);
 				}
 			}
 		}
@@ -78,6 +80,11 @@ if ($_GET['act'] === "del") {
 function is_zfs_dataset_modified($dataset) {
 	global $d_zfsconfdirty_path;
 	return (file_exists($d_zfsconfdirty_path) && in_array("{$dataset['pool'][0]}/{$dataset['name']}\n", file($d_zfsconfdirty_path)));
+}
+
+function is_zfs_dataset_new($dataset) {
+	global $d_zfsconfdirty_path;
+	return (file_exists($d_zfsconfdirty_path) && in_array("+{$dataset['pool'][0]}/{$dataset['name']}\n", file($d_zfsconfdirty_path)));
 }
 ?>
 <?php include("fbegin.inc");?>

@@ -61,6 +61,7 @@ if (isset($id) && $a_dataset[$id]) {
 	$pconfig['compression'] = $a_dataset[$id]['compression'];
 	$pconfig['canmount'] = isset($a_dataset[$id]['canmount']);
 	$pconfig['readonly'] = isset($a_dataset[$id]['readonly']);
+	$pconfig['quota'] = $a_dataset[$id]['quota'];
 	$pconfig['desc'] = $a_dataset[$id]['desc'];
 } else {
 	$pconfig['name'] = "";
@@ -68,6 +69,7 @@ if (isset($id) && $a_dataset[$id]) {
 	$pconfig['compression'] = "off";
 	$pconfig['canmount'] = true;
 	$pconfig['readonly'] = false;
+	$pconfig['quota'] = "";
 	$pconfig['desc'] = "";
 }
 
@@ -90,16 +92,17 @@ if ($_POST) {
 		$dataset['compression'] = $_POST['compression'];
 		$dataset['canmount'] = $_POST['canmount'] ? true : false;
 		$dataset['readonly'] = $_POST['readonly'] ? true : false;
+		$dataset['quota'] = $_POST['quota'];
 		$dataset['desc'] = $_POST['desc'];
 
 		if (isset($id) && $a_dataset[$id]) {
 			$a_dataset[$id] = $dataset;
 		} else {
 			$a_dataset[] = $dataset;
-
-			// Mark new added dataset to be configured.
-			file_put_contents($d_zfsconfdirty_path, "{$dataset['pool']}/{$dataset[name]}\n", FILE_APPEND | FILE_TEXT);
 		}
+
+		// Mark new added dataset to be configured.
+		file_put_contents($d_zfsconfdirty_path, ((!isset($id)) ? "+" : "") . "{$dataset['pool']}/{$dataset[name]}\n", FILE_APPEND | FILE_TEXT);
 
 		write_config();
 
@@ -113,6 +116,7 @@ if ($_POST) {
 <!--
 function enable_change(enable_change) {
 	document.iform.name.disabled = !enable_change;
+	document.iform.pool.disabled = !enable_change;
 }
 // -->
 </script>
@@ -147,6 +151,7 @@ function enable_change(enable_change) {
 					<?php html_combobox("compression", gettext("Compression"), $pconfig['compression'], $a_compressionmode, gettext("Controls the compression algorithm used	for this dataset. The 'lzjb' compression algorithm is optimized for performance while providing decent data compression. Setting compression to 'On' uses the 'lzjb' compression algorithm. You can specify the 'gzip' level by using the value 'gzip-N', where N is an integer from 1 (fastest) to 9 (best compression ratio). Currently, 'gzip' is equivalent to 'gzip-6'."), true);?>
 					<?php html_checkbox("canmount", gettext("Canmount"), $pconfig['canmount'] ? true : false, gettext("If this property is disabled, the file system cannot be mounted."), gettext(""), false);?>
 					<?php html_checkbox("readonly", gettext("Readonly"), $pconfig['readonly'] ? true : false, gettext("Controls whether this dataset can be modified."), gettext(""), false);?>
+					<?php html_inputbox("quota", gettext("Quota"), $pconfig['quota'], gettext("Limits the	amount of space a dataset and its descendants can consume. This property enforces a hard limit on the amount of space used. This	includes all space consumed by descendants, including file systems and snapshots. To specify the size use the following human-readable suffixes (for example, 'k', 'KB', 'M', 'Gb', etc.)."), false, 10);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
@@ -164,7 +169,7 @@ function enable_change(enable_change) {
 </table>
 <script language="JavaScript">
 <!--
-<?php if (isset($id) && $a_vdevice[$id]):?>
+<?php if (isset($id) && $a_dataset[$id]):?>
 <!-- Disable controls that should not be modified anymore in edit mode. -->
 enable_change(false);
 <?php endif;?>

@@ -41,7 +41,11 @@ if (isset($_POST['id']))
 	$id = $_POST['id'];
 
 $pgtitle = array(gettext("Disks"), gettext("ZFS"), gettext("Datasets"), gettext("Information"));
-$pgrefresh = 5; // Refresh every 5 seconds.
+
+if (!isset($config['zfs']['datasets']) || !is_array($config['zfs']['datasets']['dataset']))
+	$config['zfs']['datasets']['dataset'] = array();
+
+$a_dataset = &$config['zfs']['datasets']['dataset'];
 ?>
 <?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
@@ -55,24 +59,45 @@ $pgrefresh = 5; // Refresh every 5 seconds.
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
-  		<ul id="tabnav">
+			<ul id="tabnav">
 				<li class="tabinact"><a href="disks_zfs_dataset.php"><?=gettext("Dataset");?></a></li>
 				<li class="tabact"><a href="disks_zfs_dataset_info.php" title="<?=gettext("Reload page");?>"><?=gettext("Information");?></a></li>
-  		</ul>
-  	</td>
+			</ul>
+		</td>
 	</tr>
-  <tr>
-  	<td class="tabcont">
-			<?php
-			echo "<pre>";
-			echo "<strong>" . gettext("ZFS dataset information and status") . "</strong><br/><br/>";
-			exec("/sbin/zfs list", $rawdata);
-			foreach ($rawdata as $line) {
-				echo htmlspecialchars($line) . "<br/>";
-			}
-			unset ($line);
-			echo "</pre>";
-			?>
+	<tr>
+		<td class="tabcont">
+			<table width="100%" border="0">
+				<tr>
+					<td class="listtopic"><?=gettext("ZFS dataset information and status");?></td>
+				</tr>
+				<tr>
+					<td>
+						<pre><br/><?php
+						exec("/sbin/zfs list", $rawdata);
+						foreach ($rawdata as $line) {
+							echo htmlspecialchars($line) . "<br/>";
+						}
+						unset ($line);
+						?></pre>
+					</td>
+				</tr>
+				<?php foreach($a_dataset as $datasetv):?>
+				<tr>
+					<td class="listtopic"><?=sprintf(gettext("Dataset %s"), "{$datasetv['pool'][0]}/{$datasetv['name']}");?></td>
+				</tr>
+				<tr>
+					<td>
+						<pre><br/><?php
+						exec("/sbin/zfs get all {$datasetv['pool'][0]}/{$datasetv['name']}", $rawdata);
+						$rawdata = array_slice($rawdata, 3);
+						echo implode("\n", $rawdata);
+						unset($rawdata);
+						?></pre>
+					</td>
+				</tr>
+				<?php endforeach;?>
+			</table>
 		</td>
 	</tr>
 </table>
