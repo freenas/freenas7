@@ -317,9 +317,6 @@ options		HZ=1000
 # Splashscreen
 options		VESA
 
-# Power management support (see NOTES for more options)
-device		acpi		# acpi -- Advanced Configuration and Power Management support
-
 # Network drivers:
 device		arl			# Aironet Arlan 655 wireless adapters
 device		iwi			# Intel PRO/Wireless 2200BG/2225BG/2915ABG
