@@ -94,6 +94,10 @@ Known bugs:
 FreeNAS 0.686.5 (Parmentier):
 -----------------------------
 
+Majors changes:
+- Remove ACPI from kernel, use kernel module instead.
+- Add apm kernel module.
+
 Bug fixes:
 - Reported netmask is not correct for DHCP configuration (BR 1864839). Thanks to Petr Slansky.
 

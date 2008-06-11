@@ -251,8 +251,6 @@ build_kernel() {
 			install)
 				# Installing the modules.
 				cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules;
-				cp -v -p ./apm/apm.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./acpi/acpi/acpi.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_vinum/geom_vinum.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_stripe/geom_stripe.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_concat/geom_concat.ko $FREENAS_ROOTFS/boot/kernel;
@@ -557,6 +555,7 @@ create_full() {
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
+	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
 
 	#Generate a loader.conf for full mode:
 	echo 'kernel="kernel"' >> $FREENAS_TMPDIR/boot/loader.conf
