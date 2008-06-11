@@ -252,6 +252,8 @@ build_kernel() {
 			install)
 				# Installing the modules.
 				cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules;
+				cp -v -p ./apm/apm.ko $FREENAS_ROOTFS/boot/kernel;
+				cp -v -p ./acpi/acpi/acpi.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_vinum/geom_vinum.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_stripe/geom_stripe.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./geom/geom_concat/geom_concat.ko $FREENAS_ROOTFS/boot/kernel;
@@ -309,7 +311,7 @@ create_mfsroot() {
 	# Create label on memory disk
 	bsdlabel -m ${FREENAS_ARCH} -w ${md} auto
 	# Format memory disk using UFS
-	newfs ${FREENAS_NEWFS} /dev/${md}c
+	newfs -O1 -o space -m 0 /dev/${md}c
 	# Umount memory disk (if already used)
 	umount $FREENAS_TMPDIR >/dev/null 2>&1
 	# Mount memory disk
@@ -406,6 +408,7 @@ create_image() {
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
+	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
 
 	echo "===> Unmount memory disk"
 	umount $FREENAS_TMPDIR
@@ -416,7 +419,6 @@ create_image() {
 	cp $FREENAS_WORKINGDIR/image.bin.gz $FREENAS_ROOTDIR/$IMGFILENAME
 
 	# Cleanup.
-	echo "===> Cleaning temporary files"
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 	[ -f $FREENAS_WORKINGDIR/image.bin ] && rm -f $FREENAS_WORKINGDIR/image.bin
@@ -479,6 +481,7 @@ create_iso () {
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
+	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
 
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file to $FREENAS_TMPDIR"
@@ -486,10 +489,14 @@ create_iso () {
 	fi
 
 	echo "ISO: Generating the ISO file"
-	mkisofs -b "boot/cdboot" -no-emul-boot -boot-load-size 4 -c "boot/boot.catalog" -d -r -A "${FREENAS_PRODUCTNAME} CD-ROM image" -publisher "${FREENAS_URL}" -p "Olivier Cochard-Labbe" -V "${FREENAS_PRODUCTNAME}_cd" -o "${FREENAS_ROOTDIR}/${ISOFILENAME}" ${FREENAS_TMPDIR}
+	mkisofs -b "boot/cdboot" -no-emul-boot -r -J -A "${FREENAS_PRODUCTNAME} CD-ROM image" -publisher "${FREENAS_URL}" -V "${FREENAS_PRODUCTNAME}_LiveCD" -o "${FREENAS_ROOTDIR}/${ISOFILENAME}" ${FREENAS_TMPDIR}
 	[ 0 != $? ] && return 1 # successful?
 
-	echo "ISO: Cleaning tempo file"
+	echo "Generating MD5 and SHA256 sums..."
+	cd ${FREENAS_ROOTDIR} && md5 *.img *.iso
+	cd ${FREENAS_ROOTDIR} && sha256 *.img *.iso
+
+	# Cleanup.
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 
