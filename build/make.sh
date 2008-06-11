@@ -417,7 +417,6 @@ create_image() {
 	cp $FREENAS_WORKINGDIR/image.bin.gz $FREENAS_ROOTDIR/$IMGFILENAME
 
 	# Cleanup.
-	echo "===> Cleaning temporary files"
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 	[ -f $FREENAS_WORKINGDIR/image.bin ] && rm -f $FREENAS_WORKINGDIR/image.bin
@@ -487,10 +486,14 @@ create_iso () {
 	fi
 
 	echo "ISO: Generating the ISO file"
-	mkisofs -b "boot/cdboot" -no-emul-boot -boot-load-size 4 -c "boot/boot.catalog" -d -r -A "${FREENAS_PRODUCTNAME} CD-ROM image" -publisher "${FREENAS_URL}" -p "Olivier Cochard-Labbe" -V "${FREENAS_PRODUCTNAME}_cd" -o "${FREENAS_ROOTDIR}/${ISOFILENAME}" ${FREENAS_TMPDIR}
+	mkisofs -b "boot/cdboot" -no-emul-boot -r -J -A "${FREENAS_PRODUCTNAME} CD-ROM image" -publisher "${FREENAS_URL}" -V "${FREENAS_PRODUCTNAME}_LiveCD" -o "${FREENAS_ROOTDIR}/${ISOFILENAME}" ${FREENAS_TMPDIR}
 	[ 0 != $? ] && return 1 # successful?
 
-	echo "ISO: Cleaning tempo file"
+	echo "Generating MD5 and SHA256 sums..."
+	cd ${FREENAS_ROOTDIR} && md5 *.img *.iso
+	cd ${FREENAS_ROOTDIR} && sha256 *.img *.iso
+
+	# Cleanup.
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
 	[ -f $FREENAS_WORKINGDIR/mfsroot.gz ] && rm -f $FREENAS_WORKINGDIR/mfsroot.gz
 
