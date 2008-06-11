@@ -300,9 +300,6 @@ options		HZ=1000
 # Splashscreen
 #options		VESA
 
-# Power management support (see NOTES for more options)
-device		acpi			# acpi -- Advanced Configuration and Power Management support
-
 # The cpufreq(4) driver provides support for non-ACPI CPU frequency control
 device		cpufreq
 
