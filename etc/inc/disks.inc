@@ -101,20 +101,9 @@ function disks_mount($mount)
 	// Set mount name
 	$mountname = "/mnt/{$mount['sharename']}";
 
-	// Changing the PHP file creation mask to 0777
-	$oldumask = umask(0);
-
 	// Create one directory for each device under /mnt
-	if (! @mkdir($mountname, 0777)) {
-		write_log("Error: Can't create directory {$mountname} in disks_mount().");
-	}
-
-	// Restoring PHP file creation mask to old value
-	umask($oldumask);
-
-	// Check
-	if ($oldumask != umask()) {
-		write_log("Error: Failed to change back umask in disks_mount().");
+	if (!@mkdir($mountname)) {
+		write_log("Error: Failed to create directory {$mountname}");
 	}
 
 	/* Mount the filesystem */
