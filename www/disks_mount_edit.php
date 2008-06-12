@@ -64,13 +64,20 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['desc'] = $a_mount[$id]['desc'];
 	$pconfig['readonly'] = isset($a_mount[$id]['readonly']);
 	$pconfig['fsck'] = isset($a_mount[$id]['fsck']);
-	
+	$pconfig['owner'] = $a_mount[$id]['accessrestrictions']['owner'];
+	$pconfig['group'] = $a_mount[$id]['accessrestrictions']['group'][0];
+	$pconfig['mode'] = $a_mount[$id]['accessrestrictions']['mode'];
 } else {
 	$pconfig['type'] = "disk";
 	$pconfig['partition'] = "p1";
 	$pconfig['readonly'] = false;
 	$pconfig['fsck'] = false;
+	$pconfig['owner'] = "root";
+	$pconfig['group'] = "wheel";
+	$pconfig['mode'] = "0777";
 }
+
+initmodectrl($pconfig, $pconfig['mode']);
 
 if ($_POST) {
 	unset($input_errors);
@@ -172,6 +179,9 @@ if ($_POST) {
 
 		$mount['sharename'] = $_POST['sharename'];
 		$mount['desc'] = $_POST['desc'];
+		$mount['accessrestrictions']['owner'] = $_POST['owner'];
+		$mount['accessrestrictions']['group'] = $_POST['group'];
+		$mount['accessrestrictions']['mode'] = getmodectrl($pconfig['mode_owner'], $pconfig['mode_group'], $pconfig['mode_others']);
 
 		if (isset($id) && $a_mount[$id])
 			$a_mount[$id] = $mount;
@@ -185,6 +195,65 @@ if ($_POST) {
 		header("Location: disks_mount.php");
 		exit;
 	}
+}
+
+function initmodectrl(&$pconfig, $mode) {
+	$pconfig['mode_owner'] = array();
+	$pconfig['mode_group'] = array();
+	$pconfig['mode_others'] = array();
+
+	// Convert octal to decimal 
+	$mode = octdec($mode);
+
+	// Owner
+	if ($mode & 0x0100) $pconfig['mode_owner'][] = "r"; //Read
+	if ($mode & 0x0080) $pconfig['mode_owner'][] = "w"; //Write
+	if ($mode & 0x0040) $pconfig['mode_owner'][] = "x"; //Execute
+
+	// Group
+	if ($mode & 0x0020) $pconfig['mode_group'][] = "r"; //Read
+	if ($mode & 0x0010) $pconfig['mode_group'][] = "w"; //Write
+	if ($mode & 0x0008) $pconfig['mode_group'][] = "x"; //Execute
+
+	// Others
+	if ($mode & 0x0004) $pconfig['mode_others'][] = "r"; //Read
+	if ($mode & 0x0002) $pconfig['mode_others'][] = "w"; //Write
+	if ($mode & 0x0001) $pconfig['mode_others'][] = "x"; //Execute
+}
+
+function getmodectrl($owner, $group, $others) {
+		$mode = "";
+		$legal = array("r", "w", "x");
+
+		foreach ($legal as $value) {
+			$mode .= (is_array($owner) && in_array($value, $owner)) ? $value : "-";
+		}
+		foreach ($legal as $value) {
+			$mode .= (is_array($group) && in_array($value, $group)) ? $value : "-";
+		}
+		foreach ($legal as $value) {
+			$mode .= (is_array($others) && in_array($value, $others)) ? $value : "-";
+		}
+
+    $realmode = "";
+    $legal = array("", "w", "r", "x", "-");
+    $attarray = preg_split("//",$mode);
+
+    for ($i=0; $i<count($attarray); $i++) {
+        if ($key = array_search($attarray[$i], $legal)) {
+            $realmode .= $legal[$key];
+        }
+    }
+
+    $mode = str_pad($realmode, 9, '-');
+    $trans = array('-'=>'0', 'r'=>'4', 'w'=>'2', 'x'=>'1');
+    $mode = strtr($mode, $trans);
+    $newmode = "0";
+    $newmode .= $mode[0]+$mode[1]+$mode[2];
+    $newmode .= $mode[3]+$mode[4]+$mode[5];
+    $newmode .= $mode[6]+$mode[7]+$mode[8];
+
+    return $newmode;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -245,6 +314,7 @@ function enable_change(enable_change) {
 			<form action="disks_mount_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
+			  	<?php html_titleline(gettext("Settings"));?>
 			  	<tr>
 			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type");?></td>
 			      <td width="78%" class="vtable">
@@ -329,6 +399,44 @@ function enable_change(enable_change) {
 			      <td width="78%" class="vtable">
 							<input name="fsck" type="checkbox" id="fsck" value="yes" <?php if ($pconfig['fsck']) echo "checked"; ?>>
 							<?=gettext("Enable foreground/background file system consistency check during boot process.");?>
+			      </td>
+					</tr>
+					<?php html_separator();?>
+					<?php html_titleline(gettext("Access Restrictions"));?>
+					<?php $a_owner = array(); foreach (system_get_user_list() as $userk => $userv) { $a_owner[$userk] = htmlspecialchars($userk); }?>
+					<?php html_combobox("owner", gettext("Owner"), $pconfig['owner'], $a_owner, gettext(""), false);?>
+					<?php $a_group = array(); foreach (system_get_group_list() as $groupk => $groupv) { $a_group[$groupk] = htmlspecialchars($groupk); }?>
+					<?php html_combobox("group", gettext("Group"), $pconfig['group'], $a_group, gettext(""), false);?>
+					<tr>
+						<td width="22%" valign="top" class="vncell"><?=gettext("Mode");?></td>
+			      <td width="78%" class="vtable">
+			      	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+				        <tr>
+				        	<td width="20%" class="listhdrr">&nbsp;</td>
+									<td width="20%" class="listhdrc"><?=gettext("Read");?></td>
+									<td width="50%" class="listhdrc"><?=gettext("Write");?></td>
+									<td width="20%" class="listhdrc"><?=gettext("Execute");?></td>
+									<td width="10%" class="list"></td>
+				        </tr>
+				        <tr>
+									<td class="listlr"><?=gettext("Owner");?>&nbsp;</td>
+									<td class="listrc" align="center"><input type="checkbox" name="mode_owner[]" id="owner_read" value="r" <?php if (in_array("r", $pconfig['mode_owner'])) echo "checked";?>>&nbsp;</td>
+									<td class="listrc" align="center"><input type="checkbox" name="mode_owner[]" id="owner_write" value="w" <?php if (in_array("w", $pconfig['mode_owner'])) echo "checked";?>>&nbsp;</td>
+									<td class="listrc" align="center"><input type="checkbox" name="mode_owner[]" id="owner_execute" value="x" <?php if (in_array("x", $pconfig['mode_owner'])) echo "checked";?>>&nbsp;</td>
+				        </tr>
+				        <tr>
+				          <td class="listlr"><?=gettext("Group");?>&nbsp;</td>
+									<td class="listrc" align="center"><input type="checkbox" name="mode_group[]" id="group_read" value="r" <?php if (in_array("r", $pconfig['mode_group'])) echo "checked";?>>&nbsp;</td>
+									<td class="listrc" align="center"><input type="checkbox" name="mode_group[]" id="group_write" value="w" <?php if (in_array("w", $pconfig['mode_group'])) echo "checked";?>>&nbsp;</td>
+									<td class="listrc" align="center"><input type="checkbox" name="mode_group[]" id="group_execute" value="x" <?php if (in_array("x", $pconfig['mode_group'])) echo "checked";?>>&nbsp;</td>
+				        </tr>
+				        <tr>
+				          <td class="listlr"><?=gettext("Others");?>&nbsp;</td>
+									<td class="listrc" align="center"><input type="checkbox" name="mode_others[]" id="others_read" value="r" <?php if (in_array("r", $pconfig['mode_others'])) echo "checked";?>>&nbsp;</td>
+									<td class="listrc" align="center"><input type="checkbox" name="mode_others[]" id="others_write" value="w" <?php if (in_array("w", $pconfig['mode_others'])) echo "checked";?>>&nbsp;</td>
+									<td class="listrc" align="center"><input type="checkbox" name="mode_others[]" id="others_execute" value="x" <?php if (in_array("x", $pconfig['mode_others'])) echo "checked";?>>&nbsp;</td>
+				        </tr>
+							</table>
 			      </td>
 			    </tr>
 			    <tr>
