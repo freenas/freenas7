@@ -153,9 +153,7 @@ if ($_GET['act'] == "retry")
               ?>&nbsp;
             </td>
             <td valign="middle" nowrap class="list">
-            	<?php if ("disk" === $mount['type']):?>
               <a href="disks_mount_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit mount" width="17" height="17" border="0"></a>&nbsp;
-              <?php endif;?>
               <a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("delete mount"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>

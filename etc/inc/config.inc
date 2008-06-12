@@ -1362,6 +1362,18 @@ function config_upgrade() {
 		$config['version'] = "5.1";
 	}
 
+	/* Convert 5.1 -> 5.2 */
+	/* Add //mounts/mount/accessrestrictions/* attributes. */
+	if ($config['version'] === "5.1") {
+		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
+			$config['mounts']['mount'][$i]['accessrestrictions']['owner'] = "root";
+			$config['mounts']['mount'][$i]['accessrestrictions']['group'] = "wheel";
+			$config['mounts']['mount'][$i]['accessrestrictions']['mode'] = "0777";
+		}
+	
+		$config['version'] = "5.2";
+	}
+
 	write_config();
 
 	if (is_booting())
