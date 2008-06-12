@@ -151,7 +151,7 @@ a {
 	font-size: 11px;
 	color: #FFFFFF;
 }
-.listr {
+.listr, .listrc {
 	background-color: #FFFFFF;
 	border-right: 1px solid #999999;
 	border-bottom: 1px solid #999999;
@@ -160,6 +160,9 @@ a {
 	padding-left: 6px;
 	padding-top: 4px;
 	padding-bottom: 4px;
+}
+.listrc {
+	text-align: center;
 }
 .listrpad {
 	border-right: 1px solid #999999;
@@ -182,7 +185,7 @@ a {
 	border-bottom: 1px solid #999999;
 	background-color: #D9DEE8;
 }
-.listhdr, .listhdrr {
+.listhdr, .listhdrr, .listhdrc {
 	background-color: #BBBBBB;
 	padding-right: 16px;
 	padding-left: 6px;
@@ -192,9 +195,12 @@ a {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
-.listhdrr {
+.listhdrr, .listhdrc {
 	border-right: 1px solid #999999;
 	vertical-align: top;
+}
+.listhdrc {
+	text-align: center;
 }
 .listhdr a {
 	color: #000000;

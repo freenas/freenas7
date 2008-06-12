@@ -213,12 +213,22 @@ function disks_mount($mount)
 			break;
 	}
 
-	// Modify directory mode to 0777. Check if target directory is writable,
-	// otherwise we will get an error message.
+	// Set access restrictions. Use the following default values.
+	$mode = "0777";
+	$owner = "root";
+	$group = "wheel";
+
+	if (is_array($mount['accessrestrictions'])) {
+		$mode = $mount['accessrestrictions']['mode'];
+		$owner = $mount['accessrestrictions']['owner'];
+		$group = $mount['accessrestrictions']['group'][0];
+	}
+
+	// Check if target directory is writable, otherwise we will get an error message.
 	// For ISO's this may be 'chmod: /mnt/xxx: Read-only file system)'
 	if (file_exists($mountname) && is_writable($mountname)) {
-		if (!@chmod($mountname, 0777)) {
-			write_log("Error: Can't reset mode 0777 on directory {$mountname}");
+		if (!@chmod($mountname, octdec($mode)) || !@chown($mountname, $owner) || !@chgrp($mountname, $group)) {
+			write_log("Error: Failed to set access restrictions on directory {$mountname}");
 		}
 	}
 

@@ -333,6 +333,11 @@
 			</fsck> // Enable/disable foreground file system consistency check during boot process.
 			// 'iso' attributes:
 			<filename>xxx</filename>
+			<accessrestrictions>
+				<owner>root<owner>
+				<group>wheel<group>
+				<mode>0777</mode>
+			</accessrestrictions>
 		</mount>
 		-->
 	</mounts>
