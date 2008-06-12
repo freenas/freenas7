@@ -67,6 +67,7 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['owner'] = $a_mount[$id]['accessrestrictions']['owner'];
 	$pconfig['group'] = $a_mount[$id]['accessrestrictions']['group'][0];
 	$pconfig['mode'] = $a_mount[$id]['accessrestrictions']['mode'];
+	$pconfig['filename'] = $a_mount[$id]['filename'];
 } else {
 	$pconfig['type'] = "disk";
 	$pconfig['partition'] = "p1";
@@ -296,6 +297,7 @@ function fstype_change() {
 function enable_change(enable_change) {
 	document.iform.type.disabled = !enable_change;
 	document.iform.mdisk.disabled = !enable_change;
+	document.iform.filename.disabled = !enable_change;
 }
 // -->
 </script>
