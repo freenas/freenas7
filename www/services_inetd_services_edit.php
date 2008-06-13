@@ -198,7 +198,7 @@ if ($_POST) {
 		if(!empty($_POST['maxchildperip'])){
 			$service['maxchildperip'] = $_POST['maxchildperip'];
 		}
-		if((isset($_POST['server_s']) && $_POST['server_s'] == 0 || isset($_POST['server_r']) && $_POST['server_r'] == 0) || $$_POST['type'] == 0) {
+		if((isset($service['server']) && $service['server'] == "custom") || ($service['type'] == "tcpmux")) {
 			$service['serverprogram'] = $_POST['serverprogram'];
 			$service['serverargs'] = $_POST['serverargs'];
 		}
