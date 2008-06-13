@@ -776,8 +776,9 @@
 		<services>
 			<!--
 			<service>
-				<type>tcpmux|standard|rpc|unix</type>
+				<type>standard|rpc|unix</type>
 				<name>xxx</name>
+				<localname>xxx</localname>
 				<version>1</version>
 				<socket>xxx</socket>
 				<protocol>xxx</protocol>
