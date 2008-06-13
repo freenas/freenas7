@@ -44,7 +44,7 @@ array_sort_key($config['inetd']['services']['service'], "name");
 
 $a_services = &$config['inetd']['services']['service'];
 
-$options_type = array('tcpmux','standard','rpc', 'unix');
+$options_type = array('standard','rpc', 'unix');
 exec("/usr/bin/grep -v '^#' /etc/services | /usr/bin/awk -F \" \" '{print $1 | \"sort -u\" }'", $options_name_s);
 exec("/usr/bin/grep -v '^#' /etc/rpc | /usr/bin/awk -F \" \" '{print $1 | \"sort -u\" }'", $options_name_r);
 $options_socket_t = array('stream');
@@ -62,24 +62,25 @@ if (isset($id) && $a_services[$id]) {
 	$pconfig['type'] = array_search($a_services[$id]['type'], $options_type);
 	switch($pconfig['type']) {
 		case 0:
-			$pconfig['name'] = $a_services[$id]['name'];
-			$pconfig['socket'] = array_search($a_services[$id]['socket'],  $options_socket_t);
-			$pconfig['protocol'] = array_search($a_services[$id]['protocol'], $options_protocol_t);
+			$pconfig['name'] = array_search($a_services[$id]['name'], $options_name_s);
+			if($a_services[$id]['name'] == "tcpmux") {
+				$pconfig['localname'] = $a_services[$id]['localname'];
+				$pconfig['socket'] = array_search($a_services[$id]['socket'],  $options_socket_t);
+				$pconfig['protocol'] = array_search($a_services[$id]['protocol'], $options_protocol_t);
+			} else {
+				$pconfig['socket'] = array_search($a_services[$id]['socket'],  $options_socket);
+				$pconfig['protocol'] = array_search($a_services[$id]['protocol'], $options_protocol_s);
+				$pconfig['server'] = array_search($a_services[$id]['server'], $options_server_s);
+			}
 		break;
 		case 1:
-			$pconfig['name'] = array_search($a_services[$id]['name'], $options_name_s);
-			$pconfig['socket'] = array_search($a_services[$id]['socket'],  $options_socket);
-			$pconfig['protocol'] = array_search($a_services[$id]['protocol'], $options_protocol_s);
-			$pconfig['server'] = array_search($a_services[$id]['server'], $options_server_s);
-		break;
-		case 2:
 			$pconfig['name'] = array_search($a_services[$id]['name'], $options_name_r);
 			$pconfig['socket'] = array_search($a_services[$id]['socket'],  $options_socket);
 			$pconfig['protocol'] = array_search($a_services[$id]['protocol'], $options_protocol_r);
 			$pconfig['version'] = $a_services[$id]['version'];
 			$pconfig['server'] = array_search($a_services[$id]['server'], $options_server_r);
 		break;
-		case 3:
+		case 2:
 			$pconfig['name'] = $a_services[$id]['name'];
 			$pconfig['socket'] = array_search($a_services[$id]['socket'],  $options_socket_u);
 			$pconfig['protocol'] = array_search($a_services[$id]['protocol'], $options_protocol_u);
@@ -91,7 +92,7 @@ if (isset($id) && $a_services[$id]) {
 	$pconfig['maxconnections'] = $a_services[$id]['maxconnections'];
 	$pconfig['maxchildperip'] = $a_services[$id]['maxchildperip'];
 	
-	if((isset($pconfig['server']) && $pconfig['server'] == 0) || $pconfig['type'] == 0) {
+	if((isset($pconfig['server']) && $pconfig['server'] == 0) || $a_services[$id]['name'] == "tcpmux") {
 		$pconfig['serverprogram'] = $a_services[$id]['serverprogram'];
 		$pconfig['serverargs'] = $a_services[$id]['serverargs'];
 	}
@@ -106,19 +107,30 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 	
-	if($_POST['type'] == 0 || $_POST['type'] == 3) {
-		$reqdfields = explode(" ", "name_in");
-		$reqdfieldsn = array(gettext("Name"));
-	} else if($_POST['type'] == 2) {
+	if($_POST['type'] == 0) {
+		$name = $options_name_s[$_POST['name_cb_s']];
+		if($name == "tcpmux") {
+			$reqdfields = explode(" ", "l_name_in serverprogram serverargs");
+			$reqdfieldsn = array(gettext("Local Name"),gettext("Server-Program"), gettext("Server-Program-Arguments"));
+		} else {
+			$server = $options_server_s[$_POST['server_s']];
+			if($server == "custom") {
+				$reqdfields = explode(" ", "serverprogram serverargs");
+				$reqdfieldsn = array(gettext("Server-Program"), gettext("Server-Program-Arguments"));
+			}
+		}
+	} else if($_POST['type'] == 1) {
 		$reqdfields = explode(" ", "version");
 		$reqdfieldsn = array(gettext("Version"));
-	}
-	
-	if(!empty($_POST['server_s']) && $_POST['server_s'] == 0 || !empty($_POST['server_r']) && $_POST['server_r'] == 0) {
-		$reqdfields[] = "serverprogram";
-		$reqdfields[] = "serverargs";
-		$reqdfieldsn[] = gettext("Server-Program");
-		$reqdfieldsn[] = gettext("Server-Program-Arguments");
+		if(!empty($_POST['server_r']) && $_POST['server_r'] == 0) {
+			$reqdfields[] = "serverprogram";
+			$reqdfields[] = "serverargs";
+			$reqdfieldsn[] = gettext("Server-Program");
+			$reqdfieldsn[] = gettext("Server-Program-Arguments");
+		}
+	} else if($_POST['type'] == 2) {
+		$reqdfields = explode(" ", "name_in");
+		$reqdfieldsn = array(gettext("Name"));
 	}
 	
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
@@ -163,24 +175,25 @@ if ($_POST) {
 		$service['type'] = $options_type[$_POST['type']];
 		switch($_POST['type']) {
 			case 0:
-				$service['name'] = $_POST['name_in'];
-				$service['socket'] = $options_socket_t[$_POST['socket_t']];
-				$service['protocol'] = $options_protocol_t[$_POST['protocol_t']];
+				$service['name'] = $options_name_s[$_POST['name_cb_s']];
+				if($service['name'] == "tcpmux") {
+					$service['localname'] = $_POST['l_name_in'];
+					$service['socket'] = $options_socket_t[$_POST['socket_t']];
+					$service['protocol'] = $options_protocol_t[$_POST['protocol_t']];
+				} else {
+					$service['socket'] = $options_socket[$_POST['socket']];
+					$service['protocol'] = $options_protocol_s[$_POST['protocol_s']];
+					$service['server'] = $options_server_s[$_POST['server_s']];
+				}
 			break;
 			case 1:
-				$service['name'] = $options_name_s[$_POST['name_cb_s']];
-				$service['socket'] = $options_socket[$_POST['socket']];
-				$service['protocol'] = $options_protocol_s[$_POST['protocol_s']];
-				$service['server'] = $options_server_s[$_POST['server_s']];
-			break;
-			case 2:
 				$service['name'] = $options_name_r[$_POST['name_cb_r']];
 				$service['version'] = $_POST['version'];
 				$service['socket'] = $options_socket[$_POST['socket']];
 				$service['protocol'] = $options_protocol_r[$_POST['protocol_r']];
 				$service['server'] = $options_server_r[$_POST['server_r']];
 			break;
-			case 3:
+			case 2:
 				$service['name'] = $_POST['name_in'];
 				$service['socket'] = $options_socket_u[$_POST['socket_u']];
 				$service['protocol'] = $options_protocol_u[$_POST['protocol_u']];
@@ -198,11 +211,12 @@ if ($_POST) {
 		if(!empty($_POST['maxchildperip'])){
 			$service['maxchildperip'] = $_POST['maxchildperip'];
 		}
-		if((isset($service['server']) && $service['server'] == "custom") || ($service['type'] == "tcpmux")) {
+		
+		if((isset($service['server']) && $service['server'] == "custom") || ($service['name'] == "tcpmux")) {
 			$service['serverprogram'] = $_POST['serverprogram'];
 			$service['serverargs'] = $_POST['serverargs'];
 		}
-				
+		
 		if (isset($id) && $a_services[$id])
 			$a_services[$id] = $service;
 		else
@@ -226,56 +240,18 @@ function type_change()
 	switch(type) {
 		case "0":
 			showElementById('name_cb_r_tr','hide');
-			showElementById('name_cb_s_tr','hide');
-			showElementById('name_in_tr','show');
-			
-			showElementById('version_tr','hide');
-			
-			showElementById('socket_t_tr','show');
-			showElementById('socket_tr','hide');
-			showElementById('socket_u_tr','hide');
-			
-			showElementById('protocol_t_tr','show');
-			showElementById('protocol_s_tr','hide');
-			showElementById('protocol_r_tr','hide');
-			showElementById('protocol_u_tr','hide');
-			
-			document.iform.wait.checked = false;
-			document.iform.wait.disabled = true;
-			
-			document.iform.server_s.value = 0;
-			server_change_s();
-			showElementById('server_s_tr','hide');
-			document.iform.server_r.value = 0;
-			server_change_r();
-			showElementById('server_r_tr','hide');
-			
-			break;
-		case "1":
-			showElementById('name_cb_r_tr','hide');
 			showElementById('name_cb_s_tr','show');
 			showElementById('name_in_tr','hide');
 			
 			showElementById('version_tr','hide');
 			
-			showElementById('socket_t_tr','hide');
-			showElementById('socket_tr','show');
-			showElementById('socket_u_tr','hide');
-			
-			showElementById('protocol_t_tr','hide');
-			showElementById('protocol_s_tr','show');
-			showElementById('protocol_r_tr','hide');
-			showElementById('protocol_u_tr','hide');
-			
-			document.iform.wait.disabled = false;
-			server_change_s();
-			showElementById('server_s_tr','show');
-			showElementById('server_r_tr','hide');
+			name_change();
 			break;
-		case "2":
+		case "1":
 			showElementById('name_cb_r_tr','show');
 			showElementById('name_cb_s_tr','hide');
 			showElementById('name_in_tr','hide');
+			showElementById('l_name_in_tr','hide');
 			
 			showElementById('version_tr','show');
 			
@@ -293,10 +269,11 @@ function type_change()
 			showElementById('server_r_tr','show');
 			showElementById('server_s_tr','hide');
 			break;
-		case "3":
+		case "2":
 			showElementById('name_cb_r_tr','hide');
 			showElementById('name_cb_s_tr','hide');
 			showElementById('name_in_tr','show');
+			showElementById('l_name_in_tr','hide');
 			
 			showElementById('version_tr','hide');
 				
@@ -315,6 +292,54 @@ function type_change()
 			showElementById('serverprogram_tr','hide');
 			showElementById('serverargs_tr','hide');
 			break;
+	}
+}
+
+function name_change()
+{
+	var number = document.iform.name_cb_s.value;
+	if (!number) return;
+	var name = document.iform.name_cb_s.options[number].text;
+	switch(name)
+	{
+		case "tcpmux":
+			showElementById('l_name_in_tr','show');
+			
+			showElementById('socket_t_tr','show');
+			showElementById('socket_tr','hide');
+			showElementById('socket_u_tr','hide');
+			
+			showElementById('protocol_t_tr','show');
+			showElementById('protocol_s_tr','hide');
+			showElementById('protocol_r_tr','hide');
+			showElementById('protocol_u_tr','hide');
+			
+			document.iform.wait.checked = false;
+			document.iform.wait.disabled = true;
+			
+			document.iform.server_s.value = 0;
+			server_change_s();
+			showElementById('server_s_tr','hide');
+			showElementById('server_r_tr','hide');
+		break;
+		default:
+			showElementById('l_name_in_tr','hide');
+			
+			showElementById('socket_t_tr','hide');
+			showElementById('socket_tr','show');
+			showElementById('socket_u_tr','hide');
+			
+			showElementById('protocol_t_tr','hide');
+			showElementById('protocol_s_tr','show');
+			showElementById('protocol_r_tr','hide');
+			showElementById('protocol_u_tr','hide');
+			
+			document.iform.wait.disabled = false;
+			
+			server_change_s();
+			showElementById('server_s_tr','show');
+			showElementById('server_r_tr','hide');
+		break;
 	}
 }
 
@@ -362,9 +387,10 @@ function server_change_r()
 		<?php if ($input_errors) print_input_errors($input_errors);?>
 		<table width="100%" border="0" cellpadding="6" cellspacing="0">
 		<?=html_combobox("type",gettext("Type"), $pconfig['type'], $options_type, gettext("Choose the type of service you want inetd to handle."), true, false, "type_change()");?>
-		<?=html_combobox("name_cb_s",gettext("Name"), $pconfig['name'], $options_name_s, gettext("This is the service name of the particular daemon."), true);?>
+		<?=html_combobox("name_cb_s",gettext("Name"), $pconfig['name'], $options_name_s, gettext("This is the service name of the particular daemon."), true, false, "name_change()");?>
 		<?=html_combobox("name_cb_r",gettext("Name"), $pconfig['name'], $options_name_r, gettext("This is the service name of the particular daemon."), true);?>
 		<?=html_inputbox("name_in",gettext("Name"),htmlspecialchars($pconfig['name']), gettext("This is the service name of the particular daemon."), true, 20);?>
+		<?=html_inputbox("l_name_in",gettext("Local name"),htmlspecialchars($pconfig['localname']), gettext("Locally-chosen service name."), true, 20);?>
 		<?=html_inputbox("version",gettext("Version"),htmlspecialchars($pconfig['version']), gettext("The RPC version number."), true, 20);?>
 		<?=html_combobox("socket",gettext("Socket type"), $pconfig['socket'], $options_socket, gettext("Socket used for the service."), true);?>
 		<?=html_combobox("socket_t",gettext("Socket type"), $pconfig['socket'], $options_socket_t, gettext("Socket used for the service."), true);?>
