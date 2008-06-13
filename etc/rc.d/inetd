@@ -1,0 +1,144 @@
+#!/bin/sh
+#
+# $FreeBSD: src/etc/rc.d/inetd,v 1.6 2007/12/08 07:20:22 dougb Exp $
+#
+# modified by Nelson silva @ nsilva at hotlap dot org
+
+# PROVIDE: inetd
+# REQUIRE: DAEMON LOGIN cleanvar
+# KEYWORD: shutdown
+# XQUERY: -i "count(//inetd/enable) > 0" -o "0" -b
+# RCVAR: inetd
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+name="inetd"
+rcvar=`set_rcvar`
+command="/usr/sbin/${name}"
+start_precmd="create_conf"
+pidfile="/var/run/${name}.pid"
+inetd_config=${inetd_config:-"/etc/${name}.conf"}
+
+cat /dev/null > ${inetd_config}
+
+create_conf()
+{
+	local _name _args _server _enable _servertype _type _version
+	
+	_tcpmux=`configxml_get_count "//inetd/services/service[type = 'tcpmux']"`
+	if [ ${_tcpmux} -gt 0 ]; then
+		echo "tcpmux stream tcp nowait root internal" >> ${inetd_config}
+	fi
+	
+	_index=`configxml_get_count "//inetd/services/service"`
+	while [ ${_index} -gt 0 ]
+	do
+		 _type=`configxml_get "//inetd/services/service[${_index}]/type"`
+		 case $_type in 
+			tcpmux)
+				_name=`configxml_get "//inetd/services/service[${_index}]/name"`
+				_name="tcpmux/${_name}"
+				_server=`/usr/local/bin/xml sel -t -m "//inetd/services/service[${_index}]" \
+					-v "serverprogram" -v "concat(' ',serverargs)" \
+					${configxml_file} | /usr/local/bin/xml unesc`
+				;;
+			standard)
+				_name=`configxml_get "//inetd/services/service[${_index}]/name"`
+				_servertype=`configxml_get "//inetd/services/service[${_index}]/server"`
+				case $_servertype in
+					daytime) _server="internal" ;;
+					time) _server="internal" ;;
+					echo) _server="internal" ;;
+					discard) _server="internal" ;;
+					chargen) _server="internal" ;;
+					tftpd)
+						_server=`/usr/local/bin/xml sel -t \
+							-i "count(//tftpd/enable) > 0" \
+								-m "//tftpd" \
+								-o "/usr/libexec/tftpd" \
+								-i "count(logging) > 0 " -o " -l" -b \
+								-i "count(negativeack) > 0 " -o " -n" -b \
+								-i "count(write) > 0 " -o " -w" -b \
+								-v "concat(' -s ', directory)" \
+								-v "concat(' -U ', umask)" \
+							-b \
+							${configxml_file} | /usr/local/bin/xml unesc`
+					;;
+					custom)
+						_server=`/usr/local/bin/xml sel -t -m "//inetd/services/service[${_index}]" \
+							-v "serverprogram" -v "concat(' ',serverargs)" \
+							${configxml_file} | /usr/local/bin/xml unesc`
+					;;
+					default)
+					;;
+				esac
+				;;
+			rpc)
+				_name=`configxml_get "//inetd/services/service[${_index}]/name"`
+				_version=`configxml_get "//inetd/services/service[${_index}]/version"`
+				_name="${_name}/${_version}"
+				_servertype=`configxml_get "//inetd/services/service[${_index}]/server"`
+				case $_servertype in
+					custom)
+						_server=`/usr/local/bin/xml sel -t -m "//inetd/services/service[${_index}]" \
+							-v "serverprogram" -v "concat(' ',serverargs)" \
+							${configxml_file} | /usr/local/bin/xml unesc`
+					;;
+					rquotad)
+						_server="/usr/libexec/rpc.rquotad rpc.rquotad"
+					;;
+					default)
+					;;
+				esac
+				;;
+			unix)
+				_name=`configxml_get "//inetd/services/service[${_index}]/name"`
+				_server="internal"
+				;;
+		 esac
+		 
+		_args=`/usr/local/bin/xml sel -t -m "//inetd/services/service[${_index}]" \
+			-v "concat(' ',socket)" \
+			-v "concat(' ',protocol)" \
+			-i "count(wait) > 0" -o " wait" -b \
+			-i "count(wait) = 0" -o " nowait" -b \
+			-i "string-length(maxchild) > 0" \
+				-v "concat('/', maxchild)" \
+				-i "string-length(maxconnections) > 0" \
+					-v "concat('/', maxconnections)" \
+					-i "string-length(maxchildperip) > 0" \
+						-v "concat('/', maxchildperip)" \
+					-b \
+				-b \
+				-i "string-length(maxconnections) = 0" \
+					-i "string-length(maxchildperip) > 0" \
+						-v "concat('/0/', maxchildperip)" \
+					-b \
+				-b \
+			-b \
+			-i "string-length(maxchild) = 0" \
+				-i "string-length(maxconnections) > 0" -v "concat('/0/', maxconnections)" \
+					-i "string-length(maxchildperip) > 0" \
+						-v "concat('/', maxchildperip)" \
+					-b \
+				-b \
+				-i "string-length(maxconnections) = 0" \
+					-i "string-length(maxchildperip) > 0" \
+						-v "concat('/0/0/', maxchildperip)" \
+					-b \
+				-b \
+			-b \
+			-o " root" \
+			${configxml_file} | /usr/local/bin/xml unesc`
+		
+		if [ -n "${_server}" ]; then
+			echo "${_name} ${_args} ${_server}" >> ${inetd_config}
+		fi
+		_index=$(( ${_index} - 1 ))
+	done
+}
+
+load_rc_config $name
+inetd_flags=`/usr/local/bin/xml sel -t -i "count(//inetd/tcpwrapping) > 0" -o "-wW " -b -i "count(//inetd/logging) > 0" -o "-l " -b -i "string-length(//inetd/maxchild) > 0" -v "concat('-c ', //inetd/maxchild, ' ')" -b -i "string-length(//inetd/maxconnections) > 0" -v "concat('-C ', //inetd/maxconnections, ' ')" -b -i "string-length(//inetd/maxconnections) = 0" -o "-C 60 " -b -i "string-length(//inetd/rate) > 0" -v "concat('-R ', //inetd/rate, ' ')" -b -i "string-length(//inetd/rate) = 0" -o "-R 256 " -b -i "string-length(//inetd/maxchildperip) > 0" -v "concat('-s ', //inetd/maxchildperip)" -b ${configxml_file} | /usr/local/bin/xml unesc`
+run_rc_command "$1"
