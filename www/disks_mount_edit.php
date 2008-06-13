@@ -314,21 +314,11 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabcont">
 			<form action="disks_mount_edit.php" method="post" name="iform" id="iform">
-				<?php if ($input_errors) print_input_errors($input_errors); ?>
+				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<?php html_titleline(gettext("Settings"));?>
-			  	<tr>
-			    	<td width="22%" valign="top" class="vncellreq"><?=gettext("Type");?></td>
-			      <td width="78%" class="vtable">
-			  			<select name="type" class="formfld" id="type" onchange="type_change()">
-			          <?php $opts = array(gettext("Disk"), gettext("ISO")); $vals = explode(" ", "disk iso"); $i = 0;
-								foreach ($opts as $opt):?>
-			          <option <?php if ($vals[$i] === $pconfig['type']) echo "selected";?> value="<?=$vals[$i++];?>"><?=htmlspecialchars($opt);?></option>
-			          <?php endforeach; ?>
-			        </select>
-			      </td>
-			    </tr>
-			    <tr id="mdisk_tr">
+					<?php html_titleline(gettext("Settings"));?>
+					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("disk" => "Disk", "iso" => "ISO"), gettext(""), true, false, "type_change()");?>
+					<tr id="mdisk_tr">
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Disk");?></td>
 			      <td class="vtable">
 							<select name="mdisk" class="formfld" id="mdisk">
@@ -369,40 +359,12 @@ function enable_change(enable_change) {
 								<option value="ext2fs" <?php if ($pconfig['fstype'] === "ext2fs") echo "selected";?>>EXT2</option>
 							</select>
 			      </td>
-			    </tr>
-			    <tr id="filename_tr">
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Filename");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="filename" type="text" class="formfld" id="filename" size="60" value="<?=htmlspecialchars($pconfig['filename']);?>">
-							<input name="browse" type="button" class="formbtn" id="Browse" onClick='ifield = form.filename; filechooser = window.open("filechooser.php?p="+escape(ifield.value)+"&sd=/mnt", "filechooser", "scrollbars=yes,toolbar=no,menubar=no,statusbar=no,width=550,height=300"); filechooser.ifield = ifield; window.ifield = ifield;' value="..." \>
-			      </td>
-			    </tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Name");?></td>
-			      <td width="78%" class="vtable">
-			        <input name="sharename" type="text" class="formfld" id="sharename" size="20" value="<?=htmlspecialchars($pconfig['sharename']);?>">
-			      </td>
-			    </tr>
-			    <tr>
-						<td width="22%" valign="top" class="vncell"><?=gettext("Description");?></td>
-			      <td width="78%" class="vtable">
-							<input name="desc" type="text" class="formfld" id="desc" size="20" value="<?=htmlspecialchars($pconfig['desc']);?>">
-			      </td>
-			    </tr>
-			    <tr id="readonly_tr">
-						<td width="22%" valign="top" class="vncell"><?=gettext("Read only");?></td>
-			      <td width="78%" class="vtable">
-							<input name="readonly" type="checkbox" id="readonly" value="yes" <?php if ($pconfig['readonly']) echo "checked"; ?>>
-							<?=gettext("Mount the file system read-only (even the super-user may not write it).");?>
-			      </td>
-			    </tr>
-			    <tr id="fsck_tr">
-						<td width="22%" valign="top" class="vncell"><?=gettext("File system check");?></td>
-			      <td width="78%" class="vtable">
-							<input name="fsck" type="checkbox" id="fsck" value="yes" <?php if ($pconfig['fsck']) echo "checked"; ?>>
-							<?=gettext("Enable foreground/background file system consistency check during boot process.");?>
-			      </td>
 					</tr>
+					<?php html_filechooser("filename", "Filename", $pconfig['filename'], gettext("ISO file to be mounted."), "/mnt", true);?>
+					<?php html_inputbox("sharename", gettext("Sharename"), $pconfig['sharename'], gettext(""), true, 20);?>
+					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
+					<?php html_checkbox("readonly", gettext("Read only"), $pconfig['readonly'] ? true : false, gettext("Mount the file system read-only (even the super-user may not write it)."), gettext(""), false);?>
+					<?php html_checkbox("fsck", gettext("File system check"), $pconfig['fsck'] ? true : false, gettext("Enable foreground/background file system consistency check during boot process."), gettext(""), false);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Access Restrictions"));?>
 					<?php $a_owner = array(); foreach (system_get_user_list() as $userk => $userv) { $a_owner[$userk] = htmlspecialchars($userk); }?>
