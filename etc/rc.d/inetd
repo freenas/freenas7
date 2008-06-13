@@ -24,9 +24,9 @@ cat /dev/null > ${inetd_config}
 
 create_conf()
 {
-	local _name _args _server _enable _servertype _type _version
+	local _name _args _server _enable _servertype _type _version _localname
 	
-	_tcpmux=`configxml_get_count "//inetd/services/service[type = 'tcpmux']"`
+	_tcpmux=`configxml_get_count "//inetd/services/service[name = 'tcpmux']"`
 	if [ ${_tcpmux} -gt 0 ]; then
 		echo "tcpmux stream tcp nowait root internal" >> ${inetd_config}
 	fi
@@ -35,45 +35,44 @@ create_conf()
 	while [ ${_index} -gt 0 ]
 	do
 		 _type=`configxml_get "//inetd/services/service[${_index}]/type"`
-		 case $_type in 
-			tcpmux)
-				_name=`configxml_get "//inetd/services/service[${_index}]/name"`
-				_name="tcpmux/${_name}"
-				_server=`/usr/local/bin/xml sel -t -m "//inetd/services/service[${_index}]" \
-					-v "serverprogram" -v "concat(' ',serverargs)" \
-					${configxml_file} | /usr/local/bin/xml unesc`
-				;;
+		 case $_type in 	
 			standard)
 				_name=`configxml_get "//inetd/services/service[${_index}]/name"`
-				_servertype=`configxml_get "//inetd/services/service[${_index}]/server"`
-				case $_servertype in
-					daytime) _server="internal" ;;
-					time) _server="internal" ;;
-					echo) _server="internal" ;;
-					discard) _server="internal" ;;
-					chargen) _server="internal" ;;
-					tftpd)
-						_server=`/usr/local/bin/xml sel -t \
-							-i "count(//tftpd/enable) > 0" \
-								-m "//tftpd" \
-								-o "/usr/libexec/tftpd" \
-								-i "count(logging) > 0 " -o " -l" -b \
-								-i "count(negativeack) > 0 " -o " -n" -b \
-								-i "count(write) > 0 " -o " -w" -b \
-								-v "concat(' -s ', directory)" \
-								-v "concat(' -U ', umask)" \
-							-b \
-							${configxml_file} | /usr/local/bin/xml unesc`
-					;;
-					custom)
-						_server=`/usr/local/bin/xml sel -t -m "//inetd/services/service[${_index}]" \
-							-v "serverprogram" -v "concat(' ',serverargs)" \
-							${configxml_file} | /usr/local/bin/xml unesc`
-					;;
-					default)
-					;;
-				esac
-				;;
+				if [ "$_name" = "tcpmux" ]; then
+					_localname=`configxml_get "//inetd/services/service[${_index}]/localname"`
+					_name="${_name}/${_localname}"
+					_server=`/usr/local/bin/xml sel -t -m "//inetd/services/service[${_index}]" \
+						-v "serverprogram" -v "concat(' ',serverargs)" \
+						${configxml_file} | /usr/local/bin/xml unesc`
+				else
+					_servertype=`configxml_get "//inetd/services/service[${_index}]/server"`
+					case $_servertype in
+						daytime) _server="internal" ;;
+						time) _server="internal" ;;
+						echo) _server="internal" ;;
+						discard) _server="internal" ;;
+						chargen) _server="internal" ;;
+						tftpd)
+							_server=`/usr/local/bin/xml sel -t \
+								-i "count(//tftpd/enable) > 0" \
+									-m "//tftpd" \
+									-o "/usr/libexec/tftpd" \
+									-i "count(logging) > 0 " -o " -l" -b \
+									-i "count(negativeack) > 0 " -o " -n" -b \
+									-i "count(write) > 0 " -o " -w" -b \
+									-v "concat(' -s ', directory)" \
+									-v "concat(' -U ', umask)" \
+								-b \
+								${configxml_file} | /usr/local/bin/xml unesc`
+						;;
+						custom)
+							_server=`/usr/local/bin/xml sel -t -m "//inetd/services/service[${_index}]" \
+								-v "serverprogram" -v "concat(' ',serverargs)" \
+								${configxml_file} | /usr/local/bin/xml unesc`
+						;;
+					esac
+				fi
+			;;
 			rpc)
 				_name=`configxml_get "//inetd/services/service[${_index}]/name"`
 				_version=`configxml_get "//inetd/services/service[${_index}]/version"`
@@ -91,11 +90,11 @@ create_conf()
 					default)
 					;;
 				esac
-				;;
+			;;
 			unix)
 				_name=`configxml_get "//inetd/services/service[${_index}]/name"`
 				_server="internal"
-				;;
+			;;
 		 esac
 		 
 		_args=`/usr/local/bin/xml sel -t -m "//inetd/services/service[${_index}]" \
