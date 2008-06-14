@@ -133,6 +133,12 @@
 						<value></value>
 					</key>
 				</wep>
+				<wpa>
+					<enable/>
+					<keymgmt>NONE|WPA-PSK|WPA-EAP</keymgmt>
+					<pairwise>NONE|CCMP|TKIP|CCMP TKIP</pairwise>
+					<psk></psk>
+				<wpa>
 			</wireless>
 		</opt[n]>
 		-->

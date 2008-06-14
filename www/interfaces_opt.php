@@ -191,6 +191,10 @@ function enable_change(enable_change) {
 		document.iform.key2.disabled = endis;
 		document.iform.key3.disabled = endis;
 		document.iform.key4.disabled = endis;
+		document.iform.wpa_enable.disabled = endis;
+		document.iform.wpa_keymgmt.disabled = endis;
+		document.iform.wpa_pairwise.disabled = endis;
+		document.iform.wpa_psk.disabled = endis;
 <?php endif;?>
 
 		if (document.iform.enable.checked == true) {
