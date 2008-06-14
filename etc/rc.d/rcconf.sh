@@ -91,6 +91,7 @@ setifconfig()
 				-i "contains('${_ifn}','wi')" -o " -mediaopt hostap -mediaopt ibss" -b \
 				-i "contains('${_ifn}','an')" -o " -mediaopt adhoc" -b \
 			-b \
+			-i "count(wpa/enable) > 0" -o " WPA" -b \
 			-o " up" \
 		-b \
 		-i "starts-with(if,'vlan')" \
@@ -158,6 +159,7 @@ setifconfig()
 						-i "contains('${_ifn}','wi')" -o " -mediaopt hostap -mediaopt ibss" -b \
 						-i "contains('${_ifn}','an')" -o " -mediaopt adhoc" -b \
 					-b \
+					-i "count(wpa/enable) > 0" -o " WPA" -b \
 					-o " up" \
 				-b \
 				-i "starts-with(if,'vlan')" \

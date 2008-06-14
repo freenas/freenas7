@@ -36,6 +36,7 @@ function wireless_config_init() {
 	$pconfig['stationname'] = $optcfg['wireless']['stationname'];
 	$pconfig['channel'] = $optcfg['wireless']['channel'];
 	$pconfig['wep_enable'] = isset($optcfg['wireless']['wep']['enable']);
+	$pconfig['wpa_enable'] = isset($optcfg['wireless']['wpa']['enable']);
 
 	if (is_array($optcfg['wireless']['wep'])) {
 		$i = 1;
@@ -47,6 +48,12 @@ function wireless_config_init() {
 		}
 		if (!isset($wepkey['txkey']))
 			$pconfig['txkey'] = 1;
+	}
+
+	if (is_array($optcfg['wireless']['wpa'])) {
+		$pconfig['keymgmt'] = $optcfg['wireless']['wpa']['wpa_keymgmt'];
+		$pconfig['pairwise'] = $optcfg['wireless']['wpa']['wpa_pairwise'];
+		$pconfig['psk'] = $optcfg['wireless']['wpa']['psk'];
 	}
 }
 
@@ -86,6 +93,11 @@ function wireless_config_post() {
 				$optcfg['wireless']['wep']['key'][] = $newkey;
 			}
 		}
+
+		$optcfg['wireless']['wpa']['enable'] = $_POST['wpa_enable'] ? true : false;
+		$optcfg['wireless']['wpa']['keymgmt'] = $_POST['wpa_keymgmt'];
+		$optcfg['wireless']['wpa']['pairwise'] = $_POST['wpa_pairwise'];
+		$optcfg['wireless']['wpa']['psk'] = $_POST['wpa_psk'];
 	}
 
 	return $input_errors;
@@ -173,7 +185,7 @@ function wireless_config_print() {
 								<?php html_separator();?>
 								<?php html_titleline_checkbox("wep_enable", gettext("WEP"), $pconfig['wep_enable'] ? true : false, gettext("Enable"));?>
                 <tr>
-                  <td valign="top" class="vncell"><?=gettext("WEP");?></td>
+                  <td valign="top" class="vncellreq"><?=gettext("WEP");?></td>
                   <td class="vtable">
                     <table border="0" cellspacing="0" cellpadding="0">
                       <tr>
@@ -206,5 +218,10 @@ function wireless_config_print() {
                     <?=gettext("40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits preceded by '0x'.")?><br/>
                     <?=gettext("104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits preceded by '0x'.")?>
 									</td>
-                </tr>
+								</tr>
+								<?php html_separator();?>
+								<?php html_titleline_checkbox("wpa_enable", gettext("WPA"), $pconfig['wpa_enable'] ? true : false, gettext("Enable"));?>
+								<?php html_combobox("wpa_keymgmt", gettext("Key Management Mode"), $pconfig['wpa_keymgmt'], array("WPA-PSK" => gettext("WPA-PSK (Pre Shared Key)"), "WPA-EAP" => gettext("WPA-EAP (Extensible Authentication Protocol)"), "WPA-PSK WPA-EAP" => gettext("WPA-PSK WPA-EAP")), gettext(""), true);?>
+								<?php html_combobox("wpa_pairwise", gettext("Pairwise"), $pconfig['wpa_pairwise'], array("CCMP TKIP" => gettext("AES/TKIP"), "CCMP" => gettext("AES"), "TKIP" => gettext("TKIP")), gettext(""), true);?>
+								<?php html_inputbox("wpa_psk", gettext("PSK"), $pconfig['wpa_psk'], gettext("Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long."), false, 20);?>
 <?php } ?>
