@@ -71,7 +71,7 @@ Majors changes:
 - Add VLAN and LAGG support.
 - Use a memory filesystem for /var on LiveCD and 'embedded' installations. Default size is
   32MB. You can modify it through the rc.conf variable 'varsize'.
-- Enable WEP for WLAN interfaces.
+- Add WEP/WPA support to WLAN interfaces.
 - Add user acces restrictions to mount points.
 
 Minors changes:
