@@ -179,10 +179,9 @@ function enable_change(enable_change) {
 		document.iform.media.disabled = endis;
 		document.iform.mediaopt.disabled = endis;
 		document.iform.extraoptions.disabled = endis;
+		document.iform.ipv6_enable.disabled = endis;
 <?php if (isset($optcfg['wireless'])):?>
-<?php if (strstr($optcfg['if'], "ath")):?>
 		document.iform.standard.disabled = endis;
-<?php endif;?>
 		document.iform.mode.disabled = endis;
 		document.iform.ssid.disabled = endis;
 		document.iform.channel.disabled = endis;
