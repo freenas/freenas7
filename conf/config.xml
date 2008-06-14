@@ -317,6 +317,7 @@
 				<readonly/>
 				<compression>on|off|lzjb|gzip|gzip-N</compression>
 				<canmount/>
+				<xattr/>
 				<desc>xxx</desc>
 			</dataset>
 			-->

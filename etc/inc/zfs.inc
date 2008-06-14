@@ -202,6 +202,9 @@ function zfs_dataset_configure($name) {
 	if (!empty($dataset['quota']))
 		$param .= "-o quota={$dataset['quota']} ";
 
+	if (!isset($dataset['xattr']))
+		$param .= "-o xattr=off ";
+
 	// Create the dataset
 	$cmd = "/sbin/zfs create {$param} {$dataset['pool'][0]}/{$dataset['name']}";
 
@@ -276,6 +279,13 @@ function zfs_dataset_properties($name) {
 					$param = "quota={$dataset['quota']}";
 				else
 					$param = "quota=none";
+				break;
+
+			case "xattr":
+				if (!isset($dataset['xattr']))
+					$param = "xattr=off";
+				else
+					$param = "xattr=on";
 				break;
 		}
 
