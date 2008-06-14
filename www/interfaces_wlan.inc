@@ -31,7 +31,6 @@ function wireless_config_init() {
 	global $optcfg, $pconfig;
 
 	$pconfig['standard'] = $optcfg['wireless']['standard'];
-	$pconfig['mode'] = $optcfg['wireless']['mode'];
 	$pconfig['ssid'] = $optcfg['wireless']['ssid'];
 	$pconfig['stationname'] = $optcfg['wireless']['stationname'];
 	$pconfig['channel'] = $optcfg['wireless']['channel'];
@@ -62,27 +61,21 @@ function wireless_config_post() {
 
 	unset($input_errors);
 
-	/* input validation */
+	// Input validation
 	if ($_POST['enable']) {
-		$reqdfields = explode(" ", "mode ssid channel");
-		$reqdfieldsn = explode(",", "Mode,SSID,Channel");
-		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
+		$reqdfields = explode(" ", "standard ssid channel");
+		$reqdfieldsn = array(gettext("Standard"), gettext("SSID"), gettext("Channel"));
 
-		if (!$input_errors) {
-			/* bridge check (hostap only!) */
-			if ($pconfig['bridge'] && ($pconfig['mode'] != "hostap"))
-				$input_errors[] = "Bridging a wireless interface is only possible in hostap mode.";
-		}
+		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
 
 	if (!$input_errors) {
 		$optcfg['wireless']['standard'] = $_POST['standard'];
-		$optcfg['wireless']['mode'] = $_POST['mode'];
 		$optcfg['wireless']['ssid'] = $_POST['ssid'];
 		$optcfg['wireless']['stationname'] = $_POST['stationname'];
 		$optcfg['wireless']['channel'] = $_POST['channel'];
-		$optcfg['wireless']['wep']['enable'] = $_POST['wep_enable'] ? true : false;
 
+		$optcfg['wireless']['wep']['enable'] = $_POST['wep_enable'] ? true : false;
 		$optcfg['wireless']['wep']['key'] = array();
 		for ($i = 1; $i <= 4; $i++) {
 			if ($_POST['key' . $i]) {
@@ -149,25 +142,6 @@ function wireless_config_print() {
 								<?php html_titleline(gettext("Wireless configuration"));?>
 								<?php $a_standard = array(); foreach (wireless_get_standards($optcfg['if']) as $standardv) { $a_standard[$standardv] = "802.{$standardv}"; }?>
 								<?php html_combobox("standard", gettext("Standard"), $pconfig['standard'], $a_standard, gettext(""), true);?>
-								<tr>
-                  <td valign="top" class="vncellreq"><?=gettext("Mode");?></td>
-                  <td class="vtable"><select name="mode" class="formfld" id="mode">
-                      <?php
-											$opts = array();
-											if (strstr($optcfg['if'], "wi") || strstr($optcfg['if'], "ath"))
-												$opts[] = "hostap";
-											$opts[] = "BSS";
-											$opts[] = "IBSS";
-											foreach ($opts as $opt):?>
-                      <option <?php if ($opt == $pconfig['mode']) echo "selected";?>>
-                      <?=htmlspecialchars($opt);?>
-                      </option>
-                      <?php endforeach; ?>
-                    </select> <br>
-                    Note: IBSS mode is sometimes also called &quot;ad-hoc&quot;
-                    mode;<br>
-                    BSS mode is also known as &quot;infrastructure&quot; mode</td>
-								</tr>
 								<?php html_inputbox("ssid", gettext("SSID"), $pconfig['ssid'], gettext("Set the desired Service Set Identifier (aka network name)."), true, 20);?>
 								<tr>
 									<td valign="top" class="vncellreq"><?=gettext("Channel");?></td>
@@ -185,7 +159,7 @@ function wireless_config_print() {
 								<?php html_separator();?>
 								<?php html_titleline_checkbox("wep_enable", gettext("WEP"), $pconfig['wep_enable'] ? true : false, gettext("Enable"));?>
                 <tr>
-                  <td valign="top" class="vncellreq"><?=gettext("WEP");?></td>
+                  <td valign="top" class="vncellreq"><?=gettext("Key");?></td>
                   <td class="vtable">
                     <table border="0" cellspacing="0" cellpadding="0">
                       <tr>
@@ -215,13 +189,12 @@ function wireless_config_print() {
                         <td align="center"> <input name="txkey" type="radio" value="4" <?php if ($pconfig['txkey'] == 4) echo "checked";?>></td>
                       </tr>
                     </table><br/>
-                    <?=gettext("40 (64) bit keys may be entered as 5 ASCII characters or 10 hex digits preceded by '0x'.")?><br/>
-                    <?=gettext("104 (128) bit keys may be entered as 13 ASCII characters or 26 hex digits preceded by '0x'.")?>
+                    <?=gettext("A key will be either 5 or 13 characters (40 or 104 bits) depending of the local network and the capabilities of the adaptor. It may be specified either as a plain string or as a string of hexadecimal digits preceded by '0x'.")?>
 									</td>
 								</tr>
 								<?php html_separator();?>
 								<?php html_titleline_checkbox("wpa_enable", gettext("WPA"), $pconfig['wpa_enable'] ? true : false, gettext("Enable"));?>
-								<?php html_combobox("wpa_keymgmt", gettext("Key Management Mode"), $pconfig['wpa_keymgmt'], array("WPA-PSK" => gettext("WPA-PSK (Pre Shared Key)"), "WPA-EAP" => gettext("WPA-EAP (Extensible Authentication Protocol)"), "WPA-PSK WPA-EAP" => gettext("WPA-PSK WPA-EAP")), gettext(""), true);?>
-								<?php html_combobox("wpa_pairwise", gettext("Pairwise"), $pconfig['wpa_pairwise'], array("CCMP TKIP" => gettext("AES/TKIP"), "CCMP" => gettext("AES"), "TKIP" => gettext("TKIP")), gettext(""), true);?>
-								<?php html_inputbox("wpa_psk", gettext("PSK"), $pconfig['wpa_psk'], gettext("Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long."), false, 20);?>
+								<?php html_combobox("wpa_keymgmt", gettext("Key Management Protocol"), $pconfig['wpa_keymgmt'], array("WPA-PSK" => gettext("WPA-PSK (Pre Shared Key)"), "WPA-EAP" => gettext("WPA-EAP (Extensible Authentication Protocol)"), "WPA-PSK WPA-EAP" => gettext("WPA-PSK WPA-EAP")), gettext(""), true);?>
+								<?php html_combobox("wpa_pairwise", gettext("Pairwise"), $pconfig['wpa_pairwise'], array("CCMP TKIP" => gettext("CCMP TKIP"), "CCMP" => gettext("CCMP"), "TKIP" => gettext("TKIP")), gettext("List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP (AES in Counter mode with CBC-MAC, RFC 3610, IEEE 802.11i/D7.0), TKIP (Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."), true);?>
+								<?php html_inputbox("wpa_psk", gettext("PSK"), $pconfig['wpa_psk'], gettext("Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long."), false, 40);?>
 <?php } ?>

@@ -123,7 +123,6 @@
 			<extraoptions></extraoptions>
 			<wireless>
 				<standard>11a|11b|11g</standard>
-				<mode>hostap *or* bss *or* ibss</mode>
 				<ssid></ssid>
 				<channel></channel>
 				<wep>
