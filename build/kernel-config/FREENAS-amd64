@@ -65,7 +65,7 @@ options 	STOP_NMI		# Stop CPUS using NMI instead of IPI
 
 # To make an SMP kernel, the next two lines are needed
 options 	SMP			# Symmetric MultiProcessor Kernel
-device		apic			# I/O APIC
+#device		apic			# I/O APIC
 
 # CPU frequency control
 device		cpufreq
@@ -317,11 +317,11 @@ options		HZ=1000
 #options		VESA
 
 # Network drivers:
-device		arl			# Aironet Arlan 655 wireless adapters
+#device		arl			# Aironet Arlan 655 wireless adapters
 device		iwi			# Intel PRO/Wireless 2200BG/2225BG/2915ABG
 device		ipw 		# Intel PRO/Wireless 2100 IEEE 802.11 adapter
 #device		zyd			# ZyDAS ZD1211/ZD1211B USB IEEE 802.11b/g
-device		sbni		# Granch SBNI12-xx ISA and PCI adapters
+#device		sbni		# Granch SBNI12-xx ISA and PCI adapters
 device 		wpi			# Intel 3945ABG Wireless LAN controller
 device 		cxgb 		# Chelsio T3 10 Gigabit Ethernet
 device 		gem			# ERI/GEM/GMAC Ethernet device driver
