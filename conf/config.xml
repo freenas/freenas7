@@ -772,37 +772,4 @@
 		<username>Administrator</username>
 		<password></password>
 	</ad>
-	<inetd>
-		<services>
-			<!--
-			<service>
-				<type>standard|rpc|unix</type>
-				<name>xxx</name>
-				<localname>xxx</localname>
-				<version>1</version>
-				<socket>xxx</socket>
-				<protocol>xxx</protocol>
-				<server>xxx</server>
-				<wait/>
-				<serverprogram/>
-                                <serverargs/>
-			</service>
-			-->
-		</services>
-		<!--<maxchild/>-->
-		<maxconnections>60</maxconnections>
-		<!--<rate/>
-		<maxchildperip/>
-		-->
-		<tcpwrapping/>
-		<!--<enable/>-->
-	</inetd>
-	<tftpd>
-		<!-- <directory>xxx</directory>
-		<umask>xxx</umask>
-		<log/>
-		<negack/>
-		<enable/>
-		-->
-	</tftpd>
 </freenas>

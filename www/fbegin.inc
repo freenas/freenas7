@@ -51,7 +51,6 @@ $menu['disks']['menuitem'][] = array("desc" => gettext("Mount Point"), "link" =>
 // Services
 $menu['services']['desc'] = gettext("Services");
 $menu['services']['menuitem'] = array();
-$menu['services']['menuitem'][] = array("desc" => gettext("Inetd"), "link" => "services_inetd.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("CIFS/SMB"), "link" => "services_samba.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("FTP"), "link" => "services_ftp.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("SSH"), "link" => "services_sshd.php", "visible" => true);
@@ -65,7 +64,6 @@ $menu['services']['menuitem'][] = array("desc" => gettext("DAAP"), "link" => "se
 $menu['services']['menuitem'][] = array("desc" => gettext("Dynamic DNS"), "link" => "services_dynamicdns.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("SNMP"), "link" => "services_snmp.php", "visible" => true);
 $menu['services']['menuitem'][] = array("desc" => gettext("Webserver"), "link" => "services_websrv.php", "visible" => true);
-$menu['services']['menuitem'][] = array("desc" => gettext("TFTP"), "link" => "services_tftpd.php", "visible" => true);
 
 // Access
 $menu['access']['desc'] = gettext("Access");
