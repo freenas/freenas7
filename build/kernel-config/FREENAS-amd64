@@ -42,6 +42,7 @@ options 	MD_ROOT			# MD is a potential root device
 options 	NFSCLIENT		# Network Filesystem Client
 options 	NFSSERVER		# Network Filesystem Server
 options 	NFS_ROOT		# NFS usable as /, requires NFSCLIENT
+#options 	NTFS			# NT File System
 options 	MSDOSFS			# MSDOS Filesystem
 options 	CD9660			# ISO 9660 Filesystem
 options 	PROCFS			# Process filesystem (requires PSEUDOFS)
@@ -64,14 +65,14 @@ options 	ADAPTIVE_GIANT		# Giant mutex is adaptive.
 options 	STOP_NMI		# Stop CPUS using NMI instead of IPI
 #options 	AUDIT			# Security event auditing
 
-# To make an SMP kernel, the next two lines are needed
+# Make an SMP-capable kernel by default
 options 	SMP			# Symmetric MultiProcessor Kernel
 
 # CPU frequency control
 device		cpufreq
 
 # Bus support.
-#device		acpi
+device		acpi
 device		pci
 
 # Floppy drives

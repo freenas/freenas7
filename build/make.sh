@@ -407,7 +407,9 @@ create_image() {
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
-	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
+	if [ "amd64" != ${FREENAS_ARCH} ]; then
+		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
+	fi
 
 	echo "===> Unmount memory disk"
 	umount $FREENAS_TMPDIR
@@ -480,7 +482,9 @@ create_iso () {
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
-	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
+	if [ "amd64" != ${FREENAS_ARCH} ]; then
+		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
+	fi
 
 	if [ ! $LIGHT_ISO ]; then
 		echo "ISO: Copying IMG file to $FREENAS_TMPDIR"
@@ -555,7 +559,9 @@ create_full() {
 		cp $FREENAS_SVNDIR/boot/splash.bmp $FREENAS_TMPDIR/boot
 		cp ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules/splash/bmp/splash_bmp.ko $FREENAS_TMPDIR/boot/kernel
 	fi
-	cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
+	if [ "amd64" != ${FREENAS_ARCH} ]; then
+		cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules && cp apm/apm.ko acpi/acpi/acpi.ko $FREENAS_TMPDIR/boot/kernel
+	fi
 
 	#Generate a loader.conf for full mode:
 	echo 'kernel="kernel"' >> $FREENAS_TMPDIR/boot/loader.conf
