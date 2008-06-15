@@ -127,16 +127,13 @@
 				<channel></channel>
 				<wep>
 					<enable/>
-					<key>
-						<txkey/>
-						<value></value>
-					</key>
+					<key>xxx</key>
 				</wep>
 				<wpa>
 					<enable/>
 					<keymgmt>NONE|WPA-PSK|WPA-EAP</keymgmt>
 					<pairwise>NONE|CCMP|TKIP|CCMP TKIP</pairwise>
-					<psk></psk>
+					<psk>xxx</psk>
 				<wpa>
 			</wireless>
 		</opt[n]>

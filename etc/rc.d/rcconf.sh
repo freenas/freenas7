@@ -67,16 +67,11 @@ setifconfig()
 		-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 		-m "wireless" \
 			-v "concat(' ssid ',ssid,' channel ',channel)" \
-			-i "string-length(stationname) > 0" -v "concat(' stationname ',stationname)" -b \
-			-i "count(wep/enable) > 0 and count(wep/key) > 0" \
-				-m "wep/key" \
-					-v "concat(' wepkey ',position(),':',value)" \
-					-i "count(txkey) > 0" -v "concat(' weptxkey ',position())" -b \
-				-b \
+			-i "string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
+			-i "count(wep/enable) > 0" \
+				-v "concat(' wepmode on wepkey ',wep/key,' weptxkey 1')" \
 			-b \
 			-i "count(wep/enable) = 0" -o " wepmode off" -b \
-			-i "count(wep/enable) > 0" -o " wepmode on" -b \
-			-i "string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
 			-i "count(wpa/enable) > 0" -o " WPA" -b \
 			-o " up" \
 		-b \
@@ -121,16 +116,11 @@ setifconfig()
 				-i "string-length(extraoptions) > 0" -v "concat(' ',extraoptions)" -b \
 				-m "wireless" \
 					-v "concat(' ssid ',ssid,' channel ',channel)" \
-					-i "string-length(stationname) > 0" -v "concat(' stationname ',stationname)" -b \
-					-i "count(wep/enable) > 0 and count(wep/key) > 0" \
-						-m "wep/key" \
-							-v "concat(' wepkey ',position(),':',value)" \
-							-i "count(txkey) > 0" -v "concat(' weptxkey ',position())" -b \
-						-b \
+					-i "string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
+					-i "count(wep/enable) > 0" \
+						-v "concat(' wepmode on wepkey ',wep/key,' weptxkey 1')" \
 					-b \
 					-i "count(wep/enable) = 0" -o " wepmode off" -b \
-					-i "count(wep/enable) > 0" -o " wepmode on" -b \
-					-i "string-length(standard) > 0" -v "concat(' mode ',standard)" -b \
 					-i "count(wpa/enable) > 0" -o " WPA" -b \
 					-o " up" \
 				-b \

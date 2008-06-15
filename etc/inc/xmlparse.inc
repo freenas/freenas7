@@ -35,7 +35,7 @@
 
 /* tags that are always to be handled as lists */
 /* This are TAGS that can be multiple in the XML config file */
-$listtags = explode(" ", "key dnsserver winsserver disk vdisk diskr sharetosync " .
+$listtags = explode(" ", "dnsserver winsserver disk vdisk diskr sharetosync " .
 	"encryption-algorithm-option hash-algorithm-option hosts onetoone hidemount " .
 	"staticmap route pipe queue shellcmd cacert earlyshellcmd user group " .
 	"servernat nfsnetworks passthrumac allowedip mount vlan domainoverrides " .

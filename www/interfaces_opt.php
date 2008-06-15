@@ -123,7 +123,10 @@ if ($_POST) {
 	if (isset($optcfg['wireless'])) {
 		$wi_input_errors = wireless_config_post();
 		if ($wi_input_errors) {
-			$input_errors = array_merge($input_errors, $wi_input_errors);
+			if (is_array($input_errors))
+				$input_errors = array_merge($input_errors, $wi_input_errors);
+			else
+				$input_errors = $wi_input_errors;
 		}
 	}
 
@@ -184,13 +187,8 @@ function enable_change(enable_change) {
 		document.iform.standard.disabled = endis;
 		document.iform.ssid.disabled = endis;
 		document.iform.channel.disabled = endis;
-		document.iform.stationname.disabled = endis;
-		document.iform.wep_enable.disabled = endis;
-		document.iform.key1.disabled = endis;
-		document.iform.key2.disabled = endis;
-		document.iform.key3.disabled = endis;
-		document.iform.key4.disabled = endis;
-		document.iform.wpa_enable.disabled = endis;
+		document.iform.encryption.disabled = endis;
+		document.iform.wep_key.disabled = endis;
 		document.iform.wpa_keymgmt.disabled = endis;
 		document.iform.wpa_pairwise.disabled = endis;
 		document.iform.wpa_psk.disabled = endis;
@@ -208,33 +206,9 @@ function enable_change(enable_change) {
 	type_change();
 	ipv6_type_change();
 	media_change();
-}
-
-function bridge_change(enable_over) {
-	var endis;
-
-	// Only for 'Static' mode.
-	if (0 == document.iform.type.selectedIndex) {
-		if (document.iform.enable.checked || enable_over) {
-			endis = !((document.iform.bridge.selectedIndex == 0) || enable_over);
-		} else {
-			endis = true;
-		}
-
-		document.iform.ipaddr.readOnly = endis;
-		document.iform.subnet.disabled = endis;
-	}
-
-	if (0 == document.iform.ipv6type.selectedIndex) {
-		if (document.iform.enable.checked || enable_over) {
-			endis = !((document.iform.bridge.selectedIndex == 0) || enable_over);
-		} else {
-			endis = true;
-		}
-
-		document.iform.ipv6addr.readOnly = endis;
-		document.iform.ipv6subnet.readOnly = endis;
-	}
+<?php if (isset($optcfg['wireless'])):?>
+	encryption_change();
+<?php endif;?>
 }
 
 function type_change() {
@@ -286,6 +260,33 @@ function media_change() {
 			break;
   }
 }
+
+<?php if (isset($optcfg['wireless'])):?>
+function encryption_change() {
+	switch(document.iform.encryption.value) {
+		case "none":
+			showElementById('wep_key_tr','hide');
+			showElementById('wpa_keymgmt_tr','hide');
+			showElementById('wpa_pairwise_tr','hide');
+			showElementById('wpa_psk_tr','hide');
+			break;
+	
+		case "wep":
+			showElementById('wep_key_tr','show');
+			showElementById('wpa_keymgmt_tr','hide');
+			showElementById('wpa_pairwise_tr','hide');
+			showElementById('wpa_psk_tr','hide');
+			break;
+	
+		case "wpa":
+			showElementById('wep_key_tr','hide');
+			showElementById('wpa_keymgmt_tr','show');
+			showElementById('wpa_pairwise_tr','show');
+			showElementById('wpa_psk_tr','show');
+			break;
+	}
+}
+<?php endif;?>
 // -->
 </script>
 <?php if ($optcfg['if']):?>
@@ -296,7 +297,7 @@ function media_change() {
 										<?php if ($input_errors) print_input_errors($input_errors);?>
 										<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 										<table width="100%" border="0" cellpadding="6" cellspacing="0">
-											<?php html_titleline_checkbox("enable", gettext("IPv4 Configuration"), $pconfig['enable'] ? true : false, gettext("Activate"), "enable_change(false);bridge_change(false)");?>
+											<?php html_titleline_checkbox("enable", gettext("IPv4 Configuration"), $pconfig['enable'] ? true : false, gettext("Activate"), "enable_change(false)");?>
 											<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("Static" => "Static", "DHCP" => "DHCP"), gettext(""), true, false, "type_change()");?>
 											<?php html_inputbox("descr", gettext("Description"), $pconfig['descr'], gettext("You may enter a description here for your reference."), true, 20);?>
 											<?php html_ipv4addrbox("ipaddr", "subnet", gettext("IP address"), $pconfig['ipaddr'], $pconfig['subnet'], gettext(""), true);?>
@@ -319,7 +320,7 @@ function media_change() {
 			                  <td width="22%" valign="top">&nbsp;</td>
 			                  <td width="78%">
 			                    <input name="index" type="hidden" value="<?=$index;?>">
-													<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true);bridge_change(true)">
+													<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onclick="enable_change(true)">
 			                  </td>
 			                </tr>
 			              </table>

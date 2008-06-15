@@ -32,21 +32,17 @@ function wireless_config_init() {
 
 	$pconfig['standard'] = $optcfg['wireless']['standard'];
 	$pconfig['ssid'] = $optcfg['wireless']['ssid'];
-	$pconfig['stationname'] = $optcfg['wireless']['stationname'];
 	$pconfig['channel'] = $optcfg['wireless']['channel'];
-	$pconfig['wep_enable'] = isset($optcfg['wireless']['wep']['enable']);
-	$pconfig['wpa_enable'] = isset($optcfg['wireless']['wpa']['enable']);
+
+	$pconfig['encryption'] = "none";
+	if (isset($optcfg['wireless']['wep']['enable'])) {
+		$pconfig['encryption'] = "wep";
+	} else if (isset($optcfg['wireless']['wpa']['enable'])) {
+		$pconfig['encryption'] = "wpa";
+	}
 
 	if (is_array($optcfg['wireless']['wep'])) {
-		$i = 1;
-		foreach ($optcfg['wireless']['wep']['key'] as $wepkey) {
-			$pconfig['key' . $i] = $wepkey['value'];
-			if (isset($wepkey['txkey']))
-				$pconfig['txkey'] = $i;
-			$i++;
-		}
-		if (!isset($wepkey['txkey']))
-			$pconfig['txkey'] = 1;
+		$pconfig['wep_key'] = $optcfg['wireless']['wep']['key'];
 	}
 
 	if (is_array($optcfg['wireless']['wpa'])) {
@@ -66,31 +62,49 @@ function wireless_config_post() {
 		$reqdfields = explode(" ", "standard ssid channel");
 		$reqdfieldsn = array(gettext("Standard"), gettext("SSID"), gettext("Channel"));
 
+		switch ($_POST['encryption']) {
+			case "wep":
+				$reqdfields = array_merge($reqdfields, array("wep_key"));
+				$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("Key")));
+				break;
+
+			case "wpa":
+				$reqdfields = array_merge($reqdfields, array("wpa_psk"));
+				$reqdfieldsn = array_merge($reqdfieldsn, array(gettext("PSK")));
+				break;
+
+			default;
+				break;
+		}
+
 		do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	}
 
 	if (!$input_errors) {
 		$optcfg['wireless']['standard'] = $_POST['standard'];
 		$optcfg['wireless']['ssid'] = $_POST['ssid'];
-		$optcfg['wireless']['stationname'] = $_POST['stationname'];
 		$optcfg['wireless']['channel'] = $_POST['channel'];
-
-		$optcfg['wireless']['wep']['enable'] = $_POST['wep_enable'] ? true : false;
-		$optcfg['wireless']['wep']['key'] = array();
-		for ($i = 1; $i <= 4; $i++) {
-			if ($_POST['key' . $i]) {
-				$newkey = array();
-				$newkey['value'] = $_POST['key' . $i];
-				if ($_POST['txkey'] == $i)
-					$newkey['txkey'] = true;
-				$optcfg['wireless']['wep']['key'][] = $newkey;
-			}
-		}
-
-		$optcfg['wireless']['wpa']['enable'] = $_POST['wpa_enable'] ? true : false;
+		$optcfg['wireless']['wep']['key'] = $_POST['wep_key'];
 		$optcfg['wireless']['wpa']['keymgmt'] = $_POST['wpa_keymgmt'];
 		$optcfg['wireless']['wpa']['pairwise'] = $_POST['wpa_pairwise'];
 		$optcfg['wireless']['wpa']['psk'] = $_POST['wpa_psk'];
+
+		switch ($_POST['encryption']) {
+			case "wep":
+				$optcfg['wireless']['wep']['enable'] = true;
+				$optcfg['wireless']['wpa']['enable'] = false;
+				break;
+
+			case "wpa":
+				$optcfg['wireless']['wep']['enable'] = false;
+				$optcfg['wireless']['wpa']['enable'] = true;
+				break;
+
+			default:
+				$optcfg['wireless']['wep']['enable'] = false;
+				$optcfg['wireless']['wpa']['enable'] = false;
+				break;
+		}
 	}
 
 	return $input_errors;
@@ -155,46 +169,9 @@ function wireless_config_print() {
 										</select>
 									</td>
 								</tr>
-								<?php html_inputbox("stationname", gettext("Station name"), $pconfig['stationname'], gettext("Set the name of this station (usually empty)."), false, 20);?>
-								<?php html_separator();?>
-								<?php html_titleline_checkbox("wep_enable", gettext("WEP"), $pconfig['wep_enable'] ? true : false, gettext("Enable"));?>
-                <tr>
-                  <td valign="top" class="vncellreq"><?=gettext("Key");?></td>
-                  <td class="vtable">
-                    <table border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;</td>
-                        <td>&nbsp;TX key&nbsp;</td>
-                      </tr>
-                      <tr>
-                        <td>Key 1:&nbsp;&nbsp;</td>
-                        <td> <input name="key1" type="text" class="formfld" id="key1" size="30" value="<?=htmlspecialchars($pconfig['key1']);?>"></td>
-                        <td align="center"> <input name="txkey" type="radio" value="1" <?php if ($pconfig['txkey'] == 1) echo "checked";?>>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>Key 2:&nbsp;&nbsp;</td>
-                        <td> <input name="key2" type="text" class="formfld" id="key2" size="30" value="<?=htmlspecialchars($pconfig['key2']);?>"></td>
-                        <td align="center"> <input name="txkey" type="radio" value="2" <?php if ($pconfig['txkey'] == 2) echo "checked";?>></td>
-                      </tr>
-                      <tr>
-                        <td>Key 3:&nbsp;&nbsp;</td>
-                        <td> <input name="key3" type="text" class="formfld" id="key3" size="30" value="<?=htmlspecialchars($pconfig['key3']);?>"></td>
-                        <td align="center"> <input name="txkey" type="radio" value="3" <?php if ($pconfig['txkey'] == 3) echo "checked";?>></td>
-                      </tr>
-                      <tr>
-                        <td>Key 4:&nbsp;&nbsp;</td>
-                        <td> <input name="key4" type="text" class="formfld" id="key4" size="30" value="<?=htmlspecialchars($pconfig['key4']);?>"></td>
-                        <td align="center"> <input name="txkey" type="radio" value="4" <?php if ($pconfig['txkey'] == 4) echo "checked";?>></td>
-                      </tr>
-                    </table><br/>
-                    <?=gettext("A key will be either 5 or 13 characters (40 or 104 bits) depending of the local network and the capabilities of the adaptor. It may be specified either as a plain string or as a string of hexadecimal digits preceded by '0x'.")?>
-									</td>
-								</tr>
-								<?php html_separator();?>
-								<?php html_titleline_checkbox("wpa_enable", gettext("WPA"), $pconfig['wpa_enable'] ? true : false, gettext("Enable"));?>
+								<?php html_combobox("encryption", gettext("Encryption"), $pconfig['encryption'], array("none" => gettext("None"), "wep" => gettext("WEP"), "wpa" => gettext("WPA")), gettext(""), true, false, "encryption_change()");?>
+								<?php html_inputbox("wep_key", gettext("Key"), $pconfig['wep_key'], gettext("A key will be either 5 or 13 characters (40 or 104 bits) depending of the local network and the capabilities of the adaptor. It may be specified either as a plain string or as a string of hexadecimal digits preceded by '0x'."), true, 40);?>
 								<?php html_combobox("wpa_keymgmt", gettext("Key Management Protocol"), $pconfig['wpa_keymgmt'], array("WPA-PSK" => gettext("WPA-PSK (Pre Shared Key)"), "WPA-EAP" => gettext("WPA-EAP (Extensible Authentication Protocol)"), "WPA-PSK WPA-EAP" => gettext("WPA-PSK WPA-EAP")), gettext(""), true);?>
 								<?php html_combobox("wpa_pairwise", gettext("Pairwise"), $pconfig['wpa_pairwise'], array("CCMP TKIP" => gettext("CCMP TKIP"), "CCMP" => gettext("CCMP"), "TKIP" => gettext("TKIP")), gettext("List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP (AES in Counter mode with CBC-MAC, RFC 3610, IEEE 802.11i/D7.0), TKIP (Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."), true);?>
-								<?php html_inputbox("wpa_psk", gettext("PSK"), $pconfig['wpa_psk'], gettext("Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long."), false, 40);?>
+								<?php html_inputbox("wpa_psk", gettext("PSK"), $pconfig['wpa_psk'], gettext("Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long."), true, 40);?>
 <?php } ?>
