@@ -46,8 +46,16 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.6
 # Size in MB of the MFS Root filesystem that will include all FreeBSD binary
 # and FreeNAS WEbGUI/Scripts. Keep this file very small! This file is unzipped
 # to a RAM disk at FreeNAS startup.
+if [ "amd64" = ${FREENAS_ARCH} ]; then
+FREENAS_MFSROOT_SIZE=60
+else
 FREENAS_MFSROOT_SIZE=56
+fi
+if [ "amd64" = ${FREENAS_ARCH} ]; then
+FREENAS_IMG_SIZE=30
+else
 FREENAS_IMG_SIZE=26
+fi
 
 # Media geometry, only relevant if bios doesn't understand LBA.
 FREENAS_IMG_SIZE_SEC=`expr ${FREENAS_IMG_SIZE} \* 2048`
