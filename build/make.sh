@@ -48,12 +48,9 @@ FREENAS_SVNURL="https://freenas.svn.sourceforge.net/svnroot/freenas/branches/0.6
 # to a RAM disk at FreeNAS startup.
 if [ "amd64" = ${FREENAS_ARCH} ]; then
 FREENAS_MFSROOT_SIZE=60
-else
-FREENAS_MFSROOT_SIZE=56
-fi
-if [ "amd64" = ${FREENAS_ARCH} ]; then
 FREENAS_IMG_SIZE=30
 else
+FREENAS_MFSROOT_SIZE=56
 FREENAS_IMG_SIZE=26
 fi
 
@@ -61,16 +58,23 @@ fi
 FREENAS_IMG_SIZE_SEC=`expr ${FREENAS_IMG_SIZE} \* 2048`
 FREENAS_IMG_SECTS=32
 FREENAS_IMG_HEADS=16
-# 'newfs' parameters.
-FREENAS_NEWFS="-U -o space -m 0"
 
 # Options:
+if [ "amd64" = ${FREENAS_ARCH} ]; then
+# Support bootmenu
+OPT_BOOTMENU=1
+# Support bootsplash
+OPT_BOOTSPLASH=0
+# Support serial console
+OPT_SERIALCONSOLE=0
+else
 # Support bootmenu
 OPT_BOOTMENU=1
 # Support bootsplash
 OPT_BOOTSPLASH=1
 # Support serial console
 OPT_SERIALCONSOLE=0
+fi
 
 # Dialog command
 DIALOG="dialog"
@@ -384,7 +388,7 @@ create_image() {
 	bsdlabel -m ${FREENAS_ARCH} -R -B -b ${FREENAS_BOOTDIR}/boot ${md} ${FREENAS_WORKINGDIR}/bsdlabel.$$
 	bsdlabel ${md}
 	echo "===> Formatting this memory disk using UFS"
-	newfs ${FREENAS_NEWFS} /dev/${md}a
+	newfs -U -o space -m 0 /dev/${md}a
 	echo "===> Mount this virtual disk on $FREENAS_TMPDIR"
 	mount /dev/${md}a $FREENAS_TMPDIR
 	echo "===> Copying previously generated MFSROOT file to memory disk"
