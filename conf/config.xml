@@ -127,10 +127,7 @@
 				<channel></channel>
 				<wep>
 					<enable/>
-					<key>
-						<txkey/>
-						<value></value>
-					</key>
+					<key>xxx</key>
 				</wep>
 				<wpa>
 					<enable/>
