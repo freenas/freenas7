@@ -14,8 +14,9 @@ name="sshd"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="create_conf"
-extra_commands="reload"
+start_precmd="mkconf_cmd"
+mkconf_cmd="mkconf_cmd"
+extra_commands="reload mkconf"
 
 # Defaults
 sshd_enable=${sshd_enable:-"NO"}
@@ -25,7 +26,7 @@ command="/usr/sbin/${name}"
 command_args="-f /var/etc/ssh/sshd_config -h /var/etc/ssh/ssh_host_dsa_key"
 pidfile="/var/run/${name}.pid"
 
-create_conf()
+mkconf_cmd()
 {
 	local _privatekey
 

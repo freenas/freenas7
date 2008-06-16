@@ -14,16 +14,17 @@
 
 name="sysctl"
 stop_cmd=":"
-start_precmd="create_conf"
+start_precmd="mkconf_cmd"
 start_cmd="sysctl_start"
 reload_cmd="sysctl_start"
 lastload_cmd="sysctl_start last"
-extra_commands="reload lastload"
+mkconf_cmd="mkconf_cmd"
+extra_commands="reload lastload mkconf"
 
 # Defaults
 sysctl_config=${sysctl_config:-"/etc/sysctl.conf"}
 
-create_conf()
+mkconf_cmd()
 {
 	# Clear /etc/sysctl.conf
 	cat /dev/null > ${sysctl_config}

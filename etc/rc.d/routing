@@ -18,13 +18,14 @@
 name="routing"
 start_cmd="routing_start"
 stop_cmd="routing_stop"
-extra_commands="options static"
+extra_commands="options static mkconf"
 static_cmd="static_start"
 options_cmd="options_start"
+mkconf_cmd="mkconf_cmd"
 
 routing_start()
 {
-	create_conf
+	mkconf_cmd
 	static_start
 	options_start
 }
@@ -42,7 +43,7 @@ routing_stop()
 	rm -f /var/db/routes.db > /dev/null 2>&1
 }
 
-create_conf()
+mkconf_cmd()
 {
 	local _index _name _network _gateway _protocol
 

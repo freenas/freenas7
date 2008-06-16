@@ -13,12 +13,13 @@ name="lighttpd"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="create_conf"
+start_precmd="mkconf_cmd"
 stop_postcmd=stop_postcmd
 restart_precmd="checkconfig"
 reload_precmd=reload_precmd
 reload_postcmd=reload_postcmd
-extra_commands="reload check"
+mkconf_cmd="mkconf_cmd"
+extra_commands="reload check mkconf"
 
 # Defaults
 lighttpd_enable=${lighttpd_enable:-"NO"}
@@ -36,7 +37,7 @@ if [ ! -h "/var/tmp" ]; then
 	ln -s /ftmp /var/tmp
 fi
 
-create_conf()
+mkconf_cmd()
 {
 	local _protocol _certificate _privatekey _tmpfile
 

@@ -15,7 +15,9 @@ name="rsyncd"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="create_conf"
+start_precmd="mkconf_cmd"
+mkconf_cmd="mkconf_cmd"
+extra_commands="mkconf"
 
 # Defaults
 rsyncd_enable=${rsyncd_enable:-"NO"}
@@ -25,7 +27,7 @@ command="/usr/local/bin/rsync"
 command_args="--daemon --config=${rsyncd_config}"
 pidfile="/var/run/${name}.pid"
 
-create_conf()
+mkconf_cmd()
 {
 	local _motd
 
