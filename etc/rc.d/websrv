@@ -16,12 +16,13 @@ name="websrv"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="create_conf"
+start_precmd="mkconf_cmd"
 stop_postcmd=stop_postcmd
 restart_precmd="checkconfig"
 reload_precmd=reload_precmd
 reload_postcmd=reload_postcmd
-extra_commands="reload check"
+mkconf_cmd="mkconf_cmd"
+extra_commands="reload check mkconf"
 
 # Defaults
 websrv_enable=${websrv_enable:-"NO"}
@@ -33,7 +34,7 @@ pidfile=/var/run/websrv.pid
 sig_reload="-INT"
 check_cmd="checkconfig"
 
-create_conf()
+mkconf_cmd()
 {
 	local _protocol _certificate _privatekey _documentroot
 

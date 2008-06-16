@@ -15,7 +15,9 @@ name="iscsi_target"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="create_conf"
+start_precmd="mkconf_cmd"
+mkconf_cmd="mkconf_cmd"
+extra_commands="mkconf"
 
 # Defaults
 iscsi_target_enable=${iscsi_target_enable:-"NO"}
@@ -26,7 +28,7 @@ command="/usr/local/bin/iscsi-target"
 command_args="-f ${iscsi_target_config}"
 pidfile="/var/run/iscsi-target.pid"
 
-create_conf()
+mkconf_cmd()
 {
 	# Clear existing file
 	cat /dev/null > ${iscsi_target_config}

@@ -17,7 +17,9 @@ name="mdnsresponder"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="create_conf"
+start_precmd="mkconf_cmd"
+mkconf_cmd="mkconf_cmd"
+extra_commands="mkconf"
 
 # Defaults
 mdnsresponder_config=${mdnsresponder_config:-"/var/etc/${name}.conf"}
@@ -25,7 +27,7 @@ command="/usr/local/sbin/mDNSResponderPosix"
 command_args="-b -f ${mdnsresponder_config}"
 pidfile="/var/run/mDNSResponder.pid"
 
-create_conf()
+mkconf_cmd()
 {
 	echo "# mDNSResponderPosix configuration File
 #

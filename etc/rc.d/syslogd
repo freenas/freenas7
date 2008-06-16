@@ -21,8 +21,9 @@ command_args="-f ${syslogd_config}"
 
 # Custom commands
 start_precmd="start_precmd"
-extra_commands="reload"
+extra_commands="reload mkconf"
 reload_precmd="reload_precmd"
+mkconf_cmd="mkconf_cmd"
 
 load_rc_config ${name}
 
@@ -32,7 +33,7 @@ if ! configxml_isset //syslogd/remote/enable; then
 	command_args="-f ${syslogd_config}"
 fi
 
-create_conf()
+mkconf_cmd()
 {
 	echo "local3.* %/var/log/sshd.log
 local4.* %/var/log/rsyncd.log
@@ -72,7 +73,7 @@ reload_precmd()
 	cat /dev/null > ${syslogd_config}
 
 	# Create configuration file
-	create_conf
+	mkconf_cmd
 }
 
 start_precmd()

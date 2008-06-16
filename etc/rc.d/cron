@@ -17,10 +17,14 @@ name="cron"
 rcvar="`set_rcvar`"
 command="/usr/sbin/${name}"
 pidfile="/var/run/${name}.pid"
-start_precmd="create_conf"
 cron_config=${cron_config:-"/etc/crontab"}
 
-create_conf()
+# Custom commands
+start_precmd="mkconf_cmd"
+mkconf_cmd="mkconf_cmd"
+extra_commands="mkconf"
+
+mkconf_cmd()
 {
 	# Create /etc/crontab
 	echo "SHELL=/bin/sh

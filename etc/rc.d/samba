@@ -18,11 +18,12 @@ rcvar=`set_rcvar`
 load_rc_config "${name}"
 
 # Custom commands
-extra_commands="reload status"
+extra_commands="reload status mkconf"
 start_precmd="samba_start_precmd"
 start_cmd="samba_cmd"
 stop_cmd="samba_cmd"
 status_cmd="samba_cmd"
+mkconf_cmd="mkconf_cmd"
 
 # Defaults
 samba_enable="${samba_enable:=NO}"
@@ -76,7 +77,7 @@ winbindd_flags="${winbindd_flags=''}"
 required_files="${samba_config}"
 required_dirs="${samba_lockdir}"
 
-create_conf()
+mkconf_cmd()
 {
 	# Create smb.conf file
 	/usr/local/bin/xml sel -t \
@@ -312,6 +313,6 @@ samba_cmd() {
 }
 
 # Create required config file
-create_conf
+mkconf_cmd
 
 run_rc_command "$1"

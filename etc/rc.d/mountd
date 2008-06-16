@@ -20,7 +20,8 @@ rcvar=`set_rcvar`
 
 # Custom commands
 start_precmd="mountd_precmd"
-extra_commands="reload"
+mkconf_cmd="mkconf_cmd"
+extra_commands="reload mkconf"
 
 # Defaults
 mountd_config=${mountd_config:-"/var/etc/exports"}
@@ -31,7 +32,7 @@ command_args="-r ${mountd_config}"
 # Clear existing file
 cat /dev/null > ${mountd_config}
 
-create_conf()
+mkconf_cmd()
 {
 	local _index _ipaddr _network _mask
 
@@ -61,7 +62,7 @@ create_conf()
 
 mountd_precmd()
 {
-	create_conf
+	mkconf_cmd
 
 	if ! checkyesno rpcbind_enable  && \
 	    ! /etc/rc.d/rpcbind forcestatus 1>/dev/null 2>&1
