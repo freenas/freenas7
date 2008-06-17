@@ -1,7 +1,7 @@
 ################ History Change logs ##############
 
-FreeNAS 0.69 (Fedaykin):
-------------------------
+FreeNAS 0.69b1 (Fedaykin):
+--------------------------
 
 Majors changes:
 - Upgrade to FreeBSD 6.3. Because of this there are some changes:
