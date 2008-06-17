@@ -169,7 +169,7 @@ function enable_change(enable_change) {
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 			  	<?php html_inputbox("name", gettext("Name"), $pconfig['name'], gettext(""), true, 20, isset($id));?>
-			  	<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("stripe" => gettext("Stripe"), "mirror" => gettext("Mirror"), "zraid" => gettext("Single-parity RAID-5"), "zraid2" => gettext("Double-parity RAID-5"), "spare" => gettext("Hot Spare")), gettext(""), true, isset($id));?>
+			  	<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("stripe" => gettext("Stripe"), "mirror" => gettext("Mirror"), "raidz1" => gettext("Single-parity RAID-5"), "zraidz2" => gettext("Double-parity RAID-5"), "spare" => gettext("Hot Spare")), gettext(""), true, isset($id));?>
 					<?php $a_device = array(); foreach ($a_disk as $diskv) { if (isset($id) && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if (!isset($id) && false !== array_search_ex($diskv['devicespecialfile'], $a_vdevice, "device")) { continue; } $a_device[$diskv['devicespecialfile']] = htmlspecialchars("{$diskv['name']} ({$diskv['size']}, {$diskv['desc']})"); }?>
 			    <?php html_listbox("device", gettext("Devices"), $pconfig['device'], $a_device, gettext(""), true, isset($id));?>
 			  	<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
