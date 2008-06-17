@@ -503,8 +503,8 @@ create_iso () {
 	[ 0 != $? ] && return 1 # successful?
 
 	echo "Generating MD5 and SHA256 sums..."
-	cd ${FREENAS_ROOTDIR} && md5 *.img *.iso > ${FREENAS_ROOTDIR}/${FREENAS_PRODUCTNAME}.checksums
-	cd ${FREENAS_ROOTDIR} && sha256 *.img *.iso >> ${FREENAS_ROOTDIR}/${FREENAS_PRODUCTNAME}.checksums
+	cd ${FREENAS_ROOTDIR} && md5 *.img *.iso > ${FREENAS_ROOTDIR}/${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}.checksums
+	cd ${FREENAS_ROOTDIR} && sha256 *.img *.iso >> ${FREENAS_ROOTDIR}/${FREENAS_PRODUCTNAME}-${FREENAS_ARCH}.checksums
 
 	# Cleanup.
 	[ -d $FREENAS_TMPDIR ] && rm -rf $FREENAS_TMPDIR
