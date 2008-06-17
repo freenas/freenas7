@@ -203,7 +203,7 @@ function disks_mount($mount)
 	}
 
 	// Set access restrictions. Use the following default values.
-	$mode = "0777";
+	$mode = "777";
 	$owner = "root";
 	$group = "wheel";
 
