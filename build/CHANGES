@@ -31,8 +31,8 @@ Help needed:
 - Need help for adding LDAP authentication feature:
   Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
-FreeNAS 0.69 (Fedaykin):
-------------------------
+FreeNAS 0.69b1 (Fedaykin):
+--------------------------
 
 Majors changes:
 - Upgrade to FreeBSD 6.3. Because of this there are some changes:
