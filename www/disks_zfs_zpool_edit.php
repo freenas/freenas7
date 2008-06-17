@@ -85,8 +85,12 @@ if ($_POST) {
 		$input_errors[] = gettext("The pool name can't start with 0-9.");
 	}
 
+	if (in_array($_POST['name'], array("disk", "file", "mirror", "raidz", "raidz1", "raidz2", "spare"))) {
+		$input_errors[] = gettext("The pool name is prohibited.");
+	}
+
 	// Check for duplicate name
-	if(!(isset($id) && $_POST['name'] === $a_pool[$id]['name'])) {
+	if (!(isset($id) && $_POST['name'] === $a_pool[$id]['name'])) {
 		if (false !== array_search_ex($_POST['name'], $a_pool, "name")) {
 			$input_errors[] = gettext("This pool name already exists.");
 		}

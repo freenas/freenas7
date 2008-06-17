@@ -83,17 +83,16 @@ function zfs_zpool_configure($name) {
 	if (!is_array($pool))
 		 return 1;
 
+	// Set the default mount point.
+	$mountpoint = "/mnt/{$pool['name']}";
+	if (!empty($pool['mountpoint']))
+		$mountpoint = $pool['mountpoint'];
+
 	// Additional parameter
-	$param = "";
+	$param = "-m {$mountpoint} ";
 
 	if (!empty($pool['root']))
 		$param .= "-R {$pool['root']} ";
-
-	if (!empty($pool['mountpoint'])) {
-		$param .= "-m {$pool['mountpoint']} ";
-	} else {
-		$param .= "-m /mnt/{$pool['name']} ";
-	}
 
 	// Create the pool
 	$cmd = "/sbin/zpool create {$param} {$pool['name']} ";
@@ -121,7 +120,12 @@ function zfs_zpool_configure($name) {
 		}
 	}
 
-	return mwexec($cmd);
+	$result = mwexec($cmd);
+
+	// Modify access restrictions.
+	@chmod($mountpoint, octdec(777));
+
+	return $result;
 }
 
 // Delete zpool given in parameter.
@@ -142,7 +146,16 @@ function zfs_zpool_destroy($name) {
 		 return 1;
 
 	// Destroy the pool
-	return mwexec("/sbin/zpool destroy {$name}");
+	$result = mwexec("/sbin/zpool destroy {$name}");
+
+	// Remove mount point.
+	$mountpoint = "/mnt/{$pool['name']}";
+	if (!empty($pool['mountpoint']))
+		$mountpoint = $pool['mountpoint'];
+
+	@rmdir($mountpoint);
+
+	return $result;
 }
 
 // Wrapper to execute zpool commands.
