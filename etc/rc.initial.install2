@@ -1,7 +1,7 @@
 #!/usr/local/bin/php -f
 <?php
 /*
-	rc.initial.install
+	rc.initial.install2
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
 	All rights reserved.
@@ -38,7 +38,7 @@ require_once("util.inc");
 require_once("tui.inc");
 
 // Default size of partition 1 (used for OS)
-$part1size = 32;
+$part1size = $g_install['part1size_embedded'];
 
 // Get product information
 $productname = get_product_name();
@@ -48,7 +48,7 @@ $text = <<<EOD
 
 {$productname} 'embedded' installer for HDD.
 
-- Create MBR partition 1, using UFS, 32MB size for OS image
+- Create MBR partition 1, using UFS, {$part1size}MB size for OS image
 - Create MBR partition 2, using UFS, for DATA
 - Uses a RAM disk to limit read/write access to the device
 
