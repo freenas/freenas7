@@ -5,7 +5,7 @@ FreeNAS 0.7 (Sardaukar):
 
 Majors changes:
 - Upgrade to FreeBSD 7.0.
-- Include ZFS support.
+- Include ZFS support. Thanks to Falk Menzel for testing and giving some tipps and ideas.
 
 Majors changes:
 
