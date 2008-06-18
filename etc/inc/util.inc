@@ -1691,6 +1691,12 @@ function get_product_buildtime() {
 	return chop(file_get_contents("{$g['etc_path']}/prd.version.buildtime"));
 }
 
+/* Get the product version name */
+function get_product_versionname() {
+	global $g;
+	return chop(file_get_contents("{$g['etc_path']}/prd.version.name"));
+}
+
 // Write message into log file.
 // Return 0 if successful, otherwise 1
 function write_log($message) {
