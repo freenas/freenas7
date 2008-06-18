@@ -177,34 +177,11 @@ function enable_change(enable_change) {
 			<form action="system_cron_edit.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors); ?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-			  	<tr>
-            <td colspan="2" valign="top" class="optsect_t">
-    				  <table border="0" cellspacing="0" cellpadding="0" width="100%">
-    				    <tr>
-                  <td class="optsect_s"><strong><?=gettext("Cron job");?></strong></td>
-    				      <td align="right" class="optsect_s"><input name="enable" type="checkbox" value="yes" <?php if ($pconfig['enable']) echo "checked"; ?> onClick="enable_change(false)"> <strong><?=gettext("Enable") ;?></strong></td>
-                </tr>
-    				  </table>
-            </td>
-          </tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Description");?></td>
-						<td width="78%" class="vtable">
-							<input name="desc" type="text" class="formfld" id="desc" size="60" value="<?=htmlspecialchars($pconfig['desc']);?>">
-						</td>
-					</tr>
-			  	<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Who");?></td>
-						<td width="78%" class="vtable">
-							<input name="who" type="text" class="formfld" id="who" size="10" value="<?=htmlspecialchars($pconfig['who']);?>">
-						</td>
-					</tr>
-					<tr>
-						<td width="22%" valign="top" class="vncellreq"><?=gettext("Command");?></td>
-						<td width="78%" class="vtable">
-							<input name="command" type="text" class="formfld" id="command" size="60" value="<?=htmlspecialchars($pconfig['command']);?>">
-						</td>
-					</tr>
+          <?php html_titleline_checkbox("enable", gettext("Cron job"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
+					<?php html_inputbox("command", gettext("Command"), $pconfig['command'], gettext("Specifies the command to be run."), true, 60);?>
+					<?php $a_user = array(); foreach (system_get_user_list() as $userk => $userv) { $a_user[$userk] = htmlspecialchars($userk); }?>
+					<?php html_combobox("who", gettext("Who"), $pconfig['who'], $a_user, gettext(""), true);?>
+					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), true, 40);?>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Schedule time");?></td>
 						<td width="78%" class="vtable">
