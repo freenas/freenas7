@@ -64,6 +64,10 @@ $pconfig['device'] = $_GET['device'];
 if (isset($_POST['device']))
 	$pconfig['device'] = $_POST['device'];
 
+$pconfig['device_new'] = $_GET['device_new'];
+if (isset($_POST['device_new']))
+	$pconfig['device_new'] = $_POST['device_new'];
+
 if ($_POST || $_GET) {
 	unset($input_errors);
 	unset($do_action);
@@ -79,11 +83,13 @@ if (!isset($do_action)) {
 	$pconfig['option'] = "";
 	$pconfig['pool'] = "";
 	$pconfig['device'] = "";
+	$pconfig['device_new'] = "";
 }
 ?>
 <?php include("fbegin.inc");?>
 <script language="JavaScript">
 function command_change() {
+	showElementById('device_new_tr','hide');
 	document.iform.option.length = 0;
 	var action = document.iform.action.value;
 	switch (action) {
@@ -122,6 +128,12 @@ function command_change() {
 			<?php endif;?>
 			break;
 		case "remove":
+			<?php if (is_array($a_pool) && !empty($a_pool)):?>
+			document.iform.option[0] = new Option('Device','d', <?=$pconfig['option'] === 'd' ? "true" : "false"?>);
+			<?php endif;?>
+			break;
+		case "replace":
+			showElementById('device_new_tr','show');
 			<?php if (is_array($a_pool) && !empty($a_pool)):?>
 			document.iform.option[0] = new Option('Device','d', <?=$pconfig['option'] === 'd' ? "true" : "false"?>);
 			<?php endif;?>
@@ -190,6 +202,7 @@ function pool_change() {
 				div.innerHTML += "<input name='device[]' id='<?=$i?>' type='checkbox' value='<?=$disk['name'];?>'<?=$checked?>>";
 				div.innerHTML += "<?=$disk['name'];?> (<?=$disk['size']?>, <?=$disk['desc']?>)";
 				div.innerHTML += "</br>";
+				document.iform.device_new[<?=$i;?>] = new Option('<?="{$disk['name']} ({$disk['size']}, {$disk['desc']})";?>','<?=$disk['name'];?>','false');
 				<?php
 				$i++;
 			}
@@ -233,7 +246,7 @@ function pool_change() {
 							<?
 								$cmd = "upgrade history";
 								if (is_array($a_pool) && !empty($a_pool)) {
-									$cmd .= " remove clear scrub offline online";
+									$cmd .= " remove clear scrub offline online replace";
 								}
 								$a_cmd = explode(" ", $cmd);
 								asort($a_cmd);
@@ -267,6 +280,7 @@ function pool_change() {
 							</div>
 						</td>
 					</tr>
+					<?php html_combobox("device_new", gettext("New Device"), NUL, NUL, gettext(""), true);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">
@@ -399,6 +413,21 @@ function pool_change() {
 													}
 												} else {
 													zfs_zpool_cmd($action, "{$pool} {$device}", true);
+												}
+											break;
+										}
+									}
+									break;
+
+								case "replace": {
+										switch ($option) {
+											case "d":
+												if (is_array($device) ) {
+													foreach ($device as $dev) {
+														zfs_zpool_cmd($action, "{$pool} {$dev} {$pconfig['device_new']}", true);
+													}
+												} else {
+													zfs_zpool_cmd($action, "{$pool} {$device} {$pconfig['device_new']}", true);
 												}
 											break;
 										}
