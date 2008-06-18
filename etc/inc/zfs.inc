@@ -311,4 +311,27 @@ function zfs_dataset_properties($name) {
 
 	return $result;
 }
+
+// Returns true if $poolname is valid.
+function zfs_is_valid_poolname($poolname) {
+	if (!is_string($poolname))
+		return false;
+
+	// Empty pool names are not allowed.
+	if (empty($poolname))
+		return false;
+
+	// The pool names "mirror", "raidz" and "spare" are reserved, as are
+	// names beginning with the pattern "c[0-9]".
+	if (preg_match("/^(mirror|raidz|spare|c[0-9]).*$/", $poolname))
+		return false;
+
+	// The pool name must begin with a letter, and can only contain
+	// alphanumeric characters as well as underscore ("_"), dash ("-") and
+	// period (".").
+	if (preg_match("/^[a-zA-Z]([a-zA-Z0-9\_\-\.\s])*$/", $poolname))
+		return true;
+
+	return false;
+}
 ?>

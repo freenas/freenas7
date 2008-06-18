@@ -32,6 +32,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("zfs.inc");
 
 $id = $_GET['id'];
 if (isset($_POST['id']))
@@ -75,18 +76,14 @@ if ($_POST) {
 	// Input validation
 	$reqdfields = explode(" ", "name");
 	$reqdfieldsn = array(gettext("Name"));
-	$reqdfieldst = explode(" ", "alias");
+	$reqdfieldst = explode(" ", "string");
 
 	do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
 	// Validate pool name
-	if (($_POST['name'] && preg_match("/^\d/", $_POST['name']))) {
-		$input_errors[] = gettext("The pool name can't start with 0-9.");
-	}
-
-	if (in_array($_POST['name'], array("disk", "file", "mirror", "raidz", "raidz1", "raidz2", "spare"))) {
-		$input_errors[] = gettext("The pool name is prohibited.");
+	if (!zfs_is_valid_poolname($_POST['name'])) {
+		$input_errors[] = gettext("The pool name does not match the naming rules.");
 	}
 
 	// Check for duplicate name
