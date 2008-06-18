@@ -55,7 +55,7 @@ if (isset($_POST['action']))
 $pconfig['option'] = $_GET['option'];
 if (isset($_POST['option']))
 	$pconfig['option'] = $_POST['option'];
-	
+
 $pconfig['pool'] = $_GET['pool'];
 if (isset($_POST['pool']))
 	$pconfig['pool'] = $_POST['pool'];
@@ -63,7 +63,7 @@ if (isset($_POST['pool']))
 $pconfig['device'] = $_GET['device'];
 if (isset($_POST['device']))
 	$pconfig['device'] = $_POST['device'];
-			
+
 if ($_POST || $_GET) {
 	unset($input_errors);
 	unset($do_action);
@@ -121,6 +121,11 @@ function command_change() {
 			document.iform.option[0] = new Option('Device','d', <?=$pconfig['option'] === 'd' ? "true" : "false"?>);
 			<?php endif;?>
 			break;
+		case "remove":
+			<?php if (is_array($a_pool) && !empty($a_pool)):?>
+			document.iform.option[0] = new Option('Device','d', <?=$pconfig['option'] === 'd' ? "true" : "false"?>);
+			<?php endif;?>
+			break;
 		default:
 			break;
 	}
@@ -130,14 +135,14 @@ function command_change() {
 function option_change() {
 	var div = document.getElementById("devices");
 	div.innerHTML = "<?=gettext("No device selected.");?>";
-	
+
 	document.iform.pool.disabled = 1;
 	document.iform.pool.length = 0;
 	var option = document.iform.option.value;
 	if (option == "s" || option == "st" || option == "p" || option == "d" || option == "t") {
 		<?php if (is_array($a_pool) && !empty($a_pool)):?>
 		document.iform.pool.disabled = 0;
-		<?php $i = 0; foreach($a_pool  as $pool):?>	
+		<?php $i = 0; foreach($a_pool  as $pool):?>
 		document.iform.pool[<?=$i?>] = new Option('<?=$pool['name']?>','<?=$pool['name']?>', <?=$pconfig['pool'] === $pool['name'] ? "true" : "false"?>);
 		<?php $i++; endforeach;?>
 		<?php endif;?>
@@ -221,22 +226,22 @@ function pool_change() {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if (file_exists($d_sysrebootreqd_path)) print_info_box(get_std_save_message(0));?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<tr> 
+					<tr>
 						<td valign="top" class="vncellreq"><?=gettext("Command");?></td>
-						<td class="vtable"> 
+						<td class="vtable">
 							<select name="action" class="formfld" id="action" onchange="command_change()">
 							<?
-								$arr = "upgrade history";
+								$cmd = "upgrade history";
 								if (is_array($a_pool) && !empty($a_pool)) {
-									$arr .= " clear scrub offline online";
+									$cmd .= " remove clear scrub offline online";
 								}
-								$actions = explode(" ", $arr);
-								asort($actions);
-								foreach ($actions as $action) {
-									echo "<option value=\"${action}\"";
-									if ($action === $pconfig['action'])
+								$a_cmd = explode(" ", $cmd);
+								asort($a_cmd);
+								foreach ($a_cmd as $cmdv) {
+									echo "<option value=\"${cmdv}\"";
+									if ($cmdv === $pconfig['action'])
 										echo " selected";
-									echo ">${action}</option>";
+									echo ">${cmdv}</option>";
 								}
 							?>
 							</select>
@@ -264,7 +269,7 @@ function pool_change() {
 					</tr>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
-						<td width="78%"> 
+						<td width="78%">
 							<input name="Submit" type="submit" class="formbtn" value="<?=gettext("Send Command!");?>">
 						</td>
 					</tr>
@@ -294,11 +299,11 @@ function pool_change() {
 													}
 												}
 												break;
-	
+
 											case "a":
 												zfs_zpool_cmd($action, "-a", true);
 												break;
-	
+
 											case "p":
 												zfs_zpool_cmd($action, $pool, true);
 												break;
@@ -311,7 +316,7 @@ function pool_change() {
 											case "a":
 												zfs_zpool_cmd($action, "", true);
 												break;
-												
+
 											case "p":
 												zfs_zpool_cmd($action, $pool, true);
 												break;
@@ -324,20 +329,20 @@ function pool_change() {
 											case "s":
 												zfs_zpool_cmd($action, $pool, true);
 								 				break;
-								 				
+
 								 			case "st":
 												zfs_zpool_cmd($action,"-s {$pool}", true);
 												break;
 										}
 									}
 									break;
-								
+
 								case "clear": {
 										switch ($option) {
 											case "p":
 												zfs_zpool_cmd($action, $pool, true);
 												break;
-												
+
 											case "d":
 												if (is_array($device) ) {
 													foreach ($device as $dev) {
@@ -356,7 +361,7 @@ function pool_change() {
 											case "t":
 												zfs_zpool_cmd($action, "-t {$pool} {$device}", true);
 											break;
-											
+
 											case "d":
 												if (is_array($device) ) {
 													foreach ($device as $dev) {
@@ -381,6 +386,21 @@ function pool_change() {
 													zfs_zpool_cmd($action, "{$pool} {$device}", true);
 												}
 												break;
+										}
+									}
+									break;
+
+								case "remove": {
+										switch ($option) {
+											case "d":
+												if (is_array($device) ) {
+													foreach ($device as $dev) {
+														zfs_zpool_cmd($action, "{$pool} {$dev}", true);
+													}
+												} else {
+													zfs_zpool_cmd($action, "{$pool} {$device}", true);
+												}
+											break;
 										}
 									}
 									break;
