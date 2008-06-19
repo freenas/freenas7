@@ -76,6 +76,7 @@ if ($_POST) {
 	unset($input_errors);
 	$pconfig = $_POST;
 
+	// Input validation.
 	$reqdfields = array();
 	$reqdfieldsn = array();
 	$reqdfieldst = array();
@@ -106,11 +107,14 @@ if ($_POST) {
 			$input_errors[] = gettext("A valid IPv6 Gateway address must be specified.");
 	}
 
-	/* Wireless interface? */
+	// Wireless interface?
 	if (isset($lancfg['wireless'])) {
 		$wi_input_errors = wireless_config_post();
 		if ($wi_input_errors) {
-			$input_errors = array_merge($input_errors, $wi_input_errors);
+			if (is_array($input_errors))
+				$input_errors = array_merge($input_errors, $wi_input_errors);
+			else
+				$input_errors = $wi_input_errors;
 		}
 	}
 
@@ -149,10 +153,10 @@ if ($_POST) {
 <!--
 function enable_change(enable_change) {
 	var endis = !(document.iform.ipv6_enable.checked || enable_change);
-
+	
 	if (enable_change.name == "ipv6_enable") {
 		endis = !enable_change.checked;
-
+	
 		document.iform.ipv6type.disabled = endis;
 		document.iform.ipv6addr.disabled = endis;
 		document.iform.ipv6subnet.disabled = endis;
@@ -166,48 +170,75 @@ function enable_change(enable_change) {
 }
 
 function type_change() {
-  switch(document.iform.type.selectedIndex) {
+	switch (document.iform.type.selectedIndex) {
 		case 0: /* Static */
 			document.iform.ipaddr.readOnly = 0;
 			document.iform.subnet.disabled = 0;
 			document.iform.gateway.readOnly = 0;
 			break;
-
-    case 1: /* DHCP */
+		
+		case 1: /* DHCP */
 			document.iform.ipaddr.readOnly = 1;
 			document.iform.subnet.disabled = 1;
 			document.iform.gateway.readOnly = 1;
 			break;
-  }
+	}
 }
 
 function ipv6_type_change() {
-  switch(document.iform.ipv6type.selectedIndex) {
+	switch (document.iform.ipv6type.selectedIndex) {
 		case 0: /* Static */
 			document.iform.ipv6addr.readOnly = 0;
 			document.iform.ipv6subnet.readOnly = 0;
 			document.iform.ipv6gateway.readOnly = 0;
 			break;
-
-    case 1: /* Autoconfigure */
+		
+		case 1: /* Autoconfigure */
 			document.iform.ipv6addr.readOnly = 1;
 			document.iform.ipv6subnet.readOnly = 1;
 			document.iform.ipv6gateway.readOnly = 1;
 			break;
-  }
+	}
 }
 
 function media_change() {
-  switch(document.iform.media.value) {
+	switch (document.iform.media.value) {
 		case "autoselect":
 			showElementById('mediaopt_tr','hide');
 			break;
-
+		
 		default:
 			showElementById('mediaopt_tr','show');
 			break;
-  }
+	}
 }
+
+<?php if (isset($lancfg['wireless'])):?>
+function encryption_change() {
+	switch (document.iform.encryption.value) {
+		case "none":
+			showElementById('wep_key_tr','hide');
+			showElementById('wpa_keymgmt_tr','hide');
+			showElementById('wpa_pairwise_tr','hide');
+			showElementById('wpa_psk_tr','hide');
+			break;
+	
+		case "wep":
+			showElementById('wep_key_tr','show');
+			showElementById('wpa_keymgmt_tr','hide');
+			showElementById('wpa_pairwise_tr','hide');
+			showElementById('wpa_psk_tr','hide');
+			break;
+	
+		case "wpa":
+			showElementById('wep_key_tr','hide');
+			showElementById('wpa_keymgmt_tr','show');
+			showElementById('wpa_pairwise_tr','show');
+			showElementById('wpa_psk_tr','show');
+			break;
+	}
+}
+<?php endif;?>
 // -->
 </script>
 <form action="interfaces_lan.php" method="post" name="iform" id="iform">
@@ -233,10 +264,7 @@ function media_change() {
 					<?php html_combobox("media", gettext("Type"), $pconfig['media'], array("autoselect" => "autoselect", "10baseT/UTP" => "10baseT/UTP", "100baseTX" => "100baseTX", "1000baseTX" => "1000baseTX", "1000baseSX" => "1000baseSX",), gettext(""), false, false, "media_change()");?>
 					<?php html_combobox("mediaopt", gettext("Duplex"), $pconfig['mediaopt'], array("half-duplex" => "half-duplex", "full-duplex" => "full-duplex"), gettext(""), false);?>
 					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>
-					<?php /* Wireless interface? */
-					if (isset($lancfg['wireless']))
-						wireless_config_print();
-					?>
+					<?php if (isset($lancfg['wireless'])) wireless_config_print();?>
 					<tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
@@ -245,7 +273,7 @@ function media_change() {
 			    </tr>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
-			      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning"); ?>:<br>
+			      <td width="78%"><span class="vexpl"><span class="red"><strong><?=gettext("Warning");?>:<br>
 							</strong></span><?php echo sprintf(gettext("After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"), get_product_name());?></span>
 						</td>
 			    </tr>
@@ -260,6 +288,9 @@ type_change();
 ipv6_type_change();
 media_change();
 enable_change(false);
+<?php if (isset($lancfg['wireless'])):?>
+encryption_change();
+<?php endif;?>
 //-->
 </script>
 <?php include("fend.inc");?>
