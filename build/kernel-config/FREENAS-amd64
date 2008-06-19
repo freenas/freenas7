@@ -334,25 +334,6 @@ device		cryptodev
 # GEOM classes
 options		GEOM_ELI		# GELI filesystem encryption
 
-# SMB bus
-device		smbus			# Bus support, required for smb below.
-device		intpm
-device		alpm
-device		ichsmb
-device		viapm
-device		amdpm
-device		amdsmb
-device		nfpm
-device		nfsmb
-device		smb
-
-# I2C Bus
-device		iicbus		# Bus support, required for ic/iic/iicsmb below.
-device		iicbb
-device		ic
-device		iic
-device		iicsmb		# smb over i2c bridge
-
 # Temperature sensors:
 #
 # coretemp: on-die sensor on Intel Core and newer CPUs
