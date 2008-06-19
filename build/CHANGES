@@ -39,6 +39,7 @@ Majors changes:
 Minors changes:
 
 Bug fixes:
+- Fix bug in interfaces WebGUI. Thanks to freenas_fan for this tip.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
@@ -47,16 +48,6 @@ Permanent restrictions:
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
-
-NEED TESTING:
-- IPv6: auto mode
-- All services using IPv6 address (NFS, FTP, etc...)
-- Netatalk VFS Samba module (automatically enabled when Netatalk starts) crashes samba when accesing to share
-- Need to write an online-test procedure
-
-Help needed:
-- Need help for adding LDAP authentication feature:
-Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
 FreeNAS 0.69b1 (Fedaykin):
 --------------------------

@@ -119,7 +119,7 @@ if ($_POST) {
 		}
 	}
 
-	/* Wireless interface? */
+	// Wireless interface?
 	if (isset($optcfg['wireless'])) {
 		$wi_input_errors = wireless_config_post();
 		if ($wi_input_errors) {
@@ -212,8 +212,7 @@ function enable_change(enable_change) {
 }
 
 function type_change() {
-  switch(document.iform.type.selectedIndex)
-  {
+  switch (document.iform.type.selectedIndex) {
 		case 0: /* Static */
 			var endis = !(document.iform.enable.checked);
       document.iform.ipaddr.readOnly = endis;
@@ -228,8 +227,7 @@ function type_change() {
 }
 
 function ipv6_type_change() {
-  switch(document.iform.ipv6type.selectedIndex)
-  {
+  switch (document.iform.ipv6type.selectedIndex) {
 		case 0: /* Static */
 		  /* use current ip address as default */
 		  /* comment this line, because function get_ipv6addr use the local IPv6 address*/
@@ -250,7 +248,7 @@ function ipv6_type_change() {
 }
 
 function media_change() {
-  switch(document.iform.media.value) {
+  switch (document.iform.media.value) {
 		case "autoselect":
 			showElementById('mediaopt_tr','hide');
 			break;
@@ -263,7 +261,7 @@ function media_change() {
 
 <?php if (isset($optcfg['wireless'])):?>
 function encryption_change() {
-	switch(document.iform.encryption.value) {
+	switch (document.iform.encryption.value) {
 		case "none":
 			showElementById('wep_key_tr','hide');
 			showElementById('wpa_keymgmt_tr','hide');
@@ -312,10 +310,7 @@ function encryption_change() {
 											<?php html_combobox("media", gettext("Type"), $pconfig['media'], array("autoselect" => "autoselect", "10baseT/UTP" => "10baseT/UTP", "100baseTX" => "100baseTX", "1000baseTX" => "1000baseTX", "1000baseSX" => "1000baseSX",), gettext(""), false, false, "media_change()");?>
 											<?php html_combobox("mediaopt", gettext("Duplex"), $pconfig['mediaopt'], array("half-duplex" => "half-duplex", "full-duplex" => "full-duplex"), gettext(""), false);?>
 											<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to ifconfig (usually empty)."), false, 40);?>
-											<?php /* Wireless interface? */
-											if (isset($optcfg['wireless']))
-												wireless_config_print();
-											?>
+											<?php if (isset($optcfg['wireless'])) wireless_config_print();?>
 											<tr>
 			                  <td width="22%" valign="top">&nbsp;</td>
 			                  <td width="78%">
