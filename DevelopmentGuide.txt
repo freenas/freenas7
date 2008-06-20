@@ -1,0 +1,21 @@
+This is short guide of the development rules used in FreeNAS:
+
+Main rule is ---> Keep It Small And Simple <--- 
+
+This means FreeNAS main target is to be a NAS that can be used by
+novice users. It shouldn't be a WebGUI for a full FreeBSD server. So
+services and tools that do not have something to do with a NAS will
+not be included into FreeNAS (e.g. geek features).
+
+To ensure code quality and a seemless intergration of new features
+ONLY the project leader/maintainer will introduce new code in
+the main development trees.
+Developers have to create subprojects in /experimental to store their features.
+After discussion and code review the project leader/maintainer will include
+the code into the main code trees (e.g. /trunk or /branches).
+To create a subproject in /experimental please recreate the directory
+structure of the target development tree and add only the new or modified
+files. DO NOT create a branch from any tree to keep SVN repository size low.
+It is also possible to send patches.
+
+Volker Theile
