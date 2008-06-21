@@ -37,6 +37,7 @@ FreeNAS 0.69b2 (Stone burner):
 Majors changes:
 
 Minors changes:
+- Enable WLAN interface setup via console.
 
 Bug fixes:
 - Fix bug in interfaces WebGUI. Thanks to freenas_fan for this tip.
