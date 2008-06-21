@@ -27,6 +27,8 @@
 	ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 	POSSIBILITY OF SUCH DAMAGE.
 */
+require("interfaces.inc");
+
 function wireless_config_init() {
 	global $optcfg, $pconfig;
 
@@ -110,51 +112,12 @@ function wireless_config_post() {
 	return $input_errors;
 }
 
-function wireless_get_channellist($if) {
-	$a_chanlist = array();
-
-	exec("/sbin/ifconfig {$if} list chan", $rawdata);
-	foreach ($rawdata as $line) {
-		$line = trim($line);
-
-		foreach (explode("Channel", $line) as $channelv) {
-			if (preg_match("/(\d+)\s+:\s+(\d+)\s+Mhz\s+(.+)/", $channelv, $matches)) {
-				$info = array();
-				$info['channel'] = $matches[1];
-				$info['freq'] = $matches[2];
-				$info['mode'] = trim($matches[3]);
-
-				$a_chanlist[$info['channel']] = $info;
-			}
-		}
-	}
-
-	ksort($a_chanlist, SORT_NUMERIC);
-
-	return $a_chanlist;
-}
-
-function wireless_get_standards($if) {
-	$a_standards = array();
-
-	exec("/sbin/ifconfig -m {$if}", $rawdata);
-	foreach ($rawdata as $line) {
-		$line = trim($line);
-
-		if (preg_match("/media \S+ mode (11\S+)/", $line, $matches)) {
-			$a_standards[] = $matches[1];
-		}
-	}
-
-	return array_unique($a_standards);
-}
-
 function wireless_config_print() {
 	global $optcfg, $pconfig;
 ?>
 								<?php html_separator();?>
 								<?php html_titleline(gettext("Wireless configuration"));?>
-								<?php $a_standard = array(); foreach (wireless_get_standards($optcfg['if']) as $standardv) { $a_standard[$standardv] = "802.{$standardv}"; }?>
+								<?php $a_standard = array(); foreach (interfaces_wireless_get_standards($optcfg['if']) as $standardv) { $a_standard[$standardv] = "802.{$standardv}"; }?>
 								<?php html_combobox("standard", gettext("Standard"), $pconfig['standard'], $a_standard, gettext(""), true);?>
 								<?php html_inputbox("ssid", gettext("SSID"), $pconfig['ssid'], gettext("Set the desired Service Set Identifier (aka network name)."), true, 20);?>
 								<tr>
@@ -162,7 +125,7 @@ function wireless_config_print() {
 									<td class="vtable">
 										<select name="channel" class="formfld" id="channel">
 											<option <?php if ("any" === $pconfig['channel']) echo "selected";?> value="any"><?=gettext("Auto");?></option>
-											<?php foreach (wireless_get_channellist($optcfg['if']) as $channelk => $channelv):?>
+											<?php foreach (interfaces_wireless_get_channellist($optcfg['if']) as $channelk => $channelv):?>
 											<?php if ($channelv['mode'] === "11g") $mode = "11b/g"; else $mode = $channelv['mode'];?>
 											<option <?php if ($channelk == $pconfig['channel']) echo "selected";?> value="<?=$channelk;?>"><?="{$channelv['channel']} ({$channelv['freq']} MHz, {$mode})";?></option>
 											<?php endforeach;?>
