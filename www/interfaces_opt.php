@@ -215,12 +215,12 @@ function type_change() {
   switch (document.iform.type.selectedIndex) {
 		case 0: /* Static */
 			var endis = !(document.iform.enable.checked);
-      document.iform.ipaddr.readOnly = endis;
+      document.iform.ipaddr.disabled = endis;
     	document.iform.subnet.disabled = endis;
       break;
 
     case 1: /* DHCP */
-      document.iform.ipaddr.readOnly = 1;
+      document.iform.ipaddr.disabled = 1;
     	document.iform.subnet.disabled = 1;
       break;
   }
@@ -234,14 +234,14 @@ function ipv6_type_change() {
       /*document.iform.ipv6addr.value = "<?=htmlspecialchars(get_ipv6addr($lancfg['if']))?>"; */
       var endis = !(document.iform.enable.checked);
 
-      document.iform.ipv6addr.readOnly = endis;
-	  	document.iform.ipv6subnet.readOnly = endis;
+      document.iform.ipv6addr.disabled = endis;
+	  	document.iform.ipv6subnet.disabled = endis;
 
       break;
 
     case 1: /* Autoconfigure */
-      document.iform.ipv6addr.readOnly = 1;
-		  document.iform.ipv6subnet.readOnly = 1;
+      document.iform.ipv6addr.disabled = 1;
+		  document.iform.ipv6subnet.disabled = 1;
 
       break;
   }

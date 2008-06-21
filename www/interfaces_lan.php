@@ -167,20 +167,22 @@ function enable_change(enable_change) {
 		document.iform.ipv6subnet.disabled = endis;
 		document.iform.ipv6gateway.disabled = endis;
 	}
+
+	ipv6_type_change();
 }
 
 function type_change() {
 	switch (document.iform.type.selectedIndex) {
 		case 0: /* Static */
-			document.iform.ipaddr.readOnly = 0;
+			document.iform.ipaddr.disabled = 0;
 			document.iform.subnet.disabled = 0;
-			document.iform.gateway.readOnly = 0;
+			document.iform.gateway.disabled = 0;
 			break;
 		
 		case 1: /* DHCP */
-			document.iform.ipaddr.readOnly = 1;
+			document.iform.ipaddr.disabled = 1;
 			document.iform.subnet.disabled = 1;
-			document.iform.gateway.readOnly = 1;
+			document.iform.gateway.disabled = 1;
 			break;
 	}
 }
@@ -188,15 +190,17 @@ function type_change() {
 function ipv6_type_change() {
 	switch (document.iform.ipv6type.selectedIndex) {
 		case 0: /* Static */
-			document.iform.ipv6addr.readOnly = 0;
-			document.iform.ipv6subnet.readOnly = 0;
-			document.iform.ipv6gateway.readOnly = 0;
+			var endis = !(document.iform.ipv6_enable.checked);
+
+			document.iform.ipv6addr.disabled = endis;
+			document.iform.ipv6subnet.disabled = endis;
+			document.iform.ipv6gateway.disabled = endis;
 			break;
 		
 		case 1: /* Autoconfigure */
-			document.iform.ipv6addr.readOnly = 1;
-			document.iform.ipv6subnet.readOnly = 1;
-			document.iform.ipv6gateway.readOnly = 1;
+			document.iform.ipv6addr.disabled = 1;
+			document.iform.ipv6subnet.disabled = 1;
+			document.iform.ipv6gateway.disabled = 1;
 			break;
 	}
 }
