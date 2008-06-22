@@ -160,11 +160,16 @@ if ("https" === $config['system']['webgui']['protocol']) {
 
 // Wireless NIC configuration
 if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
+	$lancfg = &$config['interfaces']['lan'];
+
+	if (!is_array($lancfg['wireless']))
+		$lancfg['wireless'] = array();
+
 	// Get interface name
-	$if = get_ifname($config['interfaces']['lan']['if']);
+	$if = get_ifname($lancfg['if']);
 
 	// Display 'Standard' dialog.
-	$standard = $config['interfaces']['lan']['wireless']['standard'];
+	$standard = $lancfg['wireless']['standard'];
 	$amenuitem = array();
 	foreach (interfaces_wireless_get_standards($if) as $standardv) {
 		$menuitem = array();
@@ -177,11 +182,11 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 		exit(0);
 
 	// Display 'SSID' dialog
-	$ssid = $config['interfaces']['lan']['wireless']['ssid'];
+	$ssid = $lancfg['wireless']['ssid'];
 	$result = tui_display_input(gettext("Set the desired Service Set Identifier (aka network name)."), 43, 9, $ssid);
 
 	// Display 'Channel' dialog
-	$channel = $config['interfaces']['lan']['wireless']['channel'];
+	$channel = $lancfg['wireless']['channel'];
 	$amenuitem = array();
 	$menuitem['tag'] = "any";
 	$menuitem['item'] = "Auto";
@@ -198,7 +203,7 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 		exit(0);
 
 	// Display 'Encryption' dialog
-	$encryption = $config['interfaces']['lan']['wireless']['encryption'];
+	$encryption = $lancfg['wireless']['encryption'];
 	$amenuitem = array();
 	foreach (array("none" => gettext("None"), "wep" => gettext("WEP"), "wpa" => gettext("WPA")) as $encryptionk => $encryptionv) {
 		$menuitem['tag'] = $encryptionk;
@@ -210,7 +215,7 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 		exit(0);
 
 	if ("wep" === $encryption) {
-		$key = $config['interfaces']['lan']['wireless']['wep']['key'];
+		$key = $lancfg['wireless']['wep']['key'];
 		$text = gettext("Please enter the WEP key.");
 		$text .= " ";
 		$text .= gettext("A key will be either 5 or 13 characters (40 or 104 bits) depending of the local network and the capabilities of the adaptor. It may be specified either as a plain string or as a string of hexadecimal digits preceded by '0x'.");
@@ -218,11 +223,11 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 		if (0 != $result)
 			exit(0);
 
-		$config['interfaces']['lan']['wireless']['wep']['enable'] = true;
-		$config['interfaces']['lan']['wireless']['wep']['key'] = $key;
+		$lancfg['wireless']['wep']['enable'] = true;
+		$lancfg['wireless']['wep']['key'] = $key;
 	} else if ("wpa" === $encryption) {
 		// Display 'Key Management Protocol' dialog
-		$keymgmt = $config['interfaces']['lan']['wireless']['wpa']['keymgmt'];
+		$keymgmt = $lancfg['wireless']['wpa']['keymgmt'];
 		$amenuitem = array();
 		foreach (array("WPA-PSK" => gettext("WPA-PSK (Pre Shared Key)"), "WPA-EAP" => gettext("WPA-EAP (Extensible Authentication Protocol)"), "WPA-PSK WPA-EAP" => gettext("WPA-PSK WPA-EAP")) as $keymgmtk => $keymgmtv) {
 			$menuitem['tag'] = $keymgmtk;
@@ -234,7 +239,7 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 			exit(0);
 
 		// Display 'Pairwise' dialog
-		$pairwise = $config['interfaces']['lan']['wireless']['wpa']['pairwise'];
+		$pairwise = $lancfg['wireless']['wpa']['pairwise'];
 		$text = gettext("List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP (AES in Counter mode with CBC-MAC, RFC 3610, IEEE 802.11i/D7.0), TKIP (Temporal Key Integrity Protocol, IEEE 802.11i/D7.0).");
 		$amenuitem = array();
 		foreach (array("CCMP TKIP" => gettext("CCMP TKIP"), "CCMP" => gettext("CCMP"), "TKIP" => gettext("TKIP")) as $pairwisek => $pairwisev) {
@@ -247,25 +252,25 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 			exit(0);
 
 		// Display 'PSK' dialog
-		$psk = $config['interfaces']['lan']['wireless']['wpa']['psk'];
+		$psk = $lancfg['wireless']['wpa']['psk'];
 		$text = gettext("Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long.");
 		$result = tui_display_input($text, 70, 9, $psk);
 		if (0 != $result)
 			exit(0);
 
-		$config['interfaces']['lan']['wireless']['wpa']['enable'] = true;
-		$config['interfaces']['lan']['wireless']['wpa']['keymgmt'] = $keymgmt;
-		$config['interfaces']['lan']['wireless']['wpa']['pairwise'] = $pairwise;
-		$config['interfaces']['lan']['wireless']['wpa']['psk'] = $psk;
+		$lancfg['wireless']['wpa']['enable'] = true;
+		$lancfg['wireless']['wpa']['keymgmt'] = $keymgmt;
+		$lancfg['wireless']['wpa']['pairwise'] = $pairwise;
+		$lancfg['wireless']['wpa']['psk'] = $psk;
 	} else {
-		$config['interfaces']['lan']['wireless']['wep']['enable'] = false;
-		$config['interfaces']['lan']['wireless']['wpa']['enable'] = false;
+		$lancfg['wireless']['wep']['enable'] = false;
+		$lancfg['wireless']['wpa']['enable'] = false;
 	}
 
-	$config['interfaces']['lan']['wireless']['standard'] = $standard;
-	$config['interfaces']['lan']['wireless']['ssid'] = $ssid;
-	$config['interfaces']['lan']['wireless']['channel'] = $channel;
-	$config['interfaces']['lan']['wireless']['encryption'] = $encryption;
+	$lancfg['wireless']['standard'] = $standard;
+	$lancfg['wireless']['ssid'] = $ssid;
+	$lancfg['wireless']['channel'] = $channel;
+	$lancfg['wireless']['encryption'] = $encryption;
 }
 
 // Store configuration changes
