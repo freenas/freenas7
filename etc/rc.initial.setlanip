@@ -218,6 +218,7 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 		if (0 != $result)
 			exit(0);
 
+		$config['interfaces']['lan']['wireless']['wep']['enable'] = true;
 		$config['interfaces']['lan']['wireless']['wep']['key'] = $key;
 	} else if ("wpa" === $encryption) {
 		// Display 'Key Management Protocol' dialog
@@ -252,9 +253,13 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 		if (0 != $result)
 			exit(0);
 
+		$config['interfaces']['lan']['wireless']['wpa']['enable'] = true;
 		$config['interfaces']['lan']['wireless']['wpa']['keymgmt'] = $keymgmt;
 		$config['interfaces']['lan']['wireless']['wpa']['pairwise'] = $pairwise;
 		$config['interfaces']['lan']['wireless']['wpa']['psk'] = $psk;
+	} else {
+		$config['interfaces']['lan']['wireless']['wep']['enable'] = false;
+		$config['interfaces']['lan']['wireless']['wpa']['enable'] = false;
 	}
 
 	$config['interfaces']['lan']['wireless']['standard'] = $standard;
