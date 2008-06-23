@@ -293,6 +293,7 @@ device		fwip		# IP over FireWire (RFC 2734,3146)
 #####################################################################
 # FREENAS
 #####################################################################
+options		QUOTA					# Enable disk quotas
 device		speaker
 
 # Networking options
