@@ -252,9 +252,6 @@ sbin/zfs
 ## zpool - configures ZFS storage pools
 sbin/zpool
 
-## quotacheck -- file system quota consistency checker
-sbin/quotacheck
-
 ####### contents of /usr/bin
 
 ## awk -- pattern-directed scanning and processing language
@@ -396,9 +393,6 @@ usr/bin/bc
 ## printf -- formatted output
 usr/bin/printf
 
-## quota -- display disk usage and limits
-usr/bin/quota
-
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
@@ -481,12 +475,6 @@ usr/sbin/nologin:sbin/nologin
 
 ## ip6addrctl -- configure address selection policy for IPv6 and IPv4
 usr/sbin/ip6addrctl
-
-## quotaon, quotaoff -- turn file system quotas on and off
-usr/sbin/quotaon:usr/sbin/quotaoff
-
-## edquota -- edit user quotas
-usr/sbin/edquota
 
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
