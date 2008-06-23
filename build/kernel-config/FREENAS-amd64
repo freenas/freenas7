@@ -279,6 +279,7 @@ device		sbp		# SCSI over FireWire (Requires scbus and da)
 # FREENAS
 #####################################################################
 options   SMP						# Symmetric MultiProcessor Kernel
+options		QUOTA					# Enable disk quotas
 device		speaker
 
 # Networking options
