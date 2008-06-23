@@ -14,16 +14,23 @@
 
 name="mountcritlocal"
 start_cmd="mountcritlocal_start"
-stop_cmd="mountcritlocal_stop"
+stop_cmd=":"
 mkfstab_cmd="mkfstab_cmd"
 extra_commands="mkfstab"
 
 mkfstab_cmd()
 {
+	local _rootdev
+
+	_rootdev=`cat /var/etc/cfdevice`
+
 	# Create /etc/fstab file
-	/usr/local/bin/xml sel -t \
-		-o "# Device   Mountpoint   FStype   Options   Dump   Pass#" -n \
-		-m "//mounts/mount[type = 'disk']" \
+	cat <<EOF > /etc/fstab
+# Device		Mountpoint	FStype	Options		Dump	Pass#
+/dev/${_rootdev}		/		ufs	rw		1	1
+EOF
+
+	/usr/local/bin/xml sel -t -m "//mounts/mount[type = 'disk']" \
 			-v "concat(devicespecialfile,' /mnt/',sharename)" \
 			-i "fstype[. = 'ntfs']" -o " ntfs-3g" -b \
 			-i "fstype[. != 'ntfs']" -v "concat(' ',fstype)" -b \
@@ -35,15 +42,23 @@ mkfstab_cmd()
 			-i "count(fsck) > 0" -o " 2" -b \
 			-n \
 		-b \
-		${configxml_file} | /usr/local/bin/xml unesc > /etc/fstab
+		${configxml_file} | /usr/local/bin/xml unesc >> /etc/fstab
 }
 
 mountcritlocal_start()
 {
-	local err
+	local err _sharename
 
 	# Create /etc/fstab file
 	mkfstab_cmd
+
+	# Prepare mount points. Make sure paths exists.
+	/usr/local/bin/xml sel -t -m "//mounts/mount[type = 'disk']" \
+		-v sharename -n \
+		${configxml_file} | /usr/local/bin/xml unesc |
+		while read _sharename; do
+			mkdir -p /mnt/${_sharename} >/dev/null 2>&1
+		done
 
 	# Set up the list of network filesystem types for which mounting
 	# should be delayed until after network initialization.
@@ -76,16 +91,6 @@ mountcritlocal_start()
 		stop_boot true
 		;;
 	esac
-}
-
-mountcritlocal_stop()
-{
-	/usr/local/bin/xml sel -t -m "//mounts/mount[type = 'disk']" \
-		-v devicespecialfile -n \
-		${configxml_file} | /usr/local/bin/xml unesc |
-		while read _devicespecialfile; do
-			/sbin/umount "${_devicespecialfile}" 2>/dev/null
-		done
 }
 
 load_rc_config $name
