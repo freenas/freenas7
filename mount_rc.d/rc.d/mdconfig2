@@ -28,38 +28,21 @@
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #
+# Changes:
+# - Add mdconfig2_unit processing.
+# - Disable fsck for ISO files.
+#
 
 # PROVIDE: mdconfig2
 # REQUIRE: mountcritremote
 # BEFORE: SERVERS
+# KEYWORD: nostart
 
 . /etc/rc.subr
 
 name="mdconfig2"
 stop_cmd="mdconfig2_stop"
 start_cmd="mdconfig2_start"
-mkfstab_cmd="mkconf_cmd"
-extra_commands="mkconf"
-
-mkconf_cmd()
-{
-	local _mdid
-	# Get next free memory device id.
-	_mdid=`xxxx`
-
-	# ......
-}
-
-get_mdid()
-{
-	local _mdid
-
-	_mdid=`mdconfig -l | awk '{print $NF}'`
-	_mdid=${_mdid%md}
-	_mdid=$((${_mdid} + 1))
-
-	echo ${_mdid}
-}
 
 is_readonly()
 {
@@ -167,6 +150,8 @@ mdconfig2_start()
 			# Skip fsck for uzip devices.
 			if [ "${_file}" != "${_file%.uzip}" ]; then
 				_fsck_cmd=":"
+			elif [ "${_file}" != "${_file%.iso}" ]; then
+				_fsck_cmd=":"
 			elif checkyesno background_fsck; then
 				_fsck_cmd="fsck -F"
 			else
@@ -240,23 +225,21 @@ fi
 load_rc_config $name
 
 _mdconfig2_unit=0
+
 if [ $mdconfig2_unit ]; then
 	eval _mdconfig2_unit=\$mdconfig2_unit
 fi
-if [ -z "${_mdconfig2_list}" ]; then
-	if [ $mdconfig2_list ]; then
-		eval _mdconfig2_list=\$mdconfig2_list
-	else
-		while :; do
-			eval _mdconfig2_config=\$mdconfig_md${_mdconfig2_unit}
-			if [ -z "${_mdconfig2_config}" ]; then
-				break
-			else
-				_mdconfig2_list="${_mdconfig2_list}${_mdconfig2_list:+ }md${_mdconfig2_unit}"
-				_mdconfig2_unit=$((${_mdconfig2_unit} + 1))
-			fi
-		done
-	fi
-fi
 
+if [ -z "${_mdconfig2_list}" ]; then
+	while :; do
+		eval _mdconfig2_config=\$mdconfig_md${_mdconfig2_unit}
+		if [ -z "${_mdconfig2_config}" ]; then
+			break
+		else
+			_mdconfig2_list="${_mdconfig2_list}${_mdconfig2_list:+ }md${_mdconfig2_unit}"
+			_mdconfig2_unit=$((${_mdconfig2_unit} + 1))
+		fi
+	done
+fi
+	
 run_rc_command "${_mdconfig2_cmd}"
