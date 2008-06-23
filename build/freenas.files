@@ -485,6 +485,9 @@ usr/sbin/ip6addrctl
 ## quotaon, quotaoff -- turn file system quotas on and off
 usr/sbin/quotaon:usr/sbin/quotaoff
 
+## edquota -- edit user quotas
+usr/sbin/edquota
+
 ####### contents of /usr/libexec
 # ld-elf.so.1, ld.so, rtld -- run-time link-editor
 libexec/ld-elf.so.1:usr/libexec/ld-elf.so.1
