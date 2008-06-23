@@ -1,0 +1,92 @@
+#!/bin/sh
+#
+# $FreeBSD: src/etc/rc.d/mountcritlocal,v 1.12.2.4 2008/03/20 10:53:18 mtm Exp $
+#
+# Modified by Volker Theile (votdev@gmx.de)
+#
+
+# PROVIDE: mountcritlocal
+# REQUIRE: root
+# KEYWORD: nojail
+
+. /etc/rc.subr
+. /etc/configxml.subr
+
+name="mountcritlocal"
+start_cmd="mountcritlocal_start"
+stop_cmd="mountcritlocal_stop"
+mkfstab_cmd="mkfstab_cmd"
+extra_commands="mkfstab"
+
+mkfstab_cmd()
+{
+	# Create /etc/fstab file
+	/usr/local/bin/xml sel -t \
+		-o "# Device   Mountpoint   FStype   Options   Dump   Pass#" -n \
+		-m "//mounts/mount[type = 'disk']" \
+			-v "concat(devicespecialfile,' /mnt/',sharename)" \
+			-i "fstype[. = 'ntfs']" -o " ntfs-3g" -b \
+			-i "fstype[. != 'ntfs']" -v "concat(' ',fstype)" -b \
+			-i "count(readonly) = 0" -o " rw" -b \
+			-i "count(readonly) > 0" -o " ro" -b \
+			-i "fstype[. = 'ufs']" -o ",userquota,groupquota" -b \
+			-o " 0" \
+			-i "count(fsck) = 0" -o " 0" -b \
+			-i "count(fsck) > 0" -o " 2" -b \
+			-n \
+		-b \
+		${configxml_file} | /usr/local/bin/xml unesc > /etc/fstab
+}
+
+mountcritlocal_start()
+{
+	local err
+
+	# Create /etc/fstab file
+	mkfstab_cmd
+
+	# Set up the list of network filesystem types for which mounting
+	# should be delayed until after network initialization.
+	case ${extra_netfs_types} in
+	[Nn][Oo])
+		;;
+	*)
+		netfs_types="${netfs_types} ${extra_netfs_types}"
+		;;
+	esac
+
+	# Mount everything except nfs filesystems.
+	echo -n 'Mounting local file systems:'
+	mount_excludes='no'
+	for i in ${netfs_types}; do
+		fstype=${i%:*}
+		mount_excludes="${mount_excludes}${fstype},"
+	done
+	mount_excludes=${mount_excludes%,}
+	mount -a -t ${mount_excludes}
+	err=$?
+	echo '.'
+
+	case ${err} in
+	0)
+		;;
+	*)
+		echo 'Mounting /etc/fstab filesystems failed,' \
+		    ' startup aborted'
+		stop_boot true
+		;;
+	esac
+}
+
+mountcritlocal_stop()
+{
+	/usr/local/bin/xml sel -t -m "//mounts/mount[type = 'disk']" \
+		-v devicespecialfile -n \
+		${configxml_file} | /usr/local/bin/xml unesc |
+		while read _devicespecialfile; do
+			/sbin/umount "${_devicespecialfile}" 2>/dev/null
+		done
+}
+
+load_rc_config $name
+run_rc_command "$1"
