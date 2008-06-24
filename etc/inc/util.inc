@@ -1113,6 +1113,12 @@ function mwexec($command, $logerr = false) {
 	return $retval;
 }
 
+function mwexec2($command, &$output = NULL, &$return_var = NULL) {
+	// Set PATH
+	putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
+	return exec($command, $output, $return_var);
+}
+
 /* wrapper for exec() in background */
 function mwexec_bg($command) {
 	global $g;

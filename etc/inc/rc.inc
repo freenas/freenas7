@@ -1,8 +1,8 @@
 <?php
 /*
 	rc.inc
-	Copyright (c) 2007 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2007 Olivier Cochard-Labbe <olivier@freenas.org>.
@@ -35,14 +35,14 @@ require_once("util.inc");
 // Execute rc script.
 // Return 0 if successful, otherwise 1.
 function rc_exec_script($scriptname) {
-	exec("{$scriptname} >/dev/null 2>&1", $output, $retval);
+	mwexec2("{$scriptname} >/dev/null 2>&1", $output, $retval);
 	return $retval;
 }
 
 // Execute rc script asynchronuously.
 // Return 0 if successful, otherwise 1.
 function rc_exec_script_async($scriptname) {
-	exec("nohup {$scriptname} >/dev/null 2>&1 &", $output, $retval);
+	mwexec2("nohup {$scriptname} >/dev/null 2>&1 &", $output, $retval);
 	return $retval;
 }
 
@@ -167,8 +167,8 @@ function rc_is_service_enabled($name) {
 	}
 
 	// Execute query
-	exec("/usr/local/bin/xml sel -t {$xquery[1]} {$g['conf_path']}/config.xml",$result);
+	mwexec2("/usr/local/bin/xml sel -t {$xquery[1]} {$g['conf_path']}/config.xml", $output);
 
-	return ("0" === $result[0]) ? 0 : 1;
+	return ("0" === $output[0]) ? 0 : 1;
 }
 ?>
