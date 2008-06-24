@@ -50,8 +50,8 @@ if ($_POST) {
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
 			$retval |= rc_exec_service("mountinit");
-			$retval |= rc_start_service("mdconfig2");
 			$retval |= rc_start_service("mountcritlocal");
+			$retval |= rc_start_service("mdconfig2");
 			$retval |= rc_update_service("samba");
 			$retval |= rc_update_service("rsyncd");
 			$retval |= rc_update_service("afpd");
@@ -70,8 +70,7 @@ if ($_POST) {
 	}
 }
 
-if ($_GET['act'] == "del")
-{
+if ($_GET['act'] === "del") {
 	if ($a_mount[$_GET['id']]) {
 		// MUST check if mount point is used by swap.
 		if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $a_mount[$_GET['id']]['sharename'])) {
@@ -87,19 +86,19 @@ if ($_GET['act'] == "del")
 	}
 }
 
-if ($_GET['act'] == "retry")
-{
+if ($_GET['act'] === "retry") {
 	if ($a_mount[$_GET['id']]) {
-		if (0 == disks_mount($a_mount[$_GET['id']])) {
-			rc_update_service("samba");
-			rc_update_service("rpcbind"); // !!! Do
-			rc_update_service("mountd");  // !!! not
-			rc_update_service("nfsd");    // !!! change
-			rc_update_service("statd");   // !!! this
-			rc_update_service("lockd");   // !!! order
-			rc_update_service("rsyncd");
-			rc_update_service("afpd");
-		}
+		rc_exec_service("mountinit");
+		rc_start_service("mountcritlocal");
+		rc_start_service("mdconfig2");
+		rc_update_service("samba");
+		rc_update_service("rsyncd");
+		rc_update_service("afpd");
+		rc_update_service("rpcbind"); // !!! Do
+		rc_update_service("mountd");  // !!! not
+		rc_update_service("nfsd");    // !!! change
+		rc_update_service("statd");   // !!! this
+		rc_update_service("lockd");   // !!! order
 		header("Location: disks_mount.php");
 		exit;
 	}

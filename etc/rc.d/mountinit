@@ -117,6 +117,8 @@ get_mdid()
 	eval echo ${_mdid}
 }
 
+load_rc_config "XXX"
+
 _mdconfig2_list=""
 
 mkmdconfig2
