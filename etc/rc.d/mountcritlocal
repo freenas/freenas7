@@ -3,62 +3,22 @@
 # $FreeBSD: src/etc/rc.d/mountcritlocal,v 1.12.2.4 2008/03/20 10:53:18 mtm Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
-#
+# Changes:
+# - Use absolute path for mount command, otherwise script fails during execution via WebGUI.
 
 # PROVIDE: mountcritlocal
 # REQUIRE: root
 # KEYWORD: nojail
 
 . /etc/rc.subr
-. /etc/configxml.subr
 
 name="mountcritlocal"
 start_cmd="mountcritlocal_start"
 stop_cmd=":"
-mkfstab_cmd="mkfstab_cmd"
-extra_commands="mkfstab"
-
-mkfstab_cmd()
-{
-	local _rootdev
-
-	_rootdev=`cat /var/etc/cfdevice`
-
-	# Create /etc/fstab file
-	cat <<EOF > /etc/fstab
-# Device		Mountpoint	FStype	Options		Dump	Pass#
-/dev/${_rootdev}		/		ufs	rw		1	1
-EOF
-
-	/usr/local/bin/xml sel -t -m "//mounts/mount[type = 'disk']" \
-			-v "concat(devicespecialfile,' /mnt/',sharename)" \
-			-i "fstype[. = 'ntfs']" -o " ntfs-3g" -b \
-			-i "fstype[. != 'ntfs']" -v "concat(' ',fstype)" -b \
-			-i "count(readonly) = 0" -o " rw" -b \
-			-i "count(readonly) > 0" -o " ro" -b \
-			-i "fstype[. = 'ufs']" -o ",userquota,groupquota" -b \
-			-o " 0" \
-			-i "count(fsck) = 0" -o " 0" -b \
-			-i "count(fsck) > 0" -o " 2" -b \
-			-n \
-		-b \
-		${configxml_file} | /usr/local/bin/xml unesc >> /etc/fstab
-}
 
 mountcritlocal_start()
 {
-	local err _sharename
-
-	# Create /etc/fstab file
-	mkfstab_cmd
-
-	# Prepare mount points. Make sure paths exists.
-	/usr/local/bin/xml sel -t -m "//mounts/mount[type = 'disk']" \
-		-v sharename -n \
-		${configxml_file} | /usr/local/bin/xml unesc |
-		while read _sharename; do
-			mkdir -p /mnt/${_sharename} >/dev/null 2>&1
-		done
+	local err
 
 	# Set up the list of network filesystem types for which mounting
 	# should be delayed until after network initialization.
@@ -78,7 +38,7 @@ mountcritlocal_start()
 		mount_excludes="${mount_excludes}${fstype},"
 	done
 	mount_excludes=${mount_excludes%,}
-	mount -a -t ${mount_excludes}
+	/sbin/mount -a -t ${mount_excludes}
 	err=$?
 	echo '.'
 

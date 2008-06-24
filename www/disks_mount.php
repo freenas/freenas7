@@ -49,6 +49,8 @@ if ($_POST) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
 			config_lock();
+			$retval |= rc_exec_service("mountinit");
+			$retval |= rc_start_service("mdconfig2");
 			$retval |= rc_start_service("mountcritlocal");
 			$retval |= rc_update_service("samba");
 			$retval |= rc_update_service("rsyncd");

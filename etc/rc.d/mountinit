@@ -1,13 +1,10 @@
 #!/bin/sh
 # Copyright (c) 2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
-#
-# Initialize system environment to mount disks.
 
 # PROVIDE: mountinit
-# REQUIRE: root
-# BEFORE: mountcritlocal
-# KEYWORD: nojail
+# BEFORE: CONFIG
+# REQUIRE: SYSTEMINIT
 
 . /etc/rc.subr
 . /etc/configxml.subr
@@ -79,8 +76,8 @@ mkmdconfig2()
 		_mdconfig2_list="${_mdconfig2_list:+ }md${_unit}"
 
 		# Set additional informations needed to update /etc/fstab later
-		eval _mdconfig_md${_unit}_fstype=cd9660
-		eval _mdconfig_md${_unit}_mp=/mnt/${sharename}
+		eval _mdconfig_md${_unit}_fstype="cd9660"
+		eval _mdconfig_md${_unit}_mp="/mnt/${_sharename}"
 
 		# Set memory device in rc.conf
 		eval /usr/local/sbin/rconf attribute set "mdconfig_md${_unit}" "-t vnode -f ${_filename}"

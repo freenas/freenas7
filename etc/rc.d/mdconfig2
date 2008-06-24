@@ -27,70 +27,20 @@
 # $FreeBSD: src/etc/rc.d/mdconfig2,v 1.3.2.1 2006/08/21 15:06:38 flz Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
-#
+# Changes:
+# - Enable setting _mdconfig2_unit and _mdconfig2_list via rc.conf
+# - Disable loading kernel modul geom_md because this is compiled into kernel
+#   and causes an error when executing script via WebGUI. 
 
 # PROVIDE: mdconfig2
 # REQUIRE: mountcritremote
 # BEFORE: SERVERS
 
 . /etc/rc.subr
-. /etc/configxml.subr
 
 name="mdconfig2"
 stop_cmd="mdconfig2_stop"
 start_cmd="mdconfig2_start"
-mkconf_cmd="mkconf_cmd"
-extra_commands="mkconf"
-
-mkconf_cmd()
-{
-	local _unit _index _filename _mdconfig2_list
-
-	# Make sure symlink is set.
-	ln -s /usr/bin/true /sbin/fsck_cd9660 >/dev/null 2>&1
-
-	# Cleanup
-	set | grep mdconfig | while read _value; do
-		_value=${_value%=*}
-		eval /usr/local/sbin/rconf attribute remove "${_value}"
-	done
-
-	# Get next free memory device id. Use this as start id.
-	_unit=`get_mdid`
-
-	# Configure memory disks used to mount ISO files
-	_index=`configxml_get_count "//mounts/mount[type = 'iso']"`
-	while [ ${_index} -gt 0 ]
-	do
-		_filename=`configxml_get "//mounts/mount[type = 'iso'][${_index}]/filename"`
-
-		# Update list of memory devices
-		_mdconfig2_list="${_mdconfig2_list:+ }md${_unit}"
-
-		# Set memory device in rc.conf
-		eval /usr/local/sbin/rconf attribute set "mdconfig_md${_unit}" "-t vnode -f ${_filename}"
-
-		_unit=$((${_unit} + 1))
-		_index=$((${_index} - 1))
-	done
-
-	eval /usr/local/sbin/rconf attribute set "mdconfig2_list" "${_mdconfig2_list}"
-}
-
-get_mdid()
-{
-	local _mdid
-
-	_mdid=`mdconfig -l | awk '{print $NF}'`
-	_mdid=${_mdid#md}
-	if [ -z ${_mdid} ]; then
-		_mdid=0
-	else
-		_mdid=$((${_mdid} + 1))
-	fi
-
-	eval echo ${_mdid}
-}
 
 is_readonly()
 {
@@ -171,7 +121,7 @@ mdconfig2_start()
 		return
 	fi
 
-	kldstat -q -m g_md || kldload geom_md || err 1 "geom_md failed to load."
+	#kldstat -q -m g_md || kldload geom_md || err 1 "geom_md failed to load."
 
 	for _md in ${_mdconfig2_list}; do
 		init_variables ${_md}
@@ -268,7 +218,6 @@ if [ $# -gt 0 ]; then
 fi
 [ -n "$*" ] && _mdconfig2_list="$*"
 
-mkconf_cmd
 load_rc_config $name
 
 _mdconfig2_unit=0
@@ -290,5 +239,5 @@ if [ -z "${_mdconfig2_list}" ]; then
 		done
 	fi
 fi
-
+	
 run_rc_command "${_mdconfig2_cmd}"
