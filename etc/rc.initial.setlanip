@@ -177,7 +177,7 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 		$menuitem['item'] = "802.{$standardv}";
 		$amenuitem[] = $menuitem;
 	}
-	$result = tui_display_menu(gettext("Select standard"), " ", 50, 10, 3, $amenuitem, $standard);
+	$result = tui_display_menu(gettext("Operating mode"), gettext("Set the operating mode for this interface."), 48, 10, 3, $amenuitem, $standard);
 	if (0 != $result)
 		exit(0);
 
@@ -198,7 +198,7 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 		$menuitem['item'] = "{$channelv['channel']} ({$channelv['freq']} MHz, {$mode})";
 		$amenuitem[] = $menuitem;
 	}
-	$result = tui_display_menu(gettext("Select channel"), "", 35, 13, 8, $amenuitem, $channel);
+	$result = tui_display_menu(gettext("Select channel"), gettext("Set a single desired channel. Setting the channel to any will give you the default for your adaptor."), 50, 14, 8, $amenuitem, $channel);
 	if (0 != $result)
 		exit(0);
 
@@ -210,7 +210,7 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 		$menuitem['item'] = $encryptionv;
 		$amenuitem[] = $menuitem;
 	}
-	$result = tui_display_menu(gettext("Select encryption mode"), "", 35, 10, 3, $amenuitem, $encryption);
+	$result = tui_display_menu(gettext("Encryption mode"), gettext("Select the encryption mode."), 40, 10, 3, $amenuitem, $encryption);
 	if (0 != $result)
 		exit(0);
 
@@ -234,7 +234,7 @@ if (preg_match($g['wireless_regex'], $config['interfaces']['lan']['if'])) {
 			$menuitem['item'] = $keymgmtv;
 			$amenuitem[] = $menuitem;
 		}
-		$result = tui_display_menu(gettext("Select key management protocol"), "", 70, 10, 3, $amenuitem, $keymgmt);
+		$result = tui_display_menu(gettext("Key management protocol"), gettext("Select the key management protocol."), 70, 10, 3, $amenuitem, $keymgmt);
 		if (0 != $result)
 			exit(0);
 
