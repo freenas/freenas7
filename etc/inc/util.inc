@@ -899,7 +899,7 @@ function get_scsi_disks_list()
 		/* Get information include between parenthese: (pass0,da0) or (da0,pass0)*/
 		preg_match("/.*\(([^>]*)\).*/",$line,$match);
 
-		/* Sépare le resultat par la virgule  */
+		/* Spare le resultat par la virgule  */
 		$temp = preg_split("/,/", $match[1]);
 
 		// Check if diskname is the first (da0,pass0) or the second (pass0,da0) arguement
@@ -1005,7 +1005,7 @@ function get_cdrom_list()
 	/* Recupere la liste des disques IDE */
 	exec("/sbin/atacontrol list",$rawdata);
 
-	/* Variable $i utilisé pour l'index du tableau */
+	/* Variable $i utilis pour l'index du tableau */
 	$i=0;
 	foreach ($rawdata as $line) 	{
 		/* Separe la ligne par les espace */
@@ -1044,7 +1044,7 @@ function get_cdrom_list()
 		/* Get information include between parenthese: (pass0,da0) or (da0,pass0)*/
 		preg_match("/.*\(([^>]*)\).*/",$line,$match);
 
-		/* Sépare le resultat par la virgule  */
+		/* Spare le resultat par la virgule  */
 		$temp = preg_split("/,/", $match[1]);
 
 		// Check if diskname is the first (da0,pass0) or the second (pass0,da0) arguement
@@ -1091,6 +1091,9 @@ function get_all_disks_list()
 function mwexec($command, $logerr = false) {
 	global $g;
 
+	// Set PATH
+	putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
+
 	if ($g['debug']) {
 		if (!$_SERVER['REMOTE_ADDR'])
 			echo "mwexec(): $command\n";
@@ -1112,8 +1115,10 @@ function mwexec($command, $logerr = false) {
 
 /* wrapper for exec() in background */
 function mwexec_bg($command) {
-
 	global $g;
+
+	// Set PATH
+	putenv("PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin");
 
 	if ($g['debug']) {
 		if (!$_SERVER['REMOTE_ADDR'])
