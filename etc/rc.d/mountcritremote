@@ -1,0 +1,39 @@
+#!/bin/sh
+#
+# $FreeBSD: src/etc/rc.d/mountcritremote,v 1.11.2.4 2008/01/28 08:22:32 dougb Exp $
+#
+# Modified by Volker Theile (votdev@gmx.de)
+# Chanes:
+# - Modify prereq's.
+
+# PROVIDE: mountcritremote
+# REQUIRE: NETWORKING root FILESYSTEMS cleanvar
+# KEYWORD: nojail
+
+. /etc/rc.subr
+
+name="mountcritremote"
+stop_cmd=":"
+start_cmd="mountcritremote_start"
+start_precmd="mountcritremote_precmd"
+
+# Mount NFS filesystems if present in /etc/fstab
+#
+# XXX When the vfsload() issues with nfsclient support and related sysctls
+# have been resolved, this block can be removed, and the condition that
+# skips nfs in the following block (for "other network filesystems") can
+# be removed.
+#
+mountcritremote_precmd()
+{
+	# Currently this script is used as dummy.
+	return 0
+}
+
+mountcritremote_start()
+{
+	# Currently this script is used as dummy.
+}
+
+load_rc_config $name
+run_rc_command "$1"
