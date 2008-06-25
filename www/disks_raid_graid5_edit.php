@@ -53,6 +53,7 @@ if (!sizeof($a_disk)) {
 }
 
 if (isset($id) && $a_raid[$id]) {
+	$pconfig['uuid'] = $a_raid[$id]['uuid'];
 	$pconfig['name'] = $a_raid[$id]['name'];
 	$pconfig['devicespecialfile'] = $a_raid[$id]['devicespecialfile'];
 	$pconfig['type'] = $a_raid[$id]['type'];
@@ -87,6 +88,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$raid = array();
+		$raid['uuid'] = uuid();
 		$raid['name'] = substr($_POST['name'], 0, 15); // Make sure name is only 15 chars long (GEOM limitation).
 		$raid['type'] = 5;
 		$raid['device'] = $_POST['device'];
@@ -105,7 +107,7 @@ if ($_POST) {
 		}
 
 		// Set notification
-		ui_set_updatenotification($d_raid_graid5_confdirty_path, $mode, $raid[name]);
+		ui_set_updatenotification($d_raid_graid5_confdirty_path, $mode, $raid['uuid']);
 
 		write_config();
 

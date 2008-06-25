@@ -1363,15 +1363,35 @@ function config_upgrade() {
 	}
 
 	/* Convert 5.1 -> 5.2 */
-	/* Add //mounts/mount/accessrestrictions/* attributes. */
+	/* Add //mounts/mount/accessrestrictions/xxx attributes. */
 	if ($config['version'] === "5.1") {
 		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
 			$config['mounts']['mount'][$i]['accessrestrictions']['owner'] = "root";
 			$config['mounts']['mount'][$i]['accessrestrictions']['group'] = "wheel";
 			$config['mounts']['mount'][$i]['accessrestrictions']['mode'] = "0777";
 		}
-	
+
 		$config['version'] = "5.2";
+	}
+
+	/* Convert 5.2 -> 5.3 */
+	/* Add UUID's to physical devices and virtual GEOM devices. */
+	if ($config['version'] === "5.2") {
+		for ($i = 0; isset($config['disks']['disk'][$i]); $i++) {
+			$config['disks']['disk'][$i]['uuid'] = uuid();
+		}
+
+		foreach (explode(" ", "gconcat gmirror graid5 gstripe gvinum geli") as $class) {
+			for ($i = 0; isset($config[$class]['vdisk'][$i]); $i++) {
+				$config[$class]['vdisk'][$i]['uuid'] = uuid();
+			}
+		}
+
+		for ($i = 0; isset($config['mounts']['mount'][$i]); $i++) {
+			$config['mounts']['mount'][$i]['uuid'] = uuid();
+		}
+
+		$config['version'] = "5.3";
 	}
 
 	write_config();

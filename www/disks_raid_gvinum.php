@@ -63,7 +63,7 @@ if ($_GET['act'] === "del") {
 	if ($a_raid[$_GET['id']]) {
 		// Check if disk is mounted.
 		if (0 == disks_ismounted_ex($a_raid[$_GET['id']]['devicespecialfile'], "devicespecialfile")) {
-			ui_set_updatenotification($d_raid_gvinum_confdirty_path, UPDATENOTIFICATION_MODE_DIRTY, $a_raid[$_GET['id']]['name']);
+			ui_set_updatenotification($d_raid_gvinum_confdirty_path, UPDATENOTIFICATION_MODE_DIRTY, $a_raid[$_GET['id']]['uuid']);
 			header("Location: disks_raid_gvinum.php");
 			exit;
 		} else {
@@ -87,7 +87,7 @@ function gvinum_process_updatenotification($mode, $data) {
 		case UPDATENOTIFICATION_MODE_DIRTY:
 			$retval |= disks_raid_gvinum_delete($data);
 			if (is_array($config['gvinum']['vdisk'])) {
-				$index = array_search_ex($data, $config['gvinum']['vdisk'], "name");
+				$index = array_search_ex($data, $config['gvinum']['vdisk'], "uuid");
 				if (false !== $index) {
 					unset($config['gvinum']['vdisk'][$index]);
 					write_config();
@@ -145,7 +145,7 @@ function gvinum_process_updatenotification($mode, $data) {
         		$status = $raidstatus[$raid['name']]['state'];
 					}
 
-					$notificationmode = ui_get_updatenotification_mode($d_raid_gvinum_confdirty_path, $raid['name']);
+					$notificationmode = ui_get_updatenotification_mode($d_raid_gvinum_confdirty_path, $raid['uuid']);
 					switch ($notificationmode) {
 						case UPDATENOTIFICATION_MODE_NEW:
 							$size = gettext("Initializing");
