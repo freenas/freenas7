@@ -425,4 +425,105 @@ function html_ipv6addrbox($ctrlname, $ctrlnamenetmask, $title, $value, $valuenet
 	$ctrl->SetReadOnly($readonly);
 	$ctrl->Render();
 }
+
+// Update notification constants
+define("UPDATENOTIFICATION_MODE_NEW", 0);
+define("UPDATENOTIFICATION_MODE_MODIFIED", 1);
+define("UPDATENOTIFICATION_MODE_DIRTY", 2);
+define("UPDATENOTIFICATION_MODE_UNKNOWN", 3);
+
+define("UPDATENOTIFICATION_FLAG_NEW", "+");
+define("UPDATENOTIFICATION_FLAG_MODIFIED", "*");
+define("UPDATENOTIFICATION_FLAG_DIRTY", "-");
+
+// Set a notification.
+// $file - File to be used
+// $mode - Mode to be set
+// $data - Data to be set
+function ui_set_updatenotification($file, $mode, $data) {
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+			$data = UPDATENOTIFICATION_FLAG_NEW . "|{$data}\n";
+			break;
+
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			$data = UPDATENOTIFICATION_FLAG_MODIFIED . "|{$data}\n";
+			break;
+
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			$data = UPDATENOTIFICATION_FLAG_DIRTY . "|{$data}\n";
+			break;
+	}
+
+	file_put_contents($file, $data, FILE_APPEND | FILE_TEXT);
+}
+
+// Get notifications.
+// $file - File to be processed
+// Return array of notifications if successful, otherwise false.
+function ui_get_updatenotification($file) {
+	if (!file_exists($file))
+		return false;
+
+	// Read file
+	$a_filedata = file($file);
+	if (!is_array($a_filedata))
+		return false;
+
+	// Parse data
+	$a_notification = array();
+	foreach ($a_filedata as $filedatav) {
+		// Parse data. Syntax should look like: 'mode|data'.
+		if (preg_match("/^([".UPDATENOTIFICATION_FLAG_NEW.UPDATENOTIFICATION_FLAG_MODIFIED.UPDATENOTIFICATION_FLAG_DIRTY."])\|([\S]+)/", $filedatav, $matches)) {
+			$notification = array();
+			$notification['mode'] = array_search($matches[1], array(UPDATENOTIFICATION_FLAG_NEW, UPDATENOTIFICATION_FLAG_MODIFIED, UPDATENOTIFICATION_FLAG_DIRTY));
+			$notification['data'] = $matches[2];
+
+			$a_notification[] = $notification;
+		}
+	}
+
+	return $a_notification;
+}
+
+// Process notifications.
+// $file - File to be processed
+// $function - Name of callback function. Function syntax: xyz($mode, $data)
+// Return 0 if successful, otherwise 1.
+function ui_process_updatenotification($file, $function) {
+	$a_notification = ui_get_updatenotification($file);
+	if (!is_array($a_notification))
+		return 1;
+
+	foreach ($a_notification as $notificationv) {
+		if (0 != call_user_func($function, $notificationv['mode'], $notificationv['data']))
+			return 1;
+	}
+
+	return 0;
+}
+// Remove notification file.
+// $file - File to be removed 
+function ui_cleanup_updatenotification($file) {
+	if (file_exists($file))
+		unlink($file);
+}
+
+// Get the notification mode.
+// $file - File to be used
+// $data - Data to searched for
+// Returns the notification mode, otherwise UPDATENOTIFICATION_MODE_UNKNOWN
+function ui_get_updatenotification_mode($file, $data) {
+	$a_notification = ui_get_updatenotification($file);
+	if (!is_array($a_notification))
+		return UPDATENOTIFICATION_MODE_UNKNOWN;
+
+	// Process array in reverse order => Last in, first out
+	foreach (array_reverse($a_notification) as $notificationv) {
+		if ($notificationv['data'] == $data)
+			return $notificationv['mode'];
+	}
+
+	return UPDATENOTIFICATION_MODE_UNKNOWN;
+}
 ?>

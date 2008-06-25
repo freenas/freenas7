@@ -3,7 +3,7 @@
 /*
 	disks_raid_gvinum_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -106,20 +106,21 @@ if ($_POST) {
 		$raid['desc'] = "Software gvinum RAID {$_POST['type']}";
 		$raid['devicespecialfile'] = "/dev/gvinum/{$raid['name']}";
 
-		if (isset($id) && $a_raid[$id])
+		if (isset($id) && $a_raid[$id]) {
 			$a_raid[$id] = $raid;
-		else
-			$a_raid[] = $raid;
-
-   	write_config();
-
-		if ($_POST['init']) {
-			// Mark new added RAID to be configured.
-			file_put_contents($d_raid_gvinum_confdirty_path, "{$raid[name]}\n", FILE_APPEND | FILE_TEXT);
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
 		} else {
-			// Start already configured disks.
-			rc_exec_service("geom start vinum");
+			$a_raid[] = $raid;
+			if ($_POST['init'])
+				$mode = UPDATENOTIFICATION_MODE_NEW;
+			else
+				$mode = UPDATENOTIFICATION_MODE_MODIFIED;
 		}
+
+		// Set notification
+		ui_set_updatenotification($d_raid_gvinum_confdirty_path, $mode, $raid[name]);
+
+		write_config();
 
 		header("Location: disks_raid_gvinum.php");
 		exit;

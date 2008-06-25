@@ -3,7 +3,7 @@
 /*
 	disks_raid_gconcat.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -48,29 +48,22 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			foreach ($a_raid as $raidv) {
-				if (is_modified($raidv['name'])) {
-					$retval |= rc_exec_service("geom load concat");
-					$retval |= disks_raid_gconcat_configure($raidv['name']);
-				}
-			}
+			// Process notifications
+			$retval = ui_process_updatenotification($d_raid_gconcat_confdirty_path, "gconcat_process_updatenotification");
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_raid_gconcat_confdirty_path))
-				unlink($d_raid_gconcat_confdirty_path);
+			ui_cleanup_updatenotification($d_raid_gconcat_confdirty_path);
 		}
 	}
 }
 
-if ($_GET['act'] == "del") {
+if ($_GET['act'] === "del") {
 	unset($errormsg);
 	if ($a_raid[$_GET['id']]) {
 		// Check if disk is mounted.
-		if(0 == disks_ismounted_ex($a_raid[$_GET['id']]['devicespecialfile'], "devicespecialfile")) {
-			disks_raid_gconcat_delete($a_raid[$_GET['id']]['name']);
-			unset($a_raid[$_GET['id']]);
-			write_config();
+		if (0 == disks_ismounted_ex($a_raid[$_GET['id']]['devicespecialfile'], "devicespecialfile")) {
+			ui_set_updatenotification($d_raid_gconcat_confdirty_path, UPDATENOTIFICATION_MODE_DIRTY, $a_raid[$_GET['id']]['name']);
 			header("Location: disks_raid_gconcat.php");
 			exit;
 		} else {
@@ -79,9 +72,32 @@ if ($_GET['act'] == "del") {
 	}
 }
 
-function is_modified($name) {
-	global $d_raid_gconcat_confdirty_path;
-	return (file_exists($d_raid_gconcat_confdirty_path) && in_array("{$name}\n", file($d_raid_gconcat_confdirty_path)));
+function gconcat_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+			$retval |= rc_exec_service("geom load concat");
+			$retval |= disks_raid_gconcat_configure($data);
+			break;
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			$retval |= rc_exec_service("geom start concat");
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			$retval |= disks_raid_gconcat_delete($data);
+			if (is_array($config['gconcat']['vdisk'])) {
+				$index = array_search_ex($data, $config['gconcat']['vdisk'], "name");
+				if (false !== $index) {
+					unset($config['gconcat']['vdisk'][$index]);
+					write_config();
+				}
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -119,16 +135,26 @@ function is_modified($name) {
 					<?php $raidstatus = get_gconcat_disks_list();?>
 					<?php $i = 0; foreach ($a_raid as $raid):?>
 					<?php
-          $size = gettext("Unknown");
-          $status = gettext("Stopped");
-          if (true === is_modified($raid['name'])) {
-          	$size = gettext("Configuring");
-          	$status = gettext("Configuring");
-          } else {
-          	if (is_array($raidstatus) && array_key_exists($raid['name'], $raidstatus)) {
-          		$size = $raidstatus[$raid['name']]['size'];
-          		$status = $raidstatus[$raid['name']]['state'];
-						}
+					$size = gettext("Unknown");
+      		$status = gettext("Stopped");
+      		if (is_array($raidstatus) && array_key_exists($raid['name'], $raidstatus)) {
+        		$size = $raidstatus[$raid['name']]['size'];
+        		$status = $raidstatus[$raid['name']]['state'];
+					}
+
+					$notificationmode = ui_get_updatenotification_mode($d_raid_gconcat_confdirty_path, $raid['name']);
+					switch ($notificationmode) {
+						case UPDATENOTIFICATION_MODE_NEW:
+							$size = gettext("Initializing");
+							$status = gettext("Initializing");
+							break;
+						case UPDATENOTIFICATION_MODE_MODIFIED:
+							$size = gettext("Modifying");
+							$status = gettext("Modifying");
+							break;
+						case UPDATENOTIFICATION_MODE_DIRTY:
+							$status = gettext("Deleting");
+							break;
 					}
           ?>
           <tr>
@@ -136,10 +162,12 @@ function is_modified($name) {
             <td class="listr"><?=htmlspecialchars($raid['type']);?></td>
             <td class="listr"><?=$size;?>&nbsp;</td>
             <td class="listbg"><?=$status;?>&nbsp;</td>
+            <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="disks_raid_gconcat_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RAID"); ?>" width="17" height="17" border="0"></a>&nbsp;
 							<a href="disks_raid_gconcat.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" width="17" height="17" border="0"></a>
 						</td>
+						<?php endif;?>
 					</tr>
 					<?php $i++; endforeach;?>
           <tr>
