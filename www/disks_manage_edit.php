@@ -104,12 +104,16 @@ if ($_POST) {
 		$disks['size'] = $a_phy_disk[$devname]['size'];
 		$disks['smart'] = $_POST['smart'] ? true : false;
 
-		if (isset($id) && $a_disk[$id])
+		if (isset($id) && $a_disk[$id]) {
 			$a_disk[$id] = $disks;
-		else
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
+		} else {
 			$a_disk[] = $disks;
+			$mode = UPDATENOTIFICATION_MODE_NEW;
+		}
 
-		touch($d_diskdirty_path);
+		// Set notification
+		ui_set_updatenotification($d_diskdirty_path, $mode, $disks['uuid']);
 
 		write_config();
 

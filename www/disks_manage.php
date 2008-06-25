@@ -48,6 +48,7 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			$retval |= ui_process_updatenotification($d_diskdirty_path, "diskmanagement_process_updatenotification");
 			config_lock();
 			$retval |= rc_update_service("ataidle");
 			$retval |= rc_update_service("smartd");
@@ -55,20 +56,40 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_diskdirty_path))
-				unlink($d_diskdirty_path);
+			ui_cleanup_updatenotification($d_diskdirty_path);
 		}
 	}
 }
 
-if ($_GET['act'] == "del") {
+if ($_GET['act'] === "del") {
 	if ($a_disk_conf[$_GET['id']]) {
-		unset($a_disk_conf[$_GET['id']]);
-		write_config();
-		touch($d_diskdirty_path);
+		ui_set_updatenotification($d_diskdirty_path, UPDATENOTIFICATION_MODE_DIRTY, $a_disk_conf[$_GET['id']]['uuid']);
 		header("Location: disks_manage.php");
 		exit;
 	}
+}
+
+function diskmanagement_process_updatenotification($mode, $data) {
+	global $config;
+
+	$retval = 0;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			break;
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['disks']['disk'])) {
+				$index = array_search_ex($data, $config['disks']['disk'], "uuid");
+				if (false !== $index) {
+					unset($config['disks']['disk'][$index]);
+					write_config();
+				}
+			}
+			break;
+	}
+
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc");?>
@@ -97,15 +118,37 @@ if ($_GET['act'] == "del") {
 						<td width="10%" class="listhdrr"><?=gettext("Status"); ?></td>
 						<td width="10%" class="list"></td>
 					</tr>
-				  <?php $i = 0; foreach ($a_disk_conf as $disk):?>
+					<?php $i = 0; foreach ($a_disk_conf as $disk):?>
+					<?php
+					$notificationmode = ui_get_updatenotification_mode($d_diskdirty_path, $disk['uuid']);
+					switch ($notificationmode) {
+						case UPDATENOTIFICATION_MODE_NEW:
+							$status = gettext("Initializing");
+							break;
+						case UPDATENOTIFICATION_MODE_MODIFIED:
+							$status = gettext("Modifying");
+							break;
+						case UPDATENOTIFICATION_MODE_DIRTY:
+							$status = gettext("Deleting");
+							break;
+						default:
+							$status = (0 == disks_exists($disk['devicespecialfile'])) ? gettext("ONLINE") : gettext("MISSING");
+							break;
+					}
+					?>
 					<tr>
 						<td class="listlr"><?=htmlspecialchars($disk['name']);?></td>
 						<td class="listr"><?=htmlspecialchars($disk['size']);?></td>
 						<td class="listr"><?=htmlspecialchars($disk['desc']);?>&nbsp;</td>
-						<td class="listr"><?php if($disk['harddiskstandby']) { $value=$disk['harddiskstandby']; echo $value; } else { echo gettext("Always on"); }?>&nbsp;</td>
+						<td class="listr"><?php if ($disk['harddiskstandby']) { echo $disk['harddiskstandby']; } else { echo gettext("Always on"); }?>&nbsp;</td>
 						<td class="listr"><?=($disk['fstype']) ? get_fstype_shortdesc($disk['fstype']) : gettext("Unknown or unformatted")?>&nbsp;</td>
-						<td class="listbg"><?=(0 == disks_exists($disk['devicespecialfile'])) ? gettext("ONLINE") : gettext("MISSING");?>&nbsp;</td>
-						<td valign="middle" nowrap class="list"> <a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" width="17" height="17" border="0"></a>&nbsp;<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" width="17" height="17" border="0"></a></td>
+						<td class="listbg"><?=$status;?>&nbsp;</td>
+						<?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
+						<td valign="middle" nowrap class="list">
+							<a href="disks_manage_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit disk");?>" width="17" height="17" border="0"></a>&nbsp;
+							<a href="disks_manage.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"); ?>')"><img src="x.gif" title="<?=gettext("Delete disk"); ?>" width="17" height="17" border="0"></a>
+						</td>
+						<?php endif;?>
 					</tr>
 					<?php $i++; endforeach;?>
 					<tr>
