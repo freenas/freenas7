@@ -3,7 +3,7 @@
 /*
 	disks_manage_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -50,6 +50,7 @@ array_sort_key($config['disks']['disk'], "name");
 $a_disk = &$config['disks']['disk'];
 
 if (isset($id) && $a_disk[$id]) {
+	$pconfig['uuid'] = $a_disk[$id]['uuid'];
 	$pconfig['name'] = $a_disk[$id]['name'];
 	$pconfig['harddiskstandby'] = $a_disk[$id]['harddiskstandby'];
 	$pconfig['acoustic'] = $a_disk[$id]['acoustic'];
@@ -60,6 +61,7 @@ if (isset($id) && $a_disk[$id]) {
 	$pconfig['smart'] = isset($a_disk[$id]['smart']);
 	$pconfig['desc'] = $a_disk[$id]['desc'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['name'] = "";
 	$pconfig['transfermode'] = "auto";
 	$pconfig['harddiskstandby'] = "0";
@@ -89,6 +91,7 @@ if ($_POST) {
 		$devname = $_POST['name'];
 
 		$disks = array();
+		$disks['uuid'] = $_POST['uuid'];
 		$disks['name'] = $devname;
 		$disks['devicespecialfile'] = "/dev/{$devname}";
 		$disks['harddiskstandby'] = $_POST['harddiskstandby'];
@@ -227,9 +230,10 @@ function enable_change(enable_change) {
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
-						<?php if (isset($id) && $a_disk[$id]): ?>
+							<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
+							<?php if (isset($id) && $a_disk[$id]): ?>
 							<input name="id" type="hidden" value="<?=$id;?>">
-						<?php endif; ?>
+							<?php endif; ?>
 						</td>
 					</tr>
 				</table>
