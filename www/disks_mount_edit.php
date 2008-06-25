@@ -3,7 +3,7 @@
 /*
 	disks_mount_edit.php
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -55,6 +55,7 @@ $cfdevice = trim(file_get_contents("$filename"));
 $cfdevice = "/dev/" . $cfdevice;
 
 if (isset($id) && $a_mount[$id]) {
+	$pconfig['uuid'] = $a_mount[$id]['uuid'];
 	$pconfig['type'] = $a_mount[$id]['type'];
 	$pconfig['mdisk'] = $a_mount[$id]['mdisk'];
 	$pconfig['partition'] = $a_mount[$id]['partition'];
@@ -69,6 +70,7 @@ if (isset($id) && $a_mount[$id]) {
 	$pconfig['mode'] = $a_mount[$id]['accessrestrictions']['mode'];
 	$pconfig['filename'] = $a_mount[$id]['filename'];
 } else {
+	$pconfig['uuid'] = uuid();
 	$pconfig['type'] = "disk";
 	$pconfig['partition'] = "p1";
 	$pconfig['readonly'] = false;
@@ -160,6 +162,7 @@ if ($_POST) {
 
 	if (!$input_errors) {
 		$mount = array();
+		$mount['uuid'] = $_POST['uuid'];
 		$mount['type'] = $_POST['type'];
 
 		switch($_POST['type']) {
@@ -406,6 +409,7 @@ function enable_change(enable_change) {
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%"> <input name="Submit" type="submit" class="formbtn" value="<?=((isset($id) && $a_disk[$id]))?gettext("Save"):gettext("Add")?>" onClick="enable_change(true)">
+			      	<input name="uuid" type="hidden" value="<?=$pconfig['uuid'];?>">
 			        <?php if (isset($id) && $a_mount[$id]): ?>
 			        <input name="id" type="hidden" value="<?=$id;?>">
 			        <?php endif; ?>

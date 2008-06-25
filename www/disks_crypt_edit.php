@@ -98,6 +98,7 @@ if ($_POST) {
 			$diskinfo = disks_get_diskinfo($pconfig['devicespecialfile']);
 
 			$geli = array();
+			$geli['uuid'] = uuid();
 			$geli['name'] = $pconfig['name'];
 			$geli['device'] = $pconfig['devicespecialfile'];
 			$geli['devicespecialfile'] = "{$geli['device']}.eli";

@@ -171,6 +171,7 @@
 	<disks>
 		<!--
 		<disk>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
 			<devicespecialfile>/dev/xxx</devicespecialfile>
 			<harddiskstandby>0</harddiskstandby>
@@ -188,6 +189,7 @@
 	<gvinum>
 		<!--
 		<vdisk>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
 			<type>0</type>
 			<device>/dev/da0</device>
@@ -200,6 +202,7 @@
 	<gmirror>
 		<!--
 		<vdisk>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
 			<balance>round-robin</balance>
 			<type>1</type>
@@ -213,6 +216,7 @@
 	<gconcat>
 		<!--
 		<vdisk>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
 			<type>JBOD</type>
 			<device>/dev/da0</device>
@@ -226,6 +230,7 @@
 	<gstripe>
 		<!--
 		<vdisk>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
 			<type>0</type>
 			<device>/dev/da0</device>
@@ -238,6 +243,7 @@
 	<graid5>
 		<!--
 		<vdisk>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>xxx</name>
 			<type>5</type>
 			<device>/dev/da0</device>
@@ -251,6 +257,7 @@
 	<geli>
 		<!--
 		<vdisk>
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<name>da0</name>
 			<device>/dev/da0</device>
 			<devicespecialfile>/dev/da0.eli</devicespecialfile>
@@ -324,6 +331,7 @@
 		<!--
 		<mount>
 			// Global attributes:
+			<uuid>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</uuid>
 			<type>disk|iso</type>
 			<desc>xxx</desc>
 			<sharename>xxx</sharename>
