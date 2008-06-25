@@ -48,6 +48,10 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			// Process notifications
+			util_process_updatenotification($d_mountdirty_path, "mount_process_updatenotification");
+
+			// Restart services
 			config_lock();
 			$retval |= rc_exec_service("mountinit");
 			$retval |= rc_start_service("mountcritlocal");
@@ -64,8 +68,7 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_mountdirty_path))
-				unlink($d_mountdirty_path);
+			util_cleanup_updatenotification($d_mountdirty_path);
 		}
 	}
 }
@@ -76,7 +79,7 @@ if ($_GET['act'] === "del") {
 		if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $a_mount[$_GET['id']]['sharename'])) {
 			$errormsg[] = gettext("The swap file is using this mount point.");
 		} else {
-			disks_umount($a_mount[$_GET['id']]);
+			util_set_updatenotification($d_mountdirty_path, UPDATENOTIFICATION_MODE_DIRTY, $a_mount[$_GET['id']]['sharename']);
 			unset($a_mount[$_GET['id']]);
 			write_config();
 			touch($d_mountdirty_path);
@@ -101,6 +104,16 @@ if ($_GET['act'] === "retry") {
 		rc_update_service("lockd");   // !!! order
 		header("Location: disks_mount.php");
 		exit;
+	}
+}
+
+function mount_process_updatenotification($mode, $data) {
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			mwexec2("umount /mnt/{$data}");
+			mwexec2("rm -r /mnt/{$data}");
+			break;
 	}
 }
 ?>
