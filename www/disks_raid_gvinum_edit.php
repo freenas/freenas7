@@ -174,7 +174,7 @@ if ($_POST) {
 			      </td>
 			    </tr>
 			    <?php $a_provider = array(); foreach ($a_disk as $diskv) { if (isset($id) && !(is_array($pconfig['device']) && in_array($diskv['devicespecialfile'], $pconfig['device']))) { continue; } if (!isset($id) && false !== array_search_ex($diskv['devicespecialfile'], $all_raid, "device")) { continue; } $a_provider[$diskv[devicespecialfile]] = htmlspecialchars("$diskv[name] ($diskv[size], $diskv[desc])"); }?>
-			    <?php html_listbox("device", gettext("Provider"), $pconfig['device'], $a_provider, gettext(""), true, isset($id));?>
+			    <?php html_listbox("device", gettext("Provider"), $pconfig['device'], $a_provider, "", true, isset($id));?>
 			    <?php if (!isset($id)):?>
 			    <tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Initialize");?></td>

@@ -2,11 +2,11 @@
 <?php
 /*
 	system_cron_edit.php
-	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2007-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -180,7 +180,7 @@ function enable_change(enable_change) {
           <?php html_titleline_checkbox("enable", gettext("Cron job"), $pconfig['enable'] ? true : false, gettext("Enable"), "enable_change(false)");?>
 					<?php html_inputbox("command", gettext("Command"), $pconfig['command'], gettext("Specifies the command to be run."), true, 60);?>
 					<?php $a_user = array(); foreach (system_get_user_list() as $userk => $userv) { $a_user[$userk] = htmlspecialchars($userk); }?>
-					<?php html_combobox("who", gettext("Who"), $pconfig['who'], $a_user, gettext(""), true);?>
+					<?php html_combobox("who", gettext("Who"), $pconfig['who'], $a_user, "", true);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), true, 40);?>
 					<tr>
 						<td width="22%" valign="top" class="vncellreq"><?=gettext("Schedule time");?></td>

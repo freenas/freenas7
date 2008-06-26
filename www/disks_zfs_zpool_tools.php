@@ -280,7 +280,7 @@ function pool_change() {
 							</div>
 						</td>
 					</tr>
-					<?php html_combobox("device_new", gettext("New Device"), NUL, NUL, gettext(""), true);?>
+					<?php html_combobox("device_new", gettext("New Device"), NUL, NUL, "", true);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">

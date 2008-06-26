@@ -324,7 +324,7 @@ function enable_change(enable_change) {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_titleline(gettext("Settings"));?>
-					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("disk" => "Disk", "iso" => "ISO"), gettext(""), true, false, "type_change()");?>
+					<?php html_combobox("type", gettext("Type"), $pconfig['type'], array("disk" => "Disk", "iso" => "ISO"), "", true, false, "type_change()");?>
 					<tr id="mdisk_tr">
 			      <td width="22%" valign="top" class="vncellreq"><?=gettext("Disk");?></td>
 			      <td class="vtable">
@@ -368,16 +368,16 @@ function enable_change(enable_change) {
 			      </td>
 					</tr>
 					<?php html_filechooser("filename", "Filename", $pconfig['filename'], gettext("ISO file to be mounted."), "/mnt", true);?>
-					<?php html_inputbox("sharename", gettext("Sharename"), $pconfig['sharename'], gettext(""), true, 20);?>
+					<?php html_inputbox("sharename", gettext("Sharename"), $pconfig['sharename'], "", true, 20);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
-					<?php html_checkbox("readonly", gettext("Read only"), $pconfig['readonly'] ? true : false, gettext("Mount the file system read-only (even the super-user may not write it)."), gettext(""), false);?>
-					<?php html_checkbox("fsck", gettext("File system check"), $pconfig['fsck'] ? true : false, gettext("Enable foreground/background file system consistency check during boot process."), gettext(""), false);?>
+					<?php html_checkbox("readonly", gettext("Read only"), $pconfig['readonly'] ? true : false, gettext("Mount the file system read-only (even the super-user may not write it)."), "", false);?>
+					<?php html_checkbox("fsck", gettext("File system check"), $pconfig['fsck'] ? true : false, gettext("Enable foreground/background file system consistency check during boot process."), "", false);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Access Restrictions"));?>
 					<?php $a_owner = array(); foreach (system_get_user_list() as $userk => $userv) { $a_owner[$userk] = htmlspecialchars($userk); }?>
-					<?php html_combobox("owner", gettext("Owner"), $pconfig['owner'], $a_owner, gettext(""), false);?>
+					<?php html_combobox("owner", gettext("Owner"), $pconfig['owner'], $a_owner, "", false);?>
 					<?php $a_group = array(); foreach (system_get_group_list() as $groupk => $groupv) { $a_group[$groupk] = htmlspecialchars($groupk); }?>
-					<?php html_combobox("group", gettext("Group"), $pconfig['group'], $a_group, gettext(""), false);?>
+					<?php html_combobox("group", gettext("Group"), $pconfig['group'], $a_group, "", false);?>
 					<tr>
 						<td width="22%" valign="top" class="vncell"><?=gettext("Mode");?></td>
 			      <td width="78%" class="vtable">

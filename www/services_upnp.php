@@ -2,7 +2,7 @@
 <?php
 /*
 	services_upnp.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
@@ -228,7 +228,7 @@ function web_change() {
 					<?php html_inputbox("deviceip", gettext("Device IP"), $pconfig['deviceip'], gettext("The device's IP address."), true, 20);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Administrative WebGUI"));?>
-					<?php html_checkbox("web", gettext("Enable"), $pconfig['web'] ? true : false, gettext("Enable web user interface."), gettext(""), false, "web_change()");?>
+					<?php html_checkbox("web", gettext("Enable"), $pconfig['web'] ? true : false, gettext("Enable web user interface."), "", false, "web_change()");?>
 					<?php
 					$if = get_ifname($pconfig['if']);
 					$ipaddr = get_ipaddr($if);

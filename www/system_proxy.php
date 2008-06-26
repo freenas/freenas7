@@ -215,11 +215,11 @@ function proxy_auth_change() {
     				  </table>
             </td>
           </tr>
-          <?php html_inputbox("http_address", gettext("Address"), $pconfig['http_address'], gettext(""), true, 40);?>
-          <?php html_inputbox("http_port", gettext("Port"), $pconfig['http_port'], gettext(""), true, 10);?>
-					<?php html_checkbox("http_auth", gettext("Authentication"), $pconfig['http_auth'] ? true : false, gettext("Enable proxy authentication."), gettext(""), false, "proxy_auth_change()");?>
-          <?php html_inputbox("http_username", gettext("User"), $pconfig['http_username'], gettext(""), true, 20);?>
-			    <?php html_inputbox("http_password", gettext("Password"), $pconfig['http_password'], gettext(""), true, 20);?>
+          <?php html_inputbox("http_address", gettext("Address"), $pconfig['http_address'], "", true, 40);?>
+          <?php html_inputbox("http_port", gettext("Port"), $pconfig['http_port'], "", true, 10);?>
+					<?php html_checkbox("http_auth", gettext("Authentication"), $pconfig['http_auth'] ? true : false, gettext("Enable proxy authentication."), "", false, "proxy_auth_change()");?>
+          <?php html_inputbox("http_username", gettext("User"), $pconfig['http_username'], "", true, 20);?>
+			    <?php html_inputbox("http_password", gettext("Password"), $pconfig['http_password'], "", true, 20);?>
 					<?php html_separator();?>
 			    <tr>
             <td colspan="2" valign="top" class="optsect_t">
@@ -231,11 +231,11 @@ function proxy_auth_change() {
     				  </table>
             </td>
           </tr>
-          <?php html_inputbox("ftp_address", gettext("Address"), $pconfig['ftp_address'], gettext(""), true, 40);?>
-          <?php html_inputbox("ftp_port", gettext("Port"), $pconfig['ftp_port'], gettext(""), true, 10);?>
-          <?php html_checkbox("ftp_auth", gettext("Authentication"), $pconfig['ftp_auth'] ? true : false, gettext("Enable proxy authentication."), gettext(""), false, "proxy_auth_change()");?>
-          <?php html_inputbox("ftp_username", gettext("User"), $pconfig['ftp_username'], gettext(""), true, 20);?>
-			    <?php html_inputbox("ftp_password", gettext("Password"), $pconfig['ftp_password'], gettext(""), true, 20);?>
+          <?php html_inputbox("ftp_address", gettext("Address"), $pconfig['ftp_address'], "", true, 40);?>
+          <?php html_inputbox("ftp_port", gettext("Port"), $pconfig['ftp_port'], "", true, 10);?>
+          <?php html_checkbox("ftp_auth", gettext("Authentication"), $pconfig['ftp_auth'] ? true : false, gettext("Enable proxy authentication."), "", false, "proxy_auth_change()");?>
+          <?php html_inputbox("ftp_username", gettext("User"), $pconfig['ftp_username'], "", true, 20);?>
+			    <?php html_inputbox("ftp_password", gettext("Password"), $pconfig['ftp_password'], "", true, 20);?>
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">

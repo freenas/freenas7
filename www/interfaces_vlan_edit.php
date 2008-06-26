@@ -139,7 +139,7 @@ function get_nextvlan_id() {
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_inputbox("tag", gettext("VLAN tag"), $pconfig['tag'], gettext("802.1Q VLAN tag (between 1 and 4094)."), true, 4);?>
 					<?php $a_if = array(); foreach (get_interface_list() as $ifk => $ifv) { if (eregi('vlan', $ifk)) { continue; } $a_if[$ifk] = htmlspecialchars("{$ifk} ({$ifv['mac']})"); };?>
-					<?php html_combobox("vlandev", gettext("Physical interface"), $pconfig['vlandev'], $a_if, gettext(""), true);?>
+					<?php html_combobox("vlandev", gettext("Physical interface"), $pconfig['vlandev'], $a_if, "", true);?>
 					<?php html_inputbox("desc", gettext("Description"), $pconfig['desc'], gettext("You may enter a description here for your reference."), false, 40);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
