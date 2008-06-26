@@ -513,15 +513,23 @@ function ui_cleanup_updatenotification($file) {
 // $file - File to be used
 // $data - Data to searched for
 // Returns the notification mode, otherwise UPDATENOTIFICATION_MODE_UNKNOWN
-function ui_get_updatenotification_mode($file, $data) {
+function ui_get_updatenotification_mode($file, $data, $matchwholeword = true) {
 	$a_notification = ui_get_updatenotification($file);
 	if (!is_array($a_notification))
 		return UPDATENOTIFICATION_MODE_UNKNOWN;
 
+	// Remove duplicate entries. Last inserted notification wins (Last in, first out).
+	$a_notification = array_reverse(array_remove_duplicate(array_reverse($a_notification), "data"));
+
 	// Process array in reverse order => Last in, first out
-	foreach (array_reverse($a_notification) as $notificationv) {
-		if ($notificationv['data'] == $data)
-			return $notificationv['mode'];
+	foreach ($a_notification as $notificationv) {
+		if (true === $matchwholeword) {
+			if ($notificationv['data'] === $data)
+				return $notificationv['mode'];
+		} else {
+			if (false !== strstr($notificationv['data'], $data))
+				return $notificationv['mode'];
+		}
 	}
 
 	return UPDATENOTIFICATION_MODE_UNKNOWN;
