@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-05-20 00:09+0000\n"
+"PO-Revision-Date: 2008-06-10 18:31+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -88,6 +88,9 @@ msgstr ""
 msgid "A host name alias. This option can appear multiple times, for each domain that has the same IP. Use a space to separate multiple alias names."
 msgstr ""
 
+msgid "A key will be either 5 or 13 characters (40 or 104 bits) depending of the local network and the capabilities of the adaptor. It may be specified either as a plain string or as a string of hexadecimal digits preceded by '0x'."
+msgstr ""
+
 msgid "A route to this destination network already exists."
 msgstr ""
 
@@ -160,6 +163,9 @@ msgstr ""
 msgid "Access"
 msgstr ""
 
+msgid "Access Restrictions"
+msgstr ""
+
 msgid "Access mode"
 msgstr ""
 
@@ -170,6 +176,9 @@ msgid "Activate"
 msgstr ""
 
 msgid "Activate S.M.A.R.T. monitoring for this device."
+msgstr ""
+
+msgid "Activate email report if you want to be notified if a failure or a new error has been detected, or if a S.M.A.R.T. command to a disk fails."
 msgstr ""
 
 msgid "Active Directory"
@@ -227,6 +236,9 @@ msgid "Add job"
 msgstr ""
 
 msgid "Add module"
+msgstr ""
+
+msgid "Add mount point"
 msgstr ""
 
 msgid "Add option"
@@ -380,6 +392,9 @@ msgstr ""
 msgid "Authorised network"
 msgstr ""
 
+msgid "Auto"
+msgstr ""
+
 msgid "AutoScale"
 msgstr ""
 
@@ -413,6 +428,12 @@ msgstr ""
 msgid "Browseable"
 msgstr ""
 
+msgid "CCMP"
+msgstr ""
+
+msgid "CCMP TKIP"
+msgstr ""
+
 msgid "CD/DVD or Old Software RAID"
 msgstr ""
 
@@ -432,9 +453,6 @@ msgid "CPU load"
 msgstr ""
 
 msgid "CPU usage"
-msgstr ""
-
-msgid "Calculate netmask bits"
 msgstr ""
 
 msgid "Can't format the OS origin disk!"
@@ -681,6 +699,9 @@ msgstr ""
 msgid "Delete module"
 msgstr ""
 
+msgid "Delete mount point"
+msgstr ""
+
 msgid "Delete option"
 msgstr ""
 
@@ -697,6 +718,9 @@ msgid "Delete target"
 msgstr ""
 
 msgid "Delete user"
+msgstr ""
+
+msgid "Deleting"
 msgstr ""
 
 msgid "Deny"
@@ -1016,6 +1040,9 @@ msgstr ""
 msgid "Edit module"
 msgstr ""
 
+msgid "Edit mount point"
+msgstr ""
+
 msgid "Edit option"
 msgstr ""
 
@@ -1164,6 +1191,9 @@ msgstr ""
 msgid "Enter the NIS domain name."
 msgstr ""
 
+msgid "Enter the passphrase that will be used in WPA-PSK mode. This must be between 8 and 63 characters long."
+msgstr ""
+
 msgid "Enter the path to the home directory of that user. Make sure that this path exists and is always mounted at startup. Leave this field empty to use default path /mnt."
 msgstr ""
 
@@ -1178,6 +1208,9 @@ msgstr ""
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
+msgstr ""
+
+msgid "Execute"
 msgstr ""
 
 msgid "Execute command"
@@ -1483,7 +1516,7 @@ msgstr ""
 msgid "IPv6 addresses"
 msgstr ""
 
-msgid "ISO"
+msgid "ISO file to be mounted."
 msgstr ""
 
 msgid "ISP DNS servers"
@@ -1544,6 +1577,9 @@ msgstr ""
 msgid "Initialize and encrypt disk. This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
 msgstr ""
 
+msgid "Initializing"
+msgstr ""
+
 msgid "Initiator name"
 msgstr ""
 
@@ -1582,6 +1618,12 @@ msgid "Keep all files"
 msgstr ""
 
 msgid "Keep diagnostics in navigation expanded"
+msgstr ""
+
+msgid "Key"
+msgstr ""
+
+msgid "Key Management Protocol"
 msgstr ""
 
 msgid "Kill encrypted volume"
@@ -1635,6 +1677,9 @@ msgid "Link Aggregation and Failover"
 msgstr ""
 
 msgid "List"
+msgstr ""
+
+msgid "List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP (AES in Counter mode with CBC-MAC, RFC 3610, IEEE 802.11i/D7.0), TKIP (Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."
 msgstr ""
 
 msgid "List of available target name on all configured iSCSI targets"
@@ -1794,9 +1839,6 @@ msgstr ""
 msgid "Medium power usage without Standby"
 msgstr ""
 
-msgid "Members of this volume"
-msgstr ""
-
 msgid "Memory usage"
 msgstr ""
 
@@ -1825,6 +1867,12 @@ msgid "Minutes between network time sync."
 msgstr ""
 
 msgid "Miscellaneous"
+msgstr ""
+
+msgid "Mode"
+msgstr ""
+
+msgid "Modifying"
 msgstr ""
 
 msgid "Module"
@@ -2016,6 +2064,9 @@ msgstr ""
 msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"
 msgstr ""
 
+msgid "Others"
+msgstr ""
+
 msgid "Out"
 msgstr ""
 
@@ -2025,6 +2076,9 @@ msgstr ""
 msgid "Outgoing mail server"
 msgstr ""
 
+msgid "Owner"
+msgstr ""
+
 msgid "PPPoE"
 msgstr ""
 
@@ -2032,6 +2086,9 @@ msgid "PPTP"
 msgstr ""
 
 msgid "PPTP clients"
+msgstr ""
+
+msgid "PSK"
 msgstr ""
 
 msgid "Package Name"
@@ -2047,6 +2104,9 @@ msgid "Package upload failed (out of memory?)"
 msgstr ""
 
 msgid "Packages"
+msgstr ""
+
+msgid "Pairwise"
 msgstr ""
 
 msgid "Parameter"
@@ -2273,6 +2333,9 @@ msgid "RSYNCD"
 msgstr ""
 
 msgid "Raid name"
+msgstr ""
+
+msgid "Read"
 msgstr ""
 
 msgid "Read Only Access"
@@ -2503,6 +2566,9 @@ msgstr ""
 msgid "Set the account's primary group to the given group."
 msgstr ""
 
+msgid "Set the desired Service Set Identifier (aka network name)."
+msgstr ""
+
 msgid "Set the maximum transmission unit of the interface to n, default is interface specific. The MTU is used to limit the size of packets that are transmitted on an interface. Not all interfaces support setting the MTU, and some interfaces have range restrictions."
 msgstr ""
 
@@ -2531,6 +2597,9 @@ msgid "Share all sub directories."
 msgstr ""
 
 msgid "Share passwords can not be more than 8 characters."
+msgstr ""
+
+msgid "Sharename"
 msgstr ""
 
 msgid "Shares"
@@ -2599,6 +2668,9 @@ msgstr ""
 msgid "Specifies that the file system should be exported read-only."
 msgstr ""
 
+msgid "Specifies the command to be run."
+msgstr ""
+
 msgid "Specifies the default base DN to use when performing ldap operations, example: dc=example,dc=com"
 msgstr ""
 
@@ -2612,6 +2684,9 @@ msgid "Specifies whether it is allowed to login as superuser (root) directly."
 msgstr ""
 
 msgid "Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation."
+msgstr ""
+
+msgid "Standard"
 msgstr ""
 
 msgid "Standby - Check the device unless it is in SLEEP or STANDBY mode. In these modes most disks are not spinning, so if you want to prevent a laptop disk from spinning up each poll, this is probably what you want."
@@ -2739,6 +2814,9 @@ msgstr ""
 msgid "TCP port to bind the server to."
 msgstr ""
 
+msgid "TKIP"
+msgstr ""
+
 msgid "TLS + cleartext"
 msgstr ""
 
@@ -2859,6 +2937,10 @@ msgstr ""
 
 #, php-format
 msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9."
 msgstr ""
 
 #, c-format
@@ -3391,10 +3473,25 @@ msgstr ""
 msgid "WAN address"
 msgstr ""
 
+msgid "WEP"
+msgstr ""
+
 msgid "WINS server"
 msgstr ""
 
 msgid "WINS server IP address (e.g. from MS Active Directory server)."
+msgstr ""
+
+msgid "WPA"
+msgstr ""
+
+msgid "WPA-EAP (Extensible Authentication Protocol)"
+msgstr ""
+
+msgid "WPA-PSK (Pre Shared Key)"
+msgstr ""
+
+msgid "WPA-PSK WPA-EAP"
 msgstr ""
 
 msgid "Warning"
@@ -3425,6 +3522,9 @@ msgstr ""
 msgid "Wireless"
 msgstr ""
 
+msgid "Wireless configuration"
+msgstr ""
+
 msgid "Workgroup"
 msgstr ""
 
@@ -3432,6 +3532,9 @@ msgid "Workgroup the server will appear to be in when queried by clients (maximu
 msgstr ""
 
 msgid "Working Directory"
+msgstr ""
+
+msgid "Write"
 msgstr ""
 
 msgid "Write only"
@@ -3494,9 +3597,6 @@ msgstr ""
 msgid "Zeroconf/Bonjour"
 msgstr ""
 
-msgid "add mount"
-msgstr ""
-
 msgid "built on"
 msgstr ""
 
@@ -3516,9 +3616,6 @@ msgid "days"
 msgstr ""
 
 msgid "dbpath"
-msgstr ""
-
-msgid "delete mount"
 msgstr ""
 
 #, php-format
