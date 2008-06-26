@@ -3,7 +3,7 @@
 /*
 	services_iscsitarget_extent_edit.php
 	Copyright © 2007-2008 Volker Theile (votdev@gmx.de)
-  All rights reserved.
+	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
 	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
@@ -135,8 +135,8 @@ if ($_POST) {
 				<?php if ($errormsg) print_error_box($errormsg);?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_inputbox("name", gettext("Target name"), $pconfig['name'], gettext(""), true, 10, isset($id));?>
-					<?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => "rw", "ro" => "ro"), gettext(""), true);?>
+					<?php html_inputbox("name", gettext("Target name"), $pconfig['name'], "", true, 10, isset($id));?>
+					<?php html_combobox("flags", gettext("Flags"), $pconfig['flags'], array("rw" => "rw", "ro" => "ro"), "", true);?>
 					<?php
 					$a_storage = array();
 					// Check extents
@@ -168,7 +168,7 @@ if ($_POST) {
 						$a_storage[$devicev['name']] = htmlspecialchars($devicev['name']);
 					}
 					?>
-					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, gettext(""), true);?>
+					<?php html_listbox("storage", gettext("Storage"), $pconfig['storage'], $a_storage, "", true);?>
 					<?php html_ipv4addrbox("ipaddr", "subnet", gettext("Authorised network"), $pconfig['ipaddr'], $pconfig['subnet'], gettext("Network that is authorised to access to this iSCSI target."), true);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>

@@ -285,11 +285,11 @@ function webguiproto_change() {
 			    <?php html_separator();?>
 			    <?php html_titleline(gettext("WebGUI"));?>
 					<?php html_inputbox("username", gettext("Username"), $pconfig['username'], gettext("If you want to change the username for accessing the WebGUI, enter it here."), false, 20);?>
-					<?php html_combobox("webguiproto", gettext("Protocol"), $pconfig['webguiproto'], array("http" => "HTTP", "https" => "HTTPS"), gettext(""), false, false, "webguiproto_change()");?>
+					<?php html_combobox("webguiproto", gettext("Protocol"), $pconfig['webguiproto'], array("http" => "HTTP", "https" => "HTTPS"), "", false, false, "webguiproto_change()");?>
 					<?php html_inputbox("webguiport", gettext("Port"), $pconfig['webguiport'], gettext("Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."), false, 5);?>
 					<?php html_textarea("certificate", gettext("Certificate"), $pconfig['certificate'], gettext("Paste a signed certificate in X.509 PEM format here."), true, 65, 7);?>
 					<?php html_textarea("privatekey", gettext("Private key"), $pconfig['privatekey'], gettext("Paste an private key in PEM format here."), true, 65, 7);?>
-					<?php html_languagecombobox("language", gettext("Language"), $pconfig['language'], gettext(""), false);?>
+					<?php html_languagecombobox("language", gettext("Language"), $pconfig['language'], "", false);?>
 					<?php html_separator();?>
 					<?php html_titleline(gettext("Time"));?>
 					<?php html_timezonecombobox("timezone", gettext("Time zone"), $pconfig['timezone'], gettext("Select the location closest to you."), false);?>
@@ -302,7 +302,7 @@ function webguiproto_change() {
 							<span class="vexpl"><?=gettext("Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select it.");?></span>
 						</td>
 			    </tr>
-					<?php html_checkbox("ntp_enable", gettext("Enable NTP"), $pconfig['ntp_enable'] ? true : false, gettext("Use the specified NTP server."), gettext(""), false, "ntp_change()");?>
+					<?php html_checkbox("ntp_enable", gettext("Enable NTP"), $pconfig['ntp_enable'] ? true : false, gettext("Use the specified NTP server."), "", false, "ntp_change()");?>
 					<?php html_inputbox("ntp_timeservers", gettext("NTP time server"), $pconfig['ntp_timeservers'], gettext("Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"), false, 40);?>
 					<?php html_inputbox("ntp_updateinterval", gettext("Time update interval"), $pconfig['ntp_updateinterval'], gettext("Minutes between network time sync."), false, 20);?>
 			    <tr>

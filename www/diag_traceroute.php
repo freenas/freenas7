@@ -75,7 +75,7 @@ if (!isset($do_traceroute)) {
 					<?php html_inputbox("host", gettext("Host"), $host, gettext("Destination host name or IP number."), true, 20);?>
 					<?php $a_ttl = array(); for ($i = 1; $i <= 64; $i++) { $a_ttl[$i] = $i; }?>
 					<?php html_combobox("ttl", gettext("Max. TTL"), $ttl, $a_ttl, gettext("Max. time-to-live (max. number of hops) used in outgoing probe packets."), true);?>
-					<?php html_checkbox("resolve", gettext("Resolve"), $resolve ? true : false, gettext("Resolve IP addresses to hostnames"), gettext(""), false);?>
+					<?php html_checkbox("resolve", gettext("Resolve"), $resolve ? true : false, gettext("Resolve IP addresses to hostnames"), "", false);?>
 					<tr>
 						<td width="22%" valign="top">&nbsp;</td>
 						<td width="78%">

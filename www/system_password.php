@@ -92,7 +92,7 @@ if ($_POST) {
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
 				<table width="100%" border="0" cellpadding="6" cellspacing="0">
-					<?php html_passwordbox("password_old", gettext("Old password"), "", gettext(""), true);?>
+					<?php html_passwordbox("password_old", gettext("Old password"), "", "", true);?>
 					<?php html_passwordconfbox("password_new", "password_confirm", gettext("Password"), "", "", gettext("If you want to change the password for accessing the WebGUI, enter it here twice."), true);?>
 					<tr>
 			      <td width="22%" valign="top">&nbsp;</td>

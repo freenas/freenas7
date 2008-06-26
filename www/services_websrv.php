@@ -181,7 +181,7 @@ function authentication_change() {
 			  		  </table>
 			      </td>
 			    </tr>
-					<?php html_combobox("protocol", gettext("Protocol"), $pconfig['protocol'], array("http" => "HTTP", "https" => "HTTPS"), gettext(""), true, false, "protocol_change()");?>
+					<?php html_combobox("protocol", gettext("Protocol"), $pconfig['protocol'], array("http" => "HTTP", "https" => "HTTPS"), "", true, false, "protocol_change()");?>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("TCP port to bind the server to."), true, 5);?>
 					<?php html_filechooser("documentroot", gettext("Document root"), $pconfig['documentroot'], gettext("Document root of the webserver. Home of the web page files."), "/mnt", true, 60);?>
 					<?php html_textarea("certificate", gettext("Certificate"), $pconfig['certificate'], gettext("Paste a signed certificate in X.509 PEM format here."), true, 65, 7);?>
