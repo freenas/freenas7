@@ -57,7 +57,7 @@ mkmdconfig2()
 	ln -s /usr/bin/true /sbin/fsck_cd9660 >/dev/null 2>&1
 
 	# Cleanup. Remove all previous mdconfig_xxx entries.
-	set | grep mdconfig | while read _value; do
+	set | grep ^mdconfig | while read _value; do
 		_value=${_value%=*}
 		eval /usr/local/sbin/rconf attribute remove "${_value}"
 	done
@@ -117,12 +117,17 @@ get_mdid()
 	eval echo ${_mdid}
 }
 
-load_rc_config "XXX"
+load_rc_config ${name}
 
 _mdconfig2_list=""
 
 mkmdconfig2
 mkfstab
 mkmp
+
+# Force reloading of rc.conf file, otherwise new added attributes to
+# rc.conf won't be seen during boot process.
+_rc_conf_loaded=false
+load_rc_config ${name}
 
 return 0
