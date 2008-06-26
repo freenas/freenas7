@@ -81,4 +81,21 @@ function array_sort_key(array &$array, $key) {
 
 	return $result;
 }
+
+// Remove duplicate values by user-defined key.
+// array - The array to be processed
+// key - The key used as filter criteria
+function array_remove_duplicate($array, $key) {
+	$result = array();
+	if (!is_array($array))
+		return false;
+	$subarray = array();
+	foreach ($array as $value) {
+		$subarray[] = $value[$key];
+	}
+	foreach (array_unique($subarray) as $k => $value) {
+		$result[] = $array[$k];
+	}
+	return $result;
+}
 ?>
