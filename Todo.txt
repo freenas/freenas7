@@ -1,0 +1,2 @@
+- Implement mount options as in disks.inc
+- Process access restriction settings per mount point
