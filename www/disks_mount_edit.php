@@ -187,12 +187,16 @@ if ($_POST) {
 		$mount['accessrestrictions']['group'] = $_POST['group'];
 		$mount['accessrestrictions']['mode'] = getmodectrl($pconfig['mode_owner'], $pconfig['mode_group'], $pconfig['mode_others']);
 
-		if (isset($id) && $a_mount[$id])
+		if (isset($id) && $a_mount[$id]) {
+			$mode = UPDATENOTIFICATION_MODE_MODIFIED;
 			$a_mount[$id] = $mount;
-		else
+		} else {
+			$mode = UPDATENOTIFICATION_MODE_NEW;
 			$a_mount[] = $mount;
+		}
 
-		touch($d_mountdirty_path);
+		// Set notification
+		ui_set_updatenotification($d_mountdirty_path, $mode, $mount['uuid']);
 
 		write_config();
 

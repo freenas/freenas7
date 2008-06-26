@@ -48,8 +48,11 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
+			// Process notifications
+			ui_process_updatenotification($d_mountdirty_path, "mountmanagement_process_updatenotification");
+
+			// Restart services
 			config_lock();
-			$retval |= disks_mount_all();
 			$retval |= rc_update_service("samba");
 			$retval |= rc_update_service("rsyncd");
 			$retval |= rc_update_service("afpd");
@@ -62,44 +65,66 @@ if ($_POST) {
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_mountdirty_path))
-				unlink($d_mountdirty_path);
+			ui_cleanup_updatenotification($d_mountdirty_path);
 		}
 	}
 }
 
-if ($_GET['act'] == "del")
-{
+if ($_GET['act'] === "del") {
 	if ($a_mount[$_GET['id']]) {
 		// MUST check if mount point is used by swap.
 		if (isset($config['system']['swap_enable']) && ($config['system']['swap_mountname'] == $a_mount[$_GET['id']]['sharename'])) {
 			$errormsg[] = gettext("The swap file is using this mount point.");
 		} else {
-			disks_umount($a_mount[$_GET['id']]);
-			unset($a_mount[$_GET['id']]);
-			write_config();
-			touch($d_mountdirty_path);
+			ui_set_updatenotification($d_mountdirty_path, UPDATENOTIFICATION_MODE_DIRTY, $a_mount[$_GET['id']]['uuid']);
 			header("Location: disks_mount.php");
 			exit;
 		}
 	}
 }
 
-if ($_GET['act'] == "retry")
-{
+if ($_GET['act'] === "retry") {
 	if ($a_mount[$_GET['id']]) {
 		if (0 == disks_mount($a_mount[$_GET['id']])) {
 			rc_update_service("samba");
+			rc_update_service("rsyncd");
+			rc_update_service("afpd");
 			rc_update_service("rpcbind"); // !!! Do
 			rc_update_service("mountd");  // !!! not
 			rc_update_service("nfsd");    // !!! change
 			rc_update_service("statd");   // !!! this
 			rc_update_service("lockd");   // !!! order
-			rc_update_service("rsyncd");
-			rc_update_service("afpd");
 		}
 		header("Location: disks_mount.php");
 		exit;
+	}
+}
+
+function mountmanagement_process_updatenotification($mode, $data) {
+	global $config;
+
+	if (!is_array($config['mounts']['mount']))
+		return 1;
+
+	$index = array_search_ex($data, $config['mounts']['mount'], "uuid");
+	if (false === $index)
+		return 1;
+
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_NEW:
+			disks_mount($config['mounts']['mount'][$index]);
+			break;
+
+		case UPDATENOTIFICATION_MODE_MODIFIED:
+			disks_umount_ex($config['mounts']['mount'][$index]);
+			disks_mount($config['mounts']['mount'][$index]);
+			break;
+
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			disks_umount($config['mounts']['mount'][$index]);
+			unset($config['mounts']['mount'][$index]);
+			write_config();
+			break;
 	}
 }
 ?>
@@ -129,7 +154,28 @@ if ($_GET['act'] == "retry")
             <td width="20%" class="listhdr"><?=gettext("Status");?></td>
             <td width="10%" class="list"></td>
           </tr>
-  			  <?php $i = 0; foreach($a_mount as $mount):?>
+					<?php $i = 0; foreach($a_mount as $mount):?>
+					<?php
+					$notificationmode = ui_get_updatenotification_mode($d_mountdirty_path, $mount['uuid']);
+					switch ($notificationmode) {
+						case UPDATENOTIFICATION_MODE_NEW:
+							$status = gettext("Initializing");
+							break;
+						case UPDATENOTIFICATION_MODE_MODIFIED:
+							$status = gettext("Modifying");
+							break;
+						case UPDATENOTIFICATION_MODE_DIRTY:
+							$status = gettext("Deleting");
+							break;
+						default:
+							if(disks_ismounted_ex($mount['sharename'],"sharename")) {
+								$status = gettext("OK");
+							} else {
+								$status = gettext("Error") . " - <a href=\"disks_mount.php?act=retry&id={$i}\">" . gettext("Retry") . "</a>";
+							}
+							break;
+					}
+					?>
           <tr>
           	<?php if ("disk" === $mount['type']):?>
             <td class="listlr"><?=htmlspecialchars($mount['devicespecialfile']);?>&nbsp;</td>
@@ -139,23 +185,13 @@ if ($_GET['act'] == "retry")
             <td class="listr"><?=htmlspecialchars($mount['fstype']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount['sharename']);?>&nbsp;</td>
             <td class="listr"><?=htmlspecialchars($mount['desc']);?>&nbsp;</td>
-            <td class="listbg">
-              <?php
-              if (file_exists($d_mountdirty_path)) {
-                echo(gettext("Configuring"));
-              } else {
-                if(disks_ismounted_ex($mount['sharename'],"sharename")) {
-									echo(gettext("OK"));
-                } else {
-                  echo(gettext("Error") . " - <a href=\"disks_mount.php?act=retry&id={$i}\">" . gettext("Retry") . "</a>");
-                }
-              }
-              ?>&nbsp;
-            </td>
+            <td class="listbg"><?=$status;?>&nbsp;</td>
+            <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
               <a href="disks_mount_edit.php?id=<?=$i;?>"><img src="e.gif" title="edit mount" width="17" height="17" border="0"></a>&nbsp;
               <a href="disks_mount.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("delete mount"); ?>" width="17" height="17" border="0"></a>
             </td>
+            <?php endif;?>
           </tr>
           <?php $i++; endforeach;?>
           <tr>
