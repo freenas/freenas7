@@ -126,6 +126,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
 					mwexec2("rm -r /mnt/{$sharename}");
 				}
 			}
+			break;
 	}
 }
 ?>
@@ -157,7 +158,7 @@ function mountmanagement_process_updatenotification($mode, $data) {
           </tr>
   			  <?php $i = 0; foreach($a_mount as $mount):?>
   			  <?php
-					$notificationmode = ui_get_updatenotification_mode($d_mountdirty_path, $mount['uuid']);
+					$notificationmode = ui_get_updatenotification_mode($d_mountdirty_path, $mount['uuid'], false);
 					switch ($notificationmode) {
 						case UPDATENOTIFICATION_MODE_NEW:
 							$status = gettext("Initializing");
