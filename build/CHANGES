@@ -38,6 +38,7 @@ Majors changes:
 
 Minors changes:
 - Enable WLAN interface setup via console.
+- Add 'Loewe Connect' UPnP support (FR 2003278).
 
 Bug fixes:
 - Fix bug in interfaces WebGUI. Thanks to freenas_fan for this tip.
