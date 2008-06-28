@@ -126,6 +126,7 @@ Majors changes:
 
 Bug fixes:
 - Reported netmask is not correct for DHCP configuration (BR 1864839). Thanks to Petr Slansky.
+- Enable backup of configuration with Internet Explorer when using HTTPS. Thanks to Andrea Cantini.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
