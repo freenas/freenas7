@@ -393,6 +393,9 @@ usr/bin/bc
 ## printf -- formatted output
 usr/bin/printf
 
+## true -- return true value
+usr/bin/true
+
 ####### contents of /usr/sbin
 ##  ancontrol -- configure Aironet 4500/4800 devices
 usr/sbin/ancontrol
