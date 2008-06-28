@@ -35,6 +35,7 @@ FreeNAS 0.69b2 (Stone burner):
 ------------------------------
 
 Majors changes:
+- Upgrade e2fsprogs to 1.40.11.
 
 Minors changes:
 - Enable WLAN interface setup via console.
