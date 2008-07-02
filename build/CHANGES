@@ -37,6 +37,7 @@ FreeNAS 0.69b2 (Stone burner):
 Majors changes:
 - Upgrade e2fsprogs to 1.40.11.
 - Upgrade fusefs-ntfs/ntfs-3g to 1.2531.
+- Upgrade Samba to 3.0.30.
 
 Minors changes:
 - Enable WLAN interface setup via console.
