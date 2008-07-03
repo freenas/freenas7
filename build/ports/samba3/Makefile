@@ -46,6 +46,9 @@ CONFIGURE_ARGS+=	--disable-cups \
 									--with-sendfile-support \
 									--with-acl-support
 
+pre-build:
+	cd ${WRKSRC} && ${MAKE} pch
+
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbd ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/nmbd ${FREENAS_ROOTFS}/usr/local/sbin
