@@ -46,6 +46,15 @@ CONFIGURE_ARGS+=	--disable-cups \
 									--with-sendfile-support \
 									--with-acl-support
 
+.include <bsd.port.pre.mk>
+
+.if ${OSVERSION} >= 700055
+CONFIGURE_ARGS+=	--with-aio-support
+.endif
+
+pre-build:
+	cd ${WRKSRC} && ${MAKE} pch
+
 do-install:
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/smbd ${FREENAS_ROOTFS}/usr/local/sbin
 	@${INSTALL_PROGRAM} -v ${WRKSRC}/bin/nmbd ${FREENAS_ROOTFS}/usr/local/sbin
@@ -76,4 +85,4 @@ do-install:
 	@${LN} -f -v -s ${SAMBA_LIBDIR}/nss_winbind.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_winbind.so.1
 	@${LN} -f -v -s ${SAMBA_LIBDIR}/nss_wins.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_wins.so.1
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>
