@@ -443,6 +443,8 @@
 			<options>
 				<delete/>
 				<quiet/>
+				<perms/>
+				<xattrs/>
 			</options>
 		</rsynclocal>
 		<rsyncclient>
@@ -463,6 +465,8 @@
 			<options>
 				<delete/>
 				<quiet/>
+				<perms/>
+				<xattrs/>
 			</options>
 		</rsyncclient>
 		-->
