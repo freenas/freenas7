@@ -69,9 +69,13 @@ if (isset($id) && $a_rsynclocal[$id]) {
 	$pconfig['description'] = $a_rsynclocal[$id]['description'];
 	$pconfig['delete'] = isset($a_rsynclocal[$id]['options']['delete']);
 	$pconfig['quiet'] = isset($a_rsynclocal[$id]['options']['quiet']);
+	$pconfig['perms'] = isset($a_rsynclocal[$id]['options']['perms']);
+	$pconfig['xattrs'] = isset($a_rsynclocal[$id]['options']['xattrs']);
 } else {
 	$pconfig['delete'] = false;
 	$pconfig['quiet'] = false;
+	$pconfig['perms'] = false;
+	$pconfig['xattrs'] = false;
 }
 
 if ($_POST) {
@@ -106,6 +110,8 @@ if ($_POST) {
 		$rsynclocal['description'] = $_POST['description'];
 		$rsynclocal['options']['delete'] = $_POST['delete'] ? true : false;
 		$rsynclocal['options']['quiet'] = $_POST['quiet'] ? true : false;
+		$rsynclocal['options']['perms'] = $_POST['perms'] ? true : false;
+		$rsynclocal['options']['xattrs'] = $_POST['xattrs'] ? true : false;
 
 		if (isset($id) && $a_rsynclocal[$id])
 			$a_rsynclocal[$id] = $rsynclocal;
@@ -339,6 +345,8 @@ function set_selected(name) {
 							<input name="quiet" id="quiet" type="checkbox" value="yes" <?php if ($pconfig['quiet']) echo "checked"; ?>> <?=gettext("Suppress non-error messages."); ?><br>
 						</td>
 					</tr>
+					<?php html_checkbox("perms", gettext("Preserve permissions"), $pconfig['perms'] ? true : false, gettext("This option causes the receiving rsync to set the destination permissions to be the same as the source permissions."), "", false);?>
+					<?php html_checkbox("xattrs", gettext("Preserve extended attributes"), $pconfig['xattrs'] ? true : false, gettext("This option causes rsync to update the remote extended attributes to be the same as the local ones."), "", false);?>
 					<tr>
             <td width="22%" valign="top">&nbsp;</td>
             <td width="78%">

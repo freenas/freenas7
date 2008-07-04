@@ -41,6 +41,8 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-m "options" \
 				-i "count(delete) > 0" -o "--delete --delete-after " -b \
 				-i "count(quiet) > 0" -o "--quiet " -b \
+				-i "count(perms) > 0" -o "--perms " -b \
+				-i "count(xattrs) > 0" -o "--xattrs " -b \
 			-b \
 			-v "concat('&quot;',source,'&quot; &quot;',destination,'&quot;')" -n \
 			-o "/bin/rm -f /var/run/rsync_local-running${_i}" -n \
