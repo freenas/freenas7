@@ -72,11 +72,13 @@ if (isset($id) && $a_rsyncclient[$id]) {
 	$pconfig['quiet'] = isset($a_rsyncclient[$id]['options']['quiet']);
 	$pconfig['perms'] = isset($a_rsyncclient[$id]['options']['perms']);
 	$pconfig['xattrs'] = isset($a_rsyncclient[$id]['options']['xattrs']);
+	$pconfig['extraoptions'] = $a_rsyncclient[$id]['options']['extraoptions'];
 } else {
 	$pconfig['delete'] = false;
 	$pconfig['quiet'] = false;
 	$pconfig['perms'] = false;
 	$pconfig['xattrs'] = false;
+	$pconfig['extraoptions'] = "";
 }
 
 if ($_POST) {
@@ -114,6 +116,7 @@ if ($_POST) {
 		$rsyncclient['options']['quiet'] = $_POST['quiet'] ? true : false;
 		$rsyncclient['options']['perms'] = $_POST['perms'] ? true : false;
 		$rsyncclient['options']['xattrs'] = $_POST['xattrs'] ? true : false;
+		$rsyncclient['options']['extraoptions'] = $_POST['extraoptions'];
 
 		if (isset($id) && $a_rsyncclient[$id])
 			$a_rsyncclient[$id] = $rsyncclient;
@@ -354,6 +357,7 @@ function set_selected(name) {
 					</tr>
 					<?php html_checkbox("perms", gettext("Preserve permissions"), $pconfig['perms'] ? true : false, gettext("This option causes the receiving rsync to set the destination permissions to be the same as the source permissions."), "", false);?>
 					<?php html_checkbox("xattrs", gettext("Preserve extended attributes"), $pconfig['xattrs'] ? true : false, gettext("This option causes rsync to update the remote extended attributes to be the same as the local ones."), "", false);?>
+					<?php html_inputbox("extraoptions", gettext("Extra options"), $pconfig['extraoptions'], gettext("Extra options to rsync (usually empty)."), false, 40);?>
 					<tr>
 	          <td width="22%" valign="top">&nbsp;</td>
 	          <td width="78%">

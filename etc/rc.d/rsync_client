@@ -43,6 +43,7 @@ if [ 0 -lt ${_scriptnum} ]; then
 				-i "count(quiet) > 0" -o "--quiet " -b \
 				-i "count(perms) > 0" -o "--perms " -b \
 				-i "count(xattrs) > 0" -o "--xattrs " -b \
+				-i "string-length(extraoptions) > 0" -v "concat(extraoptions,' ')" -b \
 			-b \
 			-i "not(contains(rsyncserverip,':'))" \
 				-v "concat('&quot;rsync://',rsyncserverip,'/',remoteshare,'&quot; &quot;',localshare,'&quot;')" -n \

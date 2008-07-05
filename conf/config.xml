@@ -445,6 +445,7 @@
 				<quiet/>
 				<perms/>
 				<xattrs/>
+				<extraoptions></extraoptions>
 			</options>
 		</rsynclocal>
 		<rsyncclient>
@@ -467,6 +468,7 @@
 				<quiet/>
 				<perms/>
 				<xattrs/>
+				<extraoptions></extraoptions>
 			</options>
 		</rsyncclient>
 		-->
