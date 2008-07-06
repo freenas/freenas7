@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: freenas 0.69\n"
-"Report-Msgid-Bugs-To:  \n"
-"POT-Creation-Date: 2008-02-15 14:09+0000\n"
-"PO-Revision-Date: 2008-02-20 07:29+0000\n"
-"Last-Translator: Régis Caubet <caubet.r@gmail.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-06-26 08:18+0000\n"
+"PO-Revision-Date: 2008-07-06 12:04+0000\n"
+"Last-Translator: dommy9111 <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-20 18:57+0000\n"
+"X-Launchpad-Export-Date: 2008-07-06 18:29+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Basepath: D:\\Fichiers\\freenas\\webgui\n"
 
@@ -32,10 +32,7 @@ msgstr ""
 #~ msgstr "Dim Lun Mar Mer Jeu Ven Sam"
 
 #~ msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
-#~ msgstr "Jan Fév Mar Avr Mai Juin Juil Aoû Sep Oct Nov Déc"
-
-#~ msgid "Time"
-#~ msgstr "Temps"
+#~ msgstr "Jan Fév Mar Avr Mai Juin Juil Aou Sep Oct Nov Déc"
 
 #~ msgid "%I:%M %p"
 #~ msgstr "%I:%M %p"
@@ -48,6 +45,9 @@ msgstr ""
 
 #~ msgid "hour"
 #~ msgstr "heure"
+
+#~ msgid "day"
+#~ msgstr "jour"
 
 #~ msgid "week"
 #~ msgstr "semaine"
@@ -85,17 +85,11 @@ msgstr ""
 #~ msgid "The"
 #~ msgstr "Le"
 
-#~ msgid "URL"
-#~ msgstr "URL"
-
 #~ msgid "Cancel"
 #~ msgstr "Annuler"
 
 #~ msgid "Deactivate"
 #~ msgstr "Désactiver"
-
-#~ msgid "Delete"
-#~ msgstr "Effacer"
 
 #~ msgid "Help"
 #~ msgstr "Aide"
@@ -153,8 +147,14 @@ msgstr ""
 #~ msgid "CIFS"
 #~ msgstr "CIFS"
 
+#~ msgid "SSHD"
+#~ msgstr "SSHD"
+
 #~ msgid "Radius"
 #~ msgstr "Radius"
+
+#~ msgid "ARP table"
+#~ msgstr "Table ARP"
 
 #~ msgid "Reboot system"
 #~ msgstr "Redémarrage du NAS"
@@ -185,6 +185,12 @@ msgstr ""
 #~ msgstr ""
 #~ "Mot de passe d'accès à l'interface WEB.<br>N'utilisez pas le caractère ':'."
 
+#~ msgid "WebGUI protocol"
+#~ msgstr "Protocole de l'interface WEB"
+
+#~ msgid "WebGUI port"
+#~ msgstr "Port TCP de l'interface WEB"
+
 #~ msgid ""
 #~ "Enter a custom port number for the webGUI above if you want to override the "
 #~ "default (80 for HTTP, 443 for HTTPS)."
@@ -195,11 +201,32 @@ msgstr ""
 #~ msgid "Select the system language"
 #~ msgstr "Choisissez la langue utilisée par le système"
 
+#~ msgid "System Time"
+#~ msgstr "Heure système"
+
+#~ msgid ""
+#~ "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
+#~ "select one, then use Save button to update system time. (Mind seconds part "
+#~ "will be ignored)"
+#~ msgstr ""
+#~ "Entrez directement ici l'heure désirée (au format mm/jj/aaaa hh:mm) ou "
+#~ "utilisez l'icône pour en sélectionner une, puis cliquez sur le bouton "
+#~ "sauvegarder pour mettre à jour l'heure du système. (Les secondes seront "
+#~ "ignorées)"
+
 #~ msgid ""
 #~ "Minutes between network time sync.; 300\trecommended, or 0 to disable."
 #~ msgstr ""
 #~ "Minutes entre les synchronisations de temps.<br>300 recommandé, ou 0 pour "
 #~ "désactiver."
+
+#~ msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
+#~ msgstr ""
+#~ "Un nom d'hôte doit seulement contenir les caractères a-z, 0-9, et '-' ."
+
+#~ msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
+#~ msgstr ""
+#~ "Un nom de domaine doit seulement contenir les caractères a-z, 0-9, et '-' ."
 
 #~ msgid ""
 #~ "A valid IP address must be specified for the primary/secondary DNS server."
@@ -207,13 +234,16 @@ msgstr ""
 #~ "Une adresse IP valide doit être spécifiée pour les serveurs DNS "
 #~ "primaire/secondaire."
 
+#~ msgid "A valid TCP/IP port must be specified for the webGUI port."
+#~ msgstr "Un port TCP/IP valide doit être spécifié pour l'interface web."
+
 #~ msgid "You must select a valid language."
 #~ msgstr "Vous devez sélectionner une langue valide."
 
 #~ msgid ""
 #~ "The time update interval must be either 0 (disabled) or between 6 and 1440."
 #~ msgstr ""
-#~ "L'intervalle de mise à jour doit être soit 0 (désactivé), soit comprise entre "
+#~ "L'intervalle de mise à jour doit être soit 0 (désactivé), soit compris entre "
 #~ "6 et 1440."
 
 #~ msgid ""
@@ -221,6 +251,22 @@ msgstr ""
 #~ msgstr ""
 #~ "Un nom de serveur de temps NTP doit seulement contenir les caractères a-z, 0-"
 #~ "9, '-' et '.'."
+
+#~ msgid "show process information"
+#~ msgstr "Détail des processus"
+
+#~ msgid ""
+#~ "The static route configuration has been changed.<br>You must apply the "
+#~ "changes in order for them to take effect."
+#~ msgstr ""
+#~ "La configuration des routes statiques a été modifiée.<br>Vous devez "
+#~ "appliquer les modifications pour qu'elles prennent effet."
+
+#~ msgid "Gateway to be used to reach the destination network"
+#~ msgstr "Routeur à utiliser pour atteindre la destination"
+
+#~ msgid "You may enter a description here for your reference (not parsed)."
+#~ msgstr "Vous pouvez entrer une description ici."
 
 #~ msgid "The digital signature on this image is invalid."
 #~ msgstr "La signature numérique de cette image est invalide."
@@ -231,12 +277,27 @@ msgstr ""
 #~ msgid "There has been an error verifying the signature on this image."
 #~ msgstr "Une erreur s'est produite lors de la vérification de cette image."
 
+#~ msgid "Certificate and key must always be specified together."
+#~ msgstr "Le certificat et la clef doivent être spécifiés ensemble."
+
+#~ msgid "This certificate does not appear to be valid."
+#~ msgstr "Ce certificat n'est pas valide."
+
+#~ msgid "This key does not appear to be valid."
+#~ msgstr "La clef ne semble pas valide."
+
 #~ msgid ""
 #~ "The options on this page are intended for use by advanced users only, and "
 #~ "there's <strong>NO</strong> support for them."
 #~ msgstr ""
 #~ "Les options de cette page sont destinées à des utilisateurs avancés "
 #~ "uniquement et il n'y a <strong>AUCUN</strong> support sur ces options."
+
+#~ msgid "webGUI SSL certificate/key"
+#~ msgstr "Clef/certificat SSL de l'interface web"
+
+#~ msgid "Paste an RSA private key in PEM format here."
+#~ msgstr "Copiez une clef privée RSA au format PEM ici."
 
 #~ msgid "TCP idle timeout"
 #~ msgstr "Timeout inactivité TCP"
@@ -248,9 +309,23 @@ msgstr ""
 #~ "improperly shut down. The default is 9000 seconds (2.5 hours)."
 #~ msgstr ""
 #~ "Les connexions TCP inactives seront supprimées de la table d'état si aucun "
-#~ "paquet n'est reçu durant le nombre de secondes spécifié. N'indiquez pas une "
-#~ "valeur trop haute sinon la table d'état pourrait se remplir de connexions "
-#~ "improprement terminées. Réglage par défaut : 2.5 heures."
+#~ "paquet n'est recu durant le nombre de secondes spécifié. N'indiquez pas une "
+#~ "valeur trop haute ou la table d'état pourrait se remplir de connexions "
+#~ "improprement terminées. Réglage par defaut : 2.5 heures."
+
+#~ msgid "S.M.A.R.T Daemon"
+#~ msgstr "Démon S.M.A.R.T"
+
+#~ msgid "Enable the S.M.A.R.T daemon"
+#~ msgstr "Activer le démon S.M.A.R.T"
+
+#~ msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
+#~ msgstr ""
+#~ "Surveiller les périphériques S.M.A.R.T en enregistrant leur état dans le "
+#~ "journal."
+
+#~ msgid "Zeroconf"
+#~ msgstr "Zeroconf"
 
 #~ msgid "Swap size"
 #~ msgstr "Taille du fichier de pagination"
@@ -258,14 +333,43 @@ msgstr ""
 #~ msgid "mount share"
 #~ msgstr "monter le partage"
 
+#~ msgid "Assign network ports"
+#~ msgstr "Assigner les cartes réseau"
+
 #~ msgid "A valid gateway must be specified."
 #~ msgstr "Une passerelle valide doit être spécifiée."
+
+#~ msgid "Standard MTU is 1500, use 9000 for jumbo frame."
+#~ msgstr "Le MTU standard est de 1500, utilisez 9000 pour les jumbo frames."
+
+#~ msgid ""
+#~ "Device polling is a technique that lets the system periodically poll network "
+#~ "devices for new data instead of relying on interrupts. This can reduce CPU "
+#~ "load and therefore increase throughput, at the expense of a slightly higher "
+#~ "forwarding delay (the devices are polled 1000 times per second). Not all "
+#~ "NICs support polling; see the m0n0wall homepage for a list of supported "
+#~ "cards."
+#~ msgstr ""
+#~ "Le sondage de périphérique est une technique permettant au système "
+#~ "d'interroger périodiquement les périphériques réseau pour vérifier la "
+#~ "présence de nouvelles données plutot que de se baser sur les interruptions. "
+#~ "Ceci peut réduire la charge CPU et donc augmenter le débit, au détriment "
+#~ "d'un délai de transfert plus élevé (les périphériques sont sondés 1000 fois "
+#~ "par seconde). Toutes les cartes réseau ne supportent pas cette technique; "
+#~ "voyez le site de <a href=http://m0n0.ch/wall>m0n0wall</a> pour trouver la "
+#~ "liste des cartes supportées."
+
+#~ msgid "Speed"
+#~ msgstr "Vitesse"
 
 #~ msgid "Enable Optional "
 #~ msgstr "Activer l'interface optionnelle "
 
 #~ msgid " interface"
 #~ msgstr " ."
+
+#~ msgid "Enter a description (name) for the interface here."
+#~ msgstr "Entrez une description pour l'interface ici."
 
 #~ msgid "Static IP configuration"
 #~ msgstr "Configuration avec IP statique"
@@ -276,8 +380,42 @@ msgstr ""
 #~ msgid "General configuration"
 #~ msgstr "Configuration générale"
 
+#~ msgid ""
+#~ "The value in this field is sent as the DHCP hostname when requesting a DHCP "
+#~ "lease."
+#~ msgstr ""
+#~ "Le contenu de ce champ est envoyé en tant que nom d'hôte DHCP lors de la "
+#~ "demande de bail DHCP."
+
+#~ msgid "Client Identifier"
+#~ msgstr "Identificateur du client"
+
+#~ msgid ""
+#~ "The value in this field is sent as the DHCP client identifier when "
+#~ "requesting a DHCP lease."
+#~ msgstr ""
+#~ "La valeur de ce champ est envoyée en tant qu'identificateur du client lors "
+#~ "de la demande de bail DHCP."
+
+#~ msgid "Calculate netmask bits"
+#~ msgstr "Calculer le nombre de bits du masque de sous réseau"
+
+#~ msgid ""
+#~ "The LAN configuration has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "La configuration LAN a changé.<br>Vous devez appliquer les changements pour "
+#~ "qu'ils prennent effet."
+
 #~ msgid "Manage"
 #~ msgstr "Gérer"
+
+#~ msgid ""
+#~ "The disk list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr ""
+#~ "La liste des disques a changé.<br>Vous devez appliquer les changements pour "
+#~ "qu'ils prennent effet."
 
 #~ msgid "First configuration step: Add your hardrive to the disk list."
 #~ msgstr "Première étape: Ajoutez votre disque dur à la liste des disques."
@@ -289,7 +427,7 @@ msgstr ""
 #~ "Puts the hard disk into standby mode when the selected amount of time after "
 #~ "the last access has elapsed. <em>Do not set this for CF cards.</em>"
 #~ msgstr ""
-#~ "Met le disque en veille lorsque la durée spécifiée depuis le dernier accès "
+#~ "Mets le disque en veille lorsque la durée spécifiée depuis le dernier accès "
 #~ "est écoulée. <em>N'activez PAS cette option pour les cartes Compact "
 #~ "Flash.</em>"
 
@@ -310,7 +448,7 @@ msgstr ""
 #~ "Flash.</em>"
 
 #~ msgid "Preformatted FS"
-#~ msgstr "Système de fichier préformaté"
+#~ msgstr "Système de fichier prééxistant"
 
 #~ msgid "Can't format the drive where FreeNAS configuration file is installed!"
 #~ msgstr ""
@@ -335,7 +473,7 @@ msgstr ""
 #~ "The disk is currently mounted! The mount point will be removed temporary to "
 #~ "perform selected command."
 #~ msgstr ""
-#~ "Ce disque est monté!<br>Il va être temporairement démonté afin d'exécuter "
+#~ "Ce disque est monté!<br>Il va être temporairement démonté afin d' exécuter "
 #~ "la commande."
 
 #~ msgid "iSCSI"
@@ -371,8 +509,18 @@ msgstr ""
 #~ msgid "RAID"
 #~ msgstr "RAID"
 
+#~ msgid ""
+#~ "The Raid configuration has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "La configuration RAID a changé.<br>Vous devez appliquer les changements pour "
+#~ "qu'ils prennent effet."
+
 #~ msgid "ERR Could not save RAID configuration.\n"
 #~ msgstr "ERREUR Impossible de sauvegarder la configuration RAID.\n"
+
+#~ msgid "Members of this volume"
+#~ msgstr "Membres de ce volume"
 
 #~ msgid "Disk format UFS output:"
 #~ msgstr "Formatage du disque en UFS:"
@@ -390,6 +538,19 @@ msgstr ""
 #~ "1. N'utilisez ces actions spéciales qu'à des fins de débogage!<br>2. Nul "
 #~ "besoin d'utiliser ce menu pour démarrer un volume RAID (démarrage "
 #~ "automatique)."
+
+#~ msgid ""
+#~ "The mount point list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "La liste des points de montage a été modifiée.<br>Vous devez appliquer les "
+#~ "changements pour qu'ils prennent effet."
+
+#~ msgid "delete mount"
+#~ msgstr "Supprimer le point de montage"
+
+#~ msgid "add mount"
+#~ msgstr "Ajouter un point de montage"
 
 #~ msgid "The description name contain invalid characters."
 #~ msgstr "La description contient des caractères invalides."
@@ -423,7 +584,7 @@ msgstr ""
 #~ msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
 #~ msgstr ""
 #~ "Vous ne pouvez pas démonter un disque contenant le fichier de pagination ou "
-#~ "un fichier-cible iSCSI!"
+#~ "le fichier cible-iSCSI!"
 
 #~ msgid "The Netbios name contains invalid characters."
 #~ msgstr "Le nom Netbios contient des caractères invalides."
@@ -443,8 +604,14 @@ msgstr ""
 #~ msgid "CIFS share"
 #~ msgstr "Partage CIFS"
 
+#~ msgid "NetBiosName"
+#~ msgstr "Nom Netbios"
+
 #~ msgid "Workgroup to be member of."
 #~ msgstr "Groupe de travail auquel rattacher le NAS."
+
+#~ msgid "WINS Server IP address."
+#~ msgstr "Adresse IP du serveur WINS."
 
 #~ msgid "Recycle Bin"
 #~ msgstr "Corbeille"
@@ -453,7 +620,14 @@ msgstr ""
 #~ msgstr "Activer la corbeille"
 
 #~ msgid "This will create a recycle bin on the CIFS shares."
-#~ msgstr "Ceci créera une corbeille pour les partages CIFS."
+#~ msgstr "Ceci crééra une corbeille pour les partages CIFS."
+
+#~ msgid ""
+#~ "The shares has been modified.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr ""
+#~ "Les partages ont été modifiés.<br>Vous devez appliquer les changements pour "
+#~ "qu'ils prennent effet."
 
 #~ msgid "The maximum Number of client must be a number."
 #~ msgstr "Le nombre maximum de clients doit être un entier."
@@ -499,6 +673,12 @@ msgstr ""
 #~ msgid "Rsync Client Synchronization"
 #~ msgstr "Synchronisation client Rsync"
 
+#~ msgid "IP address of remote RSYNC server"
+#~ msgstr "Adresse IP du Serveur RSYNC distant"
+
+#~ msgid "RSYNC Options"
+#~ msgstr "Options RSYNC"
+
 #~ msgid "Shares to be synchronized"
 #~ msgstr "Partages à synchroniser"
 
@@ -507,7 +687,7 @@ msgstr ""
 
 #~ msgid "You can't have the same mount point for source and destination!"
 #~ msgstr ""
-#~ "Vous ne pouvez pas utiliser le même point de montage comme source et "
+#~ "Vous ne pouvez pas avoir le même point de montage comme source et "
 #~ "destination!"
 
 #~ msgid "Rsync Local Synchronization"
@@ -528,11 +708,21 @@ msgstr ""
 #~ msgid "Enable TCP Forwarding"
 #~ msgstr "Activer le transfert TCP"
 
+#~ msgid "Directories to be shared."
+#~ msgstr "Répertoires à partager."
+
 #~ msgid "No content directory to be shared."
 #~ msgstr "Aucun contenu à partager."
 
+#~ msgid ""
+#~ "The User list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr ""
+#~ "La liste des utilisateurs a été modifiée.<br>Vous devez appliquer les "
+#~ "changements pour qu'ils prennent effet."
+
 #~ msgid "You must create a group first."
-#~ msgstr "Vous devez d'abord créer un groupe"
+#~ msgstr "Vious devez d'abord créer un groupe"
 
 #~ msgid "Unique login name of user."
 #~ msgstr "Identifiant unique d'un utilisateur."
@@ -571,8 +761,29 @@ msgstr ""
 #~ msgid "The Group desc contains invalid characters."
 #~ msgstr "La description du groupe contient un caractère invalide."
 
+#~ msgid "AD server name"
+#~ msgstr "Nom du serveur AD"
+
+#~ msgid "AD server IP"
+#~ msgstr "IP du serveur AD"
+
+#~ msgid "IP address of MS Active Directory server."
+#~ msgstr "Adresse IP du serveur Active Directory."
+
+#~ msgid "Domain name in old format."
+#~ msgstr "Nom du domaine à l'ancien format (NETBIOS)."
+
+#~ msgid "Password of domain administrator account, enter it here twice."
+#~ msgstr "Mot de passe d'un compte administrateur du domaine, à entrer 2 fois."
+
+#~ msgid "Edit VLAN"
+#~ msgstr "Modifier un VLAN"
+
 #~ msgid "ATAidle"
 #~ msgstr "ATAidle"
+
+#~ msgid "Free Space"
+#~ msgstr "Espace libre"
 
 #~ msgid ""
 #~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
@@ -621,11 +832,50 @@ msgstr ""
 #~ "Deuxième étape de la configuration: Déclarer le système de fichiers utilisé "
 #~ "par votre <a href=%s>disque configuré précédemment</a>."
 
+#~ msgid "SSHD events"
+#~ msgstr "Evénements SSHD"
+
+#~ msgid "RSYNCD events"
+#~ msgstr "Evénements RSYNCD"
+
+#~ msgid "SMARTD events"
+#~ msgstr "Evénements SMARTD"
+
+#~ msgid "List of partition on all detected disk"
+#~ msgstr "Liste des partitions sur tous les disques détectés"
+
+#~ msgid "List of SMART capabilities on all detected disk"
+#~ msgstr "Liste des aptitudes SMART sur tous les disques détectés"
+
 #~ msgid "List of Advanced ATA capabilities on all ATA disk"
 #~ msgstr "Liste des aptitudes ATA avancées sur tous les disques ATA"
 
 #~ msgid "Show the list of available target Name on the iSCSI target"
 #~ msgstr "Afficher la liste des noms de cibles disponibles sur la cible iSCSI"
+
+#~ msgid "AD Authentication disabled"
+#~ msgstr "Authentification AD désactivée"
+
+#, php-format
+#~ msgid "Count must be between 1 and %d"
+#~ msgstr "Le masque doit être compris entre 1 et %d"
+
+#~ msgid "Ping output"
+#~ msgstr "Message Ping"
+
+#~ msgid "Maximum number of hops"
+#~ msgstr "Nombre de sauts maximum"
+
+#~ msgid "Traceroute output"
+#~ msgstr "Message Traceroute"
+
+#, php-format
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
+#~ "hostnames&quot; is checked on the <a href=%s>%s</a> page."
+#~ msgstr ""
+#~ "Les adresses IP sont résolues en noms d'hôtes si l'option &quot;Résoudre les "
+#~ "adresses IP en noms d'hôtes&quot; est cochée sur la page <a href=%s>%s</a>."
 
 #~ msgid "Erasing MBR and all partitions"
 #~ msgstr "Détruire le MBR et toutes les partitions"
@@ -691,6 +941,9 @@ msgstr ""
 #~ msgid "Attaching..."
 #~ msgstr "Attachement..."
 
+#~ msgid "Sensors"
+#~ msgstr "Sondes"
+
 #~ msgid "Detaching..."
 #~ msgstr "Détachement..."
 
@@ -713,8 +966,24 @@ msgstr ""
 #~ "Utilisez cette option pour activer la reprise des transferts echoués à leur "
 #~ "point d'interruption."
 
+#~ msgid ""
+#~ "The iSCSI target list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "La liste des cibles iSCSI a changé.<br>Vous devez appliquer les changements "
+#~ "pour qu'ils prennent effet."
+
 #~ msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
 #~ msgstr "Vous devez avoir au minimum 256Mo de RAM pour créer une cible iSCSI."
+
+#~ msgid "FTP Server disabled"
+#~ msgstr "Serveur FTP désactivé"
+
+#~ msgid "FTP users"
+#~ msgstr "Utilisateurs FTP"
+
+#~ msgid "FTP connected users"
+#~ msgstr "Utilisateurs connectés en FTP"
 
 #~ msgid "Save and Restart UPnP"
 #~ msgstr "Sauvegarder et redémarrer UPnP"
@@ -743,6 +1012,20 @@ msgstr ""
 #~ msgid "Remote share (source)"
 #~ msgstr "Partage distant (source)"
 
+#~ msgid ""
+#~ "The RSYNC client list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "La liste des clients RSYNC a changé.<br>Vous devez appliquer les changements "
+#~ "pour qu'ils prennent effet."
+
+#~ msgid ""
+#~ "The RSYNC local list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "La liste des clients RSYNC locaux a changé.<br>Vous devez appliquer les "
+#~ "changements pour qu'ils prennent effet."
+
 #~ msgid "Remote source share name"
 #~ msgstr "Nom du partage source distant"
 
@@ -758,8 +1041,18 @@ msgstr ""
 #~ msgid "Define an host name can be useful for NFS."
 #~ msgstr "Définir un nom d'hôte peut être utile pour NFS."
 
+#~ msgid ""
+#~ "The host list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr ""
+#~ "La liste des hôtes a changé.<br>Vous devez appliquer les changements pour "
+#~ "qu'ils prennent effet."
+
 #~ msgid "Initializing disk"
 #~ msgstr "Initialisation du disque"
+
+#~ msgid "Enable Zeroconf"
+#~ msgstr "Activer le protocole Zeroconf."
 
 #~ msgid "LDAP server IP"
 #~ msgstr "IP du serveur LDAP"
@@ -795,6 +1088,11 @@ msgstr ""
 #~ "ordinateur soit dans le même réseau que la nouvelle adresse du "
 #~ "NAS</span></li><li><span class=\"vexpl\">accédez à l'interface avec la "
 #~ "nouvelle adresse IP</span></li></ul>"
+
+#~ msgid ""
+#~ "The content directory list has been changed.<br>You must apply the changes "
+#~ "in order for them to take effect."
+#~ msgstr "La liste"
 
 #~ msgid ""
 #~ "The changes have been saved. You must <a href=reboot.php>reboot</a> your NAS "
@@ -1007,14 +1305,95 @@ msgstr ""
 #~ "Ces commandes seront exécutées pré ou post initialisation (démarrage du "
 #~ "système)."
 
-#~ msgid "Edit command"
-#~ msgstr "Modifier la commande"
-
 #~ msgid "Execute command pre or post system initialization (booting)."
 #~ msgstr "Exécuter une commande pré ou post initialisation."
 
 #~ msgid "Startup"
 #~ msgstr "Démarrage"
+
+#~ msgid "Accessiblity test to MS domain"
+#~ msgstr "Test d'accessibilité au domaine MS"
+
+#~ msgid ""
+#~ "The encrypted volume list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "La liste des volumes cryptés a été modifiée.<br>Vous devez appliquer les "
+#~ "modifications pour qu'elles prennent effet."
+
+#~ msgid ""
+#~ "The iSCSI disk list has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr ""
+#~ "La liste des disques iSCSI a été modifiée.<br>Vous devez appliquer les "
+#~ "modifications pour qu'elles prennent effet."
+
+#~ msgid "ISO"
+#~ msgstr "ISO"
+
+#~ msgid "IPv4 Gateway"
+#~ msgstr "Passerelle IPv4"
+
+#~ msgid "Global Configuration"
+#~ msgstr "Configuration globale"
+
+#~ msgid "IPv4 address"
+#~ msgstr "Adresse IPv4"
+
+#~ msgid ""
+#~ "Enter a custom port number for the HTTP server if you want to override the "
+#~ "default (49152). Only dynamic or private ports can be used (from 49152 "
+#~ "through 65535)."
+#~ msgstr ""
+#~ "Entrez le numéro d'un port pour le serveur HTTP si vous désirez changer "
+#~ "celui par défaut (49152). Seuls des ports dynamiques ou privés peuvent être "
+#~ "utilisés (de 49152 à 65535)."
+
+#~ msgid "desc"
+#~ msgstr "desc"
+
+#~ msgid "Pick a date"
+#~ msgstr "Choisir une date"
+
+#~ msgid ""
+#~ "The cron job list has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr ""
+#~ "La liste des tâches cron a été modifiée.<br>Vous devez appliquer les "
+#~ "modifications pour qu'elles prennent effet."
+
+#~ msgid ""
+#~ "The package list has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr ""
+#~ "La liste des paquetages a été modifiée.<br>Vous devez appliquer les "
+#~ "modifications pour qu'elles prennent effet."
+
+#~ msgid "Accessible through 'http://ip_address:port'."
+#~ msgstr "Accessible par 'http://adresse_ip:port'."
+
+#, fuzzy
+#~ msgid ""
+#~ "Location where the content database file will be stored. The bookmark file "
+#~ "will also be generated in that directory."
+#~ msgstr ""
+#~ "Emplacement où la base de données de contenu sera enregistrée. Le fichier "
+#~ "signet sera aussi généré dans ce répertoire."
+
+#~ msgid "Web user interface"
+#~ msgstr "Interface utilisateur web"
+
+#~ msgid "Sony Playstation 3"
+#~ msgstr "Sony Playstation 3"
+
+#~ msgid "Telegent TG100"
+#~ msgstr "Telegent TG100"
+
+#~ msgid "ZyXEL DMA-1000"
+#~ msgstr "ZyXEL DMA-1000"
+
+#~ msgid "Helios X3000"
+#~ msgstr "Helios X3000"
 
 msgid " interfaces:"
 msgstr " interfaces:"
@@ -1031,6 +1410,10 @@ msgid "%s advertises itself as a time server to Windows clients."
 msgstr "%s s'annonce commme un serveur de temps pour les clients Windows."
 
 #, php-format
+msgid "%s available of %sB"
+msgstr "%s disponible de %sB"
+
+#, php-format
 msgid "%s interface"
 msgstr "Interface %s"
 
@@ -1041,6 +1424,10 @@ msgstr "interface %s (SSID '%s')"
 #, php-format
 msgid "%s of %sB"
 msgstr "%s de %sB"
+
+#, php-format
+msgid "%s used of %sB"
+msgstr "%s utilisé de %sB"
 
 #, php-format
 msgid "%s uses %s to create %s arrays."
@@ -1069,6 +1456,9 @@ msgstr ""
 "pas nécessaire d'utiliser ce menu pour démarrer le volume RAID (démarrage "
 "automatique)."
 
+msgid "802.1Q VLAN tag (between 1 and 4094)."
+msgstr ""
+
 #, php-format
 msgid ""
 "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
@@ -1082,6 +1472,36 @@ msgid ""
 msgstr ""
 "Un nom de serveur de temps NTP contient uniquement les caractères a-z, 0-9, "
 "'-' et '.'."
+
+#, php-format
+msgid "A VLAN with the tag %s is already defined on this interface."
+msgstr "Un VLAN avec l'étiquette %s est déjà défini sur cette interface"
+
+#, fuzzy
+msgid ""
+"A directory listing is generated if a directory is requested and no index-"
+"file (index.php, index.html, index.htm or default.htm) was found in that "
+"directory."
+msgstr ""
+"Un listing du répertoire est généré si un répertoire est requis et aucun "
+"fichier d'index (index.php, index.html, index.htm ou default.htm) n'a été "
+"trouvé dans ce répertoire."
+
+#, fuzzy
+msgid ""
+"A host name alias. This option can appear multiple times, for each domain "
+"that has the same IP. Use a space to separate multiple alias names."
+msgstr ""
+"Un alias de nom de serveur. Cette option peut apparaître un certain nombre "
+"de fois, pour chaque domaine ayant la même IP. Utiliser un espace pour "
+"séparer les alias multiples."
+
+msgid ""
+"A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
+"local network and the capabilities of the adaptor. It may be specified "
+"either as a plain string or as a string of hexadecimal digits preceded by "
+"'0x'."
+msgstr ""
 
 msgid "A route to this destination network already exists."
 msgstr "Une route pour cette destination existe déjà."
@@ -1116,9 +1536,6 @@ msgstr "Une adresse IPv6 valide doit être spécifiée."
 msgid "A valid IPv6 prefix must be specified."
 msgstr "Un préfixe IPv6 valide doit être spécifié."
 
-msgid "A valid TCP/IP port must be specified for the webGUI port."
-msgstr "Un port TCP/IP valide doit être spécifié pour l'interface web."
-
 msgid "A valid destination network must be specified."
 msgstr "Un réseau de destination valide doit être spécifié."
 
@@ -1140,18 +1557,16 @@ msgstr "Un réseau valide doit être spécifié."
 msgid "A valid prefix (1-128) must be specified."
 msgstr "Un préfixe valide (1-128) doit être spécifié."
 
-msgid "AD Authentication disabled"
-msgstr "Authentification AD désactivée"
+#, fuzzy
+msgid "A valid systctl MIB value."
+msgstr "Une valeur systctl MIB valide."
+
+msgid "AD authentication disabled"
+msgstr "authentification AD désactivée"
 
 msgid "AD or PDC name."
 msgstr ""
 "Nom du serveur Active Directory ou du Controleur Principal de Domaine NT4."
-
-msgid "AD server IP"
-msgstr "IP du serveur AD"
-
-msgid "AD server name"
-msgstr "Nom du serveur AD"
 
 msgid "AFP"
 msgstr "AFP"
@@ -1159,29 +1574,34 @@ msgstr "AFP"
 msgid "AFP Server"
 msgstr "Serveur AFP"
 
-msgid "ARP Table"
-msgstr "Table ARP"
+msgid "ARP Tables"
+msgstr "Tables ARP"
 
-msgid "ARP table"
-msgstr "Table ARP"
+msgid "ARP tables"
+msgstr "tables ARP"
 
 msgid "Access"
 msgstr "Accès"
 
+msgid "Access Restrictions"
+msgstr "Restrictions d'accès"
+
 msgid "Access mode"
 msgstr "Mode d'accès"
-
-msgid "Accessible through 'http://ip_address:port'."
-msgstr "Accessible par 'http://adresse_ip:port'."
-
-msgid "Accessiblity test to MS domain"
-msgstr "Test d'accessibilité au domaine MS"
 
 msgid "Acoustic level"
 msgstr "Niveau acoustique"
 
 msgid "Activate"
 msgstr "Activer"
+
+msgid "Activate S.M.A.R.T. monitoring for this device."
+msgstr "Activer la surveillance S.M.A.R.T. pour ce périphérique."
+
+msgid ""
+"Activate email report if you want to be notified if a failure or a new error "
+"has been detected, or if a S.M.A.R.T. command to a disk fails."
+msgstr ""
 
 msgid "Active Directory"
 msgstr "Active Directory"
@@ -1192,6 +1612,9 @@ msgstr "Ajouter"
 msgid "Add Host"
 msgstr "Ajouter un hôte"
 
+msgid "Add MIB"
+msgstr "Ajouter une MIB"
+
 msgid "Add RAID"
 msgstr "Ajouter un RAID"
 
@@ -1200,6 +1623,13 @@ msgstr "Ajouter un RSYNC"
 
 msgid "Add Route"
 msgstr "Ajouter une route"
+
+msgid "Add URL"
+msgstr "Ajouter une URL"
+
+#, fuzzy
+msgid "Add additional scheduled self-test."
+msgstr "Ajouter des auto tests additionnels planifiés."
 
 msgid "Add command"
 msgstr "Ajouter une commande"
@@ -1231,8 +1661,18 @@ msgstr "Ajouter une tache"
 msgid "Add module"
 msgstr "Ajout module"
 
+msgid "Add mount point"
+msgstr "Ajouter le point de montage"
+
+msgid "Add option"
+msgstr "Ajouter une option"
+
 msgid "Add parameter"
 msgstr "Ajouter paramètre"
+
+#, fuzzy
+msgid "Add self-test"
+msgstr "Ajouter un auto test."
 
 msgid "Add share"
 msgstr "Ajouter partage"
@@ -1252,10 +1692,17 @@ msgstr "Adresse"
 msgid "Administration password"
 msgstr "Mot de passe admin"
 
+#, fuzzy
+msgid "Administrative WebGUI"
+msgstr "Interface Web d'administration"
+
 msgid "Administrator name"
 msgstr "Nom de l'administrateur"
 
 msgid "Advanced"
+msgstr "Configuration avancée"
+
+msgid "Advanced Configuration"
 msgstr "Configuration avancée"
 
 msgid "Advanced Options"
@@ -1263,9 +1710,6 @@ msgstr "Options avancées"
 
 msgid "Advanced Power Management"
 msgstr "Gestion d'énergie avancée"
-
-msgid "Advanced Setup"
-msgstr "Installation avancée"
 
 msgid "Advanced settings"
 msgstr "Paramètres avancés"
@@ -1299,8 +1743,9 @@ msgstr ""
 "NAS</span></li><li><span class='vexpl'>accédez à l'interface avec la "
 "nouvelle adresse IP</span></li></ul>"
 
-msgid "Alias host name."
-msgstr ""
+#, fuzzy
+msgid "Aggregation protocol"
+msgstr "Protocole d'Agrégation"
 
 msgid "All"
 msgstr "Tous"
@@ -1369,13 +1814,24 @@ msgstr "Port par défaut : 873"
 msgid "Always on"
 msgstr "Toujours actif"
 
+msgid "Always scan"
+msgstr "Scanner toujours"
+
+#, fuzzy
 msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
 "across a reboot, cluster, ..."
 msgstr ""
+"Utiliser toujours zéro comme numéro de périférique, cela peut aider lorsque "
+"le numéro de périférique n'est pas constant au travers d'un reboot, d'un "
+"cluster, ..."
 
 msgid "An host with this name already exists."
 msgstr "Une hôte portant ce nom existe déjà."
+
+#, fuzzy
+msgid "An interface with the specified description already exists."
+msgstr "Il existe déjà une interface ayant cette description"
 
 msgid "Anonymous users only"
 msgstr "Utilisateurs anonymes seulement"
@@ -1391,9 +1847,6 @@ msgstr "Etes-vous sûr de vouloir redémarrer le système?"
 
 msgid "Are you sure you want to shutdown the system?"
 msgstr "Etes-vous sûr de vouloir arrêter le NAS?"
-
-msgid "Assign network ports"
-msgstr "Assigner les cartes réseau"
 
 msgid "Associated stations"
 msgstr "Stations associées"
@@ -1412,11 +1865,17 @@ msgstr "Attaché"
 msgid "Attaching provider '%s'."
 msgstr "Attaching provider '%s'."
 
+msgid "Authenticate URL"
+msgstr "Authentifier l'URL"
+
 msgid "Authentication"
 msgstr "Authentification"
 
 msgid "Authorised network"
 msgstr "R&eacute;seau autoris&eacute;"
+
+msgid "Auto"
+msgstr "Automatique"
 
 msgid "AutoScale"
 msgstr "Echelle auto"
@@ -1433,6 +1892,9 @@ msgstr "Auxiliary parameters"
 msgid "Backup configuration"
 msgstr "Sauvegarder la configuration"
 
+msgid "Backup file"
+msgstr "Fichier de sauvegarde"
+
 msgid "Backup/Restore"
 msgstr "Sauvegarde/Restauration"
 
@@ -1448,6 +1910,12 @@ msgstr "DN de base"
 msgid "Browseable"
 msgstr "Visible"
 
+msgid "CCMP"
+msgstr "CCMP"
+
+msgid "CCMP TKIP"
+msgstr "CCMP TKIP"
+
 #, fuzzy
 msgid "CD/DVD or Old Software RAID"
 msgstr "CD/DVD ou vieux logiciels RAID"
@@ -1455,14 +1923,20 @@ msgstr "CD/DVD ou vieux logiciels RAID"
 msgid "CIFS/SMB"
 msgstr "CIFS/SMB"
 
+msgid "CIFS/SMB disabled"
+msgstr "CIFS/SMB désactivé"
+
+msgid "CIFS/SMB informations"
+msgstr "Informations CIFS/SMB"
+
 msgid "CPU"
 msgstr "CPU"
 
 msgid "CPU load"
 msgstr "Charge CPU"
 
-msgid "Calculate netmask bits"
-msgstr "Calculer le nombre de bits du masque de sous réseau"
+msgid "CPU usage"
+msgstr "utilisation CPU"
 
 msgid "Can't format the OS origin disk!"
 msgstr "Impossible de formatter le disque de l'OS!"
@@ -1481,14 +1955,14 @@ msgstr ""
 msgid "Certificate"
 msgstr "Certificat"
 
-msgid "Certificate and key must always be specified together."
-msgstr "Le certificat et la clef doivent être spécifiés ensemble."
-
 msgid "Changes to this option will take effect after a reboot."
 msgstr "Ce changement ne prend effet qu'au prochain redémarrage."
 
 msgid "Channel"
 msgstr "Canal"
+
+msgid "Check interval"
+msgstr "Contrôler l'intervalle"
 
 msgid "Check shared secret:"
 msgstr "Check shared secret:"
@@ -1515,14 +1989,11 @@ msgstr ""
 msgid "Client"
 msgstr "Client"
 
-msgid "Client Identifier"
-msgstr "Identificateur du client"
-
 msgid "Client sees lowercase, server sees uppercase"
-msgstr ""
+msgstr "Les client voient en minuscules, les serveurs en majuscules"
 
 msgid "Client sees uppercase, server sees lowercase"
-msgstr ""
+msgstr "Les client voient en majuscules, les serveurs en minuscules"
 
 msgid "Collecting initial data, please wait..."
 msgstr "Collecte des premieres donnees, veuillez patienter..."
@@ -1559,12 +2030,18 @@ msgid ""
 "compression depends on the type of the file, and varies widely. Useful for "
 "internet transfer only."
 msgstr ""
+"La compression peut servir si votre connexion est lente. L'efficacité de la "
+"compression dépend du type de fichier, et varie grandement. Utile seulement "
+"pour des transferts par internet."
 
 msgid "Configuring"
 msgstr "Configuration"
 
 msgid "Confirmation"
 msgstr "Confirmation"
+
+msgid "Connected FTP users"
+msgstr "Utilisateurs FTP connectés"
 
 msgid "Console menu"
 msgstr "Menu de la console"
@@ -1585,10 +2062,6 @@ msgstr "Contenu"
 msgid "Count"
 msgstr "Nombre"
 
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr "Le masque doit être compris entre 1 et %d"
-
 msgid "Create"
 msgstr "Créer"
 
@@ -1605,11 +2078,20 @@ msgstr "Créer masque"
 msgid "Create work directory if it doesn't exist"
 msgstr "Créer le répertoire de travail s'il n' existe pas"
 
+msgid "Critical"
+msgstr "Critique"
+
 msgid "Cron"
 msgstr "Cron"
 
 msgid "Cron job"
 msgstr "Cron job"
+
+msgid "DAAP"
+msgstr "DAAP"
+
+msgid "DAAP Server"
+msgstr "Serveur DAAP"
 
 msgid "DDP"
 msgstr "DDP"
@@ -1620,6 +2102,9 @@ msgstr "DHCP"
 msgid "DN to bind"
 msgstr "DN à utiliser"
 
+msgid "DNS settings"
+msgstr "paramètres DNS"
+
 #, php-format
 msgid ""
 "DO NOT abort the firmware upgrade once it has started. %s will reboot "
@@ -1628,6 +2113,12 @@ msgid ""
 "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
 "System configuration before doing a Firmware upgrade."
 msgstr ""
+"NE PAS arrêter la mise à jour du logiciel une fois qu'elle a commencé. %s va "
+"redémarrer automatiquement après avoir enregistré le nouveau logiciel. La "
+"configuration sera conservée.<br>Il vous faut un minimum de %d Mb de RAM "
+"pour effectuer la mise à jour du logiciel.<br>Il est fortement recommandé de "
+"faire une <a href=%s>Sauvegarde</a> de la configuration du Système avant de "
+"lancer une mise à jour du logiciel."
 
 msgid "Daemon"
 msgstr "Démon"
@@ -1653,14 +2144,24 @@ msgstr "Standard"
 msgid "Default is 21"
 msgstr "Port par défaut : 21"
 
+msgid "Define directories/URL's that require authentication."
+msgstr "Définir des répertoires/URL's qui requièrent une authentification."
+
 msgid "Defining a hostname can be useful for NFS."
 msgstr "Définir un nom d'hôte peut être utile pour NFS."
+
+msgid "Delete"
+msgstr "Effacer"
 
 msgid "Delete ARP entry"
 msgstr "Supprimer l'entrée ARP"
 
 msgid "Delete Host"
 msgstr "Supprimer un hôte"
+
+#, fuzzy
+msgid "Delete MIB"
+msgstr "Supprimer MIB"
 
 msgid "Delete RAID"
 msgstr "Supprimer un RAID"
@@ -1670,6 +2171,15 @@ msgstr "Supprimer un RSYNC"
 
 msgid "Delete Route"
 msgstr "Suppression de la route"
+
+msgid "Delete URL"
+msgstr "Effacer l'URL"
+
+msgid "Delete all MIBs"
+msgstr "Effacer toutes les MIB"
+
+msgid "Delete all options"
+msgstr "Effacer toutes les options"
 
 msgid "Delete command"
 msgstr "Supprimer la commande"
@@ -1704,8 +2214,18 @@ msgstr "Supprimer la tâche"
 msgid "Delete module"
 msgstr "Supprimer module"
 
+msgid "Delete mount point"
+msgstr "Supprimer le point de montage"
+
+msgid "Delete option"
+msgstr "Supprimer l'option"
+
 msgid "Delete parameter"
 msgstr "Supprimer paramètre"
+
+#, fuzzy
+msgid "Delete self-test"
+msgstr "Supprimer l'auto test."
 
 msgid "Delete share"
 msgstr "Supprimer partage"
@@ -1716,6 +2236,9 @@ msgstr "Supprimer la cible"
 msgid "Delete user"
 msgstr "Supprimer l'utilisateur"
 
+msgid "Deleting"
+msgstr "Suppression"
+
 msgid "Deny"
 msgstr "Interdire"
 
@@ -1725,11 +2248,14 @@ msgstr "Description"
 msgid "Destination email address."
 msgstr "Adresse email de destination"
 
+msgid "Destination host name or IP number."
+msgstr "Nom d'hôte ou adresse IP de destination."
+
 msgid "Destination network"
 msgstr "Réseau de destination"
 
 msgid "Destination network bit count"
-msgstr ""
+msgstr "Nombre de bit du réseau distant"
 
 msgid "Destination network for this static route"
 msgstr "Réseau de destination pour cette route statique"
@@ -1742,6 +2268,13 @@ msgstr "Partages RSYNC distants détectés"
 
 msgid "Device"
 msgstr "Périphérique"
+
+#, php-format
+msgid "Device /dev/%s - %s"
+msgstr "Périphérique /dev/%s - %s"
+
+msgid "Device IP"
+msgstr "IP du périphérique"
 
 msgid "Device is mounted, umount it first before detaching."
 msgstr "Ce périphérique est monté, démontez-le avant de le détacher"
@@ -1767,36 +2300,25 @@ msgstr ""
 "par seconde). Toutes les cartes réseau ne supportent pas cette technique."
 
 msgid ""
-"Device polling is a technique that lets the system periodically poll network "
-"devices for new data instead of relying on interrupts. This can reduce CPU "
-"load and therefore increase throughput, at the expense of a slightly higher "
-"forwarding delay (the devices are polled 1000 times per second). Not all "
-"NICs support polling; see the m0n0wall homepage for a list of supported "
-"cards."
-msgstr ""
-"Le sondage de périphérique est une technique permettant au système "
-"d'interroger périodiquement les périphériques réseau pour vérifier la "
-"présence de nouvelles données plutot que de se baser sur les interruptions. "
-"Ceci peut réduire la charge CPU et donc augmenter le débit, au détriment "
-"d'un délai de transfert plus élevé (les périphériques sont sondés 1000 fois "
-"par seconde). Toutes les cartes réseau ne supportent pas cette technique; "
-"voyez le site de <a href=http://m0n0.ch/wall>m0n0wall</a> pour trouver la "
-"liste des cartes supportées."
-
-msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
 "must be defined before they can be used, and they cannot be used more than "
 "once."
 msgstr ""
+"Des périfériques sont utilisées pour combiner des extensions ou d'autres "
+"périfériques. Les extensions et les périfériques doivent être définis avant "
+"de pouvoir être utilisés, et ils ne peuvent être utilisés plus d'une fois."
 
 msgid "Diagnostics"
 msgstr "Diagnostics"
 
-msgid "Directories to be shared."
-msgstr "Répertoires à partager."
+msgid "Difference"
+msgstr "Différence"
 
 msgid "Directory"
 msgstr "Répertoire"
+
+msgid "Directory listing"
+msgstr "Listing du répertoire"
 
 msgid "Directory mask"
 msgstr "Masque de répertoire"
@@ -1830,6 +2352,10 @@ msgid ""
 "the '/' character illegal."
 msgstr ""
 
+#, fuzzy, php-format
+msgid "Discovered iSCSI target for %s"
+msgstr "Destination iSCSI pour %s trouvée"
+
 msgid "Disk"
 msgstr "Disque"
 
@@ -1848,8 +2374,20 @@ msgstr "Disques (ATA)"
 msgid "Do not set this for CF cards."
 msgstr "Ne pas activer ceci pour les cartes CF."
 
+msgid "Do you really want to delete all MIBs?"
+msgstr "Souhaitez-vous vraiment supprimer toutes les MIBs?"
+
+msgid "Do you really want to delete all options?"
+msgstr "Souhaitez-vous vraiment supprimer toutes les options?"
+
+msgid "Do you really want to delete this MIB?"
+msgstr "Souhaitez-vous vraiment supprimer cette MIB?"
+
 msgid "Do you really want to delete this RSYNC?"
 msgstr "Etes-vous sur de vouloir supprimer ce RSYNC?"
+
+msgid "Do you really want to delete this URL?"
+msgstr "Voulez-vous vraiment supprimer cette URL?"
 
 msgid "Do you really want to delete this command?"
 msgstr "Etes-vous sur de vouloir supprimer cette commande?"
@@ -1893,6 +2431,9 @@ msgstr ""
 "Voulez-vous vraiment supprimer cet initiateur? Tous les éléments l'utilisant "
 "toujours deviendront invalides!"
 
+msgid "Do you really want to delete this interface?"
+msgstr "Souhaitez-vous vraiment supprimer cette interface?"
+
 msgid "Do you really want to delete this module?"
 msgstr "Voulez vous réellement supprimer ce module?"
 
@@ -1902,6 +2443,9 @@ msgid ""
 msgstr ""
 "Voulez-vous vraiment supprimer ce point de montage? Tous les éléments "
 "l'utilisant seront invalidés!"
+
+msgid "Do you really want to delete this option?"
+msgstr "Souhaitez-vous vraiment supprimer cette option?"
 
 msgid "Do you really want to delete this parameter?"
 msgstr "Voulez vous réellement supprimer ce paramètre?"
@@ -1915,6 +2459,10 @@ msgstr ""
 
 msgid "Do you really want to delete this route?"
 msgstr "Etes-vous sur de vouloir supprimer cette route?"
+
+#, fuzzy
+msgid "Do you really want to delete this scheduled self-test?"
+msgstr "Voulez-vous vraiment supprimer cet auto test planifié?"
 
 msgid "Do you really want to delete this share?"
 msgstr "Voulez vous réellement supprimer ce partage?"
@@ -1932,14 +2480,34 @@ msgstr ""
 msgid "Do you really want to uninstall this package?"
 msgstr "Voulez vous réellement désinstaller ce paquet?"
 
+msgid "Document root"
+msgstr "Racine du document"
+
+#, fuzzy
+msgid "Document root of the webserver. Home of the web page files."
+msgstr "Document racine du serveur web. Accueil pour les pages web."
+
 msgid "Domain"
 msgstr "Domaine"
+
+msgid "Domain controller name"
+msgstr "Nom du controleur de domaine"
 
 msgid "Domain name"
 msgstr "Nom de domaine"
 
-msgid "Domain name in old format."
-msgstr "Nom du domaine à l'ancien format (NETBIOS)."
+#, fuzzy
+msgid "Domain name (DNS/Realm-Name)"
+msgstr "Nom de domaine (DNS/Nom de domaine)"
+
+msgid "Domain name (NetBIOS-Name)"
+msgstr "Nom de domaine (Nom NetBIOS)"
+
+msgid "Domain name in old format, e.g. EXAMPLE."
+msgstr "Nom de domaine dans l'ancien format, e.g. EXEMPLE."
+
+msgid "Domain name, e.g. example.com."
+msgstr "Nom de domaine, e.g. exemple.com."
 
 msgid "Don't Erase MBR"
 msgstr "Ne pas effacer le MBR"
@@ -1988,6 +2556,9 @@ msgstr "Editer un fichier"
 msgid "Edit Host"
 msgstr "Edition de l'hôte"
 
+msgid "Edit MIB"
+msgstr "Editer MIB"
+
 msgid "Edit RAID"
 msgstr "Modifier un RAID"
 
@@ -1997,8 +2568,11 @@ msgstr "Modifier un RSYNC"
 msgid "Edit Route"
 msgstr "Edition de la route"
 
-msgid "Edit VLAN"
-msgstr "Modifier un VLAN"
+msgid "Edit URL"
+msgstr "Editer URL"
+
+msgid "Edit command"
+msgstr "Modifier la commande"
 
 msgid "Edit device"
 msgstr "Editer périphériqe"
@@ -2018,14 +2592,27 @@ msgstr "Modifer le groupe"
 msgid "Edit initiator"
 msgstr "Modifier l'initiateur"
 
+msgid "Edit interface"
+msgstr "Editer interface"
+
 msgid "Edit job"
 msgstr "Modifier la tache"
 
 msgid "Edit module"
 msgstr "Editer module"
 
+msgid "Edit mount point"
+msgstr "Editer le point de montage"
+
+msgid "Edit option"
+msgstr "Editer option"
+
 msgid "Edit parameter"
 msgstr "Editer paramêtre"
+
+#, fuzzy
+msgid "Edit self-test"
+msgstr "Editer l'auto-test"
 
 msgid "Edit share"
 msgstr "Modifier un partage"
@@ -2035,6 +2622,9 @@ msgstr "Editer cible"
 
 msgid "Edit user"
 msgstr "Modifier l'utilisateur"
+
+msgid "Email"
+msgstr "Email"
 
 msgid "Email Report"
 msgstr "Rapport par email"
@@ -2051,8 +2641,14 @@ msgstr "Activer le protocole FXP."
 msgid "Enable NTP"
 msgstr "Activer NTP"
 
-msgid "Enable Zeroconf"
-msgstr "Activer le protocole Zeroconf."
+msgid "Enable SMTP authentication."
+msgstr "Activer l'authentification SMTP."
+
+msgid "Enable Zeroconf/Bonjour to advertise services of this device"
+msgstr ""
+
+msgid "Enable authentication."
+msgstr "Activer l'authentification."
 
 #, fuzzy
 msgid "Enable compression."
@@ -2060,6 +2656,12 @@ msgstr "Active la compression."
 
 msgid "Enable device polling"
 msgstr "Activer le Sondage de périphérique"
+
+msgid "Enable directory listing."
+msgstr "Activer le listing des répertoires."
+
+msgid "Enable domain wildcarding."
+msgstr ""
 
 msgid "Enable extended attribute support"
 msgstr "activer le support des attributs étendus"
@@ -2093,6 +2695,9 @@ msgstr "Activer le listing de module"
 msgid "Enable permission inheritance"
 msgstr "Activer l'héritage des permissions"
 
+msgid "Enable proxy authentication."
+msgstr "Activer l'authentification proxy"
+
 msgid "Enable recycle bin"
 msgstr "Activer poubelle"
 
@@ -2102,9 +2707,6 @@ msgstr "Active les attributs DOS enregistrés"
 
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Activer l'enregistrement des journaux sur un serveur distant"
-
-msgid "Enable the S.M.A.R.T daemon"
-msgstr "Activer le démon S.M.A.R.T"
 
 msgid "Enable the system power control utility"
 msgstr "Activer l'utilitaire de contrôle de l'alimentation en énergie"
@@ -2132,6 +2734,13 @@ msgid ""
 "the filetype in a second step. Afpd will potentially destroy such files when "
 "'erroneously' changing bytes in order to do line break translation."
 msgstr ""
+"Activer la traduction des crlf pour les fichiers TEXT, convertissant "
+"automatiquement les fin de ligne macintosh en fin de ligne Unix. "
+"L'utilisation de cette option peut être dangereuse, car des programmes plus "
+"anciens enregistrent des fichiers de données binaires en type 'TEXT' au "
+"moment de leur sauvegarde et substituent le type du fichier dans une seconde "
+"étape. Afpd risque potentiellement de détruire de tels fichiers lors du "
+"changement 'erroné' des bytes pour effectuer la traduction des fin de ligne."
 
 msgid "Encrypted disk name"
 msgstr "Nom du disque crypté"
@@ -2150,33 +2759,22 @@ msgid "Enforce TLS"
 msgstr "TLS renforcé"
 
 msgid ""
-"Enter a custom port number for the HTTP server if you want to override the "
-"default (49152). Only dynamic or private ports can be used (from 49152 "
-"through 65535)."
-msgstr ""
-"Entrez le numéro d'un port pour le serveur HTTP si vous désirez changer "
-"celui par défaut (49152). Seuls des ports dynamiques ou privés peuvent être "
-"utilisés (de 49152 à 65535)."
-
-msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
 "Entrez ci-dessous un numéro de port personnalisé pour le WebGUI si vous "
 "voulez remplacer la valeur par défaut (80 pour HTTP, 443 pour HTTPS)."
 
-msgid "Enter a description (name) for the interface here."
-msgstr "Entrez une description pour l'interface ici."
+msgid "Enter a valid sysctl MIB name."
+msgstr "Entrer un nom sysctl MIB valide"
 
+#, fuzzy
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
-"select one, then use Save button to update system time. (Mind seconds part "
-"will be ignored)"
+"select it."
 msgstr ""
-"Entrez directement ici l'heure désirée (au format mm/jj/aaaa hh:mm) ou "
-"utilisez l'icône pour en sélectionner une, puis cliquez sur le bouton "
-"sauvegarder pour mettre à jour l'heure du système. (Les secondes seront "
-"ignorées)"
+"Entrer la date et heure système désirée (format mm/jj/aaaa hh:mm) ou bien "
+"utiliser l'icône pour la sélectionner."
 
 msgid "Enter the NIS Master server hostname."
 msgstr "Entrer le nom d'hôte du serveur maître NIS."
@@ -2186,6 +2784,11 @@ msgstr "Entrer le nom d'hôte du serveur esclave NIS."
 
 msgid "Enter the NIS domain name."
 msgstr "Entrer le nom de domaine NIS."
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr ""
 
 msgid ""
 "Enter the path to the home directory of that user. Make sure that this path "
@@ -2209,6 +2812,9 @@ msgstr "Erreur"
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
 msgstr "Erreur: Ce changement ne peut être appliqué (code erreur %s)."
+
+msgid "Execute"
+msgstr ""
 
 msgid "Execute command"
 msgstr "Exécuter une commande"
@@ -2237,6 +2843,15 @@ msgstr ""
 "Les extensions doivent être définie avant de pouvoir les utiliser, et les "
 "extensions ne peuvent pas être utilisées plus d'une fois."
 
+msgid "Extra options"
+msgstr "Options supplémentaires"
+
+msgid "Extra options to ifconfig (usually empty)."
+msgstr ""
+
+msgid "FEC (Fast EtherChannel)"
+msgstr ""
+
 msgid "FTP"
 msgstr "FTP"
 
@@ -2246,20 +2861,14 @@ msgstr "Proxy FTP"
 msgid "FTP Server"
 msgstr "Serveur FTP"
 
-msgid "FTP Server disabled"
-msgstr "Serveur FTP désactivé"
-
-msgid "FTP connected users"
-msgstr "Utilisateurs connectés en FTP"
-
 msgid "FTP events"
 msgstr "Evénements FTP"
 
 msgid "FTP log"
 msgstr "Log FTP"
 
-msgid "FTP users"
-msgstr "Utilisateurs FTP"
+msgid "FTP server disabled"
+msgstr "Serveur FTP désactivé"
 
 msgid "FXP"
 msgstr "FXP"
@@ -2270,10 +2879,6 @@ msgid ""
 msgstr ""
 "FXP permet les transferts entre serveurs sans passer par le client initiant "
 "le transfert (non sécurisé!)."
-
-#, fuzzy
-msgid "Factory Defaults"
-msgstr "Paramètres d'usine"
 
 msgid "Factory defaults"
 msgstr "Réglages d'origine"
@@ -2289,8 +2894,14 @@ msgstr ""
 "Echec lors de l'envoi du rapport d'état. Veuillez conulter les fichiers de "
 "journalisation."
 
+msgid "Failed to upload metadata backup file."
+msgstr ""
+
 msgid "Failed."
 msgstr "Echec"
+
+msgid "Failover"
+msgstr ""
 
 msgid "File"
 msgstr "Fichier"
@@ -2360,12 +2971,8 @@ msgstr "Formater"
 msgid "Format disk"
 msgstr "Formater le disque"
 
-msgid "Free Space"
-msgstr "Espace libre"
-
-#, fuzzy
-msgid "From e-mail"
-msgstr "Du courriel"
+msgid "Free disk space"
+msgstr "Espace disque disponible"
 
 msgid "From email"
 msgstr "Courriel d'origine"
@@ -2376,11 +2983,14 @@ msgstr "Fsck"
 msgid "Full Name"
 msgstr "Nom complet"
 
+msgid "GID"
+msgstr "GID"
+
 msgid "Gateway"
 msgstr "Passerelle"
 
-msgid "Gateway to be used to reach the destination network"
-msgstr "Routeur à utiliser pour atteindre la destination"
+msgid "Gateway to be used to reach the destination network."
+msgstr "Passerelle à utiliser pour atteindre le réseau de destination"
 
 msgid "General"
 msgstr "Général"
@@ -2394,8 +3004,8 @@ msgstr "Geom Vinum"
 msgid "Give full shell access to user."
 msgstr "Donner l'accès complet au shell à cet utilisateur"
 
-msgid "Global Configuration"
-msgstr "Configuration globale"
+msgid "Give only local users access to the web page."
+msgstr ""
 
 msgid "Graph"
 msgstr "Graphe"
@@ -2441,12 +3051,12 @@ msgstr "Proxy HTTP"
 msgid "Hard disk standby time"
 msgstr "Délai de mise en veille du disque"
 
-msgid "Helios X3000"
-msgstr "Helios X3000"
-
 #, fuzzy
 msgid "Help Needed!"
 msgstr "Aide requise!"
+
+msgid "Hide dot files"
+msgstr ""
 
 msgid "Highlighting"
 msgstr "Surlignage"
@@ -2514,22 +3124,17 @@ msgstr "Paquets E/S"
 msgid "IP address"
 msgstr "Adresse IP"
 
-msgid "IP address of MS Active Directory server."
-msgstr "Adresse IP du serveur Active Directory."
-
-msgid "IP address of remote RSYNC server"
-msgstr "Adresse IP du Serveur RSYNC distant"
-
 msgid "IP address of remote syslog server"
 msgstr "Adresse IP du serveur syslog distant"
 
 #, php-format
 msgid ""
-"IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-"hostnames&quot; is checked on the <a href=%s>%s</a> page."
+"IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+"addresses to hostnames&quot;</a> is enabled."
 msgstr ""
-"Les adresses IP sont résolues en noms d'hôtes si l'option &quot;Résoudre les "
-"adresses IP en noms d'hôtes&quot; est cochée sur la page <a href=%s>%s</a>."
+
+msgid "IP or FQDN address of remote RSYNC server."
+msgstr ""
 
 msgid "IP type mismatch for network and gateway."
 msgstr ""
@@ -2539,12 +3144,6 @@ msgstr "Configuration IPv4"
 
 msgid "IPv4 DNS servers"
 msgstr "Serveurs DNS IPv4"
-
-msgid "IPv4 Gateway"
-msgstr "Passerelle IPv4"
-
-msgid "IPv4 address"
-msgstr "Adresse IPv4"
 
 msgid "IPv4 addresses"
 msgstr "Adresses IPv4"
@@ -2567,13 +3166,16 @@ msgstr "Adresse IPv6"
 msgid "IPv6 addresses"
 msgstr "Adresses IPv6"
 
-msgid "ISO"
-msgstr "ISO"
+msgid "ISO file to be mounted."
+msgstr ""
 
 msgid "ISP DNS servers"
 msgstr "Serveurs DNS du FAI"
 
-msgid "If Login is required."
+msgid ""
+"Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the "
+"IDLE state, most disks are still spinning, so this is probably not what you "
+"want."
 msgstr ""
 
 msgid ""
@@ -2598,6 +3200,11 @@ msgid ""
 "before mapping DOS attributes to UNIX permission bits. When set, DOS "
 "attributes will be stored onto an extended attribute in the UNIX filesystem, "
 "associated with the file or directory."
+msgstr ""
+
+msgid ""
+"If this parameter is set, then users may not create or modify files in the "
+"share."
 msgstr ""
 
 #, php-format
@@ -2635,6 +3242,9 @@ msgstr "Dans la plupart des cas, 'public' est utilisé ici."
 msgid "Info"
 msgstr "Info"
 
+msgid "Informal"
+msgstr ""
+
 msgid "Information"
 msgstr "Information"
 
@@ -2655,6 +3265,9 @@ msgstr ""
 "disque! N'utilisez pas cette option si vous voulez ajouter un disque crypté "
 "existant."
 
+msgid "Initializing"
+msgstr ""
+
 msgid "Initiator name"
 msgstr "Nom de l'initiateur"
 
@@ -2672,6 +3285,9 @@ msgstr "Interface sur laquelle écouter."
 
 msgid "Interfaces"
 msgstr "Interfaces"
+
+msgid "Interval must be greater or equal than 10 seconds."
+msgstr "L'intervalle doit être supérieur ou égal à 10 secondes."
 
 #, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
@@ -2703,9 +3319,18 @@ msgstr "Garder le menu diagnostics ouvert"
 msgid "Key"
 msgstr "Clef"
 
+msgid "Key Management Protocol"
+msgstr ""
+
 #, fuzzy
 msgid "Kill encrypted volume"
 msgstr "Tuer le volume chiffré"
+
+msgid "LACP (Link Aggregation Control Protocol)"
+msgstr ""
+
+msgid "LAGG"
+msgstr ""
 
 msgid "LAN"
 msgstr "LAN"
@@ -2753,13 +3378,19 @@ msgstr ""
 msgid "License"
 msgstr "Licence"
 
+msgid "Link Aggregation and Failover"
+msgstr ""
+
 msgid "List"
 msgstr "Liste"
 
-msgid "List of SMART capabilities on all detected disk"
-msgstr "Liste des aptitudes SMART sur tous les disques détectés"
+msgid ""
+"List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP "
+"(AES in Counter mode with CBC-MAC, RFC 3610, IEEE 802.11i/D7.0), TKIP "
+"(Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."
+msgstr ""
 
-msgid "List of advanced ATA capabilities on all ATA disk"
+msgid "List of available target name on all configured iSCSI targets"
 msgstr ""
 
 msgid "List of detected ATA disks"
@@ -2768,17 +3399,26 @@ msgstr "Liste des disques ATA détectés"
 msgid "List of detected SCSI disks"
 msgstr "Liste des disques SCSI détectés"
 
+msgid "List of imported users"
+msgstr "Liste des utilisateurs importés"
+
 msgid "List of mount points"
 msgstr "Liste des points de montage"
 
-msgid "List of partition on all detected disk"
-msgstr "Liste des partitions sur tous les disques détectés"
+msgid "List of open files"
+msgstr "Liste des fichiers ouverts"
+
+msgid "List of shares"
+msgstr "Liste des partages"
 
 msgid "Load"
 msgstr "Charger"
 
 msgid "Load averages"
 msgstr "Charge moyenne"
+
+msgid "Loadbalance"
+msgstr ""
 
 msgid "Local"
 msgstr "Local"
@@ -2808,13 +3448,11 @@ msgstr ""
 "Information de localisation, eq. localisation physique de ce système: 'Etage "
 "de l'immeuble, pièce xyz'."
 
-#, fuzzy
-msgid ""
-"Location where the content database file will be stored. The bookmark file "
-"will also be generated in that directory."
+msgid "Location of the files to share."
 msgstr ""
-"Emplacement où la base de données de contenu sera enregistrée. Le fichier "
-"signet sera aussi généré dans ce répertoire."
+
+msgid "Location where the content database file will be stored."
+msgstr ""
 
 msgid "Log Level"
 msgstr "Niveau de journalisation"
@@ -2834,17 +3472,31 @@ msgstr ""
 msgid "MAC address"
 msgstr "Adresse MAC"
 
+msgid "MIB"
+msgstr ""
+
 msgid "MISSING"
 msgstr "MANQUANT"
 
 msgid "MOTD"
 msgstr "MOTD"
 
+msgid "MS Active Directory"
+msgstr "MS Active Directory"
+
+msgid "MS Active Directory informations"
+msgstr "Informations MS Active Directory"
+
 msgid "MS Domain"
 msgstr "Domaine MS"
 
 msgid "MTU"
 msgstr "MTU"
+
+#, php-format
+msgid ""
+"Make sure you have already configured your <a href='%s'>Email</a> settings."
+msgstr ""
 
 msgid "Manage RAID"
 msgstr "Gestion RAID"
@@ -2858,8 +3510,15 @@ msgstr "Associer tous les utilisateurs à root"
 msgid "Map to user"
 msgstr "Associer à l'utilisateur"
 
+msgid "Max. TTL"
+msgstr ""
+
 msgid "Max. conn. per IP"
 msgstr "Conn. max par IP"
+
+msgid ""
+"Max. time-to-live (max. number of hops) used in outgoing probe packets."
+msgstr ""
 
 msgid "Maximum connections"
 msgstr "Maximum de connexions"
@@ -2869,9 +3528,6 @@ msgstr "Durée maximum d'inactivité en minutes."
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "Nombre maximum de connexions par IP (0 = illimité)."
-
-msgid "Maximum number of hops"
-msgstr "Nombre de sauts maximum"
 
 msgid "Maximum number of simultaneous clients."
 msgstr "Nombre maximum de clients simultanés."
@@ -2896,9 +3552,6 @@ msgstr "Consommation d'énergie moyenne avec mise en veille"
 
 msgid "Medium power usage without Standby"
 msgstr "Consommation d'énergie moyenne sans mise en veille"
-
-msgid "Members of this volume"
-msgstr "Membres de ce volume"
 
 msgid "Memory usage"
 msgstr "Utilisation de la mémoire"
@@ -2931,16 +3584,17 @@ msgstr "Minutes entre des syncronisations du temps réseau."
 msgid "Miscellaneous"
 msgstr "Divers"
 
+msgid "Mode"
+msgstr ""
+
+msgid "Modifying"
+msgstr ""
+
 msgid "Module"
 msgstr "Module"
 
 msgid "Modules"
 msgstr "Modules"
-
-msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
-msgstr ""
-"Surveiller les périphériques S.M.A.R.T en enregistrant leur état dans le "
-"journal."
 
 msgid "Mount Point"
 msgstr "Point de montage"
@@ -3007,11 +3661,14 @@ msgstr ""
 "Nom du serveur. Si ce champ est laissé vide, le serveur par défaut sera "
 "spécifié."
 
+msgid "Name of the variable."
+msgstr ""
+
 msgid "Navigation"
 msgstr "Navigation"
 
-msgid "NetBiosName"
-msgstr "Nom Netbios"
+msgid "NetBIOS name"
+msgstr "Nom NetBIOS"
 
 msgid "Netgraph"
 msgstr "Netgraph"
@@ -3030,6 +3687,11 @@ msgstr "Réseau autorisé à accéder au partage NFS"
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "Réseau autorisé à accéder à cette cible iSCSI."
+
+msgid ""
+"Never - Poll (check) the device regardless of its power mode. This may cause "
+"a disk which is spun-down to be spun-up when it is checked."
+msgstr ""
 
 msgid "No"
 msgstr "Non"
@@ -3052,6 +3714,15 @@ msgstr ""
 
 msgid "Noise"
 msgstr "Bruit"
+
+msgid "None"
+msgstr ""
+
+msgid ""
+"Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
+"not explicitly support it, VLAN tagging will still work, but the reduced MTU "
+"may cause problems."
+msgstr ""
 
 msgid "Not attached"
 msgstr "Non attaché"
@@ -3136,6 +3807,9 @@ msgstr ""
 "Ouvrez un fichier de configuration XML %s et cliquez sur le bouton ci-"
 "dessous pour restaurer la configuration."
 
+msgid "Option"
+msgstr ""
+
 #, php-format
 msgid ""
 "Optional configuration step: Configuring a virtual RAID disk using your <a "
@@ -3146,6 +3820,9 @@ msgstr ""
 "href='%s'>disque configuré précédemment</a>.<br>Attendez l'apparition de "
 "l'état '%s' avant de le formater et de le monter!"
 
+msgid "Others"
+msgstr ""
+
 msgid "Out"
 msgstr "Sortie"
 
@@ -3155,6 +3832,9 @@ msgstr "Adresse serveur mail SMTP sortant, eq. smtp.mycorp.com."
 msgid "Outgoing mail server"
 msgstr "Serveur mail sortant"
 
+msgid "Owner"
+msgstr ""
+
 msgid "PPPoE"
 msgstr "PPPoE"
 
@@ -3163,6 +3843,9 @@ msgstr "PPTP"
 
 msgid "PPTP clients"
 msgstr "Clients PPTP"
+
+msgid "PSK"
+msgstr ""
 
 msgid "Package Name"
 msgstr "Nom paquet"
@@ -3178,6 +3861,9 @@ msgstr "Chargement du paquetage échoué (manque de mémoire?)"
 
 msgid "Packages"
 msgstr "Paquets"
+
+msgid "Pairwise"
+msgstr ""
 
 msgid "Parameter"
 msgstr "Paramètre"
@@ -3218,8 +3904,11 @@ msgstr "Cryptage du mot de passe"
 msgid "Password for DN"
 msgstr "Mot de passe pour le DN"
 
-msgid "Password of domain administrator account, enter it here twice."
-msgstr "Mot de passe d'un compte administrateur du domaine, à entrer 2 fois."
+msgid "Password for the administrative pages."
+msgstr ""
+
+msgid "Password of domain administrator account."
+msgstr ""
 
 msgid "Password suffix"
 msgstr "Suffixe mot de passe"
@@ -3230,14 +3919,14 @@ msgstr "Collez une clef privée DSA au format PEM ici."
 msgid "Paste a signed certificate in X.509 PEM format here."
 msgstr "Copiez un certificat au format X.509 PEM ici."
 
-msgid "Paste an RSA private key in PEM format here."
-msgstr "Copiez une clef privée RSA au format PEM ici."
-
 msgid "Paste an private key in PEM format here."
 msgstr "Coller la clé privée au format PEM ici."
 
 msgid "Path"
 msgstr "Chemin d'accès"
+
+msgid "Path of the URL relative to document root."
+msgstr ""
 
 msgid "Path to be shared."
 msgstr "Chemin à partager."
@@ -3248,14 +3937,11 @@ msgstr "Autoriser le login root"
 msgid "Permit to do SSH Tunneling."
 msgstr "Permettre le tunnelage SSH"
 
-msgid "Pick a date"
-msgstr "Choisir une date"
+msgid "Physical interface"
+msgstr ""
 
 msgid "Ping"
 msgstr "Ping"
-
-msgid "Ping output"
-msgstr "Message Ping"
 
 msgid "Ping winbindd to see if it is alive:"
 msgstr "Ping winbindd pour vérifier s'il est en ligne:"
@@ -3278,11 +3964,29 @@ msgstr "Port"
 msgid "Port "
 msgstr "La carte "
 
+msgid "Port is already used by WebGUI."
+msgstr ""
+
+msgid "Port to listen on. Default iTunes port is 3689."
+msgstr ""
+
+#, php-format
+msgid ""
+"Port to listen on. Only dynamic or private ports can be used (from %d "
+"through %d). Default port is %d."
+msgstr ""
+
+msgid "Ports"
+msgstr ""
+
 msgid "PostInit"
 msgstr "PostInit"
 
 msgid "Power Daemon"
 msgstr "Power Daemon"
+
+msgid "Power mode"
+msgstr ""
 
 msgid "PreInit"
 msgstr "PreInit"
@@ -3319,6 +4023,9 @@ msgstr "Informations sur les processus"
 
 msgid "Profile"
 msgstr "Profil"
+
+msgid "Protocol"
+msgstr ""
 
 msgid "Provider"
 msgstr "Fournisseur"
@@ -3370,8 +4077,14 @@ msgstr "RSYNC"
 msgid "RSYNC Client"
 msgstr "Client RSYNC"
 
-msgid "RSYNC Options"
-msgstr "Options RSYNC"
+msgid "RSYNC Client informations"
+msgstr ""
+
+msgid "RSYNC Local"
+msgstr ""
+
+msgid "RSYNC events"
+msgstr ""
 
 msgid "RSYNC log"
 msgstr "Log RSYNC"
@@ -3379,11 +4092,11 @@ msgstr "Log RSYNC"
 msgid "RSYNCD"
 msgstr "RSYNCD"
 
-msgid "RSYNCD events"
-msgstr "Evénements RSYNCD"
-
 msgid "Raid name"
 msgstr "Nom du Raid"
+
+msgid "Read"
+msgstr ""
 
 #, fuzzy
 msgid "Read Only Access"
@@ -3398,6 +4111,9 @@ msgstr "Lecture/Écriture"
 #, fuzzy
 msgid "Read/Write Access"
 msgstr "Accès en Lecture/Écriture"
+
+msgid "Realm"
+msgstr ""
 
 msgid "Reboot"
 msgstr "Redémarrage"
@@ -3429,8 +4145,24 @@ msgstr "Serveur syslog distant"
 msgid "Remove all entries from ARP table"
 msgstr "Supprimer toutes les entrées de la table ARP"
 
+msgid ""
+"Report if the temperature had changed by at least N degrees Celsius since "
+"last report. Set to 0 to disable this report."
+msgstr ""
+
+msgid ""
+"Report if the temperature is greater or equal than N degrees Celsius. Set to "
+"0 to disable this report."
+msgstr ""
+
 msgid "Reports"
 msgstr "Rapports"
+
+msgid "Rescan interval"
+msgstr ""
+
+msgid "Resolve"
+msgstr ""
 
 msgid "Resolve IP addresses to hostnames"
 msgstr "Résoudre les adresses IP en noms d'hôtes"
@@ -3438,11 +4170,23 @@ msgstr "Résoudre les adresses IP en noms d'hôtes"
 msgid "Restore configuration"
 msgstr "Restaurer la configuration"
 
+msgid "Restore metadata from the given file to the given provider."
+msgstr ""
+
 msgid "Results for net rpc testjoin:"
 msgstr "Résultat de la commande net rpc testjoin:"
 
 msgid "Retry"
 msgstr "Réessayer"
+
+msgid "Roundrobin"
+msgstr ""
+
+msgid "Routes"
+msgstr ""
+
+msgid "Routing tables"
+msgstr ""
 
 msgid "Rows"
 msgstr "Lignes"
@@ -3450,38 +4194,32 @@ msgstr "Lignes"
 msgid "Rsync Daemon"
 msgstr "Démon Rsync"
 
-msgid "S.M.A.R.T Daemon"
-msgstr "Démon S.M.A.R.T"
-
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
+
+msgid "S.M.A.R.T. events"
+msgstr ""
 
 msgid "S.M.A.R.T. log"
 msgstr "Log S.M.A.R.T."
 
-msgid "SMARTD"
-msgstr "SMARTD"
-
-msgid "SMARTD events"
-msgstr "Evénements SMARTD"
-
 msgid "SNMP"
-msgstr "SMTP"
+msgstr "SNMP"
 
 msgid "SNMP Modules"
-msgstr "Modules SMTP"
+msgstr "Modules SNMP"
+
+msgid "SSH"
+msgstr ""
 
 msgid "SSH Daemon"
 msgstr "Démon SSH"
 
+msgid "SSH events"
+msgstr ""
+
 msgid "SSH key"
 msgstr "Clef SSH"
-
-msgid "SSHD"
-msgstr "SSHD"
-
-msgid "SSHD events"
-msgstr "Evénements SSHD"
 
 msgid "SSHD log"
 msgstr "Log SSHD"
@@ -3501,6 +4239,16 @@ msgstr "Sauvegarder et redémarrer"
 msgid "Saved file to"
 msgstr "Sauvegarder le fichier dans"
 
+msgid ""
+"Scan file system every N seconds to see if any files have been added or "
+"removed. Set to 0 to disable background scanning. If background rescanning "
+"is disabled, a scan can still be forced from the status page of the "
+"administrative web interface."
+msgstr ""
+
+msgid "Scan type"
+msgstr ""
+
 #, fuzzy
 msgid "Schedule time"
 msgstr "Temps planifié"
@@ -3508,8 +4256,14 @@ msgstr "Temps planifié"
 msgid "Scheduled"
 msgstr "Planifié"
 
+msgid "Scheduled Self-Test"
+msgstr ""
+
 msgid "Scheduled reboot"
 msgstr "Redémmarage programmé"
+
+msgid "Scheduled self-tests"
+msgstr ""
 
 msgid "Scheduled shutdown"
 msgstr "Arrêt programmé"
@@ -3524,6 +4278,9 @@ msgid ""
 "you select option 2 during installation on hard drive.<br>Select 'Old "
 "software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
 "release."
+msgstr ""
+
+msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr ""
 
 msgid "Select mount point where to create the swap file."
@@ -3544,6 +4301,9 @@ msgstr "Sélectionné"
 msgid "Selected file isn't an valid ISO file."
 msgstr "Le fichier sélectionné n'est pas un fichier ISO valide."
 
+msgid "Self-Monitoring, Analysis and Reporting Technology"
+msgstr ""
+
 msgid "Send Buffer Size"
 msgstr "Taille du tampon d'envoi"
 
@@ -3553,23 +4313,17 @@ msgstr "Valider la commande!"
 msgid "Send now"
 msgstr "Envoyer maintenant"
 
-msgid "Sensors"
-msgstr "Sondes"
-
 msgid "Server"
 msgstr "Serveur"
 
 msgid "Server Name"
 msgstr "Nom du serveur"
 
-msgid "Server address"
-msgstr "Adresse serveur"
-
 msgid "Server description. This can usually be left blank."
 msgstr "Description du serveur. Ce champ peut rester vide."
 
-msgid "Server port"
-msgstr "Port serveur"
+msgid "Server name"
+msgstr ""
 
 msgid "Services"
 msgstr "Services"
@@ -3580,12 +4334,35 @@ msgstr "Choisir des groupes supplémentaires pour ce compte."
 msgid "Set browseable"
 msgstr "Rendre naviguable"
 
+msgid "Set read only"
+msgstr ""
+
 msgid "Set share password."
 msgstr "Choisir une mot de passe du partage."
 
 #, fuzzy
 msgid "Set the account's primary group to the given group."
 msgstr "Ajuster le groupe primaire du compte à ce groupe."
+
+msgid "Set the desired Service Set Identifier (aka network name)."
+msgstr ""
+
+msgid ""
+"Set the maximum transmission unit of the interface to n, default is "
+"interface specific. The MTU is used to limit the size of packets that are "
+"transmitted on an interface. Not all interfaces support setting the MTU, and "
+"some interfaces have range restrictions."
+msgstr ""
+
+msgid ""
+"Sets the database information to be stored in path. You have to specifiy a "
+"writable location, even if the volume is read only."
+msgstr ""
+
+msgid ""
+"Sets the interval between disk checks to N seconds. The minimum allowed "
+"value is 10."
+msgstr ""
 
 msgid "Settings"
 msgstr "Réglages"
@@ -3609,6 +4386,9 @@ msgstr "Partager tous les sous-répertoires"
 msgid "Share passwords can not be more than 8 characters."
 msgstr "Les mot de passe de partage ne peuvent faire plus de 8 caractères."
 
+msgid "Sharename"
+msgstr ""
+
 msgid "Shares"
 msgstr "Partages"
 
@@ -3620,11 +4400,8 @@ msgstr ""
 "Montrer les entrées du journal en ordre inverse (entrées les plus récentes "
 "en haut)"
 
-msgid ""
-"Show the list of available target name on all configured iSCSI targets"
+msgid "Show process information"
 msgstr ""
-"Afficher la liste des noms de cibles disponibles sur les cibles iSCSI "
-"configurées"
 
 msgid "Shutdown"
 msgstr "Arrêt"
@@ -3654,6 +4431,9 @@ msgstr "Taille du tampon de réception (16384 par défaut)."
 msgid "Size of send buffer (16384 by default)."
 msgstr "Taille du tampon d'envoi (16384 par défaut)."
 
+msgid "Sleep - Check the device unless it is in SLEEP mode."
+msgstr ""
+
 msgid "Sockets"
 msgstr "Sockets"
 
@@ -3662,9 +4442,6 @@ msgstr "RAID logiciel"
 
 msgid "Software RAID information and status"
 msgstr "Information et état du RAID logiciel"
-
-msgid "Sony Playstation 3"
-msgstr "Sony Playstation 3"
 
 msgid "Source directory to be synchronized."
 msgstr "Répertoire source à synchroniser"
@@ -3679,6 +4456,9 @@ msgid "Specifies how many servers to create."
 msgstr ""
 
 msgid "Specifies that the file system should be exported read-only."
+msgstr ""
+
+msgid "Specifies the command to be run."
 msgstr ""
 
 msgid ""
@@ -3715,11 +4495,14 @@ msgstr ""
 "Notez qu'abaisser ce seuil peut nuire aux performances et à l'auto-"
 "defragmentation."
 
-msgid "Speed"
-msgstr "Vitesse"
+msgid "Standard"
+msgstr ""
 
-msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-msgstr "Le MTU standard est de 1500, utilisez 9000 pour les jumbo frames."
+msgid ""
+"Standby - Check the device unless it is in SLEEP or STANDBY mode. In these "
+"modes most disks are not spinning, so if you want to prevent a laptop disk "
+"from spinning up each poll, this is probably what you want."
+msgstr ""
 
 msgid "Standby time"
 msgstr "Délai de mise en veille"
@@ -3736,6 +4519,9 @@ msgstr "Statut"
 msgid "Status report successfully sent."
 msgstr "Rapport d'état envoyé avec succès."
 
+msgid "Stop after sending (and receiving) N packets."
+msgstr ""
+
 msgid "Stopped"
 msgstr "Arrêté"
 
@@ -3743,6 +4529,10 @@ msgid "Storage"
 msgstr "Stockage"
 
 msgid "Store DOS attributes"
+msgstr ""
+
+msgid ""
+"String displayed in the dialog presented to the user when accessing the URL."
 msgstr ""
 
 msgid "Subject"
@@ -3763,11 +4553,11 @@ msgstr "Succès."
 msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
 msgstr "Dimanche Lundi Mardi Mercredi Jeudi Vendredi Samedi"
 
+msgid "Suppress non-error messages."
+msgstr ""
+
 msgid "Swap"
 msgstr "Pagination"
-
-msgid "Swap Status"
-msgstr "Statut Swap"
 
 msgid "Swap disabled"
 msgstr "Swap désactivé"
@@ -3781,8 +4571,18 @@ msgstr "Taille du fichier de pagination"
 msgid "Swap memory"
 msgstr "Mémoire virtuelle"
 
+msgid "Swap status"
+msgstr ""
+
+msgid "Swap usage"
+msgstr ""
+
 msgid "Switch to"
 msgstr "Basculer en"
+
+#, php-format
+msgid "Switch to %s/s"
+msgstr ""
 
 msgid "Synchronization Time"
 msgstr "Heure de synchronisation"
@@ -3803,9 +4603,6 @@ msgstr "Système"
 msgid "System Beep"
 msgstr "Bip Système"
 
-msgid "System Time"
-msgstr "Heure système"
-
 msgid "System events"
 msgstr "Evénements système"
 
@@ -3822,12 +4619,24 @@ msgstr "Log système"
 msgid "System message buffer"
 msgstr "Tampon message système"
 
+msgid "System time"
+msgstr ""
+
+msgid "System tuning"
+msgstr ""
+
 #, fuzzy
 msgid "TCP forwarding"
 msgstr "Redirection TCP"
 
 msgid "TCP port"
 msgstr "Port TCP"
+
+msgid "TCP port to bind the server to."
+msgstr ""
+
+msgid "TKIP"
+msgstr ""
 
 msgid "TLS + cleartext"
 msgstr ""
@@ -3850,11 +4659,11 @@ msgstr "Répertoire cible"
 msgid "Target name"
 msgstr "Nom de la cible"
 
-msgid "Telegent TG100"
-msgstr "Telegent TG100"
-
 msgid "Temperature"
 msgstr "Temperature"
+
+msgid "Temperature monitoring"
+msgstr ""
 
 msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
@@ -3868,16 +4677,12 @@ msgstr "Le port %s doit être un numéro de port valide."
 msgid "The IP address that this hostname represents."
 msgstr "L'adresse IP que ce nom d'hôte représente."
 
-msgid ""
-"The LAN configuration has been changed.<br>You must apply the changes in "
-"order for them to take effect."
+#, php-format
+msgid "The MIB '%s' already exist."
 msgstr ""
-"La configuration LAN a changé.<br>Vous devez appliquer les changements pour "
-"qu'ils prennent effet."
 
-msgid ""
-"The NFS export list has been changed.<br>You must apply the changes in order "
-"for them to take effect."
+#, php-format
+msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr ""
 
 #, php-format
@@ -3888,39 +4693,14 @@ msgstr ""
 "Le volume RAID est monté! Commencez par supprimer le <a href=%s>point de "
 "montage</a> avant de continuer."
 
-msgid ""
-"The RSYNC client list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"La liste des clients RSYNC a changé.<br>Vous devez appliquer les changements "
-"pour qu'ils prennent effet."
-
-msgid ""
-"The RSYNC local list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"La liste des clients RSYNC locaux a changé.<br>Vous devez appliquer les "
-"changements pour qu'ils prennent effet."
-
-msgid ""
-"The Raid configuration has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"La configuration RAID a changé.<br>Vous devez appliquer les changements pour "
-"qu'ils prennent effet."
-
 msgid "The TCP idle timeout must be an integer."
 msgstr "Le timeout TCP idle doit être un entier."
 
 msgid "The TCP port must be a valid port number."
 msgstr "Le port TCP doit être un nombre valide compris entre 1024 et 65535."
 
-msgid ""
-"The User list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
+msgid "The VLAN ID must be between 1 and 4094."
 msgstr ""
-"La liste des utilisateurs a été modifiée.<br>Vous devez appliquer les "
-"changements pour qu'ils prennent effet."
 
 #, c-format
 msgid ""
@@ -3955,6 +4735,18 @@ msgid ""
 msgstr ""
 "L'attribut '%s' contient le caractère invalide ':' et n'est pas un mot de "
 "passe valide."
+
+#, c-format
+msgid "The attribute '%s' does not appear to be a valid certificate."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' does not appear to be a valid private %s key."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' does not appear to be a valid private key."
+msgstr ""
 
 #, c-format
 msgid "The attribute '%s' is an invalid port number."
@@ -3992,6 +4784,10 @@ msgstr ""
 "."
 
 #, c-format
+msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9."
+msgstr ""
+
+#, c-format
 msgid "The attribute '%s' must be a number."
 msgstr "L'attribut '%s' doit être un nombre."
 
@@ -4012,6 +4808,9 @@ msgstr ""
 
 msgid "The combination of share and working directory does not exist."
 msgstr "Cette combinaison partage/répertoire de travail n'existe pas."
+
+msgid "The command to be executed."
+msgstr ""
 
 msgid "The configuration could not be restored (file upload error)."
 msgstr "La configuration n'a pu être restaurée (erreur d'envoi du fichier)."
@@ -4037,20 +4836,8 @@ msgstr ""
 "Le mot de passe de confirmation ne correspond pas. Veuillez vérifier que les "
 "mots de passe concordent exactement."
 
-msgid ""
-"The content directory list has been changed.<br>You must apply the changes "
-"in order for them to take effect."
-msgstr "La liste"
-
 msgid "The credentials to bind with, enter it here twice."
 msgstr "Informations d'authentification, à entrer deux fois."
-
-msgid ""
-"The cron job list has been changed.<br>You must apply the changes in order "
-"for them to take effect."
-msgstr ""
-"La liste des tâches cron a été modifiée.<br>Vous devez appliquer les "
-"modifications pour qu'elles prennent effet."
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr "Le port par défaut du serveur mail SMTP, eq. 25 ou 587."
@@ -4059,29 +4846,14 @@ msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr ""
 "Le nom de périphérique doit contenir uniquement les caractères a-z, A-Z, 0-9."
 
+msgid "The device's IP address."
+msgstr ""
+
 #, php-format
 msgid ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
 msgstr "Ce disque est monté! <a href=%s>Démontez-le</a> avant de continuer."
-
-msgid ""
-"The disk list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-"La liste des disques a changé.<br>Vous devez appliquer les changements pour "
-"qu'ils prennent effet."
-
-msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr ""
-"Un nom de domaine doit seulement contenir les caractères a-z, 0-9, et '-' ."
-
-msgid ""
-"The encrypted volume list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"La liste des volumes cryptés a été modifiée.<br>Vous devez appliquer les "
-"modifications pour qu'elles prennent effet."
 
 #, php-format
 msgid "The firmware is now being installed. %s will reboot automatically."
@@ -4093,21 +4865,11 @@ msgstr "Les erreurs suivantes ont été détectées"
 msgid "The full name contains invalid characters."
 msgstr "Le nom complet contient un caractère invalide."
 
-msgid "The group ID must be > 1001."
-msgstr ""
-
 msgid "The group description contains invalid characters."
 msgstr "La description du groupe contient des caractères invalides."
 
 msgid "The group name contains invalid characters."
 msgstr "Le nom du groupe contient des caractères invalides."
-
-msgid ""
-"The host list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-"La liste des hôtes a changé.<br>Vous devez appliquer les changements pour "
-"qu'ils prennent effet."
 
 msgid "The host name contain invalid characters."
 msgstr "Le nom d'hôte contient des caractères invalides."
@@ -4118,24 +4880,6 @@ msgid ""
 msgstr ""
 "Le nom d'hôte doit contenir uniquement les caractères a-z, A-Z, 0-9, -, _ et "
 "."
-
-msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-msgstr ""
-"Un nom d'hôte doit seulement contenir les caractères a-z, 0-9, et '-' ."
-
-msgid ""
-"The iSCSI disk list has been changed.<br>You must apply the changes in order "
-"for them to take effect."
-msgstr ""
-"La liste des disques iSCSI a été modifiée.<br>Vous devez appliquer les "
-"modifications pour qu'elles prennent effet."
-
-msgid ""
-"The iSCSI target list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"La liste des cibles iSCSI a changé.<br>Vous devez appliquer les changements "
-"pour qu'ils prennent effet."
 
 msgid "The image file is corrupt"
 msgstr "Le fichier image est corrompu"
@@ -4166,30 +4910,11 @@ msgstr ""
 "No de port minimum à allouer pour les connexions passives (0 = n'importe "
 "lequel)."
 
-msgid ""
-"The modules has been modified.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-
-msgid ""
-"The mount point list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"La liste des points de montage a été modifiée.<br>Vous devez appliquer les "
-"changements pour qu'ils prennent effet."
-
 msgid "The number of clients must be between 1 and 50."
 msgstr "Le nombre de clients doit être contenu entre 1 et 50."
 
 msgid "The old password is not correct."
 msgstr "L'ancien mot de passe est incorrect"
-
-msgid ""
-"The package list has been changed.<br>You must apply the changes in order "
-"for them to take effect."
-msgstr ""
-"La liste des paquetages a été modifiée.<br>Vous devez appliquer les "
-"modifications pour qu'elles prennent effet."
 
 msgid "The password contains the illegal character ':'."
 msgstr "Le mot de passe contient le caractère invalide ':'."
@@ -4210,20 +4935,6 @@ msgid ""
 msgstr ""
 "L'utilitaire Powerd surveille l'état du système et adapte différentes "
 "options de contrôle de l'énergie en conséquence."
-
-msgid ""
-"The shares has been modified.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-"Les partages ont été modifiés.<br>Vous devez appliquer les changements pour "
-"qu'ils prennent effet."
-
-msgid ""
-"The static route configuration has been changed.<br>You must apply the "
-"changes in order for them to take effect."
-msgstr ""
-"La configuration des routes statiques a été modifiée.<br>Vous devez "
-"appliquer les modifications pour qu'elles prennent effet."
 
 msgid "The subject of the email."
 msgstr "Sujet de l'email."
@@ -4260,26 +4971,12 @@ msgstr ""
 msgid "The uploaded image file is not for this platform"
 msgstr "Le fichier image chargé n'est pas valide pour cette plateforme"
 
-msgid "The user ID must be > 1001."
-msgstr ""
-
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr ""
 "Le nom d'utilisateur doit seulement contenir les caractères a-z, A-Z et 0-9."
 
-msgid ""
-"The value in this field is sent as the DHCP client identifier when "
-"requesting a DHCP lease."
+msgid "The value of the variable."
 msgstr ""
-"La valeur de ce champ est envoyée en tant qu'identificateur du client lors "
-"de la demande de bail DHCP."
-
-msgid ""
-"The value in this field is sent as the DHCP hostname when requesting a DHCP "
-"lease."
-msgstr ""
-"Le contenu de ce champ est envoyé en tant que nom d'hôte DHCP lors de la "
-"demande de bail DHCP."
 
 msgid "The volume must be detached before it can be deleted."
 msgstr "Le volume doit être détaché avant de pouvoir être supprimé."
@@ -4299,9 +4996,17 @@ msgstr "Un volume RAID5 doit être composé d'au moins 3 disques."
 msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr "Un volume RAID5 doit &ecirc;tre compos&eacute; d'au moins 3 disques."
 
+msgid "There must be selected a minimum of 1 interface."
+msgstr ""
+
 msgid ""
 "There should be enough to handle the maximum level of concurrency from its "
 "clients, typically four to six."
+msgstr ""
+
+msgid ""
+"These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
+"to a running system."
 msgstr ""
 
 msgid ""
@@ -4310,6 +5015,22 @@ msgid ""
 msgstr ""
 "Ces commandes seront exécutées avant ou après l'initialisation du système "
 "(boot) ou avant l'arrêt du système."
+
+msgid ""
+"These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
+"options used by various generic startup scripts."
+msgstr ""
+
+msgid ""
+"This LAGG cannot be deleted because it is still being used as an interface."
+msgstr ""
+
+msgid "This URL is already configured."
+msgstr ""
+
+msgid ""
+"This VLAN cannot be deleted because it is still being used as an interface."
+msgstr ""
 
 msgid ""
 "This allows you to lower the power consumption of the drive, at the expense "
@@ -4333,9 +5054,6 @@ msgstr ""
 msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
 msgstr ""
 "Ceci vous permet de choisir le mode de transfert pour les disques ATA/IDE."
-
-msgid "This certificate does not appear to be valid."
-msgstr "Ce certificat n'est pas valide."
 
 msgid "This controls how the case of filenames are viewed and stored."
 msgstr ""
@@ -4384,12 +5102,14 @@ msgstr ""
 msgid "This group already exists in the group list."
 msgstr "Ce groupe existe déjà."
 
+msgid ""
+"This is both the name of the server as advertised via "
+"Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
+msgstr ""
+
 msgid "This is for information only (not using during iSCSI negociation)."
 msgstr ""
 "Pour votre information seulement (non utilisé durant la négociation iSCSI)."
-
-msgid "This key does not appear to be valid."
-msgstr "La clef ne semble pas valide."
 
 msgid ""
 "This means that the image you uploaded is not an official/supported image "
@@ -4472,8 +5192,13 @@ msgid ""
 "use default settings."
 msgstr ""
 
-msgid "This parameters will be added to [global] in smb.conf."
+msgid ""
+"This parameter controls whether files starting with a dot appear as hidden "
+"files."
 msgstr ""
+
+msgid "This parameters will be added to [global] in smb.conf."
+msgstr "Ces paramètres seront ajoutés à la section [global] dans smb.conf."
 
 msgid ""
 "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
@@ -4506,6 +5231,9 @@ msgid ""
 "you want to add an already existing RAID again."
 msgstr ""
 
+msgid "Time"
+msgstr "Temps"
+
 msgid "Time server"
 msgstr "Serveur de temps"
 
@@ -4531,6 +5259,13 @@ msgid ""
 "Increase <a href='%s'>MTU</a>"
 msgstr ""
 
+msgid ""
+"To use Active Directory the CIFS/SMB service will enabled, too. The "
+"following services will use AD "
+"authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li>"
+"<li>System</li></ul>"
+msgstr ""
+
 msgid "Tools"
 msgstr "Outils"
 
@@ -4543,9 +5278,6 @@ msgid ""
 msgstr ""
 "Traceroute peut être long à s'exécuter. Vous pouvez cliquer sur le bouton "
 "Stop de votre navigateur à tout moment pour voir l'avancement du traçage."
-
-msgid "Traceroute output"
-msgstr "Message Traceroute"
 
 msgid "Traffic graph"
 msgstr "Graphe de trafic"
@@ -4597,6 +5329,9 @@ msgstr ""
 "ou NTFS peut provoquer des comportements imprévus, des corruptions de "
 "fichiers, et des pertes de données!"
 
+msgid "UID"
+msgstr ""
+
 msgid "UPnP"
 msgstr "UPnP"
 
@@ -4605,6 +5340,9 @@ msgstr "Serveur multimedia UPnP"
 
 msgid "UPnP friendly name."
 msgstr "Nom UPnP."
+
+msgid "URL"
+msgstr "URL"
 
 #, fuzzy
 msgid "Uninstall package"
@@ -4637,6 +5375,9 @@ msgstr "Haut"
 msgid "Update period"
 msgstr "Période de mise à jour"
 
+msgid "Updating in 5 seconds."
+msgstr ""
+
 msgid "Upgrade firmware"
 msgstr "Charger"
 
@@ -4649,9 +5390,6 @@ msgstr "Uptime"
 msgid "Use AFP3 unix privileges."
 msgstr ""
 
-msgid "Use SMTP authentication."
-msgstr "Utiliser l'authentification SMTP."
-
 msgid "Use SSL/TLS encryption layer."
 msgstr "Utiliser la couche de cryptage SSL/TLS"
 
@@ -4661,6 +5399,10 @@ msgid ""
 msgstr ""
 "Utilisez un espace pour séparer plusieurs entrées (une seule obligatoire). "
 "Assurez-vous d'avoir configuré un serveur DNS avant d'utiliser un nom ici!"
+
+msgid ""
+"Use the following IP address as the source address in outgoing packets."
+msgstr ""
 
 msgid ""
 "Use the new 64k streaming read and write varient SMB requests introduced "
@@ -4732,14 +5474,26 @@ msgstr "Utilisateurs"
 msgid "Users and Groups"
 msgstr "Utilisateurs et groupes"
 
+msgid "VLAN"
+msgstr "VLAN"
+
 msgid "VLAN tag"
 msgstr "Etiquette VLAN"
+
+msgid "Value"
+msgstr "Valeur"
+
+msgid "Variable"
+msgstr "Variable"
 
 msgid "Version"
 msgstr "Version"
 
 msgid "View license"
-msgstr ""
+msgstr "Voir la license"
+
+msgid "Virtual interface"
+msgstr "Interface virtuelle"
 
 msgid "Volume Name"
 msgstr "Nom de volume"
@@ -4753,11 +5507,26 @@ msgstr "Étiquette de volume du nouveau système de fichiers."
 msgid "WAN address"
 msgstr "Adresse WAN"
 
-msgid "WINS Server IP address."
-msgstr "Adresse IP du serveur WINS."
+msgid "WEP"
+msgstr ""
 
 msgid "WINS server"
 msgstr "Serveur WINS"
+
+msgid "WINS server IP address (e.g. from MS Active Directory server)."
+msgstr ""
+
+msgid "WPA"
+msgstr ""
+
+msgid "WPA-EAP (Extensible Authentication Protocol)"
+msgstr ""
+
+msgid "WPA-PSK (Pre Shared Key)"
+msgstr ""
+
+msgid "WPA-PSK WPA-EAP"
+msgstr ""
 
 msgid "Warning"
 msgstr "Attention"
@@ -4768,32 +5537,45 @@ msgstr ""
 "Attention: ceci peut provoquer un gros ralentissement dans l'affichage de la "
 "page de journaux %s !"
 
-msgid "Web user interface"
-msgstr "Interface utilisateur web"
+msgid "WebGUI"
+msgstr ""
 
-msgid "WebGUI port"
-msgstr "Port TCP de l'interface WEB"
-
-msgid "WebGUI protocol"
-msgstr "Protocole de l'interface WEB"
+msgid "Webserver"
+msgstr "Serveur web"
 
 msgid "Where the working files will be stored"
 msgstr "Emplacement où seront stockés les fichiers de travail"
 
+msgid ""
+"Whether scans should be skipped if there are no users connected. This allows "
+"the drive to spin down when no users are connected."
+msgstr ""
+
 msgid "Who"
 msgstr "Qui"
+
+msgid "Wildcard"
+msgstr ""
 
 msgid "Wireless"
 msgstr "Sans-fil"
 
+msgid "Wireless configuration"
+msgstr ""
+
 msgid "Workgroup"
 msgstr "Groupe de travail"
 
-msgid "Workgroup to be member of.(maximum 15 characters)"
+msgid ""
+"Workgroup the server will appear to be in when queried by clients (maximum "
+"15 characters)."
 msgstr ""
 
 msgid "Working Directory"
 msgstr "Répertoire de travail"
+
+msgid "Write"
+msgstr ""
 
 msgid "Write only"
 msgstr "Écriture seule"
@@ -4820,11 +5602,18 @@ msgid ""
 "any other running process!"
 msgstr ""
 
+#, php-format
+msgid ""
+"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+"service to clients."
+msgstr ""
+
 msgid "You have to define some 'Extent' objects first."
 msgstr ""
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "Vous pouvez entrer une description ici."
+#, c-format
+msgid "You have to select at least one item for '%s'."
+msgstr ""
 
 msgid "You may enter a description here for your reference."
 msgstr "Vous pouvez entrer une description ici."
@@ -4863,14 +5652,8 @@ msgstr ""
 msgid "Your own email address."
 msgstr "Votre propre adresse mail."
 
-msgid "Zeroconf"
-msgstr "Zeroconf"
-
-msgid "ZyXEL DMA-1000"
-msgstr "ZyXEL DMA-1000"
-
-msgid "add mount"
-msgstr "Ajouter un point de montage"
+msgid "Zeroconf/Bonjour"
+msgstr ""
 
 msgid "built on"
 msgstr "Compilé le"
@@ -4887,17 +5670,11 @@ msgstr "Emprisonner (chroot) tout le monde, sauf root."
 msgid "crlf"
 msgstr "crlf"
 
-msgid "day"
-msgstr "jour"
-
 msgid "days"
 msgstr "jours"
 
-msgid "delete mount"
-msgstr "Supprimer le point de montage"
-
-msgid "desc"
-msgstr "desc"
+msgid "dbpath"
+msgstr ""
 
 #, php-format
 msgid "e.g. %s"
@@ -4960,6 +5737,9 @@ msgstr "pasv_min_port"
 msgid "prodos"
 msgstr "prodos"
 
+msgid "rc.conf"
+msgstr "rc.conf"
+
 #, fuzzy
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
@@ -4967,11 +5747,14 @@ msgstr "rotated block-interleaved parity"
 msgid "seconds"
 msgstr "secondes"
 
-msgid "show process information"
-msgstr "Détail des processus"
-
 msgid "striping"
 msgstr "striping"
+
+msgid "sysctl.conf"
+msgstr "sysctl.conf"
+
+msgid "type"
+msgstr "type"
 
 msgid "upriv"
 msgstr "upriv"
@@ -4981,9 +5764,6 @@ msgstr "user_suffix, exemple: ou=utilisateurs,dc=exemple,dc=com"
 
 msgid "webGUI Configuration"
 msgstr "Configuration webGUI"
-
-msgid "webGUI SSL certificate/key"
-msgstr "Clef/certificat SSL de l'interface web"
 
 msgid "week days"
 msgstr "jours de la semaine"
