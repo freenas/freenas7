@@ -30,33 +30,994 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-05-20 12:37+0800\n"
-"Last-Translator: Baikuan Hsu <chicworks@gmail.com>\n"
+"POT-Creation-Date: 2008-06-26 08:18+0000\n"
+"PO-Revision-Date: 2008-05-20 07:18+0000\n"
+"Last-Translator: chicman <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-20 18:57+0000\n"
+"X-Launchpad-Export-Date: 2008-07-06 18:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: TAIWAN\n"
 "X-Poedit-Language: Chinese\n"
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-Bookmarks: -1,-1,-1,-1,128,-1,-1,-1,-1,-1\n"
 
+#~ msgid "%b %d, %Y"
+#~ msgstr "%b %d, %Y"
+
+#~ msgid "%A, %B %d, %Y"
+#~ msgstr "%A, %B %d, %Y"
+
+#~ msgid "%A, %B %d @ %H:%M:%S"
+#~ msgstr "%A, %B %d @ %H:%M:%S"
+
+#~ msgid "%b %d, %Y - %I:%M %p"
+#~ msgstr "%b %d, %Y - %I:%M %p"
+
+#~ msgid "%A, %B %d, %Y - %I:%M %p"
+#~ msgstr "%A, %B %d, %Y - %I:%M %p"
+
+#~ msgid "Sun Mon Tue Wed Thu Fri Sat"
+#~ msgstr "周日 周一 周二 周三 周四 周五 周六"
+
+#~ msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+#~ msgstr "一月 二月 三月 四月 五月 六月 七月 八月 九月 十月 十一月 十二月"
+
+#~ msgid "%I:%M %p"
+#~ msgstr "%I:%M %p"
+
+#~ msgid "second"
+#~ msgstr "秒"
+
+#~ msgid "minute"
+#~ msgstr "分"
+
+#~ msgid "hour"
+#~ msgstr "小时"
+
+#~ msgid "day"
+#~ msgstr "天"
+
+#~ msgid "week"
+#~ msgstr "周"
+
+#~ msgid "weeks"
+#~ msgstr "周"
+
+#~ msgid "month"
+#~ msgstr "月"
+
+#~ msgid "year"
+#~ msgstr "年"
+
+#~ msgid "years"
+#~ msgstr "年"
+
+#~ msgid "and"
+#~ msgstr "以及"
+
+#~ msgid "by"
+#~ msgstr "by"
+
+#~ msgid "Down"
+#~ msgstr "下"
+
+#~ msgid "off"
+#~ msgstr "关"
+
+#~ msgid "on"
+#~ msgstr "开"
+
+#~ msgid "To"
+#~ msgstr "To"
+
+#~ msgid "The"
+#~ msgstr "The"
+
+#~ msgid "Cancel"
+#~ msgstr "取消"
+
+#~ msgid "Deactivate"
+#~ msgstr "停止"
+
+#~ msgid "Ignore"
+#~ msgstr "忽略"
+
+#~ msgid "Log out"
+#~ msgstr "登出"
+
+#~ msgid "Modify"
+#~ msgstr "修改"
+
+#~ msgid "New"
+#~ msgstr "新增"
+
+#~ msgid "Search"
+#~ msgstr "搜寻"
+
+#~ msgid "Submit"
+#~ msgstr "传送"
+
+#~ msgid "Update"
+#~ msgstr "更新"
+
+#~ msgid "View"
+#~ msgstr "检视"
+
+#~ msgid "Service"
+#~ msgstr "服务"
+
+#~ msgid ""
+#~ "The changes have been saved. You must <a href=%s>reboot</a> your NAS for "
+#~ "changes to take effect."
+#~ msgstr "变更已经储存。 <a href=%s>重新开启</a>NAS系统之后便会生效。"
+
+#~ msgid "ERROR: The changes could not be applied (error code %s)."
+#~ msgstr "错误：变更无法套用 (错误代码 %s)."
+
+#~ msgid "Active"
+#~ msgstr "运作中"
+
+#~ msgid "Inactive"
+#~ msgstr "停止中"
+
+#~ msgid "General setup"
+#~ msgstr "设定"
+
+#~ msgid "Assign"
+#~ msgstr "指派"
+
+#~ msgid "CIFS"
+#~ msgstr "CIFS"
+
+#~ msgid "Radius"
+#~ msgstr "Radius"
+
+#~ msgid "Reboot system"
+#~ msgstr "重新开机"
+
+#~ msgid "Shutdown system"
+#~ msgstr "关机"
+
+#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
+#~ msgstr "NAS的主机名称，不包含网域<br>例如: <em>nas</em>"
+
+#~ msgid "e.g. <em>mycorp.com</em>"
+#~ msgstr "例： <em>mycompany.com</em>"
+
+#~ msgid "DNS servers"
+#~ msgstr "DNS伺服器"
+
+#~ msgid "IP addresses"
+#~ msgstr "请输入IP位置"
+
+#~ msgid ""
+#~ "If you want to change the username for accessing the webGUI, enter it here."
+#~ msgstr "变更网页介面的帐号。"
+
+#~ msgid ""
+#~ "If you want to change the password for accessing the webGUI, enter it here "
+#~ "twice.<br>Don't use the character ':'."
+#~ msgstr "变更网页介面的密码（两次）<br>不要使用以下的字元 ':'。"
+
+#~ msgid ""
+#~ "Enter a custom port number for the webGUI above if you want to override the "
+#~ "default (80 for HTTP, 443 for HTTPS)."
+#~ msgstr "输入自行设定的网页管理介面连接埠(80: HTTP, 443: HTTPS)。"
+
+#~ msgid "Select the system language"
+#~ msgstr "选择网页管理介面显示语言"
+
+#~ msgid ""
+#~ "Minutes between network time sync.; 300\trecommended, or 0 to disable."
+#~ msgstr "多少分钟与时间伺服器同步一次。建议设为300分钟，输入0则可以关闭同步功能"
+
+#~ msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
+#~ msgstr "Hostname只能包含以下字元 a-z, 0-9, '-'。"
+
+#~ msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
+#~ msgstr "网域只能包含以下字元 a-z, 0-9, '-', '.'。"
+
+#~ msgid ""
+#~ "A valid IP address must be specified for the primary/secondary DNS server."
+#~ msgstr "主要/次要DNS伺服器必须指定一个有效的IP。"
+
+#~ msgid "You must select a valid language."
+#~ msgstr "必须选择一个有效的语言。"
+
+#~ msgid ""
+#~ "The time update interval must be either 0 (disabled) or between 6 and 1440."
+#~ msgstr "将时间同步间隔设定只接受6-1440的范园，或者输入0将其关闭。"
+
+#~ msgid ""
+#~ "The static route configuration has been changed.<br>You must apply the "
+#~ "changes in order for them to take effect."
+#~ msgstr "静态路由已经变更。<br>套用之后才会生效。"
+
+#~ msgid "Gateway to be used to reach the destination network"
+#~ msgstr "连线到目标网段的闸道IP位置"
+
+#~ msgid "You may enter a description here for your reference (not parsed)."
+#~ msgstr "可以加注必要的描述文字。(不含语法)"
+
+#~ msgid "The digital signature on this image is invalid."
+#~ msgstr "映像档之数位签章已经失效。"
+
+#~ msgid "This image is not digitally signed."
+#~ msgstr "映像档并没有通过数位签章认证。"
+
+#~ msgid "There has been an error verifying the signature on this image."
+#~ msgstr "无法验証映像档内的数位签章。"
+
+#~ msgid "This key does not appear to be valid."
+#~ msgstr "这个金钥似乎是无效的。"
+
+#~ msgid ""
+#~ "The options on this page are intended for use by advanced users only, and "
+#~ "there's <strong>NO</strong> support for them."
+#~ msgstr "本页的选项是设计给进阶的使用者使用的，同时也<strong>不提供</strong>关于本页选项的相关技术支援"
+
+#~ msgid "webGUI SSL certificate/key"
+#~ msgstr "网页管理介面SSL验证/金钥"
+
+#~ msgid "Paste an RSA private key in PEM format here."
+#~ msgstr "请在此贴上一个PEM格式的RSA私钥。"
+
+#~ msgid "TCP idle timeout"
+#~ msgstr "TCP闲置切断时间"
+
+#~ msgid ""
+#~ "Idle TCP connections will be removed from the state table after no packets "
+#~ "have been received for the specified number of seconds. Don't set this too "
+#~ "high or your state table could become full of connections that have been "
+#~ "improperly shut down. The default is 9000 seconds (2.5 hours)."
+#~ msgstr ""
+#~ "闲置太久的TCP连线将会被系统切断。不要把这个数值设定的太高，以免系统内同时存在太多的连线(例:不正常断线的程式)。预设的数值是9000秒（2.5小时）。"
+
+#~ msgid "S.M.A.R.T Daemon"
+#~ msgstr "S.M.A.R.T监控程式"
+
+#~ msgid "Enable the S.M.A.R.T daemon"
+#~ msgstr "开启 S.M.A.R.T 监控程式"
+
+#~ msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
+#~ msgstr "透过记录档监控S.M.A.R.T装置。"
+
+#~ msgid "Zeroconf"
+#~ msgstr "ZeroConf"
+
+#~ msgid "mount share"
+#~ msgstr "分享之挂载点"
+
+#~ msgid "A valid gateway must be specified."
+#~ msgstr "请输入一个有效的闸道。"
+
+#~ msgid "Standard MTU is 1500, use 9000 for jumbo frame."
+#~ msgstr "标准MTU是1500，输入9000则适用于大笔资料的传输。"
+
+#~ msgid ""
+#~ "Device polling is a technique that lets the system periodically poll network "
+#~ "devices for new data instead of relying on interrupts. This can reduce CPU "
+#~ "load and therefore increase throughput, at the expense of a slightly higher "
+#~ "forwarding delay (the devices are polled 1000 times per second). Not all "
+#~ "NICs support polling; see the m0n0wall homepage for a list of supported "
+#~ "cards."
+#~ msgstr ""
+#~ "Device "
+#~ "polling可以让系统定期的从网路介面撷取新的资料而不必依赖CPU中断。这样可以减低网路流量对CPU造成的负担，同时增加系统的整体工作量。但是会稍微增加"
+#~ "网路的延迟时间(系统每一秒钟要询问网路介面卡1000次)。请参访m0n0wall的网站以确定你的网路卡是否支援Device polling。"
+
+#~ msgid "Speed"
+#~ msgstr "速度"
+
+#~ msgid "Enable Optional "
+#~ msgstr "开启额外的选项 "
+
+#~ msgid " interface"
+#~ msgstr " 网路介面"
+
+#~ msgid "Enter a description (name) for the interface here."
+#~ msgstr "在此输入你对这个网路介面的描述文字。"
+
+#~ msgid "Static IP configuration"
+#~ msgstr "静态IP设定"
+
+#~ msgid "DHCP client configuration"
+#~ msgstr "动态DHCP设定"
+
+#~ msgid "General configuration"
+#~ msgstr "一般设定"
+
+#~ msgid ""
+#~ "The value in this field is sent as the DHCP hostname when requesting a DHCP "
+#~ "lease."
+#~ msgstr "这个数值将会成为向DHCP伺服器要求IP时发送出去的主机名称。"
+
+#~ msgid "Client Identifier"
+#~ msgstr "DHCP识别值"
+
+#~ msgid ""
+#~ "The value in this field is sent as the DHCP client identifier when "
+#~ "requesting a DHCP lease."
+#~ msgstr "这个数值将会成为向DHCP伺服器要求IP时发送出去的辨识参数。"
+
+#~ msgid ""
+#~ "The LAN configuration has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr "区域网路设定已经变更。<br>套用之后才会生效。"
+
+#~ msgid "Manage"
+#~ msgstr "管理"
+
+#~ msgid ""
+#~ "The disk list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr "磁碟组态已经变更。<br>套用之后便会生效。"
+
+#~ msgid "First configuration step: Add your hardrive to the disk list."
+#~ msgstr "规划的第一步：新增你的硬碟到磁碟表中。"
+
+#~ msgid "UDMA mode"
+#~ msgstr "UDMA模式"
+
+#~ msgid ""
+#~ "Puts the hard disk into standby mode when the selected amount of time after "
+#~ "the last access has elapsed. <em>Do not set this for CF cards.</em>"
+#~ msgstr "设定在多久时间之后，如果没有存取动作便将硬碟切换至待命模式。<em>CF卡请勿选用。</em>"
+
+#~ msgid ""
+#~ "This allows  you  to lower the power consumption of the drive, at the "
+#~ "expense of performance.<br><em>Do not set this for CF cards.</em>"
+#~ msgstr "用来控制磁碟的电源消耗，相反的会失去一些效能。<br><em>CF卡请勿选用。</em>"
+
+#~ msgid ""
+#~ "This allows you to set how loud the drive is while it's operating.<br><em>Do "
+#~ "not set this for CF cards.</em>"
+#~ msgstr "用来控制磁碟的运转噪音程度。<br><em>CF卡请勿选用。</em>"
+
+#~ msgid "Preformatted FS"
+#~ msgstr "已存在之档案系统"
+
+#~ msgid "Disk initialization details"
+#~ msgstr "磁碟初始化系统资讯"
+
+#~ msgid "\"fdisk: Geom not found\"is not an error message!\n"
+#~ msgstr "「fdisk: Geom not found」并不是一个错误讯息！\n"
+
+#~ msgid ""
+#~ "This step will erase all your partition, create partition number 1 and "
+#~ "format the hard drive with the file system specified."
+#~ msgstr "这个动作会删除所有磁区，建立并且格式化第一号磁区成为你指定的档案系统。"
+
+#~ msgid ""
+#~ "The disk is currently mounted! The mount point will be removed temporary to "
+#~ "perform selected command."
+#~ msgstr "磁碟目前正在挂载中！系统会将磁碟暂时卸载以进行指令。"
+
+#~ msgid "iSCSI"
+#~ msgstr "iSCSI"
+
+#~ msgid "Target IP address"
+#~ msgstr "目标IP位置"
+
+#~ msgid "IP address of the iSCSI target."
+#~ msgstr "iSCSI装置的IP位置"
+
+#~ msgid "Targetname"
+#~ msgstr "目标名称"
+
+#~ msgid "Targetname."
+#~ msgstr "iSCSI目标的名称"
+
+#~ msgid "Format RAID"
+#~ msgstr "格式化RAID"
+
+#~ msgid "Geom Mirror"
+#~ msgstr "Geom Mirror"
+
+#~ msgid "Geom Stripe"
+#~ msgstr "Geom Stripe"
+
+#~ msgid "Geom Concat"
+#~ msgstr "Geom Concat"
+
+#~ msgid "Geom Raid5"
+#~ msgstr "Geom Raid5"
+
+#~ msgid "RAID"
+#~ msgstr "RAID"
+
+#~ msgid ""
+#~ "The Raid configuration has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr "Raid 组态已经变更。<br>套用之后才会生效。"
+
+#~ msgid "ERR Could not save RAID configuration.\n"
+#~ msgstr "错误！不能储存 RAID 设定值。\n"
+
+#~ msgid "Members of this volume"
+#~ msgstr "RAID volume的成员"
+
+#~ msgid "Disk format UFS output:"
+#~ msgstr "UFS格式化结果输出："
+
+#~ msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
+#~ msgstr "这会将此RAID磁碟格式化为Unix档案系统(UFS)。"
+
+#~ msgid "Format UFS disk!"
+#~ msgstr "格式化UFS磁碟！"
+
+#~ msgid ""
+#~ "1. Use these specials actions for debugging only!<br>2. There is no need of "
+#~ "using this menu for start a RAID volume (start automaticaly)."
+#~ msgstr "1. 这些特殊的命令只用来除错而已！<br>2. RAID磁碟在建立之后会自动的启动，不需要利用activate工具再启动一次。"
+
+#~ msgid ""
+#~ "The mount point list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr "挂载点已经变更。<br>套用之后才会生效。"
+
+#~ msgid "delete mount"
+#~ msgstr "删除挂载点"
+
+#~ msgid "add mount"
+#~ msgstr "新增挂载点"
+
+#~ msgid "The description name contain invalid characters."
+#~ msgstr "描述文字包含了无效的字元。"
+
+#~ msgid "Duplicate Share Name."
+#~ msgstr "输入了存在的分享名称。"
+
+#~ msgid ""
+#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
+#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID volume "
+#~ "creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+#~ "you select option 2 during installation on hard drive.<br>Select old "
+#~ "software gmirror/graid5/gvinum for volume created with old FreeNAS release"
+#~ msgstr ""
+#~ "如果你想要挂载 GPT 格式的磁碟（0.684之后的预设格式化选项），请选择 EFI GPT。<br>如果是要挂载 UFS 或 Software "
+#~ "RAID 格式化的磁碟请选择 1。<br>如果是要挂载系统磁碟分隔为两区中的资料磁碟，请选择 2。<br>如果你要挂载 0.682 之前 FreeNAS "
+#~ "格式化之磁碟，请选择 old software gmirror/graid5/gvinum。"
+
+#, php-format
+#~ msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
+#~ msgstr "你不能卸载有 Swap 或 iSCSI 档案的目标"
+
+#~ msgid "The Netbios name contains invalid characters."
+#~ msgstr "Netbios名称输入了无效的字元。"
+
+#~ msgid "The Workgroup name contains invalid characters."
+#~ msgstr "工作群组内输入了无效的字元。"
+
+#~ msgid "The WINS server must be an IP address."
+#~ msgstr "WINS伺服器必须是IP位置。"
+
+#~ msgid "The SND Buffer value must be a number."
+#~ msgstr "传送缓冲区必须是一个数字。"
+
+#~ msgid "The RCV Buffer value must be a number."
+#~ msgstr "接收缓冲区必须是一个数字。"
+
+#~ msgid "CIFS share"
+#~ msgstr "CIFS分享"
+
+#~ msgid "Workgroup to be member of."
+#~ msgstr "选择将要加入的工作群组"
+
+#~ msgid "WINS Server IP address."
+#~ msgstr "WINS伺服器的IP位置。"
+
+#~ msgid "Recycle Bin"
+#~ msgstr "资源回收桶"
+
+#~ msgid "Enable Recycle bin"
+#~ msgstr "开启资源回收桶"
+
+#~ msgid "This will create a recycle bin on the CIFS shares."
+#~ msgstr "开启资源回收筒的功能，可救回删除之档案。"
+
+#~ msgid ""
+#~ "The shares has been modified.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr "分享设定已经变更。<br>套用之后才会生效。"
+
+#~ msgid "The maximum Number of client must be a number."
+#~ msgstr "连线数目上线必须是一个数字。"
+
+#~ msgid "The max con per ip must be a number."
+#~ msgstr "相同IP的连线数目必须是一个数字。"
+
+#~ msgid "The pasv address must be a public IP address."
+#~ msgstr "被动式IP位置必须是一个对外的IP。"
+
+#~ msgid "You must select at minium anonymous or/and local user authentication."
+#~ msgstr "请至少选择 匿名/本地使用者 认证。"
+
+#~ msgid "Anonymous login"
+#~ msgstr "匿名登入"
+
+#~ msgid "Enable anonymous login."
+#~ msgstr "是否开启匿名登入"
+
+#~ msgid "Local User"
+#~ msgstr "本机使用者"
+
+#~ msgid "Enable local user login."
+#~ msgstr "是否开启本机使用者登入"
+
+#~ msgid ""
+#~ "Use this option to override the IP address that FTP daemon will advertise in "
+#~ "response to the PASV command."
+#~ msgstr "FTP伺服器的被动式连线IP位置。"
+
+#~ msgid "Network that is authorised to access to NFS share"
+#~ msgstr "设定可以使用NFS分享的网路区段"
+
+#~ msgid "The name of the exported directories are : /mnt/sharename"
+#~ msgstr "输出的目录名称是：/mnt/sharename"
+
+#~ msgid "You must configure mount point first."
+#~ msgstr "请先设定挂载点。"
+
+#~ msgid "Rsync Client Synchronization"
+#~ msgstr "Rsync本地端档案同步"
+
+#~ msgid "IP address of remote RSYNC server"
+#~ msgstr "远端的RSYNC伺服器IP位置"
+
+#~ msgid "RSYNC Options"
+#~ msgstr "RSYNC选项"
+
+#~ msgid "Shares to be synchronized"
+#~ msgstr "指定要同步的目录"
+
+#~ msgid "This same local share must be present on the Remote Server."
+#~ msgstr "远端与本地端的分享目录必须相同。"
+
+#~ msgid "You can't have the same mount point for source and destination!"
+#~ msgstr "来源与目的不能相同！"
+
+#~ msgid "Rsync Local Synchronization"
+#~ msgstr "Rsync本地备援"
+
+#~ msgid "Source"
+#~ msgstr "来源位置"
+
+#~ msgid "Source Mount Point."
+#~ msgstr "选择来源档案的挂载点。"
+
+#~ msgid "Destination"
+#~ msgstr "目地位置"
+
+#~ msgid "Destination Mount Point (backup drive)."
+#~ msgstr "选择目的位置的挂载点(备援磁碟机)。"
+
+#~ msgid "Enable TCP Forwarding"
+#~ msgstr "Enable TCP Forwarding"
+
+#~ msgid "Directories to be shared."
+#~ msgstr "分享的资料夹(space or CSV list)."
+
+#~ msgid "No content directory to be shared."
+#~ msgstr "No content directory to be shared."
+
+#~ msgid ""
+#~ "The User list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr "使用者名单已经变更。<br>套用之后才会生效。"
+
+#~ msgid "You must create a group first."
+#~ msgstr "你必须先建立一个群组。"
+
+#~ msgid "Unique login name of user."
+#~ msgstr "用来登入的使用者帐号"
+
+#~ msgid "Confirm Password"
+#~ msgstr "确认密码"
+
+#~ msgid "Confirm the password."
+#~ msgstr "请输入二次密码"
+
+#~ msgid "Group Member"
+#~ msgstr "群组成员"
+
+#~ msgid "Full Shell"
+#~ msgstr "Shell权限"
+
+#~ msgid "Give full shell to user"
+#~ msgstr "让这个使用者可以使用shell。"
+
+#~ msgid "Put user in the administrator group"
+#~ msgstr "将使用者加入管理者群组"
+
+#~ msgid ""
+#~ "The group list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr "群组列表已经变更。<br>套用变更之后才会生效。"
+
+#~ msgid "The Group name contains invalid characters."
+#~ msgstr "群组名称内有无效的字元。"
+
+#~ msgid "The Group desc contains invalid characters."
+#~ msgstr "群组描述内有无效的字元。"
+
+#~ msgid "Password of domain administrator account, enter it here twice."
+#~ msgstr "请在此设定管理者的密码，并且输入两次以确认无误。"
+
+#~ msgid "Edit VLAN"
+#~ msgstr "编辑VLAN"
+
+#~ msgid "ATAidle"
+#~ msgstr "ATAidle"
+
+#~ msgid ""
+#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
+#~ "automatically after storing the new firmware. The configuration will be "
+#~ "maintained.<br>You need a minium of %d Mb RAM to perform the firmware "
+#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+#~ "System configuration before doing a Firmware upgrade."
+#~ msgstr ""
+#~ "一但轫体升级动作已经开始，千万不要中止其动作！ %s 在新的韧体上传完成之后便会自动重新开机。所有之前所设定的组态都会被保留。<br>系统最少需要 "
+#~ "%dMB 的记忆体才能顺利执行此动作。<br>强烈的建议使用者，进行韧体升级之前请先<a href=%s>备份</a>系统设定组态。"
+
+#~ msgid ""
+#~ "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with your "
+#~ "hard drive."
+#~ msgstr "如果显示「UDMA_ERROR.... LBA」的讯息，你可以手动选取UDMA的模式。"
+
+#, php-format
+#~ msgid ""
+#~ "This allows you to set FS type for preformated disk with data.<br><em>Leave "
+#~ "'unformated' for unformated disk and then use <a href=%s>format "
+#~ "menu</a>.</em>"
+#~ msgstr ""
+#~ "如果新增已经包含资料的硬碟，请选择其原本的档案系统格式就可以获取其中的资料。<br><em>还没有规划档案格式的磁碟机请选择「尚未格式化」，之后再进入<a"
+#~ " href=%s>格式化工具。</a>选单。</em>"
+
+#~ msgid ""
+#~ "Optional configuration step: Configuring a virtual RAID disk using your <a "
+#~ "href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
+#~ "before format and mount it!"
+#~ msgstr ""
+#~ "选择性的规划步骤：利用你<a "
+#~ "href='%s'>刚才设定的磁碟</a>来建立一个新的RAID磁碟。<br>请等待「%s」的状态出现之后再进行格式化与挂载的动作！"
+
+#, php-format
+#~ msgid ""
+#~ "Second configuration step: Declaring the filesystem used by your <a "
+#~ "href=%s>previously configured disk.</a>"
+#~ msgstr "规划的第二步：选择<a href=%s>刚才设定的磁碟</a>所使用之档案系统"
+
+#~ msgid "List of partition on all detected disk"
+#~ msgstr "所有磁碟内的磁区列表"
+
+#~ msgid "List of SMART capabilities on all detected disk"
+#~ msgstr "列出所有磁碟可用的SMART功能"
+
+#~ msgid "List of Advanced ATA capabilities on all ATA disk"
+#~ msgstr "列出所有ATA磁碟的ATA功能"
+
+#, php-format
+#~ msgid "Count must be between 1 and %d"
+#~ msgstr "Count必需介于 1 与 %d"
+
+#~ msgid "Ping output"
+#~ msgstr "Ping 结果"
+
+#~ msgid "Maximum number of hops"
+#~ msgstr "hop上限"
+
+#~ msgid "Traceroute output"
+#~ msgstr "Traceroute结果输出"
+
+#, php-format
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
+#~ "hostnames&quot; is checked on the <a href=%s>%s</a> page."
+#~ msgstr "如果<a href=%s>%s</a>页面内， &quot;将IP解析成主机名称&quot;的选项有开启，IP 位置会解析成主机名称。"
+
+#~ msgid "Erasing MBR and all partitions"
+#~ msgstr "删除 MBR 以及所有的磁区分割"
+
+#~ msgid "Keeping the MBR and all partitions"
+#~ msgstr "保留原有的MBR以及所有的磁区分割"
+
+#~ msgid "Creating one partition"
+#~ msgstr "建立一个磁区"
+
+#~ msgid "Initializing partition"
+#~ msgstr "磁区初始化"
+
+#~ msgid "Creating BSD label"
+#~ msgstr "建立 BSD 标籤"
+
+#~ msgid "Creating filesystem"
+#~ msgstr "建立档案系统"
+
+#, c-format
+#~ msgid "Destroying old %s information"
+#~ msgstr "删除旧 %s 资讯"
+
+#~ msgid "Done"
+#~ msgstr "完成"
+
+#, c-format
+#~ msgid "Creating %s partition"
+#~ msgstr "建立 %s 磁区"
+
+#~ msgid "Creating filesystem with 'Soft Updates'"
+#~ msgstr "建立'Soft Updates'的档案系统"
+
+#~ msgid ""
+#~ "The crypted disk list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr "加密磁碟设定已经变更。<br>变更之后才会生效。"
+
+#~ msgid ""
+#~ "Do you really want to delete this encrypted disk? All elements that still "
+#~ "use it will become invalid (e.g. share)!"
+#~ msgstr "确定要删除这个加密磁碟吗？所有使用此磁碟的元件都会失效！(例：分享)"
+
+#~ msgid "Create encrypted disk"
+#~ msgstr "建立加密磁碟"
+
+#~ msgid "Data integrity algorithm"
+#~ msgstr "资料完整性演算法"
+
+#~ msgid "Init and encrypt disk"
+#~ msgstr "初始并且开始加密磁碟"
+
+#~ msgid "Disk initialization and encryption"
+#~ msgstr "磁碟初始化与加密"
+
+#~ msgid "Encrypting... Please wait"
+#~ msgstr "加密中...请稍等"
+
+#~ msgid "Attaching..."
+#~ msgstr "连接中..."
+
+#~ msgid ""
+#~ "Using Data integrity will reduce size of available storage and also reduce "
+#~ "speed."
+#~ msgstr "套用资料完整性检查会需要额外的储存空间与计算时间。"
+
+#~ msgid "Sensors"
+#~ msgstr "感应器"
+
+#~ msgid "Detaching..."
+#~ msgstr "卸除中..."
+
+#~ msgid "attach"
+#~ msgstr "连结"
+
+#~ msgid "detach"
+#~ msgstr "卸除"
+
+#~ msgid "Resume"
+#~ msgstr "续传"
+
+#~ msgid "Enable resume mode."
+#~ msgstr "开启续传功能"
+
+#~ msgid ""
+#~ "Use this option to enable resuming broken transfers at the point of "
+#~ "interruption."
+#~ msgstr ""
+#~ "Use this option to enable resuming broken transfers at the point of "
+#~ "interruption."
+
+#~ msgid ""
+#~ "The iSCSI target list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr "iSCSI组态已经变更。<br>套用之后便会生效。"
+
+#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
+#~ msgstr "你最少要有 256MB 的记忆体才能开启 iSCSI 目标功能。"
+
+#~ msgid "FTP users"
+#~ msgstr "FTP使用者"
+
+#~ msgid "Save and Restart UPnP"
+#~ msgstr "储存并重新启动 UPnP"
+
+#~ msgid "Save and Restart Unison"
+#~ msgstr "储存并重新启动 Unison"
+
+#~ msgid "Save and Restart SSHD"
+#~ msgstr "储存并重新启动 SSHD"
+
+#~ msgid "Save and Restart RSYNC"
+#~ msgstr "储存并重新启动 RSYNC"
+
+#~ msgid "Save and Restart NFS"
+#~ msgstr "储存并重新启动 NFS"
+
+#~ msgid "Save and Restart FTP"
+#~ msgstr "储存并重新启动 FTP"
+
+#~ msgid "Save and Restart AFP"
+#~ msgstr "储存并重新启动 AFP"
+
+#~ msgid "Password confirmation"
+#~ msgstr "密码确认"
+
+#~ msgid "Remote share (source)"
+#~ msgstr "远端分享(来源)"
+
+#~ msgid ""
+#~ "The RSYNC client list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr "客户端RSYNC设定已经变更。<br>套用之后才会生效。"
+
+#~ msgid ""
+#~ "The RSYNC local list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr "本地端RSYNC设定已经变更。<br>套用之后才会生效。"
+
+#~ msgid "Remote source share name"
+#~ msgstr "远端来源名称"
+
+#~ msgid "Mount to use"
+#~ msgstr "使用的挂载点"
+
+#~ msgid "A valid size target value must be specified."
+#~ msgstr "请输入一个有效的Size。"
+
+#~ msgid "Mount used"
+#~ msgstr "使用之挂载点"
+
+#~ msgid "Define an host name can be useful for NFS."
+#~ msgstr "设定主机名称将对 NFS 服务有帮助"
+
+#~ msgid ""
+#~ "The host list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr "主机名称列表已经变更。<br>套用之后便会生效。"
+
+#~ msgid "Initializing disk"
+#~ msgstr "初始化磁碟"
+
+#~ msgid "Enable Zeroconf"
+#~ msgstr "开启 Zeroconf"
+
+#~ msgid "LDAP server IP"
+#~ msgstr "LDAP 伺服器IP"
+
+#~ msgid "IP address of LDAP server."
+#~ msgstr "LDAP伺服器IP位置"
+
+#~ msgid ""
+#~ "Specifies the default base DN to use when performing ldap operations. The "
+#~ "base must be specified as a distinguished name in LDAP format."
+#~ msgstr "指定预设的 Base 网域名称以便 LDAP运作。 Base 网域名称必须为显著的 LDAP 格式。"
+
+#~ msgid ""
+#~ "Specifies the default bind DN to use when performing ldap operations. The "
+#~ "bind DN must be specified as a distinguished name in LDAP format."
+#~ msgstr "指定预设的 Bind 网域名称以便 LDAP运作。 Bind 网域名称必须为显著的 LDAP 格式。"
+
+#~ msgid ""
+#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
+#~ "take effect. You may also have to do one or more of the following steps "
+#~ "before you can access your NAS again: </span><"
+#~ msgstr ""
+#~ "当按下&quot;储存&quot;之后，必须重新开启 %s 才能使变更生效。请继续执行下列的步骤，才能再次连线您的NAS：</span></p>"
+
+#~ msgid ""
+#~ "The content directory list has been changed.<br>You must apply the changes "
+#~ "in order for them to take effect."
+#~ msgstr "内容目录列表已经变更。<br>套用之后才会生效。"
+
+#~ msgid "Do you really want to delete this user?!"
+#~ msgstr "确定要删除此使用者帐号？"
+
+#~ msgid ""
+#~ "The encrypted volume list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr "加密磁碟表已经变更。<br>套用之后才会生效。"
+
+#~ msgid ""
+#~ "The iSCSI disk list has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr "iSCSI 磁碟列表已经变更。<br>套用之后才会生效。"
+
+#~ msgid "ISO"
+#~ msgstr "ISO 档"
+
+#~ msgid "IPv4 Gateway"
+#~ msgstr "IPv4 闸道"
+
+#~ msgid "Global Configuration"
+#~ msgstr "全域性设定"
+
+#~ msgid "IPv4 address"
+#~ msgstr "IPv4 位置"
+
+#~ msgid ""
+#~ "Enter a custom port number for the HTTP server if you want to override the "
+#~ "default (49152). Only dynamic or private ports can be used (from 49152 "
+#~ "through 65535)."
+#~ msgstr "输入你想要使用的网页伺服器连接阜（预设为 49152），只可以使用动态或是私有区（从 49152 到 65535）。"
+
+#~ msgid "desc"
+#~ msgstr "递减"
+
+#~ msgid ""
+#~ "The cron job list has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr "Cron job 列表已经变更。<br>套用之后才会生效。"
+
+#~ msgid ""
+#~ "The package list has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr "套件列表已经变更了。<br>套用之后变更才会生效。"
+
+#~ msgid "Accessible through 'http://ip_address:port'."
+#~ msgstr "请输入'http://ip_adress:port'连线。"
+
+#~ msgid ""
+#~ "Location where the content database file will be stored. The bookmark file "
+#~ "will also be generated in that directory."
+#~ msgstr "设定内容资料库的位置。书籤记录档也会存放在同一个目录。"
+
+#~ msgid "Web user interface"
+#~ msgstr "网页控制介面"
+
+#~ msgid "Alias host name."
+#~ msgstr "主机别名"
+
+#~ msgid "Sony Playstation 3"
+#~ msgstr "Sony Playstation 3"
+
+#~ msgid "Telegent TG100"
+#~ msgstr "Telegent TG100"
+
+#~ msgid ""
+#~ "The modules has been modified.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr "这个模组已经修改。<br>套用之后才会生效。"
+
+#~ msgid "ZyXEL DMA-1000"
+#~ msgstr "ZyXEL DMA-1000"
+
+#~ msgid "Helios X3000"
+#~ msgstr "Helios X3000"
+
+#~ msgid ""
+#~ "The NFS export list has been changed.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr "NFS 输出列表已经变更。<br>套用之后才会生效。"
+
+#~ msgid "D-Link DSM320"
+#~ msgstr "D-Link DSM320"
+
+#~ msgid "HTTP"
+#~ msgstr "HTTP"
+
+#~ msgid "HTTPS"
+#~ msgstr "HTTPS"
+
+#~ msgid ""
+#~ "The configuration has been modified.<br>You must apply the changes in order "
+#~ "for them to take effect."
+#~ msgstr "设定已经变更。<br>套用之后才会生效。"
+
 msgid " interfaces:"
-msgstr " 介面:"
+msgstr " 界面:"
 
 msgid " was assigned to "
 msgstr " 被指派为 "
 
 #, php-format
 msgid "%d%% of %dMB"
-msgstr "%d%% of %dMB"
+msgstr "%dMB中的%d%%"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
-msgstr "设定%s成为Windows客户端的时间伺服器。"
+msgstr "设定%s成为Windows客户端的时间服务器。"
 
 #, php-format
 msgid "%s available of %sB"
@@ -64,15 +1025,17 @@ msgstr "%s available of %sB"
 
 #, php-format
 msgid "%s interface"
-msgstr "%s 介面"
+msgstr "%s 界面"
 
 #, php-format
 msgid "%s interface (SSID '%s')"
-msgstr "%s 介面 (SSID '%s')"
+msgstr "%s 界面 (SSID '%s')"
 
 #, php-format
 msgid "%s of %sB"
-msgstr "%s of %sB"
+msgstr ""
+"Copy text   \t\n"
+"%sB中的%s"
 
 #, php-format
 msgid "%s used of %sB"
@@ -84,91 +1047,125 @@ msgstr "%s uses %s to create %s arrays."
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
-msgstr "%s复原设定组态之后将会自动重新开机。"
+msgstr "%s还原设定后将会自动重新开机。"
 
 #, php-format
 msgid "%sB available of %sB"
-msgstr "%sB available of %sB"
+msgstr "%sB中的%sB有效"
 
 #, php-format
 msgid "%sB used of %sB"
-msgstr "%sB used of %sB"
+msgstr "%sB中的%sB已用"
 
 msgid "(unstable)"
-msgstr "(测试中)"
+msgstr "(不稳定)"
 
-msgid "1. Use these specials actions for debugging only!<br>2. There is no need of using this menu for starting a RAID volume (start automaticaly)."
-msgstr "1. 这些特别的指令只适用于 debugging！<br>2. RAID 将会自动开始运作，不需要再次下达 starting。"
+msgid ""
+"1. Use these specials actions for debugging only!<br>2. There is no need of "
+"using this menu for starting a RAID volume (start automaticaly)."
+msgstr "1. 这些行为只能用于调试！<br>2. 无需用此菜单来启动RAID卷 (自动启动)."
+
+msgid "802.1Q VLAN tag (between 1 and 4094)."
+msgstr ""
 
 #, php-format
-msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
-msgstr "Unison 服务必须配合<a href=%s>SSHD</a> ，而存取的<a href=%s>user 使用者</a>必须要有 Shell 权限。"
+msgid ""
+"<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a "
+"href=%s>user</a> must have full Shell enabled."
+msgstr "Unison 服务必须配合<a href=%s>SSHD</a> ，而<a href=%s>使用者</a>必须要有完全的Shell权限。"
 
-msgid "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr "NTP 伺服器名称只可以包含下面的字元 a-z， 0-9， '-' 以及 '.'。"
+msgid ""
+"A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr "NTP时间服务器的名称只能包含字符a到z，0到9，'-' 及 '.'。"
 
-msgid "A directory listing is generated if a directory is requested and no index-file (index.php, index.html, index.htm or default.htm) was found in that directory."
-msgstr "如果目录被存取时目录档不存在，系统将会自动产生一个目录档。(index.php, index.html, index.htm or default.htm) was found in that directory."
+#, php-format
+msgid "A VLAN with the tag %s is already defined on this interface."
+msgstr ""
+
+msgid ""
+"A directory listing is generated if a directory is requested and no index-"
+"file (index.php, index.html, index.htm or default.htm) was found in that "
+"directory."
+msgstr ""
+"如果目录被存取时目录档不存在，系统将会自动产生一个目录档。(index.php, index.html, index.htm or "
+"default.htm) was found in that directory."
+
+msgid ""
+"A host name alias. This option can appear multiple times, for each domain "
+"that has the same IP. Use a space to separate multiple alias names."
+msgstr ""
+
+msgid ""
+"A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
+"local network and the capabilities of the adaptor. It may be specified "
+"either as a plain string or as a string of hexadecimal digits preceded by "
+"'0x'."
+msgstr ""
 
 msgid "A route to this destination network already exists."
-msgstr "已经有一个目标网段的路由设定存在了。"
+msgstr "到目标网段的路由设定已经存在。"
 
 msgid "A valid IP address must be specified."
-msgstr "请输入一个有效的IP位置。"
+msgstr "必须设置一个有效的IP地址。"
 
-msgid "A valid IPv4 address must be specified for the primary/secondary DNS server."
-msgstr "请指定一个有效的 DNS IPv4 位置。"
+msgid ""
+"A valid IPv4 address must be specified for the primary/secondary DNS server."
+msgstr "必须为主/从DNS服务器设置一个有效的IPv4地址。"
 
 msgid "A valid IPv4 address must be specified."
-msgstr "请指定一个有效的 IPv4 位置。"
+msgstr "必须设置一个有效的IPv4地址。"
 
 msgid "A valid IPv4 network bit count must be specified."
-msgstr "请指定一个有效的 IPv4 network bit count。"
+msgstr "必须设置一个有效的IPv4网络比特值。"
 
 msgid "A valid IPv6 Gateway address must be specified."
-msgstr "请指定一个有效的 IPv6 闸道位置。"
+msgstr "必须设置一个有效的IPv6网关地址。"
 
-msgid "A valid IPv6 address must be specified for the primary/secondary DNS server."
-msgstr "请指定一个有效的 DNS IPv6 位置。"
+msgid ""
+"A valid IPv6 address must be specified for the primary/secondary DNS server."
+msgstr "必须为主/从DNS服务器设置一个有效的IPv6地址。"
 
 msgid "A valid IPv6 address must be specified."
-msgstr "请指定一个有效的 IPv6 位置。"
+msgstr "必须设置一个有效的IPv6地址。"
 
 msgid "A valid IPv6 prefix must be specified."
-msgstr "请指定一个有效的 IPv6 prefix。"
+msgstr "必须设置一个有效的IPv6前缀。"
 
 msgid "A valid destination network must be specified."
-msgstr "请输入一个有效的目标网段。"
+msgstr "必须指定一个有效的目标网络。"
 
 msgid "A valid gateway IP address must be specified."
-msgstr "请输入一个有效的闸道IP位置。"
+msgstr "必须指定一个有效的网关IP地址。"
 
 msgid "A valid mtu size must be specified."
-msgstr "请输入一个有效的MTU。"
+msgstr "必须指定一个有效的MTU大小。"
 
 msgid "A valid network bit count (1-32) must be specified."
-msgstr "请输入一个有效的network bit count（1-32）。"
+msgstr "必须指定一个有效的网络比特值 (1-32) 。"
 
 msgid "A valid network bit count must be specified."
-msgstr "请输入一个有效的network bit count。"
+msgstr "必须指定一个有效的网络比特值。"
 
 msgid "A valid network must be specified."
-msgstr "必须指定一个有效的网域。"
+msgstr "必须指定一个有效的网络。"
 
 msgid "A valid prefix (1-128) must be specified."
-msgstr "请输入一个有效的prefix（1-128）。"
+msgstr "必须指定一个有效的前缀 (1-128)。"
+
+msgid "A valid systctl MIB value."
+msgstr ""
 
 msgid "AD authentication disabled"
 msgstr "关闭 AD 认证"
 
 msgid "AD or PDC name."
-msgstr "AD or PDC 的名称。"
+msgstr "AD或PDC 的名称。"
 
 msgid "AFP"
 msgstr "AFP"
 
 msgid "AFP Server"
-msgstr "AFP伺服器"
+msgstr "AFP服务器"
 
 msgid "ARP Tables"
 msgstr "ARP Tables"
@@ -179,38 +1176,46 @@ msgstr "ARP tables"
 msgid "Access"
 msgstr "存取权限"
 
+msgid "Access Restrictions"
+msgstr ""
+
 msgid "Access mode"
 msgstr "存取模式"
-
-msgid "Accessible through 'http://ip_address:port'."
-msgstr "请输入'http://ip_adress:port'连线。"
 
 msgid "Acoustic level"
 msgstr "噪音控制"
 
 msgid "Activate"
-msgstr "启始"
+msgstr "激活"
 
 msgid "Activate S.M.A.R.T. monitoring for this device."
 msgstr "开启这个装置的 S.M.A.R.T. 监测"
 
+msgid ""
+"Activate email report if you want to be notified if a failure or a new error "
+"has been detected, or if a S.M.A.R.T. command to a disk fails."
+msgstr ""
+
 msgid "Active Directory"
-msgstr "Active Directory"
+msgstr "活动目录"
 
 msgid "Add"
-msgstr "增加"
+msgstr "添加"
 
 msgid "Add Host"
-msgstr "新增主机资讯"
+msgstr "添加主机"
+
+msgid "Add MIB"
+msgstr ""
 
 msgid "Add RAID"
-msgstr "新增 RAID"
+msgstr "添加RAID"
 
 msgid "Add RSYNC"
-msgstr "新增 RSYNC 设定"
+msgstr "添加RSYNC设定"
 
 msgid "Add Route"
-msgstr "新增路由"
+msgstr "添加路由"
 
 msgid "Add URL"
 msgstr "新增 URL"
@@ -219,93 +1224,123 @@ msgid "Add additional scheduled self-test."
 msgstr "新增自动化的自我监测"
 
 msgid "Add command"
-msgstr "新增指令"
+msgstr "添加命令"
 
 msgid "Add device"
-msgstr "新增装置"
+msgstr "添加设备"
 
 msgid "Add directory"
-msgstr "新增目录"
+msgstr "添加目录"
 
 msgid "Add disk"
-msgstr "增加磁碟"
+msgstr "添加磁盘"
 
 msgid "Add extent"
 msgstr "新增 extent"
 
 msgid "Add group"
-msgstr "新增群组"
+msgstr "添加组群"
 
 msgid "Add initiator"
-msgstr "新增初始器"
+msgstr "添加发起人"
 
 msgid "Add interface"
-msgstr "新增介面"
+msgstr "添加界面"
 
 msgid "Add job"
-msgstr "新增工作"
+msgstr "添加任务"
 
 msgid "Add module"
 msgstr "新增模组"
 
+msgid "Add mount point"
+msgstr ""
+
+msgid "Add option"
+msgstr ""
+
 msgid "Add parameter"
-msgstr "新增参数"
+msgstr "添加参数"
 
 msgid "Add self-test"
 msgstr "新增自我检测"
 
 msgid "Add share"
-msgstr "新增分享"
+msgstr "添加共享"
 
 msgid "Add target"
-msgstr "新增目标"
+msgstr "添加目标"
 
 msgid "Add user"
-msgstr "新增使用者"
+msgstr "添加用户"
 
 msgid "Additional group"
 msgstr "其余群组"
 
 msgid "Address"
-msgstr "位置"
+msgstr "地址"
 
 msgid "Administration password"
-msgstr "管理者密码"
+msgstr "管理员密码"
+
+msgid "Administrative WebGUI"
+msgstr ""
 
 msgid "Administrator name"
-msgstr "管理者帐号"
+msgstr "管理员名称"
 
 msgid "Advanced"
-msgstr "进阶"
+msgstr "高级设置"
+
+msgid "Advanced Configuration"
+msgstr ""
 
 msgid "Advanced Options"
 msgstr "进阶选项"
 
 msgid "Advanced Power Management"
-msgstr "进阶电源管理"
+msgstr "高级电源管理"
 
 msgid "Advanced settings"
-msgstr "进阶设定"
+msgstr "高级选项..."
 
 #, php-format
-msgid "After you click &quot;Save&quot;, you may also have to do one or more of the following steps before you can access %s again: <ul><li>change the IP address of your computer</li><li>access the webGUI with the new IP address</li></ul>"
-msgstr "当按下&quot;储存&quot;之后，请继续执行下列的步骤，才能再次连线至%s：<ul><li>变更电脑上的IP位置</li><li>使用新的IP位置来连接网页管理介面</li></ul>"
+msgid ""
+"After you click &quot;Save&quot;, you may also have to do one or more of the "
+"following steps before you can access %s again: <ul><li>change the IP "
+"address of your computer</li><li>access the webGUI with the new IP "
+"address</li></ul>"
+msgstr ""
+"点击&quot;存储&quot;之后，可能需要执行下列的步骤，才能再次连接至%s：<ul><li>变更电脑上的IP位置</li><li>使用新的IP位置来"
+"连接网页管理介面</li></ul>"
 
 #, php-format
-msgid "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
-msgstr "After you click &quot;Save&quot;, you must reboot %s to make the changes take effect. You may also have to do one or more of the following steps before you can access your NAS again: </span></p><ul><li><span class='vexpl'>change the IP address of your computer</span></li><li><span class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+msgid ""
+"After you click &quot;Save&quot;, you must reboot %s to make the changes "
+"take effect. You may also have to do one or more of the following steps "
+"before you can access your NAS again: </span></p><ul><li><span "
+"class='vexpl'>change the IP address of your computer</span></li><li><span "
+"class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
+msgstr ""
+"点击&quot;存储&quot;之后，可能必须重启%s以便生效。你也可能需要执行下列的步骤，才能再次连接至你的NAS：</span></p><ul><li"
+"><span class='vexpl'>改变你的电脑的IP地址</span></li><li><span "
+"class='vexpl'>用新的IP地址进入网页界面</span></li></ul>"
 
-msgid "Alias host name."
-msgstr "主机别名"
+msgid "Aggregation protocol"
+msgstr ""
 
 msgid "All"
-msgstr "全部"
+msgstr "所有"
 
 msgid "All dirs"
 msgstr "所有目录"
 
-msgid "All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."
-msgstr "All shares use the option 'usedots' thus making the filenames .Parent and anything beginning with .Apple illegal."
+msgid ""
+"All shares use the option 'usedots' thus making the filenames .Parent and "
+"anything beginning with .Apple illegal."
+msgstr ""
+"All shares use the option 'usedots' thus making the filenames .Parent and "
+"anything beginning with .Apple illegal."
 
 msgid "All users will have the root privilege."
 msgstr "让所有的使用者都有 root 权限。"
@@ -316,42 +1351,60 @@ msgstr "允许"
 msgid "Allow client access to accounts that have null passwords."
 msgstr "允许未设置密码的帐号连线。"
 
-msgid "Allow clients to attempt to store OS/2 style extended attributes on a share."
-msgstr "允许使用者以 OS/2 延伸属性于分享区储存档案。"
+msgid ""
+"Allow clients to attempt to store OS/2 style extended attributes on a share."
+msgstr "允许客户端尝试在共享中存储OS/2样式扩展属性。"
 
-msgid "Allow users to resume and upload files, but NOT to delete or rename them. Directories can be removed, but only if they are empty. However, overwriting existing files is still allowed."
+msgid ""
+"Allow users to resume and upload files, but NOT to delete or rename them. "
+"Directories can be removed, but only if they are empty. However, overwriting "
+"existing files is still allowed."
 msgstr "让使用者可以续传、覆盖与上传档案，同时可以移除空白的资料夹。但是不能删除或是更名。"
 
-msgid "Allows  certain  users and groups to have read/write access to a share. This follows the allow option format."
+msgid ""
+"Allows  certain  users and groups to have read/write access to a share. This "
+"follows the allow option format."
 msgstr "允许特定使用者与群组可以读写某个分享区。这将使用允许选项的格式。"
 
 #, php-format
 msgid "Allows %s to try and become a local master browser."
-msgstr "让 %s 尝试成为 local master browser。"
+msgstr "允许%s尝试成为local master browser。"
 
-msgid "Allows certain users and groups to have read-only  access  to  a share. This follows the allow option format."
+msgid ""
+"Allows certain users and groups to have read-only  access  to  a share. This "
+"follows the allow option format."
 msgstr "允许特定使用者与群组只能对某个分享区唯读。这将使用允许选项的格式。"
 
 msgid "Alternate TCP port. Default is 22"
-msgstr "替代的TCP连接埠。"
+msgstr "更改TCP端口。默认为22"
 
 msgid "Alternate TCP port. Default is 873"
-msgstr "替代的TCP连接埠。"
+msgstr "更改TCP端口。默认为873"
 
 msgid "Always on"
-msgstr "永远开启"
+msgstr "总是开启"
 
-msgid "Always use 0 for device number, helps when the device number is not constant across a reboot, cluster, ..."
-msgstr "Always use 0 for device number, helps when the device number is not constant across a reboot, cluster, ..."
+msgid "Always scan"
+msgstr ""
+
+msgid ""
+"Always use 0 for device number, helps when the device number is not constant "
+"across a reboot, cluster, ..."
+msgstr ""
+"Always use 0 for device number, helps when the device number is not constant "
+"across a reboot, cluster, ..."
 
 msgid "An host with this name already exists."
 msgstr "已经有一个相同的主机名称存在了。"
+
+msgid "An interface with the specified description already exists."
+msgstr ""
 
 msgid "Anonymous users only"
 msgstr "只允许匿名使用者"
 
 msgid "Apply changes"
-msgstr "套用"
+msgstr "应用更改"
 
 msgid "Are you sure you want to proceed?"
 msgstr "确定要继续进行？"
@@ -362,17 +1415,18 @@ msgstr "确定要重新启动系统？"
 msgid "Are you sure you want to shutdown the system?"
 msgstr "确定要关闭系统？"
 
-msgid "Assign network ports"
-msgstr "指派通讯埠"
-
 msgid "Associated stations"
-msgstr "连接的无线网路"
+msgstr "连接的无线网络"
 
-msgid "At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents."
-msgstr "At the highest level, a target is what is presented to the initiator, and is made up of one or more devices, and/or one or more extents."
+msgid ""
+"At the highest level, a target is what is presented to the initiator, and is "
+"made up of one or more devices, and/or one or more extents."
+msgstr ""
+"At the highest level, a target is what is presented to the initiator, and is "
+"made up of one or more devices, and/or one or more extents."
 
 msgid "Attached"
-msgstr "连结成功"
+msgstr "连接成功"
 
 #, php-format
 msgid "Attaching provider '%s'."
@@ -385,7 +1439,10 @@ msgid "Authentication"
 msgstr "认证方式"
 
 msgid "Authorised network"
-msgstr "认可网路"
+msgstr "通过认证的网络"
+
+msgid "Auto"
+msgstr ""
 
 msgid "AutoScale"
 msgstr "自动扩展"
@@ -409,16 +1466,22 @@ msgid "Backup/Restore"
 msgstr "备份/还原"
 
 msgid "Balance algorithm"
-msgstr "平衡演算法"
+msgstr "平衡算法"
 
 msgid "Banner"
 msgstr "欢迎文字"
 
 msgid "Base DN"
-msgstr "网域名称"
+msgstr "基本 DN"
 
 msgid "Browseable"
 msgstr "提供浏览"
+
+msgid "CCMP"
+msgstr ""
+
+msgid "CCMP TKIP"
+msgstr ""
 
 msgid "CD/DVD or Old Software RAID"
 msgstr "CD/DVD/旧版SoftwareRAID"
@@ -441,26 +1504,23 @@ msgstr "CPU 负载"
 msgid "CPU usage"
 msgstr "CPU 负载"
 
-msgid "Calculate netmask bits"
-msgstr "计算网域遮罩的数目"
-
 msgid "Can't format the OS origin disk!"
 msgstr "不能够格式化作业系统安装磁碟！"
 
 msgid "Can't mount the system partition 1, the DATA partition is the 2."
-msgstr "不能挂载系统区(第1区)，资料分割区为第2区。"
+msgstr "不能挂载系统分区(第1区)，资料分区为第2区。"
 
 msgid "Cannot get data about interface"
-msgstr "无法获得介面的资料"
+msgstr "不能从界面获取数据"
 
 msgid "Case Folding"
 msgstr "大小写视为相同"
 
 msgid "Certificate"
-msgstr "验证码"
+msgstr "证书"
 
 msgid "Changes to this option will take effect after a reboot."
-msgstr "这个变更必须等到重新开机之后才会生效。"
+msgstr "重新开机之后，更改才会生效。"
 
 msgid "Channel"
 msgstr "频道"
@@ -475,19 +1535,20 @@ msgid "Choose which interface this route applies to."
 msgstr "选择本路由设定要套用到哪一个网路介面。"
 
 msgid "Clear log"
-msgstr "清除记录档"
+msgstr "清除日志"
 
-msgid "Click &quot;Enable firmware upload&quot; below, then choose the image file to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade process."
-msgstr "于下方点选 &quot;开启韧体升级功能&quot; ，然后选择将要上传的映像档。<br>点选 &quot;韧体升级&quot; 以启动升级动作"
+msgid ""
+"Click &quot;Enable firmware upload&quot; below, then choose the image file "
+"to be uploaded.<br>Click &quot;Upgrade firmware&quot; to start the upgrade "
+"process."
+msgstr ""
+"于下方点选 &quot;开启韧体升级功能&quot; ，然后选择将要上传的映像档。<br>点选 &quot;韧体升级&quot; 以启动升级动作"
 
 msgid "Click this button to download the system configuration in XML format."
 msgstr "点这个按钮下载 XML 格式的系统组态"
 
 msgid "Client"
 msgstr "客户端"
-
-msgid "Client Identifier"
-msgstr "DHCP识别值"
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr "客户端显示小写，伺服端显示大写。"
@@ -525,7 +1586,10 @@ msgstr "使用的附属设定档。"
 msgid "Compression"
 msgstr "资料压缩"
 
-msgid "Compression is worth using if your connection is slow. The efficiency of the compression depends on the type of the file, and varies widely. Useful for internet transfer only."
+msgid ""
+"Compression is worth using if your connection is slow. The efficiency of the "
+"compression depends on the type of the file, and varies widely. Useful for "
+"internet transfer only."
 msgstr "如果你的网际网路连线速度很慢，开启资料压缩可以增快工作效率。注意：资料压缩的比例会依据不同的档案类型而有很大的差异。"
 
 msgid "Configuring"
@@ -543,7 +1607,9 @@ msgstr "Console选单"
 msgid "Contact"
 msgstr "联络人"
 
-msgid "Contact information, e.g. name or email of the person responsible for this system: 'admin@email.address'."
+msgid ""
+"Contact information, e.g. name or email of the person responsible for this "
+"system: 'admin@email.address'."
 msgstr "联络人资讯，例：系统管理者的姓名或是 email：admin@email.address。"
 
 msgid "Content"
@@ -551,10 +1617,6 @@ msgstr "内容"
 
 msgid "Count"
 msgstr "次数"
-
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr "Count必需介于 1 与 %d"
 
 msgid "Create"
 msgstr "建立"
@@ -580,8 +1642,11 @@ msgstr "Cron"
 msgid "Cron job"
 msgstr "Cron job"
 
-msgid "D-Link DSM320"
-msgstr "D-Link DSM320"
+msgid "DAAP"
+msgstr ""
+
+msgid "DAAP Server"
+msgstr ""
 
 msgid "DDP"
 msgstr "DDP"
@@ -596,8 +1661,18 @@ msgid "DNS settings"
 msgstr "DNS 设定"
 
 #, php-format
-msgid "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
-msgstr "DO NOT abort the firmware upgrade once it has started. %s will reboot automatically after storing the new firmware. The configuration will be maintained.<br>You need a minimum of %d Mb RAM to perform the firmware update.<br>It is strongly recommended that you <a href=%s>Backup</a> the System configuration before doing a Firmware upgrade."
+msgid ""
+"DO NOT abort the firmware upgrade once it has started. %s will reboot "
+"automatically after storing the new firmware. The configuration will be "
+"maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+"update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+"System configuration before doing a Firmware upgrade."
+msgstr ""
+"DO NOT abort the firmware upgrade once it has started. %s will reboot "
+"automatically after storing the new firmware. The configuration will be "
+"maintained.<br>You need a minimum of %d Mb RAM to perform the firmware "
+"update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
+"System configuration before doing a Firmware upgrade."
 
 msgid "Daemon"
 msgstr "常驻程式"
@@ -638,6 +1713,9 @@ msgstr "删除ARP项目"
 msgid "Delete Host"
 msgstr "删除主机资讯"
 
+msgid "Delete MIB"
+msgstr ""
+
 msgid "Delete RAID"
 msgstr "删除RAID"
 
@@ -650,6 +1728,12 @@ msgstr "删除路由"
 msgid "Delete URL"
 msgstr "删除 URL"
 
+msgid "Delete all MIBs"
+msgstr ""
+
+msgid "Delete all options"
+msgstr ""
+
 msgid "Delete command"
 msgstr "删除指令"
 
@@ -657,7 +1741,7 @@ msgid "Delete device"
 msgstr "删除装置"
 
 msgid "Delete directory"
-msgstr "删除目录"
+msgstr "刪除目录"
 
 msgid "Delete disk"
 msgstr "删除磁碟"
@@ -683,6 +1767,12 @@ msgstr "删除工作"
 msgid "Delete module"
 msgstr "删除模组"
 
+msgid "Delete mount point"
+msgstr ""
+
+msgid "Delete option"
+msgstr ""
+
 msgid "Delete parameter"
 msgstr "删除参数"
 
@@ -698,6 +1788,9 @@ msgstr "删除目标"
 msgid "Delete user"
 msgstr "删除使用者"
 
+msgid "Deleting"
+msgstr ""
+
 msgid "Deny"
 msgstr "拒绝"
 
@@ -706,6 +1799,9 @@ msgstr "描述"
 
 msgid "Destination email address."
 msgstr "收件之 email"
+
+msgid "Destination host name or IP number."
+msgstr ""
 
 msgid "Destination network"
 msgstr "目标网段"
@@ -729,6 +1825,9 @@ msgstr "装置"
 msgid "Device /dev/%s - %s"
 msgstr "装置 /dev/%s - %s"
 
+msgid "Device IP"
+msgstr ""
+
 msgid "Device is mounted, umount it first before detaching."
 msgstr "装置已经挂载，移除之前请先卸载。"
 
@@ -738,20 +1837,30 @@ msgstr "装置名称"
 msgid "Device polling"
 msgstr "Device polling"
 
-msgid "Device polling is a technique that lets the system periodically poll network devices for new data instead of relying on interrupts. This can reduce CPU load and therefore increase throughput, at the expense of a slightly higher forwarding delay (the devices are polled 1000 times per second). Not all NICs support polling."
-msgstr "Polling 是一种定期访查网路卡资料区的方式（每秒将检查 1000 次），这可以降低 CPU 的负载同时增加处理量，但是会使得资料传输时间些微的拉长（forwarding delay）。但并非所有网路卡都支援 Polling。"
+msgid ""
+"Device polling is a technique that lets the system periodically poll network "
+"devices for new data instead of relying on interrupts. This can reduce CPU "
+"load and therefore increase throughput, at the expense of a slightly higher "
+"forwarding delay (the devices are polled 1000 times per second). Not all "
+"NICs support polling."
+msgstr ""
+"Polling 是一种定期访查网路卡资料区的方式（每秒将检查 1000 次），这可以降低 CPU "
+"的负载同时增加处理量，但是会使得资料传输时间些微的拉长（forwarding delay）。但并非所有网路卡都支援 Polling。"
 
-msgid "Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once."
-msgstr "Devices are used to combine extents or other devices. Extents and devices must be defined before they can be used, and they cannot be used more than once."
+msgid ""
+"Devices are used to combine extents or other devices. Extents and devices "
+"must be defined before they can be used, and they cannot be used more than "
+"once."
+msgstr ""
+"Devices are used to combine extents or other devices. Extents and devices "
+"must be defined before they can be used, and they cannot be used more than "
+"once."
 
 msgid "Diagnostics"
 msgstr "诊断"
 
 msgid "Difference"
 msgstr "差异"
-
-msgid "Directories to be shared."
-msgstr "分享的资料夹(space or CSV list)."
 
 msgid "Directory"
 msgstr "目录"
@@ -784,10 +1893,14 @@ msgid "Disable speaker beep on startup and shutdown"
 msgstr "关闭系统于开/关机时的提示声响"
 
 msgid "Disabled"
-msgstr "关闭"
+msgstr "已禁用"
 
-msgid "Disables :hex translations for anything except dot files. This option makes the '/' character illegal."
-msgstr "Disables :hex translations for anything except dot files. This option makes the '/' character illegal."
+msgid ""
+"Disables :hex translations for anything except dot files. This option makes "
+"the '/' character illegal."
+msgstr ""
+"Disables :hex translations for anything except dot files. This option makes "
+"the '/' character illegal."
 
 #, php-format
 msgid "Discovered iSCSI target for %s"
@@ -811,6 +1924,15 @@ msgstr "磁碟（ATA）"
 msgid "Do not set this for CF cards."
 msgstr "CF 记忆卡请勿设置此选项。"
 
+msgid "Do you really want to delete all MIBs?"
+msgstr ""
+
+msgid "Do you really want to delete all options?"
+msgstr ""
+
+msgid "Do you really want to delete this MIB?"
+msgstr ""
+
 msgid "Do you really want to delete this RSYNC?"
 msgstr "确定要删除这个RSYNC设定吗？"
 
@@ -827,12 +1949,16 @@ msgid "Do you really want to delete this device?"
 msgstr "确定要删除这个装置？"
 
 msgid "Do you really want to delete this directory entry?"
-msgstr "确定要删除这个目录？"
+msgstr "确定要刪除这个目录？"
 
-msgid "Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"
+msgid ""
+"Do you really want to delete this disk? All elements that still use it will "
+"become invalid (e.g. share)!"
 msgstr "确定要删除这个磁碟吗？所有使用此磁碟的元件都会失效！(例：分享)"
 
-msgid "Do you really want to delete this encrypted volume? All elements that still use it will become invalid (e.g. share)!"
+msgid ""
+"Do you really want to delete this encrypted volume? All elements that still "
+"use it will become invalid (e.g. share)!"
 msgstr "确定要删除这个加密磁碟？所有存取这个磁碟的元件都将失效！"
 
 msgid "Do you really want to delete this extent?"
@@ -844,19 +1970,31 @@ msgstr "确定要删除此群组？"
 msgid "Do you really want to delete this host?"
 msgstr "确定要删除这个主机资讯吗？"
 
-msgid "Do you really want to delete this initiator? All elements that still use it will become invalid (e.g. share)!"
+msgid ""
+"Do you really want to delete this initiator? All elements that still use it "
+"will become invalid (e.g. share)!"
 msgstr "确定要删除这个初始器？所有存取这个初始器的元件都将失效！"
+
+msgid "Do you really want to delete this interface?"
+msgstr ""
 
 msgid "Do you really want to delete this module?"
 msgstr "确定要删除这个模组？"
 
-msgid "Do you really want to delete this mount point? All elements that still use it will become invalid (e.g. share)!"
+msgid ""
+"Do you really want to delete this mount point? All elements that still use "
+"it will become invalid (e.g. share)!"
 msgstr "确定要删除这个挂载点吗？所有使用此挂载点的元件都会失效！(例：分享)"
+
+msgid "Do you really want to delete this option?"
+msgstr ""
 
 msgid "Do you really want to delete this parameter?"
 msgstr "确定要删除这个参数？"
 
-msgid "Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!"
+msgid ""
+"Do you really want to delete this raid volume? All elements that still use "
+"it will become invalid (e.g. share)!"
 msgstr "确定要删除这个RAID吗？所有使用此RAID的元件都会失效！(例：分享)"
 
 msgid "Do you really want to delete this route?"
@@ -916,8 +2054,12 @@ msgstr "Don't advertise createfileid, resolveid, deleteid calls."
 msgid "Don't erase the MBR (useful for some RAID controller cards)"
 msgstr "保留原本的MBR (某些RAID控制卡需要)"
 
-msgid "Don't stat volume path when enumerating volumes list, useful for automounting or volumes created by a preexec script."
-msgstr "Don't stat volume path when enumerating volumes list, useful for automounting or volumes created by a preexec script."
+msgid ""
+"Don't stat volume path when enumerating volumes list, useful for "
+"automounting or volumes created by a preexec script."
+msgstr ""
+"Don't stat volume path when enumerating volumes list, useful for "
+"automounting or volumes created by a preexec script."
 
 msgid "Done."
 msgstr "完成。"
@@ -952,6 +2094,9 @@ msgstr "编辑档案"
 msgid "Edit Host"
 msgstr "编辑主机资讯"
 
+msgid "Edit MIB"
+msgstr ""
+
 msgid "Edit RAID"
 msgstr "编辑RAID"
 
@@ -964,8 +2109,8 @@ msgstr "编辑路由"
 msgid "Edit URL"
 msgstr "编辑 URL"
 
-msgid "Edit VLAN"
-msgstr "编辑VLAN"
+msgid "Edit command"
+msgstr ""
 
 msgid "Edit device"
 msgstr "编辑装置"
@@ -985,11 +2130,20 @@ msgstr "编辑群组"
 msgid "Edit initiator"
 msgstr "编辑初始器"
 
+msgid "Edit interface"
+msgstr ""
+
 msgid "Edit job"
 msgstr "编辑工作"
 
 msgid "Edit module"
 msgstr "编辑模组"
+
+msgid "Edit mount point"
+msgstr ""
+
+msgid "Edit option"
+msgstr ""
 
 msgid "Edit parameter"
 msgstr "编辑参数"
@@ -1027,8 +2181,8 @@ msgstr "开启 NTP"
 msgid "Enable SMTP authentication."
 msgstr "启用 SMTP 认证。"
 
-msgid "Enable Zeroconf"
-msgstr "开启 Zeroconf"
+msgid "Enable Zeroconf/Bonjour to advertise services of this device"
+msgstr ""
 
 msgid "Enable authentication."
 msgstr "启用认证。"
@@ -1042,13 +2196,18 @@ msgstr "开启device polling"
 msgid "Enable directory listing."
 msgstr "开启目录清单。"
 
+msgid "Enable domain wildcarding."
+msgstr ""
+
 msgid "Enable extended attribute support"
 msgstr "开启延伸属性"
 
 msgid "Enable firmware upload"
 msgstr "开启韧体升级功能"
 
-msgid "Enable foreground/background file system consistency check during boot process."
+msgid ""
+"Enable foreground/background file system consistency check during boot "
+"process."
 msgstr "开启开机阶段档案系统完整性检查。"
 
 msgid "Enable guest access."
@@ -1084,7 +2243,9 @@ msgstr "开启 syslog'ing 写入远端 syslog 伺服器"
 msgid "Enable the system power control utility"
 msgstr "开启电源监控程式。"
 
-msgid "Enable this if your FTP server is behind a NAT box that doesn't support applicative FTP proxying."
+msgid ""
+"Enable this if your FTP server is behind a NAT box that doesn't support "
+"applicative FTP proxying."
 msgstr "如果你的FTP伺服器是架设在NAT的环境之下，请开启这个功能。"
 
 msgid "Enable tuning of some kernel variables"
@@ -1094,10 +2255,20 @@ msgid "Enable web user interface."
 msgstr "开启 Web 控制介面。"
 
 msgid "Enabled"
-msgstr "开启"
+msgstr "启用"
 
-msgid "Enables crlf translation for TEXT files, automatically converting macintosh line breaks into Unix ones. Use of this option might be dangerous since some older programs store binary data files as type 'TEXT' when saving and switch the filetype in a second step. Afpd will potentially destroy such files when 'erroneously' changing bytes in order to do line break translation."
-msgstr "Enables crlf translation for TEXT files, automatically converting macintosh line breaks into Unix ones. Use of this option might be dangerous since some older programs store binary data files as type 'TEXT' when saving and switch the filetype in a second step. Afpd will potentially destroy such files when 'erroneously' changing bytes in order to do line break translation."
+msgid ""
+"Enables crlf translation for TEXT files, automatically converting macintosh "
+"line breaks into Unix ones. Use of this option might be dangerous since some "
+"older programs store binary data files as type 'TEXT' when saving and switch "
+"the filetype in a second step. Afpd will potentially destroy such files when "
+"'erroneously' changing bytes in order to do line break translation."
+msgstr ""
+"Enables crlf translation for TEXT files, automatically converting macintosh "
+"line breaks into Unix ones. Use of this option might be dangerous since some "
+"older programs store binary data files as type 'TEXT' when saving and switch "
+"the filetype in a second step. Afpd will potentially destroy such files when "
+"'erroneously' changing bytes in order to do line break translation."
 
 msgid "Encrypted disk name"
 msgstr "加密磁碟名称"
@@ -1115,16 +2286,17 @@ msgstr "加密演算法"
 msgid "Enforce TLS"
 msgstr "强制 TLS"
 
-msgid "Enter a custom port number for the HTTP server if you want to override the default (49152). Only dynamic or private ports can be used (from 49152 through 65535)."
-msgstr "输入你想要使用的网页伺服器连接阜（预设为 49152），只可以使用动态或是私有区（从 49152 到 65535）。"
-
-msgid "Enter a custom port number for the WebGUI above if you want to override the default (80 for HTTP, 443 for HTTPS)."
+msgid ""
+"Enter a custom port number for the WebGUI above if you want to override the "
+"default (80 for HTTP, 443 for HTTPS)."
 msgstr "输入自订的网页管理介面连接阜，Http 预设是 80，Https 为 443。"
 
-msgid "Enter a description (name) for the interface here."
-msgstr "在此输入你对这个网路介面的描述文字。"
+msgid "Enter a valid sysctl MIB name."
+msgstr ""
 
-msgid "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to select it."
+msgid ""
+"Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
+"select it."
 msgstr "直接输入欲设定的系统时间 (格式为 mm/dd/yyyy hh:mm) ，或是点选图示选择时间"
 
 msgid "Enter the NIS Master server hostname."
@@ -1136,7 +2308,15 @@ msgstr "输入 NIS Slave 伺服器名称。"
 msgid "Enter the NIS domain name."
 msgstr "输入 NIS 网域名称。"
 
-msgid "Enter the path to the home directory of that user. Make sure that this path exists and is always mounted at startup. Leave this field empty to use default path /mnt."
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
+msgstr ""
+
+msgid ""
+"Enter the path to the home directory of that user. Make sure that this path "
+"exists and is always mounted at startup. Leave this field empty to use "
+"default path /mnt."
 msgstr "输入使用者家目录的路径。请确定这个路径存在而且一开机就会挂载。将此留白则会使用预设的路径 /mnt。"
 
 msgid "Enter the port to send the traps to (default 162)."
@@ -1152,10 +2332,15 @@ msgstr "错误"
 msgid "Error: The changes could not be applied (error code %s)."
 msgstr "错误：变更无法套用（Error Code %s）。"
 
+msgid "Execute"
+msgstr ""
+
 msgid "Execute command"
 msgstr "执行指令"
 
-msgid "Execute command pre or post system initialization (booting) or before system shutdown."
+msgid ""
+"Execute command pre or post system initialization (booting) or before system "
+"shutdown."
 msgstr "在系统起始/关机之前或之后的指令。"
 
 msgid "Extensions"
@@ -1167,8 +2352,19 @@ msgstr "Extent"
 msgid "Extent name"
 msgstr "Extent 名称"
 
-msgid "Extents must be defined before they can be used, and extents cannot be used more than once."
+msgid ""
+"Extents must be defined before they can be used, and extents cannot be used "
+"more than once."
 msgstr "在使用 Extent 之前必须先定义他们，而 extent 不能够被使用超过一次。"
+
+msgid "Extra options"
+msgstr ""
+
+msgid "Extra options to ifconfig (usually empty)."
+msgstr ""
+
+msgid "FEC (Fast EtherChannel)"
+msgstr ""
 
 msgid "FTP"
 msgstr "FTP"
@@ -1191,7 +2387,9 @@ msgstr "FTP 伺服器关闭中"
 msgid "FXP"
 msgstr "FXP"
 
-msgid "FXP allows transfers between two remote servers without any file data going to the client asking for the transfer (insecure!)."
+msgid ""
+"FXP allows transfers between two remote servers without any file data going "
+"to the client asking for the transfer (insecure!)."
 msgstr "FXP是支援两个远端伺服器互传档案的通讯协定。(有安全疑虑！)."
 
 msgid "Factory defaults"
@@ -1212,6 +2410,9 @@ msgstr "组态备份档案上传失败。"
 msgid "Failed."
 msgstr "失败"
 
+msgid "Failover"
+msgstr ""
+
 msgid "File"
 msgstr "档案"
 
@@ -1222,7 +2423,9 @@ msgid "File path"
 msgstr "档案路径"
 
 #, php-format
-msgid "File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) used as extent."
+msgid ""
+"File path (e.g. /mnt/sharename/extent/%s) or device name (e.g. /dev/ad1) "
+"used as extent."
 msgstr "档案路径（例：/mnt/sharename/extent/%s）或是装置名称（例：/dev/ad1）将会视为 extent。"
 
 msgid "File size"
@@ -1238,7 +2441,7 @@ msgid "Filename"
 msgstr "档案名称"
 
 msgid "Firmware"
-msgstr "韧体"
+msgstr "固件"
 
 msgid "Firmware image file"
 msgstr "韧体映像档"
@@ -1258,8 +2461,18 @@ msgstr "Follow"
 msgid "Force NAT mode."
 msgstr "强迫NAT模式。"
 
-msgid "Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the server is behind a masquerading (NAT) box that doesn't properly handle stateful FTP masquerading, put the ip address of that box here. If you have a dynamic IP address, you can put the public host name of your gateway, that will be resolved every time a new client will connect."
-msgstr "Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the server is behind a masquerading (NAT) box that doesn't properly handle stateful FTP masquerading, put the ip address of that box here. If you have a dynamic IP address, you can put the public host name of your gateway, that will be resolved every time a new client will connect."
+msgid ""
+"Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
+"server is behind a masquerading (NAT) box that doesn't properly handle "
+"stateful FTP masquerading, put the ip address of that box here. If you have "
+"a dynamic IP address, you can put the public host name of your gateway, that "
+"will be resolved every time a new client will connect."
+msgstr ""
+"Force the specified IP address in reply to a PASV/EPSV/SPSV command. If the "
+"server is behind a masquerading (NAT) box that doesn't properly handle "
+"stateful FTP masquerading, put the ip address of that box here. If you have "
+"a dynamic IP address, you can put the public host name of your gateway, that "
+"will be resolved every time a new client will connect."
 
 msgid "Forced update period"
 msgstr "强制更新间隔"
@@ -1288,8 +2501,8 @@ msgstr "GID"
 msgid "Gateway"
 msgstr "闸道"
 
-msgid "Gateway to be used to reach the destination network"
-msgstr "连线到目标网段的闸道IP位置"
+msgid "Gateway to be used to reach the destination network."
+msgstr ""
 
 msgid "General"
 msgstr "一般"
@@ -1305,9 +2518,6 @@ msgstr "授与使用者 shell 权限"
 
 msgid "Give only local users access to the web page."
 msgstr "只有本机使用者可以使用网页伺服器。"
-
-msgid "Global Configuration"
-msgstr "全域性设定"
 
 msgid "Graph"
 msgstr "图表"
@@ -1345,20 +2555,11 @@ msgstr "Guest"
 msgid "Guest account"
 msgstr "Guest 帐号"
 
-msgid "HTTP"
-msgstr "HTTP"
-
 msgid "HTTP Proxy"
 msgstr "HTTP Proxy"
 
-msgid "HTTPS"
-msgstr "HTTPS"
-
 msgid "Hard disk standby time"
 msgstr "硬碟待命时间"
-
-msgid "Helios X3000"
-msgstr "Helios X3000"
 
 msgid "Help Needed!"
 msgstr "需要帮助！"
@@ -1373,7 +2574,9 @@ msgid "Hint"
 msgstr "提示"
 
 #, php-format
-msgid "Hint: If this is checked, IP addresses in %s logs are resolved to real hostnames where possible."
+msgid ""
+"Hint: If this is checked, IP addresses in %s logs are resolved to real "
+"hostnames where possible."
 msgstr "提示：如果开启这个选项，%s 记录档中的 IP 位置都会转换成对应主机名称。"
 
 msgid "Home directory"
@@ -1388,7 +2591,9 @@ msgstr "主机资源"
 msgid "Hostname"
 msgstr "主机名称"
 
-msgid "Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory for TLS"
+msgid ""
+"Hostname or IP address of LDAP server. Warning: Use of hostname is mandatory "
+"for TLS"
 msgstr "LDAP 伺服器主机名称或 IP 位置。 注意： TLS 必须设定主机名称"
 
 msgid "Hosts"
@@ -1400,10 +2605,13 @@ msgstr "允许主机"
 msgid "Hosts deny"
 msgstr "拒绝主机"
 
-msgid "How often the IP is checked. The period is in seconds (max. is 10 days)."
+msgid ""
+"How often the IP is checked. The period is in seconds (max. is 10 days)."
 msgstr "多久检查一次 IP。以秒为单位（最多为 10 天）"
 
-msgid "How often the IP is updated even if it is not changed. The period is in seconds (max. is 10 days)."
+msgid ""
+"How often the IP is updated even if it is not changed. The period is in "
+"seconds (max. is 10 days)."
 msgstr "多久强制更新一次 IP 资讯。以秒为单位（最多 10 天）"
 
 msgid "I/O errors"
@@ -1415,15 +2623,17 @@ msgstr "I/O封包"
 msgid "IP address"
 msgstr "IP位置"
 
-msgid "IP address of remote RSYNC server"
-msgstr "远端的RSYNC伺服器IP位置"
-
 msgid "IP address of remote syslog server"
 msgstr "远端 syslog 伺服器的IP位置"
 
 #, php-format
-msgid "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to hostnames&quot; is checked on the <a href=%s>%s</a> page."
-msgstr "如果<a href=%s>%s</a>页面内， &quot;将IP解析成主机名称&quot;的选项有开启，IP 位置会解析成主机名称。"
+msgid ""
+"IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+"addresses to hostnames&quot;</a> is enabled."
+msgstr ""
+
+msgid "IP or FQDN address of remote RSYNC server."
+msgstr ""
 
 msgid "IP type mismatch for network and gateway."
 msgstr "网路与闸道的 IP 类型不吻合"
@@ -1433,12 +2643,6 @@ msgstr "IPv4 组态"
 
 msgid "IPv4 DNS servers"
 msgstr "IPv4 DNS 伺服器"
-
-msgid "IPv4 Gateway"
-msgstr "IPv4 闸道"
-
-msgid "IPv4 address"
-msgstr "IPv4 位置"
 
 msgid "IPv4 addresses"
 msgstr "IPv4 位置"
@@ -1461,35 +2665,67 @@ msgstr "IPv6 位置"
 msgid "IPv6 addresses"
 msgstr "IPv6 位置"
 
-msgid "ISO"
-msgstr "ISO 档"
+msgid "ISO file to be mounted."
+msgstr ""
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS伺服器"
 
-msgid "Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the IDLE state, most disks are still spinning, so this is probably not what you want."
+msgid ""
+"Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the "
+"IDLE state, most disks are still spinning, so this is probably not what you "
+"want."
 msgstr "闲置 - 装置除了在睡眠、待命、闲置模式以外都要进行检查。大部分的磁碟在闲置状态下依然会转动磁盘，所以这并不能节省电源。"
 
-msgid "If set afpd uses the ID information stored in AppleDouble V2 header files to reduce database load. Don't set this option if the volume is modified by non AFP clients (NFS/SMB/local)."
-msgstr "If set afpd uses the ID information stored in AppleDouble V2 header files to reduce database load. Don't set this option if the volume is modified by non AFP clients (NFS/SMB/local)."
+msgid ""
+"If set afpd uses the ID information stored in AppleDouble V2 header files to "
+"reduce database load. Don't set this option if the volume is modified by non "
+"AFP clients (NFS/SMB/local)."
+msgstr ""
+"If set afpd uses the ID information stored in AppleDouble V2 header files to "
+"reduce database load. Don't set this option if the volume is modified by non "
+"AFP clients (NFS/SMB/local)."
 
-msgid "If the selected disk/partition is mounted it will be unmounted temporarily to perform selected command, otherwise the commands work in read-only mode.<br>Service disruption to users accessing this mount will occur during this process."
+msgid ""
+"If the selected disk/partition is mounted it will be unmounted temporarily "
+"to perform selected command, otherwise the commands work in read-only "
+"mode.<br>Service disruption to users accessing this mount will occur during "
+"this process."
 msgstr "如果选择的磁碟/磁区正在挂载中，系统会将磁碟暂时卸载以进行指令，期间可能或有暂时性的服务中断。否则指令只能在唯读模式下运作。"
 
-msgid "If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory."
-msgstr "If this parameter is set, Samba attempts to first read DOS attributes (SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, before mapping DOS attributes to UNIX permission bits. When set, DOS attributes will be stored onto an extended attribute in the UNIX filesystem, associated with the file or directory."
+msgid ""
+"If this parameter is set, Samba attempts to first read DOS attributes "
+"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
+"before mapping DOS attributes to UNIX permission bits. When set, DOS "
+"attributes will be stored onto an extended attribute in the UNIX filesystem, "
+"associated with the file or directory."
+msgstr ""
+"If this parameter is set, Samba attempts to first read DOS attributes "
+"(SYSTEM, HIDDEN, ARCHIVE or READ-ONLY) from a filesystem extended attribute, "
+"before mapping DOS attributes to UNIX permission bits. When set, DOS "
+"attributes will be stored onto an extended attribute in the UNIX filesystem, "
+"associated with the file or directory."
 
-msgid "If this parameter is set, then users may not create or modify files in the share."
+msgid ""
+"If this parameter is set, then users may not create or modify files in the "
+"share."
 msgstr "如勾选此项，使用者将无法在分享区中新增与修改档案。"
 
 #, php-format
-msgid "If you click 'Yes', %s will be reset to factory defaults and will reboot immediately. The entire system configuration will be overwritten. The LAN IP address will be reset to %s and the password will be set to '%s'."
-msgstr "当你点选了'是'， %s 将会重设回原厂预设值并立刻重新开机。全部系统的设定值将会被覆写，IP位置也将重设为 %s 。 而密码将设定为 '%s' 。"
+msgid ""
+"If you click 'Yes', %s will be reset to factory defaults and will reboot "
+"immediately. The entire system configuration will be overwritten. The LAN IP "
+"address will be reset to %s and the password will be set to '%s'."
+msgstr ""
+"当你点选了'是'， %s 将会重设回原厂预设值并立刻重新开机。全部系统的设定值将会被覆写，IP位置也将重设为 %s 。 而密码将设定为 '%s' 。"
 
-msgid "If you want to change the password for accessing the WebGUI, enter it here twice."
+msgid ""
+"If you want to change the password for accessing the WebGUI, enter it here "
+"twice."
 msgstr "如果你想变更网页控制介面的密码，请在这里输入。"
 
-msgid "If you want to change the username for accessing the WebGUI, enter it here."
+msgid ""
+"If you want to change the username for accessing the WebGUI, enter it here."
 msgstr "如果你想变更网页控制介面的使用者名称，请在这里输入。"
 
 msgid "Image upload failed (out of memory?)"
@@ -1519,8 +2755,15 @@ msgstr "系统记录程式发现一些错误在 /etc/exports。"
 msgid "Initialize"
 msgstr "初始化"
 
-msgid "Initialize and encrypt disk. This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
-msgstr "Initialize and encrypt disk. This will erase ALL data on your disk! Do not use this option if you want to add an existing encrypted disk."
+msgid ""
+"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
+"use this option if you want to add an existing encrypted disk."
+msgstr ""
+"Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
+"use this option if you want to add an existing encrypted disk."
+
+msgid "Initializing"
+msgstr ""
 
 msgid "Initiator name"
 msgstr "初始名称"
@@ -1547,13 +2790,17 @@ msgstr "间隔必需大于等于 10 秒。"
 msgid "Invalid port! Port number must be in the range from %d to %d."
 msgstr "无效的连接阜号！连接阜必需介于 %d - %d。"
 
-msgid "It is impossible to enable 'Anonymous users only' and 'Local users only' authentication simultaneously."
+msgid ""
+"It is impossible to enable 'Anonymous users only' and 'Local users only' "
+"authentication simultaneously."
 msgstr "'只允许匿名使用者'与'只允许本地端使用者存取'并不能够同时选取。"
 
 msgid "JBOD"
 msgstr "JBOD"
 
-msgid "January February March April May June July August September October November December"
+msgid ""
+"January February March April May June July August September October November "
+"December"
 msgstr "一月 二月 三月 四月 五月 六月 七月 八月 九月 十月 十一月 十二月"
 
 msgid "Keep all files"
@@ -1562,8 +2809,20 @@ msgstr "保存所有档案"
 msgid "Keep diagnostics in navigation expanded"
 msgstr "将诊断的页面连结预设为展开"
 
+msgid "Key"
+msgstr "金钥"
+
+msgid "Key Management Protocol"
+msgstr ""
+
 msgid "Kill encrypted volume"
 msgstr "删除加密磁碟"
+
+msgid "LACP (Link Aggregation Control Protocol)"
+msgstr ""
+
+msgid "LAGG"
+msgstr ""
 
 msgid "LAN"
 msgstr "区域网路"
@@ -1574,8 +2833,14 @@ msgstr "区域网路"
 msgid "LDAP"
 msgstr "LDAP"
 
-msgid "LDAP authentication feature is not implemented: If you know how to use PAM to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome."
-msgstr "LDAP authentication feature is not implemented: If you know how to use PAM to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP server... Your patchs are welcome."
+msgid ""
+"LDAP authentication feature is not implemented: If you know how to use PAM "
+"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
+"server... Your patchs are welcome."
+msgstr ""
+"LDAP authentication feature is not implemented: If you know how to use PAM "
+"to authenticate UNIX services (FTP,SSH, etc...) AND Samba against an LDAP "
+"server... Your patchs are welcome."
 
 msgid "LDAP server name"
 msgstr "LDAP 伺服器名称"
@@ -1584,7 +2849,7 @@ msgid "LDAP server name or IP"
 msgstr "LDAP 伺服器名称或 IP"
 
 msgid "Language"
-msgstr "Language/语言设定"
+msgstr "语言"
 
 msgid "Large read/write"
 msgstr "大笔资料 读／写"
@@ -1597,14 +2862,25 @@ msgid "Last config change"
 msgstr "上次设定时间"
 
 #, php-format
-msgid "Leave '%s' for unformated disks and format them using <a href=%s>format</a> menu."
+msgid ""
+"Leave '%s' for unformated disks and format them using <a href=%s>format</a> "
+"menu."
 msgstr "将未格式化的磁碟设为 '%s' 并且使用<a href=%s>格式化选单</a>来进行格式化。"
 
 msgid "License"
 msgstr "License"
 
+msgid "Link Aggregation and Failover"
+msgstr ""
+
 msgid "List"
 msgstr "列表"
+
+msgid ""
+"List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP "
+"(AES in Counter mode with CBC-MAC, RFC 3610, IEEE 802.11i/D7.0), TKIP "
+"(Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."
+msgstr ""
 
 msgid "List of available target name on all configured iSCSI targets"
 msgstr "列出 iSCSI 内可用的目标名称"
@@ -1633,6 +2909,9 @@ msgstr "载入"
 msgid "Load averages"
 msgstr "系统负载"
 
+msgid "Loadbalance"
+msgstr ""
+
 msgid "Local"
 msgstr "本地端"
 
@@ -1654,11 +2933,16 @@ msgstr "只允许本机使用者存取"
 msgid "Location"
 msgstr "位置"
 
-msgid "Location information, e.g. physical location of this system: 'Floor of building, Room xyz'."
+msgid ""
+"Location information, e.g. physical location of this system: 'Floor of "
+"building, Room xyz'."
 msgstr "位置资讯，例：这台机器实际存放的地点：'哪栋大楼的几楼几室'。"
 
-msgid "Location where the content database file will be stored. The bookmark file will also be generated in that directory."
-msgstr "设定内容资料库的位置。书籤记录档也会存放在同一个目录。"
+msgid "Location of the files to share."
+msgstr ""
+
+msgid "Location where the content database file will be stored."
+msgstr ""
 
 msgid "Log Level"
 msgstr "记录档层级"
@@ -1677,6 +2961,9 @@ msgstr "双向小写名称"
 
 msgid "MAC address"
 msgstr "MAC位置"
+
+msgid "MIB"
+msgstr ""
 
 msgid "MISSING"
 msgstr "遗失"
@@ -1697,7 +2984,8 @@ msgid "MTU"
 msgstr "MTU"
 
 #, php-format
-msgid "Make sure you have already configured your <a href='%s'>Email</a> settings."
+msgid ""
+"Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr "确认你的<a href='%s'>Email</a>资讯是否设定好了。"
 
 msgid "Manage RAID"
@@ -1712,8 +3000,15 @@ msgstr "所有人视为root"
 msgid "Map to user"
 msgstr "对应到本地使用者"
 
+msgid "Max. TTL"
+msgstr ""
+
 msgid "Max. conn. per IP"
 msgstr "相同IP的连线数目"
+
+msgid ""
+"Max. time-to-live (max. number of hops) used in outgoing probe packets."
+msgstr ""
 
 msgid "Maximum connections"
 msgstr "连线数目上线"
@@ -1723,9 +3018,6 @@ msgstr "自动切断连线时间。"
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "来自相同IP的连线数目上限(0 = 不限制)."
-
-msgid "Maximum number of hops"
-msgstr "hop上限"
 
 msgid "Maximum number of simultaneous clients."
 msgstr "连线数目上限。"
@@ -1750,9 +3042,6 @@ msgstr "开启待命模式之中等耗电量"
 
 msgid "Medium power usage without Standby"
 msgstr "关闭待命模式之中等耗电量"
-
-msgid "Members of this volume"
-msgstr "RAID volume的成员"
 
 msgid "Memory usage"
 msgstr "记忆体使用率"
@@ -1784,6 +3073,12 @@ msgstr "多少分钟进行一次校时。"
 msgid "Miscellaneous"
 msgstr "杂项设定"
 
+msgid "Mode"
+msgstr ""
+
+msgid "Modifying"
+msgstr ""
+
 msgid "Module"
 msgstr "模组"
 
@@ -1796,7 +3091,8 @@ msgstr "挂载点"
 msgid "Mount point"
 msgstr "挂载点"
 
-msgid "Mount the file system read-only (even the super-user may not write it)."
+msgid ""
+"Mount the file system read-only (even the super-user may not write it)."
 msgstr "以唯读模式挂载（超级使用者也无法写入）。"
 
 msgid "Mount to use for swap"
@@ -1845,8 +3141,13 @@ msgstr "名称"
 msgid "Name of the NAS host, without domain part e.g. %s."
 msgstr "NAS 主机的名称，不包含网域的名称。例：%s。"
 
-msgid "Name of the server. If this field is left empty the default server is specified."
+msgid ""
+"Name of the server. If this field is left empty the default server is "
+"specified."
 msgstr "这台伺服器的名称。如果留白则会使用预设的伺服器名称。"
+
+msgid "Name of the variable."
+msgstr ""
 
 msgid "Navigation"
 msgstr "导览"
@@ -1872,7 +3173,9 @@ msgstr "授权可以存取 NFS 分享区的网域。"
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "设定可以使用iSCSI目标的网路区段"
 
-msgid "Never - Poll (check) the device regardless of its power mode. This may cause a disk which is spun-down to be spun-up when it is checked."
+msgid ""
+"Never - Poll (check) the device regardless of its power mode. This may cause "
+"a disk which is spun-down to be spun-up when it is checked."
 msgstr "永不 - 永远不管目标磁碟的电源模式而进行检查。"
 
 msgid "No"
@@ -1887,11 +3190,22 @@ msgstr "大小写视为相异"
 msgid "No disk configured"
 msgstr "尚未加入磁碟"
 
-msgid "No supported wireless interfaces were found for status display (only cards that use the wi[n] driver are supported)."
+msgid ""
+"No supported wireless interfaces were found for status display (only cards "
+"that use the wi[n] driver are supported)."
 msgstr "并没有找到支援的无线网路卡(使用wi[n]驱动的网路卡才有支援)."
 
 msgid "Noise"
 msgstr "杂讯"
+
+msgid "None"
+msgstr ""
+
+msgid ""
+"Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
+"not explicitly support it, VLAN tagging will still work, but the reduced MTU "
+"may cause problems."
+msgstr ""
 
 msgid "Not attached"
 msgstr "尚未连结"
@@ -1899,13 +3213,18 @@ msgstr "尚未连结"
 msgid "Note"
 msgstr "提示"
 
-msgid "Note: Ctrl-click (or command-click on the Mac) to select and de-select minutes, hours, days and months."
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select and de-select "
+"minutes, hours, days and months."
 msgstr "提示：使用Ctrl+滑鼠左键(Mac：command+滑鼠主键)就可以复选项目。"
 
-msgid "Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select and deselect groups."
 msgstr "备注：按著 Ctrl 配合滑鼠左键（Mac 请按 Cmd）以选择多重群组。"
 
-msgid "Note: Ctrl-click (or command-click on the Mac) to select or de-select minutes, hours, days and months."
+msgid ""
+"Note: Ctrl-click (or command-click on the Mac) to select or de-select "
+"minutes, hours, days and months."
 msgstr "备注：按著 Ctrl 配合滑鼠左键（Mac 请按 Cmd）以选择时间与日期。"
 
 msgid "Now"
@@ -1944,22 +3263,46 @@ msgstr "旧金钥"
 msgid "Old password"
 msgstr "旧密码"
 
-msgid "Only allow anonymous users. Use this on a public FTP site with no remote FTP access to real accounts."
+msgid ""
+"Only allow anonymous users. Use this on a public FTP site with no remote FTP "
+"access to real accounts."
 msgstr "只允许匿名使用者。使用在公共而且拒绝远端帐号连线的 FTP 站"
 
 msgid "Only allow authenticated users. Anonymous logins are prohibited."
 msgstr "只允许授权的使用者，匿名使用者无法连线。"
 
-msgid "Only ports in the range min. port to max. port inclusive are used for passive-mode downloads. This is especially useful if the server is behind a firewall without FTP connection tracking. Use high ports (40000-50000 for instance), where no regular server should be listening."
-msgstr "Only ports in the range min. port to max. port inclusive are used for passive-mode downloads. This is especially useful if the server is behind a firewall without FTP connection tracking. Use high ports (40000-50000 for instance), where no regular server should be listening."
+msgid ""
+"Only ports in the range min. port to max. port inclusive are used for "
+"passive-mode downloads. This is especially useful if the server is behind a "
+"firewall without FTP connection tracking. Use high ports (40000-50000 for "
+"instance), where no regular server should be listening."
+msgstr ""
+"Only ports in the range min. port to max. port inclusive are used for "
+"passive-mode downloads. This is especially useful if the server is behind a "
+"firewall without FTP connection tracking. Use high ports (40000-50000 for "
+"instance), where no regular server should be listening."
 
 #, php-format
-msgid "Open a %s configuration XML file and click the button below to restore the configuration."
+msgid ""
+"Open a %s configuration XML file and click the button below to restore the "
+"configuration."
 msgstr "开启 %s XML 设定档并且点选下方的按钮来回复设定。"
 
+msgid "Option"
+msgstr ""
+
 #, php-format
-msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"
-msgstr "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"
+msgid ""
+"Optional configuration step: Configuring a virtual RAID disk using your <a "
+"href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
+"format and mount it!"
+msgstr ""
+"Optional configuration step: Configuring a virtual RAID disk using your <a "
+"href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
+"format and mount it!"
+
+msgid "Others"
+msgstr ""
 
 msgid "Out"
 msgstr "外送"
@@ -1970,6 +3313,9 @@ msgstr "外送 SMTP 邮件伺服器位置，例：smtp.mycorp.com"
 msgid "Outgoing mail server"
 msgstr "外送邮件伺服器"
 
+msgid "Owner"
+msgstr ""
+
 msgid "PPPoE"
 msgstr "PPPoE"
 
@@ -1978,6 +3324,9 @@ msgstr "PPTP"
 
 msgid "PPTP clients"
 msgstr "PPTP 客户"
+
+msgid "PSK"
+msgstr ""
 
 msgid "Package Name"
 msgstr "套件名称"
@@ -1993,6 +3342,9 @@ msgstr "套件上传失败（记忆体不足？）"
 
 msgid "Packages"
 msgstr "套件"
+
+msgid "Pairwise"
+msgstr ""
 
 msgid "Parameter"
 msgstr "参数"
@@ -2033,6 +3385,9 @@ msgstr "密码文本"
 msgid "Password for DN"
 msgstr "网域名称密码"
 
+msgid "Password for the administrative pages."
+msgstr ""
+
 msgid "Password of domain administrator account."
 msgstr "请在此设定网域管理者的帐号。"
 
@@ -2063,11 +3418,11 @@ msgstr "root准许登入"
 msgid "Permit to do SSH Tunneling."
 msgstr "可用 SSH Tunneling"
 
+msgid "Physical interface"
+msgstr ""
+
 msgid "Ping"
 msgstr "Ping"
-
-msgid "Ping output"
-msgstr "Ping 结果"
 
 msgid "Ping winbindd to see if it is alive:"
 msgstr "Ping winbindd 看看:"
@@ -2092,6 +3447,18 @@ msgstr "通讯埠 "
 
 msgid "Port is already used by WebGUI."
 msgstr "Port 已经给 WebGUI 使用。"
+
+msgid "Port to listen on. Default iTunes port is 3689."
+msgstr ""
+
+#, php-format
+msgid ""
+"Port to listen on. Only dynamic or private ports can be used (from %d "
+"through %d). Default port is %d."
+msgstr ""
+
+msgid "Ports"
+msgstr ""
 
 msgid "PostInit"
 msgstr "后置初始动作"
@@ -2150,7 +3517,9 @@ msgstr "与 Apple II 相容"
 msgid "Proxy"
 msgstr "Proxy"
 
-msgid "Puts the hard disk into standby mode when the selected amount of time after the last hard disk access has been elapsed."
+msgid ""
+"Puts the hard disk into standby mode when the selected amount of time after "
+"the last hard disk access has been elapsed."
 msgstr "设定当硬碟没有作动多久之后将其设为待命模式。"
 
 msgid "Quality"
@@ -2207,11 +3576,14 @@ msgstr "RSYNCD"
 msgid "Raid name"
 msgstr "RAID ㄎ名称"
 
+msgid "Read"
+msgstr ""
+
 msgid "Read Only Access"
 msgstr "唯独连线"
 
 msgid "Read only"
-msgstr "唯读"
+msgstr "只读"
 
 msgid "Read/Write"
 msgstr "读/写"
@@ -2252,14 +3624,24 @@ msgstr "远端 syslog 伺服器"
 msgid "Remove all entries from ARP table"
 msgstr "移除所有ARP table内的项目"
 
-msgid "Report if the temperature had changed by at least N degrees Celsius since last report. Set to 0 to disable this report."
+msgid ""
+"Report if the temperature had changed by at least N degrees Celsius since "
+"last report. Set to 0 to disable this report."
 msgstr "设定自上次回报之后最少变异了摄氏多少度才会再次回报，设为 0 则可以取消这个功能。"
 
-msgid "Report if the temperature is greater or equal than N degrees Celsius. Set to 0 to disable this report."
+msgid ""
+"Report if the temperature is greater or equal than N degrees Celsius. Set to "
+"0 to disable this report."
 msgstr "如果温度大于摄氏 N 便回报。设为 0 则可以关闭这项功能。"
 
 msgid "Reports"
 msgstr "报告"
+
+msgid "Rescan interval"
+msgstr ""
+
+msgid "Resolve"
+msgstr ""
 
 msgid "Resolve IP addresses to hostnames"
 msgstr "将 IP 解析成主机名称"
@@ -2276,6 +3658,9 @@ msgstr "Net rpc testjoin 结果："
 msgid "Retry"
 msgstr "重试"
 
+msgid "Roundrobin"
+msgstr ""
+
 msgid "Routes"
 msgstr "路由"
 
@@ -2283,7 +3668,7 @@ msgid "Routing tables"
 msgstr "路由表"
 
 msgid "Rows"
-msgstr "列"
+msgstr "行"
 
 msgid "Rsync Daemon"
 msgstr "Rsync伺服器"
@@ -2333,6 +3718,16 @@ msgstr "储存并重新启动"
 msgid "Saved file to"
 msgstr "将档案储存至"
 
+msgid ""
+"Scan file system every N seconds to see if any files have been added or "
+"removed. Set to 0 to disable background scanning. If background rescanning "
+"is disabled, a scan can still be forced from the status page of the "
+"administrative web interface."
+msgstr ""
+
+msgid "Scan type"
+msgstr ""
+
 msgid "Schedule time"
 msgstr "排程时间"
 
@@ -2354,8 +3749,20 @@ msgstr "排程关机"
 msgid "Security"
 msgstr "安全"
 
-msgid "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select 'Old software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS release."
-msgstr "Select 'EFI GPT' if you want to mount a GPT formatted drive (default method since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume creating since the 0.683b.<br>Select 2 for mounting the DATA partition if you select option 2 during installation on hard drive.<br>Select 'Old software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS release."
+msgid ""
+"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
+"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+"you select option 2 during installation on hard drive.<br>Select 'Old "
+"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+"release."
+msgstr ""
+"Select 'EFI GPT' if you want to mount a GPT formatted drive (default method "
+"since 0.684b).<br>Select 1 for UFS formatted drive or Software RAID volume "
+"creating since the 0.683b.<br>Select 2 for mounting the DATA partition if "
+"you select option 2 during installation on hard drive.<br>Select 'Old "
+"software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
+"release."
 
 msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr "选择要开启 S.M.A.R.T. 监测的磁碟。"
@@ -2399,6 +3806,9 @@ msgstr "伺服器名称"
 msgid "Server description. This can usually be left blank."
 msgstr "伺服器描述文字。通常可以留白。"
 
+msgid "Server name"
+msgstr ""
+
 msgid "Services"
 msgstr "服务"
 
@@ -2417,10 +3827,26 @@ msgstr "设定分享密码。"
 msgid "Set the account's primary group to the given group."
 msgstr "设定帐号的主要群组。"
 
-msgid "Sets the database information to be stored in path. You have to specifiy a writable location, even if the volume is read only."
-msgstr "Sets the database information to be stored in path. You have to specifiy a writable location, even if the volume is read only."
+msgid "Set the desired Service Set Identifier (aka network name)."
+msgstr ""
 
-msgid "Sets the interval between disk checks to N seconds. The minimum allowed value is 10."
+msgid ""
+"Set the maximum transmission unit of the interface to n, default is "
+"interface specific. The MTU is used to limit the size of packets that are "
+"transmitted on an interface. Not all interfaces support setting the MTU, and "
+"some interfaces have range restrictions."
+msgstr ""
+
+msgid ""
+"Sets the database information to be stored in path. You have to specifiy a "
+"writable location, even if the volume is read only."
+msgstr ""
+"Sets the database information to be stored in path. You have to specifiy a "
+"writable location, even if the volume is read only."
+
+msgid ""
+"Sets the interval between disk checks to N seconds. The minimum allowed "
+"value is 10."
 msgstr "设定磁碟检查间隔时间，单位是秒，最少是 10。"
 
 msgid "Settings"
@@ -2443,6 +3869,9 @@ msgstr "分享所有子目录。"
 
 msgid "Share passwords can not be more than 8 characters."
 msgstr "分享区密码不能够超过 8 个字元。"
+
+msgid "Sharename"
+msgstr ""
 
 msgid "Shares"
 msgstr "共享"
@@ -2495,9 +3924,6 @@ msgstr "软体RAID"
 msgid "Software RAID information and status"
 msgstr "软体RAID资讯与状态"
 
-msgid "Sony Playstation 3"
-msgstr "Sony Playstation 3"
-
 msgid "Source directory to be synchronized."
 msgstr "要备份的资料夹。"
 
@@ -2513,29 +3939,47 @@ msgstr "输入预建立伺服器的数量。"
 msgid "Specifies that the file system should be exported read-only."
 msgstr "指定这个档案系统只能唯读。"
 
-msgid "Specifies the default base DN to use when performing ldap operations, example: dc=example,dc=com"
-msgstr "Specifies the default base DN to use when performing ldap operations, example: dc=example,dc=com"
+msgid "Specifies the command to be run."
+msgstr ""
 
-msgid "Specifies the default bind DN to use when performing ldap operations, example:cn=administrator,dc=example,dc=com "
-msgstr "Specifies the default bind DN to use when performing ldap operations, example:cn=administrator,dc=example,dc=com "
+msgid ""
+"Specifies the default base DN to use when performing ldap operations, "
+"example: dc=example,dc=com"
+msgstr ""
+"Specifies the default base DN to use when performing ldap operations, "
+"example: dc=example,dc=com"
 
-msgid "Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, etc."
+msgid ""
+"Specifies the default bind DN to use when performing ldap operations, "
+"example:cn=administrator,dc=example,dc=com "
+msgstr ""
+"Specifies the default bind DN to use when performing ldap operations, "
+"example:cn=administrator,dc=example,dc=com "
+
+msgid ""
+"Specifies the share character set. For example UTF8, UTF8-MAC, ISO-8859-15, "
+"etc."
 msgstr "指定这个分享区的档名编码，UTF8、UTF8-MAC、ISO-8859-15等等"
 
-msgid "Specifies whether it is allowed to login as superuser (root) directly."
+msgid ""
+"Specifies whether it is allowed to login as superuser (root) directly."
 msgstr "指定超级使用者 (root)是否可以透过SSH直接登入。"
 
-msgid "Specify the percentage of space held back from normal users. Note that lowering the threshold can adversely affect performance and auto-defragmentation."
+msgid ""
+"Specify the percentage of space held back from normal users. Note that "
+"lowering the threshold can adversely affect performance and auto-"
+"defragmentation."
 msgstr "指定要用多少百分比的硬碟空间配置给一般使用者。注意将门槛降低会影响到磁碟效能。"
 
-msgid "Speed"
-msgstr "速度"
+msgid "Standard"
+msgstr ""
 
-msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-msgstr "标准MTU是1500，输入9000则适用于大笔资料的传输。"
-
-msgid "Standby - Check the device unless it is in SLEEP or STANDBY mode. In these modes most disks are not spinning, so if you want to prevent a laptop disk from spinning up each poll, this is probably what you want."
-msgstr "待命 - 装置除了在睡眠、待命模式之外都将检查。这个情况下大部分的磁碟都会停止旋转，如果你想预防磁碟不断因为检查而重新启动，这应该就是你要的。"
+msgid ""
+"Standby - Check the device unless it is in SLEEP or STANDBY mode. In these "
+"modes most disks are not spinning, so if you want to prevent a laptop disk "
+"from spinning up each poll, this is probably what you want."
+msgstr ""
+"待命 - 装置除了在睡眠、待命模式之外都将检查。这个情况下大部分的磁碟都会停止旋转，如果你想预防磁碟不断因为检查而重新启动，这应该就是你要的。"
 
 msgid "Standby time"
 msgstr "进入待命时间"
@@ -2552,6 +3996,9 @@ msgstr "状态"
 msgid "Status report successfully sent."
 msgstr "状态报告已传送成功。"
 
+msgid "Stop after sending (and receiving) N packets."
+msgstr ""
+
 msgid "Stopped"
 msgstr "已停止"
 
@@ -2561,7 +4008,8 @@ msgstr "储存空间"
 msgid "Store DOS attributes"
 msgstr "储存 DOS 属性"
 
-msgid "String displayed in the dialog presented to the user when accessing the URL."
+msgid ""
+"String displayed in the dialog presented to the user when accessing the URL."
 msgstr "当使用者连线到这个 URL 将显示的对话框。"
 
 msgid "Subject"
@@ -2609,12 +4057,20 @@ msgstr "Swap 使用量"
 msgid "Switch to"
 msgstr "Switch to"
 
+#, php-format
+msgid "Switch to %s/s"
+msgstr ""
+
 msgid "Synchronization Time"
 msgstr "同步启动时间"
 
 #, php-format
-msgid "Syslog sends UDP datagrams to port 514 on the specified remote syslog server. Be sure to set syslogd on the remote server to accept syslog messages from %s."
-msgstr "Syslog 会透过 UDP 514 连接埠将资料送到指定的远端 syslog 伺服器。请确定远端的 syslog 伺服器将会接受来自 %s 的记录资料。"
+msgid ""
+"Syslog sends UDP datagrams to port 514 on the specified remote syslog "
+"server. Be sure to set syslogd on the remote server to accept syslog "
+"messages from %s."
+msgstr ""
+"Syslog 会透过 UDP 514 连接埠将资料送到指定的远端 syslog 伺服器。请确定远端的 syslog 伺服器将会接受来自 %s 的记录资料。"
 
 msgid "System"
 msgstr "系统"
@@ -2640,6 +4096,9 @@ msgstr "系统暂存讯息"
 msgid "System time"
 msgstr "系统时间"
 
+msgid "System tuning"
+msgstr ""
+
 msgid "TCP forwarding"
 msgstr "TCP 转送"
 
@@ -2647,7 +4106,10 @@ msgid "TCP port"
 msgstr "TCP port"
 
 msgid "TCP port to bind the server to."
-msgstr "这个服务将使用的 TCP 连接阜。 "
+msgstr "这个服务将使用的 TCP 连接阜。"
+
+msgid "TKIP"
+msgstr ""
 
 msgid "TLS + cleartext"
 msgstr "TLS + cleartext"
@@ -2670,17 +4132,18 @@ msgstr "目标目录。"
 msgid "Target name"
 msgstr "目标名称"
 
-msgid "Telegent TG100"
-msgstr "Telegent TG100"
-
 msgid "Temperature"
 msgstr "温度"
 
 msgid "Temperature monitoring"
 msgstr "温度监测"
 
-msgid "The  deny  option specifies users and groups who are not allowed access to the share. It follows the same  format  as  the  allow option."
-msgstr "The  deny  option specifies users and groups who are not allowed access to the share. It follows the same  format  as  the  allow option."
+msgid ""
+"The  deny  option specifies users and groups who are not allowed access to "
+"the share. It follows the same  format  as  the  allow option."
+msgstr ""
+"The  deny  option specifies users and groups who are not allowed access to "
+"the share. It follows the same  format  as  the  allow option."
 
 #, php-format
 msgid "The %s port must be a valid port number."
@@ -2689,24 +4152,19 @@ msgstr "请给 %s 输入一个有效的连接埠。"
 msgid "The IP address that this hostname represents."
 msgstr "主机名称所代表的 IP 位置"
 
-msgid "The LAN configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "区域网路设定已经变更。<br>套用之后才会生效。"
-
-msgid "The NFS export list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "NFS 输出列表已经变更。<br>套用之后才会生效。"
+#, php-format
+msgid "The MIB '%s' already exist."
+msgstr ""
 
 #, php-format
-msgid "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> first before proceeding."
+msgid "The MIB '%s' doesn't exist in sysctl."
+msgstr ""
+
+#, php-format
+msgid ""
+"The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
+"first before proceeding."
 msgstr "这个RAID volume目前正被挂载中！进行任何操作之前请先将其<a href=%s>卸载</a>。"
-
-msgid "The RSYNC client list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "客户端RSYNC设定已经变更。<br>套用之后才会生效。"
-
-msgid "The RSYNC local list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "本地端RSYNC设定已经变更。<br>套用之后才会生效。"
-
-msgid "The Raid configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Raid 组态已经变更。<br>套用之后才会生效。"
 
 msgid "The TCP idle timeout must be an integer."
 msgstr "TCP闲置切断时间必须是一个整数。"
@@ -2714,19 +4172,23 @@ msgstr "TCP闲置切断时间必须是一个整数。"
 msgid "The TCP port must be a valid port number."
 msgstr "请输入一个有效的连接埠。"
 
-msgid "The User list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "使用者名单已经变更。<br>套用之后才会生效。"
+msgid "The VLAN ID must be between 1 and 4094."
+msgstr ""
 
 #, c-format
-msgid "The attribute '%s' contains invalid characters and is no valid domain name."
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid domain name."
 msgstr "属性 '%s' 包含了无效字元，请输入有效的网域名称。"
 
 #, c-format
-msgid "The attribute '%s' contains invalid characters and is no valid host name."
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid host name."
 msgstr "属性 '%s' 包含了无效字元，请输入有效的主机名称。"
 
 #, c-format
-msgid "The attribute '%s' contains invalid characters and is no valid workgroup name."
+msgid ""
+"The attribute '%s' contains invalid characters and is no valid workgroup "
+"name."
 msgstr "属性 '%s' 包含了无效字元，请输入有效的工作群组名称。"
 
 #, c-format, php-format
@@ -2734,7 +4196,9 @@ msgid "The attribute '%s' contains invalid characters."
 msgstr "属性 '%s' 包含了无效的字元。"
 
 #, c-format
-msgid "The attribute '%s' contains the illegal character ':' and is no valid password."
+msgid ""
+"The attribute '%s' contains the illegal character ':' and is no valid "
+"password."
 msgstr "属性 '%s' 包含了无效字元 ':'，请输入有效的密码。"
 
 #, c-format
@@ -2778,8 +4242,13 @@ msgid "The attribute '%s' is required."
 msgstr "属性 '%s' 是必须栏位。"
 
 #, php-format
-msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
+msgid ""
+"The attribute '%s' may only consist of the characters a-z, A-Z, 0-9, _ , -."
 msgstr "属性 '%s' 只可以由下列的字元组成 a-z, A-Z, 0-9, _, -."
+
+#, c-format
+msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9."
+msgstr ""
 
 #, c-format
 msgid "The attribute '%s' must be a number."
@@ -2793,11 +4262,16 @@ msgid "The changes have been applied successfully."
 msgstr "变更套用成功。"
 
 #, c-format
-msgid "The changes have been saved. You have to <a href=%s>reboot</a> the system for the changes to take effect."
+msgid ""
+"The changes have been saved. You have to <a href=%s>reboot</a> the system "
+"for the changes to take effect."
 msgstr "变更已经套用。你必须<a href=%s>重新开机</a>以让变更生效。"
 
 msgid "The combination of share and working directory does not exist."
 msgstr "设定值内的分享/工作目录不存在。"
+
+msgid "The command to be executed."
+msgstr ""
 
 msgid "The configuration could not be restored (file upload error)."
 msgstr "无法回覆设定组态（档案上传错误）。"
@@ -2805,27 +4279,22 @@ msgstr "无法回覆设定组态（档案上传错误）。"
 msgid "The configuration could not be restored."
 msgstr "无法回覆设定组态。"
 
-msgid "The configuration has been changed.<br>You must apply the changes in order for them to take effect."
+msgid ""
+"The configuration has been changed.<br>You must apply the changes in order "
+"for them to take effect."
 msgstr "设定已经储存。<br>套用之后才会生效。"
-
-msgid "The configuration has been modified.<br>You must apply the changes in order for them to take effect."
-msgstr "设定已经变更。<br>套用之后才会生效。"
 
 #, php-format
 msgid "The configuration has been restored. %s is now rebooting."
 msgstr "设定组态复原成功。 %s 现在正重新启动。"
 
-msgid "The confimed password does not match. Please ensure the passwords match exactly."
+msgid ""
+"The confimed password does not match. Please ensure the passwords match "
+"exactly."
 msgstr "密码确认并不一致，请在确认一次输入的密码是否一致。"
-
-msgid "The content directory list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "内容目录列表已经变更。<br>套用之后才会生效。"
 
 msgid "The credentials to bind with, enter it here twice."
 msgstr "将要 Bind 的授权，请输入两次。"
-
-msgid "The cron job list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "Cron job 列表已经变更。<br>套用之后才会生效。"
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr "预设的 SMTP 邮件伺服器连接阜，例：25 或 587。"
@@ -2833,15 +4302,14 @@ msgstr "预设的 SMTP 邮件伺服器连接阜，例：25 或 587。"
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "装置名称只可以由 a-z, A-Z, 0-9 组成。"
 
+msgid "The device's IP address."
+msgstr ""
+
 #, php-format
-msgid "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before proceeding."
+msgid ""
+"The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
+"proceeding."
 msgstr "磁碟已经挂载！请先<a href=%s>卸载</a>之后再继续其他动作。"
-
-msgid "The disk list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "磁碟组态已经变更。<br>套用之后便会生效。"
-
-msgid "The encrypted volume list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "加密磁碟表已经变更。<br>套用之后才会生效。"
 
 #, php-format
 msgid "The firmware is now being installed. %s will reboot automatically."
@@ -2859,20 +4327,13 @@ msgstr "群组描述包含了无效字元。"
 msgid "The group name contains invalid characters."
 msgstr "群组名称包含无效字元。"
 
-msgid "The host list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "主机名称列表已经变更。<br>套用之后便会生效。"
-
 msgid "The host name contain invalid characters."
 msgstr "主机名称输入了无效的字元。"
 
-msgid "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and ."
+msgid ""
+"The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
+"."
 msgstr "主机名称只可以由 a-z, A-Z, 0-9 组成。"
-
-msgid "The iSCSI disk list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "iSCSI 磁碟列表已经变更。<br>套用之后才会生效。"
-
-msgid "The iSCSI target list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "iSCSI组态已经变更。<br>套用之后便会生效。"
 
 msgid "The image file is corrupt"
 msgstr "映像档已损毁"
@@ -2889,17 +4350,15 @@ msgstr "每个 IP 的最大连线数必需是 0 （不限制）或更大。"
 msgid "The maximum idle time be a number."
 msgstr "失效时间必须是一个数字。"
 
-msgid "The maximum port to allocate for PASV style data connections (0 = use any port)."
+msgid ""
+"The maximum port to allocate for PASV style data connections (0 = use any "
+"port)."
 msgstr "被动式连线埠的区段终点(0 = 不限制)"
 
-msgid "The minimum port to allocate for PASV style data connections (0 = use any port)."
+msgid ""
+"The minimum port to allocate for PASV style data connections (0 = use any "
+"port)."
 msgstr "被动式连线埠的区段起点(0 = 不限制)"
-
-msgid "The modules has been modified.<br>You must apply the changes in order for them to take effect."
-msgstr "这个模组已经修改。<br>套用之后才会生效。"
-
-msgid "The mount point list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "挂载点已经变更。<br>套用之后才会生效。"
 
 msgid "The number of clients must be between 1 and 50."
 msgstr "使用者上限必须介于 1 至 50。"
@@ -2907,26 +4366,27 @@ msgstr "使用者上限必须介于 1 至 50。"
 msgid "The old password is not correct."
 msgstr "旧的密码错误。"
 
-msgid "The package list has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "套件列表已经变更了。<br>套用之后变更才会生效。"
-
 msgid "The password contains the illegal character ':'."
 msgstr "密码包含了无效的字元 ':'。"
 
 msgid "The passwords do not match."
 msgstr "您输入的密码不相符。"
 
-msgid "The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user."
-msgstr "The permissions on new files and directories are normally governed by create mask and directory mask but the inherit permissions parameter overrides this. This can be particularly useful on systems with many users to allow a single share to be used flexibly by each user."
+msgid ""
+"The permissions on new files and directories are normally governed by create "
+"mask and directory mask but the inherit permissions parameter overrides "
+"this. This can be particularly useful on systems with many users to allow a "
+"single share to be used flexibly by each user."
+msgstr ""
+"The permissions on new files and directories are normally governed by create "
+"mask and directory mask but the inherit permissions parameter overrides "
+"this. This can be particularly useful on systems with many users to allow a "
+"single share to be used flexibly by each user."
 
-msgid "The powerd utility monitors the system state and sets various power control options accordingly."
+msgid ""
+"The powerd utility monitors the system state and sets various power control "
+"options accordingly."
 msgstr "电源监控程式会监控系统的整体状态并且设定相关的电源控制项目。"
-
-msgid "The shares has been modified.<br>You must apply the changes in order for them to take effect."
-msgstr "分享设定已经变更。<br>套用之后才会生效。"
-
-msgid "The static route configuration has been changed.<br>You must apply the changes in order for them to take effect."
-msgstr "静态路由已经变更。<br>套用之后才会生效。"
 
 msgid "The subject of the email."
 msgstr "这封 email 的主旨。"
@@ -2934,7 +4394,9 @@ msgstr "这封 email 的主旨。"
 msgid "The swap file is using this mount point."
 msgstr "Swap 档放在这个挂载点下。"
 
-msgid "The system has been reset to factory defaults and is now rebooting. This may take one minute."
+msgid ""
+"The system has been reset to factory defaults and is now rebooting. This may "
+"take one minute."
 msgstr "系统已经回复为初始设定，现在已经自动进入重新开机程序，可能要花一分钟的时间。"
 
 msgid "The system is halting now. This may take one minute."
@@ -2958,11 +4420,8 @@ msgstr "上传之映像档并不适用于这个系统"
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr "帐号只能包含以下字元 a-z, A-Z, 0-9。"
 
-msgid "The value in this field is sent as the DHCP client identifier when requesting a DHCP lease."
-msgstr "这个数值将会成为向DHCP伺服器要求IP时发送出去的辨识参数。"
-
-msgid "The value in this field is sent as the DHCP hostname when requesting a DHCP lease."
-msgstr "这个数值将会成为向DHCP伺服器要求IP时发送出去的主机名称。"
+msgid "The value of the variable."
+msgstr ""
 
 msgid "The volume must be detached before it can be deleted."
 msgstr "磁碟必需先移除才可以删除。"
@@ -2982,22 +4441,57 @@ msgstr "架构 RAID 5 最少要有两个磁碟。"
 msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr "RAID 5 模式必需最少有三个成员磁碟。"
 
-msgid "There should be enough to handle the maximum level of concurrency from its clients, typically four to six."
-msgstr "There should be enough to handle the maximum level of concurrency from its clients, typically four to six."
+msgid "There must be selected a minimum of 1 interface."
+msgstr ""
 
-msgid "These commands will be executed pre or post system initialization (booting) or before system shutdown."
-msgstr "These commands will be executed pre or post system initialization (booting) or before system shutdown."
+msgid ""
+"There should be enough to handle the maximum level of concurrency from its "
+"clients, typically four to six."
+msgstr ""
+"There should be enough to handle the maximum level of concurrency from its "
+"clients, typically four to six."
+
+msgid ""
+"These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
+"to a running system."
+msgstr ""
+
+msgid ""
+"These commands will be executed pre or post system initialization (booting) "
+"or before system shutdown."
+msgstr ""
+"These commands will be executed pre or post system initialization (booting) "
+"or before system shutdown."
+
+msgid ""
+"These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
+"options used by various generic startup scripts."
+msgstr ""
+
+msgid ""
+"This LAGG cannot be deleted because it is still being used as an interface."
+msgstr ""
 
 msgid "This URL is already configured."
 msgstr "这个 URL 已经设定过了。"
 
-msgid "This allows you to lower the power consumption of the drive, at the expense of performance."
-msgstr "This allows you to lower the power consumption of the drive, at the expense of performance."
+msgid ""
+"This VLAN cannot be deleted because it is still being used as an interface."
+msgstr ""
+
+msgid ""
+"This allows you to lower the power consumption of the drive, at the expense "
+"of performance."
+msgstr ""
+"This allows you to lower the power consumption of the drive, at the expense "
+"of performance."
 
 msgid "This allows you to set how loud the drive is while it's operating."
 msgstr "这是磁碟的运作噪音控制选项。"
 
-msgid "This allows you to set the file system for preformatted hard disks containing data."
+msgid ""
+"This allows you to set the file system for preformatted hard disks "
+"containing data."
 msgstr "如果原本的磁碟内部有资料，请在这里选择资料存在的档案系统格式。"
 
 msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
@@ -3012,10 +4506,18 @@ msgstr "This controls the access a remote host has to this module."
 msgid "This controls the access to this share with an access password."
 msgstr "This controls the access to this share with an access password."
 
-msgid "This controls whether the .AppleDouble directory gets created unless absolutely needed. This option should not be used if files are access mostly by Mac computers."
-msgstr "This controls whether the .AppleDouble directory gets created unless absolutely needed. This option should not be used if files are access mostly by Mac computers."
+msgid ""
+"This controls whether the .AppleDouble directory gets created unless "
+"absolutely needed. This option should not be used if files are access mostly "
+"by Mac computers."
+msgstr ""
+"This controls whether the .AppleDouble directory gets created unless "
+"absolutely needed. This option should not be used if files are access mostly "
+"by Mac computers."
 
-msgid "This controls whether this share is seen in the list of available shares in a net view and in the browse list."
+msgid ""
+"This controls whether this share is seen in the list of available shares in "
+"a net view and in the browse list."
 msgstr "控制这个分享资料夹能不能直接的被浏览器看到。"
 
 msgid "This couple targetname/targetaddress already exists in the disk list."
@@ -3033,59 +4535,143 @@ msgstr "这个磁碟/磁区已经设定过了。"
 msgid "This encrypted disk is mounted, umount it before trying to detach it."
 msgstr "这个加密磁碟正在挂载中，在卸除之前请先将其卸载。"
 
-msgid "This forces filenames to be restricted to the character set used by Windows. This is not recommended for shares used principally by Mac computers."
-msgstr "This forces filenames to be restricted to the character set used by Windows. This is not recommended for shares used principally by Mac computers."
+msgid ""
+"This forces filenames to be restricted to the character set used by Windows. "
+"This is not recommended for shares used principally by Mac computers."
+msgstr ""
+"This forces filenames to be restricted to the character set used by Windows. "
+"This is not recommended for shares used principally by Mac computers."
 
 msgid "This group already exists in the group list."
 msgstr "这个群组已经建立过了。"
 
+msgid ""
+"This is both the name of the server as advertised via "
+"Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
+msgstr ""
+
 msgid "This is for information only (not using during iSCSI negociation)."
 msgstr "只是提供资料之用（并非给 iSCSI 沟通的资料）"
 
-msgid "This means that the image you uploaded is not an official/supported image and may lead to unexpected behavior or security compromises. Only install images that come from sources that you trust, and make sure that the image has not been tampered with.<br><br>Do you want to install this image anyway (on your own risk)?"
-msgstr "这表示你所上传的映像档并非由FreeNAS官方所发布的，安装这个映像档可能会导致安全漏洞或是不可预期的错误。请安装来自官方，或是你所信任的来源所提供之映像档，并确定所下载之映像档并没有被植入恶意程式。<br><br>你要继续安装这个映像档吗？(自行负责)"
+msgid ""
+"This means that the image you uploaded is not an official/supported image "
+"and may lead to unexpected behavior or security compromises. Only install "
+"images that come from sources that you trust, and make sure that the image "
+"has not been tampered with.<br><br>Do you want to install this image anyway "
+"(on your own risk)?"
+msgstr ""
+"这表示你所上传的映像档并非由FreeNAS官方所发布的，安装这个映像档可能会导致安全漏洞或是不可预期的错误。请安装来自官方，或是你所信任的来源所提供之映像"
+"档，并确定所下载之映像档并没有被植入恶意程式。<br><br>你要继续安装这个映像档吗？(自行负责)"
 
 msgid "This name already exists in the disk list."
 msgstr "磁碟列表已经有这个名称存在。"
 
-msgid "This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
+msgid ""
+"This name is for example: iqn.1994-04.org.netbsd.iscsi-target:target0."
 msgstr "范例名称：iqn.1994-04.org.netbsd.iscsi-target:target0."
 
 msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr "范例名称：iqn.2005-01.il.ac.huji.cs:somebody."
 
-msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
-msgstr "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
+msgid ""
+"This option allows the users and groups that access a share to be specified. "
+"Users and groups are specified, delimited by commas. Groups are designated "
+"by a @ prefix."
+msgstr ""
+"This option allows the users and groups that access a share to be specified. "
+"Users and groups are specified, delimited by commas. Groups are designated "
+"by a @ prefix."
 
-msgid "This option determines if this module should be listed when the client asks for a listing of available modules. By setting this to false you can create hidden modules."
-msgstr "This option determines if this module should be listed when the client asks for a listing of available modules. By setting this to false you can create hidden modules."
+msgid ""
+"This option determines if this module should be listed when the client asks "
+"for a listing of available modules. By setting this to false you can create "
+"hidden modules."
+msgstr ""
+"This option determines if this module should be listed when the client asks "
+"for a listing of available modules. By setting this to false you can create "
+"hidden modules."
 
-msgid "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
-msgstr "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this module. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
+msgid ""
+"This option is a comma, space, or tab delimited set of host which are NOT "
+"permitted to access this module. Where the lists conflict, the allow list "
+"takes precedence. In the event that it is necessary to deny all by default, "
+"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
+"to the hosts allow parameter those hosts that should be permitted access. "
+"Leave this field empty to use default settings."
+msgstr ""
+"This option is a comma, space, or tab delimited set of host which are NOT "
+"permitted to access this module. Where the lists conflict, the allow list "
+"takes precedence. In the event that it is necessary to deny all by default, "
+"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
+"to the hosts allow parameter those hosts that should be permitted access. "
+"Leave this field empty to use default settings."
 
-msgid "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
-msgstr "This option is a comma, space, or tab delimited set of host which are NOT permitted to access this share. Where the lists conflict, the allow list takes precedence. In the event that it is necessary to deny all by default, use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify to the hosts allow parameter those hosts that should be permitted access. Leave this field empty to use default settings."
+msgid ""
+"This option is a comma, space, or tab delimited set of host which are NOT "
+"permitted to access this share. Where the lists conflict, the allow list "
+"takes precedence. In the event that it is necessary to deny all by default, "
+"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
+"to the hosts allow parameter those hosts that should be permitted access. "
+"Leave this field empty to use default settings."
+msgstr ""
+"This option is a comma, space, or tab delimited set of host which are NOT "
+"permitted to access this share. Where the lists conflict, the allow list "
+"takes precedence. In the event that it is necessary to deny all by default, "
+"use the keyword ALL (or the netmask 0.0.0.0/0) and then explicitly specify "
+"to the hosts allow parameter those hosts that should be permitted access. "
+"Leave this field empty to use default settings."
 
-msgid "This option is a comma, space, or tab delimited set of hosts which are permitted to access this module. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
-msgstr "This option is a comma, space, or tab delimited set of hosts which are permitted to access this module. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
+msgid ""
+"This option is a comma, space, or tab delimited set of hosts which are "
+"permitted to access this module. You can specify the hosts by name or IP "
+"number. Leave this field empty to use default settings."
+msgstr ""
+"This option is a comma, space, or tab delimited set of hosts which are "
+"permitted to access this module. You can specify the hosts by name or IP "
+"number. Leave this field empty to use default settings."
 
-msgid "This option is a comma, space, or tab delimited set of hosts which are permitted to access this share. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
-msgstr "This option is a comma, space, or tab delimited set of hosts which are permitted to access this share. You can specify the hosts by name or IP number. Leave this field empty to use default settings."
+msgid ""
+"This option is a comma, space, or tab delimited set of hosts which are "
+"permitted to access this share. You can specify the hosts by name or IP "
+"number. Leave this field empty to use default settings."
+msgstr ""
+"This option is a comma, space, or tab delimited set of hosts which are "
+"permitted to access this share. You can specify the hosts by name or IP "
+"number. Leave this field empty to use default settings."
 
-msgid "This option specifies the group name or group ID that file transfers to and from that module should take place. Leave this field empty to use default settings."
-msgstr "This option specifies the group name or group ID that file transfers to and from that module should take place. Leave this field empty to use default settings."
+msgid ""
+"This option specifies the group name or group ID that file transfers to and "
+"from that module should take place. Leave this field empty to use default "
+"settings."
+msgstr ""
+"This option specifies the group name or group ID that file transfers to and "
+"from that module should take place. Leave this field empty to use default "
+"settings."
 
 #, php-format
-msgid "This option specifies the user name or user ID that file transfers to and from that module should take place. In combination with the '%s' option this determines what file permissions are available. Leave this field empty to use default settings."
-msgstr "This option specifies the user name or user ID that file transfers to and from that module should take place. In combination with the '%s' option this determines what file permissions are available. Leave this field empty to use default settings."
+msgid ""
+"This option specifies the user name or user ID that file transfers to and "
+"from that module should take place. In combination with the '%s' option this "
+"determines what file permissions are available. Leave this field empty to "
+"use default settings."
+msgstr ""
+"This option specifies the user name or user ID that file transfers to and "
+"from that module should take place. In combination with the '%s' option this "
+"determines what file permissions are available. Leave this field empty to "
+"use default settings."
 
-msgid "This parameter controls whether files starting with a dot appear as hidden files."
+msgid ""
+"This parameter controls whether files starting with a dot appear as hidden "
+"files."
 msgstr "这个参数将会套用在所有的档案，包含以逗点为开头的隐藏档。"
 
 msgid "This parameters will be added to [global] in smb.conf."
 msgstr "这个参数将会被新增到 smb.con 的 global 区域。"
 
-msgid "This step will erase all your partition, create one GPT/EFI (for UFS) or MBR (for others) partition and format the hard drive with the file system specified."
+msgid ""
+"This step will erase all your partition, create one GPT/EFI (for UFS) or MBR "
+"(for others) partition and format the hard drive with the file system "
+"specified."
 msgstr "这个动作将会删除所有个分割区，并且建立一个使用 GPT/EFI 的 UFS 磁区（其他的档案格式则使用 MBR ）。"
 
 msgid "This the IP address or DNS name of the iSCSI target."
@@ -3095,13 +4681,17 @@ msgid "This user already exists in the user list."
 msgstr "使用者帐号已经存在。"
 
 #, php-format
-msgid "This will cause %s not to check for newer firmware versions when the <a href=%s>%s</a> page is viewed."
+msgid ""
+"This will cause %s not to check for newer firmware versions when the <a "
+"href=%s>%s</a> page is viewed."
 msgstr "这会让 %s 在浏览<a href=%s>%s</a>页面时不检查新版的韧体。"
 
 msgid "This will create a recycle bin on the share."
 msgstr "将产生一个垃圾桶的资料夹。"
 
-msgid "This will erase ALL data on the selected disks! Do not use this option if you want to add an already existing RAID again."
+msgid ""
+"This will erase ALL data on the selected disks! Do not use this option if "
+"you want to add an already existing RAID again."
 msgstr "这个动作会把选取的磁碟内资料清空！如果你想要新增一个已经设定好的 RAID 请勿使用这个选项。"
 
 msgid "Time"
@@ -3126,11 +4716,23 @@ msgid "To email"
 msgstr "发送至 email"
 
 #, php-format
-msgid "To increase CIFS performance try the following:<br>- Enable 'Large read/write' switch<br>- Enable '<a href='%s'>Tuning</a>' switch<br>- Increase <a href='%s'>MTU</a>"
-msgstr "开启以下的选项来增加 CIFS/SMB 的效能：<br>- 开启 '大笔资料读写'<br>- 开启 '<a href='%s'>微调</a>'<br>-增加 <a href='%s'>MTU</a>"
+msgid ""
+"To increase CIFS performance try the following:<br>- Enable 'Large "
+"read/write' switch<br>- Enable '<a href='%s'>Tuning</a>' switch<br>- "
+"Increase <a href='%s'>MTU</a>"
+msgstr ""
+"开启以下的选项来增加 CIFS/SMB 的效能：<br>- 开启 '大笔资料读写'<br>- 开启 '<a href='%s'>微调</a>'<br>-"
+"增加 <a href='%s'>MTU</a>"
 
-msgid "To use Active Directory the CIFS/SMB service will enabled, too. The following services will use AD authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul>"
-msgstr "一旦使用 AD，CIFS/SMB 服务也会一同启用。下列的服务也会使用 AD 认证：<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</li></ul>"
+msgid ""
+"To use Active Directory the CIFS/SMB service will enabled, too. The "
+"following services will use AD "
+"authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li>"
+"<li>System</li></ul>"
+msgstr ""
+"一旦使用 AD，CIFS/SMB 服务也会一同启用。下列的服务也会使用 AD "
+"认证：<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li><li>System</"
+"li></ul>"
 
 msgid "Tools"
 msgstr "工具"
@@ -3138,11 +4740,10 @@ msgstr "工具"
 msgid "Traceroute"
 msgstr "Traceroute"
 
-msgid "Traceroute may take a while to complete. You may hit the Stop button on your browser at any time to see the progress of failed traceroutes."
+msgid ""
+"Traceroute may take a while to complete. You may hit the Stop button on your "
+"browser at any time to see the progress of failed traceroutes."
 msgstr "Traceroute需要一段时间才能完成。你可以随时按下浏览器的停止载入钮并观看结果。"
-
-msgid "Traceroute output"
-msgstr "Traceroute结果输出"
 
 msgid "Traffic graph"
 msgstr "流量图表"
@@ -3172,12 +4773,23 @@ msgid "Type"
 msgstr "类别"
 
 #, php-format
-msgid "UFS and variants are the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
-msgstr "UFS 档案系统格式是 FreeBSD 原生档案格式 (%s的OS)。 如果使用FAT, FAT32, EXT2, EXT3, 或是 NTFS 可能会导致档案损毁等不可预期的错误！"
+msgid ""
+"UFS and variants are the NATIVE file format for FreeBSD (the underlying OS "
+"of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, "
+"or NTFS can result in unpredictable results, file corruption, and loss of "
+"data!"
+msgstr ""
+"UFS 档案系统格式是 FreeBSD 原生档案格式 (%s的OS)。 如果使用FAT, FAT32, EXT2, EXT3, 或是 NTFS "
+"可能会导致档案损毁等不可预期的错误！"
 
 #, php-format
-msgid "UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS can result in unpredictable results, file corruption, and loss of data!"
-msgstr "UFS 档案系统格式是 FreeBSD 原生档案格式 (%s之原生OS)。 如果使用FAT, FAT32, EXT2, EXT3, 或是 NTFS 档案格式可能会导致档案损毁等不可预期的错误！"
+msgid ""
+"UFS is the NATIVE file format for FreeBSD (the underlying OS of %s). "
+"Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
+"can result in unpredictable results, file corruption, and loss of data!"
+msgstr ""
+"UFS 档案系统格式是 FreeBSD 原生档案格式 (%s之原生OS)。 如果使用FAT, FAT32, EXT2, EXT3, 或是 NTFS "
+"档案格式可能会导致档案损毁等不可预期的错误！"
 
 msgid "UID"
 msgstr "UID"
@@ -3242,19 +4854,29 @@ msgstr "使用 AFP3 UNIX 权限。"
 msgid "Use SSL/TLS encryption layer."
 msgstr "使用 SSL/TLS 加密层。"
 
-msgid "Use a space to separate multiple hosts (only one required). Remember to set up at least one DNS server if you enter a host name here!"
+msgid ""
+"Use a space to separate multiple hosts (only one required). Remember to set "
+"up at least one DNS server if you enter a host name here!"
 msgstr "使用空白字元来分隔多个主机位置(一个空白即可)。如果你输入主机名称，请先设定DNS伺服器。"
 
-msgid "Use the new 64k streaming read and write varient SMB requests introduced with Windows 2000."
+msgid ""
+"Use the following IP address as the source address in outgoing packets."
+msgstr ""
+
+msgid ""
+"Use the new 64k streaming read and write varient SMB requests introduced "
+"with Windows 2000."
 msgstr "使用 Windows 2000 之后新增的 64K 串流选项。"
 
 msgid "Use the specified NTP server."
 msgstr "使用指定的 NTP 伺服器。"
 
-msgid "Use this option to override the directory creation mask (022 by default)."
+msgid ""
+"Use this option to override the directory creation mask (022 by default)."
 msgstr "设定目录新增遮罩（预设为022）。"
 
-msgid "Use this option to override the directory creation mask (0777 by default)."
+msgid ""
+"Use this option to override the directory creation mask (0777 by default)."
 msgstr "设定目录新增遮罩（预设为0777）。"
 
 msgid "Use this option to override the file creation mask (0666 by default)."
@@ -3263,8 +4885,15 @@ msgstr "设定档案新增遮罩（预设为0666）。"
 msgid "Use this option to override the file creation mask (077 by default)."
 msgstr "设定档案新增遮罩（预设为077）。"
 
-msgid "Use this option to override the username ('ftp' by default) which will be used for access to services which are specified as guest. Whatever privileges this user has will be available to any client connecting to the guest service. This user must exist in the password file, but does not require a valid login."
-msgstr "设定使用者名称（预设为'ftp'），预设权限为guest。这个使用者所拥有的权限也会套用在其他的服务上。您可以取消这个使用者的登入权限，但是千万不能将他删除。"
+msgid ""
+"Use this option to override the username ('ftp' by default) which will be "
+"used for access to services which are specified as guest. Whatever "
+"privileges this user has will be available to any client connecting to the "
+"guest service. This user must exist in the password file, but does not "
+"require a valid login."
+msgstr ""
+"设定使用者名称（预设为'ftp'），预设权限为guest。这个使用者所拥有的权限也会套用在其他的服务上。您可以取消这个使用者的登入权限，但是千万不能将他删"
+"除。"
 
 msgid "User"
 msgstr "使用者"
@@ -3296,14 +4925,26 @@ msgstr "使用者"
 msgid "Users and Groups"
 msgstr "使用者/群组"
 
+msgid "VLAN"
+msgstr ""
+
 msgid "VLAN tag"
 msgstr "VLAN标籤"
+
+msgid "Value"
+msgstr ""
+
+msgid "Variable"
+msgstr ""
 
 msgid "Version"
 msgstr "版本"
 
 msgid "View license"
 msgstr "检视授权"
+
+msgid "Virtual interface"
+msgstr ""
 
 msgid "Volume Name"
 msgstr "Volume名称"
@@ -3317,11 +4958,26 @@ msgstr "新档案系统的磁碟标籤"
 msgid "WAN address"
 msgstr "广域网路位置"
 
+msgid "WEP"
+msgstr ""
+
 msgid "WINS server"
 msgstr "WINS伺服器"
 
 msgid "WINS server IP address (e.g. from MS Active Directory server)."
 msgstr "WINS 伺服器位置 (AD Server)"
+
+msgid "WPA"
+msgstr ""
+
+msgid "WPA-EAP (Extensible Authentication Protocol)"
+msgstr ""
+
+msgid "WPA-PSK (Pre Shared Key)"
+msgstr ""
+
+msgid "WPA-PSK WPA-EAP"
+msgstr ""
 
 msgid "Warning"
 msgstr "警告"
@@ -3329,9 +4985,6 @@ msgstr "警告"
 #, php-format
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "注意：读取 %s 记录档可能会再成很大的延迟！"
-
-msgid "Web user interface"
-msgstr "网页控制介面"
 
 msgid "WebGUI"
 msgstr "网页介面"
@@ -3342,20 +4995,38 @@ msgstr "网页伺服器"
 msgid "Where the working files will be stored"
 msgstr "选择工作档案要储存的位置"
 
+msgid ""
+"Whether scans should be skipped if there are no users connected. This allows "
+"the drive to spin down when no users are connected."
+msgstr ""
+
 msgid "Who"
 msgstr "Who"
+
+msgid "Wildcard"
+msgstr ""
 
 msgid "Wireless"
 msgstr "无线网路"
 
+msgid "Wireless configuration"
+msgstr ""
+
 msgid "Workgroup"
 msgstr "工作群组"
 
-msgid "Workgroup the server will appear to be in when queried by clients (maximum 15 characters)."
-msgstr "Workgroup the server will appear to be in when queried by clients (maximum 15 characters)."
+msgid ""
+"Workgroup the server will appear to be in when queried by clients (maximum "
+"15 characters)."
+msgstr ""
+"Workgroup the server will appear to be in when queried by clients (maximum "
+"15 characters)."
 
 msgid "Working Directory"
 msgstr "工作目录"
+
+msgid "Write"
+msgstr ""
 
 msgid "Write only"
 msgstr "只供写入"
@@ -3363,15 +5034,26 @@ msgstr "只供写入"
 msgid "Yes"
 msgstr "是"
 
-msgid "You can also install a package via SSH or console using the the pkg_add command.<br>Example: pkg_add -r packagename"
+msgid ""
+"You can also install a package via SSH or console using the the pkg_add "
+"command.<br>Example: pkg_add -r packagename"
 msgstr "你也可以利用 SSH 连线或是 console 下达 pkg_add 的指令。<br>例：pkg_add -r package-name"
 
 #, php-format
-msgid "You can't mount the partition '%s' where the config file is stored.<br>"
+msgid ""
+"You can't mount the partition '%s' where the config file is stored.<br>"
 msgstr "你不可以挂载含有'%s'设定档的磁区。<br>"
 
-msgid "You can't unmount a drive which is used by swap file, a iSCSI-target file or any other running process!"
+msgid ""
+"You can't unmount a drive which is used by swap file, a iSCSI-target file or "
+"any other running process!"
 msgstr "正在被 Swap、iSCSI 目标或是任何程序使用的磁碟不能够被卸载。"
+
+#, php-format
+msgid ""
+"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+"service to clients."
+msgstr ""
 
 msgid "You have to define some 'Extent' objects first."
 msgstr "你必须先定义 Extent 物件。"
@@ -3379,9 +5061,6 @@ msgstr "你必须先定义 Extent 物件。"
 #, c-format
 msgid "You have to select at least one item for '%s'."
 msgstr "请至少从 '%s' 选择一个项目。"
-
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "可以加注必要的描述文字。(不含语法)"
 
 msgid "You may enter a description here for your reference."
 msgstr "可以加注必要的描述文字。"
@@ -3413,14 +5092,8 @@ msgstr "建议您使用 HTTPS 加密模式连接 WebGUI 来传送加密金钥。
 msgid "Your own email address."
 msgstr "你的 email"
 
-msgid "Zeroconf"
-msgstr "ZeroConf"
-
-msgid "ZyXEL DMA-1000"
-msgstr "ZyXEL DMA-1000"
-
-msgid "add mount"
-msgstr "新增挂载点"
+msgid "Zeroconf/Bonjour"
+msgstr ""
 
 msgid "built on"
 msgstr "建立于"
@@ -3442,12 +5115,6 @@ msgstr "天"
 
 msgid "dbpath"
 msgstr "资料库位置"
-
-msgid "delete mount"
-msgstr "删除挂载点"
-
-msgid "desc"
-msgstr "递减"
 
 #, php-format
 msgid "e.g. %s"
@@ -3510,6 +5177,9 @@ msgstr "被动模式连接阜最小值"
 msgid "prodos"
 msgstr "prodos"
 
+msgid "rc.conf"
+msgstr ""
+
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
 
@@ -3518,6 +5188,9 @@ msgstr "秒"
 
 msgid "striping"
 msgstr "striping"
+
+msgid "sysctl.conf"
+msgstr ""
 
 msgid "type"
 msgstr "类别"
@@ -3533,570 +5206,3 @@ msgstr "webGUI 组态设定"
 
 msgid "week days"
 msgstr "平常日"
-
-#~ msgid "A valid TCP/IP port must be specified for the webGUI port."
-#~ msgstr "网页介面必须指定一个有效的TCP/IP连接埠。"
-#~ msgid "AD server IP"
-#~ msgstr "AD伺服器IP"
-#~ msgid "AD server name"
-#~ msgstr "AD伺服器名称"
-#~ msgid "Certificate and key must always be specified together."
-#~ msgstr "验证与金钥必须同时提供才能发挥作用。"
-#~ msgid ""
-#~ "Device polling is a technique that lets the system periodically poll "
-#~ "network devices for new data instead of relying on interrupts. This can "
-#~ "reduce CPU load and therefore increase throughput, at the expense of a "
-#~ "slightly higher forwarding delay (the devices are polled 1000 times per "
-#~ "second). Not all NICs support polling; see the m0n0wall homepage for a "
-#~ "list of supported cards."
-#~ msgstr ""
-#~ "Device polling可以让系统定期的从网路介面撷取新的资料而不必依赖CPU中断。这"
-#~ "样可以减低网路流量对CPU造成的负担，同时增加系统的整体工作量。但是会稍微增"
-#~ "加网路的延迟时间(系统每一秒钟要询问网路介面卡1000次)。请参访m0n0wall的网站"
-#~ "以确定你的网路卡是否支援Device polling。"
-#~ msgid "Enable the S.M.A.R.T daemon"
-#~ msgstr "开启 S.M.A.R.T 监控程式"
-#~ msgid "FTP users"
-#~ msgstr "FTP使用者"
-#~ msgid "Key"
-#~ msgstr "金钥"
-#~ msgid "List of SMART capabilities on all detected disk"
-#~ msgstr "列出所有磁碟可用的SMART功能"
-#~ msgid "List of partition on all detected disk"
-#~ msgstr "所有磁碟内的磁区列表"
-#~ msgid ""
-#~ "Monitor the S.M.A.R.T device by logging their status in the log file."
-#~ msgstr "透过记录档监控S.M.A.R.T装置。"
-#~ msgid "Password of domain administrator account, enter it here twice."
-#~ msgstr "请在此设定管理者的密码，并且输入两次以确认无误。"
-#~ msgid "Paste an RSA private key in PEM format here."
-#~ msgstr "请在此贴上一个PEM格式的RSA私钥。"
-#~ msgid "RSYNC Options"
-#~ msgstr "RSYNC选项"
-#~ msgid "S.M.A.R.T Daemon"
-#~ msgstr "S.M.A.R.T监控程式"
-#~ msgid "Sensors"
-#~ msgstr "感应器"
-#~ msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-#~ msgstr "网域只能包含以下字元 a-z, 0-9, '-', '.'。"
-#~ msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-#~ msgstr "Hostname只能包含以下字元 a-z, 0-9, '-'。"
-#~ msgid "This key does not appear to be valid."
-#~ msgstr "这个金钥似乎是无效的。"
-#~ msgid "WINS Server IP address."
-#~ msgstr "WINS伺服器的IP位置。"
-#~ msgid "day"
-#~ msgstr "天"
-#~ msgid "webGUI SSL certificate/key"
-#~ msgstr "网页管理介面SSL验证/金钥"
-#~ msgid "%b %d, %Y"
-#~ msgstr "%b %d, %Y"
-#~ msgid "%A, %B %d, %Y"
-#~ msgstr "%A, %B %d, %Y"
-#~ msgid "%A, %B %d @ %H:%M:%S"
-#~ msgstr "%A, %B %d @ %H:%M:%S"
-#~ msgid "%b %d, %Y - %I:%M %p"
-#~ msgstr "%b %d, %Y - %I:%M %p"
-#~ msgid "%A, %B %d, %Y - %I:%M %p"
-#~ msgstr "%A, %B %d, %Y - %I:%M %p"
-#~ msgid "Sun Mon Tue Wed Thu Fri Sat"
-#~ msgstr "周日 周一 周二 周三 周四 周五 周六"
-#~ msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
-#~ msgstr "一月 二月 三月 四月 五月 六月 七月 八月 九月 十月 十一月 十二月"
-#~ msgid "%I:%M %p"
-#~ msgstr "%I:%M %p"
-#~ msgid "second"
-#~ msgstr "秒"
-#~ msgid "minute"
-#~ msgstr "分"
-#~ msgid "hour"
-#~ msgstr "小时"
-#~ msgid "week"
-#~ msgstr "周"
-#~ msgid "weeks"
-#~ msgstr "周"
-#~ msgid "month"
-#~ msgstr "月"
-#~ msgid "year"
-#~ msgstr "年"
-#~ msgid "years"
-#~ msgstr "年"
-#~ msgid "and"
-#~ msgstr "以及"
-#~ msgid "by"
-#~ msgstr "by"
-#~ msgid "Down"
-#~ msgstr "下"
-#~ msgid "off"
-#~ msgstr "关"
-#~ msgid "on"
-#~ msgstr "开"
-#~ msgid "To"
-#~ msgstr "To"
-#~ msgid "The"
-#~ msgstr "The"
-#~ msgid "Cancel"
-#~ msgstr "取消"
-#~ msgid "Deactivate"
-#~ msgstr "停止"
-#~ msgid "Help"
-#~ msgstr "说明"
-#~ msgid "Ignore"
-#~ msgstr "忽略"
-#~ msgid "Log out"
-#~ msgstr "登出"
-#~ msgid "Modify"
-#~ msgstr "修改"
-#~ msgid "New"
-#~ msgstr "新增"
-#~ msgid "Search"
-#~ msgstr "搜寻"
-#~ msgid "Submit"
-#~ msgstr "传送"
-#~ msgid "Update"
-#~ msgstr "更新"
-#~ msgid "View"
-#~ msgstr "检视"
-#~ msgid "Service"
-#~ msgstr "服务"
-#~ msgid ""
-#~ "The changes have been saved. You must <a href=%s>reboot</a> your NAS for "
-#~ "changes to take effect."
-#~ msgstr "变更已经储存。 <a href=%s>重新开启</a>NAS系统之后便会生效。"
-#~ msgid "ERROR: The changes could not be applied (error code %s)."
-#~ msgstr "错误：变更无法套用 (错误代码 %s)."
-#~ msgid "Active"
-#~ msgstr "运作中"
-#~ msgid "Inactive"
-#~ msgstr "停止中"
-#~ msgid "General setup"
-#~ msgstr "设定"
-#~ msgid "Assign"
-#~ msgstr "指派"
-#~ msgid "CIFS"
-#~ msgstr "CIFS"
-#~ msgid "Radius"
-#~ msgstr "Radius"
-#~ msgid "Reboot system"
-#~ msgstr "重新开机"
-#~ msgid "Shutdown system"
-#~ msgstr "关机"
-#~ msgid "Name of the NAS host, without domain part<br>e.g. <em>nas</em>"
-#~ msgstr "NAS的主机名称，不包含网域<br>例如: <em>nas</em>"
-#~ msgid "e.g. <em>mycorp.com</em>"
-#~ msgstr "例： <em>mycompany.com</em>"
-#~ msgid "DNS servers"
-#~ msgstr "DNS伺服器"
-#~ msgid "IP addresses"
-#~ msgstr "请输入IP位置"
-#~ msgid ""
-#~ "If you want to change the username for accessing the webGUI, enter it "
-#~ "here."
-#~ msgstr "变更网页介面的帐号。"
-#~ msgid ""
-#~ "If you want to change the password for accessing the webGUI, enter it "
-#~ "here twice.<br>Don't use the character ':'."
-#~ msgstr "变更网页介面的密码（两次）<br>不要使用以下的字元 ':'。"
-#~ msgid ""
-#~ "Enter a custom port number for the webGUI above if you want to override "
-#~ "the default (80 for HTTP, 443 for HTTPS)."
-#~ msgstr "输入自行设定的网页管理介面连接埠(80: HTTP, 443: HTTPS)。"
-#~ msgid "Select the system language"
-#~ msgstr "选择网页管理介面显示语言"
-#~ msgid ""
-#~ "Minutes between network time sync.; 300\trecommended, or 0 to disable."
-#~ msgstr ""
-#~ "多少分钟与时间伺服器同步一次。建议设为300分钟，输入0则可以关闭同步功能"
-#~ msgid ""
-#~ "A valid IP address must be specified for the primary/secondary DNS server."
-#~ msgstr "主要/次要DNS伺服器必须指定一个有效的IP。"
-#~ msgid "You must select a valid language."
-#~ msgstr "必须选择一个有效的语言。"
-#~ msgid ""
-#~ "The time update interval must be either 0 (disabled) or between 6 and "
-#~ "1440."
-#~ msgstr "将时间同步间隔设定只接受6-1440的范园，或者输入0将其关闭。"
-#~ msgid ""
-#~ "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and "
-#~ "'.'."
-#~ msgstr "NTP时间伺服器只能包含以下字元a-z, 0-9, '-', '.'。"
-#~ msgid "The digital signature on this image is invalid."
-#~ msgstr "映像档之数位签章已经失效。"
-#~ msgid "This image is not digitally signed."
-#~ msgstr "映像档并没有通过数位签章认证。"
-#~ msgid "There has been an error verifying the signature on this image."
-#~ msgstr "无法验証映像档内的数位签章。"
-#~ msgid ""
-#~ "The options on this page are intended for use by advanced users only, and "
-#~ "there's <strong>NO</strong> support for them."
-#~ msgstr ""
-#~ "本页的选项是设计给进阶的使用者使用的，同时也<strong>不提供</strong>关于本"
-#~ "页选项的相关技术支援"
-#~ msgid "TCP idle timeout"
-#~ msgstr "TCP闲置切断时间"
-#~ msgid ""
-#~ "Idle TCP connections will be removed from the state table after no "
-#~ "packets have been received for the specified number of seconds. Don't set "
-#~ "this too high or your state table could become full of connections that "
-#~ "have been improperly shut down. The default is 9000 seconds (2.5 hours)."
-#~ msgstr ""
-#~ "闲置太久的TCP连线将会被系统切断。不要把这个数值设定的太高，以免系统内同时"
-#~ "存在太多的连线(例:不正常断线的程式)。预设的数值是9000秒（2.5小时）。"
-#~ msgid "mount share"
-#~ msgstr "分享之挂载点"
-#~ msgid "A valid gateway must be specified."
-#~ msgstr "请输入一个有效的闸道。"
-#~ msgid "Enable Optional "
-#~ msgstr "开启额外的选项 "
-#~ msgid " interface"
-#~ msgstr " 网路介面"
-#~ msgid "Static IP configuration"
-#~ msgstr "静态IP设定"
-#~ msgid "DHCP client configuration"
-#~ msgstr "动态DHCP设定"
-#~ msgid "General configuration"
-#~ msgstr "一般设定"
-#~ msgid "Manage"
-#~ msgstr "管理"
-#~ msgid "First configuration step: Add your hardrive to the disk list."
-#~ msgstr "规划的第一步：新增你的硬碟到磁碟表中。"
-#~ msgid "UDMA mode"
-#~ msgstr "UDMA模式"
-#~ msgid ""
-#~ "Puts the hard disk into standby mode when the selected amount of time "
-#~ "after the last access has elapsed. <em>Do not set this for CF cards.</em>"
-#~ msgstr ""
-#~ "设定在多久时间之后，如果没有存取动作便将硬碟切换至待命模式。<em>CF卡请勿选"
-#~ "用。</em>"
-#~ msgid ""
-#~ "This allows  you  to lower the power consumption of the drive, at the "
-#~ "expense of performance.<br><em>Do not set this for CF cards.</em>"
-#~ msgstr ""
-#~ "用来控制磁碟的电源消耗，相反的会失去一些效能。<br><em>CF卡请勿选用。</em>"
-#~ msgid ""
-#~ "This allows you to set how loud the drive is while it's operating."
-#~ "<br><em>Do not set this for CF cards.</em>"
-#~ msgstr "用来控制磁碟的运转噪音程度。<br><em>CF卡请勿选用。</em>"
-#~ msgid "Preformatted FS"
-#~ msgstr "已存在之档案系统"
-#~ msgid ""
-#~ "Can't format the drive where FreeNAS configuration file is installed!"
-#~ msgstr "不能将有 FreeNAS 设定档的磁碟格式化！"
-#~ msgid "Disk initialization details"
-#~ msgstr "磁碟初始化系统资讯"
-#~ msgid "\"fdisk: Geom not found\"is not an error message!\n"
-#~ msgstr "「fdisk: Geom not found」并不是一个错误讯息！\n"
-#~ msgid ""
-#~ "This step will erase all your partition, create partition number 1 and "
-#~ "format the hard drive with the file system specified."
-#~ msgstr ""
-#~ "这个动作会删除所有磁区，建立并且格式化第一号磁区成为你指定的档案系统。"
-#~ msgid ""
-#~ "The disk is currently mounted! The mount point will be removed temporary "
-#~ "to perform selected command."
-#~ msgstr "磁碟目前正在挂载中！系统会将磁碟暂时卸载以进行指令。"
-#~ msgid "iSCSI"
-#~ msgstr "iSCSI"
-#~ msgid "Target IP address"
-#~ msgstr "目标IP位置"
-#~ msgid "IP address of the iSCSI target."
-#~ msgstr "iSCSI装置的IP位置"
-#~ msgid "Targetname"
-#~ msgstr "目标名称"
-#~ msgid "Targetname."
-#~ msgstr "iSCSI目标的名称"
-#~ msgid "Format RAID"
-#~ msgstr "格式化RAID"
-#~ msgid "Geom Mirror"
-#~ msgstr "Geom Mirror"
-#~ msgid "Geom Stripe"
-#~ msgstr "Geom Stripe"
-#~ msgid "Geom Concat"
-#~ msgstr "Geom Concat"
-#~ msgid "Geom Raid5"
-#~ msgstr "Geom Raid5"
-#~ msgid "RAID"
-#~ msgstr "RAID"
-#~ msgid "ERR Could not save RAID configuration.\n"
-#~ msgstr "错误！不能储存 RAID 设定值。\n"
-#~ msgid "Disk format UFS output:"
-#~ msgstr "UFS格式化结果输出："
-#~ msgid "This step will format the RAID volume in Unix FileSystem (UFS)."
-#~ msgstr "这会将此RAID磁碟格式化为Unix档案系统(UFS)。"
-#~ msgid "Format UFS disk!"
-#~ msgstr "格式化UFS磁碟！"
-#~ msgid ""
-#~ "1. Use these specials actions for debugging only!<br>2. There is no need "
-#~ "of using this menu for start a RAID volume (start automaticaly)."
-#~ msgstr ""
-#~ "1. 这些特殊的命令只用来除错而已！<br>2. RAID磁碟在建立之后会自动的启动，不"
-#~ "需要利用activate工具再启动一次。"
-#~ msgid "The description name contain invalid characters."
-#~ msgstr "描述文字包含了无效的字元。"
-#~ msgid "Duplicate Share Name."
-#~ msgstr "输入了存在的分享名称。"
-#~ msgid ""
-#~ "Select EFI GPT if you want to mount a GPT formatted drive (default method "
-#~ "since 0.684b).<br>Select 1 for UFS formatted drive or software RAID "
-#~ "volume creating since the 0.683b.<br>Select 2 for mounting the DATA "
-#~ "partition if you select option 2 during installation on hard drive."
-#~ "<br>Select old software gmirror/graid5/gvinum for volume created with old "
-#~ "FreeNAS release"
-#~ msgstr ""
-#~ "如果你想要挂载 GPT 格式的磁碟（0.684之后的预设格式化选项），请选择 EFI "
-#~ "GPT。<br>如果是要挂载 UFS 或 Software RAID 格式化的磁碟请选择 1。<br>如果"
-#~ "是要挂载系统磁碟分隔为两区中的资料磁碟，请选择 2。<br>如果你要挂载 0.682 "
-#~ "之前 FreeNAS 格式化之磁碟，请选择 old software gmirror/graid5/gvinum。"
-#~ msgid "You can't unmount a drive used by swap file or iSCSI-target file!"
-#~ msgstr "你不能卸载有 Swap 或 iSCSI 档案的目标"
-#~ msgid "The Netbios name contains invalid characters."
-#~ msgstr "Netbios名称输入了无效的字元。"
-#~ msgid "The Workgroup name contains invalid characters."
-#~ msgstr "工作群组内输入了无效的字元。"
-#~ msgid "The WINS server must be an IP address."
-#~ msgstr "WINS伺服器必须是IP位置。"
-#~ msgid "The SND Buffer value must be a number."
-#~ msgstr "传送缓冲区必须是一个数字。"
-#~ msgid "The RCV Buffer value must be a number."
-#~ msgstr "接收缓冲区必须是一个数字。"
-#~ msgid "CIFS share"
-#~ msgstr "CIFS分享"
-#~ msgid "Workgroup to be member of."
-#~ msgstr "选择将要加入的工作群组"
-#~ msgid "Recycle Bin"
-#~ msgstr "资源回收桶"
-#~ msgid "Enable Recycle bin"
-#~ msgstr "开启资源回收桶"
-#~ msgid "This will create a recycle bin on the CIFS shares."
-#~ msgstr "开启资源回收筒的功能，可救回删除之档案。"
-#~ msgid "The maximum Number of client must be a number."
-#~ msgstr "连线数目上线必须是一个数字。"
-#~ msgid "The max con per ip must be a number."
-#~ msgstr "相同IP的连线数目必须是一个数字。"
-#~ msgid "The pasv address must be a public IP address."
-#~ msgstr "被动式IP位置必须是一个对外的IP。"
-#~ msgid ""
-#~ "You must select at minium anonymous or/and local user authentication."
-#~ msgstr "请至少选择 匿名/本地使用者 认证。"
-#~ msgid "Anonymous login"
-#~ msgstr "匿名登入"
-#~ msgid "Enable anonymous login."
-#~ msgstr "是否开启匿名登入"
-#~ msgid "Local User"
-#~ msgstr "本机使用者"
-#~ msgid "Enable local user login."
-#~ msgstr "是否开启本机使用者登入"
-#~ msgid ""
-#~ "Use this option to override the IP address that FTP daemon will advertise "
-#~ "in response to the PASV command."
-#~ msgstr "FTP伺服器的被动式连线IP位置。"
-#~ msgid "Network that is authorised to access to NFS share"
-#~ msgstr "设定可以使用NFS分享的网路区段"
-#~ msgid "The name of the exported directories are : /mnt/sharename"
-#~ msgstr "输出的目录名称是：/mnt/sharename"
-#~ msgid "You must configure mount point first."
-#~ msgstr "请先设定挂载点。"
-#~ msgid "Rsync Client Synchronization"
-#~ msgstr "Rsync本地端档案同步"
-#~ msgid "Shares to be synchronized"
-#~ msgstr "指定要同步的目录"
-#~ msgid "This same local share must be present on the Remote Server."
-#~ msgstr "远端与本地端的分享目录必须相同。"
-#~ msgid "You can't have the same mount point for source and destination!"
-#~ msgstr "来源与目的不能相同！"
-#~ msgid "Rsync Local Synchronization"
-#~ msgstr "Rsync本地备援"
-#~ msgid "Source"
-#~ msgstr "来源位置"
-#~ msgid "Source Mount Point."
-#~ msgstr "选择来源档案的挂载点。"
-#~ msgid "Destination"
-#~ msgstr "目地位置"
-#~ msgid "Destination Mount Point (backup drive)."
-#~ msgstr "选择目的位置的挂载点(备援磁碟机)。"
-#~ msgid "Enable TCP Forwarding"
-#~ msgstr "Enable TCP Forwarding"
-#~ msgid "No content directory to be shared."
-#~ msgstr "No content directory to be shared."
-#~ msgid "You must create a group first."
-#~ msgstr "你必须先建立一个群组。"
-#~ msgid "Unique login name of user."
-#~ msgstr "用来登入的使用者帐号"
-#~ msgid "Confirm Password"
-#~ msgstr "确认密码"
-#~ msgid "Confirm the password."
-#~ msgstr "请输入二次密码"
-#~ msgid "Group Member"
-#~ msgstr "群组成员"
-#~ msgid "Full Shell"
-#~ msgstr "Shell权限"
-#~ msgid "Give full shell to user"
-#~ msgstr "让这个使用者可以使用shell。"
-#~ msgid "Administrator"
-#~ msgstr "管理者帐号"
-#~ msgid "Put user in the administrator group"
-#~ msgstr "将使用者加入管理者群组"
-#~ msgid ""
-#~ "The group list has been changed.<br>You must apply the changes in order "
-#~ "for them to take effect."
-#~ msgstr "群组列表已经变更。<br>套用变更之后才会生效。"
-#~ msgid "The Group name contains invalid characters."
-#~ msgstr "群组名称内有无效的字元。"
-#~ msgid "The Group desc contains invalid characters."
-#~ msgstr "群组描述内有无效的字元。"
-#~ msgid "ATAidle"
-#~ msgstr "ATAidle"
-#~ msgid ""
-#~ "DO NOT abort the firmware upgrade once it has started. %s will reboot "
-#~ "automatically after storing the new firmware. The configuration will be "
-#~ "maintained.<br>You need a minium of %d Mb RAM to perform the firmware "
-#~ "update.<br>It is strongly recommended that you <a href=%s>Backup</a> the "
-#~ "System configuration before doing a Firmware upgrade."
-#~ msgstr ""
-#~ "一但轫体升级动作已经开始，千万不要中止其动作！ %s 在新的韧体上传完成之后便"
-#~ "会自动重新开机。所有之前所设定的组态都会被保留。<br>系统最少需要 %dMB 的记"
-#~ "忆体才能顺利执行此动作。<br>强烈的建议使用者，进行韧体升级之前请先<a href="
-#~ "%s>备份</a>系统设定组态。"
-#~ msgid ""
-#~ "You can force UDMA mode if you have 'UDMA_ERROR.... LBA' message with "
-#~ "your hard drive."
-#~ msgstr "如果显示「UDMA_ERROR.... LBA」的讯息，你可以手动选取UDMA的模式。"
-#~ msgid ""
-#~ "This allows you to set FS type for preformated disk with data."
-#~ "<br><em>Leave 'unformated' for unformated disk and then use <a href=%"
-#~ "s>format menu</a>.</em>"
-#~ msgstr ""
-#~ "如果新增已经包含资料的硬碟，请选择其原本的档案系统格式就可以获取其中的资"
-#~ "料。<br><em>还没有规划档案格式的磁碟机请选择「尚未格式化」，之后再进入<a "
-#~ "href=%s>格式化工具。</a>选单。</em>"
-#~ msgid ""
-#~ "Optional configuration step: Configuring a virtual RAID disk using your "
-#~ "<a href='%s'>previsously configured disk</a>.<br>Wait for the '%s' status "
-#~ "before format and mount it!"
-#~ msgstr ""
-#~ "选择性的规划步骤：利用你<a href='%s'>刚才设定的磁碟</a>来建立一个新的RAID"
-#~ "磁碟。<br>请等待「%s」的状态出现之后再进行格式化与挂载的动作！"
-#~ msgid ""
-#~ "Second configuration step: Declaring the filesystem used by your <a href=%"
-#~ "s>previously configured disk.</a>"
-#~ msgstr "规划的第二步：选择<a href=%s>刚才设定的磁碟</a>所使用之档案系统"
-#~ msgid "List of Advanced ATA capabilities on all ATA disk"
-#~ msgstr "列出所有ATA磁碟的ATA功能"
-#~ msgid "Erasing MBR and all partitions"
-#~ msgstr "删除 MBR 以及所有的磁区分割"
-#~ msgid "Keeping the MBR and all partitions"
-#~ msgstr "保留原有的MBR以及所有的磁区分割"
-#~ msgid "Creating one partition"
-#~ msgstr "建立一个磁区"
-#~ msgid "Initializing partition"
-#~ msgstr "磁区初始化"
-#~ msgid "Creating BSD label"
-#~ msgstr "建立 BSD 标籤"
-#~ msgid "Creating filesystem"
-#~ msgstr "建立档案系统"
-#~ msgid "Destroying old %s information"
-#~ msgstr "删除旧 %s 资讯"
-#~ msgid "Done"
-#~ msgstr "完成"
-#~ msgid "Creating %s partition"
-#~ msgstr "建立 %s 磁区"
-#~ msgid "Creating filesystem with 'Soft Updates'"
-#~ msgstr "建立'Soft Updates'的档案系统"
-#~ msgid ""
-#~ "The crypted disk list has been changed.<br>You must apply the changes in "
-#~ "order for them to take effect."
-#~ msgstr "加密磁碟设定已经变更。<br>变更之后才会生效。"
-#~ msgid ""
-#~ "Do you really want to delete this encrypted disk? All elements that still "
-#~ "use it will become invalid (e.g. share)!"
-#~ msgstr "确定要删除这个加密磁碟吗？所有使用此磁碟的元件都会失效！(例：分享)"
-#~ msgid "Create encrypted disk"
-#~ msgstr "建立加密磁碟"
-#~ msgid "Data integrity algorithm"
-#~ msgstr "资料完整性演算法"
-#~ msgid "Init and encrypt disk"
-#~ msgstr "初始并且开始加密磁碟"
-#~ msgid "Disk initialization and encryption"
-#~ msgstr "磁碟初始化与加密"
-#~ msgid "Encrypting... Please wait"
-#~ msgstr "加密中...请稍等"
-#~ msgid "Attaching..."
-#~ msgstr "连接中..."
-#~ msgid ""
-#~ "Using Data integrity will reduce size of available storage and also "
-#~ "reduce speed."
-#~ msgstr "套用资料完整性检查会需要额外的储存空间与计算时间。"
-#~ msgid "Detaching..."
-#~ msgstr "卸除中..."
-#~ msgid "attach"
-#~ msgstr "连结"
-#~ msgid "detach"
-#~ msgstr "卸除"
-#~ msgid "Resume"
-#~ msgstr "续传"
-#~ msgid "Enable resume mode."
-#~ msgstr "开启续传功能"
-#~ msgid ""
-#~ "Use this option to enable resuming broken transfers at the point of "
-#~ "interruption."
-#~ msgstr ""
-#~ "Use this option to enable resuming broken transfers at the point of "
-#~ "interruption."
-#~ msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
-#~ msgstr "你最少要有 256MB 的记忆体才能开启 iSCSI 目标功能。"
-#~ msgid "Save and Restart UPnP"
-#~ msgstr "储存并重新启动 UPnP"
-#~ msgid "Save and Restart Unison"
-#~ msgstr "储存并重新启动 Unison"
-#~ msgid "Save and Restart SSHD"
-#~ msgstr "储存并重新启动 SSHD"
-#~ msgid "Save and Restart RSYNC"
-#~ msgstr "储存并重新启动 RSYNC"
-#~ msgid "Save and Restart NFS"
-#~ msgstr "储存并重新启动 NFS"
-#~ msgid "Save and Restart FTP"
-#~ msgstr "储存并重新启动 FTP"
-#~ msgid "Save and Restart AFP"
-#~ msgstr "储存并重新启动 AFP"
-#~ msgid "Password confirmation"
-#~ msgstr "密码确认"
-#~ msgid "Remote share (source)"
-#~ msgstr "远端分享(来源)"
-#~ msgid "Remote source share name"
-#~ msgstr "远端来源名称"
-#~ msgid "Mount to use"
-#~ msgstr "使用的挂载点"
-#~ msgid "A valid size target value must be specified."
-#~ msgstr "请输入一个有效的Size。"
-#~ msgid "Mount used"
-#~ msgstr "使用之挂载点"
-#~ msgid "Define an host name can be useful for NFS."
-#~ msgstr "设定主机名称将对 NFS 服务有帮助"
-#~ msgid "Initializing disk"
-#~ msgstr "初始化磁碟"
-#~ msgid "LDAP server IP"
-#~ msgstr "LDAP 伺服器IP"
-#~ msgid "IP address of LDAP server."
-#~ msgstr "LDAP伺服器IP位置"
-#~ msgid ""
-#~ "Specifies the default base DN to use when performing ldap operations. The "
-#~ "base must be specified as a distinguished name in LDAP format."
-#~ msgstr ""
-#~ "指定预设的 Base 网域名称以便 LDAP运作。 Base 网域名称必须为显著的 LDAP 格"
-#~ "式。"
-#~ msgid ""
-#~ "Specifies the default bind DN to use when performing ldap operations. The "
-#~ "bind DN must be specified as a distinguished name in LDAP format."
-#~ msgstr ""
-#~ "指定预设的 Bind 网域名称以便 LDAP运作。 Bind 网域名称必须为显著的 LDAP 格"
-#~ "式。"
-#~ msgid ""
-#~ "After you click &quot;Save&quot;, you must reboot %s to make the changes "
-#~ "take effect. You may also have to do one or more of the following steps "
-#~ "before you can access your NAS again: </span><"
-#~ msgstr ""
-#~ "当按下&quot;储存&quot;之后，必须重新开启 %s 才能使变更生效。请继续执行下列"
-#~ "的步骤，才能再次连线您的NAS：</span></p>"
-#~ msgid "Do you really want to delete this user?!"
-#~ msgstr "确定要删除此使用者帐号？"
-

@@ -7,14 +7,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: freenas\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2008-02-15 14:09+0000\n"
-"PO-Revision-Date: 2007-06-27 08:35+0000\n"
-"Last-Translator: Boris <protoblade@gmail.com>\n"
+"POT-Creation-Date: 2008-06-26 08:18+0000\n"
+"PO-Revision-Date: 2008-05-04 10:06+0000\n"
+"Last-Translator: Emil Pavlov <Unknown>\n"
 "Language-Team: Bulgarian (Bulgaria)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-02-20 18:57+0000\n"
+"X-Launchpad-Export-Date: 2008-07-06 18:28+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #~ msgid "%b %d, %Y"
@@ -38,9 +38,6 @@ msgstr ""
 #~ msgid "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
 #~ msgstr "Яну Фев Мар Апр Май Юни Юли Авг Сеп Окт Ное"
 
-#~ msgid "Time"
-#~ msgstr "Час"
-
 #~ msgid "%I:%M %p"
 #~ msgstr "%I:%M %p"
 
@@ -52,6 +49,9 @@ msgstr ""
 
 #~ msgid "hour"
 #~ msgstr "час"
+
+#~ msgid "day"
+#~ msgstr "ден"
 
 #~ msgid "week"
 #~ msgstr "седмица"
@@ -116,6 +116,12 @@ msgstr ""
 #~ msgid "CIFS"
 #~ msgstr "CIFS"
 
+#~ msgid "SSHD"
+#~ msgstr "SSHD"
+
+#~ msgid "ARP table"
+#~ msgstr "ARP таблица"
+
 #~ msgid "Reboot system"
 #~ msgstr "Рестартирай системата"
 
@@ -144,6 +150,12 @@ msgstr ""
 #~ "Ако искате да смените паролата за достъп до webGUI, въведете я тук 2 "
 #~ "пъти.<br>не използвайте символа ':'."
 
+#~ msgid "WebGUI protocol"
+#~ msgstr "WebGUI Протокол"
+
+#~ msgid "WebGUI port"
+#~ msgstr "WebGUI порт"
+
 #~ msgid ""
 #~ "Enter a custom port number for the webGUI above if you want to override the "
 #~ "default (80 for HTTP, 443 for HTTPS)."
@@ -154,15 +166,36 @@ msgstr ""
 #~ msgid "Select the system language"
 #~ msgstr "Изберете системен език"
 
+#~ msgid "System Time"
+#~ msgstr "Системно време"
+
+#~ msgid ""
+#~ "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
+#~ "select one, then use Save button to update system time. (Mind seconds part "
+#~ "will be ignored)"
+#~ msgstr ""
+#~ "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
+#~ "select one, then use Save button to update system time. (Mind seconds part "
+#~ "will be ignored)"
+
 #~ msgid ""
 #~ "Minutes between network time sync.; 300\trecommended, or 0 to disable."
 #~ msgstr ""
 #~ "Minutes between network time sync.; 300\trecommended, or 0 to disable."
+
+#~ msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
+#~ msgstr "The hostname may only contain the characters a-z, 0-9 and '-'."
+
+#~ msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
+#~ msgstr "The domain may only contain the characters a-z, 0-9, '-' and '.'."
 
 #~ msgid ""
 #~ "A valid IP address must be specified for the primary/secondary DNS server."
 #~ msgstr "трябава да въведете валиден IP адрес за първия/втория DNS сървър."
 
+#~ msgid "A valid TCP/IP port must be specified for the webGUI port."
+#~ msgstr "A valid TCP/IP port must be specified for the webGUI port."
+
 #~ msgid ""
 #~ "The time update interval must be either 0 (disabled) or between 6 and 1440."
 #~ msgstr ""
@@ -172,6 +205,22 @@ msgstr ""
 #~ "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
 #~ msgstr ""
 #~ "A NTP Time Server name may only contain the characters a-z, 0-9, '-' and '.'."
+
+#~ msgid "show process information"
+#~ msgstr "Покажи информация за процесите"
+
+#~ msgid ""
+#~ "The static route configuration has been changed.<br>You must apply the "
+#~ "changes in order for them to take effect."
+#~ msgstr ""
+#~ "The static route configuration has been changed.<br>You must apply the "
+#~ "changes in order for them to take effect."
+
+#~ msgid "Gateway to be used to reach the destination network"
+#~ msgstr "Gateway to be used to reach the destination network"
+
+#~ msgid "You may enter a description here for your reference (not parsed)."
+#~ msgstr "You may enter a description here for your reference (not parsed)."
 
 #~ msgid "The digital signature on this image is invalid."
 #~ msgstr "The digital signature on this image is invalid."
@@ -182,12 +231,27 @@ msgstr ""
 #~ msgid "There has been an error verifying the signature on this image."
 #~ msgstr "There has been an error verifying the signature on this image."
 
+#~ msgid "Certificate and key must always be specified together."
+#~ msgstr "Certificate and key must always be specified together."
+
+#~ msgid "This certificate does not appear to be valid."
+#~ msgstr "This certificate does not appear to be valid."
+
+#~ msgid "This key does not appear to be valid."
+#~ msgstr "This key does not appear to be valid."
+
 #~ msgid ""
 #~ "The options on this page are intended for use by advanced users only, and "
 #~ "there's <strong>NO</strong> support for them."
 #~ msgstr ""
 #~ "The options on this page are intended for use by advanced users only, and "
 #~ "there's <strong>NO</strong> support for them."
+
+#~ msgid "webGUI SSL certificate/key"
+#~ msgstr "webGUI SSL certificate/key"
+
+#~ msgid "Paste an RSA private key in PEM format here."
+#~ msgstr "Paste an RSA private key in PEM format here."
 
 #~ msgid "TCP idle timeout"
 #~ msgstr "TCP idle timeout"
@@ -203,14 +267,76 @@ msgstr ""
 #~ "high or your state table could become full of connections that have been "
 #~ "improperly shut down. The default is 9000 seconds (2.5 hours)."
 
+#~ msgid "S.M.A.R.T Daemon"
+#~ msgstr "S.M.A.R.T Демон"
+
+#~ msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
+#~ msgstr ""
+#~ "Monitor the S.M.A.R.T device by logging their status in the log file."
+
+#~ msgid "Zeroconf"
+#~ msgstr "Zeroconf"
+
 #~ msgid "Swap size"
 #~ msgstr "Swap размер"
 
 #~ msgid "mount share"
 #~ msgstr "mount share"
 
+#~ msgid "Assign network ports"
+#~ msgstr "определи мрежовите портове"
+
+#~ msgid ""
+#~ "Device polling is a technique that lets the system periodically poll network "
+#~ "devices for new data instead of relying on interrupts. This can reduce CPU "
+#~ "load and therefore increase throughput, at the expense of a slightly higher "
+#~ "forwarding delay (the devices are polled 1000 times per second). Not all "
+#~ "NICs support polling; see the m0n0wall homepage for a list of supported "
+#~ "cards."
+#~ msgstr ""
+#~ "Device polling is a technique that lets the system periodically poll network "
+#~ "devices for new data instead of relying on interrupts. This can reduce CPU "
+#~ "load and therefore increase throughput, at the expense of a slightly higher "
+#~ "forwarding delay (the devices are polled 1000 times per second). Not all "
+#~ "NICs support polling; see the m0n0wall homepage for a list of supported "
+#~ "cards."
+
+#~ msgid "Speed"
+#~ msgstr "Скорост"
+
 #~ msgid " interface"
 #~ msgstr " интерфейс"
+
+#~ msgid "Enter a description (name) for the interface here."
+#~ msgstr "Enter a description (name) for the interface here."
+
+#~ msgid ""
+#~ "The value in this field is sent as the DHCP hostname when requesting a DHCP "
+#~ "lease."
+#~ msgstr ""
+#~ "The value in this field is sent as the DHCP hostname when requesting a DHCP "
+#~ "lease."
+
+#~ msgid ""
+#~ "The value in this field is sent as the DHCP client identifier when "
+#~ "requesting a DHCP lease."
+#~ msgstr ""
+#~ "The value in this field is sent as the DHCP client identifier when "
+#~ "requesting a DHCP lease."
+
+#~ msgid ""
+#~ "The LAN configuration has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "The LAN configuration has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+
+#~ msgid ""
+#~ "The disk list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr ""
+#~ "The disk list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
 
 #~ msgid "UDMA mode"
 #~ msgstr "UDMA mode"
@@ -271,6 +397,13 @@ msgstr ""
 #~ msgid "RAID"
 #~ msgstr "RAID"
 
+#~ msgid ""
+#~ "The Raid configuration has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "The Raid configuration has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+
 #~ msgid "ERR Could not save RAID configuration.\n"
 #~ msgstr "ERR Could not save RAID configuration.\n"
 
@@ -289,6 +422,13 @@ msgstr ""
 #~ msgstr ""
 #~ "1. Use these specials actions for debugging only!<br>2. There is no need of "
 #~ "using this menu for start a RAID volume (start automaticaly)."
+
+#~ msgid ""
+#~ "The mount point list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "The mount point list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
 
 #~ msgid "Duplicate Share Name."
 #~ msgstr "Duplicate Share Name."
@@ -313,6 +453,13 @@ msgstr ""
 #~ msgid "CIFS share"
 #~ msgstr "CIFS share"
 
+#~ msgid ""
+#~ "The shares has been modified.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr ""
+#~ "The shares has been modified.<br>You must apply the changes in order for "
+#~ "them to take effect."
+
 #~ msgid "The pasv address must be a public IP address."
 #~ msgstr "The pasv address must be a public IP address."
 
@@ -336,6 +483,9 @@ msgstr ""
 #~ msgid "Rsync Client Synchronization"
 #~ msgstr "Rsync Client Synchronization"
 
+#~ msgid "RSYNC Options"
+#~ msgstr "RSYNC Options"
+
 #~ msgid "Shares to be synchronized"
 #~ msgstr "Shares to be synchronized"
 
@@ -354,8 +504,18 @@ msgstr ""
 #~ msgid "Destination Mount Point (backup drive)."
 #~ msgstr "Destination Mount Point (backup drive)."
 
+#~ msgid "Directories to be shared."
+#~ msgstr "Directories to be shared."
+
 #~ msgid "No content directory to be shared."
 #~ msgstr "No content directory to be shared."
+
+#~ msgid ""
+#~ "The User list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr ""
+#~ "The User list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
 
 #~ msgid "You must create a group first."
 #~ msgstr "Трябва да създадете първо група."
@@ -393,6 +553,21 @@ msgstr ""
 
 #~ msgid "The Group desc contains invalid characters."
 #~ msgstr "Описанието на групата съдържа невалидни символи."
+
+#~ msgid "AD server name"
+#~ msgstr "AD server name"
+
+#~ msgid "AD server IP"
+#~ msgstr "AD server IP"
+
+#~ msgid "IP address of MS Active Directory server."
+#~ msgstr "IP address of MS Active Directory server."
+
+#~ msgid "Domain name in old format."
+#~ msgstr "Domain name in old format."
+
+#~ msgid "Edit VLAN"
+#~ msgstr "Промени VLAN"
 
 #~ msgid "ATAidle"
 #~ msgstr "ATAidle"
@@ -444,11 +619,41 @@ msgstr ""
 #~ "Second configuration step: Declaring the filesystem used by your <a "
 #~ "href=%s>previously configured disk.</a>"
 
+#~ msgid "List of partition on all detected disk"
+#~ msgstr "List of partition on all detected disk"
+
+#~ msgid "List of SMART capabilities on all detected disk"
+#~ msgstr "List of SMART capabilities on all detected disk"
+
 #~ msgid "List of Advanced ATA capabilities on all ATA disk"
 #~ msgstr "List of Advanced ATA capabilities on all ATA disk"
 
 #~ msgid "Show the list of available target Name on the iSCSI target"
 #~ msgstr "Show the list of available target Name on the iSCSI target"
+
+#~ msgid "AD Authentication disabled"
+#~ msgstr "AD оторизацията е забранена"
+
+#, php-format
+#~ msgid "Count must be between 1 and %d"
+#~ msgstr "Бройката тряба да е мождъ 1 и %d"
+
+#~ msgid "Ping output"
+#~ msgstr "Ping output"
+
+#~ msgid "Maximum number of hops"
+#~ msgstr "Максимален брой скокове"
+
+#~ msgid "Traceroute output"
+#~ msgstr "Traceroute output"
+
+#, php-format
+#~ msgid ""
+#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
+#~ "hostnames&quot; is checked on the <a href=%s>%s</a> page."
+#~ msgstr ""
+#~ "IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
+#~ "hostnames&quot; is checked on the <a href=%s>%s</a> page."
 
 #~ msgid "Erasing MBR and all partitions"
 #~ msgstr "Erasing MBR and all partitions"
@@ -511,6 +716,9 @@ msgstr ""
 #~ msgid "Attaching..."
 #~ msgstr "Закачане..."
 
+#~ msgid "Sensors"
+#~ msgstr "Сензори"
+
 #~ msgid "Detaching..."
 #~ msgstr "Разкачане..."
 
@@ -527,14 +735,44 @@ msgstr ""
 #~ "Use this option to enable resuming broken transfers at the point of "
 #~ "interruption."
 
+#~ msgid ""
+#~ "The iSCSI target list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "The iSCSI target list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+
 #~ msgid "You must have a minimum of 256MB of RAM for using iSCSI-target."
 #~ msgstr "You must have a minimum of 256MB of RAM for using iSCSI-target."
+
+#~ msgid "FTP Server disabled"
+#~ msgstr "FTP Сървъра е спрян"
+
+#~ msgid "FTP users"
+#~ msgstr "FTP потребители"
+
+#~ msgid "FTP connected users"
+#~ msgstr "FTP свързани потребители"
 
 #~ msgid "Password confirmation"
 #~ msgstr "Потвърждение с парола"
 
 #~ msgid "Remote share (source)"
 #~ msgstr "Отдалечен дял (source)"
+
+#~ msgid ""
+#~ "The RSYNC client list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "The RSYNC client list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+
+#~ msgid ""
+#~ "The RSYNC local list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
+#~ msgstr ""
+#~ "The RSYNC local list has been changed.<br>You must apply the changes in "
+#~ "order for them to take effect."
 
 #~ msgid "Remote source share name"
 #~ msgstr "Remote source share name"
@@ -551,8 +789,18 @@ msgstr ""
 #~ msgid "Define an host name can be useful for NFS."
 #~ msgstr "Define an host name can be useful for NFS."
 
+#~ msgid ""
+#~ "The host list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
+#~ msgstr ""
+#~ "The host list has been changed.<br>You must apply the changes in order for "
+#~ "them to take effect."
+
 #~ msgid "Initializing disk"
 #~ msgstr "Инициализиране на диска"
+
+#~ msgid "Enable Zeroconf"
+#~ msgstr "Позволи Zeroconf"
 
 #~ msgid "LDAP server IP"
 #~ msgstr "LDAP сървър IP"
@@ -615,11 +863,15 @@ msgstr " беше зададен на "
 
 #, php-format
 msgid "%d%% of %dMB"
-msgstr ""
+msgstr "%d%% от %dМБ"
 
 #, php-format
 msgid "%s advertises itself as a time server to Windows clients."
 msgstr "%s advertises itself as a time server to Windows clients."
+
+#, php-format
+msgid "%s available of %sB"
+msgstr "%s свободни от %sБ"
 
 #, php-format
 msgid "%s interface"
@@ -631,11 +883,15 @@ msgstr "%s интерфейс (SSID '%s')"
 
 #, php-format
 msgid "%s of %sB"
-msgstr ""
+msgstr "%s от %sБ"
+
+#, php-format
+msgid "%s used of %sB"
+msgstr "%s използвани от %sБ"
 
 #, php-format
 msgid "%s uses %s to create %s arrays."
-msgstr ""
+msgstr "%s използва %s, за да създаде %s масива."
 
 #, php-format
 msgid "%s will reboot after restoring the configuration."
@@ -643,11 +899,11 @@ msgstr "%s ще се рестартира след възстановяване�
 
 #, php-format
 msgid "%sB available of %sB"
-msgstr ""
+msgstr "%sБ свободни от %sБ"
 
 #, php-format
 msgid "%sB used of %sB"
-msgstr ""
+msgstr "%sБ използвани от %sБ"
 
 msgid "(unstable)"
 msgstr "(нестабилен)"
@@ -655,6 +911,9 @@ msgstr "(нестабилен)"
 msgid ""
 "1. Use these specials actions for debugging only!<br>2. There is no need of "
 "using this menu for starting a RAID volume (start automaticaly)."
+msgstr ""
+
+msgid "802.1Q VLAN tag (between 1 and 4094)."
 msgstr ""
 
 #, php-format
@@ -667,6 +926,28 @@ msgstr ""
 
 msgid ""
 "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
+msgstr ""
+
+#, php-format
+msgid "A VLAN with the tag %s is already defined on this interface."
+msgstr ""
+
+msgid ""
+"A directory listing is generated if a directory is requested and no index-"
+"file (index.php, index.html, index.htm or default.htm) was found in that "
+"directory."
+msgstr ""
+
+msgid ""
+"A host name alias. This option can appear multiple times, for each domain "
+"that has the same IP. Use a space to separate multiple alias names."
+msgstr ""
+
+msgid ""
+"A key will be either 5 or 13 characters (40 or 104 bits) depending of the "
+"local network and the capabilities of the adaptor. It may be specified "
+"either as a plain string or as a string of hexadecimal digits preceded by "
+"'0x'."
 msgstr ""
 
 msgid "A route to this destination network already exists."
@@ -698,9 +979,6 @@ msgstr ""
 msgid "A valid IPv6 prefix must be specified."
 msgstr ""
 
-msgid "A valid TCP/IP port must be specified for the webGUI port."
-msgstr "A valid TCP/IP port must be specified for the webGUI port."
-
 msgid "A valid destination network must be specified."
 msgstr "A valid destination network must be specified."
 
@@ -722,17 +1000,14 @@ msgstr "трябва да посочите валидна мрежа"
 msgid "A valid prefix (1-128) must be specified."
 msgstr ""
 
-msgid "AD Authentication disabled"
-msgstr "AD оторизацията е забранена"
+msgid "A valid systctl MIB value."
+msgstr ""
+
+msgid "AD authentication disabled"
+msgstr ""
 
 msgid "AD or PDC name."
 msgstr "AD or PDC name."
-
-msgid "AD server IP"
-msgstr "AD server IP"
-
-msgid "AD server name"
-msgstr "AD server name"
 
 msgid "AFP"
 msgstr "AFP"
@@ -742,22 +1017,19 @@ msgstr ""
 "Copy text   \t\n"
 "AFP сърър"
 
-msgid "ARP Table"
+msgid "ARP Tables"
 msgstr ""
 
-msgid "ARP table"
-msgstr "ARP таблица"
+msgid "ARP tables"
+msgstr ""
 
 msgid "Access"
 msgstr "Достъп"
 
+msgid "Access Restrictions"
+msgstr ""
+
 msgid "Access mode"
-msgstr ""
-
-msgid "Accessible through 'http://ip_address:port'."
-msgstr ""
-
-msgid "Accessiblity test to MS domain"
 msgstr ""
 
 msgid "Acoustic level"
@@ -765,6 +1037,14 @@ msgstr "акустично ниво"
 
 msgid "Activate"
 msgstr "Активирай"
+
+msgid "Activate S.M.A.R.T. monitoring for this device."
+msgstr ""
+
+msgid ""
+"Activate email report if you want to be notified if a failure or a new error "
+"has been detected, or if a S.M.A.R.T. command to a disk fails."
+msgstr ""
 
 msgid "Active Directory"
 msgstr "Активна директория"
@@ -775,6 +1055,9 @@ msgstr "Добави"
 msgid "Add Host"
 msgstr "Добавяне на хост"
 
+msgid "Add MIB"
+msgstr ""
+
 msgid "Add RAID"
 msgstr "добави RAID"
 
@@ -783,6 +1066,12 @@ msgstr "Добави RSYNC"
 
 msgid "Add Route"
 msgstr "Добави път"
+
+msgid "Add URL"
+msgstr ""
+
+msgid "Add additional scheduled self-test."
+msgstr ""
 
 msgid "Add command"
 msgstr "добави команда"
@@ -814,7 +1103,16 @@ msgstr ""
 msgid "Add module"
 msgstr ""
 
+msgid "Add mount point"
+msgstr ""
+
+msgid "Add option"
+msgstr ""
+
 msgid "Add parameter"
+msgstr ""
+
+msgid "Add self-test"
 msgstr ""
 
 msgid "Add share"
@@ -835,20 +1133,23 @@ msgstr ""
 msgid "Administration password"
 msgstr "Парола на администратора"
 
+msgid "Administrative WebGUI"
+msgstr ""
+
 msgid "Administrator name"
 msgstr "Имв на администратора"
 
 msgid "Advanced"
 msgstr "Разширен"
 
+msgid "Advanced Configuration"
+msgstr ""
+
 msgid "Advanced Options"
 msgstr ""
 
 msgid "Advanced Power Management"
 msgstr "Управление на захранването"
-
-msgid "Advanced Setup"
-msgstr ""
 
 msgid "Advanced settings"
 msgstr ""
@@ -874,7 +1175,7 @@ msgid ""
 "class='vexpl'>access the webGUI with the new IP address</span></li></ul>"
 msgstr ""
 
-msgid "Alias host name."
+msgid "Aggregation protocol"
 msgstr ""
 
 msgid "All"
@@ -930,6 +1231,9 @@ msgstr "Alternate TCP port. Default is 873"
 msgid "Always on"
 msgstr "винаги включен"
 
+msgid "Always scan"
+msgstr ""
+
 msgid ""
 "Always use 0 for device number, helps when the device number is not constant "
 "across a reboot, cluster, ..."
@@ -937,6 +1241,9 @@ msgstr ""
 
 msgid "An host with this name already exists."
 msgstr "An host with this name already exists."
+
+msgid "An interface with the specified description already exists."
+msgstr ""
 
 msgid "Anonymous users only"
 msgstr ""
@@ -953,9 +1260,6 @@ msgstr "Сигурни ли сте ,че искате да рестартира�
 msgid "Are you sure you want to shutdown the system?"
 msgstr "Сигурни ли сте ,че искате да спрете системата?"
 
-msgid "Assign network ports"
-msgstr "определи мрежовите портове"
-
 msgid "Associated stations"
 msgstr "Associated stations"
 
@@ -971,10 +1275,16 @@ msgstr "закачен"
 msgid "Attaching provider '%s'."
 msgstr ""
 
+msgid "Authenticate URL"
+msgstr ""
+
 msgid "Authentication"
 msgstr "Идентификация"
 
 msgid "Authorised network"
+msgstr ""
+
+msgid "Auto"
 msgstr ""
 
 msgid "AutoScale"
@@ -992,6 +1302,9 @@ msgstr ""
 msgid "Backup configuration"
 msgstr "Запази конфигурацията"
 
+msgid "Backup file"
+msgstr ""
+
 msgid "Backup/Restore"
 msgstr "Съхрани/Върни"
 
@@ -1007,10 +1320,22 @@ msgstr "Базов индекс"
 msgid "Browseable"
 msgstr "отварящ се"
 
+msgid "CCMP"
+msgstr ""
+
+msgid "CCMP TKIP"
+msgstr ""
+
 msgid "CD/DVD or Old Software RAID"
 msgstr ""
 
 msgid "CIFS/SMB"
+msgstr ""
+
+msgid "CIFS/SMB disabled"
+msgstr ""
+
+msgid "CIFS/SMB informations"
 msgstr ""
 
 msgid "CPU"
@@ -1019,8 +1344,8 @@ msgstr ""
 msgid "CPU load"
 msgstr "натоварване на процесора"
 
-msgid "Calculate netmask bits"
-msgstr "изчисли мрежовата маска"
+msgid "CPU usage"
+msgstr ""
 
 msgid "Can't format the OS origin disk!"
 msgstr ""
@@ -1037,14 +1362,14 @@ msgstr ""
 msgid "Certificate"
 msgstr "Сертификат"
 
-msgid "Certificate and key must always be specified together."
-msgstr "Certificate and key must always be specified together."
-
 msgid "Changes to this option will take effect after a reboot."
 msgstr "промените ще влязат в действие след рестарта"
 
 msgid "Channel"
 msgstr "Канал"
+
+msgid "Check interval"
+msgstr ""
 
 msgid "Check shared secret:"
 msgstr ""
@@ -1070,9 +1395,6 @@ msgstr ""
 
 msgid "Client"
 msgstr "Клиент"
-
-msgid "Client Identifier"
-msgstr "идентификатор на клиента"
 
 msgid "Client sees lowercase, server sees uppercase"
 msgstr ""
@@ -1122,6 +1444,9 @@ msgstr "конфигуриране"
 msgid "Confirmation"
 msgstr "Потвърждение"
 
+msgid "Connected FTP users"
+msgstr ""
+
 msgid "Console menu"
 msgstr "конзолно меню"
 
@@ -1139,10 +1464,6 @@ msgstr "Съдържание"
 msgid "Count"
 msgstr "Броене"
 
-#, php-format
-msgid "Count must be between 1 and %d"
-msgstr "Бройката тряба да е мождъ 1 и %d"
-
 msgid "Create"
 msgstr "Създай"
 
@@ -1158,10 +1479,19 @@ msgstr ""
 msgid "Create work directory if it doesn't exist"
 msgstr "Create work directory if it doesn't exist"
 
+msgid "Critical"
+msgstr ""
+
 msgid "Cron"
 msgstr ""
 
 msgid "Cron job"
+msgstr ""
+
+msgid "DAAP"
+msgstr ""
+
+msgid "DAAP Server"
 msgstr ""
 
 msgid "DDP"
@@ -1172,6 +1502,9 @@ msgstr "DHCP"
 
 msgid "DN to bind"
 msgstr "DN to bind"
+
+msgid "DNS settings"
+msgstr ""
 
 #, php-format
 msgid ""
@@ -1206,8 +1539,14 @@ msgstr ""
 msgid "Default is 21"
 msgstr "по подразбиране е 21"
 
+msgid "Define directories/URL's that require authentication."
+msgstr ""
+
 msgid "Defining a hostname can be useful for NFS."
 msgstr ""
+
+msgid "Delete"
+msgstr "Премахни"
 
 msgid "Delete ARP entry"
 msgstr ""
@@ -1217,6 +1556,9 @@ msgstr ""
 msgid "Delete Host"
 msgstr "Delete Host"
 
+msgid "Delete MIB"
+msgstr ""
+
 msgid "Delete RAID"
 msgstr "изтрий RAID-а"
 
@@ -1225,6 +1567,15 @@ msgstr "Изтрий RSYNC"
 
 msgid "Delete Route"
 msgstr "Изтрий пътя"
+
+msgid "Delete URL"
+msgstr ""
+
+msgid "Delete all MIBs"
+msgstr ""
+
+msgid "Delete all options"
+msgstr ""
 
 msgid "Delete command"
 msgstr "изтрий командата"
@@ -1259,7 +1610,16 @@ msgstr ""
 msgid "Delete module"
 msgstr ""
 
+msgid "Delete mount point"
+msgstr ""
+
+msgid "Delete option"
+msgstr ""
+
 msgid "Delete parameter"
+msgstr ""
+
+msgid "Delete self-test"
 msgstr ""
 
 msgid "Delete share"
@@ -1271,6 +1631,9 @@ msgstr "Изтрий целта"
 msgid "Delete user"
 msgstr "изтрий потребителя"
 
+msgid "Deleting"
+msgstr ""
+
 msgid "Deny"
 msgstr ""
 
@@ -1278,6 +1641,9 @@ msgid "Description"
 msgstr "Описание"
 
 msgid "Destination email address."
+msgstr ""
+
+msgid "Destination host name or IP number."
 msgstr ""
 
 msgid "Destination network"
@@ -1298,6 +1664,13 @@ msgstr "Засечени RSYNC отдалечени дялове"
 msgid "Device"
 msgstr ""
 
+#, php-format
+msgid "Device /dev/%s - %s"
+msgstr ""
+
+msgid "Device IP"
+msgstr ""
+
 msgid "Device is mounted, umount it first before detaching."
 msgstr ""
 
@@ -1316,21 +1689,6 @@ msgid ""
 msgstr ""
 
 msgid ""
-"Device polling is a technique that lets the system periodically poll network "
-"devices for new data instead of relying on interrupts. This can reduce CPU "
-"load and therefore increase throughput, at the expense of a slightly higher "
-"forwarding delay (the devices are polled 1000 times per second). Not all "
-"NICs support polling; see the m0n0wall homepage for a list of supported "
-"cards."
-msgstr ""
-"Device polling is a technique that lets the system periodically poll network "
-"devices for new data instead of relying on interrupts. This can reduce CPU "
-"load and therefore increase throughput, at the expense of a slightly higher "
-"forwarding delay (the devices are polled 1000 times per second). Not all "
-"NICs support polling; see the m0n0wall homepage for a list of supported "
-"cards."
-
-msgid ""
 "Devices are used to combine extents or other devices. Extents and devices "
 "must be defined before they can be used, and they cannot be used more than "
 "once."
@@ -1339,11 +1697,14 @@ msgstr ""
 msgid "Diagnostics"
 msgstr "Диагностика"
 
-msgid "Directories to be shared."
-msgstr "Directories to be shared."
+msgid "Difference"
+msgstr ""
 
 msgid "Directory"
 msgstr "Папка"
+
+msgid "Directory listing"
+msgstr ""
 
 msgid "Directory mask"
 msgstr ""
@@ -1377,6 +1738,10 @@ msgid ""
 "the '/' character illegal."
 msgstr ""
 
+#, php-format
+msgid "Discovered iSCSI target for %s"
+msgstr ""
+
 msgid "Disk"
 msgstr "Диск"
 
@@ -1395,8 +1760,20 @@ msgstr ""
 msgid "Do not set this for CF cards."
 msgstr ""
 
+msgid "Do you really want to delete all MIBs?"
+msgstr ""
+
+msgid "Do you really want to delete all options?"
+msgstr ""
+
+msgid "Do you really want to delete this MIB?"
+msgstr ""
+
 msgid "Do you really want to delete this RSYNC?"
 msgstr "Do you really want to delete this RSYNC?"
+
+msgid "Do you really want to delete this URL?"
+msgstr ""
 
 msgid "Do you really want to delete this command?"
 msgstr "Do you really want to delete this command?"
@@ -1436,6 +1813,9 @@ msgid ""
 "will become invalid (e.g. share)!"
 msgstr ""
 
+msgid "Do you really want to delete this interface?"
+msgstr ""
+
 msgid "Do you really want to delete this module?"
 msgstr ""
 
@@ -1445,6 +1825,9 @@ msgid ""
 msgstr ""
 "Do you really want to delete this mount point? All elements that still use "
 "it will become invalid (e.g. share)!"
+
+msgid "Do you really want to delete this option?"
+msgstr ""
 
 msgid "Do you really want to delete this parameter?"
 msgstr ""
@@ -1458,6 +1841,9 @@ msgstr ""
 
 msgid "Do you really want to delete this route?"
 msgstr "Наистина ли искатате да изтриете пътя?"
+
+msgid "Do you really want to delete this scheduled self-test?"
+msgstr ""
 
 msgid "Do you really want to delete this share?"
 msgstr ""
@@ -1476,14 +1862,32 @@ msgstr ""
 msgid "Do you really want to uninstall this package?"
 msgstr ""
 
+msgid "Document root"
+msgstr ""
+
+msgid "Document root of the webserver. Home of the web page files."
+msgstr ""
+
 msgid "Domain"
 msgstr "Домейн"
+
+msgid "Domain controller name"
+msgstr ""
 
 msgid "Domain name"
 msgstr "Домейн"
 
-msgid "Domain name in old format."
-msgstr "Domain name in old format."
+msgid "Domain name (DNS/Realm-Name)"
+msgstr ""
+
+msgid "Domain name (NetBIOS-Name)"
+msgstr ""
+
+msgid "Domain name in old format, e.g. EXAMPLE."
+msgstr ""
+
+msgid "Domain name, e.g. example.com."
+msgstr ""
 
 msgid "Don't Erase MBR"
 msgstr "не изтривай MBR"
@@ -1532,6 +1936,9 @@ msgstr "Редактиране на Файл"
 msgid "Edit Host"
 msgstr "Редактиране на хост"
 
+msgid "Edit MIB"
+msgstr ""
+
 msgid "Edit RAID"
 msgstr "Промени RAID-а"
 
@@ -1541,8 +1948,11 @@ msgstr "Промени RSYNC"
 msgid "Edit Route"
 msgstr "Промени пътя"
 
-msgid "Edit VLAN"
-msgstr "Промени VLAN"
+msgid "Edit URL"
+msgstr ""
+
+msgid "Edit command"
+msgstr "Редактиране на команда"
 
 msgid "Edit device"
 msgstr ""
@@ -1562,13 +1972,25 @@ msgstr "Промени групата"
 msgid "Edit initiator"
 msgstr ""
 
+msgid "Edit interface"
+msgstr ""
+
 msgid "Edit job"
 msgstr ""
 
 msgid "Edit module"
 msgstr ""
 
+msgid "Edit mount point"
+msgstr ""
+
+msgid "Edit option"
+msgstr ""
+
 msgid "Edit parameter"
+msgstr ""
+
+msgid "Edit self-test"
 msgstr ""
 
 msgid "Edit share"
@@ -1579,6 +2001,9 @@ msgstr ""
 
 msgid "Edit user"
 msgstr "Помени потребителя"
+
+msgid "Email"
+msgstr ""
 
 msgid "Email Report"
 msgstr ""
@@ -1595,14 +2020,26 @@ msgstr "позволи FXP протолола"
 msgid "Enable NTP"
 msgstr ""
 
-msgid "Enable Zeroconf"
-msgstr "Позволи Zeroconf"
+msgid "Enable SMTP authentication."
+msgstr ""
+
+msgid "Enable Zeroconf/Bonjour to advertise services of this device"
+msgstr ""
+
+msgid "Enable authentication."
+msgstr ""
 
 msgid "Enable compression."
 msgstr ""
 
 msgid "Enable device polling"
 msgstr "позволи device polling"
+
+msgid "Enable directory listing."
+msgstr ""
+
+msgid "Enable domain wildcarding."
+msgstr ""
 
 msgid "Enable extended attribute support"
 msgstr ""
@@ -1633,6 +2070,9 @@ msgstr ""
 msgid "Enable permission inheritance"
 msgstr ""
 
+msgid "Enable proxy authentication."
+msgstr ""
+
 msgid "Enable recycle bin"
 msgstr ""
 
@@ -1641,9 +2081,6 @@ msgstr ""
 
 msgid "Enable syslog'ing to remote syslog server"
 msgstr "Enable syslog'ing to remote syslog server"
-
-msgid "Enable the S.M.A.R.T daemon"
-msgstr "позволли S.M.A.R.T. демона"
 
 msgid "Enable the system power control utility"
 msgstr "Позволи system power control utility"
@@ -1689,27 +2126,17 @@ msgid "Enforce TLS"
 msgstr ""
 
 msgid ""
-"Enter a custom port number for the HTTP server if you want to override the "
-"default (49152). Only dynamic or private ports can be used (from 49152 "
-"through 65535)."
-msgstr ""
-
-msgid ""
 "Enter a custom port number for the WebGUI above if you want to override the "
 "default (80 for HTTP, 443 for HTTPS)."
 msgstr ""
 
-msgid "Enter a description (name) for the interface here."
-msgstr "Enter a description (name) for the interface here."
+msgid "Enter a valid sysctl MIB name."
+msgstr ""
 
 msgid ""
 "Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
-"select one, then use Save button to update system time. (Mind seconds part "
-"will be ignored)"
+"select it."
 msgstr ""
-"Enter desired system time directly (format mm/dd/yyyy hh:mm) or use icon to "
-"select one, then use Save button to update system time. (Mind seconds part "
-"will be ignored)"
 
 msgid "Enter the NIS Master server hostname."
 msgstr ""
@@ -1718,6 +2145,11 @@ msgid "Enter the NIS Slave server hostname."
 msgstr ""
 
 msgid "Enter the NIS domain name."
+msgstr ""
+
+msgid ""
+"Enter the passphrase that will be used in WPA-PSK mode. This must be between "
+"8 and 63 characters long."
 msgstr ""
 
 msgid ""
@@ -1737,6 +2169,9 @@ msgstr "Грешка"
 
 #, c-format
 msgid "Error: The changes could not be applied (error code %s)."
+msgstr ""
+
+msgid "Execute"
 msgstr ""
 
 msgid "Execute command"
@@ -1761,6 +2196,15 @@ msgid ""
 "more than once."
 msgstr ""
 
+msgid "Extra options"
+msgstr ""
+
+msgid "Extra options to ifconfig (usually empty)."
+msgstr ""
+
+msgid "FEC (Fast EtherChannel)"
+msgstr ""
+
 msgid "FTP"
 msgstr "FTP"
 
@@ -1770,20 +2214,14 @@ msgstr ""
 msgid "FTP Server"
 msgstr "FTP сървър"
 
-msgid "FTP Server disabled"
-msgstr "FTP Сървъра е спрян"
-
-msgid "FTP connected users"
-msgstr "FTP свързани потребители"
-
 msgid "FTP events"
 msgstr "FTP събития"
 
 msgid "FTP log"
 msgstr ""
 
-msgid "FTP users"
-msgstr "FTP потребители"
+msgid "FTP server disabled"
+msgstr ""
 
 msgid "FXP"
 msgstr "FXP"
@@ -1794,9 +2232,6 @@ msgid ""
 msgstr ""
 "FXP allows transfers between two remote servers without any file data going "
 "to the client asking for the transfer (insecure!)."
-
-msgid "Factory Defaults"
-msgstr ""
 
 msgid "Factory defaults"
 msgstr "Фабрични настройки"
@@ -1810,7 +2245,13 @@ msgstr ""
 msgid "Failed to send status report. Please check log files."
 msgstr ""
 
+msgid "Failed to upload metadata backup file."
+msgstr ""
+
 msgid "Failed."
+msgstr ""
+
+msgid "Failover"
 msgstr ""
 
 msgid "File"
@@ -1878,10 +2319,7 @@ msgstr "Формат"
 msgid "Format disk"
 msgstr "форматирай диска"
 
-msgid "Free Space"
-msgstr "Свободно място"
-
-msgid "From e-mail"
+msgid "Free disk space"
 msgstr ""
 
 msgid "From email"
@@ -1893,11 +2331,14 @@ msgstr ""
 msgid "Full Name"
 msgstr "Пълно име"
 
+msgid "GID"
+msgstr ""
+
 msgid "Gateway"
 msgstr "Шлюз"
 
-msgid "Gateway to be used to reach the destination network"
-msgstr "Gateway to be used to reach the destination network"
+msgid "Gateway to be used to reach the destination network."
+msgstr ""
 
 msgid "General"
 msgstr ""
@@ -1911,7 +2352,7 @@ msgstr "Geom Vinum"
 msgid "Give full shell access to user."
 msgstr ""
 
-msgid "Global Configuration"
+msgid "Give only local users access to the web page."
 msgstr ""
 
 msgid "Graph"
@@ -1956,10 +2397,10 @@ msgstr ""
 msgid "Hard disk standby time"
 msgstr "време за стендбай режим на харддиска"
 
-msgid "Helios X3000"
+msgid "Help Needed!"
 msgstr ""
 
-msgid "Help Needed!"
+msgid "Hide dot files"
 msgstr ""
 
 msgid "Highlighting"
@@ -2020,22 +2461,17 @@ msgstr "I/O пакети"
 msgid "IP address"
 msgstr "IP адрес"
 
-msgid "IP address of MS Active Directory server."
-msgstr "IP address of MS Active Directory server."
-
-msgid "IP address of remote RSYNC server"
-msgstr "IP адрес на отданечения RSYNC сървър"
-
 msgid "IP address of remote syslog server"
 msgstr "IP address of remote syslog server"
 
 #, php-format
 msgid ""
-"IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-"hostnames&quot; is checked on the <a href=%s>%s</a> page."
+"IP addresses are resolved to hostnames if <a href=%s>&quot;Resolve IP "
+"addresses to hostnames&quot;</a> is enabled."
 msgstr ""
-"IP addresses are resolved to hostnames if &quot;Resolve IP addresses to "
-"hostnames&quot; is checked on the <a href=%s>%s</a> page."
+
+msgid "IP or FQDN address of remote RSYNC server."
+msgstr ""
 
 msgid "IP type mismatch for network and gateway."
 msgstr ""
@@ -2044,12 +2480,6 @@ msgid "IPv4 Configuration"
 msgstr ""
 
 msgid "IPv4 DNS servers"
-msgstr ""
-
-msgid "IPv4 Gateway"
-msgstr ""
-
-msgid "IPv4 address"
 msgstr ""
 
 msgid "IPv4 addresses"
@@ -2073,13 +2503,16 @@ msgstr ""
 msgid "IPv6 addresses"
 msgstr ""
 
-msgid "ISO"
+msgid "ISO file to be mounted."
 msgstr ""
 
 msgid "ISP DNS servers"
 msgstr "ISP DNS сървъри"
 
-msgid "If Login is required."
+msgid ""
+"Idle - Check the device unless it is in SLEEP, STANDBY or IDLE mode. In the "
+"IDLE state, most disks are still spinning, so this is probably not what you "
+"want."
 msgstr ""
 
 msgid ""
@@ -2105,6 +2538,11 @@ msgid ""
 "before mapping DOS attributes to UNIX permission bits. When set, DOS "
 "attributes will be stored onto an extended attribute in the UNIX filesystem, "
 "associated with the file or directory."
+msgstr ""
+
+msgid ""
+"If this parameter is set, then users may not create or modify files in the "
+"share."
 msgstr ""
 
 #, php-format
@@ -2138,6 +2576,9 @@ msgstr ""
 msgid "Info"
 msgstr ""
 
+msgid "Informal"
+msgstr ""
+
 msgid "Information"
 msgstr "Информация"
 
@@ -2153,6 +2594,9 @@ msgstr "инициализирай"
 msgid ""
 "Initialize and encrypt disk. This will erase ALL data on your disk! Do not "
 "use this option if you want to add an existing encrypted disk."
+msgstr ""
+
+msgid "Initializing"
 msgstr ""
 
 msgid "Initiator name"
@@ -2172,6 +2616,9 @@ msgstr "Interface to listen to."
 
 msgid "Interfaces"
 msgstr "Интерфейси"
+
+msgid "Interval must be greater or equal than 10 seconds."
+msgstr ""
 
 #, php-format
 msgid "Invalid port! Port number must be in the range from %d to %d."
@@ -2201,7 +2648,16 @@ msgstr "Keep diagnostics in navigation expanded"
 msgid "Key"
 msgstr "Ключ"
 
+msgid "Key Management Protocol"
+msgstr ""
+
 msgid "Kill encrypted volume"
+msgstr ""
+
+msgid "LACP (Link Aggregation Control Protocol)"
+msgstr ""
+
+msgid "LAGG"
 msgstr ""
 
 msgid "LAN"
@@ -2247,13 +2703,19 @@ msgstr ""
 msgid "License"
 msgstr "Лицензно споразумение"
 
+msgid "Link Aggregation and Failover"
+msgstr ""
+
 msgid "List"
 msgstr ""
 
-msgid "List of SMART capabilities on all detected disk"
-msgstr "List of SMART capabilities on all detected disk"
+msgid ""
+"List of acceptable pairwise (unicast) ciphers for WPA. One or more of: CCMP "
+"(AES in Counter mode with CBC-MAC, RFC 3610, IEEE 802.11i/D7.0), TKIP "
+"(Temporal Key Integrity Protocol, IEEE 802.11i/D7.0)."
+msgstr ""
 
-msgid "List of advanced ATA capabilities on all ATA disk"
+msgid "List of available target name on all configured iSCSI targets"
 msgstr ""
 
 msgid "List of detected ATA disks"
@@ -2262,17 +2724,26 @@ msgstr "Лист на АТА дисковете"
 msgid "List of detected SCSI disks"
 msgstr "Лист на SCSI дисковете"
 
+msgid "List of imported users"
+msgstr ""
+
 msgid "List of mount points"
 msgstr "лист на точките за монтиране"
 
-msgid "List of partition on all detected disk"
-msgstr "List of partition on all detected disk"
+msgid "List of open files"
+msgstr ""
+
+msgid "List of shares"
+msgstr ""
 
 msgid "Load"
 msgstr "Зареди"
 
 msgid "Load averages"
 msgstr "Средно натоварване"
+
+msgid "Loadbalance"
+msgstr ""
 
 msgid "Local"
 msgstr "Локален"
@@ -2300,9 +2771,10 @@ msgid ""
 "building, Room xyz'."
 msgstr ""
 
-msgid ""
-"Location where the content database file will be stored. The bookmark file "
-"will also be generated in that directory."
+msgid "Location of the files to share."
+msgstr ""
+
+msgid "Location where the content database file will be stored."
 msgstr ""
 
 msgid "Log Level"
@@ -2323,17 +2795,31 @@ msgstr ""
 msgid "MAC address"
 msgstr "MAC адрес"
 
+msgid "MIB"
+msgstr ""
+
 msgid "MISSING"
 msgstr ""
 
 msgid "MOTD"
 msgstr "MOTD"
 
+msgid "MS Active Directory"
+msgstr ""
+
+msgid "MS Active Directory informations"
+msgstr ""
+
 msgid "MS Domain"
 msgstr "MS Domain"
 
 msgid "MTU"
 msgstr "MTU"
+
+#, php-format
+msgid ""
+"Make sure you have already configured your <a href='%s'>Email</a> settings."
+msgstr ""
 
 msgid "Manage RAID"
 msgstr "Помени настройките на RAID-а"
@@ -2347,8 +2833,15 @@ msgstr "Направи всички потребители администра�
 msgid "Map to user"
 msgstr "Map to user"
 
+msgid "Max. TTL"
+msgstr ""
+
 msgid "Max. conn. per IP"
 msgstr "максимум конекции към IP"
+
+msgid ""
+"Max. time-to-live (max. number of hops) used in outgoing probe packets."
+msgstr ""
 
 msgid "Maximum connections"
 msgstr "максимален брой връзки"
@@ -2358,9 +2851,6 @@ msgstr "Максимално изчакване в минути"
 
 msgid "Maximum number of connections per IP address (0 = unlimited)."
 msgstr "максимум конекции към IP адрес (0 = неограничени)"
-
-msgid "Maximum number of hops"
-msgstr "Максимален брой скокове"
 
 msgid "Maximum number of simultaneous clients."
 msgstr "Maximum number of simultaneous clients."
@@ -2386,9 +2876,6 @@ msgstr "среден разход на енергия в стендбай реж
 
 msgid "Medium power usage without Standby"
 msgstr "среден разход на енергия без използване на стендбай режим"
-
-msgid "Members of this volume"
-msgstr "членове на тази група"
 
 msgid "Memory usage"
 msgstr "Използвана памет"
@@ -2420,15 +2907,17 @@ msgstr ""
 msgid "Miscellaneous"
 msgstr "Други настройки"
 
+msgid "Mode"
+msgstr ""
+
+msgid "Modifying"
+msgstr ""
+
 msgid "Module"
 msgstr ""
 
 msgid "Modules"
 msgstr ""
-
-msgid "Monitor the S.M.A.R.T device by logging their status in the log file."
-msgstr ""
-"Monitor the S.M.A.R.T device by logging their status in the log file."
 
 msgid "Mount Point"
 msgstr "Място за монтиране"
@@ -2491,11 +2980,14 @@ msgid ""
 "specified."
 msgstr ""
 
+msgid "Name of the variable."
+msgstr ""
+
 msgid "Navigation"
 msgstr "Навигация"
 
-msgid "NetBiosName"
-msgstr "NetBios име"
+msgid "NetBIOS name"
+msgstr ""
 
 msgid "Netgraph"
 msgstr ""
@@ -2514,6 +3006,11 @@ msgstr ""
 
 msgid "Network that is authorised to access to this iSCSI target."
 msgstr "Network that is authorised to access to this iSCSI target."
+
+msgid ""
+"Never - Poll (check) the device regardless of its power mode. This may cause "
+"a disk which is spun-down to be spun-up when it is checked."
+msgstr ""
 
 msgid "No"
 msgstr "Не"
@@ -2536,6 +3033,15 @@ msgstr ""
 
 msgid "Noise"
 msgstr "Шум"
+
+msgid "None"
+msgstr ""
+
+msgid ""
+"Not all drivers/NICs support 802.1Q VLAN tagging properly. On cards that do "
+"not explicitly support it, VLAN tagging will still work, but the reduced MTU "
+"may cause problems."
+msgstr ""
 
 msgid "Not attached"
 msgstr "не е закачен"
@@ -2618,11 +3124,17 @@ msgstr ""
 "Отвори %s конфигурационен XML фаил и натисни бутона от долу за да "
 "възстановите  конфигурацията."
 
+msgid "Option"
+msgstr ""
+
 #, php-format
 msgid ""
 "Optional configuration step: Configuring a virtual RAID disk using your <a "
 "href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before "
 "format and mount it!"
+msgstr ""
+
+msgid "Others"
 msgstr ""
 
 msgid "Out"
@@ -2634,6 +3146,9 @@ msgstr ""
 msgid "Outgoing mail server"
 msgstr ""
 
+msgid "Owner"
+msgstr ""
+
 msgid "PPPoE"
 msgstr "PPPoE"
 
@@ -2641,6 +3156,9 @@ msgid "PPTP"
 msgstr "PPTP"
 
 msgid "PPTP clients"
+msgstr ""
+
+msgid "PSK"
 msgstr ""
 
 msgid "Package Name"
@@ -2656,6 +3174,9 @@ msgid "Package upload failed (out of memory?)"
 msgstr ""
 
 msgid "Packages"
+msgstr ""
+
+msgid "Pairwise"
 msgstr ""
 
 msgid "Parameter"
@@ -2697,8 +3218,11 @@ msgstr "Криптиране на паролата"
 msgid "Password for DN"
 msgstr "Password for DN"
 
-msgid "Password of domain administrator account, enter it here twice."
-msgstr "Въведете тук паролата за администраторския акаунт 2 път ."
+msgid "Password for the administrative pages."
+msgstr ""
+
+msgid "Password of domain administrator account."
+msgstr ""
 
 msgid "Password suffix"
 msgstr "Password suffix"
@@ -2709,13 +3233,13 @@ msgstr "Paste a DSA PRIVATE KEY in PEM format here."
 msgid "Paste a signed certificate in X.509 PEM format here."
 msgstr "Paste a signed certificate in X.509 PEM format here."
 
-msgid "Paste an RSA private key in PEM format here."
-msgstr "Paste an RSA private key in PEM format here."
-
 msgid "Paste an private key in PEM format here."
 msgstr ""
 
 msgid "Path"
+msgstr ""
+
+msgid "Path of the URL relative to document root."
 msgstr ""
 
 msgid "Path to be shared."
@@ -2727,14 +3251,11 @@ msgstr "позволи администраторския вход"
 msgid "Permit to do SSH Tunneling."
 msgstr "Permit to do SSH Tunneling."
 
-msgid "Pick a date"
+msgid "Physical interface"
 msgstr ""
 
 msgid "Ping"
 msgstr ""
-
-msgid "Ping output"
-msgstr "Ping output"
 
 msgid "Ping winbindd to see if it is alive:"
 msgstr ""
@@ -2757,11 +3278,29 @@ msgstr ""
 msgid "Port "
 msgstr "Порт "
 
+msgid "Port is already used by WebGUI."
+msgstr ""
+
+msgid "Port to listen on. Default iTunes port is 3689."
+msgstr ""
+
+#, php-format
+msgid ""
+"Port to listen on. Only dynamic or private ports can be used (from %d "
+"through %d). Default port is %d."
+msgstr ""
+
+msgid "Ports"
+msgstr ""
+
 msgid "PostInit"
 msgstr ""
 
 msgid "Power Daemon"
 msgstr "Power Daemon"
+
+msgid "Power mode"
+msgstr ""
 
 msgid "PreInit"
 msgstr ""
@@ -2797,6 +3336,9 @@ msgid "Processes information"
 msgstr "Информация за процесите"
 
 msgid "Profile"
+msgstr ""
+
+msgid "Protocol"
 msgstr ""
 
 msgid "Provider"
@@ -2849,8 +3391,14 @@ msgstr ""
 msgid "RSYNC Client"
 msgstr ""
 
-msgid "RSYNC Options"
-msgstr "RSYNC Options"
+msgid "RSYNC Client informations"
+msgstr ""
+
+msgid "RSYNC Local"
+msgstr ""
+
+msgid "RSYNC events"
+msgstr ""
 
 msgid "RSYNC log"
 msgstr ""
@@ -2858,11 +3406,11 @@ msgstr ""
 msgid "RSYNCD"
 msgstr "RSYNCD"
 
-msgid "RSYNCD events"
-msgstr "RSYNCD събития"
-
 msgid "Raid name"
 msgstr "Име на Raid"
+
+msgid "Read"
+msgstr ""
 
 msgid "Read Only Access"
 msgstr ""
@@ -2874,6 +3422,9 @@ msgid "Read/Write"
 msgstr ""
 
 msgid "Read/Write Access"
+msgstr ""
+
+msgid "Realm"
 msgstr ""
 
 msgid "Reboot"
@@ -2906,7 +3457,23 @@ msgstr "отдалечен системен дневник"
 msgid "Remove all entries from ARP table"
 msgstr "Изтрий цялата ARP таблица"
 
+msgid ""
+"Report if the temperature had changed by at least N degrees Celsius since "
+"last report. Set to 0 to disable this report."
+msgstr ""
+
+msgid ""
+"Report if the temperature is greater or equal than N degrees Celsius. Set to "
+"0 to disable this report."
+msgstr ""
+
 msgid "Reports"
+msgstr ""
+
+msgid "Rescan interval"
+msgstr ""
+
+msgid "Resolve"
 msgstr ""
 
 msgid "Resolve IP addresses to hostnames"
@@ -2915,11 +3482,23 @@ msgstr "Resolve IP addresses to hostnames"
 msgid "Restore configuration"
 msgstr "Възстанови конфигурацията"
 
+msgid "Restore metadata from the given file to the given provider."
+msgstr ""
+
 msgid "Results for net rpc testjoin:"
 msgstr ""
 
 msgid "Retry"
 msgstr "Нов опит"
+
+msgid "Roundrobin"
+msgstr ""
+
+msgid "Routes"
+msgstr ""
+
+msgid "Routing tables"
+msgstr ""
 
 msgid "Rows"
 msgstr "Редове"
@@ -2927,20 +3506,14 @@ msgstr "Редове"
 msgid "Rsync Daemon"
 msgstr "Rsync Daemon"
 
-msgid "S.M.A.R.T Daemon"
-msgstr "S.M.A.R.T Демон"
-
 msgid "S.M.A.R.T."
 msgstr "S.M.A.R.T."
 
+msgid "S.M.A.R.T. events"
+msgstr ""
+
 msgid "S.M.A.R.T. log"
 msgstr ""
-
-msgid "SMARTD"
-msgstr ""
-
-msgid "SMARTD events"
-msgstr "SMARTD събития"
 
 msgid "SNMP"
 msgstr ""
@@ -2948,17 +3521,17 @@ msgstr ""
 msgid "SNMP Modules"
 msgstr ""
 
+msgid "SSH"
+msgstr ""
+
 msgid "SSH Daemon"
 msgstr "SSH Daemon"
 
+msgid "SSH events"
+msgstr ""
+
 msgid "SSH key"
 msgstr "SSH ключ"
-
-msgid "SSHD"
-msgstr "SSHD"
-
-msgid "SSHD events"
-msgstr "SSHD събития"
 
 msgid "SSHD log"
 msgstr ""
@@ -2978,13 +3551,29 @@ msgstr ""
 msgid "Saved file to"
 msgstr "Запази фаила в"
 
+msgid ""
+"Scan file system every N seconds to see if any files have been added or "
+"removed. Set to 0 to disable background scanning. If background rescanning "
+"is disabled, a scan can still be forced from the status page of the "
+"administrative web interface."
+msgstr ""
+
+msgid "Scan type"
+msgstr ""
+
 msgid "Schedule time"
 msgstr ""
 
 msgid "Scheduled"
 msgstr ""
 
+msgid "Scheduled Self-Test"
+msgstr ""
+
 msgid "Scheduled reboot"
+msgstr ""
+
+msgid "Scheduled self-tests"
 msgstr ""
 
 msgid "Scheduled shutdown"
@@ -3000,6 +3589,9 @@ msgid ""
 "you select option 2 during installation on hard drive.<br>Select 'Old "
 "software RAID' for gmirror/graid5/gvinum volumes created with old FreeNAS "
 "release."
+msgstr ""
+
+msgid "Select a disk that is enabled for S.M.A.R.T. monitoring."
 msgstr ""
 
 msgid "Select mount point where to create the swap file."
@@ -3020,6 +3612,9 @@ msgstr "Маркирани"
 msgid "Selected file isn't an valid ISO file."
 msgstr ""
 
+msgid "Self-Monitoring, Analysis and Reporting Technology"
+msgstr ""
+
 msgid "Send Buffer Size"
 msgstr "Send Buffer Size"
 
@@ -3029,22 +3624,16 @@ msgstr "Изпрати командата"
 msgid "Send now"
 msgstr ""
 
-msgid "Sensors"
-msgstr "Сензори"
-
 msgid "Server"
 msgstr "Сървър"
 
 msgid "Server Name"
 msgstr "Име на сървъра"
 
-msgid "Server address"
-msgstr ""
-
 msgid "Server description. This can usually be left blank."
 msgstr "Server description. This can usually be left blank."
 
-msgid "Server port"
+msgid "Server name"
 msgstr ""
 
 msgid "Services"
@@ -3056,10 +3645,33 @@ msgstr ""
 msgid "Set browseable"
 msgstr ""
 
+msgid "Set read only"
+msgstr ""
+
 msgid "Set share password."
 msgstr ""
 
 msgid "Set the account's primary group to the given group."
+msgstr ""
+
+msgid "Set the desired Service Set Identifier (aka network name)."
+msgstr ""
+
+msgid ""
+"Set the maximum transmission unit of the interface to n, default is "
+"interface specific. The MTU is used to limit the size of packets that are "
+"transmitted on an interface. Not all interfaces support setting the MTU, and "
+"some interfaces have range restrictions."
+msgstr ""
+
+msgid ""
+"Sets the database information to be stored in path. You have to specifiy a "
+"writable location, even if the volume is read only."
+msgstr ""
+
+msgid ""
+"Sets the interval between disk checks to N seconds. The minimum allowed "
+"value is 10."
 msgstr ""
 
 msgid "Settings"
@@ -3083,6 +3695,9 @@ msgstr ""
 msgid "Share passwords can not be more than 8 characters."
 msgstr ""
 
+msgid "Sharename"
+msgstr ""
+
 msgid "Shares"
 msgstr "споделени папки"
 
@@ -3092,8 +3707,7 @@ msgstr ""
 msgid "Show log entries in reverse order (newest entries on top)"
 msgstr "Show log entries in reverse order (newest entries on top)"
 
-msgid ""
-"Show the list of available target name on all configured iSCSI targets"
+msgid "Show process information"
 msgstr ""
 
 msgid "Shutdown"
@@ -3123,6 +3737,9 @@ msgstr "Size of receive buffer (16384 by default)."
 msgid "Size of send buffer (16384 by default)."
 msgstr "Size of send buffer (16384 by default)."
 
+msgid "Sleep - Check the device unless it is in SLEEP mode."
+msgstr ""
+
 msgid "Sockets"
 msgstr ""
 
@@ -3131,9 +3748,6 @@ msgstr "Софтуерен RAID"
 
 msgid "Software RAID information and status"
 msgstr "Информация и статус на RAID"
-
-msgid "Sony Playstation 3"
-msgstr ""
 
 msgid "Source directory to be synchronized."
 msgstr ""
@@ -3148,6 +3762,9 @@ msgid "Specifies how many servers to create."
 msgstr ""
 
 msgid "Specifies that the file system should be exported read-only."
+msgstr ""
+
+msgid "Specifies the command to be run."
 msgstr ""
 
 msgid ""
@@ -3179,11 +3796,14 @@ msgstr ""
 "lowering the threshold can adversely affect performance and auto-"
 "defragmentation."
 
-msgid "Speed"
-msgstr "Скорост"
+msgid "Standard"
+msgstr ""
 
-msgid "Standard MTU is 1500, use 9000 for jumbo frame."
-msgstr "стандартния MTU е 1500 , използвайте 9000 за jumbo frame-иве"
+msgid ""
+"Standby - Check the device unless it is in SLEEP or STANDBY mode. In these "
+"modes most disks are not spinning, so if you want to prevent a laptop disk "
+"from spinning up each poll, this is probably what you want."
+msgstr ""
 
 msgid "Standby time"
 msgstr "Standby time"
@@ -3200,6 +3820,9 @@ msgstr "Състояние"
 msgid "Status report successfully sent."
 msgstr ""
 
+msgid "Stop after sending (and receiving) N packets."
+msgstr ""
+
 msgid "Stopped"
 msgstr ""
 
@@ -3207,6 +3830,10 @@ msgid "Storage"
 msgstr ""
 
 msgid "Store DOS attributes"
+msgstr ""
+
+msgid ""
+"String displayed in the dialog presented to the user when accessing the URL."
 msgstr ""
 
 msgid "Subject"
@@ -3227,11 +3854,11 @@ msgstr ""
 msgid "Sunday Monday Tuesday Wednesday Thursday Friday Saturday"
 msgstr "Неделя Понеделник Вторник Сряда Четвъртък Петък Събота"
 
+msgid "Suppress non-error messages."
+msgstr ""
+
 msgid "Swap"
 msgstr "Суап"
-
-msgid "Swap Status"
-msgstr ""
 
 msgid "Swap disabled"
 msgstr ""
@@ -3245,8 +3872,18 @@ msgstr "Swap file size"
 msgid "Swap memory"
 msgstr "Суап памет"
 
+msgid "Swap status"
+msgstr ""
+
+msgid "Swap usage"
+msgstr ""
+
 msgid "Switch to"
 msgstr "прмини към"
+
+#, php-format
+msgid "Switch to %s/s"
+msgstr ""
 
 msgid "Synchronization Time"
 msgstr "Synchronization Time"
@@ -3267,9 +3904,6 @@ msgstr "Системен"
 msgid "System Beep"
 msgstr "Системен звънец"
 
-msgid "System Time"
-msgstr "Системно време"
-
 msgid "System events"
 msgstr "Системни събития"
 
@@ -3285,11 +3919,23 @@ msgstr ""
 msgid "System message buffer"
 msgstr ""
 
+msgid "System time"
+msgstr ""
+
+msgid "System tuning"
+msgstr ""
+
 msgid "TCP forwarding"
 msgstr ""
 
 msgid "TCP port"
 msgstr "ТCP порт"
+
+msgid "TCP port to bind the server to."
+msgstr ""
+
+msgid "TKIP"
+msgstr ""
 
 msgid "TLS + cleartext"
 msgstr ""
@@ -3312,11 +3958,11 @@ msgstr ""
 msgid "Target name"
 msgstr "Target name"
 
-msgid "Telegent TG100"
-msgstr ""
-
 msgid "Temperature"
 msgstr "Температура"
+
+msgid "Temperature monitoring"
+msgstr ""
 
 msgid ""
 "The  deny  option specifies users and groups who are not allowed access to "
@@ -3330,16 +3976,12 @@ msgstr "The %s port must be a valid port number."
 msgid "The IP address that this hostname represents."
 msgstr "The IP address that this hostname represents."
 
-msgid ""
-"The LAN configuration has been changed.<br>You must apply the changes in "
-"order for them to take effect."
+#, php-format
+msgid "The MIB '%s' already exist."
 msgstr ""
-"The LAN configuration has been changed.<br>You must apply the changes in "
-"order for them to take effect."
 
-msgid ""
-"The NFS export list has been changed.<br>You must apply the changes in order "
-"for them to take effect."
+#, php-format
+msgid "The MIB '%s' doesn't exist in sysctl."
 msgstr ""
 
 #, php-format
@@ -3350,39 +3992,14 @@ msgstr ""
 "The RAID volume is currently mounted! Remove the <a href=%s>mount point</a> "
 "first before proceeding."
 
-msgid ""
-"The RSYNC client list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"The RSYNC client list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-
-msgid ""
-"The RSYNC local list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"The RSYNC local list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-
-msgid ""
-"The Raid configuration has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"The Raid configuration has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-
 msgid "The TCP idle timeout must be an integer."
 msgstr "The TCP idle timeout must be an integer."
 
 msgid "The TCP port must be a valid port number."
 msgstr "The TCP port must be a valid port number."
 
-msgid ""
-"The User list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
+msgid "The VLAN ID must be between 1 and 4094."
 msgstr ""
-"The User list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
 
 #, c-format
 msgid ""
@@ -3408,6 +4025,18 @@ msgstr "The attribute '%s' contains invalid characters."
 msgid ""
 "The attribute '%s' contains the illegal character ':' and is no valid "
 "password."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' does not appear to be a valid certificate."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' does not appear to be a valid private %s key."
+msgstr ""
+
+#, c-format
+msgid "The attribute '%s' does not appear to be a valid private key."
 msgstr ""
 
 #, c-format
@@ -3444,6 +4073,10 @@ msgid ""
 msgstr ""
 
 #, c-format
+msgid "The attribute '%s' may only consist of the characters a-z, A-Z, 0-9."
+msgstr ""
+
+#, c-format
 msgid "The attribute '%s' must be a number."
 msgstr ""
 
@@ -3462,6 +4095,9 @@ msgstr ""
 
 msgid "The combination of share and working directory does not exist."
 msgstr "The combination of share and working directory does not exist."
+
+msgid "The command to be executed."
+msgstr ""
 
 msgid "The configuration could not be restored (file upload error)."
 msgstr "The configuration could not be restored (file upload error)."
@@ -3483,24 +4119,17 @@ msgid ""
 "exactly."
 msgstr ""
 
-msgid ""
-"The content directory list has been changed.<br>You must apply the changes "
-"in order for them to take effect."
-msgstr ""
-
 msgid "The credentials to bind with, enter it here twice."
 msgstr "The credentials to bind with, enter it here twice."
-
-msgid ""
-"The cron job list has been changed.<br>You must apply the changes in order "
-"for them to take effect."
-msgstr ""
 
 msgid "The default SMTP mail server port, e.g. 25 or 587."
 msgstr ""
 
 msgid "The device name may only consist of the characters a-z, A-Z, 0-9."
 msgstr "The device name may only consist of the characters a-z, A-Z, 0-9."
+
+msgid "The device's IP address."
+msgstr ""
 
 #, php-format
 msgid ""
@@ -3509,21 +4138,6 @@ msgid ""
 msgstr ""
 "The disk is currently mounted! <a href=%s>Unmount</a> this disk first before "
 "proceeding."
-
-msgid ""
-"The disk list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-"The disk list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
-
-msgid "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-msgstr "The domain may only contain the characters a-z, 0-9, '-' and '.'."
-
-msgid ""
-"The encrypted volume list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
 
 #, php-format
 msgid "The firmware is now being installed. %s will reboot automatically."
@@ -3535,21 +4149,11 @@ msgstr "The following input errors were detected"
 msgid "The full name contains invalid characters."
 msgstr "Пълното име съдържа невалидни символи."
 
-msgid "The group ID must be > 1001."
-msgstr ""
-
 msgid "The group description contains invalid characters."
 msgstr ""
 
 msgid "The group name contains invalid characters."
 msgstr ""
-
-msgid ""
-"The host list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-"The host list has been changed.<br>You must apply the changes in order for "
-"them to take effect."
 
 msgid "The host name contain invalid characters."
 msgstr "The host name contain invalid characters."
@@ -3560,21 +4164,6 @@ msgid ""
 msgstr ""
 "The host name may only consist of the characters a-z, A-Z and 0-9, - , _ and "
 "."
-
-msgid "The hostname may only contain the characters a-z, 0-9 and '-'."
-msgstr "The hostname may only contain the characters a-z, 0-9 and '-'."
-
-msgid ""
-"The iSCSI disk list has been changed.<br>You must apply the changes in order "
-"for them to take effect."
-msgstr ""
-
-msgid ""
-"The iSCSI target list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"The iSCSI target list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
 
 msgid "The image file is corrupt"
 msgstr "The image file is corrupt"
@@ -3605,27 +4194,10 @@ msgstr ""
 "The minimum port to allocate for PASV style data connections (0 = use any "
 "port)."
 
-msgid ""
-"The modules has been modified.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-
-msgid ""
-"The mount point list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-msgstr ""
-"The mount point list has been changed.<br>You must apply the changes in "
-"order for them to take effect."
-
 msgid "The number of clients must be between 1 and 50."
 msgstr ""
 
 msgid "The old password is not correct."
-msgstr ""
-
-msgid ""
-"The package list has been changed.<br>You must apply the changes in order "
-"for them to take effect."
 msgstr ""
 
 msgid "The password contains the illegal character ':'."
@@ -3647,20 +4219,6 @@ msgid ""
 msgstr ""
 "The powerd utility monitors the system state and sets various power control "
 "options accordingly."
-
-msgid ""
-"The shares has been modified.<br>You must apply the changes in order for "
-"them to take effect."
-msgstr ""
-"The shares has been modified.<br>You must apply the changes in order for "
-"them to take effect."
-
-msgid ""
-"The static route configuration has been changed.<br>You must apply the "
-"changes in order for them to take effect."
-msgstr ""
-"The static route configuration has been changed.<br>You must apply the "
-"changes in order for them to take effect."
 
 msgid "The subject of the email."
 msgstr ""
@@ -3691,25 +4249,11 @@ msgstr ""
 msgid "The uploaded image file is not for this platform"
 msgstr "Качения имидж не е за тази платформа"
 
-msgid "The user ID must be > 1001."
-msgstr ""
-
 msgid "The username may only contain the characters a-z, A-Z and 0-9."
 msgstr "The username may only contain the characters a-z, A-Z and 0-9."
 
-msgid ""
-"The value in this field is sent as the DHCP client identifier when "
-"requesting a DHCP lease."
+msgid "The value of the variable."
 msgstr ""
-"The value in this field is sent as the DHCP client identifier when "
-"requesting a DHCP lease."
-
-msgid ""
-"The value in this field is sent as the DHCP hostname when requesting a DHCP "
-"lease."
-msgstr ""
-"The value in this field is sent as the DHCP hostname when requesting a DHCP "
-"lease."
 
 msgid "The volume must be detached before it can be deleted."
 msgstr ""
@@ -3729,14 +4273,38 @@ msgstr "трябват минимум 2 диска за RAID 5"
 msgid "There must be a minimum of 3 disks in a RAID 5 volume."
 msgstr ""
 
+msgid "There must be selected a minimum of 1 interface."
+msgstr ""
+
 msgid ""
 "There should be enough to handle the maximum level of concurrency from its "
 "clients, typically four to six."
 msgstr ""
 
 msgid ""
+"These MIBs will be added to /etc/sysctl.conf. This allow you to make changes "
+"to a running system."
+msgstr ""
+
+msgid ""
 "These commands will be executed pre or post system initialization (booting) "
 "or before system shutdown."
+msgstr ""
+
+msgid ""
+"These option(s) will be added to /etc/rc.conf. This allow you to overwrite "
+"options used by various generic startup scripts."
+msgstr ""
+
+msgid ""
+"This LAGG cannot be deleted because it is still being used as an interface."
+msgstr ""
+
+msgid "This URL is already configured."
+msgstr ""
+
+msgid ""
+"This VLAN cannot be deleted because it is still being used as an interface."
 msgstr ""
 
 msgid ""
@@ -3754,9 +4322,6 @@ msgstr ""
 
 msgid "This allows you to set the transfer mode for ATA/IDE hard drives."
 msgstr ""
-
-msgid "This certificate does not appear to be valid."
-msgstr "This certificate does not appear to be valid."
 
 msgid "This controls how the case of filenames are viewed and stored."
 msgstr ""
@@ -3802,11 +4367,13 @@ msgstr ""
 msgid "This group already exists in the group list."
 msgstr "Тази група вече съществува в листа с групите."
 
+msgid ""
+"This is both the name of the server as advertised via "
+"Zeroconf/Bonjour/Rendezvous, and the name of the database exported via DAAP."
+msgstr ""
+
 msgid "This is for information only (not using during iSCSI negociation)."
 msgstr "This is for information only (not using during iSCSI negociation)."
-
-msgid "This key does not appear to be valid."
-msgstr "This key does not appear to be valid."
 
 msgid ""
 "This means that the image you uploaded is not an official/supported image "
@@ -3888,6 +4455,11 @@ msgid ""
 "use default settings."
 msgstr ""
 
+msgid ""
+"This parameter controls whether files starting with a dot appear as hidden "
+"files."
+msgstr ""
+
 msgid "This parameters will be added to [global] in smb.conf."
 msgstr ""
 
@@ -3922,6 +4494,9 @@ msgid ""
 "you want to add an already existing RAID again."
 msgstr ""
 
+msgid "Time"
+msgstr "Час"
+
 msgid "Time server"
 msgstr "Time server"
 
@@ -3947,6 +4522,13 @@ msgid ""
 "Increase <a href='%s'>MTU</a>"
 msgstr ""
 
+msgid ""
+"To use Active Directory the CIFS/SMB service will enabled, too. The "
+"following services will use AD "
+"authentication:<br/><ul><li>CIFS/SMB</li><li>SSH</li><li>FTP</li><li>AFP</li>"
+"<li>System</li></ul>"
+msgstr ""
+
 msgid "Tools"
 msgstr "Инструменти"
 
@@ -3959,9 +4541,6 @@ msgid ""
 msgstr ""
 "Traceroute may take a while to complete. You may hit the Stop button on your "
 "browser at any time to see the progress of failed traceroutes."
-
-msgid "Traceroute output"
-msgstr "Traceroute output"
 
 msgid "Traffic graph"
 msgstr "Графика на трафика"
@@ -4008,6 +4587,9 @@ msgstr ""
 "Attempting to use other file formats such as FAT, FAT32, EXT2, EXT3, or NTFS "
 "can result in unpredictable results, file corruption, and loss of data!"
 
+msgid "UID"
+msgstr ""
+
 msgid "UPnP"
 msgstr "UPnP"
 
@@ -4016,6 +4598,9 @@ msgstr "UPnP A/V Media Server"
 
 msgid "UPnP friendly name."
 msgstr "UPnP friendly name."
+
+msgid "URL"
+msgstr "Уеб адрес"
 
 msgid "Uninstall package"
 msgstr ""
@@ -4047,6 +4632,9 @@ msgstr "Нагоре"
 msgid "Update period"
 msgstr ""
 
+msgid "Updating in 5 seconds."
+msgstr ""
+
 msgid "Upgrade firmware"
 msgstr "Поднови firmware-а"
 
@@ -4059,9 +4647,6 @@ msgstr "Време на непрекъсната работа"
 msgid "Use AFP3 unix privileges."
 msgstr ""
 
-msgid "Use SMTP authentication."
-msgstr ""
-
 msgid "Use SSL/TLS encryption layer."
 msgstr ""
 
@@ -4071,6 +4656,10 @@ msgid ""
 msgstr ""
 "Use a space to separate multiple hosts (only one required). Remember to set "
 "up at least one DNS server if you enter a host name here!"
+
+msgid ""
+"Use the following IP address as the source address in outgoing packets."
+msgstr ""
 
 msgid ""
 "Use the new 64k streaming read and write varient SMB requests introduced "
@@ -4132,13 +4721,25 @@ msgstr "Потребители"
 msgid "Users and Groups"
 msgstr "Потребители и Групи"
 
+msgid "VLAN"
+msgstr ""
+
 msgid "VLAN tag"
 msgstr "VLAN tag"
+
+msgid "Value"
+msgstr ""
+
+msgid "Variable"
+msgstr ""
 
 msgid "Version"
 msgstr "Версия"
 
 msgid "View license"
+msgstr ""
+
+msgid "Virtual interface"
 msgstr ""
 
 msgid "Volume Name"
@@ -4153,11 +4754,26 @@ msgstr ""
 msgid "WAN address"
 msgstr ""
 
-msgid "WINS Server IP address."
-msgstr "IP адрес на WINS сървър"
+msgid "WEP"
+msgstr ""
 
 msgid "WINS server"
 msgstr "WINS сървър"
+
+msgid "WINS server IP address (e.g. from MS Active Directory server)."
+msgstr ""
+
+msgid "WPA"
+msgstr ""
+
+msgid "WPA-EAP (Extensible Authentication Protocol)"
+msgstr ""
+
+msgid "WPA-PSK (Pre Shared Key)"
+msgstr ""
+
+msgid "WPA-PSK WPA-EAP"
+msgstr ""
 
 msgid "Warning"
 msgstr "Внимания"
@@ -4166,32 +4782,45 @@ msgstr "Внимания"
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr "Warning: This can cause a huge delay in loading the %s log page!"
 
-msgid "Web user interface"
+msgid "WebGUI"
 msgstr ""
 
-msgid "WebGUI port"
-msgstr "WebGUI порт"
-
-msgid "WebGUI protocol"
-msgstr "WebGUI Протокол"
+msgid "Webserver"
+msgstr ""
 
 msgid "Where the working files will be stored"
 msgstr "Where the working files will be stored"
 
+msgid ""
+"Whether scans should be skipped if there are no users connected. This allows "
+"the drive to spin down when no users are connected."
+msgstr ""
+
 msgid "Who"
+msgstr ""
+
+msgid "Wildcard"
 msgstr ""
 
 msgid "Wireless"
 msgstr "Безжичен"
 
+msgid "Wireless configuration"
+msgstr ""
+
 msgid "Workgroup"
 msgstr "Работна група"
 
-msgid "Workgroup to be member of.(maximum 15 characters)"
+msgid ""
+"Workgroup the server will appear to be in when queried by clients (maximum "
+"15 characters)."
 msgstr ""
 
 msgid "Working Directory"
 msgstr "Working Directory"
+
+msgid "Write"
+msgstr ""
 
 msgid "Write only"
 msgstr ""
@@ -4215,11 +4844,18 @@ msgid ""
 "any other running process!"
 msgstr ""
 
+#, php-format
+msgid ""
+"You have to activate <a href=%s>Zeroconf/Bonjour</a> to advertise this "
+"service to clients."
+msgstr ""
+
 msgid "You have to define some 'Extent' objects first."
 msgstr ""
 
-msgid "You may enter a description here for your reference (not parsed)."
-msgstr "You may enter a description here for your reference (not parsed)."
+#, c-format
+msgid "You have to select at least one item for '%s'."
+msgstr ""
 
 msgid "You may enter a description here for your reference."
 msgstr "You may enter a description here for your reference."
@@ -4252,14 +4888,8 @@ msgstr ""
 msgid "Your own email address."
 msgstr ""
 
-msgid "Zeroconf"
-msgstr "Zeroconf"
-
-msgid "ZyXEL DMA-1000"
+msgid "Zeroconf/Bonjour"
 msgstr ""
-
-msgid "add mount"
-msgstr "добави точка за монтиране"
 
 msgid "built on"
 msgstr ""
@@ -4276,16 +4906,10 @@ msgstr ""
 msgid "crlf"
 msgstr ""
 
-msgid "day"
-msgstr "ден"
-
 msgid "days"
 msgstr "дни"
 
-msgid "delete mount"
-msgstr "изтрий точката за монтиране"
-
-msgid "desc"
+msgid "dbpath"
 msgstr ""
 
 #, php-format
@@ -4349,17 +4973,23 @@ msgstr ""
 msgid "prodos"
 msgstr ""
 
+msgid "rc.conf"
+msgstr ""
+
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
 
 msgid "seconds"
 msgstr "секунди"
 
-msgid "show process information"
-msgstr "Покажи информация за процесите"
-
 msgid "striping"
 msgstr "striping"
+
+msgid "sysctl.conf"
+msgstr ""
+
+msgid "type"
+msgstr ""
 
 msgid "upriv"
 msgstr ""
@@ -4369,9 +4999,6 @@ msgstr ""
 
 msgid "webGUI Configuration"
 msgstr "webGUI Configuration"
-
-msgid "webGUI SSL certificate/key"
-msgstr "webGUI SSL certificate/key"
 
 msgid "week days"
 msgstr "ден от седмицата"
