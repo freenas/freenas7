@@ -49,6 +49,7 @@ Minors changes:
 Bug fixes:
 - Fix bug in interfaces WebGUI. Thanks to freenas_fan for this tip.
 - Support large MSDOS file systems (use mount option 'large') (BR 2001483). Thanks to gusthave.
+- iSCSI Target lets you create a target with no storage (BR 2011723). Thanks to SuperJuice.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.

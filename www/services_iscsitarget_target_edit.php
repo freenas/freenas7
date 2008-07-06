@@ -93,8 +93,8 @@ if ($_POST) {
 	$pconfig = $_POST;
 
 	/* input validation */
-  $reqdfields = explode(" ", "ipaddr subnet");
-  $reqdfieldsn = array(gettext("Authorised network"),gettext("Subnet bit count"));
+  $reqdfields = explode(" ", "ipaddr subnet storage");
+  $reqdfieldsn = array(gettext("Authorised network"), gettext("Subnet bit count"), gettext("Storage"));
   do_input_validation($_POST, $reqdfields, $reqdfieldsn, &$input_errors);
 
   if (($_POST['ipaddr'] && !is_ipaddr($_POST['ipaddr']))) {
