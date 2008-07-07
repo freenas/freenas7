@@ -2,11 +2,11 @@
 <?php
 /*
 	services_samba_share_edit.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -91,6 +91,12 @@ if($_POST) {
 	$reqdfieldst = explode(" ", "string string");
 	do_input_validation_type($_POST, $reqdfields, $reqdfieldsn, $reqdfieldst, &$input_errors);
 
+	// Check for duplicates.
+	if ((!isset($id) && (false !== array_search_ex($_POST['name'], $a_share, "name"))) ||
+			(isset($id) && ($a_share[$id]['name'] !== $_POST['name']) && (false !== array_search_ex($_POST['name'], $a_share, "name")))) {
+		$input_errors[] = gettext("The share name is already used.");
+	}
+
 	if(!$input_errors) {
 		$share = array();
 
@@ -118,7 +124,7 @@ if($_POST) {
 	}
 }
 ?>
-<?php include("fbegin.inc"); ?>
+<?php include("fbegin.inc");?>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td class="tabnavtbl">
