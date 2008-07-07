@@ -2,11 +2,11 @@
 <?php
 /*
 	services_afp_share_edit.php
-	Copyright © 2006-2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2006-2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 
 	part of FreeNAS (http://www.freenas.org)
-	Copyright (C) 2005-2008 Olivier Cochard-Labbé <olivier@freenas.org>.
+	Copyright (C) 2005-2008 Olivier Cochard-Labbe <olivier@freenas.org>.
 	All rights reserved.
 
 	Based on m0n0wall (http://m0n0.ch/wall)
@@ -118,6 +118,12 @@ if($_POST) {
 	// Verify that the share password is not more than 8 characters.
 	if (strlen($_POST['volpasswd']) > 8) {
 	    $input_errors[] = gettext("Share passwords can not be more than 8 characters.");
+	}
+
+	// Check for duplicates.
+	if ((!isset($id) && (false !== array_search_ex($_POST['name'], $a_share, "name"))) ||
+			(isset($id) && ($a_share[$id]['name'] !== $_POST['name']) && (false !== array_search_ex($_POST['name'], $a_share, "name")))) {
+		$input_errors[] = gettext("The share name is already used.");
 	}
 
 	if(!$input_errors) {
