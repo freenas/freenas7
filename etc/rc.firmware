@@ -87,7 +87,7 @@ case $1 in
 		printf "\n\n\33[37m%s\33[0m\n" "Firmware upgrade in progress. Please wait..."
 
 		# Check if firmware file exists
-		if [ ! -r $2 ]; then
+		if [ ! -r "$2" ]; then
 			msg="ERROR: Firmware file does not exist."
 			printf "\n\33[31m%s\33[0m\n" "${msg}"
 			/usr/bin/logger "UPGRADE ${msg}"
@@ -95,7 +95,7 @@ case $1 in
 		fi
 
 		# Test firmware file
-		/usr/bin/gzip -t $2 2>&1
+		/usr/bin/gzip -t "$2" 2>&1
 		if [ 0 != $? ]; then
 			msg="ERROR: Firmware file is corrupted."
 			printf "\n\33[31m%s\33[0m\n" "${msg}"
@@ -109,14 +109,19 @@ case $1 in
 
 		# Unmount /cf
 		/sbin/umount -f /cf
+		if [ 0 != $? ]; then # successful?
+			msg="ERROR: Failed to umount '/cf'!"
+			printf "\33[31m%s\33[0m\n" "${msg}"
+			/usr/bin/logger "UPGRADE ${msg}"
+		fi
 
 		# dd image onto card
 		result=1
-		if [ -r $2 ]; then
-			/usr/bin/gzip -cd -S "" $2 | /bin/dd of=/dev/${CFDEVICE} bs=16k > /dev/null 2>&1
+		if [ -r "$2" ]; then
+			/usr/bin/gzip -cd -S "" "$2" | /bin/dd of=/dev/${CFDEVICE} bs=16k > /dev/null 2>&1
 			result=$?
 			if [ 0 != ${result} ]; then # successful?
-				msg="ERROR: Failed to install firmware image on '/dev/${CFDEVICE}' ! "
+				msg="ERROR: Failed to install firmware image on '/dev/${CFDEVICE}'!"
 				printf "\33[31m%s\33[0m\n" "${msg}"
 				/usr/bin/logger "UPGRADE ${msg}"
 			else
@@ -158,7 +163,7 @@ case $1 in
 		printf "\n\n\33[37m%s\33[0m\n" "Firmware upgrade in progress. Please wait..."
 
 		# Check if firmware file exists.
-		if [ ! -r $2 ]; then
+		if [ ! -r "$2" ]; then
 			msg="ERROR: Firmware file does not exist."
 			printf "\33[31m%s\33[0m\n" "${msg}"
 			/usr/bin/logger "UPGRADE ${msg}"
@@ -166,7 +171,7 @@ case $1 in
 		fi
 
 		# Test firmware file
-		/usr/bin/gzip -t $2 2>&1
+		/usr/bin/gzip -t "$2" 2>&1
 		if [ 0 != $? ]; then
 			msg="ERROR: Firmware file is corrupted."
 			printf "\33[31m%s\33[0m\n" "${msg}"
@@ -181,7 +186,7 @@ case $1 in
 		/bin/mkdir -p /tmp/configbak
 		cp -p /conf/* /tmp/configbak 2>/dev/null
 
-		/usr/bin/tar xzUPf $2 -C / 2>&1
+		/usr/bin/tar xzUPf "$2" -C / 2>&1
 		result=$?
 		if [ 0 != ${result} ]; then # successful?
 			msg="ERROR: Failed to upgrade firmware!"
