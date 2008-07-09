@@ -20,6 +20,7 @@ Permanent restrictions:
 
 Known bugs:
 - If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
+- Downgrading to 0.69 via WebGUI fails because of broken pipe error.
 
 NEED TESTING:
 - IPv6: auto mode
