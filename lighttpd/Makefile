@@ -9,9 +9,9 @@ MAINTAINER=		votdev@gmx.de
 MASTER_SITES=	http://www.lighttpd.net/download/ \
 							http://mirrors.cat.pdx.edu/lighttpd/
 
-LIB_DEPENDS=	pcre.0:${PORTSDIR}/devel/pcre
-LIB_DEPENDS+=	uuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid \
-							sqlite3.8:${PORTSDIR}/databases/sqlite3
+LIB_DEPENDS+=			sqlite3:${PORTSDIR}/databases/sqlite3 \
+									pcre.0:${PORTSDIR}/devel/pcre \
+									uuid.1:${PORTSDIR}/misc/e2fsprogs-libuuid
 
 GNU_CONFIGURE=		yes
 USE_GNOME+=				libxml2

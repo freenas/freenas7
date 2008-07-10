@@ -16,34 +16,33 @@ name="webdav"
 rcvar=`set_rcvar`
 
 # Custom commands
-start_precmd="create_conf"
+start_precmd="mkconf_cmd"
 stop_postcmd=stop_postcmd
 restart_precmd="checkconfig"
 reload_precmd=reload_precmd
 reload_postcmd=reload_postcmd
-passwd_cmd="create_passwd"
-extra_commands="reload check passwd"
+mkpasswd_cmd="mkpasswd_cmd"
+mkconf_cmd="mkconf_cmd"
+extra_commands="reload check mkconf mkpasswd"
 
 # Defaults
 webdav_enable=${webdav_enable:-"NO"}
 webdav_conf=${webdav_conf:-"/var/etc/webdav.conf"}
 webdav_certpem=${webdav_certpem:-"/var/etc/webdavcert.pem"}
+webdav_htpasswdfile=${webdav_htpasswdfile:-".webdav_htpasswd"}
+webdav_htpasswd=${webdav_htpasswd:-"/var/run/${webdav_htpasswdfile}"}
 command=/usr/local/sbin/lighttpd
 command_args="-f ${webdav_conf} -m /usr/local/lib/lighttpd"
 pidfile=/var/run/webdav.pid
 sig_reload="-INT"
 check_cmd="checkconfig"
 
-create_passwd()
+mkpasswd_cmd()
 {
-	# Defaults
-	htpasswdfile=".webdav_htpasswd"
-	htpasswd="/var/run/${htpasswdfile}"
-	
-	echo "Generating ${htpasswdfile}."
-	
+	echo "Generating ${webdav_htpasswdfile}."
+
 	# Generate the htpasswd file used by websrv.
-	/bin/cat /dev/null > ${htpasswd}
+	/bin/cat /dev/null > ${webdav_htpasswd}
 
 	# Add configured users. Parse /etc/master.passwd to get password.
 	# Did not find a better solution. Using PHP crypt fails when calling via WebGUI.
@@ -53,20 +52,21 @@ create_passwd()
 		${configxml_file} | /usr/local/bin/xml unesc | \
 		while read _login; do
 			_password=`/bin/cat /etc/master.passwd | /usr/bin/grep "^${_login}:*" | /usr/bin/awk '{split($0,a,":"); print a[2]}'`
-			echo "${_login}:${_password}" >> ${htpasswd}
+			echo "${_login}:${_password}" >> ${webdav_htpasswd}
 		done
-	
-	/bin/chmod 0600 ${htpasswd}
+
+	/bin/chmod 0600 ${webdav_htpasswd}
 }
 
-create_conf()
+mkconf_cmd()
 {
 	local _protocol _certificate _privatekey _documentroot
 
 	# Get configuration data
-	_protocol=`configxml_get "//webdac/protocol"`
-	_certificate=`configxml_get "//webdac/certificate"`
+	_protocol=`configxml_get "//webdav/protocol"`
+	_certificate=`configxml_get "//webdav/certificate"`
 	_privatekey=`configxml_get "//webdav/privatekey"`
+	_documentroot=`configxml_get "//webdav/documentroot"`
 
 	# Create .conf file
 	/usr/local/bin/xml sel -t -m "//webdav" \
@@ -74,7 +74,7 @@ create_conf()
 		${configxml_file} | /usr/local/bin/xml unesc > ${webdav_conf}
 
 	cat <<EOF >> ${webdav_conf}
-server.document-root = "/mnt"
+server.document-root = "${_documentroot}"
 server.modules = ( "mod_webdav" )
 server.errorlog-use-syslog = "enable"
 server.event-handler = "freebsd-kqueue"
@@ -92,13 +92,13 @@ webdav.is-readonly = "enable"
 EOF
 
 	# Configure authentication.
-	if configxml_isset //websrv/authentication; then
-		local _htpasswd="${_documentroot}/.websrv_htpasswd"
+	if configxml_isset //webdav/authentication/enable; then
+	  mkpasswd_cmd
 
 		# Add authentication configuration.
 		cat <<EOF >> ${websrv_conf}
 auth.backend = "htpasswd"
-auth.backend.htpasswd.userfile = "${_htpasswd}"
+auth.backend.htpasswd.userfile = "${webdav_htpasswd}"
 auth.require = ( "/" =>
 	(
 		"method"  => "basic",
