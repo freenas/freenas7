@@ -4,6 +4,8 @@ body, td, th, input, select {
 }
 body {
 	background: #FFFFFF;
+	margin: 0pt;
+	padding: 0pt;
 }
 body a:link, body a:active, body a:visited {
 	color: #0000CC;
@@ -358,4 +360,33 @@ div#errorbox table tr td.message {
 	padding-left: 8px;
 	padding-top: 6px;
 	font-weight: bold;
+}
+#topmasterhead {
+	height: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-bottom: 0.6em;
+	padding-top: 0.6em;
+	position: relative;
+	background: #444444 top right;
+	margin: 0pt;
+	padding: 0pt;
+	border-bottom: 1px none #FFFFFF;
+	width:100%;
+}
+#topnavigation {
+	height: 65px;
+	background: #435370 url("header_bg.gif") top right no-repeat;
+	border-bottom: 1px none #FFFFFF;
+	width:100%;
+}
+#footer {
+	font-size: 11px;
+	height: 15px;
+	color: #FFFFFF;
+	background: #435370 scroll left bottom;
+	border-bottom: 1px none #FFFFFF;
+	width:100%;
+	text-align: center;
+	vertical-align: center;
 }

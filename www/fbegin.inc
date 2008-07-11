@@ -155,65 +155,62 @@ function display_menu($menu) {
 	<script type="text/javascript" src="niftycube/niftylayout.js"></script>
 </head>
 <body>
-<table width="750" border="0" cellspacing="0" cellpadding="2">
-  <tr valign="bottom">
-    <td width="150" height="65" align="center" valign="middle">
-			<strong><a href="http://www.<?=get_product_url();?>" target="_blank"><img src="/logo.gif" width="150" height="47" border="0"></a></strong>
-		</td>
-    <td height="65" class="pgheader">
-			<table border="0" cellspacing="0" cellpadding="0" width="100%">
-				<tr>
-					<td align="left" valign="bottom">
-						<span class="pgheadertext">&nbsp;<?=gettext("webGUI Configuration");?></span>
-					</td>
-			  	<td align="right" valign="bottom">
-						<span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
-					</td>
-				</tr>
-			</table>
-		</td>
-	</tr>
-  <tr valign="top">
-    <td width="150" class="pgnavbar">
-			<table width="100%" border="0" cellpadding="6" cellspacing="0">
-        <tr>
-          <td>
-          	<ul id="navigation">
-							<?=display_menu($menu['system']);?>
-			  			<?=display_menu($menu['interfaces']);?>
-							<?=display_menu($menu['disks']);?>
-							<?=display_menu($menu['services']);?>
-							<?=display_menu($menu['access']);?>
-							<?=display_menu($menu['status']);?>
-							<?php
-							/* extensions section */
-							if (is_dir("{$g['www_path']}/ext")):
-							?>
-							<li><h1><?=gettext("Extensions");?></h1>
-							<ul>
-								<?php $dh = @opendir("{$g['www_path']}/ext");
-								if ($dh) {
-									while (($extd = readdir($dh)) !== false) {
-										if (($extd === ".") || ($extd === ".."))
-											continue;
-										@include("{$g['www_path']}/ext/" . $extd . "/menu.inc");
-									}
-									closedir($dh);
-								}?>
-							</ul>
-							</li>
+<div id="topmasterhead">
+</div>
+<div id="topnavigation">
+	<div id="topnavigation-content">
+		<table border="0" cellspacing="0" cellpadding="0" height="100%" width="100%">
+			<tr>
+				<td align="right" valign="bottom">
+					<span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div id="content">
+	<table width="750" border="0" cellspacing="0" cellpadding="2">
+	  <tr valign="top">
+	    <td width="150" class="pgnavbar">
+				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+	        <tr>
+	          <td>
+	          	<ul id="navigation">
+								<?=display_menu($menu['system']);?>
+				  			<?=display_menu($menu['interfaces']);?>
+								<?=display_menu($menu['disks']);?>
+								<?=display_menu($menu['services']);?>
+								<?=display_menu($menu['access']);?>
+								<?=display_menu($menu['status']);?>
+								<?php
+								/* extensions section */
+								if (is_dir("{$g['www_path']}/ext")):
+								?>
+								<li><h1><?=gettext("Extensions");?></h1>
+								<ul>
+									<?php $dh = @opendir("{$g['www_path']}/ext");
+									if ($dh) {
+										while (($extd = readdir($dh)) !== false) {
+											if (($extd === ".") || ($extd === ".."))
+												continue;
+											@include("{$g['www_path']}/ext/" . $extd . "/menu.inc");
+										}
+										closedir($dh);
+									}?>
+								</ul>
+								</li>
+								<?php endif;?>
+								<?=display_menu($menu['diagnostics']);?>
+								<?=display_menu($menu['advanced']);?>
+				  		</ul>
+						</td>
+	        </tr>
+				</table>
+			</td>
+	    <td width="600">
+				<table width="100%" border="0" cellpadding="10" cellspacing="0">
+	        <tr>
+						<td>
+							<?php if (!$pgtitle_omit): ?>
+	      			<p class="pgtitle"><?=gentitle($pgtitle);?></p>
 							<?php endif;?>
-							<?=display_menu($menu['diagnostics']);?>
-							<?=display_menu($menu['advanced']);?>
-			  		</ul>
-					</td>
-        </tr>
-			</table>
-		</td>
-    <td width="600">
-			<table width="100%" border="0" cellpadding="10" cellspacing="0">
-        <tr>
-					<td>
-						<?php if (!$pgtitle_omit): ?>
-      			<p class="pgtitle"><?=gentitle($pgtitle);?></p>
-						<?php endif; ?>
