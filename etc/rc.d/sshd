@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (c) 2007 Volker Theile (votdev@gmx.de)
+# Copyright (c) 2007-2008 Volker Theile (votdev@gmx.de)
 # All rights reserved.
 
 # PROVIDE: sshd
@@ -44,6 +44,9 @@ mkconf_cmd()
 			-i "count(compression) > 0" -o "Compression yes" -n -b \
 			-i "count(passwordauthentication) > 0" -o "PasswordAuthentication yes" -n -b \
 			-i "count(pubkeyauthentication) > 0" -o "PubkeyAuthentication yes" -n -b \
+			-m "auxparam" \
+				-v "." -n \
+			-b \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc > ${sshd_config}
 
