@@ -41,6 +41,7 @@ Majors changes:
 - Upgrade Samba to 3.0.30.
 - Add 'perms' and 'xattrs' parameter to RSYNC client/local shares (FR 2009300).
 - Allow user to add additional parameters to RSYNC client/local shares.
+- Modified WebGUI look & feel.
 
 Minors changes:
 - Enable WLAN interface setup via console.
