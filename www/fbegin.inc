@@ -89,8 +89,6 @@ $menu['advanced']['desc'] = gettext("Advanced");
 $menu['advanced']['menuitem'] = array();
 $menu['advanced']['menuitem'][] = array("desc" => gettext("Command"), "link" => "exec.php", "visible" => true);
 $menu['advanced']['menuitem'][] = array("desc" => gettext("Edit File"), "link" => "system_edit.php", "visible" => true);
-$menu['advanced']['expandable'] = true;
-$menu['advanced']['is_expanded'] = strstr($_SERVER['SCRIPT_FILENAME'], "exec") || strstr($_SERVER['SCRIPT_FILENAME'], "edit");
 
 // Diagnostics
 $menu['diagnostics']['desc'] = gettext("Diagnostics");
@@ -100,116 +98,73 @@ $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Information"), "li
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Ping/Traceroute"), "link" => "diag_ping.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("ARP Tables"), "link" => "diag_arp.php", "visible" => true);
 $menu['diagnostics']['menuitem'][] = array("desc" => gettext("Routes"), "link" => "diag_routes.php", "visible" => true);
-$menu['diagnostics']['expandable'] = true;
-$menu['diagnostics']['is_expanded'] = isset($config['system']['webgui']['expanddiags']) || strstr($_SERVER['SCRIPT_FILENAME'], "diag_");
 
-function display_menu($menu) {
-	# Is menu expandable?
-	if ($menu['expandable']) {
-		$span_id = "span".rand(); # Create unique id.
-		$icon_id = "icon".rand(); # Create unique id.
-		if (true === $menu['is_expanded']) {
-			echo "<li><h1><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\"><img src='/tri_o.gif' id='{$icon_id}' width='14' height='10' border='0'></a><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\">".gettext($menu['desc'])."</a></h1>\n";
-			echo "<span id='{$span_id}'>\n";
-		} else {
-			echo "<li><h1><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\"><img src='/tri_c.gif' id='{$icon_id}' width='14' height='10' border='0'></a><a href=\"javascript:showhideMenu('{$span_id}','{$icon_id}')\">".gettext($menu['desc'])."</a></h1>\n";
-			echo "<span id='{$span_id}' style='display: none'>\n";
-		}
-	}	else {
-		# Display menu section description only.
-		echo "<li><h1>{$menu['desc']}</h1>\n";
-	}
+function display_menu($menuid) {
+	global $menu;
 
-	# Open new navigation layer.
-	echo "<ul>\n";
+	echo "<li>\n";
+	echo "	<a href=\"\" onClick=\"return clickreturnvalue()\" onMouseover=\"dropdownmenu(this,event,'{$menuid}')\">{$menu[$menuid]['desc']}</a>\n";
+	echo "	<div id=\"{$menuid}\" class=\"navbarsubmenu\">\n";
 
 	# Display menu items.
-	foreach( $menu['menuitem'] as $menuk => $menuv) {
+	foreach ($menu[$menuid]['menuitem'] as $menuk => $menuv) {
 		# Is menu item visible?
 		if (!$menuv['visible']) {
 			continue;
 		}
 		# Display menuitem.
-		echo "<li><a href='{$menuv['link']}' title='{$menuv['desc']}'>{$menuv['desc']}</a></li>\n";
+		echo "<a href=\"{$menuv['link']}\" title=\"{$menuv['desc']}\">{$menuv['desc']}</a>\n";
 	}
 
-	# Close navigation layer.
-	echo "</ul></li>\n";
-
-	# Is menu expandable?
-	if ($menu['expandable']) {
-		echo "</span>\n";
-	}
+	echo "	</div>\n";
+	echo "</li>\n";
 }
 ?>
 <html>
-	<head>
+<head>
 	<title><?=genhtmltitle($pgtitle);?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?=system_get_language_codeset();?>">
 	<?php if ($pgrefresh):?>
 	<meta http-equiv="refresh" content="<?=$pgrefresh;?>">
 	<?php endif;?>
 	<link href="gui.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript" src="gui.js"></script>
+	<link href="navbar.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="javascript/gui.js"></script>
+	<script type="text/javascript" src="javascript/navbar.js"></script>
 	<script type="text/javascript" src="niftycube/niftycube.js"></script>
 	<script type="text/javascript" src="niftycube/niftylayout.js"></script>
 </head>
 <body>
-<div id="topmasterhead"></div>
-<div id="topnavigation">
-	<div id="topnavigation-content">
-		<table border="0" cellspacing="0" cellpadding="0" height="100%" width="100%">
-			<tr>
-				<td align="left" >
-					<img src="/header_logo.gif" border="0">
-				</td>
-				<td align="right" valign="bottom">
-					<span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
-				</td>
-			</tr>
-		</table>
-	</div>
+<div id="headerborder"></div>
+<div id="headerlogo">
+	<table border="0" cellspacing="0" cellpadding="0" height="100%" width="100%">
+		<tr>
+			<td align="left" >
+				<img src="/header_logo.gif" border="0">
+			</td>
+			<td align="right" valign="bottom">
+				<span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
+			</td>
+		</tr>
+	</table>
 </div>
-<div id="topborder"></div>
+<div id="smallheaderborder"></div>
+<div id="headernavbar">
+	<ul class="navbarmenu">
+		<?=display_menu("system");?>
+		<?=display_menu("interfaces");?>
+		<?=display_menu("disks");?>
+		<?=display_menu("services");?>
+		<?=display_menu("access");?>
+		<?=display_menu("status");?>
+		<?=display_menu("diagnostics");?>
+		<?=display_menu("advanced");?>
+	</ul>
+</div>
+<div id="smallheaderborder"></div>
 <div id="content">
 	<table width="100%" border="0" cellspacing="0" cellpadding="2">
 	  <tr valign="top">
-	    <td width="150" class="pgnavbar">
-				<table border="0" cellpadding="6" cellspacing="0">
-	        <tr>
-	          <td>
-	          	<ul id="navigation">
-								<?=display_menu($menu['system']);?>
-				  			<?=display_menu($menu['interfaces']);?>
-								<?=display_menu($menu['disks']);?>
-								<?=display_menu($menu['services']);?>
-								<?=display_menu($menu['access']);?>
-								<?=display_menu($menu['status']);?>
-								<?php
-								/* extensions section */
-								if (is_dir("{$g['www_path']}/ext")):
-								?>
-								<li><h1><?=gettext("Extensions");?></h1>
-								<ul>
-									<?php $dh = @opendir("{$g['www_path']}/ext");
-									if ($dh) {
-										while (($extd = readdir($dh)) !== false) {
-											if (($extd === ".") || ($extd === ".."))
-												continue;
-											@include("{$g['www_path']}/ext/" . $extd . "/menu.inc");
-										}
-										closedir($dh);
-									}?>
-								</ul>
-								</li>
-								<?php endif;?>
-								<?=display_menu($menu['diagnostics']);?>
-								<?=display_menu($menu['advanced']);?>
-				  		</ul>
-						</td>
-	        </tr>
-				</table>
-			</td>
 	    <td>
 				<table width="100%" border="0" cellpadding="10" cellspacing="0">
 	        <tr>

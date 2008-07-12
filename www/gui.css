@@ -45,9 +45,6 @@ pre {
 .pgfootertext a:hover {
 	color: #DDDDDD;
 }
-.pgnavbar {
-	background-color: #9D9D9D;
-}
 .vncellbg, .vncell, .vncellreq, .vncellt {
 	background-color: #DDDDDD;
 	padding-right: 20px;
@@ -353,7 +350,7 @@ div#errorbox table tr td.message {
 	padding-top: 6px;
 	font-weight: bold;
 }
-#topmasterhead, #topborder, #footerborder {
+#headerborder, #smallheaderborder, #footerborder {
 	height: 12px;
 	margin-left: auto;
 	margin-right: auto;
@@ -366,10 +363,10 @@ div#errorbox table tr td.message {
 	border-bottom: 1px none #FFFFFF;
 	width:100%;
 }
-#topborder {
+#smallheaderborder {
 	height: 4px;
 }
-#topnavigation {
+#headerlogo {
 	height: 65px;
 	background: #435370 url("header_bg.gif") top right no-repeat;
 	border-bottom: 1px none #FFFFFF;
