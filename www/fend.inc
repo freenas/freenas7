@@ -14,5 +14,6 @@
 		</tr>
 	</table>
 </div>
+<div id="footerborder"></div>
 </body>
 </html>

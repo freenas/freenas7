@@ -353,21 +353,21 @@ div#errorbox table tr td.message {
 	padding-top: 6px;
 	font-weight: bold;
 }
-#topmasterhead, #topborder {
-	height: 15px;
+#topmasterhead, #topborder, #footerborder {
+	height: 12px;
 	margin-left: auto;
 	margin-right: auto;
 	padding-bottom: 0.6em;
 	padding-top: 0.6em;
 	position: relative;
-	background: #444444 top right;
+	background: #444444 url("carbon_bg.gif");
 	margin: 0pt;
 	padding: 0pt;
 	border-bottom: 1px none #FFFFFF;
 	width:100%;
 }
 #topborder {
-	height: 5px;
+	height: 4px;
 }
 #topnavigation {
 	height: 65px;
