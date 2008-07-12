@@ -7,3 +7,4 @@ etc/rc.d/systune
 usr/local/www/datetimepicker.js
 etc/rc.d.php/netif
 etc/inc/interfaces.inc
+usr/local/www/gui.js
