@@ -155,12 +155,14 @@ function display_menu($menu) {
 	<script type="text/javascript" src="niftycube/niftylayout.js"></script>
 </head>
 <body>
-<div id="topmasterhead">
-</div>
+<div id="topmasterhead"></div>
 <div id="topnavigation">
 	<div id="topnavigation-content">
 		<table border="0" cellspacing="0" cellpadding="0" height="100%" width="100%">
 			<tr>
+				<td align="left" >
+					<img src="/header_logo.gif" border="0">
+				</td>
 				<td align="right" valign="bottom">
 					<span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
 				</td>
@@ -168,11 +170,12 @@ function display_menu($menu) {
 		</table>
 	</div>
 </div>
+<div id="topborder"></div>
 <div id="content">
-	<table width="750" border="0" cellspacing="0" cellpadding="2">
+	<table width="100%" border="0" cellspacing="0" cellpadding="2">
 	  <tr valign="top">
 	    <td width="150" class="pgnavbar">
-				<table width="100%" border="0" cellpadding="6" cellspacing="0">
+				<table border="0" cellpadding="6" cellspacing="0">
 	        <tr>
 	          <td>
 	          	<ul id="navigation">
@@ -207,7 +210,7 @@ function display_menu($menu) {
 	        </tr>
 				</table>
 			</td>
-	    <td width="600">
+	    <td>
 				<table width="100%" border="0" cellpadding="10" cellspacing="0">
 	        <tr>
 						<td>
