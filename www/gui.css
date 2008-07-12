@@ -32,16 +32,8 @@ pre {
 	color: #777777;
 	font-weight: bold;
 }
-.pgheader, .pgfooter {
+.pgfooter {
 	background-color: #435370;
-}
-.pgheader {
-	background: #435370 url("header_bg.gif") top right no-repeat;
-}
-.pgheadertext {
-	font-size: 18px;
-	color: #ffffff;
-	font-weight: bold;
 }
 .pgfootertext {
 	font-size: 11px;
@@ -361,7 +353,7 @@ div#errorbox table tr td.message {
 	padding-top: 6px;
 	font-weight: bold;
 }
-#topmasterhead {
+#topmasterhead, #topborder {
 	height: 15px;
 	margin-left: auto;
 	margin-right: auto;
@@ -373,6 +365,9 @@ div#errorbox table tr td.message {
 	padding: 0pt;
 	border-bottom: 1px none #FFFFFF;
 	width:100%;
+}
+#topborder {
+	height: 5px;
 }
 #topnavigation {
 	height: 65px;
