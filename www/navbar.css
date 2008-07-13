@@ -1,53 +1,53 @@
 .navbarmenu, .navbarsubmenu {
-margin: 0;
-padding: 0;
-font-size: 13px;
-font-weight: bold;
-width: 100%;
-overflow: hidden;
-margin-bottom: 0;
-border-width: 1px 0;
-background: black url(/navbar_default.gif) center center repeat-x;
+	margin: 0;
+	padding: 0;
+	font-size: 13px;
+	font-weight: bold;
+	width: 100%;
+	overflow: hidden;
+	margin-bottom: 0;
+	border-width: 1px 0;
+	background: black url(/navbar_default.gif) center center repeat-x;
 }
-.navbarmenu li{
-display: inline;
+.navbarmenu li {
+	display: inline;
 }
-.navbarmenu li a{
-float: left;
-color: white;
-padding: 2px 11px;
-text-decoration: none;
-border-right: 1px solid white;
+.navbarmenu li a {
+	float: left;
+	color: white;
+	padding: 2px 11px;
+	text-decoration: none;
+	border-right: 1px solid white;
 }
-.navbarmenu li a:visited{
-color: white;
+.navbarmenu li a:visited {
+	color: white;
 }
-.navbarmenu li a:hover, .navbarmenu li .current{
-color: white;
-background: transparent url(/navbar_active.gif) center center repeat-x;
+.navbarmenu li a:hover, .navbarmenu li .current {
+	color: white;
+	background: transparent url(/navbar_active.gif) center center repeat-x;
 }
 .navbarsubmenu {
-position: absolute;
-visibility: hidden;
-border: 1px solid black;
-border-bottom-width: 0;
-font-size: 11px;
-font-weight: normal;
-line-height: 18px;
-z-index: 100;
-width: 205px;
-background: #000000;
+	position: absolute;
+	visibility: hidden;
+	border: 1px solid black;
+	border-bottom-width: 0;
+	font-size: 11px;
+	font-weight: normal;
+	line-height: 18px;
+	z-index: 100;
+	width: 205px;
+	background: #000000;
 }
-.navbarsubmenu a{
-width: 100%;
-display: block;
-text-indent: 3px;
-border-bottom: 1px solid black;
-padding: 1px 0;
-text-decoration: none;
-text-indent: 5px;
+.navbarsubmenu a {
+	width: 100%;
+	display: block;
+	text-indent: 3px;
+	border-bottom: 1px solid black;
+	padding: 1px 0;
+	text-decoration: none;
+	text-indent: 5px;
 }
 .navbarsubmenu a:hover {
-color: white;
-background: #435370;
+	color: white;
+	background: #435370;
 }
