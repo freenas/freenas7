@@ -137,10 +137,10 @@ function display_menu($menuid) {
 <body>
 <div id="headerborder"></div>
 <div id="headerlogo">
-	<table border="0" cellspacing="0" cellpadding="0" height="100%" width="100%">
+	<table border="0" cellspacing="0" cellpadding="0" width="100%">
 		<tr>
-			<td align="left" >
-				<img src="/header_logo.gif" border="0">
+			<td align="left">
+				<img src="/header_logo.gif">
 			</td>
 			<td align="right" valign="bottom">
 				<span class="hostname"><?=$config['system']['hostname'] . "." . $config['system']['domain'];?>&nbsp;</span>
