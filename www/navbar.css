@@ -1,53 +1,52 @@
-.navbarmenu, .navbarsubmenu {
+#navbarmenu {
 	margin: 0;
 	padding: 0;
+	z-index: 30;
+}
+#navbarmenu li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: left;
 	font-size: 13px;
 	font-weight: bold;
-	width: 100%;
-	overflow: hidden;
-	margin-bottom: 0;
-	border-width: 1px 0;
-	background: black url(/navbar_default.gif) center center repeat-x;
 }
-.navbarmenu li {
-	display: inline;
-}
-.navbarmenu li a {
-	float: left;
-	color: white;
+#navbarmenu li a {
+	display: block;
 	padding: 2px 11px;
+	background: black url(/navbar_default.gif) center center repeat-x;
+	text-align: center;
 	text-decoration: none;
-	border-right: 1px solid white;
-}
-.navbarmenu li a:visited {
 	color: white;
 }
-.navbarmenu li a:hover, .navbarmenu li .current {
-	color: white;
+#navbarmenu li a:hover {
 	background: transparent url(/navbar_active.gif) center center repeat-x;
 }
-.navbarsubmenu {
+#navbarmenu div {
 	position: absolute;
 	visibility: hidden;
-	border: 1px solid black;
-	border-bottom-width: 0;
-	font-size: 11px;
-	font-weight: normal;
-	line-height: 18px;
-	z-index: 100;
-	width: 205px;
+	margin: 0;
+	padding: 0;
 	background: #000000;
+	z-index: 100;
+	border: 1px solid black;
+	width: 205px;
 }
-.navbarsubmenu a {
-	width: 100%;
+#navbarmenu div a
+{
+	position: relative;
 	display: block;
-	text-indent: 3px;
-	border-bottom: 1px solid black;
-	padding: 1px 0;
+	margin: 0;
+	padding: 5px 10px;
+	width: auto;
+	white-space: nowrap;
+	text-align: left;
 	text-decoration: none;
 	text-indent: 5px;
+	background: #000000;
+	font-size: 11px;
+	font-weight: normal;
 }
-.navbarsubmenu a:hover {
-	color: white;
-	background: #435370;
+#navbarmenu div a:hover {
+	background: transparent url(/navbar_active.gif) center center repeat-x;
 }
