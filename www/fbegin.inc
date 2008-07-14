@@ -102,8 +102,8 @@ function display_menu($menuid) {
 	global $menu;
 
 	echo "<li>\n";
-	echo "	<a href=\"\" onClick=\"return clickreturnvalue()\" onMouseover=\"dropdownmenu(this,event,'{$menuid}')\">{$menu[$menuid]['desc']}</a>\n";
-	echo "	<div id=\"{$menuid}\" class=\"navbarsubmenu\">\n";
+	echo "	<a href=\"\" onmouseover=\"mopen('{$menuid}')\" onmouseout=\"mclosetime()\">{$menu[$menuid]['desc']}</a>\n";
+	echo "	<div id=\"{$menuid}\" onmouseover=\"mcancelclosetime()\" onmouseout=\"mclosetime()\">\n";
 
 	# Display menu items.
 	foreach ($menu[$menuid]['menuitem'] as $menuk => $menuv) {
@@ -149,7 +149,7 @@ function display_menu($menuid) {
 </div>
 <div id="smallheaderborder"></div>
 <div id="headernavbar">
-	<ul class="navbarmenu">
+	<ul id="navbarmenu">
 		<?=display_menu("system");?>
 		<?=display_menu("interfaces");?>
 		<?=display_menu("disks");?>
@@ -159,6 +159,7 @@ function display_menu($menuid) {
 		<?=display_menu("diagnostics");?>
 		<?=display_menu("advanced");?>
 	</ul>
+	<div style="clear:both"></div>
 </div>
 <div id="smallheaderborder"></div>
 <div id="content">

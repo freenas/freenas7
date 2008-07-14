@@ -339,3 +339,6 @@ div#footer {
 	text-align: center;
 	vertical-align: center;
 }
+div#headernavbar {
+	background: black url(/navbar_default.gif) center center repeat-x;
+}
