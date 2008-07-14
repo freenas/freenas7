@@ -88,46 +88,6 @@ pre {
 .vexpl {
 	font-size: 11px;
 }
-ul#navigation {
-	color: #FFFFFF;
-	background-color: #9D9D9D;
-	font-size: 13px;
-	padding-left: 0px;
-	text-decoration: none;
-}
-ul#navigation h1 {
-	color: #FFFFFF;
-	font-size: 13px;
-	margin: 0 0 0 0;
-}
-* html ul#navigation h1 { /* Fix for IE */
-	color: #FFFFFF;
-	font-size: 13px;
-	margin: 0 0 0 -3em;
-}
-ul#navigation li {
-	list-style: none;
-	text-decoration: none;
-}
-ul#navigation li ul {
-	margin: 0 0 0 1em;
-	padding: 0;
-	text-decoration: none;
-}
-* html ul#navigation li ul { /* Fix for IE */
-	margin: 0 0 0 -2em;
-	padding: 0;
-	text-decoration: none;
-}
-ul#navigation a {
-	color: #FFFFFF;
-	text-decoration: none;
-}
-ul#navigation a:hover {
-	color: #FFFFFF;
-	background-color: gray;
-	text-decoration: none;
-}
 a {
 	text-decoration: none;
 }
@@ -350,7 +310,7 @@ div#errorbox table tr td.message {
 	padding-top: 6px;
 	font-weight: bold;
 }
-#headerborder, #smallheaderborder, #footerborder {
+div#headerborder, div#smallheaderborder, div#footerborder {
 	height: 12px;
 	margin-left: auto;
 	margin-right: auto;
@@ -362,15 +322,15 @@ div#errorbox table tr td.message {
 	padding: 0pt;
 	width:100%;
 }
-#smallheaderborder {
+div#smallheaderborder {
 	height: 4px;
 }
-#headerlogo {
+div#headerlogo {
 	height: 64px;
 	background: #435370 url("header_bg.gif") center right no-repeat;
 	width: 100%;
 }
-#footer {
+div#footer {
 	font-size: 11px;
 	height: 15px;
 	color: #FFFFFF;
