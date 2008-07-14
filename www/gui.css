@@ -320,7 +320,9 @@ div#headerborder, div#smallheaderborder, div#footerborder {
 	background: #444444 url("carbon_bg.gif");
 	margin: 0pt;
 	padding: 0pt;
-	width:100%;
+	width: 100%;
+	font-size: 1px;
+	line-height: 0;
 }
 div#smallheaderborder {
 	height: 4px;
@@ -337,8 +339,8 @@ div#footer {
 	background: #435370 scroll left bottom;
 	width: 100%;
 	text-align: center;
-	vertical-align: center;
 }
 div#headernavbar {
+	width: 100%;
 	background: black url(/navbar_default.gif) center center repeat-x;
 }
