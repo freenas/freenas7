@@ -131,7 +131,7 @@ else if(options.find("big")){
 else d.style.marginTop=(p-5)+"px";
 for(i=lim;i>0;i--)
     d.appendChild(CreateStrip(i,side,color,border,btype));
-el.style.paddingBottom="0";
+el.style.paddingBottom=0;
 el.appendChild(d);
 }
 
