@@ -72,7 +72,7 @@ if(!isset($do_action)) {
   <tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">
-				<li class="tabact"><a href="system_packages.php" title="<?=gettext("Reload page");?>"><?=gettext("Packages");?></a></li>
+				<li class="tabact"><a href="system_packages.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Packages");?></span></a></li>
   		</ul>
   	</td>
 	</tr>

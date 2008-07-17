@@ -217,19 +217,19 @@ function pool_change() {
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><?=gettext("Pools");?></a></li>
-				<li class="tabinact"><a href="disks_zfs_dataset.php"><?=gettext("Datasets");?></a></li>
+				<li class="tabact"><a href="disks_zfs_zpool.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Pools");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_dataset.php"><span><?=gettext("Datasets");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
   <tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">
-				<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><?=gettext("Virtual device");?></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool.php"><?=gettext("Pool");?></a></li>
-				<li class="tabact"><a href="disks_zfs_zpool_tools.php" title="<?=gettext("Reload page");?>"><?=gettext("Tools");?></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><?=gettext("Information");?></a></li>
-				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><?=gettext("IO statistics");?></a></li>
+				<li class="tabinact"><a href="disks_zfs_zpool_vdevice.php"><span><?=gettext("Virtual device");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_zpool.php"><span><?=gettext("Pool");?></span></a></li>
+				<li class="tabact"><a href="disks_zfs_zpool_tools.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Tools");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_zpool_info.php"><span><?=gettext("Information");?></span></a></li>
+				<li class="tabinact"><a href="disks_zfs_zpool_io.php"><span><?=gettext("IO statistics");?></span></a></li>
   		</ul>
   	</td>
 	</tr>

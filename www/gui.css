@@ -230,55 +230,6 @@ a {
 	color: #FFFFFF;
 	font-weight: bold;
 }
-.tabnavtbl {
-}
-ul#tabnav {
-	font-size: 11px;
-	font-weight: bold;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-ul#tabnav li.tabinact {
-	float:left;
-	background-color: #777777;
-	color: #FFFFFF;
-	padding: 0;
-	white-space: nowrap;
-}
-* html ul#tabnav li.tabinact { /* For IE instead of rounded corners */
-	float:left;
-	border-left: 1px solid #999999;
-	background-color: #777777;
-	color: #FFFFFF;
-	padding: 0;
-	white-space: nowrap;
-}
-ul#tabnav li.tabinact a {
-	float: left;
-	display: block;
-	text-decoration: none;
-	padding: 5px 8px 5px 8px;
-	color: #FFFFFF;
-}
-ul#tabnav li.tabinact a:hover {
-	background: #435370;
-	color: #FFFFFF;
-}
-ul#tabnav li.tabact {
-	float: left;
-	background-color: #EEEEEE;
-	color: #000000;
-	padding: 0;
-	white-space: nowrap;
-}
-ul#tabnav li.tabact a {
-	float: left;
-	display: block;
-	text-decoration: none;
-	padding: 5px 8px 5px 8px;
-	color: #000000;
-}
 .tabcont {
 	background-color: #EEEEEE;
 	padding-right: 12px;

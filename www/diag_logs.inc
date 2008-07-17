@@ -54,7 +54,7 @@ function logs_display_menu($key, $menu) {
 		if ($key[0] === $menuk) {
 			$class = "tabact";
 		}
-		echo "     <li class='{$class}'><a href='{$menuv['link']}'>{$menuv['desc']}</a></li>\n";
+		echo "     <li class='{$class}'><a href='{$menuv['link']}'><span>{$menuv['desc']}</span></a></li>\n";
 	}
 	echo "    </ul>\n";
 	echo "  </td>\n";

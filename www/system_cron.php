@@ -74,14 +74,14 @@ if ($_GET['act'] == "del") {
 	<tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-      	<li class="tabinact"><a href="system_advanced.php"><?=gettext("Advanced");?></a></li>
-      	<li class="tabinact"><a href="system_email.php"><?=gettext("Email");?></a></li>
-      	<li class="tabinact"><a href="system_proxy.php"><?=gettext("Proxy");?></a></li>
-      	<li class="tabinact"><a href="system_swap.php"><?=gettext("Swap");?></a></li>
-      	<li class="tabinact"><a href="system_rc.php"><?=gettext("Command scripts");?></a></li>
-        <li class="tabact"><a href="system_cron.php" title="<?=gettext("Reload page");?>"><?=gettext("Cron");?></a></li>
-        <li class="tabinact"><a href="system_rcconf.php"><?=gettext("rc.conf");?></a></li>
-        <li class="tabinact"><a href="system_sysctl.php"><?=gettext("sysctl.conf");?></a></li>
+      	<li class="tabinact"><a href="system_advanced.php"><span><?=gettext("Advanced");?></span></a></li>
+      	<li class="tabinact"><a href="system_email.php"><span><?=gettext("Email");?></span></a></li>
+      	<li class="tabinact"><a href="system_proxy.php"><span><?=gettext("Proxy");?></span></a></li>
+      	<li class="tabinact"><a href="system_swap.php"><span><?=gettext("Swap");?></span></a></li>
+      	<li class="tabinact"><a href="system_rc.php"><span><?=gettext("Command scripts");?></span></a></li>
+        <li class="tabact"><a href="system_cron.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Cron");?></span></a></li>
+        <li class="tabinact"><a href="system_rcconf.php"><span><?=gettext("rc.conf");?></span></a></li>
+        <li class="tabinact"><a href="system_sysctl.php"><span><?=gettext("sysctl.conf");?></span></a></li>
       </ul>
     </td>
   </tr>

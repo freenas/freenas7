@@ -129,8 +129,8 @@ function enable_change(enable_change) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="shutdown.php"><?=gettext("Now");?></a></li>
-        <li class="tabact"><a href="shutdown_sched.php" title="<?=gettext("Reload page");?>"><?=gettext("Scheduled");?></a></li>
+        <li class="tabinact"><a href="shutdown.php"><span><?=gettext("Now");?></span></a></li>
+        <li class="tabact"><a href="shutdown_sched.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Scheduled");?></span></a></li>
       </ul>
     </td>
   </tr>

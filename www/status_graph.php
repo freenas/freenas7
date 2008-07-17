@@ -45,8 +45,8 @@ $ifnum = get_ifname($config['interfaces'][$curif]['if']);
   <tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">
-				<li class="tabact"><a href="status_graph.php" title="<?=gettext("Reload page");?>"><?=gettext("Traffic graph");?></a></li>
-				<li class="tabinact"><a href="status_graph_cpu.php"><?=gettext("CPU load");?></a></li>
+				<li class="tabact"><a href="status_graph.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Traffic graph");?></span></a></li>
+				<li class="tabinact"><a href="status_graph_cpu.php"><span><?=gettext("CPU load");?></span></a></li>
   		</ul>
   	</td>
 	</tr>

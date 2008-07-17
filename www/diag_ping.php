@@ -73,8 +73,8 @@ function get_interface_addr($ifdescr) {
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabact"><a href="diag_ping.php" title="<?=gettext("Reload page");?>"><?=gettext("Ping");?></a></li>
-				<li class="tabinact"><a href="diag_traceroute.php"><?=gettext("Traceroute");?></a></li>
+				<li class="tabact"><a href="diag_ping.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Ping");?></span></a></li>
+				<li class="tabinact"><a href="diag_traceroute.php"><span><?=gettext("Traceroute");?></span></a></li>
 			</ul>
 		</td>
 	</tr>

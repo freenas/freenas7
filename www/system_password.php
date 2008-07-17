@@ -81,8 +81,8 @@ if ($_POST) {
 	<tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-      	<li class="tabinact"><a href="system.php"><?=gettext("General");?></a></li>
-      	<li class="tabact"><a href="system_password.php" title="<?=gettext("Reload page");?>"><?=gettext("Password");?></a></li>
+      	<li class="tabinact"><a href="system.php"><span><?=gettext("General");?></span></a></li>
+      	<li class="tabact"><a href="system_password.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Password");?></span></a></li>
       </ul>
     </td>
   </tr>

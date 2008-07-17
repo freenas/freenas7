@@ -191,9 +191,9 @@ if ($_GET['act'] == "add") {
 	<tr>
 		<td class="tabnavtbl">
 		  <ul id="tabnav">
-				<li class="tabact"><a href="interfaces_assign.php" title="<?=gettext("Reload page");?>"><?=gettext("Management");?></a></li>
-				<li class="tabinact"><a href="interfaces_vlan.php"><?=gettext("VLAN");?></a></li>
-				<li class="tabinact"><a href="interfaces_lagg.php"><?=gettext("LAGG");?></a></li>
+				<li class="tabact"><a href="interfaces_assign.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Management");?></span></a></li>
+				<li class="tabinact"><a href="interfaces_vlan.php"><span><?=gettext("VLAN");?></span></a></li>
+				<li class="tabinact"><a href="interfaces_lagg.php"><span><?=gettext("LAGG");?></span></a></li>
 			</ul>
 		</td>
 	</tr>

@@ -85,8 +85,8 @@ if ($_GET['act'] == "del") {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-				<li class="tabinact"><a href="services_samba.php"><?=gettext("Settings");?></a></li>
-				<li class="tabact"><a href="services_samba_share.php" title="<?=gettext("Reload page");?>"><?=gettext("Shares");?></a></li>
+				<li class="tabinact"><a href="services_samba.php"><span><?=gettext("Settings");?></span></a></li>
+				<li class="tabact"><a href="services_samba_share.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Shares");?></span></a></li>
       </ul>
     </td>
   </tr>

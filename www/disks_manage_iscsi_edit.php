@@ -110,9 +110,9 @@ if ($_POST) {
 <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-      	<li class="tabinact"><a href="disks_manage.php"><?=gettext("Management");?></a></li>
-      	<li class="tabinact"><a href="disks_manage_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
-				<li class="tabact"><a href="disks_manage_iscsi.php" title="<?=gettext("Reload page");?>"><?=gettext("iSCSI Initiator");?></a></li>
+      	<li class="tabinact"><a href="disks_manage.php"><span><?=gettext("Management");?></span></a></li>
+      	<li class="tabinact"><a href="disks_manage_smart.php"><span><?=gettext("S.M.A.R.T.");?></span></a></li>
+				<li class="tabact"><a href="disks_manage_iscsi.php" title="<?=gettext("Reload page");?>"><span><?=gettext("iSCSI Initiator");?></span></a></li>
       </ul>
     </td>
   </tr>

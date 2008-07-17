@@ -101,17 +101,17 @@ function enable_change(enable_change) {
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabact"><a href="services_rsyncd.php" title="<?=gettext("Reload page");?>"><?=gettext("Server");?></a></li>
-				<li class="tabinact"><a href="services_rsyncd_client.php"><?=gettext("Client");?></a></li>
-				<li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local");?></a></li>
+				<li class="tabact"><a href="services_rsyncd.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Server");?></span></a></li>
+				<li class="tabinact"><a href="services_rsyncd_client.php"><span><?=gettext("Client");?></span></a></li>
+				<li class="tabinact"><a href="services_rsyncd_local.php"><span><?=gettext("Local");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabact"><a href="services_rsyncd.php" title="<?=gettext("Reload page");?>" ><?=gettext("Settings");?></a></li>
-				<li class="tabinact"><a href="services_rsyncd_module.php"><?=gettext("Modules");?></a></li>
+				<li class="tabact"><a href="services_rsyncd.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Settings");?></span></a></li>
+				<li class="tabinact"><a href="services_rsyncd_module.php"><span><?=gettext("Modules");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
