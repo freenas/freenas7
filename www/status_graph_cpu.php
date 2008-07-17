@@ -37,8 +37,8 @@ $pgtitle = array(gettext("Status"), gettext("Graph"), gettext("CPU load"));
   <tr>
 		<td class="tabnavtbl">
   		<ul id="tabnav">
-        <li class="tabinact"><a href="status_graph.php"><?=gettext("Traffic graph");?></a></li>
-        <li class="tabact"><a href="status_graph_cpu.php" title="<?=gettext("Reload page");?>"><?=gettext("CPU load");?></a></li>
+        <li class="tabinact"><a href="status_graph.php"><span><?=gettext("Traffic graph");?></span></a></li>
+        <li class="tabact"><a href="status_graph_cpu.php" title="<?=gettext("Reload page");?>"><span><?=gettext("CPU load");?></span></a></li>
       </ul>
     </td>
   </tr>

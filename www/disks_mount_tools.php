@@ -89,9 +89,9 @@ if(isset($_GET['action'])) {
   <tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabinact"><a href="disks_mount.php"><?=gettext("Management");?></a></li>
-        <li class="tabact"><a href="disks_mount_tools.php" title="<?=gettext("Reload page");?>"><?=gettext("Tools");?></a></li>
-        <li class="tabinact"><a href="disks_mount_fsck.php"><?=gettext("Fsck");?></a></li>
+        <li class="tabinact"><a href="disks_mount.php"><span><?=gettext("Management");?></span></a></li>
+        <li class="tabact"><a href="disks_mount_tools.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Tools");?></span></a></li>
+        <li class="tabinact"><a href="disks_mount_fsck.php"><span><?=gettext("Fsck");?></span></a></li>
       </ul>
     </td>
   </tr>

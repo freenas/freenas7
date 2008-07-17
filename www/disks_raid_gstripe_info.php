@@ -42,18 +42,18 @@ $pgrefresh = 5; // Refresh every 5 seconds.
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gconcat.php"><?=gettext("JBOD"); ?></a></li>
-	<li class="tabact"><a href="disks_raid_gstripe.php" title="<?=gettext("Reload page");?>" ><?=gettext("RAID 0");?></a></li>
-	<li class="tabinact"><a href="disks_raid_gmirror.php"><?=gettext("RAID 1"); ?></a></li>
-	<li class="tabinact"><a href="disks_raid_graid5.php"><?=gettext("RAID 5"); ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gvinum.php"><?=gettext("Geom Vinum"); ?> <?=gettext("(unstable)") ;?> </a></li>
+	<li class="tabinact"><a href="disks_raid_gconcat.php"><span><?=gettext("JBOD");?></span></a></li>
+	<li class="tabact"><a href="disks_raid_gstripe.php" title="<?=gettext("Reload page");?>"><span><?=gettext("RAID 0");?></span></a></li>
+	<li class="tabinact"><a href="disks_raid_gmirror.php"><span><?=gettext("RAID 1");?></span></a></li>
+	<li class="tabinact"><a href="disks_raid_graid5.php"><span><?=gettext("RAID 5");?></span></a></li>
+	<li class="tabinact"><a href="disks_raid_gvinum.php"><span><?=gettext("Geom Vinum");?> <?=gettext("(unstable)");?></span></a></li>
   </ul>
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gstripe.php"><?=gettext("Manage RAID"); ?></a></li>
-	<li class="tabinact"><a href="disks_raid_gstripe_tools.php"><?=gettext("Tools"); ?></a></li>
-	<li class="tabact"><a href="disks_raid_gstripe_info.php" title="<?=gettext("Reload page");?>" ><?=gettext("Information");?></a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe.php"><span><?=gettext("Manage RAID"); ?></span></a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe_tools.php"><span><?=gettext("Tools"); ?></span></a></li>
+	<li class="tabact"><a href="disks_raid_gstripe_info.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Information");?></span></a></li>
   </ul>
   </td></tr>
   <tr> 

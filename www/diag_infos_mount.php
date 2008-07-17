@@ -39,20 +39,20 @@ $pgtitle = array(gettext("Diagnostics"), gettext("Information"), gettext("Mounts
   <tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabinact"><a href="diag_infos.php"><?=gettext("Disks");?></a></li>
-				<li class="tabinact"><a href="diag_infos_ata.php"><?=gettext("Disks (ATA)");?></a></li>
-				<li class="tabinact"><a href="diag_infos_part.php"><?=gettext("Partitions");?></a></li>
-				<li class="tabinact"><a href="diag_infos_smart.php"><?=gettext("S.M.A.R.T.");?></a></li>
-				<li class="tabinact"><a href="diag_infos_space.php"><?=gettext("Space Used");?></a></li>
-				<li class="tabact"><a href="diag_infos_mount.php" title="<?=gettext("Reload page");?>"><?=gettext("Mounts");?></a></li>
-				<li class="tabinact"><a href="diag_infos_raid.php"><?=gettext("Software RAID");?></a></li>
-				<li class="tabinact"><a href="diag_infos_iscsi.php"><?=gettext("iSCSI Initiator");?></a></li>
-				<li class="tabinact"><a href="diag_infos_ad.php"><?=gettext("MS Domain");?></a></li>
-				<li class="tabinact"><a href="diag_infos_samba.php"><?=gettext("CIFS/SMB");?></a></li>
-				<li class="tabinact"><a href="diag_infos_ftpd.php"><?=gettext("FTP");?></a></li>
-				<li class="tabinact"><a href="diag_infos_rsync_client.php"><?=gettext("RSYNC Client");?></a></li>
-				<li class="tabinact"><a href="diag_infos_swap.php"><?=gettext("Swap");?></a></li>
-				<li class="tabinact"><a href="diag_infos_sockets.php"><?=gettext("Sockets");?></a></li>
+				<li class="tabinact"><a href="diag_infos.php"><span><?=gettext("Disks");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_ata.php"><span><?=gettext("Disks (ATA)");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_part.php"><span><?=gettext("Partitions");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_smart.php"><span><?=gettext("S.M.A.R.T.");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_space.php"><span><?=gettext("Space Used");?></span></a></li>
+				<li class="tabact"><a href="diag_infos_mount.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Mounts");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_raid.php"><span><?=gettext("Software RAID");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_iscsi.php"><span><?=gettext("iSCSI Initiator");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_ad.php"><span><?=gettext("MS Domain");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_samba.php"><span><?=gettext("CIFS/SMB");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_ftpd.php"><span><?=gettext("FTP");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_rsync_client.php"><span><?=gettext("RSYNC Client");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_swap.php"><span><?=gettext("Swap");?></span></a></li>
+				<li class="tabinact"><a href="diag_infos_sockets.php"><span><?=gettext("Sockets");?></span></a></li>
 			</ul>
 		</td>
 	</tr>

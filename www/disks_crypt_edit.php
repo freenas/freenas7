@@ -130,8 +130,8 @@ if (!isset($pconfig['do_action'])) {
 	<tr>
     <td class="tabnavtbl">
       <ul id="tabnav">
-        <li class="tabact"><a href="disks_crypt.php" title="<?=gettext("Reload page");?>" ><?=gettext("Management");?></a></li>
-        <li class="tabinact"><a href="disks_crypt_tools.php"><?=gettext("Tools");?></a></li>
+        <li class="tabact"><a href="disks_crypt.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Management");?></span></a></li>
+        <li class="tabinact"><a href="disks_crypt_tools.php"><span><?=gettext("Tools");?></span></a></li>
       </ul>
     </td>
   </tr>

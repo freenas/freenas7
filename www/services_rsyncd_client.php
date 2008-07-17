@@ -78,9 +78,9 @@ if ($_GET['act'] == "del") {
 	<tr>
 		<td class="tabnavtbl">
 			<ul id="tabnav">
-				<li class="tabinact"><a href="services_rsyncd.php"><?=gettext("Server") ;?></a></li>
-				<li class="tabact"><a href="services_rsyncd_client.php" title="<?=gettext("Reload page");?>"><?=gettext("Client") ;?></a></li>
-				<li class="tabinact"><a href="services_rsyncd_local.php"><?=gettext("Local") ;?></a></li>
+				<li class="tabinact"><a href="services_rsyncd.php"><span><?=gettext("Server");?></span></a></li>
+				<li class="tabact"><a href="services_rsyncd_client.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Client");?></span></a></li>
+				<li class="tabinact"><a href="services_rsyncd_local.php"><span><?=gettext("Local");?></span></a></li>
 			</ul>
 		</td>
 	</tr>
