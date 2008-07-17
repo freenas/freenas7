@@ -42,6 +42,7 @@ Majors changes:
 - Add 'perms' and 'xattrs' parameter to RSYNC client/local shares (FR 2009300).
 - Allow user to add additional parameters to RSYNC client/local shares.
 - Modified WebGUI look & feel.
+- Add ctorrent client (No WebGUI, only console support).
 
 Minors changes:
 - Enable WLAN interface setup via console.
@@ -100,7 +101,7 @@ Majors changes:
 - Added 'System: Advanced: sysctl.conf' WebGUI to add additional MIB's to /etc/sysctl.conf.
   Thanks to Nelson Silva (nsilva@hotlap.org).
 - Added DAAP server to support iTunes.
-- Update GEOM raid5. Thanks to Arne Wörner.
+- Update GEOM raid5. Thanks to Arne Wrner.
 - Refactor whole interface management code. Replace PHP code with FreeBSD rc scripts.
 - Add VLAN and LAGG support.
 - Use a memory filesystem for /var on LiveCD and 'embedded' installations. Default size is
@@ -155,7 +156,7 @@ Minors changes:
 - Add ability to add multiple destination email addresses on status report page (e.g. test@test,com;test2@test.com).
 - Display interfaces with status 'associated' in UPnP services WebGUI, too. Thanks to sea_sbs.
 - Add ability to configure multiple host names for Dynamic DNS service (FR 1952020).
-- Add patch to do a file system check on root if necessary. Thanks to Nelson Silva and Lars Köller.
+- Add patch to do a file system check on root if necessary. Thanks to Nelson Silva and Lars Kller.
 
 Bug fixes:
 - Display correct share name for mounted ISO's on initial system page (BR 1935353). Thanks to paq237.
@@ -210,7 +211,7 @@ Minors changes:
 - Add /usr/bin/bc - An arbitrary precision calculator language
 
 Bug fixes:
-- GID was not displayed correct on 'Access/Groups' WebGUI page. Thanks to Lars Köller.
+- GID was not displayed correct on 'Access/Groups' WebGUI page. Thanks to Lars Kller.
 - Use inadyn-mt to 02.01.13 because all newer ones causes a core dump (Bugreport has been sent).
 
 Permanent restrictions:
@@ -265,8 +266,8 @@ Minors changes:
 - Enable to set host name or IP address in 'Passive IP address' edit field on FTP service WebGUI page.
 - Enable user/group ID modification when creating a new user/group.
 - Add /usr/bin/getent.
-- Remove /usr/bin/dirname link to basename and add original application. Thanks to Lars Köller.
-- Only create SMB/CIFS users with uid >= 1001. Thanks to Lars Köller.
+- Remove /usr/bin/dirname link to basename and add original application. Thanks to Lars Kller.
+- Only create SMB/CIFS users with uid >= 1001. Thanks to Lars Kller.
 
 Bug fixes:
 - Calculating iSCSI extent IDs fails for numbers > 10.
@@ -279,7 +280,7 @@ Bug fixes:
 - Fix bug in user management. When creating several users without pressing the 'Apply' button the user id was
   not updated, this means all new users have the same user id.
 - Fix encoding bug in graphs (WebGUI). Thanks to Jonas Svensson.
-- Interface polling was not set even if it was selected in the WebGUI. Thanks to Lars Köller.
+- Interface polling was not set even if it was selected in the WebGUI. Thanks to Lars Kller.
 
 Permanent restrictions:
 - It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
@@ -455,7 +456,7 @@ Bug fixes:
 - Add missing link /etc/exports -> /var/etc/exports.
 - Set //syslogd/nentries to 50 (by default) in config.xml if it is not set. Causes errors in status report.
 - Recyle bin setting was not stored when it was activated for a Samba share.
-- Handle special characters in config.xml (e.g. öäü).
+- Handle special characters in config.xml (e.g. ).
 - Fix bug in make.sh. Partition description was incorrect, 'fstype' was not set correct for partition 'a'.
 
 FreeNAS 0.685RC2 (unreleased):
@@ -936,15 +937,15 @@ About the SYNC between two FreeNAS box, You must have the same share name on the
 Bugs fixed:
 - Fixed the FTP bug that permit the user going to the / folder (chrooting vsftpd)
 - Remove the link0 options for fxp drivers (seem create problem with some users)
-- Prevent using the reserved system login name (bug n°1433691)
+- Prevent using the reserved system login name (bug n1433691)
 - Prevent adding the system partition on the disk:mount point list
-- No more error message "no config file found" when the image file is directly written on CF or hard drive. (bug n° 1424451)
-- FAT volume are now mounted in read/write (chmod 777) for all services(bug n° 1400583 )
-- Share/Mount Name and Description Error checking (bug n°1433339)
+- No more error message "no config file found" when the image file is directly written on CF or hard drive. (bug n 1424451)
+- FAT volume are now mounted in read/write (chmod 777) for all services(bug n 1400583 )
+- Share/Mount Name and Description Error checking (bug n1433339)
 - Mount share not sorted (Request Id: 1442332)
-- Error message "This group already exists in the group list" when editing group (bug n°1443102)
-- Rsync log works now (bug n°1437039)
-- Editing user prevent starting WebGUI (bug n°1443403)
+- Error message "This group already exists in the group list" when editing group (bug n1443102)
+- Rsync log works now (bug n1437039)
+- Editing user prevent starting WebGUI (bug n1443403)
 
 Tunning:
 - setting kernels variables to:
@@ -1009,11 +1010,11 @@ New features:
 
 Bugs fixed:
 
-- fix the bug "Windows station display incorrect disk size" (n° 1397508)
-- Fix a problem for configuring a Nforce Ethernet card (n° 1379697)
-- Fix a problem when there is ONLY a USB keyboard plug on the PC (n°1387815)
-- Fix the wrong free memory display (bug n°1368478)
-- Fix the Samba Server description not used (bug n°1395997)
+- fix the bug "Windows station display incorrect disk size" (n 1397508)
+- Fix a problem for configuring a Nforce Ethernet card (n 1379697)
+- Fix a problem when there is ONLY a USB keyboard plug on the PC (n1387815)
+- Fix the wrong free memory display (bug n1368478)
+- Fix the Samba Server description not used (bug n1395997)
 
 
 FreeNAS 0.5:
@@ -1021,16 +1022,16 @@ FreeNAS 0.5:
 
 New features:
 - Software RAID with gvinum...need to be more tested (have a little problem with RAID 1 and soft reboot)
-- S.M.A.R.T support (only logging actualy) with smartmontools (feature n°1368868)
-- ext2 filesystem support...need to be more tested (feature n°1385882)
-- Playing few notes after startup and reboot (feature n°1373316)
-- Removing the small boot menu (feature n°1377592)
+- S.M.A.R.T support (only logging actualy) with smartmontools (feature n1368868)
+- ext2 filesystem support...need to be more tested (feature n1385882)
+- Playing few notes after startup and reboot (feature n1373316)
+- Removing the small boot menu (feature n1377592)
 
 Bug resolved:
-- Deleting file with FTP by replace pure-ftpd with vsftpd (bug n°1367965)
-- Displaying hardware RAID disk (bug n°1373409)
-- Call to undefined function in system_advanced (bug n°1372744)
-- NFS server doesn't works (bug n°1372054)
+- Deleting file with FTP by replace pure-ftpd with vsftpd (bug n1367965)
+- Displaying hardware RAID disk (bug n1373409)
+- Call to undefined function in system_advanced (bug n1372744)
+- NFS server doesn't works (bug n1372054)
 
 Know bugs (WARNING!):
 - When you delete a RAID volume, you must remove (with the RAID/Tools menu) all the object (especially the disks) used by this volume.
