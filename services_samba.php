@@ -208,13 +208,11 @@ function authentication_change() {
 </script>
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td>
-      <div class="tabs">
-      <ul>
-        <li class="current"><a href="services_samba.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Settings");?></span></a></li>
-				<li><a href="services_samba_share.php"><span><?=gettext("Shares");?></span></a></li>
+    <td class="tabnavtbl">
+      <ul id="tabnav">
+        <li class="tabact"><a href="services_samba.php" title="<?=gettext("Reload page");?>"><span><?=gettext("Settings");?></span></a></li>
+				<li class="tabinact"><a href="services_samba_share.php"><span><?=gettext("Shares");?></span></a></li>
       </ul>
-      </div>
     </td>
   </tr>
   <tr>
