@@ -43,6 +43,7 @@ Majors changes:
 - Allow user to add additional parameters to RSYNC client/local shares.
 - Modified WebGUI look & feel.
 - Add ctorrent client (No WebGUI, only console support).
+- Disable splashscreen because it causes reboots on some systems.
 
 Minors changes:
 - Enable WLAN interface setup via console.

@@ -155,7 +155,7 @@ device		kbdmux		# keyboard multiplexer
 
 device		vga		# VGA video card driver
 
-device		splash		# Splash screen and screen saver support
+#device		splash		# Splash screen and screen saver support
 
 # syscons is the default console driver, resembling an SCO console
 device		sc
@@ -315,7 +315,7 @@ options		DEVICE_POLLING
 options		HZ=1000
 
 # Splashscreen
-options		VESA
+#options		VESA
 
 # Network drivers:
 device		arl			# Aironet Arlan 655 wireless adapters

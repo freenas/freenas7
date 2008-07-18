@@ -55,21 +55,12 @@ FREENAS_IMG_SECTS=32
 FREENAS_IMG_HEADS=16
 
 # Options:
-if [ "amd64" = ${FREENAS_ARCH} ]; then
 # Support bootmenu
 OPT_BOOTMENU=1
 # Support bootsplash
 OPT_BOOTSPLASH=0
 # Support serial console
 OPT_SERIALCONSOLE=0
-else
-# Support bootmenu
-OPT_BOOTMENU=1
-# Support bootsplash
-OPT_BOOTSPLASH=1
-# Support serial console
-OPT_SERIALCONSOLE=0
-fi
 
 # Dialog command
 DIALOG="dialog"
