@@ -41,7 +41,7 @@ NEED TESTING:
 
 Help needed:
 - Need help for adding LDAP authentication feature:
-Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
+  Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
 FreeNAS 0.69b1 (Fedaykin):
 --------------------------
