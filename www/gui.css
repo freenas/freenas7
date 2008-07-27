@@ -3,9 +3,10 @@ body, td, th, input, select {
 	font-size: 11px;
 }
 body {
-	background: #FFFFFF;
-	margin: 0pt;
+	background: #777777 url("background.gif");
+	margin: 0px 20px 15px 20px;
 	padding: 0pt;
+	min-width: 700px;
 }
 body a:link, body a:active, body a:visited {
 	color: #0000CC;
@@ -31,19 +32,6 @@ pre {
 	font-size: 18px;
 	color: #777777;
 	font-weight: bold;
-}
-.pgfooter {
-	background-color: #435370;
-}
-.pgfootertext {
-	font-size: 11px;
-	color: #FFFFFF;
-}
-.pgfootertext a:link, .pgfootertext a:active, .pgfootertext a:visited {
-	color: #FFFFFF;
-}
-.pgfootertext a:hover {
-	color: #DDDDDD;
 }
 .vncellbg, .vncell, .vncellreq, .vncellt {
 	background-color: #DDDDDD;
@@ -261,7 +249,7 @@ div#errorbox table tr td.message {
 	padding-top: 6px;
 	font-weight: bold;
 }
-div#headerborder, div#smallheaderborder, div#footerborder {
+div#headerborder, div#smallheaderborder {
 	height: 12px;
 	margin-left: auto;
 	margin-right: auto;
@@ -284,14 +272,55 @@ div#headerlogo {
 	width: 100%;
 }
 div#footer {
-	font-size: 11px;
-	height: 15px;
-	color: #FFFFFF;
-	background: #435370 scroll left bottom;
-	width: 100%;
+	margin: 5px 0px 0px 0px;
 	text-align: center;
+}
+div#footer span {
+	font-size: 11px;
+	color: #FFFFFF;
+}
+div#footer span a:link, div#footer span a:active, div#footer span a:visited {
+	color: #FFFFFF;
+}
+div#footer span a:hover {
+	color: #DDDDDD;
 }
 div#headernavbar {
 	width: 100%;
 	background: black url(/navbar_default.gif) center center repeat-x;
+}
+div#content, div#content-bottom {
+	background: #FFFFFF;
+}
+span.corners-top {
+	background-image: url("cornerBottomLeft.png");
+	background-position: 0% 0%;
+}
+span.corners-bottom {
+	padding: 0;
+	background-image: url("cornerBottomLeft.png");
+	background-position: 0% 100%;
+	clear: both;
+}
+span.corners-top, span.corners-bottom, span.corners-top span, span.corners-bottom span {
+	background-repeat: no-repeat;
+	display: block;
+	font-size: 1px;
+	height: 8px;
+	line-height: 1px;
+}
+span.corners-top span {
+	background-image: url("cornerBottomRight.png");
+	background-position: 100% 0%;
+}
+span.corners-bottom span {
+	background-image: url("cornerBottomRight.png");
+	background-position: 100% 100%;
+}
+span.corners-top, span.corners-bottom, span.corners-top span, span.corners-bottom span {
+	background-repeat: no-repeat;
+	display: block;
+	font-size: 1px;
+	height: 8px;
+	line-height: 1px;
 }
