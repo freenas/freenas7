@@ -507,7 +507,7 @@ EOD;
 		<script type="text/javascript" src="niftycube/niftycube.js"></script>
 		<script type="text/javascript" src="niftycube/niftylayout.js"></script>
 		<style type="text/css">
-			body { background: #FFFFFF; }
+			body { background: #FFFFFF; min-width: 0px; }
 
 			.filechooser { background-color: #fff; margin: 0px; padding: 0px; }
 			.filechooser table { width: 100%; height: 100%; font-size: 11px; font-family: Tahoma, Verdana, Arial, sans-serif !important; }
