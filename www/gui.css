@@ -249,23 +249,6 @@ div#errorbox table tr td.message {
 	padding-top: 6px;
 	font-weight: bold;
 }
-div#headerborder, div#smallheaderborder {
-	height: 12px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-bottom: 0.6em;
-	padding-top: 0.6em;
-	position: relative;
-	background: #444444 url("carbon_bg.gif");
-	margin: 0pt;
-	padding: 0pt;
-	width: 100%;
-	font-size: 1px;
-	line-height: 0;
-}
-div#smallheaderborder {
-	height: 4px;
-}
 div#headerlogo {
 	height: 64px;
 	background: #435370 url("header_bg.gif") center right no-repeat;
@@ -289,7 +272,7 @@ div#headernavbar {
 	width: 100%;
 	background: black url(/navbar_default.gif) center center repeat-x;
 }
-div#content, div#content-bottom {
+div#content, div#content-bottom, div#content-top {
 	background: #FFFFFF;
 }
 span.corners-top {
