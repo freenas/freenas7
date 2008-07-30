@@ -136,7 +136,6 @@ function display_menu($menuid) {
 	<script type="text/javascript" src="niftycube/niftylayout.js"></script>
 </head>
 <body>
-<div id="headerborder">&nbsp</div>
 <div id="headerlogo">
 	<table border="0" cellspacing="0" cellpadding="0" width="100%">
 		<tr>
@@ -149,7 +148,6 @@ function display_menu($menuid) {
 		</tr>
 	</table>
 </div>
-<div id="smallheaderborder">&nbsp</div>
 <div id="headernavbar">
 	<ul id="navbarmenu">
 		<?=display_menu("system");?>
@@ -163,7 +161,6 @@ function display_menu($menuid) {
 	</ul>
 	<div style="clear:both"></div>
 </div>
-<div id="smallheaderborder">&nbsp</div>
 <div id="content">
 	<table width="100%" border="0" cellspacing="0" cellpadding="2">
 	  <tr valign="top">
