@@ -537,13 +537,13 @@
 		<enable/>
 		<servername>xxx</servername>
 		<alwaysscan/>
-		<admin_pw>xxx</admin_pw>
 		-->
 		<port>3689</port>
-		<rescaninterval>0</rescaninterval>
+		<rescaninterval>3600</rescaninterval>
 		<scantype>0</scantype>
 		<content></content>
 		<dbdir></dbdir>
+		<admin_pw>freenas</admin_pw>
 	</daap>
   <sshd>
 		<!-- <enable/> -->
