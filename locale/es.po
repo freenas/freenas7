@@ -3,13 +3,13 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To:  \n"
 "POT-Creation-Date: 2008-06-26 08:18+0000\n"
-"PO-Revision-Date: 2008-06-14 05:52+0000\n"
-"Last-Translator: jfunez <Unknown>\n"
+"PO-Revision-Date: 2008-07-24 22:41+0000\n"
+"Last-Translator: Marlon Cisternas Milla <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2008-07-06 18:28+0000\n"
+"X-Launchpad-Export-Date: 2008-07-30 13:21+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: SPAIN\n"
 "X-Poedit-Language: Spanish\n"
@@ -436,7 +436,7 @@ msgid "Add module"
 msgstr "Añadir módulo"
 
 msgid "Add mount point"
-msgstr ""
+msgstr "Añadir punto de montaje"
 
 msgid "Add option"
 msgstr "Añadir opción"
@@ -675,10 +675,10 @@ msgid "Browseable"
 msgstr "Visible"
 
 msgid "CCMP"
-msgstr ""
+msgstr "CCMP"
 
 msgid "CCMP TKIP"
-msgstr ""
+msgstr "CCMP TKIP"
 
 msgid "CD/DVD or Old Software RAID"
 msgstr "CD/DVD o software RAID antiguo"
@@ -981,7 +981,7 @@ msgid "Delete module"
 msgstr "Eliminar Módulo"
 
 msgid "Delete mount point"
-msgstr ""
+msgstr "Borrar punto de montaje"
 
 msgid "Delete option"
 msgstr "Borrar opción"
@@ -1373,7 +1373,7 @@ msgid "Edit module"
 msgstr "Editar módulo"
 
 msgid "Edit mount point"
-msgstr ""
+msgstr "Editar punto de montaje"
 
 msgid "Edit option"
 msgstr "Editar opción"
@@ -1669,7 +1669,7 @@ msgid "Failed."
 msgstr "Falló."
 
 msgid "Failover"
-msgstr ""
+msgstr "Failover"
 
 #, fuzzy
 msgid "File"
@@ -2178,7 +2178,7 @@ msgid "List of open files"
 msgstr "Lista de archivos abiertos"
 
 msgid "List of shares"
-msgstr ""
+msgstr "Lista de partes"
 
 msgid "Load"
 msgstr "Cargar"
@@ -2337,7 +2337,7 @@ msgid "Method used to store your password in your LDAP."
 msgstr "Método empleado para almacenar su contraseña en su LDAP."
 
 msgid "MibII"
-msgstr ""
+msgstr "MibII"
 
 msgid "Minimum free space"
 msgstr "Espacio libre mínimo"
@@ -2759,7 +2759,7 @@ msgid "Ports"
 msgstr "Puertos"
 
 msgid "PostInit"
-msgstr ""
+msgstr "PostInit"
 
 msgid "Power Daemon"
 msgstr "Daemon de alimentación eléctrica"
@@ -2768,7 +2768,7 @@ msgid "Power mode"
 msgstr ""
 
 msgid "PreInit"
-msgstr ""
+msgstr "PreInit"
 
 msgid "Prefix"
 msgstr "Prefijo"
@@ -3456,7 +3456,7 @@ msgstr "El MIB '%s' ya existe."
 
 #, php-format
 msgid "The MIB '%s' doesn't exist in sysctl."
-msgstr ""
+msgstr "El MIB '%s' no existe en sysctl."
 
 #, php-format
 msgid ""
@@ -4236,7 +4236,7 @@ msgid "Version"
 msgstr "Versión"
 
 msgid "View license"
-msgstr ""
+msgstr "Ver licencia"
 
 msgid "Virtual interface"
 msgstr ""
@@ -4251,7 +4251,7 @@ msgid "Volume label of the new file system."
 msgstr ""
 
 msgid "WAN address"
-msgstr ""
+msgstr "dirección WAN"
 
 msgid "WEP"
 msgstr ""
@@ -4272,7 +4272,7 @@ msgid "WPA-PSK (Pre Shared Key)"
 msgstr ""
 
 msgid "WPA-PSK WPA-EAP"
-msgstr ""
+msgstr "WPA-PSK WPA-EAP"
 
 msgid "Warning"
 msgstr "Precaución"
@@ -4284,7 +4284,7 @@ msgstr ""
 "registro!"
 
 msgid "WebGUI"
-msgstr ""
+msgstr "WebGUI"
 
 msgid "Webserver"
 msgstr ""
@@ -4410,13 +4410,13 @@ msgid "chroot() everyone, but root."
 msgstr ""
 
 msgid "crlf"
-msgstr ""
+msgstr "crlf"
 
 msgid "days"
 msgstr "días"
 
 msgid "dbpath"
-msgstr ""
+msgstr "dbpath"
 
 #, fuzzy, php-format
 msgid "e.g. %s"
@@ -4447,7 +4447,7 @@ msgid "months"
 msgstr "meses"
 
 msgid "mswindows"
-msgstr ""
+msgstr "mswindows"
 
 msgid "n/a"
 msgstr "n/d"
@@ -4456,31 +4456,31 @@ msgid "noadouble"
 msgstr ""
 
 msgid "nodev"
-msgstr ""
+msgstr "nodev"
 
 msgid "nofileid"
-msgstr ""
+msgstr "nofileid"
 
 msgid "nohex"
-msgstr ""
+msgstr "nohex"
 
 msgid "nostat"
-msgstr ""
+msgstr "nostat"
 
 msgid "password_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
 
 msgid "pasv_max_port"
-msgstr ""
+msgstr "pasv_max_port"
 
 msgid "pasv_min_port"
-msgstr ""
+msgstr "pasv_min_port"
 
 msgid "prodos"
-msgstr ""
+msgstr "prodos"
 
 msgid "rc.conf"
-msgstr ""
+msgstr "rc.conf"
 
 msgid "rotated block-interleaved parity"
 msgstr "rotated block-interleaved parity"
@@ -4492,13 +4492,13 @@ msgid "striping"
 msgstr "striping"
 
 msgid "sysctl.conf"
-msgstr ""
+msgstr "sysctl.conf"
 
 msgid "type"
 msgstr ""
 
 msgid "upriv"
-msgstr ""
+msgstr "upriv"
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
 msgstr ""
