@@ -4,7 +4,7 @@ body, td, th, input, select {
 }
 body {
 	background: #777777 url("background.gif");
-	margin: 0px 20px 15px 20px;
+	margin: 0px 40px 20px 40px;
 	padding: 0pt;
 	min-width: 700px;
 }
