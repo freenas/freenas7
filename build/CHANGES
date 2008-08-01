@@ -51,6 +51,8 @@ Minors changes:
 - Add 'Loewe Connect' UPnP support (FR 2003278).
 - Modity iSCSI-Target WebGUI. This will hopefully reduce 'Extent' configuration problems.
 - Disallow adding duplicate named CIFS/SMB and AFP shares. Thanks to Falk Menzel.
+- Rename environment variable used by /etc/rc.d/rsync_client and rsync_local scripts to
+  rsync_client_logfile and rsync_local_logfile.
 
 Bug fixes:
 - Fix bug in interfaces WebGUI. Thanks to freenas_fan for this tip.
