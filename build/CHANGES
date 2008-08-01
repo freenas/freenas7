@@ -5,7 +5,8 @@ FreeNAS 0.7 (Sardaukar):
 
 Majors changes:
 - Upgrade to FreeBSD 7.0.
-- Include ZFS support. Thanks to Falk Menzel for testing and giving some tipps and ideas.
+- Include ZFS support. Thanks to Nelson Silva for doing core coding and Falk Menzel
+  for testing and giving some tipps and ideas.
 
 Majors changes:
 
@@ -102,7 +103,7 @@ Majors changes:
 - Added 'System: Advanced: sysctl.conf' WebGUI to add additional MIB's to /etc/sysctl.conf.
   Thanks to Nelson Silva (nsilva@hotlap.org).
 - Added DAAP server to support iTunes.
-- Update GEOM raid5. Thanks to Arne Wrner.
+- Update GEOM raid5. Thanks to Arne Wörner.
 - Refactor whole interface management code. Replace PHP code with FreeBSD rc scripts.
 - Add VLAN and LAGG support.
 - Use a memory filesystem for /var on LiveCD and 'embedded' installations. Default size is
