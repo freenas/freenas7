@@ -11,15 +11,13 @@
 
 echo "Updating hosts."
 
-# Get interface address
-_if=`configxml_get "//interfaces/lan/if"`
-_ipaddr=`get_ipaddr inet ${_if}`
-
 # Generate /etc/hosts file
 /usr/local/bin/xml sel -t -m "//system" \
 	-v "concat('::1 localhost localhost.',domain)" -n \
 	-v "concat('127.0.0.1 localhost localhost.',domain)" -n \
-	-o "${_ipaddr} " -v "concat(hostname,'.',domain,' ',hostname)" -n \
+	-i "//interfaces/lan/ipaddr[. != 'dhcp']" \
+		-v "concat(//interfaces/lan/ipaddr,' ',hostname,'.',domain,' ',hostname)" -n \
+	-b \
 	-m "//system/hosts" \
 		-i "string-length(name) > 0" -v "concat(address,' ',name)" -n -b \
 	-b \
