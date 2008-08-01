@@ -14,7 +14,7 @@ name="rsync_client"
 load_rc_config $name
 
 # Defaults
-rsync_logfile=${rsync_logfile:-"/var/log/${name}.log"}
+rsync_client_logfile=${rsync_client_logfile:-"/var/log/${name}.log"}
 
 # Get number of scripts to generate
 _scriptnum=`configxml_get_count "//rsync/rsyncclient"`
@@ -37,7 +37,7 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-o "exit" -n \
 			-o "fi" -n \
 			-o "/usr/bin/touch /var/run/rsync_client-running${_i}" -n \
-			-o "/usr/local/bin/rsync -rtz --log-file=${rsync_logfile} " \
+			-o "/usr/local/bin/rsync -rtz --log-file=${rsync_client_logfile} " \
 			-m "options" \
 				-i "count(delete) > 0" -o "--delete --delete-after " -b \
 				-i "count(quiet) > 0" -o "--quiet " -b \
