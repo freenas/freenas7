@@ -1,7 +1,7 @@
 #navbarmenu {
 	margin: 0;
 	padding: 0;
-	z-index: 30;
+	line-height: 32px;
 }
 #navbarmenu li {
 	margin: 0;
@@ -21,6 +21,7 @@
 }
 #navbarmenu li a:hover {
 	background: transparent url(/navbar_active.gif) center center repeat-x;
+	color: black;
 }
 #navbarmenu div {
 	position: absolute;
@@ -29,11 +30,13 @@
 	padding: 0;
 	background: #000000;
 	z-index: 100;
-	border: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
 	width: 205px;
+	line-height: 12px;
 }
-#navbarmenu div a
-{
+#navbarmenu div a {
 	position: relative;
 	display: block;
 	margin: 0;
@@ -46,6 +49,7 @@
 	background: #000000;
 	font-size: 11px;
 	font-weight: normal;
+	color: white;
 }
 #navbarmenu div a:hover {
 	background: transparent url(/navbar_active.gif) center center repeat-x;
