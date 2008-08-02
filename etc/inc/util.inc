@@ -643,6 +643,7 @@ function get_gmirror_disks_list()
 			$disklist[$diskname]['devicespecialfile'] = "/dev/mirror/" . $diskname;
 			$disklist[$diskname]['type'] = "gmirror";
 			$disklist[$diskname]['desc'] = "Software RAID";
+			$disklist[$diskname]['state'] = gettext("Unknown");
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['devicespecialfile']);
@@ -699,6 +700,7 @@ function get_gconcat_disks_list()
 			$disklist[$diskname]['devicespecialfile'] = "/dev/concat/" . $diskname;
 			$disklist[$diskname]['type'] = "gconcat";
 			$disklist[$diskname]['desc'] = "Software RAID";
+			$disklist[$diskname]['state'] = gettext("Unknown");
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['devicespecialfile']);
@@ -755,6 +757,7 @@ function get_gstripe_disks_list()
 			$disklist[$diskname]['devicespecialfile'] = "/dev/stripe/" . $diskname;
 			$disklist[$diskname]['type'] = "gstripe";
 			$disklist[$diskname]['desc'] = "Software RAID";
+			$disklist[$diskname]['state'] = gettext("Unknown");
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['devicespecialfile']);
@@ -811,6 +814,7 @@ function get_graid5_disks_list()
 			$disklist[$diskname]['devicespecialfile'] = "/dev/raid5/" . $diskname;
 			$disklist[$diskname]['type'] = "graid5";
 			$disklist[$diskname]['desc'] = "Software RAID";
+			$disklist[$diskname]['state'] = gettext("Unknown");
 
 			/* Get diskinfo to get disk size */
 			$diskinfo = disks_get_diskinfo($disklist[$diskname]['devicespecialfile']);
