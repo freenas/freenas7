@@ -224,6 +224,8 @@ mkconf_cmd()
 				-o "vfs objects = recycle" -n \
 				-o "recycle:keeptree = yes" -n \
 				-o "recycle:versions = yes" -n \
+				-o "recycle:touch = yes" -n \
+				-o "recycle:directory_mode = 0777" -n \
 			-b \
 			-i "count(//afp/enable) > 0" \
 				-o "#vfs objects = netatalk" -n \

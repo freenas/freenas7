@@ -1,5 +1,5 @@
 PORTNAME=			samba
-PORTVERSION=	3.0.30
+PORTVERSION=	3.0.31
 PORTREVISION=	0
 PORTEPOCH=		1
 CATEGORIES=		net
@@ -46,12 +46,6 @@ CONFIGURE_ARGS+=	--disable-cups \
 									--with-sendfile-support \
 									--with-acl-support
 
-.include <bsd.port.pre.mk>
-
-.if ${OSVERSION} >= 700055
-CONFIGURE_ARGS+=	--with-aio-support
-.endif
-
 pre-build:
 	cd ${WRKSRC} && ${MAKE} pch
 
@@ -85,4 +79,4 @@ do-install:
 	@${LN} -f -v -s ${SAMBA_LIBDIR}/nss_winbind.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_winbind.so.1
 	@${LN} -f -v -s ${SAMBA_LIBDIR}/nss_wins.so ${FREENAS_ROOTFS}${SAMBA_LIBDIR}/nss_wins.so.1
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>
