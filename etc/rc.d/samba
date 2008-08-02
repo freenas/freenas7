@@ -33,6 +33,9 @@ command_args="${samba_config:+-s "${samba_config}"}"			#"
 samba_daemons="nmbd smbd winbindd"
 samba_lockdir="${samba_lockdir=/var/run}"
 samba_piddir="${samba_piddir=/var/run}"
+samba_recycle_repository="${samba_recycle_repository:-".recycle/%U"}"
+samba_recycle_directory_mode="${samba_recycle_directory_mode:-"0777"}"
+samba_recycle_subdir_mode="${samba_recycle_subdir_mode:-"0700"}"
 
 # Check if 'Active Directory' is enabled?
 configxml_isset //ad/enable
@@ -222,10 +225,12 @@ mkconf_cmd()
 			-b \
 			-i "count(recyclebin) > 0" \
 				-o "vfs objects = recycle" -n \
+				-o "recycle:repository = ${samba_recycle_repository}" -n \
 				-o "recycle:keeptree = yes" -n \
 				-o "recycle:versions = yes" -n \
 				-o "recycle:touch = yes" -n \
-				-o "recycle:directory_mode = 0777" -n \
+				-o "recycle:directory_mode = ${samba_recycle_directory_mode}" -n \
+				-o "recycle:subdir_mode = ${samba_recycle_subdir_mode}" -n \
 			-b \
 			-i "count(//afp/enable) > 0" \
 				-o "#vfs objects = netatalk" -n \
