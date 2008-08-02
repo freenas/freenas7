@@ -45,6 +45,7 @@ Majors changes:
 - Modified WebGUI look & feel.
 - Add ctorrent client (No WebGUI, only console support).
 - Disable splashscreen because it causes reboots on some systems.
+- Keep time zone informations up to date (BR 2034132) . Thanks to Azguy987.
 
 Minors changes:
 - Enable WLAN interface setup via console.
