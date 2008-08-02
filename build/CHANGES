@@ -39,7 +39,7 @@ FreeNAS 0.69b2 (Stone burner):
 Majors changes:
 - Upgrade e2fsprogs to 1.40.11.
 - Upgrade fusefs-ntfs/ntfs-3g to 1.2531.
-- Upgrade Samba to 3.0.31.
+- Upgrade Samba to 3.0.30.
 - Add 'perms' and 'xattrs' parameter to RSYNC client/local shares (FR 2009300).
 - Allow user to add additional parameters to RSYNC client/local shares.
 - Modified WebGUI look & feel.
