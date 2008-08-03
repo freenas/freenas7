@@ -154,6 +154,25 @@ function display_menu($menuid) {
 		<?=display_menu("interfaces");?>
 		<?=display_menu("disks");?>
 		<?=display_menu("services");?>
+		<!-- Begin extension section -->
+		<?php if (is_dir("{$g['www_path']}/ext")):?>
+		<li>
+			<a href="" onmouseover="mopen('extensions')" onmouseout="mclosetime()"><?=gettext("Extensions");?></a>
+			<div id="extensions" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+				<?php
+				$dh = @opendir("{$g['www_path']}/ext");
+				if ($dh) {
+					while (($extd = readdir($dh)) !== false) {
+						if (($extd === ".") || ($extd === ".."))
+							continue;
+						@include("{$g['www_path']}/ext/" . $extd . "/menu.inc");
+					}
+					closedir($dh);
+				}?>
+			</div>
+		</li>
+		<?php endif;?>
+		<!-- End extension section -->
 		<?=display_menu("access");?>
 		<?=display_menu("status");?>
 		<?=display_menu("diagnostics");?>
