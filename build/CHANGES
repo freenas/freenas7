@@ -37,7 +37,7 @@ FreeNAS 0.69b2 (Stone burner):
 ------------------------------
 
 Majors changes:
-- Upgrade e2fsprogs to 1.40.11.
+- Upgrade e2fsprogs to 1.41.0.
 - Upgrade fusefs-ntfs/ntfs-3g to 1.2531.
 - Upgrade Samba to 3.0.30.
 - Add 'perms' and 'xattrs' parameter to RSYNC client/local shares (FR 2009300).
@@ -45,7 +45,7 @@ Majors changes:
 - Modified WebGUI look & feel.
 - Add ctorrent client (No WebGUI, only console support).
 - Disable splashscreen because it causes reboots on some systems.
-- Keep time zone informations up to date (BR 2034132) . Thanks to Azguy987.
+- Keep time zone informations up to date (BR 2034132). Thanks to Azguy987.
 
 Minors changes:
 - Enable WLAN interface setup via console.
@@ -55,7 +55,8 @@ Minors changes:
 - Rename environment variable used by /etc/rc.d/rsync_client and rsync_local scripts to
   rsync_client_logfile and rsync_local_logfile.
 - If 'Recycle bin' has been enabled for a CIFS/SMB share the '.recycle' directory will
-  be created with 0777 permissions.
+  be created with 0777 permissions. A subdir will be created for each user with 0700
+	permissions.
 
 Bug fixes:
 - Fix bug in interfaces WebGUI. Thanks to freenas_fan for this tip.
