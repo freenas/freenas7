@@ -55,7 +55,8 @@ msgstr "Jan Fev Mar Abr Mai Jun Jul Ago Set Out Nov Dez"
 
 msgid "Time"
 msgstr ""
-"Hora\n"
+"Hora
+\n"
 "Tempo"
 
 msgid "%I:%M %p"
@@ -123,8 +124,10 @@ msgstr "Não"
 
 msgid "off"
 msgstr ""
-"Desligado\n"
-"Desactivado\n"
+"Desligado
+\n"
+"Desactivado
+\n"
 "Fora"
 
 msgid "OK"
@@ -132,22 +135,26 @@ msgstr "Confirmar"
 
 msgid "on"
 msgstr ""
-"Ligado\n"
+"Ligado
+\n"
 "Activo"
 
 msgid "To"
 msgstr ""
-"Para\n"
+"Para
+\n"
 "Até"
 
 msgid "The"
 msgstr ""
-"O\n"
+"O
+\n"
 "A"
 
 msgid "Up"
 msgstr ""
-"Subir\n"
+"Subir
+\n"
 "Cima"
 
 msgid "URL"
@@ -188,7 +195,8 @@ msgstr "Ignorar"
 
 msgid "Login"
 msgstr ""
-"Iniciar Sessão\n"
+"Iniciar Sessão
+\n"
 "Utilizador"
 
 msgid "Log out"
@@ -202,7 +210,8 @@ msgstr "Novo"
 
 msgid "Search"
 msgstr ""
-"Busca\n"
+"Busca
+\n"
 "Pesquisa"
 
 msgid "Save"
@@ -216,8 +225,10 @@ msgstr "Actualizar"
 
 msgid "View"
 msgstr ""
-"Ver\n"
-"Visualizar\n"
+"Ver
+\n"
+"Visualizar
+\n"
 "Vista"
 
 msgid "Apply changes"
@@ -228,7 +239,8 @@ msgstr "Aviso"
 
 msgid "Load"
 msgstr ""
-"Carga\n"
+"Carga
+\n"
 "Carregar"
 
 msgid "Retry"
@@ -332,12 +344,14 @@ msgstr ""
 
 msgid "Active"
 msgstr ""
-"Activo\n"
+"Activo
+\n"
 "Activa"
 
 msgid "Inactive"
 msgstr ""
-"Inactivo\n"
+"Inactivo
+\n"
 "Inactiva"
 
 msgid "Selected"
@@ -417,7 +431,8 @@ msgstr "Radius"
 
 msgid "Process"
 msgstr ""
-"Processo\n"
+"Processo
+\n"
 "Processar"
 
 msgid "Interfaces"
