@@ -1014,7 +1014,8 @@ msgstr "AFP"
 
 msgid "AFP Server"
 msgstr ""
-"Copy text   \t\n"
+"Copy text   \t
+\n"
 "AFP сърър"
 
 msgid "ARP Tables"
@@ -1550,7 +1551,8 @@ msgstr "Премахни"
 
 msgid "Delete ARP entry"
 msgstr ""
-"Copy text   \t\n"
+"Copy text   \t
+\n"
 "изтрий ARP позицията"
 
 msgid "Delete Host"

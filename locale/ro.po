@@ -2969,7 +2969,8 @@ msgstr "Numele serverului LDAP"
 
 msgid "LDAP server name or IP"
 msgstr ""
-"Numele serverului LDAP\n"
+"Numele serverului LDAP
+\n"
 "sau adresa IP"
 
 msgid "Language"
