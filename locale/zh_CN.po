@@ -1033,10 +1033,7 @@ msgstr "%s 界面 (SSID '%s')"
 
 #, php-format
 msgid "%s of %sB"
-msgstr ""
-"Copy text   \t
-\n"
-"%sB中的%s"
+msgstr "%sB中的%s"
 
 #, php-format
 msgid "%s used of %sB"
