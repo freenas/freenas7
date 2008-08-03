@@ -1,5 +1,5 @@
 PORTNAME=			rsync
-PORTVERSION=	3.0.2
+PORTVERSION=	3.0.3
 CATEGORIES=		net
 COMMENT=			A network file distribution/sync utility
 MAINTAINER=		votdev@gmx.de
