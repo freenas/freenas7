@@ -24,7 +24,10 @@ td.tabnavtbl a {
 td.tabnavtbl a:hover {
 	background-position: 100% -150px;
 }
-td.tabnavtbl a:link, td.tabnavtbl a:visited, td.tabnavtbl a:active, td.tabnavtbl a:hover {
+td.tabnavtbl a:visited, td.tabnavtbl a:link {
+	color: #FFFFFF;
+}
+td.tabnavtbl a:active, td.tabnavtbl a:hover {
 	color: #000000;
 }
 td.tabnavtbl span {
@@ -50,6 +53,7 @@ td.tabnavtbl a:hover span {
 td.tabnavtbl li.tabact a {
 	background-position: 100% -150px;
 	border-width: 0px;
+	color: #000000;
 }
 td.tabnavtbl li.tabact span {
 	background-position: 0% -150px;
