@@ -1,32 +1,69 @@
 PORTNAME=			e2fsprogs
-PORTVERSION=	1.0
+PORTVERSION=	1.41.0
+PORTREVISION=	0
 CATEGORIES=		sysutils
-COMMENT=			Utilities to manipulate ext2/ext3 filesystems
+COMMENT=			Utilities & library to manipulate ext2/3/4 filesystems
 MAINTAINER=		votdev@gmx.de
 
-# No files are needed to be fetched.
-DISTFILES?=
-# No build is required for this port.
-NO_BUILD?=	yes
-# Don't register a port installation as a package.
-NO_PKG_REGISTER?=	yes
-# Set default target to execute when a port is calling a dependency.
-ALWAYS_BUILD_DEPENDS=	yes
-DEPENDS_TARGET=	clean build
+MASTER_SITES=	${MASTER_SITE_SOURCEFORGE_EXTENDED}
+MASTER_SITE_SUBDIR=	${PORTNAME}
 
-BUILD_DEPENDS=	e2fsprogs:${PORTSDIR}/sysutils/e2fsprogs
+PATCH_STRIP=			-p1
+USE_GMAKE=				yes
+USE_LDCONFIG=			yes
+GNU_CONFIGURE=		yes
+CONFIGURE_ARGS+=	--disable-fsck --disable-e2initrd-helper \
+									--with-cc='${CC}' --with-linker='${LD}' \
+									--with-ccopts='${CFLAGS}' \
+									--with-root-prefix='${PREFIX}'
+CONFIGURE_ENV+=		CPPFLAGS='${CPPFLAGS} -I${WRKSRC}/lib \
+									-I${LOCALBASE}/include'
+MAKE_ARGS+=				LDFLAGS='${LDFLAGS} -L${LOCALBASE}/lib'
 
-post-patch:
-# Copy options file
-	@${MKDIR} -v /var/db/ports/${PORTNAME}
-	@${CP} -pv ${FILESDIR}/${PORTNAME}-options /var/db/ports/${PORTNAME}/options
+.include <bsd.port.pre.mk>
+
+USE_GETTEXT=	yes
+PLIST_SUB=		NLS=""
+
+post-patch::
+	@${REINPLACE_CMD} -E -e \
+		's:\$$\(libdir\)/pkgconfig:${PREFIX}/libdata/pkgconfig:' \
+		${WRKSRC}/lib/*/Makefile.in
+# don't build/install libext2fs.info
+	@${REINPLACE_CMD} -e 's/ install-doc-libs$$//' ${WRKSRC}/Makefile.in
+
+.if ${MASTERDIR} == ${.CURDIR}
+post-build:
+# Relink e2fsck statically - We need to make sure that tools for the root file
+# system are statically linked against anything that is outside the root fs,
+# else we're in trouble if e2fsck is needed for boot:
+# (we don't use e2fsck.static, since we can link libc.so dynamically)
+	cd ${WRKSRC}/e2fsck && ${RM} -f e2fsck \
+		&& ${GMAKE} e2fsck \
+		STATIC_LIBS="../lib/libext2fs.a ../lib/libcom_err.a \
+		../lib/libblkid.a  ../lib/libuuid.a" \
+		LIBINTL="${LOCALBASE}/lib/libintl.a ${LOCALBASE}/lib/libiconv.a"
+# Regression check: avoid a port (not upstream!) regression from 1.40.5,
+# check that e2fsck isn't dynalinked against anything but libc.so:
+	@${ECHO_CMD} -n "===>  checking that e2fsck depends on no shared objects beyond libc.so: "
+	@a="$$(ldd ${WRKSRC}/e2fsck/e2fsck 2>/dev/null \
+	    | ${GREP} -v 'not a dynamic executable' \
+	    | ${GREP} '=>' \
+	    | ${AWK}  '{print $$3;}' \
+	    | ${GREP} -v '^/lib/libc\.so\.' || :)"; \
+	if test "x$$a" = "x" ; then echo 'PASS' ; else \
+	    echo 'FAIL' ; echo '===>  e2fsck depends on:' ; echo "$$a" ; exit 1 ; fi
+# Build fsck(8) wrapper
+	${CC} ${CPPFLAGS} ${CFLAGS} ${LDFLAGS} -s ${LIBS} \
+		-o ${WRKSRC}/fsck_ext2fs ${FILESDIR}/fsck_ext2fs.c
+.endif
 
 do-install:
-	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/e2fsck/e2fsck ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/misc/mke2fs ${FREENAS_ROOTFS}/usr/local/sbin
-	@${INSTALL_PROGRAM} -v ${PORTSDIR}/sysutils/e2fsprogs/work/e2fsprogs-*/fsck_ext2fs ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/e2fsck/e2fsck ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/misc/mke2fs ${FREENAS_ROOTFS}/usr/local/sbin
+	@${INSTALL_PROGRAM} -v ${WRKSRC}/fsck_ext2fs ${FREENAS_ROOTFS}/usr/local/sbin
 
 	@${LN} -s -f -v /usr/local/sbin/e2fsck ${FREENAS_ROOTFS}/sbin/e2fsck
 	@${LN} -s -f -v /usr/local/sbin/fsck_ext2fs ${FREENAS_ROOTFS}/sbin/fsck_ext2fs
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>
