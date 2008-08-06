@@ -113,13 +113,13 @@ sajax_handle_client_request();
 			  <tr>
 			    <td width="25%" class="vncellt"><?=gettext("Name");?></td>
 			    <td width="75%" class="listr">
-			      <?php echo $config['system']['hostname'] . "." . $config['system']['domain']; ?>
+			      <?php echo $config['system']['hostname'] . "." . $config['system']['domain'];?>
 			    </td>
 			  </tr>
 			  <tr>
 			    <td width="25%" valign="top" class="vncellt"><?=gettext("Version");?></td>
 			    <td width="75%" class="listr">
-			      <strong><?=get_product_version();?></strong> <?=get_product_versionname();?> (revision <?=get_product_revision();?>)</br>
+			      <strong><?=get_product_version();?></strong> <?=get_product_versionname();?> (revision <?=get_product_revision();?>)<br/>
 						<?=gettext("built on");?> <?=get_product_buildtime();?>
 			    </td>
 			  </tr>
@@ -216,7 +216,7 @@ sajax_handle_client_request();
 								echo "<img src='bar_gray.gif' name='swapusagef_{$fsid}' id='swapusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle' title='{$tooltip_available}'>";
 								echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
 								echo "<input style='padding: 0; border: 0;' size='30' name='swapusage_{$fsid}' id='swapusage_{$fsid}' value='" . sprintf(gettext("%s of %sB"), $swap['capacity'], $swap['total']) . "'/>";
-								echo "<br></td></tr>";
+								echo "<br/></td></tr>";
 							}?>
 						</table>
 					</td>
@@ -257,7 +257,7 @@ sajax_handle_client_request();
 									echo "<img src='bar_gray.gif' name='diskusagef_{$fsid}' id='diskusagef_{$fsid}' height='15' width='" . (100 - $percent_used) . "' border='0' align='absmiddle' title='{$tooltip_available}'>";
 									echo "<img src='bar_right.gif' height='15' width='5' border='0' align='absmiddle'> ";
 									echo "<input style='padding: 0; border: 0;' size='30' name='diskusage_{$fsid}' id='diskusage_{$fsid}' value='" . sprintf(gettext("%s of %sB"), $diskusagev['capacity'], $diskusagev['size']) . "'/>";
-									echo "<br></td></tr>";
+									echo "<br/></td></tr>";
 								}
 							} else {
 								echo gettext("No disk configured");
