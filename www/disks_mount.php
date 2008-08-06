@@ -67,6 +67,8 @@ if ($_POST) {
 		if ($retval == 0) {
 			ui_cleanup_updatenotification($d_mountdirty_path);
 		}
+		header("Location: disks_mount.php");
+		exit;
 	}
 }
 
