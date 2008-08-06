@@ -1,6 +1,6 @@
 /*
 	disks_init.js
-	Copyright © 2008 Volker Theile (votdev@gmx.de)
+	Copyright Â© 2008 Volker Theile (votdev@gmx.de)
 	All rights reserved.
 */
 function disk_change() {

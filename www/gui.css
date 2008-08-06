@@ -232,7 +232,7 @@ a {
 }
 div#infobox table tr td.icon {
 	background-color: #687BA4;
-	width: 36;
+	width: 36px;
 }
 div#infobox table tr td.message {
 	background-color: #D9DEE8;
@@ -240,7 +240,7 @@ div#infobox table tr td.message {
 }
 div#errorbox table tr td.icon {
 	background-color: #A12A2A;
-	width: 36;
+	width: 36px;
 }
 div#errorbox table tr td.message {
 	color: #CC0000;
