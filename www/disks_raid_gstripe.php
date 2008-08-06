@@ -55,6 +55,8 @@ if ($_POST) {
 		if ($retval == 0) {
 			ui_cleanup_updatenotification($d_raid_gstripe_confdirty_path);
 		}
+		header("Location: disks_raid_gstripe.php");
+		exit;
 	}
 }
 

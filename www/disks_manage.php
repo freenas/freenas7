@@ -58,6 +58,8 @@ if ($_POST) {
 		if ($retval == 0) {
 			ui_cleanup_updatenotification($d_diskdirty_path);
 		}
+		header("Location: disks_manage.php");
+		exit;
 	}
 }
 
