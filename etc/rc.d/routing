@@ -85,7 +85,7 @@ static_start()
 		;;
 	esac
 
-	# Setup static routes. This should be done before router discovery
+	# Setup static routes. This should be done before router discovery.
 	#
 	if [ -n "${static_routes}" ]; then
 		for i in ${static_routes}; do

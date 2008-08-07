@@ -1,7 +1,6 @@
 #!/bin/sh
 #
-# $NetBSD: mountd,v 1.11 2002/01/31 01:26:06 lukem Exp $
-# $FreeBSD: src/etc/rc.d/mountd,v 1.15.2.1 2005/09/21 20:27:50 rodrigc Exp $
+# $FreeBSD: src/etc/rc.d/mountd,v 1.15.2.3 2008/01/28 08:22:32 dougb Exp $
 #
 # Modified by Volker Theile (votdev@gmx.de)
 #
@@ -87,5 +86,5 @@ mountd_precmd()
 	return 0
 }
 
-load_rc_config ${name}
+load_rc_config $name
 run_rc_command "$1"
