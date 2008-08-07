@@ -33,6 +33,24 @@ Help needed:
 - Need help for adding LDAP authentication feature:
   Main services can be easily authenticated using PAM-LDAP, but is harder for Samba.
 
+FreeNAS 0.69b3 (Shai-Hulud):
+----------------------------
+
+Majors changes:
+
+Minors changes:
+
+Bug fixes:
+
+Permanent restrictions:
+- It is not possible to format a SoftRAID disk with MSDOS FAT16/32.
+- It is not possible to encrypt a disk partition, only complete disks are supported.
+- It is not possible to get seperate CPU stats per processor on SMP machines because
+  FreeBSD does not support that feature.
+
+Known bugs:
+- If DHCP for IPv4 is used, the IPv6 statically configured DNS server will be overriden by the IPv4 DNS server.
+
 FreeNAS 0.69b2 (Stone burner):
 ------------------------------
 
@@ -51,7 +69,7 @@ Majors changes:
 Minors changes:
 - Enable WLAN interface setup via console.
 - Add 'Loewe Connect' UPnP support (FR 2003278).
-- Modity iSCSI-Target WebGUI. This will hopefully reduce 'Extent' configuration problems.
+- Modify iSCSI-Target WebGUI. This will hopefully reduce 'Extent' configuration problems.
 - Disallow adding duplicate named CIFS/SMB and AFP shares. Thanks to Falk Menzel.
 - Rename environment variable used by /etc/rc.d/rsync_client and rsync_local scripts to
   rsync_client_logfile and rsync_local_logfile.
