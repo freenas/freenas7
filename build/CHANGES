@@ -37,6 +37,7 @@ FreeNAS 0.69b3 (Shai-Hulud):
 ----------------------------
 
 Majors changes:
+- Add nullfs.ko and unionfs.ko kernel modules.
 
 Minors changes:
 
