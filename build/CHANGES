@@ -58,7 +58,7 @@ Minors changes:
 - If 'Recycle bin' has been enabled for a CIFS/SMB share the '.recycle' directory will
   be created with 0777 permissions. A subdir will be created for each user with 0700
 	permissions.
-- Add 'mount_smbfs' command.
+- Add 'mount_smbfs' command. HowTo see http://sig9.com/articles/samba-automount-freebsd.
 
 Bug fixes:
 - Fix bug in interfaces WebGUI. Thanks to freenas_fan for this tip.
