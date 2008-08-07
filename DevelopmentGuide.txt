@@ -18,4 +18,8 @@ structure of the target development tree and add only the new or modified
 files. DO NOT create a branch from any tree to keep SVN repository size low.
 It is also possible to send patches.
 
+To add new WebGUI elements use the UI control creation functions in
+www/guiconfig.inc (e.g. html_inputbox to create a input box). This should
+be done to make changes in the WebGUI look easy as possible.
+
 Volker Theile
