@@ -35,6 +35,7 @@
 	POSSIBILITY OF SUCH DAMAGE.
 */
 require("guiconfig.inc");
+require("email.inc");
 
 $pgtitle = array(gettext("System"),gettext("Advanced"),gettext("Email"));
 
@@ -85,7 +86,23 @@ if ($_POST) {
 		write_config();
 
 		$retval = 0;
-		$savemsg = get_std_save_message($retval);
+
+		if (stristr($_POST['Submit'], gettext("Send test email"))) {
+			$subject = sprintf(gettext("Test email from %s."), $config['system']['hostname'] . "." . $config['system']['domain']);
+			$message = gettext("Automatically generated test email.");
+
+			// Send an test email now.
+			$retval = @email_send($config['system']['email']['from'], $subject, $message, $error);
+			if (0 == $retval) {
+				$savemsg = gettext("Test email successfully sent.");
+				write_log("Test email successfully sent to {$config['system']['email']['from']}.");
+			} else {
+				$failmsg = gettext("Failed to send test email. Please check log files.");
+				write_log($error);
+			}
+		} else {
+			$savemsg = get_std_save_message($retval);
+		}
 	}
 }
 ?>
@@ -93,7 +110,7 @@ if ($_POST) {
 <script language="JavaScript">
 <!--
 function auth_change() {
-	switch(document.iform.auth.checked) {
+	switch (document.iform.auth.checked) {
 		case false:
       showElementById('username_tr','hide');
   		showElementById('password_tr','hide');
@@ -127,6 +144,7 @@ function auth_change() {
     	<form action="system_email.php" method="post" name="iform" id="iform">
 				<?php if ($input_errors) print_input_errors($input_errors);?>
 				<?php if ($savemsg) print_info_box($savemsg);?>
+				<?php if ($failmsg) print_error_box($failmsg);?>
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">
 					<?php html_inputbox("server", gettext("Outgoing mail server"), $pconfig['server'], gettext("Outgoing SMTP mail server address, e.g. smtp.mycorp.com."), true, 40);?>
 					<?php html_inputbox("port", gettext("Port"), $pconfig['port'], gettext("The default SMTP mail server port, e.g. 25 or 587."), true, 10);?>
@@ -138,7 +156,9 @@ function auth_change() {
 			    <tr>
 			      <td width="22%" valign="top">&nbsp;</td>
 			      <td width="78%">
-			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>" onClick="enable_change(true)">
+			        <input name="Submit" type="submit" class="formbtn" value="<?=gettext("Save");?>">
+			        &nbsp;
+							<input name="Submit" id="sendnow" type="submit" class="formbtn" value="<?=gettext("Send test email");?>">
 			      </td>
 			    </tr>
 			  </table>

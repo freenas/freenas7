@@ -40,6 +40,7 @@ Majors changes:
 - Add nullfs.ko and unionfs.ko kernel modules.
 
 Minors changes:
+- Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.
 
 Bug fixes:
 
