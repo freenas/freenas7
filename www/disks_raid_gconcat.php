@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("JBOD"), gettext("Manage RAID"));
+$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("JBOD"), gettext("Management"));
 
 if (!is_array($config['gconcat']['vdisk']))
 	$config['gconcat']['vdisk'] = array();
@@ -115,7 +115,7 @@ function gconcat_process_updatenotification($mode, $data) {
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabact"><a href="disks_raid_gconcat.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Manage RAID");?></span></a></li>
+	<li class="tabact"><a href="disks_raid_gconcat.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Management");?></span></a></li>
 	<li class="tabinact"><a href="disks_raid_gconcat_tools.php"><span><?=gettext("Tools"); ?></span></a></li>
 	<li class="tabinact"><a href="disks_raid_gconcat_info.php"><span><?=gettext("Information"); ?></span></a></li>
   </ul>
@@ -167,7 +167,7 @@ function gconcat_process_updatenotification($mode, $data) {
             <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="disks_raid_gconcat_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RAID"); ?>" width="17" height="17" border="0"></a>&nbsp;
-							<a href="disks_raid_gconcat.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" width="17" height="17" border="0"></a>
+							<a href="disks_raid_gconcat.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" width="17" height="17" border="0"></a>
 						</td>
 						<?php endif;?>
 					</tr>

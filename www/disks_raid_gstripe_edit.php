@@ -132,7 +132,7 @@ if ($_POST) {
   <tr>
 		<td class="tabnavtbl">
 		  <ul id="tabnav">
-				<li class="tabact"><a href="disks_raid_gstripe.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Manage RAID");?></span></a></li>
+				<li class="tabact"><a href="disks_raid_gstripe.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Management");?></span></a></li>
 				<li class="tabinact"><a href="disks_raid_gstripe_tools.php"><span><?=gettext("Tools"); ?></span></a></li>
 				<li class="tabinact"><a href="disks_raid_gstripe_info.php"><span><?=gettext("Information"); ?></span></a></li>
 		  </ul>
