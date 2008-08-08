@@ -48,33 +48,22 @@ if ($_POST) {
 	if ($_POST['apply']) {
 		$retval = 0;
 		if (!file_exists($d_sysrebootreqd_path)) {
-			// Nothing to do here at the moment.
+			// Process notifications
+			$retval = ui_process_updatenotification($d_gelidirty_path, "geli_process_updatenotification");
 		}
 		$savemsg = get_std_save_message($retval);
 		if ($retval == 0) {
-			if (file_exists($d_gelidirty_path))
-				unlink($d_gelidirty_path);
+			ui_cleanup_updatenotification($d_gelidirty_path);
 		}
+		header("Location: disks_crypt.php");
+		exit;
 	}
 }
 
-if ($_GET['act'] == "del") {
+if ($_GET['act'] === "del") {
 	if ($a_geli[$_GET['id']]) {
-		$device = $a_geli[$_GET['id']]['device'][0];
-		$devicespecialfile = $a_geli[$_GET['id']]['devicespecialfile'];
-
-		if (disks_exists($devicespecialfile)) {
-			// Kill encrypted volume.
-			disks_geli_kill($devicespecialfile);
-
-			// Reset disk file system type attribute ('fstype') in configuration.
-			set_conf_disk_fstype($device, "");
-
-			// Delete geli volume in configuration.
-			unset($a_geli[$_GET['id']]);
-
-			write_config();
-
+		if (disks_exists($a_geli[$_GET['id']]['devicespecialfile'])) {
+			ui_set_updatenotification($d_gelidirty_path, UPDATENOTIFICATION_MODE_DIRTY, $a_geli[$_GET['id']]['uuid']);
 			header("Location: disks_crypt.php");
 			exit;
 		} else {
@@ -83,13 +72,37 @@ if ($_GET['act'] == "del") {
 	}
 }
 
-if ($_GET['act'] == "ret")
-{
+if ($_GET['act'] === "ret") {
 	if ($a_mount[$_GET['id']]) {
 		disks_mount($a_mount[$_GET['id']]);
 		header("Location: disks_crypt.php");
 		exit;
 	}
+}
+
+function geli_process_updatenotification($mode, $data) {
+	global $config;
+	
+	$retval = 0;
+	
+	switch ($mode) {
+		case UPDATENOTIFICATION_MODE_DIRTY:
+			if (is_array($config['geli']['vdisk'])) {
+				$index = array_search_ex($data, $config['geli']['vdisk'], "uuid");
+				if (false !== $index) {
+					// Kill encrypted volume.
+					disks_geli_kill($config['geli']['vdisk'][$index]['devicespecialfile']);
+					// Reset disk file system type attribute ('fstype') in configuration.
+					set_conf_disk_fstype($config['geli']['vdisk'][$index]['device'][0], "");
+	
+					unset($config['geli']['vdisk'][$index]);
+					write_config();
+				}
+			}
+			break;
+	}
+	
+	return $retval;
 }
 ?>
 <?php include("fbegin.inc"); ?>
@@ -107,6 +120,7 @@ if ($_GET['act'] == "ret")
     <td class="tabcont">
       <form action="disks_crypt.php" method="post">
         <?php if ($savemsg) print_info_box($savemsg); ?>
+        <?php if (0 == ui_isset_updatenotification_mode($d_gelidirty_path, UPDATENOTIFICATION_MODE_DIRTY)) print_warning_box(gettext("Warning: You are going to delete an encrypted volume. All data will get lost and can not be recovered."));?>
         <?php if (file_exists($d_gelidirty_path)) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>
@@ -124,7 +138,14 @@ if ($_GET['act'] == "ret")
             <td class="listbg">
               <?php
               if (file_exists($d_gelidirty_path)) {
-                echo(gettext("Configuring"));
+								$status = gettext("Configuring");
+								$notificationmode = ui_get_updatenotification_mode($d_gelidirty_path, $geli['uuid']);
+								switch ($notificationmode) {
+									case UPDATENOTIFICATION_MODE_DIRTY:
+										$status = gettext("Deleting");
+										break;
+								}
+								echo $status;
               } else {
                 if(disks_exists($geli['devicespecialfile'])) {
                   echo("<a href=\"disks_crypt_tools.php?disk={$geli['devicespecialfile']}&action=attach\">" . gettext("Not attached") . "</a>");
@@ -136,7 +157,7 @@ if ($_GET['act'] == "ret")
             </td>
             <td valign="middle" nowrap class="list">
 							<a href="disks_crypt_tools.php?disk=<?=$geli['devicespecialfile'];?>&action=setkey"><img src="e.gif" title="Change password" width="17" height="17" border="0"></a>&nbsp;
-              <a href="disks_crypt.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this encrypted volume? All elements that still use it will become invalid (e.g. share)!");?>')"><img src="x.gif" title="<?=gettext("Kill encrypted volume"); ?>" width="17" height="17" border="0"></a>
+              <a href="disks_crypt.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!");?>')"><img src="x.gif" title="<?=gettext("Kill encrypted volume"); ?>" width="17" height="17" border="0"></a>
             </td>
           </tr>
           <?php $i++; endforeach; ?>
