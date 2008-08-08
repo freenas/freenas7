@@ -38,6 +38,7 @@ FreeNAS 0.69b3 (Shai-Hulud):
 
 Majors changes:
 - Add nullfs.ko and unionfs.ko kernel modules.
+- Display warning message when user is going to delete an software RAID or encrypted volume. 
 
 Minors changes:
 - Add 'Send test email' button in 'System: Advanced: Email' to test current email settings.
