@@ -125,6 +125,7 @@ function gstripe_process_updatenotification($mode, $data) {
 			<form action="disks_raid_gstripe.php" method="post">
 				<?php if ($errormsg) print_error_box($errormsg); ?>
 				<?php if ($savemsg) print_info_box($savemsg); ?>
+				<?php if (0 == ui_isset_updatenotification_mode($d_raid_gstripe_confdirty_path, UPDATENOTIFICATION_MODE_DIRTY)) print_warning_box(gettext("Warning: You are going to delete a RAID volume. All data will get lost and can not be recovered."));?>
 				<?php if (file_exists($d_raid_gstripe_confdirty_path)) print_config_change_box();?>
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
           <tr>

@@ -269,6 +269,12 @@ function print_error_box($msg) {
 	echo "</p>";
 }
 
+function print_warning_box($msg) {
+	echo "<p>";
+	print_error_box_np($msg);
+	echo "</p>";
+}
+
 function print_config_change_box() {
 	$message = gettext("Apply changes");
 	echo "<p>";
@@ -533,5 +539,26 @@ function ui_get_updatenotification_mode($file, $data, $matchwholeword = true) {
 	}
 
 	return UPDATENOTIFICATION_MODE_UNKNOWN;
+}
+
+// Check if specified notification mode is set.
+// $file - File to be used
+// $mode - Mode to searched for
+// Return 0 if successful, otherwise 1.
+function ui_isset_updatenotification_mode($file, $mode) {
+	$a_notification = ui_get_updatenotification($file);
+	if (!is_array($a_notification))
+		return 1;
+
+	// Remove duplicate entries. Last inserted notification wins (Last in, first out).
+	$a_notification = array_reverse(array_remove_duplicate(array_reverse($a_notification), "data"));
+
+	// Process array in reverse order => Last in, first out
+	foreach ($a_notification as $notificationv) {
+		if ($notificationv['mode'] == $mode)
+				return 0;
+	}
+
+	return 1;
 }
 ?>
