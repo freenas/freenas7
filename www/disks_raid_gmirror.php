@@ -182,9 +182,11 @@ function gmirror_process_updatenotification($mode, $data) {
 					</tr>
         </table>
       </form>
-			<p><span class="vexpl"><span class="red"><strong><?=gettext("Note");?>:</strong></span><br><?php echo sprintf( gettext("Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"), "disks_manage.php", "COMPLETE");?></span></p><br/>
-			<p><span class="vexpl"><span class="red"><strong><?=gettext("Info");?>:</strong></span><br><?=sprintf(gettext("%s uses %s to create %s arrays."), get_product_name(), "GEOM Mirror", "RAID1");?>
-			</td>
+			<span class="vexpl">
+				<span class="red"><strong><?=gettext("Info");?>:</strong></span><br/>
+				<?=sprintf(gettext("%s is used to create %s volumes."), "GEOM Mirror", "RAID1");?>
+			</span>
+		</td>
 	</tr>
 </table>
 <?php include("fend.inc");?>
