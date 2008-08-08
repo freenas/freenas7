@@ -33,7 +33,7 @@
 */
 require("guiconfig.inc");
 
-$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID1"), gettext("Manage RAID"));
+$pgtitle = array(gettext("Disks"), gettext("Software RAID"), gettext("RAID1"), gettext("Management"));
 
 if (!is_array($config['gmirror']['vdisk']))
 	$config['gmirror']['vdisk'] = array();
@@ -118,7 +118,7 @@ function gmirror_process_updatenotification($mode, $data) {
   <tr>
 		<td class="tabnavtbl">
 		  <ul id="tabnav">
-				<li class="tabact"><a href="disks_raid_gmirror.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Manage RAID");?></span></a></li>
+				<li class="tabact"><a href="disks_raid_gmirror.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Management");?></span></a></li>
 				<li class="tabinact"><a href="disks_raid_gmirror_tools.php"><span><?=gettext("Tools"); ?></span></a></li>
 				<li class="tabinact"><a href="disks_raid_gmirror_info.php"><span><?=gettext("Information"); ?></span></a></li>
 		  </ul>
@@ -171,7 +171,7 @@ function gmirror_process_updatenotification($mode, $data) {
             <?php if (UPDATENOTIFICATION_MODE_DIRTY != $notificationmode):?>
             <td valign="middle" nowrap class="list">
 							<a href="disks_raid_gmirror_edit.php?id=<?=$i;?>"><img src="e.gif" title="<?=gettext("Edit RAID"); ?>" width="17" height="17" border="0"></a>&nbsp;
-							<a href="disks_raid_gmirror.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" width="17" height="17" border="0"></a>
+							<a href="disks_raid_gmirror.php?act=del&id=<?=$i;?>" onclick="return confirm('<?=gettext("Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!") ;?>')"><img src="x.gif" title="<?=gettext("Delete RAID") ;?>" width="17" height="17" border="0"></a>
 						</td>
 						<?php endif;?>
 					</tr>

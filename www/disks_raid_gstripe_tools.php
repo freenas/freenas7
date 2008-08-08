@@ -104,7 +104,7 @@ function raid_change() {
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gstripe.php"><span><?=gettext("Manage RAID"); ?></span></a></li>
+	<li class="tabinact"><a href="disks_raid_gstripe.php"><span><?=gettext("Management"); ?></span></a></li>
 	<li class="tabact"><a href="disks_raid_gstripe_tools.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Tools");?></span></a></li>
 	<li class="tabinact"><a href="disks_raid_gstripe_info.php"><span><?=gettext("Information"); ?></span></a></li>
   </ul>

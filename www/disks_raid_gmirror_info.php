@@ -51,7 +51,7 @@ $pgrefresh = 5; // Refresh every 5 seconds.
   </td></tr>
   <tr><td class="tabnavtbl">
   <ul id="tabnav">
-	<li class="tabinact"><a href="disks_raid_gmirror.php"><span><?=gettext("Manage RAID"); ?></span></a></li>
+	<li class="tabinact"><a href="disks_raid_gmirror.php"><span><?=gettext("Management"); ?></span></a></li>
 	<li class="tabinact"><a href="disks_raid_gmirror_tools.php"><span><?=gettext("Tools"); ?></span></a></li>
 	<li class="tabact"><a href="disks_raid_gmirror_info.php" title="<?=gettext("Reload page");?>" ><span><?=gettext("Information");?></span></a></li>
   </ul>
