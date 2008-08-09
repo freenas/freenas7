@@ -39,7 +39,9 @@ if [ 0 -lt ${_scriptnum} ]; then
 			-o "/usr/bin/touch /var/run/rsync_client-running${_i}" -n \
 			-o "/usr/local/bin/rsync -rtz --log-file=${rsync_client_logfile} " \
 			-m "options" \
-				-i "count(delete) > 0" -o "--delete --delete-after " -b \
+				-i "count(delete) > 0" -o "--delete " \
+					-i "delete_algorithm[. != 'default']" -v "concat('--delete-',delete_algorithm,' ')" -b \
+				-b \
 				-i "count(quiet) > 0" -o "--quiet " -b \
 				-i "count(perms) > 0" -o "--perms " -b \
 				-i "count(xattrs) > 0" -o "--xattrs " -b \
