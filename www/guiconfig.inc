@@ -235,43 +235,55 @@ function verify_gzip_file($fname) {
 		return 1;
 }
 
-function print_info_box_np($msg) {
-	echo "<div id='infobox'>\n";
+function print_core_box_np($type, $msg) {
+	switch ($type) {
+		case "info":
+			$id = "infobox";
+			$img = "exclam.gif";
+			break;
+		case "warning":
+			$id = "warningbox";
+			$img = "warn.gif";
+			break;
+		case "error":
+			$id = "errorbox";
+			$img = "err.gif";
+			break;
+	}
+
+	echo "<div id='{$id}'>\n";
 	echo "  <table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
 	echo "    <tr>\n";
-	echo "      <td class=\"icon\" align=\"center\" valign=\"top\"><img src=\"/exclam.gif\"></td>\n";
+	echo "      <td class=\"icon\" align=\"center\" valign=\"top\"><img src=\"/{$img}\"></td>\n";
 	echo "      <td class=\"message\">{$msg}</td>\n";
 	echo "    </tr>\n";
 	echo "  </table>\n";
 	echo "</div>\n";
+}
+
+function print_info_box_np($msg) {
+	print_core_box_np("info", $msg);
 }
 
 function print_info_box($msg) {
 	echo "<p>";
-	print_info_box_np($msg);
+	print_core_box_np("info", $msg);
 	echo "</p>";
 }
 
 function print_error_box_np($msg) {
-	echo "<div id='errorbox'>\n";
-	echo "  <table border=\"0\" cellspacing=\"0\" cellpadding=\"4\" width=\"100%\">\n";
-	echo "    <tr>\n";
-	echo "      <td class=\"icon\" align=\"center\" valign=\"top\"><img src=\"/err.gif\"></td>\n";
-	echo "      <td class=\"message\">{$msg}</td>\n";
-	echo "    </tr>\n";
-	echo "  </table>\n";
-	echo "</div>\n";
+	print_core_box_np("error", $msg);
 }
 
 function print_error_box($msg) {
 	echo "<p>";
-	print_error_box_np($msg);
+	print_core_box_np("error", $msg);
 	echo "</p>";
 }
 
 function print_warning_box($msg) {
 	echo "<p>";
-	print_error_box_np($msg);
+	print_core_box_np("warning", $msg);
 	echo "</p>";
 }
 
