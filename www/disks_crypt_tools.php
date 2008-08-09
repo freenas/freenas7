@@ -166,7 +166,7 @@ function action_change() {
   </tr>
   <tr>
     <td class="tabcont">
-    	<?php if ($nohttps_error) print_error_box($nohttps_error); ?>
+    	<?php if ($nohttps_error) print_warning_box($nohttps_error); ?>
       <?php if ($input_errors) print_input_errors($input_errors); ?>
 			<form action="disks_crypt_tools.php" method="post" name="iform" id="iform" enctype="multipart/form-data">
 			  <table width="100%" border="0" cellpadding="6" cellspacing="0">

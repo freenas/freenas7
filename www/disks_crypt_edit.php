@@ -138,7 +138,7 @@ if (!isset($pconfig['do_action'])) {
   <tr>
     <td class="tabcont">
 			<form action="disks_crypt_edit.php" method="post" name="iform" id="iform">
-				<?php if ($nohttps_error) print_error_box($nohttps_error);?>
+				<?php if ($nohttps_error) print_warning_box($nohttps_error);?>
 				<?php if ($nodisks_error) print_error_box($nodisks_error);?>
 				<?php if ($errormsg) print_error_box($errormsg);?>
 				<?php if ($input_errors) print_input_errors($input_errors);?>
