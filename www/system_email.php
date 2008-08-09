@@ -88,7 +88,7 @@ if ($_POST) {
 		$retval = 0;
 
 		if (stristr($_POST['Submit'], gettext("Send test email"))) {
-			$subject = sprintf(gettext("Test email from %s."), $config['system']['hostname'] . "." . $config['system']['domain']);
+			$subject = sprintf(gettext("Test email from %s"), $config['system']['hostname'] . "." . $config['system']['domain']);
 			$message = gettext("Automatically generated test email.");
 
 			// Send an test email now.
