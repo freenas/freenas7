@@ -1394,6 +1394,25 @@ function config_upgrade() {
 		$config['version'] = "5.3";
 	}
 
+	/* Convert 5.3 -> 5.4 */
+	/* Add //rsync/rsyncclient/options/delete_algorithm. */
+	/* Add //rsync/rsynclocal/options/delete_algorithm. */
+	if ($config['version'] === "5.3") {
+		for ($i = 0; isset($config['rsync']['rsyncclient'][$i]); $i++) {
+			if (isset($config['rsync']['rsyncclient'][$i]['options']['delete'])) {
+				$config['rsync']['rsyncclient'][$i]['options']['delete_algorithm'] = "after";
+			}
+		}
+
+		for ($i = 0; isset($config['rsync']['rsynclocal'][$i]); $i++) {
+			if (isset($config['rsync']['rsynclocal'][$i]['options']['delete'])) {
+				$config['rsync']['rsynclocal'][$i]['options']['delete_algorithm'] = "after";
+			}
+		}
+
+		$config['version'] = "5.4";
+	}
+
 	write_config();
 
 	if (is_booting())
