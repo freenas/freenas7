@@ -248,22 +248,17 @@ build_kernel() {
 				gzip -9cnv ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/kernel > ${FREENAS_WORKINGDIR}/kernel.gz;;
 			install)
 				# Installing the modules.
-				cd ${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules;
-				cp -v -p ./geom/geom_vinum/geom_vinum.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./geom/geom_stripe/geom_stripe.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./geom/geom_concat/geom_concat.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./geom/geom_mirror/geom_mirror.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./geom/geom_nop/geom_nop.ko $FREENAS_ROOTFS/boot/kernel;
-			 	cp -v -p ./iscsi/initiator/iscsi_initiator.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./ext2fs/ext2fs.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./if_tap/if_tap.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./if_tun/if_tun.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./nullfs/nullfs.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./unionfs/unionfs.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./zfs/zfs.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./smbfs/smbfs.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./libiconv/libiconv.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./libmchain/libmchain.ko $FREENAS_ROOTFS/boot/kernel;;
+				echo "--------------------------------------------------------------";
+				echo ">>> Install kernel modules";
+				echo "--------------------------------------------------------------";
+
+				[ -f ${FREENAS_WORKINGDIR}/modules.files ] && rm -f ${FREENAS_WORKINGDIR}/modules.files;
+				cp ${FREENAS_SVNDIR}/build/kernel-config/modules.files ${FREENAS_WORKINGDIR};
+
+				modulesdir=${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules;
+				for module in $(cat ${FREENAS_WORKINGDIR}/modules.files | grep -v "^#"); do
+					cp -Rpv ${modulesdir}/${module} ${FREENAS_ROOTFS}/boot/kernel
+				done;;
   	esac
   done
 

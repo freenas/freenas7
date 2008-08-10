@@ -1,0 +1,26 @@
+# List of kernel modules.
+
+# GEOM
+geom/geom_vinum/geom_vinum.ko
+geom/geom_stripe/geom_stripe.ko
+geom/geom_concat/geom_concat.ko
+geom/geom_mirror/geom_mirror.ko
+geom/geom_nop/geom_nop.ko
+
+# Interfaces
+if_tap/if_tap.ko
+if_tun/if_tun.ko
+
+# File systems
+ext2fs/ext2fs.ko
+nullfs/nullfs.ko
+unionfs/unionfs.ko
+smbfs/smbfs.ko
+zfs/zfs.ko
+
+# Required by unionfs.ko and smbfs.ko
+libiconv/libiconv.ko
+libmchain/libmchain.ko
+
+# Misc.
+iscsi/initiator/iscsi_initiator.ko
