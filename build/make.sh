@@ -260,7 +260,8 @@ build_kernel() {
 				cp -v -p ./if_tun/if_tun.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./nullfs/nullfs.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./unionfs/unionfs.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./zfs/zfs.ko $FREENAS_ROOTFS/boot/kernel;;
+				cp -v -p ./zfs/zfs.ko $FREENAS_ROOTFS/boot/kernel;
+				cp -v -p ./smbfs/smbfs.ko $FREENAS_ROOTFS/boot/kernel;;
   	esac
   done
 
