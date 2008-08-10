@@ -257,7 +257,7 @@ build_kernel() {
 
 				modulesdir=${FREENAS_OBJDIRPREFIX}/usr/src/sys/${FREENAS_KERNCONF}/modules/usr/src/sys/modules;
 				for module in $(cat ${FREENAS_WORKINGDIR}/modules.files | grep -v "^#"); do
-					cp -Rpv ${modulesdir}/${module} ${FREENAS_ROOTFS}/boot/kernel
+					install -sv ${modulesdir}/${module} ${FREENAS_ROOTFS}/boot/kernel
 				done;;
   	esac
   done
