@@ -261,7 +261,9 @@ build_kernel() {
 				cp -v -p ./nullfs/nullfs.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./unionfs/unionfs.ko $FREENAS_ROOTFS/boot/kernel;
 				cp -v -p ./zfs/zfs.ko $FREENAS_ROOTFS/boot/kernel;
-				cp -v -p ./smbfs/smbfs.ko $FREENAS_ROOTFS/boot/kernel;;
+				cp -v -p ./smbfs/smbfs.ko $FREENAS_ROOTFS/boot/kernel;
+				cp -v -p ./libiconv/libiconv.ko $FREENAS_ROOTFS/boot/kernel;
+				cp -v -p ./libmchain/libmchain.ko $FREENAS_ROOTFS/boot/kernel;;
   	esac
   done
 
