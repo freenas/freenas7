@@ -2,15 +2,12 @@ msgid ""
 msgstr ""
 "Project-Id-Version: FreeNAS\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2008-06-10 18:31+0000\n"
+"PO-Revision-Date: 2008-08-04 01:38+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-msgid ""
-msgstr ""
 
 msgid " interfaces:"
 msgstr ""
@@ -39,15 +36,15 @@ msgid "%s interface (SSID '%s')"
 msgstr ""
 
 #, php-format
+msgid "%s is used to create %s volumes."
+msgstr ""
+
+#, php-format
 msgid "%s of %sB"
 msgstr ""
 
 #, php-format
 msgid "%s used of %sB"
-msgstr ""
-
-#, php-format
-msgid "%s uses %s to create %s arrays."
 msgstr ""
 
 #, php-format
@@ -73,6 +70,9 @@ msgstr ""
 
 #, php-format
 msgid "<a href=%s>SSHD</a> must be enabled for Unison to work, and the <a href=%s>user</a> must have full Shell enabled."
+msgstr ""
+
+msgid "<li>Default - Rsync will choose the 'during' algorithm when talking to rsync 3.0.0 or newer, and the 'before' algorithm when talking to an older rsync.</li><li>Before - File-deletions will be done before the transfer starts.</li><li>During - File-deletions will be done incrementally as the transfer happens.</li><li>Delay - File-deletions will be computed during the transfer, and then removed after the transfer completes.</li><li>After - File-deletions will be done after the transfer has completed.</li>"
 msgstr ""
 
 msgid "A NTP time server name may only contain the characters a-z, 0-9, '-' and '.'."
@@ -398,6 +398,9 @@ msgstr ""
 msgid "AutoScale"
 msgstr ""
 
+msgid "Automatically generated test email."
+msgstr ""
+
 msgid "Auxiliary parameter"
 msgstr ""
 
@@ -510,6 +513,9 @@ msgid "Collisions"
 msgstr ""
 
 msgid "Cols"
+msgstr ""
+
+msgid "Comma separated list of directories to search for files to share."
 msgstr ""
 
 msgid "Command"
@@ -660,6 +666,9 @@ msgstr ""
 msgid "Delete URL"
 msgstr ""
 
+msgid "Delete algorithm"
+msgstr ""
+
 msgid "Delete all MIBs"
 msgstr ""
 
@@ -681,7 +690,7 @@ msgstr ""
 msgid "Delete extent"
 msgstr ""
 
-msgid "Delete files that don't exist on sender."
+msgid "Delete files on the receiving side that don't exist on sender."
 msgstr ""
 
 msgid "Delete group"
@@ -869,9 +878,6 @@ msgstr ""
 msgid "Do you really want to delete this disk? All elements that still use it will become invalid (e.g. share)!"
 msgstr ""
 
-msgid "Do you really want to delete this encrypted volume? All elements that still use it will become invalid (e.g. share)!"
-msgstr ""
-
 msgid "Do you really want to delete this extent?"
 msgstr ""
 
@@ -899,9 +905,6 @@ msgstr ""
 msgid "Do you really want to delete this parameter?"
 msgstr ""
 
-msgid "Do you really want to delete this raid volume? All elements that still use it will become invalid (e.g. share)!"
-msgstr ""
-
 msgid "Do you really want to delete this route?"
 msgstr ""
 
@@ -915,6 +918,9 @@ msgid "Do you really want to delete this target?"
 msgstr ""
 
 msgid "Do you really want to delete this user?"
+msgstr ""
+
+msgid "Do you really want to delete this volume?\\n!!! Note, all data will get lost and can not be recovered. !!!"
 msgstr ""
 
 msgid "Do you really want to format this disk? All data will be lost!"
@@ -1237,6 +1243,9 @@ msgstr ""
 msgid "Extra options to ifconfig (usually empty)."
 msgstr ""
 
+msgid "Extra options to rsync (usually empty)."
+msgstr ""
+
 msgid "FEC (Fast EtherChannel)"
 msgstr ""
 
@@ -1274,6 +1283,9 @@ msgid "Failed to create in-memory file system."
 msgstr ""
 
 msgid "Failed to send status report. Please check log files."
+msgstr ""
+
+msgid "Failed to send test email. Please check log files."
 msgstr ""
 
 msgid "Failed to upload metadata backup file."
@@ -1785,9 +1797,6 @@ msgstr ""
 msgid "Make sure you have already configured your <a href='%s'>Email</a> settings."
 msgstr ""
 
-msgid "Manage RAID"
-msgstr ""
-
 msgid "Management"
 msgstr ""
 
@@ -2060,10 +2069,6 @@ msgstr ""
 msgid "Option"
 msgstr ""
 
-#, php-format
-msgid "Optional configuration step: Configuring a virtual RAID disk using your <a href='%s'>previously configured disk</a>.<br>Wait for the '%s' status before format and mount it!"
-msgstr ""
-
 msgid "Others"
 msgstr ""
 
@@ -2237,6 +2242,12 @@ msgid "Prefix"
 msgstr ""
 
 msgid "Preformatted file system"
+msgstr ""
+
+msgid "Preserve extended attributes"
+msgstr ""
+
+msgid "Preserve permissions"
 msgstr ""
 
 msgid "Primary Group"
@@ -2534,6 +2545,9 @@ msgid "Send Command!"
 msgstr ""
 
 msgid "Send now"
+msgstr ""
+
+msgid "Send test email"
 msgstr ""
 
 msgid "Server"
@@ -2844,6 +2858,13 @@ msgstr ""
 msgid "Temperature monitoring"
 msgstr ""
 
+#, php-format
+msgid "Test email from %s"
+msgstr ""
+
+msgid "Test email successfully sent."
+msgstr ""
+
 msgid "The  deny  option specifies users and groups who are not allowed access to the share. It follows the same  format  as  the  allow option."
 msgstr ""
 
@@ -3057,6 +3078,9 @@ msgstr ""
 msgid "The powerd utility monitors the system state and sets various power control options accordingly."
 msgstr ""
 
+msgid "The share name is already used."
+msgstr ""
+
 msgid "The subject of the email."
 msgstr ""
 
@@ -3199,6 +3223,12 @@ msgid "This name is for example: iqn.2005-01.il.ac.huji.cs:somebody."
 msgstr ""
 
 msgid "This option allows the users and groups that access a share to be specified. Users and groups are specified, delimited by commas. Groups are designated by a @ prefix."
+msgstr ""
+
+msgid "This option causes rsync to update the remote extended attributes to be the same as the local ones."
+msgstr ""
+
+msgid "This option causes the receiving rsync to set the destination permissions to be the same as the source permissions."
 msgstr ""
 
 msgid "This option determines if this module should be listed when the client asks for a listing of available modules. By setting this to false you can create hidden modules."
@@ -3501,6 +3531,12 @@ msgstr ""
 msgid "Warning: This can cause a huge delay in loading the %s log page!"
 msgstr ""
 
+msgid "Warning: You are going to delete a RAID volume. All data will get lost and can not be recovered."
+msgstr ""
+
+msgid "Warning: You are going to delete an encrypted volume. All data will get lost and can not be recovered."
+msgstr ""
+
 msgid "WebGUI"
 msgstr ""
 
@@ -3701,9 +3737,6 @@ msgid "upriv"
 msgstr ""
 
 msgid "user_suffix, example: ou=users,dc=example,dc=com"
-msgstr ""
-
-msgid "webGUI Configuration"
 msgstr ""
 
 msgid "week days"
