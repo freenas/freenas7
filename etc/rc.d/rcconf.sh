@@ -156,15 +156,17 @@ setifconfig()
 
 	eval /usr/local/sbin/rconf attribute set "cloned_interfaces" "${_cloned_interfaces}"
 
-	# Prepare interfaces used by lagg.
-	/usr/local/bin/xml sel -t -m "//vinterfaces/lagg" \
-		-m "laggport" \
-			-v . \
-			-i "position() != last()" -n -b \
+	# Prepare interfaces used by lagg. Bring interfaces up only if a lagg interface
+	# is used as LAN or OPT interface.
+	/usr/local/bin/xml sel -t \
+		-i "//interfaces/*/if[contains(.,'lagg')]" \
+			-m "//vinterfaces/lagg/laggport" \
+				-v . -n \
+			-b \
 		-b \
 		${configxml_file} | /usr/local/bin/xml unesc | \
 		while read _laggport; do
-			eval /usr/local/sbin/rconf attribute set "ifconfig_${_laggport}" "up"
+			[ -n "${_laggport}" ] && eval /usr/local/sbin/rconf attribute set "ifconfig_${_laggport}" "up"
 		done
 
 	#########################################################################
